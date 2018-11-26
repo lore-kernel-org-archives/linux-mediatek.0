@@ -1,80 +1,87 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [v5, PATCH 2/2] dt-binding: mediatek-dwmac: add binding document
- for MediaTek MT2712 DWMAC
-Date: Mon, 26 Nov 2018 15:46:26 -0600
-Message-ID: <20181126214626.GA13830@bogus>
-References: <1542882521-18874-1-git-send-email-biao.huang@mediatek.com>
- <1542882521-18874-3-git-send-email-biao.huang@mediatek.com>
- <20181122151932.GD15403@lunn.ch>
- <1542936676.24219.66.camel@mhfsdcap03>
+From: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
+Subject: [PATCH 4/9] iommu: mtk_iommu: make it explicitly non-modular
+Date: Mon, 26 Nov 2018 17:31:33 -0500
+Message-ID: <1543271498-28966-5-git-send-email-paul.gortmaker@windriver.com>
+References: <1543271498-28966-1-git-send-email-paul.gortmaker@windriver.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1542936676.24219.66.camel@mhfsdcap03>
-Sender: linux-kernel-owner@vger.kernel.org
-To: biao huang <biao.huang@mediatek.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, davem@davemloft.net, honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, joabreu@synopsys.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <1543271498-28966-1-git-send-email-paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Nov 23, 2018 at 09:31:16AM +0800, biao huang wrote:
-> Dear Andrew,
-> 
-> 	Thanks for you remind.
-> 
-> 	Sincerely, I respect any comment from any reviewer. If I didn't reply
-> for any comment, really sorry for that.
-> 
-> 	As to this "tx-delay" issue, the following reply in v3 maybe ignored.
-> 	https://lkml.org/lkml/2018/11/19/158
-> 
-> 	"the delay time in mediatek dwmac design is not so accurate,
-> 	the current mt2712 and the following ICs will not use the
-> 	same delay design, but will use stages to indicate different
-> 	delay time.
-> 	so maybe "mediatek.tx-delay" represent the delay stage is a
-> 	good choice"
-> 
-> 	And to make it clearer here.
-> 
-> 	In mt2712, there are two delay macro circuit: named fine-tune and
-> coarse-tune.
-> 	a. fine-tune, 170+/-50ps per stage, total 32 stages
-> 	b. coarse-tune, 0.55+/-0.2ns per stage, total 32 stages
-> 	If we only consider mt2712, delay in fine-tune select a integer
-> multiple of 170ps, delay in coarse-tune select a integer multiple of
-> 550ps, for stage 0~31, the delay in fine-tune will not have the same
-> value with that in coarse-tune.
-> 	OK, It seems the property "fine-tune" can be eliminated .
-> 
-> 	But the following ic will not have the same accuracy as mt2712,
-> and maybe will not have two delay macro circuit to be selected.
+The Kconfig currently controlling compilation of this code is:
 
-New IC will have new compatible string then. If it is different, then 
-likely these properties would have to change or have different meaning 
-unless you use time.
+drivers/iommu/Kconfig:config MTK_IOMMU_V1
+drivers/iommu/Kconfig:  bool "MTK IOMMU Version 1 (M4U gen1) Support"
 
-> 	1. assume two delay macro circuit in the following ic,
-> 	fine-tune, 100ps per stage, coarse-tune, 0.55ns per stage,
-> 	if we want delay 2.2ns, fine-tune will get a 22, and coarse-tune get a
-> 4. We can't distinguish which delay macro we are choosing.
+...meaning that it currently is not being built as a module by anyone.
 
-Why wouldn't you just choose fine-tune for anything less than the max 
-range (3200ps in this example) and course for greater than 3100ps.
+Lets remove the modular code that is essentially orphaned, so that
+when reading the driver there is no doubt it is builtin-only.
 
-> 	2. assume only one delay macro circuit is used, a similar case as 1
-> will also increase the complexity of driver.
-> 	Then, we need define more flag property to know which delay macro we
-> are handling.
-> 
-> 	The common things for all delay macro circuit in MediaTek mac design is
-> the stages, not the accuracy. so if we maintain stage info in "mediatek,
-> tx-delay", we only need care which stage we should choose.
-> And for each IC, we will recommend a best stage as a candidate.
+Since module_init was not even used by this driver, the init ordering
+remains unchanged with this commit.
 
-What if you had a 3rd delay circuit?
+We also delete the MODULE_LICENSE tag etc. since all that information
+was (or is now) contained at the top of the file in the comments.
 
-> 	Above is my personal opinion, may be my understanding is wrong,
-> welcome for further discussion.
-> 
-> 	Thanks a lot.
+Cc: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Signed-off-by: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
+---
+ drivers/iommu/mtk_iommu_v1.c | 15 +++------------
+ 1 file changed, 3 insertions(+), 12 deletions(-)
+
+diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+index 27867b862d7a..5fbf3cecb87f 100644
+--- a/drivers/iommu/mtk_iommu_v1.c
++++ b/drivers/iommu/mtk_iommu_v1.c
+@@ -1,4 +1,6 @@
+ /*
++ * IOMMU API for MTK architected m4u v1 implementations
++ *
+  * Copyright (c) 2015-2016 MediaTek Inc.
+  * Author: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+  *
+@@ -35,7 +37,7 @@
+ #include <linux/spinlock.h>
+ #include <asm/barrier.h>
+ #include <asm/dma-iommu.h>
+-#include <linux/module.h>
++#include <linux/init.h>
+ #include <dt-bindings/memory/mt2701-larb-port.h>
+ #include <soc/mediatek/smi.h>
+ #include "mtk_iommu.h"
+@@ -704,15 +706,4 @@ static int __init m4u_init(void)
+ {
+ 	return platform_driver_register(&mtk_iommu_driver);
+ }
+-
+-static void __exit m4u_exit(void)
+-{
+-	return platform_driver_unregister(&mtk_iommu_driver);
+-}
+-
+ subsys_initcall(m4u_init);
+-module_exit(m4u_exit);
+-
+-MODULE_DESCRIPTION("IOMMU API for MTK architected m4u v1 implementations");
+-MODULE_AUTHOR("Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
+-MODULE_LICENSE("GPL v2");
+-- 
+2.7.4
