@@ -1,51 +1,32 @@
-From: CK Hu <ck.hu@mediatek.com>
+From: Andrzej Hajda <a.hajda@samsung.com>
 Subject: Re: [PATCH] drm/mediatek: Only try to attach bridge if there is one
-Date: Mon, 26 Nov 2018 13:30:00 +0800
-Message-ID: <1543210200.1796.2.camel@mtksdaap41>
-References: <20181126040737.138682-1-drinkcat@chromium.org>
+Date: Mon, 26 Nov 2018 07:58:43 +0100
+Message-ID: <6be0a453-80fb-4d97-1610-e4db124faf61@samsung.com>
+References: <CGME20181126041445epcas4p1f0db29e800181de3971f08f6939eec51@epcas4p1.samsung.com>
+        <20181126040737.138682-1-drinkcat@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20181126040737.138682-1-drinkcat@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Nicolas Boichat <drinkcat@chromium.org>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Nicolas Boichat <drinkcat@chromium.org>, CK Hu <ck.hu@mediatek.com>
 Cc: David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIE5pY29sYXM6CgpPbiBNb24sIDIwMTgtMTEtMjYgYXQgMTI6MDcgKzA4MDAsIE5pY29sYXMg
-Qm9pY2hhdCB3cm90ZToKPiBFdmVuIGlmIGRzaS0+YnJpZGdlIGlzIE5VTEwsIHdlIHN0aWxsIHRy
-eSB0byBjYWxsIGRybV9icmlkZ2VfYXR0YWNoLAo+IGFuZCBwcmludCBvdXQgYW4gZXJyb3IgbWVz
-c2FnZSwgYmVmb3JlIGNyZWF0aW5nIHRoZSBjb25uZWN0b3IuCj4gCj4gV2hlbiBubyBicmlkZ2Ug
-aXMgcHJvdmlkZWQsIGxldCdzIHNraXAgdGhlc2UgMiBzdGVwcyBhbmQgZGlyZWN0bHkKPiBjcmVh
-dGUgdGhlIGNvbm5lY3Rvci4KClJldmlld2VkLWJ5OiBDSyBIdSA8Y2suaHVAbWVkaWF0ZWsuY29t
-PgoKPiAKPiBTaWduZWQtb2ZmLWJ5OiBOaWNvbGFzIEJvaWNoYXQgPGRyaW5rY2F0QGNocm9taXVt
-Lm9yZz4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyB8IDExICsr
-KysrKystLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCA3IGluc2VydGlvbnMoKyksIDQgZGVsZXRpb25z
-KC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMg
-Yi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gaW5kZXggNjZkZjFiMTc3OTU5
-MjEuLjI3YjUwN2ViNGE5OTdkIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfZHNpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4g
-QEAgLTgxOCwxMCArODE4LDEzIEBAIHN0YXRpYyBpbnQgbXRrX2RzaV9jcmVhdGVfY29ubl9lbmMo
-c3RydWN0IGRybV9kZXZpY2UgKmRybSwgc3RydWN0IG10a19kc2kgKmRzaSkKPiAgCWRzaS0+ZW5j
-b2Rlci5wb3NzaWJsZV9jcnRjcyA9IDE7Cj4gIAo+ICAJLyogSWYgdGhlcmUncyBhIGJyaWRnZSwg
-YXR0YWNoIHRvIGl0IGFuZCBsZXQgaXQgY3JlYXRlIHRoZSBjb25uZWN0b3IgKi8KPiAtCXJldCA9
-IGRybV9icmlkZ2VfYXR0YWNoKCZkc2ktPmVuY29kZXIsIGRzaS0+YnJpZGdlLCBOVUxMKTsKPiAt
-CWlmIChyZXQpIHsKPiAtCQlEUk1fRVJST1IoIkZhaWxlZCB0byBhdHRhY2ggYnJpZGdlIHRvIGRy
-bVxuIik7Cj4gLQo+ICsJaWYgKGRzaS0+YnJpZGdlKSB7Cj4gKwkJcmV0ID0gZHJtX2JyaWRnZV9h
-dHRhY2goJmRzaS0+ZW5jb2RlciwgZHNpLT5icmlkZ2UsIE5VTEwpOwo+ICsJCWlmIChyZXQpIHsK
-PiArCQkJRFJNX0VSUk9SKCJGYWlsZWQgdG8gYXR0YWNoIGJyaWRnZSB0byBkcm1cbiIpOwo+ICsJ
-CQlnb3RvIGVycl9lbmNvZGVyX2NsZWFudXA7Cj4gKwkJfQo+ICsJfSBlbHNlIHsKPiAgCQkvKiBP
-dGhlcndpc2UgY3JlYXRlIG91ciBvd24gY29ubmVjdG9yIGFuZCBhdHRhY2ggdG8gYSBwYW5lbCAq
-Lwo+ICAJCXJldCA9IG10a19kc2lfY3JlYXRlX2Nvbm5lY3Rvcihkcm0sIGRzaSk7Cj4gIAkJaWYg
-KHJldCkKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
-cmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On 26.11.2018 05:07, Nicolas Boichat wrote:
+> Even if dsi->bridge is NULL, we still try to call drm_bridge_attach,
+> and print out an error message, before creating the connector.
+>
+> When no bridge is provided, let's skip these 2 steps and directly
+> create the connector.
+>
+> Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
+Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
+
+
+ --
+
+Regards
+Andrzej
