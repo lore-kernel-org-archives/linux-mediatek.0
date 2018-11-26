@@ -1,80 +1,88 @@
-From: Rob Herring <robh+dt@kernel.org>
+From: Miles Chen <miles.chen@mediatek.com>
 Subject: Re: [RFC PATCH] of: make MAX_RESERVED_REGIONS configurable
-Date: Sat, 24 Nov 2018 14:56:13 -0600
-Message-ID: <CAL_Jsq+O1YDP1yiHZpcxUaFG1LYDqi74D_kEnErP+cwGDppVWQ@mail.gmail.com>
+Date: Mon, 26 Nov 2018 09:33:24 +0800
+Message-ID: <1543196004.21289.1.camel@mtkswgap22>
 References: <1542787873-8429-1-git-send-email-miles.chen@mediatek.com>
- <CAL_JsqLGvUYQmCGXLgSO+6kFj2i87dpaTbMGbyu5oMt=eeu35A@mail.gmail.com> <1542855088.15789.6.camel@mtkswgap22>
+         <CAL_JsqLGvUYQmCGXLgSO+6kFj2i87dpaTbMGbyu5oMt=eeu35A@mail.gmail.com>
+         <1542855088.15789.6.camel@mtkswgap22>
+         <CAL_Jsq+O1YDP1yiHZpcxUaFG1LYDqi74D_kEnErP+cwGDppVWQ@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1542855088.15789.6.camel@mtkswgap22>
+In-Reply-To: <CAL_Jsq+O1YDP1yiHZpcxUaFG1LYDqi74D_kEnErP+cwGDppVWQ@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Miles Chen <miles.chen@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>
 Cc: Frank Rowand <frowand.list@gmail.com>, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Nov 21, 2018 at 8:51 PM Miles Chen <miles.chen@mediatek.com> wrote:
->
-> On Wed, 2018-11-21 at 10:39 -0600, Rob Herring wrote:
-> > On Wed, Nov 21, 2018 at 2:11 AM <miles.chen@mediatek.com> wrote:
-> > >
-> > > From: Miles Chen <miles.chen@mediatek.com>
-> > >
-> > > When we use more than 32 entries in /resered-memory,
-> > > there will be an error message: "not enough space all defined regions.".
-> > > We can increase MAX_RESERVED_REGIONS to fix this.
-> > >
-> > > commit 22f8cc6e3373 ("drivers: of: increase MAX_RESERVED_REGIONS to 32")
-> > > increased MAX_RESERVED_REGIONS to 32 but I'm not sure if increasing
-> > > MAX_RESERVED_REGIONS to 64 is suitable for everyone.
-> > >
-> > > In this RFC patch, CONFIG_MAX_OF_RESERVED_REGIONS is added and used as
-> > > MAX_RESERVED_REGIONS. Add a sanity test to make sure that
-> > > MAX_RESERVED_REGIONS is less than INIT_MEMBLOCK_REGIONS.
-> > > Users can configure CONFIG_MAX_OF_RESERVED_REGIONS according to their
-> > > need.
+On Sat, 2018-11-24 at 14:56 -0600, Rob Herring wrote:
+> On Wed, Nov 21, 2018 at 8:51 PM Miles Chen <miles.chen@mediatek.com> wrote:
 > >
-> > I don't want a kconfig option for this. I think it should be dynamic instead.
+> > On Wed, 2018-11-21 at 10:39 -0600, Rob Herring wrote:
+> > > On Wed, Nov 21, 2018 at 2:11 AM <miles.chen@mediatek.com> wrote:
+> > > >
+> > > > From: Miles Chen <miles.chen@mediatek.com>
+> > > >
+> > > > When we use more than 32 entries in /resered-memory,
+> > > > there will be an error message: "not enough space all defined regions.".
+> > > > We can increase MAX_RESERVED_REGIONS to fix this.
+> > > >
+> > > > commit 22f8cc6e3373 ("drivers: of: increase MAX_RESERVED_REGIONS to 32")
+> > > > increased MAX_RESERVED_REGIONS to 32 but I'm not sure if increasing
+> > > > MAX_RESERVED_REGIONS to 64 is suitable for everyone.
+> > > >
+> > > > In this RFC patch, CONFIG_MAX_OF_RESERVED_REGIONS is added and used as
+> > > > MAX_RESERVED_REGIONS. Add a sanity test to make sure that
+> > > > MAX_RESERVED_REGIONS is less than INIT_MEMBLOCK_REGIONS.
+> > > > Users can configure CONFIG_MAX_OF_RESERVED_REGIONS according to their
+> > > > need.
+> > >
+> > > I don't want a kconfig option for this. I think it should be dynamic instead.
+> > >
+> > > The current flow is like this:
+> > >
+> > > for each reserved node:
+> > >   - call memblock_reserve
+> > >   - Add info to reserved_mem array
+> > >
+> > > I think we should change it to:
+> > >
+> > > for each reserved node:
+> > >   - call memblock_reserve
+> > >   - count number of nodes
+> > >
+> > > Alloc array using memblock_alloc
+> > >
+> > > for each reserved node:
+> > >    - Add info to reserved_mem array
+> > >
 > >
-> > The current flow is like this:
+> > thanks for your comment.
+> >
+> > I reviewed the flow and it might be easier to count the
+> > nodes and setup array first:
 > >
 > > for each reserved node:
-> >   - call memblock_reserve
-> >   - Add info to reserved_mem array
-> >
-> > I think we should change it to:
-> >
-> > for each reserved node:
-> >   - call memblock_reserve
-> >   - count number of nodes
+> >     - count number of nodes
 > >
 > > Alloc array using memblock_alloc
 > >
+> >
 > > for each reserved node:
+> >    - call memblock_reserve
+> 
+> The order here is wrong. It is important that you reserve the memory
+> blocks before doing any allocations.
+
+thanks for pointing that out. You are right. I'll follow your
+suggestion.
+
+> 
 > >    - Add info to reserved_mem array
 > >
->
-> thanks for your comment.
->
-> I reviewed the flow and it might be easier to count the
-> nodes and setup array first:
->
-> for each reserved node:
->     - count number of nodes
->
-> Alloc array using memblock_alloc
->
->
-> for each reserved node:
->    - call memblock_reserve
-
-The order here is wrong. It is important that you reserve the memory
-blocks before doing any allocations.
-
->    - Add info to reserved_mem array
->
-> What do you think?
->
-> > Rob
->
->
+> > What do you think?
+> >
+> > > Rob
+> >
+> >
