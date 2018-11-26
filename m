@@ -1,148 +1,80 @@
-From: Nicolas Boichat <drinkcat@chromium.org>
-Subject: Re: [PATCH v2] mmc: mediatek: add MT8183 SDIO driver support
-Date: Mon, 26 Nov 2018 19:47:10 +0800
-Message-ID: <CANMq1KCO7tUGpXBR6x8cWiVd+5if2sPxU5N9J2aiMtuWuff3eg@mail.gmail.com>
-References: <1542873780-13911-1-git-send-email-jjian.zhou@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [v5, PATCH 2/2] dt-binding: mediatek-dwmac: add binding document
+ for MediaTek MT2712 DWMAC
+Date: Mon, 26 Nov 2018 15:46:26 -0600
+Message-ID: <20181126214626.GA13830@bogus>
+References: <1542882521-18874-1-git-send-email-biao.huang@mediatek.com>
+ <1542882521-18874-3-git-send-email-biao.huang@mediatek.com>
+ <20181122151932.GD15403@lunn.ch>
+ <1542936676.24219.66.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1542873780-13911-1-git-send-email-jjian.zhou@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1542936676.24219.66.camel@mhfsdcap03>
 Sender: linux-kernel-owner@vger.kernel.org
-To: jjian.zhou@mediatek.com
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chaotian Jing <chaotian.jing@mediatek.com>, ryder.lee@mediatek.com, sean.wang@mediatek.com, linux-mmc@vger.kernel.org, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, lkml <linux-kernel@vger.kernel.org>, yong.mao@mediatek.com, Hsin-Yi Wang <hsinyi@chromium.org>
+To: biao huang <biao.huang@mediatek.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, davem@davemloft.net, honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, joabreu@synopsys.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Nov 22, 2018 at 4:03 PM Jjian Zhou <jjian.zhou@mediatek.com> wrote:
->
-> MT8183 need SDIO driver. So it need add new code
-> to support it.
+On Fri, Nov 23, 2018 at 09:31:16AM +0800, biao huang wrote:
+> Dear Andrew,
+> 
+> 	Thanks for you remind.
+> 
+> 	Sincerely, I respect any comment from any reviewer. If I didn't reply
+> for any comment, really sorry for that.
+> 
+> 	As to this "tx-delay" issue, the following reply in v3 maybe ignored.
+> 	https://lkml.org/lkml/2018/11/19/158
+> 
+> 	"the delay time in mediatek dwmac design is not so accurate,
+> 	the current mt2712 and the following ICs will not use the
+> 	same delay design, but will use stages to indicate different
+> 	delay time.
+> 	so maybe "mediatek.tx-delay" represent the delay stage is a
+> 	good choice"
+> 
+> 	And to make it clearer here.
+> 
+> 	In mt2712, there are two delay macro circuit: named fine-tune and
+> coarse-tune.
+> 	a. fine-tune, 170+/-50ps per stage, total 32 stages
+> 	b. coarse-tune, 0.55+/-0.2ns per stage, total 32 stages
+> 	If we only consider mt2712, delay in fine-tune select a integer
+> multiple of 170ps, delay in coarse-tune select a integer multiple of
+> 550ps, for stage 0~31, the delay in fine-tune will not have the same
+> value with that in coarse-tune.
+> 	OK, It seems the property "fine-tune" can be eliminated .
+> 
+> 	But the following ic will not have the same accuracy as mt2712,
+> and maybe will not have two delay macro circuit to be selected.
 
-The description does not seem to match what is going on below: I don't
-see anything that is obviously MT8183-specific. At first glance, this
-seems like a patch that makes it possible to enable MMC_CAP_SDIO_IRQ
-("cap-sdio-irq" dt property).
+New IC will have new compatible string then. If it is different, then 
+likely these properties would have to change or have different meaning 
+unless you use time.
 
-Can you describe in more detail what is going on here?
+> 	1. assume two delay macro circuit in the following ic,
+> 	fine-tune, 100ps per stage, coarse-tune, 0.55ns per stage,
+> 	if we want delay 2.2ns, fine-tune will get a 22, and coarse-tune get a
+> 4. We can't distinguish which delay macro we are choosing.
 
-> Signed-off-by: Jjian Zhou <jjian.zhou@mediatek.com>
-> Signed-off-by: Yong mao <yong.mao@mediatek.com>
-> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
-> ---
->  drivers/mmc/host/mtk-sd.c | 51 ++++++++++++++++++++++++++++++++++++++++++++---
->  1 file changed, 48 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 6334cc7..da2a047 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -1114,6 +1114,7 @@ static void msdc_start_command(struct msdc_host *host,
->                 struct mmc_request *mrq, struct mmc_command *cmd)
->  {
->         u32 rawcmd;
-> +       unsigned long flags;
->
->         WARN_ON(host->cmd);
->         host->cmd = cmd;
-> @@ -1131,7 +1132,12 @@ static void msdc_start_command(struct msdc_host *host,
->         cmd->error = 0;
->         rawcmd = msdc_cmd_prepare_raw_cmd(host, mrq, cmd);
->
-> +       if (host->mmc->caps & MMC_CAP_SDIO_IRQ)
-> +               spin_lock_irqsave(&host->lock, flags);
->         sdr_set_bits(host->base + MSDC_INTEN, cmd_ints_mask);
-> +       if (host->mmc->caps & MMC_CAP_SDIO_IRQ)
-> +               spin_unlock_irqrestore(&host->lock, flags);
-> +
->         writel(cmd->arg, host->base + SDC_ARG);
->         writel(rawcmd, host->base + SDC_CMD);
->  }
-> @@ -1351,6 +1357,27 @@ static void msdc_request_timeout(struct work_struct *work)
->         }
->  }
->
-> +static void msdc_enable_sdio_irq(struct mmc_host *mmc, int enb)
-> +{
-> +       unsigned long flags;
-> +       struct msdc_host *host = mmc_priv(mmc);
-> +
-> +       if (enb)
-> +               pm_runtime_get_sync(host->dev);
-> +
-> +       spin_lock_irqsave(&host->lock, flags);
-> +       if (enb)
-> +               sdr_set_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
-> +       else
-> +               sdr_clr_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
-> +       spin_unlock_irqrestore(&host->lock, flags);
-> +
-> +       if (!enb) {
-> +               pm_runtime_mark_last_busy(host->dev);
-> +               pm_runtime_put_autosuspend(host->dev);
-> +       }
-> +}
-> +
->  static irqreturn_t msdc_irq(int irq, void *dev_id)
->  {
->         struct msdc_host *host = (struct msdc_host *) dev_id;
-> @@ -1373,7 +1400,12 @@ static irqreturn_t msdc_irq(int irq, void *dev_id)
->                 data = host->data;
->                 spin_unlock_irqrestore(&host->lock, flags);
->
-> -               if (!(events & event_mask))
-> +               if ((events & event_mask) & MSDC_INT_SDIOIRQ) {
-> +                       msdc_enable_sdio_irq(host->mmc, 0);
-> +                       sdio_signal_irq(host->mmc);
-> +               }
-> +
-> +               if (!(events & (event_mask & ~MSDC_INT_SDIOIRQ)))
->                         break;
->
->                 if (!mrq) {
-> @@ -1493,8 +1525,11 @@ static void msdc_init_hw(struct msdc_host *host)
->          */
->         sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIO);
->
-> -       /* disable detect SDIO device interrupt function */
-> -       sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
-> +       /* Config SDIO device detect interrupt function */
-> +       if (host->mmc->caps & MMC_CAP_SDIO_IRQ)
-> +               sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
-> +       else
-> +               sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
->
->         /* Configure to default data timeout */
->         sdr_set_field(host->base + SDC_CFG, SDC_CFG_DTOC, 3);
-> @@ -2013,6 +2048,11 @@ static void msdc_hw_reset(struct mmc_host *mmc)
->         sdr_clr_bits(host->base + EMMC_IOCON, 1);
->  }
->
-> +static void msdc_ack_sdio_irq(struct mmc_host *mmc)
-> +{
-> +       msdc_enable_sdio_irq(mmc, 1);
-> +}
-> +
->  static const struct mmc_host_ops mt_msdc_ops = {
->         .post_req = msdc_post_req,
->         .pre_req = msdc_pre_req,
-> @@ -2020,6 +2060,8 @@ static void msdc_hw_reset(struct mmc_host *mmc)
->         .set_ios = msdc_ops_set_ios,
->         .get_ro = mmc_gpio_get_ro,
->         .get_cd = mmc_gpio_get_cd,
-> +       .enable_sdio_irq = msdc_enable_sdio_irq,
-> +       .ack_sdio_irq = msdc_ack_sdio_irq,
->         .start_signal_voltage_switch = msdc_ops_switch_volt,
->         .card_busy = msdc_card_busy,
->         .execute_tuning = msdc_execute_tuning,
-> @@ -2147,6 +2189,9 @@ static int msdc_drv_probe(struct platform_device *pdev)
->         else
->                 mmc->f_min = DIV_ROUND_UP(host->src_clk_freq, 4 * 4095);
->
-> +       if (mmc->caps & MMC_CAP_SDIO_IRQ)
-> +               mmc->caps2 |= MMC_CAP2_SDIO_IRQ_NOTHREAD;
-> +
->         mmc->caps |= MMC_CAP_ERASE | MMC_CAP_CMD23;
->         /* MMC core transfer sizes tunable parameters */
->         mmc->max_segs = MAX_BD_NUM;
-> --
-> 1.9.1
->
+Why wouldn't you just choose fine-tune for anything less than the max 
+range (3200ps in this example) and course for greater than 3100ps.
+
+> 	2. assume only one delay macro circuit is used, a similar case as 1
+> will also increase the complexity of driver.
+> 	Then, we need define more flag property to know which delay macro we
+> are handling.
+> 
+> 	The common things for all delay macro circuit in MediaTek mac design is
+> the stages, not the accuracy. so if we maintain stage info in "mediatek,
+> tx-delay", we only need care which stage we should choose.
+> And for each IC, we will recommend a best stage as a candidate.
+
+What if you had a 3rd delay circuit?
+
+> 	Above is my personal opinion, may be my understanding is wrong,
+> welcome for further discussion.
+> 
+> 	Thanks a lot.
