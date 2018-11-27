@@ -1,53 +1,74 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v2 0/1] add SPI driver support for mt7629
-Date: Tue, 27 Nov 2018 11:43:24 +0000
-Message-ID: <20181127114324.GA3206@sirena.org.uk>
-References: <1543285790-11379-1-git-send-email-leilk.liu@mediatek.com>
+From: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
+Subject: Re: [PATCH 0/9] iommu: clean up/remove modular stuff from non-modules.
+Date: Tue, 27 Nov 2018 09:39:12 -0500
+Message-ID: <20181127143912.GF14659@windriver.com>
+References: <1543271498-28966-1-git-send-email-paul.gortmaker@windriver.com>
+	<20181127101156.GA12298@8bytes.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="RnlQjJ0d97Da+TV1"
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1543285790-11379-1-git-send-email-leilk.liu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Leilk Liu <leilk.liu@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, ryder.lee@mediatek.com
+In-Reply-To: <20181127101156.GA12298-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Stepan Moskovchenko <stepanm-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Hiroshi Doyu <hdoyu-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+[Re: [PATCH 0/9] iommu: clean up/remove modular stuff from non-modules.] On 27/11/2018 (Tue 11:11) Joerg Roedel wrote:
 
---RnlQjJ0d97Da+TV1
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> Hi Paul,
+> 
+> thanks for your cleanup!
+> 
+> The iommu-tree uses another rule for the subject line of patches. Can
+> you please resend with correct subject lines? See below for what is
+> used.
 
-On Tue, Nov 27, 2018 at 10:29:49AM +0800, Leilk Liu wrote:
-> From cf719ac350c36cb58e2013b58f73ad04f6981384 Mon Sep 17 00:00:00 2001
-> From: Leilk Liu <leilk.liu@mediatek.com>
-> Date: Tue, 27 Nov 2018 10:18:30 +0800
-> Subject: [PATCH v2 0/1] add SPI driver support for mt7629
->=20
-> v2:
-> remove "mediatek,mt7629-spi" compatible according Matthias's advice.
+Sure - I'll wait another day or two in case anyone on the Cc sends in
+some additional Acks.
 
-Please don't send cover letters for single patches, if there is anything
-that needs saying put it in the changelog of the patch or after the ---
-if it's administrative stuff.  This reduces mail volume and ensures that=20
-any important information is recorded in the changelog rather than being
-lost.=20
+Thanks,
+Paul.
+--
 
---RnlQjJ0d97Da+TV1
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlv9LdsACgkQJNaLcl1U
-h9DaMQf+M5cu0Zb2/dENEP6o5v7mVH7OBjhuL8YgALsv8xX+mjDdgGbEsY6Y3EzR
-EWNY63wGZNCCm5Z043Tus5ydXXjYMWTpy5EXSNRk5tH1B97jTxUNMEBHX9qjWvQq
-QqVkactN22X6g2zYOfl/cJ1FlCnENgriobKXbWlhmkuA02qJtVjL/o7WrwFETNZp
-F37eUSc1/5txuMl4o7jJpg/8eB0VtaHtDqDrN7lFc0aHIDlPlIUFtDPWkA0eDYx9
-zcRgnRdoqhG2VMZefG+KTXJJaRlOE5RANRQEbCffpLZDIFYLPThAhM4GdhiRmup1
-RMDHEjOcgQX4wEsCnMvm0db4JIMDNg==
-=eCFa
------END PGP SIGNATURE-----
-
---RnlQjJ0d97Da+TV1--
+> 
+> The general format is:
+> 
+> 	iommu/<driver>: _C_apital letter starting subject
+> 
+> Please also collect the Acks you get and add them to the patches before
+> the resend.
+> 
+> On Mon, Nov 26, 2018 at 05:31:29PM -0500, Paul Gortmaker wrote:
+> > Paul Gortmaker (9):
+> >   iommu: audit and remove any unnecessary uses of module.h
+> Fine.
+> >   iommu: rockchip: make it explicitly non-modular
+> 	iommu/rockchip: Make it explicitly non-modular
+> >   iommu: msm_iommu: make it explicitly non-modular
+> 	iommu/msm: Make it explicitly non-modular
+> >   iommu: mtk_iommu: make it explicitly non-modular
+> 	iommu/mediatek: Make it explicitly non-modular
+> >   iommu: ipmmu-vmsa: make it explicitly non-modular
+> 	iommu/ipmmu-vmsa: Make it explicitly non-modular
+> >   iommu: qcom_iommu: make it explicitly non-modular
+> 	iommu/qcom: Make it explicitly non-modular
+> >   iommu: tegra-gart: make it explicitly non-modular
+> 	iommu/tegra: Make it explicitly non-modular
+> >   iommu: arm-smmu: make it explicitly non-modular
+> 	iommu/arm-smmu: Make arm-smmu explicitly non-modular
+> >   iommu: arm-smmu-v3: make it explicitly non-modular
+> 	iommu/arm-smmu: Make arm-smmu-v3 explicitly non-modular
+> 
+> Thanks a lot,
+> 
+>        Joerg
