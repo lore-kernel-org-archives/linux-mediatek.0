@@ -1,35 +1,91 @@
-From: Leilk Liu <leilk.liu@mediatek.com>
-Subject: [PATCH v2 1/1] spi: mediatek: Add bindings for mediatek MT7629 soc platform
-Date: Tue, 27 Nov 2018 10:29:50 +0800
-Message-ID: <1543285790-11379-2-git-send-email-leilk.liu@mediatek.com>
-References: <1543285790-11379-1-git-send-email-leilk.liu@mediatek.com>
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+Subject: [PATCH v2 07/11] clk: mediatek: Add flags support for mtk_gate data
+Date: Tue, 27 Nov 2018 11:42:50 +0800
+Message-ID: <20181127034254.24721-9-weiyi.lu@mediatek.com>
+References: <20181127034254.24721-1-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1543285790-11379-1-git-send-email-leilk.liu@mediatek.com>
+In-Reply-To: <20181127034254.24721-1-weiyi.lu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, ryder.lee@mediatek.com, Leilk Liu <leilk.liu@mediatek.com>
+To: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, Weiyi Lu <weiyi.lu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds a DT binding documentation for the MT7629 soc.
+On some Mediatek platforms, there are critical clocks of
+clock gate type.
+To register clock gate with flags CLK_IS_CRITICAL,
+we need to add the flags field in mtk_gate data and register APIs.
 
-Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
+Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- .../devicetree/bindings/spi/spi-mt65xx.txt         |    1 +
- 1 file changed, 1 insertion(+)
+ drivers/clk/mediatek/clk-gate.c | 5 +++--
+ drivers/clk/mediatek/clk-gate.h | 3 ++-
+ drivers/clk/mediatek/clk-mtk.c  | 3 ++-
+ drivers/clk/mediatek/clk-mtk.h  | 1 +
+ 4 files changed, 8 insertions(+), 4 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-index 7940940..69c3567 100644
---- a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-+++ b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-@@ -6,6 +6,7 @@ Required properties:
-     - mediatek,mt2712-spi: for mt2712 platforms
-     - mediatek,mt6589-spi: for mt6589 platforms
-     - mediatek,mt7622-spi: for mt7622 platforms
-+    - "mediatek,mt7629-spi", "mediatek,mt7622-spi": for mt7629 platforms
-     - mediatek,mt8135-spi: for mt8135 platforms
-     - mediatek,mt8173-spi: for mt8173 platforms
-     - mediatek,mt8183-spi: for mt8183 platforms
+diff --git a/drivers/clk/mediatek/clk-gate.c b/drivers/clk/mediatek/clk-gate.c
+index 934bf0e45e26..85daf826619a 100644
+--- a/drivers/clk/mediatek/clk-gate.c
++++ b/drivers/clk/mediatek/clk-gate.c
+@@ -157,7 +157,8 @@ struct clk *mtk_clk_register_gate(
+ 		int clr_ofs,
+ 		int sta_ofs,
+ 		u8 bit,
+-		const struct clk_ops *ops)
++		const struct clk_ops *ops,
++		unsigned long flags)
+ {
+ 	struct mtk_clk_gate *cg;
+ 	struct clk *clk;
+@@ -168,7 +169,7 @@ struct clk *mtk_clk_register_gate(
+ 		return ERR_PTR(-ENOMEM);
+ 
+ 	init.name = name;
+-	init.flags = CLK_SET_RATE_PARENT;
++	init.flags = flags | CLK_SET_RATE_PARENT;
+ 	init.parent_names = parent_name ? &parent_name : NULL;
+ 	init.num_parents = parent_name ? 1 : 0;
+ 	init.ops = ops;
+diff --git a/drivers/clk/mediatek/clk-gate.h b/drivers/clk/mediatek/clk-gate.h
+index 72ef89b3ad7b..9f766dfe1d57 100644
+--- a/drivers/clk/mediatek/clk-gate.h
++++ b/drivers/clk/mediatek/clk-gate.h
+@@ -47,6 +47,7 @@ struct clk *mtk_clk_register_gate(
+ 		int clr_ofs,
+ 		int sta_ofs,
+ 		u8 bit,
+-		const struct clk_ops *ops);
++		const struct clk_ops *ops,
++		unsigned long flags);
+ 
+ #endif /* __DRV_CLK_GATE_H */
+diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
+index 9c0ae4278a94..35359e5397c7 100644
+--- a/drivers/clk/mediatek/clk-mtk.c
++++ b/drivers/clk/mediatek/clk-mtk.c
+@@ -130,7 +130,8 @@ int mtk_clk_register_gates(struct device_node *node,
+ 				gate->regs->set_ofs,
+ 				gate->regs->clr_ofs,
+ 				gate->regs->sta_ofs,
+-				gate->shift, gate->ops);
++				gate->shift, gate->ops,
++				gate->flags);
+ 
+ 		if (IS_ERR(clk)) {
+ 			pr_err("Failed to register clk %s: %ld\n",
+diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+index 11b5517903d0..928905496c4b 100644
+--- a/drivers/clk/mediatek/clk-mtk.h
++++ b/drivers/clk/mediatek/clk-mtk.h
+@@ -158,6 +158,7 @@ struct mtk_gate {
+ 	const struct mtk_gate_regs *regs;
+ 	int shift;
+ 	const struct clk_ops *ops;
++	unsigned long flags;
+ };
+ 
+ int mtk_clk_register_gates(struct device_node *node,
 -- 
-1.7.9.5
+2.18.0
