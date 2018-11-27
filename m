@@ -1,105 +1,95 @@
 From: Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: [PATCH v2 02/11] clk: mediatek: add new member to mtk_pll_data
-Date: Tue, 27 Nov 2018 11:42:45 +0800
-Message-ID: <20181127034254.24721-4-weiyi.lu@mediatek.com>
+Subject: [PATCH v2 03/11] clk: mediatek: Disable tuner_en before change PLL rate
+Date: Tue, 27 Nov 2018 11:42:46 +0800
+Message-ID: <20181127034254.24721-5-weiyi.lu@mediatek.com>
 References: <20181127034254.24721-1-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20181127034254.24721-1-weiyi.lu@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Sender: linux-kernel-owner@vger.kernel.org
 To: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>, linux-mediatek@lists.infradead.org, Owen Chen <owen.chen@mediatek.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, Weiyi Lu <weiyi.lu@mediatek.com>, Owen Chen <owen.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
 From: Owen Chen <owen.chen@mediatek.com>
 
-1. pcwibits: The integer bits of pcw for plls is extend to 8 bits,
-   add a variable to indicate this change and
-   backward-compatible.
-2. fmin: The pll freqency lower-bound is vary from 1GMhz to
-   1.5Ghz, add a variable to indicate platform-dependent.
+PLLs with tuner_en bit, such as APLL1, need to disable
+tuner_en before apply new frequency settings, or the new frequency
+settings (pcw) will not be applied.
+The tuner_en bit will be disabled during changing PLL rate
+and be restored after new settings applied.
 
 Signed-off-by: Owen Chen <owen.chen@mediatek.com>
-Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- drivers/clk/mediatek/clk-mtk.h |  2 ++
- drivers/clk/mediatek/clk-pll.c | 12 +++++++++---
- 2 files changed, 11 insertions(+), 3 deletions(-)
+ drivers/clk/mediatek/clk-pll.c | 33 +++++++++++++++++++++++++++++++--
+ 1 file changed, 31 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-index f83c2bbb677e..11b5517903d0 100644
---- a/drivers/clk/mediatek/clk-mtk.h
-+++ b/drivers/clk/mediatek/clk-mtk.h
-@@ -214,8 +214,10 @@ struct mtk_pll_data {
- 	unsigned int flags;
- 	const struct clk_ops *ops;
- 	u32 rst_bar_mask;
-+	unsigned long fmin;
- 	unsigned long fmax;
- 	int pcwbits;
-+	int pcwibits;
- 	uint32_t pcw_reg;
- 	int pcw_shift;
- 	const struct mtk_pll_div_table *div_table;
 diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-index f54e4015b0b1..1db161aced31 100644
+index 1db161aced31..81400601f107 100644
 --- a/drivers/clk/mediatek/clk-pll.c
 +++ b/drivers/clk/mediatek/clk-pll.c
-@@ -32,6 +32,8 @@
+@@ -27,7 +27,7 @@
+ #define CON0_BASE_EN		BIT(0)
+ #define CON0_PWR_ON		BIT(0)
+ #define CON0_ISO_EN		BIT(1)
+-#define CON0_PCW_CHG		BIT(31)
++#define CON1_PCW_CHG		BIT(31)
+ 
  #define AUDPLL_TUNER_EN		BIT(31)
  
- #define POSTDIV_MASK		0x7
+@@ -97,9 +97,31 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
+ {
+ 	u32 con1, val;
+ 	int pll_en;
++	u32 tuner_en = 0;
++	u32 tuner_en_mask;
++	void __iomem *tuner_en_addr = NULL;
+ 
+ 	pll_en = readl(pll->base_addr + REG_CON0) & CON0_BASE_EN;
+ 
++	/* disable tuner */
++	if (pll->tuner_en_addr) {
++		tuner_en_addr = pll->tuner_en_addr;
++		tuner_en_mask = BIT(pll->data->tuner_en_bit);
++	} else if (pll->tuner_addr) {
++		tuner_en_addr = pll->tuner_addr;
++		tuner_en_mask = AUDPLL_TUNER_EN;
++	}
 +
-+/* default 7 bits integer, can be overridden with pcwibits. */
- #define INTEGER_BITS		7
++	if (tuner_en_addr) {
++		val = readl(tuner_en_addr);
++		tuner_en = val & tuner_en_mask;
++
++		if (tuner_en) {
++			val &= ~tuner_en_mask;
++			writel(val, tuner_en_addr);
++		}
++	}
++
+ 	/* set postdiv */
+ 	val = readl(pll->pd_addr);
+ 	val &= ~(POSTDIV_MASK << pll->data->pd_shift);
+@@ -120,12 +142,19 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
+ 	con1 = readl(pll->base_addr + REG_CON1);
  
- /*
-@@ -69,11 +71,13 @@ static unsigned long __mtk_pll_recalc_rate(struct mtk_clk_pll *pll, u32 fin,
- {
- 	int pcwbits = pll->data->pcwbits;
- 	int pcwfbits;
-+	int ibits;
- 	u64 vco;
- 	u8 c = 0;
+ 	if (pll_en)
+-		con1 |= CON0_PCW_CHG;
++		con1 |= CON1_PCW_CHG;
  
- 	/* The fractional part of the PLL divider. */
--	pcwfbits = pcwbits > INTEGER_BITS ? pcwbits - INTEGER_BITS : 0;
-+	ibits = pll->data->pcwibits ? pll->data->pcwibits : INTEGER_BITS;
-+	pcwfbits = pcwbits > ibits ? pcwbits - ibits : 0;
+ 	writel(con1, pll->base_addr + REG_CON1);
+ 	if (pll->tuner_addr)
+ 		writel(con1 + 1, pll->tuner_addr);
  
- 	vco = (u64)fin * pcw;
- 
-@@ -138,9 +142,10 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
- static void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
- 		u32 freq, u32 fin)
- {
--	unsigned long fmin = 1000 * MHZ;
-+	unsigned long fmin = pll->data->fmin ? pll->data->fmin : (1000 * MHZ);
- 	const struct mtk_pll_div_table *div_table = pll->data->div_table;
- 	u64 _pcw;
-+	int ibits;
- 	u32 val;
- 
- 	if (freq > pll->data->fmax)
-@@ -164,7 +169,8 @@ static void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
- 	}
- 
- 	/* _pcw = freq * postdiv / fin * 2^pcwfbits */
--	_pcw = ((u64)freq << val) << (pll->data->pcwbits - INTEGER_BITS);
-+	ibits = pll->data->pcwibits ? pll->data->pcwibits : INTEGER_BITS;
-+	_pcw = ((u64)freq << val) << (pll->data->pcwbits - ibits);
- 	do_div(_pcw, fin);
- 
- 	*pcw = (u32)_pcw;
++	/* restore tuner_en */
++	if (tuner_en_addr && tuner_en) {
++		val = readl(tuner_en_addr);
++		val |= tuner_en_mask;
++		writel(val, tuner_en_addr);
++	}
++
+ 	if (pll_en)
+ 		udelay(20);
+ }
 -- 
 2.18.0
