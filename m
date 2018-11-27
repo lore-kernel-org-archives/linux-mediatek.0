@@ -1,74 +1,59 @@
-From: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
-Subject: Re: [PATCH 0/9] iommu: clean up/remove modular stuff from non-modules.
-Date: Tue, 27 Nov 2018 09:39:12 -0500
-Message-ID: <20181127143912.GF14659@windriver.com>
-References: <1543271498-28966-1-git-send-email-paul.gortmaker@windriver.com>
-	<20181127101156.GA12298@8bytes.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20181127101156.GA12298-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Stepan Moskovchenko <stepanm-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Hiroshi Doyu <hdoyu-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+From: Nicholas Mc Guire <hofrat@osadl.org>
+Subject: [PATCH V2] gpio: mt7621: pass mediatek_gpio_bank_probe() failure up the stack
+Date: Tue, 27 Nov 2018 18:00:18 +0100
+Message-ID: <1543338018-708-1-git-send-email-hofrat@osadl.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Bartosz Golaszewski <bgolaszewski@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Nicholas Mc Guire <hofrat@osadl.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-[Re: [PATCH 0/9] iommu: clean up/remove modular stuff from non-modules.] On 27/11/2018 (Tue 11:11) Joerg Roedel wrote:
+The error cases of mediatek_gpio_bank_probe() would go unnoticed (except
+for the dev_err() messages). The probe function should return an error
+if one of the banks failed to initialize properly indicated by
+not returning non-0.
 
-> Hi Paul,
-> 
-> thanks for your cleanup!
-> 
-> The iommu-tree uses another rule for the subject line of patches. Can
-> you please resend with correct subject lines? See below for what is
-> used.
+Signed-off-by: Nicholas Mc Guire <hofrat@osadl.org>
+Fixes: 4ba9c3afda41 ("gpio: mt7621: Add a driver for MT7621")
+---
 
-Sure - I'll wait another day or two in case anyone on the Cc sends in
-some additional Acks.
+V2: A logic error spoted by Sean Wang <sean.wang@kernel.org> the
+    success case is 0 and thus returning early should be on on 
+    ret!=0 and not on !ret - thanks for catching this stupid mistake !
 
-Thanks,
-Paul.
---
+Patch was compile tested with: omega2p_defconfig, SOC_MT7621=y,
+GPIOLIB=y, GPIO_MT7621=y
 
-> 
-> The general format is:
-> 
-> 	iommu/<driver>: _C_apital letter starting subject
-> 
-> Please also collect the Acks you get and add them to the patches before
-> the resend.
-> 
-> On Mon, Nov 26, 2018 at 05:31:29PM -0500, Paul Gortmaker wrote:
-> > Paul Gortmaker (9):
-> >   iommu: audit and remove any unnecessary uses of module.h
-> Fine.
-> >   iommu: rockchip: make it explicitly non-modular
-> 	iommu/rockchip: Make it explicitly non-modular
-> >   iommu: msm_iommu: make it explicitly non-modular
-> 	iommu/msm: Make it explicitly non-modular
-> >   iommu: mtk_iommu: make it explicitly non-modular
-> 	iommu/mediatek: Make it explicitly non-modular
-> >   iommu: ipmmu-vmsa: make it explicitly non-modular
-> 	iommu/ipmmu-vmsa: Make it explicitly non-modular
-> >   iommu: qcom_iommu: make it explicitly non-modular
-> 	iommu/qcom: Make it explicitly non-modular
-> >   iommu: tegra-gart: make it explicitly non-modular
-> 	iommu/tegra: Make it explicitly non-modular
-> >   iommu: arm-smmu: make it explicitly non-modular
-> 	iommu/arm-smmu: Make arm-smmu explicitly non-modular
-> >   iommu: arm-smmu-v3: make it explicitly non-modular
-> 	iommu/arm-smmu: Make arm-smmu-v3 explicitly non-modular
-> 
-> Thanks a lot,
-> 
->        Joerg
+Patch is against 4.20-rc3 (localversion-next is next-20181121)
+
+ drivers/gpio/gpio-mt7621.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpio/gpio-mt7621.c b/drivers/gpio/gpio-mt7621.c
+index 1ec95bc..68fca8b 100644
+--- a/drivers/gpio/gpio-mt7621.c
++++ b/drivers/gpio/gpio-mt7621.c
+@@ -297,6 +297,7 @@ mediatek_gpio_probe(struct platform_device *pdev)
+ 	struct device_node *np = dev->of_node;
+ 	struct mtk *mtk;
+ 	int i;
++	int ret;
+ 
+ 	mtk = devm_kzalloc(dev, sizeof(*mtk), GFP_KERNEL);
+ 	if (!mtk)
+@@ -311,8 +312,11 @@ mediatek_gpio_probe(struct platform_device *pdev)
+ 	platform_set_drvdata(pdev, mtk);
+ 	mediatek_gpio_irq_chip.name = dev_name(dev);
+ 
+-	for (i = 0; i < MTK_BANK_CNT; i++)
+-		mediatek_gpio_bank_probe(dev, np, i);
++	for (i = 0; i < MTK_BANK_CNT; i++) {
++		ret = mediatek_gpio_bank_probe(dev, np, i);
++		if (ret)
++			return ret;
++	}
+ 
+ 	return 0;
+ }
+-- 
+2.1.4
