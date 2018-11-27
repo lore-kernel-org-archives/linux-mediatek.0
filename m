@@ -1,78 +1,132 @@
-From: Sean Wang <sean.wang@kernel.org>
-Subject: Re: [PATCH V2] gpio: mt7621: pass mediatek_gpio_bank_probe() failure
- up the stack
-Date: Tue, 27 Nov 2018 12:38:29 -0800
-Message-ID: <CAGp9Lzp=D72LZCk-h5XU9V2DePLHKTRCmioKEjZRjHGW6P_y6g@mail.gmail.com>
-References: <1543338018-708-1-git-send-email-hofrat@osadl.org>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Subject: Re: [PATCH v2 03/11] clk: mediatek: Disable tuner_en before change
+ PLL rate
+Date: Wed, 28 Nov 2018 07:54:00 +0800
+Message-ID: <CANMq1KB4tt9jdmE+LJXfji=QXC9-6wuhXWjJPkpNfo6hEMXH=A@mail.gmail.com>
+References: <20181127034254.24721-1-weiyi.lu@mediatek.com> <20181127034254.24721-5-weiyi.lu@mediatek.com>
+ <CAGp9Lzro5YHCYqzOWFJJa4g75odf6yK52cean_aS3p2STOtJYg@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1543338018-708-1-git-send-email-hofrat@osadl.org>
+In-Reply-To: <CAGp9Lzro5YHCYqzOWFJJa4g75odf6yK52cean_aS3p2STOtJYg@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: hofrat@osadl.org
-Cc: Linus Walleij <linus.walleij@linaro.org>, sergio.paracuellos@gmail.com, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, bgolaszewski@baylibre.com, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+To: sean.wang@kernel.org
+Cc: Weiyi Lu <weiyi.lu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, sboyd@codeaurora.org, Rob Herring <robh@kernel.org>, jamesjj.liao@mediatek.com, srv_heupstream@mediatek.com, lkml <linux-kernel@vger.kernel.org>, Fan Chen <fan.chen@mediatek.com>, linux-mediatek@lists.infradead.org, owen.chen@mediatek.com, linux-clk@vger.kernel.org, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Nicholas Mc Guire <hofrat@osadl.org> =E6=96=BC 2018=E5=B9=B411=E6=9C=8827=
-=E6=97=A5 =E9=80=B1=E4=BA=8C =E4=B8=8A=E5=8D=889:07=E5=AF=AB=E9=81=93=EF=BC=
-=9A
+On Wed, Nov 28, 2018 at 4:37 AM Sean Wang <sean.wang@kernel.org> wrote:
 >
-> The error cases of mediatek_gpio_bank_probe() would go unnoticed (except
-> for the dev_err() messages). The probe function should return an error
-> if one of the banks failed to initialize properly indicated by
-> not returning non-0.
+> Weiyi Lu <weiyi.lu@mediatek.com> =E6=96=BC 2018=E5=B9=B411=E6=9C=8826=E6=
+=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=887:45=E5=AF=AB=E9=81=93=EF=BC=9A
+> >
+> > From: Owen Chen <owen.chen@mediatek.com>
+> >
+> > PLLs with tuner_en bit, such as APLL1, need to disable
+> > tuner_en before apply new frequency settings, or the new frequency
+> > settings (pcw) will not be applied.
+> > The tuner_en bit will be disabled during changing PLL rate
+> > and be restored after new settings applied.
 >
-> Signed-off-by: Nicholas Mc Guire <hofrat@osadl.org>
+> It looks like a bug fix. If so, you should add a fixes tag and even cc
+> stable tree
+>
+> >
+> > Signed-off-by: Owen Chen <owen.chen@mediatek.com>
+> > ---
+> >  drivers/clk/mediatek/clk-pll.c | 33 +++++++++++++++++++++++++++++++--
+> >  1 file changed, 31 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-=
+pll.c
+> > index 1db161aced31..81400601f107 100644
+> > --- a/drivers/clk/mediatek/clk-pll.c
+> > +++ b/drivers/clk/mediatek/clk-pll.c
+> > @@ -27,7 +27,7 @@
+> >  #define CON0_BASE_EN           BIT(0)
+> >  #define CON0_PWR_ON            BIT(0)
+> >  #define CON0_ISO_EN            BIT(1)
+> > -#define CON0_PCW_CHG           BIT(31)
+> > +#define CON1_PCW_CHG           BIT(31)
+>
+> it seems like an unnecessary change
 
-Acked-by: Sean Wang <sean.wang@kernel.org>
+Below, you have:
+con1 |=3D CON1_PCW_CHG;
 
-> Fixes: 4ba9c3afda41 ("gpio: mt7621: Add a driver for MT7621")
-> ---
+Presumably PCW_CHG is on BIT(31) of CON1(?), so I think this is a good
+change. Maybe this needs to be a separate patch, though?
+
+> >
+> >  #define AUDPLL_TUNER_EN                BIT(31)
+> >
+> > @@ -97,9 +97,31 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll=
+ *pll, u32 pcw,
+> >  {
+> >         u32 con1, val;
+> >         int pll_en;
+> > +       u32 tuner_en =3D 0;
+> > +       u32 tuner_en_mask;
+> > +       void __iomem *tuner_en_addr =3D NULL;
+> >
+> >         pll_en =3D readl(pll->base_addr + REG_CON0) & CON0_BASE_EN;
+> >
+> > +       /* disable tuner */
 >
-> V2: A logic error spoted by Sean Wang <sean.wang@kernel.org> the
->     success case is 0 and thus returning early should be on on
->     ret!=3D0 and not on !ret - thanks for catching this stupid mistake !
+> similar code pieces are ready on mtk_pll_[un]prepare. maybe we can add
+> common tuner operations for them to reuse.
 >
-> Patch was compile tested with: omega2p_defconfig, SOC_MT7621=3Dy,
-> GPIOLIB=3Dy, GPIO_MT7621=3Dy
+> > +       if (pll->tuner_en_addr) {
+> > +               tuner_en_addr =3D pll->tuner_en_addr;
+> > +               tuner_en_mask =3D BIT(pll->data->tuner_en_bit);
+> > +       } else if (pll->tuner_addr) {
+> > +               tuner_en_addr =3D pll->tuner_addr;
+> > +               tuner_en_mask =3D AUDPLL_TUNER_EN;
+> > +       }
+> > +
+> > +       if (tuner_en_addr) {
+> > +               val =3D readl(tuner_en_addr);
+> > +               tuner_en =3D val & tuner_en_mask;
+> > +
+> > +               if (tuner_en) {
+> > +                       val &=3D ~tuner_en_mask;
+> > +                       writel(val, tuner_en_addr);
+> > +               }
+> > +       }
+> > +
+> >         /* set postdiv */
+> >         val =3D readl(pll->pd_addr);
+> >         val &=3D ~(POSTDIV_MASK << pll->data->pd_shift);
+> > @@ -120,12 +142,19 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_=
+pll *pll, u32 pcw,
+> >         con1 =3D readl(pll->base_addr + REG_CON1);
+> >
+> >         if (pll_en)
+> > -               con1 |=3D CON0_PCW_CHG;
+> > +               con1 |=3D CON1_PCW_CHG;
+> >
+> >         writel(con1, pll->base_addr + REG_CON1);
+> >         if (pll->tuner_addr)
+> >                 writel(con1 + 1, pll->tuner_addr);
+> >
+> > +       /* restore tuner_en */
+> > +       if (tuner_en_addr && tuner_en) {
 >
-> Patch is against 4.20-rc3 (localversion-next is next-20181121)
+> if (tuner_en) is sufficient
 >
->  drivers/gpio/gpio-mt7621.c | 8 ++++++--
->  1 file changed, 6 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/gpio/gpio-mt7621.c b/drivers/gpio/gpio-mt7621.c
-> index 1ec95bc..68fca8b 100644
-> --- a/drivers/gpio/gpio-mt7621.c
-> +++ b/drivers/gpio/gpio-mt7621.c
-> @@ -297,6 +297,7 @@ mediatek_gpio_probe(struct platform_device *pdev)
->         struct device_node *np =3D dev->of_node;
->         struct mtk *mtk;
->         int i;
-> +       int ret;
->
->         mtk =3D devm_kzalloc(dev, sizeof(*mtk), GFP_KERNEL);
->         if (!mtk)
-> @@ -311,8 +312,11 @@ mediatek_gpio_probe(struct platform_device *pdev)
->         platform_set_drvdata(pdev, mtk);
->         mediatek_gpio_irq_chip.name =3D dev_name(dev);
->
-> -       for (i =3D 0; i < MTK_BANK_CNT; i++)
-> -               mediatek_gpio_bank_probe(dev, np, i);
-> +       for (i =3D 0; i < MTK_BANK_CNT; i++) {
-> +               ret =3D mediatek_gpio_bank_probe(dev, np, i);
-> +               if (ret)
-> +                       return ret;
-> +       }
->
->         return 0;
->  }
-> --
-> 2.1.4
->
->
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> > +               val =3D readl(tuner_en_addr);
+> > +               val |=3D tuner_en_mask;
+> > +               writel(val, tuner_en_addr);
+> > +       }
+> > +
+> >         if (pll_en)
+> >                 udelay(20);
+> >  }
+> > --
+> > 2.18.0
+> >
+> >
+> > _______________________________________________
+> > Linux-mediatek mailing list
+> > Linux-mediatek@lists.infradead.org
+> > http://lists.infradead.org/mailman/listinfo/linux-mediatek
