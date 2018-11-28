@@ -1,42 +1,42 @@
-From: Leilk Liu <leilk.liu@mediatek.com>
-Subject: [PATCH v3] spi: mediatek: Add bindings for mediatek MT7629 soc platform
-Date: Wed, 28 Nov 2018 15:43:30 +0800
-Message-ID: <1543391010-23554-1-git-send-email-leilk.liu@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain
+From: "Hsin-Yi, Wang" <hsinyi@chromium.org>
+Subject: [V2] usb/mtu3: power down device ip at setup
+Date: Wed, 28 Nov 2018 17:29:53 +0800
+Message-ID: <20181128092953.41541-1-hsinyi@chromium.org>
+References: <20181128060412.630-1-hsinyi@chromium.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181128060412.630-1-hsinyi@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, ryder.lee@mediatek.com, Leilk Liu <leilk.liu@mediatek.com>
+To: linux-arm-kernel@lists.infradead.org
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds a DT binding documentation for the MT7629 soc.
+Originally, when dr_mode is USB_DR_MODE_HOST, it didn't power down device ip,
+so host ip sleep will fail at ssusb_host_disable.
 
-Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
+Power down device ip at ssusb_host_setup.
+
+
+Signed-off-by: Hsin-Yi, Wang <hsinyi@chromium.org>
 ---
-v3:
-remove cover-letter.
+ drivers/usb/mtu3/mtu3_plat.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-v2:
-remove "mediatek,mt7629-spi" compatible according Matthias's advice.
-
-v1:
-This series are based on 4.20-rc1 and provide two patches to support mt7629 IC.
----
- .../devicetree/bindings/spi/spi-mt65xx.txt         |    1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-index 7940940..69c3567 100644
---- a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-+++ b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-@@ -6,6 +6,7 @@ Required properties:
-     - mediatek,mt2712-spi: for mt2712 platforms
-     - mediatek,mt6589-spi: for mt6589 platforms
-     - mediatek,mt7622-spi: for mt7622 platforms
-+    - "mediatek,mt7629-spi", "mediatek,mt7622-spi": for mt7629 platforms
-     - mediatek,mt8135-spi: for mt8135 platforms
-     - mediatek,mt8173-spi: for mt8173 platforms
-     - mediatek,mt8183-spi: for mt8183 platforms
+diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
+index 46551f6d16fd..cdef66141e20 100644
+--- a/drivers/usb/mtu3/mtu3_plat.c
++++ b/drivers/usb/mtu3/mtu3_plat.c
+@@ -200,6 +200,12 @@ static void ssusb_ip_sw_reset(struct ssusb_mtk *ssusb)
+ 	mtu3_setbits(ssusb->ippc_base, U3D_SSUSB_IP_PW_CTRL0, SSUSB_IP_SW_RST);
+ 	udelay(1);
+ 	mtu3_clrbits(ssusb->ippc_base, U3D_SSUSB_IP_PW_CTRL0, SSUSB_IP_SW_RST);
++
++	/*
++	 * device ip is default power-on in fact
++	 * power down device ip, otherwise ip-sleep will fail
++	 */
++	mtu3_setbits(ssusb->ippc_base, U3D_SSUSB_IP_PW_CTRL2, SSUSB_IP_DEV_PDN);
+ }
+ 
+ /* ignore the error if the clock does not exist */
 -- 
-1.7.9.5
+2.18.1
