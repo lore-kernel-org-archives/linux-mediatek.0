@@ -1,108 +1,44 @@
-From: Miles Chen <miles.chen@mediatek.com>
-Subject: Re: [RFC PATCH] of: make MAX_RESERVED_REGIONS configurable
-Date: Wed, 28 Nov 2018 09:56:04 +0800
-Message-ID: <1543370164.29143.9.camel@mtkswgap22>
-References: <1542787873-8429-1-git-send-email-miles.chen@mediatek.com>
-         <CAL_JsqLGvUYQmCGXLgSO+6kFj2i87dpaTbMGbyu5oMt=eeu35A@mail.gmail.com>
-         <1542855088.15789.6.camel@mtkswgap22>
-         <CAL_Jsq+O1YDP1yiHZpcxUaFG1LYDqi74D_kEnErP+cwGDppVWQ@mail.gmail.com>
-         <1543196004.21289.1.camel@mtkswgap22>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+From: "Hsin-Yi, Wang" <hsinyi@chromium.org>
+Subject: [PATCH] usb/mtu3: power down device ip at setup
+Date: Wed, 28 Nov 2018 14:04:12 +0800
+Message-ID: <20181128060412.630-1-hsinyi@chromium.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1543196004.21289.1.camel@mtkswgap22>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Frank Rowand <frowand.list@gmail.com>, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+To: linux-arm-kernel@lists.infradead.org
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2018-11-26 at 09:33 +0800, Miles Chen wrote:
-> On Sat, 2018-11-24 at 14:56 -0600, Rob Herring wrote:
-> > On Wed, Nov 21, 2018 at 8:51 PM Miles Chen <miles.chen@mediatek.com> wrote:
-> > >
-> > > On Wed, 2018-11-21 at 10:39 -0600, Rob Herring wrote:
-> > > > On Wed, Nov 21, 2018 at 2:11 AM <miles.chen@mediatek.com> wrote:
-> > > > >
-> > > > > From: Miles Chen <miles.chen@mediatek.com>
-> > > > >
-> > > > > When we use more than 32 entries in /resered-memory,
-> > > > > there will be an error message: "not enough space all defined regions.".
-> > > > > We can increase MAX_RESERVED_REGIONS to fix this.
-> > > > >
-> > > > > commit 22f8cc6e3373 ("drivers: of: increase MAX_RESERVED_REGIONS to 32")
-> > > > > increased MAX_RESERVED_REGIONS to 32 but I'm not sure if increasing
-> > > > > MAX_RESERVED_REGIONS to 64 is suitable for everyone.
-> > > > >
-> > > > > In this RFC patch, CONFIG_MAX_OF_RESERVED_REGIONS is added and used as
-> > > > > MAX_RESERVED_REGIONS. Add a sanity test to make sure that
-> > > > > MAX_RESERVED_REGIONS is less than INIT_MEMBLOCK_REGIONS.
-> > > > > Users can configure CONFIG_MAX_OF_RESERVED_REGIONS according to their
-> > > > > need.
-> > > >
-> > > > I don't want a kconfig option for this. I think it should be dynamic instead.
-> > > >
-> > > > The current flow is like this:
-> > > >
-> > > > for each reserved node:
-> > > >   - call memblock_reserve
-> > > >   - Add info to reserved_mem array
-> > > >
-> > > > I think we should change it to:
-> > > >
-> > > > for each reserved node:
-> > > >   - call memblock_reserve
-> > > >   - count number of nodes
-> > > >
-> > > > Alloc array using memblock_alloc
-> > > >
-> > > > for each reserved node:
-> > > >    - Add info to reserved_mem array
-> > > >
-> > >
-> > > thanks for your comment.
-> > >
-> > > I reviewed the flow and it might be easier to count the
-> > > nodes and setup array first:
-> > >
-> > > for each reserved node:
-> > >     - count number of nodes
-> > >
-> > > Alloc array using memblock_alloc
-> > >
-> > >
-> > > for each reserved node:
-> > >    - call memblock_reserve
-> > 
-> > The order here is wrong. It is important that you reserve the memory
-> > blocks before doing any allocations.
-> 
-> thanks for pointing that out. You are right. I'll follow your
-> suggestion.
+Originally, when dr_mode is USB_DR_MODE_HOST, it didn't power down device ip,
+so host ip sleep will fail at ssusb_host_disable.
 
-I got a problem while implementing this change: the array allocation
-is done successfully but the kernel does not create mappings for it yet,
-so the array is not accessible. (kernel will create the mapping later in
-paging_init())
+Power down device ip at ssusb_host_setup.
 
-For example: aarch64 setup_arch()
-setup_arch()
-{
-    memblock_init(); /* early_init_fdt_scan_reserved_mem() is called */
-    paging_init();
-}
+Signed-off-by: Hsin-Yi, Wang <hsinyi@chromium.org>
+---
+ drivers/usb/mtu3/mtu3_host.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-Could you give me some advice, please?
-
-Miles
-> 
-> > 
-> > >    - Add info to reserved_mem array
-> > >
-> > > What do you think?
-> > >
-> > > > Rob
-> > >
-> > >
-> 
-> 
+diff --git a/drivers/usb/mtu3/mtu3_host.c b/drivers/usb/mtu3/mtu3_host.c
+index c871b94f3e6f..d17cf43305db 100644
+--- a/drivers/usb/mtu3/mtu3_host.c
++++ b/drivers/usb/mtu3/mtu3_host.c
+@@ -192,9 +192,17 @@ int ssusb_host_disable(struct ssusb_mtk *ssusb, bool suspend)
+ static void ssusb_host_setup(struct ssusb_mtk *ssusb)
+ {
+ 	struct otg_switch_mtk *otg_sx = &ssusb->otg_switch;
++	void __iomem *ibase = ssusb->ippc_base;
+ 
+ 	host_ports_num_get(ssusb);
+ 
++	/*
++	 * device ip is default power-on in fact
++	 * power down device ip, otherwise ip-sleep will fail
++	 */
++	if (ssusb->dr_mode == USB_DR_MODE_HOST)
++		mtu3_setbits(ibase, U3D_SSUSB_IP_PW_CTRL2, SSUSB_IP_DEV_PDN);
++
+ 	/*
+ 	 * power on host and power on/enable all ports
+ 	 * if support OTG, gadget driver will switch port0 to device mode
+-- 
+2.18.1
