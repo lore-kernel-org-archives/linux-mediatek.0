@@ -1,85 +1,42 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH] usb/mtu3: power down device ip at setup
-Date: Wed, 28 Nov 2018 15:02:56 +0800
-Message-ID: <1543388576.32173.106.camel@mhfsdcap03>
-References: <20181128060412.630-1-hsinyi@chromium.org>
-         <1543386149.32173.87.camel@mhfsdcap03>
-         <CAJMQK-joY4M-=4+XoYAC5SJUie554i_EO=7VgrkJj2JNbbDdxg@mail.gmail.com>
+From: Leilk Liu <leilk.liu@mediatek.com>
+Subject: [PATCH v3] spi: mediatek: Add bindings for mediatek MT7629 soc platform
+Date: Wed, 28 Nov 2018 15:43:30 +0800
+Message-ID: <1543391010-23554-1-git-send-email-leilk.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAJMQK-joY4M-=4+XoYAC5SJUie554i_EO=7VgrkJj2JNbbDdxg@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: linux-arm-kernel@lists.infradead.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, ryder.lee@mediatek.com, Leilk Liu <leilk.liu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-11-28 at 14:26 +0800, Hsin-Yi Wang wrote:
-> Hi Chunfeng,
-> On mt8183, We found `ip sleep failed!!!` with powerd_dbus_suspend.
-Did you enable usb device mode in BROM or LK stage? e.g. download image
-by fastboot / flashtool
+This patch adds a DT binding documentation for the MT7629 soc.
 
->  Referenced from xhci, it also power down device ip at
-> xhci_mtk_ssusb_config().
-It may happen when user downloads images by usb device in LK/BROM stage,
-but not disable it before enter kernel stage.
+Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
+---
+v3:
+remove cover-letter.
 
->  Also if dr_mode is PERIPHERAL and OTG, they both power down device ip
-> at ssusb_gadget_init().
-Yes, it tries to save power;
-> 
-> On Wed, Nov 28, 2018 at 2:22 PM Chunfeng Yun
-> <chunfeng.yun@mediatek.com> wrote:
-> 
->         Hi Hsin-Yi,
->         
->         On Wed, 2018-11-28 at 14:04 +0800, Hsin-Yi, Wang wrote:
->         > Originally, when dr_mode is USB_DR_MODE_HOST, it didn't
->         power down device ip,
->         > so host ip sleep will fail at ssusb_host_disable.
->         > 
->         > Power down device ip at ssusb_host_setup.
->         > 
->         > Signed-off-by: Hsin-Yi, Wang <hsinyi@chromium.org>
->         > ---
->         >  drivers/usb/mtu3/mtu3_host.c | 8 ++++++++
->         >  1 file changed, 8 insertions(+)
->         > 
->         > diff --git a/drivers/usb/mtu3/mtu3_host.c
->         b/drivers/usb/mtu3/mtu3_host.c
->         > index c871b94f3e6f..d17cf43305db 100644
->         > --- a/drivers/usb/mtu3/mtu3_host.c
->         > +++ b/drivers/usb/mtu3/mtu3_host.c
->         > @@ -192,9 +192,17 @@ int ssusb_host_disable(struct ssusb_mtk
->         *ssusb, bool suspend)
->         >  static void ssusb_host_setup(struct ssusb_mtk *ssusb)
->         >  {
->         >       struct otg_switch_mtk *otg_sx = &ssusb->otg_switch;
->         > +     void __iomem *ibase = ssusb->ippc_base;
->         >  
->         >       host_ports_num_get(ssusb);
->         >  
->         > +     /*
->         > +      * device ip is default power-on in fact
->         The device ip is power-off by default, no need power down it
->         here.
->         
->         On which platform did you encounter the issue?
->         
->         > +      * power down device ip, otherwise ip-sleep will fail
->         > +      */
->         > +     if (ssusb->dr_mode == USB_DR_MODE_HOST)
->         > +             mtu3_setbits(ibase, U3D_SSUSB_IP_PW_CTRL2,
->         SSUSB_IP_DEV_PDN);
->         > +
-Could you please put it in ssusb_ip_sw_reset(), after ip reset, in
-mtu3_plat.c, if it fix the issue?
+v2:
+remove "mediatek,mt7629-spi" compatible according Matthias's advice.
 
->         >       /*
->         >        * power on host and power on/enable all ports
->         >        * if support OTG, gadget driver will switch port0 to
->         device mode
->         
->         
+v1:
+This series are based on 4.20-rc1 and provide two patches to support mt7629 IC.
+---
+ .../devicetree/bindings/spi/spi-mt65xx.txt         |    1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
+index 7940940..69c3567 100644
+--- a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
++++ b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
+@@ -6,6 +6,7 @@ Required properties:
+     - mediatek,mt2712-spi: for mt2712 platforms
+     - mediatek,mt6589-spi: for mt6589 platforms
+     - mediatek,mt7622-spi: for mt7622 platforms
++    - "mediatek,mt7629-spi", "mediatek,mt7622-spi": for mt7629 platforms
+     - mediatek,mt8135-spi: for mt8135 platforms
+     - mediatek,mt8173-spi: for mt8173 platforms
+     - mediatek,mt8183-spi: for mt8183 platforms
+-- 
+1.7.9.5
