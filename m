@@ -1,42 +1,68 @@
-From: "Hsin-Yi, Wang" <hsinyi@chromium.org>
-Subject: [V3] usb/mtu3: power down device ip at setup
-Date: Wed, 28 Nov 2018 17:53:58 +0800
-Message-ID: <20181128095358.42498-1-hsinyi@chromium.org>
-References: <20181128092953.41541-1-hsinyi@chromium.org>
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "spi: mediatek: add spi support for mt7629 IC" to the spi tree
+Date: Wed, 28 Nov 2018 16:05:52 +0000 (GMT)
+Message-ID: <20181128160552.7DDA5112521B@debutante.sirena.org.uk>
+References: <1542703268-17285-3-git-send-email-leilk.liu@mediatek.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181128092953.41541-1-hsinyi@chromium.org>
+In-Reply-To: <1542703268-17285-3-git-send-email-leilk.liu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-arm-kernel@lists.infradead.org
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Leilk Liu <leilk.liu@mediatek.com>
+Cc: Mark Brown <broonie@kernel.org>Mark Brown <broonie@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, ryder.lee@mediatek.comlinux-spi@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Originally, when dr_mode is USB_DR_MODE_HOST, it didn't power down device ip,
-so host ip sleep will fail at ssusb_host_disable.
+The patch
 
-Power down device ip at ssusb_host_setup.
+   spi: mediatek: add spi support for mt7629 IC
 
-Signed-off-by: Hsin-Yi, Wang <hsinyi@chromium.org>
+has been applied to the spi tree at
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git 
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+>From 942779c6f1f899bc54332f7bb67666244f3f6d6c Mon Sep 17 00:00:00 2001
+From: Leilk Liu <leilk.liu@mediatek.com>
+Date: Tue, 20 Nov 2018 16:41:08 +0800
+Subject: [PATCH] spi: mediatek: add spi support for mt7629 IC
+
+this patch add support for mt7629 IC.
+
+Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
 ---
- drivers/usb/mtu3/mtu3_plat.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ drivers/spi/spi-mt65xx.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
-index 46551f6d16fd..792c420fd4ad 100644
---- a/drivers/usb/mtu3/mtu3_plat.c
-+++ b/drivers/usb/mtu3/mtu3_plat.c
-@@ -200,6 +200,13 @@ static void ssusb_ip_sw_reset(struct ssusb_mtk *ssusb)
- 	mtu3_setbits(ssusb->ippc_base, U3D_SSUSB_IP_PW_CTRL0, SSUSB_IP_SW_RST);
- 	udelay(1);
- 	mtu3_clrbits(ssusb->ippc_base, U3D_SSUSB_IP_PW_CTRL0, SSUSB_IP_SW_RST);
-+
-+	/*
-+	 * device ip maybe poweron in LK/BROM stage before enter kernel stage;
-+	 * power down device ip, otherwise ip-sleep will fail when works as host
-+	 * only mode
-+	 */
-+	mtu3_setbits(ssusb->ippc_base, U3D_SSUSB_IP_PW_CTRL2, SSUSB_IP_DEV_PDN);
- }
- 
- /* ignore the error if the clock does not exist */
+diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
+index 9ee1fe968a2d..0cce6f0ba824 100644
+--- a/drivers/spi/spi-mt65xx.c
++++ b/drivers/spi/spi-mt65xx.c
+@@ -150,6 +150,9 @@ static const struct of_device_id mtk_spi_of_match[] = {
+ 	{ .compatible = "mediatek,mt7622-spi",
+ 		.data = (void *)&mt7622_compat,
+ 	},
++	{ .compatible = "mediatek,mt7629-spi",
++		.data = (void *)&mt7622_compat,
++	},
+ 	{ .compatible = "mediatek,mt8135-spi",
+ 		.data = (void *)&mtk_common_compat,
+ 	},
 -- 
-2.18.1
+2.19.0.rc2
