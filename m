@@ -1,132 +1,141 @@
-From: Nicolas Boichat <drinkcat@chromium.org>
+From: Sean Wang <sean.wang@kernel.org>
 Subject: Re: [PATCH v2 03/11] clk: mediatek: Disable tuner_en before change
  PLL rate
-Date: Wed, 28 Nov 2018 07:54:00 +0800
-Message-ID: <CANMq1KB4tt9jdmE+LJXfji=QXC9-6wuhXWjJPkpNfo6hEMXH=A@mail.gmail.com>
+Date: Tue, 27 Nov 2018 16:58:57 -0800
+Message-ID: <CAGp9LzqfgLa03p-bEOQaT2qtuOEqUL3e04nDS38TbZ2-2Ohauw@mail.gmail.com>
 References: <20181127034254.24721-1-weiyi.lu@mediatek.com> <20181127034254.24721-5-weiyi.lu@mediatek.com>
- <CAGp9Lzro5YHCYqzOWFJJa4g75odf6yK52cean_aS3p2STOtJYg@mail.gmail.com>
+ <CAGp9Lzro5YHCYqzOWFJJa4g75odf6yK52cean_aS3p2STOtJYg@mail.gmail.com> <CANMq1KB4tt9jdmE+LJXfji=QXC9-6wuhXWjJPkpNfo6hEMXH=A@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAGp9Lzro5YHCYqzOWFJJa4g75odf6yK52cean_aS3p2STOtJYg@mail.gmail.com>
+In-Reply-To: <CANMq1KB4tt9jdmE+LJXfji=QXC9-6wuhXWjJPkpNfo6hEMXH=A@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@kernel.org
-Cc: Weiyi Lu <weiyi.lu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, sboyd@codeaurora.org, Rob Herring <robh@kernel.org>, jamesjj.liao@mediatek.com, srv_heupstream@mediatek.com, lkml <linux-kernel@vger.kernel.org>, Fan Chen <fan.chen@mediatek.com>, linux-mediatek@lists.infradead.org, owen.chen@mediatek.com, linux-clk@vger.kernel.org, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+To: drinkcat@chromium.org
+Cc: weiyi.lu@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, sboyd@codeaurora.org, robh@kernel.org, jamesjj.liao@mediatek.com, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, fan.chen@mediatek.com, linux-mediatek@lists.infradead.org, owen.chen@mediatek.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Nov 28, 2018 at 4:37 AM Sean Wang <sean.wang@kernel.org> wrote:
 >
-> Weiyi Lu <weiyi.lu@mediatek.com> =E6=96=BC 2018=E5=B9=B411=E6=9C=8826=E6=
-=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=887:45=E5=AF=AB=E9=81=93=EF=BC=9A
+> On Wed, Nov 28, 2018 at 4:37 AM Sean Wang <sean.wang@kernel.org> wrote:
 > >
-> > From: Owen Chen <owen.chen@mediatek.com>
+> > Weiyi Lu <weiyi.lu@mediatek.com> =E6=96=BC 2018=E5=B9=B411=E6=9C=8826=
+=E6=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=887:45=E5=AF=AB=E9=81=93=EF=BC=
+=9A
+> > >
+> > > From: Owen Chen <owen.chen@mediatek.com>
+> > >
+> > > PLLs with tuner_en bit, such as APLL1, need to disable
+> > > tuner_en before apply new frequency settings, or the new frequency
+> > > settings (pcw) will not be applied.
+> > > The tuner_en bit will be disabled during changing PLL rate
+> > > and be restored after new settings applied.
 > >
-> > PLLs with tuner_en bit, such as APLL1, need to disable
-> > tuner_en before apply new frequency settings, or the new frequency
-> > settings (pcw) will not be applied.
-> > The tuner_en bit will be disabled during changing PLL rate
-> > and be restored after new settings applied.
+> > It looks like a bug fix. If so, you should add a fixes tag and even cc
+> > stable tree
+> >
+> > >
+> > > Signed-off-by: Owen Chen <owen.chen@mediatek.com>
+> > > ---
+> > >  drivers/clk/mediatek/clk-pll.c | 33 +++++++++++++++++++++++++++++++-=
+-
+> > >  1 file changed, 31 insertions(+), 2 deletions(-)
+> > >
+> > > diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/cl=
+k-pll.c
+> > > index 1db161aced31..81400601f107 100644
+> > > --- a/drivers/clk/mediatek/clk-pll.c
+> > > +++ b/drivers/clk/mediatek/clk-pll.c
+> > > @@ -27,7 +27,7 @@
+> > >  #define CON0_BASE_EN           BIT(0)
+> > >  #define CON0_PWR_ON            BIT(0)
+> > >  #define CON0_ISO_EN            BIT(1)
+> > > -#define CON0_PCW_CHG           BIT(31)
+> > > +#define CON1_PCW_CHG           BIT(31)
+> >
+> > it seems like an unnecessary change
 >
-> It looks like a bug fix. If so, you should add a fixes tag and even cc
-> stable tree
+> Below, you have:
+> con1 |=3D CON1_PCW_CHG;
 >
-> >
-> > Signed-off-by: Owen Chen <owen.chen@mediatek.com>
-> > ---
-> >  drivers/clk/mediatek/clk-pll.c | 33 +++++++++++++++++++++++++++++++--
-> >  1 file changed, 31 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-=
-pll.c
-> > index 1db161aced31..81400601f107 100644
-> > --- a/drivers/clk/mediatek/clk-pll.c
-> > +++ b/drivers/clk/mediatek/clk-pll.c
-> > @@ -27,7 +27,7 @@
-> >  #define CON0_BASE_EN           BIT(0)
-> >  #define CON0_PWR_ON            BIT(0)
-> >  #define CON0_ISO_EN            BIT(1)
-> > -#define CON0_PCW_CHG           BIT(31)
-> > +#define CON1_PCW_CHG           BIT(31)
+> Presumably PCW_CHG is on BIT(31) of CON1(?), so I think this is a good
+> change. Maybe this needs to be a separate patch, though?
 >
-> it seems like an unnecessary change
 
-Below, you have:
-con1 |=3D CON1_PCW_CHG;
+Sure, for me it's not easily understood why the change is necessary
+from the description. If it's really another fixup, it should be moved
+to a separate patch or add more explanations about that in the same
+patch.
 
-Presumably PCW_CHG is on BIT(31) of CON1(?), so I think this is a good
-change. Maybe this needs to be a separate patch, though?
-
+> > >
+> > >  #define AUDPLL_TUNER_EN                BIT(31)
+> > >
+> > > @@ -97,9 +97,31 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_p=
+ll *pll, u32 pcw,
+> > >  {
+> > >         u32 con1, val;
+> > >         int pll_en;
+> > > +       u32 tuner_en =3D 0;
+> > > +       u32 tuner_en_mask;
+> > > +       void __iomem *tuner_en_addr =3D NULL;
+> > >
+> > >         pll_en =3D readl(pll->base_addr + REG_CON0) & CON0_BASE_EN;
+> > >
+> > > +       /* disable tuner */
 > >
-> >  #define AUDPLL_TUNER_EN                BIT(31)
+> > similar code pieces are ready on mtk_pll_[un]prepare. maybe we can add
+> > common tuner operations for them to reuse.
 > >
-> > @@ -97,9 +97,31 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll=
- *pll, u32 pcw,
-> >  {
-> >         u32 con1, val;
-> >         int pll_en;
-> > +       u32 tuner_en =3D 0;
-> > +       u32 tuner_en_mask;
-> > +       void __iomem *tuner_en_addr =3D NULL;
+> > > +       if (pll->tuner_en_addr) {
+> > > +               tuner_en_addr =3D pll->tuner_en_addr;
+> > > +               tuner_en_mask =3D BIT(pll->data->tuner_en_bit);
+> > > +       } else if (pll->tuner_addr) {
+> > > +               tuner_en_addr =3D pll->tuner_addr;
+> > > +               tuner_en_mask =3D AUDPLL_TUNER_EN;
+> > > +       }
+> > > +
+> > > +       if (tuner_en_addr) {
+> > > +               val =3D readl(tuner_en_addr);
+> > > +               tuner_en =3D val & tuner_en_mask;
+> > > +
+> > > +               if (tuner_en) {
+> > > +                       val &=3D ~tuner_en_mask;
+> > > +                       writel(val, tuner_en_addr);
+> > > +               }
+> > > +       }
+> > > +
+> > >         /* set postdiv */
+> > >         val =3D readl(pll->pd_addr);
+> > >         val &=3D ~(POSTDIV_MASK << pll->data->pd_shift);
+> > > @@ -120,12 +142,19 @@ static void mtk_pll_set_rate_regs(struct mtk_cl=
+k_pll *pll, u32 pcw,
+> > >         con1 =3D readl(pll->base_addr + REG_CON1);
+> > >
+> > >         if (pll_en)
+> > > -               con1 |=3D CON0_PCW_CHG;
+> > > +               con1 |=3D CON1_PCW_CHG;
+> > >
+> > >         writel(con1, pll->base_addr + REG_CON1);
+> > >         if (pll->tuner_addr)
+> > >                 writel(con1 + 1, pll->tuner_addr);
+> > >
+> > > +       /* restore tuner_en */
+> > > +       if (tuner_en_addr && tuner_en) {
 > >
-> >         pll_en =3D readl(pll->base_addr + REG_CON0) & CON0_BASE_EN;
+> > if (tuner_en) is sufficient
 > >
-> > +       /* disable tuner */
->
-> similar code pieces are ready on mtk_pll_[un]prepare. maybe we can add
-> common tuner operations for them to reuse.
->
-> > +       if (pll->tuner_en_addr) {
-> > +               tuner_en_addr =3D pll->tuner_en_addr;
-> > +               tuner_en_mask =3D BIT(pll->data->tuner_en_bit);
-> > +       } else if (pll->tuner_addr) {
-> > +               tuner_en_addr =3D pll->tuner_addr;
-> > +               tuner_en_mask =3D AUDPLL_TUNER_EN;
-> > +       }
-> > +
-> > +       if (tuner_en_addr) {
-> > +               val =3D readl(tuner_en_addr);
-> > +               tuner_en =3D val & tuner_en_mask;
-> > +
-> > +               if (tuner_en) {
-> > +                       val &=3D ~tuner_en_mask;
-> > +                       writel(val, tuner_en_addr);
-> > +               }
-> > +       }
-> > +
-> >         /* set postdiv */
-> >         val =3D readl(pll->pd_addr);
-> >         val &=3D ~(POSTDIV_MASK << pll->data->pd_shift);
-> > @@ -120,12 +142,19 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_=
-pll *pll, u32 pcw,
-> >         con1 =3D readl(pll->base_addr + REG_CON1);
-> >
-> >         if (pll_en)
-> > -               con1 |=3D CON0_PCW_CHG;
-> > +               con1 |=3D CON1_PCW_CHG;
-> >
-> >         writel(con1, pll->base_addr + REG_CON1);
-> >         if (pll->tuner_addr)
-> >                 writel(con1 + 1, pll->tuner_addr);
-> >
-> > +       /* restore tuner_en */
-> > +       if (tuner_en_addr && tuner_en) {
->
-> if (tuner_en) is sufficient
->
-> > +               val =3D readl(tuner_en_addr);
-> > +               val |=3D tuner_en_mask;
-> > +               writel(val, tuner_en_addr);
-> > +       }
-> > +
-> >         if (pll_en)
-> >                 udelay(20);
-> >  }
-> > --
-> > 2.18.0
-> >
-> >
-> > _______________________________________________
-> > Linux-mediatek mailing list
-> > Linux-mediatek@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> > > +               val =3D readl(tuner_en_addr);
+> > > +               val |=3D tuner_en_mask;
+> > > +               writel(val, tuner_en_addr);
+> > > +       }
+> > > +
+> > >         if (pll_en)
+> > >                 udelay(20);
+> > >  }
+> > > --
+> > > 2.18.0
+> > >
+> > >
+> > > _______________________________________________
+> > > Linux-mediatek mailing list
+> > > Linux-mediatek@lists.infradead.org
+> > > http://lists.infradead.org/mailman/listinfo/linux-mediatek
