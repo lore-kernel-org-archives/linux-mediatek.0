@@ -1,141 +1,108 @@
-From: Sean Wang <sean.wang@kernel.org>
-Subject: Re: [PATCH v2 03/11] clk: mediatek: Disable tuner_en before change
- PLL rate
-Date: Tue, 27 Nov 2018 16:58:57 -0800
-Message-ID: <CAGp9LzqfgLa03p-bEOQaT2qtuOEqUL3e04nDS38TbZ2-2Ohauw@mail.gmail.com>
-References: <20181127034254.24721-1-weiyi.lu@mediatek.com> <20181127034254.24721-5-weiyi.lu@mediatek.com>
- <CAGp9Lzro5YHCYqzOWFJJa4g75odf6yK52cean_aS3p2STOtJYg@mail.gmail.com> <CANMq1KB4tt9jdmE+LJXfji=QXC9-6wuhXWjJPkpNfo6hEMXH=A@mail.gmail.com>
+From: Miles Chen <miles.chen@mediatek.com>
+Subject: Re: [RFC PATCH] of: make MAX_RESERVED_REGIONS configurable
+Date: Wed, 28 Nov 2018 09:56:04 +0800
+Message-ID: <1543370164.29143.9.camel@mtkswgap22>
+References: <1542787873-8429-1-git-send-email-miles.chen@mediatek.com>
+         <CAL_JsqLGvUYQmCGXLgSO+6kFj2i87dpaTbMGbyu5oMt=eeu35A@mail.gmail.com>
+         <1542855088.15789.6.camel@mtkswgap22>
+         <CAL_Jsq+O1YDP1yiHZpcxUaFG1LYDqi74D_kEnErP+cwGDppVWQ@mail.gmail.com>
+         <1543196004.21289.1.camel@mtkswgap22>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CANMq1KB4tt9jdmE+LJXfji=QXC9-6wuhXWjJPkpNfo6hEMXH=A@mail.gmail.com>
+In-Reply-To: <1543196004.21289.1.camel@mtkswgap22>
 Sender: linux-kernel-owner@vger.kernel.org
-To: drinkcat@chromium.org
-Cc: weiyi.lu@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, sboyd@codeaurora.org, robh@kernel.org, jamesjj.liao@mediatek.com, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, fan.chen@mediatek.com, linux-mediatek@lists.infradead.org, owen.chen@mediatek.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Rob Herring <robh+dt@kernel.org>
+Cc: Frank Rowand <frowand.list@gmail.com>, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
->
-> On Wed, Nov 28, 2018 at 4:37 AM Sean Wang <sean.wang@kernel.org> wrote:
-> >
-> > Weiyi Lu <weiyi.lu@mediatek.com> =E6=96=BC 2018=E5=B9=B411=E6=9C=8826=
-=E6=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=887:45=E5=AF=AB=E9=81=93=EF=BC=
-=9A
+On Mon, 2018-11-26 at 09:33 +0800, Miles Chen wrote:
+> On Sat, 2018-11-24 at 14:56 -0600, Rob Herring wrote:
+> > On Wed, Nov 21, 2018 at 8:51 PM Miles Chen <miles.chen@mediatek.com> wrote:
 > > >
-> > > From: Owen Chen <owen.chen@mediatek.com>
+> > > On Wed, 2018-11-21 at 10:39 -0600, Rob Herring wrote:
+> > > > On Wed, Nov 21, 2018 at 2:11 AM <miles.chen@mediatek.com> wrote:
+> > > > >
+> > > > > From: Miles Chen <miles.chen@mediatek.com>
+> > > > >
+> > > > > When we use more than 32 entries in /resered-memory,
+> > > > > there will be an error message: "not enough space all defined regions.".
+> > > > > We can increase MAX_RESERVED_REGIONS to fix this.
+> > > > >
+> > > > > commit 22f8cc6e3373 ("drivers: of: increase MAX_RESERVED_REGIONS to 32")
+> > > > > increased MAX_RESERVED_REGIONS to 32 but I'm not sure if increasing
+> > > > > MAX_RESERVED_REGIONS to 64 is suitable for everyone.
+> > > > >
+> > > > > In this RFC patch, CONFIG_MAX_OF_RESERVED_REGIONS is added and used as
+> > > > > MAX_RESERVED_REGIONS. Add a sanity test to make sure that
+> > > > > MAX_RESERVED_REGIONS is less than INIT_MEMBLOCK_REGIONS.
+> > > > > Users can configure CONFIG_MAX_OF_RESERVED_REGIONS according to their
+> > > > > need.
+> > > >
+> > > > I don't want a kconfig option for this. I think it should be dynamic instead.
+> > > >
+> > > > The current flow is like this:
+> > > >
+> > > > for each reserved node:
+> > > >   - call memblock_reserve
+> > > >   - Add info to reserved_mem array
+> > > >
+> > > > I think we should change it to:
+> > > >
+> > > > for each reserved node:
+> > > >   - call memblock_reserve
+> > > >   - count number of nodes
+> > > >
+> > > > Alloc array using memblock_alloc
+> > > >
+> > > > for each reserved node:
+> > > >    - Add info to reserved_mem array
+> > > >
 > > >
-> > > PLLs with tuner_en bit, such as APLL1, need to disable
-> > > tuner_en before apply new frequency settings, or the new frequency
-> > > settings (pcw) will not be applied.
-> > > The tuner_en bit will be disabled during changing PLL rate
-> > > and be restored after new settings applied.
-> >
-> > It looks like a bug fix. If so, you should add a fixes tag and even cc
-> > stable tree
-> >
+> > > thanks for your comment.
 > > >
-> > > Signed-off-by: Owen Chen <owen.chen@mediatek.com>
-> > > ---
-> > >  drivers/clk/mediatek/clk-pll.c | 33 +++++++++++++++++++++++++++++++-=
--
-> > >  1 file changed, 31 insertions(+), 2 deletions(-)
+> > > I reviewed the flow and it might be easier to count the
+> > > nodes and setup array first:
 > > >
-> > > diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/cl=
-k-pll.c
-> > > index 1db161aced31..81400601f107 100644
-> > > --- a/drivers/clk/mediatek/clk-pll.c
-> > > +++ b/drivers/clk/mediatek/clk-pll.c
-> > > @@ -27,7 +27,7 @@
-> > >  #define CON0_BASE_EN           BIT(0)
-> > >  #define CON0_PWR_ON            BIT(0)
-> > >  #define CON0_ISO_EN            BIT(1)
-> > > -#define CON0_PCW_CHG           BIT(31)
-> > > +#define CON1_PCW_CHG           BIT(31)
-> >
-> > it seems like an unnecessary change
->
-> Below, you have:
-> con1 |=3D CON1_PCW_CHG;
->
-> Presumably PCW_CHG is on BIT(31) of CON1(?), so I think this is a good
-> change. Maybe this needs to be a separate patch, though?
->
+> > > for each reserved node:
+> > >     - count number of nodes
+> > >
+> > > Alloc array using memblock_alloc
+> > >
+> > >
+> > > for each reserved node:
+> > >    - call memblock_reserve
+> > 
+> > The order here is wrong. It is important that you reserve the memory
+> > blocks before doing any allocations.
+> 
+> thanks for pointing that out. You are right. I'll follow your
+> suggestion.
 
-Sure, for me it's not easily understood why the change is necessary
-from the description. If it's really another fixup, it should be moved
-to a separate patch or add more explanations about that in the same
-patch.
+I got a problem while implementing this change: the array allocation
+is done successfully but the kernel does not create mappings for it yet,
+so the array is not accessible. (kernel will create the mapping later in
+paging_init())
 
+For example: aarch64 setup_arch()
+setup_arch()
+{
+    memblock_init(); /* early_init_fdt_scan_reserved_mem() is called */
+    paging_init();
+}
+
+Could you give me some advice, please?
+
+Miles
+> 
+> > 
+> > >    - Add info to reserved_mem array
 > > >
-> > >  #define AUDPLL_TUNER_EN                BIT(31)
+> > > What do you think?
 > > >
-> > > @@ -97,9 +97,31 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_p=
-ll *pll, u32 pcw,
-> > >  {
-> > >         u32 con1, val;
-> > >         int pll_en;
-> > > +       u32 tuner_en =3D 0;
-> > > +       u32 tuner_en_mask;
-> > > +       void __iomem *tuner_en_addr =3D NULL;
-> > >
-> > >         pll_en =3D readl(pll->base_addr + REG_CON0) & CON0_BASE_EN;
-> > >
-> > > +       /* disable tuner */
-> >
-> > similar code pieces are ready on mtk_pll_[un]prepare. maybe we can add
-> > common tuner operations for them to reuse.
-> >
-> > > +       if (pll->tuner_en_addr) {
-> > > +               tuner_en_addr =3D pll->tuner_en_addr;
-> > > +               tuner_en_mask =3D BIT(pll->data->tuner_en_bit);
-> > > +       } else if (pll->tuner_addr) {
-> > > +               tuner_en_addr =3D pll->tuner_addr;
-> > > +               tuner_en_mask =3D AUDPLL_TUNER_EN;
-> > > +       }
-> > > +
-> > > +       if (tuner_en_addr) {
-> > > +               val =3D readl(tuner_en_addr);
-> > > +               tuner_en =3D val & tuner_en_mask;
-> > > +
-> > > +               if (tuner_en) {
-> > > +                       val &=3D ~tuner_en_mask;
-> > > +                       writel(val, tuner_en_addr);
-> > > +               }
-> > > +       }
-> > > +
-> > >         /* set postdiv */
-> > >         val =3D readl(pll->pd_addr);
-> > >         val &=3D ~(POSTDIV_MASK << pll->data->pd_shift);
-> > > @@ -120,12 +142,19 @@ static void mtk_pll_set_rate_regs(struct mtk_cl=
-k_pll *pll, u32 pcw,
-> > >         con1 =3D readl(pll->base_addr + REG_CON1);
-> > >
-> > >         if (pll_en)
-> > > -               con1 |=3D CON0_PCW_CHG;
-> > > +               con1 |=3D CON1_PCW_CHG;
-> > >
-> > >         writel(con1, pll->base_addr + REG_CON1);
-> > >         if (pll->tuner_addr)
-> > >                 writel(con1 + 1, pll->tuner_addr);
-> > >
-> > > +       /* restore tuner_en */
-> > > +       if (tuner_en_addr && tuner_en) {
-> >
-> > if (tuner_en) is sufficient
-> >
-> > > +               val =3D readl(tuner_en_addr);
-> > > +               val |=3D tuner_en_mask;
-> > > +               writel(val, tuner_en_addr);
-> > > +       }
-> > > +
-> > >         if (pll_en)
-> > >                 udelay(20);
-> > >  }
-> > > --
-> > > 2.18.0
+> > > > Rob
 > > >
 > > >
-> > > _______________________________________________
-> > > Linux-mediatek mailing list
-> > > Linux-mediatek@lists.infradead.org
-> > > http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> 
+> 
