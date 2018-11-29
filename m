@@ -1,47 +1,65 @@
-From: "Hsin-Yi, Wang" <hsinyi@chromium.org>
-Subject: [PATCH v4] usb/mtu3: power down device ip at setup
-Date: Thu, 29 Nov 2018 11:16:27 +0800
-Message-ID: <20181129031627.45006-1-hsinyi@chromium.org>
-References: <20181128095358.42498-1-hsinyi@chromium.org>
+From: Houlong Wei <houlong.wei@mediatek.com>
+Subject: [PATCH v27 0/2] MediaTek MT8173 CMDQ support
+Date: Thu, 29 Nov 2018 11:37:07 +0800
+Message-ID: <1543462629-32746-1-git-send-email-houlong.wei@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181128095358.42498-1-hsinyi@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-arm-kernel@lists.infradead.org
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK HU <ck.hu@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Monica Wang <monica.wang@mediatek.com>, Houlong Wei <houlong.wei@medi>
 List-Id: linux-mediatek@lists.infradead.org
 
-Originally, when dr_mode is USB_DR_MODE_HOST, it didn't power down device ip,
-so host ip sleep will fail at ssusb_host_disable.
+Hi,
 
-Power down device ip at ssusb_host_setup.
+This is Mediatek MT8173 Command Queue(CMDQ) driver. The CMDQ is used
+to help write registers with critical time limitation, such as
+updating display configuration during the vblank. It controls Global
+Command Engine (GCE) hardware to achieve this requirement.
 
-Signed-off-by: Hsin-Yi, Wang <hsinyi@chromium.org>
----
-ChangeLog:
-V3->V4:
-  *update comment
----
- drivers/usb/mtu3/mtu3_plat.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+Changes since v26:
+ -rebase on v4.20-rc1
+ -add comment to explain why cmdq_buf_size is increased in case of
+  appending command failure
+Changes since v25:
+ -Replace WARN_ON() with WARN_ONCE() and add debug information.
+Changes since v24:
+ -move WARN_ON() into cmdq_pkt_append_command() from outside
+Changes since v23:
+ -rebase on v4.19-rc1
+ -revise return value of cmdq_mbox_create()
+ -revise cmdq_pkt_create()
+ -add MODULE_LICENSE() for mtk-cmdq-helper.c
+ -adjust functions order in mtk-cmdq.h
+Changes since v22:
+ -remove properties 'timeout' and 'thread-num' from device tree
+ -move timer from CMDQ driver to CMDQ helper
+ -move dma unmap from CMDQ driver to CMDQ helper
+ -config thread number in CMDQ match table
+ -remove reallocate mechanism and let client specify the cmdq buffer size
+ -let client specify the timeout time
+Changes since v21:
+ -rebase on v4.18-rc1
+ -remove subsys code and event id definition from mtk-cmdq-helper.c
+ -add mt8173-gce.h to define the subsys code and envent id
+Changes since v20:
+ -rebase on v4.15-rc1
+ -move dma_map_single outside of spinlock
+Changes since v19:
+ -rebase to v4.10-rc2
 
-diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
-index 46551f6d16fd..e086630e41a9 100644
---- a/drivers/usb/mtu3/mtu3_plat.c
-+++ b/drivers/usb/mtu3/mtu3_plat.c
-@@ -200,6 +200,14 @@ static void ssusb_ip_sw_reset(struct ssusb_mtk *ssusb)
- 	mtu3_setbits(ssusb->ippc_base, U3D_SSUSB_IP_PW_CTRL0, SSUSB_IP_SW_RST);
- 	udelay(1);
- 	mtu3_clrbits(ssusb->ippc_base, U3D_SSUSB_IP_PW_CTRL0, SSUSB_IP_SW_RST);
-+
-+	/*
-+	 * device ip may be powered on in firmware/BROM stage before entering
-+	 * kernel stage;
-+	 * power down device ip, otherwise ip-sleep will fail when working as
-+	 * host only mode
-+	 */
-+	mtu3_setbits(ssusb->ippc_base, U3D_SSUSB_IP_PW_CTRL2, SSUSB_IP_DEV_PDN);
- }
- 
- /* ignore the error if the clock does not exist */
+Houlong Wei (2):
+  arm64: dts: mt8173: Add GCE node
+  soc: mediatek: Add Mediatek CMDQ helper
+
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi |  10 +
+ drivers/soc/mediatek/Kconfig             |  12 +
+ drivers/soc/mediatek/Makefile            |   1 +
+ drivers/soc/mediatek/mtk-cmdq-helper.c   | 300 +++++++++++++++++++++++
+ include/linux/soc/mediatek/mtk-cmdq.h    | 133 ++++++++++
+ 5 files changed, 456 insertions(+)
+ create mode 100644 drivers/soc/mediatek/mtk-cmdq-helper.c
+ create mode 100644 include/linux/soc/mediatek/mtk-cmdq.h
+
 -- 
-2.18.1
+2.19.1
