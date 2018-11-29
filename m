@@ -1,72 +1,62 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [RESEND PATCH 4/4] mtd: spi-nor: mtk-quadspi: rename config to a common one
-Date: Thu, 29 Nov 2018 14:29:56 +0800
-Message-ID: <d3722d3a7d410f0b47a25363f6d0dc6cd9a7a18e.1543472168.git.ryder.lee@mediatek.com>
-References: <235ade9c5cda19fb0c9356913e3f56ad86600f59.1543472168.git.ryder.lee@mediatek.com>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Subject: Re: [PATCH v4] usb/mtu3: power down device ip at setup
+Date: Thu, 29 Nov 2018 15:50:04 +0800
+Message-ID: <CAJMQK-i0a0J54hx2ii-Zr9=LoAeOWNUfDS_vBPbDkx7sGOZ=Vg@mail.gmail.com>
+References: <20181128095358.42498-1-hsinyi@chromium.org> <20181129031627.45006-1-hsinyi@chromium.org>
+ <1543472774.32173.114.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <235ade9c5cda19fb0c9356913e3f56ad86600f59.1543472168.git.ryder.lee@mediatek.com>
+In-Reply-To: <1543472774.32173.114.camel@mhfsdcap03>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Marek Vasut <marek.vasut@gmail.com>, Brian Norris <computersforpeace@gmail.com>, Boris Brezillon <boris.brezillon@bootlin.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Weijie Gao <weijie.gao@mediatek.com>, linux-mtd@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
+To: chunfeng.yun@mediatek.com
+Cc: linux-arm-kernel@lists.infradead.org, gregkh@linuxfoundation.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The quadspi is a generic communication interface which could be shared
-with other MediaTek SoCs. Hence rename it to a common one.
+Thanks!
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- drivers/mtd/spi-nor/Kconfig  | 16 ++++++++--------
- drivers/mtd/spi-nor/Makefile |  2 +-
- 2 files changed, 9 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/mtd/spi-nor/Kconfig b/drivers/mtd/spi-nor/Kconfig
-index 6cc9c92..2062611 100644
---- a/drivers/mtd/spi-nor/Kconfig
-+++ b/drivers/mtd/spi-nor/Kconfig
-@@ -7,14 +7,6 @@ menuconfig MTD_SPI_NOR
- 
- if MTD_SPI_NOR
- 
--config MTD_MT81xx_NOR
--	tristate "Mediatek MT81xx SPI NOR flash controller"
--	depends on HAS_IOMEM
--	help
--	  This enables access to SPI NOR flash, using MT81xx SPI NOR flash
--	  controller. This controller does not support generic SPI BUS, it only
--	  supports SPI NOR Flash.
--
- config MTD_SPI_NOR_USE_4K_SECTORS
- 	bool "Use small 4096 B erase sectors"
- 	default y
-@@ -86,6 +78,14 @@ config SPI_NXP_SPIFI
- 	  Flash. Enable this option if you have a device with a SPIFI
- 	  controller and want to access the Flash as a mtd device.
- 
-+config SPI_MTK_QUADSPI
-+	tristate "MediaTek Quad SPI controller"
-+	depends on HAS_IOMEM
-+	help
-+	  This enables support for the Quad SPI controller in master mode.
-+	  This controller does not support generic SPI. It only supports
-+	  SPI NOR.
-+
- config SPI_INTEL_SPI
- 	tristate
- 
-diff --git a/drivers/mtd/spi-nor/Makefile b/drivers/mtd/spi-nor/Makefile
-index f4c61d2..7f4b6f6 100644
---- a/drivers/mtd/spi-nor/Makefile
-+++ b/drivers/mtd/spi-nor/Makefile
-@@ -5,7 +5,7 @@ obj-$(CONFIG_SPI_ATMEL_QUADSPI)	+= atmel-quadspi.o
- obj-$(CONFIG_SPI_CADENCE_QUADSPI)	+= cadence-quadspi.o
- obj-$(CONFIG_SPI_FSL_QUADSPI)	+= fsl-quadspi.o
- obj-$(CONFIG_SPI_HISI_SFC)	+= hisi-sfc.o
--obj-$(CONFIG_MTD_MT81xx_NOR)    += mtk-quadspi.o
-+obj-$(CONFIG_SPI_MTK_QUADSPI)    += mtk-quadspi.o
- obj-$(CONFIG_SPI_NXP_SPIFI)	+= nxp-spifi.o
- obj-$(CONFIG_SPI_INTEL_SPI)	+= intel-spi.o
- obj-$(CONFIG_SPI_INTEL_SPI_PCI)	+= intel-spi-pci.o
--- 
-1.9.1
+On Thu, Nov 29, 2018 at 2:26 PM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
+>
+> hi Hsin-Yi,
+>
+> On Thu, 2018-11-29 at 11:16 +0800, Hsin-Yi, Wang wrote:
+> > Originally, when dr_mode is USB_DR_MODE_HOST, it didn't power down device ip,
+> > so host ip sleep will fail at ssusb_host_disable.
+> >
+> > Power down device ip at ssusb_host_setup.
+> >
+> > Signed-off-by: Hsin-Yi, Wang <hsinyi@chromium.org>
+> > ---
+> > ChangeLog:
+> > V3->V4:
+> >   *update comment
+> > ---
+> >  drivers/usb/mtu3/mtu3_plat.c | 8 ++++++++
+> >  1 file changed, 8 insertions(+)
+> >
+> > diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
+> > index 46551f6d16fd..e086630e41a9 100644
+> > --- a/drivers/usb/mtu3/mtu3_plat.c
+> > +++ b/drivers/usb/mtu3/mtu3_plat.c
+> > @@ -200,6 +200,14 @@ static void ssusb_ip_sw_reset(struct ssusb_mtk *ssusb)
+> >       mtu3_setbits(ssusb->ippc_base, U3D_SSUSB_IP_PW_CTRL0, SSUSB_IP_SW_RST);
+> >       udelay(1);
+> >       mtu3_clrbits(ssusb->ippc_base, U3D_SSUSB_IP_PW_CTRL0, SSUSB_IP_SW_RST);
+> > +
+> > +     /*
+> > +      * device ip may be powered on in firmware/BROM stage before entering
+> > +      * kernel stage;
+> > +      * power down device ip, otherwise ip-sleep will fail when working as
+> > +      * host only mode
+> > +      */
+> > +     mtu3_setbits(ssusb->ippc_base, U3D_SSUSB_IP_PW_CTRL2, SSUSB_IP_DEV_PDN);
+> >  }
+> >
+> >  /* ignore the error if the clock does not exist */
+>
+> Acked-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+>
+> Thanks a lot
+>
+>
+>
