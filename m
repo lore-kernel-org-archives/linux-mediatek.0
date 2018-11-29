@@ -1,67 +1,63 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v3 3/4] arm64: dts: mediatek: x20: Add pinmux support for
- UART1
-Date: Thu, 29 Nov 2018 12:49:37 +0100
-Message-ID: <12508cbf-0718-a09f-4061-24a485fd5dc0@gmail.com>
-References: <20181107174844.5381-1-manivannan.sadhasivam@linaro.org>
- <20181107174844.5381-4-manivannan.sadhasivam@linaro.org>
+Subject: Re: [PATCH] arm64: dts: Add uart for mt6797 EVB
+Date: Thu, 29 Nov 2018 12:50:07 +0100
+Message-ID: <4a28375f-7487-f745-5d05-e2bc4c939369@gmail.com>
+References: <20181116183040.18696-1-matthias.bgg@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181107174844.5381-4-manivannan.sadhasivam@linaro.org>
+In-Reply-To: <20181116183040.18696-1-matthias.bgg@kernel.org>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, sean.wang@kernel.org, linus.walleij@linaro.org, robh+dt@kernel.org
-Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, amit.kucheria@linaro.org
+To: matthias.bgg@kernel.org, robh+dt@kernel.org, mark.rutland@arm.com
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 07/11/2018 18:48, Manivannan Sadhasivam wrote:
-> Add pinmux support for UART1 on MediatekX20 Development board based
-> on Mediatek MT6797 SoC.
+On 16/11/2018 19:30, matthias.bgg@kernel.org wrote:
+> From: Matthias Brugger <mbrugger@suse.com>
 > 
-> Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+> This patch adds the pinctrl configuration for the mt6797 EVB.
+> 
+> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
 > ---
->  arch/arm64/boot/dts/mediatek/mt6797-x20-dev.dts | 2 ++
->  arch/arm64/boot/dts/mediatek/mt6797.dtsi        | 7 +++++++
+>  arch/arm64/boot/dts/mediatek/mt6797-evb.dts | 2 ++
+>  arch/arm64/boot/dts/mediatek/mt6797.dtsi    | 7 +++++++
 >  2 files changed, 9 insertions(+)
 > 
 
-
 pushed to v4.20-next/dts64
 
-Thanks!
 
-
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6797-x20-dev.dts b/arch/arm64/boot/dts/mediatek/mt6797-x20-dev.dts
-> index 742938a1a548..13939d55b85b 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt6797-x20-dev.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt6797-x20-dev.dts
-> @@ -30,4 +30,6 @@
+> diff --git a/arch/arm64/boot/dts/mediatek/mt6797-evb.dts b/arch/arm64/boot/dts/mediatek/mt6797-evb.dts
+> index c79109c65409..237e869a5fa1 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt6797-evb.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt6797-evb.dts
+> @@ -33,4 +33,6 @@
 >  
->  &uart1 {
+>  &uart0 {
 >  	status = "okay";
 > +	pinctrl-names = "default";
-> +	pinctrl-0 = <&uart1_pins_a>;
+> +	pinctrl-0 = <&uart0_pins_a>;
 >  };
 > diff --git a/arch/arm64/boot/dts/mediatek/mt6797.dtsi b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-> index 231230d32d09..a64bb84bdec3 100644
+> index a64bb84bdec3..2b2a69c7567f 100644
 > --- a/arch/arm64/boot/dts/mediatek/mt6797.dtsi
 > +++ b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
-> @@ -141,6 +141,13 @@
->  			    "iocfgr", "iocfgt";
+> @@ -142,6 +142,13 @@
 >  		gpio-controller;
 >  		#gpio-cells = <2>;
-> +
-> +		uart1_pins_a: uart1 {
-> +			pins1 {
-> +				pinmux = <MT6797_GPIO232__FUNC_URXD1>,
-> +					 <MT6797_GPIO233__FUNC_UTXD1>;
+>  
+> +		uart0_pins_a: uart0 {
+> +			pins0 {
+> +				pinmux = <MT6797_GPIO234__FUNC_UTXD0>,
+> +					 <MT6797_GPIO235__FUNC_URXD0>;
 > +			};
 > +		};
->  	};
->  
->  	scpsys: scpsys@10006000 {
+> +
+>  		uart1_pins_a: uart1 {
+>  			pins1 {
+>  				pinmux = <MT6797_GPIO232__FUNC_URXD1>,
 > 
