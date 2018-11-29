@@ -1,56 +1,39 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH v4] usb/mtu3: power down device ip at setup
-Date: Thu, 29 Nov 2018 14:26:14 +0800
-Message-ID: <1543472774.32173.114.camel@mhfsdcap03>
-References: <20181128095358.42498-1-hsinyi@chromium.org>
-         <20181129031627.45006-1-hsinyi@chromium.org>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: [RESEND PATCH 1/4] dt-bindings: mtd: mtk-quadspi: update bindings for MT7629 SoC
+Date: Thu, 29 Nov 2018 14:29:53 +0800
+Message-ID: <235ade9c5cda19fb0c9356913e3f56ad86600f59.1543472168.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181129031627.45006-1-hsinyi@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: "Hsin-Yi, Wang" <hsinyi@chromium.org>
-Cc: linux-arm-kernel@lists.infradead.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Marek Vasut <marek.vasut@gmail.com>, Brian Norris <computersforpeace@gmail.com>, Boris Brezillon <boris.brezillon@bootlin.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Weijie Gao <weijie.gao@mediatek.com>, linux-mtd@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-hi Hsin-Yi,
+This updates bindings for the MT7629 SPI-NOR controller.
 
-On Thu, 2018-11-29 at 11:16 +0800, Hsin-Yi, Wang wrote:
-> Originally, when dr_mode is USB_DR_MODE_HOST, it didn't power down device ip,
-> so host ip sleep will fail at ssusb_host_disable.
-> 
-> Power down device ip at ssusb_host_setup.
-> 
-> Signed-off-by: Hsin-Yi, Wang <hsinyi@chromium.org>
-> ---
-> ChangeLog:
-> V3->V4:
->   *update comment
-> ---
->  drivers/usb/mtu3/mtu3_plat.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
-> 
-> diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
-> index 46551f6d16fd..e086630e41a9 100644
-> --- a/drivers/usb/mtu3/mtu3_plat.c
-> +++ b/drivers/usb/mtu3/mtu3_plat.c
-> @@ -200,6 +200,14 @@ static void ssusb_ip_sw_reset(struct ssusb_mtk *ssusb)
->  	mtu3_setbits(ssusb->ippc_base, U3D_SSUSB_IP_PW_CTRL0, SSUSB_IP_SW_RST);
->  	udelay(1);
->  	mtu3_clrbits(ssusb->ippc_base, U3D_SSUSB_IP_PW_CTRL0, SSUSB_IP_SW_RST);
-> +
-> +	/*
-> +	 * device ip may be powered on in firmware/BROM stage before entering
-> +	 * kernel stage;
-> +	 * power down device ip, otherwise ip-sleep will fail when working as
-> +	 * host only mode
-> +	 */
-> +	mtu3_setbits(ssusb->ippc_base, U3D_SSUSB_IP_PW_CTRL2, SSUSB_IP_DEV_PDN);
->  }
->  
->  /* ignore the error if the clock does not exist */
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ Documentation/devicetree/bindings/mtd/mtk-quadspi.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Acked-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-
-Thanks a lot
+diff --git a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+index 56d3668..a12e3b5 100644
+--- a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
++++ b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+@@ -1,4 +1,4 @@
+-* Serial NOR flash controller for MTK MT81xx (and similar)
++* Serial NOR flash controller for MediaTek SoCs
+ 
+ Required properties:
+ - compatible: 	  For mt8173, compatible should be "mediatek,mt8173-nor",
+@@ -10,6 +10,7 @@ Required properties:
+ 		  "mediatek,mt2712-nor", "mediatek,mt8173-nor"
+ 		  "mediatek,mt7622-nor", "mediatek,mt8173-nor"
+ 		  "mediatek,mt7623-nor", "mediatek,mt8173-nor"
++		  "mediatek,mt7629-nor", "mediatek,mt8173-nor"
+ 		  "mediatek,mt8173-nor"
+ - reg: 		  physical base address and length of the controller's register
+ - clocks: 	  the phandle of the clocks needed by the nor controller
+-- 
+1.9.1
