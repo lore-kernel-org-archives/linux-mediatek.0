@@ -1,31 +1,25 @@
 From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH v2 2/3] clk: mediatek: Add flags to mtk_gate
-Date: Thu, 29 Nov 2018 22:50:12 -0800
-Message-ID: <154356061291.88331.179492557229227536@swboyd.mtv.corp.google.com>
-References: <20181116180901.17737-1-matthias.bgg@kernel.org>
- <20181116180901.17737-3-matthias.bgg@kernel.org>
+Subject: Re: [PATCH 1/2] clk: mediatek: add clock support for MT7629 SoC
+Date: Thu, 29 Nov 2018 22:56:25 -0800
+Message-ID: <154356098531.88331.12755256836499377459@swboyd.mtv.corp.google.com>
+References: <815e38d4d74689980cd73c86d9e80fd5854cfc94.1541143168.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181116180901.17737-3-matthias.bgg@kernel.org>
+In-Reply-To: <815e38d4d74689980cd73c86d9e80fd5854cfc94.1541143168.git.ryder.lee@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: matthias.bgg@gmail.com, matthias.bgg@kernel.org, mturquette@baylibre.com
-Cc: jasu@njomotys.info, sean.wang@kernel.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Rob Herring <robh+dt@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, Weijie Gao <weijie.gao@mediatek.com>, Roy Luo <cheng-hao.luo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>, Wenzhen Yu <wenzhen.yu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting matthias.bgg@kernel.org (2018-11-16 10:09:00)
-> From: Jasper Mattsson <jasu@njomotys.info>
+Quoting Ryder Lee (2018-11-05 00:43:55)
+> Add all supported clocks exported from every susbystem found on MT7629 So=
+C.
 > =
 
-> This is required to mark gates as CLK_IS_CRITICAL.
-> =
-
-> Fixes: 96596aa06628 ("clk: mediatek: add clk support for MT6797")
-> Signed-off-by: Jasper Mattsson <jasu@njomotys.info>
-> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+> Signed-off-by: Wenzhen Yu <wenzhen.yu@mediatek.com>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 > ---
 
-These other two look ok to me. I'll apply them to the clk tree and wait
-to merge to clk-next in case someone from Mediatek wants to review these
-changes.
+Applied to clk-next
