@@ -1,183 +1,104 @@
-From: <honghui.zhang@mediatek.com>
-Subject: [PATCH v3] PCI: mediatek: Use devm_of_pci_get_host_bridge_resources() to parse DT
-Date: Fri, 30 Nov 2018 11:33:00 +0800
-Message-ID: <1543548780-3912-1-git-send-email-honghui.zhang@mediatek.com>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH v5 08/12] dt-bindings: mediatek: Change the binding for mmsys
+ clocks
+Date: Thu, 29 Nov 2018 22:43:57 -0800
+Message-ID: <154356023767.88331.18401188808548429052@swboyd.mtv.corp.google.com>
+References: <20181116125449.23581-1-matthias.bgg@kernel.org>
+ <20181116125449.23581-9-matthias.bgg@kernel.org>
+ <20181116231522.GA18006@bogus>
+ <2a23e407-4cd4-2e2b-97a5-4e2bb96846e0@gmail.com>
+ <CAL_JsqKJQwfDJbpmwW+oCxiDkSp5+6mG-uoURmCQVEMP_jFOEg@mail.gmail.com>
+ <154281878765.88331.10581984256202566195@swboyd.mtv.corp.google.com>
+ <458178ac-c0fc-9671-7fc8-ed2d6f61424c@suse.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <458178ac-c0fc-9671-7fc8-ed2d6f61424c@suse.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: lorenzo.pieralisi@arm.com, bhelgaas@google.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com
-Cc: devicetree@vger.kernel.org, honghui.zhang@mediatek.com, youlin.pei@mediatek.com, jianjun.wang@mediatek.com
+To: Matthias Brugger <matthias.bgg@gmail.com>, Matthias Brugger <mbrugger@suse.com>, Rob Herring <robh@kernel.org>
+Cc: matthias.bgg@kernel.org, Mark Rutland <mark.rutland@arm.com>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Ulrich Hecht <ulrich.hecht+renesas@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sean Wang <sean.wang@mediatek.com>, Sean Wang <sean.wang@kernel.org>, Randy Dunlap <rdunlap@infradead.org>, Chen-Yu Tsai <wens@csie.org>, dri-devel <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, linux-clk <linux-clk@vger.kernel.>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Honghui Zhang <honghui.zhang@mediatek.com>
+Quoting Matthias Brugger (2018-11-21 09:09:52)
+> =
 
-Use the devm_of_pci_get_host_bridge_resources() API in place of the PCI OF
-DT parser.
+> =
 
-Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-Acked-by: Ryder Lee <ryder.lee@mediatek.com>
----
- drivers/pci/controller/pcie-mediatek.c | 101 +++++++++------------------------
- 1 file changed, 27 insertions(+), 74 deletions(-)
+> On 21/11/2018 17:46, Stephen Boyd wrote:
+> > Quoting Rob Herring (2018-11-19 11:15:16)
+> >> On Sun, Nov 18, 2018 at 11:12 AM Matthias Brugger
+> >> <matthias.bgg@gmail.com> wrote:
+> >>> On 11/17/18 12:15 AM, Rob Herring wrote:
+> >>>> On Fri, Nov 16, 2018 at 01:54:45PM +0100, matthias.bgg@kernel.org wr=
+ote:
+> >>>>> -    #clock-cells =3D <1>;
+> >>>>> +
+> >>>>> +    mmsys_clk: clock-controller@14000000 {
+> >>>>> +            compatible =3D "mediatek,mt2712-mmsys-clk";
+> >>>>> +            #clock-cells =3D <1>;
+> >>>>
+> >>>> This goes against the general direction of not defining separate nod=
+es
+> >>>> for providers with no resources.
+> >>>>
+> >>>> Why do you need this and what does it buy if you have to continue to
+> >>>> support the existing chips?
+> >>>>
+> >>>
+> >>> It would show explicitly that the mmsys block is used to probe two
+> >>> drivers, one for the gpu and one for the clocks. Otherwise that is
+> >>> hidden in the drm driver code. I think it is cleaner to describe that=
+ in
+> >>> the device tree.
+> >>
+> >> No, that's maybe cleaner for the driver implementation in the Linux
+> >> kernel. What about other OS's or when Linux drivers and subsystems
+> >> needs change? Cleaner for DT is design bindings that reflect the h/w.
+> >> Hardware is sometimes just messy.
+> >>
+> > =
 
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 2a1f97c..6917aec 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -197,29 +197,20 @@ struct mtk_pcie_port {
-  * @dev: pointer to PCIe device
-  * @base: IO mapped register base
-  * @free_ck: free-run reference clock
-- * @io: IO resource
-- * @pio: PIO resource
-  * @mem: non-prefetchable memory resource
-- * @busn: bus range
-- * @offset: IO / Memory offset
-  * @ports: pointer to PCIe port information
-  * @soc: pointer to SoC-dependent operations
-+ * @busnr: root bus number
-  */
- struct mtk_pcie {
- 	struct device *dev;
- 	void __iomem *base;
- 	struct clk *free_ck;
- 
--	struct resource io;
--	struct resource pio;
- 	struct resource mem;
--	struct resource busn;
--	struct {
--		resource_size_t mem;
--		resource_size_t io;
--	} offset;
- 	struct list_head ports;
- 	const struct mtk_pcie_soc *soc;
-+	unsigned int busnr;
- };
- 
- static void mtk_pcie_subsys_powerdown(struct mtk_pcie *pcie)
-@@ -1045,55 +1036,43 @@ static int mtk_pcie_setup(struct mtk_pcie *pcie)
- {
- 	struct device *dev = pcie->dev;
- 	struct device_node *node = dev->of_node, *child;
--	struct of_pci_range_parser parser;
--	struct of_pci_range range;
--	struct resource res;
- 	struct mtk_pcie_port *port, *tmp;
-+	struct pci_host_bridge *host = pci_host_bridge_from_priv(pcie);
-+	struct list_head *windows = &host->windows;
-+	struct resource_entry *win, *tmp_win;
-+	resource_size_t io_base;
- 	int err;
- 
--	if (of_pci_range_parser_init(&parser, node)) {
--		dev_err(dev, "missing \"ranges\" property\n");
--		return -EINVAL;
--	}
-+	err = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff,
-+						    windows, &io_base);
-+	if (err)
-+		return err;
- 
--	for_each_of_pci_range(&parser, &range) {
--		err = of_pci_range_to_resource(&range, node, &res);
--		if (err < 0)
--			return err;
-+	err = devm_request_pci_bus_resources(dev, windows);
-+	if (err < 0)
-+		return err;
- 
--		switch (res.flags & IORESOURCE_TYPE_BITS) {
-+	/* Get the I/O and memory ranges from DT */
-+	resource_list_for_each_entry_safe(win, tmp_win, windows) {
-+		switch (resource_type(win->res)) {
- 		case IORESOURCE_IO:
--			pcie->offset.io = res.start - range.pci_addr;
--
--			memcpy(&pcie->pio, &res, sizeof(res));
--			pcie->pio.name = node->full_name;
--
--			pcie->io.start = range.cpu_addr;
--			pcie->io.end = range.cpu_addr + range.size - 1;
--			pcie->io.flags = IORESOURCE_MEM;
--			pcie->io.name = "I/O";
--
--			memcpy(&res, &pcie->io, sizeof(res));
-+			err = devm_pci_remap_iospace(dev, win->res, io_base);
-+			if (err) {
-+				dev_warn(dev, "error %d: failed to map resource %pR\n",
-+					 err, win->res);
-+				resource_list_destroy_entry(win);
-+			}
- 			break;
--
- 		case IORESOURCE_MEM:
--			pcie->offset.mem = res.start - range.pci_addr;
--
--			memcpy(&pcie->mem, &res, sizeof(res));
-+			memcpy(&pcie->mem, win->res, sizeof(*win->res));
- 			pcie->mem.name = "non-prefetchable";
- 			break;
-+		case IORESOURCE_BUS:
-+			pcie->busnr = win->res->start;
-+			break;
- 		}
- 	}
- 
--	err = of_pci_parse_bus_range(node, &pcie->busn);
--	if (err < 0) {
--		dev_err(dev, "failed to parse bus ranges property: %d\n", err);
--		pcie->busn.name = node->name;
--		pcie->busn.start = 0;
--		pcie->busn.end = 0xff;
--		pcie->busn.flags = IORESOURCE_BUS;
--	}
--
- 	for_each_available_child_of_node(node, child) {
- 		int slot;
- 
-@@ -1125,28 +1104,6 @@ static int mtk_pcie_setup(struct mtk_pcie *pcie)
- 	return 0;
- }
- 
--static int mtk_pcie_request_resources(struct mtk_pcie *pcie)
--{
--	struct pci_host_bridge *host = pci_host_bridge_from_priv(pcie);
--	struct list_head *windows = &host->windows;
--	struct device *dev = pcie->dev;
--	int err;
--
--	pci_add_resource_offset(windows, &pcie->pio, pcie->offset.io);
--	pci_add_resource_offset(windows, &pcie->mem, pcie->offset.mem);
--	pci_add_resource(windows, &pcie->busn);
--
--	err = devm_request_pci_bus_resources(dev, windows);
--	if (err < 0)
--		return err;
--
--	err = devm_pci_remap_iospace(dev, &pcie->pio, pcie->io.start);
--	if (err < 0)
--		return err;
--
--	return 0;
--}
--
- static int mtk_pcie_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
-@@ -1169,11 +1126,7 @@ static int mtk_pcie_probe(struct platform_device *pdev)
- 	if (err)
- 		return err;
- 
--	err = mtk_pcie_request_resources(pcie);
--	if (err)
--		goto put_resources;
--
--	host->busnr = pcie->busn.start;
-+	host->busnr = pcie->busnr;
- 	host->dev.parent = pcie->dev;
- 	host->ops = pcie->soc->ops;
- 	host->map_irq = of_irq_parse_and_map_pci;
--- 
-2.6.4
+> > I agree. I fail to see what this patch series is doing besides changing
+> > driver probe and device creation methods and making a backwards
+> > incompatible change to DT. Is there any other benefit here?
+> > =
+
+> =
+
+> You are referring whole series?
+> Citing the cover letter:
+> "MMSYS in Mediatek SoCs has some registers to control clock gates (which =
+is
+> used in the clk driver) and some registers to set the routing and enable
+> the differnet (sic!) blocks of the display subsystem.
+> =
+
+> Up to now both drivers, clock and drm are probed with the same device tree
+> compatible. But only the first driver get probed, which in effect breaks
+> graphics on mt8173 and mt2701.
+
+Ouch!
+
+> =
+
+> This patch uses a platform device registration in the DRM driver, which
+> will trigger the probe of the corresponding clock driver. It was tested o=
+n the
+> bananapi-r2 and the Acer R13 Chromebook."
+
+Alright, please don't add nodes in DT just to make device drivers probe.
+Instead, register clks from the drm driver or create a child platform
+device for the clk bits purely in the drm driver and have that probe the
+associated clk driver from there.
+
+> =
+
+> DT is broken right now, because two drivers rely on the same node, which =
+gets
+> consumed just once. The new DT introduced does not break anything because=
+ it is
+> only used for boards that: "[..] are not available to the general public
+> (mt2712e) or only have the mmsys clock driver part implemented (mt6797)."
+
+Ok, so backwards compatibility is irrelevant then. Sounds fine to me.
