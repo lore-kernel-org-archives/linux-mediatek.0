@@ -1,56 +1,33 @@
 From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH v2 0/3] Mark clocks as critical for MT6797
-Date: Thu, 29 Nov 2018 22:47:23 -0800
-Message-ID: <154356044342.88331.13729809794593193239@swboyd.mtv.corp.google.com>
+Subject: Re: [PATCH v2 3/3] clk: mediatek: Mark bus and DRAM related clocks as
+ critical
+Date: Thu, 29 Nov 2018 22:48:51 -0800
+Message-ID: <154356053181.88331.12262289931983027816@swboyd.mtv.corp.google.com>
 References: <20181116180901.17737-1-matthias.bgg@kernel.org>
+ <20181116180901.17737-4-matthias.bgg@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181116180901.17737-1-matthias.bgg@kernel.org>
+In-Reply-To: <20181116180901.17737-4-matthias.bgg@kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: matthias.bgg@gmail.com, matthias.bgg@kernel.org, mturquette@baylibre.com
-Cc: jasu@njomotys.info, sean.wang@kernel.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
+Cc: jasu@njomotys.info, sean.wang@kernel.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting matthias.bgg@kernel.org (2018-11-16 10:08:58)
-> From: Matthias Brugger <mbrugger@suse.com>
+Quoting matthias.bgg@kernel.org (2018-11-16 10:09:01)
+> From: Jasper Mattsson <jasu@njomotys.info>
 > =
 
-> Jasper send this series some month ago. As there was no reaction from
-> his side, I'll do a friendly take-over.
-> I tested the patches on my Helios X20 boards and they fix the issue.
-> I didn't add a Tested-by tag as I added my Signed-off-by.
+> This marks MUXes axi_sel and ddrphycfg_sel as well as gates
+> infra_dramc_f26m and infra_dramc_b_f26m as with CLK_IS_CRITICAL.
 > =
 
-> Changes since v1:
-> - add a fixes tag.
-> =
-
+> Fixes: 96596aa06628 ("clk: mediatek: add clk support for MT6797")
+> Signed-off-by: Jasper Mattsson <jasu@njomotys.info>
+> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
 > ---
-> =
 
-> Currently, DRAM-related clocks and the axi_sel MUX are not marked with
-> CLK_IS_CRITICAL for MT6797. This causes memory corruption when the
-> system is booted without clk_ignore_unused.
-> =
-
-> This patchset
-> =
-
-> 1. Makes it possible to mark outputs of MUXes as critical by introducing
->    a new macro, MUX_FLAGS,
-> 2. Makes it possible to mark gates as critical by adding flags to
->    mtk_gate, and
-> 3. Marks axi_sel, ddrphycfg_sel, infra_dramc_f26m and infra_dramc_b_f26m
->    as critical.
-> =
-
-> The addition of flags to mtk_gate also exists in the patch series "Add
-> basic and clock support for Mediatek MT8183 SoC" [1].  The type of
-> flags is unsigned int in that series, but the real type is unsigned
-> long, so my patch differs from that patch.
-
-Will anyone from Mediatek review this? Why aren't the people who signed
-off on drivers/clk/mediatek/clk-mt6797.c included on this patch series?
-They no longer work there?
+Can you add comments in the commit text and in the code about why the
+CLK_IS_CRITICAL flag is added to these clks? It makes it easier to
+figure out why the flag is there months from now when we all forget
