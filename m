@@ -1,104 +1,56 @@
 From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH v5 08/12] dt-bindings: mediatek: Change the binding for mmsys
- clocks
-Date: Thu, 29 Nov 2018 22:43:57 -0800
-Message-ID: <154356023767.88331.18401188808548429052@swboyd.mtv.corp.google.com>
-References: <20181116125449.23581-1-matthias.bgg@kernel.org>
- <20181116125449.23581-9-matthias.bgg@kernel.org>
- <20181116231522.GA18006@bogus>
- <2a23e407-4cd4-2e2b-97a5-4e2bb96846e0@gmail.com>
- <CAL_JsqKJQwfDJbpmwW+oCxiDkSp5+6mG-uoURmCQVEMP_jFOEg@mail.gmail.com>
- <154281878765.88331.10581984256202566195@swboyd.mtv.corp.google.com>
- <458178ac-c0fc-9671-7fc8-ed2d6f61424c@suse.com>
+Subject: Re: [PATCH v2 0/3] Mark clocks as critical for MT6797
+Date: Thu, 29 Nov 2018 22:47:23 -0800
+Message-ID: <154356044342.88331.13729809794593193239@swboyd.mtv.corp.google.com>
+References: <20181116180901.17737-1-matthias.bgg@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <458178ac-c0fc-9671-7fc8-ed2d6f61424c@suse.com>
+In-Reply-To: <20181116180901.17737-1-matthias.bgg@kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Matthias Brugger <mbrugger@suse.com>, Rob Herring <robh@kernel.org>
-Cc: matthias.bgg@kernel.org, Mark Rutland <mark.rutland@arm.com>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Ulrich Hecht <ulrich.hecht+renesas@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sean Wang <sean.wang@mediatek.com>, Sean Wang <sean.wang@kernel.org>, Randy Dunlap <rdunlap@infradead.org>, Chen-Yu Tsai <wens@csie.org>, dri-devel <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, linux-clk <linux-clk@vger.kernel.>
+To: matthias.bgg@gmail.com, matthias.bgg@kernel.org, mturquette@baylibre.com
+Cc: jasu@njomotys.info, sean.wang@kernel.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting Matthias Brugger (2018-11-21 09:09:52)
+Quoting matthias.bgg@kernel.org (2018-11-16 10:08:58)
+> From: Matthias Brugger <mbrugger@suse.com>
 > =
 
+> Jasper send this series some month ago. As there was no reaction from
+> his side, I'll do a friendly take-over.
+> I tested the patches on my Helios X20 boards and they fix the issue.
+> I didn't add a Tested-by tag as I added my Signed-off-by.
 > =
 
-> On 21/11/2018 17:46, Stephen Boyd wrote:
-> > Quoting Rob Herring (2018-11-19 11:15:16)
-> >> On Sun, Nov 18, 2018 at 11:12 AM Matthias Brugger
-> >> <matthias.bgg@gmail.com> wrote:
-> >>> On 11/17/18 12:15 AM, Rob Herring wrote:
-> >>>> On Fri, Nov 16, 2018 at 01:54:45PM +0100, matthias.bgg@kernel.org wr=
-ote:
-> >>>>> -    #clock-cells =3D <1>;
-> >>>>> +
-> >>>>> +    mmsys_clk: clock-controller@14000000 {
-> >>>>> +            compatible =3D "mediatek,mt2712-mmsys-clk";
-> >>>>> +            #clock-cells =3D <1>;
-> >>>>
-> >>>> This goes against the general direction of not defining separate nod=
-es
-> >>>> for providers with no resources.
-> >>>>
-> >>>> Why do you need this and what does it buy if you have to continue to
-> >>>> support the existing chips?
-> >>>>
-> >>>
-> >>> It would show explicitly that the mmsys block is used to probe two
-> >>> drivers, one for the gpu and one for the clocks. Otherwise that is
-> >>> hidden in the drm driver code. I think it is cleaner to describe that=
- in
-> >>> the device tree.
-> >>
-> >> No, that's maybe cleaner for the driver implementation in the Linux
-> >> kernel. What about other OS's or when Linux drivers and subsystems
-> >> needs change? Cleaner for DT is design bindings that reflect the h/w.
-> >> Hardware is sometimes just messy.
-> >>
-> > =
-
-> > I agree. I fail to see what this patch series is doing besides changing
-> > driver probe and device creation methods and making a backwards
-> > incompatible change to DT. Is there any other benefit here?
-> > =
-
+> Changes since v1:
+> - add a fixes tag.
 > =
 
-> You are referring whole series?
-> Citing the cover letter:
-> "MMSYS in Mediatek SoCs has some registers to control clock gates (which =
-is
-> used in the clk driver) and some registers to set the routing and enable
-> the differnet (sic!) blocks of the display subsystem.
+> ---
 > =
 
-> Up to now both drivers, clock and drm are probed with the same device tree
-> compatible. But only the first driver get probed, which in effect breaks
-> graphics on mt8173 and mt2701.
-
-Ouch!
-
+> Currently, DRAM-related clocks and the axi_sel MUX are not marked with
+> CLK_IS_CRITICAL for MT6797. This causes memory corruption when the
+> system is booted without clk_ignore_unused.
 > =
 
-> This patch uses a platform device registration in the DRM driver, which
-> will trigger the probe of the corresponding clock driver. It was tested o=
-n the
-> bananapi-r2 and the Acer R13 Chromebook."
-
-Alright, please don't add nodes in DT just to make device drivers probe.
-Instead, register clks from the drm driver or create a child platform
-device for the clk bits purely in the drm driver and have that probe the
-associated clk driver from there.
-
+> This patchset
 > =
 
-> DT is broken right now, because two drivers rely on the same node, which =
-gets
-> consumed just once. The new DT introduced does not break anything because=
- it is
-> only used for boards that: "[..] are not available to the general public
-> (mt2712e) or only have the mmsys clock driver part implemented (mt6797)."
+> 1. Makes it possible to mark outputs of MUXes as critical by introducing
+>    a new macro, MUX_FLAGS,
+> 2. Makes it possible to mark gates as critical by adding flags to
+>    mtk_gate, and
+> 3. Marks axi_sel, ddrphycfg_sel, infra_dramc_f26m and infra_dramc_b_f26m
+>    as critical.
+> =
 
-Ok, so backwards compatibility is irrelevant then. Sounds fine to me.
+> The addition of flags to mtk_gate also exists in the patch series "Add
+> basic and clock support for Mediatek MT8183 SoC" [1].  The type of
+> flags is unsigned int in that series, but the real type is unsigned
+> long, so my patch differs from that patch.
+
+Will anyone from Mediatek review this? Why aren't the people who signed
+off on drivers/clk/mediatek/clk-mt6797.c included on this patch series?
+They no longer work there?
