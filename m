@@ -1,81 +1,61 @@
-From: Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: Kill off skeleton{64}.dtsi
-Date: Fri, 30 Nov 2018 09:52:15 -0800
-Message-ID: <3d46df10-9b85-7ecf-9302-0cde08b9283a@gmail.com>
-References: <20181130170634.9467-1-robh@kernel.org>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 12/36] dt-bindings: arm: Convert cpu binding to json-schema
+Date: Fri, 30 Nov 2018 12:00:05 -0600
+Message-ID: <CAL_JsqJJkcbxvfbVVOTPb5gavPgypO-Cd05C6qpvbvPMd1G81g@mail.gmail.com>
+References: <20181005165848.3474-1-robh@kernel.org> <20181005165848.3474-13-robh@kernel.org>
+ <035ae23f-3c92-ffd9-0753-abbd604c5c02@xilinx.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20181130170634.9467-1-robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Alexandre Belloni <alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org>, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Jamie Iles <jamie-wmLquQDDieKakBO8gow8eQ@public.gmane.org>, Robert Jarzmik <robert.jarzmik-GANU6spQydw@public.gmane.org>, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, Alexandre Torgue <alexandre.torgue-qxv4g6HH51o@public.gmane.org>, Jesper Nilsson <jesper.nilsson-VrBV9hrLPhE@public.gmane.org>, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Gregory Clement <gregory.clement-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, linux-arm-kernel-VrBV9hrLPhE@public.gmane.org, Jon Mason <jonmason-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, Ludovic Desroches <ludovic.desroches-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>, bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, Hauke Mehrtens <hauke-5/S+JYg5SzeELgA04lAiVw@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <035ae23f-3c92-ffd9-0753-abbd604c5c02@xilinx.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Michal Simek <michal.simek@xilinx.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, devicetree@vger.kernel.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linuxppc-dev <linuxppc-dev@lists.ozlabs.org>, Tom Rini <trini@konsulko.com>, Kumar Gala <kumar.gala@linaro.org>, Grant Likely <glikely@secretlab.ca>, Arnd Bergmann <arnd@arndb.de>, Linus Walleij <linus.walleij@linaro.org>, Pantelis Antoniou <pantelis.antoniou@konsulko.com>, Bjorn Andersson <bjorn.andersson@linaro.org>, Olof Johansson <olof@lixom.net>, Mark Brown <broonie@kernel.org>, Geert Uytterhoeven <geert@linux-m68k.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Frank Rowand <frowand.list@gmail.com>, Jonathan
 List-Id: linux-mediatek@lists.infradead.org
 
+On Thu, Nov 8, 2018 at 2:49 AM Michal Simek <michal.simek@xilinx.com> wrote:
+>
+> Hi Rob,
+>
+> On 05. 10. 18 18:58, Rob Herring wrote:
+> > Convert ARM CPU binding to DT schema format using json-schema.
+> >
+> > Cc: Mark Rutland <mark.rutland@arm.com>
+> > Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> > Cc: devicetree@vger.kernel.org
+> > Cc: linux-arm-kernel@lists.infradead.org
+> > Cc: linux-mediatek@lists.infradead.org
+> > Signed-off-by: Rob Herring <robh@kernel.org>
+> > ---
+> >  .../devicetree/bindings/arm/cpus.txt          | 490 -----------------
+> >  .../devicetree/bindings/arm/cpus.yaml         | 503 ++++++++++++++++++
+> >  2 files changed, 503 insertions(+), 490 deletions(-)
+> >  delete mode 100644 Documentation/devicetree/bindings/arm/cpus.txt
+> >  create mode 100644 Documentation/devicetree/bindings/arm/cpus.yaml
 
+[...]
 
-On 11/30/2018 9:06 AM, Rob Herring wrote:
-> Remove the usage of skeleton.dtsi in the remaining dts files. It was
-> deprecated since commit 9c0da3cc61f1 ("ARM: dts: explicitly mark
-> skeleton.dtsi as deprecated"). This will make adding a unit-address to
-> memory nodes easier.
-> 
-> The main tricky part to removing skeleton.dtsi is we could end up with
-> no /memory node at all when a bootloader depends on one being present. I
-> hacked up dtc to check for this condition.
-> 
-> Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> ---
+> I have take a look at xilinx part of this and try to build it for arm64
+> platforms and I see errors coming from this cpu description.
+> /root/linux/arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dt.yaml:
+> cpu@0:compatible: ['arm,cortex-a53', 'arm,armv8'] is too long
+> /root/linux/arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dt.yaml:
+> cpu@0:compatible: Additional items are not allowed ('arm,armv8' was
+> unexpected)
 
->  arch/arm/boot/dts/bcm-cygnus.dtsi              |  9 +++++++--
->  arch/arm/boot/dts/bcm-nsp.dtsi                 |  4 ++--
->  arch/arm/boot/dts/bcm11351.dtsi                |  4 ++--
->  arch/arm/boot/dts/bcm21664-garnet.dts          |  1 +
->  arch/arm/boot/dts/bcm21664.dtsi                |  4 ++--
->  arch/arm/boot/dts/bcm23550-sparrow.dts         |  1 +
->  arch/arm/boot/dts/bcm23550.dtsi                |  4 ++--
->  arch/arm/boot/dts/bcm28155-ap.dts              |  1 +
->  arch/arm/boot/dts/bcm47081-asus-rt-n18u.dts    |  1 +
->  .../boot/dts/bcm47081-buffalo-wzr-600dhp2.dts  |  1 +
->  .../boot/dts/bcm47081-buffalo-wzr-900dhp.dts   |  1 +
->  arch/arm/boot/dts/bcm47081-luxul-xap-1410.dts  |  1 +
->  arch/arm/boot/dts/bcm47081-luxul-xwr-1200.dts  |  1 +
->  .../boot/dts/bcm47081-tplink-archer-c5-v2.dts  |  1 +
->  arch/arm/boot/dts/bcm47094-dlink-dir-885l.dts  |  1 +
->  .../arm/boot/dts/bcm47094-linksys-panamera.dts |  1 +
->  arch/arm/boot/dts/bcm47094-luxul-abr-4500.dts  |  1 +
->  arch/arm/boot/dts/bcm47094-luxul-xap-1610.dts  |  1 +
->  arch/arm/boot/dts/bcm47094-luxul-xbr-4500.dts  |  1 +
->  arch/arm/boot/dts/bcm47094-luxul-xwr-3100.dts  |  1 +
->  .../boot/dts/bcm47094-luxul-xwr-3150-v1.dts    |  1 +
->  arch/arm/boot/dts/bcm47094-netgear-r8500.dts   |  1 +
->  arch/arm/boot/dts/bcm47189-luxul-xap-1440.dts  |  1 +
->  arch/arm/boot/dts/bcm47189-luxul-xap-810.dts   |  1 +
->  arch/arm/boot/dts/bcm47189-tenda-ac9.dts       |  1 +
->  arch/arm/boot/dts/bcm5301x.dtsi                |  3 ++-
->  .../boot/dts/bcm53340-ubnt-unifi-switch8.dts   |  1 +
->  arch/arm/boot/dts/bcm53573.dtsi                |  3 ++-
->  arch/arm/boot/dts/bcm63138.dtsi                |  4 ++--
->  arch/arm/boot/dts/bcm7445.dtsi                 |  2 --
->  arch/arm/boot/dts/bcm947189acdbmr.dts          |  1 +
->  arch/arm/boot/dts/bcm953012er.dts              |  1 +
->  arch/arm/boot/dts/bcm953012hr.dts              |  1 +
->  arch/arm/boot/dts/bcm953012k.dts               |  1 +
+Thanks for actually giving this a spin!
 
-For these files above (Broadcom):
+> Based on grep this is used in a lot of places
+> compatible = "arm,cortex-a53", "arm,armv8";
+>
+> Should this be moved to just simple?
+> compatible = "arm,cortex-a53";
 
-Reviewed-by: Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+I'd normally go with the majority which would be to keep it. However,
+'arm,armv8' is of questionable value, isn't actually documented, and
+doesn't exist for any other version of the architecture. So we should
+kill it IMO.
 
-Thanks!
---
-Florian
+Paging Mark Rutland and other arm folks...
+
+Rob
