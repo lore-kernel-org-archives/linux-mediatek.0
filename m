@@ -1,62 +1,106 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH 1/4] of/device: Add a way to probe drivers by match data
-Date: Thu, 29 Nov 2018 23:03:27 -0800
-Message-ID: <154356140759.88331.15666344779026803117@swboyd.mtv.corp.google.com>
-References: <20181106183609.207702-1-sboyd@kernel.org>
- <20181106183609.207702-2-sboyd@kernel.org>
- <CAL_JsqLvKWcJUYDyWOg3rMeEWv7JV4zw7-YkOUWiL5rfXgVRvQ@mail.gmail.com>
- <154161585170.88331.1822872519370217248@swboyd.mtv.corp.google.com>
- <154353772392.88331.16937191244549721858@swboyd.mtv.corp.google.com>
- <CAL_JsqJuZAr7ndznrUu0cuM7DpB5A7ixjJ+vZ97s5G4xz0sVow@mail.gmail.com>
+From: Matthias Brugger <mbrugger@suse.com>
+Subject: Re: [PATCH v5 08/12] dt-bindings: mediatek: Change the binding for
+ mmsys clocks
+Date: Fri, 30 Nov 2018 09:59:51 +0100
+Message-ID: <a229bfc7-683f-5b0d-7b71-54f934de6214@suse.com>
+References: <20181116125449.23581-1-matthias.bgg@kernel.org>
+ <20181116125449.23581-9-matthias.bgg@kernel.org>
+ <20181116231522.GA18006@bogus>
+ <2a23e407-4cd4-2e2b-97a5-4e2bb96846e0@gmail.com>
+ <CAL_JsqKJQwfDJbpmwW+oCxiDkSp5+6mG-uoURmCQVEMP_jFOEg@mail.gmail.com>
+ <154281878765.88331.10581984256202566195@swboyd.mtv.corp.google.com>
+ <458178ac-c0fc-9671-7fc8-ed2d6f61424c@suse.com>
+ <154356023767.88331.18401188808548429052@swboyd.mtv.corp.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAL_JsqJuZAr7ndznrUu0cuM7DpB5A7ixjJ+vZ97s5G4xz0sVow@mail.gmail.com>
+In-Reply-To: <154356023767.88331.18401188808548429052@swboyd.mtv.corp.google.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Michael Turquette <mturquette@baylibre.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linux-clk <linux-clk@vger.kernel.org>, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, Frank Rowand <frowand.list@gmail.com>
+To: Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>
+Cc: matthias.bgg@kernel.org, Mark Rutland <mark.rutland@arm.com>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Ulrich Hecht <ulrich.hecht+renesas@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sean Wang <sean.wang@mediatek.com>, Sean Wang <sean.wang@kernel.org>, Randy Dunlap <rdunlap@infradead.org>, Chen-Yu Tsai <wens@csie.org>, dri-devel <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, linux-clk <linux-clk@vger.kernel.>
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting Rob Herring (2018-11-29 17:01:54)
-> On Thu, Nov 29, 2018 at 6:28 PM Stephen Boyd <sboyd@kernel.org> wrote:
-> >
-> > Quoting Stephen Boyd (2018-11-07 10:37:31)
-> > > appropriate structure with to_platform_device() or to_i2c_client()?
-> > >
-> > > So the example would become
-> > >
-> > >   struct of_driver_probe_func {
-> > >         int (*probe)(struct device *dev);
-> > >   };
-> > >
-> > >   struct of_driver_probe_func mtk_probes[] =3D {
-> > >         mtk_probe1,
-> > >         mtk_probe2,
-> > >         mtk_probe3,
-> > >   };
-> > >
-> > >   struct platform_driver mtk_driver =3D {
-> > >         .driver =3D {
-> > >                 .name =3D "mtk-foo";
-> > >                 .of_match_table =3D mtk_match_table,
-> > >                 .of_probes =3D &mtk_probes;
-> > >         },
-> > >   };
-> > >
-> > > And the probe functions might need to container_of() the device point=
-er
-> > > to get the struct they know they need. The probe function could also =
-be
-> > > added to of_device_id and then we would have to look and see if that
-> > > pointer is populated when the device is matched in generic device cod=
-e.
-> > >
-> >
-> > I guess I'll go down the path of extending the of_device_id structure?
-> =
 
-> Unfortunately, I don't think you can change of_device_id as it's part
-> of the kernel ABI.
 
-Ok. Then I'll go down the path of making it a parallel array?
+On 30/11/2018 07:43, Stephen Boyd wrote:
+> Quoting Matthias Brugger (2018-11-21 09:09:52)
+>>
+>>
+>> On 21/11/2018 17:46, Stephen Boyd wrote:
+>>> Quoting Rob Herring (2018-11-19 11:15:16)
+>>>> On Sun, Nov 18, 2018 at 11:12 AM Matthias Brugger
+>>>> <matthias.bgg@gmail.com> wrote:
+>>>>> On 11/17/18 12:15 AM, Rob Herring wrote:
+>>>>>> On Fri, Nov 16, 2018 at 01:54:45PM +0100, matthias.bgg@kernel.org wrote:
+>>>>>>> -    #clock-cells = <1>;
+>>>>>>> +
+>>>>>>> +    mmsys_clk: clock-controller@14000000 {
+>>>>>>> +            compatible = "mediatek,mt2712-mmsys-clk";
+>>>>>>> +            #clock-cells = <1>;
+>>>>>>
+>>>>>> This goes against the general direction of not defining separate nodes
+>>>>>> for providers with no resources.
+>>>>>>
+>>>>>> Why do you need this and what does it buy if you have to continue to
+>>>>>> support the existing chips?
+>>>>>>
+>>>>>
+>>>>> It would show explicitly that the mmsys block is used to probe two
+>>>>> drivers, one for the gpu and one for the clocks. Otherwise that is
+>>>>> hidden in the drm driver code. I think it is cleaner to describe that in
+>>>>> the device tree.
+>>>>
+>>>> No, that's maybe cleaner for the driver implementation in the Linux
+>>>> kernel. What about other OS's or when Linux drivers and subsystems
+>>>> needs change? Cleaner for DT is design bindings that reflect the h/w.
+>>>> Hardware is sometimes just messy.
+>>>>
+>>>
+>>> I agree. I fail to see what this patch series is doing besides changing
+>>> driver probe and device creation methods and making a backwards
+>>> incompatible change to DT. Is there any other benefit here?
+>>>
+>>
+>> You are referring whole series?
+>> Citing the cover letter:
+>> "MMSYS in Mediatek SoCs has some registers to control clock gates (which is
+>> used in the clk driver) and some registers to set the routing and enable
+>> the differnet (sic!) blocks of the display subsystem.
+>>
+>> Up to now both drivers, clock and drm are probed with the same device tree
+>> compatible. But only the first driver get probed, which in effect breaks
+>> graphics on mt8173 and mt2701.
+> 
+> Ouch!
+> 
+
+Yes :)
+
+>>
+>> This patch uses a platform device registration in the DRM driver, which
+>> will trigger the probe of the corresponding clock driver. It was tested on the
+>> bananapi-r2 and the Acer R13 Chromebook."
+> 
+> Alright, please don't add nodes in DT just to make device drivers probe.
+> Instead, register clks from the drm driver or create a child platform
+> device for the clk bits purely in the drm driver and have that probe the
+> associated clk driver from there.
+> 
+
+I'll make the other SoCs probe via a child platform device from the drm driver,
+as already done in 2/12 and 3/12.
+
+Regards,
+Matthias
+
+>>
+>> DT is broken right now, because two drivers rely on the same node, which gets
+>> consumed just once. The new DT introduced does not break anything because it is
+>> only used for boards that: "[..] are not available to the general public
+>> (mt2712e) or only have the mmsys clock driver part implemented (mt6797)."
+> 
+> Ok, so backwards compatibility is irrelevant then. Sounds fine to me.
+> 
+> 
