@@ -1,61 +1,119 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 12/36] dt-bindings: arm: Convert cpu binding to json-schema
-Date: Fri, 30 Nov 2018 12:00:05 -0600
-Message-ID: <CAL_JsqJJkcbxvfbVVOTPb5gavPgypO-Cd05C6qpvbvPMd1G81g@mail.gmail.com>
-References: <20181005165848.3474-1-robh@kernel.org> <20181005165848.3474-13-robh@kernel.org>
- <035ae23f-3c92-ffd9-0753-abbd604c5c02@xilinx.com>
+From: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
+Subject: [PATCH v2 0/9] iommu: clean up/remove modular stuff from non-modules.
+Date: Sat, 1 Dec 2018 14:19:08 -0500
+Message-ID: <1543691957-17608-1-git-send-email-paul.gortmaker@windriver.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <035ae23f-3c92-ffd9-0753-abbd604c5c02@xilinx.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Michal Simek <michal.simek@xilinx.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, devicetree@vger.kernel.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linuxppc-dev <linuxppc-dev@lists.ozlabs.org>, Tom Rini <trini@konsulko.com>, Kumar Gala <kumar.gala@linaro.org>, Grant Likely <glikely@secretlab.ca>, Arnd Bergmann <arnd@arndb.de>, Linus Walleij <linus.walleij@linaro.org>, Pantelis Antoniou <pantelis.antoniou@konsulko.com>, Bjorn Andersson <bjorn.andersson@linaro.org>, Olof Johansson <olof@lixom.net>, Mark Brown <broonie@kernel.org>, Geert Uytterhoeven <geert@linux-m68k.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Frank Rowand <frowand.list@gmail.com>, Jonathan
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Stepan Moskovchenko <stepanm-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Hiroshi Doyu <hdoyu-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Nov 8, 2018 at 2:49 AM Michal Simek <michal.simek@xilinx.com> wrote:
->
-> Hi Rob,
->
-> On 05. 10. 18 18:58, Rob Herring wrote:
-> > Convert ARM CPU binding to DT schema format using json-schema.
-> >
-> > Cc: Mark Rutland <mark.rutland@arm.com>
-> > Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> > Cc: devicetree@vger.kernel.org
-> > Cc: linux-arm-kernel@lists.infradead.org
-> > Cc: linux-mediatek@lists.infradead.org
-> > Signed-off-by: Rob Herring <robh@kernel.org>
-> > ---
-> >  .../devicetree/bindings/arm/cpus.txt          | 490 -----------------
-> >  .../devicetree/bindings/arm/cpus.yaml         | 503 ++++++++++++++++++
-> >  2 files changed, 503 insertions(+), 490 deletions(-)
-> >  delete mode 100644 Documentation/devicetree/bindings/arm/cpus.txt
-> >  create mode 100644 Documentation/devicetree/bindings/arm/cpus.yaml
+The work here represents a scan over the iommu dir, looking for files/drivers
+that have nothing to do with a modular use case, but are using modular
+infrastructure regardless.
 
-[...]
+We are trying to make driver code consistent with the Makefiles/Kconfigs that
+control them.  This means not using modular functions/macros for drivers that
+can never be built as a module.  I've done this in other subsystem dirs
+already, and some of this has already happened in drivers/iommu by others;
+such as 98b72b94def9 ("iommu/rockchip: Prohibit unbind and remove").
 
-> I have take a look at xilinx part of this and try to build it for arm64
-> platforms and I see errors coming from this cpu description.
-> /root/linux/arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dt.yaml:
-> cpu@0:compatible: ['arm,cortex-a53', 'arm,armv8'] is too long
-> /root/linux/arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dt.yaml:
-> cpu@0:compatible: Additional items are not allowed ('arm,armv8' was
-> unexpected)
+Using modular infrastructure in non-modules might seem harmless, but some
+of the downfalls this leads to are:
 
-Thanks for actually giving this a spin!
+ (1) it is easy to accidentally write unused module_exit and remove code
+ (2) it can be misleading when reading the source, thinking it can be
+     modular when the Makefile and/or Kconfig prohibit it
+ (3) it requires the include of the module.h header file which in turn
+     includes nearly everything else, thus adding to CPP overhead.
+ (4) it gets copied/replicated into other drivers and spreads quickly.
 
-> Based on grep this is used in a lot of places
-> compatible = "arm,cortex-a53", "arm,armv8";
->
-> Should this be moved to just simple?
-> compatible = "arm,cortex-a53";
+The last two commits (arm-smmu related ones) deserve an extra mention,
+and I put them at the end in case they want to be deferred for later or
+altered.  Normally a "module-ectomy" allows us to delete the ".remove"
+function, as per the rockchip commit above, but ...
 
-I'd normally go with the majority which would be to keep it. However,
-'arm,armv8' is of questionable value, isn't actually documented, and
-doesn't exist for any other version of the architecture. So we should
-kill it IMO.
+A kexec commit (7aa8619a66ae) tried to improve reliability by trying to
+shutdown the iommu in the compromised/crashing kernel, but of course the
+better solution is to have the recovery kernel be able to handle all of
+the possible initial conditions.  It appears this was done later in the
+commit b63b3439b856 - but I don't know if that means relying on an
+orderly shutdown is no longer required - I don't have the platform and
+am only going on what is in git history.
 
-Paging Mark Rutland and other arm folks...
+So, as the kexec commit recycled the ".remove" handle to also be the
+".shutdown" handle, in this series the remove function was renamed to
+shutdown, and the ".remove" handle was deleted.  This was IMHO the most
+back compatible way to make this update.  If the reliance on the
+compromised kernel to run ".shutdown" is no longer necessary, then it
+can be removed in a future change.
 
-Rob
+Patches were build tested on top of next-20181128 for ARM, ARM64, x86-64
+on an allyesconfig.
+
+Paul.
+
+---
+
+[ v2: use recommended iommu subject format, add Acks, trivial tweaks. ]
+
+Cc: Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Hiroshi Doyu <hdoyu-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Cc: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Cc: Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Nate Watterson <nwatters-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Cc: Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Cc: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Stepan Moskovchenko <stepanm-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Cc: Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>
+Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
+Cc: iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+
+Paul Gortmaker (9):
+  iommu: audit and remove any unnecessary uses of module.h
+  iommu/rockchip: Make it explicitly non-modular
+  iommu/msm: Make it explicitly non-modular
+  iommu/mediatek: Make it explicitly non-modular
+  iommu/ipmmu-vmsa: Make it explicitly non-modular
+  iommu/qcom: Make it explicitly non-modular
+  iommu/tegra: Make it explicitly non-modular
+  iommu/arm-smmu: Make arm-smmu explicitly non-modular
+  iommu/arm-smmu: Make arm-smmu-v3 explicitly non-modular
+
+ drivers/iommu/arm-smmu-v3.c    | 25 +++++++++----------------
+ drivers/iommu/arm-smmu.c       | 32 +++++++++++++-------------------
+ drivers/iommu/iommu-sysfs.c    |  2 +-
+ drivers/iommu/iommu.c          |  3 ++-
+ drivers/iommu/ipmmu-vmsa.c     | 18 +++---------------
+ drivers/iommu/msm_iommu.c      | 13 +++----------
+ drivers/iommu/mtk_iommu_v1.c   | 15 +++------------
+ drivers/iommu/qcom_iommu.c     | 16 ++--------------
+ drivers/iommu/rockchip-iommu.c | 13 ++++++-------
+ drivers/iommu/tegra-gart.c     | 37 +++++++------------------------------
+ 10 files changed, 49 insertions(+), 125 deletions(-)
+
+-- 
+2.7.4
