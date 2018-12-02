@@ -1,88 +1,708 @@
-From: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
-Subject: [PATCH 4/9] iommu/mediatek: Make it explicitly non-modular
-Date: Sat, 1 Dec 2018 14:19:12 -0500
-Message-ID: <1543691957-17608-5-git-send-email-paul.gortmaker@windriver.com>
-References: <1543691957-17608-1-git-send-email-paul.gortmaker@windriver.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1543691957-17608-1-git-send-email-paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: Yangtao Li <tiny.windzz@gmail.com>
+Subject: [PATCH] wireless: convert to DEFINE_SHOW_ATTRIBUTE
+Date: Sun,  2 Dec 2018 04:30:47 -0500
+Message-ID: <20181202093047.11174-1-tiny.windzz@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: merez@codeaurora.org, kvalo@codeaurora.org, davem@davemloft.net, kubakici@wp.pl, pizza@shaftnet.org, matthias.bgg@gmail.com, lorenzo.bianconi@redhat.com, nbd@nbd.name, sgruszka@redhat.com, joe@perches.com
+Cc: linux-wireless@vger.kernel.org, wil6210@qti.qualcomm.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Yangtao Li <tiny.windzz@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-The Kconfig currently controlling compilation of this code is:
+Use DEFINE_SHOW_ATTRIBUTE macro to simplify the code.
 
-drivers/iommu/Kconfig:config MTK_IOMMU_V1
-drivers/iommu/Kconfig:  bool "MTK IOMMU Version 1 (M4U gen1) Support"
-
-...meaning that it currently is not being built as a module by anyone.
-
-Lets remove the modular code that is essentially orphaned, so that
-when reading the driver there is no doubt it is builtin-only.
-
-Since module_init was not even used by this driver, the init ordering
-remains unchanged with this commit.
-
-We also delete the MODULE_LICENSE tag etc. since all that information
-was (or is now) contained at the top of the file in the comments.
-
-Cc: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Acked-by: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
+Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
 ---
- drivers/iommu/mtk_iommu_v1.c | 15 +++------------
- 1 file changed, 3 insertions(+), 12 deletions(-)
+ drivers/net/wireless/ath/wil6210/debugfs.c    | 240 +++---------------
+ .../wireless/mediatek/mt76/mt76x0/debugfs.c   |  20 +-
+ .../wireless/mediatek/mt76/mt76x2/debugfs.c   |  38 +--
+ .../net/wireless/mediatek/mt7601u/debugfs.c   |  40 +--
+ drivers/net/wireless/st/cw1200/debug.c        |  32 +--
+ 5 files changed, 64 insertions(+), 306 deletions(-)
 
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index 27867b862d7a..5fbf3cecb87f 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -1,4 +1,6 @@
- /*
-+ * IOMMU API for MTK architected m4u v1 implementations
-+ *
-  * Copyright (c) 2015-2016 MediaTek Inc.
-  * Author: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-  *
-@@ -35,7 +37,7 @@
- #include <linux/spinlock.h>
- #include <asm/barrier.h>
- #include <asm/dma-iommu.h>
--#include <linux/module.h>
-+#include <linux/init.h>
- #include <dt-bindings/memory/mt2701-larb-port.h>
- #include <soc/mediatek/smi.h>
- #include "mtk_iommu.h"
-@@ -704,15 +706,4 @@ static int __init m4u_init(void)
+diff --git a/drivers/net/wireless/ath/wil6210/debugfs.c b/drivers/net/wireless/ath/wil6210/debugfs.c
+index aa50813a0595..f64e2e6e9a55 100644
+--- a/drivers/net/wireless/ath/wil6210/debugfs.c
++++ b/drivers/net/wireless/ath/wil6210/debugfs.c
+@@ -124,7 +124,7 @@ static void wil_print_ring(struct seq_file *s, struct wil6210_priv *wil,
+ 	seq_puts(s, "}\n");
+ }
+ 
+-static int wil_ring_debugfs_show(struct seq_file *s, void *data)
++static int ring_show(struct seq_file *s, void *data)
  {
- 	return platform_driver_register(&mtk_iommu_driver);
+ 	uint i;
+ 	struct wil6210_priv *wil = s->private;
+@@ -183,18 +183,7 @@ static int wil_ring_debugfs_show(struct seq_file *s, void *data)
+ 
+ 	return 0;
  }
 -
--static void __exit m4u_exit(void)
+-static int wil_ring_seq_open(struct inode *inode, struct file *file)
 -{
--	return platform_driver_unregister(&mtk_iommu_driver);
+-	return single_open(file, wil_ring_debugfs_show, inode->i_private);
 -}
 -
- subsys_initcall(m4u_init);
--module_exit(m4u_exit);
+-static const struct file_operations fops_ring = {
+-	.open		= wil_ring_seq_open,
+-	.release	= single_release,
+-	.read		= seq_read,
+-	.llseek		= seq_lseek,
+-};
++DEFINE_SHOW_ATTRIBUTE(ring);
+ 
+ static void wil_print_sring(struct seq_file *s, struct wil6210_priv *wil,
+ 			    struct wil_status_ring *sring)
+@@ -240,7 +229,7 @@ static void wil_print_sring(struct seq_file *s, struct wil6210_priv *wil,
+ 	seq_puts(s, "}\n");
+ }
+ 
+-static int wil_srings_debugfs_show(struct seq_file *s, void *data)
++static int srings_show(struct seq_file *s, void *data)
+ {
+ 	struct wil6210_priv *wil = s->private;
+ 	int i = 0;
+@@ -251,18 +240,7 @@ static int wil_srings_debugfs_show(struct seq_file *s, void *data)
+ 
+ 	return 0;
+ }
 -
--MODULE_DESCRIPTION("IOMMU API for MTK architected m4u v1 implementations");
--MODULE_AUTHOR("Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
--MODULE_LICENSE("GPL v2");
+-static int wil_srings_seq_open(struct inode *inode, struct file *file)
+-{
+-	return single_open(file, wil_srings_debugfs_show, inode->i_private);
+-}
+-
+-static const struct file_operations fops_srings = {
+-	.open		= wil_srings_seq_open,
+-	.release	= single_release,
+-	.read		= seq_read,
+-	.llseek		= seq_lseek,
+-};
++DEFINE_SHOW_ATTRIBUTE(srings);
+ 
+ static void wil_seq_hexdump(struct seq_file *s, void *p, int len,
+ 			    const char *prefix)
+@@ -348,7 +326,7 @@ static void wil_print_mbox_ring(struct seq_file *s, const char *prefix,
+ 	wil_halp_unvote(wil);
+ }
+ 
+-static int wil_mbox_debugfs_show(struct seq_file *s, void *data)
++static int mbox_show(struct seq_file *s, void *data)
+ {
+ 	struct wil6210_priv *wil = s->private;
+ 	int ret;
+@@ -366,18 +344,7 @@ static int wil_mbox_debugfs_show(struct seq_file *s, void *data)
+ 
+ 	return 0;
+ }
+-
+-static int wil_mbox_seq_open(struct inode *inode, struct file *file)
+-{
+-	return single_open(file, wil_mbox_debugfs_show, inode->i_private);
+-}
+-
+-static const struct file_operations fops_mbox = {
+-	.open		= wil_mbox_seq_open,
+-	.release	= single_release,
+-	.read		= seq_read,
+-	.llseek		= seq_lseek,
+-};
++DEFINE_SHOW_ATTRIBUTE(mbox);
+ 
+ static int wil_debugfs_iomem_x32_set(void *data, u64 val)
+ {
+@@ -624,7 +591,7 @@ static int wil6210_debugfs_create_ITR_CNT(struct wil6210_priv *wil,
+ 	return 0;
+ }
+ 
+-static int wil_memread_debugfs_show(struct seq_file *s, void *data)
++static int memread_show(struct seq_file *s, void *data)
+ {
+ 	struct wil6210_priv *wil = s->private;
+ 	void __iomem *a;
+@@ -645,18 +612,7 @@ static int wil_memread_debugfs_show(struct seq_file *s, void *data)
+ 
+ 	return 0;
+ }
+-
+-static int wil_memread_seq_open(struct inode *inode, struct file *file)
+-{
+-	return single_open(file, wil_memread_debugfs_show, inode->i_private);
+-}
+-
+-static const struct file_operations fops_memread = {
+-	.open		= wil_memread_seq_open,
+-	.release	= single_release,
+-	.read		= seq_read,
+-	.llseek		= seq_lseek,
+-};
++DEFINE_SHOW_ATTRIBUTE(memread);
+ 
+ static ssize_t wil_read_file_ioblob(struct file *file, char __user *user_buf,
+ 				    size_t count, loff_t *ppos)
+@@ -1053,7 +1009,7 @@ static void wil_seq_print_skb(struct seq_file *s, struct sk_buff *skb)
+ }
+ 
+ /*---------Tx/Rx descriptor------------*/
+-static int wil_txdesc_debugfs_show(struct seq_file *s, void *data)
++static int txdesc_show(struct seq_file *s, void *data)
+ {
+ 	struct wil6210_priv *wil = s->private;
+ 	struct wil_ring *ring;
+@@ -1146,21 +1102,10 @@ static int wil_txdesc_debugfs_show(struct seq_file *s, void *data)
+ 
+ 	return 0;
+ }
+-
+-static int wil_txdesc_seq_open(struct inode *inode, struct file *file)
+-{
+-	return single_open(file, wil_txdesc_debugfs_show, inode->i_private);
+-}
+-
+-static const struct file_operations fops_txdesc = {
+-	.open		= wil_txdesc_seq_open,
+-	.release	= single_release,
+-	.read		= seq_read,
+-	.llseek		= seq_lseek,
+-};
++DEFINE_SHOW_ATTRIBUTE(txdesc);
+ 
+ /*---------Tx/Rx status message------------*/
+-static int wil_status_msg_debugfs_show(struct seq_file *s, void *data)
++static int status_msg_show(struct seq_file *s, void *data)
+ {
+ 	struct wil6210_priv *wil = s->private;
+ 	int sring_idx = dbg_sring_index;
+@@ -1202,19 +1147,7 @@ static int wil_status_msg_debugfs_show(struct seq_file *s, void *data)
+ 
+ 	return 0;
+ }
+-
+-static int wil_status_msg_seq_open(struct inode *inode, struct file *file)
+-{
+-	return single_open(file, wil_status_msg_debugfs_show,
+-			   inode->i_private);
+-}
+-
+-static const struct file_operations fops_status_msg = {
+-	.open		= wil_status_msg_seq_open,
+-	.release	= single_release,
+-	.read		= seq_read,
+-	.llseek		= seq_lseek,
+-};
++DEFINE_SHOW_ATTRIBUTE(status_msg);
+ 
+ static int wil_print_rx_buff(struct seq_file *s, struct list_head *lh)
+ {
+@@ -1232,7 +1165,7 @@ static int wil_print_rx_buff(struct seq_file *s, struct list_head *lh)
+ 	return i;
+ }
+ 
+-static int wil_rx_buff_mgmt_debugfs_show(struct seq_file *s, void *data)
++static int rx_buff_mgmt_show(struct seq_file *s, void *data)
+ {
+ 	struct wil6210_priv *wil = s->private;
+ 	struct wil_rx_buff_mgmt *rbm = &wil->rx_buff_mgmt;
+@@ -1257,19 +1190,7 @@ static int wil_rx_buff_mgmt_debugfs_show(struct seq_file *s, void *data)
+ 
+ 	return 0;
+ }
+-
+-static int wil_rx_buff_mgmt_seq_open(struct inode *inode, struct file *file)
+-{
+-	return single_open(file, wil_rx_buff_mgmt_debugfs_show,
+-			   inode->i_private);
+-}
+-
+-static const struct file_operations fops_rx_buff_mgmt = {
+-	.open		= wil_rx_buff_mgmt_seq_open,
+-	.release	= single_release,
+-	.read		= seq_read,
+-	.llseek		= seq_lseek,
+-};
++DEFINE_SHOW_ATTRIBUTE(rx_buff_mgmt);
+ 
+ /*---------beamforming------------*/
+ static char *wil_bfstatus_str(u32 status)
+@@ -1299,7 +1220,7 @@ static bool is_all_zeros(void * const x_, size_t sz)
+ 	return true;
+ }
+ 
+-static int wil_bf_debugfs_show(struct seq_file *s, void *data)
++static int bf_show(struct seq_file *s, void *data)
+ {
+ 	int rc;
+ 	int i;
+@@ -1353,18 +1274,7 @@ static int wil_bf_debugfs_show(struct seq_file *s, void *data)
+ 	}
+ 	return 0;
+ }
+-
+-static int wil_bf_seq_open(struct inode *inode, struct file *file)
+-{
+-	return single_open(file, wil_bf_debugfs_show, inode->i_private);
+-}
+-
+-static const struct file_operations fops_bf = {
+-	.open		= wil_bf_seq_open,
+-	.release	= single_release,
+-	.read		= seq_read,
+-	.llseek		= seq_lseek,
+-};
++DEFINE_SHOW_ATTRIBUTE(bf);
+ 
+ /*---------temp------------*/
+ static void print_temp(struct seq_file *s, const char *prefix, s32 t)
+@@ -1381,7 +1291,7 @@ static void print_temp(struct seq_file *s, const char *prefix, s32 t)
+ 	}
+ }
+ 
+-static int wil_temp_debugfs_show(struct seq_file *s, void *data)
++static int temp_show(struct seq_file *s, void *data)
+ {
+ 	struct wil6210_priv *wil = s->private;
+ 	s32 t_m, t_r;
+@@ -1397,21 +1307,10 @@ static int wil_temp_debugfs_show(struct seq_file *s, void *data)
+ 
+ 	return 0;
+ }
+-
+-static int wil_temp_seq_open(struct inode *inode, struct file *file)
+-{
+-	return single_open(file, wil_temp_debugfs_show, inode->i_private);
+-}
+-
+-static const struct file_operations fops_temp = {
+-	.open		= wil_temp_seq_open,
+-	.release	= single_release,
+-	.read		= seq_read,
+-	.llseek		= seq_lseek,
+-};
++DEFINE_SHOW_ATTRIBUTE(temp);
+ 
+ /*---------freq------------*/
+-static int wil_freq_debugfs_show(struct seq_file *s, void *data)
++static int freq_show(struct seq_file *s, void *data)
+ {
+ 	struct wil6210_priv *wil = s->private;
+ 	struct wireless_dev *wdev = wil->main_ndev->ieee80211_ptr;
+@@ -1421,21 +1320,10 @@ static int wil_freq_debugfs_show(struct seq_file *s, void *data)
+ 
+ 	return 0;
+ }
+-
+-static int wil_freq_seq_open(struct inode *inode, struct file *file)
+-{
+-	return single_open(file, wil_freq_debugfs_show, inode->i_private);
+-}
+-
+-static const struct file_operations fops_freq = {
+-	.open		= wil_freq_seq_open,
+-	.release	= single_release,
+-	.read		= seq_read,
+-	.llseek		= seq_lseek,
+-};
++DEFINE_SHOW_ATTRIBUTE(freq);
+ 
+ /*---------link------------*/
+-static int wil_link_debugfs_show(struct seq_file *s, void *data)
++static int link_show(struct seq_file *s, void *data)
+ {
+ 	struct wil6210_priv *wil = s->private;
+ 	struct station_info *sinfo;
+@@ -1487,21 +1375,10 @@ static int wil_link_debugfs_show(struct seq_file *s, void *data)
+ 	kfree(sinfo);
+ 	return rc;
+ }
+-
+-static int wil_link_seq_open(struct inode *inode, struct file *file)
+-{
+-	return single_open(file, wil_link_debugfs_show, inode->i_private);
+-}
+-
+-static const struct file_operations fops_link = {
+-	.open		= wil_link_seq_open,
+-	.release	= single_release,
+-	.read		= seq_read,
+-	.llseek		= seq_lseek,
+-};
++DEFINE_SHOW_ATTRIBUTE(link);
+ 
+ /*---------info------------*/
+-static int wil_info_debugfs_show(struct seq_file *s, void *data)
++static int info_show(struct seq_file *s, void *data)
+ {
+ 	struct wil6210_priv *wil = s->private;
+ 	struct net_device *ndev = wil->main_ndev;
+@@ -1536,18 +1413,7 @@ static int wil_info_debugfs_show(struct seq_file *s, void *data)
+ #undef CHECK_QSTATE
+ 	return 0;
+ }
+-
+-static int wil_info_seq_open(struct inode *inode, struct file *file)
+-{
+-	return single_open(file, wil_info_debugfs_show, inode->i_private);
+-}
+-
+-static const struct file_operations fops_info = {
+-	.open		= wil_info_seq_open,
+-	.release	= single_release,
+-	.read		= seq_read,
+-	.llseek		= seq_lseek,
+-};
++DEFINE_SHOW_ATTRIBUTE(info);
+ 
+ /*---------recovery------------*/
+ /* mode = [manual|auto]
+@@ -1663,7 +1529,7 @@ static void wil_print_rxtid_crypto(struct seq_file *s, int tid,
+ 	seq_puts(s, "\n");
+ }
+ 
+-static int wil_sta_debugfs_show(struct seq_file *s, void *data)
++static int sta_show(struct seq_file *s, void *data)
+ __acquires(&p->tid_rx_lock) __releases(&p->tid_rx_lock)
+ {
+ 	struct wil6210_priv *wil = s->private;
+@@ -1745,20 +1611,9 @@ __acquires(&p->tid_rx_lock) __releases(&p->tid_rx_lock)
+ 
+ 	return 0;
+ }
++DEFINE_SHOW_ATTRIBUTE(sta);
+ 
+-static int wil_sta_seq_open(struct inode *inode, struct file *file)
+-{
+-	return single_open(file, wil_sta_debugfs_show, inode->i_private);
+-}
+-
+-static const struct file_operations fops_sta = {
+-	.open		= wil_sta_seq_open,
+-	.release	= single_release,
+-	.read		= seq_read,
+-	.llseek		= seq_lseek,
+-};
+-
+-static int wil_mids_debugfs_show(struct seq_file *s, void *data)
++static int mids_show(struct seq_file *s, void *data)
+ {
+ 	struct wil6210_priv *wil = s->private;
+ 	struct wil6210_vif *vif;
+@@ -1781,18 +1636,7 @@ static int wil_mids_debugfs_show(struct seq_file *s, void *data)
+ 
+ 	return 0;
+ }
+-
+-static int wil_mids_seq_open(struct inode *inode, struct file *file)
+-{
+-	return single_open(file, wil_mids_debugfs_show, inode->i_private);
+-}
+-
+-static const struct file_operations fops_mids = {
+-	.open		= wil_mids_seq_open,
+-	.release	= single_release,
+-	.read		= seq_read,
+-	.llseek		= seq_lseek,
+-};
++DEFINE_SHOW_ATTRIBUTE(mids);
+ 
+ static int wil_tx_latency_debugfs_show(struct seq_file *s, void *data)
+ __acquires(&p->tid_rx_lock) __releases(&p->tid_rx_lock)
+@@ -2436,23 +2280,23 @@ static const struct {
+ 	umode_t mode;
+ 	const struct file_operations *fops;
+ } dbg_files[] = {
+-	{"mbox",	0444,		&fops_mbox},
+-	{"rings",	0444,		&fops_ring},
+-	{"stations", 0444,		&fops_sta},
+-	{"mids",	0444,		&fops_mids},
+-	{"desc",	0444,		&fops_txdesc},
+-	{"bf",		0444,		&fops_bf},
+-	{"mem_val",	0644,		&fops_memread},
++	{"mbox",	0444,		&mbox_fops},
++	{"rings",	0444,		&ring_fops},
++	{"stations", 0444,		&sta_fops},
++	{"mids",	0444,		&mids_fops},
++	{"desc",	0444,		&txdesc_fops},
++	{"bf",		0444,		&bf_fops},
++	{"mem_val",	0644,		&memread_fops},
+ 	{"rxon",	0244,		&fops_rxon},
+ 	{"tx_mgmt",	0244,		&fops_txmgmt},
+ 	{"wmi_send", 0244,		&fops_wmi},
+ 	{"back",	0644,		&fops_back},
+ 	{"pmccfg",	0644,		&fops_pmccfg},
+ 	{"pmcdata",	0444,		&fops_pmcdata},
+-	{"temp",	0444,		&fops_temp},
+-	{"freq",	0444,		&fops_freq},
+-	{"link",	0444,		&fops_link},
+-	{"info",	0444,		&fops_info},
++	{"temp",	0444,		&temp_fops},
++	{"freq",	0444,		&freq_fops},
++	{"link",	0444,		&link_fops},
++	{"info",	0444,		&info_fops},
+ 	{"recovery", 0644,		&fops_recovery},
+ 	{"led_cfg",	0644,		&fops_led_cfg},
+ 	{"led_blink_time",	0644,	&fops_led_blink_time},
+@@ -2460,9 +2304,9 @@ static const struct {
+ 	{"fw_version",	0444,		&fops_fw_version},
+ 	{"suspend_stats",	0644,	&fops_suspend_stats},
+ 	{"compressed_rx_status", 0644,	&fops_compressed_rx_status},
+-	{"srings",	0444,		&fops_srings},
+-	{"status_msg",	0444,		&fops_status_msg},
+-	{"rx_buff_mgmt",	0444,	&fops_rx_buff_mgmt},
++	{"srings",	0444,		&srings_fops},
++	{"status_msg",	0444,		&status_msg_fops},
++	{"rx_buff_mgmt",	0444,	&rx_buff_mgmt_fops},
+ 	{"tx_latency",	0644,		&fops_tx_latency},
+ 	{"link_stats",	0644,		&fops_link_stats},
+ 	{"link_stats_global",	0644,	&fops_link_stats_global},
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c
+index 3224e5b1a1e5..21fde45b1b20 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c
+@@ -18,8 +18,7 @@
+ #include "mt76x0.h"
+ #include "eeprom.h"
+ 
+-static int
+-mt76x0_ampdu_stat_read(struct seq_file *file, void *data)
++static int ampdu_stat_show(struct seq_file *file, void *data)
+ {
+ 	struct mt76x02_dev *dev = file->private;
+ 	int i, j;
+@@ -61,19 +60,7 @@ mt76x0_ampdu_stat_read(struct seq_file *file, void *data)
+ 
+ 	return 0;
+ }
+-
+-static int
+-mt76x0_ampdu_stat_open(struct inode *inode, struct file *f)
+-{
+-	return single_open(f, mt76x0_ampdu_stat_read, inode->i_private);
+-}
+-
+-static const struct file_operations fops_ampdu_stat = {
+-	.open = mt76x0_ampdu_stat_open,
+-	.read = seq_read,
+-	.llseek = seq_lseek,
+-	.release = single_release,
+-};
++DEFINE_SHOW_ATTRIBUTE(ampdu_stat);
+ 
+ void mt76x0_init_debugfs(struct mt76x02_dev *dev)
+ {
+@@ -83,5 +70,6 @@ void mt76x0_init_debugfs(struct mt76x02_dev *dev)
+ 	if (!dir)
+ 		return;
+ 
+-	debugfs_create_file("ampdu_stat", S_IRUSR, dir, dev, &fops_ampdu_stat);
++	debugfs_create_file("ampdu_stat", S_IRUSR, dir, dev,
++				&ampdu_stat_fops);
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt76x2/debugfs.c
+index e8f8ccc0a5ed..04711cd09d21 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2/debugfs.c
+@@ -17,8 +17,7 @@
+ #include <linux/debugfs.h>
+ #include "mt76x2.h"
+ 
+-static int
+-mt76x2_ampdu_stat_read(struct seq_file *file, void *data)
++static int ampdu_stat_show(struct seq_file *file, void *data)
+ {
+ 	struct mt76x02_dev *dev = file->private;
+ 	int i, j;
+@@ -40,12 +39,7 @@ mt76x2_ampdu_stat_read(struct seq_file *file, void *data)
+ 
+ 	return 0;
+ }
+-
+-static int
+-mt76x2_ampdu_stat_open(struct inode *inode, struct file *f)
+-{
+-	return single_open(f, mt76x2_ampdu_stat_read, inode->i_private);
+-}
++DEFINE_SHOW_ATTRIBUTE(ampdu_stat);
+ 
+ static int read_txpower(struct seq_file *file, void *data)
+ {
+@@ -58,15 +52,7 @@ static int read_txpower(struct seq_file *file, void *data)
+ 	return 0;
+ }
+ 
+-static const struct file_operations fops_ampdu_stat = {
+-	.open = mt76x2_ampdu_stat_open,
+-	.read = seq_read,
+-	.llseek = seq_lseek,
+-	.release = single_release,
+-};
+-
+-static int
+-mt76x2_dfs_stat_read(struct seq_file *file, void *data)
++static int dfs_stat_show(struct seq_file *file, void *data)
+ {
+ 	struct mt76x02_dev *dev = file->private;
+ 	struct mt76x02_dfs_pattern_detector *dfs_pd = &dev->dfs_pd;
+@@ -90,19 +76,7 @@ mt76x2_dfs_stat_read(struct seq_file *file, void *data)
+ 
+ 	return 0;
+ }
+-
+-static int
+-mt76x2_dfs_stat_open(struct inode *inode, struct file *f)
+-{
+-	return single_open(f, mt76x2_dfs_stat_read, inode->i_private);
+-}
+-
+-static const struct file_operations fops_dfs_stat = {
+-	.open = mt76x2_dfs_stat_open,
+-	.read = seq_read,
+-	.llseek = seq_lseek,
+-	.release = single_release,
+-};
++DEFINE_SHOW_ATTRIBUTE(dfs_stat);
+ 
+ static int read_agc(struct seq_file *file, void *data)
+ {
+@@ -127,8 +101,8 @@ void mt76x2_init_debugfs(struct mt76x02_dev *dev)
+ 	debugfs_create_u8("temperature", 0400, dir, &dev->cal.temp);
+ 	debugfs_create_bool("tpc", 0600, dir, &dev->enable_tpc);
+ 
+-	debugfs_create_file("ampdu_stat", 0400, dir, dev, &fops_ampdu_stat);
+-	debugfs_create_file("dfs_stats", 0400, dir, dev, &fops_dfs_stat);
++	debugfs_create_file("ampdu_stat", 0400, dir, dev, &ampdu_stat_fops);
++	debugfs_create_file("dfs_stats", 0400, dir, dev, &dfs_stat_fops);
+ 	debugfs_create_devm_seqfile(dev->mt76.dev, "txpower", dir,
+ 				    read_txpower);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt7601u/debugfs.c b/drivers/net/wireless/mediatek/mt7601u/debugfs.c
+index 991a6a729b1e..0be3084fee01 100644
+--- a/drivers/net/wireless/mediatek/mt7601u/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt7601u/debugfs.c
+@@ -37,8 +37,7 @@ mt76_reg_get(void *data, u64 *val)
+ 
+ DEFINE_SIMPLE_ATTRIBUTE(fops_regval, mt76_reg_get, mt76_reg_set, "0x%08llx\n");
+ 
+-static int
+-mt7601u_ampdu_stat_read(struct seq_file *file, void *data)
++static int ampdu_stat_show(struct seq_file *file, void *data)
+ {
+ 	struct mt7601u_dev *dev = file->private;
+ 	int i, j;
+@@ -80,22 +79,9 @@ mt7601u_ampdu_stat_read(struct seq_file *file, void *data)
+ 
+ 	return 0;
+ }
++DEFINE_SHOW_ATTRIBUTE(ampdu_stat);
+ 
+-static int
+-mt7601u_ampdu_stat_open(struct inode *inode, struct file *f)
+-{
+-	return single_open(f, mt7601u_ampdu_stat_read, inode->i_private);
+-}
+-
+-static const struct file_operations fops_ampdu_stat = {
+-	.open = mt7601u_ampdu_stat_open,
+-	.read = seq_read,
+-	.llseek = seq_lseek,
+-	.release = single_release,
+-};
+-
+-static int
+-mt7601u_eeprom_param_read(struct seq_file *file, void *data)
++static int eeprom_param_show(struct seq_file *file, void *data)
+ {
+ 	struct mt7601u_dev *dev = file->private;
+ 	struct mt7601u_rate_power *rp = &dev->ee->power_rate_table;
+@@ -138,19 +124,7 @@ mt7601u_eeprom_param_read(struct seq_file *file, void *data)
+ 
+ 	return 0;
+ }
+-
+-static int
+-mt7601u_eeprom_param_open(struct inode *inode, struct file *f)
+-{
+-	return single_open(f, mt7601u_eeprom_param_read, inode->i_private);
+-}
+-
+-static const struct file_operations fops_eeprom_param = {
+-	.open = mt7601u_eeprom_param_open,
+-	.read = seq_read,
+-	.llseek = seq_lseek,
+-	.release = single_release,
+-};
++DEFINE_SHOW_ATTRIBUTE(eeprom_param);
+ 
+ void mt7601u_init_debugfs(struct mt7601u_dev *dev)
+ {
+@@ -165,6 +139,8 @@ void mt7601u_init_debugfs(struct mt7601u_dev *dev)
+ 
+ 	debugfs_create_u32("regidx", 0600, dir, &dev->debugfs_reg);
+ 	debugfs_create_file("regval", 0600, dir, dev, &fops_regval);
+-	debugfs_create_file("ampdu_stat", 0400, dir, dev, &fops_ampdu_stat);
+-	debugfs_create_file("eeprom_param", 0400, dir, dev, &fops_eeprom_param);
++	debugfs_create_file("ampdu_stat", 0400, dir, dev, 
++				&ampdu_stat_fops);
++	debugfs_create_file("eeprom_param", 0400, dir, dev,
++				&eeprom_param_fops);
+ }
+diff --git a/drivers/net/wireless/st/cw1200/debug.c b/drivers/net/wireless/st/cw1200/debug.c
+index 295cb1a29f25..2231ba08bc1f 100644
+--- a/drivers/net/wireless/st/cw1200/debug.c
++++ b/drivers/net/wireless/st/cw1200/debug.c
+@@ -289,19 +289,7 @@ static int cw1200_status_show(struct seq_file *seq, void *v)
+ 	return 0;
+ }
+ 
+-static int cw1200_status_open(struct inode *inode, struct file *file)
+-{
+-	return single_open(file, &cw1200_status_show,
+-		inode->i_private);
+-}
+-
+-static const struct file_operations fops_status = {
+-	.open = cw1200_status_open,
+-	.read = seq_read,
+-	.llseek = seq_lseek,
+-	.release = single_release,
+-	.owner = THIS_MODULE,
+-};
++DEFINE_SHOW_ATTRIBUTE(cw1200_status);
+ 
+ static int cw1200_counters_show(struct seq_file *seq, void *v)
+ {
+@@ -345,19 +333,7 @@ static int cw1200_counters_show(struct seq_file *seq, void *v)
+ 	return 0;
+ }
+ 
+-static int cw1200_counters_open(struct inode *inode, struct file *file)
+-{
+-	return single_open(file, &cw1200_counters_show,
+-		inode->i_private);
+-}
+-
+-static const struct file_operations fops_counters = {
+-	.open = cw1200_counters_open,
+-	.read = seq_read,
+-	.llseek = seq_lseek,
+-	.release = single_release,
+-	.owner = THIS_MODULE,
+-};
++DEFINE_SHOW_ATTRIBUTE(cw1200_counters);
+ 
+ static ssize_t cw1200_wsm_dumps(struct file *file,
+ 	const char __user *user_buf, size_t count, loff_t *ppos)
+@@ -399,11 +375,11 @@ int cw1200_debug_init(struct cw1200_common *priv)
+ 		goto err;
+ 
+ 	if (!debugfs_create_file("status", 0400, d->debugfs_phy,
+-				 priv, &fops_status))
++				 priv, &cw1200_status_fops))
+ 		goto err;
+ 
+ 	if (!debugfs_create_file("counters", 0400, d->debugfs_phy,
+-				 priv, &fops_counters))
++				 priv, &cw1200_counters_fops))
+ 		goto err;
+ 
+ 	if (!debugfs_create_file("wsm_dumps", 0200, d->debugfs_phy,
 -- 
-2.7.4
+2.17.0
