@@ -1,67 +1,33 @@
-From: Will Deacon <will.deacon@arm.com>
-Subject: Re: [PATCH 12/36] dt-bindings: arm: Convert cpu binding to
- json-schema
-Date: Mon, 3 Dec 2018 12:40:52 +0000
-Message-ID: <20181203124039.GA25097@arm.com>
-References: <20181005165848.3474-1-robh@kernel.org>
- <20181005165848.3474-13-robh@kernel.org>
- <035ae23f-3c92-ffd9-0753-abbd604c5c02@xilinx.com>
- <CAL_JsqJJkcbxvfbVVOTPb5gavPgypO-Cd05C6qpvbvPMd1G81g@mail.gmail.com>
+From: Kalle Valo <kvalo@codeaurora.org>
+Subject: Re: [PATCH] wireless: convert to DEFINE_SHOW_ATTRIBUTE
+Date: Mon, 03 Dec 2018 14:49:01 +0200
+Message-ID: <87d0qig4hu.fsf@codeaurora.org>
+References: <20181202093047.11174-1-tiny.windzz@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAL_JsqJJkcbxvfbVVOTPb5gavPgypO-Cd05C6qpvbvPMd1G81g@mail.gmail.com>
+In-Reply-To: <20181202093047.11174-1-tiny.windzz@gmail.com> (Yangtao Li's
+        message of "Sun, 2 Dec 2018 04:30:47 -0500")
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: Michal Simek <michal.simek@xilinx.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, devicetree@vger.kernel.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linuxppc-dev <linuxppc-dev@lists.ozlabs.org>, Tom Rini <trini@konsulko.com>, Kumar Gala <kumar.gala@linaro.org>, Grant Likely <glikely@secretlab.ca>, Arnd Bergmann <arnd@arndb.de>, Linus Walleij <linus.walleij@linaro.org>, Pantelis Antoniou <pantelis.antoniou@konsulko.com>, Bjorn Andersson <bjorn.andersson@linaro.org>, Olof Johansson <olof@lixom.net>, Mark Brown <broonie@kernel.org>, Geert Uytterhoeven <geert@linux-m68k.org>, Matthias
+To: Yangtao Li <tiny.windzz@gmail.com>
+Cc: merez@codeaurora.org, davem@davemloft.net, kubakici@wp.pl, pizza@shaftnet.org, matthias.bgg@gmail.com, lorenzo.bianconi@redhat.com, nbd@nbd.name, sgruszka@redhat.com, joe@perches.com, linux-wireless@vger.kernel.org, wil6210@qti.qualcomm.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Nov 30, 2018 at 12:00:05PM -0600, Rob Herring wrote:
-> On Thu, Nov 8, 2018 at 2:49 AM Michal Simek <michal.simek@xilinx.com> wrote:
-> >
-> > Hi Rob,
-> >
-> > On 05. 10. 18 18:58, Rob Herring wrote:
-> > > Convert ARM CPU binding to DT schema format using json-schema.
-> > >
-> > > Cc: Mark Rutland <mark.rutland@arm.com>
-> > > Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> > > Cc: devicetree@vger.kernel.org
-> > > Cc: linux-arm-kernel@lists.infradead.org
-> > > Cc: linux-mediatek@lists.infradead.org
-> > > Signed-off-by: Rob Herring <robh@kernel.org>
-> > > ---
-> > >  .../devicetree/bindings/arm/cpus.txt          | 490 -----------------
-> > >  .../devicetree/bindings/arm/cpus.yaml         | 503 ++++++++++++++++++
-> > >  2 files changed, 503 insertions(+), 490 deletions(-)
-> > >  delete mode 100644 Documentation/devicetree/bindings/arm/cpus.txt
-> > >  create mode 100644 Documentation/devicetree/bindings/arm/cpus.yaml
-> 
-> [...]
-> 
-> > I have take a look at xilinx part of this and try to build it for arm64
-> > platforms and I see errors coming from this cpu description.
-> > /root/linux/arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dt.yaml:
-> > cpu@0:compatible: ['arm,cortex-a53', 'arm,armv8'] is too long
-> > /root/linux/arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dt.yaml:
-> > cpu@0:compatible: Additional items are not allowed ('arm,armv8' was
-> > unexpected)
-> 
-> Thanks for actually giving this a spin!
-> 
-> > Based on grep this is used in a lot of places
-> > compatible = "arm,cortex-a53", "arm,armv8";
-> >
-> > Should this be moved to just simple?
-> > compatible = "arm,cortex-a53";
-> 
-> I'd normally go with the majority which would be to keep it. However,
-> 'arm,armv8' is of questionable value, isn't actually documented, and
-> doesn't exist for any other version of the architecture. So we should
-> kill it IMO.
+Yangtao Li <tiny.windzz@gmail.com> writes:
 
-I'd prefer to keep it around, since that's what's used to describe the CPUs
-on the fastmodel iirc.
+> Use DEFINE_SHOW_ATTRIBUTE macro to simplify the code.
+>
+> Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
+> ---
+>  drivers/net/wireless/ath/wil6210/debugfs.c    | 240 +++---------------
+>  .../wireless/mediatek/mt76/mt76x0/debugfs.c   |  20 +-
+>  .../wireless/mediatek/mt76/mt76x2/debugfs.c   |  38 +--
+>  .../net/wireless/mediatek/mt7601u/debugfs.c   |  40 +--
+>  drivers/net/wireless/st/cw1200/debug.c        |  32 +--
+>  5 files changed, 64 insertions(+), 306 deletions(-)
 
-Will
+This is rather large cleanup so please split these per driver (wil6210,
+mt76 and cw1200).
+
+-- 
+Kalle Valo
