@@ -1,38 +1,58 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v3 1/4] dt-bindings: pinctrl: Add devicetree bindings for
- MT6797 SoC Pinctrl
-Date: Mon, 3 Dec 2018 02:08:35 +0100
-Message-ID: <c1f63dd8-1c06-1797-025c-2cd4891d905d@gmail.com>
-References: <20181107174844.5381-1-manivannan.sadhasivam@linaro.org>
- <20181107174844.5381-2-manivannan.sadhasivam@linaro.org>
- <CACRpkda25cuiPCe9ouvDDSpFwZ2z=Pm8pK=5jC-7OAcYwPSvvA@mail.gmail.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH] drm/mediatek: Only try to attach bridge if there is one
+Date: Mon, 3 Dec 2018 11:27:00 +0800
+Message-ID: <1543807620.11594.2.camel@mtksdaap41>
+References: <20181126040737.138682-1-drinkcat@chromium.org>
+ <1543210200.1796.2.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CACRpkda25cuiPCe9ouvDDSpFwZ2z=Pm8pK=5jC-7OAcYwPSvvA@mail.gmail.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Cc: sean.wang@kernel.org, Rob Herring <robh+dt@kernel.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Amit Kucheria <amit.kucheria@linaro.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1543210200.1796.2.camel@mtksdaap41>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Nicolas Boichat <drinkcat@chromium.org>
+Cc: David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Linus,
-
-On 15/11/2018 11:04, Linus Walleij wrote:
-> On Wed, Nov 7, 2018 at 6:49 PM Manivannan Sadhasivam
-> <manivannan.sadhasivam@linaro.org> wrote:
-> 
->> Add devicetree bindings for Mediatek MT6797 SoC Pin Controller.
->>
->> Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-> 
-> Patch applied.
-> 
-
-Could you provide a stable tree for me, so that I can take the dts parts?
-I just realized that my build is broken because of the missing dt-bindings
-header file.
-
-Regards,
-Matthias
+SGksIE5pY29sYXM6CgpPbiBNb24sIDIwMTgtMTEtMjYgYXQgMTM6MzAgKzA4MDAsIENLIEh1IHdy
+b3RlOgo+IEhpLCBOaWNvbGFzOgo+IAo+IE9uIE1vbiwgMjAxOC0xMS0yNiBhdCAxMjowNyArMDgw
+MCwgTmljb2xhcyBCb2ljaGF0IHdyb3RlOgo+ID4gRXZlbiBpZiBkc2ktPmJyaWRnZSBpcyBOVUxM
+LCB3ZSBzdGlsbCB0cnkgdG8gY2FsbCBkcm1fYnJpZGdlX2F0dGFjaCwKPiA+IGFuZCBwcmludCBv
+dXQgYW4gZXJyb3IgbWVzc2FnZSwgYmVmb3JlIGNyZWF0aW5nIHRoZSBjb25uZWN0b3IuCj4gPiAK
+PiA+IFdoZW4gbm8gYnJpZGdlIGlzIHByb3ZpZGVkLCBsZXQncyBza2lwIHRoZXNlIDIgc3RlcHMg
+YW5kIGRpcmVjdGx5Cj4gPiBjcmVhdGUgdGhlIGNvbm5lY3Rvci4KPiAKCkFwcGxpZWQgdG8gbWVk
+aWF0ZWstZHJtLWZpeGVzLTQuMjAgWzFdLCB0aGFua3MuCgpbMV0KaHR0cHM6Ly9naXRodWIuY29t
+L2NraHUtbWVkaWF0ZWsvbGludXguZ2l0LXRhZ3MvY29tbWl0cy9tZWRpYXRlay1kcm0tZml4ZXMt
+NC4yMAoKUmVnYXJkcywKQ0sKCj4gUmV2aWV3ZWQtYnk6IENLIEh1IDxjay5odUBtZWRpYXRlay5j
+b20+Cj4gCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IE5pY29sYXMgQm9pY2hhdCA8ZHJpbmtjYXRA
+Y2hyb21pdW0ub3JnPgo+ID4gLS0tCj4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
+c2kuYyB8IDExICsrKysrKystLS0tCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDcgaW5zZXJ0aW9ucygr
+KSwgNCBkZWxldGlvbnMoLSkKPiA+IAo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4g
+PiBpbmRleCA2NmRmMWIxNzc5NTkyMS4uMjdiNTA3ZWI0YTk5N2QgMTAwNjQ0Cj4gPiAtLS0gYS9k
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gPiArKysgYi9kcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gPiBAQCAtODE4LDEwICs4MTgsMTMgQEAgc3RhdGljIGlu
+dCBtdGtfZHNpX2NyZWF0ZV9jb25uX2VuYyhzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLCBzdHJ1Y3Qg
+bXRrX2RzaSAqZHNpKQo+ID4gIAlkc2ktPmVuY29kZXIucG9zc2libGVfY3J0Y3MgPSAxOwo+ID4g
+IAo+ID4gIAkvKiBJZiB0aGVyZSdzIGEgYnJpZGdlLCBhdHRhY2ggdG8gaXQgYW5kIGxldCBpdCBj
+cmVhdGUgdGhlIGNvbm5lY3RvciAqLwo+ID4gLQlyZXQgPSBkcm1fYnJpZGdlX2F0dGFjaCgmZHNp
+LT5lbmNvZGVyLCBkc2ktPmJyaWRnZSwgTlVMTCk7Cj4gPiAtCWlmIChyZXQpIHsKPiA+IC0JCURS
+TV9FUlJPUigiRmFpbGVkIHRvIGF0dGFjaCBicmlkZ2UgdG8gZHJtXG4iKTsKPiA+IC0KPiA+ICsJ
+aWYgKGRzaS0+YnJpZGdlKSB7Cj4gPiArCQlyZXQgPSBkcm1fYnJpZGdlX2F0dGFjaCgmZHNpLT5l
+bmNvZGVyLCBkc2ktPmJyaWRnZSwgTlVMTCk7Cj4gPiArCQlpZiAocmV0KSB7Cj4gPiArCQkJRFJN
+X0VSUk9SKCJGYWlsZWQgdG8gYXR0YWNoIGJyaWRnZSB0byBkcm1cbiIpOwo+ID4gKwkJCWdvdG8g
+ZXJyX2VuY29kZXJfY2xlYW51cDsKPiA+ICsJCX0KPiA+ICsJfSBlbHNlIHsKPiA+ICAJCS8qIE90
+aGVyd2lzZSBjcmVhdGUgb3VyIG93biBjb25uZWN0b3IgYW5kIGF0dGFjaCB0byBhIHBhbmVsICov
+Cj4gPiAgCQlyZXQgPSBtdGtfZHNpX2NyZWF0ZV9jb25uZWN0b3IoZHJtLCBkc2kpOwo+ID4gIAkJ
+aWYgKHJldCkKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
+cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
+ZWwK
