@@ -1,65 +1,38 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [GIT PULL] arm: mediatek: DT fixes for v4.20
-Date: Mon, 3 Dec 2018 01:41:40 +0100
-Message-ID: <e10b0801-ffd0-0850-6346-c12a32afb920@gmail.com>
-References: <d131fdd3-663c-9a5b-4296-94f2635f8c41@gmail.com>
- <5e3371a7-e4a3-49cc-b517-20902a5e2ed4@gmail.com>
- <CAOesGMimqGGL+3Dd8tyyJpb506j9-tJZP0FeSCkvKwuUGWAmAg@mail.gmail.com>
+Subject: Re: [PATCH v3 1/4] dt-bindings: pinctrl: Add devicetree bindings for
+ MT6797 SoC Pinctrl
+Date: Mon, 3 Dec 2018 02:08:35 +0100
+Message-ID: <c1f63dd8-1c06-1797-025c-2cd4891d905d@gmail.com>
+References: <20181107174844.5381-1-manivannan.sadhasivam@linaro.org>
+ <20181107174844.5381-2-manivannan.sadhasivam@linaro.org>
+ <CACRpkda25cuiPCe9ouvDDSpFwZ2z=Pm8pK=5jC-7OAcYwPSvvA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAOesGMimqGGL+3Dd8tyyJpb506j9-tJZP0FeSCkvKwuUGWAmAg@mail.gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CACRpkda25cuiPCe9ouvDDSpFwZ2z=Pm8pK=5jC-7OAcYwPSvvA@mail.gmail.com>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Olof Johansson <olof@lixom.net>
-Cc: ARM-SoC Maintainers <arm@kernel.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>, Linux ARM Mailing List <linux-arm-kernel@lists.infradead.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Linus Walleij <linus.walleij@linaro.org>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: sean.wang@kernel.org, Rob Herring <robh+dt@kernel.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Amit Kucheria <amit.kucheria@linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Linus,
 
-
-On 02/12/2018 21:01, Olof Johansson wrote:
-> On Sun, Dec 2, 2018 at 11:57 AM Matthias Brugger <matthias.bgg@gmail.com> wrote:
+On 15/11/2018 11:04, Linus Walleij wrote:
+> On Wed, Nov 7, 2018 at 6:49 PM Manivannan Sadhasivam
+> <manivannan.sadhasivam@linaro.org> wrote:
+> 
+>> Add devicetree bindings for Mediatek MT6797 SoC Pin Controller.
 >>
->> Hi all,
->>
->> On 26/11/2018 11:34, Matthias Brugger wrote:
->>> Hi Olof,
->>> Hi Arnd,
->>>
->>> There two issues with the mt7622 based boards in the current v4.20-rc cycle.
->>> Could you please pull the following fixes for the issues.
->>>
->>> Thanks,
->>> Matthias
->>
->> I just saw, that this is not part of armsoc-fixes [1]
->> Does it fall through the cracks or are there any comments?
+>> Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 > 
-> Hi,
-> 
-> I pinged you on IRC, which I'm guessing you didn't see.
-
-Sorry, I just realized.
-
-> 
-> Your branch was based on -rc3 when the rest of fixes were on -rc1 for
-> this cycle. I asked if I could cherry-pick, but in the end I decided
-> to send what we have and just merge it once Linus picks it up (since
-> the new branch would be based on -rc4 or 5). So, it's on the list and
-> I'll merge it later today or tomorrow.
+> Patch applied.
 > 
 
-Ok, great. If you want me to prepare a branch based on a different rc, just let
-me know.
+Could you provide a stable tree for me, so that I can take the dts parts?
+I just realized that my build is broken because of the missing dt-bindings
+header file.
 
-Thanks,
+Regards,
 Matthias
