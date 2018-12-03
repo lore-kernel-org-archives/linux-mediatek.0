@@ -1,29 +1,28 @@
-From: Joerg Roedel <joro@8bytes.org>
-Subject: Re: [PATCH v2 0/9] iommu: clean up/remove modular stuff from
- non-modules.
-Date: Mon, 3 Dec 2018 14:32:45 +0100
-Message-ID: <20181203133245.cqwrdjbobop7x36y@8bytes.org>
-References: <1543691957-17608-1-git-send-email-paul.gortmaker@windriver.com>
+From: <qii.wang@mediatek.com>
+Subject: [PATCH 0/5] add i2c support for mt7629 and mt8183
+Date: Mon, 3 Dec 2018 21:32:49 +0800
+Message-ID: <1543843974-4054-1-git-send-email-qii.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1543691957-17608-1-git-send-email-paul.gortmaker@windriver.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Paul Gortmaker <paul.gortmaker@windriver.com>
-Cc: iommu@lists.linux-foundation.org, linux-kernel@vger.kernel.org, Alexandre Courbot <gnurou@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Hiroshi Doyu <hdoyu@nvidia.com>, Honghui Zhang <honghui.zhang@mediatek.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Matthias Brugger <matthias.bgg@gmail.com>, Nate Watterson <nwatters@codeaurora.org>, Rob Clark <robdclark@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Simon Xue <xxm@rock-chips.com>, Stepan Moskovchenko <stepanm@codeaurora.org>, Stephen Warren <swarren@wwwdotorg.org>, Thierry Reding <thierry.reding@gmail.com>, Will Deacon <will.deacon@arm.com>, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.
+To: wsa@the-dreams.de
+Cc: linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, leilk.liu@mediatek.com, qii.wang@mediatek.com, ryder.lee@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, Dec 01, 2018 at 02:19:08PM -0500, Paul Gortmaker wrote:
-> Paul Gortmaker (9):
->   iommu: audit and remove any unnecessary uses of module.h
->   iommu/rockchip: Make it explicitly non-modular
->   iommu/msm: Make it explicitly non-modular
->   iommu/mediatek: Make it explicitly non-modular
->   iommu/ipmmu-vmsa: Make it explicitly non-modular
->   iommu/qcom: Make it explicitly non-modular
->   iommu/tegra: Make it explicitly non-modular
->   iommu/arm-smmu: Make arm-smmu explicitly non-modular
->   iommu/arm-smmu: Make arm-smmu-v3 explicitly non-modular
+This series are based on 4.20-rc1 and provide five patches to support
+mt7629 and mt8183 IC.
 
-Applied all, thanks Paul.
+qii wang (5):
+  dt-bindings: i2c: Add Mediatek MT7629 i2c binding
+  i2c: mediatek: remove useless code and replace definitions
+  i2c: mediatek: Add offsets array for new i2c registers
+  dt-bindings: i2c: Add Mediatek MT8183 i2c binding
+  i2c: mediatek: Add i2c compatible for MediaTek MT8183
+
+ Documentation/devicetree/bindings/i2c/i2c-mtk.txt |    8 +-
+ drivers/i2c/busses/i2c-mt65xx.c                   |  299 ++++++++++++++++-----
+ 2 files changed, 239 insertions(+), 68 deletions(-)
+
+-- 
+1.7.9.5
