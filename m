@@ -1,325 +1,212 @@
-From: <qii.wang@mediatek.com>
-Subject: [PATCH 3/5] i2c: mediatek: Add offsets array for new i2c registers
-Date: Mon, 3 Dec 2018 21:32:52 +0800
-Message-ID: <1543843974-4054-4-git-send-email-qii.wang@mediatek.com>
-References: <1543843974-4054-1-git-send-email-qii.wang@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain
+From: Yangtao Li <tiny.windzz@gmail.com>
+Subject: [PATCH] mt76: convert to DEFINE_SHOW_ATTRIBUTE
+Date: Mon,  3 Dec 2018 08:40:28 -0500
+Message-ID: <20181203134028.12645-1-tiny.windzz@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1543843974-4054-1-git-send-email-qii.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: wsa@the-dreams.de
-Cc: linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, leilk.liu@mediatek.com, qii.wang@mediatek.com, ryder.lee@mediatek.com
+To: davem@davemloft.net, kubakici@wp.pl, matthias.bgg@gmail.com, nbd@nbd.name, lorenzo.bianconi@redhat.com, joe@perches.com, sgruszka@redhat.com, kvalo@codeaurora.org
+Cc: linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Yangtao Li <tiny.windzz@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: qii wang <qii.wang@mediatek.com>
+Use DEFINE_SHOW_ATTRIBUTE macro to simplify the code.
 
-New i2c registers would have different offsets, so we use different
-offsets array to distinguish different i2c registers version.
-
-Signed-off-by: qii wang <qii.wang@mediatek.com>
+Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
 ---
- drivers/i2c/busses/i2c-mt65xx.c |  163 +++++++++++++++++++++++++--------------
- 1 file changed, 104 insertions(+), 59 deletions(-)
+ .../wireless/mediatek/mt76/mt76x0/debugfs.c   | 20 ++--------
+ .../wireless/mediatek/mt76/mt76x2/debugfs.c   | 38 +++---------------
+ .../net/wireless/mediatek/mt7601u/debugfs.c   | 40 ++++---------------
+ 3 files changed, 18 insertions(+), 80 deletions(-)
 
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index 660de1e..428ac99 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -106,34 +106,62 @@ enum mtk_trans_op {
- };
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c
+index 3224e5b1a1e5..21fde45b1b20 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/debugfs.c
+@@ -18,8 +18,7 @@
+ #include "mt76x0.h"
+ #include "eeprom.h"
  
- enum I2C_REGS_OFFSET {
--	OFFSET_DATA_PORT = 0x0,
--	OFFSET_SLAVE_ADDR = 0x04,
--	OFFSET_INTR_MASK = 0x08,
--	OFFSET_INTR_STAT = 0x0c,
--	OFFSET_CONTROL = 0x10,
--	OFFSET_TRANSFER_LEN = 0x14,
--	OFFSET_TRANSAC_LEN = 0x18,
--	OFFSET_DELAY_LEN = 0x1c,
--	OFFSET_TIMING = 0x20,
--	OFFSET_START = 0x24,
--	OFFSET_EXT_CONF = 0x28,
--	OFFSET_FIFO_STAT = 0x30,
--	OFFSET_FIFO_THRESH = 0x34,
--	OFFSET_FIFO_ADDR_CLR = 0x38,
--	OFFSET_IO_CONFIG = 0x40,
--	OFFSET_RSV_DEBUG = 0x44,
--	OFFSET_HS = 0x48,
--	OFFSET_SOFTRESET = 0x50,
--	OFFSET_DCM_EN = 0x54,
--	OFFSET_PATH_DIR = 0x60,
--	OFFSET_DEBUGSTAT = 0x64,
--	OFFSET_DEBUGCTRL = 0x68,
--	OFFSET_TRANSFER_LEN_AUX = 0x6c,
--	OFFSET_CLOCK_DIV = 0x70,
-+	OFFSET_DATA_PORT,
-+	OFFSET_SLAVE_ADDR,
-+	OFFSET_INTR_MASK,
-+	OFFSET_INTR_STAT,
-+	OFFSET_CONTROL,
-+	OFFSET_TRANSFER_LEN,
-+	OFFSET_TRANSAC_LEN,
-+	OFFSET_DELAY_LEN,
-+	OFFSET_TIMING,
-+	OFFSET_START,
-+	OFFSET_EXT_CONF,
-+	OFFSET_FIFO_STAT,
-+	OFFSET_FIFO_THRESH,
-+	OFFSET_FIFO_ADDR_CLR,
-+	OFFSET_IO_CONFIG,
-+	OFFSET_RSV_DEBUG,
-+	OFFSET_HS,
-+	OFFSET_SOFTRESET,
-+	OFFSET_DCM_EN,
-+	OFFSET_PATH_DIR,
-+	OFFSET_DEBUGSTAT,
-+	OFFSET_DEBUGCTRL,
-+	OFFSET_TRANSFER_LEN_AUX,
-+	OFFSET_CLOCK_DIV,
-+};
-+
-+static const u16 mt_i2c_regs_v1[] = {
-+	[OFFSET_DATA_PORT] = 0x0,
-+	[OFFSET_SLAVE_ADDR] = 0x4,
-+	[OFFSET_INTR_MASK] = 0x8,
-+	[OFFSET_INTR_STAT] = 0xc,
-+	[OFFSET_CONTROL] = 0x10,
-+	[OFFSET_TRANSFER_LEN] = 0x14,
-+	[OFFSET_TRANSAC_LEN] = 0x18,
-+	[OFFSET_DELAY_LEN] = 0x1c,
-+	[OFFSET_TIMING] = 0x20,
-+	[OFFSET_START] = 0x24,
-+	[OFFSET_EXT_CONF] = 0x28,
-+	[OFFSET_FIFO_STAT] = 0x30,
-+	[OFFSET_FIFO_THRESH] = 0x34,
-+	[OFFSET_FIFO_ADDR_CLR] = 0x38,
-+	[OFFSET_IO_CONFIG] = 0x40,
-+	[OFFSET_RSV_DEBUG] = 0x44,
-+	[OFFSET_HS] = 0x48,
-+	[OFFSET_SOFTRESET] = 0x50,
-+	[OFFSET_DCM_EN] = 0x54,
-+	[OFFSET_PATH_DIR] = 0x60,
-+	[OFFSET_DEBUGSTAT] = 0x64,
-+	[OFFSET_DEBUGCTRL] = 0x68,
-+	[OFFSET_TRANSFER_LEN_AUX] = 0x6c,
-+	[OFFSET_CLOCK_DIV] = 0x70,
- };
- 
- struct mtk_i2c_compatible {
- 	const struct i2c_adapter_quirks *quirks;
-+	const u16 *regs;
- 	unsigned char pmic_i2c: 1;
- 	unsigned char dcm: 1;
- 	unsigned char auto_restart: 1;
-@@ -181,6 +209,7 @@ struct mtk_i2c {
- };
- 
- static const struct mtk_i2c_compatible mt2712_compat = {
-+	.regs = mt_i2c_regs_v1,
- 	.pmic_i2c = 0,
- 	.dcm = 1,
- 	.auto_restart = 1,
-@@ -191,6 +220,7 @@ struct mtk_i2c {
- 
- static const struct mtk_i2c_compatible mt6577_compat = {
- 	.quirks = &mt6577_i2c_quirks,
-+	.regs = mt_i2c_regs_v1,
- 	.pmic_i2c = 0,
- 	.dcm = 1,
- 	.auto_restart = 0,
-@@ -201,6 +231,7 @@ struct mtk_i2c {
- 
- static const struct mtk_i2c_compatible mt6589_compat = {
- 	.quirks = &mt6577_i2c_quirks,
-+	.regs = mt_i2c_regs_v1,
- 	.pmic_i2c = 1,
- 	.dcm = 0,
- 	.auto_restart = 0,
-@@ -211,6 +242,7 @@ struct mtk_i2c {
- 
- static const struct mtk_i2c_compatible mt7622_compat = {
- 	.quirks = &mt7622_i2c_quirks,
-+	.regs = mt_i2c_regs_v1,
- 	.pmic_i2c = 0,
- 	.dcm = 1,
- 	.auto_restart = 1,
-@@ -220,6 +252,7 @@ struct mtk_i2c {
- };
- 
- static const struct mtk_i2c_compatible mt8173_compat = {
-+	.regs = mt_i2c_regs_v1,
- 	.pmic_i2c = 0,
- 	.dcm = 1,
- 	.auto_restart = 1,
-@@ -238,6 +271,17 @@ struct mtk_i2c {
- };
- MODULE_DEVICE_TABLE(of, mtk_i2c_of_match);
- 
-+static u16 mtk_i2c_readw(struct mtk_i2c *i2c, enum I2C_REGS_OFFSET reg)
-+{
-+	return readw(i2c->base + i2c->dev_comp->regs[reg]);
-+}
-+
-+static void mtk_i2c_writew(struct mtk_i2c *i2c, u16 val,
-+			   enum I2C_REGS_OFFSET reg)
-+{
-+	writew(val, i2c->base + i2c->dev_comp->regs[reg]);
-+}
-+
- static int mtk_i2c_clock_enable(struct mtk_i2c *i2c)
+-static int
+-mt76x0_ampdu_stat_read(struct seq_file *file, void *data)
++static int ampdu_stat_show(struct seq_file *file, void *data)
  {
- 	int ret;
-@@ -278,31 +322,31 @@ static void mtk_i2c_init_hw(struct mtk_i2c *i2c)
+ 	struct mt76x02_dev *dev = file->private;
+ 	int i, j;
+@@ -61,19 +60,7 @@ mt76x0_ampdu_stat_read(struct seq_file *file, void *data)
+ 
+ 	return 0;
+ }
+-
+-static int
+-mt76x0_ampdu_stat_open(struct inode *inode, struct file *f)
+-{
+-	return single_open(f, mt76x0_ampdu_stat_read, inode->i_private);
+-}
+-
+-static const struct file_operations fops_ampdu_stat = {
+-	.open = mt76x0_ampdu_stat_open,
+-	.read = seq_read,
+-	.llseek = seq_lseek,
+-	.release = single_release,
+-};
++DEFINE_SHOW_ATTRIBUTE(ampdu_stat);
+ 
+ void mt76x0_init_debugfs(struct mt76x02_dev *dev)
  {
- 	u16 control_reg;
+@@ -83,5 +70,6 @@ void mt76x0_init_debugfs(struct mt76x02_dev *dev)
+ 	if (!dir)
+ 		return;
  
--	writew(I2C_SOFT_RST, i2c->base + OFFSET_SOFTRESET);
-+	mtk_i2c_writew(i2c, I2C_SOFT_RST, OFFSET_SOFTRESET);
+-	debugfs_create_file("ampdu_stat", S_IRUSR, dir, dev, &fops_ampdu_stat);
++	debugfs_create_file("ampdu_stat", S_IRUSR, dir, dev,
++				&ampdu_stat_fops);
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt76x2/debugfs.c
+index e8f8ccc0a5ed..04711cd09d21 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2/debugfs.c
+@@ -17,8 +17,7 @@
+ #include <linux/debugfs.h>
+ #include "mt76x2.h"
  
- 	/* Set ioconfig */
- 	if (i2c->use_push_pull)
--		writew(I2C_IO_CONFIG_PUSH_PULL, i2c->base + OFFSET_IO_CONFIG);
-+		mtk_i2c_writew(i2c, I2C_IO_CONFIG_PUSH_PULL, OFFSET_IO_CONFIG);
- 	else
--		writew(I2C_IO_CONFIG_OPEN_DRAIN, i2c->base + OFFSET_IO_CONFIG);
-+		mtk_i2c_writew(i2c, I2C_IO_CONFIG_OPEN_DRAIN, OFFSET_IO_CONFIG);
+-static int
+-mt76x2_ampdu_stat_read(struct seq_file *file, void *data)
++static int ampdu_stat_show(struct seq_file *file, void *data)
+ {
+ 	struct mt76x02_dev *dev = file->private;
+ 	int i, j;
+@@ -40,12 +39,7 @@ mt76x2_ampdu_stat_read(struct seq_file *file, void *data)
  
- 	if (i2c->dev_comp->dcm)
--		writew(I2C_DCM_DISABLE, i2c->base + OFFSET_DCM_EN);
-+		mtk_i2c_writew(i2c, I2C_DCM_DISABLE, OFFSET_DCM_EN);
+ 	return 0;
+ }
+-
+-static int
+-mt76x2_ampdu_stat_open(struct inode *inode, struct file *f)
+-{
+-	return single_open(f, mt76x2_ampdu_stat_read, inode->i_private);
+-}
++DEFINE_SHOW_ATTRIBUTE(ampdu_stat);
  
- 	if (i2c->dev_comp->timing_adjust)
--		writew(I2C_DEFAULT_CLK_DIV - 1, i2c->base + OFFSET_CLOCK_DIV);
-+		mtk_i2c_writew(i2c, I2C_DEFAULT_CLK_DIV - 1, OFFSET_CLOCK_DIV);
+ static int read_txpower(struct seq_file *file, void *data)
+ {
+@@ -58,15 +52,7 @@ static int read_txpower(struct seq_file *file, void *data)
+ 	return 0;
+ }
  
--	writew(i2c->timing_reg, i2c->base + OFFSET_TIMING);
--	writew(i2c->high_speed_reg, i2c->base + OFFSET_HS);
-+	mtk_i2c_writew(i2c, i2c->timing_reg, OFFSET_TIMING);
-+	mtk_i2c_writew(i2c, i2c->high_speed_reg, OFFSET_HS);
+-static const struct file_operations fops_ampdu_stat = {
+-	.open = mt76x2_ampdu_stat_open,
+-	.read = seq_read,
+-	.llseek = seq_lseek,
+-	.release = single_release,
+-};
+-
+-static int
+-mt76x2_dfs_stat_read(struct seq_file *file, void *data)
++static int dfs_stat_show(struct seq_file *file, void *data)
+ {
+ 	struct mt76x02_dev *dev = file->private;
+ 	struct mt76x02_dfs_pattern_detector *dfs_pd = &dev->dfs_pd;
+@@ -90,19 +76,7 @@ mt76x2_dfs_stat_read(struct seq_file *file, void *data)
  
- 	/* If use i2c pin from PMIC mt6397 side, need set PATH_DIR first */
- 	if (i2c->have_pmic)
--		writew(I2C_CONTROL_WRAPPER, i2c->base + OFFSET_PATH_DIR);
-+		mtk_i2c_writew(i2c, I2C_CONTROL_WRAPPER, OFFSET_PATH_DIR);
+ 	return 0;
+ }
+-
+-static int
+-mt76x2_dfs_stat_open(struct inode *inode, struct file *f)
+-{
+-	return single_open(f, mt76x2_dfs_stat_read, inode->i_private);
+-}
+-
+-static const struct file_operations fops_dfs_stat = {
+-	.open = mt76x2_dfs_stat_open,
+-	.read = seq_read,
+-	.llseek = seq_lseek,
+-	.release = single_release,
+-};
++DEFINE_SHOW_ATTRIBUTE(dfs_stat);
  
- 	control_reg = I2C_CONTROL_ACKERR_DET_EN |
- 		      I2C_CONTROL_CLK_EXT_EN | I2C_CONTROL_DMA_EN;
--	writew(control_reg, i2c->base + OFFSET_CONTROL);
--	writew(I2C_DELAY_LEN, i2c->base + OFFSET_DELAY_LEN);
-+	mtk_i2c_writew(i2c, control_reg, OFFSET_CONTROL);
-+	mtk_i2c_writew(i2c, I2C_DELAY_LEN, OFFSET_DELAY_LEN);
+ static int read_agc(struct seq_file *file, void *data)
+ {
+@@ -127,8 +101,8 @@ void mt76x2_init_debugfs(struct mt76x02_dev *dev)
+ 	debugfs_create_u8("temperature", 0400, dir, &dev->cal.temp);
+ 	debugfs_create_bool("tpc", 0600, dir, &dev->enable_tpc);
  
- 	writel(I2C_DMA_HARD_RST, i2c->pdmabase + OFFSET_RST);
- 	udelay(50);
-@@ -454,7 +498,7 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+-	debugfs_create_file("ampdu_stat", 0400, dir, dev, &fops_ampdu_stat);
+-	debugfs_create_file("dfs_stats", 0400, dir, dev, &fops_dfs_stat);
++	debugfs_create_file("ampdu_stat", 0400, dir, dev, &ampdu_stat_fops);
++	debugfs_create_file("dfs_stats", 0400, dir, dev, &dfs_stat_fops);
+ 	debugfs_create_devm_seqfile(dev->mt76.dev, "txpower", dir,
+ 				    read_txpower);
  
- 	reinit_completion(&i2c->msg_complete);
+diff --git a/drivers/net/wireless/mediatek/mt7601u/debugfs.c b/drivers/net/wireless/mediatek/mt7601u/debugfs.c
+index 991a6a729b1e..0be3084fee01 100644
+--- a/drivers/net/wireless/mediatek/mt7601u/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt7601u/debugfs.c
+@@ -37,8 +37,7 @@ mt76_reg_get(void *data, u64 *val)
  
--	control_reg = readw(i2c->base + OFFSET_CONTROL) &
-+	control_reg = mtk_i2c_readw(i2c, OFFSET_CONTROL) &
- 			~(I2C_CONTROL_DIR_CHANGE | I2C_CONTROL_RS);
- 	if ((i2c->speed_hz > MAX_FS_MODE_SPEED) || (left_num >= 1))
- 		control_reg |= I2C_CONTROL_RS;
-@@ -462,40 +506,41 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
- 	if (i2c->op == I2C_MASTER_WRRD)
- 		control_reg |= I2C_CONTROL_DIR_CHANGE | I2C_CONTROL_RS;
+ DEFINE_SIMPLE_ATTRIBUTE(fops_regval, mt76_reg_get, mt76_reg_set, "0x%08llx\n");
  
--	writew(control_reg, i2c->base + OFFSET_CONTROL);
-+	mtk_i2c_writew(i2c, control_reg, OFFSET_CONTROL);
+-static int
+-mt7601u_ampdu_stat_read(struct seq_file *file, void *data)
++static int ampdu_stat_show(struct seq_file *file, void *data)
+ {
+ 	struct mt7601u_dev *dev = file->private;
+ 	int i, j;
+@@ -80,22 +79,9 @@ mt7601u_ampdu_stat_read(struct seq_file *file, void *data)
  
- 	/* set start condition */
- 	if (i2c->speed_hz <= I2C_DEFAULT_SPEED)
--		writew(I2C_ST_START_CON, i2c->base + OFFSET_EXT_CONF);
-+		mtk_i2c_writew(i2c, I2C_ST_START_CON, OFFSET_EXT_CONF);
- 	else
--		writew(I2C_FS_START_CON, i2c->base + OFFSET_EXT_CONF);
-+		mtk_i2c_writew(i2c, I2C_FS_START_CON, OFFSET_EXT_CONF);
+ 	return 0;
+ }
++DEFINE_SHOW_ATTRIBUTE(ampdu_stat);
  
- 	addr_reg = i2c_8bit_addr_from_msg(msgs);
--	writew(addr_reg, i2c->base + OFFSET_SLAVE_ADDR);
-+	mtk_i2c_writew(i2c, addr_reg, OFFSET_SLAVE_ADDR);
+-static int
+-mt7601u_ampdu_stat_open(struct inode *inode, struct file *f)
+-{
+-	return single_open(f, mt7601u_ampdu_stat_read, inode->i_private);
+-}
+-
+-static const struct file_operations fops_ampdu_stat = {
+-	.open = mt7601u_ampdu_stat_open,
+-	.read = seq_read,
+-	.llseek = seq_lseek,
+-	.release = single_release,
+-};
+-
+-static int
+-mt7601u_eeprom_param_read(struct seq_file *file, void *data)
++static int eeprom_param_show(struct seq_file *file, void *data)
+ {
+ 	struct mt7601u_dev *dev = file->private;
+ 	struct mt7601u_rate_power *rp = &dev->ee->power_rate_table;
+@@ -138,19 +124,7 @@ mt7601u_eeprom_param_read(struct seq_file *file, void *data)
  
- 	/* Clear interrupt status */
--	writew(restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
--	       I2C_TRANSAC_COMP, i2c->base + OFFSET_INTR_STAT);
--	writew(I2C_FIFO_ADDR_CLR, i2c->base + OFFSET_FIFO_ADDR_CLR);
-+	mtk_i2c_writew(i2c, restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
-+	       I2C_TRANSAC_COMP, OFFSET_INTR_STAT);
-+
-+	mtk_i2c_writew(i2c, I2C_FIFO_ADDR_CLR, OFFSET_FIFO_ADDR_CLR);
+ 	return 0;
+ }
+-
+-static int
+-mt7601u_eeprom_param_open(struct inode *inode, struct file *f)
+-{
+-	return single_open(f, mt7601u_eeprom_param_read, inode->i_private);
+-}
+-
+-static const struct file_operations fops_eeprom_param = {
+-	.open = mt7601u_eeprom_param_open,
+-	.read = seq_read,
+-	.llseek = seq_lseek,
+-	.release = single_release,
+-};
++DEFINE_SHOW_ATTRIBUTE(eeprom_param);
  
- 	/* Enable interrupt */
--	writew(restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
--	       I2C_TRANSAC_COMP, i2c->base + OFFSET_INTR_MASK);
-+	mtk_i2c_writew(i2c, restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
-+	       I2C_TRANSAC_COMP, OFFSET_INTR_MASK);
+ void mt7601u_init_debugfs(struct mt7601u_dev *dev)
+ {
+@@ -165,6 +139,8 @@ void mt7601u_init_debugfs(struct mt7601u_dev *dev)
  
- 	/* Set transfer and transaction len */
- 	if (i2c->op == I2C_MASTER_WRRD) {
- 		if (i2c->dev_comp->aux_len_reg) {
--			writew(msgs->len, i2c->base + OFFSET_TRANSFER_LEN);
--			writew((msgs + 1)->len, i2c->base +
--			       OFFSET_TRANSFER_LEN_AUX);
-+			mtk_i2c_writew(i2c, msgs->len, OFFSET_TRANSFER_LEN);
-+			mtk_i2c_writew(i2c, (msgs + 1)->len,
-+					    OFFSET_TRANSFER_LEN_AUX);
- 		} else {
--			writew(msgs->len | ((msgs + 1)->len) << 8,
--			       i2c->base + OFFSET_TRANSFER_LEN);
-+			mtk_i2c_writew(i2c, msgs->len | ((msgs + 1)->len) << 8,
-+					    OFFSET_TRANSFER_LEN);
- 		}
--		writew(I2C_WRRD_TRANAC_VALUE, i2c->base + OFFSET_TRANSAC_LEN);
-+		mtk_i2c_writew(i2c, I2C_WRRD_TRANAC_VALUE, OFFSET_TRANSAC_LEN);
- 	} else {
--		writew(msgs->len, i2c->base + OFFSET_TRANSFER_LEN);
--		writew(num, i2c->base + OFFSET_TRANSAC_LEN);
-+		mtk_i2c_writew(i2c, msgs->len, OFFSET_TRANSFER_LEN);
-+		mtk_i2c_writew(i2c, num, OFFSET_TRANSAC_LEN);
- 	}
- 
- 	/* Prepare buffer data to start transfer */
-@@ -607,14 +652,14 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
- 		if (left_num >= 1)
- 			start_reg |= I2C_RS_MUL_CNFG;
- 	}
--	writew(start_reg, i2c->base + OFFSET_START);
-+	mtk_i2c_writew(i2c, start_reg, OFFSET_START);
- 
- 	ret = wait_for_completion_timeout(&i2c->msg_complete,
- 					  i2c->adap.timeout);
- 
- 	/* Clear interrupt mask */
--	writew(~(restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
--	       I2C_TRANSAC_COMP), i2c->base + OFFSET_INTR_MASK);
-+	mtk_i2c_writew(i2c, ~(restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
-+	       I2C_TRANSAC_COMP), OFFSET_INTR_MASK);
- 
- 	if (i2c->op == I2C_MASTER_WR) {
- 		dma_unmap_single(i2c->dev, wpaddr,
-@@ -724,8 +769,8 @@ static irqreturn_t mtk_i2c_irq(int irqno, void *dev_id)
- 	if (i2c->auto_restart)
- 		restart_flag = I2C_RS_TRANSFER;
- 
--	intr_stat = readw(i2c->base + OFFSET_INTR_STAT);
--	writew(intr_stat, i2c->base + OFFSET_INTR_STAT);
-+	intr_stat = mtk_i2c_readw(i2c, OFFSET_INTR_STAT);
-+	mtk_i2c_writew(i2c, intr_stat, OFFSET_INTR_STAT);
- 
- 	/*
- 	 * when occurs ack error, i2c controller generate two interrupts
-@@ -737,8 +782,8 @@ static irqreturn_t mtk_i2c_irq(int irqno, void *dev_id)
- 	if (i2c->ignore_restart_irq && (i2c->irq_stat & restart_flag)) {
- 		i2c->ignore_restart_irq = false;
- 		i2c->irq_stat = 0;
--		writew(I2C_RS_MUL_CNFG | I2C_RS_MUL_TRIG | I2C_TRANSAC_START,
--		       i2c->base + OFFSET_START);
-+		mtk_i2c_writew(i2c, I2C_RS_MUL_CNFG | I2C_RS_MUL_TRIG |
-+				    I2C_TRANSAC_START, OFFSET_START);
- 	} else {
- 		if (i2c->irq_stat & (I2C_TRANSAC_COMP | restart_flag))
- 			complete(&i2c->msg_complete);
+ 	debugfs_create_u32("regidx", 0600, dir, &dev->debugfs_reg);
+ 	debugfs_create_file("regval", 0600, dir, dev, &fops_regval);
+-	debugfs_create_file("ampdu_stat", 0400, dir, dev, &fops_ampdu_stat);
+-	debugfs_create_file("eeprom_param", 0400, dir, dev, &fops_eeprom_param);
++	debugfs_create_file("ampdu_stat", 0400, dir, dev, 
++				&ampdu_stat_fops);
++	debugfs_create_file("eeprom_param", 0400, dir, dev,
++				&eeprom_param_fops);
+ }
 -- 
-1.7.9.5
+2.17.0
