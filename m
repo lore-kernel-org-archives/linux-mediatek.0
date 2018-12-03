@@ -1,58 +1,58 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH] drm/mediatek: Only try to attach bridge if there is one
-Date: Mon, 3 Dec 2018 11:27:00 +0800
-Message-ID: <1543807620.11594.2.camel@mtksdaap41>
-References: <20181126040737.138682-1-drinkcat@chromium.org>
- <1543210200.1796.2.camel@mtksdaap41>
+From: Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: Kill off skeleton{64}.dtsi
+Date: Mon, 3 Dec 2018 12:02:29 +0800
+Message-ID: <CAGb2v644LTpJ6XpCbhpBGYT3ZBr_Yt-4OVGQwNcOD15-+PqshA@mail.gmail.com>
+References: <20181130170634.9467-1-robh@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1543210200.1796.2.camel@mtksdaap41>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Nicolas Boichat <drinkcat@chromium.org>
-Cc: David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20181130170634.9467-1-robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Cc: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-oxnas-GWfripvEmMdhl2p70BpVqQ@public.gmane.org, Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org>, david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Jamie Iles <jamie-wmLquQDDieKakBO8gow8eQ@public.gmane.org>, robert.jarzmik-GANU6spQydw@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, Alexandre Torgue <alexandre.torgue-qxv4g6HH51o@public.gmane.org>, jesper.nilsson-VrBV9hrLPhE@public.gmane.org, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, gregory.clement-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, zajec5-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-VrBV9hrLPhE@public.gmane.org, jonmason-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, ludovic.desroches-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org, arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, hauke-5/S+JYg5SzeELgA04lAiVw@public.gmane.org, Andy Gross <andy.gross-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Sebastian Hesselbarth <sebastian.hesselbarth-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-msm <linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, devicetree <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>Jason Cooper <j>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIE5pY29sYXM6CgpPbiBNb24sIDIwMTgtMTEtMjYgYXQgMTM6MzAgKzA4MDAsIENLIEh1IHdy
-b3RlOgo+IEhpLCBOaWNvbGFzOgo+IAo+IE9uIE1vbiwgMjAxOC0xMS0yNiBhdCAxMjowNyArMDgw
-MCwgTmljb2xhcyBCb2ljaGF0IHdyb3RlOgo+ID4gRXZlbiBpZiBkc2ktPmJyaWRnZSBpcyBOVUxM
-LCB3ZSBzdGlsbCB0cnkgdG8gY2FsbCBkcm1fYnJpZGdlX2F0dGFjaCwKPiA+IGFuZCBwcmludCBv
-dXQgYW4gZXJyb3IgbWVzc2FnZSwgYmVmb3JlIGNyZWF0aW5nIHRoZSBjb25uZWN0b3IuCj4gPiAK
-PiA+IFdoZW4gbm8gYnJpZGdlIGlzIHByb3ZpZGVkLCBsZXQncyBza2lwIHRoZXNlIDIgc3RlcHMg
-YW5kIGRpcmVjdGx5Cj4gPiBjcmVhdGUgdGhlIGNvbm5lY3Rvci4KPiAKCkFwcGxpZWQgdG8gbWVk
-aWF0ZWstZHJtLWZpeGVzLTQuMjAgWzFdLCB0aGFua3MuCgpbMV0KaHR0cHM6Ly9naXRodWIuY29t
-L2NraHUtbWVkaWF0ZWsvbGludXguZ2l0LXRhZ3MvY29tbWl0cy9tZWRpYXRlay1kcm0tZml4ZXMt
-NC4yMAoKUmVnYXJkcywKQ0sKCj4gUmV2aWV3ZWQtYnk6IENLIEh1IDxjay5odUBtZWRpYXRlay5j
-b20+Cj4gCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IE5pY29sYXMgQm9pY2hhdCA8ZHJpbmtjYXRA
-Y2hyb21pdW0ub3JnPgo+ID4gLS0tCj4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
-c2kuYyB8IDExICsrKysrKystLS0tCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDcgaW5zZXJ0aW9ucygr
-KSwgNCBkZWxldGlvbnMoLSkKPiA+IAo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4g
-PiBpbmRleCA2NmRmMWIxNzc5NTkyMS4uMjdiNTA3ZWI0YTk5N2QgMTAwNjQ0Cj4gPiAtLS0gYS9k
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gPiArKysgYi9kcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gPiBAQCAtODE4LDEwICs4MTgsMTMgQEAgc3RhdGljIGlu
-dCBtdGtfZHNpX2NyZWF0ZV9jb25uX2VuYyhzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLCBzdHJ1Y3Qg
-bXRrX2RzaSAqZHNpKQo+ID4gIAlkc2ktPmVuY29kZXIucG9zc2libGVfY3J0Y3MgPSAxOwo+ID4g
-IAo+ID4gIAkvKiBJZiB0aGVyZSdzIGEgYnJpZGdlLCBhdHRhY2ggdG8gaXQgYW5kIGxldCBpdCBj
-cmVhdGUgdGhlIGNvbm5lY3RvciAqLwo+ID4gLQlyZXQgPSBkcm1fYnJpZGdlX2F0dGFjaCgmZHNp
-LT5lbmNvZGVyLCBkc2ktPmJyaWRnZSwgTlVMTCk7Cj4gPiAtCWlmIChyZXQpIHsKPiA+IC0JCURS
-TV9FUlJPUigiRmFpbGVkIHRvIGF0dGFjaCBicmlkZ2UgdG8gZHJtXG4iKTsKPiA+IC0KPiA+ICsJ
-aWYgKGRzaS0+YnJpZGdlKSB7Cj4gPiArCQlyZXQgPSBkcm1fYnJpZGdlX2F0dGFjaCgmZHNpLT5l
-bmNvZGVyLCBkc2ktPmJyaWRnZSwgTlVMTCk7Cj4gPiArCQlpZiAocmV0KSB7Cj4gPiArCQkJRFJN
-X0VSUk9SKCJGYWlsZWQgdG8gYXR0YWNoIGJyaWRnZSB0byBkcm1cbiIpOwo+ID4gKwkJCWdvdG8g
-ZXJyX2VuY29kZXJfY2xlYW51cDsKPiA+ICsJCX0KPiA+ICsJfSBlbHNlIHsKPiA+ICAJCS8qIE90
-aGVyd2lzZSBjcmVhdGUgb3VyIG93biBjb25uZWN0b3IgYW5kIGF0dGFjaCB0byBhIHBhbmVsICov
-Cj4gPiAgCQlyZXQgPSBtdGtfZHNpX2NyZWF0ZV9jb25uZWN0b3IoZHJtLCBkc2kpOwo+ID4gIAkJ
-aWYgKHJldCkKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
-cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
-ZWwK
+On Sat, Dec 1, 2018 at 1:06 AM Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
+>
+> Remove the usage of skeleton.dtsi in the remaining dts files. It was
+> deprecated since commit 9c0da3cc61f1 ("ARM: dts: explicitly mark
+> skeleton.dtsi as deprecated"). This will make adding a unit-address to
+> memory nodes easier.
+>
+> The main tricky part to removing skeleton.dtsi is we could end up with
+> no /memory node at all when a bootloader depends on one being present. I
+> hacked up dtc to check for this condition.
+>
+> Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> ---
+> Yes, I'm being lazy and not splitting this up into dozens of sub-arch
+> patches. I don't think this should conflict nor should we be getting new
+> dependencies on skeleton.dtsi. So please apply directly to arm-soc.
+>
+> Rob
+>
+
+[...]
+
+>  arch/arm/boot/dts/sun5i-a10s.dtsi              |  4 ++--
+>  arch/arm/boot/dts/sun5i-a13.dtsi               |  4 ++--
+>  arch/arm/boot/dts/sun5i.dtsi                   |  9 +++++++--
+>  arch/arm/boot/dts/sun6i-a31.dtsi               |  5 +++--
+>  arch/arm/boot/dts/sun7i-a20.dtsi               |  5 +++--
+>  arch/arm/boot/dts/sun8i-a23-a33.dtsi           |  4 ++--
+>  arch/arm/boot/dts/sun8i-a23.dtsi               |  1 +
+>  arch/arm/boot/dts/sun8i-a33.dtsi               |  1 +
+
+Maxime recently took care of this for Allwinner/sunxi. It should already
+be in linux-next now.
+
+ChenYu
