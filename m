@@ -1,70 +1,21 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 12/36] dt-bindings: arm: Convert cpu binding to json-schema
-Date: Mon, 3 Dec 2018 08:24:16 -0600
-Message-ID: <CAL_JsqLC-1VWoErAteugtGOY-Gk87TBHkA94oyibE4Z+Wjq+DA@mail.gmail.com>
-References: <20181005165848.3474-1-robh@kernel.org> <20181005165848.3474-13-robh@kernel.org>
- <035ae23f-3c92-ffd9-0753-abbd604c5c02@xilinx.com> <CAL_JsqJJkcbxvfbVVOTPb5gavPgypO-Cd05C6qpvbvPMd1G81g@mail.gmail.com>
- <20181203124039.GA25097@arm.com>
+From: Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>
+Subject: Re: [PATCH] mt76: convert to DEFINE_SHOW_ATTRIBUTE
+Date: Mon, 3 Dec 2018 10:55:54 -0800
+Message-ID: <20181203105554.2c40d574@cakuba.netronome.com>
+References: <20181203134028.12645-1-tiny.windzz@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181203124039.GA25097@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Will Deacon <will.deacon@arm.com>
-Cc: Michal Simek <michal.simek@xilinx.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, devicetree@vger.kernel.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linuxppc-dev <linuxppc-dev@lists.ozlabs.org>, Tom Rini <trini@konsulko.com>, Kumar Gala <kumar.gala@linaro.org>, Grant Likely <glikely@secretlab.ca>, Arnd Bergmann <arnd@arndb.de>, Linus Walleij <linus.walleij@linaro.org>, Pantelis Antoniou <pantelis.antoniou@konsulko.com>, Bjorn Andersson <bjorn.andersson@linaro.org>, Olof Johansson <olof@lixom.net>, Mark Brown <broonie@kernel.org>, Geert Uytterhoeven <geert@linux-m68k.org>, Matthias
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20181203134028.12645-1-tiny.windzz-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Yangtao Li <tiny.windzz-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, nbd-Vt+b4OUoWG0@public.gmane.org, lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, joe-6d6DIl74uiNBDgjK7y7TUQ@public.gmane.org, sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Dec 3, 2018 at 6:40 AM Will Deacon <will.deacon@arm.com> wrote:
->
-> On Fri, Nov 30, 2018 at 12:00:05PM -0600, Rob Herring wrote:
-> > On Thu, Nov 8, 2018 at 2:49 AM Michal Simek <michal.simek@xilinx.com> wrote:
-> > >
-> > > Hi Rob,
-> > >
-> > > On 05. 10. 18 18:58, Rob Herring wrote:
-> > > > Convert ARM CPU binding to DT schema format using json-schema.
-> > > >
-> > > > Cc: Mark Rutland <mark.rutland@arm.com>
-> > > > Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> > > > Cc: devicetree@vger.kernel.org
-> > > > Cc: linux-arm-kernel@lists.infradead.org
-> > > > Cc: linux-mediatek@lists.infradead.org
-> > > > Signed-off-by: Rob Herring <robh@kernel.org>
-> > > > ---
-> > > >  .../devicetree/bindings/arm/cpus.txt          | 490 -----------------
-> > > >  .../devicetree/bindings/arm/cpus.yaml         | 503 ++++++++++++++++++
-> > > >  2 files changed, 503 insertions(+), 490 deletions(-)
-> > > >  delete mode 100644 Documentation/devicetree/bindings/arm/cpus.txt
-> > > >  create mode 100644 Documentation/devicetree/bindings/arm/cpus.yaml
-> >
-> > [...]
-> >
-> > > I have take a look at xilinx part of this and try to build it for arm64
-> > > platforms and I see errors coming from this cpu description.
-> > > /root/linux/arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dt.yaml:
-> > > cpu@0:compatible: ['arm,cortex-a53', 'arm,armv8'] is too long
-> > > /root/linux/arch/arm64/boot/dts/xilinx/zynqmp-zcu100-revC.dt.yaml:
-> > > cpu@0:compatible: Additional items are not allowed ('arm,armv8' was
-> > > unexpected)
-> >
-> > Thanks for actually giving this a spin!
-> >
-> > > Based on grep this is used in a lot of places
-> > > compatible = "arm,cortex-a53", "arm,armv8";
-> > >
-> > > Should this be moved to just simple?
-> > > compatible = "arm,cortex-a53";
-> >
-> > I'd normally go with the majority which would be to keep it. However,
-> > 'arm,armv8' is of questionable value, isn't actually documented, and
-> > doesn't exist for any other version of the architecture. So we should
-> > kill it IMO.
->
-> I'd prefer to keep it around, since that's what's used to describe the CPUs
-> on the fastmodel iirc.
+On Mon,  3 Dec 2018 08:40:28 -0500, Yangtao Li wrote:
+> Use DEFINE_SHOW_ATTRIBUTE macro to simplify the code.
+> 
+> Signed-off-by: Yangtao Li <tiny.windzz-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 
-We can and should keep it for that purpose, but do we need it as a
-fallback? For real cores though, we have mixture of with and without
-and one of those need to be fixed.
-
-Rob
+Acked-by: Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>
