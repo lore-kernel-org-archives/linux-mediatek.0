@@ -1,74 +1,55 @@
-From: Sean Wang <sean.wang@kernel.org>
-Subject: Re: [PATCH 4/5] dt-bindings: i2c: Add Mediatek MT8183 i2c binding
-Date: Tue, 4 Dec 2018 12:59:49 -0800
-Message-ID: <CAGp9LzpBn=bdRa_jf7+R1hPm7GC+San_63ZOG7U6W3ToaEzjaQ@mail.gmail.com>
-References: <1543843974-4054-1-git-send-email-qii.wang@mediatek.com> <1543843974-4054-5-git-send-email-qii.wang@mediatek.com>
+From: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: Kill off skeleton{64}.dtsi
+Date: Tue, 04 Dec 2018 14:36:10 -0800
+Message-ID: <7h7egoor6t.fsf@baylibre.com>
+References: <20181130170634.9467-1-robh@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1543843974-4054-5-git-send-email-qii.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: qii.wang@mediatek.com
-Cc: wsa@the-dreams.de, devicetree@vger.kernel.org, ryder.lee@mediatek.com, srv_heupstream@mediatek.com, leilk.liu@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20181130170634.9467-1-robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Alexandre Belloni <alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org>, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Jamie Iles <jamie-wmLquQDDieKakBO8gow8eQ@public.gmane.org>, Robert Jarzmik <robert.jarzmik-GANU6spQydw@public.gmane.org>, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, Alexandre Torgue <alexandre.torgue-qxv4g6HH51o@public.gmane.org>, Jesper Nilsson <jesper.nilsson-VrBV9hrLPhE@public.gmane.org>, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Viresh Kumar <vireshk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Gregory Clement <gregory.clement-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, =?utf-8?Q?Rafa?= =?utf-8?Q?=C5=82_Mi=C5=82ecki?= <zajec5-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, linux-arm-kernel-VrBV9hrLPhE@public.gmane.org, Jon Mason <jonmason-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, Ludovic Desroches <ludovic.desroches-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>, bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, Hauke Mehrtens <hauke>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Dec 3, 2018 at 5:34 AM <qii.wang@mediatek.com> wrote:
->
-> From: qii wang <qii.wang@mediatek.com>
->
-> Add MT8183 i2c binding to binding file. Compare to 2712 i2c
-> controller, MT8183 has different registers, offsets, clock,
-> and multi-user function.
->
-> Signed-off-by: qii wang <qii.wang@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/i2c/i2c-mtk.txt |    7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
->
-> diff --git a/Documentation/devicetree/bindings/i2c/i2c-mtk.txt b/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
-> index 7729e57..dfde624 100644
-> --- a/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
-> +++ b/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
-> @@ -12,14 +12,15 @@ Required properties:
->        "mediatek,mt7623-i2c", "mediatek,mt6577-i2c": for MediaTek MT7623
->        "mediatek,mt7629-i2c", "mediatek,mt2712-i2c": for MediaTek mt7629
->        "mediatek,mt8173-i2c": for MediaTek MT8173
-> +      "mediatek,mt8183-i2c": for MediaTek MT8183
->    - reg: physical base address of the controller and dma base, length of memory
->      mapped region.
->    - interrupts: interrupt number to the cpu.
->    - clock-div: the fixed value for frequency divider of clock source in i2c
->      module. Each IC may be different.
->    - clocks: clock name from clock manager
-> -  - clock-names: Must include "main" and "dma", if enable have-pmic need include
-> -    "pmic" extra.
-> +  - clock-names: Must include "main" and "dma", "arb" is optional, if enable
+Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> writes:
 
-if arb is optional, the multi-user function still can work? arb seems
-like the clock fed to arbitrating bus when multiple users are
-accessing at the same time.
+> Remove the usage of skeleton.dtsi in the remaining dts files. It was
+> deprecated since commit 9c0da3cc61f1 ("ARM: dts: explicitly mark
+> skeleton.dtsi as deprecated"). This will make adding a unit-address to
+> memory nodes easier.
+>
+> The main tricky part to removing skeleton.dtsi is we could end up with
+> no /memory node at all when a bootloader depends on one being present. I
+> hacked up dtc to check for this condition.
 
-> +    have-pmic need include "pmic" extra.
->
->  Optional properties:
->    - clock-frequency: Frequency in Hz of the bus when transfer, the default value
-> @@ -27,6 +28,8 @@ Optional properties:
->    - mediatek,have-pmic: platform can control i2c form special pmic side.
->      Only mt6589 and mt8135 support this feature.
->    - mediatek,use-push-pull: IO config use push-pull mode.
-> +  - ch-offset: base reg offset for multi-user.
+[...]
 
-add a vendor prefix if the property is vendor-specific one.
+I gave this a spin through the kernelCI on multiple SoCs, and builds and
+no new regressions for build or boot that I spotted.
 
-> +  - mediatek,share-i3c: i3c controller can share i2c function.
->
->  Example:
->
-> --
-> 1.7.9.5
->
->
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+Tested-by: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+
+>  arch/arm/boot/dts/meson.dtsi                   |  3 ++-
+>  arch/arm/boot/dts/meson6-atv1200.dts           |  1 +
+>  arch/arm/boot/dts/meson8-minix-neo-x8.dts      |  1 +
+>  arch/arm/boot/dts/meson8b-ec100.dts            |  1 +
+>  arch/arm/boot/dts/meson8b-mxq.dts              |  1 +
+>  arch/arm/boot/dts/meson8b-odroidc1.dts         |  1 +
+>  arch/arm/boot/dts/meson8m2-mxiii-plus.dts      |  1 +
+
+also for the amlogic/meson platforms,
+
+Reviewed-by: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Acked-by: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+
+Kevin
