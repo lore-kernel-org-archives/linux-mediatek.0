@@ -1,54 +1,47 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH v3 1/4] dt-bindings: pinctrl: Add devicetree bindings for
- MT6797 SoC Pinctrl
-Date: Wed, 5 Dec 2018 13:00:52 +0100
-Message-ID: <CACRpkdYCsh3AfmV-7ym-ffjp2k-kaNRqY1O3rd9h-WoUPYM_bw@mail.gmail.com>
-References: <20181107174844.5381-1-manivannan.sadhasivam@linaro.org>
- <20181107174844.5381-2-manivannan.sadhasivam@linaro.org> <CACRpkda25cuiPCe9ouvDDSpFwZ2z=Pm8pK=5jC-7OAcYwPSvvA@mail.gmail.com>
- <c1f63dd8-1c06-1797-025c-2cd4891d905d@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+From: David Hildenbrand <david@redhat.com>
+Subject: [PATCH RFC 0/7] mm: PG_reserved cleanups and documentation
+Date: Wed,  5 Dec 2018 13:28:44 +0100
+Message-ID: <20181205122851.5891-1-david@redhat.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <c1f63dd8-1c06-1797-025c-2cd4891d905d@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, arm-soc <arm@kernel.org>
-Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, sean.wang@kernel.org, Rob Herring <robh+dt@kernel.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Amit Kucheria <amit.kucheria@linaro.org>
+To: linux-mm@kvack.org
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-m68k@lists.linux-m68k.org, linuxppc-dev@lists.ozlabs.org, linux-riscv@lists.infradead.org, linux-s390@vger.kernel.org, linux-mediatek@lists.infradead.org, David Hildenbrand <david@redhat.com>, Albert Ou <aou@eecs.berkeley.edu>, Alexander Duyck <alexander.h.duyck@linux.intel.com>, Andrew Morton <akpm@linux-foundation.org>, Anthony Yznaga <anthony.yznaga@oracle.com>, Arnd Bergmann <arnd@arndb.de>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Bhupesh Sharma <bhsharma@redhat.com>, Catalin Marinas <catalin.marinas@arm.com>, Christophe Leroy <christophe.leroy@c-s.fr>, Dan Williams <dan.j.williams@intel.com>, Dave Kleikamp <dave.kleikamp@oracle.com>, David Airlie <airlied@linux.ie>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Dec 3, 2018 at 2:08 AM Matthias Brugger <matthias.bgg@gmail.com> wrote:
-> On 15/11/2018 11:04, Linus Walleij wrote:
-> > On Wed, Nov 7, 2018 at 6:49 PM Manivannan Sadhasivam
-> > <manivannan.sadhasivam@linaro.org> wrote:
-> >
-> >> Add devicetree bindings for Mediatek MT6797 SoC Pin Controller.
-> >>
-> >> Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-> >
-> > Patch applied.
-> >
->
-> Could you provide a stable tree for me, so that I can take the dts parts?
-> I just realized that my build is broken because of the missing dt-bindings
-> header file.
+I was recently going over all users of PG_reserved. Short story: it is
+difficult and sometimes not really clear if setting/checking for
+PG_reserved is only a relict from the past. Easy to break things.
 
-Since I pulled other changes on top it is too late for me to put that
-in an immutable branch and merge into my tree separately,
-you would have to pull in the whole "devel" branch from the
-pin control tree.
+I had way more cleanups in this series inititally,
+but some architectures take PG_reserved as a way to apply a different
+caching strategy (for MMIO pages). So I decided to only include the most
+obvious changes (that are less likely to break something).
 
-What we sometimes do is simply apply the *EXACT* same patch
-to two git trees. Git will cope with that as long as they are
-absolutely *IDENTICAL*. (The patch will appear twice in the
-git log with different hashes but they will merge without
-problems, a bit unelegant but it works.)
+So let's see if the documentation update for PG_reserved I crafted
+actually covers most cases or if there is plenty more.
 
-So in your situation I would extract this patch from the pinctrl
-tree:
-https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git/commit/?h=devel&id=95d2f00657ad4c2c3eacd8a871a7aa022c3fe7d9
-and apply it with some notice to the maintainers about
-the situation.
+Most notably, for device memory we can hopefully soon stop setting
+it PG_reserved
 
-ARM SoC folks: agreed?
+I only briefly tested this on s390x.
 
-Yours,
-Linus Walleij
+David Hildenbrand (7):
+  agp: efficeon: no need to set PG_reserved on GATT tables
+  s390/vdso: don't clear PG_reserved
+  powerpc/vdso: don't clear PG_reserved
+  riscv/vdso: don't clear PG_reserved
+  m68k/mm: use __ClearPageReserved()
+  arm64: kexec: no need to ClearPageReserved()
+  mm: better document PG_reserved
+
+ arch/arm64/kernel/machine_kexec.c |  1 -
+ arch/m68k/mm/memory.c             |  2 +-
+ arch/powerpc/kernel/vdso.c        |  2 --
+ arch/riscv/kernel/vdso.c          |  1 -
+ arch/s390/kernel/vdso.c           |  2 --
+ drivers/char/agp/efficeon-agp.c   |  2 --
+ include/linux/page-flags.h        | 18 ++++++++++++++++--
+ 7 files changed, 17 insertions(+), 11 deletions(-)
+
+-- 
+2.17.2
