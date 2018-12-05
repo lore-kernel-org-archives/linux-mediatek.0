@@ -1,13 +1,13 @@
 From: David Hildenbrand <david@redhat.com>
-Subject: [PATCH RFC 2/7] s390/vdso: don't clear PG_reserved
-Date: Wed,  5 Dec 2018 13:28:46 +0100
-Message-ID: <20181205122851.5891-3-david@redhat.com>
+Subject: [PATCH RFC 3/7] powerpc/vdso: don't clear PG_reserved
+Date: Wed,  5 Dec 2018 13:28:47 +0100
+Message-ID: <20181205122851.5891-4-david@redhat.com>
 References: <20181205122851.5891-1-david@redhat.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20181205122851.5891-1-david@redhat.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-mm@kvack.org
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-m68k@lists.linux-m68k.org, linuxppc-dev@lists.ozlabs.org, linux-riscv@lists.infradead.org, linux-s390@vger.kernel.org, linux-mediatek@lists.infradead.org, David Hildenbrand <david@redhat.com>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Heiko Carstens <heiko.carstens@de.ibm.com>, Matthew Wilcox <willy@infradead.org>, Mike Rapoport <rppt@linux.vnet.ibm.com>, Michal Hocko <mhocko@suse.com>, Vasily Gorbik <gor@linux.ibm.com>, Kees Cook <keescook@chromium.org>, Souptick Joarder <jrdr.linux@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Michal Hocko <mhocko@kernel.org>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-m68k@lists.linux-m68k.org, linuxppc-dev@lists.ozlabs.org, linux-riscv@lists.infradead.org, linux-s390@vger.kernel.org, linux-mediatek@lists.infradead.org, David Hildenbrand <david@redhat.com>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Paul Mackerras <paulus@samba.org>, Michael Ellerman <mpe@ellerman.id.au>, Christophe Leroy <christophe.leroy@c-s.fr>, Kees Cook <keescook@chromium.org>, Andrew Morton <akpm@linux-foundation.org>, Michal Hocko <mhocko@kernel.org>, Matthew Wilcox <willy@infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
 The VDSO is part of the kernel image and therefore the struct pages are
@@ -17,37 +17,34 @@ As we install a special mapping, the actual struct pages will never be
 exposed to MM via the page tables. We can therefore leave the pages
 marked as reserved.
 
-Suggested-by: Martin Schwidefsky <schwidefsky@de.ibm.com>
-Cc: Martin Schwidefsky <schwidefsky@de.ibm.com>
-Cc: Heiko Carstens <heiko.carstens@de.ibm.com>
-Cc: Matthew Wilcox <willy@infradead.org>
-Cc: Mike Rapoport <rppt@linux.vnet.ibm.com>
-Cc: Michal Hocko <mhocko@suse.com>
-Cc: Vasily Gorbik <gor@linux.ibm.com>
+Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>
+Cc: Paul Mackerras <paulus@samba.org>
+Cc: Michael Ellerman <mpe@ellerman.id.au>
+Cc: Christophe Leroy <christophe.leroy@c-s.fr>
 Cc: Kees Cook <keescook@chromium.org>
-Cc: Souptick Joarder <jrdr.linux@gmail.com>
 Cc: Andrew Morton <akpm@linux-foundation.org>
 Cc: Michal Hocko <mhocko@kernel.org>
+Cc: Matthew Wilcox <willy@infradead.org>
 Signed-off-by: David Hildenbrand <david@redhat.com>
 ---
- arch/s390/kernel/vdso.c | 2 --
+ arch/powerpc/kernel/vdso.c | 2 --
  1 file changed, 2 deletions(-)
 
-diff --git a/arch/s390/kernel/vdso.c b/arch/s390/kernel/vdso.c
-index ebe748a9f472..9e24d23c26c0 100644
---- a/arch/s390/kernel/vdso.c
-+++ b/arch/s390/kernel/vdso.c
-@@ -292,7 +292,6 @@ static int __init vdso_init(void)
+diff --git a/arch/powerpc/kernel/vdso.c b/arch/powerpc/kernel/vdso.c
+index 65b3bdb99f0b..d59dc2e9a695 100644
+--- a/arch/powerpc/kernel/vdso.c
++++ b/arch/powerpc/kernel/vdso.c
+@@ -795,7 +795,6 @@ static int __init vdso_init(void)
  	BUG_ON(vdso32_pagelist == NULL);
- 	for (i = 0; i < vdso32_pages - 1; i++) {
+ 	for (i = 0; i < vdso32_pages; i++) {
  		struct page *pg = virt_to_page(vdso32_kbase + i*PAGE_SIZE);
 -		ClearPageReserved(pg);
  		get_page(pg);
  		vdso32_pagelist[i] = pg;
  	}
-@@ -310,7 +309,6 @@ static int __init vdso_init(void)
+@@ -809,7 +808,6 @@ static int __init vdso_init(void)
  	BUG_ON(vdso64_pagelist == NULL);
- 	for (i = 0; i < vdso64_pages - 1; i++) {
+ 	for (i = 0; i < vdso64_pages; i++) {
  		struct page *pg = virt_to_page(vdso64_kbase + i*PAGE_SIZE);
 -		ClearPageReserved(pg);
  		get_page(pg);
