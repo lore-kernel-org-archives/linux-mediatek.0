@@ -1,45 +1,49 @@
-From: David Hildenbrand <david@redhat.com>
-Subject: Re: [PATCH RFC 0/7] mm: PG_reserved cleanups and documentation
-Date: Wed, 5 Dec 2018 14:04:21 +0100
-Message-ID: <dd8ed63e-a296-ee2c-52d2-db6d8247f710@redhat.com>
+From: James Morse <james.morse@arm.com>
+Subject: Re: [PATCH RFC 6/7] arm64: kexec: no need to ClearPageReserved()
+Date: Wed, 5 Dec 2018 14:00:35 +0000
+Message-ID: <ce6a4c28-3c3b-329e-df01-325294bd9b2e@arm.com>
 References: <20181205122851.5891-1-david@redhat.com>
- <20181205125607.GM1286@dhcp22.suse.cz>
+ <20181205122851.5891-7-david@redhat.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181205125607.GM1286@dhcp22.suse.cz>
-Content-Language: en-US
+In-Reply-To: <20181205122851.5891-7-david@redhat.com>
+Content-Language: en-GB
 Sender: linux-kernel-owner@vger.kernel.org
-To: Michal Hocko <mhocko@kernel.org>
-Cc: linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-m68k@lists.linux-m68k.org, linuxppc-dev@lists.ozlabs.org, linux-riscv@lists.infradead.org, linux-s390@vger.kernel.org, linux-mediatek@lists.infradead.org, Albert Ou <aou@eecs.berkeley.edu>, Alexander Duyck <alexander.h.duyck@linux.intel.com>, Andrew Morton <akpm@linux-foundation.org>, Anthony Yznaga <anthony.yznaga@oracle.com>, Arnd Bergmann <arnd@arndb.de>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Bhupesh Sharma <bhsharma@redhat.com>, Catalin Marinas <catalin.marinas@arm.com>, Christophe Leroy <christophe.leroy@c-s.fr>, Dan Williams <dan.j.williams@intel.com>, Dave Kleikamp <dave.kleikamp@oracle.com>, David Airlie <airlied@linux.ie>, Geert
+To: David Hildenbrand <david@redhat.com>
+Cc: linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-m68k@lists.linux-m68k.org, linuxppc-dev@lists.ozlabs.org, linux-riscv@lists.infradead.org, linux-s390@vger.kernel.org, linux-mediatek@lists.infradead.org, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Bhupesh Sharma <bhsharma@redhat.com>, Marc Zyngier <marc.zyngier@arm.com>, Dave Kleikamp <dave.kleikamp@oracle.com>, Mark Rutland <mark.rutland@arm.com>, Andrew Morton <akpm@linux-foundation.org>, Michal Hocko <mhocko@kernel.org>, Matthew Wilcox <willy@infradead.org>, AKASHI Takahiro <takahiro.akashi@linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 05.12.18 13:56, Michal Hocko wrote:
-> On Wed 05-12-18 13:28:44, David Hildenbrand wrote:
-> [...]
->> Most notably, for device memory we can hopefully soon stop setting
->> it PG_reserved
+Hi David,
+
+(CC: +Akashi)
+
+On 05/12/2018 12:28, David Hildenbrand wrote:
+> This will already be done by free_reserved_page().
+
+(will already be -> will be ?)
+
+So it does!
+
+
+> diff --git a/arch/arm64/kernel/machine_kexec.c b/arch/arm64/kernel/machine_kexec.c
+> index 922add8adb74..0ef4ea73aa54 100644
+> --- a/arch/arm64/kernel/machine_kexec.c
+> +++ b/arch/arm64/kernel/machine_kexec.c
+> @@ -353,7 +353,6 @@ void crash_free_reserved_phys_range(unsigned long begin, unsigned long end)
+>  
+>  	for (addr = begin; addr < end; addr += PAGE_SIZE) {
+>  		page = phys_to_page(addr);
+> -		ClearPageReserved(page);
+>  		free_reserved_page(page);
+>  	}
+>  }
 > 
-> I am busy as hell so I am not likely to look at specific patche this
-> week. But could you be more specific why we need to get rid of other
-> PG_reserved users before we can do so for device memory?
-> 
 
-No worries, this has time.
+Acked-by: James Morse <james.morse@arm.com>
 
-For device memory, nothing should really be needed. I am only collecting
-and docuumenting users and this is one user soon to go (eventually) :)
-
-> I am all for removing relicts because they just confuse people but I
-> fail to see any relation here.
-> 
-
-It's really only "why is this patch set not bigger", nothing related to
-device memory actually :)
-
--- 
 
 Thanks,
 
-David / dhildenb
+James
