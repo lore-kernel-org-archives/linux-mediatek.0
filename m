@@ -1,54 +1,113 @@
-From: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: Kill off skeleton{64}.dtsi
-Date: Wed, 5 Dec 2018 23:21:06 +0100
-Message-ID: <CAFBinCCyiOurskMNYeJaC3YHZF0CCVJg7q61Gs=wdZYAH83NCw@mail.gmail.com>
-References: <20181130170634.9467-1-robh@kernel.org>
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+Subject: [PATCH 2/2] PCI: mediatek: Add controller support for MT7629
+Date: Thu, 6 Dec 2018 09:09:13 +0800
+Message-ID: <1544058553-10936-3-git-send-email-jianjun.wang@mediatek.com>
+References: <1544058553-10936-1-git-send-email-jianjun.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20181130170634.9467-1-robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: andrew-g2DYL2Zd6BY@public.gmane.org, alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org, david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, jamie-wmLquQDDieKakBO8gow8eQ@public.gmane.org, robert.jarzmik-GANU6spQydw@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, jason-NLaQJdtUoK4Be96aLqz0jA@public.gmane.org, jesper.nilsson-VrBV9hrLPhE@public.gmane.org, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, gregory.clement-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, zajec5-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, ludovic.desroches-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org, linux-arm-kernel-VrBV9hrLPhE@public.gmane.org, antoine.tenart-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, wens-jdAy2FN1RRM@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, andy.gross-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, sebastian.hesselbarth-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alexandre.torgue-qxv4g6HH51o@public.gmane.org, jonmason-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, Hauke Mehrtens <hauke-5/S+JYg5SzeELgA04lAiVw@public.gmane.org>, slemieux.tyco-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, haojian.zhuang-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, vz-ChpfBGZJDbMAvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, lars.persson@ax
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1544058553-10936-1-git-send-email-jianjun.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: ryder.lee@mediatek.com, bhelgaas@google.com, robh+dt@kernel.org, lorenzo.pieralisi@arm.com, matthias.bgg@gmail.com, linux-pci@vger.kernel.org
+Cc: mark.rutland@arm.com, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, honghui.zhang@mediatek.com, youlin.pei@mediatek.com, Jianjun Wang <jianjun.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Rob,
+MT7629 is an arm platform SoC which has the same PCIe IP with MT7622.
 
-On Fri, Nov 30, 2018 at 6:07 PM Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
->
-> Remove the usage of skeleton.dtsi in the remaining dts files. It was
-> deprecated since commit 9c0da3cc61f1 ("ARM: dts: explicitly mark
-> skeleton.dtsi as deprecated"). This will make adding a unit-address to
-> memory nodes easier.
-thank you for cleaning this up!
+The read value of BAR0 is 0xffff_ffff, it's size will be calculated as 4GB
+in arm64 but bogus alignment values at arm32, the pcie device and devices
+behind this bridge will not be enabled. Fix it's BAR0 resource size to
+guarantee the pcie devices will be enabled correctly.
 
-> The main tricky part to removing skeleton.dtsi is we could end up with
-> no /memory node at all when a bootloader depends on one being present. I
-> hacked up dtc to check for this condition.
->
-> Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-on Meson8b Odroid-C1:
-Tested-by: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
+The HW default value of its device id is invalid, fix it's device id to
+match the hardware implementation.
 
->  arch/arm/boot/dts/meson.dtsi                   |  3 ++-
->  arch/arm/boot/dts/meson6-atv1200.dts           |  1 +
->  arch/arm/boot/dts/meson8-minix-neo-x8.dts      |  1 +
->  arch/arm/boot/dts/meson8b-ec100.dts            |  1 +
->  arch/arm/boot/dts/meson8b-mxq.dts              |  1 +
->  arch/arm/boot/dts/meson8b-odroidc1.dts         |  1 +
->  arch/arm/boot/dts/meson8m2-mxiii-plus.dts      |  1 +
-for the Meson changes:
-Reviewed-by: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
+Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+---
+ drivers/pci/controller/pcie-mediatek.c | 26 ++++++++++++++++++++++++++
+ include/linux/pci_ids.h                |  1 +
+ 2 files changed, 27 insertions(+)
 
-
-Regards
-Martin
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index d20cf461ba00..f8937cc3c87c 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -73,6 +73,7 @@
+ #define PCIE_MSI_VECTOR		0x0c0
+ 
+ #define PCIE_CONF_VEND_ID	0x100
++#define PCIE_CONF_DEVICE_ID	0x102
+ #define PCIE_CONF_CLASS_ID	0x106
+ 
+ #define PCIE_INT_MASK		0x420
+@@ -135,12 +136,14 @@ struct mtk_pcie_port;
+ /**
+  * struct mtk_pcie_soc - differentiate between host generations
+  * @need_fix_class_id: whether this host's class ID needed to be fixed or not
++ * @need_fix_device_id: whether this host's device ID needed to be fixed or not
+  * @ops: pointer to configuration access functions
+  * @startup: pointer to controller setting functions
+  * @setup_irq: pointer to initialize IRQ functions
+  */
+ struct mtk_pcie_soc {
+ 	bool need_fix_class_id;
++	bool need_fix_device_id;
+ 	struct pci_ops *ops;
+ 	int (*startup)(struct mtk_pcie_port *port);
+ 	int (*setup_irq)(struct mtk_pcie_port *port, struct device_node *node);
+@@ -692,6 +695,11 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+ 		writew(val, port->base + PCIE_CONF_CLASS_ID);
+ 	}
+ 
++	if (soc->need_fix_device_id) {
++		val = PCI_DEVICE_ID_MEDIATEK_7629;
++		writew(val, port->base + PCIE_CONF_DEVICE_ID);
++	}
++
+ 	/* 100ms timeout value should be enough for Gen1/2 training */
+ 	err = readl_poll_timeout(port->base + PCIE_LINK_STATUS_V2, val,
+ 				 !!(val & PCIE_PORT_LINKUP_V2), 20,
+@@ -1238,11 +1246,29 @@ static const struct mtk_pcie_soc mtk_pcie_soc_mt7622 = {
+ 	.setup_irq = mtk_pcie_setup_irq,
+ };
+ 
++static const struct mtk_pcie_soc mtk_pcie_soc_mt7629 = {
++	.need_fix_class_id = true,
++	.need_fix_device_id = true,
++	.ops = &mtk_pcie_ops_v2,
++	.startup = mtk_pcie_startup_port_v2,
++	.setup_irq = mtk_pcie_setup_irq,
++};
++
++static void mtk_fixup_bar_size(struct pci_dev *dev)
++{
++	struct resource *dev_res = &dev->resource[0];
++	/* 32bit resource length will calculate size to 0, set it smaller */
++	dev_res->end = 0xfffffffe;
++}
++DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_MEDIATEK, PCI_DEVICE_ID_MEDIATEK_7629,
++			 mtk_fixup_bar_size);
++
+ static const struct of_device_id mtk_pcie_ids[] = {
+ 	{ .compatible = "mediatek,mt2701-pcie", .data = &mtk_pcie_soc_v1 },
+ 	{ .compatible = "mediatek,mt7623-pcie", .data = &mtk_pcie_soc_v1 },
+ 	{ .compatible = "mediatek,mt2712-pcie", .data = &mtk_pcie_soc_mt2712 },
+ 	{ .compatible = "mediatek,mt7622-pcie", .data = &mtk_pcie_soc_mt7622 },
++	{ .compatible = "mediatek,mt7629-pcie", .data = &mtk_pcie_soc_mt7629 },
+ 	{},
+ };
+ 
+diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
+index 69f0abe1ba1a..77b278bac3a8 100644
+--- a/include/linux/pci_ids.h
++++ b/include/linux/pci_ids.h
+@@ -2126,6 +2126,7 @@
+ #define PCI_VENDOR_ID_MYRICOM		0x14c1
+ 
+ #define PCI_VENDOR_ID_MEDIATEK		0x14c3
++#define PCI_DEVICE_ID_MEDIATEK_7629	0x7629
+ 
+ #define PCI_VENDOR_ID_TITAN		0x14D2
+ #define PCI_DEVICE_ID_TITAN_010L	0x8001
+-- 
+2.19.1
