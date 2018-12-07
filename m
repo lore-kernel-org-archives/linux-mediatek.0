@@ -1,57 +1,36 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH -next] usb: mtu3: fix dbginfo in qmu_tx_zlp_error_handler
-Date: Fri, 7 Dec 2018 13:17:45 +0800
-Message-ID: <1544159865.32173.116.camel@mhfsdcap03>
-References: <1544154763-156094-1-git-send-email-yuehaibing@huawei.com>
+From: Guochun Mao <guochun.mao@mediatek.com>
+Subject: Re: [RESEND PATCH 2/4] mtd: spi-nor: mtk-quadspi: use ofpart for
+ parsing partitions
+Date: Fri, 7 Dec 2018 13:43:59 +0800
+Message-ID: <1544161439.8955.3.camel@mhfsdcap03>
+References: <235ade9c5cda19fb0c9356913e3f56ad86600f59.1543472168.git.ryder.lee@mediatek.com>
+         <6cca6844f426d4ad4e7c878420b363cfb34499aa.1543472168.git.ryder.lee@mediatek.com>
+         <20181206153610.26db522c@bbrezillon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1544154763-156094-1-git-send-email-yuehaibing@huawei.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: YueHaibing <yuehaibing@huawei.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, kernel-janitors@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181206153610.26db522c@bbrezillon>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Boris Brezillon <boris.brezillon@bootlin.com>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Marek Vasut <marek.vasut@gmail.com>, Brian Norris <computersforpeace@gmail.com>, Rob Herring <robh+dt@kernel.org>, Weijie Gao <weijie.gao@mediatek.com>, linux-mtd@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Haibing,
+On Thu, 2018-12-06 at 15:36 +0100, Boris Brezillon wrote:
+> On Thu, 29 Nov 2018 14:29:54 +0800
+> Ryder Lee <ryder.lee@mediatek.com> wrote:
+> 
+> > From: Guochun Mao <guochun.mao@mediatek.com>
+> > 
+> > Replace mtd_device_register with mtd_device_parse_register for
+> > parsing partitions and add ofpart support.
+> 
+> What's the problem with the default partition parser table [1]?
+> 
+> [1]https://elixir.bootlin.com/linux/latest/source/drivers/mtd/mtdpart.c#L793
 
-On Fri, 2018-12-07 at 03:52 +0000, YueHaibing wrote:
-> Fixes gcc '-Wunused-but-set-variable' warning:
-> 
-> drivers/usb/mtu3/mtu3_qmu.c: In function 'qmu_tx_zlp_error_handler':
-> drivers/usb/mtu3/mtu3_qmu.c:385:22: warning:
->  variable 'req' set but not used [-Wunused-but-set-variable]
-> 
-> It seems dbginfo original intention is print 'req' other than 'mreq'
-> 
-> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
-> ---
->  drivers/usb/mtu3/mtu3_qmu.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/usb/mtu3/mtu3_qmu.c b/drivers/usb/mtu3/mtu3_qmu.c
-> index 73ac042..09f19f7 100644
-> --- a/drivers/usb/mtu3/mtu3_qmu.c
-> +++ b/drivers/usb/mtu3/mtu3_qmu.c
-> @@ -402,7 +402,7 @@ static void qmu_tx_zlp_error_handler(struct mtu3 *mtu, u8 epnum)
->  		return;
->  	}
->  
-> -	dev_dbg(mtu->dev, "%s send ZLP for req=%p\n", __func__, mreq);
-> +	dev_dbg(mtu->dev, "%s send ZLP for req=%p\n", __func__, req);
->  
->  	mtu3_clrbits(mbase, MU3D_EP_TXCR0(mep->epnum), TX_DMAREQEN);
-> 
-Acked-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+No problem here.
+This patch can be dropped.
+Please help review others.
 
-Thanks a lot
-> 
-> 
+Thanks.
