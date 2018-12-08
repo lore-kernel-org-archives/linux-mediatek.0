@@ -1,168 +1,163 @@
-From: Sean Wang <sean.wang@kernel.org>
-Subject: Re: [PATCH v3 1/4] dt-bindings: pinctrl: Add devicetree bindings for
- MT6797 SoC Pinctrl
-Date: Fri, 7 Dec 2018 13:42:59 -0800
-Message-ID: <CAGp9Lzp9auBd5+gbrz5hZTM054JsWXs=NfSnO5EvczrJ8HOcGQ@mail.gmail.com>
-References: <20181107174844.5381-1-manivannan.sadhasivam@linaro.org>
- <20181107174844.5381-2-manivannan.sadhasivam@linaro.org> <CACRpkda25cuiPCe9ouvDDSpFwZ2z=Pm8pK=5jC-7OAcYwPSvvA@mail.gmail.com>
- <c1f63dd8-1c06-1797-025c-2cd4891d905d@gmail.com> <CACRpkdYCsh3AfmV-7ym-ffjp2k-kaNRqY1O3rd9h-WoUPYM_bw@mail.gmail.com>
- <CAOesGMhcBXLRRKdOMdq3Bg8fOGX6F0gWMJ3zzg0jW9bg9VeW7A@mail.gmail.com>
+From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v4 00/18] MT8183 IOMMU SUPPORT
+Date: Sat, 8 Dec 2018 16:39:13 +0800
+Message-ID: <1544258371-4600-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAOesGMhcBXLRRKdOMdq3Bg8fOGX6F0gWMJ3zzg0jW9bg9VeW7A@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: olof@lixom.net
-Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, arm@kernel.org, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, robh+dt@kernel.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, amit.kucheria@linaro.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, arnd-r2nGTMty4D4@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Arvind Yadav <arvind.yadav.cs-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Olof,
+This patchset mainly adds support for mt8183 IOMMU and SMI.
 
-I'm a guy from MediaTek.
-Thanks for your input and we will get these bad things to be better.
+mt8183 has only one M4U like mt8173 and is also MTK IOMMU gen2 which
+uses ARM Short-Descriptor translation table format.
 
-On Fri, Dec 7, 2018 at 10:42 AM Olof Johansson <olof@lixom.net> wrote:
->
-> On Wed, Dec 5, 2018 at 4:01 AM Linus Walleij <linus.walleij@linaro.org> wrote:
-> >
-> > On Mon, Dec 3, 2018 at 2:08 AM Matthias Brugger <matthias.bgg@gmail.com> wrote:
-> > > On 15/11/2018 11:04, Linus Walleij wrote:
-> > > > On Wed, Nov 7, 2018 at 6:49 PM Manivannan Sadhasivam
-> > > > <manivannan.sadhasivam@linaro.org> wrote:
-> > > >
-> > > >> Add devicetree bindings for Mediatek MT6797 SoC Pin Controller.
-> > > >>
-> > > >> Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-> > > >
-> > > > Patch applied.
-> > > >
-> > >
-> > > Could you provide a stable tree for me, so that I can take the dts parts?
-> > > I just realized that my build is broken because of the missing dt-bindings
-> > > header file.
-> >
-> > Since I pulled other changes on top it is too late for me to put that
-> > in an immutable branch and merge into my tree separately,
-> > you would have to pull in the whole "devel" branch from the
-> > pin control tree.
-> >
-> > What we sometimes do is simply apply the *EXACT* same patch
-> > to two git trees. Git will cope with that as long as they are
-> > absolutely *IDENTICAL*. (The patch will appear twice in the
-> > git log with different hashes but they will merge without
-> > problems, a bit unelegant but it works.)
-> >
-> > So in your situation I would extract this patch from the pinctrl
-> > tree:
-> > https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git/commit/?h=devel&id=95d2f00657ad4c2c3eacd8a871a7aa022c3fe7d9
-> > and apply it with some notice to the maintainers about
-> > the situation.
-> >
-> > ARM SoC folks: agreed?
->
-> So, applying the patches in parallel is fine, but this made me look at
-> the actual patches and file contents, and they seem to be a bit messy.
->
+The mt8183 M4U-SMI HW diagram is as below:
 
-I've also noticed the messy thing so we've changed these doable SoCs
-to using generic pinctrl bindings like MT7622 and MT7629 to get rid of
-the big header. And for the other SoCs, they still tend to keep vendor
-binding because of historical reasons, the related board makers
-preferences and it is indeed a little hard to change what these people
-used to.
+                          EMI
+                           |
+                          M4U
+                           |
+                       ----------
+                       |        |
+                   gals0-rx   gals1-rx
+                       |        |
+                       |        |
+                   gals0-tx   gals1-tx
+                       |        |
+                      ------------
+                       SMI Common
+                      ------------
+                           |
+  +-----+-----+--------+-----+-----+-------+-------+
+  |     |     |        |     |     |       |       |
+  |     |  gals-rx  gals-rx  |   gals-rx gals-rx gals-rx
+  |     |     |        |     |     |       |       |
+  |     |     |        |     |     |       |       |
+  |     |  gals-tx  gals-tx  |   gals-tx gals-tx gals-tx
+  |     |     |        |     |     |       |       |
+larb0 larb1  IPU0    IPU1  larb4  larb5  larb6    CCU
+disp  vdec   img     cam    venc   img    cam
 
-> This feedback is more to the MT maintainers/developers than you, Linus
-> (obviously):
->
-> These header files are huge, and they're inconsistent in the way they
-> define these constants:
->
-> include/dt-bindings/pinctrl/mt7623-pinfunc.h:
-> #define MT7623_PIN_21_PCM_TX_FUNC_GPIO21 (MTK_PIN_NO(21) | 0)
-> #define MT7623_PIN_21_PCM_TX_FUNC_PCM_TX (MTK_PIN_NO(21) | 1)
-> #define MT7623_PIN_21_PCM_TX_FUNC_MRG_TX (MTK_PIN_NO(21) | 2)
-> #define MT7623_PIN_21_PCM_TX_FUNC_MRG_RX (MTK_PIN_NO(21) | 3)
-> #define MT7623_PIN_21_PCM_TX_FUNC_PCM_RX (MTK_PIN_NO(21) | 4)
-> #define MT7623_PIN_21_PCM_TX_FUNC_CONN_DSP_JMS (MTK_PIN_NO(21) | 5)
-> #define MT7623_PIN_21_PCM_TX_FUNC_AP_PCM_TX (MTK_PIN_NO(21) | 6)
->
-> include/dt-bindings/pinctrl/mt6397-pinfunc.h:
-> #define MT6397_PIN_24_ROW4__FUNC_GPIO24 (MTK_PIN_NO(24) | 0)
-> #define MT6397_PIN_24_ROW4__FUNC_ROW4 (MTK_PIN_NO(24) | 1)
-> #define MT6397_PIN_24_ROW4__FUNC_EINT22_1X (MTK_PIN_NO(24) | 2)
-> #define MT6397_PIN_24_ROW4__FUNC_SCL2_3X (MTK_PIN_NO(24) | 3)
-> #define MT6397_PIN_24_ROW4__FUNC_TEST_IN15 (MTK_PIN_NO(24) | 6)
-> #define MT6397_PIN_24_ROW4__FUNC_TEST_OUT15 (MTK_PIN_NO(24) | 7)
->
-> include/dt-bindings/pinctrl/mt6797-pinfunc.h:
-> #define MT6797_GPIO34__FUNC_GPIO34 (MTK_PIN_NO(34) | 0)
-> #define MT6797_GPIO34__FUNC_CMFLASH (MTK_PIN_NO(34) | 1)
-> #define MT6797_GPIO34__FUNC_CLKM0 (MTK_PIN_NO(34) | 2)
-> #define MT6797_GPIO34__FUNC_UDI_NTRST (MTK_PIN_NO(34) | 3)
-> #define MT6797_GPIO34__FUNC_SCP_JTAG_TRSTN (MTK_PIN_NO(34) | 4)
-> #define MT6797_GPIO34__FUNC_CONN_MCU_TRST_B (MTK_PIN_NO(34) | 5)
-> #define MT6797_GPIO34__FUNC_MD_UTXD0 (MTK_PIN_NO(34) | 6)
-> #define MT6797_GPIO34__FUNC_C2K_DM_JTINTP (MTK_PIN_NO(34) | 7)
->
-> So, is it a pin or a GPIO and why does 6797 use different naming
-> scheme?
+All the connections are HW fixed, SW can NOT adjust it.
 
-They all stand for the pin and list all the functions which the pin
-can be switched to.
+Compared with mt8173, we add a GALS(Global Async Local Sync) module
+between SMI-common and M4U, and additional GALS between larb2/3/5/6
+and SMI-common. GALS can help synchronize for the modules in different
+clock frequency, it can be seen as a "asynchronous fifo".
 
-MT6797 is the first mtk pinctrl driver not contributed by mediatek people,
-we will try to fix these confusing things and should be careful
-keeping the naming be uniform in the future.
+GALS can only help transfer the command/data while it doesn't have
+the configuring register, thus it has the special "smi" clock and it
+doesn't have the "apb" clock. From the diagram above, we add "gals0"
+and "gals1" clocks for smi-common and add a "gals" clock for smi-larb.
 
-> Why do some of them have __FUNC and some _FUNC?Why do some
-> have the non-gpio function as part of the name and some do not?
->
+>From the diagram above, IPU0/IPU1(Image Processor Unit) and CCU(Camera
+Control Unit) is connected with smi-common directly, we can take them
+as "larb2", "larb3" and "larb7", and their register spaces are
+different with the normal larb.
 
-ditto, we will try to fix and keep the naming be uniform
+This is the general purpose of each patch in this patchset:
+the patch 1..10 add the iommu/smi support for mt8183;
+the patch 11/12/13 add mmu1 support;
+the last patches contain some minor changes:
+   -patch 14 fix a issue.
+   -patch 15 improve the code flow(add shutdown).
+   -patch 16 cleanup some smi codes(delete need_larbid).
+   -patch 17 switch to SPDX license.
+   -patch 18 Constify iommu_ops from Arvind.
+this patchset don't contain the dtsi part since it need depend on the
+ccf and power-domain nodes which has not been accepted.
 
-> Also, "pin 24 row 4 func row4"? Seems to have very limited value to
-> describe it in that manner, it's just overly verbose without adding
-> information.
+Change notes:
 
-All the function names for a pin totally are same (copied) with
-hardware document describes. That means it's default function of the
-pin the hardware provides.
+v4: 1) Add 3 preparing patches. Seperate some minor meaningful code into
+       a new patch according to Matthias's suggestion.
+       memory: mtk-smi: Add gals support         
+       iommu/mediatek: Add larb-id remapped support 
+       iommu/mediatek: Add bclk can be supported optionally       
+    2) rebase on "iommu/mediatek: Make it explicitly non-modular"
+       which was applied.
+       https://lore.kernel.org/patchwork/patch/1020125/
+    3) add some comment about "mediatek,larb-id" in the commit message of
+       the patch "mtk-smi: Get rid of need_larbid".
+    4) Fix bus_sel value.
 
->
-> Some other SoCs tend to use a pinctrl specifier that is two-cell <pin
-> function> instead of trying to pack them into one integer.
+v3: https://lists.linuxfoundation.org/pipermail/iommu/2018-November/031121.html
+    1) rebase on v4.20-rc1.
+    2) In the dt-binding, add a minor string "mt7623" which also use gen1
+       since Matthias added it in v4.20.
+    3) About v7s:
+       a) for paddr_to_pte, change the param from "arm_v7s_io_pgtable" to
+          "arm_pgtable_cfg", according to Robin suggestion.
+       b) Don't use CONFIG_PHYS_ADDR_T_64BIT.
+       c) add a little comment(pgtable address still don't over 4GB) in the
+          commit message of the patch "Extend MediaTek 4GB Mode".
+    4) add "iommu/mediatek: Constify iommu_ops" into this patchset. this may
+       be helpful for review and merge.
+       https://lists.linuxfoundation.org/pipermail/iommu/2018-October/030637.html
 
-I'm not the initial developer for the vendor binding. but I guessed
-the initial thought trying to pack them into one integer can decrease
-the risk of inconsistency between pin and function, especially
-there're more than some hundred pins and functions present on SoC.
+v2: https://lists.linuxfoundation.org/pipermail/iommu/2018-September/030164.html
+    1) Fix typo in the commit message of dt-binding.
+    2) Change larb2/larb3 to the special larbs.
+    3) Refactor the larb-id remapped array(larbid_remapped), then we
+    don't need add the new function(mtk_iommu_get_larbid).
+    4) Add a new patch for v7s two helpers(paddr_to_iopte and
+    iopte_to_paddr).
+    5) Change some comment for MTK 4GB mode.
 
-> That seems
-> a lot more practical, especially since the base GPIO function seems to
-> generically be '0'. So the pin number would go in the first cell, and
-> the function in the second.
->
-> Finally, I don't see how the header file is used in the code at all?
->
-> The main idea behind the dt bindings header files is that they would
-> provide shared constants between the DT and the driver in the kernel.
-> If the constants are never used (i.e. they're just register values,
-> like today), then there's no need to merge the dt header with the
-> driver at all, it should go with the DT contents instead.
+v1: base on v4.19-rc1.
+http://lists.infradead.org/pipermail/linux-mediatek/2018-September/014881.html
 
-Yes, it should be better to go with DT contents, not be the interface
-between DT and driver. These pin names are totally the same with these
-pin names shown on the schematic diagram, so it works more like
-providing an easy to remember text to allow people configure its pin
-easier while crossing reference schematic diagram.
+Arvind Yadav (1):
+  iommu/mediatek: Constify iommu_ops
 
-> So, for
-> example, if you used something like a format of <pin function>
-> properties, the header file could contain both the string
-> representation of the function for debug, as well as the values, all
-> derived from one place. Today all you have string representations for
-> is "func0".."func15" through mtk_gpio_functions[]. Seems like an
-> improvement all around?
->
->
-> -Olof
+Yong Wu (17):
+  dt-bindings: mediatek: Add binding for mt8183 IOMMU and SMI
+  iommu/mediatek: Use a struct as the platform data
+  memory: mtk-smi: Use a general config_port interface
+  memory: mtk-smi: Use a struct for the platform data for smi-common
+  iommu/io-pgtable-arm-v7s: Add paddr_to_iopte and iopte_to_paddr
+    helpers
+  iommu/io-pgtable-arm-v7s: Extend MediaTek 4GB Mode
+  iommu/mediatek: Add bclk can be supported optionally
+  iommu/mediatek: Add larb-id remapped support
+  memory: mtk-smi: Add gals support
+  iommu/mediatek: Add mt8183 IOMMU support
+  iommu/mediatek: Add mmu1 support
+  memory: mtk-smi: Invoke pm runtime_callback to enable clocks
+  memory: mtk-smi: Add bus_sel for mt8183
+  iommu/mediatek: Fix VLD_PA_RANGE register backup when suspend
+  iommu/mediatek: Add shutdown callback
+  memory: mtk-smi: Get rid of need_larbid
+  iommu/mediatek: Switch to SPDX license identifier
+
+ .../devicetree/bindings/iommu/mediatek,iommu.txt   |  15 +-
+ .../memory-controllers/mediatek,smi-common.txt     |  11 +-
+ .../memory-controllers/mediatek,smi-larb.txt       |   3 +
+ drivers/iommu/io-pgtable-arm-v7s.c                 |  72 ++++--
+ drivers/iommu/io-pgtable.h                         |   7 +-
+ drivers/iommu/mtk_iommu.c                          | 141 +++++++----
+ drivers/iommu/mtk_iommu.h                          |  26 +-
+ drivers/iommu/mtk_iommu_v1.c                       |  14 +-
+ drivers/memory/mtk-smi.c                           | 269 ++++++++++++++-------
+ include/dt-bindings/memory/mt2701-larb-port.h      |  10 +-
+ include/dt-bindings/memory/mt8173-larb-port.h      |  10 +-
+ include/dt-bindings/memory/mt8183-larb-port.h      | 130 ++++++++++
+ include/soc/mediatek/smi.h                         |  10 +-
+ 13 files changed, 501 insertions(+), 217 deletions(-)
+ create mode 100644 include/dt-bindings/memory/mt8183-larb-port.h
+
+-- 
+1.9.1
