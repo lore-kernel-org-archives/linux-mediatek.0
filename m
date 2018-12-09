@@ -1,7 +1,7 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [GIT PULL] soc: mediatek: SoC driver changes for v4.21
-Date: Sun, 9 Dec 2018 23:08:56 +0100
-Message-ID: <123d92d6-2cee-cae7-42e6-77aabda91038@gmail.com>
+Subject: [GIT PULL] arm64: mediatek: dts changes for v4.21
+Date: Sun, 9 Dec 2018 23:08:59 +0100
+Message-ID: <e5b4136c-99fe-16ec-8974-9c4d1d83efa8@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -36,25 +36,18 @@ The following changes since commit 651022382c7f8da46cb4872a545ee1da6d097d2a:
 are available in the Git repository at:
 
   https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
-tags/v4.20-next-soc
+tags/v4.20-next-dts64
 
-for you to fetch changes up to 576f1b4bc80220e1f88f1de5ecb25d99a6e9fa04:
+for you to fetch changes up to c2e66b8f7c37567e63859e04b3e69fa7027ebb86:
 
-  soc: mediatek: Add Mediatek CMDQ helper (2018-12-02 20:46:10 +0100)
+  arm64: dts: mt8173: Add GCE node (2018-12-05 12:16:39 +0100)
 
 ----------------------------------------------------------------
-add helper functions to create and send commands to
-the global command engine (GCE) device using the
-command queue driver (cmdq).
+mt8173: add node for the command queue device
 
 ----------------------------------------------------------------
 Houlong Wei (1):
-      soc: mediatek: Add Mediatek CMDQ helper
+      arm64: dts: mt8173: Add GCE node
 
- drivers/soc/mediatek/Kconfig           |  12 ++
- drivers/soc/mediatek/Makefile          |   1 +
- drivers/soc/mediatek/mtk-cmdq-helper.c | 300 +++++++++++++++++++++++++++++++++
- include/linux/soc/mediatek/mtk-cmdq.h  | 133 +++++++++++++++
- 4 files changed, 446 insertions(+)
- create mode 100644 drivers/soc/mediatek/mtk-cmdq-helper.c
- create mode 100644 include/linux/soc/mediatek/mtk-cmdq.h
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
