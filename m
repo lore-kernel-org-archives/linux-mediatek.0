@@ -1,53 +1,36 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [GIT PULL] arm64: mediatek: dts changes for v4.21
-Date: Sun, 9 Dec 2018 23:08:59 +0100
-Message-ID: <e5b4136c-99fe-16ec-8974-9c4d1d83efa8@gmail.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: [GIT PULL] mediatek drm fixes for 4.20
+Date: Mon, 10 Dec 2018 10:12:55 +0800
+Message-ID: <1544407975.18825.3.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm-soc <arm@kernel.org>
-Cc: "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Houlong Wei <houlong.wei@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Dave Airlie <airlied@gmail.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Cc: Nicolas Boichat <drinkcat@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Arnd and Olof,
-
-Below the very only patch, please have a look :)
-
-Regards,
-Matthias
-
----
-
-The following changes since commit 651022382c7f8da46cb4872a545ee1da6d097d2a:
-
-  Linux 4.20-rc1 (2018-11-04 15:37:52 -0800)
-
-are available in the Git repository at:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
-tags/v4.20-next-dts64
-
-for you to fetch changes up to c2e66b8f7c37567e63859e04b3e69fa7027ebb86:
-
-  arm64: dts: mt8173: Add GCE node (2018-12-05 12:16:39 +0100)
-
-----------------------------------------------------------------
-mt8173: add node for the command queue device
-
-----------------------------------------------------------------
-Houlong Wei (1):
-      arm64: dts: mt8173: Add GCE node
-
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+SGksIERhdmU6CgpIZXJlIGlzIG9uZSBmaXguCgpSZWdhcmRzLApDSwoKVGhlIGZvbGxvd2luZyBj
+aGFuZ2VzIHNpbmNlIGNvbW1pdAo2NTEwMjIzODJjN2Y4ZGE0NmNiNDg3MmE1NDVlZTFkYTZkMDk3
+ZDJhOgoKICBMaW51eCA0LjIwLXJjMSAoMjAxOC0xMS0wNCAxNTozNzo1MiAtMDgwMCkKCmFyZSBh
+dmFpbGFibGUgaW4gdGhlIEdpdCByZXBvc2l0b3J5IGF0OgoKICBodHRwczovL2dpdGh1Yi5jb20v
+Y2todS1tZWRpYXRlay9saW51eC5naXQtdGFncy5naXQgYTAwNzFiYzQ1NWRhCgpmb3IgeW91IHRv
+IGZldGNoIGNoYW5nZXMgdXAgdG8gYTAwNzFiYzQ1NWRhN2I4MzBiOTUxNzA1ODkzM2E4M2ViNmNj
+OTAyYToKCiAgZHJtL21lZGlhdGVrOiBPbmx5IHRyeSB0byBhdHRhY2ggYnJpZGdlIGlmIHRoZXJl
+IGlzIG9uZSAoMjAxOC0xMi0wMwoxMTowODoyMiArMDgwMCkKCi0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KTmljb2xhcyBCb2lj
+aGF0ICgxKToKICAgICAgZHJtL21lZGlhdGVrOiBPbmx5IHRyeSB0byBhdHRhY2ggYnJpZGdlIGlm
+IHRoZXJlIGlzIG9uZQoKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgfCAxMSAr
+KysrKysrLS0tLQogMSBmaWxlIGNoYW5nZWQsIDcgaW5zZXJ0aW9ucygrKSwgNCBkZWxldGlvbnMo
+LSkKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
+ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
+Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
