@@ -1,127 +1,51 @@
-From: Long Cheng <long.cheng@mediatek.com>
-Subject: [resend PATCH v4 2/2] arm: dts: mt2712: add uart APDMA to device tree
-Date: Mon, 10 Dec 2018 11:47:45 +0800
-Message-ID: <1544413665-1222-3-git-send-email-long.cheng@mediatek.com>
-References: <1544413665-1222-1-git-send-email-long.cheng@mediatek.com>
+From: YueHaibing <yuehaibing@huawei.com>
+Subject: Re: [PATCH -next] input: keyboard: remove duplicated include from
+ mtk-pmic-keys.c
+Date: Mon, 10 Dec 2018 15:16:00 +0800
+Message-ID: <4f1a67e5-b735-f8bd-88b8-3a1ca590eba2@huawei.com>
+References: <20181209063440.27820-1-yuehaibing@huawei.com>
+ <20181210061557.GL26661@dell>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1544413665-1222-1-git-send-email-long.cheng@mediatek.com>
+In-Reply-To: <20181210061557.GL26661@dell>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ryder Lee <ryder.lee@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Dan Williams <dan.j.williams@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>, Sean Wang <sean.wang@mediatek.com>, Sean Wang <sean.wang@kernel.org>, dmaengine@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, srv_heupstream@mediatek.com, Yingjoe Chen <yingjoe.chen@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Long Cheng <long.cheng@mediatek.com>
+To: Lee Jones <lee.jones@linaro.org>
+Cc: dmitry.torokhov@gmail.com, matthias.bgg@gmail.com, chen.zhong@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-1. add uart APDMA controller device node
-2. add uart 0/1/2/3/4/5 DMA function
+On 2018/12/10 14:15, Lee Jones wrote:
+> On Sun, 09 Dec 2018, YueHaibing wrote:
+> 
+>> Remove duplicated include.
+>>
+>> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+>> ---
+>>  drivers/input/keyboard/mtk-pmic-keys.c | 1 -
+>>  1 file changed, 1 deletion(-)
+>>
+>> diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
+>> index 02c67a1..5027ebb 100644
+>> --- a/drivers/input/keyboard/mtk-pmic-keys.c
+>> +++ b/drivers/input/keyboard/mtk-pmic-keys.c
+>> @@ -19,7 +19,6 @@
+>>  #include <linux/input.h>
+>>  #include <linux/interrupt.h>
+>>  #include <linux/platform_device.h>
+>> -#include <linux/kernel.h>
+>>  #include <linux/of.h>
+>>  #include <linux/of_device.h>
+>>  #include <linux/regmap.h>
+> 
+> You are removing the wrong one.
 
-Signed-off-by: Long Cheng <long.cheng@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt2712e.dtsi |   50 +++++++++++++++++++++++++++++
- 1 file changed, 50 insertions(+)
+No, linux/kernel.h is a duplicated include indeed.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-index 976d92a..a59728b 100644
---- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-@@ -300,6 +300,9 @@
- 		interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
- 		clocks = <&baud_clk>, <&sys_clk>;
- 		clock-names = "baud", "bus";
-+		dmas = <&apdma 10
-+			&apdma 11>;
-+		dma-names = "tx", "rx";
- 		status = "disabled";
- 	};
- 
-@@ -378,6 +381,38 @@
- 		status = "disabled";
- 	};
- 
-+	apdma: dma-controller@11000400 {
-+		compatible = "mediatek,mt2712-uart-dma",
-+			     "mediatek,mt6577-uart-dma";
-+		reg = <0 0x11000400 0 0x80>,
-+		      <0 0x11000480 0 0x80>,
-+		      <0 0x11000500 0 0x80>,
-+		      <0 0x11000580 0 0x80>,
-+		      <0 0x11000600 0 0x80>,
-+		      <0 0x11000680 0 0x80>,
-+		      <0 0x11000700 0 0x80>,
-+		      <0 0x11000780 0 0x80>,
-+		      <0 0x11000800 0 0x80>,
-+		      <0 0x11000880 0 0x80>,
-+		      <0 0x11000900 0 0x80>,
-+		      <0 0x11000980 0 0x80>;
-+		interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 104 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 105 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 106 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 107 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 108 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 109 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 110 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 111 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 112 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 113 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 114 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&pericfg CLK_PERI_AP_DMA>;
-+		clock-names = "apdma";
-+		#dma-cells = <1>;
-+	};
-+
- 	uart0: serial@11002000 {
- 		compatible = "mediatek,mt2712-uart",
- 			     "mediatek,mt6577-uart";
-@@ -385,6 +420,9 @@
- 		interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>;
- 		clocks = <&baud_clk>, <&sys_clk>;
- 		clock-names = "baud", "bus";
-+		dmas = <&apdma 0
-+			&apdma 1>;
-+		dma-names = "tx", "rx";
- 		status = "disabled";
- 	};
- 
-@@ -395,6 +433,9 @@
- 		interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_LOW>;
- 		clocks = <&baud_clk>, <&sys_clk>;
- 		clock-names = "baud", "bus";
-+		dmas = <&apdma 2
-+			&apdma 3>;
-+		dma-names = "tx", "rx";
- 		status = "disabled";
- 	};
- 
-@@ -405,6 +446,9 @@
- 		interrupts = <GIC_SPI 93 IRQ_TYPE_LEVEL_LOW>;
- 		clocks = <&baud_clk>, <&sys_clk>;
- 		clock-names = "baud", "bus";
-+		dmas = <&apdma 4
-+			&apdma 5>;
-+		dma-names = "tx", "rx";
- 		status = "disabled";
- 	};
- 
-@@ -415,6 +459,9 @@
- 		interrupts = <GIC_SPI 94 IRQ_TYPE_LEVEL_LOW>;
- 		clocks = <&baud_clk>, <&sys_clk>;
- 		clock-names = "baud", "bus";
-+		dmas = <&apdma 6
-+			&apdma 7>;
-+		dma-names = "tx", "rx";
- 		status = "disabled";
- 	};
- 
-@@ -629,6 +676,9 @@
- 		interrupts = <GIC_SPI 126 IRQ_TYPE_LEVEL_LOW>;
- 		clocks = <&baud_clk>, <&sys_clk>;
- 		clock-names = "baud", "bus";
-+		dmas = <&apdma 8
-+			&apdma 9>;
-+		dma-names = "tx", "rx";
- 		status = "disabled";
- 	};
- 
--- 
-1.7.9.5
+> 
+> Please convert this patch's main intent to alphabetise the header
+> files.  Then you can remove any obvious duplicates.
+
+I can alphabetize it in v2 if need be.
+
+> 
