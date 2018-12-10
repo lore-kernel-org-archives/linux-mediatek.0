@@ -1,402 +1,90 @@
-From: Nicolas Boichat <drinkcat@chromium.org>
-Subject: Re: [PATCH v3 02/12] clk: mediatek: add new clkmux register API
-Date: Mon, 10 Dec 2018 20:30:26 +0800
-Message-ID: <CANMq1KA=VBQNuda8RC7Ote1L8gJgPZxsO_dG47RY3sfpAv2SQg@mail.gmail.com>
-References: <20181210073240.32278-1-weiyi.lu@mediatek.com> <20181210073240.32278-4-weiyi.lu@mediatek.com>
+From: Nick Fan <nick.fan@mediatek.com>
+Subject: Re: [PATCH] opp: Add API for getting voltage from supplies
+Date: Mon, 10 Dec 2018 20:36:12 +0800
+Message-ID: <1544445372.3502.42.camel@mtksdaap41>
+References: <1543906760-15631-1-git-send-email-Nick.Fan@mediatek.com>
+         <20181204082158.rb7uzdiwmcotwoxh@vireshk-i7>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <20181210073240.32278-4-weiyi.lu@mediatek.com>
-Sender: stable-owner@vger.kernel.org
-To: Weiyi Lu <weiyi.lu@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, sboyd@codeaurora.org, Rob Herring <robh@kernel.org>, jamesjj.liao@mediatek.com, Fan Chen <fan.chen@mediatek.com>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, lkml <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org, owen.chen@mediatek.com
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181204082158.rb7uzdiwmcotwoxh@vireshk-i7>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Cc: Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, tfiga@chromium.org, Chiawen.Lee@mediatek.com, erin.lo@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Dec 10, 2018 at 3:33 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
->
-> From: Owen Chen <owen.chen@mediatek.com>
->
-> On both MT8183 & MT6765, there add "set/clr" register for
-> each clkmux setting, and one update register to trigger value change.
-> It is designed to prevent read-modify-write racing issue.
-> The sw design need to add a new API to handle this hw change with
-> a new mtk_clk_mux/mtk_mux struct in new file "clk-mux.c", "clk-mux.h".
->
-> Signed-off-by: Owen Chen <owen.chen@mediatek.com>
-> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> ---
->  drivers/clk/mediatek/Makefile  |   3 +-
->  drivers/clk/mediatek/clk-mux.c | 229 +++++++++++++++++++++++++++++++++
->  drivers/clk/mediatek/clk-mux.h | 101 +++++++++++++++
->  3 files changed, 332 insertions(+), 1 deletion(-)
->  create mode 100644 drivers/clk/mediatek/clk-mux.c
->  create mode 100644 drivers/clk/mediatek/clk-mux.h
->
-> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-> index 844b55d2770d..00e4d405231e 100644
-> --- a/drivers/clk/mediatek/Makefile
-> +++ b/drivers/clk/mediatek/Makefile
-> @@ -1,5 +1,6 @@
->  # SPDX-License-Identifier: GPL-2.0
-> -obj-$(CONFIG_COMMON_CLK_MEDIATEK) += clk-mtk.o clk-pll.o clk-gate.o clk-apmixed.o clk-cpumux.o reset.o
-> +obj-$(CONFIG_COMMON_CLK_MEDIATEK) += clk-mtk.o clk-pll.o clk-gate.o clk-apmixed.o clk-cpumux.o reset.o clk-mux.o
-> +
->  obj-$(CONFIG_COMMON_CLK_MT6797) += clk-mt6797.o
->  obj-$(CONFIG_COMMON_CLK_MT6797_IMGSYS) += clk-mt6797-img.o
->  obj-$(CONFIG_COMMON_CLK_MT6797_MMSYS) += clk-mt6797-mm.o
-> diff --git a/drivers/clk/mediatek/clk-mux.c b/drivers/clk/mediatek/clk-mux.c
-> new file mode 100644
-> index 000000000000..efbbb35eb185
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-mux.c
-> @@ -0,0 +1,229 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2018 MediaTek Inc.
-> + * Author: Owen Chen <owen.chen@mediatek.com>
-> + */
-> +
-> +#include <linux/of.h>
-> +#include <linux/of_address.h>
-> +#include <linux/slab.h>
-> +#include <linux/mfd/syscon.h>
-> +
-> +#include "clk-mtk.h"
-> +#include "clk-mux.h"
-> +
-> +static inline struct mtk_clk_mux *to_mtk_clk_mux(struct clk_hw *hw)
-> +{
-> +       return container_of(hw, struct mtk_clk_mux, hw);
-> +}
-> +
-> +static int mtk_clk_mux_enable(struct clk_hw *hw)
-> +{
-> +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
-> +       u32 mask = BIT(mux->gate_shift);
-> +
-> +       return regmap_update_bits(mux->regmap, mux->mux_ofs, mask, ~mask);
-> +}
-> +
-> +static void mtk_clk_mux_disable(struct clk_hw *hw)
-> +{
-> +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
-> +       u32 mask = BIT(mux->gate_shift);
-> +
-> +       regmap_update_bits(mux->regmap, mux->mux_ofs, mask, mask);
-> +}
-> +
-> +static int mtk_clk_mux_enable_setclr(struct clk_hw *hw)
-> +{
-> +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
-> +
-> +       return regmap_write(mux->regmap, mux->mux_clr_ofs,
-> +                       BIT(mux->gate_shift));
-> +}
-> +
-> +static void mtk_clk_mux_disable_setclr(struct clk_hw *hw)
-> +{
-> +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
-> +
-> +       regmap_write(mux->regmap, mux->mux_set_ofs, BIT(mux->gate_shift));
-> +}
-> +
-> +static int mtk_clk_mux_is_enabled(struct clk_hw *hw)
-> +{
-> +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
-> +       u32 val;
-> +
-> +       regmap_read(mux->regmap, mux->mux_ofs, &val);
-> +
-> +       return (val & BIT(mux->gate_shift)) == 0;
-> +}
-> +
-> +static u8 mtk_clk_mux_get_parent(struct clk_hw *hw)
-> +{
-> +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
-> +       u32 mask = GENMASK(mux->mux_width - 1, 0);
-> +       u32 val;
-> +
-> +       regmap_read(mux->regmap, mux->mux_ofs, &val);
-> +       val = (val >> mux->mux_shift) & mask;
-> +
-> +       return val;
-> +}
-> +
-> +static int mtk_clk_mux_set_parent_lock(struct clk_hw *hw, u8 index)
-> +{
-> +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
-> +       u32 mask = GENMASK(mux->mux_width - 1, 0);
-> +       unsigned long flags;
-> +
-> +       if (mux->lock)
-> +               spin_lock_irqsave(mux->lock, flags);
-> +       else
-> +               __acquire(mux->lock);
-> +
-> +       regmap_update_bits(mux->regmap, mux->mux_ofs, mask,
-> +               index << mux->mux_shift);
-> +
-> +       if (mux->lock)
-> +               spin_unlock_irqrestore(mux->lock, flags);
-> +       else
-> +               __release(mux->lock);
-> +
-> +       return 0;
-> +}
-> +
-> +static int mtk_clk_mux_set_parent_setclr_lock(struct clk_hw *hw, u8 index)
-> +{
-> +       struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
-> +       u32 mask = GENMASK(mux->mux_width - 1, 0);
-> +       u32 val, orig;
-> +       unsigned long flags;
-> +
-> +       if (mux->lock)
-> +               spin_lock_irqsave(mux->lock, flags);
-> +       else
-> +               __acquire(mux->lock);
-> +
-> +       regmap_read(mux->regmap, mux->mux_ofs, &orig);
-> +       val = (orig & ~(mask << mux->mux_shift)) | (index << mux->mux_shift);
-> +
-> +       if (val != orig) {
-> +               regmap_write(mux->regmap, mux->mux_clr_ofs,
-> +                               mask << mux->mux_shift);
-> +               regmap_write(mux->regmap, mux->mux_set_ofs,
-> +                               index << mux->mux_shift);
-> +
-> +               if (mux->upd_shift >= 0)
-> +                       regmap_write(mux->regmap, mux->upd_ofs,
-> +                                       BIT(mux->upd_shift));
-> +       }
-> +
-> +       if (mux->lock)
-> +               spin_unlock_irqrestore(mux->lock, flags);
-> +       else
-> +               __release(mux->lock);
-> +
-> +       return 0;
-> +}
-> +
-> +const struct clk_ops mtk_mux_ops = {
-> +       .get_parent = mtk_clk_mux_get_parent,
-> +       .set_parent = mtk_clk_mux_set_parent_lock,
-> +};
-> +
-> +const struct clk_ops mtk_mux_clr_set_upd_ops = {
-> +       .get_parent = mtk_clk_mux_get_parent,
-> +       .set_parent = mtk_clk_mux_set_parent_setclr_lock,
-> +};
-> +
-> +const struct clk_ops mtk_mux_gate_ops = {
-> +       .enable = mtk_clk_mux_enable,
-> +       .disable = mtk_clk_mux_disable,
-> +       .is_enabled = mtk_clk_mux_is_enabled,
-> +       .get_parent = mtk_clk_mux_get_parent,
-> +       .set_parent = mtk_clk_mux_set_parent_lock,
-> +};
-> +
-> +const struct clk_ops mtk_mux_gate_clr_set_upd_ops = {
-> +       .enable = mtk_clk_mux_enable_setclr,
-> +       .disable = mtk_clk_mux_disable_setclr,
-> +       .is_enabled = mtk_clk_mux_is_enabled,
-> +       .get_parent = mtk_clk_mux_get_parent,
-> +       .set_parent = mtk_clk_mux_set_parent_setclr_lock,
-> +};
-> +
-> +struct clk *mtk_clk_register_mux(const struct mtk_mux *mux,
-> +                                struct regmap *regmap,
-> +                                spinlock_t *lock)
-> +{
-> +       struct mtk_clk_mux *mtk_mux;
+On Tue, 2018-12-04 at 13:51 +0530, Viresh Kumar wrote:
+> On 04-12-18, 14:59, Nick Fan wrote:
+> > Add API to get voltage for multiple supplies from opp table
+> 
+> And who needs to use this new API ? It would be better to add the user in the
+> same series to make sure this really gets used.
 
-I'd call this variable clk_mux.
+This new API would be required when handling multiple regulators.
+You can check the example 4 in
+Documentation/devicetree/bindings/opp/opp.txt for multiple regulators.
 
-> +       struct clk_init_data init;
-> +       struct clk *clk;
-> +
-> +       mtk_mux = kzalloc(sizeof(*mtk_mux), GFP_KERNEL);
-> +       if (!mtk_mux)
-> +               return ERR_PTR(-ENOMEM);
-> +
-> +       init.name = mux->name;
-> +       init.flags = mux->flags | CLK_SET_RATE_PARENT;
-> +       init.parent_names = mux->parent_names;
-> +       init.num_parents = mux->num_parents;
-> +       init.ops = mux->ops;
-> +
-> +       mtk_mux->regmap = regmap;
-> +       mtk_mux->name = mux->name;
-> +       mtk_mux->mux_ofs = mux->mux_ofs;
-> +       mtk_mux->mux_set_ofs = mux->set_ofs;
-> +       mtk_mux->mux_clr_ofs = mux->clr_ofs;
-> +       mtk_mux->upd_ofs = mux->upd_ofs;
-> +       mtk_mux->mux_shift = mux->mux_shift;
-> +       mtk_mux->mux_width = mux->mux_width;
-> +       mtk_mux->gate_shift = mux->gate_shift;
-> +       mtk_mux->upd_shift = mux->upd_shift;
+When we specify multiple regulator voltages in device tree, we are not
+able to access the secondary supply voltages.
+Because the dev_pm_opp_get_voltage only returns the first supply
+voltages, this new API is required to get the specific supply.
 
-These copies seem a bit wasteful. If the lifetime of the objects are
-the same, can you just keep a pointer to struct mtk_mux in struct
-mtk_clk_mux?
+> 
+> > Signed-off-by: Nick Fan <Nick.Fan@mediatek.com>
+> > ---
+> >  drivers/opp/core.c     | 28 ++++++++++++++++++++++++++++
+> >  include/linux/pm_opp.h |  3 +++
+> >  2 files changed, 31 insertions(+)
+> > 
+> > diff --git a/drivers/opp/core.c b/drivers/opp/core.c
+> > index 2c2df4e..ee73546 100644
+> > --- a/drivers/opp/core.c
+> > +++ b/drivers/opp/core.c
+> > @@ -113,6 +113,34 @@ unsigned long dev_pm_opp_get_voltage(struct dev_pm_opp *opp)
+> >  EXPORT_SYMBOL_GPL(dev_pm_opp_get_voltage);
+> >  
+> >  /**
+> > + * dev_pm_opp_get_voltage_supply() - Gets the voltage corresponding to an opp
+> > + * with index
+> > + * @opp:        opp for which voltage has to be returned for
+> > + * @index:      index to specify the returned supplies
+> > + *
+> > + * Return: voltage in micro volt corresponding to the opp with index, else
+> > + * return 0
+> > + *
+> > + * This is useful for devices with multiple power supplies.
+> > + */
+> > +unsigned long dev_pm_opp_get_voltage_supply(struct dev_pm_opp *opp,
+> > +					    unsigned int index)
+> 
+> How will the users of this API get the index ?
 
-If not, maybe move all the settings to a "params" structure or
-something like that, so we can do a simpler memcpy?
+For the users who only use one supply, they can use
+dev_pm_opp_get_voltage to get the voltage data from an opp.
+But if the users who use more than one supply, they will need this API
+to get their voltage data from OPP.
+The users should know about the supply count while creating opp table by
+using dev_pm_opp_set_regulators function.
+By using this API, the users can get the voltages by using index to
+specify which supplies they want.
 
-> +
-> +       mtk_mux->lock = lock;
-> +       mtk_mux->hw.init = &init;
-> +
-> +       clk = clk_register(NULL, &mtk_mux->hw);
-> +       if (IS_ERR(clk)) {
-> +               kfree(mtk_mux);
-> +               return clk;
-> +       }
-> +
-> +       return clk;
-> +}
-> +
-> +int mtk_clk_register_muxes(const struct mtk_mux *muxes,
-> +                          int num, struct device_node *node,
-> +                          spinlock_t *lock,
-> +                          struct clk_onecell_data *clk_data)
-> +{
-> +       struct regmap *regmap;
-> +       struct clk *clk;
-> +       int i;
-> +
-> +       regmap = syscon_node_to_regmap(node);
-> +       if (IS_ERR(regmap)) {
-> +               pr_err("Cannot find regmap for %pOF: %ld\n", node,
-> +                      PTR_ERR(regmap));
-> +               return PTR_ERR(regmap);
-> +       }
-> +
-> +       for (i = 0; i < num; i++) {
-> +               const struct mtk_mux *mux = &muxes[i];
-> +
-> +               if (IS_ERR_OR_NULL(clk_data->clks[mux->id])) {
-> +                       clk = mtk_clk_register_mux(mux, regmap, lock);
-> +
-> +                       if (IS_ERR(clk)) {
-> +                               pr_err("Failed to register clk %s: %ld\n",
-> +                                      mux->name, PTR_ERR(clk));
-> +                               continue;
-> +                       }
-> +
-> +                       clk_data->clks[mux->id] = clk;
-> +               }
-> +       }
-> +
-> +       return 0;
-> +}
-> diff --git a/drivers/clk/mediatek/clk-mux.h b/drivers/clk/mediatek/clk-mux.h
-> new file mode 100644
-> index 000000000000..830a6117e670
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-mux.h
-> @@ -0,0 +1,101 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +/*
-> + * Copyright (c) 2018 MediaTek Inc.
-> + * Author: Owen Chen <owen.chen@mediatek.com>
-> + */
-> +
-> +#ifndef __DRV_CLK_MTK_MUX_H
-> +#define __DRV_CLK_MTK_MUX_H
-> +
-> +#include <linux/clk-provider.h>
-> +
-> +struct mtk_clk_mux {
-> +       struct clk_hw hw;
-> +       struct regmap *regmap;
-> +
-> +       const char *name;
-> +
-> +       u32 mux_set_ofs;
-> +       u32 mux_clr_ofs;
-> +       u32 mux_ofs;
-> +       u32 upd_ofs;
-> +
-> +       u8 mux_shift;
-> +       u8 mux_width;
-> +       u8 gate_shift;
-> +       s8 upd_shift;
-> +
-> +       spinlock_t *lock;
-> +};
-> +
-> +struct mtk_mux {
-> +       int id;
-> +       const char *name;
-> +       const char * const *parent_names;
-> +       unsigned int flags;
-> +
-> +       u32 mux_ofs;
-> +       u32 set_ofs;
-> +       u32 clr_ofs;
-> +       u32 upd_ofs;
-> +
-> +       u8 mux_shift;
-> +       u8 mux_width;
-> +       u8 gate_shift;
-> +       s8 upd_shift;
-> +
-> +       const struct clk_ops *ops;
-> +
-> +       signed char num_parents;
-> +};
-> +
-> +extern const struct clk_ops mtk_mux_ops;
-> +extern const struct clk_ops mtk_mux_clr_set_upd_ops;
-> +extern const struct clk_ops mtk_mux_gate_ops;
-> +extern const struct clk_ops mtk_mux_gate_clr_set_upd_ops;
-> +
-> +#define GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents, _mux_ofs,         \
-> +                       _mux_set_ofs, _mux_clr_ofs, _shift, _width,     \
-> +                       _gate, _upd_ofs, _upd, _flags, _ops) {          \
-> +               .id = _id,                                              \
-> +               .name = _name,                                          \
-> +               .mux_ofs = _mux_ofs,                                    \
-> +               .set_ofs = _mux_set_ofs,                                \
-> +               .clr_ofs = _mux_clr_ofs,                                \
-> +               .upd_ofs = _upd_ofs,                                    \
-> +               .mux_shift = _shift,                                    \
-> +               .mux_width = _width,                                    \
-> +               .gate_shift = _gate,                                    \
-> +               .upd_shift = _upd,                                      \
-> +               .parent_names = _parents,                               \
-> +               .num_parents = ARRAY_SIZE(_parents),                    \
-> +               .flags = _flags,                                        \
-> +               .ops = &_ops,                                           \
-> +       }
-> +
-> +#define MUX_GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents, _mux_ofs,     \
-> +                       _mux_set_ofs, _mux_clr_ofs, _shift, _width,     \
-> +                       _gate, _upd_ofs, _upd, _flags)                  \
-> +               GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents, _mux_ofs,  \
-> +                       _mux_set_ofs, _mux_clr_ofs, _shift, _width,     \
-> +                       _gate, _upd_ofs, _upd, _flags,                  \
-> +                       mtk_mux_gate_clr_set_upd_ops)
-> +
-> +#define MUX_GATE_CLR_SET_UPD(_id, _name, _parents, _mux_ofs,           \
-> +                       _mux_set_ofs, _mux_clr_ofs, _shift, _width,     \
-> +                       _gate, _upd_ofs, _upd)                          \
-> +               MUX_GATE_CLR_SET_UPD_FLAGS(_id, _name, _parents,        \
-> +                       _mux_ofs, _mux_set_ofs, _mux_clr_ofs, _shift,   \
-> +                       _width, _gate, _upd_ofs, _upd,                  \
-> +                       CLK_SET_RATE_PARENT)
-> +
-> +struct clk *mtk_clk_register_mux(const struct mtk_mux *mux,
-> +                                struct regmap *regmap,
-> +                                spinlock_t *lock);
-> +
-> +int mtk_clk_register_muxes(const struct mtk_mux *muxes,
-> +                          int num, struct device_node *node,
-> +                          spinlock_t *lock,
-> +                          struct clk_onecell_data *clk_data);
-> +
-> +#endif /* __DRV_CLK_MTK_MUX_H */
-> --
-> 2.18.0
->
+The following is a simple example to get multiple regulators by this
+API.
+for (i = 0; i < regulator_num; i++)
+	target_volt[i] = dev_pm_opp_get_voltage_supply(opp, i);
+> 
+> > +{
+> > +	if (IS_ERR_OR_NULL(opp)) {
+> > +		pr_err("%s: Invalid parameters\n", __func__);
+> > +		return 0;
+> > +	}
+> > +
+> > +	if (index >= opp->opp_table->regulator_count) {
+> > +		pr_err("%s: Invalid supply index: %u\n", __func__, index);
+> > +		return 0;
+> > +	}
+> > +
+> > +	return opp->supplies[index].u_volt;
+> 
+Nick Fan
