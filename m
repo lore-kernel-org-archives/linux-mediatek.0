@@ -1,788 +1,294 @@
-From: Nicolas Boichat <drinkcat@chromium.org>
-Subject: Re: [PATCH v3 04/12] soc: mediatek: add new flow for mtcmos power.
-Date: Mon, 10 Dec 2018 20:52:32 +0800
-Message-ID: <CANMq1KBq5Srgwb+awSTPenXU6AWNyU_BR4axh4h9qcCD=KuMmw@mail.gmail.com>
-References: <20181210073240.32278-1-weiyi.lu@mediatek.com> <20181210073240.32278-6-weiyi.lu@mediatek.com>
+From: Benjamin Gaignard <benjamin.gaignard-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 7/7] drm: Split out drm_probe_helper.h
+Date: Mon, 10 Dec 2018 14:40:25 +0100
+Message-ID: <CA+M3ks7ODkgZe_otsens1H4PoKOdnfHVxUgi84NPyri6Xhh1dg@mail.gmail.com>
+References: <20181210100359.22507-1-daniel.vetter@ffwll.ch>
+ <20181210101133.5364-1-daniel.vetter@ffwll.ch> <20181210102426.GG15154@ulmo>
+ <CA+M3ks5MgpCqMDp6DrtyB_Cj_YMryysTmbAaUjzN7sWde5dX6Q@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181210073240.32278-6-weiyi.lu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Weiyi Lu <weiyi.lu@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, sboyd@codeaurora.org, Rob Herring <robh@kernel.org>, jamesjj.liao@mediatek.com, Fan Chen <fan.chen@mediatek.com>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, lkml <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org, owen.chen@mediatek.com, Cheng Mars <mars.cheng@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+In-Reply-To: <CA+M3ks5MgpCqMDp6DrtyB_Cj_YMryysTmbAaUjzN7sWde5dX6Q-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/freedreno>
+List-Post: <mailto:freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+List-Help: <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
+Errors-To: freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Sender: "Freedreno" <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+To: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: "moderated list:ARM/S5P EXYNOS AR..." <linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, spice-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Daniel Vetter <daniel.vetter-/w4YWyX8dFk@public.gmane.org>, Intel Graphics Development <intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, etnaviv-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, virtualization-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, ML dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, linux-arm-msm <linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, nouveau-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Daniel Vetter <daniel.vetter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xen-devel-GuqFBffKawuEi8DpZVb4nw@public.gmane.org, freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, Linux ARM <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Dec 10, 2018 at 3:33 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
->
-> From: Owen Chen <owen.chen@mediatek.com>
->
-> Both MT8183 & MT6765 add more bus protect node than previous project,
-> therefore we add two more register for setup bus protect, which reside
-> at INFRA_CFG & SMI_COMMON.
->
-> With the following change
-> 1. bus protect need not only infracfg but smi_common registers involved
->    to setup. Therefore we add a set/clr APIs with more customize arguments.
->
-> The second change is that we also add subsys CG control flow before/after
-> the bus protect/sram control, due to bus protect need SMI bus relative CGs
-> enable to feed-back its ack, and some master's sram control need CG enable
-> to on/off its resource sequentially.
->
-> With the following change
-> 1. turn on subsys CG before sram pwron and release bus protect.
-> 2. turn off subsys CG after the process of set bus protect/receive
->    ack/disable sram.
->
-> The last change is for some power domains like vpu_core on MT8183 whose
-> sram need to do clock and internal isolation while power on/off sram.
-> We add a flag "sram_iso_ctrl" in scp_domain_data to judge if we need to
-> do the extra sram isolation control or not.
->
-> Signed-off-by: Owen Chen <owen.chen@mediatek.com>
-> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
-> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> ---
->  drivers/soc/mediatek/Makefile           |   2 +-
->  drivers/soc/mediatek/mtk-scpsys-ext.c   |  99 ++++++
->  drivers/soc/mediatek/mtk-scpsys.c       | 390 ++++++++++++++++++------
->  include/linux/soc/mediatek/scpsys-ext.h |  39 +++
->  4 files changed, 443 insertions(+), 87 deletions(-)
->  create mode 100644 drivers/soc/mediatek/mtk-scpsys-ext.c
->  create mode 100644 include/linux/soc/mediatek/scpsys-ext.h
->
-> diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
-> index 12998b08819e..9dc6670c19cb 100644
-> --- a/drivers/soc/mediatek/Makefile
-> +++ b/drivers/soc/mediatek/Makefile
-> @@ -1,3 +1,3 @@
-> -obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o
-> +obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o mtk-scpsys-ext.o
->  obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
->  obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
-> diff --git a/drivers/soc/mediatek/mtk-scpsys-ext.c b/drivers/soc/mediatek/mtk-scpsys-ext.c
-> new file mode 100644
-> index 000000000000..54df42db2a8f
-> --- /dev/null
-> +++ b/drivers/soc/mediatek/mtk-scpsys-ext.c
-> @@ -0,0 +1,99 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2018 MediaTek Inc.
-> + * Author: Owen Chen <Owen.Chen@mediatek.com>
-> + */
-> +#include <linux/ktime.h>
-> +#include <linux/mfd/syscon.h>
-> +#include <linux/of_device.h>
-> +#include <linux/regmap.h>
-> +#include <linux/soc/mediatek/scpsys-ext.h>
-> +
-> +#define MTK_POLL_DELAY_US   10
-> +#define MTK_POLL_TIMEOUT    (jiffies_to_usecs(HZ))
-
-That's just USEC_PER_SEC.
-
-> +
-> +static int set_bus_protection(struct regmap *map, u32 mask, u32 ack_mask,
-> +               u32 reg_set, u32 reg_sta, u32 reg_en)
-> +{
-> +       u32 val;
-> +
-> +       if (reg_set)
-> +               regmap_write(map, reg_set, mask);
-> +       else
-> +               regmap_update_bits(map, reg_en, mask, mask);
-> +
-> +       return regmap_read_poll_timeout(map, reg_sta,
-> +                       val, (val & ack_mask) == ack_mask,
-> +                       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
-> +}
-> +
-> +static int clear_bus_protection(struct regmap *map, u32 mask, u32 ack_mask,
-> +               u32 reg_clr, u32 reg_sta, u32 reg_en)
-> +{
-> +       u32 val;
-> +
-> +       if (reg_clr)
-> +               regmap_write(map, reg_clr, mask);
-> +       else
-> +               regmap_update_bits(map, reg_en, mask, 0);
-> +
-> +       return regmap_read_poll_timeout(map, reg_sta,
-> +                       val, !(val & ack_mask),
-> +                       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
-> +}
-> +
-> +int mtk_scpsys_ext_set_bus_protection(const struct bus_prot *bp_table,
-> +       struct regmap *infracfg, struct regmap *smi_common)
-> +{
-> +       int i;
-> +
-> +       for (i = 0; i < MAX_STEPS && bp_table[i].mask; i++) {
-> +               struct regmap *map;
-> +               int ret;
-> +
-> +               if (bp_table[i].type == IFR_TYPE)
-> +                       map = infracfg;
-> +               else if (bp_table[i].type == SMI_TYPE)
-> +                       map = smi_common;
-> +               else
-> +                       return -EINVAL;
-> +
-> +               ret = set_bus_protection(map,
-> +                               bp_table[i].mask, bp_table[i].mask,
-> +                               bp_table[i].set_ofs, bp_table[i].sta_ofs,
-> +                               bp_table[i].en_ofs);
-> +
-> +               if (ret)
-> +                       return ret;
-> +       }
-> +
-> +       return 0;
-> +}
-> +
-> +int mtk_scpsys_ext_clear_bus_protection(const struct bus_prot *bp_table,
-> +       struct regmap *infracfg, struct regmap *smi_common)
-> +{
-> +       int i;
-> +
-> +       for (i = MAX_STEPS - 1; i >= 0; i--) {
-> +               struct regmap *map;
-> +               int ret;
-> +
-> +               if (bp_table[i].type == IFR_TYPE)
-> +                       map = infracfg;
-> +               else if (bp_table[i].type == SMI_TYPE)
-> +                       map = smi_common;
-> +               else
-> +                       return -EINVAL;
-> +
-> +               ret = clear_bus_protection(map,
-> +                               bp_table[i].mask, bp_table[i].clr_ack_mask,
-> +                               bp_table[i].clr_ofs, bp_table[i].sta_ofs,
-> +                               bp_table[i].en_ofs);
-> +
-> +               if (ret)
-> +                       return ret;
-> +       }
-> +
-> +       return 0;
-> +}
-> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-> index 5b24bb4bfbf6..98ccef566ce1 100644
-> --- a/drivers/soc/mediatek/mtk-scpsys.c
-> +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> @@ -1,15 +1,8 @@
-> -/*
-> - * Copyright (c) 2015 Pengutronix, Sascha Hauer <kernel@pengutronix.de>
-> - *
-> - * This program is free software; you can redistribute it and/or modify
-> - * it under the terms of the GNU General Public License version 2 as
-> - * published by the Free Software Foundation.
-> - *
-> - * This program is distributed in the hope that it will be useful,
-> - * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> - * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> - * GNU General Public License for more details.
-> - */
-> +// SPDX-License-Identifier: GPL-2.0
-> +//
-> +// Copyright (c) 2015 Pengutronix
-> +// Author: Sascha Hauer <kernel@pengutronix.de>
-
-I'm not super familiar with copyright rules in Germany, but I would
-not change this line. I.e., I'd keep:
-// Copyright (c) 2015 Pengutronix, Sascha Hauer <kernel@pengutronix.de>
-
-> +
->  #include <linux/clk.h>
->  #include <linux/init.h>
->  #include <linux/io.h>
-> @@ -20,6 +13,7 @@
->  #include <linux/pm_domain.h>
->  #include <linux/regulator/consumer.h>
->  #include <linux/soc/mediatek/infracfg.h>
-> +#include <linux/soc/mediatek/scpsys-ext.h>
->
->  #include <dt-bindings/power/mt2701-power.h>
->  #include <dt-bindings/power/mt2712-power.h>
-> @@ -64,6 +58,8 @@
->  #define PWR_ON_BIT                     BIT(2)
->  #define PWR_ON_2ND_BIT                 BIT(3)
->  #define PWR_CLK_DIS_BIT                        BIT(4)
-> +#define PWR_SRAM_CLKISO_BIT            BIT(5)
-> +#define PWR_SRAM_ISOINT_B_BIT          BIT(6)
->
->  #define PWR_STATUS_CONN                        BIT(1)
->  #define PWR_STATUS_DISP                        BIT(3)
-> @@ -115,16 +111,38 @@ static const char * const clk_names[] = {
->  };
->
->  #define MAX_CLKS       3
-> -
-> +#define MAX_SUBSYS_CLKS 10
-> +
-> +/**
-> + * struct scp_domain_data - scp domain data for power on/off flow
-> + * @name: The domain name.
-> + * @sta_mask: The mask for power on/off status bit.
-> + * @ctl_offs: The offset for main power control register.
-
-Thanks for adding documentation, but @sram_iso_ctrl is missing here.
-
-> + * @sram_pdn_bits: The mask for sram power control bits.
-> + * @sram_pdn_ack_bits: The mask for sram power control acked bits.
-> + * @bus_prot_mask: The mask for single step bus protection.
-> + * @clk_id: The basic clock needs to be enabled before enabling certain
-> + *          power domains.
-> + * @basic_clk_name: provide the same purpose with field "clk_id"
-> + *                  by declaring basic clock prefix name rather than clk_id.
-> + * @subsys_clk_prefix: The prefix name of the clocks need to be enabled
-> + *                     before releasing bus protection.
-> + * @caps: The flag for active wake-up action.
-> + * @bp_table: The mask table for multiple step bus protection.
-> + */
->  struct scp_domain_data {
->         const char *name;
->         u32 sta_mask;
->         int ctl_offs;
-> +       bool sram_iso_ctrl;
->         u32 sram_pdn_bits;
->         u32 sram_pdn_ack_bits;
->         u32 bus_prot_mask;
->         enum clk_id clk_id[MAX_CLKS];
-> +       const char *basic_clk_name[MAX_CLKS];
-> +       const char *subsys_clk_prefix;
->         u8 caps;
-> +       struct bus_prot bp_table[MAX_STEPS];
->  };
->
->  struct scp;
-> @@ -133,6 +151,7 @@ struct scp_domain {
->         struct generic_pm_domain genpd;
->         struct scp *scp;
->         struct clk *clk[MAX_CLKS];
-> +       struct clk *subsys_clk[MAX_SUBSYS_CLKS];
->         const struct scp_domain_data *data;
->         struct regulator *supply;
->  };
-> @@ -148,6 +167,7 @@ struct scp {
->         struct device *dev;
->         void __iomem *base;
->         struct regmap *infracfg;
-> +       struct regmap *smi_common;
->         struct scp_ctrl_reg ctrl_reg;
->         bool bus_prot_reg_update;
->  };
-> @@ -188,32 +208,166 @@ static int scpsys_domain_is_on(struct scp_domain *scpd)
->         return -EINVAL;
->  }
->
-> +static int scpsys_regulator_enable(struct scp_domain *scpd)
-> +{
-> +       if (!scpd->supply)
-> +               return 0;
-> +       else
-
-nit: Else branch not strictly needed.
-
-> +               return regulator_enable(scpd->supply);
-> +}
-> +
-> +static int scpsys_regulator_disable(struct scp_domain *scpd)
-> +{
-> +       if (!scpd->supply)
-> +               return 0;
-> +       else
-> +               return regulator_disable(scpd->supply);
-> +}
-> +
-> +static int scpsys_clk_enable(struct clk *clk[], int max_num)
-> +{
-> +       int i, ret = 0;
-> +
-> +       for (i = 0; i < max_num && clk[i]; i++) {
-> +               ret = clk_prepare_enable(clk[i]);
-> +               if (ret) {
-> +                       for (--i; i >= 0; i--)
-> +                               clk_disable_unprepare(clk[i]);
-> +
-> +                       break;
-> +               }
-> +       }
-> +
-> +       return ret;
-> +}
-> +
-> +static int scpsys_clk_disable(struct clk *clk[], int max_num)
-> +{
-> +       int i;
-> +
-> +       for (i = max_num - 1; i >= 0; i--) {
-> +               if (clk[i])
-> +                       clk_disable_unprepare(clk[i]);
-> +       }
-> +
-> +       return 0;
-> +}
-> +
-> +static int scpsys_sram_enable(struct scp_domain *scpd, void __iomem *ctl_addr)
-> +{
-> +       u32 val;
-> +       u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
-> +       int tmp, ret = 0;
-> +
-> +       val = readl(ctl_addr) & ~scpd->data->sram_pdn_bits;
-> +       writel(val, ctl_addr);
-> +
-> +       /* Either wait until SRAM_PDN_ACK all 0 or have a force wait */
-> +       if (MTK_SCPD_CAPS(scpd, MTK_SCPD_FWAIT_SRAM)) {
-> +               /*
-> +                * Currently, MTK_SCPD_FWAIT_SRAM is necessary only for
-> +                * MT7622_POWER_DOMAIN_WB and thus just a trivial setup
-> +                * is applied here.
-> +                */
-> +               usleep_range(12000, 12100);
-> +       } else {
-> +               /* Either wait until SRAM_PDN_ACK all 1 or 0 */
-> +               ret = readl_poll_timeout(ctl_addr, tmp,
-> +                               (tmp & pdn_ack) == 0,
-> +                               MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
-> +       }
-> +
-> +       if (scpd->data->sram_iso_ctrl)  {
-
-Are we ok with doing this even if readl_poll_timeout fails? Should we
-return ret earlier?
-
-> +               val = readl(ctl_addr) | PWR_SRAM_ISOINT_B_BIT;
-> +               writel(val, ctl_addr);
-> +               udelay(1);
-> +               val &= ~PWR_SRAM_CLKISO_BIT;
-> +               writel(val, ctl_addr);
-> +       }
-> +
-> +       return ret;
-> +}
-> +
-> +static int scpsys_sram_disable(struct scp_domain *scpd, void __iomem *ctl_addr)
-> +{
-> +       u32 val;
-> +       u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
-> +       int tmp, ret = 0;
-
-No need to init ret to 0.
-
-> +
-> +       if (scpd->data->sram_iso_ctrl)  {
-> +               val = readl(ctl_addr);
-> +               val |= PWR_SRAM_CLKISO_BIT;
-> +               writel(val, ctl_addr);
-> +               val &= ~PWR_SRAM_ISOINT_B_BIT;
-> +               writel(val, ctl_addr);
-> +               udelay(1);
-> +       }
-> +
-> +       val = readl(ctl_addr) | scpd->data->sram_pdn_bits;
-> +       writel(val, ctl_addr);
-> +
-> +       /* Either wait until SRAM_PDN_ACK all 1 or 0 */
-> +       ret = readl_poll_timeout(ctl_addr, tmp,
-> +                       (tmp & pdn_ack) == pdn_ack,
-> +                       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
-> +
-> +       return ret;
-
-Just return readl_poll_timeout.
-
-> +}
-> +
-> +static int scpsys_bus_protect_enable(struct scp_domain *scpd)
-> +{
-> +       struct scp *scp = scpd->scp;
-> +       int ret = 0;
-> +
-> +       if (scpd->data->bus_prot_mask) {
-> +               ret = mtk_infracfg_set_bus_protection(scp->infracfg,
-> +                               scpd->data->bus_prot_mask,
-> +                               scp->bus_prot_reg_update);
-> +       } else if (scpd->data->bp_table[0].mask) {
-> +               ret = mtk_scpsys_ext_set_bus_protection(scpd->data->bp_table,
-> +                               scp->infracfg,
-> +                               scp->smi_common);
-> +       }
-> +
-> +       return ret;
-
-More simply:
-
-       if (scpd->data->bus_prot_mask)
-              return mtk_infracfg_set_bus_protection(scp->infracfg,
-                               scpd->data->bus_prot_mask,
-                               scp->bus_prot_reg_update);
-
-      if (scpd->data->bp_table[0].mask)
-               return mtk_scpsys_ext_set_bus_protection(scpd->data->bp_table,
-                               scp->infracfg,
-                               scp->smi_common);
-
-       return 0;
-
-(feel free to add else's, if you like that better)
-
-> +}
-> +
-> +static int scpsys_bus_protect_disable(struct scp_domain *scpd)
-> +{
-> +       struct scp *scp = scpd->scp;
-> +       int ret = 0;
-> +
-> +       if (scpd->data->bus_prot_mask) {
-> +               ret = mtk_infracfg_clear_bus_protection(scp->infracfg,
-> +                               scpd->data->bus_prot_mask,
-> +                               scp->bus_prot_reg_update);
-> +       } else if (scpd->data->bp_table[0].mask) {
-> +               ret = mtk_scpsys_ext_clear_bus_protection(
-> +                               scpd->data->bp_table,
-> +                               scp->infracfg,
-> +                               scp->smi_common);
-> +       }
-> +
-> +       return ret;
-
-ditto
-
-> +}
-> +
->  static int scpsys_power_on(struct generic_pm_domain *genpd)
->  {
->         struct scp_domain *scpd = container_of(genpd, struct scp_domain, genpd);
->         struct scp *scp = scpd->scp;
->         void __iomem *ctl_addr = scp->base + scpd->data->ctl_offs;
-> -       u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
->         u32 val;
->         int ret, tmp;
-> -       int i;
-> -
-> -       if (scpd->supply) {
-> -               ret = regulator_enable(scpd->supply);
-> -               if (ret)
-> -                       return ret;
-> -       }
->
-> -       for (i = 0; i < MAX_CLKS && scpd->clk[i]; i++) {
-> -               ret = clk_prepare_enable(scpd->clk[i]);
-> -               if (ret) {
-> -                       for (--i; i >= 0; i--)
-> -                               clk_disable_unprepare(scpd->clk[i]);
-> +       ret = scpsys_regulator_enable(scpd);
-> +       if (ret < 0)
-> +               return ret;
->
-> -                       goto err_clk;
-> -               }
-> -       }
-> +       ret = scpsys_clk_enable(scpd->clk, MAX_CLKS);
-> +       if (ret)
-> +               goto err_clk;
->
-> +       /* subsys power on */
->         val = readl(ctl_addr);
->         val |= PWR_ON_BIT;
->         writel(val, ctl_addr);
-> @@ -235,43 +389,26 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
->         val |= PWR_RST_B_BIT;
->         writel(val, ctl_addr);
->
-> -       val &= ~scpd->data->sram_pdn_bits;
-> -       writel(val, ctl_addr);
-> -
-> -       /* Either wait until SRAM_PDN_ACK all 0 or have a force wait */
-> -       if (MTK_SCPD_CAPS(scpd, MTK_SCPD_FWAIT_SRAM)) {
-> -               /*
-> -                * Currently, MTK_SCPD_FWAIT_SRAM is necessary only for
-> -                * MT7622_POWER_DOMAIN_WB and thus just a trivial setup is
-> -                * applied here.
-> -                */
-> -               usleep_range(12000, 12100);
-> +       ret = scpsys_clk_enable(scpd->subsys_clk, MAX_SUBSYS_CLKS);
-> +       if (ret < 0)
-> +               goto err_pwr_ack;
->
-> -       } else {
-> -               ret = readl_poll_timeout(ctl_addr, tmp, (tmp & pdn_ack) == 0,
-> -                                        MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
-> -               if (ret < 0)
-> -                       goto err_pwr_ack;
-> -       }
-> +       ret = scpsys_sram_enable(scpd, ctl_addr);
-> +       if (ret < 0)
-> +               goto err_sram;
->
-> -       if (scpd->data->bus_prot_mask) {
-> -               ret = mtk_infracfg_clear_bus_protection(scp->infracfg,
-> -                               scpd->data->bus_prot_mask,
-> -                               scp->bus_prot_reg_update);
-> -               if (ret)
-> -                       goto err_pwr_ack;
-> -       }
-> +       ret = scpsys_bus_protect_disable(scpd);
-> +       if (ret < 0)
-> +               goto err_sram;
->
->         return 0;
->
-> +err_sram:
-> +       scpsys_clk_disable(scpd->subsys_clk, MAX_SUBSYS_CLKS);
->  err_pwr_ack:
-> -       for (i = MAX_CLKS - 1; i >= 0; i--) {
-> -               if (scpd->clk[i])
-> -                       clk_disable_unprepare(scpd->clk[i]);
-> -       }
-> +       scpsys_clk_disable(scpd->clk, MAX_CLKS);
->  err_clk:
-> -       if (scpd->supply)
-> -               regulator_disable(scpd->supply);
-> +       scpsys_regulator_disable(scpd);
->
->         dev_err(scp->dev, "Failed to power on domain %s\n", genpd->name);
->
-> @@ -283,29 +420,21 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
->         struct scp_domain *scpd = container_of(genpd, struct scp_domain, genpd);
->         struct scp *scp = scpd->scp;
->         void __iomem *ctl_addr = scp->base + scpd->data->ctl_offs;
-> -       u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
->         u32 val;
->         int ret, tmp;
-> -       int i;
->
-> -       if (scpd->data->bus_prot_mask) {
-> -               ret = mtk_infracfg_set_bus_protection(scp->infracfg,
-> -                               scpd->data->bus_prot_mask,
-> -                               scp->bus_prot_reg_update);
-> -               if (ret)
-> -                       goto out;
-> -       }
-> -
-> -       val = readl(ctl_addr);
-> -       val |= scpd->data->sram_pdn_bits;
-> -       writel(val, ctl_addr);
-> +       ret = scpsys_bus_protect_enable(scpd);
-> +       if (ret < 0)
-> +               goto out;
->
-> -       /* wait until SRAM_PDN_ACK all 1 */
-> -       ret = readl_poll_timeout(ctl_addr, tmp, (tmp & pdn_ack) == pdn_ack,
-> -                                MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
-> +       ret = scpsys_sram_disable(scpd, ctl_addr);
->         if (ret < 0)
->                 goto out;
->
-> +       ret = scpsys_clk_disable(scpd->subsys_clk, MAX_SUBSYS_CLKS);
-> +
-> +       /* subsys power off */
-> +       val = readl(ctl_addr);
->         val |= PWR_ISO_BIT;
->         writel(val, ctl_addr);
->
-> @@ -327,11 +456,9 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
->         if (ret < 0)
->                 goto out;
->
-> -       for (i = 0; i < MAX_CLKS && scpd->clk[i]; i++)
-> -               clk_disable_unprepare(scpd->clk[i]);
-> +       scpsys_clk_disable(scpd->clk, MAX_CLKS);
->
-> -       if (scpd->supply)
-> -               regulator_disable(scpd->supply);
-> +       scpsys_regulator_disable(scpd);
->
->         return 0;
->
-> @@ -341,6 +468,65 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
->         return ret;
->  }
->
-> +static int init_subsys_clks(struct platform_device *pdev,
-> +               const char *prefix, struct clk **clk)
-> +{
-> +       struct device_node *node = pdev->dev.of_node;
-> +       u32 prefix_len, sub_clk_cnt = 0;
-> +       int str_sz, clk_idx, ret;
-> +
-> +       if (!node) {
-> +               dev_err(&pdev->dev, "Cannot find scpsys node: %ld\n",
-> +                       PTR_ERR(node));
-> +               return PTR_ERR(node);
-> +       }
-> +
-> +       str_sz = of_property_count_strings(node, "clock-names");
-> +       if (str_sz < 0) {
-> +               dev_err(&pdev->dev, "Cannot get any subsys strings: %d\n",
-> +                               str_sz);
-> +               return str_sz;
-> +       }
-
-Would it be nicer to use of_property_for_each_string to iterate over
-the clock-names?
-
-> +
-> +       prefix_len = strlen(prefix);
-> +
-> +       for (clk_idx = 0; clk_idx < str_sz; clk_idx++) {
-> +               const char *clk_name;
-> +
-> +               ret = of_property_read_string_index(node, "clock-names",
-> +                                       clk_idx, &clk_name);
-> +               if (ret < 0) {
-> +                       dev_err(&pdev->dev,
-> +                                       "Cannot read subsys string[%d]: %d\n",
-> +                                       clk_idx, ret);
-> +                       return ret;
-> +               }
-> +
-> +               if (!strncmp(clk_name, prefix, prefix_len) &&
-> +                               (clk_name[prefix_len] == '-')) {
-> +                       if (sub_clk_cnt >= MAX_SUBSYS_CLKS) {
-> +                               dev_err(&pdev->dev,
-> +                                       "subsys clk out of range %d\n",
-> +                                       sub_clk_cnt);
-> +                               return -ENOMEM;
-> +                       }
-> +
-> +                       clk[sub_clk_cnt] = devm_clk_get(&pdev->dev,
-> +                                               clk_name);
-> +
-> +                       if (IS_ERR(clk)) {
-> +                               dev_err(&pdev->dev,
-> +                                       "Subsys clk read fail %ld\n",
-> +                                       PTR_ERR(clk));
-> +                               return PTR_ERR(clk);
-> +                       }
-> +                       sub_clk_cnt++;
-> +               }
-> +       }
-> +
-> +       return sub_clk_cnt;
-> +}
-> +
->  static void init_clks(struct platform_device *pdev, struct clk **clk)
->  {
->         int i;
-> @@ -396,6 +582,17 @@ static struct scp *init_scp(struct platform_device *pdev,
->                 return ERR_CAST(scp->infracfg);
->         }
->
-> +       scp->smi_common = syscon_regmap_lookup_by_phandle(pdev->dev.of_node,
-> +                       "smi_comm");
-> +
-> +       if (scp->smi_common == ERR_PTR(-ENODEV)) {
-> +               scp->smi_common = NULL;
-> +       } else if (IS_ERR(scp->smi_common)) {
-> +               dev_err(&pdev->dev, "Cannot find smi_common controller: %ld\n",
-> +                               PTR_ERR(scp->smi_common));
-> +               return ERR_CAST(scp->smi_common);
-> +       }
-> +
->         for (i = 0; i < num; i++) {
->                 struct scp_domain *scpd = &scp->domains[i];
->                 const struct scp_domain_data *data = &scp_domain_data[i];
-> @@ -417,22 +614,43 @@ static struct scp *init_scp(struct platform_device *pdev,
->                 struct scp_domain *scpd = &scp->domains[i];
->                 struct generic_pm_domain *genpd = &scpd->genpd;
->                 const struct scp_domain_data *data = &scp_domain_data[i];
-> +               int clk_cnt;
->
->                 pd_data->domains[i] = genpd;
->                 scpd->scp = scp;
->
->                 scpd->data = data;
->
-> -               for (j = 0; j < MAX_CLKS && data->clk_id[j]; j++) {
-> -                       struct clk *c = clk[data->clk_id[j]];
-> +               if (data->clk_id[0]) {
-> +                       for (j = 0; j < MAX_CLKS && data->clk_id[j]; j++) {
-> +                               struct clk *c = clk[data->clk_id[j]];
->
-> -                       if (IS_ERR(c)) {
-> -                               dev_err(&pdev->dev, "%s: clk unavailable\n",
-> -                                       data->name);
-> -                               return ERR_CAST(c);
-> +                               if (IS_ERR(c)) {
-> +                                       dev_err(&pdev->dev,
-> +                                               "%s: clk unavailable\n",
-> +                                               data->name);
-> +                                       return ERR_CAST(c);
-> +                               }
-> +
-> +                               scpd->clk[j] = c;
->                         }
-> +               } else if (data->basic_clk_name[0]) {
-> +                       for (j = 0; j < MAX_CLKS &&
-> +                                       data->basic_clk_name[j]; j++)
-> +                               scpd->clk[j] = devm_clk_get(&pdev->dev,
-> +                                               data->basic_clk_name[j]);
-> +               }
->
-> -                       scpd->clk[j] = c;
-> +               if (data->subsys_clk_prefix) {
-> +                       clk_cnt = init_subsys_clks(pdev,
-> +                                       data->subsys_clk_prefix,
-> +                                       scpd->subsys_clk);
-> +                       if (clk_cnt < 0) {
-> +                               dev_err(&pdev->dev,
-> +                                       "%s: subsys clk unavailable\n",
-> +                                       data->name);
-> +                               return ERR_PTR(clk_cnt);
-> +                       }
->                 }
->
->                 genpd->name = data->name;
-> diff --git a/include/linux/soc/mediatek/scpsys-ext.h b/include/linux/soc/mediatek/scpsys-ext.h
-> new file mode 100644
-> index 000000000000..d0ed295c88a7
-> --- /dev/null
-> +++ b/include/linux/soc/mediatek/scpsys-ext.h
-> @@ -0,0 +1,39 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +#ifndef __SOC_MEDIATEK_SCPSYS_EXT_H
-> +#define __SOC_MEDIATEK_SCPSYS_EXT_H
-> +
-> +#define MAX_STEPS      4
-> +
-> +#define BUS_PROT(_type, _set_ofs, _clr_ofs,                    \
-> +               _en_ofs, _sta_ofs, _mask, _clr_ack_mask) {      \
-> +               .type = _type,                                  \
-> +               .set_ofs = _set_ofs,                            \
-> +               .clr_ofs = _clr_ofs,                            \
-> +               .en_ofs = _en_ofs,                              \
-> +               .sta_ofs = _sta_ofs,                            \
-> +               .mask = _mask,                                  \
-> +               .clr_ack_mask = _clr_ack_mask,                  \
-> +       }
-> +
-> +enum regmap_type {
-> +       IFR_TYPE,
-> +       SMI_TYPE,
-> +       MAX_REGMAP_TYPE,
-> +};
-> +
-> +struct bus_prot {
-> +       enum regmap_type type;
-> +       u32 set_ofs;
-> +       u32 clr_ofs;
-> +       u32 en_ofs;
-> +       u32 sta_ofs;
-> +       u32 mask;
-> +       u32 clr_ack_mask;
-> +};
-> +
-> +int mtk_scpsys_ext_set_bus_protection(const struct bus_prot *bp_table,
-> +       struct regmap *infracfg, struct regmap *smi_common);
-> +int mtk_scpsys_ext_clear_bus_protection(const struct bus_prot *bp_table,
-> +       struct regmap *infracfg, struct regmap *smi_common);
-> +
-> +#endif /* __SOC_MEDIATEK_SCPSYS_EXT_H */
-> --
-> 2.18.0
->
+TGUgbHVuLiAxMCBkw6ljLiAyMDE4IMOgIDEyOjEwLCBCZW5qYW1pbiBHYWlnbmFyZAo8YmVuamFt
+aW4uZ2FpZ25hcmRAbGluYXJvLm9yZz4gYSDDqWNyaXQgOgo+Cj4gTGUgbHVuLiAxMCBkw6ljLiAy
+MDE4IMOgIDExOjI0LCBUaGllcnJ5IFJlZGluZwo+IDx0aGllcnJ5LnJlZGluZ0BnbWFpbC5jb20+
+IGEgw6ljcml0IDoKPiA+Cj4gPiBPbiBNb24sIERlYyAxMCwgMjAxOCBhdCAxMToxMTozM0FNICsw
+MTAwLCBEYW5pZWwgVmV0dGVyIHdyb3RlOgo+ID4gPiBIYXZpbmcgdGhlIHByb2JlIGhlbHBlciBz
+dHVmZiAod2hpY2ggcHJldHR5IG11Y2ggZXZlcnlvbmUgbmVlZHMpIGluCj4gPiA+IHRoZSBkcm1f
+Y3J0Y19oZWxwZXIuaCBmaWxlICh3aGljaCBhdG9taWMgZHJpdmVycyBzaG91bGQgbmV2ZXIgbmVl
+ZCkgaXMKPiA+ID4gY29uZnVzaW5nLiBTcGxpdCB0aGVtIG91dC4KPiA+ID4KPiA+ID4gVG8gbWFr
+ZSBzdXJlIEkgYWN0dWFsbHkgYWNoaWV2ZWQgdGhlIGdvYWwgaGVyZSBJIHdlbnQgdGhyb3VnaCBh
+bGwKPiA+ID4gZHJpdmVycy4gQW5kIGluZGVlZCwgYWxsIGF0b21pYyBkcml2ZXJzIGFyZSBub3cg
+ZnJlZSBvZgo+ID4gPiBkcm1fY3J0Y19oZWxwZXIuaCBpbmNsdWRlcy4KPiA+ID4KPgo+IEkgaGF2
+ZSBkaWZmaWN1bHRpZXMgdG8gYXBwbHkgdGhpcyB3aXRoIGdpdCBvbiB0b3Agb2YgZHJtLW1pc2Mt
+bmV4dC4KPiBJdCBpcyBiZWNhdXNlIG9mIHRoYXQgSSBnb3QgZXJyb3JzIChlbmNvZGVyIGFuZCBj
+b25uZWN0b3IgdHlwZXMgbm90Cj4gZm91bmQpIHdoaWxlIGNvbXBpbGluZyBhZHY3NTExX2F1ZGlv
+LmMgYW5kIGV4eW5vc19kcC5jID8KPgoKTmFjayBvbiB0aGlzIHBhdGNoIGJlY2F1c2UgaXQgYnJl
+YWsgY29tcGlsaW5nIGF0IGxlYXN0IG9uIHN0aSBkcml2ZXIuCmRybV9wcm9iZV9oZWxwZXIuaCBk
+b2Vzbid0IGJyaW5nIHRoZSBzYW1lIGluY2x1ZGVzIHRoYW4gZHJtX2NydGNfaGVscGVyLmg6CiNp
+bmNsdWRlIDxkcm0vZHJtX2NydGMuaD4KI2luY2x1ZGUgPGRybS9kcm1fbW9kZXNldF9oZWxwZXJf
+dnRhYmxlcy5oPgojaW5jbHVkZSA8ZHJtL2RybV9tb2Rlc2V0X2hlbHBlci5oPgpzbyBzb21lIHR5
+cGVzLCBzdHJ1Y3R1cmVzIGFuZCBmdW5jdGlvbnMgcHJvcHRvdHlwZXMgYXJlIG1pc3Npbmcgd2hp
+bGUgY29tcGlsaW5nLgoKCj4gQmVuamFtaW4KPiA+ID4gU2lnbmVkLW9mZi1ieTogRGFuaWVsIFZl
+dHRlciA8ZGFuaWVsLnZldHRlckBpbnRlbC5jb20+Cj4gPiA+IENjOiBsaW51eC1hcm0ta2VybmVs
+QGxpc3RzLmluZnJhZGVhZC5vcmcKPiA+ID4gQ2M6IHZpcnR1YWxpemF0aW9uQGxpc3RzLmxpbnV4
+LWZvdW5kYXRpb24ub3JnCj4gPiA+IENjOiBldG5hdml2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+
+ID4gPiBDYzogbGludXgtc2Ftc3VuZy1zb2NAdmdlci5rZXJuZWwub3JnCj4gPiA+IENjOiBpbnRl
+bC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gPiA+IENjOiBsaW51eC1tZWRpYXRla0BsaXN0
+cy5pbmZyYWRlYWQub3JnCj4gPiA+IENjOiBsaW51eC1hbWxvZ2ljQGxpc3RzLmluZnJhZGVhZC5v
+cmcKPiA+ID4gQ2M6IGxpbnV4LWFybS1tc21Admdlci5rZXJuZWwub3JnCj4gPiA+IENjOiBmcmVl
+ZHJlbm9AbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gPiA+IENjOiBub3V2ZWF1QGxpc3RzLmZyZWVk
+ZXNrdG9wLm9yZwo+ID4gPiBDYzogc3BpY2UtZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4g
+PiA+IENjOiBhbWQtZ2Z4QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+ID4gPiBDYzogbGludXgtcmVu
+ZXNhcy1zb2NAdmdlci5rZXJuZWwub3JnCj4gPiA+IENjOiBsaW51eC1yb2NrY2hpcEBsaXN0cy5p
+bmZyYWRlYWQub3JnCj4gPiA+IENjOiBsaW51eC1zdG0zMkBzdC1tZC1tYWlsbWFuLnN0b3JtcmVw
+bHkuY29tCj4gPiA+IENjOiBsaW51eC10ZWdyYUB2Z2VyLmtlcm5lbC5vcmcKPiA+ID4gQ2M6IHhl
+bi1kZXZlbEBsaXN0cy54ZW4ub3JnCj4gPiA+IC0tLQo+ID4gPiAgLi4uL2dwdS9kcm0vYW1kL2Ft
+ZGdwdS9hbWRncHVfY29ubmVjdG9ycy5jICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2Ry
+bS9hbWQvYW1kZ3B1L2FtZGdwdV9kZXZpY2UuYyAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dw
+dS9kcm0vYW1kL2FtZGdwdS9hbWRncHVfZHJ2LmMgICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVy
+cy9ncHUvZHJtL2FtZC9hbWRncHUvYW1kZ3B1X21vZGUuaCAgICAgIHwgIDEgKwo+ID4gPiAgLi4u
+L2FtZC9kaXNwbGF5L2FtZGdwdV9kbS9hbWRncHVfZG1faGVscGVycy5jIHwgIDIgKy0KPiA+ID4g
+IC4uLi9hbWQvZGlzcGxheS9hbWRncHVfZG0vYW1kZ3B1X2RtX3BwX3NtdS5jICB8ICAyICstCj4g
+PiA+ICAuLi4vZGlzcGxheS9hbWRncHVfZG0vYW1kZ3B1X2RtX3NlcnZpY2VzLmMgICAgfCAgMiAr
+LQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2FyYy9hcmNwZ3VfY3J0Yy5jICAgICAgICAgICAgIHwg
+IDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9hcmMvYXJjcGd1X2Rydi5jICAgICAgICAgICAg
+ICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vYXJjL2FyY3BndV9zaW0uYyAgICAgICAg
+ICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2FybS9oZGxjZF9jcnRjLmMgICAg
+ICAgICAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9hcm0vaGRsY2RfZHJ2LmMg
+ICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vYXJtL21hbGlkcF9j
+cnRjLmMgICAgICAgICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2FybS9tYWxp
+ZHBfZHJ2LmMgICAgICAgICAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9hcm0v
+bWFsaWRwX213LmMgICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0v
+YXJtYWRhL2FybWFkYV81MTAuYyAgICAgICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUv
+ZHJtL2FybWFkYS9hcm1hZGFfY3J0Yy5jICAgICAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMv
+Z3B1L2RybS9hcm1hZGEvYXJtYWRhX2Rydi5jICAgICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2
+ZXJzL2dwdS9kcm0vYXJtYWRhL2FybWFkYV9mYi5jICAgICAgICAgICAgfCAgMiArLQo+ID4gPiAg
+ZHJpdmVycy9ncHUvZHJtL2FzdC9hc3RfZHJ2LmMgICAgICAgICAgICAgICAgIHwgIDEgKwo+ID4g
+PiAgZHJpdmVycy9ncHUvZHJtL2FzdC9hc3RfbW9kZS5jICAgICAgICAgICAgICAgIHwgIDEgKwo+
+ID4gPiAgLi4uL2dwdS9kcm0vYXRtZWwtaGxjZGMvYXRtZWxfaGxjZGNfY3J0Yy5jICAgIHwgIDIg
+Ky0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9hdG1lbC1obGNkYy9hdG1lbF9obGNkY19kYy5oICB8
+ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vYm9jaHMvYm9jaHNfZHJ2LmMgICAgICAgICAg
+ICAgfCAgMSArCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vYm9jaHMvYm9jaHNfa21zLmMgICAgICAg
+ICAgICAgfCAgMSArCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2Fkdjc1MTEvYWR2NzUx
+MS5oICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC1h
+bng3OHh4LmMgICAgIHwgIDMgKy0KPiA+ID4gIC4uLi9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxv
+Z2l4X2RwX2NvcmUuYyAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2Nk
+bnMtZHNpLmMgICAgICAgICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRn
+ZS9kdW1iLXZnYS1kYWMuYyAgICAgICAgIHwgIDIgKy0KPiA+ID4gIC4uLi9icmlkZ2UvbWVnYWNo
+aXBzLXN0ZHB4eHh4LWdlLWI4NTB2My1mdy5jICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9k
+cm0vYnJpZGdlL254cC1wdG4zNDYwLmMgICAgICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9n
+cHUvZHJtL2JyaWRnZS9wYW5lbC5jICAgICAgICAgICAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZl
+cnMvZ3B1L2RybS9icmlkZ2UvcGFyYWRlLXBzODYyMi5jICAgICAgICB8ICAyICstCj4gPiA+ICBk
+cml2ZXJzL2dwdS9kcm0vYnJpZGdlL3NpaTkwMnguYyAgICAgICAgICAgICAgfCAgMiArLQo+ID4g
+PiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMgICAgIHwgIDIgKy0K
+PiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYyB8ICAy
+ICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3RjMzU4NzY0LmMgICAgICAgICAgICAg
+fCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS90YzM1ODc2Ny5jICAgICAgICAg
+ICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvdGktc242NWRzaTg2LmMg
+ICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3RpLXRmcDQxMC5j
+ICAgICAgICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2NpcnJ1cy9jaXJydXNf
+ZHJ2LmMgICAgICAgICAgIHwgIDEgKwo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2NpcnJ1cy9jaXJy
+dXNfbW9kZS5jICAgICAgICAgIHwgIDEgKwo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2RybV9hdG9t
+aWNfaGVscGVyLmMgICAgICAgICAgIHwgIDEgLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2RybV9k
+cF9tc3RfdG9wb2xvZ3kuYyAgICAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9k
+cm1fbW9kZXNldF9oZWxwZXIuYyAgICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9k
+cm0vZHJtX3Byb2JlX2hlbHBlci5jICAgICAgICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9n
+cHUvZHJtL2RybV9zaW1wbGVfa21zX2hlbHBlci5jICAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZl
+cnMvZ3B1L2RybS9ldG5hdml2L2V0bmF2aXZfZHJ2LmggICAgICAgICB8ICAxIC0KPiA+ID4gIGRy
+aXZlcnMvZ3B1L2RybS9leHlub3MvZXh5bm9zX2RwLmMgICAgICAgICAgICB8ICAyICstCj4gPiA+
+ICBkcml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4eW5vc19kcm1fY3J0Yy5jICAgICAgfCAgMiArLQo+
+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2V4eW5vcy9leHlub3NfZHJtX2RwaS5jICAgICAgIHwgIDIg
+Ky0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9leHlub3MvZXh5bm9zX2RybV9kcnYuYyAgICAgICB8
+ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4eW5vc19kcm1fZHNpLmMgICAg
+ICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2V4eW5vcy9leHlub3NfZHJtX2ZiLmMg
+ICAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9leHlub3MvZXh5bm9zX2RybV9m
+YmRldi5jICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4eW5vc19k
+cm1fdmlkaS5jICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2V4eW5vcy9leHlu
+b3NfaGRtaS5jICAgICAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9mc2wtZGN1
+L2ZzbF9kY3VfZHJtX2NydGMuYyAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vZnNs
+LWRjdS9mc2xfZGN1X2RybV9kcnYuYyAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJt
+L2ZzbC1kY3UvZnNsX2RjdV9kcm1fa21zLmMgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1
+L2RybS9mc2wtZGN1L2ZzbF9kY3VfZHJtX3BsYW5lLmMgICB8ICAyICstCj4gPiA+ICBkcml2ZXJz
+L2dwdS9kcm0vZnNsLWRjdS9mc2xfZGN1X2RybV9yZ2IuYyAgICAgfCAgMiArLQo+ID4gPiAgZHJp
+dmVycy9ncHUvZHJtL2dtYTUwMC9wc2JfaW50ZWxfZHJ2LmggICAgICAgIHwgIDEgKwo+ID4gPiAg
+Li4uL2dwdS9kcm0vaGlzaWxpY29uL2hpYm1jL2hpYm1jX2RybV9kZS5jICAgIHwgIDIgKy0KPiA+
+ID4gIC4uLi9ncHUvZHJtL2hpc2lsaWNvbi9oaWJtYy9oaWJtY19kcm1fZHJ2LmMgICB8ICAyICst
+Cj4gPiA+ICAuLi4vZ3B1L2RybS9oaXNpbGljb24vaGlibWMvaGlibWNfZHJtX2ZiZGV2LmMgfCAg
+MiArLQo+ID4gPiAgLi4uL2dwdS9kcm0vaGlzaWxpY29uL2hpYm1jL2hpYm1jX2RybV92ZGFjLmMg
+IHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9oaXNpbGljb24va2lyaW4vZHdfZHJtX2Rz
+aS5jICB8ICAyICstCj4gPiA+ICAuLi4vZ3B1L2RybS9oaXNpbGljb24va2lyaW4va2lyaW5fZHJt
+X2FkZS5jICAgfCAgMiArLQo+ID4gPiAgLi4uL2dwdS9kcm0vaGlzaWxpY29uL2tpcmluL2tpcmlu
+X2RybV9kcnYuYyAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9pMmMvY2g3MDA2X3By
+aXYuaCAgICAgICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vaTJjL3NpbDE2
+NF9kcnYuYyAgICAgICAgICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2kyYy90
+ZGE5OTh4X2Rydi5jICAgICAgICAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9p
+OTE1L2k5MTVfZHJ2LmMgICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9k
+cm0vaTkxNS9pbnRlbF9jcnQuYyAgICAgICAgICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9n
+cHUvZHJtL2k5MTUvaW50ZWxfZGlzcGxheS5jICAgICAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZl
+cnMvZ3B1L2RybS9pOTE1L2ludGVsX2RwLmMgICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ICBk
+cml2ZXJzL2dwdS9kcm0vaTkxNS9pbnRlbF9kcF9tc3QuYyAgICAgICAgICAgfCAgMiArLQo+ID4g
+PiAgZHJpdmVycy9ncHUvZHJtL2k5MTUvaW50ZWxfZHJ2LmggICAgICAgICAgICAgIHwgIDIgKy0K
+PiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9pbXgvZHdfaGRtaS1pbXguYyAgICAgICAgICAgICB8ICAy
+ICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vaW14L2lteC1kcm0tY29yZS5jICAgICAgICAgICAg
+fCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2lteC9pbXgtbGRiLmMgICAgICAgICAgICAg
+ICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9pbXgvaW14LXR2ZS5jICAgICAgICAg
+ICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vaW14L2lwdXYzLWNydGMuYyAg
+ICAgICAgICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2lteC9wYXJhbGxlbC1k
+aXNwbGF5LmMgICAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
+dGtfZHBpLmMgICAgICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RybV9jcnRjLmMgICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19kcm1fZHJ2LmMgICAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfZHJtX2ZiLmMgICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jICAgICAgICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMgICAgICAgICAgIHwgIDIgKy0KPiA+ID4gIGRy
+aXZlcnMvZ3B1L2RybS9tZXNvbi9tZXNvbl9jcnRjLmMgICAgICAgICAgICB8ICAyICstCj4gPiA+
+ICBkcml2ZXJzL2dwdS9kcm0vbWVzb24vbWVzb25fZHJ2LmMgICAgICAgICAgICAgfCAgMiArLQo+
+ID4gPiAgZHJpdmVycy9ncHUvZHJtL21lc29uL21lc29uX2R3X2hkbWkuYyAgICAgICAgIHwgIDIg
+Ky0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZXNvbi9tZXNvbl92ZW5jX2N2YnMuYyAgICAgICB8
+ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWdhZzIwMC9tZ2FnMjAwX21vZGUuYyAgICAg
+ICAgfCAgMSArCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vbXNtL2Rpc3AvZHB1MS9kcHVfY3J0Yy5j
+ICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL21zbS9kaXNwL2RwdTEvZHB1X2Vu
+Y29kZXIuYyAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9tc20vZGlzcC9tZHA0L21k
+cDRfY3J0Yy5jICAgICB8ICAyICstCj4gPiA+ICAuLi4vZ3B1L2RybS9tc20vZGlzcC9tZHA0L21k
+cDRfZHNpX2VuY29kZXIuYyAgfCAgMiArLQo+ID4gPiAgLi4uL2dwdS9kcm0vbXNtL2Rpc3AvbWRw
+NC9tZHA0X2R0dl9lbmNvZGVyLmMgIHwgIDIgKy0KPiA+ID4gIC4uLi9ncHUvZHJtL21zbS9kaXNw
+L21kcDQvbWRwNF9sY2RjX2VuY29kZXIuYyB8ICAyICstCj4gPiA+ICAuLi4vZ3B1L2RybS9tc20v
+ZGlzcC9tZHA1L21kcDVfY21kX2VuY29kZXIuYyAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUv
+ZHJtL21zbS9kaXNwL21kcDUvbWRwNV9jcnRjLmMgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMv
+Z3B1L2RybS9tc20vZGlzcC9tZHA1L21kcDVfZW5jb2Rlci5jICB8ICAyICstCj4gPiA+ICBkcml2
+ZXJzL2dwdS9kcm0vbXNtL21zbV9kcnYuaCAgICAgICAgICAgICAgICAgfCAgMiArLQo+ID4gPiAg
+ZHJpdmVycy9ncHUvZHJtL21zbS9tc21fZmIuYyAgICAgICAgICAgICAgICAgIHwgIDIgKy0KPiA+
+ID4gIGRyaXZlcnMvZ3B1L2RybS9teHNmYi9teHNmYl9jcnRjLmMgICAgICAgICAgICB8ICAyICst
+Cj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vbXhzZmIvbXhzZmJfZHJ2LmMgICAgICAgICAgICAgfCAg
+MiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL214c2ZiL214c2ZiX291dC5jICAgICAgICAgICAg
+IHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9ub3V2ZWF1L2Rpc3BudjA0L3R2bnYxNy5j
+ICAgICB8ICAxICsKPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9ub3V2ZWF1L2Rpc3BudjUwL2Rpc3Au
+YyAgICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vbm91dmVhdS9ub3V2ZWF1X2Nv
+bm5lY3Rvci5jICAgfCAgMSArCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vbm91dmVhdS9ub3V2ZWF1
+X2Rpc3BsYXkuYyAgICAgfCAgMSArCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vb21hcGRybS9vbWFw
+X2Nvbm5lY3Rvci5jICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL29tYXBkcm0v
+b21hcF9jcnRjLmMgICAgICAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9vbWFw
+ZHJtL29tYXBfZHJ2LmMgICAgICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0v
+b21hcGRybS9vbWFwX2Rydi5oICAgICAgICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUv
+ZHJtL29tYXBkcm0vb21hcF9lbmNvZGVyLmMgICAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMv
+Z3B1L2RybS9vbWFwZHJtL29tYXBfZmIuYyAgICAgICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2
+ZXJzL2dwdS9kcm0vcGwxMTEvcGwxMTFfZHJ2LmMgICAgICAgICAgICAgfCAgMiArLQo+ID4gPiAg
+ZHJpdmVycy9ncHUvZHJtL3F4bC9xeGxfZGlzcGxheS5jICAgICAgICAgICAgIHwgIDIgKy0KPiA+
+ID4gIGRyaXZlcnMvZ3B1L2RybS9xeGwvcXhsX2Rydi5jICAgICAgICAgICAgICAgICB8ICAzICst
+Cj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vcXhsL3F4bF9mYi5jICAgICAgICAgICAgICAgICAgfCAg
+MiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3F4bC9xeGxfa21zLmMgICAgICAgICAgICAgICAg
+IHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yYWRlb24vcmFkZW9uX2FjcGkuYyAgICAg
+ICAgICB8ICAxICsKPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yYWRlb24vcmFkZW9uX2Nvbm5lY3Rv
+cnMuYyAgICB8ICAxICsKPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yYWRlb24vcmFkZW9uX2Rldmlj
+ZS5jICAgICAgICB8ICAxICsKPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yYWRlb24vcmFkZW9uX2Rp
+c3BsYXkuYyAgICAgICB8ICAxICsKPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yYWRlb24vcmFkZW9u
+X2RwX21zdC5jICAgICAgICB8ICAxICsKPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yYWRlb24vcmFk
+ZW9uX2Rydi5jICAgICAgICAgICB8ICAxICsKPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yYWRlb24v
+cmFkZW9uX2lycV9rbXMuYyAgICAgICB8ICAxICsKPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yY2Fy
+LWR1L3JjYXJfZHVfY3J0Yy5jICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0v
+cmNhci1kdS9yY2FyX2R1X2Rydi5jICAgICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUv
+ZHJtL3JjYXItZHUvcmNhcl9kdV9lbmNvZGVyLmMgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMv
+Z3B1L2RybS9yY2FyLWR1L3JjYXJfZHVfa21zLmMgICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2
+ZXJzL2dwdS9kcm0vcmNhci1kdS9yY2FyX2R1X3BsYW5lLmMgICAgICAgfCAgMiArLQo+ID4gPiAg
+ZHJpdmVycy9ncHUvZHJtL3JjYXItZHUvcmNhcl9kdV92c3AuYyAgICAgICAgIHwgIDIgKy0KPiA+
+ID4gIGRyaXZlcnMvZ3B1L2RybS9yY2FyLWR1L3JjYXJfbHZkcy5jICAgICAgICAgICB8ICAyICst
+Cj4gPiA+ICAuLi4vZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jICAgfCAg
+MiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMgICAgICAg
+IHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5oICAg
+ICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2Nr
+Y2hpcC5jICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2lubm9faGRt
+aS5jICAgICAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9kcm1fZHJ2LmMgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+cm9ja2NoaXBfZHJtX2ZiLmMgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV9mYmRldi5jIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fcHNyLmMgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYyAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9yZ2IuYyAgICAgICB8ICAyICstCj4gPiA+ICBk
+cml2ZXJzL2dwdS9kcm0vc3RpL3N0aV9jcnRjLmMgICAgICAgICAgICAgICAgfCAgMiArLQo+ID4g
+PiAgZHJpdmVycy9ncHUvZHJtL3N0aS9zdGlfZHJ2LmMgICAgICAgICAgICAgICAgIHwgIDIgKy0K
+PiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9zdGkvc3RpX2R2by5jICAgICAgICAgICAgICAgICB8ICAy
+ICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vc3RpL3N0aV9oZGEuYyAgICAgICAgICAgICAgICAg
+fCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3N0aS9zdGlfaGRtaS5jICAgICAgICAgICAg
+ICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9zdGkvc3RpX3R2b3V0LmMgICAgICAg
+ICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vc3RtL2Rydi5jICAgICAgICAg
+ICAgICAgICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3N0bS9sdGRjLmMgICAg
+ICAgICAgICAgICAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9zdW40aS9zdW40
+aV9iYWNrZW5kLmMgICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vc3VuNGkv
+c3VuNGlfY3J0Yy5jICAgICAgICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3N1
+bjRpL3N1bjRpX2Rydi5jICAgICAgICAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2Ry
+bS9zdW40aS9zdW40aV9oZG1pX2VuYy5jICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dw
+dS9kcm0vc3VuNGkvc3VuNGlfbHZkcy5jICAgICAgICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVy
+cy9ncHUvZHJtL3N1bjRpL3N1bjRpX3JnYi5jICAgICAgICAgICAgIHwgIDIgKy0KPiA+ID4gIGRy
+aXZlcnMvZ3B1L2RybS9zdW40aS9zdW40aV90Y29uLmMgICAgICAgICAgICB8ICAyICstCj4gPiA+
+ICBkcml2ZXJzL2dwdS9kcm0vc3VuNGkvc3VuNGlfdHYuYyAgICAgICAgICAgICAgfCAgMiArLQo+
+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3N1bjRpL3N1bjZpX21pcGlfZHNpLmMgICAgICAgIHwgIDIg
+Ky0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9zdW40aS9zdW44aV9kd19oZG1pLmMgICAgICAgICB8
+ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vc3VuNGkvc3VuOGlfbWl4ZXIuYyAgICAgICAg
+ICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3N1bjRpL3N1bjhpX3VpX2xheWVyLmMg
+ICAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9zdW40aS9zdW44aV92aV9sYXll
+ci5jICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vdGVncmEvZHJtLmggICAg
+ICAgICAgICAgICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3RlZ3JhL2hkbWku
+YyAgICAgICAgICAgICAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS90ZWdyYS9o
+dWIuYyAgICAgICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vdGlu
+eWRybS9jb3JlL3Rpbnlkcm0tY29yZS5jICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJt
+L3Rpbnlkcm0vY29yZS90aW55ZHJtLXBpcGUuYyAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1
+L2RybS90dmUyMDAvdHZlMjAwX2Rydi5jICAgICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJz
+L2dwdS9kcm0vdWRsL3VkbF9jb25uZWN0b3IuYyAgICAgICAgICAgfCAgMSArCj4gPiA+ICBkcml2
+ZXJzL2dwdS9kcm0vdWRsL3VkbF9kcnYuYyAgICAgICAgICAgICAgICAgfCAgMSArCj4gPiA+ICBk
+cml2ZXJzL2dwdS9kcm0vdWRsL3VkbF9tYWluLmMgICAgICAgICAgICAgICAgfCAgMSArCj4gPiA+
+ICBkcml2ZXJzL2dwdS9kcm0vdmM0L3ZjNF9jcnRjLmMgICAgICAgICAgICAgICAgfCAgMiArLQo+
+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3ZjNC92YzRfZHBpLmMgICAgICAgICAgICAgICAgIHwgIDIg
+Ky0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS92YzQvdmM0X2RzaS5jICAgICAgICAgICAgICAgICB8
+ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vdmM0L3ZjNF9oZG1pLmMgICAgICAgICAgICAg
+ICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3ZjNC92YzRfa21zLmMgICAgICAgICAg
+ICAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS92YzQvdmM0X3R4cC5jICAgICAg
+ICAgICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vdmM0L3ZjNF92ZWMuYyAg
+ICAgICAgICAgICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3ZpcnRpby92aXJ0
+Z3B1X2Rpc3BsYXkuYyAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS92aXJ0aW8v
+dmlydGdwdV9kcnYuaCAgICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vdmtt
+cy92a21zX2NydGMuYyAgICAgICAgICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJt
+L3ZrbXMvdmttc19kcnYuYyAgICAgICAgICAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1
+L2RybS92a21zL3ZrbXNfb3V0cHV0LmMgICAgICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJz
+L2dwdS9kcm0vdm13Z2Z4L3Ztd2dmeF9rbXMuaCAgICAgICAgICAgfCAgMiArLQo+ID4gPiAgZHJp
+dmVycy9ncHUvZHJtL3hlbi94ZW5fZHJtX2Zyb250LmMgICAgICAgICAgIHwgIDIgKy0KPiA+ID4g
+IGRyaXZlcnMvZ3B1L2RybS94ZW4veGVuX2RybV9mcm9udF9jb25uLmMgICAgICB8ICAyICstCj4g
+PiA+ICBkcml2ZXJzL2dwdS9kcm0veGVuL3hlbl9kcm1fZnJvbnRfZ2VtLmMgICAgICAgfCAgMiAr
+LQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3hlbi94ZW5fZHJtX2Zyb250X2ttcy5jICAgICAgIHwg
+IDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS96dGUvenhfZHJtX2Rydi5jICAgICAgICAgICAg
+ICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0venRlL3p4X2hkbWkuYyAgICAgICAgICAg
+ICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3p0ZS96eF90dmVuYy5jICAgICAg
+ICAgICAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS96dGUvenhfdmdhLmMgICAg
+ICAgICAgICAgICAgICB8ICAyICstCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0venRlL3p4X3ZvdS5j
+ICAgICAgICAgICAgICAgICAgfCAgMiArLQo+ID4gPiAgZHJpdmVycy9zdGFnaW5nL3Zib3h2aWRl
+by92Ym94X2lycS5jICAgICAgICAgIHwgIDIgKy0KPiA+ID4gIGRyaXZlcnMvc3RhZ2luZy92Ym94
+dmlkZW8vdmJveF9tb2RlLmMgICAgICAgICB8ICAyICstCj4gPiA+ICBpbmNsdWRlL2RybS9kcm1f
+Y3J0Y19oZWxwZXIuaCAgICAgICAgICAgICAgICAgfCAxNiAtLS0tLS0KPiA+ID4gIGluY2x1ZGUv
+ZHJtL2RybV9wcm9iZV9oZWxwZXIuaCAgICAgICAgICAgICAgICB8IDUwICsrKysrKysrKysrKysr
+KysrKysKPiA+ID4gIDIwOCBmaWxlcyBjaGFuZ2VkLCAyNTYgaW5zZXJ0aW9ucygrKSwgMjAwIGRl
+bGV0aW9ucygtKQo+ID4gPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGluY2x1ZGUvZHJtL2RybV9wcm9i
+ZV9oZWxwZXIuaAo+ID4KPiA+IExvb2tzIGdvb2QgdG8gbWU6Cj4gPgo+ID4gQWNrZWQtYnk6IFRo
+aWVycnkgUmVkaW5nIDx0cmVkaW5nQG52aWRpYS5jb20+Cj4gPiBfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+ID4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+
+ID4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+ID4gaHR0cHM6Ly9saXN0cy5mcmVl
+ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwKCgoKLS0gCkJlbmphbWluIEdh
+aWduYXJkCgpHcmFwaGljIFN0dWR5IEdyb3VwCgpMaW5hcm8ub3JnIOKUgiBPcGVuIHNvdXJjZSBz
+b2Z0d2FyZSBmb3IgQVJNIFNvQ3MKCkZvbGxvdyBMaW5hcm86IEZhY2Vib29rIHwgVHdpdHRlciB8
+IEJsb2cKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KRnJl
+ZWRyZW5vIG1haWxpbmcgbGlzdApGcmVlZHJlbm9AbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZnJlZWRyZW5vCg==
