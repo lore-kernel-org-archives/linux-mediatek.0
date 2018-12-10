@@ -1,51 +1,97 @@
-From: YueHaibing <yuehaibing@huawei.com>
-Subject: Re: [PATCH -next] input: keyboard: remove duplicated include from
- mtk-pmic-keys.c
-Date: Mon, 10 Dec 2018 15:16:00 +0800
-Message-ID: <4f1a67e5-b735-f8bd-88b8-3a1ca590eba2@huawei.com>
-References: <20181209063440.27820-1-yuehaibing@huawei.com>
- <20181210061557.GL26661@dell>
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+Subject: [PATCH v3 03/12] clk: mediatek: add configurable pcwibits and fmin to mtk_pll_data
+Date: Mon, 10 Dec 2018 15:32:31 +0800
+Message-ID: <20181210073240.32278-5-weiyi.lu@mediatek.com>
+References: <20181210073240.32278-1-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181210061557.GL26661@dell>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Lee Jones <lee.jones@linaro.org>
-Cc: dmitry.torokhov@gmail.com, matthias.bgg@gmail.com, chen.zhong@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org
+Content-Type: text/plain
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <20181210073240.32278-1-weiyi.lu@mediatek.com>
+Sender: stable-owner@vger.kernel.org
+To: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>, Owen Chen <owen.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 2018/12/10 14:15, Lee Jones wrote:
-> On Sun, 09 Dec 2018, YueHaibing wrote:
-> 
->> Remove duplicated include.
->>
->> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
->> ---
->>  drivers/input/keyboard/mtk-pmic-keys.c | 1 -
->>  1 file changed, 1 deletion(-)
->>
->> diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
->> index 02c67a1..5027ebb 100644
->> --- a/drivers/input/keyboard/mtk-pmic-keys.c
->> +++ b/drivers/input/keyboard/mtk-pmic-keys.c
->> @@ -19,7 +19,6 @@
->>  #include <linux/input.h>
->>  #include <linux/interrupt.h>
->>  #include <linux/platform_device.h>
->> -#include <linux/kernel.h>
->>  #include <linux/of.h>
->>  #include <linux/of_device.h>
->>  #include <linux/regmap.h>
-> 
-> You are removing the wrong one.
+From: Owen Chen <owen.chen@mediatek.com>
 
-No, linux/kernel.h is a duplicated include indeed.
+1. pcwibits: The integer bits of pcw for plls is extend to 8 bits,
+   add a variable to indicate this change and
+   backward-compatible.
+2. fmin: The pll freqency lower-bound is vary from 1GMhz to
+   1.5Ghz, add a variable to indicate platform-dependent.
 
-> 
-> Please convert this patch's main intent to alphabetise the header
-> files.  Then you can remove any obvious duplicates.
+Signed-off-by: Owen Chen <owen.chen@mediatek.com>
+Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+Acked-by: Sean Wang <sean.wang@kernel.org>
+---
+ drivers/clk/mediatek/clk-mtk.h |  2 ++
+ drivers/clk/mediatek/clk-pll.c | 12 +++++++++---
+ 2 files changed, 11 insertions(+), 3 deletions(-)
 
-I can alphabetize it in v2 if need be.
-
-> 
+diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+index f83c2bbb677e..11b5517903d0 100644
+--- a/drivers/clk/mediatek/clk-mtk.h
++++ b/drivers/clk/mediatek/clk-mtk.h
+@@ -214,8 +214,10 @@ struct mtk_pll_data {
+ 	unsigned int flags;
+ 	const struct clk_ops *ops;
+ 	u32 rst_bar_mask;
++	unsigned long fmin;
+ 	unsigned long fmax;
+ 	int pcwbits;
++	int pcwibits;
+ 	uint32_t pcw_reg;
+ 	int pcw_shift;
+ 	const struct mtk_pll_div_table *div_table;
+diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
+index f0ff5f535c7e..81400601f107 100644
+--- a/drivers/clk/mediatek/clk-pll.c
++++ b/drivers/clk/mediatek/clk-pll.c
+@@ -32,6 +32,8 @@
+ #define AUDPLL_TUNER_EN		BIT(31)
+ 
+ #define POSTDIV_MASK		0x7
++
++/* default 7 bits integer, can be overridden with pcwibits. */
+ #define INTEGER_BITS		7
+ 
+ /*
+@@ -69,11 +71,13 @@ static unsigned long __mtk_pll_recalc_rate(struct mtk_clk_pll *pll, u32 fin,
+ {
+ 	int pcwbits = pll->data->pcwbits;
+ 	int pcwfbits;
++	int ibits;
+ 	u64 vco;
+ 	u8 c = 0;
+ 
+ 	/* The fractional part of the PLL divider. */
+-	pcwfbits = pcwbits > INTEGER_BITS ? pcwbits - INTEGER_BITS : 0;
++	ibits = pll->data->pcwibits ? pll->data->pcwibits : INTEGER_BITS;
++	pcwfbits = pcwbits > ibits ? pcwbits - ibits : 0;
+ 
+ 	vco = (u64)fin * pcw;
+ 
+@@ -167,9 +171,10 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
+ static void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
+ 		u32 freq, u32 fin)
+ {
+-	unsigned long fmin = 1000 * MHZ;
++	unsigned long fmin = pll->data->fmin ? pll->data->fmin : (1000 * MHZ);
+ 	const struct mtk_pll_div_table *div_table = pll->data->div_table;
+ 	u64 _pcw;
++	int ibits;
+ 	u32 val;
+ 
+ 	if (freq > pll->data->fmax)
+@@ -193,7 +198,8 @@ static void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
+ 	}
+ 
+ 	/* _pcw = freq * postdiv / fin * 2^pcwfbits */
+-	_pcw = ((u64)freq << val) << (pll->data->pcwbits - INTEGER_BITS);
++	ibits = pll->data->pcwibits ? pll->data->pcwibits : INTEGER_BITS;
++	_pcw = ((u64)freq << val) << (pll->data->pcwbits - ibits);
+ 	do_div(_pcw, fin);
+ 
+ 	*pcw = (u32)_pcw;
+-- 
+2.18.0
