@@ -1,242 +1,178 @@
-From: Zhiyong Tao <zhiyong.tao@mediatek.com>
-Subject: [PATCH] pinctrl: add drive for I2C related pins on MT8183
-Date: Tue, 11 Dec 2018 16:01:23 +0800
-Message-ID: <20181211080123.1397-2-zhiyong.tao@mediatek.com>
-References: <20181211080123.1397-1-zhiyong.tao@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v3] mmc: mediatek: Add MMC_CAP_SDIO_IRQ support
+Date: Tue, 11 Dec 2018 10:29:11 +0100
+Message-ID: <CAPDyKFq2xH2m4JTbOwbh38mqjbwLRNewuYEVyOKCsBAPrUm9Dg@mail.gmail.com>
+References: <1544442233-20303-1-git-send-email-jjian.zhou@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181211080123.1397-1-zhiyong.tao@mediatek.com>
+In-Reply-To: <1544442233-20303-1-git-send-email-jjian.zhou@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, linus.walleij@linaro.org, mark.rutland@arm.com, matthias.bgg@gmail.com
-Cc: srv_heupstream@mediatek.com, liguo.zhang@mediatek.com, eddie.huang@mediatek.com, hongkun.cao@mediatek.com, biao.huang@mediatek.com, hongzhou.yang@mediatek.com, chuanjia.liu@mediatek.com, erin.lo@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, Zhiyong Tao <zhiyong.tao@mediatek.com>
+To: jjian.zhou@mediatek.com
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, srv_heupstream <srv_heupstream@mediatek.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Yong Mao <yong.mao@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch provides the advanced drive for I2C used pins on MT8183.
+On Mon, 10 Dec 2018 at 12:44, Jjian Zhou <jjian.zhou@mediatek.com> wrote:
+>
+> From: jjian zhou <jjian.zhou@mediatek.com>
+>
+> This patch enables support SDIO IRQs. It enables
+> MMC_CAP_SDIO_IRQ & MMC_CAP2_SDIO_IRQ_NOTHREAD
+> and implement the ->ack_sdio_irq callback.
+>
+> Signed-off-by: Jjian Zhou <jjian.zhou@mediatek.com>
+> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+> Signed-off-by: Yong Mao <yong.mao@mediatek.com>
+> ---
+>  drivers/mmc/host/mtk-sd.c | 49 ++++++++++++++++++++++++++++++++++++++++++++---
+>  1 file changed, 46 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index 6334cc7..40a1848 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -1114,6 +1114,7 @@ static void msdc_start_command(struct msdc_host *host,
+>                 struct mmc_request *mrq, struct mmc_command *cmd)
+>  {
+>         u32 rawcmd;
+> +       unsigned long flags;
+>
+>         WARN_ON(host->cmd);
+>         host->cmd = cmd;
+> @@ -1131,7 +1132,10 @@ static void msdc_start_command(struct msdc_host *host,
+>         cmd->error = 0;
+>         rawcmd = msdc_cmd_prepare_raw_cmd(host, mrq, cmd);
+>
+> +       spin_lock_irqsave(&host->lock, flags);
+>         sdr_set_bits(host->base + MSDC_INTEN, cmd_ints_mask);
+> +       spin_unlock_irqrestore(&host->lock, flags);
+> +
 
-Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
----
- drivers/pinctrl/mediatek/pinctrl-mt8183.c        | 50 ++++++++++++++++++++++++
- drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 45 +++++++++++++++++++++
- drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h | 13 ++++++
- drivers/pinctrl/mediatek/pinctrl-paris.c         | 20 ++++++++++
- 4 files changed, 128 insertions(+)
+The above looks like a reasonable change, however does it really
+belong in $subject patch. If so, can you explain why?
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8183.c b/drivers/pinctrl/mediatek/pinctrl-mt8183.c
-index 6262fd3678ea..5244e1b27b1d 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8183.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8183.c
-@@ -472,6 +472,51 @@ static const struct mtk_pin_field_calc mt8183_pin_r1_range[] = {
- 	PIN_FIELD_BASE(133, 133, 8, 0x0D0, 0x10, 13, 1),
- };
- 
-+static const struct mtk_pin_field_calc mt8183_pin_drv_en_dis_range[] = {
-+	PIN_FIELD_BASE(48, 48, 3, 0x0F0, 0x10, 20, 1),
-+	PIN_FIELD_BASE(49, 49, 3, 0x0F0, 0x10, 15, 1),
-+	PIN_FIELD_BASE(50, 50, 4, 0x0F0, 0x10, 12, 1),
-+	PIN_FIELD_BASE(51, 51, 4, 0x0F0, 0x10, 7, 1),
-+	PIN_FIELD_BASE(81, 81, 5, 0x0F0, 0x10, 12, 1),
-+	PIN_FIELD_BASE(82, 82, 5, 0x0F0, 0x10, 9, 1),
-+	PIN_FIELD_BASE(83, 83, 5, 0x0F0, 0x10, 19, 1),
-+	PIN_FIELD_BASE(84, 84, 5, 0x0F0, 0x10, 22, 1),
-+	PIN_FIELD_BASE(103, 103, 6, 0x0F0, 0x10, 24, 1),
-+	PIN_FIELD_BASE(104, 104, 6, 0x0F0, 0x10, 14, 1),
-+	PIN_FIELD_BASE(105, 105, 6, 0x0F0, 0x10, 27, 1),
-+	PIN_FIELD_BASE(106, 106, 6, 0x0F0, 0x10, 17, 1),
-+};
-+
-+static const struct mtk_pin_field_calc mt8183_pin_drv_e0_range[] = {
-+	PIN_FIELD_BASE(48, 48, 3, 0x0F0, 0x10, 21, 1),
-+	PIN_FIELD_BASE(49, 49, 3, 0x0F0, 0x10, 16, 1),
-+	PIN_FIELD_BASE(50, 50, 4, 0x0F0, 0x10, 13, 1),
-+	PIN_FIELD_BASE(51, 51, 4, 0x0F0, 0x10, 8, 1),
-+	PIN_FIELD_BASE(81, 81, 5, 0x0F0, 0x10, 13, 1),
-+	PIN_FIELD_BASE(82, 82, 5, 0x0F0, 0x10, 10, 1),
-+	PIN_FIELD_BASE(83, 83, 5, 0x0F0, 0x10, 20, 1),
-+	PIN_FIELD_BASE(84, 84, 5, 0x0F0, 0x10, 23, 1),
-+	PIN_FIELD_BASE(103, 103, 6, 0x0F0, 0x10, 25, 1),
-+	PIN_FIELD_BASE(104, 104, 6, 0x0F0, 0x10, 15, 1),
-+	PIN_FIELD_BASE(105, 105, 6, 0x0F0, 0x10, 28, 1),
-+	PIN_FIELD_BASE(106, 106, 6, 0x0F0, 0x10, 18, 1),
-+};
-+
-+static const struct mtk_pin_field_calc mt8183_pin_drv_e1_range[] = {
-+	PIN_FIELD_BASE(48, 48, 3, 0x0F0, 0x10, 22, 1),
-+	PIN_FIELD_BASE(49, 49, 3, 0x0F0, 0x10, 17, 1),
-+	PIN_FIELD_BASE(50, 50, 4, 0x0F0, 0x10, 14, 1),
-+	PIN_FIELD_BASE(51, 51, 4, 0x0F0, 0x10, 9, 1),
-+	PIN_FIELD_BASE(81, 81, 5, 0x0F0, 0x10, 14, 1),
-+	PIN_FIELD_BASE(82, 82, 5, 0x0F0, 0x10, 11, 1),
-+	PIN_FIELD_BASE(83, 83, 5, 0x0F0, 0x10, 21, 1),
-+	PIN_FIELD_BASE(84, 84, 5, 0x0F0, 0x10, 24, 1),
-+	PIN_FIELD_BASE(103, 103, 6, 0x0F0, 0x10, 26, 1),
-+	PIN_FIELD_BASE(104, 104, 6, 0x0F0, 0x10, 16, 1),
-+	PIN_FIELD_BASE(105, 105, 6, 0x0F0, 0x10, 29, 1),
-+	PIN_FIELD_BASE(106, 106, 6, 0x0F0, 0x10, 19, 1),
-+};
-+
- static const struct mtk_pin_reg_calc mt8183_reg_cals[PINCTRL_PIN_REG_MAX] = {
- 	[PINCTRL_PIN_REG_MODE] = MTK_RANGE(mt8183_pin_mode_range),
- 	[PINCTRL_PIN_REG_DIR] = MTK_RANGE(mt8183_pin_dir_range),
-@@ -485,6 +530,9 @@ static const struct mtk_pin_reg_calc mt8183_reg_cals[PINCTRL_PIN_REG_MAX] = {
- 	[PINCTRL_PIN_REG_PUPD] = MTK_RANGE(mt8183_pin_pupd_range),
- 	[PINCTRL_PIN_REG_R0] = MTK_RANGE(mt8183_pin_r0_range),
- 	[PINCTRL_PIN_REG_R1] = MTK_RANGE(mt8183_pin_r1_range),
-+	[PINCTRL_PIN_REG_DRV_EN_DIS] = MTK_RANGE(mt8183_pin_drv_en_dis_range),
-+	[PINCTRL_PIN_REG_DRV_E0] = MTK_RANGE(mt8183_pin_drv_e0_range),
-+	[PINCTRL_PIN_REG_DRV_E1] = MTK_RANGE(mt8183_pin_drv_e1_range),
- };
- 
- static const char * const mt8183_pinctrl_register_base_names[] = {
-@@ -517,6 +565,8 @@ static const struct mtk_pin_soc mt8183_data = {
- 	.drive_get = mtk_pinconf_drive_get_rev1,
- 	.adv_pull_get = mtk_pinconf_adv_pull_get,
- 	.adv_pull_set = mtk_pinconf_adv_pull_set,
-+	.adv_drive_get = mtk_pinconf_adv_drive_get,
-+	.adv_drive_set = mtk_pinconf_adv_drive_set,
- };
- 
- static const struct of_device_id mt8183_pinctrl_of_match[] = {
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-index 4a9e0d4c2bbc..da024279ec59 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-@@ -668,3 +668,48 @@ int mtk_pinconf_adv_pull_get(struct mtk_pinctrl *hw,
- 
- 	return 0;
- }
-+
-+int mtk_pinconf_adv_drive_set(struct mtk_pinctrl *hw,
-+			      const struct mtk_pin_desc *desc, bool enable,
-+			      u32 arg)
-+{
-+	int err;
-+
-+	err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_DRV_E0, arg & 1);
-+	if (err)
-+		return 0;
-+
-+	err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_DRV_E1,
-+			       !!(arg & 2));
-+	if (err)
-+		return 0;
-+
-+	arg = enable ? 1 : 0;
-+
-+	err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_DRV_EN_DIS, arg);
-+
-+	return err;
-+}
-+
-+int mtk_pinconf_adv_drive_get(struct mtk_pinctrl *hw,
-+			      const struct mtk_pin_desc *desc, u32 *val)
-+{
-+	u32 en, e0, e1;
-+	int err;
-+
-+	err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DRV_EN_DIS, &en);
-+	if (err)
-+		return err;
-+
-+	err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DRV_E0, &e0);
-+	if (err)
-+		return err;
-+
-+	err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DRV_E1, &e1);
-+	if (err)
-+		return err;
-+
-+	*val = (e0 | e1 << 1 | en << 2) & 0x7;
-+
-+	return 0;
-+}
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-index 6d24522739d9..795a3b10d54e 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-@@ -63,6 +63,9 @@ enum {
- 	PINCTRL_PIN_REG_IES,
- 	PINCTRL_PIN_REG_PULLEN,
- 	PINCTRL_PIN_REG_PULLSEL,
-+	PINCTRL_PIN_REG_DRV_EN_DIS,
-+	PINCTRL_PIN_REG_DRV_E0,
-+	PINCTRL_PIN_REG_DRV_E1,
- 	PINCTRL_PIN_REG_MAX,
- };
- 
-@@ -224,6 +227,11 @@ struct mtk_pin_soc {
- 	int (*adv_pull_get)(struct mtk_pinctrl *hw,
- 			    const struct mtk_pin_desc *desc, bool pullup,
- 			    u32 *val);
-+	int (*adv_drive_set)(struct mtk_pinctrl *hw,
-+			     const struct mtk_pin_desc *desc, bool enable,
-+			     u32 arg);
-+	int (*adv_drive_get)(struct mtk_pinctrl *hw,
-+			     const struct mtk_pin_desc *desc, u32 *val);
- 
- 	/* Specific driver data */
- 	void				*driver_data;
-@@ -287,5 +295,10 @@ int mtk_pinconf_adv_pull_set(struct mtk_pinctrl *hw,
- int mtk_pinconf_adv_pull_get(struct mtk_pinctrl *hw,
- 			     const struct mtk_pin_desc *desc, bool pullup,
- 			     u32 *val);
-+int mtk_pinconf_adv_drive_set(struct mtk_pinctrl *hw,
-+			      const struct mtk_pin_desc *desc, bool enable,
-+			     u32 arg);
-+int mtk_pinconf_adv_drive_get(struct mtk_pinctrl *hw,
-+			      const struct mtk_pin_desc *desc, u32 *val);
- 
- #endif /* __PINCTRL_MTK_COMMON_V2_H */
-diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
-index d2179028f134..ef4ccaa59e55 100644
---- a/drivers/pinctrl/mediatek/pinctrl-paris.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
-@@ -20,12 +20,16 @@
- #define MTK_PIN_CONFIG_RDSEL	(PIN_CONFIG_END + 2)
- #define MTK_PIN_CONFIG_PU_ADV	(PIN_CONFIG_END + 3)
- #define MTK_PIN_CONFIG_PD_ADV	(PIN_CONFIG_END + 4)
-+#define MTK_PIN_CONFIG_DRV_EN_ADV	(PIN_CONFIG_END + 5)
-+#define MTK_PIN_CONFIG_DRV_DIS_ADV	(PIN_CONFIG_END + 6)
- 
- static const struct pinconf_generic_params mtk_custom_bindings[] = {
- 	{"mediatek,tdsel",	MTK_PIN_CONFIG_TDSEL,		0},
- 	{"mediatek,rdsel",	MTK_PIN_CONFIG_RDSEL,		0},
- 	{"mediatek,pull-up-adv", MTK_PIN_CONFIG_PU_ADV,		1},
- 	{"mediatek,pull-down-adv", MTK_PIN_CONFIG_PD_ADV,	1},
-+	{"mediatek,drive-enable-adv", MTK_PIN_CONFIG_DRV_EN_ADV,	2},
-+	{"mediatek,drive-disable-adv", MTK_PIN_CONFIG_DRV_DIS_ADV,	2},
- };
- 
- #ifdef CONFIG_DEBUG_FS
-@@ -34,6 +38,8 @@ static const struct pin_config_item mtk_conf_items[] = {
- 	PCONFDUMP(MTK_PIN_CONFIG_RDSEL, "rdsel", NULL, true),
- 	PCONFDUMP(MTK_PIN_CONFIG_PU_ADV, "pu-adv", NULL, true),
- 	PCONFDUMP(MTK_PIN_CONFIG_PD_ADV, "pd-adv", NULL, true),
-+	PCONFDUMP(MTK_PIN_CONFIG_DRV_EN_ADV, "drive-enable-adv", NULL, true),
-+	PCONFDUMP(MTK_PIN_CONFIG_DRV_DIS_ADV, "drive-disable-adv", NULL, true),
- };
- #endif
- 
-@@ -311,6 +317,20 @@ static int mtk_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
- 			return -ENOTSUPP;
- 		}
- 		break;
-+	case MTK_PIN_CONFIG_DRV_EN_ADV:
-+	case MTK_PIN_CONFIG_DRV_DIS_ADV:
-+		if (hw->soc->adv_drive_set) {
-+			bool enable;
-+
-+			enable = param == MTK_PIN_CONFIG_DRV_EN_ADV;
-+			err = hw->soc->adv_drive_set(hw, desc, enable,
-+						    arg);
-+			if (err)
-+				return err;
-+		} else {
-+			return -ENOTSUPP;
-+		}
-+		break;
- 	default:
- 		err = -ENOTSUPP;
- 	}
--- 
-2.12.5
+Maybe you should move this into a standalone separate patch?
+
+>         writel(cmd->arg, host->base + SDC_ARG);
+>         writel(rawcmd, host->base + SDC_CMD);
+>  }
+> @@ -1351,6 +1355,27 @@ static void msdc_request_timeout(struct work_struct *work)
+>         }
+>  }
+>
+> +static void msdc_enable_sdio_irq(struct mmc_host *mmc, int enb)
+> +{
+> +       unsigned long flags;
+> +       struct msdc_host *host = mmc_priv(mmc);
+> +
+> +       if (enb)
+> +               pm_runtime_get_sync(host->dev);
+
+I would convert to pm_runtime_get_noresume() as the host is already
+been runtime resumed by the mmc core.
+
+> +
+> +       spin_lock_irqsave(&host->lock, flags);
+> +       if (enb)
+> +               sdr_set_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
+> +       else
+> +               sdr_clr_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
+> +       spin_unlock_irqrestore(&host->lock, flags);
+
+You should move the code above into a separate function. Along the lines of:
+
+static void __msdc_enable_sdio_irq(struct mmc_host *mmc, int enb)
+
+You need this, because you will otherwise mess up the runtime PM usage
+count when acking the SDIO irq. More comments about that below.
+
+> +
+> +       if (!enb) {
+> +               pm_runtime_mark_last_busy(host->dev);
+> +               pm_runtime_put_autosuspend(host->dev);
+
+Convert to pm_runtime_put_noidle(), as the above is already managed by
+the mmc core.
+
+> +       }
+> +}
+> +
+>  static irqreturn_t msdc_irq(int irq, void *dev_id)
+>  {
+>         struct msdc_host *host = (struct msdc_host *) dev_id;
+> @@ -1373,7 +1398,12 @@ static irqreturn_t msdc_irq(int irq, void *dev_id)
+>                 data = host->data;
+>                 spin_unlock_irqrestore(&host->lock, flags);
+>
+> -               if (!(events & event_mask))
+> +               if ((events & event_mask) & MSDC_INT_SDIOIRQ) {
+> +                       msdc_enable_sdio_irq(host->mmc, 0);
+
+To not mess up the runtime PM reference count and to avoid invoking
+runtime PM callbacks from atomic context, I suggest you call
+__msdc_enable_sdio_irq(host->mmc, 0) (new proposed function according
+to earlier comment).
+
+> +                       sdio_signal_irq(host->mmc);
+> +               }
+> +
+> +               if (!(events & (event_mask & ~MSDC_INT_SDIOIRQ)))
+>                         break;
+>
+>                 if (!mrq) {
+> @@ -1493,8 +1523,11 @@ static void msdc_init_hw(struct msdc_host *host)
+>          */
+>         sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIO);
+>
+> -       /* disable detect SDIO device interrupt function */
+> -       sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
+> +       /* Config SDIO device detect interrupt function */
+> +       if (host->mmc->caps & MMC_CAP_SDIO_IRQ)
+> +               sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
+> +       else
+> +               sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
+>
+>         /* Configure to default data timeout */
+>         sdr_set_field(host->base + SDC_CFG, SDC_CFG_DTOC, 3);
+> @@ -2013,6 +2046,11 @@ static void msdc_hw_reset(struct mmc_host *mmc)
+>         sdr_clr_bits(host->base + EMMC_IOCON, 1);
+>  }
+>
+> +static void msdc_ack_sdio_irq(struct mmc_host *mmc)
+> +{
+> +       msdc_enable_sdio_irq(mmc, 1);
+
+To not mess up the runtime PM reference count, I suggest you call
+__msdc_enable_sdio_irq(host->mmc, 1) (new proposed function according
+to earlier comment).
+
+> +}
+> +
+>  static const struct mmc_host_ops mt_msdc_ops = {
+>         .post_req = msdc_post_req,
+>         .pre_req = msdc_pre_req,
+> @@ -2020,6 +2058,8 @@ static void msdc_hw_reset(struct mmc_host *mmc)
+>         .set_ios = msdc_ops_set_ios,
+>         .get_ro = mmc_gpio_get_ro,
+>         .get_cd = mmc_gpio_get_cd,
+> +       .enable_sdio_irq = msdc_enable_sdio_irq,
+> +       .ack_sdio_irq = msdc_ack_sdio_irq,
+>         .start_signal_voltage_switch = msdc_ops_switch_volt,
+>         .card_busy = msdc_card_busy,
+>         .execute_tuning = msdc_execute_tuning,
+> @@ -2147,6 +2187,9 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>         else
+>                 mmc->f_min = DIV_ROUND_UP(host->src_clk_freq, 4 * 4095);
+>
+> +       if (mmc->caps & MMC_CAP_SDIO_IRQ)
+> +               mmc->caps2 |= MMC_CAP2_SDIO_IRQ_NOTHREAD;
+> +
+>         mmc->caps |= MMC_CAP_ERASE | MMC_CAP_CMD23;
+>         /* MMC core transfer sizes tunable parameters */
+>         mmc->max_segs = MAX_BD_NUM;
+> --
+> 1.9.1
+>
+
+Kind regards
+Uffe
