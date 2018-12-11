@@ -1,60 +1,99 @@
-From: Frank Wunderlich <frank-w@public-files.de>
-Subject: [PATCH 1/7] [DSA] adding fields for holding information about upstream-port
-Date: Tue, 11 Dec 2018 20:33:08 +0100
-Message-ID: <20181211193314.10695-1-frank-w@public-files.de>
+From: Wolfram Sang <wsa@the-dreams.de>
+Subject: Re: [PATCH 2/5] i2c: mediatek: remove useless code and replace
+ definitions
+Date: Tue, 11 Dec 2018 21:20:58 +0100
+Message-ID: <20181211202058.cd4wyz4so66iqspt@ninjato>
+References: <1543843974-4054-1-git-send-email-qii.wang@mediatek.com>
+ <1543843974-4054-3-git-send-email-qii.wang@mediatek.com>
+Mime-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="rzzha3d23dmk6e55"
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1543843974-4054-3-git-send-email-qii.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@savoirfairelinux.com>, Florian Fainelli <f.fainelli@gmail.com>, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: Frank Wunderlich <frank-w@public-files.de>
+To: qii.wang@mediatek.com
+Cc: linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, leilk.liu@mediatek.com, ryder.lee@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-based on
-https://github.com/openwrt/openwrt/blob/master/target/linux/mediatek/patches-4.14/0033-dsa-multi-cpu.patch
 
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
----
- include/net/dsa.h  | 4 ++++
- net/dsa/dsa_priv.h | 5 +++++
- 2 files changed, 9 insertions(+)
+--rzzha3d23dmk6e55
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/include/net/dsa.h b/include/net/dsa.h
-index 23690c44e167..3efa81e08993 100644
---- a/include/net/dsa.h
-+++ b/include/net/dsa.h
-@@ -203,6 +203,10 @@ struct dsa_port {
- 	struct net_device	*bridge_dev;
- 	struct devlink_port	devlink_port;
- 	struct phylink		*pl;
-+
-+	struct net_device	*ethernet;
-+	int			upstream;
-+
- 	/*
- 	 * Original copy of the master netdev ethtool_ops
- 	 */
-diff --git a/net/dsa/dsa_priv.h b/net/dsa/dsa_priv.h
-index 9e4fd04ab53c..cc0cd7675117 100644
---- a/net/dsa/dsa_priv.h
-+++ b/net/dsa/dsa_priv.h
-@@ -81,6 +81,8 @@ struct dsa_slave_priv {
- 
- 	/* TC context */
- 	struct list_head	mall_tc_list;
-+
-+	struct net_device       *master;
- };
- 
- /* dsa.c */
-@@ -188,7 +190,10 @@ static inline struct net_device *
- dsa_slave_to_master(const struct net_device *dev)
- {
- 	struct dsa_port *dp = dsa_slave_to_port(dev);
-+	struct dsa_slave_priv *p = netdev_priv(dev);
- 
-+	if (p->master)
-+		return p->master;
- 	return dp->cpu_dp->master;
- }
- 
--- 
-2.17.1
+On Mon, Dec 03, 2018 at 09:32:51PM +0800, qii.wang@mediatek.com wrote:
+> From: qii wang <qii.wang@mediatek.com>
+>=20
+> Completion_done is useless when we don't use its return value,
+> so we remove it. Different speeds have been defined by macros,
+> so we use macros definitions.
+
+Those are two seperate patches, or?
+
+>=20
+> Signed-off-by: qii wang <qii.wang@mediatek.com>
+> ---
+>  drivers/i2c/busses/i2c-mt65xx.c |    6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt6=
+5xx.c
+> index a74ef76..660de1e 100644
+> --- a/drivers/i2c/busses/i2c-mt65xx.c
+> +++ b/drivers/i2c/busses/i2c-mt65xx.c
+> @@ -456,7 +456,7 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, s=
+truct i2c_msg *msgs,
+> =20
+>  	control_reg =3D readw(i2c->base + OFFSET_CONTROL) &
+>  			~(I2C_CONTROL_DIR_CHANGE | I2C_CONTROL_RS);
+> -	if ((i2c->speed_hz > 400000) || (left_num >=3D 1))
+> +	if ((i2c->speed_hz > MAX_FS_MODE_SPEED) || (left_num >=3D 1))
+>  		control_reg |=3D I2C_CONTROL_RS;
+> =20
+>  	if (i2c->op =3D=3D I2C_MASTER_WRRD)
+> @@ -465,7 +465,7 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, s=
+truct i2c_msg *msgs,
+>  	writew(control_reg, i2c->base + OFFSET_CONTROL);
+> =20
+>  	/* set start condition */
+> -	if (i2c->speed_hz <=3D 100000)
+> +	if (i2c->speed_hz <=3D I2C_DEFAULT_SPEED)
+>  		writew(I2C_ST_START_CON, i2c->base + OFFSET_EXT_CONF);
+>  	else
+>  		writew(I2C_FS_START_CON, i2c->base + OFFSET_EXT_CONF);
+> @@ -642,8 +642,6 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, s=
+truct i2c_msg *msgs,
+>  		return -ETIMEDOUT;
+>  	}
+> =20
+> -	completion_done(&i2c->msg_complete);
+> -
+>  	if (i2c->irq_stat & (I2C_HS_NACKERR | I2C_ACKERR)) {
+>  		dev_dbg(i2c->dev, "addr: %x, transfer ACK error\n", msgs->addr);
+>  		mtk_i2c_init_hw(i2c);
+> --=20
+> 1.7.9.5
+>=20
+
+--rzzha3d23dmk6e55
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAlwQHCoACgkQFA3kzBSg
+KbbLdw/+ODERxR+ceynTnAj6B+ZBYip0nSF+4P2h+GCcBlb0sM+5iW1aG9Koj2j2
+QadPtWZ1riU6UfvKcoPyTmyPhZE+7B6YZ+wDVANZtXUU0FIzFPcYX7xcQ002bQ+A
+1muAx5kuFfKd/uMXXF5BPcycswIo5tUJ58IFKdhl74qXPKapeKgH0ocse2vKItIs
+O2pfEDqy2TCEPJLaCO2f9TC78MDuKlOs7sE0cs1S3TPCu+0dfgfQeSROQJIwcRxH
+4qn6LB4dgTssaHgrmOta2UfLmA1+DI9bWBlggdpDpjVmI5I+Q8sj/7m8nuvvQWuu
+axX68q4acAgOi5DIJZDKy6vhP1+VuWmdWEBCmPQtNcNRKHkyJr2twBQqH1E2uDo5
+eISaxbq0dD58yYgop85/IBomC82jPCOcK9Xq7D69AtJWO42tpwoXo4FTe1nxqRNj
+hmdwd72Sj8Fe7URPoKfJlWMCKPhcXeJIg7acX3c6U6GIislR+Z2B78Hwnl1CZ9B9
+PkuAo0K+JqF1orCKi4YeXCZHinUc9O/kuL7w5+jrp/F0DPJYQipwi2qEYD3fbh7g
+vwIJ5SC6wCc6qjW6Q1WaflkiuqbXOGt1nsbX5AGtFkovDYVtU0O/EcuNIpo7ytiE
+UAGLEUY45eAFOfij9o3p9Jazw1cZgv7YMb+9ScnPFdnsMKFkykg=
+=7YkG
+-----END PGP SIGNATURE-----
+
+--rzzha3d23dmk6e55--
