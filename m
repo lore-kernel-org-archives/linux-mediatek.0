@@ -1,53 +1,45 @@
-From: YueHaibing <yuehaibing@huawei.com>
-Subject: [PATCH v2 -next] input: keyboard: remove duplicated include from mtk-pmic-keys.c
-Date: Tue, 11 Dec 2018 17:32:00 +0800
-Message-ID: <20181211093200.18140-1-yuehaibing@huawei.com>
+From: Joerg Roedel <joro@8bytes.org>
+Subject: Re: [PATCH v4 00/18] MT8183 IOMMU SUPPORT
+Date: Tue, 11 Dec 2018 10:52:06 +0100
+Message-ID: <20181211095206.hj7bnddgv2hqvm4w@8bytes.org>
+References: <1544258371-4600-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1544258371-4600-1-git-send-email-yong.wu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: dmitry.torokhov@gmail.com, matthias.bgg@gmail.com, lee.jones@linaro.org, chen.zhong@mediatek.com
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org, YueHaibing <yuehaibing@huawei.com>
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>, Tomasz Figa <tfiga@google.com>, Will Deacon <will.deacon@arm.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, arnd@arndb.de, yingjoe.chen@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, Arvind Yadav <arvind.yadav.cs@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-alphabetise the header files and remove duplicated include
-file linux/kernel.h
+On Sat, Dec 08, 2018 at 04:39:13PM +0800, Yong Wu wrote:
+> Arvind Yadav (1):
+>   iommu/mediatek: Constify iommu_ops
+> 
+> Yong Wu (17):
+>   dt-bindings: mediatek: Add binding for mt8183 IOMMU and SMI
+>   iommu/mediatek: Use a struct as the platform data
+>   memory: mtk-smi: Use a general config_port interface
+>   memory: mtk-smi: Use a struct for the platform data for smi-common
+>   iommu/io-pgtable-arm-v7s: Add paddr_to_iopte and iopte_to_paddr
+>     helpers
+>   iommu/io-pgtable-arm-v7s: Extend MediaTek 4GB Mode
+>   iommu/mediatek: Add bclk can be supported optionally
+>   iommu/mediatek: Add larb-id remapped support
+>   memory: mtk-smi: Add gals support
+>   iommu/mediatek: Add mt8183 IOMMU support
+>   iommu/mediatek: Add mmu1 support
+>   memory: mtk-smi: Invoke pm runtime_callback to enable clocks
+>   memory: mtk-smi: Add bus_sel for mt8183
+>   iommu/mediatek: Fix VLD_PA_RANGE register backup when suspend
+>   iommu/mediatek: Add shutdown callback
+>   memory: mtk-smi: Get rid of need_larbid
+>   iommu/mediatek: Switch to SPDX license identifier
 
-Signed-off-by: YueHaibing <yuehaibing@huawei.com>
----
-v2: alphabetise the header files
----
- drivers/input/keyboard/mtk-pmic-keys.c | 13 ++++++-------
- 1 file changed, 6 insertions(+), 7 deletions(-)
+If Matthias is okay with these patches, I'll queue them for v4.21.
 
-diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
-index 02c67a1..8e6ebab 100644
---- a/drivers/input/keyboard/mtk-pmic-keys.c
-+++ b/drivers/input/keyboard/mtk-pmic-keys.c
-@@ -14,18 +14,17 @@
-  *
-  */
- 
--#include <linux/module.h>
--#include <linux/kernel.h>
- #include <linux/input.h>
- #include <linux/interrupt.h>
--#include <linux/platform_device.h>
- #include <linux/kernel.h>
--#include <linux/of.h>
--#include <linux/of_device.h>
--#include <linux/regmap.h>
- #include <linux/mfd/mt6323/registers.h>
--#include <linux/mfd/mt6397/registers.h>
- #include <linux/mfd/mt6397/core.h>
-+#include <linux/mfd/mt6397/registers.h>
-+#include <linux/module.h>
-+#include <linux/of_device.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
- 
- #define MTK_PMIC_PWRKEY_RST_EN_MASK	0x1
- #define MTK_PMIC_PWRKEY_RST_EN_SHIFT	6
--- 
-2.7.4
+
+Regards,
+
+	Joerg
