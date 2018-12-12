@@ -1,81 +1,47 @@
-From: Sean Wang <sean.wang@kernel.org>
-Subject: Re: [PATCH] pinctrl: mediatek: improve dependencies for PINCTRL_MTK_MOORE
-Date: Wed, 12 Dec 2018 11:52:48 -0800
-Message-ID: <CAGp9Lzqz6ZpbZ+241HKGZxLA7EwBnw+6s2EgTy3VXaoh6Xo6Hg@mail.gmail.com>
-References: <d80dd05f6dbfc8fe7e85509cc00ebd8ec739b4d2.1544608681.git.ryder.lee@mediatek.com>
+From: Olof Johansson <olof@lixom.net>
+Subject: Re: [GIT PULL] arm64: mediatek: dts changes for v4.21
+Date: Wed, 12 Dec 2018 12:54:01 -0800
+Message-ID: <20181212205401.xixp6qrwn4y5wd4t@localhost>
+References: <e5b4136c-99fe-16ec-8974-9c4d1d83efa8@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <d80dd05f6dbfc8fe7e85509cc00ebd8ec739b4d2.1544608681.git.ryder.lee@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?B?UnlkZXIgTGVlICjmnY7luproq7op?= <ryder.lee@mediatek.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, weijie.gao@mediatek.com, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <e5b4136c-99fe-16ec-8974-9c4d1d83efa8@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: arm-soc <arm@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Houlong Wei <houlong.wei@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Dec 12, 2018 at 1:59 AM Ryder Lee <ryder.lee@mediatek.com> wrote:
->
-> Improve dependencies for the pinctrl drivers which select
-> PINCTRL_MTK_MOORE as its core layer.
+On Sun, Dec 09, 2018 at 11:08:59PM +0100, Matthias Brugger wrote:
+> Hi Arnd and Olof,
+> 
+> Below the very only patch, please have a look :)
+> 
+> Regards,
+> Matthias
+> 
 > ---
->  drivers/pinctrl/mediatek/Kconfig | 13 +++++++------
->  1 file changed, 7 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
-> index d8cb584..3a41dc8 100644
-> --- a/drivers/pinctrl/mediatek/Kconfig
-> +++ b/drivers/pinctrl/mediatek/Kconfig
-> @@ -23,6 +23,7 @@ config PINCTRL_MTK_MOORE
->         select GENERIC_PINCTRL_GROUPS
->         select GENERIC_PINMUX_FUNCTIONS
->         select GPIOLIB
-> +       select EINT_MTK
+> 
+> The following changes since commit 651022382c7f8da46cb4872a545ee1da6d097d2a:
+> 
+>   Linux 4.20-rc1 (2018-11-04 15:37:52 -0800)
+> 
+> are available in the Git repository at:
+> 
+>   https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
+> tags/v4.20-next-dts64
 
-The change can be taken away from the patch as the patch EINT_MTK is
-optional to the moore core.
+Merged, thanks!
 
->         select OF_GPIO
->
->  config PINCTRL_MTK_PARIS
-> @@ -45,14 +46,14 @@ config PINCTRL_MT2701
->  config PINCTRL_MT7623
->         bool "Mediatek MT7623 pin control with generic binding"
->         depends on MACH_MT7623 || COMPILE_TEST
-> -       depends on PINCTRL_MTK_MOORE
-> -       default y
-> +       default MACH_MT7623
-> +       select PINCTRL_MTK_MOORE
->
->  config PINCTRL_MT7629
->         bool "Mediatek MT7629 pin control"
->         depends on MACH_MT7629 || COMPILE_TEST
-> -       depends on PINCTRL_MTK_MOORE
-> -       default y
-> +       default MACH_MT7629
-> +       select PINCTRL_MTK_MOORE
->
->  config PINCTRL_MT8135
->         bool "Mediatek MT8135 pin control"
-> @@ -93,8 +94,8 @@ config PINCTRL_MT6797
->  config PINCTRL_MT7622
->         bool "MediaTek MT7622 pin control"
->         depends on ARM64 || COMPILE_TEST
-> -       depends on PINCTRL_MTK_MOORE
-> -       default y
-> +       default ARM64 && ARCH_MEDIATEK
-> +       select PINCTRL_MTK_MOORE
->
 
-We can add a change allowing PINCTRL_MTK_MOORE to be a non-visible
-symbol in the same patch according to the general rules
-kconfig-language.txt defines. And also turn PINCTRL_MTK_PARIS to
-non-visible in another patch would be good.
-
-Apart from that, the above three changes are fine with me, it helps to
-be more consistent with other driver and the target SoC would be
-coupled with the corresponding essential pinctrl driver.
-
->  config PINCTRL_MT8173
->         bool "Mediatek MT8173 pin control"
-> --
-> 1.9.1
->
+-Olof
