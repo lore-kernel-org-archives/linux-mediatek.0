@@ -1,115 +1,81 @@
-From: "Frank Wunderlich" <frank-w@public-files.de>
-Subject: Aw: Re: [PATCH 1/7] [DSA] adding fields for holding information
- about upstream-port
-Date: Wed, 12 Dec 2018 16:12:53 +0100
-Message-ID: <trinity-4ee13d71-22e7-4f95-a7b9-09bbefe7e6b6-1544627573309@3c-app-gmx-bs62>
-References: <20181211193314.10695-1-frank-w@public-files.de>
- <63046efc-820c-aabf-a6f9-9393550b7056@gmail.com>
+From: Sean Wang <sean.wang@kernel.org>
+Subject: Re: [PATCH] pinctrl: mediatek: improve dependencies for PINCTRL_MTK_MOORE
+Date: Wed, 12 Dec 2018 11:52:48 -0800
+Message-ID: <CAGp9Lzqz6ZpbZ+241HKGZxLA7EwBnw+6s2EgTy3VXaoh6Xo6Hg@mail.gmail.com>
+References: <d80dd05f6dbfc8fe7e85509cc00ebd8ec739b4d2.1544608681.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <63046efc-820c-aabf-a6f9-9393550b7056@gmail.com>
+In-Reply-To: <d80dd05f6dbfc8fe7e85509cc00ebd8ec739b4d2.1544608681.git.ryder.lee@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Florian Fainelli <f.fainelli@gmail.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@savoirfairelinux.com>, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: =?UTF-8?B?UnlkZXIgTGVlICjmnY7luproq7op?= <ryder.lee@mediatek.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, weijie.gao@mediatek.com, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Florian,
-
-thank you for first comments. It was my first Patchset i tried to send ia git send-email. i had searched the Patch 0/x-option but had not found it. i will rework this.
-
-- i did only a porting to 4.15+ dsa-core. how do i credit John in this series?
-- maybe i need a fallback to current "first cpu-port option", this was not defined by john, but i can add it in next series
-- should i include dts (bananapi r2) also in the series?
-- i have a additional patch renaming dts-option to default_cpu instead of cpu (hint of Andrew)
-
-regards Frank
-
-
-> Gesendet: Dienstag, 11. Dezember 2018 um 23:37 Uhr
-> Von: "Florian Fainelli" <f.fainelli@gmail.com>
-> An: "Frank Wunderlich" <frank-w@public-files.de>, "Andrew Lunn" <andrew@lunn.ch>, "Vivien Didelot" <vivien.didelot@savoirfairelinux.com>, "David S. Miller" <davem@davemloft.net>, "Matthias Brugger" <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-> Betreff: Re: [PATCH 1/7] [DSA] adding fields for holding information about upstream-port
+On Wed, Dec 12, 2018 at 1:59 AM Ryder Lee <ryder.lee@mediatek.com> wrote:
 >
-> Hi,,
-> 
-> On 12/11/18 11:33 AM, Frank Wunderlich wrote:
-> > based on
-> > https://github.com/openwrt/openwrt/blob/master/target/linux/mediatek/patches-4.14/0033-dsa-multi-cpu.patch
-> 
-> There are several stylistic as well as logistical/technical issues with
-> this patch series, so please address those before we can start doing the
-> technical review:
-> 
-> - this is a multi patch series, so a cover letter should be provided
-> (can be done with git format-patch --cover-letter)
-> 
-> - subject for the patches should be prefixed with net: dsa: <subject>
-> 
-> - commit messages explaining what is being achieved, how and what
-> problem/feature this is providing is mandatory, you cannot just take
-> patches from OpenWrt and provide no context what so ever except from the
-> subject
-> 
-> Please fix that so we can do a meaningful and constructive technical
-> review of the patches.
-> 
-> Thank you
-> 
-> > 
-> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> > ---
-> >  include/net/dsa.h  | 4 ++++
-> >  net/dsa/dsa_priv.h | 5 +++++
-> >  2 files changed, 9 insertions(+)
-> > 
-> > diff --git a/include/net/dsa.h b/include/net/dsa.h
-> > index 23690c44e167..3efa81e08993 100644
-> > --- a/include/net/dsa.h
-> > +++ b/include/net/dsa.h
-> > @@ -203,6 +203,10 @@ struct dsa_port {
-> >  	struct net_device	*bridge_dev;
-> >  	struct devlink_port	devlink_port;
-> >  	struct phylink		*pl;
-> > +
-> > +	struct net_device	*ethernet;
-> > +	int			upstream;
-> > +
-> >  	/*
-> >  	 * Original copy of the master netdev ethtool_ops
-> >  	 */
-> > diff --git a/net/dsa/dsa_priv.h b/net/dsa/dsa_priv.h
-> > index 9e4fd04ab53c..cc0cd7675117 100644
-> > --- a/net/dsa/dsa_priv.h
-> > +++ b/net/dsa/dsa_priv.h
-> > @@ -81,6 +81,8 @@ struct dsa_slave_priv {
-> >  
-> >  	/* TC context */
-> >  	struct list_head	mall_tc_list;
-> > +
-> > +	struct net_device       *master;
-> >  };
-> >  
-> >  /* dsa.c */
-> > @@ -188,7 +190,10 @@ static inline struct net_device *
-> >  dsa_slave_to_master(const struct net_device *dev)
-> >  {
-> >  	struct dsa_port *dp = dsa_slave_to_port(dev);
-> > +	struct dsa_slave_priv *p = netdev_priv(dev);
-> >  
-> > +	if (p->master)
-> > +		return p->master;
-> >  	return dp->cpu_dp->master;
-> >  }
-> >  
-> > 
-> 
-> 
-> -- 
-> Florian
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
-> 
+> Improve dependencies for the pinctrl drivers which select
+> PINCTRL_MTK_MOORE as its core layer.
+> ---
+>  drivers/pinctrl/mediatek/Kconfig | 13 +++++++------
+>  1 file changed, 7 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
+> index d8cb584..3a41dc8 100644
+> --- a/drivers/pinctrl/mediatek/Kconfig
+> +++ b/drivers/pinctrl/mediatek/Kconfig
+> @@ -23,6 +23,7 @@ config PINCTRL_MTK_MOORE
+>         select GENERIC_PINCTRL_GROUPS
+>         select GENERIC_PINMUX_FUNCTIONS
+>         select GPIOLIB
+> +       select EINT_MTK
+
+The change can be taken away from the patch as the patch EINT_MTK is
+optional to the moore core.
+
+>         select OF_GPIO
+>
+>  config PINCTRL_MTK_PARIS
+> @@ -45,14 +46,14 @@ config PINCTRL_MT2701
+>  config PINCTRL_MT7623
+>         bool "Mediatek MT7623 pin control with generic binding"
+>         depends on MACH_MT7623 || COMPILE_TEST
+> -       depends on PINCTRL_MTK_MOORE
+> -       default y
+> +       default MACH_MT7623
+> +       select PINCTRL_MTK_MOORE
+>
+>  config PINCTRL_MT7629
+>         bool "Mediatek MT7629 pin control"
+>         depends on MACH_MT7629 || COMPILE_TEST
+> -       depends on PINCTRL_MTK_MOORE
+> -       default y
+> +       default MACH_MT7629
+> +       select PINCTRL_MTK_MOORE
+>
+>  config PINCTRL_MT8135
+>         bool "Mediatek MT8135 pin control"
+> @@ -93,8 +94,8 @@ config PINCTRL_MT6797
+>  config PINCTRL_MT7622
+>         bool "MediaTek MT7622 pin control"
+>         depends on ARM64 || COMPILE_TEST
+> -       depends on PINCTRL_MTK_MOORE
+> -       default y
+> +       default ARM64 && ARCH_MEDIATEK
+> +       select PINCTRL_MTK_MOORE
+>
+
+We can add a change allowing PINCTRL_MTK_MOORE to be a non-visible
+symbol in the same patch according to the general rules
+kconfig-language.txt defines. And also turn PINCTRL_MTK_PARIS to
+non-visible in another patch would be good.
+
+Apart from that, the above three changes are fine with me, it helps to
+be more consistent with other driver and the target SoC would be
+coupled with the corresponding essential pinctrl driver.
+
+>  config PINCTRL_MT8173
+>         bool "Mediatek MT8173 pin control"
+> --
+> 1.9.1
+>
