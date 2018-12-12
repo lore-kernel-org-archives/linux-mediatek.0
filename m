@@ -1,42 +1,56 @@
-From: Dave Airlie <airlied@gmail.com>
-Subject: Re: [GIT PULL] mediatek drm fixes for 4.20
-Date: Thu, 13 Dec 2018 07:32:04 +1000
-Message-ID: <CAPM=9two0Y5YcwyKud3iS4NG7CNjBFQCeQi8o+qUS-isBx_NWw@mail.gmail.com>
-References: <1544407975.18825.3.camel@mtksdaap41>
+From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
+Subject: Re: [GIT PULL] soc: mediatek: SoC driver changes for v4.21
+Date: Wed, 12 Dec 2018 13:32:40 -0800
+Message-ID: <20181212213240.uvquddiznmnufumv@localhost>
+References: <123d92d6-2cee-cae7-42e6-77aabda91038@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1544407975.18825.3.camel@mtksdaap41>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: CK Hu <ck.hu@mediatek.com>
-Cc: drinkcat@chromium.org, linux-mediatek@lists.infradead.org, dri-devel <dri-devel@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <123d92d6-2cee-cae7-42e6-77aabda91038-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Houlong Wei <houlong.wei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gTW9uLCAxMCBEZWMgMjAxOCBhdCAxMjoxMywgQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4g
-d3JvdGU6Cj4KPiBIaSwgRGF2ZToKPgo+IEhlcmUgaXMgb25lIGZpeC4KPgo+IFJlZ2FyZHMsCj4g
-Q0sKPgo+IFRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21taXQKPiA2NTEwMjIzODJjN2Y4
-ZGE0NmNiNDg3MmE1NDVlZTFkYTZkMDk3ZDJhOgo+Cj4gICBMaW51eCA0LjIwLXJjMSAoMjAxOC0x
-MS0wNCAxNTozNzo1MiAtMDgwMCkKPgo+IGFyZSBhdmFpbGFibGUgaW4gdGhlIEdpdCByZXBvc2l0
-b3J5IGF0Ogo+Cj4gICBodHRwczovL2dpdGh1Yi5jb20vY2todS1tZWRpYXRlay9saW51eC5naXQt
-dGFncy5naXQgYTAwNzFiYzQ1NWRhCgpTb21ldGhpbmcgd2VudCB3cm9uZyB3aXRoIHlvdXIgZ2l0
-IHB1bGwsIHlvdSBkaWRuJ3QgZ2V0IGEgdGFnIG9yCmJyYW5jaCBmb3IgbWUgdG8gcHVsbCBmcm9t
-LgoKRGF2ZS4KCj4KPiBmb3IgeW91IHRvIGZldGNoIGNoYW5nZXMgdXAgdG8gYTAwNzFiYzQ1NWRh
-N2I4MzBiOTUxNzA1ODkzM2E4M2ViNmNjOTAyYToKPgo+ICAgZHJtL21lZGlhdGVrOiBPbmx5IHRy
-eSB0byBhdHRhY2ggYnJpZGdlIGlmIHRoZXJlIGlzIG9uZSAoMjAxOC0xMi0wMwo+IDExOjA4OjIy
-ICswODAwKQo+Cj4gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLQo+IE5pY29sYXMgQm9pY2hhdCAoMSk6Cj4gICAgICAgZHJtL21l
-ZGlhdGVrOiBPbmx5IHRyeSB0byBhdHRhY2ggYnJpZGdlIGlmIHRoZXJlIGlzIG9uZQo+Cj4gIGRy
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgfCAxMSArKysrKysrLS0tLQo+ICAxIGZp
-bGUgY2hhbmdlZCwgNyBpbnNlcnRpb25zKCspLCA0IGRlbGV0aW9ucygtKQo+Cj4KX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
-bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On Sun, Dec 09, 2018 at 11:08:56PM +0100, Matthias Brugger wrote:
+> Hi Arnd and Olof,
+> 
+> Below the very only patch, please have a look :)
+> 
+> Regards,
+> Matthias
+> 
+> ---
+> 
+> The following changes since commit 651022382c7f8da46cb4872a545ee1da6d097d2a:
+> 
+>   Linux 4.20-rc1 (2018-11-04 15:37:52 -0800)
+> 
+> are available in the Git repository at:
+> 
+>   https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
+> tags/v4.20-next-soc
+> 
+> for you to fetch changes up to 576f1b4bc80220e1f88f1de5ecb25d99a6e9fa04:
+> 
+>   soc: mediatek: Add Mediatek CMDQ helper (2018-12-02 20:46:10 +0100)
+> 
+> ----------------------------------------------------------------
+> add helper functions to create and send commands to
+> the global command engine (GCE) device using the
+> command queue driver (cmdq).
+
+Merged, thanks!
+
+
+-Olof
