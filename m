@@ -1,43 +1,38 @@
-From: Miles Chen <miles.chen@mediatek.com>
-Subject: [PATCH] arm64: kaslr: print PHYS_OFFSET in dump_kernel_offset()
-Date: Wed, 12 Dec 2018 18:56:49 +0800
-Message-ID: <1544612209-13660-1-git-send-email-miles.chen@mediatek.com>
+From: Yong Wu <yong.wu@mediatek.com>
+Subject: [PATCH] iommu/io-pgtable-arm-v7s: Don't check PHYS_OFFSET if RAMDOMIZE_BASE is enabled
+Date: Wed, 12 Dec 2018 21:02:17 +0800
+Message-ID: <1544619737-6313-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Miles Chen <miles.chen@mediatek.com>
+To: Robin Murphy <robin.murphy@arm.com>, Will Deacon <will.deacon@arm.com>, Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, yong.wu@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, CK Hu <ck.hu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-When debug with kaslr, it is sometimes necessary to have PHYS_OFFSET to
-perform linear virtual address to physical address translation.
-Sometimes we're debugging with only few information such as a kernel log
-and a symbol file, print PHYS_OFFSET in dump_kernel_offset() for that case.
+If CONFIG_RANDOMIZE_BASE is enabled, the "memstart_addr" will be updated
+randomly, then the PHYS_OFFSET may be random.
 
-Tested by:
-echo c > /proc/sysrq-trigger
-[   11.996161] SMP: stopping secondary CPUs
-[   11.996732] Kernel Offset: 0x2522200000 from 0xffffff8008000000
-[   11.996881] PHYS_OFFSET: 0xffffffeb40000000
-
-Signed-off-by: Miles Chen <miles.chen@mediatek.com>
-Tested-by: Miles Chen <miles.chen@mediatek.com>
+Fixes: 82db33dc5e49 ("iommu/io-pgtable-arm: Check for v7s-incapable
+systems")
+Reported-by: CK Hu <ck.hu@mediatek.com>
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- arch/arm64/kernel/setup.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/iommu/io-pgtable-arm-v7s.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/kernel/setup.c b/arch/arm64/kernel/setup.c
-index f4fc1e0544b7..4b0e1231625c 100644
---- a/arch/arm64/kernel/setup.c
-+++ b/arch/arm64/kernel/setup.c
-@@ -388,6 +388,7 @@ static int dump_kernel_offset(struct notifier_block *self, unsigned long v,
- 	if (IS_ENABLED(CONFIG_RANDOMIZE_BASE) && offset > 0) {
- 		pr_emerg("Kernel Offset: 0x%lx from 0x%lx\n",
- 			 offset, KIMAGE_VADDR);
-+		pr_emerg("PHYS_OFFSET: 0x%llx\n", PHYS_OFFSET);
- 	} else {
- 		pr_emerg("Kernel Offset: disabled\n");
- 	}
+diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
+index 445c3bd..70941e6 100644
+--- a/drivers/iommu/io-pgtable-arm-v7s.c
++++ b/drivers/iommu/io-pgtable-arm-v7s.c
+@@ -709,7 +709,7 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
+ {
+ 	struct arm_v7s_io_pgtable *data;
+ 
+-#ifdef PHYS_OFFSET
++#if defined(PHYS_OFFSET) && !defined(CONFIG_RANDOMIZE_BASE)
+ 	if (upper_32_bits(PHYS_OFFSET))
+ 		return NULL;
+ #endif
 -- 
-2.18.0
+1.9.1
