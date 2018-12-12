@@ -1,34 +1,62 @@
-From: Biao Huang <biao.huang@mediatek.com>
-Subject: [v6, PATCH 0/2] add Ethernet driver support for mt2712
-Date: Wed, 12 Dec 2018 17:35:30 +0800
-Message-ID: <1544607332-29921-1-git-send-email-biao.huang@mediatek.com>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH] pinctrl: mediatek: improve dependencies for PINCTRL_MTK_MOORE
+Date: Wed, 12 Dec 2018 17:58:52 +0800
+Message-ID: <d80dd05f6dbfc8fe7e85509cc00ebd8ec739b4d2.1544608681.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: davem@davemloft.net, robh+dt@kernel.org
-Cc: honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, biao.huang@mediatek.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, joabreu@synopsys.com, andrew@lunn.ch
+To: Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Weijie Gao <weijie.gao@mediatek.com>, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Changes in v6:
- modifications according to comments from Rob/Andrew/Sean:
- 1. use delay_ps instead of delay stage.
- 2. add comments in driver to avoid confusion.
- 2. rewrite set_delay function.
- 3. modify binding document for properties: tx-delay-ps/rx-delay-ps/pericfg etc.
+Improve dependencies for the pinctrl drivers which select
+PINCTRL_MTK_MOORE as its core layer.
+---
+ drivers/pinctrl/mediatek/Kconfig | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
-Biao Huang (2):
-  net:stmmac: dwmac-mediatek: add support for mt2712
-  dt-binding: mediatek-dwmac: add binding document for MediaTek MT2712
-    DWMAC
-
- .../devicetree/bindings/net/mediatek-dwmac.txt     |   87 +++++
- drivers/net/ethernet/stmicro/stmmac/Kconfig        |    8 +
- drivers/net/ethernet/stmicro/stmmac/Makefile       |    1 +
- .../net/ethernet/stmicro/stmmac/dwmac-mediatek.c   |  408 ++++++++++++++++++++ 
- 4 files changed, 504 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.txt
- create mode 100644 drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-
---
-1.7.9.5
+diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
+index d8cb584..3a41dc8 100644
+--- a/drivers/pinctrl/mediatek/Kconfig
++++ b/drivers/pinctrl/mediatek/Kconfig
+@@ -23,6 +23,7 @@ config PINCTRL_MTK_MOORE
+ 	select GENERIC_PINCTRL_GROUPS
+ 	select GENERIC_PINMUX_FUNCTIONS
+ 	select GPIOLIB
++	select EINT_MTK
+ 	select OF_GPIO
+ 
+ config PINCTRL_MTK_PARIS
+@@ -45,14 +46,14 @@ config PINCTRL_MT2701
+ config PINCTRL_MT7623
+ 	bool "Mediatek MT7623 pin control with generic binding"
+ 	depends on MACH_MT7623 || COMPILE_TEST
+-	depends on PINCTRL_MTK_MOORE
+-	default y
++	default MACH_MT7623
++	select PINCTRL_MTK_MOORE
+ 
+ config PINCTRL_MT7629
+ 	bool "Mediatek MT7629 pin control"
+ 	depends on MACH_MT7629 || COMPILE_TEST
+-	depends on PINCTRL_MTK_MOORE
+-	default y
++	default MACH_MT7629
++	select PINCTRL_MTK_MOORE
+ 
+ config PINCTRL_MT8135
+ 	bool "Mediatek MT8135 pin control"
+@@ -93,8 +94,8 @@ config PINCTRL_MT6797
+ config PINCTRL_MT7622
+ 	bool "MediaTek MT7622 pin control"
+ 	depends on ARM64 || COMPILE_TEST
+-	depends on PINCTRL_MTK_MOORE
+-	default y
++	default ARM64 && ARCH_MEDIATEK
++	select PINCTRL_MTK_MOORE
+ 
+ config PINCTRL_MT8173
+ 	bool "Mediatek MT8173 pin control"
+-- 
+1.9.1
