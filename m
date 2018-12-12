@@ -1,62 +1,37 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH] pinctrl: mediatek: improve dependencies for PINCTRL_MTK_MOORE
-Date: Wed, 12 Dec 2018 17:58:52 +0800
-Message-ID: <d80dd05f6dbfc8fe7e85509cc00ebd8ec739b4d2.1544608681.git.ryder.lee@mediatek.com>
+From: Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH] staging: mt7621-pci: Fix checkpatch errors
+Date: Wed, 12 Dec 2018 11:33:47 +0100
+Message-ID: <20181212103347.GA16458@kroah.com>
+References: <CALT5DkvTHn=TO5TDd+_qiNobkukdQ=M1zhRatOHD3QCbBkes4Q@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CALT5DkvTHn=TO5TDd+_qiNobkukdQ=M1zhRatOHD3QCbBkes4Q@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Weijie Gao <weijie.gao@mediatek.com>, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
+To: yuhui zhang <zhangyuhui89757@gmail.com>
+Cc: matthias.bgg@gmail.com, sergio.paracuellos@gmail.com, neil@brown.name, mamtashukla555@gmail.com, peter.vernia@gmail.com, blogic@openwrt.org, devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Improve dependencies for the pinctrl drivers which select
-PINCTRL_MTK_MOORE as its core layer.
----
- drivers/pinctrl/mediatek/Kconfig | 13 +++++++------
- 1 file changed, 7 insertions(+), 6 deletions(-)
+On Mon, Dec 10, 2018 at 03:23:06PM +0800, yuhui zhang wrote:
+> This patch fixes the following checkpatch.pl errors in the
+> drivers/staging/mt7621-pci:
+> ERROR: space required after that ')'.
+> ERROR: space required after that '='.
+> 
+> Signed-off-by: zhangyuhui <zhangyuhui89757@gmail.com>
+> ---
+>  drivers/staging/mt7621-pci/pci-mt7621.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
-index d8cb584..3a41dc8 100644
---- a/drivers/pinctrl/mediatek/Kconfig
-+++ b/drivers/pinctrl/mediatek/Kconfig
-@@ -23,6 +23,7 @@ config PINCTRL_MTK_MOORE
- 	select GENERIC_PINCTRL_GROUPS
- 	select GENERIC_PINMUX_FUNCTIONS
- 	select GPIOLIB
-+	select EINT_MTK
- 	select OF_GPIO
- 
- config PINCTRL_MTK_PARIS
-@@ -45,14 +46,14 @@ config PINCTRL_MT2701
- config PINCTRL_MT7623
- 	bool "Mediatek MT7623 pin control with generic binding"
- 	depends on MACH_MT7623 || COMPILE_TEST
--	depends on PINCTRL_MTK_MOORE
--	default y
-+	default MACH_MT7623
-+	select PINCTRL_MTK_MOORE
- 
- config PINCTRL_MT7629
- 	bool "Mediatek MT7629 pin control"
- 	depends on MACH_MT7629 || COMPILE_TEST
--	depends on PINCTRL_MTK_MOORE
--	default y
-+	default MACH_MT7629
-+	select PINCTRL_MTK_MOORE
- 
- config PINCTRL_MT8135
- 	bool "Mediatek MT8135 pin control"
-@@ -93,8 +94,8 @@ config PINCTRL_MT6797
- config PINCTRL_MT7622
- 	bool "MediaTek MT7622 pin control"
- 	depends on ARM64 || COMPILE_TEST
--	depends on PINCTRL_MTK_MOORE
--	default y
-+	default ARM64 && ARCH_MEDIATEK
-+	select PINCTRL_MTK_MOORE
- 
- config PINCTRL_MT8173
- 	bool "Mediatek MT8173 pin control"
--- 
-1.9.1
+You sent this same patch 4 times.  Or at least I think it is the same
+patch, I really do not know...
+
+Please resend, properly, to the correct mailing lists and people, this
+patch only one time.
+
+Also, you need to fix up your from: and signed-off-by lines to match up.
+
+thanks,
+
+greg k-h
