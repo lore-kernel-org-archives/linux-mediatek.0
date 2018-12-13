@@ -1,54 +1,96 @@
-From: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-Subject: Re: [PATCH] arm64: kaslr: print PHYS_OFFSET in dump_kernel_offset()
-Date: Thu, 13 Dec 2018 19:15:45 +0100
-Message-ID: <CAKv+Gu_40M=JO+P3GOJogXfm=x0JXYjHs=rHWAtR-6QNxjSYvA@mail.gmail.com>
-References: <1544612209-13660-1-git-send-email-miles.chen@mediatek.com> <20181213181317.GD18185@edgewater-inn.cambridge.arm.com>
+From: Sean Wang <sean.wang@kernel.org>
+Subject: Re: [PATCH] eint: add gpio vritual number select
+Date: Thu, 13 Dec 2018 11:33:29 -0800
+Message-ID: <CAGp9LzpcRCMWSn-u6K6+eRT=Zr8PR22Vd381miyhVYbF87N02g@mail.gmail.com>
+References: <1544693783-25079-1-git-send-email-chuanjia.liu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181213181317.GD18185@edgewater-inn.cambridge.arm.com>
+In-Reply-To: <1544693783-25079-1-git-send-email-chuanjia.liu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Will Deacon <will.deacon@arm.com>
-Cc: Miles Chen <miles.chen@mediatek.com>, Catalin Marinas <catalin.marinas@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, wsd_upstream@mediatek.com
+To: chuanjia.liu@mediatek.com
+Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, eddie.huang@mediatek.com, zhiyong.tao@mediatek.com, hailong.fan@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 13 Dec 2018 at 19:12, Will Deacon <will.deacon@arm.com> wrote:
+On Thu, Dec 13, 2018 at 1:36 AM <chuanjia.liu@mediatek.com> wrote:
 >
-> [+Ard because I'll basically go with his preference on this one]
+> From: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
 >
-> On Wed, Dec 12, 2018 at 06:56:49PM +0800, Miles Chen wrote:
-> > When debug with kaslr, it is sometimes necessary to have PHYS_OFFSET to
-> > perform linear virtual address to physical address translation.
-> > Sometimes we're debugging with only few information such as a kernel log
-> > and a symbol file, print PHYS_OFFSET in dump_kernel_offset() for that case.
-> >
-> > Tested by:
-> > echo c > /proc/sysrq-trigger
-> > [   11.996161] SMP: stopping secondary CPUs
-> > [   11.996732] Kernel Offset: 0x2522200000 from 0xffffff8008000000
-> > [   11.996881] PHYS_OFFSET: 0xffffffeb40000000
-> >
-> > Signed-off-by: Miles Chen <miles.chen@mediatek.com>
-> > Tested-by: Miles Chen <miles.chen@mediatek.com>
+> This patch add gpio vritual number select,avoid virtual gpio set SMT.
 
-Fine with me, but I would like to see an ack from Miles Chen :-)
+s/gpio/GPIO/
+s/vritual/virtual/
 
-> > ---
-> >  arch/arm64/kernel/setup.c | 1 +
-> >  1 file changed, 1 insertion(+)
-> >
-> > diff --git a/arch/arm64/kernel/setup.c b/arch/arm64/kernel/setup.c
-> > index f4fc1e0544b7..4b0e1231625c 100644
-> > --- a/arch/arm64/kernel/setup.c
-> > +++ b/arch/arm64/kernel/setup.c
-> > @@ -388,6 +388,7 @@ static int dump_kernel_offset(struct notifier_block *self, unsigned long v,
-> >       if (IS_ENABLED(CONFIG_RANDOMIZE_BASE) && offset > 0) {
-> >               pr_emerg("Kernel Offset: 0x%lx from 0x%lx\n",
-> >                        offset, KIMAGE_VADDR);
-> > +             pr_emerg("PHYS_OFFSET: 0x%llx\n", PHYS_OFFSET);
-> >       } else {
-> >               pr_emerg("Kernel Offset: disabled\n");
-> >       }
-> > --
-> > 2.18.0
-> >
+Virtual GPIOs you said here that means these pins only used inside SoC
+and not being exported to outside SoC, right? It seems this kind of
+pins doesn't need SMT.
+
+>
+> Signed-off-by: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
+> ---
+>  drivers/pinctrl/mediatek/mtk-eint.h              |    1 +
+>  drivers/pinctrl/mediatek/pinctrl-mt8183.c        |    1 +
+>  drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c |    9 ++++++---
+>  3 files changed, 8 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/pinctrl/mediatek/mtk-eint.h b/drivers/pinctrl/mediatek/mtk-eint.h
+> index 48468d0..c16beaf 100644
+> --- a/drivers/pinctrl/mediatek/mtk-eint.h
+> +++ b/drivers/pinctrl/mediatek/mtk-eint.h
+> @@ -37,6 +37,7 @@ struct mtk_eint_hw {
+>         u8              ports;
+>         unsigned int    ap_num;
+>         unsigned int    db_cnt;
+> +       unsigned int    vir_start;
+>  };
+>
+>  struct mtk_eint;
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8183.c b/drivers/pinctrl/mediatek/pinctrl-mt8183.c
+> index 6262fd3..bbeafd3 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mt8183.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mt8183.c
+> @@ -497,6 +497,7 @@
+>         .ports     = 6,
+>         .ap_num    = 212,
+>         .db_cnt    = 13,
+> +       .vir_start = 180,
+>  };
+>
+>  static const struct mtk_pin_soc mt8183_data = {
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> index 4a9e0d4..ca3bae1 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> @@ -289,9 +289,12 @@ static int mtk_xt_set_gpio_as_eint(void *data, unsigned long eint_n)
+>         if (err)
+>                 return err;
+>
+> -       err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_SMT, MTK_ENABLE);
+> -       if (err)
+> -               return err;
+> +       if (gpio_n < hw->eint->hw->vir_start) {
+> +               err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_SMT,
+> +                                      MTK_ENABLE);
+> +               if (err)
+> +                       return err;
+> +       }
+
+The changes will break these SoCs without a properly configured vir_start.
+
+If SMT seems unnecessary for these kinds of virtual GPIOs pin in the
+path, we can do it as
+
+err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_SMT,
+                                        MTK_ENABLE);
+/* please add comments for the exclusion condition */
+if (err && err != -ENOTSUPP)
+        return err;
+
+If there is getting much special on certain pins between SoCs, and
+then we can consider creating a desc->flag to split logic.
+
+>
+>         return 0;
+>  }
+> --
+> 1.7.9.5
