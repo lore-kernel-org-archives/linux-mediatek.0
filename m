@@ -1,7 +1,7 @@
 From: Sean Wang <sean.wang@kernel.org>
 Subject: Re: [PATCH] eint: add gpio vritual number select
-Date: Thu, 13 Dec 2018 11:33:29 -0800
-Message-ID: <CAGp9LzpcRCMWSn-u6K6+eRT=Zr8PR22Vd381miyhVYbF87N02g@mail.gmail.com>
+Date: Thu, 13 Dec 2018 11:51:40 -0800
+Message-ID: <CAGp9LzrTZjEPLKEB+OwSVbLx=KBQRFVmN41KDqj_xTJ5oyU0KQ@mail.gmail.com>
 References: <1544693783-25079-1-git-send-email-chuanjia.liu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
@@ -12,19 +12,15 @@ To: chuanjia.liu@mediatek.com
 Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, eddie.huang@mediatek.com, zhiyong.tao@mediatek.com, hailong.fan@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
+And the subject should be also corrected with prefix starting with
+"pinctrl: mediatek:", typo fixup, and having a better subject close to
+the content.
+
 On Thu, Dec 13, 2018 at 1:36 AM <chuanjia.liu@mediatek.com> wrote:
 >
 > From: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
 >
 > This patch add gpio vritual number select,avoid virtual gpio set SMT.
-
-s/gpio/GPIO/
-s/vritual/virtual/
-
-Virtual GPIOs you said here that means these pins only used inside SoC
-and not being exported to outside SoC, right? It seems this kind of
-pins doesn't need SMT.
-
 >
 > Signed-off-by: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
 > ---
@@ -74,21 +70,6 @@ pins doesn't need SMT.
 > +               if (err)
 > +                       return err;
 > +       }
-
-The changes will break these SoCs without a properly configured vir_start.
-
-If SMT seems unnecessary for these kinds of virtual GPIOs pin in the
-path, we can do it as
-
-err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_SMT,
-                                        MTK_ENABLE);
-/* please add comments for the exclusion condition */
-if (err && err != -ENOTSUPP)
-        return err;
-
-If there is getting much special on certain pins between SoCs, and
-then we can consider creating a desc->flag to split logic.
-
 >
 >         return 0;
 >  }
