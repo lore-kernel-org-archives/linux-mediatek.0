@@ -1,59 +1,44 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH] Revert "iommu/io-pgtable-arm: Check for v7s-incapable
- systems"
-Date: Thu, 13 Dec 2018 10:26:13 +0000
-Message-ID: <38526eab-3010-1ce6-a801-28f5c15dce44@arm.com>
-References: <1544692788-24427-1-git-send-email-yong.wu@mediatek.com>
+From: Nick Fan <nick.fan@mediatek.com>
+Subject: Re: [PATCH] opp: Add API for getting voltage from supplies
+Date: Thu, 13 Dec 2018 18:36:52 +0800
+Message-ID: <1544697412.6417.13.camel@mtksdaap41>
+References: <1543906760-15631-1-git-send-email-Nick.Fan@mediatek.com>
+         <20181204082158.rb7uzdiwmcotwoxh@vireshk-i7>
+         <1544445372.3502.42.camel@mtksdaap41>
+         <20181213063850.c5nu3bbe7gm647ca@vireshk-i7>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1544692788-24427-1-git-send-email-yong.wu@mediatek.com>
-Content-Language: en-GB
+In-Reply-To: <20181213063850.c5nu3bbe7gm647ca@vireshk-i7>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Yong Wu <yong.wu@mediatek.com>, Will Deacon <will.deacon@arm.com>, Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, CK Hu <ck.hu@mediatek.com>, Stephen Boyd <swboyd@chromium.org>
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Cc: Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, tfiga@chromium.org, Chiawen.Lee@mediatek.com, erin.lo@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On 2018-12-13 9:19 am, Yong Wu wrote:
-> This reverts commit 82db33dc5e49fb625262d81125625d07a0d6184e.
+On Thu, 2018-12-13 at 12:08 +0530, Viresh Kumar wrote:
+> On 10-12-18, 20:36, Nick Fan wrote:
+> > For the users who only use one supply, they can use
+> > dev_pm_opp_get_voltage to get the voltage data from an opp.
+> > But if the users who use more than one supply, they will need this API
+> > to get their voltage data from OPP.
+> > The users should know about the supply count while creating opp table by
+> > using dev_pm_opp_set_regulators function.
+> > By using this API, the users can get the voltages by using index to
+> > specify which supplies they want.
+> > 
+> > The following is a simple example to get multiple regulators by this
+> > API.
+> > for (i = 0; i < regulator_num; i++)
+> > 	target_volt[i] = dev_pm_opp_get_voltage_supply(opp, i);
 > 
-> After the commit 29859aeb8a6e ("iommu/io-pgtable-arm-v7s: Abort
-> allocation when table address overflows the PTE"), v7s will return fail
-> if the page table allocation isn't expected. this PHYS_OFFSET check
-> is unnecessary now.
+> Fair enough. I couldn't find anything wrong with the patch. Will it be
+> possible to send this patch as part of a series which uses the new API
+> ? So that we are sure of somebody using it eventually.
 > 
-> And this check may lead to fail. For example, If CONFIG_RANDOMIZE_BASE
-> is enabled, the "memstart_addr" will be updated randomly, then the
-> PHYS_OFFSET may be random.
+This new API is suitable for the users that required to access for
+multiple regulators. And I am one of users who uses this API, but I am
+not able to upstream the GPU kernel driver which uses the new API.
 
-Reviewed-by: Robin Murphy <robin.murphy@arm.com>
-
-Joerg, if you have any more fixes to send for 4.19, please consider 
-picking this up directly.
-
-Thanks,
-Robin.
-
-> Reported-by: CK Hu <ck.hu@mediatek.com>
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> ---
->   drivers/iommu/io-pgtable-arm-v7s.c | 4 ----
->   1 file changed, 4 deletions(-)
-> 
-> diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
-> index 445c3bd..cec29bf 100644
-> --- a/drivers/iommu/io-pgtable-arm-v7s.c
-> +++ b/drivers/iommu/io-pgtable-arm-v7s.c
-> @@ -709,10 +709,6 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
->   {
->   	struct arm_v7s_io_pgtable *data;
->   
-> -#ifdef PHYS_OFFSET
-> -	if (upper_32_bits(PHYS_OFFSET))
-> -		return NULL;
-> -#endif
->   	if (cfg->ias > ARM_V7S_ADDR_BITS || cfg->oas > ARM_V7S_ADDR_BITS)
->   		return NULL;
->   
-> 
+--
+Nick Fan
