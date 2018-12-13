@@ -1,62 +1,38 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH] tty: serial: don't do termios for BTIF
-Date: Thu, 13 Dec 2018 14:24:03 +0800
-Message-ID: <972976519be8e28ee600651fe14d1f6d5f23e697.1544679557.git.ryder.lee@mediatek.com>
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: Re: [PATCH] opp: Add API for getting voltage from supplies
+Date: Thu, 13 Dec 2018 12:08:50 +0530
+Message-ID: <20181213063850.c5nu3bbe7gm647ca@vireshk-i7>
+References: <1543906760-15631-1-git-send-email-Nick.Fan@mediatek.com>
+ <20181204082158.rb7uzdiwmcotwoxh@vireshk-i7>
+ <1544445372.3502.42.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1544445372.3502.42.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Weijie Gao <weijie.gao@mediatek.com>, Roy Luo <cheng-hao.luo@mediatek.com>, linux-serial@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@mediatek.com>
+To: Nick Fan <nick.fan@mediatek.com>
+Cc: Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, tfiga@chromium.org, Chiawen.Lee@mediatek.com, erin.lo@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-The MediaTek BTIF controller doesn't need to set termios so add
-a new capability 'UART_CAP_NMOD' for the unsupported case.
+On 10-12-18, 20:36, Nick Fan wrote:
+> For the users who only use one supply, they can use
+> dev_pm_opp_get_voltage to get the voltage data from an opp.
+> But if the users who use more than one supply, they will need this API
+> to get their voltage data from OPP.
+> The users should know about the supply count while creating opp table by
+> using dev_pm_opp_set_regulators function.
+> By using this API, the users can get the voltages by using index to
+> specify which supplies they want.
+> 
+> The following is a simple example to get multiple regulators by this
+> API.
+> for (i = 0; i < regulator_num; i++)
+> 	target_volt[i] = dev_pm_opp_get_voltage_supply(opp, i);
 
+Fair enough. I couldn't find anything wrong with the patch. Will it be
+possible to send this patch as part of a series which uses the new API
+? So that we are sure of somebody using it eventually.
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- drivers/tty/serial/8250/8250.h      | 1 +
- drivers/tty/serial/8250/8250_port.c | 7 ++++++-
- 2 files changed, 7 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/tty/serial/8250/8250.h b/drivers/tty/serial/8250/8250.h
-index ebfb0bd..2b9ba39 100644
---- a/drivers/tty/serial/8250/8250.h
-+++ b/drivers/tty/serial/8250/8250.h
-@@ -80,6 +80,7 @@ struct serial8250_config {
- #define UART_CAP_MINI	(1 << 17)	/* Mini UART on BCM283X family lacks:
- 					 * STOP PARITY EPAR SPAR WLEN5 WLEN6
- 					 */
-+#define UART_CAP_NMOD	(1 << 18)	/* UART doesn't do termios */
- 
- #define UART_BUG_QUOT	(1 << 0)	/* UART has buggy quot LSB */
- #define UART_BUG_TXEN	(1 << 1)	/* UART has buggy TX IIR status */
-diff --git a/drivers/tty/serial/8250/8250_port.c b/drivers/tty/serial/8250/8250_port.c
-index c39482b..e4a69a0 100644
---- a/drivers/tty/serial/8250/8250_port.c
-+++ b/drivers/tty/serial/8250/8250_port.c
-@@ -297,7 +297,7 @@
- 		.tx_loadsz	= 16,
- 		.fcr		= UART_FCR_ENABLE_FIFO |
- 				  UART_FCR_CLEAR_RCVR | UART_FCR_CLEAR_XMIT,
--		.flags		= UART_CAP_FIFO,
-+		.flags		= UART_CAP_FIFO | UART_CAP_NMOD,
- 	},
- 	[PORT_NPCM] = {
- 		.name		= "Nuvoton 16550",
-@@ -2663,6 +2663,11 @@ static unsigned int serial8250_get_baud_rate(struct uart_port *port,
- 	unsigned long flags;
- 	unsigned int baud, quot, frac = 0;
- 
-+	if (up->capabilities & UART_CAP_NMOD) {
-+		termios->c_cflag = 0;
-+		return;
-+	}
-+
- 	if (up->capabilities & UART_CAP_MINI) {
- 		termios->c_cflag &= ~(CSTOPB | PARENB | PARODD | CMSPAR);
- 		if ((termios->c_cflag & CSIZE) == CS5 ||
 -- 
-1.9.1
+viresh
