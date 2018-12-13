@@ -1,48 +1,118 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [GIT PULL] mediatek drm fixes for 4.20
-Date: Thu, 13 Dec 2018 09:14:56 +0800
-Message-ID: <1544663696.6478.1.camel@mtksdaap41>
-References: <1544407975.18825.3.camel@mtksdaap41>
- <CAPM=9two0Y5YcwyKud3iS4NG7CNjBFQCeQi8o+qUS-isBx_NWw@mail.gmail.com>
- <CAPM=9tyeHDb+UwBRp6vEiBHA_t9wJJgPeaxw4dFYCkEqYymOHw@mail.gmail.com>
+From: Biao Huang <biao.huang@mediatek.com>
+Subject: [v7, PATCH 2/2] dt-binding: mediatek-dwmac: add binding document for MediaTek MT2712 DWMAC
+Date: Thu, 13 Dec 2018 09:56:13 +0800
+Message-ID: <1544666173-5121-3-git-send-email-biao.huang@mediatek.com>
+References: <1544666173-5121-1-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAPM=9tyeHDb+UwBRp6vEiBHA_t9wJJgPeaxw4dFYCkEqYymOHw@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Dave Airlie <airlied@gmail.com>
-Cc: drinkcat@chromium.org, linux-mediatek@lists.infradead.org, dri-devel <dri-devel@lists.freedesktop.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1544666173-5121-1-git-send-email-biao.huang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: davem@davemloft.net, robh+dt@kernel.org
+Cc: honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, biao.huang@mediatek.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, joabreu@synopsys.com, andrew@lunn.ch
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIERhdmU6CgpPbiBUaHUsIDIwMTgtMTItMTMgYXQgMTA6MTcgKzEwMDAsIERhdmUgQWlybGll
-IHdyb3RlOgo+IE9uIFRodSwgMTMgRGVjIDIwMTggYXQgMDc6MzIsIERhdmUgQWlybGllIDxhaXJs
-aWVkQGdtYWlsLmNvbT4gd3JvdGU6Cj4gPgo+ID4gT24gTW9uLCAxMCBEZWMgMjAxOCBhdCAxMjox
-MywgQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4gd3JvdGU6Cj4gPiA+Cj4gPiA+IEhpLCBEYXZl
-Ogo+ID4gPgo+ID4gPiBIZXJlIGlzIG9uZSBmaXguCj4gPiA+Cj4gPiA+IFJlZ2FyZHMsCj4gPiA+
-IENLCj4gPiA+Cj4gPiA+IFRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21taXQKPiA+ID4g
-NjUxMDIyMzgyYzdmOGRhNDZjYjQ4NzJhNTQ1ZWUxZGE2ZDA5N2QyYToKPiA+ID4KPiA+ID4gICBM
-aW51eCA0LjIwLXJjMSAoMjAxOC0xMS0wNCAxNTozNzo1MiAtMDgwMCkKPiA+ID4KPiA+ID4gYXJl
-IGF2YWlsYWJsZSBpbiB0aGUgR2l0IHJlcG9zaXRvcnkgYXQ6Cj4gPiA+Cj4gPiA+ICAgaHR0cHM6
-Ly9naXRodWIuY29tL2NraHUtbWVkaWF0ZWsvbGludXguZ2l0LXRhZ3MuZ2l0IGEwMDcxYmM0NTVk
-YQo+ID4KPiA+IFNvbWV0aGluZyB3ZW50IHdyb25nIHdpdGggeW91ciBnaXQgcHVsbCwgeW91IGRp
-ZG4ndCBnZXQgYSB0YWcgb3IKPiA+IGJyYW5jaCBmb3IgbWUgdG8gcHVsbCBmcm9tLgo+ID4KPiAK
-PiBCdHcgZm9yIHRoaXMgb2NjYXNpb24gSSd2ZSBwdWxsZWQgZnJvbSB0aGUgYnJhbmNoIG9uIGdp
-dGh1YiB3aGljaCBoYXMKPiB0aGlzIHBhdGNoLAo+IGJ1dCBpbiBmdXR1cmUgcGxlYXNlIG1ha2Ug
-c3VyZSB0aGUgcHVsbCByZXEgeW91IHNlbmQgb3V0IGlzIHZhbGlkLgoKU29ycnkgZm9yIHRoZSBp
-bmNvbnZlbmllbmNlLCBJIHdvdWxkIG1ha2Ugc3VyZSB0aGUgcHVsbCByZXF1ZXN0IGlzIHZhbGlk
-CmluIGZ1dHVyZS4KClJlZ2FyZHMsCkNLIAoKPiAKPiBEYXZlLgo+IAo+IF9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gTGludXgtbWVkaWF0ZWsgbWFpbGlu
-ZyBsaXN0Cj4gTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsKCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
-ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
-ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+The commit adds the device tree binding documentation for the MediaTek DWMAC
+found on MediaTek MT2712.
+
+Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+---
+ .../devicetree/bindings/net/mediatek-dwmac.txt     |   87 ++++++++++++++++++++
+ 1 file changed, 87 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.txt
+
+diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.txt b/Documentation/devicetree/bindings/net/mediatek-dwmac.txt
+new file mode 100644
+index 0000000..4de479b
+--- /dev/null
++++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.txt
+@@ -0,0 +1,87 @@
++MediaTek DWMAC glue layer controller
++
++This file documents platform glue layer for stmmac.
++Please see stmmac.txt for the other unchanged properties.
++
++The device node has following properties.
++
++Required properties:
++- compatible:  Should be "mediatek,mt2712-gmac" for MT2712 SoC
++- reg:  Address and length of the register set for the device
++- interrupts:  Should contain the MAC interrupts
++- interrupt-names: Should contain a list of interrupt names corresponding to
++	the interrupts in the interrupts property, if available.
++	Should be "macirq" for the main MAC IRQ
++- clocks: Must contain a phandle for each entry in clock-names.
++- clock-names: The name of the clock listed in the clocks property. These are
++	"axi", "apb", "mac_main", "ptp_ref" for MT2712 SoC
++- mac-address: See ethernet.txt in the same directory
++- phy-mode: See ethernet.txt in the same directory
++- mediatek,pericfg: A phandle to the syscon node that control ethernet
++	interface and timing delay.
++
++Optional properties:
++- mediatek,tx-delay-ps: TX clock delay macro value. Default is 0.
++	It should be defined for rgmii/rgmii-rxid/mii interface.
++- mediatek,rx-delay-ps: RX clock delay macro value. Default is 0.
++	It should be defined for rgmii/rgmii-txid/mii/rmii interface.
++Both delay properties need to be a multiple of 170 for fine-tune rgmii,
++range 0~31*170.
++Both delay properties need to be a multiple of 550 for coarse-tune rgmii,
++range 0~31*550.
++Both delay properties need to be a multiple of 550 for mii/rmii,
++range 0~31*550.
++
++- mediatek,fine-tune: boolean property, if present indicates that fine delay
++	is selected for rgmii interface.
++	If present, tx-delay-ps/rx-delay-ps is 170+/-50ps per stage.
++	Else tx-delay-ps/rx-delay-ps of coarse delay macro is 0.55+/-0.2ns per stage.
++	This property do not apply to non-rgmii PHYs.
++	Only coarse-tune delay is supported for mii/rmii PHYs.
++- mediatek,rmii-rxc: boolean property, if present indicates that the rmii
++	reference clock, which is from external PHYs, is connected to RXC pin
++	on MT2712 SoC.
++	Otherwise, is connected to TXC pin.
++- mediatek,txc-inverse: boolean property, if present indicates that
++	1. tx clock will be inversed in mii/rgmii case,
++	2. tx clock inside MAC will be inversed relative to reference clock
++	   which is from external PHYs in rmii case, and it rarely happen.
++- mediatek,rxc-inverse: boolean property, if present indicates that
++	1. rx clock will be inversed in mii/rgmii case.
++	2. reference clock will be inversed when arrived at MAC in rmii case.
++- assigned-clocks: mac_main and ptp_ref clocks
++- assigned-clock-parents: parent clocks of the assigned clocks
++
++Example:
++	eth: ethernet@1101c000 {
++		compatible = "mediatek,mt2712-gmac";
++		reg = <0 0x1101c000 0 0x1300>;
++		interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
++		interrupt-names = "macirq";
++		phy-mode ="rgmii";
++		mac-address = [00 55 7b b5 7d f7];
++		clock-names = "axi",
++			      "apb",
++			      "mac_main",
++			      "ptp_ref",
++			      "ptp_top";
++		clocks = <&pericfg CLK_PERI_GMAC>,
++			 <&pericfg CLK_PERI_GMAC_PCLK>,
++			 <&topckgen CLK_TOP_ETHER_125M_SEL>,
++			 <&topckgen CLK_TOP_ETHER_50M_SEL>;
++		assigned-clocks = <&topckgen CLK_TOP_ETHER_125M_SEL>,
++				  <&topckgen CLK_TOP_ETHER_50M_SEL>;
++		assigned-clock-parents = <&topckgen CLK_TOP_ETHERPLL_125M>,
++					 <&topckgen CLK_TOP_APLL1_D3>;
++		mediatek,pericfg = <&pericfg>;
++		mediatek,tx-delay-ps = <1530>;
++		mediatek,rx-delay-ps = <1530>;
++		mediatek,fine-tune;
++		mediatek,rmii-rxc;
++		mediatek,txc-inverse;
++		mediatek,rxc-inverse;
++		snps,txpbl = <32>;
++		snps,rxpbl = <32>;
++		snps,reset-gpio = <&pio 87 GPIO_ACTIVE_LOW>;
++		snps,reset-active-low;
++	};
+-- 
+1.7.9.5
