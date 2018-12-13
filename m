@@ -1,46 +1,67 @@
-From: Yong Wu <yong.wu@mediatek.com>
-Subject: [PATCH] Revert "iommu/io-pgtable-arm: Check for v7s-incapable systems"
-Date: Thu, 13 Dec 2018 17:19:48 +0800
-Message-ID: <1544692788-24427-1-git-send-email-yong.wu@mediatek.com>
+From: Qii Wang <qii.wang@mediatek.com>
+Subject: Re: [PATCH 4/5] dt-bindings: i2c: Add Mediatek MT8183 i2c binding
+Date: Thu, 13 Dec 2018 17:32:27 +0800
+Message-ID: <1544693547.11699.40.camel@mhfsdcap03>
+References: <1543843974-4054-1-git-send-email-qii.wang@mediatek.com>
+ <1543843974-4054-5-git-send-email-qii.wang@mediatek.com>
+ <20181211202931.xav4gzi7rzh2scgx@ninjato>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Robin Murphy <robin.murphy@arm.com>, Will Deacon <will.deacon@arm.com>, Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, yong.wu@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, CK Hu <ck.hu@mediatek.com>, Stephen Boyd <swboyd@chromium.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20181211202931.xav4gzi7rzh2scgx@ninjato>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Wolfram Sang <wsa@the-dreams.de>
+Cc: devicetree@vger.kernel.org, ryder.lee@mediatek.com, srv_heupstream@mediatek.com, leilk.liu@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This reverts commit 82db33dc5e49fb625262d81125625d07a0d6184e.
+On Tue, 2018-12-11 at 21:29 +0100, Wolfram Sang wrote:
+> > +  - ch-offset: base reg offset for multi-user.
+> 
+> What is "multi-user"? Why can't you add this offset to the reg-property
+> directly?
+> 
 
-After the commit 29859aeb8a6e ("iommu/io-pgtable-arm-v7s: Abort
-allocation when table address overflows the PTE"), v7s will return fail
-if the page table allocation isn't expected. this PHYS_OFFSET check
-is unnecessary now.
+Thanks for your comment.
+There are 3 channel in one MT8183 I3C controller, and every channel can
+be used as an I2C controller.
+Take the following diagram as example:
+If use I3C channels as I2C bus,
+1. CH-A/B/C offset are different;
+2. If use CH-B or CH-A as I2C, they must config registers which's
+address are in CH-A.
+ ____________________________________
+|     ________                       |
+|    |        |<--- offset:0x00      |
+|    |  CH-A  |                      |
+|    |________|                      |
+|    |        |<--- offset:0x100     |
+|    |  CH-B  |                      |
+|    |________|                      |
+|    |        |<--- offset:0x200     |
+|    |  CH-C  |                      |
+|    |________|                      |
+|____________________________________|
+        one I3C controller               
 
-And this check may lead to fail. For example, If CONFIG_RANDOMIZE_BASE
-is enabled, the "memstart_addr" will be updated randomly, then the
-PHYS_OFFSET may be random.
+Because of CH-B/CH-C depend on CH-A's register, it can't add offset to
+reg-property directly.
 
-Reported-by: CK Hu <ck.hu@mediatek.com>
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
----
- drivers/iommu/io-pgtable-arm-v7s.c | 4 ----
- 1 file changed, 4 deletions(-)
+MT8183 doesn't need to support muti-user according to the latest project
+information, and I'll remove this feature from patches.
 
-diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
-index 445c3bd..cec29bf 100644
---- a/drivers/iommu/io-pgtable-arm-v7s.c
-+++ b/drivers/iommu/io-pgtable-arm-v7s.c
-@@ -709,10 +709,6 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
- {
- 	struct arm_v7s_io_pgtable *data;
- 
--#ifdef PHYS_OFFSET
--	if (upper_32_bits(PHYS_OFFSET))
--		return NULL;
--#endif
- 	if (cfg->ias > ARM_V7S_ADDR_BITS || cfg->oas > ARM_V7S_ADDR_BITS)
- 		return NULL;
- 
--- 
-1.9.1
+> > +  - mediatek,share-i3c: i3c controller can share i2c function.
+> 
+> Please explain in more detail? Is this an I3C controller?
+> 
+
+Yes, it is a i3c controller, and it is compatible with i2c. I only use
+the feature of i2c, so I need a flag to do some extra settings.
