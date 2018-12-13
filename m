@@ -1,40 +1,67 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: Re: [PATCH] opp: Add API for getting voltage from supplies
-Date: Thu, 13 Dec 2018 16:12:47 +0530
-Message-ID: <20181213104247.kosguuoukoi645pf@vireshk-i7>
-References: <1543906760-15631-1-git-send-email-Nick.Fan@mediatek.com>
- <20181204082158.rb7uzdiwmcotwoxh@vireshk-i7>
- <1544445372.3502.42.camel@mtksdaap41>
- <20181213063850.c5nu3bbe7gm647ca@vireshk-i7>
- <1544697412.6417.13.camel@mtksdaap41>
+From: Russell King - ARM Linux <linux@armlinux.org.uk>
+Subject: Re: [PATCH] tty: serial: don't do termios for BTIF
+Date: Thu, 13 Dec 2018 11:00:29 +0000
+Message-ID: <20181213110029.GN30658@n2100.armlinux.org.uk>
+References: <972976519be8e28ee600651fe14d1f6d5f23e697.1544679557.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1544697412.6417.13.camel@mtksdaap41>
+In-Reply-To: <972976519be8e28ee600651fe14d1f6d5f23e697.1544679557.git.ryder.lee@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Nick Fan <nick.fan@mediatek.com>
-Cc: Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, tfiga@chromium.org, Chiawen.Lee@mediatek.com, erin.lo@mediatek.com
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Sean Wang <sean.wang@mediatek.com>, Sean Wang <sean.wang@kernel.org>, Weijie Gao <weijie.gao@mediatek.com>, linux-kernel@vger.kernel.org, Roy Luo <cheng-hao.luo@mediatek.com>, linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 13-12-18, 18:36, Nick Fan wrote:
-> This new API is suitable for the users that required to access for
-> multiple regulators. And I am one of users who uses this API, but I am
-> not able to upstream the GPU kernel driver which uses the new API.
+On Thu, Dec 13, 2018 at 02:24:03PM +0800, Ryder Lee wrote:
+> The MediaTek BTIF controller doesn't need to set termios so add
+> a new capability 'UART_CAP_NMOD' for the unsupported case.
+> 
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+>  drivers/tty/serial/8250/8250.h      | 1 +
+>  drivers/tty/serial/8250/8250_port.c | 7 ++++++-
+>  2 files changed, 7 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/tty/serial/8250/8250.h b/drivers/tty/serial/8250/8250.h
+> index ebfb0bd..2b9ba39 100644
+> --- a/drivers/tty/serial/8250/8250.h
+> +++ b/drivers/tty/serial/8250/8250.h
+> @@ -80,6 +80,7 @@ struct serial8250_config {
+>  #define UART_CAP_MINI	(1 << 17)	/* Mini UART on BCM283X family lacks:
+>  					 * STOP PARITY EPAR SPAR WLEN5 WLEN6
+>  					 */
+> +#define UART_CAP_NMOD	(1 << 18)	/* UART doesn't do termios */
+>  
+>  #define UART_BUG_QUOT	(1 << 0)	/* UART has buggy quot LSB */
+>  #define UART_BUG_TXEN	(1 << 1)	/* UART has buggy TX IIR status */
+> diff --git a/drivers/tty/serial/8250/8250_port.c b/drivers/tty/serial/8250/8250_port.c
+> index c39482b..e4a69a0 100644
+> --- a/drivers/tty/serial/8250/8250_port.c
+> +++ b/drivers/tty/serial/8250/8250_port.c
+> @@ -297,7 +297,7 @@
+>  		.tx_loadsz	= 16,
+>  		.fcr		= UART_FCR_ENABLE_FIFO |
+>  				  UART_FCR_CLEAR_RCVR | UART_FCR_CLEAR_XMIT,
+> -		.flags		= UART_CAP_FIFO,
+> +		.flags		= UART_CAP_FIFO | UART_CAP_NMOD,
+>  	},
+>  	[PORT_NPCM] = {
+>  		.name		= "Nuvoton 16550",
+> @@ -2663,6 +2663,11 @@ static unsigned int serial8250_get_baud_rate(struct uart_port *port,
+>  	unsigned long flags;
+>  	unsigned int baud, quot, frac = 0;
+>  
+> +	if (up->capabilities & UART_CAP_NMOD) {
+> +		termios->c_cflag = 0;
 
-Look at it from mainline's perspective..
-
-- We don't (can't) care about non-mainline stuff. Actually we do care,
-  but we can't add code to mainline which is not going to be used by
-  any mainline user.
-
-- I am fine with introducing the new API, but that will happen only if
-  there is going to be a mainline user as well.
-
-- As you are going to maintain your GPU driver offline, you can
-  maintain this patch too.
-
-Sorry Nick.
+So your port is limited to 5-bits and is unable to receive characters?
+That's what a zero cflag means, and that's what you'll be telling
+userspace here.
 
 -- 
-viresh
+RMK's Patch system: http://www.armlinux.org.uk/developer/patches/
+FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
+According to speedtest.net: 11.9Mbps down 500kbps up
