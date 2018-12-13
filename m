@@ -1,72 +1,46 @@
-From: Qii Wang <qii.wang@mediatek.com>
-Subject: Re: [PATCH 2/5] i2c: mediatek: remove useless code and replace
- definitions
-Date: Thu, 13 Dec 2018 17:13:49 +0800
-Message-ID: <1544692429.11699.31.camel@mhfsdcap03>
-References: <1543843974-4054-1-git-send-email-qii.wang@mediatek.com>
-         <1543843974-4054-3-git-send-email-qii.wang@mediatek.com>
-         <20181211202058.cd4wyz4so66iqspt@ninjato>
+From: Yong Wu <yong.wu@mediatek.com>
+Subject: [PATCH] Revert "iommu/io-pgtable-arm: Check for v7s-incapable systems"
+Date: Thu, 13 Dec 2018 17:19:48 +0800
+Message-ID: <1544692788-24427-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181211202058.cd4wyz4so66iqspt@ninjato>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Wolfram Sang <wsa@the-dreams.de>
-Cc: linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, leilk.liu@mediatek.com, ryder.lee@mediatek.com
+To: Robin Murphy <robin.murphy@arm.com>, Will Deacon <will.deacon@arm.com>, Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, yong.wu@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, CK Hu <ck.hu@mediatek.com>, Stephen Boyd <swboyd@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2018-12-11 at 21:20 +0100, Wolfram Sang wrote:
-> On Mon, Dec 03, 2018 at 09:32:51PM +0800, qii.wang@mediatek.com wrote:
-> > From: qii wang <qii.wang@mediatek.com>
-> > 
-> > Completion_done is useless when we don't use its return value,
-> > so we remove it. Different speeds have been defined by macros,
-> > so we use macros definitions.
-> 
-> Those are two seperate patches, or?
-> 
+This reverts commit 82db33dc5e49fb625262d81125625d07a0d6184e.
 
-These two changes are relatively small, but it seems better to be
-divided into two seperate patches.
+After the commit 29859aeb8a6e ("iommu/io-pgtable-arm-v7s: Abort
+allocation when table address overflows the PTE"), v7s will return fail
+if the page table allocation isn't expected. this PHYS_OFFSET check
+is unnecessary now.
 
-> > 
-> > Signed-off-by: qii wang <qii.wang@mediatek.com>
-> > ---
-> >  drivers/i2c/busses/i2c-mt65xx.c |    6 ++----
-> >  1 file changed, 2 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-> > index a74ef76..660de1e 100644
-> > --- a/drivers/i2c/busses/i2c-mt65xx.c
-> > +++ b/drivers/i2c/busses/i2c-mt65xx.c
-> > @@ -456,7 +456,7 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
-> >  
-> >  	control_reg = readw(i2c->base + OFFSET_CONTROL) &
-> >  			~(I2C_CONTROL_DIR_CHANGE | I2C_CONTROL_RS);
-> > -	if ((i2c->speed_hz > 400000) || (left_num >= 1))
-> > +	if ((i2c->speed_hz > MAX_FS_MODE_SPEED) || (left_num >= 1))
-> >  		control_reg |= I2C_CONTROL_RS;
-> >  
-> >  	if (i2c->op == I2C_MASTER_WRRD)
-> > @@ -465,7 +465,7 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
-> >  	writew(control_reg, i2c->base + OFFSET_CONTROL);
-> >  
-> >  	/* set start condition */
-> > -	if (i2c->speed_hz <= 100000)
-> > +	if (i2c->speed_hz <= I2C_DEFAULT_SPEED)
-> >  		writew(I2C_ST_START_CON, i2c->base + OFFSET_EXT_CONF);
-> >  	else
-> >  		writew(I2C_FS_START_CON, i2c->base + OFFSET_EXT_CONF);
-> > @@ -642,8 +642,6 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
-> >  		return -ETIMEDOUT;
-> >  	}
-> >  
-> > -	completion_done(&i2c->msg_complete);
-> > -
-> >  	if (i2c->irq_stat & (I2C_HS_NACKERR | I2C_ACKERR)) {
-> >  		dev_dbg(i2c->dev, "addr: %x, transfer ACK error\n", msgs->addr);
-> >  		mtk_i2c_init_hw(i2c);
-> > -- 
-> > 1.7.9.5
-> > 
+And this check may lead to fail. For example, If CONFIG_RANDOMIZE_BASE
+is enabled, the "memstart_addr" will be updated randomly, then the
+PHYS_OFFSET may be random.
+
+Reported-by: CK Hu <ck.hu@mediatek.com>
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+---
+ drivers/iommu/io-pgtable-arm-v7s.c | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
+index 445c3bd..cec29bf 100644
+--- a/drivers/iommu/io-pgtable-arm-v7s.c
++++ b/drivers/iommu/io-pgtable-arm-v7s.c
+@@ -709,10 +709,6 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
+ {
+ 	struct arm_v7s_io_pgtable *data;
+ 
+-#ifdef PHYS_OFFSET
+-	if (upper_32_bits(PHYS_OFFSET))
+-		return NULL;
+-#endif
+ 	if (cfg->ias > ARM_V7S_ADDR_BITS || cfg->oas > ARM_V7S_ADDR_BITS)
+ 		return NULL;
+ 
+-- 
+1.9.1
