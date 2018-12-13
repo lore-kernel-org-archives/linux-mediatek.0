@@ -1,31 +1,24 @@
-From: Andrew Lunn <andrew@lunn.ch>
-Subject: Re: [v7, PATCH 2/2] dt-binding: mediatek-dwmac: add binding document
- for MediaTek MT2712 DWMAC
-Date: Thu, 13 Dec 2018 13:36:58 +0100
-Message-ID: <20181213123658.GG1605@lunn.ch>
-References: <1544666173-5121-1-git-send-email-biao.huang@mediatek.com>
- <1544666173-5121-3-git-send-email-biao.huang@mediatek.com>
+From: Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: mt76x[02]u 802.11w support
+Date: Thu, 13 Dec 2018 09:26:09 -0500
+Message-ID: <CAM0KTbBUXJsBfO0=hQgeTGVteym6iuObdyNynWumQnnGY0L3wg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1544666173-5121-3-git-send-email-biao.huang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Biao Huang <biao.huang@mediatek.com>
-Cc: davem@davemloft.net, robh+dt@kernel.org, honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, joabreu@synopsys.com
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
+Cc: linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-> +- mediatek,rx-delay-ps: RX clock delay macro value. Default is 0.
-> +	It should be defined for rgmii/rgmii-txid/mii/rmii interface.
-> +Both delay properties need to be a multiple of 170 for fine-tune rgmii,
-> +range 0~31*170.
-> +Both delay properties need to be a multiple of 550 for coarse-tune rgmii,
-> +range 0~31*550.
-> +Both delay properties need to be a multiple of 550 for mii/rmii,
-> +range 0~31*550.
+Per a conversation with Lorenzo, it seems that 802.11w for mt76x[02]u
+has only been fixed in 4.20.  As 4.19 is a LTS kernel, I'd like to
+request that work be backported.  While the improvements in 4.20 and
+4.21 are already fairly obvious, a lot of people will be running 4.19
+for years to come.  This is good hardware, with a working driver
+(thanks team) but in the next few months excitement is going to turn
+toward WPA3 which requires working 802.11w.
 
-You see "need to be" here, but the driver does not care. It will round
-down. Please either make the driver check, or change the text to
-rather say it will round down.
+Pretty please backport 802.11w support to 4.19
 
-       Andrew
+Thanks,
+Zero
