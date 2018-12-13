@@ -1,28 +1,50 @@
-From: Kevin Hilman <khilman@baylibre.com>
-Subject: Re: [PATCH v1] pinctrl: mediatek: improve Kconfig dependencies
-Date: Thu, 13 Dec 2018 08:49:46 -0800
-Message-ID: <7hlg4ts76d.fsf@baylibre.com>
-References: <e4eb66dec2901016e01767932461c5d560762f66.1544666839.git.ryder.lee@mediatek.com>
+From: Will Deacon <will.deacon@arm.com>
+Subject: Re: [PATCH] arm64: kaslr: print PHYS_OFFSET in dump_kernel_offset()
+Date: Thu, 13 Dec 2018 18:13:18 +0000
+Message-ID: <20181213181317.GD18185@edgewater-inn.cambridge.arm.com>
+References: <1544612209-13660-1-git-send-email-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <e4eb66dec2901016e01767932461c5d560762f66.1544666839.git.ryder.lee@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1544612209-13660-1-git-send-email-miles.chen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Weijie Gao <weijie.gao@mediatek.com>, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
+To: Miles Chen <miles.chen@mediatek.com>
+Cc: Catalin Marinas <catalin.marinas@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, ard.biesheuvel@linaro.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Ryder Lee <ryder.lee@mediatek.com> writes:
+[+Ard because I'll basically go with his preference on this one]
 
-> Remove prompts to make all pinctrl cores to non-visible symbols and
-> make sure the target SoCs would be coupled with the corresponding
-> cores.
->
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-
-Tested-by: Kevin Hilman <khilman@baylibre.com>
-
-Tested on the mt7623-rfb1 board which has been failing in kernelCI, and
-this patch gets things booting again.
-
-Kevin
+On Wed, Dec 12, 2018 at 06:56:49PM +0800, Miles Chen wrote:
+> When debug with kaslr, it is sometimes necessary to have PHYS_OFFSET to
+> perform linear virtual address to physical address translation.
+> Sometimes we're debugging with only few information such as a kernel log
+> and a symbol file, print PHYS_OFFSET in dump_kernel_offset() for that case.
+> 
+> Tested by:
+> echo c > /proc/sysrq-trigger
+> [   11.996161] SMP: stopping secondary CPUs
+> [   11.996732] Kernel Offset: 0x2522200000 from 0xffffff8008000000
+> [   11.996881] PHYS_OFFSET: 0xffffffeb40000000
+> 
+> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+> Tested-by: Miles Chen <miles.chen@mediatek.com>
+> ---
+>  arch/arm64/kernel/setup.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/arch/arm64/kernel/setup.c b/arch/arm64/kernel/setup.c
+> index f4fc1e0544b7..4b0e1231625c 100644
+> --- a/arch/arm64/kernel/setup.c
+> +++ b/arch/arm64/kernel/setup.c
+> @@ -388,6 +388,7 @@ static int dump_kernel_offset(struct notifier_block *self, unsigned long v,
+>  	if (IS_ENABLED(CONFIG_RANDOMIZE_BASE) && offset > 0) {
+>  		pr_emerg("Kernel Offset: 0x%lx from 0x%lx\n",
+>  			 offset, KIMAGE_VADDR);
+> +		pr_emerg("PHYS_OFFSET: 0x%llx\n", PHYS_OFFSET);
+>  	} else {
+>  		pr_emerg("Kernel Offset: disabled\n");
+>  	}
+> -- 
+> 2.18.0
+> 
