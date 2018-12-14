@@ -1,143 +1,33 @@
-From: Florian Fainelli <f.fainelli@gmail.com>
-Subject: Re: Aw: Re: [PATCH 0/8] adding multiple CPU-Ports
-Date: Fri, 14 Dec 2018 12:35:40 -0800
-Message-ID: <0d78bf87-8f91-6936-6366-5900f9070383@gmail.com>
-References: <20181214164847.4851-1-frank-w@public-files.de>
- <3d53d8cf-3130-17bd-8418-310dda7d93a2@gmail.com>
- <trinity-d5689ac9-d645-48e5-bed9-8a51826f9c50-1544809703712@3c-app-gmx-bs32>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH v3 01/12] clk: mediatek: fixup: Disable tuner_en before change PLL rate
+Date: Fri, 14 Dec 2018 13:57:38 -0800
+Message-ID: <154482465853.19322.3763394015657394960@swboyd.mtv.corp.google.com>
+References: <20181210073240.32278-1-weiyi.lu@mediatek.com> <20181210073240.32278-3-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <trinity-d5689ac9-d645-48e5-bed9-8a51826f9c50-1544809703712@3c-app-gmx-bs32>
-Content-Language: en-US
-Sender: netdev-owner@vger.kernel.org
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, linux-mediatek@lists.infradead.org, vivien.didelot@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181210073240.32278-3-weiyi.lu@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh@kernel.org>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>, Owen Chen <owen.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 12/14/18 9:48 AM, Frank Wunderlich wrote:
-> Hi,
-> 
-> i can test it and of course help as far as i can...
-> 
-> for the bridge-way this means that an unconfigured system does not have a connection between the user and the cpu-ports, right? If this is the desired way imho there should be a way to default a default, so that the device stays connectable if there is no user-config. Or is this you mean with "policy/user configuration in DT"?
+Why is "fixup" in the subject of this patch?
 
-Yes, this is what I mean with DT is dictating policy. If you have a
-properly working DSA switch driver, then all ports are segregated from
-one another and there is no cross talk, so there is no risk of e.g:
-exposing LAN devices to the WAN accidentally.
+Quoting Weiyi Lu (2018-12-09 23:32:29)
+> From: Owen Chen <owen.chen@mediatek.com>
+>=20
+> PLLs with tuner_en bit, such as APLL1, need to disable
+> tuner_en before apply new frequency settings, or the new frequency
+> settings (pcw) will not be applied.
+> The tuner_en bit will be disabled during changing PLL rate
+> and be restored after new settings applied.
+> Another minor change is to correct the macro name of pcw change bit
+> to CON1_PCW_CHG because PCW_CHG(BIT31) is on CON1.
+>=20
+> Cc: <stable@vger.kernel.org>
+> Signed-off-by: Owen Chen <owen.chen@mediatek.com>
 
-> 
-> currently there is a bug in Ethernet-Patches you find on my github resulting in tx timeout (netdev watchdog) after switching connection (port1 down, reconnect cable to another port and bring this up) between interfaces. Thats the reason i only posted the dsa/dts-Part.
-
-Strange, that sounds like a separate issue does not it?
-
-> 
-> I've contacted mediatek-Team (Ryder Lee, Marc-MC Lee, Landen Chao, Steven Liu) at beginning of this week and got a Patch from Ryder (you see on top of my repo) which unfortunately wont fix it. Maybe anyone here sees the Problem
-
-Keep in mind that multi-CPU port is more of an optimization than a real
-necessity in most cases. If you have a single switch that spans multiple
-LAN/WAN ports and multiple CPU ports, the only advantage of assigning
-WAN to a specific CPU port and LAN ports to a specific CPU port is to
-effectively double the bandwidth, both within the switch and within the
-SoC's architecture (permitted it is designed that way). There is still,
-unless there is a NAT-P accelerator a need to perform IP routing in
-software...
-
-> 
-> regards Frank
-> 
-> 
->> Gesendet: Freitag, 14. Dezember 2018 um 18:26 Uhr
->> Von: "Florian Fainelli" <f.fainelli@gmail.com>
->> An: "Frank Wunderlich" <frank-w@public-files.de>, "Matthias Brugger" <matthias.bgg@gmail.com>, netdev@vger.kernel.org, "Sean Wang" <sean.wang@mediatek.com>, "Andrew Lunn" <andrew@lunn.ch>, linux-mediatek@lists.infradead.org, vivien.didelot@gmail.com
->> Betreff: Re: [PATCH 0/8] adding multiple CPU-Ports
->>
->> Hi Frank,
->>
->> On 12/14/18 8:48 AM, Frank Wunderlich wrote:
->>> some switch-chips have multiple CPU-Ports
->>>
->>> this patch-series adds basic functionality and handle the 2
->>> cpu-Ports of mt7530 on board BananaPi R2
->>>
->>> changes to mtk-ethernet-driver are not included yet,
->>> because here are still some issues with watchdog-timeouts
->>>
->>> most patches are based on OpenWRT-Patches created by
->>> John Crispin and only ported to DSA-Core 4.15+ with 2 main differences:
->>>   - no change to platform-driver
->>>   - option in dts is named "default_cpu" instead of only "cpu" to
->>>     allow modification from userspace (additional patches needed)
->>>
->>> complete source (including eth-patches) is uploaded here:
->>> https://github.com/frank-w/BPI-R2-4.14/commits/4.20-gmac-test
->>
->> Andrew, Vivien and I were discussing about multi-CPU support lately and
->> we think that the best and most flexible way to allow multi-CPU ports to
->> be supported is to allow enslaving the DSA master network devices (CPU
->> Ethernet controllers) into a bridge because that will inherently define
->> the mapping between ports. Enslaving the CPU port into the bridge is not
->> currently allowed because processing of DSA switch tags and bridge
->> frames were done in an incorrect order, but we can easily change that.
->>
->> So for instance in a dual CPU configuration interface with eth0 and eth1
->> being the two DSA master network devices and then lan1 through lan3
->> through lan4 being the user-visible LAN ports and wan being the wan pot,
->> the set-up would look like this:
->>
->> ip link add dev br-lan type bridge
->> ip link set dev lan1 master br-lan
->> ...
->> ip link set dev lan3 master br-lan
->> ip link add dev br-wan typebridge
->> ip link set dev wan master br-wan
->>
->> That way, if you ever wanted to have more/less ports on the LAN or WAN
->> side, you could do that.
->>
->> The problem with the Device Tree approach is really that we are not
->> sticking to a strict HW description, we are encoding a policy/user
->> configuration in Device Tree.
->>
->> If that is acceptable to you, we can probably start working on some
->> patches and have you help us test them?
->>
->>>
->>> new in v2:
->>>   - added DTS-changes
->>>   - added cover-letter
->>>   - added change of dts-option (default_cpu)
->>>
->>> currently posted not to full maintainers-list for first review,
->>> will do it when patches are ready :)
->>>
->>> Frank Wunderlich (8):
->>>   net: dsa: adding fields for holding information about upstream-port
->>>   net: dsa: add helper functions
->>>   net: dsa: adding handling of second CPU-Port
->>>   net: dsa: add support for GMAC2 wired to ext
->>>   net: dsa: dsa multi cpu (mt7530.c)
->>>   net: dsa: tell GDMA when we are turning on the special tag
->>>   net: dsa: mt7530 add linking to mdio
->>>   net: dsa: changes to dts
->>>
->>>  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 29 +++++++++-
->>>  drivers/net/dsa/mt7530.c                      | 55 +++++++++++++------
->>>  drivers/net/dsa/mt7530.h                      |  4 ++
->>>  include/net/dsa.h                             | 22 ++++++++
->>>  net/dsa/dsa2.c                                | 36 ++++++++++++
->>>  net/dsa/dsa_priv.h                            |  5 ++
->>>  net/dsa/slave.c                               |  3 +-
->>>  7 files changed, 135 insertions(+), 19 deletions(-)
->>>
->>
->>
->> -- 
->> Florian
->>
-
-
--- 
-Florian
+So there should be some Fixes: tag here too so we know what commit is
+being fixed?
