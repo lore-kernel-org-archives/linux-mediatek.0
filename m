@@ -1,7 +1,7 @@
 From: Frank Wunderlich <frank-w@public-files.de>
-Subject: [PATCH 5/8] net: dsa: dsa multi cpu (mt7530.c)
-Date: Fri, 14 Dec 2018 17:48:44 +0100
-Message-ID: <20181214164847.4851-6-frank-w@public-files.de>
+Subject: [PATCH 3/8] net: dsa: adding handling of second CPU-Port
+Date: Fri, 14 Dec 2018 17:48:42 +0100
+Message-ID: <20181214164847.4851-4-frank-w@public-files.de>
 References: <20181214164847.4851-1-frank-w@public-files.de>
 Return-path: <netdev-owner@vger.kernel.org>
 In-Reply-To: <20181214164847.4851-1-frank-w@public-files.de>
@@ -10,118 +10,99 @@ To: Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, Sean Wang
 Cc: Frank Wunderlich <frank-w@public-files.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-implementing changes to mt7530 switch driver for supporting multiple (2)
-cpu-ports
+this patch adds the core-functionality of multiple cpu-ports
+
+currently it uses definition in dts to make connection between cpu and user-port
 
 based on
 https://github.com/openwrt/openwrt/blob/master/target/linux/mediatek/patches-4.14/0033-dsa-multi-cpu.patch
 
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
- drivers/net/dsa/mt7530.c | 34 +++++++++++++++++++---------------
- 1 file changed, 19 insertions(+), 15 deletions(-)
+ net/dsa/dsa2.c  | 18 ++++++++++++++++++
+ net/dsa/slave.c |  3 ++-
+ 2 files changed, 20 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index a6a15a063e3e..441320d4d779 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -674,6 +674,9 @@ static int
- mt7530_cpu_port_enable(struct mt7530_priv *priv,
- 		       int port)
- {
-+	u8 port_mask = 0;
-+	int i;
+diff --git a/net/dsa/dsa2.c b/net/dsa/dsa2.c
+index b7c6da2f1f08..8f64535fd2a0 100644
+--- a/net/dsa/dsa2.c
++++ b/net/dsa/dsa2.c
+@@ -303,6 +303,8 @@ static int dsa_port_setup(struct dsa_port *dp)
+ 				ds->index, dp->index);
+ 			return err;
+ 		}
++		if (dp->master)
++			dp->master->dsa_ptr = dp;
+ 		break;
+ 	case DSA_PORT_TYPE_DSA:
+ 		/* dp->index is used now as port_number. However
+@@ -323,12 +325,17 @@ static int dsa_port_setup(struct dsa_port *dp)
+ 		devlink_port_attrs_set(&dp->devlink_port,
+ 				       DEVLINK_PORT_FLAVOUR_PHYSICAL,
+ 				       dp->index, false, 0);
++		err = dsa_user_parse(dp, dp->index, ds);
++		if (err)
++			return err;
 +
- 	/* Enable Mediatek header mode on the cpu port */
- 	mt7530_write(priv, MT7530_PVC_P(port),
- 		     PORT_SPEC_TAG);
-@@ -690,8 +693,14 @@ mt7530_cpu_port_enable(struct mt7530_priv *priv,
- 	/* CPU port gets connected to all user ports of
- 	 * the switch
- 	 */
+ 		err = dsa_slave_create(dp);
+ 		if (err)
+ 			dev_err(ds->dev, "failed to create slave for port %d.%d\n",
+ 				ds->index, dp->index);
+ 		else
+ 			devlink_port_type_eth_set(&dp->devlink_port, dp->slave);
 +
-+	for (i = 0; i < MT7530_NUM_PORTS; i++)
-+		if ((priv->ds->ports[port].type == DSA_PORT_TYPE_USER) &&
-+		    (dsa_port_upstream_port(priv->ds, i) == port))
-+			port_mask |= BIT(i);
-+
- 	mt7530_write(priv, MT7530_PCR_P(port),
--		     PCR_MATRIX(dsa_user_ports(priv->ds)));
-+		     PCR_MATRIX(port_mask));
+ 		break;
+ 	}
  
+@@ -344,6 +351,14 @@ static void dsa_port_teardown(struct dsa_port *dp)
+ 	case DSA_PORT_TYPE_UNUSED:
+ 		break;
+ 	case DSA_PORT_TYPE_CPU:
++		dsa_port_link_unregister_of(dp);
++		if (dp->master)
++			dp->master->dsa_ptr = NULL;
++		if (dp->ethernet) {
++			dev_put(dp->ethernet);
++			dp->ethernet = NULL;
++		}
++		break;
+ 	case DSA_PORT_TYPE_DSA:
+ 		dsa_port_link_unregister_of(dp);
+ 		break;
+@@ -598,6 +613,9 @@ static int dsa_port_parse_cpu(struct dsa_port *dp, struct net_device *master)
+ 	dp->master = master;
+ 	dp->dst = dst;
+ 
++	dev_hold(master);
++	ds->ports[dp->index].ethernet = master;
++
  	return 0;
  }
-@@ -701,6 +710,7 @@ mt7530_port_enable(struct dsa_switch *ds, int port,
- 		   struct phy_device *phy)
+ 
+diff --git a/net/dsa/slave.c b/net/dsa/slave.c
+index 7d0c19e7edcf..f0fdb9e5d05f 100644
+--- a/net/dsa/slave.c
++++ b/net/dsa/slave.c
+@@ -1312,11 +1312,11 @@ static void dsa_slave_notify(struct net_device *dev, unsigned long val)
+ int dsa_slave_create(struct dsa_port *port)
  {
- 	struct mt7530_priv *priv = ds->priv;
-+	u8 upstream = dsa_port_upstream_port(ds, port);
+ 	const struct dsa_port *cpu_dp = port->cpu_dp;
+-	struct net_device *master = cpu_dp->master;
+ 	struct dsa_switch *ds = port->ds;
+ 	const char *name = port->name;
+ 	struct net_device *slave_dev;
+ 	struct dsa_slave_priv *p;
++	struct net_device *master = ds->ports[port->upstream].ethernet;
+ 	int ret;
  
- 	mutex_lock(&priv->reg_mutex);
+ 	if (!ds->num_tx_queues)
+@@ -1355,6 +1355,7 @@ int dsa_slave_create(struct dsa_port *port)
+ 	p->dp = port;
+ 	INIT_LIST_HEAD(&p->mall_tc_list);
+ 	p->xmit = cpu_dp->tag_ops->xmit;
++	p->master = master;
+ 	port->slave = slave_dev;
  
-@@ -711,7 +721,7 @@ mt7530_port_enable(struct dsa_switch *ds, int port,
- 	 * restore the port matrix if the port is the member of a certain
- 	 * bridge.
- 	 */
--	priv->ports[port].pm |= PCR_MATRIX(BIT(MT7530_CPU_PORT));
-+	priv->ports[port].pm |= PCR_MATRIX(BIT(upstream));
- 	priv->ports[port].enable = true;
- 	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
- 		   priv->ports[port].pm);
-@@ -774,7 +784,8 @@ mt7530_port_bridge_join(struct dsa_switch *ds, int port,
- 			struct net_device *bridge)
- {
- 	struct mt7530_priv *priv = ds->priv;
--	u32 port_bitmap = BIT(MT7530_CPU_PORT);
-+	u8 upstream = dsa_port_upstream_port(ds, port);
-+	u32 port_bitmap = BIT(upstream);
- 	int i;
- 
- 	mutex_lock(&priv->reg_mutex);
-@@ -875,6 +886,7 @@ mt7530_port_bridge_leave(struct dsa_switch *ds, int port,
- 			 struct net_device *bridge)
- {
- 	struct mt7530_priv *priv = ds->priv;
-+	u8 upstream = dsa_port_upstream_port(ds, port);
- 	int i;
- 
- 	mutex_lock(&priv->reg_mutex);
-@@ -902,8 +914,8 @@ mt7530_port_bridge_leave(struct dsa_switch *ds, int port,
- 	 */
- 	if (priv->ports[port].enable)
- 		mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
--			   PCR_MATRIX(BIT(MT7530_CPU_PORT)));
--	priv->ports[port].pm = PCR_MATRIX(BIT(MT7530_CPU_PORT));
-+			   PCR_MATRIX(BIT(upstream)));
-+	priv->ports[port].pm = PCR_MATRIX(BIT(upstream));
- 
- 	mt7530_port_set_vlan_unaware(ds, port);
- 
-@@ -1194,15 +1206,7 @@ mt7530_port_vlan_del(struct dsa_switch *ds, int port,
- static enum dsa_tag_protocol
- mtk_get_tag_protocol(struct dsa_switch *ds, int port)
- {
--	struct mt7530_priv *priv = ds->priv;
--
--	if (port != MT7530_CPU_PORT) {
--		dev_warn(priv->dev,
--			 "port not matched with tagging CPU port\n");
--		return DSA_TAG_PROTO_NONE;
--	} else {
--		return DSA_TAG_PROTO_MTK;
--	}
-+	return DSA_TAG_PROTO_MTK;
- }
- 
- static int
-@@ -1275,7 +1279,7 @@ mt7530_setup(struct dsa_switch *ds)
- 
- 	/* Enable Port 6 only; P5 as GMAC5 which currently is not supported */
- 	val = mt7530_read(priv, MT7530_MHWTRAP);
--	val &= ~MHWTRAP_P6_DIS & ~MHWTRAP_PHY_ACCESS;
-+	val &= ~MHWTRAP_P5_DIS & ~MHWTRAP_P6_DIS & ~MHWTRAP_PHY_ACCESS;
- 	val |= MHWTRAP_MANUAL;
- 	if (!dsa_is_cpu_port(ds, 5)) {
- 		val |= MHWTRAP_P5_DIS;
+ 	netif_carrier_off(slave_dev);
 -- 
 2.17.1
