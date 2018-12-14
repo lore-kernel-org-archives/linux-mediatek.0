@@ -1,27 +1,37 @@
-From: Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: [resend PATCH v1 0/2] update Mediatek MT2712 clock
-Date: Fri, 14 Dec 2018 10:04:15 +0800
-Message-ID: <20181214020417.2871-2-weiyi.lu@mediatek.com>
-References: <20181214020417.2871-1-weiyi.lu@mediatek.com>
+From: biao huang <biao.huang@mediatek.com>
+Subject: Re: [v7, PATCH 2/2] dt-binding: mediatek-dwmac: add binding
+ document for MediaTek MT2712 DWMAC
+Date: Fri, 14 Dec 2018 10:24:04 +0800
+Message-ID: <1544754244.24219.135.camel@mhfsdcap03>
+References: <1544666173-5121-1-git-send-email-biao.huang@mediatek.com>
+         <1544666173-5121-3-git-send-email-biao.huang@mediatek.com>
+         <20181213123658.GG1605@lunn.ch>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181214020417.2871-1-weiyi.lu@mediatek.com>
+In-Reply-To: <20181213123658.GG1605@lunn.ch>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, Weiyi Lu <weiyi.lu@mediatek.com>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: davem@davemloft.net, robh+dt@kernel.org, honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, joabreu@synopsys.com
 List-Id: linux-mediatek@lists.infradead.org
 
-This series is based on v4.20-rc1.
-Basically, this series is for the 3rd ECO design change of MT2712.
+Dear Andrew,
 
-Weiyi Lu (2):
-  dt-bindings: clock: add clock for MT2712
-  clk: mediatek: update clock driver of MT2712
-
- drivers/clk/mediatek/clk-mt2712.c      | 8 ++++++--
- include/dt-bindings/clock/mt2712-clk.h | 3 ++-
- 2 files changed, 8 insertions(+), 3 deletions(-)
-
--- 
-2.18.0
+	Thanks for your comments.
+On Thu, 2018-12-13 at 13:36 +0100, Andrew Lunn wrote:
+> > +- mediatek,rx-delay-ps: RX clock delay macro value. Default is 0.
+> > +	It should be defined for rgmii/rgmii-txid/mii/rmii interface.
+> > +Both delay properties need to be a multiple of 170 for fine-tune rgmii,
+> > +range 0~31*170.
+> > +Both delay properties need to be a multiple of 550 for coarse-tune rgmii,
+> > +range 0~31*550.
+> > +Both delay properties need to be a multiple of 550 for mii/rmii,
+> > +range 0~31*550.
+> 
+> You see "need to be" here, but the driver does not care. It will round
+> down. Please either make the driver check, or change the text to
+> rather say it will round down.
+OK, will mark "round down" in the binding file.
+> 
+>        Andrew
