@@ -1,53 +1,46 @@
-From: <honghui.zhang@mediatek.com>
-Subject: [PATCH 3/4] arm: dts: mt7623: Remove un-used property for PCIe
-Date: Fri, 14 Dec 2018 09:25:41 +0800
-Message-ID: <1544750742-31419-4-git-send-email-honghui.zhang@mediatek.com>
-References: <1544750742-31419-1-git-send-email-honghui.zhang@mediatek.com>
+From: Nick Fan <nick.fan@mediatek.com>
+Subject: Re: [PATCH] opp: Add API for getting voltage from supplies
+Date: Fri, 14 Dec 2018 09:36:49 +0800
+Message-ID: <1544751409.6417.22.camel@mtksdaap41>
+References: <1543906760-15631-1-git-send-email-Nick.Fan@mediatek.com>
+         <20181204082158.rb7uzdiwmcotwoxh@vireshk-i7>
+         <1544445372.3502.42.camel@mtksdaap41>
+         <20181213063850.c5nu3bbe7gm647ca@vireshk-i7>
+         <1544697412.6417.13.camel@mtksdaap41>
+         <20181213104247.kosguuoukoi645pf@vireshk-i7>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1544750742-31419-1-git-send-email-honghui.zhang@mediatek.com>
+In-Reply-To: <20181213104247.kosguuoukoi645pf@vireshk-i7>
 Sender: linux-kernel-owner@vger.kernel.org
-To: lorenzo.pieralisi@arm.com, bhelgaas@google.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com, matthias.bgg@gmail.com, robh+dt@kernel.org, robh@kernel.org
-Cc: devicetree@vger.kernel.org, youlin.pei@mediatek.com, jianjun.wang@mediatek.com, Honghui Zhang <honghui.zhang@mediatek.com>
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Cc: Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, tfiga@chromium.org, Chiawen.Lee@mediatek.com, erin.lo@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Honghui Zhang <honghui.zhang@mediatek.com>
+On Thu, 2018-12-13 at 16:12 +0530, Viresh Kumar wrote:
+> On 13-12-18, 18:36, Nick Fan wrote:
+> > This new API is suitable for the users that required to access for
+> > multiple regulators. And I am one of users who uses this API, but I am
+> > not able to upstream the GPU kernel driver which uses the new API.
+> 
+> Look at it from mainline's perspective..
+> 
+> - We don't (can't) care about non-mainline stuff. Actually we do care,
+>   but we can't add code to mainline which is not going to be used by
+>   any mainline user.
+> 
+> - I am fine with introducing the new API, but that will happen only if
+>   there is going to be a mainline user as well.
+> 
+> - As you are going to maintain your GPU driver offline, you can
+>   maintain this patch too.
+> 
+> Sorry Nick.
+> 
+It's OK.
+I got your ideas.
+Thanks a lot for the explanation and review on this patch.
 
-The "num-lanes" property for PCIe is not used, remove it.
-
-Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
----
- arch/arm/boot/dts/mt7623.dtsi | 3 ---
- 1 file changed, 3 deletions(-)
-
-diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-index 1cdc346..4ca56d8 100644
---- a/arch/arm/boot/dts/mt7623.dtsi
-+++ b/arch/arm/boot/dts/mt7623.dtsi
-@@ -734,7 +734,6 @@
- 			interrupt-map-mask = <0 0 0 0>;
- 			interrupt-map = <0 0 0 0 &sysirq GIC_SPI 193 IRQ_TYPE_LEVEL_LOW>;
- 			ranges;
--			num-lanes = <1>;
- 			status = "disabled";
- 		};
- 
-@@ -746,7 +745,6 @@
- 			interrupt-map-mask = <0 0 0 0>;
- 			interrupt-map = <0 0 0 0 &sysirq GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>;
- 			ranges;
--			num-lanes = <1>;
- 			status = "disabled";
- 		};
- 
-@@ -758,7 +756,6 @@
- 			interrupt-map-mask = <0 0 0 0>;
- 			interrupt-map = <0 0 0 0 &sysirq GIC_SPI 195 IRQ_TYPE_LEVEL_LOW>;
- 			ranges;
--			num-lanes = <1>;
- 			status = "disabled";
- 		};
- 	};
--- 
-2.6.4
+--
+Nick Fan
