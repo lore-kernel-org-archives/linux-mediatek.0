@@ -1,110 +1,79 @@
-From: biao huang <biao.huang@mediatek.com>
-Subject: Re: [v7, PATCH 1/2] net:stmmac: dwmac-mediatek: add support for
- mt2712
-Date: Fri, 14 Dec 2018 14:32:16 +0800
-Message-ID: <1544769136.24219.175.camel@mhfsdcap03>
-References: <1544666173-5121-1-git-send-email-biao.huang@mediatek.com>
-         <1544666173-5121-2-git-send-email-biao.huang@mediatek.com>
-         <20181213123346.GF1605@lunn.ch> <1544756477.24219.164.camel@mhfsdcap03>
-         <f3427cac-88b2-1464-8f92-4692a7125674@gmail.com>
+From: Nick Fan <Nick.Fan@mediatek.com>
+Subject: [RFC PATCH] [RESEND] opp: Add API for getting voltage from supplies
+Date: Fri, 14 Dec 2018 17:17:42 +0800
+Message-ID: <1544779062-8276-1-git-send-email-Nick.Fan@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <f3427cac-88b2-1464-8f92-4692a7125674@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Florian Fainelli <f.fainelli@gmail.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, mark.rutland@arm.com, devicetree@vger.kernel.org, nelson.chang@mediatek.com, netdev@vger.kernel.org, liguo.zhang@mediatek.com, joabreu@synopsys.com, linux-kernel@vger.kernel.org, matthias.bgg@gmail.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, honghui.zhang@mediatek.com, yt.shen@mediatek.com, davem@davemloft.net, linux-arm-kernel@lists.infradead.org
+To: Viresh Kumar <vireshk@kernel.org>
+Cc: Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, tfiga@chromium.org, Chiawen.Lee@mediatek.com, erin.lo@mediatek.com, Nick Fan <Nick.Fan@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Dear Florian,
-	Thanks for your comments.
+[Resending because the previous attempt did not reach the mailing lists.]
 
-On Thu, 2018-12-13 at 21:11 -0800, Florian Fainelli wrote:
-> Le 12/13/18 à 7:01 PM, biao huang a écrit :
-> > Dear Andrew,
-> > 	Thanks for your comments.
-> > 
-> > On Thu, 2018-12-13 at 13:33 +0100, Andrew Lunn wrote:
-> >> Hi Biao
-> >>
-> >>> +	case PHY_INTERFACE_MODE_RGMII:
-> >>> +		/* the PHY is not responsible for inserting any internal
-> >>> +		 * delay by itself in PHY_INTERFACE_MODE_RGMII case,
-> >>> +		 * so Ethernet MAC will insert delays for both transmit
-> >>> +		 * and receive path here.
-> >>> +		 */
-> >>
-> >> What if the PCB designed has decided to do a kink in the clock to add
-> >> the delays? I don't think any of these delays should depend on the PHY
-> >> interface mode. It is up to the device tree writer to set both the PHY
-> >> delay and the MAC delay, based on knowledge of the board, including
-> >> any kicks in the tracks. The driver should then do what it is told.
-> >>
-> > Originally, we recommend equal trace length on PCB, which means that
-> > RGMII delay by PCB traces is not recommended. so only PHY/MAC delay is
-> > taken into account in the transmit/receive path.
-> > 
-> > as you described above, maybe the equal PCB trace length assumption is
-> > not reasonable, and we'll only handle MAC delay-ps in our driver based
-> > on the device tree information no matter which rgmii is selected.
-> 
-> Expecting identical PCB traces is something that is hard to enforce with
-> external customers, for internal reference boards, absolutely they
-> should have those traces of equal length.
-> 
-yes, we'll set the corresponding register based on the
-tx-delay-ps/rx-delay-ps in device tree for rgmii interface.
-the PHY_INTERFACE_MODE_RGMII/-RXID/-TXID/-ID share the same flow in
-Ethernet driver.
+This new API is needed for a downstream GPU driver, but posting it as an RFC to make sure that we implement it in a potentially upstreamable way or in case someone needs it for an upstream user later.
 
-A new patch will be sent to fix this issue.
-> > 
-> > Since David already applied this patch, I'll send another patch to fix
-> > this issue.
-> >>> +	if (!of_property_read_u32(plat->np, "mediatek,tx-delay-ps", &tx_delay_ps)) {
-> >>> +		if (tx_delay_ps < plat->variant->tx_delay_max) {
-> >>> +			mac_delay->tx_delay = tx_delay_ps;
-> >>> +		} else {
-> >>> +			dev_err(plat->dev, "Invalid TX clock delay: %dps\n", tx_delay_ps);
-> >>> +			return -EINVAL;
-> >>> +		}
-> >>> +	}
-> >>> +
-> >>> +	if (!of_property_read_u32(plat->np, "mediatek,rx-delay-ps", &rx_delay_ps)) {
-> >>> +		if (rx_delay_ps < plat->variant->rx_delay_max) {
-> >>> +			mac_delay->rx_delay = rx_delay_ps;
-> >>> +		} else {
-> >>> +			dev_err(plat->dev, "Invalid RX clock delay: %dps\n", rx_delay_ps);
-> >>> +			return -EINVAL;
-> >>> +		}
-> >>> +	}
-> >>> +
-> >>> +	mac_delay->tx_inv = of_property_read_bool(plat->np, "mediatek,txc-inverse");
-> >>> +	mac_delay->rx_inv = of_property_read_bool(plat->np, "mediatek,rxc-inverse");
-> >>> +	mac_delay->fine_tune = of_property_read_bool(plat->np, "mediatek,fine-tune");
-> >>
-> >> Why is fine tune needed? If the requested delay can be done using fine
-> >> tune, it should use fine tune. If not, it should use rough tune. The
-> >> driver can work this out itself.
-> > 
-> > find tune here represents a more accurate delay circuit than coarse
-> > tune, and it's a parallel circuit of coarse tune.
-> > For most delay, both fine and coarse tune can meet the requirement.
-> > It's up to the user to select which one.
-> > 
-> > But only one of them can work at the same time, so we need a switch
-> > flag(fine_tune here) to indicate which one is valid.
-> > Driver can hardly work out which one is working according to delay-ps.
-> > 
-> > Please correct me if any misunderstanding.
-> 
-> You are giving a lot of options for users of this Ethernet controller to
-> shoot themselves in the feet and spend a good amount of time debugging
-> why their RGMII connection is not reliable or have timing violations.
-yes, since fine tune is more accurate, and can meet customer's
-requirement, we'll remove the 'fine-tune' property in device tree,
-enable fine-tune circuit by default in Ethernet driver, and abandon the
-coarse delay mechanism. so customer will not be confused by the options.
+Add API to get voltage for multiple supplies from opp table
 
-I'll send a new patch to fix this issue.
+Signed-off-by: Nick Fan <Nick.Fan@mediatek.com>
+---
+ drivers/opp/core.c     | 28 ++++++++++++++++++++++++++++
+ include/linux/pm_opp.h |  3 +++
+ 2 files changed, 31 insertions(+)
+
+diff --git a/drivers/opp/core.c b/drivers/opp/core.c
+index 2c2df4e..ee73546 100644
+--- a/drivers/opp/core.c
++++ b/drivers/opp/core.c
+@@ -113,6 +113,34 @@ unsigned long dev_pm_opp_get_voltage(struct dev_pm_opp *opp)
+ EXPORT_SYMBOL_GPL(dev_pm_opp_get_voltage);
+ 
+ /**
++ * dev_pm_opp_get_voltage_supply() - Gets the voltage corresponding to an opp
++ * with index
++ * @opp:        opp for which voltage has to be returned for
++ * @index:      index to specify the returned supplies
++ *
++ * Return: voltage in micro volt corresponding to the opp with index, else
++ * return 0
++ *
++ * This is useful for devices with multiple power supplies.
++ */
++unsigned long dev_pm_opp_get_voltage_supply(struct dev_pm_opp *opp,
++					    unsigned int index)
++{
++	if (IS_ERR_OR_NULL(opp)) {
++		pr_err("%s: Invalid parameters\n", __func__);
++		return 0;
++	}
++
++	if (index >= opp->opp_table->regulator_count) {
++		pr_err("%s: Invalid supply index: %u\n", __func__, index);
++		return 0;
++	}
++
++	return opp->supplies[index].u_volt;
++}
++EXPORT_SYMBOL_GPL(dev_pm_opp_get_voltage_supply);
++
++/**
+  * dev_pm_opp_get_freq() - Gets the frequency corresponding to an available opp
+  * @opp:	opp for which frequency has to be returned for
+  *
+diff --git a/include/linux/pm_opp.h b/include/linux/pm_opp.h
+index 5d399eee..2f1c2a8 100644
+--- a/include/linux/pm_opp.h
++++ b/include/linux/pm_opp.h
+@@ -84,6 +84,9 @@ struct dev_pm_set_opp_data {
+ 
+ unsigned long dev_pm_opp_get_voltage(struct dev_pm_opp *opp);
+ 
++unsigned long dev_pm_opp_get_voltage_supply(struct dev_pm_opp *opp,
++					    unsigned int index);
++
+ unsigned long dev_pm_opp_get_freq(struct dev_pm_opp *opp);
+ 
+ bool dev_pm_opp_is_turbo(struct dev_pm_opp *opp);
+-- 
+1.9.1
