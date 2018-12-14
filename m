@@ -1,84 +1,68 @@
 From: David Hildenbrand <david@redhat.com>
-Subject: [PATCH v1 9/9] mm: better document PG_reserved
-Date: Fri, 14 Dec 2018 12:10:14 +0100
-Message-ID: <20181214111014.15672-10-david@redhat.com>
-References: <20181214111014.15672-1-david@redhat.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181214111014.15672-1-david@redhat.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Subject: [PATCH v1 0/9] mm: PG_reserved cleanups and documentation
+Date: Fri, 14 Dec 2018 12:10:05 +0100
+Message-ID: <20181214111014.15672-1-david@redhat.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-riscv-bounces+glpr-linux-riscv=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-riscv>,
+ <mailto:linux-riscv-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-riscv/>
+List-Post: <mailto:linux-riscv@lists.infradead.org>
+List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
+ <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
+Errors-To: linux-riscv-bounces+glpr-linux-riscv=m.gmane.org@lists.infradead.org
 To: linux-mm@kvack.org
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-m68k@lists.linux-m68k.org, linuxppc-dev@lists.ozlabs.org, linux-riscv@lists.infradead.org, linux-s390@vger.kernel.org, linux-mediatek@lists.infradead.org, David Hildenbrand <david@redhat.com>, Andrew Morton <akpm@linux-foundation.org>, Stephen Rothwell <sfr@canb.auug.org.au>, Pavel Tatashin <pasha.tatashin@oracle.com>, Michal Hocko <mhocko@suse.com>, Alexander Duyck <alexander.h.duyck@linux.intel.com>, Matthew Wilcox <willy@infradead.org>, Anthony Yznaga <anthony.yznaga@oracle.com>, Miles Chen <miles.chen@mediatek.com>, yi.z.zhang@linux.intel.com, Dan Williams <dan.j.williams@intel.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Michal Hocko <mhocko@suse.com>, CHANDAN VN <chandan.vn@samsung.com>, David Hildenbrand <david@redhat.com>, David Airlie <airlied@linux.ie>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Bhupesh Sharma <bhsharma@redhat.com>, Palmer Dabbelt <palmer@sifive.com>, Heiko Carstens <heiko.carstens@de.ibm.com>, Stefan Agner <stefan@agner.ch>, Michal Hocko <mhocko@kernel.org>, David Howells <dhowells@redhat.com>, Paul Mackerras <paulus@samba.org>, Michael Ellerman <mpe@ellerman.id.au>, linux-riscv@lists.infradead.org, Alexander Duyck <alexander.h.duyck@linux.intel.com>, linux-s390@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>, Vasily Gorbik <gor@linux.ibm.com>, Logan Gunthorpe <logang@deltatee.com>, Pavel Tatashin <pasha.tatashin@oracle.com>, Matthew Wilcox <willy@infradead.org>, AKASHI Takahiro <takahiro.akashi@linaro.org>G
 List-Id: linux-mediatek@lists.infradead.org
 
-The usage of PG_reserved and how PG_reserved pages are to be treated is
-buried deep down in different parts of the kernel. Let's shine some light
-onto these details by documenting current users and expected
-behavior.
+I was recently going over all users of PG_reserved. Short story: it is
+difficult and sometimes not really clear if setting/checking for
+PG_reserved is only a relict from the past. Easy to break things. I
+guess I know have a pretty good idea wh things are like that
+nowadays and how they evolved.
 
-Especially, clarify on the "Some of them might not even exist" case.
-These are physical memory gaps that will never be dumped as they
-are not marked as IORESOURCE_SYSRAM. PG_reserved does in general not
-hinder anybody from dumping or swapping. In some cases, these pages
-will not be stored in the hibernation image.
+I had way more cleanups in this series inititally,
+but some architectures take PG_reserved as a way to apply a different
+caching strategy (for MMIO pages). So I decided to only include the most
+obvious changes (that are less likely to break something). So the big
+chunk of manual SetPageReserved users are MMIO/DMA related things on
+device buffers.
 
-Cc: Andrew Morton <akpm@linux-foundation.org>
-Cc: Stephen Rothwell <sfr@canb.auug.org.au>
-Cc: Pavel Tatashin <pasha.tatashin@oracle.com>
-Cc: Michal Hocko <mhocko@suse.com>
-Cc: Alexander Duyck <alexander.h.duyck@linux.intel.com>
-Cc: Matthew Wilcox <willy@infradead.org>
-Cc: Anthony Yznaga <anthony.yznaga@oracle.com>
-Cc: Miles Chen <miles.chen@mediatek.com>
-Cc: yi.z.zhang@linux.intel.com
-Cc: Dan Williams <dan.j.williams@intel.com>
-Signed-off-by: David Hildenbrand <david@redhat.com>
----
- include/linux/page-flags.h | 33 +++++++++++++++++++++++++++++++--
- 1 file changed, 31 insertions(+), 2 deletions(-)
+Most notably, for device memory we will hopefully soon stop setting
+PG_reserved. The the documentation has to be updated.
 
-diff --git a/include/linux/page-flags.h b/include/linux/page-flags.h
-index 808b4183e30d..9de2e941cbd5 100644
---- a/include/linux/page-flags.h
-+++ b/include/linux/page-flags.h
-@@ -17,8 +17,37 @@
- /*
-  * Various page->flags bits:
-  *
-- * PG_reserved is set for special pages, which can never be swapped out. Some
-- * of them might not even exist...
-+ * PG_reserved is set for special pages. The "struct page" of such a page
-+ * should in general not be touched (e.g. set dirty) except by their owner.
-+ * Pages marked as PG_reserved include:
-+ * - Pages part of the kernel image (including vDSO) and similar (e.g. BIOS,
-+ *   initrd, HW tables)
-+ * - Pages reserved or allocated early during boot (before the page allocator
-+ *   was initialized). This includes (depending on the architecture) the
-+ *   initial vmmap, initial page tables, crashkernel, elfcorehdr, and much
-+ *   much more. Once (if ever) freed, PG_reserved is cleared and they will
-+ *   be given to the page allocator.
-+ * - Pages falling into physical memory gaps - not IORESOURCE_SYSRAM. Trying
-+ *   to read/write these pages might end badly. Don't touch!
-+ * - The zero page(s)
-+ * - Pages not added to the page allocator when onlining a section because
-+ *   they were excluded via the online_page_callback() or because they are
-+ *   PG_hwpoison.
-+ * - Pages allocated in the context of kexec/kdump (loaded kernel image,
-+ *   control pages, vmcoreinfo)
-+ * - MMIO/DMA pages. Some architectures don't allow to ioremap pages that are
-+ *   not marked PG_reserved (as they might be in use by somebody else who does
-+ *   not respect the caching strategy).
-+ * - Pages part of an offline section (struct pages of offline sections should
-+ *   not be trusted as they will be initialized when first onlined).
-+ * - MCA pages on ia64
-+ * - Pages holding CPU notes for POWER Firmware Assisted Dump
-+ * - Device memory (e.g. PMEM, DAX, HMM)
-+ * Some PG_reserved pages will be excluded from the hibernation image.
-+ * PG_reserved does in general not hinder anybody from dumping or swapping
-+ * and is no longer required for remap_pfn_range(). ioremap might require it.
-+ * Consequently, PG_reserved for a page mapped into user space can indicate
-+ * the zero page, the vDSO, MMIO pages or device memory.
-  *
-  * The PG_private bitflag is set on pagecache pages if they contain filesystem
-  * specific data (which is normally at page->private). It can be used by
+RFC -> V1:
+- Add more details to "mm: better document PG_reserved"
+- Add "arm64: kdump: No need to mark crashkernel pages manually
+       PG_reserved"
+- Add "ia64: perfmon: Don't mark buffer pages as PG_reserved"
+- Added ACKs
+
+David Hildenbrand (9):
+  agp: efficeon: no need to set PG_reserved on GATT tables
+  s390/vdso: don't clear PG_reserved
+  powerpc/vdso: don't clear PG_reserved
+  riscv/vdso: don't clear PG_reserved
+  m68k/mm: use __ClearPageReserved()
+  arm64: kexec: no need to ClearPageReserved()
+  arm64: kdump: No need to mark crashkernel pages manually PG_reserved
+  ia64: perfmon: Don't mark buffer pages as PG_reserved
+  mm: better document PG_reserved
+
+ arch/arm64/kernel/machine_kexec.c |  3 +-
+ arch/arm64/mm/init.c              | 27 --------------
+ arch/ia64/kernel/perfmon.c        | 59 +++----------------------------
+ arch/m68k/mm/memory.c             |  2 +-
+ arch/powerpc/kernel/vdso.c        |  2 --
+ arch/riscv/kernel/vdso.c          |  1 -
+ arch/s390/kernel/vdso.c           |  2 --
+ drivers/char/agp/efficeon-agp.c   |  2 --
+ include/linux/page-flags.h        | 33 +++++++++++++++--
+ 9 files changed, 37 insertions(+), 94 deletions(-)
+
 -- 
 2.17.2
