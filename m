@@ -1,56 +1,65 @@
 From: Frank Wunderlich <frank-w@public-files.de>
-Subject: [PATCH 0/8] adding multiple CPU-Ports
-Date: Fri, 14 Dec 2018 17:48:39 +0100
-Message-ID: <20181214164847.4851-1-frank-w@public-files.de>
+Subject: [PATCH 1/8] net: dsa: adding fields for holding information about upstream-port
+Date: Fri, 14 Dec 2018 17:48:40 +0100
+Message-ID: <20181214164847.4851-2-frank-w@public-files.de>
+References: <20181214164847.4851-1-frank-w@public-files.de>
 Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20181214164847.4851-1-frank-w@public-files.de>
 Sender: netdev-owner@vger.kernel.org
 To: Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, linux-mediatek@lists.infradead.org
 Cc: Frank Wunderlich <frank-w@public-files.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-some switch-chips have multiple CPU-Ports
+for multiple cpu-Ports aech port needs storing the the cpu-port to be used
+this Patch adds the needed fields for this
 
-this patch-series adds basic functionality and handle the 2
-cpu-Ports of mt7530 on board BananaPi R2
+based on
+https://github.com/openwrt/openwrt/blob/master/target/linux/mediatek/patches-4.14/0033-dsa-multi-cpu.patch
 
-changes to mtk-ethernet-driver are not included yet,
-because here are still some issues with watchdog-timeouts
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+ include/net/dsa.h  | 4 ++++
+ net/dsa/dsa_priv.h | 5 +++++
+ 2 files changed, 9 insertions(+)
 
-most patches are based on OpenWRT-Patches created by
-John Crispin and only ported to DSA-Core 4.15+ with 2 main differences:
-  - no change to platform-driver
-  - option in dts is named "default_cpu" instead of only "cpu" to
-    allow modification from userspace (additional patches needed)
-
-complete source (including eth-patches) is uploaded here:
-https://github.com/frank-w/BPI-R2-4.14/commits/4.20-gmac-test
-
-new in v2:
-  - added DTS-changes
-  - added cover-letter
-  - added change of dts-option (default_cpu)
-
-currently posted not to full maintainers-list for first review,
-will do it when patches are ready :)
-
-Frank Wunderlich (8):
-  net: dsa: adding fields for holding information about upstream-port
-  net: dsa: add helper functions
-  net: dsa: adding handling of second CPU-Port
-  net: dsa: add support for GMAC2 wired to ext
-  net: dsa: dsa multi cpu (mt7530.c)
-  net: dsa: tell GDMA when we are turning on the special tag
-  net: dsa: mt7530 add linking to mdio
-  net: dsa: changes to dts
-
- arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 29 +++++++++-
- drivers/net/dsa/mt7530.c                      | 55 +++++++++++++------
- drivers/net/dsa/mt7530.h                      |  4 ++
- include/net/dsa.h                             | 22 ++++++++
- net/dsa/dsa2.c                                | 36 ++++++++++++
- net/dsa/dsa_priv.h                            |  5 ++
- net/dsa/slave.c                               |  3 +-
- 7 files changed, 135 insertions(+), 19 deletions(-)
-
+diff --git a/include/net/dsa.h b/include/net/dsa.h
+index 23690c44e167..3efa81e08993 100644
+--- a/include/net/dsa.h
++++ b/include/net/dsa.h
+@@ -203,6 +203,10 @@ struct dsa_port {
+ 	struct net_device	*bridge_dev;
+ 	struct devlink_port	devlink_port;
+ 	struct phylink		*pl;
++
++	struct net_device	*ethernet;
++	int			upstream;
++
+ 	/*
+ 	 * Original copy of the master netdev ethtool_ops
+ 	 */
+diff --git a/net/dsa/dsa_priv.h b/net/dsa/dsa_priv.h
+index 9e4fd04ab53c..cc0cd7675117 100644
+--- a/net/dsa/dsa_priv.h
++++ b/net/dsa/dsa_priv.h
+@@ -81,6 +81,8 @@ struct dsa_slave_priv {
+ 
+ 	/* TC context */
+ 	struct list_head	mall_tc_list;
++
++	struct net_device       *master;
+ };
+ 
+ /* dsa.c */
+@@ -188,7 +190,10 @@ static inline struct net_device *
+ dsa_slave_to_master(const struct net_device *dev)
+ {
+ 	struct dsa_port *dp = dsa_slave_to_port(dev);
++	struct dsa_slave_priv *p = netdev_priv(dev);
+ 
++	if (p->master)
++		return p->master;
+ 	return dp->cpu_dp->master;
+ }
+ 
 -- 
 2.17.1
