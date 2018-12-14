@@ -1,7 +1,7 @@
 From: Frank Wunderlich <frank-w@public-files.de>
-Subject: [PATCH 8/8] net: dsa: changes to dts
-Date: Fri, 14 Dec 2018 17:48:47 +0100
-Message-ID: <20181214164847.4851-9-frank-w@public-files.de>
+Subject: [PATCH 7/8] net: dsa: mt7530 add linking to mdio
+Date: Fri, 14 Dec 2018 17:48:46 +0100
+Message-ID: <20181214164847.4851-8-frank-w@public-files.de>
 References: <20181214164847.4851-1-frank-w@public-files.de>
 Return-path: <netdev-owner@vger.kernel.org>
 In-Reply-To: <20181214164847.4851-1-frank-w@public-files.de>
@@ -10,78 +10,44 @@ To: Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, Sean Wang
 Cc: Frank Wunderlich <frank-w@public-files.de>
 List-Id: linux-mediatek@lists.infradead.org
 
----
- arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 29 ++++++++++++++++++-
- 1 file changed, 28 insertions(+), 1 deletion(-)
+switch (7530) needs to to be linked to mdio-bus
 
-diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-index 2b760f90f38c..64f3da148dbb 100644
---- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-+++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-@@ -143,6 +143,18 @@
- 		};
- 	};
+based on
+https://github.com/openwrt/openwrt/blob/master/target/linux/mediatek/patches-4.14/0045-net-dsa-mediatek-turn-into-platform-driver.patch
+
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+ drivers/net/dsa/mt7530.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 83669f53cb36..e529bc334459 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -1345,7 +1345,7 @@ static int
+ mt7530_probe(struct mdio_device *mdiodev)
+ {
+ 	struct mt7530_priv *priv;
+-	struct device_node *dn;
++	struct device_node *dn, *mdio;
  
-+	gmac1: mac@1 {
-+		compatible = "mediatek,eth-mac";
-+		reg = <1>;
-+		phy-mode = "trgmii";
+ 	dn = mdiodev->dev.of_node;
+ 
+@@ -1392,8 +1392,14 @@ mt7530_probe(struct mdio_device *mdiodev)
+ 			return PTR_ERR(priv->reset);
+ 		}
+ 	}
++	mdio = of_get_parent(dn);
++	if (!mdio)
++		return -EINVAL;
 +
-+		fixed-link {
-+			speed = <1000>;
-+			full-duplex;
-+			pause;
-+		};
-+	};
-+
- 	mdio: mdio-bus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
-@@ -161,29 +173,44 @@
- 				port@0 {
- 					reg = <0>;
- 					label = "wan";
-+					default_cpu = <&cpu_port1>;
- 				};
++	priv->bus = of_mdio_find_bus(mdio);
++	if (!priv->bus)
++		return -EPROBE_DEFER;
  
- 				port@1 {
- 					reg = <1>;
- 					label = "lan0";
-+					default_cpu = <&cpu_port0>;
- 				};
- 
- 				port@2 {
- 					reg = <2>;
- 					label = "lan1";
-+					default_cpu = <&cpu_port0>;
- 				};
- 
- 				port@3 {
- 					reg = <3>;
- 					label = "lan2";
-+					default_cpu = <&cpu_port0>;
- 				};
- 
- 				port@4 {
- 					reg = <4>;
- 					label = "lan3";
-+					default_cpu = <&cpu_port0>;
- 				};
- 
--				port@6 {
-+				cpu_port1: port@5 {
-+					reg = <5>;
-+					label = "cpu";
-+					ethernet = <&gmac1>;
-+					phy-mode = "trgmii";
-+					fixed-link {
-+						speed = <1000>;
-+						full-duplex;
-+					};
-+				};
-+				cpu_port0: port@6 {
- 					reg = <6>;
- 					label = "cpu";
- 					ethernet = <&gmac0>;
+-	priv->bus = mdiodev->bus;
+ 	priv->dev = &mdiodev->dev;
+ 	priv->ds->priv = priv;
+ 	priv->ds->ops = &mt7530_switch_ops;
 -- 
 2.17.1
