@@ -1,68 +1,127 @@
-From: David Hildenbrand <david@redhat.com>
-Subject: [PATCH v1 0/9] mm: PG_reserved cleanups and documentation
-Date: Fri, 14 Dec 2018 12:10:05 +0100
-Message-ID: <20181214111014.15672-1-david@redhat.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-riscv-bounces+glpr-linux-riscv=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-riscv>,
- <mailto:linux-riscv-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-riscv/>
-List-Post: <mailto:linux-riscv@lists.infradead.org>
-List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
- <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
-Errors-To: linux-riscv-bounces+glpr-linux-riscv=m.gmane.org@lists.infradead.org
-To: linux-mm@kvack.org
-Cc: Mark Rutland <mark.rutland@arm.com>, Michal Hocko <mhocko@suse.com>, CHANDAN VN <chandan.vn@samsung.com>, David Hildenbrand <david@redhat.com>, David Airlie <airlied@linux.ie>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Bhupesh Sharma <bhsharma@redhat.com>, Palmer Dabbelt <palmer@sifive.com>, Heiko Carstens <heiko.carstens@de.ibm.com>, Stefan Agner <stefan@agner.ch>, Michal Hocko <mhocko@kernel.org>, David Howells <dhowells@redhat.com>, Paul Mackerras <paulus@samba.org>, Michael Ellerman <mpe@ellerman.id.au>, linux-riscv@lists.infradead.org, Alexander Duyck <alexander.h.duyck@linux.intel.com>, linux-s390@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>, Vasily Gorbik <gor@linux.ibm.com>, Logan Gunthorpe <logang@deltatee.com>, Pavel Tatashin <pasha.tatashin@oracle.com>, Matthew Wilcox <willy@infradead.org>, AKASHI Takahiro <takahiro.akashi@linaro.org>G
+From: Frank Wunderlich <frank-w@public-files.de>
+Subject: [PATCH 5/8] net: dsa: dsa multi cpu (mt7530.c)
+Date: Fri, 14 Dec 2018 17:48:44 +0100
+Message-ID: <20181214164847.4851-6-frank-w@public-files.de>
+References: <20181214164847.4851-1-frank-w@public-files.de>
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20181214164847.4851-1-frank-w@public-files.de>
+Sender: netdev-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, linux-mediatek@lists.infradead.org
+Cc: Frank Wunderlich <frank-w@public-files.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-I was recently going over all users of PG_reserved. Short story: it is
-difficult and sometimes not really clear if setting/checking for
-PG_reserved is only a relict from the past. Easy to break things. I
-guess I know have a pretty good idea wh things are like that
-nowadays and how they evolved.
+implementing changes to mt7530 switch driver for supporting multiple (2)
+cpu-ports
 
-I had way more cleanups in this series inititally,
-but some architectures take PG_reserved as a way to apply a different
-caching strategy (for MMIO pages). So I decided to only include the most
-obvious changes (that are less likely to break something). So the big
-chunk of manual SetPageReserved users are MMIO/DMA related things on
-device buffers.
+based on
+https://github.com/openwrt/openwrt/blob/master/target/linux/mediatek/patches-4.14/0033-dsa-multi-cpu.patch
 
-Most notably, for device memory we will hopefully soon stop setting
-PG_reserved. The the documentation has to be updated.
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+ drivers/net/dsa/mt7530.c | 34 +++++++++++++++++++---------------
+ 1 file changed, 19 insertions(+), 15 deletions(-)
 
-RFC -> V1:
-- Add more details to "mm: better document PG_reserved"
-- Add "arm64: kdump: No need to mark crashkernel pages manually
-       PG_reserved"
-- Add "ia64: perfmon: Don't mark buffer pages as PG_reserved"
-- Added ACKs
-
-David Hildenbrand (9):
-  agp: efficeon: no need to set PG_reserved on GATT tables
-  s390/vdso: don't clear PG_reserved
-  powerpc/vdso: don't clear PG_reserved
-  riscv/vdso: don't clear PG_reserved
-  m68k/mm: use __ClearPageReserved()
-  arm64: kexec: no need to ClearPageReserved()
-  arm64: kdump: No need to mark crashkernel pages manually PG_reserved
-  ia64: perfmon: Don't mark buffer pages as PG_reserved
-  mm: better document PG_reserved
-
- arch/arm64/kernel/machine_kexec.c |  3 +-
- arch/arm64/mm/init.c              | 27 --------------
- arch/ia64/kernel/perfmon.c        | 59 +++----------------------------
- arch/m68k/mm/memory.c             |  2 +-
- arch/powerpc/kernel/vdso.c        |  2 --
- arch/riscv/kernel/vdso.c          |  1 -
- arch/s390/kernel/vdso.c           |  2 --
- drivers/char/agp/efficeon-agp.c   |  2 --
- include/linux/page-flags.h        | 33 +++++++++++++++--
- 9 files changed, 37 insertions(+), 94 deletions(-)
-
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index a6a15a063e3e..441320d4d779 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -674,6 +674,9 @@ static int
+ mt7530_cpu_port_enable(struct mt7530_priv *priv,
+ 		       int port)
+ {
++	u8 port_mask = 0;
++	int i;
++
+ 	/* Enable Mediatek header mode on the cpu port */
+ 	mt7530_write(priv, MT7530_PVC_P(port),
+ 		     PORT_SPEC_TAG);
+@@ -690,8 +693,14 @@ mt7530_cpu_port_enable(struct mt7530_priv *priv,
+ 	/* CPU port gets connected to all user ports of
+ 	 * the switch
+ 	 */
++
++	for (i = 0; i < MT7530_NUM_PORTS; i++)
++		if ((priv->ds->ports[port].type == DSA_PORT_TYPE_USER) &&
++		    (dsa_port_upstream_port(priv->ds, i) == port))
++			port_mask |= BIT(i);
++
+ 	mt7530_write(priv, MT7530_PCR_P(port),
+-		     PCR_MATRIX(dsa_user_ports(priv->ds)));
++		     PCR_MATRIX(port_mask));
+ 
+ 	return 0;
+ }
+@@ -701,6 +710,7 @@ mt7530_port_enable(struct dsa_switch *ds, int port,
+ 		   struct phy_device *phy)
+ {
+ 	struct mt7530_priv *priv = ds->priv;
++	u8 upstream = dsa_port_upstream_port(ds, port);
+ 
+ 	mutex_lock(&priv->reg_mutex);
+ 
+@@ -711,7 +721,7 @@ mt7530_port_enable(struct dsa_switch *ds, int port,
+ 	 * restore the port matrix if the port is the member of a certain
+ 	 * bridge.
+ 	 */
+-	priv->ports[port].pm |= PCR_MATRIX(BIT(MT7530_CPU_PORT));
++	priv->ports[port].pm |= PCR_MATRIX(BIT(upstream));
+ 	priv->ports[port].enable = true;
+ 	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
+ 		   priv->ports[port].pm);
+@@ -774,7 +784,8 @@ mt7530_port_bridge_join(struct dsa_switch *ds, int port,
+ 			struct net_device *bridge)
+ {
+ 	struct mt7530_priv *priv = ds->priv;
+-	u32 port_bitmap = BIT(MT7530_CPU_PORT);
++	u8 upstream = dsa_port_upstream_port(ds, port);
++	u32 port_bitmap = BIT(upstream);
+ 	int i;
+ 
+ 	mutex_lock(&priv->reg_mutex);
+@@ -875,6 +886,7 @@ mt7530_port_bridge_leave(struct dsa_switch *ds, int port,
+ 			 struct net_device *bridge)
+ {
+ 	struct mt7530_priv *priv = ds->priv;
++	u8 upstream = dsa_port_upstream_port(ds, port);
+ 	int i;
+ 
+ 	mutex_lock(&priv->reg_mutex);
+@@ -902,8 +914,8 @@ mt7530_port_bridge_leave(struct dsa_switch *ds, int port,
+ 	 */
+ 	if (priv->ports[port].enable)
+ 		mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
+-			   PCR_MATRIX(BIT(MT7530_CPU_PORT)));
+-	priv->ports[port].pm = PCR_MATRIX(BIT(MT7530_CPU_PORT));
++			   PCR_MATRIX(BIT(upstream)));
++	priv->ports[port].pm = PCR_MATRIX(BIT(upstream));
+ 
+ 	mt7530_port_set_vlan_unaware(ds, port);
+ 
+@@ -1194,15 +1206,7 @@ mt7530_port_vlan_del(struct dsa_switch *ds, int port,
+ static enum dsa_tag_protocol
+ mtk_get_tag_protocol(struct dsa_switch *ds, int port)
+ {
+-	struct mt7530_priv *priv = ds->priv;
+-
+-	if (port != MT7530_CPU_PORT) {
+-		dev_warn(priv->dev,
+-			 "port not matched with tagging CPU port\n");
+-		return DSA_TAG_PROTO_NONE;
+-	} else {
+-		return DSA_TAG_PROTO_MTK;
+-	}
++	return DSA_TAG_PROTO_MTK;
+ }
+ 
+ static int
+@@ -1275,7 +1279,7 @@ mt7530_setup(struct dsa_switch *ds)
+ 
+ 	/* Enable Port 6 only; P5 as GMAC5 which currently is not supported */
+ 	val = mt7530_read(priv, MT7530_MHWTRAP);
+-	val &= ~MHWTRAP_P6_DIS & ~MHWTRAP_PHY_ACCESS;
++	val &= ~MHWTRAP_P5_DIS & ~MHWTRAP_P6_DIS & ~MHWTRAP_PHY_ACCESS;
+ 	val |= MHWTRAP_MANUAL;
+ 	if (!dsa_is_cpu_port(ds, 5)) {
+ 		val |= MHWTRAP_P5_DIS;
 -- 
-2.17.2
+2.17.1
