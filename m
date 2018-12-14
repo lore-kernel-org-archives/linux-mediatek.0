@@ -1,7 +1,7 @@
 From: Frank Wunderlich <frank-w@public-files.de>
-Subject: [PATCH 1/8] net: dsa: adding fields for holding information about upstream-port
-Date: Fri, 14 Dec 2018 17:48:40 +0100
-Message-ID: <20181214164847.4851-2-frank-w@public-files.de>
+Subject: [PATCH 4/8] net: dsa: add support for GMAC2 wired to ext
+Date: Fri, 14 Dec 2018 17:48:43 +0100
+Message-ID: <20181214164847.4851-5-frank-w@public-files.de>
 References: <20181214164847.4851-1-frank-w@public-files.de>
 Return-path: <netdev-owner@vger.kernel.org>
 In-Reply-To: <20181214164847.4851-1-frank-w@public-files.de>
@@ -10,56 +10,31 @@ To: Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, Sean Wang
 Cc: Frank Wunderlich <frank-w@public-files.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-for multiple cpu-Ports aech port needs storing the the cpu-port to be used
-this Patch adds the needed fields for this
+cpu-ports of mt7530 need some special flags to be set
 
 based on
-https://github.com/openwrt/openwrt/blob/master/target/linux/mediatek/patches-4.14/0033-dsa-multi-cpu.patch
+https://github.com/openwrt/openwrt/blob/master/target/linux/mediatek/patches-4.14/0032-net-dsa-mediatek-add-support-for-GMAC2-wired-to-ext-.patch
 
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
- include/net/dsa.h  | 4 ++++
- net/dsa/dsa_priv.h | 5 +++++
- 2 files changed, 9 insertions(+)
+ drivers/net/dsa/mt7530.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/include/net/dsa.h b/include/net/dsa.h
-index 23690c44e167..3efa81e08993 100644
---- a/include/net/dsa.h
-+++ b/include/net/dsa.h
-@@ -203,6 +203,10 @@ struct dsa_port {
- 	struct net_device	*bridge_dev;
- 	struct devlink_port	devlink_port;
- 	struct phylink		*pl;
-+
-+	struct net_device	*ethernet;
-+	int			upstream;
-+
- 	/*
- 	 * Original copy of the master netdev ethtool_ops
- 	 */
-diff --git a/net/dsa/dsa_priv.h b/net/dsa/dsa_priv.h
-index 9e4fd04ab53c..cc0cd7675117 100644
---- a/net/dsa/dsa_priv.h
-+++ b/net/dsa/dsa_priv.h
-@@ -81,6 +81,8 @@ struct dsa_slave_priv {
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index a5de9bffe5be..a6a15a063e3e 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -1277,6 +1277,11 @@ mt7530_setup(struct dsa_switch *ds)
+ 	val = mt7530_read(priv, MT7530_MHWTRAP);
+ 	val &= ~MHWTRAP_P6_DIS & ~MHWTRAP_PHY_ACCESS;
+ 	val |= MHWTRAP_MANUAL;
++	if (!dsa_is_cpu_port(ds, 5)) {
++		val |= MHWTRAP_P5_DIS;
++		val |= MHWTRAP_P5_MAC_SEL;
++		val |= MHWTRAP_P5_RGMII_MODE;
++	}
+ 	mt7530_write(priv, MT7530_MHWTRAP, val);
  
- 	/* TC context */
- 	struct list_head	mall_tc_list;
-+
-+	struct net_device       *master;
- };
- 
- /* dsa.c */
-@@ -188,7 +190,10 @@ static inline struct net_device *
- dsa_slave_to_master(const struct net_device *dev)
- {
- 	struct dsa_port *dp = dsa_slave_to_port(dev);
-+	struct dsa_slave_priv *p = netdev_priv(dev);
- 
-+	if (p->master)
-+		return p->master;
- 	return dp->cpu_dp->master;
- }
- 
+ 	/* Enable and reset MIB counters */
 -- 
 2.17.1
