@@ -1,87 +1,37 @@
-From: biao huang <biao.huang@mediatek.com>
-Subject: Re: [v7, PATCH 1/2] net:stmmac: dwmac-mediatek: add support for
- mt2712
-Date: Fri, 14 Dec 2018 11:01:17 +0800
-Message-ID: <1544756477.24219.164.camel@mhfsdcap03>
-References: <1544666173-5121-1-git-send-email-biao.huang@mediatek.com>
-         <1544666173-5121-2-git-send-email-biao.huang@mediatek.com>
-         <20181213123346.GF1605@lunn.ch>
+From: <honghui.zhang@mediatek.com>
+Subject: [RFC PATCH] PCI/portdrv: Support for subtractive decode bridge
+Date: Fri, 14 Dec 2018 11:40:29 +0800
+Message-ID: <1544758829-10327-1-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181213123346.GF1605@lunn.ch>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: davem@davemloft.net, robh+dt@kernel.org, honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, joabreu@synopsys.com
+To: lorenzo.pieralisi@arm.com, bhelgaas@google.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com, matthias.bgg@gmail.com
+Cc: rafael.j.wysocki@intel.com, fred@fredlawl.com, poza@codeaurora.org, youlin.pei@mediatek.com, jianjun.wang@mediatek.com, Honghui Zhang <honghui.zhang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Dear Andrew,
-	Thanks for your comments.
+From: Honghui Zhang <honghui.zhang@mediatek.com>
 
-On Thu, 2018-12-13 at 13:33 +0100, Andrew Lunn wrote:
-> Hi Biao
-> 
-> > +	case PHY_INTERFACE_MODE_RGMII:
-> > +		/* the PHY is not responsible for inserting any internal
-> > +		 * delay by itself in PHY_INTERFACE_MODE_RGMII case,
-> > +		 * so Ethernet MAC will insert delays for both transmit
-> > +		 * and receive path here.
-> > +		 */
-> 
-> What if the PCB designed has decided to do a kink in the clock to add
-> the delays? I don't think any of these delays should depend on the PHY
-> interface mode. It is up to the device tree writer to set both the PHY
-> delay and the MAC delay, based on knowledge of the board, including
-> any kicks in the tracks. The driver should then do what it is told.
-> 
-Originally, we recommend equal trace length on PCB, which means that
-RGMII delay by PCB traces is not recommended. so only PHY/MAC delay is
-taken into account in the transmit/receive path.
+The Class Code for subtractive decode PCI-to-PCI bridge is 060401h,
+change the class_mask values to make portdrv support this type bridge.
 
-as you described above, maybe the equal PCB trace length assumption is
-not reasonable, and we'll only handle MAC delay-ps in our driver based
-on the device tree information no matter which rgmii is selected.
+Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+---
+ drivers/pci/pcie/portdrv_pci.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Since David already applied this patch, I'll send another patch to fix
-this issue.
-> > +	if (!of_property_read_u32(plat->np, "mediatek,tx-delay-ps", &tx_delay_ps)) {
-> > +		if (tx_delay_ps < plat->variant->tx_delay_max) {
-> > +			mac_delay->tx_delay = tx_delay_ps;
-> > +		} else {
-> > +			dev_err(plat->dev, "Invalid TX clock delay: %dps\n", tx_delay_ps);
-> > +			return -EINVAL;
-> > +		}
-> > +	}
-> > +
-> > +	if (!of_property_read_u32(plat->np, "mediatek,rx-delay-ps", &rx_delay_ps)) {
-> > +		if (rx_delay_ps < plat->variant->rx_delay_max) {
-> > +			mac_delay->rx_delay = rx_delay_ps;
-> > +		} else {
-> > +			dev_err(plat->dev, "Invalid RX clock delay: %dps\n", rx_delay_ps);
-> > +			return -EINVAL;
-> > +		}
-> > +	}
-> > +
-> > +	mac_delay->tx_inv = of_property_read_bool(plat->np, "mediatek,txc-inverse");
-> > +	mac_delay->rx_inv = of_property_read_bool(plat->np, "mediatek,rxc-inverse");
-> > +	mac_delay->fine_tune = of_property_read_bool(plat->np, "mediatek,fine-tune");
-> 
-> Why is fine tune needed? If the requested delay can be done using fine
-> tune, it should use fine tune. If not, it should use rough tune. The
-> driver can work this out itself.
-
-find tune here represents a more accurate delay circuit than coarse
-tune, and it's a parallel circuit of coarse tune.
-For most delay, both fine and coarse tune can meet the requirement.
-It's up to the user to select which one.
-
-But only one of them can work at the same time, so we need a switch
-flag(fine_tune here) to indicate which one is valid.
-Driver can hardly work out which one is working according to delay-ps.
-
-Please correct me if any misunderstanding.
-
-> 
->        Thanks
-> 	Andrew
+diff --git a/drivers/pci/pcie/portdrv_pci.c b/drivers/pci/pcie/portdrv_pci.c
+index eef22dc..86926ea 100644
+--- a/drivers/pci/pcie/portdrv_pci.c
++++ b/drivers/pci/pcie/portdrv_pci.c
+@@ -179,7 +179,7 @@ static void pcie_portdrv_err_resume(struct pci_dev *dev)
+  */
+ static const struct pci_device_id port_pci_ids[] = { {
+ 	/* handle any PCI-Express port */
+-	PCI_DEVICE_CLASS(((PCI_CLASS_BRIDGE_PCI << 8) | 0x00), ~0),
++	PCI_DEVICE_CLASS(((PCI_CLASS_BRIDGE_PCI << 8) | 0x00), ~0x01),
+ 	}, { /* end: all zeroes */ }
+ };
+ 
+-- 
+2.6.4
