@@ -1,69 +1,111 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH v3 03/12] clk: mediatek: add configurable pcwibits and fmin to mtk_pll_data
-Date: Fri, 14 Dec 2018 14:02:25 -0800
-Message-ID: <154482494548.19322.11090762587126084086@swboyd.mtv.corp.google.com>
-References: <20181210073240.32278-1-weiyi.lu@mediatek.com> <20181210073240.32278-5-weiyi.lu@mediatek.com>
+From: Randy Dunlap <rdunlap@infradead.org>
+Subject: Re: [PATCH v1 9/9] mm: better document PG_reserved
+Date: Fri, 14 Dec 2018 16:12:22 -0800
+Message-ID: <03f65c6f-1287-4c63-6705-16e58d659d94@infradead.org>
+References: <20181214111014.15672-1-david@redhat.com>
+ <20181214111014.15672-10-david@redhat.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <20181210073240.32278-5-weiyi.lu@mediatek.com>
-Sender: stable-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh@kernel.org>, Stephen Boyd <sboyd@codeaurora.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>, Owen Chen <owen.chen@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20181214111014.15672-10-david@redhat.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: David Hildenbrand <david@redhat.com>, linux-mm@kvack.org
+Cc: linux-s390@vger.kernel.org, Michal Hocko <mhocko@suse.com>, Stephen Rothwell <sfr@canb.auug.org.au>, Alexander Duyck <alexander.h.duyck@linux.intel.com>, Dan Williams <dan.j.williams@intel.com>, linux-kernel@vger.kernel.org, Matthew Wilcox <willy@infradead.org>, Pavel Tatashin <pasha.tatashin@oracle.com>, yi.z.zhang@linux.intel.com, linux-m68k@lists.linux-m68k.org, linux-mediatek@lists.infradead.org, Miles Chen <miles.chen@mediatek.com>, Anthony Yznaga <anthony.yznaga@oracle.com>, linux-riscv@lists.infradead.org, linuxppc-dev@lists.ozlabs.org, Andrew Morton <akpm@linux-foundation.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting Weiyi Lu (2018-12-09 23:32:31)
-> diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pl=
-l.c
-> index f0ff5f535c7e..81400601f107 100644
-> --- a/drivers/clk/mediatek/clk-pll.c
-> +++ b/drivers/clk/mediatek/clk-pll.c
-> @@ -69,11 +71,13 @@ static unsigned long __mtk_pll_recalc_rate(struct mtk=
-_clk_pll *pll, u32 fin,
->  {
->         int pcwbits =3D pll->data->pcwbits;
->         int pcwfbits;
-> +       int ibits;
->         u64 vco;
->         u8 c =3D 0;
-> =20
->         /* The fractional part of the PLL divider. */
-> -       pcwfbits =3D pcwbits > INTEGER_BITS ? pcwbits - INTEGER_BITS : 0;
-> +       ibits =3D pll->data->pcwibits ? pll->data->pcwibits : INTEGER_BIT=
-S;
-> +       pcwfbits =3D pcwbits > ibits ? pcwbits - ibits : 0;
+On 12/14/18 3:10 AM, David Hildenbrand wrote:
+> The usage of PG_reserved and how PG_reserved pages are to be treated is
+> buried deep down in different parts of the kernel. Let's shine some light
+> onto these details by documenting current users and expected
+> behavior.
+> 
+> Especially, clarify on the "Some of them might not even exist" case.
+> These are physical memory gaps that will never be dumped as they
+> are not marked as IORESOURCE_SYSRAM. PG_reserved does in general not
+> hinder anybody from dumping or swapping. In some cases, these pages
+> will not be stored in the hibernation image.
 
-This is practically unreadable. It should be changed to an if statement.
+Hi,
+Thanks for the doc update.
+Comments below.
 
-> =20
->         vco =3D (u64)fin * pcw;
-> =20
-> @@ -167,9 +171,10 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll=
- *pll, u32 pcw,
->  static void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *=
-postdiv,
->                 u32 freq, u32 fin)
->  {
-> -       unsigned long fmin =3D 1000 * MHZ;
-> +       unsigned long fmin =3D pll->data->fmin ? pll->data->fmin : (1000 =
-* MHZ);
->         const struct mtk_pll_div_table *div_table =3D pll->data->div_tabl=
-e;
->         u64 _pcw;
-> +       int ibits;
->         u32 val;
-> =20
->         if (freq > pll->data->fmax)
-> @@ -193,7 +198,8 @@ static void mtk_pll_calc_values(struct mtk_clk_pll *p=
-ll, u32 *pcw, u32 *postdiv,
->         }
-> =20
->         /* _pcw =3D freq * postdiv / fin * 2^pcwfbits */
-> -       _pcw =3D ((u64)freq << val) << (pll->data->pcwbits - INTEGER_BITS=
-);
-> +       ibits =3D pll->data->pcwibits ? pll->data->pcwibits : INTEGER_BIT=
-S;
-> +       _pcw =3D ((u64)freq << val) << (pll->data->pcwbits - ibits);
+> Cc: Andrew Morton <akpm@linux-foundation.org>
+> Cc: Stephen Rothwell <sfr@canb.auug.org.au>
+> Cc: Pavel Tatashin <pasha.tatashin@oracle.com>
+> Cc: Michal Hocko <mhocko@suse.com>
+> Cc: Alexander Duyck <alexander.h.duyck@linux.intel.com>
+> Cc: Matthew Wilcox <willy@infradead.org>
+> Cc: Anthony Yznaga <anthony.yznaga@oracle.com>
+> Cc: Miles Chen <miles.chen@mediatek.com>
+> Cc: yi.z.zhang@linux.intel.com
+> Cc: Dan Williams <dan.j.williams@intel.com>
+> Signed-off-by: David Hildenbrand <david@redhat.com>
+> ---
+>  include/linux/page-flags.h | 33 +++++++++++++++++++++++++++++++--
+>  1 file changed, 31 insertions(+), 2 deletions(-)
+> 
+> diff --git a/include/linux/page-flags.h b/include/linux/page-flags.h
+> index 808b4183e30d..9de2e941cbd5 100644
+> --- a/include/linux/page-flags.h
+> +++ b/include/linux/page-flags.h
+> @@ -17,8 +17,37 @@
+>  /*
+>   * Various page->flags bits:
+>   *
+> - * PG_reserved is set for special pages, which can never be swapped out. Some
+> - * of them might not even exist...
+> + * PG_reserved is set for special pages. The "struct page" of such a page
+> + * should in general not be touched (e.g. set dirty) except by their owner.
 
-Similar comment. Readability is low here.
+                                                               by its owner.
+
+> + * Pages marked as PG_reserved include:
+> + * - Pages part of the kernel image (including vDSO) and similar (e.g. BIOS,
+> + *   initrd, HW tables)
+> + * - Pages reserved or allocated early during boot (before the page allocator
+> + *   was initialized). This includes (depending on the architecture) the
+> + *   initial vmmap, initial page tables, crashkernel, elfcorehdr, and much
+
+                VM map,
+
+> + *   much more. Once (if ever) freed, PG_reserved is cleared and they will
+> + *   be given to the page allocator.
+> + * - Pages falling into physical memory gaps - not IORESOURCE_SYSRAM. Trying
+> + *   to read/write these pages might end badly. Don't touch!
+> + * - The zero page(s)
+> + * - Pages not added to the page allocator when onlining a section because
+> + *   they were excluded via the online_page_callback() or because they are
+> + *   PG_hwpoison.
+> + * - Pages allocated in the context of kexec/kdump (loaded kernel image,
+> + *   control pages, vmcoreinfo)
+> + * - MMIO/DMA pages. Some architectures don't allow to ioremap pages that are
+> + *   not marked PG_reserved (as they might be in use by somebody else who does
+> + *   not respect the caching strategy).
+> + * - Pages part of an offline section (struct pages of offline sections should
+> + *   not be trusted as they will be initialized when first onlined).
+> + * - MCA pages on ia64
+> + * - Pages holding CPU notes for POWER Firmware Assisted Dump
+> + * - Device memory (e.g. PMEM, DAX, HMM)
+> + * Some PG_reserved pages will be excluded from the hibernation image.
+> + * PG_reserved does in general not hinder anybody from dumping or swapping
+> + * and is no longer required for remap_pfn_range(). ioremap might require it.
+> + * Consequently, PG_reserved for a page mapped into user space can indicate
+> + * the zero page, the vDSO, MMIO pages or device memory.
+>   *
+>   * The PG_private bitflag is set on pagecache pages if they contain filesystem
+>   * specific data (which is normally at page->private). It can be used by
+> 
+
+cheers.
+-- 
+~Randy
