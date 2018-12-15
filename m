@@ -1,58 +1,28 @@
-From: Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: mt76x[02]u 802.11w support
-Date: Fri, 14 Dec 2018 22:43:59 -0500
-Message-ID: <CAM0KTbCMrcXNFHUFEmoHg+nseN1GkegqAM0GSuWBDHP=gVgi=w@mail.gmail.com>
-References: <CAM0KTbBUXJsBfO0=hQgeTGVteym6iuObdyNynWumQnnGY0L3wg@mail.gmail.com>
- <20181213143947.GA11947@localhost.localdomain>
+From: Frank Lee <tiny.windzz@gmail.com>
+Subject: Re: [PATCH] mt76: convert to DEFINE_SHOW_ATTRIBUTE
+Date: Sat, 15 Dec 2018 17:11:37 +0800
+Message-ID: <CAEExFWvtMsYkMR5gzCF6rrRKFX_Z+wuZTO8mXwEodsR8CAAFuw@mail.gmail.com>
+References: <20181203134028.12645-1-tiny.windzz@gmail.com> <a8daff3575d4682107dede1f07bf98470acb98ff.camel@perches.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20181213143947.GA11947-bi+AKbBUZKY6gyzm1THtWbp2dZbC/Bob@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Cc: sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <a8daff3575d4682107dede1f07bf98470acb98ff.camel@perches.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Joe Perches <joe@perches.com>
+Cc: davem@davemloft.net, kubakici@wp.pl, Matthias Brugger <matthias.bgg@gmail.com>, Felix Fietkau <nbd@nbd.name>, lorenzo.bianconi@redhat.com, sgruszka@redhat.com, kvalo@codeaurora.org, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Dec 13, 2018 at 9:39 AM Lorenzo Bianconi
-<lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
+On Thu, Dec 6, 2018 at 2:09 AM Joe Perches <joe@perches.com> wrote:
 >
-> > Per a conversation with Lorenzo, it seems that 802.11w for mt76x[02]u
-> > has only been fixed in 4.20.  As 4.19 is a LTS kernel, I'd like to
-> > request that work be backported.  While the improvements in 4.20 and
-> > 4.21 are already fairly obvious, a lot of people will be running 4.19
-> > for years to come.  This is good hardware, with a working driver
-> > (thanks team) but in the next few months excitement is going to turn
-> > toward WPA3 which requires working 802.11w.
-> >
-> > Pretty please backport 802.11w support to 4.19
+> On Mon, 2018-12-03 at 08:40 -0500, Yangtao Li wrote:
+> > Use DEFINE_SHOW_ATTRIBUTE macro to simplify the code.
 >
-> IIRC the isse is just on mt76x0u, mt76x2u should work
-
-I can confirm that it does work on mt76x2u on 4.19.5; so my request is
-to backport 802.11w (software crypto I believe) support for mt76x0u to
-4.19 LTS.  Pretty please :-)
-
-Just in case it helps to confirm what is needed, here is the error
-from wpa_supplicant when trying to connect to an 802.11w AP
-wlan0: WPA: Failed to configure IGTK to the driver
-wlan0: RSN: Failed to configure IGTK
-
-thanks,
-Zero
-
+> Thanks.
 >
-> Regards,
-> Lorenzo
+> Are you doing these manually or using some script?
+In fact, just use grep.
+
+Yours,
+Yangtao
 >
-> >
-> > Thanks,
-> > Zero
+>
