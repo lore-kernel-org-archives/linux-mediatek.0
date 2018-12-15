@@ -1,111 +1,58 @@
-From: Randy Dunlap <rdunlap@infradead.org>
-Subject: Re: [PATCH v1 9/9] mm: better document PG_reserved
-Date: Fri, 14 Dec 2018 16:12:22 -0800
-Message-ID: <03f65c6f-1287-4c63-6705-16e58d659d94@infradead.org>
-References: <20181214111014.15672-1-david@redhat.com>
- <20181214111014.15672-10-david@redhat.com>
+From: Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: mt76x[02]u 802.11w support
+Date: Fri, 14 Dec 2018 22:43:59 -0500
+Message-ID: <CAM0KTbCMrcXNFHUFEmoHg+nseN1GkegqAM0GSuWBDHP=gVgi=w@mail.gmail.com>
+References: <CAM0KTbBUXJsBfO0=hQgeTGVteym6iuObdyNynWumQnnGY0L3wg@mail.gmail.com>
+ <20181213143947.GA11947@localhost.localdomain>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20181214111014.15672-10-david@redhat.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: David Hildenbrand <david@redhat.com>, linux-mm@kvack.org
-Cc: linux-s390@vger.kernel.org, Michal Hocko <mhocko@suse.com>, Stephen Rothwell <sfr@canb.auug.org.au>, Alexander Duyck <alexander.h.duyck@linux.intel.com>, Dan Williams <dan.j.williams@intel.com>, linux-kernel@vger.kernel.org, Matthew Wilcox <willy@infradead.org>, Pavel Tatashin <pasha.tatashin@oracle.com>, yi.z.zhang@linux.intel.com, linux-m68k@lists.linux-m68k.org, linux-mediatek@lists.infradead.org, Miles Chen <miles.chen@mediatek.com>, Anthony Yznaga <anthony.yznaga@oracle.com>, linux-riscv@lists.infradead.org, linuxppc-dev@lists.ozlabs.org, Andrew Morton <akpm@linux-foundation.org>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20181213143947.GA11947-bi+AKbBUZKY6gyzm1THtWbp2dZbC/Bob@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Cc: sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 12/14/18 3:10 AM, David Hildenbrand wrote:
-> The usage of PG_reserved and how PG_reserved pages are to be treated is
-> buried deep down in different parts of the kernel. Let's shine some light
-> onto these details by documenting current users and expected
-> behavior.
-> 
-> Especially, clarify on the "Some of them might not even exist" case.
-> These are physical memory gaps that will never be dumped as they
-> are not marked as IORESOURCE_SYSRAM. PG_reserved does in general not
-> hinder anybody from dumping or swapping. In some cases, these pages
-> will not be stored in the hibernation image.
+On Thu, Dec 13, 2018 at 9:39 AM Lorenzo Bianconi
+<lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
+>
+> > Per a conversation with Lorenzo, it seems that 802.11w for mt76x[02]u
+> > has only been fixed in 4.20.  As 4.19 is a LTS kernel, I'd like to
+> > request that work be backported.  While the improvements in 4.20 and
+> > 4.21 are already fairly obvious, a lot of people will be running 4.19
+> > for years to come.  This is good hardware, with a working driver
+> > (thanks team) but in the next few months excitement is going to turn
+> > toward WPA3 which requires working 802.11w.
+> >
+> > Pretty please backport 802.11w support to 4.19
+>
+> IIRC the isse is just on mt76x0u, mt76x2u should work
 
-Hi,
-Thanks for the doc update.
-Comments below.
+I can confirm that it does work on mt76x2u on 4.19.5; so my request is
+to backport 802.11w (software crypto I believe) support for mt76x0u to
+4.19 LTS.  Pretty please :-)
 
-> Cc: Andrew Morton <akpm@linux-foundation.org>
-> Cc: Stephen Rothwell <sfr@canb.auug.org.au>
-> Cc: Pavel Tatashin <pasha.tatashin@oracle.com>
-> Cc: Michal Hocko <mhocko@suse.com>
-> Cc: Alexander Duyck <alexander.h.duyck@linux.intel.com>
-> Cc: Matthew Wilcox <willy@infradead.org>
-> Cc: Anthony Yznaga <anthony.yznaga@oracle.com>
-> Cc: Miles Chen <miles.chen@mediatek.com>
-> Cc: yi.z.zhang@linux.intel.com
-> Cc: Dan Williams <dan.j.williams@intel.com>
-> Signed-off-by: David Hildenbrand <david@redhat.com>
-> ---
->  include/linux/page-flags.h | 33 +++++++++++++++++++++++++++++++--
->  1 file changed, 31 insertions(+), 2 deletions(-)
-> 
-> diff --git a/include/linux/page-flags.h b/include/linux/page-flags.h
-> index 808b4183e30d..9de2e941cbd5 100644
-> --- a/include/linux/page-flags.h
-> +++ b/include/linux/page-flags.h
-> @@ -17,8 +17,37 @@
->  /*
->   * Various page->flags bits:
->   *
-> - * PG_reserved is set for special pages, which can never be swapped out. Some
-> - * of them might not even exist...
-> + * PG_reserved is set for special pages. The "struct page" of such a page
-> + * should in general not be touched (e.g. set dirty) except by their owner.
+Just in case it helps to confirm what is needed, here is the error
+from wpa_supplicant when trying to connect to an 802.11w AP
+wlan0: WPA: Failed to configure IGTK to the driver
+wlan0: RSN: Failed to configure IGTK
 
-                                                               by its owner.
+thanks,
+Zero
 
-> + * Pages marked as PG_reserved include:
-> + * - Pages part of the kernel image (including vDSO) and similar (e.g. BIOS,
-> + *   initrd, HW tables)
-> + * - Pages reserved or allocated early during boot (before the page allocator
-> + *   was initialized). This includes (depending on the architecture) the
-> + *   initial vmmap, initial page tables, crashkernel, elfcorehdr, and much
-
-                VM map,
-
-> + *   much more. Once (if ever) freed, PG_reserved is cleared and they will
-> + *   be given to the page allocator.
-> + * - Pages falling into physical memory gaps - not IORESOURCE_SYSRAM. Trying
-> + *   to read/write these pages might end badly. Don't touch!
-> + * - The zero page(s)
-> + * - Pages not added to the page allocator when onlining a section because
-> + *   they were excluded via the online_page_callback() or because they are
-> + *   PG_hwpoison.
-> + * - Pages allocated in the context of kexec/kdump (loaded kernel image,
-> + *   control pages, vmcoreinfo)
-> + * - MMIO/DMA pages. Some architectures don't allow to ioremap pages that are
-> + *   not marked PG_reserved (as they might be in use by somebody else who does
-> + *   not respect the caching strategy).
-> + * - Pages part of an offline section (struct pages of offline sections should
-> + *   not be trusted as they will be initialized when first onlined).
-> + * - MCA pages on ia64
-> + * - Pages holding CPU notes for POWER Firmware Assisted Dump
-> + * - Device memory (e.g. PMEM, DAX, HMM)
-> + * Some PG_reserved pages will be excluded from the hibernation image.
-> + * PG_reserved does in general not hinder anybody from dumping or swapping
-> + * and is no longer required for remap_pfn_range(). ioremap might require it.
-> + * Consequently, PG_reserved for a page mapped into user space can indicate
-> + * the zero page, the vDSO, MMIO pages or device memory.
->   *
->   * The PG_private bitflag is set on pagecache pages if they contain filesystem
->   * specific data (which is normally at page->private). It can be used by
-> 
-
-cheers.
--- 
-~Randy
+>
+> Regards,
+> Lorenzo
+>
+> >
+> > Thanks,
+> > Zero
