@@ -1,35 +1,29 @@
 From: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
 Subject: Re: [PATCH] eint: add gpio vritual number select
-Date: Mon, 17 Dec 2018 11:15:04 +0800
-Message-ID: <1545016504.29293.10.camel@mhfsdcap03>
+Date: Mon, 17 Dec 2018 11:19:28 +0800
+Message-ID: <1545016768.29293.13.camel@mhfsdcap03>
 References: <1544693783-25079-1-git-send-email-chuanjia.liu@mediatek.com>
-         <CAGp9LzpcRCMWSn-u6K6+eRT=Zr8PR22Vd381miyhVYbF87N02g@mail.gmail.com>
+         <CAGp9LzrTZjEPLKEB+OwSVbLx=KBQRFVmN41KDqj_xTJ5oyU0KQ@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAGp9LzpcRCMWSn-u6K6+eRT=Zr8PR22Vd381miyhVYbF87N02g@mail.gmail.com>
+In-Reply-To: <CAGp9LzrTZjEPLKEB+OwSVbLx=KBQRFVmN41KDqj_xTJ5oyU0KQ@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Sean Wang <sean.wang@kernel.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, eddie.huang@mediatek.com, zhiyong.tao@mediatek.com, hailong.fan@mediatek.com
+Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Hongkun Cao =?UTF-8?Q?=28=E6=9B=B9=E6=B4=AA=E5=9D=A4=29?= <Hongkun.Cao@mediatek.com>, Youlin Pei =?UTF-8?Q?=28=E8=A3=B4=E5=8F=8B=E6=9E=97=29?= <youlin.pei@mediatek.com>, Eddie Huang =?UTF-8?Q?=28=E9=BB=83=E6=99=BA=E5=82=91=29?= <eddie.huang@mediatek.com>, Zhiyong Tao =?UTF-8?Q?=28=E9=99=B6=E5=BF=97=E5=8B=87=29?= <Zhiyong.Tao@mediatek.com>, Hailong Fan =?UTF-8?Q?=28=E8=8C=83=E6=B5=B7=E9=BE=99=29?= <Hailong.Fan@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2018-12-13 at 11:33 -0800, Sean Wang wrote:
+On Fri, 2018-12-14 at 03:51 +0800, Sean Wang wrote:
+> And the subject should be also corrected with prefix starting with
+> "pinctrl: mediatek:", typo fixup, and having a better subject close to
+> the content.
+I will change it in next patch.
 > On Thu, Dec 13, 2018 at 1:36 AM <chuanjia.liu@mediatek.com> wrote:
 > >
 > > From: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
 > >
 > > This patch add gpio vritual number select,avoid virtual gpio set SMT.
-> 
-> s/gpio/GPIO/
-> s/vritual/virtual/
-> 
-> Virtual GPIOs you said here that means these pins only used inside SoC
-> and not being exported to outside SoC, right? It seems this kind of
-> pins doesn't need SMT.
-> 
-Yes,virtual gpio only used inside SOC and these pins doesn't need set
-SMT
 > >
 > > Signed-off-by: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
 > > ---
@@ -79,30 +73,6 @@ SMT
 > > +               if (err)
 > > +                       return err;
 > > +       }
-> 
-> The changes will break these SoCs without a properly configured vir_start.
-> 
-> If SMT seems unnecessary for these kinds of virtual GPIOs pin in the
-> path, we can do it as
-> 
-> err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_SMT,
->                                         MTK_ENABLE);
-> /* please add comments for the exclusion condition */
-> if (err && err != -ENOTSUPP)
->         return err;
-> 
-> If there is getting much special on certain pins between SoCs, and
-> then we can consider creating a desc->flag to split logic.
-
-Yes,SMT unnecessary for these kinds of virtual GPIOS pin in the path,if
-do it as
-	err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_SMT,
-                                        MTK_ENABLE);
-	if (err && err != -ENOTSUPP)
-      		  return err;
-I wonder if system will lose -ENOTSUPP information when smt was not
-successfully set by real gpio?
-> 
 > >
 > >         return 0;
 > >  }
