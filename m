@@ -1,59 +1,128 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: [PATCH] dt-bindings: watchdog: update bindings for MT7629 SoC
-Date: Mon, 17 Dec 2018 12:15:42 +0800
-Message-ID: <1545020142.9822.2.camel@mtkswgap22>
-References: <55d108719233b3c30c747e75a010b9e64681af09.1541573395.git.ryder.lee@mediatek.com>
-         <4152fe87-0e72-f9aa-6874-9f40dc15f278@gmail.com>
-         <1545017947.7782.1.camel@mtkswgap22>
-         <9fb38853-6202-c124-d254-f8d20b4d469b@roeck-us.net>
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+Subject: Re: [PATCH 2/2] PCI: mediatek: Add controller support for MT7629
+Date: Mon, 17 Dec 2018 15:51:42 +0800
+Message-ID: <1545033102.8528.2.camel@mhfsdcap03>
+References: <1544058553-10936-1-git-send-email-jianjun.wang@mediatek.com>
+         <1544058553-10936-3-git-send-email-jianjun.wang@mediatek.com>
+         <1544672356.26338.4.camel@mtkswgap22>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <9fb38853-6202-c124-d254-f8d20b4d469b@roeck-us.net>
+In-Reply-To: <1544672356.26338.4.camel@mtkswgap22>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Guenter Roeck <linux@roeck-us.net>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-watchdog@vger.kernel.org, Weijie Gao <weijie.gao@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: bhelgaas@google.com, robh+dt@kernel.org, lorenzo.pieralisi@arm.com, matthias.bgg@gmail.com, linux-pci@vger.kernel.org, mark.rutland@arm.com, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, honghui.zhang@mediatek.com, youlin.pei@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, 2018-12-16 at 19:53 -0800, Guenter Roeck wrote:
-> On 12/16/18 7:39 PM, Ryder Lee wrote:
-> > Hi Matthias,
-> > 
-> > On Sun, 2018-12-16 at 11:31 +0100, Matthias Brugger wrote:
-> >>
-> >> On 07/11/2018 08:10, Ryder Lee wrote:
-> >>> This updates dt-binding documentation for MT7629 SoC
-> >>>
-> >>> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> >>
-> >> Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
-> >>
-> >>> ---
-> >>>   Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 1 +
-> >>>   1 file changed, 1 insertion(+)
-> >>>
-> >>> diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> >>> index 859dee1..8682d6a 100644
-> >>> --- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> >>> +++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> >>> @@ -8,6 +8,7 @@ Required properties:
-> >>>   	"mediatek,mt6797-wdt", "mediatek,mt6589-wdt": for MT6797
-> >>>   	"mediatek,mt7622-wdt", "mediatek,mt6589-wdt": for MT7622
-> >>>   	"mediatek,mt7623-wdt", "mediatek,mt6589-wdt": for MT7623
-> >>> +	"mediatek,mt7629-wdt", "mediatek,mt6589-wdt": for MT7629
-> >>>   
-> >>>   - reg : Specifies base physical address and size of the registers.
-> >>>   
-> >>>
-> > 
-> > Could you take this through your tree?
-> > 
+On Thu, 2018-12-13 at 11:39 +0800, Ryder Lee wrote:
+> Hi,
 > 
-> Why ? We usually take watchdog binding updates through the watchdog tree.
+> On Thu, 2018-12-06 at 09:09 +0800, Jianjun Wang wrote:
+> > MT7629 is an arm platform SoC which has the same PCIe IP with MT7622.
+> > 
+> > The read value of BAR0 is 0xffff_ffff, it's size will be calculated as 4GB
+> > in arm64 but bogus alignment values at arm32, the pcie device and devices
+> > behind this bridge will not be enabled. Fix it's BAR0 resource size to
+> > guarantee the pcie devices will be enabled correctly.
+> > 
+> > The HW default value of its device id is invalid, fix it's device id to
+> > match the hardware implementation.
+> > 
+> > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+> > ---
+> >  drivers/pci/controller/pcie-mediatek.c | 26 ++++++++++++++++++++++++++
+> >  include/linux/pci_ids.h                |  1 +
+> >  2 files changed, 27 insertions(+)
+> > 
+> > diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> > index d20cf461ba00..f8937cc3c87c 100644
+> > --- a/drivers/pci/controller/pcie-mediatek.c
+> > +++ b/drivers/pci/controller/pcie-mediatek.c
+> > @@ -73,6 +73,7 @@
+> >  #define PCIE_MSI_VECTOR		0x0c0
+> >  
+> >  #define PCIE_CONF_VEND_ID	0x100
+> > +#define PCIE_CONF_DEVICE_ID	0x102
+> >  #define PCIE_CONF_CLASS_ID	0x106
+> >  
+> >  #define PCIE_INT_MASK		0x420
+> > @@ -135,12 +136,14 @@ struct mtk_pcie_port;
+> >  /**
+> >   * struct mtk_pcie_soc - differentiate between host generations
+> >   * @need_fix_class_id: whether this host's class ID needed to be fixed or not
+> > + * @need_fix_device_id: whether this host's device ID needed to be fixed or not
+> >   * @ops: pointer to configuration access functions
+> >   * @startup: pointer to controller setting functions
+> >   * @setup_irq: pointer to initialize IRQ functions
+> >   */
+> >  struct mtk_pcie_soc {
+> >  	bool need_fix_class_id;
+> > +	bool need_fix_device_id;
+> >  	struct pci_ops *ops;
+> >  	int (*startup)(struct mtk_pcie_port *port);
+> >  	int (*setup_irq)(struct mtk_pcie_port *port, struct device_node *node);
+> > @@ -692,6 +695,11 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+> >  		writew(val, port->base + PCIE_CONF_CLASS_ID);
+> >  	}
+> >  
+> > +	if (soc->need_fix_device_id) {
+> > +		val = PCI_DEVICE_ID_MEDIATEK_7629;
 > 
-> Guenter
+> <just_checking>
+>   Could we have a generic way to fix it? It's better not to add SoC
+> specific settings in shared function.
+> </just_checking>
+> 
+Yes, I will modify the code in next patch, thanks.
 
-Oh, okay :)
-
-Ryder
+> > +		writew(val, port->base + PCIE_CONF_DEVICE_ID);
+> > +	}
+> > +
+> >  	/* 100ms timeout value should be enough for Gen1/2 training */
+> >  	err = readl_poll_timeout(port->base + PCIE_LINK_STATUS_V2, val,
+> >  				 !!(val & PCIE_PORT_LINKUP_V2), 20,
+> > @@ -1238,11 +1246,29 @@ static const struct mtk_pcie_soc mtk_pcie_soc_mt7622 = {
+> >  	.setup_irq = mtk_pcie_setup_irq,
+> >  };
+> >  
+> > +static const struct mtk_pcie_soc mtk_pcie_soc_mt7629 = {
+> > +	.need_fix_class_id = true,
+> > +	.need_fix_device_id = true,
+> > +	.ops = &mtk_pcie_ops_v2,
+> > +	.startup = mtk_pcie_startup_port_v2,
+> > +	.setup_irq = mtk_pcie_setup_irq,
+> > +};
+> > +
+> > +static void mtk_fixup_bar_size(struct pci_dev *dev)
+> > +{
+> > +	struct resource *dev_res = &dev->resource[0];
+> > +	/* 32bit resource length will calculate size to 0, set it smaller */
+> > +	dev_res->end = 0xfffffffe;
+> > +}
+> > +DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_MEDIATEK, PCI_DEVICE_ID_MEDIATEK_7629,
+> > +			 mtk_fixup_bar_size);
+> > +
+> >  static const struct of_device_id mtk_pcie_ids[] = {
+> >  	{ .compatible = "mediatek,mt2701-pcie", .data = &mtk_pcie_soc_v1 },
+> >  	{ .compatible = "mediatek,mt7623-pcie", .data = &mtk_pcie_soc_v1 },
+> >  	{ .compatible = "mediatek,mt2712-pcie", .data = &mtk_pcie_soc_mt2712 },
+> >  	{ .compatible = "mediatek,mt7622-pcie", .data = &mtk_pcie_soc_mt7622 },
+> > +	{ .compatible = "mediatek,mt7629-pcie", .data = &mtk_pcie_soc_mt7629 },
+> >  	{},
+> >  };
+> >  
+> > diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
+> > index 69f0abe1ba1a..77b278bac3a8 100644
+> > --- a/include/linux/pci_ids.h
+> > +++ b/include/linux/pci_ids.h
+> > @@ -2126,6 +2126,7 @@
+> >  #define PCI_VENDOR_ID_MYRICOM		0x14c1
+> >  
+> >  #define PCI_VENDOR_ID_MEDIATEK		0x14c3
+> > +#define PCI_DEVICE_ID_MEDIATEK_7629	0x7629
+> >  
+> >  #define PCI_VENDOR_ID_TITAN		0x14D2
+> >  #define PCI_DEVICE_ID_TITAN_010L	0x8001
+> 
+> 
