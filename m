@@ -1,44 +1,41 @@
-From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: Re: mt76x[02]u 802.11w support
-Date: Mon, 17 Dec 2018 16:46:30 +0100
-Message-ID: <20181217154628.GA4773@redhat.com>
-References: <CAM0KTbBUXJsBfO0=hQgeTGVteym6iuObdyNynWumQnnGY0L3wg@mail.gmail.com>
- <20181213143947.GA11947@localhost.localdomain>
- <CAM0KTbCMrcXNFHUFEmoHg+nseN1GkegqAM0GSuWBDHP=gVgi=w@mail.gmail.com>
- <dd275289-99d0-54a8-9ac5-cb137123950a@gmail.com>
- <CAM0KTbBV_YZqt6kkrKeY5tRtKn10UOLQY3EyTKPY+zLzht7sgg@mail.gmail.com>
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Subject: Re: [PATCH 2/2] PCI: mediatek: Add controller support for MT7629
+Date: Mon, 17 Dec 2018 15:46:45 +0000
+Message-ID: <20181217154645.GA24864@e107981-ln.cambridge.arm.com>
+References: <1544058553-10936-1-git-send-email-jianjun.wang@mediatek.com>
+ <1544058553-10936-3-git-send-email-jianjun.wang@mediatek.com>
+ <20181213145517.GB4701@google.com>
+ <1545034779.8528.8.camel@mhfsdcap03>
+ <20181217143247.GK20725@google.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <CAM0KTbBV_YZqt6kkrKeY5tRtKn10UOLQY3EyTKPY+zLzht7sgg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
+In-Reply-To: <20181217143247.GK20725@google.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Jianjun Wang <jianjun.wang@mediatek.com>, ryder.lee@mediatek.com, robh+dt@kernel.org, matthias.bgg@gmail.com, linux-pci@vger.kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, youlin.pei@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, honghui.zhang@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Dec 17, 2018 at 10:07:43AM -0500, Sid Hayn wrote:
-> Interestingly when I asked for the monitor mode patch to be ported it
-> was initially refused and then just kind of happened a few weeks
-> later.
+On Mon, Dec 17, 2018 at 08:32:47AM -0600, Bjorn Helgaas wrote:
+> On Mon, Dec 17, 2018 at 04:19:39PM +0800, Jianjun Wang wrote:
+> > On Thu, 2018-12-13 at 08:55 -0600, Bjorn Helgaas wrote:
+> > > On Thu, Dec 06, 2018 at 09:09:13AM +0800, Jianjun Wang wrote:
+> > > > The read value of BAR0 is 0xffff_ffff, it's size will be calculated as 4GB
+> > > > in arm64 but bogus alignment values at arm32, the pcie device and devices
+> > > > behind this bridge will not be enabled. Fix it's BAR0 resource size to
+> > > > guarantee the pcie devices will be enabled correctly.
+> > > 
+> > > So this is a hardware erratum?  Per spec, a memory BAR has bit 0 hardwired
+> > > to 0, and an IO BAR has bit 1 hardwired to 0.
+> > 
+> > Yes, it only works properly on 64bit platform.
+> 
+> I don't understand.  BARs are supposed to work the same regardless of
+> whether it's a 32- or 64-bit platform.  If this is a workaround for a
+> hardware defect, please just say that explicitly.
 
-It was not quite like that. It was refused to apply on 4.19-rcX due to
--next merge -rc conflict that it will cause. And it was promised
-that fixes will be backported thought -stable.
+I do not understand this either. First thing to do is to describe the
+problem properly so that we can actually find a solution to it.
 
-Regarding this case, there is no single commit that add 802.11w support
-we could request to add to -stable. It was added together with other
-features in:
-
-commit 0ae976a11b4fb5704b597e103b5189237641c1a1
-Author: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Date:   Thu Sep 6 11:18:41 2018 +0200
-
-    mt76x0: init hw capabilities
-
-which depend on switching mt76x0u to mt76-usb layer.
-
-So I'm not sure how this request should be satisfied.
-
-Regards
-Stanislaw
+Lorenzo
