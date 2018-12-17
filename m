@@ -1,144 +1,64 @@
-From: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
-Subject: Re: [PATCH] eint: add gpio vritual number select
-Date: Mon, 17 Dec 2018 19:24:37 +0800
-Message-ID: <1545045877.15380.8.camel@mhfsdcap03>
-References: <1544693783-25079-1-git-send-email-chuanjia.liu@mediatek.com>
-         <CAGp9LzpcRCMWSn-u6K6+eRT=Zr8PR22Vd381miyhVYbF87N02g@mail.gmail.com>
-         <1545016504.29293.10.camel@mhfsdcap03>
-         <1545019482.27863.8.camel@mtksdaap41>
+From: Michael Ellerman <mpe@ellerman.id.au>
+Subject: Re: [PATCH v1 3/9] powerpc/vdso: don't clear PG_reserved
+Date: Mon, 17 Dec 2018 22:38:39 +1100
+Message-ID: <87pnu0tmbk.fsf@concordia.ellerman.id.au>
+References: <20181214111014.15672-1-david@redhat.com> <20181214111014.15672-4-david@redhat.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1545019482.27863.8.camel@mtksdaap41>
+In-Reply-To: <20181214111014.15672-4-david@redhat.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Cc: Sean Wang <sean.wang@kernel.org>, youlin.pei@mediatek.com, hongkun.cao@mediatek.com, zhiyong.tao@mediatek.com, Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, hailong.fan@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org
+To: linux-mm@kvack.org
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-m68k@lists.linux-m68k.org, linuxppc-dev@lists.ozlabs.org, linux-riscv@lists.infradead.org, linux-s390@vger.kernel.org, linux-mediatek@lists.infradead.org, David Hildenbrand <david@redhat.com>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Paul Mackerras <paulus@samba.org>, Christophe Leroy <christophe.leroy@c-s.fr>, Kees Cook <keescook@chromium.org>, Andrew Morton <akpm@linux-foundation.org>, Michal Hocko <mhocko@kernel.org>, Matthew Wilcox <willy@infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2018-12-17 at 12:04 +0800, Yingjoe Chen wrote:
-> On Mon, 2018-12-17 at 11:15 +0800, Chuanjia Liu wrote:
-> > On Thu, 2018-12-13 at 11:33 -0800, Sean Wang wrote:
-> > > On Thu, Dec 13, 2018 at 1:36 AM <chuanjia.liu@mediatek.com> wrote:
-> > > >
-> > > > From: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
-> > > >
-> > > > This patch add gpio vritual number select,avoid virtual gpio set SMT.
-> > > 
-> > > s/gpio/GPIO/
-> > > s/vritual/virtual/
-> > > 
-> > > Virtual GPIOs you said here that means these pins only used inside SoC
-> > > and not being exported to outside SoC, right? It seems this kind of
-> > > pins doesn't need SMT.
-> > > 
-> > Yes,virtual gpio only used inside SOC and these pins doesn't need set
-> > SMT
-> 
-> Hi,
-> 
-> I don't see full patch in linux-mediatek archive. Maybe you are not
-> subscribed so it is rejected?
-Some groups failed to send because of permission issues,I will update
-new patch.
-> 
-> Please add this description to commit message and/or code comment.
-> I think 'internal GPIO' might be a better name for this. Does the name
-> 'virtual GPIO' come from datasheet?
-MTKer call it virtyal gpio When some pins only used inside soc.
-> 
-> 
-> > > >
-> > > > Signed-off-by: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
-> > > > ---
-> > > >  drivers/pinctrl/mediatek/mtk-eint.h              |    1 +
-> > > >  drivers/pinctrl/mediatek/pinctrl-mt8183.c        |    1 +
-> > > >  drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c |    9 ++++++---
-> > > >  3 files changed, 8 insertions(+), 3 deletions(-)
-> > > >
-> > > > diff --git a/drivers/pinctrl/mediatek/mtk-eint.h b/drivers/pinctrl/mediatek/mtk-eint.h
-> > > > index 48468d0..c16beaf 100644
-> > > > --- a/drivers/pinctrl/mediatek/mtk-eint.h
-> > > > +++ b/drivers/pinctrl/mediatek/mtk-eint.h
-> > > > @@ -37,6 +37,7 @@ struct mtk_eint_hw {
-> > > >         u8              ports;
-> > > >         unsigned int    ap_num;
-> > > >         unsigned int    db_cnt;
-> > > > +       unsigned int    vir_start;
+David Hildenbrand <david@redhat.com> writes:
 
-> Since it is about GPIO and SMT, maybe it should be added to mtk_pin_soc
-> instead of mtk_eint_hw ?
-> 
-> Joe.C
+> The VDSO is part of the kernel image and therefore the struct pages are
+> marked as reserved during boot.
+>
+> As we install a special mapping, the actual struct pages will never be
+> exposed to MM via the page tables. We can therefore leave the pages
+> marked as reserved.
+>
+> Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>
+> Cc: Paul Mackerras <paulus@samba.org>
+> Cc: Michael Ellerman <mpe@ellerman.id.au>
+> Cc: Christophe Leroy <christophe.leroy@c-s.fr>
+> Cc: Kees Cook <keescook@chromium.org>
+> Cc: Andrew Morton <akpm@linux-foundation.org>
+> Cc: Michal Hocko <mhocko@kernel.org>
+> Cc: Matthew Wilcox <willy@infradead.org>
+> Signed-off-by: David Hildenbrand <david@redhat.com>
+> ---
+>  arch/powerpc/kernel/vdso.c | 2 --
+>  1 file changed, 2 deletions(-)
 
-I will delete this change,thanks
-> > > >  };
-> > > >
-> > > >  struct mtk_eint;
-> > > > diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8183.c b/drivers/pinctrl/mediatek/pinctrl-mt8183.c
-> > > > index 6262fd3..bbeafd3 100644
-> > > > --- a/drivers/pinctrl/mediatek/pinctrl-mt8183.c
-> > > > +++ b/drivers/pinctrl/mediatek/pinctrl-mt8183.c
-> > > > @@ -497,6 +497,7 @@
-> > > >         .ports     = 6,
-> > > >         .ap_num    = 212,
-> > > >         .db_cnt    = 13,
-> > > > +       .vir_start = 180,
-> > > >  };
-> > > >
-> > > >  static const struct mtk_pin_soc mt8183_data = {
-> > > > diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> > > > index 4a9e0d4..ca3bae1 100644
-> > > > --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> > > > +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> > > > @@ -289,9 +289,12 @@ static int mtk_xt_set_gpio_as_eint(void *data, unsigned long eint_n)
-> > > >         if (err)
-> > > >                 return err;
-> > > >
-> > > > -       err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_SMT, MTK_ENABLE);
-> > > > -       if (err)
-> > > > -               return err;
-> > > > +       if (gpio_n < hw->eint->hw->vir_start) {
-> > > > +               err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_SMT,
-> > > > +                                      MTK_ENABLE);
-> > > > +               if (err)
-> > > > +                       return err;
-> > > > +       }
-> > > 
-> > > The changes will break these SoCs without a properly configured vir_start.
-> > > 
-> > > If SMT seems unnecessary for these kinds of virtual GPIOs pin in the
-> > > path, we can do it as
-> > > 
-> > > err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_SMT,
-> > >                                         MTK_ENABLE);
-> > > /* please add comments for the exclusion condition */
-> > > if (err && err != -ENOTSUPP)
-> > >         return err;
-> > > 
-> > > If there is getting much special on certain pins between SoCs, and
-> > > then we can consider creating a desc->flag to split logic.
-> > 
-> > Yes,SMT unnecessary for these kinds of virtual GPIOS pin in the path,if
-> > do it as
-> > 	err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_SMT,
-> >                                         MTK_ENABLE);
-> > 	if (err && err != -ENOTSUPP)
-> >       		  return err;
-> > I wonder if system will lose -ENOTSUPP information when smt was not
-> > successfully set by real gpio?
-> > > 
-> > > >
-> > > >         return 0;
-> > > >  }
-> > > > --
-> > > > 1.7.9.5
-> > 
-> > 
-> > 
-> > _______________________________________________
-> > Linux-mediatek mailing list
-> > Linux-mediatek@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-mediatek
-> 
-> 
+Thanks.
+
+Acked-by: Michael Ellerman <mpe@ellerman.id.au> (powerpc)
+
+cheers
+
+> diff --git a/arch/powerpc/kernel/vdso.c b/arch/powerpc/kernel/vdso.c
+> index 65b3bdb99f0b..d59dc2e9a695 100644
+> --- a/arch/powerpc/kernel/vdso.c
+> +++ b/arch/powerpc/kernel/vdso.c
+> @@ -795,7 +795,6 @@ static int __init vdso_init(void)
+>  	BUG_ON(vdso32_pagelist == NULL);
+>  	for (i = 0; i < vdso32_pages; i++) {
+>  		struct page *pg = virt_to_page(vdso32_kbase + i*PAGE_SIZE);
+> -		ClearPageReserved(pg);
+>  		get_page(pg);
+>  		vdso32_pagelist[i] = pg;
+>  	}
+> @@ -809,7 +808,6 @@ static int __init vdso_init(void)
+>  	BUG_ON(vdso64_pagelist == NULL);
+>  	for (i = 0; i < vdso64_pages; i++) {
+>  		struct page *pg = virt_to_page(vdso64_kbase + i*PAGE_SIZE);
+> -		ClearPageReserved(pg);
+>  		get_page(pg);
+>  		vdso64_pagelist[i] = pg;
+>  	}
+> -- 
+> 2.17.2
