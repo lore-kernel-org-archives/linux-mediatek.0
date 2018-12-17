@@ -1,127 +1,152 @@
-From: Sean Wang <sean.wang@kernel.org>
-Subject: Re: [PATCH] eint: add gpio vritual number select
-Date: Sun, 16 Dec 2018 23:59:20 -0800
-Message-ID: <CAGp9LzoiVQyWMbBx3X2SscnSrS5OPT2O+NbW+yq6p2qtfsnFag@mail.gmail.com>
-References: <1544693783-25079-1-git-send-email-chuanjia.liu@mediatek.com>
- <CAGp9LzpcRCMWSn-u6K6+eRT=Zr8PR22Vd381miyhVYbF87N02g@mail.gmail.com> <1545016504.29293.10.camel@mhfsdcap03>
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+Subject: Re: [PATCH 2/2] PCI: mediatek: Add controller support for MT7629
+Date: Mon, 17 Dec 2018 16:19:39 +0800
+Message-ID: <1545034779.8528.8.camel@mhfsdcap03>
+References: <1544058553-10936-1-git-send-email-jianjun.wang@mediatek.com>
+         <1544058553-10936-3-git-send-email-jianjun.wang@mediatek.com>
+         <20181213145517.GB4701@google.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1545016504.29293.10.camel@mhfsdcap03>
+In-Reply-To: <20181213145517.GB4701@google.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chuanjia.Liu@mediatek.com
-Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, hongkun.cao@mediatek.com, youlin.pei@mediatek.com, eddie.huang@mediatek.com, zhiyong.tao@mediatek.com, hailong.fan@mediatek.com
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: ryder.lee@mediatek.com, robh+dt@kernel.org, lorenzo.pieralisi@arm.com, matthias.bgg@gmail.com, linux-pci@vger.kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, youlin.pei@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, honghui.zhang@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, Dec 16, 2018 at 7:15 PM Chuanjia Liu <Chuanjia.Liu@mediatek.com> wrote:
->
-> On Thu, 2018-12-13 at 11:33 -0800, Sean Wang wrote:
-> > On Thu, Dec 13, 2018 at 1:36 AM <chuanjia.liu@mediatek.com> wrote:
-> > >
-> > > From: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
-> > >
-> > > This patch add gpio vritual number select,avoid virtual gpio set SMT.
-> >
-> > s/gpio/GPIO/
-> > s/vritual/virtual/
-> >
-> > Virtual GPIOs you said here that means these pins only used inside SoC
-> > and not being exported to outside SoC, right? It seems this kind of
-> > pins doesn't need SMT.
-> >
-> Yes,virtual gpio only used inside SOC and these pins doesn't need set
-> SMT
-> > >
-> > > Signed-off-by: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
-> > > ---
-> > >  drivers/pinctrl/mediatek/mtk-eint.h              |    1 +
-> > >  drivers/pinctrl/mediatek/pinctrl-mt8183.c        |    1 +
-> > >  drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c |    9 ++++++---
-> > >  3 files changed, 8 insertions(+), 3 deletions(-)
-> > >
-> > > diff --git a/drivers/pinctrl/mediatek/mtk-eint.h b/drivers/pinctrl/mediatek/mtk-eint.h
-> > > index 48468d0..c16beaf 100644
-> > > --- a/drivers/pinctrl/mediatek/mtk-eint.h
-> > > +++ b/drivers/pinctrl/mediatek/mtk-eint.h
-> > > @@ -37,6 +37,7 @@ struct mtk_eint_hw {
-> > >         u8              ports;
-> > >         unsigned int    ap_num;
-> > >         unsigned int    db_cnt;
-> > > +       unsigned int    vir_start;
-> > >  };
-> > >
-> > >  struct mtk_eint;
-> > > diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8183.c b/drivers/pinctrl/mediatek/pinctrl-mt8183.c
-> > > index 6262fd3..bbeafd3 100644
-> > > --- a/drivers/pinctrl/mediatek/pinctrl-mt8183.c
-> > > +++ b/drivers/pinctrl/mediatek/pinctrl-mt8183.c
-> > > @@ -497,6 +497,7 @@
-> > >         .ports     = 6,
-> > >         .ap_num    = 212,
-> > >         .db_cnt    = 13,
-> > > +       .vir_start = 180,
-> > >  };
-> > >
-> > >  static const struct mtk_pin_soc mt8183_data = {
-> > > diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> > > index 4a9e0d4..ca3bae1 100644
-> > > --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> > > +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> > > @@ -289,9 +289,12 @@ static int mtk_xt_set_gpio_as_eint(void *data, unsigned long eint_n)
-> > >         if (err)
-> > >                 return err;
-> > >
-> > > -       err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_SMT, MTK_ENABLE);
-> > > -       if (err)
-> > > -               return err;
-> > > +       if (gpio_n < hw->eint->hw->vir_start) {
-> > > +               err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_SMT,
-> > > +                                      MTK_ENABLE);
-> > > +               if (err)
-> > > +                       return err;
-> > > +       }
-> >
-> > The changes will break these SoCs without a properly configured vir_start.
-> >
-> > If SMT seems unnecessary for these kinds of virtual GPIOs pin in the
-> > path, we can do it as
-> >
-> > err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_SMT,
-> >                                         MTK_ENABLE);
-> > /* please add comments for the exclusion condition */
-> > if (err && err != -ENOTSUPP)
-> >         return err;
-> >
-> > If there is getting much special on certain pins between SoCs, and
-> > then we can consider creating a desc->flag to split logic.
->
-> Yes,SMT unnecessary for these kinds of virtual GPIOS pin in the path,if
-> do it as
->         err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_SMT,
->                                         MTK_ENABLE);
->         if (err && err != -ENOTSUPP)
->                   return err;
-> I wonder if system will lose -ENOTSUPP information when smt was not
-> successfully set by real gpio?
+On Thu, 2018-12-13 at 08:55 -0600, Bjorn Helgaas wrote:
+> On Thu, Dec 06, 2018 at 09:09:13AM +0800, Jianjun Wang wrote:
+> > MT7629 is an arm platform SoC which has the same PCIe IP with MT7622.
+> 
+> s/arm/ARM/
+> 
+> > The read value of BAR0 is 0xffff_ffff, it's size will be calculated as 4GB
+> > in arm64 but bogus alignment values at arm32, the pcie device and devices
+> > behind this bridge will not be enabled. Fix it's BAR0 resource size to
+> > guarantee the pcie devices will be enabled correctly.
+> 
+> So this is a hardware erratum?  Per spec, a memory BAR has bit 0 hardwired
+> to 0, and an IO BAR has bit 1 hardwired to 0.
 
--ENOTSUPP shouldn't happen in a real pin as SMT is supposed to be
-supported by every real pin.
+Yes, it only works properly on 64bit platform.
+> 
+> > The HW default value of its device id is invalid, fix it's device id to
+> > match the hardware implementation.
+> 
+> s/pcie/PCIe/ (all places above)
+> s/it's/its/ (all places above)
+> s/device id/Device ID/
 
-If it is not true or there are more special on certain pins, and then
-we consider to add a flag to struct mtk_pin_desc to group these pins
-with their characteristics and to split and reuse the common code flow
-with the extra flag.
+OK, thanks.
+> 
+> > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+> > ---
+> >  drivers/pci/controller/pcie-mediatek.c | 26 ++++++++++++++++++++++++++
+> >  include/linux/pci_ids.h                |  1 +
+> >  2 files changed, 27 insertions(+)
+> > 
+> > diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> > index d20cf461ba00..f8937cc3c87c 100644
+> > --- a/drivers/pci/controller/pcie-mediatek.c
+> > +++ b/drivers/pci/controller/pcie-mediatek.c
+> > @@ -73,6 +73,7 @@
+> >  #define PCIE_MSI_VECTOR		0x0c0
+> >  
+> >  #define PCIE_CONF_VEND_ID	0x100
+> > +#define PCIE_CONF_DEVICE_ID	0x102
+> >  #define PCIE_CONF_CLASS_ID	0x106
+> >  
+> >  #define PCIE_INT_MASK		0x420
+> > @@ -135,12 +136,14 @@ struct mtk_pcie_port;
+> >  /**
+> >   * struct mtk_pcie_soc - differentiate between host generations
+> >   * @need_fix_class_id: whether this host's class ID needed to be fixed or not
+> > + * @need_fix_device_id: whether this host's device ID needed to be fixed or not
+> >   * @ops: pointer to configuration access functions
+> >   * @startup: pointer to controller setting functions
+> >   * @setup_irq: pointer to initialize IRQ functions
+> >   */
+> >  struct mtk_pcie_soc {
+> >  	bool need_fix_class_id;
+> > +	bool need_fix_device_id;
+> >  	struct pci_ops *ops;
+> >  	int (*startup)(struct mtk_pcie_port *port);
+> >  	int (*setup_irq)(struct mtk_pcie_port *port, struct device_node *node);
+> > @@ -692,6 +695,11 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+> >  		writew(val, port->base + PCIE_CONF_CLASS_ID);
+> >  	}
+> >  
+> > +	if (soc->need_fix_device_id) {
+> > +		val = PCI_DEVICE_ID_MEDIATEK_7629;
+> > +		writew(val, port->base + PCIE_CONF_DEVICE_ID);
+> > +	}
+> > +
+> >  	/* 100ms timeout value should be enough for Gen1/2 training */
+> >  	err = readl_poll_timeout(port->base + PCIE_LINK_STATUS_V2, val,
+> >  				 !!(val & PCIE_PORT_LINKUP_V2), 20,
+> > @@ -1238,11 +1246,29 @@ static const struct mtk_pcie_soc mtk_pcie_soc_mt7622 = {
+> >  	.setup_irq = mtk_pcie_setup_irq,
+> >  };
+> >  
+> > +static const struct mtk_pcie_soc mtk_pcie_soc_mt7629 = {
+> > +	.need_fix_class_id = true,
+> > +	.need_fix_device_id = true,
+> > +	.ops = &mtk_pcie_ops_v2,
+> > +	.startup = mtk_pcie_startup_port_v2,
+> > +	.setup_irq = mtk_pcie_setup_irq,
+> > +};
+> > +
+> > +static void mtk_fixup_bar_size(struct pci_dev *dev)
+> > +{
+> > +	struct resource *dev_res = &dev->resource[0];
+> 
+> Add a blank line here.
 
-So for now, I thought it's enough to handle your case with adding a
-few well self-explained comments for the exclusion condition. These
-words help us remember we should add adding an extra flag to pin
-description as one of TODO if more needs like you come out.
+OK.
+> 
+> > +	/* 32bit resource length will calculate size to 0, set it smaller */
+> > +	dev_res->end = 0xfffffffe;
+> 
+> Presumably you know the size of the BAR because that's fixed by the
+> hardware and documented in the spec.  You should do something like
+> this so you don't depend on what the BAR contains, e.g.,
+> 
+>   res->end = res->start + size - 1;
 
-> >
-> > >
-> > >         return 0;
-> > >  }
-> > > --
-> > > 1.7.9.5
->
->
+Yes, it will be much more better, I will modify the code in next
+version, thanks.
+> 
+> > +}
+> > +DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_MEDIATEK, PCI_DEVICE_ID_MEDIATEK_7629,
+> > +			 mtk_fixup_bar_size);
+> > +
+> >  static const struct of_device_id mtk_pcie_ids[] = {
+> >  	{ .compatible = "mediatek,mt2701-pcie", .data = &mtk_pcie_soc_v1 },
+> >  	{ .compatible = "mediatek,mt7623-pcie", .data = &mtk_pcie_soc_v1 },
+> >  	{ .compatible = "mediatek,mt2712-pcie", .data = &mtk_pcie_soc_mt2712 },
+> >  	{ .compatible = "mediatek,mt7622-pcie", .data = &mtk_pcie_soc_mt7622 },
+> > +	{ .compatible = "mediatek,mt7629-pcie", .data = &mtk_pcie_soc_mt7629 },
+> >  	{},
+> >  };
+> >  
+> > diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
+> > index 69f0abe1ba1a..77b278bac3a8 100644
+> > --- a/include/linux/pci_ids.h
+> > +++ b/include/linux/pci_ids.h
+> > @@ -2126,6 +2126,7 @@
+> >  #define PCI_VENDOR_ID_MYRICOM		0x14c1
+> >  
+> >  #define PCI_VENDOR_ID_MEDIATEK		0x14c3
+> > +#define PCI_DEVICE_ID_MEDIATEK_7629	0x7629
+> >  
+> >  #define PCI_VENDOR_ID_TITAN		0x14D2
+> >  #define PCI_DEVICE_ID_TITAN_010L	0x8001
+> > -- 
+> > 2.19.1
+> > 
+> > 
+> > _______________________________________________
+> > linux-arm-kernel mailing list
+> > linux-arm-kernel@lists.infradead.org
+> > http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
