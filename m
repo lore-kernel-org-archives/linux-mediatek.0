@@ -1,36 +1,86 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH 2/2] PCI: mediatek: Add controller support for MT7629
-Date: Mon, 17 Dec 2018 08:32:47 -0600
-Message-ID: <20181217143247.GK20725@google.com>
-References: <1544058553-10936-1-git-send-email-jianjun.wang@mediatek.com>
- <1544058553-10936-3-git-send-email-jianjun.wang@mediatek.com>
- <20181213145517.GB4701@google.com>
- <1545034779.8528.8.camel@mhfsdcap03>
+From: Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: mt76x[02]u 802.11w support
+Date: Mon, 17 Dec 2018 10:07:43 -0500
+Message-ID: <CAM0KTbBV_YZqt6kkrKeY5tRtKn10UOLQY3EyTKPY+zLzht7sgg@mail.gmail.com>
+References: <CAM0KTbBUXJsBfO0=hQgeTGVteym6iuObdyNynWumQnnGY0L3wg@mail.gmail.com>
+ <20181213143947.GA11947@localhost.localdomain> <CAM0KTbCMrcXNFHUFEmoHg+nseN1GkegqAM0GSuWBDHP=gVgi=w@mail.gmail.com>
+ <dd275289-99d0-54a8-9ac5-cb137123950a@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1545034779.8528.8.camel@mhfsdcap03>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jianjun Wang <jianjun.wang@mediatek.com>
-Cc: ryder.lee@mediatek.com, robh+dt@kernel.org, lorenzo.pieralisi@arm.com, matthias.bgg@gmail.com, linux-pci@vger.kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, youlin.pei@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, honghui.zhang@mediatek.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <dd275289-99d0-54a8-9ac5-cb137123950a-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Dec 17, 2018 at 04:19:39PM +0800, Jianjun Wang wrote:
-> On Thu, 2018-12-13 at 08:55 -0600, Bjorn Helgaas wrote:
-> > On Thu, Dec 06, 2018 at 09:09:13AM +0800, Jianjun Wang wrote:
-> > > The read value of BAR0 is 0xffff_ffff, it's size will be calculated as 4GB
-> > > in arm64 but bogus alignment values at arm32, the pcie device and devices
-> > > behind this bridge will not be enabled. Fix it's BAR0 resource size to
-> > > guarantee the pcie devices will be enabled correctly.
-> > 
-> > So this is a hardware erratum?  Per spec, a memory BAR has bit 0 hardwired
-> > to 0, and an IO BAR has bit 1 hardwired to 0.
-> 
-> Yes, it only works properly on 64bit platform.
+On Sun, Dec 16, 2018 at 5:39 AM Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+>
+>
+>
+> On 15/12/2018 04:43, Sid Hayn wrote:
+> > On Thu, Dec 13, 2018 at 9:39 AM Lorenzo Bianconi
+> > <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
+> >>
+> >>> Per a conversation with Lorenzo, it seems that 802.11w for mt76x[02]u
+> >>> has only been fixed in 4.20.  As 4.19 is a LTS kernel, I'd like to
+> >>> request that work be backported.  While the improvements in 4.20 and
+> >>> 4.21 are already fairly obvious, a lot of people will be running 4.19
+> >>> for years to come.  This is good hardware, with a working driver
+> >>> (thanks team) but in the next few months excitement is going to turn
+> >>> toward WPA3 which requires working 802.11w.
+> >>>
+> >>> Pretty please backport 802.11w support to 4.19
+> >>
+> >> IIRC the isse is just on mt76x0u, mt76x2u should work
+> >
+> > I can confirm that it does work on mt76x2u on 4.19.5; so my request is
+> > to backport 802.11w (software crypto I believe) support for mt76x0u to
+> > 4.19 LTS.  Pretty please :-)
+> >
+>
+> Stable kernel are not used to do feature backports but just bug fixes. Please
+> reach out to your favorite Linux distribution to backport this driver into their
+> kernel. That's the value add a distro has :)
+>
+That is a valid fact, however, fixing broken 802.11w, a required part
+of the standard, feels like a valid bug fix to me.  Especially since
+in 4.19.5 a patch to fix monitor mode was added for the same driver.
+Interestingly when I asked for the monitor mode patch to be ported it
+was initially refused and then just kind of happened a few weeks
+later.  In this case I have a much stronger case, a required feature
+of the wifi driver is broken, and this is an LTS kernel.
 
-I don't understand.  BARs are supposed to work the same regardless of
-whether it's a 32- or 64-bit platform.  If this is a workaround for a
-hardware defect, please just say that explicitly.
+I also feel compelled to point out that this doesn't matter at all to
+me personally.  I will be on 4.20 ten seconds after it comes out, but
+many many people use distros which run LTS kernels like 4.19 for
+years.  Those people will be missing a required feature for wpa3, and
+APs with support (and certification) are already appearing.  So I
+close by politely requesting that this bug gets fixed :-)
 
-Bjorn
+-Zero
+
+> Regards,
+> Matthias
+>
+> > Just in case it helps to confirm what is needed, here is the error
+> > from wpa_supplicant when trying to connect to an 802.11w AP
+> > wlan0: WPA: Failed to configure IGTK to the driver
+> > wlan0: RSN: Failed to configure IGTK
+> >
+> > thanks,
+> > Zero
+> >
+> >>
+> >> Regards,
+> >> Lorenzo
+> >>
+> >>>
+> >>> Thanks,
+> >>> Zero
+> >
+> > _______________________________________________
+> > Linux-mediatek mailing list
+> > Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> > http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> >
