@@ -1,113 +1,36 @@
-From: Maxime Ripard <maxime.ripard@bootlin.com>
-Subject: Re: [PATCH v3 0/5] phy: core: rework phy_set_mode to accept phy mode
- and submode
-Date: Mon, 17 Dec 2018 15:06:23 +0100
-Message-ID: <20181217140623.2zze2kfclup7wjti@flea>
-References: <20181120012424.11802-1-grygorii.strashko@ti.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH 2/2] PCI: mediatek: Add controller support for MT7629
+Date: Mon, 17 Dec 2018 08:32:47 -0600
+Message-ID: <20181217143247.GK20725@google.com>
+References: <1544058553-10936-1-git-send-email-jianjun.wang@mediatek.com>
+ <1544058553-10936-3-git-send-email-jianjun.wang@mediatek.com>
+ <20181213145517.GB4701@google.com>
+ <1545034779.8528.8.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="553g4on6q5epsg5z"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20181120012424.11802-1-grygorii.strashko@ti.com>
+In-Reply-To: <1545034779.8528.8.camel@mhfsdcap03>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Grygorii Strashko <grygorii.strashko@ti.com>
-Cc: "David S. Miller" <davem@davemloft.net>, Kishon Vijay Abraham I <kishon@ti.com>, Antoine Tenart <antoine.tenart@free-electrons.com>, Quentin Schulz <quentin.schulz@bootlin.com>, Russell King - ARM Linux <linux@armlinux.org.uk>, Maxime Chevallier <maxime.chevallier@bootlin.com>, netdev@vger.kernel.org, Sekhar Nori <nsekhar@ti.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Tony Lindgren <tony@atomide.com>, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, Vivek Gautam <vivek.gautam@codeaurora.org>, Chen-Yu Tsai <wens@csie.org>, Carlo Caione <carlo@caione.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Manu Gautam <mgauta>
+To: Jianjun Wang <jianjun.wang@mediatek.com>
+Cc: ryder.lee@mediatek.com, robh+dt@kernel.org, lorenzo.pieralisi@arm.com, matthias.bgg@gmail.com, linux-pci@vger.kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, youlin.pei@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, honghui.zhang@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+On Mon, Dec 17, 2018 at 04:19:39PM +0800, Jianjun Wang wrote:
+> On Thu, 2018-12-13 at 08:55 -0600, Bjorn Helgaas wrote:
+> > On Thu, Dec 06, 2018 at 09:09:13AM +0800, Jianjun Wang wrote:
+> > > The read value of BAR0 is 0xffff_ffff, it's size will be calculated as 4GB
+> > > in arm64 but bogus alignment values at arm32, the pcie device and devices
+> > > behind this bridge will not be enabled. Fix it's BAR0 resource size to
+> > > guarantee the pcie devices will be enabled correctly.
+> > 
+> > So this is a hardware erratum?  Per spec, a memory BAR has bit 0 hardwired
+> > to 0, and an IO BAR has bit 1 hardwired to 0.
+> 
+> Yes, it only works properly on 64bit platform.
 
---553g4on6q5epsg5z
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+I don't understand.  BARs are supposed to work the same regardless of
+whether it's a 32- or 64-bit platform.  If this is a workaround for a
+hardware defect, please just say that explicitly.
 
-Hi Grygorii, Kishon,
-
-On Mon, Nov 19, 2018 at 07:24:19PM -0600, Grygorii Strashko wrote:
-> Thank you for your review.
-> I've not added "Tested-by"/"Acked-by" tags due to code changes in v3.
->=20
-> As was discussed in [1] I'm posting series which introduces rework of
-> phy_set_mode to accept phy mode and submode. I've dropped TI specific pat=
-ches as
-> this change is pretty big by itself.
->=20
-> Patch 1 is cumulative change which refactors PHY framework code to
-> support dual level PHYs mode configuration - PHY mode and PHY submode. It
-> extends .set_mode() callback to support additional parameter "int submode"
-> and converts all corresponding PHY drivers to support new .set_mode()
-> callback declaration.
-> The new extended PHY API
->  int phy_set_mode_ext(struct phy *phy, enum phy_mode mode, int submode)
-> is introduced to support dual level PHYs mode configuration and existing
-> phy_set_mode() API is converted to macros, so PHY framework consumers do
-> not need to be changed (~21 matches).
->=20
-> Patches 2-4: Add new PHY's mode to be used by Ethernet PHY interface driv=
-ers or
-> multipurpose PHYs like serdes and convert ocelot-serdes and mvebu-cp110-c=
-omphy
-> PHY drivers to use recently introduced PHY_MODE_ETHERNET and phy_set_mode=
-_ext().
->=20
-> Patch 5 - removes unused, ethernet specific phy modes from enum phy_mode.
->=20
-> Testing:
->  - series tested on TI am335x/am437x/am5(dra7) paltforms.
->  - other driver build tested.
-
-I realise I'm a bit late to the party, but while working on the D-PHY
-support, I noticed a few things that could be improved.
-
-I guess the main issue is that the sub-mode is completely opaque to
-the generic phy framework now. This might not be a big issue, and I
-assume that it has been done that way because the net framework
-already has a define for the submode it wants.
-
-However, this creates a bunch of drawbacks at the phy framework level:
-
- - phy_set_mode will now pass a submode of 0, all the time. This means
-   that the behaviour is undefined for all the modes not using the
-   submodes at the moment, and phy_interface_t seems to have the value
-   PHY_INTERFACE_MODE_NA matching 0, but I guess this could change in
-   the future (or the guarantee is not documented anywhere).
- - on a similar note, there's no documentation for which value to pass
-   to phy_set_mode_ext when used with something else than a
-   PHY_MODE_ETHERNET.
- - at the provider level, if you're supporting a phy that isn't using
-   the submodes, you have no way to filter out or reject any subnode,
-   since you have no idea what the "no submode" value is.
-
-I guess this can be addressed by:
-
-A) defining a generic phy framework wide unused / invalid phy submode,
-that wouldn't collide with the subnode values (such as -1?), and
-making phy_set_mode_ext use that.
-
-B) moving the phy submodes definition to the generic phy headers. This
-would allow to have a documented, obvious link between a mode and its
-subnodes, for all the actors involved (consumer, provider, and
-framework) without prior knowledge.
-
-C) Document what the submodes expectations are
-
-What do you think?
-Maxime
-
---=20
-Maxime Ripard, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
-
---553g4on6q5epsg5z
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCXBetXwAKCRDj7w1vZxhR
-xeUGAQCR50AQDteX+9l+EKki80/VMKbK438CYL7PPVfr3Qu84AEAjDNV9Y+LVbAp
-XRC0B5OfKDq6wnecuDvlw4UyOlmKWAo=
-=hd40
------END PGP SIGNATURE-----
-
---553g4on6q5epsg5z--
+Bjorn
