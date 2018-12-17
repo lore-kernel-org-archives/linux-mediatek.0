@@ -1,41 +1,36 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: Re: [PATCH 2/2] PCI: mediatek: Add controller support for MT7629
-Date: Mon, 17 Dec 2018 15:46:45 +0000
-Message-ID: <20181217154645.GA24864@e107981-ln.cambridge.arm.com>
-References: <1544058553-10936-1-git-send-email-jianjun.wang@mediatek.com>
- <1544058553-10936-3-git-send-email-jianjun.wang@mediatek.com>
- <20181213145517.GB4701@google.com>
- <1545034779.8528.8.camel@mhfsdcap03>
- <20181217143247.GK20725@google.com>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH 2/8] net: dsa: add helper functions
+Date: Mon, 17 Dec 2018 11:31:19 -0800 (PST)
+Message-ID: <20181217.113119.1920042287405234188.davem@davemloft.net>
+References: <20181214164847.4851-1-frank-w@public-files.de>
+        <20181214164847.4851-3-frank-w@public-files.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20181217143247.GK20725@google.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Jianjun Wang <jianjun.wang@mediatek.com>, ryder.lee@mediatek.com, robh+dt@kernel.org, matthias.bgg@gmail.com, linux-pci@vger.kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, youlin.pei@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, honghui.zhang@mediatek.com, linux-arm-kernel@lists.infradead.org
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20181214164847.4851-3-frank-w@public-files.de>
+Sender: netdev-owner@vger.kernel.org
+To: frank-w@public-files.de
+Cc: matthias.bgg@gmail.com, netdev@vger.kernel.org, sean.wang@mediatek.com, andrew@lunn.ch, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Dec 17, 2018 at 08:32:47AM -0600, Bjorn Helgaas wrote:
-> On Mon, Dec 17, 2018 at 04:19:39PM +0800, Jianjun Wang wrote:
-> > On Thu, 2018-12-13 at 08:55 -0600, Bjorn Helgaas wrote:
-> > > On Thu, Dec 06, 2018 at 09:09:13AM +0800, Jianjun Wang wrote:
-> > > > The read value of BAR0 is 0xffff_ffff, it's size will be calculated as 4GB
-> > > > in arm64 but bogus alignment values at arm32, the pcie device and devices
-> > > > behind this bridge will not be enabled. Fix it's BAR0 resource size to
-> > > > guarantee the pcie devices will be enabled correctly.
-> > > 
-> > > So this is a hardware erratum?  Per spec, a memory BAR has bit 0 hardwired
-> > > to 0, and an IO BAR has bit 1 hardwired to 0.
-> > 
-> > Yes, it only works properly on 64bit platform.
-> 
-> I don't understand.  BARs are supposed to work the same regardless of
-> whether it's a 32- or 64-bit platform.  If this is a workaround for a
-> hardware defect, please just say that explicitly.
+From: Frank Wunderlich <frank-w@public-files.de>
+Date: Fri, 14 Dec 2018 17:48:41 +0100
 
-I do not understand this either. First thing to do is to describe the
-problem properly so that we can actually find a solution to it.
+> @@ -255,6 +255,24 @@ static void dsa_tree_teardown_default_cpu(struct dsa_switch_tree *dst)
+>  	dst->cpu_dp = NULL;
+>  }
+>  
+> +static int dsa_user_parse(struct dsa_port *port, u32 index,
+> +			  struct dsa_switch *ds)
+> +{
+> +	struct device_node *cpu_port;
+> +	const unsigned int *cpu_port_reg;
+> +	int cpu_port_index;
 
-Lorenzo
+Please order local variables from longest to shortest line.
+
+Also, for ->upstream_port, since it is ultimately used as a u8 maybe
+it's best to define it as a u8 in the structure?
+
+Thanks.
