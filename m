@@ -1,109 +1,56 @@
-From: Biao Huang <biao.huang@mediatek.com>
-Subject: [v2, PATCH 1/2] dt-binding: mediatek-dwmac: add binding document for MediaTek MT2712 DWMAC
-Date: Tue, 18 Dec 2018 13:48:15 +0800
-Message-ID: <1545112096-22737-2-git-send-email-biao.huang@mediatek.com>
-References: <1545112096-22737-1-git-send-email-biao.huang@mediatek.com>
+From: Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Subject: Re: mt76x[02]u 802.11w support
+Date: Tue, 18 Dec 2018 09:09:39 +0100
+Message-ID: <20181218080939.GA16795@redhat.com>
+References: <CAM0KTbBUXJsBfO0=hQgeTGVteym6iuObdyNynWumQnnGY0L3wg@mail.gmail.com>
+ <20181213143947.GA11947@localhost.localdomain>
+ <CAM0KTbCMrcXNFHUFEmoHg+nseN1GkegqAM0GSuWBDHP=gVgi=w@mail.gmail.com>
+ <dd275289-99d0-54a8-9ac5-cb137123950a@gmail.com>
+ <CAM0KTbBV_YZqt6kkrKeY5tRtKn10UOLQY3EyTKPY+zLzht7sgg@mail.gmail.com>
+ <20181217154628.GA4773@redhat.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1545112096-22737-1-git-send-email-biao.huang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: davem@davemloft.net, robh+dt@kernel.org
-Cc: honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, biao.huang@mediatek.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, joabreu@synopsys.com, andrew@lunn.ch
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20181217154628.GA4773-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-The commit adds the device tree binding documentation for the MediaTek DWMAC
-found on MediaTek MT2712.
+On Mon, Dec 17, 2018 at 04:46:28PM +0100, Stanislaw Gruszka wrote:
+> On Mon, Dec 17, 2018 at 10:07:43AM -0500, Sid Hayn wrote:
+> > Interestingly when I asked for the monitor mode patch to be ported it
+> > was initially refused and then just kind of happened a few weeks
+> > later.
+> 
+> It was not quite like that. It was refused to apply on 4.19-rcX due to
+> -next merge -rc conflict that it will cause. And it was promised
+> that fixes will be backported thought -stable.
+> 
+> Regarding this case, there is no single commit that add 802.11w support
+> we could request to add to -stable. It was added together with other
+> features in:
+> 
+> commit 0ae976a11b4fb5704b597e103b5189237641c1a1
+> Author: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+> Date:   Thu Sep 6 11:18:41 2018 +0200
+> 
+>     mt76x0: init hw capabilities
+> 
+> which depend on switching mt76x0u to mt76-usb layer.
+> 
+> So I'm not sure how this request should be satisfied.
 
-Signed-off-by: Biao Huang <biao.huang@mediatek.com>
----
- .../devicetree/bindings/net/mediatek-dwmac.txt     |   78 ++++++++++++++++++++
- 1 file changed, 78 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.txt
+Can you check if adding
 
-diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.txt b/Documentation/devicetree/bindings/net/mediatek-dwmac.txt
-new file mode 100644
-index 0000000..8a08621
---- /dev/null
-+++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.txt
-@@ -0,0 +1,78 @@
-+MediaTek DWMAC glue layer controller
-+
-+This file documents platform glue layer for stmmac.
-+Please see stmmac.txt for the other unchanged properties.
-+
-+The device node has following properties.
-+
-+Required properties:
-+- compatible:  Should be "mediatek,mt2712-gmac" for MT2712 SoC
-+- reg:  Address and length of the register set for the device
-+- interrupts:  Should contain the MAC interrupts
-+- interrupt-names: Should contain a list of interrupt names corresponding to
-+	the interrupts in the interrupts property, if available.
-+	Should be "macirq" for the main MAC IRQ
-+- clocks: Must contain a phandle for each entry in clock-names.
-+- clock-names: The name of the clock listed in the clocks property. These are
-+	"axi", "apb", "mac_main", "ptp_ref" for MT2712 SoC
-+- mac-address: See ethernet.txt in the same directory
-+- phy-mode: See ethernet.txt in the same directory
-+- mediatek,pericfg: A phandle to the syscon node that control ethernet
-+	interface and timing delay.
-+
-+Optional properties:
-+- mediatek,tx-delay-ps: TX clock delay macro value. Default is 0.
-+	It should be defined for RGMII/MII interface.
-+- mediatek,rx-delay-ps: RX clock delay macro value. Default is 0.
-+	It should be defined for RGMII/MII/RMII interface.
-+Both delay properties need to be a multiple of 170 for RGMII interface,
-+or will round down. Range 0~31*170.
-+Both delay properties need to be a multiple of 550 for MII/RMII interface,
-+or will round down. Range 0~31*550.
-+
-+- mediatek,rmii-rxc: boolean property, if present indicates that the RMII
-+	reference clock, which is from external PHYs, is connected to RXC pin
-+	on MT2712 SoC.
-+	Otherwise, is connected to TXC pin.
-+- mediatek,txc-inverse: boolean property, if present indicates that
-+	1. tx clock will be inversed in MII/RGMII case,
-+	2. tx clock inside MAC will be inversed relative to reference clock
-+	   which is from external PHYs in RMII case, and it rarely happen.
-+- mediatek,rxc-inverse: boolean property, if present indicates that
-+	1. rx clock will be inversed in MII/RGMII case.
-+	2. reference clock will be inversed when arrived at MAC in RMII case.
-+- assigned-clocks: mac_main and ptp_ref clocks
-+- assigned-clock-parents: parent clocks of the assigned clocks
-+
-+Example:
-+	eth: ethernet@1101c000 {
-+		compatible = "mediatek,mt2712-gmac";
-+		reg = <0 0x1101c000 0 0x1300>;
-+		interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
-+		interrupt-names = "macirq";
-+		phy-mode ="rgmii";
-+		mac-address = [00 55 7b b5 7d f7];
-+		clock-names = "axi",
-+			      "apb",
-+			      "mac_main",
-+			      "ptp_ref",
-+			      "ptp_top";
-+		clocks = <&pericfg CLK_PERI_GMAC>,
-+			 <&pericfg CLK_PERI_GMAC_PCLK>,
-+			 <&topckgen CLK_TOP_ETHER_125M_SEL>,
-+			 <&topckgen CLK_TOP_ETHER_50M_SEL>;
-+		assigned-clocks = <&topckgen CLK_TOP_ETHER_125M_SEL>,
-+				  <&topckgen CLK_TOP_ETHER_50M_SEL>;
-+		assigned-clock-parents = <&topckgen CLK_TOP_ETHERPLL_125M>,
-+					 <&topckgen CLK_TOP_APLL1_D3>;
-+		mediatek,pericfg = <&pericfg>;
-+		mediatek,tx-delay-ps = <1530>;
-+		mediatek,rx-delay-ps = <1530>;
-+		mediatek,rmii-rxc;
-+		mediatek,txc-inverse;
-+		mediatek,rxc-inverse;
-+		snps,txpbl = <32>;
-+		snps,rxpbl = <32>;
-+		snps,reset-gpio = <&pio 87 GPIO_ACTIVE_LOW>;
-+		snps,reset-active-low;
-+	};
--- 
-1.7.9.5
+ieee80211_hw_set(rt2x00dev->hw, MFP_CAPABLE);
+
+is sufficient to add support for 802.11w ? 
+
+Most likely it is, since in 4.19 mt76x0_set_key() do not allow to
+set unsupported ciphers. However it returns -EINVAL instead of
+-EOPNOTSUPP, so I want to be sure.
+
+Thanks
+Stanislaw
