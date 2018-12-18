@@ -1,79 +1,66 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: Re: [PATCH 2/2] PCI: mediatek: Add controller support for MT7629
-Date: Tue, 18 Dec 2018 15:32:32 +0000
-Message-ID: <20181218153232.GA6715@e107981-ln.cambridge.arm.com>
-References: <1544058553-10936-1-git-send-email-jianjun.wang@mediatek.com>
- <1544058553-10936-3-git-send-email-jianjun.wang@mediatek.com>
- <20181213145517.GB4701@google.com>
- <1545034779.8528.8.camel@mhfsdcap03>
- <20181217143247.GK20725@google.com>
- <20181217154645.GA24864@e107981-ln.cambridge.arm.com>
- <1545124764.25199.3.camel@mhfsdcap03>
+From: Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: mt76x[02]u 802.11w support
+Date: Tue, 18 Dec 2018 13:38:54 -0500
+Message-ID: <CAM0KTbCWtwYE3DzmqeHSs3m7A7JojeFFs2_Mp1q5Kg=ySaN0Rw@mail.gmail.com>
+References: <CAM0KTbBUXJsBfO0=hQgeTGVteym6iuObdyNynWumQnnGY0L3wg@mail.gmail.com>
+ <20181213143947.GA11947@localhost.localdomain> <CAM0KTbCMrcXNFHUFEmoHg+nseN1GkegqAM0GSuWBDHP=gVgi=w@mail.gmail.com>
+ <dd275289-99d0-54a8-9ac5-cb137123950a@gmail.com> <CAM0KTbBV_YZqt6kkrKeY5tRtKn10UOLQY3EyTKPY+zLzht7sgg@mail.gmail.com>
+ <20181217154628.GA4773@redhat.com> <20181218080939.GA16795@redhat.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1545124764.25199.3.camel@mhfsdcap03>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jianjun Wang <jianjun.wang@mediatek.com>
-Cc: Bjorn Helgaas <helgaas@kernel.org>, ryder.lee@mediatek.com, robh+dt@kernel.org, matthias.bgg@gmail.com, linux-pci@vger.kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, youlin.pei@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, honghui.zhang@mediatek.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20181218080939.GA16795-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Dec 18, 2018 at 05:19:24PM +0800, Jianjun Wang wrote:
-> On Mon, 2018-12-17 at 15:46 +0000, Lorenzo Pieralisi wrote:
-> > On Mon, Dec 17, 2018 at 08:32:47AM -0600, Bjorn Helgaas wrote:
-> > > On Mon, Dec 17, 2018 at 04:19:39PM +0800, Jianjun Wang wrote:
-> > > > On Thu, 2018-12-13 at 08:55 -0600, Bjorn Helgaas wrote:
-> > > > > On Thu, Dec 06, 2018 at 09:09:13AM +0800, Jianjun Wang wrote:
-> > > > > > The read value of BAR0 is 0xffff_ffff, it's size will be calculated as 4GB
-> > > > > > in arm64 but bogus alignment values at arm32, the pcie device and devices
-> > > > > > behind this bridge will not be enabled. Fix it's BAR0 resource size to
-> > > > > > guarantee the pcie devices will be enabled correctly.
-> > > > > 
-> > > > > So this is a hardware erratum?  Per spec, a memory BAR has bit 0 hardwired
-> > > > > to 0, and an IO BAR has bit 1 hardwired to 0.
-> > > > 
-> > > > Yes, it only works properly on 64bit platform.
-> > > 
-> > > I don't understand.  BARs are supposed to work the same regardless of
-> > > whether it's a 32- or 64-bit platform.  If this is a workaround for a
-> > > hardware defect, please just say that explicitly.
-> > 
-> > I do not understand this either. First thing to do is to describe the
-> > problem properly so that we can actually find a solution to it.
-> > 
-> > Lorenzo
-> 
-> This BAR0 is a 64-bit memory BAR, the HW default values for this BAR is
-> 0xffff_ffff_0000_0000 and it could not be changed except by config write
-> operation.
-> 
-> The calculated BAR size will be 0 in 32-bit platform since the
-> phys_addr_t is a 32bit value in 32-bit platform.
-> 
-> Actually MediaTek's HW does not using this BAR0, just omit it when
-> assign resource is totally fine.
-> 
-> When assign the resource for each device, software will check the
-> resource alignment first, and the resource of length zero will be
-> regarded as a bogus alignment resource, it will be ignored and won't
-> claim a resource parent for it.
-> 
-> When drivers try to enable the PCIe devices, the software will enable
-> it's resources, but it will return an error number when found a
-> unclaimed resource, in that case, the flow of enable devices will be
-> interrupted and PCIe devices won't work properly.
-
-As a starting point, please provide kernel logs for both 64-bit and
-32-bit platforms (without this patch applied) and also a:
-
-cat /proc/iomem
-
-and
-
-lspci
-
-output for both configurations.
+On Tue, Dec 18, 2018 at 3:09 AM Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
+>
+> On Mon, Dec 17, 2018 at 04:46:28PM +0100, Stanislaw Gruszka wrote:
+> > On Mon, Dec 17, 2018 at 10:07:43AM -0500, Sid Hayn wrote:
+> > > Interestingly when I asked for the monitor mode patch to be ported it
+> > > was initially refused and then just kind of happened a few weeks
+> > > later.
+> >
+> > It was not quite like that. It was refused to apply on 4.19-rcX due to
+> > -next merge -rc conflict that it will cause. And it was promised
+> > that fixes will be backported thought -stable.
+> >
+> > Regarding this case, there is no single commit that add 802.11w support
+> > we could request to add to -stable. It was added together with other
+> > features in:
+> >
+> > commit 0ae976a11b4fb5704b597e103b5189237641c1a1
+> > Author: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+> > Date:   Thu Sep 6 11:18:41 2018 +0200
+> >
+> >     mt76x0: init hw capabilities
+> >
+> > which depend on switching mt76x0u to mt76-usb layer.
+> >
+> > So I'm not sure how this request should be satisfied.
+>
+> Can you check if adding
+>
+> ieee80211_hw_set(rt2x00dev->hw, MFP_CAPABLE);
+In this case I inferred from cotext that it should be
+ieee80211_hw_set(hw, MFP_CAPABLE); hopefully that is correct.
+>
+> is sufficient to add support for 802.11w ?
+As a matter of fact it was sufficient.  I can now connect to my AP
+with 802.11w required and prior to this one line change I could not.
+Thanks for taking the time to suggest this, it seems to work well
+enough to connect.  I don't much have a means to test to see if deauth
+frames are properly handled, do you have any test cases you want to
+suggest or are you comfortable enough that it should work properly?
 
 Thanks,
-Lorenzo
+Zero
+>
+> Most likely it is, since in 4.19 mt76x0_set_key() do not allow to
+> set unsupported ciphers. However it returns -EINVAL instead of
+> -EOPNOTSUPP, so I want to be sure.
+>
+> Thanks
+> Stanislaw
