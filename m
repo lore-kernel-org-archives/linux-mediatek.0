@@ -1,66 +1,131 @@
-From: Sid Hayn <sidhayn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: mt76x[02]u 802.11w support
-Date: Wed, 19 Dec 2018 12:08:04 -0500
-Message-ID: <CAM0KTbAvVQ8oCgs3mThmqUcpRK7MCaHs_38Vt+6N_+4c3jRaGQ@mail.gmail.com>
-References: <CAM0KTbBUXJsBfO0=hQgeTGVteym6iuObdyNynWumQnnGY0L3wg@mail.gmail.com>
- <20181213143947.GA11947@localhost.localdomain> <CAM0KTbCMrcXNFHUFEmoHg+nseN1GkegqAM0GSuWBDHP=gVgi=w@mail.gmail.com>
- <dd275289-99d0-54a8-9ac5-cb137123950a@gmail.com> <CAM0KTbBV_YZqt6kkrKeY5tRtKn10UOLQY3EyTKPY+zLzht7sgg@mail.gmail.com>
- <20181217154628.GA4773@redhat.com> <20181218080939.GA16795@redhat.com>
- <CAM0KTbCWtwYE3DzmqeHSs3m7A7JojeFFs2_Mp1q5Kg=ySaN0Rw@mail.gmail.com> <20181219074743.GA3538@redhat.com>
+From: matthias.bgg@kernel.org
+Subject: [PATCH] clk: mediatek: Mark bus and DRAM related clocks as critical
+Date: Wed, 19 Dec 2018 19:16:50 +0100
+Message-ID: <20181219181650.27105-1-matthias.bgg@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20181219074743.GA3538-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: mturquette@baylibre.com, sboyd@kernel.org, kevin-cw.chen@mediatek.com, mars.cheng@mediatek.com
+Cc: matthias.bgg@gmail.com, jasu@njomotys.info, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Dec 19, 2018 at 2:47 AM Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> wrote:
->
-> On Tue, Dec 18, 2018 at 01:38:54PM -0500, Sid Hayn wrote:
-> > > > Regarding this case, there is no single commit that add 802.11w support
-> > > > we could request to add to -stable. It was added together with other
-> > > > features in:
-> > > >
-> > > > commit 0ae976a11b4fb5704b597e103b5189237641c1a1
-> > > > Author: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-> > > > Date:   Thu Sep 6 11:18:41 2018 +0200
-> > > >
-> > > >     mt76x0: init hw capabilities
-> > > >
-> > > > which depend on switching mt76x0u to mt76-usb layer.
-> > > >
-> > > > So I'm not sure how this request should be satisfied.
-> > >
-> > > Can you check if adding
-> > >
-> > > ieee80211_hw_set(rt2x00dev->hw, MFP_CAPABLE);
-> > In this case I inferred from cotext that it should be
-> > ieee80211_hw_set(hw, MFP_CAPABLE); hopefully that is correct.
->
-> Yeah it is. I copied the line from wrong driver :-)
->
-> > > is sufficient to add support for 802.11w ?
-> > As a matter of fact it was sufficient.  I can now connect to my AP
-> > with 802.11w required and prior to this one line change I could not.
-> > Thanks for taking the time to suggest this, it seems to work well
-> > enough to connect.  I don't much have a means to test to see if deauth
-> > frames are properly handled, do you have any test cases you want to
-> > suggest or are you comfortable enough that it should work properly?
->
-> If you using wpa_supplicant, 'wpa_cli disconnect' should
-> trigger deauth exchange.
-politely killing wpa_supplicant also triggers deauth.  it didn't error
-when it did so, so I'll assume it was happy.
->
-> Are there errors in dmesg ? If there are many errors, I think
-> we will need to change EINVAL to EOPNOTSUPP as well.
+From: Jasper Mattsson <jasu@njomotys.info>
 
-dmesg appears clean.
+Currently, DRAM-related clocks are not marked with CLK_IS_CRITICAL
+for MT6797. This causes memory corruption when the system is
+booted without clk_ignore_unused.
+This patch marks MUX ddrphycfg_sel as well as gates infra_dramc_f26m
+and infra_dramc_b_f26m as CLK_IS_CRITICAL.
 
-Thanks,
-Zero
->
-> Thanks
-> Stanislaw
+Signed-off-by: Jasper Mattsson <jasu@njomotys.info>
+Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+---
+changes since v2 [1]:
+- first two patches of series are in clk-next, drop them
+- axi_sel is not needed, drop CLK_IS_CRITICAL for it.
+- update commit message
+
+[1] https://patchwork.kernel.org/patch/10686759/ 
+
+ drivers/clk/mediatek/clk-mt6797.c | 60 ++++++++++++++++++-------------
+ 1 file changed, 35 insertions(+), 25 deletions(-)
+
+diff --git a/drivers/clk/mediatek/clk-mt6797.c b/drivers/clk/mediatek/clk-mt6797.c
+index 5702bc974ed9..a6e5408e0388 100644
+--- a/drivers/clk/mediatek/clk-mt6797.c
++++ b/drivers/clk/mediatek/clk-mt6797.c
+@@ -331,8 +331,8 @@ static const struct mtk_composite top_muxes[] = {
+ 	    ulposc_axi_ck_mux_parents, 0x0040, 2, 1),
+ 	MUX(CLK_TOP_MUX_AXI, "axi_sel", axi_parents,
+ 	    0x0040, 0, 2),
+-	MUX(CLK_TOP_MUX_DDRPHYCFG, "ddrphycfg_sel", ddrphycfg_parents,
+-	    0x0040, 16, 2),
++	MUX_FLAGS(CLK_TOP_MUX_DDRPHYCFG, "ddrphycfg_sel", ddrphycfg_parents,
++		  0x0040, 16, 2, CLK_IS_CRITICAL | CLK_SET_RATE_PARENT),
+ 	MUX(CLK_TOP_MUX_MM, "mm_sel", mm_parents,
+ 	    0x0040, 24, 2),
+ 	MUX_GATE(CLK_TOP_MUX_PWM, "pwm_sel", pwm_parents, 0x0050, 0, 3, 7),
+@@ -424,31 +424,39 @@ static const struct mtk_gate_regs infra2_cg_regs = {
+ 	.sta_ofs = 0x00b0,
+ };
+ 
+-#define GATE_ICG0(_id, _name, _parent, _shift) {	\
+-	.id = _id,					\
+-	.name = _name,					\
+-	.parent_name = _parent,				\
+-	.regs = &infra0_cg_regs,			\
+-	.shift = _shift,				\
+-	.ops = &mtk_clk_gate_ops_setclr,		\
++#define GATE_ICG0(_id, _name, _parent, _shift) {		\
++	.id = _id,						\
++	.name = _name,						\
++	.parent_name = _parent,					\
++	.regs = &infra0_cg_regs,				\
++	.shift = _shift,					\
++	.ops = &mtk_clk_gate_ops_setclr,			\
+ }
+ 
+-#define GATE_ICG1(_id, _name, _parent, _shift) {	\
+-	.id = _id,					\
+-	.name = _name,					\
+-	.parent_name = _parent,				\
+-	.regs = &infra1_cg_regs,			\
+-	.shift = _shift,				\
+-	.ops = &mtk_clk_gate_ops_setclr,		\
++#define GATE_ICG1(_id, _name, _parent, _shift)			\
++	GATE_ICG1_FLAGS(_id, _name, _parent, _shift, 0)
++
++#define GATE_ICG1_FLAGS(_id, _name, _parent, _shift, _flags) {	\
++	.id = _id,						\
++	.name = _name,						\
++	.parent_name = _parent,					\
++	.regs = &infra1_cg_regs,				\
++	.shift = _shift,					\
++	.ops = &mtk_clk_gate_ops_setclr,			\
++	.flags = _flags,					\
+ }
+ 
+-#define GATE_ICG2(_id, _name, _parent, _shift) {	\
+-	.id = _id,					\
+-	.name = _name,					\
+-	.parent_name = _parent,				\
+-	.regs = &infra2_cg_regs,			\
+-	.shift = _shift,				\
+-	.ops = &mtk_clk_gate_ops_setclr,		\
++#define GATE_ICG2(_id, _name, _parent, _shift)			\
++	GATE_ICG2_FLAGS(_id, _name, _parent, _shift, 0)
++
++#define GATE_ICG2_FLAGS(_id, _name, _parent, _shift, _flags) {	\
++	.id = _id,						\
++	.name = _name,						\
++	.parent_name = _parent,					\
++	.regs = &infra2_cg_regs,				\
++	.shift = _shift,					\
++	.ops = &mtk_clk_gate_ops_setclr,			\
++	.flags = _flags,					\
+ }
+ 
+ static const struct mtk_gate infra_clks[] = {
+@@ -505,7 +513,8 @@ static const struct mtk_gate infra_clks[] = {
+ 	GATE_ICG1(CLK_INFRA_CCIF_AP, "infra_ccif_ap", "axi_sel", 23),
+ 	GATE_ICG1(CLK_INFRA_AUDIO, "infra_audio", "axi_sel", 25),
+ 	GATE_ICG1(CLK_INFRA_CCIF_MD, "infra_ccif_md", "axi_sel", 26),
+-	GATE_ICG1(CLK_INFRA_DRAMC_F26M, "infra_dramc_f26m", "clk26m", 31),
++	GATE_ICG1_FLAGS(CLK_INFRA_DRAMC_F26M, "infra_dramc_f26m",
++			"clk26m", 31, CLK_IS_CRITICAL),
+ 	GATE_ICG2(CLK_INFRA_I2C4, "infra_i2c4", "axi_sel", 0),
+ 	GATE_ICG2(CLK_INFRA_I2C_APPM, "infra_i2c_appm", "axi_sel", 1),
+ 	GATE_ICG2(CLK_INFRA_I2C_GPUPM, "infra_i2c_gpupm", "axi_sel", 2),
+@@ -516,7 +525,8 @@ static const struct mtk_gate infra_clks[] = {
+ 	GATE_ICG2(CLK_INFRA_I2C5, "infra_i2c5", "axi_sel", 7),
+ 	GATE_ICG2(CLK_INFRA_SYS_CIRQ, "infra_sys_cirq", "axi_sel", 8),
+ 	GATE_ICG2(CLK_INFRA_SPI1, "infra_spi1", "spi_sel", 10),
+-	GATE_ICG2(CLK_INFRA_DRAMC_B_F26M, "infra_dramc_b_f26m", "clk26m", 11),
++	GATE_ICG2_FLAGS(CLK_INFRA_DRAMC_B_F26M, "infra_dramc_b_f26m",
++			"clk26m", 11, CLK_IS_CRITICAL),
+ 	GATE_ICG2(CLK_INFRA_ANC_MD32, "infra_anc_md32", "anc_md32_sel", 12),
+ 	GATE_ICG2(CLK_INFRA_ANC_MD32_32K, "infra_anc_md32_32k", "clk26m", 13),
+ 	GATE_ICG2(CLK_INFRA_DVFS_SPM1, "infra_dvfs_spm1", "axi_sel", 15),
+-- 
+2.19.2
