@@ -1,25 +1,38 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/2] dt-bindings: PCI: Add support for MT7629
-Date: Wed, 19 Dec 2018 14:38:50 -0600
-Message-ID: <20181219203850.GA31173@bogus>
-References: <1544058553-10936-1-git-send-email-jianjun.wang@mediatek.com>
- <1544058553-10936-2-git-send-email-jianjun.wang@mediatek.com>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [v3, PATCH 0/2] add ethernet binding and modify ethernet
+ driver for mt2712
+Date: Wed, 19 Dec 2018 16:25:12 -0800 (PST)
+Message-ID: <20181219.162512.2128297455575722871.davem@davemloft.net>
+References: <1545204161-15742-1-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1544058553-10936-2-git-send-email-jianjun.wang@mediatek.com>
+In-Reply-To: <1545204161-15742-1-git-send-email-biao.huang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: ryder.lee@mediatek.com, bhelgaas@google.com, robh+dt@kernel.org, lorenzo.pieralisi@arm.com, matthias.bgg@gmail.com, linux-pci@vger.kernel.org, mark.rutland@arm.com, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, honghui.zhang@mediatek.com, youlin.pei@mediatek.com, Jianjun Wang <jianjun.wang@mediatek.com>
+To: biao.huang@mediatek.com
+Cc: robh+dt@kernel.org, honghui.zhang@mediatek.com, yt.shen@mediatek.com, liguo.zhang@mediatek.com, mark.rutland@arm.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, joabreu@synopsys.com, andrew@lunn.ch
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 6 Dec 2018 09:09:12 +0800, Jianjun Wang wrote:
-> MT7629 is an arm platform Soc which has the same PCIe IP with MT7622.
-> 
-> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/pci/mediatek-pcie.txt | 1 +
->  1 file changed, 1 insertion(+)
-> 
+From: Biao Huang <biao.huang@mediatek.com>
+Date: Wed, 19 Dec 2018 15:22:39 +0800
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+> changes in v3:
+> resend this series base on the latest net-next tree.
+> 
+> changes in v2 as comments from Sean:
+> 1. fix typo.
+> 2. use capital letters for RMII/MII/RGMII in driver and bindings.
+> 
+> v1:
+> This new series is the result of discussion in:
+> http://lkml.org/lkml/2018/12/13/1007
+> http://lkml.org/lkml/2018/12/14/53
+> 
+> 1. ethernet binding file move to this series.
+> 2. remove fine tune property in device tree
+> 3. remove fine tune flow in ethernet driver
+> 4. set rgmii timing according to the value in device tree,
+> and don't care whether phy insert internal delay  or not.
+
+Series applied.
