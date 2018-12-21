@@ -1,26 +1,35 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH v1] pinctrl: mediatek: improve Kconfig dependencies
-Date: Fri, 21 Dec 2018 11:17:25 +0100
-Message-ID: <CACRpkdZMgnj2S8xPPFm3PnDGrqTerOwWcS-+Uruy1uLH24HRLg@mail.gmail.com>
-References: <e4eb66dec2901016e01767932461c5d560762f66.1544666839.git.ryder.lee@mediatek.com>
+From: qii wang <qii.wang@mediatek.com>
+Subject: [PATCH 1/6] dt-bindings: i2c: Add Mediatek MT7629 i2c binding
+Date: Fri, 21 Dec 2018 20:58:26 +0800
+Message-ID: <1545397111-24183-2-git-send-email-qii.wang@mediatek.com>
+References: <1545397111-24183-1-git-send-email-qii.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <e4eb66dec2901016e01767932461c5d560762f66.1544666839.git.ryder.lee@mediatek.com>
+In-Reply-To: <1545397111-24183-1-git-send-email-qii.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Weijie Gao <weijie.gao@mediatek.com>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+To: wsa@the-dreams.de
+Cc: linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, leilk.liu@mediatek.com, qii.wang@mediatek.com, ryder.lee@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Dec 13, 2018 at 3:28 AM Ryder Lee <ryder.lee@mediatek.com> wrote:
+Add MT7629 i2c binding to binding file.
 
-> Remove prompts to make all pinctrl cores to non-visible symbols and
-> make sure the target SoCs would be coupled with the corresponding
-> cores.
->
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: qii wang <qii.wang@mediatek.com>
+---
+ Documentation/devicetree/bindings/i2c/i2c-mtk.txt |    1 +
+ 1 file changed, 1 insertion(+)
 
-Patch applied with ACK and Tested-by.
-
-Yours,
-Linus Walleij
+diff --git a/Documentation/devicetree/bindings/i2c/i2c-mtk.txt b/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
+index e199695..ee4c324 100644
+--- a/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
++++ b/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
+@@ -10,6 +10,7 @@ Required properties:
+       "mediatek,mt6589-i2c": for MediaTek MT6589
+       "mediatek,mt7622-i2c": for MediaTek MT7622
+       "mediatek,mt7623-i2c", "mediatek,mt6577-i2c": for MediaTek MT7623
++      "mediatek,mt7629-i2c", "mediatek,mt2712-i2c": for MediaTek MT7629
+       "mediatek,mt8173-i2c": for MediaTek MT8173
+   - reg: physical base address of the controller and dma base, length of memory
+     mapped region.
+-- 
+1.7.9.5
