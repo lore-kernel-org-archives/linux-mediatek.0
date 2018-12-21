@@ -1,66 +1,26 @@
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Subject: Re: [PATCH v2 -next] input: keyboard: remove duplicated include from
- mtk-pmic-keys.c
-Date: Fri, 21 Dec 2018 00:46:40 -0800
-Message-ID: <20181221084640.GI211587@dtor-ws>
-References: <20181211093200.18140-1-yuehaibing@huawei.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH v1] pinctrl: mediatek: improve Kconfig dependencies
+Date: Fri, 21 Dec 2018 11:17:25 +0100
+Message-ID: <CACRpkdZMgnj2S8xPPFm3PnDGrqTerOwWcS-+Uruy1uLH24HRLg@mail.gmail.com>
+References: <e4eb66dec2901016e01767932461c5d560762f66.1544666839.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20181211093200.18140-1-yuehaibing@huawei.com>
+In-Reply-To: <e4eb66dec2901016e01767932461c5d560762f66.1544666839.git.ryder.lee@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: YueHaibing <yuehaibing@huawei.com>
-Cc: matthias.bgg@gmail.com, lee.jones@linaro.org, chen.zhong@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Weijie Gao <weijie.gao@mediatek.com>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Dec 11, 2018 at 05:32:00PM +0800, YueHaibing wrote:
-> alphabetise the header files and remove duplicated include
-> file linux/kernel.h
-> 
-> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+On Thu, Dec 13, 2018 at 3:28 AM Ryder Lee <ryder.lee@mediatek.com> wrote:
 
-Applied, thank you.
+> Remove prompts to make all pinctrl cores to non-visible symbols and
+> make sure the target SoCs would be coupled with the corresponding
+> cores.
+>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 
-> ---
-> v2: alphabetise the header files
-> ---
->  drivers/input/keyboard/mtk-pmic-keys.c | 13 ++++++-------
->  1 file changed, 6 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
-> index 02c67a1..8e6ebab 100644
-> --- a/drivers/input/keyboard/mtk-pmic-keys.c
-> +++ b/drivers/input/keyboard/mtk-pmic-keys.c
-> @@ -14,18 +14,17 @@
->   *
->   */
->  
-> -#include <linux/module.h>
-> -#include <linux/kernel.h>
->  #include <linux/input.h>
->  #include <linux/interrupt.h>
-> -#include <linux/platform_device.h>
->  #include <linux/kernel.h>
-> -#include <linux/of.h>
-> -#include <linux/of_device.h>
-> -#include <linux/regmap.h>
->  #include <linux/mfd/mt6323/registers.h>
-> -#include <linux/mfd/mt6397/registers.h>
->  #include <linux/mfd/mt6397/core.h>
-> +#include <linux/mfd/mt6397/registers.h>
-> +#include <linux/module.h>
-> +#include <linux/of_device.h>
-> +#include <linux/of.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/regmap.h>
->  
->  #define MTK_PMIC_PWRKEY_RST_EN_MASK	0x1
->  #define MTK_PMIC_PWRKEY_RST_EN_SHIFT	6
-> -- 
-> 2.7.4
-> 
-> 
+Patch applied with ACK and Tested-by.
 
--- 
-Dmitry
+Yours,
+Linus Walleij
