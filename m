@@ -1,329 +1,135 @@
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-Subject: Re: [PATCH 2/2] PCI: mediatek: Add controller support for MT7629
-Date: Fri, 21 Dec 2018 21:13:31 +0800
-Message-ID: <1545398011.25199.43.camel@mhfsdcap03>
-References: <1544058553-10936-1-git-send-email-jianjun.wang@mediatek.com>
-         <1544058553-10936-3-git-send-email-jianjun.wang@mediatek.com>
-         <20181213145517.GB4701@google.com> <1545034779.8528.8.camel@mhfsdcap03>
-         <20181217143247.GK20725@google.com>
-         <20181217154645.GA24864@e107981-ln.cambridge.arm.com>
-         <1545124764.25199.3.camel@mhfsdcap03>
-         <20181218153232.GA6715@e107981-ln.cambridge.arm.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v4 02/18] iommu/mediatek: Use a struct as the platform
+ data
+Date: Fri, 21 Dec 2018 18:44:55 +0100
+Message-ID: <be32c912-359e-73c9-ca24-d0cbface47d3@gmail.com>
+References: <1544258371-4600-1-git-send-email-yong.wu@mediatek.com>
+ <1544258371-4600-3-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181218153232.GA6715@e107981-ln.cambridge.arm.com>
+In-Reply-To: <1544258371-4600-3-git-send-email-yong.wu@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: Bjorn Helgaas <helgaas@kernel.org>, ryder.lee@mediatek.com, robh+dt@kernel.org, matthias.bgg@gmail.com, linux-pci@vger.kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, youlin.pei@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, honghui.zhang@mediatek.com, linux-arm-kernel@lists.infradead.org
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Tomasz Figa <tfiga@google.com>, Will Deacon <will.deacon@arm.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, arnd@arndb.de, yingjoe.chen@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, Arvind Yadav <arvind.yadav.cs@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2018-12-18 at 15:32 +0000, Lorenzo Pieralisi wrote:
-> On Tue, Dec 18, 2018 at 05:19:24PM +0800, Jianjun Wang wrote:
-> > On Mon, 2018-12-17 at 15:46 +0000, Lorenzo Pieralisi wrote:
-> > > On Mon, Dec 17, 2018 at 08:32:47AM -0600, Bjorn Helgaas wrote:
-> > > > On Mon, Dec 17, 2018 at 04:19:39PM +0800, Jianjun Wang wrote:
-> > > > > On Thu, 2018-12-13 at 08:55 -0600, Bjorn Helgaas wrote:
-> > > > > > On Thu, Dec 06, 2018 at 09:09:13AM +0800, Jianjun Wang wrote:
-> > > > > > > The read value of BAR0 is 0xffff_ffff, it's size will be calculated as 4GB
-> > > > > > > in arm64 but bogus alignment values at arm32, the pcie device and devices
-> > > > > > > behind this bridge will not be enabled. Fix it's BAR0 resource size to
-> > > > > > > guarantee the pcie devices will be enabled correctly.
-> > > > > > 
-> > > > > > So this is a hardware erratum?  Per spec, a memory BAR has bit 0 hardwired
-> > > > > > to 0, and an IO BAR has bit 1 hardwired to 0.
-> > > > > 
-> > > > > Yes, it only works properly on 64bit platform.
-> > > > 
-> > > > I don't understand.  BARs are supposed to work the same regardless of
-> > > > whether it's a 32- or 64-bit platform.  If this is a workaround for a
-> > > > hardware defect, please just say that explicitly.
-> > > 
-> > > I do not understand this either. First thing to do is to describe the
-> > > problem properly so that we can actually find a solution to it.
-> > > 
-> > > Lorenzo
-> > 
-> > This BAR0 is a 64-bit memory BAR, the HW default values for this BAR is
-> > 0xffff_ffff_0000_0000 and it could not be changed except by config write
-> > operation.
-> > 
-> > The calculated BAR size will be 0 in 32-bit platform since the
-> > phys_addr_t is a 32bit value in 32-bit platform.
-> > 
-> > Actually MediaTek's HW does not using this BAR0, just omit it when
-> > assign resource is totally fine.
-> > 
-> > When assign the resource for each device, software will check the
-> > resource alignment first, and the resource of length zero will be
-> > regarded as a bogus alignment resource, it will be ignored and won't
-> > claim a resource parent for it.
-> > 
-> > When drivers try to enable the PCIe devices, the software will enable
-> > it's resources, but it will return an error number when found a
-> > unclaimed resource, in that case, the flow of enable devices will be
-> > interrupted and PCIe devices won't work properly.
+
+
+On 08/12/2018 09:39, Yong Wu wrote:
+> Use a struct as the platform special data instead of the enumeration.
+> This is a prepare patch for adding mt8183 iommu support.
 > 
-> As a starting point, please provide kernel logs for both 64-bit and
-> 32-bit platforms (without this patch applied) and also a:
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
+>  drivers/iommu/mtk_iommu.c | 24 ++++++++++++++++--------
+>  drivers/iommu/mtk_iommu.h |  6 +++++-
+>  2 files changed, 21 insertions(+), 9 deletions(-)
 > 
-> cat /proc/iomem
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index 44bd5b9..9a2225b 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -54,7 +54,7 @@
+>  #define REG_MMU_CTRL_REG			0x110
+>  #define F_MMU_PREFETCH_RT_REPLACE_MOD		BIT(4)
+>  #define F_MMU_TF_PROTECT_SEL_SHIFT(data) \
+> -	((data)->m4u_plat == M4U_MT2712 ? 4 : 5)
+> +	((data)->plat_data->m4u_plat == M4U_MT2712 ? 4 : 5)
+>  /* It's named by F_MMU_TF_PROT_SEL in mt2712. */
+>  #define F_MMU_TF_PROTECT_SEL(prot, data) \
+>  	(((prot) & 0x3) << F_MMU_TF_PROTECT_SEL_SHIFT(data))
+> @@ -517,7 +517,7 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+>  	}
+>  
+>  	regval = F_MMU_TF_PROTECT_SEL(2, data);
+> -	if (data->m4u_plat == M4U_MT8173)
+> +	if (data->plat_data->m4u_plat == M4U_MT8173)
+>  		regval |= F_MMU_PREFETCH_RT_REPLACE_MOD;
+>  	writel_relaxed(regval, data->base + REG_MMU_CTRL_REG);
+>  
+> @@ -538,14 +538,14 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+>  		F_INT_PRETETCH_TRANSATION_FIFO_FAULT;
+>  	writel_relaxed(regval, data->base + REG_MMU_INT_MAIN_CONTROL);
+>  
+> -	if (data->m4u_plat == M4U_MT8173)
+> +	if (data->plat_data->m4u_plat == M4U_MT8173)
+>  		regval = (data->protect_base >> 1) | (data->enable_4GB << 31);
+>  	else
+>  		regval = lower_32_bits(data->protect_base) |
+>  			 upper_32_bits(data->protect_base);
+>  	writel_relaxed(regval, data->base + REG_MMU_IVRP_PADDR);
+>  
+> -	if (data->enable_4GB && data->m4u_plat != M4U_MT8173) {
+> +	if (data->enable_4GB && data->plat_data->m4u_plat != M4U_MT8173) {
+>  		/*
+>  		 * If 4GB mode is enabled, the validate PA range is from
+>  		 * 0x1_0000_0000 to 0x1_ffff_ffff. here record bit[32:30].
+> @@ -556,7 +556,7 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+>  	writel_relaxed(0, data->base + REG_MMU_DCM_DIS);
+>  
+>  	/* It's MISC control register whose default value is ok except mt8173.*/
+> -	if (data->m4u_plat == M4U_MT8173)
+> +	if (data->plat_data->m4u_plat == M4U_MT8173)
+>  		writel_relaxed(0, data->base + REG_MMU_STANDARD_AXI_MODE);
+>  
+>  	if (devm_request_irq(data->dev, data->irq, mtk_iommu_isr, 0,
+> @@ -589,7 +589,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>  	if (!data)
+>  		return -ENOMEM;
+>  	data->dev = dev;
+> -	data->m4u_plat = (enum mtk_iommu_plat)of_device_get_match_data(dev);
+> +	data->plat_data = of_device_get_match_data(dev);
+>  
+>  	/* Protect memory. HW will access here while translation fault.*/
+>  	protect = devm_kzalloc(dev, MTK_PROTECT_PA_ALIGN * 2, GFP_KERNEL);
+> @@ -733,9 +733,17 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
+>  	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_iommu_suspend, mtk_iommu_resume)
+>  };
+>  
+> +static const struct mtk_iommu_plat_data mt2712_data = {
+> +	.m4u_plat     = M4U_MT2712,
+> +};
+> +
+> +static const struct mtk_iommu_plat_data mt8173_data = {
+> +	.m4u_plat     = M4U_MT8173,
+> +};
+> +
+>  static const struct of_device_id mtk_iommu_of_ids[] = {
+> -	{ .compatible = "mediatek,mt2712-m4u", .data = (void *)M4U_MT2712},
+> -	{ .compatible = "mediatek,mt8173-m4u", .data = (void *)M4U_MT8173},
+> +	{ .compatible = "mediatek,mt2712-m4u", .data = &mt2712_data},
+> +	{ .compatible = "mediatek,mt8173-m4u", .data = &mt8173_data},
+>  	{}
+>  };
+>  
+> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+> index 778498b..333a0ef 100644
+> --- a/drivers/iommu/mtk_iommu.h
+> +++ b/drivers/iommu/mtk_iommu.h
+> @@ -41,6 +41,10 @@ enum mtk_iommu_plat {
+>  	M4U_MT8173,
+>  };
+>  
+> +struct mtk_iommu_plat_data {
+> +	enum mtk_iommu_plat m4u_plat;
+> +};
+> +
+>  struct mtk_iommu_domain;
+>  
+>  struct mtk_iommu_data {
+> @@ -57,7 +61,7 @@ struct mtk_iommu_data {
+>  	bool				tlb_flush_active;
+>  
+>  	struct iommu_device		iommu;
+> -	enum mtk_iommu_plat		m4u_plat;
+> +	const struct mtk_iommu_plat_data *plat_data;
+>  
+>  	struct list_head		list;
+>  };
 > 
-> and
-> 
-> lspci
-> 
-> output for both configurations.
-> 
-> Thanks,
-> Lorenzo
-
-I compared with the mt2712 platform, which is an arm64 platform, and the
-EP deivce is an Intel e1000e NIC. Compiled these drivers to modules
-(without this patch applied both), and insert them separately after
-system startup.
-
-After insert these modules, there will be an Ethernet device on both
-platform, and the 64-bit platform works properly, but the 32-bit
-platform doesn't.
-
-1.The following logs is from the 64-bit platform (mt2712):
-
-1.1. insmod pcie-mediatek.ko:
-mtk-pcie 11700000.pcie: host bridge /pcie@11700000 ranges:
-mtk-pcie 11700000.pcie:   MEM 0x20000000..0x2fffffff -> 0x20000000
-mtk-pcie 11700000.pcie: PCI host bridge to bus 0000:00
-pci_bus 0000:00: root bus resource [bus 00-ff]
-pci_bus 0000:00: root bus resource [mem 0x20000000-0x2fffffff]
-pci 0000:00:00.0: bridge configuration invalid ([bus 00-00]),
-reconfiguring
-pci 0000:01:00.0: 2.000 Gb/s available PCIe bandwidth, limited by 2.5
-GT/s x1 link at 0000:00:00.0 (capable of 7.876 Gb/s with 8 GT/s x1
-link)
-pci 0000:00:00.0: BAR 0: no space for [mem size 0x100000000 64bit pref]
-pci 0000:00:00.0: BAR 0: failed to assign [mem size 0x100000000 64bit
-pref]
-pci 0000:00:00.0: BAR 8: assigned [mem 0x20000000-0x200fffff]
-pci 0000:01:00.0: BAR 1: assigned [mem 0x20000000-0x2007ffff]
-pci 0000:01:00.0: BAR 6: assigned [mem 0x20080000-0x200bffff pref]
-pci 0000:01:00.0: BAR 0: assigned [mem 0x200c0000-0x200dffff]
-pci 0000:01:00.0: BAR 3: assigned [mem 0x200e0000-0x200e3fff]
-pci 0000:01:00.0: BAR 2: no space for [io  size 0x0020]
-pci 0000:01:00.0: BAR 2: failed to assign [io  size 0x0020]
-pci 0000:00:00.0: PCI bridge to [bus 01]
-pci 0000:00:00.0:   bridge window [mem 0x20000000-0x200fffff]
-
-1.2. insmod e1000e.ko:
-e1000e: Intel(R) PRO/1000 Network Driver - 3.2.6-k
-e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
-pci 0000:00:00.0: enabling device (0000 -> 0002)
-e1000e 0000:01:00.0: enabling device (0000 -> 0002)
-e1000e 0000:01:00.0: Interrupt Throttling Rate (ints/sec) set to dynamic
-conservative mode
-e1000e 0000:01:00.0 0000:01:00.0 (uninitialized): registered PHC clock
-e1000e 0000:01:00.0 eth0: (PCI Express:2.5GT/s:Width x1)
-2c:53:4a:03:89:e9
-e1000e 0000:01:00.0 eth0: Intel(R) PRO/1000 Network Connection
-e1000e 0000:01:00.0 eth0: MAC: 3, PHY: 8, PBA No: FFFFFF-0FF
-
-1.3. lspci -xxx
-00:00.0 Class 0604: Device 14c3:2712
-00: c3 14 12 27 06 00 10 00 00 01 04 06 00 00 01 00
-10: 0c 00 00 00 00 00 00 00 00 01 01 40 00 00 20 04
-20: 00 20 00 20 00 00 00 00 00 00 00 00 00 00 00 00
-30: 00 00 00 00 50 00 00 00 00 00 00 00 00 01 00 00
-40: 00 00 00 00 60 61 12 02 00 00 00 00 00 00 00 00
-50: 05 78 80 00 00 00 00 00 00 00 00 00 00 00 00 00
-60: 00 00 00 00 00 00 00 00 11 78 00 00 00 00 00 00
-70: 00 00 00 00 00 00 00 00 01 80 c3 01 08 00 00 00
-80: 10 00 42 01 41 83 00 00 10 28 20 00 12 8c 60 01
-90: 08 00 11 10 00 00 04 00 00 00 00 00 00 00 00 00
-a0: 00 00 00 00 00 08 00 00 00 00 00 00 00 00 00 00
-b0: 02 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00
-c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-
-01:00.0 Class 0200: Device 8086:10d3
-00: 86 80 d3 10 06 04 18 00 00 00 00 02 10 00 00 00
-10: 00 00 0c 20 00 00 00 20 01 00 00 00 00 00 0e 20
-20: 00 00 00 00 00 00 00 00 00 00 00 00 1a 1d 00 00
-30: 00 00 00 00 c8 00 00 00 00 00 00 00 f3 01 00 00
-40: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-50: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-a0: 11 00 04 80 03 00 00 00 03 20 00 00 00 00 00 00
-b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-c0: 00 00 00 00 00 00 00 00 01 d0 22 c8 00 20 00 14
-d0: 05 e0 80 00 00 00 00 00 00 00 00 00 00 00 00 00
-e0: 10 a0 01 00 c1 8c 00 00 10 28 10 00 11 1c 03 01
-f0: 00 00 11 10 00 00 00 00 00 00 00 00 00 00 00 00
-
-1.4 lspci -v
-00:00.0 Class 0604: Device 14c3:2712 (prog-if 01)
-	Flags: bus master, fast devsel, latency 0
-	Memory at <unassigned> (64-bit, prefetchable)
-	Bus: primary=00, secondary=01, subordinate=01, sec-latency=64
-	I/O behind bridge: 00000000-00000fff [size=4K]
-	Memory behind bridge: 20000000-200fffff [size=1M]
-	Prefetchable memory behind bridge: 00000000-000fffff [size=1M]
-	Capabilities: [50] MSI: Enable- Count=1/1 Maskable- 64bit+
-	Capabilities: [78] Power Management version 3
-	Capabilities: [80] Express Root Port (Slot+), MSI 00
-	Capabilities: [100] Virtual Channel
-	Capabilities: [400] L1 PM Substates
-	Capabilities: [600] Latency Tolerance Reporting
-
-01:00.0 Class 0200: Device 8086:10d3
-	Subsystem: Device 1d1a:0000
-	Flags: bus master, fast devsel, latency 0, IRQ 243
-	Memory at 200c0000 (32-bit, non-prefetchable) [size=128K]
-	Memory at 20000000 (32-bit, non-prefetchable) [size=512K]
-	I/O ports at <unassigned> [disabled]
-	Memory at 200e0000 (32-bit, non-prefetchable) [size=16K]
-	[virtual] Expansion ROM at 20080000 [disabled] [size=256K]
-	Capabilities: [c8] Power Management version 2
-	Capabilities: [d0] MSI: Enable- Count=1/1 Maskable- 64bit+
-	Capabilities: [e0] Express Endpoint, MSI 00
-	Capabilities: [a0] MSI-X: Enable+ Count=5 Masked-
-	Capabilities: [100] Advanced Error Reporting
-	Capabilities: [140] Device Serial Number 2c-53-4a-ff-ff-03-89-e9
-	Kernel driver in use: e1000e
-
-1.5. cat /proc/iomem
-20000000-2fffffff : pcie@11700000
-  20000000-200fffff : PCI Bus 0000:01
-    20000000-2007ffff : 0000:01:00.0
-      20000000-2007ffff : e1000e
-    20080000-200bffff : 0000:01:00.0
-    200c0000-200dffff : 0000:01:00.0
-      200c0000-200dffff : e1000e
-    200e0000-200e3fff : 0000:01:00.0
-      200e0000-200e3fff : e1000e
-
-2. The following logs is from the 32-bit platform (mt7629):
-
-2.1. insmod pcie-mediatek.ko
-mtk-pcie 1a140000.pcie: host bridge /pcie@1a140000 ranges:
-mtk-pcie 1a140000.pcie:   MEM 0x20000000..0x2fffffff -> 0x20000000
-mtk-pcie 1a140000.pcie: PCI host bridge to bus 0000:00
-pci_bus 0000:00: root bus resource [bus 00-ff]
-pci_bus 0000:00: root bus resource [mem 0x20000000-0x2fffffff]
-PCI: bus0: Fast back to back transfers disabled
-pci 0000:00:01.0: bridge configuration invalid ([bus 00-00]),
-reconfiguring
-pci 0000:01:00.0: 2.000 Gb/s available PCIe bandwidth, limited by 2.5
-GT/s x1 link at 0000:00:01.0 (capable of 7.876 Gb/s with 8 GT/s x1
-link)
-PCI: bus1: Fast back to back transfers disabled
-pci 0000:00:01.0: BAR 0: [mem 0x00000000-0xffffffff 64bit pref] has
-bogus alignment
-pci 0000:00:01.0: BAR 8: assigned [mem 0x20000000-0x200fffff]
-pci 0000:01:00.0: BAR 1: assigned [mem 0x20000000-0x2007ffff]
-pci 0000:01:00.0: BAR 6: assigned [mem 0x20080000-0x200bffff pref]
-pci 0000:01:00.0: BAR 0: assigned [mem 0x200c0000-0x200dffff]
-pci 0000:01:00.0: BAR 3: assigned [mem 0x200e0000-0x200e3fff]
-pci 0000:01:00.0: BAR 2: no space for [io  size 0x0020]
-pci 0000:01:00.0: BAR 2: failed to assign [io  size 0x0020]
-pci 0000:00:01.0: PCI bridge to [bus 01]
-pci 0000:00:01.0:   bridge window [mem 0x20000000-0x200fffff]
-
-2.2. insmod e1000e.ko
-e1000e: Intel(R) PRO/1000 Network Driver - 3.2.6-k
-e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
-pci 0000:00:01.0: can't enable device: BAR 0 [mem 0x00000000-0xffffffff
-64bit pref] not claimed
-pci 0000:00:01.0: Error enabling bridge (-22), continuing
-e1000e 0000:01:00.0: enabling device (0140 -> 0142)
-e1000e 0000:01:00.0: Interrupt Throttling Rate (ints/sec) set to dynamic
-conservative mode
-e1000e 0000:01:00.0 eth0: (PCI Express:2.5GT/s:Width x1)
-2c:53:4a:03:89:e9
-e1000e 0000:01:00.0 eth0: Intel(R) PRO/1000 Network Connection
-e1000e 0000:01:00.0 eth0: MAC: 3, PHY: 8, PBA No: FFFFFF-0FF
-
-2.3. lspci -xxx
-00:01.0 Class 0604: Device 14c3:7629
-00: c3 14 29 76 40 01 10 00 00 01 04 06 10 00 01 00
-10: 0c 00 00 00 00 00 00 00 00 01 01 40 00 00 20 04
-20: 00 20 00 20 00 00 00 00 00 00 00 00 00 00 00 00
-30: 00 00 00 00 50 00 00 00 00 00 00 00 00 01 01 00
-40: 00 00 00 00 60 61 12 02 00 00 00 00 00 00 00 00
-50: 05 78 80 00 00 00 00 00 00 00 00 00 00 00 00 00
-60: 00 00 00 00 00 00 00 00 11 78 00 00 00 00 00 00
-70: 00 00 00 00 00 00 00 00 01 80 c3 01 08 00 00 00
-80: 10 00 42 01 41 83 00 00 10 28 20 00 22 8c 60 01
-90: 08 00 11 10 00 00 04 00 00 00 00 00 00 00 00 00
-a0: 00 00 00 00 00 08 00 00 00 00 00 00 00 00 00 00
-b0: 02 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00
-c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-
-01:00.0 Class 0200: Device 8086:10d3
-00: 86 80 d3 10 40 01 10 00 00 00 00 02 10 00 00 00
-10: 00 00 0c 20 00 00 00 20 01 00 00 00 00 00 0e 20
-20: 00 00 00 00 00 00 00 00 00 00 00 00 1a 1d 00 00
-30: 00 00 00 00 c8 00 00 00 00 00 00 00 00 01 00 00
-40: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-50: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-a0: 11 00 04 00 03 00 00 00 03 20 00 00 00 00 00 00
-b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-c0: 00 00 00 00 00 00 00 00 01 d0 22 c8 00 20 00 14
-d0: 05 e0 80 00 00 00 00 00 00 00 00 00 00 00 00 00
-e0: 10 a0 01 00 c1 8c 00 00 10 28 10 00 11 1c 03 01
-f0: 00 00 11 10 00 00 00 00 00 00 00 00 00 00 00 00
-
-2.4. lspci -v
-00:01.0 Class 0604: Device 14c3:7629 (prog-if 01)
-	Flags: bus master, fast devsel, latency 0
-	Memory at <unassigned> (64-bit, prefetchable) [disabled] [size=4G]
-	Bus: primary=00, secondary=01, subordinate=01, sec-latency=64
-	I/O behind bridge: 00000000-00000fff [size=4K]
-	Memory behind bridge: 20000000-200fffff [size=1M]
-	Prefetchable memory behind bridge: 00000000-000fffff [size=1M]
-	Capabilities: [50] MSI: Enable- Count=1/1 Maskable- 64bit+
-	Capabilities: [78] Power Management version 3
-	Capabilities: [80] Express Root Port (Slot+), MSI 00
-	Capabilities: [100] Virtual Channel
-	Capabilities: [400] L1 PM Substates
-	Capabilities: [600] Latency Tolerance Reporting
-
-01:00.0 Class 0200: Device 8086:10d3
-	Subsystem: Device 1d1a:0000
-	Flags: bus master, fast devsel, latency 0, IRQ 110
-	Memory at 200c0000 (32-bit, non-prefetchable) [size=128K]
-	Memory at 20000000 (32-bit, non-prefetchable) [size=512K]
-	I/O ports at <unassigned> [disabled]
-	Memory at 200e0000 (32-bit, non-prefetchable) [size=16K]
-	[virtual] Expansion ROM at 20080000 [disabled] [size=256K]
-	Capabilities: [c8] Power Management version 2
-	Capabilities: [d0] MSI: Enable- Count=1/1 Maskable- 64bit+
-	Capabilities: [e0] Express Endpoint, MSI 00
-	Capabilities: [a0] MSI-X: Enable+ Count=5 Masked-
-	Capabilities: [100] Advanced Error Reporting
-	Capabilities: [140] Device Serial Number 2c-53-4a-ff-ff-03-89-e9
-	Kernel driver in use: e1000e
-
-2.5. cat /proc/iomem
-20000000-2fffffff : pcie@1a140000
-  20000000-200fffff : PCI Bus 0000:01
-    20000000-2007ffff : 0000:01:00.0
-      20000000-2007ffff : e1000e
-    20080000-200bffff : 0000:01:00.0
-    200c0000-200dffff : 0000:01:00.0
-      200c0000-200dffff : e1000e
-    200e0000-200e3fff : 0000:01:00.0
-      200e0000-200e3fff : e1000e
-
-Thanks.
