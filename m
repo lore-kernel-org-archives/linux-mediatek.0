@@ -1,114 +1,127 @@
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-Subject: Re: [PATCH 2/2] PCI: mediatek: Add controller support for MT7629
-Date: Mon, 24 Dec 2018 19:40:28 +0800
-Message-ID: <1545651628.5634.57.camel@mhfsdcap03>
-References: <1544058553-10936-1-git-send-email-jianjun.wang@mediatek.com>
-         <1544058553-10936-3-git-send-email-jianjun.wang@mediatek.com>
-         <20181213145517.GB4701@google.com> <1545034779.8528.8.camel@mhfsdcap03>
-         <20181217143247.GK20725@google.com>
-         <20181217154645.GA24864@e107981-ln.cambridge.arm.com>
-         <1545124764.25199.3.camel@mhfsdcap03> <20181220182043.GC183878@google.com>
+From: Long Cheng <long.cheng@mediatek.com>
+Subject: [PATCH v7 2/2] arm: dts: mt2712: add uart APDMA to device tree
+Date: Tue, 25 Dec 2018 09:26:49 +0800
+Message-ID: <1545701209-6884-3-git-send-email-long.cheng@mediatek.com>
+References: <1545701209-6884-1-git-send-email-long.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181220182043.GC183878@google.com>
+In-Reply-To: <1545701209-6884-1-git-send-email-long.cheng@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, ryder.lee@mediatek.com, robh+dt@kernel.org, matthias.bgg@gmail.com, linux-pci@vger.kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, youlin.pei@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, honghui.zhang@mediatek.com, linux-arm-kernel@lists.infradead.org, jianjun.wang@mediatek.com
+To: Vinod Koul <vkoul@kernel.org>, Randy Dunlap <rdunlap@infradead.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Dan Williams <dan.j.williams@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>, Sean Wang <sean.wang@mediatek.com>, dmaengine@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, srv_heupstream@mediatek.com, Yingjoe Chen <yingjoe.chen@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Long Cheng <long.cheng@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2018-12-20 at 12:20 -0600, Bjorn Helgaas wrote:
-> On Tue, Dec 18, 2018 at 05:19:24PM +0800, Jianjun Wang wrote:
-> > On Mon, 2018-12-17 at 15:46 +0000, Lorenzo Pieralisi wrote:
-> > > On Mon, Dec 17, 2018 at 08:32:47AM -0600, Bjorn Helgaas wrote:
-> > > > On Mon, Dec 17, 2018 at 04:19:39PM +0800, Jianjun Wang wrote:
-> > > > > On Thu, 2018-12-13 at 08:55 -0600, Bjorn Helgaas wrote:
-> > > > > > On Thu, Dec 06, 2018 at 09:09:13AM +0800, Jianjun Wang wrote:
-> > > > > > > The read value of BAR0 is 0xffff_ffff, it's size will be
-> > > > > > > calculated as 4GB in arm64 but bogus alignment values at
-> > > > > > > arm32, the pcie device and devices behind this bridge will
-> > > > > > > not be enabled. Fix it's BAR0 resource size to guarantee
-> > > > > > > the pcie devices will be enabled correctly.
-> > > > > > 
-> > > > > > So this is a hardware erratum?  Per spec, a memory BAR has
-> > > > > > bit 0 hardwired to 0, and an IO BAR has bit 1 hardwired to
-> > > > > > 0.
-> > > > > 
-> > > > > Yes, it only works properly on 64bit platform.
-> > > > 
-> > > > I don't understand.  BARs are supposed to work the same
-> > > > regardless of whether it's a 32- or 64-bit platform.  If this is
-> > > > a workaround for a hardware defect, please just say that
-> > > > explicitly.
-> > > 
-> > > I do not understand this either. First thing to do is to describe
-> > > the problem properly so that we can actually find a solution to
-> > > it.
-> > 
-> > This BAR0 is a 64-bit memory BAR, the HW default values for this BAR
-> > is 0xffff_ffff_0000_0000 and it could not be changed except by
-> > config write operation.
-> 
-> If you literally get 0xffff_ffff_0000_0000 when reading the BAR, that
-> is out of spec because the low-order 4 bits of a 64-bit memory BAR
-> cannot all be zero.
-> 
-> A 64-bit BAR consumes two DWORDS in config space.  For a 64-bit BAR0,
-> the DWORD at 0x10 contains the low-order bits, and the DWORD at 0x14
-> contains the upper 32 bits.  Bits 0-3 of the low-order DWORD (the
-> one at 0x10) are read-only, and in this case should contain the value
-> 0b1100 (0xc).  That means the range is prefetchable (bit 3 == 1) and
-> the BAR is 64 bits (bits 2:1 == 10).
+1. add uart APDMA controller device node
+2. add uart 0/1/2/3/4/5 DMA function
 
-Sorry, I have confused the HW default value and the read value of BAR
-size. The hardware default value is 0xffff_ffff_0000_000c, it's a 64-bit
-BAR with prefetchable range.
+Signed-off-by: Long Cheng <long.cheng@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi |   50 +++++++++++++++++++++++++++++
+ 1 file changed, 50 insertions(+)
 
-When we start to decoding the BAR, the read value of BAR0 at 0x10 is
-0x0c, and the value at 0x14 is 0xffff_ffff, so the read value of BAR
-size is 0xffff_ffff_0000_0000, which will be decoded to 0xffff_ffff, and
-it will be set to the end value of BAR0 resource in the pci_dev.
-> 
-> > The calculated BAR size will be 0 in 32-bit platform since the
-> > phys_addr_t is a 32bit value in 32-bit platform.
-> 
-> Either (1) this is a hardware defect that feeds incorrect data to the
-> BAR size calculation, or (2) there's a problem in the BAR size
-> calculation code.  We need to figure out which one and work around or
-> fix it correctly.
-
-The BAR size is calculated by the code (res->end - res->start + 1) is
-fine, I think it's a hardware defect because that we can not change the
-hardware default value or just disable it since we don't using it.
-
-> 
-> > Actually MediaTek's HW does not using this BAR0, just omit it when
-> > assign resource is totally fine.
-> 
-> It's totally fine to work around hardware defects, but we have to
-> clearly understand the problem so we do it correctly.  For example, we
-> probably can't just clear out the BAR0 resource in the pci_dev,
-> because the BAR in the hardware device still contains a value, and if
-> we enable memory decoding for the device, it will still respond to the
-> region described by the BAR.
-
-The BAR0 resource value in the pci_dev is depend on the hardware value,
-it can be cleared out after all devices have been scanned, but we should
-set it's size bigger than MMIO space, so the software will think it's a
-invalid resource and won't assign a resource for it.
-
-Thanks.
-> 
-> > When assign the resource for each device, software will check the
-> > resource alignment first, and the resource of length zero will be
-> > regarded as a bogus alignment resource, it will be ignored and won't
-> > claim a resource parent for it.
-> > 
-> > When drivers try to enable the PCIe devices, the software will enable
-> > it's resources, but it will return an error number when found a
-> > unclaimed resource, in that case, the flow of enable devices will be
-> > interrupted and PCIe devices won't work properly.
-> > 
-> > Thanks.
-> > 
+diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+index 976d92a..be1a22a 100644
+--- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+@@ -300,6 +300,9 @@
+ 		interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
+ 		clocks = <&baud_clk>, <&sys_clk>;
+ 		clock-names = "baud", "bus";
++		dmas = <&apdma 10
++			&apdma 11>;
++		dma-names = "tx", "rx";
+ 		status = "disabled";
+ 	};
+ 
+@@ -369,6 +372,38 @@
+ 			 (GIC_CPU_MASK_RAW(0x13) | IRQ_TYPE_LEVEL_HIGH)>;
+ 	};
+ 
++	apdma: dma-controller@11000400 {
++		compatible = "mediatek,mt2712-uart-dma",
++			     "mediatek,mt6577-uart-dma";
++		reg = <0 0x11000400 0 0x80>,
++		      <0 0x11000480 0 0x80>,
++		      <0 0x11000500 0 0x80>,
++		      <0 0x11000580 0 0x80>,
++		      <0 0x11000600 0 0x80>,
++		      <0 0x11000680 0 0x80>,
++		      <0 0x11000700 0 0x80>,
++		      <0 0x11000780 0 0x80>,
++		      <0 0x11000800 0 0x80>,
++		      <0 0x11000880 0 0x80>,
++		      <0 0x11000900 0 0x80>,
++		      <0 0x11000980 0 0x80>;
++		interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 104 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 105 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 106 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 107 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 108 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 109 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 110 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 111 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 112 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 113 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 114 IRQ_TYPE_LEVEL_LOW>;
++		clocks = <&pericfg CLK_PERI_AP_DMA>;
++		clock-names = "apdma";
++		#dma-cells = <1>;
++	};
++
+ 	auxadc: adc@11001000 {
+ 		compatible = "mediatek,mt2712-auxadc";
+ 		reg = <0 0x11001000 0 0x1000>;
+@@ -385,6 +420,9 @@
+ 		interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>;
+ 		clocks = <&baud_clk>, <&sys_clk>;
+ 		clock-names = "baud", "bus";
++		dmas = <&apdma 0
++			&apdma 1>;
++		dma-names = "tx", "rx";
+ 		status = "disabled";
+ 	};
+ 
+@@ -395,6 +433,9 @@
+ 		interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_LOW>;
+ 		clocks = <&baud_clk>, <&sys_clk>;
+ 		clock-names = "baud", "bus";
++		dmas = <&apdma 2
++			&apdma 3>;
++		dma-names = "tx", "rx";
+ 		status = "disabled";
+ 	};
+ 
+@@ -405,6 +446,9 @@
+ 		interrupts = <GIC_SPI 93 IRQ_TYPE_LEVEL_LOW>;
+ 		clocks = <&baud_clk>, <&sys_clk>;
+ 		clock-names = "baud", "bus";
++		dmas = <&apdma 4
++			&apdma 5>;
++		dma-names = "tx", "rx";
+ 		status = "disabled";
+ 	};
+ 
+@@ -415,6 +459,9 @@
+ 		interrupts = <GIC_SPI 94 IRQ_TYPE_LEVEL_LOW>;
+ 		clocks = <&baud_clk>, <&sys_clk>;
+ 		clock-names = "baud", "bus";
++		dmas = <&apdma 6
++			&apdma 7>;
++		dma-names = "tx", "rx";
+ 		status = "disabled";
+ 	};
+ 
+@@ -629,6 +676,9 @@
+ 		interrupts = <GIC_SPI 126 IRQ_TYPE_LEVEL_LOW>;
+ 		clocks = <&baud_clk>, <&sys_clk>;
+ 		clock-names = "baud", "bus";
++		dmas = <&apdma 8
++			&apdma 9>;
++		dma-names = "tx", "rx";
+ 		status = "disabled";
+ 	};
+ 
+-- 
+1.7.9.5
