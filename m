@@ -1,73 +1,90 @@
-From: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
-Subject: Re: [PATCH v2] pinctrl:mediatek:add judgment conditions
-Date: Tue, 25 Dec 2018 11:40:34 +0800
-Message-ID: <1545709234.17628.1.camel@mhfsdcap03>
-References: <1545100282-15756-1-git-send-email-chuanjia.liu@mediatek.com>
-         <CAGp9Lzoo6bw-3Hr56rgbL6EhrRvXX2y5pajaOo13c5MV9FsO7Q@mail.gmail.com>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Subject: Re: [PATCH 03/18] drm/mediatek: redefine mtk_ddp_sout_sel
+Date: Tue, 25 Dec 2018 11:57:00 +0800
+Message-ID: <CANMq1KBTN61hmWy2K+rrx3NL0eR7AXhFQBkCpcHu5nhUw_6xjw@mail.gmail.com>
+References: <1545638931-24938-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1545638931-24938-4-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAGp9Lzoo6bw-3Hr56rgbL6EhrRvXX2y5pajaOo13c5MV9FsO7Q@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@kernel.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Zhiyong Tao =?UTF-8?Q?=28=E9=99=B6=E5=BF=97=E5=8B=87=29?= <Zhiyong.Tao@mediatek.com>, Eddie Huang =?UTF-8?Q?=28=E9=BB=83=E6=99=BA=E5=82=91=29?= <eddie.huang@mediatek.com>, Hailong Fan =?UTF-8?Q?=28=E8=8C=83=E6=B5=B7=E9=BE=99=29?= <Hailong.Fan@mediatek.com>, Youlin Pei =?UTF-8?Q?=28=E8=A3=B4=E5=8F=8B=E6=9E=97=29?= <youlin.pei@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1545638931-24938-4-git-send-email-yongqiang.niu@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Yongqiang Niu <yongqiang.niu@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, lkml <linux-kernel@vger.kernel.org>, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, 2018-12-23 at 02:50 +0800, Sean Wang wrote:
-> On Mon, Dec 17, 2018 at 6:32 PM <chuanjia.liu@mediatek.com> wrote:
-> >
-> 
-> I thought the subject still is much general, it should be further
-> improved with something like "add EINT support to virtual GPIOs" and
-> should say more about what virtual GPIOs means by MTKers in the patch
-> description because "virtual" is a usual term used throughout the
-> kernel and that would easily cause others to fail to interpret
-> correctly.
-> 
-Thank you for your advice,I will modify subject and description.
-> > From: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
-> >
-> > This patch avoid return err when virtual gpio set SMT.
-> >
-> > Signed-off-by: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
-> > ---
-> > change note:
-> > v2 : 1. delete virtual gpio number
-> >      2. add judgment conditions
-> > ---
-> >  drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 6 +++++-
-> >  1 file changed, 5 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> > index 4a9e0d4c2bbc..a576e417744a 100644
-> > --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> > +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> > @@ -290,7 +290,11 @@ static int mtk_xt_set_gpio_as_eint(void *data, unsigned long eint_n)
-> >                 return err;
-> >
-> >         err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_SMT, MTK_ENABLE);
-> > -       if (err)
-> > +
-> > +       /* SMT doesn't support virtual GPIO, add err != -ENOTSUPP is used for
-> > +        * avoid return err when virtual gpio set SMT.
-> > +        */
-> 
-> I'd prefer to the comments as the below
-> 
-> /*
-> SMT is supposed to be supported by every real GPIO and doesn't support
-> virtual GPIOs, so the extra condition err != -ENOTSUPP is just for
-> adding EINT support to these virtual GPIOs. It should add an extra
-> flag in the pin descriptor when more pins with distinctive
-> characteristic come out.
-> */
-> 
-Thank you for your advice,I will modify comments.
-> > +       if (err && err != -ENOTSUPP)
-> >                 return err;
-> >
-> >         return 0;
-> > --
-> > 2.19.1
-> >
+T24gTW9uLCBEZWMgMjQsIDIwMTggYXQgNjo1MiBQTSBZb25ncWlhbmcgTml1Cjx5b25ncWlhbmcu
+bml1QG1lZGlhdGVrLmNvbT4gd3JvdGU6Cj4KPiBUaGlzIHBhdGNoIHJlZGVmaW5lIG10a19kZHBf
+c291dF9zZWwKCkNhbiB5b3UgZGVzY3JpYmUgYSBiaXQgbW9yZSB3aHkgeW91IGFyZSBtYWtpbmcg
+dGhpcyBjaGFuZ2U/Cgo+IFNpZ25lZC1vZmYtYnk6IFlvbmdxaWFuZyBOaXUgPHlvbmdxaWFuZy5u
+aXVAbWVkaWF0ZWsuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
+bV9kZHAuYyB8IDMyICsrKysrKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tCj4gIDEgZmlsZSBj
+aGFuZ2VkLCAyMCBpbnNlcnRpb25zKCspLCAxMiBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1naXQg
+YS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jCj4gaW5kZXggYWRiMzdlNC4uNTkyZjg1MiAxMDA2NDQK
+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYwo+ICsrKyBiL2Ry
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jCj4gQEAgLTQwNSwyMSArNDA1LDI3
+IEBAIHN0YXRpYyB1bnNpZ25lZCBpbnQgbXRrX2RkcF9zZWxfaW4oZW51bSBtdGtfZGRwX2NvbXBf
+aWQgY3VyLAo+ICAgICAgICAgcmV0dXJuIHZhbHVlOwo+ICB9Cj4KPiAtc3RhdGljIHZvaWQgbXRr
+X2RkcF9zb3V0X3NlbCh2b2lkIF9faW9tZW0gKmNvbmZpZ19yZWdzLAo+IC0gICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgZW51bSBtdGtfZGRwX2NvbXBfaWQgY3VyLAo+IC0gICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgZW51bSBtdGtfZGRwX2NvbXBfaWQgbmV4dCkKPiArc3RhdGljIHVuc2ln
+bmVkIGludCBtdGtfZGRwX3NvdXRfc2VsKHZvaWQgX19pb21lbSAqY29uZmlnX3JlZ3MsCgpZb3Ug
+ZG9uJ3QgdXNlIGNvbmZpZ19yZWdzIGFueW1vcmUsIGRyb3AgaXQuCgo+ICsgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICBlbnVtIG10a19kZHBfY29tcF9pZCBjdXIsCj4gKyAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGVudW0gbXRrX2RkcF9jb21wX2lkIG5leHQs
+Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHVuc2lnbmVkIGludCAqYWRk
+cikKPiAgewo+ICsgICAgICAgdW5zaWduZWQgaW50IHZhbHVlOwo+ICsKPiAgICAgICAgIGlmIChj
+dXIgPT0gRERQX0NPTVBPTkVOVF9CTFMgJiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX0RTSTApIHsK
+PiAtICAgICAgICAgICAgICAgd3JpdGVsX3JlbGF4ZWQoQkxTX1RPX0RTSV9SRE1BMV9UT19EUEkx
+LAo+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb25maWdfcmVncyArIERJU1BfUkVH
+X0NPTkZJR19PVVRfU0VMKTsKPiArICAgICAgICAgICAgICAgKmFkZHIgPSBESVNQX1JFR19DT05G
+SUdfT1VUX1NFTDsKPiArICAgICAgICAgICAgICAgdmFsdWUgPSBCTFNfVE9fRFNJX1JETUExX1RP
+X0RQSTE7CgpZb3UgY2FuIGRpcmVjdGx5IHJldHVybiBCTFNfVE9fRFNJX1JETUExX1RPX0RQSTEu
+Cgo+ICAgICAgICAgfSBlbHNlIGlmIChjdXIgPT0gRERQX0NPTVBPTkVOVF9CTFMgJiYgbmV4dCA9
+PSBERFBfQ09NUE9ORU5UX0RQSTApIHsKPiAtICAgICAgICAgICAgICAgd3JpdGVsX3JlbGF4ZWQo
+QkxTX1RPX0RQSV9SRE1BMV9UT19EU0ksCj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IGNvbmZpZ19yZWdzICsgRElTUF9SRUdfQ09ORklHX09VVF9TRUwpOwo+IC0gICAgICAgICAgICAg
+ICB3cml0ZWxfcmVsYXhlZChEU0lfU0VMX0lOX1JETUEsCj4gLSAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIGNvbmZpZ19yZWdzICsgRElTUF9SRUdfQ09ORklHX0RTSV9TRUwpOwo+IC0gICAg
+ICAgICAgICAgICB3cml0ZWxfcmVsYXhlZChEUElfU0VMX0lOX0JMUywKPiAtICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgY29uZmlnX3JlZ3MgKyBESVNQX1JFR19DT05GSUdfRFBJX1NFTCk7
+Cj4gKyAgICAgICAgICAgICAgICphZGRyID0gRElTUF9SRUdfQ09ORklHX09VVF9TRUw7Cj4gKyAg
+ICAgICAgICAgICAgIHZhbHVlID0gQkxTX1RPX0RQSV9SRE1BMV9UT19EU0k7CgpJIChraW5kIG9m
+KSB1bmRlcnN0YW5kIHRoZSBjaGFuZ2UgYWJvdmUsIGFzIHlvdSBzdGlsbCBlbmQgdXAgd3JpdGlu
+ZwpCTFNfVE9fRFNJX1JETUExX1RPX0RQSTEgaW4gRElTUF9SRUdfQ09ORklHX09VVF9TRUwuCgpU
+aGlzIGNoYW5nZXMgdGhlIGJlaGF2aW91ciwgYXMgbm93IHlvdSBvbmx5IHdyaXRlCkJMU19UT19E
+UElfUkRNQTFfVE9fRFNJIHRvIERJU1BfUkVHX0NPTkZJR19PVVRfU0VMLCBidXQgdGhlIHByZXZp
+b3VzCnJldmlzaW9uIG9mIHRoZSBjb2RlIHdvdWxkIGFsc28gd3JpdGUgdG8gRElTUF9SRUdfQ09O
+RklHX0RTSV9TRUwgYW5kCkRJU1BfUkVHX0NPTkZJR19EUElfU0VMLiBXaHk/Cgo+ICsgICAgICAg
+fSBlbHNlIGlmIChjdXIgPT0gRERQX0NPTVBPTkVOVF9SRE1BMSAmJiBuZXh0ID09IEREUF9DT01Q
+T05FTlRfRFNJMCkgewo+ICsgICAgICAgICAgICAgICAqYWRkciA9IERJU1BfUkVHX0NPTkZJR19E
+U0lfU0VMOwo+ICsgICAgICAgICAgICAgICB2YWx1ZSA9IERTSV9TRUxfSU5fUkRNQTsKPiArICAg
+ICAgIH0gZWxzZSB7Cj4gKyAgICAgICAgICAgICAgIHZhbHVlID0gMDsKPiAgICAgICAgIH0KPiAr
+Cj4gKyAgICAgICByZXR1cm4gdmFsdWU7Cj4gIH0KPgo+ICB2b2lkIG10a19kZHBfYWRkX2NvbXBf
+dG9fcGF0aCh2b2lkIF9faW9tZW0gKmNvbmZpZ19yZWdzLAo+IEBAIC00MzQsNyArNDQwLDkgQEAg
+dm9pZCBtdGtfZGRwX2FkZF9jb21wX3RvX3BhdGgodm9pZCBfX2lvbWVtICpjb25maWdfcmVncywK
+PiAgICAgICAgICAgICAgICAgd3JpdGVsX3JlbGF4ZWQocmVnLCBjb25maWdfcmVncyArIGFkZHIp
+Owo+ICAgICAgICAgfQo+Cj4gLSAgICAgICBtdGtfZGRwX3NvdXRfc2VsKGNvbmZpZ19yZWdzLCBj
+dXIsIG5leHQpOwo+ICsgICAgICAgdmFsdWUgPSBtdGtfZGRwX3NvdXRfc2VsKGN1ciwgbmV4dCwg
+JmFkZHIpOwo+ICsgICAgICAgaWYgKHZhbHVlKQo+ICsgICAgICAgICAgICAgICB3cml0ZWxfcmVs
+YXhlZCh2YWx1ZSwgY29uZmlnX3JlZ3MgKyBhZGRyKTsKCldoeSB0aGlzIGNoYW5nZT8gSSBkb24n
+dCBzZWUgbXRrX2RkcF9zb3V0X3NlbCBiZWluZyB1c2VkIGxhdGVyIGluIHRoZQpzZXJpZXMsIHNv
+IEknbSBub3Qgc3VyZSB3aHkgd2UgZG9uJ3QgZGlyZWN0bHkgd3JpdGUgdGhlIHZhbHVlIGludG8g
+dGhlCnJlZ2lzdGVyLgoKCgo+ICAgICAgICAgdmFsdWUgPSBtdGtfZGRwX3NlbF9pbihjdXIsIG5l
+eHQsICZhZGRyKTsKPiAgICAgICAgIGlmICh2YWx1ZSkgewo+IC0tCj4gMS44LjEuMS5kaXJ0eQo+
+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gZHJpLWRl
+dmVsIG1haWxpbmcgbGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBodHRw
+czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbApfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
+bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
+cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
