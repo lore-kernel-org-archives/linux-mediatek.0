@@ -1,107 +1,50 @@
-From: Nicolas Boichat <drinkcat@chromium.org>
-Subject: Re: [PATCH 17/18] drm/mediatek: add ovl0/ovl0_2l usecase
-Date: Tue, 25 Dec 2018 12:22:41 +0800
-Message-ID: <CANMq1KBtkd8yMHppMDV1OYocB70L-UxrF0cnYiWMjQLA9NWbvQ@mail.gmail.com>
-References: <1545638931-24938-1-git-send-email-yongqiang.niu@mediatek.com>
- <1545638931-24938-18-git-send-email-yongqiang.niu@mediatek.com>
+From: <chuanjia.liu@mediatek.com>
+Subject: [PATCH v3] pinctrl:mediatek:add EINT support to virtual GPIOs
+Date: Tue, 25 Dec 2018 12:23:58 +0800
+Message-ID: <1545711838-20444-1-git-send-email-chuanjia.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1545638931-24938-18-git-send-email-yongqiang.niu@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, lkml <linux-kernel@vger.kernel.org>, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: sean.wang@kernel.org, linus.walleij@linaro.org, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: youlin.pei@mediatek.com, eddie.huang@mediatek.com, zhiyong.tao@mediatek.com, hailong.fan@mediatek.com, Chuanjia Liu <Chuanjia.Liu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gTW9uLCBEZWMgMjQsIDIwMTggYXQgNjo1MiBQTSBZb25ncWlhbmcgTml1Cjx5b25ncWlhbmcu
-bml1QG1lZGlhdGVrLmNvbT4gd3JvdGU6Cj4KPiBUaGlzIHBhdGNoIGFkZCBvdmwwL292bDBfMmwg
-dXNlY2FzZQo+Cj4gU2lnbmVkLW9mZi1ieTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3FpYW5nLm5pdUBt
-ZWRpYXRlay5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Ny
-dGMuYyB8IDM4ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKy0tLQo+ICAxIGZpbGUgY2hh
-bmdlZCwgMzUgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1naXQgYS9k
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMgYi9kcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMKPiBpbmRleCBhNWFmNGJlLi4yNWNmMDYzIDEwMDY0NAo+
-IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYwo+ICsrKyBiL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYwo+IEBAIC0yODMsNiArMjgzLDE1
-IEBAIHN0YXRpYyBpbnQgbXRrX2NydGNfZGRwX2h3X2luaXQoc3RydWN0IG10a19kcm1fY3J0YyAq
-bXRrX2NydGMpCj4KPiAgICAgICAgIGZvciAoaSA9IDA7IGkgPCBtdGtfY3J0Yy0+ZGRwX2NvbXBf
-bnI7IGkrKykgewo+ICAgICAgICAgICAgICAgICBzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wID0g
-bXRrX2NydGMtPmRkcF9jb21wW2ldOwo+ICsgICAgICAgICAgICAgICBlbnVtIG10a19kZHBfY29t
-cF9pZCBwcmV2ID0gRERQX0NPTVBPTkVOVF9JRF9NQVg7Cj4gKwo+ICsgICAgICAgICAgICAgICBp
-ZiAoaSA+IDApIHsKPiArICAgICAgICAgICAgICAgICAgICAgICBzdHJ1Y3QgbXRrX2RkcF9jb21w
-ICpjb21wX3ByZXY7Cj4gKwo+ICsgICAgICAgICAgICAgICAgICAgICAgIGNvbXBfcHJldiA9IG10
-a19jcnRjLT5kZHBfY29tcFtpIC0gMV07Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgcHJldiA9
-IGNvbXBfcHJldi0+aWQ7CgpKdXN0CgppZiAoaSA+IDApCiAgcHJldiA9IG10a19jcnRjLT5kZHBf
-Y29tcFtpIC0gMV0tPmlkOwplbHNlCiAgcHJldiA9IEREUF9DT01QT05FTlRfSURfTUFYOwoKPiAr
-ICAgICAgICAgICAgICAgfQo+ICsgICAgICAgICAgICAgICBtdGtfZGRwX2NvbXBfY29ubmVjdChj
-b21wLCBwcmV2KTsKPgo+ICAgICAgICAgICAgICAgICBtdGtfZGRwX2NvbXBfY29uZmlnKGNvbXAs
-IHdpZHRoLCBoZWlnaHQsIHZyZWZyZXNoLCBicGMpOwo+ICAgICAgICAgICAgICAgICBtdGtfZGRw
-X2NvbXBfc3RhcnQoY29tcCk7Cj4gQEAgLTI5MiwxMCArMzAxLDE5IEBAIHN0YXRpYyBpbnQgbXRr
-X2NydGNfZGRwX2h3X2luaXQoc3RydWN0IG10a19kcm1fY3J0YyAqbXRrX2NydGMpCj4gICAgICAg
-ICBmb3IgKGkgPSAwOyBpIDwgbXRrX2NydGMtPmxheWVyX25yOyBpKyspIHsKPiAgICAgICAgICAg
-ICAgICAgc3RydWN0IGRybV9wbGFuZSAqcGxhbmUgPSAmbXRrX2NydGMtPnBsYW5lc1tpXTsKPiAg
-ICAgICAgICAgICAgICAgc3RydWN0IG10a19wbGFuZV9zdGF0ZSAqcGxhbmVfc3RhdGU7Cj4gKyAg
-ICAgICAgICAgICAgIHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXAgPSBtdGtfY3J0Yy0+ZGRwX2Nv
-bXBbMF07Cj4gKyAgICAgICAgICAgICAgIHVuc2lnbmVkIGludCBjb21wX2xheWVyX25yID0gbXRr
-X2RkcF9jb21wX2xheWVyX25yKGNvbXApOwo+ICsgICAgICAgICAgICAgICB1bnNpZ25lZCBpbnQg
-bG9jYWxfbGF5ZXIgPSAwOwoKTm8gbmVlZCB0byBpbml0IHRvIDAuCgo+Cj4gICAgICAgICAgICAg
-ICAgIHBsYW5lX3N0YXRlID0gdG9fbXRrX3BsYW5lX3N0YXRlKHBsYW5lLT5zdGF0ZSk7Cj4gLSAg
-ICAgICAgICAgICAgIG10a19kZHBfY29tcF9sYXllcl9jb25maWcobXRrX2NydGMtPmRkcF9jb21w
-WzBdLCBpLAo+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHBsYW5l
-X3N0YXRlKTsKPiArCj4gKyAgICAgICAgICAgICAgIGlmIChpID49IGNvbXBfbGF5ZXJfbnIpIHsK
-PiArICAgICAgICAgICAgICAgICAgICAgICBjb21wID0gbXRrX2NydGMtPmRkcF9jb21wWzFdOwo+
-ICsgICAgICAgICAgICAgICAgICAgICAgIGxvY2FsX2xheWVyID0gaSAtIGNvbXBfbGF5ZXJfbnI7
-Cj4gKyAgICAgICAgICAgICAgIH0gZWxzZSB7Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgbG9j
-YWxfbGF5ZXIgPSBpOwo+ICsgICAgICAgICAgICAgICB9Cj4gKyAgICAgICAgICAgICAgIG10a19k
-ZHBfY29tcF9sYXllcl9jb25maWcoY29tcCwgbG9jYWxfbGF5ZXIsIHBsYW5lX3N0YXRlKTsKPiAg
-ICAgICAgIH0KPgo+ICAgICAgICAgcmV0dXJuIDA7Cj4gQEAgLTM0MCw2ICszNTgsOCBAQCBzdGF0
-aWMgdm9pZCBtdGtfY3J0Y19kZHBfY29uZmlnKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKPiAgICAg
-ICAgIHN0cnVjdCBtdGtfY3J0Y19zdGF0ZSAqc3RhdGUgPSB0b19tdGtfY3J0Y19zdGF0ZShtdGtf
-Y3J0Yy0+YmFzZS5zdGF0ZSk7Cj4gICAgICAgICBzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wID0g
-bXRrX2NydGMtPmRkcF9jb21wWzBdOwo+ICAgICAgICAgdW5zaWduZWQgaW50IGk7Cj4gKyAgICAg
-ICB1bnNpZ25lZCBpbnQgY29tcF9sYXllcl9uciA9IG10a19kZHBfY29tcF9sYXllcl9ucihjb21w
-KTsKPiArICAgICAgIHVuc2lnbmVkIGludCBsb2NhbF9sYXllciA9IDA7CgpkaXR0bywgZG9uJ3Qg
-aW5pdCB0byAwLgoKPgo+ICAgICAgICAgLyoKPiAgICAgICAgICAqIFRPRE86IGluc3RlYWQgb2Yg
-dXBkYXRpbmcgdGhlIHJlZ2lzdGVycyBoZXJlLCB3ZSBzaG91bGQgcHJlcGFyZQo+IEBAIC0zNjIs
-NyArMzgyLDE1IEBAIHN0YXRpYyB2b2lkIG10a19jcnRjX2RkcF9jb25maWcoc3RydWN0IGRybV9j
-cnRjICpjcnRjKQo+ICAgICAgICAgICAgICAgICAgICAgICAgIHBsYW5lX3N0YXRlID0gdG9fbXRr
-X3BsYW5lX3N0YXRlKHBsYW5lLT5zdGF0ZSk7Cj4KPiAgICAgICAgICAgICAgICAgICAgICAgICBp
-ZiAocGxhbmVfc3RhdGUtPnBlbmRpbmcuY29uZmlnKSB7Cj4gLSAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICBtdGtfZGRwX2NvbXBfbGF5ZXJfY29uZmlnKGNvbXAsIGksIHBsYW5lX3N0YXRl
-KTsKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmIChpID49IGNvbXBfbGF5ZXJf
-bnIpIHsKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY29tcCA9IG10
-a19jcnRjLT5kZHBfY29tcFsxXTsKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgbG9jYWxfbGF5ZXIgPSBpIC0gY29tcF9sYXllcl9ucjsKPiArICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIH0gZWxzZSB7Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIGxvY2FsX2xheWVyID0gaTsKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIH0KPiArCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtdGtfZGRwX2NvbXBf
-bGF5ZXJfY29uZmlnKGNvbXAsIGxvY2FsX2xheWVyLAo+ICsgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBwbGFuZV9zdGF0ZSk7Cj4gICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICBwbGFuZV9zdGF0ZS0+cGVuZGluZy5jb25maWcgPSBm
-YWxzZTsKPiAgICAgICAgICAgICAgICAgICAgICAgICB9Cj4gICAgICAgICAgICAgICAgIH0KPiBA
-QCAtNjA0LDYgKzYzMiwxMCBAQCBpbnQgbXRrX2RybV9jcnRjX2NyZWF0ZShzdHJ1Y3QgZHJtX2Rl
-dmljZSAqZHJtX2RldiwKPiAgICAgICAgIH0KPgo+ICAgICAgICAgbXRrX2NydGMtPmxheWVyX25y
-ID0gbXRrX2RkcF9jb21wX2xheWVyX25yKG10a19jcnRjLT5kZHBfY29tcFswXSk7Cj4gKyAgICAg
-ICBpZiAobXRrX2NydGMtPmRkcF9jb21wX25yID4gMSAmJgo+ICsgICAgICAgICAgIG10a19kZHBf
-Y29tcF9nZXRfdHlwZShtdGtfY3J0Yy0+ZGRwX2NvbXBbMV0tPmlkKSA9PSBNVEtfRElTUF9PVkwp
-Cj4gKyAgICAgICAgICAgICAgIG10a19jcnRjLT5sYXllcl9uciArPQo+ICsgICAgICAgICAgICAg
-ICBtdGtfZGRwX2NvbXBfbGF5ZXJfbnIobXRrX2NydGMtPmRkcF9jb21wWzFdKTsKPiAgICAgICAg
-IG10a19jcnRjLT5wbGFuZXMgPSBkZXZtX2tjYWxsb2MoZGV2LCBtdGtfY3J0Yy0+bGF5ZXJfbnIs
-Cj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNpemVvZihzdHJ1Y3Qg
-ZHJtX3BsYW5lKSwKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgR0ZQ
-X0tFUk5FTCk7Cj4gLS0KPiAxLjguMS4xLmRpcnR5Cj4gX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KPiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4gZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+IGh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3Rz
-LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2RyaS1kZXZlbAo=
+From: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
+
+Virtual gpio only used inside SOC and not being exported to outside SOC.
+Some modules use virtual gpio as eint and doesn't nedd SMT.
+So this patch add EINT support to virtual GPIOs.
+
+Signed-off-by: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
+---
+change note:
+v3 : 1. modify subject and description
+      2. modify comments
+---
+ drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+index 4a9e0d4c2bbc..a0db145f798d 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+@@ -290,7 +290,15 @@ static int mtk_xt_set_gpio_as_eint(void *data, unsigned long eint_n)
+ 		return err;
+ 
+ 	err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_SMT, MTK_ENABLE);
+-	if (err)
++	/*
++	 *SMT is supposed to be supported by every real GPIO and doesn't
++	 *support virtual GPIOs, so the extra condition err != -ENOTSUPP
++	 *is just for adding EINT support to these virtual GPIOs. It should
++	 *add an extra flag in the pin descriptor when more pins with
++	 *distinctive characteristic come out.
++	 */
++
++	if (err && err != -ENOTSUPP)
+ 		return err;
+ 
+ 	return 0;
+-- 
+2.19.1
