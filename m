@@ -1,39 +1,83 @@
-From: <shun-chih.yu@mediatek.com>
-Subject: [PATCH v4] add support for Mediatek Command-Queue DMA controller on MT6765 SoC
-Date: Thu, 27 Dec 2018 21:10:56 +0800
-Message-ID: <1545916258-18218-1-git-send-email-shun-chih.yu@mediatek.com>
+From: Sean Wang <sean.wang@kernel.org>
+Subject: Re: [PATCH v3] pinctrl:mediatek:add EINT support to virtual GPIOs
+Date: Thu, 27 Dec 2018 11:16:09 -0800
+Message-ID: <CAGp9LzpRrXzikwn91oW_qZ76MK2RePR-npQsca9_Q3g38xdUpA@mail.gmail.com>
+References: <1545711838-20444-1-git-send-email-chuanjia.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Dan Williams <dan.j.williams@intel.com>
-Cc: dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, srv_wsdupstream@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1545711838-20444-1-git-send-email-chuanjia.liu@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: chuanjia.liu@mediatek.com
+Cc: youlin.pei@mediatek.com, zhiyong.tao@mediatek.com, Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, hailong.fan@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Changes since v3:
-- simplify the ISR and management on descriptors by removing tasklet and ASYNC_TX_ENABLE_CHANNEL_SWITCH
-- remove useless field in mtk_cqdma_vdesc structure
-- change dev_info to dev_dbg
-- fix typos
+On Mon, Dec 24, 2018 at 8:25 PM <chuanjia.liu@mediatek.com> wrote:
+>
+> From: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
+>
 
-Changes since v2:
-- fix build warning for kernel with DMA address in 32-bit
+there are still some nitpicks
 
-Changes since v1:
-- remove unused macros, typos
-- leverage ASYNC_TX_ENABLE_CHANNEL_SWITCH to maintain DMA descriptor list
+an empty char should follow the ':' char
 
+> Virtual gpio only used inside SOC and not being exported to outside SOC.
+> Some modules use virtual gpio as eint and doesn't nedd SMT.
 
-Shun-Chih Yu (2):
-  dt-bindings: dmaengine: Add MediaTek Command-Queue DMA controller
-    bindings
-  dmaengine: mediatek: Add MediaTek Command-Queue DMA controller for
-    MT6765 SoC
+s/nedd/need/
 
- .../devicetree/bindings/dma/mtk-cqdma.txt     |  31 +
- drivers/dma/mediatek/Kconfig                  |  12 +
- drivers/dma/mediatek/Makefile                 |   1 +
- drivers/dma/mediatek/mtk-cqdma.c              | 867 ++++++++++++++++++
- 4 files changed, 911 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/dma/mtk-cqdma.txt
- create mode 100644 drivers/dma/mediatek/mtk-cqdma.c
+> So this patch add EINT support to virtual GPIOs.
+>
+> Signed-off-by: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
+> ---
+> change note:
+> v3 : 1. modify subject and description
+>       2. modify comments
+> ---
+>  drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 10 +++++++++-
+>  1 file changed, 9 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> index 4a9e0d4c2bbc..a0db145f798d 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> @@ -290,7 +290,15 @@ static int mtk_xt_set_gpio_as_eint(void *data, unsigned long eint_n)
+>                 return err;
+>
+>         err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_SMT, MTK_ENABLE);
+> -       if (err)
+> +       /*
+
+merge the second line to be consistent with the other comment blocks
+
+> +        *SMT is supposed to be supported by every real GPIO and doesn't
+
+an empty char should follow '*' char to be consistent with the other
+comment blocks
+and also in the other lines starting with '*'
+
+> +        *support virtual GPIOs, so the extra condition err != -ENOTSUPP
+> +        *is just for adding EINT support to these virtual GPIOs. It should
+> +        *add an extra flag in the pin descriptor when more pins with
+> +        *distinctive characteristic come out.
+> +        */
+> +
+
+remove the blank line
+
+> +       if (err && err != -ENOTSUPP)
+>                 return err;
+>
+>         return 0;
+> --
+> 2.19.1
+>
