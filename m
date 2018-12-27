@@ -1,63 +1,80 @@
-From: <min.guo@mediatek.com>
-Subject: [PATCH 3/4] usb: musb: Move musbhsdma macro definition to musb_dma.h
-Date: Thu, 27 Dec 2018 15:34:25 +0800
-Message-ID: <1545896066-897-4-git-send-email-min.guo@mediatek.com>
-References: <1545896066-897-1-git-send-email-min.guo@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH 15/18] drm/mediatek: add RDMA1 fifo size into RDMA
+ private data
+Date: Thu, 27 Dec 2018 16:08:56 +0800
+Message-ID: <1545898136.19450.5.camel@mtksdaap41>
+References: <1545638931-24938-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1545638931-24938-16-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1545896066-897-1-git-send-email-min.guo@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bin Liu <b-liu@ti.com>, Rob Herring <robh+dt@kernel.org>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, chunfeng.yun@mediatek.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Min Guo <min.guo@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1545638931-24938-16-git-send-email-yongqiang.niu@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Yongqiang Niu <yongqiang.niu@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Min Guo <min.guo@mediatek.com>
-
-Because the MediaTek musb controller dose not have a
-separate DMA interrupt, these macros are required to
-access the dma registers
-
-Signed-off-by: Min Guo <min.guo@mediatek.com>
----
- drivers/usb/musb/musb_dma.h  | 6 ++++++
- drivers/usb/musb/musbhsdma.c | 7 +------
- 2 files changed, 7 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/usb/musb/musb_dma.h b/drivers/usb/musb/musb_dma.h
-index 8f60271..281e75d3 100644
---- a/drivers/usb/musb/musb_dma.h
-+++ b/drivers/usb/musb/musb_dma.h
-@@ -35,6 +35,12 @@
-  *    whether shared with the Inventra core or separate.
-  */
- 
-+#define MUSB_HSDMA_BASE		0x200
-+#define MUSB_HSDMA_INTR		(MUSB_HSDMA_BASE + 0)
-+#define MUSB_HSDMA_CONTROL		0x4
-+#define MUSB_HSDMA_ADDRESS		0x8
-+#define MUSB_HSDMA_COUNT		0xc
-+
- #define	DMA_ADDR_INVALID	(~(dma_addr_t)0)
- 
- #ifdef CONFIG_MUSB_PIO_ONLY
-diff --git a/drivers/usb/musb/musbhsdma.c b/drivers/usb/musb/musbhsdma.c
-index a688f7f..824adcb 100644
---- a/drivers/usb/musb/musbhsdma.c
-+++ b/drivers/usb/musb/musbhsdma.c
-@@ -10,12 +10,7 @@
- #include <linux/platform_device.h>
- #include <linux/slab.h>
- #include "musb_core.h"
--
--#define MUSB_HSDMA_BASE		0x200
--#define MUSB_HSDMA_INTR		(MUSB_HSDMA_BASE + 0)
--#define MUSB_HSDMA_CONTROL		0x4
--#define MUSB_HSDMA_ADDRESS		0x8
--#define MUSB_HSDMA_COUNT		0xc
-+#include "musb_dma.h"
- 
- #define MUSB_HSDMA_CHANNEL_OFFSET(_bchannel, _offset)		\
- 		(MUSB_HSDMA_BASE + (_bchannel << 4) + _offset)
--- 
-1.9.1
+SGksIFlvbmdxaWFuZzoKCk9uIE1vbiwgMjAxOC0xMi0yNCBhdCAxNjowOCArMDgwMCwgWW9uZ3Fp
+YW5nIE5pdSB3cm90ZToKPiBUaGlzIHBhdGNoIGFkZCBSRE1BMSBmaWZvIHNpemUgaW50byBSRE1B
+IHByaXZhdGUgZGF0YQo+IAo+IFNpZ25lZC1vZmYtYnk6IFlvbmdxaWFuZyBOaXUgPHlvbmdxaWFu
+Zy5uaXVAbWVkaWF0ZWsuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2Rpc3BfcmRtYS5jIHwgMTYgKysrKysrKysrKysrKysrLQo+ICAxIGZpbGUgY2hhbmdlZCwgMTUg
+aW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19kaXNwX3JkbWEuYwo+IGluZGV4IGIwYTVjZmYuLjNmOWI0ZDQgMTAwNjQ0Cj4gLS0tIGEv
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYwo+ICsrKyBiL2RyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMKPiBAQCAtNTMsMTIgKzUzLDE0IEBACj4g
+ICNkZWZpbmUgUkRNQV9GSUZPX1BTRVVET19TSVpFKGJ5dGVzKQkJCSgoKGJ5dGVzKSAvIDE2KSA8
+PCAxNikKPiAgI2RlZmluZSBSRE1BX09VVFBVVF9WQUxJRF9GSUZPX1RIUkVTSE9MRChieXRlcykJ
+CSgoYnl0ZXMpIC8gMTYpCj4gICNkZWZpbmUgUkRNQV9GSUZPX1NJWkUocmRtYSkJCQkoKHJkbWEp
+LT5kYXRhLT5maWZvX3NpemUpCj4gKyNkZWZpbmUgUkRNQV9GSUZPX1NJWkUxKHJkbWEpCQkJKChy
+ZG1hKS0+ZGF0YS0+Zmlmb19zaXplMSkKPiAgI2RlZmluZSBESVNQX1JETUFfTUVNX1NUQVJUX0FE
+RFIJCTB4MGYwMAo+ICAKPiAgI2RlZmluZSBSRE1BX01FTV9HTUMJCQkJMHg0MDQwMjAyMAo+ICAK
+PiAgc3RydWN0IG10a19kaXNwX3JkbWFfZGF0YSB7Cj4gIAl1bnNpZ25lZCBpbnQgZmlmb19zaXpl
+Owo+ICsJdW5zaWduZWQgaW50IGZpZm9fc2l6ZTE7Cj4gIH07Cj4gIAo+ICAvKioKPiBAQCAtMTM3
+LDExICsxMzksMTcgQEAgc3RhdGljIHZvaWQgbXRrX3JkbWFfY29uZmlnKHN0cnVjdCBtdGtfZGRw
+X2NvbXAgKmNvbXAsIHVuc2lnbmVkIGludCB3aWR0aCwKPiAgewo+ICAJdW5zaWduZWQgaW50IHRo
+cmVzaG9sZDsKPiAgCXVuc2lnbmVkIGludCByZWc7Cj4gKwl1bnNpZ25lZCBpbnQgcmRtYV9maWZv
+X3NpemU7Cj4gIAlzdHJ1Y3QgbXRrX2Rpc3BfcmRtYSAqcmRtYSA9IGNvbXBfdG9fcmRtYShjb21w
+KTsKPiAgCj4gIAlyZG1hX3VwZGF0ZV9iaXRzKGNvbXAsIERJU1BfUkVHX1JETUFfU0laRV9DT05f
+MCwgMHhmZmYsIHdpZHRoKTsKPiAgCXJkbWFfdXBkYXRlX2JpdHMoY29tcCwgRElTUF9SRUdfUkRN
+QV9TSVpFX0NPTl8xLCAweGZmZmZmLCBoZWlnaHQpOwo+ICAKPiArCWlmIChjb21wLT5pZCA9PSBE
+RFBfQ09NUE9ORU5UX1JETUExKQo+ICsJCXJkbWFfZmlmb19zaXplID0gUkRNQV9GSUZPX1NJWkUx
+KHJkbWEpOwo+ICsJZWxzZQo+ICsJCXJkbWFfZmlmb19zaXplID0gUkRNQV9GSUZPX1NJWkUocmRt
+YSk7Cj4gKwoKSXQgbG9va3MgbGlrZSB0aGF0IG10ODE4MzAtcmRtYTAgYW5kIG10ODE4My1yZG1h
+MSBhcmUgZGlmZmVyZW50IGluCmhhcmR3YXJlLCBzbyBJIHRoaW5rIGZpZm9fc2l6ZSBzaG91bGQg
+YmUgZGVjaWRlZCBieSBzb21ldGhpbmcgZnJvbQpkZXZpY2UgdHJlZSByYXRoZXIgdGhhbiBmcm9t
+IGl0cyBuYW1lLiBNYXliZSBhZGQgYSBwcm9wZXJ0eSAnRklGT19TSVpFJwppbiByZG1hIGRldmlj
+ZSBub2RlIG9yIGNyZWF0ZSBhbiBhZGRpdGlvbmFsIGNvbXBhdGlibGUgc3RyaW5nIGZvcgptdDgx
+ODMtcmRtYTEuCgpSZWdhcmRzLApDSwoKPiAgCS8qCj4gIAkgKiBFbmFibGUgRklGTyB1bmRlcmZs
+b3cgc2luY2UgRFNJIGFuZCBEUEkgY2FuJ3QgYmUgYmxvY2tlZC4KPiAgCSAqIEtlZXAgdGhlIEZJ
+Rk8gcHNldWRvIHNpemUgcmVzZXQgZGVmYXVsdCBvZiA4IEtpQi4gU2V0IHRoZQo+IEBAIC0xNDks
+OCArMTU3LDEyIEBAIHN0YXRpYyB2b2lkIG10a19yZG1hX2NvbmZpZyhzdHJ1Y3QgbXRrX2RkcF9j
+b21wICpjb21wLCB1bnNpZ25lZCBpbnQgd2lkdGgsCj4gIAkgKiBhY2NvdW50IGZvciBibGFua2lu
+ZywgYW5kIHdpdGggYSBwaXhlbCBkZXB0aCBvZiA0IGJ5dGVzOgo+ICAJICovCj4gIAl0aHJlc2hv
+bGQgPSB3aWR0aCAqIGhlaWdodCAqIHZyZWZyZXNoICogNCAqIDcgLyAxMDAwMDAwOwo+ICsKPiAr
+CWlmICh0aHJlc2hvbGQgPiByZG1hX2ZpZm9fc2l6ZSkKPiArCQl0aHJlc2hvbGQgPSByZG1hX2Zp
+Zm9fc2l6ZTsKPiArCj4gIAlyZWcgPSBSRE1BX0ZJRk9fVU5ERVJGTE9XX0VOIHwKPiAtCSAgICAg
+IFJETUFfRklGT19QU0VVRE9fU0laRShSRE1BX0ZJRk9fU0laRShyZG1hKSkgfAo+ICsJICAgICAg
+UkRNQV9GSUZPX1BTRVVET19TSVpFKHJkbWFfZmlmb19zaXplKSB8Cj4gIAkgICAgICBSRE1BX09V
+VFBVVF9WQUxJRF9GSUZPX1RIUkVTSE9MRCh0aHJlc2hvbGQpOwo+ICAJd3JpdGVsKHJlZywgY29t
+cC0+cmVncyArIERJU1BfUkVHX1JETUFfRklGT19DT04pOwo+ICB9Cj4gQEAgLTMzMCwxMCArMzQy
+LDEyIEBAIHN0YXRpYyBpbnQgbXRrX2Rpc3BfcmRtYV9yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2Rl
+dmljZSAqcGRldikKPiAgCj4gIHN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX2Rpc3BfcmRtYV9kYXRh
+IG10MjcwMV9yZG1hX2RyaXZlcl9kYXRhID0gewo+ICAJLmZpZm9fc2l6ZSA9IFNaXzRLLAo+ICsJ
+LmZpZm9fc2l6ZTEgPSBTWl80SywKPiAgfTsKPiAgCj4gIHN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRr
+X2Rpc3BfcmRtYV9kYXRhIG10ODE3M19yZG1hX2RyaXZlcl9kYXRhID0gewo+ICAJLmZpZm9fc2l6
+ZSA9IFNaXzhLLAo+ICsJLmZpZm9fc2l6ZTEgPSBTWl84SywKPiAgfTsKPiAgCj4gIHN0YXRpYyBj
+b25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIG10a19kaXNwX3JkbWFfZHJpdmVyX2R0X21hdGNoW10g
+PSB7CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
+LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
