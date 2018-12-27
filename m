@@ -1,91 +1,57 @@
-From: Long Cheng <long.cheng@mediatek.com>
-Subject: Re: [PATCH v7 1/2] dmaengine: 8250_mtk_dma: add MediaTek uart DMA
- support
-Date: Wed, 26 Dec 2018 18:18:54 +0800
-Message-ID: <1545819534.28871.93.camel@mhfsdcap03>
-References: <1545701209-6884-1-git-send-email-long.cheng@mediatek.com>
-         <1545701209-6884-2-git-send-email-long.cheng@mediatek.com>
-         <CANMq1KA1ywLnQDzXRbLcuu-afXuj_yrprRBC4kejF4-20ztXyA@mail.gmail.com>
-         <1545739611.28871.77.camel@mhfsdcap03>
-         <CANMq1KDtUgOUFRy-TyQK0EmbpXGtLEVo9Mqg1Hvs0JoL9NrFyQ@mail.gmail.com>
-         <1545806121.28871.88.camel@mhfsdcap03>
-         <CANMq1KDKqtKwSw1mJyR0TgBwY1YRfvY52vWyogqWweF3xAgiKA@mail.gmail.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH 11/18] drm/medaitek: add layer_nr for ovl private data
+Date: Thu, 27 Dec 2018 09:16:39 +0800
+Message-ID: <1545873399.31506.2.camel@mtksdaap41>
+References: <1545638931-24938-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1545638931-24938-12-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CANMq1KDKqtKwSw1mJyR0TgBwY1YRfvY52vWyogqWweF3xAgiKA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Nicolas Boichat <drinkcat@chromium.org>
-Cc: Vinod Koul <vkoul@kernel.org>, Randy Dunlap <rdunlap@infradead.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Dan Williams <dan.j.williams@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>, Sean Wang <sean.wang@mediatek.com>, dmaengine@vger.kernel.org, devicetree@vger.kernel.org, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, lkml <linux-kernel@vger.kernel.org>, linux-serial@vger.kernel.org, srv_heupstream@mediatek.com, Yingjoe Chen <yingjoe.chen@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Z
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1545638931-24938-12-git-send-email-yongqiang.niu@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Yongqiang Niu <yongqiang.niu@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2018-12-26 at 17:28 +0800, Nicolas Boichat wrote:
-
-......
-
-> > > > > > +static int mtk_uart_apdma_device_pause(struct dma_chan *chan)
-> > > > > > +{
-> > > > > > +       /* just for check caps pass */
-> > > > > > +       return 0;
-> > > > > > +}
-> > > > > > +
-> > > > > > +static int mtk_uart_apdma_device_resume(struct dma_chan *chan)
-> > > > > > +{
-> > > > > > +       /* just for check caps pass */
-> > > > > > +       return 0;
-> > > > > > +}
-> > >
-> > > Why do you need these? Seems wrong to advertise device_pause/resume
-> > > (and the caps) if we don't actually support that?
-> > >
-> >
-> > in serial 8250_dma.c file, when request DMA, will calll
-> > 'dma_get_slave_caps' to get the caps. and the will check caps.cmd_pause.
-> > the pause is device_pause.  our device can't support the functions. but
-> > to check pass, need add the fake function. or you can give better
-> > comments. thanks.
-> 
-> Well, then I guess this is a hack... I'm not too familiar with
-> 8250_dma.c, but I guess that if it requires pause/resume to be
-> implemented, then we should implement them, not just stub them out...
-> 
-> Is this something that can be implemented with 8250_mtk DMA?
-> 
-
-the HW can't support it.
-
-> Also, I don't see where you need resume, so maybe implementing pause is enough?
-> 
-
-yes. pause is enough. for symmetry, add resume function.
-anyway, the pause function need to keep.
-
-> > > > > > +
-> > > > > > +static void mtk_uart_apdma_free(struct mtk_uart_apdmadev *mtkd)
-> > > > > > +{
-> > > > > > +       while (list_empty(&mtkd->ddev.channels) == 0) {
-> > > > > > +               struct mtk_chan *c = list_first_entry(&mtkd->ddev.channels,
-> > > > > > +                       struct mtk_chan, vc.chan.device_node);
-> > > > > > +
-> > > > > > +               list_del(&c->vc.chan.device_node);
-> > > > > > +               tasklet_kill(&c->vc.task);
-> > > > > > +       }
-> > > > > > +}
-> > > > > > +
-> > > > > > +static const struct of_device_id mtk_uart_apdma_match[] = {
-> > > > > > +       { .compatible = "mediatek,mt6577-uart-dma", },
-> > > > > > +       { /* sentinel */ },
-> > > > > > +};
-> > > > > > +MODULE_DEVICE_TABLE(of, mtk_uart_apdma_match);
-> > > > > > +
-> > > > > > +static int mtk_uart_apdma_probe(struct platform_device *pdev)
-> > > > > > +{
-> > > > > > +       struct mtk_uart_apdmadev *mtkd;
-> > > > > > +       struct resource *res;
-> > > > > > +       struct mtk_chan *c;
-> > > > > > +       unsigned int i;
-> > > > > > +       int rc;
-> > > > > > +
-
-......
+SGksIFlvbmdxaWFuZzoKCk9uIE1vbiwgMjAxOC0xMi0yNCBhdCAxNjowOCArMDgwMCwgWW9uZ3Fp
+YW5nIE5pdSB3cm90ZToKPiBUaGlzIHBhdGNoIGFkZCBsYXllcl9uciBmb3Igb3ZsIHByaXZhdGUg
+ZGF0YQo+IAoKSSB0aGluayB5b3UgZG8gdGhpcyBiZWNhdXNlIG92bC0ybCBhbmQgb3ZsIHNoYXJl
+IHRoZSBzYW1lIGRyaXZlciBhbmQgdGhlCm92bCBsYXllciBpcyBkaWZmZXJlbnQsIHNvIHRoaXMg
+cGF0Y2ggaXMgYSBwcmVwYXJhdGlvbiBmb3Igb3ZsLTJsIGFuZApvdmwgc2hhcmUgdGhlIHNhbWUg
+ZHJpdmVyLiBEZXNjcmliZSBtb3JlIGluZm9ybWF0aW9uIGZvciB0aGlzIHBhdGNoLgoKUmVnYXJk
+cywKQ0sKCj4gU2lnbmVkLW9mZi1ieTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3FpYW5nLm5pdUBtZWRp
+YXRlay5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9vdmwu
+YyB8IDcgKysrKysrLQo+ICAxIGZpbGUgY2hhbmdlZCwgNiBpbnNlcnRpb25zKCspLCAxIGRlbGV0
+aW9uKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlz
+cF9vdmwuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9vdmwuYwo+IGluZGV4
+IGFmYjMxM2MuLmEwYWI3NjAgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19kaXNwX292bC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNw
+X292bC5jCj4gQEAgLTYwLDYgKzYwLDcgQEAKPiAgc3RydWN0IG10a19kaXNwX292bF9kYXRhIHsK
+PiAgCXVuc2lnbmVkIGludCBhZGRyOwo+ICAJdW5zaWduZWQgaW50IGdtY19iaXRzOwo+ICsJdW5z
+aWduZWQgaW50IGxheWVyX25yOwo+ICAJYm9vbCBmbXRfcmdiNTY1X2lzXzA7Cj4gIH07Cj4gIAo+
+IEBAIC0xMzcsNyArMTM4LDkgQEAgc3RhdGljIHZvaWQgbXRrX292bF9jb25maWcoc3RydWN0IG10
+a19kZHBfY29tcCAqY29tcCwgdW5zaWduZWQgaW50IHcsCj4gIAo+ICBzdGF0aWMgdW5zaWduZWQg
+aW50IG10a19vdmxfbGF5ZXJfbnIoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCkKPiAgewo+IC0J
+cmV0dXJuIDQ7Cj4gKwlzdHJ1Y3QgbXRrX2Rpc3Bfb3ZsICpvdmwgPSBjb21wX3RvX292bChjb21w
+KTsKPiArCj4gKwlyZXR1cm4gb3ZsLT5kYXRhLT5sYXllcl9ucjsKPiAgfQo+ICAKPiAgc3RhdGlj
+IHZvaWQgbXRrX292bF9sYXllcl9vbihzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wLCB1bnNpZ25l
+ZCBpbnQgaWR4KQo+IEBAIC0zNDIsMTIgKzM0NSwxNCBAQCBzdGF0aWMgaW50IG10a19kaXNwX292
+bF9yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgc3RhdGljIGNvbnN0IHN0
+cnVjdCBtdGtfZGlzcF9vdmxfZGF0YSBtdDI3MDFfb3ZsX2RyaXZlcl9kYXRhID0gewo+ICAJLmFk
+ZHIgPSBESVNQX1JFR19PVkxfQUREUl9NVDI3MDEsCj4gIAkuZ21jX2JpdHMgPSA4LAo+ICsJLmxh
+eWVyX25yID0gNCwKPiAgCS5mbXRfcmdiNTY1X2lzXzAgPSBmYWxzZSwKPiAgfTsKPiAgCj4gIHN0
+YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX2Rpc3Bfb3ZsX2RhdGEgbXQ4MTczX292bF9kcml2ZXJfZGF0
+YSA9IHsKPiAgCS5hZGRyID0gRElTUF9SRUdfT1ZMX0FERFJfTVQ4MTczLAo+ICAJLmdtY19iaXRz
+ID0gOCwKPiArCS5sYXllcl9uciA9IDQsCj4gIAkuZm10X3JnYjU2NV9pc18wID0gdHJ1ZSwKPiAg
+fTsKPiAgCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+ZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0
+dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
