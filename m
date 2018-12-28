@@ -1,53 +1,56 @@
 From: Yunfei Dong <yunfei.dong@mediatek.com>
-Subject: [PATCH 1/3] media: dt-bindings: media: Fix MTK document for vcodec
-Date: Fri, 28 Dec 2018 14:33:03 +0800
-Message-ID: <1545978785-31375-1-git-send-email-yunfei.dong@mediatek.com>
+Subject: [PATCH 2/3] arm64: dts: Using standard CCF interface to set vcodec clk
+Date: Fri, 28 Dec 2018 14:33:04 +0800
+Message-ID: <1545978785-31375-2-git-send-email-yunfei.dong@mediatek.com>
+References: <1545978785-31375-1-git-send-email-yunfei.dong@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1545978785-31375-1-git-send-email-yunfei.dong@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Rob Herring <robh+dt@kernel.org>
 Cc: Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Qianqian Yan <qianqian.yan@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Fix MTK binding document for MT8173 dtsi changed in order
-to use standard CCF interface.
-MT8173 SoC from Mediatek.
+Using standard CCF interface to set vdec/venc parent clk
+and clk rate.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 Signed-off-by: Qianqian Yan <qianqian.yan@mediatek.com>
 ---
- .../devicetree/bindings/media/mediatek-vcodec.txt   | 13 +++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi | 13 +++++++++++++
  1 file changed, 13 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-index 2a615d84a682..b6b5dde6abd8 100644
---- a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-+++ b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-@@ -66,6 +66,15 @@ vcodec_dec: vcodec@16000000 {
-                   "vencpll",
-                   "venc_lt_sel",
-                   "vdec_bus_clk_src";
-+    assigned-clocks = <&topckgen CLK_TOP_VENC_LT_SEL>,
-+                      <&topckgen CLK_TOP_CCI400_SEL>,
-+                      <&topckgen CLK_TOP_VDEC_SEL>,
-+                      <&apmixedsys CLK_APMIXED_VCODECPLL>,
-+                      <&apmixedsys CLK_APMIXED_VENCPLL>;
-+    assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL_370P5>,
-+                             <&topckgen CLK_TOP_UNIVPLL_D2>,
-+                             <&topckgen CLK_TOP_VCODECPLL>;
-+    assigned-clock-rates = <0>, <0>, <0>, <1482000000>, <800000000>;
-   };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index abd2f15a544b..bbc282aae412 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -1295,6 +1295,15 @@
+ 				      "vencpll",
+ 				      "venc_lt_sel",
+ 				      "vdec_bus_clk_src";
++			assigned-clocks = <&topckgen CLK_TOP_VENC_LT_SEL>,
++					  <&topckgen CLK_TOP_CCI400_SEL>,
++					  <&topckgen CLK_TOP_VDEC_SEL>,
++					  <&apmixedsys CLK_APMIXED_VCODECPLL>,
++					  <&apmixedsys CLK_APMIXED_VENCPLL>;
++			assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL_370P5>,
++						 <&topckgen CLK_TOP_UNIVPLL_D2>,
++						 <&topckgen CLK_TOP_VCODECPLL>;
++			assigned-clock-rates = <0>, <0>, <0>, <1482000000>, <800000000>;
+ 		};
  
-   vcodec_enc: vcodec@18002000 {
-@@ -105,4 +114,8 @@ vcodec_dec: vcodec@16000000 {
-                   "venc_sel",
-                   "venc_lt_sel_src",
-                   "venc_lt_sel";
-+    assigned-clocks = <&topckgen CLK_TOP_VENC_SEL>,
-+                      <&topckgen CLK_TOP_VENC_LT_SEL>;
-+    assigned-clock-parents = <&topckgen CLK_TOP_VENCPLL_D2>,
-+                             <&topckgen CLK_TOP_UNIVPLL1_D2>;
-   };
+ 		larb1: larb@16010000 {
+@@ -1360,6 +1369,10 @@
+ 				      "venc_sel",
+ 				      "venc_lt_sel_src",
+ 				      "venc_lt_sel";
++			assigned-clocks = <&topckgen CLK_TOP_VENC_SEL>,
++					  <&topckgen CLK_TOP_VENC_LT_SEL>;
++			assigned-clock-parents = <&topckgen CLK_TOP_VENCPLL_D2>,
++						 <&topckgen CLK_TOP_UNIVPLL1_D2>;
+ 		};
+ 
+ 		vencltsys: clock-controller@19000000 {
 -- 
 2.19.1
