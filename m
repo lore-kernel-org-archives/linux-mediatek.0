@@ -1,438 +1,76 @@
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-Subject: [PATCH 3/3] media: mtk-vcodec: Using common interface to manage vdec/venc clock
-Date: Fri, 28 Dec 2018 14:33:05 +0800
-Message-ID: <1545978785-31375-3-git-send-email-yunfei.dong@mediatek.com>
-References: <1545978785-31375-1-git-send-email-yunfei.dong@mediatek.com>
+From: Erin Lo <erin.lo@mediatek.com>
+Subject: [PATCH v5 0/6] Add basic and clock support for Mediatek MT8183 SoC
+Date: Fri, 28 Dec 2018 16:09:35 +0800
+Message-ID: <1545984581-25843-1-git-send-email-erin.lo@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1545978785-31375-1-git-send-email-yunfei.dong@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Rob Herring <robh+dt@kernel.org>
-Cc: Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Qianqian Yan <qianqian.yan@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <marc.zyngier@arm.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, yingjoe.chen@mediatek.com, erin.lo@mediatek.com, mars.cheng@mediatek.com, eddie.huang@mediatek.com, linux-clk@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-VDec: Using standard CCF interface to set parent clock and
-clock rate in dtsi and using common interface to open/close
-video decoder clock.
-VEnc: Using standard CCF interface to set parent clock/larb
-in dtsi and using common interface to open/close
-video encoder clock/larb.
+MT8183 is a SoC based on 64bit ARMv8 architecture.
+It contains 4 CA53 and 4 CA73 cores.
+MT8183 share many HW IP with MT65xx series.
+This patchset was tested on MT8183 evaluation board and use correct clock to shell.
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Signed-off-by: Qianqian Yan <qianqian.yan@mediatek.com>
----
- .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   | 163 ++++++------------
- .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  31 ++--
- .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   | 106 +++++++-----
- 3 files changed, 132 insertions(+), 168 deletions(-)
+This series contains document bindings, device tree including
+interrupt, uart, clock, pinctrl, power, iommu, spi, and pwrap.
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
-index 79ca03ac449c..7884465afcd2 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
-@@ -27,11 +27,14 @@ int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
- 	struct device_node *node;
- 	struct platform_device *pdev;
- 	struct mtk_vcodec_pm *pm;
--	int ret = 0;
-+	struct mtk_vcodec_clk *dec_clk;
-+	struct mtk_vcodec_clk_info *clk_info;
-+	int i = 0, ret = 0;
- 
- 	pdev = mtkdev->plat_dev;
- 	pm = &mtkdev->pm;
- 	pm->mtkdev = mtkdev;
-+	dec_clk = &pm->vdec_clk;
- 	node = of_parse_phandle(pdev->dev.of_node, "mediatek,larb", 0);
- 	if (!node) {
- 		mtk_v4l2_err("of_parse_phandle mediatek,larb fail!");
-@@ -47,52 +50,34 @@ int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
- 	pdev = mtkdev->plat_dev;
- 	pm->dev = &pdev->dev;
- 
--	pm->vcodecpll = devm_clk_get(&pdev->dev, "vcodecpll");
--	if (IS_ERR(pm->vcodecpll)) {
--		mtk_v4l2_err("devm_clk_get vcodecpll fail");
--		ret = PTR_ERR(pm->vcodecpll);
-+	dec_clk->clk_num =
-+		of_property_count_strings(pdev->dev.of_node, "clock-names");
-+	if (dec_clk->clk_num > 0) {
-+		dec_clk->clk_info = devm_kcalloc(&pdev->dev,
-+			dec_clk->clk_num, sizeof(*clk_info),
-+			GFP_KERNEL);
-+		if (!dec_clk->clk_info)
-+			return -ENOMEM;
-+	} else {
-+		mtk_v4l2_err("Failed to get vdec clock count");
-+		return -EINVAL;
- 	}
- 
--	pm->univpll_d2 = devm_clk_get(&pdev->dev, "univpll_d2");
--	if (IS_ERR(pm->univpll_d2)) {
--		mtk_v4l2_err("devm_clk_get univpll_d2 fail");
--		ret = PTR_ERR(pm->univpll_d2);
--	}
--
--	pm->clk_cci400_sel = devm_clk_get(&pdev->dev, "clk_cci400_sel");
--	if (IS_ERR(pm->clk_cci400_sel)) {
--		mtk_v4l2_err("devm_clk_get clk_cci400_sel fail");
--		ret = PTR_ERR(pm->clk_cci400_sel);
--	}
--
--	pm->vdec_sel = devm_clk_get(&pdev->dev, "vdec_sel");
--	if (IS_ERR(pm->vdec_sel)) {
--		mtk_v4l2_err("devm_clk_get vdec_sel fail");
--		ret = PTR_ERR(pm->vdec_sel);
--	}
--
--	pm->vdecpll = devm_clk_get(&pdev->dev, "vdecpll");
--	if (IS_ERR(pm->vdecpll)) {
--		mtk_v4l2_err("devm_clk_get vdecpll fail");
--		ret = PTR_ERR(pm->vdecpll);
--	}
--
--	pm->vencpll = devm_clk_get(&pdev->dev, "vencpll");
--	if (IS_ERR(pm->vencpll)) {
--		mtk_v4l2_err("devm_clk_get vencpll fail");
--		ret = PTR_ERR(pm->vencpll);
--	}
--
--	pm->venc_lt_sel = devm_clk_get(&pdev->dev, "venc_lt_sel");
--	if (IS_ERR(pm->venc_lt_sel)) {
--		mtk_v4l2_err("devm_clk_get venc_lt_sel fail");
--		ret = PTR_ERR(pm->venc_lt_sel);
--	}
--
--	pm->vdec_bus_clk_src = devm_clk_get(&pdev->dev, "vdec_bus_clk_src");
--	if (IS_ERR(pm->vdec_bus_clk_src)) {
--		mtk_v4l2_err("devm_clk_get vdec_bus_clk_src");
--		ret = PTR_ERR(pm->vdec_bus_clk_src);
-+	for (i = 0; i < dec_clk->clk_num; i++) {
-+		clk_info = &dec_clk->clk_info[i];
-+		ret = of_property_read_string_index(pdev->dev.of_node,
-+			"clock-names", i, &clk_info->clk_name);
-+		if (ret) {
-+			mtk_v4l2_err("Failed to get clock name id = %d", i);
-+			return ret;
-+		}
-+		clk_info->vcodec_clk = devm_clk_get(&pdev->dev,
-+			clk_info->clk_name);
-+		if (IS_ERR(clk_info->vcodec_clk)) {
-+			mtk_v4l2_err("devm_clk_get (%d)%s fail", i,
-+				clk_info->clk_name);
-+			return PTR_ERR(clk_info->vcodec_clk);
-+		}
- 	}
- 
- 	pm_runtime_enable(&pdev->dev);
-@@ -125,78 +110,36 @@ void mtk_vcodec_dec_pw_off(struct mtk_vcodec_pm *pm)
- 
- void mtk_vcodec_dec_clock_on(struct mtk_vcodec_pm *pm)
- {
--	int ret;
--
--	ret = clk_set_rate(pm->vcodecpll, 1482 * 1000000);
--	if (ret)
--		mtk_v4l2_err("clk_set_rate vcodecpll fail %d", ret);
--
--	ret = clk_set_rate(pm->vencpll, 800 * 1000000);
--	if (ret)
--		mtk_v4l2_err("clk_set_rate vencpll fail %d", ret);
--
--	ret = clk_prepare_enable(pm->vcodecpll);
--	if (ret)
--		mtk_v4l2_err("clk_prepare_enable vcodecpll fail %d", ret);
--
--	ret = clk_prepare_enable(pm->vencpll);
--	if (ret)
--		mtk_v4l2_err("clk_prepare_enable vencpll fail %d", ret);
--
--	ret = clk_prepare_enable(pm->vdec_bus_clk_src);
--	if (ret)
--		mtk_v4l2_err("clk_prepare_enable vdec_bus_clk_src fail %d",
--				ret);
--
--	ret = clk_prepare_enable(pm->venc_lt_sel);
--	if (ret)
--		mtk_v4l2_err("clk_prepare_enable venc_lt_sel fail %d", ret);
--
--	ret = clk_set_parent(pm->venc_lt_sel, pm->vdec_bus_clk_src);
--	if (ret)
--		mtk_v4l2_err("clk_set_parent venc_lt_sel vdec_bus_clk_src fail %d",
--				ret);
--
--	ret = clk_prepare_enable(pm->univpll_d2);
--	if (ret)
--		mtk_v4l2_err("clk_prepare_enable univpll_d2 fail %d", ret);
--
--	ret = clk_prepare_enable(pm->clk_cci400_sel);
--	if (ret)
--		mtk_v4l2_err("clk_prepare_enable clk_cci400_sel fail %d", ret);
--
--	ret = clk_set_parent(pm->clk_cci400_sel, pm->univpll_d2);
--	if (ret)
--		mtk_v4l2_err("clk_set_parent clk_cci400_sel univpll_d2 fail %d",
--				ret);
--
--	ret = clk_prepare_enable(pm->vdecpll);
--	if (ret)
--		mtk_v4l2_err("clk_prepare_enable vdecpll fail %d", ret);
--
--	ret = clk_prepare_enable(pm->vdec_sel);
--	if (ret)
--		mtk_v4l2_err("clk_prepare_enable vdec_sel fail %d", ret);
--
--	ret = clk_set_parent(pm->vdec_sel, pm->vdecpll);
--	if (ret)
--		mtk_v4l2_err("clk_set_parent vdec_sel vdecpll fail %d", ret);
-+	struct mtk_vcodec_clk *dec_clk = &pm->vdec_clk;
-+	int ret, i = 0;
-+
-+	for (i = 0; i < dec_clk->clk_num; i++) {
-+		ret = clk_prepare_enable(dec_clk->clk_info[i].vcodec_clk);
-+		if (ret) {
-+			mtk_v4l2_err("clk_prepare_enable %d %s fail %d", i,
-+				dec_clk->clk_info[i].clk_name, ret);
-+			goto error;
-+		}
-+	}
- 
- 	ret = mtk_smi_larb_get(pm->larbvdec);
--	if (ret)
-+	if (ret) {
- 		mtk_v4l2_err("mtk_smi_larb_get larbvdec fail %d", ret);
-+		goto error;
-+	}
-+	return;
- 
-+error:
-+	for (i -= 1; i >= 0; i--)
-+		clk_disable_unprepare(dec_clk->clk_info[i].vcodec_clk);
- }
- 
- void mtk_vcodec_dec_clock_off(struct mtk_vcodec_pm *pm)
- {
-+	struct mtk_vcodec_clk *dec_clk = &pm->vdec_clk;
-+	int i = 0;
-+
- 	mtk_smi_larb_put(pm->larbvdec);
--	clk_disable_unprepare(pm->vdec_sel);
--	clk_disable_unprepare(pm->vdecpll);
--	clk_disable_unprepare(pm->univpll_d2);
--	clk_disable_unprepare(pm->clk_cci400_sel);
--	clk_disable_unprepare(pm->venc_lt_sel);
--	clk_disable_unprepare(pm->vdec_bus_clk_src);
--	clk_disable_unprepare(pm->vencpll);
--	clk_disable_unprepare(pm->vcodecpll);
-+	for (i = dec_clk->clk_num - 1; i >= 0; i--)
-+		clk_disable_unprepare(dec_clk->clk_info[i].vcodec_clk);
- }
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-index 3cffb381ac8e..8aba69555b12 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-@@ -175,23 +175,30 @@ struct mtk_enc_params {
- 	unsigned int	force_intra;
- };
- 
-+/**
-+ * struct mtk_vcodec_clk_info - Structure used to store clock name
-+ */
-+struct mtk_vcodec_clk_info {
-+	const char	*clk_name;
-+	struct clk	*vcodec_clk;
-+};
-+
-+/**
-+ * struct mtk_vcodec_clk - Structure used to store vcodec clock information
-+ */
-+struct mtk_vcodec_clk {
-+	struct mtk_vcodec_clk_info	*clk_info;
-+	int	clk_num;
-+};
-+
- /**
-  * struct mtk_vcodec_pm - Power management data structure
-  */
- struct mtk_vcodec_pm {
--	struct clk	*vdec_bus_clk_src;
--	struct clk	*vencpll;
--
--	struct clk	*vcodecpll;
--	struct clk	*univpll_d2;
--	struct clk	*clk_cci400_sel;
--	struct clk	*vdecpll;
--	struct clk	*vdec_sel;
--	struct clk	*vencpll_d2;
--	struct clk	*venc_sel;
--	struct clk	*univpll1_d2;
--	struct clk	*venc_lt_sel;
-+	struct mtk_vcodec_clk	vdec_clk;
- 	struct device	*larbvdec;
-+
-+	struct mtk_vcodec_clk	venc_clk;
- 	struct device	*larbvenc;
- 	struct device	*larbvenclt;
- 	struct device	*dev;
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-index 3e73e9db781f..c8236e82adf1 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-@@ -22,14 +22,15 @@
- #include "mtk_vcodec_util.h"
- #include "mtk_vpu.h"
- 
--
- int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
- {
- 	struct device_node *node;
- 	struct platform_device *pdev;
--	struct device *dev;
- 	struct mtk_vcodec_pm *pm;
--	int ret = 0;
-+	struct mtk_vcodec_clk *enc_clk;
-+	struct mtk_vcodec_clk_info *clk_info;
-+	int ret = 0, i = 0;
-+	struct device *dev;
- 
- 	pdev = mtkdev->plat_dev;
- 	pm = &mtkdev->pm;
-@@ -37,6 +38,7 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
- 	pm->mtkdev = mtkdev;
- 	pm->dev = &pdev->dev;
- 	dev = &pdev->dev;
-+	enc_clk = &pm->venc_clk;
- 
- 	node = of_parse_phandle(dev->of_node, "mediatek,larb", 0);
- 	if (!node) {
-@@ -61,33 +63,38 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
- 		mtk_v4l2_err("no mediatek,larb device found");
- 		return -1;
- 	}
--
- 	pm->larbvenclt = &pdev->dev;
- 	pdev = mtkdev->plat_dev;
- 	pm->dev = &pdev->dev;
- 
--	pm->vencpll_d2 = devm_clk_get(&pdev->dev, "venc_sel_src");
--	if (IS_ERR(pm->vencpll_d2)) {
--		mtk_v4l2_err("devm_clk_get vencpll_d2 fail");
--		ret = PTR_ERR(pm->vencpll_d2);
-+	enc_clk->clk_num = of_property_count_strings(pdev->dev.of_node,
-+		"clock-names");
-+	if (enc_clk->clk_num > 0) {
-+		enc_clk->clk_info = devm_kcalloc(&pdev->dev,
-+			enc_clk->clk_num, sizeof(*clk_info),
-+			GFP_KERNEL);
-+		if (!enc_clk->clk_info)
-+			return -ENOMEM;
-+	} else {
-+		mtk_v4l2_err("Failed to get venc clock count");
-+		return -EINVAL;
- 	}
- 
--	pm->venc_sel = devm_clk_get(&pdev->dev, "venc_sel");
--	if (IS_ERR(pm->venc_sel)) {
--		mtk_v4l2_err("devm_clk_get venc_sel fail");
--		ret = PTR_ERR(pm->venc_sel);
--	}
--
--	pm->univpll1_d2 = devm_clk_get(&pdev->dev, "venc_lt_sel_src");
--	if (IS_ERR(pm->univpll1_d2)) {
--		mtk_v4l2_err("devm_clk_get univpll1_d2 fail");
--		ret = PTR_ERR(pm->univpll1_d2);
--	}
--
--	pm->venc_lt_sel = devm_clk_get(&pdev->dev, "venc_lt_sel");
--	if (IS_ERR(pm->venc_lt_sel)) {
--		mtk_v4l2_err("devm_clk_get venc_lt_sel fail");
--		ret = PTR_ERR(pm->venc_lt_sel);
-+	for (i = 0; i < enc_clk->clk_num; i++) {
-+		clk_info = &enc_clk->clk_info[i];
-+		ret = of_property_read_string_index(pdev->dev.of_node,
-+			"clock-names", i, &clk_info->clk_name);
-+		if (ret) {
-+			mtk_v4l2_err("venc failed to get clk name %d", i);
-+			return ret;
-+		}
-+		clk_info->vcodec_clk = devm_clk_get(&pdev->dev,
-+			clk_info->clk_name);
-+		if (IS_ERR(clk_info->vcodec_clk)) {
-+			mtk_v4l2_err("venc devm_clk_get (%d)%s fail", i,
-+				clk_info->clk_name);
-+			return PTR_ERR(clk_info->vcodec_clk);
-+		}
- 	}
- 
- 	return ret;
-@@ -100,38 +107,45 @@ void mtk_vcodec_release_enc_pm(struct mtk_vcodec_dev *mtkdev)
- 
- void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm)
- {
--	int ret;
--
--	ret = clk_prepare_enable(pm->venc_sel);
--	if (ret)
--		mtk_v4l2_err("clk_prepare_enable fail %d", ret);
--
--	ret = clk_set_parent(pm->venc_sel, pm->vencpll_d2);
--	if (ret)
--		mtk_v4l2_err("clk_set_parent fail %d", ret);
--
--	ret = clk_prepare_enable(pm->venc_lt_sel);
--	if (ret)
--		mtk_v4l2_err("clk_prepare_enable fail %d", ret);
--
--	ret = clk_set_parent(pm->venc_lt_sel, pm->univpll1_d2);
--	if (ret)
--		mtk_v4l2_err("clk_set_parent fail %d", ret);
-+	struct mtk_vcodec_clk *enc_clk = &pm->venc_clk;
-+	int ret, i = 0;
-+
-+	for (i = 0; i < enc_clk->clk_num; i++) {
-+		ret = clk_prepare_enable(enc_clk->clk_info[i].vcodec_clk);
-+		if (ret) {
-+			mtk_v4l2_err("venc clk_prepare_enable %d %s fail %d", i,
-+				enc_clk->clk_info[i].clk_name, ret);
-+			goto clkerr;
-+		}
-+	}
- 
- 	ret = mtk_smi_larb_get(pm->larbvenc);
--	if (ret)
-+	if (ret) {
- 		mtk_v4l2_err("mtk_smi_larb_get larb3 fail %d", ret);
--
-+		goto larbvencerr;
-+	}
- 	ret = mtk_smi_larb_get(pm->larbvenclt);
--	if (ret)
-+	if (ret) {
- 		mtk_v4l2_err("mtk_smi_larb_get larb4 fail %d", ret);
-+		goto larbvenclterr;
-+	}
-+	return;
- 
-+larbvenclterr:
-+	mtk_smi_larb_put(pm->larbvenc);
-+larbvencerr:
-+clkerr:
-+	for (i -= 1; i >= 0; i--)
-+		clk_disable_unprepare(enc_clk->clk_info[i].vcodec_clk);
- }
- 
- void mtk_vcodec_enc_clock_off(struct mtk_vcodec_pm *pm)
- {
-+	struct mtk_vcodec_clk *enc_clk = &pm->venc_clk;
-+	int i = 0;
-+
- 	mtk_smi_larb_put(pm->larbvenc);
- 	mtk_smi_larb_put(pm->larbvenclt);
--	clk_disable_unprepare(pm->venc_lt_sel);
--	clk_disable_unprepare(pm->venc_sel);
-+	for (i = enc_clk->clk_num - 1; i >= 0; i--)
-+		clk_disable_unprepare(enc_clk->clk_info[i].vcodec_clk);
- }
--- 
-2.19.1
+Based on v4.20-rc1 and
+http://lists.infradead.org/pipermail/linux-mediatek/2018-December/016243.html
+http://lists.infradead.org/pipermail/linux-mediatek/2018-December/016205.html
+http://lists.infradead.org/pipermail/linux-mediatek/2018-October/015676.html
+
+Change in v5:
+1. Collect all device tree nodes to the last patch
+2. Add PMU
+3. Add Signed-off-by
+4. Remove clock driver code and binding doc
+5. Add pinctrl, iommu, spi, and pwrap nodes
+
+Change in v4:
+1. Correct syntax error in dtsi
+2. Add MT8183 clock support
+
+Change in v3:
+1. Fill out GICC, GICH, GICV regions
+2. Update Copyright to 2018
+
+Change in v2:
+1. Split dt-bindings into different patches
+2. Correct bindings for supported SoCs (mtk-uart.txt)
+
+Ben Ho (1):
+  arm64: dts: Add Mediatek SoC MT8183 and evaluation board dts and
+    Makefile
+
+Erin Lo (3):
+  dt-bindings: arm: Add bindings for Mediatek MT8183 SoC Platform
+  dt-bindings: mtk-sysirq: Add compatible for Mediatek MT8183
+  dt-bindings: serial: Add compatible for Mediatek MT8183
+
+Seiya Wang (1):
+  irqchip/mtk-sysirq: support 4 interrupt parameters for sysirq
+
+Zhiyong Tao (1):
+  dt-bindings: pinctrl: mt8183: add binding document
+
+ Documentation/devicetree/bindings/arm/mediatek.txt |    4 +
+ .../interrupt-controller/mediatek,sysirq.txt       |    1 +
+ .../devicetree/bindings/pinctrl/pinctrl-mt8183.txt |  110 ++
+ .../devicetree/bindings/serial/mtk-uart.txt        |    1 +
+ arch/arm64/boot/dts/mediatek/Makefile              |    1 +
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts        |  136 +++
+ arch/arm64/boot/dts/mediatek/mt8183-pinfunc.h      | 1120 ++++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi           |  547 ++++++++++
+ drivers/irqchip/irq-mtk-sysirq.c                   |    4 +-
+ 9 files changed, 1922 insertions(+), 2 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-mt8183.txt
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-pinfunc.h
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183.dtsi
+
+--
+1.9.1
