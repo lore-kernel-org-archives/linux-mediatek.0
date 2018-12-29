@@ -1,67 +1,127 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH] usb: devio: update max count of DPs per interval for
- ISOC
-Date: Sat, 29 Dec 2018 10:48:40 +0800
-Message-ID: <1546051720.32173.139.camel@mhfsdcap03>
-References: <1545992864-9530-1-git-send-email-chunfeng.yun@mediatek.com>
-         <20181228105148.GA22073@kroah.com>
+From: Long Cheng <long.cheng@mediatek.com>
+Subject: [PATCH v8 2/2] arm: dts: mt2712: add uart APDMA to device tree
+Date: Sat, 29 Dec 2018 18:30:23 +0800
+Message-ID: <1546079423-8361-3-git-send-email-long.cheng@mediatek.com>
+References: <1546079423-8361-1-git-send-email-long.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181228105148.GA22073@kroah.com>
+In-Reply-To: <1546079423-8361-1-git-send-email-long.cheng@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Felipe Balbi <felipe.balbi@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Vinod Koul <vkoul@kernel.org>, Randy Dunlap <rdunlap@infradead.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Dan Williams <dan.j.williams@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>, Sean Wang <sean.wang@mediatek.com>, dmaengine@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, srv_heupstream@mediatek.com, Yingjoe Chen <yingjoe.chen@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Zhenbao Liu <zhenbao.liu@mediatek.com>, Long Cheng <long.cheng@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
-On Fri, 2018-12-28 at 11:51 +0100, Greg Kroah-Hartman wrote:
-> On Fri, Dec 28, 2018 at 06:27:44PM +0800, Chunfeng Yun wrote:
-> > The host shall be able to accept and send up to 96 DPs for
-> > devices operating at Gen 2 speed.
-> 
-> Why?  What is this keeping from working properly today?
+1. add uart APDMA controller device node
+2. add uart 0/1/2/3/4/5 DMA function
 
-The failure happened when I tried to send up to 96DPs per an interval
-for SSP ISOC transations by libusb, this is used to verify SSP ISOC
-function of USB3 GEN2 controller. Maybe for normal scenarios they
-needn't transfer greater than 48 DPs in an ISOC interval.
-(refer usb3.1r1.0 section 8.12.6 Isochronous Transactions)
-> 
-> I need a much better changelog text here in order to be able to accept
-> this patch.
-I'll make the change in next version
-> 
-> > 
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > ---
-> >  drivers/usb/core/devio.c | 8 +++-----
-> >  1 file changed, 3 insertions(+), 5 deletions(-)
-> > 
-> > diff --git a/drivers/usb/core/devio.c b/drivers/usb/core/devio.c
-> > index a75bc0b8a50f..82c16210e34c 100644
-> > --- a/drivers/usb/core/devio.c
-> > +++ b/drivers/usb/core/devio.c
-> > @@ -1564,12 +1564,10 @@ static int proc_do_submiturb(struct usb_dev_state *ps, struct usbdevfs_urb *uurb
-> >  		}
-> >  		for (totlen = u = 0; u < number_of_packets; u++) {
-> >  			/*
-> > -			 * arbitrary limit need for USB 3.0
-> > -			 * bMaxBurst (0~15 allowed, 1~16 packets)
-> > -			 * bmAttributes (bit 1:0, mult 0~2, 1~3 packets)
-> > -			 * sizemax: 1024 * 16 * 3 = 49152
-> > +			 * arbitrary limit need for USB 3.1 Gen2
-> > +			 * sizemax: 96 DPs at SSP, 96 * 1024 = 98304
-> >  			 */
-> > -			if (isopkt[u].length > 49152) {
-> > +			if (isopkt[u].length > 98304) {
-> 
-> Are we going to have to keep bumping this up as speeds get faster and
-> faster?
-Or remove the check of data length? I'm not sure which way is better
+Signed-off-by: Long Cheng <long.cheng@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi |   50 +++++++++++++++++++++++++++++
+ 1 file changed, 50 insertions(+)
 
-> 
-> thanks,
-> 
-> greg k-h
+diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+index 976d92a..be1a22a 100644
+--- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+@@ -300,6 +300,9 @@
+ 		interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
+ 		clocks = <&baud_clk>, <&sys_clk>;
+ 		clock-names = "baud", "bus";
++		dmas = <&apdma 10
++			&apdma 11>;
++		dma-names = "tx", "rx";
+ 		status = "disabled";
+ 	};
+ 
+@@ -369,6 +372,38 @@
+ 			 (GIC_CPU_MASK_RAW(0x13) | IRQ_TYPE_LEVEL_HIGH)>;
+ 	};
+ 
++	apdma: dma-controller@11000400 {
++		compatible = "mediatek,mt2712-uart-dma",
++			     "mediatek,mt6577-uart-dma";
++		reg = <0 0x11000400 0 0x80>,
++		      <0 0x11000480 0 0x80>,
++		      <0 0x11000500 0 0x80>,
++		      <0 0x11000580 0 0x80>,
++		      <0 0x11000600 0 0x80>,
++		      <0 0x11000680 0 0x80>,
++		      <0 0x11000700 0 0x80>,
++		      <0 0x11000780 0 0x80>,
++		      <0 0x11000800 0 0x80>,
++		      <0 0x11000880 0 0x80>,
++		      <0 0x11000900 0 0x80>,
++		      <0 0x11000980 0 0x80>;
++		interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 104 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 105 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 106 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 107 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 108 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 109 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 110 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 111 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 112 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 113 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 114 IRQ_TYPE_LEVEL_LOW>;
++		clocks = <&pericfg CLK_PERI_AP_DMA>;
++		clock-names = "apdma";
++		#dma-cells = <1>;
++	};
++
+ 	auxadc: adc@11001000 {
+ 		compatible = "mediatek,mt2712-auxadc";
+ 		reg = <0 0x11001000 0 0x1000>;
+@@ -385,6 +420,9 @@
+ 		interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>;
+ 		clocks = <&baud_clk>, <&sys_clk>;
+ 		clock-names = "baud", "bus";
++		dmas = <&apdma 0
++			&apdma 1>;
++		dma-names = "tx", "rx";
+ 		status = "disabled";
+ 	};
+ 
+@@ -395,6 +433,9 @@
+ 		interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_LOW>;
+ 		clocks = <&baud_clk>, <&sys_clk>;
+ 		clock-names = "baud", "bus";
++		dmas = <&apdma 2
++			&apdma 3>;
++		dma-names = "tx", "rx";
+ 		status = "disabled";
+ 	};
+ 
+@@ -405,6 +446,9 @@
+ 		interrupts = <GIC_SPI 93 IRQ_TYPE_LEVEL_LOW>;
+ 		clocks = <&baud_clk>, <&sys_clk>;
+ 		clock-names = "baud", "bus";
++		dmas = <&apdma 4
++			&apdma 5>;
++		dma-names = "tx", "rx";
+ 		status = "disabled";
+ 	};
+ 
+@@ -415,6 +459,9 @@
+ 		interrupts = <GIC_SPI 94 IRQ_TYPE_LEVEL_LOW>;
+ 		clocks = <&baud_clk>, <&sys_clk>;
+ 		clock-names = "baud", "bus";
++		dmas = <&apdma 6
++			&apdma 7>;
++		dma-names = "tx", "rx";
+ 		status = "disabled";
+ 	};
+ 
+@@ -629,6 +676,9 @@
+ 		interrupts = <GIC_SPI 126 IRQ_TYPE_LEVEL_LOW>;
+ 		clocks = <&baud_clk>, <&sys_clk>;
+ 		clock-names = "baud", "bus";
++		dmas = <&apdma 8
++			&apdma 9>;
++		dma-names = "tx", "rx";
+ 		status = "disabled";
+ 	};
+ 
+-- 
+1.7.9.5
