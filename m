@@ -1,58 +1,36 @@
-From: Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [PATCH] Fix compilation problem for mt7621_wdt.c and rt2880_wdt.c
-Date: Sun, 30 Dec 2018 09:16:47 -0800
-Message-ID: <20181230171647.GA8311@roeck-us.net>
-References: <87va3baecv.fsf@notabene.neil.brown.name>
+From: Felix Fietkau <nbd@nbd.name>
+Subject: Re: [PATCH] mt76: make const array 'data' static, shrinks object size
+Date: Mon, 31 Dec 2018 15:41:21 +0100
+Message-ID: <453b64e0-220e-69a8-c855-51903707a88b@nbd.name>
+References: <20181230132640.6916-1-colin.king@canonical.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <87va3baecv.fsf@notabene.neil.brown.name>
+In-Reply-To: <20181230132640.6916-1-colin.king@canonical.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: NeilBrown <neil@brown.name>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-watchdog@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Colin King <colin.king@canonical.com>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Kalle Valo <kvalo@codeaurora.org>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, Dec 30, 2018 at 02:21:52PM +1100, NeilBrown wrote:
+On 2018-12-30 14:26, Colin King wrote:
+> From: Colin Ian King <colin.king@canonical.com>
 > 
-> These files need
->    #include <linux/mod_devicetable.h>
-> to compile correctly.
+> Don't populate the const array 'data' on the stack but instead
+> make it static. Makes the object code smaller by 78 bytes:
 > 
-> Fixes: ac3167257b9f ("headers: separate linux/mod_devicetable.h from linux/platform_device.h")
-> Signed-off-by: NeilBrown <neil@brown.name>
+> Before:
+>    text    data     bss     dec     hex filename
+>    5438    1080       0    6518    1976 mediatek/mt76/mt76x2/usb_mcu.o
+> 
+> After:
+>    text    data     bss     dec     hex filename
+>    5296    1144       0    6440    1928 mediatek/mt76/mt76x2/usb_mcu.o
+> 
+> (gcc version 8.2.0 x86_64)
+> 
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+Applied, thanks.
 
-Reviewed-by: Guenter Roeck <linux@roeck-us.net>
-
-> ---
->  drivers/watchdog/mt7621_wdt.c | 1 +
->  drivers/watchdog/rt2880_wdt.c | 1 +
->  2 files changed, 2 insertions(+)
-> 
-> diff --git a/drivers/watchdog/mt7621_wdt.c b/drivers/watchdog/mt7621_wdt.c
-> index 5c4a764717c4..81208cd3f4ec 100644
-> --- a/drivers/watchdog/mt7621_wdt.c
-> +++ b/drivers/watchdog/mt7621_wdt.c
-> @@ -17,6 +17,7 @@
->  #include <linux/watchdog.h>
->  #include <linux/moduleparam.h>
->  #include <linux/platform_device.h>
-> +#include <linux/mod_devicetable.h>
->  
->  #include <asm/mach-ralink/ralink_regs.h>
->  
-> diff --git a/drivers/watchdog/rt2880_wdt.c b/drivers/watchdog/rt2880_wdt.c
-> index 98967f0a7d10..db7c57d82cfd 100644
-> --- a/drivers/watchdog/rt2880_wdt.c
-> +++ b/drivers/watchdog/rt2880_wdt.c
-> @@ -18,6 +18,7 @@
->  #include <linux/watchdog.h>
->  #include <linux/moduleparam.h>
->  #include <linux/platform_device.h>
-> +#include <linux/mod_devicetable.h>
->  
->  #include <asm/mach-ralink/ralink_regs.h>
->  
-> -- 
-> 2.14.0.rc0.dirty
-> 
+- Felix
