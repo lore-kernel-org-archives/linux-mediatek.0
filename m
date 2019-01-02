@@ -1,82 +1,85 @@
-From: Henry Chen <henryc.chen@mediatek.com>
-Subject: [RFC RESEND PATCH 1/7] dt-bindings: soc: Add DVFSRC driver bindings
-Date: Wed, 2 Jan 2019 22:09:52 +0800
-Message-ID: <1546438198-1677-2-git-send-email-henryc.chen@mediatek.com>
-References: <1546438198-1677-1-git-send-email-henryc.chen@mediatek.com>
+From: Bart Van Assche <bvanassche-HInyCGIudOg@public.gmane.org>
+Subject: Re: [PATCH v1 1/1] scsi: Synchronize request queue PM status only
+ on successful resume
+Date: Wed, 02 Jan 2019 08:15:45 -0800
+Message-ID: <1546445745.163063.4.camel@acm.org>
+References: <1546410308-13486-1-git-send-email-stanley.chu@mediatek.com>
+ <1546410308-13486-3-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1546438198-1677-1-git-send-email-henryc.chen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Viresh Kumar <vireshk@kernel.org>, Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Fan Chen <fan.chen@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>, Kees Cook <keescook@chromium.org>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1546410308-13486-3-git-send-email-stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: srv_wsdupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Document the binding for enabling DVFSRC on MediaTek SoC.
+On Wed, 2019-01-02 at 14:25 +0800, stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> 
+> The commit 356fd2663cff ("scsi: Set request queue runtime PM status
+> back to active on resume") fixed up the inconsistent RPM status between
+> request queue and device. However changing request queue RPM status
+> shall be done only on successful resume, otherwise status may be still
+> inconsistent as below,
+> 
+> Request queue: RPM_ACTIVE
+> Device: RPM_SUSPENDED
+> 
+> This ends up soft lockup because requests can be submitted to
+> underlying devices but those devices and their required resource
+> are not resumed.
+> 
+> Signed-off-by: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
----
- .../devicetree/bindings/soc/mediatek/dvfsrc.txt    | 26 ++++++++++++++++++++++
- include/dt-bindings/soc/mtk,dvfsrc.h               | 18 +++++++++++++++
- 2 files changed, 44 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt
- create mode 100644 include/dt-bindings/soc/mtk,dvfsrc.h
+Please add "Fixes:" and "Cc: stable" tags and also Cc the author of commit
+356fd2663cff.
 
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt b/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt
-new file mode 100644
-index 0000000..402c885
---- /dev/null
-+++ b/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt
-@@ -0,0 +1,26 @@
-+MediaTek DVFSRC Driver
-+
-+The Dynamic Voltage and Frequency Scaling Resource Collector (DVFSRC) is a
-+HW module which is used to collect all the requests from both software and
-+hardware and turn into the decision of minimum operating voltage and minimum
-+DRAM frequency to fulfill those requests.
-+
-+Required Properties:
-+- compatible: Should be one of the following
-+	- "mediatek,mt8183-dvfsrc": For MT8183 SoC
-+- reg: Address range of the DVFSRC unit
-+- dram_type: Refer to <include/dt-bindings/soc/mtk,dvfsrc.h> for the
-+	different dram type support.
-+- clock-names: Must include the following entries:
-+	"dvfsrc": DVFSRC module clock
-+- clocks: Must contain an entry for each entry in clock-names.
-+
-+Example:
-+
-+	dvfsrc_top@10012000 {
-+		compatible = "mediatek,mt8183-dvfsrc";
-+		reg = <0 0x10012000 0 0x1000>;
-+		clocks = <&infracfg CLK_INFRA_DVFSRC>;
-+		clock-names = "dvfsrc";
-+		dram_type = <MT8183_DVFSRC_OPP_LP4>;
-+	};
-diff --git a/include/dt-bindings/soc/mtk,dvfsrc.h b/include/dt-bindings/soc/mtk,dvfsrc.h
-new file mode 100644
-index 0000000..60b3497
---- /dev/null
-+++ b/include/dt-bindings/soc/mtk,dvfsrc.h
-@@ -0,0 +1,18 @@
-+/* SPDX-License-Identifier: GPL-2.0
-+ *
-+ * Copyright (c) 2018 MediaTek Inc.
-+ */
-+
-+#ifndef _DT_BINDINGS_POWER_MTK_DVFSRC_H
-+#define _DT_BINDINGS_POWER_MTK_DVFSRC_H
-+
-+#define MT8183_DVFSRC_OPP_LP4	0
-+#define MT8183_DVFSRC_OPP_LP4X	1
-+#define MT8183_DVFSRC_OPP_LP3	2
-+
-+#define MT8183_DVFSRC_LEVEL_1	1
-+#define MT8183_DVFSRC_LEVEL_2	2
-+#define MT8183_DVFSRC_LEVEL_3	3
-+#define MT8183_DVFSRC_LEVEL_4	4
-+
-+#endif /* _DT_BINDINGS_POWER_MTK_DVFSRC_H */
--- 
-1.9.1
+
+> ---
+>  drivers/scsi/scsi_pm.c | 24 ++++++++++++++----------
+>  1 file changed, 14 insertions(+), 10 deletions(-)
+> 
+> diff --git a/drivers/scsi/scsi_pm.c b/drivers/scsi/scsi_pm.c
+> index a2b4179..eff3e59 100644
+> --- a/drivers/scsi/scsi_pm.c
+> +++ b/drivers/scsi/scsi_pm.c
+> @@ -82,6 +82,20 @@ static int scsi_dev_type_resume(struct device *dev,
+>  		pm_runtime_disable(dev);
+>  		pm_runtime_set_active(dev);
+>  		pm_runtime_enable(dev);
+> +
+> +		/*
+> +		 * Forcibly set runtime PM status of request queue to "active"
+> +		 * to make sure we can again get requests from the queue
+> +		 * (see also blk_pm_peek_request()).
+> +		 *
+> +		 * The resume hook will correct runtime PM status of the disk.
+> +		 */
+> +		if (!err && scsi_is_sdev_device(dev)) {
+> +			struct scsi_device *sdev = to_scsi_device(dev);
+> +
+> +			if (sdev->request_queue->dev)
+> +				blk_set_runtime_active(sdev->request_queue);
+> +		}
+
+What makes you think that the sdev->request_queue->dev test is necessary? The
+scsi_dev_type_resume() function is only called after blk_pm_runtime_init() has
+finished so I don't think that test is necessary.
+
+Additionally, since the above code occurs inside a block controlled by an
+"if (err == 0)" statement, I think the !err test is redundant and should be
+left out.
+
+Thanks,
+
+Bart.
