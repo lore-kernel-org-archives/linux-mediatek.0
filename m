@@ -1,64 +1,62 @@
-From: Bart Van Assche <bvanassche-HInyCGIudOg@public.gmane.org>
-Subject: Re: [PATCH v1 1/1] scsi: Synchronize request queue PM status only
- on successful resume
-Date: Thu, 03 Jan 2019 15:15:43 -0800
-Message-ID: <1546557343.163063.21.camel@acm.org>
-References: <1546410308-13486-1-git-send-email-stanley.chu@mediatek.com>
- <1546410308-13486-3-git-send-email-stanley.chu@mediatek.com>
- <1546445745.163063.4.camel@acm.org> <1546497527.20657.12.camel@mtkswgap22>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 1/3] media: dt-bindings: media: Fix MTK document for
+ vcodec
+Date: Thu, 3 Jan 2019 17:17:22 -0600
+Message-ID: <20190103231722.GA22018@bogus>
+References: <1545978785-31375-1-git-send-email-yunfei.dong@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1546497527.20657.12.camel@mtkswgap22>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, wsdupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mika.westerberg-VuQAYsv1563Yd54FQh9/CA@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1545978785-31375-1-git-send-email-yunfei.dong@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Yunfei Dong <yunfei.dong@mediatek.com>
+Cc: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Qianqian Yan <qianqian.yan@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2019-01-03 at 14:38 +0800, Stanley Chu wrote:
-> We found NULL sdev->request_queue->dev may be dereferenced during below
-> system resume flow,
+On Fri, Dec 28, 2018 at 02:33:03PM +0800, Yunfei Dong wrote:
+> Fix MTK binding document for MT8173 dtsi changed in order
+> to use standard CCF interface.
+> MT8173 SoC from Mediatek.
+
+A better subject would be "add 'assigned-clocks' to vcodec examples".
+
 > 
-> scsi_bus_resume_common()
->  => async_schedule_domain(async_sdev_resume)
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> Signed-off-by: Qianqian Yan <qianqian.yan@mediatek.com>
+> ---
+>  .../devicetree/bindings/media/mediatek-vcodec.txt   | 13 +++++++++++++
+>  1 file changed, 13 insertions(+)
 > 
-> And then async_sdev_resume() is invoked asynchronously,
+> diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+> index 2a615d84a682..b6b5dde6abd8 100644
+> --- a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+> +++ b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+> @@ -66,6 +66,15 @@ vcodec_dec: vcodec@16000000 {
+>                    "vencpll",
+>                    "venc_lt_sel",
+>                    "vdec_bus_clk_src";
+> +    assigned-clocks = <&topckgen CLK_TOP_VENC_LT_SEL>,
+> +                      <&topckgen CLK_TOP_CCI400_SEL>,
+> +                      <&topckgen CLK_TOP_VDEC_SEL>,
+> +                      <&apmixedsys CLK_APMIXED_VCODECPLL>,
+> +                      <&apmixedsys CLK_APMIXED_VENCPLL>;
+> +    assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL_370P5>,
+> +                             <&topckgen CLK_TOP_UNIVPLL_D2>,
+> +                             <&topckgen CLK_TOP_VCODECPLL>;
+> +    assigned-clock-rates = <0>, <0>, <0>, <1482000000>, <800000000>;
+>    };
 >  
-> async_sdev_resume()
->  => scsi_dev_type_resume(dev, do_scsi_resume)
->   => blk_set_runtime_active(sdev->request_queue)
+>    vcodec_enc: vcodec@18002000 {
+> @@ -105,4 +114,8 @@ vcodec_dec: vcodec@16000000 {
+>                    "venc_sel",
+>                    "venc_lt_sel_src",
+>                    "venc_lt_sel";
+> +    assigned-clocks = <&topckgen CLK_TOP_VENC_SEL>,
+> +                      <&topckgen CLK_TOP_VENC_LT_SEL>;
+> +    assigned-clock-parents = <&topckgen CLK_TOP_VENCPLL_D2>,
+> +                             <&topckgen CLK_TOP_UNIVPLL1_D2>;
+>    };
+> -- 
+> 2.19.1
 > 
-> If a SCSI device does not have upper layer driver (like SCSI disk), it
-> may not be applied blk_pm_runtime_init() invoked by sd_probe() while
-> this SCSI device is added.
-> 
-> For example, some SCSI devices (like UFS Boot W-LUN) are added
-> explicitly in __scsi_add_device() by ufshcd_scsi_add_wlus() first and
-> thus sd_probe() for them is skipped because they are already visible.
-> 
-> For those SCSI devices, null sdev->request_queue->dev will be
-> dereferenced in blk_set_runtime_active() during above system resume
-> flow, therefore we add a null pointer checking for this case.
-> 
-> The same issue also happens on those SCSI devices before this patch as
-> below system resume flow while devices are already runtime-suspended.
-> 
-> scsi_bus_resume_common()
->  => blk_set_runtime_active(to_scsi_device(dev)->request_queue)
-
-Hi Stanley,
-
-Thanks, this is helpful information. If you would have to repost your
-patch please add a comment that refers to the __scsi_add_device() calls
-in the UFS driver.
-
-Bart.
