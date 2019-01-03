@@ -1,11 +1,16 @@
-From: <chuanjia.liu@mediatek.com>
-Subject: [PATCH v5] pinctrl: mediatek: add EINT support to virtual GPIOs
-Date: Thu, 3 Jan 2019 11:37:15 +0800
-Message-ID: <1546486635-16829-1-git-send-email-chuanjia.liu@mediatek.com>
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: Re: [RFC RESEND PATCH 4/7] arm64: dts: mt8183: add performance state
+ support of scpsys
+Date: Thu, 3 Jan 2019 10:17:27 +0530
+Message-ID: <20190103044727.i34ak7vw6qfircvq@vireshk-i7>
+References: <1546438198-1677-1-git-send-email-henryc.chen@mediatek.com>
+ <1546438198-1677-5-git-send-email-henryc.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <1546438198-1677-5-git-send-email-henryc.chen@mediatek.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -15,43 +20,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: sean.wang@kernel.org, linus.walleij@linaro.org, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: youlin.pei@mediatek.com, zhiyong.tao@mediatek.com, eddie.huang@mediatek.com, hailong.fan@mediatek.com, "chuanjia.liu" <Chuanjia.Liu@mediatek.com>
+To: Henry Chen <henryc.chen@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, James Liao <jamesjj.liao@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>, Kees Cook <keescook@chromium.org>, Weiyi Lu <weiyi.lu@mediatek.com>, linux-pm@vger.kernel.org, Stephen Boyd <sboyd@kernel.org>, Viresh Kumar <vireshk@kernel.org>, linux-kernel@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: "chuanjia.liu" <Chuanjia.Liu@mediatek.com>
+On 02-01-19, 22:09, Henry Chen wrote:
+> Add support for performance state of scpsys on mt8183 platform.
+> 
+> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 21 +++++++++++++++++++++
+>  1 file changed, 21 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index 47926a7..e396410 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -9,6 +9,7 @@
+>  #include <dt-bindings/interrupt-controller/irq.h>
+>  #include <dt-bindings/interrupt-controller/arm-gic.h>
+>  #include <dt-bindings/power/mt8183-power.h>
+> +#include <dt-bindings/soc/mtk,dvfsrc.h>
+>  
+>  / {
+>  	compatible = "mediatek,mt8183";
+> @@ -243,6 +244,26 @@
+>  			      "vpu-3", "vpu-4", "vpu-5";
+>  		infracfg = <&infracfg>;
+>  		smi_comm = <&smi_common>;
+> +		operating-points-v2 = <&dvfsrc_opp_table>;
+> +		dvfsrc_opp_table: opp-table {
+> +			compatible = "operating-points-v2-mtk-level";
+> +
+> +			dvfsrc_vol_min: opp1 {
+> +				mtk,level = <MT8183_DVFSRC_LEVEL_1>;
+> +			};
+> +
+> +			dvfsrc_freq_medium: opp2 {
+> +				mtk,level = <MT8183_DVFSRC_LEVEL_2>;
+> +			};
+> +
+> +			dvfsrc_freq_max: opp3 {
+> +				mtk,level = <MT8183_DVFSRC_LEVEL_3>;
+> +			};
+> +
+> +			dvfsrc_vol_max: opp4 {
+> +				mtk,level = <MT8183_DVFSRC_LEVEL_4>;
+> +			};
+> +		};
+>  	};
 
-Virtual gpio only used inside SOC and not being exported to outside SOC.
-Some modules use virtual gpio as eint and doesn't need SMT.
-So this patch add EINT support to virtual GPIOs.
+I don't see a patch which makes use of this OPP table using the required-opps
+thing. Where is that ?
 
-Signed-off-by: chuanjia.liu <Chuanjia.Liu@mediatek.com>
----
-change note:
-v5: This patch is the same as v4,re-upload due to
-      mail permissions issues	 
----
- drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-index 4a9e0d4c2bbc..b1c368455d30 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-@@ -290,7 +290,13 @@ static int mtk_xt_set_gpio_as_eint(void *data, unsigned long eint_n)
- 		return err;
- 
- 	err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_SMT, MTK_ENABLE);
--	if (err)
-+	/* SMT is supposed to be supported by every real GPIO and doesn't
-+	 * support virtual GPIOs, so the extra condition err != -ENOTSUPP
-+	 * is just for adding EINT support to these virtual GPIOs. It should
-+	 * add an extra flag in the pin descriptor when more pins with
-+	 * distinctive characteristic come out.
-+	 */
-+	if (err && err != -ENOTSUPP)
- 		return err;
- 
- 	return 0;
 -- 
-2.19.1
+viresh
