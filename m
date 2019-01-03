@@ -1,59 +1,25 @@
-From: Rob Herring <robh+dt@kernel.org>
-Subject: Re: [RFC RESEND PATCH 2/7] dt-bindings: soc: Add opp table on scpsys bindings
-Date: Thu, 3 Jan 2019 12:45:54 -0600
-Message-ID: <CAL_JsqJXFAEdSaexA3p62u8f3RsVA1vfNsOLu4aetB-iLb9qFg@mail.gmail.com>
-References: <1546438198-1677-1-git-send-email-henryc.chen@mediatek.com> <1546438198-1677-3-git-send-email-henryc.chen@mediatek.com>
+From: Bart Van Assche <bvanassche@acm.org>
+Subject: Re: [PATCH v3 1/1] scsi: Synchronize request queue PM status only
+ on successful resume
+Date: Thu, 03 Jan 2019 11:03:47 -0800
+Message-ID: <1546542227.163063.18.camel@acm.org>
+References: <1546524485-25610-1-git-send-email-stanley.chu@mediatek.com>
+         <1546524485-25610-3-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1546438198-1677-3-git-send-email-henryc.chen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Henry Chen <henryc.chen@mediatek.com>
-Cc: Viresh Kumar <vireshk@kernel.org>, Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Ulf Hansson <ulf.hansson@linaro.org>, Mark Rutland <mark.rutland@arm.com>, Fan Chen <fan.chen@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>, Kees Cook <keescook@chromium.org>, "open list:THERMAL" <linux-pm@vger.kernel.org>, devicetree@vger.kernel.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="UTF-7"
+Content-Transfer-Encoding: 7bit
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <1546524485-25610-3-git-send-email-stanley.chu@mediatek.com>
+Sender: stable-owner@vger.kernel.org
+To: stanley.chu@mediatek.com, linux-scsi@vger.kernel.org
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, mika.westerberg@linux.intel.com, kuohong.wang@mediatek.com, peter.wang@mediatek.com, stable@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jan 2, 2019 at 8:10 AM Henry Chen <henryc.chen@mediatek.com> wrote:
->
-> Add opp table on scpsys dt-bindings for Mediatek SoC.
->
-> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/opp/mtk-opp.txt  | 24 +++++++++++++
->  .../devicetree/bindings/soc/mediatek/scpsys.txt    | 42 ++++++++++++++++++++++
->  2 files changed, 66 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/opp/mtk-opp.txt
->
-> diff --git a/Documentation/devicetree/bindings/opp/mtk-opp.txt b/Documentation/devicetree/bindings/opp/mtk-opp.txt
-> new file mode 100644
-> index 0000000..036be1c
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/opp/mtk-opp.txt
-> @@ -0,0 +1,24 @@
-> +Mediatek OPP bindings to descibe OPP nodes with level values
-> +
-> +OPP tables for devices on Mediatek platforms require an additional
-> +platform specific level value to be specified.
-> +This value is passed on to the mediatek Power Management Unit by the
-> +CPU, which then takes the necessary actions to set a voltage rail
-> +to an appropriate voltage based on the value passed.
-> +
-> +The bindings are based on top of the operating-points-v2 bindings
-> +described in Documentation/devicetree/bindings/opp/opp.txt
-> +Additional properties are described below.
-> +
-> +* OPP Table Node
-> +
-> +Required properties:
-> +- compatible: Allow OPPs to express their compatibility. It should be:
-> +  "operating-points-v2-mtk-level"
-> +
-> +* OPP Node
-> +
-> +Required properties:
-> +- mtk,level: On Mediatek platforms an OPP node can describe a positive value
-> +representing a level that's communicated with a our power management hardware
-> +which then translates it into a certain voltage on a voltage rail.
+On Thu, 2019-01-03 at 22:08 +-0800, stanley.chu+AEA-mediatek.com wrote:
++AD4 Fixes: 356fd2663cff (scsi: Set request queue runtime PM status
++AD4 back to active on resume)
 
-Work with the Qcom folks and create a common level property.
+Please do not split +ACI-Fixes+ACI lines. Otherwise this patch looks good to me.
+Hence:
 
-Rob
+Reviewed-by: Bart Van Assche +ADw-bvanassche+AEA-acm.org+AD4
