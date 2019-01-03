@@ -1,39 +1,106 @@
-From: Miles Chen <miles.chen@mediatek.com>
-Subject: [PATCH] tools/vm/page_owner: use page_owner_sort in the use example
-Date: Thu, 3 Jan 2019 19:36:01 +0800
-Message-ID: <1546515361-8317-1-git-send-email-miles.chen@mediatek.com>
+From: <stanley.chu@mediatek.com>
+Subject: [PATCH v3 1/1] scsi: Synchronize request queue PM status only on successful resume
+Date: Thu, 3 Jan 2019 22:08:05 +0800
+Message-ID: <1546524485-25610-3-git-send-email-stanley.chu@mediatek.com>
+References: <1546524485-25610-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andrew Morton <akpm@linux-foundation.org>, Joonsoo Kim <iamjoonsoo.kim@lge.com>
-Cc: linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, Miles Chen <miles.chen@mediatek.com>
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <1546524485-25610-1-git-send-email-stanley.chu@mediatek.com>
+Sender: stable-owner@vger.kernel.org
+To: linux-scsi@vger.kernel.org
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, mika.westerberg@linux.intel.com, kuohong.wang@mediatek.com, peter.wang@mediatek.com, Stanley Chu <stanley.chu@mediatek.com>, stable@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The example in comment does not useable because the output
-binary is named "page_owner_sort", not "sort".
+From: Stanley Chu <stanley.chu@mediatek.com>
 
-Also add a reference to Documentation/vm/page_owner.rst
+The commit 356fd2663cff ("scsi: Set request queue runtime PM status
+back to active on resume") fixed up the inconsistent RPM status between
+request queue and device. However changing request queue RPM status
+shall be done only on successful resume, otherwise status may be still
+inconsistent as below,
 
-Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+Request queue: RPM_ACTIVE
+Device: RPM_SUSPENDED
+
+This ends up soft lockup because requests can be submitted to
+underlying devices but those devices and their required resource
+are not resumed.
+
+For example,
+
+After above inconsistent status happens, IO request can be submitted
+to UFS device driver but required resource (like clock) is not resumed
+yet thus lead to warning as below call stack,
+
+WARN_ON(hba->clk_gating.state != CLKS_ON);
+ufshcd_queuecommand
+scsi_dispatch_cmd
+scsi_request_fn
+__blk_run_queue
+cfq_insert_request
+__elv_add_request
+blk_flush_plug_list
+blk_finish_plug
+jbd2_journal_commit_transaction
+kjournald2
+
+We may see all behind IO requests hang because of no response from
+storage host or device and then soft lockup happens in system. In the
+end, system may crash in many ways.
+
+Fixes: 356fd2663cff (scsi: Set request queue runtime PM status
+back to active on resume)
+Cc: stable@vger.kernel.org
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 ---
- tools/vm/page_owner_sort.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/scsi/scsi_pm.c | 26 +++++++++++++++-----------
+ 1 file changed, 15 insertions(+), 11 deletions(-)
 
-diff --git a/tools/vm/page_owner_sort.c b/tools/vm/page_owner_sort.c
-index 18fc112b65cd..d3a8755c039c 100644
---- a/tools/vm/page_owner_sort.c
-+++ b/tools/vm/page_owner_sort.c
-@@ -5,7 +5,9 @@
-  * Example use:
-  * cat /sys/kernel/debug/page_owner > page_owner_full.txt
-  * grep -v ^PFN page_owner_full.txt > page_owner.txt
-- * ./sort page_owner.txt sorted_page_owner.txt
-+ * ./page_owner_sort page_owner.txt sorted_page_owner.txt
-+ *
-+ * See Documentation/vm/page_owner.rst
- */
+diff --git a/drivers/scsi/scsi_pm.c b/drivers/scsi/scsi_pm.c
+index a2b4179bfdf7..7639df91b110 100644
+--- a/drivers/scsi/scsi_pm.c
++++ b/drivers/scsi/scsi_pm.c
+@@ -80,8 +80,22 @@ static int scsi_dev_type_resume(struct device *dev,
  
- #include <stdio.h>
+ 	if (err == 0) {
+ 		pm_runtime_disable(dev);
+-		pm_runtime_set_active(dev);
++		err = pm_runtime_set_active(dev);
+ 		pm_runtime_enable(dev);
++
++		/*
++		 * Forcibly set runtime PM status of request queue to "active"
++		 * to make sure we can again get requests from the queue
++		 * (see also blk_pm_peek_request()).
++		 *
++		 * The resume hook will correct runtime PM status of the disk.
++		 */
++		if (!err && scsi_is_sdev_device(dev)) {
++			struct scsi_device *sdev = to_scsi_device(dev);
++
++			if (sdev->request_queue->dev)
++				blk_set_runtime_active(sdev->request_queue);
++		}
+ 	}
+ 
+ 	return err;
+@@ -140,16 +154,6 @@ static int scsi_bus_resume_common(struct device *dev,
+ 	else
+ 		fn = NULL;
+ 
+-	/*
+-	 * Forcibly set runtime PM status of request queue to "active" to
+-	 * make sure we can again get requests from the queue (see also
+-	 * blk_pm_peek_request()).
+-	 *
+-	 * The resume hook will correct runtime PM status of the disk.
+-	 */
+-	if (scsi_is_sdev_device(dev) && pm_runtime_suspended(dev))
+-		blk_set_runtime_active(to_scsi_device(dev)->request_queue);
+-
+ 	if (fn) {
+ 		async_schedule_domain(fn, dev, &scsi_sd_pm_domain);
+ 
 -- 
 2.18.0
