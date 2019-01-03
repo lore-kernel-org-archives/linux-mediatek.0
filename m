@@ -1,48 +1,112 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [RFC,1/5] dt-bindings: Add a binding for Mediatek SCP
-Date: Thu, 3 Jan 2019 15:19:26 -0600
-Message-ID: <20190103211926.GA7622@bogus>
-References: <20181226075330.82462-1-pihsun@chromium.org>
- <20181226075330.82462-2-pihsun@chromium.org>
+Subject: Re: [PATCH 1/4] dt-bindings: usb: musb: Add support for MediaTek
+ musb controller
+Date: Thu, 3 Jan 2019 16:14:14 -0600
+Message-ID: <20190103221414.GA14639@bogus>
+References: <1545896066-897-1-git-send-email-min.guo@mediatek.com>
+ <1545896066-897-2-git-send-email-min.guo@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20181226075330.82462-2-pihsun@chromium.org>
+In-Reply-To: <1545896066-897-2-git-send-email-min.guo@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Pi-Hsun Shih <pihsun@chromium.org>
-Cc: Nicolas Boichat <drinkcat@chromium.org>, Erin Lo <erin.lo@mediatek.com>, Ohad Ben-Cohen <ohad@wizery.com>, Bjorn Andersson <bjorn.andersson@linaro.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:REMOTE PROCESSOR (REMOTEPROC) SUBSYSTEM" <linux-remoteproc@vger.kernel.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>
+To: min.guo@mediatek.com
+Cc: Bin Liu <b-liu@ti.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, chunfeng.yun@mediatek.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Dec 26, 2018 at 03:53:09PM +0800, Pi-Hsun Shih wrote:
-> From: Erin Lo <erin.lo@mediatek.com>
+On Thu, Dec 27, 2018 at 03:34:23PM +0800, min.guo@mediatek.com wrote:
+> From: Min Guo <min.guo@mediatek.com>
 > 
-> Add a DT binding documentation of SCP for the
-> MT8183 SoC from Mediatek.
+> This adds support for MediaTek musb controller in
+> host, peripheral and otg mode
 > 
-> Signed-off-by: Erin Lo <erin.lo@mediatek.com>
+> Signed-off-by: Min Guo <min.guo@mediatek.com>
 > ---
->  .../devicetree/bindings/remoteproc/mtk,scp.txt         | 10 ++++++++++
->  1 file changed, 10 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
+>  .../devicetree/bindings/usb/mediatek,musb.txt      | 49 ++++++++++++++++++++++
+>  1 file changed, 49 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/usb/mediatek,musb.txt
 > 
-> diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt b/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
+> diff --git a/Documentation/devicetree/bindings/usb/mediatek,musb.txt b/Documentation/devicetree/bindings/usb/mediatek,musb.txt
 > new file mode 100644
-> index 0000000000000..b07e5c4ca9af1
+> index 0000000..e899c9b
 > --- /dev/null
-> +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
-> @@ -0,0 +1,9 @@
-> +Mediatek SCP Bindings
-> +----------------------------------------
-> +
-> +This binding provides support for ARM Cortex M4 Co-processor found on some
-> +Mediatek SoCs.
+> +++ b/Documentation/devicetree/bindings/usb/mediatek,musb.txt
+> @@ -0,0 +1,49 @@
+> +MediaTek musb DRC/OTG controller
+> +-------------------------------------------
 > +
 > +Required properties:
-> +- compatible		Should be "mediatek,mt8183-scp"
-> +- clocks		Clock for co-processor (See: ../clock/clock-bindings.txt)
+> + - compatible      : should be "mediatek,<soc-model>-musb",
+> +   "mediatek,mtk-musb", soc-model is the name of SoC, such as
+> +   mt2701, when using "mediatek,mtk-musb" compatible string, you
+> +   need SoC specific ones in addition, one of:
+> +   - "mediatek,mt2701-musb"
 
-Seems like this is going to be incomplete considering this used for the 
-CrOS EC.
+This isn't very clear. Just drop the <soc-model and enumerate the SoCs:
 
-Rob
+compatible: should be one of:
+    "mediatek,mt2701-musb"
+    ...
+  followed by "mediatek,mtk-musb"
+
+> + - reg             : specifies physical base address and size of
+> +   the registers
+> + - interrupts      : interrupt used by musb controller
+> + - interrupt-names : must be "mc"
+
+-names is pointless when there is only one.
+
+> + - phys            : PHY specifier for the OTG phy
+> + - phy-names       : should be "usb2-phy"
+
+Same here.
+
+> + - dr_mode         : should be one of "host", "peripheral" or "otg",
+> +   refer to usb/generic.txt
+> + - clocks          : a list of phandle + clock-specifier pairs, one for
+> +   each entry in clock-names
+> + - clock-names     : must contain "main","mcu","univpll"
+
+space needed after each comma.
+
+> +   for clocks of controller
+> +
+> +Optional properties:
+> + - extcon : external connector for VBUS and IDPIN changes detection,
+> +   needed when supports dual-role mode.
+
+Don't use extcon for new bindings. The usb-connector binding should be 
+used instead.
+
+> + - vbus-supply : reference to the VBUS regulator, needed when supports
+> +   dual-role mode.
+
+The controller is powered from Vbus? Probably not. This belongs in the 
+connector or maybe the phy (if the phy is powered from Vbus).
+
+> + - power-domains   : a phandle to USB power domain node to control USB's
+> +   MTCMOS
+> +
+> +Example:
+> +
+> +usb2: usb@11200000 {
+> +	compatible = "mediatek,mt2701-musb";
+> +		"mediatek,mtk-musb";
+> +	reg = <0 0x11200000 0 0x1000>;
+> +	interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_LOW>;
+> +	interrupt-names = "mc";
+> +	phys = <&u2port2 PHY_TYPE_USB2>;
+> +	phy-names = "usb2-phy";
+> +	vbus-supply = <&usb_vbus>;
+> +	extcon = <&extcon_usb>;
+> +	dr_mode = "otg";
+> +	clocks = <&pericfg CLK_PERI_USB0>,
+> +		 <&pericfg CLK_PERI_USB0_MCU>,
+> +		 <&pericfg CLK_PERI_USB_SLV>;
+> +	clock-names = "main","mcu","univpll";
+> +	power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
+> +};
+> -- 
+> 1.9.1
+> 
