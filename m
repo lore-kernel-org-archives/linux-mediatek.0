@@ -1,226 +1,69 @@
-From: Vinod Koul <vkoul@kernel.org>
-Subject: Re: [PATCH 2/2] dmaengine: mediatek: Add MediaTek Command-Queue DMA
- controller for MT6765 SoC
-Date: Fri, 4 Jan 2019 18:08:36 +0530
-Message-ID: <20190104123836.GB13372@vkoul-mobl.Dlink>
-References: <1545916258-18218-1-git-send-email-shun-chih.yu@mediatek.com>
- <1545916258-18218-3-git-send-email-shun-chih.yu@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 1/4] dt-bindings: usb: musb: Add support for MediaTek musb controller
+Date: Fri, 4 Jan 2019 10:10:09 -0600
+Message-ID: <CAL_JsqK5x8=b6gXfBStZwHbq4zvuCuHCLAwsSqFEMJtSffC3BQ@mail.gmail.com>
+References: <1545896066-897-1-git-send-email-min.guo@mediatek.com>
+ <1545896066-897-2-git-send-email-min.guo@mediatek.com> <20190103221414.GA14639@bogus>
+ <1546570807.585.31.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1545916258-18218-3-git-send-email-shun-chih.yu@mediatek.com>
+In-Reply-To: <1546570807.585.31.camel@mhfsdcap03>
 Sender: linux-kernel-owner@vger.kernel.org
-To: shun-chih.yu@mediatek.com
-Cc: Sean Wang <sean.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Dan Williams <dan.j.williams@intel.com>, dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, srv_wsdupstream@mediatek.com
+To: Min Guo <min.guo@mediatek.com>
+Cc: Bin Liu <b-liu@ti.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Linux USB List <linux-usb@vger.kernel.org>, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 27-12-18, 21:10, shun-chih.yu@mediatek.com wrote:
-> From: Shun-Chih Yu <shun-chih.yu@mediatek.com>
-> 
+On Thu, Jan 3, 2019 at 9:00 PM Min Guo <min.guo@mediatek.com> wrote:
+>
+> On Thu, 2019-01-03 at 16:14 -0600, Rob Herring wrote:
+> > On Thu, Dec 27, 2018 at 03:34:23PM +0800, min.guo@mediatek.com wrote:
+> > > From: Min Guo <min.guo@mediatek.com>
+> > >
+> > > This adds support for MediaTek musb controller in
+> > > host, peripheral and otg mode
 
-This should be v4 of the patch series, why is it not tagged so?
+[...]
 
-> MediaTek Command-Queue DMA controller (CQDMA) on MT6765 SoC is dedicated
-> to memory-to-memory transfer through queue based descriptor management.
+> > > + - interrupts      : interrupt used by musb controller
+> > > + - interrupt-names : must be "mc"
+> >
+> > -names is pointless when there is only one.
+> The MUSB core driver has two interrupts, one is for MAC, another for DMA,
+> but on MTK platform, there is only a MAC interrupt, here following the binding
+> of MUSB core driver.
 
-Have you tested this with dmatest, if so can you provide results of the
-test as well.
+You should probably be listing the same interrupt number twice if 2
+interrupts are combined.
 
-> There are only 3 physical channels inside CQDMA, while the driver is
-> extended to support 32 virtual channels for multiple dma users to issue
-> dma requests onto the CQDMA simultaneously.
-> 
-> Change-Id: I1e8d116c5ecbbc49190ffc925cb59a0d035d886b
+> > > +Optional properties:
+> > > + - extcon : external connector for VBUS and IDPIN changes detection,
+> > > +   needed when supports dual-role mode.
+> >
+> > Don't use extcon for new bindings. The usb-connector binding should be
+> > used instead.
+> This is used to detect the changes of the IDPIN and VBUS, the change
+> events are provided by other drivers, such as extcon-usb-gpio.c, and
+> then switch MUSB controller to host or device mode, but the
+> usb-connector can't detect these changes.
 
-Please remove this from upstream, checkpatch would have warned that!
+To repeat, do not use extcon binding for new bindings. It is poorly
+designed as it reflects extcon driver needs, not a description of the
+hardware. If you have ID on GPIO, then that belongs in a usb-connector
+node because that GPIO goes to the connector. For Vbus, you should
+have a vbus-supply in the connector and use a gpio-regulator if it is
+GPIO controlled.
 
-> Signed-off-by: Shun-Chih Yu <shun-chih.yu@mediatek.com>
-> Reviewed-by: Vinod Koul <vkoul@kernel.org>
+> > > + - vbus-supply : reference to the VBUS regulator, needed when supports
+> > > +   dual-role mode.
+> >
+> > The controller is powered from Vbus? Probably not. This belongs in the
+> > connector or maybe the phy (if the phy is powered from Vbus).
+> The Vbus is used to provide 5V voltage to the connected device when the
+> controller works as host mode.
 
-This is _WRONG_ I have never provided such tag, can you explain why this
-was added without my approval?
+I know what Vbus is. Unless Vbus is providing power to the host
+controller, putting the Vbus supply in the controller node is not a
+accurate representation of the hardware.
 
->  	  This controller provides the channels which is dedicated to
->  	  memory-to-memory transfer to offload from CPU through ring-
->  	  based descriptor management.
-> +
-> +config MTK_CQDMA
-> +	tristate "MediaTek Command-Queue DMA controller support"
-
-Am not sure if I asked this earlier but, what is difference with HSDMA?
-
-> +/**
-> + * struct mtk_cqdma_pchan - The struct holding info describing physical
-> + *                         channel (PC)
-> + * @queue:                 Queue for the CVDs issued to this PC
-> + * @base:                  The mapped register I/O base of this PC
-> + * @irq:                   The IRQ that this PC are using
-> + * @refcnt:                Track how many VCs are using this PC
-> + * @lock:                 Lock protect agaisting multiple VCs access PC
-
-Please maintain alignment!
-
-> + */
-> +struct mtk_cqdma_pchan {
-> +	struct list_head queue;
-> +	void __iomem *base;
-> +	u32 irq;
-> +	refcount_t refcnt;
-> +
-> +	/* lock to protect PC */
-
-This is not required, you already have above !
-
-> +	spinlock_t lock;
-> +};
-> +
-> +/**
-> + * struct mtk_cqdma_vchan - The struct holding info describing virtual
-> + *                         channel (VC)
-> + * @vc:                    An instance for struct virt_dma_chan
-> + * @pc:                    The pointer to the underlying PC
-> + * @issue_completion:	   The wait for all issued descriptors completited
-
-typo completited , am not sure why you need this
-
-> +static void mtk_dma_write(struct mtk_cqdma_pchan *pc, u32 reg, u32 val)
-> +{
-> +	writel_relaxed(val, pc->base + reg);
-
-Why is it relaxed one?
-
-> +static void mtk_cqdma_consume_work_queue(struct mtk_cqdma_pchan *pc)
-> +{
-> +	struct mtk_cqdma_vchan *cvc;
-> +	struct mtk_cqdma_vdesc *cvd;
-> +	size_t tlen;
-> +
-> +	/* consume a CVD from PC's queue */
-> +	cvd = list_first_entry_or_null(&pc->queue,
-> +				       struct mtk_cqdma_vdesc, node);
-
-you can use vchan_next_desc() and also remove your own queue as
-virt-desc already implements that logic!
-
-> +	if (unlikely(!cvd))
-> +		return;
-> +
-> +	cvc = to_cqdma_vchan(cvd->ch);
-> +
-> +	tlen = (cvd->len < MTK_CQDMA_MAX_LEN) ? cvd->len : MTK_CQDMA_MAX_LEN;
-> +	cvd->len -= tlen;
-> +	cvd->src += tlen;
-> +	cvd->dest += tlen;
-> +
-> +	/* check whether the CVD completed */
-> +	if (!cvd->len) {
-> +		/* delete CVD from PC's queue */
-> +		list_del(&cvd->node);
-> +
-> +		spin_lock(&cvc->vc.lock);
-> +
-> +		/* add the VD into list desc_completed */
-> +		vchan_cookie_complete(&cvd->vd);
-> +
-> +		/* setup completion if this VC is under synchronization */
-> +		if (cvc->issue_synchronize && !mtk_cqdma_is_vchan_active(cvc)) {
-> +			complete(&cvc->issue_completion);
-> +			cvc->issue_synchronize = false;
-> +		}
-
-why do you need your own completion?
-
-> +
-> +		spin_unlock(&cvc->vc.lock);
-> +	}
-> +
-> +	/* iterate on the next CVD if the current CVD completed */
-> +	if (!cvd->len)
-> +		cvd = list_first_entry_or_null(&pc->queue,
-> +					       struct mtk_cqdma_vdesc, node);
-> +
-> +	/* start the next transaction */
-> +	if (cvd)
-> +		mtk_cqdma_start(pc, cvd);
-
-most of this logic looks reduandant to me. Virt-dma was designed to do
-exactly this, have N physical channels and share with M virt channels.
-Please reuse and remove code from this driver.
-
-> +static struct virt_dma_desc *mtk_cqdma_find_active_desc(struct dma_chan *c,
-> +							dma_cookie_t cookie)
-> +{
-> +	struct mtk_cqdma_vchan *cvc = to_cqdma_vchan(c);
-> +	struct virt_dma_desc *vd;
-> +	unsigned long flags;
-> +
-> +	spin_lock_irqsave(&cvc->pc->lock, flags);
-> +	list_for_each_entry(vd, &cvc->pc->queue, node)
-> +		if (vd->tx.cookie == cookie) {
-> +			spin_unlock_irqrestore(&cvc->pc->lock, flags);
-> +			return vd;
-> +		}
-> +	spin_unlock_irqrestore(&cvc->pc->lock, flags);
-> +
-> +	list_for_each_entry(vd, &cvc->vc.desc_issued, node)
-> +		if (vd->tx.cookie == cookie)
-> +			return vd;
-
-vchan_find_desc() ??
-
-> +static enum dma_status mtk_cqdma_tx_status(struct dma_chan *c,
-> +					   dma_cookie_t cookie,
-> +					   struct dma_tx_state *txstate)
-> +{
-> +	struct mtk_cqdma_vchan *cvc = to_cqdma_vchan(c);
-> +	struct mtk_cqdma_vdesc *cvd;
-> +	struct virt_dma_desc *vd;
-> +	enum dma_status ret;
-> +	unsigned long flags;
-> +	size_t bytes = 0;
-> +
-> +	ret = dma_cookie_status(c, cookie, txstate);
-> +	if (ret == DMA_COMPLETE || !txstate)
-> +		return ret;
-> +
-> +	spin_lock_irqsave(&cvc->vc.lock, flags);
-> +	vd = mtk_cqdma_find_active_desc(c, cookie);
-> +	spin_unlock_irqrestore(&cvc->vc.lock, flags);
-> +
-> +	if (vd) {
-> +		cvd = to_cqdma_vdesc(vd);
-> +		bytes = cvd->len;
-> +	}
-> +
-> +	dma_set_residue(txstate, bytes);
-
-Have you tested this and are able to report residue properly?
-
-> +static void mtk_cqdma_free_inactive_desc(struct dma_chan *c)
-> +{
-> +	struct virt_dma_chan *vc = to_virt_chan(c);
-> +	unsigned long flags;
-> +	LIST_HEAD(head);
-> +
-> +	/*
-> +	 * set desc_allocated, desc_submitted,
-> +	 * and desc_issued as the candicates to be freed
-> +	 */
-> +	spin_lock_irqsave(&vc->lock, flags);
-> +	list_splice_tail_init(&vc->desc_allocated, &head);
-> +	list_splice_tail_init(&vc->desc_submitted, &head);
-> +	list_splice_tail_init(&vc->desc_issued, &head);
-
-You missed completed and didnt use vchan_get_all_descriptors() ??
-
-
-Looking at the driver, I feel things have been complicated a bit, you
-can reuse more code and routines in vchan layer and remove driver
-handling and make things with less bugs (used more tested generic code)
-and simpler to review ..
-
-Please do so in next rev and tag version properly!
-
--- 
-~Vinod
+Rob
