@@ -1,59 +1,226 @@
-From: Sean Wang <sean.wang@kernel.org>
-Subject: Re: [PATCH v5] pinctrl: mediatek: add EINT support to virtual GPIOs
-Date: Fri, 4 Jan 2019 02:26:46 -0800
-Message-ID: <CAGp9Lzop3UaUt8Kx4LsPxkoo_4uZF-7bv2BOqHgwmurmEA9CLA@mail.gmail.com>
-References: <1546486635-16829-1-git-send-email-chuanjia.liu@mediatek.com>
+From: Vinod Koul <vkoul@kernel.org>
+Subject: Re: [PATCH 2/2] dmaengine: mediatek: Add MediaTek Command-Queue DMA
+ controller for MT6765 SoC
+Date: Fri, 4 Jan 2019 18:08:36 +0530
+Message-ID: <20190104123836.GB13372@vkoul-mobl.Dlink>
+References: <1545916258-18218-1-git-send-email-shun-chih.yu@mediatek.com>
+ <1545916258-18218-3-git-send-email-shun-chih.yu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1546486635-16829-1-git-send-email-chuanjia.liu@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1545916258-18218-3-git-send-email-shun-chih.yu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?B?Q2h1YW5qaWEgTGl1ICjmn7PkvKDlmIkp?= <chuanjia.liu@mediatek.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, youlin.pei@mediatek.com, =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>, Zhiyong Tao <zhiyong.tao@mediatek.com>, hailong.fan@mediatek.com
+To: shun-chih.yu@mediatek.com
+Cc: Sean Wang <sean.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Dan Williams <dan.j.williams@intel.com>, dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, srv_wsdupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jan 2, 2019 at 7:38 PM <chuanjia.liu@mediatek.com> wrote:
->
-> From: "chuanjia.liu" <Chuanjia.Liu@mediatek.com>
->
-> Virtual gpio only used inside SOC and not being exported to outside SOC.
-> Some modules use virtual gpio as eint and doesn't need SMT.
-> So this patch add EINT support to virtual GPIOs.
->
-> Signed-off-by: chuanjia.liu <Chuanjia.Liu@mediatek.com>
+On 27-12-18, 21:10, shun-chih.yu@mediatek.com wrote:
+> From: Shun-Chih Yu <shun-chih.yu@mediatek.com>
+> 
 
-Acked-by: Sean Wang <sean.wang@kernel.org>
+This should be v4 of the patch series, why is it not tagged so?
 
-BTW, if you were worried about a patch is lost, you could use RESEND
-in the tag is fine.
+> MediaTek Command-Queue DMA controller (CQDMA) on MT6765 SoC is dedicated
+> to memory-to-memory transfer through queue based descriptor management.
 
-> ---
-> change note:
-> v5: This patch is the same as v4,re-upload due to
->       mail permissions issues
-> ---
->  drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 8 +++++++-
->  1 file changed, 7 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> index 4a9e0d4c2bbc..b1c368455d30 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> @@ -290,7 +290,13 @@ static int mtk_xt_set_gpio_as_eint(void *data, unsigned long eint_n)
->                 return err;
->
->         err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_SMT, MTK_ENABLE);
-> -       if (err)
-> +       /* SMT is supposed to be supported by every real GPIO and doesn't
-> +        * support virtual GPIOs, so the extra condition err != -ENOTSUPP
-> +        * is just for adding EINT support to these virtual GPIOs. It should
-> +        * add an extra flag in the pin descriptor when more pins with
-> +        * distinctive characteristic come out.
-> +        */
-> +       if (err && err != -ENOTSUPP)
->                 return err;
->
->         return 0;
-> --
-> 2.19.1
->
+Have you tested this with dmatest, if so can you provide results of the
+test as well.
+
+> There are only 3 physical channels inside CQDMA, while the driver is
+> extended to support 32 virtual channels for multiple dma users to issue
+> dma requests onto the CQDMA simultaneously.
+> 
+> Change-Id: I1e8d116c5ecbbc49190ffc925cb59a0d035d886b
+
+Please remove this from upstream, checkpatch would have warned that!
+
+> Signed-off-by: Shun-Chih Yu <shun-chih.yu@mediatek.com>
+> Reviewed-by: Vinod Koul <vkoul@kernel.org>
+
+This is _WRONG_ I have never provided such tag, can you explain why this
+was added without my approval?
+
+>  	  This controller provides the channels which is dedicated to
+>  	  memory-to-memory transfer to offload from CPU through ring-
+>  	  based descriptor management.
+> +
+> +config MTK_CQDMA
+> +	tristate "MediaTek Command-Queue DMA controller support"
+
+Am not sure if I asked this earlier but, what is difference with HSDMA?
+
+> +/**
+> + * struct mtk_cqdma_pchan - The struct holding info describing physical
+> + *                         channel (PC)
+> + * @queue:                 Queue for the CVDs issued to this PC
+> + * @base:                  The mapped register I/O base of this PC
+> + * @irq:                   The IRQ that this PC are using
+> + * @refcnt:                Track how many VCs are using this PC
+> + * @lock:                 Lock protect agaisting multiple VCs access PC
+
+Please maintain alignment!
+
+> + */
+> +struct mtk_cqdma_pchan {
+> +	struct list_head queue;
+> +	void __iomem *base;
+> +	u32 irq;
+> +	refcount_t refcnt;
+> +
+> +	/* lock to protect PC */
+
+This is not required, you already have above !
+
+> +	spinlock_t lock;
+> +};
+> +
+> +/**
+> + * struct mtk_cqdma_vchan - The struct holding info describing virtual
+> + *                         channel (VC)
+> + * @vc:                    An instance for struct virt_dma_chan
+> + * @pc:                    The pointer to the underlying PC
+> + * @issue_completion:	   The wait for all issued descriptors completited
+
+typo completited , am not sure why you need this
+
+> +static void mtk_dma_write(struct mtk_cqdma_pchan *pc, u32 reg, u32 val)
+> +{
+> +	writel_relaxed(val, pc->base + reg);
+
+Why is it relaxed one?
+
+> +static void mtk_cqdma_consume_work_queue(struct mtk_cqdma_pchan *pc)
+> +{
+> +	struct mtk_cqdma_vchan *cvc;
+> +	struct mtk_cqdma_vdesc *cvd;
+> +	size_t tlen;
+> +
+> +	/* consume a CVD from PC's queue */
+> +	cvd = list_first_entry_or_null(&pc->queue,
+> +				       struct mtk_cqdma_vdesc, node);
+
+you can use vchan_next_desc() and also remove your own queue as
+virt-desc already implements that logic!
+
+> +	if (unlikely(!cvd))
+> +		return;
+> +
+> +	cvc = to_cqdma_vchan(cvd->ch);
+> +
+> +	tlen = (cvd->len < MTK_CQDMA_MAX_LEN) ? cvd->len : MTK_CQDMA_MAX_LEN;
+> +	cvd->len -= tlen;
+> +	cvd->src += tlen;
+> +	cvd->dest += tlen;
+> +
+> +	/* check whether the CVD completed */
+> +	if (!cvd->len) {
+> +		/* delete CVD from PC's queue */
+> +		list_del(&cvd->node);
+> +
+> +		spin_lock(&cvc->vc.lock);
+> +
+> +		/* add the VD into list desc_completed */
+> +		vchan_cookie_complete(&cvd->vd);
+> +
+> +		/* setup completion if this VC is under synchronization */
+> +		if (cvc->issue_synchronize && !mtk_cqdma_is_vchan_active(cvc)) {
+> +			complete(&cvc->issue_completion);
+> +			cvc->issue_synchronize = false;
+> +		}
+
+why do you need your own completion?
+
+> +
+> +		spin_unlock(&cvc->vc.lock);
+> +	}
+> +
+> +	/* iterate on the next CVD if the current CVD completed */
+> +	if (!cvd->len)
+> +		cvd = list_first_entry_or_null(&pc->queue,
+> +					       struct mtk_cqdma_vdesc, node);
+> +
+> +	/* start the next transaction */
+> +	if (cvd)
+> +		mtk_cqdma_start(pc, cvd);
+
+most of this logic looks reduandant to me. Virt-dma was designed to do
+exactly this, have N physical channels and share with M virt channels.
+Please reuse and remove code from this driver.
+
+> +static struct virt_dma_desc *mtk_cqdma_find_active_desc(struct dma_chan *c,
+> +							dma_cookie_t cookie)
+> +{
+> +	struct mtk_cqdma_vchan *cvc = to_cqdma_vchan(c);
+> +	struct virt_dma_desc *vd;
+> +	unsigned long flags;
+> +
+> +	spin_lock_irqsave(&cvc->pc->lock, flags);
+> +	list_for_each_entry(vd, &cvc->pc->queue, node)
+> +		if (vd->tx.cookie == cookie) {
+> +			spin_unlock_irqrestore(&cvc->pc->lock, flags);
+> +			return vd;
+> +		}
+> +	spin_unlock_irqrestore(&cvc->pc->lock, flags);
+> +
+> +	list_for_each_entry(vd, &cvc->vc.desc_issued, node)
+> +		if (vd->tx.cookie == cookie)
+> +			return vd;
+
+vchan_find_desc() ??
+
+> +static enum dma_status mtk_cqdma_tx_status(struct dma_chan *c,
+> +					   dma_cookie_t cookie,
+> +					   struct dma_tx_state *txstate)
+> +{
+> +	struct mtk_cqdma_vchan *cvc = to_cqdma_vchan(c);
+> +	struct mtk_cqdma_vdesc *cvd;
+> +	struct virt_dma_desc *vd;
+> +	enum dma_status ret;
+> +	unsigned long flags;
+> +	size_t bytes = 0;
+> +
+> +	ret = dma_cookie_status(c, cookie, txstate);
+> +	if (ret == DMA_COMPLETE || !txstate)
+> +		return ret;
+> +
+> +	spin_lock_irqsave(&cvc->vc.lock, flags);
+> +	vd = mtk_cqdma_find_active_desc(c, cookie);
+> +	spin_unlock_irqrestore(&cvc->vc.lock, flags);
+> +
+> +	if (vd) {
+> +		cvd = to_cqdma_vdesc(vd);
+> +		bytes = cvd->len;
+> +	}
+> +
+> +	dma_set_residue(txstate, bytes);
+
+Have you tested this and are able to report residue properly?
+
+> +static void mtk_cqdma_free_inactive_desc(struct dma_chan *c)
+> +{
+> +	struct virt_dma_chan *vc = to_virt_chan(c);
+> +	unsigned long flags;
+> +	LIST_HEAD(head);
+> +
+> +	/*
+> +	 * set desc_allocated, desc_submitted,
+> +	 * and desc_issued as the candicates to be freed
+> +	 */
+> +	spin_lock_irqsave(&vc->lock, flags);
+> +	list_splice_tail_init(&vc->desc_allocated, &head);
+> +	list_splice_tail_init(&vc->desc_submitted, &head);
+> +	list_splice_tail_init(&vc->desc_issued, &head);
+
+You missed completed and didnt use vchan_get_all_descriptors() ??
+
+
+Looking at the driver, I feel things have been complicated a bit, you
+can reuse more code and routines in vchan layer and remove driver
+handling and make things with less bugs (used more tested generic code)
+and simpler to review ..
+
+Please do so in next rev and tag version properly!
+
+-- 
+~Vinod
