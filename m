@@ -1,55 +1,46 @@
-From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
-Subject: [PATCH] staging: mt7621-dma: Use struct_size() in devm_kzalloc()
-Date: Fri, 4 Jan 2019 15:30:47 -0600
-Message-ID: <20190104213047.GA19391@embeddedor>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+From: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Subject: [PATCH 17/21] ASoC: mt6351: remove unneeded variable
+Date: Fri,  4 Jan 2019 20:02:45 -0600
+Message-ID: <20190105020249.8639-18-pierre-louis.bossart@linux.intel.com>
+References: <20190105020249.8639-1-pierre-louis.bossart@linux.intel.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: <20190105020249.8639-1-pierre-louis.bossart@linux.intel.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+To: alsa-devel@alsa-project.org
+Cc: tiwai@suse.de, broonie@kernel.org, liam.r.girdwood@linux.intel.com, Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, Kai Chieh Chuang <kaichieh.chuang@mediatek.com>, Wei Yongjun <weiyongjun1@huawei.com>, "moderated list:ARM/Mediatek SoC
+        support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+        support" <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-One of the more common cases of allocation size calculations is finding
-the size of a structure that has a zero-sized array at the end, along
-with memory for some number of elements for that array. For example:
+Reported by Coccinelle:
+mt6351.c:1418:5-8: Unneeded variable: "ret". Return "0" on line 1437
 
-struct foo {
-    int stuff;
-    void *entry[];
-};
-
-instance = devm_kzalloc(dev, sizeof(struct foo) + sizeof(void *) * count, GFP_KERNEL);
-
-Instead of leaving these open-coded and prone to type mistakes, we can
-now use the new struct_size() helper:
-
-instance = devm_kzalloc(dev, struct_size(instance, entry, count), GFP_KERNEL);
-
-This code was detected with the help of Coccinelle.
-
-Signed-off-by: Gustavo A. R. Silva <gustavo@embeddedor.com>
+Signed-off-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
 ---
- drivers/staging/mt7621-dma/ralink-gdma.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ sound/soc/codecs/mt6351.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/staging/mt7621-dma/ralink-gdma.c b/drivers/staging/mt7621-dma/ralink-gdma.c
-index 792a63bd55d4..d78042eba6dd 100644
---- a/drivers/staging/mt7621-dma/ralink-gdma.c
-+++ b/drivers/staging/mt7621-dma/ralink-gdma.c
-@@ -821,9 +821,9 @@ static int gdma_dma_probe(struct platform_device *pdev)
- 		return -EINVAL;
- 	data = (struct gdma_data *) match->data;
+diff --git a/sound/soc/codecs/mt6351.c b/sound/soc/codecs/mt6351.c
+index f73dcd753584..4b3ce01c5a93 100644
+--- a/sound/soc/codecs/mt6351.c
++++ b/sound/soc/codecs/mt6351.c
+@@ -1415,8 +1415,6 @@ static const struct snd_soc_dapm_route mt6351_dapm_routes[] = {
  
--	dma_dev = devm_kzalloc(&pdev->dev, sizeof(*dma_dev) +
--			(sizeof(struct gdma_dmaengine_chan) * data->chancnt),
--			GFP_KERNEL);
-+	dma_dev = devm_kzalloc(&pdev->dev,
-+			       struct_size(dma_dev, chan, data->chancnt),
-+			       GFP_KERNEL);
- 	if (!dma_dev) {
- 		dev_err(&pdev->dev, "alloc dma device failed\n");
- 		return -EINVAL;
+ static int mt6351_codec_init_reg(struct snd_soc_component *cmpnt)
+ {
+-	int ret = 0;
+-
+ 	/* Disable CLKSQ 26MHz */
+ 	regmap_update_bits(cmpnt->regmap, MT6351_TOP_CLKSQ, 0x0001, 0x0);
+ 	/* disable AUDGLB */
+@@ -1434,7 +1432,7 @@ static int mt6351_codec_init_reg(struct snd_soc_component *cmpnt)
+ 	/* Reverse the PMIC clock*/
+ 	regmap_update_bits(cmpnt->regmap, MT6351_AFE_PMIC_NEWIF_CFG2,
+ 			   0x8000, 0x8000);
+-	return ret;
++	return 0;
+ }
+ 
+ static int mt6351_codec_probe(struct snd_soc_component *cmpnt)
 -- 
-2.20.1
+2.17.1
