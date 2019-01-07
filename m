@@ -1,67 +1,64 @@
-From: Bin Liu <b-liu-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH 1/4] dt-bindings: usb: musb: Add support for MediaTek
- musb controller
-Date: Mon, 7 Jan 2019 14:40:15 -0600
-Message-ID: <20190107204015.GF25910@uda0271908>
-References: <1545896066-897-1-git-send-email-min.guo@mediatek.com>
- <1545896066-897-2-git-send-email-min.guo@mediatek.com>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH v2 0/3] Mark clocks as critical for MT6797
+Date: Mon, 07 Jan 2019 12:56:29 -0800
+Message-ID: <154689458947.15366.14390825810412394676@swboyd.mtv.corp.google.com>
+References: <20181116180901.17737-1-matthias.bgg@kernel.org> <154356044342.88331.13729809794593193239@swboyd.mtv.corp.google.com> <8e8b9c0f-7647-daa4-504b-7b86bcd45a04@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1545896066-897-2-git-send-email-min.guo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: min.guo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <8e8b9c0f-7647-daa4-504b-7b86bcd45a04@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kevin-CW Chen <kevin-cw.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, matthias.bgg@kernel.org, mturquette@baylibre.com
+Cc: jasu@njomotys.info, sean.wang@kernel.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+Quoting Matthias Brugger (2018-11-30 01:04:02)
+>=20
+>=20
+> On 30/11/2018 07:47, Stephen Boyd wrote:
+> > Quoting matthias.bgg@kernel.org (2018-11-16 10:08:58)
+> >> From: Matthias Brugger <mbrugger@suse.com>
+> >>
+> >> Jasper send this series some month ago. As there was no reaction from
+> >> his side, I'll do a friendly take-over.
+> >> I tested the patches on my Helios X20 boards and they fix the issue.
+> >> I didn't add a Tested-by tag as I added my Signed-off-by.
+> >>
+> >> Changes since v1:
+> >> - add a fixes tag.
+> >>
+> >> ---
+> >>
+> >> Currently, DRAM-related clocks and the axi_sel MUX are not marked with
+> >> CLK_IS_CRITICAL for MT6797. This causes memory corruption when the
+> >> system is booted without clk_ignore_unused.
+> >>
+> >> This patchset
+> >>
+> >> 1. Makes it possible to mark outputs of MUXes as critical by introduci=
+ng
+> >>    a new macro, MUX_FLAGS,
+> >> 2. Makes it possible to mark gates as critical by adding flags to
+> >>    mtk_gate, and
+> >> 3. Marks axi_sel, ddrphycfg_sel, infra_dramc_f26m and infra_dramc_b_f2=
+6m
+> >>    as critical.
+> >>
+> >> The addition of flags to mtk_gate also exists in the patch series "Add
+> >> basic and clock support for Mediatek MT8183 SoC" [1].  The type of
+> >> flags is unsigned int in that series, but the real type is unsigned
+> >> long, so my patch differs from that patch.
+> >=20
+> > Will anyone from Mediatek review this? Why aren't the people who signed
+> > off on drivers/clk/mediatek/clk-mt6797.c included on this patch series?
+> > They no longer work there?
+> >=20
+>=20
+> My fault, I'll resend 3/3 with the comments you made. Added Kevin-CW now.=
+..
 
-On Thu, Dec 27, 2018 at 03:34:23PM +0800, min.guo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: Min Guo <min.guo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> This adds support for MediaTek musb controller in
-> host, peripheral and otg mode
-> 
-> Signed-off-by: Min Guo <min.guo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  .../devicetree/bindings/usb/mediatek,musb.txt      | 49 ++++++++++++++++++++++
->  1 file changed, 49 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/usb/mediatek,musb.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/usb/mediatek,musb.txt b/Documentation/devicetree/bindings/usb/mediatek,musb.txt
-> new file mode 100644
-> index 0000000..e899c9b
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/usb/mediatek,musb.txt
-> @@ -0,0 +1,49 @@
-> +MediaTek musb DRC/OTG controller
-
-s/DRC/DRD/
-
-> +-------------------------------------------
-> +
-> +Required properties:
-
-[snip]
-
-> +Example:
-> +
-> +usb2: usb@11200000 {
-> +	compatible = "mediatek,mt2701-musb";
-
-s/;/,/
-
-> +		"mediatek,mtk-musb";
-
-Regards,
--Bin.
+I never saw anything on the list. Did I miss anything? I have the first
+two patches in my local queue still but I never merged it to clk-next
+because nobody replied or resent anything. Please resend the whole
+series because I've lost track of what's going on now. Sorry.
