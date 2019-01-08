@@ -1,272 +1,414 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH] drm/mediatek: Add MTK Framebuffer-Device (mt7623)
-Date: Tue, 8 Jan 2019 14:40:12 +0100
-Message-ID: <CAKMK7uEqxz4TAt_iwEC+dMWboVxCeCduyABsSwD0Ns7k=Z_UWA@mail.gmail.com>
-References: <20190102084917.4049-1-frank-w@public-files.de>
- <20190107103640.GH21184@phenom.ffwll.local>
+From: Bin Liu <b-liu@ti.com>
+Subject: Re: [PATCH 4/4] usb: musb: Add support for MediaTek musb controller
+Date: Tue, 8 Jan 2019 09:44:41 -0600
+Message-ID: <20190108154441.GG25910@uda0271908>
+References: <1545896066-897-1-git-send-email-min.guo@mediatek.com>
+ <1545896066-897-5-git-send-email-min.guo@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190107103640.GH21184@phenom.ffwll.local>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: David Airlie <airlied@linux.ie>, Alexander Ryabchenko <d3adme4t@gmail.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <1545896066-897-5-git-send-email-min.guo@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: min.guo@mediatek.com
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Yonglong Wu <yonglong.wu@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Alan Stern <stern@rowland.harvard.edu>, chunfeng.yun@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gTW9uLCBKYW4gNywgMjAxOSBhdCAxMTozNiBBTSBEYW5pZWwgVmV0dGVyIDxkYW5pZWxAZmZ3
-bGwuY2g+IHdyb3RlOgo+Cj4gT24gV2VkLCBKYW4gMDIsIDIwMTkgYXQgMDk6NDk6MTdBTSArMDEw
-MCwgRnJhbmsgV3VuZGVybGljaCB3cm90ZToKPiA+IEZyb206IENLIEh1IDxjay5odUBtZWRpYXRl
-ay5jb20+Cj4gPgo+ID4gVGhpcyBwYXRjaCBhZGRzIEZyYW1lYnVmZmVyLURyaXZlciBmb3IgTWVk
-aWF0ZWsKPiA+Cj4gPiBjdXJyZW50bHkgdGVzdGVkIG9uIG10NzYyMywgbWF5YmUgd29ya3Mgb24g
-b3RoZXIgcGxhdGZvcm1zCj4gPiBNVEstRkJEZXYgd3JpdHRlbiBieSBDSyBIdSBhbmQgcG9ydGVk
-IGZyb20gNC40Cj4gPgo+ID4gYmFzZWQgb24gcGF0Y2hzZXQgZHJtL2hkbWkgZm9yIDc2MjMgdjUg
-KGV4Y2VwdCBsYXN0IHBhcnQgaW5jbHVkZWQgaW4gNC4yMCkKPiA+ICAgaHR0cHM6Ly9wYXRjaHdv
-cmsua2VybmVsLm9yZy9wcm9qZWN0L2xpbnV4LW1lZGlhdGVrL2xpc3QvP3Nlcmllcz0yNTk4OQo+
-ID4KPiA+IGRlcGVuZHMgb24KPiA+ICAgZHRzLXBhdGNoIChyZXNlbmQgb2YgNS81LCBwYXJ0cyAx
-LTQgYWxyZWFkeSBpbiA0LjIwKToKPiA+ICAgICAiYXJtOiBkdHM6IG10NzYyMzogYWRkIGRpc3Bs
-YXkgc3Vic3lzdGVtIHJlbGF0ZWQgZGV2aWNlIG5vZGVzIgo+ID4gICAgIGh0dHBzOi8vcGF0Y2h3
-b3JrLmtlcm5lbC5vcmcvcGF0Y2gvMTA1ODg5NTEvCj4gPiAgIDIgYnVnZml4LXBhdGNoZXMgZnJv
-bSBiaWJieSBoc2llaAo+ID4gICAgIGZpeC1ib290LXVwLWZvci03MjAtYW5kLTQ4MC1idXQtMTA4
-MAo+ID4gICAgIHVzaW5nLWRpZmZlcmVudC1yb3VuZC1yYXRlLWZvci1tdDc2MjMKPiA+ICAgMSBQ
-YXRjaCBmcm9tIFJ5ZGVyIExlZQo+ID4gICAgIGh0dHA6Ly9mb3J1bS5iYW5hbmEtcGkub3JnL3Qv
-a2VybmVsLTQtMTktcmMxLWZvci10ZXN0ZXJzLzY2MTgvNTIKPiA+Cj4gPiBmdWxsIHdvcmtpbmcg
-dHJlZSBoZXJlIGZvciByZWZlcmVuY2U6Cj4gPiBodHRwczovL2dpdGh1Yi5jb20vZnJhbmstdy9C
-UEktUjItNC4xNC9jb21taXRzLzQuMjAtaGRtaXY1Cj4gPgo+ID4gU2lnbmVkLW9mZi1ieTogQ0sg
-SHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4KPiA+IFNpZ25lZC1vZmYtYnk6IEFsZXhhbmRlciBSeWFi
-Y2hlbmtvIDxkM2FkbWU0dEBnbWFpbC5jb20+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBGcmFuayBXdW5k
-ZXJsaWNoIDxmcmFuay13QHB1YmxpYy1maWxlcy5kZT4KPiA+IFRlc3RlZC1ieTogRnJhbmsgV3Vu
-ZGVybGljaCA8ZnJhbmstd0BwdWJsaWMtZmlsZXMuZGU+Cj4KPiBXb3VsZCBiZSBnb29kIHRvIHVz
-ZSB0aGUgbmV3IGdlbmVyaWMgZmJkZXYgZW11bGF0aW9uIGNvZGUgaGVyZSwgZm9yIGV2ZW4KPiBs
-ZXNzIGNvZGUuIE9yIGF0IGxlYXN0IGtub3cgd2h5IHRoaXMgaXNuJ3QgcG9zc2libGUgdG8gdXNl
-IGZvciBtdGsgKGFuZAo+IG1heWJlIGFkZHJlc3MgdGhhdCBpbiB0aGUgY29yZSBjb2RlKS4gSGFu
-ZC1yb2xsaW5nIGZiZGV2IGNvZGUgc2hvdWxkbid0IGJlCj4gbmVlZGVkIGFueW1vcmUuCgpCYWNr
-IG9uIHRoZSBtYWlsaW5nIGxpc3QsIG5vIHByaXZhdGUgcmVwbGllcyBwbGVhc2U6CgpGb3IgZXhh
-bXBsZXMgcGxlYXNlIGdyZXAgZm9yIGRybV9mYmRldl9nZW5lcmljX3NldHVwKCkuIFRoZXJlJ3Mg
-YWxzbyBhCnN0aWxsIGluLWZsaWdodCBzZXJpZXMgZnJvbSBHZXJkIEhvZmZtYW5uIHRvIGNvbnZl
-cnQgb3ZlciBib2Nocy4gVGhhdCwKcGx1cyBhbGwgdGhlIGtlcm5lbGRvYyBsaW5rZWQgZnJvbSB0
-aGVyZSBzaG91bGQgZ2V0IHlvdSBzdGFydGVkLgotRGFuaWVsCgoKPiAtRGFuaWVsCj4gPiAtLS0K
-PiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvTWFrZWZpbGUgICAgICAgIHwgICAxICsKPiA+
-ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyAgIHwgICA2ICsKPiA+ICBk
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuaCAgIHwgICA0ICsKPiA+ICBkcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9mYi5jICAgIHwgIDEzICsrCj4gPiAgZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZmIuaCAgICB8ICAgMyArCj4gPiAgZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19kcm1fZmJkZXYuYyB8IDE3OCArKysrKysrKysrKysrKysrKysr
-KysrKwo+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2ZiZGV2LmggfCAgMjUg
-KysrKwo+ID4gIDcgZmlsZXMgY2hhbmdlZCwgMjMwIGluc2VydGlvbnMoKykKPiA+ICBjcmVhdGUg
-bW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZmJkZXYuYwo+ID4g
-IGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9mYmRl
-di5oCj4gPgo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9NYWtlZmls
-ZSBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9NYWtlZmlsZQo+ID4gaW5kZXggODJhZTQ5YzY0
-MjIxLi5kNzFlNTdkZWE3N2EgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvTWFrZWZpbGUKPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9NYWtlZmlsZQo+
-ID4gQEAgLTE0LDYgKzE0LDcgQEAgbWVkaWF0ZWstZHJtLXkgOj0gbXRrX2Rpc3BfY29sb3IubyBc
-Cj4gPiAgICAgICAgICAgICAgICAgbXRrX21pcGlfdHgubyBcCj4gPiAgICAgICAgICAgICAgICAg
-bXRrX2RwaS5vCj4gPgo+ID4gK21lZGlhdGVrLWRybS0kKENPTkZJR19EUk1fRkJERVZfRU1VTEFU
-SU9OKSArPSBtdGtfZHJtX2ZiZGV2Lm8KPiA+ICBvYmotJChDT05GSUdfRFJNX01FRElBVEVLKSAr
-PSBtZWRpYXRlay1kcm0ubwo+ID4KPiA+ICBtZWRpYXRlay1kcm0taGRtaS1vYmpzIDo9IG10a19j
-ZWMubyBcCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1f
-ZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+ID4gaW5kZXgg
-NzgwMDgyMmI0ZGIxLi41MWYxZWMzNDEyZDMgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlh
-dGVrL210a19kcm1fZHJ2LmMKPiA+IEBAIC0zMiw2ICszMiw3IEBACj4gPiAgI2luY2x1ZGUgIm10
-a19kcm1fZGRwX2NvbXAuaCIKPiA+ICAjaW5jbHVkZSAibXRrX2RybV9kcnYuaCIKPiA+ICAjaW5j
-bHVkZSAibXRrX2RybV9mYi5oIgo+ID4gKyNpbmNsdWRlICJtdGtfZHJtX2ZiZGV2LmgiCj4gPiAg
-I2luY2x1ZGUgIm10a19kcm1fZ2VtLmgiCj4gPgo+ID4gICNkZWZpbmUgRFJJVkVSX05BTUUgIm1l
-ZGlhdGVrIgo+ID4gQEAgLTI5OSw2ICszMDAsMTAgQEAgc3RhdGljIGludCBtdGtfZHJtX2ttc19p
-bml0KHN0cnVjdCBkcm1fZGV2aWNlICpkcm0pCj4gPiAgICAgICBkcm1fa21zX2hlbHBlcl9wb2xs
-X2luaXQoZHJtKTsKPiA+ICAgICAgIGRybV9tb2RlX2NvbmZpZ19yZXNldChkcm0pOwo+ID4KPiA+
-ICsgICAgIHJldCA9IG10a19mYmRldl9pbml0KGRybSk7Cj4gPiArICAgICBpZiAocmV0KQo+ID4g
-KyAgICAgICAgICAgICBnb3RvIGVycl9jb21wb25lbnRfdW5iaW5kOwo+ID4gKwo+ID4gICAgICAg
-cmV0dXJuIDA7Cj4gPgo+ID4gIGVycl9jb21wb25lbnRfdW5iaW5kOgo+ID4gQEAgLTMxMSw2ICsz
-MTYsNyBAQCBzdGF0aWMgaW50IG10a19kcm1fa21zX2luaXQoc3RydWN0IGRybV9kZXZpY2UgKmRy
-bSkKPiA+Cj4gPiAgc3RhdGljIHZvaWQgbXRrX2RybV9rbXNfZGVpbml0KHN0cnVjdCBkcm1fZGV2
-aWNlICpkcm0pCj4gPiAgewo+ID4gKyAgICAgbXRrX2ZiZGV2X2ZpbmkoZHJtKTsKPiA+ICAgICAg
-IGRybV9rbXNfaGVscGVyX3BvbGxfZmluaShkcm0pOwo+ID4KPiA+ICAgICAgIGNvbXBvbmVudF91
-bmJpbmRfYWxsKGRybS0+ZGV2LCBkcm0pOwo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfZHJtX2Rydi5oIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
-cm1fZHJ2LmgKPiA+IGluZGV4IDI1NmEzZmYyZTY2ZS4uNTYxMjlhMjFmYjJiIDEwMDY0NAo+ID4g
-LS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmgKPiA+ICsrKyBiL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5oCj4gPiBAQCAtMTQsNiArMTQsNyBA
-QAo+ID4gICNpZm5kZWYgTVRLX0RSTV9EUlZfSAo+ID4gICNkZWZpbmUgTVRLX0RSTV9EUlZfSAo+
-ID4KPiA+ICsjaW5jbHVkZSA8ZHJtL2RybV9mYl9oZWxwZXIuaD4KPiA+ICAjaW5jbHVkZSA8bGlu
-dXgvaW8uaD4KPiA+ICAjaW5jbHVkZSAibXRrX2RybV9kZHBfY29tcC5oIgo+ID4KPiA+IEBAIC00
-Myw2ICs0NCw3IEBAIHN0cnVjdCBtdGtfZHJtX3ByaXZhdGUgewo+ID4gICAgICAgc3RydWN0IGRy
-bV9kZXZpY2UgKmRybTsKPiA+ICAgICAgIHN0cnVjdCBkZXZpY2UgKmRtYV9kZXY7Cj4gPgo+ID4g
-KyAgICAgc3RydWN0IGRybV9jcnRjICpjcnRjW01BWF9DUlRDXTsKPiA+ICAgICAgIHVuc2lnbmVk
-IGludCBudW1fcGlwZXM7Cj4gPgo+ID4gICAgICAgc3RydWN0IGRldmljZV9ub2RlICptdXRleF9u
-b2RlOwo+ID4gQEAgLTU5LDYgKzYxLDggQEAgc3RydWN0IG10a19kcm1fcHJpdmF0ZSB7Cj4gPiAg
-ICAgICB9IGNvbW1pdDsKPiA+Cj4gPiAgICAgICBzdHJ1Y3QgZHJtX2F0b21pY19zdGF0ZSAqc3Vz
-cGVuZF9zdGF0ZTsKPiA+ICsgICAgIHN0cnVjdCBkcm1fZmJfaGVscGVyIGZiX2hlbHBlcjsKPiA+
-ICsgICAgIHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqZmJkZXZfYm87Cj4gPiAgfTsKPiA+Cj4gPiAg
-ZXh0ZXJuIHN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIgbXRrX2RkcF9kcml2ZXI7Cj4gPiBkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZmIuYyBiL2RyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9tdGtfZHJtX2ZiLmMKPiA+IGluZGV4IGJlNWY2ZjFkYWY1NS4uNzUzM2Fh
-NDczM2QyIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1f
-ZmIuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZmIuYwo+ID4g
-QEAgLTU2LDYgKzU2LDE5IEBAIHN0YXRpYyBzdHJ1Y3QgZHJtX2ZyYW1lYnVmZmVyICptdGtfZHJt
-X2ZyYW1lYnVmZmVyX2luaXQoc3RydWN0IGRybV9kZXZpY2UgKmRldiwKPiA+ICAgICAgIHJldHVy
-biBmYjsKPiA+ICB9Cj4gPgo+ID4gK3N0cnVjdCBkcm1fZnJhbWVidWZmZXIgKm10a19kcm1fZnJh
-bWVidWZmZXJfY3JlYXRlKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsCj4gPiArICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIGNvbnN0IHN0cnVjdCBkcm1fbW9kZV9mYl9jbWQyICpt
-b2RlLAo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdHJ1Y3QgZHJt
-X2dlbV9vYmplY3QgKm9iaikKPiA+ICt7Cj4gPiArICAgICBzdHJ1Y3QgZHJtX2ZyYW1lYnVmZmVy
-ICptdGtfZmI7Cj4gPiArCj4gPiArICAgICBtdGtfZmIgPSBtdGtfZHJtX2ZyYW1lYnVmZmVyX2lu
-aXQoZGV2LCBtb2RlLCBvYmopOwo+ID4gKyAgICAgaWYgKElTX0VSUihtdGtfZmIpKQo+ID4gKyAg
-ICAgICAgICAgICByZXR1cm4gRVJSX0NBU1QobXRrX2ZiKTsKPiA+ICsKPiA+ICsgICAgIHJldHVy
-biBtdGtfZmI7Cj4gPiArfQo+ID4gKwo+ID4gIC8qCj4gPiAgICogV2FpdCBmb3IgYW55IGV4Y2x1
-c2l2ZSBmZW5jZSBpbiBmYidzIGdlbSBvYmplY3QncyByZXNlcnZhdGlvbiBvYmplY3QuCj4gPiAg
-ICoKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9mYi5o
-IGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZmIuaAo+ID4gaW5kZXggN2Y5NzZi
-MTk2YTE1Li5lNDllMDE1MzgwZDAgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2RybV9mYi5oCj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2RybV9mYi5oCj4gPiBAQCAtMTgsNSArMTgsOCBAQCBpbnQgbXRrX2ZiX3dhaXQoc3RydWN0IGRy
-bV9mcmFtZWJ1ZmZlciAqZmIpOwo+ID4gIHN0cnVjdCBkcm1fZnJhbWVidWZmZXIgKm10a19kcm1f
-bW9kZV9mYl9jcmVhdGUoc3RydWN0IGRybV9kZXZpY2UgKmRldiwKPiA+ICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0cnVjdCBkcm1fZmlsZSAqZmlsZSwKPiA+
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbnN0IHN0cnVj
-dCBkcm1fbW9kZV9mYl9jbWQyICpjbWQpOwo+ID4gK3N0cnVjdCBkcm1fZnJhbWVidWZmZXIgKm10
-a19kcm1fZnJhbWVidWZmZXJfY3JlYXRlKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsCj4gPiArICAg
-ICAgICAgICAgIGNvbnN0IHN0cnVjdCBkcm1fbW9kZV9mYl9jbWQyICptb2RlLAo+ID4gKyAgICAg
-ICAgICAgICBzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaik7Cj4gPgo+ID4gICNlbmRpZiAvKiBN
-VEtfRFJNX0ZCX0ggKi8KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2RybV9mYmRldi5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZmJkZXYu
-Ywo+ID4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiA+IGluZGV4IDAwMDAwMDAwMDAwMC4uOTY3MGY1
-MGQxMjQ3Cj4gPiAtLS0gL2Rldi9udWxsCj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RybV9mYmRldi5jCj4gPiBAQCAtMCwwICsxLDE3OCBAQAo+ID4gKy8vIFNQRFgtTGlj
-ZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wCj4gPiArLyoKPiA+ICsgKiBDb3B5cmlnaHQgKGMpIDIw
-MTggTWVkaWFUZWsgSW5jLgo+ID4gKyAqIEF1dGhvcjogQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNv
-bT4KPiA+ICsgKi8KPiA+ICsKPiA+ICsjaW5jbHVkZSA8ZHJtL2RybVAuaD4KPiA+ICsjaW5jbHVk
-ZSA8ZHJtL2RybV9jcnRjX2hlbHBlci5oPgo+ID4gKyNpbmNsdWRlIDxkcm0vZHJtX2ZiX2hlbHBl
-ci5oPgo+ID4gKyNpbmNsdWRlIDxkcm0vZHJtX2dlbS5oPgo+ID4gKwo+ID4gKyNpbmNsdWRlICJt
-dGtfZHJtX2Rydi5oIgo+ID4gKyNpbmNsdWRlICJtdGtfZHJtX2ZiLmgiCj4gPiArI2luY2x1ZGUg
-Im10a19kcm1fZ2VtLmgiCj4gPiArI2luY2x1ZGUgIm10a19kcm1fZmJkZXYuaCIKPiA+ICsKPiA+
-ICsjZGVmaW5lIHRvX2RybV9wcml2YXRlKHgpIFwKPiA+ICsgICAgICAgICAgICAgY29udGFpbmVy
-X29mKHgsIHN0cnVjdCBtdGtfZHJtX3ByaXZhdGUsIGZiX2hlbHBlcikKPiA+ICsKPiA+ICtzdGF0
-aWMgaW50IG10a19kcm1fZmJkZXZfbW1hcChzdHJ1Y3QgZmJfaW5mbyAqaW5mbywgc3RydWN0IHZt
-X2FyZWFfc3RydWN0ICp2bWEpCj4gPiArewo+ID4gKyAgICAgc3RydWN0IGRybV9mYl9oZWxwZXIg
-KmhlbHBlciA9IGluZm8tPnBhcjsKPiA+ICsgICAgIHN0cnVjdCBtdGtfZHJtX3ByaXZhdGUgKnBy
-aXZhdGUgPSB0b19kcm1fcHJpdmF0ZShoZWxwZXIpOwo+ID4gKwo+ID4gKyAgICAgcmV0dXJuIG10
-a19kcm1fZ2VtX21tYXBfYnVmKHByaXZhdGUtPmZiZGV2X2JvLCB2bWEpOwo+ID4gK30KPiA+ICsK
-PiA+ICtzdGF0aWMgc3RydWN0IGZiX29wcyBtdGtfZmJkZXZfb3BzID0gewo+ID4gKyAgICAgLm93
-bmVyID0gVEhJU19NT0RVTEUsCj4gPiArICAgICBEUk1fRkJfSEVMUEVSX0RFRkFVTFRfT1BTLAo+
-ID4gKyAgICAgLmZiX2ZpbGxyZWN0ID0gZHJtX2ZiX2hlbHBlcl9jZmJfZmlsbHJlY3QsCj4gPiAr
-ICAgICAuZmJfY29weWFyZWEgPSBkcm1fZmJfaGVscGVyX2NmYl9jb3B5YXJlYSwKPiA+ICsgICAg
-IC5mYl9pbWFnZWJsaXQgPSBkcm1fZmJfaGVscGVyX2NmYl9pbWFnZWJsaXQsCj4gPiArICAgICAu
-ZmJfY2hlY2tfdmFyID0gZHJtX2ZiX2hlbHBlcl9jaGVja192YXIsCj4gPiArICAgICAuZmJfc2V0
-X3BhciA9IGRybV9mYl9oZWxwZXJfc2V0X3BhciwKPiA+ICsgICAgIC5mYl9ibGFuayA9IGRybV9m
-Yl9oZWxwZXJfYmxhbmssCj4gPiArICAgICAuZmJfcGFuX2Rpc3BsYXkgPSBkcm1fZmJfaGVscGVy
-X3Bhbl9kaXNwbGF5LAo+ID4gKyAgICAgLmZiX3NldGNtYXAgPSBkcm1fZmJfaGVscGVyX3NldGNt
-YXAsCj4gPiArICAgICAuZmJfbW1hcCA9IG10a19kcm1fZmJkZXZfbW1hcCwKPiA+ICt9Owo+ID4g
-Kwo+ID4gK3N0YXRpYyBpbnQgbXRrX2ZiZGV2X3Byb2JlKHN0cnVjdCBkcm1fZmJfaGVscGVyICpo
-ZWxwZXIsCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgc3RydWN0IGRybV9mYl9oZWxwZXJf
-c3VyZmFjZV9zaXplICpzaXplcykKPiA+ICt7Cj4gPiArICAgICBzdHJ1Y3QgZHJtX2RldmljZSAq
-ZGV2ID0gaGVscGVyLT5kZXY7Cj4gPiArICAgICBzdHJ1Y3QgbXRrX2RybV9wcml2YXRlICpwcml2
-YXRlID0gdG9fZHJtX3ByaXZhdGUoaGVscGVyKTsKPiA+ICsgICAgIHN0cnVjdCBkcm1fbW9kZV9m
-Yl9jbWQyIG1vZGUgPSB7IDAgfTsKPiA+ICsgICAgIHN0cnVjdCBtdGtfZHJtX2dlbV9vYmogKm10
-a19nZW07Cj4gPiArICAgICBzdHJ1Y3QgZmJfaW5mbyAqaW5mbzsKPiA+ICsgICAgIHN0cnVjdCBk
-cm1fZnJhbWVidWZmZXIgKmZiOwo+ID4gKyAgICAgdW5zaWduZWQgaW50IGJ5dGVzX3Blcl9waXhl
-bDsKPiA+ICsgICAgIHVuc2lnbmVkIGxvbmcgb2Zmc2V0Owo+ID4gKyAgICAgc2l6ZV90IHNpemU7
-Cj4gPiArICAgICBpbnQgZXJyID0gMDsKPiA+ICsKPiA+ICsgICAgIGJ5dGVzX3Blcl9waXhlbCA9
-IERJVl9ST1VORF9VUChzaXplcy0+c3VyZmFjZV9icHAsIDgpOwo+ID4gKwo+ID4gKyAgICAgbW9k
-ZS53aWR0aCA9IHNpemVzLT5zdXJmYWNlX3dpZHRoOwo+ID4gKyAgICAgbW9kZS5oZWlnaHQgPSBz
-aXplcy0+c3VyZmFjZV9oZWlnaHQ7Cj4gPiArICAgICBtb2RlLnBpdGNoZXNbMF0gPSBzaXplcy0+
-c3VyZmFjZV93aWR0aCAqIGJ5dGVzX3Blcl9waXhlbDsKPiA+ICsgICAgIG1vZGUucGl4ZWxfZm9y
-bWF0ID0gZHJtX21vZGVfbGVnYWN5X2ZiX2Zvcm1hdChzaXplcy0+c3VyZmFjZV9icHAsCj4gPiAr
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc2l6ZXMt
-PnN1cmZhY2VfZGVwdGgpOwo+ID4gKwo+ID4gKyAgICAgc2l6ZSA9IG1vZGUucGl0Y2hlc1swXSAq
-IG1vZGUuaGVpZ2h0Owo+ID4gKwo+ID4gKyAgICAgbXRrX2dlbSA9IG10a19kcm1fZ2VtX2NyZWF0
-ZShkZXYsIHNpemUsIHRydWUpOwo+ID4gKyAgICAgaWYgKElTX0VSUihtdGtfZ2VtKSkKPiA+ICsg
-ICAgICAgICAgICAgcmV0dXJuIFBUUl9FUlIobXRrX2dlbSk7Cj4gPiArCj4gPiArICAgICBwcml2
-YXRlLT5mYmRldl9ibyA9ICZtdGtfZ2VtLT5iYXNlOwo+ID4gKwo+ID4gKyAgICAgaW5mbyA9IGRy
-bV9mYl9oZWxwZXJfYWxsb2NfZmJpKGhlbHBlcik7Cj4gPiArICAgICBpZiAoSVNfRVJSKGluZm8p
-KSB7Cj4gPiArICAgICAgICAgICAgIERSTV9ERVZfRVJST1IoZGV2LT5kZXYsCj4gPiArICAgICAg
-ICAgICAgICAgICAgICAgImZhaWxlZCB0byBhbGxvY2F0ZSBmcmFtZWJ1ZmZlciBpbmZvLCAlZFxu
-IiwKPiA+ICsgICAgICAgICAgICAgICAgICAgICBlcnIpOwo+ID4gKyAgICAgICAgICAgICBlcnIg
-PSBQVFJfRVJSKGluZm8pOwo+ID4gKyAgICAgICAgICAgICBnb3RvIG91dDsKPiA+ICsgICAgIH0K
-PiA+ICsKPiA+ICsgICAgIGZiID0gbXRrX2RybV9mcmFtZWJ1ZmZlcl9jcmVhdGUoZGV2LCAmbW9k
-ZSwgcHJpdmF0ZS0+ZmJkZXZfYm8pOwo+ID4gKyAgICAgaWYgKElTX0VSUihmYikpIHsKPiA+ICsg
-ICAgICAgICAgICAgRFJNX0RFVl9FUlJPUihkZXYtPmRldiwKPiA+ICsgICAgICAgICAgICAgICAg
-ICAgICAiZmFpbGVkIHRvIGFsbG9jYXRlIERSTSBmcmFtZWJ1ZmZlciwgJWRcbiIsCj4gPiArICAg
-ICAgICAgICAgICAgICAgICAgZXJyKTsKPiA+ICsgICAgICAgICAgICAgZXJyID0gUFRSX0VSUihm
-Yik7Cj4gPiArICAgICAgICAgICAgIGdvdG8gb3V0Owo+ID4gKyAgICAgfQo+ID4gKyAgICAgaGVs
-cGVyLT5mYiA9IGZiOwo+ID4gKwo+ID4gKyAgICAgaW5mby0+cGFyID0gaGVscGVyOwo+ID4gKyAg
-ICAgaW5mby0+ZmxhZ3MgPSBGQklORk9fRkxBR19ERUZBVUxUOwo+ID4gKyAgICAgaW5mby0+ZmJv
-cHMgPSAmbXRrX2ZiZGV2X29wczsKPiA+ICsKPiA+ICsgICAgIGRybV9mYl9oZWxwZXJfZmlsbF9m
-aXgoaW5mbywgZmItPnBpdGNoZXNbMF0sIGZiLT5mb3JtYXQtPmRlcHRoKTsKPiA+ICsgICAgIGRy
-bV9mYl9oZWxwZXJfZmlsbF92YXIoaW5mbywgaGVscGVyLCBzaXplcy0+ZmJfd2lkdGgsIHNpemVz
-LT5mYl9oZWlnaHQpOwo+ID4gKwo+ID4gKyAgICAgb2Zmc2V0ID0gaW5mby0+dmFyLnhvZmZzZXQg
-KiBieXRlc19wZXJfcGl4ZWw7Cj4gPiArICAgICBvZmZzZXQgKz0gaW5mby0+dmFyLnlvZmZzZXQg
-KiBmYi0+cGl0Y2hlc1swXTsKPiA+ICsKPiA+ICsgICAgIGRldi0+bW9kZV9jb25maWcuZmJfYmFz
-ZSA9IDA7Cj4gPiArICAgICBpbmZvLT5zY3JlZW5fYmFzZSA9IG10a19nZW0tPmt2YWRkciArIG9m
-ZnNldDsKPiA+ICsgICAgIGluZm8tPnNjcmVlbl9zaXplID0gc2l6ZTsKPiA+ICsgICAgIGluZm8t
-PmZpeC5zbWVtX2xlbiA9IHNpemU7Cj4gPiArCj4gPiArICAgICBEUk1fREVCVUdfS01TKCJGQiBb
-JXV4JXVdLSV1IG9mZnNldD0lbHUgc2l6ZT0lemRcbiIsCj4gPiArICAgICAgICAgICAgICAgICAg
-IGZiLT53aWR0aCwgZmItPmhlaWdodCwgZmItPmZvcm1hdC0+ZGVwdGgsIG9mZnNldCwgc2l6ZSk7
-Cj4gPiArCj4gPiArICAgICBpbmZvLT5za2lwX3Z0X3N3aXRjaCA9IHRydWU7Cj4gPiArCj4gPiAr
-ICAgICByZXR1cm4gMDsKPiA+ICsKPiA+ICtvdXQ6Cj4gPiArCj4gPiArCj4gPiArICAgICBtdGtf
-ZHJtX2dlbV9mcmVlX29iamVjdCgmbXRrX2dlbS0+YmFzZSk7Cj4gPiArICAgICByZXR1cm4gZXJy
-Owo+ID4gK30KPiA+ICsKPiA+ICtzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9mYl9oZWxwZXJfZnVu
-Y3MgbXRrX2RybV9mYl9oZWxwZXJfZnVuY3MgPSB7Cj4gPiArICAgICAuZmJfcHJvYmUgPSBtdGtf
-ZmJkZXZfcHJvYmUsCj4gPiArfTsKPiA+ICsKPiA+ICtpbnQgbXRrX2ZiZGV2X2luaXQoc3RydWN0
-IGRybV9kZXZpY2UgKmRldikKPiA+ICt7Cj4gPiArICAgICBzdHJ1Y3QgbXRrX2RybV9wcml2YXRl
-ICpwcml2ID0gZGV2LT5kZXZfcHJpdmF0ZTsKPiA+ICsgICAgIHN0cnVjdCBkcm1fZmJfaGVscGVy
-ICpoZWxwZXIgPSAmcHJpdi0+ZmJfaGVscGVyOwo+ID4gKyAgICAgaW50IHJldDsKPiA+ICsKPiA+
-ICsgICAgIGlmICghZGV2LT5tb2RlX2NvbmZpZy5udW1fY3J0YyB8fCAhZGV2LT5tb2RlX2NvbmZp
-Zy5udW1fY29ubmVjdG9yKQo+ID4gKyAgICAgICAgICAgICByZXR1cm4gLUVJTlZBTDsKPiA+ICsK
-PiA+ICsgICAgIGRybV9mYl9oZWxwZXJfcHJlcGFyZShkZXYsIGhlbHBlciwgJm10a19kcm1fZmJf
-aGVscGVyX2Z1bmNzKTsKPiA+ICsKPiA+ICsgICAgIHJldCA9IGRybV9mYl9oZWxwZXJfaW5pdChk
-ZXYsIGhlbHBlciwgZGV2LT5tb2RlX2NvbmZpZy5udW1fY29ubmVjdG9yKTsKPiA+ICsgICAgIGlm
-IChyZXQgPCAwKSB7Cj4gPiArICAgICAgICAgICAgIERSTV9ERVZfRVJST1IoZGV2LT5kZXYsCj4g
-PiArICAgICAgICAgICAgICAgICAgICAgImZhaWxlZCB0byBpbml0aWFsaXplIERSTSBGQiBoZWxw
-ZXIsICVkXG4iLAo+ID4gKyAgICAgICAgICAgICAgICAgICAgIHJldCk7Cj4gPiArLy8gICAgICAg
-ICAgIGdvdG8gZmluaTsKPiA+ICsgICAgICAgICAgICAgcmV0dXJuIHJldDsKPiA+ICsgICAgIH0K
-PiA+ICsKPiA+ICsgICAgIHJldCA9IGRybV9mYl9oZWxwZXJfc2luZ2xlX2FkZF9hbGxfY29ubmVj
-dG9ycyhoZWxwZXIpOwo+ID4gKyAgICAgaWYgKHJldCA8IDApIHsKPiA+ICsgICAgICAgICAgICAg
-RFJNX0RFVl9FUlJPUihkZXYtPmRldiwgImZhaWxlZCB0byBhZGQgY29ubmVjdG9ycywgJWRcbiIs
-IHJldCk7Cj4gPiArICAgICAgICAgICAgIGdvdG8gZmluaTsKPiA+ICsgICAgIH0KPiA+ICsKPiA+
-ICsgICAgIHJldCA9IGRybV9mYl9oZWxwZXJfaW5pdGlhbF9jb25maWcoaGVscGVyLCAzMik7Cj4g
-PiArICAgICBpZiAocmV0IDwgMCkgewo+ID4gKyAgICAgICAgICAgICBEUk1fREVWX0VSUk9SKGRl
-di0+ZGV2LAo+ID4gKyAgICAgICAgICAgICAgICAgICAgICJmYWlsZWQgdG8gc2V0IGluaXRpYWwg
-Y29uZmlndXJhdGlvbiwgJWRcbiIsCj4gPiArICAgICAgICAgICAgICAgICAgICAgcmV0KTsKPiA+
-ICsgICAgICAgICAgICAgZ290byBmaW5pOwo+ID4gKyAgICAgfQo+ID4gKwo+ID4gKyAgICAgcmV0
-dXJuIDA7Cj4gPiArCj4gPiArZmluaToKPiA+ICsgICAgIGRybV9mYl9oZWxwZXJfZmluaShoZWxw
-ZXIpOwo+ID4gKyAgICAgcmV0dXJuIHJldDsKPiA+ICt9Cj4gPiArCj4gPiArdm9pZCBtdGtfZmJk
-ZXZfZmluaShzdHJ1Y3QgZHJtX2RldmljZSAqZGV2KQo+ID4gK3sKPiA+ICsgICAgIHN0cnVjdCBt
-dGtfZHJtX3ByaXZhdGUgKnByaXYgPSBkZXYtPmRldl9wcml2YXRlOwo+ID4gKyAgICAgc3RydWN0
-IGRybV9mYl9oZWxwZXIgKmhlbHBlciA9ICZwcml2LT5mYl9oZWxwZXI7Cj4gPiArCj4gPiArICAg
-ICBkcm1fZmJfaGVscGVyX3VucmVnaXN0ZXJfZmJpKGhlbHBlcik7Cj4gPiArCj4gPiArICAgICBp
-ZiAoaGVscGVyLT5mYikgewo+ID4gKyAgICAgICAgICAgICBkcm1fZnJhbWVidWZmZXJfdW5yZWdp
-c3Rlcl9wcml2YXRlKGhlbHBlci0+ZmIpOwo+ID4gKyAgICAgICAgICAgICBkcm1fZnJhbWVidWZm
-ZXJfcmVtb3ZlKGhlbHBlci0+ZmIpOwo+ID4gKyAgICAgfQo+ID4gKwo+ID4gKyAgICAgZHJtX2Zi
-X2hlbHBlcl9maW5pKGhlbHBlcik7Cj4gPiArfQo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9tdGtfZHJtX2ZiZGV2LmggYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2RybV9mYmRldi5oCj4gPiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+ID4gaW5kZXggMDAwMDAw
-MDAwMDAwLi40NTcxN2I2NDJkYzUKPiA+IC0tLSAvZGV2L251bGwKPiA+ICsrKyBiL2RyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2ZiZGV2LmgKPiA+IEBAIC0wLDAgKzEsMjUgQEAKPiA+
-ICsvKiBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BMLTIuMCAqLwo+ID4gKy8qCj4gPiArICog
-Q29weXJpZ2h0IChjKSAyMDE4IE1lZGlhVGVrIEluYy4KPiA+ICsgKiBBdXRob3I6IENLIEh1IDxj
-ay5odUBtZWRpYXRlay5jb20+Cj4gPiArICovCj4gPiArCj4gPiArI2lmbmRlZiBNVEtfRFJNX0ZC
-REVWX0gKPiA+ICsjZGVmaW5lIE1US19EUk1fRkJERVZfSAo+ID4gKwo+ID4gKyNpZmRlZiBDT05G
-SUdfRFJNX0ZCREVWX0VNVUxBVElPTgo+ID4gK2ludCBtdGtfZmJkZXZfaW5pdChzdHJ1Y3QgZHJt
-X2RldmljZSAqZGV2KTsKPiA+ICt2b2lkIG10a19mYmRldl9maW5pKHN0cnVjdCBkcm1fZGV2aWNl
-ICpkZXYpOwo+ID4gKyNlbHNlCj4gPiAraW50IG10a19mYmRldl9pbml0KHN0cnVjdCBkcm1fZGV2
-aWNlICpkZXYpCj4gPiArewo+ID4gKyAgICAgcmV0dXJuIDA7Cj4gPiArfQo+ID4gKwo+ID4gK3Zv
-aWQgbXRrX2ZiZGV2X2Zpbmkoc3RydWN0IGRybV9kZXZpY2UgKmRldikKPiA+ICt7Cj4gPiArCj4g
-PiArfQo+ID4gKyNlbmRpZiAvKiBDT05GSUdfRFJNX0ZCREVWX0VNVUxBVElPTiAqLwo+ID4gKwo+
-ID4gKyNlbmRpZiAvKiBNVEtfRFJNX0ZCREVWX0ggKi8KPiA+IC0tCj4gPiAyLjE3LjEKPiA+Cj4K
-PiAtLQo+IERhbmllbCBWZXR0ZXIKPiBTb2Z0d2FyZSBFbmdpbmVlciwgSW50ZWwgQ29ycG9yYXRp
-b24KPiBodHRwOi8vYmxvZy5mZndsbC5jaAoKCgotLSAKRGFuaWVsIFZldHRlcgpTb2Z0d2FyZSBF
-bmdpbmVlciwgSW50ZWwgQ29ycG9yYXRpb24KKzQxICgwKSA3OSAzNjUgNTcgNDggLSBodHRwOi8v
-YmxvZy5mZndsbC5jaApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
-cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
-ZWwK
+Hi,
+
+On Thu, Dec 27, 2018 at 03:34:26PM +0800, min.guo@mediatek.com wrote:
+> From: Min Guo <min.guo@mediatek.com>
+> 
+> This adds support for MediaTek musb controller in
+> host, peripheral and otg mode
+> 
+> Signed-off-by: Min Guo <min.guo@mediatek.com>
+> Signed-off-by: Yonglong Wu <yonglong.wu@mediatek.com>
+> ---
+>  drivers/usb/musb/Kconfig     |   8 +-
+>  drivers/usb/musb/Makefile    |   1 +
+>  drivers/usb/musb/mediatek.c  | 562 +++++++++++++++++++++++++++++++++++++++++++
+>  drivers/usb/musb/musb_core.c |  10 +
+>  drivers/usb/musb/musb_core.h |   1 +
+>  drivers/usb/musb/musb_dma.h  |   1 +
+>  drivers/usb/musb/musb_host.c |  79 ++++--
+>  drivers/usb/musb/musb_regs.h |   6 +
+>  drivers/usb/musb/musbhsdma.c |  34 ++-
+>  9 files changed, 671 insertions(+), 31 deletions(-)
+>  create mode 100644 drivers/usb/musb/mediatek.c
+> 
+> diff --git a/drivers/usb/musb/Kconfig b/drivers/usb/musb/Kconfig
+> index ad08895..540fc9f 100644
+> --- a/drivers/usb/musb/Kconfig
+> +++ b/drivers/usb/musb/Kconfig
+> @@ -115,6 +115,12 @@ config USB_MUSB_JZ4740
+>  	depends on USB_MUSB_GADGET
+>  	depends on USB_OTG_BLACKLIST_HUB
+>  
+> +config USB_MUSB_MEDIATEK
+> +	tristate "MediaTek platforms"
+> +	depends on ARCH_MEDIATEK
+
+Please also add '|| COMPILE_TEST' to make testing easier.
+
+> +	depends on NOP_USB_XCEIV
+> +	depends on GENERIC_PHY
+> +
+>  config USB_MUSB_AM335X_CHILD
+>  	tristate
+>  
+> @@ -141,7 +147,7 @@ config USB_UX500_DMA
+>  
+>  config USB_INVENTRA_DMA
+>  	bool 'Inventra'
+> -	depends on USB_MUSB_OMAP2PLUS
+> +	depends on USB_MUSB_OMAP2PLUS || USB_MUSB_MEDIATEK
+>  	help
+>  	  Enable DMA transfers using Mentor's engine.
+>  
+> diff --git a/drivers/usb/musb/Makefile b/drivers/usb/musb/Makefile
+> index 3a88c79..63d82d0 100644
+> --- a/drivers/usb/musb/Makefile
+> +++ b/drivers/usb/musb/Makefile
+> @@ -24,6 +24,7 @@ obj-$(CONFIG_USB_MUSB_DA8XX)			+= da8xx.o
+>  obj-$(CONFIG_USB_MUSB_UX500)			+= ux500.o
+>  obj-$(CONFIG_USB_MUSB_JZ4740)			+= jz4740.o
+>  obj-$(CONFIG_USB_MUSB_SUNXI)			+= sunxi.o
+> +obj-$(CONFIG_USB_MUSB_MEDIATEK)      		+= mediatek.o
+>  
+>  
+>  obj-$(CONFIG_USB_MUSB_AM335X_CHILD)		+= musb_am335x.o
+> diff --git a/drivers/usb/musb/mediatek.c b/drivers/usb/musb/mediatek.c
+> new file mode 100644
+> index 0000000..15a6460
+> --- /dev/null
+> +++ b/drivers/usb/musb/mediatek.c
+
+[snip]
+I will review this section later after we sorted out other things.
+
+> diff --git a/drivers/usb/musb/musb_core.c b/drivers/usb/musb/musb_core.c
+> index b7d5627..d60f76f 100644
+> --- a/drivers/usb/musb/musb_core.c
+> +++ b/drivers/usb/musb/musb_core.c
+> @@ -1028,6 +1028,16 @@ static void musb_disable_interrupts(struct musb *musb)
+>  	temp = musb_readb(mbase, MUSB_INTRUSB);
+>  	temp = musb_readw(mbase, MUSB_INTRTX);
+>  	temp = musb_readw(mbase, MUSB_INTRRX);
+> +
+> +	/*  MediaTek controller interrupt status is W1C */
+
+This W1C doesn't match to the MUSB Programming Guide that I have. Those
+registers are read-only.
+Is the difference due to the IP intergration in the mtk platforms? or is
+it a new version of the MUSB controller? If latter, what is the version?
+
+> +	if (musb->ops->quirks & MUSB_MTK_QUIRKS) {
+
+Basically we don't want to use this type of platform specific quirks if
+possible, so let's try to not use it.
+
+> +		musb_writeb(mbase, MUSB_INTRUSB,
+> +			musb_readb(mbase, MUSB_INTRUSB));
+
+For this clearing register bit operation, please create platform hooks
+musb_clearb() and musb_clearw() in struct musb_platform_ops instead,
+then follow how musb_readb() pointer is assigned in
+musb_init_controller() to use the W1C version for mtk platform.
+
+> +		musb_writew(mbase, MUSB_INTRRX,
+> +			musb_readw(mbase, MUSB_INTRRX));
+> +		musb_writew(mbase, MUSB_INTRTX,
+> +			musb_readw(mbase, MUSB_INTRTX));
+> +	}
+>  }
+>  
+>  static void musb_enable_interrupts(struct musb *musb)
+> diff --git a/drivers/usb/musb/musb_core.h b/drivers/usb/musb/musb_core.h
+> index 04203b7..1bf4e9a 100644
+> --- a/drivers/usb/musb/musb_core.h
+> +++ b/drivers/usb/musb/musb_core.h
+> @@ -138,6 +138,7 @@ enum musb_g_ep0_state {
+>   */
+>  struct musb_platform_ops {
+>  
+> +#define MUSB_MTK_QUIRKS	BIT(10)
+>  #define MUSB_G_NO_SKB_RESERVE	BIT(9)
+>  #define MUSB_DA8XX		BIT(8)
+>  #define MUSB_PRESERVE_SESSION	BIT(7)
+> diff --git a/drivers/usb/musb/musb_dma.h b/drivers/usb/musb/musb_dma.h
+> index 281e75d3..b218210 100644
+> --- a/drivers/usb/musb/musb_dma.h
+> +++ b/drivers/usb/musb/musb_dma.h
+> @@ -197,6 +197,7 @@ static inline void musb_dma_controller_destroy(struct dma_controller *d) { }
+>  extern struct dma_controller *
+>  musbhs_dma_controller_create(struct musb *musb, void __iomem *base);
+>  extern void musbhs_dma_controller_destroy(struct dma_controller *c);
+> +extern irqreturn_t dma_controller_irq(int irq, void *private_data);
+>  
+>  extern struct dma_controller *
+>  tusb_dma_controller_create(struct musb *musb, void __iomem *base);
+> diff --git a/drivers/usb/musb/musb_host.c b/drivers/usb/musb/musb_host.c
+> index b59ce9a..b1b0216 100644
+> --- a/drivers/usb/musb/musb_host.c
+> +++ b/drivers/usb/musb/musb_host.c
+> @@ -292,20 +292,73 @@ static inline void musb_save_toggle(struct musb_qh *qh, int is_in,
+>  {
+>  	void __iomem		*epio = qh->hw_ep->regs;
+>  	u16			csr;
+> +	struct musb *musb = qh->hw_ep->musb;
+>  
+>  	/*
+>  	 * FIXME: the current Mentor DMA code seems to have
+>  	 * problems getting toggle correct.
+>  	 */
+>  
+> -	if (is_in)
+> -		csr = musb_readw(epio, MUSB_RXCSR) & MUSB_RXCSR_H_DATATOGGLE;
+> -	else
+> -		csr = musb_readw(epio, MUSB_TXCSR) & MUSB_TXCSR_H_DATATOGGLE;
+> +	/* MediaTek controller has private toggle register */
+
+only one toggle register for all endpoints? how does it handle
+difference toggle values for different endpoints?
+
+> +	if (musb->ops->quirks & MUSB_MTK_QUIRKS) {
+> +		u16 toggle;
+> +		u8 epnum = qh->hw_ep->epnum;
+> +
+> +		if (is_in)
+> +			toggle = musb_readl(musb->mregs, MUSB_RXTOG);
+
+should use musb_readw() instead? MUSB_RXTOG seems to be 16bit.
+
+> +		else
+> +			toggle = musb_readl(musb->mregs, MUSB_TXTOG);
+> +
+> +		csr = toggle & (1 << epnum);
+> +	} else {
+> +		if (is_in)
+> +			csr = musb_readw(epio, MUSB_RXCSR)
+> +				& MUSB_RXCSR_H_DATATOGGLE;
+> +		else
+> +			csr = musb_readw(epio, MUSB_TXCSR)
+> +				& MUSB_TXCSR_H_DATATOGGLE;
+
+Does this logic still work for the mtk platform even if it has its own
+private toggle register? If so, we don't need to change here.
+
+If not, let's try to not use this quirk flag. Please create a hook
+musb_platform_get_toggle() in struct musb_platform_ops.
+
+> +	}
+>  
+>  	usb_settoggle(urb->dev, qh->epnum, !is_in, csr ? 1 : 0);
+>  }
+>  
+> +static inline u16 musb_set_toggle(struct musb_qh *qh, int is_in,
+> +					struct urb *urb)
+> +{
+> +	u16 csr = 0;
+> +	u16 toggle = 0;
+> +	struct musb *musb = qh->hw_ep->musb;
+> +	u8 epnum = qh->hw_ep->epnum;
+> +
+> +	toggle = usb_gettoggle(urb->dev, qh->epnum, !is_in);
+> +
+> +	/* MediaTek controller has private toggle register */
+> +	if (musb->ops->quirks & MUSB_MTK_QUIRKS) {
+> +		if (is_in) {
+> +			musb_writel(musb->mregs, MUSB_RXTOGEN, (1 << epnum));
+> +			musb_writel(musb->mregs, MUSB_RXTOG, (toggle << epnum));
+> +		} else {
+> +			musb_writel(musb->mregs, MUSB_TXTOGEN, (1 << epnum));
+> +			musb_writel(musb->mregs, MUSB_TXTOG, (toggle << epnum));
+> +		}
+> +	} else {
+> +		if (is_in) {
+> +			if (toggle)
+> +				csr = MUSB_RXCSR_H_WR_DATATOGGLE
+> +						| MUSB_RXCSR_H_DATATOGGLE;
+> +			else
+> +				csr = 0;
+> +		} else {
+> +			if (toggle)
+> +				csr |= MUSB_TXCSR_H_WR_DATATOGGLE
+> +						| MUSB_TXCSR_H_DATATOGGLE;
+> +			else
+> +				csr |= MUSB_TXCSR_CLRDATATOG;
+> +		}
+> +	}
+> +	return csr;
+
+Please create a seperate patch for this musb_set_toggle() without adding
+the mtk logic. It is a nice cleanup.
+
+> +}
+> +
+>  /*
+>   * Advance this hardware endpoint's queue, completing the specified URB and
+>   * advancing to either the next URB queued to that qh, or else invalidating
+> @@ -772,13 +825,8 @@ static void musb_ep_program(struct musb *musb, u8 epnum,
+>  					);
+>  			csr |= MUSB_TXCSR_MODE;
+>  
+> -			if (!hw_ep->tx_double_buffered) {
+> -				if (usb_gettoggle(urb->dev, qh->epnum, 1))
+> -					csr |= MUSB_TXCSR_H_WR_DATATOGGLE
+> -						| MUSB_TXCSR_H_DATATOGGLE;
+> -				else
+> -					csr |= MUSB_TXCSR_CLRDATATOG;
+> -			}
+> +			if (!hw_ep->tx_double_buffered)
+> +				csr |= musb_set_toggle(qh, !is_out, urb);
+>  
+>  			musb_writew(epio, MUSB_TXCSR, csr);
+>  			/* REVISIT may need to clear FLUSHFIFO ... */
+> @@ -860,17 +908,12 @@ static void musb_ep_program(struct musb *musb, u8 epnum,
+>  
+>  	/* IN/receive */
+>  	} else {
+> -		u16	csr;
+> +		u16	csr = 0;
+>  
+>  		if (hw_ep->rx_reinit) {
+>  			musb_rx_reinit(musb, qh, epnum);
+> +			csr |= musb_set_toggle(qh, !is_out, urb);
+>  
+> -			/* init new state: toggle and NYET, maybe DMA later */
+> -			if (usb_gettoggle(urb->dev, qh->epnum, 0))
+> -				csr = MUSB_RXCSR_H_WR_DATATOGGLE
+> -					| MUSB_RXCSR_H_DATATOGGLE;
+> -			else
+> -				csr = 0;
+>  			if (qh->type == USB_ENDPOINT_XFER_INT)
+>  				csr |= MUSB_RXCSR_DISNYET;
+>  
+> diff --git a/drivers/usb/musb/musb_regs.h b/drivers/usb/musb/musb_regs.h
+> index 5cd7264..ffbe267 100644
+> --- a/drivers/usb/musb/musb_regs.h
+> +++ b/drivers/usb/musb/musb_regs.h
+> @@ -273,6 +273,12 @@
+>  #define MUSB_RXHUBADDR		0x06
+>  #define MUSB_RXHUBPORT		0x07
+>  
+> +/* MediaTek controller toggle enable and status reg */
+> +#define MUSB_RXTOG		0x80
+> +#define MUSB_RXTOGEN		0x82
+> +#define MUSB_TXTOG		0x84
+> +#define MUSB_TXTOGEN		0x86
+
+Again, these offsets are for different registers in the MUSB version I
+have, please let me know if you have different version of the MUSB IP.
+
+> +
+>  static inline u8 musb_read_configdata(void __iomem *mbase)
+>  {
+>  	musb_writeb(mbase, MUSB_INDEX, 0);
+> diff --git a/drivers/usb/musb/musbhsdma.c b/drivers/usb/musb/musbhsdma.c
+> index 824adcb..c545475 100644
+> --- a/drivers/usb/musb/musbhsdma.c
+> +++ b/drivers/usb/musb/musbhsdma.c
+> @@ -263,7 +263,7 @@ static int dma_channel_abort(struct dma_channel *channel)
+>  	return 0;
+>  }
+>  
+> -static irqreturn_t dma_controller_irq(int irq, void *private_data)
+> +irqreturn_t dma_controller_irq(int irq, void *private_data)
+>  {
+>  	struct musb_dma_controller *controller = private_data;
+>  	struct musb *musb = controller->private_data;
+> @@ -285,6 +285,8 @@ static irqreturn_t dma_controller_irq(int irq, void *private_data)
+>  	spin_lock_irqsave(&musb->lock, flags);
+>  
+>  	int_hsdma = musb_readb(mbase, MUSB_HSDMA_INTR);
+> +	if (musb->ops->quirks & MUSB_MTK_QUIRKS)
+> +		musb_writeb(musb->mregs, MUSB_HSDMA_INTR, int_hsdma);
+
+you can use musb_clearb() defined above to get rid of this quirk.
+
+>  
+>  	if (!int_hsdma) {
+>  		musb_dbg(musb, "spurious DMA irq");
+> @@ -377,15 +379,17 @@ static irqreturn_t dma_controller_irq(int irq, void *private_data)
+>  	spin_unlock_irqrestore(&musb->lock, flags);
+>  	return retval;
+>  }
+> +EXPORT_SYMBOL_GPL(dma_controller_irq);
+>  
+>  void musbhs_dma_controller_destroy(struct dma_controller *c)
+>  {
+>  	struct musb_dma_controller *controller = container_of(c,
+>  			struct musb_dma_controller, controller);
+> +	struct musb *musb = controller->private_data;
+>  
+>  	dma_controller_stop(controller);
+>  
+> -	if (controller->irq)
+> +	if (!(musb->ops->quirks & MUSB_MTK_QUIRKS) && controller->irq)
+>  		free_irq(controller->irq, c);
+>  
+>  	kfree(controller);
+> @@ -398,11 +402,15 @@ struct dma_controller *musbhs_dma_controller_create(struct musb *musb,
+>  	struct musb_dma_controller *controller;
+>  	struct device *dev = musb->controller;
+>  	struct platform_device *pdev = to_platform_device(dev);
+> -	int irq = platform_get_irq_byname(pdev, "dma");
+> +	int irq = -1;
+>  
+> -	if (irq <= 0) {
+> -		dev_err(dev, "No DMA interrupt line!\n");
+> -		return NULL;
+> +	if (!(musb->ops->quirks & MUSB_MTK_QUIRKS)) {
+> +		irq = platform_get_irq_byname(pdev, "dma");
+> +
+> +		if (irq < 0) {
+> +			dev_err(dev, "No DMA interrupt line!\n");
+> +			return NULL;
+> +		}
+>  	}
+
+Please create musbhs_dma_controller_destroy_noirq() for your platform to
+not use the quirk.
+
+>  
+>  	controller = kzalloc(sizeof(*controller), GFP_KERNEL);
+> @@ -418,15 +426,17 @@ struct dma_controller *musbhs_dma_controller_create(struct musb *musb,
+>  	controller->controller.channel_program = dma_channel_program;
+>  	controller->controller.channel_abort = dma_channel_abort;
+>  
+> -	if (request_irq(irq, dma_controller_irq, 0,
+> +	if (!(musb->ops->quirks & MUSB_MTK_QUIRKS)) {
+> +		if (request_irq(irq, dma_controller_irq, 0,
+>  			dev_name(musb->controller), &controller->controller)) {
+> -		dev_err(dev, "request_irq %d failed!\n", irq);
+> -		musb_dma_controller_destroy(&controller->controller);
+> +			dev_err(dev, "request_irq %d failed!\n", irq);
+> +			musb_dma_controller_destroy(&controller->controller);
+>  
+> -		return NULL;
+> -	}
+> +			return NULL;
+> +		}
+>  
+> -	controller->irq = irq;
+> +		controller->irq = irq;
+> +	}
+>  
+>  	return &controller->controller;
+>  }
+
+Same here, create musbhs_dma_controller_create_noirq(). Then use both
+new API for the mtk glue driver.
+
+Regards,
+-Bin.
