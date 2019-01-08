@@ -1,70 +1,106 @@
-From: Frank Wunderlich <frank-w@public-files.de>
-Subject: [PATCH] net: ethernet: mediatek: fix warning in phy_start_aneg
-Date: Tue,  8 Jan 2019 17:05:26 +0100
-Message-ID: <20190108160526.18928-1-frank-w@public-files.de>
+From: Vinod Koul <vkoul@kernel.org>
+Subject: Re: [PATCH 2/2] dmaengine: mediatek: Add MediaTek Command-Queue DMA
+ controller for MT6765 SoC
+Date: Tue, 8 Jan 2019 22:29:46 +0530
+Message-ID: <20190108165946.GQ13372@vkoul-mobl.Dlink>
+References: <1545916258-18218-1-git-send-email-shun-chih.yu@mediatek.com>
+ <1545916258-18218-3-git-send-email-shun-chih.yu@mediatek.com>
+ <20190104123836.GB13372@vkoul-mobl.Dlink>
+ <1546949984.25257.96.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Felix Fietkau <nbd@openwrt.org>, John Crispin <john@phrozen.org>, Sean Wang <sean.wang@kernel.org>, Nelson Chang <nelson.chang@mediatek.com>, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Frank Wunderlich <frank-w@public-files.de>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1546949984.25257.96.camel@mtkswgap22>
+Sender: linux-kernel-owner@vger.kernel.org
+To: "Shun-Chih.Yu" <shun-chih.yu@mediatek.com>
+Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, srv_wsdupstream@mediatek.com, dmaengine@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Dan Williams <dan.j.williams@intel.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@kernel.org>
+On 08-01-19, 20:19, Shun-Chih.Yu wrote:
+> On Fri, 2019-01-04 at 18:08 +0530, Vinod Koul wrote:
+> > On 27-12-18, 21:10, shun-chih.yu@mediatek.com wrote:
+> > > From: Shun-Chih Yu <shun-chih.yu@mediatek.com>
 
-linux 5.0-rc1 shows following warning on bpi-r2/mt7623 bootup:
+> > Have you tested this with dmatest, if so can you provide results of the
+> > test as well.
+> Yes, I tested with dmatest in multi-thread version. 
+> The results shown below, and I would attach them in the next revision if needed.
+> 
+> dmatest: dma0chan0-copy2: summary 5000 tests, 0 failures 3500 iops 28037
+> KB/s (0)
+> dmatest: dma0chan0-copy4: summary 5000 tests, 0 failures 3494 iops 27612
+> KB/s (0)
+> dmatest: dma0chan0-copy1: summary 5000 tests, 0 failures 3491 iops 27749
+> KB/s (0)
+> dmatest: dma0chan0-copy7: summary 5000 tests, 0 failures 3673 iops 29092
+> KB/s (0)
+> dmatest: dma0chan0-copy6: summary 5000 tests, 0 failures 3763 iops 30237
+> KB/s (0)
+> dmatest: dma0chan0-copy0: summary 5000 tests, 0 failures 3730 iops 30131
+> KB/s (0)
+> dmatest: dma0chan0-copy3: summary 5000 tests, 0 failures 3717 iops 29569
+> KB/s (0)
+> dmatest: dma0chan0-copy5: summary 5000 tests, 0 failures 3699 iops 29302
+> KB/s (0)
 
-[ 5.170597] WARNING: CPU: 3 PID: 1 at drivers/net/phy/phy.c:548 phy_start_aneg+0x110/0x144
-[ 5.178826] called from state READY
-....
-[ 5.264111] [<c0629fd4>] (phy_start_aneg) from [<c0e3e720>] (mtk_init+0x414/0x47c)
-[ 5.271630] r7:df5f5eec r6:c0f08c48 r5:00000000 r4:dea67800
-[ 5.277256] [<c0e3e30c>] (mtk_init) from [<c07dabbc>] (register_netdevice+0x98/0x51c)
-[ 5.285035] r8:00000000 r7:00000000 r6:c0f97080 r5:c0f08c48 r4:dea67800
-[ 5.291693] [<c07dab24>] (register_netdevice) from [<c07db06c>] (register_netdev+0x2c/0x44)
-[ 5.299989] r8:00000000 r7:dea2e608 r6:deacea00 r5:dea2e604 r4:dea67800
-[ 5.306646] [<c07db040>] (register_netdev) from [<c06326d8>] (mtk_probe+0x668/0x7ac)
-[ 5.314336] r5:dea2e604 r4:dea2e040
-[ 5.317890] [<c0632070>] (mtk_probe) from [<c05a78fc>] (platform_drv_probe+0x58/0xa8)
-[ 5.325670] r10:c0f86bac r9:00000000 r8:c0fbe578 r7:00000000 r6:c0f86bac r5:00000000
-[ 5.333445] r4:deacea10
-[ 5.335963] [<c05a78a4>] (platform_drv_probe) from [<c05a5248>] (really_probe+0x2d8/0x424)
+Having them in cover letter helps :)
 
-maybe other boards using this generic driver are affected
+> > > Signed-off-by: Shun-Chih Yu <shun-chih.yu@mediatek.com>
+> > > Reviewed-by: Vinod Koul <vkoul@kernel.org>
+> > 
+> > This is _WRONG_ I have never provided such tag, can you explain why this
+> > was added without my approval?
+> So sorry about this, I misunderstood the usage of reviewed-by tag and I
+> would remove this. Thanks for pointing out this mistake.
 
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+This tag should be added _only_ when someone replies with
+Reviewed-by: ..., same goes for Acked-by and Tested-by: ... etc
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 399f565dd85a..e48c06874a85 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -356,6 +356,7 @@ static int mtk_phy_connect(struct net_device *dev)
- 	linkmode_copy(dev->phydev->advertising, dev->phydev->supported);
- 	linkmode_set_bit(ETHTOOL_LINK_MODE_Autoneg_BIT,
- 			 dev->phydev->advertising);
-+	phy_start(dev->phydev);
- 	phy_start_aneg(dev->phydev);
- 
- 	of_node_put(np);
-@@ -1821,7 +1822,6 @@ static int mtk_open(struct net_device *dev)
- 	else
- 		refcount_inc(&eth->dma_refcnt);
- 
--	phy_start(dev->phydev);
- 	netif_start_queue(dev);
- 
- 	return 0;
+> > > +static void mtk_dma_write(struct mtk_cqdma_pchan *pc, u32 reg, u32 val)
+> > > +{
+> > > +	writel_relaxed(val, pc->base + reg);
+> > 
+> > Why is it relaxed one?
+> Most of the operations to the CQDMA hardware could be relaxed, and the 
+
+looks like you missed the rest of sentence
+
+> > > +static enum dma_status mtk_cqdma_tx_status(struct dma_chan *c,
+> > > +					   dma_cookie_t cookie,
+> > > +					   struct dma_tx_state *txstate)
+> > > +{
+> > > +	struct mtk_cqdma_vchan *cvc = to_cqdma_vchan(c);
+> > > +	struct mtk_cqdma_vdesc *cvd;
+> > > +	struct virt_dma_desc *vd;
+> > > +	enum dma_status ret;
+> > > +	unsigned long flags;
+> > > +	size_t bytes = 0;
+> > > +
+> > > +	ret = dma_cookie_status(c, cookie, txstate);
+> > > +	if (ret == DMA_COMPLETE || !txstate)
+> > > +		return ret;
+> > > +
+> > > +	spin_lock_irqsave(&cvc->vc.lock, flags);
+> > > +	vd = mtk_cqdma_find_active_desc(c, cookie);
+> > > +	spin_unlock_irqrestore(&cvc->vc.lock, flags);
+> > > +
+> > > +	if (vd) {
+> > > +		cvd = to_cqdma_vdesc(vd);
+> > > +		bytes = cvd->len;
+> > > +	}
+> > > +
+> > > +	dma_set_residue(txstate, bytes);
+> > 
+> > Have you tested this and are able to report residue properly?
+> > 
+> I tested and thought the residue report properly. But after checking the
+> definition of residue in tx_status again, I found that should be always
+> return 0 in the driver instead, since there is no state DMA_IN_PROGRESS
+> or DMA_PAUSED in the driver. I would fix this in the next revision.
+
+So memcpy is quite fast :D, that's why. This is more helpful in
+slave-dma which is relatively slow :)
+
 -- 
-2.17.1
+~Vinod
