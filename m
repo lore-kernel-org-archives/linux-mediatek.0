@@ -1,75 +1,57 @@
-From: Henry Chen <henryc.chen@mediatek.com>
-Subject: Re: [RFC RESEND PATCH 0/7] Add driver for dvfsrc and add support
- for active state of scpsys on mt8183
-Date: Wed, 9 Jan 2019 11:08:44 +0800
-Message-ID: <1547003324.6818.156.camel@mtksdaap41>
-References: <1546438198-1677-1-git-send-email-henryc.chen@mediatek.com>
-         <154655603153.15366.7761694381359713995@swboyd.mtv.corp.google.com>
-         <1546859080.6818.128.camel@mtksdaap41>
-         <08d15fa8-7e53-518c-54bb-8050b0e4aabd@linaro.org>
+From: Pi-Hsun Shih <pihsun@chromium.org>
+Subject: [PATCH] thermal: mtk: Allocate enough space for mtk_thermal.
+Date: Wed,  9 Jan 2019 13:57:24 +0800
+Message-ID: <20190109055724.184692-1-pihsun@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <08d15fa8-7e53-518c-54bb-8050b0e4aabd@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Georgi Djakov <georgi.djakov@linaro.org>
-Cc: Stephen Boyd <swboyd@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, Viresh Kumar <vireshk@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Fan Chen <fan.chen@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>, Kees Cook <keescook@chromium.org>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Pi-Hsun Shih <pihsun@chromium.org>, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:THERMAL" <linux-pm@vger.kernel.org>, "moderated list:ARM/Mediatek SoC
+        support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+        support" <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2019-01-07 at 18:34 +0200, Georgi Djakov wrote:
-> Hi Henry,
-> 
-> On 1/7/19 13:04, Henry Chen wrote:
-> > On Thu, 2019-01-03 at 14:53 -0800, Stephen Boyd wrote:
-> >> Quoting Henry Chen (2019-01-02 06:09:51)
-> >>> The patchsets add support for MediaTek hardware module named DVFSRC
-> >>> (dynamic voltage and frequency scaling resource collector). The DVFSRC is
-> >>> a HW module which is used to collect all the requests from both software
-> >>> and hardware and turn into the decision of minimum operating voltage and
-> >>> minimum DRAM frequency to fulfill those requests.
-> >>>
-> >>> So, This series is to implement the dvfsrc driver to collect all the
-> >>> requests of operating voltage or DRAM bandwidth from other device drivers
-> >>> likes GPU/Camera through 2 frameworks basically:
-> >>>
-> >>> 1. PM_QOS_MEMORY_BANDWIDTH from PM QOS: to aggregate the bandwidth
-> >>>    requirements from different clients
-> >>
-> >> Have you looked at using the interconnect framework for this instead of
-> >> using PM_QOS_MEMORY_BANDWIDTH? Qcom is pushing an interconnect framework
-> >> to do DRAM bandwidth requirement aggregation.
-> > 
-> > Sorry, I haven't heard that before. Do you mean is following series
-> > patch?
-> > https://patchwork.kernel.org/project/linux-arm-msm/list/?series=53775
-> > 
-> 
-> Yes, this one. The idea is that consumer drivers like GPU, camera, video
-> encoder etc. report their bandwidth needs by using the interconnect API.
-> The framework does the aggregation and configures the hardware. In order
-> to use it you need to implement a platform-specific dvfsrc interconnect
-> provider driver that understands the SoC topology and knows how to
-> configure the hardware. I am not familiar with DVFSRC, but it seems to
-> me that it can fit as interconnect provider.
-> Does this HW module support any QoS priority/latency configuration or is
-> it only bandwidth and voltage?
-> 
-> Thanks,
-> Georgi
+The mtk_thermal struct contains a 'struct mtk_thermal_bank banks[];',
+but the allocation only allocates sizeof(struct mtk_thermal) bytes,
+which cause out of bound access with the ->banks[] member. Change it to
+a fixed size array instead.
 
-Hi Georgi,
+Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
+---
+ drivers/thermal/mtk_thermal.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-Yes, the design is only to support bandwidth and voltage. The one of the
-function is to collect the memory bandwidth requirement from consumer
-and select the minimum DRAM frequency to fulfill system performance.It
-just get the total bandwidth then set it to HW, not involves complex SoC
-topology. So we choose to use PM QOS to model that DVFSRC driver can
-receive the bandwidth information from consumer driver via
-PM_QOS_MEMORY_BANDWIDTH.
-
-Do you have a patch that show how consumer driver used interconnect to
-update their requirement.
-
-Thanks,
-Henry
+diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+index 0691f260f6eabe..ea11edb3fcced6 100644
+--- a/drivers/thermal/mtk_thermal.c
++++ b/drivers/thermal/mtk_thermal.c
+@@ -159,6 +159,9 @@
+ #define MT7622_NUM_SENSORS_PER_ZONE	1
+ #define MT7622_TS1	0
+ 
++/* The maximum number of banks */
++#define MAX_NUM_ZONES		8
++
+ struct mtk_thermal;
+ 
+ struct thermal_bank_cfg {
+@@ -178,7 +181,7 @@ struct mtk_thermal_data {
+ 	const int *sensor_mux_values;
+ 	const int *msr;
+ 	const int *adcpnp;
+-	struct thermal_bank_cfg bank_data[];
++	struct thermal_bank_cfg bank_data[MAX_NUM_ZONES];
+ };
+ 
+ struct mtk_thermal {
+@@ -197,7 +200,7 @@ struct mtk_thermal {
+ 	s32 vts[MT8173_NUM_SENSORS];
+ 
+ 	const struct mtk_thermal_data *conf;
+-	struct mtk_thermal_bank banks[];
++	struct mtk_thermal_bank banks[MAX_NUM_ZONES];
+ };
+ 
+ /* MT8173 thermal sensor data */
+-- 
+2.20.1.97.g81188d93c3-goog
