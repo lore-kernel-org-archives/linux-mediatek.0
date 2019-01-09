@@ -1,74 +1,72 @@
-From: Heiner Kallweit <hkallweit1@gmail.com>
-Subject: Re: [PATCH] net: ethernet: mediatek: fix warning in phy_start_aneg
-Date: Tue, 8 Jan 2019 20:42:53 +0100
-Message-ID: <8f58fd47-f7ff-399d-4c20-76fe4d72ba9a@gmail.com>
-References: <20190108160526.18928-1-frank-w@public-files.de>
- <7acce775-4ab7-c867-c801-25ee004f6b38@gmail.com>
- <trinity-4ceb1d55-424f-46b8-b8e7-989770b249a2-1546974413848@3c-app-gmx-bs35>
- <CAGp9LzrUK=QWJsDwiTVG7vD7v8=jFp6bAm9ZiOh3c2dQk029uA@mail.gmail.com>
+From: Miles Chen <miles.chen@mediatek.com>
+Subject: Re: [PATCH] arm64: trap illegal translations in __virt_to_phys()
+Date: Wed, 9 Jan 2019 09:35:17 +0800
+Message-ID: <1546997717.20937.3.camel@mtkswgap22>
+References: <1546860080-13027-1-git-send-email-miles.chen@mediatek.com>
+         <20190107150019.GC46743@lakrids.cambridge.arm.com>
+         <1546917883.6754.8.camel@mtkswgap22>
+         <20190108121440.GC29102@lakrids.cambridge.arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <CAGp9LzrUK=QWJsDwiTVG7vD7v8=jFp6bAm9ZiOh3c2dQk029uA@mail.gmail.com>
-Content-Language: en-US
-Sender: netdev-owner@vger.kernel.org
-To: Sean Wang <sean.wang@kernel.org>, Frank Wunderlich <frank-w@public-files.de>
-Cc: Felix Fietkau <nbd@openwrt.org>, John Crispin <john@phrozen.org>, Nelson Chang <nelson.chang@mediatek.com>, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190108121440.GC29102@lakrids.cambridge.arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Rutland <mark.rutland@arm.com>
+Cc: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On 08.01.2019 20:29, Sean Wang wrote:
-> On Tue, Jan 8, 2019 at 11:07 AM Frank Wunderlich
-> <frank-w@public-files.de> wrote:
->>
->>
->>> In mtk_phy_connect() I would say this complete block can be removed.
->>> All this is handled internally by phylib.
->>>
->>>       dev->phydev->autoneg = AUTONEG_ENABLE;
->>>       dev->phydev->speed = 0;
->>>       dev->phydev->duplex = 0;
->>>
->>>       phy_set_max_speed(dev->phydev, SPEED_1000);
->>>       phy_support_asym_pause(dev->phydev);
->>>       linkmode_copy(dev->phydev->advertising, dev->phydev->supported);
->>>       linkmode_set_bit(ETHTOOL_LINK_MODE_Autoneg_BIT,
->>>                        dev->phydev->advertising);
->>>       phy_start_aneg(dev->phydev);
->>>
->>> Could you please test this?
->>
->> seems to work well, no warning in dmesg
->>
->> traffic 940Mbit sending, 900 receive
->>
+On Tue, 2019-01-08 at 12:14 +0000, Mark Rutland wrote:
+> On Tue, Jan 08, 2019 at 11:24:43AM +0800, Miles Chen wrote:
+> > On Mon, 2019-01-07 at 15:00 +0000, Mark Rutland wrote:
+> > > On Mon, Jan 07, 2019 at 07:21:20PM +0800, Miles Chen wrote:
+> > > > Current __virt_to_phys() only print warning messages for non-linear
+> > > > addresses. It's hard to catch all warnings by those messages.
+> > > 
+> > > Why? Are you seeing a large number of warnings somewhere?
+> > 
+> > Official kernel works fine. I saw some cases in our internal branch and
+> > we're fixing them.
+> > 
+> > > 
+> > > > So add a VIRTUAL_BUG_ON() to trap all non-linear and non-symbol
+> > > > addresses (e.g., stack addresses)
+> > > > 
+> > > > Tested by pass stack addresses and symbol addresses to __pa(). Result:
+> > > > stack addresses: kernel BUG()
+> > > 
+> > > Either:
+> > > 
+> > > * Stacks are vmap'd, and __is_lm_address(stack_addr) is false. We'll
+> > >   produce a WARNING() today (and return a junk physical address).
+> > > 
+> > > * Stacks are linear mapped, and cannot be distinguished from other
+> > >   linear mapped addresses. The physical address will be valid.
+> > > 
+> > > ... so I don't understand why you need to change this.
+> > 
+> > For the first case: for vmap'd stack, __pa() returns a junk
+> > physical address and it might be easier to debug this incorrect address
+> > translation by a BUG() call instead of monitoring the warning log.
 > 
-> The change to phy initialized valve determined by phylib looks good to
-> me and simplify the mac driver a lot. You could have it in v2.
+> I think that's an argument for upgrading the existing WARN() to a BUG(),
+> rather than adding a separate VIRTUAL_BUG_ON().
 > 
->>> And a further proposal:
->>> Instead of the open-coded dev_info() in mtk_phy_connect_node()
->>> you could use phy_attached_info().
->>
->> have not tried this yet...because it's only an info-message and needs different parameters...have to look how i can convert it
-> 
-> I think it can be done in a separate patch
-> 
->>
->>> Calling phy_start() in the ndo_open callback is fine, you can leave
->>> it there.
->>
->> have it re-added
->>
->> pushed to my repo: https://github.com/frank-w/BPI-R2-4.14/commits/5.0-rc
->>
->> regards Frank
-> 
-When talking about improvements: Also this
+> However, there are cases where the junk physical address is not used to
+> perform an access, and the WARN() is more helpful.
 
-if (dev->phydev->link)
-		netif_carrier_on(dev);
-	else
-		netif_carrier_off(dev);
+got it.
 
-in mtk_phy_link_adjust() isn't needed. It's done by phy_link_change() in phylib.
+> 
+> You can set panic_on_warn to get an immediate panic() when the WARN()
+> fires. Is there some reason that approach doesn't work for you?
+
+panic_on_warn works fine. thanks for your comment.
+
+
+cheers,
+Miles
+
+> 
+> Thanks,
+> Mark.
