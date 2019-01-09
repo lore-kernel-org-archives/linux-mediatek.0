@@ -1,238 +1,75 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH] pinctrl: mediatek: fix build errors for moore core when
- CONFIG_OF is not enabled
-Date: Wed, 9 Jan 2019 10:13:55 +0800
-Message-ID: <64a23e6f8751ee6f1387a611a9d5dba43694b0d0.1546999151.git.ryder.lee@mediatek.com>
+From: Henry Chen <henryc.chen@mediatek.com>
+Subject: Re: [RFC RESEND PATCH 0/7] Add driver for dvfsrc and add support
+ for active state of scpsys on mt8183
+Date: Wed, 9 Jan 2019 11:08:44 +0800
+Message-ID: <1547003324.6818.156.camel@mtksdaap41>
+References: <1546438198-1677-1-git-send-email-henryc.chen@mediatek.com>
+         <154655603153.15366.7761694381359713995@swboyd.mtv.corp.google.com>
+         <1546859080.6818.128.camel@mtksdaap41>
+         <08d15fa8-7e53-518c-54bb-8050b0e4aabd@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, Weijie Gao <weijie.gao@mediatek.com>, linux-kernel@vger.kernel.org, stable@vger.kernel.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <08d15fa8-7e53-518c-54bb-8050b0e4aabd@linaro.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Georgi Djakov <georgi.djakov@linaro.org>
+Cc: Stephen Boyd <swboyd@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, Viresh Kumar <vireshk@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Fan Chen <fan.chen@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>, Kees Cook <keescook@chromium.org>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-on i386 or x86_64:
+On Mon, 2019-01-07 at 18:34 +0200, Georgi Djakov wrote:
+> Hi Henry,
+> 
+> On 1/7/19 13:04, Henry Chen wrote:
+> > On Thu, 2019-01-03 at 14:53 -0800, Stephen Boyd wrote:
+> >> Quoting Henry Chen (2019-01-02 06:09:51)
+> >>> The patchsets add support for MediaTek hardware module named DVFSRC
+> >>> (dynamic voltage and frequency scaling resource collector). The DVFSRC is
+> >>> a HW module which is used to collect all the requests from both software
+> >>> and hardware and turn into the decision of minimum operating voltage and
+> >>> minimum DRAM frequency to fulfill those requests.
+> >>>
+> >>> So, This series is to implement the dvfsrc driver to collect all the
+> >>> requests of operating voltage or DRAM bandwidth from other device drivers
+> >>> likes GPU/Camera through 2 frameworks basically:
+> >>>
+> >>> 1. PM_QOS_MEMORY_BANDWIDTH from PM QOS: to aggregate the bandwidth
+> >>>    requirements from different clients
+> >>
+> >> Have you looked at using the interconnect framework for this instead of
+> >> using PM_QOS_MEMORY_BANDWIDTH? Qcom is pushing an interconnect framework
+> >> to do DRAM bandwidth requirement aggregation.
+> > 
+> > Sorry, I haven't heard that before. Do you mean is following series
+> > patch?
+> > https://patchwork.kernel.org/project/linux-arm-msm/list/?series=53775
+> > 
+> 
+> Yes, this one. The idea is that consumer drivers like GPU, camera, video
+> encoder etc. report their bandwidth needs by using the interconnect API.
+> The framework does the aggregation and configures the hardware. In order
+> to use it you need to implement a platform-specific dvfsrc interconnect
+> provider driver that understands the SoC topology and knows how to
+> configure the hardware. I am not familiar with DVFSRC, but it seems to
+> me that it can fit as interconnect provider.
+> Does this HW module support any QoS priority/latency configuration or is
+> it only bandwidth and voltage?
+> 
+> Thanks,
+> Georgi
 
-Lots of build errors for drivers/pinctrl/mediatek/pinctrl-moore.c when
-CONFIG_OF is not enabled (but COMPILE_TEST is).
+Hi Georgi,
 
-first this:
-WARNING: unmet direct dependencies detected for PINCTRL_MTK_MOORE
-  Depends on [n]: PINCTRL [=y] && (ARCH_MEDIATEK || COMPILE_TEST [=y]) && OF [=n]
-  Selected by [y]:
-  - PINCTRL_MT7623 [=y] && PINCTRL [=y] && (ARCH_MEDIATEK || COMPILE_TEST [=y]) && (MACH_MT7623 || COMPILE_TEST [=y])
+Yes, the design is only to support bandwidth and voltage. The one of the
+function is to collect the memory bandwidth requirement from consumer
+and select the minimum DRAM frequency to fulfill system performance.It
+just get the total bandwidth then set it to HW, not involves complex SoC
+topology. So we choose to use PM QOS to model that DVFSRC driver can
+receive the bandwidth information from consumer driver via
+PM_QOS_MEMORY_BANDWIDTH.
 
-and then:
-../drivers/pinctrl/mediatek/pinctrl-moore.c:22:44: error: array type has incomplete element type
- static const struct pinconf_generic_params mtk_custom_bindings[] = {
-                                            ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c: In function 'mtk_pinmux_set_mux':
-../drivers/pinctrl/mediatek/pinctrl-moore.c:46:2: error: implicit declaration of function 'pinmux_generic_get_function' [-Werror=implicit-function-declaration]
-  func = pinmux_generic_get_function(pctldev, selector);
-  ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:46:7: warning: assignment makes pointer from integer without a cast [enabled by default]
-  func = pinmux_generic_get_function(pctldev, selector);
-       ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:50:2: error: implicit declaration of function 'pinctrl_generic_get_group' [-Werror=implicit-function-declaration]
-  grp = pinctrl_generic_get_group(pctldev, group);
-  ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:50:6: warning: assignment makes pointer from integer without a cast [enabled by default]
-  grp = pinctrl_generic_get_group(pctldev, group);
-      ^
-In file included from ../include/linux/printk.h:331:0,
-                 from ../include/linux/kernel.h:14,
-                 from ../include/linux/list.h:9,
-                 from ../include/linux/kobject.h:19,
-                 from ../include/linux/device.h:16,
-                 from ../include/linux/gpio/driver.h:5,
-                 from ../drivers/pinctrl/mediatek/pinctrl-moore.c:11:
-../drivers/pinctrl/mediatek/pinctrl-moore.c:55:7: error: dereferencing pointer to incomplete type
-   func->name, grp->name);
-       ^
-../include/linux/dynamic_debug.h:136:9: note: in definition of macro 'dynamic_dev_dbg'
-       ##__VA_ARGS__);  \
-         ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:54:2: note: in expansion of macro 'dev_dbg'
-  dev_dbg(pctldev->dev, "enable function %s group %s\n",
-  ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:55:18: error: dereferencing pointer to incomplete type
-   func->name, grp->name);
-                  ^
-../include/linux/dynamic_debug.h:136:9: note: in definition of macro 'dynamic_dev_dbg'
-       ##__VA_ARGS__);  \
-         ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:54:2: note: in expansion of macro 'dev_dbg'
-  dev_dbg(pctldev->dev, "enable function %s group %s\n",
-  ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:57:21: error: dereferencing pointer to incomplete type
-  for (i = 0; i < grp->num_pins; i++) {
-                     ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:59:23: error: dereferencing pointer to incomplete type
-   int *pin_modes = grp->data;
-                       ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:60:16: error: dereferencing pointer to incomplete type
-   int pin = grp->pins[i];
-                ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c: In function 'mtk_pinconf_group_get':
-../drivers/pinctrl/mediatek/pinctrl-moore.c:357:2: error: implicit declaration of function 'pinctrl_generic_get_group_pins' [-Werror=implicit-function-declaration]
-  ret = pinctrl_generic_get_group_pins(pctldev, group, &pins, &npins);
-  ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c: At top level:
-../drivers/pinctrl/mediatek/pinctrl-moore.c:397:22: error: 'pinctrl_generic_get_group_count' undeclared here (not in a function)
-  .get_groups_count = pinctrl_generic_get_group_count,
-                      ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:398:20: error: 'pinctrl_generic_get_group_name' undeclared here (not in a function)
-  .get_group_name = pinctrl_generic_get_group_name,
-                    ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:399:20: error: 'pinctrl_generic_get_group_pins' undeclared here (not in a function)
-  .get_group_pins = pinctrl_generic_get_group_pins,
-                    ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:400:20: error: 'pinconf_generic_dt_node_to_map_all' undeclared here (not in a function)
-  .dt_node_to_map = pinconf_generic_dt_node_to_map_all,
-                    ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:401:17: error: 'pinconf_generic_dt_free_map' undeclared here (not in a function)
-  .dt_free_map = pinconf_generic_dt_free_map,
-                 ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:405:25: error: 'pinmux_generic_get_function_count' undeclared here (not in a function)
-  .get_functions_count = pinmux_generic_get_function_count,
-                         ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:406:23: error: 'pinmux_generic_get_function_name' undeclared here (not in a function)
-  .get_function_name = pinmux_generic_get_function_name,
-                       ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:407:25: error: 'pinmux_generic_get_function_groups' undeclared here (not in a function)
-  .get_function_groups = pinmux_generic_get_function_groups,
-                         ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c: In function 'mtk_build_gpiochip':
-../drivers/pinctrl/mediatek/pinctrl-moore.c:521:6: error: 'struct gpio_chip' has no member named 'of_node'
-  chip->of_node  = np;
-      ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:522:6: error: 'struct gpio_chip' has no member named 'of_gpio_n_cells'
-  chip->of_gpio_n_cells = 2;
-      ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c: In function 'mtk_build_groups':
-../drivers/pinctrl/mediatek/pinctrl-moore.c:552:16: error: invalid use of undefined type 'struct group_desc'
-   const struct group_desc *group = hw->soc->grps + i;
-                ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:554:3: error: implicit declaration of function 'pinctrl_generic_add_group' [-Werror=implicit-function-declaration]
-   err = pinctrl_generic_add_group(hw->pctrl, group->name,
-   ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:554:51: error: dereferencing pointer to incomplete type
-   err = pinctrl_generic_add_group(hw->pctrl, group->name,
-                                                   ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:555:12: error: dereferencing pointer to incomplete type
-       group->pins, group->num_pins,
-            ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:555:25: error: dereferencing pointer to incomplete type
-       group->pins, group->num_pins,
-                         ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:556:12: error: dereferencing pointer to incomplete type
-       group->data);
-            ^
-In file included from ../include/linux/gpio/driver.h:5:0,
-                 from ../drivers/pinctrl/mediatek/pinctrl-moore.c:11:
-../drivers/pinctrl/mediatek/pinctrl-moore.c:559:10: error: dereferencing pointer to incomplete type
-     group->name);
-          ^
-../include/linux/device.h:1463:32: note: in definition of macro 'dev_err'
-  _dev_err(dev, dev_fmt(fmt), ##__VA_ARGS__)
-                                ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c: In function 'mtk_build_functions':
-../drivers/pinctrl/mediatek/pinctrl-moore.c:572:16: error: invalid use of undefined type 'struct function_desc'
-   const struct function_desc *func = hw->soc->funcs + i;
-                ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:574:3: error: implicit declaration of function 'pinmux_generic_add_function' [-Werror=implicit-function-declaration]
-   err = pinmux_generic_add_function(hw->pctrl, func->name,
-   ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:574:52: error: dereferencing pointer to incomplete type
-   err = pinmux_generic_add_function(hw->pctrl, func->name,
-                                                    ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:575:13: error: dereferencing pointer to incomplete type
-         func->group_names,
-             ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:576:13: error: dereferencing pointer to incomplete type
-         func->num_group_names,
-             ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:577:13: error: dereferencing pointer to incomplete type
-         func->data);
-             ^
-In file included from ../include/linux/gpio/driver.h:5:0,
-                 from ../drivers/pinctrl/mediatek/pinctrl-moore.c:11:
-../drivers/pinctrl/mediatek/pinctrl-moore.c:580:9: error: dereferencing pointer to incomplete type
-     func->name);
-         ^
-../include/linux/device.h:1463:32: note: in definition of macro 'dev_err'
-  _dev_err(dev, dev_fmt(fmt), ##__VA_ARGS__)
-                                ^
-In file included from ../include/linux/kernel.h:15:0,
-                 from ../include/linux/list.h:9,
-                 from ../include/linux/kobject.h:19,
-                 from ../include/linux/device.h:16,
-                 from ../include/linux/gpio/driver.h:5,
-                 from ../drivers/pinctrl/mediatek/pinctrl-moore.c:11:
-../drivers/pinctrl/mediatek/pinctrl-moore.c: In function 'mtk_moore_pinctrl_probe':
-../include/linux/build_bug.h:16:45: error: bit-field '<anonymous>' width not an integer constant
- #define BUILD_BUG_ON_ZERO(e) (sizeof(struct { int:(-!!(e)); }))
-                                             ^
-../include/linux/compiler.h:349:28: note: in expansion of macro 'BUILD_BUG_ON_ZERO'
- #define __must_be_array(a) BUILD_BUG_ON_ZERO(__same_type((a), &(a)[0]))
-                            ^
-../include/linux/kernel.h:72:59: note: in expansion of macro '__must_be_array'
- #define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]) + __must_be_array(arr))
-                                                           ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c:643:31: note: in expansion of macro 'ARRAY_SIZE'
-  mtk_desc.num_custom_params = ARRAY_SIZE(mtk_custom_bindings);
-                               ^
-../drivers/pinctrl/mediatek/pinctrl-moore.c: At top level:
-../drivers/pinctrl/mediatek/pinctrl-moore.c:22:44: warning: 'mtk_custom_bindings' defined but not used [-Wunused-variable]
- static const struct pinconf_generic_params mtk_custom_bindings[] = {
-                                            ^
-cc1: some warnings being treated as errors
-../scripts/Makefile.build:276: recipe for target 'drivers/pinctrl/mediatek/pinctrl-moore.o' failed
-make[4]: *** [drivers/pinctrl/mediatek/pinctrl-moore.o] Error 1
+Do you have a patch that show how consumer driver used interconnect to
+update their requirement.
 
-Fixes: b5af33df50e9 ("pinctrl: mediatek: improve Kconfig dependencies")
-Cc: stable@vger.kernel.org
-Reported-by: Randy Dunlap <rdunlap@infradead.org>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- drivers/pinctrl/mediatek/Kconfig | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
-index 1817786..a005cbc 100644
---- a/drivers/pinctrl/mediatek/Kconfig
-+++ b/drivers/pinctrl/mediatek/Kconfig
-@@ -45,12 +45,14 @@ config PINCTRL_MT2701
- config PINCTRL_MT7623
- 	bool "Mediatek MT7623 pin control with generic binding"
- 	depends on MACH_MT7623 || COMPILE_TEST
-+	depends on OF
- 	default MACH_MT7623
- 	select PINCTRL_MTK_MOORE
- 
- config PINCTRL_MT7629
- 	bool "Mediatek MT7629 pin control"
- 	depends on MACH_MT7629 || COMPILE_TEST
-+	depends on OF
- 	default MACH_MT7629
- 	select PINCTRL_MTK_MOORE
- 
-@@ -92,6 +94,7 @@ config PINCTRL_MT6797
- 
- config PINCTRL_MT7622
- 	bool "MediaTek MT7622 pin control"
-+	depends on OF
- 	depends on ARM64 || COMPILE_TEST
- 	default ARM64 && ARCH_MEDIATEK
- 	select PINCTRL_MTK_MOORE
--- 
-1.9.1
+Thanks,
+Henry
