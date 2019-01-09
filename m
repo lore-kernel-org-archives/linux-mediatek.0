@@ -1,15 +1,14 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 1/9] drm/mediatek: recalculate hdmi phy clock of MT2701 by
- querying hardware
-Date: Wed, 9 Jan 2019 17:55:17 +0100
-Message-ID: <3d3f3726-0eef-00c5-1444-a4112af683ac@gmail.com>
+Subject: Re: [PATCH 9/9] drm/mediatek: add dpi dual edge support
+Date: Wed, 9 Jan 2019 17:58:44 +0100
+Message-ID: <ae8eeb33-43cd-f4b8-a564-95eeecea7d31@gmail.com>
 References: <1546585439-30455-1-git-send-email-chunhui.dai@mediatek.com>
- <1546585439-30455-2-git-send-email-chunhui.dai@mediatek.com>
+ <1546585439-30455-10-git-send-email-chunhui.dai@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1546585439-30455-2-git-send-email-chunhui.dai@mediatek.com>
+In-Reply-To: <1546585439-30455-10-git-send-email-chunhui.dai@mediatek.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
 To: chunhui dai <chunhui.dai@mediatek.com>, --to=Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, CK Hu <ck.hu@mediatek.com>
@@ -19,141 +18,96 @@ List-Id: linux-mediatek@lists.infradead.org
 
 
 On 04/01/2019 08:03, chunhui dai wrote:
-> Recalculate the rate of this clock, by querying hardware.
+> DPI sample on rising and falling edge. It can reduce half data io.
 > 
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 > Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
 > ---
->  drivers/gpu/drm/mediatek/mtk_hdmi_phy.c        |  7 ++--
->  drivers/gpu/drm/mediatek/mtk_hdmi_phy.h        |  3 +-
->  drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c | 49 ++++++++++++++++++++++++++
->  drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c |  8 +++++
->  4 files changed, 61 insertions(+), 6 deletions(-)
+>  drivers/gpu/drm/mediatek/mtk_dpi.c | 30 ++++++++++++++++++++++++++++++
+>  1 file changed, 30 insertions(+)
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-> index 4ef9c57..79e737d 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-> @@ -29,12 +29,11 @@ long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
->  	return rate;
->  }
->  
-> -unsigned long mtk_hdmi_pll_recalc_rate(struct clk_hw *hw,
-> -				       unsigned long parent_rate)
-> +u32 mtk_hdmi_phy_read(struct mtk_hdmi_phy *hdmi_phy, u32 offset)
->  {
-> -	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
-> +	void __iomem *reg = hdmi_phy->regs + offset;
->  
-> -	return hdmi_phy->pll_rate;
-> +	return readl(reg);
->  }
->  
->  void mtk_hdmi_phy_clear_bits(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
-> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-> index f39b1fc..fdad8b1 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-> @@ -41,6 +41,7 @@ struct mtk_hdmi_phy {
->  	unsigned int ibias_up;
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> index 4a2f4a6..acb4f47 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> @@ -117,6 +117,7 @@ struct mtk_dpi_conf {
+>  	unsigned int (*cal_factor)(int clock);
+>  	u32 reg_h_fre_con;
+>  	bool edge_sel_en;
+> +	bool dual_edge;
 >  };
 >  
-> +u32 mtk_hdmi_phy_read(struct mtk_hdmi_phy *hdmi_phy, u32 offset);
->  void mtk_hdmi_phy_clear_bits(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
->  			     u32 bits);
->  void mtk_hdmi_phy_set_bits(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
-> @@ -50,8 +51,6 @@ void mtk_hdmi_phy_mask(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
->  struct mtk_hdmi_phy *to_mtk_hdmi_phy(struct clk_hw *hw);
->  long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
->  			     unsigned long *parent_rate);
-> -unsigned long mtk_hdmi_pll_recalc_rate(struct clk_hw *hw,
-> -				       unsigned long parent_rate);
->  
->  extern struct platform_driver mtk_hdmi_phy_driver;
->  extern struct mtk_hdmi_phy_conf mtk_hdmi_phy_8173_conf;
-> diff --git a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-> index fcc42dc..b5ed6b7 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-> @@ -153,6 +153,55 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
->  			  RG_HDMITX_DRV_IBIAS_MASK);
->  	return 0;
+>  static void mtk_dpi_mask(struct mtk_dpi *dpi, u32 offset, u32 val, u32 mask)
+> @@ -353,6 +354,15 @@ static void mtk_dpi_config_disable_edge(struct mtk_dpi *dpi)
+>  		mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, 0, EDGE_SEL_EN);
 >  }
-> +static unsigned long mtk_hdmi_pll_recalc_rate(struct clk_hw *hw,
-> +				       unsigned long parent_rate)
-> +{
-> +	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
-> +	unsigned long out_rate, val;
-> +
-> +	val = (mtk_hdmi_phy_read(hdmi_phy, HDMI_CON6)
-> +			& RG_HTPLL_PREDIV_MASK) >> RG_HTPLL_PREDIV;
-> +	switch (val) {
-> +	case 0x00:
-> +		out_rate = parent_rate;
-> +		break;
-> +	case 0x01:
-> +		out_rate = parent_rate / 2;
-> +		break;
-> +	default:
-> +		out_rate = parent_rate / 4;
-> +		break;
-> +	}
-> +
-> +	val = (mtk_hdmi_phy_read(hdmi_phy, HDMI_CON6)
-> +			& RG_HTPLL_FBKDIV_MASK) >> RG_HTPLL_FBKDIV;
-> +	out_rate = out_rate * (val + 1) * 2;
-> +	val = (mtk_hdmi_phy_read(hdmi_phy, HDMI_CON2)
-> +			& RG_HDMITX_TX_POSDIV_MASK) >> RG_HDMITX_TX_POSDIV;
-> +	switch (val) {
-> +	case 0x00:
-> +		out_rate = out_rate;
-> +		break;
-> +	case 0x01:
-> +		out_rate = out_rate / 2;
-> +		break;
-> +	case 0x02:
-> +		out_rate = out_rate / 4;
-> +		break;
-> +	case 0x03:
-> +		out_rate = out_rate / 8;
-> +		break;
-> +	default:
-> +		break;
-> +	}
-> +
-> +	if (mtk_hdmi_phy_read(hdmi_phy, HDMI_CON2) & RG_HDMITX_EN_TX_POSDIV)
+>  
+> +static void mtk_dpi_config_dual_edge(struct mtk_dpi *dpi)
 
-Is this path time critical? You are reading the same register twice instead of
-saving the read in a local varibale.
+I think it is clearer if you rename the function to something like:
+mtk_dpi_enable_dual_edge and call it in mtk_dpi_set_display_mode if
+dpi->conf->dual_edge is true.
 
 Regards,
 Matthias
 
-> +		out_rate = out_rate / 5;
-> +
-> +	hdmi_phy->pll_rate = out_rate;
-> +
-> +	return hdmi_phy->pll_rate;
+> +{
+> +	if (dpi->conf->dual_edge) {
+> +		mtk_dpi_mask(dpi, DPI_DDR_SETTING, DDR_EN |
+> +				DDR_4PHASE, DDR_EN | DDR_4PHASE);
+> +		mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING, EDGE_SEL, EDGE_SEL);
+> +	}
 > +}
+> +
+>  static void mtk_dpi_config_color_format(struct mtk_dpi *dpi,
+>  					enum mtk_dpi_out_color_format format)
+>  {
+> @@ -509,6 +519,7 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+>  	mtk_dpi_config_color_format(dpi, dpi->color_format);
+>  	mtk_dpi_config_2n_h_fre(dpi);
+>  	mtk_dpi_config_disable_edge(dpi);
+> +	mtk_dpi_config_dual_edge(dpi);
+>  	mtk_dpi_sw_reset(dpi, false);
 >  
->  static const struct clk_ops mtk_hdmi_phy_pll_ops = {
->  	.prepare = mtk_hdmi_pll_prepare,
-> diff --git a/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
-> index ed5916b..cb23c1e 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
-> @@ -285,6 +285,14 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
 >  	return 0;
+> @@ -669,6 +680,16 @@ static unsigned int mt2701_calculate_factor(int clock)
+>  		return 1;
 >  }
 >  
-> +static unsigned long mtk_hdmi_pll_recalc_rate(struct clk_hw *hw,
-> +				       unsigned long parent_rate)
+> +static unsigned int mt8183_calculate_factor(int clock)
 > +{
-> +	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
-> +
-> +	return hdmi_phy->pll_rate;
+> +	if (clock <= 27000)
+> +		return 8;
+> +	else if (clock <= 167000)
+> +		return 4;
+> +	else
+> +		return 2;
 > +}
 > +
->  static const struct clk_ops mtk_hdmi_phy_pll_ops = {
->  	.prepare = mtk_hdmi_pll_prepare,
->  	.unprepare = mtk_hdmi_pll_unprepare,
+>  static const struct mtk_dpi_conf mt8173_conf = {
+>  	.cal_factor = mt8173_calculate_factor,
+>  	.reg_h_fre_con = 0xe0,
+> @@ -680,6 +701,12 @@ static unsigned int mt2701_calculate_factor(int clock)
+>  	.edge_sel_en = true,
+>  };
+>  
+> +static const struct mtk_dpi_conf mt8183_conf = {
+> +	.cal_factor = mt8183_calculate_factor,
+> +	.reg_h_fre_con = 0xe0,
+> +	.dual_edge = true,
+> +};
+> +
+>  static int mtk_dpi_probe(struct platform_device *pdev)
+>  {
+>  	struct device *dev = &pdev->dev;
+> @@ -775,6 +802,9 @@ static int mtk_dpi_remove(struct platform_device *pdev)
+>  	{ .compatible = "mediatek,mt8173-dpi",
+>  	  .data = &mt8173_conf,
+>  	},
+> +	{ .compatible = "mediatek,mt8183-dpi",
+> +	  .data = &mt8183_conf,
+> +	},
+>  	{ },
+>  };
+>  
 > 
