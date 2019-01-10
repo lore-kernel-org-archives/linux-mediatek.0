@@ -1,113 +1,66 @@
-From: Bin Liu <b-liu@ti.com>
-Subject: Re: [PATCH 4/4] usb: musb: Add support for MediaTek musb controller
-Date: Thu, 10 Jan 2019 08:18:40 -0600
-Message-ID: <20190110141840.GA18026@uda0271908>
-References: <1545896066-897-1-git-send-email-min.guo@mediatek.com>
- <1545896066-897-5-git-send-email-min.guo@mediatek.com>
- <20190108154441.GG25910@uda0271908>
- <1547037068.4433.122.camel@mhfsdcap03>
- <20190109140144.GI25910@uda0271908>
- <1547105062.4433.144.camel@mhfsdcap03>
+From: "Richter, Robert" <Robert.Richter-YGCgFSpz5w/QT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: Remove inconsistent use of 'arm,armv8'
+ compatible string
+Date: Thu, 10 Jan 2019 14:45:51 +0000
+Message-ID: <20190110144537.p5setcurwu6bwrtl@rric.localdomain>
+References: <20190109202934.29304-1-robh@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1547105062.4433.144.camel@mhfsdcap03>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Min Guo <min.guo@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, chunfeng.yun@mediatek.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Yonglong Wu <yonglong.wu@mediatek.com>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190109202934.29304-1-robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Content-Language: en-US
+Content-ID: <09F322A8707A4F4AB2C73BCBE4014E40-Tk6F3M/euE6cE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "Nair, Jayachandran" <Jayachandran.Nair-YGCgFSpz5w/QT0dZR+AlfA@public.gmane.org>
+Cc: Nishanth Menon <nm-l0cyMroinI0@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, "linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Gregory Clement <gregory.clement-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>linu
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Min,
+Rob,
 
-Please briefly summarize the controller differences in the commit log,
-such as
-
-- WIC interrupt registers;
-- data toggle bit;
-- no dedicated DMA interrupt line;
-
-so that we can quickly understand the core driver is modified
-accordingly to handle the differences.
-
-On Thu, Jan 10, 2019 at 03:24:22PM +0800, Min Guo wrote:
-> Hi Bin,
-
-[snip]
-
-> > > > > +		musb_writeb(mbase, MUSB_INTRUSB,
-> > > > > +			musb_readb(mbase, MUSB_INTRUSB));
-> > > > 
-> > > > For this clearing register bit operation, please create platform hooks
-> > > > musb_clearb() and musb_clearw() in struct musb_platform_ops instead,
-> > > > then follow how musb_readb() pointer is assigned in
-> > > > musb_init_controller() to use the W1C version for mtk platform.
-> > > 
-> > > I have tried implementing musb_readb(), musb_readw() interface with
-> > > interrupt status W1C function in struct musb_platform_ops. But this
-> > > interface will require a global variable to hold MAC basic address for
-> > > judgment, and then special handling of the interrupt state. A global
-> > > variable will make the driver work with only a single instance, so it
-> > > can't work on some MTK platforms which have two instances.
-> > 
-> > I didn't mean to modify musb_read*(), but
-> > 
-> > > How about creating musb_clearb/w() as following:
-> > > void (*clearb)(void __iomem *addr, unsigned offset, u8 data);
-> > > void (*clearw)(void __iomem *addr, unsigned offset, u16 data);
-> > 
-> > this is what I was asking for, similar to what musb_readb/w() is
-> > implemented.
+On 09.01.19 14:29:34, Rob Herring wrote:
+> External Email
 > 
-> I will prepare a patch for musb_clearb/w().
-
-This doesn't have to be a separate patch.
-
-> > > > > +		musb_writew(mbase, MUSB_INTRRX,
-> > > > > +			musb_readw(mbase, MUSB_INTRRX));
-> > > > > +		musb_writew(mbase, MUSB_INTRTX,
-> > > > > +			musb_readw(mbase, MUSB_INTRTX));
-> > > > > +	}
-
-[snip]
-
-> > > > > +	/* MediaTek controller has private toggle register */
-> > > > 
-> > > > only one toggle register for all endpoints? how does it handle
-> > > > difference toggle values for different endpoints?
-> > > 
-> > > MediaTek controller has separate registers to describe TX/RX toggle.
-> > 
-> > Is it one register per endpoint?
+> The 'arm,armv8' compatible string is only for software models. It adds
+> little value otherwise and is inconsistently used as a fallback on some
+> platforms. Remove it from those platforms.
 > 
-> MUSB_RXTOG/MUSB_TXTOG is common register, each bit reflects the toggle
-> state of an endpoint. bit[0] not used,bit[1~8] corresponds to ep[1~8]
+> This fixes warnings generated by the DT schema.
 > 
-> > > 
-> > > > > +	if (musb->ops->quirks & MUSB_MTK_QUIRKS) {
-> > > > > +		u16 toggle;
-> > > > > +		u8 epnum = qh->hw_ep->epnum;
-> > > > > +
-> > > > > +		if (is_in)
-> > > > > +			toggle = musb_readl(musb->mregs, MUSB_RXTOG);
-> > 
-> > this line seems telling there is just *one* register for all endpoints.
+> Reported-by: Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>
+> Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+> Cc: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
+> Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> ---
+> armsoc folks, Please apply directly.
+
+> diff --git a/arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi b/arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi
+> index ff5c4c47b22b..c616132f7d6d 100644
+> --- a/arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi
+> +++ b/arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi
+> @@ -27,28 +27,28 @@
 > 
-> Yes, all endpoint share this register, endpoint and bit are one-to-one
-> correspondence.
+>                 cpu@0 {
+>                         device_type = "cpu";
+> -                       compatible = "cavium,thunder2", "brcm,vulcan", "arm,armv8";
+> +                       compatible = "cavium,thunder2";
 
-Okay, thanks. Sorry I missed the bit operation in the code below.
+We are just checking if removing the "brcm,vulcan" string has any
+impact on early silicon revisions we want to support (see also
+BRCM_CPU_PART_VULCAN).
 
-> 
-> > > > 
-> > > > should use musb_readw() instead? MUSB_RXTOG seems to be 16bit.
-> > > 
-> > > Ok
-> > > 
-> > > > > +		else
-> > > > > +			toggle = musb_readl(musb->mregs, MUSB_TXTOG);
-> > > > > +
-> > > > > +		csr = toggle & (1 << epnum);
+Maybe you make this a separate change?
 
-Regards,
--Bin.
+-Robert
+
+>                         reg = <0x0 0x0>;
+>                         enable-method = "psci";
+>                 };
