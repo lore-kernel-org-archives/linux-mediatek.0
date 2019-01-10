@@ -1,115 +1,100 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH 1/9] drm/mediatek: recalculate hdmi phy clock of MT2701
- by querying hardware
-Date: Thu, 10 Jan 2019 09:47:09 +0800
-Message-ID: <1547084829.27684.8.camel@mtksdaap41>
-References: <1546585439-30455-1-git-send-email-chunhui.dai@mediatek.com>
- <1546585439-30455-2-git-send-email-chunhui.dai@mediatek.com>
+From: Nishanth Menon <nm-l0cyMroinI0@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: Remove inconsistent use of 'arm,armv8'
+ compatible string
+Date: Wed, 9 Jan 2019 20:27:09 -0600
+Message-ID: <20190110022709.kh5vlave65jn7m4g@kahuna>
+References: <20190109202934.29304-1-robh@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1546585439-30455-2-git-send-email-chunhui.dai@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: chunhui dai <chunhui.dai@mediatek.com>
-Cc: jamesjj.liao@mediatek.com, Ryder Lee <ryder.lee@mediatek.com>, jitao.shi@mediatek.com, srv_heupstream@mediatek.com, Stephen Boyd <sboyd@kernel.org>, --to=Michael Turquette <mturquette@baylibre.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Colin Ian King <colin.king@canonical.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20190109202934.29304-1-robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Gregory Clement <gregory.clement-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, bcm-kernel-feedback-list@broadcom
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIENodW5odWk6CgoKT24gRnJpLCAyMDE5LTAxLTA0IGF0IDE1OjAzICswODAwLCBjaHVuaHVp
-IGRhaSB3cm90ZToKPiBSZWNhbGN1bGF0ZSB0aGUgcmF0ZSBvZiB0aGlzIGNsb2NrLCBieSBxdWVy
-eWluZyBoYXJkd2FyZS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBjaHVuaHVpIGRhaSA8Y2h1bmh1aS5k
-YWlAbWVkaWF0ZWsuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hk
-bWlfcGh5LmMgICAgICAgIHwgIDcgKystLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2hkbWlfcGh5LmggICAgICAgIHwgIDMgKy0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19tdDI3MDFfaGRtaV9waHkuYyB8IDQ5ICsrKysrKysrKysrKysrKysrKysrKysrKysrCj4gIGRy
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMgfCAgOCArKysrKwo+
-ICA0IGZpbGVzIGNoYW5nZWQsIDYxIGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pCj4gCj4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuYyBiL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuYwo+IGluZGV4IDRlZjljNTcuLjc5
-ZTczN2QgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3Bo
-eS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3BoeS5jCj4gQEAg
-LTI5LDEyICsyOSwxMSBAQCBsb25nIG10a19oZG1pX3BsbF9yb3VuZF9yYXRlKHN0cnVjdCBjbGtf
-aHcgKmh3LCB1bnNpZ25lZCBsb25nIHJhdGUsCj4gIAlyZXR1cm4gcmF0ZTsKPiAgfQo+ICAKPiAt
-dW5zaWduZWQgbG9uZyBtdGtfaGRtaV9wbGxfcmVjYWxjX3JhdGUoc3RydWN0IGNsa19odyAqaHcs
-Cj4gLQkJCQkgICAgICAgdW5zaWduZWQgbG9uZyBwYXJlbnRfcmF0ZSkKPiArdTMyIG10a19oZG1p
-X3BoeV9yZWFkKHN0cnVjdCBtdGtfaGRtaV9waHkgKmhkbWlfcGh5LCB1MzIgb2Zmc2V0KQo+ICB7
-Cj4gLQlzdHJ1Y3QgbXRrX2hkbWlfcGh5ICpoZG1pX3BoeSA9IHRvX210a19oZG1pX3BoeShodyk7
-Cj4gKwl2b2lkIF9faW9tZW0gKnJlZyA9IGhkbWlfcGh5LT5yZWdzICsgb2Zmc2V0Owo+ICAKPiAt
-CXJldHVybiBoZG1pX3BoeS0+cGxsX3JhdGU7Cj4gKwlyZXR1cm4gcmVhZGwocmVnKTsKCnJlZyBp
-cyB1c2VkIG9ubHkgb25jZSwgc28KCnJldHVybiByZWFkbChoZG1pX3BoeS0+cmVncyArIG9mZnNl
-dCk7Cgo+ICB9Cj4gIAo+ICB2b2lkIG10a19oZG1pX3BoeV9jbGVhcl9iaXRzKHN0cnVjdCBtdGtf
-aGRtaV9waHkgKmhkbWlfcGh5LCB1MzIgb2Zmc2V0LAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
-dS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmggYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2hkbWlfcGh5LmgKPiBpbmRleCBmMzliMWZjLi5mZGFkOGIxIDEwMDY0NAo+IC0tLSBhL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuaAo+ICsrKyBiL2RyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuaAo+IEBAIC00MSw2ICs0MSw3IEBAIHN0cnVjdCBt
-dGtfaGRtaV9waHkgewo+ICAJdW5zaWduZWQgaW50IGliaWFzX3VwOwo+ICB9Owo+ICAKPiArdTMy
-IG10a19oZG1pX3BoeV9yZWFkKHN0cnVjdCBtdGtfaGRtaV9waHkgKmhkbWlfcGh5LCB1MzIgb2Zm
-c2V0KTsKPiAgdm9pZCBtdGtfaGRtaV9waHlfY2xlYXJfYml0cyhzdHJ1Y3QgbXRrX2hkbWlfcGh5
-ICpoZG1pX3BoeSwgdTMyIG9mZnNldCwKPiAgCQkJICAgICB1MzIgYml0cyk7Cj4gIHZvaWQgbXRr
-X2hkbWlfcGh5X3NldF9iaXRzKHN0cnVjdCBtdGtfaGRtaV9waHkgKmhkbWlfcGh5LCB1MzIgb2Zm
-c2V0LAo+IEBAIC01MCw4ICs1MSw2IEBAIHZvaWQgbXRrX2hkbWlfcGh5X21hc2soc3RydWN0IG10
-a19oZG1pX3BoeSAqaGRtaV9waHksIHUzMiBvZmZzZXQsCj4gIHN0cnVjdCBtdGtfaGRtaV9waHkg
-KnRvX210a19oZG1pX3BoeShzdHJ1Y3QgY2xrX2h3ICpodyk7Cj4gIGxvbmcgbXRrX2hkbWlfcGxs
-X3JvdW5kX3JhdGUoc3RydWN0IGNsa19odyAqaHcsIHVuc2lnbmVkIGxvbmcgcmF0ZSwKPiAgCQkJ
-ICAgICB1bnNpZ25lZCBsb25nICpwYXJlbnRfcmF0ZSk7Cj4gLXVuc2lnbmVkIGxvbmcgbXRrX2hk
-bWlfcGxsX3JlY2FsY19yYXRlKHN0cnVjdCBjbGtfaHcgKmh3LAo+IC0JCQkJICAgICAgIHVuc2ln
-bmVkIGxvbmcgcGFyZW50X3JhdGUpOwo+ICAKPiAgZXh0ZXJuIHN0cnVjdCBwbGF0Zm9ybV9kcml2
-ZXIgbXRrX2hkbWlfcGh5X2RyaXZlcjsKPiAgZXh0ZXJuIHN0cnVjdCBtdGtfaGRtaV9waHlfY29u
-ZiBtdGtfaGRtaV9waHlfODE3M19jb25mOwo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX210MjcwMV9oZG1pX3BoeS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19tdDI3MDFfaGRtaV9waHkuYwo+IGluZGV4IGZjYzQyZGMuLmI1ZWQ2YjcgMTAwNjQ0Cj4g
-LS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDI3MDFfaGRtaV9waHkuYwo+ICsr
-KyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQyNzAxX2hkbWlfcGh5LmMKPiBAQCAt
-MTUzLDYgKzE1Myw1NSBAQCBzdGF0aWMgaW50IG10a19oZG1pX3BsbF9zZXRfcmF0ZShzdHJ1Y3Qg
-Y2xrX2h3ICpodywgdW5zaWduZWQgbG9uZyByYXRlLAo+ICAJCQkgIFJHX0hETUlUWF9EUlZfSUJJ
-QVNfTUFTSyk7Cj4gIAlyZXR1cm4gMDsKPiAgfQo+ICtzdGF0aWMgdW5zaWduZWQgbG9uZyBtdGtf
-aGRtaV9wbGxfcmVjYWxjX3JhdGUoc3RydWN0IGNsa19odyAqaHcsCj4gKwkJCQkgICAgICAgdW5z
-aWduZWQgbG9uZyBwYXJlbnRfcmF0ZSkKPiArewo+ICsJc3RydWN0IG10a19oZG1pX3BoeSAqaGRt
-aV9waHkgPSB0b19tdGtfaGRtaV9waHkoaHcpOwo+ICsJdW5zaWduZWQgbG9uZyBvdXRfcmF0ZSwg
-dmFsOwo+ICsKPiArCXZhbCA9IChtdGtfaGRtaV9waHlfcmVhZChoZG1pX3BoeSwgSERNSV9DT042
-KQo+ICsJCQkmIFJHX0hUUExMX1BSRURJVl9NQVNLKSA+PiBSR19IVFBMTF9QUkVESVY7Cj4gKwlz
-d2l0Y2ggKHZhbCkgewo+ICsJY2FzZSAweDAwOgo+ICsJCW91dF9yYXRlID0gcGFyZW50X3JhdGU7
-Cj4gKwkJYnJlYWs7Cj4gKwljYXNlIDB4MDE6Cj4gKwkJb3V0X3JhdGUgPSBwYXJlbnRfcmF0ZSAv
-IDI7Cj4gKwkJYnJlYWs7Cj4gKwlkZWZhdWx0Ogo+ICsJCW91dF9yYXRlID0gcGFyZW50X3JhdGUg
-LyA0Owo+ICsJCWJyZWFrOwoKSWYgdGhlIHZhbCB3b3VsZCBub3QgYmUgMywgbWF5YmUgb3V0X3Jh
-dGUgY291bGQgYmUgY2FsY3VsYXRlIGFzCgpvdXRfcmF0ZSA+Pj0gdmFsOwoKPiArCX0KPiArCj4g
-Kwl2YWwgPSAobXRrX2hkbWlfcGh5X3JlYWQoaGRtaV9waHksIEhETUlfQ09ONikKPiArCQkJJiBS
-R19IVFBMTF9GQktESVZfTUFTSykgPj4gUkdfSFRQTExfRkJLRElWOwo+ICsJb3V0X3JhdGUgPSBv
-dXRfcmF0ZSAqICh2YWwgKyAxKSAqIDI7CgpvdXRfcmF0ZSAqPSAodmFsICsgMSkgKiAyOwoKPiAr
-CXZhbCA9IChtdGtfaGRtaV9waHlfcmVhZChoZG1pX3BoeSwgSERNSV9DT04yKQo+ICsJCQkmIFJH
-X0hETUlUWF9UWF9QT1NESVZfTUFTSykgPj4gUkdfSERNSVRYX1RYX1BPU0RJVjsKPiArCXN3aXRj
-aCAodmFsKSB7Cj4gKwljYXNlIDB4MDA6Cj4gKwkJb3V0X3JhdGUgPSBvdXRfcmF0ZTsKPiArCQli
-cmVhazsKPiArCWNhc2UgMHgwMToKPiArCQlvdXRfcmF0ZSA9IG91dF9yYXRlIC8gMjsKPiArCQli
-cmVhazsKPiArCWNhc2UgMHgwMjoKPiArCQlvdXRfcmF0ZSA9IG91dF9yYXRlIC8gNDsKPiArCQli
-cmVhazsKPiArCWNhc2UgMHgwMzoKPiArCQlvdXRfcmF0ZSA9IG91dF9yYXRlIC8gODsKPiArCQli
-cmVhazsKPiArCWRlZmF1bHQ6Cj4gKwkJYnJlYWs7Cj4gKwl9CgpvdXRfcmF0ZSA+Pj0gdmFsOwoK
-UmVnYXJkcywKQ0sKCj4gKwo+ICsJaWYgKG10a19oZG1pX3BoeV9yZWFkKGhkbWlfcGh5LCBIRE1J
-X0NPTjIpICYgUkdfSERNSVRYX0VOX1RYX1BPU0RJVikKPiArCQlvdXRfcmF0ZSA9IG91dF9yYXRl
-IC8gNTsKPiArCj4gKwloZG1pX3BoeS0+cGxsX3JhdGUgPSBvdXRfcmF0ZTsKPiArCj4gKwlyZXR1
-cm4gaGRtaV9waHktPnBsbF9yYXRlOwo+ICt9Cj4gIAo+ICBzdGF0aWMgY29uc3Qgc3RydWN0IGNs
-a19vcHMgbXRrX2hkbWlfcGh5X3BsbF9vcHMgPSB7Cj4gIAkucHJlcGFyZSA9IG10a19oZG1pX3Bs
-bF9wcmVwYXJlLAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210
-ODE3M19oZG1pX3BoeS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxNzNfaGRt
-aV9waHkuYwo+IGluZGV4IGVkNTkxNmIuLmNiMjNjMWUgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19tdDgxNzNfaGRtaV9waHkuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMKPiBAQCAtMjg1LDYgKzI4NSwxNCBA
-QCBzdGF0aWMgaW50IG10a19oZG1pX3BsbF9zZXRfcmF0ZShzdHJ1Y3QgY2xrX2h3ICpodywgdW5z
-aWduZWQgbG9uZyByYXRlLAo+ICAJcmV0dXJuIDA7Cj4gIH0KPiAgCj4gK3N0YXRpYyB1bnNpZ25l
-ZCBsb25nIG10a19oZG1pX3BsbF9yZWNhbGNfcmF0ZShzdHJ1Y3QgY2xrX2h3ICpodywKPiArCQkJ
-CSAgICAgICB1bnNpZ25lZCBsb25nIHBhcmVudF9yYXRlKQo+ICt7Cj4gKwlzdHJ1Y3QgbXRrX2hk
-bWlfcGh5ICpoZG1pX3BoeSA9IHRvX210a19oZG1pX3BoeShodyk7Cj4gKwo+ICsJcmV0dXJuIGhk
-bWlfcGh5LT5wbGxfcmF0ZTsKPiArfQo+ICsKPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBjbGtfb3Bz
-IG10a19oZG1pX3BoeV9wbGxfb3BzID0gewo+ICAJLnByZXBhcmUgPSBtdGtfaGRtaV9wbGxfcHJl
-cGFyZSwKPiAgCS51bnByZXBhcmUgPSBtdGtfaGRtaV9wbGxfdW5wcmVwYXJlLAoKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
-IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
-ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On 14:29-20190109, Rob Herring wrote:
+> The 'arm,armv8' compatible string is only for software models. It adds
+> little value otherwise and is inconsistently used as a fallback on some
+> platforms. Remove it from those platforms.
+> 
+> This fixes warnings generated by the DT schema.
+> 
+> Reported-by: Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>
+> Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+> Cc: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
+> Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> ---
+[...]
+
+ARM SoC maintainers, At least on a quick look (I could be wrong), I
+think we don't have any explicit processor bindings documentation.
+
+However, most of SoC folks seem to key off matches else where I
+guess..
+
+Not sure, while at this, you if you are planning on fixing up
+Documentation/devicetree/bindings/arm/arm-boards:
+compatible = "arm,cortex-a53","arm,armv8";
+Documentation/devicetree/bindings/arm/cpu-capacity.txt:
+compatible = "arm,cortex-a53","arm,armv8";
+
+Anyways, for TI SoC:
+
+>  arch/arm64/boot/dts/ti/k3-am654.dtsi          |   8 +-
+> diff --git a/arch/arm64/boot/dts/ti/k3-am654.dtsi b/arch/arm64/boot/dts/ti/k3-am654.dtsi
+> index 2affa6f6617e..b221abf43ac2 100644
+> --- a/arch/arm64/boot/dts/ti/k3-am654.dtsi
+> +++ b/arch/arm64/boot/dts/ti/k3-am654.dtsi
+> @@ -34,7 +34,7 @@
+>  		};
+>  
+>  		cpu0: cpu@0 {
+> -			compatible = "arm,cortex-a53", "arm,armv8";
+> +			compatible = "arm,cortex-a53";
+>  			reg = <0x000>;
+>  			device_type = "cpu";
+>  			enable-method = "psci";
+> @@ -48,7 +48,7 @@
+>  		};
+>  
+>  		cpu1: cpu@1 {
+> -			compatible = "arm,cortex-a53", "arm,armv8";
+> +			compatible = "arm,cortex-a53";
+>  			reg = <0x001>;
+>  			device_type = "cpu";
+>  			enable-method = "psci";
+> @@ -62,7 +62,7 @@
+>  		};
+>  
+>  		cpu2: cpu@100 {
+> -			compatible = "arm,cortex-a53", "arm,armv8";
+> +			compatible = "arm,cortex-a53";
+>  			reg = <0x100>;
+>  			device_type = "cpu";
+>  			enable-method = "psci";
+> @@ -76,7 +76,7 @@
+>  		};
+>  
+>  		cpu3: cpu@101 {
+> -			compatible = "arm,cortex-a53", "arm,armv8";
+> +			compatible = "arm,cortex-a53";
+>  			reg = <0x101>;
+>  			device_type = "cpu";
+>  			enable-method = "psci";
+
+Acked-by: Nishanth Menon <nm-l0cyMroinI0@public.gmane.org>
+
+-- 
+Regards,
+Nishanth Menon
