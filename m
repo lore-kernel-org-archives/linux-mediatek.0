@@ -1,66 +1,50 @@
-From: "Richter, Robert" <Robert.Richter-YGCgFSpz5w/QT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: Remove inconsistent use of 'arm,armv8'
- compatible string
-Date: Thu, 10 Jan 2019 14:45:51 +0000
-Message-ID: <20190110144537.p5setcurwu6bwrtl@rric.localdomain>
-References: <20190109202934.29304-1-robh@kernel.org>
+From: "Frank Wunderlich" <frank-w@public-files.de>
+Subject: Aw: Re: [PATCH] drm/mediatek: Add MTK Framebuffer-Device (mt7623)
+Date: Thu, 10 Jan 2019 20:01:37 +0100
+Message-ID: <trinity-0da588a3-1277-4421-ad6b-1f6aeb129dd6-1547146897687@3c-app-gmx-bs35>
+References: <20190102084917.4049-1-frank-w@public-files.de>
+ <20190107103640.GH21184@phenom.ffwll.local>
+ <CAKMK7uEqxz4TAt_iwEC+dMWboVxCeCduyABsSwD0Ns7k=Z_UWA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190109202934.29304-1-robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Content-Language: en-US
-Content-ID: <09F322A8707A4F4AB2C73BCBE4014E40-Tk6F3M/euE6cE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "Nair, Jayachandran" <Jayachandran.Nair-YGCgFSpz5w/QT0dZR+AlfA@public.gmane.org>
-Cc: Nishanth Menon <nm-l0cyMroinI0@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, "linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Gregory Clement <gregory.clement-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>linu
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAKMK7uEqxz4TAt_iwEC+dMWboVxCeCduyABsSwD0Ns7k=Z_UWA@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Daniel Vetter <daniel@ffwll.ch>
+Cc: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Alexander Ryabchenko <d3adme4t@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Rob,
+Hi Daniel,
 
-On 09.01.19 14:29:34, Rob Herring wrote:
-> External Email
+> > Would be good to use the new generic fbdev emulation code here, for even
+> > less code. Or at least know why this isn't possible to use for mtk (and
+> > maybe address that in the core code). Hand-rolling fbdev code shouldn't be
+> > needed anymore.
 > 
-> The 'arm,armv8' compatible string is only for software models. It adds
-> little value otherwise and is inconsistently used as a fallback on some
-> platforms. Remove it from those platforms.
-> 
-> This fixes warnings generated by the DT schema.
-> 
-> Reported-by: Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>
-> Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-> Cc: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
-> Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> ---
-> armsoc folks, Please apply directly.
+> Back on the mailing list, no private replies please:
 
-> diff --git a/arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi b/arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi
-> index ff5c4c47b22b..c616132f7d6d 100644
-> --- a/arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi
-> +++ b/arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi
-> @@ -27,28 +27,28 @@
-> 
->                 cpu@0 {
->                         device_type = "cpu";
-> -                       compatible = "cavium,thunder2", "brcm,vulcan", "arm,armv8";
-> +                       compatible = "cavium,thunder2";
+i don't wanted to spam all people with dumb questions ;)
 
-We are just checking if removing the "brcm,vulcan" string has any
-impact on early silicon revisions we want to support (see also
-BRCM_CPU_PART_VULCAN).
+> For examples please grep for drm_fbdev_generic_setup(). There's also a
+> still in-flight series from Gerd Hoffmann to convert over bochs. That,
+> plus all the kerneldoc linked from there should get you started.
+> -Daniel
 
-Maybe you make this a separate change?
+this is one of google best founds if i search for drm_fbdev_generic_setup:
 
--Robert
+https://lkml.org/lkml/2018/12/19/305
 
->                         reg = <0x0 0x0>;
->                         enable-method = "psci";
->                 };
+not very helpful...
+
+so i tried kernel-doc
+
+https://www.kernel.org/doc/html/latest/gpu/drm-kms-helpers.html?highlight=drm_fbdev_generic_setup#c.drm_fbdev_generic_setup
+
+which is nice function-reference but i've found no generic workflow
+
+as the posted driver is "only" a driver ported from kernel 4.4 by Alexander, i don't know if this new framework can be used and which parts need to be changed. I only try to bring his code Mainline....
+Maybe CK Hu can help here because driver is originally from him and he knows internals. Or maybe you can help here?
+
+i personally make my first steps as spare-time kernel-developer :)
+
+regards Frank
