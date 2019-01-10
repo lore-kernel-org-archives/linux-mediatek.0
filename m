@@ -1,65 +1,45 @@
-From: Sean Wang <sean.wang@kernel.org>
-Subject: Re: [PATCH v2] net: ethernet: mediatek: fix warning in phy_start_aneg
-Date: Wed, 9 Jan 2019 14:48:43 -0800
-Message-ID: <CAGp9LzpzX4bFF9mMk_teZrTtkf9NSoSfGqVSgPKYY5HjUPbqnw@mail.gmail.com>
-References: <20190109072028.30513-1-frank-w@public-files.de> <2d3d2d19-b149-76e7-8013-ffb124b62f2b@gmail.com>
+From: Stephen Boyd <swboyd@chromium.org>
+Subject: Re: [RFC RESEND PATCH 6/7] soc: mediatek: add MT8183 dvfsrc support
+Date: Wed, 09 Jan 2019 16:38:41 -0800
+Message-ID: <154708072159.15366.10685577152949535083@swboyd.mtv.corp.google.com>
+References: <1546438198-1677-1-git-send-email-henryc.chen@mediatek.com>
+ <1546438198-1677-7-git-send-email-henryc.chen@mediatek.com>
+ <154655691363.15366.15223653253336032554@swboyd.mtv.corp.google.com>
+ <1546859353.6818.132.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2d3d2d19-b149-76e7-8013-ffb124b62f2b@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiner Kallweit <hkallweit1@gmail.com>
-Cc: Frank Wunderlich <frank-w@public-files.de>, Felix Fietkau <nbd@openwrt.org>, John Crispin <john@phrozen.org>, Nelson Chang <nelson.chang@mediatek.com>, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1546859353.6818.132.camel@mtksdaap41>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Henry Chen <henryc.chen@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Ulf Hansson <ulf.hansson@linaro.org>, Kees Cook <keescook@chromium.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Viresh Kumar <vireshk@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jan 9, 2019 at 10:31 AM Heiner Kallweit <hkallweit1@gmail.com> wrote:
->
-> On 09.01.2019 08:20, Frank Wunderlich wrote:
-> > From: Heiner Kallweit <hkallweit1@gmail.com>
-> >
-> > linux 5.0-rc1 shows following warning on bpi-r2/mt7623 bootup:
-> >
-> > [ 5.170597] WARNING: CPU: 3 PID: 1 at drivers/net/phy/phy.c:548 phy_start_aneg+0x110/0x144
-> > [ 5.178826] called from state READY
-> > ....
-> > [ 5.264111] [<c0629fd4>] (phy_start_aneg) from [<c0e3e720>] (mtk_init+0x414/0x47c)
-> > [ 5.271630] r7:df5f5eec r6:c0f08c48 r5:00000000 r4:dea67800
-> > [ 5.277256] [<c0e3e30c>] (mtk_init) from [<c07dabbc>] (register_netdevice+0x98/0x51c)
-> > [ 5.285035] r8:00000000 r7:00000000 r6:c0f97080 r5:c0f08c48 r4:dea67800
-> > [ 5.291693] [<c07dab24>] (register_netdevice) from [<c07db06c>] (register_netdev+0x2c/0x44)
-> > [ 5.299989] r8:00000000 r7:dea2e608 r6:deacea00 r5:dea2e604 r4:dea67800
-> > [ 5.306646] [<c07db040>] (register_netdev) from [<c06326d8>] (mtk_probe+0x668/0x7ac)
-> > [ 5.314336] r5:dea2e604 r4:dea2e040
-> > [ 5.317890] [<c0632070>] (mtk_probe) from [<c05a78fc>] (platform_drv_probe+0x58/0xa8)
-> > [ 5.325670] r10:c0f86bac r9:00000000 r8:c0fbe578 r7:00000000 r6:c0f86bac r5:00000000
-> > [ 5.333445] r4:deacea10
-> > [ 5.335963] [<c05a78a4>] (platform_drv_probe) from [<c05a5248>] (really_probe+0x2d8/0x424)
-> >
-> > maybe other boards using this generic driver are affected
-> >
-> > v2:
-> > optimization:
-> >
-> > - phy_set_max_speed() is only needed if you want to reduce the
-> >   max speed, typically if the PHY supports 1Gbps but the MAC
-> >   supports 100Mbps only.
-> >
-> > - The pause parameters are autonegotiated. Except you have a specific
-> >   need you normally don't need to manually fiddle with this.
-> >
-> > - phy_start_aneg() is called implicitly by the phylib state machine,
-> >   you shouldn't call it manually except you have a good excuse.
-> >
-> > - netif_carrier_on/netif_carrier_off in mtk_phy_link_adjust() isn't
-> >   needed. It's done by phy_link_change() in phylib.
-> >
-> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> > ---
-> >  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 16 ----------------
-> >  1 file changed, 16 deletions(-)
-> >
-> Reviewed-by: Heiner Kallweit <hkallweit1@gmail.com>
+Quoting Henry Chen (2019-01-07 03:09:13)
+> On Fri, 2019-01-04 at 07:08 +0800, Stephen Boyd wrote:
+> > Quoting Henry Chen (2019-01-02 06:09:57)
+> > > +       val = dvfsrc_read(dvfsrc, DVFSRC_INT);
+> > > +       dvfsrc_write(dvfsrc, DVFSRC_INT_CLR, val);
+> > > +       dvfsrc_write(dvfsrc, DVFSRC_INT_CLR, 0x0);
+> > > +       if (val & DVFSRC_IRQ_TIMEOUT_EN)
+> > > +               dev_warn(dvfsrc->dev, "timeout at spm = %x", val);
+> > > +
+> > 
+> > Do you need to handle the irq at all? It looks like you are cleaning up
+> > something and then complaining if there's a timeout, but otherwise
+> > nothing goes on so perhaps the irq can just be ignored and nobody will
+> > be the wiser?
+> 
+> ok, it only for alarm system a timeout message. 
 
-Thanks for your help to have the driver more fit in phylib.
-
-Acked-by: Sean Wang <sean.wang@kernel.org>
+Well if it's some timeout do you need to fail some dvfs operation if it
+times out? Or take the whole system down in that scenario?
