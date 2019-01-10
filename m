@@ -1,62 +1,31 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: Re: [PATCH] drm/mediatek: Add MTK Framebuffer-Device (mt7623)
-Date: Thu, 10 Jan 2019 21:02:25 +0100
-Message-ID: <20190110200225.GN21184@phenom.ffwll.local>
-References: <20190102084917.4049-1-frank-w@public-files.de>
- <20190107103640.GH21184@phenom.ffwll.local>
- <CAKMK7uEqxz4TAt_iwEC+dMWboVxCeCduyABsSwD0Ns7k=Z_UWA@mail.gmail.com>
- <trinity-0da588a3-1277-4421-ad6b-1f6aeb129dd6-1547146897687@3c-app-gmx-bs35>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH v2] net: ethernet: mediatek: fix warning in
+ phy_start_aneg
+Date: Thu, 10 Jan 2019 13:58:22 -0800 (PST)
+Message-ID: <20190110.135822.559533664183421677.davem@davemloft.net>
+References: <20190109072028.30513-1-frank-w@public-files.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <trinity-0da588a3-1277-4421-ad6b-1f6aeb129dd6-1547146897687@3c-app-gmx-bs35>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: David Airlie <airlied@linux.ie>, Alexander Ryabchenko <d3adme4t@gmail.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190109072028.30513-1-frank-w@public-files.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: frank-w@public-files.de
+Cc: nbd@openwrt.org, john@phrozen.org, sean.wang@kernel.org, nelson.chang@mediatek.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, hkallweit1@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVGh1LCBKYW4gMTAsIDIwMTkgYXQgMDg6MDE6MzdQTSArMDEwMCwgRnJhbmsgV3VuZGVybGlj
-aCB3cm90ZToKPiBIaSBEYW5pZWwsCj4gCj4gPiA+IFdvdWxkIGJlIGdvb2QgdG8gdXNlIHRoZSBu
-ZXcgZ2VuZXJpYyBmYmRldiBlbXVsYXRpb24gY29kZSBoZXJlLCBmb3IgZXZlbgo+ID4gPiBsZXNz
-IGNvZGUuIE9yIGF0IGxlYXN0IGtub3cgd2h5IHRoaXMgaXNuJ3QgcG9zc2libGUgdG8gdXNlIGZv
-ciBtdGsgKGFuZAo+ID4gPiBtYXliZSBhZGRyZXNzIHRoYXQgaW4gdGhlIGNvcmUgY29kZSkuIEhh
-bmQtcm9sbGluZyBmYmRldiBjb2RlIHNob3VsZG4ndCBiZQo+ID4gPiBuZWVkZWQgYW55bW9yZS4K
-PiA+IAo+ID4gQmFjayBvbiB0aGUgbWFpbGluZyBsaXN0LCBubyBwcml2YXRlIHJlcGxpZXMgcGxl
-YXNlOgo+IAo+IGkgZG9uJ3Qgd2FudGVkIHRvIHNwYW0gYWxsIHBlb3BsZSB3aXRoIGR1bWIgcXVl
-c3Rpb25zIDspCgpUaGVyZSdzIG5vIGR1bWIgcXVlc3Rpb25zLCBvbmx5IGluc3VmZmljaWVudCBk
-b2N1bWVudGF0aW9uIDotKQoKPiA+IEZvciBleGFtcGxlcyBwbGVhc2UgZ3JlcCBmb3IgZHJtX2Zi
-ZGV2X2dlbmVyaWNfc2V0dXAoKS4gVGhlcmUncyBhbHNvIGEKPiA+IHN0aWxsIGluLWZsaWdodCBz
-ZXJpZXMgZnJvbSBHZXJkIEhvZmZtYW5uIHRvIGNvbnZlcnQgb3ZlciBib2Nocy4gVGhhdCwKPiA+
-IHBsdXMgYWxsIHRoZSBrZXJuZWxkb2MgbGlua2VkIGZyb20gdGhlcmUgc2hvdWxkIGdldCB5b3Ug
-c3RhcnRlZC4KPiA+IC1EYW5pZWwKPiAKPiB0aGlzIGlzIG9uZSBvZiBnb29nbGUgYmVzdCBmb3Vu
-ZHMgaWYgaSBzZWFyY2ggZm9yIGRybV9mYmRldl9nZW5lcmljX3NldHVwOgo+IAo+IGh0dHBzOi8v
-bGttbC5vcmcvbGttbC8yMDE4LzEyLzE5LzMwNQo+IAo+IG5vdCB2ZXJ5IGhlbHBmdWwuLi4KPiAK
-PiBzbyBpIHRyaWVkIGtlcm5lbC1kb2MKPiAKPiBodHRwczovL3d3dy5rZXJuZWwub3JnL2RvYy9o
-dG1sL2xhdGVzdC9ncHUvZHJtLWttcy1oZWxwZXJzLmh0bWw/aGlnaGxpZ2h0PWRybV9mYmRldl9n
-ZW5lcmljX3NldHVwI2MuZHJtX2ZiZGV2X2dlbmVyaWNfc2V0dXAKPiAKPiB3aGljaCBpcyBuaWNl
-IGZ1bmN0aW9uLXJlZmVyZW5jZSBidXQgaSd2ZSBmb3VuZCBubyBnZW5lcmljIHdvcmtmbG93Cj4g
-Cj4gYXMgdGhlIHBvc3RlZCBkcml2ZXIgaXMgIm9ubHkiIGEgZHJpdmVyIHBvcnRlZCBmcm9tIGtl
-cm5lbCA0LjQgYnkgQWxleGFuZGVyLCBpIGRvbid0IGtub3cgaWYgdGhpcyBuZXcgZnJhbWV3b3Jr
-IGNhbiBiZSB1c2VkIGFuZCB3aGljaCBwYXJ0cyBuZWVkIHRvIGJlIGNoYW5nZWQuIEkgb25seSB0
-cnkgdG8gYnJpbmcgaGlzIGNvZGUgTWFpbmxpbmUuLi4uCj4gTWF5YmUgQ0sgSHUgY2FuIGhlbHAg
-aGVyZSBiZWNhdXNlIGRyaXZlciBpcyBvcmlnaW5hbGx5IGZyb20gaGltIGFuZCBoZSBrbm93cyBp
-bnRlcm5hbHMuIE9yIG1heWJlIHlvdSBjYW4gaGVscCBoZXJlPwo+IAo+IGkgcGVyc29uYWxseSBt
-YWtlIG15IGZpcnN0IHN0ZXBzIGFzIHNwYXJlLXRpbWUga2VybmVsLWRldmVsb3BlciA6KQoKVGhl
-cmUncyBhIHRvbiBvZiBpbi1rZXJuZWwgdXNlcnMgb2YgdGhhdCBmdW5jdGlvbiBhbHJlYWR5LCBJ
-IG1lYW50IHlvdSBjYW4KdXNlIHRob3NlIHRvIHNlcnZlIGFzIGV4YW1wbGVzIC4uLiBJZiB0aG9z
-ZSArIHRoZSBrZXJuZWxkb2MgYXJlbid0Cmdvb2QgZW5vdWdoLCB0aGVuIHdlIG5lZWQgdG8gaW1w
-cm92ZSB0aGVtLgotRGFuaWVsCi0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJlIEVuZ2luZWVyLCBJ
-bnRlbCBDb3Jwb3JhdGlvbgpodHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
-ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+From: Frank Wunderlich <frank-w@public-files.de>
+Date: Wed,  9 Jan 2019 08:20:28 +0100
+
+> From: Heiner Kallweit <hkallweit1@gmail.com>
+> 
+> linux 5.0-rc1 shows following warning on bpi-r2/mt7623 bootup:
+ ...
+> maybe other boards using this generic driver are affected
+> 
+> v2:
+> optimization:
+ ...
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+
+Applied, thank you.
