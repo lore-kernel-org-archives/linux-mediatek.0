@@ -1,71 +1,90 @@
-From: Long Cheng <long.cheng@mediatek.com>
-Subject: Re: [PATCH v9 1/2] dmaengine: 8250_mtk_dma: add MediaTek uart DMA
- support
-Date: Thu, 10 Jan 2019 16:50:25 +0800
-Message-ID: <1547110225.3831.24.camel@mhfsdcap03>
-References: <1546395178-8880-1-git-send-email-long.cheng@mediatek.com>
-         <1546395178-8880-2-git-send-email-long.cheng@mediatek.com>
-         <CANMq1KB=yuEJxUdi8M9deDhAv24WZ-4h+26cFq7AzBi8uyd88Q@mail.gmail.com>
-         <d60c25c2-efe4-9294-dc7e-98f0333bff76@infradead.org>
+From: Georgi Djakov <georgi.djakov@linaro.org>
+Subject: Re: [RFC RESEND PATCH 0/7] Add driver for dvfsrc and add support for
+ active state of scpsys on mt8183
+Date: Thu, 10 Jan 2019 11:39:03 +0200
+Message-ID: <d03ec933-5fe6-d076-d658-9b966cee9c0f@linaro.org>
+References: <1546438198-1677-1-git-send-email-henryc.chen@mediatek.com>
+ <154655603153.15366.7761694381359713995@swboyd.mtv.corp.google.com>
+ <1546859080.6818.128.camel@mtksdaap41>
+ <08d15fa8-7e53-518c-54bb-8050b0e4aabd@linaro.org>
+ <1547003324.6818.156.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <d60c25c2-efe4-9294-dc7e-98f0333bff76@infradead.org>
+In-Reply-To: <1547003324.6818.156.camel@mtksdaap41>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Randy Dunlap <rdunlap@infradead.org>
-Cc: Nicolas Boichat <drinkcat@chromium.org>, Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Dan Williams <dan.j.williams@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>, Sean Wang <sean.wang@mediatek.com>, dmaengine@vger.kernel.org, devicetree@vger.kernel.org, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, lkml <linux-kernel@vger.kernel.org>, linux-serial@vger.kernel.org, srv_heupstream@mediatek.com, Yingjoe Chen <yingjoe.chen@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Zhen
+To: Henry Chen <henryc.chen@mediatek.com>
+Cc: Stephen Boyd <swboyd@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, Viresh Kumar <vireshk@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Fan Chen <fan.chen@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>, Kees Cook <keescook@chromium.org>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2019-01-02 at 18:03 -0800, Randy Dunlap wrote:
-> Hi,
-> 
-> While you are making changes, here are a few more:
-> 
+Hi,
 
-hi
+On 1/9/19 05:08, Henry Chen wrote:
+> On Mon, 2019-01-07 at 18:34 +0200, Georgi Djakov wrote:
+>> Hi Henry,
+>>
+>> On 1/7/19 13:04, Henry Chen wrote:
+>>> On Thu, 2019-01-03 at 14:53 -0800, Stephen Boyd wrote:
+>>>> Quoting Henry Chen (2019-01-02 06:09:51)
+>>>>> The patchsets add support for MediaTek hardware module named DVFSRC
+>>>>> (dynamic voltage and frequency scaling resource collector). The DVFSRC is
+>>>>> a HW module which is used to collect all the requests from both software
+>>>>> and hardware and turn into the decision of minimum operating voltage and
+>>>>> minimum DRAM frequency to fulfill those requests.
+>>>>>
+>>>>> So, This series is to implement the dvfsrc driver to collect all the
+>>>>> requests of operating voltage or DRAM bandwidth from other device drivers
+>>>>> likes GPU/Camera through 2 frameworks basically:
+>>>>>
+>>>>> 1. PM_QOS_MEMORY_BANDWIDTH from PM QOS: to aggregate the bandwidth
+>>>>>    requirements from different clients
+>>>>
+>>>> Have you looked at using the interconnect framework for this instead of
+>>>> using PM_QOS_MEMORY_BANDWIDTH? Qcom is pushing an interconnect framework
+>>>> to do DRAM bandwidth requirement aggregation.
+>>>
+>>> Sorry, I haven't heard that before. Do you mean is following series
+>>> patch?
+>>> https://patchwork.kernel.org/project/linux-arm-msm/list/?series=53775
+>>>
+>>
+>> Yes, this one. The idea is that consumer drivers like GPU, camera, video
+>> encoder etc. report their bandwidth needs by using the interconnect API.
+>> The framework does the aggregation and configures the hardware. In order
+>> to use it you need to implement a platform-specific dvfsrc interconnect
+>> provider driver that understands the SoC topology and knows how to
+>> configure the hardware. I am not familiar with DVFSRC, but it seems to
+>> me that it can fit as interconnect provider.
+>> Does this HW module support any QoS priority/latency configuration or is
+>> it only bandwidth and voltage?
+>>
+>> Thanks,
+>> Georgi
+> 
+> Hi Georgi,
+> 
+> Yes, the design is only to support bandwidth and voltage. The one of the
+> function is to collect the memory bandwidth requirement from consumer
+> and select the minimum DRAM frequency to fulfill system performance.It
+> just get the total bandwidth then set it to HW, not involves complex SoC
+> topology. So we choose to use PM QOS to model that DVFSRC driver can
+> receive the bandwidth information from consumer driver via
+> PM_QOS_MEMORY_BANDWIDTH.
 
-OK, thanks for your comments.
+Ok, good. The current patchset supports bandwidth, but there was a
+discussion about adding support for latency and priority in the future.
+Thanks for the information!
 
-> 
-> On 1/2/19 5:39 PM, Nicolas Boichat wrote:
-> > diff --git a/drivers/dma/mediatek/Kconfig b/drivers/dma/mediatek/Kconfig
-> > index 27bac0b..1a523c87 100644
-> > --- a/drivers/dma/mediatek/Kconfig
-> > +++ b/drivers/dma/mediatek/Kconfig
-> > @@ -1,4 +1,15 @@
-> > 
-> > +config DMA_MTK_UART
-> > +       tristate "MediaTek SoCs APDMA support for UART"
-> > +       depends on OF && SERIAL_8250_MT6577
-> > +       select DMA_ENGINE
-> > +       select DMA_VIRTUAL_CHANNELS
-> > +       help
-> > +         Support for the UART DMA engine found on MediaTek MTK SoCs.
-> > +         when SERIAL_8250_MT6577 is enabled, and if you want to use DMA,
-> 
-> 	    When
-> 
-> > +         you can enable the config. the DMA engine can only be used
-> 
-> 	                               The
-> 
-> > +         with MediaTek SoCs.
-> > +
-> 
+> Do you have a patch that show how consumer driver used interconnect to
+> update their requirement.
 
-above, i will modify.
+Here are some examples:
+https://lkml.org/lkml/2018/12/7/584
+https://lkml.org/lkml/2018/10/11/499
+https://lkml.org/lkml/2018/9/20/986
+https://lkml.org/lkml/2018/11/22/772
 
-> Also, use tabs to indent instead of spaces.
-> The lines (tristate, depends, select, and help) should be indented with one tab.
-> The help text lines should be indented with one tab + 2 spaces.
-> 
-
-in my patch, i already do this. So don't need modify.
-
-> >  config MTK_HSDMA
-> >         tristate "MediaTek High-Speed DMA controller support"
-> >         depends on ARCH_MEDIATEK || COMPILE_TEST
-> 
-> 
-> thanks,
+Thanks,
+Georgi
