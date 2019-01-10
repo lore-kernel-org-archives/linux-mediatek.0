@@ -1,43 +1,107 @@
-From: Avri Altman <Avri.Altman-Sjgp3cTcYWE@public.gmane.org>
-Subject: RE: [PATCH v1 1/1] scsi: ufs: Fix system suspend status
-Date: Thu, 10 Jan 2019 11:59:29 +0000
-Message-ID: <DM6PR04MB4923B04AB170A024F341AA31FC840@DM6PR04MB4923.namprd04.prod.outlook.com>
-References: <1546870774-19691-1-git-send-email-stanley.chu@mediatek.com>
- <1546870774-19691-3-git-send-email-stanley.chu@mediatek.com>
+From: Tero Kristo <t-kristo-l0cyMroinI0@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: Remove inconsistent use of 'arm,armv8'
+ compatible string
+Date: Thu, 10 Jan 2019 14:02:12 +0200
+Message-ID: <4c934f57-5e99-1224-ae25-8384f8d5eb27@ti.com>
+References: <20190109202934.29304-1-robh@kernel.org>
+ <20190110022709.kh5vlave65jn7m4g@kahuna>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1546870774-19691-3-git-send-email-stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190110022709.kh5vlave65jn7m4g@kahuna>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Cc: "matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org" <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Nishanth Menon <nm-l0cyMroinI0@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Gregory Clement <gregory.clement-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, Baolin Wang <baolin.wang@lina>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+On 10/01/2019 04:27, Nishanth Menon wrote:
+> On 14:29-20190109, Rob Herring wrote:
+>> The 'arm,armv8' compatible string is only for software models. It adds
+>> little value otherwise and is inconsistently used as a fallback on some
+>> platforms. Remove it from those platforms.
+>>
+>> This fixes warnings generated by the DT schema.
+>>
+>> Reported-by: Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>
+>> Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+>> Cc: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
+>> Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+>> ---
+> [...]
 > 
-> hba->is_sys_suspended is set after successful system suspend but
-> not clear after successful system resume.
+> ARM SoC maintainers, At least on a quick look (I could be wrong), I
+> think we don't have any explicit processor bindings documentation.
 > 
-> According to current behavior, hba->is_sys_suspended will not
-> be set if host is runtime-suspended but not system-suspended. Thus
-> we shall aligh the same policy: clear this flag even if host remains
-> runtime-suspended after ufshcd_system_resume is successfully returned.
+> However, most of SoC folks seem to key off matches else where I
+> guess..
 > 
-> Simply fix this flag to correct host status logs.
+> Not sure, while at this, you if you are planning on fixing up
+> Documentation/devicetree/bindings/arm/arm-boards:
+> compatible = "arm,cortex-a53","arm,armv8";
+> Documentation/devicetree/bindings/arm/cpu-capacity.txt:
+> compatible = "arm,cortex-a53","arm,armv8";
 > 
-> Signed-off-by: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Reviewed-by: Avri Altman <avri.altman-Sjgp3cTcYWE@public.gmane.org>
+> Anyways, for TI SoC:
+> 
+>>   arch/arm64/boot/dts/ti/k3-am654.dtsi          |   8 +-
+>> diff --git a/arch/arm64/boot/dts/ti/k3-am654.dtsi b/arch/arm64/boot/dts/ti/k3-am654.dtsi
+>> index 2affa6f6617e..b221abf43ac2 100644
+>> --- a/arch/arm64/boot/dts/ti/k3-am654.dtsi
+>> +++ b/arch/arm64/boot/dts/ti/k3-am654.dtsi
+>> @@ -34,7 +34,7 @@
+>>   		};
+>>   
+>>   		cpu0: cpu@0 {
+>> -			compatible = "arm,cortex-a53", "arm,armv8";
+>> +			compatible = "arm,cortex-a53";
+>>   			reg = <0x000>;
+>>   			device_type = "cpu";
+>>   			enable-method = "psci";
+>> @@ -48,7 +48,7 @@
+>>   		};
+>>   
+>>   		cpu1: cpu@1 {
+>> -			compatible = "arm,cortex-a53", "arm,armv8";
+>> +			compatible = "arm,cortex-a53";
+>>   			reg = <0x001>;
+>>   			device_type = "cpu";
+>>   			enable-method = "psci";
+>> @@ -62,7 +62,7 @@
+>>   		};
+>>   
+>>   		cpu2: cpu@100 {
+>> -			compatible = "arm,cortex-a53", "arm,armv8";
+>> +			compatible = "arm,cortex-a53";
+>>   			reg = <0x100>;
+>>   			device_type = "cpu";
+>>   			enable-method = "psci";
+>> @@ -76,7 +76,7 @@
+>>   		};
+>>   
+>>   		cpu3: cpu@101 {
+>> -			compatible = "arm,cortex-a53", "arm,armv8";
+>> +			compatible = "arm,cortex-a53";
+>>   			reg = <0x101>;
+>>   			device_type = "cpu";
+>>   			enable-method = "psci";
+> 
+> Acked-by: Nishanth Menon <nm-l0cyMroinI0@public.gmane.org>
+> 
 
-This is already happening today for Qualcomm's vops,
-but you are right - it should happen anyway,
-regardless the platform's vendor specific resume callback.
+TI portion looks fine to me also, so:
+
+Acked-by: Tero Kristo <t-kristo-l0cyMroinI0@public.gmane.org>
+
+-Tero
+--
+Texas Instruments Finland Oy, Porkkalankatu 22, 00180 Helsinki. Y-tunnus/Business ID: 0615521-4. Kotipaikka/Domicile: Helsinki
