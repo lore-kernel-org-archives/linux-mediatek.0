@@ -1,45 +1,115 @@
-From: Stephen Boyd <swboyd@chromium.org>
-Subject: Re: [RFC RESEND PATCH 6/7] soc: mediatek: add MT8183 dvfsrc support
-Date: Wed, 09 Jan 2019 16:38:41 -0800
-Message-ID: <154708072159.15366.10685577152949535083@swboyd.mtv.corp.google.com>
-References: <1546438198-1677-1-git-send-email-henryc.chen@mediatek.com>
- <1546438198-1677-7-git-send-email-henryc.chen@mediatek.com>
- <154655691363.15366.15223653253336032554@swboyd.mtv.corp.google.com>
- <1546859353.6818.132.camel@mtksdaap41>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH 1/9] drm/mediatek: recalculate hdmi phy clock of MT2701
+ by querying hardware
+Date: Thu, 10 Jan 2019 09:47:09 +0800
+Message-ID: <1547084829.27684.8.camel@mtksdaap41>
+References: <1546585439-30455-1-git-send-email-chunhui.dai@mediatek.com>
+ <1546585439-30455-2-git-send-email-chunhui.dai@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1546859353.6818.132.camel@mtksdaap41>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Henry Chen <henryc.chen@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Ulf Hansson <ulf.hansson@linaro.org>, Kees Cook <keescook@chromium.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Viresh Kumar <vireshk@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1546585439-30455-2-git-send-email-chunhui.dai@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: chunhui dai <chunhui.dai@mediatek.com>
+Cc: jamesjj.liao@mediatek.com, Ryder Lee <ryder.lee@mediatek.com>, jitao.shi@mediatek.com, srv_heupstream@mediatek.com, Stephen Boyd <sboyd@kernel.org>, --to=Michael Turquette <mturquette@baylibre.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Colin Ian King <colin.king@canonical.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting Henry Chen (2019-01-07 03:09:13)
-> On Fri, 2019-01-04 at 07:08 +0800, Stephen Boyd wrote:
-> > Quoting Henry Chen (2019-01-02 06:09:57)
-> > > +       val = dvfsrc_read(dvfsrc, DVFSRC_INT);
-> > > +       dvfsrc_write(dvfsrc, DVFSRC_INT_CLR, val);
-> > > +       dvfsrc_write(dvfsrc, DVFSRC_INT_CLR, 0x0);
-> > > +       if (val & DVFSRC_IRQ_TIMEOUT_EN)
-> > > +               dev_warn(dvfsrc->dev, "timeout at spm = %x", val);
-> > > +
-> > 
-> > Do you need to handle the irq at all? It looks like you are cleaning up
-> > something and then complaining if there's a timeout, but otherwise
-> > nothing goes on so perhaps the irq can just be ignored and nobody will
-> > be the wiser?
-> 
-> ok, it only for alarm system a timeout message. 
-
-Well if it's some timeout do you need to fail some dvfs operation if it
-times out? Or take the whole system down in that scenario?
+SGksIENodW5odWk6CgoKT24gRnJpLCAyMDE5LTAxLTA0IGF0IDE1OjAzICswODAwLCBjaHVuaHVp
+IGRhaSB3cm90ZToKPiBSZWNhbGN1bGF0ZSB0aGUgcmF0ZSBvZiB0aGlzIGNsb2NrLCBieSBxdWVy
+eWluZyBoYXJkd2FyZS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBjaHVuaHVpIGRhaSA8Y2h1bmh1aS5k
+YWlAbWVkaWF0ZWsuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hk
+bWlfcGh5LmMgICAgICAgIHwgIDcgKystLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2hkbWlfcGh5LmggICAgICAgIHwgIDMgKy0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19tdDI3MDFfaGRtaV9waHkuYyB8IDQ5ICsrKysrKysrKysrKysrKysrKysrKysrKysrCj4gIGRy
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMgfCAgOCArKysrKwo+
+ICA0IGZpbGVzIGNoYW5nZWQsIDYxIGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pCj4gCj4g
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuYyBiL2Ry
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuYwo+IGluZGV4IDRlZjljNTcuLjc5
+ZTczN2QgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3Bo
+eS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3BoeS5jCj4gQEAg
+LTI5LDEyICsyOSwxMSBAQCBsb25nIG10a19oZG1pX3BsbF9yb3VuZF9yYXRlKHN0cnVjdCBjbGtf
+aHcgKmh3LCB1bnNpZ25lZCBsb25nIHJhdGUsCj4gIAlyZXR1cm4gcmF0ZTsKPiAgfQo+ICAKPiAt
+dW5zaWduZWQgbG9uZyBtdGtfaGRtaV9wbGxfcmVjYWxjX3JhdGUoc3RydWN0IGNsa19odyAqaHcs
+Cj4gLQkJCQkgICAgICAgdW5zaWduZWQgbG9uZyBwYXJlbnRfcmF0ZSkKPiArdTMyIG10a19oZG1p
+X3BoeV9yZWFkKHN0cnVjdCBtdGtfaGRtaV9waHkgKmhkbWlfcGh5LCB1MzIgb2Zmc2V0KQo+ICB7
+Cj4gLQlzdHJ1Y3QgbXRrX2hkbWlfcGh5ICpoZG1pX3BoeSA9IHRvX210a19oZG1pX3BoeShodyk7
+Cj4gKwl2b2lkIF9faW9tZW0gKnJlZyA9IGhkbWlfcGh5LT5yZWdzICsgb2Zmc2V0Owo+ICAKPiAt
+CXJldHVybiBoZG1pX3BoeS0+cGxsX3JhdGU7Cj4gKwlyZXR1cm4gcmVhZGwocmVnKTsKCnJlZyBp
+cyB1c2VkIG9ubHkgb25jZSwgc28KCnJldHVybiByZWFkbChoZG1pX3BoeS0+cmVncyArIG9mZnNl
+dCk7Cgo+ICB9Cj4gIAo+ICB2b2lkIG10a19oZG1pX3BoeV9jbGVhcl9iaXRzKHN0cnVjdCBtdGtf
+aGRtaV9waHkgKmhkbWlfcGh5LCB1MzIgb2Zmc2V0LAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmggYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
+bXRrX2hkbWlfcGh5LmgKPiBpbmRleCBmMzliMWZjLi5mZGFkOGIxIDEwMDY0NAo+IC0tLSBhL2Ry
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuaAo+ICsrKyBiL2RyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuaAo+IEBAIC00MSw2ICs0MSw3IEBAIHN0cnVjdCBt
+dGtfaGRtaV9waHkgewo+ICAJdW5zaWduZWQgaW50IGliaWFzX3VwOwo+ICB9Owo+ICAKPiArdTMy
+IG10a19oZG1pX3BoeV9yZWFkKHN0cnVjdCBtdGtfaGRtaV9waHkgKmhkbWlfcGh5LCB1MzIgb2Zm
+c2V0KTsKPiAgdm9pZCBtdGtfaGRtaV9waHlfY2xlYXJfYml0cyhzdHJ1Y3QgbXRrX2hkbWlfcGh5
+ICpoZG1pX3BoeSwgdTMyIG9mZnNldCwKPiAgCQkJICAgICB1MzIgYml0cyk7Cj4gIHZvaWQgbXRr
+X2hkbWlfcGh5X3NldF9iaXRzKHN0cnVjdCBtdGtfaGRtaV9waHkgKmhkbWlfcGh5LCB1MzIgb2Zm
+c2V0LAo+IEBAIC01MCw4ICs1MSw2IEBAIHZvaWQgbXRrX2hkbWlfcGh5X21hc2soc3RydWN0IG10
+a19oZG1pX3BoeSAqaGRtaV9waHksIHUzMiBvZmZzZXQsCj4gIHN0cnVjdCBtdGtfaGRtaV9waHkg
+KnRvX210a19oZG1pX3BoeShzdHJ1Y3QgY2xrX2h3ICpodyk7Cj4gIGxvbmcgbXRrX2hkbWlfcGxs
+X3JvdW5kX3JhdGUoc3RydWN0IGNsa19odyAqaHcsIHVuc2lnbmVkIGxvbmcgcmF0ZSwKPiAgCQkJ
+ICAgICB1bnNpZ25lZCBsb25nICpwYXJlbnRfcmF0ZSk7Cj4gLXVuc2lnbmVkIGxvbmcgbXRrX2hk
+bWlfcGxsX3JlY2FsY19yYXRlKHN0cnVjdCBjbGtfaHcgKmh3LAo+IC0JCQkJICAgICAgIHVuc2ln
+bmVkIGxvbmcgcGFyZW50X3JhdGUpOwo+ICAKPiAgZXh0ZXJuIHN0cnVjdCBwbGF0Zm9ybV9kcml2
+ZXIgbXRrX2hkbWlfcGh5X2RyaXZlcjsKPiAgZXh0ZXJuIHN0cnVjdCBtdGtfaGRtaV9waHlfY29u
+ZiBtdGtfaGRtaV9waHlfODE3M19jb25mOwo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX210MjcwMV9oZG1pX3BoeS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19tdDI3MDFfaGRtaV9waHkuYwo+IGluZGV4IGZjYzQyZGMuLmI1ZWQ2YjcgMTAwNjQ0Cj4g
+LS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDI3MDFfaGRtaV9waHkuYwo+ICsr
+KyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQyNzAxX2hkbWlfcGh5LmMKPiBAQCAt
+MTUzLDYgKzE1Myw1NSBAQCBzdGF0aWMgaW50IG10a19oZG1pX3BsbF9zZXRfcmF0ZShzdHJ1Y3Qg
+Y2xrX2h3ICpodywgdW5zaWduZWQgbG9uZyByYXRlLAo+ICAJCQkgIFJHX0hETUlUWF9EUlZfSUJJ
+QVNfTUFTSyk7Cj4gIAlyZXR1cm4gMDsKPiAgfQo+ICtzdGF0aWMgdW5zaWduZWQgbG9uZyBtdGtf
+aGRtaV9wbGxfcmVjYWxjX3JhdGUoc3RydWN0IGNsa19odyAqaHcsCj4gKwkJCQkgICAgICAgdW5z
+aWduZWQgbG9uZyBwYXJlbnRfcmF0ZSkKPiArewo+ICsJc3RydWN0IG10a19oZG1pX3BoeSAqaGRt
+aV9waHkgPSB0b19tdGtfaGRtaV9waHkoaHcpOwo+ICsJdW5zaWduZWQgbG9uZyBvdXRfcmF0ZSwg
+dmFsOwo+ICsKPiArCXZhbCA9IChtdGtfaGRtaV9waHlfcmVhZChoZG1pX3BoeSwgSERNSV9DT042
+KQo+ICsJCQkmIFJHX0hUUExMX1BSRURJVl9NQVNLKSA+PiBSR19IVFBMTF9QUkVESVY7Cj4gKwlz
+d2l0Y2ggKHZhbCkgewo+ICsJY2FzZSAweDAwOgo+ICsJCW91dF9yYXRlID0gcGFyZW50X3JhdGU7
+Cj4gKwkJYnJlYWs7Cj4gKwljYXNlIDB4MDE6Cj4gKwkJb3V0X3JhdGUgPSBwYXJlbnRfcmF0ZSAv
+IDI7Cj4gKwkJYnJlYWs7Cj4gKwlkZWZhdWx0Ogo+ICsJCW91dF9yYXRlID0gcGFyZW50X3JhdGUg
+LyA0Owo+ICsJCWJyZWFrOwoKSWYgdGhlIHZhbCB3b3VsZCBub3QgYmUgMywgbWF5YmUgb3V0X3Jh
+dGUgY291bGQgYmUgY2FsY3VsYXRlIGFzCgpvdXRfcmF0ZSA+Pj0gdmFsOwoKPiArCX0KPiArCj4g
+Kwl2YWwgPSAobXRrX2hkbWlfcGh5X3JlYWQoaGRtaV9waHksIEhETUlfQ09ONikKPiArCQkJJiBS
+R19IVFBMTF9GQktESVZfTUFTSykgPj4gUkdfSFRQTExfRkJLRElWOwo+ICsJb3V0X3JhdGUgPSBv
+dXRfcmF0ZSAqICh2YWwgKyAxKSAqIDI7CgpvdXRfcmF0ZSAqPSAodmFsICsgMSkgKiAyOwoKPiAr
+CXZhbCA9IChtdGtfaGRtaV9waHlfcmVhZChoZG1pX3BoeSwgSERNSV9DT04yKQo+ICsJCQkmIFJH
+X0hETUlUWF9UWF9QT1NESVZfTUFTSykgPj4gUkdfSERNSVRYX1RYX1BPU0RJVjsKPiArCXN3aXRj
+aCAodmFsKSB7Cj4gKwljYXNlIDB4MDA6Cj4gKwkJb3V0X3JhdGUgPSBvdXRfcmF0ZTsKPiArCQli
+cmVhazsKPiArCWNhc2UgMHgwMToKPiArCQlvdXRfcmF0ZSA9IG91dF9yYXRlIC8gMjsKPiArCQli
+cmVhazsKPiArCWNhc2UgMHgwMjoKPiArCQlvdXRfcmF0ZSA9IG91dF9yYXRlIC8gNDsKPiArCQli
+cmVhazsKPiArCWNhc2UgMHgwMzoKPiArCQlvdXRfcmF0ZSA9IG91dF9yYXRlIC8gODsKPiArCQli
+cmVhazsKPiArCWRlZmF1bHQ6Cj4gKwkJYnJlYWs7Cj4gKwl9CgpvdXRfcmF0ZSA+Pj0gdmFsOwoK
+UmVnYXJkcywKQ0sKCj4gKwo+ICsJaWYgKG10a19oZG1pX3BoeV9yZWFkKGhkbWlfcGh5LCBIRE1J
+X0NPTjIpICYgUkdfSERNSVRYX0VOX1RYX1BPU0RJVikKPiArCQlvdXRfcmF0ZSA9IG91dF9yYXRl
+IC8gNTsKPiArCj4gKwloZG1pX3BoeS0+cGxsX3JhdGUgPSBvdXRfcmF0ZTsKPiArCj4gKwlyZXR1
+cm4gaGRtaV9waHktPnBsbF9yYXRlOwo+ICt9Cj4gIAo+ICBzdGF0aWMgY29uc3Qgc3RydWN0IGNs
+a19vcHMgbXRrX2hkbWlfcGh5X3BsbF9vcHMgPSB7Cj4gIAkucHJlcGFyZSA9IG10a19oZG1pX3Bs
+bF9wcmVwYXJlLAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210
+ODE3M19oZG1pX3BoeS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxNzNfaGRt
+aV9waHkuYwo+IGluZGV4IGVkNTkxNmIuLmNiMjNjMWUgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19tdDgxNzNfaGRtaV9waHkuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMKPiBAQCAtMjg1LDYgKzI4NSwxNCBA
+QCBzdGF0aWMgaW50IG10a19oZG1pX3BsbF9zZXRfcmF0ZShzdHJ1Y3QgY2xrX2h3ICpodywgdW5z
+aWduZWQgbG9uZyByYXRlLAo+ICAJcmV0dXJuIDA7Cj4gIH0KPiAgCj4gK3N0YXRpYyB1bnNpZ25l
+ZCBsb25nIG10a19oZG1pX3BsbF9yZWNhbGNfcmF0ZShzdHJ1Y3QgY2xrX2h3ICpodywKPiArCQkJ
+CSAgICAgICB1bnNpZ25lZCBsb25nIHBhcmVudF9yYXRlKQo+ICt7Cj4gKwlzdHJ1Y3QgbXRrX2hk
+bWlfcGh5ICpoZG1pX3BoeSA9IHRvX210a19oZG1pX3BoeShodyk7Cj4gKwo+ICsJcmV0dXJuIGhk
+bWlfcGh5LT5wbGxfcmF0ZTsKPiArfQo+ICsKPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBjbGtfb3Bz
+IG10a19oZG1pX3BoeV9wbGxfb3BzID0gewo+ICAJLnByZXBhcmUgPSBtdGtfaGRtaV9wbGxfcHJl
+cGFyZSwKPiAgCS51bnByZXBhcmUgPSBtdGtfaGRtaV9wbGxfdW5wcmVwYXJlLAoKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
+IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
+ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
