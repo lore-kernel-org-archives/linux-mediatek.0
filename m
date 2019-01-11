@@ -1,100 +1,48 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [RFC RESEND PATCH 1/7] dt-bindings: soc: Add DVFSRC driver
- bindings
-Date: Fri, 11 Jan 2019 10:09:18 -0600
-Message-ID: <20190111160918.GA20480@bogus>
-References: <1546438198-1677-1-git-send-email-henryc.chen@mediatek.com>
- <1546438198-1677-2-git-send-email-henryc.chen@mediatek.com>
+From: Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: Remove inconsistent use of 'arm,armv8'
+ compatible string
+Date: Fri, 11 Jan 2019 16:50:05 +0000
+Message-ID: <20190111165005.GI20661@e110455-lin.cambridge.arm.com>
+References: <20190109202934.29304-1-robh@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1546438198-1677-2-git-send-email-henryc.chen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Henry Chen <henryc.chen@mediatek.com>
-Cc: Viresh Kumar <vireshk@kernel.org>, Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Ulf Hansson <ulf.hansson@linaro.org>, Mark Rutland <mark.rutland@arm.com>, Fan Chen <fan.chen@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>, Kees Cook <keescook@chromium.org>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20190109202934.29304-1-robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Nishanth Menon <nm-l0cyMroinI0@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Gregory Clement <gregory.clement-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, bcm-
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jan 02, 2019 at 10:09:52PM +0800, Henry Chen wrote:
-> Document the binding for enabling DVFSRC on MediaTek SoC.
-> 
-> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
-> ---
->  .../devicetree/bindings/soc/mediatek/dvfsrc.txt    | 26 ++++++++++++++++++++++
->  include/dt-bindings/soc/mtk,dvfsrc.h               | 18 +++++++++++++++
->  2 files changed, 44 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt
->  create mode 100644 include/dt-bindings/soc/mtk,dvfsrc.h
-> 
-> diff --git a/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt b/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt
-> new file mode 100644
-> index 0000000..402c885
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt
-> @@ -0,0 +1,26 @@
-> +MediaTek DVFSRC Driver
-
-Bindings are for h/w blocks, not drivers.
-
-> +The Dynamic Voltage and Frequency Scaling Resource Collector (DVFSRC) is a
-> +HW module which is used to collect all the requests from both software and
-> +hardware and turn into the decision of minimum operating voltage and minimum
-> +DRAM frequency to fulfill those requests.
-
-Seems like the OPP table should be a child of this instead of where you 
-currently have it?
-
-> +
-> +Required Properties:
-> +- compatible: Should be one of the following
-> +	- "mediatek,mt8183-dvfsrc": For MT8183 SoC
-> +- reg: Address range of the DVFSRC unit
-> +- dram_type: Refer to <include/dt-bindings/soc/mtk,dvfsrc.h> for the
-> +	different dram type support.
-
-This information should come from the DDR controller or memory nodes 
-probably. And we already have some properties related to DDR type.
-
-> +- clock-names: Must include the following entries:
-> +	"dvfsrc": DVFSRC module clock
-> +- clocks: Must contain an entry for each entry in clock-names.
-> +
-> +Example:
-> +
-> +	dvfsrc_top@10012000 {
-
-Drop the '_top'. (Don't use '_' in node and property names).
-
-> +		compatible = "mediatek,mt8183-dvfsrc";
-> +		reg = <0 0x10012000 0 0x1000>;
-> +		clocks = <&infracfg CLK_INFRA_DVFSRC>;
-> +		clock-names = "dvfsrc";
-> +		dram_type = <MT8183_DVFSRC_OPP_LP4>;
-> +	};
-> diff --git a/include/dt-bindings/soc/mtk,dvfsrc.h b/include/dt-bindings/soc/mtk,dvfsrc.h
-> new file mode 100644
-> index 0000000..60b3497
-> --- /dev/null
-> +++ b/include/dt-bindings/soc/mtk,dvfsrc.h
-> @@ -0,0 +1,18 @@
-> +/* SPDX-License-Identifier: GPL-2.0
-> + *
-> + * Copyright (c) 2018 MediaTek Inc.
-> + */
-> +
-> +#ifndef _DT_BINDINGS_POWER_MTK_DVFSRC_H
-> +#define _DT_BINDINGS_POWER_MTK_DVFSRC_H
-> +
-> +#define MT8183_DVFSRC_OPP_LP4	0
-> +#define MT8183_DVFSRC_OPP_LP4X	1
-> +#define MT8183_DVFSRC_OPP_LP3	2
-> +
-> +#define MT8183_DVFSRC_LEVEL_1	1
-> +#define MT8183_DVFSRC_LEVEL_2	2
-> +#define MT8183_DVFSRC_LEVEL_3	3
-> +#define MT8183_DVFSRC_LEVEL_4	4
-> +
-> +#endif /* _DT_BINDINGS_POWER_MTK_DVFSRC_H */
-> -- 
-> 1.9.1
-> 
+T24gV2VkLCBKYW4gMDksIDIwMTkgYXQgMDI6Mjk6MzRQTSAtMDYwMCwgUm9iIEhlcnJpbmcgd3Jv
+dGU6Cj4gVGhlICdhcm0sYXJtdjgnIGNvbXBhdGlibGUgc3RyaW5nIGlzIG9ubHkgZm9yIHNvZnR3
+YXJlIG1vZGVscy4gSXQgYWRkcwo+IGxpdHRsZSB2YWx1ZSBvdGhlcndpc2UgYW5kIGlzIGluY29u
+c2lzdGVudGx5IHVzZWQgYXMgYSBmYWxsYmFjayBvbiBzb21lCj4gcGxhdGZvcm1zLiBSZW1vdmUg
+aXQgZnJvbSB0aG9zZSBwbGF0Zm9ybXMuCj4gCj4gVGhpcyBmaXhlcyB3YXJuaW5ncyBnZW5lcmF0
+ZWQgYnkgdGhlIERUIHNjaGVtYS4KPiAKPiBSZXBvcnRlZC1ieTogTWljaGFsIFNpbWVrIDxtaWNo
+YWwuc2ltZWtAeGlsaW54LmNvbT4KPiBDYzogTWFyayBSdXRsYW5kIDxtYXJrLnJ1dGxhbmRAYXJt
+LmNvbT4KPiBDYzogV2lsbCBEZWFjb24gPHdpbGwuZGVhY29uQGFybS5jb20+Cj4gU2lnbmVkLW9m
+Zi1ieTogUm9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9yZz4KPiAtLS0KPiBhcm1zb2MgZm9sa3Ms
+IFBsZWFzZSBhcHBseSBkaXJlY3RseS4KPiAKPiBOb3RlIHRoYXQgdGhlcmUncyBzdGlsbCBhIGNh
+c2UgbGVmdCBpbiBtc204OTk4IHRoYXQgbmVlZHMgYSBuZXcgCj4gY29tcGF0aWJsZSBzdHJpbmcu
+Cj4gCj4gUm9iCj4gCj4gIGFyY2gvYXJtNjQvYm9vdC9kdHMvYXJtL2p1bm8tcjEuZHRzICAgICAg
+ICAgICB8ICAxMiArLQo+ICBhcmNoL2FybTY0L2Jvb3QvZHRzL2FybS9qdW5vLXIyLmR0cyAgICAg
+ICAgICAgfCAgMTIgKy0KPiAgYXJjaC9hcm02NC9ib290L2R0cy9hcm0vanVuby5kdHMgICAgICAg
+ICAgICAgIHwgIDEyICstCj4gIC4uLi9ib290L2R0cy9hcm0vdmV4cHJlc3MtdjJmLTF4djctY2E1
+M3gyLmR0cyB8ICAgNCArLQoKRm9yIHRoZSBBcm0gTHRkIGJvYXJkczoKCkFja2VkLWJ5OiBMaXZp
+dSBEdWRhdSA8bGl2aXUuZHVkYXVAYXJtLmNvbT4KClRoYW5rcywKTGl2aXUKCi0tIAo9PT09PT09
+PT09PT09PT09PT09PQp8IEkgd291bGQgbGlrZSB0byB8CnwgZml4IHRoZSB3b3JsZCwgIHwKfCBi
+dXQgdGhleSdyZSBub3QgfAp8IGdpdmluZyBtZSB0aGUgICB8CiBcIHNvdXJjZSBjb2RlISAgLwog
+IC0tLS0tLS0tLS0tLS0tLQogICAgwq9cXyjjg4QpXy/CrwoKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Ckxp
+bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
