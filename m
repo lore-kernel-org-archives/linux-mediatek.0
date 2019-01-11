@@ -1,129 +1,100 @@
-From: =?UTF-8?Q?Noralf_Tr=c3=b8nnes?= <noralf@tronnes.org>
-Subject: Re: [PATCH] drm/mediatek: Add MTK Framebuffer-Device (mt7623)
-Date: Fri, 11 Jan 2019 17:07:51 +0100
-Message-ID: <afe6ba3f-77ee-1b7c-072e-64ccb161119e@tronnes.org>
-References: <20190102084917.4049-1-frank-w@public-files.de>
- <20190107103640.GH21184@phenom.ffwll.local>
- <CAKMK7uEqxz4TAt_iwEC+dMWboVxCeCduyABsSwD0Ns7k=Z_UWA@mail.gmail.com>
- <trinity-0da588a3-1277-4421-ad6b-1f6aeb129dd6-1547146897687@3c-app-gmx-bs35>
- <20190110200225.GN21184@phenom.ffwll.local>
- <1547176809.12054.11.camel@mtksdaap41>
- <20190111092042.GP21184@phenom.ffwll.local>
- <1547200155.4209.4.camel@mtksdaap41>
- <20190111102503.GU21184@phenom.ffwll.local>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [RFC RESEND PATCH 1/7] dt-bindings: soc: Add DVFSRC driver
+ bindings
+Date: Fri, 11 Jan 2019 10:09:18 -0600
+Message-ID: <20190111160918.GA20480@bogus>
+References: <1546438198-1677-1-git-send-email-henryc.chen@mediatek.com>
+ <1546438198-1677-2-git-send-email-henryc.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190111102503.GU21184@phenom.ffwll.local>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: CK Hu <ck.hu@mediatek.com>, Frank Wunderlich <frank-w@public-files.de>, David Airlie <airlied@linux.ie>, Alexander Ryabchenko <d3adme4t@gmail.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Philipp Zabel <p.zabel@pengutronix.de>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1546438198-1677-2-git-send-email-henryc.chen@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Henry Chen <henryc.chen@mediatek.com>
+Cc: Viresh Kumar <vireshk@kernel.org>, Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Ulf Hansson <ulf.hansson@linaro.org>, Mark Rutland <mark.rutland@arm.com>, Fan Chen <fan.chen@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>, Kees Cook <keescook@chromium.org>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-CgpEZW4gMTEuMDEuMjAxOSAxMS4yNSwgc2tyZXYgRGFuaWVsIFZldHRlcjoKPiBPbiBGcmksIEph
-biAxMSwgMjAxOSBhdCAwNTo0OToxNVBNICswODAwLCBDSyBIdSB3cm90ZToKPj4gSGksIERhbmll
-bDoKPj4KPj4gT24gRnJpLCAyMDE5LTAxLTExIGF0IDEwOjIwICswMTAwLCBEYW5pZWwgVmV0dGVy
-IHdyb3RlOgo+Pj4gT24gRnJpLCBKYW4gMTEsIDIwMTkgYXQgMTE6MjA6MDlBTSArMDgwMCwgQ0sg
-SHUgd3JvdGU6Cj4+Pj4gSGksIERhbmllbDoKPj4+Pgo+Pj4+IE9uIFRodSwgMjAxOS0wMS0xMCBh
-dCAyMTowMiArMDEwMCwgRGFuaWVsIFZldHRlciB3cm90ZToKPj4+Pj4gT24gVGh1LCBKYW4gMTAs
-IDIwMTkgYXQgMDg6MDE6MzdQTSArMDEwMCwgRnJhbmsgV3VuZGVybGljaCB3cm90ZToKPj4+Pj4+
-IEhpIERhbmllbCwKPj4+Pj4+Cj4+Pj4+Pj4+IFdvdWxkIGJlIGdvb2QgdG8gdXNlIHRoZSBuZXcg
-Z2VuZXJpYyBmYmRldiBlbXVsYXRpb24gY29kZSBoZXJlLCBmb3IgZXZlbgo+Pj4+Pj4+PiBsZXNz
-IGNvZGUuIE9yIGF0IGxlYXN0IGtub3cgd2h5IHRoaXMgaXNuJ3QgcG9zc2libGUgdG8gdXNlIGZv
-ciBtdGsgKGFuZAo+Pj4+Pj4+PiBtYXliZSBhZGRyZXNzIHRoYXQgaW4gdGhlIGNvcmUgY29kZSku
-IEhhbmQtcm9sbGluZyBmYmRldiBjb2RlIHNob3VsZG4ndCBiZQo+Pj4+Pj4+PiBuZWVkZWQgYW55
-bW9yZS4KPj4+Pj4+Pgo+Pj4+Pj4+IEJhY2sgb24gdGhlIG1haWxpbmcgbGlzdCwgbm8gcHJpdmF0
-ZSByZXBsaWVzIHBsZWFzZToKPj4+Pj4+Cj4+Pj4+PiBpIGRvbid0IHdhbnRlZCB0byBzcGFtIGFs
-bCBwZW9wbGUgd2l0aCBkdW1iIHF1ZXN0aW9ucyA7KQo+Pj4+Pgo+Pj4+PiBUaGVyZSdzIG5vIGR1
-bWIgcXVlc3Rpb25zLCBvbmx5IGluc3VmZmljaWVudCBkb2N1bWVudGF0aW9uIDotKQo+Pj4+Pgo+
-Pj4+Pj4+IEZvciBleGFtcGxlcyBwbGVhc2UgZ3JlcCBmb3IgZHJtX2ZiZGV2X2dlbmVyaWNfc2V0
-dXAoKS4gVGhlcmUncyBhbHNvIGEKPj4+Pj4+PiBzdGlsbCBpbi1mbGlnaHQgc2VyaWVzIGZyb20g
-R2VyZCBIb2ZmbWFubiB0byBjb252ZXJ0IG92ZXIgYm9jaHMuIFRoYXQsCj4+Pj4+Pj4gcGx1cyBh
-bGwgdGhlIGtlcm5lbGRvYyBsaW5rZWQgZnJvbSB0aGVyZSBzaG91bGQgZ2V0IHlvdSBzdGFydGVk
-Lgo+Pj4+Pj4+IC1EYW5pZWwKPj4+Pj4+Cj4+Pj4+PiB0aGlzIGlzIG9uZSBvZiBnb29nbGUgYmVz
-dCBmb3VuZHMgaWYgaSBzZWFyY2ggZm9yIGRybV9mYmRldl9nZW5lcmljX3NldHVwOgo+Pj4+Pj4K
-Pj4+Pj4+IGh0dHBzOi8vbGttbC5vcmcvbGttbC8yMDE4LzEyLzE5LzMwNQo+Pj4+Pj4KPj4+Pj4+
-IG5vdCB2ZXJ5IGhlbHBmdWwuLi4KPj4+Pj4+Cj4+Pj4+PiBzbyBpIHRyaWVkIGtlcm5lbC1kb2MK
-Pj4+Pj4+Cj4+Pj4+PiBodHRwczovL3d3dy5rZXJuZWwub3JnL2RvYy9odG1sL2xhdGVzdC9ncHUv
-ZHJtLWttcy1oZWxwZXJzLmh0bWw/aGlnaGxpZ2h0PWRybV9mYmRldl9nZW5lcmljX3NldHVwI2Mu
-ZHJtX2ZiZGV2X2dlbmVyaWNfc2V0dXAKPj4+Pj4+Cj4+Pj4+PiB3aGljaCBpcyBuaWNlIGZ1bmN0
-aW9uLXJlZmVyZW5jZSBidXQgaSd2ZSBmb3VuZCBubyBnZW5lcmljIHdvcmtmbG93Cj4+Pj4+Pgo+
-Pj4+Pj4gYXMgdGhlIHBvc3RlZCBkcml2ZXIgaXMgIm9ubHkiIGEgZHJpdmVyIHBvcnRlZCBmcm9t
-IGtlcm5lbCA0LjQgYnkgQWxleGFuZGVyLCBpIGRvbid0IGtub3cgaWYgdGhpcyBuZXcgZnJhbWV3
-b3JrIGNhbiBiZSB1c2VkIGFuZCB3aGljaCBwYXJ0cyBuZWVkIHRvIGJlIGNoYW5nZWQuIEkgb25s
-eSB0cnkgdG8gYnJpbmcgaGlzIGNvZGUgTWFpbmxpbmUuLi4uCj4+Pj4+PiBNYXliZSBDSyBIdSBj
-YW4gaGVscCBoZXJlIGJlY2F1c2UgZHJpdmVyIGlzIG9yaWdpbmFsbHkgZnJvbSBoaW0gYW5kIGhl
-IGtub3dzIGludGVybmFscy4gT3IgbWF5YmUgeW91IGNhbiBoZWxwIGhlcmU/Cj4+Pj4+Pgo+Pj4+
-Pj4gaSBwZXJzb25hbGx5IG1ha2UgbXkgZmlyc3Qgc3RlcHMgYXMgc3BhcmUtdGltZSBrZXJuZWwt
-ZGV2ZWxvcGVyIDopCj4+Pj4+Cj4+Pj4+IFRoZXJlJ3MgYSB0b24gb2YgaW4ta2VybmVsIHVzZXJz
-IG9mIHRoYXQgZnVuY3Rpb24gYWxyZWFkeSwgSSBtZWFudCB5b3UgY2FuCj4+Pj4+IHVzZSB0aG9z
-ZSB0byBzZXJ2ZSBhcyBleGFtcGxlcyAuLi4gSWYgdGhvc2UgKyB0aGUga2VybmVsZG9jIGFyZW4n
-dAo+Pj4+PiBnb29kIGVub3VnaCwgdGhlbiB3ZSBuZWVkIHRvIGltcHJvdmUgdGhlbS4KPj4+Pj4g
-LURhbmllbAo+Pj4+Cj4+Pj4gSSd2ZSB0cmllZCB3aXRoIGRybV9mYmRldl9nZW5lcmljX3NldHVw
-KCkgYW5kIGl0IHdvcmtzIGZpbmUgd2l0aCBzaW1wbGUKPj4+PiBtb2RpZmljYXRpb24uIFRoZSBw
-YXRjaCBpcwo+Pj4+Cj4+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1f
-ZHJ2LmMKPj4+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+
-Pj4+IEBAIC0xNiw2ICsxNiw3IEBACj4+Pj4gICNpbmNsdWRlIDxkcm0vZHJtX2F0b21pYy5oPgo+
-Pj4+ICAjaW5jbHVkZSA8ZHJtL2RybV9hdG9taWNfaGVscGVyLmg+Cj4+Pj4gICNpbmNsdWRlIDxk
-cm0vZHJtX2NydGNfaGVscGVyLmg+Cj4+Pj4gKyNpbmNsdWRlIDxkcm0vZHJtX2ZiX2hlbHBlci5o
-Pgo+Pj4+ICAjaW5jbHVkZSA8ZHJtL2RybV9nZW0uaD4KPj4+PiAgI2luY2x1ZGUgPGRybS9kcm1f
-Z2VtX2NtYV9oZWxwZXIuaD4KPj4+PiAgI2luY2x1ZGUgPGRybS9kcm1fb2YuaD4KPj4+PiBAQCAt
-Mzc5LDYgKzM4MCw3IEBAIHN0YXRpYyB2b2lkIG10a19kcm1fa21zX2RlaW5pdChzdHJ1Y3QgZHJt
-X2RldmljZQo+Pj4+ICpkcm0pCj4+Pj4gICAgICAgICAuZ2VtX3ByaW1lX2dldF9zZ190YWJsZSA9
-IG10a19nZW1fcHJpbWVfZ2V0X3NnX3RhYmxlLAo+Pj4+ICAgICAgICAgLmdlbV9wcmltZV9pbXBv
-cnRfc2dfdGFibGUgPSBtdGtfZ2VtX3ByaW1lX2ltcG9ydF9zZ190YWJsZSwKPj4+PiAgICAgICAg
-IC5nZW1fcHJpbWVfbW1hcCA9IG10a19kcm1fZ2VtX21tYXBfYnVmLAo+Pj4+ICsgICAgICAgLmdl
-bV9wcmltZV92bWFwID0gbXRrX2RybV9nZW1fcHJpbWVfdm1hcCwKPj4+PiAgICAgICAgIC5pb2N0
-bHMgPSBtdGtfaW9jdGxzLAo+Pj4+ICAgICAgICAgLm51bV9pb2N0bHMgPSBBUlJBWV9TSVpFKG10
-a19pb2N0bHMpLAo+Pj4+ICAgICAgICAgLmZvcHMgPSAmbXRrX2RybV9mb3BzLAo+Pj4+IEBAIC00
-MTYsNiArNDE4LDggQEAgc3RhdGljIGludCBtdGtfZHJtX2JpbmQoc3RydWN0IGRldmljZSAqZGV2
-KQo+Pj4+ICAgICAgICAgaWYgKHJldCA8IDApCj4+Pj4gICAgICAgICAgICAgICAgIGdvdG8gZXJy
-X2RlaW5pdDsKPj4+Pgo+Pj4+ICsgICAgICAgZHJtX2ZiZGV2X2dlbmVyaWNfc2V0dXAoZHJtLCAz
-Mik7Cj4+Pj4gKwo+Pj4+ICAgICAgICAgcmV0dXJuIDA7Cj4+Pj4KPj4+Pgo+Pj4+IEJ1dCBJIGlt
-cGxlbWVudCAuZ2VtX3ByaW1lX3ZtYXAgd2l0aCBhIHdvcmthcm91bmQsCj4+Pj4KPj4+Pgo+Pj4+
-IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2dlbS5jCj4+Pj4gKysrIGIv
-ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZ2VtLmMKPj4+PiBAQCAtMjgwLDMgKzI4
-MCw4IEBAIGludCBtdGtfZ2VtX2NyZWF0ZV9pb2N0bChzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+
-Pj4+IHZvaWQgKmRhdGEsCj4+Pj4gICAgICAgICBtdGtfZHJtX2dlbV9mcmVlX29iamVjdCgmbXRr
-X2dlbS0+YmFzZSk7Cj4+Pj4gICAgICAgICByZXR1cm4gcmV0Owo+Pj4+ICB9Cj4+Pj4gKwo+Pj4+
-ICt2b2lkICptdGtfZHJtX2dlbV9wcmltZV92bWFwKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2Jq
-KQo+Pj4+ICt7Cj4+Pj4gKyAgICAgICByZXR1cm4gKHZvaWQgKikxOwo+Pj4+ICt9Cj4+Pj4KPj4+
-PiBDdXJyZW50IGRybV9mYl9oZWxwZXIgZGVwZW5kcyBvbiBkcm1fY2xpZW50IHRvIGNyZWF0ZSBm
-YmRldi4gV2hlbgo+Pj4+IGRybV9jbGllbnQgY3JlYXRlIGRybV9jbGllbnRfYnVmZmVyLCBpdCBu
-ZWVkIHRvIHZtYXAgdG8gZ2V0IGtlcm5lbAo+Pj4+IHZhZGRyLiBCdXQgSSB0aGluayBmb3IgZmJk
-ZXYsIHRoZSB2YWRkciBpcyB1c2VsZXNzLiBEbyB5b3UgYWdyZWUgdGhhdCBJCj4+Pj4gdGVtcG9y
-YXJpbHkgaW1wbGVtZW50IC5nZW1fcHJpbWVfdm1hcCBpbiBzdWNoIHdheT8KPj4+Cj4+PiBUaGUg
-dm1hcCBpcyB1c2VkIGJ5IGZiY29uLCB3aXRob3V0IHRoYXQgZmJkZXYgd29uJ3QgcmVhbGx5IHdv
-cmsgSSB0aGluay4KPj4+IFNvIEknbSByYXRoZXIgY29uZnVzZWQgb24gd2hhdCB5b3UgdGVzdGVk
-IC4uLgo+Pj4KPj4+IEFkZGluZyBOb3JhbGYsIGhlJ3MgdGhlIGV4cGVydCBoZXJlLgo+Pj4gLURh
-bmllbAo+Pgo+PiBJIHRlc3Qgd2l0aCBmYl90ZXN0IFsxXSwgaXQgaXMgYSB1c2VyIHNwYWNlIHBy
-b2dyYW0ganVzdCBvcGVuIC9kZXYvZmIwCj4+IGFuZCBtbWFwIGl0IHRvIHVzZXIgc3BhY2UuIEkg
-ZG9lcyBub3QgdHVybiBvbiBmYmNvbiBzbyBldmVyeXRoaW5nIGxvb2tzCj4+IHdlbGwuIElmIHN1
-cHBvcnQgZmJjb24gaXMgZXNzZW50aWFsLCBJIHdvdWxkIGltcGxlbWVudCB2bWFwIGNvcnJlY3Rs
-eS4KPj4gSWYgaXQncyBub3QgZXNzZW50aWFsLCBJIHRoaW5rIEkgY291bGQgcmV0dXJuIDAgd2hl
-bgo+PiBDT05GSUdfRlJBTUJVRkZFUl9DT05TT0xFIGlzIGRlZmluZWQuCj4gCj4gSSB0aGluayBm
-YmRldiBlbXVsYXRpb24gd2l0aG91dCB3b3JraW5nIGZiY29uIGlzIGZhaXJseSB1c2VsZXNzLiBB
-bmQgaXQKPiBzaG91bGRuJ3QgYmUgdGhhdCBtdWNoIHdvcmsgdG8gbWFrZSBpdCB3b3JrLCB3ZSBo
-YXZlIHF1aXRlIGEgZmV3IG1vcmUKPiBoZWxlcnMgZm9yIGdlbSBibyBub3dhZGF5cy4KCklmIHRo
-ZSB2aXJ0dWFsIGFkZHJlc3MgaXMgbm90IHNldCwgZmJjb24gY2FuJ3QgYmUgdXNlZCBhbmQgdGhh
-dCBtZWFucyBpdApoYXMgdG8gYmUgZGlzYWJsZWQgdXNpbmcgc29tZXRoaW5nIGxpa2UgdGhpcyBp
-biB0aGUgZHJpdmVyIEtjb25maWc6CglkZXBlbmRzIG9uICFGUkFNRUJVRkZFUl9DT05TT0xFCgpP
-dGhlcndpc2UgaXQgd2lsbCBjcmFzaCBpZiBzb21lb25lIHRyaWVzIHRvIHVzZSBpdC4KClRoZSBw
-cm9ibGVtIGhlcmUgaXMgdGhhdCB0aGlzIGRyaXZlciBkb2Vzbid0IG1hcCBhIHZpcnR1YWwgYWRk
-cmVzcyBmb3IKaXRzIGJ1ZmZlcnM6CgltdGtfZ2VtLT5kbWFfYXR0cnMgfD0gRE1BX0FUVFJfTk9f
-S0VSTkVMX01BUFBJTkc7CgpQcm9iYWJseSBiZWNhdXNlIG9mIGxpbWl0ZWQgdmlydHVhbCBhZGRy
-ZXNzIHNwYWNlLgpyb2NrY2hpcCBpcyBpbiB0aGUgc2FtZSBzaXR1YXRpb24uCgpJJ20gYXdhcmUg
-b2YgdGhpcyBzaG9ydGNvbWluZyBvZiB0aGUgZ2VuZXJpYyBlbXVsYXRpb24sIGJ1dCBJIGRvbid0
-IHNlZQpob3cgaXQgY2FuIGJlIHNvbHZlZCB3aXRob3V0IHVzaW5nIHNvbWVraW5kIG9mIGZsYWcg
-YXR0YWNoZWQgdG8gdGhlIGR1bWIKYnVmZmVyIGNyZWF0aW9uIHJlcXVlc3QuCgpOb3JhbGYuCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBt
-YWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3Rz
-LmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Wed, Jan 02, 2019 at 10:09:52PM +0800, Henry Chen wrote:
+> Document the binding for enabling DVFSRC on MediaTek SoC.
+> 
+> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+> ---
+>  .../devicetree/bindings/soc/mediatek/dvfsrc.txt    | 26 ++++++++++++++++++++++
+>  include/dt-bindings/soc/mtk,dvfsrc.h               | 18 +++++++++++++++
+>  2 files changed, 44 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt
+>  create mode 100644 include/dt-bindings/soc/mtk,dvfsrc.h
+> 
+> diff --git a/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt b/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt
+> new file mode 100644
+> index 0000000..402c885
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt
+> @@ -0,0 +1,26 @@
+> +MediaTek DVFSRC Driver
+
+Bindings are for h/w blocks, not drivers.
+
+> +The Dynamic Voltage and Frequency Scaling Resource Collector (DVFSRC) is a
+> +HW module which is used to collect all the requests from both software and
+> +hardware and turn into the decision of minimum operating voltage and minimum
+> +DRAM frequency to fulfill those requests.
+
+Seems like the OPP table should be a child of this instead of where you 
+currently have it?
+
+> +
+> +Required Properties:
+> +- compatible: Should be one of the following
+> +	- "mediatek,mt8183-dvfsrc": For MT8183 SoC
+> +- reg: Address range of the DVFSRC unit
+> +- dram_type: Refer to <include/dt-bindings/soc/mtk,dvfsrc.h> for the
+> +	different dram type support.
+
+This information should come from the DDR controller or memory nodes 
+probably. And we already have some properties related to DDR type.
+
+> +- clock-names: Must include the following entries:
+> +	"dvfsrc": DVFSRC module clock
+> +- clocks: Must contain an entry for each entry in clock-names.
+> +
+> +Example:
+> +
+> +	dvfsrc_top@10012000 {
+
+Drop the '_top'. (Don't use '_' in node and property names).
+
+> +		compatible = "mediatek,mt8183-dvfsrc";
+> +		reg = <0 0x10012000 0 0x1000>;
+> +		clocks = <&infracfg CLK_INFRA_DVFSRC>;
+> +		clock-names = "dvfsrc";
+> +		dram_type = <MT8183_DVFSRC_OPP_LP4>;
+> +	};
+> diff --git a/include/dt-bindings/soc/mtk,dvfsrc.h b/include/dt-bindings/soc/mtk,dvfsrc.h
+> new file mode 100644
+> index 0000000..60b3497
+> --- /dev/null
+> +++ b/include/dt-bindings/soc/mtk,dvfsrc.h
+> @@ -0,0 +1,18 @@
+> +/* SPDX-License-Identifier: GPL-2.0
+> + *
+> + * Copyright (c) 2018 MediaTek Inc.
+> + */
+> +
+> +#ifndef _DT_BINDINGS_POWER_MTK_DVFSRC_H
+> +#define _DT_BINDINGS_POWER_MTK_DVFSRC_H
+> +
+> +#define MT8183_DVFSRC_OPP_LP4	0
+> +#define MT8183_DVFSRC_OPP_LP4X	1
+> +#define MT8183_DVFSRC_OPP_LP3	2
+> +
+> +#define MT8183_DVFSRC_LEVEL_1	1
+> +#define MT8183_DVFSRC_LEVEL_2	2
+> +#define MT8183_DVFSRC_LEVEL_3	3
+> +#define MT8183_DVFSRC_LEVEL_4	4
+> +
+> +#endif /* _DT_BINDINGS_POWER_MTK_DVFSRC_H */
+> -- 
+> 1.9.1
+> 
