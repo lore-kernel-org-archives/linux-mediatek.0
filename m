@@ -1,32 +1,69 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH v5] pinctrl: mediatek: add EINT support to virtual GPIOs
-Date: Fri, 11 Jan 2019 13:15:54 +0100
-Message-ID: <CACRpkdaF+PFv-oUkLiWT7M2hYESsAYxaPN5OM2=XraeAx9zP4Q@mail.gmail.com>
-References: <1546486635-16829-1-git-send-email-chuanjia.liu@mediatek.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: Remove inconsistent use of 'arm,armv8'
+ compatible string
+Date: Fri, 11 Jan 2019 07:57:12 -0600
+Message-ID: <CAL_JsqKMYY5RsCjzp4eMnW0YrohcqwmhVj0hfUEVrbGJEFx05w@mail.gmail.com>
+References: <20190109202934.29304-1-robh@kernel.org>
+ <20190110144537.p5setcurwu6bwrtl@rric.localdomain>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1546486635-16829-1-git-send-email-chuanjia.liu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: chuanjia.liu@mediatek.com
-Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, youlin.pei@mediatek.com, huang eddie <eddie.huang@mediatek.com>, Zhiyong Tao <zhiyong.tao@mediatek.com>, hailong.fan@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190110144537.p5setcurwu6bwrtl-vWBEXY7mpu582hYKe6nXyg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: "Richter, Robert" <Robert.Richter-YGCgFSpz5w/QT0dZR+AlfA@public.gmane.org>
+Cc: Nishanth Menon <nm-l0cyMroinI0@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, "linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "Nair,
+ Jayachandran" <Jayachandran.Nair-YGCgFSpz5w/QT0dZR+AlfA@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Gregory Clement <gregory.clement-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <krzk@kerne>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jan 3, 2019 at 4:38 AM <chuanjia.liu@mediatek.com> wrote:
-
-> From: "chuanjia.liu" <Chuanjia.Liu@mediatek.com>
+On Thu, Jan 10, 2019 at 8:18 PM Richter, Robert
+<Robert.Richter-YGCgFSpz5w/QT0dZR+AlfA@public.gmane.org> wrote:
 >
-> Virtual gpio only used inside SOC and not being exported to outside SOC.
-> Some modules use virtual gpio as eint and doesn't need SMT.
-> So this patch add EINT support to virtual GPIOs.
+> Rob,
 >
-> Signed-off-by: chuanjia.liu <Chuanjia.Liu@mediatek.com>
-> ---
-> change note:
-> v5: This patch is the same as v4,re-upload due to
->       mail permissions issues
+> On 09.01.19 14:29:34, Rob Herring wrote:
+> > External Email
+> >
+> > The 'arm,armv8' compatible string is only for software models. It adds
+> > little value otherwise and is inconsistently used as a fallback on some
+> > platforms. Remove it from those platforms.
+> >
+> > This fixes warnings generated by the DT schema.
+> >
+> > Reported-by: Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>
+> > Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+> > Cc: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
+> > Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> > ---
+> > armsoc folks, Please apply directly.
+>
+> > diff --git a/arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi b/arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi
+> > index ff5c4c47b22b..c616132f7d6d 100644
+> > --- a/arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi
+> > +++ b/arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi
+> > @@ -27,28 +27,28 @@
+> >
+> >                 cpu@0 {
+> >                         device_type = "cpu";
+> > -                       compatible = "cavium,thunder2", "brcm,vulcan", "arm,armv8";
+> > +                       compatible = "cavium,thunder2";
+>
+> We are just checking if removing the "brcm,vulcan" string has any
+> impact on early silicon revisions we want to support (see also
+> BRCM_CPU_PART_VULCAN).
+>
+> Maybe you make this a separate change?
 
-Patch applied with Sean's ACK.
+Dropping brcm,vulcan was unintentional (regex fail). Though keeping it
+means we need a schema change as it was not documented to be a
+fallback.
 
-Yours,
-Linus Walleij
+Rob
