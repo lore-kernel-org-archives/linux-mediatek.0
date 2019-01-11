@@ -1,40 +1,115 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH v4] pinctrl: mediatek: add EINT support to virtual GPIOs
-Date: Fri, 11 Jan 2019 10:36:59 +0100
-Message-ID: <CACRpkda_-C2aqGWqAbGJK9RRUF9zn=nqJq71tSP-j6pyjgb2rg@mail.gmail.com>
-References: <1546419614-31207-1-git-send-email-chuanjia.liu@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: Re: [PATCH] drm/mediatek: Add MTK Framebuffer-Device (mt7623)
+Date: Fri, 11 Jan 2019 17:49:15 +0800
+Message-ID: <1547200155.4209.4.camel@mtksdaap41>
+References: <20190102084917.4049-1-frank-w@public-files.de>
+ <20190107103640.GH21184@phenom.ffwll.local>
+ <CAKMK7uEqxz4TAt_iwEC+dMWboVxCeCduyABsSwD0Ns7k=Z_UWA@mail.gmail.com>
+ <trinity-0da588a3-1277-4421-ad6b-1f6aeb129dd6-1547146897687@3c-app-gmx-bs35>
+ <20190110200225.GN21184@phenom.ffwll.local>
+ <1547176809.12054.11.camel@mtksdaap41>
+ <20190111092042.GP21184@phenom.ffwll.local>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1546419614-31207-1-git-send-email-chuanjia.liu@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: chuanjia.liu@mediatek.com, Sean Wang <sean.wang@kernel.org>
-Cc: youlin.pei@mediatek.com, Zhiyong Tao <zhiyong.tao@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, hailong.fan@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, huang eddie <eddie.huang@mediatek.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190111092042.GP21184@phenom.ffwll.local>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Vetter <daniel@ffwll.ch>
+Cc: Frank Wunderlich <frank-w@public-files.de>, David Airlie <airlied@linux.ie>, Alexander Ryabchenko <d3adme4t@gmail.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jan 2, 2019 at 10:00 AM <chuanjia.liu@mediatek.com> wrote:
-
-> From: "chuanjia.liu" <Chuanjia.Liu@mediatek.com>
->
-> Virtual gpio only used inside SOC and not being exported to outside SOC.
-> Some modules use virtual gpio as eint and doesn't need SMT.
-> So this patch add EINT support to virtual GPIOs.
->
-> Signed-off-by: chuanjia.liu <Chuanjia.Liu@mediatek.com>
-> ---
-> change note:
-> v4: modify description and comments
-
-Just waiting for an ACK from Sean before I apply this.
-
-Yours,
-Linus Walleij
+SGksIERhbmllbDoKCk9uIEZyaSwgMjAxOS0wMS0xMSBhdCAxMDoyMCArMDEwMCwgRGFuaWVsIFZl
+dHRlciB3cm90ZToKPiBPbiBGcmksIEphbiAxMSwgMjAxOSBhdCAxMToyMDowOUFNICswODAwLCBD
+SyBIdSB3cm90ZToKPiA+IEhpLCBEYW5pZWw6Cj4gPiAKPiA+IE9uIFRodSwgMjAxOS0wMS0xMCBh
+dCAyMTowMiArMDEwMCwgRGFuaWVsIFZldHRlciB3cm90ZToKPiA+ID4gT24gVGh1LCBKYW4gMTAs
+IDIwMTkgYXQgMDg6MDE6MzdQTSArMDEwMCwgRnJhbmsgV3VuZGVybGljaCB3cm90ZToKPiA+ID4g
+PiBIaSBEYW5pZWwsCj4gPiA+ID4gCj4gPiA+ID4gPiA+IFdvdWxkIGJlIGdvb2QgdG8gdXNlIHRo
+ZSBuZXcgZ2VuZXJpYyBmYmRldiBlbXVsYXRpb24gY29kZSBoZXJlLCBmb3IgZXZlbgo+ID4gPiA+
+ID4gPiBsZXNzIGNvZGUuIE9yIGF0IGxlYXN0IGtub3cgd2h5IHRoaXMgaXNuJ3QgcG9zc2libGUg
+dG8gdXNlIGZvciBtdGsgKGFuZAo+ID4gPiA+ID4gPiBtYXliZSBhZGRyZXNzIHRoYXQgaW4gdGhl
+IGNvcmUgY29kZSkuIEhhbmQtcm9sbGluZyBmYmRldiBjb2RlIHNob3VsZG4ndCBiZQo+ID4gPiA+
+ID4gPiBuZWVkZWQgYW55bW9yZS4KPiA+ID4gPiA+IAo+ID4gPiA+ID4gQmFjayBvbiB0aGUgbWFp
+bGluZyBsaXN0LCBubyBwcml2YXRlIHJlcGxpZXMgcGxlYXNlOgo+ID4gPiA+IAo+ID4gPiA+IGkg
+ZG9uJ3Qgd2FudGVkIHRvIHNwYW0gYWxsIHBlb3BsZSB3aXRoIGR1bWIgcXVlc3Rpb25zIDspCj4g
+PiA+IAo+ID4gPiBUaGVyZSdzIG5vIGR1bWIgcXVlc3Rpb25zLCBvbmx5IGluc3VmZmljaWVudCBk
+b2N1bWVudGF0aW9uIDotKQo+ID4gPiAKPiA+ID4gPiA+IEZvciBleGFtcGxlcyBwbGVhc2UgZ3Jl
+cCBmb3IgZHJtX2ZiZGV2X2dlbmVyaWNfc2V0dXAoKS4gVGhlcmUncyBhbHNvIGEKPiA+ID4gPiA+
+IHN0aWxsIGluLWZsaWdodCBzZXJpZXMgZnJvbSBHZXJkIEhvZmZtYW5uIHRvIGNvbnZlcnQgb3Zl
+ciBib2Nocy4gVGhhdCwKPiA+ID4gPiA+IHBsdXMgYWxsIHRoZSBrZXJuZWxkb2MgbGlua2VkIGZy
+b20gdGhlcmUgc2hvdWxkIGdldCB5b3Ugc3RhcnRlZC4KPiA+ID4gPiA+IC1EYW5pZWwKPiA+ID4g
+PiAKPiA+ID4gPiB0aGlzIGlzIG9uZSBvZiBnb29nbGUgYmVzdCBmb3VuZHMgaWYgaSBzZWFyY2gg
+Zm9yIGRybV9mYmRldl9nZW5lcmljX3NldHVwOgo+ID4gPiA+IAo+ID4gPiA+IGh0dHBzOi8vbGtt
+bC5vcmcvbGttbC8yMDE4LzEyLzE5LzMwNQo+ID4gPiA+IAo+ID4gPiA+IG5vdCB2ZXJ5IGhlbHBm
+dWwuLi4KPiA+ID4gPiAKPiA+ID4gPiBzbyBpIHRyaWVkIGtlcm5lbC1kb2MKPiA+ID4gPiAKPiA+
+ID4gPiBodHRwczovL3d3dy5rZXJuZWwub3JnL2RvYy9odG1sL2xhdGVzdC9ncHUvZHJtLWttcy1o
+ZWxwZXJzLmh0bWw/aGlnaGxpZ2h0PWRybV9mYmRldl9nZW5lcmljX3NldHVwI2MuZHJtX2ZiZGV2
+X2dlbmVyaWNfc2V0dXAKPiA+ID4gPiAKPiA+ID4gPiB3aGljaCBpcyBuaWNlIGZ1bmN0aW9uLXJl
+ZmVyZW5jZSBidXQgaSd2ZSBmb3VuZCBubyBnZW5lcmljIHdvcmtmbG93Cj4gPiA+ID4gCj4gPiA+
+ID4gYXMgdGhlIHBvc3RlZCBkcml2ZXIgaXMgIm9ubHkiIGEgZHJpdmVyIHBvcnRlZCBmcm9tIGtl
+cm5lbCA0LjQgYnkgQWxleGFuZGVyLCBpIGRvbid0IGtub3cgaWYgdGhpcyBuZXcgZnJhbWV3b3Jr
+IGNhbiBiZSB1c2VkIGFuZCB3aGljaCBwYXJ0cyBuZWVkIHRvIGJlIGNoYW5nZWQuIEkgb25seSB0
+cnkgdG8gYnJpbmcgaGlzIGNvZGUgTWFpbmxpbmUuLi4uCj4gPiA+ID4gTWF5YmUgQ0sgSHUgY2Fu
+IGhlbHAgaGVyZSBiZWNhdXNlIGRyaXZlciBpcyBvcmlnaW5hbGx5IGZyb20gaGltIGFuZCBoZSBr
+bm93cyBpbnRlcm5hbHMuIE9yIG1heWJlIHlvdSBjYW4gaGVscCBoZXJlPwo+ID4gPiA+IAo+ID4g
+PiA+IGkgcGVyc29uYWxseSBtYWtlIG15IGZpcnN0IHN0ZXBzIGFzIHNwYXJlLXRpbWUga2VybmVs
+LWRldmVsb3BlciA6KQo+ID4gPiAKPiA+ID4gVGhlcmUncyBhIHRvbiBvZiBpbi1rZXJuZWwgdXNl
+cnMgb2YgdGhhdCBmdW5jdGlvbiBhbHJlYWR5LCBJIG1lYW50IHlvdSBjYW4KPiA+ID4gdXNlIHRo
+b3NlIHRvIHNlcnZlIGFzIGV4YW1wbGVzIC4uLiBJZiB0aG9zZSArIHRoZSBrZXJuZWxkb2MgYXJl
+bid0Cj4gPiA+IGdvb2QgZW5vdWdoLCB0aGVuIHdlIG5lZWQgdG8gaW1wcm92ZSB0aGVtLgo+ID4g
+PiAtRGFuaWVsCj4gPiAKPiA+IEkndmUgdHJpZWQgd2l0aCBkcm1fZmJkZXZfZ2VuZXJpY19zZXR1
+cCgpIGFuZCBpdCB3b3JrcyBmaW5lIHdpdGggc2ltcGxlCj4gPiBtb2RpZmljYXRpb24uIFRoZSBw
+YXRjaCBpcwo+ID4gCj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9k
+cnYuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMKPiA+
+IEBAIC0xNiw2ICsxNiw3IEBACj4gPiAgI2luY2x1ZGUgPGRybS9kcm1fYXRvbWljLmg+Cj4gPiAg
+I2luY2x1ZGUgPGRybS9kcm1fYXRvbWljX2hlbHBlci5oPgo+ID4gICNpbmNsdWRlIDxkcm0vZHJt
+X2NydGNfaGVscGVyLmg+Cj4gPiArI2luY2x1ZGUgPGRybS9kcm1fZmJfaGVscGVyLmg+Cj4gPiAg
+I2luY2x1ZGUgPGRybS9kcm1fZ2VtLmg+Cj4gPiAgI2luY2x1ZGUgPGRybS9kcm1fZ2VtX2NtYV9o
+ZWxwZXIuaD4KPiA+ICAjaW5jbHVkZSA8ZHJtL2RybV9vZi5oPgo+ID4gQEAgLTM3OSw2ICszODAs
+NyBAQCBzdGF0aWMgdm9pZCBtdGtfZHJtX2ttc19kZWluaXQoc3RydWN0IGRybV9kZXZpY2UKPiA+
+ICpkcm0pCj4gPiAgICAgICAgIC5nZW1fcHJpbWVfZ2V0X3NnX3RhYmxlID0gbXRrX2dlbV9wcmlt
+ZV9nZXRfc2dfdGFibGUsCj4gPiAgICAgICAgIC5nZW1fcHJpbWVfaW1wb3J0X3NnX3RhYmxlID0g
+bXRrX2dlbV9wcmltZV9pbXBvcnRfc2dfdGFibGUsCj4gPiAgICAgICAgIC5nZW1fcHJpbWVfbW1h
+cCA9IG10a19kcm1fZ2VtX21tYXBfYnVmLAo+ID4gKyAgICAgICAuZ2VtX3ByaW1lX3ZtYXAgPSBt
+dGtfZHJtX2dlbV9wcmltZV92bWFwLAo+ID4gICAgICAgICAuaW9jdGxzID0gbXRrX2lvY3RscywK
+PiA+ICAgICAgICAgLm51bV9pb2N0bHMgPSBBUlJBWV9TSVpFKG10a19pb2N0bHMpLAo+ID4gICAg
+ICAgICAuZm9wcyA9ICZtdGtfZHJtX2ZvcHMsCj4gPiBAQCAtNDE2LDYgKzQxOCw4IEBAIHN0YXRp
+YyBpbnQgbXRrX2RybV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldikKPiA+ICAgICAgICAgaWYgKHJl
+dCA8IDApCj4gPiAgICAgICAgICAgICAgICAgZ290byBlcnJfZGVpbml0Owo+ID4gCj4gPiArICAg
+ICAgIGRybV9mYmRldl9nZW5lcmljX3NldHVwKGRybSwgMzIpOwo+ID4gKwo+ID4gICAgICAgICBy
+ZXR1cm4gMDsKPiA+IAo+ID4gCj4gPiBCdXQgSSBpbXBsZW1lbnQgLmdlbV9wcmltZV92bWFwIHdp
+dGggYSB3b3JrYXJvdW5kLAo+ID4gCj4gPiAKPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZHJtX2dlbS5jCj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2RybV9nZW0uYwo+ID4gQEAgLTI4MCwzICsyODAsOCBAQCBpbnQgbXRrX2dlbV9jcmVhdGVfaW9j
+dGwoc3RydWN0IGRybV9kZXZpY2UgKmRldiwKPiA+IHZvaWQgKmRhdGEsCj4gPiAgICAgICAgIG10
+a19kcm1fZ2VtX2ZyZWVfb2JqZWN0KCZtdGtfZ2VtLT5iYXNlKTsKPiA+ICAgICAgICAgcmV0dXJu
+IHJldDsKPiA+ICB9Cj4gPiArCj4gPiArdm9pZCAqbXRrX2RybV9nZW1fcHJpbWVfdm1hcChzdHJ1
+Y3QgZHJtX2dlbV9vYmplY3QgKm9iaikKPiA+ICt7Cj4gPiArICAgICAgIHJldHVybiAodm9pZCAq
+KTE7Cj4gPiArfQo+ID4gCj4gPiBDdXJyZW50IGRybV9mYl9oZWxwZXIgZGVwZW5kcyBvbiBkcm1f
+Y2xpZW50IHRvIGNyZWF0ZSBmYmRldi4gV2hlbgo+ID4gZHJtX2NsaWVudCBjcmVhdGUgZHJtX2Ns
+aWVudF9idWZmZXIsIGl0IG5lZWQgdG8gdm1hcCB0byBnZXQga2VybmVsCj4gPiB2YWRkci4gQnV0
+IEkgdGhpbmsgZm9yIGZiZGV2LCB0aGUgdmFkZHIgaXMgdXNlbGVzcy4gRG8geW91IGFncmVlIHRo
+YXQgSQo+ID4gdGVtcG9yYXJpbHkgaW1wbGVtZW50IC5nZW1fcHJpbWVfdm1hcCBpbiBzdWNoIHdh
+eT8KPiAKPiBUaGUgdm1hcCBpcyB1c2VkIGJ5IGZiY29uLCB3aXRob3V0IHRoYXQgZmJkZXYgd29u
+J3QgcmVhbGx5IHdvcmsgSSB0aGluay4KPiBTbyBJJ20gcmF0aGVyIGNvbmZ1c2VkIG9uIHdoYXQg
+eW91IHRlc3RlZCAuLi4KPiAKPiBBZGRpbmcgTm9yYWxmLCBoZSdzIHRoZSBleHBlcnQgaGVyZS4K
+PiAtRGFuaWVsCgpJIHRlc3Qgd2l0aCBmYl90ZXN0IFsxXSwgaXQgaXMgYSB1c2VyIHNwYWNlIHBy
+b2dyYW0ganVzdCBvcGVuIC9kZXYvZmIwCmFuZCBtbWFwIGl0IHRvIHVzZXIgc3BhY2UuIEkgZG9l
+cyBub3QgdHVybiBvbiBmYmNvbiBzbyBldmVyeXRoaW5nIGxvb2tzCndlbGwuIElmIHN1cHBvcnQg
+ZmJjb24gaXMgZXNzZW50aWFsLCBJIHdvdWxkIGltcGxlbWVudCB2bWFwIGNvcnJlY3RseS4KSWYg
+aXQncyBub3QgZXNzZW50aWFsLCBJIHRoaW5rIEkgY291bGQgcmV0dXJuIDAgd2hlbgpDT05GSUdf
+RlJBTUJVRkZFUl9DT05TT0xFIGlzIGRlZmluZWQuCgpSZWdhcmRzLApDSwoKWzFdCmh0dHBzOi8v
+YW5kcm9pZC5nb29nbGVzb3VyY2UuY29tL3BsYXRmb3JtL3N5c3RlbS9leHRyYXMvKy9tYXN0ZXIv
+dGVzdHMvZnJhbWVidWZmZXIvZmJfdGVzdC5jCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
+bGlzdGluZm8vZHJpLWRldmVsCg==
