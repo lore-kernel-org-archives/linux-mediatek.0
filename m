@@ -1,93 +1,117 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: Re: [PATCH] drm/mediatek: Add MTK Framebuffer-Device (mt7623)
-Date: Fri, 11 Jan 2019 11:20:09 +0800
-Message-ID: <1547176809.12054.11.camel@mtksdaap41>
-References: <20190102084917.4049-1-frank-w@public-files.de>
- <20190107103640.GH21184@phenom.ffwll.local>
- <CAKMK7uEqxz4TAt_iwEC+dMWboVxCeCduyABsSwD0Ns7k=Z_UWA@mail.gmail.com>
- <trinity-0da588a3-1277-4421-ad6b-1f6aeb129dd6-1547146897687@3c-app-gmx-bs35>
- <20190110200225.GN21184@phenom.ffwll.local>
+From: Min Guo <min.guo@mediatek.com>
+Subject: Re: [PATCH 4/4] usb: musb: Add support for MediaTek musb controller
+Date: Fri, 11 Jan 2019 13:24:37 +0800
+Message-ID: <1547184277.4433.164.camel@mhfsdcap03>
+References: <1545896066-897-1-git-send-email-min.guo@mediatek.com>
+         <1545896066-897-5-git-send-email-min.guo@mediatek.com>
+         <20190108154441.GG25910@uda0271908>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190110200225.GN21184@phenom.ffwll.local>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel@ffwll.ch>
-Cc: Frank Wunderlich <frank-w@public-files.de>, David Airlie <airlied@linux.ie>, Alexander Ryabchenko <d3adme4t@gmail.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190108154441.GG25910@uda0271908>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Bin Liu <b-liu@ti.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, chunfeng.yun@mediatek.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Yonglong Wu <yonglong.wu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIERhbmllbDoKCk9uIFRodSwgMjAxOS0wMS0xMCBhdCAyMTowMiArMDEwMCwgRGFuaWVsIFZl
-dHRlciB3cm90ZToKPiBPbiBUaHUsIEphbiAxMCwgMjAxOSBhdCAwODowMTozN1BNICswMTAwLCBG
-cmFuayBXdW5kZXJsaWNoIHdyb3RlOgo+ID4gSGkgRGFuaWVsLAo+ID4gCj4gPiA+ID4gV291bGQg
-YmUgZ29vZCB0byB1c2UgdGhlIG5ldyBnZW5lcmljIGZiZGV2IGVtdWxhdGlvbiBjb2RlIGhlcmUs
-IGZvciBldmVuCj4gPiA+ID4gbGVzcyBjb2RlLiBPciBhdCBsZWFzdCBrbm93IHdoeSB0aGlzIGlz
-bid0IHBvc3NpYmxlIHRvIHVzZSBmb3IgbXRrIChhbmQKPiA+ID4gPiBtYXliZSBhZGRyZXNzIHRo
-YXQgaW4gdGhlIGNvcmUgY29kZSkuIEhhbmQtcm9sbGluZyBmYmRldiBjb2RlIHNob3VsZG4ndCBi
-ZQo+ID4gPiA+IG5lZWRlZCBhbnltb3JlLgo+ID4gPiAKPiA+ID4gQmFjayBvbiB0aGUgbWFpbGlu
-ZyBsaXN0LCBubyBwcml2YXRlIHJlcGxpZXMgcGxlYXNlOgo+ID4gCj4gPiBpIGRvbid0IHdhbnRl
-ZCB0byBzcGFtIGFsbCBwZW9wbGUgd2l0aCBkdW1iIHF1ZXN0aW9ucyA7KQo+IAo+IFRoZXJlJ3Mg
-bm8gZHVtYiBxdWVzdGlvbnMsIG9ubHkgaW5zdWZmaWNpZW50IGRvY3VtZW50YXRpb24gOi0pCj4g
-Cj4gPiA+IEZvciBleGFtcGxlcyBwbGVhc2UgZ3JlcCBmb3IgZHJtX2ZiZGV2X2dlbmVyaWNfc2V0
-dXAoKS4gVGhlcmUncyBhbHNvIGEKPiA+ID4gc3RpbGwgaW4tZmxpZ2h0IHNlcmllcyBmcm9tIEdl
-cmQgSG9mZm1hbm4gdG8gY29udmVydCBvdmVyIGJvY2hzLiBUaGF0LAo+ID4gPiBwbHVzIGFsbCB0
-aGUga2VybmVsZG9jIGxpbmtlZCBmcm9tIHRoZXJlIHNob3VsZCBnZXQgeW91IHN0YXJ0ZWQuCj4g
-PiA+IC1EYW5pZWwKPiA+IAo+ID4gdGhpcyBpcyBvbmUgb2YgZ29vZ2xlIGJlc3QgZm91bmRzIGlm
-IGkgc2VhcmNoIGZvciBkcm1fZmJkZXZfZ2VuZXJpY19zZXR1cDoKPiA+IAo+ID4gaHR0cHM6Ly9s
-a21sLm9yZy9sa21sLzIwMTgvMTIvMTkvMzA1Cj4gPiAKPiA+IG5vdCB2ZXJ5IGhlbHBmdWwuLi4K
-PiA+IAo+ID4gc28gaSB0cmllZCBrZXJuZWwtZG9jCj4gPiAKPiA+IGh0dHBzOi8vd3d3Lmtlcm5l
-bC5vcmcvZG9jL2h0bWwvbGF0ZXN0L2dwdS9kcm0ta21zLWhlbHBlcnMuaHRtbD9oaWdobGlnaHQ9
-ZHJtX2ZiZGV2X2dlbmVyaWNfc2V0dXAjYy5kcm1fZmJkZXZfZ2VuZXJpY19zZXR1cAo+ID4gCj4g
-PiB3aGljaCBpcyBuaWNlIGZ1bmN0aW9uLXJlZmVyZW5jZSBidXQgaSd2ZSBmb3VuZCBubyBnZW5l
-cmljIHdvcmtmbG93Cj4gPiAKPiA+IGFzIHRoZSBwb3N0ZWQgZHJpdmVyIGlzICJvbmx5IiBhIGRy
-aXZlciBwb3J0ZWQgZnJvbSBrZXJuZWwgNC40IGJ5IEFsZXhhbmRlciwgaSBkb24ndCBrbm93IGlm
-IHRoaXMgbmV3IGZyYW1ld29yayBjYW4gYmUgdXNlZCBhbmQgd2hpY2ggcGFydHMgbmVlZCB0byBi
-ZSBjaGFuZ2VkLiBJIG9ubHkgdHJ5IHRvIGJyaW5nIGhpcyBjb2RlIE1haW5saW5lLi4uLgo+ID4g
-TWF5YmUgQ0sgSHUgY2FuIGhlbHAgaGVyZSBiZWNhdXNlIGRyaXZlciBpcyBvcmlnaW5hbGx5IGZy
-b20gaGltIGFuZCBoZSBrbm93cyBpbnRlcm5hbHMuIE9yIG1heWJlIHlvdSBjYW4gaGVscCBoZXJl
-Pwo+ID4gCj4gPiBpIHBlcnNvbmFsbHkgbWFrZSBteSBmaXJzdCBzdGVwcyBhcyBzcGFyZS10aW1l
-IGtlcm5lbC1kZXZlbG9wZXIgOikKPiAKPiBUaGVyZSdzIGEgdG9uIG9mIGluLWtlcm5lbCB1c2Vy
-cyBvZiB0aGF0IGZ1bmN0aW9uIGFscmVhZHksIEkgbWVhbnQgeW91IGNhbgo+IHVzZSB0aG9zZSB0
-byBzZXJ2ZSBhcyBleGFtcGxlcyAuLi4gSWYgdGhvc2UgKyB0aGUga2VybmVsZG9jIGFyZW4ndAo+
-IGdvb2QgZW5vdWdoLCB0aGVuIHdlIG5lZWQgdG8gaW1wcm92ZSB0aGVtLgo+IC1EYW5pZWwKCkkn
-dmUgdHJpZWQgd2l0aCBkcm1fZmJkZXZfZ2VuZXJpY19zZXR1cCgpIGFuZCBpdCB3b3JrcyBmaW5l
-IHdpdGggc2ltcGxlCm1vZGlmaWNhdGlvbi4gVGhlIHBhdGNoIGlzCgotLS0gYS9kcml2ZXJzL2dw
-dS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RybV9kcnYuYwpAQCAtMTYsNiArMTYsNyBAQAogI2luY2x1ZGUgPGRybS9kcm1fYXRv
-bWljLmg+CiAjaW5jbHVkZSA8ZHJtL2RybV9hdG9taWNfaGVscGVyLmg+CiAjaW5jbHVkZSA8ZHJt
-L2RybV9jcnRjX2hlbHBlci5oPgorI2luY2x1ZGUgPGRybS9kcm1fZmJfaGVscGVyLmg+CiAjaW5j
-bHVkZSA8ZHJtL2RybV9nZW0uaD4KICNpbmNsdWRlIDxkcm0vZHJtX2dlbV9jbWFfaGVscGVyLmg+
-CiAjaW5jbHVkZSA8ZHJtL2RybV9vZi5oPgpAQCAtMzc5LDYgKzM4MCw3IEBAIHN0YXRpYyB2b2lk
-IG10a19kcm1fa21zX2RlaW5pdChzdHJ1Y3QgZHJtX2RldmljZQoqZHJtKQogICAgICAgIC5nZW1f
-cHJpbWVfZ2V0X3NnX3RhYmxlID0gbXRrX2dlbV9wcmltZV9nZXRfc2dfdGFibGUsCiAgICAgICAg
-LmdlbV9wcmltZV9pbXBvcnRfc2dfdGFibGUgPSBtdGtfZ2VtX3ByaW1lX2ltcG9ydF9zZ190YWJs
-ZSwKICAgICAgICAuZ2VtX3ByaW1lX21tYXAgPSBtdGtfZHJtX2dlbV9tbWFwX2J1ZiwKKyAgICAg
-ICAuZ2VtX3ByaW1lX3ZtYXAgPSBtdGtfZHJtX2dlbV9wcmltZV92bWFwLAogICAgICAgIC5pb2N0
-bHMgPSBtdGtfaW9jdGxzLAogICAgICAgIC5udW1faW9jdGxzID0gQVJSQVlfU0laRShtdGtfaW9j
-dGxzKSwKICAgICAgICAuZm9wcyA9ICZtdGtfZHJtX2ZvcHMsCkBAIC00MTYsNiArNDE4LDggQEAg
-c3RhdGljIGludCBtdGtfZHJtX2JpbmQoc3RydWN0IGRldmljZSAqZGV2KQogICAgICAgIGlmIChy
-ZXQgPCAwKQogICAgICAgICAgICAgICAgZ290byBlcnJfZGVpbml0OwoKKyAgICAgICBkcm1fZmJk
-ZXZfZ2VuZXJpY19zZXR1cChkcm0sIDMyKTsKKwogICAgICAgIHJldHVybiAwOwoKCkJ1dCBJIGlt
-cGxlbWVudCAuZ2VtX3ByaW1lX3ZtYXAgd2l0aCBhIHdvcmthcm91bmQsCgoKLS0tIGEvZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZ2VtLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19kcm1fZ2VtLmMKQEAgLTI4MCwzICsyODAsOCBAQCBpbnQgbXRrX2dlbV9jcmVh
-dGVfaW9jdGwoc3RydWN0IGRybV9kZXZpY2UgKmRldiwKdm9pZCAqZGF0YSwKICAgICAgICBtdGtf
-ZHJtX2dlbV9mcmVlX29iamVjdCgmbXRrX2dlbS0+YmFzZSk7CiAgICAgICAgcmV0dXJuIHJldDsK
-IH0KKwordm9pZCAqbXRrX2RybV9nZW1fcHJpbWVfdm1hcChzdHJ1Y3QgZHJtX2dlbV9vYmplY3Qg
-Km9iaikKK3sKKyAgICAgICByZXR1cm4gKHZvaWQgKikxOworfQoKQ3VycmVudCBkcm1fZmJfaGVs
-cGVyIGRlcGVuZHMgb24gZHJtX2NsaWVudCB0byBjcmVhdGUgZmJkZXYuIFdoZW4KZHJtX2NsaWVu
-dCBjcmVhdGUgZHJtX2NsaWVudF9idWZmZXIsIGl0IG5lZWQgdG8gdm1hcCB0byBnZXQga2VybmVs
-CnZhZGRyLiBCdXQgSSB0aGluayBmb3IgZmJkZXYsIHRoZSB2YWRkciBpcyB1c2VsZXNzLiBEbyB5
-b3UgYWdyZWUgdGhhdCBJCnRlbXBvcmFyaWx5IGltcGxlbWVudCAuZ2VtX3ByaW1lX3ZtYXAgaW4g
-c3VjaCB3YXk/CgpSZWdhcmRzLApDSwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZy
-ZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2RyaS1kZXZlbAo=
+Hi Bin,
+
+I have some questions about
+musbhs_dma_controller_destroy/create_noirq().
+1,Because of controller->irq=0 in noirq case, destroy_noirq can reuse
+musbhs_dma_controller_destroy. Is it necessary to write a destroy_noirq
+function?
+2, How about creating a common function for create musb dma controller
+as following:
+static struct musb_dma_controller *dma_controller_alloc(struct musb
+*musb, void __iomem *base)
+then musbhs_dma_controller_create() and
+musbhs_dma_controller_create_noirq() call it to alloc common resource.
+
+
+On Tue, 2019-01-08 at 09:44 -0600, Bin Liu wrote:
+> Hi,
+> 
+> On Thu, Dec 27, 2018 at 03:34:26PM +0800, min.guo@mediatek.com wrote:
+> > From: Min Guo <min.guo@mediatek.com>
+> > 
+> > This adds support for MediaTek musb controller in
+> > host, peripheral and otg mode
+> > 
+
+> > diff --git a/drivers/usb/musb/musbhsdma.c b/drivers/usb/musb/musbhsdma.c
+> > index 824adcb..c545475 100644
+> > --- a/drivers/usb/musb/musbhsdma.c
+> > +++ b/drivers/usb/musb/musbhsdma.c
+
+> >  
+> >  void musbhs_dma_controller_destroy(struct dma_controller *c)
+> >  {
+> >  	struct musb_dma_controller *controller = container_of(c,
+> >  			struct musb_dma_controller, controller);
+> > +	struct musb *musb = controller->private_data;
+> >  
+> >  	dma_controller_stop(controller);
+> >  
+> > -	if (controller->irq)
+> > +	if (!(musb->ops->quirks & MUSB_MTK_QUIRKS) && controller->irq)
+> >  		free_irq(controller->irq, c);
+> >  
+> >  	kfree(controller);
+> > @@ -398,11 +402,15 @@ struct dma_controller *musbhs_dma_controller_create(struct musb *musb,
+> >  	struct musb_dma_controller *controller;
+> >  	struct device *dev = musb->controller;
+> >  	struct platform_device *pdev = to_platform_device(dev);
+> > -	int irq = platform_get_irq_byname(pdev, "dma");
+> > +	int irq = -1;
+> >  
+> > -	if (irq <= 0) {
+> > -		dev_err(dev, "No DMA interrupt line!\n");
+> > -		return NULL;
+> > +	if (!(musb->ops->quirks & MUSB_MTK_QUIRKS)) {
+> > +		irq = platform_get_irq_byname(pdev, "dma");
+> > +
+> > +		if (irq < 0) {
+> > +			dev_err(dev, "No DMA interrupt line!\n");
+> > +			return NULL;
+> > +		}
+> >  	}
+> 
+> Please create musbhs_dma_controller_destroy_noirq() for your platform to
+> not use the quirk.
+> 
+> >  
+> >  	controller = kzalloc(sizeof(*controller), GFP_KERNEL);
+> > @@ -418,15 +426,17 @@ struct dma_controller *musbhs_dma_controller_create(struct musb *musb,
+> >  	controller->controller.channel_program = dma_channel_program;
+> >  	controller->controller.channel_abort = dma_channel_abort;
+> >  
+> > -	if (request_irq(irq, dma_controller_irq, 0,
+> > +	if (!(musb->ops->quirks & MUSB_MTK_QUIRKS)) {
+> > +		if (request_irq(irq, dma_controller_irq, 0,
+> >  			dev_name(musb->controller), &controller->controller)) {
+> > -		dev_err(dev, "request_irq %d failed!\n", irq);
+> > -		musb_dma_controller_destroy(&controller->controller);
+> > +			dev_err(dev, "request_irq %d failed!\n", irq);
+> > +			musb_dma_controller_destroy(&controller->controller);
+> >  
+> > -		return NULL;
+> > -	}
+> > +			return NULL;
+> > +		}
+> >  
+> > -	controller->irq = irq;
+> > +		controller->irq = irq;
+> > +	}
+> >  
+> >  	return &controller->controller;
+> >  }
+> 
+> Same here, create musbhs_dma_controller_create_noirq(). Then use both
+> new API for the mtk glue driver.
+
+
+
+> Regards,
+> -Bin.
