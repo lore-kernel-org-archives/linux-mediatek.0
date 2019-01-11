@@ -1,83 +1,129 @@
-From: Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: Remove inconsistent use of 'arm,armv8'
- compatible string
-Date: Fri, 11 Jan 2019 15:32:37 +0000
-Message-ID: <5C38B715.8030008@hisilicon.com>
-References: <20190109202934.29304-1-robh@kernel.org>
+From: =?UTF-8?Q?Noralf_Tr=c3=b8nnes?= <noralf@tronnes.org>
+Subject: Re: [PATCH] drm/mediatek: Add MTK Framebuffer-Device (mt7623)
+Date: Fri, 11 Jan 2019 17:07:51 +0100
+Message-ID: <afe6ba3f-77ee-1b7c-072e-64ccb161119e@tronnes.org>
+References: <20190102084917.4049-1-frank-w@public-files.de>
+ <20190107103640.GH21184@phenom.ffwll.local>
+ <CAKMK7uEqxz4TAt_iwEC+dMWboVxCeCduyABsSwD0Ns7k=Z_UWA@mail.gmail.com>
+ <trinity-0da588a3-1277-4421-ad6b-1f6aeb129dd6-1547146897687@3c-app-gmx-bs35>
+ <20190110200225.GN21184@phenom.ffwll.local>
+ <1547176809.12054.11.camel@mtksdaap41>
+ <20190111092042.GP21184@phenom.ffwll.local>
+ <1547200155.4209.4.camel@mtksdaap41>
+ <20190111102503.GU21184@phenom.ffwll.local>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190109202934.29304-1-robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: Nishanth Menon <nm-l0cyMroinI0@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Gregory Clement <gregory.clement-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, bcm-kernel-feedba
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190111102503.GU21184@phenom.ffwll.local>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: CK Hu <ck.hu@mediatek.com>, Frank Wunderlich <frank-w@public-files.de>, David Airlie <airlied@linux.ie>, Alexander Ryabchenko <d3adme4t@gmail.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Philipp Zabel <p.zabel@pengutronix.de>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Rob,
-
-On 2019/1/9 20:29, Rob Herring wrote:
-> The 'arm,armv8' compatible string is only for software models. It adds
-> little value otherwise and is inconsistently used as a fallback on some
-> platforms. Remove it from those platforms.
-> 
-> This fixes warnings generated by the DT schema.
-> 
-> Reported-by: Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>
-> Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-> Cc: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
-> Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> ---
-> armsoc folks, Please apply directly.
-> 
-> Note that there's still a case left in msm8998 that needs a new 
-> compatible string.
-> 
-> Rob
-> 
->  arch/arm64/boot/dts/actions/s700.dtsi         |   8 +-
->  arch/arm64/boot/dts/actions/s900.dtsi         |   8 +-
->  arch/arm64/boot/dts/al/alpine-v2.dtsi         |   8 +-
->  arch/arm64/boot/dts/allwinner/sun50i-a64.dtsi |   8 +-
->  arch/arm64/boot/dts/allwinner/sun50i-h5.dtsi  |   8 +-
->  arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi  |   8 +-
->  .../boot/dts/altera/socfpga_stratix10.dtsi    |   8 +-
->  arch/arm64/boot/dts/amlogic/meson-axg.dtsi    |   8 +-
->  arch/arm64/boot/dts/amlogic/meson-g12a.dtsi   |   8 +-
->  arch/arm64/boot/dts/amlogic/meson-gx.dtsi     |   8 +-
->  arch/arm64/boot/dts/amlogic/meson-gxm.dtsi    |   8 +-
->  arch/arm64/boot/dts/apm/apm-shadowcat.dtsi    |  16 +--
->  arch/arm64/boot/dts/apm/apm-storm.dtsi        |  16 +--
->  arch/arm64/boot/dts/arm/juno-r1.dts           |  12 +-
->  arch/arm64/boot/dts/arm/juno-r2.dts           |  12 +-
->  arch/arm64/boot/dts/arm/juno.dts              |  12 +-
->  .../boot/dts/arm/vexpress-v2f-1xv7-ca53x2.dts |   4 +-
->  .../boot/dts/broadcom/northstar2/ns2.dtsi     |   8 +-
->  .../boot/dts/broadcom/stingray/stingray.dtsi  |  16 +--
->  arch/arm64/boot/dts/cavium/thunder-88xx.dtsi  |  96 ++++++-------
->  arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi |   8 +-
->  arch/arm64/boot/dts/exynos/exynos5433.dtsi    |  16 +--
->  arch/arm64/boot/dts/exynos/exynos7.dtsi       |   8 +-
->  arch/arm64/boot/dts/hisilicon/hi3660.dtsi     |  16 +--
->  arch/arm64/boot/dts/hisilicon/hi3670.dtsi     |  16 +--
->  arch/arm64/boot/dts/hisilicon/hi6220.dtsi     |  16 +--
->  arch/arm64/boot/dts/hisilicon/hip05.dtsi      |  32 ++---
->  arch/arm64/boot/dts/hisilicon/hip06.dtsi      |  32 ++---
->  arch/arm64/boot/dts/hisilicon/hip07.dtsi      | 128 +++++++++---------
-
-For hisilicon,
-
-Acked-by: Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>
-
-Thanks!
-
-Best Regards,
-Wei
+CgpEZW4gMTEuMDEuMjAxOSAxMS4yNSwgc2tyZXYgRGFuaWVsIFZldHRlcjoKPiBPbiBGcmksIEph
+biAxMSwgMjAxOSBhdCAwNTo0OToxNVBNICswODAwLCBDSyBIdSB3cm90ZToKPj4gSGksIERhbmll
+bDoKPj4KPj4gT24gRnJpLCAyMDE5LTAxLTExIGF0IDEwOjIwICswMTAwLCBEYW5pZWwgVmV0dGVy
+IHdyb3RlOgo+Pj4gT24gRnJpLCBKYW4gMTEsIDIwMTkgYXQgMTE6MjA6MDlBTSArMDgwMCwgQ0sg
+SHUgd3JvdGU6Cj4+Pj4gSGksIERhbmllbDoKPj4+Pgo+Pj4+IE9uIFRodSwgMjAxOS0wMS0xMCBh
+dCAyMTowMiArMDEwMCwgRGFuaWVsIFZldHRlciB3cm90ZToKPj4+Pj4gT24gVGh1LCBKYW4gMTAs
+IDIwMTkgYXQgMDg6MDE6MzdQTSArMDEwMCwgRnJhbmsgV3VuZGVybGljaCB3cm90ZToKPj4+Pj4+
+IEhpIERhbmllbCwKPj4+Pj4+Cj4+Pj4+Pj4+IFdvdWxkIGJlIGdvb2QgdG8gdXNlIHRoZSBuZXcg
+Z2VuZXJpYyBmYmRldiBlbXVsYXRpb24gY29kZSBoZXJlLCBmb3IgZXZlbgo+Pj4+Pj4+PiBsZXNz
+IGNvZGUuIE9yIGF0IGxlYXN0IGtub3cgd2h5IHRoaXMgaXNuJ3QgcG9zc2libGUgdG8gdXNlIGZv
+ciBtdGsgKGFuZAo+Pj4+Pj4+PiBtYXliZSBhZGRyZXNzIHRoYXQgaW4gdGhlIGNvcmUgY29kZSku
+IEhhbmQtcm9sbGluZyBmYmRldiBjb2RlIHNob3VsZG4ndCBiZQo+Pj4+Pj4+PiBuZWVkZWQgYW55
+bW9yZS4KPj4+Pj4+Pgo+Pj4+Pj4+IEJhY2sgb24gdGhlIG1haWxpbmcgbGlzdCwgbm8gcHJpdmF0
+ZSByZXBsaWVzIHBsZWFzZToKPj4+Pj4+Cj4+Pj4+PiBpIGRvbid0IHdhbnRlZCB0byBzcGFtIGFs
+bCBwZW9wbGUgd2l0aCBkdW1iIHF1ZXN0aW9ucyA7KQo+Pj4+Pgo+Pj4+PiBUaGVyZSdzIG5vIGR1
+bWIgcXVlc3Rpb25zLCBvbmx5IGluc3VmZmljaWVudCBkb2N1bWVudGF0aW9uIDotKQo+Pj4+Pgo+
+Pj4+Pj4+IEZvciBleGFtcGxlcyBwbGVhc2UgZ3JlcCBmb3IgZHJtX2ZiZGV2X2dlbmVyaWNfc2V0
+dXAoKS4gVGhlcmUncyBhbHNvIGEKPj4+Pj4+PiBzdGlsbCBpbi1mbGlnaHQgc2VyaWVzIGZyb20g
+R2VyZCBIb2ZmbWFubiB0byBjb252ZXJ0IG92ZXIgYm9jaHMuIFRoYXQsCj4+Pj4+Pj4gcGx1cyBh
+bGwgdGhlIGtlcm5lbGRvYyBsaW5rZWQgZnJvbSB0aGVyZSBzaG91bGQgZ2V0IHlvdSBzdGFydGVk
+Lgo+Pj4+Pj4+IC1EYW5pZWwKPj4+Pj4+Cj4+Pj4+PiB0aGlzIGlzIG9uZSBvZiBnb29nbGUgYmVz
+dCBmb3VuZHMgaWYgaSBzZWFyY2ggZm9yIGRybV9mYmRldl9nZW5lcmljX3NldHVwOgo+Pj4+Pj4K
+Pj4+Pj4+IGh0dHBzOi8vbGttbC5vcmcvbGttbC8yMDE4LzEyLzE5LzMwNQo+Pj4+Pj4KPj4+Pj4+
+IG5vdCB2ZXJ5IGhlbHBmdWwuLi4KPj4+Pj4+Cj4+Pj4+PiBzbyBpIHRyaWVkIGtlcm5lbC1kb2MK
+Pj4+Pj4+Cj4+Pj4+PiBodHRwczovL3d3dy5rZXJuZWwub3JnL2RvYy9odG1sL2xhdGVzdC9ncHUv
+ZHJtLWttcy1oZWxwZXJzLmh0bWw/aGlnaGxpZ2h0PWRybV9mYmRldl9nZW5lcmljX3NldHVwI2Mu
+ZHJtX2ZiZGV2X2dlbmVyaWNfc2V0dXAKPj4+Pj4+Cj4+Pj4+PiB3aGljaCBpcyBuaWNlIGZ1bmN0
+aW9uLXJlZmVyZW5jZSBidXQgaSd2ZSBmb3VuZCBubyBnZW5lcmljIHdvcmtmbG93Cj4+Pj4+Pgo+
+Pj4+Pj4gYXMgdGhlIHBvc3RlZCBkcml2ZXIgaXMgIm9ubHkiIGEgZHJpdmVyIHBvcnRlZCBmcm9t
+IGtlcm5lbCA0LjQgYnkgQWxleGFuZGVyLCBpIGRvbid0IGtub3cgaWYgdGhpcyBuZXcgZnJhbWV3
+b3JrIGNhbiBiZSB1c2VkIGFuZCB3aGljaCBwYXJ0cyBuZWVkIHRvIGJlIGNoYW5nZWQuIEkgb25s
+eSB0cnkgdG8gYnJpbmcgaGlzIGNvZGUgTWFpbmxpbmUuLi4uCj4+Pj4+PiBNYXliZSBDSyBIdSBj
+YW4gaGVscCBoZXJlIGJlY2F1c2UgZHJpdmVyIGlzIG9yaWdpbmFsbHkgZnJvbSBoaW0gYW5kIGhl
+IGtub3dzIGludGVybmFscy4gT3IgbWF5YmUgeW91IGNhbiBoZWxwIGhlcmU/Cj4+Pj4+Pgo+Pj4+
+Pj4gaSBwZXJzb25hbGx5IG1ha2UgbXkgZmlyc3Qgc3RlcHMgYXMgc3BhcmUtdGltZSBrZXJuZWwt
+ZGV2ZWxvcGVyIDopCj4+Pj4+Cj4+Pj4+IFRoZXJlJ3MgYSB0b24gb2YgaW4ta2VybmVsIHVzZXJz
+IG9mIHRoYXQgZnVuY3Rpb24gYWxyZWFkeSwgSSBtZWFudCB5b3UgY2FuCj4+Pj4+IHVzZSB0aG9z
+ZSB0byBzZXJ2ZSBhcyBleGFtcGxlcyAuLi4gSWYgdGhvc2UgKyB0aGUga2VybmVsZG9jIGFyZW4n
+dAo+Pj4+PiBnb29kIGVub3VnaCwgdGhlbiB3ZSBuZWVkIHRvIGltcHJvdmUgdGhlbS4KPj4+Pj4g
+LURhbmllbAo+Pj4+Cj4+Pj4gSSd2ZSB0cmllZCB3aXRoIGRybV9mYmRldl9nZW5lcmljX3NldHVw
+KCkgYW5kIGl0IHdvcmtzIGZpbmUgd2l0aCBzaW1wbGUKPj4+PiBtb2RpZmljYXRpb24uIFRoZSBw
+YXRjaCBpcwo+Pj4+Cj4+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1f
+ZHJ2LmMKPj4+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+
+Pj4+IEBAIC0xNiw2ICsxNiw3IEBACj4+Pj4gICNpbmNsdWRlIDxkcm0vZHJtX2F0b21pYy5oPgo+
+Pj4+ICAjaW5jbHVkZSA8ZHJtL2RybV9hdG9taWNfaGVscGVyLmg+Cj4+Pj4gICNpbmNsdWRlIDxk
+cm0vZHJtX2NydGNfaGVscGVyLmg+Cj4+Pj4gKyNpbmNsdWRlIDxkcm0vZHJtX2ZiX2hlbHBlci5o
+Pgo+Pj4+ICAjaW5jbHVkZSA8ZHJtL2RybV9nZW0uaD4KPj4+PiAgI2luY2x1ZGUgPGRybS9kcm1f
+Z2VtX2NtYV9oZWxwZXIuaD4KPj4+PiAgI2luY2x1ZGUgPGRybS9kcm1fb2YuaD4KPj4+PiBAQCAt
+Mzc5LDYgKzM4MCw3IEBAIHN0YXRpYyB2b2lkIG10a19kcm1fa21zX2RlaW5pdChzdHJ1Y3QgZHJt
+X2RldmljZQo+Pj4+ICpkcm0pCj4+Pj4gICAgICAgICAuZ2VtX3ByaW1lX2dldF9zZ190YWJsZSA9
+IG10a19nZW1fcHJpbWVfZ2V0X3NnX3RhYmxlLAo+Pj4+ICAgICAgICAgLmdlbV9wcmltZV9pbXBv
+cnRfc2dfdGFibGUgPSBtdGtfZ2VtX3ByaW1lX2ltcG9ydF9zZ190YWJsZSwKPj4+PiAgICAgICAg
+IC5nZW1fcHJpbWVfbW1hcCA9IG10a19kcm1fZ2VtX21tYXBfYnVmLAo+Pj4+ICsgICAgICAgLmdl
+bV9wcmltZV92bWFwID0gbXRrX2RybV9nZW1fcHJpbWVfdm1hcCwKPj4+PiAgICAgICAgIC5pb2N0
+bHMgPSBtdGtfaW9jdGxzLAo+Pj4+ICAgICAgICAgLm51bV9pb2N0bHMgPSBBUlJBWV9TSVpFKG10
+a19pb2N0bHMpLAo+Pj4+ICAgICAgICAgLmZvcHMgPSAmbXRrX2RybV9mb3BzLAo+Pj4+IEBAIC00
+MTYsNiArNDE4LDggQEAgc3RhdGljIGludCBtdGtfZHJtX2JpbmQoc3RydWN0IGRldmljZSAqZGV2
+KQo+Pj4+ICAgICAgICAgaWYgKHJldCA8IDApCj4+Pj4gICAgICAgICAgICAgICAgIGdvdG8gZXJy
+X2RlaW5pdDsKPj4+Pgo+Pj4+ICsgICAgICAgZHJtX2ZiZGV2X2dlbmVyaWNfc2V0dXAoZHJtLCAz
+Mik7Cj4+Pj4gKwo+Pj4+ICAgICAgICAgcmV0dXJuIDA7Cj4+Pj4KPj4+Pgo+Pj4+IEJ1dCBJIGlt
+cGxlbWVudCAuZ2VtX3ByaW1lX3ZtYXAgd2l0aCBhIHdvcmthcm91bmQsCj4+Pj4KPj4+Pgo+Pj4+
+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2dlbS5jCj4+Pj4gKysrIGIv
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZ2VtLmMKPj4+PiBAQCAtMjgwLDMgKzI4
+MCw4IEBAIGludCBtdGtfZ2VtX2NyZWF0ZV9pb2N0bChzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+
+Pj4+IHZvaWQgKmRhdGEsCj4+Pj4gICAgICAgICBtdGtfZHJtX2dlbV9mcmVlX29iamVjdCgmbXRr
+X2dlbS0+YmFzZSk7Cj4+Pj4gICAgICAgICByZXR1cm4gcmV0Owo+Pj4+ICB9Cj4+Pj4gKwo+Pj4+
+ICt2b2lkICptdGtfZHJtX2dlbV9wcmltZV92bWFwKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2Jq
+KQo+Pj4+ICt7Cj4+Pj4gKyAgICAgICByZXR1cm4gKHZvaWQgKikxOwo+Pj4+ICt9Cj4+Pj4KPj4+
+PiBDdXJyZW50IGRybV9mYl9oZWxwZXIgZGVwZW5kcyBvbiBkcm1fY2xpZW50IHRvIGNyZWF0ZSBm
+YmRldi4gV2hlbgo+Pj4+IGRybV9jbGllbnQgY3JlYXRlIGRybV9jbGllbnRfYnVmZmVyLCBpdCBu
+ZWVkIHRvIHZtYXAgdG8gZ2V0IGtlcm5lbAo+Pj4+IHZhZGRyLiBCdXQgSSB0aGluayBmb3IgZmJk
+ZXYsIHRoZSB2YWRkciBpcyB1c2VsZXNzLiBEbyB5b3UgYWdyZWUgdGhhdCBJCj4+Pj4gdGVtcG9y
+YXJpbHkgaW1wbGVtZW50IC5nZW1fcHJpbWVfdm1hcCBpbiBzdWNoIHdheT8KPj4+Cj4+PiBUaGUg
+dm1hcCBpcyB1c2VkIGJ5IGZiY29uLCB3aXRob3V0IHRoYXQgZmJkZXYgd29uJ3QgcmVhbGx5IHdv
+cmsgSSB0aGluay4KPj4+IFNvIEknbSByYXRoZXIgY29uZnVzZWQgb24gd2hhdCB5b3UgdGVzdGVk
+IC4uLgo+Pj4KPj4+IEFkZGluZyBOb3JhbGYsIGhlJ3MgdGhlIGV4cGVydCBoZXJlLgo+Pj4gLURh
+bmllbAo+Pgo+PiBJIHRlc3Qgd2l0aCBmYl90ZXN0IFsxXSwgaXQgaXMgYSB1c2VyIHNwYWNlIHBy
+b2dyYW0ganVzdCBvcGVuIC9kZXYvZmIwCj4+IGFuZCBtbWFwIGl0IHRvIHVzZXIgc3BhY2UuIEkg
+ZG9lcyBub3QgdHVybiBvbiBmYmNvbiBzbyBldmVyeXRoaW5nIGxvb2tzCj4+IHdlbGwuIElmIHN1
+cHBvcnQgZmJjb24gaXMgZXNzZW50aWFsLCBJIHdvdWxkIGltcGxlbWVudCB2bWFwIGNvcnJlY3Rs
+eS4KPj4gSWYgaXQncyBub3QgZXNzZW50aWFsLCBJIHRoaW5rIEkgY291bGQgcmV0dXJuIDAgd2hl
+bgo+PiBDT05GSUdfRlJBTUJVRkZFUl9DT05TT0xFIGlzIGRlZmluZWQuCj4gCj4gSSB0aGluayBm
+YmRldiBlbXVsYXRpb24gd2l0aG91dCB3b3JraW5nIGZiY29uIGlzIGZhaXJseSB1c2VsZXNzLiBB
+bmQgaXQKPiBzaG91bGRuJ3QgYmUgdGhhdCBtdWNoIHdvcmsgdG8gbWFrZSBpdCB3b3JrLCB3ZSBo
+YXZlIHF1aXRlIGEgZmV3IG1vcmUKPiBoZWxlcnMgZm9yIGdlbSBibyBub3dhZGF5cy4KCklmIHRo
+ZSB2aXJ0dWFsIGFkZHJlc3MgaXMgbm90IHNldCwgZmJjb24gY2FuJ3QgYmUgdXNlZCBhbmQgdGhh
+dCBtZWFucyBpdApoYXMgdG8gYmUgZGlzYWJsZWQgdXNpbmcgc29tZXRoaW5nIGxpa2UgdGhpcyBp
+biB0aGUgZHJpdmVyIEtjb25maWc6CglkZXBlbmRzIG9uICFGUkFNRUJVRkZFUl9DT05TT0xFCgpP
+dGhlcndpc2UgaXQgd2lsbCBjcmFzaCBpZiBzb21lb25lIHRyaWVzIHRvIHVzZSBpdC4KClRoZSBw
+cm9ibGVtIGhlcmUgaXMgdGhhdCB0aGlzIGRyaXZlciBkb2Vzbid0IG1hcCBhIHZpcnR1YWwgYWRk
+cmVzcyBmb3IKaXRzIGJ1ZmZlcnM6CgltdGtfZ2VtLT5kbWFfYXR0cnMgfD0gRE1BX0FUVFJfTk9f
+S0VSTkVMX01BUFBJTkc7CgpQcm9iYWJseSBiZWNhdXNlIG9mIGxpbWl0ZWQgdmlydHVhbCBhZGRy
+ZXNzIHNwYWNlLgpyb2NrY2hpcCBpcyBpbiB0aGUgc2FtZSBzaXR1YXRpb24uCgpJJ20gYXdhcmUg
+b2YgdGhpcyBzaG9ydGNvbWluZyBvZiB0aGUgZ2VuZXJpYyBlbXVsYXRpb24sIGJ1dCBJIGRvbid0
+IHNlZQpob3cgaXQgY2FuIGJlIHNvbHZlZCB3aXRob3V0IHVzaW5nIHNvbWVraW5kIG9mIGZsYWcg
+YXR0YWNoZWQgdG8gdGhlIGR1bWIKYnVmZmVyIGNyZWF0aW9uIHJlcXVlc3QuCgpOb3JhbGYuCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBt
+YWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3Rz
+LmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
