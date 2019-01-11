@@ -1,125 +1,32 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: Re: [PATCH] drm/mediatek: Add MTK Framebuffer-Device (mt7623)
-Date: Fri, 11 Jan 2019 11:25:03 +0100
-Message-ID: <20190111102503.GU21184@phenom.ffwll.local>
-References: <20190102084917.4049-1-frank-w@public-files.de>
- <20190107103640.GH21184@phenom.ffwll.local>
- <CAKMK7uEqxz4TAt_iwEC+dMWboVxCeCduyABsSwD0Ns7k=Z_UWA@mail.gmail.com>
- <trinity-0da588a3-1277-4421-ad6b-1f6aeb129dd6-1547146897687@3c-app-gmx-bs35>
- <20190110200225.GN21184@phenom.ffwll.local>
- <1547176809.12054.11.camel@mtksdaap41>
- <20190111092042.GP21184@phenom.ffwll.local>
- <1547200155.4209.4.camel@mtksdaap41>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH v5] pinctrl: mediatek: add EINT support to virtual GPIOs
+Date: Fri, 11 Jan 2019 13:15:54 +0100
+Message-ID: <CACRpkdaF+PFv-oUkLiWT7M2hYESsAYxaPN5OM2=XraeAx9zP4Q@mail.gmail.com>
+References: <1546486635-16829-1-git-send-email-chuanjia.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1547200155.4209.4.camel@mtksdaap41>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: CK Hu <ck.hu@mediatek.com>
-Cc: Frank Wunderlich <frank-w@public-files.de>, David Airlie <airlied@linux.ie>, Alexander Ryabchenko <d3adme4t@gmail.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1546486635-16829-1-git-send-email-chuanjia.liu@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: chuanjia.liu@mediatek.com
+Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, youlin.pei@mediatek.com, huang eddie <eddie.huang@mediatek.com>, Zhiyong Tao <zhiyong.tao@mediatek.com>, hailong.fan@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gRnJpLCBKYW4gMTEsIDIwMTkgYXQgMDU6NDk6MTVQTSArMDgwMCwgQ0sgSHUgd3JvdGU6Cj4g
-SGksIERhbmllbDoKPiAKPiBPbiBGcmksIDIwMTktMDEtMTEgYXQgMTA6MjAgKzAxMDAsIERhbmll
-bCBWZXR0ZXIgd3JvdGU6Cj4gPiBPbiBGcmksIEphbiAxMSwgMjAxOSBhdCAxMToyMDowOUFNICsw
-ODAwLCBDSyBIdSB3cm90ZToKPiA+ID4gSGksIERhbmllbDoKPiA+ID4gCj4gPiA+IE9uIFRodSwg
-MjAxOS0wMS0xMCBhdCAyMTowMiArMDEwMCwgRGFuaWVsIFZldHRlciB3cm90ZToKPiA+ID4gPiBP
-biBUaHUsIEphbiAxMCwgMjAxOSBhdCAwODowMTozN1BNICswMTAwLCBGcmFuayBXdW5kZXJsaWNo
-IHdyb3RlOgo+ID4gPiA+ID4gSGkgRGFuaWVsLAo+ID4gPiA+ID4gCj4gPiA+ID4gPiA+ID4gV291
-bGQgYmUgZ29vZCB0byB1c2UgdGhlIG5ldyBnZW5lcmljIGZiZGV2IGVtdWxhdGlvbiBjb2RlIGhl
-cmUsIGZvciBldmVuCj4gPiA+ID4gPiA+ID4gbGVzcyBjb2RlLiBPciBhdCBsZWFzdCBrbm93IHdo
-eSB0aGlzIGlzbid0IHBvc3NpYmxlIHRvIHVzZSBmb3IgbXRrIChhbmQKPiA+ID4gPiA+ID4gPiBt
-YXliZSBhZGRyZXNzIHRoYXQgaW4gdGhlIGNvcmUgY29kZSkuIEhhbmQtcm9sbGluZyBmYmRldiBj
-b2RlIHNob3VsZG4ndCBiZQo+ID4gPiA+ID4gPiA+IG5lZWRlZCBhbnltb3JlLgo+ID4gPiA+ID4g
-PiAKPiA+ID4gPiA+ID4gQmFjayBvbiB0aGUgbWFpbGluZyBsaXN0LCBubyBwcml2YXRlIHJlcGxp
-ZXMgcGxlYXNlOgo+ID4gPiA+ID4gCj4gPiA+ID4gPiBpIGRvbid0IHdhbnRlZCB0byBzcGFtIGFs
-bCBwZW9wbGUgd2l0aCBkdW1iIHF1ZXN0aW9ucyA7KQo+ID4gPiA+IAo+ID4gPiA+IFRoZXJlJ3Mg
-bm8gZHVtYiBxdWVzdGlvbnMsIG9ubHkgaW5zdWZmaWNpZW50IGRvY3VtZW50YXRpb24gOi0pCj4g
-PiA+ID4gCj4gPiA+ID4gPiA+IEZvciBleGFtcGxlcyBwbGVhc2UgZ3JlcCBmb3IgZHJtX2ZiZGV2
-X2dlbmVyaWNfc2V0dXAoKS4gVGhlcmUncyBhbHNvIGEKPiA+ID4gPiA+ID4gc3RpbGwgaW4tZmxp
-Z2h0IHNlcmllcyBmcm9tIEdlcmQgSG9mZm1hbm4gdG8gY29udmVydCBvdmVyIGJvY2hzLiBUaGF0
-LAo+ID4gPiA+ID4gPiBwbHVzIGFsbCB0aGUga2VybmVsZG9jIGxpbmtlZCBmcm9tIHRoZXJlIHNo
-b3VsZCBnZXQgeW91IHN0YXJ0ZWQuCj4gPiA+ID4gPiA+IC1EYW5pZWwKPiA+ID4gPiA+IAo+ID4g
-PiA+ID4gdGhpcyBpcyBvbmUgb2YgZ29vZ2xlIGJlc3QgZm91bmRzIGlmIGkgc2VhcmNoIGZvciBk
-cm1fZmJkZXZfZ2VuZXJpY19zZXR1cDoKPiA+ID4gPiA+IAo+ID4gPiA+ID4gaHR0cHM6Ly9sa21s
-Lm9yZy9sa21sLzIwMTgvMTIvMTkvMzA1Cj4gPiA+ID4gPiAKPiA+ID4gPiA+IG5vdCB2ZXJ5IGhl
-bHBmdWwuLi4KPiA+ID4gPiA+IAo+ID4gPiA+ID4gc28gaSB0cmllZCBrZXJuZWwtZG9jCj4gPiA+
-ID4gPiAKPiA+ID4gPiA+IGh0dHBzOi8vd3d3Lmtlcm5lbC5vcmcvZG9jL2h0bWwvbGF0ZXN0L2dw
-dS9kcm0ta21zLWhlbHBlcnMuaHRtbD9oaWdobGlnaHQ9ZHJtX2ZiZGV2X2dlbmVyaWNfc2V0dXAj
-Yy5kcm1fZmJkZXZfZ2VuZXJpY19zZXR1cAo+ID4gPiA+ID4gCj4gPiA+ID4gPiB3aGljaCBpcyBu
-aWNlIGZ1bmN0aW9uLXJlZmVyZW5jZSBidXQgaSd2ZSBmb3VuZCBubyBnZW5lcmljIHdvcmtmbG93
-Cj4gPiA+ID4gPiAKPiA+ID4gPiA+IGFzIHRoZSBwb3N0ZWQgZHJpdmVyIGlzICJvbmx5IiBhIGRy
-aXZlciBwb3J0ZWQgZnJvbSBrZXJuZWwgNC40IGJ5IEFsZXhhbmRlciwgaSBkb24ndCBrbm93IGlm
-IHRoaXMgbmV3IGZyYW1ld29yayBjYW4gYmUgdXNlZCBhbmQgd2hpY2ggcGFydHMgbmVlZCB0byBi
-ZSBjaGFuZ2VkLiBJIG9ubHkgdHJ5IHRvIGJyaW5nIGhpcyBjb2RlIE1haW5saW5lLi4uLgo+ID4g
-PiA+ID4gTWF5YmUgQ0sgSHUgY2FuIGhlbHAgaGVyZSBiZWNhdXNlIGRyaXZlciBpcyBvcmlnaW5h
-bGx5IGZyb20gaGltIGFuZCBoZSBrbm93cyBpbnRlcm5hbHMuIE9yIG1heWJlIHlvdSBjYW4gaGVs
-cCBoZXJlPwo+ID4gPiA+ID4gCj4gPiA+ID4gPiBpIHBlcnNvbmFsbHkgbWFrZSBteSBmaXJzdCBz
-dGVwcyBhcyBzcGFyZS10aW1lIGtlcm5lbC1kZXZlbG9wZXIgOikKPiA+ID4gPiAKPiA+ID4gPiBU
-aGVyZSdzIGEgdG9uIG9mIGluLWtlcm5lbCB1c2VycyBvZiB0aGF0IGZ1bmN0aW9uIGFscmVhZHks
-IEkgbWVhbnQgeW91IGNhbgo+ID4gPiA+IHVzZSB0aG9zZSB0byBzZXJ2ZSBhcyBleGFtcGxlcyAu
-Li4gSWYgdGhvc2UgKyB0aGUga2VybmVsZG9jIGFyZW4ndAo+ID4gPiA+IGdvb2QgZW5vdWdoLCB0
-aGVuIHdlIG5lZWQgdG8gaW1wcm92ZSB0aGVtLgo+ID4gPiA+IC1EYW5pZWwKPiA+ID4gCj4gPiA+
-IEkndmUgdHJpZWQgd2l0aCBkcm1fZmJkZXZfZ2VuZXJpY19zZXR1cCgpIGFuZCBpdCB3b3JrcyBm
-aW5lIHdpdGggc2ltcGxlCj4gPiA+IG1vZGlmaWNhdGlvbi4gVGhlIHBhdGNoIGlzCj4gPiA+IAo+
-ID4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+ID4gPiAr
-KysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+ID4gPiBAQCAtMTYs
-NiArMTYsNyBAQAo+ID4gPiAgI2luY2x1ZGUgPGRybS9kcm1fYXRvbWljLmg+Cj4gPiA+ICAjaW5j
-bHVkZSA8ZHJtL2RybV9hdG9taWNfaGVscGVyLmg+Cj4gPiA+ICAjaW5jbHVkZSA8ZHJtL2RybV9j
-cnRjX2hlbHBlci5oPgo+ID4gPiArI2luY2x1ZGUgPGRybS9kcm1fZmJfaGVscGVyLmg+Cj4gPiA+
-ICAjaW5jbHVkZSA8ZHJtL2RybV9nZW0uaD4KPiA+ID4gICNpbmNsdWRlIDxkcm0vZHJtX2dlbV9j
-bWFfaGVscGVyLmg+Cj4gPiA+ICAjaW5jbHVkZSA8ZHJtL2RybV9vZi5oPgo+ID4gPiBAQCAtMzc5
-LDYgKzM4MCw3IEBAIHN0YXRpYyB2b2lkIG10a19kcm1fa21zX2RlaW5pdChzdHJ1Y3QgZHJtX2Rl
-dmljZQo+ID4gPiAqZHJtKQo+ID4gPiAgICAgICAgIC5nZW1fcHJpbWVfZ2V0X3NnX3RhYmxlID0g
-bXRrX2dlbV9wcmltZV9nZXRfc2dfdGFibGUsCj4gPiA+ICAgICAgICAgLmdlbV9wcmltZV9pbXBv
-cnRfc2dfdGFibGUgPSBtdGtfZ2VtX3ByaW1lX2ltcG9ydF9zZ190YWJsZSwKPiA+ID4gICAgICAg
-ICAuZ2VtX3ByaW1lX21tYXAgPSBtdGtfZHJtX2dlbV9tbWFwX2J1ZiwKPiA+ID4gKyAgICAgICAu
-Z2VtX3ByaW1lX3ZtYXAgPSBtdGtfZHJtX2dlbV9wcmltZV92bWFwLAo+ID4gPiAgICAgICAgIC5p
-b2N0bHMgPSBtdGtfaW9jdGxzLAo+ID4gPiAgICAgICAgIC5udW1faW9jdGxzID0gQVJSQVlfU0la
-RShtdGtfaW9jdGxzKSwKPiA+ID4gICAgICAgICAuZm9wcyA9ICZtdGtfZHJtX2ZvcHMsCj4gPiA+
-IEBAIC00MTYsNiArNDE4LDggQEAgc3RhdGljIGludCBtdGtfZHJtX2JpbmQoc3RydWN0IGRldmlj
-ZSAqZGV2KQo+ID4gPiAgICAgICAgIGlmIChyZXQgPCAwKQo+ID4gPiAgICAgICAgICAgICAgICAg
-Z290byBlcnJfZGVpbml0Owo+ID4gPiAKPiA+ID4gKyAgICAgICBkcm1fZmJkZXZfZ2VuZXJpY19z
-ZXR1cChkcm0sIDMyKTsKPiA+ID4gKwo+ID4gPiAgICAgICAgIHJldHVybiAwOwo+ID4gPiAKPiA+
-ID4gCj4gPiA+IEJ1dCBJIGltcGxlbWVudCAuZ2VtX3ByaW1lX3ZtYXAgd2l0aCBhIHdvcmthcm91
-bmQsCj4gPiA+IAo+ID4gPiAKPiA+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19kcm1fZ2VtLmMKPiA+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1f
-Z2VtLmMKPiA+ID4gQEAgLTI4MCwzICsyODAsOCBAQCBpbnQgbXRrX2dlbV9jcmVhdGVfaW9jdGwo
-c3RydWN0IGRybV9kZXZpY2UgKmRldiwKPiA+ID4gdm9pZCAqZGF0YSwKPiA+ID4gICAgICAgICBt
-dGtfZHJtX2dlbV9mcmVlX29iamVjdCgmbXRrX2dlbS0+YmFzZSk7Cj4gPiA+ICAgICAgICAgcmV0
-dXJuIHJldDsKPiA+ID4gIH0KPiA+ID4gKwo+ID4gPiArdm9pZCAqbXRrX2RybV9nZW1fcHJpbWVf
-dm1hcChzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaikKPiA+ID4gK3sKPiA+ID4gKyAgICAgICBy
-ZXR1cm4gKHZvaWQgKikxOwo+ID4gPiArfQo+ID4gPiAKPiA+ID4gQ3VycmVudCBkcm1fZmJfaGVs
-cGVyIGRlcGVuZHMgb24gZHJtX2NsaWVudCB0byBjcmVhdGUgZmJkZXYuIFdoZW4KPiA+ID4gZHJt
-X2NsaWVudCBjcmVhdGUgZHJtX2NsaWVudF9idWZmZXIsIGl0IG5lZWQgdG8gdm1hcCB0byBnZXQg
-a2VybmVsCj4gPiA+IHZhZGRyLiBCdXQgSSB0aGluayBmb3IgZmJkZXYsIHRoZSB2YWRkciBpcyB1
-c2VsZXNzLiBEbyB5b3UgYWdyZWUgdGhhdCBJCj4gPiA+IHRlbXBvcmFyaWx5IGltcGxlbWVudCAu
-Z2VtX3ByaW1lX3ZtYXAgaW4gc3VjaCB3YXk/Cj4gPiAKPiA+IFRoZSB2bWFwIGlzIHVzZWQgYnkg
-ZmJjb24sIHdpdGhvdXQgdGhhdCBmYmRldiB3b24ndCByZWFsbHkgd29yayBJIHRoaW5rLgo+ID4g
-U28gSSdtIHJhdGhlciBjb25mdXNlZCBvbiB3aGF0IHlvdSB0ZXN0ZWQgLi4uCj4gPiAKPiA+IEFk
-ZGluZyBOb3JhbGYsIGhlJ3MgdGhlIGV4cGVydCBoZXJlLgo+ID4gLURhbmllbAo+IAo+IEkgdGVz
-dCB3aXRoIGZiX3Rlc3QgWzFdLCBpdCBpcyBhIHVzZXIgc3BhY2UgcHJvZ3JhbSBqdXN0IG9wZW4g
-L2Rldi9mYjAKPiBhbmQgbW1hcCBpdCB0byB1c2VyIHNwYWNlLiBJIGRvZXMgbm90IHR1cm4gb24g
-ZmJjb24gc28gZXZlcnl0aGluZyBsb29rcwo+IHdlbGwuIElmIHN1cHBvcnQgZmJjb24gaXMgZXNz
-ZW50aWFsLCBJIHdvdWxkIGltcGxlbWVudCB2bWFwIGNvcnJlY3RseS4KPiBJZiBpdCdzIG5vdCBl
-c3NlbnRpYWwsIEkgdGhpbmsgSSBjb3VsZCByZXR1cm4gMCB3aGVuCj4gQ09ORklHX0ZSQU1CVUZG
-RVJfQ09OU09MRSBpcyBkZWZpbmVkLgoKSSB0aGluayBmYmRldiBlbXVsYXRpb24gd2l0aG91dCB3
-b3JraW5nIGZiY29uIGlzIGZhaXJseSB1c2VsZXNzLiBBbmQgaXQKc2hvdWxkbid0IGJlIHRoYXQg
-bXVjaCB3b3JrIHRvIG1ha2UgaXQgd29yaywgd2UgaGF2ZSBxdWl0ZSBhIGZldyBtb3JlCmhlbGVy
-cyBmb3IgZ2VtIGJvIG5vd2FkYXlzLgotRGFuaWVsCgo+IAo+IFJlZ2FyZHMsCj4gQ0sKPiAKPiBb
-MV0KPiBodHRwczovL2FuZHJvaWQuZ29vZ2xlc291cmNlLmNvbS9wbGF0Zm9ybS9zeXN0ZW0vZXh0
-cmFzLysvbWFzdGVyL3Rlc3RzL2ZyYW1lYnVmZmVyL2ZiX3Rlc3QuYwo+IAo+IAoKLS0gCkRhbmll
-bCBWZXR0ZXIKU29mdHdhcmUgRW5naW5lZXIsIEludGVsIENvcnBvcmF0aW9uCmh0dHA6Ly9ibG9n
-LmZmd2xsLmNoCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
-dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Thu, Jan 3, 2019 at 4:38 AM <chuanjia.liu@mediatek.com> wrote:
+
+> From: "chuanjia.liu" <Chuanjia.Liu@mediatek.com>
+>
+> Virtual gpio only used inside SOC and not being exported to outside SOC.
+> Some modules use virtual gpio as eint and doesn't need SMT.
+> So this patch add EINT support to virtual GPIOs.
+>
+> Signed-off-by: chuanjia.liu <Chuanjia.Liu@mediatek.com>
+> ---
+> change note:
+> v5: This patch is the same as v4,re-upload due to
+>       mail permissions issues
+
+Patch applied with Sean's ACK.
+
+Yours,
+Linus Walleij
