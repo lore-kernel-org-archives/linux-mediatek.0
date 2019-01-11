@@ -1,76 +1,93 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: Aw: Re: [PATCH] drm/mediatek: Add MTK Framebuffer-Device (mt7623)
-Date: Fri, 11 Jan 2019 09:31:28 +0800
-Message-ID: <1547170288.29836.2.camel@mtksdaap41>
+Subject: Re: Re: [PATCH] drm/mediatek: Add MTK Framebuffer-Device (mt7623)
+Date: Fri, 11 Jan 2019 11:20:09 +0800
+Message-ID: <1547176809.12054.11.camel@mtksdaap41>
 References: <20190102084917.4049-1-frank-w@public-files.de>
  <20190107103640.GH21184@phenom.ffwll.local>
  <CAKMK7uEqxz4TAt_iwEC+dMWboVxCeCduyABsSwD0Ns7k=Z_UWA@mail.gmail.com>
  <trinity-0da588a3-1277-4421-ad6b-1f6aeb129dd6-1547146897687@3c-app-gmx-bs35>
+ <20190110200225.GN21184@phenom.ffwll.local>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <trinity-0da588a3-1277-4421-ad6b-1f6aeb129dd6-1547146897687@3c-app-gmx-bs35>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Alexander Ryabchenko <d3adme4t@gmail.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190110200225.GN21184@phenom.ffwll.local>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Vetter <daniel@ffwll.ch>
+Cc: Frank Wunderlich <frank-w@public-files.de>, David Airlie <airlied@linux.ie>, Alexander Ryabchenko <d3adme4t@gmail.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Frank:
-
-On Thu, 2019-01-10 at 20:01 +0100, Frank Wunderlich wrote:
-> Hi Daniel,
-> 
-> > > Would be good to use the new generic fbdev emulation code here, for even
-> > > less code. Or at least know why this isn't possible to use for mtk (and
-> > > maybe address that in the core code). Hand-rolling fbdev code shouldn't be
-> > > needed anymore.
-> > 
-> > Back on the mailing list, no private replies please:
-> 
-> i don't wanted to spam all people with dumb questions ;)
-> 
-> > For examples please grep for drm_fbdev_generic_setup(). There's also a
-> > still in-flight series from Gerd Hoffmann to convert over bochs. That,
-> > plus all the kerneldoc linked from there should get you started.
-> > -Daniel
-> 
-> this is one of google best founds if i search for drm_fbdev_generic_setup:
-> 
-> https://lkml.org/lkml/2018/12/19/305
-> 
-> not very helpful...
-> 
-> so i tried kernel-doc
-> 
-> https://www.kernel.org/doc/html/latest/gpu/drm-kms-helpers.html?highlight=drm_fbdev_generic_setup#c.drm_fbdev_generic_setup
-> 
-> which is nice function-reference but i've found no generic workflow
-> 
-> as the posted driver is "only" a driver ported from kernel 4.4 by Alexander, i don't know if this new framework can be used and which parts need to be changed. I only try to bring his code Mainline....
-> Maybe CK Hu can help here because driver is originally from him and he knows internals. Or maybe you can help here?
-
-I could help on this but I'm a little busy now, so I'm not sure how long
-this process takes.
-
-Regards,
-CK
-
-> 
-> i personally make my first steps as spare-time kernel-developer :)
-> 
-> regards Frank
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIERhbmllbDoKCk9uIFRodSwgMjAxOS0wMS0xMCBhdCAyMTowMiArMDEwMCwgRGFuaWVsIFZl
+dHRlciB3cm90ZToKPiBPbiBUaHUsIEphbiAxMCwgMjAxOSBhdCAwODowMTozN1BNICswMTAwLCBG
+cmFuayBXdW5kZXJsaWNoIHdyb3RlOgo+ID4gSGkgRGFuaWVsLAo+ID4gCj4gPiA+ID4gV291bGQg
+YmUgZ29vZCB0byB1c2UgdGhlIG5ldyBnZW5lcmljIGZiZGV2IGVtdWxhdGlvbiBjb2RlIGhlcmUs
+IGZvciBldmVuCj4gPiA+ID4gbGVzcyBjb2RlLiBPciBhdCBsZWFzdCBrbm93IHdoeSB0aGlzIGlz
+bid0IHBvc3NpYmxlIHRvIHVzZSBmb3IgbXRrIChhbmQKPiA+ID4gPiBtYXliZSBhZGRyZXNzIHRo
+YXQgaW4gdGhlIGNvcmUgY29kZSkuIEhhbmQtcm9sbGluZyBmYmRldiBjb2RlIHNob3VsZG4ndCBi
+ZQo+ID4gPiA+IG5lZWRlZCBhbnltb3JlLgo+ID4gPiAKPiA+ID4gQmFjayBvbiB0aGUgbWFpbGlu
+ZyBsaXN0LCBubyBwcml2YXRlIHJlcGxpZXMgcGxlYXNlOgo+ID4gCj4gPiBpIGRvbid0IHdhbnRl
+ZCB0byBzcGFtIGFsbCBwZW9wbGUgd2l0aCBkdW1iIHF1ZXN0aW9ucyA7KQo+IAo+IFRoZXJlJ3Mg
+bm8gZHVtYiBxdWVzdGlvbnMsIG9ubHkgaW5zdWZmaWNpZW50IGRvY3VtZW50YXRpb24gOi0pCj4g
+Cj4gPiA+IEZvciBleGFtcGxlcyBwbGVhc2UgZ3JlcCBmb3IgZHJtX2ZiZGV2X2dlbmVyaWNfc2V0
+dXAoKS4gVGhlcmUncyBhbHNvIGEKPiA+ID4gc3RpbGwgaW4tZmxpZ2h0IHNlcmllcyBmcm9tIEdl
+cmQgSG9mZm1hbm4gdG8gY29udmVydCBvdmVyIGJvY2hzLiBUaGF0LAo+ID4gPiBwbHVzIGFsbCB0
+aGUga2VybmVsZG9jIGxpbmtlZCBmcm9tIHRoZXJlIHNob3VsZCBnZXQgeW91IHN0YXJ0ZWQuCj4g
+PiA+IC1EYW5pZWwKPiA+IAo+ID4gdGhpcyBpcyBvbmUgb2YgZ29vZ2xlIGJlc3QgZm91bmRzIGlm
+IGkgc2VhcmNoIGZvciBkcm1fZmJkZXZfZ2VuZXJpY19zZXR1cDoKPiA+IAo+ID4gaHR0cHM6Ly9s
+a21sLm9yZy9sa21sLzIwMTgvMTIvMTkvMzA1Cj4gPiAKPiA+IG5vdCB2ZXJ5IGhlbHBmdWwuLi4K
+PiA+IAo+ID4gc28gaSB0cmllZCBrZXJuZWwtZG9jCj4gPiAKPiA+IGh0dHBzOi8vd3d3Lmtlcm5l
+bC5vcmcvZG9jL2h0bWwvbGF0ZXN0L2dwdS9kcm0ta21zLWhlbHBlcnMuaHRtbD9oaWdobGlnaHQ9
+ZHJtX2ZiZGV2X2dlbmVyaWNfc2V0dXAjYy5kcm1fZmJkZXZfZ2VuZXJpY19zZXR1cAo+ID4gCj4g
+PiB3aGljaCBpcyBuaWNlIGZ1bmN0aW9uLXJlZmVyZW5jZSBidXQgaSd2ZSBmb3VuZCBubyBnZW5l
+cmljIHdvcmtmbG93Cj4gPiAKPiA+IGFzIHRoZSBwb3N0ZWQgZHJpdmVyIGlzICJvbmx5IiBhIGRy
+aXZlciBwb3J0ZWQgZnJvbSBrZXJuZWwgNC40IGJ5IEFsZXhhbmRlciwgaSBkb24ndCBrbm93IGlm
+IHRoaXMgbmV3IGZyYW1ld29yayBjYW4gYmUgdXNlZCBhbmQgd2hpY2ggcGFydHMgbmVlZCB0byBi
+ZSBjaGFuZ2VkLiBJIG9ubHkgdHJ5IHRvIGJyaW5nIGhpcyBjb2RlIE1haW5saW5lLi4uLgo+ID4g
+TWF5YmUgQ0sgSHUgY2FuIGhlbHAgaGVyZSBiZWNhdXNlIGRyaXZlciBpcyBvcmlnaW5hbGx5IGZy
+b20gaGltIGFuZCBoZSBrbm93cyBpbnRlcm5hbHMuIE9yIG1heWJlIHlvdSBjYW4gaGVscCBoZXJl
+Pwo+ID4gCj4gPiBpIHBlcnNvbmFsbHkgbWFrZSBteSBmaXJzdCBzdGVwcyBhcyBzcGFyZS10aW1l
+IGtlcm5lbC1kZXZlbG9wZXIgOikKPiAKPiBUaGVyZSdzIGEgdG9uIG9mIGluLWtlcm5lbCB1c2Vy
+cyBvZiB0aGF0IGZ1bmN0aW9uIGFscmVhZHksIEkgbWVhbnQgeW91IGNhbgo+IHVzZSB0aG9zZSB0
+byBzZXJ2ZSBhcyBleGFtcGxlcyAuLi4gSWYgdGhvc2UgKyB0aGUga2VybmVsZG9jIGFyZW4ndAo+
+IGdvb2QgZW5vdWdoLCB0aGVuIHdlIG5lZWQgdG8gaW1wcm92ZSB0aGVtLgo+IC1EYW5pZWwKCkkn
+dmUgdHJpZWQgd2l0aCBkcm1fZmJkZXZfZ2VuZXJpY19zZXR1cCgpIGFuZCBpdCB3b3JrcyBmaW5l
+IHdpdGggc2ltcGxlCm1vZGlmaWNhdGlvbi4gVGhlIHBhdGNoIGlzCgotLS0gYS9kcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RybV9kcnYuYwpAQCAtMTYsNiArMTYsNyBAQAogI2luY2x1ZGUgPGRybS9kcm1fYXRv
+bWljLmg+CiAjaW5jbHVkZSA8ZHJtL2RybV9hdG9taWNfaGVscGVyLmg+CiAjaW5jbHVkZSA8ZHJt
+L2RybV9jcnRjX2hlbHBlci5oPgorI2luY2x1ZGUgPGRybS9kcm1fZmJfaGVscGVyLmg+CiAjaW5j
+bHVkZSA8ZHJtL2RybV9nZW0uaD4KICNpbmNsdWRlIDxkcm0vZHJtX2dlbV9jbWFfaGVscGVyLmg+
+CiAjaW5jbHVkZSA8ZHJtL2RybV9vZi5oPgpAQCAtMzc5LDYgKzM4MCw3IEBAIHN0YXRpYyB2b2lk
+IG10a19kcm1fa21zX2RlaW5pdChzdHJ1Y3QgZHJtX2RldmljZQoqZHJtKQogICAgICAgIC5nZW1f
+cHJpbWVfZ2V0X3NnX3RhYmxlID0gbXRrX2dlbV9wcmltZV9nZXRfc2dfdGFibGUsCiAgICAgICAg
+LmdlbV9wcmltZV9pbXBvcnRfc2dfdGFibGUgPSBtdGtfZ2VtX3ByaW1lX2ltcG9ydF9zZ190YWJs
+ZSwKICAgICAgICAuZ2VtX3ByaW1lX21tYXAgPSBtdGtfZHJtX2dlbV9tbWFwX2J1ZiwKKyAgICAg
+ICAuZ2VtX3ByaW1lX3ZtYXAgPSBtdGtfZHJtX2dlbV9wcmltZV92bWFwLAogICAgICAgIC5pb2N0
+bHMgPSBtdGtfaW9jdGxzLAogICAgICAgIC5udW1faW9jdGxzID0gQVJSQVlfU0laRShtdGtfaW9j
+dGxzKSwKICAgICAgICAuZm9wcyA9ICZtdGtfZHJtX2ZvcHMsCkBAIC00MTYsNiArNDE4LDggQEAg
+c3RhdGljIGludCBtdGtfZHJtX2JpbmQoc3RydWN0IGRldmljZSAqZGV2KQogICAgICAgIGlmIChy
+ZXQgPCAwKQogICAgICAgICAgICAgICAgZ290byBlcnJfZGVpbml0OwoKKyAgICAgICBkcm1fZmJk
+ZXZfZ2VuZXJpY19zZXR1cChkcm0sIDMyKTsKKwogICAgICAgIHJldHVybiAwOwoKCkJ1dCBJIGlt
+cGxlbWVudCAuZ2VtX3ByaW1lX3ZtYXAgd2l0aCBhIHdvcmthcm91bmQsCgoKLS0tIGEvZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZ2VtLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19kcm1fZ2VtLmMKQEAgLTI4MCwzICsyODAsOCBAQCBpbnQgbXRrX2dlbV9jcmVh
+dGVfaW9jdGwoc3RydWN0IGRybV9kZXZpY2UgKmRldiwKdm9pZCAqZGF0YSwKICAgICAgICBtdGtf
+ZHJtX2dlbV9mcmVlX29iamVjdCgmbXRrX2dlbS0+YmFzZSk7CiAgICAgICAgcmV0dXJuIHJldDsK
+IH0KKwordm9pZCAqbXRrX2RybV9nZW1fcHJpbWVfdm1hcChzdHJ1Y3QgZHJtX2dlbV9vYmplY3Qg
+Km9iaikKK3sKKyAgICAgICByZXR1cm4gKHZvaWQgKikxOworfQoKQ3VycmVudCBkcm1fZmJfaGVs
+cGVyIGRlcGVuZHMgb24gZHJtX2NsaWVudCB0byBjcmVhdGUgZmJkZXYuIFdoZW4KZHJtX2NsaWVu
+dCBjcmVhdGUgZHJtX2NsaWVudF9idWZmZXIsIGl0IG5lZWQgdG8gdm1hcCB0byBnZXQga2VybmVs
+CnZhZGRyLiBCdXQgSSB0aGluayBmb3IgZmJkZXYsIHRoZSB2YWRkciBpcyB1c2VsZXNzLiBEbyB5
+b3UgYWdyZWUgdGhhdCBJCnRlbXBvcmFyaWx5IGltcGxlbWVudCAuZ2VtX3ByaW1lX3ZtYXAgaW4g
+c3VjaCB3YXk/CgpSZWdhcmRzLApDSwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZy
+ZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2RyaS1kZXZlbAo=
