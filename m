@@ -1,39 +1,83 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 01/13] dt-binding: mediatek: Get rid of mediatek,larb for
- multimedia HW
-Date: Fri, 11 Jan 2019 08:58:21 -0600
-Message-ID: <20190111145821.GA32150@bogus>
-References: <1546318276-18993-1-git-send-email-yong.wu@mediatek.com>
- <1546318276-18993-2-git-send-email-yong.wu@mediatek.com>
+From: Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: Remove inconsistent use of 'arm,armv8'
+ compatible string
+Date: Fri, 11 Jan 2019 15:32:37 +0000
+Message-ID: <5C38B715.8030008@hisilicon.com>
+References: <20190109202934.29304-1-robh@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1546318276-18993-2-git-send-email-yong.wu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-Cc: Joerg Roedel <joro@8bytes.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Tomasz Figa <tfiga@google.com>, Will Deacon <will.deacon@arm.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, arnd@arndb.de, yingjoe.chen@mediatek.com, yong.wu@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190109202934.29304-1-robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: Nishanth Menon <nm-l0cyMroinI0@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Gregory Clement <gregory.clement-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, bcm-kernel-feedba
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 1 Jan 2019 12:51:04 +0800, Yong Wu wrote:
-> After adding device_link between the consumer with the smi-larbs,
-> if the consumer call its owner pm_runtime_get(_sync), the
-> pm_runtime_get(_sync) of smi-larb and smi-common will be called
-> automatically. Thus, the consumer don't need the property.
-> 
-> And IOMMU also know which larb this consumer connects with from
-> iommu id in the "iommus=" property.
-> 
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> ---
-> I guess it should go through Matthias's tree if the patch is ok,
-> thus I don't separate to different patches. If it's really needed,
-> please feel free to tell me.
-> ---
->  .../devicetree/bindings/display/mediatek/mediatek,disp.txt       | 9 ---------
->  .../devicetree/bindings/media/mediatek-jpeg-decoder.txt          | 4 ----
->  Documentation/devicetree/bindings/media/mediatek-mdp.txt         | 8 --------
->  Documentation/devicetree/bindings/media/mediatek-vcodec.txt      | 4 ----
->  4 files changed, 25 deletions(-)
-> 
+Hi Rob,
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+On 2019/1/9 20:29, Rob Herring wrote:
+> The 'arm,armv8' compatible string is only for software models. It adds
+> little value otherwise and is inconsistently used as a fallback on some
+> platforms. Remove it from those platforms.
+> 
+> This fixes warnings generated by the DT schema.
+> 
+> Reported-by: Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>
+> Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+> Cc: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
+> Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> ---
+> armsoc folks, Please apply directly.
+> 
+> Note that there's still a case left in msm8998 that needs a new 
+> compatible string.
+> 
+> Rob
+> 
+>  arch/arm64/boot/dts/actions/s700.dtsi         |   8 +-
+>  arch/arm64/boot/dts/actions/s900.dtsi         |   8 +-
+>  arch/arm64/boot/dts/al/alpine-v2.dtsi         |   8 +-
+>  arch/arm64/boot/dts/allwinner/sun50i-a64.dtsi |   8 +-
+>  arch/arm64/boot/dts/allwinner/sun50i-h5.dtsi  |   8 +-
+>  arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi  |   8 +-
+>  .../boot/dts/altera/socfpga_stratix10.dtsi    |   8 +-
+>  arch/arm64/boot/dts/amlogic/meson-axg.dtsi    |   8 +-
+>  arch/arm64/boot/dts/amlogic/meson-g12a.dtsi   |   8 +-
+>  arch/arm64/boot/dts/amlogic/meson-gx.dtsi     |   8 +-
+>  arch/arm64/boot/dts/amlogic/meson-gxm.dtsi    |   8 +-
+>  arch/arm64/boot/dts/apm/apm-shadowcat.dtsi    |  16 +--
+>  arch/arm64/boot/dts/apm/apm-storm.dtsi        |  16 +--
+>  arch/arm64/boot/dts/arm/juno-r1.dts           |  12 +-
+>  arch/arm64/boot/dts/arm/juno-r2.dts           |  12 +-
+>  arch/arm64/boot/dts/arm/juno.dts              |  12 +-
+>  .../boot/dts/arm/vexpress-v2f-1xv7-ca53x2.dts |   4 +-
+>  .../boot/dts/broadcom/northstar2/ns2.dtsi     |   8 +-
+>  .../boot/dts/broadcom/stingray/stingray.dtsi  |  16 +--
+>  arch/arm64/boot/dts/cavium/thunder-88xx.dtsi  |  96 ++++++-------
+>  arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi |   8 +-
+>  arch/arm64/boot/dts/exynos/exynos5433.dtsi    |  16 +--
+>  arch/arm64/boot/dts/exynos/exynos7.dtsi       |   8 +-
+>  arch/arm64/boot/dts/hisilicon/hi3660.dtsi     |  16 +--
+>  arch/arm64/boot/dts/hisilicon/hi3670.dtsi     |  16 +--
+>  arch/arm64/boot/dts/hisilicon/hi6220.dtsi     |  16 +--
+>  arch/arm64/boot/dts/hisilicon/hip05.dtsi      |  32 ++---
+>  arch/arm64/boot/dts/hisilicon/hip06.dtsi      |  32 ++---
+>  arch/arm64/boot/dts/hisilicon/hip07.dtsi      | 128 +++++++++---------
+
+For hisilicon,
+
+Acked-by: Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>
+
+Thanks!
+
+Best Regards,
+Wei
