@@ -1,31 +1,42 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2,1/3] media: dt-bindings: media: add 'assigned-clocks'
- to vcodec examples
-Date: Fri, 11 Jan 2019 13:30:02 -0600
-Message-ID: <20190111193002.GA19308@bogus>
-References: <1546571161-11470-1-git-send-email-yunfei.dong@mediatek.com>
+From: "Martin K. Petersen" <martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH v1 1/1] scsi: ufs: Fix system suspend status
+Date: Fri, 11 Jan 2019 22:17:28 -0500
+Message-ID: <yq1d0p2womv.fsf@oracle.com>
+References: <1546870774-19691-1-git-send-email-stanley.chu@mediatek.com>
+ <1546870774-19691-3-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1546571161-11470-1-git-send-email-yunfei.dong@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-Cc: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Qianqian Yan <qianqian.yan@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1546870774-19691-3-git-send-email-stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+ (stanley chu's message of "Mon, 7 Jan 2019 22:19:34 +0800")
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 4 Jan 2019 11:05:59 +0800, Yunfei Dong wrote:
-> Fix MTK binding document for MT8173 dtsi changed in order
-> to use standard CCF interface.
-> MT8173 SoC from Mediatek.
-> 
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> Signed-off-by: Qianqian Yan <qianqian.yan@mediatek.com>
-> ---
-> change note:
-> v2: modify subject
-> ---
->  .../devicetree/bindings/media/mediatek-vcodec.txt   | 13 +++++++++++++
->  1 file changed, 13 insertions(+)
-> 
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Stanley,
+
+> hba->is_sys_suspended is set after successful system suspend but not
+> clear after successful system resume.
+>
+> According to current behavior, hba->is_sys_suspended will not
+> be set if host is runtime-suspended but not system-suspended. Thus
+> we shall aligh the same policy: clear this flag even if host remains
+> runtime-suspended after ufshcd_system_resume is successfully returned.
+>
+> Simply fix this flag to correct host status logs.
+
+Applied to 5.0/scsi-fixes. Thanks!
+
+-- 
+Martin K. Petersen	Oracle Linux Engineering
