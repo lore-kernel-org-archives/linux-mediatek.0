@@ -1,42 +1,35 @@
-From: "Martin K. Petersen" <martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH v1 1/1] scsi: ufs: Fix system suspend status
-Date: Fri, 11 Jan 2019 22:17:28 -0500
-Message-ID: <yq1d0p2womv.fsf@oracle.com>
-References: <1546870774-19691-1-git-send-email-stanley.chu@mediatek.com>
- <1546870774-19691-3-git-send-email-stanley.chu@mediatek.com>
+From: Julia Lawall <Julia.Lawall@lip6.fr>
+Subject: [PATCH 0/4] add missing of_node_puts
+Date: Sun, 13 Jan 2019 09:47:40 +0100
+Message-ID: <1547369264-24831-1-git-send-email-Julia.Lawall@lip6.fr>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1546870774-19691-3-git-send-email-stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
- (stanley chu's message of "Mon, 7 Jan 2019 22:19:34 +0800")
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
-Cc: linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: linux-rockchip@lists.infradead.org
+Cc: David Airlie <airlied@linux.ie>, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-Stanley,
-
-> hba->is_sys_suspended is set after successful system suspend but not
-> clear after successful system resume.
->
-> According to current behavior, hba->is_sys_suspended will not
-> be set if host is runtime-suspended but not system-suspended. Thus
-> we shall aligh the same policy: clear this flag even if host remains
-> runtime-suspended after ufshcd_system_resume is successfully returned.
->
-> Simply fix this flag to correct host status logs.
-
-Applied to 5.0/scsi-fixes. Thanks!
-
--- 
-Martin K. Petersen	Oracle Linux Engineering
+VGhlIGRldmljZSBub2RlIGl0ZXJhdG9ycyBwZXJmb3JtIGFuIG9mX25vZGVfZ2V0IG9uIGVhY2gg
+aXRlcmF0aW9uLCBzbyBhCmp1bXAgb3V0IG9mIHRoZSBsb29wIHJlcXVpcmVzIGFuIG9mX25vZGVf
+cHV0LgoKVGhlIHBhdGNoZXMgZm9yIGRyaXZlcnMvZ3B1L2RybS9pbXgvaW14LWxkYi5jIGFuZApk
+cml2ZXJzL2dwdS9kcm0vc3VuNGkvc3VuNGlfYmFja2VuZC5jIGNvbnRhaW4gc29tZSBhZGRlZCBv
+Zl9ub2RlX3B1dHMgZm9yCndoaWNoIHRoZSBuZWVkIHdhcyBpZGVudGlmaWVkIG1hbnVhbGx5LiAg
+RGV0YWlscyBhcmUgaW4gdGhlIHBhdGNoIGxvZ3MuCgotLS0KCiBkcml2ZXJzL2dwdS9kcm0vaW14
+L2lteC1sZGIuYyAgICAgICAgICAgfCAgIDI1ICsrKysrKysrKysrKysrKysrLS0tLS0tLS0KIGRy
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jICB8ICAgIDUgKysrKy0KIGRyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9yZ2IuYyB8ICAgIDQgKysrLQogZHJpdmVycy9n
+cHUvZHJtL3N1bjRpL3N1bjRpX2JhY2tlbmQuYyAgIHwgICAgMSArCiA0IGZpbGVzIGNoYW5nZWQs
+IDI1IGluc2VydGlvbnMoKyksIDEwIGRlbGV0aW9ucygtKQpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
+bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
