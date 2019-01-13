@@ -1,11 +1,13 @@
 From: Julia Lawall <Julia.Lawall@lip6.fr>
-Subject: [PATCH 0/4] add missing of_node_puts
-Date: Sun, 13 Jan 2019 09:47:40 +0100
-Message-ID: <1547369264-24831-1-git-send-email-Julia.Lawall@lip6.fr>
+Subject: [PATCH 1/4] drm/mediatek: add missing of_node_puts
+Date: Sun, 13 Jan 2019 09:47:41 +0100
+Message-ID: <1547369264-24831-2-git-send-email-Julia.Lawall@lip6.fr>
+References: <1547369264-24831-1-git-send-email-Julia.Lawall@lip6.fr>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1547369264-24831-1-git-send-email-Julia.Lawall@lip6.fr>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -15,21 +17,31 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-rockchip@lists.infradead.org
-Cc: David Airlie <airlied@linux.ie>, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: CK Hu <ck.hu@mediatek.com>
+Cc: David Airlie <airlied@linux.ie>, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 VGhlIGRldmljZSBub2RlIGl0ZXJhdG9ycyBwZXJmb3JtIGFuIG9mX25vZGVfZ2V0IG9uIGVhY2gg
 aXRlcmF0aW9uLCBzbyBhCmp1bXAgb3V0IG9mIHRoZSBsb29wIHJlcXVpcmVzIGFuIG9mX25vZGVf
-cHV0LgoKVGhlIHBhdGNoZXMgZm9yIGRyaXZlcnMvZ3B1L2RybS9pbXgvaW14LWxkYi5jIGFuZApk
-cml2ZXJzL2dwdS9kcm0vc3VuNGkvc3VuNGlfYmFja2VuZC5jIGNvbnRhaW4gc29tZSBhZGRlZCBv
-Zl9ub2RlX3B1dHMgZm9yCndoaWNoIHRoZSBuZWVkIHdhcyBpZGVudGlmaWVkIG1hbnVhbGx5LiAg
-RGV0YWlscyBhcmUgaW4gdGhlIHBhdGNoIGxvZ3MuCgotLS0KCiBkcml2ZXJzL2dwdS9kcm0vaW14
-L2lteC1sZGIuYyAgICAgICAgICAgfCAgIDI1ICsrKysrKysrKysrKysrKysrLS0tLS0tLS0KIGRy
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jICB8ICAgIDUgKysrKy0KIGRyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9yZ2IuYyB8ICAgIDQgKysrLQogZHJpdmVycy9n
-cHUvZHJtL3N1bjRpL3N1bjRpX2JhY2tlbmQuYyAgIHwgICAgMSArCiA0IGZpbGVzIGNoYW5nZWQs
-IDI1IGluc2VydGlvbnMoKyksIDEwIGRlbGV0aW9ucygtKQpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
-bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+cHV0LgoKVGhlIHNlbWFudGljIHBhdGNoIHRoYXQgZml4ZXMgdGhpcyBwcm9ibGVtIGlzIGFzIGZv
+bGxvd3MKKGh0dHA6Ly9jb2NjaW5lbGxlLmxpcDYuZnIpOgoKLy8gPHNtcGw+CkBACmxvY2FsIGlk
+ZXhwcmVzc2lvbiBuOwpleHByZXNzaW9uIGUsZTE7CmlkZW50aWZpZXIgbDsKQEAKCiBmb3JfZWFj
+aF9jaGlsZF9vZl9ub2RlKGUxLG4pIHsKICAgLi4uCigKICAgb2Zfbm9kZV9wdXQobik7CnwKICAg
+ZSA9IG4KfAorICBvZl9ub2RlX3B1dChuKTsKPyAgZ290byBsOwopCiAgIC4uLgogfQouLi4KbDog
+Li4uIHdoZW4gIT0gbgovLyA8L3NtcGw+CgpTaWduZWQtb2ZmLWJ5OiBKdWxpYSBMYXdhbGwgPEp1
+bGlhLkxhd2FsbEBsaXA2LmZyPgoKLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
+bV9kcnYuYyB8ICAgIDUgKysrKy0KIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKyksIDEg
+ZGVsZXRpb24oLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
+bV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCmluZGV4IDY0
+MjJlOTkuLmI5MjA1YmYgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+ZHJtX2Rydi5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCkBA
+IC01MjIsMTIgKzUyMiwxNSBAQCBzdGF0aWMgaW50IG10a19kcm1fcHJvYmUoc3RydWN0IHBsYXRm
+b3JtX2RldmljZSAqcGRldikKIAkJCWNvbXAgPSBkZXZtX2t6YWxsb2MoZGV2LCBzaXplb2YoKmNv
+bXApLCBHRlBfS0VSTkVMKTsKIAkJCWlmICghY29tcCkgewogCQkJCXJldCA9IC1FTk9NRU07CisJ
+CQkJb2Zfbm9kZV9wdXQobm9kZSk7CiAJCQkJZ290byBlcnJfbm9kZTsKIAkJCX0KIAogCQkJcmV0
+ID0gbXRrX2RkcF9jb21wX2luaXQoZGV2LCBub2RlLCBjb21wLCBjb21wX2lkLCBOVUxMKTsKLQkJ
+CWlmIChyZXQpCisJCQlpZiAocmV0KSB7CisJCQkJb2Zfbm9kZV9wdXQobm9kZSk7CiAJCQkJZ290
+byBlcnJfbm9kZTsKKwkJCX0KIAogCQkJcHJpdmF0ZS0+ZGRwX2NvbXBbY29tcF9pZF0gPSBjb21w
+OwogCQl9CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
+cmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
