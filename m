@@ -1,120 +1,51 @@
-From: Bhupesh Sharma <bhsharma@redhat.com>
-Subject: Re: [PATCH v2 7/9] arm64: kdump: No need to mark crashkernel pages
- manually PG_reserved
-Date: Mon, 14 Jan 2019 21:22:49 +0530
-Message-ID: <CACi5LpPphoJzfKXPN5kSV42aF27=2ZjqXSVLQjEtMdSN8+6bsA@mail.gmail.com>
-References: <20190114125903.24845-1-david@redhat.com> <20190114125903.24845-8-david@redhat.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+From: Amit Kucheria <amit.kucheria@linaro.org>
+Subject: [PATCH v1 00/10] cpufreq: Add flag to auto-register as cooling device
+Date: Mon, 14 Jan 2019 22:04:52 +0530
+Message-ID: <cover.1547481320.git.amit.kucheria@linaro.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190114125903.24845-8-david@redhat.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: David Hildenbrand <david@redhat.com>
-Cc: linux-mm@kvack.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-m68k@lists.linux-m68k.org, linuxppc-dev@lists.ozlabs.org, linux-riscv@lists.infradead.org, linux-s390@vger.kernel.org, linux-mediatek@lists.infradead.org, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, James Morse <james.morse@arm.com>, Mark Rutland <mark.rutland@arm.com>, Dave Kleikamp <dave.kleikamp@oracle.com>, Andrew Morton <akpm@linux-foundation.org>, Mike Rapoport <rppt@linux.vnet.ibm.com>, Michal Hocko <mhocko@suse.com>, Florian Fainelli <f.fainelli@gmail.com>, Stefan Agner <stefan@agner.ch>, Laura Abbott <labbott@redhat.com>, Greg Hackmann <ghackmann@android.com>J
+To: linux-kernel@vger.kernel.org
+Cc: linux-arm-msm@vger.kernel.org, viresh.kumar@linaro.org, edubezval@gmail.com, swboyd@chromium.org, dianders@chromium.org, mka@chromium.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Matthias Brugger <matthias.bgg@gmail.com>, Sudeep Holla <sudeep.holla@arm.com>, "moderated list:ARM/Mediatek SoC
+        support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+        support" <linux-mediatek@lists.infradead.org>, "open list:CPU FREQUENCY DRIVERS" <linux-pm@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi David,
+Add a flag to be used by cpufreq drivers to tell cpufreq core to
+auto-register themselves as a thermal cooling device.
 
-On Mon, Jan 14, 2019 at 6:30 PM David Hildenbrand <david@redhat.com> wrote:
->
-> The crashkernel is reserved via memblock_reserve(). memblock_free_all()
-> will call free_low_memory_core_early(), which will go over all reserved
-> memblocks, marking the pages as PG_reserved.
->
-> So manually marking pages as PG_reserved is not necessary, they are
-> already in the desired state (otherwise they would have been handed over
-> to the buddy as free pages and bad things would happen).
->
-> Cc: Catalin Marinas <catalin.marinas@arm.com>
-> Cc: Will Deacon <will.deacon@arm.com>
-> Cc: James Morse <james.morse@arm.com>
-> Cc: Bhupesh Sharma <bhsharma@redhat.com>
-> Cc: David Hildenbrand <david@redhat.com>
-> Cc: Mark Rutland <mark.rutland@arm.com>
-> Cc: Dave Kleikamp <dave.kleikamp@oracle.com>
-> Cc: Andrew Morton <akpm@linux-foundation.org>
-> Cc: Mike Rapoport <rppt@linux.vnet.ibm.com>
-> Cc: Michal Hocko <mhocko@suse.com>
-> Cc: Florian Fainelli <f.fainelli@gmail.com>
-> Cc: Stefan Agner <stefan@agner.ch>
-> Cc: Laura Abbott <labbott@redhat.com>
-> Cc: Greg Hackmann <ghackmann@android.com>
-> Cc: Johannes Weiner <hannes@cmpxchg.org>
-> Cc: Kristina Martsenko <kristina.martsenko@arm.com>
-> Cc: CHANDAN VN <chandan.vn@samsung.com>
-> Cc: AKASHI Takahiro <takahiro.akashi@linaro.org>
-> Cc: Logan Gunthorpe <logang@deltatee.com>
-> Reviewed-by: Matthias Brugger <mbrugger@suse.com>
-> Signed-off-by: David Hildenbrand <david@redhat.com>
-> ---
->  arch/arm64/kernel/machine_kexec.c |  2 +-
->  arch/arm64/mm/init.c              | 27 ---------------------------
->  2 files changed, 1 insertion(+), 28 deletions(-)
->
-> diff --git a/arch/arm64/kernel/machine_kexec.c b/arch/arm64/kernel/machine_kexec.c
-> index 6f0587b5e941..66b5d697d943 100644
-> --- a/arch/arm64/kernel/machine_kexec.c
-> +++ b/arch/arm64/kernel/machine_kexec.c
-> @@ -321,7 +321,7 @@ void crash_post_resume(void)
->   * but does not hold any data of loaded kernel image.
->   *
->   * Note that all the pages in crash dump kernel memory have been initially
-> - * marked as Reserved in kexec_reserve_crashkres_pages().
-> + * marked as Reserved as memory was allocated via memblock_reserve().
->   *
->   * In hibernation, the pages which are Reserved and yet "nosave" are excluded
->   * from the hibernation iamge. crash_is_nosave() does thich check for crash
-> diff --git a/arch/arm64/mm/init.c b/arch/arm64/mm/init.c
-> index 7205a9085b4d..c38976b70069 100644
-> --- a/arch/arm64/mm/init.c
-> +++ b/arch/arm64/mm/init.c
-> @@ -118,35 +118,10 @@ static void __init reserve_crashkernel(void)
->         crashk_res.start = crash_base;
->         crashk_res.end = crash_base + crash_size - 1;
->  }
-> -
-> -static void __init kexec_reserve_crashkres_pages(void)
-> -{
-> -#ifdef CONFIG_HIBERNATION
-> -       phys_addr_t addr;
-> -       struct page *page;
-> -
-> -       if (!crashk_res.end)
-> -               return;
-> -
-> -       /*
-> -        * To reduce the size of hibernation image, all the pages are
-> -        * marked as Reserved initially.
-> -        */
-> -       for (addr = crashk_res.start; addr < (crashk_res.end + 1);
-> -                       addr += PAGE_SIZE) {
-> -               page = phys_to_page(addr);
-> -               SetPageReserved(page);
-> -       }
-> -#endif
-> -}
->  #else
->  static void __init reserve_crashkernel(void)
->  {
->  }
-> -
-> -static void __init kexec_reserve_crashkres_pages(void)
-> -{
-> -}
->  #endif /* CONFIG_KEXEC_CORE */
->
->  #ifdef CONFIG_CRASH_DUMP
-> @@ -586,8 +561,6 @@ void __init mem_init(void)
->         /* this will put all unused low memory onto the freelists */
->         memblock_free_all();
->
-> -       kexec_reserve_crashkres_pages();
-> -
->         mem_init_print_info(NULL);
->
->         /*
-> --
-> 2.17.2
+There series converts over all the drivers except arm_big_little.c.
+Tested on SDM845 with the qcom-cpufreq-hw driver. Only compile-tested the
+others. 
 
-LGTM, so:
-Reviewed-by: Bhupesh Sharma <bhsharma@redhat.com>
+Things needing fixing:
+ - Look at how to detect that we're not in IKS mode in arm_big_little's
+   .ready callback.
+ - The other pending issue is to fix allmodconfig that leaves us with
+   CPU_FREQ=y and THERMAL=m (CPU_THERMAL=y). That leads to undefined
+   references for functions defined in cpu_cooling.c
+
+Amit Kucheria (10):
+  cpufreq: Add thermal_cooling_device pointer to struct cpufreq_policy
+  cpufreq: Add a flag to auto-register a cooling device
+  cpufreq: Replace open-coded << with BIT()
+  cpufreq: qcom-hw: Register as a cpufreq cooling device
+  cpufreq: imx6q: Use auto-registration of thermal cooling device
+  cpufreq: cpufreq-dt: Use auto-registration of thermal cooling device
+  cpufreq: mediatek: Use auto-registration of thermal cooling device
+  cpufreq: qoriq: Use auto-registration of thermal cooling device
+  cpufreq: scmi: Use auto-registration of thermal cooling device
+  cpufreq: scpi: Use auto-registration of thermal cooling device
+
+ drivers/cpufreq/cpufreq-dt.c       | 14 ++----------
+ drivers/cpufreq/cpufreq.c          | 17 ++++++++++++++
+ drivers/cpufreq/imx6q-cpufreq.c    | 18 ++-------------
+ drivers/cpufreq/mediatek-cpufreq.c | 14 ++----------
+ drivers/cpufreq/qcom-cpufreq-hw.c  |  3 ++-
+ drivers/cpufreq/qoriq-cpufreq.c    | 15 ++-----------
+ drivers/cpufreq/scmi-cpufreq.c     | 14 ++----------
+ drivers/cpufreq/scpi-cpufreq.c     | 14 ++----------
+ include/linux/cpufreq.h            | 36 ++++++++++++++++++++----------
+ 9 files changed, 55 insertions(+), 90 deletions(-)
+
+-- 
+2.17.1
