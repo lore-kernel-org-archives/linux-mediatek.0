@@ -1,77 +1,40 @@
-From: David Hildenbrand <david-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH v2 0/9] mm: PG_reserved cleanups and documentation
-Date: Mon, 14 Jan 2019 13:58:54 +0100
-Message-ID: <20190114125903.24845-1-david@redhat.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-mm-Bw31MaZKKs3YtjvyW6yDsg@public.gmane.org
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Michal Hocko <mhocko-IBi9RG/b67k@public.gmane.org>, CHANDAN VN <chandan.vn-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, David Hildenbrand <david-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Benjamin Herrenschmidt <benh-XVmvHMARGAS8U2dJNN8I7kB+6BGkLq7r@public.gmane.org>, Bhupesh Sharma <bhsharma-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Palmer Dabbelt <palmer-SpMDHPYPyPbQT0dZR+AlfA@public.gmane.org>, Heiko Carstens <heiko.carstens-tA70FqPdS9bQT0dZR+AlfA@public.gmane.org>, Tony Luck <tony.luck-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Stefan Agner <stefan-XLVq0VzYD2Y@public.gmane.org>, Michal Hocko <mhocko-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, David Howells <dhowells-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Paul Mackerras <paulus-eUNUBHrolfbYtjvyW6yDsg@public.gmane.org>, Michael Ellerman <mpe-Gsx/Oe8HsFggBc27wqDAHg@public.gmane.org>, linux-riscv-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Alexander Duyck <alexander.h.duyck-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, linux-s390-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Vasily Gorbik <gor-tEXmvtCZX7AybS5Ee8rs3A@public.gmane.org>, Logan Gunthorpe <logang-OTvnGxWRz7hWk0Htik3J/w@public.gmane.org>, Pavel Tatashin <pasha.tatashin-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, Matthew Wilcox <willy-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, AKASHI
+From: David Hildenbrand <david@redhat.com>
+Subject: [PATCH v2 5/9] m68k/mm: use __ClearPageReserved()
+Date: Mon, 14 Jan 2019 13:58:59 +0100
+Message-ID: <20190114125903.24845-6-david@redhat.com>
+References: <20190114125903.24845-1-david@redhat.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190114125903.24845-1-david@redhat.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-mm@kvack.org
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-m68k@lists.linux-m68k.org, linuxppc-dev@lists.ozlabs.org, linux-riscv@lists.infradead.org, linux-s390@vger.kernel.org, linux-mediatek@lists.infradead.org, David Hildenbrand <david@redhat.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Andrew Morton <akpm@linux-foundation.org>, Michal Hocko <mhocko@kernel.org>, Matthew Wilcox <willy@infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Nothing major changed since the last version. I would be happy about
-additional ACKs. If there are no further comments, can this go via the
-mm-tree in one chunk?
+The PG_reserved flag is cleared from memory that is part of the kernel
+image (and therefore marked as PG_reserved). Avoid using PG_reserved
+directly.
 
-I was recently going over all users of PG_reserved. Short story: it is
-difficult and sometimes not really clear if setting/checking for
-PG_reserved is only a relict from the past. Easy to break things. I
-guess I now have a pretty good idea wh things are like that
-nowadays and how they evolved.
+Cc: Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: Andrew Morton <akpm@linux-foundation.org>
+Cc: Michal Hocko <mhocko@kernel.org>
+Cc: Matthew Wilcox <willy@infradead.org>
+Signed-off-by: David Hildenbrand <david@redhat.com>
+---
+ arch/m68k/mm/memory.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I had way more cleanups in this series inititally,
-but some architectures take PG_reserved as a way to apply a different
-caching strategy (for MMIO pages). So I decided to only include the most
-obvious changes (that are less likely to break something). So the big
-chunk of manual SetPageReserved users are MMIO/DMA related things on
-device buffers.
-
-Most notably, for device memory we will hopefully soon stop setting
-PG_reserved. Then the documentation has to be updated.
-
-v1 -> v2:
-- Minor speeling errors in "mm: better document PG_reserved" fixed
-- Added ACKs
-
-RFC -> v1:
-- Add more details to "mm: better document PG_reserved"
-- Add "arm64: kdump: No need to mark crashkernel pages manually
-       PG_reserved"
-- Add "ia64: perfmon: Don't mark buffer pages as PG_reserved"
-- Added ACKs
-
-
-David Hildenbrand (9):
-  agp: efficeon: no need to set PG_reserved on GATT tables
-  s390/vdso: don't clear PG_reserved
-  powerpc/vdso: don't clear PG_reserved
-  riscv/vdso: don't clear PG_reserved
-  m68k/mm: use __ClearPageReserved()
-  arm64: kexec: no need to ClearPageReserved()
-  arm64: kdump: No need to mark crashkernel pages manually PG_reserved
-  ia64: perfmon: Don't mark buffer pages as PG_reserved
-  mm: better document PG_reserved
-
- arch/arm64/kernel/machine_kexec.c |  3 +-
- arch/arm64/mm/init.c              | 27 --------------
- arch/ia64/kernel/perfmon.c        | 59 +++----------------------------
- arch/m68k/mm/memory.c             |  2 +-
- arch/powerpc/kernel/vdso.c        |  2 --
- arch/riscv/kernel/vdso.c          |  1 -
- arch/s390/kernel/vdso.c           |  2 --
- drivers/char/agp/efficeon-agp.c   |  2 --
- include/linux/page-flags.h        | 33 +++++++++++++++--
- 9 files changed, 37 insertions(+), 94 deletions(-)
-
+diff --git a/arch/m68k/mm/memory.c b/arch/m68k/mm/memory.c
+index b86a2e21693b..227c04fe60d2 100644
+--- a/arch/m68k/mm/memory.c
++++ b/arch/m68k/mm/memory.c
+@@ -51,7 +51,7 @@ void __init init_pointer_table(unsigned long ptable)
+ 	pr_debug("init_pointer_table: %lx, %x\n", ptable, PD_MARKBITS(dp));
+ 
+ 	/* unreserve the page so it's possible to free that page */
+-	PD_PAGE(dp)->flags &= ~(1 << PG_reserved);
++	__ClearPageReserved(PD_PAGE(dp));
+ 	init_page_count(PD_PAGE(dp));
+ 
+ 	return;
 -- 
 2.17.2
