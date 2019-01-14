@@ -1,140 +1,74 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH] drm/mediatek: Add MTK Framebuffer-Device (mt7623)
-Date: Mon, 14 Jan 2019 10:02:18 +0800
-Message-ID: <1547431338.29750.7.camel@mtksdaap41>
-References: <20190102084917.4049-1-frank-w@public-files.de>
- <20190107103640.GH21184@phenom.ffwll.local>
- <CAKMK7uEqxz4TAt_iwEC+dMWboVxCeCduyABsSwD0Ns7k=Z_UWA@mail.gmail.com>
- <trinity-0da588a3-1277-4421-ad6b-1f6aeb129dd6-1547146897687@3c-app-gmx-bs35>
- <20190110200225.GN21184@phenom.ffwll.local>
- <1547176809.12054.11.camel@mtksdaap41>
- <20190111092042.GP21184@phenom.ffwll.local>
- <1547200155.4209.4.camel@mtksdaap41>
- <20190111102503.GU21184@phenom.ffwll.local>
- <afe6ba3f-77ee-1b7c-072e-64ccb161119e@tronnes.org>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH v1 3/3] mtd: spi-nor: mtk-quadspi: rename config to a common one
+Date: Mon, 14 Jan 2019 13:12:20 +0800
+Message-ID: <45dc2817e7f4baf5113de247b1a2cb30bf252d93.1547442452.git.ryder.lee@mediatek.com>
+References: <67e650ca4fcaaddbbc98bf4e1cbe04647c990dc3.1547442452.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <afe6ba3f-77ee-1b7c-072e-64ccb161119e@tronnes.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Noralf =?ISO-8859-1?Q?Tr=F8nnes?= <noralf@tronnes.org>
-Cc: Frank Wunderlich <frank-w@public-files.de>, David Airlie <airlied@linux.ie>, Alexander Ryabchenko <d3adme4t@gmail.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <67e650ca4fcaaddbbc98bf4e1cbe04647c990dc3.1547442452.git.ryder.lee@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Marek Vasut <marek.vasut@gmail.com>, Brian Norris <computersforpeace@gmail.com>, Boris Brezillon <boris.brezillon@bootlin.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Weijie Gao <weijie.gao@mediatek.com>, linux-mtd@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gRnJpLCAyMDE5LTAxLTExIGF0IDE3OjA3ICswMTAwLCBOb3JhbGYgVHLDuG5uZXMgd3JvdGU6
-Cj4gCj4gRGVuIDExLjAxLjIwMTkgMTEuMjUsIHNrcmV2IERhbmllbCBWZXR0ZXI6Cj4gPiBPbiBG
-cmksIEphbiAxMSwgMjAxOSBhdCAwNTo0OToxNVBNICswODAwLCBDSyBIdSB3cm90ZToKPiA+PiBI
-aSwgRGFuaWVsOgo+ID4+Cj4gPj4gT24gRnJpLCAyMDE5LTAxLTExIGF0IDEwOjIwICswMTAwLCBE
-YW5pZWwgVmV0dGVyIHdyb3RlOgo+ID4+PiBPbiBGcmksIEphbiAxMSwgMjAxOSBhdCAxMToyMDow
-OUFNICswODAwLCBDSyBIdSB3cm90ZToKPiA+Pj4+IEhpLCBEYW5pZWw6Cj4gPj4+Pgo+ID4+Pj4g
-T24gVGh1LCAyMDE5LTAxLTEwIGF0IDIxOjAyICswMTAwLCBEYW5pZWwgVmV0dGVyIHdyb3RlOgo+
-ID4+Pj4+IE9uIFRodSwgSmFuIDEwLCAyMDE5IGF0IDA4OjAxOjM3UE0gKzAxMDAsIEZyYW5rIFd1
-bmRlcmxpY2ggd3JvdGU6Cj4gPj4+Pj4+IEhpIERhbmllbCwKPiA+Pj4+Pj4KPiA+Pj4+Pj4+PiBX
-b3VsZCBiZSBnb29kIHRvIHVzZSB0aGUgbmV3IGdlbmVyaWMgZmJkZXYgZW11bGF0aW9uIGNvZGUg
-aGVyZSwgZm9yIGV2ZW4KPiA+Pj4+Pj4+PiBsZXNzIGNvZGUuIE9yIGF0IGxlYXN0IGtub3cgd2h5
-IHRoaXMgaXNuJ3QgcG9zc2libGUgdG8gdXNlIGZvciBtdGsgKGFuZAo+ID4+Pj4+Pj4+IG1heWJl
-IGFkZHJlc3MgdGhhdCBpbiB0aGUgY29yZSBjb2RlKS4gSGFuZC1yb2xsaW5nIGZiZGV2IGNvZGUg
-c2hvdWxkbid0IGJlCj4gPj4+Pj4+Pj4gbmVlZGVkIGFueW1vcmUuCj4gPj4+Pj4+Pgo+ID4+Pj4+
-Pj4gQmFjayBvbiB0aGUgbWFpbGluZyBsaXN0LCBubyBwcml2YXRlIHJlcGxpZXMgcGxlYXNlOgo+
-ID4+Pj4+Pgo+ID4+Pj4+PiBpIGRvbid0IHdhbnRlZCB0byBzcGFtIGFsbCBwZW9wbGUgd2l0aCBk
-dW1iIHF1ZXN0aW9ucyA7KQo+ID4+Pj4+Cj4gPj4+Pj4gVGhlcmUncyBubyBkdW1iIHF1ZXN0aW9u
-cywgb25seSBpbnN1ZmZpY2llbnQgZG9jdW1lbnRhdGlvbiA6LSkKPiA+Pj4+Pgo+ID4+Pj4+Pj4g
-Rm9yIGV4YW1wbGVzIHBsZWFzZSBncmVwIGZvciBkcm1fZmJkZXZfZ2VuZXJpY19zZXR1cCgpLiBU
-aGVyZSdzIGFsc28gYQo+ID4+Pj4+Pj4gc3RpbGwgaW4tZmxpZ2h0IHNlcmllcyBmcm9tIEdlcmQg
-SG9mZm1hbm4gdG8gY29udmVydCBvdmVyIGJvY2hzLiBUaGF0LAo+ID4+Pj4+Pj4gcGx1cyBhbGwg
-dGhlIGtlcm5lbGRvYyBsaW5rZWQgZnJvbSB0aGVyZSBzaG91bGQgZ2V0IHlvdSBzdGFydGVkLgo+
-ID4+Pj4+Pj4gLURhbmllbAo+ID4+Pj4+Pgo+ID4+Pj4+PiB0aGlzIGlzIG9uZSBvZiBnb29nbGUg
-YmVzdCBmb3VuZHMgaWYgaSBzZWFyY2ggZm9yIGRybV9mYmRldl9nZW5lcmljX3NldHVwOgo+ID4+
-Pj4+Pgo+ID4+Pj4+PiBodHRwczovL2xrbWwub3JnL2xrbWwvMjAxOC8xMi8xOS8zMDUKPiA+Pj4+
-Pj4KPiA+Pj4+Pj4gbm90IHZlcnkgaGVscGZ1bC4uLgo+ID4+Pj4+Pgo+ID4+Pj4+PiBzbyBpIHRy
-aWVkIGtlcm5lbC1kb2MKPiA+Pj4+Pj4KPiA+Pj4+Pj4gaHR0cHM6Ly93d3cua2VybmVsLm9yZy9k
-b2MvaHRtbC9sYXRlc3QvZ3B1L2RybS1rbXMtaGVscGVycy5odG1sP2hpZ2hsaWdodD1kcm1fZmJk
-ZXZfZ2VuZXJpY19zZXR1cCNjLmRybV9mYmRldl9nZW5lcmljX3NldHVwCj4gPj4+Pj4+Cj4gPj4+
-Pj4+IHdoaWNoIGlzIG5pY2UgZnVuY3Rpb24tcmVmZXJlbmNlIGJ1dCBpJ3ZlIGZvdW5kIG5vIGdl
-bmVyaWMgd29ya2Zsb3cKPiA+Pj4+Pj4KPiA+Pj4+Pj4gYXMgdGhlIHBvc3RlZCBkcml2ZXIgaXMg
-Im9ubHkiIGEgZHJpdmVyIHBvcnRlZCBmcm9tIGtlcm5lbCA0LjQgYnkgQWxleGFuZGVyLCBpIGRv
-bid0IGtub3cgaWYgdGhpcyBuZXcgZnJhbWV3b3JrIGNhbiBiZSB1c2VkIGFuZCB3aGljaCBwYXJ0
-cyBuZWVkIHRvIGJlIGNoYW5nZWQuIEkgb25seSB0cnkgdG8gYnJpbmcgaGlzIGNvZGUgTWFpbmxp
-bmUuLi4uCj4gPj4+Pj4+IE1heWJlIENLIEh1IGNhbiBoZWxwIGhlcmUgYmVjYXVzZSBkcml2ZXIg
-aXMgb3JpZ2luYWxseSBmcm9tIGhpbSBhbmQgaGUga25vd3MgaW50ZXJuYWxzLiBPciBtYXliZSB5
-b3UgY2FuIGhlbHAgaGVyZT8KPiA+Pj4+Pj4KPiA+Pj4+Pj4gaSBwZXJzb25hbGx5IG1ha2UgbXkg
-Zmlyc3Qgc3RlcHMgYXMgc3BhcmUtdGltZSBrZXJuZWwtZGV2ZWxvcGVyIDopCj4gPj4+Pj4KPiA+
-Pj4+PiBUaGVyZSdzIGEgdG9uIG9mIGluLWtlcm5lbCB1c2VycyBvZiB0aGF0IGZ1bmN0aW9uIGFs
-cmVhZHksIEkgbWVhbnQgeW91IGNhbgo+ID4+Pj4+IHVzZSB0aG9zZSB0byBzZXJ2ZSBhcyBleGFt
-cGxlcyAuLi4gSWYgdGhvc2UgKyB0aGUga2VybmVsZG9jIGFyZW4ndAo+ID4+Pj4+IGdvb2QgZW5v
-dWdoLCB0aGVuIHdlIG5lZWQgdG8gaW1wcm92ZSB0aGVtLgo+ID4+Pj4+IC1EYW5pZWwKPiA+Pj4+
-Cj4gPj4+PiBJJ3ZlIHRyaWVkIHdpdGggZHJtX2ZiZGV2X2dlbmVyaWNfc2V0dXAoKSBhbmQgaXQg
-d29ya3MgZmluZSB3aXRoIHNpbXBsZQo+ID4+Pj4gbW9kaWZpY2F0aW9uLiBUaGUgcGF0Y2ggaXMK
-PiA+Pj4+Cj4gPj4+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYu
-Ywo+ID4+Pj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMKPiA+
-Pj4+IEBAIC0xNiw2ICsxNiw3IEBACj4gPj4+PiAgI2luY2x1ZGUgPGRybS9kcm1fYXRvbWljLmg+
-Cj4gPj4+PiAgI2luY2x1ZGUgPGRybS9kcm1fYXRvbWljX2hlbHBlci5oPgo+ID4+Pj4gICNpbmNs
-dWRlIDxkcm0vZHJtX2NydGNfaGVscGVyLmg+Cj4gPj4+PiArI2luY2x1ZGUgPGRybS9kcm1fZmJf
-aGVscGVyLmg+Cj4gPj4+PiAgI2luY2x1ZGUgPGRybS9kcm1fZ2VtLmg+Cj4gPj4+PiAgI2luY2x1
-ZGUgPGRybS9kcm1fZ2VtX2NtYV9oZWxwZXIuaD4KPiA+Pj4+ICAjaW5jbHVkZSA8ZHJtL2RybV9v
-Zi5oPgo+ID4+Pj4gQEAgLTM3OSw2ICszODAsNyBAQCBzdGF0aWMgdm9pZCBtdGtfZHJtX2ttc19k
-ZWluaXQoc3RydWN0IGRybV9kZXZpY2UKPiA+Pj4+ICpkcm0pCj4gPj4+PiAgICAgICAgIC5nZW1f
-cHJpbWVfZ2V0X3NnX3RhYmxlID0gbXRrX2dlbV9wcmltZV9nZXRfc2dfdGFibGUsCj4gPj4+PiAg
-ICAgICAgIC5nZW1fcHJpbWVfaW1wb3J0X3NnX3RhYmxlID0gbXRrX2dlbV9wcmltZV9pbXBvcnRf
-c2dfdGFibGUsCj4gPj4+PiAgICAgICAgIC5nZW1fcHJpbWVfbW1hcCA9IG10a19kcm1fZ2VtX21t
-YXBfYnVmLAo+ID4+Pj4gKyAgICAgICAuZ2VtX3ByaW1lX3ZtYXAgPSBtdGtfZHJtX2dlbV9wcmlt
-ZV92bWFwLAo+ID4+Pj4gICAgICAgICAuaW9jdGxzID0gbXRrX2lvY3RscywKPiA+Pj4+ICAgICAg
-ICAgLm51bV9pb2N0bHMgPSBBUlJBWV9TSVpFKG10a19pb2N0bHMpLAo+ID4+Pj4gICAgICAgICAu
-Zm9wcyA9ICZtdGtfZHJtX2ZvcHMsCj4gPj4+PiBAQCAtNDE2LDYgKzQxOCw4IEBAIHN0YXRpYyBp
-bnQgbXRrX2RybV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldikKPiA+Pj4+ICAgICAgICAgaWYgKHJl
-dCA8IDApCj4gPj4+PiAgICAgICAgICAgICAgICAgZ290byBlcnJfZGVpbml0Owo+ID4+Pj4KPiA+
-Pj4+ICsgICAgICAgZHJtX2ZiZGV2X2dlbmVyaWNfc2V0dXAoZHJtLCAzMik7Cj4gPj4+PiArCj4g
-Pj4+PiAgICAgICAgIHJldHVybiAwOwo+ID4+Pj4KPiA+Pj4+Cj4gPj4+PiBCdXQgSSBpbXBsZW1l
-bnQgLmdlbV9wcmltZV92bWFwIHdpdGggYSB3b3JrYXJvdW5kLAo+ID4+Pj4KPiA+Pj4+Cj4gPj4+
-PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uYwo+ID4+Pj4gKysr
-IGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZ2VtLmMKPiA+Pj4+IEBAIC0yODAs
-MyArMjgwLDggQEAgaW50IG10a19nZW1fY3JlYXRlX2lvY3RsKHN0cnVjdCBkcm1fZGV2aWNlICpk
-ZXYsCj4gPj4+PiB2b2lkICpkYXRhLAo+ID4+Pj4gICAgICAgICBtdGtfZHJtX2dlbV9mcmVlX29i
-amVjdCgmbXRrX2dlbS0+YmFzZSk7Cj4gPj4+PiAgICAgICAgIHJldHVybiByZXQ7Cj4gPj4+PiAg
-fQo+ID4+Pj4gKwo+ID4+Pj4gK3ZvaWQgKm10a19kcm1fZ2VtX3ByaW1lX3ZtYXAoc3RydWN0IGRy
-bV9nZW1fb2JqZWN0ICpvYmopCj4gPj4+PiArewo+ID4+Pj4gKyAgICAgICByZXR1cm4gKHZvaWQg
-KikxOwo+ID4+Pj4gK30KPiA+Pj4+Cj4gPj4+PiBDdXJyZW50IGRybV9mYl9oZWxwZXIgZGVwZW5k
-cyBvbiBkcm1fY2xpZW50IHRvIGNyZWF0ZSBmYmRldi4gV2hlbgo+ID4+Pj4gZHJtX2NsaWVudCBj
-cmVhdGUgZHJtX2NsaWVudF9idWZmZXIsIGl0IG5lZWQgdG8gdm1hcCB0byBnZXQga2VybmVsCj4g
-Pj4+PiB2YWRkci4gQnV0IEkgdGhpbmsgZm9yIGZiZGV2LCB0aGUgdmFkZHIgaXMgdXNlbGVzcy4g
-RG8geW91IGFncmVlIHRoYXQgSQo+ID4+Pj4gdGVtcG9yYXJpbHkgaW1wbGVtZW50IC5nZW1fcHJp
-bWVfdm1hcCBpbiBzdWNoIHdheT8KPiA+Pj4KPiA+Pj4gVGhlIHZtYXAgaXMgdXNlZCBieSBmYmNv
-biwgd2l0aG91dCB0aGF0IGZiZGV2IHdvbid0IHJlYWxseSB3b3JrIEkgdGhpbmsuCj4gPj4+IFNv
-IEknbSByYXRoZXIgY29uZnVzZWQgb24gd2hhdCB5b3UgdGVzdGVkIC4uLgo+ID4+Pgo+ID4+PiBB
-ZGRpbmcgTm9yYWxmLCBoZSdzIHRoZSBleHBlcnQgaGVyZS4KPiA+Pj4gLURhbmllbAo+ID4+Cj4g
-Pj4gSSB0ZXN0IHdpdGggZmJfdGVzdCBbMV0sIGl0IGlzIGEgdXNlciBzcGFjZSBwcm9ncmFtIGp1
-c3Qgb3BlbiAvZGV2L2ZiMAo+ID4+IGFuZCBtbWFwIGl0IHRvIHVzZXIgc3BhY2UuIEkgZG9lcyBu
-b3QgdHVybiBvbiBmYmNvbiBzbyBldmVyeXRoaW5nIGxvb2tzCj4gPj4gd2VsbC4gSWYgc3VwcG9y
-dCBmYmNvbiBpcyBlc3NlbnRpYWwsIEkgd291bGQgaW1wbGVtZW50IHZtYXAgY29ycmVjdGx5Lgo+
-ID4+IElmIGl0J3Mgbm90IGVzc2VudGlhbCwgSSB0aGluayBJIGNvdWxkIHJldHVybiAwIHdoZW4K
-PiA+PiBDT05GSUdfRlJBTUJVRkZFUl9DT05TT0xFIGlzIGRlZmluZWQuCj4gPiAKPiA+IEkgdGhp
-bmsgZmJkZXYgZW11bGF0aW9uIHdpdGhvdXQgd29ya2luZyBmYmNvbiBpcyBmYWlybHkgdXNlbGVz
-cy4gQW5kIGl0Cj4gPiBzaG91bGRuJ3QgYmUgdGhhdCBtdWNoIHdvcmsgdG8gbWFrZSBpdCB3b3Jr
-LCB3ZSBoYXZlIHF1aXRlIGEgZmV3IG1vcmUKPiA+IGhlbGVycyBmb3IgZ2VtIGJvIG5vd2FkYXlz
-Lgo+IAo+IElmIHRoZSB2aXJ0dWFsIGFkZHJlc3MgaXMgbm90IHNldCwgZmJjb24gY2FuJ3QgYmUg
-dXNlZCBhbmQgdGhhdCBtZWFucyBpdAo+IGhhcyB0byBiZSBkaXNhYmxlZCB1c2luZyBzb21ldGhp
-bmcgbGlrZSB0aGlzIGluIHRoZSBkcml2ZXIgS2NvbmZpZzoKPiAJZGVwZW5kcyBvbiAhRlJBTUVC
-VUZGRVJfQ09OU09MRQo+IAo+IE90aGVyd2lzZSBpdCB3aWxsIGNyYXNoIGlmIHNvbWVvbmUgdHJp
-ZXMgdG8gdXNlIGl0Lgo+IAo+IFRoZSBwcm9ibGVtIGhlcmUgaXMgdGhhdCB0aGlzIGRyaXZlciBk
-b2Vzbid0IG1hcCBhIHZpcnR1YWwgYWRkcmVzcyBmb3IKPiBpdHMgYnVmZmVyczoKPiAJbXRrX2dl
-bS0+ZG1hX2F0dHJzIHw9IERNQV9BVFRSX05PX0tFUk5FTF9NQVBQSU5HOwo+IAo+IFByb2JhYmx5
-IGJlY2F1c2Ugb2YgbGltaXRlZCB2aXJ0dWFsIGFkZHJlc3Mgc3BhY2UuCj4gcm9ja2NoaXAgaXMg
-aW4gdGhlIHNhbWUgc2l0dWF0aW9uLgo+IAo+IEknbSBhd2FyZSBvZiB0aGlzIHNob3J0Y29taW5n
-IG9mIHRoZSBnZW5lcmljIGVtdWxhdGlvbiwgYnV0IEkgZG9uJ3Qgc2VlCj4gaG93IGl0IGNhbiBi
-ZSBzb2x2ZWQgd2l0aG91dCB1c2luZyBzb21la2luZCBvZiBmbGFnIGF0dGFjaGVkIHRvIHRoZSBk
-dW1iCj4gYnVmZmVyIGNyZWF0aW9uIHJlcXVlc3QuCgpUaGUgdmlydHVhbCBhZGRyZXNzIHNwYWNl
-IGlzIGxpbWl0ZWQgc28gd2UgZG8gbm90IG1hcCBpdCBieSBkZWZhdWx0LiBJCmFsc28gc2VlIHRo
-ZSBzaG9ydGNvbWluZyBvZiB0aGUgZ2VuZXJpYyBlbXVsYXRpb24sIHNvIEkgd291bGQgcmVmZXIg
-dG8Kcm9ja2NoaXAgdG8gaW1wbGVtZW50IHRoaXMgbWFwcGluZy4KClJlZ2FyZHMsCkNLCgo+IAo+
-IE5vcmFsZi4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
-aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+The quadspi is a generic communication interface which could be shared
+with other MediaTek SoCs. Hence rename it to a common one.
+
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+Changes since v1: rebase to v5.0-rc1. 
+---
+ drivers/mtd/spi-nor/Kconfig  | 16 ++++++++--------
+ drivers/mtd/spi-nor/Makefile |  2 +-
+ 2 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/mtd/spi-nor/Kconfig b/drivers/mtd/spi-nor/Kconfig
+index b433e5f..99d9d53 100644
+--- a/drivers/mtd/spi-nor/Kconfig
++++ b/drivers/mtd/spi-nor/Kconfig
+@@ -7,14 +7,6 @@ menuconfig MTD_SPI_NOR
+ 
+ if MTD_SPI_NOR
+ 
+-config MTD_MT81xx_NOR
+-	tristate "Mediatek MT81xx SPI NOR flash controller"
+-	depends on HAS_IOMEM
+-	help
+-	  This enables access to SPI NOR flash, using MT81xx SPI NOR flash
+-	  controller. This controller does not support generic SPI BUS, it only
+-	  supports SPI NOR Flash.
+-
+ config MTD_SPI_NOR_USE_4K_SECTORS
+ 	bool "Use small 4096 B erase sectors"
+ 	default y
+@@ -68,6 +60,14 @@ config SPI_NXP_SPIFI
+ 	  Flash. Enable this option if you have a device with a SPIFI
+ 	  controller and want to access the Flash as a mtd device.
+ 
++config SPI_MTK_QUADSPI
++	tristate "MediaTek Quad SPI controller"
++	depends on HAS_IOMEM
++	help
++	  This enables support for the Quad SPI controller in master mode.
++	  This controller does not support generic SPI. It only supports
++	  SPI NOR.
++
+ config SPI_INTEL_SPI
+ 	tristate
+ 
+diff --git a/drivers/mtd/spi-nor/Makefile b/drivers/mtd/spi-nor/Makefile
+index 2adedbe..189a15c 100644
+--- a/drivers/mtd/spi-nor/Makefile
++++ b/drivers/mtd/spi-nor/Makefile
+@@ -3,7 +3,7 @@ obj-$(CONFIG_MTD_SPI_NOR)	+= spi-nor.o
+ obj-$(CONFIG_SPI_ASPEED_SMC)	+= aspeed-smc.o
+ obj-$(CONFIG_SPI_CADENCE_QUADSPI)	+= cadence-quadspi.o
+ obj-$(CONFIG_SPI_HISI_SFC)	+= hisi-sfc.o
+-obj-$(CONFIG_MTD_MT81xx_NOR)    += mtk-quadspi.o
++obj-$(CONFIG_SPI_MTK_QUADSPI)    += mtk-quadspi.o
+ obj-$(CONFIG_SPI_NXP_SPIFI)	+= nxp-spifi.o
+ obj-$(CONFIG_SPI_INTEL_SPI)	+= intel-spi.o
+ obj-$(CONFIG_SPI_INTEL_SPI_PCI)	+= intel-spi-pci.o
+-- 
+1.9.1
