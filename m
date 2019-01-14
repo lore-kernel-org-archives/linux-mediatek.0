@@ -1,51 +1,84 @@
 From: Amit Kucheria <amit.kucheria@linaro.org>
-Subject: [PATCH v1 00/10] cpufreq: Add flag to auto-register as cooling device
-Date: Mon, 14 Jan 2019 22:04:52 +0530
-Message-ID: <cover.1547481320.git.amit.kucheria@linaro.org>
+Subject: [PATCH v1 07/10] cpufreq: mediatek: Use auto-registration of thermal cooling device
+Date: Mon, 14 Jan 2019 22:04:59 +0530
+Message-ID: <a9e1ac5a60b5c99be1f90df822c5b02c4ab7fa13.1547481320.git.amit.kucheria@linaro.org>
+References: <cover.1547481320.git.amit.kucheria@linaro.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cover.1547481320.git.amit.kucheria@linaro.org>
+In-Reply-To: <cover.1547481320.git.amit.kucheria@linaro.org>
+References: <cover.1547481320.git.amit.kucheria@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-kernel@vger.kernel.org
-Cc: linux-arm-msm@vger.kernel.org, viresh.kumar@linaro.org, edubezval@gmail.com, swboyd@chromium.org, dianders@chromium.org, mka@chromium.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Matthias Brugger <matthias.bgg@gmail.com>, Sudeep Holla <sudeep.holla@arm.com>, "moderated list:ARM/Mediatek SoC
-        support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
-        support" <linux-mediatek@lists.infradead.org>, "open list:CPU FREQUENCY DRIVERS" <linux-pm@vger.kernel.org>
+Cc: linux-arm-msm@vger.kernel.org, viresh.kumar@linaro.org, edubezval@gmail.com, swboyd@chromium.org, dianders@chromium.org, mka@chromium.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add a flag to be used by cpufreq drivers to tell cpufreq core to
-auto-register themselves as a thermal cooling device.
+Use the CPUFREQ_AUTO_REGISTER_COOLING_DEV flag to allow cpufreq core to
+automatically register as a thermal cooling device.
 
-There series converts over all the drivers except arm_big_little.c.
-Tested on SDM845 with the qcom-cpufreq-hw driver. Only compile-tested the
-others. 
+This allows removal of boiler plate code from the driver.
 
-Things needing fixing:
- - Look at how to detect that we're not in IKS mode in arm_big_little's
-   .ready callback.
- - The other pending issue is to fix allmodconfig that leaves us with
-   CPU_FREQ=y and THERMAL=m (CPU_THERMAL=y). That leads to undefined
-   references for functions defined in cpu_cooling.c
+Signed-off-by: Amit Kucheria <amit.kucheria@linaro.org>
+---
+ drivers/cpufreq/mediatek-cpufreq.c | 14 ++------------
+ 1 file changed, 2 insertions(+), 12 deletions(-)
 
-Amit Kucheria (10):
-  cpufreq: Add thermal_cooling_device pointer to struct cpufreq_policy
-  cpufreq: Add a flag to auto-register a cooling device
-  cpufreq: Replace open-coded << with BIT()
-  cpufreq: qcom-hw: Register as a cpufreq cooling device
-  cpufreq: imx6q: Use auto-registration of thermal cooling device
-  cpufreq: cpufreq-dt: Use auto-registration of thermal cooling device
-  cpufreq: mediatek: Use auto-registration of thermal cooling device
-  cpufreq: qoriq: Use auto-registration of thermal cooling device
-  cpufreq: scmi: Use auto-registration of thermal cooling device
-  cpufreq: scpi: Use auto-registration of thermal cooling device
-
- drivers/cpufreq/cpufreq-dt.c       | 14 ++----------
- drivers/cpufreq/cpufreq.c          | 17 ++++++++++++++
- drivers/cpufreq/imx6q-cpufreq.c    | 18 ++-------------
- drivers/cpufreq/mediatek-cpufreq.c | 14 ++----------
- drivers/cpufreq/qcom-cpufreq-hw.c  |  3 ++-
- drivers/cpufreq/qoriq-cpufreq.c    | 15 ++-----------
- drivers/cpufreq/scmi-cpufreq.c     | 14 ++----------
- drivers/cpufreq/scpi-cpufreq.c     | 14 ++----------
- include/linux/cpufreq.h            | 36 ++++++++++++++++++++----------
- 9 files changed, 55 insertions(+), 90 deletions(-)
-
+diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+index eb8920d39818..9a937f4c63e7 100644
+--- a/drivers/cpufreq/mediatek-cpufreq.c
++++ b/drivers/cpufreq/mediatek-cpufreq.c
+@@ -14,7 +14,6 @@
+ 
+ #include <linux/clk.h>
+ #include <linux/cpu.h>
+-#include <linux/cpu_cooling.h>
+ #include <linux/cpufreq.h>
+ #include <linux/cpumask.h>
+ #include <linux/module.h>
+@@ -48,7 +47,6 @@ struct mtk_cpu_dvfs_info {
+ 	struct regulator *sram_reg;
+ 	struct clk *cpu_clk;
+ 	struct clk *inter_clk;
+-	struct thermal_cooling_device *cdev;
+ 	struct list_head list_head;
+ 	int intermediate_voltage;
+ 	bool need_voltage_tracking;
+@@ -307,13 +305,6 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
+ 
+ #define DYNAMIC_POWER "dynamic-power-coefficient"
+ 
+-static void mtk_cpufreq_ready(struct cpufreq_policy *policy)
+-{
+-	struct mtk_cpu_dvfs_info *info = policy->driver_data;
+-
+-	info->cdev = of_cpufreq_cooling_register(policy);
+-}
+-
+ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+ {
+ 	struct device *cpu_dev;
+@@ -472,7 +463,6 @@ static int mtk_cpufreq_exit(struct cpufreq_policy *policy)
+ {
+ 	struct mtk_cpu_dvfs_info *info = policy->driver_data;
+ 
+-	cpufreq_cooling_unregister(info->cdev);
+ 	dev_pm_opp_free_cpufreq_table(info->cpu_dev, &policy->freq_table);
+ 
+ 	return 0;
+@@ -480,13 +470,13 @@ static int mtk_cpufreq_exit(struct cpufreq_policy *policy)
+ 
+ static struct cpufreq_driver mtk_cpufreq_driver = {
+ 	.flags = CPUFREQ_STICKY | CPUFREQ_NEED_INITIAL_FREQ_CHECK |
+-		 CPUFREQ_HAVE_GOVERNOR_PER_POLICY,
++		 CPUFREQ_HAVE_GOVERNOR_PER_POLICY |
++		 CPUFREQ_AUTO_REGISTER_COOLING_DEV,
+ 	.verify = cpufreq_generic_frequency_table_verify,
+ 	.target_index = mtk_cpufreq_set_target,
+ 	.get = cpufreq_generic_get,
+ 	.init = mtk_cpufreq_init,
+ 	.exit = mtk_cpufreq_exit,
+-	.ready = mtk_cpufreq_ready,
+ 	.name = "mtk-cpufreq",
+ 	.attr = cpufreq_generic_attr,
+ };
 -- 
 2.17.1
