@@ -1,50 +1,53 @@
-From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=
-        <u.kleine-koenig@pengutronix.de>
-Subject: Re: [PATCH 3/5] arm64: dts: mt7622: add a property
- "mediatek,num-pwms" for PWM
-Date: Tue, 15 Jan 2019 21:02:31 +0100
-Message-ID: <20190115200231.drn2rbxu4jxr22yz@pengutronix.de>
-References: <0c400cb1899c1afb4c9f021350cdc0c6ca3f6239.1547453586.git.ryder.lee@mediatek.com>
- <b5ed4626a553acb5e3107c6c96e82b674439128f.1547453586.git.ryder.lee@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [RFC v2 1/6] dt-bindings: Add a binding for Mediatek SCP
+Date: Tue, 15 Jan 2019 14:34:48 -0600
+Message-ID: <20190115203448.GA32546@bogus>
+References: <20190108052606.59426-1-pihsun@chromium.org>
+ <20190108052606.59426-2-pihsun@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <b5ed4626a553acb5e3107c6c96e82b674439128f.1547453586.git.ryder.lee@mediatek.com>
+In-Reply-To: <20190108052606.59426-2-pihsun@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Thierry Reding <thierry.reding@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>, Weijie Gao <weijie.gao@mediatek.com>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Pi-Hsun Shih <pihsun@chromium.org>
+Cc: Nicolas Boichat <drinkcat@chromium.org>, Erin Lo <erin.lo@mediatek.com>, Ohad Ben-Cohen <ohad@wizery.com>, Bjorn Andersson <bjorn.andersson@linaro.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:REMOTE PROCESSOR (REMOTEPROC) SUBSYSTEM" <linux-remoteproc@vger.kernel.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello,
-
-On Mon, Jan 14, 2019 at 04:21:22PM +0800, Ryder Lee wrote:
-> This adds a property "mediatek,num-pwms" for PWM controller.
+On Tue, Jan 08, 2019 at 01:26:01PM +0800, Pi-Hsun Shih wrote:
+> From: Erin Lo <erin.lo@mediatek.com>
 > 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> Add a DT binding documentation of SCP for the
+> MT8183 SoC from Mediatek.
+> 
+> Signed-off-by: Erin Lo <erin.lo@mediatek.com>
 > ---
->  arch/arm64/boot/dts/mediatek/mt7622.dtsi | 1 +
->  1 file changed, 1 insertion(+)
+> Changes from v1:
+>  - no change
+
+No answer to my question on v1?
+
+> ---
+>  .../devicetree/bindings/remoteproc/mtk,scp.txt         | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> index 8fc4aa7..ab016cf 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> @@ -436,6 +436,7 @@
->  			 <&pericfg CLK_PERI_PWM6_PD>;
->  		clock-names = "top", "main", "pwm1", "pwm2", "pwm3", "pwm4",
->  			      "pwm5", "pwm6";
-> +		mediatek,num-pwms = <6>;
->  		status = "disabled";
-
-Conceptually this patch must go in before the change to the driver.
-Otherwise the pwms are not usable with only patch 1 applied which breaks
-bisectability.
-
-Best regards
-Uwe
-
--- 
-Pengutronix e.K.                           | Uwe Kleine-König            |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+> diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt b/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
+> new file mode 100644
+> index 00000000000000..b07e5c4ca9af1d
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
+> @@ -0,0 +1,10 @@
+> +Mediatek SCP Bindings
+> +----------------------------------------
+> +
+> +This binding provides support for ARM Cortex M4 Co-processor found on some
+> +Mediatek SoCs.
+> +
+> +Required properties:
+> +- compatible		Should be "mediatek,mt8183-scp"
+> +- clocks		Clock for co-processor (See: ../clock/clock-bindings.txt)
+> +
+> -- 
+> 2.20.1.97.g81188d93c3-goog
+> 
