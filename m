@@ -1,45 +1,76 @@
-From: =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH] watchdog: mt7621: Fix compiler error, missing include
-Date: Mon, 14 Jan 2019 22:17:19 +0100
-Message-ID: <20190114211719.11461-1-opensource@vdorst.com>
+From: <min.guo@mediatek.com>
+Subject: [PATCH v2 1/4] dt-bindings: usb: musb: Add support for MediaTek musb controller
+Date: Tue, 15 Jan 2019 09:43:43 +0800
+Message-ID: <1547516626-5084-2-git-send-email-min.guo@mediatek.com>
+References: <1547516626-5084-1-git-send-email-min.guo@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-watchdog-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1547516626-5084-1-git-send-email-min.guo@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Bin Liu <b-liu@ti.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, chunfeng.yun@mediatek.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Min Guo <min.guo@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-ZHJpdmVycy93YXRjaGRvZy9tdDc2MjFfd2R0LmM6MTc0OjM0OiBlcnJvcjogYXJyYXkgdHlwZSBo
-YXMgaW5jb21wbGV0ZSBlbGVtZW50IHR5cGUgJ3N0cnVjdCBvZl9kZXZpY2VfaWQnCiBzdGF0aWMg
-Y29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBtdDc2MjFfd2R0X21hdGNoW10gPSB7CiAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICBefn5+fn5+fn5+fn5+fn5+CmRyaXZlcnMvd2F0Y2hk
-b2cvbXQ3NjIxX3dkdC5jOjE3NTo0OiBlcnJvcjogZmllbGQgbmFtZSBub3QgaW4gcmVjb3JkIG9y
-IHVuaW9uIGluaXRpYWxpemVyCiAgeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDc2MjEtd2R0
-IiB9LAogICAgXgpkcml2ZXJzL3dhdGNoZG9nL210NzYyMV93ZHQuYzoxNzU6NDogbm90ZTogKG5l
-YXIgaW5pdGlhbGl6YXRpb24gZm9yICdtdDc2MjFfd2R0X21hdGNoJykKZHJpdmVycy93YXRjaGRv
-Zy9tdDc2MjFfd2R0LmM6MTc0OjM0OiB3YXJuaW5nOiAnbXQ3NjIxX3dkdF9tYXRjaCcgZGVmaW5l
-ZCBidXQgbm90IHVzZWQgWy1XdW51c2VkLXZhcmlhYmxlXQogc3RhdGljIGNvbnN0IHN0cnVjdCBv
-Zl9kZXZpY2VfaWQgbXQ3NjIxX3dkdF9tYXRjaFtdID0gewogICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgXn5+fn5+fn5+fn5+fn5+fgoKU2lnbmVkLW9mZi1ieTogUmVuw6kgdmFuIERv
-cnN0IDxvcGVuc291cmNlQHZkb3JzdC5jb20+Ci0tLQogZHJpdmVycy93YXRjaGRvZy9tdDc2MjFf
-d2R0LmMgfCAxICsKIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKQoKZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvd2F0Y2hkb2cvbXQ3NjIxX3dkdC5jIGIvZHJpdmVycy93YXRjaGRvZy9tdDc2MjFf
-d2R0LmMKaW5kZXggNWM0YTc2NDcxN2M0Li5hM2JlN2RiOWQ3NmYgMTAwNjQ0Ci0tLSBhL2RyaXZl
-cnMvd2F0Y2hkb2cvbXQ3NjIxX3dkdC5jCisrKyBiL2RyaXZlcnMvd2F0Y2hkb2cvbXQ3NjIxX3dk
-dC5jCkBAIC0xNiw2ICsxNiw3IEBACiAjaW5jbHVkZSA8bGludXgva2VybmVsLmg+CiAjaW5jbHVk
-ZSA8bGludXgvd2F0Y2hkb2cuaD4KICNpbmNsdWRlIDxsaW51eC9tb2R1bGVwYXJhbS5oPgorI2lu
-Y2x1ZGUgPGxpbnV4L29mLmg+CiAjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+CiAK
-ICNpbmNsdWRlIDxhc20vbWFjaC1yYWxpbmsvcmFsaW5rX3JlZ3MuaD4KLS0gCjIuMTkuMQoKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlh
-dGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+From: Min Guo <min.guo@mediatek.com>
+
+This adds support for MediaTek musb controller in
+host, peripheral and otg mode.
+
+Signed-off-by: Min Guo <min.guo@mediatek.com>
+---
+ .../devicetree/bindings/usb/mediatek,musb.txt      | 43 ++++++++++++++++++++++
+ 1 file changed, 43 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/usb/mediatek,musb.txt
+
+diff --git a/Documentation/devicetree/bindings/usb/mediatek,musb.txt b/Documentation/devicetree/bindings/usb/mediatek,musb.txt
+new file mode 100644
+index 0000000..3e3f671
+--- /dev/null
++++ b/Documentation/devicetree/bindings/usb/mediatek,musb.txt
+@@ -0,0 +1,43 @@
++MediaTek musb DRD/OTG controller
++-------------------------------------------
++
++Required properties:
++ - compatible      : should be "mediatek,mtk-musb"
++ - reg             : specifies physical base address and size of
++   the registers
++ - interrupts      : interrupt used by musb controller
++ - interrupt-names : must be "mc"
++ - phys            : PHY specifier for the OTG phy
++ - dr_mode         : should be one of "host", "peripheral" or "otg",
++   refer to usb/generic.txt
++ - clocks          : a list of phandle + clock-specifier pairs, one for
++   each entry in clock-names
++ - clock-names     : must contain "main", "mcu", "univpll"
++   for clocks of controller
++
++Optional properties:
++ - extcon : external connector for VBUS and IDPIN changes detection,
++   needed when supports dual-role mode.
++ - vbus-supply : reference to the VBUS regulator, needed when supports
++   dual-role mode.
++ - power-domains   : a phandle to USB power domain node to control USB's
++   MTCMOS
++
++Example:
++
++usb2: usb@11200000 {
++	compatible = "mediatek,mt2701-musb",
++		     "mediatek,mtk-musb";
++	reg = <0 0x11200000 0 0x1000>;
++	interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_LOW>;
++	interrupt-names = "mc";
++	phys = <&u2port2 PHY_TYPE_USB2>;
++	vbus-supply = <&usb_vbus>;
++	extcon = <&extcon_usb>;
++	dr_mode = "otg";
++	clocks = <&pericfg CLK_PERI_USB0>,
++		 <&pericfg CLK_PERI_USB0_MCU>,
++		 <&pericfg CLK_PERI_USB_SLV>;
++	clock-names = "main","mcu","univpll";
++	power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
++};
+-- 
+1.9.1
