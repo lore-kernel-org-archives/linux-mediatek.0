@@ -1,104 +1,57 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 3/4] usb: musb: Extract set toggle as a separate
- interface
-Date: Tue, 15 Jan 2019 16:19:42 +0100
-Message-ID: <a4e71c59-8e25-b3e9-797f-46d918121dd4@gmail.com>
-References: <1547516626-5084-1-git-send-email-min.guo@mediatek.com>
- <1547516626-5084-4-git-send-email-min.guo@mediatek.com>
+From: =?utf-8?b?UmVuw6k=?= van Dorst <opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH] watchdog: mt7621: Fix compiler error, missing include
+Date: Tue, 15 Jan 2019 15:29:13 +0000
+Message-ID: <20190115152913.Horde.lq_7NPUmj51AEcDDGP2xSEw@www.vdorst.com>
+References: <20190114211719.11461-1-opensource@vdorst.com>
+ <a8b870f2-a50d-144e-cdca-b8a95d48846b@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1547516626-5084-4-git-send-email-min.guo@mediatek.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: min.guo@mediatek.com, Bin Liu <b-liu@ti.com>, Rob Herring <robh+dt@kernel.org>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Alan Stern <stern@rowland.harvard.edu>, chunfeng.yun@mediatek.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"; DelSp="Yes"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <a8b870f2-a50d-144e-cdca-b8a95d48846b-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Disposition: inline
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-watchdog-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 15/01/2019 02:43, min.guo@mediatek.com wrote:
-> From: Min Guo <min.guo@mediatek.com>
-> 
-> Add a common interface for set data toggle
-> 
-> Signed-off-by: Min Guo <min.guo@mediatek.com>
-> ---
->  drivers/usb/musb/musb_host.c | 37 +++++++++++++++++++++++--------------
->  1 file changed, 23 insertions(+), 14 deletions(-)
-> 
-> diff --git a/drivers/usb/musb/musb_host.c b/drivers/usb/musb/musb_host.c
-> index b59ce9a..16d0ba4 100644
-> --- a/drivers/usb/musb/musb_host.c
-> +++ b/drivers/usb/musb/musb_host.c
-> @@ -306,6 +306,25 @@ static inline void musb_save_toggle(struct musb_qh *qh, int is_in,
->  	usb_settoggle(urb->dev, qh->epnum, !is_in, csr ? 1 : 0);
->  }
->  
-> +static inline u16 musb_set_toggle(struct musb_qh *qh, int is_in,
-> +	struct urb *urb)
-> +{
-> +	u16 csr = 0;
-> +	u16 toggle = 0;
-> +
-> +	toggle = usb_gettoggle(urb->dev, qh->epnum, !is_in);
-> +
-> +	if (is_in)
-> +		csr = toggle ? (MUSB_RXCSR_H_WR_DATATOGGLE
-> +				| MUSB_RXCSR_H_DATATOGGLE) : 0;
-> +	else
-> +		csr = toggle ? (MUSB_TXCSR_H_WR_DATATOGGLE
-> +				| MUSB_TXCSR_H_DATATOGGLE)
-> +				: MUSB_TXCSR_CLRDATATOG;
-
-Can we switch the if and use is_out logic as function parameter. This would make
-the code easier to understand.
-
-Regards,
-Matthias
-
-> +
-> +	return csr;
-> +}
-> +
->  /*
->   * Advance this hardware endpoint's queue, completing the specified URB and
->   * advancing to either the next URB queued to that qh, or else invalidating
-> @@ -772,13 +791,8 @@ static void musb_ep_program(struct musb *musb, u8 epnum,
->  					);
->  			csr |= MUSB_TXCSR_MODE;
->  
-> -			if (!hw_ep->tx_double_buffered) {
-> -				if (usb_gettoggle(urb->dev, qh->epnum, 1))
-> -					csr |= MUSB_TXCSR_H_WR_DATATOGGLE
-> -						| MUSB_TXCSR_H_DATATOGGLE;
-> -				else
-> -					csr |= MUSB_TXCSR_CLRDATATOG;
-> -			}
-> +			if (!hw_ep->tx_double_buffered)
-> +				csr |= musb_set_toggle(qh, !is_out, urb);
->  
->  			musb_writew(epio, MUSB_TXCSR, csr);
->  			/* REVISIT may need to clear FLUSHFIFO ... */
-> @@ -860,17 +874,12 @@ static void musb_ep_program(struct musb *musb, u8 epnum,
->  
->  	/* IN/receive */
->  	} else {
-> -		u16	csr;
-> +		u16 csr = 0;
->  
->  		if (hw_ep->rx_reinit) {
->  			musb_rx_reinit(musb, qh, epnum);
-> +			csr |= musb_set_toggle(qh, !is_out, urb);
->  
-> -			/* init new state: toggle and NYET, maybe DMA later */
-> -			if (usb_gettoggle(urb->dev, qh->epnum, 0))
-> -				csr = MUSB_RXCSR_H_WR_DATATOGGLE
-> -					| MUSB_RXCSR_H_DATATOGGLE;
-> -			else
-> -				csr = 0;
->  			if (qh->type == USB_ENDPOINT_XFER_INT)
->  				csr |= MUSB_RXCSR_DISNYET;
->  
-> 
+UXVvdGluZyBNYXR0aGlhcyBCcnVnZ2VyIDxtYXR0aGlhcy5iZ2dAZ21haWwuY29tPjoKCj4gT24g
+MTQvMDEvMjAxOSAyMjoxNywgUmVuw6kgdmFuIERvcnN0IHdyb3RlOgo+PiBkcml2ZXJzL3dhdGNo
+ZG9nL210NzYyMV93ZHQuYzoxNzQ6MzQ6IGVycm9yOiBhcnJheSB0eXBlIGhhcyAgCj4+IGluY29t
+cGxldGUgZWxlbWVudCB0eXBlICdzdHJ1Y3Qgb2ZfZGV2aWNlX2lkJwo+PiAgc3RhdGljIGNvbnN0
+IHN0cnVjdCBvZl9kZXZpY2VfaWQgbXQ3NjIxX3dkdF9tYXRjaFtdID0gewo+PiAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgXn5+fn5+fn5+fn5+fn5+fgo+PiBkcml2ZXJzL3dhdGNo
+ZG9nL210NzYyMV93ZHQuYzoxNzU6NDogZXJyb3I6IGZpZWxkIG5hbWUgbm90IGluICAKPj4gcmVj
+b3JkIG9yIHVuaW9uIGluaXRpYWxpemVyCj4+ICAgeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxt
+dDc2MjEtd2R0IiB9LAo+PiAgICAgXgo+PiBkcml2ZXJzL3dhdGNoZG9nL210NzYyMV93ZHQuYzox
+NzU6NDogbm90ZTogKG5lYXIgaW5pdGlhbGl6YXRpb24gZm9yICAKPj4gJ210NzYyMV93ZHRfbWF0
+Y2gnKQo+PiBkcml2ZXJzL3dhdGNoZG9nL210NzYyMV93ZHQuYzoxNzQ6MzQ6IHdhcm5pbmc6ICdt
+dDc2MjFfd2R0X21hdGNoJyAgCj4+IGRlZmluZWQgYnV0IG5vdCB1c2VkIFstV3VudXNlZC12YXJp
+YWJsZV0KPj4gIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIG10NzYyMV93ZHRfbWF0
+Y2hbXSA9IHsKPj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF5+fn5+fn5+fn5+
+fn5+fn4KPj4KPgo+IERpZCB0aGlzIHdvcmsgaW4gdGhlIHBhc3Q/Cj4gSSBzdXBwb3NlIHNvLiBD
+b3VsZCB5b3UgcHJvdmlkZSBhIGZpeGVzIHRhZyBmb3Igc3RhYmxlLgoKSSBzZWUgdGhhdCBJIGFt
+IG5vdCB0aGUgZmlyc3Qgd2hvIHNwb3R0ZWQgdGhpcy4gIApodHRwczovL3BhdGNod29yay5rZXJu
+ZWwub3JnL3BhdGNoLzEwNzQ1MDQ5LwoKU28gYmV0dGVyIGRyb3AgdGhpcyBvbmUuCgpHcmVhdHMs
+CgpSZW7DqQoKCj4gVGhhbmtzLAo+IE1hdHRoaWFzCj4KPj4gU2lnbmVkLW9mZi1ieTogUmVuw6kg
+dmFuIERvcnN0IDxvcGVuc291cmNlQHZkb3JzdC5jb20+Cj4+IC0tLQo+PiAgZHJpdmVycy93YXRj
+aGRvZy9tdDc2MjFfd2R0LmMgfCAxICsKPj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigr
+KQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy93YXRjaGRvZy9tdDc2MjFfd2R0LmMgYi9kcml2
+ZXJzL3dhdGNoZG9nL210NzYyMV93ZHQuYwo+PiBpbmRleCA1YzRhNzY0NzE3YzQuLmEzYmU3ZGI5
+ZDc2ZiAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy93YXRjaGRvZy9tdDc2MjFfd2R0LmMKPj4gKysr
+IGIvZHJpdmVycy93YXRjaGRvZy9tdDc2MjFfd2R0LmMKPj4gQEAgLTE2LDYgKzE2LDcgQEAKPj4g
+ICNpbmNsdWRlIDxsaW51eC9rZXJuZWwuaD4KPj4gICNpbmNsdWRlIDxsaW51eC93YXRjaGRvZy5o
+Pgo+PiAgI2luY2x1ZGUgPGxpbnV4L21vZHVsZXBhcmFtLmg+Cj4+ICsjaW5jbHVkZSA8bGludXgv
+b2YuaD4KPj4gICNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPj4KPj4gICNpbmNs
+dWRlIDxhc20vbWFjaC1yYWxpbmsvcmFsaW5rX3JlZ3MuaD4KPj4KCgoKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcg
+bGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
+YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
