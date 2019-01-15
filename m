@@ -1,79 +1,46 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: [SPAM][PATCH v2 0/4] Add MediaTek MUSB Controller Driver
-Date: Tue, 15 Jan 2019 13:18:44 +0800
-Message-ID: <1547529524.13961.2.camel@mtkswgap22>
-References: <1547516626-5084-1-git-send-email-min.guo@mediatek.com>
+From: <Tudor.Ambarus@microchip.com>
+Subject: Re: [PATCH v1 2/3] mtd: spi-nor: mtk-quadspi: add SNOR_HWCAPS_READ
+ for capcity setting
+Date: Tue, 15 Jan 2019 06:59:11 +0000
+Message-ID: <8afdb25c-894b-0a89-b7a8-b754fb4ba905@microchip.com>
+References: <67e650ca4fcaaddbbc98bf4e1cbe04647c990dc3.1547442452.git.ryder.lee@mediatek.com>
+ <54bb8a9d517e2ee35018d78457c6aa6a4970e644.1547442452.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1547516626-5084-1-git-send-email-min.guo@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: min.guo@mediatek.com
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, chunfeng.yun@mediatek.com, Rob Herring <robh+dt@kernel.org>, Alan Stern <stern@rowland.harvard.edu>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Bin Liu <b-liu@ti.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <54bb8a9d517e2ee35018d78457c6aa6a4970e644.1547442452.git.ryder.lee@mediatek.com>
+Content-Language: en-US
+Content-ID: <A3F225B418569B4D909CFCF3A5EB32D1@namprd11.prod.outlook.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: ryder.lee@mediatek.com, marek.vasut@gmail.com, computersforpeace@gmail.com, boris.brezillon@bootlin.com
+Cc: robh+dt@kernel.org, weijie.gao@mediatek.com, linux-mtd@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, guochun.mao@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-01-15 at 09:43 +0800, min.guo@mediatek.com wrote:
-> From: Min Guo <min.guo@mediatek.com>
-> 
-> These patches introduce the MediaTek MUSB controller driver.
-> 
-> The driver can be configured as Dual-Role Device (DRD),
-> Peripheral Only and Host Only modes. This has beed tested on
-> MT2701 with a variety of devices in host mode and with the 
-> f_mass gadget driver in peripheral mode, plugging otg cables
-> in/out a lot of times in all possible imaginable plug orders.
-> 
-> changes in v2:
-> changes of dt-bindings suggested by Rob and Bin:
-> 1. Modify DRC to DRD
-> 2. Drop the "<soc-model>-musb" in compatible
-> 3. Remove phy-names
-> 4. Add space after comma in clock-names
-> dtsi:
-> 1. Remove phy-names
-> changes of driver suggested by Bin:
-> 1. Add a new patch for musb_set_toggle
-> 2. Add summarize of MediaTek musb controller differences in the commit log
-> 3. Abondon patch "usb: musb: Move musbhsdma macro definition to musb_dma.h"
-> 4. Add "|| COMPILE_TEST" in Kconfig
-> 5. Add musb_clearb() and musb_clearw() hooks
-> 6. Add get_toggle() and set_toggle() hooks
-> 7. Replace musb_readl() with musb_readw() to read 16bit toggle register
-> 8. Move MediaTek's private toggle registers from musb_regs.h to mediatek.c
-> 9. Create musbhs_dma_controller_create_noirq()
-> 
-> Min Guo (4):
->   dt-bindings: usb: musb: Add support for MediaTek musb controller
->   arm: dts: mt2701: Add usb2 device nodes
->   usb: musb: Extract set toggle as a separate interface
->   usb: musb: Add support for MediaTek musb controller
-> 
->  .../devicetree/bindings/usb/mediatek,musb.txt      |  43 ++
->  arch/arm/boot/dts/mt2701-evb.dts                   |  21 +
->  arch/arm/boot/dts/mt2701.dtsi                      |  33 ++
->  drivers/usb/musb/Kconfig                           |   8 +-
->  drivers/usb/musb/Makefile                          |   1 +
->  drivers/usb/musb/mediatek.c                        | 617 +++++++++++++++++++++
->  drivers/usb/musb/musb_core.c                       |  69 +++
->  drivers/usb/musb/musb_core.h                       |   9 +
->  drivers/usb/musb/musb_dma.h                        |   9 +
->  drivers/usb/musb/musb_host.c                       |  35 +-
->  drivers/usb/musb/musb_io.h                         |   6 +
->  drivers/usb/musb/musbhsdma.c                       |  55 +-
->  12 files changed, 868 insertions(+), 38 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/usb/mediatek,musb.txt
->  create mode 100644 drivers/usb/musb/mediatek.c
-> 
-
-I tried the series on my mt7623
-
-Tested-by: Ryder Lee <ryder.lee@mediatek.com>
+SGksIFJ5ZGVyLA0KDQpPbiAwMS8xNC8yMDE5IDA3OjEyIEFNLCBSeWRlciBMZWUgd3JvdGU6DQo+
+IEZyb206IEd1b2NodW4gTWFvIDxndW9jaHVuLm1hb0BtZWRpYXRlay5jb20+DQo+IA0KPiBTTk9S
+X0hXQ0FQU19SRUFEIGlzIGEgYmFzaWMgcmVhZCBtb2RlIGZvciBib3RoIGZsYXNoIGFuZCBjb250
+cm9sbGVyLA0KPiBpdCBzaG91bGQgYmUgc3VwcG9ydGVkLCBzbyBhZGQgdGhlIGNhcGNpdHkgZm9y
+IG10ay1xdWFkc3BpLg0KDQpTaW5jZSBJIGNvdWxkbid0IGZpbmQgYSBkYXRhc2hlZXQgZm9yIG10
+ODE3MywgSSB0ZW5kIHRvIHNoYXJlIHlvdXIgYXNzdW1wdGlvbiAtDQpTTk9SX0hXQ0FQU19SRUFE
+IHNob3VsZCBiZSBzdXBwb3J0ZWQgYnkgdGhpcyBjb250cm9sbGVyLiBIb3dldmVyLCBpdCdzIGFs
+d2F5cw0KYmV0dGVyIHRvIHRlc3QgaXQgYW5kIG5vdCByZWx5IG9uIGFzc3VtcHRpb25zLiBZb3Ug
+Y2FuIHRlc3QgaXQgYnkgZm9yY2luZyB0aGUNCm1hc2sgdG8gaGF2ZSBqdXN0IFNOT1JfSFdDQVBT
+X1JFQUQgfCBTTk9SX0hXQ0FQU19QUCBzZXQuIE9yIHlvdSBhbHJlYWR5IHRlc3RlZCBpdD8NCg0K
+WW91IGhhdmUgYSB0eXBvIGluIGNhcGNpdHkuIE1heWJlIHN1YnN0aXR1dGUgaXQgd2l0aCBjYXBh
+YmlsaXR5IG9yICJhZGQgdGhpcw0KZmxhZyB0byBzcGlfbm9yX2h3Y2FwcyBtYXNrIg0KDQo+IA0K
+PiBTaWduZWQtb2ZmLWJ5OiBHdW9jaHVuIE1hbyA8Z3VvY2h1bi5tYW9AbWVkaWF0ZWsuY29tPg0K
+DQpZb3Ugc2hvdWxkIGFkZCB5b3VyIFNvQiB0YWcsIGJlY2F1c2UgeW91IGFyZSBzZW5kaW5nIGEg
+cGF0Y2ggdGhhdCBpcyBub3QgeW91cnMuDQoNCkNoZWVycywNCnRhDQoNCj4gLS0tDQo+IENoYW5n
+ZXMgc2luY2UgdjE6IG5vbmUuIA0KPiAtLS0NCj4gIGRyaXZlcnMvbXRkL3NwaS1ub3IvbXRrLXF1
+YWRzcGkuYyB8IDMgKystDQo+ICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCAxIGRl
+bGV0aW9uKC0pDQo+IA0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tdGQvc3BpLW5vci9tdGstcXVh
+ZHNwaS5jIGIvZHJpdmVycy9tdGQvc3BpLW5vci9tdGstcXVhZHNwaS5jDQo+IGluZGV4IDU0NDI5
+OTMuLmQ5ZWVkNjggMTAwNjQ0DQo+IC0tLSBhL2RyaXZlcnMvbXRkL3NwaS1ub3IvbXRrLXF1YWRz
+cGkuYw0KPiArKysgYi9kcml2ZXJzL210ZC9zcGktbm9yL210ay1xdWFkc3BpLmMNCj4gQEAgLTQz
+MSw3ICs0MzEsOCBAQCBzdGF0aWMgaW50IG10a19ub3JfaW5pdChzdHJ1Y3QgbXRrX25vciAqbXRr
+X25vciwNCj4gIAkJCXN0cnVjdCBkZXZpY2Vfbm9kZSAqZmxhc2hfbm9kZSkNCj4gIHsNCj4gIAlj
+b25zdCBzdHJ1Y3Qgc3BpX25vcl9od2NhcHMgaHdjYXBzID0gew0KPiAtCQkubWFzayA9IFNOT1Jf
+SFdDQVBTX1JFQURfRkFTVCB8DQo+ICsJCS5tYXNrID0gU05PUl9IV0NBUFNfUkVBRCB8DQo+ICsJ
+CQlTTk9SX0hXQ0FQU19SRUFEX0ZBU1QgfA0KPiAgCQkJU05PUl9IV0NBUFNfUkVBRF8xXzFfMiB8
+DQo+ICAJCQlTTk9SX0hXQ0FQU19QUCwNCj4gIAl9Ow0KPiANCg==
