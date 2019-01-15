@@ -1,57 +1,19 @@
-From: =?utf-8?b?UmVuw6k=?= van Dorst <opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH] watchdog: mt7621: Fix compiler error, missing include
-Date: Tue, 15 Jan 2019 15:29:13 +0000
-Message-ID: <20190115152913.Horde.lq_7NPUmj51AEcDDGP2xSEw@www.vdorst.com>
-References: <20190114211719.11461-1-opensource@vdorst.com>
- <a8b870f2-a50d-144e-cdca-b8a95d48846b@gmail.com>
+From: Christoph Hellwig <hch@infradead.org>
+Subject: Re: [PATCH v2 4/9] riscv/vdso: don't clear PG_reserved
+Date: Tue, 15 Jan 2019 07:36:52 -0800
+Message-ID: <20190115153652.GD26443@infradead.org>
+References: <20190114125903.24845-1-david@redhat.com>
+ <20190114125903.24845-5-david@redhat.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"; DelSp="Yes"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <a8b870f2-a50d-144e-cdca-b8a95d48846b-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-watchdog-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+In-Reply-To: <20190114125903.24845-5-david@redhat.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: David Hildenbrand <david@redhat.com>
+Cc: linux-mm@kvack.org, linux-s390@vger.kernel.org, Albert Ou <aou@eecs.berkeley.edu>, Andrew Morton <akpm@linux-foundation.org>, Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org, Matthew Wilcox <willy@infradead.org>, Michal Hocko <mhocko@kernel.org>, linux-m68k@lists.linux-m68k.org, linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org, linuxppc-dev@lists.ozlabs.org, Tobias Klauser <tklauser@distanz.ch>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-UXVvdGluZyBNYXR0aGlhcyBCcnVnZ2VyIDxtYXR0aGlhcy5iZ2dAZ21haWwuY29tPjoKCj4gT24g
-MTQvMDEvMjAxOSAyMjoxNywgUmVuw6kgdmFuIERvcnN0IHdyb3RlOgo+PiBkcml2ZXJzL3dhdGNo
-ZG9nL210NzYyMV93ZHQuYzoxNzQ6MzQ6IGVycm9yOiBhcnJheSB0eXBlIGhhcyAgCj4+IGluY29t
-cGxldGUgZWxlbWVudCB0eXBlICdzdHJ1Y3Qgb2ZfZGV2aWNlX2lkJwo+PiAgc3RhdGljIGNvbnN0
-IHN0cnVjdCBvZl9kZXZpY2VfaWQgbXQ3NjIxX3dkdF9tYXRjaFtdID0gewo+PiAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgXn5+fn5+fn5+fn5+fn5+fgo+PiBkcml2ZXJzL3dhdGNo
-ZG9nL210NzYyMV93ZHQuYzoxNzU6NDogZXJyb3I6IGZpZWxkIG5hbWUgbm90IGluICAKPj4gcmVj
-b3JkIG9yIHVuaW9uIGluaXRpYWxpemVyCj4+ICAgeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxt
-dDc2MjEtd2R0IiB9LAo+PiAgICAgXgo+PiBkcml2ZXJzL3dhdGNoZG9nL210NzYyMV93ZHQuYzox
-NzU6NDogbm90ZTogKG5lYXIgaW5pdGlhbGl6YXRpb24gZm9yICAKPj4gJ210NzYyMV93ZHRfbWF0
-Y2gnKQo+PiBkcml2ZXJzL3dhdGNoZG9nL210NzYyMV93ZHQuYzoxNzQ6MzQ6IHdhcm5pbmc6ICdt
-dDc2MjFfd2R0X21hdGNoJyAgCj4+IGRlZmluZWQgYnV0IG5vdCB1c2VkIFstV3VudXNlZC12YXJp
-YWJsZV0KPj4gIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIG10NzYyMV93ZHRfbWF0
-Y2hbXSA9IHsKPj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF5+fn5+fn5+fn5+
-fn5+fn4KPj4KPgo+IERpZCB0aGlzIHdvcmsgaW4gdGhlIHBhc3Q/Cj4gSSBzdXBwb3NlIHNvLiBD
-b3VsZCB5b3UgcHJvdmlkZSBhIGZpeGVzIHRhZyBmb3Igc3RhYmxlLgoKSSBzZWUgdGhhdCBJIGFt
-IG5vdCB0aGUgZmlyc3Qgd2hvIHNwb3R0ZWQgdGhpcy4gIApodHRwczovL3BhdGNod29yay5rZXJu
-ZWwub3JnL3BhdGNoLzEwNzQ1MDQ5LwoKU28gYmV0dGVyIGRyb3AgdGhpcyBvbmUuCgpHcmVhdHMs
-CgpSZW7DqQoKCj4gVGhhbmtzLAo+IE1hdHRoaWFzCj4KPj4gU2lnbmVkLW9mZi1ieTogUmVuw6kg
-dmFuIERvcnN0IDxvcGVuc291cmNlQHZkb3JzdC5jb20+Cj4+IC0tLQo+PiAgZHJpdmVycy93YXRj
-aGRvZy9tdDc2MjFfd2R0LmMgfCAxICsKPj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigr
-KQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy93YXRjaGRvZy9tdDc2MjFfd2R0LmMgYi9kcml2
-ZXJzL3dhdGNoZG9nL210NzYyMV93ZHQuYwo+PiBpbmRleCA1YzRhNzY0NzE3YzQuLmEzYmU3ZGI5
-ZDc2ZiAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy93YXRjaGRvZy9tdDc2MjFfd2R0LmMKPj4gKysr
-IGIvZHJpdmVycy93YXRjaGRvZy9tdDc2MjFfd2R0LmMKPj4gQEAgLTE2LDYgKzE2LDcgQEAKPj4g
-ICNpbmNsdWRlIDxsaW51eC9rZXJuZWwuaD4KPj4gICNpbmNsdWRlIDxsaW51eC93YXRjaGRvZy5o
-Pgo+PiAgI2luY2x1ZGUgPGxpbnV4L21vZHVsZXBhcmFtLmg+Cj4+ICsjaW5jbHVkZSA8bGludXgv
-b2YuaD4KPj4gICNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPj4KPj4gICNpbmNs
-dWRlIDxhc20vbWFjaC1yYWxpbmsvcmFsaW5rX3JlZ3MuaD4KPj4KCgoKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcg
-bGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+Looks good,
+
+Reviewed-by: Christoph Hellwig <hch@lst.de>
