@@ -1,51 +1,104 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] watchdog: mt7621: Fix compiler error, missing include
-Date: Tue, 15 Jan 2019 16:16:06 +0100
-Message-ID: <a8b870f2-a50d-144e-cdca-b8a95d48846b@gmail.com>
-References: <20190114211719.11461-1-opensource@vdorst.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2 3/4] usb: musb: Extract set toggle as a separate
+ interface
+Date: Tue, 15 Jan 2019 16:19:42 +0100
+Message-ID: <a4e71c59-8e25-b3e9-797f-46d918121dd4@gmail.com>
+References: <1547516626-5084-1-git-send-email-min.guo@mediatek.com>
+ <1547516626-5084-4-git-send-email-min.guo@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190114211719.11461-1-opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1547516626-5084-4-git-send-email-min.guo@mediatek.com>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>, linux-watchdog-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Sender: linux-kernel-owner@vger.kernel.org
+To: min.guo@mediatek.com, Bin Liu <b-liu@ti.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Alan Stern <stern@rowland.harvard.edu>, chunfeng.yun@mediatek.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-CgpPbiAxNC8wMS8yMDE5IDIyOjE3LCBSZW7DqSB2YW4gRG9yc3Qgd3JvdGU6Cj4gZHJpdmVycy93
-YXRjaGRvZy9tdDc2MjFfd2R0LmM6MTc0OjM0OiBlcnJvcjogYXJyYXkgdHlwZSBoYXMgaW5jb21w
-bGV0ZSBlbGVtZW50IHR5cGUgJ3N0cnVjdCBvZl9kZXZpY2VfaWQnCj4gIHN0YXRpYyBjb25zdCBz
-dHJ1Y3Qgb2ZfZGV2aWNlX2lkIG10NzYyMV93ZHRfbWF0Y2hbXSA9IHsKPiAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgXn5+fn5+fn5+fn5+fn5+fgo+IGRyaXZlcnMvd2F0Y2hkb2cv
-bXQ3NjIxX3dkdC5jOjE3NTo0OiBlcnJvcjogZmllbGQgbmFtZSBub3QgaW4gcmVjb3JkIG9yIHVu
-aW9uIGluaXRpYWxpemVyCj4gICB7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10NzYyMS13ZHQi
-IH0sCj4gICAgIF4KPiBkcml2ZXJzL3dhdGNoZG9nL210NzYyMV93ZHQuYzoxNzU6NDogbm90ZTog
-KG5lYXIgaW5pdGlhbGl6YXRpb24gZm9yICdtdDc2MjFfd2R0X21hdGNoJykKPiBkcml2ZXJzL3dh
-dGNoZG9nL210NzYyMV93ZHQuYzoxNzQ6MzQ6IHdhcm5pbmc6ICdtdDc2MjFfd2R0X21hdGNoJyBk
-ZWZpbmVkIGJ1dCBub3QgdXNlZCBbLVd1bnVzZWQtdmFyaWFibGVdCj4gIHN0YXRpYyBjb25zdCBz
-dHJ1Y3Qgb2ZfZGV2aWNlX2lkIG10NzYyMV93ZHRfbWF0Y2hbXSA9IHsKPiAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgXn5+fn5+fn5+fn5+fn5+fgo+IAoKRGlkIHRoaXMgd29yayBp
-biB0aGUgcGFzdD8KSSBzdXBwb3NlIHNvLiBDb3VsZCB5b3UgcHJvdmlkZSBhIGZpeGVzIHRhZyBm
-b3Igc3RhYmxlLgoKVGhhbmtzLApNYXR0aGlhcwoKPiBTaWduZWQtb2ZmLWJ5OiBSZW7DqSB2YW4g
-RG9yc3QgPG9wZW5zb3VyY2VAdmRvcnN0LmNvbT4KPiAtLS0KPiAgZHJpdmVycy93YXRjaGRvZy9t
-dDc2MjFfd2R0LmMgfCAxICsKPiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspCj4gCj4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvd2F0Y2hkb2cvbXQ3NjIxX3dkdC5jIGIvZHJpdmVycy93YXRj
-aGRvZy9tdDc2MjFfd2R0LmMKPiBpbmRleCA1YzRhNzY0NzE3YzQuLmEzYmU3ZGI5ZDc2ZiAxMDA2
-NDQKPiAtLS0gYS9kcml2ZXJzL3dhdGNoZG9nL210NzYyMV93ZHQuYwo+ICsrKyBiL2RyaXZlcnMv
-d2F0Y2hkb2cvbXQ3NjIxX3dkdC5jCj4gQEAgLTE2LDYgKzE2LDcgQEAKPiAgI2luY2x1ZGUgPGxp
-bnV4L2tlcm5lbC5oPgo+ICAjaW5jbHVkZSA8bGludXgvd2F0Y2hkb2cuaD4KPiAgI2luY2x1ZGUg
-PGxpbnV4L21vZHVsZXBhcmFtLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9vZi5oPgo+ICAjaW5jbHVk
-ZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4gIAo+ICAjaW5jbHVkZSA8YXNtL21hY2gtcmFs
-aW5rL3JhbGlua19yZWdzLmg+Cj4gCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+
+
+On 15/01/2019 02:43, min.guo@mediatek.com wrote:
+> From: Min Guo <min.guo@mediatek.com>
+> 
+> Add a common interface for set data toggle
+> 
+> Signed-off-by: Min Guo <min.guo@mediatek.com>
+> ---
+>  drivers/usb/musb/musb_host.c | 37 +++++++++++++++++++++++--------------
+>  1 file changed, 23 insertions(+), 14 deletions(-)
+> 
+> diff --git a/drivers/usb/musb/musb_host.c b/drivers/usb/musb/musb_host.c
+> index b59ce9a..16d0ba4 100644
+> --- a/drivers/usb/musb/musb_host.c
+> +++ b/drivers/usb/musb/musb_host.c
+> @@ -306,6 +306,25 @@ static inline void musb_save_toggle(struct musb_qh *qh, int is_in,
+>  	usb_settoggle(urb->dev, qh->epnum, !is_in, csr ? 1 : 0);
+>  }
+>  
+> +static inline u16 musb_set_toggle(struct musb_qh *qh, int is_in,
+> +	struct urb *urb)
+> +{
+> +	u16 csr = 0;
+> +	u16 toggle = 0;
+> +
+> +	toggle = usb_gettoggle(urb->dev, qh->epnum, !is_in);
+> +
+> +	if (is_in)
+> +		csr = toggle ? (MUSB_RXCSR_H_WR_DATATOGGLE
+> +				| MUSB_RXCSR_H_DATATOGGLE) : 0;
+> +	else
+> +		csr = toggle ? (MUSB_TXCSR_H_WR_DATATOGGLE
+> +				| MUSB_TXCSR_H_DATATOGGLE)
+> +				: MUSB_TXCSR_CLRDATATOG;
+
+Can we switch the if and use is_out logic as function parameter. This would make
+the code easier to understand.
+
+Regards,
+Matthias
+
+> +
+> +	return csr;
+> +}
+> +
+>  /*
+>   * Advance this hardware endpoint's queue, completing the specified URB and
+>   * advancing to either the next URB queued to that qh, or else invalidating
+> @@ -772,13 +791,8 @@ static void musb_ep_program(struct musb *musb, u8 epnum,
+>  					);
+>  			csr |= MUSB_TXCSR_MODE;
+>  
+> -			if (!hw_ep->tx_double_buffered) {
+> -				if (usb_gettoggle(urb->dev, qh->epnum, 1))
+> -					csr |= MUSB_TXCSR_H_WR_DATATOGGLE
+> -						| MUSB_TXCSR_H_DATATOGGLE;
+> -				else
+> -					csr |= MUSB_TXCSR_CLRDATATOG;
+> -			}
+> +			if (!hw_ep->tx_double_buffered)
+> +				csr |= musb_set_toggle(qh, !is_out, urb);
+>  
+>  			musb_writew(epio, MUSB_TXCSR, csr);
+>  			/* REVISIT may need to clear FLUSHFIFO ... */
+> @@ -860,17 +874,12 @@ static void musb_ep_program(struct musb *musb, u8 epnum,
+>  
+>  	/* IN/receive */
+>  	} else {
+> -		u16	csr;
+> +		u16 csr = 0;
+>  
+>  		if (hw_ep->rx_reinit) {
+>  			musb_rx_reinit(musb, qh, epnum);
+> +			csr |= musb_set_toggle(qh, !is_out, urb);
+>  
+> -			/* init new state: toggle and NYET, maybe DMA later */
+> -			if (usb_gettoggle(urb->dev, qh->epnum, 0))
+> -				csr = MUSB_RXCSR_H_WR_DATATOGGLE
+> -					| MUSB_RXCSR_H_DATATOGGLE;
+> -			else
+> -				csr = 0;
+>  			if (qh->type == USB_ENDPOINT_XFER_INT)
+>  				csr |= MUSB_RXCSR_DISNYET;
+>  
+> 
