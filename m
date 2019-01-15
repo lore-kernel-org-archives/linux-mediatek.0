@@ -1,112 +1,79 @@
-From: Chunyan Zhang <zhang.lyra-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: Remove inconsistent use of 'arm,armv8'
- compatible string
-Date: Tue, 15 Jan 2019 10:00:18 +0800
-Message-ID: <CAAfSe-vLbU8Z4nfsRc+SEdQeC=DmRqUZTBbQAOfefdL6aY=h9g@mail.gmail.com>
-References: <20190109202934.29304-1-robh@kernel.org>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: Re: [SPAM][PATCH v2 0/4] Add MediaTek MUSB Controller Driver
+Date: Tue, 15 Jan 2019 13:18:44 +0800
+Message-ID: <1547529524.13961.2.camel@mtkswgap22>
+References: <1547516626-5084-1-git-send-email-min.guo@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190109202934.29304-1-robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Nishanth Menon <nm-l0cyMroinI0@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, "arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Gregory Clement <gregory.clement-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Kukjin Kim <kgen>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1547516626-5084-1-git-send-email-min.guo@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: min.guo@mediatek.com
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, chunfeng.yun@mediatek.com, Rob Herring <robh+dt@kernel.org>, Alan Stern <stern@rowland.harvard.edu>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Bin Liu <b-liu@ti.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 10 Jan 2019 at 04:29, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
->
-> The 'arm,armv8' compatible string is only for software models. It adds
-> little value otherwise and is inconsistently used as a fallback on some
-> platforms. Remove it from those platforms.
->
-> This fixes warnings generated by the DT schema.
->
-> Reported-by: Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>
-> Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-> Cc: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
-> Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> ---
-> armsoc folks, Please apply directly.
->
-> Note that there's still a case left in msm8998 that needs a new
-> compatible string.
->
-> Rob
->
->  arch/arm64/boot/dts/actions/s700.dtsi         |   8 +-
->  arch/arm64/boot/dts/actions/s900.dtsi         |   8 +-
->  arch/arm64/boot/dts/al/alpine-v2.dtsi         |   8 +-
->  arch/arm64/boot/dts/allwinner/sun50i-a64.dtsi |   8 +-
->  arch/arm64/boot/dts/allwinner/sun50i-h5.dtsi  |   8 +-
->  arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi  |   8 +-
->  .../boot/dts/altera/socfpga_stratix10.dtsi    |   8 +-
->  arch/arm64/boot/dts/amlogic/meson-axg.dtsi    |   8 +-
->  arch/arm64/boot/dts/amlogic/meson-g12a.dtsi   |   8 +-
->  arch/arm64/boot/dts/amlogic/meson-gx.dtsi     |   8 +-
->  arch/arm64/boot/dts/amlogic/meson-gxm.dtsi    |   8 +-
->  arch/arm64/boot/dts/apm/apm-shadowcat.dtsi    |  16 +--
->  arch/arm64/boot/dts/apm/apm-storm.dtsi        |  16 +--
->  arch/arm64/boot/dts/arm/juno-r1.dts           |  12 +-
->  arch/arm64/boot/dts/arm/juno-r2.dts           |  12 +-
->  arch/arm64/boot/dts/arm/juno.dts              |  12 +-
->  .../boot/dts/arm/vexpress-v2f-1xv7-ca53x2.dts |   4 +-
->  .../boot/dts/broadcom/northstar2/ns2.dtsi     |   8 +-
->  .../boot/dts/broadcom/stingray/stingray.dtsi  |  16 +--
->  arch/arm64/boot/dts/cavium/thunder-88xx.dtsi  |  96 ++++++-------
->  arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi |   8 +-
->  arch/arm64/boot/dts/exynos/exynos5433.dtsi    |  16 +--
->  arch/arm64/boot/dts/exynos/exynos7.dtsi       |   8 +-
->  arch/arm64/boot/dts/hisilicon/hi3660.dtsi     |  16 +--
->  arch/arm64/boot/dts/hisilicon/hi3670.dtsi     |  16 +--
->  arch/arm64/boot/dts/hisilicon/hi6220.dtsi     |  16 +--
->  arch/arm64/boot/dts/hisilicon/hip05.dtsi      |  32 ++---
->  arch/arm64/boot/dts/hisilicon/hip06.dtsi      |  32 ++---
->  arch/arm64/boot/dts/hisilicon/hip07.dtsi      | 128 +++++++++---------
->  arch/arm64/boot/dts/lg/lg1312.dtsi            |   8 +-
->  arch/arm64/boot/dts/lg/lg1313.dtsi            |   8 +-
->  arch/arm64/boot/dts/marvell/armada-372x.dtsi  |   2 +-
->  arch/arm64/boot/dts/marvell/armada-37xx.dtsi  |   2 +-
->  .../boot/dts/marvell/armada-ap806-dual.dtsi   |   4 +-
->  .../boot/dts/marvell/armada-ap806-quad.dtsi   |   8 +-
->  .../marvell/armada-ap810-ap0-octa-core.dtsi   |  16 +--
->  arch/arm64/boot/dts/mediatek/mt7622.dtsi      |   4 +-
->  arch/arm64/boot/dts/nvidia/tegra132.dtsi      |   4 +-
->  arch/arm64/boot/dts/nvidia/tegra186.dtsi      |  12 +-
->  arch/arm64/boot/dts/nvidia/tegra194.dtsi      |  16 +--
->  arch/arm64/boot/dts/qcom/ipq8074.dtsi         |   8 +-
->  arch/arm64/boot/dts/qcom/msm8916.dtsi         |   8 +-
->  arch/arm64/boot/dts/qcom/msm8992.dtsi         |   2 +-
->  arch/arm64/boot/dts/qcom/msm8994.dtsi         |   2 +-
->  arch/arm64/boot/dts/realtek/rtd1295.dtsi      |   8 +-
->  arch/arm64/boot/dts/renesas/r8a774a1.dtsi     |  12 +-
->  arch/arm64/boot/dts/renesas/r8a7795.dtsi      |  16 +--
->  arch/arm64/boot/dts/renesas/r8a7796.dtsi      |  12 +-
->  arch/arm64/boot/dts/renesas/r8a77965.dtsi     |   4 +-
->  arch/arm64/boot/dts/renesas/r8a77970.dtsi     |   4 +-
->  arch/arm64/boot/dts/renesas/r8a77980.dtsi     |   8 +-
->  arch/arm64/boot/dts/renesas/r8a77990.dtsi     |   4 +-
->  arch/arm64/boot/dts/renesas/r8a77995.dtsi     |   2 +-
->  arch/arm64/boot/dts/rockchip/px30.dtsi        |   8 +-
->  arch/arm64/boot/dts/rockchip/rk3328.dtsi      |   8 +-
->  arch/arm64/boot/dts/rockchip/rk3368.dtsi      |  16 +--
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi      |  12 +-
->  .../boot/dts/socionext/uniphier-ld11.dtsi     |   4 +-
->  .../boot/dts/socionext/uniphier-ld20.dtsi     |   8 +-
->  .../boot/dts/socionext/uniphier-pxs3.dtsi     |   8 +-
->  arch/arm64/boot/dts/sprd/sc9836.dtsi          |   8 +-
->  arch/arm64/boot/dts/sprd/sc9860.dtsi          |  16 +--
+On Tue, 2019-01-15 at 09:43 +0800, min.guo@mediatek.com wrote:
+> From: Min Guo <min.guo@mediatek.com>
+> 
+> These patches introduce the MediaTek MUSB controller driver.
+> 
+> The driver can be configured as Dual-Role Device (DRD),
+> Peripheral Only and Host Only modes. This has beed tested on
+> MT2701 with a variety of devices in host mode and with the 
+> f_mass gadget driver in peripheral mode, plugging otg cables
+> in/out a lot of times in all possible imaginable plug orders.
+> 
+> changes in v2:
+> changes of dt-bindings suggested by Rob and Bin:
+> 1. Modify DRC to DRD
+> 2. Drop the "<soc-model>-musb" in compatible
+> 3. Remove phy-names
+> 4. Add space after comma in clock-names
+> dtsi:
+> 1. Remove phy-names
+> changes of driver suggested by Bin:
+> 1. Add a new patch for musb_set_toggle
+> 2. Add summarize of MediaTek musb controller differences in the commit log
+> 3. Abondon patch "usb: musb: Move musbhsdma macro definition to musb_dma.h"
+> 4. Add "|| COMPILE_TEST" in Kconfig
+> 5. Add musb_clearb() and musb_clearw() hooks
+> 6. Add get_toggle() and set_toggle() hooks
+> 7. Replace musb_readl() with musb_readw() to read 16bit toggle register
+> 8. Move MediaTek's private toggle registers from musb_regs.h to mediatek.c
+> 9. Create musbhs_dma_controller_create_noirq()
+> 
+> Min Guo (4):
+>   dt-bindings: usb: musb: Add support for MediaTek musb controller
+>   arm: dts: mt2701: Add usb2 device nodes
+>   usb: musb: Extract set toggle as a separate interface
+>   usb: musb: Add support for MediaTek musb controller
+> 
+>  .../devicetree/bindings/usb/mediatek,musb.txt      |  43 ++
+>  arch/arm/boot/dts/mt2701-evb.dts                   |  21 +
+>  arch/arm/boot/dts/mt2701.dtsi                      |  33 ++
+>  drivers/usb/musb/Kconfig                           |   8 +-
+>  drivers/usb/musb/Makefile                          |   1 +
+>  drivers/usb/musb/mediatek.c                        | 617 +++++++++++++++++++++
+>  drivers/usb/musb/musb_core.c                       |  69 +++
+>  drivers/usb/musb/musb_core.h                       |   9 +
+>  drivers/usb/musb/musb_dma.h                        |   9 +
+>  drivers/usb/musb/musb_host.c                       |  35 +-
+>  drivers/usb/musb/musb_io.h                         |   6 +
+>  drivers/usb/musb/musbhsdma.c                       |  55 +-
+>  12 files changed, 868 insertions(+), 38 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/usb/mediatek,musb.txt
+>  create mode 100644 drivers/usb/musb/mediatek.c
+> 
 
-For sprd soc:
-Acked-by: Chunyan Zhang <zhang.lyra-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+I tried the series on my mt7623
 
-Thanks,
-Chunyan
+Tested-by: Ryder Lee <ryder.lee@mediatek.com>
