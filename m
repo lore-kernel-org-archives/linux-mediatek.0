@@ -1,66 +1,109 @@
-From: David Hildenbrand <david@redhat.com>
-Subject: Re: [PATCH v2 0/9] mm: PG_reserved cleanups and documentation
-Date: Tue, 15 Jan 2019 16:53:00 +0100
-Message-ID: <447946ff-403a-6ca3-2958-688d28a82fce@redhat.com>
-References: <20190114125903.24845-1-david@redhat.com>
- <20190115153839.GE26443@infradead.org>
+From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=
+        <u.kleine-koenig@pengutronix.de>
+Subject: Re: [PATCH 1/5] pwm: mediatek: add a property "mediatek,num-pwms"
+Date: Tue, 15 Jan 2019 21:00:31 +0100
+Message-ID: <20190115200031.7vranuo6fpcaqvce@pengutronix.de>
+References: <0c400cb1899c1afb4c9f021350cdc0c6ca3f6239.1547453586.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-riscv-bounces+glpr-linux-riscv=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190115153839.GE26443@infradead.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-riscv>,
- <mailto:linux-riscv-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-riscv/>
-List-Post: <mailto:linux-riscv@lists.infradead.org>
-List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
- <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
-Errors-To: linux-riscv-bounces+glpr-linux-riscv=m.gmane.org@lists.infradead.org
-To: Christoph Hellwig <hch@infradead.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Michal Hocko <mhocko@suse.com>, CHANDAN VN <chandan.vn@samsung.com>, David Airlie <airlied@linux.ie>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Bhupesh Sharma <bhsharma@redhat.com>, Palmer Dabbelt <palmer@sifive.com>, Heiko Carstens <heiko.carstens@de.ibm.com>, Stefan Agner <stefan@agner.ch>, Michal Hocko <mhocko@kernel.org>, David Howells <dhowells@redhat.com>, linux-mm@kvack.org, Paul Mackerras <paulus@samba.org>, linux-riscv@lists.infradead.org, Alexander Duyck <alexander.h.duyck@linux.intel.com>, linux-s390@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>, Arnd Bergmann <arnd@arndb.de>, Michael Ellerman <mpe@ellerman.id.au>, Pavel Tatashin <pasha.tatashin@oracle.com>, Matthew Wilcox <willy@infradead.org>, AKASHI Takahiro <takahiro.akashi@linaro.org>, Geert Uytterhoeven <geert@linux-m68k.org>Matthias Brugger <m>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <0c400cb1899c1afb4c9f021350cdc0c6ca3f6239.1547453586.git.ryder.lee@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Thierry Reding <thierry.reding@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>, Weijie Gao <weijie.gao@mediatek.com>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 15.01.19 16:38, Christoph Hellwig wrote:
-> On Mon, Jan 14, 2019 at 01:58:54PM +0100, David Hildenbrand wrote:
->> Nothing major changed since the last version. I would be happy about
->> additional ACKs. If there are no further comments, can this go via the
->> mm-tree in one chunk?
->>
->> I was recently going over all users of PG_reserved. Short story: it is
->> difficult and sometimes not really clear if setting/checking for
->> PG_reserved is only a relict from the past. Easy to break things. I
->> guess I now have a pretty good idea wh things are like that
->> nowadays and how they evolved.
-> 
-> Any reason you skipped
-> 
-> drivers/gpu/drm/drm_pci.c:drm_pci_alloc()
-> 
-> and 
-> 
-> drivers/gpu/drm/drm_scatter.c:drm_legacy_sg_alloc()
-> 
-> which both look completely bogus as-is?
-> 
-> In fact we should probably just try to kill them off as they have
-> very few users left.
-> 
+On Mon, Jan 14, 2019 at 04:21:20PM +0800, Ryder Lee wrote:
+> This adds a property "mediatek,num-pwms" to avoid having an endless
+> list of compatibles with no other differences for the same driver.
 
-I actually have patches lying around for these, however excluded them
-for now as I was not 100% sure about the implications ("Easy to break
-things").
+I seem to recall having said something similar before, but maybe this
+was a different series (there is no v2 or higher in the Subject ...)
 
-Are you sure nobody in the system (especially somebody who does a
-PageReserved()) relies on this to identify e.g. MMIO pages? (e.g.
-ioremap on some archs, KVM code)
+I think it would be sensible to drop the vendor prefix and go with plain
+"num-pwms" (or "npwms" to align to "ngpios" in the gpio bindings).
 
-(I am by far no DRM expert, but when I hear DMA, I tend to be careful)
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+>  drivers/pwm/pwm-mediatek.c | 25 +++++++++++--------------
+>  1 file changed, 11 insertions(+), 14 deletions(-)
+> 
+> diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
+> index eb6674c..37daa84 100644
+> --- a/drivers/pwm/pwm-mediatek.c
+> +++ b/drivers/pwm/pwm-mediatek.c
+> @@ -55,7 +55,6 @@ enum {
+>  };
+>  
+>  struct mtk_pwm_platform_data {
+> -	unsigned int num_pwms;
+>  	bool pwm45_fixup;
+>  	bool has_clks;
+>  };
+> @@ -226,10 +225,11 @@ static void mtk_pwm_disable(struct pwm_chip *chip, struct pwm_device *pwm)
+>  
+>  static int mtk_pwm_probe(struct platform_device *pdev)
+>  {
+> +	struct device_node *np = pdev->dev.of_node;
+>  	const struct mtk_pwm_platform_data *data;
+>  	struct mtk_pwm_chip *pc;
+>  	struct resource *res;
+> -	unsigned int i;
+> +	unsigned int i, num_pwms;
+>  	int ret;
+>  
+>  	pc = devm_kzalloc(&pdev->dev, sizeof(*pc), GFP_KERNEL);
+> @@ -246,7 +246,13 @@ static int mtk_pwm_probe(struct platform_device *pdev)
+>  	if (IS_ERR(pc->regs))
+>  		return PTR_ERR(pc->regs);
+>  
+> -	for (i = 0; i < data->num_pwms + 2 && pc->soc->has_clks; i++) {
+> +	ret = of_property_read_u32(np, "mediatek,num-pwms", &num_pwms);
+> +	if (ret < 0) {
+> +		dev_err(&pdev->dev, "failed to get pwm number: %d\n", ret);
+
+This sounds wrong. "Failed to get number of pwms" sounds better to my
+(non-native) ear.
+
+> +		return ret;
+> +	}
+> +
+> +	for (i = 0; i < num_pwms + 2 && pc->soc->has_clks; i++) {
+>  		pc->clks[i] = devm_clk_get(&pdev->dev, mtk_pwm_clk_name[i]);
+>  		if (IS_ERR(pc->clks[i])) {
+>  			dev_err(&pdev->dev, "clock: %s fail: %ld\n",
+> @@ -260,7 +266,7 @@ static int mtk_pwm_probe(struct platform_device *pdev)
+>  	pc->chip.dev = &pdev->dev;
+>  	pc->chip.ops = &mtk_pwm_ops;
+>  	pc->chip.base = -1;
+> -	pc->chip.npwm = data->num_pwms;
+> +	pc->chip.npwm = num_pwms;
+>  
+>  	ret = pwmchip_add(&pc->chip);
+>  	if (ret < 0) {
+> @@ -279,32 +285,23 @@ static int mtk_pwm_remove(struct platform_device *pdev)
+>  }
+>  
+>  static const struct mtk_pwm_platform_data mt2712_pwm_data = {
+> -	.num_pwms = 8,
+> -	.pwm45_fixup = false,
+> -	.has_clks = true,
+> -};
+> -
+> -static const struct mtk_pwm_platform_data mt7622_pwm_data = {
+> -	.num_pwms = 6,
+>  	.pwm45_fixup = false,
+>  	.has_clks = true,
+
+I agree with Matthias Brugger that at least for some time you should be
+able to fall back to the right number of pwms if the device tree doesn't
+have a num-pwms property.
+
+Best regards
+Uwe
 
 -- 
-
-Thanks,
-
-David / dhildenb
+Pengutronix e.K.                           | Uwe Kleine-König            |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
