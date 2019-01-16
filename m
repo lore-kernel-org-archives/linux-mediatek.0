@@ -1,82 +1,39 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: [PATCH 2/3] mailbox: mediatek: Implement abort_data function.
-Date: Wed, 16 Jan 2019 13:04:34 +0800
-Message-ID: <20190116050435.11624-3-ck.hu@mediatek.com>
-References: <20190116050435.11624-1-ck.hu@mediatek.com>
+From: <Tudor.Ambarus@microchip.com>
+Subject: Re: [PATCH v2 2/3] mtd: spi-nor: mtk-quadspi: add SNOR_HWCAPS_READ to
+ spi_nor_hwcaps mask
+Date: Wed, 16 Jan 2019 06:05:10 +0000
+Message-ID: <9788fb78-7289-1c5d-51db-75aff997b5e0@microchip.com>
+References: <74d710ed89fd505a49bce53b51f6cb489e313dbb.1547538621.git.ryder.lee@mediatek.com>
+ <2afa18c0c898259fc244f15844c5319f71e811df.1547538621.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190116050435.11624-1-ck.hu@mediatek.com>
+In-Reply-To: <2afa18c0c898259fc244f15844c5319f71e811df.1547538621.git.ryder.lee@mediatek.com>
+Content-Language: en-US
+Content-ID: <33A36E50F9B6AB41B4C15449CD7065BA@namprd11.prod.outlook.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Houlong Wei <houlong.wei@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, CK Hu <ck.hu@mediatek.com>
+To: ryder.lee@mediatek.com, marek.vasut@gmail.com, computersforpeace@gmail.com, boris.brezillon@bootlin.com
+Cc: devicetree@vger.kernel.org, guochun.mao@mediatek.com, weijie.gao@mediatek.com, linux-kernel@vger.kernel.org, robh+dt@kernel.org, linux-mtd@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-For client driver which need to reorganize the command buffer, it could
-use this function to abort the sent but not executed command buffer.
-
-Signed-off-by: CK Hu <ck.hu@mediatek.com>
----
- drivers/mailbox/mtk-cmdq-mailbox.c | 40 ++++++++++++++++++++++++++++++
- 1 file changed, 40 insertions(+)
-
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index 22811784dc7d..f2219f263ef6 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -417,6 +417,45 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
- 	return 0;
- }
- 
-+static void cmdq_mbox_abort_data(struct mbox_chan *chan)
-+{
-+	struct cmdq_thread *thread = (struct cmdq_thread *)chan->con_priv;
-+	struct cmdq *cmdq = dev_get_drvdata(chan->mbox->dev);
-+	struct cmdq_task *task, *tmp;
-+	unsigned long flags;
-+	u32 enable;
-+
-+	spin_lock_irqsave(&thread->chan->lock, flags);
-+	if (list_empty(&thread->task_busy_list))
-+		goto out;
-+
-+	WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
-+	if (!cmdq_thread_is_in_wfe(thread))
-+		goto wait;
-+
-+	list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
-+				 list_entry) {
-+		list_del(&task->list_entry);
-+		kfree(task);
-+	}
-+
-+	cmdq_thread_resume(thread);
-+	cmdq_thread_disable(cmdq, thread);
-+	clk_disable(cmdq->clock);
-+
-+out:
-+	spin_unlock_irqrestore(&thread->chan->lock, flags);
-+	return;
-+
-+wait:
-+	cmdq_thread_resume(thread);
-+	spin_unlock_irqrestore(&thread->chan->lock, flags);
-+	if (readl_poll_timeout_atomic(thread->base + CMDQ_THR_ENABLE_TASK,
-+				      enable, !enable, 1, 20))
-+		dev_err(cmdq->mbox.dev, "Fail to wait GCE thread 0x%x done\n",
-+			(u32)(thread->base - cmdq->base));
-+}
-+
- static int cmdq_mbox_startup(struct mbox_chan *chan)
- {
- 	return 0;
-@@ -427,6 +466,7 @@ static void cmdq_mbox_shutdown(struct mbox_chan *chan)
- }
- 
- static const struct mbox_chan_ops cmdq_mbox_chan_ops = {
-+	.abort_data = cmdq_mbox_abort_data,
- 	.send_data = cmdq_mbox_send_data,
- 	.startup = cmdq_mbox_startup,
- 	.shutdown = cmdq_mbox_shutdown,
--- 
-2.18.1
+DQoNCk9uIDAxLzE2LzIwMTkgMDQ6MTIgQU0sIFJ5ZGVyIExlZSB3cm90ZToNCj4gRnJvbTogR3Vv
+Y2h1biBNYW8gPGd1b2NodW4ubWFvQG1lZGlhdGVrLmNvbT4NCj4gDQo+IFNOT1JfSFdDQVBTX1JF
+QUQgc2hvdWxkIGJlIHN1cHBvcnRlZCBieSB0aGlzIGNvbnRyb2xsZXIsIHNvIGFkZCB0aGlzDQo+
+IGZsYWcgdG8gc3BpX25vcl9od2NhcHMgbWFzay4NCj4gDQo+IFNpZ25lZC1vZmYtYnk6IEd1b2No
+dW4gTWFvIDxndW9jaHVuLm1hb0BtZWRpYXRlay5jb20+DQo+IFNpZ25lZC1vZmYtYnk6IFJ5ZGVy
+IExlZSA8cnlkZXIubGVlQG1lZGlhdGVrLmNvbT4NCg0KUmV2aWV3ZWQtYnk6IFR1ZG9yIEFtYmFy
+dXMgPHR1ZG9yLmFtYmFydXNAbWljcm9jaGlwLmNvbT4NCg0KPiAtLS0NCj4gQ2hhbmdlcyBzaW5j
+ZSB2MjogUmV2aXNlIGNvbW1pdCBtc2cuIA0KPiBDaGFuZ2VzIHNpbmNlIHYxOiBub25lLiANCj4g
+LS0tDQo+ICBkcml2ZXJzL210ZC9zcGktbm9yL210ay1xdWFkc3BpLmMgfCAzICsrLQ0KPiAgMSBm
+aWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQ0KPiANCj4gZGlmZiAt
+LWdpdCBhL2RyaXZlcnMvbXRkL3NwaS1ub3IvbXRrLXF1YWRzcGkuYyBiL2RyaXZlcnMvbXRkL3Nw
+aS1ub3IvbXRrLXF1YWRzcGkuYw0KPiBpbmRleCA1NDQyOTkzLi5kOWVlZDY4IDEwMDY0NA0KPiAt
+LS0gYS9kcml2ZXJzL210ZC9zcGktbm9yL210ay1xdWFkc3BpLmMNCj4gKysrIGIvZHJpdmVycy9t
+dGQvc3BpLW5vci9tdGstcXVhZHNwaS5jDQo+IEBAIC00MzEsNyArNDMxLDggQEAgc3RhdGljIGlu
+dCBtdGtfbm9yX2luaXQoc3RydWN0IG10a19ub3IgKm10a19ub3IsDQo+ICAJCQlzdHJ1Y3QgZGV2
+aWNlX25vZGUgKmZsYXNoX25vZGUpDQo+ICB7DQo+ICAJY29uc3Qgc3RydWN0IHNwaV9ub3JfaHdj
+YXBzIGh3Y2FwcyA9IHsNCj4gLQkJLm1hc2sgPSBTTk9SX0hXQ0FQU19SRUFEX0ZBU1QgfA0KPiAr
+CQkubWFzayA9IFNOT1JfSFdDQVBTX1JFQUQgfA0KPiArCQkJU05PUl9IV0NBUFNfUkVBRF9GQVNU
+IHwNCj4gIAkJCVNOT1JfSFdDQVBTX1JFQURfMV8xXzIgfA0KPiAgCQkJU05PUl9IV0NBUFNfUFAs
+DQo+ICAJfTsNCj4gDQo=
