@@ -1,73 +1,97 @@
-From: Peter Shih <pihsun@chromium.org>
-Subject: Re: [RFC v2 1/6] dt-bindings: Add a binding for Mediatek SCP
-Date: Wed, 16 Jan 2019 12:00:16 +0800
-Message-ID: <CANdKZ0fbP1Nm3GkO1ujeuaj4zAOQCdJ3MPowDQ-fJCUZ42a3dA@mail.gmail.com>
-References: <20190108052606.59426-1-pihsun@chromium.org>
- <20190108052606.59426-2-pihsun@chromium.org>
- <20190115203448.GA32546@bogus>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: [PATCH 1/3] mailbox: Add ability for clients to abort data in channel
+Date: Wed, 16 Jan 2019 13:04:33 +0800
+Message-ID: <20190116050435.11624-2-ck.hu@mediatek.com>
+References: <20190116050435.11624-1-ck.hu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190115203448.GA32546@bogus>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh@kernel.org>
-Cc: Ohad Ben-Cohen <ohad@wizery.com>, Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat <drinkcat@chromium.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Erin Lo <erin.lo@mediatek.com>, "open list:REMOTE PROCESSOR (REMOTEPROC) SUBSYSTEM" <linux-remoteproc@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, Bjorn Andersson <bjorn.andersson@linaro.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190116050435.11624-1-ck.hu@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Houlong Wei <houlong.wei@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, CK Hu <ck.hu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jan 16, 2019 at 4:34 AM Rob Herring <robh@kernel.org> wrote:
->
-> On Tue, Jan 08, 2019 at 01:26:01PM +0800, Pi-Hsun Shih wrote:
-> > From: Erin Lo <erin.lo@mediatek.com>
-> >
-> > Add a DT binding documentation of SCP for the
-> > MT8183 SoC from Mediatek.
-> >
-> > Signed-off-by: Erin Lo <erin.lo@mediatek.com>
-> > ---
-> > Changes from v1:
-> >  - no change
->
-> No answer to my question on v1?
->
+This patch supplies a new framework API, mbox_abort_channel(), and
+a new controller interface, abort_data().
 
-Sorry I missed the last mail.
+For some client's application, it need to clean up the data in channel
+but keep the channel so it could send data to channel later.
 
-Yes there would be additional optional properties. For the current patch
-series, the "cros-ec-rpmsg" entry would not be listed in the device tree, but
-there would be a "mediatek,mt8183-rpmsg" under this node.
+Signed-off-by: CK Hu <ck.hu@mediatek.com>
+---
+ drivers/mailbox/mailbox.c          | 23 +++++++++++++++++++++++
+ include/linux/mailbox_client.h     |  1 +
+ include/linux/mailbox_controller.h |  4 ++++
+ 3 files changed, 28 insertions(+)
 
-Would update this in v3.
-
-> > ---
-> >  .../devicetree/bindings/remoteproc/mtk,scp.txt         | 10 ++++++++++
-> >  1 file changed, 10 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
-> >
-> > diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt b/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
-> > new file mode 100644
-> > index 00000000000000..b07e5c4ca9af1d
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
-> > @@ -0,0 +1,10 @@
-> > +Mediatek SCP Bindings
-> > +----------------------------------------
-> > +
-> > +This binding provides support for ARM Cortex M4 Co-processor found on some
-> > +Mediatek SoCs.
-> > +
-> > +Required properties:
-> > +- compatible         Should be "mediatek,mt8183-scp"
-> > +- clocks             Clock for co-processor (See: ../clock/clock-bindings.txt)
-> > +
-> > --
-> > 2.20.1.97.g81188d93c3-goog
-> >
+diff --git a/drivers/mailbox/mailbox.c b/drivers/mailbox/mailbox.c
+index c6a7d4582dc6..281647162c76 100644
+--- a/drivers/mailbox/mailbox.c
++++ b/drivers/mailbox/mailbox.c
+@@ -428,6 +428,29 @@ struct mbox_chan *mbox_request_channel_byname(struct mbox_client *cl,
+ }
+ EXPORT_SYMBOL_GPL(mbox_request_channel_byname);
+ 
++/**
++ * mbox_abort_channel - The client abort all data in a mailbox
++ *			channel by this call.
++ * @chan: The mailbox channel to be aborted.
++ */
++void mbox_abort_channel(struct mbox_chan *chan)
++{
++	unsigned long flags;
++
++	if (!chan || !chan->cl)
++		return;
++
++	if (chan->mbox->ops->abort_data)
++		chan->mbox->ops->abort_data(chan);
++
++	/* The queued TX requests are simply aborted, no callbacks are made */
++	spin_lock_irqsave(&chan->lock, flags);
++	chan->cl = NULL;
++	chan->active_req = NULL;
++	spin_unlock_irqrestore(&chan->lock, flags);
++}
++EXPORT_SYMBOL_GPL(mbox_abort_channel);
++
+ /**
+  * mbox_free_channel - The client relinquishes control of a mailbox
+  *			channel by this call.
+diff --git a/include/linux/mailbox_client.h b/include/linux/mailbox_client.h
+index faa7da3c9c8b..209d1d458029 100644
+--- a/include/linux/mailbox_client.h
++++ b/include/linux/mailbox_client.h
+@@ -47,6 +47,7 @@ int mbox_send_message(struct mbox_chan *chan, void *mssg);
+ int mbox_flush(struct mbox_chan *chan, unsigned long timeout);
+ void mbox_client_txdone(struct mbox_chan *chan, int r); /* atomic */
+ bool mbox_client_peek_data(struct mbox_chan *chan); /* atomic */
++void mbox_abort_channel(struct mbox_chan *chan); /* may sleep */
+ void mbox_free_channel(struct mbox_chan *chan); /* may sleep */
+ 
+ #endif /* __MAILBOX_CLIENT_H */
+diff --git a/include/linux/mailbox_controller.h b/include/linux/mailbox_controller.h
+index 4994a438444c..518aa4ca2fe4 100644
+--- a/include/linux/mailbox_controller.h
++++ b/include/linux/mailbox_controller.h
+@@ -27,6 +27,9 @@ struct mbox_chan;
+  * @flush:	Called when a client requests transmissions to be blocking but
+  *		the context doesn't allow sleeping. Typically the controller
+  *		will implement a busy loop waiting for the data to flush out.
++ * @abort_data:	Called when a client relinquishes control of a chan.
++ *		This call may block too. The controller may do stuff
++ *		that need to sleep.
+  * @startup:	Called when a client requests the chan. The controller
+  *		could ask clients for additional parameters of communication
+  *		to be provided via client's chan_data. This call may
+@@ -50,6 +53,7 @@ struct mbox_chan;
+ struct mbox_chan_ops {
+ 	int (*send_data)(struct mbox_chan *chan, void *data);
+ 	int (*flush)(struct mbox_chan *chan, unsigned long timeout);
++	void (*abort_data)(struct mbox_chan *chan);
+ 	int (*startup)(struct mbox_chan *chan);
+ 	void (*shutdown)(struct mbox_chan *chan);
+ 	bool (*last_tx_done)(struct mbox_chan *chan);
+-- 
+2.18.1
