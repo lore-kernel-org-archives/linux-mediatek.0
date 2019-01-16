@@ -1,47 +1,64 @@
-From: Min Guo <min.guo@mediatek.com>
-Subject: Re: [PATCH v2 4/4] usb: musb: Add support for MediaTek musb
- controller
-Date: Wed, 16 Jan 2019 17:39:02 +0800
-Message-ID: <1547631542.4433.232.camel@mhfsdcap03>
-References: <1547516626-5084-1-git-send-email-min.guo@mediatek.com>
-         <1547516626-5084-5-git-send-email-min.guo@mediatek.com>
-         <20190115203815.GD18026@uda0271908>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH] pwm: Add MediaTek MT8183 display PWM driver support
+Date: Wed, 16 Jan 2019 11:25:18 +0100
+Message-ID: <43c39979-e5be-0f4a-51ec-d89ea2b8bfff@gmail.com>
+References: <20190116075252.24124-1-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190115203815.GD18026@uda0271908>
+In-Reply-To: <20190116075252.24124-1-jitao.shi@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Bin Liu <b-liu@ti.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, chunfeng.yun@mediatek.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Yonglong Wu <yonglong.wu@mediatek.com>
+To: Jitao Shi <jitao.shi@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, David Airlie <airlied@linux.ie>
+Cc: Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, sj.huang@mediatek.com, bibby.hsieh@mediatek.com, ck.hu@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Bin,
 
-On Tue, 2019-01-15 at 14:38 -0600, Bin Liu wrote:
-> Hi Min,
+
+On 16/01/2019 08:52, Jitao Shi wrote:
+> Use the mtk_pwm_data struction to define different registers
+> and add MT8183 specific register operations, such as MT8183
+> have commit register, needs to enable double buffer
+
+has_commit is set to false, so I suppose you mean that MT8183 does not have a
+commit register.
+
+Regards,
+Matthias
+
+> before writing register, and needs to select commit mode
+> and use PWM_PERIOD/PWM_HIGH_WIDTH.
 > 
-> very close, thanks.
-> Below I tried to explain a further cleanup in musb_clearb/w() and
-> musb_get/set_toggle() implementation. Please let me know if it is not
-> clear.
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> ---
+>  drivers/pwm/pwm-mtk-disp.c | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
 > 
-> Basically, we don't need musb_default_clearb/w(), just assign the
-> musb_io function pointers to musb_readb/w().
+> diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
+> index 893940d45f0d..15803c71fe80 100644
+> --- a/drivers/pwm/pwm-mtk-disp.c
+> +++ b/drivers/pwm/pwm-mtk-disp.c
+> @@ -277,10 +277,21 @@ static const struct mtk_pwm_data mt8173_pwm_data = {
+>  	.commit_mask = 0x1,
+>  };
+>  
+> +static const struct mtk_pwm_data mt8183_pwm_data = {
+> +	.enable_mask = BIT(0),
+> +	.con0 = 0x18,
+> +	.con0_sel = 0x0,
+> +	.con1 = 0x1c,
+> +	.has_commit = false,
+> +	.bls_debug = 0x80,
+> +	.bls_debug_mask = 0x3,
+> +};
+> +
+>  static const struct of_device_id mtk_disp_pwm_of_match[] = {
+>  	{ .compatible = "mediatek,mt2701-disp-pwm", .data = &mt2701_pwm_data},
+>  	{ .compatible = "mediatek,mt6595-disp-pwm", .data = &mt8173_pwm_data},
+>  	{ .compatible = "mediatek,mt8173-disp-pwm", .data = &mt8173_pwm_data},
+> +	{ .compatible = "mediatek,mt8183-disp-pwm", .data = &mt8183_pwm_data},
+>  	{ }
+>  };
+>  MODULE_DEVICE_TABLE(of, mtk_disp_pwm_of_match);
 > 
-> Then the mtk platform musb_clearb/w() calls musb_readb/w() and
-> musb_writeb/w() to handle W1C.
-
-Sorry to bother you again, I encounter a problem when prepare the patch.
-The define of musb_clearb/w and musb_readb/w are difference as follow,
-and cannot be directly assigned:
-u8/u16 (*readb/w)(const void __iomem *addr, unsigned offset)
-void (*clearb/w)(void __iomem *addr, unsigned int offset)) 
-
-if modify clearb/w as:
-u8/u16 (*clearb/w)(const void __iomem *addr, unsigned int offset)) 
-then musb_clear needs writeb/w the const addr.
-Can I delete const in (*readb/w)?
-
-> regards,
-> -Bin.
