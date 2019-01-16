@@ -1,74 +1,82 @@
-From: Bin Liu <b-liu@ti.com>
-Subject: Re: [PATCH v2 3/4] usb: musb: Extract set toggle as a separate
- interface
-Date: Tue, 15 Jan 2019 14:40:49 -0600
-Message-ID: <20190115204049.GE18026@uda0271908>
-References: <1547516626-5084-1-git-send-email-min.guo@mediatek.com>
- <1547516626-5084-4-git-send-email-min.guo@mediatek.com>
- <a4e71c59-8e25-b3e9-797f-46d918121dd4@gmail.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: [PATCH 1/2] drm/mediatek: Implement gem prime vmap/vunmap function
+Date: Wed, 16 Jan 2019 09:39:23 +0800
+Message-ID: <20190116013924.11345-1-ck.hu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <a4e71c59-8e25-b3e9-797f-46d918121dd4@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Alan Stern <stern@rowland.harvard.edu>, min.guo@mediatek.com, chunfeng.yun@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, =?UTF-8?q?Noralf=20Tr=F8nnes?= <noralf@tronnes.org>, Frank Wunderlich <frank-w@public-files.de>
+Cc: srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Min,
-
-On Tue, Jan 15, 2019 at 04:19:42PM +0100, Matthias Brugger wrote:
-> 
-> 
-> On 15/01/2019 02:43, min.guo@mediatek.com wrote:
-> > From: Min Guo <min.guo@mediatek.com>
-> > 
-> > Add a common interface for set data toggle
-> > 
-> > Signed-off-by: Min Guo <min.guo@mediatek.com>
-> > ---
-> >  drivers/usb/musb/musb_host.c | 37 +++++++++++++++++++++++--------------
-> >  1 file changed, 23 insertions(+), 14 deletions(-)
-> > 
-> > diff --git a/drivers/usb/musb/musb_host.c b/drivers/usb/musb/musb_host.c
-> > index b59ce9a..16d0ba4 100644
-> > --- a/drivers/usb/musb/musb_host.c
-> > +++ b/drivers/usb/musb/musb_host.c
-> > @@ -306,6 +306,25 @@ static inline void musb_save_toggle(struct musb_qh *qh, int is_in,
-> >  	usb_settoggle(urb->dev, qh->epnum, !is_in, csr ? 1 : 0);
-> >  }
-> >  
-> > +static inline u16 musb_set_toggle(struct musb_qh *qh, int is_in,
-> > +	struct urb *urb)
-> > +{
-> > +	u16 csr = 0;
-> > +	u16 toggle = 0;
-> > +
-> > +	toggle = usb_gettoggle(urb->dev, qh->epnum, !is_in);
-> > +
-> > +	if (is_in)
-> > +		csr = toggle ? (MUSB_RXCSR_H_WR_DATATOGGLE
-> > +				| MUSB_RXCSR_H_DATATOGGLE) : 0;
-> > +	else
-> > +		csr = toggle ? (MUSB_TXCSR_H_WR_DATATOGGLE
-> > +				| MUSB_TXCSR_H_DATATOGGLE)
-> > +				: MUSB_TXCSR_CLRDATATOG;
-> 
-> Can we switch the if and use is_out logic as function parameter. This would make
-> the code easier to understand.
-
-based on the current implementation in patch 4/4, I don't think we need
-this separate patch any more, but Matthias' comments still apply.
-
-Regards,
--Bin.
+Rm9yIHNvbWUgYXBwbGljYXRpb24gd2hpY2ggbmVlZCBrZXJuZWwgdmlydHVhbCBhZGRyZXNzLCBz
+dWNoIGFzIGZiY29uLAppbXBsZW1lbnQgdGhlc2UgZnVuY3Rpb24gdG8gbWFwL3VubWFwIGtlcm5l
+bCB2aXJ0dWFsIGFkZHJlc3Mgb2YgcHJpbWUKYnVmZmVyLgoKU2lnbmVkLW9mZi1ieTogQ0sgSHUg
+PGNrLmh1QG1lZGlhdGVrLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
+bV9kcnYuYyB8ICAyICsrCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uYyB8
+IDQ2ICsrKysrKysrKysrKysrKysrKysrKysrKysrCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
+bXRrX2RybV9nZW0uaCB8ICAzICsrCiAzIGZpbGVzIGNoYW5nZWQsIDUxIGluc2VydGlvbnMoKykK
+CmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyBiL2Ry
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCmluZGV4IDY0MjJlOTk5NTJmZS4u
+NmVjNGNhMDcwMzgyIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
+bV9kcnYuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwpAQCAt
+MzQxLDYgKzM0MSw4IEBAIHN0YXRpYyBzdHJ1Y3QgZHJtX2RyaXZlciBtdGtfZHJtX2RyaXZlciA9
+IHsKIAkuZ2VtX3ByaW1lX2dldF9zZ190YWJsZSA9IG10a19nZW1fcHJpbWVfZ2V0X3NnX3RhYmxl
+LAogCS5nZW1fcHJpbWVfaW1wb3J0X3NnX3RhYmxlID0gbXRrX2dlbV9wcmltZV9pbXBvcnRfc2df
+dGFibGUsCiAJLmdlbV9wcmltZV9tbWFwID0gbXRrX2RybV9nZW1fbW1hcF9idWYsCisJLmdlbV9w
+cmltZV92bWFwID0gbXRrX2RybV9nZW1fcHJpbWVfdm1hcCwKKwkuZ2VtX3ByaW1lX3Z1bm1hcCA9
+IG10a19kcm1fZ2VtX3ByaW1lX3Z1bm1hcCwKIAkuZm9wcyA9ICZtdGtfZHJtX2ZvcHMsCiAKIAku
+bmFtZSA9IERSSVZFUl9OQU1FLApkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19kcm1fZ2VtLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uYwpp
+bmRleCAyNTliN2IwZGUxZDIuLjM4NDgzZTllZTA3MSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19kcm1fZ2VtLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19kcm1fZ2VtLmMKQEAgLTI0MSwzICsyNDEsNDkgQEAgc3RydWN0IGRybV9nZW1fb2JqZWN0
+ICptdGtfZ2VtX3ByaW1lX2ltcG9ydF9zZ190YWJsZShzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAog
+CWtmcmVlKG10a19nZW0pOwogCXJldHVybiBFUlJfUFRSKHJldCk7CiB9CisKK3ZvaWQgKm10a19k
+cm1fZ2VtX3ByaW1lX3ZtYXAoc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmopCit7CisJc3RydWN0
+IG10a19kcm1fZ2VtX29iaiAqbXRrX2dlbSA9IHRvX210a19nZW1fb2JqKG9iaik7CisJc3RydWN0
+IHNnX3RhYmxlICpzZ3Q7CisJc3RydWN0IHNnX3BhZ2VfaXRlciBpdGVyOworCXVuc2lnbmVkIGlu
+dCBucGFnZXM7CisJdW5zaWduZWQgaW50IGkgPSAwOworCisJaWYgKG10a19nZW0tPmt2YWRkcikK
+KwkJcmV0dXJuIG10a19nZW0tPmt2YWRkcjsKKworCXNndCA9IG10a19nZW1fcHJpbWVfZ2V0X3Nn
+X3RhYmxlKG9iaik7CisJaWYgKElTX0VSUihzZ3QpKQorCQlyZXR1cm4gTlVMTDsKKworCW5wYWdl
+cyA9IG9iai0+c2l6ZSA+PiBQQUdFX1NISUZUOworCW10a19nZW0tPnBhZ2VzID0ga2NhbGxvYyhu
+cGFnZXMsIHNpemVvZigqbXRrX2dlbS0+cGFnZXMpLCBHRlBfS0VSTkVMKTsKKwlpZiAoIW10a19n
+ZW0tPnBhZ2VzKQorCQlnb3RvIG91dDsKKworCWZvcl9lYWNoX3NnX3BhZ2Uoc2d0LT5zZ2wsICZp
+dGVyLCBzZ3QtPm9yaWdfbmVudHMsIDApIHsKKwkJbXRrX2dlbS0+cGFnZXNbaSsrXSA9IHNnX3Bh
+Z2VfaXRlcl9wYWdlKCZpdGVyKTsKKwkJaWYgKGkgPiBucGFnZXMpCisJCQlicmVhazsKKwl9CisJ
+bXRrX2dlbS0+a3ZhZGRyID0gdm1hcChtdGtfZ2VtLT5wYWdlcywgbnBhZ2VzLCBWTV9NQVAsCisJ
+CQkgICAgICAgcGdwcm90X3dyaXRlY29tYmluZShQQUdFX0tFUk5FTCkpOworCitvdXQ6CisJa2Zy
+ZWUoKHZvaWQgKilzZ3QpOworCisJcmV0dXJuIG10a19nZW0tPmt2YWRkcjsKK30KKwordm9pZCBt
+dGtfZHJtX2dlbV9wcmltZV92dW5tYXAoc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmosIHZvaWQg
+KnZhZGRyKQoreworCXN0cnVjdCBtdGtfZHJtX2dlbV9vYmogKm10a19nZW0gPSB0b19tdGtfZ2Vt
+X29iaihvYmopOworCisJaWYgKCFtdGtfZ2VtLT5wYWdlcykKKwkJcmV0dXJuOworCisJdnVubWFw
+KHZhZGRyKTsKKwltdGtfZ2VtLT5rdmFkZHIgPSAwOworCWtmcmVlKCh2b2lkICopbXRrX2dlbS0+
+cGFnZXMpOworfQpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1f
+Z2VtLmggYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uaAppbmRleCA1MzQ2
+MzliNDNhMWMuLmMwNDdhN2VmMjk0ZiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlh
+dGVrL210a19kcm1fZ2VtLmgKKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1f
+Z2VtLmgKQEAgLTM3LDYgKzM3LDcgQEAgc3RydWN0IG10a19kcm1fZ2VtX29iaiB7CiAJZG1hX2Fk
+ZHJfdAkJZG1hX2FkZHI7CiAJdW5zaWduZWQgbG9uZwkJZG1hX2F0dHJzOwogCXN0cnVjdCBzZ190
+YWJsZQkJKnNnOworCXN0cnVjdCBwYWdlCQkqKnBhZ2VzOwogfTsKIAogI2RlZmluZSB0b19tdGtf
+Z2VtX29iaih4KQljb250YWluZXJfb2YoeCwgc3RydWN0IG10a19kcm1fZ2VtX29iaiwgYmFzZSkK
+QEAgLTUyLDUgKzUzLDcgQEAgaW50IG10a19kcm1fZ2VtX21tYXBfYnVmKHN0cnVjdCBkcm1fZ2Vt
+X29iamVjdCAqb2JqLAogc3RydWN0IHNnX3RhYmxlICptdGtfZ2VtX3ByaW1lX2dldF9zZ190YWJs
+ZShzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaik7CiBzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm10
+a19nZW1fcHJpbWVfaW1wb3J0X3NnX3RhYmxlKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsCiAJCQlz
+dHJ1Y3QgZG1hX2J1Zl9hdHRhY2htZW50ICphdHRhY2gsIHN0cnVjdCBzZ190YWJsZSAqc2cpOwor
+dm9pZCAqbXRrX2RybV9nZW1fcHJpbWVfdm1hcChzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaik7
+Cit2b2lkIG10a19kcm1fZ2VtX3ByaW1lX3Z1bm1hcChzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9i
+aiwgdm9pZCAqdmFkZHIpOwogCiAjZW5kaWYKLS0gCjIuMTguMQoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
+ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
