@@ -1,82 +1,79 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: Re: [PATCH v1 00/10] cpufreq: Add flag to auto-register as cooling
- device
-Date: Thu, 17 Jan 2019 11:19:16 +0530
-Message-ID: <20190117054916.dqduckt7larn32av@vireshk-i7>
-References: <cover.1547481320.git.amit.kucheria@linaro.org>
+From: <min.guo@mediatek.com>
+Subject: [PATCH v3 0/4] Add MediaTek MUSB Controller Driver
+Date: Thu, 17 Jan 2019 15:15:44 +0800
+Message-ID: <1547709348-17506-1-git-send-email-min.guo@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <cover.1547481320.git.amit.kucheria@linaro.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Amit Kucheria <amit.kucheria@linaro.org>
-Cc: "open list:CPU FREQUENCY DRIVERS" <linux-pm@vger.kernel.org>, linux-arm-msm@vger.kernel.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>, dianders@chromium.org, linux-kernel@vger.kernel.org, edubezval@gmail.com, mka@chromium.org, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Sudeep Holla <sudeep.holla@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, swboyd@chromium.org, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Bin Liu <b-liu@ti.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, chunfeng.yun@mediatek.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, tony@atomide.com, hdegoede@redhat.com, Min Guo <min.guo@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 14-01-19, 22:04, Amit Kucheria wrote:
-> Add a flag to be used by cpufreq drivers to tell cpufreq core to
-> auto-register themselves as a thermal cooling device.
-> 
-> There series converts over all the drivers except arm_big_little.c.
-> Tested on SDM845 with the qcom-cpufreq-hw driver. Only compile-tested the
-> others. 
-> 
-> Things needing fixing:
->  - Look at how to detect that we're not in IKS mode in arm_big_little's
->    .ready callback.
+From: Min Guo <min.guo@mediatek.com>
 
-is_bL_switching_enabled() lets you know if IKS is enabled or not.
-Set/clear flag conditionally before the cpufreq-driver is registered,
-based on the output of is_bL_switching_enabled().
+These patches introduce the MediaTek MUSB controller driver.
 
->  - The other pending issue is to fix allmodconfig that leaves us with
->    CPU_FREQ=y and THERMAL=m (CPU_THERMAL=y). That leads to undefined
->    references for functions defined in cpu_cooling.c
+The driver can be configured as Dual-Role Device (DRD),
+Peripheral Only and Host Only modes. This has beed tested on
+MT2701 with a variety of devices in host mode and with the 
+f_mass gadget driver in peripheral mode, plugging otg cables
+in/out a lot of times in all possible imaginable plug orders.
 
-Okay, that's a terrible thing and the solution looks to be rather
-difficult.
+changes in v3:
+changes of driver suggested by Bin:
+1. Add a new patch for musb_readb/w/l() to remove const attribute 
+2. Use is_out as function parameter in set_toggle/get_toggle() hooks
+3. Remove 'u8/u16 data' parameter in clearb/w() hooks
+4. Remove musb_default_clearb/w()
+5. Replace musb_readb/w() with musb_clearb/w() to clear pending interrupts 
+6. Add comments to clearb/w() hooks
+7. Replace musb_save_toggle() with musb->io.get_toggle()
+8. Replace musb_set_toggle() with musb->io.set_toggle()
 
-For others who may not be aware of the issue here, currently the
-cpufreq drivers use helpers of cpu_cooling.c (CONFIG_CPU_THERMAL),
-which uses helpers of the thermal core (CONFIG_THERMAL).
-CONFIG_THERMAL is defined as tristate and CONFIG_CPU_THERMAL as bool
-in Kconfigs.
+changes in v2:
+changes of dt-bindings suggested by Rob:
+1. Modify DRC to DRD
+2. Drop the "<soc-model>-musb" in compatible
+3. Remove phy-names
+4. Add space after comma in clock-names
+dtsi:
+1. Remove phy-names
+changes of driver suggested by Bin:
+1. Add a new patch for musb_set_toggle
+2. Add summarize of MediaTek musb controller differences in the commit log
+3. Abondon patch "usb: musb: Move musbhsdma macro definition to musb_dma.h"
+4. Add "|| COMPILE_TEST" in Kconfig
+5. Add musb_clearb() and musb_clearw() hooks
+6. Add get_toggle() and set_toggle() hooks
+7. Replace musb_readl() with musb_readw() to read 16bit toggle register
+8. Move MediaTek's private toggle registers from musb_regs.h to mediatek.c
+9. Create musbhs_dma_controller_create_noirq()
 
-The cpufreq drivers using the cpu_cooling.c file have this in their
-Kconfig entry:
+Min Guo (4):
+  dt-bindings: usb: musb: Add support for MediaTek musb controller
+  arm: dts: mt2701: Add usb2 device nodes
+  usb: musb: Delete the const attribute of addr parameter in readb/w/l
+    hooks
+  usb: musb: Add support for MediaTek musb controller
 
-# if CPU_THERMAL is on and THERMAL=m, ARM_BIT_LITTLE_CPUFREQ cannot be =y
-#       depends on !CPU_THERMAL || THERMAL
-
-
-This series now places the cpufreq core in place of the cpufreq driver
-and it messes up everything. It is not just about allmodconfig, but
-any configuration which makes the compilation fail.
-
-What are the solutions we have now ?
-
-1. Have following for CONFIG_CPU_FREQ
-       depends on !CPU_THERMAL || THERMAL
-
-   The platforms which don't need CPU_THERMAL (like x86) should not
-   enable CPU_THERMAL anymore if they want CONFIG_THERMAL=m.
-
-   @amit: If this gets accepted, please update the Kconfig entries for
-   all those drivers to not have above lines anymore.
-
-- Change CONFIG_THERMAL to bool instead of tristate ?
-
-- Anything else ?
+ .../devicetree/bindings/usb/mediatek,musb.txt      |  43 ++
+ arch/arm/boot/dts/mt2701-evb.dts                   |  21 +
+ arch/arm/boot/dts/mt2701.dtsi                      |  33 ++
+ drivers/usb/musb/Kconfig                           |   8 +-
+ drivers/usb/musb/Makefile                          |   1 +
+ drivers/usb/musb/mediatek.c                        | 624 +++++++++++++++++++++
+ drivers/usb/musb/musb_core.c                       |  74 ++-
+ drivers/usb/musb/musb_core.h                       |  13 +-
+ drivers/usb/musb/musb_dma.h                        |   9 +
+ drivers/usb/musb/musb_host.c                       |  46 +-
+ drivers/usb/musb/musb_io.h                         |  12 +-
+ drivers/usb/musb/musbhsdma.c                       |  57 +-
+ drivers/usb/musb/sunxi.c                           |   4 +-
+ drivers/usb/musb/tusb6010.c                        |   2 +-
+ 14 files changed, 876 insertions(+), 71 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/usb/mediatek,musb.txt
+ create mode 100644 drivers/usb/musb/mediatek.c
 
 -- 
-viresh
+1.9.1
