@@ -1,50 +1,79 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 3/5] arm64: dts: mt7622: add a property
- "mediatek,num-pwms" for PWM
-Date: Thu, 17 Jan 2019 14:00:43 +0100
-Message-ID: <2edcc5fd-ce60-b585-e0fd-226897a7a34c@gmail.com>
-References: <0c400cb1899c1afb4c9f021350cdc0c6ca3f6239.1547453586.git.ryder.lee@mediatek.com>
- <b5ed4626a553acb5e3107c6c96e82b674439128f.1547453586.git.ryder.lee@mediatek.com>
- <20190115200231.drn2rbxu4jxr22yz@pengutronix.de>
+From: "Frank Wunderlich" <frank-w@public-files.de>
+Subject: Aw: [PATCH 2/2] drm/mediatek: Add Mediatek framebuffer device
+Date: Thu, 17 Jan 2019 15:14:12 +0100
+Message-ID: <trinity-1adab8be-573a-4816-9e9f-feddf07bdcd3-1547734452313@3c-app-gmx-bs28>
+References: <20190116013924.11345-1-ck.hu@mediatek.com>
+ <20190116013924.11345-2-ck.hu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190115200231.drn2rbxu4jxr22yz@pengutronix.de>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>, Ryder Lee <ryder.lee@mediatek.com>
-Cc: linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, Sean Wang <sean.wang@kernel.org>, Weijie Gao <weijie.gao@mediatek.com>, linux-kernel@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190116013924.11345-2-ck.hu@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, =?UTF-8?Q?=22Noralf_Tr=EF=BF=BDnnes=22?= <noralf@tronnes.org>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, CK Hu <ck.hu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-CgpPbiAxNS8wMS8yMDE5IDIxOjAyLCBVd2UgS2xlaW5lLUvDtm5pZyB3cm90ZToKPiBIZWxsbywK
-PiAKPiBPbiBNb24sIEphbiAxNCwgMjAxOSBhdCAwNDoyMToyMlBNICswODAwLCBSeWRlciBMZWUg
-d3JvdGU6Cj4+IFRoaXMgYWRkcyBhIHByb3BlcnR5ICJtZWRpYXRlayxudW0tcHdtcyIgZm9yIFBX
-TSBjb250cm9sbGVyLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBSeWRlciBMZWUgPHJ5ZGVyLmxlZUBt
-ZWRpYXRlay5jb20+Cj4+IC0tLQo+PiAgYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDc2
-MjIuZHRzaSB8IDEgKwo+PiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspCj4+Cj4+IGRp
-ZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210NzYyMi5kdHNpIGIvYXJj
-aC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDc2MjIuZHRzaQo+PiBpbmRleCA4ZmM0YWE3Li5h
-YjAxNmNmIDEwMDY0NAo+PiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210NzYy
-Mi5kdHNpCj4+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ3NjIyLmR0c2kK
-Pj4gQEAgLTQzNiw2ICs0MzYsNyBAQAo+PiAgCQkJIDwmcGVyaWNmZyBDTEtfUEVSSV9QV002X1BE
-PjsKPj4gIAkJY2xvY2stbmFtZXMgPSAidG9wIiwgIm1haW4iLCAicHdtMSIsICJwd20yIiwgInB3
-bTMiLCAicHdtNCIsCj4+ICAJCQkgICAgICAicHdtNSIsICJwd202IjsKPj4gKwkJbWVkaWF0ZWss
-bnVtLXB3bXMgPSA8Nj47Cj4+ICAJCXN0YXR1cyA9ICJkaXNhYmxlZCI7Cj4gCj4gQ29uY2VwdHVh
-bGx5IHRoaXMgcGF0Y2ggbXVzdCBnbyBpbiBiZWZvcmUgdGhlIGNoYW5nZSB0byB0aGUgZHJpdmVy
-Lgo+IE90aGVyd2lzZSB0aGUgcHdtcyBhcmUgbm90IHVzYWJsZSB3aXRoIG9ubHkgcGF0Y2ggMSBh
-cHBsaWVkIHdoaWNoIGJyZWFrcwo+IGJpc2VjdGFiaWxpdHkuCj4gCgpUaGUgZHJpdmVyIHNob3Vs
-ZCBoYXZlIGJhY2t3YXJkcyBjb21wYXRpYmlsaXR5IHRvIG9sZGVyIERUcy4gU28gdGhhdCB3b3Vs
-ZCBuZWVkCnRvIGJlIGZpeGVkIGluIHRoZSBkcml2ZXIgbm90IGluIHRoZSBwYXRjaCBvcmRlciBv
-ZiB0aGUgc2VyaWVzLgoKUmVnYXJkcywKTWF0dGhpYXMKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0Cmxp
-bnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
+Hi,
+
+this Patchset does not hang on Bananapi R2, but does not show anything on FB-Console...seems anything is missing
+
+https://github.com/frank-w/BPI-R2-4.14/tree/4.20-fbdev
+
+dmesg | grep 'fb\|framebuffer'
+[    0.000000] Linux version 4.20.0-rc7-bpi-r2-fbdev (frank@frank-N56VZ) (gcc version 7.3.0 (Ubuntu/Linaro 7.3.0-27ubuntu1~18.04)) 9
+[    0.000000] cma: Reserved 64 MiB at 0xfb800000
+[    0.000000] Kernel command line: board=bpi-r2 console=earlyprintk console=tty1 fbcon=map:0 console=ttyS0,115200 root=/dev/mmcblk7
+[    5.733185] [drm:drm_fb_helper_generic_probe] surface width(1280), height(1024) and bpp(32)
+[    5.754452] [drm:drm_mode_addfb2] [FB:44]
+[    5.792878] mediatek-drm 14000000.dispsys: fb0: DRM emulated frame buffer device
+[    5.814067] [drm:drm_fb_helper_hotplug_event.part.11] 
+[    6.203083] mediatek-drm 14000000.dispsys: [drm:drm_client_dev_hotplug] fbdev: ret=0
+[   24.930347] mediatek-drm 14000000.dispsys: [drm:drm_client_dev_restore] fbdev: ret=0
+[   25.196872] mediatek-drm 14000000.dispsys: [drm:drm_client_dev_restore] fbdev: ret=0
+[   25.281184] [drm:drm_mode_addfb2] [FB:49]
+[   27.947962] [drm:drm_mode_addfb2] [FB:49]
+
+regards Frank
+
+
+> Gesendet: Mittwoch, 16. Januar 2019 um 02:39 Uhr
+> Von: "CK Hu" <ck.hu@mediatek.com>
+> An: "Philipp Zabel" <p.zabel@pengutronix.de>, "David Airlie" <airlied@linux.ie>, "Daniel Vetter" <daniel@ffwll.ch>, "Matthias Brugger" <matthias.bgg@gmail.com>, "Noralf Tr�nnes" <noralf@tronnes.org>, "Frank Wunderlich" <frank-w@public-files.de>
+> Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, "CK Hu" <ck.hu@mediatek.com>
+> Betreff: [PATCH 2/2] drm/mediatek: Add Mediatek framebuffer device
+>
+> For Mediatek drm driver, use fbdev emulation to create a framebuffer
+> device.
+> 
+> Signed-off-by: CK Hu <ck.hu@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> index 6ec4ca070382..5fcc0e294696 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -16,6 +16,7 @@
+>  #include <drm/drm_atomic.h>
+>  #include <drm/drm_atomic_helper.h>
+>  #include <drm/drm_crtc_helper.h>
+> +#include <drm/drm_fb_helper.h>
+>  #include <drm/drm_gem.h>
+>  #include <drm/drm_gem_cma_helper.h>
+>  #include <drm/drm_of.h>
+> @@ -378,6 +379,10 @@ static int mtk_drm_bind(struct device *dev)
+>  	if (ret < 0)
+>  		goto err_deinit;
+>  
+> +	ret = drm_fbdev_generic_setup(drm, 32);
+> +	if (ret)
+> +		DRM_ERROR("Failed to initialize fbdev: %d\n", ret);
+> +
+>  	return 0;
+>  
+>  err_deinit:
+> -- 
+> 2.18.1
+> 
+>
