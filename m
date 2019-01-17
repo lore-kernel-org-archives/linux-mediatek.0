@@ -1,80 +1,55 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH 1/3] mailbox: Add ability for clients to abort data in
- channel
-Date: Thu, 17 Jan 2019 16:00:32 +0800
-Message-ID: <1547712032.5318.17.camel@mtksdaap41>
-References: <20190116050435.11624-1-ck.hu@mediatek.com>
-         <20190116050435.11624-2-ck.hu@mediatek.com>
-         <CABb+yY0JfRbdVb_3wqxve1pYH0ZpFNrA2Kr6qovBruzhbeFRuw@mail.gmail.com>
+From: Chunhui Dai <chunhui.dai@mediatek.com>
+Subject: Re: [PATCH 4/9] drm/mediatek: fix the rate and divder of hdmi phy
+ for MT2701
+Date: Thu, 17 Jan 2019 16:34:35 +0800
+Message-ID: <1547714075.4664.1.camel@mszsdaap41>
+References: <1546585439-30455-1-git-send-email-chunhui.dai@mediatek.com>
+         <1546585439-30455-5-git-send-email-chunhui.dai@mediatek.com>
+         <a3e37dde-2bab-be02-27ec-d15784bd560b@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CABb+yY0JfRbdVb_3wqxve1pYH0ZpFNrA2Kr6qovBruzhbeFRuw@mail.gmail.com>
+In-Reply-To: <a3e37dde-2bab-be02-27ec-d15784bd560b@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jassi Brar <jassisinghbrar@gmail.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Houlong Wei <houlong.wei@mediatek.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: --to=Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, CK Hu <ck.hu@mediatek.com>, wangyan.wang@mediatek.com, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, Colin Ian King <colin.king@canonical.com>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, srv_heupstream@mediatek.com, bibby.hsieh@mediatek.com, jamesjj.liao@mediatek.com, jitao.shi@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Jassi:
+On Wed, 2019-01-09 at 17:54 +0100, Matthias Brugger wrote:
+> 
+> On 04/01/2019 08:03, chunhui dai wrote:
+> > fix the rate and divder of hdmi phy for MT2701.
+> 
+> This is a bug? Then we would need a fixes tag.
 
-On Wed, 2019-01-16 at 10:22 -0600, Jassi Brar wrote:
-> On Tue, Jan 15, 2019 at 11:07 PM CK Hu <ck.hu@mediatek.com> wrote:
-> >
-> > This patch supplies a new framework API, mbox_abort_channel(), and
-> > a new controller interface, abort_data().
-> >
-> > For some client's application, it need to clean up the data in channel
-> > but keep the channel so it could send data to channel later.
-> >
-> > Signed-off-by: CK Hu <ck.hu@mediatek.com>
+yes, we would add the tag in V2.
+
+> Otherwise you should explain in the commit, that you need to change the
+> calculation due to previous commits.
+> 
+> Regards,
+> Matthias
+> 
+> > 
+> > Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
 > > ---
-> >  drivers/mailbox/mailbox.c          | 23 +++++++++++++++++++++++
-> >  include/linux/mailbox_client.h     |  1 +
-> >  include/linux/mailbox_controller.h |  4 ++++
-> >  3 files changed, 28 insertions(+)
-> >
-> > diff --git a/drivers/mailbox/mailbox.c b/drivers/mailbox/mailbox.c
-> > index c6a7d4582dc6..281647162c76 100644
-> > --- a/drivers/mailbox/mailbox.c
-> > +++ b/drivers/mailbox/mailbox.c
-> > @@ -428,6 +428,29 @@ struct mbox_chan *mbox_request_channel_byname(struct mbox_client *cl,
-> >  }
-> >  EXPORT_SYMBOL_GPL(mbox_request_channel_byname);
-> >
-> > +/**
-> > + * mbox_abort_channel - The client abort all data in a mailbox
-> > + *                     channel by this call.
-> > + * @chan: The mailbox channel to be aborted.
-> > + */
-> > +void mbox_abort_channel(struct mbox_chan *chan)
-> > +{
-> > +       unsigned long flags;
-> > +
-> > +       if (!chan || !chan->cl)
-> > +               return;
-> > +
-> > +       if (chan->mbox->ops->abort_data)
-> > +               chan->mbox->ops->abort_data(chan);
-> > +
-> > +       /* The queued TX requests are simply aborted, no callbacks are made */
-> > +       spin_lock_irqsave(&chan->lock, flags);
-> > +       chan->cl = NULL;
-> > +       chan->active_req = NULL;
-> > +       spin_unlock_irqrestore(&chan->lock, flags);
-> > +}
-> >
-> Why not just release and then request channel again ?
-> mbox_abort_channel() is just a copy of mbox_free_channel() and if the
-> abort can sleep, that is more reason to just do that.
-
-The cursor may change position 300 times in one second, so I still
-concern the processing time. Request and free channel looks too heavy to
-do 300 times per second. Conceptually, I just want to clean up the
-channel rather than free and request it, so they are somewhat different.
-I say it may sleep because mbox_abort_channel() is a copy of
-mbox_free_channel(). I could change it to 'must not sleep' because
-Mediatek controller does not sleep in abort callback.
-
-Regards,
-CK
+> >  drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
+> > index a28a32d..10b6235 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
+> > @@ -114,8 +114,8 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+> >  
+> >  	if (rate <= 64000000)
+> >  		pos_div = 3;
+> > -	else if (rate <= 12800000)
+> > -		pos_div = 1;
+> > +	else if (rate <= 128000000)
+> > +		pos_div = 2;
+> >  	else
+> >  		pos_div = 1;
+> >  
+> > 
