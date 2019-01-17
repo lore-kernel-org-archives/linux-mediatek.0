@@ -1,26 +1,81 @@
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Subject: Re: [PATCH v1 00/10] cpufreq: Add flag to auto-register as cooling device
-Date: Thu, 17 Jan 2019 11:31:13 +0100
-Message-ID: <CAJZ5v0idoGcc-j1kZVjsNE9Z76xzN1xe0bb=AW-JFcL0ZjfyMg@mail.gmail.com>
-References: <cover.1547481320.git.amit.kucheria@linaro.org>
- <20190117054916.dqduckt7larn32av@vireshk-i7> <CAJZ5v0jUKcRQot9m5VOxqppWWrD-Cy=USpKMRtcq4zJ5EgmHCg@mail.gmail.com>
- <CAJZ5v0jMOnV-maVfxbD-8HWOV30qzLfYUYN+xMNBhhgJWB2aFw@mail.gmail.com> <20190117102839.xrkhmghp44nzlytd@vireshk-i7>
+From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Subject: Re: [PATCH v3 1/4] dt-bindings: usb: musb: Add support for MediaTek
+ musb controller
+Date: Thu, 17 Jan 2019 14:06:17 +0300
+Message-ID: <15fb900e-c665-8ebd-b2cc-54f47cc35734@cogentembedded.com>
+References: <1547709348-17506-1-git-send-email-min.guo@mediatek.com>
+ <1547709348-17506-2-git-send-email-min.guo@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190117102839.xrkhmghp44nzlytd@vireshk-i7>
+In-Reply-To: <1547709348-17506-2-git-send-email-min.guo@mediatek.com>
+Content-Language: en-MW
 Sender: linux-kernel-owner@vger.kernel.org
-To: Viresh Kumar <viresh.kumar@linaro.org>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Amit Kucheria <amit.kucheria@linaro.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-arm-msm <linux-arm-msm@vger.kernel.org>, Eduardo Valentin <edubezval@gmail.com>, Stephen Boyd <swboyd@chromium.org>, Doug Anderson <dianders@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Matthias Brugger <matthias.bgg@gmail.com>, Sudeep Holla <sudeep.holla@arm.com>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "open list:CPU FREQUENCY DRIVERS" <linux-pm@vger.kernel.org>
+To: min.guo@mediatek.com, Bin Liu <b-liu@ti.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, chunfeng.yun@mediatek.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, tony@atomide.com, hdegoede@redhat.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jan 17, 2019 at 11:28 AM Viresh Kumar <viresh.kumar@linaro.org> wrote:
->
-> On 17-01-19, 11:14, Rafael J. Wysocki wrote:
-> > Alternatively, "depends on THERMAL=y" under CPU_THERMAL should work
-> > too, shouldn't it?  "!CPU_THERMAL || THERMAL" would be always true
-> > then, AFAICS.
->
-> That works and this is the easiest of the changes to make :)
+Hello!
 
-Let's do that, then, I think.
+On 01/17/2019 10:15 AM, min.guo@mediatek.com wrote:
+
+> From: Min Guo <min.guo@mediatek.com>
+> 
+> This adds support for MediaTek musb controller in
+> host, peripheral and otg mode.
+> 
+> Signed-off-by: Min Guo <min.guo@mediatek.com>
+> ---
+>  .../devicetree/bindings/usb/mediatek,musb.txt      | 43 ++++++++++++++++++++++
+>  1 file changed, 43 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/usb/mediatek,musb.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/usb/mediatek,musb.txt b/Documentation/devicetree/bindings/usb/mediatek,musb.txt
+> new file mode 100644
+> index 0000000..3e3f671
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/usb/mediatek,musb.txt
+> @@ -0,0 +1,43 @@
+> +MediaTek musb DRD/OTG controller
+> +-------------------------------------------
+> +
+> +Required properties:
+> + - compatible      : should be "mediatek,mtk-musb"
+> + - reg             : specifies physical base address and size of
+> +   the registers
+
+   I'd indent it more to align with "specifies", else it looks weird.
+
+> + - interrupts      : interrupt used by musb controller
+> + - interrupt-names : must be "mc"
+> + - phys            : PHY specifier for the OTG phy
+> + - dr_mode         : should be one of "host", "peripheral" or "otg",
+> +   refer to usb/generic.txt
+
+  Same here...
+
+> + - clocks          : a list of phandle + clock-specifier pairs, one for
+> +   each entry in clock-names
+
+   Here...
+
+> + - clock-names     : must contain "main", "mcu", "univpll"
+> +   for clocks of controller
+
+  And here.
+
+> +
+> +Optional properties:
+> + - extcon : external connector for VBUS and IDPIN changes detection,
+
+   ID pin, maybe?
+
+> +   needed when supports dual-role mode.
+> + - vbus-supply : reference to the VBUS regulator, needed when supports
+> +   dual-role mode.
+> + - power-domains   : a phandle to USB power domain node to control USB's
+> +   MTCMOS
+[...]
+
+MBR, Sergei
