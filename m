@@ -1,56 +1,82 @@
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-Subject: [PATCH v3,2/3] arm64: dts: Using standard CCF interface to set vcodec clk
-Date: Thu, 17 Jan 2019 13:39:19 +0800
-Message-ID: <1547703560-16195-2-git-send-email-yunfei.dong@mediatek.com>
-References: <1547703560-16195-1-git-send-email-yunfei.dong@mediatek.com>
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: Re: [PATCH v1 00/10] cpufreq: Add flag to auto-register as cooling
+ device
+Date: Thu, 17 Jan 2019 11:19:16 +0530
+Message-ID: <20190117054916.dqduckt7larn32av@vireshk-i7>
+References: <cover.1547481320.git.amit.kucheria@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1547703560-16195-1-git-send-email-yunfei.dong@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Rob Herring <robh+dt@kernel.org>
-Cc: Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Qianqian Yan <qianqian.yan@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <cover.1547481320.git.amit.kucheria@linaro.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Amit Kucheria <amit.kucheria@linaro.org>
+Cc: "open list:CPU FREQUENCY DRIVERS" <linux-pm@vger.kernel.org>, linux-arm-msm@vger.kernel.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>, dianders@chromium.org, linux-kernel@vger.kernel.org, edubezval@gmail.com, mka@chromium.org, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Sudeep Holla <sudeep.holla@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, swboyd@chromium.org, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Using standard CCF interface to set vdec/venc parent clk
-and clk rate.
+On 14-01-19, 22:04, Amit Kucheria wrote:
+> Add a flag to be used by cpufreq drivers to tell cpufreq core to
+> auto-register themselves as a thermal cooling device.
+> 
+> There series converts over all the drivers except arm_big_little.c.
+> Tested on SDM845 with the qcom-cpufreq-hw driver. Only compile-tested the
+> others. 
+> 
+> Things needing fixing:
+>  - Look at how to detect that we're not in IKS mode in arm_big_little's
+>    .ready callback.
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Signed-off-by: Qianqian Yan <qianqian.yan@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+is_bL_switching_enabled() lets you know if IKS is enabled or not.
+Set/clear flag conditionally before the cpufreq-driver is registered,
+based on the output of is_bL_switching_enabled().
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 412ffd4d426b..126d11ee649a 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -1305,6 +1305,15 @@
- 				      "vencpll",
- 				      "venc_lt_sel",
- 				      "vdec_bus_clk_src";
-+			assigned-clocks = <&topckgen CLK_TOP_VENC_LT_SEL>,
-+					  <&topckgen CLK_TOP_CCI400_SEL>,
-+					  <&topckgen CLK_TOP_VDEC_SEL>,
-+					  <&apmixedsys CLK_APMIXED_VCODECPLL>,
-+					  <&apmixedsys CLK_APMIXED_VENCPLL>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL_370P5>,
-+						 <&topckgen CLK_TOP_UNIVPLL_D2>,
-+						 <&topckgen CLK_TOP_VCODECPLL>;
-+			assigned-clock-rates = <0>, <0>, <0>, <1482000000>, <800000000>;
- 		};
- 
- 		larb1: larb@16010000 {
-@@ -1370,6 +1379,10 @@
- 				      "venc_sel",
- 				      "venc_lt_sel_src",
- 				      "venc_lt_sel";
-+			assigned-clocks = <&topckgen CLK_TOP_VENC_SEL>,
-+					  <&topckgen CLK_TOP_VENC_LT_SEL>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_VENCPLL_D2>,
-+						 <&topckgen CLK_TOP_UNIVPLL1_D2>;
- 		};
- 
- 		vencltsys: clock-controller@19000000 {
+>  - The other pending issue is to fix allmodconfig that leaves us with
+>    CPU_FREQ=y and THERMAL=m (CPU_THERMAL=y). That leads to undefined
+>    references for functions defined in cpu_cooling.c
+
+Okay, that's a terrible thing and the solution looks to be rather
+difficult.
+
+For others who may not be aware of the issue here, currently the
+cpufreq drivers use helpers of cpu_cooling.c (CONFIG_CPU_THERMAL),
+which uses helpers of the thermal core (CONFIG_THERMAL).
+CONFIG_THERMAL is defined as tristate and CONFIG_CPU_THERMAL as bool
+in Kconfigs.
+
+The cpufreq drivers using the cpu_cooling.c file have this in their
+Kconfig entry:
+
+# if CPU_THERMAL is on and THERMAL=m, ARM_BIT_LITTLE_CPUFREQ cannot be =y
+#       depends on !CPU_THERMAL || THERMAL
+
+
+This series now places the cpufreq core in place of the cpufreq driver
+and it messes up everything. It is not just about allmodconfig, but
+any configuration which makes the compilation fail.
+
+What are the solutions we have now ?
+
+1. Have following for CONFIG_CPU_FREQ
+       depends on !CPU_THERMAL || THERMAL
+
+   The platforms which don't need CPU_THERMAL (like x86) should not
+   enable CPU_THERMAL anymore if they want CONFIG_THERMAL=m.
+
+   @amit: If this gets accepted, please update the Kconfig entries for
+   all those drivers to not have above lines anymore.
+
+- Change CONFIG_THERMAL to bool instead of tristate ?
+
+- Anything else ?
+
 -- 
-2.20.1
+viresh
