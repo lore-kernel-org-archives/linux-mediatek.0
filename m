@@ -1,71 +1,55 @@
-From: Sam Ravnborg <sam@ravnborg.org>
-Subject: Re: [PATCH] drm: Split out drm_probe_helper.h
-Date: Thu, 17 Jan 2019 18:45:31 +0100
-Message-ID: <20190117174531.GA14041@ravnborg.org>
-References: <20190116163442.12622-1-daniel.vetter@ffwll.ch>
- <20190116181018.GA27364@ravnborg.org>
- <20190117164541.GE3271@phenom.ffwll.local>
+From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=
+        <u.kleine-koenig@pengutronix.de>
+Subject: Re: [PATCH 3/5] arm64: dts: mt7622: add a property
+ "mediatek,num-pwms" for PWM
+Date: Thu, 17 Jan 2019 20:41:07 +0100
+Message-ID: <20190117194107.wrafykdre5tugv4q@pengutronix.de>
+References: <0c400cb1899c1afb4c9f021350cdc0c6ca3f6239.1547453586.git.ryder.lee@mediatek.com>
+ <b5ed4626a553acb5e3107c6c96e82b674439128f.1547453586.git.ryder.lee@mediatek.com>
+ <20190115200231.drn2rbxu4jxr22yz@pengutronix.de>
+ <2edcc5fd-ce60-b585-e0fd-226897a7a34c@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20190117164541.GE3271@phenom.ffwll.local>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel@ffwll.ch>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Liviu Dudau <liviu.dudau@arm.com>, DRI Development <dri-devel@lists.freedesktop.org>, virtualization@lists.linux-foundation.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Daniel Vetter <daniel.vetter@intel.com>, linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org, Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>, amd-gfx@lists.freedesktop.org, linux-rockchip@lists.infradead.org, nouveau@lists.freedesktop.org, spice-devel@lists.freedesktop.org, Jani Nikula <jani.nikula@intel.com>, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, etnaviv@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Rodrigo Vivi <rodrigo.vivi@intel.com>, linux-tegra@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.or
+In-Reply-To: <2edcc5fd-ce60-b585-e0fd-226897a7a34c@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, Sean Wang <sean.wang@kernel.org>, Weijie Gao <weijie.gao@mediatek.com>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVGh1LCBKYW4gMTcsIDIwMTkgYXQgMDU6NDU6NDFQTSArMDEwMCwgRGFuaWVsIFZldHRlciB3
-cm90ZToKPiBPbiBXZWQsIEphbiAxNiwgMjAxOSBhdCAwNzoxMDoxOFBNICswMTAwLCBTYW0gUmF2
-bmJvcmcgd3JvdGU6Cj4gPiBIaSBEYW5pZWwuCj4gPiAKPiA+ID4gdjU6IEFjdHVhbGx5IHRyeSB0
-byBzb3J0IHRoZW0sIGFuZCB3aGlsZSBhdCBpdCwgc29ydCBhbGwgdGhlIG9uZXMgSQo+ID4gPiB0
-b3VjaC4KPiA+IAo+ID4gQXBwbGllZCB0aGlzIHZhcmlhbnQgb24gdG9wIG9mIGRybS1taXNjIGFu
-ZCBkaWQgYSBidWlsZCB0ZXN0Lgo+ID4gTG9va2VkIGdvb2QgZm9yIGlhNjQsIHg4NiBhbmQgYWxw
-aGEuCj4gPiAKPiA+IFRvb2sgYSBjbG9zZXIgbG9vayBhdCB0aGUgY2hhbmdlcyB0byBhdG1lbF9o
-bGNkIC0gYW5kIHRoZXkgbG9va2VkIE9LLgo+ID4gCj4gPiBCdXQgSSBub3RpY2VkIHRoYXQgYXRt
-ZWxfaGxjZGMgdXNlcyBvbmx5IGRybV9rbXNfaGVscGVyX3BvbGxfaW5pdCgpIGFuZAo+ID4gZHJt
-X2ttc19oZWxwZXJfcG9sbF9maW5pKCkuCj4gPiBCdXQgdGhlcmUgYXJlIG5vIGhpdHMgb24gRFJN
-X0NPTk5FQ1RPUl9QT0xMIC0gc28gSSB0aGluayB3ZSBtYXliZQo+ID4gaGF2ZSBhIGRyaXZlciBo
-ZXJlIHdoZXJlIHdlIGhhdmUgcGx1Z2dlZCB0aGUgZHJtX3BvbGwgaW5mcmFzdHJ1Y3R1cmUsCj4g
-PiBidXQgaXQgaXMgbm90IGluIHVzZS4KPiA+IAo+ID4gPiAgaW5jbHVkZS9kcm0vZHJtX2NydGNf
-aGVscGVyLmggICAgICAgICAgICAgICAgIHwgMTYgLS0tLS0tLS0tLS0KPiA+IAo+ID4gVGhlIGxp
-c3Qgb2YgaW5jbHVkZSBmaWxlcyBpbiB0aGlzIGZpbGUgY291bGQgYmUgZHJvcHBlZCBhbmQgcmVw
-bGFjZWQgYnk6Cj4gPiBzdHJ1Y3QgZHJtX2Nvbm5lY3RvcjsKPiA+IHN0cnVjdCBkcm1fZGV2aWNl
-Owo+ID4gc3RydWN0IGRybV9kaXNwbGF5X21vZGU7Cj4gPiBzdHJ1Y3QgZHJtX2VuY29kZXI7Cj4g
-PiBzdHJ1Y3QgZHJtX2ZyYW1lYnVmZmVyOwo+ID4gc3RydWN0IGRybV9tb2RlX3NldDsKPiA+IHN0
-cnVjdCBkcm1fbW9kZXNldF9hY3F1aXJlX2N0eDsKPiA+IAo+ID4gSSB0cmllZCB0byBkbyBzbyBv
-biB0b3Agb2YgeW91ciBwYXRjaC4KPiA+IEJ1dCB0aGVyZSB3ZXJlIHRvbyBtYW55IGJ1aWxkIGVy
-cnJvcyBhbmQgSSBzb21laG93IGxvc3QgdGhlIG1vdGl2YXRpb24uCj4gCj4gWWVhaCB0aGUgZHJt
-X2NydGNfaGVscGVyLmggaGVhZGVyIGlzIGEgYml0IHRoZSBtaW5pYXR1cmUgZHJtUC5oIGZvciBs
-ZWdhY3kKPiBrbXMgZHJpdmVycy4gSnVzdCByZW1vdmluZyBpdCBmcm9tIGFsbCB0aGUgYXRvbWlj
-IGRyaXZlcnMgY2F1c2VkIGxvdHMgb2YKPiBmYWxsb3V0LCBJIGV4cGVjdCBldmVuIG1vcmUgaWYg
-eW91IGVudGlyZWx5IHJlbW92ZSB0aGUgaW5jbHVkZXMgaXQgaGFzLgo+IE1heWJlIGEgdG9kbywg
-Y2FyZSB0byBwbHMgY3JlYXRlIHRoYXQgcGF0Y2ggc2luY2UgaXQncyB5b3VyIGlkZWE/CgpUaGUg
-bWFpbiByZWFzb24gSSBiYWlsZWQgb3V0IGluaXRpYWxseSB3YXMgdGhhdCB0aGlzIHdvdWxkIGNy
-ZWF0ZQpzbWFsbCBjaGFuZ2VzIHRvIHNldmVyYWwgb3RoZXJ3aXNlIHNlbGRvbWx5IHRvdWNoZWQg
-ZmlsZXMuCkFuZCB0aGVuIHdlIHdvdWxkIGxhdGVyIGNvbWUgYW5kIHJlbW92ZSBkcm1QLmggLSBz
-byBsb3RzIG9mCnNtYWxsIGJ1dCBpbmNyZW1lbnRhbCBjaGFuZ2VzIHRvIHRoZSBzYW1lIG90aGVy
-d2lzZSBzZWxkb21seQplZGl0ZWQgZmlsZXMuCkFuZCB0aGUgam9iIHdhcyBvbmx5IHBhcnRpYWxs
-eSBkb25lLgoKSSB3aWxsIHRyeSB0byBleHBlcmltZW50IHdpdGggYW4gYXBwcm9hY2ggd2hlcmUg
-SSBjbGVhbiB1cCB0aGUKaW5jbHVkZS9kcm0vKi5oIGZpbGVzIGEgbGl0dGxlIChsaWtlIHN1Z2dl
-c3RlZCBhYm92ZSwgK2RlbGV0ZSBkcm1QLmgKYW5kIG1heWJlIGEgYml0IG1vcmUpLgoKVGhlbiB0
-byB0cnkgb24gYSBkcml2ZXIgYnkgZHJpdmVyIGJhc2lzIHRvIG1ha2UgaXQgYnVpbGQgd2l0aCBh
-CmNsZWFuZWQgc2V0IG9mIGluY2x1ZGUgZmlsZXMuCkkgaG9wZSB0aGF0IHRoZSBjbGVhbmVkIHVw
-IGRyaXZlciBjYW4gc3RpbGwgYnVpbGQgd2l0aG91dCB0aGUKY2xlYW5lZCBoZWFkZXIgZmlsZXMg
-c28gdGhlIGNoYW5nZXMgY2FuIGJlIHN1Ym1pdHRlZCBwaWVjZW1hbC4KCldpbGwgZG8gc28gd2l0
-aCBhbiBleWUgb24gdGhlIGxlc3NlciBtYWludGFpbmVkIGRyaXZlcnMgdG8gdHJ5IGl0Cm91dCB0
-byBhdm9pZCBjcmVhdGluZyB0b28gbXVjaCBjaHJ1bmNoIGZvciBvdGhlcnMuCgpBbmQgaWYgaXQg
-d29ya3Mgb3V0IEkgZXhwZWN0IHRoZSBhY3RpdmUgZHJpdmVycyB0byBmb2xsb3cgdGhlCmV4YW1w
-bGUuCgp0b2RvLnJzdCBpdGVtIHdpbGwgd2FpdCB1bnRpbCBJIHJ1biBvdXQgb2YgZW5lcmd5LgoK
-CVNhbQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
-LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
-Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hello,
+
+On Thu, Jan 17, 2019 at 02:00:43PM +0100, Matthias Brugger wrote:
+> On 15/01/2019 21:02, Uwe Kleine-König wrote:
+> > On Mon, Jan 14, 2019 at 04:21:22PM +0800, Ryder Lee wrote:
+> >> diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> >> index 8fc4aa7..ab016cf 100644
+> >> --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> >> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> >> @@ -436,6 +436,7 @@
+> >>  			 <&pericfg CLK_PERI_PWM6_PD>;
+> >>  		clock-names = "top", "main", "pwm1", "pwm2", "pwm3", "pwm4",
+> >>  			      "pwm5", "pwm6";
+> >> +		mediatek,num-pwms = <6>;
+> >>  		status = "disabled";
+> > 
+> > Conceptually this patch must go in before the change to the driver.
+> > Otherwise the pwms are not usable with only patch 1 applied which breaks
+> > bisectability.
+> > 
+> 
+> The driver should have backwards compatibility to older DTs. So that would need
+> to be fixed in the driver not in the patch order of the series.
+
+Right you are. Bisectability is a reason to not apply the patches in the
+order as is, but given that you already requested backwards
+compatibility the bisectability will be fixed en passant.
+
+Best regards
+Uwe
+
+-- 
+Pengutronix e.K.                           | Uwe Kleine-König            |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
