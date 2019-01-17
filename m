@@ -1,85 +1,58 @@
-From: Jassi Brar <jassisinghbrar@gmail.com>
-Subject: Re: [PATCH 1/3] mailbox: Add ability for clients to abort data in channel
-Date: Thu, 17 Jan 2019 09:22:09 -0600
-Message-ID: <CABb+yY3Lk7up2+mrwQGBowm0j6SEyitQkj0=q9Z+C7aHad56Qw@mail.gmail.com>
-References: <20190116050435.11624-1-ck.hu@mediatek.com> <20190116050435.11624-2-ck.hu@mediatek.com>
- <CABb+yY0JfRbdVb_3wqxve1pYH0ZpFNrA2Kr6qovBruzhbeFRuw@mail.gmail.com> <1547712032.5318.17.camel@mtksdaap41>
+From: Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>
+Subject: Re: [PATCH] drm: Split out drm_probe_helper.h
+Date: Thu, 17 Jan 2019 17:45:41 +0100
+Message-ID: <20190117164541.GE3271@phenom.ffwll.local>
+References: <20190116163442.12622-1-daniel.vetter@ffwll.ch>
+ <20190116181018.GA27364@ravnborg.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1547712032.5318.17.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Houlong Wei <houlong.wei@mediatek.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20190116181018.GA27364-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/freedreno>
+List-Post: <mailto:freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+List-Help: <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
+Errors-To: freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Sender: "Freedreno" <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+To: Sam Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>
+Cc: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Daniel Vetter <daniel.vetter-/w4YWyX8dFk@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, DRI Development <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, virtualization-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Benjamin Gaignard <benjamin.gaignard-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Daniel Vetter <daniel.vetter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Oleksandr Andrushchenko <oleksandr_andrushchenko-uRwfk40T5oI@public.gmane.org>, amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, nouveau-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, spice-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Jani Nikula <jani.nikula-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, etnaviv-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Jani Nikula <jani.nikula-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rodrigo Vivi <rod>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jan 17, 2019 at 2:00 AM CK Hu <ck.hu@mediatek.com> wrote:
->
-> Hi, Jassi:
->
-> On Wed, 2019-01-16 at 10:22 -0600, Jassi Brar wrote:
-> > On Tue, Jan 15, 2019 at 11:07 PM CK Hu <ck.hu@mediatek.com> wrote:
-> > >
-> > > This patch supplies a new framework API, mbox_abort_channel(), and
-> > > a new controller interface, abort_data().
-> > >
-> > > For some client's application, it need to clean up the data in channel
-> > > but keep the channel so it could send data to channel later.
-> > >
-> > > Signed-off-by: CK Hu <ck.hu@mediatek.com>
-> > > ---
-> > >  drivers/mailbox/mailbox.c          | 23 +++++++++++++++++++++++
-> > >  include/linux/mailbox_client.h     |  1 +
-> > >  include/linux/mailbox_controller.h |  4 ++++
-> > >  3 files changed, 28 insertions(+)
-> > >
-> > > diff --git a/drivers/mailbox/mailbox.c b/drivers/mailbox/mailbox.c
-> > > index c6a7d4582dc6..281647162c76 100644
-> > > --- a/drivers/mailbox/mailbox.c
-> > > +++ b/drivers/mailbox/mailbox.c
-> > > @@ -428,6 +428,29 @@ struct mbox_chan *mbox_request_channel_byname(struct mbox_client *cl,
-> > >  }
-> > >  EXPORT_SYMBOL_GPL(mbox_request_channel_byname);
-> > >
-> > > +/**
-> > > + * mbox_abort_channel - The client abort all data in a mailbox
-> > > + *                     channel by this call.
-> > > + * @chan: The mailbox channel to be aborted.
-> > > + */
-> > > +void mbox_abort_channel(struct mbox_chan *chan)
-> > > +{
-> > > +       unsigned long flags;
-> > > +
-> > > +       if (!chan || !chan->cl)
-> > > +               return;
-> > > +
-> > > +       if (chan->mbox->ops->abort_data)
-> > > +               chan->mbox->ops->abort_data(chan);
-> > > +
-> > > +       /* The queued TX requests are simply aborted, no callbacks are made */
-> > > +       spin_lock_irqsave(&chan->lock, flags);
-> > > +       chan->cl = NULL;
-> > > +       chan->active_req = NULL;
-> > > +       spin_unlock_irqrestore(&chan->lock, flags);
-> > > +}
-> > >
-> > Why not just release and then request channel again ?
-> > mbox_abort_channel() is just a copy of mbox_free_channel() and if the
-> > abort can sleep, that is more reason to just do that.
->
-> The cursor may change position 300 times in one second, so I still
-> concern the processing time. Request and free channel looks too heavy to
-> do 300 times per second.
-You send data 300Hz, not abort ... which is supposed to be a rare event.
-And then your shutdown/startup is currently empty, while abort isn't
-quite lightweight.
-
-> Conceptually, I just want to clean up the
-> channel rather than free and request it, so they are somewhat different.
-> I say it may sleep because mbox_abort_channel() is a copy of
-> mbox_free_channel(). I could change it to 'must not sleep' because
-> Mediatek controller does not sleep in abort callback.
->
-No please. Just use the shutdown/startup.
-
-Thanks.
+T24gV2VkLCBKYW4gMTYsIDIwMTkgYXQgMDc6MTA6MThQTSArMDEwMCwgU2FtIFJhdm5ib3JnIHdy
+b3RlOgo+IEhpIERhbmllbC4KPiAKPiA+IHY1OiBBY3R1YWxseSB0cnkgdG8gc29ydCB0aGVtLCBh
+bmQgd2hpbGUgYXQgaXQsIHNvcnQgYWxsIHRoZSBvbmVzIEkKPiA+IHRvdWNoLgo+IAo+IEFwcGxp
+ZWQgdGhpcyB2YXJpYW50IG9uIHRvcCBvZiBkcm0tbWlzYyBhbmQgZGlkIGEgYnVpbGQgdGVzdC4K
+PiBMb29rZWQgZ29vZCBmb3IgaWE2NCwgeDg2IGFuZCBhbHBoYS4KPiAKPiBUb29rIGEgY2xvc2Vy
+IGxvb2sgYXQgdGhlIGNoYW5nZXMgdG8gYXRtZWxfaGxjZCAtIGFuZCB0aGV5IGxvb2tlZCBPSy4K
+PiAKPiBCdXQgSSBub3RpY2VkIHRoYXQgYXRtZWxfaGxjZGMgdXNlcyBvbmx5IGRybV9rbXNfaGVs
+cGVyX3BvbGxfaW5pdCgpIGFuZAo+IGRybV9rbXNfaGVscGVyX3BvbGxfZmluaSgpLgo+IEJ1dCB0
+aGVyZSBhcmUgbm8gaGl0cyBvbiBEUk1fQ09OTkVDVE9SX1BPTEwgLSBzbyBJIHRoaW5rIHdlIG1h
+eWJlCj4gaGF2ZSBhIGRyaXZlciBoZXJlIHdoZXJlIHdlIGhhdmUgcGx1Z2dlZCB0aGUgZHJtX3Bv
+bGwgaW5mcmFzdHJ1Y3R1cmUsCj4gYnV0IGl0IGlzIG5vdCBpbiB1c2UuCj4gCj4gPiAgaW5jbHVk
+ZS9kcm0vZHJtX2NydGNfaGVscGVyLmggICAgICAgICAgICAgICAgIHwgMTYgLS0tLS0tLS0tLS0K
+PiAKPiBUaGUgbGlzdCBvZiBpbmNsdWRlIGZpbGVzIGluIHRoaXMgZmlsZSBjb3VsZCBiZSBkcm9w
+cGVkIGFuZCByZXBsYWNlZCBieToKPiBzdHJ1Y3QgZHJtX2Nvbm5lY3RvcjsKPiBzdHJ1Y3QgZHJt
+X2RldmljZTsKPiBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZTsKPiBzdHJ1Y3QgZHJtX2VuY29kZXI7
+Cj4gc3RydWN0IGRybV9mcmFtZWJ1ZmZlcjsKPiBzdHJ1Y3QgZHJtX21vZGVfc2V0Owo+IHN0cnVj
+dCBkcm1fbW9kZXNldF9hY3F1aXJlX2N0eDsKPiAKPiBJIHRyaWVkIHRvIGRvIHNvIG9uIHRvcCBv
+ZiB5b3VyIHBhdGNoLgo+IEJ1dCB0aGVyZSB3ZXJlIHRvbyBtYW55IGJ1aWxkIGVycnJvcyBhbmQg
+SSBzb21laG93IGxvc3QgdGhlIG1vdGl2YXRpb24uCgpZZWFoIHRoZSBkcm1fY3J0Y19oZWxwZXIu
+aCBoZWFkZXIgaXMgYSBiaXQgdGhlIG1pbmlhdHVyZSBkcm1QLmggZm9yIGxlZ2FjeQprbXMgZHJp
+dmVycy4gSnVzdCByZW1vdmluZyBpdCBmcm9tIGFsbCB0aGUgYXRvbWljIGRyaXZlcnMgY2F1c2Vk
+IGxvdHMgb2YKZmFsbG91dCwgSSBleHBlY3QgZXZlbiBtb3JlIGlmIHlvdSBlbnRpcmVseSByZW1v
+dmUgdGhlIGluY2x1ZGVzIGl0IGhhcy4KTWF5YmUgYSB0b2RvLCBjYXJlIHRvIHBscyBjcmVhdGUg
+dGhhdCBwYXRjaCBzaW5jZSBpdCdzIHlvdXIgaWRlYT8KLURhbmllbAoKPiAKPiAKPiA+ICBpbmNs
+dWRlL2RybS9kcm1fcHJvYmVfaGVscGVyLmggICAgICAgICAgICAgICAgfCAyNyArKysrKysrKysr
+KysrKysrKysrCj4gVGhpcyBvbiB0aGUgb3RoZXIgaGFuZCBpcyBmaW5lIC0gYXMgZXhwZWN0ZWQg
+YXMgdGhpcyBpcyBhIG5ldyBmaWxlLgo+IAo+IEJ1dCB0aGUgYWJvdmUgaXMganVzdCBzb21lIHJh
+bmRvbSBjb21tZW50cyBzbzoKPiAKPiBBY2tlZC1ieTogU2FtIFJhdm5ib3JnIDxzYW1AcmF2bmJv
+cmcub3JnPgoKLS0gCkRhbmllbCBWZXR0ZXIKU29mdHdhcmUgRW5naW5lZXIsIEludGVsIENvcnBv
+cmF0aW9uCmh0dHA6Ly9ibG9nLmZmd2xsLmNoCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkZyZWVkcmVubyBtYWlsaW5nIGxpc3QKRnJlZWRyZW5vQGxpc3Rz
+LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2ZyZWVkcmVubwo=
