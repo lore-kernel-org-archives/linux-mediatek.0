@@ -1,60 +1,65 @@
-From: Min Guo <min.guo@mediatek.com>
-Subject: Re: [PATCH v2 4/4] usb: musb: Add support for MediaTek musb
- controller
-Date: Thu, 17 Jan 2019 11:34:16 +0800
-Message-ID: <1547696056.4433.233.camel@mhfsdcap03>
-References: <1547516626-5084-1-git-send-email-min.guo@mediatek.com>
-         <1547516626-5084-5-git-send-email-min.guo@mediatek.com>
-         <20190115203815.GD18026@uda0271908> <1547631542.4433.232.camel@mhfsdcap03>
-         <20190116135914.GF18026@uda0271908>
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+Subject: [PATCH v3,
+ 1/3] media: dt-bindings: media: add 'assigned-clocks' to vcodec
+ examples
+Date: Thu, 17 Jan 2019 13:39:18 +0800
+Message-ID: <1547703560-16195-1-git-send-email-yunfei.dong@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190116135914.GF18026@uda0271908>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bin Liu <b-liu@ti.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, chunfeng.yun@mediatek.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Yonglong Wu <yonglong.wu@mediatek.com>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Yunfei Dong <yunfei.dong@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Qianqian Yan <qianqian.yan@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2019-01-16 at 07:59 -0600, Bin Liu wrote:
-> On Wed, Jan 16, 2019 at 05:39:02PM +0800, Min Guo wrote:
-> > Hi Bin,
-> > 
-> > On Tue, 2019-01-15 at 14:38 -0600, Bin Liu wrote:
-> > > Hi Min,
-> > > 
-> > > very close, thanks.
-> > > Below I tried to explain a further cleanup in musb_clearb/w() and
-> > > musb_get/set_toggle() implementation. Please let me know if it is not
-> > > clear.
-> > > 
-> > > Basically, we don't need musb_default_clearb/w(), just assign the
-> > > musb_io function pointers to musb_readb/w().
-> > > 
-> > > Then the mtk platform musb_clearb/w() calls musb_readb/w() and
-> > > musb_writeb/w() to handle W1C.
-> > 
-> > Sorry to bother you again, I encounter a problem when prepare the patch.
-> 
-> no problem at all.
+Fix MTK binding document for MT8173 dtsi changed in order
+to use standard CCF interface.
+MT8173 SoC from Mediatek.
 
-Thanks.
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Signed-off-by: Qianqian Yan <qianqian.yan@mediatek.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+---
+ .../devicetree/bindings/media/mediatek-vcodec.txt   | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-> > The define of musb_clearb/w and musb_readb/w are difference as follow,
-> > and cannot be directly assigned:
-> > u8/u16 (*readb/w)(const void __iomem *addr, unsigned offset)
-> > void (*clearb/w)(void __iomem *addr, unsigned int offset)) 
-> > 
-> > if modify clearb/w as:
-> > u8/u16 (*clearb/w)(const void __iomem *addr, unsigned int offset)) 
-> > then musb_clear needs writeb/w the const addr.
-> > Can I delete const in (*readb/w)?
-> 
-> yes, please create a separate patch for it, and for readl() as well,
-> and stating it is for implementing clearing W1C registers.
-
-Okay.
-
-> Regards,
-> -Bin.
+diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+index 2a615d84a682..b6b5dde6abd8 100644
+--- a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
++++ b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+@@ -66,6 +66,15 @@ vcodec_dec: vcodec@16000000 {
+                   "vencpll",
+                   "venc_lt_sel",
+                   "vdec_bus_clk_src";
++    assigned-clocks = <&topckgen CLK_TOP_VENC_LT_SEL>,
++                      <&topckgen CLK_TOP_CCI400_SEL>,
++                      <&topckgen CLK_TOP_VDEC_SEL>,
++                      <&apmixedsys CLK_APMIXED_VCODECPLL>,
++                      <&apmixedsys CLK_APMIXED_VENCPLL>;
++    assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL_370P5>,
++                             <&topckgen CLK_TOP_UNIVPLL_D2>,
++                             <&topckgen CLK_TOP_VCODECPLL>;
++    assigned-clock-rates = <0>, <0>, <0>, <1482000000>, <800000000>;
+   };
+ 
+   vcodec_enc: vcodec@18002000 {
+@@ -105,4 +114,8 @@ vcodec_dec: vcodec@16000000 {
+                   "venc_sel",
+                   "venc_lt_sel_src",
+                   "venc_lt_sel";
++    assigned-clocks = <&topckgen CLK_TOP_VENC_SEL>,
++                      <&topckgen CLK_TOP_VENC_LT_SEL>;
++    assigned-clock-parents = <&topckgen CLK_TOP_VENCPLL_D2>,
++                             <&topckgen CLK_TOP_UNIVPLL1_D2>;
+   };
+-- 
+2.20.1
