@@ -1,90 +1,80 @@
-From: Chunhui Dai <chunhui.dai@mediatek.com>
-Subject: Re: [PATCH 2/9] drm/mediatek: move the setting of fixed divider
-Date: Thu, 17 Jan 2019 16:49:38 +0800
-Message-ID: <1547714978.4664.10.camel@mszsdaap41>
-References: <1546585439-30455-1-git-send-email-chunhui.dai@mediatek.com>
-         <1546585439-30455-3-git-send-email-chunhui.dai@mediatek.com>
-         <1547108895.31582.1.camel@mtksdaap41>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Subject: Re: [PATCH v1 00/10] cpufreq: Add flag to auto-register as cooling device
+Date: Thu, 17 Jan 2019 11:08:38 +0100
+Message-ID: <CAJZ5v0jUKcRQot9m5VOxqppWWrD-Cy=USpKMRtcq4zJ5EgmHCg@mail.gmail.com>
+References: <cover.1547481320.git.amit.kucheria@linaro.org> <20190117054916.dqduckt7larn32av@vireshk-i7>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1547108895.31582.1.camel@mtksdaap41>
+In-Reply-To: <20190117054916.dqduckt7larn32av@vireshk-i7>
 Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>
-Cc: --to=Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, wangyan.wang@mediatek.com, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, Colin Ian King <colin.king@canonical.com>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, srv_heupstream@mediatek.com, bibby.hsieh@mediatek.com, jamesjj.liao@mediatek.com, jitao.shi@mediatek.com
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Cc: Amit Kucheria <amit.kucheria@linaro.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-arm-msm <linux-arm-msm@vger.kernel.org>, Eduardo Valentin <edubezval@gmail.com>, Stephen Boyd <swboyd@chromium.org>, Doug Anderson <dianders@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Matthias Brugger <matthias.bgg@gmail.com>, Sudeep Holla <sudeep.holla@arm.com>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "open list:CPU FREQUENCY DRIVERS" <linux-pm@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2019-01-10 at 16:28 +0800, CK Hu wrote:
-> Hi, Chunhui:
-> 
-> On Fri, 2019-01-04 at 15:03 +0800, chunhui dai wrote:
-> > move the setting of fixed divider from enable/disable
-> > to the function of setting rate.
-> 
-> Please describe more about _WHY_ of this patch. Does it fix any bug, or
-> enhance some thing, or a new feature?
+On Thu, Jan 17, 2019 at 6:49 AM Viresh Kumar <viresh.kumar@linaro.org> wrote:
+>
+> On 14-01-19, 22:04, Amit Kucheria wrote:
+> > Add a flag to be used by cpufreq drivers to tell cpufreq core to
+> > auto-register themselves as a thermal cooling device.
+> >
+> > There series converts over all the drivers except arm_big_little.c.
+> > Tested on SDM845 with the qcom-cpufreq-hw driver. Only compile-tested the
+> > others.
+> >
+> > Things needing fixing:
+> >  - Look at how to detect that we're not in IKS mode in arm_big_little's
+> >    .ready callback.
+>
+> is_bL_switching_enabled() lets you know if IKS is enabled or not.
+> Set/clear flag conditionally before the cpufreq-driver is registered,
+> based on the output of is_bL_switching_enabled().
+>
+> >  - The other pending issue is to fix allmodconfig that leaves us with
+> >    CPU_FREQ=y and THERMAL=m (CPU_THERMAL=y). That leads to undefined
+> >    references for functions defined in cpu_cooling.c
+>
+> Okay, that's a terrible thing and the solution looks to be rather
+> difficult.
+>
+> For others who may not be aware of the issue here, currently the
+> cpufreq drivers use helpers of cpu_cooling.c (CONFIG_CPU_THERMAL),
+> which uses helpers of the thermal core (CONFIG_THERMAL).
+> CONFIG_THERMAL is defined as tristate and CONFIG_CPU_THERMAL as bool
+> in Kconfigs.
 
-.recalc_rate would calculate the clock rate by get the setting of
-hardward. the bit which modify in this patch, would affect the clock
-divider. we need to do the modify of this bit before ".recal_rate".So,
-we move it to the ops of clock. Otherwise, the .recalc_rate would get
-wrong setting of divider, and return wrong rate.
-we would describe more in the V2.
+And CONFIG_CPU_THERMAL is defined under "if THERMAL".
 
-> 
-> Regards,
-> CK
-> 
-> > 
-> > Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c | 5 +----
-> >  1 file changed, 1 insertion(+), 4 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-> > index b5ed6b7..68b124f 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-> > @@ -79,7 +79,6 @@ static int mtk_hdmi_pll_prepare(struct clk_hw *hw)
-> >  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SLDO_MASK);
-> >  	usleep_range(80, 100);
-> >  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_MBIAS_LPF_EN);
-> > -	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_EN_TX_POSDIV);
-> >  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SER_MASK);
-> >  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_PRED_MASK);
-> >  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_DRV_MASK);
-> > @@ -94,7 +93,6 @@ static void mtk_hdmi_pll_unprepare(struct clk_hw *hw)
-> >  	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_DRV_MASK);
-> >  	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_PRED_MASK);
-> >  	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SER_MASK);
-> > -	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_EN_TX_POSDIV);
-> >  	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_MBIAS_LPF_EN);
-> >  	usleep_range(80, 100);
-> >  	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SLDO_MASK);
-> > @@ -123,6 +121,7 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
-> >  
-> >  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON6, RG_HTPLL_PREDIV_MASK);
-> >  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON6, RG_HTPLL_POSDIV_MASK);
-> > +	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_EN_TX_POSDIV);
-> >  	mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON6, (0x1 << RG_HTPLL_IC),
-> >  			  RG_HTPLL_IC_MASK);
-> >  	mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON6, (0x1 << RG_HTPLL_IR),
-> > @@ -223,7 +222,6 @@ static void mtk_hdmi_phy_enable_tmds(struct mtk_hdmi_phy *hdmi_phy)
-> >  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SLDO_MASK);
-> >  	usleep_range(80, 100);
-> >  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_MBIAS_LPF_EN);
-> > -	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_EN_TX_POSDIV);
-> >  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SER_MASK);
-> >  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_PRED_MASK);
-> >  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_DRV_MASK);
-> > @@ -235,7 +233,6 @@ static void mtk_hdmi_phy_disable_tmds(struct mtk_hdmi_phy *hdmi_phy)
-> >  	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_DRV_MASK);
-> >  	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_PRED_MASK);
-> >  	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SER_MASK);
-> > -	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_EN_TX_POSDIV);
-> >  	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_MBIAS_LPF_EN);
-> >  	usleep_range(80, 100);
-> >  	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SLDO_MASK);
-> 
-> 
+> The cpufreq drivers using the cpu_cooling.c file have this in their
+> Kconfig entry:
+>
+> # if CPU_THERMAL is on and THERMAL=m, ARM_BIT_LITTLE_CPUFREQ cannot be =y
+> #       depends on !CPU_THERMAL || THERMAL
+>
+>
+> This series now places the cpufreq core in place of the cpufreq driver
+> and it messes up everything. It is not just about allmodconfig, but
+> any configuration which makes the compilation fail.
+>
+> What are the solutions we have now ?
+>
+> 1. Have following for CONFIG_CPU_FREQ
+>        depends on !CPU_THERMAL || THERMAL
+
+Sorry, but this makes my teeth hurt.
+
+>    The platforms which don't need CPU_THERMAL (like x86) should not
+>    enable CPU_THERMAL anymore if they want CONFIG_THERMAL=m.
+>
+>    @amit: If this gets accepted, please update the Kconfig entries for
+>    all those drivers to not have above lines anymore.
+>
+> - Change CONFIG_THERMAL to bool instead of tristate ?
+>
+> - Anything else ?
+
+The design in the thermal subsystem seems to be upside-down.
+Non-modular code should never be made depend on anything only defined
+in a module.
+
+Would an explicit "select THERMAL" under CPU_THERMAL cause THERMAL to be 'y'?
