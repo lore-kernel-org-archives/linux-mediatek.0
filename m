@@ -1,35 +1,46 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH v1 4/5] arm: dts: mt7623: add a property "mediatek,num-pwms" for PWM
-Date: Fri, 18 Jan 2019 11:24:44 +0800
-Message-ID: <b79123453b1eead7a7757bd6e8c0857404c5600b.1547781007.git.ryder.lee@mediatek.com>
-References: <de316385a84e079d3b23891e61c959094b9fa7e5.1547781007.git.ryder.lee@mediatek.com>
+From: Min Guo <min.guo@mediatek.com>
+Subject: Re: [PATCH v3 4/4] usb: musb: Add support for MediaTek musb
+ controller
+Date: Fri, 18 Jan 2019 14:14:14 +0800
+Message-ID: <1547792054.4433.254.camel@mhfsdcap03>
+References: <1547709348-17506-1-git-send-email-min.guo@mediatek.com>
+         <1547709348-17506-5-git-send-email-min.guo@mediatek.com>
+         <20190117143342.GS5544@atomide.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <de316385a84e079d3b23891e61c959094b9fa7e5.1547781007.git.ryder.lee@mediatek.com>
+In-Reply-To: <20190117143342.GS5544@atomide.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Thierry Reding <thierry.reding@gmail.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>, Weijie Gao <weijie.gao@mediatek.com>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
+To: Tony Lindgren <tony@atomide.com>
+Cc: Bin Liu <b-liu@ti.com>, Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, chunfeng.yun@mediatek.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, hdegoede@redhat.com, Yonglong Wu <yonglong.wu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-This add a property "mediatek,num-pwms" for PWM controller.
+On Thu, 2019-01-17 at 06:33 -0800, Tony Lindgren wrote:
+> Hi,
+> 
+> * min.guo@mediatek.com <min.guo@mediatek.com> [190117 07:16]:
+> > There are some quirk of MediaTek musb controller, such as:
+> >  -W1C interrupt status registers
+> >  -Private data toggle registers
+> >  -No dedicated DMA interrupt line
+> 
+> Can you please separate the musb generic changes listed above
+> into separate individual patches in preparation for adding
+> support for new hardware?
+> 
+> Otherwise we'll have hard time finding out with git bisect what
+> exactly breaks things if we run into trouble.
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- arch/arm/boot/dts/mt7623.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+Thanks for your suggestion.
+I prepared to divide these changes into separate patches. Later, Mr.Bin
+suggested not to do this.
 
-diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-index 0253691..9d59c28 100644
---- a/arch/arm/boot/dts/mt7623.dtsi
-+++ b/arch/arm/boot/dts/mt7623.dtsi
-@@ -443,6 +443,7 @@
- 			 <&pericfg CLK_PERI_PWM5>;
- 		clock-names = "top", "main", "pwm1", "pwm2",
- 			      "pwm3", "pwm4", "pwm5";
-+		mediatek,num-pwms = <5>;
- 		status = "disabled";
- 	};
- 
--- 
-1.9.1
+The detailed information can be referred to:
+https://patchwork.kernel.org/patch/10743561/
+https://patchwork.kernel.org/patch/10763737/
+https://patchwork.kernel.org/patch/107463741/
+
+> Regards,
+> 
+> Tony
