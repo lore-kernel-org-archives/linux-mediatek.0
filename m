@@ -1,125 +1,107 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: Aw: [PATCH 2/2] drm/mediatek: Add Mediatek framebuffer device
-Date: Fri, 18 Jan 2019 09:39:08 +0100
-Message-ID: <74eba84d-4686-698a-6100-d72dabd15a21@gmail.com>
-References: <20190116013924.11345-1-ck.hu@mediatek.com>
- <20190116013924.11345-2-ck.hu@mediatek.com>
- <trinity-1adab8be-573a-4816-9e9f-feddf07bdcd3-1547734452313@3c-app-gmx-bs28>
- <1547775975.4221.11.camel@mtksdaap41>
+Subject: Re: [PATCH v1 1/5] pwm: mediatek: add a property "mediatek,num-pwms"
+Date: Fri, 18 Jan 2019 09:43:53 +0100
+Message-ID: <c007d399-af86-98d3-94f9-b9762efdc219@gmail.com>
+References: <de316385a84e079d3b23891e61c959094b9fa7e5.1547781007.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1547775975.4221.11.camel@mtksdaap41>
+In-Reply-To: <de316385a84e079d3b23891e61c959094b9fa7e5.1547781007.git.ryder.lee@mediatek.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>, Frank Wunderlich <frank-w@public-files.de>
-Cc: Daniel Vetter <daniel@ffwll.ch>, srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, =?UTF-8?Q?Noralf_Tr=ef=bf=bdnnes?= <noralf@tronnes.org>, linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
+To: Ryder Lee <ryder.lee@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>
+Cc: linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, Sean Wang <sean.wang@kernel.org>, Weijie Gao <weijie.gao@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 18/01/2019 02:46, CK Hu wrote:
-> Hi, Frank:
+On 18/01/2019 04:24, Ryder Lee wrote:
+> This adds a property "mediatek,num-pwms" to avoid having an endless
+> list of compatibles with no differences for the same driver.
 > 
-> On Thu, 2019-01-17 at 15:14 +0100, Frank Wunderlich wrote:
->> Hi,
->>
->> this Patchset does not hang on Bananapi R2, but does not show anything on FB-Console...seems anything is missing
->>
->> https://github.com/frank-w/BPI-R2-4.14/tree/4.20-fbdev
->>
->> dmesg | grep 'fb\|framebuffer'
->> [    0.000000] Linux version 4.20.0-rc7-bpi-r2-fbdev (frank@frank-N56VZ) (gcc version 7.3.0 (Ubuntu/Linaro 7.3.0-27ubuntu1~18.04)) 9
->> [    0.000000] cma: Reserved 64 MiB at 0xfb800000
->> [    0.000000] Kernel command line: board=bpi-r2 console=earlyprintk console=tty1 fbcon=map:0 console=ttyS0,115200 root=/dev/mmcblk7
->> [    5.733185] [drm:drm_fb_helper_generic_probe] surface width(1280), height(1024) and bpp(32)
->> [    5.754452] [drm:drm_mode_addfb2] [FB:44]
->> [    5.792878] mediatek-drm 14000000.dispsys: fb0: DRM emulated frame buffer device
->> [    5.814067] [drm:drm_fb_helper_hotplug_event.part.11] 
->> [    6.203083] mediatek-drm 14000000.dispsys: [drm:drm_client_dev_hotplug] fbdev: ret=0
->> [   24.930347] mediatek-drm 14000000.dispsys: [drm:drm_client_dev_restore] fbdev: ret=0
->> [   25.196872] mediatek-drm 14000000.dispsys: [drm:drm_client_dev_restore] fbdev: ret=0
->> [   25.281184] [drm:drm_mode_addfb2] [FB:49]
->> [   27.947962] [drm:drm_mode_addfb2] [FB:49]
+> Thus, the driver should have backwards compatibility to older DTs.
 > 
-> The log does not show any information of error, but it close fbdev at
-> the time 24.930347.
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+> Changes since v1: add some checks for backwards compatibility.
+> ---
+>  drivers/pwm/pwm-mediatek.c | 27 ++++++++++++++++++---------
+>  1 file changed, 18 insertions(+), 9 deletions(-)
 > 
-> I just test vmap() by writing white color into framebuffer after vmap()
-> and use user space program to control fbdev to show this framebuffer and
-> the panel shows white screen. So I believe that vmap() and fbdev works
-> fine, but I'm not sure what happen to fbcon. I would try to setup fbcon
-> to find out the bug. If you could try to debug parallelly, it would be
-> much help.
-> 
+> diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
+> index eb6674c..81b7e5e 100644
+> --- a/drivers/pwm/pwm-mediatek.c
+> +++ b/drivers/pwm/pwm-mediatek.c
+> @@ -55,7 +55,7 @@ enum {
+>  };
+>  
+>  struct mtk_pwm_platform_data {
+> -	unsigned int num_pwms;
+> +	unsigned int num_pwms;	/* it should not be used in the future SoCs */
+>  	bool pwm45_fixup;
+>  	bool has_clks;
+>  };
+> @@ -226,27 +226,36 @@ static void mtk_pwm_disable(struct pwm_chip *chip, struct pwm_device *pwm)
+>  
+>  static int mtk_pwm_probe(struct platform_device *pdev)
+>  {
+> -	const struct mtk_pwm_platform_data *data;
+> +	struct device_node *np = pdev->dev.of_node;
+>  	struct mtk_pwm_chip *pc;
+>  	struct resource *res;
+> -	unsigned int i;
+> +	unsigned int i, num_pwms;
+>  	int ret;
+>  
+>  	pc = devm_kzalloc(&pdev->dev, sizeof(*pc), GFP_KERNEL);
+>  	if (!pc)
+>  		return -ENOMEM;
+>  
+> -	data = of_device_get_match_data(&pdev->dev);
+> -	if (data == NULL)
+> -		return -EINVAL;
+> -	pc->soc = data;
+> +	pc->soc = of_device_get_match_data(&pdev->dev);
+>  
+>  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>  	pc->regs = devm_ioremap_resource(&pdev->dev, res);
+>  	if (IS_ERR(pc->regs))
+>  		return PTR_ERR(pc->regs);
+>  
+> -	for (i = 0; i < data->num_pwms + 2 && pc->soc->has_clks; i++) {
+> +	/* Check if we have set 'num-pwms' in DTs. */
+> +	ret = of_property_read_u32(np, "mediatek,num-pwms", &num_pwms);
+> +	if (ret < 0) {
+> +		/* If no, fallback to use SoC data for backwards compatibility. */
+> +		if (pc->soc->num_pwms) {
+> +			num_pwms = pc->soc->num_pwms;
 
-may it be the not yet fixed mmsys compatible problem?
-Frank, did you test with my last series [1]?
+Maybe that's bike shedding, but I think it would be better to carve out the
+num_pwms from the mtk_pwm_platform_data and check against the compatible here.
+With a expressive comment it will help other driver developers to not start
+adding num_pwms in the platform data in their first attempt.
 
 Regards,
 Matthias
 
-[1] https://patchwork.kernel.org/cover/10686345/
-
-> Regards,
-> CK
-> 
->>
->> regards Frank
->>
->>
->>> Gesendet: Mittwoch, 16. Januar 2019 um 02:39 Uhr
->>> Von: "CK Hu" <ck.hu@mediatek.com>
->>> An: "Philipp Zabel" <p.zabel@pengutronix.de>, "David Airlie" <airlied@linux.ie>, "Daniel Vetter" <daniel@ffwll.ch>, "Matthias Brugger" <matthias.bgg@gmail.com>, "Noralf Tr�nnes" <noralf@tronnes.org>, "Frank Wunderlich" <frank-w@public-files.de>
->>> Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, "CK Hu" <ck.hu@mediatek.com>
->>> Betreff: [PATCH 2/2] drm/mediatek: Add Mediatek framebuffer device
->>>
->>> For Mediatek drm driver, use fbdev emulation to create a framebuffer
->>> device.
->>>
->>> Signed-off-by: CK Hu <ck.hu@mediatek.com>
->>> ---
->>>  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 5 +++++
->>>  1 file changed, 5 insertions(+)
->>>
->>> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
->>> index 6ec4ca070382..5fcc0e294696 100644
->>> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
->>> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
->>> @@ -16,6 +16,7 @@
->>>  #include <drm/drm_atomic.h>
->>>  #include <drm/drm_atomic_helper.h>
->>>  #include <drm/drm_crtc_helper.h>
->>> +#include <drm/drm_fb_helper.h>
->>>  #include <drm/drm_gem.h>
->>>  #include <drm/drm_gem_cma_helper.h>
->>>  #include <drm/drm_of.h>
->>> @@ -378,6 +379,10 @@ static int mtk_drm_bind(struct device *dev)
->>>  	if (ret < 0)
->>>  		goto err_deinit;
->>>  
->>> +	ret = drm_fbdev_generic_setup(drm, 32);
->>> +	if (ret)
->>> +		DRM_ERROR("Failed to initialize fbdev: %d\n", ret);
->>> +
->>>  	return 0;
->>>  
->>>  err_deinit:
->>> -- 
->>> 2.18.1
->>>
->>>
->>
->> _______________________________________________
->> Linux-mediatek mailing list
->> Linux-mediatek@lists.infradead.org
->> http://lists.infradead.org/mailman/listinfo/linux-mediatek
-> 
-> 
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> +		} else {
+> +			dev_err(&pdev->dev, "failed to get pwm number: %d\n", ret);
+> +			return ret;
+> +		}
+> +	}
+> +
+> +	for (i = 0; i < num_pwms + 2 && pc->soc->has_clks; i++) {
+>  		pc->clks[i] = devm_clk_get(&pdev->dev, mtk_pwm_clk_name[i]);
+>  		if (IS_ERR(pc->clks[i])) {
+>  			dev_err(&pdev->dev, "clock: %s fail: %ld\n",
+> @@ -260,7 +269,7 @@ static int mtk_pwm_probe(struct platform_device *pdev)
+>  	pc->chip.dev = &pdev->dev;
+>  	pc->chip.ops = &mtk_pwm_ops;
+>  	pc->chip.base = -1;
+> -	pc->chip.npwm = data->num_pwms;
+> +	pc->chip.npwm = num_pwms;
+>  
+>  	ret = pwmchip_add(&pc->chip);
+>  	if (ret < 0) {
 > 
