@@ -1,129 +1,92 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: [PATCH 1/5] pwm: mediatek: add a property "mediatek,num-pwms"
-Date: Fri, 18 Jan 2019 09:45:02 +0800
-Message-ID: <1547775902.22794.1.camel@mtkswgap22>
-References: <0c400cb1899c1afb4c9f021350cdc0c6ca3f6239.1547453586.git.ryder.lee@mediatek.com>
-         <0546d8b6-ac67-d445-677a-ff888edf9646@gmail.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: Aw: [PATCH 2/2] drm/mediatek: Add Mediatek framebuffer device
+Date: Fri, 18 Jan 2019 09:46:15 +0800
+Message-ID: <1547775975.4221.11.camel@mtksdaap41>
+References: <20190116013924.11345-1-ck.hu@mediatek.com>
+ <20190116013924.11345-2-ck.hu@mediatek.com>
+ <trinity-1adab8be-573a-4816-9e9f-feddf07bdcd3-1547734452313@3c-app-gmx-bs28>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <0546d8b6-ac67-d445-677a-ff888edf9646@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Thierry Reding <thierry.reding@gmail.com>, Sean Wang <sean.wang@kernel.org>, Weijie Gao <weijie.gao@mediatek.com>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <trinity-1adab8be-573a-4816-9e9f-feddf07bdcd3-1547734452313@3c-app-gmx-bs28>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Daniel Vetter <daniel@ffwll.ch>, srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, "\"Noralf =?UTF-8?Q?Tr=EF=BF=BDnnes=22?=" <noralf@tronnes.org>, linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2019-01-14 at 12:16 +0100, Matthias Brugger wrote:
-> 
-> On 14/01/2019 09:21, Ryder Lee wrote:
-> > This adds a property "mediatek,num-pwms" to avoid having an endless
-> > list of compatibles with no other differences for the same driver.
-> > 
-> > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> > ---
-> >  drivers/pwm/pwm-mediatek.c | 25 +++++++++++--------------
-> >  1 file changed, 11 insertions(+), 14 deletions(-)
-> > 
-> > diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-> > index eb6674c..37daa84 100644
-> > --- a/drivers/pwm/pwm-mediatek.c
-> > +++ b/drivers/pwm/pwm-mediatek.c
-> > @@ -55,7 +55,6 @@ enum {
-> >  };
-> >  
-> >  struct mtk_pwm_platform_data {
-> > -	unsigned int num_pwms;
-> >  	bool pwm45_fixup;
-> >  	bool has_clks;
-> >  };
-> > @@ -226,10 +225,11 @@ static void mtk_pwm_disable(struct pwm_chip *chip, struct pwm_device *pwm)
-> >  
-> >  static int mtk_pwm_probe(struct platform_device *pdev)
-> >  {
-> > +	struct device_node *np = pdev->dev.of_node;
-> >  	const struct mtk_pwm_platform_data *data;
-> >  	struct mtk_pwm_chip *pc;
-> >  	struct resource *res;
-> > -	unsigned int i;
-> > +	unsigned int i, num_pwms;
-> >  	int ret;
-> >  
-> >  	pc = devm_kzalloc(&pdev->dev, sizeof(*pc), GFP_KERNEL);
-> > @@ -246,7 +246,13 @@ static int mtk_pwm_probe(struct platform_device *pdev)
-> >  	if (IS_ERR(pc->regs))
-> >  		return PTR_ERR(pc->regs);
-> >  
-> > -	for (i = 0; i < data->num_pwms + 2 && pc->soc->has_clks; i++) {
-> > +	ret = of_property_read_u32(np, "mediatek,num-pwms", &num_pwms);
-> > +	if (ret < 0) {
-> > +		dev_err(&pdev->dev, "failed to get pwm number: %d\n", ret);
-> > +		return ret;
-> > +	}
-> > +
-> > +	for (i = 0; i < num_pwms + 2 && pc->soc->has_clks; i++) {
-> >  		pc->clks[i] = devm_clk_get(&pdev->dev, mtk_pwm_clk_name[i]);
-> >  		if (IS_ERR(pc->clks[i])) {
-> >  			dev_err(&pdev->dev, "clock: %s fail: %ld\n",
-> > @@ -260,7 +266,7 @@ static int mtk_pwm_probe(struct platform_device *pdev)
-> >  	pc->chip.dev = &pdev->dev;
-> >  	pc->chip.ops = &mtk_pwm_ops;
-> >  	pc->chip.base = -1;
-> > -	pc->chip.npwm = data->num_pwms;
-> > +	pc->chip.npwm = num_pwms;
-> >  
-> >  	ret = pwmchip_add(&pc->chip);
-> >  	if (ret < 0) {
-> > @@ -279,32 +285,23 @@ static int mtk_pwm_remove(struct platform_device *pdev)
-> >  }
-> >  
-> >  static const struct mtk_pwm_platform_data mt2712_pwm_data = {
-> > -	.num_pwms = 8,
-> > -	.pwm45_fixup = false,
-> > -	.has_clks = true,
-> > -};
-> > -
-> > -static const struct mtk_pwm_platform_data mt7622_pwm_data = {
-> > -	.num_pwms = 6,
-> >  	.pwm45_fixup = false,
-> >  	.has_clks = true,
-> >  };
-> 
-> From my point of view that's not perfect. We should make sure that a newer
-> kernel does not break with an older device tree and vice versa.
-> Just imagine I use some board where u-boot passes the device tree to the kernel,
-> I update the kernel and PWM is broken.
-> 
-> So also it is crappy we will need to have the num_pwms variable for the older
-> boards.
-> Maybe put a switch in the probe function which checks the compatible with a
-> comment message saying that this is for legacy device tree, so that no new
-> contributer just copys the wrong code.
-> 
-> What do you think?
-
-Okay, I will do that.
-
-Ryder
-> 
-> >  
-> >  static const struct mtk_pwm_platform_data mt7623_pwm_data = {
-> > -	.num_pwms = 5,
-> >  	.pwm45_fixup = true,
-> >  	.has_clks = true,
-> >  };
-> >  
-> >  static const struct mtk_pwm_platform_data mt7628_pwm_data = {
-> > -	.num_pwms = 4,
-> >  	.pwm45_fixup = true,
-> >  	.has_clks = false,
-> >  };
-> >  
-> >  static const struct of_device_id mtk_pwm_of_match[] = {
-> >  	{ .compatible = "mediatek,mt2712-pwm", .data = &mt2712_pwm_data },
-> > -	{ .compatible = "mediatek,mt7622-pwm", .data = &mt7622_pwm_data },
-> > +	{ .compatible = "mediatek,mt7622-pwm", .data = &mt2712_pwm_data },
-> >  	{ .compatible = "mediatek,mt7623-pwm", .data = &mt7623_pwm_data },
-> >  	{ .compatible = "mediatek,mt7628-pwm", .data = &mt7628_pwm_data },
-> >  	{ },
-> > 
+SGksIEZyYW5rOgoKT24gVGh1LCAyMDE5LTAxLTE3IGF0IDE1OjE0ICswMTAwLCBGcmFuayBXdW5k
+ZXJsaWNoIHdyb3RlOgo+IEhpLAo+IAo+IHRoaXMgUGF0Y2hzZXQgZG9lcyBub3QgaGFuZyBvbiBC
+YW5hbmFwaSBSMiwgYnV0IGRvZXMgbm90IHNob3cgYW55dGhpbmcgb24gRkItQ29uc29sZS4uLnNl
+ZW1zIGFueXRoaW5nIGlzIG1pc3NpbmcKPiAKPiBodHRwczovL2dpdGh1Yi5jb20vZnJhbmstdy9C
+UEktUjItNC4xNC90cmVlLzQuMjAtZmJkZXYKPiAKPiBkbWVzZyB8IGdyZXAgJ2ZiXHxmcmFtZWJ1
+ZmZlcicKPiBbICAgIDAuMDAwMDAwXSBMaW51eCB2ZXJzaW9uIDQuMjAuMC1yYzctYnBpLXIyLWZi
+ZGV2IChmcmFua0BmcmFuay1ONTZWWikgKGdjYyB2ZXJzaW9uIDcuMy4wIChVYnVudHUvTGluYXJv
+IDcuMy4wLTI3dWJ1bnR1MX4xOC4wNCkpIDkKPiBbICAgIDAuMDAwMDAwXSBjbWE6IFJlc2VydmVk
+IDY0IE1pQiBhdCAweGZiODAwMDAwCj4gWyAgICAwLjAwMDAwMF0gS2VybmVsIGNvbW1hbmQgbGlu
+ZTogYm9hcmQ9YnBpLXIyIGNvbnNvbGU9ZWFybHlwcmludGsgY29uc29sZT10dHkxIGZiY29uPW1h
+cDowIGNvbnNvbGU9dHR5UzAsMTE1MjAwIHJvb3Q9L2Rldi9tbWNibGs3Cj4gWyAgICA1LjczMzE4
+NV0gW2RybTpkcm1fZmJfaGVscGVyX2dlbmVyaWNfcHJvYmVdIHN1cmZhY2Ugd2lkdGgoMTI4MCks
+IGhlaWdodCgxMDI0KSBhbmQgYnBwKDMyKQo+IFsgICAgNS43NTQ0NTJdIFtkcm06ZHJtX21vZGVf
+YWRkZmIyXSBbRkI6NDRdCj4gWyAgICA1Ljc5Mjg3OF0gbWVkaWF0ZWstZHJtIDE0MDAwMDAwLmRp
+c3BzeXM6IGZiMDogRFJNIGVtdWxhdGVkIGZyYW1lIGJ1ZmZlciBkZXZpY2UKPiBbICAgIDUuODE0
+MDY3XSBbZHJtOmRybV9mYl9oZWxwZXJfaG90cGx1Z19ldmVudC5wYXJ0LjExXSAKPiBbICAgIDYu
+MjAzMDgzXSBtZWRpYXRlay1kcm0gMTQwMDAwMDAuZGlzcHN5czogW2RybTpkcm1fY2xpZW50X2Rl
+dl9ob3RwbHVnXSBmYmRldjogcmV0PTAKPiBbICAgMjQuOTMwMzQ3XSBtZWRpYXRlay1kcm0gMTQw
+MDAwMDAuZGlzcHN5czogW2RybTpkcm1fY2xpZW50X2Rldl9yZXN0b3JlXSBmYmRldjogcmV0PTAK
+PiBbICAgMjUuMTk2ODcyXSBtZWRpYXRlay1kcm0gMTQwMDAwMDAuZGlzcHN5czogW2RybTpkcm1f
+Y2xpZW50X2Rldl9yZXN0b3JlXSBmYmRldjogcmV0PTAKPiBbICAgMjUuMjgxMTg0XSBbZHJtOmRy
+bV9tb2RlX2FkZGZiMl0gW0ZCOjQ5XQo+IFsgICAyNy45NDc5NjJdIFtkcm06ZHJtX21vZGVfYWRk
+ZmIyXSBbRkI6NDldCgpUaGUgbG9nIGRvZXMgbm90IHNob3cgYW55IGluZm9ybWF0aW9uIG9mIGVy
+cm9yLCBidXQgaXQgY2xvc2UgZmJkZXYgYXQKdGhlIHRpbWUgMjQuOTMwMzQ3LgoKSSBqdXN0IHRl
+c3Qgdm1hcCgpIGJ5IHdyaXRpbmcgd2hpdGUgY29sb3IgaW50byBmcmFtZWJ1ZmZlciBhZnRlciB2
+bWFwKCkKYW5kIHVzZSB1c2VyIHNwYWNlIHByb2dyYW0gdG8gY29udHJvbCBmYmRldiB0byBzaG93
+IHRoaXMgZnJhbWVidWZmZXIgYW5kCnRoZSBwYW5lbCBzaG93cyB3aGl0ZSBzY3JlZW4uIFNvIEkg
+YmVsaWV2ZSB0aGF0IHZtYXAoKSBhbmQgZmJkZXYgd29ya3MKZmluZSwgYnV0IEknbSBub3Qgc3Vy
+ZSB3aGF0IGhhcHBlbiB0byBmYmNvbi4gSSB3b3VsZCB0cnkgdG8gc2V0dXAgZmJjb24KdG8gZmlu
+ZCBvdXQgdGhlIGJ1Zy4gSWYgeW91IGNvdWxkIHRyeSB0byBkZWJ1ZyBwYXJhbGxlbGx5LCBpdCB3
+b3VsZCBiZQptdWNoIGhlbHAuCgpSZWdhcmRzLApDSwoKPiAKPiByZWdhcmRzIEZyYW5rCj4gCj4g
+Cj4gPiBHZXNlbmRldDogTWl0dHdvY2gsIDE2LiBKYW51YXIgMjAxOSB1bSAwMjozOSBVaHIKPiA+
+IFZvbjogIkNLIEh1IiA8Y2suaHVAbWVkaWF0ZWsuY29tPgo+ID4gQW46ICJQaGlsaXBwIFphYmVs
+IiA8cC56YWJlbEBwZW5ndXRyb25peC5kZT4sICJEYXZpZCBBaXJsaWUiIDxhaXJsaWVkQGxpbnV4
+LmllPiwgIkRhbmllbCBWZXR0ZXIiIDxkYW5pZWxAZmZ3bGwuY2g+LCAiTWF0dGhpYXMgQnJ1Z2dl
+ciIgPG1hdHRoaWFzLmJnZ0BnbWFpbC5jb20+LCAiTm9yYWxmIFRy77+9bm5lcyIgPG5vcmFsZkB0
+cm9ubmVzLm9yZz4sICJGcmFuayBXdW5kZXJsaWNoIiA8ZnJhbmstd0BwdWJsaWMtZmlsZXMuZGU+
+Cj4gPiBDYzogZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZywgbGludXgtYXJtLWtlcm5l
+bEBsaXN0cy5pbmZyYWRlYWQub3JnLCBsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3Jn
+LCBsaW51eC1rZXJuZWxAdmdlci5rZXJuZWwub3JnLCBzcnZfaGV1cHN0cmVhbUBtZWRpYXRlay5j
+b20sICJDSyBIdSIgPGNrLmh1QG1lZGlhdGVrLmNvbT4KPiA+IEJldHJlZmY6IFtQQVRDSCAyLzJd
+IGRybS9tZWRpYXRlazogQWRkIE1lZGlhdGVrIGZyYW1lYnVmZmVyIGRldmljZQo+ID4KPiA+IEZv
+ciBNZWRpYXRlayBkcm0gZHJpdmVyLCB1c2UgZmJkZXYgZW11bGF0aW9uIHRvIGNyZWF0ZSBhIGZy
+YW1lYnVmZmVyCj4gPiBkZXZpY2UuCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IENLIEh1IDxjay5o
+dUBtZWRpYXRlay5jb20+Cj4gPiAtLS0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2RybV9kcnYuYyB8IDUgKysrKysKPiA+ICAxIGZpbGUgY2hhbmdlZCwgNSBpbnNlcnRpb25zKCsp
+Cj4gPiAKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9k
+cnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gPiBpbmRleCA2
+ZWM0Y2EwNzAzODIuLjVmY2MwZTI5NDY5NiAxMDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RybV9kcnYuYwo+ID4gQEAgLTE2LDYgKzE2LDcgQEAKPiA+ICAjaW5jbHVkZSA8ZHJt
+L2RybV9hdG9taWMuaD4KPiA+ICAjaW5jbHVkZSA8ZHJtL2RybV9hdG9taWNfaGVscGVyLmg+Cj4g
+PiAgI2luY2x1ZGUgPGRybS9kcm1fY3J0Y19oZWxwZXIuaD4KPiA+ICsjaW5jbHVkZSA8ZHJtL2Ry
+bV9mYl9oZWxwZXIuaD4KPiA+ICAjaW5jbHVkZSA8ZHJtL2RybV9nZW0uaD4KPiA+ICAjaW5jbHVk
+ZSA8ZHJtL2RybV9nZW1fY21hX2hlbHBlci5oPgo+ID4gICNpbmNsdWRlIDxkcm0vZHJtX29mLmg+
+Cj4gPiBAQCAtMzc4LDYgKzM3OSwxMCBAQCBzdGF0aWMgaW50IG10a19kcm1fYmluZChzdHJ1Y3Qg
+ZGV2aWNlICpkZXYpCj4gPiAgCWlmIChyZXQgPCAwKQo+ID4gIAkJZ290byBlcnJfZGVpbml0Owo+
+ID4gIAo+ID4gKwlyZXQgPSBkcm1fZmJkZXZfZ2VuZXJpY19zZXR1cChkcm0sIDMyKTsKPiA+ICsJ
+aWYgKHJldCkKPiA+ICsJCURSTV9FUlJPUigiRmFpbGVkIHRvIGluaXRpYWxpemUgZmJkZXY6ICVk
+XG4iLCByZXQpOwo+ID4gKwo+ID4gIAlyZXR1cm4gMDsKPiA+ICAKPiA+ICBlcnJfZGVpbml0Ogo+
+ID4gLS0gCj4gPiAyLjE4LjEKPiA+IAo+ID4KPiAKPiBfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdAo+IExp
+bnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCgoKCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBs
+aXN0CmxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
