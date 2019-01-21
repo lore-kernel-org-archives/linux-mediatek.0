@@ -1,39 +1,54 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [RFC v3 1/5] dt-bindings: Add a binding for Mediatek SCP
-Date: Mon, 21 Jan 2019 09:30:17 -0600
-Message-ID: <20190121153017.GA4608@bogus>
-References: <20190121071833.43443-1-pihsun@chromium.org>
- <20190121071833.43443-2-pihsun@chromium.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+From: Amit Kucheria <amit.kucheria@linaro.org>
+Subject: [PATCH v2 0/9] cpufreq: Add flag to auto-register as cooling
+Date: Mon, 21 Jan 2019 21:10:25 +0530
+Message-ID: <cover.1548084260.git.amit.kucheria@linaro.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190121071833.43443-2-pihsun@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: Pi-Hsun Shih <pihsun@chromium.org>, Nicolas Boichat <drinkcat@chromium.org>, Erin Lo <erin.lo@mediatek.com>, Ohad Ben-Cohen <ohad@wizery.com>, Bjorn Andersson <bjorn.andersson@linaro.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:REMOTE PROCESSOR (REMOTEPROC) SUBSYSTEM" <linux-remoteproc@vger.kernel.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>
+To: linux-kernel@vger.kernel.org
+Cc: linux-arm-msm@vger.kernel.org, viresh.kumar@linaro.org, edubezval@gmail.com, swboyd@chromium.org, dianders@chromium.org, mka@chromium.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Daniel Lezcano <daniel.lezcano@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sudeep Holla <sudeep.holla@arm.com>, Zhang Rui <rui.zhang@intel.com>, "moderated list:ARM/Mediatek SoC
+        support" <linux-arm-kernel@lists.infradead.org>, linux-pm@vger.kernel.org, "moderated list:ARM/Mediatek SoC
+        support" <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 21 Jan 2019 15:18:29 +0800, Pi-Hsun Shih wrote:
-> From: Erin Lo <erin.lo@mediatek.com>
-> 
-> Add a DT binding documentation of SCP for the
-> MT8183 SoC from Mediatek.
-> 
-> Signed-off-by: Erin Lo <erin.lo@mediatek.com>
-> ---
-> Changes from v2:
->  - No change. I realized that for this patch series, there's no need to
->    add anything under the mt8183-scp node (neither the mt8183-rpmsg or
->    the cros-ec-rpmsg) for them to work, since mt8183-rpmsg is added
->    directly as a rproc_subdev by code, and cros-ec-rpmsg is dynamically
->    created by SCP name service.
-> 
-> Changes from v1:
->  - No change.
-> ---
->  .../devicetree/bindings/remoteproc/mtk,scp.txt         | 10 ++++++++++
->  1 file changed, 10 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
-> 
+Add a flag to be used by cpufreq drivers to tell cpufreq core to
+auto-register themselves as a thermal cooling device.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+There series converts over all the drivers except arm_big_little.c.
+Tested on SDM845 with the qcom-cpufreq-hw driver. Only compile-tested the
+others.
+
+Things needing fixing (but not a blocker for the series):
+ - Look at how to detect that we're not in IKS mode in arm_big_little's
+   .ready callback.
+
+Changes since v1:
+- Fix compilation failures with allmodconfig
+- Get rid of #ifdef in cpufreq.c
+- Removed miscellaneous patches and sent them separately
+- Merged patches 1 and 2 from v1
+
+Amit Kucheria (9):
+  thermal: cpu_cooling: Require thermal core to be compiled in
+  cpufreq: Auto-register the driver as a thermal cooling device if asked
+  cpufreq: qcom-hw: Register as a cpufreq cooling device
+  cpufreq: imx6q: Use auto-registration of thermal cooling device
+  cpufreq: cpufreq-dt: Use auto-registration of thermal cooling device
+  cpufreq: mediatek: Use auto-registration of thermal cooling device
+  cpufreq: qoriq: Use auto-registration of thermal cooling device
+  cpufreq: scmi: Use auto-registration of thermal cooling device
+  cpufreq: scpi: Use auto-registration of thermal cooling device
+
+ drivers/cpufreq/cpufreq-dt.c       | 14 ++------------
+ drivers/cpufreq/cpufreq.c          |  6 ++++++
+ drivers/cpufreq/imx6q-cpufreq.c    | 24 ++----------------------
+ drivers/cpufreq/mediatek-cpufreq.c | 14 ++------------
+ drivers/cpufreq/qcom-cpufreq-hw.c  |  3 ++-
+ drivers/cpufreq/qoriq-cpufreq.c    | 15 ++-------------
+ drivers/cpufreq/scmi-cpufreq.c     | 14 ++------------
+ drivers/cpufreq/scpi-cpufreq.c     | 14 ++------------
+ drivers/thermal/Kconfig            |  1 +
+ include/linux/cpufreq.h            | 25 +++++++++++++++++++++++++
+ 10 files changed, 46 insertions(+), 84 deletions(-)
+
+-- 
+2.17.1
