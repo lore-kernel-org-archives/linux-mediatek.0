@@ -1,17 +1,16 @@
-From: "Frank Wunderlich" <frank-w@public-files.de>
-Subject: Aw: Re:  [PATCH 2/2] drm/mediatek: Add Mediatek framebuffer device
-Date: Sun, 20 Jan 2019 14:36:46 +0100
-Message-ID: <trinity-1c369adc-b489-43dd-87c9-5b43d49561c5-1547991406711@3c-app-gmx-bs40>
-References: <20190116013924.11345-1-ck.hu@mediatek.com>
- <20190116013924.11345-2-ck.hu@mediatek.com>
- <trinity-1adab8be-573a-4816-9e9f-feddf07bdcd3-1547734452313@3c-app-gmx-bs28>
- <1547775975.4221.11.camel@mtksdaap41>
- <74eba84d-4686-698a-6100-d72dabd15a21@gmail.com>
+From: Min Guo <min.guo@mediatek.com>
+Subject: Re: [PATCH v3 4/4] usb: musb: Add support for MediaTek musb controller
+Date: Mon, 21 Jan 2019 09:08:37 +0800
+Message-ID: <1548032917.4433.255.camel@mhfsdcap03>
+References: <1547709348-17506-1-git-send-email-min.guo@mediatek.com>
+ <1547709348-17506-5-git-send-email-min.guo@mediatek.com>
+ <20190117143342.GS5544@atomide.com> <1547792054.4433.254.camel@mhfsdcap03>
+ <20190118133408.GA30080@uda0271908>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <74eba84d-4686-698a-6100-d72dabd15a21@gmail.com>
+In-Reply-To: <20190118133408.GA30080@uda0271908>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -21,19 +20,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, =?UTF-8?Q?=22Noralf_Tr=EF=BF=BDnnes=22?= <noralf@tronnes.org>, linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>, linux-arm-kernel@lists.infradead.org
+To: Bin Liu <b-liu@ti.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Yonglong Wu <yonglong.wu@mediatek.com>, hdegoede@redhat.com, Tony Lindgren <tony@atomide.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, chunfeng.yun@mediatek.com, Rob Herring <robh+dt@kernel.org>, Alan Stern <stern@rowland.harvard.edu>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Tested with mmsys-Patch, but same result, no fbcon, tft is switched on but i see no kernel-log
+On Fri, 2019-01-18 at 07:34 -0600, Bin Liu wrote:
+> Hi Min,
+> 
+> On Fri, Jan 18, 2019 at 02:14:14PM +0800, Min Guo wrote:
+> > On Thu, 2019-01-17 at 06:33 -0800, Tony Lindgren wrote:
+> > > Hi,
+> > > 
+> > > * min.guo@mediatek.com <min.guo@mediatek.com> [190117 07:16]:
+> > > > There are some quirk of MediaTek musb controller, such as:
+> > > >  -W1C interrupt status registers
+> > > >  -Private data toggle registers
+> > > >  -No dedicated DMA interrupt line
+> > > 
+> > > Can you please separate the musb generic changes listed above
+> > > into separate individual patches in preparation for adding
+> > > support for new hardware?
+> > > 
+> > > Otherwise we'll have hard time finding out with git bisect what
+> > > exactly breaks things if we run into trouble.
+> > 
+> > Thanks for your suggestion.
+> > I prepared to divide these changes into separate patches. Later, Mr.Bin
+> > suggested not to do this.
+> 
+> Initially I thought the clearb/w() changes should be just a couple
+> lines, so didn't think to separate it. But after reviewed the final
+> implemenation, I agree Tony's comment is the right thing to do, please
+> separate the musb core changes, each for clearb/w(), get/set_toggle(),
+> and dma.
 
-after boot is finished, i see X-server, until this point i see only black screen
+OKay.
 
-regards Frank
-
-
-> Gesendet: Freitag, 18. Januar 2019 um 09:39 Uhr
-> Von: "Matthias Brugger" <matthias.bgg@gmail.com>
-> may it be the not yet fixed mmsys compatible problem?
-> Frank, did you test with my last series [1]?
-> [1] https://patchwork.kernel.org/cover/10686345/
+> Regards,
+> -Bin.
