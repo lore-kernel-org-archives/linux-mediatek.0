@@ -1,84 +1,68 @@
-From: Amit Kucheria <amit.kucheria@linaro.org>
-Subject: [PATCH v2 6/9] cpufreq: mediatek: Use auto-registration of thermal cooling device
-Date: Mon, 21 Jan 2019 21:10:31 +0530
-Message-ID: <4253d7a24e9c85ca24cceef599ab8da8682e0bee.1548084260.git.amit.kucheria@linaro.org>
-References: <cover.1548084260.git.amit.kucheria@linaro.org>
+From: Bin Liu <b-liu@ti.com>
+Subject: Re: [PATCH v4 5/6] usb: musb: Add musb_clearb/w() interface
+Date: Mon, 21 Jan 2019 09:59:29 -0600
+Message-ID: <20190121155929.GC30080@uda0271908>
+References: <1548073351-13739-1-git-send-email-min.guo@mediatek.com>
+ <1548073351-13739-6-git-send-email-min.guo@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1548084260.git.amit.kucheria@linaro.org>
-In-Reply-To: <cover.1548084260.git.amit.kucheria@linaro.org>
-References: <cover.1548084260.git.amit.kucheria@linaro.org>
+Content-Disposition: inline
+In-Reply-To: <1548073351-13739-6-git-send-email-min.guo@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: linux-arm-msm@vger.kernel.org, viresh.kumar@linaro.org, edubezval@gmail.com, swboyd@chromium.org, dianders@chromium.org, mka@chromium.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: min.guo@mediatek.com
+Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, chunfeng.yun@mediatek.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, tony@atomide.com, hdegoede@redhat.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Use the CPUFREQ_AUTO_REGISTER_COOLING_DEV flag to allow cpufreq core to
-automatically register as a thermal cooling device.
+Hi Min,
 
-This allows removal of boiler plate code from the driver.
+On Mon, Jan 21, 2019 at 08:22:30PM +0800, min.guo@mediatek.com wrote:
+> From: Min Guo <min.guo@mediatek.com>
+> 
+> Delete the const attribute of addr parameter in readb/w/l hooks, these
+> changes are for implementing clearing W1C registers.
+> Replace musb_readb/w with musb_clearb/w to clear the interrupt status.
+> 
+> Signed-off-by: Min Guo <min.guo@mediatek.com>
+> ---
+> new patch based on v3:
+> ---
+>  drivers/usb/musb/musb_core.c | 32 +++++++++++++++++++++++---------
+>  drivers/usb/musb/musb_core.h |  8 ++++++--
+>  drivers/usb/musb/musb_io.h   |  8 +++++---
+>  drivers/usb/musb/musbhsdma.c |  3 +++
+>  drivers/usb/musb/sunxi.c     |  4 ++--
+>  drivers/usb/musb/tusb6010.c  |  2 +-
+>  6 files changed, 40 insertions(+), 17 deletions(-)
+> 
+> diff --git a/drivers/usb/musb/musb_core.c b/drivers/usb/musb/musb_core.c
+> index 2fe5225..5ef8848 100644
+> --- a/drivers/usb/musb/musb_core.c
+> +++ b/drivers/usb/musb/musb_core.c
 
-Signed-off-by: Amit Kucheria <amit.kucheria@linaro.org>
----
- drivers/cpufreq/mediatek-cpufreq.c | 14 ++------------
- 1 file changed, 2 insertions(+), 12 deletions(-)
+[snip]
 
-diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index eb8920d39818..9a937f4c63e7 100644
---- a/drivers/cpufreq/mediatek-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -14,7 +14,6 @@
- 
- #include <linux/clk.h>
- #include <linux/cpu.h>
--#include <linux/cpu_cooling.h>
- #include <linux/cpufreq.h>
- #include <linux/cpumask.h>
- #include <linux/module.h>
-@@ -48,7 +47,6 @@ struct mtk_cpu_dvfs_info {
- 	struct regulator *sram_reg;
- 	struct clk *cpu_clk;
- 	struct clk *inter_clk;
--	struct thermal_cooling_device *cdev;
- 	struct list_head list_head;
- 	int intermediate_voltage;
- 	bool need_voltage_tracking;
-@@ -307,13 +305,6 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 
- #define DYNAMIC_POWER "dynamic-power-coefficient"
- 
--static void mtk_cpufreq_ready(struct cpufreq_policy *policy)
--{
--	struct mtk_cpu_dvfs_info *info = policy->driver_data;
--
--	info->cdev = of_cpufreq_cooling_register(policy);
--}
--
- static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
- {
- 	struct device *cpu_dev;
-@@ -472,7 +463,6 @@ static int mtk_cpufreq_exit(struct cpufreq_policy *policy)
- {
- 	struct mtk_cpu_dvfs_info *info = policy->driver_data;
- 
--	cpufreq_cooling_unregister(info->cdev);
- 	dev_pm_opp_free_cpufreq_table(info->cpu_dev, &policy->freq_table);
- 
- 	return 0;
-@@ -480,13 +470,13 @@ static int mtk_cpufreq_exit(struct cpufreq_policy *policy)
- 
- static struct cpufreq_driver mtk_cpufreq_driver = {
- 	.flags = CPUFREQ_STICKY | CPUFREQ_NEED_INITIAL_FREQ_CHECK |
--		 CPUFREQ_HAVE_GOVERNOR_PER_POLICY,
-+		 CPUFREQ_HAVE_GOVERNOR_PER_POLICY |
-+		 CPUFREQ_AUTO_REGISTER_COOLING_DEV,
- 	.verify = cpufreq_generic_frequency_table_verify,
- 	.target_index = mtk_cpufreq_set_target,
- 	.get = cpufreq_generic_get,
- 	.init = mtk_cpufreq_init,
- 	.exit = mtk_cpufreq_exit,
--	.ready = mtk_cpufreq_ready,
- 	.name = "mtk-cpufreq",
- 	.attr = cpufreq_generic_attr,
- };
--- 
-2.17.1
+> diff --git a/drivers/usb/musb/musbhsdma.c b/drivers/usb/musb/musbhsdma.c
+> index b2394a7..7bf91cb 100644
+> --- a/drivers/usb/musb/musbhsdma.c
+> +++ b/drivers/usb/musb/musbhsdma.c
+> @@ -286,6 +286,9 @@ irqreturn_t dma_controller_irq(int irq, void *private_data)
+>  
+>  	int_hsdma = musb_readb(mbase, MUSB_HSDMA_INTR);
+>  
+> +	/* clear pending interrupts by manual */
+> +	musb_clearb(musb->mregs, MUSB_HSDMA_INTR);
+> +
+
+Make musb_clearb/w() return the value of the _read() instead of
+_write(), so that we don't have to read twice here. The value of
+_write() is not used anyway.
+
+The change above can be:
+
+	int_hsdma = musb_clearb(mbase, MUSB_HSDMA_INTR);
+
+Please see my comments in 6/6 for details.
+
+Regards,
+-Bin.
