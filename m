@@ -1,325 +1,256 @@
-From: qii wang <qii.wang@mediatek.com>
-Subject: [PATCH v3 4/6] i2c: mediatek: Add offsets array for new i2c registers
-Date: Mon, 21 Jan 2019 15:59:32 +0800
-Message-ID: <1548057574-8061-5-git-send-email-qii.wang@mediatek.com>
-References: <1548057574-8061-1-git-send-email-qii.wang@mediatek.com>
+From: Long Cheng <long.cheng@mediatek.com>
+Subject: Re: [PATCH v9 1/2] dmaengine: 8250_mtk_dma: add MediaTek uart DMA
+ support
+Date: Mon, 21 Jan 2019 16:12:29 +0800
+Message-ID: <1548058349.3831.71.camel@mhfsdcap03>
+References: <1546395178-8880-1-git-send-email-long.cheng@mediatek.com>
+         <1546395178-8880-2-git-send-email-long.cheng@mediatek.com>
+         <20190104171953.GQ13372@vkoul-mobl.Dlink>
+         <1547116431.3831.43.camel@mhfsdcap03> <20190120052750.GN4635@vkoul-mobl>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1548057574-8061-1-git-send-email-qii.wang@mediatek.com>
+In-Reply-To: <20190120052750.GN4635@vkoul-mobl>
 Sender: linux-kernel-owner@vger.kernel.org
-To: wsa@the-dreams.de
-Cc: linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, leilk.liu@mediatek.com, qii.wang@mediatek.com, ryder.lee@mediatek.com, xinping.qian@mediatek.com, liguo.zhang@mediatek.com
+To: Vinod Koul <vkoul@kernel.org>
+Cc: Randy Dunlap <rdunlap@infradead.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Dan Williams <dan.j.williams@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>, Sean Wang <sean.wang@mediatek.com>, dmaengine@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, srv_heupstream@mediatek.com, Yingjoe Chen <yingjoe.chen@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Zhenbao Liu <zhenbao.liu@me>
 List-Id: linux-mediatek@lists.infradead.org
 
-New i2c registers would have different offsets, so we use different
-offsets array to distinguish different i2c registers version.
+On Sun, 2019-01-20 at 10:57 +0530, Vinod Koul wrote:
+> On 10-01-19, 18:33, Long Cheng wrote:
+> > On Fri, 2019-01-04 at 22:49 +0530, Vinod Koul wrote:
+> > > On 02-01-19, 10:12, Long Cheng wrote:
+> > > > In DMA engine framework, add 8250 uart dma to support MediaTek uart.
+> > > > If MediaTek uart enabled(SERIAL_8250_MT6577), and want to improve
+> > > > the performance, can enable the function.
+> > > 
+> > > Is the DMA controller UART specific, can it work with other controllers
+> > > as well, if so you should get rid of uart name in patch
+> > 
+> > I don't know that it can work or not on other controller. but it's for
+> > MediaTek SOC
+> 
+> What I meant was that if can work with other controllers (users) apart
+> from UART, how about say audio, spi etc!!
+> 
 
-Signed-off-by: qii wang <qii.wang@mediatek.com>
-Reviewed-by: Sean Wang <sean.wang@kernel.org>
-Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
----
- drivers/i2c/busses/i2c-mt65xx.c |  163 +++++++++++++++++++++++++--------------
- 1 file changed, 104 insertions(+), 59 deletions(-)
+it's just for UART APDMA. can't work on spi ...
 
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index 660de1e..428ac99 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -106,34 +106,62 @@ enum mtk_trans_op {
- };
- 
- enum I2C_REGS_OFFSET {
--	OFFSET_DATA_PORT = 0x0,
--	OFFSET_SLAVE_ADDR = 0x04,
--	OFFSET_INTR_MASK = 0x08,
--	OFFSET_INTR_STAT = 0x0c,
--	OFFSET_CONTROL = 0x10,
--	OFFSET_TRANSFER_LEN = 0x14,
--	OFFSET_TRANSAC_LEN = 0x18,
--	OFFSET_DELAY_LEN = 0x1c,
--	OFFSET_TIMING = 0x20,
--	OFFSET_START = 0x24,
--	OFFSET_EXT_CONF = 0x28,
--	OFFSET_FIFO_STAT = 0x30,
--	OFFSET_FIFO_THRESH = 0x34,
--	OFFSET_FIFO_ADDR_CLR = 0x38,
--	OFFSET_IO_CONFIG = 0x40,
--	OFFSET_RSV_DEBUG = 0x44,
--	OFFSET_HS = 0x48,
--	OFFSET_SOFTRESET = 0x50,
--	OFFSET_DCM_EN = 0x54,
--	OFFSET_PATH_DIR = 0x60,
--	OFFSET_DEBUGSTAT = 0x64,
--	OFFSET_DEBUGCTRL = 0x68,
--	OFFSET_TRANSFER_LEN_AUX = 0x6c,
--	OFFSET_CLOCK_DIV = 0x70,
-+	OFFSET_DATA_PORT,
-+	OFFSET_SLAVE_ADDR,
-+	OFFSET_INTR_MASK,
-+	OFFSET_INTR_STAT,
-+	OFFSET_CONTROL,
-+	OFFSET_TRANSFER_LEN,
-+	OFFSET_TRANSAC_LEN,
-+	OFFSET_DELAY_LEN,
-+	OFFSET_TIMING,
-+	OFFSET_START,
-+	OFFSET_EXT_CONF,
-+	OFFSET_FIFO_STAT,
-+	OFFSET_FIFO_THRESH,
-+	OFFSET_FIFO_ADDR_CLR,
-+	OFFSET_IO_CONFIG,
-+	OFFSET_RSV_DEBUG,
-+	OFFSET_HS,
-+	OFFSET_SOFTRESET,
-+	OFFSET_DCM_EN,
-+	OFFSET_PATH_DIR,
-+	OFFSET_DEBUGSTAT,
-+	OFFSET_DEBUGCTRL,
-+	OFFSET_TRANSFER_LEN_AUX,
-+	OFFSET_CLOCK_DIV,
-+};
-+
-+static const u16 mt_i2c_regs_v1[] = {
-+	[OFFSET_DATA_PORT] = 0x0,
-+	[OFFSET_SLAVE_ADDR] = 0x4,
-+	[OFFSET_INTR_MASK] = 0x8,
-+	[OFFSET_INTR_STAT] = 0xc,
-+	[OFFSET_CONTROL] = 0x10,
-+	[OFFSET_TRANSFER_LEN] = 0x14,
-+	[OFFSET_TRANSAC_LEN] = 0x18,
-+	[OFFSET_DELAY_LEN] = 0x1c,
-+	[OFFSET_TIMING] = 0x20,
-+	[OFFSET_START] = 0x24,
-+	[OFFSET_EXT_CONF] = 0x28,
-+	[OFFSET_FIFO_STAT] = 0x30,
-+	[OFFSET_FIFO_THRESH] = 0x34,
-+	[OFFSET_FIFO_ADDR_CLR] = 0x38,
-+	[OFFSET_IO_CONFIG] = 0x40,
-+	[OFFSET_RSV_DEBUG] = 0x44,
-+	[OFFSET_HS] = 0x48,
-+	[OFFSET_SOFTRESET] = 0x50,
-+	[OFFSET_DCM_EN] = 0x54,
-+	[OFFSET_PATH_DIR] = 0x60,
-+	[OFFSET_DEBUGSTAT] = 0x64,
-+	[OFFSET_DEBUGCTRL] = 0x68,
-+	[OFFSET_TRANSFER_LEN_AUX] = 0x6c,
-+	[OFFSET_CLOCK_DIV] = 0x70,
- };
- 
- struct mtk_i2c_compatible {
- 	const struct i2c_adapter_quirks *quirks;
-+	const u16 *regs;
- 	unsigned char pmic_i2c: 1;
- 	unsigned char dcm: 1;
- 	unsigned char auto_restart: 1;
-@@ -181,6 +209,7 @@ struct mtk_i2c {
- };
- 
- static const struct mtk_i2c_compatible mt2712_compat = {
-+	.regs = mt_i2c_regs_v1,
- 	.pmic_i2c = 0,
- 	.dcm = 1,
- 	.auto_restart = 1,
-@@ -191,6 +220,7 @@ struct mtk_i2c {
- 
- static const struct mtk_i2c_compatible mt6577_compat = {
- 	.quirks = &mt6577_i2c_quirks,
-+	.regs = mt_i2c_regs_v1,
- 	.pmic_i2c = 0,
- 	.dcm = 1,
- 	.auto_restart = 0,
-@@ -201,6 +231,7 @@ struct mtk_i2c {
- 
- static const struct mtk_i2c_compatible mt6589_compat = {
- 	.quirks = &mt6577_i2c_quirks,
-+	.regs = mt_i2c_regs_v1,
- 	.pmic_i2c = 1,
- 	.dcm = 0,
- 	.auto_restart = 0,
-@@ -211,6 +242,7 @@ struct mtk_i2c {
- 
- static const struct mtk_i2c_compatible mt7622_compat = {
- 	.quirks = &mt7622_i2c_quirks,
-+	.regs = mt_i2c_regs_v1,
- 	.pmic_i2c = 0,
- 	.dcm = 1,
- 	.auto_restart = 1,
-@@ -220,6 +252,7 @@ struct mtk_i2c {
- };
- 
- static const struct mtk_i2c_compatible mt8173_compat = {
-+	.regs = mt_i2c_regs_v1,
- 	.pmic_i2c = 0,
- 	.dcm = 1,
- 	.auto_restart = 1,
-@@ -238,6 +271,17 @@ struct mtk_i2c {
- };
- MODULE_DEVICE_TABLE(of, mtk_i2c_of_match);
- 
-+static u16 mtk_i2c_readw(struct mtk_i2c *i2c, enum I2C_REGS_OFFSET reg)
-+{
-+	return readw(i2c->base + i2c->dev_comp->regs[reg]);
-+}
-+
-+static void mtk_i2c_writew(struct mtk_i2c *i2c, u16 val,
-+			   enum I2C_REGS_OFFSET reg)
-+{
-+	writew(val, i2c->base + i2c->dev_comp->regs[reg]);
-+}
-+
- static int mtk_i2c_clock_enable(struct mtk_i2c *i2c)
- {
- 	int ret;
-@@ -278,31 +322,31 @@ static void mtk_i2c_init_hw(struct mtk_i2c *i2c)
- {
- 	u16 control_reg;
- 
--	writew(I2C_SOFT_RST, i2c->base + OFFSET_SOFTRESET);
-+	mtk_i2c_writew(i2c, I2C_SOFT_RST, OFFSET_SOFTRESET);
- 
- 	/* Set ioconfig */
- 	if (i2c->use_push_pull)
--		writew(I2C_IO_CONFIG_PUSH_PULL, i2c->base + OFFSET_IO_CONFIG);
-+		mtk_i2c_writew(i2c, I2C_IO_CONFIG_PUSH_PULL, OFFSET_IO_CONFIG);
- 	else
--		writew(I2C_IO_CONFIG_OPEN_DRAIN, i2c->base + OFFSET_IO_CONFIG);
-+		mtk_i2c_writew(i2c, I2C_IO_CONFIG_OPEN_DRAIN, OFFSET_IO_CONFIG);
- 
- 	if (i2c->dev_comp->dcm)
--		writew(I2C_DCM_DISABLE, i2c->base + OFFSET_DCM_EN);
-+		mtk_i2c_writew(i2c, I2C_DCM_DISABLE, OFFSET_DCM_EN);
- 
- 	if (i2c->dev_comp->timing_adjust)
--		writew(I2C_DEFAULT_CLK_DIV - 1, i2c->base + OFFSET_CLOCK_DIV);
-+		mtk_i2c_writew(i2c, I2C_DEFAULT_CLK_DIV - 1, OFFSET_CLOCK_DIV);
- 
--	writew(i2c->timing_reg, i2c->base + OFFSET_TIMING);
--	writew(i2c->high_speed_reg, i2c->base + OFFSET_HS);
-+	mtk_i2c_writew(i2c, i2c->timing_reg, OFFSET_TIMING);
-+	mtk_i2c_writew(i2c, i2c->high_speed_reg, OFFSET_HS);
- 
- 	/* If use i2c pin from PMIC mt6397 side, need set PATH_DIR first */
- 	if (i2c->have_pmic)
--		writew(I2C_CONTROL_WRAPPER, i2c->base + OFFSET_PATH_DIR);
-+		mtk_i2c_writew(i2c, I2C_CONTROL_WRAPPER, OFFSET_PATH_DIR);
- 
- 	control_reg = I2C_CONTROL_ACKERR_DET_EN |
- 		      I2C_CONTROL_CLK_EXT_EN | I2C_CONTROL_DMA_EN;
--	writew(control_reg, i2c->base + OFFSET_CONTROL);
--	writew(I2C_DELAY_LEN, i2c->base + OFFSET_DELAY_LEN);
-+	mtk_i2c_writew(i2c, control_reg, OFFSET_CONTROL);
-+	mtk_i2c_writew(i2c, I2C_DELAY_LEN, OFFSET_DELAY_LEN);
- 
- 	writel(I2C_DMA_HARD_RST, i2c->pdmabase + OFFSET_RST);
- 	udelay(50);
-@@ -454,7 +498,7 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
- 
- 	reinit_completion(&i2c->msg_complete);
- 
--	control_reg = readw(i2c->base + OFFSET_CONTROL) &
-+	control_reg = mtk_i2c_readw(i2c, OFFSET_CONTROL) &
- 			~(I2C_CONTROL_DIR_CHANGE | I2C_CONTROL_RS);
- 	if ((i2c->speed_hz > MAX_FS_MODE_SPEED) || (left_num >= 1))
- 		control_reg |= I2C_CONTROL_RS;
-@@ -462,40 +506,41 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
- 	if (i2c->op == I2C_MASTER_WRRD)
- 		control_reg |= I2C_CONTROL_DIR_CHANGE | I2C_CONTROL_RS;
- 
--	writew(control_reg, i2c->base + OFFSET_CONTROL);
-+	mtk_i2c_writew(i2c, control_reg, OFFSET_CONTROL);
- 
- 	/* set start condition */
- 	if (i2c->speed_hz <= I2C_DEFAULT_SPEED)
--		writew(I2C_ST_START_CON, i2c->base + OFFSET_EXT_CONF);
-+		mtk_i2c_writew(i2c, I2C_ST_START_CON, OFFSET_EXT_CONF);
- 	else
--		writew(I2C_FS_START_CON, i2c->base + OFFSET_EXT_CONF);
-+		mtk_i2c_writew(i2c, I2C_FS_START_CON, OFFSET_EXT_CONF);
- 
- 	addr_reg = i2c_8bit_addr_from_msg(msgs);
--	writew(addr_reg, i2c->base + OFFSET_SLAVE_ADDR);
-+	mtk_i2c_writew(i2c, addr_reg, OFFSET_SLAVE_ADDR);
- 
- 	/* Clear interrupt status */
--	writew(restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
--	       I2C_TRANSAC_COMP, i2c->base + OFFSET_INTR_STAT);
--	writew(I2C_FIFO_ADDR_CLR, i2c->base + OFFSET_FIFO_ADDR_CLR);
-+	mtk_i2c_writew(i2c, restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
-+	       I2C_TRANSAC_COMP, OFFSET_INTR_STAT);
-+
-+	mtk_i2c_writew(i2c, I2C_FIFO_ADDR_CLR, OFFSET_FIFO_ADDR_CLR);
- 
- 	/* Enable interrupt */
--	writew(restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
--	       I2C_TRANSAC_COMP, i2c->base + OFFSET_INTR_MASK);
-+	mtk_i2c_writew(i2c, restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
-+	       I2C_TRANSAC_COMP, OFFSET_INTR_MASK);
- 
- 	/* Set transfer and transaction len */
- 	if (i2c->op == I2C_MASTER_WRRD) {
- 		if (i2c->dev_comp->aux_len_reg) {
--			writew(msgs->len, i2c->base + OFFSET_TRANSFER_LEN);
--			writew((msgs + 1)->len, i2c->base +
--			       OFFSET_TRANSFER_LEN_AUX);
-+			mtk_i2c_writew(i2c, msgs->len, OFFSET_TRANSFER_LEN);
-+			mtk_i2c_writew(i2c, (msgs + 1)->len,
-+					    OFFSET_TRANSFER_LEN_AUX);
- 		} else {
--			writew(msgs->len | ((msgs + 1)->len) << 8,
--			       i2c->base + OFFSET_TRANSFER_LEN);
-+			mtk_i2c_writew(i2c, msgs->len | ((msgs + 1)->len) << 8,
-+					    OFFSET_TRANSFER_LEN);
- 		}
--		writew(I2C_WRRD_TRANAC_VALUE, i2c->base + OFFSET_TRANSAC_LEN);
-+		mtk_i2c_writew(i2c, I2C_WRRD_TRANAC_VALUE, OFFSET_TRANSAC_LEN);
- 	} else {
--		writew(msgs->len, i2c->base + OFFSET_TRANSFER_LEN);
--		writew(num, i2c->base + OFFSET_TRANSAC_LEN);
-+		mtk_i2c_writew(i2c, msgs->len, OFFSET_TRANSFER_LEN);
-+		mtk_i2c_writew(i2c, num, OFFSET_TRANSAC_LEN);
- 	}
- 
- 	/* Prepare buffer data to start transfer */
-@@ -607,14 +652,14 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
- 		if (left_num >= 1)
- 			start_reg |= I2C_RS_MUL_CNFG;
- 	}
--	writew(start_reg, i2c->base + OFFSET_START);
-+	mtk_i2c_writew(i2c, start_reg, OFFSET_START);
- 
- 	ret = wait_for_completion_timeout(&i2c->msg_complete,
- 					  i2c->adap.timeout);
- 
- 	/* Clear interrupt mask */
--	writew(~(restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
--	       I2C_TRANSAC_COMP), i2c->base + OFFSET_INTR_MASK);
-+	mtk_i2c_writew(i2c, ~(restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
-+	       I2C_TRANSAC_COMP), OFFSET_INTR_MASK);
- 
- 	if (i2c->op == I2C_MASTER_WR) {
- 		dma_unmap_single(i2c->dev, wpaddr,
-@@ -724,8 +769,8 @@ static irqreturn_t mtk_i2c_irq(int irqno, void *dev_id)
- 	if (i2c->auto_restart)
- 		restart_flag = I2C_RS_TRANSFER;
- 
--	intr_stat = readw(i2c->base + OFFSET_INTR_STAT);
--	writew(intr_stat, i2c->base + OFFSET_INTR_STAT);
-+	intr_stat = mtk_i2c_readw(i2c, OFFSET_INTR_STAT);
-+	mtk_i2c_writew(i2c, intr_stat, OFFSET_INTR_STAT);
- 
- 	/*
- 	 * when occurs ack error, i2c controller generate two interrupts
-@@ -737,8 +782,8 @@ static irqreturn_t mtk_i2c_irq(int irqno, void *dev_id)
- 	if (i2c->ignore_restart_irq && (i2c->irq_stat & restart_flag)) {
- 		i2c->ignore_restart_irq = false;
- 		i2c->irq_stat = 0;
--		writew(I2C_RS_MUL_CNFG | I2C_RS_MUL_TRIG | I2C_TRANSAC_START,
--		       i2c->base + OFFSET_START);
-+		mtk_i2c_writew(i2c, I2C_RS_MUL_CNFG | I2C_RS_MUL_TRIG |
-+				    I2C_TRANSAC_START, OFFSET_START);
- 	} else {
- 		if (i2c->irq_stat & (I2C_TRANSAC_COMP | restart_flag))
- 			complete(&i2c->msg_complete);
--- 
-1.7.9.5
+> > 
+> > > > +#define MTK_UART_APDMA_CHANNELS		(CONFIG_SERIAL_8250_NR_UARTS * 2)
+> > > 
+> > > Why are the channels not coming from DT?
+> > > 
+> > 
+> > i will using dma-requests install of it.
+> > 
+> > > > +
+> > > > +#define VFF_EN_B		BIT(0)
+> > > > +#define VFF_STOP_B		BIT(0)
+> > > > +#define VFF_FLUSH_B		BIT(0)
+> > > > +#define VFF_4G_SUPPORT_B	BIT(0)
+> > > > +#define VFF_RX_INT_EN0_B	BIT(0)	/*rx valid size >=  vff thre*/
+> > > > +#define VFF_RX_INT_EN1_B	BIT(1)
+> > > > +#define VFF_TX_INT_EN_B		BIT(0)	/*tx left size >= vff thre*/
+> > > 
+> > > space around /* space */ also run checkpatch to check for style errors
+> > > 
+> > 
+> > ok.
+> > 
+> > > > +static void mtk_uart_apdma_start_tx(struct mtk_chan *c)
+> > > > +{
+> > > > +	unsigned int len, send, left, wpt, d_wpt, tmp;
+> > > > +	int ret;
+> > > > +
+> > > > +	left = mtk_uart_apdma_read(c, VFF_LEFT_SIZE);
+> > > > +	if (!left) {
+> > > > +		mtk_uart_apdma_write(c, VFF_INT_EN, VFF_TX_INT_EN_B);
+> > > > +		return;
+> > > > +	}
+> > > > +
+> > > > +	/* Wait 1sec for flush,  can't sleep*/
+> > > > +	ret = readx_poll_timeout(readl, c->base + VFF_FLUSH, tmp,
+> > > > +			tmp != VFF_FLUSH_B, 0, 1000000);
+> > > > +	if (ret)
+> > > > +		dev_warn(c->vc.chan.device->dev, "tx: fail, debug=0x%x\n",
+> > > > +			mtk_uart_apdma_read(c, VFF_DEBUG_STATUS));
+> > > > +
+> > > > +	send = min_t(unsigned int, left, c->desc->avail_len);
+> > > > +	wpt = mtk_uart_apdma_read(c, VFF_WPT);
+> > > > +	len = mtk_uart_apdma_read(c, VFF_LEN);
+> > > > +
+> > > > +	d_wpt = wpt + send;
+> > > > +	if ((d_wpt & VFF_RING_SIZE) >= len) {
+> > > > +		d_wpt = d_wpt - len;
+> > > > +		d_wpt = d_wpt ^ VFF_RING_WRAP;
+> > > > +	}
+> > > > +	mtk_uart_apdma_write(c, VFF_WPT, d_wpt);
+> > > > +
+> > > > +	c->desc->avail_len -= send;
+> > > > +
+> > > > +	mtk_uart_apdma_write(c, VFF_INT_EN, VFF_TX_INT_EN_B);
+> > > > +	if (mtk_uart_apdma_read(c, VFF_FLUSH) == 0U)
+> > > > +		mtk_uart_apdma_write(c, VFF_FLUSH, VFF_FLUSH_B);
+> > > > +}
+> > > > +
+> > > > +static void mtk_uart_apdma_start_rx(struct mtk_chan *c)
+> > > > +{
+> > > > +	struct mtk_uart_apdma_desc *d = c->desc;
+> > > > +	unsigned int len, wg, rg, cnt;
+> > > > +
+> > > > +	if ((mtk_uart_apdma_read(c, VFF_VALID_SIZE) == 0U) ||
+> > > > +		!d || !vchan_next_desc(&c->vc))
+> > > > +		return;
+> > > > +
+> > > > +	len = mtk_uart_apdma_read(c, VFF_LEN);
+> > > > +	rg = mtk_uart_apdma_read(c, VFF_RPT);
+> > > > +	wg = mtk_uart_apdma_read(c, VFF_WPT);
+> > > > +	if ((rg ^ wg) & VFF_RING_WRAP)
+> > > > +		cnt = (wg & VFF_RING_SIZE) + len - (rg & VFF_RING_SIZE);
+> > > > +	else
+> > > > +		cnt = (wg & VFF_RING_SIZE) - (rg & VFF_RING_SIZE);
+> > > > +
+> > > > +	c->rx_status = cnt;
+> > > > +	mtk_uart_apdma_write(c, VFF_RPT, wg);
+> > > > +
+> > > > +	list_del(&d->vd.node);
+> > > > +	vchan_cookie_complete(&d->vd);
+> > > > +}
+> > > 
+> > > this looks odd, why do you have different rx and tx start routines?
+> > > 
+> > 
+> > Would you like explain it in more detail? thanks.
+> > In tx function, will wait the last data flush done. and the count the
+> > size that send.
+> > In Rx function, will count the size that receive.
+> > Any way, in rx / tx, need andle WPT or RPT.
+> > 
+> > > > +static int mtk_uart_apdma_alloc_chan_resources(struct dma_chan *chan)
+> > > > +{
+> > > > +	struct mtk_uart_apdmadev *mtkd = to_mtk_uart_apdma_dev(chan->device);
+> > > > +	struct mtk_chan *c = to_mtk_uart_apdma_chan(chan);
+> > > > +	u32 tmp;
+> > > > +	int ret;
+> > > > +
+> > > > +	pm_runtime_get_sync(mtkd->ddev.dev);
+> > > > +
+> > > > +	mtk_uart_apdma_write(c, VFF_ADDR, 0);
+> > > > +	mtk_uart_apdma_write(c, VFF_THRE, 0);
+> > > > +	mtk_uart_apdma_write(c, VFF_LEN, 0);
+> > > > +	mtk_uart_apdma_write(c, VFF_RST, VFF_WARM_RST_B);
+> > > > +
+> > > > +	ret = readx_poll_timeout(readl, c->base + VFF_EN, tmp,
+> > > > +			tmp == 0, 10, 100);
+> > > > +	if (ret) {
+> > > > +		dev_err(chan->device->dev, "dma reset: fail, timeout\n");
+> > > > +		return ret;
+> > > > +	}
+> > > 
+> > > register read does reset?
+> > > 
+> > 
+> > 'mtk_uart_apdma_write(c, VFF_RST, VFF_WARM_RST_B);' is reset. resd just
+> > poll reset done.
+> > 
+> > > > +
+> > > > +	if (!c->requested) {
+> > > > +		c->requested = true;
+> > > > +		ret = request_irq(mtkd->dma_irq[chan->chan_id],
+> > > > +				  mtk_uart_apdma_irq_handler, IRQF_TRIGGER_NONE,
+> > > > +				  KBUILD_MODNAME, chan);
+> > > 
+> > > why is the irq not requested in driver probe?
+> > > 
+> > 
+> > I have explained in below,
+> > http://lists.infradead.org/pipermail/linux-mediatek/2018-December/016418.html
+> > 
+> > > > +static enum dma_status mtk_uart_apdma_tx_status(struct dma_chan *chan,
+> > > > +					 dma_cookie_t cookie,
+> > > > +					 struct dma_tx_state *txstate)
+> > > > +{
+> > > > +	struct mtk_chan *c = to_mtk_uart_apdma_chan(chan);
+> > > > +	enum dma_status ret;
+> > > > +	unsigned long flags;
+> > > > +
+> > > > +	if (!txstate)
+> > > > +		return DMA_ERROR;
+> > > > +
+> > > > +	ret = dma_cookie_status(chan, cookie, txstate);
+> > > > +	spin_lock_irqsave(&c->vc.lock, flags);
+> > > > +	if (ret == DMA_IN_PROGRESS) {
+> > > > +		c->rx_status = mtk_uart_apdma_read(c, VFF_RPT) & VFF_RING_SIZE;
+> > > > +		dma_set_residue(txstate, c->rx_status);
+> > > > +	} else if (ret == DMA_COMPLETE && c->cfg.direction == DMA_DEV_TO_MEM) {
+> > > 
+> > > why set reside when it is complete? also reside can be null, that should
+> > > be checked as well
+> > > 
+> > In different status, set different reside.
+> 
+> Can you explain that..
+> 
+
+RPT is different every time. When RX interrupt coming, update the
+rx_status and notify uart that there have data. One transfer is
+complete. Uart will call tx_status to get the length at the time of
+interruption. Other case, if want to get the tx_status, directly read
+register.
+
+> > 
+> > > > +static struct dma_async_tx_descriptor *mtk_uart_apdma_prep_slave_sg
+> > > > +	(struct dma_chan *chan, struct scatterlist *sgl,
+> > > > +	unsigned int sglen, enum dma_transfer_direction dir,
+> > > > +	unsigned long tx_flags, void *context)
+> > > > +{
+> > > > +	struct mtk_chan *c = to_mtk_uart_apdma_chan(chan);
+> > > > +	struct mtk_uart_apdma_desc *d;
+> > > > +
+> > > > +	if ((dir != DMA_DEV_TO_MEM) &&
+> > > > +		(dir != DMA_MEM_TO_DEV)) {
+> > > > +		dev_err(chan->device->dev, "bad direction\n");
+> > > > +		return NULL;
+> > > > +	}
+> > > 
+> > > we have a macro for this
+> > 
+> > Thanks for your suggestion. i will modify it.
+> > > 
+> > > > +
+> > > > +	/* Now allocate and setup the descriptor */
+> > > > +	d = kzalloc(sizeof(*d), GFP_ATOMIC);
+> > > > +	if (!d)
+> > > > +		return NULL;
+> > > > +
+> > > > +	/* sglen is 1 */
+> > > 
+> > > ?
+
+dmaengine_prep_slave_single is called. the parameter 'sglen' is 1.
+Add annotation to indicate that the total length is sg_dma_len(sgl), no
+more.
+
+> > > 
+> > > > +static int mtk_uart_apdma_slave_config(struct dma_chan *chan,
+> > > > +				struct dma_slave_config *cfg)
+> > > > +{
+> > > > +	struct mtk_chan *c = to_mtk_uart_apdma_chan(chan);
+> > > > +	struct mtk_uart_apdmadev *mtkd =
+> > > > +				to_mtk_uart_apdma_dev(c->vc.chan.device);
+> > > > +
+> > > > +	c->cfg = *cfg;
+> > > > +
+> > > > +	if (cfg->direction == DMA_DEV_TO_MEM) {
+> > > 
+> > > fg->direction is deprecated, in fact I have removed all users recently,
+> > > please do not use this
+> > 
+> > You will remove 'direction' in 'struct dma_slave_config'? if remove, how
+> > do confirm direction?
+> 
+> Yes please use the direction argument in prep_xx calls
+
+I had modified on v10. thanks.
