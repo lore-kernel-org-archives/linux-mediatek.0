@@ -1,58 +1,36 @@
-From: <miles.chen@mediatek.com>
-Subject: [PATCH] mm/slub: use WARN_ON() for some slab errors
-Date: Mon, 21 Jan 2019 17:38:10 +0800
-Message-ID: <1548063490-545-1-git-send-email-miles.chen@mediatek.com>
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+Subject: [v1,1/2] dt-bindings: PCI: Add support for MT7629
+Date: Mon, 21 Jan 2019 19:11:01 +0800
+Message-ID: <1548069062-12430-2-git-send-email-jianjun.wang@mediatek.com>
+References: <1548069062-12430-1-git-send-email-jianjun.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1548069062-12430-1-git-send-email-jianjun.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Andrew Morton <akpm@linux-foundation.org>
-Cc: linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Miles Chen <miles.chen@mediatek.com>
+To: bhelgaas@google.com, robh+dt@kernel.org, lorenzo.pieralisi@arm.com, ryder.lee@mediatek.com, mark.rutland@arm.com
+Cc: matthias.bgg@gmail.com, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, honghui.zhang@mediatek.com, youlin.pei@mediatek.com, jianjun.wang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Miles Chen <miles.chen@mediatek.com>
+MT7629 is an ARM platform Soc which has the same PCIe IP with MT7622.
 
-When debugging with slub.c, sometimes we have to trigger a panic in
-order to get the coredump file. To do that, we have to modify slub.c and
-rebuild kernel. To make debugging easier, use WARN_ON() for these slab
-errors so we can dump stack trace by default or set panic_on_warn to
-trigger a panic.
-
-Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
 ---
- mm/slub.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ Documentation/devicetree/bindings/pci/mediatek-pcie.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/mm/slub.c b/mm/slub.c
-index 1e3d0ec4e200..e48c3bb30c93 100644
---- a/mm/slub.c
-+++ b/mm/slub.c
-@@ -684,7 +684,7 @@ static void print_trailer(struct kmem_cache *s, struct page *page, u8 *p)
- 		print_section(KERN_ERR, "Padding ", p + off,
- 			      size_from_object(s) - off);
- 
--	dump_stack();
-+	WARN_ON(1);
- }
- 
- void object_err(struct kmem_cache *s, struct page *page,
-@@ -705,7 +705,7 @@ static __printf(3, 4) void slab_err(struct kmem_cache *s, struct page *page,
- 	va_end(args);
- 	slab_bug(s, "%s", buf);
- 	print_page_info(page);
--	dump_stack();
-+	WARN_ON(1);
- }
- 
- static void init_object(struct kmem_cache *s, void *object, u8 val)
-@@ -1690,7 +1690,7 @@ static struct page *new_slab(struct kmem_cache *s, gfp_t flags, int node)
- 		flags &= ~GFP_SLAB_BUG_MASK;
- 		pr_warn("Unexpected gfp: %#x (%pGg). Fixing up to gfp: %#x (%pGg). Fix your code!\n",
- 				invalid_mask, &invalid_mask, flags, &flags);
--		dump_stack();
-+		WARN_ON(1);
- 	}
- 
- 	return allocate_slab(s,
+diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
+index 92437a366e5f..7468d666763a 100644
+--- a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
++++ b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
+@@ -6,6 +6,7 @@ Required properties:
+ 	"mediatek,mt2712-pcie"
+ 	"mediatek,mt7622-pcie"
+ 	"mediatek,mt7623-pcie"
++	"mediatek,mt7629-pcie"
+ - device_type: Must be "pci"
+ - reg: Base addresses and lengths of the PCIe subsys and root ports.
+ - reg-names: Names of the above areas to use during resource lookup.
 -- 
-2.18.0
+2.20.1
