@@ -1,68 +1,121 @@
 From: Bin Liu <b-liu@ti.com>
-Subject: Re: [PATCH v4 5/6] usb: musb: Add musb_clearb/w() interface
-Date: Mon, 21 Jan 2019 09:59:29 -0600
-Message-ID: <20190121155929.GC30080@uda0271908>
+Subject: Re: [PATCH v4 6/6] usb: musb: Add support for MediaTek musb
+ controller
+Date: Mon, 21 Jan 2019 10:07:49 -0600
+Message-ID: <20190121160749.GD30080@uda0271908>
 References: <1548073351-13739-1-git-send-email-min.guo@mediatek.com>
- <1548073351-13739-6-git-send-email-min.guo@mediatek.com>
+ <1548073351-13739-7-git-send-email-min.guo@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1548073351-13739-6-git-send-email-min.guo@mediatek.com>
+In-Reply-To: <1548073351-13739-7-git-send-email-min.guo@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: min.guo@mediatek.com
-Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, chunfeng.yun@mediatek.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, tony@atomide.com, hdegoede@redhat.com
+Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, chunfeng.yun@mediatek.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, tony@atomide.com, hdegoede@redhat.com, Yonglong Wu <yonglong.wu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
 Hi Min,
 
-On Mon, Jan 21, 2019 at 08:22:30PM +0800, min.guo@mediatek.com wrote:
+On Mon, Jan 21, 2019 at 08:22:31PM +0800, min.guo@mediatek.com wrote:
 > From: Min Guo <min.guo@mediatek.com>
 > 
-> Delete the const attribute of addr parameter in readb/w/l hooks, these
-> changes are for implementing clearing W1C registers.
-> Replace musb_readb/w with musb_clearb/w to clear the interrupt status.
+> This adds support for MediaTek musb controller in
+> host, peripheral and otg mode.
+> There are some quirk of MediaTek musb controller, such as:
+>  -W1C interrupt status registers
+>  -Private data toggle registers
+>  -No dedicated DMA interrupt line
 > 
 > Signed-off-by: Min Guo <min.guo@mediatek.com>
+> Signed-off-by: Yonglong Wu <yonglong.wu@mediatek.com>
 > ---
-> new patch based on v3:
-> ---
->  drivers/usb/musb/musb_core.c | 32 +++++++++++++++++++++++---------
->  drivers/usb/musb/musb_core.h |  8 ++++++--
->  drivers/usb/musb/musb_io.h   |  8 +++++---
->  drivers/usb/musb/musbhsdma.c |  3 +++
->  drivers/usb/musb/sunxi.c     |  4 ++--
->  drivers/usb/musb/tusb6010.c  |  2 +-
->  6 files changed, 40 insertions(+), 17 deletions(-)
+> changes in v4:
+> 1. no changes
 > 
-> diff --git a/drivers/usb/musb/musb_core.c b/drivers/usb/musb/musb_core.c
-> index 2fe5225..5ef8848 100644
-> --- a/drivers/usb/musb/musb_core.c
-> +++ b/drivers/usb/musb/musb_core.c
+> changes in v3:
+> suggested by Bin:
+> 1. Remove 'u8/u16 data' parameter in clearb/w() hooks
+> 2. Replace musb_readb/w() with musb_clearb/w() to clear interrupts status
+> 
+> changes in v2:
+> suggested by Bin:
+> 1. Add summarize of MediaTek musb controller differences in the commit log
+> 2. Add "|| COMPILE_TEST" in Kconfig
+> 3. Move MediaTek's private toggle registers from musb_regs.h to mediatek.c
+> 4. Replace musb_readl() with musb_readw() to read 16bit toggle register
+> ---
+>  drivers/usb/musb/Kconfig    |   8 +-
+>  drivers/usb/musb/Makefile   |   1 +
+>  drivers/usb/musb/mediatek.c | 624 ++++++++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 632 insertions(+), 1 deletion(-)
+>  create mode 100644 drivers/usb/musb/mediatek.c
+> 
 
 [snip]
 
-> diff --git a/drivers/usb/musb/musbhsdma.c b/drivers/usb/musb/musbhsdma.c
-> index b2394a7..7bf91cb 100644
-> --- a/drivers/usb/musb/musbhsdma.c
-> +++ b/drivers/usb/musb/musbhsdma.c
-> @@ -286,6 +286,9 @@ irqreturn_t dma_controller_irq(int irq, void *private_data)
->  
->  	int_hsdma = musb_readb(mbase, MUSB_HSDMA_INTR);
->  
-> +	/* clear pending interrupts by manual */
-> +	musb_clearb(musb->mregs, MUSB_HSDMA_INTR);
+> +static irqreturn_t generic_interrupt(int irq, void *__hci)
+> +{
+> +	unsigned long flags;
+> +	irqreturn_t retval = IRQ_NONE;
+> +	struct musb *musb = __hci;
+> +
+> +	spin_lock_irqsave(&musb->lock, flags);
+> +	musb->int_usb = musb_readb(musb->mregs, MUSB_INTRUSB) &
+> +	    musb_readb(musb->mregs, MUSB_INTRUSBE);
+> +	musb->int_tx = musb_readw(musb->mregs, MUSB_INTRTX)
+> +	    & musb_readw(musb->mregs, MUSB_INTRTXE);
+> +	musb->int_rx = musb_readw(musb->mregs, MUSB_INTRRX)
+> +	    & musb_readw(musb->mregs, MUSB_INTRRXE);
+
+Based on my comment in 5/6, the above 3 musb_readb/w() can be changed to
+
+> +	/* MediaTek controller interrupt status is W1C */
+> +	musb_clearw(musb->mregs, MUSB_INTRRX);
+> +	musb_clearw(musb->mregs, MUSB_INTRTX);
+> +	musb_clearb(musb->mregs, MUSB_INTRUSB);
+
+	musb->int_usb = musb_clearb(musb->mregs, MUSB_INTRUSB)
+	musb->int_tx = musb_clearw(musb->mregs, MUSB_INTRTX);
+	musb->int_rx = musb_clearw(musb->mregs, MUSB_INTRRX);
+
+> +
+> +	if (musb->int_usb || musb->int_tx || musb->int_rx)
+> +		retval = musb_interrupt(musb);
+> +
+> +	spin_unlock_irqrestore(&musb->lock, flags);
+> +
+> +	return retval;
+> +}
 > +
 
-Make musb_clearb/w() return the value of the _read() instead of
-_write(), so that we don't have to read twice here. The value of
-_write() is not used anyway.
+[snip]
 
-The change above can be:
+> +
+> +static u8 mtk_musb_clearb(void __iomem *addr, unsigned int offset)
+> +{
+> +	u8 data;
+> +
+> +	/* W1C */
+> +	data = musb_readb(addr, offset);
+> +	musb_writeb(addr, offset, data);
+> +	return musb_readb(addr, offset);
 
-	int_hsdma = musb_clearb(mbase, MUSB_HSDMA_INTR);
+	return data;
 
-Please see my comments in 6/6 for details.
+> +}
+> +
+> +static u16 mtk_musb_clearw(void __iomem *addr, unsigned int offset)
+> +{
+> +	u16 data;
+> +
+> +	/* W1C */
+> +	data = musb_readw(addr, offset);
+> +	musb_writew(addr, offset, data);
+> +	return musb_readw(addr, offset);
+
+	return data;
+
 
 Regards,
 -Bin.
