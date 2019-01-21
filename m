@@ -1,40 +1,191 @@
-From: David Hildenbrand <david@redhat.com>
-Subject: Re: [PATCH v2 0/9] mm: PG_reserved cleanups and documentation
-Date: Mon, 21 Jan 2019 12:36:35 +0100
-Message-ID: <6abb9ad2-f103-12a2-e1dc-eec81b801338@redhat.com>
-References: <20190114125903.24845-1-david@redhat.com>
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+Subject: PCI: mediatek: Remove MSI inner domain
+Date: Mon, 21 Jan 2019 19:59:36 +0800
+Message-ID: <1548071976-13279-1-git-send-email-jianjun.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-riscv-bounces+glpr-linux-riscv=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190114125903.24845-1-david@redhat.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-riscv>,
- <mailto:linux-riscv-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-riscv/>
-List-Post: <mailto:linux-riscv@lists.infradead.org>
-List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
- <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
-Errors-To: linux-riscv-bounces+glpr-linux-riscv=m.gmane.org@lists.infradead.org
-To: linux-mm@kvack.org, Andrew Morton <akpm@linux-foundation.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Michal Hocko <mhocko@suse.com>, CHANDAN VN <chandan.vn@samsung.com>, David Airlie <airlied@linux.ie>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Bhupesh Sharma <bhsharma@redhat.com>, Palmer Dabbelt <palmer@sifive.com>, Heiko Carstens <heiko.carstens@de.ibm.com>, Tony Luck <tony.luck@intel.com>, Stefan Agner <stefan@agner.ch>, Michal Hocko <mhocko@kernel.org>, David Howells <dhowells@redhat.com>, Paul Mackerras <paulus@samba.org>, Michael Ellerman <mpe@ellerman.id.au>, linux-riscv@lists.infradead.org, Alexander Duyck <alexander.h.duyck@linux.intel.com>, linux-s390@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>, Vasily Gorbik <gor@linux.ibm.com>, Logan Gunthorpe <logang@deltatee.com>, Pavel Tatashin <pasha.tatashin@oracle.com>, Matthew Wilcox <willy@infradead.org>, AKASHI Takahiro <takahiro.akashi@linaro.org>, Geert
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: ryder.lee@mediatek.com, lorenzo.pieralisi@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com
+Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, honghui.zhang@mediatek.com, youlin.pei@mediatek.com, jianjun.wang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On 14.01.19 13:58, David Hildenbrand wrote:
-> Nothing major changed since the last version. I would be happy about
-> additional ACKs. If there are no further comments, can this go via the
-> mm-tree in one chunk?
+There is no need to create the inner domain as a parent for MSI domian,
+some feature has been implemented by MSI framework.
 
-For the time being, I will not add further patches to this series (as
-discussed in response to one question, we have to be careful dropping
-PG_reserved at some places). Only ACKs were added during review so far.
+Remove the inner domain and its irq chip, it will be more closer to the
+hardware implementation.
 
-@Andrew, how to proceed with this?
+Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+---
+ drivers/pci/controller/pcie-mediatek.c | 82 +++++++++++---------------
+ 1 file changed, 35 insertions(+), 47 deletions(-)
 
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index 8d05df56158b..216e6fa8aec0 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -169,7 +169,6 @@ struct mtk_pcie_soc {
+  * @slot: port slot
+  * @irq: GIC irq
+  * @irq_domain: legacy INTx IRQ domain
+- * @inner_domain: inner IRQ domain
+  * @msi_domain: MSI IRQ domain
+  * @lock: protect the msi_irq_in_use bitmap
+  * @msi_irq_in_use: bit map for assigned MSI IRQ
+@@ -190,7 +189,6 @@ struct mtk_pcie_port {
+ 	u32 slot;
+ 	int irq;
+ 	struct irq_domain *irq_domain;
+-	struct irq_domain *inner_domain;
+ 	struct irq_domain *msi_domain;
+ 	struct mutex lock;
+ 	DECLARE_BITMAP(msi_irq_in_use, MTK_MSI_IRQS_NUM);
+@@ -418,22 +416,25 @@ static void mtk_msi_ack_irq(struct irq_data *data)
+ 	u32 hwirq = data->hwirq;
+ 
+ 	writel(1 << hwirq, port->base + PCIE_IMSI_STATUS);
++	writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
+ }
+ 
+-static struct irq_chip mtk_msi_bottom_irq_chip = {
+-	.name			= "MTK MSI",
++static struct irq_chip mtk_msi_irq_chip = {
++	.name			= "MTK PCIe",
+ 	.irq_compose_msi_msg	= mtk_compose_msi_msg,
++	.irq_write_msi_msg	= pci_msi_domain_write_msg,
+ 	.irq_set_affinity	= mtk_msi_set_affinity,
+ 	.irq_ack		= mtk_msi_ack_irq,
++	.irq_mask		= pci_msi_mask_irq,
++	.irq_unmask		= pci_msi_unmask_irq,
+ };
+ 
+-static int mtk_pcie_irq_domain_alloc(struct irq_domain *domain, unsigned int virq,
+-				     unsigned int nr_irqs, void *args)
++static irq_hw_number_t mtk_pcie_msi_get_hwirq(struct msi_domain_info *info,
++					      msi_alloc_info_t *arg)
+ {
+-	struct mtk_pcie_port *port = domain->host_data;
+-	unsigned long bit;
++	struct mtk_pcie_port *port = info->chip_data;
++	irq_hw_number_t bit;
+ 
+-	WARN_ON(nr_irqs != 1);
+ 	mutex_lock(&port->lock);
+ 
+ 	bit = find_first_zero_bit(port->msi_irq_in_use, MTK_MSI_IRQS_NUM);
+@@ -446,18 +447,14 @@ static int mtk_pcie_irq_domain_alloc(struct irq_domain *domain, unsigned int vir
+ 
+ 	mutex_unlock(&port->lock);
+ 
+-	irq_domain_set_info(domain, virq, bit, &mtk_msi_bottom_irq_chip,
+-			    domain->host_data, handle_edge_irq,
+-			    NULL, NULL);
+-
+-	return 0;
++	return bit;
+ }
+ 
+-static void mtk_pcie_irq_domain_free(struct irq_domain *domain,
+-				     unsigned int virq, unsigned int nr_irqs)
++static void mtk_pcie_msi_free(struct irq_domain *domain,
++			      struct msi_domain_info *info, unsigned int virq)
+ {
+ 	struct irq_data *d = irq_domain_get_irq_data(domain, virq);
+-	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(d);
++	struct mtk_pcie_port *port = info->chip_data;
+ 
+ 	mutex_lock(&port->lock);
+ 
+@@ -468,46 +465,40 @@ static void mtk_pcie_irq_domain_free(struct irq_domain *domain,
+ 		__clear_bit(d->hwirq, port->msi_irq_in_use);
+ 
+ 	mutex_unlock(&port->lock);
+-
+-	irq_domain_free_irqs_parent(domain, virq, nr_irqs);
+ }
+ 
+-static const struct irq_domain_ops msi_domain_ops = {
+-	.alloc	= mtk_pcie_irq_domain_alloc,
+-	.free	= mtk_pcie_irq_domain_free,
+-};
+-
+-static struct irq_chip mtk_msi_irq_chip = {
+-	.name		= "MTK PCIe MSI",
+-	.irq_ack	= irq_chip_ack_parent,
+-	.irq_mask	= pci_msi_mask_irq,
+-	.irq_unmask	= pci_msi_unmask_irq,
++static struct msi_domain_ops mtk_msi_domain_ops = {
++	.get_hwirq	= mtk_pcie_msi_get_hwirq,
++	.msi_free	= mtk_pcie_msi_free,
+ };
+ 
+ static struct msi_domain_info mtk_msi_domain_info = {
+-	.flags	= (MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
+-		   MSI_FLAG_PCI_MSIX),
+-	.chip	= &mtk_msi_irq_chip,
++	.flags		= (MSI_FLAG_USE_DEF_DOM_OPS |
++			   MSI_FLAG_USE_DEF_CHIP_OPS | MSI_FLAG_PCI_MSIX),
++	.ops		= &mtk_msi_domain_ops,
++	.chip		= &mtk_msi_irq_chip,
++	.handler	= handle_edge_irq,
++	.handler_name	= "MSI",
+ };
+ 
+ static int mtk_pcie_allocate_msi_domains(struct mtk_pcie_port *port)
+ {
+-	struct fwnode_handle *fwnode = of_node_to_fwnode(port->pcie->dev->of_node);
++	struct device *dev = port->pcie->dev;
++	struct fwnode_handle *fwnode = of_node_to_fwnode(dev->of_node);
++	struct msi_domain_info *info;
+ 
+ 	mutex_init(&port->lock);
+ 
+-	port->inner_domain = irq_domain_create_linear(fwnode, MTK_MSI_IRQS_NUM,
+-						      &msi_domain_ops, port);
+-	if (!port->inner_domain) {
+-		dev_err(port->pcie->dev, "failed to create IRQ domain\n");
++	info = devm_kzalloc(dev, sizeof(*info), GFP_KERNEL);
++	if (!info)
+ 		return -ENOMEM;
+-	}
+ 
+-	port->msi_domain = pci_msi_create_irq_domain(fwnode, &mtk_msi_domain_info,
+-						     port->inner_domain);
++	memcpy(info, &mtk_msi_domain_info, sizeof(*info));
++	info->chip_data = port;
++
++	port->msi_domain = pci_msi_create_irq_domain(fwnode, info, NULL);
+ 	if (!port->msi_domain) {
+-		dev_err(port->pcie->dev, "failed to create MSI domain\n");
+-		irq_domain_remove(port->inner_domain);
++		dev_err(dev, "failed to create MSI domain\n");
+ 		return -ENOMEM;
+ 	}
+ 
+@@ -541,8 +532,6 @@ static void mtk_pcie_irq_teardown(struct mtk_pcie *pcie)
+ 		if (IS_ENABLED(CONFIG_PCI_MSI)) {
+ 			if (port->msi_domain)
+ 				irq_domain_remove(port->msi_domain);
+-			if (port->inner_domain)
+-				irq_domain_remove(port->inner_domain);
+ 		}
+ 
+ 		irq_dispose_mapping(port->irq);
+@@ -619,12 +608,11 @@ static void mtk_pcie_intr_handler(struct irq_desc *desc)
+ 
+ 			while ((imsi_status = readl(port->base + PCIE_IMSI_STATUS))) {
+ 				for_each_set_bit(bit, &imsi_status, MTK_MSI_IRQS_NUM) {
+-					virq = irq_find_mapping(port->inner_domain, bit);
++					virq = irq_find_mapping(
++							port->msi_domain, bit);
+ 					generic_handle_irq(virq);
+ 				}
+ 			}
+-			/* Clear MSI interrupt status */
+-			writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
+ 		}
+ 	}
+ 
 -- 
-
-Thanks,
-
-David / dhildenb
+2.20.1
