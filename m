@@ -1,32 +1,89 @@
-From: Christopher Lameter <cl@linux.com>
-Subject: Re: [PATCH] mm/slub: use WARN_ON() for some slab errors
-Date: Mon, 21 Jan 2019 22:02:36 +0000
-Message-ID: <01000168726fcf15-81d8feb3-26f0-44d6-bbd8-62aa149118b5-000000@email.amazonses.com>
-References: <1548063490-545-1-git-send-email-miles.chen@mediatek.com>
+From: Sam Ravnborg <sam@ravnborg.org>
+Subject: Re: [PATCH] drm: Split out drm_probe_helper.h
+Date: Mon, 21 Jan 2019 23:13:29 +0100
+Message-ID: <20190121221329.GA6512@ravnborg.org>
+References: <20190116163442.12622-1-daniel.vetter@ffwll.ch>
+ <20190116181018.GA27364@ravnborg.org>
+ <20190117164541.GE3271@phenom.ffwll.local>
+ <20190117174531.GA14041@ravnborg.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1548063490-545-1-git-send-email-miles.chen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Miles Chen <miles.chen@mediatek.com>
-Cc: Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Andrew Morton <akpm@linux-foundation.org>, linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <20190117174531.GA14041@ravnborg.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Vetter <daniel@ffwll.ch>
+Cc: Neil Armstrong <narmstrong@baylibre.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Liviu Dudau <liviu.dudau@arm.com>, DRI Development <dri-devel@lists.freedesktop.org>, virtualization@lists.linux-foundation.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Daniel Vetter <daniel.vetter@intel.com>, linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org, Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>, amd-gfx@lists.freedesktop.org, linux-rockchip@lists.infradead.org, nouveau@lists.freedesktop.org, spice-devel@lists.freedesktop.org, Jani Nikula <jani.nikula@intel.com>, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, etnaviv@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Rodrigo Vivi <rodrigo.vivi@intel.com>, linux-tegra@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.or
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 21 Jan 2019, miles.chen@mediatek.com wrote:
-
-> From: Miles Chen <miles.chen@mediatek.com>
->
-> When debugging with slub.c, sometimes we have to trigger a panic in
-> order to get the coredump file. To do that, we have to modify slub.c and
-> rebuild kernel. To make debugging easier, use WARN_ON() for these slab
-> errors so we can dump stack trace by default or set panic_on_warn to
-> trigger a panic.
-
-These locations really should dump stack and not terminate. There is
-subsequent processing that should be done.
-
-Slub terminates by default. The messages you are modifying are only
-enabled if the user specified that special debugging should be one
-(typically via a kernel parameter slub_debug).
-
-It does not make sense to terminate the process here.
+SGkgRGFuaWVsIGV0IGFsLgoKPiA+IAo+ID4gWWVhaCB0aGUgZHJtX2NydGNfaGVscGVyLmggaGVh
+ZGVyIGlzIGEgYml0IHRoZSBtaW5pYXR1cmUgZHJtUC5oIGZvciBsZWdhY3kKPiA+IGttcyBkcml2
+ZXJzLiBKdXN0IHJlbW92aW5nIGl0IGZyb20gYWxsIHRoZSBhdG9taWMgZHJpdmVycyBjYXVzZWQg
+bG90cyBvZgo+ID4gZmFsbG91dCwgSSBleHBlY3QgZXZlbiBtb3JlIGlmIHlvdSBlbnRpcmVseSBy
+ZW1vdmUgdGhlIGluY2x1ZGVzIGl0IGhhcy4KPiA+IE1heWJlIGEgdG9kbywgY2FyZSB0byBwbHMg
+Y3JlYXRlIHRoYXQgcGF0Y2ggc2luY2UgaXQncyB5b3VyIGlkZWE/Cj4gCj4gVGhlIG1haW4gcmVh
+c29uIEkgYmFpbGVkIG91dCBpbml0aWFsbHkgd2FzIHRoYXQgdGhpcyB3b3VsZCBjcmVhdGUKPiBz
+bWFsbCBjaGFuZ2VzIHRvIHNldmVyYWwgb3RoZXJ3aXNlIHNlbGRvbWx5IHRvdWNoZWQgZmlsZXMu
+Cj4gQW5kIHRoZW4gd2Ugd291bGQgbGF0ZXIgY29tZSBhbmQgcmVtb3ZlIGRybVAuaCAtIHNvIGxv
+dHMgb2YKPiBzbWFsbCBidXQgaW5jcmVtZW50YWwgY2hhbmdlcyB0byB0aGUgc2FtZSBvdGhlcndp
+c2Ugc2VsZG9tbHkKPiBlZGl0ZWQgZmlsZXMuCj4gQW5kIHRoZSBqb2Igd2FzIG9ubHkgcGFydGlh
+bGx5IGRvbmUuCj4gCj4gSSB3aWxsIHRyeSB0byBleHBlcmltZW50IHdpdGggYW4gYXBwcm9hY2gg
+d2hlcmUgSSBjbGVhbiB1cCB0aGUKPiBpbmNsdWRlL2RybS8qLmggZmlsZXMgYSBsaXR0bGUgKGxp
+a2Ugc3VnZ2VzdGVkIGFib3ZlLCArZGVsZXRlIGRybVAuaAo+IGFuZCBtYXliZSBhIGJpdCBtb3Jl
+KS4KPiAKPiBUaGVuIHRvIHRyeSBvbiBhIGRyaXZlciBieSBkcml2ZXIgYmFzaXMgdG8gbWFrZSBp
+dCBidWlsZCB3aXRoIGEKPiBjbGVhbmVkIHNldCBvZiBpbmNsdWRlIGZpbGVzLgo+IEkgaG9wZSB0
+aGF0IHRoZSBjbGVhbmVkIHVwIGRyaXZlciBjYW4gc3RpbGwgYnVpbGQgd2l0aG91dCB0aGUKPiBj
+bGVhbmVkIGhlYWRlciBmaWxlcyBzbyB0aGUgY2hhbmdlcyBjYW4gYmUgc3VibWl0dGVkIHBpZWNl
+bWFsLgo+IAo+IFdpbGwgZG8gc28gd2l0aCBhbiBleWUgb24gdGhlIGxlc3NlciBtYWludGFpbmVk
+IGRyaXZlcnMgdG8gdHJ5IGl0Cj4gb3V0IHRvIGF2b2lkIGNyZWF0aW5nIHRvbyBtdWNoIGNocnVu
+Y2ggZm9yIG90aGVycy4KCkkgaGF2ZSBub3cgYSBmZXcgcGF0Y2hlcyBxdWV1ZWQsIGJ1dCB0aGUg
+cmVzdWx0IGlzIG5vdCB0b28gcHJldHR5LgpJIGRpZCB0aGUgZm9sbG93aW5nOgoKLSBGb3IgYWxs
+IGZpbGVzIGluIGluY2x1ZGUvZHJtLyouaCB0aGUgc2V0IG9mIGluY2x1ZGUgZmlsZXMKICB3ZXJl
+IGFkanVzdGVkIHRvIHRoZSBtaW5pbXVtIG51bWJlciBvZiBmaWxlcyByZXF1aXJlZCB0byBtYWtl
+CiAgdGhlbSBidWlsZCB3aXRob3V0IGFueSBvdGhlciBmaWxlcyBpbmNsdWRlZCBmaXJzdC4KCiAg
+Q3JlYXRlZCBvbmUgLmMgZmlsZSBmb3IgZWFjaCAuaCBmaWxlLiBUaGVuIGluY2x1ZGVkIHRoZSAu
+aAogIGZpbGUgYW5kIGFkanVzdGVkIHRvIHRoZSBtaW5pbWFsIHNldCBvZiBpbmNsdWRlIGZpbGVz
+LgogIEluIHRoZSBwcm9jZXNzIGEgbG90IG9mIGZvcndhcmRzIHdlcmUgYWRkZWQuCgotIERlbGV0
+ZWQgZHJtUC5oCgotIEZpeGVkIGJ1aWxkIG9mIGEgZmV3IGRyaXZlcnM6IHN0aSwgdGlsY2RjLCBn
+bWE1MDAsIHR2ZTIwMCwgdmlhCgpTb21lIG9ic2VydmF0aW9uczoKCi0gS2lsbGluZyBhbGwgdGhl
+IGluY2x1ZGVzIG5vdCBuZWVkZWQgaW4gdGhlIGhlYWRlcnMgZmlsZXMKICByZXN1bHRzIGluIGEg
+YSBsb3Qgb2YgZXh0cmEgY2hhbmdlcy4KICBFeGFtcGxlczoKICAgIGRybV9tb2RzZXNldF9oZWxw
+ZXJfdnRhYmxlcy5oIGlzIG5vIGxvbmdlcgogICAgaW5jbHVkZWQgYnkgYW55b25lLCBzbyBuZWVk
+cyB0byBiZSBhZGRlZCBpbiBtYW55IGZpbGVzCgogICAgZHJtX2F0b21pY19zdGF0ZV9oZWxwZXIu
+aCBpcyBubyBsb25nZXIgaW5jbHVkZWQKICAgIGJ5IGFueW9uZSBzbyBsaWtld2lzZSBuZWVkcyB0
+byBiZSBhZGRlZCBpbiBtYW55IGZpbGVzCgotIEl0IGlzIHZlcnkgdGVkaW91cyB0byBkbyB0aGlz
+IHByb3Blcmx5LgogIFRoZSBwcm9jZXNzIEkgZm9sbG93ZWQgd2FzOgogIC0gZGVsZXRlIC8gY29t
+bWVudCBvdXQgYWxsIGluY2x1ZGUgZmlsZXMKICAtIGFkZCBiYWNrIHRoZSBvYnZpb3VzIGZyb20g
+YSBxdWljayBzY2FuIG9mIHRoZSBjb2RlCiAgLSBidWlsZCAtIGZpeCAtIGJ1aWxkIC0gZml4IC0g
+YnVpbGQgLSBmaXggLi4uCiAgLSAgIG5leHQgZmlsZS4uLgoKLSBUaGUgcmVzdWx0IGlzIGVycm9y
+cHJvbmUgYXMgb25seSB0aGUgYWxseWVzY29uZmlnICsgYWxsbW9kY29uZmlnCiAgdmFyaWFudHMg
+YXJlIHRlc3RlZC4gQnV0IHJlYWxsaWZlIGNvbmZpZ3VyYXRpb25zIGFyZSBtb3JlIGRpdmVyc2Uu
+CgpDdXJyZW50IGRpZmZzdGF0OgogICAxMTEgZmlsZXMgY2hhbmdlZCwgNzcxIGluc2VydGlvbnMo
+KyksIDQwMSBkZWxldGlvbnMoLSkKClRoaXMgaXMgZm9yIHRoZSA1IGRyaXZlcnMgYWxvbmUgYW5k
+IG5vdCB0aGUgaGVhZGVyIGNsZWFudXAuClNvIGxvbmcgc3Rvcnkgc2hvcnQgLSB0aGlzIGlzIG5v
+dCBnb29kIGFuZCBub3QgdGhlIHdheSBmb3J3YXJkLgoKSSB3aWxsIHRyeSB0byBjb21lIHVwIHdp
+dGggYSBmZXcgaW1wcm92ZW1lbnRzIHRvIG1ha2UgdGhlCmhlYWRlcnMgZmlsZXMgc2VsZmNvbnRh
+aW5lZCwgYnV0IHJlc3RyaWN0ZWQgdG8gdGhlIGNoYW5nZXMgdGhhdAphZGQgZm9yd2FyZHMvaW5j
+bHVkZSB0byBhdm9pZCB0aGUgY2hydW5jaCBpbiBhbGwgdGhlIGRyaXZlcnMuCgpBbmQgdGhlbiBw
+b3N0IGZvciByZXZpZXcgYSBmZXcgcGF0Y2hlcyB0byBjbGVhbiB1cCBzb21lIGhlYWRlcnMuCklm
+IHRoZSBjbGVhbnVwIGdldHMgYSBnbyBJIHdpbGwgdHJ5IHRvIHBlcnN1YWRlIHRoZSBpbnRyb2R1
+Y3Rpb24Kb2YgdGhlc2UuClRoaXMgd2lsbCBpbmNsdWRlLCBidXQgd2lsbCBub3QgYmUgbGltaXRl
+ZCB0bywgdGhlIGFib3ZlIG1lbnRpb25lZApkcm1fY3J0Y19oZWxwZXIuaCBoZWFkZXIgZmlsZS4K
+CkZvciBub3cgdG9vIG11Y2ggdGltZSB3YXMgYWxyZWFkeSBzcGVudCBvbiB0aGlzLCBzbyBpdCBp
+cyBhdCB0aGUKbW9tZW50IHB1c2hlZCBiYWNrIG9uIG15IFRPRE8gbGlzdC4KVGhpcyBtYWlsIHNl
+cnZlIGFsc28gYXMgYSBraW5kIG9mICJ3aGVyZSBoYWQgSSBsZWZ0Iiwgd2hlbi9pZiBJCnBpY2sg
+dGhpcyB1cCBhZ2Fpbi4KCklmIHRoZXJlIGFyZSBhbnlvbmUgdGhhdCBrbm93cyBzb21lIHRvb2xp
+bmcgdGhhdCBjYW4gaGVscCBpbiB0aGUKcHJvY2VzcyBvZiBhZGp1c3RpbmcgdGhlIGhlYWRlciBm
+aWxlcyBJIGFtIGFsbCBlYXJzLgoKCVNhbQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
+cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9kcmktZGV2ZWwK
