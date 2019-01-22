@@ -1,103 +1,77 @@
-From: Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>
-Subject: Re: [PATCH] drm: Split out drm_probe_helper.h
-Date: Tue, 22 Jan 2019 09:03:36 +0100
-Message-ID: <CAKMK7uF_8yRycA4ZUyudH7dM23DOiFEkKStAbbAvD=79y_UE_Q@mail.gmail.com>
-References: <20190116163442.12622-1-daniel.vetter@ffwll.ch>
- <20190116181018.GA27364@ravnborg.org>
- <20190117164541.GE3271@phenom.ffwll.local>
- <20190117174531.GA14041@ravnborg.org> <20190121221329.GA6512@ravnborg.org>
+From: Loys Ollivier <lollivier@baylibre.com>
+Subject: Re: [PATCH v2 2/4] dt-bindings: gnss: add mediatek binding
+Date: Tue, 22 Jan 2019 09:47:48 +0100
+Message-ID: <86imyh13kb.fsf@baylibre.com>
+References: <1547744074-28308-1-git-send-email-lollivier@baylibre.com> <1547744074-28308-3-git-send-email-lollivier@baylibre.com> <20190121171019.GA2903@bogus> <86imyhapl9.fsf@baylibre.com> <CAGp9LzpgZDEdKFH4ZLqxtO60unxXRJoXNsGugNT=oojHDMp+3g@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-In-Reply-To: <20190121221329.GA6512-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/amd-gfx>,
- <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/amd-gfx>
-List-Post: <mailto:amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-List-Help: <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/amd-gfx>,
- <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
-Errors-To: amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Sender: "amd-gfx" <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-To: Sam Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>
-Cc: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Nouveau Dev <nouveau-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, DRI Development <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, "open list:VIRTIO CORE,
- NET..." <virtualization-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Daniel Vetter <daniel.vetter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, linux-samsung-soc <linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Oleksandr Andrushchenko <oleksandr_andrushchenko-uRwfk40T5oI@public.gmane.org>, amd-gfx list <amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:DRM DRIVER FOR QXL VIRTUAL GPU" <spice-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Jani Nikula <jani.nikula-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-arm-msm <linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, intel-gfx <intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, The etnaviv authors <etnaviv-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+Content-Type: text/plain; format=flowed
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-reply-to: <CAGp9LzpgZDEdKFH4ZLqxtO60unxXRJoXNsGugNT=oojHDMp+3g@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Wang <sean.wang@kernel.org>
+Cc: Loys Ollivier <lollivier@baylibre.com>, Rob Herring <robh@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Kevin Hilman <khilman@baylibre.com>, Johan Hovold <johan@kernel.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gTW9uLCBKYW4gMjEsIDIwMTkgYXQgMTE6MTMgUE0gU2FtIFJhdm5ib3JnIDxzYW1AcmF2bmJv
-cmcub3JnPiB3cm90ZToKPgo+IEhpIERhbmllbCBldCBhbC4KPgo+ID4gPgo+ID4gPiBZZWFoIHRo
-ZSBkcm1fY3J0Y19oZWxwZXIuaCBoZWFkZXIgaXMgYSBiaXQgdGhlIG1pbmlhdHVyZSBkcm1QLmgg
-Zm9yIGxlZ2FjeQo+ID4gPiBrbXMgZHJpdmVycy4gSnVzdCByZW1vdmluZyBpdCBmcm9tIGFsbCB0
-aGUgYXRvbWljIGRyaXZlcnMgY2F1c2VkIGxvdHMgb2YKPiA+ID4gZmFsbG91dCwgSSBleHBlY3Qg
-ZXZlbiBtb3JlIGlmIHlvdSBlbnRpcmVseSByZW1vdmUgdGhlIGluY2x1ZGVzIGl0IGhhcy4KPiA+
-ID4gTWF5YmUgYSB0b2RvLCBjYXJlIHRvIHBscyBjcmVhdGUgdGhhdCBwYXRjaCBzaW5jZSBpdCdz
-IHlvdXIgaWRlYT8KPiA+Cj4gPiBUaGUgbWFpbiByZWFzb24gSSBiYWlsZWQgb3V0IGluaXRpYWxs
-eSB3YXMgdGhhdCB0aGlzIHdvdWxkIGNyZWF0ZQo+ID4gc21hbGwgY2hhbmdlcyB0byBzZXZlcmFs
-IG90aGVyd2lzZSBzZWxkb21seSB0b3VjaGVkIGZpbGVzLgo+ID4gQW5kIHRoZW4gd2Ugd291bGQg
-bGF0ZXIgY29tZSBhbmQgcmVtb3ZlIGRybVAuaCAtIHNvIGxvdHMgb2YKPiA+IHNtYWxsIGJ1dCBp
-bmNyZW1lbnRhbCBjaGFuZ2VzIHRvIHRoZSBzYW1lIG90aGVyd2lzZSBzZWxkb21seQo+ID4gZWRp
-dGVkIGZpbGVzLgo+ID4gQW5kIHRoZSBqb2Igd2FzIG9ubHkgcGFydGlhbGx5IGRvbmUuCj4gPgo+
-ID4gSSB3aWxsIHRyeSB0byBleHBlcmltZW50IHdpdGggYW4gYXBwcm9hY2ggd2hlcmUgSSBjbGVh
-biB1cCB0aGUKPiA+IGluY2x1ZGUvZHJtLyouaCBmaWxlcyBhIGxpdHRsZSAobGlrZSBzdWdnZXN0
-ZWQgYWJvdmUsICtkZWxldGUgZHJtUC5oCj4gPiBhbmQgbWF5YmUgYSBiaXQgbW9yZSkuCj4gPgo+
-ID4gVGhlbiB0byB0cnkgb24gYSBkcml2ZXIgYnkgZHJpdmVyIGJhc2lzIHRvIG1ha2UgaXQgYnVp
-bGQgd2l0aCBhCj4gPiBjbGVhbmVkIHNldCBvZiBpbmNsdWRlIGZpbGVzLgo+ID4gSSBob3BlIHRo
-YXQgdGhlIGNsZWFuZWQgdXAgZHJpdmVyIGNhbiBzdGlsbCBidWlsZCB3aXRob3V0IHRoZQo+ID4g
-Y2xlYW5lZCBoZWFkZXIgZmlsZXMgc28gdGhlIGNoYW5nZXMgY2FuIGJlIHN1Ym1pdHRlZCBwaWVj
-ZW1hbC4KPiA+Cj4gPiBXaWxsIGRvIHNvIHdpdGggYW4gZXllIG9uIHRoZSBsZXNzZXIgbWFpbnRh
-aW5lZCBkcml2ZXJzIHRvIHRyeSBpdAo+ID4gb3V0IHRvIGF2b2lkIGNyZWF0aW5nIHRvbyBtdWNo
-IGNocnVuY2ggZm9yIG90aGVycy4KPgo+IEkgaGF2ZSBub3cgYSBmZXcgcGF0Y2hlcyBxdWV1ZWQs
-IGJ1dCB0aGUgcmVzdWx0IGlzIG5vdCB0b28gcHJldHR5Lgo+IEkgZGlkIHRoZSBmb2xsb3dpbmc6
-Cj4KPiAtIEZvciBhbGwgZmlsZXMgaW4gaW5jbHVkZS9kcm0vKi5oIHRoZSBzZXQgb2YgaW5jbHVk
-ZSBmaWxlcwo+ICAgd2VyZSBhZGp1c3RlZCB0byB0aGUgbWluaW11bSBudW1iZXIgb2YgZmlsZXMg
-cmVxdWlyZWQgdG8gbWFrZQo+ICAgdGhlbSBidWlsZCB3aXRob3V0IGFueSBvdGhlciBmaWxlcyBp
-bmNsdWRlZCBmaXJzdC4KPgo+ICAgQ3JlYXRlZCBvbmUgLmMgZmlsZSBmb3IgZWFjaCAuaCBmaWxl
-LiBUaGVuIGluY2x1ZGVkIHRoZSAuaAo+ICAgZmlsZSBhbmQgYWRqdXN0ZWQgdG8gdGhlIG1pbmlt
-YWwgc2V0IG9mIGluY2x1ZGUgZmlsZXMuCj4gICBJbiB0aGUgcHJvY2VzcyBhIGxvdCBvZiBmb3J3
-YXJkcyB3ZXJlIGFkZGVkLgo+Cj4gLSBEZWxldGVkIGRybVAuaAo+Cj4gLSBGaXhlZCBidWlsZCBv
-ZiBhIGZldyBkcml2ZXJzOiBzdGksIHRpbGNkYywgZ21hNTAwLCB0dmUyMDAsIHZpYQo+Cj4gU29t
-ZSBvYnNlcnZhdGlvbnM6Cj4KPiAtIEtpbGxpbmcgYWxsIHRoZSBpbmNsdWRlcyBub3QgbmVlZGVk
-IGluIHRoZSBoZWFkZXJzIGZpbGVzCj4gICByZXN1bHRzIGluIGEgYSBsb3Qgb2YgZXh0cmEgY2hh
-bmdlcy4KPiAgIEV4YW1wbGVzOgo+ICAgICBkcm1fbW9kc2VzZXRfaGVscGVyX3Z0YWJsZXMuaCBp
-cyBubyBsb25nZXIKPiAgICAgaW5jbHVkZWQgYnkgYW55b25lLCBzbyBuZWVkcyB0byBiZSBhZGRl
-ZCBpbiBtYW55IGZpbGVzCj4KPiAgICAgZHJtX2F0b21pY19zdGF0ZV9oZWxwZXIuaCBpcyBubyBs
-b25nZXIgaW5jbHVkZWQKPiAgICAgYnkgYW55b25lIHNvIGxpa2V3aXNlIG5lZWRzIHRvIGJlIGFk
-ZGVkIGluIG1hbnkgZmlsZXMKPgo+IC0gSXQgaXMgdmVyeSB0ZWRpb3VzIHRvIGRvIHRoaXMgcHJv
-cGVybHkuCj4gICBUaGUgcHJvY2VzcyBJIGZvbGxvd2VkIHdhczoKPiAgIC0gZGVsZXRlIC8gY29t
-bWVudCBvdXQgYWxsIGluY2x1ZGUgZmlsZXMKPiAgIC0gYWRkIGJhY2sgdGhlIG9idmlvdXMgZnJv
-bSBhIHF1aWNrIHNjYW4gb2YgdGhlIGNvZGUKPiAgIC0gYnVpbGQgLSBmaXggLSBidWlsZCAtIGZp
-eCAtIGJ1aWxkIC0gZml4IC4uLgo+ICAgLSAgIG5leHQgZmlsZS4uLgo+Cj4gLSBUaGUgcmVzdWx0
-IGlzIGVycm9ycHJvbmUgYXMgb25seSB0aGUgYWxseWVzY29uZmlnICsgYWxsbW9kY29uZmlnCj4g
-ICB2YXJpYW50cyBhcmUgdGVzdGVkLiBCdXQgcmVhbGxpZmUgY29uZmlndXJhdGlvbnMgYXJlIG1v
-cmUgZGl2ZXJzZS4KPgo+IEN1cnJlbnQgZGlmZnN0YXQ6Cj4gICAgMTExIGZpbGVzIGNoYW5nZWQs
-IDc3MSBpbnNlcnRpb25zKCspLCA0MDEgZGVsZXRpb25zKC0pCj4KPiBUaGlzIGlzIGZvciB0aGUg
-NSBkcml2ZXJzIGFsb25lIGFuZCBub3QgdGhlIGhlYWRlciBjbGVhbnVwLgo+IFNvIGxvbmcgc3Rv
-cnkgc2hvcnQgLSB0aGlzIGlzIG5vdCBnb29kIGFuZCBub3QgdGhlIHdheSBmb3J3YXJkLgo+Cj4g
-SSB3aWxsIHRyeSB0byBjb21lIHVwIHdpdGggYSBmZXcgaW1wcm92ZW1lbnRzIHRvIG1ha2UgdGhl
-Cj4gaGVhZGVycyBmaWxlcyBzZWxmY29udGFpbmVkLCBidXQgcmVzdHJpY3RlZCB0byB0aGUgY2hh
-bmdlcyB0aGF0Cj4gYWRkIGZvcndhcmRzL2luY2x1ZGUgdG8gYXZvaWQgdGhlIGNocnVuY2ggaW4g
-YWxsIHRoZSBkcml2ZXJzLgo+Cj4gQW5kIHRoZW4gcG9zdCBmb3IgcmV2aWV3IGEgZmV3IHBhdGNo
-ZXMgdG8gY2xlYW4gdXAgc29tZSBoZWFkZXJzLgo+IElmIHRoZSBjbGVhbnVwIGdldHMgYSBnbyBJ
-IHdpbGwgdHJ5IHRvIHBlcnN1YWRlIHRoZSBpbnRyb2R1Y3Rpb24KPiBvZiB0aGVzZS4KPiBUaGlz
-IHdpbGwgaW5jbHVkZSwgYnV0IHdpbGwgbm90IGJlIGxpbWl0ZWQgdG8sIHRoZSBhYm92ZSBtZW50
-aW9uZWQKPiBkcm1fY3J0Y19oZWxwZXIuaCBoZWFkZXIgZmlsZS4KPgo+IEZvciBub3cgdG9vIG11
-Y2ggdGltZSB3YXMgYWxyZWFkeSBzcGVudCBvbiB0aGlzLCBzbyBpdCBpcyBhdCB0aGUKPiBtb21l
-bnQgcHVzaGVkIGJhY2sgb24gbXkgVE9ETyBsaXN0Lgo+IFRoaXMgbWFpbCBzZXJ2ZSBhbHNvIGFz
-IGEga2luZCBvZiAid2hlcmUgaGFkIEkgbGVmdCIsIHdoZW4vaWYgSQo+IHBpY2sgdGhpcyB1cCBh
-Z2Fpbi4KPgo+IElmIHRoZXJlIGFyZSBhbnlvbmUgdGhhdCBrbm93cyBzb21lIHRvb2xpbmcgdGhh
-dCBjYW4gaGVscCBpbiB0aGUKPiBwcm9jZXNzIG9mIGFkanVzdGluZyB0aGUgaGVhZGVyIGZpbGVz
-IEkgYW0gYWxsIGVhcnMuCgpZZWFoIGluIHRoZSBwcm9jZXNzIG9mIHNwbGl0dGluZyB1cCBkcm1Q
-Lmggd2UndmUgY3JlYXRlZCBhIGZldyBzbWFsbGVyCnN1Y2ggcGlsZXMgb2YgaGVhZGVycy4gSSB0
-aGluayBpbiBzb21lIGNhc2VzIGl0J3MganVzdCBub3QgZ29pbmcgdG8gYmUKd29ydGggaXQgdG8g
-ZnVsbHkgc3BsaXQgdGhlbSB1cCwgZS5nLiBkcm1fY3J0Y19oZWxwZXIuaCBpcyBnb2luZyB0byBi
-ZQphIHB1cmUgbGVnYWN5IGhlbHBlciwgb25seSBuZWVkZWQgYnkgcHJlLWF0b21pYyBkcml2ZXJz
-LiBTcGxpdHRpbmcKdGhhdCB1cCBkb2Vzbid0IHNlZW0gdG8gdXNlZnVsIHRvIG1lLiBTaW1pbGFy
-bHkgd2UgbWlnaHQgd2FudApkcm1fYXRvbWljX2hlbHBlci5oIHRvIGtlZXAgcHVsbGluZyBpbiB0
-aGUgb3RoZXIgaGVscGVyIGhlYWRlcnMuIFNvCnByb2JhYmx5IGdvaW5nIHRvIGJlIGEganVkZ2Vt
-ZW50IGNhbGwgb24gYSBjYXNlLWJ5LWNhc2UgYmFzaXMuCi1EYW5pZWwKLS0gCkRhbmllbCBWZXR0
-ZXIKU29mdHdhcmUgRW5naW5lZXIsIEludGVsIENvcnBvcmF0aW9uCis0MSAoMCkgNzkgMzY1IDU3
-IDQ4IC0gaHR0cDovL2Jsb2cuZmZ3bGwuY2gKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KYW1kLWdmeCBtYWlsaW5nIGxpc3QKYW1kLWdmeEBsaXN0cy5mcmVl
-ZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9hbWQtZ2Z4Cg==
+
+On Mon 21 Jan 2019 at 18:44, Sean Wang wrote:
+
+> On Mon, Jan 21, 2019 at 9:29 AM Loys Ollivier <lollivier@baylibre.com> 
+> wrote:
+>>
+>>
+>> On Mon 21 Jan 2019 at 17:10, Rob Herring wrote:
+>>
+>> > On Thu, 17 Jan 2019 17:54:32 +0100, Loys Ollivier wrote:
+>> >> Add binding for Mediatek-based GNSS receivers.
+>> >>
+>> >> Signed-off-by: Loys Ollivier <lollivier@baylibre.com>
+>> >> ---
+>> >>
+>> >> v2:
+>> >> Renamed bindings from Globaltop/gtop to Mediatek/mtk.
+>> >> Moved current-speed as an optional propertie.
+>> >> Removed the status line in the example.
+>> >> Added "mediatek,mt3339" compatible.
+>> >>
+>> >>  .../devicetree/bindings/gnss/mediatek.txt          | 39
+>> >>  ++++++++++++++++++++++
+>> >>  1 file changed, 39 insertions(+)
+>> >>  create mode 100644 Documentation/devicetree/bindings/gnss/mediatek.txt
+>> >>
+>> >
+>> > Reviewed-by: Rob Herring <robh@kernel.org>
+>>
+>> Thanks Rob,
+>> If there are no objections by others, I'll stop sending these two patch
+>> (1/4 and 2/4) and reference any new patch serie for 3 and 4 as depending
+>> on those two.
+>>
+>
+> Hi Loys,
+>
+> Thanks for adding the first GPS device driver. It's really nice to see
+> more device drivers added to upstream support.
+>
+Hi Sean,
+
+Glad to know you're supporting this initiative.
+
+> Do you mind send the series again with Cc linux-mediatek@lists.infradead.org 
+> ?
+>
+The series already has linux-mediatek@lists.infradead.org in Cc. Does it
+need a resend ?
+
+> Sean
+>
+>> --
+>> -L
+>>
+>> _______________________________________________
+>> Linux-mediatek mailing list
+>> Linux-mediatek@lists.infradead.org
+>> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+
+-- 
+-L
