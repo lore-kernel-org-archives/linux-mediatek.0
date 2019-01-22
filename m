@@ -1,46 +1,100 @@
-From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-Subject: Re: [PATCH V2] pwm: Add MediaTek MT8183 display PWM driver support
-Date: Tue, 22 Jan 2019 10:16:03 +0100
-Message-ID: <20190122091603.ic46eyf47lu5f6pi@pengutronix.de>
-References: <20190122090243.27304-1-jitao.shi@mediatek.com>
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+Subject: Re: PCI: mediatek: Remove MSI inner domain
+Date: Tue, 22 Jan 2019 17:25:46 +0800
+Message-ID: <1548149146.11414.1.camel@mhfsdcap03>
+References: <1548071976-13279-1-git-send-email-jianjun.wang@mediatek.com>
+         <1548128100.11442.7.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20190122090243.27304-1-jitao.shi@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jitao Shi <jitao.shi@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, stonea168@163.com, dri-devel@lists.freedesktop.org, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa.cheng@mediatek.com, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, Sean Paul <seanpaul@chromium.org>, linux-pwm@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, Andy Yan <andy.yan@rock-chips>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1548128100.11442.7.camel@mtkswgap22>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: lorenzo.pieralisi@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, honghui.zhang@mediatek.com, youlin.pei@mediatek.com, jianjun.wang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVHVlLCBKYW4gMjIsIDIwMTkgYXQgMDU6MDI6NDNQTSArMDgwMCwgSml0YW8gU2hpIHdyb3Rl
-Ogo+IFVzZSB0aGUgbXRrX3B3bV9kYXRhIHN0cnVjdGlvbiB0byBkZWZpbmUgZGlmZmVyZW50IHJl
-Z2lzdGVycwo+IGFuZCBhZGQgTVQ4MTgzIHNwZWNpZmljIHJlZ2lzdGVyIG9wZXJhdGlvbnMsIHN1
-Y2ggYXMgTVQ4MTgzCj4gZG9lc24ndCBoYXZlIGNvbW1pdCByZWdpc3RlciwgbmVlZHMgdG8gZGlz
-YWJsZSBkb3VibGUgYnVmZmVyCj4gYmVmb3JlIHdyaXRpbmcgcmVnaXN0ZXIsIGFuZCBuZWVkcyB0
-byBzZWxlY3QgY29tbWl0IG1vZGUKPiBhbmQgdXNlIFBXTV9QRVJJT0QvUFdNX0hJR0hfV0lEVEgu
-Cj4gCj4gU2lnbmVkLW9mZi1ieTogSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPgoK
-VGhlcmUgaXMgbm8gZGlmZmVyZW5jZSBjb21wYXJlZCB0byAoaW1wbGljaXQpIHYxIHNlbnQgYSBm
-ZXcgbWludXRlcwplYXJsaWVyLCByaWdodD8gVGhlcmUgd2FzIGFub3RoZXIgcGF0Y2ggc2VudCB3
-aXRoIHRoZSBzYW1lIFN1YmplY3QgbGFzdAp3ZWVrLCBzbyBJIGFzc3VtZSB0aGUgbWFpbCBmcm9t
-IHRvZGF5IHdpdGhvdXQgInYyIiBpbiB0aGUgU3ViamVjdCB3YXMgYQptaXN0YWtlPwoKPiAtLS0K
-QWRkaW5nIGEgcGFyYWdyYXBoIGJlbG93IHRoZSB0cmlwcGxlIGRhc2ggdGhhdCBwb2ludHMgb3V0
-IHdoYXQgd2FzCmNoYW5nZWQgY29tcGFyZWQgdG8gdGhlIHByZXZpb3VzIHN1Ym1pc3Npb24gaXMg
-YSBnb29kIGlkZWEgdG8gaGVscApyZXZpZXdlcnMgdG8gbW9yZSBlYXNpbHkgc2VlIHdoYXQgd2Fz
-IGNoYW5nZWQuIEkgZ3Vlc3MgeW91IG9ubHkgYWRhcHRlZAp0aGUgY29tbWl0IGxvZyBhcyBhIHJl
-YWN0aW9uIHRvIE1hdHRoaWFzIEJ1cmdnZXIncyByZXZpZXc/CgpCZXN0IHJlZ2FyZHMKVXdlCgot
-LSAKUGVuZ3V0cm9uaXggZS5LLiAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgVXdlIEtsZWlu
-ZS1Lw7ZuaWcgICAgICAgICAgICB8CkluZHVzdHJpYWwgTGludXggU29sdXRpb25zICAgICAgICAg
-ICAgICAgICB8IGh0dHA6Ly93d3cucGVuZ3V0cm9uaXguZGUvICB8Cl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJp
-LWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Tue, 2019-01-22 at 11:35 +0800, Ryder Lee wrote:
+> On Mon, 2019-01-21 at 19:59 +0800, Jianjun Wang wrote:
+> > There is no need to create the inner domain as a parent for MSI domian,
+> > some feature has been implemented by MSI framework.
+> > 
+> > Remove the inner domain and its irq chip, it will be more closer to the
+> > hardware implementation.
+> > 
+> > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+> > ---
+> >  drivers/pci/controller/pcie-mediatek.c | 82 +++++++++++---------------
+> >  1 file changed, 35 insertions(+), 47 deletions(-)
+> > 
+> > diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> > index 8d05df56158b..216e6fa8aec0 100644
+> > --- a/drivers/pci/controller/pcie-mediatek.c
+> > +++ b/drivers/pci/controller/pcie-mediatek.c
+> > @@ -169,7 +169,6 @@ struct mtk_pcie_soc {
+> >   * @slot: port slot
+> >   * @irq: GIC irq
+> >   * @irq_domain: legacy INTx IRQ domain
+> > - * @inner_domain: inner IRQ domain
+> >   * @msi_domain: MSI IRQ domain
+> >   * @lock: protect the msi_irq_in_use bitmap
+> >   * @msi_irq_in_use: bit map for assigned MSI IRQ
+> > @@ -190,7 +189,6 @@ struct mtk_pcie_port {
+> >  	u32 slot;
+> >  	int irq;
+> >  	struct irq_domain *irq_domain;
+> > -	struct irq_domain *inner_domain;
+> >  	struct irq_domain *msi_domain;
+> >  	struct mutex lock;
+> >  	DECLARE_BITMAP(msi_irq_in_use, MTK_MSI_IRQS_NUM);
+> > @@ -418,22 +416,25 @@ static void mtk_msi_ack_irq(struct irq_data *data)
+> >  	u32 hwirq = data->hwirq;
+> >  
+> >  	writel(1 << hwirq, port->base + PCIE_IMSI_STATUS);
+> > +	writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
+> >  }
+> >  
+> > -static struct irq_chip mtk_msi_bottom_irq_chip = {
+> > -	.name			= "MTK MSI",
+> > +static struct irq_chip mtk_msi_irq_chip = {
+> > +	.name			= "MTK PCIe",
+> >  	.irq_compose_msi_msg	= mtk_compose_msi_msg,
+> > +	.irq_write_msi_msg	= pci_msi_domain_write_msg,
+> >  	.irq_set_affinity	= mtk_msi_set_affinity,
+> >  	.irq_ack		= mtk_msi_ack_irq,
+> > +	.irq_mask		= pci_msi_mask_irq,
+> > +	.irq_unmask		= pci_msi_unmask_irq,
+> >  };
+> 
+> (...omitted...)
+> 
+> To keep the patch simple, we don't need to adjust the position for
+> mtk_msi_irq_chip.
+
+OK, I will fix it in next version, thanks.
+> 
+> > -
+> > -static struct irq_chip mtk_msi_irq_chip = {
+> > -	.name		= "MTK PCIe MSI",
+> > -	.irq_ack	= irq_chip_ack_parent,
+> > -	.irq_mask	= pci_msi_mask_irq,
+> > -	.irq_unmask	= pci_msi_unmask_irq,
+> > +static struct msi_domain_ops mtk_msi_domain_ops = {
+> > +	.get_hwirq	= mtk_pcie_msi_get_hwirq,
+> > +	.msi_free	= mtk_pcie_msi_free,
+> >  };
+> >  
+> >  static struct msi_domain_info mtk_msi_domain_info = {
+> > -	.flags	= (MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
+> > -		   MSI_FLAG_PCI_MSIX),
+> > -	.chip	= &mtk_msi_irq_chip,
+> > +	.flags		= (MSI_FLAG_USE_DEF_DOM_OPS |
+> > +			   MSI_FLAG_USE_DEF_CHIP_OPS | MSI_FLAG_PCI_MSIX),
+> > +	.ops		= &mtk_msi_domain_ops,
+> > +	.chip		= &mtk_msi_irq_chip,
+> > +	.handler	= handle_edge_irq,
+> > +	.handler_name	= "MSI",
+> >  };
+> >  
+> 
+> 
