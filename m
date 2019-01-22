@@ -1,100 +1,134 @@
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-Subject: Re: PCI: mediatek: Remove MSI inner domain
-Date: Tue, 22 Jan 2019 17:25:46 +0800
-Message-ID: <1548149146.11414.1.camel@mhfsdcap03>
-References: <1548071976-13279-1-git-send-email-jianjun.wang@mediatek.com>
-         <1548128100.11442.7.camel@mtkswgap22>
+From: Min Guo <min.guo@mediatek.com>
+Subject: Re: [PATCH v4 1/6] dt-bindings: usb: musb: Add support for MediaTek
+ musb controller
+Date: Tue, 22 Jan 2019 17:36:13 +0800
+Message-ID: <1548149773.4433.284.camel@mhfsdcap03>
+References: <1548073351-13739-1-git-send-email-min.guo@mediatek.com>
+         <1548073351-13739-2-git-send-email-min.guo@mediatek.com>
+         <20190121151417.GA19238@bogus>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1548128100.11442.7.camel@mtkswgap22>
+In-Reply-To: <20190121151417.GA19238@bogus>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: lorenzo.pieralisi@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, honghui.zhang@mediatek.com, youlin.pei@mediatek.com, jianjun.wang@mediatek.com
+To: Rob Herring <robh@kernel.org>, Bin Liu <b-liu@ti.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, hdegoede@redhat.com, tony@atomide.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, chunfeng.yun@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-01-22 at 11:35 +0800, Ryder Lee wrote:
-> On Mon, 2019-01-21 at 19:59 +0800, Jianjun Wang wrote:
-> > There is no need to create the inner domain as a parent for MSI domian,
-> > some feature has been implemented by MSI framework.
-> > 
-> > Remove the inner domain and its irq chip, it will be more closer to the
-> > hardware implementation.
-> > 
-> > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-> > ---
-> >  drivers/pci/controller/pcie-mediatek.c | 82 +++++++++++---------------
-> >  1 file changed, 35 insertions(+), 47 deletions(-)
-> > 
-> > diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> > index 8d05df56158b..216e6fa8aec0 100644
-> > --- a/drivers/pci/controller/pcie-mediatek.c
-> > +++ b/drivers/pci/controller/pcie-mediatek.c
-> > @@ -169,7 +169,6 @@ struct mtk_pcie_soc {
-> >   * @slot: port slot
-> >   * @irq: GIC irq
-> >   * @irq_domain: legacy INTx IRQ domain
-> > - * @inner_domain: inner IRQ domain
-> >   * @msi_domain: MSI IRQ domain
-> >   * @lock: protect the msi_irq_in_use bitmap
-> >   * @msi_irq_in_use: bit map for assigned MSI IRQ
-> > @@ -190,7 +189,6 @@ struct mtk_pcie_port {
-> >  	u32 slot;
-> >  	int irq;
-> >  	struct irq_domain *irq_domain;
-> > -	struct irq_domain *inner_domain;
-> >  	struct irq_domain *msi_domain;
-> >  	struct mutex lock;
-> >  	DECLARE_BITMAP(msi_irq_in_use, MTK_MSI_IRQS_NUM);
-> > @@ -418,22 +416,25 @@ static void mtk_msi_ack_irq(struct irq_data *data)
-> >  	u32 hwirq = data->hwirq;
-> >  
-> >  	writel(1 << hwirq, port->base + PCIE_IMSI_STATUS);
-> > +	writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
-> >  }
-> >  
-> > -static struct irq_chip mtk_msi_bottom_irq_chip = {
-> > -	.name			= "MTK MSI",
-> > +static struct irq_chip mtk_msi_irq_chip = {
-> > +	.name			= "MTK PCIe",
-> >  	.irq_compose_msi_msg	= mtk_compose_msi_msg,
-> > +	.irq_write_msi_msg	= pci_msi_domain_write_msg,
-> >  	.irq_set_affinity	= mtk_msi_set_affinity,
-> >  	.irq_ack		= mtk_msi_ack_irq,
-> > +	.irq_mask		= pci_msi_mask_irq,
-> > +	.irq_unmask		= pci_msi_unmask_irq,
-> >  };
-> 
-> (...omitted...)
-> 
-> To keep the patch simple, we don't need to adjust the position for
-> mtk_msi_irq_chip.
+Hi Bin,
 
-OK, I will fix it in next version, thanks.
+Sorry to bother you again, I encounter a problem about the extcon
+property.
+
+I don't find a common driver describing the usb-connector. Is
+there any driver that I can refer to, specially the way to switch MUSB
+controller between host and device mode? 
+If it needs to implement by myself, is it possible to emulate an
+usb-connector driver by extcon-usb-gpio, and also use the notifier
+mechanism or can you give me some advices?
+
+
+Hi Rob,
+
+On Mon, 2019-01-21 at 09:14 -0600, Rob Herring wrote:
+> On Mon, Jan 21, 2019 at 08:22:26PM +0800, min.guo@mediatek.com wrote:
+> > From: Min Guo <min.guo@mediatek.com>
+> > 
+> > This adds support for MediaTek musb controller in
+> > host, peripheral and otg mode.
+> > 
+> > Signed-off-by: Min Guo <min.guo@mediatek.com>
+> > ---
+> > changes in v4:
+> > suggested by Sergei:
+> > 1. String alignment
+> > 
+> > changes in v3:
+> > 1. no changes
+> > 
+> > changes in v2:
+> > suggested by Bin:
+> > 1. Modify DRC to DRD
+> > suggested by Rob:
+> > 2. Drop the "<soc-model>-musb" in compatible
 > 
-> > -
-> > -static struct irq_chip mtk_msi_irq_chip = {
-> > -	.name		= "MTK PCIe MSI",
-> > -	.irq_ack	= irq_chip_ack_parent,
-> > -	.irq_mask	= pci_msi_mask_irq,
-> > -	.irq_unmask	= pci_msi_unmask_irq,
-> > +static struct msi_domain_ops mtk_msi_domain_ops = {
-> > +	.get_hwirq	= mtk_pcie_msi_get_hwirq,
-> > +	.msi_free	= mtk_pcie_msi_free,
-> >  };
-> >  
-> >  static struct msi_domain_info mtk_msi_domain_info = {
-> > -	.flags	= (MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
-> > -		   MSI_FLAG_PCI_MSIX),
-> > -	.chip	= &mtk_msi_irq_chip,
-> > +	.flags		= (MSI_FLAG_USE_DEF_DOM_OPS |
-> > +			   MSI_FLAG_USE_DEF_CHIP_OPS | MSI_FLAG_PCI_MSIX),
-> > +	.ops		= &mtk_msi_domain_ops,
-> > +	.chip		= &mtk_msi_irq_chip,
-> > +	.handler	= handle_edge_irq,
-> > +	.handler_name	= "MSI",
-> >  };
-> >  
+> This is not what I said. I gave you the exact text to put.
+
+Sorry to misunderstood your meaning last time,  I will modify it in next
+patch.
+	compatible: should be one of "mediatek,mt2701-musb"...,followed by
+"mediatek,mtk-musb"
+
+> > 3. Remove phy-names
+> > 4. Add space after comma in clock-names
+> > ---
+> >  .../devicetree/bindings/usb/mediatek,musb.txt      | 43 ++++++++++++++++++++++
+> >  1 file changed, 43 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/usb/mediatek,musb.txt
+> > 
+> > diff --git a/Documentation/devicetree/bindings/usb/mediatek,musb.txt b/Documentation/devicetree/bindings/usb/mediatek,musb.txt
+> > new file mode 100644
+> > index 0000000..4305770
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/usb/mediatek,musb.txt
+> > @@ -0,0 +1,43 @@
+> > +MediaTek musb DRD/OTG controller
+> > +-------------------------------------------
+> > +
+> > +Required properties:
+> > + - compatible      : should be "mediatek,mtk-musb"
+> > + - reg             : specifies physical base address and size of
+> > +                     the registers
+> > + - interrupts      : interrupt used by musb controller
+> > + - interrupt-names : must be "mc"
+> > + - phys            : PHY specifier for the OTG phy
+> > + - dr_mode         : should be one of "host", "peripheral" or "otg",
+> > +                     refer to usb/generic.txt
+> > + - clocks          : a list of phandle + clock-specifier pairs, one for
+> > +                     each entry in clock-names
+> > + - clock-names     : must contain "main", "mcu", "univpll"
+> > +                     for clocks of controller
+> > +
+> > +Optional properties:
+> > + - extcon          : external connector for VBUS and ID pin changes detection,
+> > +                     needed when supports dual-role mode
 > 
-> 
+> Again, do not use extcon in new bindings.
+
+Thanks, ok.
+
+> > + - vbus-supply     : reference to the VBUS regulator, needed when supports
+> > +                     dual-role mode
+> > + - power-domains   : a phandle to USB power domain node to control USB's
+> > +                     MTCMOS
+> > +
+> > +Example:
+> > +
+> > +usb2: usb@11200000 {
+> > +	compatible = "mediatek,mt2701-musb",
+> > +		     "mediatek,mtk-musb";
+> > +	reg = <0 0x11200000 0 0x1000>;
+> > +	interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_LOW>;
+> > +	interrupt-names = "mc";
+> > +	phys = <&u2port2 PHY_TYPE_USB2>;
+> > +	vbus-supply = <&usb_vbus>;
+> > +	extcon = <&extcon_usb>;
+> > +	dr_mode = "otg";
+> > +	clocks = <&pericfg CLK_PERI_USB0>,
+> > +		 <&pericfg CLK_PERI_USB0_MCU>,
+> > +		 <&pericfg CLK_PERI_USB_SLV>;
+> > +	clock-names = "main","mcu","univpll";
+> > +	power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
+> > +};
+> > -- 
+> > 1.9.1
+> > 
+> > 
+> > _______________________________________________
+> > linux-arm-kernel mailing list
+> > linux-arm-kernel@lists.infradead.org
+> > http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+
+Regards,
+Min.
