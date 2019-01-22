@@ -1,94 +1,69 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: PCI: mediatek: Remove MSI inner domain
-Date: Tue, 22 Jan 2019 11:35:00 +0800
-Message-ID: <1548128100.11442.7.camel@mtkswgap22>
-References: <1548071976-13279-1-git-send-email-jianjun.wang@mediatek.com>
+From: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH] mm/slub: use WARN_ON() for some slab errors
+Date: Tue, 22 Jan 2019 12:14:35 +0800
+Message-ID: <1548130475.7975.74.camel@mtkswgap22>
+References: <1548063490-545-1-git-send-email-miles.chen@mediatek.com>
+ <01000168726fcf15-81d8feb3-26f0-44d6-bbd8-62aa149118b5-000000@email.amazonses.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1548071976-13279-1-git-send-email-jianjun.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jianjun Wang <jianjun.wang@mediatek.com>
-Cc: lorenzo.pieralisi@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, honghui.zhang@mediatek.com, youlin.pei@mediatek.com
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <01000168726fcf15-81d8feb3-26f0-44d6-bbd8-62aa149118b5-000000-p/GC64/jrecnJqMo6gzdpkEOCMrvLtNR@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Christopher Lameter <cl-vYTEC60ixJUAvxtiuMwx3w@public.gmane.org>
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pekka Enberg <penberg-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mm-Bw31MaZKKs3YtjvyW6yDsg@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, David Rientjes <rientjes-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Joonsoo Kim <iamjoonsoo.kim-Hm3cg6mZ9cc@public.gmane.org>, Andrew Morton <akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2019-01-21 at 19:59 +0800, Jianjun Wang wrote:
-> There is no need to create the inner domain as a parent for MSI domian,
-> some feature has been implemented by MSI framework.
+On Mon, 2019-01-21 at 22:02 +0000, Christopher Lameter wrote:
+> On Mon, 21 Jan 2019, miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
 > 
-> Remove the inner domain and its irq chip, it will be more closer to the
-> hardware implementation.
+> > From: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> >
+> > When debugging with slub.c, sometimes we have to trigger a panic in
+> > order to get the coredump file. To do that, we have to modify slub.c and
+> > rebuild kernel. To make debugging easier, use WARN_ON() for these slab
+> > errors so we can dump stack trace by default or set panic_on_warn to
+> > trigger a panic.
 > 
-> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-> ---
->  drivers/pci/controller/pcie-mediatek.c | 82 +++++++++++---------------
->  1 file changed, 35 insertions(+), 47 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> index 8d05df56158b..216e6fa8aec0 100644
-> --- a/drivers/pci/controller/pcie-mediatek.c
-> +++ b/drivers/pci/controller/pcie-mediatek.c
-> @@ -169,7 +169,6 @@ struct mtk_pcie_soc {
->   * @slot: port slot
->   * @irq: GIC irq
->   * @irq_domain: legacy INTx IRQ domain
-> - * @inner_domain: inner IRQ domain
->   * @msi_domain: MSI IRQ domain
->   * @lock: protect the msi_irq_in_use bitmap
->   * @msi_irq_in_use: bit map for assigned MSI IRQ
-> @@ -190,7 +189,6 @@ struct mtk_pcie_port {
->  	u32 slot;
->  	int irq;
->  	struct irq_domain *irq_domain;
-> -	struct irq_domain *inner_domain;
->  	struct irq_domain *msi_domain;
->  	struct mutex lock;
->  	DECLARE_BITMAP(msi_irq_in_use, MTK_MSI_IRQS_NUM);
-> @@ -418,22 +416,25 @@ static void mtk_msi_ack_irq(struct irq_data *data)
->  	u32 hwirq = data->hwirq;
->  
->  	writel(1 << hwirq, port->base + PCIE_IMSI_STATUS);
-> +	writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
->  }
->  
-> -static struct irq_chip mtk_msi_bottom_irq_chip = {
-> -	.name			= "MTK MSI",
-> +static struct irq_chip mtk_msi_irq_chip = {
-> +	.name			= "MTK PCIe",
->  	.irq_compose_msi_msg	= mtk_compose_msi_msg,
-> +	.irq_write_msi_msg	= pci_msi_domain_write_msg,
->  	.irq_set_affinity	= mtk_msi_set_affinity,
->  	.irq_ack		= mtk_msi_ack_irq,
-> +	.irq_mask		= pci_msi_mask_irq,
-> +	.irq_unmask		= pci_msi_unmask_irq,
->  };
+> These locations really should dump stack and not terminate. There is
+> subsequent processing that should be done.
 
-(...omitted...)
+Understood. We should not terminate the process for normal case. The
+change only terminate the process when panic_on_warn is set.
 
-To keep the patch simple, we don't need to adjust the position for
-mtk_msi_irq_chip.
+> Slub terminates by default. The messages you are modifying are only
+> enabled if the user specified that special debugging should be one
+> (typically via a kernel parameter slub_debug).
 
-> -
-> -static struct irq_chip mtk_msi_irq_chip = {
-> -	.name		= "MTK PCIe MSI",
-> -	.irq_ack	= irq_chip_ack_parent,
-> -	.irq_mask	= pci_msi_mask_irq,
-> -	.irq_unmask	= pci_msi_unmask_irq,
-> +static struct msi_domain_ops mtk_msi_domain_ops = {
-> +	.get_hwirq	= mtk_pcie_msi_get_hwirq,
-> +	.msi_free	= mtk_pcie_msi_free,
->  };
->  
->  static struct msi_domain_info mtk_msi_domain_info = {
-> -	.flags	= (MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
-> -		   MSI_FLAG_PCI_MSIX),
-> -	.chip	= &mtk_msi_irq_chip,
-> +	.flags		= (MSI_FLAG_USE_DEF_DOM_OPS |
-> +			   MSI_FLAG_USE_DEF_CHIP_OPS | MSI_FLAG_PCI_MSIX),
-> +	.ops		= &mtk_msi_domain_ops,
-> +	.chip		= &mtk_msi_irq_chip,
-> +	.handler	= handle_edge_irq,
-> +	.handler_name	= "MSI",
->  };
->  
+I'm a little bit confused about this: Do you mean that I should use the
+following approach?
+
+1. Add a special debugging flag (say SLAB_PANIC_ON_ERROR) and call
+panic() by:
+
+if (s->flags & SLAB_PANIC_ON_ERROR)
+     panic("slab error");
+
+2. The SLAB_PANIC_ON_ERROR should be set by slub_debug param.
+
+> It does not make sense to terminate the process here.
+
+
+Thanks for you comment. Sometimes it's useful to trigger a panic and get
+its coredump file before any restore/reset processing because we can
+exam the unmodified data in the coredump file with this approach. 
+
+I added BUG() for the slab errors in internal branches for a few years
+and it does help for both software issues and bit flipping issues. It's
+a quite useful in developing stage.
+
+cheers,
+Miles
