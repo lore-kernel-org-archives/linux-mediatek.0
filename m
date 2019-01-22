@@ -1,83 +1,36 @@
-From: Jitao Shi <jitao.shi@mediatek.com>
-Subject: Re: [PATCH 9/9] drm/mediatek: add dpi dual edge support
-Date: Tue, 22 Jan 2019 15:03:18 +0800
-Message-ID: <1548140598.5648.1.camel@mszsdaap41>
-References: <1546585439-30455-1-git-send-email-chunhui.dai@mediatek.com>
- <1546585439-30455-10-git-send-email-chunhui.dai@mediatek.com>
- <ae8eeb33-43cd-f4b8-a564-95eeecea7d31@gmail.com>
+From: kbuild test robot <lkp@intel.com>
+Subject: Re: [PATCH v5 1/2] Bluetooth: btusb: Add protocol support for
+ MediaTek MT7668U USB devices
+Date: Tue, 22 Jan 2019 15:03:13 +0800
+Message-ID: <201901221525.vm7lvaSU%fengguang.wu@intel.com>
+References: <508f1c6ddf2e7d2a88d267e418159e929bf133c5.1547849398.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <ae8eeb33-43cd-f4b8-a564-95eeecea7d31@gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: jamesjj.liao@mediatek.com, Ryder Lee <ryder.lee@mediatek.com>, srv_heupstream@mediatek.com, chunhui dai <chunhui.dai@mediatek.com>, Stephen Boyd <sboyd@kernel.org>, --to=Michael Turquette <mturquette@baylibre.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-mediatek@lists.infradead.org, Colin Ian King <colin.king@canonical.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <508f1c6ddf2e7d2a88d267e418159e929bf133c5.1547849398.git.sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: kbuild-all@01.org, marcel@holtmann.org, johan.hedberg@gmail.com, linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gV2VkLCAyMDE5LTAxLTA5IGF0IDE3OjU4ICswMTAwLCBNYXR0aGlhcyBCcnVnZ2VyIHdyb3Rl
-Ogo+IAo+IE9uIDA0LzAxLzIwMTkgMDg6MDMsIGNodW5odWkgZGFpIHdyb3RlOgo+ID4gRFBJIHNh
-bXBsZSBvbiByaXNpbmcgYW5kIGZhbGxpbmcgZWRnZS4gSXQgY2FuIHJlZHVjZSBoYWxmIGRhdGEg
-aW8uCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IEppdGFvIFNoaSA8aml0YW8uc2hpQG1lZGlhdGVr
-LmNvbT4KPiA+IFNpZ25lZC1vZmYtYnk6IGNodW5odWkgZGFpIDxjaHVuaHVpLmRhaUBtZWRpYXRl
-ay5jb20+Cj4gPiAtLS0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jIHwg
-MzAgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDMw
-IGluc2VydGlvbnMoKykKPiA+IAo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRp
-YXRlay9tdGtfZHBpLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jCj4gPiBp
-bmRleCA0YTJmNGE2Li5hY2I0ZjQ3IDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19kcGkuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
-cGkuYwo+ID4gQEAgLTExNyw2ICsxMTcsNyBAQCBzdHJ1Y3QgbXRrX2RwaV9jb25mIHsKPiA+ICAJ
-dW5zaWduZWQgaW50ICgqY2FsX2ZhY3RvcikoaW50IGNsb2NrKTsKPiA+ICAJdTMyIHJlZ19oX2Zy
-ZV9jb247Cj4gPiAgCWJvb2wgZWRnZV9zZWxfZW47Cj4gPiArCWJvb2wgZHVhbF9lZGdlOwo+ID4g
-IH07Cj4gPiAgCj4gPiAgc3RhdGljIHZvaWQgbXRrX2RwaV9tYXNrKHN0cnVjdCBtdGtfZHBpICpk
-cGksIHUzMiBvZmZzZXQsIHUzMiB2YWwsIHUzMiBtYXNrKQo+ID4gQEAgLTM1Myw2ICszNTQsMTUg
-QEAgc3RhdGljIHZvaWQgbXRrX2RwaV9jb25maWdfZGlzYWJsZV9lZGdlKHN0cnVjdCBtdGtfZHBp
-ICpkcGkpCj4gPiAgCQltdGtfZHBpX21hc2soZHBpLCBkcGktPmNvbmYtPnJlZ19oX2ZyZV9jb24s
-IDAsIEVER0VfU0VMX0VOKTsKPiA+ICB9Cj4gPiAgCj4gPiArc3RhdGljIHZvaWQgbXRrX2RwaV9j
-b25maWdfZHVhbF9lZGdlKHN0cnVjdCBtdGtfZHBpICpkcGkpCj4gCj4gSSB0aGluayBpdCBpcyBj
-bGVhcmVyIGlmIHlvdSByZW5hbWUgdGhlIGZ1bmN0aW9uIHRvIHNvbWV0aGluZyBsaWtlOgo+IG10
-a19kcGlfZW5hYmxlX2R1YWxfZWRnZSBhbmQgY2FsbCBpdCBpbiBtdGtfZHBpX3NldF9kaXNwbGF5
-X21vZGUgaWYKPiBkcGktPmNvbmYtPmR1YWxfZWRnZSBpcyB0cnVlLgo+IAo+IFJlZ2FyZHMsCj4g
-TWF0dGhpYXMKPiAKCkknbGwgZml4IGl0IGluIG5leHQgcGF0Y2guCgpCZXN0IFJlZ2FyZHMKSml0
-YW8KCj4gPiArewo+ID4gKwlpZiAoZHBpLT5jb25mLT5kdWFsX2VkZ2UpIHsKPiA+ICsJCW10a19k
-cGlfbWFzayhkcGksIERQSV9ERFJfU0VUVElORywgRERSX0VOIHwKPiA+ICsJCQkJRERSXzRQSEFT
-RSwgRERSX0VOIHwgRERSXzRQSEFTRSk7Cj4gPiArCQltdGtfZHBpX21hc2soZHBpLCBEUElfT1VU
-UFVUX1NFVFRJTkcsIEVER0VfU0VMLCBFREdFX1NFTCk7Cj4gPiArCX0KPiA+ICt9Cj4gPiArCj4g
-PiAgc3RhdGljIHZvaWQgbXRrX2RwaV9jb25maWdfY29sb3JfZm9ybWF0KHN0cnVjdCBtdGtfZHBp
-ICpkcGksCj4gPiAgCQkJCQllbnVtIG10a19kcGlfb3V0X2NvbG9yX2Zvcm1hdCBmb3JtYXQpCj4g
-PiAgewo+ID4gQEAgLTUwOSw2ICs1MTksNyBAQCBzdGF0aWMgaW50IG10a19kcGlfc2V0X2Rpc3Bs
-YXlfbW9kZShzdHJ1Y3QgbXRrX2RwaSAqZHBpLAo+ID4gIAltdGtfZHBpX2NvbmZpZ19jb2xvcl9m
-b3JtYXQoZHBpLCBkcGktPmNvbG9yX2Zvcm1hdCk7Cj4gPiAgCW10a19kcGlfY29uZmlnXzJuX2hf
-ZnJlKGRwaSk7Cj4gPiAgCW10a19kcGlfY29uZmlnX2Rpc2FibGVfZWRnZShkcGkpOwo+ID4gKwlt
-dGtfZHBpX2NvbmZpZ19kdWFsX2VkZ2UoZHBpKTsKPiA+ICAJbXRrX2RwaV9zd19yZXNldChkcGks
-IGZhbHNlKTsKPiA+ICAKPiA+ICAJcmV0dXJuIDA7Cj4gPiBAQCAtNjY5LDYgKzY4MCwxNiBAQCBz
-dGF0aWMgdW5zaWduZWQgaW50IG10MjcwMV9jYWxjdWxhdGVfZmFjdG9yKGludCBjbG9jaykKPiA+
-ICAJCXJldHVybiAxOwo+ID4gIH0KPiA+ICAKPiA+ICtzdGF0aWMgdW5zaWduZWQgaW50IG10ODE4
-M19jYWxjdWxhdGVfZmFjdG9yKGludCBjbG9jaykKPiA+ICt7Cj4gPiArCWlmIChjbG9jayA8PSAy
-NzAwMCkKPiA+ICsJCXJldHVybiA4Owo+ID4gKwllbHNlIGlmIChjbG9jayA8PSAxNjcwMDApCj4g
-PiArCQlyZXR1cm4gNDsKPiA+ICsJZWxzZQo+ID4gKwkJcmV0dXJuIDI7Cj4gPiArfQo+ID4gKwo+
-ID4gIHN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX2RwaV9jb25mIG10ODE3M19jb25mID0gewo+ID4g
-IAkuY2FsX2ZhY3RvciA9IG10ODE3M19jYWxjdWxhdGVfZmFjdG9yLAo+ID4gIAkucmVnX2hfZnJl
-X2NvbiA9IDB4ZTAsCj4gPiBAQCAtNjgwLDYgKzcwMSwxMiBAQCBzdGF0aWMgdW5zaWduZWQgaW50
-IG10MjcwMV9jYWxjdWxhdGVfZmFjdG9yKGludCBjbG9jaykKPiA+ICAJLmVkZ2Vfc2VsX2VuID0g
-dHJ1ZSwKPiA+ICB9Owo+ID4gIAo+ID4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX2RwaV9jb25m
-IG10ODE4M19jb25mID0gewo+ID4gKwkuY2FsX2ZhY3RvciA9IG10ODE4M19jYWxjdWxhdGVfZmFj
-dG9yLAo+ID4gKwkucmVnX2hfZnJlX2NvbiA9IDB4ZTAsCj4gPiArCS5kdWFsX2VkZ2UgPSB0cnVl
-LAo+ID4gK307Cj4gPiArCj4gPiAgc3RhdGljIGludCBtdGtfZHBpX3Byb2JlKHN0cnVjdCBwbGF0
-Zm9ybV9kZXZpY2UgKnBkZXYpCj4gPiAgewo+ID4gIAlzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmcGRl
-di0+ZGV2Owo+ID4gQEAgLTc3NSw2ICs4MDIsOSBAQCBzdGF0aWMgaW50IG10a19kcGlfcmVtb3Zl
-KHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gPiAgCXsgLmNvbXBhdGlibGUgPSAibWVk
-aWF0ZWssbXQ4MTczLWRwaSIsCj4gPiAgCSAgLmRhdGEgPSAmbXQ4MTczX2NvbmYsCj4gPiAgCX0s
-Cj4gPiArCXsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTgzLWRwaSIsCj4gPiArCSAgLmRh
-dGEgPSAmbXQ4MTgzX2NvbmYsCj4gPiArCX0sCj4gPiAgCXsgfSwKPiA+ICB9Owo+ID4gIAo+ID4g
-CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRl
-dmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8v
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi Sean,
+
+I love your patch! Perhaps something to improve:
+
+[auto build test WARNING on bluetooth-next/master]
+[also build test WARNING on v5.0-rc2 next-20190116]
+[if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
+
+url:    https://github.com/0day-ci/linux/commits/sean-wang-mediatek-com/Bluetooth-btusb-Add-protocol-support-for-MediaTek-MT7668U-USB-devices/20190122-041846
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/bluetooth/bluetooth-next.git master
+
+
+coccinelle warnings: (new ones prefixed by >>)
+
+>> drivers/bluetooth/btusb.c:2683:2-3: Unneeded semicolon
+
+Please review and possibly fold the followup patch.
+
+---
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
