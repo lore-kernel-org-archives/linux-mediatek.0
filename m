@@ -1,193 +1,46 @@
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-Subject: [v1] PCI: mediatek: Remove MSI inner domain
-Date: Tue, 22 Jan 2019 17:37:35 +0800
-Message-ID: <1548149855-3225-1-git-send-email-jianjun.wang@mediatek.com>
+From: Jitao Shi <jitao.shi@mediatek.com>
+Subject: Re: [PATCH V2] pwm: Add MediaTek MT8183 display PWM driver support
+Date: Tue, 22 Jan 2019 17:37:54 +0800
+Message-ID: <1548149874.27796.3.camel@mszsdaap41>
+References: <20190122090243.27304-1-jitao.shi@mediatek.com>
+ <20190122091603.ic46eyf47lu5f6pi@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: ryder.lee@mediatek.com, lorenzo.pieralisi@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com
-Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, honghui.zhang@mediatek.com, youlin.pei@mediatek.com, jianjun.wang@mediatek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190122091603.ic46eyf47lu5f6pi@pengutronix.de>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, stonea168@163.com, dri-devel@lists.freedesktop.org, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa.cheng@mediatek.com, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, Sean Paul <seanpaul@chromium.org>, linux-pwm@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, Andy Yan <andy.yan@rock-chip>
 List-Id: linux-mediatek@lists.infradead.org
 
-There is no need to create the inner domain as a parent for MSI domian,
-some feature has been implemented by MSI framework.
-
-Remove the inner domain and its irq chip, it will be more closer to
-hardware implementation.
-
-Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
----
- drivers/pci/controller/pcie-mediatek.c | 86 +++++++++++---------------
- 1 file changed, 37 insertions(+), 49 deletions(-)
-
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 8d05df56158b..f996a9a6331f 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -169,7 +169,6 @@ struct mtk_pcie_soc {
-  * @slot: port slot
-  * @irq: GIC irq
-  * @irq_domain: legacy INTx IRQ domain
-- * @inner_domain: inner IRQ domain
-  * @msi_domain: MSI IRQ domain
-  * @lock: protect the msi_irq_in_use bitmap
-  * @msi_irq_in_use: bit map for assigned MSI IRQ
-@@ -190,7 +189,6 @@ struct mtk_pcie_port {
- 	u32 slot;
- 	int irq;
- 	struct irq_domain *irq_domain;
--	struct irq_domain *inner_domain;
- 	struct irq_domain *msi_domain;
- 	struct mutex lock;
- 	DECLARE_BITMAP(msi_irq_in_use, MTK_MSI_IRQS_NUM);
-@@ -418,22 +416,15 @@ static void mtk_msi_ack_irq(struct irq_data *data)
- 	u32 hwirq = data->hwirq;
- 
- 	writel(1 << hwirq, port->base + PCIE_IMSI_STATUS);
-+	writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
- }
- 
--static struct irq_chip mtk_msi_bottom_irq_chip = {
--	.name			= "MTK MSI",
--	.irq_compose_msi_msg	= mtk_compose_msi_msg,
--	.irq_set_affinity	= mtk_msi_set_affinity,
--	.irq_ack		= mtk_msi_ack_irq,
--};
--
--static int mtk_pcie_irq_domain_alloc(struct irq_domain *domain, unsigned int virq,
--				     unsigned int nr_irqs, void *args)
-+static irq_hw_number_t mtk_pcie_msi_get_hwirq(struct msi_domain_info *info,
-+					      msi_alloc_info_t *arg)
- {
--	struct mtk_pcie_port *port = domain->host_data;
--	unsigned long bit;
-+	struct mtk_pcie_port *port = info->chip_data;
-+	irq_hw_number_t bit;
- 
--	WARN_ON(nr_irqs != 1);
- 	mutex_lock(&port->lock);
- 
- 	bit = find_first_zero_bit(port->msi_irq_in_use, MTK_MSI_IRQS_NUM);
-@@ -446,18 +437,14 @@ static int mtk_pcie_irq_domain_alloc(struct irq_domain *domain, unsigned int vir
- 
- 	mutex_unlock(&port->lock);
- 
--	irq_domain_set_info(domain, virq, bit, &mtk_msi_bottom_irq_chip,
--			    domain->host_data, handle_edge_irq,
--			    NULL, NULL);
--
--	return 0;
-+	return bit;
- }
- 
--static void mtk_pcie_irq_domain_free(struct irq_domain *domain,
--				     unsigned int virq, unsigned int nr_irqs)
-+static void mtk_pcie_msi_free(struct irq_domain *domain,
-+			      struct msi_domain_info *info, unsigned int virq)
- {
- 	struct irq_data *d = irq_domain_get_irq_data(domain, virq);
--	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(d);
-+	struct mtk_pcie_port *port = info->chip_data;
- 
- 	mutex_lock(&port->lock);
- 
-@@ -468,46 +455,50 @@ static void mtk_pcie_irq_domain_free(struct irq_domain *domain,
- 		__clear_bit(d->hwirq, port->msi_irq_in_use);
- 
- 	mutex_unlock(&port->lock);
--
--	irq_domain_free_irqs_parent(domain, virq, nr_irqs);
- }
- 
--static const struct irq_domain_ops msi_domain_ops = {
--	.alloc	= mtk_pcie_irq_domain_alloc,
--	.free	= mtk_pcie_irq_domain_free,
-+static struct msi_domain_ops mtk_msi_domain_ops = {
-+	.get_hwirq	= mtk_pcie_msi_get_hwirq,
-+	.msi_free	= mtk_pcie_msi_free,
- };
- 
- static struct irq_chip mtk_msi_irq_chip = {
--	.name		= "MTK PCIe MSI",
--	.irq_ack	= irq_chip_ack_parent,
--	.irq_mask	= pci_msi_mask_irq,
--	.irq_unmask	= pci_msi_unmask_irq,
-+	.name			= "MTK PCIe",
-+	.irq_compose_msi_msg	= mtk_compose_msi_msg,
-+	.irq_write_msi_msg	= pci_msi_domain_write_msg,
-+	.irq_set_affinity	= mtk_msi_set_affinity,
-+	.irq_ack		= mtk_msi_ack_irq,
-+	.irq_mask		= pci_msi_mask_irq,
-+	.irq_unmask		= pci_msi_unmask_irq,
- };
- 
- static struct msi_domain_info mtk_msi_domain_info = {
--	.flags	= (MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
--		   MSI_FLAG_PCI_MSIX),
--	.chip	= &mtk_msi_irq_chip,
-+	.flags		= (MSI_FLAG_USE_DEF_DOM_OPS |
-+			   MSI_FLAG_USE_DEF_CHIP_OPS | MSI_FLAG_PCI_MSIX),
-+	.ops		= &mtk_msi_domain_ops,
-+	.chip		= &mtk_msi_irq_chip,
-+	.handler	= handle_edge_irq,
-+	.handler_name	= "MSI",
- };
- 
- static int mtk_pcie_allocate_msi_domains(struct mtk_pcie_port *port)
- {
--	struct fwnode_handle *fwnode = of_node_to_fwnode(port->pcie->dev->of_node);
-+	struct device *dev = port->pcie->dev;
-+	struct fwnode_handle *fwnode = of_node_to_fwnode(dev->of_node);
-+	struct msi_domain_info *info;
- 
- 	mutex_init(&port->lock);
- 
--	port->inner_domain = irq_domain_create_linear(fwnode, MTK_MSI_IRQS_NUM,
--						      &msi_domain_ops, port);
--	if (!port->inner_domain) {
--		dev_err(port->pcie->dev, "failed to create IRQ domain\n");
-+	info = devm_kzalloc(dev, sizeof(*info), GFP_KERNEL);
-+	if (!info)
- 		return -ENOMEM;
--	}
- 
--	port->msi_domain = pci_msi_create_irq_domain(fwnode, &mtk_msi_domain_info,
--						     port->inner_domain);
-+	memcpy(info, &mtk_msi_domain_info, sizeof(*info));
-+	info->chip_data = port;
-+
-+	port->msi_domain = pci_msi_create_irq_domain(fwnode, info, NULL);
- 	if (!port->msi_domain) {
--		dev_err(port->pcie->dev, "failed to create MSI domain\n");
--		irq_domain_remove(port->inner_domain);
-+		dev_err(dev, "failed to create MSI domain\n");
- 		return -ENOMEM;
- 	}
- 
-@@ -541,8 +532,6 @@ static void mtk_pcie_irq_teardown(struct mtk_pcie *pcie)
- 		if (IS_ENABLED(CONFIG_PCI_MSI)) {
- 			if (port->msi_domain)
- 				irq_domain_remove(port->msi_domain);
--			if (port->inner_domain)
--				irq_domain_remove(port->inner_domain);
- 		}
- 
- 		irq_dispose_mapping(port->irq);
-@@ -619,12 +608,11 @@ static void mtk_pcie_intr_handler(struct irq_desc *desc)
- 
- 			while ((imsi_status = readl(port->base + PCIE_IMSI_STATUS))) {
- 				for_each_set_bit(bit, &imsi_status, MTK_MSI_IRQS_NUM) {
--					virq = irq_find_mapping(port->inner_domain, bit);
-+					virq = irq_find_mapping(
-+							port->msi_domain, bit);
- 					generic_handle_irq(virq);
- 				}
- 			}
--			/* Clear MSI interrupt status */
--			writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
- 		}
- 	}
- 
--- 
-2.20.1
+T24gVHVlLCAyMDE5LTAxLTIyIGF0IDEwOjE2ICswMTAwLCBVd2UgS2xlaW5lLUvDtm5pZyB3cm90
+ZToKPiBPbiBUdWUsIEphbiAyMiwgMjAxOSBhdCAwNTowMjo0M1BNICswODAwLCBKaXRhbyBTaGkg
+d3JvdGU6Cj4gPiBVc2UgdGhlIG10a19wd21fZGF0YSBzdHJ1Y3Rpb24gdG8gZGVmaW5lIGRpZmZl
+cmVudCByZWdpc3RlcnMKPiA+IGFuZCBhZGQgTVQ4MTgzIHNwZWNpZmljIHJlZ2lzdGVyIG9wZXJh
+dGlvbnMsIHN1Y2ggYXMgTVQ4MTgzCj4gPiBkb2Vzbid0IGhhdmUgY29tbWl0IHJlZ2lzdGVyLCBu
+ZWVkcyB0byBkaXNhYmxlIGRvdWJsZSBidWZmZXIKPiA+IGJlZm9yZSB3cml0aW5nIHJlZ2lzdGVy
+LCBhbmQgbmVlZHMgdG8gc2VsZWN0IGNvbW1pdCBtb2RlCj4gPiBhbmQgdXNlIFBXTV9QRVJJT0Qv
+UFdNX0hJR0hfV0lEVEguCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IEppdGFvIFNoaSA8aml0YW8u
+c2hpQG1lZGlhdGVrLmNvbT4KPiAKPiBUaGVyZSBpcyBubyBkaWZmZXJlbmNlIGNvbXBhcmVkIHRv
+IChpbXBsaWNpdCkgdjEgc2VudCBhIGZldyBtaW51dGVzCj4gZWFybGllciwgcmlnaHQ/IFRoZXJl
+IHdhcyBhbm90aGVyIHBhdGNoIHNlbnQgd2l0aCB0aGUgc2FtZSBTdWJqZWN0IGxhc3QKPiB3ZWVr
+LCBzbyBJIGFzc3VtZSB0aGUgbWFpbCBmcm9tIHRvZGF5IHdpdGhvdXQgInYyIiBpbiB0aGUgU3Vi
+amVjdCB3YXMgYQo+IG1pc3Rha2U/Cj4gCj4gPiAtLS0KPiBBZGRpbmcgYSBwYXJhZ3JhcGggYmVs
+b3cgdGhlIHRyaXBwbGUgZGFzaCB0aGF0IHBvaW50cyBvdXQgd2hhdCB3YXMKPiBjaGFuZ2VkIGNv
+bXBhcmVkIHRvIHRoZSBwcmV2aW91cyBzdWJtaXNzaW9uIGlzIGEgZ29vZCBpZGVhIHRvIGhlbHAK
+PiByZXZpZXdlcnMgdG8gbW9yZSBlYXNpbHkgc2VlIHdoYXQgd2FzIGNoYW5nZWQuIEkgZ3Vlc3Mg
+eW91IG9ubHkgYWRhcHRlZAo+IHRoZSBjb21taXQgbG9nIGFzIGEgcmVhY3Rpb24gdG8gTWF0dGhp
+YXMgQnVyZ2dlcidzIHJldmlldz8KPiAKPiBCZXN0IHJlZ2FyZHMKPiBVd2UKPiAKClllcywgSSBt
+aXNzIHRoZSAiVjIiIGFuZCBmaW5lIHR1bmUgdGhlIGNvbW1pdCBtZXNzYWdlLgoKQmVzdCBSZWdh
+cmRzCkppdGFvCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
+aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
