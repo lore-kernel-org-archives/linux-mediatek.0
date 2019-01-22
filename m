@@ -1,42 +1,81 @@
-From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
-Subject: [PATCH] tty: serial: 8250_mtk: Fix potential NULL pointer dereference
-Date: Tue, 22 Jan 2019 13:57:19 -0600
-Message-ID: <20190122195719.GA21846@embeddedor>
+From: =?utf-8?b?UmVuw6k=?= van Dorst <opensource@vdorst.com>
+Subject: Re: [PATCHv3 2/3] net: dsa: mt7530: support the 7530 switch on the
+ Mediatek MT7621 SoC
+Date: Tue, 22 Jan 2019 21:13:07 +0000
+Message-ID: <20190122211307.Horde.V6XcMCE3ZFBZOJMYl12Uxex@www.vdorst.com>
+References: <1548101433.24552.14.camel@mtkswgap22>
+ <8b6746b2-2d90-99ba-c8e5-4e4089567155@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset=utf-8; format=flowed; DelSp=Yes
+Content-Transfer-Encoding: 8bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <8b6746b2-2d90-99ba-c8e5-4e4089567155@kernel.org>
 Content-Disposition: inline
-Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+Sender: netdev-owner@vger.kernel.org
+To: Greg Ungerer <gerg@kernel.org>
+Cc: Sean Wang <sean.wang@mediatek.com>, bjorn@mork.no, andrew@lunn.ch, vivien.didelot@savoirfairelinux.com, f.fainelli@gmail.com, netdev@vger.kernel.org, john@phrozen.org, neil@brown.name, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-There is a potential NULL pointer dereference in case devm_kzalloc()
-fails and returns NULL.
+Quoting Greg Ungerer <gerg@kernel.org>:
 
-Fix this by adding a NULL check on data->dma
+<snip>
 
-This bug was detected with the help of Coccinelle.
+>>>    	/* Reset whole chip through gpio pin or memory-mapped  
+>>> registers for @@ -1326,9 +1335,17 @@ static const struct  
+>>> dsa_switch_ops mt7530_switch_ops = {
+>>>  	.port_vlan_del		= mt7530_port_vlan_del,
+>>>  };
+>>>  +static const struct of_device_id mt7530_of_match[] = {
+>>> +	{ .compatible = "mediatek,mt7621", .data = (void *)ID_MT7621, },
+>>> +	{ .compatible = "mediatek,mt7530", .data = (void *)ID_MT7530, },
+>>> +	{ /* sentinel */ },
+>>> +};
+>>> +MODULE_DEVICE_TABLE(of, mt7530_of_match);
+>>> +
+>>>  static int
+>>>  mt7530_probe(struct mdio_device *mdiodev)  {
+>>> +	const struct of_device_id *of_id;
+>>>  	struct mt7530_priv *priv;
+>>>  	struct device_node *dn;
+>>>  @@ -1356,13 +1373,21 @@ mt7530_probe(struct mdio_device *mdiodev)
+>>>  		}
+>>>  	}
+>>>  -	priv->core_pwr = devm_regulator_get(&mdiodev->dev, "core");
+>>> -	if (IS_ERR(priv->core_pwr))
+>>> -		return PTR_ERR(priv->core_pwr);
+>>> +	/* Get the hardware identifier from the devicetree node.
+>>> +	 * We will need it for some of the clock and regulator setup.
+>>> +	 */
+>>> +	of_id = of_match_node(mt7530_of_match, dn);
+>>> +	priv->id = (unsigned int)of_id->data;
+>>>
+>>
+>> We could use of_device_get_match_data instead of the above two lines.
+>
+> Yep, good idea. Will change. I will add in some extra
+> casting to take care of the kbuild warning too.
+>
+>
+>> and could you help Cc linux-mediatek@lists.infradead.org if you have the
+>> next version for the series ?
+>
+> Yep, sure thing.
+>
+> Regards
+> Greg
 
-Fixes: 85b5c1dd0456 ("serial: 8250-mtk: add uart DMA support")
-Signed-off-by: Gustavo A. R. Silva <gustavo@embeddedor.com>
----
- drivers/tty/serial/8250/8250_mtk.c | 3 +++
- 1 file changed, 3 insertions(+)
+Hi Greg,
 
-diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-index e2c407656fa6..c1fdbc0b6840 100644
---- a/drivers/tty/serial/8250/8250_mtk.c
-+++ b/drivers/tty/serial/8250/8250_mtk.c
-@@ -357,6 +357,9 @@ static int mtk8250_probe_of(struct platform_device *pdev, struct uart_port *p,
- 	if (dmacnt == 2) {
- 		data->dma = devm_kzalloc(&pdev->dev, sizeof(*data->dma),
- 					 GFP_KERNEL);
-+		if (!data->dma)
-+			return -ENOMEM;
-+
- 		data->dma->fn = mtk8250_dma_filter;
- 		data->dma->rx_size = MTK_UART_RX_SIZE;
- 		data->dma->rxconf.src_maxburst = MTK_UART_RX_TRIGGER;
--- 
-2.20.1
+What about enabling mips mt7621/arm mt7623 code at compile time?
+Same binary can't be used on both platforms so it saves some space.
+This also solved/eliminates the need for CPU detection which was also  
+needed if we want to support trgmii mode.
+Device tree bindings are now similar between the two platforms, no  
+extra compatible id.
+
+I think it should look something like this:  
+https://github.com/vDorst/linux-1/commit/93dc90ce56baeb3e71cae0f5339b811bbda57a97
+
+Greats,
+
+René
