@@ -1,43 +1,18 @@
-From: Joerg Roedel <joro@8bytes.org>
-Subject: [PATCH] iommu/mediatek: Use correct fwspec in mtk_iommu_add_device()
-Date: Wed, 23 Jan 2019 08:53:27 +0100
-Message-ID: <20190123075327.27366-1-joro@8bytes.org>
+From: Frank Wunderlich <frank-w@public-files.de>
+Subject: Re: [PATCH] iommu/mediatek: Use correct fwspec in mtk_iommu_add_device()
+Date: Wed, 23 Jan 2019 13:00:46 +0100
+Message-ID: <BEC8FBEB-A827-44ED-9E1D-F994EB23F58D@public-files.de>
+References: <20190123075327.27366-1-joro@8bytes.org>
+Reply-To: frank-w@public-files.de
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190123075327.27366-1-joro@8bytes.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: iommu@lists.linux-foundation.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Frank Wunderlich <frank-w@public-files.de>, Joerg Roedel <jroedel@suse.de>
+To: linux-mediatek@lists.infradead.org, Joerg Roedel <joro@8bytes.org>, iommu@lists.linux-foundation.org
+Cc: Joerg Roedel <jroedel@suse.de>, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Joerg Roedel <jroedel@suse.de>
-
-The mtk_iommu_add_device() function keeps the fwspec in an
-on-stack pointer and calls mtk_iommu_create_mapping(), which
-might change its source, dev->iommu_fwspec. This causes the
-on-stack pointer to be obsoleted and the device
-initialization to fail. Update the on-stack fwspec pointer
-after mtk_iommu_create_mapping() has been called.
-
-Reported-by: Frank Wunderlich <frank-w@public-files.de>
-Fixes: a9bf2eec5a6f ('iommu/mediatek: Use helper functions to access dev->iommu_fwspec')
-Signed-off-by: Joerg Roedel <jroedel@suse.de>
----
- drivers/iommu/mtk_iommu_v1.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index 6ede4286b835..f60bdb85c4c0 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -442,6 +442,10 @@ static int mtk_iommu_add_device(struct device *dev)
- 		iommu_spec.args_count = count;
- 
- 		mtk_iommu_create_mapping(dev, &iommu_spec);
-+
-+		/* dev->iommu_fwspec might have changed */
-+		fwspec = dev_iommu_fwspec_get(dev);
-+
- 		of_node_put(iommu_spec.np);
- 	}
- 
--- 
-2.13.7
+Tested-by: Frank Wunderlich <frank-w@public-files.de>
