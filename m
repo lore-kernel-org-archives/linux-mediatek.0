@@ -1,37 +1,41 @@
-From: Nishad Kamdar <nishadkamdar@gmail.com>
-Subject: [PATCH] staging: mt7621-pinctrl: Remove space after cast
-Date: Wed, 23 Jan 2019 22:01:26 +0530
-Message-ID: <20190123163122.GA4807@nishad>
+From: Sam Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH] drm: Split out drm_probe_helper.h
+Date: Wed, 23 Jan 2019 18:00:15 +0100
+Message-ID: <20190123170015.GA23138@ravnborg.org>
+References: <20190116181018.GA27364@ravnborg.org>
+ <20190117210334.13234-1-daniel.vetter@ffwll.ch>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
 Content-Disposition: inline
-Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: NeilBrown <neil@brown.name>, Matthias Brugger <matthias.bgg@gmail.com>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, Kees Cook <keescook@chromium.org>, John Crispin <blogic@openwrt.org>, devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Nishad Kamdar <nishadkamdar@gmail.com>
+In-Reply-To: <20190117210334.13234-1-daniel.vetter-/w4YWyX8dFk@public.gmane.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/amd-gfx>,
+ <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/amd-gfx>
+List-Post: <mailto:amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+List-Help: <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/amd-gfx>,
+ <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
+Errors-To: amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Sender: "amd-gfx" <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+To: Daniel Vetter <daniel.vetter-/w4YWyX8dFk@public.gmane.org>
+Cc: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, nouveau-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, DRI Development <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, virtualization-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Benjamin Gaignard <benjamin.gaignard-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Daniel Vetter <daniel.vetter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Oleksandr Andrushchenko <oleksandr_andrushchenko-uRwfk40T5oI@public.gmane.org>, amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, spice-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Jani Nikula <jani.nikula-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, etnaviv-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Jani Nikula <jani.nikula-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rodrigo Vivi <rodrigo.vivi-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-tegra@vger.k
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch removes space after a cast as it
-is not needed.
-Issue found by checkpatch.
-
-Signed-off-by: Nishad Kamdar <nishadkamdar@gmail.com>
----
- drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c b/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
-index 80e7067cfb79..3e959fa73703 100644
---- a/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
-+++ b/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
-@@ -363,7 +363,7 @@ static int rt2880_pinmux_probe(struct platform_device *pdev)
- 		}
- 
- 		range = devm_kzalloc(p->dev, sizeof(*range) + 4, GFP_KERNEL);
--		range->name = name = (char *) &range[1];
-+		range->name = name = (char *)&range[1];
- 		sprintf(name, "pio");
- 		range->npins = __be32_to_cpu(*ngpio);
- 		range->base = __be32_to_cpu(*gpiobase);
--- 
-2.17.1
+SGkgRGFuaWVsLgoKT24gVGh1LCBKYW4gMTcsIDIwMTkgYXQgMTA6MDM6MzRQTSArMDEwMCwgRGFu
+aWVsIFZldHRlciB3cm90ZToKPiBIYXZpbmcgdGhlIHByb2JlIGhlbHBlciBzdHVmZiAod2hpY2gg
+cHJldHR5IG11Y2ggZXZlcnlvbmUgbmVlZHMpIGluCj4gdGhlIGRybV9jcnRjX2hlbHBlci5oIGZp
+bGUgKHdoaWNoIGF0b21pYyBkcml2ZXJzIHNob3VsZCBuZXZlciBuZWVkKSBpcwo+IGNvbmZ1c2lu
+Zy4gU3BsaXQgdGhlbSBvdXQuCj4gCj4gVG8gbWFrZSBzdXJlIEkgYWN0dWFsbHkgYWNoaWV2ZWQg
+dGhlIGdvYWwgaGVyZSBJIHdlbnQgdGhyb3VnaCBhbGwKPiBkcml2ZXJzLiBBbmQgaW5kZWVkLCBh
+bGwgYXRvbWljIGRyaXZlcnMgYXJlIG5vdyBmcmVlIG9mCj4gZHJtX2NydGNfaGVscGVyLmggaW5j
+bHVkZXMuCgpIb3cgYXJlIHRoZSBwbGFucyB0byBnZXQgdGhpcyBwYXRjaHNldCBtZXJnZWQ/ClRo
+ZXJlIHdlcmUgZGVwZW5kZW5jaWVzIG9uIG9uZ2luZyBkcm1QLmggcmVtb3ZhbCBpbiBpOTE1IElJ
+UkM/CkkgZ3Vlc3MgbXkgIk1pbmltaXplIGRybVAuaCBkZXBlbmRlbmNpZXMiIHBhdGNoLXNldCBh
+bHNvIGhhdmUgYSByb2xlIGluIHRoaXMuCgpUaGlzIGRvZXMgbm90IGhvbGQgdXAgYW55IHdvcmsg
+b2YgbWluZSwgbWFpbmx5IHdhbnRlZCB0byBtYWtlCnN1cmUgdGhpcyB3YXMgbm90IGxvc3QgYmV0
+d2VlbiBhbGwgdGhlIG90aGVyIHBhdGNoZXMuCgoJU2FtCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCmFtZC1nZnggbWFpbGluZyBsaXN0CmFtZC1nZnhAbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
+bGlzdGluZm8vYW1kLWdmeAo=
