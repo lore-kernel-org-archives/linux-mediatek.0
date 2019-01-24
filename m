@@ -1,73 +1,50 @@
-From: Joe Perches <joe@perches.com>
-Subject: Re: [PATCH] staging: mt7621-pinctrl: Remove space after cast
-Date: Wed, 23 Jan 2019 09:45:53 -0800
-Message-ID: <b51b1d3071aec95915d48159c1dd6e0a336cd9f4.camel@perches.com>
-References: <20190123163122.GA4807@nishad>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH V2,4/8] drm/mediatek: fix the rate and divder of hdmi
+ phy for MT2701
+Date: Thu, 24 Jan 2019 14:17:19 +0800
+Message-ID: <1548310639.4220.3.camel@mtksdaap41>
+References: <20190118125928.3279-1-wangyan.wang@mediatek.com>
+         <20190118125928.3279-5-wangyan.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="ISO-8859-1"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190123163122.GA4807@nishad>
+In-Reply-To: <20190118125928.3279-5-wangyan.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Nishad Kamdar <nishadkamdar@gmail.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: NeilBrown <neil@brown.name>, Matthias Brugger <matthias.bgg@gmail.com>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, Kees Cook <keescook@chromium.org>, John Crispin <blogic@openwrt.org>, devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Wangyan Wang <wangyan.wang@mediatek.com>
+Cc: Michael Turquette <mturquette@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, chunhui dai <chunhui.dai@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, Colin Ian King <colin.king@canonical.com>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, jitao.shi@mediatek.com, bibby.hsieh@mediatek.com, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2019-01-23 at 22:01 +0530, Nishad Kamdar wrote:
-> This patch removes space after a cast as it
-> is not needed.
-> Issue found by checkpatch.
+On Fri, 2019-01-18 at 20:59 +0800, Wangyan Wang wrote:
+> From: chunhui dai <chunhui.dai@mediatek.com>
+
+Describe something here.
+
 > 
-> Signed-off-by: Nishad Kamdar <nishadkamdar@gmail.com>
+> Fixes: 0fc721b2968e ("drm/mediatek: add hdmi driver for MT2701 and MT7623")
+> Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
+
+Any one who pass a patch should sign off it.
+
+Regards,
+CK
+
 > ---
->  drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c b/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
-> index 80e7067cfb79..3e959fa73703 100644
-> --- a/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
-> +++ b/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
-> @@ -363,7 +363,7 @@ static int rt2880_pinmux_probe(struct platform_device *pdev)
->  		}
+> diff --git a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
+> index 43bc058d5528..88dd9e812ca0 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
+> @@ -114,8 +114,8 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
 >  
->  		range = devm_kzalloc(p->dev, sizeof(*range) + 4, GFP_KERNEL);
-> -		range->name = name = (char *) &range[1];
-> +		range->name = name = (char *)&range[1];
->  		sprintf(name, "pio");
-
-I find this code unsightly and fragile.
-It doesn't test the return of devm_kzalloc for failure.
-
-This might as well be
----
- drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c b/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
-index 80e7067cfb79..9b52d44abef1 100644
---- a/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
-+++ b/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
-@@ -350,7 +350,6 @@ static int rt2880_pinmux_probe(struct platform_device *pdev)
- 	for_each_compatible_node(np, NULL, "ralink,rt2880-gpio") {
- 		const __be32 *ngpio, *gpiobase;
- 		struct pinctrl_gpio_range *range;
--		char *name;
- 
- 		if (!of_device_is_available(np))
- 			continue;
-@@ -362,9 +361,10 @@ static int rt2880_pinmux_probe(struct platform_device *pdev)
- 			return -EINVAL;
- 		}
- 
--		range = devm_kzalloc(p->dev, sizeof(*range) + 4, GFP_KERNEL);
--		range->name = name = (char *) &range[1];
--		sprintf(name, "pio");
-+		range = devm_kzalloc(p->dev, sizeof(*range), GFP_KERNEL);
-+		if (!range)
-+			return -ENOMEM;
-+		range->name = "pio";
- 		range->npins = __be32_to_cpu(*ngpio);
- 		range->base = __be32_to_cpu(*gpiobase);
- 		range->pin_base = range->base;
-	
-	
+>  	if (rate <= 64000000)
+>  		pos_div = 3;
+> -	else if (rate <= 12800000)
+> -		pos_div = 1;
+> +	else if (rate <= 128000000)
+> +		pos_div = 2;
+>  	else
+>  		pos_div = 1;
+>  
