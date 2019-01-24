@@ -1,10 +1,12 @@
 From: <sean.wang@mediatek.com>
-Subject: [PATCH v6 0/2] Bluetooth: btusb: Add protocol support for MediaTek USB devices
-Date: Fri, 25 Jan 2019 07:26:46 +0800
-Message-ID: <cover.1548371338.git.sean.wang@mediatek.com>
+Subject: [PATCH v6 2/2] Bluetooth: btusb: Add protocol support for MediaTek MT7663U USB devices
+Date: Fri, 25 Jan 2019 07:26:48 +0800
+Message-ID: <8d26f2845f83a387ad10a445969318a967ab1b3b.1548371338.git.sean.wang@mediatek.com>
+References: <cover.1548371338.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cover.1548371338.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: marcel@holtmann.org, johan.hedberg@gmail.com
 Cc: linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
@@ -12,68 +14,80 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-v6:
-* fix drivers/bluetooth/btusb.c:2683:2-3: Unneeded semicolon based reported by [1]
-* update power-on sequence with adding neccesary tci sleep comand to set up
-  low-power environmnet and a delay to wait the device to be stable.
-* sort variables declarations in reverse xmas order.
+This adds the support of enabling MT7663U Bluetooth function running
+on the top of btusb driver.
 
-[1]
-http://lists.infradead.org/pipermail/linux-mediatek/2019-January/017017.html
+The information in /sys/kernel/debug/usb/devices about the Bluetooth
+device is listed as the below.
 
-v5:
-* rebase to latest code base.
-* change the subject prefix.
-* change the place the firmware located at.
+T:  Bus=04 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  5 Spd=5000 MxCh= 0
+D:  Ver= 3.00 Cls=ef(misc ) Sub=02 Prot=01 MxPS= 9 #Cfgs=  1
+P:  Vendor=0e8d ProdID=7663 Rev= 1.00
+S:  Manufacturer=MediaTek Inc.
+S:  Product=Wireless_Device
+S:  SerialNumber=000000000
+C:* #Ifs= 3 Cfg#= 1 Atr=a0 MxPwr=160mA
+A:  FirstIf#= 0 IfCount= 2 Cls=e0(wlcon) Sub=01 Prot=01
+I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
+E:  Ad=82(I) Atr=02(Bulk) MxPS=1024 Ivl=0ms
+E:  Ad=02(O) Atr=02(Bulk) MxPS=1024 Ivl=0ms
+I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
 
-v4:
-* use new BTUSB_TX_WAIT_VND_EVT instead of BTMTKUSB_TX_WAIT_VND_EVT
-  to avoid definition conflict and to fix bulk data transfer fails.
-* use the bluetooth-next as the base
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/bluetooth/btusb.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-v3:
-add fixes and enhancements based on [1]
-* reuse flags and evt_skb btusb already had
-* add ctrl_anchor and the corresponding handling
-* apply mtk specific recv function
-* add more comments explaining wmt ctrl urbs behavior.
-
-[1]
-http://lists.infradead.org/pipermail/linux-mediatek/2018-August/014724.html
-
-v2:
-
-add fixes and enhancements based on [1]
-* include /sys/kernel/debug/usb/devices portion in the commit message.
-* turn default into n for config BT_HCIBTUSB_MTK in Kconfig
-* only add MediaTek support to btusb.c
-* drop cmd_sync callback usage
-* use __hci_cmd_send to send WMT commands
-* add wait event handling similar to what is being done in btmtkuart.c
-* submit a control IN URB similar to interrupt IN URB on demand for the WMT
-  commands during setup 
-* add cosmetic changes
-
-[1]
-http://lists.infradead.org/pipermail/linux-mediatek/2018-August/014650.html
-http://lists.infradead.org/pipermail/linux-mediatek/2018-August/014656.html
-
-v1:
-
-This adds the support of enabling MT7668U and MT7663U Bluetooth
-function running on the top of btusb driver. The patch also adds
-a newly created file mtkbt.c able to be reused independently from
-the transport type such as UART, USB and SDIO.
-
-Sean Wang (2):
-  Bluetooth: btusb: Add protocol support for MediaTek MT7668U USB
-    devices
-  Bluetooth: btusb: Add protocol support for MediaTek MT7663U USB
-    devices
-
- drivers/bluetooth/Kconfig |  11 +
- drivers/bluetooth/btusb.c | 581 ++++++++++++++++++++++++++++++++++++++
- 2 files changed, 592 insertions(+)
-
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index fc8bc0d9c49d..77b201f3391b 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -2408,6 +2408,7 @@ static int btusb_shutdown_intel(struct hci_dev *hdev)
+ 
+ #ifdef CONFIG_BT_HCIBTUSB_MTK
+ 
++#define FIRMWARE_MT7663		"mediatek/mt7663pr2h.bin"
+ #define FIRMWARE_MT7668		"mediatek/mt7668pr2h.bin"
+ 
+ #define HCI_WMT_MAX_EVENT_SIZE		64
+@@ -2849,6 +2850,9 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
+ 	}
+ 
+ 	switch (dev_id) {
++	case 0x7663:
++		fwname = FIRMWARE_MT7663;
++		break;
+ 	case 0x7668:
+ 		fwname = FIRMWARE_MT7668;
+ 		break;
+@@ -2960,6 +2964,7 @@ static int btusb_mtk_shutdown(struct hci_dev *hdev)
+ 	return 0;
+ }
+ 
++MODULE_FIRMWARE(FIRMWARE_MT7663);
+ MODULE_FIRMWARE(FIRMWARE_MT7668);
+ #endif
+ 
 -- 
 2.18.0
