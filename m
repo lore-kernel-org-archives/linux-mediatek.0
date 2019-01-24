@@ -1,88 +1,48 @@
-From: Sean Wang <sean.wang@kernel.org>
-Subject: Re: [PATCH v5] add support for Mediatek Command-Queue DMA controller
- on MT6765 SoC
-Date: Thu, 24 Jan 2019 01:35:01 -0800
-Message-ID: <CAGp9LzqMbYOXCEmHOEcCboQLfpXwxH7zcJ3snj4a8NBLiHhQdg@mail.gmail.com>
-References: <1548314060-4833-1-git-send-email-shun-chih.yu@mediatek.com>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH] drm: Split out drm_probe_helper.h
+Date: Thu, 24 Jan 2019 10:46:47 +0100
+Message-ID: <20190124094646.GR3271@phenom.ffwll.local>
+References: <20190116181018.GA27364@ravnborg.org>
+ <20190117210334.13234-1-daniel.vetter@ffwll.ch>
+ <20190123170015.GA23138@ravnborg.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1548314060-4833-1-git-send-email-shun-chih.yu@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: shun-chih.yu@mediatek.com
-Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, srv_wsdupstream@mediatek.com, dmaengine@vger.kernel.org, Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Dan Williams <dan.j.williams@intel.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <20190123170015.GA23138@ravnborg.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sam Ravnborg <sam@ravnborg.org>
+Cc: Neil Armstrong <narmstrong@baylibre.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Liviu Dudau <liviu.dudau@arm.com>, DRI Development <dri-devel@lists.freedesktop.org>, virtualization@lists.linux-foundation.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Daniel Vetter <daniel.vetter@intel.com>, linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org, Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>, amd-gfx@lists.freedesktop.org, linux-rockchip@lists.infradead.org, nouveau@lists.freedesktop.org, spice-devel@lists.freedesktop.org, Jani Nikula <jani.nikula@intel.com>, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, etnaviv@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Rodrigo Vivi <rodrigo.vivi@intel.com>, linux-tegra@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.or
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Shun-Chih,
-
-the driver seems already be applied since v5.0-rc1
-
-I suggest these improvements you made in the recent version can be
-split into several patches and then be applied on the top of the base
-driver.
-
-On Wed, Jan 23, 2019 at 11:15 PM <shun-chih.yu@mediatek.com> wrote:
->
-> This patchset introduces support for MediaTek Command-Queue DMA controller.
->
-> MediaTek Command-Queue DMA controller (CQDMA) on MT6765 SoC is dedicated to memory-to-memory transfer through queue-based descriptor management.
->
-> There are only 3 physical channels inside CQDMA, while the driver is extended to support 32 virtual channels for multiple dma users to issue dma requests onto the CQDMA simultaneously.
->
-> dmatest result:
-> dmatest: dma0chan0-copy2: summary 5000 tests, 0 failures 3500 iops 28037 KB/s (0)
-> dmatest: dma0chan0-copy4: summary 5000 tests, 0 failures 3494 iops 27612 KB/s (0)
-> dmatest: dma0chan0-copy1: summary 5000 tests, 0 failures 3491 iops 27749 KB/s (0)
-> dmatest: dma0chan0-copy7: summary 5000 tests, 0 failures 3673 iops 29092 KB/s (0)
-> dmatest: dma0chan0-copy6: summary 5000 tests, 0 failures 3763 iops 30237 KB/s (0)
-> dmatest: dma0chan0-copy0: summary 5000 tests, 0 failures 3730 iops 30131 KB/s (0)
-> dmatest: dma0chan0-copy3: summary 5000 tests, 0 failures 3717 iops 29569 KB/s (0)
-> dmatest: dma0chan0-copy5: summary 5000 tests, 0 failures 3699 iops 29302 KB/s (0)
->
-> Changes since v4:
-> - remove redundant queue structure in mtk_cqdma_pchan
-> - remove redundant completion management
-> - fix wrong residue assignment in mtk_cqdma_tx_status
-> - fix typos
->
-> Changes since v3:
-> - simplify the ISR and management on descriptors by removing tasklet and ASYNC_TX_ENABLE_CHANNEL_SWITCH
-> - remove useless field in mtk_cqdma_vdesc structure
-> - change dev_info to dev_dbg
-> - fix typos
->
-> Changes since v2:
-> - fix build warning for kernel with DMA address in 32-bit
->
-> Changes since v1:
-> - remove unused macros, typos
-> - leverage ASYNC_TX_ENABLE_CHANNEL_SWITCH to maintain DMA descriptor list
->
-> Shun-Chih Yu (2):
->   dt-bindings: dmaengine: Add MediaTek Command-Queue DMA controller
->     bindings
->   dmaengine: mediatek: Add MediaTek Command-Queue DMA controller for
->     MT6765 SoC
->
->  .../devicetree/bindings/dma/mtk-cqdma.txt          |   31 +
->  drivers/dma/mediatek/Kconfig                       |   12 +
->  drivers/dma/mediatek/Makefile                      |    1 +
->  drivers/dma/mediatek/mtk-cqdma.c                   |  748 ++++++++++++++++++++
->  4 files changed, 792 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/dma/mtk-cqdma.txt
->  create mode 100644 drivers/dma/mediatek/mtk-cqdma.c
->
->
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gV2VkLCBKYW4gMjMsIDIwMTkgYXQgMDY6MDA6MTVQTSArMDEwMCwgU2FtIFJhdm5ib3JnIHdy
+b3RlOgo+IEhpIERhbmllbC4KPiAKPiBPbiBUaHUsIEphbiAxNywgMjAxOSBhdCAxMDowMzozNFBN
+ICswMTAwLCBEYW5pZWwgVmV0dGVyIHdyb3RlOgo+ID4gSGF2aW5nIHRoZSBwcm9iZSBoZWxwZXIg
+c3R1ZmYgKHdoaWNoIHByZXR0eSBtdWNoIGV2ZXJ5b25lIG5lZWRzKSBpbgo+ID4gdGhlIGRybV9j
+cnRjX2hlbHBlci5oIGZpbGUgKHdoaWNoIGF0b21pYyBkcml2ZXJzIHNob3VsZCBuZXZlciBuZWVk
+KSBpcwo+ID4gY29uZnVzaW5nLiBTcGxpdCB0aGVtIG91dC4KPiA+IAo+ID4gVG8gbWFrZSBzdXJl
+IEkgYWN0dWFsbHkgYWNoaWV2ZWQgdGhlIGdvYWwgaGVyZSBJIHdlbnQgdGhyb3VnaCBhbGwKPiA+
+IGRyaXZlcnMuIEFuZCBpbmRlZWQsIGFsbCBhdG9taWMgZHJpdmVycyBhcmUgbm93IGZyZWUgb2YK
+PiA+IGRybV9jcnRjX2hlbHBlci5oIGluY2x1ZGVzLgo+IAo+IEhvdyBhcmUgdGhlIHBsYW5zIHRv
+IGdldCB0aGlzIHBhdGNoc2V0IG1lcmdlZD8KPiBUaGVyZSB3ZXJlIGRlcGVuZGVuY2llcyBvbiBv
+bmdpbmcgZHJtUC5oIHJlbW92YWwgaW4gaTkxNSBJSVJDPwo+IEkgZ3Vlc3MgbXkgIk1pbmltaXpl
+IGRybVAuaCBkZXBlbmRlbmNpZXMiIHBhdGNoLXNldCBhbHNvIGhhdmUgYSByb2xlIGluIHRoaXMu
+CgpXb3JraW5nIG9uIGl0LCBhIHB1bGwgcmVxdWVzdCBnb3QgbG9zdC4gSSBvcmlnaW5hbGx5IHdh
+bnRlZCB0byBnZXQgdGhpcwphbGwgcmVzb2x2ZWQgdGhpcyB3ZWVrLCBwcm9iYWJseSBnb2luZyB0
+byBiZSBuZXh0IHdlZWsgbm93IDotKAotRGFuaWVsCgoKPiBUaGlzIGRvZXMgbm90IGhvbGQgdXAg
+YW55IHdvcmsgb2YgbWluZSwgbWFpbmx5IHdhbnRlZCB0byBtYWtlCj4gc3VyZSB0aGlzIHdhcyBu
+b3QgbG9zdCBiZXR3ZWVuIGFsbCB0aGUgb3RoZXIgcGF0Y2hlcy4KPiAKPiAJU2FtCgotLSAKRGFu
+aWVsIFZldHRlcgpTb2Z0d2FyZSBFbmdpbmVlciwgSW50ZWwgQ29ycG9yYXRpb24KaHR0cDovL2Js
+b2cuZmZ3bGwuY2gKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+Cg==
