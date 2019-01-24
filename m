@@ -1,115 +1,79 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [RFC PATCH 1/2] ASoC: mediatek: add btcvsd driver
-Date: Thu, 24 Jan 2019 19:25:02 +0000
-Message-ID: <20190124192502.GJ5641@sirena.org.uk>
-References: <20190124085842.24073-1-kaichieh.chuang@mediatek.com>
- <20190124085842.24073-2-kaichieh.chuang@mediatek.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v6 0/2] Bluetooth: btusb: Add protocol support for MediaTek USB devices
+Date: Fri, 25 Jan 2019 07:26:46 +0800
+Message-ID: <cover.1548371338.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============7325617852971574957=="
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20190124085842.24073-2-kaichieh.chuang@mediatek.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
-Cc: alsa-devel@alsa-project.org, garlic.tseng@mediatek.com, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: marcel@holtmann.org, johan.hedberg@gmail.com
+Cc: linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+From: Sean Wang <sean.wang@mediatek.com>
 
---===============7325617852971574957==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="bpVaumkpfGNUagdU"
-Content-Disposition: inline
+v6:
+* fix drivers/bluetooth/btusb.c:2683:2-3: Unneeded semicolon based reported by [1]
+* update power-on sequence with adding neccesary tci sleep comand to set up
+  low-power environmnet and a delay to wait the device to be stable.
+* sort variables declarations in reverse xmas order.
 
+[1]
+http://lists.infradead.org/pipermail/linux-mediatek/2019-January/017017.html
 
---bpVaumkpfGNUagdU
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+v5:
+* rebase to latest code base.
+* change the subject prefix.
+* change the place the firmware located at.
 
-On Thu, Jan 24, 2019 at 04:58:41PM +0800, KaiChieh Chuang wrote:
+v4:
+* use new BTUSB_TX_WAIT_VND_EVT instead of BTMTKUSB_TX_WAIT_VND_EVT
+  to avoid definition conflict and to fix bulk data transfer fails.
+* use the bluetooth-next as the base
 
-> The driver function for transferring/receiving
-> BT encoded data to/from BT hardware.
+v3:
+add fixes and enhancements based on [1]
+* reuse flags and evt_skb btusb already had
+* add ctrl_anchor and the corresponding handling
+* apply mtk specific recv function
+* add more comments explaining wmt ctrl urbs behavior.
 
-It's really nice to see someone submitting a driver for actual radio
-hardware, this is great to see! =20
+[1]
+http://lists.infradead.org/pipermail/linux-mediatek/2018-August/014724.html
 
-The driver looks pretty good, I've got a few quite minor comments below
-but the main one is that given that this doesn't have any DAIs or DAPM
-it looks like it doesn't integrate with the rest of the sound card much
-so perhaps it could just be a free standing ALSA driver?  If there's
-inputs that let you link it to the rest of the sound card which will be
-added later then that's obviously a good reason to keep it in ASoC (I'd
-not be surprised if there were) but otherwise I'm not sure what
-advantage ASoC brings you.
+v2:
 
-> +static void mtk_btcvsd_snd_set_state(struct mtk_btcvsd_snd *bt,
-> +				     struct mtk_btcvsd_snd_stream *bt_stream,
-> +				     int state)
-> +{
-> +	dev_info(bt->dev, "%s(), stream %d, state %d, tx->state %d, rx->state %=
-d, irq_disabled %d\n",
-> +		 __func__,
-> +		 bt_stream->stream, state,
-> +		 bt->tx->state, bt->rx->state, bt->irq_disabled);
+add fixes and enhancements based on [1]
+* include /sys/kernel/debug/usb/devices portion in the commit message.
+* turn default into n for config BT_HCIBTUSB_MTK in Kconfig
+* only add MediaTek support to btusb.c
+* drop cmd_sync callback usage
+* use __hci_cmd_send to send WMT commands
+* add wait event handling similar to what is being done in btmtkuart.c
+* submit a control IN URB similar to interrupt IN URB on demand for the WMT
+  commands during setup 
+* add cosmetic changes
 
-There's quite a few of these dev_info() calls which look like they might
-be a bit noisy and could perhaps be dev_dbg() instead.
+[1]
+http://lists.infradead.org/pipermail/linux-mediatek/2018-August/014650.html
+http://lists.infradead.org/pipermail/linux-mediatek/2018-August/014656.html
 
-> +/* kcontrol */
-> +static const char *const btsco_band_str[] =3D {"NB", "WB"};
-> +static const char *const btsco_mute_str[] =3D {"Off", "On"};
-> +static const char *const irq_received_str[] =3D {"No", "Yes"};
-> +static const char *const rx_timeout_str[] =3D {"No", "Yes"};
-> +
-> +static const struct soc_enum btcvsd_enum[] =3D {
-> +	SOC_ENUM_SINGLE_EXT(ARRAY_SIZE(btsco_band_str), btsco_band_str),
-> +	SOC_ENUM_SINGLE_EXT(ARRAY_SIZE(btsco_mute_str), btsco_mute_str),
-> +	SOC_ENUM_SINGLE_EXT(ARRAY_SIZE(irq_received_str), irq_received_str),
-> +	SOC_ENUM_SINGLE_EXT(ARRAY_SIZE(rx_timeout_str), rx_timeout_str),
-> +};
+v1:
 
-Some of these enums (all of them except the narrow/wide band one) should
-be simple number controls ending with Switch as covered in
-control-names.rst, this helps UIs display them better.
+This adds the support of enabling MT7668U and MT7663U Bluetooth
+function running on the top of btusb driver. The patch also adds
+a newly created file mtkbt.c able to be reused independently from
+the transport type such as UART, USB and SDIO.
 
-> +	SND_SOC_BYTES_TLV("btcvsd_tx_timestamp",
-> +			  sizeof(struct mtk_btcvsd_snd_time_buffer_info),
-> +			  btcvsd_tx_timestamp_get, NULL),
+Sean Wang (2):
+  Bluetooth: btusb: Add protocol support for MediaTek MT7668U USB
+    devices
+  Bluetooth: btusb: Add protocol support for MediaTek MT7663U USB
+    devices
 
-There's an ALSA timestamping API - see commit 4eeaaeaea1ce (ALSA: core:
-add hooks for audio timestamps) and related commits.  I don't know if
-that applies here and might be a better fit or not?
+ drivers/bluetooth/Kconfig |  11 +
+ drivers/bluetooth/btusb.c | 581 ++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 592 insertions(+)
 
---bpVaumkpfGNUagdU
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlxKEQ0ACgkQJNaLcl1U
-h9D4bwf+PBlVu5Tsuq97XJVpADkvOOzmn6FrQUXEX+hUrYunBwHN2e+JdqkVb0WI
-lxm7SVjgWdxVC+nC4RlT9pkeLm8wWEXv7GOwePJSNvkQUxZEeKqiwWNHb+obNNU7
-ZCs+iW8wqE+F/N7bElqpJM2t1ym48879bdUXmU7VVOhnY99wGRpyT7p7HUmdnunx
-pN5ocumMtgISL85rRrOf2B9S59qJQi40YivBkeFFso3aCO9AJEglsUXtfVX9Otm6
-MIKv4c5Mfo07Qb1uUAjpr9E1brNfRbxo+jmlrwJqpyubFrf5ciA7zh7/LjxrOKdi
-IRzQuTnqcb/OFLz9tB9b67P8Vo+DTQ==
-=uH9J
------END PGP SIGNATURE-----
-
---bpVaumkpfGNUagdU--
-
---===============7325617852971574957==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============7325617852971574957==--
+-- 
+2.18.0
