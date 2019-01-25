@@ -1,49 +1,87 @@
-From: Catalin Marinas <catalin.marinas@arm.com>
-Subject: Re: [PATCH v2 7/9] arm64: kdump: No need to mark crashkernel pages
- manually PG_reserved
-Date: Fri, 25 Jan 2019 16:28:31 +0000
-Message-ID: <20190125162830.GK25901@arrakis.emea.arm.com>
-References: <20190114125903.24845-1-david@redhat.com>
- <20190114125903.24845-8-david@redhat.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH 3/6] ASoC: mediatek: mt6358: add codec
+	driver
+Date: Fri, 25 Jan 2019 18:10:22 +0000
+Message-ID: <20190125181022.GB6939@sirena.org.uk>
+References: <1548139153-18783-1-git-send-email-shunli.wang@mediatek.com>
+ <1548139153-18783-4-git-send-email-shunli.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190114125903.24845-8-david@redhat.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: David Hildenbrand <david@redhat.com>
-Cc: linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-m68k@lists.linux-m68k.org, linuxppc-dev@lists.ozlabs.org, linux-riscv@lists.infradead.org, linux-s390@vger.kernel.org, linux-mediatek@lists.infradead.org, Will Deacon <will.deacon@arm.com>, James Morse <james.morse@arm.com>, Bhupesh Sharma <bhsharma@redhat.com>, Mark Rutland <mark.rutland@arm.com>, Dave Kleikamp <dave.kleikamp@oracle.com>, Andrew Morton <akpm@linux-foundation.org>, Mike Rapoport <rppt@linux.vnet.ibm.com>, Michal Hocko <mhocko@suse.com>, Florian Fainelli <f.fainelli@gmail.com>, Stefan Agner <stefan@agner.ch>, Laura Abbott <labbott@redhat.com>, Greg Hackmann <ghackmann@android.com>, Johannes Weiner <hannes@cmpxchg.org>, Kristina
+Content-Type: multipart/mixed; boundary="===============2829330112210760200=="
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <1548139153-18783-4-git-send-email-shunli.wang@mediatek.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Shunli Wang <shunli.wang@mediatek.com>
+Cc: alsa-devel@alsa-project.org, garlic.tseng@mediatek.com, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, kaichieh.chuang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jan 14, 2019 at 01:59:01PM +0100, David Hildenbrand wrote:
-> The crashkernel is reserved via memblock_reserve(). memblock_free_all()
-> will call free_low_memory_core_early(), which will go over all reserved
-> memblocks, marking the pages as PG_reserved.
-> 
-> So manually marking pages as PG_reserved is not necessary, they are
-> already in the desired state (otherwise they would have been handed over
-> to the buddy as free pages and bad things would happen).
-> 
-> Cc: Catalin Marinas <catalin.marinas@arm.com>
-> Cc: Will Deacon <will.deacon@arm.com>
-> Cc: James Morse <james.morse@arm.com>
-> Cc: Bhupesh Sharma <bhsharma@redhat.com>
-> Cc: David Hildenbrand <david@redhat.com>
-> Cc: Mark Rutland <mark.rutland@arm.com>
-> Cc: Dave Kleikamp <dave.kleikamp@oracle.com>
-> Cc: Andrew Morton <akpm@linux-foundation.org>
-> Cc: Mike Rapoport <rppt@linux.vnet.ibm.com>
-> Cc: Michal Hocko <mhocko@suse.com>
-> Cc: Florian Fainelli <f.fainelli@gmail.com>
-> Cc: Stefan Agner <stefan@agner.ch>
-> Cc: Laura Abbott <labbott@redhat.com>
-> Cc: Greg Hackmann <ghackmann@android.com>
-> Cc: Johannes Weiner <hannes@cmpxchg.org>
-> Cc: Kristina Martsenko <kristina.martsenko@arm.com>
-> Cc: CHANDAN VN <chandan.vn@samsung.com>
-> Cc: AKASHI Takahiro <takahiro.akashi@linaro.org>
-> Cc: Logan Gunthorpe <logang@deltatee.com>
-> Reviewed-by: Matthias Brugger <mbrugger@suse.com>
-> Signed-off-by: David Hildenbrand <david@redhat.com>
 
-Acked-by: Catalin Marinas <catalin.marinas@arm.com>
+--===============2829330112210760200==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="CdrF4e02JqNVZeln"
+Content-Disposition: inline
+
+
+--CdrF4e02JqNVZeln
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Jan 22, 2019 at 02:39:10PM +0800, Shunli Wang wrote:
+> add the mt6358 codec driver.
+>=20
+> Signed-off-by: Shunli Wang <shunli.wang@mediatek.com>
+> ---
+>  sound/soc/codecs/Kconfig  |    7 +
+>  sound/soc/codecs/Makefile |    2 +
+>  sound/soc/codecs/mt6358.c | 2336 +++++++++++++++++++++++++++++++++++++++=
+++++++
+>  sound/soc/codecs/mt6358.h | 2314 +++++++++++++++++++++++++++++++++++++++=
++++++
+
+This looks fine but it breaks the build for me:
+
+Applying patch #10781741 using 'git am -3 -s'
+Description: [3/6] ASoC: mediatek: mt6358: add codec driver
+Applying: ASoC: mediatek: mt6358: add codec driver
+scripts/kconfig/conf  --oldconfig Kconfig
+sound/soc/codecs/Kconfig:1348: syntax error
+sound/soc/codecs/Kconfig:1347:warning: ignoring unsupported character '.'
+sound/soc/codecs/Kconfig:1347: unknown statement "external"
+make[1]: *** [scripts/kconfig/Makefile:69: oldconfig] Error 1
+
+It's the indentation of the help text.  I've fixed it up but please take
+care!
+
+--CdrF4e02JqNVZeln
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlxLUQ0ACgkQJNaLcl1U
+h9C8sAf8DNAEyEGWgfO4Ek/wE5oPraZ4UbbRr9tYhZaJ39ZJ38J/S/7ExNCrZbS2
+KRswBDNvsR0ZP7PDbh8BiXT6Z8iJrW17tLXHlZyR7BHX5nPmxbAH5I/BWgpPsNMv
+qWPgimQFYw7KkXY8RdYycxQgJPowudsc0AZs5pFomtKKpVq9z6Mj8X6bhD/ufrp4
+L/gJ/Ce3R3f2xahJR69Yd/f4mB7xcVjqZRZvvgKLWAk4Km5siDkoHJ0T89K0rfur
+xlOKGpc3Q0+8tdN/5Gv2IVJvIxb9Dkxh+5wmHgKBpEPFv4q6RZkF1x6iJHJbm13w
+jG/HTKSja5F6fycZJI3ltp6MvkbZ5g==
+=s5Uu
+-----END PGP SIGNATURE-----
+
+--CdrF4e02JqNVZeln--
+
+--===============2829330112210760200==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+--===============2829330112210760200==--
