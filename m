@@ -1,85 +1,62 @@
-From: Min Guo <min.guo@mediatek.com>
-Subject: Re: [PATCH v4 1/6] dt-bindings: usb: musb: Add support for MediaTek
- musb controller
-Date: Fri, 25 Jan 2019 10:07:26 +0800
-Message-ID: <1548382046.4433.304.camel@mhfsdcap03>
-References: <1548073351-13739-1-git-send-email-min.guo@mediatek.com>
-         <1548073351-13739-2-git-send-email-min.guo@mediatek.com>
-         <20190121151417.GA19238@bogus> <1548149773.4433.284.camel@mhfsdcap03>
-         <20190122143348.GF30080@uda0271908>
+From: mtk14994 <wangyan.wang@mediatek.com>
+Subject: Re: [PATCH V2,4/8] drm/mediatek: fix the rate and divder of hdmi
+ phy for MT2701
+Date: Fri, 25 Jan 2019 10:28:35 +0800
+Message-ID: <1548383315.19561.4.camel@mszsdaap41>
+References: <20190118125928.3279-1-wangyan.wang@mediatek.com>
+         <20190118125928.3279-5-wangyan.wang@mediatek.com>
+         <1548310639.4220.3.camel@mtksdaap41>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190122143348.GF30080@uda0271908>
+In-Reply-To: <1548310639.4220.3.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Bin Liu <b-liu@ti.com>, Rob Herring <robh@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, hdegoede@redhat.com, tony@atomide.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, chunfeng.yun@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: CK Hu <ck.hu@mediatek.com>
+Cc: Michael Turquette <mturquette@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, chunhui dai <chunhui.dai@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, Colin Ian King <colin.king@canonical.com>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, jitao.shi@mediatek.com, bibby.hsieh@mediatek.com, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Bin,
+Dear CK,
 
-Thanks for your help.
+      OK,I will modify according your comments in V3.
 
-Hi Rob,
+Best Regards
+Wangyan Wang
 
-I find that Samsung describes the usb-connector attribute in DTS, and
-uses a private driver.
-And try to write DTS as following:
 
-usb-connector node:
-musb_con: musb_connector{
-    compatible = "linux,extcon-usb-gpio","usb-b-connector";
-    lable = "micro-USB";
-    type = "micro";
-    id-gpio = <&pio 44 GPIO_ACTIVE_HIGH>
-    vbus-supply = <&usb_vbus>;
-    port {
-        usb_to_connector: endpoint {
-            remote-endpoint = <&connector_to_usb>;
-        };
-    };
-};
-
-usb node:
-&usb2{
-    status = "okay";
-    port {
-        connector_to_usb: endpoint {
-            remote-endpoint = <&usb_to_connector>;
-        };
-    };
-}
-
-Can I describe usb-connector like this? Or can you give me some advices?
-
-Regards,
-Min.
-
-On Tue, 2019-01-22 at 08:33 -0600, Bin Liu wrote:
-> Hi Min,
+On Thu, 2019-01-24 at 14:17 +0800, CK Hu wrote:
+> On Fri, 2019-01-18 at 20:59 +0800, Wangyan Wang wrote:
+> > From: chunhui dai <chunhui.dai@mediatek.com>
 > 
-> On Tue, Jan 22, 2019 at 05:36:13PM +0800, Min Guo wrote:
-> > Hi Bin,
+> Describe something here.
+> 
 > > 
-> > Sorry to bother you again, I encounter a problem about the extcon
-> > property.
-> > 
-> > I don't find a common driver describing the usb-connector. Is
-> > there any driver that I can refer to, specially the way to switch MUSB
-> > controller between host and device mode? 
-> > If it needs to implement by myself, is it possible to emulate an
-> > usb-connector driver by extcon-usb-gpio, and also use the notifier
-> > mechanism or can you give me some advices?
+> > Fixes: 0fc721b2968e ("drm/mediatek: add hdmi driver for MT2701 and MT7623")
+> > Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
 > 
-> I am afraid I am unable to help you on this. I wasn't really pay
-> attention when usb-connector was introduced and not sure how it can
-> replace extcon. Now after read usb-connector.txt, it seems the binding
-> only defines a/b/c-connector, but not ab-connector, and there is no
-> enough information (at least for me) explaining how VBUS and ID fix into
-> this usb-connector binding.
-> 
-> Maybe Rob can provide some hint.
+> Any one who pass a patch should sign off it.
 > 
 > Regards,
-> -Bin.
+> CK
+> 
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
+> > index 43bc058d5528..88dd9e812ca0 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
+> > @@ -114,8 +114,8 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+> >  
+> >  	if (rate <= 64000000)
+> >  		pos_div = 3;
+> > -	else if (rate <= 12800000)
+> > -		pos_div = 1;
+> > +	else if (rate <= 128000000)
+> > +		pos_div = 2;
+> >  	else
+> >  		pos_div = 1;
+> >  
+> 
+> 
