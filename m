@@ -1,86 +1,99 @@
-From: Amit Kucheria <amit.kucheria@linaro.org>
-Subject: [PATCHv3 6/9] cpufreq: mediatek: Use auto-registration of thermal cooling device
-Date: Fri, 25 Jan 2019 12:32:26 +0530
-Message-ID: <fee6f634d8966a8493f13c1a06735d81d8170e26.1548398851.git.amit.kucheria@linaro.org>
-References: <cover.1548398851.git.amit.kucheria@linaro.org>
+From: Johan Hovold <johan@kernel.org>
+Subject: Re: [PATCH v2 2/4] dt-bindings: gnss: add mediatek binding
+Date: Fri, 25 Jan 2019 10:07:55 +0100
+Message-ID: <20190125090755.GB3691@localhost>
+References: <1547744074-28308-1-git-send-email-lollivier@baylibre.com>
+ <1547744074-28308-3-git-send-email-lollivier@baylibre.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1548398851.git.amit.kucheria@linaro.org>
-In-Reply-To: <cover.1548398851.git.amit.kucheria@linaro.org>
-References: <cover.1548398851.git.amit.kucheria@linaro.org>
+Content-Disposition: inline
+In-Reply-To: <1547744074-28308-3-git-send-email-lollivier@baylibre.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: linux-arm-msm@vger.kernel.org, viresh.kumar@linaro.org, edubezval@gmail.com, swboyd@chromium.org, dianders@chromium.org, mka@chromium.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:CPU FREQUENCY SCALING FRAMEWORK" <linux-pm@vger.kernel.org>, "moderated list:ARM/Mediatek SoC
-        support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
-        support" <linux-mediatek@lists.infradead.org>
+To: Loys Ollivier <lollivier@baylibre.com>
+Cc: devicetree@vger.kernel.org, Johan Hovold <johan@kernel.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-kernel@vger.kernel.org, Kevin Hilman <khilman@baylibre.com>, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Use the CPUFREQ_AUTO_REGISTER_COOLING_DEV flag to allow cpufreq core to
-automatically register as a thermal cooling device.
+On Thu, Jan 17, 2019 at 05:54:32PM +0100, Loys Ollivier wrote:
+> Add binding for Mediatek-based GNSS receivers.
+> 
+> Signed-off-by: Loys Ollivier <lollivier@baylibre.com>
+> ---
+> 
+> v2:
+> Renamed bindings from Globaltop/gtop to Mediatek/mtk.
+> Moved current-speed as an optional propertie.
+> Removed the status line in the example.
+> Added "mediatek,mt3339" compatible.
+> 
+>  .../devicetree/bindings/gnss/mediatek.txt          | 39 ++++++++++++++++++++++
+>  1 file changed, 39 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/gnss/mediatek.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/gnss/mediatek.txt b/Documentation/devicetree/bindings/gnss/mediatek.txt
+> new file mode 100644
+> index 000000000000..fd984b4a9a6d
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/gnss/mediatek.txt
+> @@ -0,0 +1,39 @@
+> +Mediatek-based GNSS Receiver DT binding
+> +
+> +Mediatek chipsets are used in GNSS-receiver modules produced by several
+> +vendors and can use UART, SPI or I2C interfaces.
+> +
+> +Please see Documentation/devicetree/bindings/gnss/gnss.txt for generic
+> +properties.
+> +
+> +Required properties:
+> +
+> +- compatible	: Must be one of
+> +
+> +			"globaltop,pa6h"
+> +			"mediatek,mt3339"
 
-This allows removal of boiler plate code from the driver.
+I'm not sure it makes sense to add the GPS chip itself as it cannot be
+used stand-alone AFAIU, and either not way would require a lot more
+resources to be defined than what you add to this binding.
 
-Signed-off-by: Amit Kucheria <amit.kucheria@linaro.org>
----
- drivers/cpufreq/mediatek-cpufreq.c | 14 ++------------
- 1 file changed, 2 insertions(+), 12 deletions(-)
+> +
+> +- vcc-supply	: Main voltage regulator (pin name: 3V3_IN, VCC, VDD)
 
-diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index eb8920d39818..9a937f4c63e7 100644
---- a/drivers/cpufreq/mediatek-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -14,7 +14,6 @@
- 
- #include <linux/clk.h>
- #include <linux/cpu.h>
--#include <linux/cpu_cooling.h>
- #include <linux/cpufreq.h>
- #include <linux/cpumask.h>
- #include <linux/module.h>
-@@ -48,7 +47,6 @@ struct mtk_cpu_dvfs_info {
- 	struct regulator *sram_reg;
- 	struct clk *cpu_clk;
- 	struct clk *inter_clk;
--	struct thermal_cooling_device *cdev;
- 	struct list_head list_head;
- 	int intermediate_voltage;
- 	bool need_voltage_tracking;
-@@ -307,13 +305,6 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 
- #define DYNAMIC_POWER "dynamic-power-coefficient"
- 
--static void mtk_cpufreq_ready(struct cpufreq_policy *policy)
--{
--	struct mtk_cpu_dvfs_info *info = policy->driver_data;
--
--	info->cdev = of_cpufreq_cooling_register(policy);
--}
--
- static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
- {
- 	struct device *cpu_dev;
-@@ -472,7 +463,6 @@ static int mtk_cpufreq_exit(struct cpufreq_policy *policy)
- {
- 	struct mtk_cpu_dvfs_info *info = policy->driver_data;
- 
--	cpufreq_cooling_unregister(info->cdev);
- 	dev_pm_opp_free_cpufreq_table(info->cpu_dev, &policy->freq_table);
- 
- 	return 0;
-@@ -480,13 +470,13 @@ static int mtk_cpufreq_exit(struct cpufreq_policy *policy)
- 
- static struct cpufreq_driver mtk_cpufreq_driver = {
- 	.flags = CPUFREQ_STICKY | CPUFREQ_NEED_INITIAL_FREQ_CHECK |
--		 CPUFREQ_HAVE_GOVERNOR_PER_POLICY,
-+		 CPUFREQ_HAVE_GOVERNOR_PER_POLICY |
-+		 CPUFREQ_AUTO_REGISTER_COOLING_DEV,
- 	.verify = cpufreq_generic_frequency_table_verify,
- 	.target_index = mtk_cpufreq_set_target,
- 	.get = cpufreq_generic_get,
- 	.init = mtk_cpufreq_init,
- 	.exit = mtk_cpufreq_exit,
--	.ready = mtk_cpufreq_ready,
- 	.name = "mtk-cpufreq",
- 	.attr = cpufreq_generic_attr,
- };
--- 
-2.17.1
+The pin names in parenthesis were copied from the sirf-star binding and
+were used to capture the various names given to this supply by different
+vendors. Please drop as it doesn't apply here.
+
+> +
+> +Required properties (I2C):
+> +- reg		: I2C slave address
+> +
+> +Required properties (SPI):
+> +- reg		: SPI chip select address
+
+While the mt3339 appears to support these interfaces, the globaltop one
+does not.
+
+Have you looked around for a small sample of mt3339-based receivers, to
+see whether anyone actually provides these?
+
+> +Optional properties:
+> +
+> +- timepulse-gpios	: Time pulse GPIO
+> +- v-bckp-supply		: Backup voltage regulator
+> +- current-speed		: Default UART baud rate
+
+Looks like you forgot the optional NRESET input and 3D-FIX output (even
+if the latter might be of limited use).
+
+> +
+> +Example:
+> +
+> +serial@1234 {
+> +	compatible = "ns16550a";
+> +
+> +	gnss {
+> +		compatible = "globaltop,pa6h";
+> +		vcc-supply = <&vcc_3v3>;
+> +	};
+> +};
+
+Johan
