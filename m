@@ -1,100 +1,47 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH v4 6/9] cpufreq: mediatek: Use auto-registration of
- thermal cooling device
-Date: Mon, 28 Jan 2019 09:36:58 +0100
-Message-ID: <11c4bde4-a113-6588-be6a-0904be1974d5@linaro.org>
-References: <cover.1548654899.git.amit.kucheria@linaro.org>
- <f4d658bcbc428f6fb9bd70bcd9c7a0b00a20cd08.1548654899.git.amit.kucheria@linaro.org>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH V3,4/8] drm/mediatek: fix the rate and divder of hdmi
+ phy for MT2701
+Date: Mon, 28 Jan 2019 16:52:20 +0800
+Message-ID: <1548665540.10401.0.camel@mtksdaap41>
+References: <20190125040205.5451-1-wangyan.wang@mediatek.com>
+ <20190125040205.5451-5-wangyan.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <f4d658bcbc428f6fb9bd70bcd9c7a0b00a20cd08.1548654899.git.amit.kucheria@linaro.org>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Amit Kucheria <amit.kucheria@linaro.org>, linux-kernel@vger.kernel.org
-Cc: linux-arm-msm@vger.kernel.org, viresh.kumar@linaro.org, edubezval@gmail.com, swboyd@chromium.org, dianders@chromium.org, mka@chromium.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190125040205.5451-5-wangyan.wang@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Wangyan Wang <wangyan.wang@mediatek.com>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, jitao.shi@mediatek.com, srv_heupstream@mediatek.com, chunhui dai <chunhui.dai@mediatek.com>, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Colin Ian King <colin.king@canonical.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 28/01/2019 07:41, Amit Kucheria wrote:
-> Use the CPUFREQ_AUTO_REGISTER_COOLING_DEV flag to allow cpufreq core to
-> automatically register as a thermal cooling device.
-> 
-> This allows removal of boiler plate code from the driver.
-> 
-> Signed-off-by: Amit Kucheria <amit.kucheria@linaro.org>
-
-Reviewed-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-
-
-> ---
->  drivers/cpufreq/mediatek-cpufreq.c | 14 ++------------
->  1 file changed, 2 insertions(+), 12 deletions(-)
-> 
-> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-> index eb8920d39818..9a937f4c63e7 100644
-> --- a/drivers/cpufreq/mediatek-cpufreq.c
-> +++ b/drivers/cpufreq/mediatek-cpufreq.c
-> @@ -14,7 +14,6 @@
->  
->  #include <linux/clk.h>
->  #include <linux/cpu.h>
-> -#include <linux/cpu_cooling.h>
->  #include <linux/cpufreq.h>
->  #include <linux/cpumask.h>
->  #include <linux/module.h>
-> @@ -48,7 +47,6 @@ struct mtk_cpu_dvfs_info {
->  	struct regulator *sram_reg;
->  	struct clk *cpu_clk;
->  	struct clk *inter_clk;
-> -	struct thermal_cooling_device *cdev;
->  	struct list_head list_head;
->  	int intermediate_voltage;
->  	bool need_voltage_tracking;
-> @@ -307,13 +305,6 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
->  
->  #define DYNAMIC_POWER "dynamic-power-coefficient"
->  
-> -static void mtk_cpufreq_ready(struct cpufreq_policy *policy)
-> -{
-> -	struct mtk_cpu_dvfs_info *info = policy->driver_data;
-> -
-> -	info->cdev = of_cpufreq_cooling_register(policy);
-> -}
-> -
->  static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
->  {
->  	struct device *cpu_dev;
-> @@ -472,7 +463,6 @@ static int mtk_cpufreq_exit(struct cpufreq_policy *policy)
->  {
->  	struct mtk_cpu_dvfs_info *info = policy->driver_data;
->  
-> -	cpufreq_cooling_unregister(info->cdev);
->  	dev_pm_opp_free_cpufreq_table(info->cpu_dev, &policy->freq_table);
->  
->  	return 0;
-> @@ -480,13 +470,13 @@ static int mtk_cpufreq_exit(struct cpufreq_policy *policy)
->  
->  static struct cpufreq_driver mtk_cpufreq_driver = {
->  	.flags = CPUFREQ_STICKY | CPUFREQ_NEED_INITIAL_FREQ_CHECK |
-> -		 CPUFREQ_HAVE_GOVERNOR_PER_POLICY,
-> +		 CPUFREQ_HAVE_GOVERNOR_PER_POLICY |
-> +		 CPUFREQ_AUTO_REGISTER_COOLING_DEV,
->  	.verify = cpufreq_generic_frequency_table_verify,
->  	.target_index = mtk_cpufreq_set_target,
->  	.get = cpufreq_generic_get,
->  	.init = mtk_cpufreq_init,
->  	.exit = mtk_cpufreq_exit,
-> -	.ready = mtk_cpufreq_ready,
->  	.name = "mtk-cpufreq",
->  	.attr = cpufreq_generic_attr,
->  };
-> 
-
-
--- 
- <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+T24gRnJpLCAyMDE5LTAxLTI1IGF0IDEyOjAyICswODAwLCBXYW5neWFuIFdhbmcgd3JvdGU6Cj4g
+RnJvbTogY2h1bmh1aSBkYWkgPGNodW5odWkuZGFpQG1lZGlhdGVrLmNvbT4KPiAKPiBEdWUgdG8g
+YSBjbGVyaWNhbCBlcnJvcix0aGVyZSBpcyBvbmUgemVybyBsZXNzIGZvciAxMjgwMDAwMC4KPiBG
+aXggaXQgZm9yIDEyODAwMDAwMC4KPiAKClJldmlld2VkLWJ5OiBDSyBIdSA8Y2suaHVAbWVkaWF0
+ZWsuY29tPgoKPiBGaXhlczogMGZjNzIxYjI5NjhlICgiZHJtL21lZGlhdGVrOiBhZGQgaGRtaSBk
+cml2ZXIgZm9yIE1UMjcwMSBhbmQgTVQ3NjIzIikKPiBTaWduZWQtb2ZmLWJ5OiBjaHVuaHVpIGRh
+aSA8Y2h1bmh1aS5kYWlAbWVkaWF0ZWsuY29tPgo+IFNpZ25lZC1vZmYtYnk6IHdhbmd5YW4gd2Fu
+ZyA8d2FuZ3lhbi53YW5nQG1lZGlhdGVrLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19tdDI3MDFfaGRtaV9waHkuYyB8IDQgKystLQo+ICAxIGZpbGUgY2hhbmdlZCwg
+MiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJz
+L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210MjcwMV9oZG1pX3BoeS5jIGIvZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19tdDI3MDFfaGRtaV9waHkuYwo+IGluZGV4IDQzYmMwNThkNTUyOC4uODhk
+ZDllODEyY2EwIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQy
+NzAxX2hkbWlfcGh5LmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210Mjcw
+MV9oZG1pX3BoeS5jCj4gQEAgLTExNCw4ICsxMTQsOCBAQCBzdGF0aWMgaW50IG10a19oZG1pX3Bs
+bF9zZXRfcmF0ZShzdHJ1Y3QgY2xrX2h3ICpodywgdW5zaWduZWQgbG9uZyByYXRlLAo+ICAKPiAg
+CWlmIChyYXRlIDw9IDY0MDAwMDAwKQo+ICAJCXBvc19kaXYgPSAzOwo+IC0JZWxzZSBpZiAocmF0
+ZSA8PSAxMjgwMDAwMCkKPiAtCQlwb3NfZGl2ID0gMTsKPiArCWVsc2UgaWYgKHJhdGUgPD0gMTI4
+MDAwMDAwKQo+ICsJCXBvc19kaXYgPSAyOwo+ICAJZWxzZQo+ICAJCXBvc19kaXYgPSAxOwo+ICAK
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
+ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
+aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
