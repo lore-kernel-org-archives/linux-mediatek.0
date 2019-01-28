@@ -1,125 +1,56 @@
 From: Loys Ollivier <lollivier@baylibre.com>
-Subject: Re: [PATCH v2 2/4] dt-bindings: gnss: add mediatek binding
-Date: Mon, 28 Jan 2019 16:46:53 +0100
-Message-ID: <867eeo7pjm.fsf@baylibre.com>
-References: <1547744074-28308-1-git-send-email-lollivier@baylibre.com> <1547744074-28308-3-git-send-email-lollivier@baylibre.com> <20190125090755.GB3691@localhost>
-Mime-Version: 1.0
-Content-Type: text/plain; format=flowed
+Subject: [PATCH v3 3/4] gnss: add mtk receiver type support
+Date: Mon, 28 Jan 2019 17:38:00 +0100
+Message-ID: <1548693481-1162-4-git-send-email-lollivier@baylibre.com>
+References: <1548693481-1162-1-git-send-email-lollivier@baylibre.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-reply-to: <20190125090755.GB3691@localhost>
+In-Reply-To: <1548693481-1162-1-git-send-email-lollivier@baylibre.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Johan Hovold <johan@kernel.org>
-Cc: Loys Ollivier <lollivier@baylibre.com>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-kernel@vger.kernel.org, Kevin Hilman <khilman@baylibre.com>, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+To: devicetree@vger.kernel.org, Johan Hovold <johan@kernel.org>
+Cc: Loys Ollivier <lollivier@baylibre.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-kernel@vger.kernel.org, Kevin Hilman <khilman@baylibre.com>, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+Add an MTK (Mediatek) type to the "GNSS_TYPE" attribute.
 
-On Fri 25 Jan 2019 at 09:07, Johan Hovold wrote:
+Note that MTK receivers support a subset of NMEA 0183 with vendor
+extensions.
 
-> On Thu, Jan 17, 2019 at 05:54:32PM +0100, Loys Ollivier wrote:
->> Add binding for Mediatek-based GNSS receivers.
->> 
->> Signed-off-by: Loys Ollivier <lollivier@baylibre.com>
->> ---
->> 
->> v2:
->> Renamed bindings from Globaltop/gtop to Mediatek/mtk.
->> Moved current-speed as an optional propertie.
->> Removed the status line in the example.
->> Added "mediatek,mt3339" compatible.
->> 
->>  .../devicetree/bindings/gnss/mediatek.txt          | 39 
->>  ++++++++++++++++++++++
->>  1 file changed, 39 insertions(+)
->>  create mode 100644 Documentation/devicetree/bindings/gnss/mediatek.txt
->> 
->> diff --git a/Documentation/devicetree/bindings/gnss/mediatek.txt 
->> b/Documentation/devicetree/bindings/gnss/mediatek.txt
->> new file mode 100644
->> index 000000000000..fd984b4a9a6d
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/gnss/mediatek.txt
->> @@ -0,0 +1,39 @@
->> +Mediatek-based GNSS Receiver DT binding
->> +
->> +Mediatek chipsets are used in GNSS-receiver modules produced by several
->> +vendors and can use UART, SPI or I2C interfaces.
->> +
->> +Please see Documentation/devicetree/bindings/gnss/gnss.txt for generic
->> +properties.
->> +
->> +Required properties:
->> +
->> +- compatible	: Must be one of
->> +
->> +			"globaltop,pa6h"
->> +			"mediatek,mt3339"
->
-> I'm not sure it makes sense to add the GPS chip itself as it cannot be
-> used stand-alone AFAIU, and either not way would require a lot more
-> resources to be defined than what you add to this binding.
->
+Signed-off-by: Loys Ollivier <lollivier@baylibre.com>
+---
 
-OK, I find it a bit confusing to have Mediatek bindings but no
-compatible Mediatek SoCs.
-But it is true that it can't be used stand-alone. I will remove this
-reference and also remove it from the mtk.c driver code from this patch
-serie.
+v3:
+Moved the gnss_type_names string addition to this patch.
+Edited the commit message to remove the reference to a vendor protocol.
 
->> +
->> +- vcc-supply	: Main voltage regulator (pin name: 3V3_IN, VCC, VDD)
->
-> The pin names in parenthesis were copied from the sirf-star binding and
-> were used to capture the various names given to this supply by different
-> vendors. Please drop as it doesn't apply here.
->
->> +
->> +Required properties (I2C):
->> +- reg		: I2C slave address
->> +
->> +Required properties (SPI):
->> +- reg		: SPI chip select address
->
-> While the mt3339 appears to support these interfaces, the globaltop one
-> does not.
->
-> Have you looked around for a small sample of mt3339-based receivers, to
-> see whether anyone actually provides these?
->
+v2: renamed from GTOP to MTK.
 
-Again I'm confused by the fact that it is the Mediatek bindings.
-Hence why I have added it and why it was not present in the v1 that was
-only for Globaltop.
-I find it odd mentionning the chipset but not all its interfaces.
-I will remove these sections and only list supported interfaces (i.e.
-UART). Other interfaces can be added afterward if one finds a board that
-provides them.
+ drivers/gnss/core.c  | 1 +
+ include/linux/gnss.h | 1 +
+ 2 files changed, 2 insertions(+)
 
->> +Optional properties:
->> +
->> +- timepulse-gpios	: Time pulse GPIO
->> +- v-bckp-supply		: Backup voltage regulator
->> +- current-speed		: Default UART baud rate
->
-> Looks like you forgot the optional NRESET input and 3D-FIX output (even
-> if the latter might be of limited use).
->
-
-Thanks I will clean this section.
-
->> +
->> +Example:
->> +
->> +serial@1234 {
->> +	compatible = "ns16550a";
->> +
->> +	gnss {
->> +		compatible = "globaltop,pa6h";
->> +		vcc-supply = <&vcc_3v3>;
->> +	};
->> +};
->
-> Johan
-
-
+diff --git a/drivers/gnss/core.c b/drivers/gnss/core.c
+index 4291a0dd22aa..320cfca80d5f 100644
+--- a/drivers/gnss/core.c
++++ b/drivers/gnss/core.c
+@@ -334,6 +334,7 @@ static const char * const gnss_type_names[GNSS_TYPE_COUNT] = {
+ 	[GNSS_TYPE_NMEA]	= "NMEA",
+ 	[GNSS_TYPE_SIRF]	= "SiRF",
+ 	[GNSS_TYPE_UBX]		= "UBX",
++	[GNSS_TYPE_MTK]		= "MTK",
+ };
+ 
+ static const char *gnss_type_name(struct gnss_device *gdev)
+diff --git a/include/linux/gnss.h b/include/linux/gnss.h
+index 43546977098c..36968a0f33e8 100644
+--- a/include/linux/gnss.h
++++ b/include/linux/gnss.h
+@@ -22,6 +22,7 @@ enum gnss_type {
+ 	GNSS_TYPE_NMEA = 0,
+ 	GNSS_TYPE_SIRF,
+ 	GNSS_TYPE_UBX,
++	GNSS_TYPE_MTK,
+ 
+ 	GNSS_TYPE_COUNT
+ };
 -- 
--L
+2.7.4
