@@ -1,38 +1,57 @@
-From: Loys Ollivier <lollivier@baylibre.com>
-Subject: [PATCH v3 1/4] dt-bindings: Add vendor prefix for "GlobalTop Technology, Inc."
-Date: Mon, 28 Jan 2019 17:37:58 +0100
-Message-ID: <1548693481-1162-2-git-send-email-lollivier@baylibre.com>
-References: <1548693481-1162-1-git-send-email-lollivier@baylibre.com>
+From: Guido =?iso-8859-1?Q?G=FCnther?= <agx@sigxcpu.org>
+Subject: [PATCH] input: goodix - support Goodix gt5688
+Date: Mon, 28 Jan 2019 18:03:10 +0100
+Message-ID: <20190128170310.GA305@bogon.m.sigxcpu.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1548693481-1162-1-git-send-email-lollivier@baylibre.com>
+Content-Disposition: inline
 Sender: linux-kernel-owner@vger.kernel.org
-To: devicetree@vger.kernel.org, Johan Hovold <johan@kernel.org>
-Cc: Loys Ollivier <lollivier@baylibre.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-kernel@vger.kernel.org, Kevin Hilman <khilman@baylibre.com>, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Bastien Nocera <hadess@hadess.net>, Matthias Brugger <matthias.bgg@gmail.com>, Guido =?iso-8859-1?Q?G=FCnther?= <agx@sigxcpu.org>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add globaltop vendor definition.
+>From what I've seen in vendor trees it's fine to treat this as gt1x¹.
 
-Signed-off-by: Loys Ollivier <lollivier@baylibre.com>
+[1]: https://github.com/TadiT7/android_kernel_mtk-4.4/tree/master/drivers/input/touchscreen/mediatek/GT5688
+
+Signed-off-by: Guido Günther <agx@sigxcpu.org>
 ---
+ Documentation/devicetree/bindings/input/touchscreen/goodix.txt | 1 +
+ drivers/input/touchscreen/goodix.c                             | 2 ++
+ 2 files changed, 3 insertions(+)
 
-v3: No changes
-
-v2: Alphabetical order
-
- Documentation/devicetree/bindings/vendor-prefixes.txt | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/Documentation/devicetree/bindings/vendor-prefixes.txt b/Documentation/devicetree/bindings/vendor-prefixes.txt
-index 389508584f48..d80a70343b36 100644
---- a/Documentation/devicetree/bindings/vendor-prefixes.txt
-+++ b/Documentation/devicetree/bindings/vendor-prefixes.txt
-@@ -150,6 +150,7 @@ geniatech	Geniatech, Inc.
- giantec	Giantec Semiconductor, Inc.
- giantplus	Giantplus Technology Co., Ltd.
- globalscale	Globalscale Technologies, Inc.
-+globaltop	GlobalTop Technology, Inc.
- gmt	Global Mixed-mode Technology, Inc.
- goodix	Shenzhen Huiding Technology Co., Ltd.
- google	Google, Inc.
+diff --git a/Documentation/devicetree/bindings/input/touchscreen/goodix.txt b/Documentation/devicetree/bindings/input/touchscreen/goodix.txt
+index f7e95c52f3c7..57d3d8870a09 100644
+--- a/Documentation/devicetree/bindings/input/touchscreen/goodix.txt
++++ b/Documentation/devicetree/bindings/input/touchscreen/goodix.txt
+@@ -3,6 +3,7 @@ Device tree bindings for Goodix GT9xx series touchscreen controller
+ Required properties:
+ 
+  - compatible		: Should be "goodix,gt1151"
++				 or "goodix,gt5688"
+ 				 or "goodix,gt911"
+ 				 or "goodix,gt9110"
+ 				 or "goodix,gt912"
+diff --git a/drivers/input/touchscreen/goodix.c b/drivers/input/touchscreen/goodix.c
+index f2d9c2c41885..47b1ced41576 100644
+--- a/drivers/input/touchscreen/goodix.c
++++ b/drivers/input/touchscreen/goodix.c
+@@ -216,6 +216,7 @@ static const struct goodix_chip_data *goodix_get_chip_data(u16 id)
+ {
+ 	switch (id) {
+ 	case 1151:
++	case 5688:
+ 		return &gt1x_chip_data;
+ 
+ 	case 911:
+@@ -942,6 +943,7 @@ MODULE_DEVICE_TABLE(acpi, goodix_acpi_match);
+ #ifdef CONFIG_OF
+ static const struct of_device_id goodix_of_match[] = {
+ 	{ .compatible = "goodix,gt1151" },
++	{ .compatible = "goodix,gt5688" },
+ 	{ .compatible = "goodix,gt911" },
+ 	{ .compatible = "goodix,gt9110" },
+ 	{ .compatible = "goodix,gt912" },
 -- 
-2.7.4
+2.20.1
