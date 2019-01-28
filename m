@@ -1,66 +1,47 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH V3,0/8] make mt7623 clock of HDMI stable
-Date: Mon, 28 Jan 2019 17:27:56 +0800
-Message-ID: <1548667676.10401.17.camel@mtksdaap41>
-References: <20190125040205.5451-1-wangyan.wang@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH] mmc: mediatek: fix incorrect register setting of hs400_cmd_int_delay
+Date: Mon, 28 Jan 2019 13:03:15 +0100
+Message-ID: <CAPDyKFoWDDrNx0+k+4AuXAThxLizmvXUUMHqmA0Cy2OgVm6iKA@mail.gmail.com>
+References: <1548245125-31664-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190125040205.5451-1-wangyan.wang@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Wangyan Wang <wangyan.wang@mediatek.com>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, jitao.shi@mediatek.com, srv_heupstream@mediatek.com, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Colin Ian King <colin.king@canonical.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1548245125-31664-1-git-send-email-chaotian.jing@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, Yong Mao <yong.mao@mediatek.com>, jjian zhou <jjian.zhou@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFdhbmd5YW46CgpIb3cgZG8geW91IHByb3ZlIHRoYXQgdGhpcyBzZXJpZXMgd291bGQgbWFr
-ZSBtdDc2MjMgSERNSSBjbG9jayBtb3JlCnN0YWJsZT8gQnkgZXhwZXJpZW5jZSByZXN1bHQ/IEkg
-d291bGQgbGlrZSB0byBwcm92ZSBpdCBieSB0aGUgc291cmNlCmNvZGUuCgpEb2VzICdzdGFibGUn
-IG1lYW5zIHRoYXQgaGFyZHdhcmUgY291bGQgZ2VuZXJhdGUgdGhlIGZyZXF1ZW5jeSBtb3N0CmNs
-b3NlIHRvIHRoZSB0YXJnZXQgZnJlcXVlbmN5PyBJZiBpdCBkb2VzLCBJIHRoaW5rIHlvdSBjb3Vs
-ZCBjb21wYXJlIHRoZQpmcmVxdWVuY3kgZ2VuZXJhdGVkIGJ5IG9yaWdpbmFsIGNvZGUgYW5kIGFw
-cGx5aW5nIHRoaXMgc2VyaWVzIGZvciBhbGwKdGhlIHVzdWFsbHktdXNlZCBmcmVxdWVuY3kuIEkg
-YWxzbyBuZWVkIHlvdSB0byBzaG93IHRoZSBjbG9jayB0cmVlIGFuZAphbGwgc2V0dGluZyBvZiBl
-YWNoIGRpdmlkZXIgc28gd2UgY291bGQgcmV2aWV3IHRoYXQgaXMgdGhpcyBzZXJpZXMgZ29vZApl
-bm91Z2guIEFsc28sIGRlc2NyaWJlIHRoZXNlIGluIGNvdmVyIGxhdHRlci4KCllvdSBoYXZlIG1h
-aWwgdG8gZHJpLWRldmVsIFsxXSBhbmQgbGludXgtbWVkaWF0ZWsgWzJdLCBidXQgdGhlc2UgcGF0
-Y2hlcwpkb2VzIG5vdCBzaG93IGluIHdlYiBzaXRlLiBNYXliZSB5b3VyIG1haWwgaXMgbm90IHBs
-YWluIHRleHQsIHBsZWFzZSBmaXgKdGhpcyBhbmQgcmVzZW5kIHBhdGNoZXMuCgpbMV0gaHR0cHM6
-Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvYXJjaGl2ZXMvZHJpLWRldmVsLwpbMl0gaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvcGlwZXJtYWlsL2xpbnV4LW1lZGlhdGVrLwoKUmVnYXJkcywKQ0sK
-Ck9uIEZyaSwgMjAxOS0wMS0yNSBhdCAxMjowMSArMDgwMCwgV2FuZ3lhbiBXYW5nIHdyb3RlOgo+
-IFYzIGFkb3B0IG1haW50YWluZXIncyBzdWdnZXN0aW9uLgo+IEhlcmUgaXMgdGhlIGNoYW5nZSBs
-aXN0IGJldHdlZW4gVjIgJiBWMzoKPiAxLiBhZGQgIlNpZ25lZC1vZmYtYnk6IHdhbmd5YW4gd2Fu
-ZyA8d2FuZ3lhbi53YW5nQG1lZGlhdGVrLmNvbT4iCj4gaW4gY29tbWl0IG1lc3NhZ2UKPiAKPiAy
-LiBhZGQgbW9kaWZ5IGRlc2NyaXB0aW9uIGluIHBhdGNoIAo+ICJkcm0vbWVkaWF0ZWs6IGZpeCB0
-aGUgcmF0ZSBhbmQgZGl2ZGVyIC4uLiIKPiAgCj4gY2h1bmh1aSBkYWkgKDgpOgo+ICAgZHJtL21l
-ZGlhdGVrOiByZWNhbGN1bGF0ZSBoZG1pIHBoeSBjbG9jayBvZiBNVDI3MDEgYnkgcXVlcnlpbmcK
-PiAgICAgaGFyZHdhcmUKPiAgIGRybS9tZWRpYXRlazogbW92ZSB0aGUgc2V0dGluZyBvZiBmaXhl
-ZCBkaXZpZGVyCj4gICBkcm0vbWVkaWF0ZWs6IHVzaW5nIGRpZmZlcmVudCBmbGFncyBvZiBjbGsg
-Zm9yIEhETUkgcGh5Cj4gICBkcm0vbWVkaWF0ZWs6IGZpeCB0aGUgcmF0ZSBhbmQgZGl2ZGVyIG9m
-IGhkbWkgcGh5IGZvciBNVDI3MDEKPiAgIGNsazogbWVkaWF0ZWs6IGFkZCBNVVhfR0FURV9GTEFH
-U18yCj4gICBjbGs6IG1lZGlhdGVrOiB1c2luZyBDTEtfTVVYX1JPVU5EX0NMT1NFU1QgZm9yIHRo
-ZSBjbG9jayBvZiBkcGkxX3NlbAo+ICAgZHJtL21lZGlhdGVrOiB1c2luZyBuZXcgZmFjdG9yIGZv
-ciB0dmRwbGwgaW4gTVQyNzAxCj4gICBkcm0vbWVkaWF0ZWs6IGZpeCB0aGUgcmF0ZSBvZiBwYXJl
-bnQgZm9yIGhkbWkgcGh5IGluIE1UMjcwMQo+IAo+ICBkcml2ZXJzL2Nsay9tZWRpYXRlay9jbGst
-bXQyNzAxLmMgICAgICAgICAgICAgfCAgNCArLQo+ICBkcml2ZXJzL2Nsay9tZWRpYXRlay9jbGst
-bXRrLmMgICAgICAgICAgICAgICAgfCAgMiArLQo+ICBkcml2ZXJzL2Nsay9tZWRpYXRlay9jbGst
-bXRrLmggICAgICAgICAgICAgICAgfCAyMCArKysrKy0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRp
-YXRlay9tdGtfZHBpLmMgICAgICAgICAgICB8ICA4ICstLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2hkbWlfcGh5LmMgICAgICAgfCAzNCArKystLS0tLS0tLQo+ICBkcml2ZXJzL2dw
-dS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmggICAgICAgfCAgNyArLS0KPiAgLi4uL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX210MjcwMV9oZG1pX3BoeS5jICAgIHwgNTYgKysrKysrKysrKysrKysr
-KystLQo+ICAuLi4vZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMgICAgfCAy
-MyArKysrKysrKwo+ICA4IGZpbGVzIGNoYW5nZWQsIDEwMiBpbnNlcnRpb25zKCspLCA1MiBkZWxl
-dGlvbnMoLSkKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
-cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
-ZWwK
+On Wed, 23 Jan 2019 at 13:05, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
+>
+> to set cmd internal delay, need set PAD_TUNE register but not PAD_CMD_TUNE
+> register.
+>
+> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+
+Applied for fixes, adding a fixes+stable tag, thanks!
+
+Kind regards
+Uffe
+
+
+> ---
+>  drivers/mmc/host/mtk-sd.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index 8afeaf8..833ef05 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -846,7 +846,7 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
+>
+>         if (timing == MMC_TIMING_MMC_HS400 &&
+>             host->dev_comp->hs400_tune)
+> -               sdr_set_field(host->base + PAD_CMD_TUNE,
+> +               sdr_set_field(host->base + tune_reg,
+>                               MSDC_PAD_TUNE_CMDRRDLY,
+>                               host->hs400_cmd_int_delay);
+>         dev_dbg(host->dev, "sclk: %d, timing: %d\n", host->mmc->actual_clock,
+> --
+> 1.8.1.1.dirty
+>
