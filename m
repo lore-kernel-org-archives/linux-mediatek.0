@@ -1,95 +1,118 @@
-From: Nicolas Boichat <drinkcat@chromium.org>
-Subject: Re: [RESEND PATCH 0/6] ASoC: Mediatek: Add support for
- MT8183 SoC and MT6358 Codec
-Date: Sat, 26 Jan 2019 20:55:39 +0800
-Message-ID: <CANMq1KDAy0=yF+90MvamdfWu4uuTf8xAwczZ33sVpxDjo9OVSQ@mail.gmail.com>
-References: <1548488700-47792-1-git-send-email-shunli.wang@mediatek.com>
+From: Jisheng Zhang <Jisheng.Zhang-Gq53QDLGkWKakBO8gow8eQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: Remove inconsistent use of 'arm,armv8'
+ compatible string
+Date: Mon, 28 Jan 2019 02:41:11 +0000
+Message-ID: <20190128103443.2b765f30@xhacker.debian>
+References: <20190109202934.29304-1-robh@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <1548488700-47792-1-git-send-email-shunli.wang@mediatek.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Shunli Wang <shunli.wang@mediatek.com>
-Cc: alsa-devel@alsa-project.org, srv_heupstream@mediatek.com, garlic.tseng@mediatek.com, Mark Brown <broonie@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, kaichieh.chuang@mediatek.com
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190109202934.29304-1-robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Content-Language: en-US
+Content-ID: <351B42FC5B54A246AEE6DF57AF45078A-nA3rOoH6FIycE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Nishanth Menon <nm-l0cyMroinI0@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, "linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, "arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Gregory Clement <gregory.clement-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, Jan 26, 2019 at 3:45 PM Shunli Wang <shunli.wang@mediatek.com> wrote:
->
-> This patch adds support for Mediatek AFE for MT8183 SoC and codec for MT6358.
-> The patch is based on broonie tree "for-next" branch.
-> (Because it seems ALSA-DEVEL have not received previous mail,
-> this is a resend mail for this patchset.)
->
-> Shunli Wang (6):
->   ASoC: mediatek: mt8183: add platform driver
->   ASoC: mediatek: mt8183: add audio afe document
->   ASoC: mediatek: mt6358: add codec driver
->   ASoC: mediatek: mt6358: add codec document
->   ASoC: mediatek: mt8183: add mt8183-mt6358 machine driver
->   ASoC: mediatek: add document for mt8183-mt6358
+On Wed, 9 Jan 2019 14:29:34 -0600
+Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
 
-Shunli, the first 4 of these patches were already applied here:
-https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git/log/?h=for-next
+> The 'arm,armv8' compatible string is only for software models. It adds
+> little value otherwise and is inconsistently used as a fallback on some
+> platforms. Remove it from those platforms.
+> 
+> This fixes warnings generated by the DT schema.
+> 
+> Reported-by: Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>
+> Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+> Cc: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
+> Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> ---
+> armsoc folks, Please apply directly.
+> 
+> Note that there's still a case left in msm8998 that needs a new 
+> compatible string.
+> 
+> Rob
+> 
+>  arch/arm64/boot/dts/actions/s700.dtsi         |   8 +-
+>  arch/arm64/boot/dts/actions/s900.dtsi         |   8 +-
+>  arch/arm64/boot/dts/al/alpine-v2.dtsi         |   8 +-
+>  arch/arm64/boot/dts/allwinner/sun50i-a64.dtsi |   8 +-
+>  arch/arm64/boot/dts/allwinner/sun50i-h5.dtsi  |   8 +-
+>  arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi  |   8 +-
+>  .../boot/dts/altera/socfpga_stratix10.dtsi    |   8 +-
+>  arch/arm64/boot/dts/amlogic/meson-axg.dtsi    |   8 +-
+>  arch/arm64/boot/dts/amlogic/meson-g12a.dtsi   |   8 +-
+>  arch/arm64/boot/dts/amlogic/meson-gx.dtsi     |   8 +-
+>  arch/arm64/boot/dts/amlogic/meson-gxm.dtsi    |   8 +-
+>  arch/arm64/boot/dts/apm/apm-shadowcat.dtsi    |  16 +--
+>  arch/arm64/boot/dts/apm/apm-storm.dtsi        |  16 +--
+>  arch/arm64/boot/dts/arm/juno-r1.dts           |  12 +-
+>  arch/arm64/boot/dts/arm/juno-r2.dts           |  12 +-
+>  arch/arm64/boot/dts/arm/juno.dts              |  12 +-
+>  .../boot/dts/arm/vexpress-v2f-1xv7-ca53x2.dts |   4 +-
+>  .../boot/dts/broadcom/northstar2/ns2.dtsi     |   8 +-
+>  .../boot/dts/broadcom/stingray/stingray.dtsi  |  16 +--
+>  arch/arm64/boot/dts/cavium/thunder-88xx.dtsi  |  96 ++++++-------
+>  arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi |   8 +-
+>  arch/arm64/boot/dts/exynos/exynos5433.dtsi    |  16 +--
+>  arch/arm64/boot/dts/exynos/exynos7.dtsi       |   8 +-
+>  arch/arm64/boot/dts/hisilicon/hi3660.dtsi     |  16 +--
+>  arch/arm64/boot/dts/hisilicon/hi3670.dtsi     |  16 +--
+>  arch/arm64/boot/dts/hisilicon/hi6220.dtsi     |  16 +--
+>  arch/arm64/boot/dts/hisilicon/hip05.dtsi      |  32 ++---
+>  arch/arm64/boot/dts/hisilicon/hip06.dtsi      |  32 ++---
+>  arch/arm64/boot/dts/hisilicon/hip07.dtsi      | 128 +++++++++---------
+>  arch/arm64/boot/dts/lg/lg1312.dtsi            |   8 +-
+>  arch/arm64/boot/dts/lg/lg1313.dtsi            |   8 +-
+>  arch/arm64/boot/dts/marvell/armada-372x.dtsi  |   2 +-
+>  arch/arm64/boot/dts/marvell/armada-37xx.dtsi  |   2 +-
+>  .../boot/dts/marvell/armada-ap806-dual.dtsi   |   4 +-
+>  .../boot/dts/marvell/armada-ap806-quad.dtsi   |   8 +-
+>  .../marvell/armada-ap810-ap0-octa-core.dtsi   |  16 +--
+>  arch/arm64/boot/dts/mediatek/mt7622.dtsi      |   4 +-
+>  arch/arm64/boot/dts/nvidia/tegra132.dtsi      |   4 +-
+>  arch/arm64/boot/dts/nvidia/tegra186.dtsi      |  12 +-
+>  arch/arm64/boot/dts/nvidia/tegra194.dtsi      |  16 +--
+>  arch/arm64/boot/dts/qcom/ipq8074.dtsi         |   8 +-
+>  arch/arm64/boot/dts/qcom/msm8916.dtsi         |   8 +-
+>  arch/arm64/boot/dts/qcom/msm8992.dtsi         |   2 +-
+>  arch/arm64/boot/dts/qcom/msm8994.dtsi         |   2 +-
+>  arch/arm64/boot/dts/realtek/rtd1295.dtsi      |   8 +-
+>  arch/arm64/boot/dts/renesas/r8a774a1.dtsi     |  12 +-
+>  arch/arm64/boot/dts/renesas/r8a7795.dtsi      |  16 +--
+>  arch/arm64/boot/dts/renesas/r8a7796.dtsi      |  12 +-
+>  arch/arm64/boot/dts/renesas/r8a77965.dtsi     |   4 +-
+>  arch/arm64/boot/dts/renesas/r8a77970.dtsi     |   4 +-
+>  arch/arm64/boot/dts/renesas/r8a77980.dtsi     |   8 +-
+>  arch/arm64/boot/dts/renesas/r8a77990.dtsi     |   4 +-
+>  arch/arm64/boot/dts/renesas/r8a77995.dtsi     |   2 +-
+>  arch/arm64/boot/dts/rockchip/px30.dtsi        |   8 +-
+>  arch/arm64/boot/dts/rockchip/rk3328.dtsi      |   8 +-
+>  arch/arm64/boot/dts/rockchip/rk3368.dtsi      |  16 +--
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi      |  12 +-
+>  .../boot/dts/socionext/uniphier-ld11.dtsi     |   4 +-
+>  .../boot/dts/socionext/uniphier-ld20.dtsi     |   8 +-
+>  .../boot/dts/socionext/uniphier-pxs3.dtsi     |   8 +-
+>  arch/arm64/boot/dts/sprd/sc9836.dtsi          |   8 +-
+>  arch/arm64/boot/dts/sprd/sc9860.dtsi          |  16 +--
+>  arch/arm64/boot/dts/synaptics/as370.dtsi      |   8 +-
+>  arch/arm64/boot/dts/synaptics/berlin4ct.dtsi  |   8 +-
 
-Can you rebase on that tree and resend only the missing ones (after
-fixing the build errors that Mark mentionned)?
+For Synaptics SoC,
 
+Acked-by: Jisheng Zhang <Jisheng.Zhang-Gq53QDLGkWKakBO8gow8eQ@public.gmane.org>
 
->  Documentation/devicetree/bindings/sound/mt6358.txt |   18 +
->  .../devicetree/bindings/sound/mt8183-afe-pcm.txt   |   36 +
->  .../devicetree/bindings/sound/mt8183-mt6358.txt    |   12 +
->  sound/soc/codecs/Kconfig                           |    7 +
->  sound/soc/codecs/Makefile                          |    2 +
->  sound/soc/codecs/mt6358.c                          | 2336 ++++++++++++++++++++
->  sound/soc/codecs/mt6358.h                          | 2314 +++++++++++++++++++
->  sound/soc/mediatek/Kconfig                         |   20 +
->  sound/soc/mediatek/Makefile                        |    1 +
->  sound/soc/mediatek/mt8183/Makefile                 |   13 +
->  sound/soc/mediatek/mt8183/mt8183-afe-clk.c         |  611 +++++
->  sound/soc/mediatek/mt8183/mt8183-afe-clk.h         |   38 +
->  sound/soc/mediatek/mt8183/mt8183-afe-common.h      |  108 +
->  sound/soc/mediatek/mt8183/mt8183-afe-pcm.c         | 1237 +++++++++++
->  sound/soc/mediatek/mt8183/mt8183-dai-adda.c        |  501 +++++
->  sound/soc/mediatek/mt8183/mt8183-dai-hostless.c    |  118 +
->  sound/soc/mediatek/mt8183/mt8183-dai-i2s.c         | 1040 +++++++++
->  sound/soc/mediatek/mt8183/mt8183-dai-pcm.c         |  318 +++
->  sound/soc/mediatek/mt8183/mt8183-dai-tdm.c         |  639 ++++++
->  sound/soc/mediatek/mt8183/mt8183-interconnection.h |   33 +
->  sound/soc/mediatek/mt8183/mt8183-mt6358.c          |  208 ++
->  sound/soc/mediatek/mt8183/mt8183-reg.h             | 1666 ++++++++++++++
->  22 files changed, 11276 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/sound/mt6358.txt
->  create mode 100644 Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt
->  create mode 100644 Documentation/devicetree/bindings/sound/mt8183-mt6358.txt
->  create mode 100644 sound/soc/codecs/mt6358.c
->  create mode 100644 sound/soc/codecs/mt6358.h
->  create mode 100644 sound/soc/mediatek/mt8183/Makefile
->  create mode 100644 sound/soc/mediatek/mt8183/mt8183-afe-clk.c
->  create mode 100644 sound/soc/mediatek/mt8183/mt8183-afe-clk.h
->  create mode 100644 sound/soc/mediatek/mt8183/mt8183-afe-common.h
->  create mode 100644 sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
->  create mode 100644 sound/soc/mediatek/mt8183/mt8183-dai-adda.c
->  create mode 100644 sound/soc/mediatek/mt8183/mt8183-dai-hostless.c
->  create mode 100644 sound/soc/mediatek/mt8183/mt8183-dai-i2s.c
->  create mode 100644 sound/soc/mediatek/mt8183/mt8183-dai-pcm.c
->  create mode 100644 sound/soc/mediatek/mt8183/mt8183-dai-tdm.c
->  create mode 100644 sound/soc/mediatek/mt8183/mt8183-interconnection.h
->  create mode 100644 sound/soc/mediatek/mt8183/mt8183-mt6358.c
->  create mode 100644 sound/soc/mediatek/mt8183/mt8183-reg.h
->
-> --
-> 1.9.1
->
-> _______________________________________________
-> Alsa-devel mailing list
-> Alsa-devel@alsa-project.org
-> http://mailman.alsa-project.org/mailman/listinfo/alsa-devel
+Sorry for being late,
+Jisheng
