@@ -1,77 +1,62 @@
-From: Bastien Nocera <hadess@hadess.net>
-Subject: Re: [PATCH] input: goodix - support Goodix gt5688
-Date: Mon, 28 Jan 2019 19:24:33 +0100
-Message-ID: <7e289e6b3410a3fdea99d7d6becfe5180a69f0c5.camel@hadess.net>
-References: <20190128170310.GA305@bogon.m.sigxcpu.org>
+From: Andrew Morton <akpm@linux-foundation.org>
+Subject: Re: [PATCH v2] mm/slub: introduce SLAB_WARN_ON_ERROR
+Date: Mon, 28 Jan 2019 12:29:54 -0800
+Message-ID: <20190128122954.949c2e6699d6e5ef060a325c@linux-foundation.org>
+References: <1548313223-17114-1-git-send-email-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190128170310.GA305@bogon.m.sigxcpu.org>
+In-Reply-To: <1548313223-17114-1-git-send-email-miles.chen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Guido =?ISO-8859-1?Q?G=FCnther?= <agx@sigxcpu.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: miles.chen@mediatek.com
+Cc: Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Jonathan Corbet <corbet@lwn.net>, linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2019-01-28 at 18:03 +0100, Guido Günther wrote:
-> From what I've seen in vendor trees it's fine to treat this as gt1x¹.
+On Thu, 24 Jan 2019 15:00:23 +0800 <miles.chen@mediatek.com> wrote:
+
+> From: Miles Chen <miles.chen@mediatek.com>
 > 
-> [1]: https://github.com/TadiT7/android_kernel_mtk-4.4/tree/master/drivers/input/touchscreen/mediatek/GT5688
-
-Can you please point to the exact line of code that makes you say that?
-I'm not saying it's not compatible, but it's not the same driver that
-the current goodix.c was based on, or even goodix.c.
-
-Can you please elaborate?
-
-Finding that data in the specs would also be fine:
-https://github.com/hadess/gt9xx/tree/master/specifications
-
-Cheers
-
-[1]: original driver:
-https://github.com/hadess/gt9xx/commit/82b141220e8bce00060e0de697735d0a70af2678
-
-> Signed-off-by: Guido Günther <agx@sigxcpu.org>
-> ---
->  Documentation/devicetree/bindings/input/touchscreen/goodix.txt | 1 +
->  drivers/input/touchscreen/goodix.c                             | 2
-> ++
->  2 files changed, 3 insertions(+)
+> When debugging slab errors in slub.c, sometimes we have to trigger
+> a panic in order to get the coredump file. Add a debug option
+> SLAB_WARN_ON_ERROR to toggle WARN_ON() when the option is set.
 > 
-> diff --git
-> a/Documentation/devicetree/bindings/input/touchscreen/goodix.txt
-> b/Documentation/devicetree/bindings/input/touchscreen/goodix.txt
-> index f7e95c52f3c7..57d3d8870a09 100644
-> --- a/Documentation/devicetree/bindings/input/touchscreen/goodix.txt
-> +++ b/Documentation/devicetree/bindings/input/touchscreen/goodix.txt
-> @@ -3,6 +3,7 @@ Device tree bindings for Goodix GT9xx series
-> touchscreen controller
->  Required properties:
->  
->   - compatible		: Should be "goodix,gt1151"
-> +				 or "goodix,gt5688"
->  				 or "goodix,gt911"
->  				 or "goodix,gt9110"
->  				 or "goodix,gt912"
-> diff --git a/drivers/input/touchscreen/goodix.c
-> b/drivers/input/touchscreen/goodix.c
-> index f2d9c2c41885..47b1ced41576 100644
-> --- a/drivers/input/touchscreen/goodix.c
-> +++ b/drivers/input/touchscreen/goodix.c
-> @@ -216,6 +216,7 @@ static const struct goodix_chip_data
-> *goodix_get_chip_data(u16 id)
->  {
->  	switch (id) {
->  	case 1151:
-> +	case 5688:
->  		return &gt1x_chip_data;
->  
->  	case 911:
-> @@ -942,6 +943,7 @@ MODULE_DEVICE_TABLE(acpi, goodix_acpi_match);
->  #ifdef CONFIG_OF
->  static const struct of_device_id goodix_of_match[] = {
->  	{ .compatible = "goodix,gt1151" },
-> +	{ .compatible = "goodix,gt5688" },
->  	{ .compatible = "goodix,gt911" },
->  	{ .compatible = "goodix,gt9110" },
->  	{ .compatible = "goodix,gt912" },
+> Change since v1:
+> 1. Add a special debug option SLAB_WARN_ON_ERROR and toggle WARN_ON()
+> if it is set.
+> 2. SLAB_WARN_ON_ERROR can be set by kernel parameter slub_debug.
+> 
+
+Hopefully the slab developers will have an opinion on this.
+
+> --- a/Documentation/vm/slub.rst
+> +++ b/Documentation/vm/slub.rst
+> @@ -52,6 +52,7 @@ Possible debug options are::
+>  	A		Toggle failslab filter mark for the cache
+>  	O		Switch debugging off for caches that would have
+>  			caused higher minimum slab orders
+> +	W		Toggle WARN_ON() on slab errors
+>  	-		Switch all debugging off (useful if the kernel is
+>  			configured with CONFIG_SLUB_DEBUG_ON)
+
+This documentation is poorly phrased.  The term "toggle" means to
+invert the value of a boolean: if it was 1, make it 0 and if it was 0,
+make it 1.  But that isn't what these options do.  Something like
+"enable/disable" would be better.   So...
+
+--- a/Documentation/vm/slub.rst~mm-slub-introduce-slab_warn_on_error-fix
++++ a/Documentation/vm/slub.rst
+@@ -49,10 +49,10 @@ Possible debug options are::
+ 	P		Poisoning (object and padding)
+ 	U		User tracking (free and alloc)
+ 	T		Trace (please only use on single slabs)
+-	A		Toggle failslab filter mark for the cache
++	A		Enable/disable failslab filter mark for the cache
+ 	O		Switch debugging off for caches that would have
+ 			caused higher minimum slab orders
+-	W		Toggle WARN_ON() on slab errors
++	W		Enable/disable WARN_ON() on slab errors
+ 	-		Switch all debugging off (useful if the kernel is
+ 			configured with CONFIG_SLUB_DEBUG_ON)
+ 
+_
