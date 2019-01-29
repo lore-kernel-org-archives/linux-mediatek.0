@@ -1,69 +1,38 @@
-From: Sean Wang <sean.wang@kernel.org>
-Subject: Re: [PATCH] pinctrl: mediatek: fix dependencies for PINCTRL_MT76XX
-Date: Mon, 28 Jan 2019 21:02:04 -0800
-Message-ID: <CAGp9LzoVZQx2fb-ETY=sGBB3Xx81jC8t2krczv7h=dVNE-ph2Q@mail.gmail.com>
-References: <20190128223521.2690-1-voytikd@gmail.com>
+From: Christopher Lameter <cl@linux.com>
+Subject: Re: [PATCH v2] mm/slub: introduce SLAB_WARN_ON_ERROR
+Date: Tue, 29 Jan 2019 05:46:34 +0000
+Message-ID: <0100016898251824-359bbfae-e32b-43a6-8c58-8811a7b24520-000000@email.amazonses.com>
+References: <1548313223-17114-1-git-send-email-miles.chen@mediatek.com> <20190128122954.949c2e6699d6e5ef060a325c@linux-foundation.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=US-ASCII
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190128223521.2690-1-voytikd@gmail.com>
+In-Reply-To: <20190128122954.949c2e6699d6e5ef060a325c@linux-foundation.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Dmitry Voytik <voytikd@gmail.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Andrew Morton <akpm@linux-foundation.org>
+Cc: miles.chen@mediatek.com, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Jonathan Corbet <corbet@lwn.net>, linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jan 28, 2019 at 2:35 PM Dmitry Voytik <voytikd@gmail.com> wrote:
->
-> How to reproduce the problem:
-> $ make tinyconfig
-> $ make menuconfig
-> then enable:
->  CONFIG_COMPILE_TEST=y
->  CONFIG_PINCTRL=y
-> and any of these:
->  CONFIG_PINCTRL_MT7622=y
->  CONFIG_PINCTRL_MT7629=y
->  CONFIG_PINCTRL_MT7623=y
->
-> This combination causes build failure.
->
-> Fix the problem by making PINCTRL_MT76XX to depend on CONFIG_OF=y.
->
-> Signed-off-by: Dmitry Voytik <voytikd@gmail.com>
-> ---
->  drivers/pinctrl/mediatek/Kconfig | 3 +++
->  1 file changed, 3 insertions(+)
->
-> diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
-> index 1817786ab6aa..a005cbccb4f7 100644
-> --- a/drivers/pinctrl/mediatek/Kconfig
-> +++ b/drivers/pinctrl/mediatek/Kconfig
-> @@ -45,12 +45,14 @@ config PINCTRL_MT2701
->  config PINCTRL_MT7623
->         bool "Mediatek MT7623 pin control with generic binding"
->         depends on MACH_MT7623 || COMPILE_TEST
-> +       depends on OF
->         default MACH_MT7623
->         select PINCTRL_MTK_MOORE
->
->  config PINCTRL_MT7629
->         bool "Mediatek MT7629 pin control"
->         depends on MACH_MT7629 || COMPILE_TEST
-> +       depends on OF
->         default MACH_MT7629
->         select PINCTRL_MTK_MOORE
->
-> @@ -92,6 +94,7 @@ config PINCTRL_MT6797
->
->  config PINCTRL_MT7622
->         bool "MediaTek MT7622 pin control"
-> +       depends on OF
->         depends on ARM64 || COMPILE_TEST
->         default ARM64 && ARCH_MEDIATEK
->         select PINCTRL_MTK_MOORE
-> --
-> 2.20.1
->
+On Mon, 28 Jan 2019, Andrew Morton wrote:
 
-It seems the commit 2d2d478576d71000b29c52668c5712c825ee9af8 already
-fixed the problem or is there something I'm missing?
+> > When debugging slab errors in slub.c, sometimes we have to trigger
+> > a panic in order to get the coredump file. Add a debug option
+> > SLAB_WARN_ON_ERROR to toggle WARN_ON() when the option is set.
+> >
+> > Change since v1:
+> > 1. Add a special debug option SLAB_WARN_ON_ERROR and toggle WARN_ON()
+> > if it is set.
+> > 2. SLAB_WARN_ON_ERROR can be set by kernel parameter slub_debug.
+> >
+>
+> Hopefully the slab developers will have an opinion on this.
+
+Debugging slab itself is usually done in kvm or some other virtualized
+environment. Then gdb can be used to set breakpoints. Otherwise one may
+add printks and stuff to the allocators to figure out more or use perf.
+
+What you are changing here is the debugging for data corruption within
+objects managed by slub or the metadata. Slub currently outputs extensive
+data about the metadata corruption (typically caused by a user of
+slab allocation) which should allow you to set a proper
+breakpoint not in the allocator but in the subsystem where the corruption
+occurs.
