@@ -1,61 +1,28 @@
-From: Dmitry Voytik <voytikd@gmail.com>
-Subject: [PATCH] pinctrl: mediatek: fix dependencies for PINCTRL_MT76XX
-Date: Mon, 28 Jan 2019 23:35:21 +0100
-Message-ID: <20190128223521.2690-1-voytikd@gmail.com>
+From: David Rientjes <rientjes@google.com>
+Subject: Re: [PATCH v2] mm/slub: introduce SLAB_WARN_ON_ERROR
+Date: Mon, 28 Jan 2019 17:41:59 -0800 (PST)
+Message-ID: <alpine.DEB.2.21.1901281739230.216488@chino.kir.corp.google.com>
+References: <1548313223-17114-1-git-send-email-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1548313223-17114-1-git-send-email-miles.chen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Dmitry Voytik <voytikd@gmail.com>
+To: Miles Chen <miles.chen@mediatek.com>
+Cc: Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Andrew Morton <akpm@linux-foundation.org>, Jonathan Corbet <corbet@lwn.net>, linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-How to reproduce the problem:
-$ make tinyconfig
-$ make menuconfig
-then enable:
- CONFIG_COMPILE_TEST=y
- CONFIG_PINCTRL=y
-and any of these:
- CONFIG_PINCTRL_MT7622=y
- CONFIG_PINCTRL_MT7629=y
- CONFIG_PINCTRL_MT7623=y
+On Thu, 24 Jan 2019, miles.chen@mediatek.com wrote:
 
-This combination causes build failure.
+> From: Miles Chen <miles.chen@mediatek.com>
+> 
+> When debugging slab errors in slub.c, sometimes we have to trigger
+> a panic in order to get the coredump file. Add a debug option
+> SLAB_WARN_ON_ERROR to toggle WARN_ON() when the option is set.
+> 
 
-Fix the problem by making PINCTRL_MT76XX to depend on CONFIG_OF=y.
-
-Signed-off-by: Dmitry Voytik <voytikd@gmail.com>
----
- drivers/pinctrl/mediatek/Kconfig | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
-index 1817786ab6aa..a005cbccb4f7 100644
---- a/drivers/pinctrl/mediatek/Kconfig
-+++ b/drivers/pinctrl/mediatek/Kconfig
-@@ -45,12 +45,14 @@ config PINCTRL_MT2701
- config PINCTRL_MT7623
- 	bool "Mediatek MT7623 pin control with generic binding"
- 	depends on MACH_MT7623 || COMPILE_TEST
-+	depends on OF
- 	default MACH_MT7623
- 	select PINCTRL_MTK_MOORE
- 
- config PINCTRL_MT7629
- 	bool "Mediatek MT7629 pin control"
- 	depends on MACH_MT7629 || COMPILE_TEST
-+	depends on OF
- 	default MACH_MT7629
- 	select PINCTRL_MTK_MOORE
- 
-@@ -92,6 +94,7 @@ config PINCTRL_MT6797
- 
- config PINCTRL_MT7622
- 	bool "MediaTek MT7622 pin control"
-+	depends on OF
- 	depends on ARM64 || COMPILE_TEST
- 	default ARM64 && ARCH_MEDIATEK
- 	select PINCTRL_MTK_MOORE
--- 
-2.20.1
+Wouldn't it be better to enable/disable this for all slab caches instead 
+of individual caches at runtime?  I'm not sure excluding some caches 
+because you know they'll WARN and trigger panic_on_warn unnecessarily is 
+valid since it could be enabled for that cache as well through this 
+interface.
