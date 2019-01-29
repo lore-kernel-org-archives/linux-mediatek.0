@@ -1,64 +1,79 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH 6/7] arm: mediatek: add MT7629 smp bring up code
-Date: Tue, 29 Jan 2019 12:31:18 +0800
-Message-ID: <06cca198146e5583690e5cb6c838c4603c9fa821.1548735271.git.ryder.lee@mediatek.com>
-References: <d1ab6c89b115ad0582815816490fa0c13ea83178.1548735271.git.ryder.lee@mediatek.com>
+From: Amit Kucheria <amit.kucheria@linaro.org>
+Subject: [PATCH v5 0/9] cpufreq: Add flag to auto-register as cooling device
+Date: Tue, 29 Jan 2019 10:25:06 +0530
+Message-ID: <cover.1548737236.git.amit.kucheria@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <d1ab6c89b115ad0582815816490fa0c13ea83178.1548735271.git.ryder.lee@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, Weijie Gao <weijie.gao@mediatek.com>, Roy Luo <roychl666@gmail.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-kernel@vger.kernel.org
+Cc: "open list:CPU FREQUENCY SCALING FRAMEWORK" <linux-pm@vger.kernel.org>, Viresh Kumar <viresh.kumar@linaro.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Eduardo Valentin <edubezval@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Sudeep Holla <sudeep.holla@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Zhang Rui <rui.zhang@intel.com>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add support for booting secondary CPUs on MT7629.
+Add a flag for cpufreq drivers to tell cpufreq core to auto-register
+themselves as a thermal cooling device.
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- arch/arm/mach-mediatek/Kconfig    | 4 ++++
- arch/arm/mach-mediatek/mediatek.c | 1 +
- arch/arm/mach-mediatek/platsmp.c  | 1 +
- 3 files changed, 6 insertions(+)
+There series converts over all the drivers except arm_big_little.c.
+Tested on SDM845 with the qcom-cpufreq-hw driver. Only compile-tested the
+others.
 
-diff --git a/arch/arm/mach-mediatek/Kconfig b/arch/arm/mach-mediatek/Kconfig
-index 91cc461..11ed264 100644
---- a/arch/arm/mach-mediatek/Kconfig
-+++ b/arch/arm/mach-mediatek/Kconfig
-@@ -26,6 +26,10 @@ config MACH_MT7623
- 	bool "MediaTek MT7623 SoCs support"
- 	default ARCH_MEDIATEK
- 
-+config MACH_MT7629
-+	bool "MediaTek MT7629 SoCs support"
-+	default ARCH_MEDIATEK
-+
- config MACH_MT8127
- 	bool "MediaTek MT8127 SoCs support"
- 	default ARCH_MEDIATEK
-diff --git a/arch/arm/mach-mediatek/mediatek.c b/arch/arm/mach-mediatek/mediatek.c
-index c3cf215..b6a81ba 100644
---- a/arch/arm/mach-mediatek/mediatek.c
-+++ b/arch/arm/mach-mediatek/mediatek.c
-@@ -49,6 +49,7 @@ static void __init mediatek_timer_init(void)
- 	"mediatek,mt6589",
- 	"mediatek,mt6592",
- 	"mediatek,mt7623",
-+	"mediatek,mt7629",
- 	"mediatek,mt8127",
- 	"mediatek,mt8135",
- 	NULL,
-diff --git a/arch/arm/mach-mediatek/platsmp.c b/arch/arm/mach-mediatek/platsmp.c
-index 51e8556..c9d7c04 100644
---- a/arch/arm/mach-mediatek/platsmp.c
-+++ b/arch/arm/mach-mediatek/platsmp.c
-@@ -60,6 +60,7 @@ struct mtk_smp_boot_info {
- static const struct of_device_id mtk_smp_boot_infos[] __initconst = {
- 	{ .compatible   = "mediatek,mt6589", .data = &mtk_mt6589_boot },
- 	{ .compatible   = "mediatek,mt7623", .data = &mtk_mt7623_boot },
-+	{ .compatible   = "mediatek,mt7629", .data = &mtk_mt7623_boot },
- 	{},
- };
- 
+Things needing fixing (but not a blocker for the series):
+ - Look at how to detect that we're not in IKS mode in arm_big_little's
+   .ready callback.
+
+Changes since v4:
+ - Added IS_ENABLED guards in cpufreq.c
+ - Changed flag name to CPUFREQ_IS_COOLING_DEV
+ - Collected various review tags
+
+Changes since v3:
+ - Got rid of wrapper function to register/unregister cooling devices.
+   Directly call the function in cpufreq.c
+
+Changes since v2:
+ - Get rid of #ifdef'ery and let the pointer exist in all cases
+ - Get rid of (!CPU_THERMAL || THERMAL) dependency in all cpufreq drivers'
+   Kconfig
+
+Changes since v1:
+- Fix compilation failures with allmodconfig
+- Get rid of #ifdef in cpufreq.c
+- Removed miscellaneous patches and sent them separately
+- Merged patches 1 and 2 from v1
+
+Amit Kucheria (9):
+  thermal: cpu_cooling: Require thermal core to be compiled in
+  cpufreq: Auto-register the driver as a thermal cooling device if asked
+  cpufreq: qcom-hw: Register as a cpufreq cooling device
+  cpufreq: imx6q: Use auto-registration of thermal cooling device
+  cpufreq: cpufreq-dt: Use auto-registration of thermal cooling device
+  cpufreq: mediatek: Use auto-registration of thermal cooling device
+  cpufreq: qoriq: Use auto-registration of thermal cooling device
+  cpufreq: scmi: Use auto-registration of thermal cooling device
+  cpufreq: scpi: Use auto-registration of thermal cooling device
+
+ drivers/cpufreq/Kconfig            |  3 ---
+ drivers/cpufreq/Kconfig.arm        |  5 -----
+ drivers/cpufreq/cpufreq-dt.c       | 14 ++------------
+ drivers/cpufreq/cpufreq.c          | 13 +++++++++++++
+ drivers/cpufreq/imx6q-cpufreq.c    | 24 ++----------------------
+ drivers/cpufreq/mediatek-cpufreq.c | 14 ++------------
+ drivers/cpufreq/qcom-cpufreq-hw.c  |  3 ++-
+ drivers/cpufreq/qoriq-cpufreq.c    | 15 ++-------------
+ drivers/cpufreq/scmi-cpufreq.c     | 14 ++------------
+ drivers/cpufreq/scpi-cpufreq.c     | 14 ++------------
+ drivers/thermal/Kconfig            |  1 +
+ include/linux/cpufreq.h            |  9 +++++++++
+ 12 files changed, 37 insertions(+), 92 deletions(-)
+
 -- 
-1.9.1
+2.17.1
