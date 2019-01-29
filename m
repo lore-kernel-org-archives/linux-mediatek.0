@@ -1,37 +1,56 @@
-From: Miles Chen <miles.chen@mediatek.com>
-Subject: Re: [PATCH v2] mm/slub: introduce SLAB_WARN_ON_ERROR
-Date: Tue, 29 Jan 2019 11:45:57 +0800
-Message-ID: <1548733557.9796.13.camel@mtkswgap22>
-References: <1548313223-17114-1-git-send-email-miles.chen@mediatek.com>
-         <alpine.DEB.2.21.1901281739230.216488@chino.kir.corp.google.com>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH 1/7] Revert "ARM: mediatek: add MT7623a smp bringup code"
+Date: Tue, 29 Jan 2019 12:28:48 +0800
+Message-ID: <d1ab6c89b115ad0582815816490fa0c13ea83178.1548735271.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <alpine.DEB.2.21.1901281739230.216488@chino.kir.corp.google.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: David Rientjes <rientjes@google.com>
-Cc: Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Andrew Morton <akpm@linux-foundation.org>, Jonathan Corbet <corbet@lwn.net>, linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, Weijie Gao <weijie.gao@mediatek.com>, Roy Luo <roychl666@gmail.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2019-01-28 at 17:41 -0800, David Rientjes wrote:
-> On Thu, 24 Jan 2019, miles.chen@mediatek.com wrote:
-> 
-> > From: Miles Chen <miles.chen@mediatek.com>
-> > 
-> > When debugging slab errors in slub.c, sometimes we have to trigger
-> > a panic in order to get the coredump file. Add a debug option
-> > SLAB_WARN_ON_ERROR to toggle WARN_ON() when the option is set.
-> > 
-> 
-> Wouldn't it be better to enable/disable this for all slab caches instead 
-> of individual caches at runtime?  I'm not sure excluding some caches 
-> because you know they'll WARN and trigger panic_on_warn unnecessarily is 
-> valid since it could be enabled for that cache as well through this 
-> interface.
+This reverts commit 3b99ab7deca1e5f4229b4bdecd005d71e22cfc60.
 
-We can enable this option only for specific slab(s).
-e.g., slub_debug=W,dentry
-or
-enable this option for all slabs
-e.g., slub_debug=W
+The compatible "mediatek,mt7623a" is useless, so remove it.
+
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ arch/arm/mach-mediatek/mediatek.c | 2 --
+ arch/arm/mach-mediatek/platsmp.c  | 1 -
+ 2 files changed, 3 deletions(-)
+
+diff --git a/arch/arm/mach-mediatek/mediatek.c b/arch/arm/mach-mediatek/mediatek.c
+index 6910b4e..c3cf215 100644
+--- a/arch/arm/mach-mediatek/mediatek.c
++++ b/arch/arm/mach-mediatek/mediatek.c
+@@ -30,7 +30,6 @@ static void __init mediatek_timer_init(void)
+ 
+ 	if (of_machine_is_compatible("mediatek,mt6589") ||
+ 	    of_machine_is_compatible("mediatek,mt7623") ||
+-	    of_machine_is_compatible("mediatek,mt7623a") ||
+ 	    of_machine_is_compatible("mediatek,mt8135") ||
+ 	    of_machine_is_compatible("mediatek,mt8127")) {
+ 		/* turn on GPT6 which ungates arch timer clocks */
+@@ -50,7 +49,6 @@ static void __init mediatek_timer_init(void)
+ 	"mediatek,mt6589",
+ 	"mediatek,mt6592",
+ 	"mediatek,mt7623",
+-	"mediatek,mt7623a",
+ 	"mediatek,mt8127",
+ 	"mediatek,mt8135",
+ 	NULL,
+diff --git a/arch/arm/mach-mediatek/platsmp.c b/arch/arm/mach-mediatek/platsmp.c
+index 6882ff0..51e8556 100644
+--- a/arch/arm/mach-mediatek/platsmp.c
++++ b/arch/arm/mach-mediatek/platsmp.c
+@@ -60,7 +60,6 @@ struct mtk_smp_boot_info {
+ static const struct of_device_id mtk_smp_boot_infos[] __initconst = {
+ 	{ .compatible   = "mediatek,mt6589", .data = &mtk_mt6589_boot },
+ 	{ .compatible   = "mediatek,mt7623", .data = &mtk_mt7623_boot },
+-	{ .compatible   = "mediatek,mt7623a", .data = &mtk_mt7623_boot },
+ 	{},
+ };
+ 
+-- 
+1.9.1
