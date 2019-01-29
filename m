@@ -1,14 +1,15 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH 01/10] soc: mediatek: add mt8183 compatible name
-Date: Tue, 29 Jan 2019 16:51:51 +0800
-Message-ID: <1548751911.11055.2.camel@mtksdaap41>
-References: <1548747128-60136-1-git-send-email-bibby.hsieh@mediatek.com>
- <1548747128-60136-2-git-send-email-bibby.hsieh@mediatek.com>
+From: Guido =?iso-8859-1?Q?G=FCnther?= <agx@sigxcpu.org>
+Subject: Re: [PATCH] input: goodix - support Goodix gt5688
+Date: Tue, 29 Jan 2019 10:16:51 +0100
+Message-ID: <20190129091651.GA8497@bogon.m.sigxcpu.org>
+References: <20190128170310.GA305@bogon.m.sigxcpu.org>
+ <7e289e6b3410a3fdea99d7d6becfe5180a69f0c5.camel@hadess.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1548747128-60136-2-git-send-email-bibby.hsieh@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <7e289e6b3410a3fdea99d7d6becfe5180a69f0c5.camel@hadess.net>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -18,36 +19,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, srv_heupstream@mediatek.com, kendrick.hsu@mediatek.com, Daoyuan Huang <daoyuan.huang@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Jassi Brar <jassisinghbrar@gmail.com>, linux-kernel@vger.kernel.org, Daniel Kurtz <djkurtz@chromium.org>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Houlong Wei <houlong.wei@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Frederic Chen <Frederic.Chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, ginny.chen@mediatek.com
+To: Bastien Nocera <hadess@hadess.net>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-input@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Bibby:
+Hi,
+On Mon, Jan 28, 2019 at 07:24:33PM +0100, Bastien Nocera wrote:
+> On Mon, 2019-01-28 at 18:03 +0100, Guido G=FCnther wrote:
+> > From what I've seen in vendor trees it's fine to treat this as gt1x=B9.
+> > =
 
-On Tue, 2019-01-29 at 15:31 +0800, Bibby Hsieh wrote:
-> add mt8183 compatible name
-> 
-> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-> ---
->  drivers/mailbox/mtk-cmdq-mailbox.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-> index 2281178..909eb23 100644
-> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> @@ -536,6 +536,7 @@ static int cmdq_probe(struct platform_device *pdev)
->  
->  static const struct of_device_id cmdq_of_ids[] = {
->  	{.compatible = "mediatek,mt8173-gce", .data = (void *)16},
-> +	{.compatible = "mediatek,mt8183-gce", .data = (void *)24},
+> > [1]: https://github.com/TadiT7/android_kernel_mtk-4.4/tree/master/drive=
+rs/input/touchscreen/mediatek/GT5688
+> =
 
-You should define it then use it, so reorder this patch after the
-binding patch.
+> Can you please point to the exact line of code that makes you say that?
+> I'm not saying it's not compatible, but it's not the same driver that
+> the current goodix.c was based on, or even goodix.c.
+>
+> Can you please elaborate?
 
-Regards,
-CK
+I basically looked at the registers uses for the config update:
 
->  	{}
->  };
->  
+https://github.com/TadiT7/android_kernel_mtk-4.4/blob/master/drivers/input/=
+touchscreen/mediatek/GT5688/include/gt1x_tpd_common.h#L152
+https://github.com/TadiT7/android_kernel_mtk-4.4/blob/master/drivers/input/=
+touchscreen/mediatek/GT5688/gt1x_generic.c#L430
+
+That and the fact that the driver is doing it's job well made me believe
+that's good for base support. Things like hotknot, gesture wakeup and
+proximity sensor will need additional work.
+
+> Finding that data in the specs would also be fine:
+> https://github.com/hadess/gt9xx/tree/master/specifications
+
+https://github.com/hadess/gt9xx/pull/3
+
+Cheers,
+ -- Guido
