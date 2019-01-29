@@ -1,37 +1,53 @@
-From: MyungJoo Ham <myungjoo.ham@samsung.com>
-Subject: RE: [PATCH 3/3] devfreq: add mediatek cci devfreq
-Date: Tue, 29 Jan 2019 17:17:50 +0900
-Message-ID: <20190129081750epcms1p41e46de569005622ad3d90f9aaa75f545@epcms1p4>
-References: <1548743704-16821-4-git-send-email-andrew-sh.cheng@mediatek.com>
-        <1548743704-16821-1-git-send-email-andrew-sh.cheng@mediatek.com>
-        <CGME20190129063600epcas2p255b062c64f22555692ff895634ea4eb0@epcms1p4>
-Reply-To: myungjoo.ham@samsung.com
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH 01/10] soc: mediatek: add mt8183 compatible name
+Date: Tue, 29 Jan 2019 16:51:51 +0800
+Message-ID: <1548751911.11055.2.camel@mtksdaap41>
+References: <1548747128-60136-1-git-send-email-bibby.hsieh@mediatek.com>
+ <1548747128-60136-2-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1548743704-16821-4-git-send-email-andrew-sh.cheng@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>
-Cc: "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "srv_heupstream@mediatek.com" <srv_heupstream@mediatek.com>, "fan.chen@mediatek.com" <fan.chen@mediatek.com>, "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1548747128-60136-2-git-send-email-bibby.hsieh@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, srv_heupstream@mediatek.com, kendrick.hsu@mediatek.com, Daoyuan Huang <daoyuan.huang@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Jassi Brar <jassisinghbrar@gmail.com>, linux-kernel@vger.kernel.org, Daniel Kurtz <djkurtz@chromium.org>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Houlong Wei <houlong.wei@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Frederic Chen <Frederic.Chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, ginny.chen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
->From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
->
->For big/little cpu cluster architecture,
->not only CPU frequency, but CCI frequency will also affect performance.
->
->Little cores and cci share the same buck in Mediatek mt8183 IC,
->so we add a CCI devfreq which will get notification when buck voltage
->is changed, then CCI devfreq can set cci frequency as high as possible.
->
->Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
+Hi, Bibby:
 
-Please correct the coding style first in the .c file.
+On Tue, 2019-01-29 at 15:31 +0800, Bibby Hsieh wrote:
+> add mt8183 compatible name
+> 
+> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+> ---
+>  drivers/mailbox/mtk-cmdq-mailbox.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+> index 2281178..909eb23 100644
+> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+> @@ -536,6 +536,7 @@ static int cmdq_probe(struct platform_device *pdev)
+>  
+>  static const struct of_device_id cmdq_of_ids[] = {
+>  	{.compatible = "mediatek,mt8173-gce", .data = (void *)16},
+> +	{.compatible = "mediatek,mt8183-gce", .data = (void *)24},
 
-- empty last line?
-- inconsistent indentation (line26? match the first lines for all variable declarations OR don't match them at all)
-- Need proper boilerplate and try to comply with C89.
+You should define it then use it, so reorder this patch after the
+binding patch.
 
-Cheers,
-MyungJoo
+Regards,
+CK
+
+>  	{}
+>  };
+>  
