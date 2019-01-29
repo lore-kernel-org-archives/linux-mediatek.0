@@ -1,90 +1,64 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH 07/10] soc: mediatek: add cmdq_dev_get_event function
-Date: Tue, 29 Jan 2019 18:59:23 +0800
-Message-ID: <1548759563.11055.10.camel@mtksdaap41>
-References: <1548747128-60136-1-git-send-email-bibby.hsieh@mediatek.com>
-         <1548747128-60136-8-git-send-email-bibby.hsieh@mediatek.com>
+From: Guido =?iso-8859-1?Q?G=FCnther?= <agx@sigxcpu.org>
+Subject: [PATCH v2] input: goodix - support Goodix gt5688
+Date: Tue, 29 Jan 2019 12:11:13 +0100
+Message-ID: <20190129111113.GA32222@bogon.m.sigxcpu.org>
+References: <12e21befacf68861ddf34020838ff7a6e6e078ad.camel@hadess.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1548747128-60136-8-git-send-email-bibby.hsieh@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <12e21befacf68861ddf34020838ff7a6e6e078ad.camel@hadess.net>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.chen@mediatek.com, kendrick.hsu@mediatek.com
+To: Bastien Nocera <hadess@hadess.net>
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Guido =?iso-8859-1?Q?G=FCnther?= <agx@sigxcpu.org>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Bibby:
+>From what I've seen in vendor trees it's fine to treat this as gt1x¹.
+Tested on the Purism Librem 5 Devkit (Rocktech JH057N00900 panel).
 
-On Tue, 2019-01-29 at 15:32 +0800, Bibby Hsieh wrote:
-> When client ask gce to clear or wait for event,
-> client need to pass event number to the API.
-> We suggest client store the event information in device node,
-> so we provide an API for client parse the event property.
-> 
-> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-> ---
->  drivers/soc/mediatek/mtk-cmdq-helper.c | 29 +++++++++++++++++++++++++++++
->  include/linux/soc/mediatek/mtk-cmdq.h  |  1 +
->  2 files changed, 30 insertions(+)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> index 6ad997f..16c0393 100644
-> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> @@ -56,6 +56,35 @@ struct cmdq_base *cmdq_register_device(struct device *dev)
->  }
->  EXPORT_SYMBOL(cmdq_register_device);
->  
-> +s32 cmdq_dev_get_event(struct device *dev, const char *name)
-> +{
-> +	s32 index = 0;
-> +	struct of_phandle_args spec;
-> +	s32 result;
-> +
-> +	if (!dev)
-> +		return -EINVAL;
-> +
-> +	index = of_property_match_string(dev->of_node, "gce-event-names", name);
+[1]: https://github.com/TadiT7/android_kernel_mtk-4.4/tree/master/drivers/input/touchscreen/mediatek/GT5688
 
-Where is the binding?
+Signed-off-by: Guido Günther <agx@sigxcpu.org>
+---
+Changes from v1:
+* Add tested board to commit message
 
-> +	if (index < 0) {
-> +		dev_err(dev, "no gce-event-names property or no such event:%s",
-> +			name);
-> +		return index;
-> +	}
-> +
-> +	if (of_parse_phandle_with_args(dev->of_node, "gce-events",
-> +	    "#gce-event-cells", index, &spec)) {
+ Documentation/devicetree/bindings/input/touchscreen/goodix.txt | 1 +
+ drivers/input/touchscreen/goodix.c                             | 2 ++
+ 2 files changed, 3 insertions(+)
 
-Ditto.
-
-Regards,
-CK
-
-> +		dev_err(dev, "can't parse gce-events property");
-> +		return -ENODEV;
-> +	}
-> +
-> +	result = spec.args[0];
-> +	of_node_put(spec.np);
-> +
-> +	return result;
-> +}
-> +EXPORT_SYMBOL(cmdq_dev_get_event);
-> +
->  static void cmdq_client_timeout(struct timer_list *t)
->  {
->  	struct cmdq_client *client = from_timer(client, t, timer);
-> diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-> index a1f5eb6..e5b0a98 100644
-> --- a/include/linux/soc/mediatek/mtk-cmdq.h
-> +++ b/include/linux/soc/mediatek/mtk-cmdq.h
-> @@ -139,5 +139,6 @@ int cmdq_pkt_flush_async(struct cmdq_pkt *pkt, cmdq_async_flush_cb cb,
->  
->  u8 cmdq_subsys_base_to_id(struct cmdq_base *clt_base, u32 base);
->  struct cmdq_base *cmdq_register_device(struct device *dev);
-> +s32 cmdq_dev_get_event(struct device *dev, const char *name);
->  
->  #endif	/* __MTK_CMDQ_H__ */
+diff --git a/Documentation/devicetree/bindings/input/touchscreen/goodix.txt b/Documentation/devicetree/bindings/input/touchscreen/goodix.txt
+index f7e95c52f3c7..57d3d8870a09 100644
+--- a/Documentation/devicetree/bindings/input/touchscreen/goodix.txt
++++ b/Documentation/devicetree/bindings/input/touchscreen/goodix.txt
+@@ -3,6 +3,7 @@ Device tree bindings for Goodix GT9xx series touchscreen controller
+ Required properties:
+ 
+  - compatible		: Should be "goodix,gt1151"
++				 or "goodix,gt5688"
+ 				 or "goodix,gt911"
+ 				 or "goodix,gt9110"
+ 				 or "goodix,gt912"
+diff --git a/drivers/input/touchscreen/goodix.c b/drivers/input/touchscreen/goodix.c
+index f2d9c2c41885..47b1ced41576 100644
+--- a/drivers/input/touchscreen/goodix.c
++++ b/drivers/input/touchscreen/goodix.c
+@@ -216,6 +216,7 @@ static const struct goodix_chip_data *goodix_get_chip_data(u16 id)
+ {
+ 	switch (id) {
+ 	case 1151:
++	case 5688:
+ 		return &gt1x_chip_data;
+ 
+ 	case 911:
+@@ -942,6 +943,7 @@ MODULE_DEVICE_TABLE(acpi, goodix_acpi_match);
+ #ifdef CONFIG_OF
+ static const struct of_device_id goodix_of_match[] = {
+ 	{ .compatible = "goodix,gt1151" },
++	{ .compatible = "goodix,gt5688" },
+ 	{ .compatible = "goodix,gt911" },
+ 	{ .compatible = "goodix,gt9110" },
+ 	{ .compatible = "goodix,gt912" },
+-- 
+2.20.1
