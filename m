@@ -1,49 +1,55 @@
-From: Paul Burton <paul.burton@mips.com>
-Subject: Re: [PATCH] MIPS: Select PINCTRL_RT2880 when RALINK is enabled
-Date: Tue, 29 Jan 2019 20:09:07 +0000
-Message-ID: <20190129200905.vnb3amouxq6o57fn@pburton-laptop>
-References: <20190129152522.GA24872@nishad>
+From: Dinh Nguyen <dinguyen-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: Remove inconsistent use of 'arm,armv8'
+ compatible string
+Date: Tue, 29 Jan 2019 17:17:50 -0600
+Message-ID: <2053cd60-479a-4219-2415-ebb6a860a8e7@kernel.org>
+References: <20190109202934.29304-1-robh@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190129152522.GA24872@nishad>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190109202934.29304-1-robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 Content-Language: en-US
-Content-ID: <335B6EC3D6EAD047885765D40FEEF4B3@namprd22.prod.outlook.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Nishad Kamdar <nishadkamdar@gmail.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, NeilBrown <neil@brown.name>, Ralf Baechle <ralf@linux-mips.org>, James Hogan <jhogan@kernel.org>, Joe Perches <joe@perches.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, Kees Cook <keescook@chromium.org>, "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-mips@vger.kernel.org" <linux-mips@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: Nishanth Menon <nm-l0cyMroinI0@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Gregory Clement <gregory.clement-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, bcm-kernel-feedback-l
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Nishad,
 
-On Tue, Jan 29, 2019 at 08:55:27PM +0530, Nishad Kamdar wrote:
-> This patch selects config PINCTRL_RT2880 when config RALINK is
-> enabled as per drivers/staging/mt7621-pinctrl/TODO list. PINCTRL
-> is also selected when RALINK is enabled to avoid config dependency
-> warnings.
->=20
-> Signed-off-by: Nishad Kamdar <nishadkamdar@gmail.com>
+
+On 1/9/19 2:29 PM, Rob Herring wrote:
+> The 'arm,armv8' compatible string is only for software models. It adds
+> little value otherwise and is inconsistently used as a fallback on some
+> platforms. Remove it from those platforms.
+> 
+> This fixes warnings generated by the DT schema.
+> 
+> Reported-by: Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>
+> Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+> Cc: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
+> Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 > ---
->  arch/mips/Kconfig | 2 ++
->  1 file changed, 2 insertions(+)
->=20
-> diff --git a/arch/mips/Kconfig b/arch/mips/Kconfig
-> index e2fc88da0223..cea529cf6284 100644
-> --- a/arch/mips/Kconfig
-> +++ b/arch/mips/Kconfig
-> @@ -623,6 +623,8 @@ config RALINK
->  	select CLKDEV_LOOKUP
->  	select ARCH_HAS_RESET_CONTROLLER
->  	select RESET_CONTROLLER
-> +	select PINCTRL
-> +	select PINCTRL_RT2880
-> =20
->  config SGI_IP22
->  	bool "SGI IP22 (Indy/Indigo2)"
+> armsoc folks, Please apply directly.
+> 
+> Note that there's still a case left in msm8998 that needs a new 
+> compatible string.
+> 
+> Rob
+> 
 
-Wouldn't this also require selecting STAGING? Perhaps that's why it
-wasn't done in the first place?
+>  .../boot/dts/altera/socfpga_stratix10.dtsi    |   8 +-
+
+For Stratix10:
+
+Acked-by: Dinh Nguyen <dinguyen-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 
 Thanks,
-    Paul
+Dinh
