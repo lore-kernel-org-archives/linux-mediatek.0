@@ -1,85 +1,67 @@
-From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH 05/10] soc: mediatek: add subsys-base address transform function
-Date: Tue, 29 Jan 2019 15:32:02 +0800
-Message-ID: <1548747128-60136-6-git-send-email-bibby.hsieh@mediatek.com>
-References: <1548747128-60136-1-git-send-email-bibby.hsieh@mediatek.com>
+From: Miles Chen <miles.chen@mediatek.com>
+Subject: Re: [PATCH v2] mm/slub: introduce SLAB_WARN_ON_ERROR
+Date: Tue, 29 Jan 2019 15:53:44 +0800
+Message-ID: <1548748424.18511.34.camel@mtkswgap22>
+References: <1548313223-17114-1-git-send-email-miles.chen@mediatek.com>
+         <20190128122954.949c2e6699d6e5ef060a325c@linux-foundation.org>
+         <0100016898251824-359bbfae-e32b-43a6-8c58-8811a7b24520-000000@email.amazonses.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1548747128-60136-1-git-send-email-bibby.hsieh@mediatek.com>
+In-Reply-To: <0100016898251824-359bbfae-e32b-43a6-8c58-8811a7b24520-000000@email.amazonses.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, CK HU <ck.hu@mediatek.com>
-Cc: Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.chen@mediatek.com, kendrick.hsu@mediatek.com, Frederic Chen <Frederic.Chen@mediatek.com>
+To: Christopher Lameter <cl@linux.com>
+Cc: Andrew Morton <akpm@linux-foundation.org>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Jonathan Corbet <corbet@lwn.net>, linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-GCE cannot know the register base address, we store the subsys-base address
-relationship in the device node, and store the relationship by
-cmdq_register_device function.
+On Tue, 2019-01-29 at 05:46 +0000, Christopher Lameter wrote:
+> On Mon, 28 Jan 2019, Andrew Morton wrote:
+> 
+> > > When debugging slab errors in slub.c, sometimes we have to trigger
+> > > a panic in order to get the coredump file. Add a debug option
+> > > SLAB_WARN_ON_ERROR to toggle WARN_ON() when the option is set.
+> > >
+> > > Change since v1:
+> > > 1. Add a special debug option SLAB_WARN_ON_ERROR and toggle WARN_ON()
+> > > if it is set.
+> > > 2. SLAB_WARN_ON_ERROR can be set by kernel parameter slub_debug.
+> > >
+> >
+> > Hopefully the slab developers will have an opinion on this.
+> 
+> Debugging slab itself is usually done in kvm or some other virtualized
+> environment. Then gdb can be used to set breakpoints. Otherwise one may
+> add printks and stuff to the allocators to figure out more or use perf.
+> 
+> 
+> What you are changing here is the debugging for data corruption within
+> objects managed by slub or the metadata. Slub currently outputs extensive
+> data about the metadata corruption (typically caused by a user of
+> slab allocation) which should allow you to set a proper
+> breakpoint not in the allocator but in the subsystem where the corruption
+> occurs.
+> 
+Thanks for your comments. The real problems the change can help are:
 
-When the client pass the base address and offset into GCE API,
-we will get the subsys ID by this API.
+a) classic slub issue. e.g., use-after-free, redzone overwritten. It's
+more efficient to report a issue as soon as slub detects it. (comparing
+to monitor the log, set a breakpoint, and re-produce the issue). With
+the coredump file, we can analyze the issue.
 
-Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
----
- drivers/soc/mediatek/mtk-cmdq-helper.c | 17 +++++++++++++++++
- include/linux/soc/mediatek/mtk-cmdq.h  | 12 ++++++++++++
- 2 files changed, 29 insertions(+)
+b) memory corruption issues caused by h/w write. e.g., memory
+overwritten by a DMA engine. Memory corruptions may or may not related
+to the slab cache that reports any error. For example: kmalloc-256 or
+dentry may report the same errors. If we can preserve the the coredump
+file without any restore/reset processing in slub, we could have more
+information of this memory corruption.
 
-diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-index ff9fef5..6e4b85e 100644
---- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-+++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-@@ -15,6 +15,23 @@
- #define CMDQ_EOC_CMD		((u64)((CMDQ_CODE_EOC << CMDQ_OP_CODE_SHIFT)) \
- 				<< 32 | CMDQ_EOC_IRQ_EN)
- 
-+u8 cmdq_subsys_base_to_id(struct cmdq_base *clt_base, u32 base)
-+{
-+	u8 i;
-+
-+	if (!clt_base)
-+		return -EINVAL;
-+
-+	base = base & 0xFFFF0000;
-+	for (i = 0; i < clt_base->count; i++) {
-+		if (clt_base->subsys[i].base == base)
-+			return clt_base->subsys[i].id;
-+	}
-+
-+	return -EINVAL;
-+}
-+EXPORT_SYMBOL(cmdq_subsys_base_to_id);
-+
- static void cmdq_client_timeout(struct timer_list *t)
- {
- 	struct cmdq_client *client = from_timer(client, t, timer);
-diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-index 4e88999..0c7a6ee 100644
---- a/include/linux/soc/mediatek/mtk-cmdq.h
-+++ b/include/linux/soc/mediatek/mtk-cmdq.h
-@@ -15,6 +15,16 @@
- 
- struct cmdq_pkt;
- 
-+struct cmdq_subsys {
-+	u32 base;
-+	u8 id;
-+};
-+
-+struct cmdq_base {
-+	struct cmdq_subsys subsys[32];
-+	u8 count;
-+};
-+
- struct cmdq_client {
- 	spinlock_t lock;
- 	u32 pkt_cnt;
-@@ -127,4 +137,6 @@ int cmdq_pkt_flush_async(struct cmdq_pkt *pkt, cmdq_async_flush_cb cb,
-  */
- int cmdq_pkt_flush(struct cmdq_pkt *pkt);
- 
-+u8 cmdq_subsys_base_to_id(struct cmdq_base *clt_base, u32 base);
-+
- #endif	/* __MTK_CMDQ_H__ */
--- 
-1.9.1
+c) memory corruption issues caused by unstable h/w. e.g., bit flipping
+because of xxxx DRAM die or applying new power settings. It's hard to
+re-produce this kind of issue and it much easier to tell this kind of
+issue in the coredump file without any restore/reset processing.
+
+Users can set the option by slub_debug. We can still have the original
+behavior(keep the system alive) if the option is not set. We can turn on
+the option when we need the coredump file. (with panic_on_warn is set,
+of course).
