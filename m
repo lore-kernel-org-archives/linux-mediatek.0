@@ -1,61 +1,90 @@
-From: Bastien Nocera <hadess@hadess.net>
-Subject: Re: [PATCH] input: goodix - support Goodix gt5688
-Date: Tue, 29 Jan 2019 11:30:53 +0100
-Message-ID: <12e21befacf68861ddf34020838ff7a6e6e078ad.camel@hadess.net>
-References: <20190128170310.GA305@bogon.m.sigxcpu.org>
-         <7e289e6b3410a3fdea99d7d6becfe5180a69f0c5.camel@hadess.net>
-         <20190129091651.GA8497@bogon.m.sigxcpu.org>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH 07/10] soc: mediatek: add cmdq_dev_get_event function
+Date: Tue, 29 Jan 2019 18:59:23 +0800
+Message-ID: <1548759563.11055.10.camel@mtksdaap41>
+References: <1548747128-60136-1-git-send-email-bibby.hsieh@mediatek.com>
+         <1548747128-60136-8-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190129091651.GA8497@bogon.m.sigxcpu.org>
+In-Reply-To: <1548747128-60136-8-git-send-email-bibby.hsieh@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Guido =?ISO-8859-1?Q?G=FCnther?= <agx@sigxcpu.org>
-Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.chen@mediatek.com, kendrick.hsu@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-01-29 at 10:16 +0100, Guido Günther wrote:
-> Hi,
-> On Mon, Jan 28, 2019 at 07:24:33PM +0100, Bastien Nocera wrote:
-> > On Mon, 2019-01-28 at 18:03 +0100, Guido Günther wrote:
-> > > From what I've seen in vendor trees it's fine to treat this as
-> > > gt1x¹.
-> > > 
-> > > [1]: 
-> > > https://github.com/TadiT7/android_kernel_mtk-4.4/tree/master/drivers/input/touchscreen/mediatek/GT5688
-> > 
-> > Can you please point to the exact line of code that makes you say
-> > that?
-> > I'm not saying it's not compatible, but it's not the same driver
-> > that
-> > the current goodix.c was based on, or even goodix.c.
-> > 
-> > Can you please elaborate?
+Hi, Bibby:
+
+On Tue, 2019-01-29 at 15:32 +0800, Bibby Hsieh wrote:
+> When client ask gce to clear or wait for event,
+> client need to pass event number to the API.
+> We suggest client store the event information in device node,
+> so we provide an API for client parse the event property.
 > 
-> I basically looked at the registers uses for the config update:
+> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+> ---
+>  drivers/soc/mediatek/mtk-cmdq-helper.c | 29 +++++++++++++++++++++++++++++
+>  include/linux/soc/mediatek/mtk-cmdq.h  |  1 +
+>  2 files changed, 30 insertions(+)
 > 
-> https://github.com/TadiT7/android_kernel_mtk-4.4/blob/master/drivers/input/touchscreen/mediatek/GT5688/include/gt1x_tpd_common.h#L152
-> https://github.com/TadiT7/android_kernel_mtk-4.4/blob/master/drivers/input/touchscreen/mediatek/GT5688/gt1x_generic.c#L430
+> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> index 6ad997f..16c0393 100644
+> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
+> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> @@ -56,6 +56,35 @@ struct cmdq_base *cmdq_register_device(struct device *dev)
+>  }
+>  EXPORT_SYMBOL(cmdq_register_device);
+>  
+> +s32 cmdq_dev_get_event(struct device *dev, const char *name)
+> +{
+> +	s32 index = 0;
+> +	struct of_phandle_args spec;
+> +	s32 result;
+> +
+> +	if (!dev)
+> +		return -EINVAL;
+> +
+> +	index = of_property_match_string(dev->of_node, "gce-event-names", name);
 
-I'm not sure that's good enough to say that the touchscreen models are
-compatible.
+Where is the binding?
 
-> That and the fact that the driver is doing it's job well made me
-> believe
-> that's good for base support.
+> +	if (index < 0) {
+> +		dev_err(dev, "no gce-event-names property or no such event:%s",
+> +			name);
+> +		return index;
+> +	}
+> +
+> +	if (of_parse_phandle_with_args(dev->of_node, "gce-events",
+> +	    "#gce-event-cells", index, &spec)) {
 
-If you've tested it, that's better. Can you please add a reference to
-the device that you've tested this on in the commit message?
+Ditto.
 
->  Things like hotknot, gesture wakeup and
-> proximity sensor will need additional work.
-> 
-> > Finding that data in the specs would also be fine:
-> > https://github.com/hadess/gt9xx/tree/master/specifications
-> 
-> https://github.com/hadess/gt9xx/pull/3
+Regards,
+CK
 
-Merged that, thanks
-
-Cheers
+> +		dev_err(dev, "can't parse gce-events property");
+> +		return -ENODEV;
+> +	}
+> +
+> +	result = spec.args[0];
+> +	of_node_put(spec.np);
+> +
+> +	return result;
+> +}
+> +EXPORT_SYMBOL(cmdq_dev_get_event);
+> +
+>  static void cmdq_client_timeout(struct timer_list *t)
+>  {
+>  	struct cmdq_client *client = from_timer(client, t, timer);
+> diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
+> index a1f5eb6..e5b0a98 100644
+> --- a/include/linux/soc/mediatek/mtk-cmdq.h
+> +++ b/include/linux/soc/mediatek/mtk-cmdq.h
+> @@ -139,5 +139,6 @@ int cmdq_pkt_flush_async(struct cmdq_pkt *pkt, cmdq_async_flush_cb cb,
+>  
+>  u8 cmdq_subsys_base_to_id(struct cmdq_base *clt_base, u32 base);
+>  struct cmdq_base *cmdq_register_device(struct device *dev);
+> +s32 cmdq_dev_get_event(struct device *dev, const char *name);
+>  
+>  #endif	/* __MTK_CMDQ_H__ */
