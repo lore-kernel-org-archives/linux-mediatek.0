@@ -1,86 +1,69 @@
-From: Amit Kucheria <amit.kucheria@linaro.org>
-Subject: [PATCH v5 6/9] cpufreq: mediatek: Use auto-registration of thermal cooling device
-Date: Tue, 29 Jan 2019 10:25:12 +0530
-Message-ID: <36eb429112e84263bdbd26d8ea3027f71eeb862e.1548737236.git.amit.kucheria@linaro.org>
-References: <cover.1548737236.git.amit.kucheria@linaro.org>
+From: Sean Wang <sean.wang@kernel.org>
+Subject: Re: [PATCH] pinctrl: mediatek: fix dependencies for PINCTRL_MT76XX
+Date: Mon, 28 Jan 2019 21:02:04 -0800
+Message-ID: <CAGp9LzoVZQx2fb-ETY=sGBB3Xx81jC8t2krczv7h=dVNE-ph2Q@mail.gmail.com>
+References: <20190128223521.2690-1-voytikd@gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1548737236.git.amit.kucheria@linaro.org>
-In-Reply-To: <cover.1548737236.git.amit.kucheria@linaro.org>
-References: <cover.1548737236.git.amit.kucheria@linaro.org>
+In-Reply-To: <20190128223521.2690-1-voytikd@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: "Rafael J. Wysocki" <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Sean Wang <sean.wang@mediatek.com>, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Dmitry Voytik <voytikd@gmail.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Use the CPUFREQ_IS_COOLING_DEV flag to allow cpufreq core to
-automatically register as a thermal cooling device.
+On Mon, Jan 28, 2019 at 2:35 PM Dmitry Voytik <voytikd@gmail.com> wrote:
+>
+> How to reproduce the problem:
+> $ make tinyconfig
+> $ make menuconfig
+> then enable:
+>  CONFIG_COMPILE_TEST=y
+>  CONFIG_PINCTRL=y
+> and any of these:
+>  CONFIG_PINCTRL_MT7622=y
+>  CONFIG_PINCTRL_MT7629=y
+>  CONFIG_PINCTRL_MT7623=y
+>
+> This combination causes build failure.
+>
+> Fix the problem by making PINCTRL_MT76XX to depend on CONFIG_OF=y.
+>
+> Signed-off-by: Dmitry Voytik <voytikd@gmail.com>
+> ---
+>  drivers/pinctrl/mediatek/Kconfig | 3 +++
+>  1 file changed, 3 insertions(+)
+>
+> diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
+> index 1817786ab6aa..a005cbccb4f7 100644
+> --- a/drivers/pinctrl/mediatek/Kconfig
+> +++ b/drivers/pinctrl/mediatek/Kconfig
+> @@ -45,12 +45,14 @@ config PINCTRL_MT2701
+>  config PINCTRL_MT7623
+>         bool "Mediatek MT7623 pin control with generic binding"
+>         depends on MACH_MT7623 || COMPILE_TEST
+> +       depends on OF
+>         default MACH_MT7623
+>         select PINCTRL_MTK_MOORE
+>
+>  config PINCTRL_MT7629
+>         bool "Mediatek MT7629 pin control"
+>         depends on MACH_MT7629 || COMPILE_TEST
+> +       depends on OF
+>         default MACH_MT7629
+>         select PINCTRL_MTK_MOORE
+>
+> @@ -92,6 +94,7 @@ config PINCTRL_MT6797
+>
+>  config PINCTRL_MT7622
+>         bool "MediaTek MT7622 pin control"
+> +       depends on OF
+>         depends on ARM64 || COMPILE_TEST
+>         default ARM64 && ARCH_MEDIATEK
+>         select PINCTRL_MTK_MOORE
+> --
+> 2.20.1
+>
 
-This allows removal of boiler plate code from the driver.
-
-Signed-off-by: Amit Kucheria <amit.kucheria@linaro.org>
-Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
-Reviewed-by: Daniel Lezcano <daniel.lezcano@linaro.org>
----
- drivers/cpufreq/mediatek-cpufreq.c | 14 ++------------
- 1 file changed, 2 insertions(+), 12 deletions(-)
-
-diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index eb8920d39818..4229fcc31310 100644
---- a/drivers/cpufreq/mediatek-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -14,7 +14,6 @@
- 
- #include <linux/clk.h>
- #include <linux/cpu.h>
--#include <linux/cpu_cooling.h>
- #include <linux/cpufreq.h>
- #include <linux/cpumask.h>
- #include <linux/module.h>
-@@ -48,7 +47,6 @@ struct mtk_cpu_dvfs_info {
- 	struct regulator *sram_reg;
- 	struct clk *cpu_clk;
- 	struct clk *inter_clk;
--	struct thermal_cooling_device *cdev;
- 	struct list_head list_head;
- 	int intermediate_voltage;
- 	bool need_voltage_tracking;
-@@ -307,13 +305,6 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 
- #define DYNAMIC_POWER "dynamic-power-coefficient"
- 
--static void mtk_cpufreq_ready(struct cpufreq_policy *policy)
--{
--	struct mtk_cpu_dvfs_info *info = policy->driver_data;
--
--	info->cdev = of_cpufreq_cooling_register(policy);
--}
--
- static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
- {
- 	struct device *cpu_dev;
-@@ -472,7 +463,6 @@ static int mtk_cpufreq_exit(struct cpufreq_policy *policy)
- {
- 	struct mtk_cpu_dvfs_info *info = policy->driver_data;
- 
--	cpufreq_cooling_unregister(info->cdev);
- 	dev_pm_opp_free_cpufreq_table(info->cpu_dev, &policy->freq_table);
- 
- 	return 0;
-@@ -480,13 +470,13 @@ static int mtk_cpufreq_exit(struct cpufreq_policy *policy)
- 
- static struct cpufreq_driver mtk_cpufreq_driver = {
- 	.flags = CPUFREQ_STICKY | CPUFREQ_NEED_INITIAL_FREQ_CHECK |
--		 CPUFREQ_HAVE_GOVERNOR_PER_POLICY,
-+		 CPUFREQ_HAVE_GOVERNOR_PER_POLICY |
-+		 CPUFREQ_IS_COOLING_DEV,
- 	.verify = cpufreq_generic_frequency_table_verify,
- 	.target_index = mtk_cpufreq_set_target,
- 	.get = cpufreq_generic_get,
- 	.init = mtk_cpufreq_init,
- 	.exit = mtk_cpufreq_exit,
--	.ready = mtk_cpufreq_ready,
- 	.name = "mtk-cpufreq",
- 	.attr = cpufreq_generic_attr,
- };
--- 
-2.17.1
+It seems the commit 2d2d478576d71000b29c52668c5712c825ee9af8 already
+fixed the problem or is there something I'm missing?
