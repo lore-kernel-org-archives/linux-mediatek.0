@@ -1,67 +1,37 @@
-From: Miles Chen <miles.chen@mediatek.com>
-Subject: Re: [PATCH v2] mm/slub: introduce SLAB_WARN_ON_ERROR
-Date: Tue, 29 Jan 2019 15:53:44 +0800
-Message-ID: <1548748424.18511.34.camel@mtkswgap22>
-References: <1548313223-17114-1-git-send-email-miles.chen@mediatek.com>
-         <20190128122954.949c2e6699d6e5ef060a325c@linux-foundation.org>
-         <0100016898251824-359bbfae-e32b-43a6-8c58-8811a7b24520-000000@email.amazonses.com>
+From: MyungJoo Ham <myungjoo.ham@samsung.com>
+Subject: RE: [PATCH 3/3] devfreq: add mediatek cci devfreq
+Date: Tue, 29 Jan 2019 17:17:50 +0900
+Message-ID: <20190129081750epcms1p41e46de569005622ad3d90f9aaa75f545@epcms1p4>
+References: <1548743704-16821-4-git-send-email-andrew-sh.cheng@mediatek.com>
+        <1548743704-16821-1-git-send-email-andrew-sh.cheng@mediatek.com>
+        <CGME20190129063600epcas2p255b062c64f22555692ff895634ea4eb0@epcms1p4>
+Reply-To: myungjoo.ham@samsung.com
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <0100016898251824-359bbfae-e32b-43a6-8c58-8811a7b24520-000000@email.amazonses.com>
+In-Reply-To: <1548743704-16821-4-git-send-email-andrew-sh.cheng@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Christopher Lameter <cl@linux.com>
-Cc: Andrew Morton <akpm@linux-foundation.org>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Jonathan Corbet <corbet@lwn.net>, linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>
+Cc: "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "srv_heupstream@mediatek.com" <srv_heupstream@mediatek.com>, "fan.chen@mediatek.com" <fan.chen@mediatek.com>, "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-01-29 at 05:46 +0000, Christopher Lameter wrote:
-> On Mon, 28 Jan 2019, Andrew Morton wrote:
-> 
-> > > When debugging slab errors in slub.c, sometimes we have to trigger
-> > > a panic in order to get the coredump file. Add a debug option
-> > > SLAB_WARN_ON_ERROR to toggle WARN_ON() when the option is set.
-> > >
-> > > Change since v1:
-> > > 1. Add a special debug option SLAB_WARN_ON_ERROR and toggle WARN_ON()
-> > > if it is set.
-> > > 2. SLAB_WARN_ON_ERROR can be set by kernel parameter slub_debug.
-> > >
-> >
-> > Hopefully the slab developers will have an opinion on this.
-> 
-> Debugging slab itself is usually done in kvm or some other virtualized
-> environment. Then gdb can be used to set breakpoints. Otherwise one may
-> add printks and stuff to the allocators to figure out more or use perf.
-> 
-> 
-> What you are changing here is the debugging for data corruption within
-> objects managed by slub or the metadata. Slub currently outputs extensive
-> data about the metadata corruption (typically caused by a user of
-> slab allocation) which should allow you to set a proper
-> breakpoint not in the allocator but in the subsystem where the corruption
-> occurs.
-> 
-Thanks for your comments. The real problems the change can help are:
+>From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
+>
+>For big/little cpu cluster architecture,
+>not only CPU frequency, but CCI frequency will also affect performance.
+>
+>Little cores and cci share the same buck in Mediatek mt8183 IC,
+>so we add a CCI devfreq which will get notification when buck voltage
+>is changed, then CCI devfreq can set cci frequency as high as possible.
+>
+>Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
 
-a) classic slub issue. e.g., use-after-free, redzone overwritten. It's
-more efficient to report a issue as soon as slub detects it. (comparing
-to monitor the log, set a breakpoint, and re-produce the issue). With
-the coredump file, we can analyze the issue.
+Please correct the coding style first in the .c file.
 
-b) memory corruption issues caused by h/w write. e.g., memory
-overwritten by a DMA engine. Memory corruptions may or may not related
-to the slab cache that reports any error. For example: kmalloc-256 or
-dentry may report the same errors. If we can preserve the the coredump
-file without any restore/reset processing in slub, we could have more
-information of this memory corruption.
+- empty last line?
+- inconsistent indentation (line26? match the first lines for all variable declarations OR don't match them at all)
+- Need proper boilerplate and try to comply with C89.
 
-c) memory corruption issues caused by unstable h/w. e.g., bit flipping
-because of xxxx DRAM die or applying new power settings. It's hard to
-re-produce this kind of issue and it much easier to tell this kind of
-issue in the coredump file without any restore/reset processing.
-
-Users can set the option by slub_debug. We can still have the original
-behavior(keep the system alive) if the option is not set. We can turn on
-the option when we need the coredump file. (with panic_on_warn is set,
-of course).
+Cheers,
+MyungJoo
