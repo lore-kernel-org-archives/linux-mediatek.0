@@ -1,99 +1,61 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: Re: [PATCH 1/3] cpufreq: mediatek: add mt8183 cpufreq support
-Date: Tue, 29 Jan 2019 15:43:48 +0530
-Message-ID: <20190129101348.7oxqerszhcopanzr@vireshk-i7>
-References: <1548743704-16821-1-git-send-email-andrew-sh.cheng@mediatek.com>
- <1548743704-16821-2-git-send-email-andrew-sh.cheng@mediatek.com>
+From: Bastien Nocera <hadess@hadess.net>
+Subject: Re: [PATCH] input: goodix - support Goodix gt5688
+Date: Tue, 29 Jan 2019 11:30:53 +0100
+Message-ID: <12e21befacf68861ddf34020838ff7a6e6e078ad.camel@hadess.net>
+References: <20190128170310.GA305@bogon.m.sigxcpu.org>
+         <7e289e6b3410a3fdea99d7d6becfe5180a69f0c5.camel@hadess.net>
+         <20190129091651.GA8497@bogon.m.sigxcpu.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1548743704-16821-2-git-send-email-andrew-sh.cheng@mediatek.com>
+In-Reply-To: <20190129091651.GA8497@bogon.m.sigxcpu.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Andrew-sh Cheng <andrew-sh.cheng@mediatek.com>
-Cc: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, fan.chen@mediatek.com
+To: Guido =?ISO-8859-1?Q?G=FCnther?= <agx@sigxcpu.org>
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 29-01-19, 14:35, Andrew-sh Cheng wrote:
-> From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
+On Tue, 2019-01-29 at 10:16 +0100, Guido Günther wrote:
+> Hi,
+> On Mon, Jan 28, 2019 at 07:24:33PM +0100, Bastien Nocera wrote:
+> > On Mon, 2019-01-28 at 18:03 +0100, Guido Günther wrote:
+> > > From what I've seen in vendor trees it's fine to treat this as
+> > > gt1x¹.
+> > > 
+> > > [1]: 
+> > > https://github.com/TadiT7/android_kernel_mtk-4.4/tree/master/drivers/input/touchscreen/mediatek/GT5688
+> > 
+> > Can you please point to the exact line of code that makes you say
+> > that?
+> > I'm not saying it's not compatible, but it's not the same driver
+> > that
+> > the current goodix.c was based on, or even goodix.c.
+> > 
+> > Can you please elaborate?
 > 
-> For new mediatek chip mt8183,
-> cci and little cluster share the same buck,
-> so need to modify the attribute of regulator from exclusive to optional
+> I basically looked at the registers uses for the config update:
 > 
-> Intermediate clock is not always enabled by ccf in different projects,
-> so cpufreq should always enable it by itself.
+> https://github.com/TadiT7/android_kernel_mtk-4.4/blob/master/drivers/input/touchscreen/mediatek/GT5688/include/gt1x_tpd_common.h#L152
+> https://github.com/TadiT7/android_kernel_mtk-4.4/blob/master/drivers/input/touchscreen/mediatek/GT5688/gt1x_generic.c#L430
+
+I'm not sure that's good enough to say that the touchscreen models are
+compatible.
+
+> That and the fact that the driver is doing it's job well made me
+> believe
+> that's good for base support.
+
+If you've tested it, that's better. Can you please add a reference to
+the device that you've tested this on in the commit message?
+
+>  Things like hotknot, gesture wakeup and
+> proximity sensor will need additional work.
 > 
-> Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
-> ---
->  drivers/cpufreq/cpufreq-dt-platdev.c | 1 +
->  drivers/cpufreq/mediatek-cpufreq.c   | 7 ++++++-
->  2 files changed, 7 insertions(+), 1 deletion(-)
+> > Finding that data in the specs would also be fine:
+> > https://github.com/hadess/gt9xx/tree/master/specifications
 > 
-> diff --git a/drivers/cpufreq/cpufreq-dt-platdev.c b/drivers/cpufreq/cpufreq-dt-platdev.c
-> index b1c5468..5a1c588 100644
-> --- a/drivers/cpufreq/cpufreq-dt-platdev.c
-> +++ b/drivers/cpufreq/cpufreq-dt-platdev.c
-> @@ -117,6 +117,7 @@
->  	{ .compatible = "mediatek,mt817x", },
->  	{ .compatible = "mediatek,mt8173", },
->  	{ .compatible = "mediatek,mt8176", },
-> +	{ .compatible = "mediatek,mt8183", },
->  
->  	{ .compatible = "nvidia,tegra124", },
->  
-> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-> index eb8920d..e956248 100644
-> --- a/drivers/cpufreq/mediatek-cpufreq.c
-> +++ b/drivers/cpufreq/mediatek-cpufreq.c
-> @@ -355,7 +355,7 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
->  		goto out_free_resources;
->  	}
->  
-> -	proc_reg = regulator_get_exclusive(cpu_dev, "proc");
-> +	proc_reg = regulator_get_optional(cpu_dev, "proc");
->  	if (IS_ERR(proc_reg)) {
->  		if (PTR_ERR(proc_reg) == -EPROBE_DEFER)
->  			pr_warn("proc regulator for cpu%d not ready, retry.\n",
-> @@ -385,6 +385,9 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
->  		goto out_free_resources;
->  	}
->  
-> +	ret = clk_prepare_enable(inter_clk);
-> +	if (ret)
-> +		goto out_free_resources;
+> https://github.com/hadess/gt9xx/pull/3
 
-Add a blank line here please.
+Merged that, thanks
 
-Also out_free_resources isn't enough here and you need to free OPP table as
-well.
-
-
->  	/* Search a safe voltage for intermediate frequency. */
->  	rate = clk_get_rate(inter_clk);
->  	opp = dev_pm_opp_find_freq_ceil(cpu_dev, &rate);
-> @@ -412,6 +415,7 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
->  
->  out_free_opp_table:
->  	dev_pm_opp_of_cpumask_remove_table(&info->cpus);
-> +	clk_disable_unprepare(inter_clk);
-
-Clock was enabled after adding the table, and so it must be disabled before
-removing the table. Just the opposite sequence.
-
->  
->  out_free_resources:
->  	if (!IS_ERR(proc_reg))
-> @@ -551,6 +555,7 @@ static int mtk_cpufreq_probe(struct platform_device *pdev)
->  	{ .compatible = "mediatek,mt817x", },
->  	{ .compatible = "mediatek,mt8173", },
->  	{ .compatible = "mediatek,mt8176", },
-> +	{ .compatible = "mediatek,mt8183", },
->  
->  	{ }
->  };
-> -- 
-> 1.8.1.1.dirty
-
--- 
-viresh
+Cheers
