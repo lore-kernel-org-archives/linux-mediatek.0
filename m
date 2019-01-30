@@ -1,76 +1,33 @@
-From: "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v2] staging: mt7621-eth/ethtool.c: Correction of SPDX
- license identifier
-Date: Wed, 30 Jan 2019 22:12:31 +0100
-Message-ID: <20190130211231.GA25919@kroah.com>
-References: <SC1P15201MB2014C3E0CAB4DA9ADF330797A8900@SC1P15201MB2014.LAMP152.PROD.OUTLOOK.COM>
- <20190130152956.GA4195@kroah.com>
- <RO1P15201MB201234F951531D13328C4FF2A8900@RO1P15201MB2012.LAMP152.PROD.OUTLOOK.COM>
+From: David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
+Subject: Re: [PATCHv4 0/3]: net: dsa: mt7530: support MT7530 in the MT7621 SoC
+Date: Wed, 30 Jan 2019 14:30:36 -0800 (PST)
+Message-ID: <20190130.143036.859342199296326970.davem@davemloft.net>
+References: <20190130012406.28271-1-gerg@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <RO1P15201MB201234F951531D13328C4FF2A8900@RO1P15201MB2012.LAMP152.PROD.OUTLOOK.COM>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Carlos Henrique Lima Melara <charlesmelara@outlook.com>
-Cc: "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "neil@brown.name" <neil@brown.name>, "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190130012406.28271-1-gerg-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: gerg-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: andrew-g2DYL2Zd6BY@public.gmane.org, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, vivien.didelot-4ysUXcep3aM1wj+D4I0NRVaTQe2KTcn/@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, rene-91nzXlUTePbQT0dZR+AlfA@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, neil-+NVA1uvv1dVBDLzU/O5InQ@public.gmane.org, bjorn-yOkvZcmFvRU@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jan 30, 2019 at 08:01:13PM +0000, Carlos Henrique Lima Melara wrote:
-> On 30/01/2019 13:29, gregkh@linuxfoundation.org wrote:
-> > On Wed, Jan 30, 2019 at 02:48:27PM +0000, Carlos Henrique Lima Melara wrote:
-> >> 	This patch fix the checkpatch.p1 warning:
-> >>
-> >> 	WARNING: Missing or malformed SPDX-License-Identifier tag in line 1
-> >> 	+/*
-> >
-> > Why did you not fix up the indentation that was already mentioned?
-> 
-> The Warning was about the missing SPDX License Identifier, so I added the 
-> identifier according to the "license-rules.rst" for C source that is:
+From: gerg-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Date: Wed, 30 Jan 2019 11:24:03 +1000
 
-I mean the indentation of the text in your changelog, nothing to do with
-the actual change in your patch below, sorry for the confusion.
+> This is the fourth version of a patch series supporting the MT7530 switch
+> as used in the MediaTek MT7621 SoC. Unlike the MediaTek MT7623 the MT7621
+> is built around a dual core MIPS CPU architecture. But inside it uses
+> basically the same 7530 switch.
+ ...
 
-> >   The SPDX license identifier is added in form of a comment.  The comment
-> >   style depends on the file type::
-> >
-> >      C source:	// SPDX-License-Identifier: <SPDX License Expression>
-> >      C header:	/* SPDX-License-Identifier: <SPDX License Expression> */
-> >      ASM:	/* SPDX-License-Identifier: <SPDX License Expression> */
-> >      scripts:	# SPDX-License-Identifier: <SPDX License Expression>
-> >      .rst:	.. SPDX-License-Identifier: <SPDX License Expression>
-> >      .dts{i}:	// SPDX-License-Identifier: <SPDX License Expression>
-> 
-> I think that was the correction needed, right?
-
-Yes.
-
-> Still have a question about the license comment in the "ethtooll.c". 
-> 
-> > /*   This program is free software; you can redistribute it and/or modify
-> >  *   it under the terms of the GNU General Public License as published by
-> >  *   the Free Software Foundation; version 2 of the License
-> >  *
-> >  *   This program is distributed in the hope that it will be useful,
-> >  *   but WITHOUT ANY WARRANTY; without even the implied warranty of
-> >  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> >  *   GNU General Public License for more details.
-> >  *
-> >  *   Copyright (C) 2009-2016 John Crispin <blogic@openwrt.org>
-> >  *   Copyright (C) 2009-2016 Felix Fietkau <nbd@openwrt.org>
-> >  *   Copyright (C) 2013-2016 Michael Lee <igvtee@gmail.com>
-> >  */
-> 
-> It puts 3 spaces between the * and the text, should it be corrected to 
-> only one space?
-
-If you really want to, but it's not needed.
-
-All of the "boilerplate" license text can also be removed after the SPDX
-line is added, if you want to do that.  But leave the copyright lines,
-that needs to stay.
-
-thanks,
-
-greg k-h
+Series applied, and yes a COMPILE_TEST Kconfig dep would be great.
