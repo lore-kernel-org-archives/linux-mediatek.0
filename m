@@ -1,7 +1,7 @@
 From: gerg@kernel.org
-Subject: [PATCHv4 2/3] net: dsa: mt7530: support the 7530 switch on the Mediatek MT7621 SoC
-Date: Wed, 30 Jan 2019 11:24:05 +1000
-Message-ID: <20190130012406.28271-3-gerg@kernel.org>
+Subject: [PATCHv4 3/3] dt-bindings: net: dsa: add new MT7530 binding to support MT7621
+Date: Wed, 30 Jan 2019 11:24:06 +1000
+Message-ID: <20190130012406.28271-4-gerg@kernel.org>
 References: <20190130012406.28271-1-gerg@kernel.org>
 Return-path: <netdev-owner@vger.kernel.org>
 In-Reply-To: <20190130012406.28271-1-gerg@kernel.org>
@@ -12,212 +12,41 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Greg Ungerer <gerg@kernel.org>
 
-The MediaTek MT7621 SoC device contains a 7530 switch, and the existing
-linux kernel 7530 DSA switch driver can be used with it.
-
-The bulk of the changes required stem from the 7621 having different
-regulator and pad setup. The existing setup of these in the 7530
-driver appears to be very specific to its implemtation in the Mediatek
-7623 SoC. (Not entirely surprising given the 7623 is a quad core ARM
-based SoC, and the 7621 is a dual core, dual thread MIPS based SoC).
-
-Create a new devicetree type, "mediatek,mt7621", to support the 7530
-switch in the 7621 SoC. There appears to be no usable ID register to
-distinguish it from a 7530 in other hardware at runtime. This is used
-to carry out the appropriate configuration and setup.
+Add devicetree binding to support the compatible mt7530 switch as used
+in the MediaTek MT7621 SoC.
 
 Signed-off-by: Greg Ungerer <gerg@kernel.org>
 Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 ---
- drivers/net/dsa/mt7530.c | 96 ++++++++++++++++++++++++----------------
- drivers/net/dsa/mt7530.h |  9 ++++
- 2 files changed, 66 insertions(+), 39 deletions(-)
+ Documentation/devicetree/bindings/net/dsa/mt7530.txt | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
 v1: initial patch
-v2: use separate devicetree binding  
-v3: rebase onto 5.0-rc3
-v4: simplify by using of_device_get_match_data()
-    fix casting for 7530/7621 ID to be 32 and 64 bit clean
-    rebase onto 5.0-rc4
+v2: use separate devicetree binding
+v3: change text according to feedback, rebase onto 5.0-rc3
+v4: rebase onto 5.0-rc4
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index a8a2c728afba..c2b61500f958 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -621,17 +621,19 @@ static void mt7530_adjust_link(struct dsa_switch *ds, int port,
- 	struct mt7530_priv *priv = ds->priv;
+diff --git a/Documentation/devicetree/bindings/net/dsa/mt7530.txt b/Documentation/devicetree/bindings/net/dsa/mt7530.txt
+index aa3527f71fdc..47aa205ee0bd 100644
+--- a/Documentation/devicetree/bindings/net/dsa/mt7530.txt
++++ b/Documentation/devicetree/bindings/net/dsa/mt7530.txt
+@@ -3,12 +3,16 @@ Mediatek MT7530 Ethernet switch
  
- 	if (phy_is_pseudo_fixed_link(phydev)) {
--		dev_dbg(priv->dev, "phy-mode for master device = %x\n",
--			phydev->interface);
--
--		/* Setup TX circuit incluing relevant PAD and driving */
--		mt7530_pad_clk_setup(ds, phydev->interface);
--
--		/* Setup RX circuit, relevant PAD and driving on the host
--		 * which must be placed after the setup on the device side is
--		 * all finished.
--		 */
--		mt7623_pad_clk_setup(ds);
-+		if (priv->id == ID_MT7530) {
-+			dev_dbg(priv->dev, "phy-mode for master device = %x\n",
-+				phydev->interface);
+ Required properties:
+ 
+-- compatible: Must be compatible = "mediatek,mt7530";
++- compatible: may be compatible = "mediatek,mt7530"
++	or compatible = "mediatek,mt7621"
+ - #address-cells: Must be 1.
+ - #size-cells: Must be 0.
+ - mediatek,mcm: Boolean; if defined, indicates that either MT7530 is the part
+ 	on multi-chip module belong to MT7623A has or the remotely standalone
+ 	chip as the function MT7623N reference board provided for.
 +
-+			/* Setup TX circuit incluing relevant PAD and driving */
-+			mt7530_pad_clk_setup(ds, phydev->interface);
++If compatible mediatek,mt7530 is set then the following properties are required
 +
-+			/* Setup RX circuit, relevant PAD and driving on the
-+			 * host which must be placed after the setup on the
-+			 * device side is all finished.
-+			 */
-+			mt7623_pad_clk_setup(ds);
-+		}
- 	} else {
- 		u16 lcl_adv = 0, rmt_adv = 0;
- 		u8 flowctrl;
-@@ -687,6 +689,10 @@ mt7530_cpu_port_enable(struct mt7530_priv *priv,
- 	/* Unknown unicast frame fordwarding to the cpu port */
- 	mt7530_set(priv, MT7530_MFC, UNU_FFP(BIT(port)));
- 
-+	/* Set CPU port number */
-+	if (priv->id == ID_MT7621)
-+		mt7530_rmw(priv, MT7530_MFC, CPU_MASK, CPU_EN | CPU_PORT(port));
-+
- 	/* CPU port gets connected to all user ports of
- 	 * the switch
- 	 */
-@@ -1219,24 +1225,27 @@ mt7530_setup(struct dsa_switch *ds)
- 	 * as two netdev instances.
- 	 */
- 	dn = ds->ports[MT7530_CPU_PORT].master->dev.of_node->parent;
--	priv->ethernet = syscon_node_to_regmap(dn);
--	if (IS_ERR(priv->ethernet))
--		return PTR_ERR(priv->ethernet);
- 
--	regulator_set_voltage(priv->core_pwr, 1000000, 1000000);
--	ret = regulator_enable(priv->core_pwr);
--	if (ret < 0) {
--		dev_err(priv->dev,
--			"Failed to enable core power: %d\n", ret);
--		return ret;
--	}
-+	if (priv->id == ID_MT7530) {
-+		priv->ethernet = syscon_node_to_regmap(dn);
-+		if (IS_ERR(priv->ethernet))
-+			return PTR_ERR(priv->ethernet);
-+
-+		regulator_set_voltage(priv->core_pwr, 1000000, 1000000);
-+		ret = regulator_enable(priv->core_pwr);
-+		if (ret < 0) {
-+			dev_err(priv->dev,
-+				"Failed to enable core power: %d\n", ret);
-+			return ret;
-+		}
- 
--	regulator_set_voltage(priv->io_pwr, 3300000, 3300000);
--	ret = regulator_enable(priv->io_pwr);
--	if (ret < 0) {
--		dev_err(priv->dev, "Failed to enable io pwr: %d\n",
--			ret);
--		return ret;
-+		regulator_set_voltage(priv->io_pwr, 3300000, 3300000);
-+		ret = regulator_enable(priv->io_pwr);
-+		if (ret < 0) {
-+			dev_err(priv->dev, "Failed to enable io pwr: %d\n",
-+				ret);
-+			return ret;
-+		}
- 	}
- 
- 	/* Reset whole chip through gpio pin or memory-mapped registers for
-@@ -1326,6 +1335,13 @@ static const struct dsa_switch_ops mt7530_switch_ops = {
- 	.port_vlan_del		= mt7530_port_vlan_del,
- };
- 
-+static const struct of_device_id mt7530_of_match[] = {
-+	{ .compatible = "mediatek,mt7621", .data = (void *)ID_MT7621, },
-+	{ .compatible = "mediatek,mt7530", .data = (void *)ID_MT7530, },
-+	{ /* sentinel */ },
-+};
-+MODULE_DEVICE_TABLE(of, mt7530_of_match);
-+
- static int
- mt7530_probe(struct mdio_device *mdiodev)
- {
-@@ -1356,13 +1372,21 @@ mt7530_probe(struct mdio_device *mdiodev)
- 		}
- 	}
- 
--	priv->core_pwr = devm_regulator_get(&mdiodev->dev, "core");
--	if (IS_ERR(priv->core_pwr))
--		return PTR_ERR(priv->core_pwr);
-+	/* Get the hardware identifier from the devicetree node.
-+	 * We will need it for some of the clock and regulator setup.
-+	 */
-+	priv->id = (unsigned int)(unsigned long)
-+		of_device_get_match_data(&mdiodev->dev);
- 
--	priv->io_pwr = devm_regulator_get(&mdiodev->dev, "io");
--	if (IS_ERR(priv->io_pwr))
--		return PTR_ERR(priv->io_pwr);
-+	if (priv->id == ID_MT7530) {
-+		priv->core_pwr = devm_regulator_get(&mdiodev->dev, "core");
-+		if (IS_ERR(priv->core_pwr))
-+			return PTR_ERR(priv->core_pwr);
-+
-+		priv->io_pwr = devm_regulator_get(&mdiodev->dev, "io");
-+		if (IS_ERR(priv->io_pwr))
-+			return PTR_ERR(priv->io_pwr);
-+	}
- 
- 	/* Not MCM that indicates switch works as the remote standalone
- 	 * integrated circuit so the GPIO pin would be used to complete
-@@ -1408,12 +1432,6 @@ mt7530_remove(struct mdio_device *mdiodev)
- 	mutex_destroy(&priv->reg_mutex);
- }
- 
--static const struct of_device_id mt7530_of_match[] = {
--	{ .compatible = "mediatek,mt7530" },
--	{ /* sentinel */ },
--};
--MODULE_DEVICE_TABLE(of, mt7530_of_match);
--
- static struct mdio_driver mt7530_mdio_driver = {
- 	.probe  = mt7530_probe,
- 	.remove = mt7530_remove,
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index d9b407a22a58..a95ed958df5b 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -19,6 +19,11 @@
- #define MT7530_NUM_FDB_RECORDS		2048
- #define MT7530_ALL_MEMBERS		0xff
- 
-+enum {
-+	ID_MT7530 = 0,
-+	ID_MT7621 = 1,
-+};
-+
- #define	NUM_TRGMII_CTRL			5
- 
- #define TRGMII_BASE(x)			(0x10000 + (x))
-@@ -36,6 +41,9 @@
- #define  UNM_FFP(x)			(((x) & 0xff) << 16)
- #define  UNU_FFP(x)			(((x) & 0xff) << 8)
- #define  UNU_FFP_MASK			UNU_FFP(~0)
-+#define  CPU_EN				BIT(7)
-+#define  CPU_PORT(x)			((x) << 4)
-+#define  CPU_MASK			(0xf << 4)
- 
- /* Registers for address table access */
- #define MT7530_ATA1			0x74
-@@ -430,6 +438,7 @@ struct mt7530_priv {
- 	struct regulator	*core_pwr;
- 	struct regulator	*io_pwr;
- 	struct gpio_desc	*reset;
-+	unsigned int		id;
- 	bool			mcm;
- 
- 	struct mt7530_port	ports[MT7530_NUM_PORTS];
+ - core-supply: Phandle to the regulator node necessary for the core power.
+ - io-supply: Phandle to the regulator node necessary for the I/O power.
+ 	See Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
 -- 
 2.17.1
