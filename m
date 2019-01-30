@@ -1,80 +1,69 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH 5/6] regulator: mt6358: Add support for MT6358 regulator
-Date: Wed, 30 Jan 2019 15:18:25 +0000
-Message-ID: <20190130151825.GA10665@sirena.org.uk>
-References: <1548839891-20932-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1548839891-20932-6-git-send-email-hsin-hsiung.wang@mediatek.com>
+From: =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>
+Subject: [PATCH] gpio: MT7621: use a per instance irq_chip structure
+Date: Wed, 30 Jan 2019 16:17:48 +0100
+Message-ID: <20190130151744.11145-1-opensource@vdorst.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============4738306183067756951=="
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1548839891-20932-6-git-send-email-hsin-hsiung.wang@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Bartosz Golaszewski <bgolaszewski-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>, gerg-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
---===============4738306183067756951==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="vkogqOf2sHV7VnPd"
-Content-Disposition: inline
-
-
---vkogqOf2sHV7VnPd
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Wed, Jan 30, 2019 at 05:18:10PM +0800, Hsin-Hsiung Wang wrote:
-
-> +static const struct of_device_id mt6358_of_match[] = {
-> +	{ .compatible = "mediatek,mt6358-regulator", },
-> +	{ /* sentinel */ },
-> +};
-> +MODULE_DEVICE_TABLE(of, mt6358_of_match);
-
-There should be no need for a separate compatbile string here - we
-aren't describing the hardware any more than we already did with the
-parent node for the MFD, we're describing how Linux currently splits the
-software that controls the hardware up.  Just have the MFD instantiate
-the regulator driver when it probes.
-
-Otherwise this driver looks very good and clean.
-
---vkogqOf2sHV7VnPd
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlxRwEAACgkQJNaLcl1U
-h9Aikgf/Y+gvwbaHHnHQ0m8MNdKRqSYNJudae95ToA35RJTxhcN+utenn65RCAbl
-wMdcbp2yfyGBbfGu8AMOG9P+9aF+IIaigPFsLWqo7PMhIz7GwoVW0lqo7viKIXv8
-EZe5yLTk9famVTksAOQaDpd3KymoSU5r5keiK+4StsPw3+uc4xAgmOnNrRHBQyCD
-1Sjy8egYfQHEKtP0anNEoIqVN6nKGk+cpdXyuTum32aE5P7cUuQrX5sVBVQ+jNlw
-kKxIa8Pesrr3VJivGgtrcwIC3UIXEbOPS2MjBKe/qplqeuxqkdfz+3k5DfygC/5T
-k0gmxZsGWBc4PlqPX9Q0MLTKsT8h4A==
-=iJPx
------END PGP SIGNATURE-----
-
---vkogqOf2sHV7VnPd--
-
-
---===============4738306183067756951==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-linux-arm-kernel mailing list
-linux-arm-kernel@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-
---===============4738306183067756951==--
+VGhpcyBmaXhlcyB0aGUga2VybmVsIGNvbXBsYWluczoKZ3BpbyBncGlvY2hpcDE6ICgxZTAwMDYw
+MC5ncGlvLWJhbmsxKTogZGV0ZWN0ZWQgaXJxY2hpcCB0aGF0IGlzIHNoYXJlZAoJICAgIHdpdGgg
+bXVsdGlwbGUgZ3Bpb2NoaXBzOiBwbGVhc2UgZml4IHRoZSBkcml2ZXIuCmdwaW8gZ3Bpb2NoaXAy
+OiAoMWUwMDA2MDAuZ3Bpby1iYW5rMik6IGRldGVjdGVkIGlycWNoaXAgdGhhdCBpcyBzaGFyZWQK
+CSAgICB3aXRoIG11bHRpcGxlIGdwaW9jaGlwczogcGxlYXNlIGZpeCB0aGUgZHJpdmVyLgoKU2ln
+bmVkLW9mZi1ieTogUmVuw6kgdmFuIERvcnN0IDxvcGVuc291cmNlQHZkb3JzdC5jb20+CkNjOiBs
+aW51eC1ncGlvQHZnZXIua2VybmVsLm9yZwpDYzogbGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwpDYzogZ2VyZ0BrZXJuZWwub3JnCi0tLQogZHJpdmVycy9ncGlvL2dwaW8tbXQ3NjIx
+LmMgfCAxOSArKysrKysrKysrLS0tLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgMTAgaW5zZXJ0aW9u
+cygrKSwgOSBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwaW8vZ3Bpby1tdDc2
+MjEuYyBiL2RyaXZlcnMvZ3Bpby9ncGlvLW10NzYyMS5jCmluZGV4IDAwZTk1NGYyMmJjOS4uODlm
+YjAwMDQ4MGRjIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwaW8vZ3Bpby1tdDc2MjEuYworKysgYi9k
+cml2ZXJzL2dwaW8vZ3Bpby1tdDc2MjEuYwpAQCAtMzAsNiArMzAsNyBAQAogI2RlZmluZSBHUElP
+X1JFR19FREdFCQkweEEwCiAKIHN0cnVjdCBtdGtfZ2MgeworCXN0cnVjdCBpcnFfY2hpcCBpcnFf
+Y2hpcDsKIAlzdHJ1Y3QgZ3Bpb19jaGlwIGNoaXA7CiAJc3BpbmxvY2tfdCBsb2NrOwogCWludCBi
+YW5rOwpAQCAtMTg5LDEyICsxOTAsNiBAQCBtZWRpYXRla19ncGlvX2lycV90eXBlKHN0cnVjdCBp
+cnFfZGF0YSAqZCwgdW5zaWduZWQgaW50IHR5cGUpCiAJcmV0dXJuIDA7CiB9CiAKLXN0YXRpYyBz
+dHJ1Y3QgaXJxX2NoaXAgbWVkaWF0ZWtfZ3Bpb19pcnFfY2hpcCA9IHsKLQkuaXJxX3VubWFzawkJ
+PSBtZWRpYXRla19ncGlvX2lycV91bm1hc2ssCi0JLmlycV9tYXNrCQk9IG1lZGlhdGVrX2dwaW9f
+aXJxX21hc2ssCi0JLmlycV9tYXNrX2FjawkJPSBtZWRpYXRla19ncGlvX2lycV9tYXNrLAotCS5p
+cnFfc2V0X3R5cGUJCT0gbWVkaWF0ZWtfZ3Bpb19pcnFfdHlwZSwKLX07CiAKIHN0YXRpYyBpbnQK
+IG1lZGlhdGVrX2dwaW9feGxhdGUoc3RydWN0IGdwaW9fY2hpcCAqY2hpcCwKQEAgLTI1NCw2ICsy
+NDksMTMgQEAgbWVkaWF0ZWtfZ3Bpb19iYW5rX3Byb2JlKHN0cnVjdCBkZXZpY2UgKmRldiwKIAkJ
+cmV0dXJuIHJldDsKIAl9CiAKKwlyZy0+aXJxX2NoaXAubmFtZSA9IGRldl9uYW1lKGRldik7CisJ
+cmctPmlycV9jaGlwLnBhcmVudF9kZXZpY2UgPSBkZXY7CisJcmctPmlycV9jaGlwLmlycV91bm1h
+c2sgPSBtZWRpYXRla19ncGlvX2lycV91bm1hc2s7CisJcmctPmlycV9jaGlwLmlycV9tYXNrID0g
+bWVkaWF0ZWtfZ3Bpb19pcnFfbWFzazsKKwlyZy0+aXJxX2NoaXAuaXJxX21hc2tfYWNrID0gbWVk
+aWF0ZWtfZ3Bpb19pcnFfbWFzazsKKwlyZy0+aXJxX2NoaXAuaXJxX3NldF90eXBlID0gbWVkaWF0
+ZWtfZ3Bpb19pcnFfdHlwZTsKKwogCWlmIChtdGstPmdwaW9faXJxKSB7CiAJCS8qCiAJCSAqIE1h
+bnVhbGx5IHJlcXVlc3QgdGhlIGlycSBoZXJlIGluc3RlYWQgb2YgcGFzc2luZwpAQCAtMjcwLDE0
+ICsyNzIsMTQgQEAgbWVkaWF0ZWtfZ3Bpb19iYW5rX3Byb2JlKHN0cnVjdCBkZXZpY2UgKmRldiwK
+IAkJCXJldHVybiByZXQ7CiAJCX0KIAotCQlyZXQgPSBncGlvY2hpcF9pcnFjaGlwX2FkZCgmcmct
+PmNoaXAsICZtZWRpYXRla19ncGlvX2lycV9jaGlwLAorCQlyZXQgPSBncGlvY2hpcF9pcnFjaGlw
+X2FkZCgmcmctPmNoaXAsICZyZy0+aXJxX2NoaXAsCiAJCQkJCSAgIDAsIGhhbmRsZV9zaW1wbGVf
+aXJxLCBJUlFfVFlQRV9OT05FKTsKIAkJaWYgKHJldCkgewogCQkJZGV2X2VycihkZXYsICJmYWls
+ZWQgdG8gYWRkIGdwaW9jaGlwX2lycWNoaXBcbiIpOwogCQkJcmV0dXJuIHJldDsKIAkJfQogCi0J
+CWdwaW9jaGlwX3NldF9jaGFpbmVkX2lycWNoaXAoJnJnLT5jaGlwLCAmbWVkaWF0ZWtfZ3Bpb19p
+cnFfY2hpcCwKKwkJZ3Bpb2NoaXBfc2V0X2NoYWluZWRfaXJxY2hpcCgmcmctPmNoaXAsICZyZy0+
+aXJxX2NoaXAsCiAJCQkJCSAgICAgbXRrLT5ncGlvX2lycSwgTlVMTCk7CiAJfQogCkBAIC0zMTAs
+NyArMzEyLDYgQEAgbWVkaWF0ZWtfZ3Bpb19wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpw
+ZGV2KQogCW10ay0+Z3Bpb19pcnEgPSBpcnFfb2ZfcGFyc2VfYW5kX21hcChucCwgMCk7CiAJbXRr
+LT5kZXYgPSBkZXY7CiAJcGxhdGZvcm1fc2V0X2RydmRhdGEocGRldiwgbXRrKTsKLQltZWRpYXRl
+a19ncGlvX2lycV9jaGlwLm5hbWUgPSBkZXZfbmFtZShkZXYpOwogCiAJZm9yIChpID0gMDsgaSA8
+IE1US19CQU5LX0NOVDsgaSsrKSB7CiAJCXJldCA9IG1lZGlhdGVrX2dwaW9fYmFua19wcm9iZShk
+ZXYsIG5wLCBpKTsKLS0gCjIuMTkuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRl
+a0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
+bGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
