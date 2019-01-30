@@ -1,84 +1,87 @@
-From: Bartosz Golaszewski <bgolaszewski-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] gpio: MT7621: use a per instance irq_chip structure
-Date: Wed, 30 Jan 2019 16:49:09 +0100
-Message-ID: <CAMpxmJVj_ZrwjHbfmXQ+SANHU+m+4r6OzyhqXA33aR+z4H33Fg@mail.gmail.com>
-References: <20190130151744.11145-1-opensource@vdorst.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v3 2/4] dt-bindings: gnss: add mediatek binding
+Date: Wed, 30 Jan 2019 09:50:16 -0600
+Message-ID: <20190130155016.GA26536@bogus>
+References: <1548693481-1162-1-git-send-email-lollivier@baylibre.com>
+ <1548693481-1162-3-git-send-email-lollivier@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190130151744.11145-1-opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-gpio <linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, gerg-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1548693481-1162-3-git-send-email-lollivier@baylibre.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Loys Ollivier <lollivier@baylibre.com>
+Cc: devicetree@vger.kernel.org, Johan Hovold <johan@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-kernel@vger.kernel.org, Kevin Hilman <khilman@baylibre.com>, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-xZtyLiwgMzAgc3R5IDIwMTkgbyAxNjoyMiBSZW7DqSB2YW4gRG9yc3QgPG9wZW5zb3VyY2VAdmRv
-cnN0LmNvbT4gbmFwaXNhxYIoYSk6Cj4KPiBUaGlzIGZpeGVzIHRoZSBrZXJuZWwgY29tcGxhaW5z
-Ogo+IGdwaW8gZ3Bpb2NoaXAxOiAoMWUwMDA2MDAuZ3Bpby1iYW5rMSk6IGRldGVjdGVkIGlycWNo
-aXAgdGhhdCBpcyBzaGFyZWQKPiAgICAgICAgICAgICB3aXRoIG11bHRpcGxlIGdwaW9jaGlwczog
-cGxlYXNlIGZpeCB0aGUgZHJpdmVyLgo+IGdwaW8gZ3Bpb2NoaXAyOiAoMWUwMDA2MDAuZ3Bpby1i
-YW5rMik6IGRldGVjdGVkIGlycWNoaXAgdGhhdCBpcyBzaGFyZWQKPiAgICAgICAgICAgICB3aXRo
-IG11bHRpcGxlIGdwaW9jaGlwczogcGxlYXNlIGZpeCB0aGUgZHJpdmVyLgo+Cj4gU2lnbmVkLW9m
-Zi1ieTogUmVuw6kgdmFuIERvcnN0IDxvcGVuc291cmNlQHZkb3JzdC5jb20+Cj4gQ2M6IGxpbnV4
-LWdwaW9Admdlci5rZXJuZWwub3JnCj4gQ2M6IGxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKPiBDYzogZ2VyZ0BrZXJuZWwub3JnCgpQbGVhc2UgYWRkIHRoZSBGaXhlczogdGFnIGFu
-ZCBDYyBzdGFibGUgd2hpbGUgeW91J3JlIGF0IGl0LgoKQmFydAoKPiAtLS0KPiAgZHJpdmVycy9n
-cGlvL2dwaW8tbXQ3NjIxLmMgfCAxOSArKysrKysrKysrLS0tLS0tLS0tCj4gIDEgZmlsZSBjaGFu
-Z2VkLCAxMCBpbnNlcnRpb25zKCspLCA5IGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvZ3Bpby9ncGlvLW10NzYyMS5jIGIvZHJpdmVycy9ncGlvL2dwaW8tbXQ3NjIxLmMKPiBp
-bmRleCAwMGU5NTRmMjJiYzkuLjg5ZmIwMDA0ODBkYyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dw
-aW8vZ3Bpby1tdDc2MjEuYwo+ICsrKyBiL2RyaXZlcnMvZ3Bpby9ncGlvLW10NzYyMS5jCj4gQEAg
-LTMwLDYgKzMwLDcgQEAKPiAgI2RlZmluZSBHUElPX1JFR19FREdFICAgICAgICAgIDB4QTAKPgo+
-ICBzdHJ1Y3QgbXRrX2djIHsKPiArICAgICAgIHN0cnVjdCBpcnFfY2hpcCBpcnFfY2hpcDsKPiAg
-ICAgICAgIHN0cnVjdCBncGlvX2NoaXAgY2hpcDsKPiAgICAgICAgIHNwaW5sb2NrX3QgbG9jazsK
-PiAgICAgICAgIGludCBiYW5rOwo+IEBAIC0xODksMTIgKzE5MCw2IEBAIG1lZGlhdGVrX2dwaW9f
-aXJxX3R5cGUoc3RydWN0IGlycV9kYXRhICpkLCB1bnNpZ25lZCBpbnQgdHlwZSkKPiAgICAgICAg
-IHJldHVybiAwOwo+ICB9Cj4KPiAtc3RhdGljIHN0cnVjdCBpcnFfY2hpcCBtZWRpYXRla19ncGlv
-X2lycV9jaGlwID0gewo+IC0gICAgICAgLmlycV91bm1hc2sgICAgICAgICAgICAgPSBtZWRpYXRl
-a19ncGlvX2lycV91bm1hc2ssCj4gLSAgICAgICAuaXJxX21hc2sgICAgICAgICAgICAgICA9IG1l
-ZGlhdGVrX2dwaW9faXJxX21hc2ssCj4gLSAgICAgICAuaXJxX21hc2tfYWNrICAgICAgICAgICA9
-IG1lZGlhdGVrX2dwaW9faXJxX21hc2ssCj4gLSAgICAgICAuaXJxX3NldF90eXBlICAgICAgICAg
-ICA9IG1lZGlhdGVrX2dwaW9faXJxX3R5cGUsCj4gLX07Cj4KPiAgc3RhdGljIGludAo+ICBtZWRp
-YXRla19ncGlvX3hsYXRlKHN0cnVjdCBncGlvX2NoaXAgKmNoaXAsCj4gQEAgLTI1NCw2ICsyNDks
-MTMgQEAgbWVkaWF0ZWtfZ3Bpb19iYW5rX3Byb2JlKHN0cnVjdCBkZXZpY2UgKmRldiwKPiAgICAg
-ICAgICAgICAgICAgcmV0dXJuIHJldDsKPiAgICAgICAgIH0KPgo+ICsgICAgICAgcmctPmlycV9j
-aGlwLm5hbWUgPSBkZXZfbmFtZShkZXYpOwo+ICsgICAgICAgcmctPmlycV9jaGlwLnBhcmVudF9k
-ZXZpY2UgPSBkZXY7Cj4gKyAgICAgICByZy0+aXJxX2NoaXAuaXJxX3VubWFzayA9IG1lZGlhdGVr
-X2dwaW9faXJxX3VubWFzazsKPiArICAgICAgIHJnLT5pcnFfY2hpcC5pcnFfbWFzayA9IG1lZGlh
-dGVrX2dwaW9faXJxX21hc2s7Cj4gKyAgICAgICByZy0+aXJxX2NoaXAuaXJxX21hc2tfYWNrID0g
-bWVkaWF0ZWtfZ3Bpb19pcnFfbWFzazsKPiArICAgICAgIHJnLT5pcnFfY2hpcC5pcnFfc2V0X3R5
-cGUgPSBtZWRpYXRla19ncGlvX2lycV90eXBlOwo+ICsKPiAgICAgICAgIGlmIChtdGstPmdwaW9f
-aXJxKSB7Cj4gICAgICAgICAgICAgICAgIC8qCj4gICAgICAgICAgICAgICAgICAqIE1hbnVhbGx5
-IHJlcXVlc3QgdGhlIGlycSBoZXJlIGluc3RlYWQgb2YgcGFzc2luZwo+IEBAIC0yNzAsMTQgKzI3
-MiwxNCBAQCBtZWRpYXRla19ncGlvX2JhbmtfcHJvYmUoc3RydWN0IGRldmljZSAqZGV2LAo+ICAg
-ICAgICAgICAgICAgICAgICAgICAgIHJldHVybiByZXQ7Cj4gICAgICAgICAgICAgICAgIH0KPgo+
-IC0gICAgICAgICAgICAgICByZXQgPSBncGlvY2hpcF9pcnFjaGlwX2FkZCgmcmctPmNoaXAsICZt
-ZWRpYXRla19ncGlvX2lycV9jaGlwLAo+ICsgICAgICAgICAgICAgICByZXQgPSBncGlvY2hpcF9p
-cnFjaGlwX2FkZCgmcmctPmNoaXAsICZyZy0+aXJxX2NoaXAsCj4gICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIDAsIGhhbmRsZV9zaW1wbGVfaXJxLCBJUlFfVFlQRV9O
-T05FKTsKPiAgICAgICAgICAgICAgICAgaWYgKHJldCkgewo+ICAgICAgICAgICAgICAgICAgICAg
-ICAgIGRldl9lcnIoZGV2LCAiZmFpbGVkIHRvIGFkZCBncGlvY2hpcF9pcnFjaGlwXG4iKTsKPiAg
-ICAgICAgICAgICAgICAgICAgICAgICByZXR1cm4gcmV0Owo+ICAgICAgICAgICAgICAgICB9Cj4K
-PiAtICAgICAgICAgICAgICAgZ3Bpb2NoaXBfc2V0X2NoYWluZWRfaXJxY2hpcCgmcmctPmNoaXAs
-ICZtZWRpYXRla19ncGlvX2lycV9jaGlwLAo+ICsgICAgICAgICAgICAgICBncGlvY2hpcF9zZXRf
-Y2hhaW5lZF9pcnFjaGlwKCZyZy0+Y2hpcCwgJnJnLT5pcnFfY2hpcCwKPiAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtdGstPmdwaW9faXJxLCBOVUxMKTsKPiAg
-ICAgICAgIH0KPgo+IEBAIC0zMTAsNyArMzEyLDYgQEAgbWVkaWF0ZWtfZ3Bpb19wcm9iZShzdHJ1
-Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ICAgICAgICAgbXRrLT5ncGlvX2lycSA9IGlycV9v
-Zl9wYXJzZV9hbmRfbWFwKG5wLCAwKTsKPiAgICAgICAgIG10ay0+ZGV2ID0gZGV2Owo+ICAgICAg
-ICAgcGxhdGZvcm1fc2V0X2RydmRhdGEocGRldiwgbXRrKTsKPiAtICAgICAgIG1lZGlhdGVrX2dw
-aW9faXJxX2NoaXAubmFtZSA9IGRldl9uYW1lKGRldik7Cj4KPiAgICAgICAgIGZvciAoaSA9IDA7
-IGkgPCBNVEtfQkFOS19DTlQ7IGkrKykgewo+ICAgICAgICAgICAgICAgICByZXQgPSBtZWRpYXRl
-a19ncGlvX2JhbmtfcHJvYmUoZGV2LCBucCwgaSk7Cj4gLS0KPiAyLjE5LjEKPgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFp
-bGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+On Mon, Jan 28, 2019 at 05:37:59PM +0100, Loys Ollivier wrote:
+> Add binding for Mediatek-based GNSS receivers.
+> 
+> Signed-off-by: Loys Ollivier <lollivier@baylibre.com>
+> ---
+> 
+> v3:
+> Removed the I2C and SPI interfaces references.
+> Removed the "mediatek,mt3339" compatible line.
+> Added the optional propertied (reset, fix)
+> Added the pin names for the optional properties.
+> 
+> v2:
+> Renamed bindings from Globaltop/gtop to Mediatek/mtk.
+> Moved current-speed as an optional propertie.
+> Removed the status line in the example.
+> Added "mediatek,mt3339" compatible.
+> 
+>  .../devicetree/bindings/gnss/mediatek.txt          | 37 ++++++++++++++++++++++
+>  1 file changed, 37 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/gnss/mediatek.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/gnss/mediatek.txt b/Documentation/devicetree/bindings/gnss/mediatek.txt
+> new file mode 100644
+> index 000000000000..00650d81c5c8
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/gnss/mediatek.txt
+> @@ -0,0 +1,37 @@
+> +Mediatek-based GNSS Receiver DT binding
+> +
+> +Mediatek chipsets are used in GNSS-receiver modules produced by several
+> +vendors and can use an UART interface.
+> +
+> +Please see Documentation/devicetree/bindings/gnss/gnss.txt for generic
+> +properties.
+> +
+> +Required properties:
+> +
+> +- compatible	: Must be
+> +
+> +			"globaltop,pa6h"
+> +
+> +- vcc-supply	: Main voltage regulator (pin name: VCC)
+> +
+> +Optional properties:
+> +
+> +- gtop,reset-gpios	: GPIO used to reset the device
+> +  			  (pin name: RESET, NRESET)
+
+reset-gpios is the standard name.
+
+> +- gtop,fix-gpios	: GPIO used to determine device position fix state
+> +			  (pin name: FIX, 3D_FIX)
+> +- timepulse-gpios	: Time pulse GPIO (pin name: PPS1, 1PPS)
+> +- v-bckp-supply		: Backup voltage regulator
+> +  			  (pin name: VBAT, VBACKUP)
+> +- current-speed		: Default UART baud rate
+> +
+> +Example:
+> +
+> +serial@1234 {
+> +	compatible = "ns16550a";
+> +
+> +	gnss {
+> +		compatible = "globaltop,pa6h";
+> +		vcc-supply = <&vcc_3v3>;
+> +	};
+> +};
+> -- 
+> 2.7.4
+> 
