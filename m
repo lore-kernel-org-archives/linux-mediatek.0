@@ -1,66 +1,55 @@
-From: Zhang Rui <rui.zhang@intel.com>
-Subject: Re: [PATCH] thermal: mtk: Allocate enough space for mtk_thermal.
-Date: Wed, 30 Jan 2019 21:38:40 +0800
-Message-ID: <1548855520.2161.3.camel@intel.com>
-References: <20190109055724.184692-1-pihsun@chromium.org>
-         <CANdKZ0fRckMSUwHyChgBw162cVQe9_mnd_G9vwt=+CV+Y0WFfw@mail.gmail.com>
-         <81115ad5-521e-557b-d229-1effb92068a4@linaro.org>
-         <CANdKZ0eDwTgKoFsAOboCz=q+nsUWepecXA7wmR=jGhkWEzLvnA@mail.gmail.com>
-         <49dbd0af-975e-cafb-d1b9-4e491a6c9383@linaro.org>
+From: Nishad Kamdar <nishadkamdar@gmail.com>
+Subject: Re: [PATCH] MIPS: Select PINCTRL_RT2880 when RALINK is enabled
+Date: Wed, 30 Jan 2019 19:56:03 +0530
+Message-ID: <20190130142601.GA26071@nishad>
+References: <20190129152522.GA24872@nishad>
+ <20190129200905.vnb3amouxq6o57fn@pburton-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <49dbd0af-975e-cafb-d1b9-4e491a6c9383@linaro.org>
+Content-Disposition: inline
+In-Reply-To: <20190129200905.vnb3amouxq6o57fn@pburton-laptop>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, Pi-Hsun Shih <pihsun@chromium.org>
-Cc: Eduardo Valentin <edubezval@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:THERMAL" <linux-pm@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>, Michael.Kao@mediatek.com
+To: Paul Burton <paul.burton@mips.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, NeilBrown <neil@brown.name>, Ralf Baechle <ralf@linux-mips.org>, James Hogan <jhogan@kernel.org>, Joe Perches <joe@perches.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, Kees Cook <keescook@chromium.org>, "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-mips@vger.kernel.org" <linux-mips@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 三, 2019-01-30 at 11:04 +0100, Daniel Lezcano wrote:
-> On 30/01/2019 10:25, Pi-Hsun Shih wrote:
-> > 
-> > On Wed, Jan 30, 2019 at 3:44 PM Daniel Lezcano
-> > <daniel.lezcano@linaro.org> wrote:
-> > > 
-> > > 
-> > > On 30/01/2019 07:04, Peter Shih wrote:
-> > > > 
-> > > > Adding Michael Kao to cc list.
-> > > > 
-> > > > On Wed, Jan 9, 2019 at 1:57 PM Pi-Hsun Shih <pihsun@chromium.or
-> > > > g> wrote:
-> > > > > 
-> > > > > 
-> > > > > The mtk_thermal struct contains a 'struct mtk_thermal_bank
-> > > > > banks[];',
-> > > > > but the allocation only allocates sizeof(struct mtk_thermal)
-> > > > > bytes,
-> > > > > which cause out of bound access with the ->banks[] member.
-> > > > > Change it to
-> > > > > a fixed size array instead.
-> > > Even if the fix is correct, it pushes back the bug later in time
-> > > if a
-> > > new board containing more than MAX_NUM_ZONES is introduced. I
-> > > suggest to
-> > > dynamically allocate the array with the 'num_banks' value.
-> > > 
-> > For the current code structure, those mtk_thermal_data are
-> > statically declared,
-> > so if there's new board containing more than MAX_NUM_ZONES of
-> > bank_data, it
-> > would actually be a compile error.
-> > 
-> > I'm fine with either way, but feel like that this is simpler than
-> > manually
-> > calculating the size needed for allocation.
-> Right, I missed it can be caught at compile time.
+On Tue, Jan 29, 2019 at 08:09:07PM +0000, Paul Burton wrote:
+> Hi Nishad,
 > 
-> Reviewed-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+> On Tue, Jan 29, 2019 at 08:55:27PM +0530, Nishad Kamdar wrote:
+> > This patch selects config PINCTRL_RT2880 when config RALINK is
+> > enabled as per drivers/staging/mt7621-pinctrl/TODO list. PINCTRL
+> > is also selected when RALINK is enabled to avoid config dependency
+> > warnings.
+> > 
+> > Signed-off-by: Nishad Kamdar <nishadkamdar@gmail.com>
+> > ---
+> >  arch/mips/Kconfig | 2 ++
+> >  1 file changed, 2 insertions(+)
+> > 
+> > diff --git a/arch/mips/Kconfig b/arch/mips/Kconfig
+> > index e2fc88da0223..cea529cf6284 100644
+> > --- a/arch/mips/Kconfig
+> > +++ b/arch/mips/Kconfig
+> > @@ -623,6 +623,8 @@ config RALINK
+> >  	select CLKDEV_LOOKUP
+> >  	select ARCH_HAS_RESET_CONTROLLER
+> >  	select RESET_CONTROLLER
+> > +	select PINCTRL
+> > +	select PINCTRL_RT2880
+> >  
+> >  config SGI_IP22
+> >  	bool "SGI IP22 (Indy/Indigo2)"
 > 
-As this is a bugfix, I will take it and queue it for next -rc.
+> Wouldn't this also require selecting STAGING? Perhaps that's why it
+> wasn't done in the first place?
+> 
+> Thanks,
+>     Paul
+Ok, got it.
 
-thanks,
-rui
-> 
-> 
+Thanks for the review.
+
+Regards,
+Nishad
