@@ -1,15 +1,14 @@
 From: Pi-Hsun Shih <pihsun@chromium.org>
-Subject: Re: [PATCH 03/10] soc: mediatek: move the CMDQ_IRQ_MASK into cmdq
- driver data
-Date: Wed, 30 Jan 2019 13:59:19 +0800
-Message-ID: <e5cffd3f-5b65-b3f3-80d8-b0567bd4baf3@chromium.org>
+Subject: Re: [PATCH 06/10] soc: mediatek: add register device function
+Date: Wed, 30 Jan 2019 14:00:28 +0800
+Message-ID: <69c8ff46-c34c-c000-631c-a6ea8b4364c7@chromium.org>
 References: <1548747128-60136-1-git-send-email-bibby.hsieh@mediatek.com>
- <1548747128-60136-4-git-send-email-bibby.hsieh@mediatek.com>
+ <1548747128-60136-7-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1548747128-60136-4-git-send-email-bibby.hsieh@mediatek.com>
+In-Reply-To: <1548747128-60136-7-git-send-email-bibby.hsieh@mediatek.com>
 Content-Language: en-GB
 Sender: linux-kernel-owner@vger.kernel.org
 To: Bibby Hsieh <bibby.hsieh@mediatek.com>, Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, CK HU <ck.hu@mediatek.com>
@@ -17,72 +16,64 @@ Cc: devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>, Philipp
 List-Id: linux-mediatek@lists.infradead.org
 
 On 01/29/2019 03:32 PM, Bibby Hsieh wrote:
-> The interrupt mask and thread number has positive correlation,
-> so we move the CMDQ_IRQ_MASK into cmdq driver data and calculate
-> it by thread number.
->
+> GCE cannot know the register base address, we store the subsys-base address
+> relationship in the device node, and store the relationship by
+> cmdq_register_device function.
+> 
 > Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
 > ---
->   drivers/mailbox/mtk-cmdq-mailbox.c | 12 ++++++++----
->   1 file changed, 8 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c 
-b/drivers/mailbox/mtk-cmdq-mailbox.c
-> index 909eb23..f6174ca 100644
-> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> @@ -17,7 +17,6 @@
->   #include <linux/of_device.h>
->
->   #define CMDQ_OP_CODE_MASK		(0xff << CMDQ_OP_CODE_SHIFT)
-> -#define CMDQ_IRQ_MASK			0xffff
->   #define CMDQ_NUM_CMD(t)			(t->cmd_buf_size / CMDQ_INST_SIZE)
->
->   #define CMDQ_CURR_IRQ_STATUS		0x10
-> @@ -71,6 +70,7 @@ struct cmdq {
->   	void __iomem		*base;
->   	u32			irq;
->   	u32			thread_nr;
-> +	u32			irq_mask;
->   	struct cmdq_thread	*thread;
->   	struct clk		*clock;
->   	bool			suspended;
-> @@ -284,11 +284,11 @@ static irqreturn_t cmdq_irq_handler(int irq, 
-void *dev)
->   	unsigned long irq_status, flags = 0L;
->   	int bit;
->
-> -	irq_status = readl(cmdq->base + CMDQ_CURR_IRQ_STATUS) & CMDQ_IRQ_MASK;
-> -	if (!(irq_status ^ CMDQ_IRQ_MASK))
-> +	irq_status = readl(cmdq->base + CMDQ_CURR_IRQ_STATUS) & cmdq->irq_mask;
-> +	if (!(irq_status ^ cmdq->irq_mask))
->   		return IRQ_NONE;
->
-> -	for_each_clear_bit(bit, &irq_status, fls(CMDQ_IRQ_MASK)) {
-> +	for_each_clear_bit(bit, &irq_status, fls(cmdq->irq_mask)) {
->   		struct cmdq_thread *thread = &cmdq->thread[bit];
->
->   		spin_lock_irqsave(&thread->chan->lock, flags);
-> @@ -472,6 +472,9 @@ static int cmdq_probe(struct platform_device *pdev)
->   		dev_err(dev, "failed to get irq\n");
->   		return -EINVAL;
->   	}
+>   drivers/soc/mediatek/mtk-cmdq-helper.c | 24 ++++++++++++++++++++++++
+>   include/linux/soc/mediatek/mtk-cmdq.h  |  1 +
+>   2 files changed, 25 insertions(+)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> index 6e4b85e..6ad997f 100644
+> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
+> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> @@ -32,6 +32,30 @@ u8 cmdq_subsys_base_to_id(struct cmdq_base *clt_base, u32 base)
+>   }
+>   EXPORT_SYMBOL(cmdq_subsys_base_to_id);
+>   
+> +struct cmdq_base *cmdq_register_device(struct device *dev)
+> +{
+> +	struct cmdq_base *clt_base;
+> +	struct of_phandle_args spec;
+> +	u32 idx;
 > +
-> +	cmdq->thread_nr = (u32)(unsigned long)of_device_get_match_data(dev);
-> +	cmdq->irq_mask = GENMASK(cmdq->thread_nr - 1, 0);
->   	err = devm_request_irq(dev, cmdq->irq, cmdq_irq_handler, IRQF_SHARED,
->   			       "mtk_cmdq", cmdq);
->   	if (err < 0) {
-> @@ -489,6 +492,7 @@ static int cmdq_probe(struct platform_device *pdev)
->   	}
->
->   	cmdq->thread_nr = (u32)(unsigned long)of_device_get_match_data(dev);
-> +	cmdq->irq_mask = GENMASK(cmdq->thread_nr - 1, 0);
+> +	clt_base = devm_kzalloc(dev, sizeof(*clt_base), GFP_KERNEL);
+> +	if (!clt_base)
+> +		return NULL;
+> +
+> +	/* parse subsys */
+> +	for (idx = 0; idx < ARRAY_SIZE(clt_base->subsys); idx++) {
+> +		if (of_parse_phandle_with_args(dev->of_node, "gce-subsys",
+> +		    "#gce-subsys-cells", idx, &spec))
 
-The cmdq->thread_nr and cmdq->irq_mask are already set above, so these 
-two lines can be removed.
+nit: Should have more indention for the line above. (Align with the
+dev->of_node?)
 
->   	cmdq->mbox.dev = dev;
->   	cmdq->mbox.chans = devm_kcalloc(dev, cmdq->thread_nr,
->   					sizeof(*cmdq->mbox.chans), GFP_KERNEL);
->
+> +			break;
+> +		clt_base->subsys[idx].base = spec.args[0];
+> +		clt_base->subsys[idx].id = spec.args[1];
+> +	}
+> +	clt_base->count = idx;
+> +
+> +	return clt_base;
+> +}
+> +EXPORT_SYMBOL(cmdq_register_device);
+> +
+>   static void cmdq_client_timeout(struct timer_list *t)
+>   {
+>   	struct cmdq_client *client = from_timer(client, t, timer);
+> diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
+> index 0c7a6ee..a1f5eb6 100644
+> --- a/include/linux/soc/mediatek/mtk-cmdq.h
+> +++ b/include/linux/soc/mediatek/mtk-cmdq.h
+> @@ -138,5 +138,6 @@ int cmdq_pkt_flush_async(struct cmdq_pkt *pkt, cmdq_async_flush_cb cb,
+>   int cmdq_pkt_flush(struct cmdq_pkt *pkt);
+>   
+>   u8 cmdq_subsys_base_to_id(struct cmdq_base *clt_base, u32 base);
+> +struct cmdq_base *cmdq_register_device(struct device *dev);
+>   
+>   #endif	/* __MTK_CMDQ_H__ */
+> 
