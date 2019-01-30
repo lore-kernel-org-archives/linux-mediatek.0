@@ -1,64 +1,74 @@
-From: Hsin-Hsiung Wang <hsin-hsiung.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 2/6] dt-bindings: mfd: Add compatible for the MediaTek MT6358
- PMIC
-Date: Wed, 30 Jan 2019 17:18:07 +0800
-Message-ID: <1548839891-20932-3-git-send-email-hsin-hsiung.wang@mediatek.com>
-References: <1548839891-20932-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+From: Pi-Hsun Shih <pihsun@chromium.org>
+Subject: Re: [PATCH] thermal: mtk: Allocate enough space for mtk_thermal.
+Date: Wed, 30 Jan 2019 17:25:27 +0800
+Message-ID: <CANdKZ0eDwTgKoFsAOboCz=q+nsUWepecXA7wmR=jGhkWEzLvnA@mail.gmail.com>
+References: <20190109055724.184692-1-pihsun@chromium.org>
+ <CANdKZ0fRckMSUwHyChgBw162cVQe9_mnd_G9vwt=+CV+Y0WFfw@mail.gmail.com>
+ <81115ad5-521e-557b-d229-1effb92068a4@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1548839891-20932-1-git-send-email-hsin-hsiung.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Hsin-Hsiung Wang <hsin-hsiung.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <81115ad5-521e-557b-d229-1effb92068a4@linaro.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: "open list:THERMAL" <linux-pm@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, Michael.Kao@mediatek.com, Eduardo Valentin <edubezval@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Zhang Rui <rui.zhang@intel.com>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This adds compatible for the MediaTek MT6358 PMIC.
-
-Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- Documentation/devicetree/bindings/mfd/mt6397.txt | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
-index 0ebd08a..6d20321 100644
---- a/Documentation/devicetree/bindings/mfd/mt6397.txt
-+++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
-@@ -17,7 +17,10 @@ Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
- This document describes the binding for MFD device and its sub module.
- 
- Required properties:
--compatible: "mediatek,mt6397" or "mediatek,mt6323"
-+compatible:
-+	"mediatek,mt6323" for PMIC MT6323
-+	"mediatek,mt6358" for PMIC MT6358
-+	"mediatek,mt6397" for PMIC MT6397
- 
- Optional subnodes:
- 
-@@ -28,11 +31,13 @@ Optional subnodes:
- 	Required properties:
- 		- compatible: "mediatek,mt6397-regulator"
- 	see Documentation/devicetree/bindings/regulator/mt6397-regulator.txt
-+		- compatible: "mediatek,mt6358-regulator"
-+	see Documentation/devicetree/bindings/regulator/mt6358-regulator.txt
- 		- compatible: "mediatek,mt6323-regulator"
- 	see Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
- - codec
- 	Required properties:
--		- compatible: "mediatek,mt6397-codec"
-+		- compatible: "mediatek,mt6397-codec" or "mediatek,mt6358-sound"
- - clk
- 	Required properties:
- 		- compatible: "mediatek,mt6397-clk"
--- 
-1.9.1
+T24gV2VkLCBKYW4gMzAsIDIwMTkgYXQgMzo0NCBQTSBEYW5pZWwgTGV6Y2Fubwo8ZGFuaWVsLmxl
+emNhbm9AbGluYXJvLm9yZz4gd3JvdGU6Cj4KPiBPbiAzMC8wMS8yMDE5IDA3OjA0LCBQZXRlciBT
+aGloIHdyb3RlOgo+ID4gQWRkaW5nIE1pY2hhZWwgS2FvIHRvIGNjIGxpc3QuCj4gPgo+ID4gT24g
+V2VkLCBKYW4gOSwgMjAxOSBhdCAxOjU3IFBNIFBpLUhzdW4gU2hpaCA8cGloc3VuQGNocm9taXVt
+Lm9yZz4gd3JvdGU6Cj4gPj4KPiA+PiBUaGUgbXRrX3RoZXJtYWwgc3RydWN0IGNvbnRhaW5zIGEg
+J3N0cnVjdCBtdGtfdGhlcm1hbF9iYW5rIGJhbmtzW107JywKPiA+PiBidXQgdGhlIGFsbG9jYXRp
+b24gb25seSBhbGxvY2F0ZXMgc2l6ZW9mKHN0cnVjdCBtdGtfdGhlcm1hbCkgYnl0ZXMsCj4gPj4g
+d2hpY2ggY2F1c2Ugb3V0IG9mIGJvdW5kIGFjY2VzcyB3aXRoIHRoZSAtPmJhbmtzW10gbWVtYmVy
+LiBDaGFuZ2UgaXQgdG8KPiA+PiBhIGZpeGVkIHNpemUgYXJyYXkgaW5zdGVhZC4KPgo+IEV2ZW4g
+aWYgdGhlIGZpeCBpcyBjb3JyZWN0LCBpdCBwdXNoZXMgYmFjayB0aGUgYnVnIGxhdGVyIGluIHRp
+bWUgaWYgYQo+IG5ldyBib2FyZCBjb250YWluaW5nIG1vcmUgdGhhbiBNQVhfTlVNX1pPTkVTIGlz
+IGludHJvZHVjZWQuIEkgc3VnZ2VzdCB0bwo+IGR5bmFtaWNhbGx5IGFsbG9jYXRlIHRoZSBhcnJh
+eSB3aXRoIHRoZSAnbnVtX2JhbmtzJyB2YWx1ZS4KPgoKRm9yIHRoZSBjdXJyZW50IGNvZGUgc3Ry
+dWN0dXJlLCB0aG9zZSBtdGtfdGhlcm1hbF9kYXRhIGFyZSBzdGF0aWNhbGx5IGRlY2xhcmVkLApz
+byBpZiB0aGVyZSdzIG5ldyBib2FyZCBjb250YWluaW5nIG1vcmUgdGhhbiBNQVhfTlVNX1pPTkVT
+IG9mIGJhbmtfZGF0YSwgaXQKd291bGQgYWN0dWFsbHkgYmUgYSBjb21waWxlIGVycm9yLgoKSSdt
+IGZpbmUgd2l0aCBlaXRoZXIgd2F5LCBidXQgZmVlbCBsaWtlIHRoYXQgdGhpcyBpcyBzaW1wbGVy
+IHRoYW4gbWFudWFsbHkKY2FsY3VsYXRpbmcgdGhlIHNpemUgbmVlZGVkIGZvciBhbGxvY2F0aW9u
+LgoKPgo+ID4+IFNpZ25lZC1vZmYtYnk6IFBpLUhzdW4gU2hpaCA8cGloc3VuQGNocm9taXVtLm9y
+Zz4KPiA+PiAtLS0KPiA+PiAgZHJpdmVycy90aGVybWFsL210a190aGVybWFsLmMgfCA3ICsrKysr
+LS0KPiA+PiAgMSBmaWxlIGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkK
+PiA+Pgo+ID4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3RoZXJtYWwvbXRrX3RoZXJtYWwuYyBiL2Ry
+aXZlcnMvdGhlcm1hbC9tdGtfdGhlcm1hbC5jCj4gPj4gaW5kZXggMDY5MWYyNjBmNmVhYmUuLmVh
+MTFlZGIzZmNjZWQ2IDEwMDY0NAo+ID4+IC0tLSBhL2RyaXZlcnMvdGhlcm1hbC9tdGtfdGhlcm1h
+bC5jCj4gPj4gKysrIGIvZHJpdmVycy90aGVybWFsL210a190aGVybWFsLmMKPiA+PiBAQCAtMTU5
+LDYgKzE1OSw5IEBACj4gPj4gICNkZWZpbmUgTVQ3NjIyX05VTV9TRU5TT1JTX1BFUl9aT05FICAg
+IDEKPiA+PiAgI2RlZmluZSBNVDc2MjJfVFMxICAgICAwCj4gPj4KPiA+PiArLyogVGhlIG1heGlt
+dW0gbnVtYmVyIG9mIGJhbmtzICovCj4gPj4gKyNkZWZpbmUgTUFYX05VTV9aT05FUyAgICAgICAg
+ICA4Cj4gPj4gKwo+ID4+ICBzdHJ1Y3QgbXRrX3RoZXJtYWw7Cj4gPj4KPiA+PiAgc3RydWN0IHRo
+ZXJtYWxfYmFua19jZmcgewo+ID4+IEBAIC0xNzgsNyArMTgxLDcgQEAgc3RydWN0IG10a190aGVy
+bWFsX2RhdGEgewo+ID4+ICAgICAgICAgY29uc3QgaW50ICpzZW5zb3JfbXV4X3ZhbHVlczsKPiA+
+PiAgICAgICAgIGNvbnN0IGludCAqbXNyOwo+ID4+ICAgICAgICAgY29uc3QgaW50ICphZGNwbnA7
+Cj4gPj4gLSAgICAgICBzdHJ1Y3QgdGhlcm1hbF9iYW5rX2NmZyBiYW5rX2RhdGFbXTsKPiA+PiAr
+ICAgICAgIHN0cnVjdCB0aGVybWFsX2JhbmtfY2ZnIGJhbmtfZGF0YVtNQVhfTlVNX1pPTkVTXTsK
+PiA+PiAgfTsKPiA+Pgo+ID4+ICBzdHJ1Y3QgbXRrX3RoZXJtYWwgewo+ID4+IEBAIC0xOTcsNyAr
+MjAwLDcgQEAgc3RydWN0IG10a190aGVybWFsIHsKPiA+PiAgICAgICAgIHMzMiB2dHNbTVQ4MTcz
+X05VTV9TRU5TT1JTXTsKPiA+Pgo+ID4+ICAgICAgICAgY29uc3Qgc3RydWN0IG10a190aGVybWFs
+X2RhdGEgKmNvbmY7Cj4gPj4gLSAgICAgICBzdHJ1Y3QgbXRrX3RoZXJtYWxfYmFuayBiYW5rc1td
+Owo+ID4+ICsgICAgICAgc3RydWN0IG10a190aGVybWFsX2JhbmsgYmFua3NbTUFYX05VTV9aT05F
+U107Cj4gPj4gIH07Cj4gPj4KPiA+PiAgLyogTVQ4MTczIHRoZXJtYWwgc2Vuc29yIGRhdGEgKi8K
+PiA+PiAtLQo+ID4+IDIuMjAuMS45Ny5nODExODhkOTNjMy1nb29nCj4gPj4KPgo+Cj4gLS0KPiAg
+PGh0dHA6Ly93d3cubGluYXJvLm9yZy8+IExpbmFyby5vcmcg4pSCIE9wZW4gc291cmNlIHNvZnR3
+YXJlIGZvciBBUk0gU29Dcwo+Cj4gRm9sbG93IExpbmFybzogIDxodHRwOi8vd3d3LmZhY2Vib29r
+LmNvbS9wYWdlcy9MaW5hcm8+IEZhY2Vib29rIHwKPiA8aHR0cDovL3R3aXR0ZXIuY29tLyMhL2xp
+bmFyb29yZz4gVHdpdHRlciB8Cj4gPGh0dHA6Ly93d3cubGluYXJvLm9yZy9saW5hcm8tYmxvZy8+
+IEJsb2cKPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+bGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtYXJtLWtlcm5lbAo=
