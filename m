@@ -1,69 +1,36 @@
-From: =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH] gpio: MT7621: use a per instance irq_chip structure
-Date: Wed, 30 Jan 2019 16:17:48 +0100
-Message-ID: <20190130151744.11145-1-opensource@vdorst.com>
+From: "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH v2] staging: mt7621-eth/ethtool.c: Correction of SPDX
+ license identifier
+Date: Wed, 30 Jan 2019 16:29:56 +0100
+Message-ID: <20190130152956.GA4195@kroah.com>
+References: <SC1P15201MB2014C3E0CAB4DA9ADF330797A8900@SC1P15201MB2014.LAMP152.PROD.OUTLOOK.COM>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Bartosz Golaszewski <bgolaszewski-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>, gerg-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <SC1P15201MB2014C3E0CAB4DA9ADF330797A8900@SC1P15201MB2014.LAMP152.PROD.OUTLOOK.COM>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Carlos Henrique Lima Melara <charlesmelara@outlook.com>
+Cc: "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "neil@brown.name" <neil@brown.name>, "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-VGhpcyBmaXhlcyB0aGUga2VybmVsIGNvbXBsYWluczoKZ3BpbyBncGlvY2hpcDE6ICgxZTAwMDYw
-MC5ncGlvLWJhbmsxKTogZGV0ZWN0ZWQgaXJxY2hpcCB0aGF0IGlzIHNoYXJlZAoJICAgIHdpdGgg
-bXVsdGlwbGUgZ3Bpb2NoaXBzOiBwbGVhc2UgZml4IHRoZSBkcml2ZXIuCmdwaW8gZ3Bpb2NoaXAy
-OiAoMWUwMDA2MDAuZ3Bpby1iYW5rMik6IGRldGVjdGVkIGlycWNoaXAgdGhhdCBpcyBzaGFyZWQK
-CSAgICB3aXRoIG11bHRpcGxlIGdwaW9jaGlwczogcGxlYXNlIGZpeCB0aGUgZHJpdmVyLgoKU2ln
-bmVkLW9mZi1ieTogUmVuw6kgdmFuIERvcnN0IDxvcGVuc291cmNlQHZkb3JzdC5jb20+CkNjOiBs
-aW51eC1ncGlvQHZnZXIua2VybmVsLm9yZwpDYzogbGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpDYzogZ2VyZ0BrZXJuZWwub3JnCi0tLQogZHJpdmVycy9ncGlvL2dwaW8tbXQ3NjIx
-LmMgfCAxOSArKysrKysrKysrLS0tLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgMTAgaW5zZXJ0aW9u
-cygrKSwgOSBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwaW8vZ3Bpby1tdDc2
-MjEuYyBiL2RyaXZlcnMvZ3Bpby9ncGlvLW10NzYyMS5jCmluZGV4IDAwZTk1NGYyMmJjOS4uODlm
-YjAwMDQ4MGRjIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwaW8vZ3Bpby1tdDc2MjEuYworKysgYi9k
-cml2ZXJzL2dwaW8vZ3Bpby1tdDc2MjEuYwpAQCAtMzAsNiArMzAsNyBAQAogI2RlZmluZSBHUElP
-X1JFR19FREdFCQkweEEwCiAKIHN0cnVjdCBtdGtfZ2MgeworCXN0cnVjdCBpcnFfY2hpcCBpcnFf
-Y2hpcDsKIAlzdHJ1Y3QgZ3Bpb19jaGlwIGNoaXA7CiAJc3BpbmxvY2tfdCBsb2NrOwogCWludCBi
-YW5rOwpAQCAtMTg5LDEyICsxOTAsNiBAQCBtZWRpYXRla19ncGlvX2lycV90eXBlKHN0cnVjdCBp
-cnFfZGF0YSAqZCwgdW5zaWduZWQgaW50IHR5cGUpCiAJcmV0dXJuIDA7CiB9CiAKLXN0YXRpYyBz
-dHJ1Y3QgaXJxX2NoaXAgbWVkaWF0ZWtfZ3Bpb19pcnFfY2hpcCA9IHsKLQkuaXJxX3VubWFzawkJ
-PSBtZWRpYXRla19ncGlvX2lycV91bm1hc2ssCi0JLmlycV9tYXNrCQk9IG1lZGlhdGVrX2dwaW9f
-aXJxX21hc2ssCi0JLmlycV9tYXNrX2FjawkJPSBtZWRpYXRla19ncGlvX2lycV9tYXNrLAotCS5p
-cnFfc2V0X3R5cGUJCT0gbWVkaWF0ZWtfZ3Bpb19pcnFfdHlwZSwKLX07CiAKIHN0YXRpYyBpbnQK
-IG1lZGlhdGVrX2dwaW9feGxhdGUoc3RydWN0IGdwaW9fY2hpcCAqY2hpcCwKQEAgLTI1NCw2ICsy
-NDksMTMgQEAgbWVkaWF0ZWtfZ3Bpb19iYW5rX3Byb2JlKHN0cnVjdCBkZXZpY2UgKmRldiwKIAkJ
-cmV0dXJuIHJldDsKIAl9CiAKKwlyZy0+aXJxX2NoaXAubmFtZSA9IGRldl9uYW1lKGRldik7CisJ
-cmctPmlycV9jaGlwLnBhcmVudF9kZXZpY2UgPSBkZXY7CisJcmctPmlycV9jaGlwLmlycV91bm1h
-c2sgPSBtZWRpYXRla19ncGlvX2lycV91bm1hc2s7CisJcmctPmlycV9jaGlwLmlycV9tYXNrID0g
-bWVkaWF0ZWtfZ3Bpb19pcnFfbWFzazsKKwlyZy0+aXJxX2NoaXAuaXJxX21hc2tfYWNrID0gbWVk
-aWF0ZWtfZ3Bpb19pcnFfbWFzazsKKwlyZy0+aXJxX2NoaXAuaXJxX3NldF90eXBlID0gbWVkaWF0
-ZWtfZ3Bpb19pcnFfdHlwZTsKKwogCWlmIChtdGstPmdwaW9faXJxKSB7CiAJCS8qCiAJCSAqIE1h
-bnVhbGx5IHJlcXVlc3QgdGhlIGlycSBoZXJlIGluc3RlYWQgb2YgcGFzc2luZwpAQCAtMjcwLDE0
-ICsyNzIsMTQgQEAgbWVkaWF0ZWtfZ3Bpb19iYW5rX3Byb2JlKHN0cnVjdCBkZXZpY2UgKmRldiwK
-IAkJCXJldHVybiByZXQ7CiAJCX0KIAotCQlyZXQgPSBncGlvY2hpcF9pcnFjaGlwX2FkZCgmcmct
-PmNoaXAsICZtZWRpYXRla19ncGlvX2lycV9jaGlwLAorCQlyZXQgPSBncGlvY2hpcF9pcnFjaGlw
-X2FkZCgmcmctPmNoaXAsICZyZy0+aXJxX2NoaXAsCiAJCQkJCSAgIDAsIGhhbmRsZV9zaW1wbGVf
-aXJxLCBJUlFfVFlQRV9OT05FKTsKIAkJaWYgKHJldCkgewogCQkJZGV2X2VycihkZXYsICJmYWls
-ZWQgdG8gYWRkIGdwaW9jaGlwX2lycWNoaXBcbiIpOwogCQkJcmV0dXJuIHJldDsKIAkJfQogCi0J
-CWdwaW9jaGlwX3NldF9jaGFpbmVkX2lycWNoaXAoJnJnLT5jaGlwLCAmbWVkaWF0ZWtfZ3Bpb19p
-cnFfY2hpcCwKKwkJZ3Bpb2NoaXBfc2V0X2NoYWluZWRfaXJxY2hpcCgmcmctPmNoaXAsICZyZy0+
-aXJxX2NoaXAsCiAJCQkJCSAgICAgbXRrLT5ncGlvX2lycSwgTlVMTCk7CiAJfQogCkBAIC0zMTAs
-NyArMzEyLDYgQEAgbWVkaWF0ZWtfZ3Bpb19wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpw
-ZGV2KQogCW10ay0+Z3Bpb19pcnEgPSBpcnFfb2ZfcGFyc2VfYW5kX21hcChucCwgMCk7CiAJbXRr
-LT5kZXYgPSBkZXY7CiAJcGxhdGZvcm1fc2V0X2RydmRhdGEocGRldiwgbXRrKTsKLQltZWRpYXRl
-a19ncGlvX2lycV9jaGlwLm5hbWUgPSBkZXZfbmFtZShkZXYpOwogCiAJZm9yIChpID0gMDsgaSA8
-IE1US19CQU5LX0NOVDsgaSsrKSB7CiAJCXJldCA9IG1lZGlhdGVrX2dwaW9fYmFua19wcm9iZShk
-ZXYsIG5wLCBpKTsKLS0gCjIuMTkuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRl
-a0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+On Wed, Jan 30, 2019 at 02:48:27PM +0000, Carlos Henrique Lima Melara wrote:
+> 	This patch fix the checkpatch.p1 warning:
+> 
+> 	WARNING: Missing or malformed SPDX-License-Identifier tag in line 1
+> 	+/*
+
+Why did you not fix up the indentation that was already mentioned?
+
+> 	It includes the SPDX expression for GPL-2.0 and corrects the comment format to suit the kernel's coding style.
+
+Always properly line-wrap your comments.
+
+> 
+> Signed-off-by: Carlos (Charles) Henrique Lima Melara <charlesmelara@outlook.com>
+
+This needs to match your "From:" line.
+
+thanks,
+
+greg k-h
