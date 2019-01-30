@@ -1,79 +1,49 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] staging: mt7621-eth/ethtool.c: Correction of SPDX license
- identifier
-Date: Wed, 30 Jan 2019 09:48:58 +0100
-Message-ID: <9acb57b8-1210-672e-aced-17af4c06305a@gmail.com>
-References: <SC1P15201MB2014021EF99A3FB8ACF92515A8900@SC1P15201MB2014.LAMP152.PROD.OUTLOOK.COM>
+From: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+Subject: [PATCH 0/6] Add Support for MediaTek PMIC MT6358 MFD Core and Regulator
+Date: Wed, 30 Jan 2019 17:18:05 +0800
+Message-ID: <1548839891-20932-1-git-send-email-hsin-hsiung.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <SC1P15201MB2014021EF99A3FB8ACF92515A8900-n6uN9oJn7pUGE5ncnRwwVnXZKBRSm5aV/Ujsoj3cBu5BGWnSfhEsfQ@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Carlos Henrique Lima Melara <charlesmelara-1ViLX0X+lBJBDgjK7y7TUQ@public.gmane.org>, "gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org" <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
-Cc: "neil-+NVA1uvv1dVBDLzU/O5InQ@public.gmane.org" <neil-+NVA1uvv1dVBDLzU/O5InQ@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Liam Girdwood <lgirdwood@gmail.com>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
+This patchset including refactoring interrupt add support to MT6358 PMIC.
+MT6358 is the primary PMIC for MT8183 platform.
 
+Hsin-Hsiung Wang (6):
+  mfd: mt6397: extract irq related code from core driver
+  dt-bindings: mfd: Add compatible for the MediaTek MT6358 PMIC
+  regulator: Add document for MT6358 regulator
+  mfd: Add support for the MediaTek MT6358 PMIC
+  regulator: mt6358: Add support for MT6358 regulator
+  arm64: dts: mt6358: add PMIC MT6358 related nodes
 
-On 30/01/2019 06:53, Carlos Henrique Lima Melara wrote:
-> 	This patch fix the checkpatch.p1 warning:
-> 
-> 	WARNING: Missing or malformed SPDX-License-Identifier tag in line 1
-> 	+/*
-> 
-> 	It includes the SPDX expression for GPL-2.0 and corrects the comment format to suit the kernel's coding style.
+ Documentation/devicetree/bindings/mfd/mt6397.txt   |    9 +-
+ .../bindings/regulator/mt6358-regulator.txt        |  318 ++++
+ arch/arm64/boot/dts/mediatek/mt6358.dtsi           |  318 ++++
+ drivers/mfd/Makefile                               |    2 +-
+ drivers/mfd/mt6358-irq.c                           |  236 +++
+ drivers/mfd/mt6397-core.c                          |  291 +--
+ drivers/mfd/mt6397-irq.c                           |  214 +++
+ drivers/regulator/Kconfig                          |    9 +
+ drivers/regulator/Makefile                         |    1 +
+ drivers/regulator/mt6358-regulator.c               |  607 ++++++
+ include/linux/mfd/mt6358/core.h                    |  158 ++
+ include/linux/mfd/mt6358/registers.h               | 1926 ++++++++++++++++++++
+ include/linux/mfd/mt6397/core.h                    |   15 +
+ include/linux/regulator/mt6358-regulator.h         |   56 +
+ 14 files changed, 3962 insertions(+), 198 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/regulator/mt6358-regulator.txt
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6358.dtsi
+ create mode 100644 drivers/mfd/mt6358-irq.c
+ create mode 100644 drivers/mfd/mt6397-irq.c
+ create mode 100644 drivers/regulator/mt6358-regulator.c
+ create mode 100644 include/linux/mfd/mt6358/core.h
+ create mode 100644 include/linux/mfd/mt6358/registers.h
+ create mode 100644 include/linux/regulator/mt6358-regulator.h
 
-Patch description should be aligned to the left.
-
-Regards,
-Matthias
-
-> 
-> Signed-off-by: Carlos (Charles) Henrique Lima Melara <charlesmelara-1ViLX0X+lBJBDgjK7y7TUQ@public.gmane.org>
-> ---
->  drivers/staging/mt7621-eth/ethtool.c | 22 ++++++++++++----------
->  1 file changed, 12 insertions(+), 10 deletions(-)
-> 
-> diff --git a/drivers/staging/mt7621-eth/ethtool.c b/drivers/staging/mt7621-eth/ethtool.c
-> index 40a7d47be913..49d417de64c8 100644
-> --- a/drivers/staging/mt7621-eth/ethtool.c
-> +++ b/drivers/staging/mt7621-eth/ethtool.c
-> @@ -1,15 +1,17 @@
-> -/*   This program is free software; you can redistribute it and/or modify
-> - *   it under the terms of the GNU General Public License as published by
-> - *   the Free Software Foundation; version 2 of the License
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License as published by
-> + * the Free Software Foundation; version 2 of the License
->   *
-> - *   This program is distributed in the hope that it will be useful,
-> - *   but WITHOUT ANY WARRANTY; without even the implied warranty of
-> - *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> - *   GNU General Public License for more details.
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
->   *
-> - *   Copyright (C) 2009-2016 John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-> - *   Copyright (C) 2009-2016 Felix Fietkau <nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-> - *   Copyright (C) 2013-2016 Michael Lee <igvtee-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> + * Copyright (C) 2009-2016 John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-> + * Copyright (C) 2009-2016 Felix Fietkau <nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-> + * Copyright (C) 2013-2016 Michael Lee <igvtee-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
->   */
->  
->  #include "mtk_eth_soc.h"
-> 
+-- 
+1.9.1
