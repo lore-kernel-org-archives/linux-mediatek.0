@@ -1,136 +1,68 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH v9 2/9] PCI: Using PCI configuration space header type
- instead of class type to assign resource
-Date: Wed, 30 Jan 2019 11:06:12 -0600
-Message-ID: <20190130170612.GH229773@google.com>
-References: <1539686690-24068-1-git-send-email-honghui.zhang@mediatek.com>
- <1539686690-24068-3-git-send-email-honghui.zhang@mediatek.com>
+From: "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH v2] staging: mt7621-eth/ethtool.c: Correction of SPDX
+ license identifier
+Date: Wed, 30 Jan 2019 19:10:05 +0100
+Message-ID: <20190130181005.GA15653@kroah.com>
+References: <SC1P15201MB2014C3E0CAB4DA9ADF330797A8900@SC1P15201MB2014.LAMP152.PROD.OUTLOOK.COM>
+ <20190130163817.GF21904@lunn.ch>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1539686690-24068-3-git-send-email-honghui.zhang@mediatek.com>
+In-Reply-To: <20190130163817.GF21904@lunn.ch>
 Sender: linux-kernel-owner@vger.kernel.org
-To: honghui.zhang@mediatek.com
-Cc: lorenzo.pieralisi@arm.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com, youlin.pei@mediatek.com, devicetree@vger.kernel.org, ulf.hansson@linaro.org, marc.zyngier@arm.com, jianjun.wang@mediatek.com, yt.shen@mediatek.com, matthias.bgg@gmail.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Carlos Henrique Lima Melara <charlesmelara@outlook.com>, "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "neil@brown.name" <neil@brown.name>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Oct 16, 2018 at 06:44:43PM +0800, honghui.zhang@mediatek.com wrote:
-> From: Honghui Zhang <honghui.zhang@mediatek.com>
+On Wed, Jan 30, 2019 at 05:38:17PM +0100, Andrew Lunn wrote:
+> On Wed, Jan 30, 2019 at 02:48:27PM +0000, Carlos Henrique Lima Melara wrote:
+> > 	This patch fix the checkpatch.p1 warning:
+> > 
+> > 	WARNING: Missing or malformed SPDX-License-Identifier tag in line 1
+> > 	+/*
+> > 
+> > 	It includes the SPDX expression for GPL-2.0 and corrects the comment format to suit the kernel's coding style.
+> > 
+> > Signed-off-by: Carlos (Charles) Henrique Lima Melara <charlesmelara@outlook.com>
+> > ---
+> >  drivers/staging/mt7621-eth/ethtool.c | 22 ++++++++++++----------
+> >  1 file changed, 12 insertions(+), 10 deletions(-)
+> > 
+> > diff --git a/drivers/staging/mt7621-eth/ethtool.c b/drivers/staging/mt7621-eth/ethtool.c
+> > index 40a7d47be913..49d417de64c8 100644
+> > --- a/drivers/staging/mt7621-eth/ethtool.c
+> > +++ b/drivers/staging/mt7621-eth/ethtool.c
+> > @@ -1,15 +1,17 @@
+> > -/*   This program is free software; you can redistribute it and/or modify
+> > - *   it under the terms of the GNU General Public License as published by
+> > - *   the Free Software Foundation; version 2 of the License
+> > +// SPDX-License-Identifier: GPL-2.0
 > 
-> The PCI configuration space header type defines the layout of the rest
-> of the header (PCI r3.0 sec 6.1, PCIe r4.0 sec 7.5.1.1.9) while the
-> resource assignment is based on the configuration space layout instead
-> of its class type. Using configuration space header type instead of
-> class type for the resource assignment.
+> Hi Carlos
 > 
-> Suggested-by: Bjorn Helgaas <bhelgaas@google.com>
-> Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+> drivers/staging/mt7621-eth$ grep LICENSE *
+> gsw_mt7621.c:MODULE_LICENSE("GPL");
+> mtk_eth_soc.c:MODULE_LICENSE("GPL");
+> 
+> And include/linux/module.h 
+> says:
+> 
+> /*
+>  * The following license idents are currently accepted as indicating free
+>  * software modules
+>  *
+>  *      "GPL"                           [GNU Public License v2 or later]
+>  *      "GPL v2"                        [GNU Public License v2]
+> 
+> So the SPDX string probably does not match the MODULE_LICENSE.
 
-I applied the patch below to pci/enumeration for v5.1.
+No, ignore the MODULE_LICENSE marking for this, go by what the text at
+the top of the file says. See the patch about all of this from Thomas on
+lkml yesterday for why this is the case.
 
-I dropped the hunk that removed the PCI_CLASS_BRIDGE_HOST check per
-Lorenzo's concern.  Let me know if you have any other concerns.
+So the patch is fine.  If the changelog stuff ever gets fixed...
 
+thanks,
 
-commit b2fb5cc57469
-Author: Honghui Zhang <honghui.zhang@mediatek.com>
-Date:   Tue Oct 16 18:44:43 2018 +0800
-
-    PCI: Rely on config space header type, not class code
-    
-    The PCI configuration space header type tells us whether the device is a
-    bridge, a CardBus bridge, or a normal device, and defines the layout of the
-    rest of the header (PCI r3.0 sec 6.1, PCIe r4.0 sec 7.5.1.1.9).
-    
-    When we rely on the header format, e.g., when we're dealing with bridge
-    windows, we should check the header type, not the class code.  The class
-    code is loosely related to the header type, but is often incorrect and the
-    spec doesn't actually require it to be related to the header format.
-    
-    Suggested-by: Bjorn Helgaas <bhelgaas@google.com>
-    Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-    [bhelgaas: changelog, keep the PCI_CLASS_BRIDGE_HOST check]
-    Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
-
-diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
-index c9d8e3c837de..e9d938e14ba8 100644
---- a/drivers/pci/pci.c
-+++ b/drivers/pci/pci.c
-@@ -6000,8 +6000,7 @@ void pci_reassigndev_resource_alignment(struct pci_dev *dev)
- 	 * to enable the kernel to reassign new resource
- 	 * window later on.
- 	 */
--	if (dev->hdr_type == PCI_HEADER_TYPE_BRIDGE &&
--	    (dev->class >> 8) == PCI_CLASS_BRIDGE_PCI) {
-+	if (dev->hdr_type == PCI_HEADER_TYPE_BRIDGE) {
- 		for (i = PCI_BRIDGE_RESOURCES; i < PCI_NUM_RESOURCES; i++) {
- 			r = &dev->resource[i];
- 			if (!(r->flags & IORESOURCE_MEM))
-diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
-index 8e2e4154cdd9..128459a0ffba 100644
---- a/drivers/pci/probe.c
-+++ b/drivers/pci/probe.c
-@@ -1779,9 +1779,6 @@ int pci_setup_device(struct pci_dev *dev)
- 		break;
- 
- 	case PCI_HEADER_TYPE_BRIDGE:		    /* bridge header */
--		if (class != PCI_CLASS_BRIDGE_PCI)
--			goto bad;
--
- 		/*
- 		 * The PCI-to-PCI bridge spec requires that subtractive
- 		 * decoding (i.e. transparent) bridge must have programming
-diff --git a/drivers/pci/setup-bus.c b/drivers/pci/setup-bus.c
-index 1941bb0a6c13..ec44a0f3a7ac 100644
---- a/drivers/pci/setup-bus.c
-+++ b/drivers/pci/setup-bus.c
-@@ -1186,12 +1186,12 @@ void __pci_bus_size_bridges(struct pci_bus *bus, struct list_head *realloc_head)
- 		if (!b)
- 			continue;
- 
--		switch (dev->class >> 8) {
--		case PCI_CLASS_BRIDGE_CARDBUS:
-+		switch (dev->hdr_type) {
-+		case PCI_HEADER_TYPE_CARDBUS:
- 			pci_bus_size_cardbus(b, realloc_head);
- 			break;
- 
--		case PCI_CLASS_BRIDGE_PCI:
-+		case PCI_HEADER_TYPE_BRIDGE:
- 		default:
- 			__pci_bus_size_bridges(b, realloc_head);
- 			break;
-@@ -1202,12 +1202,12 @@ void __pci_bus_size_bridges(struct pci_bus *bus, struct list_head *realloc_head)
- 	if (pci_is_root_bus(bus))
- 		return;
- 
--	switch (bus->self->class >> 8) {
--	case PCI_CLASS_BRIDGE_CARDBUS:
-+	switch (bus->self->hdr_type) {
-+	case PCI_HEADER_TYPE_CARDBUS:
- 		/* don't size cardbuses yet. */
- 		break;
- 
--	case PCI_CLASS_BRIDGE_PCI:
-+	case PCI_HEADER_TYPE_BRIDGE:
- 		pci_bridge_check_ranges(bus);
- 		if (bus->self->is_hotplug_bridge) {
- 			additional_io_size  = pci_hotplug_io_size;
-@@ -1356,13 +1356,13 @@ void __pci_bus_assign_resources(const struct pci_bus *bus,
- 
- 		__pci_bus_assign_resources(b, realloc_head, fail_head);
- 
--		switch (dev->class >> 8) {
--		case PCI_CLASS_BRIDGE_PCI:
-+		switch (dev->hdr_type) {
-+		case PCI_HEADER_TYPE_BRIDGE:
- 			if (!pci_is_enabled(dev))
- 				pci_setup_bridge(b);
- 			break;
- 
--		case PCI_CLASS_BRIDGE_CARDBUS:
-+		case PCI_HEADER_TYPE_CARDBUS:
- 			pci_setup_cardbus(b);
- 			break;
- 
+greg k-h
