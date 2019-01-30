@@ -1,51 +1,88 @@
-From: Sean Wang <sean.wang@kernel.org>
-Subject: Re: [PATCHv4 2/3] net: dsa: mt7530: support the 7530 switch on the
- Mediatek MT7621 SoC
-Date: Tue, 29 Jan 2019 19:55:12 -0800
-Message-ID: <CAGp9LzqqeJRtqtavMJQ3vokBWnpiJYaPuFWYgPr+BP4h6hTr0g@mail.gmail.com>
-References: <20190130012406.28271-1-gerg@kernel.org> <20190130012406.28271-3-gerg@kernel.org>
- <d030fb8f-c707-9aa2-5ebc-e8100188a5c2@gmail.com>
+From: Pi-Hsun Shih <pihsun@chromium.org>
+Subject: Re: [PATCH 03/10] soc: mediatek: move the CMDQ_IRQ_MASK into cmdq
+ driver data
+Date: Wed, 30 Jan 2019 13:59:19 +0800
+Message-ID: <e5cffd3f-5b65-b3f3-80d8-b0567bd4baf3@chromium.org>
+References: <1548747128-60136-1-git-send-email-bibby.hsieh@mediatek.com>
+ <1548747128-60136-4-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <d030fb8f-c707-9aa2-5ebc-e8100188a5c2@gmail.com>
-Sender: netdev-owner@vger.kernel.org
-To: Florian Fainelli <f.fainelli@gmail.com>
-Cc: gerg@kernel.org, =?UTF-8?B?U2VhbiBXYW5nICjnjovlv5fkupgp?= <sean.wang@mediatek.com>, linux-mediatek@lists.infradead.org, bjorn@mork.no, Andrew Lunn <andrew@lunn.ch>, vivien.didelot@savoirfairelinux.com, netdev@vger.kernel.org, neil@brown.name, rene@vdorst.com, John Crispin <john@phrozen.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1548747128-60136-4-git-send-email-bibby.hsieh@mediatek.com>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>, Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, CK HU <ck.hu@mediatek.com>
+Cc: devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, srv_heupstream@mediatek.com, Daoyuan Huang <daoyuan.huang@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, kendrick.hsu@mediatek.com, linux-mediatek@lists.infradead.org, Houlong Wei <houlong.wei@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Frederic Chen <Frederic.Chen@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, linux-arm-kernel@lists.infradead.org, ginny.chen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Jan 29, 2019 at 7:39 PM Florian Fainelli <f.fainelli@gmail.com> wrote:
+On 01/29/2019 03:32 PM, Bibby Hsieh wrote:
+> The interrupt mask and thread number has positive correlation,
+> so we move the CMDQ_IRQ_MASK into cmdq driver data and calculate
+> it by thread number.
 >
+> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+> ---
+>   drivers/mailbox/mtk-cmdq-mailbox.c | 12 ++++++++----
+>   1 file changed, 8 insertions(+), 4 deletions(-)
 >
+> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c 
+b/drivers/mailbox/mtk-cmdq-mailbox.c
+> index 909eb23..f6174ca 100644
+> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+> @@ -17,7 +17,6 @@
+>   #include <linux/of_device.h>
 >
-> On 1/29/19 5:24 PM, gerg@kernel.org wrote:
-> > From: Greg Ungerer <gerg@kernel.org>
-> >
-> > The MediaTek MT7621 SoC device contains a 7530 switch, and the existing
-> > linux kernel 7530 DSA switch driver can be used with it.
-> >
-> > The bulk of the changes required stem from the 7621 having different
-> > regulator and pad setup. The existing setup of these in the 7530
-> > driver appears to be very specific to its implemtation in the Mediatek
-> > 7623 SoC. (Not entirely surprising given the 7623 is a quad core ARM
-> > based SoC, and the 7621 is a dual core, dual thread MIPS based SoC).
-> >
-> > Create a new devicetree type, "mediatek,mt7621", to support the 7530
-> > switch in the 7621 SoC. There appears to be no usable ID register to
-> > distinguish it from a 7530 in other hardware at runtime. This is used
-> > to carry out the appropriate configuration and setup.
-> >
-> > Signed-off-by: Greg Ungerer <gerg@kernel.org>
-> > Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+>   #define CMDQ_OP_CODE_MASK		(0xff << CMDQ_OP_CODE_SHIFT)
+> -#define CMDQ_IRQ_MASK			0xffff
+>   #define CMDQ_NUM_CMD(t)			(t->cmd_buf_size / CMDQ_INST_SIZE)
 >
-> Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+>   #define CMDQ_CURR_IRQ_STATUS		0x10
+> @@ -71,6 +70,7 @@ struct cmdq {
+>   	void __iomem		*base;
+>   	u32			irq;
+>   	u32			thread_nr;
+> +	u32			irq_mask;
+>   	struct cmdq_thread	*thread;
+>   	struct clk		*clock;
+>   	bool			suspended;
+> @@ -284,11 +284,11 @@ static irqreturn_t cmdq_irq_handler(int irq, 
+void *dev)
+>   	unsigned long irq_status, flags = 0L;
+>   	int bit;
+>
+> -	irq_status = readl(cmdq->base + CMDQ_CURR_IRQ_STATUS) & CMDQ_IRQ_MASK;
+> -	if (!(irq_status ^ CMDQ_IRQ_MASK))
+> +	irq_status = readl(cmdq->base + CMDQ_CURR_IRQ_STATUS) & cmdq->irq_mask;
+> +	if (!(irq_status ^ cmdq->irq_mask))
+>   		return IRQ_NONE;
+>
+> -	for_each_clear_bit(bit, &irq_status, fls(CMDQ_IRQ_MASK)) {
+> +	for_each_clear_bit(bit, &irq_status, fls(cmdq->irq_mask)) {
+>   		struct cmdq_thread *thread = &cmdq->thread[bit];
+>
+>   		spin_lock_irqsave(&thread->chan->lock, flags);
+> @@ -472,6 +472,9 @@ static int cmdq_probe(struct platform_device *pdev)
+>   		dev_err(dev, "failed to get irq\n");
+>   		return -EINVAL;
+>   	}
+> +
+> +	cmdq->thread_nr = (u32)(unsigned long)of_device_get_match_data(dev);
+> +	cmdq->irq_mask = GENMASK(cmdq->thread_nr - 1, 0);
+>   	err = devm_request_irq(dev, cmdq->irq, cmdq_irq_handler, IRQF_SHARED,
+>   			       "mtk_cmdq", cmdq);
+>   	if (err < 0) {
+> @@ -489,6 +492,7 @@ static int cmdq_probe(struct platform_device *pdev)
+>   	}
+>
+>   	cmdq->thread_nr = (u32)(unsigned long)of_device_get_match_data(dev);
+> +	cmdq->irq_mask = GENMASK(cmdq->thread_nr - 1, 0);
 
-Acked-by: Sean Wang <sean.wang@kernel.org>
+The cmdq->thread_nr and cmdq->irq_mask are already set above, so these 
+two lines can be removed.
 
-> --
-> Florian
+>   	cmdq->mbox.dev = dev;
+>   	cmdq->mbox.chans = devm_kcalloc(dev, cmdq->thread_nr,
+>   					sizeof(*cmdq->mbox.chans), GFP_KERNEL);
 >
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
