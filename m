@@ -1,56 +1,57 @@
-From: Chaotian Jing <chaotian.jing@mediatek.com>
-Subject: [PATCH] mmc: mmc: Fix HS setting in mmc_hs400_to_hs200()
-Date: Thu, 31 Jan 2019 15:53:31 +0800
-Message-ID: <1548921212-5219-1-git-send-email-chaotian.jing@mediatek.com>
+From: <honghui.zhang@mediatek.com>
+Subject: [PATCH v2 1/2] PCI: mediatek: Use resource_size function on resource object
+Date: Thu, 31 Jan 2019 16:01:52 +0800
+Message-ID: <1548921713-5355-2-git-send-email-honghui.zhang@mediatek.com>
+References: <1548921713-5355-1-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1548921713-5355-1-git-send-email-honghui.zhang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Simon Horman <horms+renesas@verge.net.au>, Chaotian Jing <chaotian.jing@mediatek.com>, Kyle Roeschley <kyle.roeschley@ni.com>, Hongjie Fang <hongjiefang@asrmicro.com>, Harish Jenny K N <harish_kandiga@mentor.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
+To: lorenzo.pieralisi@arm.com, bhelgaas@google.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com
+Cc: rafael.j.wysocki@intel.com, fred@fredlawl.com, poza@codeaurora.org, youlin.pei@mediatek.com, jianjun.wang@mediatek.com, Honghui Zhang <honghui.zhang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-mmc_hs400_to_hs200() begins with the card and host in HS400 mode.
-Therefore, any commands sent to the card should use HS400 timing.
-It is incorrect to reduce frequency to 50Mhz before sending the switch
-command, in this case, only reduce clock frequency to 50Mhz but without
-host timming change, host is still in hs400 mode but clock changed from
-200Mhz to 50Mhz, which makes the tuning result unsuitable and cause
-the switch command gets response CRC error.
+From: Honghui Zhang <honghui.zhang@mediatek.com>
 
-this patch refers to mmc_select_hs400(), make the reduce clock frequency
-after card timing change.
+scripts/coccinelle/api/resource_size.cocci complain about the
+following warning:
 
-Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+pcie-mediatek.c:720:13-16: WARNING: Suspicious code. resource_size is maybe missing with mem
+
+Use resource_size(mem) instead of mem->end - mem->start to eliminate the
+complain. Since the MMIO window size for both MT2712 and MT7622 are all
+0x1000_0000, this change also fix the AHB2PCIe window size smaller than
+HW MMIO window size issue by change the values of fls(size) from
+fls(0xfff_ffff) to fls(0x1000_0000).
+
+Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
 ---
- drivers/mmc/core/mmc.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/pci/controller/pcie-mediatek.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
-index da892a5..21b811e 100644
---- a/drivers/mmc/core/mmc.c
-+++ b/drivers/mmc/core/mmc.c
-@@ -1239,10 +1239,6 @@ int mmc_hs400_to_hs200(struct mmc_card *card)
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index 55e471c..01126b8 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -654,7 +654,6 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+ 	struct resource *mem = &pcie->mem;
+ 	const struct mtk_pcie_soc *soc = port->pcie->soc;
+ 	u32 val;
+-	size_t size;
  	int err;
- 	u8 val;
  
--	/* Reduce frequency to HS */
--	max_dtr = card->ext_csd.hs_max_dtr;
--	mmc_set_clock(host, max_dtr);
--
- 	/* Switch HS400 to HS DDR */
- 	val = EXT_CSD_TIMING_HS;
- 	err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL, EXT_CSD_HS_TIMING,
-@@ -1253,6 +1249,10 @@ int mmc_hs400_to_hs200(struct mmc_card *card)
+ 	/* MT7622 platforms need to enable LTSSM and ASPM from PCIe subsys */
+@@ -706,8 +705,8 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+ 		mtk_pcie_enable_msi(port);
  
- 	mmc_set_timing(host, MMC_TIMING_MMC_DDR52);
+ 	/* Set AHB to PCIe translation windows */
+-	size = mem->end - mem->start;
+-	val = lower_32_bits(mem->start) | AHB2PCIE_SIZE(fls(size));
++	val = lower_32_bits(mem->start)
++	      | AHB2PCIE_SIZE(fls(resource_size(mem)));
+ 	writel(val, port->base + PCIE_AHB_TRANS_BASE0_L);
  
-+	/* Reduce frequency to HS */
-+	max_dtr = card->ext_csd.hs_max_dtr;
-+	mmc_set_clock(host, max_dtr);
-+
- 	err = mmc_switch_status(card);
- 	if (err)
- 		goto out_err;
+ 	val = upper_32_bits(mem->start);
 -- 
-1.8.1.1.dirty
+2.6.4
