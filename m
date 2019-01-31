@@ -1,278 +1,92 @@
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-Subject: Re: [v1] PCI: mediatek: Remove MSI inner domain
-Date: Thu, 31 Jan 2019 20:49:57 +0800
-Message-ID: <1548938997.6292.52.camel@mhfsdcap03>
-References: <1548149855-3225-1-git-send-email-jianjun.wang@mediatek.com>
-         <1548926367.4980.14.camel@mhfsdcap03>
-         <10e8e731-5749-f6fb-eb33-ab67aa0e2c3f@arm.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH] mmc: mmc: Fix HS setting in mmc_hs400_to_hs200()
+Date: Thu, 31 Jan 2019 16:58:06 +0100
+Message-ID: <CAPDyKFruCCs_un1oR-gd1P=ZGryyHwKuY0SkvLO2=Jm1bGV6sQ@mail.gmail.com>
+References: <1548921212-5219-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <10e8e731-5749-f6fb-eb33-ab67aa0e2c3f@arm.com>
+In-Reply-To: <1548921212-5219-1-git-send-email-chaotian.jing@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Marc Zyngier <marc.zyngier@arm.com>
-Cc: Honghui Zhang <honghui.zhang@mediatek.com>, ryder.lee@mediatek.com, lorenzo.pieralisi@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, youlin.pei@mediatek.com
+To: Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Simon Horman <horms+renesas@verge.net.au>, Kyle Roeschley <kyle.roeschley@ni.com>, Hongjie Fang <hongjiefang@asrmicro.com>, Harish Jenny K N <harish_kandiga@mentor.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, srv_heupstream <srv_heupstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2019-01-31 at 09:44 +0000, Marc Zyngier wrote:
-> On 31/01/2019 09:19, Honghui Zhang wrote:
-> > On Tue, 2019-01-22 at 17:37 +0800, Jianjun Wang wrote:
-> >> There is no need to create the inner domain as a parent for MSI domian,
-> >> some feature has been implemented by MSI framework.
-> >>
-> >> Remove the inner domain and its irq chip, it will be more closer to
-> >> hardware implementation.
-> 
-> This is not about being closer to any HW implementation. This is about
-> having a uniform way to deal with MSI controllers, no matter how they
-> are implemented by the HW.
-> 
-> So maybe you could start by explaining what this is trying to achieve.
-> 
-> >>
-> > Hi, jianjun, I'm not quite familiar with the irq_chip framework, It was
-> > under Marc's great help with the first version of irq_chip solution
-> > code. I would like you to add him for the review.
-> > 
-> > Thanks.
-> > 
-> >> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-> >> ---
-> >>  drivers/pci/controller/pcie-mediatek.c | 86 +++++++++++---------------
-> >>  1 file changed, 37 insertions(+), 49 deletions(-)
-> >>
-> >> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> >> index 8d05df56158b..f996a9a6331f 100644
-> >> --- a/drivers/pci/controller/pcie-mediatek.c
-> >> +++ b/drivers/pci/controller/pcie-mediatek.c
-> >> @@ -169,7 +169,6 @@ struct mtk_pcie_soc {
-> >>   * @slot: port slot
-> >>   * @irq: GIC irq
-> >>   * @irq_domain: legacy INTx IRQ domain
-> >> - * @inner_domain: inner IRQ domain
-> >>   * @msi_domain: MSI IRQ domain
-> >>   * @lock: protect the msi_irq_in_use bitmap
-> >>   * @msi_irq_in_use: bit map for assigned MSI IRQ
-> >> @@ -190,7 +189,6 @@ struct mtk_pcie_port {
-> >>  	u32 slot;
-> >>  	int irq;
-> >>  	struct irq_domain *irq_domain;
-> >> -	struct irq_domain *inner_domain;
-> >>  	struct irq_domain *msi_domain;
-> >>  	struct mutex lock;
-> >>  	DECLARE_BITMAP(msi_irq_in_use, MTK_MSI_IRQS_NUM);
-> >> @@ -418,22 +416,15 @@ static void mtk_msi_ack_irq(struct irq_data *data)
-> >>  	u32 hwirq = data->hwirq;
-> >>  
-> >>  	writel(1 << hwirq, port->base + PCIE_IMSI_STATUS);
-> >> +	writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
-> >>  }
-> >>  
-> >> -static struct irq_chip mtk_msi_bottom_irq_chip = {
-> >> -	.name			= "MTK MSI",
-> >> -	.irq_compose_msi_msg	= mtk_compose_msi_msg,
-> >> -	.irq_set_affinity	= mtk_msi_set_affinity,
-> >> -	.irq_ack		= mtk_msi_ack_irq,
-> >> -};
-> >> -
-> >> -static int mtk_pcie_irq_domain_alloc(struct irq_domain *domain, unsigned int virq,
-> >> -				     unsigned int nr_irqs, void *args)
-> >> +static irq_hw_number_t mtk_pcie_msi_get_hwirq(struct msi_domain_info *info,
-> >> +					      msi_alloc_info_t *arg)
-> >>  {
-> >> -	struct mtk_pcie_port *port = domain->host_data;
-> >> -	unsigned long bit;
-> >> +	struct mtk_pcie_port *port = info->chip_data;
-> >> +	irq_hw_number_t bit;
-> >>  
-> >> -	WARN_ON(nr_irqs != 1);
-> >>  	mutex_lock(&port->lock);
-> >>  
-> >>  	bit = find_first_zero_bit(port->msi_irq_in_use, MTK_MSI_IRQS_NUM);
-> >> @@ -446,18 +437,14 @@ static int mtk_pcie_irq_domain_alloc(struct irq_domain *domain, unsigned int vir
-> >>  
-> >>  	mutex_unlock(&port->lock);
-> >>  
-> >> -	irq_domain_set_info(domain, virq, bit, &mtk_msi_bottom_irq_chip,
-> >> -			    domain->host_data, handle_edge_irq,
-> >> -			    NULL, NULL);
-> >> -
-> >> -	return 0;
-> >> +	return bit;
-> 
-> Why do you need to override the get_hwirq method? Using the generic
-> PCI/MSI version has the advantage of giving you a universal encoding
-> which makes debugging much easier.
+On Thu, 31 Jan 2019 at 08:53, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
+>
+> mmc_hs400_to_hs200() begins with the card and host in HS400 mode.
+> Therefore, any commands sent to the card should use HS400 timing.
+> It is incorrect to reduce frequency to 50Mhz before sending the switch
+> command, in this case, only reduce clock frequency to 50Mhz but without
+> host timming change, host is still in hs400 mode but clock changed from
+> 200Mhz to 50Mhz, which makes the tuning result unsuitable and cause
+> the switch command gets response CRC error.
 
-Hi Marc,
+According the eMMC spec there is no violation by decreasing the clock
+frequency like this. We can use whatever value <=200MHz.
 
-In previous patch, we create a inner_domain as a parent for msi_domain,
-when we allocate a irq for MSI, the work flow of each domain will be the
-following:
+However, perhaps in practice this becomes an issue, due to the tuning
+for HS400 has been done on the "current" frequency.
 
-inner_domain:
-1. Allocated a irq bit from bitmap as this domain's hwirq;
-2. Mapping with system virtual irq number;
-3. Set irq chip and irq handler;
-4. Send MSI message to EP.
+As as start, I think you need to clarify this in the changelog.
 
-msi_domain:
-1. Calculate a hwirq;
-2. Mapping with system virtual irq number;
-3. Set irq chip which from info->chip and irq handler if defined in
-info.
-4. Send MSI message to EP or trigger parent domain to send the message.
+>
+> this patch refers to mmc_select_hs400(), make the reduce clock frequency
+> after card timing change.
+>
+> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+> ---
+>  drivers/mmc/core/mmc.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
+> index da892a5..21b811e 100644
+> --- a/drivers/mmc/core/mmc.c
+> +++ b/drivers/mmc/core/mmc.c
+> @@ -1239,10 +1239,6 @@ int mmc_hs400_to_hs200(struct mmc_card *card)
+>         int err;
+>         u8 val;
+>
+> -       /* Reduce frequency to HS */
+> -       max_dtr = card->ext_csd.hs_max_dtr;
+> -       mmc_set_clock(host, max_dtr);
+> -
 
-The last three steps looks similar, if we override the get_hwirq method
-and set irq chip and handler to info structure, MSI framework will do
-the rest of thing. I think it will be more simple and easy to understand
-the driver's work flow.
+As far as I can tell, the reason to why we change the clock frequency
+*before* the call to __mmc_switch() below, is probably to try to be on
+the safe side and conform to the spec.
 
-Further more, if we try to enhance the interrupt performance, such as
-connect the MSI interrupt line to GIC directly in hardware, we will need
-to set gic domain as the parent, in that case, there will be a lot of
-work to do to replace the inner domain.
+However, I think you have a point, as the call to __mmc_switch(),
+passes the "send_status" parameter as false, no other command than the
+CMD6 is sent to the card.
 
-Thanks.
-> 
-> >>  }
-> >>  
-> >> -static void mtk_pcie_irq_domain_free(struct irq_domain *domain,
-> >> -				     unsigned int virq, unsigned int nr_irqs)
-> >> +static void mtk_pcie_msi_free(struct irq_domain *domain,
-> >> +			      struct msi_domain_info *info, unsigned int virq)
-> >>  {
-> >>  	struct irq_data *d = irq_domain_get_irq_data(domain, virq);
-> >> -	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(d);
-> >> +	struct mtk_pcie_port *port = info->chip_data;
-> >>  
-> >>  	mutex_lock(&port->lock);
-> >>  
-> >> @@ -468,46 +455,50 @@ static void mtk_pcie_irq_domain_free(struct irq_domain *domain,
-> >>  		__clear_bit(d->hwirq, port->msi_irq_in_use);
-> >>  
-> >>  	mutex_unlock(&port->lock);
-> >> -
-> >> -	irq_domain_free_irqs_parent(domain, virq, nr_irqs);
-> >>  }
-> >>  
-> >> -static const struct irq_domain_ops msi_domain_ops = {
-> >> -	.alloc	= mtk_pcie_irq_domain_alloc,
-> >> -	.free	= mtk_pcie_irq_domain_free,
-> >> +static struct msi_domain_ops mtk_msi_domain_ops = {
-> >> +	.get_hwirq	= mtk_pcie_msi_get_hwirq,
-> >> +	.msi_free	= mtk_pcie_msi_free,
-> >>  };
-> >>  
-> >>  static struct irq_chip mtk_msi_irq_chip = {
-> >> -	.name		= "MTK PCIe MSI",
-> >> -	.irq_ack	= irq_chip_ack_parent,
-> >> -	.irq_mask	= pci_msi_mask_irq,
-> >> -	.irq_unmask	= pci_msi_unmask_irq,
-> >> +	.name			= "MTK PCIe",
-> >> +	.irq_compose_msi_msg	= mtk_compose_msi_msg,
-> >> +	.irq_write_msi_msg	= pci_msi_domain_write_msg,
-> >> +	.irq_set_affinity	= mtk_msi_set_affinity,
-> >> +	.irq_ack		= mtk_msi_ack_irq,
-> >> +	.irq_mask		= pci_msi_mask_irq,
-> >> +	.irq_unmask		= pci_msi_unmask_irq,
-> >>  };
-> >>  
-> >>  static struct msi_domain_info mtk_msi_domain_info = {
-> >> -	.flags	= (MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
-> >> -		   MSI_FLAG_PCI_MSIX),
-> >> -	.chip	= &mtk_msi_irq_chip,
-> >> +	.flags		= (MSI_FLAG_USE_DEF_DOM_OPS |
-> >> +			   MSI_FLAG_USE_DEF_CHIP_OPS | MSI_FLAG_PCI_MSIX),
-> >> +	.ops		= &mtk_msi_domain_ops,
-> >> +	.chip		= &mtk_msi_irq_chip,
-> >> +	.handler	= handle_edge_irq,
-> >> +	.handler_name	= "MSI",
-> >>  };
-> >>  
-> >>  static int mtk_pcie_allocate_msi_domains(struct mtk_pcie_port *port)
-> >>  {
-> >> -	struct fwnode_handle *fwnode = of_node_to_fwnode(port->pcie->dev->of_node);
-> >> +	struct device *dev = port->pcie->dev;
-> >> +	struct fwnode_handle *fwnode = of_node_to_fwnode(dev->of_node);
-> >> +	struct msi_domain_info *info;
-> >>  
-> >>  	mutex_init(&port->lock);
-> >>  
-> >> -	port->inner_domain = irq_domain_create_linear(fwnode, MTK_MSI_IRQS_NUM,
-> >> -						      &msi_domain_ops, port);
-> >> -	if (!port->inner_domain) {
-> >> -		dev_err(port->pcie->dev, "failed to create IRQ domain\n");
-> >> +	info = devm_kzalloc(dev, sizeof(*info), GFP_KERNEL);
-> >> +	if (!info)
-> >>  		return -ENOMEM;
-> >> -	}
-> >>  
-> >> -	port->msi_domain = pci_msi_create_irq_domain(fwnode, &mtk_msi_domain_info,
-> >> -						     port->inner_domain);
-> >> +	memcpy(info, &mtk_msi_domain_info, sizeof(*info));
-> >> +	info->chip_data = port;
-> >> +
-> > 
-> > I'm not really like this memcpy of msi_domain_info, but I do not have a
-> > better idea to prevent the mixed of mtk_pcie_port data.
-> 
-> So we're basically trading an indirection for another. What's the gain?
+>         /* Switch HS400 to HS DDR */
+>         val = EXT_CSD_TIMING_HS;
+>         err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL, EXT_CSD_HS_TIMING,
+> @@ -1253,6 +1249,10 @@ int mmc_hs400_to_hs200(struct mmc_card *card)
+>
+>         mmc_set_timing(host, MMC_TIMING_MMC_DDR52);
+>
+> +       /* Reduce frequency to HS */
+> +       max_dtr = card->ext_csd.hs_max_dtr;
+> +       mmc_set_clock(host, max_dtr);
+> +
 
-There is usually more than one PCIe port in each SoC, we use
-mtk_pcie_port data to describe it, in previous version, we pass the port
-data as inner domain's host_data. When remove the inner domain, we also
-need to pass the port data and should prevent to mix with another port,
-so I thank maybe we can make a copy for each port and set port data as
-it's chip_data.
-> 
-> > 
-> >> +	port->msi_domain = pci_msi_create_irq_domain(fwnode, info, NULL);
-> >>  	if (!port->msi_domain) {
-> >> -		dev_err(port->pcie->dev, "failed to create MSI domain\n");
-> >> -		irq_domain_remove(port->inner_domain);
-> >> +		dev_err(dev, "failed to create MSI domain\n");
-> >>  		return -ENOMEM;
-> >>  	}
-> >>  
-> >> @@ -541,8 +532,6 @@ static void mtk_pcie_irq_teardown(struct mtk_pcie *pcie)
-> >>  		if (IS_ENABLED(CONFIG_PCI_MSI)) {
-> >>  			if (port->msi_domain)
-> >>  				irq_domain_remove(port->msi_domain);
-> >> -			if (port->inner_domain)
-> >> -				irq_domain_remove(port->inner_domain);
-> >>  		}
-> >>  
-> >>  		irq_dispose_mapping(port->irq);
-> >> @@ -619,12 +608,11 @@ static void mtk_pcie_intr_handler(struct irq_desc *desc)
-> >>  
-> >>  			while ((imsi_status = readl(port->base + PCIE_IMSI_STATUS))) {
-> >>  				for_each_set_bit(bit, &imsi_status, MTK_MSI_IRQS_NUM) {
-> >> -					virq = irq_find_mapping(port->inner_domain, bit);
-> >> +					virq = irq_find_mapping(
-> >> +							port->msi_domain, bit);
-> >>  					generic_handle_irq(virq);
-> >>  				}
-> >>  			}
-> >> -			/* Clear MSI interrupt status */
-> >> -			writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
-> >>  		}
-> > 
-> > why change this irq status clear flow?
-> 
-> I think this is trying move everything to the irq_ack callback. But
-> that's a change of semantics, and I'd like it explained. It certainly
-> feels wrong.
-Yes, I confused with each irq's ack callback, it doesn't need to be
-changed.
+Perhaps it's even more correct to change the clock frequency before
+the call to mmc_set_timing(host, MMC_TIMING_MMC_DDR52). Otherwise you
+will be using the DDR52 timing in the controller, but with a too high
+frequency.
 
-Thanks.
-> 
-> Overall, this patch as it stands (without any real explanation) doesn't
-> feel me with confidence. It introduces significant differences in the
-> way we build PCI/MSI domains, and I'd like to understand why.
-> 
-> Thanks,
-> 
-> 	M.
+>         err = mmc_switch_status(card);
+>         if (err)
+>                 goto out_err;
+> --
+> 1.8.1.1.dirty
+>
+
+Finally, it sounds like you are trying to fix a real problem, can you
+please provide some more information what is happening when the
+problem occurs at your side?
+
+Kind regards
+Uffe
