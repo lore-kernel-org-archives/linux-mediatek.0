@@ -1,208 +1,98 @@
-From: Honghui Zhang <honghui.zhang@mediatek.com>
-Subject: Re: [v1] PCI: mediatek: Remove MSI inner domain
-Date: Thu, 31 Jan 2019 17:19:27 +0800
-Message-ID: <1548926367.4980.14.camel@mhfsdcap03>
-References: <1548149855-3225-1-git-send-email-jianjun.wang@mediatek.com>
+From: Pi-Hsun Shih <pihsun@chromium.org>
+Subject: [PATCH v4 0/6] Add support for mt8183 SCP.
+Date: Thu, 31 Jan 2019 17:31:25 +0800
+Message-ID: <20190131093131.245531-1-pihsun@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1548149855-3225-1-git-send-email-jianjun.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jianjun Wang <jianjun.wang@mediatek.com>
-Cc: ryder.lee@mediatek.com, lorenzo.pieralisi@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, youlin.pei@mediatek.com, Marc Zyngier <marc.zyngier@arm.com>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Erin Lo <erin.lo@mediatek.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, Pi-Hsun Shih <pihsun@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-01-22 at 17:37 +0800, Jianjun Wang wrote:
-> There is no need to create the inner domain as a parent for MSI domian,
-> some feature has been implemented by MSI framework.
-> 
-> Remove the inner domain and its irq chip, it will be more closer to
-> hardware implementation.
-> 
-Hi, jianjun, I'm not quite familiar with the irq_chip framework, It was
-under Marc's great help with the first version of irq_chip solution
-code. I would like you to add him for the review.
+Add support for controlling and communicating with mt8183's system
+control processor (SCP), using the remoteproc & rpmsg framework.
+And also add a cros_ec driver for CrOS EC host command over rpmsg.
 
-Thanks.
+The overall structure of the series is:
+* remoteproc/mtk_scp.c: Control the start / stop of SCP (Patch 2).
+* remoteproc/mtk_scp_ipi.c: Communicates to SCP using inter-processor
+  interrupt (IPI) and shared memory (Patch 2).
+* rpmsg/mtk_rpmsg.c: Wrapper to wrap the IPI communication into a rpmsg
+  device. Supports name service for SCP firmware to
+  announce channels (Patch 3).
+* platform/chrome/cros_ec_rpmsg.c: Communicates with the SCP over the
+  rpmsg framework (like what platform/chrome/cros_ec_{i2c,spi}.c does)
+  (Patch 4).
 
-> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-> ---
->  drivers/pci/controller/pcie-mediatek.c | 86 +++++++++++---------------
->  1 file changed, 37 insertions(+), 49 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> index 8d05df56158b..f996a9a6331f 100644
-> --- a/drivers/pci/controller/pcie-mediatek.c
-> +++ b/drivers/pci/controller/pcie-mediatek.c
-> @@ -169,7 +169,6 @@ struct mtk_pcie_soc {
->   * @slot: port slot
->   * @irq: GIC irq
->   * @irq_domain: legacy INTx IRQ domain
-> - * @inner_domain: inner IRQ domain
->   * @msi_domain: MSI IRQ domain
->   * @lock: protect the msi_irq_in_use bitmap
->   * @msi_irq_in_use: bit map for assigned MSI IRQ
-> @@ -190,7 +189,6 @@ struct mtk_pcie_port {
->  	u32 slot;
->  	int irq;
->  	struct irq_domain *irq_domain;
-> -	struct irq_domain *inner_domain;
->  	struct irq_domain *msi_domain;
->  	struct mutex lock;
->  	DECLARE_BITMAP(msi_irq_in_use, MTK_MSI_IRQS_NUM);
-> @@ -418,22 +416,15 @@ static void mtk_msi_ack_irq(struct irq_data *data)
->  	u32 hwirq = data->hwirq;
->  
->  	writel(1 << hwirq, port->base + PCIE_IMSI_STATUS);
-> +	writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
->  }
->  
-> -static struct irq_chip mtk_msi_bottom_irq_chip = {
-> -	.name			= "MTK MSI",
-> -	.irq_compose_msi_msg	= mtk_compose_msi_msg,
-> -	.irq_set_affinity	= mtk_msi_set_affinity,
-> -	.irq_ack		= mtk_msi_ack_irq,
-> -};
-> -
-> -static int mtk_pcie_irq_domain_alloc(struct irq_domain *domain, unsigned int virq,
-> -				     unsigned int nr_irqs, void *args)
-> +static irq_hw_number_t mtk_pcie_msi_get_hwirq(struct msi_domain_info *info,
-> +					      msi_alloc_info_t *arg)
->  {
-> -	struct mtk_pcie_port *port = domain->host_data;
-> -	unsigned long bit;
-> +	struct mtk_pcie_port *port = info->chip_data;
-> +	irq_hw_number_t bit;
->  
-> -	WARN_ON(nr_irqs != 1);
->  	mutex_lock(&port->lock);
->  
->  	bit = find_first_zero_bit(port->msi_irq_in_use, MTK_MSI_IRQS_NUM);
-> @@ -446,18 +437,14 @@ static int mtk_pcie_irq_domain_alloc(struct irq_domain *domain, unsigned int vir
->  
->  	mutex_unlock(&port->lock);
->  
-> -	irq_domain_set_info(domain, virq, bit, &mtk_msi_bottom_irq_chip,
-> -			    domain->host_data, handle_edge_irq,
-> -			    NULL, NULL);
-> -
-> -	return 0;
-> +	return bit;
->  }
->  
-> -static void mtk_pcie_irq_domain_free(struct irq_domain *domain,
-> -				     unsigned int virq, unsigned int nr_irqs)
-> +static void mtk_pcie_msi_free(struct irq_domain *domain,
-> +			      struct msi_domain_info *info, unsigned int virq)
->  {
->  	struct irq_data *d = irq_domain_get_irq_data(domain, virq);
-> -	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(d);
-> +	struct mtk_pcie_port *port = info->chip_data;
->  
->  	mutex_lock(&port->lock);
->  
-> @@ -468,46 +455,50 @@ static void mtk_pcie_irq_domain_free(struct irq_domain *domain,
->  		__clear_bit(d->hwirq, port->msi_irq_in_use);
->  
->  	mutex_unlock(&port->lock);
-> -
-> -	irq_domain_free_irqs_parent(domain, virq, nr_irqs);
->  }
->  
-> -static const struct irq_domain_ops msi_domain_ops = {
-> -	.alloc	= mtk_pcie_irq_domain_alloc,
-> -	.free	= mtk_pcie_irq_domain_free,
-> +static struct msi_domain_ops mtk_msi_domain_ops = {
-> +	.get_hwirq	= mtk_pcie_msi_get_hwirq,
-> +	.msi_free	= mtk_pcie_msi_free,
->  };
->  
->  static struct irq_chip mtk_msi_irq_chip = {
-> -	.name		= "MTK PCIe MSI",
-> -	.irq_ack	= irq_chip_ack_parent,
-> -	.irq_mask	= pci_msi_mask_irq,
-> -	.irq_unmask	= pci_msi_unmask_irq,
-> +	.name			= "MTK PCIe",
-> +	.irq_compose_msi_msg	= mtk_compose_msi_msg,
-> +	.irq_write_msi_msg	= pci_msi_domain_write_msg,
-> +	.irq_set_affinity	= mtk_msi_set_affinity,
-> +	.irq_ack		= mtk_msi_ack_irq,
-> +	.irq_mask		= pci_msi_mask_irq,
-> +	.irq_unmask		= pci_msi_unmask_irq,
->  };
->  
->  static struct msi_domain_info mtk_msi_domain_info = {
-> -	.flags	= (MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
-> -		   MSI_FLAG_PCI_MSIX),
-> -	.chip	= &mtk_msi_irq_chip,
-> +	.flags		= (MSI_FLAG_USE_DEF_DOM_OPS |
-> +			   MSI_FLAG_USE_DEF_CHIP_OPS | MSI_FLAG_PCI_MSIX),
-> +	.ops		= &mtk_msi_domain_ops,
-> +	.chip		= &mtk_msi_irq_chip,
-> +	.handler	= handle_edge_irq,
-> +	.handler_name	= "MSI",
->  };
->  
->  static int mtk_pcie_allocate_msi_domains(struct mtk_pcie_port *port)
->  {
-> -	struct fwnode_handle *fwnode = of_node_to_fwnode(port->pcie->dev->of_node);
-> +	struct device *dev = port->pcie->dev;
-> +	struct fwnode_handle *fwnode = of_node_to_fwnode(dev->of_node);
-> +	struct msi_domain_info *info;
->  
->  	mutex_init(&port->lock);
->  
-> -	port->inner_domain = irq_domain_create_linear(fwnode, MTK_MSI_IRQS_NUM,
-> -						      &msi_domain_ops, port);
-> -	if (!port->inner_domain) {
-> -		dev_err(port->pcie->dev, "failed to create IRQ domain\n");
-> +	info = devm_kzalloc(dev, sizeof(*info), GFP_KERNEL);
-> +	if (!info)
->  		return -ENOMEM;
-> -	}
->  
-> -	port->msi_domain = pci_msi_create_irq_domain(fwnode, &mtk_msi_domain_info,
-> -						     port->inner_domain);
-> +	memcpy(info, &mtk_msi_domain_info, sizeof(*info));
-> +	info->chip_data = port;
-> +
+Since I'm not familiar with the remoteproc / rpmsg framework, and there
+are not much other custom rpmsg driver for reference, would like some
+review / comments on the overall structure of the driver.
 
-I'm not really like this memcpy of msi_domain_info, but I do not have a
-better idea to prevent the mixed of mtk_pcie_port data.
+Changes from v3:
+ - Make writing to SCP SRAM aligned.
+ - Add a new patch (Patch 6) to load ELF instead of bin firmware.
+ - Add host event support for EC driver.
+ - Fix some bugs found in testing (missing spin_lock_init,
+   rproc_subdev_unprepare to rproc_subdev_stop).
+ - Fix some coding style issue found by checkpatch.pl.
 
-> +	port->msi_domain = pci_msi_create_irq_domain(fwnode, info, NULL);
->  	if (!port->msi_domain) {
-> -		dev_err(port->pcie->dev, "failed to create MSI domain\n");
-> -		irq_domain_remove(port->inner_domain);
-> +		dev_err(dev, "failed to create MSI domain\n");
->  		return -ENOMEM;
->  	}
->  
-> @@ -541,8 +532,6 @@ static void mtk_pcie_irq_teardown(struct mtk_pcie *pcie)
->  		if (IS_ENABLED(CONFIG_PCI_MSI)) {
->  			if (port->msi_domain)
->  				irq_domain_remove(port->msi_domain);
-> -			if (port->inner_domain)
-> -				irq_domain_remove(port->inner_domain);
->  		}
->  
->  		irq_dispose_mapping(port->irq);
-> @@ -619,12 +608,11 @@ static void mtk_pcie_intr_handler(struct irq_desc *desc)
->  
->  			while ((imsi_status = readl(port->base + PCIE_IMSI_STATUS))) {
->  				for_each_set_bit(bit, &imsi_status, MTK_MSI_IRQS_NUM) {
-> -					virq = irq_find_mapping(port->inner_domain, bit);
-> +					virq = irq_find_mapping(
-> +							port->msi_domain, bit);
->  					generic_handle_irq(virq);
->  				}
->  			}
-> -			/* Clear MSI interrupt status */
-> -			writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
->  		}
+Changes from v2:
+ - Fold patch 3 into patch 2 in v2.
+ - Move IPI id around to support cross-testing for old and new firmware.
+ - Finish more TODO items.
 
-why change this irq status clear flow?
+Changes from v1:
+ - Extract functions and rename variables in mtk_scp.c.
+ - Do cleanup properly in mtk_rpmsg.c, which also removes the problem of
+   short-lived work items.
+ - Code format fix based on feedback for cros_ec_rpmsg.c.
+ - Extract feature detection for SCP into separate patch (Patch 6).
 
->  	}
->  
+Erin Lo (2):
+  dt-bindings: Add a binding for Mediatek SCP
+  remoteproc/mediatek: add SCP support for mt8183
+
+Pi-Hsun Shih (4):
+  rpmsg: add rpmsg support for mt8183 SCP.
+  mfd: add EC host command support using rpmsg.
+  cros_ec: differentiate SCP from EC by feature bit.
+  remoteproc/mediatek: Load ELF instead of bin file for mtk_scp.
+
+ .../bindings/remoteproc/mtk,scp.txt           |  10 +
+ drivers/mfd/cros_ec_dev.c                     |   9 +
+ drivers/platform/chrome/Kconfig               |   9 +
+ drivers/platform/chrome/Makefile              |   1 +
+ drivers/platform/chrome/cros_ec_rpmsg.c       | 240 ++++++++
+ drivers/remoteproc/Kconfig                    |   9 +
+ drivers/remoteproc/Makefile                   |   1 +
+ drivers/remoteproc/mtk_common.h               |  78 +++
+ drivers/remoteproc/mtk_scp.c                  | 519 ++++++++++++++++++
+ drivers/remoteproc/mtk_scp_ipi.c              | 165 ++++++
+ drivers/rpmsg/Kconfig                         |  10 +
+ drivers/rpmsg/Makefile                        |   1 +
+ drivers/rpmsg/mtk_rpmsg.c                     | 384 +++++++++++++
+ include/linux/mfd/cros_ec.h                   |   1 +
+ include/linux/mfd/cros_ec_commands.h          |   2 +
+ include/linux/platform_data/mtk_scp.h         | 137 +++++
+ include/linux/rpmsg/mtk_rpmsg.h               |  35 ++
+ 17 files changed, 1611 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
+ create mode 100644 drivers/platform/chrome/cros_ec_rpmsg.c
+ create mode 100644 drivers/remoteproc/mtk_common.h
+ create mode 100644 drivers/remoteproc/mtk_scp.c
+ create mode 100644 drivers/remoteproc/mtk_scp_ipi.c
+ create mode 100644 drivers/rpmsg/mtk_rpmsg.c
+ create mode 100644 include/linux/platform_data/mtk_scp.h
+ create mode 100644 include/linux/rpmsg/mtk_rpmsg.h
+
+-- 
+2.20.1.611.gfbb209baf1-goog
