@@ -1,155 +1,237 @@
-From: Pi-Hsun Shih <pihsun@chromium.org>
-Subject: [PATCH v4 6/6] remoteproc/mediatek: Load ELF instead of bin file for mtk_scp.
-Date: Thu, 31 Jan 2019 17:31:31 +0800
-Message-ID: <20190131093131.245531-7-pihsun@chromium.org>
-References: <20190131093131.245531-1-pihsun@chromium.org>
+From: Marc Zyngier <marc.zyngier@arm.com>
+Subject: Re: [v1] PCI: mediatek: Remove MSI inner domain
+Date: Thu, 31 Jan 2019 09:44:48 +0000
+Message-ID: <10e8e731-5749-f6fb-eb33-ab67aa0e2c3f@arm.com>
+References: <1548149855-3225-1-git-send-email-jianjun.wang@mediatek.com>
+ <1548926367.4980.14.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190131093131.245531-1-pihsun@chromium.org>
+In-Reply-To: <1548926367.4980.14.camel@mhfsdcap03>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: Pi-Hsun Shih <pihsun@chromium.org>, Erin Lo <erin.lo@mediatek.com>, Ohad Ben-Cohen <ohad@wizery.com>, Bjorn Andersson <bjorn.andersson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:REMOTE PROCESSOR
-        REMOTEPROC SUBSYSTEM" <linux-remoteproc@vger.kernel.org>, "moderated list:ARM/Mediatek SoC
-        support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
-        support" <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>
+To: Honghui Zhang <honghui.zhang@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>
+Cc: ryder.lee@mediatek.com, lorenzo.pieralisi@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, youlin.pei@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-For better flexibility on loading firmware image, change firmware load
-for mtk_scp from a plain binary file to ELF format instead.
+On 31/01/2019 09:19, Honghui Zhang wrote:
+> On Tue, 2019-01-22 at 17:37 +0800, Jianjun Wang wrote:
+>> There is no need to create the inner domain as a parent for MSI domian,
+>> some feature has been implemented by MSI framework.
+>>
+>> Remove the inner domain and its irq chip, it will be more closer to
+>> hardware implementation.
 
-Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
----
-Changes from v3:
-  - New patch to load ELF instead of plain bin file.
----
- drivers/remoteproc/mtk_common.h  |  2 ++
- drivers/remoteproc/mtk_scp.c     | 59 ++++++++++++++++++++++++++++++--
- drivers/remoteproc/mtk_scp_ipi.c | 11 ++++--
- 3 files changed, 68 insertions(+), 4 deletions(-)
+This is not about being closer to any HW implementation. This is about
+having a uniform way to deal with MSI controllers, no matter how they
+are implemented by the HW.
 
-diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
-index 7efe2e7374e5ec..dffca9fbea9f1e 100644
---- a/drivers/remoteproc/mtk_common.h
-+++ b/drivers/remoteproc/mtk_common.h
-@@ -73,4 +73,6 @@ struct share_obj {
- 	u8 share_buf[288];
- };
- 
-+void scp_memcpy_aligned(void *dst, const void *src, unsigned int len);
-+
- #endif
-diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index c0375119c53289..314ae3f8a82cf7 100644
---- a/drivers/remoteproc/mtk_scp.c
-+++ b/drivers/remoteproc/mtk_scp.c
-@@ -140,6 +140,62 @@ static irqreturn_t scp_irq_handler(int irq, void *priv)
- 	return IRQ_HANDLED;
- }
- 
-+int scp_elf_load_segments(struct rproc *rproc, const struct firmware *fw)
-+{
-+	struct device *dev = &rproc->dev;
-+	struct elf32_hdr *ehdr;
-+	struct elf32_phdr *phdr;
-+	int i, ret = 0;
-+	const u8 *elf_data = fw->data;
-+
-+	ehdr = (struct elf32_hdr *)elf_data;
-+	phdr = (struct elf32_phdr *)(elf_data + ehdr->e_phoff);
-+
-+	/* go through the available ELF segments */
-+	for (i = 0; i < ehdr->e_phnum; i++, phdr++) {
-+		u32 da = phdr->p_paddr;
-+		u32 memsz = phdr->p_memsz;
-+		u32 filesz = phdr->p_filesz;
-+		u32 offset = phdr->p_offset;
-+		void __iomem *ptr;
-+
-+		if (phdr->p_type != PT_LOAD)
-+			continue;
-+
-+		dev_dbg(dev, "phdr: type %d da 0x%x memsz 0x%x filesz 0x%x\n",
-+			phdr->p_type, da, memsz, filesz);
-+
-+		if (filesz > memsz) {
-+			dev_err(dev, "bad phdr filesz 0x%x memsz 0x%x\n",
-+				filesz, memsz);
-+			ret = -EINVAL;
-+			break;
-+		}
-+
-+		if (offset + filesz > fw->size) {
-+			dev_err(dev, "truncated fw: need 0x%x avail 0x%zx\n",
-+				offset + filesz, fw->size);
-+			ret = -EINVAL;
-+			break;
-+		}
-+
-+		/* grab the kernel address for this device address */
-+		ptr = rproc_da_to_va(rproc, da, memsz);
-+		if (!ptr) {
-+			dev_err(dev, "bad phdr da 0x%x mem 0x%x\n", da, memsz);
-+			ret = -EINVAL;
-+			break;
-+		}
-+
-+		/* put the segment where the remote processor expects it */
-+		if (phdr->p_filesz)
-+			scp_memcpy_aligned(ptr, elf_data + phdr->p_offset,
-+					   filesz);
-+	}
-+
-+	return ret;
-+}
-+
- static int mtk_scp_load(struct rproc *rproc, const struct firmware *fw)
- {
- 	const struct mtk_scp *scp = rproc->priv;
-@@ -157,8 +213,7 @@ static int mtk_scp_load(struct rproc *rproc, const struct firmware *fw)
- 
- 	writel(0x0, scp->reg_base + MT8183_SCP_SRAM_PDN);
- 
--	memcpy(scp->sram_base, fw->data, fw->size);
--	return ret;
-+	return scp_elf_load_segments(rproc, fw);
- }
- 
- static int mtk_scp_start(struct rproc *rproc)
-diff --git a/drivers/remoteproc/mtk_scp_ipi.c b/drivers/remoteproc/mtk_scp_ipi.c
-index 1026089335a5c3..b6b248c9da50ac 100644
---- a/drivers/remoteproc/mtk_scp_ipi.c
-+++ b/drivers/remoteproc/mtk_scp_ipi.c
-@@ -55,7 +55,13 @@ void scp_ipi_unregister(struct platform_device *pdev, enum scp_ipi_id id)
- }
- EXPORT_SYMBOL_GPL(scp_ipi_unregister);
- 
--static void memcpy_aligned(void *dst, const void *src, unsigned int len)
-+/*
-+ * Copy src to dst, where dst is in SCP SRAM region.
-+ * Since AP access of SCP SRAM don't support byte write, this always write a
-+ * full word at a time, and may cause some extra bytes to be written at the
-+ * beginning & ending of dst.
-+ */
-+void scp_memcpy_aligned(void *dst, const void *src, unsigned int len)
- {
- 	void *ptr;
- 	u32 val;
-@@ -80,6 +86,7 @@ static void memcpy_aligned(void *dst, const void *src, unsigned int len)
- 		writel_relaxed(val, dst + i);
- 	}
- }
-+EXPORT_SYMBOL_GPL(scp_memcpy_aligned);
- 
- int scp_ipi_send(struct platform_device *pdev,
- 		 enum scp_ipi_id id,
-@@ -117,7 +124,7 @@ int scp_ipi_send(struct platform_device *pdev,
- 		}
- 	} while (readl(scp->reg_base + MT8183_HOST_TO_SCP));
- 
--	memcpy_aligned(send_obj->share_buf, buf, len);
-+	scp_memcpy_aligned(send_obj->share_buf, buf, len);
- 
- 	send_obj->len = len;
- 	send_obj->id = id;
+So maybe you could start by explaining what this is trying to achieve.
+
+>>
+> Hi, jianjun, I'm not quite familiar with the irq_chip framework, It was
+> under Marc's great help with the first version of irq_chip solution
+> code. I would like you to add him for the review.
+> 
+> Thanks.
+> 
+>> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+>> ---
+>>  drivers/pci/controller/pcie-mediatek.c | 86 +++++++++++---------------
+>>  1 file changed, 37 insertions(+), 49 deletions(-)
+>>
+>> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+>> index 8d05df56158b..f996a9a6331f 100644
+>> --- a/drivers/pci/controller/pcie-mediatek.c
+>> +++ b/drivers/pci/controller/pcie-mediatek.c
+>> @@ -169,7 +169,6 @@ struct mtk_pcie_soc {
+>>   * @slot: port slot
+>>   * @irq: GIC irq
+>>   * @irq_domain: legacy INTx IRQ domain
+>> - * @inner_domain: inner IRQ domain
+>>   * @msi_domain: MSI IRQ domain
+>>   * @lock: protect the msi_irq_in_use bitmap
+>>   * @msi_irq_in_use: bit map for assigned MSI IRQ
+>> @@ -190,7 +189,6 @@ struct mtk_pcie_port {
+>>  	u32 slot;
+>>  	int irq;
+>>  	struct irq_domain *irq_domain;
+>> -	struct irq_domain *inner_domain;
+>>  	struct irq_domain *msi_domain;
+>>  	struct mutex lock;
+>>  	DECLARE_BITMAP(msi_irq_in_use, MTK_MSI_IRQS_NUM);
+>> @@ -418,22 +416,15 @@ static void mtk_msi_ack_irq(struct irq_data *data)
+>>  	u32 hwirq = data->hwirq;
+>>  
+>>  	writel(1 << hwirq, port->base + PCIE_IMSI_STATUS);
+>> +	writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
+>>  }
+>>  
+>> -static struct irq_chip mtk_msi_bottom_irq_chip = {
+>> -	.name			= "MTK MSI",
+>> -	.irq_compose_msi_msg	= mtk_compose_msi_msg,
+>> -	.irq_set_affinity	= mtk_msi_set_affinity,
+>> -	.irq_ack		= mtk_msi_ack_irq,
+>> -};
+>> -
+>> -static int mtk_pcie_irq_domain_alloc(struct irq_domain *domain, unsigned int virq,
+>> -				     unsigned int nr_irqs, void *args)
+>> +static irq_hw_number_t mtk_pcie_msi_get_hwirq(struct msi_domain_info *info,
+>> +					      msi_alloc_info_t *arg)
+>>  {
+>> -	struct mtk_pcie_port *port = domain->host_data;
+>> -	unsigned long bit;
+>> +	struct mtk_pcie_port *port = info->chip_data;
+>> +	irq_hw_number_t bit;
+>>  
+>> -	WARN_ON(nr_irqs != 1);
+>>  	mutex_lock(&port->lock);
+>>  
+>>  	bit = find_first_zero_bit(port->msi_irq_in_use, MTK_MSI_IRQS_NUM);
+>> @@ -446,18 +437,14 @@ static int mtk_pcie_irq_domain_alloc(struct irq_domain *domain, unsigned int vir
+>>  
+>>  	mutex_unlock(&port->lock);
+>>  
+>> -	irq_domain_set_info(domain, virq, bit, &mtk_msi_bottom_irq_chip,
+>> -			    domain->host_data, handle_edge_irq,
+>> -			    NULL, NULL);
+>> -
+>> -	return 0;
+>> +	return bit;
+
+Why do you need to override the get_hwirq method? Using the generic
+PCI/MSI version has the advantage of giving you a universal encoding
+which makes debugging much easier.
+
+>>  }
+>>  
+>> -static void mtk_pcie_irq_domain_free(struct irq_domain *domain,
+>> -				     unsigned int virq, unsigned int nr_irqs)
+>> +static void mtk_pcie_msi_free(struct irq_domain *domain,
+>> +			      struct msi_domain_info *info, unsigned int virq)
+>>  {
+>>  	struct irq_data *d = irq_domain_get_irq_data(domain, virq);
+>> -	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(d);
+>> +	struct mtk_pcie_port *port = info->chip_data;
+>>  
+>>  	mutex_lock(&port->lock);
+>>  
+>> @@ -468,46 +455,50 @@ static void mtk_pcie_irq_domain_free(struct irq_domain *domain,
+>>  		__clear_bit(d->hwirq, port->msi_irq_in_use);
+>>  
+>>  	mutex_unlock(&port->lock);
+>> -
+>> -	irq_domain_free_irqs_parent(domain, virq, nr_irqs);
+>>  }
+>>  
+>> -static const struct irq_domain_ops msi_domain_ops = {
+>> -	.alloc	= mtk_pcie_irq_domain_alloc,
+>> -	.free	= mtk_pcie_irq_domain_free,
+>> +static struct msi_domain_ops mtk_msi_domain_ops = {
+>> +	.get_hwirq	= mtk_pcie_msi_get_hwirq,
+>> +	.msi_free	= mtk_pcie_msi_free,
+>>  };
+>>  
+>>  static struct irq_chip mtk_msi_irq_chip = {
+>> -	.name		= "MTK PCIe MSI",
+>> -	.irq_ack	= irq_chip_ack_parent,
+>> -	.irq_mask	= pci_msi_mask_irq,
+>> -	.irq_unmask	= pci_msi_unmask_irq,
+>> +	.name			= "MTK PCIe",
+>> +	.irq_compose_msi_msg	= mtk_compose_msi_msg,
+>> +	.irq_write_msi_msg	= pci_msi_domain_write_msg,
+>> +	.irq_set_affinity	= mtk_msi_set_affinity,
+>> +	.irq_ack		= mtk_msi_ack_irq,
+>> +	.irq_mask		= pci_msi_mask_irq,
+>> +	.irq_unmask		= pci_msi_unmask_irq,
+>>  };
+>>  
+>>  static struct msi_domain_info mtk_msi_domain_info = {
+>> -	.flags	= (MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
+>> -		   MSI_FLAG_PCI_MSIX),
+>> -	.chip	= &mtk_msi_irq_chip,
+>> +	.flags		= (MSI_FLAG_USE_DEF_DOM_OPS |
+>> +			   MSI_FLAG_USE_DEF_CHIP_OPS | MSI_FLAG_PCI_MSIX),
+>> +	.ops		= &mtk_msi_domain_ops,
+>> +	.chip		= &mtk_msi_irq_chip,
+>> +	.handler	= handle_edge_irq,
+>> +	.handler_name	= "MSI",
+>>  };
+>>  
+>>  static int mtk_pcie_allocate_msi_domains(struct mtk_pcie_port *port)
+>>  {
+>> -	struct fwnode_handle *fwnode = of_node_to_fwnode(port->pcie->dev->of_node);
+>> +	struct device *dev = port->pcie->dev;
+>> +	struct fwnode_handle *fwnode = of_node_to_fwnode(dev->of_node);
+>> +	struct msi_domain_info *info;
+>>  
+>>  	mutex_init(&port->lock);
+>>  
+>> -	port->inner_domain = irq_domain_create_linear(fwnode, MTK_MSI_IRQS_NUM,
+>> -						      &msi_domain_ops, port);
+>> -	if (!port->inner_domain) {
+>> -		dev_err(port->pcie->dev, "failed to create IRQ domain\n");
+>> +	info = devm_kzalloc(dev, sizeof(*info), GFP_KERNEL);
+>> +	if (!info)
+>>  		return -ENOMEM;
+>> -	}
+>>  
+>> -	port->msi_domain = pci_msi_create_irq_domain(fwnode, &mtk_msi_domain_info,
+>> -						     port->inner_domain);
+>> +	memcpy(info, &mtk_msi_domain_info, sizeof(*info));
+>> +	info->chip_data = port;
+>> +
+> 
+> I'm not really like this memcpy of msi_domain_info, but I do not have a
+> better idea to prevent the mixed of mtk_pcie_port data.
+
+So we're basically trading an indirection for another. What's the gain?
+
+> 
+>> +	port->msi_domain = pci_msi_create_irq_domain(fwnode, info, NULL);
+>>  	if (!port->msi_domain) {
+>> -		dev_err(port->pcie->dev, "failed to create MSI domain\n");
+>> -		irq_domain_remove(port->inner_domain);
+>> +		dev_err(dev, "failed to create MSI domain\n");
+>>  		return -ENOMEM;
+>>  	}
+>>  
+>> @@ -541,8 +532,6 @@ static void mtk_pcie_irq_teardown(struct mtk_pcie *pcie)
+>>  		if (IS_ENABLED(CONFIG_PCI_MSI)) {
+>>  			if (port->msi_domain)
+>>  				irq_domain_remove(port->msi_domain);
+>> -			if (port->inner_domain)
+>> -				irq_domain_remove(port->inner_domain);
+>>  		}
+>>  
+>>  		irq_dispose_mapping(port->irq);
+>> @@ -619,12 +608,11 @@ static void mtk_pcie_intr_handler(struct irq_desc *desc)
+>>  
+>>  			while ((imsi_status = readl(port->base + PCIE_IMSI_STATUS))) {
+>>  				for_each_set_bit(bit, &imsi_status, MTK_MSI_IRQS_NUM) {
+>> -					virq = irq_find_mapping(port->inner_domain, bit);
+>> +					virq = irq_find_mapping(
+>> +							port->msi_domain, bit);
+>>  					generic_handle_irq(virq);
+>>  				}
+>>  			}
+>> -			/* Clear MSI interrupt status */
+>> -			writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
+>>  		}
+> 
+> why change this irq status clear flow?
+
+I think this is trying move everything to the irq_ack callback. But
+that's a change of semantics, and I'd like it explained. It certainly
+feels wrong.
+
+Overall, this patch as it stands (without any real explanation) doesn't
+feel me with confidence. It introduces significant differences in the
+way we build PCI/MSI domains, and I'd like to understand why.
+
+Thanks,
+
+	M.
 -- 
-2.20.1.611.gfbb209baf1-goog
+Jazz is not dead. It just smells funny...
