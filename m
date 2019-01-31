@@ -1,56 +1,208 @@
-From: Hsin-hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Subject: Re: [PATCH 4/6] mfd: Add support for the MediaTek MT6358 PMIC
-Date: Thu, 31 Jan 2019 16:33:55 +0800
-Message-ID: <1548923635.25380.4.camel@mtksdaap41>
-References: <1548839891-20932-1-git-send-email-hsin-hsiung.wang@mediatek.com>
-         <1548839891-20932-5-git-send-email-hsin-hsiung.wang@mediatek.com>
-         <CANdKZ0csqmTFj7+03yRAM25z4jGEQYQvOuSWggDY81spGqhgfA@mail.gmail.com>
+From: Honghui Zhang <honghui.zhang@mediatek.com>
+Subject: Re: [v1] PCI: mediatek: Remove MSI inner domain
+Date: Thu, 31 Jan 2019 17:19:27 +0800
+Message-ID: <1548926367.4980.14.camel@mhfsdcap03>
+References: <1548149855-3225-1-git-send-email-jianjun.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CANdKZ0csqmTFj7+03yRAM25z4jGEQYQvOuSWggDY81spGqhgfA@mail.gmail.com>
+In-Reply-To: <1548149855-3225-1-git-send-email-jianjun.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Pi-Hsun Shih <pihsun@chromium.org>
-Cc: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Liam Girdwood <lgirdwood@gmail.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>, srv_heupstream@mediatek.com
+To: Jianjun Wang <jianjun.wang@mediatek.com>
+Cc: ryder.lee@mediatek.com, lorenzo.pieralisi@arm.com, bhelgaas@google.com, matthias.bgg@gmail.com, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, youlin.pei@mediatek.com, Marc Zyngier <marc.zyngier@arm.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Pi-Hsun,
-
-On Thu, 2019-01-31 at 11:56 +0800, Pi-Hsun Shih wrote:
-> On Wed, Jan 30, 2019 at 5:19 PM Hsin-Hsiung Wang
-> <hsin-hsiung.wang@mediatek.com> wrote:
-> >
-> > This adds support for the MediaTek MT6358 PMIC. This is a
-> > multifunction device with the following sub modules:
-> >
-> > - Regulator
-> > - RTC
-> > - Codec
-> > - Interrupt
-...
-> > +static const struct mfd_cell mt6358_devs[] = {
-> > +       {
-> > +               .name = "mt6358-regulator",
-> > +               .of_compatible = "mediatek,mt6358-regulator"
-> > +       }, {
-> > +               .name = "mt6397-rtc",
+On Tue, 2019-01-22 at 17:37 +0800, Jianjun Wang wrote:
+> There is no need to create the inner domain as a parent for MSI domian,
+> some feature has been implemented by MSI framework.
 > 
-> Should this be "mt6358-rtc"?
+> Remove the inner domain and its irq chip, it will be more closer to
+> hardware implementation.
+> 
+Hi, jianjun, I'm not quite familiar with the irq_chip framework, It was
+under Marc's great help with the first version of irq_chip solution
+code. I would like you to add him for the review.
 
-Because MT6358 rtc uses the same rtc driver as MT6397, the name should
-be "mt6397-rtc" for rtc driver probe.
+Thanks.
 
-Thanks a lot.
-> > +               .num_resources = ARRAY_SIZE(mt6358_rtc_resources),
-> > +               .resources = mt6358_rtc_resources,
-> > +               .of_compatible = "mediatek,mt6358-rtc",
-> > +       }, {
-> > +               .name = "mt6358-sound",
-> > +               .of_compatible = "mediatek,mt6358-sound"
-> > +       },
-> > +};
-...
-> > --
-> > 1.9.1
-> >
+> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+> ---
+>  drivers/pci/controller/pcie-mediatek.c | 86 +++++++++++---------------
+>  1 file changed, 37 insertions(+), 49 deletions(-)
+> 
+> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> index 8d05df56158b..f996a9a6331f 100644
+> --- a/drivers/pci/controller/pcie-mediatek.c
+> +++ b/drivers/pci/controller/pcie-mediatek.c
+> @@ -169,7 +169,6 @@ struct mtk_pcie_soc {
+>   * @slot: port slot
+>   * @irq: GIC irq
+>   * @irq_domain: legacy INTx IRQ domain
+> - * @inner_domain: inner IRQ domain
+>   * @msi_domain: MSI IRQ domain
+>   * @lock: protect the msi_irq_in_use bitmap
+>   * @msi_irq_in_use: bit map for assigned MSI IRQ
+> @@ -190,7 +189,6 @@ struct mtk_pcie_port {
+>  	u32 slot;
+>  	int irq;
+>  	struct irq_domain *irq_domain;
+> -	struct irq_domain *inner_domain;
+>  	struct irq_domain *msi_domain;
+>  	struct mutex lock;
+>  	DECLARE_BITMAP(msi_irq_in_use, MTK_MSI_IRQS_NUM);
+> @@ -418,22 +416,15 @@ static void mtk_msi_ack_irq(struct irq_data *data)
+>  	u32 hwirq = data->hwirq;
+>  
+>  	writel(1 << hwirq, port->base + PCIE_IMSI_STATUS);
+> +	writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
+>  }
+>  
+> -static struct irq_chip mtk_msi_bottom_irq_chip = {
+> -	.name			= "MTK MSI",
+> -	.irq_compose_msi_msg	= mtk_compose_msi_msg,
+> -	.irq_set_affinity	= mtk_msi_set_affinity,
+> -	.irq_ack		= mtk_msi_ack_irq,
+> -};
+> -
+> -static int mtk_pcie_irq_domain_alloc(struct irq_domain *domain, unsigned int virq,
+> -				     unsigned int nr_irqs, void *args)
+> +static irq_hw_number_t mtk_pcie_msi_get_hwirq(struct msi_domain_info *info,
+> +					      msi_alloc_info_t *arg)
+>  {
+> -	struct mtk_pcie_port *port = domain->host_data;
+> -	unsigned long bit;
+> +	struct mtk_pcie_port *port = info->chip_data;
+> +	irq_hw_number_t bit;
+>  
+> -	WARN_ON(nr_irqs != 1);
+>  	mutex_lock(&port->lock);
+>  
+>  	bit = find_first_zero_bit(port->msi_irq_in_use, MTK_MSI_IRQS_NUM);
+> @@ -446,18 +437,14 @@ static int mtk_pcie_irq_domain_alloc(struct irq_domain *domain, unsigned int vir
+>  
+>  	mutex_unlock(&port->lock);
+>  
+> -	irq_domain_set_info(domain, virq, bit, &mtk_msi_bottom_irq_chip,
+> -			    domain->host_data, handle_edge_irq,
+> -			    NULL, NULL);
+> -
+> -	return 0;
+> +	return bit;
+>  }
+>  
+> -static void mtk_pcie_irq_domain_free(struct irq_domain *domain,
+> -				     unsigned int virq, unsigned int nr_irqs)
+> +static void mtk_pcie_msi_free(struct irq_domain *domain,
+> +			      struct msi_domain_info *info, unsigned int virq)
+>  {
+>  	struct irq_data *d = irq_domain_get_irq_data(domain, virq);
+> -	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(d);
+> +	struct mtk_pcie_port *port = info->chip_data;
+>  
+>  	mutex_lock(&port->lock);
+>  
+> @@ -468,46 +455,50 @@ static void mtk_pcie_irq_domain_free(struct irq_domain *domain,
+>  		__clear_bit(d->hwirq, port->msi_irq_in_use);
+>  
+>  	mutex_unlock(&port->lock);
+> -
+> -	irq_domain_free_irqs_parent(domain, virq, nr_irqs);
+>  }
+>  
+> -static const struct irq_domain_ops msi_domain_ops = {
+> -	.alloc	= mtk_pcie_irq_domain_alloc,
+> -	.free	= mtk_pcie_irq_domain_free,
+> +static struct msi_domain_ops mtk_msi_domain_ops = {
+> +	.get_hwirq	= mtk_pcie_msi_get_hwirq,
+> +	.msi_free	= mtk_pcie_msi_free,
+>  };
+>  
+>  static struct irq_chip mtk_msi_irq_chip = {
+> -	.name		= "MTK PCIe MSI",
+> -	.irq_ack	= irq_chip_ack_parent,
+> -	.irq_mask	= pci_msi_mask_irq,
+> -	.irq_unmask	= pci_msi_unmask_irq,
+> +	.name			= "MTK PCIe",
+> +	.irq_compose_msi_msg	= mtk_compose_msi_msg,
+> +	.irq_write_msi_msg	= pci_msi_domain_write_msg,
+> +	.irq_set_affinity	= mtk_msi_set_affinity,
+> +	.irq_ack		= mtk_msi_ack_irq,
+> +	.irq_mask		= pci_msi_mask_irq,
+> +	.irq_unmask		= pci_msi_unmask_irq,
+>  };
+>  
+>  static struct msi_domain_info mtk_msi_domain_info = {
+> -	.flags	= (MSI_FLAG_USE_DEF_DOM_OPS | MSI_FLAG_USE_DEF_CHIP_OPS |
+> -		   MSI_FLAG_PCI_MSIX),
+> -	.chip	= &mtk_msi_irq_chip,
+> +	.flags		= (MSI_FLAG_USE_DEF_DOM_OPS |
+> +			   MSI_FLAG_USE_DEF_CHIP_OPS | MSI_FLAG_PCI_MSIX),
+> +	.ops		= &mtk_msi_domain_ops,
+> +	.chip		= &mtk_msi_irq_chip,
+> +	.handler	= handle_edge_irq,
+> +	.handler_name	= "MSI",
+>  };
+>  
+>  static int mtk_pcie_allocate_msi_domains(struct mtk_pcie_port *port)
+>  {
+> -	struct fwnode_handle *fwnode = of_node_to_fwnode(port->pcie->dev->of_node);
+> +	struct device *dev = port->pcie->dev;
+> +	struct fwnode_handle *fwnode = of_node_to_fwnode(dev->of_node);
+> +	struct msi_domain_info *info;
+>  
+>  	mutex_init(&port->lock);
+>  
+> -	port->inner_domain = irq_domain_create_linear(fwnode, MTK_MSI_IRQS_NUM,
+> -						      &msi_domain_ops, port);
+> -	if (!port->inner_domain) {
+> -		dev_err(port->pcie->dev, "failed to create IRQ domain\n");
+> +	info = devm_kzalloc(dev, sizeof(*info), GFP_KERNEL);
+> +	if (!info)
+>  		return -ENOMEM;
+> -	}
+>  
+> -	port->msi_domain = pci_msi_create_irq_domain(fwnode, &mtk_msi_domain_info,
+> -						     port->inner_domain);
+> +	memcpy(info, &mtk_msi_domain_info, sizeof(*info));
+> +	info->chip_data = port;
+> +
+
+I'm not really like this memcpy of msi_domain_info, but I do not have a
+better idea to prevent the mixed of mtk_pcie_port data.
+
+> +	port->msi_domain = pci_msi_create_irq_domain(fwnode, info, NULL);
+>  	if (!port->msi_domain) {
+> -		dev_err(port->pcie->dev, "failed to create MSI domain\n");
+> -		irq_domain_remove(port->inner_domain);
+> +		dev_err(dev, "failed to create MSI domain\n");
+>  		return -ENOMEM;
+>  	}
+>  
+> @@ -541,8 +532,6 @@ static void mtk_pcie_irq_teardown(struct mtk_pcie *pcie)
+>  		if (IS_ENABLED(CONFIG_PCI_MSI)) {
+>  			if (port->msi_domain)
+>  				irq_domain_remove(port->msi_domain);
+> -			if (port->inner_domain)
+> -				irq_domain_remove(port->inner_domain);
+>  		}
+>  
+>  		irq_dispose_mapping(port->irq);
+> @@ -619,12 +608,11 @@ static void mtk_pcie_intr_handler(struct irq_desc *desc)
+>  
+>  			while ((imsi_status = readl(port->base + PCIE_IMSI_STATUS))) {
+>  				for_each_set_bit(bit, &imsi_status, MTK_MSI_IRQS_NUM) {
+> -					virq = irq_find_mapping(port->inner_domain, bit);
+> +					virq = irq_find_mapping(
+> +							port->msi_domain, bit);
+>  					generic_handle_irq(virq);
+>  				}
+>  			}
+> -			/* Clear MSI interrupt status */
+> -			writel(MSI_STATUS, port->base + PCIE_INT_STATUS);
+>  		}
+
+why change this irq status clear flow?
+
+>  	}
+>  
