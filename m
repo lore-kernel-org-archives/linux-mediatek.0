@@ -1,92 +1,73 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH] mmc: mmc: Fix HS setting in mmc_hs400_to_hs200()
-Date: Thu, 31 Jan 2019 16:58:06 +0100
-Message-ID: <CAPDyKFruCCs_un1oR-gd1P=ZGryyHwKuY0SkvLO2=Jm1bGV6sQ@mail.gmail.com>
-References: <1548921212-5219-1-git-send-email-chaotian.jing@mediatek.com>
+From: Evan Green <evgreen@chromium.org>
+Subject: Re: [PATCH v5 11/20] iommu/mediatek: Move vld_pa_rng into plat_data
+Date: Thu, 31 Jan 2019 08:36:12 -0800
+Message-ID: <CAE=gft7DNKu93c8e47nrC7Q7h4VL3vGwkj8ycQM8yVdCdjb+hw@mail.gmail.com>
+References: <1546314952-15990-1-git-send-email-yong.wu@mediatek.com>
+ <1546314952-15990-12-git-send-email-yong.wu@mediatek.com> <CAE=gft4=4h_1MAnrC8CosSe3gOWx+DwFJSLvGNtOFNMZN8oZ3w@mail.gmail.com>
+ <1548904841.19710.36.camel@mhfsdcap03>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1548921212-5219-1-git-send-email-chaotian.jing@mediatek.com>
+In-Reply-To: <1548904841.19710.36.camel@mhfsdcap03>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chaotian Jing <chaotian.jing@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Simon Horman <horms+renesas@verge.net.au>, Kyle Roeschley <kyle.roeschley@ni.com>, Hongjie Fang <hongjiefang@asrmicro.com>, Harish Jenny K N <harish_kandiga@mentor.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, srv_heupstream <srv_heupstream@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>, Tomasz Figa <tfiga@google.com>, Will Deacon <will.deacon@arm.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, Arnd Bergmann <arnd@arndb.de>, yingjoe.chen@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 31 Jan 2019 at 08:53, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
+On Wed, Jan 30, 2019 at 7:20 PM Yong Wu <yong.wu@mediatek.com> wrote:
 >
-> mmc_hs400_to_hs200() begins with the card and host in HS400 mode.
-> Therefore, any commands sent to the card should use HS400 timing.
-> It is incorrect to reduce frequency to 50Mhz before sending the switch
-> command, in this case, only reduce clock frequency to 50Mhz but without
-> host timming change, host is still in hs400 mode but clock changed from
-> 200Mhz to 50Mhz, which makes the tuning result unsuitable and cause
-> the switch command gets response CRC error.
-
-According the eMMC spec there is no violation by decreasing the clock
-frequency like this. We can use whatever value <=200MHz.
-
-However, perhaps in practice this becomes an issue, due to the tuning
-for HS400 has been done on the "current" frequency.
-
-As as start, I think you need to clarify this in the changelog.
-
+> On Wed, 2019-01-30 at 10:30 -0800, Evan Green wrote:
+> > On Mon, Dec 31, 2018 at 7:58 PM Yong Wu <yong.wu@mediatek.com> wrote:
+> > >
+> > > Both mt8173 and mt8183 don't have this vld_pa_rng(valid physical address
+> > > range) register while mt2712 have. Move it into the plat_data.
+> > >
+> > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > > ---
+> > >  drivers/iommu/mtk_iommu.c | 3 ++-
+> > >  drivers/iommu/mtk_iommu.h | 1 +
+> > >  2 files changed, 3 insertions(+), 1 deletion(-)
+> > >
+> > > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> > > index 8d8ab21..2913ddb 100644
+> > > --- a/drivers/iommu/mtk_iommu.c
+> > > +++ b/drivers/iommu/mtk_iommu.c
+> > > @@ -548,7 +548,7 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+> > >                          upper_32_bits(data->protect_base);
+> > >         writel_relaxed(regval, data->base + REG_MMU_IVRP_PADDR);
+> > >
+> > > -       if (data->enable_4GB && data->plat_data->m4u_plat != M4U_MT8173) {
+> > > +       if (data->enable_4GB && data->plat_data->vld_pa_rng) {
+> > >                 /*
+> > >                  * If 4GB mode is enabled, the validate PA range is from
+> > >                  * 0x1_0000_0000 to 0x1_ffff_ffff. here record bit[32:30].
+> > > @@ -741,6 +741,7 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
+> > >         .m4u_plat     = M4U_MT2712,
+> > >         .has_4gb_mode = true,
+> > >         .has_bclk     = true,
+> > > +       .vld_pa_rng   = true,
+> > >         .larbid_remap = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
+> > >  };
+> > >
+> > > diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+> > > index b46aeaa..a8c5d1e 100644
+> > > --- a/drivers/iommu/mtk_iommu.h
+> > > +++ b/drivers/iommu/mtk_iommu.h
+> > > @@ -48,6 +48,7 @@ struct mtk_iommu_plat_data {
+> > >         /* HW will use the EMI clock if there isn't the "bclk". */
+> > >         bool                has_bclk;
+> > >         bool                reset_axi;
+> > > +       bool                vld_pa_rng;
+> >
+> > I agree with Nicolas that valid_pa_range would be much clearer...
+> > although, even now that I know what it's supposed to mean, I don't get
+> > what it represents. What is this saying?
 >
-> this patch refers to mmc_select_hs400(), make the reduce clock frequency
-> after card timing change.
+> This register in the coda is called "vld_pa_rng".
 >
-> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
-> ---
->  drivers/mmc/core/mmc.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
-> index da892a5..21b811e 100644
-> --- a/drivers/mmc/core/mmc.c
-> +++ b/drivers/mmc/core/mmc.c
-> @@ -1239,10 +1239,6 @@ int mmc_hs400_to_hs200(struct mmc_card *card)
->         int err;
->         u8 val;
->
-> -       /* Reduce frequency to HS */
-> -       max_dtr = card->ext_csd.hs_max_dtr;
-> -       mmc_set_clock(host, max_dtr);
-> -
-
-As far as I can tell, the reason to why we change the clock frequency
-*before* the call to __mmc_switch() below, is probably to try to be on
-the safe side and conform to the spec.
-
-However, I think you have a point, as the call to __mmc_switch(),
-passes the "send_status" parameter as false, no other command than the
-CMD6 is sent to the card.
-
->         /* Switch HS400 to HS DDR */
->         val = EXT_CSD_TIMING_HS;
->         err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL, EXT_CSD_HS_TIMING,
-> @@ -1253,6 +1249,10 @@ int mmc_hs400_to_hs200(struct mmc_card *card)
->
->         mmc_set_timing(host, MMC_TIMING_MMC_DDR52);
->
-> +       /* Reduce frequency to HS */
-> +       max_dtr = card->ext_csd.hs_max_dtr;
-> +       mmc_set_clock(host, max_dtr);
-> +
-
-Perhaps it's even more correct to change the clock frequency before
-the call to mmc_set_timing(host, MMC_TIMING_MMC_DDR52). Otherwise you
-will be using the DDR52 timing in the controller, but with a too high
-frequency.
-
->         err = mmc_switch_status(card);
->         if (err)
->                 goto out_err;
-> --
-> 1.8.1.1.dirty
+> How about I change it to "has_vld_pa_rng"?. In the comment above, I have
+> explained the meaning(valid physical address range).
 >
 
-Finally, it sounds like you are trying to fix a real problem, can you
-please provide some more information what is happening when the
-problem occurs at your side?
-
-Kind regards
-Uffe
+Ok, that sounds fine.
+-Evan
