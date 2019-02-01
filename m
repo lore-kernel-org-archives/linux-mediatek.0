@@ -1,7 +1,7 @@
 From: Frederic Chen <frederic.chen@mediatek.com>
-Subject: [RFC PATCH V0 2/7] dts: arm64: mt8183: Add DIP shared memory node
-Date: Fri, 1 Feb 2019 19:21:26 +0800
-Message-ID: <1549020091-42064-3-git-send-email-frederic.chen@mediatek.com>
+Subject: [RFC PATCH V0 6/7] media: platform: Add Mediatek DIP driver KConfig
+Date: Fri, 1 Feb 2019 19:21:30 +0800
+Message-ID: <1549020091-42064-7-git-send-email-frederic.chen@mediatek.com>
 References: <1549020091-42064-1-git-send-email-frederic.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,38 +21,56 @@ To: hans.verkuil@cisco.com, laurent.pinchart+renesas@ideasonboard.com, tfiga@chr
 Cc: Sean.Cheng@mediatek.com, Rynn.Wu@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, Jerry-ch.Chen@mediatek.com, jungo.lin@mediatek.com, sj.huang@mediatek.com, christie.yu@mediatek.com, linux-mediatek@lists.infradead.org, frederic.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds a shared memory region used on mt8183 for
-exchanging tuning data between co-processor and
-Digital Image Processing (DIP) unit.
+This patch adds KConfig for Mediatek Digital Image Processing
+driver (DIP). DIP is embedded in Mediatek SoCs. It can provide
+image format conversion, resizing, and rotation function.
 
 Signed-off-by: Frederic Chen <frederic.chen@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ drivers/media/platform/Kconfig         |  2 ++
+ drivers/media/platform/mtk-isp/Kconfig | 21 +++++++++++++++++++++
+ 2 files changed, 23 insertions(+)
+ create mode 100644 drivers/media/platform/mtk-isp/Kconfig
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 63db9cc..fff67c4 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -133,6 +133,19 @@
- 		clock-output-names = "clk26m";
- 	};
+diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
+index a505e9f..ef08d48 100644
+--- a/drivers/media/platform/Kconfig
++++ b/drivers/media/platform/Kconfig
+@@ -32,6 +32,8 @@ source "drivers/media/platform/davinci/Kconfig"
  
-+	reserved-memory {
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+		reserve-memory-dip_smem {
-+			compatible = "mediatek,reserve-memory-dip_smem";
-+			no-map;
-+			size = <0 0x01400000>;  /*20 MB share mem size */
-+			alignment = <0 0x1000>;
-+			alloc-ranges = <0 0x40000000 0 0x10000000>;
-+		};
-+	};
+ source "drivers/media/platform/omap/Kconfig"
+ 
++source "drivers/media/platform/mtk-isp/Kconfig"
 +
- 	timer {
- 		compatible = "arm,armv8-timer";
- 		interrupt-parent = <&gic>;
+ config VIDEO_ASPEED
+ 	tristate "Aspeed AST2400 and AST2500 Video Engine driver"
+ 	depends on VIDEO_V4L2
+diff --git a/drivers/media/platform/mtk-isp/Kconfig b/drivers/media/platform/mtk-isp/Kconfig
+new file mode 100644
+index 0000000..e5f36d1
+--- /dev/null
++++ b/drivers/media/platform/mtk-isp/Kconfig
+@@ -0,0 +1,21 @@
++config VIDEO_MEDIATEK_ISP_DIP_SUPPORT
++	bool "Mediatek Digital Image Processing function"
++	select DMA_SHARED_BUFFER
++	select VIDEO_V4L2_SUBDEV_API
++	select VIDEOBUF2_DMA_CONTIG
++	select VIDEOBUF2_CORE
++	select VIDEOBUF2_V4L2
++	select VIDEOBUF2_MEMOPS
++	select VIDEOBUF2_VMALLOC
++	select MEDIA_CONTROLLER
++
++	default n
++	help
++	    Support the basic Digital Image Processing (DIP) driver.
++
++	    DIP driver provides image format conversion, resizing,
++	    and rotation function through the low power hardware.
++	    DIP also supports multiple output feature. It can
++	    generate two or more output image with different effect
++	    based on a single input image at the same time.
++
 -- 
 1.9.1
