@@ -1,12 +1,11 @@
 From: Frederic Chen <frederic.chen@mediatek.com>
-Subject: [RFC PATCH V0 1/7] [media] dt-bindings: mt8183: Add binding for DIP
- shared memory
-Date: Fri, 1 Feb 2019 19:21:25 +0800
-Message-ID: <1549020091-42064-2-git-send-email-frederic.chen@mediatek.com>
+Subject: [RFC PATCH V0 4/7] [media] dt-bindings: mt8183: Added DIP dt-bindings
+Date: Fri, 1 Feb 2019 19:21:28 +0800
+Message-ID: <1549020091-42064-5-git-send-email-frederic.chen@mediatek.com>
 References: <1549020091-42064-1-git-send-email-frederic.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 In-Reply-To: <1549020091-42064-1-git-send-email-frederic.chen@mediatek.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
@@ -22,67 +21,44 @@ To: hans.verkuil@cisco.com, laurent.pinchart+renesas@ideasonboard.com, tfiga@chr
 Cc: Sean.Cheng@mediatek.com, Rynn.Wu@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, Jerry-ch.Chen@mediatek.com, jungo.lin@mediatek.com, sj.huang@mediatek.com, christie.yu@mediatek.com, linux-mediatek@lists.infradead.org, frederic.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds the binding for describing the shared memory
-used to exchange configuration and tuning data between the
-co-processor and Digital Image Processing (DIP) unit of the
-camera ISP system on Mediatek SoCs.
-
-Signed-off-by: Frederic Chen <frederic.chen@mediatek.com>
----
- .../mediatek,reserve-memory-dip_smem.txt           | 45 ++++++++++++++++++++++
- 1 file changed, 45 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt
-
-diff --git a/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt b/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt
-new file mode 100644
-index 0000000..0ded478
---- /dev/null
-+++ b/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt
-@@ -0,0 +1,45 @@
-+Mediatek DIP Shared Memory binding
-+
-+This binding describes the shared memory, which serves the purpose of
-+describing the shared memory region used to exchange data between Digital
-+Image Processing (DIP) and co-processor in Mediatek SoCs.
-+
-+The co-processor doesn't have the iommu so we need to use the physical
-+address to access the shared buffer in the firmware.
-+
-+The Digital Image Processing (DIP) can access memory through mt8183 IOMMU so
-+it can use dma address to access the memory region.
-+(See iommu/mediatek,iommu.txt for the detailed description of Mediatek IOMMU)
-+
-+
-+Required properties:
-+
-+- compatible: must be "mediatek,reserve-memory-dip_smem"
-+
-+- reg: required for static allocation (see reserved-memory.txt for
-+  the detailed usage)
-+
-+- alloc-range: required for dynamic allocation. The range must
-+  between 0x00000400 and 0x100000000 due to the co-processer's
-+  addressing limitation
-+
-+- size: required for dynamic allocation. The unit is bytes.
-+  If you want to enable the full feature of Digital Processing Unit,
-+  you need 20 MB at least.
-+
-+
-+Example:
-+
-+The following example shows the DIP shared memory setup for MT8183.
-+
-+	reserved-memory {
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+		reserve-memory-isp_smem {
-+			compatible = "mediatek,reserve-memory-dip_smem";
-+			size = <0 0x1400000>;
-+			alignment = <0 0x1000>;
-+			alloc-ranges = <0 0x40000000 0 0x50000000>;
-+		};
-+	};
--- 
-1.9.1
+VGhpcyBwYXRjaCBhZGRzIERUIGJpbmRpbmcgZG9jdW1lbnRhdGlvbiBmb3IgdGhlIERpZ2l0YWwg
+SW1hZ2UKUHJvY2Vzc2luZyAoRElQKSB1bml0IG9mIGNhbWVyYSBJU1Agc3lzdGVtIG9uIE1lZGlh
+dGVr4oCZcyBTb0NzLgoKU2lnbmVkLW9mZi1ieTogRnJlZGVyaWMgQ2hlbiA8ZnJlZGVyaWMuY2hl
+bkBtZWRpYXRlay5jb20+Ci0tLQogLi4uL2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLG10ODE4My1k
+aXAudHh0ICAgICAgICAgfCAzNSArKysrKysrKysrKysrKysrKysrKysrCiAxIGZpbGUgY2hhbmdl
+ZCwgMzUgaW5zZXJ0aW9ucygrKQogY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2
+aWNldHJlZS9iaW5kaW5ncy9tZWRpYS9tZWRpYXRlayxtdDgxODMtZGlwLnR4dAoKZGlmZiAtLWdp
+dCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRpYS9tZWRpYXRlayxtdDgx
+ODMtZGlwLnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRpYS9tZWRp
+YXRlayxtdDgxODMtZGlwLnR4dApuZXcgZmlsZSBtb2RlIDEwMDY0NAppbmRleCAwMDAwMDAwLi4w
+ZTE5OTRiCi0tLSAvZGV2L251bGwKKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRp
+bmdzL21lZGlhL21lZGlhdGVrLG10ODE4My1kaXAudHh0CkBAIC0wLDAgKzEsMzUgQEAKKyogTWVk
+aWF0ZWsgRGlnaXRhbCBJbWFnZSBQcm9jZXNzb3IgKERJUCkKKworRGlnaXRhbCBJbWFnZSBQcm9j
+ZXNzb3IgKERJUCkgdW5pdCBpbiBNZWRpYXRlayBJU1Agc3lzdGVtIGlzIHJlc3BvbnNpYmxlIGZv
+cgoraW1hZ2UgY29udGVudCBhZGp1c3RtZW50IGFjY29yZGluZyB0byB0aGUgdHVuaW5nIHBhcmFt
+ZXRlcnMuIERJUCBjYW4gcHJvY2VzcwordGhlIGltYWdlIGZvcm0gbWVtb3J5IGJ1ZmZlciBhbmQg
+b3V0cHV0IHRoZSBwcm9jZXNzZWQgaW1hZ2UgdG8gbXVsdGlwbGUgb3V0cHV0CitidWZmZXJzLiBG
+dXJ0aGVybW9yZSwgaXQgY2FuIHN1cHBvcnQgZGVtb3NhaWNpbmcgYW5kIG5vaXNlIHJlZHVjdGlv
+biBvbiB0aGUKK2ltYWdlcy4KKworUmVxdWlyZWQgcHJvcGVydGllczoKKy0gY29tcGF0aWJsZTog
+Im1lZGlhdGVrLG10ODE4My1kaXAiCistIHJlZzogUGh5c2ljYWwgYmFzZSBhZGRyZXNzIGFuZCBs
+ZW5ndGggb2YgdGhlIGZ1bmN0aW9uIGJsb2NrIHJlZ2lzdGVyIHNwYWNlCistIGludGVycnVwdHM6
+IGludGVycnVwdCBudW1iZXIgdG8gdGhlIGNwdQorLSBpb21tdXM6IHNob3VsZCBwb2ludCB0byB0
+aGUgcmVzcGVjdGl2ZSBJT01NVSBibG9jayB3aXRoIG1hc3RlciBwb3J0IGFzCisgIGFyZ3VtZW50
+LCBzZWUgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2lvbW11L21lZGlhdGVrLGlv
+bW11LnR4dAorICBmb3IgZGV0YWlscy4KKy0gbWVkaWF0ZWssbGFyYjogbXVzdCBjb250YWluIHRo
+ZSBsb2NhbCBhcmJpdGVycyBpbiB0aGUgY3VycmVudCBTb2NzLCBzZWUKKyAgRG9jdW1lbnRhdGlv
+bi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lbW9yeS1jb250cm9sbGVycy9tZWRpYXRlayxzbWktbGFy
+Yi50eHQKKyAgZm9yIGRldGFpbHMuCistIGNsb2NrczogbXVzdCBjb250YWluIHRoZSBsb2NhbCBh
+cmJpdGVycyA1IChMQVJCNSkgYW5kIERJUCBjbG9jaworLSBjbG9jay1uYW1lczogbXVzdCBjb250
+YWluIERJUF9DR19JTUdfTEFSQjUgYW5kIERJUF9DR19JTUdfRElQCisKK0V4YW1wbGU6CisJZGlw
+OiBkaXBAMTUwMjIwMDAgeworCQljb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE4My1kaXAiOwor
+CQltZWRpYXRlayxsYXJiID0gPCZsYXJiNT47CisJCW1lZGlhdGVrLG1kcDMgPSA8Jm1kcF9yZG1h
+MD47CisJCW1lZGlhdGVrLHZwdSA9IDwmdnB1PjsKKwkJaW9tbXVzID0gPCZpb21tdSBNNFVfUE9S
+VF9DQU1fSU1HST47CisJCXJlZyA9IDwwIDB4MTUwMjIwMDAgMCAweDYwMDA+OworCQlpbnRlcnJ1
+cHRzID0gPEdJQ19TUEkgMjY4IElSUV9UWVBFX0xFVkVMX0xPVz47CisJCWNsb2NrcyA9IDwmaW1n
+c3lzIENMS19JTUdfTEFSQjU+LAorCQkJIDwmaW1nc3lzIENMS19JTUdfRElQPjsKKwkJY2xvY2st
+bmFtZXMgPSAiRElQX0NHX0lNR19MQVJCNSIsCisJCQkgICAgICAiRElQX0NHX0lNR19ESVAiOwor
+CX07Ci0tIAoxLjkuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFybS1rZXJuZWxAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LWFybS1rZXJuZWwK
