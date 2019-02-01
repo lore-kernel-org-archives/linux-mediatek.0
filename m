@@ -1,76 +1,71 @@
-From: Frederic Chen <frederic.chen@mediatek.com>
-Subject: [RFC PATCH V0 6/7] media: platform: Add Mediatek DIP driver KConfig
-Date: Fri, 1 Feb 2019 19:21:30 +0800
-Message-ID: <1549020091-42064-7-git-send-email-frederic.chen@mediatek.com>
+From: Frederic Chen <frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [RFC PATCH V0 3/7] [media] dt-bindings: mt8183: Added DIP-SMEM
+ dt-bindings
+Date: Fri, 1 Feb 2019 19:21:27 +0800
+Message-ID: <1549020091-42064-4-git-send-email-frederic.chen@mediatek.com>
 References: <1549020091-42064-1-git-send-email-frederic.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1549020091-42064-1-git-send-email-frederic.chen@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: hans.verkuil@cisco.com, laurent.pinchart+renesas@ideasonboard.com, tfiga@chromium.org, matthias.bgg@gmail.com, mchehab@kernel.org
-Cc: Sean.Cheng@mediatek.com, Rynn.Wu@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, Jerry-ch.Chen@mediatek.com, jungo.lin@mediatek.com, sj.huang@mediatek.com, christie.yu@mediatek.com, linux-mediatek@lists.infradead.org, frederic.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1549020091-42064-1-git-send-email-frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: Sean.Cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Rynn.Wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, holmes.chiou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Jerry-ch.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jungo.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sj.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, christie.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds KConfig for Mediatek Digital Image Processing
-driver (DIP). DIP is embedded in Mediatek SoCs. It can provide
-image format conversion, resizing, and rotation function.
+This patch adds the DT binding documentation for the shared memory
+between DIP (Digital Image Processing) unit of the camera ISP system
+and the co-processor in Mediatek SoCs.
 
-Signed-off-by: Frederic Chen <frederic.chen@mediatek.com>
+Signed-off-by: Frederic Chen <frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- drivers/media/platform/Kconfig         |  2 ++
- drivers/media/platform/mtk-isp/Kconfig | 21 +++++++++++++++++++++
- 2 files changed, 23 insertions(+)
- create mode 100644 drivers/media/platform/mtk-isp/Kconfig
+ .../bindings/media/mediatek,dip_smem.txt           | 29 ++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,dip_smem.txt
 
-diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
-index a505e9f..ef08d48 100644
---- a/drivers/media/platform/Kconfig
-+++ b/drivers/media/platform/Kconfig
-@@ -32,6 +32,8 @@ source "drivers/media/platform/davinci/Kconfig"
- 
- source "drivers/media/platform/omap/Kconfig"
- 
-+source "drivers/media/platform/mtk-isp/Kconfig"
-+
- config VIDEO_ASPEED
- 	tristate "Aspeed AST2400 and AST2500 Video Engine driver"
- 	depends on VIDEO_V4L2
-diff --git a/drivers/media/platform/mtk-isp/Kconfig b/drivers/media/platform/mtk-isp/Kconfig
+diff --git a/Documentation/devicetree/bindings/media/mediatek,dip_smem.txt b/Documentation/devicetree/bindings/media/mediatek,dip_smem.txt
 new file mode 100644
-index 0000000..e5f36d1
+index 0000000..5533721
 --- /dev/null
-+++ b/drivers/media/platform/mtk-isp/Kconfig
-@@ -0,0 +1,21 @@
-+config VIDEO_MEDIATEK_ISP_DIP_SUPPORT
-+	bool "Mediatek Digital Image Processing function"
-+	select DMA_SHARED_BUFFER
-+	select VIDEO_V4L2_SUBDEV_API
-+	select VIDEOBUF2_DMA_CONTIG
-+	select VIDEOBUF2_CORE
-+	select VIDEOBUF2_V4L2
-+	select VIDEOBUF2_MEMOPS
-+	select VIDEOBUF2_VMALLOC
-+	select MEDIA_CONTROLLER
++++ b/Documentation/devicetree/bindings/media/mediatek,dip_smem.txt
+@@ -0,0 +1,29 @@
++Mediatek ISP Shared Memory Device
 +
-+	default n
-+	help
-+	    Support the basic Digital Image Processing (DIP) driver.
++Mediatek ISP Shared Memory Device is used to manage shared memory
++among CPU, ISP IPs and coprocessor. It is associated with a reserved
++memory region (Please see Documentation\devicetree\bindings\
++reserved-memory\mediatek,reserve-memory-isp_smem.txt) and
++and provide the context to allocate memory with dma addresses.
 +
-+	    DIP driver provides image format conversion, resizing,
-+	    and rotation function through the low power hardware.
-+	    DIP also supports multiple output feature. It can
-+	    generate two or more output image with different effect
-+	    based on a single input image at the same time.
++Required properties:
++- compatible: Should be "mediatek,isp_smem"
 +
++- iommus: should point to the respective IOMMU block with master port
++  as argument. Please set the ports which may be accessed
++  through the common path. You can see
++  Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
++  for the detail.
++
++- mediatek,larb: must contain the local arbiters in the current Socs.
++  Please set the larb of camsys for Pass 1 and imgsys for DIP, or both
++  if you are using all the camera function. You can see
++  Documentation/devicetree/bindings/memory-controllers/
++  mediatek,smi-larb.txt for the detail.
++
++Example:
++	isp_smem: isp_smem {
++		compatible = "mediatek,isp_smem";
++		mediatek,larb = <&larb5>;
++		iommus = <&iommu M4U_PORT_CAM_IMGI>;
++	};
 -- 
 1.9.1
