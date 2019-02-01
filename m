@@ -1,89 +1,92 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH v2 1/2] PCI: mediatek: Use resource_size function on
- resource object
-Date: Thu, 31 Jan 2019 15:36:48 -0600
-Message-ID: <20190131213647.GP229773@google.com>
-References: <1548921713-5355-1-git-send-email-honghui.zhang@mediatek.com>
- <1548921713-5355-2-git-send-email-honghui.zhang@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH 06/10] soc: mediatek: add register device function
+Date: Fri, 1 Feb 2019 09:31:10 +0800
+Message-ID: <1548984670.7501.2.camel@mtksdaap41>
+References: <1548747128-60136-1-git-send-email-bibby.hsieh@mediatek.com>
+ <1548747128-60136-7-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1548921713-5355-2-git-send-email-honghui.zhang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: honghui.zhang@mediatek.com
-Cc: lorenzo.pieralisi@arm.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com, youlin.pei@mediatek.com, poza@codeaurora.org, fred@fredlawl.com, rafael.j.wysocki@intel.com, jianjun.wang@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1548747128-60136-7-git-send-email-bibby.hsieh@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, srv_heupstream@mediatek.com, kendrick.hsu@mediatek.com, Daoyuan Huang <daoyuan.huang@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Jassi Brar <jassisinghbrar@gmail.com>, linux-kernel@vger.kernel.org, Daniel Kurtz <djkurtz@chromium.org>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Houlong Wei <houlong.wei@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Frederic Chen <Frederic.Chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, ginny.chen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jan 31, 2019 at 04:01:52PM +0800, honghui.zhang@mediatek.com wrote:
-> From: Honghui Zhang <honghui.zhang@mediatek.com>
+Hi, Bibby:
+
+On Tue, 2019-01-29 at 15:32 +0800, Bibby Hsieh wrote:
+> GCE cannot know the register base address, we store the subsys-base address
+> relationship in the device node, and store the relationship by
+> cmdq_register_device function.
 > 
-> scripts/coccinelle/api/resource_size.cocci complain about the
-> following warning:
-> 
-> pcie-mediatek.c:720:13-16: WARNING: Suspicious code. resource_size is maybe missing with mem
-> 
-> Use resource_size(mem) instead of mem->end - mem->start to eliminate the
-> complain. Since the MMIO window size for both MT2712 and MT7622 are all
-> 0x1000_0000, this change also fix the AHB2PCIe window size smaller than
-> HW MMIO window size issue by change the values of fls(size) from
-> fls(0xfff_ffff) to fls(0x1000_0000).
-
-Good, I'm glad this actually fixes a bug.  The warning was actually
-useful!
-
-Since that's the case, the *bug* is the important thing (not the
-warning), and the subject line should be about the bug fix.  The fact
-that it also happens to remove a warning is really just incidental.
-
-You say "the AHB2PCIe window size smaller than HW MMIO window size
-issue" as though it should be familiar to us.  But it's not :)
-
-So the changelog needs to start by explaining what the AHB2PCIe window
-size issue is, mention what user-visible problem that causes, then
-explain how you're fixing it by using resource_size().
-
-Then you can mention that this also incidentally removes a coccinelle
-warning.
-
-Bjorn
-
-> Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
 > ---
->  drivers/pci/controller/pcie-mediatek.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
+>  drivers/soc/mediatek/mtk-cmdq-helper.c | 24 ++++++++++++++++++++++++
+>  include/linux/soc/mediatek/mtk-cmdq.h  |  1 +
+>  2 files changed, 25 insertions(+)
 > 
-> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> index 55e471c..01126b8 100644
-> --- a/drivers/pci/controller/pcie-mediatek.c
-> +++ b/drivers/pci/controller/pcie-mediatek.c
-> @@ -654,7 +654,6 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
->  	struct resource *mem = &pcie->mem;
->  	const struct mtk_pcie_soc *soc = port->pcie->soc;
->  	u32 val;
-> -	size_t size;
->  	int err;
+> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> index 6e4b85e..6ad997f 100644
+> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
+> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> @@ -32,6 +32,30 @@ u8 cmdq_subsys_base_to_id(struct cmdq_base *clt_base, u32 base)
+>  }
+>  EXPORT_SYMBOL(cmdq_subsys_base_to_id);
 >  
->  	/* MT7622 platforms need to enable LTSSM and ASPM from PCIe subsys */
-> @@ -706,8 +705,8 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
->  		mtk_pcie_enable_msi(port);
->  
->  	/* Set AHB to PCIe translation windows */
-> -	size = mem->end - mem->start;
-> -	val = lower_32_bits(mem->start) | AHB2PCIE_SIZE(fls(size));
-> +	val = lower_32_bits(mem->start)
-> +	      | AHB2PCIE_SIZE(fls(resource_size(mem)));
+> +struct cmdq_base *cmdq_register_device(struct device *dev)
+> +{
+> +	struct cmdq_base *clt_base;
+> +	struct of_phandle_args spec;
+> +	u32 idx;
+> +
+> +	clt_base = devm_kzalloc(dev, sizeof(*clt_base), GFP_KERNEL);
+> +	if (!clt_base)
+> +		return NULL;
+> +
+> +	/* parse subsys */
+> +	for (idx = 0; idx < ARRAY_SIZE(clt_base->subsys); idx++) {
+> +		if (of_parse_phandle_with_args(dev->of_node, "gce-subsys",
+> +		    "#gce-subsys-cells", idx, &spec))
+> +			break;
+> +		clt_base->subsys[idx].base = spec.args[0];
+> +		clt_base->subsys[idx].id = spec.args[1];
 
-Nit: I think it's more typical to put the "|" on the first line.
+This does not match the binding [1].
 
->  	writel(val, port->base + PCIE_AHB_TRANS_BASE0_L);
+[1]
+https://www.kernel.org/doc/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+
+Regards,
+CK
+
+> +	}
+> +	clt_base->count = idx;
+> +
+> +	return clt_base;
+> +}
+> +EXPORT_SYMBOL(cmdq_register_device);
+> +
+>  static void cmdq_client_timeout(struct timer_list *t)
+>  {
+>  	struct cmdq_client *client = from_timer(client, t, timer);
+> diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
+> index 0c7a6ee..a1f5eb6 100644
+> --- a/include/linux/soc/mediatek/mtk-cmdq.h
+> +++ b/include/linux/soc/mediatek/mtk-cmdq.h
+> @@ -138,5 +138,6 @@ int cmdq_pkt_flush_async(struct cmdq_pkt *pkt, cmdq_async_flush_cb cb,
+>  int cmdq_pkt_flush(struct cmdq_pkt *pkt);
 >  
->  	val = upper_32_bits(mem->start);
-> -- 
-> 2.6.4
-> 
-> 
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+>  u8 cmdq_subsys_base_to_id(struct cmdq_base *clt_base, u32 base);
+> +struct cmdq_base *cmdq_register_device(struct device *dev);
+>  
+>  #endif	/* __MTK_CMDQ_H__ */
