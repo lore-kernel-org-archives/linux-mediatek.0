@@ -1,7 +1,7 @@
 From: Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: [PATCH v4 03/12] clk: mediatek: add configurable pcwibits and fmin to mtk_pll_data
-Date: Fri, 1 Feb 2019 16:30:07 +0800
-Message-ID: <20190201083016.25856-5-weiyi.lu@mediatek.com>
+Subject: [PATCH v4 01/12] clk: mediatek: Disable tuner_en before change PLL rate
+Date: Fri, 1 Feb 2019 16:30:05 +0800
+Message-ID: <20190201083016.25856-3-weiyi.lu@mediatek.com>
 References: <20190201083016.25856-1-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -14,87 +14,86 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Owen Chen <owen.chen@mediatek.com>
 
-1. pcwibits: The integer bits of pcw for plls is extend to 8 bits,
-   add a variable to indicate this change and
-   backward-compatible.
-2. fmin: The pll freqency lower-bound is vary from 1GMhz to
-   1.5Ghz, add a variable to indicate platform-dependent.
+PLLs with tuner_en bit, such as APLL1, need to disable
+tuner_en before apply new frequency settings, or the new frequency
+settings (pcw) will not be applied.
+The tuner_en bit will be disabled during changing PLL rate
+and be restored after new settings applied.
+Another minor change is to correct the macro name of pcw change bit
+to CON1_PCW_CHG because PCW_CHG(BIT31) is on CON1.
 
+Fixes: e2f744a82d725 (clk: mediatek: Add MT2712 clock support)
+Cc: <stable@vger.kernel.org>
 Signed-off-by: Owen Chen <owen.chen@mediatek.com>
-Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-Acked-by: Sean Wang <sean.wang@kernel.org>
 ---
- drivers/clk/mediatek/clk-mtk.h |  2 ++
- drivers/clk/mediatek/clk-pll.c | 15 +++++++++++----
- 2 files changed, 13 insertions(+), 4 deletions(-)
+ drivers/clk/mediatek/clk-pll.c | 33 +++++++++++++++++++++++++++++++--
+ 1 file changed, 31 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-index f83c2bbb677e..11b5517903d0 100644
---- a/drivers/clk/mediatek/clk-mtk.h
-+++ b/drivers/clk/mediatek/clk-mtk.h
-@@ -214,8 +214,10 @@ struct mtk_pll_data {
- 	unsigned int flags;
- 	const struct clk_ops *ops;
- 	u32 rst_bar_mask;
-+	unsigned long fmin;
- 	unsigned long fmax;
- 	int pcwbits;
-+	int pcwibits;
- 	uint32_t pcw_reg;
- 	int pcw_shift;
- 	const struct mtk_pll_div_table *div_table;
 diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-index f0ff5f535c7e..cf444031bdfb 100644
+index f54e4015b0b1..f0ff5f535c7e 100644
 --- a/drivers/clk/mediatek/clk-pll.c
 +++ b/drivers/clk/mediatek/clk-pll.c
-@@ -32,6 +32,8 @@
+@@ -27,7 +27,7 @@
+ #define CON0_BASE_EN		BIT(0)
+ #define CON0_PWR_ON		BIT(0)
+ #define CON0_ISO_EN		BIT(1)
+-#define CON0_PCW_CHG		BIT(31)
++#define CON1_PCW_CHG		BIT(31)
+ 
  #define AUDPLL_TUNER_EN		BIT(31)
  
- #define POSTDIV_MASK		0x7
+@@ -93,9 +93,31 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
+ {
+ 	u32 con1, val;
+ 	int pll_en;
++	u32 tuner_en = 0;
++	u32 tuner_en_mask;
++	void __iomem *tuner_en_addr = NULL;
+ 
+ 	pll_en = readl(pll->base_addr + REG_CON0) & CON0_BASE_EN;
+ 
++	/* disable tuner */
++	if (pll->tuner_en_addr) {
++		tuner_en_addr = pll->tuner_en_addr;
++		tuner_en_mask = BIT(pll->data->tuner_en_bit);
++	} else if (pll->tuner_addr) {
++		tuner_en_addr = pll->tuner_addr;
++		tuner_en_mask = AUDPLL_TUNER_EN;
++	}
 +
-+/* default 7 bits integer, can be overridden with pcwibits. */
- #define INTEGER_BITS		7
++	if (tuner_en_addr) {
++		val = readl(tuner_en_addr);
++		tuner_en = val & tuner_en_mask;
++
++		if (tuner_en) {
++			val &= ~tuner_en_mask;
++			writel(val, tuner_en_addr);
++		}
++	}
++
+ 	/* set postdiv */
+ 	val = readl(pll->pd_addr);
+ 	val &= ~(POSTDIV_MASK << pll->data->pd_shift);
+@@ -116,12 +138,19 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
+ 	con1 = readl(pll->base_addr + REG_CON1);
  
- /*
-@@ -68,12 +70,15 @@ static unsigned long __mtk_pll_recalc_rate(struct mtk_clk_pll *pll, u32 fin,
- 		u32 pcw, int postdiv)
- {
- 	int pcwbits = pll->data->pcwbits;
--	int pcwfbits;
-+	int pcwfbits = 0;
-+	int ibits;
- 	u64 vco;
- 	u8 c = 0;
+ 	if (pll_en)
+-		con1 |= CON0_PCW_CHG;
++		con1 |= CON1_PCW_CHG;
  
- 	/* The fractional part of the PLL divider. */
--	pcwfbits = pcwbits > INTEGER_BITS ? pcwbits - INTEGER_BITS : 0;
-+	ibits = pll->data->pcwibits ? pll->data->pcwibits : INTEGER_BITS;
-+	if (pcwbits > ibits)
-+		pcwfbits = pcwbits - ibits;
+ 	writel(con1, pll->base_addr + REG_CON1);
+ 	if (pll->tuner_addr)
+ 		writel(con1 + 1, pll->tuner_addr);
  
- 	vco = (u64)fin * pcw;
- 
-@@ -167,9 +172,10 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
- static void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
- 		u32 freq, u32 fin)
- {
--	unsigned long fmin = 1000 * MHZ;
-+	unsigned long fmin = pll->data->fmin ? pll->data->fmin : (1000 * MHZ);
- 	const struct mtk_pll_div_table *div_table = pll->data->div_table;
- 	u64 _pcw;
-+	int ibits;
- 	u32 val;
- 
- 	if (freq > pll->data->fmax)
-@@ -193,7 +199,8 @@ static void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
- 	}
- 
- 	/* _pcw = freq * postdiv / fin * 2^pcwfbits */
--	_pcw = ((u64)freq << val) << (pll->data->pcwbits - INTEGER_BITS);
-+	ibits = pll->data->pcwibits ? pll->data->pcwibits : INTEGER_BITS;
-+	_pcw = ((u64)freq << val) << (pll->data->pcwbits - ibits);
- 	do_div(_pcw, fin);
- 
- 	*pcw = (u32)_pcw;
++	/* restore tuner_en */
++	if (tuner_en_addr && tuner_en) {
++		val = readl(tuner_en_addr);
++		val |= tuner_en_mask;
++		writel(val, tuner_en_addr);
++	}
++
+ 	if (pll_en)
+ 		udelay(20);
+ }
 -- 
 2.18.0
