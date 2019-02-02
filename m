@@ -1,410 +1,1024 @@
 From: Matthias Kaehlcke <mka@chromium.org>
-Subject: Re: [PATCH 3/3] devfreq: add mediatek cci devfreq
-Date: Fri, 1 Feb 2019 12:13:38 -0800
-Message-ID: <20190201201338.GS81583@google.com>
-References: <1548743704-16821-1-git-send-email-andrew-sh.cheng@mediatek.com>
- <1548743704-16821-4-git-send-email-andrew-sh.cheng@mediatek.com>
+Subject: Re: [PATCH v4 2/6] remoteproc/mediatek: add SCP support for mt8183
+Date: Fri, 1 Feb 2019 17:03:46 -0800
+Message-ID: <20190202010346.GA117604@google.com>
+References: <20190131093131.245531-1-pihsun@chromium.org>
+ <20190131093131.245531-3-pihsun@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1548743704-16821-4-git-send-email-andrew-sh.cheng@mediatek.com>
+In-Reply-To: <20190131093131.245531-3-pihsun@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Andrew-sh Cheng <andrew-sh.cheng@mediatek.com>
-Cc: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, fan.chen@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: Pi-Hsun Shih <pihsun@chromium.org>
+Cc: Erin Lo <erin.lo@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Ohad Ben-Cohen <ohad@wizery.com>, Bjorn Andersson <bjorn.andersson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, open list <linux-kernel@vger.kernel.org>, "open list:REMOTE PROCESSOR (REMOTEPROC) SUBSYSTEM" <linux-remoteproc@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Andrew,
+Hi Pi-Hsun Shih,
 
-On Tue, Jan 29, 2019 at 02:35:04PM +0800, Andrew-sh Cheng wrote:
-> From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
+[excuses if you receive this mail twice, mutt garbled up the headers
+and it didn't make it to all recipients/lists]
 
-the 'From' tag is only needed when you send patches not authored by
-yourself. It doesn't do any harm either, but you can drop it in future
-submissions.
+a few comments inline.
 
-> For big/little cpu cluster architecture,
-> not only CPU frequency, but CCI frequency will also affect performance.
+It's the first time I dabble into remoteproc, I don't claim to have a
+complete understanding of the driver at this point ;-)
 
-This doesn't provide much information, I suggest to drop it unless
-others find it valuable.
-
-> Little cores and cci share the same buck in Mediatek mt8183 IC,
-> so we add a CCI devfreq which will get notification when buck voltage
-> is changed, then CCI devfreq can set cci frequency as high as
-> possible.
-
-Possible alternative:
-
-"This adds a devfreq driver for the Cache Coherent Interconnect (CCI)
-of the Mediatek MT8183.
-
-On the MT8183 the CCI is supplied by the same regulator as the LITTLE
-cores. The driver is notified when the regulator voltage changes
-(driven by cpufreq) and adjusts the CCI frequency to the maximum
-possible value."
-
-Feel free to ignore or to adjust.
-
-> Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
-> ---
->  drivers/devfreq/Kconfig              |   9 ++
->  drivers/devfreq/Makefile             |   1 +
->  drivers/devfreq/mt8183-cci-devfreq.c | 224 +++++++++++++++++++++++++++++++++++
->  3 files changed, 234 insertions(+)
->  create mode 100644 drivers/devfreq/mt8183-cci-devfreq.c
+On Thu, Jan 31, 2019 at 05:31:27PM +0800, Pi-Hsun Shih wrote:
+> From: Erin Lo <erin.lo@mediatek.com>
 > 
-> diff --git a/drivers/devfreq/Kconfig b/drivers/devfreq/Kconfig
-> index 6a172d3..0b14aab 100644
-> --- a/drivers/devfreq/Kconfig
-> +++ b/drivers/devfreq/Kconfig
-> @@ -113,6 +113,15 @@ config ARM_RK3399_DMC_DEVFREQ
->            It sets the frequency for the memory controller and reads the usage counts
->            from hardware.
+> Provide a basic driver to control Cortex M4 co-processor
+> 
+> Signed-off-by: Erin Lo <erin.lo@mediatek.com>
+> Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
+> ---
+> Changes from v3:
+>  - Fix some issue found by checkpatch.
+>  - Make writes aligned in scp_ipi_send.
+> 
+> Changes from v2:
+>  - Squash patch 3 from v2 (separate the ipi interface) into this patch.
+>  - Remove unused name argument from scp_ipi_register.
+>  - Add scp_ipi_unregister for proper cleanup.
+>  - Move IPI ids in sync with firmware.
+>  - Add mb() in proper place, and correctly clear the run->signaled.
+> 
+> Changes from v1:
+>  - Extract functions and rename variables in mtk_scp.c.
+> ---
+>  drivers/remoteproc/Kconfig            |   9 +
+>  drivers/remoteproc/Makefile           |   1 +
+>  drivers/remoteproc/mtk_common.h       |  73 +++++
+>  drivers/remoteproc/mtk_scp.c          | 441 ++++++++++++++++++++++++++
+>  drivers/remoteproc/mtk_scp_ipi.c      | 157 +++++++++
+>  include/linux/platform_data/mtk_scp.h | 135 ++++++++
+>  6 files changed, 816 insertions(+)
+>  create mode 100644 drivers/remoteproc/mtk_common.h
+>  create mode 100644 drivers/remoteproc/mtk_scp.c
+>  create mode 100644 drivers/remoteproc/mtk_scp_ipi.c
+>  create mode 100644 include/linux/platform_data/mtk_scp.h
+> 
+> diff --git a/drivers/remoteproc/Kconfig b/drivers/remoteproc/Kconfig
+> index f0abd260804473..ee0bda23768938 100644
+> --- a/drivers/remoteproc/Kconfig
+> +++ b/drivers/remoteproc/Kconfig
+> @@ -22,6 +22,15 @@ config IMX_REMOTEPROC
 >  
-> +config ARM_MT8183_CCI_DEVFREQ
-> +	tristate "MT8183 CCI DEVFREQ Driver"
-> +	depends on ARM_MEDIATEK_CPUFREQ
-> +	help
-> +		This adds devfreq for cci clock
+>  	  It's safe to say N here.
+>  
+> +config MTK_SCP
+> +        tristate "Mediatek SCP support"
+> +        depends on ARCH_MEDIATEK
+> +        help
+> +          Say y here to support Mediatek's SCP (Cortex M4
+> +          on MT8183) via the remote processor framework.
 
-"This adds a devfreq driver for the Cache Coherent Interconnect (CCI)
-of the Mediatek MT8183"?
+It would be good to spell out SCP somewhere, e.g.
 
-> +		which is shared the same regulator with cpu cluster.
-> +		It can track buck voltage and update a proper cci frequency.
-> +		Use notification to get regulator status.
+"... support Mediatek's system companion processor (SCP) via ..."
 
-not sure how important this info is here, sounds more like an
-implementation detail to me.
+the example is less important IMO, though it's prefectly fine if you
+can still squeeze it in ;-)
 
 > +
->  source "drivers/devfreq/event/Kconfig"
->  
->  endif # PM_DEVFREQ
-> diff --git a/drivers/devfreq/Makefile b/drivers/devfreq/Makefile
-> index 32b8d4d..25afe8c 100644
-> --- a/drivers/devfreq/Makefile
-> +++ b/drivers/devfreq/Makefile
-> @@ -11,6 +11,7 @@ obj-$(CONFIG_DEVFREQ_GOV_PASSIVE)	+= governor_passive.o
->  obj-$(CONFIG_ARM_EXYNOS_BUS_DEVFREQ)	+= exynos-bus.o
->  obj-$(CONFIG_ARM_RK3399_DMC_DEVFREQ)	+= rk3399_dmc.o
->  obj-$(CONFIG_ARM_TEGRA_DEVFREQ)		+= tegra-devfreq.o
-> +obj-$(CONFIG_ARM_MT8183_CCI_DEVFREQ)	+= mt8183-cci-devfreq.o
->  
->  # DEVFREQ Event Drivers
->  obj-$(CONFIG_PM_DEVFREQ_EVENT)		+= event/
-> diff --git a/drivers/devfreq/mt8183-cci-devfreq.c b/drivers/devfreq/mt8183-cci-devfreq.c
+> +          It's safe to say N here.
+> +
+>  config OMAP_REMOTEPROC
+>  	tristate "OMAP remoteproc support"
+>  	depends on ARCH_OMAP4 || SOC_OMAP5
+> diff --git a/drivers/remoteproc/Makefile b/drivers/remoteproc/Makefile
+> index ce5d061e92be52..16b3e5e7a81c8e 100644
+> --- a/drivers/remoteproc/Makefile
+> +++ b/drivers/remoteproc/Makefile
+> @@ -10,6 +10,7 @@ remoteproc-y				+= remoteproc_sysfs.o
+>  remoteproc-y				+= remoteproc_virtio.o
+>  remoteproc-y				+= remoteproc_elf_loader.o
+>  obj-$(CONFIG_IMX_REMOTEPROC)		+= imx_rproc.o
+> +obj-$(CONFIG_MTK_SCP)			+= mtk_scp.o mtk_scp_ipi.o
+>  obj-$(CONFIG_OMAP_REMOTEPROC)		+= omap_remoteproc.o
+>  obj-$(CONFIG_WKUP_M3_RPROC)		+= wkup_m3_rproc.o
+>  obj-$(CONFIG_DA8XX_REMOTEPROC)		+= da8xx_remoteproc.o
+> diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
 > new file mode 100644
-> index 0000000..4837892
+> index 00000000000000..162798c44ad7f1
 > --- /dev/null
-> +++ b/drivers/devfreq/mt8183-cci-devfreq.c
-> @@ -0,0 +1,224 @@
+> +++ b/drivers/remoteproc/mtk_common.h
+> @@ -0,0 +1,73 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * Copyright (c) 2018 MediaTek Inc.
+> + */
+> +
+> +#ifndef __RPROC_MTK_COMMON_H
+> +#define __RPROC_MTK_COMMON_H
+> +
+> +#include <linux/interrupt.h>
+> +#include <linux/kernel.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/remoteproc.h>
+> +
+> +#define MT8183_SW_RSTN			0x0
+> +#define MT8183_SW_RSTN_BIT		BIT(0)
+> +#define MT8183_SCP_TO_HOST		0x1C
+> +#define MT8183_SCP_IPC_INT_BIT		BIT(0)
+> +#define MT8183_SCP_WDT_INT_BIT		BIT(8)
+> +#define MT8183_HOST_TO_SCP		0x28
+> +#define MT8183_HOST_IPC_INT_BIT		BIT(0)
+> +#define MT8183_SCP_SRAM_PDN		0x402C
+> +
+> +#define SCP_FW_VER_LEN		32
+> +
+> +struct scp_run {
+> +	u32 signaled;
+> +	s8 fw_ver[SCP_FW_VER_LEN];
+> +	u32 dec_capability;
+> +	u32 enc_capability;
+> +	wait_queue_head_t wq;
+> +};
+> +
+> +struct scp_ipi_desc {
+> +	scp_ipi_handler_t handler;
+> +	void *priv;
+> +};
+> +
+> +struct mtk_scp {
+> +	struct device *dev;
+> +	struct rproc *rproc;
+> +	struct clk *clk;
+> +	void __iomem *reg_base;
+> +	void __iomem *sram_base;
+> +	size_t sram_size;
+> +
+> +	struct share_obj *recv_buf;
+> +	struct share_obj *send_buf;
+> +	struct scp_run run;
+> +	struct mutex scp_mutex; /* for protecting mtk_scp data structure */
+
+nit: the scp_ prefix in the name is a bit redundant, maybe just call
+it 'lock'?
+
+> +	struct scp_ipi_desc ipi_desc[SCP_IPI_MAX];
+> +	bool ipi_id_ack[SCP_IPI_MAX];
+> +	wait_queue_head_t ack_wq;
+> +
+> +	void __iomem *cpu_addr;
+> +	phys_addr_t phys_addr;
+> +	size_t dram_size;
+> +};
+> +
+> +/**
+> + * struct share_obj - SRAM buffer shared with
+> + *		      AP and SCP
+> + *
+> + * @id:		IPI id
+> + * @len:	share buffer length
+> + * @share_buf:	share buffer data
+> + */
+> +struct share_obj {
+> +	s32 id;
+> +	u32 len;
+> +	u8 share_buf[288];
+> +};
+> +
+> +#endif
+> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+> new file mode 100644
+> index 00000000000000..920c81c3525c2a
+> --- /dev/null
+> +++ b/drivers/remoteproc/mtk_scp.c
+> @@ -0,0 +1,441 @@
 > +// SPDX-License-Identifier: GPL-2.0
 > +//
 > +// Copyright (c) 2018 MediaTek Inc.
-
-2019 :)
-
-> +#include <linux/cpu.h>
-> +#include <linux/cpufreq.h>
-> +#include <linux/devfreq.h>
+> +
+> +#include <asm/barrier.h>
+> +#include <linux/clk.h>
+> +#include <linux/err.h>
+> +#include <linux/interrupt.h>
+> +#include <linux/kernel.h>
 > +#include <linux/module.h>
-> +#include <linux/of.h>
+> +#include <linux/of_address.h>
+> +#include <linux/of_platform.h>
+> +#include <linux/platform_data/mtk_scp.h>
 > +#include <linux/platform_device.h>
-> +#include <linux/regulator/consumer.h>
+> +#include <linux/remoteproc.h>
 > +
-> +#include "governor.h"
+> +#include "mtk_common.h"
+> +#include "remoteproc_internal.h"
 > +
-> +struct cci_devfreq_data {
-
-nit: consider dropping the '_data' suffix, it doesn't add much/any
-value.
-
-> +	struct devfreq		*devfreq;
-> +	struct regulator	*proc_reg;
-> +	struct clk		*cci_clk;
-> +	unsigned long		buck_volt;
-
-proc_reg_uV?
-
-place after proc_reg
-
-> +	int			volt_increasing;
-
-should be bool
-
-actually, is it really needed? See comment in cci_devfreq_regulator_notifier()
-
-> +	struct notifier_block	nb;
-> +};
+> +#define MAX_CODE_SIZE 0x500000
 > +
-> +static int mtk_cci_governor_get_target(struct devfreq *devfreq,
-> +				       unsigned long *freq)
+> +struct platform_device *scp_get_plat_device(struct platform_device *pdev)
+
+nit: _get_pdev()?
+
+plat_device is a custom abbreviation, pdev is commonly understood.
+
 > +{
-> +	struct cci_devfreq_data *cci_devdata;
-
-nit: consider calling it 'cci_df' (here and elsewhere). In the context
-the abbreviation is clear and there is less clutter when accessing
-fields in the structure.
-
-> +	int	i, opp_count;
-> +	struct dev_pm_opp	*opp;
-> +	unsigned long	opp_rate, opp_voltage;
+> +	struct device *dev = &pdev->dev;
+> +	struct device_node *scp_node;
+> +	struct platform_device *scp_pdev;
 > +
-> +	cci_devdata = dev_get_drvdata(devfreq->dev.parent);
-> +
-> +	/* find available frequency */
-> +	opp_count = dev_pm_opp_get_opp_count(devfreq->dev.parent);
-> +	for (i = 0, opp_rate = ULONG_MAX; i < opp_count; i++, opp_rate--) {
-> +		opp = dev_pm_opp_find_freq_floor(devfreq->dev.parent,
-> +						 &opp_rate);
-> +		opp_voltage = dev_pm_opp_get_voltage(opp);
-> +		dev_pm_opp_put(opp);
-> +
-> +		if (opp_voltage <= cci_devdata->buck_volt)
-> +			break;
-> +	}
-> +	*freq = opp_rate;
-> +
-> +	return 0;
-> +}
-> +
-> +static int mtk_cci_governor_event_handler(struct devfreq *devfreq,
-> +					  unsigned int event, void *data)
-> +{
-> +	return 0;
-> +}
-> +
-> +static struct devfreq_governor mtk_cci_devfreq_governor = {
-> +	.name = "voltage_monitor",
-
-"mtk_cci_vmon" or similar?
-
-> +	.get_target_freq = mtk_cci_governor_get_target,
-> +	.event_handler = mtk_cci_governor_event_handler,
-> +};
-> +
-> +static int mtk_cci_devfreq_target(struct device *dev, unsigned long *freq,
-> +				  u32 flags)
-> +{
-> +	struct cci_devfreq_data *cci_devdata;
-> +
-> +	cci_devdata = dev_get_drvdata(dev);
-> +
-> +	clk_set_rate(cci_devdata->cci_clk, *freq);
-> +
-> +	return 0;
-> +}
-> +
-> +static struct devfreq_dev_profile cci_devfreq_profile = {
-> +	.polling_ms	= 0,
-> +	.target		= mtk_cci_devfreq_target,
-> +};
-> +
-> +static int cci_devfreq_regulator_notifier(struct notifier_block *nb,
-> +					  unsigned long val, void *data)
-> +{
-> +	struct cci_devfreq_data *cci_devdata =
-> +		container_of(nb, struct cci_devfreq_data, nb);
-> +
-> +	/* deal with reduce frequency */
-> +	if (val & REGULATOR_EVENT_PRE_VOLTAGE_CHANGE) {
-> +		struct pre_voltage_change_data *pvc_data = data;
-> +
-> +		if (pvc_data->old_uV > pvc_data->min_uV) {
-
-I would suggest to invert the condition. For humans it is easier to
-parse "is the new voltage smaller than the previous one", than
-viceversa.
-
-> +			cci_devdata->volt_increasing = 0;
-> +			cci_devdata->buck_volt =
-> +				(unsigned long)(pvc_data->min_uV);
-> +			mutex_lock(&cci_devdata->devfreq->lock);
-> +			update_devfreq(cci_devdata->devfreq);
-> +			mutex_unlock(&cci_devdata->devfreq->lock);
-> +		} else {
-> +			cci_devdata->volt_increasing = 1;
-> +		}
-> +	}
-
-nit: add empty line
-
-> +	/* deal with abort reduce frequency */
-
-Shouldn't this be "abort voltage change?". If so I suggest to drop the
-comment, REGULATOR_EVENT_ABORT_VOLTAGE_CHANGE in the condition makes
-it clear.
-
-> +	if ((val & REGULATOR_EVENT_ABORT_VOLTAGE_CHANGE) ||
-> +	    /* deal with increase frequency */
-> +	    ((val & REGULATOR_EVENT_VOLTAGE_CHANGE) &&
-> +	     cci_devdata->volt_increasing == 1)) {
-
-to check for a voltage increase you could use 'cci_devdata->buck_volt
-< (unsigned long)data' instead of ->volt_increasing.
-
-> +		cci_devdata->buck_volt = (unsigned long)data;
-> +		mutex_lock(&cci_devdata->devfreq->lock);
-> +		update_devfreq(cci_devdata->devfreq);
-> +		mutex_unlock(&cci_devdata->devfreq->lock);
+> +	scp_node = of_parse_phandle(dev->of_node, "mediatek,scp", 0);
+> +	if (!scp_node) {
+> +		dev_err(dev, "can't get scp node\n");
+> +		return NULL;
 > +	}
 > +
+> +	scp_pdev = of_find_device_by_node(scp_node);
+> +	if (WARN_ON(!scp_pdev)) {
+> +		dev_err(dev, "scp pdev failed\n");
+
+nit: use uppercase for acronyms (SCP, IPI, ...) in messages and comments?
+
+> +		of_node_put(scp_node);
+> +		return NULL;
+> +	}
+> +
+> +	return scp_pdev;
+> +}
+> +EXPORT_SYMBOL_GPL(scp_get_plat_device);
+> +
+> +static void scp_wdt_handler(struct mtk_scp *scp)
+> +{
+> +	rproc_report_crash(scp->rproc, RPROC_WATCHDOG);
+> +}
+> +
+> +static void scp_init_ipi_handler(void *data, unsigned int len, void *priv)
+> +{
+> +	struct mtk_scp *scp = (struct mtk_scp *)priv;
+> +	struct scp_run *run = (struct scp_run *)data;
+> +
+> +	scp->run.signaled = run->signaled;
+> +	strncpy(scp->run.fw_ver, run->fw_ver, SCP_FW_VER_LEN);
+> +	scp->run.dec_capability = run->dec_capability;
+> +	scp->run.enc_capability = run->enc_capability;
+> +	wake_up_interruptible(&scp->run.wq);
+> +}
+> +
+> +static void scp_ipi_handler(struct mtk_scp *scp)
+> +{
+> +	struct share_obj *rcv_obj = scp->recv_buf;
+> +	struct scp_ipi_desc *ipi_desc = scp->ipi_desc;
+> +	u8 tmp_data[288];
+> +
+> +	if (rcv_obj->id < SCP_IPI_MAX && ipi_desc[rcv_obj->id].handler) {
+> +		memcpy_fromio(tmp_data, &rcv_obj->share_buf, rcv_obj->len);
+> +		ipi_desc[rcv_obj->id].handler(&tmp_data[0],
+> +					      rcv_obj->len,
+> +					      ipi_desc[rcv_obj->id].priv);
+> +		scp->ipi_id_ack[rcv_obj->id] = true;
+> +		wake_up(&scp->ack_wq);
+> +	} else {
+> +		dev_err(scp->dev, "No such ipi id = %d\n", rcv_obj->id);
+> +	}
+
+You could consider to change this to:
+
+        if (rcv_obj->id >= SCP_IPI_MAX || !ipi_desc[rcv_obj->id].handler) {
+                dev_err(scp->dev, "No such ipi id = %d\n", rcv_obj->id);
+                return;
+        }
+
+        memcpy_fromio(tmp_data, &rcv_obj->share_buf, rcv_obj->len);
+        ...
+
+Feel free to leave as is if you prefer.
+
+> +}
+> +
+> +static int scp_ipi_init(struct mtk_scp *scp)
+> +{
+> +	size_t send_offset = 0x800 - sizeof(struct share_obj);
+
+should there be a define for 0x800?
+
+> +	size_t recv_offset = send_offset - sizeof(struct share_obj);
+> +
+> +	/* Disable SCP to host interrupt */
+> +	writel(MT8183_SCP_IPC_INT_BIT, scp->reg_base + MT8183_SCP_TO_HOST);
+> +
+> +	/* shared buffer initialization */
+> +	scp->recv_buf = (__force struct share_obj *)(scp->sram_base +
+> +						recv_offset);
+> +	scp->send_buf = (__force struct share_obj *)(scp->sram_base +
+> +						send_offset);
+> +	memset_io(scp->recv_buf, 0, sizeof(scp->recv_buf));
+> +	memset_io(scp->send_buf, 0, sizeof(scp->send_buf));
+> +
 > +	return 0;
 > +}
 > +
-> +static int mtk_cci_devfreq_probe(struct platform_device *pdev)
+> +static void mtk_scp_reset_assert(const struct mtk_scp *scp)
 > +{
-> +	struct device *cci_dev = &pdev->dev;
-> +	struct cci_devfreq_data *cci_devdata;
-> +	struct notifier_block *nb;
+> +	u32 val;
+> +
+> +	val = readl(scp->reg_base + MT8183_SW_RSTN);
+> +	val &= ~MT8183_SW_RSTN_BIT;
+> +	writel(val, scp->reg_base + MT8183_SW_RSTN);
+> +}
+> +
+> +static void mtk_scp_reset_deassert(const struct mtk_scp *scp)
+> +{
+> +	u32 val;
+> +
+> +	val = readl(scp->reg_base + MT8183_SW_RSTN);
+> +	val |= MT8183_SW_RSTN_BIT;
+> +	writel(val, scp->reg_base + MT8183_SW_RSTN);
+> +}
+> +
+> +static irqreturn_t scp_irq_handler(int irq, void *priv)
+
+nit: some function use the prefix 'scp_' others 'mtk_scp_', I couldn't
+identify a clear pattern. Should we just stick to a single prefix? I
+don't have a strong opinion on which, 'scp_' should be good for static
+functions, you might want to add 'mtk_' to global ones to avoid
+possible clashes in the future.
+
+> +{
+> +	struct mtk_scp *scp = priv;
+> +	u32 scp_to_host;
+> +
+> +	scp_to_host = readl(scp->reg_base + MT8183_SCP_TO_HOST);
+> +	if (scp_to_host & MT8183_SCP_IPC_INT_BIT) {
+> +		scp_ipi_handler(scp);
+> +	} else {
+> +		dev_err(scp->dev, "scp watchdog timeout! 0x%x", scp_to_host);
+> +		scp_wdt_handler(scp);
+> +	}
+> +
+> +	/*
+> +	 * Ensure that all write to SRAM are committed before another
+
+s/write/writes/
+
+> +	 * interrupt.
+> +	 */
+> +	mb();
+> +	/* SCP won't send another interrupt until we set SCP_TO_HOST to 0. */
+> +	writel(MT8183_SCP_IPC_INT_BIT | MT8183_SCP_WDT_INT_BIT,
+> +	       scp->reg_base + MT8183_SCP_TO_HOST);
+> +
+> +	return IRQ_HANDLED;
+> +}
+> +
+> +static int mtk_scp_load(struct rproc *rproc, const struct firmware *fw)
+> +{
+> +	const struct mtk_scp *scp = rproc->priv;
+> +	struct device *dev = scp->dev;
 > +	int ret;
 > +
-> +	dev_pm_opp_of_add_table(&pdev->dev);
+> +	/* Hold SCP in reset while loading FW. */
+> +	mtk_scp_reset_assert(scp);
 > +
-> +	cci_devdata = devm_kzalloc(cci_dev, sizeof(*cci_devdata), GFP_KERNEL);
-> +	if (!cci_devdata)
-> +		return -ENOMEM;
-> +	nb = &cci_devdata->nb;
-> +	cci_devdata->cci_clk = ERR_PTR(-ENODEV);
-
-initialization not needed, the field is assigned a few lines below.
-
-> +	cci_devdata->proc_reg = ERR_PTR(-ENODEV);
-
-also not really needed with the right gotos in place
-
-> +
-> +	cci_devdata->cci_clk = clk_get(cci_dev, "cci_clock");
-> +	ret = PTR_ERR_OR_ZERO(cci_devdata->cci_clk);
+> +	ret = clk_prepare_enable(scp->clk);
 > +	if (ret) {
-> +		if (ret == -EPROBE_DEFER)
-> +			pr_err("cci clock not ready, retry\n");
-> +		else
-> +			pr_err("no clock for cci: %d\n", ret);
-> +
-> +		goto out_free_resources;
+> +		dev_err(dev, "failed to enable clocks\n");
 
-nothing to be freed here, just return ret.
+should this deassert the reset to leave things as they were?
 
-> +	}
-> +
-> +	cci_devdata->proc_reg = regulator_get_optional(cci_dev, "proc");
-> +	ret = PTR_ERR_OR_ZERO(cci_devdata->proc_reg);
-> +	if (ret) {
-> +		if (ret == -EPROBE_DEFER)
-> +			pr_err("cci regulator not ready, retry\n");
-> +		else
-> +			pr_err("no regulator for cci: %d\n", ret);
-> +
-> +		goto out_free_resources;
-> +	}
-> +
-> +	platform_set_drvdata(pdev, cci_devdata);
-> +
-> +	/* create cci_devfreq and add to cci device.
-> +	 * governor is voltage_monitor.
-> +	 * governor will get platform_device data to make decision.
-> +	 */
-> +	cci_devdata->devfreq = devm_devfreq_add_device(cci_dev,
-> +						       &cci_devfreq_profile,
-> +						       "voltage_monitor",
-
-adjust name in case you follow my suggestion above.
-
-check cci_devdata->devfreq for errors.
-
-> +						       NULL);
-> +
-> +	nb->notifier_call = cci_devfreq_regulator_notifier;
-> +	regulator_register_notifier(cci_devdata->proc_reg,
-> +				    nb);
-> +
-> +	return 0;
-> +
-> +out_free_resources:
-> +	if (!IS_ERR(cci_devdata->cci_clk))
-> +		clk_put(cci_devdata->cci_clk);
-> +	if (!IS_ERR(cci_devdata->proc_reg))
-> +		regulator_put(cci_devdata->proc_reg);
-
-use individual labels and get rid of the IS_ERRs.
-
-e.g.
-
-err_put_reg:
-	regulator_put(cci_devdata->proc_reg);
-
-err_put_clk:
-	clk_put(cci_devdata->cci_clk);
-
-
-and jump to the corresponding lable above.
-
-> +
-> +	return ret;
-> +}
-> +
-> +static const struct of_device_id mediatek_cci_devfreq_of_match[] = {
-> +	{ .compatible = "mediatek,mt8183-cci" },
-> +	{ },
-> +};
-> +MODULE_DEVICE_TABLE(of, mediatek_cci_devfreq_of_match);
-> +
-> +static struct platform_driver cci_devfreq_driver = {
-> +	.probe	= mtk_cci_devfreq_probe,
-> +	.driver = {
-> +		.name = "mediatek-cci-devfreq",
-> +		.of_match_table = mediatek_cci_devfreq_of_match,
-> +	},
-> +};
-> +
-> +static int __init mtk_cci_devfreq_init(void)
-> +{
-> +	int ret = 0;
-
-initialization not needed
-
-> +
-> +	ret = devfreq_add_governor(&mtk_cci_devfreq_governor);
-> +	if (ret) {
-> +		pr_err("%s: failed to add governor: %d\n", __func__, ret);
 > +		return ret;
 > +	}
 > +
-> +	ret = platform_driver_register(&cci_devfreq_driver);
+> +	writel(0x0, scp->reg_base + MT8183_SCP_SRAM_PDN);
+
+what is the purpose of this write?
+
+> +
+> +	memcpy(scp->sram_base, fw->data, fw->size);
+> +	return ret;
+> +}
+> +
+> +static int mtk_scp_start(struct rproc *rproc)
+> +{
+> +	struct mtk_scp *scp = (struct mtk_scp *)rproc->priv;
+> +	struct device *dev = scp->dev;
+> +	struct scp_run *run;
+> +	int ret;
+> +
+> +	ret = clk_prepare_enable(scp->clk);
+> +	if (ret) {
+> +		dev_err(dev, "failed to enable clocks\n");
+> +		return ret;
+> +	}
+> +
+> +	run = &scp->run;
+> +	run->signaled = false;
+> +
+> +	mtk_scp_reset_deassert(scp);
+> +
+> +	ret = wait_event_interruptible_timeout(
+> +					run->wq,
+> +					run->signaled,
+> +					msecs_to_jiffies(2000));
+> +
+> +	if (ret == 0) {
+> +		dev_err(dev, "wait scp initialization timeout!\n");
+> +		ret = -ETIME;
+> +		goto stop;
+> +	}
+> +	if (ret == -ERESTARTSYS) {
+> +		dev_err(dev, "wait scp interrupted by a signal!\n");
+> +		goto stop;
+> +	}
+> +	dev_info(dev, "scp is ready. Fw version %s\n", run->fw_ver);
+
+s/Fw/FW/
+
+> +
+> +	return 0;
+> +
+> +stop:
+> +	mtk_scp_reset_assert(scp);
+> +	clk_disable_unprepare(scp->clk);
+> +	return ret;
+> +}
+> +
+> +static void *mtk_scp_da_to_va(struct rproc *rproc, u64 da, int len)
+> +{
+> +	struct mtk_scp *scp = (struct mtk_scp *)rproc->priv;
+> +	int offset;
+> +
+> +	if (da < scp->sram_size) {
+> +		offset = da;
+> +		if (offset >= 0 && ((offset + len) < scp->sram_size))
+> +			return (__force void *)(scp->sram_base + offset);
+> +	} else if (da >= scp->sram_size &&
+> +		   da < (scp->sram_size + MAX_CODE_SIZE)) {
+> +		offset = da - scp->sram_size;
+> +		if (offset >= 0 && (offset + len) < MAX_CODE_SIZE)
+> +			return scp->cpu_addr + offset;
+> +	} else {
+> +		offset = da - scp->phys_addr;
+> +		if (offset >= 0 &&
+> +		    (offset + len) < (scp->dram_size - MAX_CODE_SIZE))
+> +			return scp->cpu_addr + offset;
+> +	}
+> +
+> +	return NULL;
+> +}
+> +
+> +static int mtk_scp_stop(struct rproc *rproc)
+> +{
+> +	struct mtk_scp *scp = (struct mtk_scp *)rproc->priv;
+> +
+> +	mtk_scp_reset_assert(scp);
+> +	clk_disable_unprepare(scp->clk);
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct rproc_ops mtk_scp_ops = {
+> +	.start		= mtk_scp_start,
+> +	.stop		= mtk_scp_stop,
+> +	.load		= mtk_scp_load,
+> +	.da_to_va	= mtk_scp_da_to_va,
+> +};
+> +
+> +unsigned int scp_get_vdec_hw_capa(struct platform_device *pdev)
+> +{
+> +	struct mtk_scp *scp = platform_get_drvdata(pdev);
+> +
+> +	return scp->run.dec_capability;
+> +}
+> +EXPORT_SYMBOL_GPL(scp_get_vdec_hw_capa);
+> +
+> +unsigned int scp_get_venc_hw_capa(struct platform_device *pdev)
+> +{
+> +	struct mtk_scp *scp = platform_get_drvdata(pdev);
+> +
+> +	return scp->run.enc_capability;
+> +}
+> +EXPORT_SYMBOL_GPL(scp_get_venc_hw_capa);
+> +
+> +void *scp_mapping_dm_addr(struct platform_device *pdev, u32 mem_addr)
+> +{
+> +	struct mtk_scp *scp = platform_get_drvdata(pdev);
+> +	void *ptr = NULL;
+
+initialization is unnecessary
+
+> +
+> +	ptr = mtk_scp_da_to_va(scp->rproc, mem_addr, 0);
+> +
+> +	if (ptr)
+> +		return ptr;
+> +	else
+> +		return ERR_PTR(-EINVAL);
+
+possible readability tweak:
+
+        if (!ptr)
+                return ERR_PTR(-EINVAL);
+
+        return ptr;
+
+> +}
+> +EXPORT_SYMBOL_GPL(scp_mapping_dm_addr);
+> +
+> +static int scp_map_memory_region(struct mtk_scp *scp)
+> +{
+> +	struct device_node *node;
+> +	struct resource r;
+> +	int ret;
+> +
+> +	node = of_parse_phandle(scp->dev->of_node, "memory-region", 0);
+> +	if (!node) {
+> +		dev_err(scp->dev, "no memory-region specified\n");
+> +		return -EINVAL;
+> +	}
+> +
+> +	ret = of_address_to_resource(node, 0, &r);
 > +	if (ret)
-> +		devfreq_remove_governor(&mtk_cci_devfreq_governor);
+> +		return ret;
+> +
+> +	scp->phys_addr = r.start;
+> +	scp->dram_size = resource_size(&r);
+> +	scp->cpu_addr =
+> +		devm_ioremap_wc(scp->dev, scp->phys_addr, scp->dram_size);
+> +
+> +	if (!scp->cpu_addr) {
+> +		dev_err(scp->dev, "unable to map memory region: %pa+%zx\n",
+> +			&r.start, scp->dram_size);
+> +		return -EBUSY;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_scp_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct device_node *np = dev->of_node;
+> +	struct mtk_scp *scp;
+> +	struct rproc *rproc;
+> +	struct resource *res;
+> +	char *fw_name = "scp.img";
+> +	int ret;
+> +
+> +	rproc = rproc_alloc(dev,
+> +			    np->name,
+> +			    &mtk_scp_ops,
+> +			    fw_name,
+> +			    sizeof(*scp));
+> +	if (!rproc) {
+> +		dev_err(dev, "unable to allocate remoteproc\n");
+> +		return -ENOMEM;
+> +	}
+> +
+> +	scp = (struct mtk_scp *)rproc->priv;
+> +	scp->rproc = rproc;
+> +	scp->dev = dev;
+> +	platform_set_drvdata(pdev, scp);
+> +
+> +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "sram");
+
+I assume you don't check 'res', since devm_ioremap_resource() will fail
+if it is NULL.
+
+> +	scp->sram_base = devm_ioremap_resource(dev, res);
+> +	scp->sram_size = resource_size(res);
+
+However resource_size() will result in a crash if 'res' is NULL. So you
+either add a check for 'res' or do resource_size() after the check of
+'scp->sram_base' below.
+
+> +	if (IS_ERR((__force void *)scp->sram_base)) {
+> +		dev_err(dev, "Failed to parse and map sram memory\n");
+> +		ret = PTR_ERR((__force void *)scp->sram_base);
+> +		goto free_rproc;
+> +	}
+> +
+> +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "cfg");
+> +	scp->reg_base = devm_ioremap_resource(dev, res);
+> +	if (IS_ERR((__force void *)scp->reg_base)) {
+> +		dev_err(dev, "Failed to parse and map cfg memory\n");
+> +		ret = PTR_ERR((__force void *)scp->reg_base);
+> +		goto free_rproc;
+> +	}
+> +
+> +	ret = scp_map_memory_region(scp);
+> +	if (ret)
+> +		goto free_rproc;
+> +
+> +	scp->clk = devm_clk_get(dev, "main");
+> +	if (IS_ERR(scp->clk)) {
+> +		dev_err(dev, "Failed to get clock\n");
+> +		ret = PTR_ERR(scp->clk);
+> +		goto free_rproc;
+> +	}
+> +
+> +	ret = clk_prepare_enable(scp->clk);
+> +	if (ret) {
+> +		dev_err(dev, "failed to enable clocks\n");
+> +		goto free_rproc;
+> +	}
+> +
+> +	ret = scp_ipi_init(scp);
+> +	clk_disable_unprepare(scp->clk);
+> +	if (ret) {
+> +		dev_err(dev, "Failed to init ipi\n");
+> +		goto free_rproc;
+> +	}
+> +
+> +	/* register scp initialization IPI */
+> +	ret = scp_ipi_register(pdev,
+> +			       SCP_IPI_INIT,
+> +			       scp_init_ipi_handler,
+> +			       scp);
+> +	if (ret) {
+> +		dev_err(dev, "Failed to register IPI_SCP_INIT\n");
+> +		goto free_rproc;
+> +	}
+> +
+> +	ret = devm_request_irq(dev,
+> +			       platform_get_irq(pdev, 0),
+> +			       scp_irq_handler,
+> +			       0,
+> +			       pdev->name,
+> +			       scp);
+
+shouldn't the interrupt be requested after initializing the mutex and
+the waitqueues?
+
+> +
+> +	if (ret) {
+> +		dev_err(dev, "failed to request irq\n");
+> +		goto free_rproc;
+> +	}
+> +
+> +	mutex_init(&scp->scp_mutex);
+> +
+> +	init_waitqueue_head(&scp->run.wq);
+> +	init_waitqueue_head(&scp->ack_wq);
+> +
+> +	ret = rproc_add(rproc);
+> +	if (ret)
+> +		goto destroy_mutex;
+> +
+> +	return ret;
+> +
+> +destroy_mutex:
+> +	mutex_destroy(&scp->scp_mutex);
+> +free_rproc:
+> +	rproc_free(rproc);
 > +
 > +	return ret;
 > +}
-> +module_init(mtk_cci_devfreq_init)
 > +
-> +static void __exit mtk_cci_devfreq_exit(void)
+> +static int mtk_scp_remove(struct platform_device *pdev)
 > +{
-> +	int ret = 0;
-
-initialization not needed
-
-> +	platform_driver_unregister(&cci_devfreq_driver);
+> +	struct mtk_scp *scp = platform_get_drvdata(pdev);
 > +
-> +	ret = devfreq_remove_governor(&mtk_cci_devfreq_governor);
-> +	if (ret)
-> +		pr_err("%s: failed to remove governor: %d\n", __func__, ret);
-
-typically you reverse the order of initialization, i.e. remove the
-governor, then unregister the driver.
-
+> +	rproc_del(scp->rproc);
+> +	rproc_free(scp->rproc);
+> +
+> +	return 0;
 > +}
-> +module_exit(mtk_cci_devfreq_exit)
+> +
+> +static const struct of_device_id mtk_scp_of_match[] = {
+> +	{ .compatible = "mediatek,mt8183-scp"},
+> +	{},
+> +};
+> +MODULE_DEVICE_TABLE(of, mtk_scp_of_match);
+> +
+> +static struct platform_driver mtk_scp_driver = {
+> +	.probe = mtk_scp_probe,
+> +	.remove = mtk_scp_remove,
+> +	.driver = {
+> +		.name = "mtk-scp",
+> +		.of_match_table = of_match_ptr(mtk_scp_of_match),
+> +	},
+> +};
+> +
+> +module_platform_driver(mtk_scp_driver);
 > +
 > +MODULE_LICENSE("GPL v2");
-> +MODULE_DESCRIPTION("Mediatek CCI devfreq driver");
-> +MODULE_AUTHOR("andrew-sh.cheng");
+> +MODULE_DESCRIPTION("MediaTek scp control driver");
+> diff --git a/drivers/remoteproc/mtk_scp_ipi.c b/drivers/remoteproc/mtk_scp_ipi.c
+> new file mode 100644
+> index 00000000000000..51b8449a692970
+> --- /dev/null
+> +++ b/drivers/remoteproc/mtk_scp_ipi.c
+> @@ -0,0 +1,157 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +//
+> +// Copyright (c) 2018 MediaTek Inc.
+> +
+> +#include <asm/barrier.h>
+> +#include <linux/clk.h>
+> +#include <linux/err.h>
+> +#include <linux/kernel.h>
+> +#include <linux/module.h>
+> +#include <linux/platform_data/mtk_scp.h>
+> +#include <linux/platform_device.h>
+> +
+> +#include "mtk_common.h"
+> +
+> +int scp_ipi_register(struct platform_device *pdev,
+> +		     enum scp_ipi_id id,
+> +		     scp_ipi_handler_t handler,
+> +		     void *priv)
+> +{
+> +	struct mtk_scp *scp = platform_get_drvdata(pdev);
+> +	struct scp_ipi_desc *ipi_desc;
+> +
+> +	if (!scp) {
+> +		dev_err(&pdev->dev, "scp device is not ready\n");
+> +		return -EPROBE_DEFER;
+> +	}
+> +
+> +	if (WARN(id < 0 ||  id >= SCP_IPI_MAX || handler == NULL,
+> +	    "register scp ipi id %d with invalid arguments\n", id))
 
-should be either "Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>" or
-"Andrew-sh.Cheng"
+I think you'd get more useful information with this:
+
+        if (WARN_ON(id < 0) || WARN_ON(id >= SCP_IPI_MAX) || WARN_ON(!handler))
+                return -EINVAL;
+
+> +		return -EINVAL;
+> +
+> +	ipi_desc = scp->ipi_desc;
+> +	ipi_desc[id].handler = handler;
+> +	ipi_desc[id].priv = priv;
+> +
+> +	return 0;
+> +}
+> +EXPORT_SYMBOL_GPL(scp_ipi_register);
+> +
+> +void scp_ipi_unregister(struct platform_device *pdev, enum scp_ipi_id id)
+> +{
+> +	struct mtk_scp *scp = platform_get_drvdata(pdev);
+> +	struct scp_ipi_desc *ipi_desc;
+> +
+> +	if (!scp)
+> +		return;
+> +
+> +	if (WARN(id < 0 || id >= SCP_IPI_MAX,
+> +		 "unregister scp ipi id %d with invalid arguments\n", id))
+> +		return;
+> +
+> +	ipi_desc = scp->ipi_desc;
+> +	ipi_desc[id].handler = NULL;
+> +	ipi_desc[id].priv = NULL;
+> +}
+> +EXPORT_SYMBOL_GPL(scp_ipi_unregister);
+> +
+> +static void memcpy_aligned(void *dst, const void *src, unsigned int len)
+> +{
+> +	void *ptr;
+> +	u32 val;
+> +	unsigned int i = 0;
+> +
+> +	if (!IS_ALIGNED((unsigned long)dst, 4)) {
+> +		ptr = (void *)ALIGN_DOWN((unsigned long)dst, 4);
+> +		i = 4 - (dst - ptr);
+> +		val = readl_relaxed(ptr);
+> +		memcpy((u8 *)&val + (4 - i), src, i);
+> +		writel_relaxed(val, ptr);
+> +	}
+> +
+> +	while (i + 4 <= len) {
+> +		val = *((u32 *)(src + i));
+> +		writel_relaxed(val, dst + i);
+> +		i += 4;
+> +	}
+> +	if (i < len) {
+> +		val = readl_relaxed(dst + i);
+> +		memcpy(&val, src + i, len - i);
+> +		writel_relaxed(val, dst + i);
+> +	}
+> +}
+> +
+> +int scp_ipi_send(struct platform_device *pdev,
+> +		 enum scp_ipi_id id,
+> +		 void *buf,
+> +		 unsigned int len,
+> +		 unsigned int wait)
+> +{
+> +	struct mtk_scp *scp = platform_get_drvdata(pdev);
+> +	struct share_obj *send_obj = scp->send_buf;
+> +	unsigned long timeout;
+> +	int ret;
+> +
+> +	if (WARN(id <= SCP_IPI_INIT || id >= SCP_IPI_MAX ||
+> +	    len > sizeof(send_obj->share_buf) || !buf,
+
+similar as above, consider a combination of WARN_ONs
+
+> +	    "failed to send ipi message\n"))
+> +		return -EINVAL;
+> +
+> +	ret = clk_prepare_enable(scp->clk);
+> +	if (ret) {
+> +		dev_err(scp->dev, "failed to enable clock\n");
+> +		return ret;
+> +	}
+
+With the clk_enable/disable() outside of the lock the following could happen:
+
+proc 1> clk_prepare_enable()
+proc 1> mutex_lock()
+proc 1> send data
+proc 1> mutex_unlock()
+proc 2> clk_prepare_enable()
+proc 1> clk_unprepare_disable()
+proc 2> mutex_lock()
+proc 2> send data => BOOM
+
+> +	mutex_lock(&scp->scp_mutex);
+> +
+> +	 /* Wait until SCP receives the last command */
+> +	timeout = jiffies + msecs_to_jiffies(2000);
+> +	do {
+> +		if (time_after(jiffies, timeout)) {
+> +			dev_err(scp->dev, "%s: IPI timeout!\n", __func__);
+> +			ret = -EIO;
+> +			mutex_unlock(&scp->scp_mutex);
+> +			goto clock_disable;
+> +		}
+> +	} while (readl(scp->reg_base + MT8183_HOST_TO_SCP));
+> +
+> +	memcpy_aligned(send_obj->share_buf, buf, len);
+> +
+> +	send_obj->len = len;
+> +	send_obj->id = id;
+> +
+> +	scp->ipi_id_ack[id] = false;
+> +	/*
+> +	 * Ensure that all write to SRAM are committed before sending the
+> +	 * interrupt to SCP.
+> +	 */
+> +	mb();
+> +	/* send the command to SCP */
+> +	writel(MT8183_HOST_IPC_INT_BIT, scp->reg_base + MT8183_HOST_TO_SCP);
+> +
+> +	mutex_unlock(&scp->scp_mutex);
+> +
+> +	if (wait) {
+> +		/* wait for SCP's ACK */
+> +		timeout = msecs_to_jiffies(wait);
+> +		ret = wait_event_timeout(scp->ack_wq,
+> +					 scp->ipi_id_ack[id],
+> +					 timeout);
+> +		scp->ipi_id_ack[id] = false;
+> +		if (WARN(!ret,
+> +			 "scp ipi %d ack time out !", id))
+> +			ret = -EIO;
+> +		else
+> +			ret = 0;
+> +	}
+> +
+> +clock_disable:
+> +	clk_disable_unprepare(scp->clk);
+> +
+> +	return ret;
+> +}
+> +EXPORT_SYMBOL_GPL(scp_ipi_send);
+> +
+> +MODULE_LICENSE("GPL v2");
+> +MODULE_DESCRIPTION("MediaTek scp IPI interface");
+> diff --git a/include/linux/platform_data/mtk_scp.h b/include/linux/platform_data/mtk_scp.h
+> new file mode 100644
+> index 00000000000000..0e999ec319446b
+> --- /dev/null
+> +++ b/include/linux/platform_data/mtk_scp.h
+> @@ -0,0 +1,135 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * Copyright (c) 2018 MediaTek Inc.
+> + */
+> +
+> +#ifndef _MTK_SCP_H
+> +#define _MTK_SCP_H
+> +
+> +#include <linux/platform_device.h>
+> +
+> +typedef void (*scp_ipi_handler_t) (void *data,
+> +				   unsigned int len,
+> +				   void *priv);
+> +
+> +/**
+> + * enum ipi_id - the id of inter-processor interrupt
+> + *
+> + * @SCP_IPI_INIT:	 The interrupt from scp is to notfiy kernel
+> + *			 SCP initialization completed.
+> + *			 IPI_SCP_INIT is sent from SCP when firmware is
+> + *			 loaded. AP doesn't need to send IPI_SCP_INIT
+> + *			 command to SCP.
+> + *			 For other IPI below, AP should send the request
+> + *			 to SCP to trigger the interrupt.
+> + * @IPI_MAX:		 The maximum IPI number
+> + */
+> +
+> +enum scp_ipi_id {
+> +	SCP_IPI_INIT = 0,
+> +	SCP_IPI_VDEC_H264,
+> +	SCP_IPI_VDEC_VP8,
+> +	SCP_IPI_VDEC_VP9,
+> +	SCP_IPI_VENC_H264,
+> +	SCP_IPI_VENC_VP8,
+> +	SCP_IPI_MDP,
+> +	SCP_IPI_CROS_HOST_CMD,
+> +	SCP_IPI_MAX,
+> +};
+> +
+> +/**
+> + * scp_ipi_register - register an ipi function
+> + *
+> + * @pdev:	SCP platform device
+> + * @id:		IPI ID
+> + * @handler:	IPI handler
+> + * @priv:	private data for IPI handler
+> + *
+> + * Register an ipi function to receive ipi interrupt from SCP.
+> + *
+> + * Return: Return 0 if ipi registers successfully, otherwise it is failed.
+> + */
+> +int scp_ipi_register(struct platform_device *pdev,
+> +		     enum scp_ipi_id id,
+> +		     scp_ipi_handler_t handler,
+> +		     void *priv);
+> +
+> +/**
+> + * scp_ipi_unregister - unregister an ipi function
+> + *
+> + * @pdev:	SCP platform device
+> + * @id:		IPI ID
+> + *
+> + * Unregister an ipi function to receive ipi interrupt from SCP.
+> + */
+> +void scp_ipi_unregister(struct platform_device *pdev, enum scp_ipi_id id);
+> +
+> +/**
+> + * scp_ipi_send - send data from AP to scp.
+> + *
+> + * @pdev:	SCP platform device
+> + * @id:		IPI ID
+> + * @buf:	the data buffer
+> + * @len:	the data buffer length
+> + * @wait:	1: need ack
+> + *
+> + * This function is thread-safe. When this function returns,
+> + * SCP has received the data and starts the processing.
+> + * When the processing completes, IPI handler registered
+> + * by scp_ipi_register will be called in interrupt context.
+> + *
+> + * Return: Return 0 if sending data successfully, otherwise it is failed.
+> + **/
+> +int scp_ipi_send(struct platform_device *pdev,
+> +		 enum scp_ipi_id id,
+> +		 void *buf,
+> +		 unsigned int len,
+> +		 unsigned int wait);
+> +
+> +/**
+> + * scp_get_plat_device - get SCP's platform device
+> + *
+> + * @pdev:	the platform device of the module requesting SCP platform
+> + *		device for using SCP API.
+> + *
+> + * Return: Return NULL if it is failed.
+> + * otherwise it is SCP's platform device
+> + **/
+> +struct platform_device *scp_get_plat_device(struct platform_device *pdev);
+> +
+> +/**
+> + * scp_get_vdec_hw_capa - get video decoder hardware capability
+> + *
+> + * @pdev:	SCP platform device
+> + *
+> + * Return: video decoder hardware capability
+> + **/
+> +unsigned int scp_get_vdec_hw_capa(struct platform_device *pdev);
+> +
+> +/**
+> + * scp_get_venc_hw_capa - get video encoder hardware capability
+> + *
+> + * @pdev:	SCP platform device
+> + *
+> + * Return: video encoder hardware capability
+> + **/
+> +unsigned int scp_get_venc_hw_capa(struct platform_device *pdev);
+> +
+> +/**
+> + * scp_mapping_dm_addr - Mapping SRAM/DRAM to kernel virtual address
+> + *
+> + * @pdev:	SCP platform device
+> + * @mem_addr:	SCP views memory address
+> + *
+> + * Mapping the SCP's SRAM address /
+> + * DMEM (Data Extended Memory) memory address /
+> + * Working buffer memory address to
+> + * kernel virtual address.
+> + *
+> + * Return: Return ERR_PTR(-EINVAL) if mapping failed,
+> + * otherwise the mapped kernel virtual address
+> + **/
+> +void *scp_mapping_dm_addr(struct platform_device *pdev,
+> +			  u32 mem_addr);
+> +
+> +#endif /* _MTK_SCP_H */
 
 Cheers
 
