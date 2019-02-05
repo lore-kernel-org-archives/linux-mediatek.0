@@ -1,8 +1,8 @@
 From: Frederic Chen <frederic.chen@mediatek.com>
-Subject: [RFC PATCH V0 4/7] [media] dt-bindings: mt8183: Added camera ISP Pass
- 1 dt-bindings
-Date: Tue, 5 Feb 2019 14:42:43 +0800
-Message-ID: <1549348966-14451-5-git-send-email-frederic.chen@mediatek.com>
+Subject: [RFC PATCH V0 3/7] [media] dt-bindings: mt8183: Added CAM-SMEM
+ dt-bindings
+Date: Tue, 5 Feb 2019 14:42:42 +0800
+Message-ID: <1549348966-14451-4-git-send-email-frederic.chen@mediatek.com>
 References: <1549348966-14451-1-git-send-email-frederic.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -24,82 +24,54 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Jungo Lin <jungo.lin@mediatek.com>
 
-This patch adds DT binding document for the Pass 1 (P1) unit in
-Mediatek's camera ISP system. The Pass 1 unit grabs the sensor data
-out from the sensor interface, applies ISP effects and writes the
-image data to DRAM.
+This patch adds the DT binding documentation for the shared memory
+between Pass 1 unit of the camera ISP system and the co-processor
+in Mediatek SoCs.
 
 Signed-off-by: Jungo Lin <jungo.lin@mediatek.com>
 Signed-off-by: Frederic Chen <frederic.chen@mediatek.com>
 ---
- .../bindings/media/mediatek,mt8183-camisp.txt      | 59 ++++++++++++++++++++++
- 1 file changed, 59 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8183-camisp.txt
+ .../bindings/media/mediatek,cam_smem.txt           | 32 ++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,cam_smem.txt
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8183-camisp.txt b/Documentation/devicetree/bindings/media/mediatek,mt8183-camisp.txt
+diff --git a/Documentation/devicetree/bindings/media/mediatek,cam_smem.txt b/Documentation/devicetree/bindings/media/mediatek,cam_smem.txt
 new file mode 100644
-index 0000000..ba16b4e
+index 0000000..d0d9c17
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mt8183-camisp.txt
-@@ -0,0 +1,59 @@
-+* Mediatek Image Signal Processor Pass 1 (ISP P1)
++++ b/Documentation/devicetree/bindings/media/mediatek,cam_smem.txt
+@@ -0,0 +1,32 @@
++Mediatek Camera ISP Pass 1 Shared Memory Device
 +
-+The Pass 1 unit of Mediatek's camera ISP system grabs the sensor data out
-+from the sensor interface, applies ISP effects and writes the image data
-+to DRAM. Furthermore, Pass 1 unit has the ability to output two different
-+resolutions frames at the same time to increase the performance of the
-+camera application.
++Mediatek Camera ISP Pass 1 Shared Memory Device is used to manage shared
++memory among CPU, Camera ISP Pass 1 hardware and coprocessor. The Camera
++ISP Pass 1 is a hardware unit for processing image signal from the image
++sensor. Camera ISP Pass 1 is responsible for RAW processing and 3A tuning.
++
++It is associated with a reserved memory region
++(Please see Documentation\devicetree\bindings\reserved-memory\mediatek,
++reserve-memory-cam_smem.txt) and and provides the context to
++allocate memory with dma addresses.
 +
 +Required properties:
-+- compatible: "mediatek,mt8183-camisp" for MT8183
-+- reg: Must contain an entry for each entry in reg-names.
-+- interrupts: interrupt number to the cpu.
++- compatible: Should be "mediatek,cam_smem"
++
 +- iommus: should point to the respective IOMMU block with master port
 +  as argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
 +  for details.
-+- power-domains : a phandle to the power domain of this local arbiter.
-+- mediatek,smi : a phandle to the smi_common node.
-+- clocks: device clocks, see
-+  Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
-+- clock-names: must be "CAMSYS_CAM_CGPDN" and "CAMSYS_CAMTG_CGPDN".
++
 +- mediatek,larb: must contain the local arbiters in the current SOCs, see
 +  Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
 +  for details.
-+- mediatek,vpu : the node of video processor unit
-+- smem_device : the shared memory device managing the shared memory between
-+  Pass 1 unit and the video processor unit
 +
 +Example:
-+	camisp: camisp@1a000000 {
-+		compatible = "mediatek,mt8183-camisp", "syscon";
-+		reg = <0 0x1a000000 0 0x1000>,
-+		      <0 0x1a003000 0 0x1000>,
-+		      <0 0x1a004000 0 0x2000>,
-+		      <0 0x1a006000 0 0x2000>;
-+		reg-names = "camisp",
-+		            "cam1",
-+		            "cam2",
-+		            "cam3";
-+		interrupts = <GIC_SPI 253 IRQ_TYPE_LEVEL_LOW>,
-+				<GIC_SPI 254 IRQ_TYPE_LEVEL_LOW>,
-+				<GIC_SPI 255 IRQ_TYPE_LEVEL_LOW>;
-+		interrupt-names = "cam1",
-+		            "cam2",
-+		            "cam3";
++	cam_smem: cam_smem {
++		compatible = "mediatek,cam_smem";
++		mediatek,larb = <&larb3>,
++				<&larb6>;
 +		iommus = <&iommu M4U_PORT_CAM_LSCI0>,
 +				<&iommu M4U_PORT_CAM_LSCI1>,
 +				<&iommu M4U_PORT_CAM_BPCI>;
-+		#clock-cells = <1>;
-+		power-domains = <&scpsys MT8183_POWER_DOMAIN_CAM>;
-+		/* Camera CCF */
-+		clocks = <&camsys CLK_CAM_CAM>,
-+				<&camsys CLK_CAM_CAMTG>;
-+		clock-names = "CAMSYS_CAM_CGPDN",
-+				"CAMSYS_CAMTG_CGPDN";
-+		mediatek,larb = <&larb3>,
-+				<&larb6>;
-+		mediatek,vpu = <&vpu>;
-+		smem_device = <&cam_smem>;
 +	};
 -- 
 1.9.1
