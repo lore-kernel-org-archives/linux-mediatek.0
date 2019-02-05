@@ -1,36 +1,140 @@
-From: "Martin K. Petersen" <martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH v1 1/1] scsi: ufs: Print uic error history in time order
-Date: Mon, 04 Feb 2019 22:04:36 -0500
-Message-ID: <yq14l9j3ph7.fsf@oracle.com>
-References: <1548684266-8792-1-git-send-email-stanley.chu@mediatek.com>
+From: Frederic Chen <frederic.chen@mediatek.com>
+Subject: [RFC PATCH V0 0/7] media: platform: Add support for ISP Pass 1 on
+ mt8183 SoC
+Date: Tue, 5 Feb 2019 14:42:39 +0800
+Message-ID: <1549348966-14451-1-git-send-email-frederic.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1548684266-8792-1-git-send-email-stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
- (Stanley Chu's message of "Mon, 28 Jan 2019 22:04:26 +0800")
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, avri.altman-Sjgp3cTcYWE@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, vinholikatti-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: hans.verkuil@cisco.com, laurent.pinchart+renesas@ideasonboard.com, tfiga@chromium.org, matthias.bgg@gmail.com, mchehab@kernel.org
+Cc: Sean.Cheng@mediatek.com, Rynn.Wu@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, Jerry-ch.Chen@mediatek.com, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, christie.yu@mediatek.com, zwisler@chromium.org, linux-mediatek@lists.infradead.org, frederic.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Hello,
 
-Stanley,
+This is a first version of the RFC patch series adding the driver for
+Pass 1 (P1) unit in Mediatek's camera ISP system on mt8183 SoC, which
+will be used in camera features of CrOS. It's the first time Mediatek
+develops ISP kernel drivers based on V4L2 and media controller
+framework. I posted the main part of the ISP Pass 1 driver as RFC to
+discuss first and would like some review comments on the overall
+architecture of the driver.
 
-> Now uic errors are printed out of time order.
->
-> Simply make it more readable by printing logs in time order, and
-> printing "No record" if history is empty.
+Pass 1 unit processes image signal from sensor devices and accepts the
+tuning parameters to adjust the image quality. It performs optical
+black correction, defect pixel correction, W/IR imbalance correction
+and lens shading correction for RAW processing.
 
-Applied to 5.1/scsi-queue, thanks!
+The driver is implemented with V4L2 and media controller framework so
+we have the following entities to describe the ISP pass 1 path. (The
+current metadata interface used in meta input and partial meta nodes
+is only a temporary solution to kick off the driver development and is
+not ready to be reviewed yet):
+
+1. meta input (output video device): connects to ISP P1 sub device. It
+accepts the tuning buffer from user.
+
+2. ISP P1 (sub device): connects to partial meta 0, partial meta 1,
+main stream and packed out video devices. When processing an image,
+Pass 1 hardware supports multiple output images with different sizes
+and formats so it needs two capture video devices ("main stream" and
+"packed out") to return the image data to the user.
+
+3. partial meta 0 (capture video device): return the statistics
+metadata.
+
+4. partial meta 1 (capture video device): return the statistics
+metadata.
+
+5. main stream (capture video device): return the processed image data
+which is used in capture scenario.
+
+6. packed out (capture video device): return the processed image data
+which is used in preview scenario.
+
+The overall file structure of the ISP Pass 1 driver is as following:
+
+* mtk_cam.c: Controls the hardware dependent flow and configuration.
+* mtk_cam-v4l2.c: High-level software context configuration.
+* mtk_cam-v4l2-util.c: Implements V4L2 and vb2 ops.
+* mtk_cam-dev-ctx-core.c: Common software flow of the driver.
+* mtk_cam-dev.c: Implements context independent flow.
+* mtk_cam-vpu.c: Communicates with the co-processor on the SoC through
+  the VPU driver.
+* mtk_cam-smem-drv.c: Provides the shared memory management required
+  operations. We reserved a memory region for the co-processor and
+  Pass 1 unit to exchange the tuning and configuration data.
+
+
+Frederic Chen (2):
+  [media] dt-bindings: mt8183: Add binding for ISP Pass 1 shared memory
+  media: platform: Add Mediatek ISP Pass 1 driver KConfig
+
+Jungo Lin (5):
+  dts: arm64: mt8183: Add ISP Pass 1 shared memory node
+  [media] dt-bindings: mt8183: Added CAM-SMEM dt-bindings
+  [media] dt-bindings: mt8183: Added camera ISP Pass 1 dt-bindings
+  dts: arm64: mt8183: Add ISP Pass 1 nodes
+  [media] platform: mtk-isp: Add Mediatek ISP Pass 1 driver
+
+ .../bindings/media/mediatek,cam_smem.txt           |   32 +
+ .../bindings/media/mediatek,mt8183-camisp.txt      |   59 +
+ .../mediatek,reserve-memory-cam_smem.txt           |   44 +
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi           |   54 +
+ drivers/media/platform/Kconfig                     |    2 +
+ drivers/media/platform/Makefile                    |    2 +
+ drivers/media/platform/mtk-isp/Kconfig             |   21 +
+ drivers/media/platform/mtk-isp/Makefile            |   14 +
+ drivers/media/platform/mtk-isp/isp_50/Makefile     |   17 +
+ drivers/media/platform/mtk-isp/isp_50/cam/Makefile |   35 +
+ .../platform/mtk-isp/isp_50/cam/mtk_cam-ctx.h      |  327 ++++
+ .../mtk-isp/isp_50/cam/mtk_cam-dev-ctx-core.c      |  986 +++++++++++++
+ .../platform/mtk-isp/isp_50/cam/mtk_cam-dev.c      |  381 +++++
+ .../platform/mtk-isp/isp_50/cam/mtk_cam-dev.h      |  204 +++
+ .../platform/mtk-isp/isp_50/cam/mtk_cam-regs.h     |  146 ++
+ .../platform/mtk-isp/isp_50/cam/mtk_cam-smem-drv.c |  452 ++++++
+ .../platform/mtk-isp/isp_50/cam/mtk_cam-smem.h     |   27 +
+ .../mtk-isp/isp_50/cam/mtk_cam-v4l2-util.c         | 1555 ++++++++++++++++++++
+ .../mtk-isp/isp_50/cam/mtk_cam-v4l2-util.h         |   49 +
+ .../platform/mtk-isp/isp_50/cam/mtk_cam-v4l2.c     |  288 ++++
+ .../platform/mtk-isp/isp_50/cam/mtk_cam-v4l2.h     |   40 +
+ .../platform/mtk-isp/isp_50/cam/mtk_cam-vpu.c      |  466 ++++++
+ .../platform/mtk-isp/isp_50/cam/mtk_cam-vpu.h      |  158 ++
+ .../media/platform/mtk-isp/isp_50/cam/mtk_cam.c    | 1235 ++++++++++++++++
+ .../media/platform/mtk-isp/isp_50/cam/mtk_cam.h    |  347 +++++
+ 25 files changed, 6941 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,cam_smem.txt
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8183-camisp.txt
+ create mode 100644 Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-cam_smem.txt
+ create mode 100644 drivers/media/platform/mtk-isp/Kconfig
+ create mode 100644 drivers/media/platform/mtk-isp/Makefile
+ create mode 100644 drivers/media/platform/mtk-isp/isp_50/Makefile
+ create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/Makefile
+ create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-ctx.h
+ create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-dev-ctx-core.c
+ create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-dev.c
+ create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-dev.h
+ create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-regs.h
+ create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-smem-drv.c
+ create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-smem.h
+ create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-v4l2-util.c
+ create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-v4l2-util.h
+ create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-v4l2.c
+ create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-v4l2.h
+ create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-vpu.c
+ create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-vpu.h
+ create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam.c
+ create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam.h
 
 -- 
-Martin K. Petersen	Oracle Linux Engineering
+1.9.1
