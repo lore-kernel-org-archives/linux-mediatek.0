@@ -1,12 +1,14 @@
 From: Frederic Chen <frederic.chen@mediatek.com>
-Subject: [RFC PATCH V0 0/7] media: platform: Add support for ISP Pass 1 on
- mt8183 SoC
-Date: Tue, 5 Feb 2019 14:42:39 +0800
-Message-ID: <1549348966-14451-1-git-send-email-frederic.chen@mediatek.com>
+Subject: [RFC PATCH V0 1/7] [media] dt-bindings: mt8183: Add binding for ISP
+ Pass 1 shared memory
+Date: Tue, 5 Feb 2019 14:42:40 +0800
+Message-ID: <1549348966-14451-2-git-send-email-frederic.chen@mediatek.com>
+References: <1549348966-14451-1-git-send-email-frederic.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1549348966-14451-1-git-send-email-frederic.chen@mediatek.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -20,121 +22,66 @@ To: hans.verkuil@cisco.com, laurent.pinchart+renesas@ideasonboard.com, tfiga@chr
 Cc: Sean.Cheng@mediatek.com, Rynn.Wu@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, Jerry-ch.Chen@mediatek.com, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, christie.yu@mediatek.com, zwisler@chromium.org, linux-mediatek@lists.infradead.org, frederic.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello,
+This patch adds the binding for describing the shared memory
+used to exchange configuration and tuning data between the
+co-processor and Pass 1 (P1) unit of the camera ISP system on
+Mediatek SoCs.
 
-This is a first version of the RFC patch series adding the driver for
-Pass 1 (P1) unit in Mediatek's camera ISP system on mt8183 SoC, which
-will be used in camera features of CrOS. It's the first time Mediatek
-develops ISP kernel drivers based on V4L2 and media controller
-framework. I posted the main part of the ISP Pass 1 driver as RFC to
-discuss first and would like some review comments on the overall
-architecture of the driver.
-
-Pass 1 unit processes image signal from sensor devices and accepts the
-tuning parameters to adjust the image quality. It performs optical
-black correction, defect pixel correction, W/IR imbalance correction
-and lens shading correction for RAW processing.
-
-The driver is implemented with V4L2 and media controller framework so
-we have the following entities to describe the ISP pass 1 path. (The
-current metadata interface used in meta input and partial meta nodes
-is only a temporary solution to kick off the driver development and is
-not ready to be reviewed yet):
-
-1. meta input (output video device): connects to ISP P1 sub device. It
-accepts the tuning buffer from user.
-
-2. ISP P1 (sub device): connects to partial meta 0, partial meta 1,
-main stream and packed out video devices. When processing an image,
-Pass 1 hardware supports multiple output images with different sizes
-and formats so it needs two capture video devices ("main stream" and
-"packed out") to return the image data to the user.
-
-3. partial meta 0 (capture video device): return the statistics
-metadata.
-
-4. partial meta 1 (capture video device): return the statistics
-metadata.
-
-5. main stream (capture video device): return the processed image data
-which is used in capture scenario.
-
-6. packed out (capture video device): return the processed image data
-which is used in preview scenario.
-
-The overall file structure of the ISP Pass 1 driver is as following:
-
-* mtk_cam.c: Controls the hardware dependent flow and configuration.
-* mtk_cam-v4l2.c: High-level software context configuration.
-* mtk_cam-v4l2-util.c: Implements V4L2 and vb2 ops.
-* mtk_cam-dev-ctx-core.c: Common software flow of the driver.
-* mtk_cam-dev.c: Implements context independent flow.
-* mtk_cam-vpu.c: Communicates with the co-processor on the SoC through
-  the VPU driver.
-* mtk_cam-smem-drv.c: Provides the shared memory management required
-  operations. We reserved a memory region for the co-processor and
-  Pass 1 unit to exchange the tuning and configuration data.
-
-
-Frederic Chen (2):
-  [media] dt-bindings: mt8183: Add binding for ISP Pass 1 shared memory
-  media: platform: Add Mediatek ISP Pass 1 driver KConfig
-
-Jungo Lin (5):
-  dts: arm64: mt8183: Add ISP Pass 1 shared memory node
-  [media] dt-bindings: mt8183: Added CAM-SMEM dt-bindings
-  [media] dt-bindings: mt8183: Added camera ISP Pass 1 dt-bindings
-  dts: arm64: mt8183: Add ISP Pass 1 nodes
-  [media] platform: mtk-isp: Add Mediatek ISP Pass 1 driver
-
- .../bindings/media/mediatek,cam_smem.txt           |   32 +
- .../bindings/media/mediatek,mt8183-camisp.txt      |   59 +
- .../mediatek,reserve-memory-cam_smem.txt           |   44 +
- arch/arm64/boot/dts/mediatek/mt8183.dtsi           |   54 +
- drivers/media/platform/Kconfig                     |    2 +
- drivers/media/platform/Makefile                    |    2 +
- drivers/media/platform/mtk-isp/Kconfig             |   21 +
- drivers/media/platform/mtk-isp/Makefile            |   14 +
- drivers/media/platform/mtk-isp/isp_50/Makefile     |   17 +
- drivers/media/platform/mtk-isp/isp_50/cam/Makefile |   35 +
- .../platform/mtk-isp/isp_50/cam/mtk_cam-ctx.h      |  327 ++++
- .../mtk-isp/isp_50/cam/mtk_cam-dev-ctx-core.c      |  986 +++++++++++++
- .../platform/mtk-isp/isp_50/cam/mtk_cam-dev.c      |  381 +++++
- .../platform/mtk-isp/isp_50/cam/mtk_cam-dev.h      |  204 +++
- .../platform/mtk-isp/isp_50/cam/mtk_cam-regs.h     |  146 ++
- .../platform/mtk-isp/isp_50/cam/mtk_cam-smem-drv.c |  452 ++++++
- .../platform/mtk-isp/isp_50/cam/mtk_cam-smem.h     |   27 +
- .../mtk-isp/isp_50/cam/mtk_cam-v4l2-util.c         | 1555 ++++++++++++++++++++
- .../mtk-isp/isp_50/cam/mtk_cam-v4l2-util.h         |   49 +
- .../platform/mtk-isp/isp_50/cam/mtk_cam-v4l2.c     |  288 ++++
- .../platform/mtk-isp/isp_50/cam/mtk_cam-v4l2.h     |   40 +
- .../platform/mtk-isp/isp_50/cam/mtk_cam-vpu.c      |  466 ++++++
- .../platform/mtk-isp/isp_50/cam/mtk_cam-vpu.h      |  158 ++
- .../media/platform/mtk-isp/isp_50/cam/mtk_cam.c    | 1235 ++++++++++++++++
- .../media/platform/mtk-isp/isp_50/cam/mtk_cam.h    |  347 +++++
- 25 files changed, 6941 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,cam_smem.txt
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8183-camisp.txt
+Signed-off-by: Frederic Chen <frederic.chen@mediatek.com>
+---
+ .../mediatek,reserve-memory-cam_smem.txt           | 44 ++++++++++++++++++++++
+ 1 file changed, 44 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-cam_smem.txt
- create mode 100644 drivers/media/platform/mtk-isp/Kconfig
- create mode 100644 drivers/media/platform/mtk-isp/Makefile
- create mode 100644 drivers/media/platform/mtk-isp/isp_50/Makefile
- create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/Makefile
- create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-ctx.h
- create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-dev-ctx-core.c
- create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-dev.c
- create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-dev.h
- create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-regs.h
- create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-smem-drv.c
- create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-smem.h
- create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-v4l2-util.c
- create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-v4l2-util.h
- create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-v4l2.c
- create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-v4l2.h
- create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-vpu.c
- create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-vpu.h
- create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam.c
- create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam.h
 
+diff --git a/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-cam_smem.txt b/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-cam_smem.txt
+new file mode 100644
+index 0000000..05c1bf1
+--- /dev/null
++++ b/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-cam_smem.txt
+@@ -0,0 +1,44 @@
++Mediatek ISP Pass 1 Shared Memory binding
++
++This binding describes the shared memory, which serves the purpose of
++describing the shared memory region used to exchange data between Pass 1
++unit of Image Signal Processor (ISP) and the co-processor in Mediatek
++SoCs.
++
++The co-processor doesn't have the iommu so we need to use the physical
++address to access the shared buffer in the firmware.
++
++The Pass 1 unit of ISP can access memory through the iommu so it
++uses the dma address to access the memory region.
++(See iommu/mediatek,iommu.txt for the detailed description of Mediatek IOMMU)
++
++
++Required properties:
++
++- compatible: must be "mediatek,reserve-memory-cam_smem"
++
++- reg: required for static allocation (see reserved-memory.txt for
++  the detailed usage)
++
++- alloc-range: required for dynamic allocation. The range must
++  between 0x00000400 and 0x100000000 due to the co-processer's
++  addressing limitation
++
++- size: required for dynamic allocation. The unit is bytes.
++
++
++Example:
++
++The following example shows the ISP Pass1 shared memory setup for MT8183.
++
++	reserved-memory {
++		#address-cells = <2>;
++		#size-cells = <2>;
++		ranges;
++		reserve-memory-cam_smem {
++			compatible = "mediatek,reserve-memory-cam_smem";
++			size = <0 0x1400000>;
++			alignment = <0 0x1000>;
++			alloc-ranges = <0 0x40000000 0 0x50000000>;
++		};
++	};
 -- 
 1.9.1
