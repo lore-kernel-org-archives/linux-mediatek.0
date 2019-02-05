@@ -1,38 +1,23 @@
-From: Matthias Kaehlcke <mka@chromium.org>
-Subject: [PATCH 2/2] cpufreq: mediatek: Register an Energy Model
-Date: Tue,  5 Feb 2019 09:52:25 -0800
-Message-ID: <20190205175225.25923-2-mka@chromium.org>
-References: <20190205175225.25923-1-mka@chromium.org>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [resend PATCH v1 1/2] dt-bindings: clock: add clock for MT2712
+Date: Tue, 05 Feb 2019 13:29:45 -0800
+Message-ID: <154940218591.169292.1772059946021644625@swboyd.mtv.corp.google.com>
+References: <20181214020417.2871-1-weiyi.lu@mediatek.com> <20181214020417.2871-3-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190205175225.25923-1-mka@chromium.org>
+In-Reply-To: <20181214020417.2871-3-weiyi.lu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Quentin Perret <quentin.perret@arm.com>, Taniya Das <tdas@codeaurora.org>, CK Hu <ck.hu@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Douglas Anderson <dianders@chromium.org>, Matthias Kaehlcke <mka@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, Weiyi Lu <weiyi.lu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Try and register an Energy Model from mediatek-cpufreq to allow
-interested subsystems like the task scheduler to use the provided
-information.
+Quoting Weiyi Lu (2018-12-13 18:04:16)
+> Add new clock according to 3rd ECO design change.
+> It's the parent clock of audio clock mux.
+>=20
+> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> ---
 
-Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
----
- drivers/cpufreq/mediatek-cpufreq.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index eb8920d398181..e6168ee582783 100644
---- a/drivers/cpufreq/mediatek-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -460,6 +460,8 @@ static int mtk_cpufreq_init(struct cpufreq_policy *policy)
- 		return ret;
- 	}
- 
-+	dev_pm_opp_of_register_em(policy->cpus);
-+
- 	cpumask_copy(policy->cpus, &info->cpus);
- 	policy->freq_table = freq_table;
- 	policy->driver_data = info;
--- 
-2.20.1.611.gfbb209baf1-goog
+Applied to clk-next
