@@ -1,77 +1,86 @@
-From: Frederic Chen <frederic.chen@mediatek.com>
-Subject: [RFC PATCH V0 3/7] [media] dt-bindings: mt8183: Added CAM-SMEM
- dt-bindings
-Date: Tue, 5 Feb 2019 14:42:42 +0800
-Message-ID: <1549348966-14451-4-git-send-email-frederic.chen@mediatek.com>
-References: <1549348966-14451-1-git-send-email-frederic.chen@mediatek.com>
+From: wen yang <yellowriver2010@hotmail.com>
+Subject: [PATCH] mtd: rawnand: mtk: fix object reference leaks in mtk_ecc_get
+Date: Tue, 5 Feb 2019 10:05:46 +0000
+Message-ID: <HK0PR02MB36345BDC344D1A6FE77B4576B26E0@HK0PR02MB3634.apcprd02.prod.outlook.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1549348966-14451-1-git-send-email-frederic.chen@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: hans.verkuil@cisco.com, laurent.pinchart+renesas@ideasonboard.com, tfiga@chromium.org, matthias.bgg@gmail.com, mchehab@kernel.org
-Cc: Sean.Cheng@mediatek.com, Rynn.Wu@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, Jerry-ch.Chen@mediatek.com, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, christie.yu@mediatek.com, zwisler@chromium.org, linux-mediatek@lists.infradead.org, frederic.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
+List-Post: <mailto:linux-mtd@lists.infradead.org>
+List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
+Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
+To: "xiaolei.li@mediatek.com" <xiaolei.li@mediatek.com>, "bbrezillon@kernel.org" <bbrezillon@kernel.org>, "miquel.raynal@bootlin.com" <miquel.raynal@bootlin.com>, "richard@nod.at" <richard@nod.at>, "dwmw2@infradead.org" <dwmw2@infradead.org>, "computersforpeace@gmail.com" <computersforpeace@gmail.com>, "marek.vasut@gmail.com" <marek.vasut@gmail.com>
+Cc: wen yang <yellowriver2010@hotmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "ludovic.desroches@microchip.com" <ludovic.desroches@microchip.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "linux-mtd@lists.infradead.org" <linux-mtd@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Jungo Lin <jungo.lin@mediatek.com>
+of_find_device_by_node() takes a reference to the struct device
+when it finds a match via get_device, there is no need to call
+get_device() twice.
+We also should make sure to drop the reference to the device
+taken by of_find_device_by_node() on driver unbind.
 
-This patch adds the DT binding documentation for the shared memory
-between Pass 1 unit of the camera ISP system and the co-processor
-in Mediatek SoCs.
-
-Signed-off-by: Jungo Lin <jungo.lin@mediatek.com>
-Signed-off-by: Frederic Chen <frederic.chen@mediatek.com>
+Fixes: 1d6b1e464950 ("mtd: mediatek: driver for MTK Smart Device")
+Signed-off-by: Wen Yang <yellowriver2010@hotmail.com>
+Suggested-by: Boris Brezillon <bbrezillon@kernel.org>
+Cc: Xiaolei Li <xiaolei.li@mediatek.com>
+Cc: Boris Brezillon <bbrezillon@kernel.org>
+Cc: Miquel Raynal <miquel.raynal@bootlin.com>
+Cc: Richard Weinberger <richard@nod.at>
+Cc: David Woodhouse <dwmw2@infradead.org>
+Cc: Brian Norris <computersforpeace@gmail.com>
+Cc: Marek Vasut <marek.vasut@gmail.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-mtd@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
 ---
- .../bindings/media/mediatek,cam_smem.txt           | 32 ++++++++++++++++++++++
- 1 file changed, 32 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,cam_smem.txt
+ drivers/mtd/nand/raw/mtk_ecc.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,cam_smem.txt b/Documentation/devicetree/bindings/media/mediatek,cam_smem.txt
-new file mode 100644
-index 0000000..d0d9c17
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,cam_smem.txt
-@@ -0,0 +1,32 @@
-+Mediatek Camera ISP Pass 1 Shared Memory Device
+diff --git a/drivers/mtd/nand/raw/mtk_ecc.c b/drivers/mtd/nand/raw/mtk_ecc.c
+index 6432bd7..25bdc15 100644
+--- a/drivers/mtd/nand/raw/mtk_ecc.c
++++ b/drivers/mtd/nand/raw/mtk_ecc.c
+@@ -265,17 +265,25 @@ static struct mtk_ecc *mtk_ecc_get(struct device_node *np)
+ {
+ 	struct platform_device *pdev;
+ 	struct mtk_ecc *ecc;
++	int ret;
+ 
+ 	pdev = of_find_device_by_node(np);
+-	if (!pdev || !platform_get_drvdata(pdev))
++	if (!pdev)
+ 		return ERR_PTR(-EPROBE_DEFER);
++	if (!platform_get_drvdata(pdev)) {
++		ret = -EPROBE_DEFER;
++		goto err_put_device;
++	}
+ 
+-	get_device(&pdev->dev);
+ 	ecc = platform_get_drvdata(pdev);
+ 	clk_prepare_enable(ecc->clk);
+ 	mtk_ecc_hw_init(ecc);
+ 
+ 	return ecc;
 +
-+Mediatek Camera ISP Pass 1 Shared Memory Device is used to manage shared
-+memory among CPU, Camera ISP Pass 1 hardware and coprocessor. The Camera
-+ISP Pass 1 is a hardware unit for processing image signal from the image
-+sensor. Camera ISP Pass 1 is responsible for RAW processing and 3A tuning.
-+
-+It is associated with a reserved memory region
-+(Please see Documentation\devicetree\bindings\reserved-memory\mediatek,
-+reserve-memory-cam_smem.txt) and and provides the context to
-+allocate memory with dma addresses.
-+
-+Required properties:
-+- compatible: Should be "mediatek,cam_smem"
-+
-+- iommus: should point to the respective IOMMU block with master port
-+  as argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
-+  for details.
-+
-+- mediatek,larb: must contain the local arbiters in the current SOCs, see
-+  Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
-+  for details.
-+
-+Example:
-+	cam_smem: cam_smem {
-+		compatible = "mediatek,cam_smem";
-+		mediatek,larb = <&larb3>,
-+				<&larb6>;
-+		iommus = <&iommu M4U_PORT_CAM_LSCI0>,
-+				<&iommu M4U_PORT_CAM_LSCI1>,
-+				<&iommu M4U_PORT_CAM_BPCI>;
-+	};
++err_put_device:
++	put_device(&pdev->dev);
++	return ERR_PTR(ret);
+ }
+ 
+ struct mtk_ecc *of_mtk_ecc_get(struct device_node *of_node)
 -- 
-1.9.1
+2.7.4
+
+
+______________________________________________________
+Linux MTD discussion mailing list
+http://lists.infradead.org/mailman/listinfo/linux-mtd/
