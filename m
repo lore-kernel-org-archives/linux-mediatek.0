@@ -1,8 +1,7 @@
 From: Frederic Chen <frederic.chen@mediatek.com>
-Subject: [RFC PATCH V0 6/7] media: platform: Add Mediatek ISP Pass 1 driver
- KConfig
-Date: Tue, 5 Feb 2019 14:42:45 +0800
-Message-ID: <1549348966-14451-7-git-send-email-frederic.chen@mediatek.com>
+Subject: [RFC PATCH V0 5/7] dts: arm64: mt8183: Add ISP Pass 1 nodes
+Date: Tue, 5 Feb 2019 14:42:44 +0800
+Message-ID: <1549348966-14451-6-git-send-email-frederic.chen@mediatek.com>
 References: <1549348966-14451-1-git-send-email-frederic.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,58 +21,67 @@ To: hans.verkuil@cisco.com, laurent.pinchart+renesas@ideasonboard.com, tfiga@chr
 Cc: Sean.Cheng@mediatek.com, Rynn.Wu@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, Jerry-ch.Chen@mediatek.com, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, christie.yu@mediatek.com, zwisler@chromium.org, linux-mediatek@lists.infradead.org, frederic.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds KConfig for Pass 1 (P1) unit driver of Mediatek's
-camera ISP system. ISP P1 unit is embedded in Mediatek SOCs. It
-provides RAW processing which includes optical black correction,
-defect pixel correction, W/IR imbalance correction and lens
-shading correction.
+From: Jungo Lin <jungo.lin@mediatek.com>
 
+Add nodes for Pass 1 unit of Mediatek's camera ISP system.
+Pass 1 unit embedded in Mediatek SOCs, works with the
+co-processor to process image signal from the image sensor
+and output RAW data.
+
+Signed-off-by: Jungo Lin <jungo.lin@mediatek.com>
 Signed-off-by: Frederic Chen <frederic.chen@mediatek.com>
 ---
- drivers/media/platform/Kconfig         |  2 ++
- drivers/media/platform/mtk-isp/Kconfig | 21 +++++++++++++++++++++
- 2 files changed, 23 insertions(+)
- create mode 100644 drivers/media/platform/mtk-isp/Kconfig
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 40 ++++++++++++++++++++++++++++++++
+ 1 file changed, 40 insertions(+)
 
-diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
-index a505e9f..ef08d48 100644
---- a/drivers/media/platform/Kconfig
-+++ b/drivers/media/platform/Kconfig
-@@ -32,6 +32,8 @@ source "drivers/media/platform/davinci/Kconfig"
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 3b85a6c..780d2c5 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -419,4 +419,44 @@
+ 		#clock-cells = <1>;
+ 	};
  
- source "drivers/media/platform/omap/Kconfig"
- 
-+source "drivers/media/platform/mtk-isp/Kconfig"
++	cam_smem: cam_smem {
++		compatible = "mediatek,cam_smem";
++		mediatek,larb = <&larb3>,
++				<&larb6>;
++		iommus = <&iommu M4U_PORT_CAM_LSCI0>,
++				<&iommu M4U_PORT_CAM_LSCI1>,
++				<&iommu M4U_PORT_CAM_BPCI>;
++	};
 +
- config VIDEO_ASPEED
- 	tristate "Aspeed AST2400 and AST2500 Video Engine driver"
- 	depends on VIDEO_V4L2
-diff --git a/drivers/media/platform/mtk-isp/Kconfig b/drivers/media/platform/mtk-isp/Kconfig
-new file mode 100644
-index 0000000..999eb24
---- /dev/null
-+++ b/drivers/media/platform/mtk-isp/Kconfig
-@@ -0,0 +1,21 @@
-+config VIDEO_MEDIATEK_ISP_PASS1_SUPPORT
-+	bool "Mediatek pass 1 image processing function"
-+
-+	select DMA_SHARED_BUFFER
-+	select VIDEO_V4L2_SUBDEV_API
-+	select VIDEOBUF2_DMA_CONTIG
-+	select VIDEOBUF2_CORE
-+	select VIDEOBUF2_V4L2
-+	select VIDEOBUF2_MEMOPS
-+	select VIDEOBUF2_VMALLOC
-+	select MEDIA_CONTROLLER
-+
-+	default n
-+	help
-+		Pass 1 driver controls 3A (autofocus, exposure,
-+		and white balance) with tuning feature and output
-+		the first capture image buffer in Mediatek's camera system.
-+
-+		Choose y if you want to use Mediatek SoCs to create image
-+		vcapture application such as video recording and still image
-+		capture.
++	camisp: camisp@1a000000 {
++		compatible = "mediatek,mt8183-camisp", "syscon";
++		reg = <0 0x1a000000 0 0x1000>,
++			<0 0x1a003000 0 0x1000>,
++			<0 0x1a004000 0 0x2000>,
++			<0 0x1a006000 0 0x2000>;
++		reg-names = "camisp",
++					"cam1",
++					"cam2",
++					"cam3";
++		interrupts = <GIC_SPI 253 IRQ_TYPE_LEVEL_LOW>,
++				<GIC_SPI 254 IRQ_TYPE_LEVEL_LOW>,
++				<GIC_SPI 255 IRQ_TYPE_LEVEL_LOW>;
++		interrupt-names = "cam1",
++					"cam2",
++					"cam3";
++		iommus = <&iommu M4U_PORT_CAM_LSCI0>,
++				<&iommu M4U_PORT_CAM_LSCI1>,
++				<&iommu M4U_PORT_CAM_BPCI>;
++		#clock-cells = <1>;
++		power-domains = <&scpsys MT8183_POWER_DOMAIN_CAM>;
++		/* Camera CCF */
++		clocks = <&camsys CLK_CAM_CAM>,
++				<&camsys CLK_CAM_CAMTG>;
++		clock-names = "CAMSYS_CAM_CGPDN",
++				"CAMSYS_CAMTG_CGPDN";
++		mediatek,larb = <&larb3>,
++				<&larb6>;
++		mediatek,vpu = <&vpu>;
++		smem_device = <&cam_smem>;
++	};
+ };
 -- 
 1.9.1
