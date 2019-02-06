@@ -1,45 +1,51 @@
-From: Christoph Hellwig <hch@infradead.org>
-Subject: Re: [PATCH] iommu: Allow io-pgtable to be used outside of
- drivers/iommu/
-Date: Tue, 5 Feb 2019 22:55:41 -0800
-Message-ID: <20190206065541.GA860@infradead.org>
-References: <20190205163731.17864-1-robh@kernel.org>
- <20190205165528.GA20157@infradead.org>
- <a6002b86-e18a-dd97-6dad-ab69e994678d@arm.com>
+From: Quentin Perret <quentin.perret@arm.com>
+Subject: Re: [PATCH 2/2] cpufreq: mediatek: Register an Energy Model
+Date: Wed, 6 Feb 2019 10:13:18 +0000
+Message-ID: <20190206101316.fr7z4ffr4ck4l4aj@queper01-lin>
+References: <20190205175225.25923-1-mka@chromium.org>
+ <20190205175225.25923-2-mka@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <a6002b86-e18a-dd97-6dad-ab69e994678d@arm.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Rob Herring <robh@kernel.org>, linux-arm-msm@vger.kernel.org, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Christoph Hellwig <hch@infradead.org>, iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20190205175225.25923-2-mka@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Kaehlcke <mka@chromium.org>
+Cc: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Taniya Das <tdas@codeaurora.org>, CK Hu <ck.hu@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Douglas Anderson <dianders@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Feb 05, 2019 at 05:12:29PM +0000, Robin Murphy wrote:
-> On 05/02/2019 16:55, Christoph Hellwig wrote:
-> > On Tue, Feb 05, 2019 at 10:37:31AM -0600, Rob Herring wrote:
-> > > Move io-pgtable.h to include/linux/ and export alloc_io_pgtable_ops
-> > > and free_io_pgtable_ops. This enables drivers outside drivers/iommu/ to
-> > > use the ARM page table library. Specifically, some ARM Mali GPUs use the
-> > > ARM page table formats.
-> > 
-> > Maybe rename it to arm-io-pgtable.h to make the usage a little more
-> > clear?
-> 
-> It's not Arm-specific, though - the whole point of io-pgtable is to be an
-> architecture-agnostic library of IOMMU pagetable code. It just happens that
-> the only formats implemented so far are the Arm ones that already have more
-> than one in-tree user each.
+Hi Matthias,
 
-Oh, ok.  I always thought of it as an ARM thing, but then I missed the
-intention behind it.
+On Tuesday 05 Feb 2019 at 09:52:25 (-0800), Matthias Kaehlcke wrote:
+> Try and register an Energy Model from mediatek-cpufreq to allow
+> interested subsystems like the task scheduler to use the provided
+> information.
+> 
+> Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+> ---
+>  drivers/cpufreq/mediatek-cpufreq.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+> index eb8920d398181..e6168ee582783 100644
+> --- a/drivers/cpufreq/mediatek-cpufreq.c
+> +++ b/drivers/cpufreq/mediatek-cpufreq.c
+> @@ -460,6 +460,8 @@ static int mtk_cpufreq_init(struct cpufreq_policy *policy)
+>  		return ret;
+>  	}
+>  
+> +	dev_pm_opp_of_register_em(policy->cpus);
+
+I'm not familiar with the mediatek-cpufreq driver so bear with me, but
+the code sets policy->cpus just below here. Is there any particular
+reason for not using that in PM_EM ?
+
+>  	cpumask_copy(policy->cpus, &info->cpus);
+>  	policy->freq_table = freq_table;
+>  	policy->driver_data = info;
+> -- 
+> 2.20.1.611.gfbb209baf1-goog
+> 
+
+Thanks,
+Quentin
