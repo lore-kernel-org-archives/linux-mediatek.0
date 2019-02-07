@@ -1,70 +1,61 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [RFC PATCH] PCI/portdrv: Support for subtractive decode bridge
-Date: Thu, 7 Feb 2019 09:18:16 -0600
-Message-ID: <20190207151816.GI7268@google.com>
-References: <1544758829-10327-1-git-send-email-honghui.zhang@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v6 1/6] irqchip/mtk-sysirq: support 4 interrupt parameters
+ for sysirq
+Date: Thu, 7 Feb 2019 16:20:21 +0100
+Message-ID: <898ca3d9-002b-e28e-fc97-86bc2538e9de@gmail.com>
+References: <1548317240-44682-1-git-send-email-erin.lo@mediatek.com>
+ <1548317240-44682-2-git-send-email-erin.lo@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1544758829-10327-1-git-send-email-honghui.zhang@mediatek.com>
+In-Reply-To: <1548317240-44682-2-git-send-email-erin.lo@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: honghui.zhang@mediatek.com
-Cc: lorenzo.pieralisi@arm.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com, matthias.bgg@gmail.com, youlin.pei@mediatek.com, poza@codeaurora.org, fred@fredlawl.com, rafael.j.wysocki@intel.com, jianjun.wang@mediatek.com
+To: Erin Lo <erin.lo@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <marc.zyngier@arm.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, yingjoe.chen@mediatek.com, mars.cheng@mediatek.com, eddie.huang@mediatek.com, linux-clk@vger.kernel.org, Seiya Wang <seiya.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Honghui,
 
-On Fri, Dec 14, 2018 at 11:40:29AM +0800, honghui.zhang@mediatek.com wrote:
-> From: Honghui Zhang <honghui.zhang@mediatek.com>
+
+On 24/01/2019 09:07, Erin Lo wrote:
+> From: Seiya Wang <seiya.wang@mediatek.com>
 > 
-> The Class Code for subtractive decode PCI-to-PCI bridge is 060401h,
-> change the class_mask values to make portdrv support this type bridge.
-
-I assume you have a Root Port or Switch Port that supports subtractive
-decode?  I'm trying to understand how such a device would work.
-
-Out of curiosity, can you show the "lspci -vv" output for the device
-and the downstream devices of interest?
-
-Do you happen to know whether this functionality is configurable,
-e.g., is there some way software can enable or disable subtractive
-decode?  I assume this would be some device-specific thing, because I
-can't find anything in the Bridge Control register or similar.  The
-PCIe spec doesn't even contain the word "subtractive".
-
-The "PCI Express to PCI/PCI-X Bridge Specification", r1.0, says a PCI
-Express bridge (which would include Root Ports and Switch Ports) has a
-Class Code of 0x060400 (Non-Subtractive PCI-PCI Bridge) (sec 1.1).
-
-Sec 1.3.4 says subtractive decode on the primary interface is "not
-applicable or outside the scope of this spec".
-
-Bjorn
-
-> Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+> To support partitioned PPIs, 4 interrupt parameters should be valid
+> for sysirq.
+> 
+> Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
+> Signed-off-by: Erin Lo <erin.lo@mediatek.com>
 > ---
->  drivers/pci/pcie/portdrv_pci.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/irqchip/irq-mtk-sysirq.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/pci/pcie/portdrv_pci.c b/drivers/pci/pcie/portdrv_pci.c
-> index eef22dc..86926ea 100644
-> --- a/drivers/pci/pcie/portdrv_pci.c
-> +++ b/drivers/pci/pcie/portdrv_pci.c
-> @@ -179,7 +179,7 @@ static void pcie_portdrv_err_resume(struct pci_dev *dev)
->   */
->  static const struct pci_device_id port_pci_ids[] = { {
->  	/* handle any PCI-Express port */
-> -	PCI_DEVICE_CLASS(((PCI_CLASS_BRIDGE_PCI << 8) | 0x00), ~0),
-> +	PCI_DEVICE_CLASS(((PCI_CLASS_BRIDGE_PCI << 8) | 0x00), ~0x01),
->  	}, { /* end: all zeroes */ }
->  };
+> diff --git a/drivers/irqchip/irq-mtk-sysirq.c b/drivers/irqchip/irq-mtk-sysirq.c
+> index 90aaf19..282736a 100644
+> --- a/drivers/irqchip/irq-mtk-sysirq.c
+> +++ b/drivers/irqchip/irq-mtk-sysirq.c
+> @@ -81,7 +81,7 @@ static int mtk_sysirq_domain_translate(struct irq_domain *d,
+>  				       unsigned int *type)
+>  {
+>  	if (is_of_node(fwspec->fwnode)) {
+> -		if (fwspec->param_count != 3)
+> +		if (fwspec->param_count != 3 && fwspec->param_count != 4)
+
+Where is this 4th parameter used?
+
+Regards,
+Matthias
+
+>  			return -EINVAL;
 >  
-> -- 
-> 2.6.4
+>  		/* No PPI should point to this domain */
+> @@ -104,7 +104,7 @@ static int mtk_sysirq_domain_alloc(struct irq_domain *domain, unsigned int virq,
+>  	struct irq_fwspec *fwspec = arg;
+>  	struct irq_fwspec gic_fwspec = *fwspec;
+>  
+> -	if (fwspec->param_count != 3)
+> +	if (fwspec->param_count != 3 && fwspec->param_count != 4)
+>  		return -EINVAL;
+>  
+>  	/* sysirq doesn't support PPI */
 > 
-> 
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
