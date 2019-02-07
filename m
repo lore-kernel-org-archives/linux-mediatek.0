@@ -1,67 +1,47 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 1/7] Revert "ARM: mediatek: add MT7623a smp bringup code"
-Date: Thu, 7 Feb 2019 17:47:38 +0100
-Message-ID: <c9d64405-975a-a7d7-9a1a-19094f1974db@gmail.com>
+Subject: Re: [PATCH 5/7] dt-bindings: interrupt-controller: update bindings
+ for MT7623
+Date: Thu, 7 Feb 2019 18:11:47 +0100
+Message-ID: <4c79bb2b-abb1-0306-2eff-884c2d8bbb47@gmail.com>
 References: <d1ab6c89b115ad0582815816490fa0c13ea83178.1548735271.git.ryder.lee@mediatek.com>
+ <5f226695c861fa9fc641488364f0c19c0a5eb425.1548735271.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <d1ab6c89b115ad0582815816490fa0c13ea83178.1548735271.git.ryder.lee@mediatek.com>
+In-Reply-To: <5f226695c861fa9fc641488364f0c19c0a5eb425.1548735271.git.ryder.lee@mediatek.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>
+To: Ryder Lee <ryder.lee@mediatek.com>, Marc Zyngier <marc.zyngier@arm.com>
 Cc: Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, Weijie Gao <weijie.gao@mediatek.com>, Roy Luo <roychl666@gmail.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 29/01/2019 05:28, Ryder Lee wrote:
-> This reverts commit 3b99ab7deca1e5f4229b4bdecd005d71e22cfc60.
-> 
-> The compatible "mediatek,mt7623a" is useless, so remove it.
+On 29/01/2019 05:31, Ryder Lee wrote:
+> This adds missing bindings for MT7623 sysirq.
 > 
 > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 
-pushed to v5.0-next/soc
+Marc, if you don't have any objections, I'll take this through my tree.
 
-Thanks!
+Regards,
+Matthias
 
 > ---
->  arch/arm/mach-mediatek/mediatek.c | 2 --
->  arch/arm/mach-mediatek/platsmp.c  | 1 -
->  2 files changed, 3 deletions(-)
+>  .../devicetree/bindings/interrupt-controller/mediatek,sysirq.txt         | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/arch/arm/mach-mediatek/mediatek.c b/arch/arm/mach-mediatek/mediatek.c
-> index 6910b4e..c3cf215 100644
-> --- a/arch/arm/mach-mediatek/mediatek.c
-> +++ b/arch/arm/mach-mediatek/mediatek.c
-> @@ -30,7 +30,6 @@ static void __init mediatek_timer_init(void)
->  
->  	if (of_machine_is_compatible("mediatek,mt6589") ||
->  	    of_machine_is_compatible("mediatek,mt7623") ||
-> -	    of_machine_is_compatible("mediatek,mt7623a") ||
->  	    of_machine_is_compatible("mediatek,mt8135") ||
->  	    of_machine_is_compatible("mediatek,mt8127")) {
->  		/* turn on GPT6 which ungates arch timer clocks */
-> @@ -50,7 +49,6 @@ static void __init mediatek_timer_init(void)
->  	"mediatek,mt6589",
->  	"mediatek,mt6592",
->  	"mediatek,mt7623",
-> -	"mediatek,mt7623a",
->  	"mediatek,mt8127",
->  	"mediatek,mt8135",
->  	NULL,
-> diff --git a/arch/arm/mach-mediatek/platsmp.c b/arch/arm/mach-mediatek/platsmp.c
-> index 6882ff0..51e8556 100644
-> --- a/arch/arm/mach-mediatek/platsmp.c
-> +++ b/arch/arm/mach-mediatek/platsmp.c
-> @@ -60,7 +60,6 @@ struct mtk_smp_boot_info {
->  static const struct of_device_id mtk_smp_boot_infos[] __initconst = {
->  	{ .compatible   = "mediatek,mt6589", .data = &mtk_mt6589_boot },
->  	{ .compatible   = "mediatek,mt7623", .data = &mtk_mt7623_boot },
-> -	{ .compatible   = "mediatek,mt7623a", .data = &mtk_mt7623_boot },
->  	{},
->  };
->  
+> diff --git a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt b/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
+> index 8da481c..e8b3688 100644
+> --- a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
+> +++ b/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
+> @@ -9,6 +9,7 @@ Required properties:
+>  	"mediatek,mt8135-sysirq", "mediatek,mt6577-sysirq": for MT8135
+>  	"mediatek,mt8127-sysirq", "mediatek,mt6577-sysirq": for MT8127
+>  	"mediatek,mt7622-sysirq", "mediatek,mt6577-sysirq": for MT7622
+> +	"mediatek,mt7623-sysirq", "mediatek,mt6577-sysirq": for MT7623
+>  	"mediatek,mt7629-sysirq", "mediatek,mt6577-sysirq": for MT7629
+>  	"mediatek,mt6795-sysirq", "mediatek,mt6577-sysirq": for MT6795
+>  	"mediatek,mt6797-sysirq", "mediatek,mt6577-sysirq": for MT6797
 > 
