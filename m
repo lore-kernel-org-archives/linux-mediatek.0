@@ -1,70 +1,67 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] thermal: mtk: Allocate enough space for mtk_thermal.
-Date: Thu, 7 Feb 2019 17:25:44 +0100
-Message-ID: <1d292090-414a-e500-f2e3-db3b0891812d@gmail.com>
-References: <20190109055724.184692-1-pihsun@chromium.org>
+Subject: Re: [PATCH 1/7] Revert "ARM: mediatek: add MT7623a smp bringup code"
+Date: Thu, 7 Feb 2019 17:47:38 +0100
+Message-ID: <c9d64405-975a-a7d7-9a1a-19094f1974db@gmail.com>
+References: <d1ab6c89b115ad0582815816490fa0c13ea83178.1548735271.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <20190109055724.184692-1-pihsun@chromium.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <d1ab6c89b115ad0582815816490fa0c13ea83178.1548735271.git.ryder.lee@mediatek.com>
 Content-Language: en-US
-Sender: stable-owner@vger.kernel.org
-To: Pi-Hsun Shih <pihsun@chromium.org>
-Cc: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, "open list:THERMAL" <linux-pm@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>, "stable@vger.kernel.org" <stable@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, Weijie Gao <weijie.gao@mediatek.com>, Roy Luo <roychl666@gmail.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 09/01/2019 06:57, Pi-Hsun Shih wrote:
-> The mtk_thermal struct contains a 'struct mtk_thermal_bank banks[];',
-> but the allocation only allocates sizeof(struct mtk_thermal) bytes,
-> which cause out of bound access with the ->banks[] member. Change it to
-> a fixed size array instead.
+On 29/01/2019 05:28, Ryder Lee wrote:
+> This reverts commit 3b99ab7deca1e5f4229b4bdecd005d71e22cfc60.
 > 
-> Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
+> The compatible "mediatek,mt7623a" is useless, so remove it.
+> 
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 
-For the next time, please don't forget to provide a fixes tag so that it can get
-into stable trees automatically.
+pushed to v5.0-next/soc
 
-For the records, it fixes commit (v4.9):
-b7cf0053738c ("thermal: Add Mediatek thermal driver for mt2701.")
-
+Thanks!
 
 > ---
->  drivers/thermal/mtk_thermal.c | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
+>  arch/arm/mach-mediatek/mediatek.c | 2 --
+>  arch/arm/mach-mediatek/platsmp.c  | 1 -
+>  2 files changed, 3 deletions(-)
 > 
-> diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-> index 0691f260f6eabe..ea11edb3fcced6 100644
-> --- a/drivers/thermal/mtk_thermal.c
-> +++ b/drivers/thermal/mtk_thermal.c
-> @@ -159,6 +159,9 @@
->  #define MT7622_NUM_SENSORS_PER_ZONE	1
->  #define MT7622_TS1	0
+> diff --git a/arch/arm/mach-mediatek/mediatek.c b/arch/arm/mach-mediatek/mediatek.c
+> index 6910b4e..c3cf215 100644
+> --- a/arch/arm/mach-mediatek/mediatek.c
+> +++ b/arch/arm/mach-mediatek/mediatek.c
+> @@ -30,7 +30,6 @@ static void __init mediatek_timer_init(void)
 >  
-> +/* The maximum number of banks */
-> +#define MAX_NUM_ZONES		8
-> +
->  struct mtk_thermal;
->  
->  struct thermal_bank_cfg {
-> @@ -178,7 +181,7 @@ struct mtk_thermal_data {
->  	const int *sensor_mux_values;
->  	const int *msr;
->  	const int *adcpnp;
-> -	struct thermal_bank_cfg bank_data[];
-> +	struct thermal_bank_cfg bank_data[MAX_NUM_ZONES];
+>  	if (of_machine_is_compatible("mediatek,mt6589") ||
+>  	    of_machine_is_compatible("mediatek,mt7623") ||
+> -	    of_machine_is_compatible("mediatek,mt7623a") ||
+>  	    of_machine_is_compatible("mediatek,mt8135") ||
+>  	    of_machine_is_compatible("mediatek,mt8127")) {
+>  		/* turn on GPT6 which ungates arch timer clocks */
+> @@ -50,7 +49,6 @@ static void __init mediatek_timer_init(void)
+>  	"mediatek,mt6589",
+>  	"mediatek,mt6592",
+>  	"mediatek,mt7623",
+> -	"mediatek,mt7623a",
+>  	"mediatek,mt8127",
+>  	"mediatek,mt8135",
+>  	NULL,
+> diff --git a/arch/arm/mach-mediatek/platsmp.c b/arch/arm/mach-mediatek/platsmp.c
+> index 6882ff0..51e8556 100644
+> --- a/arch/arm/mach-mediatek/platsmp.c
+> +++ b/arch/arm/mach-mediatek/platsmp.c
+> @@ -60,7 +60,6 @@ struct mtk_smp_boot_info {
+>  static const struct of_device_id mtk_smp_boot_infos[] __initconst = {
+>  	{ .compatible   = "mediatek,mt6589", .data = &mtk_mt6589_boot },
+>  	{ .compatible   = "mediatek,mt7623", .data = &mtk_mt7623_boot },
+> -	{ .compatible   = "mediatek,mt7623a", .data = &mtk_mt7623_boot },
+>  	{},
 >  };
 >  
->  struct mtk_thermal {
-> @@ -197,7 +200,7 @@ struct mtk_thermal {
->  	s32 vts[MT8173_NUM_SENSORS];
->  
->  	const struct mtk_thermal_data *conf;
-> -	struct mtk_thermal_bank banks[];
-> +	struct mtk_thermal_bank banks[MAX_NUM_ZONES];
->  };
->  
->  /* MT8173 thermal sensor data */
 > 
