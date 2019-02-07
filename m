@@ -1,61 +1,70 @@
-From: Marc Zyngier <marc.zyngier@arm.com>
-Subject: Re: [PATCH v6 1/6] irqchip/mtk-sysirq: support 4 interrupt parameters
- for sysirq
-Date: Thu, 7 Feb 2019 15:52:27 +0000
-Message-ID: <c0187acf-bd8c-2d41-d84d-d35fc63b2beb@arm.com>
-References: <1548317240-44682-1-git-send-email-erin.lo@mediatek.com>
- <1548317240-44682-2-git-send-email-erin.lo@mediatek.com>
- <898ca3d9-002b-e28e-fc97-86bc2538e9de@gmail.com>
- <626b5b46-aac7-1532-386e-2fed85bf4ad9@arm.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH] thermal: mtk: Allocate enough space for mtk_thermal.
+Date: Thu, 7 Feb 2019 17:25:44 +0100
+Message-ID: <1d292090-414a-e500-f2e3-db3b0891812d@gmail.com>
+References: <20190109055724.184692-1-pihsun@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <626b5b46-aac7-1532-386e-2fed85bf4ad9@arm.com>
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <20190109055724.184692-1-pihsun@chromium.org>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Erin Lo <erin.lo@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Stephen Boyd <sboyd@codeaurora.org>
-Cc: devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, yingjoe.chen@mediatek.com, mars.cheng@mediatek.com, eddie.huang@mediatek.com, linux-clk@vger.kernel.org, Seiya Wang <seiya.wang@mediatek.com>
+Sender: stable-owner@vger.kernel.org
+To: Pi-Hsun Shih <pihsun@chromium.org>
+Cc: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, "open list:THERMAL" <linux-pm@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>, "stable@vger.kernel.org" <stable@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 07/02/2019 15:47, Marc Zyngier wrote:
-> On 07/02/2019 15:20, Matthias Brugger wrote:
->>
->>
->> On 24/01/2019 09:07, Erin Lo wrote:
->>> From: Seiya Wang <seiya.wang@mediatek.com>
->>>
->>> To support partitioned PPIs, 4 interrupt parameters should be valid
->>> for sysirq.
->>>
->>> Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
->>> Signed-off-by: Erin Lo <erin.lo@mediatek.com>
->>> ---
->>>  drivers/irqchip/irq-mtk-sysirq.c | 4 ++--
->>>  1 file changed, 2 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/drivers/irqchip/irq-mtk-sysirq.c b/drivers/irqchip/irq-mtk-sysirq.c
->>> index 90aaf19..282736a 100644
->>> --- a/drivers/irqchip/irq-mtk-sysirq.c
->>> +++ b/drivers/irqchip/irq-mtk-sysirq.c
->>> @@ -81,7 +81,7 @@ static int mtk_sysirq_domain_translate(struct irq_domain *d,
->>>  				       unsigned int *type)
->>>  {
->>>  	if (is_of_node(fwspec->fwnode)) {
->>> -		if (fwspec->param_count != 3)
->>> +		if (fwspec->param_count != 3 && fwspec->param_count != 4)
->>
->> Where is this 4th parameter used?
+
+
+On 09/01/2019 06:57, Pi-Hsun Shih wrote:
+> The mtk_thermal struct contains a 'struct mtk_thermal_bank banks[];',
+> but the allocation only allocates sizeof(struct mtk_thermal) bytes,
+> which cause out of bound access with the ->banks[] member. Change it to
+> a fixed size array instead.
 > 
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/interrupt-controller/arm,gic-v3.txt#n14
-Sorry, I fired Send way too early.
+> Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
 
-What I wanted to add is that it is not clear to me why this change would
-be required here, as this driver only supports SPIs. It could be fixed
-by just relaxing the binding itself.
+For the next time, please don't forget to provide a fixes tag so that it can get
+into stable trees automatically.
 
-Thanks,
+For the records, it fixes commit (v4.9):
+b7cf0053738c ("thermal: Add Mediatek thermal driver for mt2701.")
 
-	M.
--- 
-Jazz is not dead. It just smells funny...
+
+> ---
+>  drivers/thermal/mtk_thermal.c | 7 +++++--
+>  1 file changed, 5 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+> index 0691f260f6eabe..ea11edb3fcced6 100644
+> --- a/drivers/thermal/mtk_thermal.c
+> +++ b/drivers/thermal/mtk_thermal.c
+> @@ -159,6 +159,9 @@
+>  #define MT7622_NUM_SENSORS_PER_ZONE	1
+>  #define MT7622_TS1	0
+>  
+> +/* The maximum number of banks */
+> +#define MAX_NUM_ZONES		8
+> +
+>  struct mtk_thermal;
+>  
+>  struct thermal_bank_cfg {
+> @@ -178,7 +181,7 @@ struct mtk_thermal_data {
+>  	const int *sensor_mux_values;
+>  	const int *msr;
+>  	const int *adcpnp;
+> -	struct thermal_bank_cfg bank_data[];
+> +	struct thermal_bank_cfg bank_data[MAX_NUM_ZONES];
+>  };
+>  
+>  struct mtk_thermal {
+> @@ -197,7 +200,7 @@ struct mtk_thermal {
+>  	s32 vts[MT8173_NUM_SENSORS];
+>  
+>  	const struct mtk_thermal_data *conf;
+> -	struct mtk_thermal_bank banks[];
+> +	struct mtk_thermal_bank banks[MAX_NUM_ZONES];
+>  };
+>  
+>  /* MT8173 thermal sensor data */
+> 
