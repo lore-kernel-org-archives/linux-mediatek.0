@@ -1,36 +1,35 @@
-From: Marc Zyngier <marc.zyngier@arm.com>
-Subject: Re: [PATCH 5/7] dt-bindings: interrupt-controller: update bindings
- for MT7623
-Date: Fri, 8 Feb 2019 09:25:31 +0000
-Message-ID: <a43efea8-4ddc-86d2-ef51-65ebb3c189ab@arm.com>
-References: <d1ab6c89b115ad0582815816490fa0c13ea83178.1548735271.git.ryder.lee@mediatek.com>
- <5f226695c861fa9fc641488364f0c19c0a5eb425.1548735271.git.ryder.lee@mediatek.com>
- <4c79bb2b-abb1-0306-2eff-884c2d8bbb47@gmail.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCHv2] gpio: MT7621: use a per instance irq_chip structure
+Date: Fri, 8 Feb 2019 12:30:59 +0100
+Message-ID: <CACRpkdYf4BfTwmAVxAi8CcKkT7A1SwW-KeSPNyBPJs870Ci7nw@mail.gmail.com>
+References: <20190130161048.9852-1-opensource@vdorst.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <4c79bb2b-abb1-0306-2eff-884c2d8bbb47@gmail.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, Weijie Gao <weijie.gao@mediatek.com>, Roy Luo <roychl666@gmail.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <20190130161048.9852-1-opensource@vdorst.com>
+Sender: stable-owner@vger.kernel.org
+To: =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>
+Cc: Bartosz Golaszewski <bgolaszewski@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, gerg@kernel.org, stable <stable@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 07/02/2019 17:11, Matthias Brugger wrote:
-> 
-> 
-> On 29/01/2019 05:31, Ryder Lee wrote:
->> This adds missing bindings for MT7623 sysirq.
->>
->> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> 
-> Marc, if you don't have any objections, I'll take this through my tree.
+On Wed, Jan 30, 2019 at 5:21 PM Ren=C3=A9 van Dorst <opensource@vdorst.com>=
+ wrote:
 
-Sure, feel free to.
+> This fixes the kernel complains:
+> gpio gpiochip1: (1e000600.gpio-bank1): detected irqchip that is shared
+>             with multiple gpiochips: please fix the driver.
+> gpio gpiochip2: (1e000600.gpio-bank2): detected irqchip that is shared
+>             with multiple gpiochips: please fix the driver.
+>
+> Fixes: 4ba9c3afda41 ("gpio: mt7621: Add a driver for MT7621")
+> Signed-off-by: Ren=C3=A9 van Dorst <opensource@vdorst.com>
+> Cc: linux-gpio@vger.kernel.org
+> Cc: linux-mediatek@lists.infradead.org
+> Cc: gerg@kernel.org
+> Cc: stable@vger.kernel.org
 
-Thanks,
+Patch applied for fixes with Greg's ACK.
 
-	M.
--- 
-Jazz is not dead. It just smells funny...
+Yours,
+Linus Walleij
