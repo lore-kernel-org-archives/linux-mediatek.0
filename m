@@ -1,110 +1,60 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v4 10/12] dt-bindings: soc: Add MT8183 power dt-bindings
-Date: Fri, 8 Feb 2019 19:33:36 +0100
-Message-ID: <831a5728-de2d-b777-56b6-1fdcb9c7ed49@gmail.com>
-References: <20190201083016.25856-1-weiyi.lu@mediatek.com>
- <20190201083016.25856-12-weiyi.lu@mediatek.com>
+Subject: [GIT PULL] Mediatek DT 32 bit updates for v5.1
+Date: Fri, 8 Feb 2019 20:59:39 +0100
+Message-ID: <40e8af4e-e86d-af97-d9bf-0932c97a2829@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <20190201083016.25856-12-weiyi.lu@mediatek.com>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Language: en-US
-Sender: stable-owner@vger.kernel.org
-To: Weiyi Lu <weiyi.lu@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm-soc <arm@kernel.org>
+Cc: Viresh Kumar <viresh.kumar@linaro.org>, Ryder Lee <ryder.lee@mediatek.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Arnd,
+Hi Olof,
 
+Please find below changes for 32 bit device tree for v5.1.
 
-On 01/02/2019 09:30, Weiyi Lu wrote:
-> Add power dt-bindings for MT8183.
-> 
+Please merge :)
+Matthias
 
-Sorry didn't see this when reviewing the driver.
-Please add real commit message, explaining what the changes are.
+---
+The following changes since commit bfeffd155283772bbe78c6a05dec7c0128ee500c:
 
-> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> ---
->  .../bindings/soc/mediatek/scpsys.txt          | 14 ++++++++++
->  include/dt-bindings/power/mt8183-power.h      | 26 +++++++++++++++++++
->  2 files changed, 40 insertions(+)
->  create mode 100644 include/dt-bindings/power/mt8183-power.h
-> 
-> diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> index d6fe16f094af..b4728ce81c43 100644
-> --- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> +++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> @@ -14,6 +14,7 @@ power/power_domain.txt. It provides the power domains defined in
->  - include/dt-bindings/power/mt2701-power.h
->  - include/dt-bindings/power/mt2712-power.h
->  - include/dt-bindings/power/mt7622-power.h
-> +- include/dt-bindings/power/mt8183-power.h
->  
->  Required properties:
->  - compatible: Should be one of:
-> @@ -24,18 +25,31 @@ Required properties:
->  	- "mediatek,mt7623-scpsys", "mediatek,mt2701-scpsys": For MT7623 SoC
->  	- "mediatek,mt7623a-scpsys": For MT7623A SoC
->  	- "mediatek,mt8173-scpsys"
-> +	- "mediatek,mt8183-scpsys"
->  - #power-domain-cells: Must be 1
->  - reg: Address range of the SCPSYS unit
->  - infracfg: must contain a phandle to the infracfg controller
->  - clock, clock-names: clocks according to the common clock binding.
->                        These are clocks which hardware needs to be
->                        enabled before enabling certain power domains.
-> +                      The new clock type "BASIC" belongs to the type above.
-> +                      As to the new clock type "SUBSYS" needs to be
-> +                      enabled before releasing bus protection.
->  	Required clocks for MT2701 or MT7623: "mm", "mfg", "ethif"
->  	Required clocks for MT2712: "mm", "mfg", "venc", "jpgdec", "audio", "vdec"
->  	Required clocks for MT6797: "mm", "mfg", "vdec"
->  	Required clocks for MT7622: "hif_sel"
->  	Required clocks for MT7622A: "ethif"
->  	Required clocks for MT8173: "mm", "mfg", "venc", "venc_lt"
-> +	Required clocks for MT8183: BASIC: "audio", "mfg", "mm", "cam", "isp",
-> +					   "vpu", "vpu1", "vpu2", "vpu3"
-> +				    SUBSYS: "mm-0", "mm-1", "mm-2", "mm-3",
-> +					    "mm-4", "mm-5", "mm-6", "mm-7",
-> +					    "mm-8", "mm-9", "isp-0", "isp-1",
-> +					    "cam-0", "cam-1", "cam-2", "cam-3",
-> +					    "cam-4", "cam-5", "cam-6", "vpu-0",
-> +					    "vpu-1", "vpu-2", "vpu-3", "vpu-4",
-> +					    "vpu-5"
->  
->  Optional properties:
->  - vdec-supply: Power supply for the vdec power domain
-> diff --git a/include/dt-bindings/power/mt8183-power.h b/include/dt-bindings/power/mt8183-power.h
-> new file mode 100644
-> index 000000000000..5c0c8c7e3cd0
-> --- /dev/null
-> +++ b/include/dt-bindings/power/mt8183-power.h
-> @@ -0,0 +1,26 @@
-> +/* SPDX-License-Identifier: GPL-2.0
-> + *
-> + * Copyright (c) 2018 MediaTek Inc.
-> + * Author: Weiyi Lu <weiyi.lu@mediatek.com>
-> + */
-> +
-> +#ifndef _DT_BINDINGS_POWER_MT8183_POWER_H
-> +#define _DT_BINDINGS_POWER_MT8183_POWER_H
-> +
-> +#define MT8183_POWER_DOMAIN_AUDIO	0
-> +#define MT8183_POWER_DOMAIN_CONN	1
-> +#define MT8183_POWER_DOMAIN_MFG_ASYNC	2
-> +#define MT8183_POWER_DOMAIN_MFG		3
-> +#define MT8183_POWER_DOMAIN_MFG_CORE0	4
-> +#define MT8183_POWER_DOMAIN_MFG_CORE1	5
-> +#define MT8183_POWER_DOMAIN_MFG_2D	6
-> +#define MT8183_POWER_DOMAIN_DISP	7
-> +#define MT8183_POWER_DOMAIN_CAM		8
-> +#define MT8183_POWER_DOMAIN_ISP		9
-> +#define MT8183_POWER_DOMAIN_VDEC	10
-> +#define MT8183_POWER_DOMAIN_VENC	11
-> +#define MT8183_POWER_DOMAIN_VPU_TOP	12
-> +#define MT8183_POWER_DOMAIN_VPU_CORE0	13
-> +#define MT8183_POWER_DOMAIN_VPU_CORE1	14
-> +
-> +#endif /* _DT_BINDINGS_POWER_MT8183_POWER_H */
-> 
+  Linux 5.0-rc1 (2019-01-06 17:08:20 -0800)
+
+are available in the Git repository at:
+
+  ssh://git@gitolite.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
+tags/v5.0-next-dts32
+
+for you to fetch changes up to 60b71a239bbd286232a547349815d6330f10db7c:
+
+  dt-bindings: interrupt-controller: update bindings for MT7623 (2019-02-08
+13:18:04 +0100)
+
+----------------------------------------------------------------
+mt7623:
+add cooling mask to all CPUs
+add compatible to sysirq binding
+
+----------------------------------------------------------------
+Ryder Lee (1):
+      dt-bindings: interrupt-controller: update bindings for MT7623
+
+Viresh Kumar (1):
+      ARM: dts: mt7623: Add all CPUs in cooling maps
+
+ .../bindings/interrupt-controller/mediatek,sysirq.txt     |  1 +
+ arch/arm/boot/dts/mt7623.dtsi                             | 15 ++++++++++++---
+ 2 files changed, 13 insertions(+), 3 deletions(-)
