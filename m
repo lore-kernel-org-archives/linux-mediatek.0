@@ -1,44 +1,36 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [RFC PATCH] PCI/portdrv: Support for subtractive decode bridge
-Date: Thu, 7 Feb 2019 13:52:30 -0600
-Message-ID: <20190207195230.GJ7268@google.com>
-References: <1544758829-10327-1-git-send-email-honghui.zhang@mediatek.com>
- <20190207151816.GI7268@google.com>
+From: Marc Zyngier <marc.zyngier@arm.com>
+Subject: Re: [PATCH 5/7] dt-bindings: interrupt-controller: update bindings
+ for MT7623
+Date: Fri, 8 Feb 2019 09:25:31 +0000
+Message-ID: <a43efea8-4ddc-86d2-ef51-65ebb3c189ab@arm.com>
+References: <d1ab6c89b115ad0582815816490fa0c13ea83178.1548735271.git.ryder.lee@mediatek.com>
+ <5f226695c861fa9fc641488364f0c19c0a5eb425.1548735271.git.ryder.lee@mediatek.com>
+ <4c79bb2b-abb1-0306-2eff-884c2d8bbb47@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190207151816.GI7268@google.com>
+In-Reply-To: <4c79bb2b-abb1-0306-2eff-884c2d8bbb47@gmail.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: honghui.zhang@mediatek.com
-Cc: youlin.pei@mediatek.com, lorenzo.pieralisi@arm.com, poza@codeaurora.org, fred@fredlawl.com, linux-pci@vger.kernel.org, rafael.j.wysocki@intel.com, linux-kernel@vger.kernel.org, jianjun.wang@mediatek.com, ryder.lee@mediatek.com, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, Weijie Gao <weijie.gao@mediatek.com>, Roy Luo <roychl666@gmail.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Feb 07, 2019 at 09:18:16AM -0600, Bjorn Helgaas wrote:
-> On Fri, Dec 14, 2018 at 11:40:29AM +0800, honghui.zhang@mediatek.com wrote:
-> > From: Honghui Zhang <honghui.zhang@mediatek.com>
-> > 
-> > The Class Code for subtractive decode PCI-to-PCI bridge is 060401h,
-> > change the class_mask values to make portdrv support this type bridge.
+On 07/02/2019 17:11, Matthias Brugger wrote:
 > 
-> I assume you have a Root Port or Switch Port that supports subtractive
-> decode?  I'm trying to understand how such a device would work.
 > 
-> Out of curiosity, can you show the "lspci -vv" output for the device
-> and the downstream devices of interest?
+> On 29/01/2019 05:31, Ryder Lee wrote:
+>> This adds missing bindings for MT7623 sysirq.
+>>
+>> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> 
+> Marc, if you don't have any objections, I'll take this through my tree.
 
-Actually, since subtractive decode has to do with how the bridge
-interacts with its *peers*, what would be interesting is the host
-bridge window information from ACPI _CRS or DT and the lspci info for
-everything under that host bridge.
+Sure, feel free to.
 
-Assuming we're talking about a Root Port, I guess that would mean
-anything inside the host bridge windows but outside the positive
-decode windows (the normal PCI-PCI bridge apertures in the Root Ports)
-would be claimed by the subtractive decode Root Port?
+Thanks,
 
-I guess you would want this because this path ultimately leads to an
-ISA or similar bus where you don't know what resources the device
-actually consumes?
-
-Bjorn
+	M.
+-- 
+Jazz is not dead. It just smells funny...
