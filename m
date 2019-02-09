@@ -1,19 +1,16 @@
-From: Erin Lo <erin.lo@mediatek.com>
-Subject: Re: [PATCH v6 6/6] arm64: dts: Add Mediatek SoC MT8183 and
- evaluation board dts and Makefile
-Date: Sat, 9 Feb 2019 15:37:30 +0800
-Message-ID: <1549697850.26316.5.camel@mtksdaap41>
-References: <1548317240-44682-1-git-send-email-erin.lo@mediatek.com>
- <1548317240-44682-7-git-send-email-erin.lo@mediatek.com>
- <20190130162204.GA1521@bogus> <1548902050.23230.4.camel@mtksdaap41>
- <CAL_JsqL1vQCgbb2yLL2E4KTDZve1vus5bDX75HGiOu14X26q7w@mail.gmail.com>
- <1548992018.11367.8.camel@mtksdaap41> <1548997866.26127.4.camel@mtksdaap41>
- <c872f03c-714a-d99f-d555-e897f80d67be@gmail.com>
+From: Sakari Ailus <sakari.ailus@iki.fi>
+Subject: Re: [RFC PATCH V0 1/7] [media] dt-bindings: mt8183: Add binding for
+ DIP shared memory
+Date: Sat, 9 Feb 2019 17:59:07 +0200
+Message-ID: <20190209155907.rbgwbdablndcesid@valkosipuli.retiisi.org.uk>
+References: <1549020091-42064-1-git-send-email-frederic.chen@mediatek.com>
+ <1549020091-42064-2-git-send-email-frederic.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <c872f03c-714a-d99f-d555-e897f80d67be@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <1549020091-42064-2-git-send-email-frederic.chen@mediatek.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -23,130 +20,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Ben Ho <Ben.Ho@mediatek.com>, Mars Cheng <mars.cheng@mediatek.com>, Mengqi Zhang <Mengqi.Zhang@mediatek.com>, linux-clk <linux-clk@vger.kernel.org>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, Rob Herring <robh@kernel.org>, Weiyi Lu <weiyi.lu@mediatek.com>, Marc Zyngier <marc.zyngier@arm.com>, "open
- list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, Jason Cooper <jason@lakedaemon.net>, Seiya Wang <seiya.wang@mediatek.com>, "moderated
- list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Thomas Gleixner <tglx@linutronix.de>, Eddie Huang <eddie.huang@mediatek.com>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfound>
+To: Frederic Chen <frederic.chen@mediatek.com>
+Cc: Sean.Cheng@mediatek.com, laurent.pinchart+renesas@ideasonboard.com, Rynn.Wu@mediatek.com, christie.yu@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, Jerry-ch.Chen@mediatek.com, tfiga@chromium.org, jungo.lin@mediatek.com, sj.huang@mediatek.com, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, hans.verkuil@cisco.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2019-02-07 at 16:08 +0100, Matthias Brugger wrote:
-> 
-> On 01/02/2019 06:11, Erin Lo wrote:
-> > Add back more people since mail server issue
-> > 
-> > On Fri, 2019-02-01 at 11:33 +0800, Erin Lo wrote:
-> >> On Thu, 2019-01-31 at 15:10 -0600, Rob Herring wrote:
-> >>> On Wed, Jan 30, 2019 at 8:34 PM Erin Lo <erin.lo@mediatek.com> wrote:
-> >>>>
-> >>>> On Wed, 2019-01-30 at 10:22 -0600, Rob Herring wrote:
-> >>>>> On Thu, Jan 24, 2019 at 04:07:20PM +0800, Erin Lo wrote:
-> >>>>>> From: Ben Ho <Ben.Ho@mediatek.com>
-> >>>>>>
-> >>>>>> Add basic chip support for Mediatek 8183, include
-> >>>>>> pinctrl file, uart node with correct uart clocks, pwrap device
-> >>>>>>
-> >>>>>> Add clock controller nodes, include topckgen, infracfg,
-> >>>>>> apmixedsys and subsystem.
-> >>>>>>
-> >>>>>> Signed-off-by: Ben Ho <Ben.Ho@mediatek.com>
-> >>>>>> Signed-off-by: Erin Lo <erin.lo@mediatek.com>
-> >>>>>> Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
-> >>>>>> Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
-> >>>>>> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> >>>>>> Signed-off-by: Mengqi Zhang <Mengqi.Zhang@mediatek.com>
-> >>>>>> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> >>>>>> Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
-> >>>>>> ---
-> >>>>>
-> >>>>>
-> >>>>>> +   sysirq: intpol-controller@c530a80 {
-> >>>>>
-> >>>>> interrupt-controller@...
-> >>>>
-> >>>> I will modify it in next version.
-> >>>>>
-> >>>>>
-> >>>>> Place all the MMIO peripherals under one or more simple-bus nodes.
-> >>>>>
-> >>>>> Rob
-> >>>>>
-> >>>>
-> >>>> Do you mean need to add simple-bus like this?
-> >>>
-> >>> Yes.
-> >>
-> >> We remove soc because Matthias suggested it in former MTK SoC maybe in
-> >> 2015 year.
-> >>
-> >> We will add it back by your comment.
-> >>
-> >> Thank you. 
-> >>
-> >> Best Regards,
-> >> Erin
-> > 
-> > Hi, Matthias,
-> > Do you have any comment here?
-> 
-> Although I wasn't able to find it in the documentation my understanding is, that
-> all devices on-chip should be under soc "bus".
-> 
-> I'm sorry if I created confusion with comments in the past.
-> 
-> Regards,
-> Matthias
-> 
+Hi Frederic,
 
-OK! we will add soc "bus" back in next version.
-Thank you for your comment.
+Could you cc the devicetree list, please?
 
-Best Regards,
-Erin
-
-> > Thanks
-> > 
-> > Best Regards,
-> > Erin
-> >>>
-> >>>>
-> >>>> +   soc: soc {
-> >>>> +                #address-cells = <0x1>;
-> >>>> +                #size-cells = <0x1>;
-> >>>> +                ranges = <0 0 0 0xffffffff>;
-> >>>> +                compatible = "simple-bus";
-> >>>>
-> >>>>                 soc_data: soc_data@08000000 {
-> >>>>                         compatible = "mediatek,mt8183-efuse",
-> >>>>                                      "mediatek,efuse";
-> >>>>                         reg = <0 0x08000000 0 0x0010>;
-> >>>>                         #address-cells = <1>;
-> >>>>                         #size-cells = <1>;
-> >>>>                         status = "disabled";
-> >>>>                 };
-> >>>>
-> >>>>                 gic: interrupt-controller@0c000000 {
-> >>>>                         compatible = "arm,gic-v3";
-> >>>>                         #interrupt-cells = <4>;
-> >>>>
-> >>>> Best Regards,
-> >>>> Erin
-> >>>>
-> >>>>> _______________________________________________
-> >>>>> Linux-mediatek mailing list
-> >>>>> Linux-mediatek@lists.infradead.org
-> >>>>> http://lists.infradead.org/mailman/listinfo/linux-mediatek
-> >>>>
-> >>>>
-> >>>>
-> >>>> _______________________________________________
-> >>>> linux-arm-kernel mailing list
-> >>>> linux-arm-kernel@lists.infradead.org
-> >>>> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-> >>
-> > 
-> > 
+On Fri, Feb 01, 2019 at 07:21:25PM +0800, Frederic Chen wrote:
+> This patch adds the binding for describing the shared memory
+> used to exchange configuration and tuning data between the
+> co-processor and Digital Image Processing (DIP) unit of the
+> camera ISP system on Mediatek SoCs.
 > 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> Signed-off-by: Frederic Chen <frederic.chen@mediatek.com>
+> ---
+>  .../mediatek,reserve-memory-dip_smem.txt           | 45 ++++++++++++++++++++++
+>  1 file changed, 45 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt b/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt
+> new file mode 100644
+> index 0000000..0ded478
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt
+> @@ -0,0 +1,45 @@
+> +Mediatek DIP Shared Memory binding
+> +
+> +This binding describes the shared memory, which serves the purpose of
+> +describing the shared memory region used to exchange data between Digital
+> +Image Processing (DIP) and co-processor in Mediatek SoCs.
+> +
+> +The co-processor doesn't have the iommu so we need to use the physical
+> +address to access the shared buffer in the firmware.
+> +
+> +The Digital Image Processing (DIP) can access memory through mt8183 IOMMU so
+> +it can use dma address to access the memory region.
+> +(See iommu/mediatek,iommu.txt for the detailed description of Mediatek IOMMU)
+
+What kind of purpose is the memory used for? Buffers containing video data,
+or something else? Could the buffer objects be mapped on the devices
+based on the need instead?
+
+> +
+> +
+> +Required properties:
+> +
+> +- compatible: must be "mediatek,reserve-memory-dip_smem"
+> +
+> +- reg: required for static allocation (see reserved-memory.txt for
+> +  the detailed usage)
+> +
+> +- alloc-range: required for dynamic allocation. The range must
+> +  between 0x00000400 and 0x100000000 due to the co-processer's
+> +  addressing limitation
+> +
+> +- size: required for dynamic allocation. The unit is bytes.
+> +  If you want to enable the full feature of Digital Processing Unit,
+> +  you need 20 MB at least.
+> +
+> +
+> +Example:
+> +
+> +The following example shows the DIP shared memory setup for MT8183.
+> +
+> +	reserved-memory {
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+> +		ranges;
+> +		reserve-memory-isp_smem {
+> +			compatible = "mediatek,reserve-memory-dip_smem";
+> +			size = <0 0x1400000>;
+> +			alignment = <0 0x1000>;
+> +			alloc-ranges = <0 0x40000000 0 0x50000000>;
+> +		};
+> +	};
+
+-- 
+Kind regards,
+
+Sakari Ailus
