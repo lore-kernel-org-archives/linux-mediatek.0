@@ -1,34 +1,92 @@
-From: Kalle Valo <kvalo@codeaurora.org>
-Subject: Re: [Resend PATCH] mt76: change the return type of mt76_dma_attach()
-Date: Mon, 11 Feb 2019 11:19:28 +0200
-Message-ID: <87lg2m3cnz.fsf@codeaurora.org>
-References: <228fdddb9ca96e8ce861e324eb9039722cf18f49.1549850911.git.ryder.lee@mediatek.com>
+From: Johan Hovold <johan@kernel.org>
+Subject: Re: [PATCH v3 2/4] dt-bindings: gnss: add mediatek binding
+Date: Mon, 11 Feb 2019 10:22:51 +0100
+Message-ID: <20190211092251.GV4686@localhost>
+References: <1548693481-1162-1-git-send-email-lollivier@baylibre.com>
+ <1548693481-1162-3-git-send-email-lollivier@baylibre.com>
+ <20190130155016.GA26536@bogus>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <228fdddb9ca96e8ce861e324eb9039722cf18f49.1549850911.git.ryder.lee@mediatek.com>
-        (Ryder Lee's message of "Mon, 11 Feb 2019 16:48:29 +0800")
+Content-Disposition: inline
+In-Reply-To: <20190130155016.GA26536@bogus>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Felix Fietkau <nbd@nbd.name>, Roy Luo <roychl666@gmail.com>, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: Rob Herring <robh@kernel.org>
+Cc: Loys Ollivier <lollivier@baylibre.com>, devicetree@vger.kernel.org, Johan Hovold <johan@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-kernel@vger.kernel.org, Kevin Hilman <khilman@baylibre.com>, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Ryder Lee <ryder.lee@mediatek.com> writes:
+On Wed, Jan 30, 2019 at 09:50:16AM -0600, Rob Herring wrote:
+> On Mon, Jan 28, 2019 at 05:37:59PM +0100, Loys Ollivier wrote:
+> > Add binding for Mediatek-based GNSS receivers.
+> > 
+> > Signed-off-by: Loys Ollivier <lollivier@baylibre.com>
+> > ---
+> > 
+> > v3:
+> > Removed the I2C and SPI interfaces references.
+> > Removed the "mediatek,mt3339" compatible line.
+> > Added the optional propertied (reset, fix)
+> > Added the pin names for the optional properties.
+> > 
+> > v2:
+> > Renamed bindings from Globaltop/gtop to Mediatek/mtk.
+> > Moved current-speed as an optional propertie.
+> > Removed the status line in the example.
+> > Added "mediatek,mt3339" compatible.
+> > 
+> >  .../devicetree/bindings/gnss/mediatek.txt          | 37 ++++++++++++++++++++++
+> >  1 file changed, 37 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/gnss/mediatek.txt
+> > 
+> > diff --git a/Documentation/devicetree/bindings/gnss/mediatek.txt b/Documentation/devicetree/bindings/gnss/mediatek.txt
+> > new file mode 100644
+> > index 000000000000..00650d81c5c8
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/gnss/mediatek.txt
+> > @@ -0,0 +1,37 @@
+> > +Mediatek-based GNSS Receiver DT binding
+> > +
+> > +Mediatek chipsets are used in GNSS-receiver modules produced by several
+> > +vendors and can use an UART interface.
 
-> There is no need to return 0 in mt76_dma_attach(), so switch it to void.
->
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+s/an/a/
 
-When you send a new version mark it as v2:
+> > +
+> > +Please see Documentation/devicetree/bindings/gnss/gnss.txt for generic
+> > +properties.
+> > +
+> > +Required properties:
+> > +
+> > +- compatible	: Must be
+> > +
+> > +			"globaltop,pa6h"
+> > +
+> > +- vcc-supply	: Main voltage regulator (pin name: VCC)
+> > +
+> > +Optional properties:
+> > +
+> > +- gtop,reset-gpios	: GPIO used to reset the device
+> > +  			  (pin name: RESET, NRESET)
+> 
+> reset-gpios is the standard name.
+> 
+> > +- gtop,fix-gpios	: GPIO used to determine device position fix state
+> > +			  (pin name: FIX, 3D_FIX)
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches#patch_version_missing
+I'm thinking we might need a standard name for fix-gpios as well. This
+isn't a feature that is globaltop (or mediatek) specific, and other
+manufacturers provide similar functionality through pins named UI_FIX,
+or even LCKIND (lock indicator).
 
-And add a changelog:
+The pin is typically used to drive an indicator LED AFAIU, but the
+characteristics of the signal varies from device to device (fw to fw),
+for example, pulse when no lock and low otherwise, or pulse when a 2d or
+3d-fix is acquired, etc.
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches#changelog_missing
+I'm not sure how useful the pulsing would be for software, but someone
+might find a use for it in some form.
 
-No need to resend because of this, but please do remember this in the
-future.
+Rob, is this something we want to keep in the binding, and if so, how
+about using a generic name such as "gnss-fix-gpios"?
 
--- 
-Kalle Valo
+Johan
