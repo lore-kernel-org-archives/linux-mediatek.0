@@ -1,18 +1,12 @@
 From: Seiya Wang <seiya.wang@mediatek.com>
-Subject: Re: [PATCH v6 1/6] irqchip/mtk-sysirq: support 4 interrupt
- parameters for sysirq
-Date: Mon, 11 Feb 2019 14:35:29 +0800
-Message-ID: <1549866929.22817.20.camel@mtksdccf07>
-References: <1548317240-44682-1-git-send-email-erin.lo@mediatek.com>
- <1548317240-44682-2-git-send-email-erin.lo@mediatek.com>
- <898ca3d9-002b-e28e-fc97-86bc2538e9de@gmail.com>
- <626b5b46-aac7-1532-386e-2fed85bf4ad9@arm.com>
- <c0187acf-bd8c-2d41-d84d-d35fc63b2beb@arm.com>
+Subject: [PATCH v1 1/2] arm64: dts: mt8173: correct cpu type of cpu2 and cpu3
+ to cortex-a72
+Date: Mon, 11 Feb 2019 15:15:54 +0800
+Message-ID: <20190211071555.31430-1-seiya.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <c0187acf-bd8c-2d41-d84d-d35fc63b2beb@arm.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -22,57 +16,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Marc Zyngier <marc.zyngier@arm.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Jason Cooper <jason@lakedaemon.net>, srv_heupstream <srv_heupstream@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Erin Lo <erin.lo@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org, mars.cheng@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, Thomas Gleixner <tglx@linutronix.de>, eddie.huang@mediatek.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>
+Cc: devicetree@vger.kernel.org, Seiya Wang <seiya.wang@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2019-02-07 at 15:52 +0000, Marc Zyngier wrote:
-> On 07/02/2019 15:47, Marc Zyngier wrote:
-> > On 07/02/2019 15:20, Matthias Brugger wrote:
-> >>
-> >>
-> >> On 24/01/2019 09:07, Erin Lo wrote:
-> >>> From: Seiya Wang <seiya.wang@mediatek.com>
-> >>>
-> >>> To support partitioned PPIs, 4 interrupt parameters should be valid
-> >>> for sysirq.
-> >>>
-> >>> Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
-> >>> Signed-off-by: Erin Lo <erin.lo@mediatek.com>
-> >>> ---
-> >>>  drivers/irqchip/irq-mtk-sysirq.c | 4 ++--
-> >>>  1 file changed, 2 insertions(+), 2 deletions(-)
-> >>>
-> >>> diff --git a/drivers/irqchip/irq-mtk-sysirq.c b/drivers/irqchip/irq-mtk-sysirq.c
-> >>> index 90aaf19..282736a 100644
-> >>> --- a/drivers/irqchip/irq-mtk-sysirq.c
-> >>> +++ b/drivers/irqchip/irq-mtk-sysirq.c
-> >>> @@ -81,7 +81,7 @@ static int mtk_sysirq_domain_translate(struct irq_domain *d,
-> >>>  				       unsigned int *type)
-> >>>  {
-> >>>  	if (is_of_node(fwspec->fwnode)) {
-> >>> -		if (fwspec->param_count != 3)
-> >>> +		if (fwspec->param_count != 3 && fwspec->param_count != 4)
-> >>
-> >> Where is this 4th parameter used?
-> > 
-> > https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/interrupt-controller/arm,gic-v3.txt#n14
-> Sorry, I fired Send way too early.
-> 
-> What I wanted to add is that it is not clear to me why this change would
-> be required here, as this driver only supports SPIs. It could be fixed
-> by just relaxing the binding itself.
-> 
-> Thanks,
-> 
-> 	M.
+The cpu type of cpu2 and cpu3 should be cortex-a72, not cortex-a57.
 
-Do you mean that we should change #interrupt-cells back to 3 for sysirq
-and remove the 4th parameters of every spi interrupts in mt8183.dtsi
-(i.e. 3 parameters for spi, 4 for ppi) such that we can discard this
-patch?
+Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-If yes, we may need some time to verify the change before resending the
-patch.
-
-Thanks.
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index 44374c506a1c..99675c51577a 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -178,12 +178,12 @@
+ 
+ 		cpu2: cpu@100 {
+ 			device_type = "cpu";
+-			compatible = "arm,cortex-a57";
++			compatible = "arm,cortex-a72";
+ 			reg = <0x100>;
+ 			enable-method = "psci";
+ 			cpu-idle-states = <&CPU_SLEEP_0>;
+ 			#cooling-cells = <2>;
+-			clocks = <&infracfg CLK_INFRA_CA57SEL>,
++			clocks = <&infracfg CLK_INFRA_CA72SEL>,
+ 				 <&apmixedsys CLK_APMIXED_MAINPLL>;
+ 			clock-names = "cpu", "intermediate";
+ 			operating-points-v2 = <&cluster1_opp>;
+@@ -191,12 +191,12 @@
+ 
+ 		cpu3: cpu@101 {
+ 			device_type = "cpu";
+-			compatible = "arm,cortex-a57";
++			compatible = "arm,cortex-a72";
+ 			reg = <0x101>;
+ 			enable-method = "psci";
+ 			cpu-idle-states = <&CPU_SLEEP_0>;
+ 			#cooling-cells = <2>;
+-			clocks = <&infracfg CLK_INFRA_CA57SEL>,
++			clocks = <&infracfg CLK_INFRA_CA72SEL>,
+ 				 <&apmixedsys CLK_APMIXED_MAINPLL>;
+ 			clock-names = "cpu", "intermediate";
+ 			operating-points-v2 = <&cluster1_opp>;
+-- 
+2.14.1
