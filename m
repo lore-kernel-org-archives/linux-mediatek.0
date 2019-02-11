@@ -1,58 +1,96 @@
-From: KaiChieh Chuang <kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH] ASoC: mediatek: use %pOFn instead of device_node.name
-Date: Mon, 11 Feb 2019 11:04:41 +0800
-Message-ID: <1549854281-25667-1-git-send-email-kaichieh.chuang@mediatek.com>
+From: Jitao Shi <jitao.shi@mediatek.com>
+Subject: [PATCH] drm/mediatek: add mt8183 dpi support
+Date: Mon, 11 Feb 2019 12:50:59 +0800
+Message-ID: <20190211045059.11821-1-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Jitao Shi <jitao.shi@mediatek.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, cawa.cheng@mediatek.com, bibby.hsieh@mediatek.com, ck.hu@mediate
 List-Id: linux-mediatek@lists.infradead.org
 
-In preparation to remove the node name pointer from struct device_node,
-convert printf users to use the %pOFn format specifier.
+MT8183 sample on rising and falling edge. It can reduce half data io.
 
-Signed-off-by: KaiChieh Chuang <kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 ---
- sound/soc/mediatek/common/mtk-btcvsd.c     | 2 +-
- sound/soc/mediatek/mt8183/mt8183-afe-pcm.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 29 +++++++++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
 
-diff --git a/sound/soc/mediatek/common/mtk-btcvsd.c b/sound/soc/mediatek/common/mtk-btcvsd.c
-index e408c1b..4b613d5 100644
---- a/sound/soc/mediatek/common/mtk-btcvsd.c
-+++ b/sound/soc/mediatek/common/mtk-btcvsd.c
-@@ -1269,7 +1269,7 @@ static int mtk_btcvsd_snd_probe(struct platform_device *pdev)
- 	/* irq */
- 	irq_id = platform_get_irq(pdev, 0);
- 	if (irq_id <= 0) {
--		dev_err(dev, "%s no irq found\n", dev->of_node->name);
-+		dev_err(dev, "%pOFn no irq found\n", dev->of_node);
- 		return irq_id < 0 ? irq_id : -ENXIO;
- 	}
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 62a9d47df948..610c23334047 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -117,6 +117,7 @@ struct mtk_dpi_conf {
+ 	unsigned int (*cal_factor)(int clock);
+ 	u32 reg_h_fre_con;
+ 	bool edge_sel_en;
++	bool dual_edge;
+ };
  
-diff --git a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-index ff3111e..4e045dd 100644
---- a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-@@ -1139,7 +1139,7 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
- 	/* request irq */
- 	irq_id = platform_get_irq(pdev, 0);
- 	if (!irq_id) {
--		dev_err(dev, "%s no irq found\n", dev->of_node->name);
-+		dev_err(dev, "%pOFn no irq found\n", dev->of_node);
- 		return -ENXIO;
- 	}
- 	ret = devm_request_irq(dev, irq_id, mt8183_afe_irq_handler,
+ static void mtk_dpi_mask(struct mtk_dpi *dpi, u32 offset, u32 val, u32 mask)
+@@ -353,6 +354,13 @@ static void mtk_dpi_config_disable_edge(struct mtk_dpi *dpi)
+ 		mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, 0, EDGE_SEL_EN);
+ }
+ 
++static void mtk_dpi_enable_dual_edge(struct mtk_dpi *dpi)
++{
++	mtk_dpi_mask(dpi, DPI_DDR_SETTING, DDR_EN | DDR_4PHASE,
++		     DDR_EN | DDR_4PHASE);
++	mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING, EDGE_SEL, EDGE_SEL);
++}
++
+ static void mtk_dpi_config_color_format(struct mtk_dpi *dpi,
+ 					enum mtk_dpi_out_color_format format)
+ {
+@@ -509,6 +517,8 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+ 	mtk_dpi_config_color_format(dpi, dpi->color_format);
+ 	mtk_dpi_config_2n_h_fre(dpi);
+ 	mtk_dpi_config_disable_edge(dpi);
++	if (dpi->conf->dual_edge)
++		mtk_dpi_enable_dual_edge(dpi);
+ 	mtk_dpi_sw_reset(dpi, false);
+ 
+ 	return 0;
+@@ -671,6 +681,16 @@ static unsigned int mt2701_calculate_factor(int clock)
+ 		return 2;
+ }
+ 
++static unsigned int mt8183_calculate_factor(int clock)
++{
++	if (clock <= 27000)
++		return 8;
++	else if (clock <= 167000)
++		return 4;
++	else
++		return 2;
++}
++
+ static const struct mtk_dpi_conf mt8173_conf = {
+ 	.cal_factor = mt8173_calculate_factor,
+ 	.reg_h_fre_con = 0xe0,
+@@ -682,6 +702,12 @@ static const struct mtk_dpi_conf mt2701_conf = {
+ 	.edge_sel_en = true,
+ };
+ 
++static const struct mtk_dpi_conf mt8183_conf = {
++	.cal_factor = mt8183_calculate_factor,
++	.reg_h_fre_con = 0xe0,
++	.dual_edge = true,
++};
++
+ static int mtk_dpi_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+@@ -777,6 +803,9 @@ static const struct of_device_id mtk_dpi_of_ids[] = {
+ 	{ .compatible = "mediatek,mt8173-dpi",
+ 	  .data = &mt8173_conf,
+ 	},
++	{ .compatible = "mediatek,mt8183-dpi",
++	  .data = &mt8183_conf,
++	},
+ 	{ },
+ };
+ 
 -- 
-1.9.1
+2.12.5
