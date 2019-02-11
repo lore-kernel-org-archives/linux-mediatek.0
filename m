@@ -1,59 +1,90 @@
-From: Seiya Wang <seiya.wang@mediatek.com>
-Subject: [PATCH v1 2/2] clk: mediatek: correct cpu clock name for MT8173 SoC
-Date: Mon, 11 Feb 2019 15:15:55 +0800
-Message-ID: <20190211071555.31430-2-seiya.wang@mediatek.com>
-References: <20190211071555.31430-1-seiya.wang@mediatek.com>
+From: Johan Hovold <johan@kernel.org>
+Subject: Re: [PATCH v2 2/4] dt-bindings: gnss: add mediatek binding
+Date: Mon, 11 Feb 2019 09:33:49 +0100
+Message-ID: <20190211083349.GU4686@localhost>
+References: <1547744074-28308-1-git-send-email-lollivier@baylibre.com>
+ <1547744074-28308-3-git-send-email-lollivier@baylibre.com>
+ <20190125090755.GB3691@localhost>
+ <867eeo7pjm.fsf@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190211071555.31430-1-seiya.wang@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <867eeo7pjm.fsf@baylibre.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, Seiya Wang <seiya.wang@mediatek.com>
+To: Loys Ollivier <lollivier@baylibre.com>
+Cc: Johan Hovold <johan@kernel.org>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-kernel@vger.kernel.org, Kevin Hilman <khilman@baylibre.com>, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Change cpu clock name from ca57 to ca72 since MT8173 does use cortex-a72.
+On Mon, Jan 28, 2019 at 04:46:53PM +0100, Loys Ollivier wrote:
+> 
+> On Fri 25 Jan 2019 at 09:07, Johan Hovold wrote:
+> 
+> > On Thu, Jan 17, 2019 at 05:54:32PM +0100, Loys Ollivier wrote:
+> >> Add binding for Mediatek-based GNSS receivers.
+> >> 
+> >> Signed-off-by: Loys Ollivier <lollivier@baylibre.com>
+> >> ---
+> >> 
+> >> v2:
+> >> Renamed bindings from Globaltop/gtop to Mediatek/mtk.
+> >> Moved current-speed as an optional propertie.
+> >> Removed the status line in the example.
+> >> Added "mediatek,mt3339" compatible.
 
-Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
----
- drivers/clk/mediatek/clk-mt8173.c      | 4 ++--
- include/dt-bindings/clock/mt8173-clk.h | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+> >> +++ b/Documentation/devicetree/bindings/gnss/mediatek.txt
+> >> @@ -0,0 +1,39 @@
+> >> +Mediatek-based GNSS Receiver DT binding
+> >> +
+> >> +Mediatek chipsets are used in GNSS-receiver modules produced by several
+> >> +vendors and can use UART, SPI or I2C interfaces.
+> >> +
+> >> +Please see Documentation/devicetree/bindings/gnss/gnss.txt for generic
+> >> +properties.
+> >> +
+> >> +Required properties:
+> >> +
+> >> +- compatible	: Must be one of
+> >> +
+> >> +			"globaltop,pa6h"
+> >> +			"mediatek,mt3339"
+> >
+> > I'm not sure it makes sense to add the GPS chip itself as it cannot be
+> > used stand-alone AFAIU, and either not way would require a lot more
+> > resources to be defined than what you add to this binding.
+> 
+> OK, I find it a bit confusing to have Mediatek bindings but no
+> compatible Mediatek SoCs.
+> But it is true that it can't be used stand-alone. I will remove this
+> reference and also remove it from the mtk.c driver code from this patch
+> serie.
 
-diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
-index 96c292c3e440..deedeb3ea33b 100644
---- a/drivers/clk/mediatek/clk-mt8173.c
-+++ b/drivers/clk/mediatek/clk-mt8173.c
-@@ -533,7 +533,7 @@ static const char * const ca53_parents[] __initconst = {
- 	"univpll"
- };
- 
--static const char * const ca57_parents[] __initconst = {
-+static const char * const ca72_parents[] __initconst = {
- 	"clk26m",
- 	"armca15pll",
- 	"mainpll",
-@@ -542,7 +542,7 @@ static const char * const ca57_parents[] __initconst = {
- 
- static const struct mtk_composite cpu_muxes[] __initconst = {
- 	MUX(CLK_INFRA_CA53SEL, "infra_ca53_sel", ca53_parents, 0x0000, 0, 2),
--	MUX(CLK_INFRA_CA57SEL, "infra_ca57_sel", ca57_parents, 0x0000, 2, 2),
-+	MUX(CLK_INFRA_CA72SEL, "infra_ca72_sel", ca72_parents, 0x0000, 2, 2),
- };
- 
- static const struct mtk_composite top_muxes[] __initconst = {
-diff --git a/include/dt-bindings/clock/mt8173-clk.h b/include/dt-bindings/clock/mt8173-clk.h
-index 8aea623dd518..f7e5356fd602 100644
---- a/include/dt-bindings/clock/mt8173-clk.h
-+++ b/include/dt-bindings/clock/mt8173-clk.h
-@@ -194,7 +194,7 @@
- #define CLK_INFRA_PMICWRAP		11
- #define CLK_INFRA_CLK_13M		12
- #define CLK_INFRA_CA53SEL               13
--#define CLK_INFRA_CA57SEL               14
-+#define CLK_INFRA_CA72SEL               14
- #define CLK_INFRA_NR_CLK                15
- 
- /* PERI_SYS */
--- 
-2.14.1
+> >> +Required properties (I2C):
+> >> +- reg		: I2C slave address
+> >> +
+> >> +Required properties (SPI):
+> >> +- reg		: SPI chip select address
+> >
+> > While the mt3339 appears to support these interfaces, the globaltop one
+> > does not.
+> >
+> > Have you looked around for a small sample of mt3339-based receivers, to
+> > see whether anyone actually provides these?
+> 
+> Again I'm confused by the fact that it is the Mediatek bindings.
+> Hence why I have added it and why it was not present in the v1 that was
+> only for Globaltop.
+
+This is no different from the sirfstar driver for receivers based on
+those chipsets but manufactured by various other vendors.
+
+> I find it odd mentionning the chipset but not all its interfaces.
+> I will remove these sections and only list supported interfaces (i.e.
+> UART). Other interfaces can be added afterward if one finds a board that
+> provides them.
+
+Right, but please do look around for other receivers using this chipset
+so that we can make the binding generic enough to cover those as well
+(e.g. by choosing representative resource names).
+
+Johan
