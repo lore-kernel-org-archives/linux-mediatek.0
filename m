@@ -1,52 +1,111 @@
-From: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v1] fcntl: Remove logically dead code
-Date: Mon, 11 Feb 2019 21:43:13 +0800
-Message-ID: <1549892593-10619-1-git-send-email-stanley.chu@mediatek.com>
+From: Loys Ollivier <lollivier@baylibre.com>
+Subject: Re: [PATCH v3 2/4] dt-bindings: gnss: add mediatek binding
+Date: Mon, 11 Feb 2019 15:06:50 +0100
+Message-ID: <86o97iv2px.fsf@baylibre.com>
+References: <1548693481-1162-1-git-send-email-lollivier@baylibre.com> <1548693481-1162-3-git-send-email-lollivier@baylibre.com> <20190130155016.GA26536@bogus> <20190211092251.GV4686@localhost>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-fsdevel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, viro-RmSDqhL/yNMiFSDQTTA3OLVCufUGDwFn@public.gmane.org
-Cc: wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jlayton-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, bfields-uC3wQj2KruNg9hUCZPvPmw@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-reply-to: <20190211092251.GV4686@localhost>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Johan Hovold <johan@kernel.org>
+Cc: Rob Herring <robh@kernel.org>, Loys Ollivier <lollivier@baylibre.com>, devicetree@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, linux-kernel@vger.kernel.org, Kevin Hilman <khilman@baylibre.com>, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-The commit d08477aa975e ("fcntl: Don't use ambiguous
-SIG_POLL si_codes") added BUG_ON for below case,
 
-(reason - POLL_IN) >= NSIGPOLL
+On Mon 11 Feb 2019 at 09:22, Johan Hovold <johan@kernel.org> wrote:
 
-Thus some statements become logically dead code and
-can be removed.
+> On Wed, Jan 30, 2019 at 09:50:16AM -0600, Rob Herring wrote:
+>> On Mon, Jan 28, 2019 at 05:37:59PM +0100, Loys Ollivier wrote:
+>> > Add binding for Mediatek-based GNSS receivers.
+>> > 
+>> > Signed-off-by: Loys Ollivier <lollivier@baylibre.com>
+>> > ---
+>> > 
+>> > v3:
+>> > Removed the I2C and SPI interfaces references.
+>> > Removed the "mediatek,mt3339" compatible line.
+>> > Added the optional propertied (reset, fix)
+>> > Added the pin names for the optional properties.
+>> > 
+>> > v2:
+>> > Renamed bindings from Globaltop/gtop to Mediatek/mtk.
+>> > Moved current-speed as an optional propertie.
+>> > Removed the status line in the example.
+>> > Added "mediatek,mt3339" compatible.
+>> > 
+>> >  .../devicetree/bindings/gnss/mediatek.txt          | 37 ++++++++++++++++++++++
+>> >  1 file changed, 37 insertions(+)
+>> >  create mode 100644 Documentation/devicetree/bindings/gnss/mediatek.txt
+>> > 
+>> > diff --git a/Documentation/devicetree/bindings/gnss/mediatek.txt b/Documentation/devicetree/bindings/gnss/mediatek.txt
+>> > new file mode 100644
+>> > index 000000000000..00650d81c5c8
+>> > --- /dev/null
+>> > +++ b/Documentation/devicetree/bindings/gnss/mediatek.txt
+>> > @@ -0,0 +1,37 @@
+>> > +Mediatek-based GNSS Receiver DT binding
+>> > +
+>> > +Mediatek chipsets are used in GNSS-receiver modules produced by several
+>> > +vendors and can use an UART interface.
+>
+> s/an/a/
+>
+ok
 
-Signed-off-by: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- fs/fcntl.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+>> > +
+>> > +Please see Documentation/devicetree/bindings/gnss/gnss.txt for generic
+>> > +properties.
+>> > +
+>> > +Required properties:
+>> > +
+>> > +- compatible	: Must be
+>> > +
+>> > +			"globaltop,pa6h"
+>> > +
+>> > +- vcc-supply	: Main voltage regulator (pin name: VCC)
+>> > +
+>> > +Optional properties:
+>> > +
+>> > +- gtop,reset-gpios	: GPIO used to reset the device
+>> > +  			  (pin name: RESET, NRESET)
+>> 
+>> reset-gpios is the standard name.
+>> 
+>> > +- gtop,fix-gpios	: GPIO used to determine device position fix state
+>> > +			  (pin name: FIX, 3D_FIX)
+>
+> I'm thinking we might need a standard name for fix-gpios as well. This
+> isn't a feature that is globaltop (or mediatek) specific, and other
+> manufacturers provide similar functionality through pins named UI_FIX,
+> or even LCKIND (lock indicator).
+>
+> The pin is typically used to drive an indicator LED AFAIU, but the
+> characteristics of the signal varies from device to device (fw to fw),
+> for example, pulse when no lock and low otherwise, or pulse when a 2d or
+> 3d-fix is acquired, etc.
+>
 
-diff --git a/fs/fcntl.c b/fs/fcntl.c
-index 083185174c6d..11ec59bf421c 100644
---- a/fs/fcntl.c
-+++ b/fs/fcntl.c
-@@ -762,10 +762,7 @@ static void send_sigio_to_task(struct task_struct *p,
- 			   reasons, otherwise we could leak kernel stack into
- 			   userspace.  */
- 			BUG_ON((reason < POLL_IN) || ((reason - POLL_IN) >= NSIGPOLL));
--			if (reason - POLL_IN >= NSIGPOLL)
--				si.si_band  = ~0L;
--			else
--				si.si_band = mangle_poll(band_table[reason - POLL_IN]);
-+			si.si_band = mangle_poll(band_table[reason - POLL_IN]);
- 			si.si_fd    = fd;
- 			if (!do_send_sig_info(signum, &si, p, type))
- 				break;
+Yes most GNSS recevivers provide a similar feature even if behavior of
+the line differs.
+
+> I'm not sure how useful the pulsing would be for software, but someone
+> might find a use for it in some form.
+>
+
+Well it is useful to know when you start acquiring "valid" positionning
+data. I'm using this as a trigger to start recording position.
+
+> Rob, is this something we want to keep in the binding, and if so, how
+> about using a generic name such as "gnss-fix-gpios"?
+>
+
+Name "gnss-fix-gpios" sounds good to me.
+
+Loys
+
+> Johan
+
+
 -- 
-2.18.0
+-L
