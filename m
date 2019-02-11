@@ -1,90 +1,27 @@
-From: Johan Hovold <johan@kernel.org>
-Subject: Re: [PATCH v2 2/4] dt-bindings: gnss: add mediatek binding
-Date: Mon, 11 Feb 2019 09:33:49 +0100
-Message-ID: <20190211083349.GU4686@localhost>
-References: <1547744074-28308-1-git-send-email-lollivier@baylibre.com>
- <1547744074-28308-3-git-send-email-lollivier@baylibre.com>
- <20190125090755.GB3691@localhost>
- <867eeo7pjm.fsf@baylibre.com>
+From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Subject: Re: [PATCH] mt76: change the retun type of mt76_dma_attach()
+Date: Mon, 11 Feb 2019 11:38:28 +0300
+Message-ID: <f65c85c2-ef47-d141-d78e-db2a138a1daf@cogentembedded.com>
+References: <228fdddb9ca96e8ce861e324eb9039722cf18f49.1549850911.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <867eeo7pjm.fsf@baylibre.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Loys Ollivier <lollivier@baylibre.com>
-Cc: Johan Hovold <johan@kernel.org>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-kernel@vger.kernel.org, Kevin Hilman <khilman@baylibre.com>, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <228fdddb9ca96e8ce861e324eb9039722cf18f49.1549850911.git.ryder.lee@mediatek.com>
+Content-Language: en-US
+Sender: netdev-owner@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Felix Fietkau <nbd@nbd.name>, Kalle Valo <kvalo@codeaurora.org>
+Cc: Roy Luo <roychl666@gmail.com>, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jan 28, 2019 at 04:46:53PM +0100, Loys Ollivier wrote:
+Hello!
+
+On 11.02.2019 5:13, Ryder Lee wrote:
+
+> There is no need to retun 0 in mt76_dma_attach(), so switch it to void.
+                           ^ r missing :-)
 > 
-> On Fri 25 Jan 2019 at 09:07, Johan Hovold wrote:
-> 
-> > On Thu, Jan 17, 2019 at 05:54:32PM +0100, Loys Ollivier wrote:
-> >> Add binding for Mediatek-based GNSS receivers.
-> >> 
-> >> Signed-off-by: Loys Ollivier <lollivier@baylibre.com>
-> >> ---
-> >> 
-> >> v2:
-> >> Renamed bindings from Globaltop/gtop to Mediatek/mtk.
-> >> Moved current-speed as an optional propertie.
-> >> Removed the status line in the example.
-> >> Added "mediatek,mt3339" compatible.
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+[...]
 
-> >> +++ b/Documentation/devicetree/bindings/gnss/mediatek.txt
-> >> @@ -0,0 +1,39 @@
-> >> +Mediatek-based GNSS Receiver DT binding
-> >> +
-> >> +Mediatek chipsets are used in GNSS-receiver modules produced by several
-> >> +vendors and can use UART, SPI or I2C interfaces.
-> >> +
-> >> +Please see Documentation/devicetree/bindings/gnss/gnss.txt for generic
-> >> +properties.
-> >> +
-> >> +Required properties:
-> >> +
-> >> +- compatible	: Must be one of
-> >> +
-> >> +			"globaltop,pa6h"
-> >> +			"mediatek,mt3339"
-> >
-> > I'm not sure it makes sense to add the GPS chip itself as it cannot be
-> > used stand-alone AFAIU, and either not way would require a lot more
-> > resources to be defined than what you add to this binding.
-> 
-> OK, I find it a bit confusing to have Mediatek bindings but no
-> compatible Mediatek SoCs.
-> But it is true that it can't be used stand-alone. I will remove this
-> reference and also remove it from the mtk.c driver code from this patch
-> serie.
-
-> >> +Required properties (I2C):
-> >> +- reg		: I2C slave address
-> >> +
-> >> +Required properties (SPI):
-> >> +- reg		: SPI chip select address
-> >
-> > While the mt3339 appears to support these interfaces, the globaltop one
-> > does not.
-> >
-> > Have you looked around for a small sample of mt3339-based receivers, to
-> > see whether anyone actually provides these?
-> 
-> Again I'm confused by the fact that it is the Mediatek bindings.
-> Hence why I have added it and why it was not present in the v1 that was
-> only for Globaltop.
-
-This is no different from the sirfstar driver for receivers based on
-those chipsets but manufactured by various other vendors.
-
-> I find it odd mentionning the chipset but not all its interfaces.
-> I will remove these sections and only list supported interfaces (i.e.
-> UART). Other interfaces can be added afterward if one finds a board that
-> provides them.
-
-Right, but please do look around for other receivers using this chipset
-so that we can make the binding generic enough to cover those as well
-(e.g. by choosing representative resource names).
-
-Johan
+MBR, Sergei
