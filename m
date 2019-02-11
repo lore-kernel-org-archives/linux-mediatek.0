@@ -1,96 +1,109 @@
-From: Seiya Wang <seiya.wang@mediatek.com>
-Subject: Re: [PATCH v6 1/6] irqchip/mtk-sysirq: support 4 interrupt
- parameters for sysirq
-Date: Mon, 11 Feb 2019 21:01:20 +0800
-Message-ID: <1549890080.22817.24.camel@mtksdccf07>
-References: <1548317240-44682-1-git-send-email-erin.lo@mediatek.com>
-         <1548317240-44682-2-git-send-email-erin.lo@mediatek.com>
-         <898ca3d9-002b-e28e-fc97-86bc2538e9de@gmail.com>
-         <626b5b46-aac7-1532-386e-2fed85bf4ad9@arm.com>
-         <c0187acf-bd8c-2d41-d84d-d35fc63b2beb@arm.com>
-         <1549866929.22817.20.camel@mtksdccf07> <868symu2ss.wl-marc.zyngier@arm.com>
+From: andrew-sh.cheng <andrew-sh.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 1/3] cpufreq: mediatek: add mt8183 cpufreq support
+Date: Mon, 11 Feb 2019 21:19:29 +0800
+Message-ID: <1549891169.12454.2.camel@mtksdaap41>
+References: <1548743704-16821-1-git-send-email-andrew-sh.cheng@mediatek.com>
+ <1548743704-16821-2-git-send-email-andrew-sh.cheng@mediatek.com>
+ <20190129101348.7oxqerszhcopanzr@vireshk-i7>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <868symu2ss.wl-marc.zyngier@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Marc Zyngier <marc.zyngier@arm.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Erin Lo <erin.lo@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Stephen Boyd <sboyd@codeaurora.org>, devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, yingjoe.chen@mediatek.com, mars.cheng@mediatek.com, eddie.huang@mediatek.com, linux-clk@vger.kernel.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190129101348.7oxqerszhcopanzr@vireshk-i7>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "Rafael J. Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, MyungJoo Ham <myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, fan.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2019-02-11 at 08:50 +0000, Marc Zyngier wrote:
-> On Mon, 11 Feb 2019 06:35:29 +0000,
-> Seiya Wang <seiya.wang@mediatek.com> wrote:
+On Tue, 2019-01-29 at 15:43 +0530, Viresh Kumar wrote:
+> On 29-01-19, 14:35, Andrew-sh Cheng wrote:
+> > From: "Andrew-sh.Cheng" <andrew-sh.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > > 
-> > On Thu, 2019-02-07 at 15:52 +0000, Marc Zyngier wrote:
-> > > On 07/02/2019 15:47, Marc Zyngier wrote:
-> > > > On 07/02/2019 15:20, Matthias Brugger wrote:
-> > > >>
-> > > >>
-> > > >> On 24/01/2019 09:07, Erin Lo wrote:
-> > > >>> From: Seiya Wang <seiya.wang@mediatek.com>
-> > > >>>
-> > > >>> To support partitioned PPIs, 4 interrupt parameters should be valid
-> > > >>> for sysirq.
-> > > >>>
-> > > >>> Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
-> > > >>> Signed-off-by: Erin Lo <erin.lo@mediatek.com>
-> > > >>> ---
-> > > >>>  drivers/irqchip/irq-mtk-sysirq.c | 4 ++--
-> > > >>>  1 file changed, 2 insertions(+), 2 deletions(-)
-> > > >>>
-> > > >>> diff --git a/drivers/irqchip/irq-mtk-sysirq.c b/drivers/irqchip/irq-mtk-sysirq.c
-> > > >>> index 90aaf19..282736a 100644
-> > > >>> --- a/drivers/irqchip/irq-mtk-sysirq.c
-> > > >>> +++ b/drivers/irqchip/irq-mtk-sysirq.c
-> > > >>> @@ -81,7 +81,7 @@ static int mtk_sysirq_domain_translate(struct irq_domain *d,
-> > > >>>  				       unsigned int *type)
-> > > >>>  {
-> > > >>>  	if (is_of_node(fwspec->fwnode)) {
-> > > >>> -		if (fwspec->param_count != 3)
-> > > >>> +		if (fwspec->param_count != 3 && fwspec->param_count != 4)
-> > > >>
-> > > >> Where is this 4th parameter used?
-> > > > 
-> > > > https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/interrupt-controller/arm,gic-v3.txt#n14
-> > > Sorry, I fired Send way too early.
-> > > 
-> > > What I wanted to add is that it is not clear to me why this change would
-> > > be required here, as this driver only supports SPIs. It could be fixed
-> > > by just relaxing the binding itself.
-> > > 
-> > > Thanks,
-> > > 
-> > > 	M.
+> > For new mediatek chip mt8183,
+> > cci and little cluster share the same buck,
+> > so need to modify the attribute of regulator from exclusive to optional
 > > 
-> > Do you mean that we should change #interrupt-cells back to 3 for sysirq
-> > and remove the 4th parameters of every spi interrupts in mt8183.dtsi
-> > (i.e. 3 parameters for spi, 4 for ppi) such that we can discard this
-> > patch?
+> > Intermediate clock is not always enabled by ccf in different projects,
+> > so cpufreq should always enable it by itself.
+> > 
+> > Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  drivers/cpufreq/cpufreq-dt-platdev.c | 1 +
+> >  drivers/cpufreq/mediatek-cpufreq.c   | 7 ++++++-
+> >  2 files changed, 7 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/cpufreq/cpufreq-dt-platdev.c b/drivers/cpufreq/cpufreq-dt-platdev.c
+> > index b1c5468..5a1c588 100644
+> > --- a/drivers/cpufreq/cpufreq-dt-platdev.c
+> > +++ b/drivers/cpufreq/cpufreq-dt-platdev.c
+> > @@ -117,6 +117,7 @@
+> >  	{ .compatible = "mediatek,mt817x", },
+> >  	{ .compatible = "mediatek,mt8173", },
+> >  	{ .compatible = "mediatek,mt8176", },
+> > +	{ .compatible = "mediatek,mt8183", },
+> >  
+> >  	{ .compatible = "nvidia,tegra124", },
+> >  
+> > diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+> > index eb8920d..e956248 100644
+> > --- a/drivers/cpufreq/mediatek-cpufreq.c
+> > +++ b/drivers/cpufreq/mediatek-cpufreq.c
+> > @@ -355,7 +355,7 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+> >  		goto out_free_resources;
+> >  	}
+> >  
+> > -	proc_reg = regulator_get_exclusive(cpu_dev, "proc");
+> > +	proc_reg = regulator_get_optional(cpu_dev, "proc");
+> >  	if (IS_ERR(proc_reg)) {
+> >  		if (PTR_ERR(proc_reg) == -EPROBE_DEFER)
+> >  			pr_warn("proc regulator for cpu%d not ready, retry.\n",
+> > @@ -385,6 +385,9 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+> >  		goto out_free_resources;
+> >  	}
+> >  
+> > +	ret = clk_prepare_enable(inter_clk);
+> > +	if (ret)
+> > +		goto out_free_resources;
 > 
-> It is more subtle than that:
+> Add a blank line here please.
 > 
-> - PPIs must have the affinity parameter in their int-spec (since you
->   need that for the PMU)
+> Also out_free_resources isn't enough here and you need to free OPP table as
+> well.
+I will modify these in next patch.
 > 
-> - SPIs that are directly routed to the GIC must also have the affinity
->   parameter (although set to zero).
 > 
-> - SPIs that are routed via the sysirq block (or any other) can use the
->   3 parameter variant, as they are not resolved in the context of the
->   GIC, but in that of the sysirq.
+> >  	/* Search a safe voltage for intermediate frequency. */
+> >  	rate = clk_get_rate(inter_clk);
+> >  	opp = dev_pm_opp_find_freq_ceil(cpu_dev, &rate);
+> > @@ -412,6 +415,7 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+> >  
+> >  out_free_opp_table:
+> >  	dev_pm_opp_of_cpumask_remove_table(&info->cpus);
+> > +	clk_disable_unprepare(inter_clk);
 > 
-> But in short, yes. You should be able to drop this patch altogether.
+> Clock was enabled after adding the table, and so it must be disabled before
+> removing the table. Just the opposite sequence.
+I will modify this in next patch.
 > 
-> > If yes, we may need some time to verify the change before resending the
-> > patch.
+> >  
+> >  out_free_resources:
+> >  	if (!IS_ERR(proc_reg))
+> > @@ -551,6 +555,7 @@ static int mtk_cpufreq_probe(struct platform_device *pdev)
+> >  	{ .compatible = "mediatek,mt817x", },
+> >  	{ .compatible = "mediatek,mt8173", },
+> >  	{ .compatible = "mediatek,mt8176", },
+> > +	{ .compatible = "mediatek,mt8183", },
+> >  
+> >  	{ }
+> >  };
+> > -- 
+> > 1.8.1.1.dirty
 > 
-> That's absolutely fine.
-> 
-> Thanks,
-> 
-> 	M.
-> 
-Thanks for the detailed descriptions.
-We will remove this patch and resend again.
