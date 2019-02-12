@@ -1,401 +1,338 @@
-From: Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>
-Subject: Re: [PATCH 3/3] mailbox: mediatek: Remove busylist
-Date: Tue, 12 Feb 2019 10:18:25 +0800
-Message-ID: <1549937905.11898.5.camel@mtksdaap41>
-References: <20190116050435.11624-1-ck.hu@mediatek.com>
-         <20190116050435.11624-4-ck.hu@mediatek.com>
-         <40d519083fe94640a22181388bcbbb09@MTKMBS31N1.mediatek.inc>
+From: Honghui Zhang <honghui.zhang@mediatek.com>
+Subject: Re: [RFC PATCH] PCI/portdrv: Support for subtractive decode bridge
+Date: Tue, 12 Feb 2019 10:57:29 +0800
+Message-ID: <1549940249.4980.56.camel@mhfsdcap03>
+References: <1544758829-10327-1-git-send-email-honghui.zhang@mediatek.com>
+         <20190207151816.GI7268@google.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <40d519083fe94640a22181388bcbbb09@MTKMBS31N1.mediatek.inc>
+In-Reply-To: <20190207151816.GI7268@google.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, CK Hu =?UTF-8?Q?=28=E8=83=A1=E4=BF=8A=E5=85=89=29?= <ck.hu@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream <srv_heupstream@mediatek.com>, Houlong Wei =?UTF-8?Q?=28=E9=AD=8F=E5=8E=9A=E9=BE=99=29?= <houlong.wei@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: lorenzo.pieralisi@arm.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com, matthias.bgg@gmail.com, youlin.pei@mediatek.com, poza@codeaurora.org, fred@fredlawl.com, rafael.j.wysocki@intel.com, jianjun.wang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi CK,
-
-On Tue, 2019-01-29 at 17:20 +0800, Houlong Wei (魏厚龙) wrote:
-> -----Original Message-----
-> From: CK Hu [mailto:ck.hu@mediatek.com] 
-> Sent: Wednesday, January 16, 2019 1:05 PM
-> To: Jassi Brar <jassisinghbrar@gmail.com>; Matthias Brugger <matthias.bgg@gmail.com>; Houlong Wei (魏厚龙) <houlong.wei@mediatek.com>
-> Cc: linux-kernel@vger.kernel.org; linux-arm-kernel@lists.infradead.org; linux-mediatek@lists.infradead.org; srv_heupstream <srv_heupstream@mediatek.com>; CK Hu (胡俊光) <ck.hu@mediatek.com>
-> Subject: [PATCH 3/3] mailbox: mediatek: Remove busylist
+On Thu, 2019-02-07 at 09:18 -0600, Bjorn Helgaas wrote:
+> Hi Honghui,
 > 
-> After implement abort_data, controller need not to implement its own queue. Remove busylist because it's useless.
-
-Remove busy list in controller makes client driver have no way to queue
-pkt in gce hardware thread, which may hurt display and multimedia
-performance since each pkt waits IRQ delay before previous pkt. Suggest
-keep busy list design.
-
-
-Regards,
-Dennis
-
+> On Fri, Dec 14, 2018 at 11:40:29AM +0800, honghui.zhang@mediatek.com wrote:
+> > From: Honghui Zhang <honghui.zhang@mediatek.com>
+> > 
+> > The Class Code for subtractive decode PCI-to-PCI bridge is 060401h,
+> > change the class_mask values to make portdrv support this type bridge.
 > 
-> Signed-off-by: CK Hu <ck.hu@mediatek.com>
-> ---
->  drivers/mailbox/mtk-cmdq-mailbox.c | 255 ++++-------------------------
->  1 file changed, 29 insertions(+), 226 deletions(-)
+> I assume you have a Root Port or Switch Port that supports subtractive
+> decode?  I'm trying to understand how such a device would work.
 > 
-> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-> index f2219f263ef6..45c59f677ecb 100644
-> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> @@ -16,9 +16,7 @@
->  #include <linux/mailbox/mtk-cmdq-mailbox.h>
->  #include <linux/of_device.h>
->  
-> -#define CMDQ_OP_CODE_MASK		(0xff << CMDQ_OP_CODE_SHIFT)
->  #define CMDQ_IRQ_MASK			0xffff
-> -#define CMDQ_NUM_CMD(t)			(t->cmd_buf_size / CMDQ_INST_SIZE)
->  
->  #define CMDQ_CURR_IRQ_STATUS		0x10
->  #define CMDQ_THR_SLOT_CYCLES		0x30
-> @@ -47,22 +45,10 @@
->  #define CMDQ_THR_IRQ_EN			(CMDQ_THR_IRQ_ERROR | CMDQ_THR_IRQ_DONE)
->  #define CMDQ_THR_IS_WAITING		BIT(31)
->  
-> -#define CMDQ_JUMP_BY_OFFSET		0x10000000
-> -#define CMDQ_JUMP_BY_PA			0x10000001
-> -
->  struct cmdq_thread {
->  	struct mbox_chan	*chan;
->  	void __iomem		*base;
-> -	struct list_head	task_busy_list;
->  	u32			priority;
-> -	bool			atomic_exec;
-> -};
-> -
-> -struct cmdq_task {
-> -	struct cmdq		*cmdq;
-> -	struct list_head	list_entry;
-> -	dma_addr_t		pa_base;
-> -	struct cmdq_thread	*thread;
->  	struct cmdq_pkt		*pkt; /* the packet sent from mailbox client */
->  };
->  
-> @@ -130,171 +116,47 @@ static void cmdq_thread_disable(struct cmdq *cmdq, struct cmdq_thread *thread)
->  	writel(CMDQ_THR_DISABLED, thread->base + CMDQ_THR_ENABLE_TASK);  }
->  
-> -/* notify GCE to re-fetch commands by setting GCE thread PC */ -static void cmdq_thread_invalidate_fetched_data(struct cmdq_thread *thread) -{
-> -	writel(readl(thread->base + CMDQ_THR_CURR_ADDR),
-> -	       thread->base + CMDQ_THR_CURR_ADDR);
-> -}
-> -
-> -static void cmdq_task_insert_into_thread(struct cmdq_task *task) -{
-> -	struct device *dev = task->cmdq->mbox.dev;
-> -	struct cmdq_thread *thread = task->thread;
-> -	struct cmdq_task *prev_task = list_last_entry(
-> -			&thread->task_busy_list, typeof(*task), list_entry);
-> -	u64 *prev_task_base = prev_task->pkt->va_base;
-> -
-> -	/* let previous task jump to this task */
-> -	dma_sync_single_for_cpu(dev, prev_task->pa_base,
-> -				prev_task->pkt->cmd_buf_size, DMA_TO_DEVICE);
-> -	prev_task_base[CMDQ_NUM_CMD(prev_task->pkt) - 1] =
-> -		(u64)CMDQ_JUMP_BY_PA << 32 | task->pa_base;
-> -	dma_sync_single_for_device(dev, prev_task->pa_base,
-> -				   prev_task->pkt->cmd_buf_size, DMA_TO_DEVICE);
-> -
-> -	cmdq_thread_invalidate_fetched_data(thread);
-> -}
-> -
-> -static bool cmdq_command_is_wfe(u64 cmd) -{
-> -	u64 wfe_option = CMDQ_WFE_UPDATE | CMDQ_WFE_WAIT | CMDQ_WFE_WAIT_VALUE;
-> -	u64 wfe_op = (u64)(CMDQ_CODE_WFE << CMDQ_OP_CODE_SHIFT) << 32;
-> -	u64 wfe_mask = (u64)CMDQ_OP_CODE_MASK << 32 | 0xffffffff;
-> -
-> -	return ((cmd & wfe_mask) == (wfe_op | wfe_option));
-> -}
-> -
-> -/* we assume tasks in the same display GCE thread are waiting the same event. */ -static void cmdq_task_remove_wfe(struct cmdq_task *task) -{
-> -	struct device *dev = task->cmdq->mbox.dev;
-> -	u64 *base = task->pkt->va_base;
-> -	int i;
-> -
-> -	dma_sync_single_for_cpu(dev, task->pa_base, task->pkt->cmd_buf_size,
-> -				DMA_TO_DEVICE);
-> -	for (i = 0; i < CMDQ_NUM_CMD(task->pkt); i++)
-> -		if (cmdq_command_is_wfe(base[i]))
-> -			base[i] = (u64)CMDQ_JUMP_BY_OFFSET << 32 |
-> -				  CMDQ_JUMP_PASS;
-> -	dma_sync_single_for_device(dev, task->pa_base, task->pkt->cmd_buf_size,
-> -				   DMA_TO_DEVICE);
-> -}
-> -
->  static bool cmdq_thread_is_in_wfe(struct cmdq_thread *thread)  {
->  	return readl(thread->base + CMDQ_THR_WAIT_TOKEN) & CMDQ_THR_IS_WAITING;  }
->  
-> -static void cmdq_thread_wait_end(struct cmdq_thread *thread,
-> -				 unsigned long end_pa)
-> -{
-> -	struct device *dev = thread->chan->mbox->dev;
-> -	unsigned long curr_pa;
-> -
-> -	if (readl_poll_timeout_atomic(thread->base + CMDQ_THR_CURR_ADDR,
-> -			curr_pa, curr_pa == end_pa, 1, 20))
-> -		dev_err(dev, "GCE thread cannot run to end.\n");
-> -}
-> -
-> -static void cmdq_task_exec_done(struct cmdq_task *task, enum cmdq_cb_status sta) -{
-> -	struct cmdq_task_cb *cb = &task->pkt->async_cb;
-> -	struct cmdq_cb_data data;
-> -
-> -	WARN_ON(cb->cb == (cmdq_async_flush_cb)NULL);
-> -	data.sta = sta;
-> -	data.data = cb->data;
-> -	cb->cb(data);
-> -
-> -	list_del(&task->list_entry);
-> -}
-> -
-> -static void cmdq_task_handle_error(struct cmdq_task *task) -{
-> -	struct cmdq_thread *thread = task->thread;
-> -	struct cmdq_task *next_task;
-> -
-> -	dev_err(task->cmdq->mbox.dev, "task 0x%p error\n", task);
-> -	WARN_ON(cmdq_thread_suspend(task->cmdq, thread) < 0);
-> -	next_task = list_first_entry_or_null(&thread->task_busy_list,
-> -			struct cmdq_task, list_entry);
-> -	if (next_task)
-> -		writel(next_task->pa_base, thread->base + CMDQ_THR_CURR_ADDR);
-> -	cmdq_thread_resume(thread);
-> -}
-> -
->  static void cmdq_thread_irq_handler(struct cmdq *cmdq,
->  				    struct cmdq_thread *thread)
->  {
-> -	struct cmdq_task *task, *tmp, *curr_task = NULL;
-> -	u32 curr_pa, irq_flag, task_end_pa;
-> -	bool err;
-> +	unsigned long flags;
-> +	u32 curr_pa, irq_flag, end_pa;
-> +	int ret = 0;
->  
-> +	spin_lock_irqsave(&thread->chan->lock, flags);
->  	irq_flag = readl(thread->base + CMDQ_THR_IRQ_STATUS);
->  	writel(~irq_flag, thread->base + CMDQ_THR_IRQ_STATUS);
->  
-> -	/*
-> -	 * When ISR call this function, another CPU core could run
-> -	 * "release task" right before we acquire the spin lock, and thus
-> -	 * reset / disable this GCE thread, so we need to check the enable
-> -	 * bit of this GCE thread.
-> -	 */
-> -	if (!(readl(thread->base + CMDQ_THR_ENABLE_TASK) & CMDQ_THR_ENABLED))
-> -		return;
-> -
-> -	if (irq_flag & CMDQ_THR_IRQ_ERROR)
-> -		err = true;
-> -	else if (irq_flag & CMDQ_THR_IRQ_DONE)
-> -		err = false;
-> -	else
-> -		return;
-> -
->  	curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR);
-> +	end_pa = readl(thread->base + CMDQ_THR_END_ADDR);
->  
-> -	list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
-> -				 list_entry) {
-> -		task_end_pa = task->pa_base + task->pkt->cmd_buf_size;
-> -		if (curr_pa >= task->pa_base && curr_pa < task_end_pa)
-> -			curr_task = task;
-> -
-> -		if (!curr_task || curr_pa == task_end_pa - CMDQ_INST_SIZE) {
-> -			cmdq_task_exec_done(task, CMDQ_CB_NORMAL);
-> -			kfree(task);
-> -		} else if (err) {
-> -			cmdq_task_exec_done(task, CMDQ_CB_ERROR);
-> -			cmdq_task_handle_error(curr_task);
-> -			kfree(task);
-> -		}
-> -
-> -		if (curr_task)
-> -			break;
-> -	}
-> +	if (curr_pa != end_pa ||  irq_flag & CMDQ_THR_IRQ_ERROR)
-> +		ret = -EFAULT;
->  
-> -	if (list_empty(&thread->task_busy_list)) {
-> -		cmdq_thread_disable(cmdq, thread);
-> -		clk_disable(cmdq->clock);
-> -	}
-> +	thread->pkt = NULL;
-> +	cmdq_thread_disable(cmdq, thread);
-> +	clk_disable(cmdq->clock);
-> +	spin_unlock_irqrestore(&thread->chan->lock, flags);
-> +	mbox_chan_txdone(thread->chan, ret);
->  }
->  
->  static irqreturn_t cmdq_irq_handler(int irq, void *dev)  {
->  	struct cmdq *cmdq = dev;
-> -	unsigned long irq_status, flags = 0L;
-> +	unsigned long irq_status;
->  	int bit;
->  
->  	irq_status = readl(cmdq->base + CMDQ_CURR_IRQ_STATUS) & CMDQ_IRQ_MASK;
->  	if (!(irq_status ^ CMDQ_IRQ_MASK))
->  		return IRQ_NONE;
->  
-> -	for_each_clear_bit(bit, &irq_status, fls(CMDQ_IRQ_MASK)) {
-> -		struct cmdq_thread *thread = &cmdq->thread[bit];
-> -
-> -		spin_lock_irqsave(&thread->chan->lock, flags);
-> -		cmdq_thread_irq_handler(cmdq, thread);
-> -		spin_unlock_irqrestore(&thread->chan->lock, flags);
-> -	}
-> +	for_each_clear_bit(bit, &irq_status, fls(CMDQ_IRQ_MASK))
-> +		cmdq_thread_irq_handler(cmdq, &cmdq->thread[bit]);
->  
->  	return IRQ_HANDLED;
->  }
-> @@ -310,7 +172,7 @@ static int cmdq_suspend(struct device *dev)
->  
->  	for (i = 0; i < cmdq->thread_nr; i++) {
->  		thread = &cmdq->thread[i];
-> -		if (!list_empty(&thread->task_busy_list)) {
-> +		if (thread->pkt) {
->  			task_running = true;
->  			break;
->  		}
-> @@ -347,72 +209,21 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
->  	struct cmdq_pkt *pkt = (struct cmdq_pkt *)data;
->  	struct cmdq_thread *thread = (struct cmdq_thread *)chan->con_priv;
->  	struct cmdq *cmdq = dev_get_drvdata(chan->mbox->dev);
-> -	struct cmdq_task *task;
-> -	unsigned long curr_pa, end_pa;
->  
->  	/* Client should not flush new tasks if suspended. */
->  	WARN_ON(cmdq->suspended);
->  
-> -	task = kzalloc(sizeof(*task), GFP_ATOMIC);
-> -	if (!task)
-> -		return -ENOMEM;
-> +	thread->pkt = pkt;
->  
-> -	task->cmdq = cmdq;
-> -	INIT_LIST_HEAD(&task->list_entry);
-> -	task->pa_base = pkt->pa_base;
-> -	task->thread = thread;
-> -	task->pkt = pkt;
-> -
-> -	if (list_empty(&thread->task_busy_list)) {
-> -		WARN_ON(clk_enable(cmdq->clock) < 0);
-> -		WARN_ON(cmdq_thread_reset(cmdq, thread) < 0);
-> -
-> -		writel(task->pa_base, thread->base + CMDQ_THR_CURR_ADDR);
-> -		writel(task->pa_base + pkt->cmd_buf_size,
-> -		       thread->base + CMDQ_THR_END_ADDR);
-> -		writel(thread->priority, thread->base + CMDQ_THR_PRIORITY);
-> -		writel(CMDQ_THR_IRQ_EN, thread->base + CMDQ_THR_IRQ_ENABLE);
-> -		writel(CMDQ_THR_ENABLED, thread->base + CMDQ_THR_ENABLE_TASK);
-> -	} else {
-> -		WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
-> -		curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR);
-> -		end_pa = readl(thread->base + CMDQ_THR_END_ADDR);
-> -
-> -		/*
-> -		 * Atomic execution should remove the following wfe, i.e. only
-> -		 * wait event at first task, and prevent to pause when running.
-> -		 */
-> -		if (thread->atomic_exec) {
-> -			/* GCE is executing if command is not WFE */
-> -			if (!cmdq_thread_is_in_wfe(thread)) {
-> -				cmdq_thread_resume(thread);
-> -				cmdq_thread_wait_end(thread, end_pa);
-> -				WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
-> -				/* set to this task directly */
-> -				writel(task->pa_base,
-> -				       thread->base + CMDQ_THR_CURR_ADDR);
-> -			} else {
-> -				cmdq_task_insert_into_thread(task);
-> -				cmdq_task_remove_wfe(task);
-> -				smp_mb(); /* modify jump before enable thread */
-> -			}
-> -		} else {
-> -			/* check boundary */
-> -			if (curr_pa == end_pa - CMDQ_INST_SIZE ||
-> -			    curr_pa == end_pa) {
-> -				/* set to this task directly */
-> -				writel(task->pa_base,
-> -				       thread->base + CMDQ_THR_CURR_ADDR);
-> -			} else {
-> -				cmdq_task_insert_into_thread(task);
-> -				smp_mb(); /* modify jump before enable thread */
-> -			}
-> -		}
-> -		writel(task->pa_base + pkt->cmd_buf_size,
-> -		       thread->base + CMDQ_THR_END_ADDR);
-> -		cmdq_thread_resume(thread);
-> -	}
-> -	list_move_tail(&task->list_entry, &thread->task_busy_list);
-> +	WARN_ON(clk_enable(cmdq->clock) < 0);
-> +	WARN_ON(cmdq_thread_reset(cmdq, thread) < 0);
-> +
-> +	writel(thread->pkt->pa_base, thread->base + CMDQ_THR_CURR_ADDR);
-> +	writel(thread->pkt->pa_base + pkt->cmd_buf_size,
-> +	       thread->base + CMDQ_THR_END_ADDR);
-> +	writel(thread->priority, thread->base + CMDQ_THR_PRIORITY);
-> +	writel(CMDQ_THR_IRQ_EN, thread->base + CMDQ_THR_IRQ_ENABLE);
-> +	writel(CMDQ_THR_ENABLED, thread->base + CMDQ_THR_ENABLE_TASK);
->  
->  	return 0;
->  }
-> @@ -421,23 +232,18 @@ static void cmdq_mbox_abort_data(struct mbox_chan *chan)  {
->  	struct cmdq_thread *thread = (struct cmdq_thread *)chan->con_priv;
->  	struct cmdq *cmdq = dev_get_drvdata(chan->mbox->dev);
-> -	struct cmdq_task *task, *tmp;
->  	unsigned long flags;
->  	u32 enable;
->  
->  	spin_lock_irqsave(&thread->chan->lock, flags);
-> -	if (list_empty(&thread->task_busy_list))
-> +	if (!thread->pkt)
->  		goto out;
->  
->  	WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
->  	if (!cmdq_thread_is_in_wfe(thread))
->  		goto wait;
->  
-> -	list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
-> -				 list_entry) {
-> -		list_del(&task->list_entry);
-> -		kfree(task);
-> -	}
-> +	thread->pkt = NULL;
->  
->  	cmdq_thread_resume(thread);
->  	cmdq_thread_disable(cmdq, thread);
-> @@ -483,7 +289,6 @@ static struct mbox_chan *cmdq_xlate(struct mbox_controller *mbox,
->  
->  	thread = (struct cmdq_thread *)mbox->chans[ind].con_priv;
->  	thread->priority = sp->args[1];
-> -	thread->atomic_exec = (sp->args[2] != 0);
->  	thread->chan = &mbox->chans[ind];
->  
->  	return &mbox->chans[ind];
-> @@ -539,8 +344,7 @@ static int cmdq_probe(struct platform_device *pdev)
->  	cmdq->mbox.ops = &cmdq_mbox_chan_ops;
->  	cmdq->mbox.of_xlate = cmdq_xlate;
->  
-> -	/* make use of TXDONE_BY_ACK */
-> -	cmdq->mbox.txdone_irq = false;
-> +	cmdq->mbox.txdone_irq = true;
->  	cmdq->mbox.txdone_poll = false;
->  
->  	cmdq->thread = devm_kcalloc(dev, cmdq->thread_nr, @@ -551,7 +355,6 @@ static int cmdq_probe(struct platform_device *pdev)
->  	for (i = 0; i < cmdq->thread_nr; i++) {
->  		cmdq->thread[i].base = cmdq->base + CMDQ_THR_BASE +
->  				CMDQ_THR_SIZE * i;
-> -		INIT_LIST_HEAD(&cmdq->thread[i].task_busy_list);
->  		cmdq->mbox.chans[i].con_priv = (void *)&cmdq->thread[i];
->  	}
->  
-> --
-> 2.18.1
+Hi, Bjorn,
+
+Yes, most of Mediatek's RC device have set the class type as 060401h as
+HW default values, include mt2712 and mt7622.
+
+Those RC device work fine with all I have tried EP device except that
+the portdrv was not attached to those device. But no scenario need those
+service as far as I know.
+
+> Out of curiosity, can you show the "lspci -vv" output for the device
+> and the downstream devices of interest?
 > 
+lspci only read the class type 0604h, it does not care about the
+subordinate values of the class type. I will put the "lspci -vv" output
+at bottom of this mail.
+
+> Do you happen to know whether this functionality is configurable,
+> e.g., is there some way software can enable or disable subtractive
+> decode?  I assume this would be some device-specific thing, because I
+> can't find anything in the Bridge Control register or similar.  The
+> PCIe spec doesn't even contain the word "subtractive".
+> 
+
+Those class type values for Mediatek's RC has a register which could be
+used to change its values. We never touch this backdoor register since
+without the portdrv attached is fine, nobody ask for the port service
+yet.
+
+I did some homework for the subtractive decode PCI-to-PCI bridge, and
+did not found much more information about that. I guess those port
+service should also support subtractive bridge since spec does not
+forbidden that.
+
+> The "PCI Express to PCI/PCI-X Bridge Specification", r1.0, says a PCI
+> Express bridge (which would include Root Ports and Switch Ports) has a
+> Class Code of 0x060400 (Non-Subtractive PCI-PCI Bridge) (sec 1.1).
+> 
+> Sec 1.3.4 says subtractive decode on the primary interface is "not
+> applicable or outside the scope of this spec".
+> 
+> Bjorn
+> 
+
+
+
+# lspci -vvv
+00:01.0 Class 0604: Device 14c3:5396
+        Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop-
+ParErr- Stepping- SERR- FastB2B- DisINTx+
+        Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort-
+<TAbort- <MAbort- >SERR- <PERR- INTx-
+        Latency: 0
+        Interrupt: pin A routed to IRQ 264
+        Region 0: Memory at <unassigned> (64-bit, prefetchable)
+        Bus: primary=00, secondary=01, subordinate=01, sec-latency=64
+        I/O behind bridge: 00000000-00000fff
+        Memory behind bridge: 20000000-206fffff
+        Prefetchable memory behind bridge: 00000000-000fffff
+        Secondary status: 66MHz+ FastB2B- ParErr- DEVSEL=slow >TAbort-
+<TAbort- <MAbort+ <SERR- <PERR-
+        BridgeCtl: Parity- SERR- NoISA- VGA- MAbort- >Reset- FastB2B-
+                PriDiscTmr- SecDiscTmr- DiscTmrStat- DiscTmrSERREn-
+        Capabilities: [50] MSI: Enable+ Count=1/1 Maskable- 64bit+
+                Address: 000000000807a0c0  Data: 0000
+        Capabilities: [78] Power Management version 3
+                Flags: PMEClk- DSI- D1- D2- AuxCurrent=375mA
+PME(D0-,D1-,D2-,D3hot-,D3cold-)
+                Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+        Capabilities: [80] Express (v2) Root Port (Slot+), MSI 01
+                DevCap: MaxPayload 256 bytes, PhantFunc 0
+                        ExtTag- RBE+
+                DevCtl: Report errors: Correctable- Non-Fatal- Fatal-
+Unsupported-
+                        RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+
+                        MaxPayload 128 bytes, MaxReadReq 512 bytes
+                DevSta: CorrErr- UncorrErr- FatalErr- UnsuppReq- AuxPwr-
+TransPend+
+                LnkCap: Port #1, Speed 5GT/s, Width x2, ASPM L0s L1,
+Exit Latency L0s <64ns, L1 <2us
+                        ClockPM- Surprise- LLActRep- BwNot+ ASPMOptComp+
+                LnkCtl: ASPM L1 Enabled; RCB 128 bytes Disabled- CommClk
++
+                        ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+                LnkSta: Speed 5GT/s, Width x1, TrErr- Train- SlotClk+
+DLActive- BWMgmt- ABWMgmt-
+                SltCap: AttnBtn- PwrCtrl- MRL- AttnInd- PwrInd- HotPlug-
+Surprise-
+                        Slot #0, PowerLimit 0.000W; Interlock- NoCompl+
+                SltCtl: Enable: AttnBtn- PwrFlt- MRL- PresDet- CmdCplt-
+HPIrq- LinkChg-
+                        Control: AttnInd Unknown, PwrInd Unknown, Power-
+Interlock-
+                SltSta: Status: AttnBtn- PowerFlt- MRL- CmdCplt-
+PresDet- Interlock-
+                        Changed: MRL- PresDet- LinkState-
+                RootCtl: ErrCorrectable- ErrNon-Fatal- ErrFatal-
+PMEIntEna+ CRSVisible-
+                RootCap: CRSVisible-
+                RootSta: PME ReqID 0000, PMEStatus- PMEPending-
+                DevCap2: Completion Timeout: Not Supported, TimeoutDis-,
+LTR+, OBFF Not Supported ARIFwd-
+                DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis-,
+LTR-, OBFF Disabled ARIFwd-
+                LnkCtl2: Target Link Speed: 5GT/s, EnterCompliance-
+SpeedDis-
+                         Transmit Margin: Normal Operating Range,
+EnterModifiedCompliance- ComplianceSOS-
+                         Compliance De-emphasis: -6dB
+                LnkSta2: Current De-emphasis Level: -6dB,
+EqualizationComplete-, EqualizationPhase1-
+                         EqualizationPhase2-, EqualizationPhase3-,
+LinkEqualizationRequest-
+        Capabilities: [100 v1] Virtual Channel
+                Caps:   LPEVC=0 RefClk=100ns PATEntryBits=1
+                Arb:    Fixed- WRR32- WRR64- WRR128-
+                Ctrl:   ArbSelect=Fixed
+                Status: InProgress-
+                VC0:    Caps:   PATOffset=00 MaxTimeSlots=1
+RejSnoopTrans-
+                        Arb:    Fixed- WRR32- WRR64- WRR128- TWRR128-
+WRR256-
+                        Ctrl:   Enable+ ID=0 ArbSelect=Fixed TC/VC=ff
+                        Status: NegoPending- InProgress-
+        Capabilities: [400 v1] L1 PM Substates
+                L1SubCap: PCI-PM_L1.2+ PCI-PM_L1.1+ ASPM_L1.2+ ASPM_L1.1
++ L1_PM_Substates+
+                          PortCommonModeRestoreTime=30us
+PortTPowerOnTime=10us
+        Capabilities: [600 v1] Latency Tolerance Reporting
+                Max snoop latency: 0ns
+                Max no snoop latency: 0ns
+        Kernel driver in use: pcieport
+
+01:00.0 Class 0200: Device 8086:1521 (rev 01)
+        Subsystem: Device 1d1a:0000
+        Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop-
+ParErr- Stepping- SERR- FastB2B- DisINTx+
+        Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort-
+<TAbort- <MAbort- >SERR- <PERR- INTx-
+        Latency: 0, Cache Line Size: 128 bytes
+        Interrupt: pin A routed to IRQ 260
+        Region 0: Memory at 20000000 (32-bit, non-prefetchable)
+[size=1M]
+        Region 3: Memory at 20600000 (32-bit, non-prefetchable)
+[size=16K]
+        [virtual] Expansion ROM at 20400000 [disabled] [size=512K]
+        Capabilities: [40] Power Management version 3
+                Flags: PMEClk- DSI+ D1- D2- AuxCurrent=0mA PME(D0
++,D1-,D2-,D3hot+,D3cold+)
+                Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=1 PME-
+        Capabilities: [50] MSI: Enable- Count=1/1 Maskable+ 64bit+
+                Address: 0000000000000000  Data: 0000
+                Masking: 00000000  Pending: 00000000
+        Capabilities: [70] MSI-X: Enable+ Count=10 Masked-
+                Vector table: BAR=3 offset=00000000
+                PBA: BAR=3 offset=00002000
+        Capabilities: [a0] Express (v2) Endpoint, MSI 00
+                DevCap: MaxPayload 512 bytes, PhantFunc 0, Latency L0s
+<512ns, L1 <64us
+                        ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset+
+                DevCtl: Report errors: Correctable+ Non-Fatal+ Fatal+
+Unsupported+
+                        RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+
+FLReset-
+                        MaxPayload 128 bytes, MaxReadReq 512 bytes
+                DevSta: CorrErr+ UncorrErr- FatalErr- UnsuppReq+ AuxPwr+
+TransPend-
+                LnkCap: Port #1, Speed 5GT/s, Width x4, ASPM L0s L1,
+Exit Latency L0s <4us, L1 <32us
+                        ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+                LnkCtl: ASPM L0s L1 Enabled; RCB 64 bytes Disabled-
+CommClk+
+                        ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+                LnkSta: Speed 5GT/s, Width x1, TrErr- Train- SlotClk+
+DLActive- BWMgmt- ABWMgmt-
+                DevCap2: Completion Timeout: Range ABCD, TimeoutDis+,
+LTR+, OBFF Not Supported
+                DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis-,
+LTR-, OBFF Disabled
+                LnkCtl2: Target Link Speed: 5GT/s, EnterCompliance-
+SpeedDis-
+                         Transmit Margin: Normal Operating Range,
+EnterModifiedCompliance- ComplianceSOS-
+                         Compliance De-emphasis: -6dB
+                LnkSta2: Current De-emphasis Level: -6dB,
+EqualizationComplete-, EqualizationPhase1-
+                         EqualizationPhase2-, EqualizationPhase3-,
+LinkEqualizationRequest-
+        Capabilities: [100 v2] Advanced Error Reporting
+                UESta:  DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt-
+UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+                UEMsk:  DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt-
+UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+                UESvrt: DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt-
+UnxCmplt- RxOF+ MalfTLP+ ECRC- UnsupReq- ACSViol-
+                CESta:  RxErr- BadTLP- BadDLLP- Rollover- Timeout-
+NonFatalErr+
+                CEMsk:  RxErr- BadTLP- BadDLLP- Rollover- Timeout-
+NonFatalErr+
+                AERCap: First Error Pointer: 00, GenCap+ CGenEn- ChkCap+
+ChkEn-
+        Capabilities: [140 v1] Device Serial Number
+2c-53-4a-ff-ff-03-46-80
+        Capabilities: [150 v1] Alternative Routing-ID Interpretation
+(ARI)
+                ARICap: MFVC- ACS-, Next Function: 1
+                ARICtl: MFVC- ACS-, Function Group: 0
+        Capabilities: [160 v1] Single Root I/O Virtualization (SR-IOV)
+                IOVCap: Migration-, Interrupt Message Number: 000
+                IOVCtl: Enable- Migration- Interrupt- MSE- ARIHierarchy-
+                IOVSta: Migration-
+                Initial VFs: 8, Total VFs: 8, Number of VFs: 0, Function
+Dependency Link: 00
+                VF offset: 384, stride: 4, Device ID: 1520
+                Supported Page Size: 00000553, System Page Size:
+00000001
+                VF Migration: offset: 00000000, BIR: 0
+        Capabilities: [1a0 v1] Transaction Processing Hints
+                Device specific mode supported
+                Steering table in TPH capability structure
+        Capabilities: [1c0 v1] Latency Tolerance Reporting
+                Max snoop latency: 0ns
+                Max no snoop latency: 0ns
+Capabilities: [1d0 v1] Access Control Services
+                ACSCap: SrcValid- TransBlk- ReqRedir- CmpltRedir-
+UpstreamFwd- EgressCtrl- DirectTrans-
+                ACSCtl: SrcValid- TransBlk- ReqRedir- CmpltRedir-
+UpstreamFwd- EgressCtrl- DirectTrans-
+        Kernel driver in use: igb
+
+01:00.1 Class 0200: Device 8086:1521 (rev 01)
+        Subsystem: Device 1d1a:0000
+        Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop-
+ParErr- Stepping- SERR- FastB2B- DisINTx+
+        Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort-
+<TAbort- <MAbort- >SERR- <PERR- INTx-
+        Latency: 0, Cache Line Size: 128 bytes
+        Interrupt: pin B routed to IRQ 261
+        Region 0: Memory at 20100000 (32-bit, non-prefetchable)
+[size=1M]
+        Region 3: Memory at 20604000 (32-bit, non-prefetchable)
+[size=16K]
+        [virtual] Expansion ROM at 20480000 [disabled] [size=512K]
+        Capabilities: [40] Power Management version 3
+                Flags: PMEClk- DSI+ D1- D2- AuxCurrent=0mA PME(D0
++,D1-,D2-,D3hot+,D3cold+)
+                Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=1 PME-
+        Capabilities: [50] MSI: Enable- Count=1/1 Maskable+ 64bit+
+                Address: 0000000000000000  Data: 0000
+                Masking: 00000000  Pending: 00000000
+        Capabilities: [70] MSI-X: Enable+ Count=10 Masked-
+                Vector table: BAR=3 offset=00000000
+                PBA: BAR=3 offset=00002000
+        Capabilities: [a0] Express (v2) Endpoint, MSI 00
+                DevCap: MaxPayload 512 bytes, PhantFunc 0, Latency L0s
+<512ns, L1 <64us
+                        ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset+
+                DevCtl: Report errors: Correctable+ Non-Fatal+ Fatal+
+Unsupported+
+                        RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+
+FLReset-
+                        MaxPayload 128 bytes, MaxReadReq 512 bytes
+                DevSta: CorrErr+ UncorrErr- FatalErr- UnsuppReq+ AuxPwr+
+TransPend-
+                LnkCap: Port #1, Speed 5GT/s, Width x4, ASPM L0s L1,
+Exit Latency L0s <4us, L1 <32us
+                        ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+                LnkCtl: ASPM L0s L1 Enabled; RCB 64 bytes Disabled-
+CommClk+
+                        ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+                LnkSta: Speed 5GT/s, Width x1, TrErr- Train- SlotClk+
+DLActive- BWMgmt- ABWMgmt-
+                DevCap2: Completion Timeout: Range ABCD, TimeoutDis+,
+LTR+, OBFF Not Supported
+                DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis-,
+LTR-, OBFF Disabled
+                LnkSta2: Current De-emphasis Level: -6dB,
+EqualizationComplete-, EqualizationPhase1-
+                         EqualizationPhase2-, EqualizationPhase3-,
+LinkEqualizationRequest-
+        Capabilities: [100 v2] Advanced Error Reporting
+......
+......
+
+> > Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+> > ---
+> >  drivers/pci/pcie/portdrv_pci.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/pci/pcie/portdrv_pci.c b/drivers/pci/pcie/portdrv_pci.c
+> > index eef22dc..86926ea 100644
+> > --- a/drivers/pci/pcie/portdrv_pci.c
+> > +++ b/drivers/pci/pcie/portdrv_pci.c
+> > @@ -179,7 +179,7 @@ static void pcie_portdrv_err_resume(struct pci_dev *dev)
+> >   */
+> >  static const struct pci_device_id port_pci_ids[] = { {
+> >  	/* handle any PCI-Express port */
+> > -	PCI_DEVICE_CLASS(((PCI_CLASS_BRIDGE_PCI << 8) | 0x00), ~0),
+> > +	PCI_DEVICE_CLASS(((PCI_CLASS_BRIDGE_PCI << 8) | 0x00), ~0x01),
+> >  	}, { /* end: all zeroes */ }
+> >  };
+> >  
+> > -- 
+> > 2.6.4
+> > 
+> > 
+> > _______________________________________________
+> > linux-arm-kernel mailing list
+> > linux-arm-kernel@lists.infradead.org
+> > http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
