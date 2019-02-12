@@ -1,29 +1,29 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: mediatek: btcvsd fix rx stream assign"
-	to the asoc tree
-Date: Tue, 12 Feb 2019 14:21:51 +0000 (GMT)
-Message-ID: <20190212142151.BDAAA1128114@debutante.sirena.org.uk>
-References: <1549955927-18364-1-git-send-email-kaichieh.chuang@mediatek.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Applied "ASoC: mediatek: use %pOFn instead of device_node.name" to
+ the asoc tree
+Date: Tue, 12 Feb 2019 14:22:00 +0000 (GMT)
+Message-ID: <20190212142200.4638F1128113@debutante.sirena.org.uk>
+References: <1549854281-25667-1-git-send-email-kaichieh.chuang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <1549955927-18364-1-git-send-email-kaichieh.chuang@mediatek.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-Cc: alsa-devel@alsa-project.org, broonie@kernel.org, linux-mediatek@lists.infradead.org, kaichieh.chuang@mediatek.com
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1549854281-25667-1-git-send-email-kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
 The patch
 
-   ASoC: mediatek: btcvsd fix rx stream assign
+   ASoC: mediatek: use %pOFn instead of device_node.name
 
 has been applied to the asoc tree at
 
@@ -48,31 +48,46 @@ to this mail.
 Thanks,
 Mark
 
->From fc23af99e47612042964ace44121872158ae834d Mon Sep 17 00:00:00 2001
-From: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
-Date: Tue, 12 Feb 2019 15:18:47 +0800
-Subject: [PATCH] ASoC: mediatek: btcvsd fix rx stream assign
+>From 49ff8cfb1755a6bb7d4f1645f9346962fb4e473e Mon Sep 17 00:00:00 2001
+From: KaiChieh Chuang <kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Date: Mon, 11 Feb 2019 11:04:41 +0800
+Subject: [PATCH] ASoC: mediatek: use %pOFn instead of device_node.name
 
-fix tx/rx stream assign wrong direction
+In preparation to remove the node name pointer from struct device_node,
+convert printf users to use the %pOFn format specifier.
 
-Signed-off-by: KaiChieh Chuang <kaichieh.chuang@mediatek.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
+Signed-off-by: KaiChieh Chuang <kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 ---
- sound/soc/mediatek/common/mtk-btcvsd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ sound/soc/mediatek/common/mtk-btcvsd.c     | 2 +-
+ sound/soc/mediatek/mt8183/mt8183-afe-pcm.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/sound/soc/mediatek/common/mtk-btcvsd.c b/sound/soc/mediatek/common/mtk-btcvsd.c
-index 4b613d57e2d4..1b8bcdaf02d1 100644
+index e408c1b270ab..4b613d57e2d4 100644
 --- a/sound/soc/mediatek/common/mtk-btcvsd.c
 +++ b/sound/soc/mediatek/common/mtk-btcvsd.c
-@@ -250,7 +250,7 @@ static int mtk_btcvsd_snd_rx_init(struct mtk_btcvsd_snd *bt)
- 	bt->rx->buf_size = BTCVSD_RX_BUF_SIZE;
- 	bt->rx->timeout = 0;
- 	bt->rx->rw_cnt = 0;
--	bt->tx->stream = SNDRV_PCM_STREAM_CAPTURE;
-+	bt->rx->stream = SNDRV_PCM_STREAM_CAPTURE;
- 	return 0;
- }
+@@ -1269,7 +1269,7 @@ static int mtk_btcvsd_snd_probe(struct platform_device *pdev)
+ 	/* irq */
+ 	irq_id = platform_get_irq(pdev, 0);
+ 	if (irq_id <= 0) {
+-		dev_err(dev, "%s no irq found\n", dev->of_node->name);
++		dev_err(dev, "%pOFn no irq found\n", dev->of_node);
+ 		return irq_id < 0 ? irq_id : -ENXIO;
+ 	}
  
+diff --git a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
+index ff3111ec876c..4e045dd305a7 100644
+--- a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
++++ b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
+@@ -1139,7 +1139,7 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	/* request irq */
+ 	irq_id = platform_get_irq(pdev, 0);
+ 	if (!irq_id) {
+-		dev_err(dev, "%s no irq found\n", dev->of_node->name);
++		dev_err(dev, "%pOFn no irq found\n", dev->of_node);
+ 		return -ENXIO;
+ 	}
+ 	ret = devm_request_irq(dev, irq_id, mt8183_afe_irq_handler,
 -- 
 2.20.1
