@@ -1,86 +1,307 @@
-From: Frederic Chen <frederic.chen@mediatek.com>
-Subject: Re: [RFC PATCH V0 3/7] [media] dt-bindings: mt8183: Added DIP-SMEM
- dt-bindings
-Date: Tue, 12 Feb 2019 17:50:00 +0800
-Message-ID: <1549965000.29488.4.camel@mtksdccf07>
-References: <1549020091-42064-1-git-send-email-frederic.chen@mediatek.com>
- <1549020091-42064-4-git-send-email-frederic.chen@mediatek.com>
- <20190209155935.afrrtf3twjmj23sm@valkosipuli.retiisi.org.uk>
- <20190209182034.GC4505@pendragon.ideasonboard.com>
+From: Michael Kao <michael.kao@mediatek.com>
+Subject: Re: [PATCH 4/7] thermal: mediatek: add thermal controller offset
+Date: Tue, 12 Feb 2019 17:55:42 +0800
+Message-ID: <1549965342.22716.9.camel@mtksdccf07>
+References: <1549006693-11659-1-git-send-email-michael.kao@mediatek.com>
+         <1549006693-11659-5-git-send-email-michael.kao@mediatek.com>
+         <20190206005300.GD19687@localhost.localdomain>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190209182034.GC4505@pendragon.ideasonboard.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sakari Ailus <sakari.ailus@iki.fi>
-Cc: devicetree@vger.kernel.org, Sean.Cheng@mediatek.com, laurent.pinchart+renesas@ideasonboard.com, Rynn.Wu@mediatek.com, christie.yu@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, Jerry-ch.Chen@mediatek.com, tfiga@chromium.org, jungo.lin@mediatek.com, sj.huang@mediatek.com, hans.verkuil@cisco.com, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190206005300.GD19687@localhost.localdomain>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Eduardo Valentin <edubezval@gmail.com>
+Cc: =Zhang Rui <rui.zhang@intel.com>, =Daniel Lezcano <daniel.lezcano@linaro.org>, =Rob Herring <robh+dt@kernel.org>, =Mark Rutland <mark.rutland@arm.com>, =Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-RGVhciBMYXVyZW50IGFuZCBTYWthcmksCgoKT24gU2F0LCAyMDE5LTAyLTA5IGF0IDIwOjIwICsw
-MjAwLCBMYXVyZW50IFBpbmNoYXJ0IHdyb3RlOgo+IEhlbGxvIEZyZWRlcmljLAo+IAo+IE9uIFNh
-dCwgRmViIDA5LCAyMDE5IGF0IDA1OjU5OjM1UE0gKzAyMDAsIFNha2FyaSBBaWx1cyB3cm90ZToK
-PiA+IEhpIEZyZWRlcmljLAo+ID4gCj4gPiBUaGFua3MgZm9yIHRoZSBwYXRjaHNldC4KPiA+IAo+
-ID4gQ291bGQgeW91IGFsc28gY2MgdGhlIGRldmljZXRyZWUgbGlzdCwgcGxlYXNlPwo+ID4gCj4g
-PiBPbiBGcmksIEZlYiAwMSwgMjAxOSBhdCAwNzoyMToyN1BNICswODAwLCBGcmVkZXJpYyBDaGVu
-IHdyb3RlOgo+ID4gPiBUaGlzIHBhdGNoIGFkZHMgdGhlIERUIGJpbmRpbmcgZG9jdW1lbnRhdGlv
-biBmb3IgdGhlIHNoYXJlZCBtZW1vcnkKPiA+ID4gYmV0d2VlbiBESVAgKERpZ2l0YWwgSW1hZ2Ug
-UHJvY2Vzc2luZykgdW5pdCBvZiB0aGUgY2FtZXJhIElTUCBzeXN0ZW0KPiA+ID4gYW5kIHRoZSBj
-by1wcm9jZXNzb3IgaW4gTWVkaWF0ZWsgU29Dcy4KPiA+ID4gCj4gPiA+IFNpZ25lZC1vZmYtYnk6
-IEZyZWRlcmljIENoZW4gPGZyZWRlcmljLmNoZW5AbWVkaWF0ZWsuY29tPgo+ID4gPiAtLS0KPiA+
-ID4gIC4uLi9iaW5kaW5ncy9tZWRpYS9tZWRpYXRlayxkaXBfc21lbS50eHQgICAgICAgICAgIHwg
-MjkgKysrKysrKysrKysrKysrKysrKysrKwo+ID4gPiAgMSBmaWxlIGNoYW5nZWQsIDI5IGluc2Vy
-dGlvbnMoKykKPiA+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRy
-ZWUvYmluZGluZ3MvbWVkaWEvbWVkaWF0ZWssZGlwX3NtZW0udHh0Cj4gPiA+IAo+ID4gPiBkaWZm
-IC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL21lZGlhdGVr
-LGRpcF9zbWVtLnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRpYS9t
-ZWRpYXRlayxkaXBfc21lbS50eHQKPiA+ID4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiA+ID4gaW5k
-ZXggMDAwMDAwMC4uNTUzMzcyMQo+ID4gPiAtLS0gL2Rldi9udWxsCj4gPiA+ICsrKyBiL0RvY3Vt
-ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRpYS9tZWRpYXRlayxkaXBfc21lbS50eHQK
-PiA+ID4gQEAgLTAsMCArMSwyOSBAQAo+ID4gPiArTWVkaWF0ZWsgSVNQIFNoYXJlZCBNZW1vcnkg
-RGV2aWNlCj4gPiA+ICsKPiA+ID4gK01lZGlhdGVrIElTUCBTaGFyZWQgTWVtb3J5IERldmljZSBp
-cyB1c2VkIHRvIG1hbmFnZSBzaGFyZWQgbWVtb3J5Cj4gPiA+ICthbW9uZyBDUFUsIElTUCBJUHMg
-YW5kIGNvcHJvY2Vzc29yLiBJdCBpcyBhc3NvY2lhdGVkIHdpdGggYSByZXNlcnZlZAo+ID4gPiAr
-bWVtb3J5IHJlZ2lvbiAoUGxlYXNlIHNlZSBEb2N1bWVudGF0aW9uXGRldmljZXRyZWVcYmluZGlu
-Z3NcCj4gPiA+ICtyZXNlcnZlZC1tZW1vcnlcbWVkaWF0ZWsscmVzZXJ2ZS1tZW1vcnktaXNwX3Nt
-ZW0udHh0KSBhbmQKPiA+IAo+ID4gcy9cXC9cLy9nOwo+ID4gCj4gPiA+ICthbmQgcHJvdmlkZSB0
-aGUgY29udGV4dCB0byBhbGxvY2F0ZSBtZW1vcnkgd2l0aCBkbWEgYWRkcmVzc2VzLgo+IAo+IERv
-ZXMgdGhpcyByZXByZXNlbnQgYSByZWFsIGRldmljZSAoYXMgaW4gSVAgY29yZSkgaW4gdGhlIFNv
-QyA/IFRoZXJlCj4gc2VlbXMgdG8gYmUgbm8gZHJpdmVyIGFzc29jaWF0ZWQgd2l0aCB0aGUgY29t
-cGF0aWJsZSBzdHJpbmcgZGVmaW5lZAo+IGhlcmVpbiBpbiB0aGlzIHBhdGNoIHNlcmllcywgd2hh
-dCBpcyB0aGlzIG5vZGUgdXNlZCBmb3IgPwoKSXQgZG9lcyBub3QgcmVwcmVzZW50IGEgcmVhbCBk
-ZXZpY2UuIEl0IGlzIHVzZWQgZm9yIGNyZWF0aW5nIHRoZQpESVAtc3BlY2lmaWMgdmIyIGJ1ZmZl
-ciBhbGxvY2F0aW9uIGNvbnRleHQgKGltcGxlbWVudGVkCmluIC9kcml2ZXJzL21lZGlhL3BsYXRm
-b3JtL210ay1pc3AvaXNwXzUwL2RpcC9tdGtfZGlwLXNtZW0tZHJ2LmMpLgpUaGUgY29tcGF0aWJs
-ZSBzdHJpbmcgaGFzIGJlZW4gcmVuYW1lZCBhcyDigJxtZWRpYXRlayxkaXBfc21lbeKAnSBpbiB0
-aGlzCnBhdGNoIHNlcmllcyBhbmQgSSB3aWxsIGNvcnJlY3QgaXQgaW4gdGhpcyBiaW5kaW5nIGRv
-Y3VtZW50LgoKPiAKPiA+ID4gK1JlcXVpcmVkIHByb3BlcnRpZXM6Cj4gPiA+ICstIGNvbXBhdGli
-bGU6IFNob3VsZCBiZSAibWVkaWF0ZWssaXNwX3NtZW0iCj4gPiAKPiA+IHMvU2hvdWxkL1NoYWxs
-Lwo+ID4gCj4gPiA+ICsKPiA+ID4gKy0gaW9tbXVzOiBzaG91bGQgcG9pbnQgdG8gdGhlIHJlc3Bl
-Y3RpdmUgSU9NTVUgYmxvY2sgd2l0aCBtYXN0ZXIgcG9ydAo+ID4gCj4gPiBzL3Nob3VsZC9zaGFs
-bC8KPiA+IAo+ID4gPiArICBhcyBhcmd1bWVudC4gUGxlYXNlIHNldCB0aGUgcG9ydHMgd2hpY2gg
-bWF5IGJlIGFjY2Vzc2VkCj4gPiA+ICsgIHRocm91Z2ggdGhlIGNvbW1vbiBwYXRoLiBZb3UgY2Fu
-IHNlZQo+ID4gPiArICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvaW9tbXUvbWVk
-aWF0ZWssaW9tbXUudHh0Cj4gPiA+ICsgIGZvciB0aGUgZGV0YWlsLgo+ID4gPiArCj4gPiA+ICst
-IG1lZGlhdGVrLGxhcmI6IG11c3QgY29udGFpbiB0aGUgbG9jYWwgYXJiaXRlcnMgaW4gdGhlIGN1
-cnJlbnQgU29jcy4KPiA+IAo+ID4gUGVyaGFwcyAiU29DcyI/Cj4gPiAKPiA+ID4gKyAgUGxlYXNl
-IHNldCB0aGUgbGFyYiBvZiBjYW1zeXMgZm9yIFBhc3MgMSBhbmQgaW1nc3lzIGZvciBESVAsIG9y
-IGJvdGgKPiA+ID4gKyAgaWYgeW91IGFyZSB1c2luZyBhbGwgdGhlIGNhbWVyYSBmdW5jdGlvbi4g
-WW91IGNhbiBzZWUKPiA+ID4gKyAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21l
-bW9yeS1jb250cm9sbGVycy8KPiA+ID4gKyAgbWVkaWF0ZWssc21pLWxhcmIudHh0IGZvciB0aGUg
-ZGV0YWlsLgo+ID4gPiArCj4gPiA+ICtFeGFtcGxlOgo+ID4gPiArCWlzcF9zbWVtOiBpc3Bfc21l
-bSB7Cj4gPiA+ICsJCWNvbXBhdGlibGUgPSAibWVkaWF0ZWssaXNwX3NtZW0iOwo+ID4gPiArCQlt
-ZWRpYXRlayxsYXJiID0gPCZsYXJiNT47Cj4gPiA+ICsJCWlvbW11cyA9IDwmaW9tbXUgTTRVX1BP
-UlRfQ0FNX0lNR0k+Owo+ID4gPiArCX07Cj4gCgoKU2luY2VyZWx5LAoKRnJlZGVyaWMgQ2hlbgoK
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1h
-cm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5v
-cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0t
-a2VybmVsCg==
+On Tue, 2019-02-05 at 16:53 -0800, Eduardo Valentin wrote:
+> On Fri, Feb 01, 2019 at 03:38:10PM +0800, michael.kao@mediatek.com wrote:
+> > From: Michael Kao <michael.kao@mediatek.com>
+> > 
+> > One thermal controller can read four sensors at most,
+> > so we need to add controller_offset for the project with
+> > more than four sensors to reuse the same register settings.
+> > 
+> > Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+> > ---
+> >  drivers/thermal/mtk_thermal.c | 79 +++++++++++++++++++++++++++++--------------
+> >  1 file changed, 54 insertions(+), 25 deletions(-)
+> > 
+> > diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+> > index 45c6587..e5cf3f4 100644
+> > --- a/drivers/thermal/mtk_thermal.c
+> > +++ b/drivers/thermal/mtk_thermal.c
+> > @@ -105,6 +105,9 @@
+> >  /* The number of sensing points per bank */
+> >  #define MT8173_NUM_SENSORS_PER_ZONE	4
+> >  
+> > +/* The number of controller in the MT8173 */
+> > +#define MT8173_NUM_CONTROLLER		1
+> > +
+> >  /* The calibration coefficient of sensor  */
+> >  #define MT8173_CALIBRATION	165
+> >  
+> > @@ -150,6 +153,9 @@ enum {
+> >  /* The number of sensing points per bank */
+> >  #define MT2701_NUM_SENSORS_PER_ZONE	3
+> >  
+> > +/* The number of controller in the MT2701 */
+> > +#define MT2701_NUM_CONTROLLER		1
+> > +
+> >  /* The calibration coefficient of sensor  */
+> >  #define MT2701_CALIBRATION	165
+> >  
+> > @@ -168,6 +174,9 @@ enum {
+> >  /* The number of sensing points per bank */
+> >  #define MT2712_NUM_SENSORS_PER_ZONE	4
+> >  
+> > +/* The number of controller in the MT2712 */
+> > +#define MT2712_NUM_CONTROLLER		1
+> > +
+> >  /* The calibration coefficient of sensor  */
+> >  #define MT2712_CALIBRATION	165
+> >  
+> > @@ -176,6 +185,7 @@ enum {
+> >  #define MT7622_NUM_ZONES		1
+> >  #define MT7622_NUM_SENSORS_PER_ZONE	1
+> >  #define MT7622_TS1	0
+> > +#define MT7622_NUM_CONTROLLER		1
+> >  
+> >  /* The calibration coefficient of sensor  */
+> >  #define MT7622_CALIBRATION	165
+> > @@ -201,6 +211,8 @@ struct mtk_thermal_data {
+> >  	const int *msr;
+> >  	const int *adcpnp;
+> >  	const int cali_val;
+> > +	const int num_controller;
+> > +	const int *controller_offset;
+> >  	struct thermal_bank_cfg bank_data[];
+> >  };
+> >  
+> > @@ -240,6 +252,7 @@ struct mtk_thermal {
+> >  };
+> >  
+> >  static const int mt8173_mux_values[MT8173_NUM_SENSORS] = { 0, 1, 2, 3, 16 };
+> > +static const int mt8173_tc_offset[MT8173_NUM_CONTROLLER] = { 0x0, };
+> >  
+> >  static const int mt8173_vts_index[MT8173_NUM_SENSORS] = {
+> >  	VTS1, VTS2, VTS3, VTS4, VTSABB
+> > @@ -259,6 +272,7 @@ struct mtk_thermal {
+> >  };
+> >  
+> >  static const int mt2701_mux_values[MT2701_NUM_SENSORS] = { 0, 1, 16 };
+> > +static const int mt2701_tc_offset[MT2701_NUM_CONTROLLER] = { 0x0, };
+> >  
+> >  static const int mt2701_vts_index[MT2701_NUM_SENSORS] = {
+> >  	VTS1, VTS2, VTS3
+> > @@ -278,6 +292,7 @@ struct mtk_thermal {
+> >  };
+> >  
+> >  static const int mt2712_mux_values[MT2712_NUM_SENSORS] = { 0, 1, 2, 3 };
+> > +static const int mt2712_tc_offset[MT2712_NUM_CONTROLLER] = { 0x0, };
+> >  
+> >  static const int mt2712_vts_index[MT2712_NUM_SENSORS] = {
+> >  	VTS1, VTS2, VTS3, VTS4
+> > @@ -289,6 +304,7 @@ struct mtk_thermal {
+> >  static const int mt7622_adcpnp[MT7622_NUM_SENSORS_PER_ZONE] = { TEMP_ADCPNP0, };
+> >  static const int mt7622_mux_values[MT7622_NUM_SENSORS] = { 0, };
+> >  static const int mt7622_vts_index[MT7622_NUM_SENSORS] = { VTS1 };
+> > +static const int mt7622_tc_offset[MT7622_NUM_CONTROLLER] = { 0x0, };
+> >  
+> >  /**
+> >   * The MT8173 thermal controller has four banks. Each bank can read up to
+> > @@ -309,6 +325,8 @@ struct mtk_thermal {
+> >  	.num_sensors = MT8173_NUM_SENSORS,
+> >  	.vts_index = mt8173_vts_index,
+> >  	.cali_val = MT8173_CALIBRATION,
+> > +	.num_controller = MT8173_NUM_CONTROLLER,
+> > +	.controller_offset = mt8173_tc_offset,
+> >  	.bank_data = {
+> >  		{
+> >  			.num_sensors = 2,
+> > @@ -345,6 +363,8 @@ struct mtk_thermal {
+> >  	.num_sensors = MT2701_NUM_SENSORS,
+> >  	.vts_index = mt2701_vts_index,
+> >  	.cali_val = MT2701_CALIBRATION,
+> > +	.num_controller = MT2701_NUM_CONTROLLER,
+> > +	.controller_offset = mt2701_tc_offset,
+> >  	.bank_data = {
+> >  		{
+> >  			.num_sensors = 3,
+> > @@ -372,6 +392,8 @@ struct mtk_thermal {
+> >  	.num_sensors = MT2712_NUM_SENSORS,
+> >  	.vts_index = mt2712_vts_index,
+> >  	.cali_val = MT2712_CALIBRATION,
+> > +	.num_controller = MT2712_NUM_CONTROLLER,
+> > +	.controller_offset = mt2712_tc_offset,
+> >  	.bank_data = {
+> >  		{
+> >  			.num_sensors = 4,
+> > @@ -393,6 +415,8 @@ struct mtk_thermal {
+> >  	.num_sensors = MT7622_NUM_SENSORS,
+> >  	.vts_index = mt7622_vts_index,
+> >  	.cali_val = MT7622_CALIBRATION,
+> > +	.num_controller = MT7622_NUM_CONTROLLER,
+> > +	.controller_offset = mt7622_tc_offset,
+> >  	.bank_data = {
+> >  		{
+> >  			.num_sensors = 1,
+> > @@ -523,19 +547,23 @@ static int mtk_read_temp(void *data, int *temperature)
+> >  };
+> >  
+> >  static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
+> > -				  u32 apmixed_phys_base, u32 auxadc_phys_base)
+> > +				  u32 apmixed_phys_base, u32 auxadc_phys_base,
+> > +				  int ctrl_id)
+> >  {
+> >  	struct mtk_thermal_bank *bank = &mt->banks[num];
+> >  	const struct mtk_thermal_data *conf = mt->conf;
+> >  	int i;
+> >  
+> > +	int offset = mt->conf->controller_offset[ctrl_id];
+> > +	void *controller_base = mt->thermal_base + offset;
+> 
+> This void * has to be at least __iomem, right?
+> 
+> See the report of kbuild bot, fix it and send it back.
+> 
+OK, I will fix the declaration and send it again.
+Thanks!
+
+> > +
+> >  	bank->id = num;
+> >  	bank->mt = mt;
+> >  
+> >  	mtk_thermal_get_bank(bank);
+> >  
+> >  	/* bus clock 66M counting unit is 12 * 15.15ns * 256 = 46.540us */
+> > -	writel(TEMP_MONCTL1_PERIOD_UNIT(12), mt->thermal_base + TEMP_MONCTL1);
+> > +	writel(TEMP_MONCTL1_PERIOD_UNIT(12), controller_base + TEMP_MONCTL1);
+> >  
+> >  	/*
+> >  	 * filt interval is 1 * 46.540us = 46.54us,
+> > @@ -543,21 +571,21 @@ static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
+> >  	 */
+> >  	writel(TEMP_MONCTL2_FILTER_INTERVAL(1) |
+> >  			TEMP_MONCTL2_SENSOR_INTERVAL(429),
+> > -			mt->thermal_base + TEMP_MONCTL2);
+> > +			controller_base + TEMP_MONCTL2);
+> >  
+> >  	/* poll is set to 10u */
+> >  	writel(TEMP_AHBPOLL_ADC_POLL_INTERVAL(768),
+> > -	       mt->thermal_base + TEMP_AHBPOLL);
+> > +	       controller_base + TEMP_AHBPOLL);
+> >  
+> >  	/* temperature sampling control, 1 sample */
+> > -	writel(0x0, mt->thermal_base + TEMP_MSRCTL0);
+> > +	writel(0x0, controller_base + TEMP_MSRCTL0);
+> >  
+> >  	/* exceed this polling time, IRQ would be inserted */
+> > -	writel(0xffffffff, mt->thermal_base + TEMP_AHBTO);
+> > +	writel(0xffffffff, controller_base + TEMP_AHBTO);
+> >  
+> >  	/* number of interrupts per event, 1 is enough */
+> > -	writel(0x0, mt->thermal_base + TEMP_MONIDET0);
+> > -	writel(0x0, mt->thermal_base + TEMP_MONIDET1);
+> > +	writel(0x0, controller_base + TEMP_MONIDET0);
+> > +	writel(0x0, controller_base + TEMP_MONIDET1);
+> >  
+> >  	/*
+> >  	 * The MT8173 thermal controller does not have its own ADC. Instead it
+> > @@ -572,44 +600,44 @@ static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
+> >  	 * this value will be stored to TEMP_PNPMUXADDR (TEMP_SPARE0)
+> >  	 * automatically by hw
+> >  	 */
+> > -	writel(BIT(conf->auxadc_channel), mt->thermal_base + TEMP_ADCMUX);
+> > +	writel(BIT(conf->auxadc_channel), controller_base + TEMP_ADCMUX);
+> >  
+> >  	/* AHB address for auxadc mux selection */
+> >  	writel(auxadc_phys_base + AUXADC_CON1_CLR_V,
+> > -	       mt->thermal_base + TEMP_ADCMUXADDR);
+> > +	       controller_base + TEMP_ADCMUXADDR);
+> >  
+> >  	/* AHB address for pnp sensor mux selection */
+> >  	writel(apmixed_phys_base + APMIXED_SYS_TS_CON1,
+> > -	       mt->thermal_base + TEMP_PNPMUXADDR);
+> > +	       controller_base + TEMP_PNPMUXADDR);
+> >  
+> >  	/* AHB value for auxadc enable */
+> > -	writel(BIT(conf->auxadc_channel), mt->thermal_base + TEMP_ADCEN);
+> > +	writel(BIT(conf->auxadc_channel), controller_base + TEMP_ADCEN);
+> >  
+> >  	/* AHB address for auxadc enable (channel 0 immediate mode selected) */
+> >  	writel(auxadc_phys_base + AUXADC_CON1_SET_V,
+> > -	       mt->thermal_base + TEMP_ADCENADDR);
+> > +	       controller_base + TEMP_ADCENADDR);
+> >  
+> >  	/* AHB address for auxadc valid bit */
+> >  	writel(auxadc_phys_base + AUXADC_DATA(conf->auxadc_channel),
+> > -	       mt->thermal_base + TEMP_ADCVALIDADDR);
+> > +	       controller_base + TEMP_ADCVALIDADDR);
+> >  
+> >  	/* AHB address for auxadc voltage output */
+> >  	writel(auxadc_phys_base + AUXADC_DATA(conf->auxadc_channel),
+> > -	       mt->thermal_base + TEMP_ADCVOLTADDR);
+> > +	       controller_base + TEMP_ADCVOLTADDR);
+> >  
+> >  	/* read valid & voltage are at the same register */
+> > -	writel(0x0, mt->thermal_base + TEMP_RDCTRL);
+> > +	writel(0x0, controller_base + TEMP_RDCTRL);
+> >  
+> >  	/* indicate where the valid bit is */
+> >  	writel(TEMP_ADCVALIDMASK_VALID_HIGH | TEMP_ADCVALIDMASK_VALID_POS(12),
+> > -	       mt->thermal_base + TEMP_ADCVALIDMASK);
+> > +	       controller_base + TEMP_ADCVALIDMASK);
+> >  
+> >  	/* no shift */
+> > -	writel(0x0, mt->thermal_base + TEMP_ADCVOLTAGESHIFT);
+> > +	writel(0x0, controller_base + TEMP_ADCVOLTAGESHIFT);
+> >  
+> >  	/* enable auxadc mux write transaction */
+> >  	writel(TEMP_ADCWRITECTRL_ADC_MUX_WRITE,
+> > -	       mt->thermal_base + TEMP_ADCWRITECTRL);
+> > +		controller_base + TEMP_ADCWRITECTRL);
+> >  
+> >  	for (i = 0; i < conf->bank_data[num].num_sensors; i++)
+> >  		writel(conf->sensor_mux_values[conf->bank_data[num].sensors[i]],
+> > @@ -617,11 +645,11 @@ static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
+> >  		       conf->adcpnp[conf->bank_data[num].sensors[i]]);
+> >  
+> >  	writel((1 << conf->bank_data[num].num_sensors) - 1,
+> > -	       mt->thermal_base + TEMP_MONCTL0);
+> > +	       controller_base + TEMP_MONCTL0);
+> >  
+> >  	writel(TEMP_ADCWRITECTRL_ADC_PNP_WRITE |
+> >  	       TEMP_ADCWRITECTRL_ADC_MUX_WRITE,
+> > -	       mt->thermal_base + TEMP_ADCWRITECTRL);
+> > +	       controller_base + TEMP_ADCWRITECTRL);
+> >  
+> >  	mtk_thermal_put_bank(bank);
+> >  }
+> > @@ -737,7 +765,7 @@ static int mtk_thermal_get_calibration_data(struct device *dev,
+> >  
+> >  static int mtk_thermal_probe(struct platform_device *pdev)
+> >  {
+> > -	int ret, i;
+> > +	int ret, i, ctrl_id;
+> >  	struct device_node *auxadc, *apmixedsys, *np = pdev->dev.of_node;
+> >  	struct mtk_thermal *mt;
+> >  	struct resource *res;
+> > @@ -817,9 +845,10 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+> >  		goto err_disable_clk_auxadc;
+> >  	}
+> >  
+> > -	for (i = 0; i < mt->conf->num_banks; i++)
+> > -		mtk_thermal_init_bank(mt, i, apmixed_phys_base,
+> > -				      auxadc_phys_base);
+> > +	for (ctrl_id = 0; ctrl_id < mt->conf->num_controller ; ctrl_id++)
+> > +		for (i = 0; i < mt->conf->num_banks; i++)
+> > +			mtk_thermal_init_bank(mt, i, apmixed_phys_base,
+> > +					      auxadc_phys_base, ctrl_id);
+> >  
+> >  	platform_set_drvdata(pdev, mt);
+> >  
+> > -- 
+> > 1.9.1
+> > 
