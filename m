@@ -1,78 +1,54 @@
-From: Chaotian Jing <chaotian.jing@mediatek.com>
-Subject: [PATCH v1] mmc: mmc: Fix HS setting in mmc_hs400_to_hs200()
-Date: Wed, 13 Feb 2019 17:06:52 +0800
-Message-ID: <1550048812-29068-1-git-send-email-chaotian.jing@mediatek.com>
+From: Johan Hovold <johan@kernel.org>
+Subject: Re: [PATCH v3 2/4] dt-bindings: gnss: add mediatek binding
+Date: Wed, 13 Feb 2019 10:31:21 +0100
+Message-ID: <20190213093121.GG28278@localhost>
+References: <1548693481-1162-1-git-send-email-lollivier@baylibre.com>
+ <1548693481-1162-3-git-send-email-lollivier@baylibre.com>
+ <20190130155016.GA26536@bogus>
+ <20190211092251.GV4686@localhost>
+ <CAL_JsqJPhuDDsEMvpVizewTuehOZTc84d+8Hq7o8C+O4UrBjYw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CAL_JsqJPhuDDsEMvpVizewTuehOZTc84d+8Hq7o8C+O4UrBjYw@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Simon Horman <horms+renesas@verge.net.au>, Chaotian Jing <chaotian.jing@mediatek.com>, Kyle Roeschley <kyle.roeschley@ni.com>, Hongjie Fang <hongjiefang@asrmicro.com>, Harish Jenny K N <harish_kandiga@mentor.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Adrian Hunter <adrian.hunter@intel.com>
+To: Rob Herring <robh@kernel.org>
+Cc: Johan Hovold <johan@kernel.org>, Loys Ollivier <lollivier@baylibre.com>, devicetree@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Kevin Hilman <khilman@baylibre.com>, linux-amlogic@lists.infradead.org, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-mmc_hs400_to_hs200() begins with the card and host in HS400 mode.
-Therefore, any commands sent to the card should use HS400 timing.
-reduce clock frequency to 50Mhz but without host timming change
-may cause CMD6 response CRC error. because host still running at
-hs400 mode, and it's hard to find a suitable setting for all eMMC
-cards when clock frequency reduced to 50Mhz but card & host still
-in hs400 mode.
-this patch refers to mmc_select_hs400(), make the reduce clock frequency
-after card timing change.
+On Tue, Feb 12, 2019 at 03:18:46PM -0600, Rob Herring wrote:
+> On Mon, Feb 11, 2019 at 3:23 AM Johan Hovold <johan@kernel.org> wrote:
+> >
+> > On Wed, Jan 30, 2019 at 09:50:16AM -0600, Rob Herring wrote:
+> > > On Mon, Jan 28, 2019 at 05:37:59PM +0100, Loys Ollivier wrote:
+> > > > Add binding for Mediatek-based GNSS receivers.
+> > > >
+> > > > Signed-off-by: Loys Ollivier <lollivier@baylibre.com>
 
-Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
-Fixes: ef3d232245ab ("mmc: mmc: Relax checking for switch errors after HS200 switch")
----
- drivers/mmc/core/mmc.c | 29 +++++++++++++++++++++++------
- 1 file changed, 23 insertions(+), 6 deletions(-)
+> > > > +- gtop,fix-gpios   : GPIO used to determine device position fix state
+> > > > +                     (pin name: FIX, 3D_FIX)
+> >
+> > I'm thinking we might need a standard name for fix-gpios as well. This
+> > isn't a feature that is globaltop (or mediatek) specific, and other
+> > manufacturers provide similar functionality through pins named UI_FIX,
+> > or even LCKIND (lock indicator).
+> >
+> > The pin is typically used to drive an indicator LED AFAIU, but the
+> > characteristics of the signal varies from device to device (fw to fw),
+> > for example, pulse when no lock and low otherwise, or pulse when a 2d or
+> > 3d-fix is acquired, etc.
+> >
+> > I'm not sure how useful the pulsing would be for software, but someone
+> > might find a use for it in some form.
+> >
+> > Rob, is this something we want to keep in the binding, and if so, how
+> > about using a generic name such as "gnss-fix-gpios"?
+> 
+> Sure. As long as details like being a pulse and when the pulse occurs
+> are implied by compatible string. So we don't get an endless addition
+> of properties to describe those.
 
-diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
-index 09c688f..00adc2d 100644
---- a/drivers/mmc/core/mmc.c
-+++ b/drivers/mmc/core/mmc.c
-@@ -1239,20 +1239,37 @@ int mmc_hs400_to_hs200(struct mmc_card *card)
- 	int err;
- 	u8 val;
- 
--	/* Reduce frequency to HS */
--	max_dtr = card->ext_csd.hs_max_dtr;
--	mmc_set_clock(host, max_dtr);
--
- 	/* Switch HS400 to HS DDR */
- 	val = EXT_CSD_TIMING_HS;
- 	err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL, EXT_CSD_HS_TIMING,
- 			   val, card->ext_csd.generic_cmd6_time, 0,
- 			   true, false, true);
--	if (err)
--		goto out_err;
-+	/*
-+	 * as we are on the way to do re-tune, so if the CMD6 got response CRC
-+	 * error, do not treat it as error.
-+	 */
-+	if (err) {
-+		if (err == -EILSEQ) {
-+			/*
-+			 * card will busy after sending out response and host
-+			 * driver may not wait busy de-assert when get
-+			 * response CRC error. so just wait enough time to
-+			 * ensure card leave busy state.
-+			 */
-+			mmc_delay(card->ext_csd.generic_cmd6_time);
-+			pr_debug("%s: %s switch to HS got CRC error\n",
-+				 mmc_hostname(host), __func__);
-+		} else {
-+			goto out_err;
-+		}
-+	}
- 
- 	mmc_set_timing(host, MMC_TIMING_MMC_DDR52);
- 
-+	/* Reduce frequency to HS */
-+	max_dtr = card->ext_csd.hs_max_dtr;
-+	mmc_set_clock(host, max_dtr);
-+
- 	err = mmc_switch_status(card);
- 	if (err)
- 		goto out_err;
--- 
-1.8.1.1.dirty
+Agreed, thanks.
+
+Johan
