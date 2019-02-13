@@ -1,93 +1,31 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [RFC PATCH] PCI/portdrv: Support for subtractive decode bridge
-Date: Wed, 13 Feb 2019 13:11:32 -0600
-Message-ID: <20190213191132.GI96272@google.com>
-References: <1544758829-10327-1-git-send-email-honghui.zhang@mediatek.com>
- <20190207151816.GI7268@google.com>
- <1549940249.4980.56.camel@mhfsdcap03>
+From: Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH 3/7] dt-bindings: arm: mediatek: add support for MT7622
+ BPI-R64 and MT7629 RFB
+Date: Wed, 13 Feb 2019 14:12:23 -0600
+Message-ID: <CAL_JsqLan+-p661a=p2Ss7tsQHdu7YGqwe3OmYkwAKE=LeqT=w@mail.gmail.com>
+References: <d1ab6c89b115ad0582815816490fa0c13ea83178.1548735271.git.ryder.lee@mediatek.com>
+ <1421bc57f9f4d5f3e087a1fd38c5fa9ef087dd1b.1548735271.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1549940249.4980.56.camel@mhfsdcap03>
+In-Reply-To: <1421bc57f9f4d5f3e087a1fd38c5fa9ef087dd1b.1548735271.git.ryder.lee@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Honghui Zhang <honghui.zhang@mediatek.com>
-Cc: lorenzo.pieralisi@arm.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com, matthias.bgg@gmail.com, youlin.pei@mediatek.com, poza@codeaurora.org, fred@fredlawl.com, rafael.j.wysocki@intel.com, jianjun.wang@mediatek.com
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@kernel.org>, Weijie Gao <weijie.gao@mediatek.com>, Roy Luo <roychl666@gmail.com>, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Feb 12, 2019 at 10:57:29AM +0800, Honghui Zhang wrote:
-> On Thu, 2019-02-07 at 09:18 -0600, Bjorn Helgaas wrote:
-> > On Fri, Dec 14, 2018 at 11:40:29AM +0800, honghui.zhang@mediatek.com wrote:
-> > > From: Honghui Zhang <honghui.zhang@mediatek.com>
-> > > 
-> > > The Class Code for subtractive decode PCI-to-PCI bridge is 060401h,
-> > > change the class_mask values to make portdrv support this type bridge.
-> > 
-> > I assume you have a Root Port or Switch Port that supports subtractive
-> > decode?  I'm trying to understand how such a device would work.
-> 
-> Yes, most of Mediatek's RC device have set the class type as 060401h as
-> HW default values, include mt2712 and mt7622.
-> 
-> Those RC device work fine with all I have tried EP device except that
-> the portdrv was not attached to those device. But no scenario need those
-> service as far as I know.
-> 
-> > Out of curiosity, can you show the "lspci -vv" output for the device
-> > and the downstream devices of interest?
-> > 
-> lspci only read the class type 0604h, it does not care about the
-> subordinate values of the class type. I will put the "lspci -vv" output
-> at bottom of this mail.
-> 
-> > Do you happen to know whether this functionality is configurable,
-> > e.g., is there some way software can enable or disable subtractive
-> > decode?  I assume this would be some device-specific thing, because I
-> > can't find anything in the Bridge Control register or similar.  The
-> > PCIe spec doesn't even contain the word "subtractive".
-> 
-> Those class type values for Mediatek's RC has a register which could be
-> used to change its values. We never touch this backdoor register since
-> without the portdrv attached is fine, nobody ask for the port service
-> yet.
-> 
-> I did some homework for the subtractive decode PCI-to-PCI bridge, and
-> did not found much more information about that. I guess those port
-> service should also support subtractive bridge since spec does not
-> forbidden that.
+On Mon, Jan 28, 2019 at 10:31 PM Ryder Lee <ryder.lee@mediatek.com> wrote:
+>
+> Update binding document for MT7622 BPI-R64 and MT7629 reference board.
+>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/arm/mediatek.txt | 7 +++++++
+>  1 file changed, 7 insertions(+)
 
-OK, I guess that makes sense.
+Do you plan to apply my patch converting Mediatek to DT schema[1]? I'm
+not planning to rebase it now that this one is applied and resend it.
 
-> > The "PCI Express to PCI/PCI-X Bridge Specification", r1.0, says a PCI
-> > Express bridge (which would include Root Ports and Switch Ports) has a
-> > Class Code of 0x060400 (Non-Subtractive PCI-PCI Bridge) (sec 1.1).
-> > 
-> > Sec 1.3.4 says subtractive decode on the primary interface is "not
-> > applicable or outside the scope of this spec".
+Rob
 
-> # lspci -vvv
-> 00:01.0 Class 0604: Device 14c3:5396
-> ...
-
-> > > Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-> > > ---
-> > >  drivers/pci/pcie/portdrv_pci.c | 2 +-
-> > >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > > 
-> > > diff --git a/drivers/pci/pcie/portdrv_pci.c b/drivers/pci/pcie/portdrv_pci.c
-> > > index eef22dc..86926ea 100644
-> > > --- a/drivers/pci/pcie/portdrv_pci.c
-> > > +++ b/drivers/pci/pcie/portdrv_pci.c
-> > > @@ -179,7 +179,7 @@ static void pcie_portdrv_err_resume(struct pci_dev *dev)
-> > >   */
-> > >  static const struct pci_device_id port_pci_ids[] = { {
-> > >  	/* handle any PCI-Express port */
-> > > -	PCI_DEVICE_CLASS(((PCI_CLASS_BRIDGE_PCI << 8) | 0x00), ~0),
-> > > +	PCI_DEVICE_CLASS(((PCI_CLASS_BRIDGE_PCI << 8) | 0x00), ~0x01),
-
-Can you please rework this slightly so it leaves the original entry
-alone and just *adds* a new entry that matches the subtractive-decode
-bridges?  I think that will make it more obvious what's changing.
-
-> > >  	}, { /* end: all zeroes */ }
-> > >  };
+[1] https://patchwork.ozlabs.org/patch/1007257/
