@@ -1,92 +1,28 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v1] mmc: mmc: Fix HS setting in mmc_hs400_to_hs200()
-Date: Wed, 13 Feb 2019 13:08:43 +0100
-Message-ID: <CAPDyKFpNEhXT0dD_p85Ab2H_nHtr5r86BLcvkLVUsdwtYLUs4g@mail.gmail.com>
-References: <1550048812-29068-1-git-send-email-chaotian.jing@mediatek.com>
+From: Will Deacon <will.deacon@arm.com>
+Subject: Re: [PATCH 1/1] arm64: Use _rcuidle for smp_cross_call() tracepoints
+Date: Wed, 13 Feb 2019 13:19:25 +0000
+Message-ID: <20190213131924.GD5875@brain-police>
+References: <1549969765-3707-1-git-send-email-mars.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1550048812-29068-1-git-send-email-chaotian.jing@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1549969765-3707-1-git-send-email-mars.cheng@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chaotian Jing <chaotian.jing@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Simon Horman <horms+renesas@verge.net.au>, Kyle Roeschley <kyle.roeschley@ni.com>, Hongjie Fang <hongjiefang@asrmicro.com>, Harish Jenny K N <harish_kandiga@mentor.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, srv_heupstream <srv_heupstream@mediatek.com>, Adrian Hunter <adrian.hunter@intel.com>
+To: Mars Cheng <mars.cheng@mediatek.com>
+Cc: Catalin Marinas <catalin.marinas@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Paul E. McKenney" <paulmck@linux.vnet.ibm.com>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 13 Feb 2019 at 10:07, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
->
-> mmc_hs400_to_hs200() begins with the card and host in HS400 mode.
-> Therefore, any commands sent to the card should use HS400 timing.
-> reduce clock frequency to 50Mhz but without host timming change
-> may cause CMD6 response CRC error. because host still running at
-> hs400 mode, and it's hard to find a suitable setting for all eMMC
-> cards when clock frequency reduced to 50Mhz but card & host still
-> in hs400 mode.
-> this patch refers to mmc_select_hs400(), make the reduce clock frequency
-> after card timing change.
->
-> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
-> Fixes: ef3d232245ab ("mmc: mmc: Relax checking for switch errors after HS200 switch")
-> ---
->  drivers/mmc/core/mmc.c | 29 +++++++++++++++++++++++------
->  1 file changed, 23 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
-> index 09c688f..00adc2d 100644
-> --- a/drivers/mmc/core/mmc.c
-> +++ b/drivers/mmc/core/mmc.c
-> @@ -1239,20 +1239,37 @@ int mmc_hs400_to_hs200(struct mmc_card *card)
->         int err;
->         u8 val;
->
-> -       /* Reduce frequency to HS */
-> -       max_dtr = card->ext_csd.hs_max_dtr;
-> -       mmc_set_clock(host, max_dtr);
-> -
->         /* Switch HS400 to HS DDR */
->         val = EXT_CSD_TIMING_HS;
->         err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL, EXT_CSD_HS_TIMING,
->                            val, card->ext_csd.generic_cmd6_time, 0,
->                            true, false, true);
-> -       if (err)
-> -               goto out_err;
-> +       /*
-> +        * as we are on the way to do re-tune, so if the CMD6 got response CRC
-> +        * error, do not treat it as error.
-> +        */
-> +       if (err) {
-> +               if (err == -EILSEQ) {
-> +                       /*
-> +                        * card will busy after sending out response and host
-> +                        * driver may not wait busy de-assert when get
-> +                        * response CRC error. so just wait enough time to
-> +                        * ensure card leave busy state.
-> +                        */
-> +                       mmc_delay(card->ext_csd.generic_cmd6_time);
-> +                       pr_debug("%s: %s switch to HS got CRC error\n",
-> +                                mmc_hostname(host), __func__);
-> +               } else {
-> +                       goto out_err;
-> +               }
-> +       }
->
->         mmc_set_timing(host, MMC_TIMING_MMC_DDR52);
->
-> +       /* Reduce frequency to HS */
-> +       max_dtr = card->ext_csd.hs_max_dtr;
-> +       mmc_set_clock(host, max_dtr);
-> +
+On Tue, Feb 12, 2019 at 07:09:25PM +0800, Mars Cheng wrote:
+> fix similar issue for aarch64 as the commit 7c64cc0531fa
+> ("arm: Use _rcuidle for smp_cross_call() tracepoints") fixed
+> in aarch32
 
-What Adrian suggested was to not to move this part, but instead, only
-allow CRC errors from the CMD6 as above.
+I'm not convinced about this justification. As far as I can tell, the commit
+mentioned above fixed a cross-call from the idle path as a result of
+ARCH_NEEDS_CPU_IDLE_COUPLED, but this never appears to be selected on arm64
+afaict.
 
-I guess it didn't work for you?
+Are you actually seeing a problem on arm64 in practice?
 
->         err = mmc_switch_status(card);
->         if (err)
->                 goto out_err;
-> --
-> 1.8.1.1.dirty
->
-
-Kind regards
-Uffe
+Will
