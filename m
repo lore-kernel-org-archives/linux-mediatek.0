@@ -1,56 +1,25 @@
-From: Matthias Kaehlcke <mka@chromium.org>
-Subject: Re: [PATCH v4 2/6] remoteproc/mediatek: add SCP support for mt8183
-Date: Wed, 13 Feb 2019 09:01:05 -0800
-Message-ID: <20190213170105.GX117604@google.com>
-References: <20190131093131.245531-1-pihsun@chromium.org>
- <20190131093131.245531-3-pihsun@chromium.org>
- <20190202001749.GT81583@google.com>
- <CANdKZ0ds2s46h-Rs-4aJSuVFkoaeEzXi96m2zbx5XjBhhsc3Xw@mail.gmail.com>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH v3 3/3] clk: mediatek: Mark bus and DRAM related clocks as critical
+Date: Wed, 13 Feb 2019 09:09:39 -0800
+Message-ID: <155007777974.115909.3599235649247866271@swboyd.mtv.corp.google.com>
+References: <20190108121208.2473-1-matthias.bgg@kernel.org> <20190108121208.2473-4-matthias.bgg@kernel.org> <9db1f94f-7edd-73a1-fb09-9499c5f8cfcb@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CANdKZ0ds2s46h-Rs-4aJSuVFkoaeEzXi96m2zbx5XjBhhsc3Xw@mail.gmail.com>
+In-Reply-To: <9db1f94f-7edd-73a1-fb09-9499c5f8cfcb@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Pi-Hsun Shih <pihsun@chromium.org>
-Cc: Erin Lo <erin.lo@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Ohad Ben-Cohen <ohad@wizery.com>, Bjorn Andersson <bjorn.andersson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, open list <linux-kernel@vger.kernel.org>, "open list:REMOTE PROCESSOR (REMOTEPROC) SUBSYSTEM" <linux-remoteproc@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>, kevin-cw.chen@mediatek.com, mars.cheng@mediatek.com, matthias.bgg@kernel.org, mturquette@baylibre.com
+Cc: sean.wang@mediatek.com, jasu@njomotys.info, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Feb 13, 2019 at 11:20:18AM +0800, Pi-Hsun Shih wrote:
-> Hi,
-> 
-> Thanks for the review, would address most comments in next version of patch.
-> 
-> On Sat, Feb 2, 2019 at 8:17 AM Matthias Kaehlcke <mka@chromium.org> wrote:
-> >
-> > Hi Pi-Hsun,
-> >
-> > a few comments inline.
-> >
-> > It's the first time I dabble into remoteproc, I don't claim to have a
-> > complete understanding of the driver at this point ;-)
-> >
-> > On Thu, Jan 31, 2019 at 05:31:27PM +0800, Pi-Hsun Shih wrote:
-> > > diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> > > new file mode 100644
-> > > index 00000000000000..920c81c3525c2a
-> > > --- /dev/null
-> > > +++ b/drivers/remoteproc/mtk_scp.c
-> > > +             return ret;
-> > > +     }
-> > > +
-> > > +     writel(0x0, scp->reg_base + MT8183_SCP_SRAM_PDN);
-> >
-> > what is the purpose of this write?
-> >
-> 
-> Answer from Erin:
-> The code needs to execute on scp’s SRAM.
-> We need to turn on the power of SRAM before using it.
+Quoting Matthias Brugger (2019-02-08 05:39:02)
+> Steven, Mike, any comments on that?
 
-Please add a brief comment since this is not evident from the code.
+I was waiting for Mediatek to review. I thought I said that last time?
+I suppose if they're not going to review it I'll just throw it into
+clk-next and people can fix problems if they see them.
 
-Thanks
-
-Matthias
+Would you mind resending one more time with a comment in the code where
+CLK_IS_CRITICAL is used indicating why it's critical so that we know
+what's going on without having to dig into the git history?
