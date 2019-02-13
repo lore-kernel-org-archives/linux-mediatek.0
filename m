@@ -1,28 +1,37 @@
-From: Will Deacon <will.deacon@arm.com>
-Subject: Re: [PATCH 1/1] arm64: Use _rcuidle for smp_cross_call() tracepoints
-Date: Wed, 13 Feb 2019 13:19:25 +0000
-Message-ID: <20190213131924.GD5875@brain-police>
-References: <1549969765-3707-1-git-send-email-mars.cheng@mediatek.com>
+From: Steven Rostedt <rostedt@goodmis.org>
+Subject: Re: [PATCH 1/1] tracing: Fix event_trace_printk loss on printk_format.
+Date: Wed, 13 Feb 2019 08:45:11 -0500
+Message-ID: <20190213084511.45b86e15@gandalf.local.home>
+References: <1549971717-4693-1-git-send-email-mars.cheng@mediatek.com>
+ <20190212204113.5ecaa2a1@gandalf.local.home>
+ <1550033650.7648.2.camel@mtkswgap22>
+ <1550040585.12645.9.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1549969765-3707-1-git-send-email-mars.cheng@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1550040585.12645.9.camel@mtkswgap22>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: Mars Cheng <mars.cheng@mediatek.com>
-Cc: Catalin Marinas <catalin.marinas@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Paul E. McKenney" <paulmck@linux.vnet.ibm.com>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, wsd_upstream@mediatek.com
+Cc: Andress Kuo <andress.kuo@mediatek.com>, CC Hwang <cc.hwang@mediatek.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Feb 12, 2019 at 07:09:25PM +0800, Mars Cheng wrote:
-> fix similar issue for aarch64 as the commit 7c64cc0531fa
-> ("arm: Use _rcuidle for smp_cross_call() tracepoints") fixed
-> in aarch32
+On Wed, 13 Feb 2019 14:49:45 +0800
+Mars Cheng <mars.cheng@mediatek.com> wrote:
 
-I'm not convinced about this justification. As far as I can tell, the commit
-mentioned above fixed a cross-call from the idle path as a result of
-ARCH_NEEDS_CPU_IDLE_COUPLED, but this never appears to be selected on arm64
-afaict.
 
-Are you actually seeing a problem on arm64 in practice?
+> After some grep, I found event_trace_printk() not used in 5.0-rc*. But
+> trace_printk() is still used in several places.
 
-Will
+event_trace_printk() is an abomination, but trace_printk() is an
+extremely useful tool. Don't touch that!
+
+-- Steve
