@@ -1,94 +1,92 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: mediatek: mt8183: make some functions
-	static" to the asoc tree
-Date: Wed, 13 Feb 2019 11:53:31 +0000 (GMT)
-Message-ID: <20190213115331.C15821128158@debutante.sirena.org.uk>
-References: <20190213062944.146366-1-weiyongjun1@huawei.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v1] mmc: mmc: Fix HS setting in mmc_hs400_to_hs200()
+Date: Wed, 13 Feb 2019 13:08:43 +0100
+Message-ID: <CAPDyKFpNEhXT0dD_p85Ab2H_nHtr5r86BLcvkLVUsdwtYLUs4g@mail.gmail.com>
+References: <1550048812-29068-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20190213062944.146366-1-weiyongjun1@huawei.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Wei Yongjun <weiyongjun1@huawei.com>
-Cc: alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Shunli Wang <shunli.wang@mediatek.com>, Brugger <matthias.bgg@gmail.com>, Matthias@sirena.org.uk, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1550048812-29068-1-git-send-email-chaotian.jing@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Simon Horman <horms+renesas@verge.net.au>, Kyle Roeschley <kyle.roeschley@ni.com>, Hongjie Fang <hongjiefang@asrmicro.com>, Harish Jenny K N <harish_kandiga@mentor.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, srv_heupstream <srv_heupstream@mediatek.com>, Adrian Hunter <adrian.hunter@intel.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
+On Wed, 13 Feb 2019 at 10:07, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
+>
+> mmc_hs400_to_hs200() begins with the card and host in HS400 mode.
+> Therefore, any commands sent to the card should use HS400 timing.
+> reduce clock frequency to 50Mhz but without host timming change
+> may cause CMD6 response CRC error. because host still running at
+> hs400 mode, and it's hard to find a suitable setting for all eMMC
+> cards when clock frequency reduced to 50Mhz but card & host still
+> in hs400 mode.
+> this patch refers to mmc_select_hs400(), make the reduce clock frequency
+> after card timing change.
+>
+> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+> Fixes: ef3d232245ab ("mmc: mmc: Relax checking for switch errors after HS200 switch")
+> ---
+>  drivers/mmc/core/mmc.c | 29 +++++++++++++++++++++++------
+>  1 file changed, 23 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
+> index 09c688f..00adc2d 100644
+> --- a/drivers/mmc/core/mmc.c
+> +++ b/drivers/mmc/core/mmc.c
+> @@ -1239,20 +1239,37 @@ int mmc_hs400_to_hs200(struct mmc_card *card)
+>         int err;
+>         u8 val;
+>
+> -       /* Reduce frequency to HS */
+> -       max_dtr = card->ext_csd.hs_max_dtr;
+> -       mmc_set_clock(host, max_dtr);
+> -
+>         /* Switch HS400 to HS DDR */
+>         val = EXT_CSD_TIMING_HS;
+>         err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL, EXT_CSD_HS_TIMING,
+>                            val, card->ext_csd.generic_cmd6_time, 0,
+>                            true, false, true);
+> -       if (err)
+> -               goto out_err;
+> +       /*
+> +        * as we are on the way to do re-tune, so if the CMD6 got response CRC
+> +        * error, do not treat it as error.
+> +        */
+> +       if (err) {
+> +               if (err == -EILSEQ) {
+> +                       /*
+> +                        * card will busy after sending out response and host
+> +                        * driver may not wait busy de-assert when get
+> +                        * response CRC error. so just wait enough time to
+> +                        * ensure card leave busy state.
+> +                        */
+> +                       mmc_delay(card->ext_csd.generic_cmd6_time);
+> +                       pr_debug("%s: %s switch to HS got CRC error\n",
+> +                                mmc_hostname(host), __func__);
+> +               } else {
+> +                       goto out_err;
+> +               }
+> +       }
+>
+>         mmc_set_timing(host, MMC_TIMING_MMC_DDR52);
+>
+> +       /* Reduce frequency to HS */
+> +       max_dtr = card->ext_csd.hs_max_dtr;
+> +       mmc_set_clock(host, max_dtr);
+> +
 
-   ASoC: mediatek: mt8183: make some functions static
+What Adrian suggested was to not to move this part, but instead, only
+allow CRC errors from the CMD6 as above.
 
-has been applied to the asoc tree at
+I guess it didn't work for you?
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+>         err = mmc_switch_status(card);
+>         if (err)
+>                 goto out_err;
+> --
+> 1.8.1.1.dirty
+>
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
->From 03bf3aeb03a8562a7ad6ed629e49953f132217c1 Mon Sep 17 00:00:00 2001
-From: Wei Yongjun <weiyongjun1@huawei.com>
-Date: Wed, 13 Feb 2019 06:29:44 +0000
-Subject: [PATCH] ASoC: mediatek: mt8183: make some functions static
-
-Fixes the following sparse warnings:
-
-sound/soc/mediatek/mt8183/mt8183-dai-i2s.c:966:5: warning:
- symbol 'mt8183_dai_i2s_get_share' was not declared. Should it be static?
-sound/soc/mediatek/mt8183/mt8183-dai-i2s.c:986:5: warning:
- symbol 'mt8183_dai_i2s_set_priv' was not declared. Should it be static?
-
-Fixes: a94aec035a12 ("ASoC: mediatek: mt8183: add platform driver")
-Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- sound/soc/mediatek/mt8183/mt8183-dai-i2s.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/sound/soc/mediatek/mt8183/mt8183-dai-i2s.c b/sound/soc/mediatek/mt8183/mt8183-dai-i2s.c
-index c25024f72e72..777e93d70bea 100644
---- a/sound/soc/mediatek/mt8183/mt8183-dai-i2s.c
-+++ b/sound/soc/mediatek/mt8183/mt8183-dai-i2s.c
-@@ -963,7 +963,7 @@ static const struct mtk_afe_i2s_priv mt8183_i2s_priv[DAI_I2S_NUM] = {
- 	},
- };
- 
--int mt8183_dai_i2s_get_share(struct mtk_base_afe *afe)
-+static int mt8183_dai_i2s_get_share(struct mtk_base_afe *afe)
- {
- 	struct mt8183_afe_private *afe_priv = afe->platform_priv;
- 	const struct device_node *of_node = afe->dev->of_node;
-@@ -983,7 +983,7 @@ int mt8183_dai_i2s_get_share(struct mtk_base_afe *afe)
- 	return 0;
- }
- 
--int mt8183_dai_i2s_set_priv(struct mtk_base_afe *afe)
-+static int mt8183_dai_i2s_set_priv(struct mtk_base_afe *afe)
- {
- 	struct mt8183_afe_private *afe_priv = afe->platform_priv;
- 	struct mtk_afe_i2s_priv *i2s_priv;
--- 
-2.20.1
+Kind regards
+Uffe
