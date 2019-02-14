@@ -1,111 +1,39 @@
-From: Sean Paul <sean@poorly.run>
-Subject: Re: [PATCH 1/3] drm/mediatek: move mipi_dsi_host_register to probe
-Date: Thu, 14 Feb 2019 15:48:21 -0500
-Message-ID: <20190214204821.GP114153@art_vandelay>
-References: <20190214044243.129920-1-jitao.shi@mediatek.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH 2/6] Bluetooth: mediatek: trivial typo fix
+Date: Fri, 15 Feb 2019 07:19:34 +0800
+Message-ID: <fe55645efb173ef11cad6e43c194b400226b7a2f.1550184473.git.sean.wang@mediatek.com>
+References: <cover.1550184473.git.sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20190214044243.129920-1-jitao.shi@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jitao Shi <jitao.shi@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, stonea168@163.com, dri-devel@lists.freedesktop.org, Ajay Kumar <ajaykumar.rs@samsung.com>, drinkcat@chromium.org, Vincent Palatin <vpalatin@chromium.org>, linux-mediatek@lists.infradead.org, cawa.cheng@mediatek.com, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, linux-pwm@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Sean Paul <seanpaul@chromium.org>, yingjoe.chen@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, Andy
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cover.1550184473.git.sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: robh+dt@kernel.org, mark.rutland@arm.com, marcel@holtmann.org, johan.hedberg@gmail.com
+Cc: devicetree@vger.kernel.org, linux-bluetooth@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVGh1LCBGZWIgMTQsIDIwMTkgYXQgMTI6NDI6NDFQTSArMDgwMCwgSml0YW8gU2hpIHdyb3Rl
-Ogo+IERTSSBwYW5lbCBkcml2ZXIgbmVlZCBhdHRhY2ggZnVuY3Rpb24gd2hpY2ggaXMgaW5jdWxk
-ZSBpbgo+IG1pcGlfZHNpX2hvc3Rfb3BzLgoKV2hpY2ggZnVuY3Rpb24gaXMgcmVxdWlyZWQgZnJv
-bSBkc2lfaG9zdD8KClNlYW4KCj4gCj4gSWYgbWlwaV9kc2lfaG9zdF9yZWdpc3RlciBpcyBub3Qg
-aW4gcHJvYmUsIGRzaSBwYW5lbCB3aWxsCj4gcHJvYmUgZmFpbCBvciBtb3JlIGRlbGF5Lgo+IAo+
-IFNvIG1vdmUgdGhlIG1pcGlfZHNpX2hvc3RfcmVnaXN0ZXIgdG8gcHJvYmUgZnJvbSBiaW5kLgo+
-IAo+IFNpZ25lZC1vZmYtYnk6IEppdGFvIFNoaSA8aml0YW8uc2hpQG1lZGlhdGVrLmNvbT4KPiAt
-LS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyB8IDQ5ICsrKysrKysrKysr
-KysrKysrKy0tLS0tLS0tLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgMzAgaW5zZXJ0aW9ucygrKSwg
-MTkgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gaW5kZXgg
-MjdiNTA3ZWI0YTk5Li45M2ZhMjU1YjRhYWQgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19kc2kuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
-ZHNpLmMKPiBAQCAtMTA0NSwxMiArMTA0NSw2IEBAIHN0YXRpYyBpbnQgbXRrX2RzaV9iaW5kKHN0
-cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLCB2b2lkICpkYXRhKQo+ICAJ
-CXJldHVybiByZXQ7Cj4gIAl9Cj4gIAo+IC0JcmV0ID0gbWlwaV9kc2lfaG9zdF9yZWdpc3Rlcigm
-ZHNpLT5ob3N0KTsKPiAtCWlmIChyZXQgPCAwKSB7Cj4gLQkJZGV2X2VycihkZXYsICJmYWlsZWQg
-dG8gcmVnaXN0ZXIgRFNJIGhvc3Q6ICVkXG4iLCByZXQpOwo+IC0JCWdvdG8gZXJyX2RkcF9jb21w
-X3VucmVnaXN0ZXI7Cj4gLQl9Cj4gLQo+ICAJcmV0ID0gbXRrX2RzaV9jcmVhdGVfY29ubl9lbmMo
-ZHJtLCBkc2kpOwo+ICAJaWYgKHJldCkgewo+ICAJCURSTV9FUlJPUigiRW5jb2RlciBjcmVhdGUg
-ZmFpbGVkIHdpdGggJWRcbiIsIHJldCk7Cj4gQEAgLTEwNjAsOCArMTA1NCw2IEBAIHN0YXRpYyBp
-bnQgbXRrX2RzaV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVy
-LCB2b2lkICpkYXRhKQo+ICAJcmV0dXJuIDA7Cj4gIAo+ICBlcnJfdW5yZWdpc3RlcjoKPiAtCW1p
-cGlfZHNpX2hvc3RfdW5yZWdpc3RlcigmZHNpLT5ob3N0KTsKPiAtZXJyX2RkcF9jb21wX3VucmVn
-aXN0ZXI6Cj4gIAltdGtfZGRwX2NvbXBfdW5yZWdpc3Rlcihkcm0sICZkc2ktPmRkcF9jb21wKTsK
-PiAgCXJldHVybiByZXQ7Cj4gIH0KPiBAQCAtMTA5NywzMSArMTA4OSwzNyBAQCBzdGF0aWMgaW50
-IG10a19kc2lfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgCj4gIAlkc2kt
-Pmhvc3Qub3BzID0gJm10a19kc2lfb3BzOwo+ICAJZHNpLT5ob3N0LmRldiA9IGRldjsKPiArCWRz
-aS0+ZGV2ID0gZGV2Owo+ICsJcmV0ID0gbWlwaV9kc2lfaG9zdF9yZWdpc3RlcigmZHNpLT5ob3N0
-KTsKPiArCWlmIChyZXQgPCAwKSB7Cj4gKwkJZGV2X2VycihkZXYsICJmYWlsZWQgdG8gcmVnaXN0
-ZXIgRFNJIGhvc3Q6ICVkXG4iLCByZXQpOwo+ICsJCXJldHVybiAtRVBST0JFX0RFRkVSOwo+ICsJ
-fQo+ICAKPiAgCXJldCA9IGRybV9vZl9maW5kX3BhbmVsX29yX2JyaWRnZShkZXYtPm9mX25vZGUs
-IDAsIDAsCj4gIAkJCQkJICAmZHNpLT5wYW5lbCwgJmRzaS0+YnJpZGdlKTsKPiAgCWlmIChyZXQp
-Cj4gLQkJcmV0dXJuIHJldDsKPiArCQlnb3RvIGVycl91bnJlZ2lzdGVyX2hvc3Q7Cj4gIAo+ICAJ
-ZHNpLT5lbmdpbmVfY2xrID0gZGV2bV9jbGtfZ2V0KGRldiwgImVuZ2luZSIpOwo+ICAJaWYgKElT
-X0VSUihkc2ktPmVuZ2luZV9jbGspKSB7Cj4gIAkJcmV0ID0gUFRSX0VSUihkc2ktPmVuZ2luZV9j
-bGspOwo+ICAJCWRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGdldCBlbmdpbmUgY2xvY2s6ICVkXG4i
-LCByZXQpOwo+IC0JCXJldHVybiByZXQ7Cj4gKwkJZ290byBlcnJfdW5yZWdpc3Rlcl9ob3N0Owo+
-ICAJfQo+ICAKPiAgCWRzaS0+ZGlnaXRhbF9jbGsgPSBkZXZtX2Nsa19nZXQoZGV2LCAiZGlnaXRh
-bCIpOwo+ICAJaWYgKElTX0VSUihkc2ktPmRpZ2l0YWxfY2xrKSkgewo+ICAJCXJldCA9IFBUUl9F
-UlIoZHNpLT5kaWdpdGFsX2Nsayk7Cj4gIAkJZGV2X2VycihkZXYsICJGYWlsZWQgdG8gZ2V0IGRp
-Z2l0YWwgY2xvY2s6ICVkXG4iLCByZXQpOwo+IC0JCXJldHVybiByZXQ7Cj4gKwkJZ290byBlcnJf
-dW5yZWdpc3Rlcl9ob3N0Owo+ICAJfQo+ICAKPiAgCWRzaS0+aHNfY2xrID0gZGV2bV9jbGtfZ2V0
-KGRldiwgImhzIik7Cj4gIAlpZiAoSVNfRVJSKGRzaS0+aHNfY2xrKSkgewo+ICAJCXJldCA9IFBU
-Ul9FUlIoZHNpLT5oc19jbGspOwo+ICAJCWRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGdldCBocyBj
-bG9jazogJWRcbiIsIHJldCk7Cj4gLQkJcmV0dXJuIHJldDsKPiArCQlnb3RvIGVycl91bnJlZ2lz
-dGVyX2hvc3Q7Cj4gIAl9Cj4gIAo+ICAJcmVncyA9IHBsYXRmb3JtX2dldF9yZXNvdXJjZShwZGV2
-LCBJT1JFU09VUkNFX01FTSwgMCk7Cj4gQEAgLTExMjksMzMgKzExMjcsMzUgQEAgc3RhdGljIGlu
-dCBtdGtfZHNpX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAlpZiAoSVNf
-RVJSKGRzaS0+cmVncykpIHsKPiAgCQlyZXQgPSBQVFJfRVJSKGRzaS0+cmVncyk7Cj4gIAkJZGV2
-X2VycihkZXYsICJGYWlsZWQgdG8gaW9yZW1hcCBtZW1vcnk6ICVkXG4iLCByZXQpOwo+IC0JCXJl
-dHVybiByZXQ7Cj4gKwkJZ290byBlcnJfdW5yZWdpc3Rlcl9ob3N0Owo+ICAJfQo+ICAKPiAgCWRz
-aS0+cGh5ID0gZGV2bV9waHlfZ2V0KGRldiwgImRwaHkiKTsKPiAgCWlmIChJU19FUlIoZHNpLT5w
-aHkpKSB7Cj4gIAkJcmV0ID0gUFRSX0VSUihkc2ktPnBoeSk7Cj4gIAkJZGV2X2VycihkZXYsICJG
-YWlsZWQgdG8gZ2V0IE1JUEktRFBIWTogJWRcbiIsIHJldCk7Cj4gLQkJcmV0dXJuIHJldDsKPiAr
-CQlnb3RvIGVycl91bnJlZ2lzdGVyX2hvc3Q7Cj4gIAl9Cj4gIAo+ICAJY29tcF9pZCA9IG10a19k
-ZHBfY29tcF9nZXRfaWQoZGV2LT5vZl9ub2RlLCBNVEtfRFNJKTsKPiAgCWlmIChjb21wX2lkIDwg
-MCkgewo+ICAJCWRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGlkZW50aWZ5IGJ5IGFsaWFzOiAlZFxu
-IiwgY29tcF9pZCk7Cj4gLQkJcmV0dXJuIGNvbXBfaWQ7Cj4gKwkJcmV0ID0gY29tcF9pZDsKPiAr
-CQlnb3RvIGVycl91bnJlZ2lzdGVyX2hvc3Q7Cj4gIAl9Cj4gIAo+ICAJcmV0ID0gbXRrX2RkcF9j
-b21wX2luaXQoZGV2LCBkZXYtPm9mX25vZGUsICZkc2ktPmRkcF9jb21wLCBjb21wX2lkLAo+ICAJ
-CQkJJm10a19kc2lfZnVuY3MpOwo+ICAJaWYgKHJldCkgewo+ICAJCWRldl9lcnIoZGV2LCAiRmFp
-bGVkIHRvIGluaXRpYWxpemUgY29tcG9uZW50OiAlZFxuIiwgcmV0KTsKPiAtCQlyZXR1cm4gcmV0
-Owo+ICsJCWdvdG8gZXJyX3VucmVnaXN0ZXJfaG9zdDsKPiAgCX0KPiAgCj4gIAlpcnFfbnVtID0g
-cGxhdGZvcm1fZ2V0X2lycShwZGV2LCAwKTsKPiAgCWlmIChpcnFfbnVtIDwgMCkgewo+ICAJCWRl
-dl9lcnIoJnBkZXYtPmRldiwgImZhaWxlZCB0byByZXF1ZXN0IGRzaSBpcnEgcmVzb3VyY2VcbiIp
-Owo+IC0JCXJldHVybiAtRVBST0JFX0RFRkVSOwo+ICsJCXJldCA9IC1FUFJPQkVfREVGRVI7Cj4g
-KwkJZ290byBlcnJfdW5yZWdpc3Rlcl9ob3N0Owo+ICAJfQo+ICAKPiAgCWlycV9zZXRfc3RhdHVz
-X2ZsYWdzKGlycV9udW0sIElSUV9UWVBFX0xFVkVMX0xPVyk7Cj4gQEAgLTExNjMsMTQgKzExNjMs
-MjUgQEAgc3RhdGljIGludCBtdGtfZHNpX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBk
-ZXYpCj4gIAkJCSAgICAgICBJUlFGX1RSSUdHRVJfTE9XLCBkZXZfbmFtZSgmcGRldi0+ZGV2KSwg
-ZHNpKTsKPiAgCWlmIChyZXQpIHsKPiAgCQlkZXZfZXJyKCZwZGV2LT5kZXYsICJmYWlsZWQgdG8g
-cmVxdWVzdCBtZWRpYXRlayBkc2kgaXJxXG4iKTsKPiAtCQlyZXR1cm4gLUVQUk9CRV9ERUZFUjsK
-PiArCQlyZXQgPSAtRVBST0JFX0RFRkVSOwo+ICsJCWdvdG8gZXJyX3VucmVnaXN0ZXJfaG9zdDsK
-PiAgCX0KPiAgCj4gIAlpbml0X3dhaXRxdWV1ZV9oZWFkKCZkc2ktPmlycV93YWl0X3F1ZXVlKTsK
-PiAgCj4gIAlwbGF0Zm9ybV9zZXRfZHJ2ZGF0YShwZGV2LCBkc2kpOwo+ICAKPiAtCXJldHVybiBj
-b21wb25lbnRfYWRkKCZwZGV2LT5kZXYsICZtdGtfZHNpX2NvbXBvbmVudF9vcHMpOwo+ICsJcmV0
-ID0gY29tcG9uZW50X2FkZCgmcGRldi0+ZGV2LCAmbXRrX2RzaV9jb21wb25lbnRfb3BzKTsKPiAr
-CWlmIChyZXQpIHsKPiArCQlyZXQgPSAtRVBST0JFX0RFRkVSOwo+ICsJCWdvdG8gZXJyX3VucmVn
-aXN0ZXJfaG9zdDsKPiArCX0KPiArCj4gKwlyZXR1cm4gMDsKPiArCj4gK2Vycl91bnJlZ2lzdGVy
-X2hvc3Q6Cj4gKwltaXBpX2RzaV9ob3N0X3VucmVnaXN0ZXIoJmRzaS0+aG9zdCk7Cj4gKwlyZXR1
-cm4gcmV0Owo+ICB9Cj4gIAo+ICBzdGF0aWMgaW50IG10a19kc2lfcmVtb3ZlKHN0cnVjdCBwbGF0
-Zm9ybV9kZXZpY2UgKnBkZXYpCj4gLS0gCj4gMi4yMC4xCj4gCgotLSAKU2VhbiBQYXVsLCBTb2Z0
-d2FyZSBFbmdpbmVlciwgR29vZ2xlIC8gQ2hyb21pdW0gT1MKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2
-ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
-aWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+From: Sean Wang <sean.wang@mediatek.com>
+
+add a trivial typo fix from speicfic to specific
+
+Fixes: 7237c4c9ec92 ("Bluetooth: mediatek: Add protocol support for MediaTek serial devices")
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/bluetooth/btmtkuart.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/bluetooth/btmtkuart.c b/drivers/bluetooth/btmtkuart.c
+index 4593baff2bc9..b8ea011b82d8 100644
+--- a/drivers/bluetooth/btmtkuart.c
++++ b/drivers/bluetooth/btmtkuart.c
+@@ -107,7 +107,7 @@ static int mtk_hci_wmt_sync(struct hci_dev *hdev, u8 op, u8 flag, u16 plen,
+ 	 * Complete as with usual HCI command flow control.
+ 	 *
+ 	 * After sending the command, wait for BTMTKUART_TX_WAIT_VND_EVT
+-	 * state to be cleared. The driver speicfic event receive routine
++	 * state to be cleared. The driver specific event receive routine
+ 	 * will clear that state and with that indicate completion of the
+ 	 * WMT command.
+ 	 */
+-- 
+2.18.0
