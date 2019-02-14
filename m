@@ -1,67 +1,51 @@
 From: matthias.bgg@kernel.org
-Subject: [PATCH v4 0/3] Mark clocks as critical for MT6797
-Date: Thu, 14 Feb 2019 17:30:23 +0100
-Message-ID: <20190214163026.26073-1-matthias.bgg@kernel.org>
+Subject: [PATCH v4 1/3] clk: mediatek: Add MUX_FLAGS macro
+Date: Thu, 14 Feb 2019 17:32:18 +0100
+Message-ID: <20190214163218.26148-1-matthias.bgg@kernel.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: mturquette@baylibre.com, sboyd@kernel.org, kevin-cw.chen@mediatek.com, mars.cheng@mediatek.com
-Cc: sean.wang@mediatek.com, matthias.bgg@gmail.com, jasu@njomotys.info, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
+Cc: sean.wang@mediatek.com, matthias.bgg@gmail.com, jasu@njomotys.info, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Matthias Brugger <mbrugger@suse.com>
+From: Jasper Mattsson <jasu@njomotys.info>
 
-Jasper send this series some month ago. As there was no reaction from
-his side, I'll do a friendly take-over.
-I tested the patches on my Helios X20 boards and they fix the issue.
-I didn't add a Tested-by tag as I added my Signed-off-by.
+This is required to mark outputs of certain MUXes as CLK_IS_CRITICAL.
 
-Changes since v3:
-- add comments explaining why the clock muxer and gates are marked
-  as critical
-
-Changes since v2 (https://patchwork.kernel.org/patch/10686759/):
-- axi_sel is not needed, drop CLK_IS_CRITICAL for it.
-- update commit message
-- add Acked-by from Mars
-
-Changes since v1:
-- add a fixes tag.
-
+Signed-off-by: Jasper Mattsson <jasu@njomotys.info>
+Acked-by: Mars Cheng <mars.cheng@mediatek.com>
+Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
 ---
+ drivers/clk/mediatek/clk-mtk.h | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-Currently, DRAM-related clocks and the axi_sel MUX are not marked with
-CLK_IS_CRITICAL for MT6797. This causes memory corruption when the
-system is booted without clk_ignore_unused.
-
-This patchset
-
-1. Makes it possible to mark outputs of MUXes as critical by introducing
-   a new macro, MUX_FLAGS,
-2. Makes it possible to mark gates as critical by adding flags to
-   mtk_gate, and
-3. Marks axi_sel, ddrphycfg_sel, infra_dramc_f26m and infra_dramc_b_f26m
-   as critical.
-
-The addition of flags to mtk_gate also exists in the patch series "Add
-basic and clock support for Mediatek MT8183 SoC" [1].  The type of
-flags is unsigned int in that series, but the real type is unsigned
-long, so my patch differs from that patch.
-
-[1] https://patchwork.kernel.org/patch/10549953/
-
-Jasper Mattsson (3):
-  clk: mediatek: Add MUX_FLAGS macro
-  clk: mediatek: Add flags to mtk_gate
-  clk: mediatek: Mark bus and DRAM related clocks as critical
-
- drivers/clk/mediatek/clk-gate.c   |  4 +-
- drivers/clk/mediatek/clk-gate.h   |  3 +-
- drivers/clk/mediatek/clk-mt6797.c | 68 +++++++++++++++++++------------
- drivers/clk/mediatek/clk-mtk.c    |  2 +-
- drivers/clk/mediatek/clk-mtk.h    |  9 +++-
- 5 files changed, 56 insertions(+), 30 deletions(-)
-
+diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+index f83c2bbb677e..daab6ee94788 100644
+--- a/drivers/clk/mediatek/clk-mtk.h
++++ b/drivers/clk/mediatek/clk-mtk.h
+@@ -111,7 +111,11 @@ struct mtk_composite {
+ 	MUX_GATE_FLAGS(_id, _name, _parents, _reg, _shift, _width,	\
+ 		_gate, CLK_SET_RATE_PARENT)
+ 
+-#define MUX(_id, _name, _parents, _reg, _shift, _width) {		\
++#define MUX(_id, _name, _parents, _reg, _shift, _width)			\
++	MUX_FLAGS(_id, _name, _parents, _reg,				\
++		  _shift, _width, CLK_SET_RATE_PARENT)
++
++#define MUX_FLAGS(_id, _name, _parents, _reg, _shift, _width, _flags) {	\
+ 		.id = _id,						\
+ 		.name = _name,						\
+ 		.mux_reg = _reg,					\
+@@ -121,7 +125,7 @@ struct mtk_composite {
+ 		.divider_shift = -1,					\
+ 		.parent_names = _parents,				\
+ 		.num_parents = ARRAY_SIZE(_parents),			\
+-		.flags = CLK_SET_RATE_PARENT,				\
++		.flags = _flags,				\
+ 	}
+ 
+ #define DIV_GATE(_id, _name, _parent, _gate_reg, _gate_shift, _div_reg,	\
 -- 
 2.20.1
