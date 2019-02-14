@@ -1,173 +1,100 @@
-From: Erin Lo <erin.lo@mediatek.com>
-Subject: Re: [PATCH v6 5/6] dt-bindings: pinctrl: mt8183: add binding
- document
-Date: Thu, 14 Feb 2019 11:29:41 +0800
-Message-ID: <1550114981.4262.3.camel@mtksdaap41>
-References: <1548317240-44682-1-git-send-email-erin.lo@mediatek.com>
-         <1548317240-44682-6-git-send-email-erin.lo@mediatek.com>
-         <d76bb2e8-5285-15ce-b850-6cf3065e0777@gmail.com>
+From: Jitao Shi <jitao.shi@mediatek.com>
+Subject: [PATCH 1/3] drm/mediatek: move mipi_dsi_host_register to probe
+Date: Thu, 14 Feb 2019 12:42:41 +0800
+Message-ID: <20190214044243.129920-1-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <d76bb2e8-5285-15ce-b850-6cf3065e0777@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <marc.zyngier@arm.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Stephen Boyd <sboyd@codeaurora.org>, devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, yingjoe.chen@mediatek.com, mars.cheng@mediatek.com, eddie.huang@mediatek.com, linux-clk@vger.kernel.org, Zhiyong Tao <zhiyong.tao@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, drinkcat@chromium.org
+Cc: stonea168@163.com, dri-devel@lists.freedesktop.org, Andy Yan <andy.yan@rock-chips.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa.cheng@mediatek.com, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Sean Paul <seanpaul@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2019-02-07 at 16:28 +0100, Matthias Brugger wrote:
-> 
-> On 24/01/2019 09:07, Erin Lo wrote:
-> > From: Zhiyong Tao <zhiyong.tao@mediatek.com>
-> > 
-> > The commit adds mt8183 compatible node in binding document.
-> > 
-> > Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
-> > Signed-off-by: Erin Lo <erin.lo@mediatek.com>
-> > ---
-> 
-> I'm missing Linus Walleij on the recipient list.
-> Pleas make sure to add all persons from the get_maintainers script.
-> IMHO it's a bit unfortunate that we got the driver merged, but no binding
-> description. Please try to send driver + binding documentation together, that
-> makes things easier to discuss.
-> 
-> Thanks,
-> Matthias
-> 
-
-OK! I will add Linus Walleij on the recipient list.
-It's right..the binding should send together with driver code.
-We will pay more attention of this next time.
-Thank you for your reminder.
-
-Best Regards,
-Erin
-
-> >  .../devicetree/bindings/pinctrl/pinctrl-mt8183.txt | 115 +++++++++++++++++++++
-> >  1 file changed, 115 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-mt8183.txt
-> > 
-> > diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8183.txt b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8183.txt
-> > new file mode 100644
-> > index 0000000..364e673
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8183.txt
-> > @@ -0,0 +1,115 @@
-> > +* Mediatek MT8183 Pin Controller
-> > +
-> > +The Mediatek's Pin controller is used to control SoC pins.
-> > +
-> > +Required properties:
-> > +- compatible: value should be one of the following.
-> > +	"mediatek,mt8183-pinctrl", compatible with mt8183 pinctrl.
-> > +- gpio-controller : Marks the device node as a gpio controller.
-> > +- #gpio-cells: number of cells in GPIO specifier. Since the generic GPIO
-> > +  binding is used, the amount of cells must be specified as 2. See the below
-> > +  mentioned gpio binding representation for description of particular cells.
-> > +- gpio-ranges : gpio valid number range.
-> > +- reg: physicall address base for gpio base registers. There are nine
-> > +  physicall address base in mt8183. They are 0x10005000, 0x11F20000,
-> > +  0x11E80000, 0x11E70000, 0x11E90000, 0x11D30000, 0x11D20000, 0x11C50000,
-> > +  0x11F30000.
-> > +
-> > +	Eg: <&pio 6 0>
-> > +	<[phandle of the gpio controller node]
-> > +	[line number within the gpio controller]
-> > +	[flags]>
-> > +
-> > +	Values for gpio specifier:
-> > +	- Line number: is a value between 0 to 202.
-> > +	- Flags:  bit field of flags, as defined in <dt-bindings/gpio/gpio.h>.
-> > +            Only the following flags are supported:
-> > +            0 - GPIO_ACTIVE_HIGH
-> > +            1 - GPIO_ACTIVE_LOW
-> > +
-> > +Optional properties:
-> > +- reg-names: gpio base register names. There are nine gpio base register
-> > +  names in mt8183. They are "iocfg0", "iocfg1", "iocfg2", "iocfg3", "iocfg4",
-> > +  "iocfg5", "iocfg6", "iocfg7", "iocfg8".
-> > +- interrupt-controller: Marks the device node as an interrupt controller
-> > +- #interrupt-cells: Should be two.
-> > +- interrupts : The interrupt outputs from the controller.
-> > +
-> > +Please refer to pinctrl-bindings.txt in this directory for details of the
-> > +common pinctrl bindings used by client devices.
-> > +
-> > +Subnode format
-> > +A pinctrl node should contain at least one subnodes representing the
-> > +pinctrl groups available on the machine. Each subnode will list the
-> > +pins it needs, and how they should be configured, with regard to muxer
-> > +configuration, pullups, drive strength, input enable/disable and input schmitt.
-> > +
-> > +    node {
-> > +	pinmux = <PIN_NUMBER_PINMUX>;
-> > +	GENERIC_PINCONFIG;
-> > +    };
-> > +
-> > +Required properties:
-> > +- pinmux: integer array, represents gpio pin number and mux setting.
-> > +    Supported pin number and mux varies for different SoCs, and are defined
-> > +    as macros in boot/dts/<soc>-pinfunc.h directly.
-> > +
-> > +Optional properties:
-> > +- GENERIC_PINCONFIG: is the generic pinconfig options to use, bias-disable,
-> > +    bias-pull-down, bias-pull-up, input-enable, input-disable, output-low, output-high,
-> > +    input-schmitt-enable, input-schmitt-disable and drive-strength are valid.
-> > +
-> > +    Some special pins have extra pull up strength, there are R0 and R1 pull-up
-> > +    resistors available, but for user, it's only need to set R1R0 as 00, 01, 10 or 11.
-> > +    So when config mediatek,pull-up-adv or mediatek,pull-down-adv,
-> > +    it support arguments for those special pins.
-> > +
-> > +    When config drive-strength, it can support some arguments, such as
-> > +    MTK_DRIVE_4mA, MTK_DRIVE_6mA, etc. See dt-bindings/pinctrl/mt65xx.h.
-> > +
-> > +Examples:
-> > +
-> > +#include "mt8183-pinfunc.h"
-> > +
-> > +...
-> > +{
-> > +	pio: pinctrl@10005000 {
-> > +		compatible = "mediatek,mt8183-pinctrl";
-> > +		reg = <0 0x10005000 0 0x1000>,
-> > +		      <0 0x11F20000 0 0x1000>,
-> > +		      <0 0x11E80000 0 0x1000>,
-> > +		      <0 0x11E70000 0 0x1000>,
-> > +		      <0 0x11E90000 0 0x1000>,
-> > +		      <0 0x11D30000 0 0x1000>,
-> > +		      <0 0x11D20000 0 0x1000>,
-> > +		      <0 0x11C50000 0 0x1000>,
-> > +		      <0 0x11F30000 0 0x1000>;
-> > +		reg-names = "iocfg0", "iocfg1", "iocfg2",
-> > +			    "iocfg3", "iocfg4", "iocfg5",
-> > +			    "iocfg6", "iocfg7", "iocfg8";
-> > +		gpio-controller;
-> > +		#gpio-cells = <2>;
-> > +		gpio-ranges = <&pio 0 0 192>;
-> > +		interrupt-controller;
-> > +		interrupts = <GIC_SPI 153 IRQ_TYPE_LEVEL_HIGH>;
-> > +		interrupt-parent = <&gic>;
-> > +		#interrupt-cells = <2>;
-> > +
-> > +		i2c0_pins_a: i2c0 {
-> > +			pins1 {
-> > +				pinmux = <PINMUX_GPIO48__FUNC_SCL5>,
-> > +					 <PINMUX_GPIO49__FUNC_SDA5>;
-> > +				mediatek,pull-up-adv = <11>;
-> > +			};
-> > +		};
-> > +
-> > +		i2c1_pins_a: i2c1 {
-> > +			pins {
-> > +				pinmux = <PINMUX_GPIO50__FUNC_SCL3>,
-> > +					 <PINMUX_GPIO51__FUNC_SDA3>;
-> > +				mediatek,pull-down-adv = <10>;
-> > +			};
-> > +		};
-> > +		...
-> > +	};
-> > +};
-> > 
+RFNJIHBhbmVsIGRyaXZlciBuZWVkIGF0dGFjaCBmdW5jdGlvbiB3aGljaCBpcyBpbmN1bGRlIGlu
+Cm1pcGlfZHNpX2hvc3Rfb3BzLgoKSWYgbWlwaV9kc2lfaG9zdF9yZWdpc3RlciBpcyBub3QgaW4g
+cHJvYmUsIGRzaSBwYW5lbCB3aWxsCnByb2JlIGZhaWwgb3IgbW9yZSBkZWxheS4KClNvIG1vdmUg
+dGhlIG1pcGlfZHNpX2hvc3RfcmVnaXN0ZXIgdG8gcHJvYmUgZnJvbSBiaW5kLgoKU2lnbmVkLW9m
+Zi1ieTogSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPgotLS0KIGRyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgfCA0OSArKysrKysrKysrKysrKysrKystLS0tLS0tLS0t
+LS0KIDEgZmlsZSBjaGFuZ2VkLCAzMCBpbnNlcnRpb25zKCspLCAxOSBkZWxldGlvbnMoLSkKCmRp
+ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jIGIvZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19kc2kuYwppbmRleCAyN2I1MDdlYjRhOTkuLjkzZmEyNTViNGFh
+ZCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYworKysgYi9k
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCkBAIC0xMDQ1LDEyICsxMDQ1LDYgQEAg
+c3RhdGljIGludCBtdGtfZHNpX2JpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNl
+ICptYXN0ZXIsIHZvaWQgKmRhdGEpCiAJCXJldHVybiByZXQ7CiAJfQogCi0JcmV0ID0gbWlwaV9k
+c2lfaG9zdF9yZWdpc3RlcigmZHNpLT5ob3N0KTsKLQlpZiAocmV0IDwgMCkgewotCQlkZXZfZXJy
+KGRldiwgImZhaWxlZCB0byByZWdpc3RlciBEU0kgaG9zdDogJWRcbiIsIHJldCk7Ci0JCWdvdG8g
+ZXJyX2RkcF9jb21wX3VucmVnaXN0ZXI7Ci0JfQotCiAJcmV0ID0gbXRrX2RzaV9jcmVhdGVfY29u
+bl9lbmMoZHJtLCBkc2kpOwogCWlmIChyZXQpIHsKIAkJRFJNX0VSUk9SKCJFbmNvZGVyIGNyZWF0
+ZSBmYWlsZWQgd2l0aCAlZFxuIiwgcmV0KTsKQEAgLTEwNjAsOCArMTA1NCw2IEBAIHN0YXRpYyBp
+bnQgbXRrX2RzaV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVy
+LCB2b2lkICpkYXRhKQogCXJldHVybiAwOwogCiBlcnJfdW5yZWdpc3RlcjoKLQltaXBpX2RzaV9o
+b3N0X3VucmVnaXN0ZXIoJmRzaS0+aG9zdCk7Ci1lcnJfZGRwX2NvbXBfdW5yZWdpc3RlcjoKIAlt
+dGtfZGRwX2NvbXBfdW5yZWdpc3Rlcihkcm0sICZkc2ktPmRkcF9jb21wKTsKIAlyZXR1cm4gcmV0
+OwogfQpAQCAtMTA5NywzMSArMTA4OSwzNyBAQCBzdGF0aWMgaW50IG10a19kc2lfcHJvYmUoc3Ry
+dWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKIAogCWRzaS0+aG9zdC5vcHMgPSAmbXRrX2RzaV9v
+cHM7CiAJZHNpLT5ob3N0LmRldiA9IGRldjsKKwlkc2ktPmRldiA9IGRldjsKKwlyZXQgPSBtaXBp
+X2RzaV9ob3N0X3JlZ2lzdGVyKCZkc2ktPmhvc3QpOworCWlmIChyZXQgPCAwKSB7CisJCWRldl9l
+cnIoZGV2LCAiZmFpbGVkIHRvIHJlZ2lzdGVyIERTSSBob3N0OiAlZFxuIiwgcmV0KTsKKwkJcmV0
+dXJuIC1FUFJPQkVfREVGRVI7CisJfQogCiAJcmV0ID0gZHJtX29mX2ZpbmRfcGFuZWxfb3JfYnJp
+ZGdlKGRldi0+b2Zfbm9kZSwgMCwgMCwKIAkJCQkJICAmZHNpLT5wYW5lbCwgJmRzaS0+YnJpZGdl
+KTsKIAlpZiAocmV0KQotCQlyZXR1cm4gcmV0OworCQlnb3RvIGVycl91bnJlZ2lzdGVyX2hvc3Q7
+CiAKIAlkc2ktPmVuZ2luZV9jbGsgPSBkZXZtX2Nsa19nZXQoZGV2LCAiZW5naW5lIik7CiAJaWYg
+KElTX0VSUihkc2ktPmVuZ2luZV9jbGspKSB7CiAJCXJldCA9IFBUUl9FUlIoZHNpLT5lbmdpbmVf
+Y2xrKTsKIAkJZGV2X2VycihkZXYsICJGYWlsZWQgdG8gZ2V0IGVuZ2luZSBjbG9jazogJWRcbiIs
+IHJldCk7Ci0JCXJldHVybiByZXQ7CisJCWdvdG8gZXJyX3VucmVnaXN0ZXJfaG9zdDsKIAl9CiAK
+IAlkc2ktPmRpZ2l0YWxfY2xrID0gZGV2bV9jbGtfZ2V0KGRldiwgImRpZ2l0YWwiKTsKIAlpZiAo
+SVNfRVJSKGRzaS0+ZGlnaXRhbF9jbGspKSB7CiAJCXJldCA9IFBUUl9FUlIoZHNpLT5kaWdpdGFs
+X2Nsayk7CiAJCWRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGdldCBkaWdpdGFsIGNsb2NrOiAlZFxu
+IiwgcmV0KTsKLQkJcmV0dXJuIHJldDsKKwkJZ290byBlcnJfdW5yZWdpc3Rlcl9ob3N0OwogCX0K
+IAogCWRzaS0+aHNfY2xrID0gZGV2bV9jbGtfZ2V0KGRldiwgImhzIik7CiAJaWYgKElTX0VSUihk
+c2ktPmhzX2NsaykpIHsKIAkJcmV0ID0gUFRSX0VSUihkc2ktPmhzX2Nsayk7CiAJCWRldl9lcnIo
+ZGV2LCAiRmFpbGVkIHRvIGdldCBocyBjbG9jazogJWRcbiIsIHJldCk7Ci0JCXJldHVybiByZXQ7
+CisJCWdvdG8gZXJyX3VucmVnaXN0ZXJfaG9zdDsKIAl9CiAKIAlyZWdzID0gcGxhdGZvcm1fZ2V0
+X3Jlc291cmNlKHBkZXYsIElPUkVTT1VSQ0VfTUVNLCAwKTsKQEAgLTExMjksMzMgKzExMjcsMzUg
+QEAgc3RhdGljIGludCBtdGtfZHNpX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYp
+CiAJaWYgKElTX0VSUihkc2ktPnJlZ3MpKSB7CiAJCXJldCA9IFBUUl9FUlIoZHNpLT5yZWdzKTsK
+IAkJZGV2X2VycihkZXYsICJGYWlsZWQgdG8gaW9yZW1hcCBtZW1vcnk6ICVkXG4iLCByZXQpOwot
+CQlyZXR1cm4gcmV0OworCQlnb3RvIGVycl91bnJlZ2lzdGVyX2hvc3Q7CiAJfQogCiAJZHNpLT5w
+aHkgPSBkZXZtX3BoeV9nZXQoZGV2LCAiZHBoeSIpOwogCWlmIChJU19FUlIoZHNpLT5waHkpKSB7
+CiAJCXJldCA9IFBUUl9FUlIoZHNpLT5waHkpOwogCQlkZXZfZXJyKGRldiwgIkZhaWxlZCB0byBn
+ZXQgTUlQSS1EUEhZOiAlZFxuIiwgcmV0KTsKLQkJcmV0dXJuIHJldDsKKwkJZ290byBlcnJfdW5y
+ZWdpc3Rlcl9ob3N0OwogCX0KIAogCWNvbXBfaWQgPSBtdGtfZGRwX2NvbXBfZ2V0X2lkKGRldi0+
+b2Zfbm9kZSwgTVRLX0RTSSk7CiAJaWYgKGNvbXBfaWQgPCAwKSB7CiAJCWRldl9lcnIoZGV2LCAi
+RmFpbGVkIHRvIGlkZW50aWZ5IGJ5IGFsaWFzOiAlZFxuIiwgY29tcF9pZCk7Ci0JCXJldHVybiBj
+b21wX2lkOworCQlyZXQgPSBjb21wX2lkOworCQlnb3RvIGVycl91bnJlZ2lzdGVyX2hvc3Q7CiAJ
+fQogCiAJcmV0ID0gbXRrX2RkcF9jb21wX2luaXQoZGV2LCBkZXYtPm9mX25vZGUsICZkc2ktPmRk
+cF9jb21wLCBjb21wX2lkLAogCQkJCSZtdGtfZHNpX2Z1bmNzKTsKIAlpZiAocmV0KSB7CiAJCWRl
+dl9lcnIoZGV2LCAiRmFpbGVkIHRvIGluaXRpYWxpemUgY29tcG9uZW50OiAlZFxuIiwgcmV0KTsK
+LQkJcmV0dXJuIHJldDsKKwkJZ290byBlcnJfdW5yZWdpc3Rlcl9ob3N0OwogCX0KIAogCWlycV9u
+dW0gPSBwbGF0Zm9ybV9nZXRfaXJxKHBkZXYsIDApOwogCWlmIChpcnFfbnVtIDwgMCkgewogCQlk
+ZXZfZXJyKCZwZGV2LT5kZXYsICJmYWlsZWQgdG8gcmVxdWVzdCBkc2kgaXJxIHJlc291cmNlXG4i
+KTsKLQkJcmV0dXJuIC1FUFJPQkVfREVGRVI7CisJCXJldCA9IC1FUFJPQkVfREVGRVI7CisJCWdv
+dG8gZXJyX3VucmVnaXN0ZXJfaG9zdDsKIAl9CiAKIAlpcnFfc2V0X3N0YXR1c19mbGFncyhpcnFf
+bnVtLCBJUlFfVFlQRV9MRVZFTF9MT1cpOwpAQCAtMTE2MywxNCArMTE2MywyNSBAQCBzdGF0aWMg
+aW50IG10a19kc2lfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKIAkJCSAgICAg
+ICBJUlFGX1RSSUdHRVJfTE9XLCBkZXZfbmFtZSgmcGRldi0+ZGV2KSwgZHNpKTsKIAlpZiAocmV0
+KSB7CiAJCWRldl9lcnIoJnBkZXYtPmRldiwgImZhaWxlZCB0byByZXF1ZXN0IG1lZGlhdGVrIGRz
+aSBpcnFcbiIpOwotCQlyZXR1cm4gLUVQUk9CRV9ERUZFUjsKKwkJcmV0ID0gLUVQUk9CRV9ERUZF
+UjsKKwkJZ290byBlcnJfdW5yZWdpc3Rlcl9ob3N0OwogCX0KIAogCWluaXRfd2FpdHF1ZXVlX2hl
+YWQoJmRzaS0+aXJxX3dhaXRfcXVldWUpOwogCiAJcGxhdGZvcm1fc2V0X2RydmRhdGEocGRldiwg
+ZHNpKTsKIAotCXJldHVybiBjb21wb25lbnRfYWRkKCZwZGV2LT5kZXYsICZtdGtfZHNpX2NvbXBv
+bmVudF9vcHMpOworCXJldCA9IGNvbXBvbmVudF9hZGQoJnBkZXYtPmRldiwgJm10a19kc2lfY29t
+cG9uZW50X29wcyk7CisJaWYgKHJldCkgeworCQlyZXQgPSAtRVBST0JFX0RFRkVSOworCQlnb3Rv
+IGVycl91bnJlZ2lzdGVyX2hvc3Q7CisJfQorCisJcmV0dXJuIDA7CisKK2Vycl91bnJlZ2lzdGVy
+X2hvc3Q6CisJbWlwaV9kc2lfaG9zdF91bnJlZ2lzdGVyKCZkc2ktPmhvc3QpOworCXJldHVybiBy
+ZXQ7CiB9CiAKIHN0YXRpYyBpbnQgbXRrX2RzaV9yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2Rldmlj
+ZSAqcGRldikKLS0gCjIuMjAuMQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
+ZHJpLWRldmVs
