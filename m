@@ -1,105 +1,56 @@
-From: Chaotian Jing <chaotian.jing@mediatek.com>
-Subject: Re: [PATCH v1] mmc: mmc: Fix HS setting in mmc_hs400_to_hs200()
-Date: Thu, 14 Feb 2019 10:14:18 +0800
-Message-ID: <1550110458.16070.30.camel@mhfsdcap03>
-References: <1550048812-29068-1-git-send-email-chaotian.jing@mediatek.com>
-         <CAPDyKFpNEhXT0dD_p85Ab2H_nHtr5r86BLcvkLVUsdwtYLUs4g@mail.gmail.com>
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+Subject: [RESEND PATCH v4,2/3] arm64: dts: Using standard CCF interface to set vcodec clk
+Date: Thu, 14 Feb 2019 10:24:52 +0800
+Message-ID: <1550111093-7057-2-git-send-email-yunfei.dong@mediatek.com>
+References: <1550111093-7057-1-git-send-email-yunfei.dong@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAPDyKFpNEhXT0dD_p85Ab2H_nHtr5r86BLcvkLVUsdwtYLUs4g@mail.gmail.com>
+In-Reply-To: <1550111093-7057-1-git-send-email-yunfei.dong@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Simon Horman <horms+renesas@verge.net.au>, Kyle Roeschley <kyle.roeschley@ni.com>, Hongjie Fang <hongjiefang@asrmicro.com>, Harish Jenny K N <harish_kandiga@mentor.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, srv_heupstream <srv_heupstream@mediatek.com>, Adrian Hunter <adrian.hunter@intel.com>
+To: Hans Verkuil <hverkuil@xs4all.nl>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Qianqian Yan <qianqian.yan@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2019-02-13 at 13:08 +0100, Ulf Hansson wrote:
-> On Wed, 13 Feb 2019 at 10:07, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
-> >
-> > mmc_hs400_to_hs200() begins with the card and host in HS400 mode.
-> > Therefore, any commands sent to the card should use HS400 timing.
-> > reduce clock frequency to 50Mhz but without host timming change
-> > may cause CMD6 response CRC error. because host still running at
-> > hs400 mode, and it's hard to find a suitable setting for all eMMC
-> > cards when clock frequency reduced to 50Mhz but card & host still
-> > in hs400 mode.
-> > this patch refers to mmc_select_hs400(), make the reduce clock frequency
-> > after card timing change.
-> >
-> > Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
-> > Fixes: ef3d232245ab ("mmc: mmc: Relax checking for switch errors after HS200 switch")
-> > ---
-> >  drivers/mmc/core/mmc.c | 29 +++++++++++++++++++++++------
-> >  1 file changed, 23 insertions(+), 6 deletions(-)
-> >
-> > diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
-> > index 09c688f..00adc2d 100644
-> > --- a/drivers/mmc/core/mmc.c
-> > +++ b/drivers/mmc/core/mmc.c
-> > @@ -1239,20 +1239,37 @@ int mmc_hs400_to_hs200(struct mmc_card *card)
-> >         int err;
-> >         u8 val;
-> >
-> > -       /* Reduce frequency to HS */
-> > -       max_dtr = card->ext_csd.hs_max_dtr;
-> > -       mmc_set_clock(host, max_dtr);
-> > -
-> >         /* Switch HS400 to HS DDR */
-> >         val = EXT_CSD_TIMING_HS;
-> >         err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL, EXT_CSD_HS_TIMING,
-> >                            val, card->ext_csd.generic_cmd6_time, 0,
-> >                            true, false, true);
-> > -       if (err)
-> > -               goto out_err;
-> > +       /*
-> > +        * as we are on the way to do re-tune, so if the CMD6 got response CRC
-> > +        * error, do not treat it as error.
-> > +        */
-> > +       if (err) {
-> > +               if (err == -EILSEQ) {
-> > +                       /*
-> > +                        * card will busy after sending out response and host
-> > +                        * driver may not wait busy de-assert when get
-> > +                        * response CRC error. so just wait enough time to
-> > +                        * ensure card leave busy state.
-> > +                        */
-> > +                       mmc_delay(card->ext_csd.generic_cmd6_time);
-> > +                       pr_debug("%s: %s switch to HS got CRC error\n",
-> > +                                mmc_hostname(host), __func__);
-> > +               } else {
-> > +                       goto out_err;
-> > +               }
-> > +       }
-> >
-> >         mmc_set_timing(host, MMC_TIMING_MMC_DDR52);
-> >
-> > +       /* Reduce frequency to HS */
-> > +       max_dtr = card->ext_csd.hs_max_dtr;
-> > +       mmc_set_clock(host, max_dtr);
-> > +
-> 
-> What Adrian suggested was to not to move this part, but instead, only
-> allow CRC errors from the CMD6 as above.
-> 
-> I guess it didn't work for you?
-> 
-It should work for me. another issue is CMD6 will be sent 3 times at max
- err = mmc_wait_for_cmd(host, &cmd, MMC_CMD_RETRIES);
+Using standard CCF interface to set vdec/venc parent clk
+and clk rate.
 
-if the first CMD6 got response CRC error, then Host driver must wait
-busy signal de-assert before send the next CMD6.
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Signed-off-by: Qianqian Yan <qianqian.yan@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi |   13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-So that it really make sense to issue CMD6(R1B) for 3 times ? if host
-driver did not handle the first CMD6 response CRC error and send second
-CMD6 directly, then this CMD6 will get timeout due to card still in busy
-state.
-> >         err = mmc_switch_status(card);
-> >         if (err)
-> >                 goto out_err;
-> > --
-> > 1.8.1.1.dirty
-> >
-> 
-> Kind regards
-> Uffe
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index 412ffd4..126d11e 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -1305,6 +1305,15 @@
+ 				      "vencpll",
+ 				      "venc_lt_sel",
+ 				      "vdec_bus_clk_src";
++			assigned-clocks = <&topckgen CLK_TOP_VENC_LT_SEL>,
++					  <&topckgen CLK_TOP_CCI400_SEL>,
++					  <&topckgen CLK_TOP_VDEC_SEL>,
++					  <&apmixedsys CLK_APMIXED_VCODECPLL>,
++					  <&apmixedsys CLK_APMIXED_VENCPLL>;
++			assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL_370P5>,
++						 <&topckgen CLK_TOP_UNIVPLL_D2>,
++						 <&topckgen CLK_TOP_VCODECPLL>;
++			assigned-clock-rates = <0>, <0>, <0>, <1482000000>, <800000000>;
+ 		};
+ 
+ 		larb1: larb@16010000 {
+@@ -1370,6 +1379,10 @@
+ 				      "venc_sel",
+ 				      "venc_lt_sel_src",
+ 				      "venc_lt_sel";
++			assigned-clocks = <&topckgen CLK_TOP_VENC_SEL>,
++					  <&topckgen CLK_TOP_VENC_LT_SEL>;
++			assigned-clock-parents = <&topckgen CLK_TOP_VENCPLL_D2>,
++						 <&topckgen CLK_TOP_UNIVPLL1_D2>;
+ 		};
+ 
+ 		vencltsys: clock-controller@19000000 {
+-- 
+1.7.9.5
