@@ -1,66 +1,121 @@
-From: <shun-chih.yu@mediatek.com>
-Subject: [PATCH v2 1/1] dt-bindings: dmaengine: Add MediaTek Command-Queue DMA controller bindings
-Date: Thu, 14 Feb 2019 15:54:52 +0800
-Message-ID: <1550130892-19488-2-git-send-email-shun-chih.yu@mediatek.com>
-References: <1550130892-19488-1-git-send-email-shun-chih.yu@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v1] mmc: mmc: Fix HS setting in mmc_hs400_to_hs200()
+Date: Thu, 14 Feb 2019 09:14:39 +0100
+Message-ID: <CAPDyKFqncdVs-jB4_46ZhgZP3TGCaUWnOCoNmjfT-kAESY3csw@mail.gmail.com>
+References: <1550048812-29068-1-git-send-email-chaotian.jing@mediatek.com>
+ <CAPDyKFpNEhXT0dD_p85Ab2H_nHtr5r86BLcvkLVUsdwtYLUs4g@mail.gmail.com> <1550110458.16070.30.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1550130892-19488-1-git-send-email-shun-chih.yu@mediatek.com>
+In-Reply-To: <1550110458.16070.30.camel@mhfsdcap03>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Dan Williams <dan.j.williams@intel.com>
-Cc: dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, srv_wsdupstream@mediatek.com, Shun-Chih Yu <shun-chih.yu@mediatek.com>
+To: Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Simon Horman <horms+renesas@verge.net.au>, Kyle Roeschley <kyle.roeschley@ni.com>, Hongjie Fang <hongjiefang@asrmicro.com>, Harish Jenny K N <harish_kandiga@mentor.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, srv_heupstream <srv_heupstream@mediatek.com>, Adrian Hunter <adrian.hunter@intel.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Shun-Chih Yu <shun-chih.yu@mediatek.com>
+On Thu, 14 Feb 2019 at 03:14, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
+>
+> On Wed, 2019-02-13 at 13:08 +0100, Ulf Hansson wrote:
+> > On Wed, 13 Feb 2019 at 10:07, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
+> > >
+> > > mmc_hs400_to_hs200() begins with the card and host in HS400 mode.
+> > > Therefore, any commands sent to the card should use HS400 timing.
+> > > reduce clock frequency to 50Mhz but without host timming change
+> > > may cause CMD6 response CRC error. because host still running at
+> > > hs400 mode, and it's hard to find a suitable setting for all eMMC
+> > > cards when clock frequency reduced to 50Mhz but card & host still
+> > > in hs400 mode.
+> > > this patch refers to mmc_select_hs400(), make the reduce clock frequency
+> > > after card timing change.
+> > >
+> > > Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+> > > Fixes: ef3d232245ab ("mmc: mmc: Relax checking for switch errors after HS200 switch")
+> > > ---
+> > >  drivers/mmc/core/mmc.c | 29 +++++++++++++++++++++++------
+> > >  1 file changed, 23 insertions(+), 6 deletions(-)
+> > >
+> > > diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
+> > > index 09c688f..00adc2d 100644
+> > > --- a/drivers/mmc/core/mmc.c
+> > > +++ b/drivers/mmc/core/mmc.c
+> > > @@ -1239,20 +1239,37 @@ int mmc_hs400_to_hs200(struct mmc_card *card)
+> > >         int err;
+> > >         u8 val;
+> > >
+> > > -       /* Reduce frequency to HS */
+> > > -       max_dtr = card->ext_csd.hs_max_dtr;
+> > > -       mmc_set_clock(host, max_dtr);
+> > > -
+> > >         /* Switch HS400 to HS DDR */
+> > >         val = EXT_CSD_TIMING_HS;
+> > >         err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL, EXT_CSD_HS_TIMING,
+> > >                            val, card->ext_csd.generic_cmd6_time, 0,
+> > >                            true, false, true);
+> > > -       if (err)
+> > > -               goto out_err;
+> > > +       /*
+> > > +        * as we are on the way to do re-tune, so if the CMD6 got response CRC
+> > > +        * error, do not treat it as error.
+> > > +        */
+> > > +       if (err) {
+> > > +               if (err == -EILSEQ) {
+> > > +                       /*
+> > > +                        * card will busy after sending out response and host
+> > > +                        * driver may not wait busy de-assert when get
+> > > +                        * response CRC error. so just wait enough time to
+> > > +                        * ensure card leave busy state.
+> > > +                        */
+> > > +                       mmc_delay(card->ext_csd.generic_cmd6_time);
+> > > +                       pr_debug("%s: %s switch to HS got CRC error\n",
+> > > +                                mmc_hostname(host), __func__);
+> > > +               } else {
+> > > +                       goto out_err;
+> > > +               }
+> > > +       }
+> > >
+> > >         mmc_set_timing(host, MMC_TIMING_MMC_DDR52);
+> > >
+> > > +       /* Reduce frequency to HS */
+> > > +       max_dtr = card->ext_csd.hs_max_dtr;
+> > > +       mmc_set_clock(host, max_dtr);
+> > > +
+> >
+> > What Adrian suggested was to not to move this part, but instead, only
+> > allow CRC errors from the CMD6 as above.
+> >
+> > I guess it didn't work for you?
+> >
+> It should work for me. another issue is CMD6 will be sent 3 times at max
 
-Document the devicetree bindings for MediaTek Command-Queue DMA controller
-which could be found on MT6765 SoC or other similar Mediatek SoCs.
+Alright, let's give it a try then.
 
-Signed-off-by: Shun-Chih Yu <shun-chih.yu@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
-Acked-by: Sean Wang <sean.wang@kernel.org>
----
- .../devicetree/bindings/dma/mtk-cqdma.txt          |   31 ++++++++++++++++++++
- 1 file changed, 31 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/dma/mtk-cqdma.txt
+>  err = mmc_wait_for_cmd(host, &cmd, MMC_CMD_RETRIES);
 
-diff --git a/Documentation/devicetree/bindings/dma/mtk-cqdma.txt b/Documentation/devicetree/bindings/dma/mtk-cqdma.txt
-new file mode 100644
-index 0000000..fb12927
---- /dev/null
-+++ b/Documentation/devicetree/bindings/dma/mtk-cqdma.txt
-@@ -0,0 +1,31 @@
-+MediaTek Command-Queue DMA Controller
-+==================================
-+
-+Required properties:
-+
-+- compatible:	Must be "mediatek,mt6765-cqdma" for MT6765.
-+- reg:		Should contain the base address and length for each channel.
-+- interrupts:	Should contain references to the interrupts for each channel.
-+- clocks:	Should be the clock specifiers corresponding to the entry in
-+		clock-names property.
-+- clock-names:	Should contain "cqdma" entries.
-+- dma-channels: The number of DMA channels supported by the controller.
-+- dma-requests: The number of DMA request supported by the controller.
-+- #dma-cells: 	The length of the DMA specifier, must be <1>. This one cell
-+		in dmas property of a client device represents the channel
-+		number.
-+Example:
-+
-+        cqdma: dma-controller@10212000 {
-+		compatible = "mediatek,mt6765-cqdma";
-+		reg = <0 0x10212000 0 0x1000>;
-+		interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_LOW>,
-+			<GIC_SPI 114 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&infracfg CLK_IFR_CQ_DMA>;
-+		clock-names = "cqdma";
-+		dma-channels = <2>;
-+		dma-requests = <32>;
-+		#dma-cells = <1>;
-+	};
-+
-+DMA clients must use the format described in dma/dma.txt file.
--- 
-1.7.9.5
+Yeah, that one have I thought about earlier as well.
+
+>
+> if the first CMD6 got response CRC error, then Host driver must wait
+> busy signal de-assert before send the next CMD6.
+>
+> So that it really make sense to issue CMD6(R1B) for 3 times ? if host
+> driver did not handle the first CMD6 response CRC error and send second
+> CMD6 directly, then this CMD6 will get timeout due to card still in busy
+> state.
+
+I fully agree with you, I don't think it makes sense to retry - not
+even for any CMD6, because of the busy signalling the card may raise
+afterwards.
+
+Perhaps we should start with a simple oneliner patch, giving zero
+instead of MMC_CMD_RETRIES to mmc_wait_for_cmd() and see how that
+plays.
+
+Then on top we can add the special error handling of the CRC errors,
+along the lines of what you suggest.
+
+Does it make sense?
+
+[...]
+
+Kind regards
+Uffe
