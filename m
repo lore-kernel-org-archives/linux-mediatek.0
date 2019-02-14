@@ -1,80 +1,61 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 1/1] dt-bindings: dmaengine: Add MediaTek Command-Queue
- DMA controller bindings
-Date: Thu, 14 Feb 2019 10:04:40 +0100
-Message-ID: <6fdcaf38-d7f6-973b-17a3-8ff996e372f1@gmail.com>
-References: <1550130892-19488-1-git-send-email-shun-chih.yu@mediatek.com>
- <1550130892-19488-2-git-send-email-shun-chih.yu@mediatek.com>
+From: Johan Hovold <johan@kernel.org>
+Subject: Re: [PATCH v2 2/4] dt-bindings: gnss: add mediatek binding
+Date: Thu, 14 Feb 2019 10:11:21 +0100
+Message-ID: <20190214091121.GI28278@localhost>
+References: <1547744074-28308-1-git-send-email-lollivier@baylibre.com>
+ <1547744074-28308-3-git-send-email-lollivier@baylibre.com>
+ <20190125090755.GB3691@localhost>
+ <867eeo7pjm.fsf@baylibre.com>
+ <20190211083349.GU4686@localhost>
+ <86mun2v27r.fsf@baylibre.com>
+ <CALZWD59e356Of+R4H2ZNHJyQcPCQNNdS+1DTc8qNDYp9ZnUpXA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1550130892-19488-2-git-send-email-shun-chih.yu@mediatek.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <CALZWD59e356Of+R4H2ZNHJyQcPCQNNdS+1DTc8qNDYp9ZnUpXA@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: shun-chih.yu@mediatek.com, Sean Wang <sean.wang@mediatek.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, Dan Williams <dan.j.williams@intel.com>
-Cc: dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, srv_wsdupstream@mediatek.com
+To: Loys Ollivier <lollivier@baylibre.com>
+Cc: Johan Hovold <johan@kernel.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-kernel@vger.kernel.org, Kevin Hilman <khilman@baylibre.com>, "open list:ARM/Amlogic Meson..." <linux-amlogic@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+On Wed, Feb 13, 2019 at 04:24:00PM +0100, Loys Ollivier wrote:
+> On Mon 11 Feb 2019 at 14:17, Loys Ollivier <lollivier@baylibre.com> wrote:
+> > On Mon 11 Feb 2019 at 08:33, Johan Hovold <johan@kernel.org> wrote:
 
-
-On 14/02/2019 08:54, shun-chih.yu@mediatek.com wrote:
-> From: Shun-Chih Yu <shun-chih.yu@mediatek.com>
+> >> Right, but please do look around for other receivers using this chipset
+> >> so that we can make the binding generic enough to cover those as well
+> >> (e.g. by choosing representative resource names).
+> >>
+> > OK will have a look.
 > 
-> Document the devicetree bindings for MediaTek Command-Queue DMA controller
-> which could be found on MT6765 SoC or other similar Mediatek SoCs.
+> The only mt3339-based receivers I have found are:
+> - [0] Globaltop
+> - [1] Locosys / Pololu
+> They both only provide the UART interface and do not list the I2C/SPI
+> interfaces.
 > 
-> Signed-off-by: Shun-Chih Yu <shun-chih.yu@mediatek.com>
-> Reviewed-by: Rob Herring <robh@kernel.org>
-> Acked-by: Sean Wang <sean.wang@kernel.org>
-> ---
+> [0] https://cdn-shop.adafruit.com/datasheets/GlobalTop-FGPMMOPA6H-Datasheet-V0A.pdf
+> [1] https://www.pololu.com/file/0J641/LS20030~3_datasheet_v1.3.pdf
 
-Please don't send cover letters for single patches, just for series.
-If you want to add some information to a single patch, which should not show up
-in the commit message (e.g. change log) you can do that below the "---"
+I found tree more:
 
-Regards,
-Matthias
+ - Globaltop PA6C
 
->  .../devicetree/bindings/dma/mtk-cqdma.txt          |   31 ++++++++++++++++++++
->  1 file changed, 31 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/dma/mtk-cqdma.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/dma/mtk-cqdma.txt b/Documentation/devicetree/bindings/dma/mtk-cqdma.txt
-> new file mode 100644
-> index 0000000..fb12927
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/dma/mtk-cqdma.txt
-> @@ -0,0 +1,31 @@
-> +MediaTek Command-Queue DMA Controller
-> +==================================
-> +
-> +Required properties:
-> +
-> +- compatible:	Must be "mediatek,mt6765-cqdma" for MT6765.
-> +- reg:		Should contain the base address and length for each channel.
-> +- interrupts:	Should contain references to the interrupts for each channel.
-> +- clocks:	Should be the clock specifiers corresponding to the entry in
-> +		clock-names property.
-> +- clock-names:	Should contain "cqdma" entries.
-> +- dma-channels: The number of DMA channels supported by the controller.
-> +- dma-requests: The number of DMA request supported by the controller.
-> +- #dma-cells: 	The length of the DMA specifier, must be <1>. This one cell
-> +		in dmas property of a client device represents the channel
-> +		number.
-> +Example:
-> +
-> +        cqdma: dma-controller@10212000 {
-> +		compatible = "mediatek,mt6765-cqdma";
-> +		reg = <0 0x10212000 0 0x1000>;
-> +		interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_LOW>,
-> +			<GIC_SPI 114 IRQ_TYPE_LEVEL_LOW>;
-> +		clocks = <&infracfg CLK_IFR_CQ_DMA>;
-> +		clock-names = "cqdma";
-> +		dma-channels = <2>;
-> +		dma-requests = <32>;
-> +		#dma-cells = <1>;
-> +	};
-> +
-> +DMA clients must use the format described in dma/dma.txt file.
-> 
+   - https://cdn-shop.adafruit.com/datasheets/GlobalTop-FGPMMOPA6C-Datasheet-V0A-Preliminary.pdf
+
+ - Linx RM series
+   - https://linxtechnologies.com/wp/wp-content/uploads/rxm-gps-rm.pdf
+
+ - ublox IT530
+   - https://www.u-blox.com/sites/default/files/products/documents/IT530_DataSheet_%28FTX-HW-12008%29.pdf
+
+All with uart-interface only and similar pins names, although the ublox
+device do have some additional features we can worry about later.
+
+As all but the ublox device use VBACKUP for the backup supply, do you
+mind if I change the binding to use "vbackup-supply" instead of
+"v-bckp-supply" (which is a ublox-ism) when applying?
+
+Thanks,
+Johan
