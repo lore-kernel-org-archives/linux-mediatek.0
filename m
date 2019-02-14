@@ -1,431 +1,107 @@
-From: Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>
-Subject: Re: [PATCH 3/3] mailbox: mediatek: Remove busylist
-Date: Fri, 15 Feb 2019 00:12:12 +0800
-Message-ID: <1550160732.14973.2.camel@mtksdaap41>
-References: <20190116050435.11624-1-ck.hu@mediatek.com>
-         <20190116050435.11624-4-ck.hu@mediatek.com>
-         <40d519083fe94640a22181388bcbbb09@MTKMBS31N1.mediatek.inc>
-         <1549937905.11898.5.camel@mtksdaap41> <1550160105.6862.9.camel@mtksdaap41>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH] drm/mediatek: add mt8183 dpi support
+Date: Fri, 15 Feb 2019 00:13:29 +0800
+Message-ID: <1550160809.6862.13.camel@mtksdaap41>
+References: <20190211045059.11821-1-jitao.shi@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1550160105.6862.9.camel@mtksdaap41>
+In-Reply-To: <20190211045059.11821-1-jitao.shi@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream <srv_heupstream@mediatek.com>, Houlong Wei =?UTF-8?Q?=28=E9=AD=8F=E5=8E=9A=E9=BE=99=29?= <houlong.wei@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>
+To: Jitao Shi <jitao.shi@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi CK,
+Hi, Jitao:
 
-On Fri, 2019-02-15 at 00:01 +0800, CK Hu wrote:
-> Hi, Dennis:
+On Mon, 2019-02-11 at 12:50 +0800, Jitao Shi wrote:
+> MT8183 sample on rising and falling edge. It can reduce half data io.
 > 
-> On Tue, 2019-02-12 at 10:18 +0800, Dennis-YC Hsieh wrote:
-> > Hi CK,
-> > 
-> > On Tue, 2019-01-29 at 17:20 +0800, Houlong Wei (魏厚龙) wrote:
-> > > -----Original Message-----
-> > > From: CK Hu [mailto:ck.hu@mediatek.com] 
-> > > Sent: Wednesday, January 16, 2019 1:05 PM
-> > > To: Jassi Brar <jassisinghbrar@gmail.com>; Matthias Brugger <matthias.bgg@gmail.com>; Houlong Wei (魏厚龙) <houlong.wei@mediatek.com>
-> > > Cc: linux-kernel@vger.kernel.org; linux-arm-kernel@lists.infradead.org; linux-mediatek@lists.infradead.org; srv_heupstream <srv_heupstream@mediatek.com>; CK Hu (胡俊光) <ck.hu@mediatek.com>
-> > > Subject: [PATCH 3/3] mailbox: mediatek: Remove busylist
-> > > 
-> > > After implement abort_data, controller need not to implement its own queue. Remove busylist because it's useless.
-> > 
-> > Remove busy list in controller makes client driver have no way to queue
-> > pkt in gce hardware thread, which may hurt display and multimedia
-> > performance since each pkt waits IRQ delay before previous pkt. Suggest
-> > keep busy list design.
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dpi.c | 29 +++++++++++++++++++++++++++++
+>  1 file changed, 29 insertions(+)
 > 
-> If some client driver need gce to cascade pkt to prevent irq delay, I
-> should keep busylist. For drm driver, I still want to apply the first
-> two patches of this series and remove atomic feature because drm could
-> keep just one pkt and reuse it to prevent frequently allocate/free pkt
-> and the total commands executed in vblank period would be
-> well-controlled. Do you have any concern about removing atomic feature?
-> 
-> Regards,
-> CK
-> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> index 62a9d47df948..610c23334047 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> @@ -117,6 +117,7 @@ struct mtk_dpi_conf {
+>  	unsigned int (*cal_factor)(int clock);
+>  	u32 reg_h_fre_con;
+>  	bool edge_sel_en;
+> +	bool dual_edge;
+>  };
+>  
+>  static void mtk_dpi_mask(struct mtk_dpi *dpi, u32 offset, u32 val, u32 mask)
+> @@ -353,6 +354,13 @@ static void mtk_dpi_config_disable_edge(struct mtk_dpi *dpi)
+>  		mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, 0, EDGE_SEL_EN);
+>  }
+>  
+> +static void mtk_dpi_enable_dual_edge(struct mtk_dpi *dpi)
+> +{
+> +	mtk_dpi_mask(dpi, DPI_DDR_SETTING, DDR_EN | DDR_4PHASE,
+> +		     DDR_EN | DDR_4PHASE);
+> +	mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING, EDGE_SEL, EDGE_SEL);
+> +}
 
-I have no concern on remove atomic feature.
-
+All these register exist in MT8173, if you do the same setting in
+MT8173, could it also sample on rising edge and falling edge?
 
 Regards,
-Dennis
+CK
 
-
-> > 
-> > 
-> > Regards,
-> > Dennis
-> > 
-> > > 
-> > > Signed-off-by: CK Hu <ck.hu@mediatek.com>
-> > > ---
-> > >  drivers/mailbox/mtk-cmdq-mailbox.c | 255 ++++-------------------------
-> > >  1 file changed, 29 insertions(+), 226 deletions(-)
-> > > 
-> > > diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-> > > index f2219f263ef6..45c59f677ecb 100644
-> > > --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> > > +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> > > @@ -16,9 +16,7 @@
-> > >  #include <linux/mailbox/mtk-cmdq-mailbox.h>
-> > >  #include <linux/of_device.h>
-> > >  
-> > > -#define CMDQ_OP_CODE_MASK		(0xff << CMDQ_OP_CODE_SHIFT)
-> > >  #define CMDQ_IRQ_MASK			0xffff
-> > > -#define CMDQ_NUM_CMD(t)			(t->cmd_buf_size / CMDQ_INST_SIZE)
-> > >  
-> > >  #define CMDQ_CURR_IRQ_STATUS		0x10
-> > >  #define CMDQ_THR_SLOT_CYCLES		0x30
-> > > @@ -47,22 +45,10 @@
-> > >  #define CMDQ_THR_IRQ_EN			(CMDQ_THR_IRQ_ERROR | CMDQ_THR_IRQ_DONE)
-> > >  #define CMDQ_THR_IS_WAITING		BIT(31)
-> > >  
-> > > -#define CMDQ_JUMP_BY_OFFSET		0x10000000
-> > > -#define CMDQ_JUMP_BY_PA			0x10000001
-> > > -
-> > >  struct cmdq_thread {
-> > >  	struct mbox_chan	*chan;
-> > >  	void __iomem		*base;
-> > > -	struct list_head	task_busy_list;
-> > >  	u32			priority;
-> > > -	bool			atomic_exec;
-> > > -};
-> > > -
-> > > -struct cmdq_task {
-> > > -	struct cmdq		*cmdq;
-> > > -	struct list_head	list_entry;
-> > > -	dma_addr_t		pa_base;
-> > > -	struct cmdq_thread	*thread;
-> > >  	struct cmdq_pkt		*pkt; /* the packet sent from mailbox client */
-> > >  };
-> > >  
-> > > @@ -130,171 +116,47 @@ static void cmdq_thread_disable(struct cmdq *cmdq, struct cmdq_thread *thread)
-> > >  	writel(CMDQ_THR_DISABLED, thread->base + CMDQ_THR_ENABLE_TASK);  }
-> > >  
-> > > -/* notify GCE to re-fetch commands by setting GCE thread PC */ -static void cmdq_thread_invalidate_fetched_data(struct cmdq_thread *thread) -{
-> > > -	writel(readl(thread->base + CMDQ_THR_CURR_ADDR),
-> > > -	       thread->base + CMDQ_THR_CURR_ADDR);
-> > > -}
-> > > -
-> > > -static void cmdq_task_insert_into_thread(struct cmdq_task *task) -{
-> > > -	struct device *dev = task->cmdq->mbox.dev;
-> > > -	struct cmdq_thread *thread = task->thread;
-> > > -	struct cmdq_task *prev_task = list_last_entry(
-> > > -			&thread->task_busy_list, typeof(*task), list_entry);
-> > > -	u64 *prev_task_base = prev_task->pkt->va_base;
-> > > -
-> > > -	/* let previous task jump to this task */
-> > > -	dma_sync_single_for_cpu(dev, prev_task->pa_base,
-> > > -				prev_task->pkt->cmd_buf_size, DMA_TO_DEVICE);
-> > > -	prev_task_base[CMDQ_NUM_CMD(prev_task->pkt) - 1] =
-> > > -		(u64)CMDQ_JUMP_BY_PA << 32 | task->pa_base;
-> > > -	dma_sync_single_for_device(dev, prev_task->pa_base,
-> > > -				   prev_task->pkt->cmd_buf_size, DMA_TO_DEVICE);
-> > > -
-> > > -	cmdq_thread_invalidate_fetched_data(thread);
-> > > -}
-> > > -
-> > > -static bool cmdq_command_is_wfe(u64 cmd) -{
-> > > -	u64 wfe_option = CMDQ_WFE_UPDATE | CMDQ_WFE_WAIT | CMDQ_WFE_WAIT_VALUE;
-> > > -	u64 wfe_op = (u64)(CMDQ_CODE_WFE << CMDQ_OP_CODE_SHIFT) << 32;
-> > > -	u64 wfe_mask = (u64)CMDQ_OP_CODE_MASK << 32 | 0xffffffff;
-> > > -
-> > > -	return ((cmd & wfe_mask) == (wfe_op | wfe_option));
-> > > -}
-> > > -
-> > > -/* we assume tasks in the same display GCE thread are waiting the same event. */ -static void cmdq_task_remove_wfe(struct cmdq_task *task) -{
-> > > -	struct device *dev = task->cmdq->mbox.dev;
-> > > -	u64 *base = task->pkt->va_base;
-> > > -	int i;
-> > > -
-> > > -	dma_sync_single_for_cpu(dev, task->pa_base, task->pkt->cmd_buf_size,
-> > > -				DMA_TO_DEVICE);
-> > > -	for (i = 0; i < CMDQ_NUM_CMD(task->pkt); i++)
-> > > -		if (cmdq_command_is_wfe(base[i]))
-> > > -			base[i] = (u64)CMDQ_JUMP_BY_OFFSET << 32 |
-> > > -				  CMDQ_JUMP_PASS;
-> > > -	dma_sync_single_for_device(dev, task->pa_base, task->pkt->cmd_buf_size,
-> > > -				   DMA_TO_DEVICE);
-> > > -}
-> > > -
-> > >  static bool cmdq_thread_is_in_wfe(struct cmdq_thread *thread)  {
-> > >  	return readl(thread->base + CMDQ_THR_WAIT_TOKEN) & CMDQ_THR_IS_WAITING;  }
-> > >  
-> > > -static void cmdq_thread_wait_end(struct cmdq_thread *thread,
-> > > -				 unsigned long end_pa)
-> > > -{
-> > > -	struct device *dev = thread->chan->mbox->dev;
-> > > -	unsigned long curr_pa;
-> > > -
-> > > -	if (readl_poll_timeout_atomic(thread->base + CMDQ_THR_CURR_ADDR,
-> > > -			curr_pa, curr_pa == end_pa, 1, 20))
-> > > -		dev_err(dev, "GCE thread cannot run to end.\n");
-> > > -}
-> > > -
-> > > -static void cmdq_task_exec_done(struct cmdq_task *task, enum cmdq_cb_status sta) -{
-> > > -	struct cmdq_task_cb *cb = &task->pkt->async_cb;
-> > > -	struct cmdq_cb_data data;
-> > > -
-> > > -	WARN_ON(cb->cb == (cmdq_async_flush_cb)NULL);
-> > > -	data.sta = sta;
-> > > -	data.data = cb->data;
-> > > -	cb->cb(data);
-> > > -
-> > > -	list_del(&task->list_entry);
-> > > -}
-> > > -
-> > > -static void cmdq_task_handle_error(struct cmdq_task *task) -{
-> > > -	struct cmdq_thread *thread = task->thread;
-> > > -	struct cmdq_task *next_task;
-> > > -
-> > > -	dev_err(task->cmdq->mbox.dev, "task 0x%p error\n", task);
-> > > -	WARN_ON(cmdq_thread_suspend(task->cmdq, thread) < 0);
-> > > -	next_task = list_first_entry_or_null(&thread->task_busy_list,
-> > > -			struct cmdq_task, list_entry);
-> > > -	if (next_task)
-> > > -		writel(next_task->pa_base, thread->base + CMDQ_THR_CURR_ADDR);
-> > > -	cmdq_thread_resume(thread);
-> > > -}
-> > > -
-> > >  static void cmdq_thread_irq_handler(struct cmdq *cmdq,
-> > >  				    struct cmdq_thread *thread)
-> > >  {
-> > > -	struct cmdq_task *task, *tmp, *curr_task = NULL;
-> > > -	u32 curr_pa, irq_flag, task_end_pa;
-> > > -	bool err;
-> > > +	unsigned long flags;
-> > > +	u32 curr_pa, irq_flag, end_pa;
-> > > +	int ret = 0;
-> > >  
-> > > +	spin_lock_irqsave(&thread->chan->lock, flags);
-> > >  	irq_flag = readl(thread->base + CMDQ_THR_IRQ_STATUS);
-> > >  	writel(~irq_flag, thread->base + CMDQ_THR_IRQ_STATUS);
-> > >  
-> > > -	/*
-> > > -	 * When ISR call this function, another CPU core could run
-> > > -	 * "release task" right before we acquire the spin lock, and thus
-> > > -	 * reset / disable this GCE thread, so we need to check the enable
-> > > -	 * bit of this GCE thread.
-> > > -	 */
-> > > -	if (!(readl(thread->base + CMDQ_THR_ENABLE_TASK) & CMDQ_THR_ENABLED))
-> > > -		return;
-> > > -
-> > > -	if (irq_flag & CMDQ_THR_IRQ_ERROR)
-> > > -		err = true;
-> > > -	else if (irq_flag & CMDQ_THR_IRQ_DONE)
-> > > -		err = false;
-> > > -	else
-> > > -		return;
-> > > -
-> > >  	curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR);
-> > > +	end_pa = readl(thread->base + CMDQ_THR_END_ADDR);
-> > >  
-> > > -	list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
-> > > -				 list_entry) {
-> > > -		task_end_pa = task->pa_base + task->pkt->cmd_buf_size;
-> > > -		if (curr_pa >= task->pa_base && curr_pa < task_end_pa)
-> > > -			curr_task = task;
-> > > -
-> > > -		if (!curr_task || curr_pa == task_end_pa - CMDQ_INST_SIZE) {
-> > > -			cmdq_task_exec_done(task, CMDQ_CB_NORMAL);
-> > > -			kfree(task);
-> > > -		} else if (err) {
-> > > -			cmdq_task_exec_done(task, CMDQ_CB_ERROR);
-> > > -			cmdq_task_handle_error(curr_task);
-> > > -			kfree(task);
-> > > -		}
-> > > -
-> > > -		if (curr_task)
-> > > -			break;
-> > > -	}
-> > > +	if (curr_pa != end_pa ||  irq_flag & CMDQ_THR_IRQ_ERROR)
-> > > +		ret = -EFAULT;
-> > >  
-> > > -	if (list_empty(&thread->task_busy_list)) {
-> > > -		cmdq_thread_disable(cmdq, thread);
-> > > -		clk_disable(cmdq->clock);
-> > > -	}
-> > > +	thread->pkt = NULL;
-> > > +	cmdq_thread_disable(cmdq, thread);
-> > > +	clk_disable(cmdq->clock);
-> > > +	spin_unlock_irqrestore(&thread->chan->lock, flags);
-> > > +	mbox_chan_txdone(thread->chan, ret);
-> > >  }
-> > >  
-> > >  static irqreturn_t cmdq_irq_handler(int irq, void *dev)  {
-> > >  	struct cmdq *cmdq = dev;
-> > > -	unsigned long irq_status, flags = 0L;
-> > > +	unsigned long irq_status;
-> > >  	int bit;
-> > >  
-> > >  	irq_status = readl(cmdq->base + CMDQ_CURR_IRQ_STATUS) & CMDQ_IRQ_MASK;
-> > >  	if (!(irq_status ^ CMDQ_IRQ_MASK))
-> > >  		return IRQ_NONE;
-> > >  
-> > > -	for_each_clear_bit(bit, &irq_status, fls(CMDQ_IRQ_MASK)) {
-> > > -		struct cmdq_thread *thread = &cmdq->thread[bit];
-> > > -
-> > > -		spin_lock_irqsave(&thread->chan->lock, flags);
-> > > -		cmdq_thread_irq_handler(cmdq, thread);
-> > > -		spin_unlock_irqrestore(&thread->chan->lock, flags);
-> > > -	}
-> > > +	for_each_clear_bit(bit, &irq_status, fls(CMDQ_IRQ_MASK))
-> > > +		cmdq_thread_irq_handler(cmdq, &cmdq->thread[bit]);
-> > >  
-> > >  	return IRQ_HANDLED;
-> > >  }
-> > > @@ -310,7 +172,7 @@ static int cmdq_suspend(struct device *dev)
-> > >  
-> > >  	for (i = 0; i < cmdq->thread_nr; i++) {
-> > >  		thread = &cmdq->thread[i];
-> > > -		if (!list_empty(&thread->task_busy_list)) {
-> > > +		if (thread->pkt) {
-> > >  			task_running = true;
-> > >  			break;
-> > >  		}
-> > > @@ -347,72 +209,21 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
-> > >  	struct cmdq_pkt *pkt = (struct cmdq_pkt *)data;
-> > >  	struct cmdq_thread *thread = (struct cmdq_thread *)chan->con_priv;
-> > >  	struct cmdq *cmdq = dev_get_drvdata(chan->mbox->dev);
-> > > -	struct cmdq_task *task;
-> > > -	unsigned long curr_pa, end_pa;
-> > >  
-> > >  	/* Client should not flush new tasks if suspended. */
-> > >  	WARN_ON(cmdq->suspended);
-> > >  
-> > > -	task = kzalloc(sizeof(*task), GFP_ATOMIC);
-> > > -	if (!task)
-> > > -		return -ENOMEM;
-> > > +	thread->pkt = pkt;
-> > >  
-> > > -	task->cmdq = cmdq;
-> > > -	INIT_LIST_HEAD(&task->list_entry);
-> > > -	task->pa_base = pkt->pa_base;
-> > > -	task->thread = thread;
-> > > -	task->pkt = pkt;
-> > > -
-> > > -	if (list_empty(&thread->task_busy_list)) {
-> > > -		WARN_ON(clk_enable(cmdq->clock) < 0);
-> > > -		WARN_ON(cmdq_thread_reset(cmdq, thread) < 0);
-> > > -
-> > > -		writel(task->pa_base, thread->base + CMDQ_THR_CURR_ADDR);
-> > > -		writel(task->pa_base + pkt->cmd_buf_size,
-> > > -		       thread->base + CMDQ_THR_END_ADDR);
-> > > -		writel(thread->priority, thread->base + CMDQ_THR_PRIORITY);
-> > > -		writel(CMDQ_THR_IRQ_EN, thread->base + CMDQ_THR_IRQ_ENABLE);
-> > > -		writel(CMDQ_THR_ENABLED, thread->base + CMDQ_THR_ENABLE_TASK);
-> > > -	} else {
-> > > -		WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
-> > > -		curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR);
-> > > -		end_pa = readl(thread->base + CMDQ_THR_END_ADDR);
-> > > -
-> > > -		/*
-> > > -		 * Atomic execution should remove the following wfe, i.e. only
-> > > -		 * wait event at first task, and prevent to pause when running.
-> > > -		 */
-> > > -		if (thread->atomic_exec) {
-> > > -			/* GCE is executing if command is not WFE */
-> > > -			if (!cmdq_thread_is_in_wfe(thread)) {
-> > > -				cmdq_thread_resume(thread);
-> > > -				cmdq_thread_wait_end(thread, end_pa);
-> > > -				WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
-> > > -				/* set to this task directly */
-> > > -				writel(task->pa_base,
-> > > -				       thread->base + CMDQ_THR_CURR_ADDR);
-> > > -			} else {
-> > > -				cmdq_task_insert_into_thread(task);
-> > > -				cmdq_task_remove_wfe(task);
-> > > -				smp_mb(); /* modify jump before enable thread */
-> > > -			}
-> > > -		} else {
-> > > -			/* check boundary */
-> > > -			if (curr_pa == end_pa - CMDQ_INST_SIZE ||
-> > > -			    curr_pa == end_pa) {
-> > > -				/* set to this task directly */
-> > > -				writel(task->pa_base,
-> > > -				       thread->base + CMDQ_THR_CURR_ADDR);
-> > > -			} else {
-> > > -				cmdq_task_insert_into_thread(task);
-> > > -				smp_mb(); /* modify jump before enable thread */
-> > > -			}
-> > > -		}
-> > > -		writel(task->pa_base + pkt->cmd_buf_size,
-> > > -		       thread->base + CMDQ_THR_END_ADDR);
-> > > -		cmdq_thread_resume(thread);
-> > > -	}
-> > > -	list_move_tail(&task->list_entry, &thread->task_busy_list);
-> > > +	WARN_ON(clk_enable(cmdq->clock) < 0);
-> > > +	WARN_ON(cmdq_thread_reset(cmdq, thread) < 0);
-> > > +
-> > > +	writel(thread->pkt->pa_base, thread->base + CMDQ_THR_CURR_ADDR);
-> > > +	writel(thread->pkt->pa_base + pkt->cmd_buf_size,
-> > > +	       thread->base + CMDQ_THR_END_ADDR);
-> > > +	writel(thread->priority, thread->base + CMDQ_THR_PRIORITY);
-> > > +	writel(CMDQ_THR_IRQ_EN, thread->base + CMDQ_THR_IRQ_ENABLE);
-> > > +	writel(CMDQ_THR_ENABLED, thread->base + CMDQ_THR_ENABLE_TASK);
-> > >  
-> > >  	return 0;
-> > >  }
-> > > @@ -421,23 +232,18 @@ static void cmdq_mbox_abort_data(struct mbox_chan *chan)  {
-> > >  	struct cmdq_thread *thread = (struct cmdq_thread *)chan->con_priv;
-> > >  	struct cmdq *cmdq = dev_get_drvdata(chan->mbox->dev);
-> > > -	struct cmdq_task *task, *tmp;
-> > >  	unsigned long flags;
-> > >  	u32 enable;
-> > >  
-> > >  	spin_lock_irqsave(&thread->chan->lock, flags);
-> > > -	if (list_empty(&thread->task_busy_list))
-> > > +	if (!thread->pkt)
-> > >  		goto out;
-> > >  
-> > >  	WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
-> > >  	if (!cmdq_thread_is_in_wfe(thread))
-> > >  		goto wait;
-> > >  
-> > > -	list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
-> > > -				 list_entry) {
-> > > -		list_del(&task->list_entry);
-> > > -		kfree(task);
-> > > -	}
-> > > +	thread->pkt = NULL;
-> > >  
-> > >  	cmdq_thread_resume(thread);
-> > >  	cmdq_thread_disable(cmdq, thread);
-> > > @@ -483,7 +289,6 @@ static struct mbox_chan *cmdq_xlate(struct mbox_controller *mbox,
-> > >  
-> > >  	thread = (struct cmdq_thread *)mbox->chans[ind].con_priv;
-> > >  	thread->priority = sp->args[1];
-> > > -	thread->atomic_exec = (sp->args[2] != 0);
-> > >  	thread->chan = &mbox->chans[ind];
-> > >  
-> > >  	return &mbox->chans[ind];
-> > > @@ -539,8 +344,7 @@ static int cmdq_probe(struct platform_device *pdev)
-> > >  	cmdq->mbox.ops = &cmdq_mbox_chan_ops;
-> > >  	cmdq->mbox.of_xlate = cmdq_xlate;
-> > >  
-> > > -	/* make use of TXDONE_BY_ACK */
-> > > -	cmdq->mbox.txdone_irq = false;
-> > > +	cmdq->mbox.txdone_irq = true;
-> > >  	cmdq->mbox.txdone_poll = false;
-> > >  
-> > >  	cmdq->thread = devm_kcalloc(dev, cmdq->thread_nr, @@ -551,7 +355,6 @@ static int cmdq_probe(struct platform_device *pdev)
-> > >  	for (i = 0; i < cmdq->thread_nr; i++) {
-> > >  		cmdq->thread[i].base = cmdq->base + CMDQ_THR_BASE +
-> > >  				CMDQ_THR_SIZE * i;
-> > > -		INIT_LIST_HEAD(&cmdq->thread[i].task_busy_list);
-> > >  		cmdq->mbox.chans[i].con_priv = (void *)&cmdq->thread[i];
-> > >  	}
-> > >  
-> > > --
-> > > 2.18.1
-> > > 
-> > 
-> > 
-> 
-> 
+> +
+>  static void mtk_dpi_config_color_format(struct mtk_dpi *dpi,
+>  					enum mtk_dpi_out_color_format format)
+>  {
+> @@ -509,6 +517,8 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+>  	mtk_dpi_config_color_format(dpi, dpi->color_format);
+>  	mtk_dpi_config_2n_h_fre(dpi);
+>  	mtk_dpi_config_disable_edge(dpi);
+> +	if (dpi->conf->dual_edge)
+> +		mtk_dpi_enable_dual_edge(dpi);
+>  	mtk_dpi_sw_reset(dpi, false);
+>  
+>  	return 0;
+> @@ -671,6 +681,16 @@ static unsigned int mt2701_calculate_factor(int clock)
+>  		return 2;
+>  }
+>  
+> +static unsigned int mt8183_calculate_factor(int clock)
+> +{
+> +	if (clock <= 27000)
+> +		return 8;
+> +	else if (clock <= 167000)
+> +		return 4;
+> +	else
+> +		return 2;
+> +}
+> +
+>  static const struct mtk_dpi_conf mt8173_conf = {
+>  	.cal_factor = mt8173_calculate_factor,
+>  	.reg_h_fre_con = 0xe0,
+> @@ -682,6 +702,12 @@ static const struct mtk_dpi_conf mt2701_conf = {
+>  	.edge_sel_en = true,
+>  };
+>  
+> +static const struct mtk_dpi_conf mt8183_conf = {
+> +	.cal_factor = mt8183_calculate_factor,
+> +	.reg_h_fre_con = 0xe0,
+> +	.dual_edge = true,
+> +};
+> +
+>  static int mtk_dpi_probe(struct platform_device *pdev)
+>  {
+>  	struct device *dev = &pdev->dev;
+> @@ -777,6 +803,9 @@ static const struct of_device_id mtk_dpi_of_ids[] = {
+>  	{ .compatible = "mediatek,mt8173-dpi",
+>  	  .data = &mt8173_conf,
+>  	},
+> +	{ .compatible = "mediatek,mt8183-dpi",
+> +	  .data = &mt8183_conf,
+> +	},
+>  	{ },
+>  };
+>  
