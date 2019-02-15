@@ -1,50 +1,26 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [RFC PATCH v2] PCI/portdrv: Support for subtractive decode bridge
-Date: Thu, 14 Feb 2019 17:41:42 -0600
-Message-ID: <20190214234142.GP96272@google.com>
-References: <1550121677-10474-1-git-send-email-honghui.zhang@mediatek.com>
+From: Chaotian Jing <chaotian.jing@mediatek.com>
+Subject: [PATCH v2] Fix HS setting in mmc_hs400_to_hs200()
+Date: Fri, 15 Feb 2019 13:59:33 +0800
+Message-ID: <1550210375-32270-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1550121677-10474-1-git-send-email-honghui.zhang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: honghui.zhang@mediatek.com
-Cc: lorenzo.pieralisi@arm.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com, matthias.bgg@gmail.com, youlin.pei@mediatek.com, poza@codeaurora.org, fred@fredlawl.com, rafael.j.wysocki@intel.com, jianjun.wang@mediatek.com
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Simon Horman <horms+renesas@verge.net.au>, Chaotian Jing <chaotian.jing@mediatek.com>, Avri Altman <avri.altman@wdc.com>, Kyle Roeschley <kyle.roeschley@ni.com>, Hongjie Fang <hongjiefang@asrmicro.com>, Adrian Hunter <adrian.hunter@intel.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Feb 14, 2019 at 01:21:17PM +0800, honghui.zhang@mediatek.com wrote:
-> From: Honghui Zhang <honghui.zhang@mediatek.com>
-> 
-> The Class Code for subtractive decode PCI-to-PCI bridge is 060401h,
-> add one entry to make portdrv support this type bridge.
-> 
-> Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+Change vs v1:
+  do not retry CMD6 in __mmc_switch()
+  do not move the reduce clock operation after switch HS
 
-Applied to pci/portdrv for v5.1, thanks!
+Chaotian Jing (2):
+  mmc: core: do not retry CMD6 in __mmc_switch()
+  mmc: mmc: Fix HS setting in mmc_hs400_to_hs200()
 
-> ---
->  drivers/pci/pcie/portdrv_pci.c | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/drivers/pci/pcie/portdrv_pci.c b/drivers/pci/pcie/portdrv_pci.c
-> index 0acca35..c129f2f 100644
-> --- a/drivers/pci/pcie/portdrv_pci.c
-> +++ b/drivers/pci/pcie/portdrv_pci.c
-> @@ -185,6 +185,8 @@ static void pcie_portdrv_err_resume(struct pci_dev *dev)
->  static const struct pci_device_id port_pci_ids[] = { {
->  	/* handle any PCI-Express port */
->  	PCI_DEVICE_CLASS(((PCI_CLASS_BRIDGE_PCI << 8) | 0x00), ~0),
-> +	/* subtractive decode PCI-to-PCI bridge, class type is 060401h */
-> +	PCI_DEVICE_CLASS(((PCI_CLASS_BRIDGE_PCI << 8) | 0x01), ~0),
->  	}, { /* end: all zeroes */ }
->  };
->  
-> -- 
-> 2.6.4
-> 
-> 
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+ drivers/mmc/core/mmc.c     | 21 +++++++++++++++++++--
+ drivers/mmc/core/mmc_ops.c |  2 +-
+ 2 files changed, 20 insertions(+), 3 deletions(-)
+
+-- 
+1.8.1.1.dirty
