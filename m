@@ -1,71 +1,173 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH] i2c: mediatek: modify threshold passed to
- i2c_get_dma_safe_msg_buf()
-Date: Fri, 15 Feb 2019 10:25:00 +0100
-Message-ID: <20190215092500.6q3hqnoufyowiqaz@ninjato>
-References: <20190215090202.157100-1-hsinyi@chromium.org>
- <20190215090959.soxkf3ho3or2geme@ninjato>
- <CAJMQK-jrpnfzKNYh01Pg6QydSSa-=6x44Pj1wwMdXw7G3x-ybA@mail.gmail.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v7 3/6] dt-bindings: pinctrl: mt8183: add binding document
+Date: Fri, 15 Feb 2019 10:35:39 +0100
+Message-ID: <2b221339-3933-2a25-ab60-d4d772d2873a@gmail.com>
+References: <1550210558-30516-1-git-send-email-erin.lo@mediatek.com>
+ <1550210558-30516-4-git-send-email-erin.lo@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="y2t44ovekq3k3td5"
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAJMQK-jrpnfzKNYh01Pg6QydSSa-=6x44Pj1wwMdXw7G3x-ybA@mail.gmail.com>
+In-Reply-To: <1550210558-30516-4-git-send-email-erin.lo@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jun Gao <jun.gao@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-i2c@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Erin Lo <erin.lo@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <marc.zyngier@arm.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, yingjoe.chen@mediatek.com, mars.cheng@mediatek.com, eddie.huang@mediatek.com, linux-clk@vger.kernel.org, Zhiyong Tao <zhiyong.tao@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
 
---y2t44ovekq3k3td5
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 
-On Fri, Feb 15, 2019 at 05:17:27PM +0800, Hsin-Yi Wang wrote:
-> Ok, I can add a check in another patch. Should we return NULL pointer
-> if msg->len is 0 or print out some warnings? Thanks.
+On 15/02/2019 07:02, Erin Lo wrote:
+> From: Zhiyong Tao <zhiyong.tao@mediatek.com>
+> 
+> The commit adds mt8183 compatible node in binding document.
+> 
+> Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
+> Signed-off-by: Erin Lo <erin.lo@mediatek.com>
+> ---
+>  .../devicetree/bindings/pinctrl/pinctrl-mt8183.txt | 115 +++++++++++++++++++++
+>  1 file changed, 115 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-mt8183.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8183.txt b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8183.txt
+> new file mode 100644
+> index 0000000..364e673
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8183.txt
+> @@ -0,0 +1,115 @@
+> +* Mediatek MT8183 Pin Controller
+> +
+> +The Mediatek's Pin controller is used to control SoC pins.
+> +
+> +Required properties:
+> +- compatible: value should be one of the following.
+> +	"mediatek,mt8183-pinctrl", compatible with mt8183 pinctrl.
+> +- gpio-controller : Marks the device node as a gpio controller.
+> +- #gpio-cells: number of cells in GPIO specifier. Since the generic GPIO
+> +  binding is used, the amount of cells must be specified as 2. See the below
+> +  mentioned gpio binding representation for description of particular cells.
+> +- gpio-ranges : gpio valid number range.
+> +- reg: physicall address base for gpio base registers. There are nine
 
-No warning, msg->len == 0 is a valid setting. But interesting question:
-I was about to say NULL, but your driver would assume ENOMEM there and
-discard the message which is also not correct since msg->len == 0 is a
-valid setting. So, should we just return msg->buf then? Will this work
-with your driver? Can it handle zero-length transfers?
+s/physicall/physical
 
-> On Fri, Feb 15, 2019 at 5:10 PM Wolfram Sang <wsa@the-dreams.de> wrote:
-> >
-> > On Fri, Feb 15, 2019 at 05:02:02PM +0800, Hsin-Yi Wang wrote:
-> > > i2c_get_dma_safe_msg_buf() allocates space based on msg->len. If threshold is
-> > > 0 and msg->len is also 0, function makes zero-length allocation, which returns
-> > > a special ZERO_SIZE_PTR instead of a NULL pointer, and this will cause later
-> > > code to fail. Modify the threshold to > 0 so the function returns NULL pointer.
-> > >
-> > > Fixes: fc66b39fe36a ("i2c: mediatek: Use DMA safe buffers for i2c transactions")
-> > > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> >
-> > Right. But we need to fix i2c_get_dma_safe_msg_buf(), so it will be
-> > handled for all callers. Do you want to add a check if msg->len is 0 or
-> > shall I? Both fine for me.
-> >
+> +  physicall address base in mt8183. They are 0x10005000, 0x11F20000,
+> +  0x11E80000, 0x11E70000, 0x11E90000, 0x11D30000, 0x11D20000, 0x11C50000,
+> +  0x11F30000.
+> +
+> +	Eg: <&pio 6 0>
+> +	<[phandle of the gpio controller node]
+> +	[line number within the gpio controller]
+> +	[flags]>
+> +
+> +	Values for gpio specifier:
+> +	- Line number: is a value between 0 to 202.
+> +	- Flags:  bit field of flags, as defined in <dt-bindings/gpio/gpio.h>.
+> +            Only the following flags are supported:
+> +            0 - GPIO_ACTIVE_HIGH
+> +            1 - GPIO_ACTIVE_LOW
+> +
+> +Optional properties:
+> +- reg-names: gpio base register names. There are nine gpio base register
+> +  names in mt8183. They are "iocfg0", "iocfg1", "iocfg2", "iocfg3", "iocfg4",
+> +  "iocfg5", "iocfg6", "iocfg7", "iocfg8".
+> +- interrupt-controller: Marks the device node as an interrupt controller
+> +- #interrupt-cells: Should be two.
+> +- interrupts : The interrupt outputs from the controller.
 
---y2t44ovekq3k3td5
-Content-Type: application/pgp-signature; name="signature.asc"
+we are missing interrupt-parent here.
 
------BEGIN PGP SIGNATURE-----
+> +
+> +Please refer to pinctrl-bindings.txt in this directory for details of the
+> +common pinctrl bindings used by client devices.
+> +
+> +Subnode format
+> +A pinctrl node should contain at least one subnodes representing the
+> +pinctrl groups available on the machine. Each subnode will list the
+> +pins it needs, and how they should be configured, with regard to muxer
+> +configuration, pullups, drive strength, input enable/disable and input schmitt.
+> +
+> +    node {
+> +	pinmux = <PIN_NUMBER_PINMUX>;
+> +	GENERIC_PINCONFIG;
+> +    };
+> +
+> +Required properties:
+> +- pinmux: integer array, represents gpio pin number and mux setting.
+> +    Supported pin number and mux varies for different SoCs, and are defined
+> +    as macros in boot/dts/<soc>-pinfunc.h directly.
+> +
+> +Optional properties:
+> +- GENERIC_PINCONFIG: is the generic pinconfig options to use, bias-disable,
+> +    bias-pull-down, bias-pull-up, input-enable, input-disable, output-low, output-high,
+> +    input-schmitt-enable, input-schmitt-disable and drive-strength are valid.
+> +
+> +    Some special pins have extra pull up strength, there are R0 and R1 pull-up
+> +    resistors available, but for user, it's only need to set R1R0 as 00, 01, 10 or 11.
+> +    So when config mediatek,pull-up-adv or mediatek,pull-down-adv,
+> +    it support arguments for those special pins.
 
-iQIzBAABCAAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAlxmhWwACgkQFA3kzBSg
-KbaFFQ//fuSyJ7pBnGx4oHNrTC5YHyX1SDtwZyZqo5kDgB7MNJ5yOR3Gd2jTCx8j
-IzJEQlO6bVPUCJSgdZTvWjfOdbbkLyakIhbMYoDOTPl+JV73M1GU0bppG7oggqTV
-T/DbHUvQ5YlshB/eENAJtbVJjGu7rjmd2Ttbm4PSUl5Y1zyiT0JLAMEEvDfW8UxY
-cOMY8u8bHZtbDxkMRQ73L2h7C0XFb7TdoxmdYmbNvFBmczHAzznvgrHtxGmTg2R2
-ThO7WNRTzABSeudmLeZhKTIum4hvwp3ghyBsRos8kiBpSmDz/0vRcBvqG+4ZThuO
-GbqQTyK+Lln4Q7zkPdCSb1GWO6IGGFysXUAIewTRmr2yWgP5zkAtaZkbDkDdz1aW
-6EUlgfWg//3BXQimXWpMwZ/sOij8IJ2XBsIytssuO6pJon+q3/sspY+QBnOWFsiJ
-UhcW12LdEXZW7Nvi+BxRYfRlSy3TxOb5Z2sGYsOMZ0P8SGyQxFFiUQ6ks99hr0hf
-Clv3SBpRv7Kua4LmziFL/PtNnNkr/9Z9j/sdk8hfh2Zzlx0D1+k8sWvWN2KjYxa1
-ZKDVf3RzdKWPbw0nloni4/6aQ9/+sohzz6Ov09l0Gvu6exQIF5XAmCw/Gh6WjyiV
-UzARwXWjLRkPuGDRFEIe7WgmwlcaF0NMC8zwttf8FavI4eNdOxQ=
-=eOq9
------END PGP SIGNATURE-----
+I wonder if we should mention which this special pins are. A look at the driver
+told me that it is not possible to know that by reading the source code neither.
+Linus, what do you think?
 
---y2t44ovekq3k3td5--
+What about mediatek,tdsel and mediatek,rdsel? They are not supported?
+
+Wouldn't it make sense to have one binding description for paris and then just
+create SoC specifics bindings?
+
+> +
+> +    When config drive-strength, it can support some arguments, such as
+> +    MTK_DRIVE_4mA, MTK_DRIVE_6mA, etc. See dt-bindings/pinctrl/mt65xx.h.
+
+It can support all drive strength defined in that header file, 2, 4, 6, 8, 10,
+12, 14, 16, 20, 24, 28 and 32 mA?
+
+> +
+> +Examples:
+> +
+> +#include "mt8183-pinfunc.h"
+> +
+> +...
+> +{
+> +	pio: pinctrl@10005000 {
+> +		compatible = "mediatek,mt8183-pinctrl";
+> +		reg = <0 0x10005000 0 0x1000>,
+> +		      <0 0x11F20000 0 0x1000>,
+> +		      <0 0x11E80000 0 0x1000>,
+> +		      <0 0x11E70000 0 0x1000>,
+> +		      <0 0x11E90000 0 0x1000>,
+> +		      <0 0x11D30000 0 0x1000>,
+> +		      <0 0x11D20000 0 0x1000>,
+> +		      <0 0x11C50000 0 0x1000>,
+> +		      <0 0x11F30000 0 0x1000>;
+> +		reg-names = "iocfg0", "iocfg1", "iocfg2",
+> +			    "iocfg3", "iocfg4", "iocfg5",
+> +			    "iocfg6", "iocfg7", "iocfg8";
+> +		gpio-controller;
+> +		#gpio-cells = <2>;
+> +		gpio-ranges = <&pio 0 0 192>;
+> +		interrupt-controller;
+> +		interrupts = <GIC_SPI 153 IRQ_TYPE_LEVEL_HIGH>;
+> +		interrupt-parent = <&gic>;
+> +		#interrupt-cells = <2>;
+> +
+> +		i2c0_pins_a: i2c0 {
+> +			pins1 {
+> +				pinmux = <PINMUX_GPIO48__FUNC_SCL5>,
+> +					 <PINMUX_GPIO49__FUNC_SDA5>;
+> +				mediatek,pull-up-adv = <11>;
+> +			};
+> +		};
+> +
+> +		i2c1_pins_a: i2c1 {
+> +			pins {
+> +				pinmux = <PINMUX_GPIO50__FUNC_SCL3>,
+> +					 <PINMUX_GPIO51__FUNC_SDA3>;
+> +				mediatek,pull-down-adv = <10>;
+> +			};
+> +		};
+> +		...
+> +	};
+> +};
+> 
