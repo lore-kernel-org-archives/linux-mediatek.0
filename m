@@ -1,52 +1,86 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [GIT PULL] Mediatek DT 32 bit updates for v5.1
-Date: Fri, 15 Feb 2019 16:26:56 +0100
-Message-ID: <c83d0db8-043d-4276-0143-f81f05d7e4d5@gmail.com>
-References: <40e8af4e-e86d-af97-d9bf-0932c97a2829@gmail.com>
- <CAK8P3a3jS29RYQfSj84D-mAaGzdyQ1MYLK+MtXp7ubYrssY-ug@mail.gmail.com>
+From: Johan Hovold <johan@kernel.org>
+Subject: Re: [PATCH v2 2/4] dt-bindings: gnss: add mediatek binding
+Date: Fri, 15 Feb 2019 17:00:47 +0100
+Message-ID: <20190215160047.GN28278@localhost>
+References: <1547744074-28308-1-git-send-email-lollivier@baylibre.com>
+ <1547744074-28308-3-git-send-email-lollivier@baylibre.com>
+ <20190125090755.GB3691@localhost>
+ <867eeo7pjm.fsf@baylibre.com>
+ <20190211083349.GU4686@localhost>
+ <86mun2v27r.fsf@baylibre.com>
+ <CALZWD59e356Of+R4H2ZNHJyQcPCQNNdS+1DTc8qNDYp9ZnUpXA@mail.gmail.com>
+ <20190214091121.GI28278@localhost>
+ <86ef89fe10.fsf@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAK8P3a3jS29RYQfSj84D-mAaGzdyQ1MYLK+MtXp7ubYrssY-ug@mail.gmail.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Viresh Kumar <viresh.kumar@linaro.org>, arm-soc <arm@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <86ef89fe10.fsf@baylibre.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Loys Ollivier <lollivier@baylibre.com>
+Cc: Johan Hovold <johan@kernel.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-kernel@vger.kernel.org, Kevin Hilman <khilman@baylibre.com>, "open list:ARM/Amlogic Meson..." <linux-amlogic@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 15/02/2019 15:54, Arnd Bergmann wrote:
-> On Fri, Feb 8, 2019 at 8:59 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
->>   ssh://git@gitolite.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
->> tags/v5.0-next-dts32
->>
->> for you to fetch changes up to 60b71a239bbd286232a547349815d6330f10db7c:
->>
->>   dt-bindings: interrupt-controller: update bindings for MT7623 (2019-02-08
->> 13:18:04 +0100)
->>
->> ----------------------------------------------------------------
->> mt7623:
->> add cooling mask to all CPUs
->> add compatible to sysirq binding
+On Fri, Feb 15, 2019 at 01:10:35PM +0100, Loys Ollivier wrote:
 > 
-> I replaced the URL with the publically accessible
-> https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
-> and merged it into arm/dt, thanks!
+> On Thu 14 Feb 2019 at 09:11, Johan Hovold <johan@kernel.org> wrote:
 > 
+> > On Wed, Feb 13, 2019 at 04:24:00PM +0100, Loys Ollivier wrote:
+> >> On Mon 11 Feb 2019 at 14:17, Loys Ollivier <lollivier@baylibre.com> wrote:
+> >> > On Mon 11 Feb 2019 at 08:33, Johan Hovold <johan@kernel.org> wrote:
+> >
+> >> >> Right, but please do look around for other receivers using this chipset
+> >> >> so that we can make the binding generic enough to cover those as well
+> >> >> (e.g. by choosing representative resource names).
+> >> >>
+> >> > OK will have a look.
+> >> 
+> >> The only mt3339-based receivers I have found are:
+> >> - [0] Globaltop
+> >> - [1] Locosys / Pololu
+> >> They both only provide the UART interface and do not list the I2C/SPI
+> >> interfaces.
+> >> 
+> >> [0] https://cdn-shop.adafruit.com/datasheets/GlobalTop-FGPMMOPA6H-Datasheet-V0A.pdf
+> >> [1] https://www.pololu.com/file/0J641/LS20030~3_datasheet_v1.3.pdf
+> >
+> > I found tree more:
+> >
+> Ah nice.
+> 
+> >  - Globaltop PA6C
+> >
+> >    - https://cdn-shop.adafruit.com/datasheets/GlobalTop-FGPMMOPA6C-Datasheet-V0A-Preliminary.pdf
+> >
+> >  - Linx RM series
+> >    - https://linxtechnologies.com/wp/wp-content/uploads/rxm-gps-rm.pdf
+> 
+> This is a different chip: MT3337; Apparently this chip only provides an
+> UART interface: https://labs.mediatek.com/en/chipset/MT3337
+> However it looks interesting. I'll look for a sample to test it in the
+> future :)
 
-Argh, thanks for the info. I'll have to see what changed that made my workflow
-broke. Using a rolling release always bring some surprises...
+Bah, sorry, I used the wrong link. Here's the mt3339-based one:
 
-Regards,
-Matthias
+	https://linxtechnologies.com/wp/wp-content/uploads/rxm-gps-fm.pdf
+
+But hopefully we can reuse this driver for mt3337 and any other
+variants too.
+
+> >  - ublox IT530
+> >    - https://www.u-blox.com/sites/default/files/products/documents/IT530_DataSheet_%28FTX-HW-12008%29.pdf
+> >
+> > All with uart-interface only and similar pins names, although the ublox
+> > device do have some additional features we can worry about later.
+> >
+> > As all but the ublox device use VBACKUP for the backup supply, do you
+> > mind if I change the binding to use "vbackup-supply" instead of
+> > "v-bckp-supply" (which is a ublox-ism) when applying?
+> 
+> I don't mind. You can go ahead and change the binding.
+> For reference, the v4 patch serie:
+> https://lkml.kernel.org/r/1550070569-18588-1-git-send-email-lollivier@baylibre.com
+
+Thanks, now updated and applied.
+
+Johan
