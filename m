@@ -1,17 +1,15 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH v3 5/6] dt-bindings: i2c: Add Mediatek MT8183 i2c binding
-Date: Sat, 16 Feb 2019 13:29:15 +0100
-Message-ID: <20190216122915.hchghozcn7ntdkbm@ninjato>
-References: <1548057574-8061-1-git-send-email-qii.wang@mediatek.com>
- <1548057574-8061-6-git-send-email-qii.wang@mediatek.com>
- <20190205131641.GF12401@kunai>
- <1550109268.30065.13.camel@mhfsdcap03>
- <20190215090257.geumssb2cucs7rzt@ninjato>
- <1550316723.30065.44.camel@mhfsdcap03>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [GIT PULL] Mediatek SoC updates for v5.1
+Date: Sat, 16 Feb 2019 20:51:30 +0100
+Message-ID: <CAK8P3a2c6XgS1QKFPEKUHWCNOeH1v0QoD5dPzShK81bjtqBc_A@mail.gmail.com>
+References: <7c3dc195-68eb-e78d-3f7d-806546608d2c@gmail.com>
+ <CAK8P3a1Y55XZkULdvaSctZwEDKEpr4eWA60UQJPsk5JzGwA0mg@mail.gmail.com>
+ <1550298056.17036.9.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============7180055415413143207=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1550316723.30065.44.camel@mhfsdcap03>
+In-Reply-To: <1550298056.17036.9.camel@mtkswgap22>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -21,67 +19,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Qii Wang <qii.wang@mediatek.com>
-Cc: devicetree@vger.kernel.org, ryder.lee@mediatek.com, srv_heupstream@mediatek.com, Rob Herring <robh@kernel.org>, leilk.liu@mediatek.com, xinping.qian@mediatek.com, linux-kernel@vger.kernel.org, liguo.zhang@mediatek.com, linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, arm-soc <arm@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Weiyi Lu <weiyi.lu@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+On Sat, Feb 16, 2019 at 7:21 AM Ryder Lee <ryder.lee@mediatek.com> wrote:
+>
+> On Fri, 2019-02-15 at 17:46 +0100, Arnd Bergmann wrote:
+> > On Fri, Feb 8, 2019 at 9:00 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
+> >
+> > >   arm: mediatek: add MT7629 smp bring up code (2019-02-07 17:59:16 +0100)
+> > >
+> > > ----------------------------------------------------------------
+> > > mt8173: minor typo in scpsys header file
+> > > mt7629: add smp bringup code
+> > > mt7623a: delete unused smp bringup code
+> >
+> > Pulled into arm/soc, but please elaborate on the mt7629 chip as I could
+> > not find any information on it but would like to include some text about
+> > all newly added SoCs in my pull request to Linus.
+> >
+> > Is this a variant of mt7623, or something else?
+> >
+> >      Arnd
+>
+> The IPs differ in MT7615 compared to MT7623.  I haven't submitted
+> mt7629.dtsi as I still wait for the PCIe part be taken through the -next
+> tree first.
+>
+> Overview
+>
+> MT7629 is a highly integrated wireless network router system-on-chip
+> and integrates an CA7 Dual-Core operating up to 1.25GHz and DRAM
+> DDR2/DDR3(L).
+>
+> It includes SGMII, PCIe2.0, USB2.0 and USB3.0 and implements two 2.5Gbps
+> HSGMII interfaces and a 5-ports 10/100 Ethernet switch.
+>
+> Otherwise, The MT7761 is an 802.11n 3x3 RF chip, and the MT7762 is an
+> 802.11ac 3x3 RF chip.  When the two RF chips and MT7629 are combined
+> together, they provide dual-band concurrent chipset solution for WiFi
+> AC1900 wireless router platform.
+>
 
---===============7180055415413143207==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="uvl5pgprc2c6iamr"
-Content-Disposition: inline
+Ok, thanks a lot for the extra information!
 
-
---uvl5pgprc2c6iamr
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-
-> Maybe you think that MT8183 SoC only has the I3C controllers. Actually,
-> there are I2C and I3C controllers on MT8183 SoC. We will remove
-> "mediatek,share-i3c" for I2C controller driver, so these patches are
-> just to support the I2C controllers on MT8183 SoC. For the I3C
-> controller we will send some new patches which are based on i3c
-> framework directories(kernel/drivers/i3c), not based on
-> i2c-mt65xx.c.
-
-Sounds perfect to me. If it turns out that the I3C driver can share
-things with the I2C driver, we can discuss it then. But unless we have
-an I3C driver and know for sure, the above strategy seems good to me.
-
-
---uvl5pgprc2c6iamr
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAlxoAhcACgkQFA3kzBSg
-KbZX6Q//fbtn+bsK5KVjERP9EokrSE8Pn/Q8MsFHFKLxQm2ZQsc2yMzOu0YUYvnF
-X531Roh9TkDU3SkJL/xnERFtamDianlugO11qGRxvJnSGCjrUDogHdw8awM6BE1e
-G01y8agD7lRVmrZb3AidW9HAfgCBalucvrKovIQSkvvhvnCglVnZHBpwmQwFEZ/E
-NlB20w8KdvAKNXeT8GgxsjFBfanSHAHOTJKUcnkeO4Lg10TDlnh85c1FGcuOmbcE
-j0yvYzcFIUJ5Xdw1f0BVG12RDuN0pOSN/FuVDZRBb/FkOJx+CIb62jJiieCYVTMl
-/jwL6gkGbyZyo2YJJ/P6twDzxXE3JtjP1gtnN9FPBVFOeaWN3qoabOM/aO1iWlZM
-K2hsLVorxvdHedrDEqwNFawEFSF0Y2sdPCndwlgKRqRcdJRh4f5VzPNXTxDmPeQI
-5zubdYEA1dE8NfX3xM4/05/vBNK9JDwj+U5EczvGL7PI+q8n5X/QoQqu7x6tWMq8
-D9VMUWRpM6usbQ52gt/hQi08taNuaxP4BQJkDduDVZ/x09aAdKrKDStwtwhIABH1
-gnLt/3qJqEo6o2LM6fpK/hvhUgjiZ5KlTJ/RylosAcAbRkho4lFwI6AyzEGRFGHe
-lntFJiamVASorn7fg4GVdNNJAzVsNTIdVcSJfxij5TjtbqVjiBg=
-=2hOh
------END PGP SIGNATURE-----
-
---uvl5pgprc2c6iamr--
-
-
---===============7180055415413143207==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-linux-arm-kernel mailing list
-linux-arm-kernel@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-
---===============7180055415413143207==--
+     Arnd
