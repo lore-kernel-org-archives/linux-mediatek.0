@@ -1,15 +1,16 @@
 From: andrew-sh.cheng <andrew-sh.cheng@mediatek.com>
 Subject: Re: [PATCH 3/3] devfreq: add mediatek cci devfreq
-Date: Sat, 16 Feb 2019 11:07:45 +0800
-Message-ID: <1550286465.23797.20.camel@mtksdaap41>
+Date: Sat, 16 Feb 2019 14:16:39 +0800
+Message-ID: <1550297799.23797.29.camel@mtksdaap41>
 References: <1548743704-16821-1-git-send-email-andrew-sh.cheng@mediatek.com>
+ <CGME20190129063600epcas2p2e7c1ad6c77c1ffa4ae1b627705b3eb58@epcas2p2.samsung.com>
  <1548743704-16821-4-git-send-email-andrew-sh.cheng@mediatek.com>
- <20190201201338.GS81583@google.com>
+ <3ff7ac1c-6234-1b82-d38d-389906d295e9@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190201201338.GS81583@google.com>
+In-Reply-To: <3ff7ac1c-6234-1b82-d38d-389906d295e9@samsung.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -19,435 +20,235 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Matthias Kaehlcke <mka@chromium.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, linux-pm@vger.kernel.org, Viresh Kumar <viresh.kumar@linaro.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-kernel@vger.kernel.org, Chanwoo Choi <cw00.choi@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, MyungJoo Ham <myungjoo.ham@samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, fan.chen@mediatek.com, linux-arm-kernel@lists.infradead.org
+To: Chanwoo Choi <cw00.choi@samsung.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, linux-pm@vger.kernel.org, Viresh Kumar <viresh.kumar@linaro.org>, "Rafael J.
+ Wysocki" <rjw@rjwysocki.net>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, fan.chen@mediatek.com, Kyungmin Park <kyungmin.park@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2019-02-01 at 12:13 -0800, Matthias Kaehlcke wrote:
-> Hi Andrew,
-> 
-> On Tue, Jan 29, 2019 at 02:35:04PM +0800, Andrew-sh Cheng wrote:
-> > From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
-> 
-> the 'From' tag is only needed when you send patches not authored by
-> yourself. It doesn't do any harm either, but you can drop it in future
-> submissions.
-Got it~
-> 
-> > For big/little cpu cluster architecture,
-> > not only CPU frequency, but CCI frequency will also affect performance.
-> 
-> This doesn't provide much information, I suggest to drop it unless
-> others find it valuable.
-I will remove it in next patch.
-> 
-> > Little cores and cci share the same buck in Mediatek mt8183 IC,
-> > so we add a CCI devfreq which will get notification when buck voltage
-> > is changed, then CCI devfreq can set cci frequency as high as
-> > possible.
-> 
-> Possible alternative:
-> 
-> "This adds a devfreq driver for the Cache Coherent Interconnect (CCI)
-> of the Mediatek MT8183.
-> 
-> On the MT8183 the CCI is supplied by the same regulator as the LITTLE
-> cores. The driver is notified when the regulator voltage changes
-> (driven by cpufreq) and adjusts the CCI frequency to the maximum
-> possible value."
-> 
-> Feel free to ignore or to adjust.
-Thank you. This description provide suitable information.
-> 
-> > Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
-> > ---
-> >  drivers/devfreq/Kconfig              |   9 ++
-> >  drivers/devfreq/Makefile             |   1 +
-> >  drivers/devfreq/mt8183-cci-devfreq.c | 224 +++++++++++++++++++++++++++++++++++
-> >  3 files changed, 234 insertions(+)
-> >  create mode 100644 drivers/devfreq/mt8183-cci-devfreq.c
-> > 
-> > diff --git a/drivers/devfreq/Kconfig b/drivers/devfreq/Kconfig
-> > index 6a172d3..0b14aab 100644
-> > --- a/drivers/devfreq/Kconfig
-> > +++ b/drivers/devfreq/Kconfig
-> > @@ -113,6 +113,15 @@ config ARM_RK3399_DMC_DEVFREQ
-> >            It sets the frequency for the memory controller and reads the usage counts
-> >            from hardware.
-> >  
-> > +config ARM_MT8183_CCI_DEVFREQ
-> > +	tristate "MT8183 CCI DEVFREQ Driver"
-> > +	depends on ARM_MEDIATEK_CPUFREQ
-> > +	help
-> > +		This adds devfreq for cci clock
-> 
-> "This adds a devfreq driver for the Cache Coherent Interconnect (CCI)
-> of the Mediatek MT8183"?
-Yes, I describe more detail in next patch.
-> 
-> > +		which is shared the same regulator with cpu cluster.
-> > +		It can track buck voltage and update a proper cci frequency.
-> > +		Use notification to get regulator status.
-> 
-> not sure how important this info is here, sounds more like an
-> implementation detail to me.
-Yes, just describe the situation.
-> 
-> > +
-> >  source "drivers/devfreq/event/Kconfig"
-> >  
-> >  endif # PM_DEVFREQ
-> > diff --git a/drivers/devfreq/Makefile b/drivers/devfreq/Makefile
-> > index 32b8d4d..25afe8c 100644
-> > --- a/drivers/devfreq/Makefile
-> > +++ b/drivers/devfreq/Makefile
-> > @@ -11,6 +11,7 @@ obj-$(CONFIG_DEVFREQ_GOV_PASSIVE)	+= governor_passive.o
-> >  obj-$(CONFIG_ARM_EXYNOS_BUS_DEVFREQ)	+= exynos-bus.o
-> >  obj-$(CONFIG_ARM_RK3399_DMC_DEVFREQ)	+= rk3399_dmc.o
-> >  obj-$(CONFIG_ARM_TEGRA_DEVFREQ)		+= tegra-devfreq.o
-> > +obj-$(CONFIG_ARM_MT8183_CCI_DEVFREQ)	+= mt8183-cci-devfreq.o
-> >  
-> >  # DEVFREQ Event Drivers
-> >  obj-$(CONFIG_PM_DEVFREQ_EVENT)		+= event/
-> > diff --git a/drivers/devfreq/mt8183-cci-devfreq.c b/drivers/devfreq/mt8183-cci-devfreq.c
-> > new file mode 100644
-> > index 0000000..4837892
-> > --- /dev/null
-> > +++ b/drivers/devfreq/mt8183-cci-devfreq.c
-> > @@ -0,0 +1,224 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> > +//
-> > +// Copyright (c) 2018 MediaTek Inc.
-> 
-> 2019 :)
-Got it  :)
-> 
-> > +#include <linux/cpu.h>
-> > +#include <linux/cpufreq.h>
-> > +#include <linux/devfreq.h>
-> > +#include <linux/module.h>
-> > +#include <linux/of.h>
-> > +#include <linux/platform_device.h>
-> > +#include <linux/regulator/consumer.h>
-> > +
-> > +#include "governor.h"
-> > +
-> > +struct cci_devfreq_data {
-> 
-> nit: consider dropping the '_data' suffix, it doesn't add much/any
-> value.
-I will change to struct cci_devfreq in next patch.
-> 
-> > +	struct devfreq		*devfreq;
-> > +	struct regulator	*proc_reg;
-> > +	struct clk		*cci_clk;
-> > +	unsigned long		buck_volt;
-> 
-> proc_reg_uV?
-> 
-> place after proc_reg
-OK~
-> 
-> > +	int			volt_increasing;
-> 
-> should be bool
-> 
-> actually, is it really needed? See comment in cci_devfreq_regulator_notifier()
-> 
-You are right. I will remove this and use notification data to judge the
-condition in next patch.
-
-> > +	struct notifier_block	nb;
-> > +};
-> > +
-> > +static int mtk_cci_governor_get_target(struct devfreq *devfreq,
-> > +				       unsigned long *freq)
-> > +{
-> > +	struct cci_devfreq_data *cci_devdata;
-> 
-> nit: consider calling it 'cci_df' (here and elsewhere). In the context
-> the abbreviation is clear and there is less clutter when accessing
-> fields in the structure.
-OK, I will change it in next patch. 
-> 
-> > +	int	i, opp_count;
-> > +	struct dev_pm_opp	*opp;
-> > +	unsigned long	opp_rate, opp_voltage;
-> > +
-> > +	cci_devdata = dev_get_drvdata(devfreq->dev.parent);
-> > +
-> > +	/* find available frequency */
-> > +	opp_count = dev_pm_opp_get_opp_count(devfreq->dev.parent);
-> > +	for (i = 0, opp_rate = ULONG_MAX; i < opp_count; i++, opp_rate--) {
-> > +		opp = dev_pm_opp_find_freq_floor(devfreq->dev.parent,
-> > +						 &opp_rate);
-> > +		opp_voltage = dev_pm_opp_get_voltage(opp);
-> > +		dev_pm_opp_put(opp);
-> > +
-> > +		if (opp_voltage <= cci_devdata->buck_volt)
-> > +			break;
-> > +	}
-> > +	*freq = opp_rate;
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int mtk_cci_governor_event_handler(struct devfreq *devfreq,
-> > +					  unsigned int event, void *data)
-> > +{
-> > +	return 0;
-> > +}
-> > +
-> > +static struct devfreq_governor mtk_cci_devfreq_governor = {
-> > +	.name = "voltage_monitor",
-> 
-> "mtk_cci_vmon" or similar?
-OK. I will change it in next patch. 
-
-> > +	.get_target_freq = mtk_cci_governor_get_target,
-> > +	.event_handler = mtk_cci_governor_event_handler,
-> > +};
-> > +
-> > +static int mtk_cci_devfreq_target(struct device *dev, unsigned long *freq,
-> > +				  u32 flags)
-> > +{
-> > +	struct cci_devfreq_data *cci_devdata;
-> > +
-> > +	cci_devdata = dev_get_drvdata(dev);
-> > +
-> > +	clk_set_rate(cci_devdata->cci_clk, *freq);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static struct devfreq_dev_profile cci_devfreq_profile = {
-> > +	.polling_ms	= 0,
-> > +	.target		= mtk_cci_devfreq_target,
-> > +};
-> > +
-> > +static int cci_devfreq_regulator_notifier(struct notifier_block *nb,
-> > +					  unsigned long val, void *data)
-> > +{
-> > +	struct cci_devfreq_data *cci_devdata =
-> > +		container_of(nb, struct cci_devfreq_data, nb);
-> > +
-> > +	/* deal with reduce frequency */
-> > +	if (val & REGULATOR_EVENT_PRE_VOLTAGE_CHANGE) {
-> > +		struct pre_voltage_change_data *pvc_data = data;
-> > +
-> > +		if (pvc_data->old_uV > pvc_data->min_uV) {
-> 
-> I would suggest to invert the condition. For humans it is easier to
-> parse "is the new voltage smaller than the previous one", than
-> viceversa.
-Got it.
-> 
-> > +			cci_devdata->volt_increasing = 0;
-> > +			cci_devdata->buck_volt =
-> > +				(unsigned long)(pvc_data->min_uV);
-> > +			mutex_lock(&cci_devdata->devfreq->lock);
-> > +			update_devfreq(cci_devdata->devfreq);
-> > +			mutex_unlock(&cci_devdata->devfreq->lock);
-> > +		} else {
-> > +			cci_devdata->volt_increasing = 1;
-> > +		}
-> > +	}
-> 
-> nit: add empty line
-I will modify in next patch.
-> 
-> > +	/* deal with abort reduce frequency */
-> 
-> Shouldn't this be "abort voltage change?". If so I suggest to drop the
-> comment, REGULATOR_EVENT_ABORT_VOLTAGE_CHANGE in the condition makes
-> it clear.
-OK
-> 
-> > +	if ((val & REGULATOR_EVENT_ABORT_VOLTAGE_CHANGE) ||
-> > +	    /* deal with increase frequency */
-> > +	    ((val & REGULATOR_EVENT_VOLTAGE_CHANGE) &&
-> > +	     cci_devdata->volt_increasing == 1)) {
-> 
-> to check for a voltage increase you could use 'cci_devdata->buck_volt
-> < (unsigned long)data' instead of ->volt_increasing.
-Thank you for suggestion.
-I will modify in next patch.
-> 
-> > +		cci_devdata->buck_volt = (unsigned long)data;
-> > +		mutex_lock(&cci_devdata->devfreq->lock);
-> > +		update_devfreq(cci_devdata->devfreq);
-> > +		mutex_unlock(&cci_devdata->devfreq->lock);
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int mtk_cci_devfreq_probe(struct platform_device *pdev)
-> > +{
-> > +	struct device *cci_dev = &pdev->dev;
-> > +	struct cci_devfreq_data *cci_devdata;
-> > +	struct notifier_block *nb;
-> > +	int ret;
-> > +
-> > +	dev_pm_opp_of_add_table(&pdev->dev);
-> > +
-> > +	cci_devdata = devm_kzalloc(cci_dev, sizeof(*cci_devdata), GFP_KERNEL);
-> > +	if (!cci_devdata)
-> > +		return -ENOMEM;
-> > +	nb = &cci_devdata->nb;
-> > +	cci_devdata->cci_clk = ERR_PTR(-ENODEV);
-> 
-> initialization not needed, the field is assigned a few lines below.
-> 
-> > +	cci_devdata->proc_reg = ERR_PTR(-ENODEV);
-> 
-> also not really needed with the right gotos in place
-OK. I will remove unnecessary initialization. 
-> 
-> > +
-> > +	cci_devdata->cci_clk = clk_get(cci_dev, "cci_clock");
-> > +	ret = PTR_ERR_OR_ZERO(cci_devdata->cci_clk);
-> > +	if (ret) {
-> > +		if (ret == -EPROBE_DEFER)
-> > +			pr_err("cci clock not ready, retry\n");
-> > +		else
-> > +			pr_err("no clock for cci: %d\n", ret);
-> > +
-> > +		goto out_free_resources;
-> 
-> nothing to be freed here, just return ret.
-OK.
-> 
-> > +	}
-> > +
-> > +	cci_devdata->proc_reg = regulator_get_optional(cci_dev, "proc");
-> > +	ret = PTR_ERR_OR_ZERO(cci_devdata->proc_reg);
-> > +	if (ret) {
-> > +		if (ret == -EPROBE_DEFER)
-> > +			pr_err("cci regulator not ready, retry\n");
-> > +		else
-> > +			pr_err("no regulator for cci: %d\n", ret);
-> > +
-> > +		goto out_free_resources;
-> > +	}
-> > +
-> > +	platform_set_drvdata(pdev, cci_devdata);
-> > +
-> > +	/* create cci_devfreq and add to cci device.
-> > +	 * governor is voltage_monitor.
-> > +	 * governor will get platform_device data to make decision.
-> > +	 */
-> > +	cci_devdata->devfreq = devm_devfreq_add_device(cci_dev,
-> > +						       &cci_devfreq_profile,
-> > +						       "voltage_monitor",
-> 
-> adjust name in case you follow my suggestion above.
-> 
-> check cci_devdata->devfreq for errors.
-Will add error check in next patch.
-> 
-> > +						       NULL);
-> > +
-> > +	nb->notifier_call = cci_devfreq_regulator_notifier;
-> > +	regulator_register_notifier(cci_devdata->proc_reg,
-> > +				    nb);
-> > +
-> > +	return 0;
-> > +
-> > +out_free_resources:
-> > +	if (!IS_ERR(cci_devdata->cci_clk))
-> > +		clk_put(cci_devdata->cci_clk);
-> > +	if (!IS_ERR(cci_devdata->proc_reg))
-> > +		regulator_put(cci_devdata->proc_reg);
-> 
-> use individual labels and get rid of the IS_ERRs.
-> 
-> e.g.
-> 
-> err_put_reg:
-> 	regulator_put(cci_devdata->proc_reg);
-> 
-> err_put_clk:
-> 	clk_put(cci_devdata->cci_clk);
-> 
-> 
-> and jump to the corresponding lable above.
-Got it. I will use individual label and remove the IS_ERR checking.
-> 
-> > +
-> > +	return ret;
-> > +}
-> > +
-> > +static const struct of_device_id mediatek_cci_devfreq_of_match[] = {
-> > +	{ .compatible = "mediatek,mt8183-cci" },
-> > +	{ },
-> > +};
-> > +MODULE_DEVICE_TABLE(of, mediatek_cci_devfreq_of_match);
-> > +
-> > +static struct platform_driver cci_devfreq_driver = {
-> > +	.probe	= mtk_cci_devfreq_probe,
-> > +	.driver = {
-> > +		.name = "mediatek-cci-devfreq",
-> > +		.of_match_table = mediatek_cci_devfreq_of_match,
-> > +	},
-> > +};
-> > +
-> > +static int __init mtk_cci_devfreq_init(void)
-> > +{
-> > +	int ret = 0;
-> 
-> initialization not needed
-OK.
-> 
-> > +
-> > +	ret = devfreq_add_governor(&mtk_cci_devfreq_governor);
-> > +	if (ret) {
-> > +		pr_err("%s: failed to add governor: %d\n", __func__, ret);
-> > +		return ret;
-> > +	}
-> > +
-> > +	ret = platform_driver_register(&cci_devfreq_driver);
-> > +	if (ret)
-> > +		devfreq_remove_governor(&mtk_cci_devfreq_governor);
-> > +
-> > +	return ret;
-> > +}
-> > +module_init(mtk_cci_devfreq_init)
-> > +
-> > +static void __exit mtk_cci_devfreq_exit(void)
-> > +{
-> > +	int ret = 0;
-> 
-> initialization not needed
-OK.
-> 
-> > +	platform_driver_unregister(&cci_devfreq_driver);
-> > +
-> > +	ret = devfreq_remove_governor(&mtk_cci_devfreq_governor);
-> > +	if (ret)
-> > +		pr_err("%s: failed to remove governor: %d\n", __func__, ret);
-> 
-> typically you reverse the order of initialization, i.e. remove the
-> governor, then unregister the driver.
-OK. I will change it in next patch.
-
-> 
-> > +}
-> > +module_exit(mtk_cci_devfreq_exit)
-> > +
-> > +MODULE_LICENSE("GPL v2");
-> > +MODULE_DESCRIPTION("Mediatek CCI devfreq driver");
-> > +MODULE_AUTHOR("andrew-sh.cheng");
-> 
-> should be either "Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>" or
-> "Andrew-sh.Cheng"
-I will change to "Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>"  :)
-> 
-> Cheers
-> 
-> Matthias
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gVHVlLCAyMDE5LTAyLTEyIGF0IDEzOjA2ICswOTAwLCBDaGFud29vIENob2kgd3JvdGU6Cj4g
+SGkgQW5kcmV3LXNoLkNoZW5nLAo+IAo+IE9uIDE5LiAxLiAyOS4g7Jik7ZuEIDM6MzUsIEFuZHJl
+dy1zaCBDaGVuZyB3cm90ZToKPiA+IEZyb206ICJBbmRyZXctc2guQ2hlbmciIDxhbmRyZXctc2gu
+Y2hlbmdAbWVkaWF0ZWsuY29tPgo+ID4gCj4gPiBGb3IgYmlnL2xpdHRsZSBjcHUgY2x1c3RlciBh
+cmNoaXRlY3R1cmUsCj4gPiBub3Qgb25seSBDUFUgZnJlcXVlbmN5LCBidXQgQ0NJIGZyZXF1ZW5j
+eSB3aWxsIGFsc28gYWZmZWN0IHBlcmZvcm1hbmNlLgo+ID4gCj4gPiBMaXR0bGUgY29yZXMgYW5k
+IGNjaSBzaGFyZSB0aGUgc2FtZSBidWNrIGluIE1lZGlhdGVrIG10ODE4MyBJQywKPiA+IHNvIHdl
+IGFkZCBhIENDSSBkZXZmcmVxIHdoaWNoIHdpbGwgZ2V0IG5vdGlmaWNhdGlvbiB3aGVuIGJ1Y2sg
+dm9sdGFnZQo+ID4gaXMgY2hhbmdlZCwgdGhlbiBDQ0kgZGV2ZnJlcSBjYW4gc2V0IGNjaSBmcmVx
+dWVuY3kgYXMgaGlnaCBhcyBwb3NzaWJsZS4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogQW5kcmV3
+LXNoLkNoZW5nIDxhbmRyZXctc2guY2hlbmdAbWVkaWF0ZWsuY29tPgo+ID4gLS0tCj4gPiAgZHJp
+dmVycy9kZXZmcmVxL0tjb25maWcgICAgICAgICAgICAgIHwgICA5ICsrCj4gPiAgZHJpdmVycy9k
+ZXZmcmVxL01ha2VmaWxlICAgICAgICAgICAgIHwgICAxICsKPiA+ICBkcml2ZXJzL2RldmZyZXEv
+bXQ4MTgzLWNjaS1kZXZmcmVxLmMgfCAyMjQgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKysKPiA+ICAzIGZpbGVzIGNoYW5nZWQsIDIzNCBpbnNlcnRpb25zKCspCj4gPiAgY3JlYXRl
+IG1vZGUgMTAwNjQ0IGRyaXZlcnMvZGV2ZnJlcS9tdDgxODMtY2NpLWRldmZyZXEuYwo+ID4gCj4g
+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9kZXZmcmVxL0tjb25maWcgYi9kcml2ZXJzL2RldmZyZXEv
+S2NvbmZpZwo+ID4gaW5kZXggNmExNzJkMy4uMGIxNGFhYiAxMDA2NDQKPiA+IC0tLSBhL2RyaXZl
+cnMvZGV2ZnJlcS9LY29uZmlnCj4gPiArKysgYi9kcml2ZXJzL2RldmZyZXEvS2NvbmZpZwo+ID4g
+QEAgLTExMyw2ICsxMTMsMTUgQEAgY29uZmlnIEFSTV9SSzMzOTlfRE1DX0RFVkZSRVEKPiA+ICAg
+ICAgICAgICAgSXQgc2V0cyB0aGUgZnJlcXVlbmN5IGZvciB0aGUgbWVtb3J5IGNvbnRyb2xsZXIg
+YW5kIHJlYWRzIHRoZSB1c2FnZSBjb3VudHMKPiA+ICAgICAgICAgICAgZnJvbSBoYXJkd2FyZS4K
+PiA+ICAKPiA+ICtjb25maWcgQVJNX01UODE4M19DQ0lfREVWRlJFUQo+ID4gKwl0cmlzdGF0ZSAi
+TVQ4MTgzIENDSSBERVZGUkVRIERyaXZlciIKPiA+ICsJZGVwZW5kcyBvbiBBUk1fTUVESUFURUtf
+Q1BVRlJFUQo+ID4gKwloZWxwCj4gPiArCQlUaGlzIGFkZHMgZGV2ZnJlcSBmb3IgY2NpIGNsb2Nr
+Cj4gPiArCQl3aGljaCBpcyBzaGFyZWQgdGhlIHNhbWUgcmVndWxhdG9yIHdpdGggY3B1IGNsdXN0
+ZXIuCj4gPiArCQlJdCBjYW4gdHJhY2sgYnVjayB2b2x0YWdlIGFuZCB1cGRhdGUgYSBwcm9wZXIg
+Y2NpIGZyZXF1ZW5jeS4KPiA+ICsJCVVzZSBub3RpZmljYXRpb24gdG8gZ2V0IHJlZ3VsYXRvciBz
+dGF0dXMuCj4gPiArCj4gCj4gTW92ZSBBUk1fTVQ4MTgzX0NDSV9ERVZGUkVRIHVuZGVyIEFSTV9F
+WFlOT1NfQlVTX0RFVkZSRVEuCj4gT24gbGF0ZXIsIEknbGwgY2hhbmdlIHRoZSBvcmRlciBiZXR3
+ZWVuIEFSTV9URUdSQV9ERVZGUkVRIGFuZCBBUk1fUkszMzk5X0RNQ19ERVZGUkVRCj4gYWxwaGFi
+ZXRpY2FsbHkuIFNvLCB5b3UgYmV0dGVyIHRvIGtlZXAgdGhlIG9yZGVyIG9mIG5hbWUuCk9LLgo+
+IAo+IAo+ID4gIHNvdXJjZSAiZHJpdmVycy9kZXZmcmVxL2V2ZW50L0tjb25maWciCj4gPiAgCj4g
+PiAgZW5kaWYgIyBQTV9ERVZGUkVRCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9kZXZmcmVxL01h
+a2VmaWxlIGIvZHJpdmVycy9kZXZmcmVxL01ha2VmaWxlCj4gPiBpbmRleCAzMmI4ZDRkLi4yNWFm
+ZThjIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9kZXZmcmVxL01ha2VmaWxlCj4gPiArKysgYi9k
+cml2ZXJzL2RldmZyZXEvTWFrZWZpbGUKPiA+IEBAIC0xMSw2ICsxMSw3IEBAIG9iai0kKENPTkZJ
+R19ERVZGUkVRX0dPVl9QQVNTSVZFKQkrPSBnb3Zlcm5vcl9wYXNzaXZlLm8KPiA+ICBvYmotJChD
+T05GSUdfQVJNX0VYWU5PU19CVVNfREVWRlJFUSkJKz0gZXh5bm9zLWJ1cy5vCj4gPiAgb2JqLSQo
+Q09ORklHX0FSTV9SSzMzOTlfRE1DX0RFVkZSRVEpCSs9IHJrMzM5OV9kbWMubwo+ID4gIG9iai0k
+KENPTkZJR19BUk1fVEVHUkFfREVWRlJFUSkJCSs9IHRlZ3JhLWRldmZyZXEubwo+ID4gK29iai0k
+KENPTkZJR19BUk1fTVQ4MTgzX0NDSV9ERVZGUkVRKQkrPSBtdDgxODMtY2NpLWRldmZyZXEubwo+
+IAo+IE1vdmUgaXQgdW5kZXIgb2JqLSQoQ09ORklHX0FSTV9FWFlOT1NfQlVTX0RFVkZSRVEpLgpP
+Sy4KPiAKPiA+ICAKPiA+ICAjIERFVkZSRVEgRXZlbnQgRHJpdmVycwo+ID4gIG9iai0kKENPTkZJ
+R19QTV9ERVZGUkVRX0VWRU5UKQkJKz0gZXZlbnQvCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9k
+ZXZmcmVxL210ODE4My1jY2ktZGV2ZnJlcS5jIGIvZHJpdmVycy9kZXZmcmVxL210ODE4My1jY2kt
+ZGV2ZnJlcS5jCj4gPiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+ID4gaW5kZXggMDAwMDAwMC4uNDgz
+Nzg5Mgo+ID4gLS0tIC9kZXYvbnVsbAo+ID4gKysrIGIvZHJpdmVycy9kZXZmcmVxL210ODE4My1j
+Y2ktZGV2ZnJlcS5jCj4gPiBAQCAtMCwwICsxLDIyNCBAQAo+ID4gKy8vIFNQRFgtTGljZW5zZS1J
+ZGVudGlmaWVyOiBHUEwtMi4wCj4gPiArLy8KPiA+ICsvLyBDb3B5cmlnaHQgKGMpIDIwMTggTWVk
+aWFUZWsgSW5jLgo+IAo+IEFkZCBibGFuayBsaW5lIGFuZCBjaGFuZ2UgeWVhciAyMDE4IC0+IDIw
+MTkuCk9LLgo+IAo+ID4gKyNpbmNsdWRlIDxsaW51eC9jcHUuaD4KPiA+ICsjaW5jbHVkZSA8bGlu
+dXgvY3B1ZnJlcS5oPgo+IAo+IFRoaXMgZHJpdmVyIGRvZXNuJ3QgdXNlIGFueSBoZWxwZXIgZnVu
+Y3Rpb24gb2YgY3B1ZnJlcS5oL2NwdS5oLgo+IEl0IGRlcGVuZHMgb24gZGV2ZnJlcS9yZWd1bGF0
+b3IgZnJhbWV3b3JrLiBQbGVhc2UgcmVtb3ZlIHRoZW0uCkkgd2lsbCByZW1vdmUgaXQgaW4gbmV4
+dCBwYXRjaC4KPiAKPiA+ICsjaW5jbHVkZSA8bGludXgvZGV2ZnJlcS5oPgo+ID4gKyNpbmNsdWRl
+IDxsaW51eC9tb2R1bGUuaD4KPiA+ICsjaW5jbHVkZSA8bGludXgvb2YuaD4KPiA+ICsjaW5jbHVk
+ZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4gPiArI2luY2x1ZGUgPGxpbnV4L3JlZ3VsYXRv
+ci9jb25zdW1lci5oPgo+ID4gKwo+ID4gKyNpbmNsdWRlICJnb3Zlcm5vci5oIgo+ID4gKwo+ID4g
+K3N0cnVjdCBjY2lfZGV2ZnJlcV9kYXRhIHsKPiA+ICsJc3RydWN0IGRldmZyZXEJCSpkZXZmcmVx
+Owo+ID4gKwlzdHJ1Y3QgcmVndWxhdG9yCSpwcm9jX3JlZzsKPiA+ICsJc3RydWN0IGNsawkJKmNj
+aV9jbGs7Cj4gPiArCXVuc2lnbmVkIGxvbmcJCWJ1Y2tfdm9sdDsKPiA+ICsJaW50CQkJdm9sdF9p
+bmNyZWFzaW5nOwo+ID4gKwlzdHJ1Y3Qgbm90aWZpZXJfYmxvY2sJbmI7Cj4gPiArfTsKPiA+ICsK
+PiA+ICtzdGF0aWMgaW50IG10a19jY2lfZ292ZXJub3JfZ2V0X3RhcmdldChzdHJ1Y3QgZGV2ZnJl
+cSAqZGV2ZnJlcSwKPiA+ICsJCQkJICAgICAgIHVuc2lnbmVkIGxvbmcgKmZyZXEpCj4gPiArewo+
+ID4gKwlzdHJ1Y3QgY2NpX2RldmZyZXFfZGF0YSAqY2NpX2RldmRhdGE7Cj4gPiArCWludAlpLCBv
+cHBfY291bnQ7Cj4gPiArCXN0cnVjdCBkZXZfcG1fb3BwCSpvcHA7Cj4gPiArCXVuc2lnbmVkIGxv
+bmcJb3BwX3JhdGUsIG9wcF92b2x0YWdlOwo+IAo+IEFib3ZlIHRocmVlIGRlZmluaXRpb25zIHVz
+ZSB0aGUgdGFiIGZvciBpbmRlbnRhdGlvbi4gUGxlYXNlIHVzZSBzcGFjZS4KT0suCj4gCj4gPiAr
+Cj4gPiArCWNjaV9kZXZkYXRhID0gZGV2X2dldF9kcnZkYXRhKGRldmZyZXEtPmRldi5wYXJlbnQp
+Owo+ID4gKwo+ID4gKwkvKiBmaW5kIGF2YWlsYWJsZSBmcmVxdWVuY3kgKi8KPiA+ICsJb3BwX2Nv
+dW50ID0gZGV2X3BtX29wcF9nZXRfb3BwX2NvdW50KGRldmZyZXEtPmRldi5wYXJlbnQpOwo+ID4g
+Kwlmb3IgKGkgPSAwLCBvcHBfcmF0ZSA9IFVMT05HX01BWDsgaSA8IG9wcF9jb3VudDsgaSsrLCBv
+cHBfcmF0ZS0tKSB7Cj4gPiArCQlvcHAgPSBkZXZfcG1fb3BwX2ZpbmRfZnJlcV9mbG9vcihkZXZm
+cmVxLT5kZXYucGFyZW50LAo+ID4gKwkJCQkJCSAmb3BwX3JhdGUpOwo+ID4gKwkJb3BwX3ZvbHRh
+Z2UgPSBkZXZfcG1fb3BwX2dldF92b2x0YWdlKG9wcCk7Cj4gPiArCQlkZXZfcG1fb3BwX3B1dChv
+cHApOwo+ID4gKwo+ID4gKwkJaWYgKG9wcF92b2x0YWdlIDw9IGNjaV9kZXZkYXRhLT5idWNrX3Zv
+bHQpCj4gPiArCQkJYnJlYWs7Cj4gPiArCX0KPiA+ICsJKmZyZXEgPSBvcHBfcmF0ZTsKPiA+ICsK
+PiA+ICsJcmV0dXJuIDA7Cj4gPiArfQo+ID4gKwo+ID4gK3N0YXRpYyBpbnQgbXRrX2NjaV9nb3Zl
+cm5vcl9ldmVudF9oYW5kbGVyKHN0cnVjdCBkZXZmcmVxICpkZXZmcmVxLAo+ID4gKwkJCQkJICB1
+bnNpZ25lZCBpbnQgZXZlbnQsIHZvaWQgKmRhdGEpCj4gPiArewo+ID4gKwlyZXR1cm4gMDsKPiA+
+ICt9Cj4gCj4gVGhlIGRldmZyZXEgY29yZSBlbmFibGVzIHRoZSBnb3Zlcm5vciB3aXRoIHVzaW5n
+IERFVkZSRVFfR09WX1NUQVJULgo+IEJ1dCwgdGhpcyBkcml2ZXIganVzdCBzdGFydCBhZnRlciBw
+cm92aW5nIHRoZSBkZXZpY2UgZHJpdmVyLiBJdCBicmVhawo+IHRoZSBwcmV2aW91cyBzZXF1ZW5j
+ZSBvZiBnb3Zlcm5vci4KPiAKPiBTbywgaWYgeW91IHJlZ2lzdGVyL3VucmVnaXN0ZXIgdGhlIHJl
+Z3VsYXRvciBhcyBmb2xsb3dpbmcsCj4gaXQgY2FuIGtlZXAgdGhlIGV4aXN0aW5nIHNlcXVlbmNl
+IGZvciBnb3Zlcm5vciBzdGFydGluZy4KPiAKPiAJY2FzZSBERVZGUkVRX0dPVl9TVEFSVDoKPiAJ
+Y2FzZSBERVZGUkVRX0dPVl9SRVNVTUU6Cj4gCQlyZWd1bGF0b3JfcmVnaXN0ZXJfbm90aWZpZXIo
+Li4uKTsKPiAKPiAJY2FzZSBERVZGUkVRX0dPVl9TVE9QOgo+IAljYXNlIERFVkZSRVFfR09WX1NV
+U1BFTkQ6Cj4gCQlyZWd1bGF0b3JfdW5yZWdpc3Rlcl9ub3RpZmllciguLi4pOwo+IAkJYnJlYWs7
+Ckkgd2lsbCBtb3ZlIHJlZ3VsYXRvciByZWdpc3Rlci91bnJlZ2lzdGVyIG5vdGlmaWVyIHRvCmdv
+dmVybm9yIGV2ZW50IGhhbmRsZXIgYXMgYWJvdmUgaW4gbmV4dCBwYXRjaC4KPiAKPiA+ICsKPiA+
+ICtzdGF0aWMgc3RydWN0IGRldmZyZXFfZ292ZXJub3IgbXRrX2NjaV9kZXZmcmVxX2dvdmVybm9y
+ID0gewo+ID4gKwkubmFtZSA9ICJ2b2x0YWdlX21vbml0b3IiLAo+ID4gKwkuZ2V0X3RhcmdldF9m
+cmVxID0gbXRrX2NjaV9nb3Zlcm5vcl9nZXRfdGFyZ2V0LAo+ID4gKwkuZXZlbnRfaGFuZGxlciA9
+IG10a19jY2lfZ292ZXJub3JfZXZlbnRfaGFuZGxlciwKPiA+ICt9Owo+ID4gKwo+ID4gK3N0YXRp
+YyBpbnQgbXRrX2NjaV9kZXZmcmVxX3RhcmdldChzdHJ1Y3QgZGV2aWNlICpkZXYsIHVuc2lnbmVk
+IGxvbmcgKmZyZXEsCj4gPiArCQkJCSAgdTMyIGZsYWdzKQo+ID4gK3sKPiA+ICsJc3RydWN0IGNj
+aV9kZXZmcmVxX2RhdGEgKmNjaV9kZXZkYXRhOwo+ID4gKwo+ID4gKwljY2lfZGV2ZGF0YSA9IGRl
+dl9nZXRfZHJ2ZGF0YShkZXYpOwo+IAo+IFlvdSBiZXR0ZXIgdG8gbW9kaWZ5IGl0IGFzIGZvbGxv
+d2luZzoKPiAKPiAJc3RydWN0IGNjaV9kZXZmcmVxX2RhdGEgKmNjaV9kZXZkYXRhID0gZGV2X2dl
+dF9kcnZkYXRhKGRldik7Cj4gCQo+IAlpZiAoIWNjaV9kZXZkYXRhKQo+IAkJcmV0dXJuIC1FSU5W
+QUw7Ckkgd2lsbCBtb2RpZnkgaXQgaW4gbmV4dCBwYXRjaAo+IAo+ID4gKwo+ID4gKwljbGtfc2V0
+X3JhdGUoY2NpX2RldmRhdGEtPmNjaV9jbGssICpmcmVxKTsKPiA+ICsKPiA+ICsJcmV0dXJuIDA7
+Cj4gPiArfQo+ID4gKwo+ID4gK3N0YXRpYyBzdHJ1Y3QgZGV2ZnJlcV9kZXZfcHJvZmlsZSBjY2lf
+ZGV2ZnJlcV9wcm9maWxlID0gewo+ID4gKwkucG9sbGluZ19tcwk9IDAsCj4gCj4gRG9udCcgbmVl
+ZCB0byBpbml0aWFsaXplIGl0IGFzIHplcm8uIGp1c3QgcmVtb3ZlIHRoaXMgbGluZS4KT0suCj4g
+Cj4gPiArCS50YXJnZXQJCT0gbXRrX2NjaV9kZXZmcmVxX3RhcmdldCwKPiA+ICt9Owo+ID4gKwo+
+ID4gK3N0YXRpYyBpbnQgY2NpX2RldmZyZXFfcmVndWxhdG9yX25vdGlmaWVyKHN0cnVjdCBub3Rp
+Zmllcl9ibG9jayAqbmIsCj4gPiArCQkJCQkgIHVuc2lnbmVkIGxvbmcgdmFsLCB2b2lkICpkYXRh
+KQo+ID4gK3sKPiA+ICsJc3RydWN0IGNjaV9kZXZmcmVxX2RhdGEgKmNjaV9kZXZkYXRhID0KPiA+
+ICsJCWNvbnRhaW5lcl9vZihuYiwgc3RydWN0IGNjaV9kZXZmcmVxX2RhdGEsIG5iKTsKPiA+ICsK
+PiA+ICsJLyogZGVhbCB3aXRoIHJlZHVjZSBmcmVxdWVuY3kgKi8KPiA+ICsJaWYgKHZhbCAmIFJF
+R1VMQVRPUl9FVkVOVF9QUkVfVk9MVEFHRV9DSEFOR0UpIHsKPiA+ICsJCXN0cnVjdCBwcmVfdm9s
+dGFnZV9jaGFuZ2VfZGF0YSAqcHZjX2RhdGEgPSBkYXRhOwo+ID4gKwo+ID4gKwkJaWYgKHB2Y19k
+YXRhLT5vbGRfdVYgPiBwdmNfZGF0YS0+bWluX3VWKSB7Cj4gPiArCQkJY2NpX2RldmRhdGEtPnZv
+bHRfaW5jcmVhc2luZyA9IDA7Cj4gCj4gSU1PLCAndm9sdF9pbmNyZWFzaW5nJyBpcyBub3QgY2xl
+YXIuIEluc3RlYWQsIGNjaV9kZXZkYXRhCj4gY291bGQgaGF2ZSB0aGUgJ3ByZXZpb3VzX3ZvbHRh
+Z2UnIHZhcmlhYmxlIGluc3RlYWQgb2Ygdm9sdF9pbmNyZWFzaW5nLgo+IEFuZCB5b3UgY291bGQg
+dXNlICdwcmV2aW91c192b2x0YWdlJyBmb3IgY29tcGFyaXNpb24uCk9LLCBJIHdpbGwgcmVtb3Zl
+IHZvbHRfaW5jcmVhc2luZyBpbiBuZXh0IHBhdGNoLgo+IAo+ID4gKwkJCWNjaV9kZXZkYXRhLT5i
+dWNrX3ZvbHQgPQo+ID4gKwkJCQkodW5zaWduZWQgbG9uZykocHZjX2RhdGEtPm1pbl91Vik7Cj4g
+PiArCQkJbXV0ZXhfbG9jaygmY2NpX2RldmRhdGEtPmRldmZyZXEtPmxvY2spOwo+ID4gKwkJCXVw
+ZGF0ZV9kZXZmcmVxKGNjaV9kZXZkYXRhLT5kZXZmcmVxKTsKPiA+ICsJCQltdXRleF91bmxvY2so
+JmNjaV9kZXZkYXRhLT5kZXZmcmVxLT5sb2NrKTsKPiA+ICsJCX0gZWxzZSB7Cj4gPiArCQkJY2Np
+X2RldmRhdGEtPnZvbHRfaW5jcmVhc2luZyA9IDE7Cj4gPiArCQl9Cj4gPiArCX0KPiA+ICsJLyog
+ZGVhbCB3aXRoIGFib3J0IHJlZHVjZSBmcmVxdWVuY3kgKi8KPiA+ICsJaWYgKCh2YWwgJiBSRUdV
+TEFUT1JfRVZFTlRfQUJPUlRfVk9MVEFHRV9DSEFOR0UpIHx8Cj4gCj4gaWYgLT4gZWxzZSBpZgo+
+IAo+IEF0IHRoZSBzYW1lIHRpbWUsIHJlY2VpdmVzIG9ubHkgb25lIG5vdGlmaWNhdGlvbi4KPiBJ
+dCBpcyBub3QgbmVjZXNzYXJ5IHRvIGNoZWNrIHRoZSB0d28gaWYgc3RhdGVtZW50IGFsd2F5cywg
+LgpPSywgSSB3aWxsIHNlcGFyYXRlIGl0IGluIG5leHQgcGF0Y2guCj4gCj4gCj4gCj4gPiArCSAg
+ICAvKiBkZWFsIHdpdGggaW5jcmVhc2UgZnJlcXVlbmN5ICovCj4gPiArCSAgICAoKHZhbCAmIFJF
+R1VMQVRPUl9FVkVOVF9WT0xUQUdFX0NIQU5HRSkgJiYKPiA+ICsJICAgICBjY2lfZGV2ZGF0YS0+
+dm9sdF9pbmNyZWFzaW5nID09IDEpKSB7Cj4gPiArCQljY2lfZGV2ZGF0YS0+YnVja192b2x0ID0g
+KHVuc2lnbmVkIGxvbmcpZGF0YTsKPiA+ICsJCW11dGV4X2xvY2soJmNjaV9kZXZkYXRhLT5kZXZm
+cmVxLT5sb2NrKTsKPiA+ICsJCXVwZGF0ZV9kZXZmcmVxKGNjaV9kZXZkYXRhLT5kZXZmcmVxKTsK
+PiA+ICsJCW11dGV4X3VubG9jaygmY2NpX2RldmRhdGEtPmRldmZyZXEtPmxvY2spOwo+ID4gKwl9
+Cj4gPiArCj4gPiArCXJldHVybiAwOwo+ID4gK30KPiA+ICsKPiA+ICtzdGF0aWMgaW50IG10a19j
+Y2lfZGV2ZnJlcV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ID4gK3sKPiA+
+ICsJc3RydWN0IGRldmljZSAqY2NpX2RldiA9ICZwZGV2LT5kZXY7Cj4gPiArCXN0cnVjdCBjY2lf
+ZGV2ZnJlcV9kYXRhICpjY2lfZGV2ZGF0YTsKPiA+ICsJc3RydWN0IG5vdGlmaWVyX2Jsb2NrICpu
+YjsKPiA+ICsJaW50IHJldDsKPiA+ICsKPiA+ICsJZGV2X3BtX29wcF9vZl9hZGRfdGFibGUoJnBk
+ZXYtPmRldik7Cj4gCj4gTW92ZSBpdCBhZnRlciBnZXR0aW5nIGNsb2NrL3JlZ3VsYXRvci4gQWZ0
+ZXIgY2hlY2tpbmcgdGhhdCBhbGwgcmVzb3VyY2VzcyBhcmUgYXZhaWxhYmxlLAo+IGFuZCB0aGVu
+IHlvdSBiZXR0ZXIgdG8gZ2V0IHRoZSBvcHAgdGFibGUuIEFuZCBjaGVjayB0aGUgcmV0dXJuIHZh
+bHVlICBvZiBkZXZfcG1fb3BwLi4uKCkKPiAKT0suIEkgd2lsbCBtb3ZlIGl0IGFmdGVyIGNoZWNr
+aW5nIGNsb2NrL3JlZ3VsYXRvciBhcmUgYXZhaWxhYmxlLCBhbmQgYWRkCnJldHVybiB2YWx1ZSBj
+aGVja2luZy4gCj4gPiArCj4gPiArCWNjaV9kZXZkYXRhID0gZGV2bV9remFsbG9jKGNjaV9kZXYs
+IHNpemVvZigqY2NpX2RldmRhdGEpLCBHRlBfS0VSTkVMKTsKPiA+ICsJaWYgKCFjY2lfZGV2ZGF0
+YSkKPiA+ICsJCXJldHVybiAtRU5PTUVNOwo+ID4gKwluYiA9ICZjY2lfZGV2ZGF0YS0+bmI7Cj4g
+PiArCWNjaV9kZXZkYXRhLT5jY2lfY2xrID0gRVJSX1BUUigtRU5PREVWKTsKPiAKPiBJdCBzaG91
+bGQgYmUgaGFuZGxlZCB3aGVuIGVycm9yIGhhcHBlbi4gSXQgaXMgbm90IGdvb2QgZm9yIHJlYWRh
+YmlsaXR5LgpJIHdpbGwgcmVtb3ZlIGl0IGluIG5leHQgcGF0Y2guCj4gCj4gPiArCWNjaV9kZXZk
+YXRhLT5wcm9jX3JlZyA9IEVSUl9QVFIoLUVOT0RFVik7Cj4gCj4gZGl0dG8uCkkgd2lsbCByZW1v
+dmUgaXQgaW4gbmV4dCBwYXRjaC4KPiAKPiA+ICsKPiA+ICsJY2NpX2RldmRhdGEtPmNjaV9jbGsg
+PSBjbGtfZ2V0KGNjaV9kZXYsICJjY2lfY2xvY2siKTsKPiA+ICsJcmV0ID0gUFRSX0VSUl9PUl9a
+RVJPKGNjaV9kZXZkYXRhLT5jY2lfY2xrKTsKPiA+ICsJaWYgKHJldCkgewo+ID4gKwkJaWYgKHJl
+dCA9PSAtRVBST0JFX0RFRkVSKQo+ID4gKwkJCXByX2VycigiY2NpIGNsb2NrIG5vdCByZWFkeSwg
+cmV0cnlcbiIpOwo+IAo+IFlvdSBzaG91bGQgdXNlICdkZXZfZXJyJyBpbnN0ZWFkIG9mIHByX2Vy
+ciBvbiB0aGlzIGRyaXZlci4KPiAKPiBJIHRoaW5rIHRoYXQgZG9uJ3Qgc2hvdyB0aGUgZXJyb3Ig
+d2hlbiBFUFJPQkVfREVGRVIuIHlvdSBiZXR0ZXIgdG8ganVzdCByZXR1cm4uCkkgd2lsbCBjaGFu
+Z2UgcHJfZXJyIHRvIGRldl9lcnIsIGFuZCByZW1vdmUgdGhlIGxvZyB3aXRoIEVQUk9CRV9ERUZF
+UiBpbgpuZXh0IHBhdGNoLgo+IAo+ID4gKwkJZWxzZQo+ID4gKwkJCXByX2Vycigibm8gY2xvY2sg
+Zm9yIGNjaTogJWRcbiIsIHJldCk7Cj4gCj4gSG93IGFib3V0IGNoYW5naW5nIHRoZSBsb2cgbGlr
+ZSBiZWxvdz8KPiAiZmFpbGVkIHRvIGdldCBjbG9jayBmb3IgQ0NJIgpPSy4KPiAKPiBwcl9lcnIg
+LT4gZGV2X2Vycgo+IAo+ID4gKwo+ID4gKwkJZ290byBvdXRfZnJlZV9yZXNvdXJjZXM7Cj4gPiAr
+CX0KPiA+ICsKPiA+ICsJY2NpX2RldmRhdGEtPnByb2NfcmVnID0gcmVndWxhdG9yX2dldF9vcHRp
+b25hbChjY2lfZGV2LCAicHJvYyIpOwo+ID4gKwlyZXQgPSBQVFJfRVJSX09SX1pFUk8oY2NpX2Rl
+dmRhdGEtPnByb2NfcmVnKTsKPiA+ICsJaWYgKHJldCkgewo+ID4gKwkJaWYgKHJldCA9PSAtRVBS
+T0JFX0RFRkVSKQo+ID4gKwkJCXByX2VycigiY2NpIHJlZ3VsYXRvciBub3QgcmVhZHksIHJldHJ5
+XG4iKTsKPiAKPiBkaXR0by4KPiAKPiA+ICsJCWVsc2UKPiA+ICsJCQlwcl9lcnIoIm5vIHJlZ3Vs
+YXRvciBmb3IgY2NpOiAlZFxuIiwgcmV0KTsKPiAKPiBIb3cgYWJvdXQgY2hhbmdpbmcgdGhlIGxv
+ZyBsaWtlIGJlbG93Pwo+ICJmYWlsZWQgdG8gZ2V0IHJlZ3VsYXRvciBmb3IgQ0NJIgpPSy4KPiAK
+PiA+ICsKPiA+ICsJCWdvdG8gb3V0X2ZyZWVfcmVzb3VyY2VzOwo+ID4gKwl9Cj4gPiArCj4gPiAr
+CXBsYXRmb3JtX3NldF9kcnZkYXRhKHBkZXYsIGNjaV9kZXZkYXRhKTsKPiA+ICsKPiA+ICsJLyog
+Y3JlYXRlIGNjaV9kZXZmcmVxIGFuZCBhZGQgdG8gY2NpIGRldmljZS4KPiA+ICsJICogZ292ZXJu
+b3IgaXMgdm9sdGFnZV9tb25pdG9yLgo+ID4gKwkgKiBnb3Zlcm5vciB3aWxsIGdldCBwbGF0Zm9y
+bV9kZXZpY2UgZGF0YSB0byBtYWtlIGRlY2lzaW9uLgo+ID4gKwkgKi8KPiAKPiBJIHRoaW5rIHRo
+YXQgeW91IGRvbid0IG5lZWQgdG8gZXhwbGFpbiB0aGUga2luZCBvZiBnb3Zlcm5vciBhbmQgaG93
+IHRvCj4gZGVjaWRlIHRoZSBuZXh0IGZyZXF1ZW5jeSBieSBnb3Zlcm5vci4gSXQgaXMgZW5vdWdo
+IHRvIGNhbGwgdGhlIGRldm1fZGV2ZnJlcV9hZGRfZGV2aWNlLgpJIHdpbGwgcmVtb3ZlIHRoZXNl
+IGV4cGxhbmF0aW9uIGluIG5leHQgcGF0Y2guCj4gCj4gPiArCWNjaV9kZXZkYXRhLT5kZXZmcmVx
+ID0gZGV2bV9kZXZmcmVxX2FkZF9kZXZpY2UoY2NpX2RldiwKPiA+ICsJCQkJCQkgICAgICAgJmNj
+aV9kZXZmcmVxX3Byb2ZpbGUsCj4gPiArCQkJCQkJICAgICAgICJ2b2x0YWdlX21vbml0b3IiLAo+
+ID4gKwkJCQkJCSAgICAgICBOVUxMKTsKPiA+ICsKPiA+ICsJbmItPm5vdGlmaWVyX2NhbGwgPSBj
+Y2lfZGV2ZnJlcV9yZWd1bGF0b3Jfbm90aWZpZXI7Cj4gPiArCXJlZ3VsYXRvcl9yZWdpc3Rlcl9u
+b3RpZmllcihjY2lfZGV2ZGF0YS0+cHJvY19yZWcsCj4gPiArCQkJCSAgICBuYik7Cj4gCj4gQXMg
+SSBjb21tZW50ZWQsIHJlZ3VsYXRvcl9yZWdpc3Rlcl9ub3RpZmllcigpIHNob3VsZCBiZSBoYW5k
+bGVkIGluIGV2ZW50X2hhbmRsZXIgZnVuY3Rpb24uCk9LLiBJIHdpbGwgbW92ZSBpdCBpbnRvIGdv
+dmVybm9yIGV2ZW50IGhhbmRsZXIKPiAKPiA+ICsKPiA+ICsJcmV0dXJuIDA7Cj4gPiArCj4gPiAr
+b3V0X2ZyZWVfcmVzb3VyY2VzOgo+ID4gKwlpZiAoIUlTX0VSUihjY2lfZGV2ZGF0YS0+Y2NpX2Ns
+aykpCj4gPiArCQljbGtfcHV0KGNjaV9kZXZkYXRhLT5jY2lfY2xrKTsKPiA+ICsJaWYgKCFJU19F
+UlIoY2NpX2RldmRhdGEtPnByb2NfcmVnKSkKPiA+ICsJCXJlZ3VsYXRvcl9wdXQoY2NpX2RldmRh
+dGEtPnByb2NfcmVnKTsKPiA+ICsKPiA+ICsJcmV0dXJuIHJldDsKPiA+ICt9Cj4gPiArCj4gPiAr
+c3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgbWVkaWF0ZWtfY2NpX2RldmZyZXFfb2Zf
+bWF0Y2hbXSA9IHsKPiA+ICsJeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxODMtY2NpIiB9
+LAo+ID4gKwl7IH0sCj4gPiArfTsKPiA+ICtNT0RVTEVfREVWSUNFX1RBQkxFKG9mLCBtZWRpYXRl
+a19jY2lfZGV2ZnJlcV9vZl9tYXRjaCk7Cj4gPiArCj4gPiArc3RhdGljIHN0cnVjdCBwbGF0Zm9y
+bV9kcml2ZXIgY2NpX2RldmZyZXFfZHJpdmVyID0gewo+ID4gKwkucHJvYmUJPSBtdGtfY2NpX2Rl
+dmZyZXFfcHJvYmUsCj4gPiArCS5kcml2ZXIgPSB7Cj4gPiArCQkubmFtZSA9ICJtZWRpYXRlay1j
+Y2ktZGV2ZnJlcSIsCj4gPiArCQkub2ZfbWF0Y2hfdGFibGUgPSBtZWRpYXRla19jY2lfZGV2ZnJl
+cV9vZl9tYXRjaCwKPiA+ICsJfSwKPiA+ICt9Owo+ID4gKwo+ID4gK3N0YXRpYyBpbnQgX19pbml0
+IG10a19jY2lfZGV2ZnJlcV9pbml0KHZvaWQpCj4gPiArewo+ID4gKwlpbnQgcmV0ID0gMDsKPiA+
+ICsKPiA+ICsJcmV0ID0gZGV2ZnJlcV9hZGRfZ292ZXJub3IoJm10a19jY2lfZGV2ZnJlcV9nb3Zl
+cm5vcik7Cj4gPiArCWlmIChyZXQpIHsKPiA+ICsJCXByX2VycigiJXM6IGZhaWxlZCB0byBhZGQg
+Z292ZXJub3I6ICVkXG4iLCBfX2Z1bmNfXywgcmV0KTsKPiA+ICsJCXJldHVybiByZXQ7Cj4gPiAr
+CX0KPiA+ICsKPiA+ICsJcmV0ID0gcGxhdGZvcm1fZHJpdmVyX3JlZ2lzdGVyKCZjY2lfZGV2ZnJl
+cV9kcml2ZXIpOwo+ID4gKwlpZiAocmV0KQo+ID4gKwkJZGV2ZnJlcV9yZW1vdmVfZ292ZXJub3Io
+Jm10a19jY2lfZGV2ZnJlcV9nb3Zlcm5vcik7Cj4gPiArCj4gPiArCXJldHVybiByZXQ7Cj4gPiAr
+fQo+ID4gK21vZHVsZV9pbml0KG10a19jY2lfZGV2ZnJlcV9pbml0KQo+ID4gKwo+ID4gK3N0YXRp
+YyB2b2lkIF9fZXhpdCBtdGtfY2NpX2RldmZyZXFfZXhpdCh2b2lkKQo+ID4gK3sKPiA+ICsJaW50
+IHJldCA9IDA7Cj4gPiArCj4gPiArCXBsYXRmb3JtX2RyaXZlcl91bnJlZ2lzdGVyKCZjY2lfZGV2
+ZnJlcV9kcml2ZXIpOwo+ID4gKwo+ID4gKwlyZXQgPSBkZXZmcmVxX3JlbW92ZV9nb3Zlcm5vcigm
+bXRrX2NjaV9kZXZmcmVxX2dvdmVybm9yKTsKPiA+ICsJaWYgKHJldCkKPiA+ICsJCXByX2Vycigi
+JXM6IGZhaWxlZCB0byByZW1vdmUgZ292ZXJub3I6ICVkXG4iLCBfX2Z1bmNfXywgcmV0KTsKPiA+
+ICt9Cj4gPiArbW9kdWxlX2V4aXQobXRrX2NjaV9kZXZmcmVxX2V4aXQpCj4gPiArCj4gPiArTU9E
+VUxFX0xJQ0VOU0UoIkdQTCB2MiIpOwo+IAo+IG5pdHBpY2suIGJldHRlciB0byBtb3ZlIGl0IHVu
+ZGVyIE1PRFVMRV9BVVRIT1IoIiIpCkkgd2lsbCBtb3ZlIGl0IGFmdGVyIE1PRFVMRV9BVVRIT1Ig
+OikKPiAKPiA+ICtNT0RVTEVfREVTQ1JJUFRJT04oIk1lZGlhdGVrIENDSSBkZXZmcmVxIGRyaXZl
+ciIpOwo+ID4gK01PRFVMRV9BVVRIT1IoImFuZHJldy1zaC5jaGVuZyIpOwo+IAo+IEFkZCBmdWxs
+IG5hbWUgYW5kIGVtYWlsIGFzIGZvbGxvd2luZzoKPiAtIE1PRFVMRV9BVVRIT1IoIkFuZHJldy1z
+aC5DaGVuZyA8YW5kcmV3LXNoLmNoZW5nQG1lZGlhdGVrLmNvbT4iCkkgd2lsbCBjaGFuZ2UgdG8g
+ZnVsbCBuYW1lIGFuZCBlbWFpbCBpbiBuZXh0IHBhdGNoLgo+IAo+IAo+ID4gKwo+ID4gCj4gCj4g
+UmVtb3ZlIHVubmVlZGVkIGJsYW5rIGxpbmUuCk9LLgo+IAo+IAoKCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcg
+bGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
