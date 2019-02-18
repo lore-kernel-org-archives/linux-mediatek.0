@@ -1,83 +1,81 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/1] dt-bindings: dmaengine: Add MediaTek Command-Queue
- DMA controller bindings
-Date: Mon, 18 Feb 2019 08:47:19 -0600
-Message-ID: <20190218144719.GA28079@bogus>
-References: <1550130058-16566-1-git-send-email-shun-chih.yu@mediatek.com>
- <1550130058-16566-2-git-send-email-shun-chih.yu@mediatek.com>
+Subject: Re: [PATCH v6 01/22] dt-bindings: mediatek: Add binding for mt8183
+ IOMMU and SMI
+Date: Mon, 18 Feb 2019 09:44:45 -0600
+Message-ID: <20190218154445.GA28558@bogus>
+References: <1550394300-17420-1-git-send-email-yong.wu@mediatek.com>
+ <1550394300-17420-2-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1550130058-16566-2-git-send-email-shun-chih.yu@mediatek.com>
+In-Reply-To: <1550394300-17420-2-git-send-email-yong.wu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: shun-chih.yu@mediatek.com
-Cc: Sean Wang <sean.wang@mediatek.com>, Vinod Koul <vkoul@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Dan Williams <dan.j.williams@intel.com>, dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, srv_wsdupstream@mediatek.com
+Cc: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, Will Deacon <will.deacon@arm.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, yingjoe.chen@mediatek.com, yong.wu@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, Matthias Kaehlcke <mka@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Feb 14, 2019 at 03:40:58PM +0800, shun-chih.yu@mediatek.com wrote:
-> From: Shun-Chih Yu <shun-chih.yu@mediatek.com>
+On Sun, 17 Feb 2019 17:04:39 +0800, Yong Wu wrote:
+> This patch adds decriptions for mt8183 IOMMU and SMI.
 > 
-> Document the devicetree bindings for MediaTek Command-Queue DMA controller
-> which could be found on MT6765 SoC or other similar Mediatek SoCs.
+> mt8183 has only one M4U like mt8173 and is also MTK IOMMU gen2 which
+> uses ARM Short-Descriptor translation table format.
 > 
-> Change-Id: I9736c8cac9be160358feeab935fabaffc5730519
-
-Drop this.
-
-> Signed-off-by: Shun-Chih Yu <shun-chih.yu@mediatek.com>
+> The mt8183 M4U-SMI HW diagram is as below:
+> 
+>                           EMI
+>                            |
+>                           M4U
+>                            |
+>                        ----------
+>                        |        |
+>                    gals0-rx   gals1-rx
+>                        |        |
+>                        |        |
+>                    gals0-tx   gals1-tx
+>                        |        |
+>                       ------------
+>                        SMI Common
+>                       ------------
+>                            |
+>   +-----+-----+--------+-----+-----+-------+-------+
+>   |     |     |        |     |     |       |       |
+>   |     |  gals-rx  gals-rx  |   gals-rx gals-rx gals-rx
+>   |     |     |        |     |     |       |       |
+>   |     |     |        |     |     |       |       |
+>   |     |  gals-tx  gals-tx  |   gals-tx gals-tx gals-tx
+>   |     |     |        |     |     |       |       |
+> larb0 larb1  IPU0    IPU1  larb4  larb5  larb6    CCU
+> disp  vdec   img     cam    venc   img    cam
+> 
+> All the connections are HW fixed, SW can NOT adjust it.
+> 
+> Compared with mt8173, we add a GALS(Global Async Local Sync) module
+> between SMI-common and M4U, and additional GALS between larb2/3/5/6
+> and SMI-common. GALS can help synchronize for the modules in different
+> clock frequency, it can be seen as a "asynchronous fifo".
+> 
+> GALS can only help transfer the command/data while it doesn't have
+> the configuring register, thus it has the special "smi" clock and it
+> doesn't have the "apb" clock. From the diagram above, we add "gals0"
+> and "gals1" clocks for smi-common and add a "gals" clock for smi-larb.
+> 
+> >From the diagram above, IPU0/IPU1(Image Processor Unit) and CCU(Camera
+> Control Unit) is connected with smi-common directly, we can take them
+> as "larb2", "larb3" and "larb7", and their register spaces are
+> different with the normal larb.
+> 
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 > ---
->  .../devicetree/bindings/dma/mtk-cqdma.txt          |   31 ++++++++++++++++++++
->  1 file changed, 31 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/dma/mtk-cqdma.txt
+> Hi Rob,
+> In this version, I changed the picture in the binding and list the
+> detailed SoCs which has "bclk" and "gals". So I don't keep your R-b.
+> ---
+>  .../devicetree/bindings/iommu/mediatek,iommu.txt   |  30 ++++-
+>  .../memory-controllers/mediatek,smi-common.txt     |  12 +-
+>  .../memory-controllers/mediatek,smi-larb.txt       |   4 +
+>  include/dt-bindings/memory/mt8183-larb-port.h      | 130 +++++++++++++++++++++
+>  4 files changed, 170 insertions(+), 6 deletions(-)
+>  create mode 100644 include/dt-bindings/memory/mt8183-larb-port.h
 > 
-> diff --git a/Documentation/devicetree/bindings/dma/mtk-cqdma.txt b/Documentation/devicetree/bindings/dma/mtk-cqdma.txt
-> new file mode 100644
-> index 0000000..fb12927
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/dma/mtk-cqdma.txt
-> @@ -0,0 +1,31 @@
-> +MediaTek Command-Queue DMA Controller
-> +==================================
-> +
-> +Required properties:
-> +
-> +- compatible:	Must be "mediatek,mt6765-cqdma" for MT6765.
-> +- reg:		Should contain the base address and length for each channel.
-> +- interrupts:	Should contain references to the interrupts for each channel.
-> +- clocks:	Should be the clock specifiers corresponding to the entry in
-> +		clock-names property.
-> +- clock-names:	Should contain "cqdma" entries.
-> +- dma-channels: The number of DMA channels supported by the controller.
 
-What's the range of valid values?
-
-> +- dma-requests: The number of DMA request supported by the controller.
-
-What's the range of valid values?
-
-> +- #dma-cells: 	The length of the DMA specifier, must be <1>. This one cell
-> +		in dmas property of a client device represents the channel
-> +		number.
-> +Example:
-> +
-> +        cqdma: dma-controller@10212000 {
-> +		compatible = "mediatek,mt6765-cqdma";
-> +		reg = <0 0x10212000 0 0x1000>;
-
-Should be 2 entries here since there are 2 channels? Or the description 
-above is wrong.
-
-> +		interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_LOW>,
-> +			<GIC_SPI 114 IRQ_TYPE_LEVEL_LOW>;
-> +		clocks = <&infracfg CLK_IFR_CQ_DMA>;
-> +		clock-names = "cqdma";
-> +		dma-channels = <2>;
-> +		dma-requests = <32>;
-> +		#dma-cells = <1>;
-> +	};
-> +
-> +DMA clients must use the format described in dma/dma.txt file.
-> -- 
-> 1.7.9.5
-> 
+Reviewed-by: Rob Herring <robh@kernel.org>
