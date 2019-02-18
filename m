@@ -1,110 +1,83 @@
-From: Loys Ollivier <lollivier@baylibre.com>
-Subject: Re: [PATCH v4 2/4] dt-bindings: gnss: add mediatek binding
-Date: Mon, 18 Feb 2019 15:08:38 +0100
-Message-ID: <86k1hxur2x.fsf@baylibre.com>
-References: <1550070569-18588-1-git-send-email-lollivier@baylibre.com>
- <1550070569-18588-3-git-send-email-lollivier@baylibre.com>
- <20190215160457.GO28278@localhost>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 1/1] dt-bindings: dmaengine: Add MediaTek Command-Queue
+ DMA controller bindings
+Date: Mon, 18 Feb 2019 08:47:19 -0600
+Message-ID: <20190218144719.GA28079@bogus>
+References: <1550130058-16566-1-git-send-email-shun-chih.yu@mediatek.com>
+ <1550130058-16566-2-git-send-email-shun-chih.yu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-reply-to: <20190215160457.GO28278@localhost>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Johan Hovold <johan@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Kevin Hilman <khilman@baylibre.com>, Loys Ollivier <lollivier@baylibre.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1550130058-16566-2-git-send-email-shun-chih.yu@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: shun-chih.yu@mediatek.com
+Cc: Sean Wang <sean.wang@mediatek.com>, Vinod Koul <vkoul@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Dan Williams <dan.j.williams@intel.com>, dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, srv_wsdupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
+On Thu, Feb 14, 2019 at 03:40:58PM +0800, shun-chih.yu@mediatek.com wrote:
+> From: Shun-Chih Yu <shun-chih.yu@mediatek.com>
+> 
+> Document the devicetree bindings for MediaTek Command-Queue DMA controller
+> which could be found on MT6765 SoC or other similar Mediatek SoCs.
+> 
+> Change-Id: I9736c8cac9be160358feeab935fabaffc5730519
 
-On Fri 15 Feb 2019 at 16:04, Johan Hovold <johan@kernel.org> wrote:
+Drop this.
 
-> On Wed, Feb 13, 2019 at 04:09:27PM +0100, Loys Ollivier wrote:
->> Add binding for Mediatek-based GNSS receivers.
->> 
->> Signed-off-by: Loys Ollivier <lollivier@baylibre.com>
->> ---
->> v4:
->> Use standard names for reset-gpios and gnss-fix-gpios
->> s/an/a UART
->> 
->> v3:
->> Removed the I2C and SPI interfaces references.
->> Removed the "mediatek,mt3339" compatible line.
->> Added the optional propertied (reset, fix)
->> Added the pin names for the optional properties.
->> 
->> v2:
->> Renamed bindings from Globaltop/gtop to Mediatek/mtk.
->> Moved current-speed as an optional propertie.
->> Removed the status line in the example.
->> Added "mediatek,mt3339" compatible.
->> 
->>  .../devicetree/bindings/gnss/mediatek.txt          | 37 ++++++++++++++++++++++
->>  1 file changed, 37 insertions(+)
->>  create mode 100644 Documentation/devicetree/bindings/gnss/mediatek.txt
->> 
->> diff --git a/Documentation/devicetree/bindings/gnss/mediatek.txt b/Documentation/devicetree/bindings/gnss/mediatek.txt
->> new file mode 100644
->> index 000000000000..12283d429baa
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/gnss/mediatek.txt
->> @@ -0,0 +1,37 @@
->> +Mediatek-based GNSS Receiver DT binding
->> +
->> +Mediatek chipsets are used in GNSS-receiver modules produced by several
->> +vendors and can use a UART interface.
->> +
->> +Please see Documentation/devicetree/bindings/gnss/gnss.txt for generic
->> +properties.
->> +
->> +Required properties:
->> +
->> +- compatible	: Must be
->> +
->> +			"globaltop,pa6h"
->> +
->> +- vcc-supply	: Main voltage regulator (pin name: VCC)
->> +
->> +Optional properties:
->> +
->> +- current-speed		: Default UART baud rate
->> +- gnss-fix-gpios	: GPIO used to determine device position fix state
->> +			  (pin name: FIX, 3D_FIX)
->> +- reset-gpios		: GPIO used to reset the device
->> +  		  	  (pin name: RESET, NRESET)
->> +- timepulse-gpios	: Time pulse GPIO (pin name: PPS1, 1PPS)
->> +- v-bckp-supply		: Backup voltage regulator
->> +  			  (pin name: VBAT, VBACKUP)
->
-> As we discussed, I changed this to "vbackup-supply" (here and in the
-> driver) before applying.
->
-> Note that git reported some whitespace errors above too (spaces before
-> tabs) that I fixed up. Not sure why checkpatch doesn't complain.
->
-Oops, thanks for fixing it. I ran checkpatch again and it did not
-complain. Apprently it's not checking for spaces before tabs in "txt"
-files.
-I'll add a step in my flow to apply the patches I create before sending
-them to the list so that won't happen again ;)
+> Signed-off-by: Shun-Chih Yu <shun-chih.yu@mediatek.com>
+> ---
+>  .../devicetree/bindings/dma/mtk-cqdma.txt          |   31 ++++++++++++++++++++
+>  1 file changed, 31 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/dma/mtk-cqdma.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/dma/mtk-cqdma.txt b/Documentation/devicetree/bindings/dma/mtk-cqdma.txt
+> new file mode 100644
+> index 0000000..fb12927
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/dma/mtk-cqdma.txt
+> @@ -0,0 +1,31 @@
+> +MediaTek Command-Queue DMA Controller
+> +==================================
+> +
+> +Required properties:
+> +
+> +- compatible:	Must be "mediatek,mt6765-cqdma" for MT6765.
+> +- reg:		Should contain the base address and length for each channel.
+> +- interrupts:	Should contain references to the interrupts for each channel.
+> +- clocks:	Should be the clock specifiers corresponding to the entry in
+> +		clock-names property.
+> +- clock-names:	Should contain "cqdma" entries.
+> +- dma-channels: The number of DMA channels supported by the controller.
 
-> All now applied.
->
-Yay ! Thanks !
-Loys
+What's the range of valid values?
 
+> +- dma-requests: The number of DMA request supported by the controller.
 
-> Thanks,
-> Johan
+What's the range of valid values?
 
+> +- #dma-cells: 	The length of the DMA specifier, must be <1>. This one cell
+> +		in dmas property of a client device represents the channel
+> +		number.
+> +Example:
+> +
+> +        cqdma: dma-controller@10212000 {
+> +		compatible = "mediatek,mt6765-cqdma";
+> +		reg = <0 0x10212000 0 0x1000>;
 
--- 
--L
+Should be 2 entries here since there are 2 channels? Or the description 
+above is wrong.
+
+> +		interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_LOW>,
+> +			<GIC_SPI 114 IRQ_TYPE_LEVEL_LOW>;
+> +		clocks = <&infracfg CLK_IFR_CQ_DMA>;
+> +		clock-names = "cqdma";
+> +		dma-channels = <2>;
+> +		dma-requests = <32>;
+> +		#dma-cells = <1>;
+> +	};
+> +
+> +DMA clients must use the format described in dma/dma.txt file.
+> -- 
+> 1.7.9.5
+> 
