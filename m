@@ -1,102 +1,37 @@
-From: Nicolas Boichat <drinkcat@chromium.org>
-Subject: Re: [PATCH 3/3] drm/mediatek: add mt8183 dsi driver support
-Date: Mon, 18 Feb 2019 07:43:38 +0800
-Message-ID: <CANMq1KD9QsmeB0D-GW1pvpDsNER7y23mep8Yf-VPveL+mTELwg@mail.gmail.com>
-References: <20190214044243.129920-1-jitao.shi@mediatek.com>
- <20190214044243.129920-3-jitao.shi@mediatek.com>
- <CANMq1KBR-CpjAtj6qTEjK8PA2DUW3w_-OP_EyE7uoaojGLoGLg@mail.gmail.com>
- <1550414892.5194.17.camel@mszsdaap41>
+From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 0/2] remove qid dependency from mt76-core code
+Date: Mon, 18 Feb 2019 10:32:39 +0800
+Message-ID: <1550457159.18089.5.camel@mtkswgap22>
+References: <cover.1550336347.git.lorenzo@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1550414892.5194.17.camel@mszsdaap41>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jitao Shi <jitao.shi@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, stonea168@163.com, dri-devel@lists.freedesktop.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa cheng <cawa.cheng@mediatek.com>, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, linux-pwm@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Andy Yan <andy.yan@rock-chips.com>, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstr
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <cover.1550336347.git.lorenzo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: lorenzo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: nbd-Vt+b4OUoWG0@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, roychl666-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gU3VuLCBGZWIgMTcsIDIwMTkgYXQgMTA6NDggUE0gSml0YW8gU2hpIDxqaXRhby5zaGlAbWVk
-aWF0ZWsuY29tPiB3cm90ZToKPgo+IE9uIFRodSwgMjAxOS0wMi0xNCBhdCAxMzo1NCArMDgwMCwg
-Tmljb2xhcyBCb2ljaGF0IHdyb3RlOgo+ID4gT24gVGh1LCBGZWIgMTQsIDIwMTkgYXQgMTI6NDMg
-UE0gSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPiB3cm90ZToKPiA+ID4KPiA+ID4g
-TVQ4MTgzIGRzaSBoYXMgdHdvIGNoYW5nZXMgd2l0aCBtdDgxNzMuCj4gPiA+IDEuIEFkZCB0aGUg
-cmVnaXN0ZXIgZG91YmxlIGJ1ZmZlciBjb250cm9sLCBidXQgd2Ugbm8gbmVlZCBpdCwgU28gbWFr
-ZQo+ID4gPiAgICBpdCBkZWZhdWx0IG9mZi4KPiA+Cj4gPiBDYW4geW91IGRlc2NyaWJlIGEgbGl0
-dGxlIGJpdCBtb3JlIHdoYXQgdGhpcyBpcyBhYm91dD8gVGhhdCdzIHNoYWRvdwo+ID4gcmVnaXN0
-ZXJzLCByaWdodD8KPiA+Cj4KPiBZZXMsIGl0IGlzIHNoYWRvdyByZWdpc3RlcnMuCj4KPiBKaXRh
-bwo+Cj4gPiA+IDIuIEFkZCBwaWN0dXJlIHNpemUgY29udHJvbC4KPiA+ID4KPiA+ID4gU2lnbmVk
-LW9mZi1ieTogSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPgo+ID4gPiAtLS0KPiA+
-ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgfCAyMCArKysrKysrKysrKysr
-KysrKysrLQo+ID4gPiAgMSBmaWxlIGNoYW5nZWQsIDE5IGluc2VydGlvbnMoKyksIDEgZGVsZXRp
-b24oLSkKPiA+ID4KPiA+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gPiA+IGluZGV4
-IDgwZGIwMmEyNWNiMC4uMjBjYjUzZjA1ZDQyIDEwMDY0NAo+ID4gPiAtLS0gYS9kcml2ZXJzL2dw
-dS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRp
-YXRlay9tdGtfZHNpLmMKPiA+ID4gQEAgLTc4LDYgKzc4LDcgQEAKPiA+ID4gICNkZWZpbmUgRFNJ
-X1ZCUF9OTCAgICAgICAgICAgICAweDI0Cj4gPiA+ICAjZGVmaW5lIERTSV9WRlBfTkwgICAgICAg
-ICAgICAgMHgyOAo+ID4gPiAgI2RlZmluZSBEU0lfVkFDVF9OTCAgICAgICAgICAgIDB4MkMKPiA+
-ID4gKyNkZWZpbmUgRFNJX1NJWkVfQ09OICAgICAgICAgICAweDM4Cj4gPiA+ICAjZGVmaW5lIERT
-SV9IU0FfV0MgICAgICAgICAgICAgMHg1MAo+ID4gPiAgI2RlZmluZSBEU0lfSEJQX1dDICAgICAg
-ICAgICAgIDB4NTQKPiA+ID4gICNkZWZpbmUgRFNJX0hGUF9XQyAgICAgICAgICAgICAweDU4Cj4g
-PiA+IEBAIC0xMzEsNyArMTMyLDEwIEBACj4gPiA+ICAjZGVmaW5lIFZNX0NNRF9FTiAgICAgICAg
-ICAgICAgICAgICAgICBCSVQoMCkKPiA+ID4gICNkZWZpbmUgVFNfVkZQX0VOICAgICAgICAgICAg
-ICAgICAgICAgIEJJVCg1KQo+ID4gPgo+ID4gPiAtI2RlZmluZSBEU0lfQ01EUTAgICAgICAgICAg
-ICAgIDB4MTgwCj4gPgo+ID4gQXMgSSBzYWlkIGVhcmxpZXIsIG1vdmUgdGhpcyB0byAyLzMuCj4g
-Pgo+Cj4gVGhhbmsgZm9yIHlvdSByZXZpZXcuCj4gSSdsbCBtb3ZlIGl0IHRvIDIvMyBuZXh0IHZl
-cnNpb24uCj4KPiBCZXN0IFJlZ2FyZHMKPiBKaXRhbwo+Cj4gPiA+ICsjZGVmaW5lIERTSV9TSEFE
-T1dfREVCVUcgICAgICAgMHgxOTBVCj4gPiA+ICsjZGVmaW5lIEZPUkNFX0NPTU1JVCAgICAgICAg
-ICAgQklUKDApCj4gPiA+ICsjZGVmaW5lIEJZUEFTU19TSEFET1cgICAgICAgICAgQklUKDEpCj4g
-PiA+ICsKPiA+ID4gICNkZWZpbmUgQ09ORklHICAgICAgICAgICAgICAgICAgICAgICAgICgweGZm
-IDw8IDApCj4gPiA+ICAjZGVmaW5lIFNIT1JUX1BBQ0tFVCAgICAgICAgICAgICAgICAgICAwCj4g
-PiA+ICAjZGVmaW5lIExPTkdfUEFDS0VUICAgICAgICAgICAgICAgICAgICAyCj4gPiA+IEBAIC0x
-NTgsNiArMTYyLDcgQEAgc3RydWN0IHBoeTsKPiA+ID4KPiA+ID4gIHN0cnVjdCBtdGtfZHNpX2Ry
-aXZlcl9kYXRhIHsKPiA+ID4gICAgICAgICBjb25zdCB1MzIgcmVnX2NtZHFfb2ZmOwo+ID4gPiAr
-ICAgICAgIGJvb2wgaGFzX3NpemVfY3RsOwo+ID4gPiAgfTsKPiA+ID4KPiA+ID4gIHN0cnVjdCBt
-dGtfZHNpIHsKPiA+ID4gQEAgLTQyNiw2ICs0MzEsOSBAQCBzdGF0aWMgdm9pZCBtdGtfZHNpX2Nv
-bmZpZ192ZG9fdGltaW5nKHN0cnVjdCBtdGtfZHNpICpkc2kpCj4gPiA+ICAgICAgICAgd3JpdGVs
-KHZtLT52ZnJvbnRfcG9yY2gsIGRzaS0+cmVncyArIERTSV9WRlBfTkwpOwo+ID4gPiAgICAgICAg
-IHdyaXRlbCh2bS0+dmFjdGl2ZSwgZHNpLT5yZWdzICsgRFNJX1ZBQ1RfTkwpOwo+ID4gPgo+ID4g
-PiArICAgICAgIGlmIChkc2ktPmRyaXZlcl9kYXRhLT5oYXNfc2l6ZV9jdGwpCj4gPiA+ICsgICAg
-ICAgICAgICAgICB3cml0ZWwodm0tPnZhY3RpdmUgPDwgMTYgfCB2bS0+aGFjdGl2ZSwgZHNpLT5y
-ZWdzICsgRFNJX1NJWkVfQ09OKTsKPiA+ID4gKwo+ID4gPiAgICAgICAgIGhvcml6b250YWxfc3lu
-Y19hY3RpdmVfYnl0ZSA9ICh2bS0+aHN5bmNfbGVuICogZHNpX3RtcF9idWZfYnBwIC0gMTApOwo+
-ID4gPgo+ID4gPiAgICAgICAgIGlmIChkc2ktPm1vZGVfZmxhZ3MgJiBNSVBJX0RTSV9NT0RFX1ZJ
-REVPX1NZTkNfUFVMU0UpCj4gPiA+IEBAIC01OTUsNiArNjAzLDkgQEAgc3RhdGljIGludCBtdGtf
-ZHNpX3Bvd2Vyb24oc3RydWN0IG10a19kc2kgKmRzaSkKPiA+ID4gICAgICAgICB9Cj4gPiA+Cj4g
-PiA+ICAgICAgICAgbXRrX2RzaV9lbmFibGUoZHNpKTsKPiA+ID4gKwo+ID4gPiArICAgICAgIC8q
-IERTSSBubyBuZWVkIHRoaXMgZG91YmxlIGJ1ZmZlciwgZGlzYWJsZSBpdCB3aGVuIHdyaXRpbmcg
-cmVnaXN0ZXIgKi8KPiA+Cj4gPiAiRFNJIGRvZXMgbm90IG5lZWQgZG91YmxlIGJ1ZmZlcmluZywg
-ZGlzYWJsZSBpdCB3aGVuIHdyaXRpbmcgcmVnaXN0ZXIiCj4gPgo+Cj4gSSdsbCBmaXggaXQgbmV4
-dCB2ZXJzaW9uLgoKSW4gdGhhdCBjYXNlLCBwbGVhc2Ugc2F5IHNvbWV0aGluZyBhYm91dCAic2hh
-ZG93IHJlZ2lzdGVycyIuIChtYXliZQppdCdzIGp1c3QgbWUsIGJ1dCB1c3VhbGx5IGRvdWJsZS1i
-dWZmZXJpbmcgaXMgYXNzb2NpYXRlZCB3aXRoCmZyYW1lYnVmZmVyIGRhdGEsIG5vdCByZWdpc3Rl
-ciBzZXR0aW5ncykKCj4gPiA+ICsgICAgICAgd3JpdGVsKEZPUkNFX0NPTU1JVCB8IEJZUEFTU19T
-SEFET1csIGRzaS0+cmVncyArIERTSV9TSEFET1dfREVCVUcpOwo+ID4KPiA+IFNvIHlvdSBkbyB0
-aGlzIG9uIGFsbCBNVCogdmFyaWFudHMsIGlzIHRoYXQgb2s/Cj4gPgo+ID4gPiAgICAgICAgIG10
-a19kc2lfcmVzZXRfZW5naW5lKGRzaSk7Cj4gPiA+ICAgICAgICAgbXRrX2RzaV9waHlfdGltY29u
-ZmlnKGRzaSk7Cj4gPiA+Cj4gPiA+IEBAIC0xMDkwLDExICsxMTAxLDE4IEBAIHN0YXRpYyBjb25z
-dCBzdHJ1Y3QgbXRrX2RzaV9kcml2ZXJfZGF0YSBtdDI3MDFfZHNpX2RyaXZlcl9kYXRhID0gewo+
-ID4gPiAgICAgICAgIC5yZWdfY21kcV9vZmYgPSAweDE4MCwKPiA+ID4gIH07Cj4gPiA+Cj4gPiA+
-ICtzdGF0aWMgY29uc3Qgc3RydWN0IG10a19kc2lfZHJpdmVyX2RhdGEgbXQ4MTgzX2RzaV9kcml2
-ZXJfZGF0YSA9IHsKPiA+ID4gKyAgICAgICAucmVnX2NtZHFfb2ZmID0gMHgyMDAsCj4gPiA+ICsg
-ICAgICAgLmhhc19zaXplX2N0bCA9IHRydWUsCj4gPiA+ICt9Owo+ID4gPiArCj4gPiA+ICBzdGF0
-aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBtdGtfZHNpX29mX21hdGNoW10gPSB7Cj4gPiA+
-ICAgICAgICAgeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDI3MDEtZHNpIiwKPiA+ID4gICAg
-ICAgICAgIC5kYXRhID0gJm10MjcwMV9kc2lfZHJpdmVyX2RhdGEgfSwKPiA+ID4gICAgICAgICB7
-IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1kc2kiLAo+ID4gPiAgICAgICAgICAgLmRh
-dGEgPSAmbXQ4MTczX2RzaV9kcml2ZXJfZGF0YSB9LAo+ID4gPiArICAgICAgIHsgLmNvbXBhdGli
-bGUgPSAibWVkaWF0ZWssbXQ4MTgzLWRzaSIsCj4gPiA+ICsgICAgICAgICAuZGF0YSA9ICZtdDgx
-ODNfZHNpX2RyaXZlcl9kYXRhIH0sCj4gPiA+ICAgICAgICAgeyB9LAo+ID4gPiAgfTsKPiA+ID4K
-PiA+ID4gLS0KPiA+ID4gMi4yMC4xCj4gPiA+Cj4KPgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
-aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9kcmktZGV2ZWw=
+On Sat, 2019-02-16 at 18:47 +0100, lorenzo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org wrote:
+> From: Lorenzo Bianconi <lorenzo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> 
+> Move queue id dependency in driver specific tx queue initialization code
+> since new chipsets rely on a different tx queue enumeration scheme.
+> Add the possibility to specify qid in mt76_tx routine
+> 
+> Lorenzo Bianconi (2):
+>   mt76: add qid parameter to mt76_tx signature
+>   mt76: move txq qid dependency in driver specific code
+> 
+>  drivers/net/wireless/mediatek/mt76/mac80211.c | 27 +++++++++++-------
+>  drivers/net/wireless/mediatek/mt76/mt76.h     | 14 ++++++++--
+>  .../net/wireless/mediatek/mt76/mt76x02_txrx.c |  8 +++++-
+>  .../net/wireless/mediatek/mt76/mt76x02_util.c |  2 ++
+>  drivers/net/wireless/mediatek/mt76/tx.c       | 28 +++++--------------
+>  5 files changed, 45 insertions(+), 34 deletions(-)
+> 
+
+Thanks. This will help us to develop the new chipsets more easily.
+
+Acked-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
