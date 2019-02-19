@@ -1,103 +1,36 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [RFC PATCH V0 7/7] [media] platform: mtk-isp: Add Mediatek ISP
- Pass 1 driver
-Date: Tue, 19 Feb 2019 17:51:19 +0900
-Message-ID: <CAAFQd5CaXz_Lqz8NhGK4DvaxPvuYLj-Y73sG7wFaqW44j+tZQw@mail.gmail.com>
-References: <1549348966-14451-1-git-send-email-frederic.chen@mediatek.com>
- <1549348966-14451-8-git-send-email-frederic.chen@mediatek.com>
- <CAAFQd5CWdZUXVb4F9BLhQdN8WHjzA8acPDx1i+WcoudsdGsfUg@mail.gmail.com>
- <1550372163.11724.59.camel@mtksdccf07>
+From: Jitao Shi <jitao.shi@mediatek.com>
+Subject: [PATCH v1 0/2] drm/mediatek: add mipi_tx driver for mt8183
+Date: Tue, 19 Feb 2019 17:14:02 +0800
+Message-ID: <20190219091404.89370-1-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1550372163.11724.59.camel@mtksdccf07>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Jungo Lin <jungo.lin@mediatek.com>
-Cc: frankie_chiu@mediatek.com, =?UTF-8?B?U2VhbiBDaGVuZyAo6YSt5piH5byYKQ==?= <Sean.Cheng@mediatek.com>, Frederic Chen <frederic.chen@mediatek.com>, =?UTF-8?B?UnlubiBXdSAo5ZCz6IKy5oGpKQ==?= <Rynn.Wu@mediatek.com>, =?UTF-8?B?Q2hyaXN0aWUgWXUgKOa4uOmbheaDoCk=?= <christie.yu@mediatek.com>, srv_heupstream@mediatek.com, =?UTF-8?B?SG9sbWVzIENoaW91ICjpgrHmjLop?= <holmes.chiou@mediatek.com>, seraph_huang@mediatek.com, Jerry-ch.Chen@mediatek.com, yuzhao@chromium.org, ryan_yu@mediatek.com, Sj Huang <sj.huang@mediatek.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, linux-mediatek@lists.infradead.org, zwisler@chromium.org, Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil <hans.verkuil@cisco.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
- Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.i>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Jitao Shi <jitao.shi@mediatek.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, cawa.cheng@mediatek.com, bibby.hsieh@mediatek.com, ck.hu@mediate
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Jungo,
+MT8183 has different setting to MT8173(exist chip). We add mt8183 mipi_tx driver.
+1) Separate mipi_tx to common part and chip relate part.
+2) Add mt8183 mipi_tx driver
 
-On Sun, Feb 17, 2019 at 11:56 AM Jungo Lin <jungo.lin@mediatek.com> wrote:
->
-> On Wed, 2019-02-13 at 18:50 +0900, Tomasz Figa wrote:
-> > (() . ( strHi Frederic, Jungo,
-> >
-> > On Tue, Feb 5, 2019 at 3:43 PM Frederic Chen <frederic.chen@mediatek.com> wrote:
-> > >
-> > > From: Jungo Lin <jungo.lin@mediatek.com>
-> > >
-> > > This patch adds the driver for Pass unit in Mediatek's camera
-> > > ISP system. Pass 1 unit is embedded in Mediatek SOCs. It
-> > > provides RAW processing which includes optical black correction,
-> > > defect pixel correction, W/IR imbalance correction and lens
-> > > shading correction.
-> > >
-> > > The mtk-isp directory will contain drivers for multiple IP
-> > > blocks found in Mediatek ISP system. It will include ISP Pass 1
-> > > driver, sensor interface driver, DIP driver and face detection
-> > > driver.
-> >
-> > Thanks for the patches! Please see my comments inline.
-> >
->
-> Dear Thomas:
->
-> Thanks for your comments.
->
-> We will revise the source codes based on your comments.
-> Since there are many comments to fix/revise, we will categorize &
-> prioritize these with below list:
->
-> 1. Coding style issues.
-> 2. Coding defects, including unused codes.
-> 3. Driver architecture refactoring, such as removing mtk_cam_ctx,
-> unnecessary abstraction layer, etc.
->
+Changes since v0:
+- Separate two independent patches.
 
-Thanks for replying to the comments!
+Jitao Shi (2):
+  drm/mediatek: separate mipi_tx to different file
+  drm/mediatek: add mipi_tx driver for mt8183
 
-Just to clarify, there is no need to hurry with resending a next patch
-set with only a subset of the changes. Please take your time to
-address all the comments before sending the next revision. This
-prevents forgetting about some remaining comments and also lets other
-reviewers come with new comments or some alternative ideas for already
-existing comments. Second part of my review is coming too.
+ drivers/gpu/drm/mediatek/Makefile             |   1 +
+ drivers/gpu/drm/mediatek/mtk_mipi_tx.c        | 352 ++----------------
+ drivers/gpu/drm/mediatek/mtk_mipi_tx.h        |  52 +++
+ drivers/gpu/drm/mediatek/mtk_mt8173_mipi_tx.c | 290 +++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c | 168 +++++++++
+ 5 files changed, 548 insertions(+), 315 deletions(-)
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_mipi_tx.h
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_mt8173_mipi_tx.c
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c
 
-P.S. Please avoid top-posting on mailing lists. If replying to a
-message, please reply below the related part of that message. (I've
-moved your reply to the place in the email where it should be.)
-
-[snip]
-> > > +       phys_addr_t paddr;
-> >
-> > We shouldn't need physical address either. I suppose this is for the
-> > SCP, but then it should be a DMA address obtained from dma_map_*()
-> > with struct device pointer of the SCP.
-> >
->
-> Yes, this physical address is designed for SCP.
-> For tuning buffer, it will be touched by SCP and
-> SCP can't get the physical address by itself. So we need to get
-> this physical address in the kernel space via mtk_cam_smem_iova_to_phys
-> function call and pass it to the SCP. At the same time, DMA address
-> (daddr) is used for ISP HW.
->
-
-Right, but my point is that in the kernel phys_addr_t is the physical
-address from the CPU point of view. Any address from device point of
-view is dma_addr_t and should be obtained from the DMA mapping API
-(even if it's numerically the same as physical address).
-
-Best regards,
-Tomasz
+-- 
+2.20.1
