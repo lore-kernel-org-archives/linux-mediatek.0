@@ -1,37 +1,75 @@
-From: Borislav Petkov <bp@alien8.de>
-Subject: Re: [PATCH 1/2] wireless: mt76: call hweight8() instead of
- __sw_hweight8()
-Date: Mon, 18 Feb 2019 22:49:40 +0100
-Message-ID: <20190218214940.GI4265@zn.tnic>
+From: Masahiro Yamada <yamada.masahiro@socionext.com>
+Subject: Re: [PATCH 1/2] wireless: mt76: call hweight8() instead of __sw_hweight8()
+Date: Tue, 19 Feb 2019 10:13:27 +0900
+Message-ID: <CAK7LNAQMgFXw=rtpdPNZ=xpLw-SiwKGAgM__Owvqd1EhTCUntQ@mail.gmail.com>
 References: <1550469571-25933-1-git-send-email-yamada.masahiro@socionext.com>
  <1550469571-25933-2-git-send-email-yamada.masahiro@socionext.com>
- <877edxt1f1.fsf@kamboji.qca.qualcomm.com>
- <87tvh0syq2.fsf@kamboji.qca.qualcomm.com>
+ <877edxt1f1.fsf@kamboji.qca.qualcomm.com> <87tvh0syq2.fsf@kamboji.qca.qualcomm.com>
  <87pnrosy29.fsf@kamboji.qca.qualcomm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Return-path: <netdev-owner@vger.kernel.org>
-Content-Disposition: inline
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <87pnrosy29.fsf@kamboji.qca.qualcomm.com>
-Sender: netdev-owner@vger.kernel.org
+Sender: linux-kernel-owner@vger.kernel.org
 To: Kalle Valo <kvalo@codeaurora.org>
-Cc: Masahiro Yamada <yamada.masahiro@socionext.com>, Ingo Molnar <mingo@redhat.com>, Thomas Gleixner <tglx@linutronix.de>, "H . Peter Anvin" <hpa@zytor.com>, x86@kernel.org, linux-wireless@vger.kernel.org, Christoph Hellwig <hch@lst.de>, "David S. Miller" <davem@davemloft.net>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Ingo Molnar <mingo@redhat.com>, Thomas Gleixner <tglx@linutronix.de>, Borislav Petkov <bp@alien8.de>, "H . Peter Anvin" <hpa@zytor.com>, X86 ML <x86@kernel.org>, linux-wireless@vger.kernel.org, Christoph Hellwig <hch@lst.de>, "David S. Miller" <davem@davemloft.net>, Networking <netdev@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Felix Fietkau <nbd@nbd.name>, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Feb 18, 2019 at 09:20:46PM +0200, Kalle Valo wrote:
+On Tue, Feb 19, 2019 at 4:38 AM Kalle Valo <kvalo@codeaurora.org> wrote:
+>
+> Kalle Valo <kvalo@codeaurora.org> writes:
+>
+> > Kalle Valo <kvalo@codeaurora.org> writes:
+> >
+> >> Masahiro Yamada <yamada.masahiro@socionext.com> writes:
+> >>
+> >>> __sw_hweight8() is just internal implementation.
+> >>>
+> >>> Drivers should use the common API, hweight8().
+> >>>
+> >>> Signed-off-by: Masahiro Yamada <yamada.masahiro@socionext.com>
+> >>
+> >> Acked-by: Kalle Valo <kvalo@codeaurora.org>
+> >>
+> >>> This patch should go to x86 tree along with 2/2.
+> >>>
+> >>> Otherwise, all{yes,mod}config of x86 would be broken.
+> >>>
+> >>> This patch is trivial enough.
+> >>> I want ACK from the net/wireless maintainer
+> >>> so that this can go in via x86 tree.
+> >>
+> >> Sounds good to me, feel free to push via the x86 tree.
+> >
+> > Actually, can you wait a bit? Felix just reminded me that we have a
+> > similar patch pending from Ben Hutchings:
+> >
+> > https://patchwork.kernel.org/patch/10808203/
+> >
+> > And it seems there are two instances of __sw_hweight8, at least in my
+> > wireless-drivers-next tree:
+> >
+> > drivers/net/wireless/mediatek/mt76/mac80211.c: int i, nstream =
+> > __sw_hweight8(dev->antenna_mask);
+> > drivers/net/wireless/mediatek/mt76/mac80211.c: int n_chains =
+> > __sw_hweight8(dev->antenna_mask);
+> >
+> > So we need to think what to do.
+>
+> I think the best would be that Felix applies Ben's patch to the wireless
+> tree and I'll push it to Linus during the next merge window (via
+> net-next). Simpler and less conflicts that way.
+>
 > So Masahiro, could you hold your x86 patch for a while until the mt76
 > patch will be in Linus' tree? That should not take more than two weeks,
 > I think.
 
-No hurry - I won't take it into the x86 now and queue it for 5.1 because
-it is not something urgent or fixing a bug or so. It is a cleanup and as
-such it can surely wait for 5.2, I'd say. Unless there are other aspects
-which I'm not thinking of right now...
+Sure.
+I will resend 2/2 later.
 
-Thx.
+
+
 
 -- 
-Regards/Gruss,
-    Boris.
-
-Good mailing practices for 400: avoid top-posting and trim the reply.
+Best Regards
+Masahiro Yamada
