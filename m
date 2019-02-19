@@ -1,75 +1,120 @@
-From: Masahiro Yamada <yamada.masahiro@socionext.com>
-Subject: Re: [PATCH 1/2] wireless: mt76: call hweight8() instead of __sw_hweight8()
-Date: Tue, 19 Feb 2019 10:13:27 +0900
-Message-ID: <CAK7LNAQMgFXw=rtpdPNZ=xpLw-SiwKGAgM__Owvqd1EhTCUntQ@mail.gmail.com>
-References: <1550469571-25933-1-git-send-email-yamada.masahiro@socionext.com>
- <1550469571-25933-2-git-send-email-yamada.masahiro@socionext.com>
- <877edxt1f1.fsf@kamboji.qca.qualcomm.com> <87tvh0syq2.fsf@kamboji.qca.qualcomm.com>
- <87pnrosy29.fsf@kamboji.qca.qualcomm.com>
+From: Jitao Shi <jitao.shi@mediatek.com>
+Subject: Re: [PATCH] drm/mediatek: add mt8183 dpi support
+Date: Tue, 19 Feb 2019 09:53:10 +0800
+Message-ID: <1550541190.13121.2.camel@mszsdaap41>
+References: <20190211045059.11821-1-jitao.shi@mediatek.com>
+         <1550160809.6862.13.camel@mtksdaap41>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <87pnrosy29.fsf@kamboji.qca.qualcomm.com>
+In-Reply-To: <1550160809.6862.13.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Kalle Valo <kvalo@codeaurora.org>
-Cc: Ingo Molnar <mingo@redhat.com>, Thomas Gleixner <tglx@linutronix.de>, Borislav Petkov <bp@alien8.de>, "H . Peter Anvin" <hpa@zytor.com>, X86 ML <x86@kernel.org>, linux-wireless@vger.kernel.org, Christoph Hellwig <hch@lst.de>, "David S. Miller" <davem@davemloft.net>, Networking <netdev@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Felix Fietkau <nbd@nbd.name>, Matthias Brugger <matthias.bgg@gmail.com>
+To: CK Hu <ck.hu@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Feb 19, 2019 at 4:38 AM Kalle Valo <kvalo@codeaurora.org> wrote:
->
-> Kalle Valo <kvalo@codeaurora.org> writes:
->
-> > Kalle Valo <kvalo@codeaurora.org> writes:
-> >
-> >> Masahiro Yamada <yamada.masahiro@socionext.com> writes:
-> >>
-> >>> __sw_hweight8() is just internal implementation.
-> >>>
-> >>> Drivers should use the common API, hweight8().
-> >>>
-> >>> Signed-off-by: Masahiro Yamada <yamada.masahiro@socionext.com>
-> >>
-> >> Acked-by: Kalle Valo <kvalo@codeaurora.org>
-> >>
-> >>> This patch should go to x86 tree along with 2/2.
-> >>>
-> >>> Otherwise, all{yes,mod}config of x86 would be broken.
-> >>>
-> >>> This patch is trivial enough.
-> >>> I want ACK from the net/wireless maintainer
-> >>> so that this can go in via x86 tree.
-> >>
-> >> Sounds good to me, feel free to push via the x86 tree.
-> >
-> > Actually, can you wait a bit? Felix just reminded me that we have a
-> > similar patch pending from Ben Hutchings:
-> >
-> > https://patchwork.kernel.org/patch/10808203/
-> >
-> > And it seems there are two instances of __sw_hweight8, at least in my
-> > wireless-drivers-next tree:
-> >
-> > drivers/net/wireless/mediatek/mt76/mac80211.c: int i, nstream =
-> > __sw_hweight8(dev->antenna_mask);
-> > drivers/net/wireless/mediatek/mt76/mac80211.c: int n_chains =
-> > __sw_hweight8(dev->antenna_mask);
-> >
-> > So we need to think what to do.
->
-> I think the best would be that Felix applies Ben's patch to the wireless
-> tree and I'll push it to Linus during the next merge window (via
-> net-next). Simpler and less conflicts that way.
->
-> So Masahiro, could you hold your x86 patch for a while until the mt76
-> patch will be in Linus' tree? That should not take more than two weeks,
-> I think.
+On Fri, 2019-02-15 at 00:13 +0800, CK Hu wrote:
+> Hi, Jitao:
+> 
+> On Mon, 2019-02-11 at 12:50 +0800, Jitao Shi wrote:
+> > MT8183 sample on rising and falling edge. It can reduce half data io.
+> > 
+> > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_dpi.c | 29 +++++++++++++++++++++++++++++
+> >  1 file changed, 29 insertions(+)
+> > 
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > index 62a9d47df948..610c23334047 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > @@ -117,6 +117,7 @@ struct mtk_dpi_conf {
+> >  	unsigned int (*cal_factor)(int clock);
+> >  	u32 reg_h_fre_con;
+> >  	bool edge_sel_en;
+> > +	bool dual_edge;
+> >  };
+> >  
+> >  static void mtk_dpi_mask(struct mtk_dpi *dpi, u32 offset, u32 val, u32 mask)
+> > @@ -353,6 +354,13 @@ static void mtk_dpi_config_disable_edge(struct mtk_dpi *dpi)
+> >  		mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, 0, EDGE_SEL_EN);
+> >  }
+> >  
+> > +static void mtk_dpi_enable_dual_edge(struct mtk_dpi *dpi)
+> > +{
+> > +	mtk_dpi_mask(dpi, DPI_DDR_SETTING, DDR_EN | DDR_4PHASE,
+> > +		     DDR_EN | DDR_4PHASE);
+> > +	mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING, EDGE_SEL, EDGE_SEL);
+> > +}
+> 
+> All these register exist in MT8173, if you do the same setting in
+> MT8173, could it also sample on rising edge and falling edge?
+> 
+> Regards,
+> CK
 
-Sure.
-I will resend 2/2 later.
+Hi CK,
 
+MT8173 has those registers. But the hw function is removed.
+So MT8173 doesn't support DPI dual edge sample.
 
-
-
--- 
 Best Regards
-Masahiro Yamada
+Jitao
+
+> 
+> > +
+> >  static void mtk_dpi_config_color_format(struct mtk_dpi *dpi,
+> >  					enum mtk_dpi_out_color_format format)
+> >  {
+> > @@ -509,6 +517,8 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+> >  	mtk_dpi_config_color_format(dpi, dpi->color_format);
+> >  	mtk_dpi_config_2n_h_fre(dpi);
+> >  	mtk_dpi_config_disable_edge(dpi);
+> > +	if (dpi->conf->dual_edge)
+> > +		mtk_dpi_enable_dual_edge(dpi);
+> >  	mtk_dpi_sw_reset(dpi, false);
+> >  
+> >  	return 0;
+> > @@ -671,6 +681,16 @@ static unsigned int mt2701_calculate_factor(int clock)
+> >  		return 2;
+> >  }
+> >  
+> > +static unsigned int mt8183_calculate_factor(int clock)
+> > +{
+> > +	if (clock <= 27000)
+> > +		return 8;
+> > +	else if (clock <= 167000)
+> > +		return 4;
+> > +	else
+> > +		return 2;
+> > +}
+> > +
+> >  static const struct mtk_dpi_conf mt8173_conf = {
+> >  	.cal_factor = mt8173_calculate_factor,
+> >  	.reg_h_fre_con = 0xe0,
+> > @@ -682,6 +702,12 @@ static const struct mtk_dpi_conf mt2701_conf = {
+> >  	.edge_sel_en = true,
+> >  };
+> >  
+> > +static const struct mtk_dpi_conf mt8183_conf = {
+> > +	.cal_factor = mt8183_calculate_factor,
+> > +	.reg_h_fre_con = 0xe0,
+> > +	.dual_edge = true,
+> > +};
+> > +
+> >  static int mtk_dpi_probe(struct platform_device *pdev)
+> >  {
+> >  	struct device *dev = &pdev->dev;
+> > @@ -777,6 +803,9 @@ static const struct of_device_id mtk_dpi_of_ids[] = {
+> >  	{ .compatible = "mediatek,mt8173-dpi",
+> >  	  .data = &mt8173_conf,
+> >  	},
+> > +	{ .compatible = "mediatek,mt8183-dpi",
+> > +	  .data = &mt8183_conf,
+> > +	},
+> >  	{ },
+> >  };
+> >  
+> 
+> 
