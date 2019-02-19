@@ -1,7 +1,7 @@
 From: wangyan wang <wangyan.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH V4 3/8] drm/mediatek: using different flags of clk for HDMI phy
-Date: Tue, 19 Feb 2019 17:31:10 +0800
-Message-ID: <20190219093115.16449-4-wangyan.wang@mediatek.com>
+Subject: [PATCH V4 5/8] clk: mediatek: add MUX_GATE_FLAGS_2
+Date: Tue, 19 Feb 2019 17:31:12 +0800
+Message-ID: <20190219093115.16449-6-wangyan.wang@mediatek.com>
 References: <20190219093115.16449-1-wangyan.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -23,95 +23,72 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: chunhui dai <chunhui.dai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-The parent rate of hdmi phy had set by DPI driver.
-We should not set or change the parent rate of MT2701 hdmi phy,
-as a result we should remove the flags of "CLK_SET_RATE_PARENT"
-from the clock of MT2701 hdmi phy.
+Add MUX_GATE_FLAGS_2 for the clock which needs to set two falgs.
+Such as some mux need to set the flags of "CLK_MUX_ROUND_CLOSEST".
 
 Reviewed-by: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Signed-off-by: chunhui dai <chunhui.dai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Signed-off-by: wangyan wang <wangyan.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- drivers/gpu/drm/mediatek/mtk_hdmi_phy.c        | 13 +++++--------
- drivers/gpu/drm/mediatek/mtk_hdmi_phy.h        |  1 +
- drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c |  1 +
- drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c |  1 +
- 4 files changed, 8 insertions(+), 8 deletions(-)
+ drivers/clk/mediatek/clk-mtk.c |  2 +-
+ drivers/clk/mediatek/clk-mtk.h | 20 ++++++++++++++------
+ 2 files changed, 15 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-index 13c5e65b9ead..370309d684ec 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-@@ -107,13 +107,11 @@ mtk_hdmi_phy_dev_get_ops(const struct mtk_hdmi_phy *hdmi_phy)
- 		return NULL;
- }
+diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
+index 9c0ae4278a94..2ed996404804 100644
+--- a/drivers/clk/mediatek/clk-mtk.c
++++ b/drivers/clk/mediatek/clk-mtk.c
+@@ -167,7 +167,7 @@ struct clk *mtk_clk_register_composite(const struct mtk_composite *mc,
+ 		mux->mask = BIT(mc->mux_width) - 1;
+ 		mux->shift = mc->mux_shift;
+ 		mux->lock = lock;
+-
++		mux->flags = mc->mux_flags;
+ 		mux_hw = &mux->hw;
+ 		mux_ops = &clk_mux_ops;
  
--static void mtk_hdmi_phy_clk_get_ops(struct mtk_hdmi_phy *hdmi_phy,
--				     const struct clk_ops **ops)
-+static void mtk_hdmi_phy_clk_get_data(struct mtk_hdmi_phy *hdmi_phy,
-+				     struct clk_init_data *clk_init)
- {
--	if (hdmi_phy && hdmi_phy->conf && hdmi_phy->conf->hdmi_phy_clk_ops)
--		*ops = hdmi_phy->conf->hdmi_phy_clk_ops;
--	else
--		dev_err(hdmi_phy->dev, "Failed to get clk ops of phy\n");
-+	clk_init->flags = hdmi_phy->conf->flags;
-+	clk_init->ops = hdmi_phy->conf->hdmi_phy_clk_ops;
- }
+diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+index f83c2bbb677e..4b88d196d52f 100644
+--- a/drivers/clk/mediatek/clk-mtk.h
++++ b/drivers/clk/mediatek/clk-mtk.h
+@@ -81,15 +81,13 @@ struct mtk_composite {
+ 	signed char divider_shift;
+ 	signed char divider_width;
  
- static int mtk_hdmi_phy_probe(struct platform_device *pdev)
-@@ -126,7 +124,6 @@ static int mtk_hdmi_phy_probe(struct platform_device *pdev)
- 	struct clk_init_data clk_init = {
- 		.num_parents = 1,
- 		.parent_names = (const char * const *)&ref_clk_name,
--		.flags = CLK_SET_RATE_PARENT | CLK_SET_RATE_GATE,
- 	};
++	unsigned char mux_flags;
++
+ 	signed char num_parents;
+ };
  
- 	struct phy *phy;
-@@ -164,7 +161,7 @@ static int mtk_hdmi_phy_probe(struct platform_device *pdev)
- 	hdmi_phy->dev = dev;
- 	hdmi_phy->conf =
- 		(struct mtk_hdmi_phy_conf *)of_device_get_match_data(dev);
--	mtk_hdmi_phy_clk_get_ops(hdmi_phy, &clk_init.ops);
-+	mtk_hdmi_phy_clk_get_data(hdmi_phy, &clk_init);
- 	hdmi_phy->pll_hw.init = &clk_init;
- 	hdmi_phy->pll = devm_clk_register(dev, &hdmi_phy->pll_hw);
- 	if (IS_ERR(hdmi_phy->pll)) {
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-index fdad8b17a915..446e2acd1926 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-@@ -21,6 +21,7 @@ struct mtk_hdmi_phy;
+-/*
+- * In case the rate change propagation to parent clocks is undesirable,
+- * this macro allows to specify the clock flags manually.
+- */
+-#define MUX_GATE_FLAGS(_id, _name, _parents, _reg, _shift, _width,	\
+-			_gate, _flags) {				\
++#define MUX_GATE_FLAGS_2(_id, _name, _parents, _reg, _shift,		\
++				_width, _gate, _flags, _muxflags) {	\
+ 		.id = _id,						\
+ 		.name = _name,						\
+ 		.mux_reg = _reg,					\
+@@ -101,8 +99,18 @@ struct mtk_composite {
+ 		.parent_names = _parents,				\
+ 		.num_parents = ARRAY_SIZE(_parents),			\
+ 		.flags = _flags,					\
++		.mux_flags = _muxflags,					\
+ 	}
  
- struct mtk_hdmi_phy_conf {
- 	bool tz_disabled;
-+	unsigned long flags;
- 	const struct clk_ops *hdmi_phy_clk_ops;
- 	void (*hdmi_phy_enable_tmds)(struct mtk_hdmi_phy *hdmi_phy);
- 	void (*hdmi_phy_disable_tmds)(struct mtk_hdmi_phy *hdmi_phy);
-diff --git a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-index b26fb7dbdb28..43bc058d5528 100644
---- a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-+++ b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-@@ -234,6 +234,7 @@ static void mtk_hdmi_phy_disable_tmds(struct mtk_hdmi_phy *hdmi_phy)
- 
- struct mtk_hdmi_phy_conf mtk_hdmi_phy_2701_conf = {
- 	.tz_disabled = true,
-+	.flags = CLK_SET_RATE_NO_REPARENT | CLK_SET_RATE_GATE,
- 	.hdmi_phy_clk_ops = &mtk_hdmi_phy_pll_ops,
- 	.hdmi_phy_enable_tmds = mtk_hdmi_phy_enable_tmds,
- 	.hdmi_phy_disable_tmds = mtk_hdmi_phy_disable_tmds,
-diff --git a/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
-index cb23c1e4692a..63dde42521b8 100644
---- a/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
-+++ b/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
-@@ -317,6 +317,7 @@ static void mtk_hdmi_phy_disable_tmds(struct mtk_hdmi_phy *hdmi_phy)
- }
- 
- struct mtk_hdmi_phy_conf mtk_hdmi_phy_8173_conf = {
-+	.flags = CLK_SET_RATE_PARENT | CLK_SET_RATE_GATE,
- 	.hdmi_phy_clk_ops = &mtk_hdmi_phy_pll_ops,
- 	.hdmi_phy_enable_tmds = mtk_hdmi_phy_enable_tmds,
- 	.hdmi_phy_disable_tmds = mtk_hdmi_phy_disable_tmds,
++/*
++ * In case the rate change propagation to parent clocks is undesirable,
++ * this macro allows to specify the clock flags manually.
++ */
++#define MUX_GATE_FLAGS(_id, _name, _parents, _reg, _shift, _width,	\
++			_gate, _flags)					\
++		MUX_GATE_FLAGS_2(_id, _name, _parents, _reg,		\
++					_shift, _width, _gate, _flags, 0)
++
+ /*
+  * Unless necessary, all MUX_GATE clocks propagate rate changes to their
+  * parent clock by default.
 -- 
 2.14.1
