@@ -1,115 +1,91 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: Re: [PATCH 2/2] PCI: mediatek: Add controller support for MT7629
-Date: Tue, 19 Feb 2019 15:03:53 +0000
-Message-ID: <20190219150352.GA21833@e107981-ln.cambridge.arm.com>
-References: <1544058553-10936-3-git-send-email-jianjun.wang@mediatek.com>
- <20181213145517.GB4701@google.com>
- <1545034779.8528.8.camel@mhfsdcap03>
- <20181217143247.GK20725@google.com>
- <20181217154645.GA24864@e107981-ln.cambridge.arm.com>
- <1545124764.25199.3.camel@mhfsdcap03>
- <20181220182043.GC183878@google.com>
- <1545651628.5634.57.camel@mhfsdcap03>
- <20190123154023.GA1157@e107981-ln.cambridge.arm.com>
- <1550559699.29794.2.camel@mhfsdcap03>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v7 3/6] dt-bindings: pinctrl: mt8183: add binding document
+Date: Tue, 19 Feb 2019 09:21:57 -0600
+Message-ID: <CAL_JsqKgp615eJZnSu6aogzLwubnBKdxdU8+19hj=hS1aOWefA@mail.gmail.com>
+References: <1550210558-30516-1-git-send-email-erin.lo@mediatek.com>
+ <1550210558-30516-4-git-send-email-erin.lo@mediatek.com> <20190218163211.GB2714@bogus>
+ <1550544357.4739.32.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1550559699.29794.2.camel@mhfsdcap03>
+In-Reply-To: <1550544357.4739.32.camel@mhfsdcap03>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jianjun Wang <jianjun.wang@mediatek.com>
-Cc: Bjorn Helgaas <helgaas@kernel.org>, ryder.lee@mediatek.com, robh+dt@kernel.org, matthias.bgg@gmail.com, linux-pci@vger.kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, youlin.pei@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, honghui.zhang@mediatek.com, linux-arm-kernel@lists.infradead.org
+To: Zhiyong Tao <zhiyong.tao@mediatek.com>
+Cc: Erin Lo <erin.lo@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <marc.zyngier@arm.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Stephen Boyd <sboyd@codeaurora.org>, devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, Yingjoe Chen <yingjoe.chen@media>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Feb 19, 2019 at 03:01:39PM +0800, Jianjun Wang wrote:
-> On Wed, 2019-01-23 at 15:40 +0000, Lorenzo Pieralisi wrote:
-> > On Mon, Dec 24, 2018 at 07:40:28PM +0800, Jianjun Wang wrote:
-> > > On Thu, 2018-12-20 at 12:20 -0600, Bjorn Helgaas wrote:
-> > > > On Tue, Dec 18, 2018 at 05:19:24PM +0800, Jianjun Wang wrote:
-> > > > > On Mon, 2018-12-17 at 15:46 +0000, Lorenzo Pieralisi wrote:
-> > > > > > On Mon, Dec 17, 2018 at 08:32:47AM -0600, Bjorn Helgaas wrote:
-> > > > > > > On Mon, Dec 17, 2018 at 04:19:39PM +0800, Jianjun Wang wrote:
-> > > > > > > > On Thu, 2018-12-13 at 08:55 -0600, Bjorn Helgaas wrote:
-> > > > > > > > > On Thu, Dec 06, 2018 at 09:09:13AM +0800, Jianjun Wang wrote:
-> > > > > > > > > > The read value of BAR0 is 0xffff_ffff, it's size will be
-> > > > > > > > > > calculated as 4GB in arm64 but bogus alignment values at
-> > > > > > > > > > arm32, the pcie device and devices behind this bridge will
-> > > > > > > > > > not be enabled. Fix it's BAR0 resource size to guarantee
-> > > > > > > > > > the pcie devices will be enabled correctly.
-> > > > > > > > > 
-> > > > > > > > > So this is a hardware erratum?  Per spec, a memory BAR has
-> > > > > > > > > bit 0 hardwired to 0, and an IO BAR has bit 1 hardwired to
-> > > > > > > > > 0.
-> > > > > > > > 
-> > > > > > > > Yes, it only works properly on 64bit platform.
-> > > > > > > 
-> > > > > > > I don't understand.  BARs are supposed to work the same
-> > > > > > > regardless of whether it's a 32- or 64-bit platform.  If this is
-> > > > > > > a workaround for a hardware defect, please just say that
-> > > > > > > explicitly.
-> > > > > > 
-> > > > > > I do not understand this either. First thing to do is to describe
-> > > > > > the problem properly so that we can actually find a solution to
-> > > > > > it.
-> > > > > 
-> > > > > This BAR0 is a 64-bit memory BAR, the HW default values for this BAR
-> > > > > is 0xffff_ffff_0000_0000 and it could not be changed except by
-> > > > > config write operation.
-> > > > 
-> > > > If you literally get 0xffff_ffff_0000_0000 when reading the BAR, that
-> > > > is out of spec because the low-order 4 bits of a 64-bit memory BAR
-> > > > cannot all be zero.
-> > > > 
-> > > > A 64-bit BAR consumes two DWORDS in config space.  For a 64-bit BAR0,
-> > > > the DWORD at 0x10 contains the low-order bits, and the DWORD at 0x14
-> > > > contains the upper 32 bits.  Bits 0-3 of the low-order DWORD (the
-> > > > one at 0x10) are read-only, and in this case should contain the value
-> > > > 0b1100 (0xc).  That means the range is prefetchable (bit 3 == 1) and
-> > > > the BAR is 64 bits (bits 2:1 == 10).
-> > > 
-> > > Sorry, I have confused the HW default value and the read value of BAR
-> > > size. The hardware default value is 0xffff_ffff_0000_000c, it's a 64-bit
-> > > BAR with prefetchable range.
-> > > 
-> > > When we start to decoding the BAR, the read value of BAR0 at 0x10 is
-> > > 0x0c, and the value at 0x14 is 0xffff_ffff, so the read value of BAR
-> > > size is 0xffff_ffff_0000_0000, which will be decoded to 0xffff_ffff, and
-> > > it will be set to the end value of BAR0 resource in the pci_dev.
-> > > > 
-> > > > > The calculated BAR size will be 0 in 32-bit platform since the
-> > > > > phys_addr_t is a 32bit value in 32-bit platform.
-> > > > 
-> > > > Either (1) this is a hardware defect that feeds incorrect data to the
-> > > > BAR size calculation, or (2) there's a problem in the BAR size
-> > > > calculation code.  We need to figure out which one and work around or
-> > > > fix it correctly.
-> > > 
-> > > The BAR size is calculated by the code (res->end - res->start + 1) is
-> > > fine, I think it's a hardware defect because that we can not change the
-> > > hardware default value or just disable it since we don't using it.
-> > 
-> > Apologies for the delay in getting back to this.
-> > 
-> > This looks like a kernel defect, not a HW defect.
-> > 
-> > I need some time to make up my mind on what the right fix for this
-> > but it is most certainly not this patch.
-> > 
-> > Lorenzo
-> 
-> Hi Lorenzo,
-> 
-> Is there any better idea about this patch?
+On Mon, Feb 18, 2019 at 8:46 PM Zhiyong Tao <zhiyong.tao@mediatek.com> wrote:
+>
+> On Mon, 2019-02-18 at 10:32 -0600, Rob Herring wrote:
+> > On Fri, Feb 15, 2019 at 02:02:35PM +0800, Erin Lo wrote:
+> > > From: Zhiyong Tao <zhiyong.tao@mediatek.com>
+> > >
+> > > The commit adds mt8183 compatible node in binding document.
+> > >
+> > > Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
+> > > Signed-off-by: Erin Lo <erin.lo@mediatek.com>
+> > > ---
+> > >  .../devicetree/bindings/pinctrl/pinctrl-mt8183.txt | 115 +++++++++++++++++++++
+> > >  1 file changed, 115 insertions(+)
+> > >  create mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-mt8183.txt
+> > >
+> > > diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8183.txt b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8183.txt
+> > > new file mode 100644
+> > > index 0000000..364e673
+> > > --- /dev/null
+> > > +++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8183.txt
+> > > @@ -0,0 +1,115 @@
+> > > +* Mediatek MT8183 Pin Controller
+> > > +
+> > > +The Mediatek's Pin controller is used to control SoC pins.
+> > > +
+> > > +Required properties:
+> > > +- compatible: value should be one of the following.
+> > > +   "mediatek,mt8183-pinctrl", compatible with mt8183 pinctrl.
+> > > +- gpio-controller : Marks the device node as a gpio controller.
+> > > +- #gpio-cells: number of cells in GPIO specifier. Since the generic GPIO
+> > > +  binding is used, the amount of cells must be specified as 2. See the below
+> > > +  mentioned gpio binding representation for description of particular cells.
+> > > +- gpio-ranges : gpio valid number range.
+> > > +- reg: physicall address base for gpio base registers. There are nine
+> > > +  physicall address base in mt8183. They are 0x10005000, 0x11F20000,
+> > > +  0x11E80000, 0x11E70000, 0x11E90000, 0x11D30000, 0x11D20000, 0x11C50000,
+> > > +  0x11F30000.
+> >
+> > You don't need to list out each address, just what each address is. (Or
+> > just '9 GPIO base addresses'.)
+>
+> ==>ok, we will change it.
+> >
+> > > +
+> > > +   Eg: <&pio 6 0>
+> >
+> > How is this an example of reg? Seems something is missing.
+> >
+> > > +   <[phandle of the gpio controller node]
+> > > +   [line number within the gpio controller]
+> > > +   [flags]>
+> > > +
+> > > +   Values for gpio specifier:
+> > > +   - Line number: is a value between 0 to 202.
+> > > +   - Flags:  bit field of flags, as defined in <dt-bindings/gpio/gpio.h>.
+> > > +            Only the following flags are supported:
+> > > +            0 - GPIO_ACTIVE_HIGH
+> > > +            1 - GPIO_ACTIVE_LOW
+> > > +
+> > > +Optional properties:
+> > > +- reg-names: gpio base register names. There are nine gpio base register
+> > > +  names in mt8183. They are "iocfg0", "iocfg1", "iocfg2", "iocfg3", "iocfg4",
+> > > +  "iocfg5", "iocfg6", "iocfg7", "iocfg8".
+> > > +- interrupt-controller: Marks the device node as an interrupt controller
+> > > +- #interrupt-cells: Should be two.
+> > > +- interrupts : The interrupt outputs from the controller.
+> >
+> > outputs? More than 1? If so, need to say what they are and the order.
+> >
+> ==> there is only use one interrupt in mt8183. we will change
+> "interrupts" to "interrupt" in v8.
 
-Hi,
+No, 'interrupts' is always plural. The problem is 'outputs'.
 
-I did not have time to investigate the issue in core code that triggers
-this defect but this patch is not the solution to the problem it is a
-plaster that papers over it, I won't merge it.
-
-I would appreciate some help. If you could have a look at core code that
-triggers the failure we can analyze what should be done to make it work,
-I do not think it is a defect in your IP.
-
-Lorenzo
+Rob
