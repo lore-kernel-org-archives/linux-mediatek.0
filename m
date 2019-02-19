@@ -1,84 +1,104 @@
-From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=
-        <u.kleine-koenig@pengutronix.de>
-Subject: Re: [PATCH v1 2/5] dt-bindings: pwm: add a property
- "mediatek,num-pwms"
-Date: Tue, 19 Feb 2019 08:30:28 +0100
-Message-ID: <20190219073028.eljpo6vlqpgmzcef@pengutronix.de>
-References: <de316385a84e079d3b23891e61c959094b9fa7e5.1547781007.git.ryder.lee@mediatek.com>
- <7e1de17a43f2cde73aecd2773e2b3a5fdfd294f3.1547781007.git.ryder.lee@mediatek.com>
- <7d387d2a-74f0-c6c7-aa2d-cf9b87579682@gmail.com>
- <20190218203658.GA20434@bogus>
+From: <min.guo@mediatek.com>
+Subject: [PATCH v5 0/6] Add MediaTek MUSB Controller Driver
+Date: Tue, 19 Feb 2019 15:36:29 +0800
+Message-ID: <1550561795-31132-1-git-send-email-min.guo@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190218203658.GA20434@bogus>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, linux-pwm@vger.kernel.org, Sean Wang <sean.wang@kernel.org>, Weijie Gao <weijie.gao@mediatek.com>, linux-kernel@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: Bin Liu <b-liu@ti.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, chunfeng.yun@mediatek.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, tony@atomide.com, hdegoede@redhat.com, Min Guo <min.guo@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Feb 18, 2019 at 02:36:58PM -0600, Rob Herring wrote:
-> On Fri, Jan 18, 2019 at 09:44:49AM +0100, Matthias Brugger wrote:
-> > 
-> > 
-> > On 18/01/2019 04:24, Ryder Lee wrote:
-> > > This adds a property "mediatek,num-pwms" in example so that we could
-> > > set the number of PWM channels via device tree.
-> > > 
-> > > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> > > Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> > > ---
-> > > Changes since v1: add a Reviewed-by tag.
-> > > ---
-> > >  Documentation/devicetree/bindings/pwm/pwm-mediatek.txt | 2 ++
-> > >  1 file changed, 2 insertions(+)
-> > > 
-> > > diff --git a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> > > index 991728c..f9e2d1f 100644
-> > > --- a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> > > +++ b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> > > @@ -20,6 +20,7 @@ Required properties:
-> > >   - pinctrl-names: Must contain a "default" entry.
-> > >   - pinctrl-0: One property must exist for each entry in pinctrl-names.
-> > >     See pinctrl/pinctrl-bindings.txt for details of the property values.
-> > > + - mediatek,num-pwms: the number of PWM channels.
-> > >  
-> > >  Example:
-> > >  	pwm0: pwm@11006000 {
-> > > @@ -37,4 +38,5 @@ Example:
-> > >  			      "pwm3", "pwm4", "pwm5";
-> > >  		pinctrl-names = "default";
-> > >  		pinctrl-0 = <&pwm0_pins>;
-> > > +		mediatek,num-pwms = <5>;
-> > >  	};
-> > > 
-> > 
-> > Wasn't there a comment in the last version to use num-pwms instead of
-> > mediatek,num-pwms?
-> > 
-> > Uwe I think you requested that.
-> 
-> Perhaps, but why is this needed? Typically, this would be implied by the 
-> compatible or the driver doesn't care and we assume 'pwms' properties 
-> are not out of range.
+From: Min Guo <min.guo@mediatek.com>
 
-I think it is sensible to standardize such a property because there are
-a few drivers that support different variants of PWMs that only differ
-in the number of supported pwms. See for example pwm-mediatek and
-pwm-sun4i. I wrote a longer motivation in a mail that is available at
-https://www.spinics.net/lists/linux-pwm/msg08859.html.
+These patches introduce the MediaTek MUSB controller driver.
 
-The short version is that there are at least four drivers that have to
-solve the same task to determine the number of available pwms from the
-compatible. While this isn't a hard task it seems sensible to me to
-describe this generic property of a piece of hardware that provides PWMs
-in the device tree instead of implementing a table in the driver.
+The driver can be configured as Dual-Role Device (DRD),
+Peripheral Only and Host Only modes. This has beed tested on
+MT2701 with a variety of devices in host mode and with the 
+f_mass gadget driver in peripheral mode, plugging otg cables
+in/out a lot of times in all possible imaginable plug orders.
 
-Best regards
-Uwe
+changes in v5:
+changes of dt-bindings suggested by Rob:
+1. Modify compatible as 
+- compatible : should be one of:
+               "mediatek,mt-2701"
+               ...
+               followed by "mediatek,mtk-musb"
+2. Add usb connector child node
+changes of DTS:
+1. Add usb connector child node
+changes of driver suggested by Bin:
+1. Replace musb_readb() with musb_clearb() to clear dma pending interrupts
+2. Replace musb_readb() with musb_clearb() to clear common/tx/rx pending interrupts
+3. Make musb_clearb/w() return the value of musb_readb/w()
+
+changes in v4:
+changes of dt-bindings suggested by Sergei:
+1. String alignment
+changes of driver suggested by Tony and Bin:
+1. Add a new patch for set/get_toggle()
+2. Add a new patch for noirq type of dma
+3. Add a new patch musb_clearb/w()
+4. Abondon patch "usb: musb: Delete the const attribute of addr parameter in readb/w/l hooks"
+
+changes in v3:
+changes of driver suggested by Bin:
+1. Add a new patch for musb_readb/w/l() to remove const attribute 
+2. Use is_out as function parameter in set_toggle/get_toggle() hooks
+3. Remove 'u8/u16 data' parameter in clearb/w() hooks
+4. Remove musb_default_clearb/w()
+5. Replace musb_readb/w() with musb_clearb/w() to clear pending interrupts 
+6. Add comments to clearb/w() hooks
+7. Replace musb_save_toggle() with musb->io.get_toggle()
+8. Replace musb_set_toggle() with musb->io.set_toggle()
+
+changes in v2:
+changes of dt-bindings suggested by Rob and Bin:
+1. Modify DRC to DRD
+2. Drop the "<soc-model>-musb" in compatible
+3. Remove phy-names
+4. Add space after comma in clock-names
+dtsi:
+1. Remove phy-names
+changes of driver suggested by Bin:
+1. Add a new patch for musb_set_toggle
+2. Add summarize of MediaTek musb controller differences in the commit log
+3. Abondon patch "usb: musb: Move musbhsdma macro definition to musb_dma.h"
+4. Add "|| COMPILE_TEST" in Kconfig
+5. Add musb_clearb() and musb_clearw() hooks
+6. Add get_toggle() and set_toggle() hooks
+7. Replace musb_readl() with musb_readw() to read 16bit toggle register
+8. Move MediaTek's private toggle registers from musb_regs.h to mediatek.c
+9. Create musbhs_dma_controller_create_noirq()
+
+Min Guo (6):
+  dt-bindings: usb: musb: Add support for MediaTek musb controller
+  arm: dts: mt2701: Add usb2 device nodes
+  usb: musb: Add get/set toggle hooks
+  usb: musb: Add noirq type of dma create interface
+  usb: musb: Add musb_clearb/w() interface
+  usb: musb: Add support for MediaTek musb controller
+
+ .../devicetree/bindings/usb/mediatek,musb.txt      |  54 ++
+ arch/arm/boot/dts/mt2701-evb.dts                   |  26 +
+ arch/arm/boot/dts/mt2701.dtsi                      |  33 ++
+ drivers/usb/musb/Kconfig                           |   8 +-
+ drivers/usb/musb/Makefile                          |   1 +
+ drivers/usb/musb/mediatek.c                        | 629 +++++++++++++++++++++
+ drivers/usb/musb/musb_core.c                       |  74 ++-
+ drivers/usb/musb/musb_core.h                       |  13 +-
+ drivers/usb/musb/musb_dma.h                        |   9 +
+ drivers/usb/musb/musb_host.c                       |  46 +-
+ drivers/usb/musb/musb_io.h                         |  12 +-
+ drivers/usb/musb/musbhsdma.c                       |  56 +-
+ drivers/usb/musb/sunxi.c                           |   4 +-
+ drivers/usb/musb/tusb6010.c                        |   2 +-
+ 14 files changed, 895 insertions(+), 72 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/usb/mediatek,musb.txt
+ create mode 100644 drivers/usb/musb/mediatek.c
 
 -- 
-Pengutronix e.K.                           | Uwe Kleine-König            |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+1.9.1
