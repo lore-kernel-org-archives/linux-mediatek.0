@@ -1,91 +1,133 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v1 1/2] drm/mediatek: separate mipi_tx to different file
-Date: Wed, 20 Feb 2019 14:32:16 +0800
-Message-ID: <1550644336.14153.8.camel@mtksdaap41>
-References: <20190219091404.89370-1-jitao.shi@mediatek.com>
- <20190219091404.89370-2-jitao.shi@mediatek.com>
+From: Jungo Lin <jungo.lin@mediatek.com>
+Subject: Re: [RFC PATCH V0 7/7] [media] platform: mtk-isp: Add Mediatek ISP
+ Pass 1 driver
+Date: Wed, 20 Feb 2019 15:31:07 +0800
+Message-ID: <1550647867.11724.80.camel@mtksdccf07>
+References: <1549348966-14451-1-git-send-email-frederic.chen@mediatek.com>
+ <1549348966-14451-8-git-send-email-frederic.chen@mediatek.com>
+ <CAAFQd5CWdZUXVb4F9BLhQdN8WHjzA8acPDx1i+WcoudsdGsfUg@mail.gmail.com>
+ <1550372163.11724.59.camel@mtksdccf07>
+ <CAAFQd5CaXz_Lqz8NhGK4DvaxPvuYLj-Y73sG7wFaqW44j+tZQw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190219091404.89370-2-jitao.shi@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jitao Shi <jitao.shi@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, stonea168@163.com, dri-devel@lists.freedesktop.org, yingjoe.chen@mediatek.com, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa.cheng@mediatek.com, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, linux-pwm@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, Matthias Brugger <matthias.bgg@gmail.com>, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, Sean Paul <seanpaul@chromium>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <CAAFQd5CaXz_Lqz8NhGK4DvaxPvuYLj-Y73sG7wFaqW44j+tZQw@mail.gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: ryan.yu@mediatek.com, frankie.chiu@mediatek.com, ryan_yu@mediatek.com, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Rynn Wu =?UTF-8?Q?=28=E5=90=B3=E8=82=B2=E6=81=A9=29?= <Rynn.Wu@mediatek.com>, Jerry-ch.Chen@mediatek.com, Hans Verkuil <hans.verkuil@cisco.com>, frankie_chiu@mediatek.com, Frederic Chen <frederic.chen@mediatek.com>, Seraph.Huang@mediatek.com, Linux Media Mailing List <linux-media@vger.kernel.org>, Holmes Chiou =?UTF-8?Q?=28=E9=82=B1=E6=8C=BA=29?= <holmes.chiou@mediatek.com>, seraph_huang@mediatek.com, Sj Huang <sj.huang@mediatek.com>, yuzhao@chromium.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, "list@263.net:IOMMU DRIVERS
+ <iommu@lists.linux-foundation.org>, Joerg  Roedel <joro@8bytes.org>,
+ " <linux-arm-kernel@lists.infradead.org>, Sean
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIEppdGFvOgoKT24gVHVlLCAyMDE5LTAyLTE5IGF0IDE3OjE0ICswODAwLCBKaXRhbyBTaGkg
-d3JvdGU6Cj4gRGlmZmVyZW50IElDIGhhcyBkaWZmZXJlbnQgbWlwaV90eCBzZXR0aW5nIG9mIGRz
-aS4KPiBUaGlzIHBhdGNoIHNlcGFyYXRlcyB0aGUgbWlwaV90eCBoYXJkd2FyZSByZWxhdGUgcGFy
-dCBmb3IgbXQ4MTczLgo+IAo+IFNpZ25lZC1vZmYtYnk6IEppdGFvIFNoaSA8aml0YW8uc2hpQG1l
-ZGlhdGVrLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL01ha2VmaWxlICAg
-ICAgICAgICAgIHwgICAxICsKPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19taXBpX3R4
-LmMgICAgICAgIHwgMzUwICsrLS0tLS0tLS0tLS0tLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX21pcGlfdHguaCAgICAgICAgfCAgNTEgKysrCj4gIGRyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfbXQ4MTczX21pcGlfdHguYyB8IDI5MCArKysrKysrKysrKysrKysKPiAgNCBm
-aWxlcyBjaGFuZ2VkLCAzNzcgaW5zZXJ0aW9ucygrKSwgMzE1IGRlbGV0aW9ucygtKQo+ICBjcmVh
-dGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19taXBpX3R4LmgKPiAg
-Y3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX21p
-cGlfdHguYwo+IAoKW3NuaXBdCj4gIAo+ICtzdGF0aWMgdm9pZCBtdGtfbWlwaV90eF9jbGtfZ2V0
-X29wcyhzdHJ1Y3QgbXRrX21pcGlfdHggKm1pcGlfdHgsCj4gKwkJCQkgICAgY29uc3Qgc3RydWN0
-IGNsa19vcHMgKipvcHMpCj4gK3sKPiArCWlmIChtaXBpX3R4ICYmIG1pcGlfdHgtPmRyaXZlcl9k
-YXRhICYmCj4gKwkgICAgbWlwaV90eC0+ZHJpdmVyX2RhdGEtPm1pcGlfdHhfY2xrX29wcykKPiAr
-CQkqb3BzID0gbWlwaV90eC0+ZHJpdmVyX2RhdGEtPm1pcGlfdHhfY2xrX29wczsKPiArCWVsc2UK
-PiArCQlkZXZfZXJyKG1pcGlfdHgtPmRldiwgIkZhaWxlZCB0byBnZXQgY2xrIG9wcyBvZiBwaHlc
-biIpOwoKQW55IHdoZXJlIGNhbGwgbXRrX21pcGlfdHhfY2xrX2dldF9vcHMoKSB3b3VsZCBtYWtl
-IHN1cmUgbWlwaV90eCBpcyBub3QKTlVMTCwgc28geW91IG5lZWQgbm90IHRvIGNoZWNrIG1pcGlf
-dHguIEFuZCB0aGUgY2hlY2tpbmcgb2YgZHJpdmVyX2RhdGEKYW5kIG1pcGlfdHhfY2xrX29wcyBs
-b29rcyB1bm5lY2Vzc2FyeSBiZWNhdXNlIGFueSBvbmUgd2hvIGltcGxlbWVudCB0aGlzCmRyaXZl
-ciB3b3VsZCBuZXZlciBsZXQgdGhpcyBoYXBwZW4uIFNvIHRoaXMgZnVuY3Rpb24ganVzdCBuZWVk
-IGRvIHRoZQphc3NpZ25tZW50IGFuZCB0aGVyZWZvcmUgdGhpcyBhc3NpZ25tZW50IGNvdWxkIGp1
-c3QgZG8gaW4gcHJvYmUoKS4KClJlZ2FyZHMsCkNLCgo+ICt9Cj4gKwo+ICBzdGF0aWMgaW50IG10
-a19taXBpX3R4X3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIHsKPiAgCXN0
-cnVjdCBkZXZpY2UgKmRldiA9ICZwZGV2LT5kZXY7Cj4gIAlzdHJ1Y3QgbXRrX21pcGlfdHggKm1p
-cGlfdHg7Cj4gIAlzdHJ1Y3QgcmVzb3VyY2UgKm1lbTsKPiAtCXN0cnVjdCBjbGsgKnJlZl9jbGs7
-Cj4gIAljb25zdCBjaGFyICpyZWZfY2xrX25hbWU7Cj4gIAlzdHJ1Y3QgY2xrX2luaXRfZGF0YSBj
-bGtfaW5pdCA9IHsKPiAtCQkub3BzID0gJm10a19taXBpX3R4X3BsbF9vcHMsCj4gIAkJLm51bV9w
-YXJlbnRzID0gMSwKPiAgCQkucGFyZW50X25hbWVzID0gKGNvbnN0IGNoYXIgKiBjb25zdCAqKSZy
-ZWZfY2xrX25hbWUsCj4gIAkJLmZsYWdzID0gQ0xLX1NFVF9SQVRFX0dBVEUsCj4gQEAgLTQwOCw2
-ICsxMzIsNyBAQCBzdGF0aWMgaW50IG10a19taXBpX3R4X3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9k
-ZXZpY2UgKnBkZXYpCj4gIAkJcmV0dXJuIC1FTk9NRU07Cj4gIAo+ICAJbWlwaV90eC0+ZHJpdmVy
-X2RhdGEgPSBvZl9kZXZpY2VfZ2V0X21hdGNoX2RhdGEoZGV2KTsKPiArCj4gIAltZW0gPSBwbGF0
-Zm9ybV9nZXRfcmVzb3VyY2UocGRldiwgSU9SRVNPVVJDRV9NRU0sIDApOwo+ICAJbWlwaV90eC0+
-cmVncyA9IGRldm1faW9yZW1hcF9yZXNvdXJjZShkZXYsIG1lbSk7Cj4gIAlpZiAoSVNfRVJSKG1p
-cGlfdHgtPnJlZ3MpKSB7Cj4gQEAgLTQxNiwxMyArMTQxLDE0IEBAIHN0YXRpYyBpbnQgbXRrX21p
-cGlfdHhfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgCQlyZXR1cm4gcmV0
-Owo+ICAJfQo+ICAKPiAtCXJlZl9jbGsgPSBkZXZtX2Nsa19nZXQoZGV2LCBOVUxMKTsKPiAtCWlm
-IChJU19FUlIocmVmX2NsaykpIHsKPiAtCQlyZXQgPSBQVFJfRVJSKHJlZl9jbGspOwo+ICsJbWlw
-aV90eC0+cmVmX2NsayA9IGRldm1fY2xrX2dldChkZXYsIE5VTEwpOwo+ICsJaWYgKElTX0VSUiht
-aXBpX3R4LT5yZWZfY2xrKSkgewo+ICsJCXJldCA9IFBUUl9FUlIobWlwaV90eC0+cmVmX2Nsayk7
-Cj4gIAkJZGV2X2VycihkZXYsICJGYWlsZWQgdG8gZ2V0IHJlZmVyZW5jZSBjbG9jazogJWRcbiIs
-IHJldCk7Cj4gIAkJcmV0dXJuIHJldDsKPiAgCX0KPiAtCXJlZl9jbGtfbmFtZSA9IF9fY2xrX2dl
-dF9uYW1lKHJlZl9jbGspOwo+ICsKPiArCXJlZl9jbGtfbmFtZSA9IF9fY2xrX2dldF9uYW1lKG1p
-cGlfdHgtPnJlZl9jbGspOwo+ICAKPiAgCXJldCA9IG9mX3Byb3BlcnR5X3JlYWRfc3RyaW5nKGRl
-di0+b2Zfbm9kZSwgImNsb2NrLW91dHB1dC1uYW1lcyIsCj4gIAkJCQkgICAgICAmY2xrX2luaXQu
-bmFtZSk7Cj4gQEAgLTQzMSw2ICsxNTcsOCBAQCBzdGF0aWMgaW50IG10a19taXBpX3R4X3Byb2Jl
-KHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAkJcmV0dXJuIHJldDsKPiAgCX0KPiAg
-Cj4gKwltdGtfbWlwaV90eF9jbGtfZ2V0X29wcyhtaXBpX3R4LCAmY2xrX2luaXQub3BzKTsKPiAr
-Cj4gIAltaXBpX3R4LT5wbGxfaHcuaW5pdCA9ICZjbGtfaW5pdDsKPiAgCW1pcGlfdHgtPnBsbCA9
-IGRldm1fY2xrX3JlZ2lzdGVyKGRldiwgJm1pcGlfdHgtPnBsbF9odyk7Cj4gIAlpZiAoSVNfRVJS
-KG1pcGlfdHgtPnBsbCkpIHsKPiBAQCAtNDY1LDIwICsxOTMsMTIgQEAgc3RhdGljIGludCBtdGtf
-bWlwaV90eF9yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgCXJldHVybiAw
-Owo+ICB9Cj4gIAo+IC1zdGF0aWMgY29uc3Qgc3RydWN0IG10a19taXBpdHhfZGF0YSBtdDI3MDFf
-bWlwaXR4X2RhdGEgPSB7Cj4gLQkubXBwbGxfcHJlc2VydmUgPSAoMyA8PCA4KQo+IC19Owo+IC0K
-PiAtc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfbWlwaXR4X2RhdGEgbXQ4MTczX21pcGl0eF9kYXRh
-ID0gewo+IC0JLm1wcGxsX3ByZXNlcnZlID0gKDAgPDwgOCkKPiAtfTsKPiAtCj4gIHN0YXRpYyBj
-b25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIG10a19taXBpX3R4X21hdGNoW10gPSB7Cj4gIAl7IC5j
-b21wYXRpYmxlID0gIm1lZGlhdGVrLG10MjcwMS1taXBpLXR4IiwKPiAgCSAgLmRhdGEgPSAmbXQy
-NzAxX21pcGl0eF9kYXRhIH0sCj4gIAl7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1t
-aXBpLXR4IiwKPiAgCSAgLmRhdGEgPSAmbXQ4MTczX21pcGl0eF9kYXRhIH0sCj4gLQl7fSwKPiAr
-CXsgfSwKPiAgfTsKPiAgCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
-dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
-aS1kZXZlbA==
+On Tue, 2019-02-19 at 17:51 +0900, Tomasz Figa wrote:
+> Hi Jungo,
+> 
+> On Sun, Feb 17, 2019 at 11:56 AM Jungo Lin <jungo.lin@mediatek.com> wrote:
+> >
+> > On Wed, 2019-02-13 at 18:50 +0900, Tomasz Figa wrote:
+> > > (() . ( strHi Frederic, Jungo,
+> > >
+> > > On Tue, Feb 5, 2019 at 3:43 PM Frederic Chen <frederic.chen@mediatek.com> wrote:
+> > > >
+> > > > From: Jungo Lin <jungo.lin@mediatek.com>
+> > > >
+> > > > This patch adds the driver for Pass unit in Mediatek's camera
+> > > > ISP system. Pass 1 unit is embedded in Mediatek SOCs. It
+> > > > provides RAW processing which includes optical black correction,
+> > > > defect pixel correction, W/IR imbalance correction and lens
+> > > > shading correction.
+> > > >
+> > > > The mtk-isp directory will contain drivers for multiple IP
+> > > > blocks found in Mediatek ISP system. It will include ISP Pass 1
+> > > > driver, sensor interface driver, DIP driver and face detection
+> > > > driver.
+> > >
+> > > Thanks for the patches! Please see my comments inline.
+> > >
+> >
+> > Dear Thomas:
+> >
+> > Thanks for your comments.
+> >
+> > We will revise the source codes based on your comments.
+> > Since there are many comments to fix/revise, we will categorize &
+> > prioritize these with below list:
+> >
+> > 1. Coding style issues.
+> > 2. Coding defects, including unused codes.
+> > 3. Driver architecture refactoring, such as removing mtk_cam_ctx,
+> > unnecessary abstraction layer, etc.
+> >
+> 
+> Thanks for replying to the comments!
+> 
+> Just to clarify, there is no need to hurry with resending a next patch
+> set with only a subset of the changes. Please take your time to
+> address all the comments before sending the next revision. This
+> prevents forgetting about some remaining comments and also lets other
+> reviewers come with new comments or some alternative ideas for already
+> existing comments. Second part of my review is coming too.
+> 
+> P.S. Please avoid top-posting on mailing lists. If replying to a
+> message, please reply below the related part of that message. (I've
+> moved your reply to the place in the email where it should be.)
+> 
+> [snip]
+
+Hi, Tomasz,
+
+Thanks for your advice.
+We will prepare the next patch set after all comments are revised.
+
+
+> > > > +       phys_addr_t paddr;
+> > >
+> > > We shouldn't need physical address either. I suppose this is for the
+> > > SCP, but then it should be a DMA address obtained from dma_map_*()
+> > > with struct device pointer of the SCP.
+> > >
+> >
+> > Yes, this physical address is designed for SCP.
+> > For tuning buffer, it will be touched by SCP and
+> > SCP can't get the physical address by itself. So we need to get
+> > this physical address in the kernel space via mtk_cam_smem_iova_to_phys
+> > function call and pass it to the SCP. At the same time, DMA address
+> > (daddr) is used for ISP HW.
+> >
+> 
+> Right, but my point is that in the kernel phys_addr_t is the physical
+> address from the CPU point of view. Any address from device point of
+> view is dma_addr_t and should be obtained from the DMA mapping API
+> (even if it's numerically the same as physical address).
+> 
+
+OK.
+In order to clarify the address usage, is it ok to rename "dma_addr_t
+scp_addr"?
+Moreover, below function will be also renamed.
+dma_addr_t mtk_cam_smem_iova_to_scp_phys(struct device *dev,
+				      dma_addr_t iova)
+Could you help us to review?
+If you have any better suggestion, please kindly let us know.
+
+
+Best regards,
+
+Jungo
+
+> Best regards,
+> Tomasz
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
