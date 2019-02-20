@@ -1,18 +1,12 @@
-From: Jungo Lin <jungo.lin@mediatek.com>
-Subject: Re: [RFC PATCH V0 7/7] [media] platform: mtk-isp: Add Mediatek ISP
- Pass 1 driver
-Date: Wed, 20 Feb 2019 15:31:07 +0800
-Message-ID: <1550647867.11724.80.camel@mtksdccf07>
-References: <1549348966-14451-1-git-send-email-frederic.chen@mediatek.com>
- <1549348966-14451-8-git-send-email-frederic.chen@mediatek.com>
- <CAAFQd5CWdZUXVb4F9BLhQdN8WHjzA8acPDx1i+WcoudsdGsfUg@mail.gmail.com>
- <1550372163.11724.59.camel@mtksdccf07>
- <CAAFQd5CaXz_Lqz8NhGK4DvaxPvuYLj-Y73sG7wFaqW44j+tZQw@mail.gmail.com>
+From: Jerry-ch Chen <Jerry-Ch.chen@mediatek.com>
+Subject: [RFC PATCH V0 0/7] media: platform: Add support for Face Detection
+ (FD) on mt8183 SoC
+Date: Wed, 20 Feb 2019 15:48:06 +0800
+Message-ID: <1550648893-42050-1-git-send-email-Jerry-Ch.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAAFQd5CaXz_Lqz8NhGK4DvaxPvuYLj-Y73sG7wFaqW44j+tZQw@mail.gmail.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -22,112 +16,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: ryan.yu@mediatek.com, frankie.chiu@mediatek.com, ryan_yu@mediatek.com, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Rynn Wu =?UTF-8?Q?=28=E5=90=B3=E8=82=B2=E6=81=A9=29?= <Rynn.Wu@mediatek.com>, Jerry-ch.Chen@mediatek.com, Hans Verkuil <hans.verkuil@cisco.com>, frankie_chiu@mediatek.com, Frederic Chen <frederic.chen@mediatek.com>, Seraph.Huang@mediatek.com, Linux Media Mailing List <linux-media@vger.kernel.org>, Holmes Chiou =?UTF-8?Q?=28=E9=82=B1=E6=8C=BA=29?= <holmes.chiou@mediatek.com>, seraph_huang@mediatek.com, Sj Huang <sj.huang@mediatek.com>, yuzhao@chromium.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, "list@263.net:IOMMU DRIVERS
- <iommu@lists.linux-foundation.org>, Joerg  Roedel <joro@8bytes.org>,
- " <linux-arm-kernel@lists.infradead.org>, Sean
+To: hans.verkuil@cisco.com, laurent.pinchart+renesas@ideasonboard.com, tfiga@chromium.org, matthias.bgg@gmail.com, mchehab@kernel.org
+Cc: devicetree@vger.kernel.org, Sean.Cheng@mediatek.com, Rynn.Wu@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, Jerry-ch.Chen@mediatek.com, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, linux-mediatek@lists.infradead.org, zwisler@chromium.org, christie.yu@mediatek.com, frederic.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-02-19 at 17:51 +0900, Tomasz Figa wrote:
-> Hi Jungo,
-> 
-> On Sun, Feb 17, 2019 at 11:56 AM Jungo Lin <jungo.lin@mediatek.com> wrote:
-> >
-> > On Wed, 2019-02-13 at 18:50 +0900, Tomasz Figa wrote:
-> > > (() . ( strHi Frederic, Jungo,
-> > >
-> > > On Tue, Feb 5, 2019 at 3:43 PM Frederic Chen <frederic.chen@mediatek.com> wrote:
-> > > >
-> > > > From: Jungo Lin <jungo.lin@mediatek.com>
-> > > >
-> > > > This patch adds the driver for Pass unit in Mediatek's camera
-> > > > ISP system. Pass 1 unit is embedded in Mediatek SOCs. It
-> > > > provides RAW processing which includes optical black correction,
-> > > > defect pixel correction, W/IR imbalance correction and lens
-> > > > shading correction.
-> > > >
-> > > > The mtk-isp directory will contain drivers for multiple IP
-> > > > blocks found in Mediatek ISP system. It will include ISP Pass 1
-> > > > driver, sensor interface driver, DIP driver and face detection
-> > > > driver.
-> > >
-> > > Thanks for the patches! Please see my comments inline.
-> > >
-> >
-> > Dear Thomas:
-> >
-> > Thanks for your comments.
-> >
-> > We will revise the source codes based on your comments.
-> > Since there are many comments to fix/revise, we will categorize &
-> > prioritize these with below list:
-> >
-> > 1. Coding style issues.
-> > 2. Coding defects, including unused codes.
-> > 3. Driver architecture refactoring, such as removing mtk_cam_ctx,
-> > unnecessary abstraction layer, etc.
-> >
-> 
-> Thanks for replying to the comments!
-> 
-> Just to clarify, there is no need to hurry with resending a next patch
-> set with only a subset of the changes. Please take your time to
-> address all the comments before sending the next revision. This
-> prevents forgetting about some remaining comments and also lets other
-> reviewers come with new comments or some alternative ideas for already
-> existing comments. Second part of my review is coming too.
-> 
-> P.S. Please avoid top-posting on mailing lists. If replying to a
-> message, please reply below the related part of that message. (I've
-> moved your reply to the place in the email where it should be.)
-> 
-> [snip]
+Hello,
 
-Hi, Tomasz,
+This is the first version of the RFC patch series adding Face Detection
+(FD) driver on Mediatek mt8183 SoC, which will be used in camera features
+on CrOS application. It belongs to the first Mediatek's camera driver
+series based on V4L2 and media controller framework. I posted the main part
+of the FD driver as RFC to discuss first and would like some review
+comments on the overall structure of the driver.
 
-Thanks for your advice.
-We will prepare the next patch set after all comments are revised.
+Face Detection (FD) unit provide hardware accelerated face detection
+feature. It can detect different sizes of faces in a given image.
+Furthermore, it has the capability to detect the faces of Rotation-in-Plane
+from -180 to +180 degrees and Rotation-off-Plane from -90 to +90 degrees.
 
+The driver is implemented with V4L2 and media controller framework. We have
+the following entities describing the FD path.
 
-> > > > +       phys_addr_t paddr;
-> > >
-> > > We shouldn't need physical address either. I suppose this is for the
-> > > SCP, but then it should be a DMA address obtained from dma_map_*()
-> > > with struct device pointer of the SCP.
-> > >
-> >
-> > Yes, this physical address is designed for SCP.
-> > For tuning buffer, it will be touched by SCP and
-> > SCP can't get the physical address by itself. So we need to get
-> > this physical address in the kernel space via mtk_cam_smem_iova_to_phys
-> > function call and pass it to the SCP. At the same time, DMA address
-> > (daddr) is used for ISP HW.
-> >
-> 
-> Right, but my point is that in the kernel phys_addr_t is the physical
-> address from the CPU point of view. Any address from device point of
-> view is dma_addr_t and should be obtained from the DMA mapping API
-> (even if it's numerically the same as physical address).
-> 
+1. Meta input (output video device): connects to FD sub device. It accepts
+   the input parameter buffer from userspace. The metadata interface used
+   currently is only a temporary solution to kick off driver development
+   and is not ready for reviewed yet.
 
-OK.
-In order to clarify the address usage, is it ok to rename "dma_addr_t
-scp_addr"?
-Moreover, below function will be also renamed.
-dma_addr_t mtk_cam_smem_iova_to_scp_phys(struct device *dev,
-				      dma_addr_t iova)
-Could you help us to review?
-If you have any better suggestion, please kindly let us know.
+2. RAW (output video device): connects to FD sub device. It accepts input
+   image buffer from userspace.
 
+3. FD (sub device): connects to Meta output. When processing an image,
+   FD hardware only returns the statistics of detected faces so it needs
+   only one capture video devices to return the streaming data to the user.
 
-Best regards,
+4. Meta output (capture video device): Return the result of detected faces
+   as metadata output.
 
-Jungo
+   The overall file structure of the FD driver is as following:
 
-> Best regards,
-> Tomasz
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+* mtk_fd-dev-ctx-core.c: Implements common software flow of FD driver.
+* mtk_fd-v4l2.c: Static FD contexts configuration.
+* mtk_fd.c: Controls the hardware flow.
+* mtk_fd-dev.c: Implements context-independent flow.
+* mtk_fd-ctrl.c: Handles the HW ctrl request from userspace.
+* mtk_fd-smem-drv.c: Provides the shared memory management required
+operation. We reserved a memory region for the co-processor and FD to
+exchange the hardware configuration data.
+* mtk_fd-v4l2-util.c: Implements V4L2 and vb2 ops.
+
+Jerry-ch Chen (7):
+  dt-bindings: mt8183: Add binding for FD shared memory
+  dts: arm64: mt8183: Add FD shared memory node
+  dt-bindings: mt8183: Added FD-SMEM dt-bindings
+  dt-bindings: mt8183: Added FD dt-bindings
+  dts: arm64: mt8183: Add FD nodes
+  media: platform: Add Mediatek FD driver KConfig
+  platform: mtk-isp: Add Mediatek FD driver
+
+ .../devicetree/bindings/media/mediatek,fd_smem.txt |   28 +
+ .../bindings/media/mediatek,mt8183-fd.txt          |   30 +
+ .../mediatek,reserve-memory-fd_smem.txt            |   44 +
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi           |   28 +
+ drivers/media/platform/Kconfig                     |    2 +
+ drivers/media/platform/mtk-isp/Kconfig             |   10 +
+ drivers/media/platform/mtk-isp/Makefile            |   16 +
+ drivers/media/platform/mtk-isp/fd/Makefile         |   38 +
+ drivers/media/platform/mtk-isp/fd/mtk_fd-core.h    |  157 +++
+ drivers/media/platform/mtk-isp/fd/mtk_fd-ctx.h     |  299 ++++++
+ .../platform/mtk-isp/fd/mtk_fd-dev-ctx-core.c      |  917 +++++++++++++++++
+ drivers/media/platform/mtk-isp/fd/mtk_fd-dev.c     |  355 +++++++
+ drivers/media/platform/mtk-isp/fd/mtk_fd-dev.h     |  198 ++++
+ .../media/platform/mtk-isp/fd/mtk_fd-smem-drv.c    |  452 +++++++++
+ drivers/media/platform/mtk-isp/fd/mtk_fd-smem.h    |   25 +
+ .../media/platform/mtk-isp/fd/mtk_fd-v4l2-util.c   | 1046 ++++++++++++++++++++
+ drivers/media/platform/mtk-isp/fd/mtk_fd-v4l2.c    |  115 +++
+ drivers/media/platform/mtk-isp/fd/mtk_fd-v4l2.h    |   36 +
+ drivers/media/platform/mtk-isp/fd/mtk_fd.c         |  730 ++++++++++++++
+ drivers/media/platform/mtk-isp/fd/mtk_fd.h         |  127 +++
+ 20 files changed, 4653 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,fd_smem.txt
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8183-fd.txt
+ create mode 100644 Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-fd_smem.txt
+ create mode 100644 drivers/media/platform/mtk-isp/Kconfig
+ create mode 100644 drivers/media/platform/mtk-isp/Makefile
+ create mode 100644 drivers/media/platform/mtk-isp/fd/Makefile
+ create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd-core.h
+ create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd-ctx.h
+ create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd-dev-ctx-core.c
+ create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd-dev.c
+ create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd-dev.h
+ create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd-smem-drv.c
+ create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd-smem.h
+ create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd-v4l2-util.c
+ create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd-v4l2.c
+ create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd-v4l2.h
+ create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd.c
+ create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd.h
+
+-- 
+1.9.1
