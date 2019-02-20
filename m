@@ -1,7 +1,7 @@
 From: wangyan wang <wangyan.wang@mediatek.com>
-Subject: [PATCH V5 4/8] drm/mediatek: fix the rate and divder of hdmi phy for MT2701
-Date: Wed, 20 Feb 2019 10:53:53 +0800
-Message-ID: <20190220025357.7354-5-wangyan.wang@mediatek.com>
+Subject: [PATCH V5 8/8] drm/mediatek: fix the rate of parent for hdmi phy in MT2701
+Date: Wed, 20 Feb 2019 10:53:57 +0800
+Message-ID: <20190220025357.7354-9-wangyan.wang@mediatek.com>
 References: <20190220025357.7354-1-wangyan.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -14,32 +14,105 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: chunhui dai <chunhui.dai@mediatek.com>
 
-Due to a clerical error,there is one zero less for 12800000.
-Fix it for 128000000.
+We should not change the rate of parent for hdmi phy when
+doing round_rate for this clock. The parent clock of hdmi
+phy must be the same as it. We change it when doing set_rate
+only.
 
-Fixes: 0fc721b2968e ("drm/mediatek: add hdmi driver for MT2701 and MT7623")
-
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
 Signed-off-by: wangyan wang <wangyan.wang@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_hdmi_phy.c        | 14 --------------
+ drivers/gpu/drm/mediatek/mtk_hdmi_phy.h        |  3 ---
+ drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c | 11 +++++++++++
+ drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c | 14 ++++++++++++++
+ 4 files changed, 25 insertions(+), 17 deletions(-)
 
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
+index 370309d684ec..ca8bc1489f37 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
+@@ -15,20 +15,6 @@ static const struct phy_ops mtk_hdmi_phy_dev_ops = {
+ 	.owner = THIS_MODULE,
+ };
+ 
+-long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
+-			     unsigned long *parent_rate)
+-{
+-	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
+-
+-	hdmi_phy->pll_rate = rate;
+-	if (rate <= 74250000)
+-		*parent_rate = rate;
+-	else
+-		*parent_rate = rate / 2;
+-
+-	return rate;
+-}
+-
+ u32 mtk_hdmi_phy_read(struct mtk_hdmi_phy *hdmi_phy, u32 offset)
+ {
+ 	return readl(hdmi_phy->regs + offset);
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
+index 446e2acd1926..c6061ad15ff0 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
+@@ -50,9 +50,6 @@ void mtk_hdmi_phy_set_bits(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
+ void mtk_hdmi_phy_mask(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
+ 		       u32 val, u32 mask);
+ struct mtk_hdmi_phy *to_mtk_hdmi_phy(struct clk_hw *hw);
+-long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
+-			     unsigned long *parent_rate);
+-
+ extern struct platform_driver mtk_hdmi_phy_driver;
+ extern struct mtk_hdmi_phy_conf mtk_hdmi_phy_8173_conf;
+ extern struct mtk_hdmi_phy_conf mtk_hdmi_phy_2701_conf;
 diff --git a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-index 43bc058d5528..88dd9e812ca0 100644
+index 88dd9e812ca0..33893a180c2e 100644
 --- a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
 +++ b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-@@ -114,8 +114,8 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+@@ -152,6 +152,17 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+ 			  RG_HDMITX_DRV_IBIAS_MASK);
+ 	return 0;
+ }
++
++static long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
++			     unsigned long *parent_rate)
++{
++	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
++
++	hdmi_phy->pll_rate = rate;
++
++	return rate;
++}
++
+ static unsigned long mtk_hdmi_pll_recalc_rate(struct clk_hw *hw,
+ 				       unsigned long parent_rate)
+ {
+diff --git a/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
+index 63dde42521b8..3a339f516613 100644
+--- a/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
++++ b/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
+@@ -285,6 +285,20 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+ 	return 0;
+ }
  
- 	if (rate <= 64000000)
- 		pos_div = 3;
--	else if (rate <= 12800000)
--		pos_div = 1;
-+	else if (rate <= 128000000)
-+		pos_div = 2;
- 	else
- 		pos_div = 1;
- 
++static long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
++			     unsigned long *parent_rate)
++{
++	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
++
++	hdmi_phy->pll_rate = rate;
++	if (rate <= 74250000)
++		*parent_rate = rate;
++	else
++		*parent_rate = rate / 2;
++
++	return rate;
++}
++
+ static unsigned long mtk_hdmi_pll_recalc_rate(struct clk_hw *hw,
+ 				       unsigned long parent_rate)
+ {
 -- 
 2.14.1
