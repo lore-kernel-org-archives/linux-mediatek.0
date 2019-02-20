@@ -1,59 +1,49 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH V5 5/8] clk: mediatek: add MUX_GATE_FLAGS_2
-Date: Wed, 20 Feb 2019 11:37:09 -0800
-Message-ID: <155069142918.77512.15726787055211591362@swboyd.mtv.corp.google.com>
-References: <20190220025357.7354-1-wangyan.wang@mediatek.com> <20190220025357.7354-6-wangyan.wang@mediatek.com>
+From: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
+Subject: [bug report] mt76: usb: fix possible memory leak in mt76u_buf_free
+Date: Wed, 20 Feb 2019 23:57:13 +0300
+Message-ID: <20190220205713.GA26590@kadam>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190220025357.7354-6-wangyan.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>, Michael Turquette <mturquette@baylibre.com>
-Cc: wangyan wang <wangyan.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, chunhui dai <chunhui.dai@mediatek.com>, Colin Ian King <colin.king@canonical.com>, Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, srv_heupstream@mediatek.com
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org
+Cc: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting wangyan wang (2019-02-19 18:53:54)
-> From: chunhui dai <chunhui.dai@mediatek.com>
->=20
-> Add MUX_GATE_FLAGS_2 for the clock which needs to set two falgs.
+Hello Lorenzo Bianconi,
 
-s/falgs/flags/
+The patch cb83585e1121: "mt76: usb: fix possible memory leak in
+mt76u_buf_free" from Feb 10, 2019, leads to the following static
+checker warning:
 
-> Such as some mux need to set the flags of "CLK_MUX_ROUND_CLOSEST".
->=20
-> Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
-> Signed-off-by: wangyan wang <wangyan.wang@mediatek.com>
-> ---
->  drivers/clk/mediatek/clk-mtk.c |  2 +-
->  drivers/clk/mediatek/clk-mtk.h | 20 ++++++++++++++------
->  2 files changed, 15 insertions(+), 7 deletions(-)
->=20
-> diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mt=
-k.c
-> index 9c0ae4278a94..2ed996404804 100644
-> --- a/drivers/clk/mediatek/clk-mtk.c
-> +++ b/drivers/clk/mediatek/clk-mtk.c
-> @@ -167,7 +167,7 @@ struct clk *mtk_clk_register_composite(const struct m=
-tk_composite *mc,
->                 mux->mask =3D BIT(mc->mux_width) - 1;
->                 mux->shift =3D mc->mux_shift;
->                 mux->lock =3D lock;
-> -
-> +               mux->flags =3D mc->mux_flags;
->                 mux_hw =3D &mux->hw;
->                 mux_ops =3D &clk_mux_ops;
-> =20
-> diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mt=
-k.h
-> index f83c2bbb677e..4b88d196d52f 100644
-> --- a/drivers/clk/mediatek/clk-mtk.h
-> +++ b/drivers/clk/mediatek/clk-mtk.h
-> @@ -81,15 +81,13 @@ struct mtk_composite {
->         signed char divider_shift;
->         signed char divider_width;
-> =20
-> +       unsigned char mux_flags;
+	drivers/net/wireless/mediatek/mt76/usb.c:372 mt76u_buf_free()
+	warn: address of 'urb->sg[i]' is non-NULL
 
-Why isn't it an unsigned long? Isn't this supposed to match the
-frameworks version of the clk flags?
+drivers/net/wireless/mediatek/mt76/usb.c
+    362 }
+    363 
+    364 void mt76u_buf_free(struct mt76u_buf *buf)
+    365 {
+    366 	struct urb *urb = buf->urb;
+    367 	struct scatterlist *sg;
+    368 	int i;
+    369 
+    370 	for (i = 0; i < urb->num_sgs; i++) {
+    371 		sg = &urb->sg[i];
+--> 372 		if (!sg)
+                            ^^^
+This address isn't NULL.  Was something else intended?
+
+    373 			continue;
+    374 
+    375 		skb_free_frag(sg_virt(sg));
+    376 	}
+    377 	if (buf->buf)
+    378 		skb_free_frag(buf->buf);
+    379 
+    380 	usb_free_urb(buf->urb);
+    381 }
+
+regards,
+dan carpenter
