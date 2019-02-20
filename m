@@ -1,7 +1,7 @@
 From: wangyan wang <wangyan.wang@mediatek.com>
-Subject: [PATCH V5 6/8] clk: mediatek: using CLK_MUX_ROUND_CLOSEST for the clock of dpi1_sel
-Date: Wed, 20 Feb 2019 10:53:55 +0800
-Message-ID: <20190220025357.7354-7-wangyan.wang@mediatek.com>
+Subject: [PATCH V5 5/8] clk: mediatek: add MUX_GATE_FLAGS_2
+Date: Wed, 20 Feb 2019 10:53:54 +0800
+Message-ID: <20190220025357.7354-6-wangyan.wang@mediatek.com>
 References: <20190220025357.7354-1-wangyan.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -14,29 +14,71 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: chunhui dai <chunhui.dai@mediatek.com>
 
-The MUX clock of dpi1_sel should select the closet clock for itself.
-We could add this flag to enable this function of MUX in CCF.
+Add MUX_GATE_FLAGS_2 for the clock which needs to set two falgs.
+Such as some mux need to set the flags of "CLK_MUX_ROUND_CLOSEST".
 
 Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
 Signed-off-by: wangyan wang <wangyan.wang@mediatek.com>
 ---
- drivers/clk/mediatek/clk-mt2701.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/clk/mediatek/clk-mtk.c |  2 +-
+ drivers/clk/mediatek/clk-mtk.h | 20 ++++++++++++++------
+ 2 files changed, 15 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt2701.c b/drivers/clk/mediatek/clk-mt2701.c
-index ab6ab07f53e6..905a2316f6a7 100644
---- a/drivers/clk/mediatek/clk-mt2701.c
-+++ b/drivers/clk/mediatek/clk-mt2701.c
-@@ -535,8 +535,8 @@ static const struct mtk_composite top_muxes[] = {
- 		0x0080, 8, 2, 15),
- 	MUX_GATE(CLK_TOP_DPI0_SEL, "dpi0_sel", dpi0_parents,
- 		0x0080, 16, 3, 23),
--	MUX_GATE(CLK_TOP_DPI1_SEL, "dpi1_sel", dpi1_parents,
--		0x0080, 24, 2, 31),
-+	MUX_GATE_FLAGS_2(CLK_TOP_DPI1_SEL, "dpi1_sel", dpi1_parents,
-+		0x0080, 24, 2, 31, 0, CLK_MUX_ROUND_CLOSEST),
+diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
+index 9c0ae4278a94..2ed996404804 100644
+--- a/drivers/clk/mediatek/clk-mtk.c
++++ b/drivers/clk/mediatek/clk-mtk.c
+@@ -167,7 +167,7 @@ struct clk *mtk_clk_register_composite(const struct mtk_composite *mc,
+ 		mux->mask = BIT(mc->mux_width) - 1;
+ 		mux->shift = mc->mux_shift;
+ 		mux->lock = lock;
+-
++		mux->flags = mc->mux_flags;
+ 		mux_hw = &mux->hw;
+ 		mux_ops = &clk_mux_ops;
  
- 	MUX_GATE(CLK_TOP_TVE_SEL, "tve_sel", tve_parents,
- 		0x0090, 0, 3, 7),
+diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+index f83c2bbb677e..4b88d196d52f 100644
+--- a/drivers/clk/mediatek/clk-mtk.h
++++ b/drivers/clk/mediatek/clk-mtk.h
+@@ -81,15 +81,13 @@ struct mtk_composite {
+ 	signed char divider_shift;
+ 	signed char divider_width;
+ 
++	unsigned char mux_flags;
++
+ 	signed char num_parents;
+ };
+ 
+-/*
+- * In case the rate change propagation to parent clocks is undesirable,
+- * this macro allows to specify the clock flags manually.
+- */
+-#define MUX_GATE_FLAGS(_id, _name, _parents, _reg, _shift, _width,	\
+-			_gate, _flags) {				\
++#define MUX_GATE_FLAGS_2(_id, _name, _parents, _reg, _shift,		\
++				_width, _gate, _flags, _muxflags) {	\
+ 		.id = _id,						\
+ 		.name = _name,						\
+ 		.mux_reg = _reg,					\
+@@ -101,8 +99,18 @@ struct mtk_composite {
+ 		.parent_names = _parents,				\
+ 		.num_parents = ARRAY_SIZE(_parents),			\
+ 		.flags = _flags,					\
++		.mux_flags = _muxflags,					\
+ 	}
+ 
++/*
++ * In case the rate change propagation to parent clocks is undesirable,
++ * this macro allows to specify the clock flags manually.
++ */
++#define MUX_GATE_FLAGS(_id, _name, _parents, _reg, _shift, _width,	\
++			_gate, _flags)					\
++		MUX_GATE_FLAGS_2(_id, _name, _parents, _reg,		\
++					_shift, _width, _gate, _flags, 0)
++
+ /*
+  * Unless necessary, all MUX_GATE clocks propagate rate changes to their
+  * parent clock by default.
 -- 
 2.14.1
