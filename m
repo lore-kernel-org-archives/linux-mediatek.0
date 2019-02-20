@@ -1,102 +1,118 @@
-From: Yong Wu <yong.wu@mediatek.com>
-Subject: Re: [PATCH v6 21/22] iommu/mediatek: Fix iova_to_phys PA start for
- 4GB mode
-Date: Wed, 20 Feb 2019 17:17:15 +0800
-Message-ID: <1550654235.26244.10.camel@mhfsdcap03>
-References: <1550394300-17420-1-git-send-email-yong.wu@mediatek.com>
-         <1550394300-17420-22-git-send-email-yong.wu@mediatek.com>
-         <CAE=gft783rOUubODiFHxa9NKeUJxGk4FCeguDsyoqrUxsGDEsQ@mail.gmail.com>
+From: <michael.kao@mediatek.com>
+Subject: [PATCH v2,3/7] thermal: mediatek: add calibration item
+Date: Wed, 20 Feb 2019 20:31:29 +0800
+Message-ID: <1550665893-22561-4-git-send-email-michael.kao@mediatek.com>
+References: <1550665893-22561-1-git-send-email-michael.kao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAE=gft783rOUubODiFHxa9NKeUJxGk4FCeguDsyoqrUxsGDEsQ@mail.gmail.com>
+In-Reply-To: <1550665893-22561-1-git-send-email-michael.kao@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Evan Green <evgreen@chromium.org>
-Cc: youlin.pei@mediatek.com, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, LKML <linux-kernel@vger.kernel.org>, Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, anan.sun@mediatek.com, Robin Murphy <robin.murphy@arm.com>, Matthias Kaehlcke <mka@chromium.org>, linux-arm-kernel@lists.infradead.org
+To: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Michael Kao <michael.kao@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-02-19 at 15:33 -0800, Evan Green wrote:
-> On Sun, Feb 17, 2019 at 1:09 AM Yong Wu <yong.wu@mediatek.com> wrote:
-> >
-> > In the 4GB mode, the physical address is remapped,
-> >
-> > Here is the detailed remap relationship.
-> > CPU PA         ->    HW PA
-> > 0x4000_0000          0x1_4000_0000 (Add bit32)
-> > 0x8000_0000          0x1_8000_0000 ...
-> > 0xc000_0000          0x1_c000_0000 ...
-> > 0x1_0000_0000        0x1_0000_0000 (No change)
-> >
-> > Thus, we always add bit32 for PA when entering mtk_iommu_map.
-> > But in the iova_to_phys, the CPU don't need this bit32 if the
-> > PA is from 0x1_4000_0000 to 0x1_ffff_ffff.
-> > This patch discards the bit32 in this iova_to_phys in the 4GB mode.
-> >
-> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > ---
-> >  drivers/iommu/mtk_iommu.c | 18 ++++++++++++++++++
-> >  1 file changed, 18 insertions(+)
-> >
-> > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> > index 0277396..076d333 100644
-> > --- a/drivers/iommu/mtk_iommu.c
-> > +++ b/drivers/iommu/mtk_iommu.c
-> > @@ -119,6 +119,19 @@ struct mtk_iommu_domain {
-> >
-> >  static const struct iommu_ops mtk_iommu_ops;
-> >
-> > +/*
-> > + * In M4U 4GB mode, the physical address is remapped as below:
-> > + *  CPU PA         ->   M4U HW PA
-> > + *  0x4000_0000         0x1_4000_0000 (Add bit32)
-> > + *  0x8000_0000         0x1_8000_0000 ...
-> > + *  0xc000_0000         0x1_c000_0000 ...
-> > + *  0x1_0000_0000       0x1_0000_0000 (No change)
-> > + *
-> > + * Thus, We always add BIT32 in the iommu_map and disable BIT32 if PA is >=
-> > + * 0x1_4000_0000 in the iova_to_phys.
-> > + */
-> > +#define MTK_IOMMU_4GB_MODE_PA_140000000     0x140000000UL
-> > +
-> >  static LIST_HEAD(m4ulist);     /* List all the M4U HWs */
-> >
-> >  #define for_each_m4u(data)     list_for_each_entry(data, &m4ulist, list)
-> > @@ -415,6 +428,7 @@ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
-> >                                           dma_addr_t iova)
-> >  {
-> >         struct mtk_iommu_domain *dom = to_mtk_domain(domain);
-> > +       struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
-> >         unsigned long flags;
-> >         phys_addr_t pa;
-> >
-> > @@ -422,6 +436,10 @@ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
-> >         pa = dom->iop->iova_to_phys(dom->iop, iova);
-> >         spin_unlock_irqrestore(&dom->pgtlock, flags);
-> >
-> > +       if (data->plat_data->has_4gb_mode && data->dram_is_4gb &&
-> > +           pa >= MTK_IOMMU_4GB_MODE_PA_140000000)
-> > +               pa &= ~BIT_ULL(32);
-> > +
-> 
-> The define doesn't really make it much better, but I guess it doesn't
-> make it worse either. As I was reviewing this I was thinking that this
-> should be rolled into patch 6 "iommu/io-pgtable-arm-v7s: Extend
-> MediaTek 4GB Mode". But I guess this was returning bad PAs since
-> before this series, right? So does this need a Fixes tag?
+From: Michael Kao <michael.kao@mediatek.com>
 
-Thanks very much for your reviewing so many patches.
+Add calibration item in thermal_data to support
+the project with different calibration coefficient.
 
-Yes. The issue exist before this series, It was introduced by this
-commit:
-30e2fccf9512 ("iommu/mediatek: Enlarge the validate PA range for 4GB
-mode")
+Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+---
+ drivers/thermal/mtk_thermal.c | 19 ++++++++++++++++++-
+ 1 file changed, 18 insertions(+), 1 deletion(-)
 
-I will send a new version to add this tag.
-
-> -Evan
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+index 07f8ad7..45c6587 100644
+--- a/drivers/thermal/mtk_thermal.c
++++ b/drivers/thermal/mtk_thermal.c
+@@ -105,6 +105,9 @@
+ /* The number of sensing points per bank */
+ #define MT8173_NUM_SENSORS_PER_ZONE	4
+ 
++/* The calibration coefficient of sensor  */
++#define MT8173_CALIBRATION	165
++
+ /*
+  * Layout of the fuses providing the calibration data
+  * These macros could be used for MT8173, MT2701, and MT2712.
+@@ -147,6 +150,9 @@ enum {
+ /* The number of sensing points per bank */
+ #define MT2701_NUM_SENSORS_PER_ZONE	3
+ 
++/* The calibration coefficient of sensor  */
++#define MT2701_CALIBRATION	165
++
+ /* MT2712 thermal sensors */
+ #define MT2712_TS1	0
+ #define MT2712_TS2	1
+@@ -162,12 +168,18 @@ enum {
+ /* The number of sensing points per bank */
+ #define MT2712_NUM_SENSORS_PER_ZONE	4
+ 
++/* The calibration coefficient of sensor  */
++#define MT2712_CALIBRATION	165
++
+ #define MT7622_TEMP_AUXADC_CHANNEL	11
+ #define MT7622_NUM_SENSORS		1
+ #define MT7622_NUM_ZONES		1
+ #define MT7622_NUM_SENSORS_PER_ZONE	1
+ #define MT7622_TS1	0
+ 
++/* The calibration coefficient of sensor  */
++#define MT7622_CALIBRATION	165
++
+ struct mtk_thermal;
+ 
+ struct thermal_bank_cfg {
+@@ -188,6 +200,7 @@ struct mtk_thermal_data {
+ 	const int *sensor_mux_values;
+ 	const int *msr;
+ 	const int *adcpnp;
++	const int cali_val;
+ 	struct thermal_bank_cfg bank_data[];
+ };
+ 
+@@ -295,6 +308,7 @@ struct mtk_thermal {
+ 	.num_banks = MT8173_NUM_ZONES,
+ 	.num_sensors = MT8173_NUM_SENSORS,
+ 	.vts_index = mt8173_vts_index,
++	.cali_val = MT8173_CALIBRATION,
+ 	.bank_data = {
+ 		{
+ 			.num_sensors = 2,
+@@ -330,6 +344,7 @@ struct mtk_thermal {
+ 	.num_banks = 1,
+ 	.num_sensors = MT2701_NUM_SENSORS,
+ 	.vts_index = mt2701_vts_index,
++	.cali_val = MT2701_CALIBRATION,
+ 	.bank_data = {
+ 		{
+ 			.num_sensors = 3,
+@@ -356,6 +371,7 @@ struct mtk_thermal {
+ 	.num_banks = 1,
+ 	.num_sensors = MT2712_NUM_SENSORS,
+ 	.vts_index = mt2712_vts_index,
++	.cali_val = MT2712_CALIBRATION,
+ 	.bank_data = {
+ 		{
+ 			.num_sensors = 4,
+@@ -376,6 +392,7 @@ struct mtk_thermal {
+ 	.num_banks = MT7622_NUM_ZONES,
+ 	.num_sensors = MT7622_NUM_SENSORS,
+ 	.vts_index = mt7622_vts_index,
++	.cali_val = MT7622_CALIBRATION,
+ 	.bank_data = {
+ 		{
+ 			.num_sensors = 1,
+@@ -402,7 +419,7 @@ static int raw_to_mcelsius(struct mtk_thermal *mt, int sensno, s32 raw)
+ 	raw &= 0xfff;
+ 
+ 	tmp = 203450520 << 3;
+-	tmp /= 165 + mt->o_slope;
++	tmp /= mt->conf->cali_val + mt->o_slope;
+ 	tmp /= 10000 + mt->adc_ge;
+ 	tmp *= raw - mt->vts[sensno] - 3350;
+ 	tmp >>= 3;
+-- 
+1.9.1
