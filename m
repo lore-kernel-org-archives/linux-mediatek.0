@@ -1,77 +1,50 @@
-From: Louis Kuo <louis.kuo@mediatek.com>
-Subject: [RFC PATCH V0 4/4] dts: arm64: mt8183: Add sensor interface nodes
-Date: Thu, 21 Feb 2019 15:21:58 +0800
-Message-ID: <1550733718-31702-5-git-send-email-louis.kuo@mediatek.com>
-References: <1550733718-31702-1-git-send-email-louis.kuo@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v4 00/12] Mediatek MT8183 clock and scpsys support
+Date: Thu, 21 Feb 2019 09:36:24 +0100
+Message-ID: <b7abe484-71c1-5ec0-796c-544f1ac5d6f5@gmail.com>
+References: <20190201083016.25856-1-weiyi.lu@mediatek.com>
+ <20190201083016.25856-2-weiyi.lu@mediatek.com>
+ <155069033021.77512.14493210110678229730@swboyd.mtv.corp.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1550733718-31702-1-git-send-email-louis.kuo@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: hans.verkuil@cisco.com, laurent.pinchart+renesas@ideasonboard.com, tfiga@chromium.org, matthias.bgg@gmail.com, mchehab@kernel.org
-Cc: devicetree@vger.kernel.org, Sean.Cheng@mediatek.com, Rynn.Wu@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, Jerry-ch.Chen@mediatek.com, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, linux-mediatek@lists.infradead.org, zwisler@chromium.org, Louis Kuo <louis.kuo@mediatek.com>, christie.yu@mediatek.com, frederic.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <155069033021.77512.14493210110678229730@swboyd.mtv.corp.google.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Stephen Boyd <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh@kernel.org>, Stephen Boyd <sboyd@codeaurora.org>, Weiyi Lu <weiyi.lu@mediatek.com>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add nodes for Mediatek's sensor interface device. Sensor interface module
-embedded in Mediatek SOCs, works as a HW camera interface controller
-intended for image and data transmission between cameras and host devices.
 
-Signed-off-by: Louis Kuo <louis.kuo@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 34 ++++++++++++++++++++++++++++++++
- 1 file changed, 34 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index c3a516e..2fe97e8 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -474,4 +474,38 @@
- 			#clock-cells = <1>;
- 		};
- 	};
-+
-+	seninf: seninf@1a040000 {
-+		compatible = "mediatek,mt8183-seninf";
-+		reg = <0 0x1a040000 0 0x8000>,
-+		      <0 0x11C80000 0 0x6000>;
-+		reg-names = "base_reg", "rx_reg";
-+		interrupts = <GIC_SPI 251 IRQ_TYPE_LEVEL_LOW>;
-+		power-domains = <&scpsys MT8183_POWER_DOMAIN_CAM>;
-+		clocks =
-+			<&camsys CLK_CAM_SENINF>,
-+			<&topckgen CLK_TOP_MUX_SENINF>;
-+		clock-names =
-+			"CLK_CAM_SENINF", "CLK_TOP_MUX_SENINF";
-+		status = "disabled";
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			port@0 {
-+				reg = <0>;
-+				mipi_in_cam0: endpoint@0 {
-+					reg = <0>;
-+					data-lanes = <1 3>;
-+				};
-+			};
-+
-+			port@1 {
-+				reg = <1>;
-+				mipi_in_cam1: endpoint@0 {
-+					reg = <1>;
-+					data-lanes = <1 3>;
-+				};
-+			};
-+		};
-+	};
- };
--- 
-1.9.1
+On 20/02/2019 20:18, Stephen Boyd wrote:
+> Quoting Weiyi Lu (2019-02-01 00:30:04)
+>> This series is based on v5.0-rc1 and most of changes are extracted from series below
+>> (clock/scpsys common changes for both MT8183 & MT6765)
+>> https://patchwork.kernel.org/patch/10528495/
+>> (clock support of MT8183)
+>> https://patchwork.kernel.org/patch/10549891/
+>>
+>> The whole series is composed of
+>> clock common changes for both MT8183 & MT6765 (PATCH 1-3),
+>> scpsys common changes for both MT8183 & MT6765 (PATCH 4),
+>> clock support of MT8183 (PATCH 5-8),
+>> scpsys support of MT8183 (PATCH 9-11) and
+>> resend a clock patch long time ago(PTACH 12).
+> 
+> What's the merge plan here? Do you want me to apply these patches to clk
+> tree? Will someone be sending me a pull request for mediatek clk changes
+> this cycle? It's getting pretty late for much of anything making this
+> upcoming merge window.
+> 
+
+As far as I can see, the clock patches are independent, so I think it is OK to
+take them. SCPSYS patches will go through my tree once they are in shape.
+
+Do you prefer to get pull requests for clock patches? I wasn't aware of that.
+But if you prefer that, we can find someone who prepares every merge window a
+pull request.
+
+Regards,
+Matthias
