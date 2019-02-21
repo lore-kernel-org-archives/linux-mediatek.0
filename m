@@ -1,635 +1,701 @@
-From: Pi-Hsun Shih <pihsun@chromium.org>
-Subject: [PATCH v5 4/6] rpmsg: add rpmsg support for mt8183 SCP.
-Date: Thu, 21 Feb 2019 16:47:27 +0800
-Message-ID: <20190221084729.101784-5-pihsun@chromium.org>
-References: <20190221084729.101784-1-pihsun@chromium.org>
+From: <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v1 2/2] scsi: ufs-mediatek: Add UFS support for Mediatek SoC
+ chips
+Date: Thu, 21 Feb 2019 17:50:37 +0800
+Message-ID: <1550742637-12385-4-git-send-email-stanley.chu@mediatek.com>
+References: <1550742637-12385-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190221084729.101784-1-pihsun@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-Cc: Pi-Hsun Shih <pihsun@chromium.org>, Ohad Ben-Cohen <ohad@wizery.com>, Bjorn Andersson <bjorn.andersson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Erin Lo <erin.lo@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, open list <linux-kernel@vger.kernel.org>, "open list:REMOTE PROCESSOR
-        REMOTEPROC SUBSYSTEM" <linux-remoteproc@vger.kernel.org>, "moderated list:ARM/Mediatek SoC
-        support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
-        support" <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1550742637-12385-1-git-send-email-stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org
+Cc: wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, avri.altman-Sjgp3cTcYWE@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add a simple rpmsg support for mt8183 SCP, that use IPI / IPC directly.
+From: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
+This patch adds UFS support for Mediatek SoC chips.
+
+Signed-off-by: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
-Changes from v4:
- - Match and fill the device tree node to the created rpmsg subdevice,
-   so the rpmsg subdevice can utilize the properties and subnodes on
-   device tree (This is similar to what drivers/rpmsg/qcom_smd.c does).
+ drivers/scsi/ufs/Kconfig        |  12 +
+ drivers/scsi/ufs/Makefile       |   1 +
+ drivers/scsi/ufs/ufs-mediatek.c | 526 ++++++++++++++++++++++++++++++++
+ drivers/scsi/ufs/ufs-mediatek.h |  91 ++++++
+ 4 files changed, 630 insertions(+)
+ create mode 100644 drivers/scsi/ufs/ufs-mediatek.c
+ create mode 100644 drivers/scsi/ufs/ufs-mediatek.h
 
-Changes from v3:
- - Change from unprepare to stop, to stop the rpmsg driver before the
-   rproc is stopped, avoiding problem that some rpmsg would fail after
-   rproc is stopped.
- - Add missing spin_lock_init, and use destroy_ept instead of kref_put.
-
-Changes from v2:
- - Unregiser IPI handler on unprepare.
- - Lock the channel list on operations.
- - Move SCP_IPI_NS_SERVICE to 0xFF.
-
-Changes from v1:
- - Do cleanup properly in mtk_rpmsg.c, which also removes the problem of
-   short-lived work items.
- - Fix several issues checkpatch found.
----
- drivers/remoteproc/mtk_common.h       |   2 +
- drivers/remoteproc/mtk_scp.c          |  30 +-
- drivers/remoteproc/mtk_scp_ipi.c      |   1 +
- drivers/rpmsg/Kconfig                 |   9 +
- drivers/rpmsg/Makefile                |   1 +
- drivers/rpmsg/mtk_rpmsg.c             | 385 ++++++++++++++++++++++++++
- include/linux/platform_data/mtk_scp.h |   4 +-
- include/linux/rpmsg/mtk_rpmsg.h       |  35 +++
- 8 files changed, 462 insertions(+), 5 deletions(-)
- create mode 100644 drivers/rpmsg/mtk_rpmsg.c
- create mode 100644 include/linux/rpmsg/mtk_rpmsg.h
-
-diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
-index 7504ae1bc0efe2..19a90781027125 100644
---- a/drivers/remoteproc/mtk_common.h
-+++ b/drivers/remoteproc/mtk_common.h
-@@ -54,6 +54,8 @@ struct mtk_scp {
- 	void __iomem *cpu_addr;
- 	phys_addr_t phys_addr;
- 	size_t dram_size;
-+
-+	struct rproc_subdev *rpmsg_subdev;
- };
+diff --git a/drivers/scsi/ufs/Kconfig b/drivers/scsi/ufs/Kconfig
+index 2ddbb26d9c26..a595f06d501d 100644
+--- a/drivers/scsi/ufs/Kconfig
++++ b/drivers/scsi/ufs/Kconfig
+@@ -109,6 +109,18 @@ config SCSI_UFS_QCOM
+ 	  Select this if you have UFS controller on QCOM chipset.
+ 	  If unsure, say N.
  
- /**
-diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index c689a8cc41f092..7680edb7ca5f58 100644
---- a/drivers/remoteproc/mtk_scp.c
-+++ b/drivers/remoteproc/mtk_scp.c
-@@ -13,6 +13,7 @@
- #include <linux/platform_data/mtk_scp.h>
- #include <linux/platform_device.h>
- #include <linux/remoteproc.h>
-+#include <linux/rpmsg/mtk_rpmsg.h>
- 
- #include "mtk_common.h"
- #include "remoteproc_internal.h"
-@@ -471,6 +472,23 @@ static int scp_map_memory_region(struct mtk_scp *scp)
- 	return 0;
- }
- 
-+static void scp_add_rpmsg_subdev(struct mtk_scp *scp)
-+{
-+	scp->rpmsg_subdev = mtk_rpmsg_create_rproc_subdev(
-+		to_platform_device(scp->dev), scp->rproc);
-+	if (scp->rpmsg_subdev)
-+		rproc_add_subdev(scp->rproc, scp->rpmsg_subdev);
-+}
-+
-+static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
-+{
-+	if (scp->rpmsg_subdev) {
-+		rproc_remove_subdev(scp->rproc, scp->rpmsg_subdev);
-+		mtk_rpmsg_destroy_rproc_subdev(scp->rpmsg_subdev);
-+		scp->rpmsg_subdev = NULL;
-+	}
-+}
-+
- static int scp_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
-@@ -552,22 +570,25 @@ static int scp_probe(struct platform_device *pdev)
- 	init_waitqueue_head(&scp->run.wq);
- 	init_waitqueue_head(&scp->ack_wq);
- 
-+	scp_add_rpmsg_subdev(scp);
-+
- 	ret = devm_request_threaded_irq(dev, platform_get_irq(pdev, 0), NULL,
- 					scp_irq_handler, IRQF_ONESHOT,
- 					pdev->name, scp);
- 
- 	if (ret) {
- 		dev_err(dev, "failed to request irq\n");
--		goto destroy_mutex;
-+		goto remove_subdev;
- 	}
- 
- 	ret = rproc_add(rproc);
- 	if (ret)
--		goto destroy_mutex;
-+		goto remove_subdev;
- 
--	return ret;
-+	return 0;
- 
--destroy_mutex:
-+remove_subdev:
-+	scp_remove_rpmsg_subdev(scp);
- 	mutex_destroy(&scp->lock);
- free_rproc:
- 	rproc_free(rproc);
-@@ -579,6 +600,7 @@ static int scp_remove(struct platform_device *pdev)
- {
- 	struct mtk_scp *scp = platform_get_drvdata(pdev);
- 
-+	scp_remove_rpmsg_subdev(scp);
- 	rproc_del(scp->rproc);
- 	rproc_free(scp->rproc);
- 
-diff --git a/drivers/remoteproc/mtk_scp_ipi.c b/drivers/remoteproc/mtk_scp_ipi.c
-index f5d271c0f6239b..10b0cbda7aee38 100644
---- a/drivers/remoteproc/mtk_scp_ipi.c
-+++ b/drivers/remoteproc/mtk_scp_ipi.c
-@@ -99,6 +99,7 @@ int scp_ipi_send(struct platform_device *pdev,
- 	int ret;
- 
- 	if (WARN_ON(id <= SCP_IPI_INIT) || WARN_ON(id >= SCP_IPI_MAX) ||
-+	    WARN_ON(id == SCP_IPI_NS_SERVICE) ||
- 	    WARN_ON(len > sizeof(send_obj->share_buf)) || WARN_ON(!buf))
- 		return -EINVAL;
- 
-diff --git a/drivers/rpmsg/Kconfig b/drivers/rpmsg/Kconfig
-index d0322b41eca54c..85e3cc075cb473 100644
---- a/drivers/rpmsg/Kconfig
-+++ b/drivers/rpmsg/Kconfig
-@@ -15,6 +15,15 @@ config RPMSG_CHAR
- 	  in /dev. They make it possible for user-space programs to send and
- 	  receive rpmsg packets.
- 
-+config RPMSG_MTK_SCP
-+	tristate "MediaTek SCP"
-+	depends on MTK_SCP
-+	select RPMSG
++config SCSI_UFS_MEDIATEK
++	tristate "Mediatek specific hooks to UFS controller platform driver"
++	depends on SCSI_UFSHCD_PLATFORM && ARCH_MEDIATEK
 +	help
-+	  Say y here to enable support providing communication channels to
-+	  remote processors in MediaTek platforms.
-+	  This use IPI and IPC to communicate with remote processors.
++	  This selects the Mediatek specific additions to UFSHCD platform driver.
++	  UFS host on Mediatek needs some vendor specific configuration before
++	  accessing the hardware which includes PHY configuration and vendor
++	  specific registers.
 +
- config RPMSG_QCOM_GLINK_NATIVE
- 	tristate
- 	select RPMSG
-diff --git a/drivers/rpmsg/Makefile b/drivers/rpmsg/Makefile
-index 9aa859502d2752..ae92a7fb08f623 100644
---- a/drivers/rpmsg/Makefile
-+++ b/drivers/rpmsg/Makefile
-@@ -1,6 +1,7 @@
- # SPDX-License-Identifier: GPL-2.0
- obj-$(CONFIG_RPMSG)		+= rpmsg_core.o
- obj-$(CONFIG_RPMSG_CHAR)	+= rpmsg_char.o
-+obj-$(CONFIG_RPMSG_MTK_SCP)	+= mtk_rpmsg.o
- obj-$(CONFIG_RPMSG_QCOM_GLINK_RPM) += qcom_glink_rpm.o
- obj-$(CONFIG_RPMSG_QCOM_GLINK_NATIVE) += qcom_glink_native.o
- obj-$(CONFIG_RPMSG_QCOM_GLINK_SMEM) += qcom_glink_smem.o
-diff --git a/drivers/rpmsg/mtk_rpmsg.c b/drivers/rpmsg/mtk_rpmsg.c
++	  Select this if you have UFS controller on Mediatek chipset.
++	  If unsure, say N.
++
+ config SCSI_UFS_HISI
+ 	tristate "Hisilicon specific hooks to UFS controller platform driver"
+ 	depends on (ARCH_HISI || COMPILE_TEST) && SCSI_UFSHCD_PLATFORM
+diff --git a/drivers/scsi/ufs/Makefile b/drivers/scsi/ufs/Makefile
+index a3bd70c3652c..2a9097939bcb 100644
+--- a/drivers/scsi/ufs/Makefile
++++ b/drivers/scsi/ufs/Makefile
+@@ -10,3 +10,4 @@ ufshcd-core-$(CONFIG_SCSI_UFS_BSG)	+= ufs_bsg.o
+ obj-$(CONFIG_SCSI_UFSHCD_PCI) += ufshcd-pci.o
+ obj-$(CONFIG_SCSI_UFSHCD_PLATFORM) += ufshcd-pltfrm.o
+ obj-$(CONFIG_SCSI_UFS_HISI) += ufs-hisi.o
++obj-$(CONFIG_SCSI_UFS_MEDIATEK) += ufs-mediatek.o
+diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
 new file mode 100644
-index 00000000000000..fab1413a0a650c
+index 000000000000..ded7de0511cd
 --- /dev/null
-+++ b/drivers/rpmsg/mtk_rpmsg.c
-@@ -0,0 +1,385 @@
++++ b/drivers/scsi/ufs/ufs-mediatek.c
+@@ -0,0 +1,526 @@
 +// SPDX-License-Identifier: GPL-2.0
-+//
-+// Copyright 2018 Google LLC.
++/*
++ * Authors:
++ *	Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
++ *	Peter Wang <peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
++ *
++ * Copyright (C) 2019 MediaTek Inc.
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 as
++ * published by the Free Software Foundation.
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
++ * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
++ */
 +
-+#include <linux/kernel.h>
-+#include <linux/module.h>
 +#include <linux/of.h>
-+#include <linux/platform_data/mtk_scp.h>
++#include <linux/of_address.h>
 +#include <linux/platform_device.h>
-+#include <linux/remoteproc.h>
-+#include <linux/rpmsg/mtk_rpmsg.h>
-+#include <linux/workqueue.h>
 +
-+#include "rpmsg_internal.h"
++#include "ufshcd.h"
++#include "ufshcd-pltfrm.h"
++#include "unipro.h"
++#include "ufs-mediatek.h"
 +
-+struct mtk_rpmsg_device {
-+	struct rpmsg_device rpdev;
-+	struct platform_device *scp_pdev;
++#define mphy_readl(host, ofs) readl((host)->mphy_base + (ofs))
++#define mphy_writel(host, val, ofs) writel((val), (host)->mphy_base + (ofs))
++
++int ufs_mtk_cfg_unipro_cg(struct ufs_hba *hba, bool enable)
++{
++	u32 tmp;
++
++	if (enable) {
++		ufshcd_dme_get(hba,
++			       UIC_ARG_MIB(VS_SAVEPOWERCONTROL), &tmp);
++		tmp = tmp |
++		      (1 << RX_SYMBOL_CLK_GATE_EN) |
++		      (1 << SYS_CLK_GATE_EN) |
++		      (1 << TX_CLK_GATE_EN);
++		ufshcd_dme_set(hba,
++			       UIC_ARG_MIB(VS_SAVEPOWERCONTROL), tmp);
++
++		ufshcd_dme_get(hba,
++			       UIC_ARG_MIB(VS_DEBUGCLOCKENABLE), &tmp);
++		tmp = tmp & ~(1 << TX_SYMBOL_CLK_REQ_FORCE);
++		ufshcd_dme_set(hba,
++			       UIC_ARG_MIB(VS_DEBUGCLOCKENABLE), tmp);
++	} else {
++		ufshcd_dme_get(hba,
++			       UIC_ARG_MIB(VS_SAVEPOWERCONTROL), &tmp);
++		tmp = tmp & ~((1 << RX_SYMBOL_CLK_GATE_EN) |
++			      (1 << SYS_CLK_GATE_EN) |
++			      (1 << TX_CLK_GATE_EN));
++		ufshcd_dme_set(hba,
++			       UIC_ARG_MIB(VS_SAVEPOWERCONTROL), tmp);
++
++		ufshcd_dme_get(hba,
++			       UIC_ARG_MIB(VS_DEBUGCLOCKENABLE), &tmp);
++		tmp = tmp | (1 << TX_SYMBOL_CLK_REQ_FORCE);
++		ufshcd_dme_set(hba,
++			       UIC_ARG_MIB(VS_DEBUGCLOCKENABLE), tmp);
++	}
++
++	return 0;
++}
++
++int ufs_mtk_parse_dt(struct ufs_hba *hba)
++{
++	struct device_node *node;
++	struct ufs_mtk_host *host;
++	int err = 0;
++
++	host = ufshcd_get_variant(hba);
++
++	/* get mphy_base */
++	node = of_find_compatible_node(NULL, NULL, "mediatek,ufs_mphy");
++
++	if (node) {
++		host->mphy_base = of_iomap(node, 0);
++		if (IS_ERR(*(void **)&host->mphy_base)) {
++			err = PTR_ERR(*(void **)&host->mphy_base);
++			host->mphy_base = NULL;
++		}
++	}
++
++	if (!host->mphy_base)
++		dev_info(hba->dev, "get mphy_base failed %d\n", err);
++
++	return err;
++}
++
++/**
++ * ufs_mtk_init - find other essential mmio bases
++ * @hba: host controller instance
++ */
++static int ufs_mtk_init(struct ufs_hba *hba)
++{
++	struct ufs_mtk_host *host;
++	struct device *dev = hba->dev;
++	int err = 0;
++
++	host = devm_kzalloc(dev, sizeof(*host), GFP_KERNEL);
++	if (!host) {
++		err = -ENOMEM;
++		dev_info(dev, "%s: no memory for mtk ufs host\n", __func__);
++		goto out;
++	}
++
++	host->hba = hba;
++	ufshcd_set_variant(hba, host);
++
++	ufs_mtk_parse_dt(hba);
++
++out:
++	return err;
++}
++
++struct ufs_mtk_dev_params {
++	u32 pwm_rx_gear;        /* pwm rx gear to work in */
++	u32 pwm_tx_gear;        /* pwm tx gear to work in */
++	u32 hs_rx_gear;         /* hs rx gear to work in */
++	u32 hs_tx_gear;         /* hs tx gear to work in */
++	u32 rx_lanes;           /* number of rx lanes */
++	u32 tx_lanes;           /* number of tx lanes */
++	u32 rx_pwr_pwm;         /* rx pwm working pwr */
++	u32 tx_pwr_pwm;         /* tx pwm working pwr */
++	u32 rx_pwr_hs;          /* rx hs working pwr */
++	u32 tx_pwr_hs;          /* tx hs working pwr */
++	u32 hs_rate;            /* rate A/B to work in HS */
++	u32 desired_working_mode;
 +};
 +
-+struct mtk_rpmsg_endpoint {
-+	struct rpmsg_endpoint ept;
-+	struct platform_device *scp_pdev;
-+};
++static int ufs_mtk_get_pwr_dev_param(struct ufs_mtk_dev_params *mtk_param,
++				     struct ufs_pa_layer_attr *dev_max,
++				     struct ufs_pa_layer_attr *agreed_pwr)
++{
++	int min_mtk_gear;
++	int min_dev_gear;
++	bool is_dev_sup_hs = false;
++	bool is_mtk_max_hs = false;
 +
-+struct mtk_rpmsg_rproc_subdev {
-+	struct rproc *scp_rproc;
-+	struct platform_device *scp_pdev;
-+	struct rpmsg_endpoint *ns_ept;
-+	struct rproc_subdev subdev;
++	if (dev_max->pwr_rx == FAST_MODE)
++		is_dev_sup_hs = true;
 +
-+	struct work_struct register_work;
-+	struct list_head channels;
-+	struct mutex channels_lock;
-+};
++	if (mtk_param->desired_working_mode == FAST) {
++		is_mtk_max_hs = true;
++		min_mtk_gear = min_t(u32, mtk_param->hs_rx_gear,
++				     mtk_param->hs_tx_gear);
++	} else {
++		min_mtk_gear = min_t(u32, mtk_param->pwm_rx_gear,
++				     mtk_param->pwm_tx_gear);
++	}
 +
-+#define to_mtk_subdev(d) container_of(d, struct mtk_rpmsg_rproc_subdev, subdev)
++	/*
++	 * device doesn't support HS but
++	 * mtk_param->desired_working_mode is HS,
++	 * thus device and mtk_param don't agree
++	 */
++	if (!is_dev_sup_hs && is_mtk_max_hs) {
++		pr_info("%s: device doesn't support HS\n",
++			__func__);
++		return -ENOTSUPP;
++	} else if (is_dev_sup_hs && is_mtk_max_hs) {
++		/*
++		 * since device supports HS, it supports FAST_MODE.
++		 * since mtk_param->desired_working_mode is also HS
++		 * then final decision (FAST/FASTAUTO) is done according
++		 * to mtk_params as it is the restricting factor
++		 */
++		agreed_pwr->pwr_rx = mtk_param->rx_pwr_hs;
++		agreed_pwr->pwr_tx = mtk_param->rx_pwr_hs;
++	} else {
++		/*
++		 * here mtk_param->desired_working_mode is PWM.
++		 * it doesn't matter whether device supports HS or PWM,
++		 * in both cases mtk_param->desired_working_mode will
++		 * determine the mode
++		 */
++		agreed_pwr->pwr_rx = mtk_param->rx_pwr_pwm;
++		agreed_pwr->pwr_tx = mtk_param->rx_pwr_pwm;
++	}
 +
-+struct mtk_rpmsg_channel_info {
-+	struct rpmsg_channel_info info;
-+	bool registered;
-+	struct list_head list;
++	/*
++	 * we would like tx to work in the minimum number of lanes
++	 * between device capability and vendor preferences.
++	 * the same decision will be made for rx
++	 */
++	agreed_pwr->lane_tx = min_t(u32, dev_max->lane_tx,
++				    mtk_param->tx_lanes);
++	agreed_pwr->lane_rx = min_t(u32, dev_max->lane_rx,
++				    mtk_param->rx_lanes);
++
++	/* device maximum gear is the minimum between device rx and tx gears */
++	min_dev_gear = min_t(u32, dev_max->gear_rx, dev_max->gear_tx);
++
++	/*
++	 * if both device capabilities and vendor pre-defined preferences are
++	 * both HS or both PWM then set the minimum gear to be the chosen
++	 * working gear.
++	 * if one is PWM and one is HS then the one that is PWM get to decide
++	 * what is the gear, as it is the one that also decided previously what
++	 * pwr the device will be configured to.
++	 */
++	if ((is_dev_sup_hs && is_mtk_max_hs) ||
++	    (!is_dev_sup_hs && !is_mtk_max_hs)) {
++		agreed_pwr->gear_rx =
++			min_t(u32, min_dev_gear, min_mtk_gear);
++		agreed_pwr->gear_tx = agreed_pwr->gear_rx;
++	} else if (!is_dev_sup_hs) {
++		agreed_pwr->gear_rx = min_dev_gear;
++		agreed_pwr->gear_tx = min_dev_gear;
++	} else {
++		agreed_pwr->gear_rx = min_mtk_gear;
++		agreed_pwr->gear_tx = min_mtk_gear;
++	}
++
++	agreed_pwr->hs_rate = mtk_param->hs_rate;
++
++	pr_info("final power mode: gear = %d, lane = %d, pwr = %d, rate = %d\n",
++		agreed_pwr->gear_rx, agreed_pwr->lane_rx, agreed_pwr->pwr_rx,
++		agreed_pwr->hs_rate);
++	return 0;
++}
++
++static int ufs_mtk_pre_pwr_change(struct ufs_hba *hba,
++				  struct ufs_pa_layer_attr *dev_max_params,
++				  struct ufs_pa_layer_attr *dev_req_params)
++{
++	struct ufs_mtk_dev_params ufs_mtk_cap;
++	int ret;
++
++	ufs_mtk_cap.tx_lanes = UFS_MTK_LIMIT_NUM_LANES_TX;
++	ufs_mtk_cap.rx_lanes = UFS_MTK_LIMIT_NUM_LANES_RX;
++	ufs_mtk_cap.hs_rx_gear = UFS_MTK_LIMIT_HSGEAR_RX;
++	ufs_mtk_cap.hs_tx_gear = UFS_MTK_LIMIT_HSGEAR_TX;
++	ufs_mtk_cap.pwm_rx_gear = UFS_MTK_LIMIT_PWMGEAR_RX;
++	ufs_mtk_cap.pwm_tx_gear = UFS_MTK_LIMIT_PWMGEAR_TX;
++	ufs_mtk_cap.rx_pwr_pwm = UFS_MTK_LIMIT_RX_PWR_PWM;
++	ufs_mtk_cap.tx_pwr_pwm = UFS_MTK_LIMIT_TX_PWR_PWM;
++	ufs_mtk_cap.rx_pwr_hs = UFS_MTK_LIMIT_RX_PWR_HS;
++	ufs_mtk_cap.tx_pwr_hs = UFS_MTK_LIMIT_TX_PWR_HS;
++	ufs_mtk_cap.hs_rate = UFS_MTK_LIMIT_HS_RATE;
++	ufs_mtk_cap.desired_working_mode =
++				UFS_MTK_LIMIT_DESIRED_MODE;
++
++	ret = ufs_mtk_get_pwr_dev_param(&ufs_mtk_cap,
++					dev_max_params,
++					dev_req_params);
++	if (ret) {
++		pr_info("%s: failed to determine capabilities\n",
++			__func__);
++	}
++
++	return ret;
++}
++
++static int ufs_mtk_pwr_change_notify(struct ufs_hba *hba,
++				     enum ufs_notify_change_status stage,
++				     struct ufs_pa_layer_attr *dev_max_params,
++				     struct ufs_pa_layer_attr *dev_req_params)
++{
++	int ret = 0;
++
++	switch (stage) {
++	case PRE_CHANGE:
++		ret = ufs_mtk_pre_pwr_change(hba, dev_max_params,
++					     dev_req_params);
++		break;
++	case POST_CHANGE:
++		break;
++	default:
++		break;
++	}
++
++	return ret;
++}
++
++static int ufs_mtk_pre_link(struct ufs_hba *hba)
++{
++	int ret;
++	u32 tmp;
++
++	/* disable deep stall */
++	ret = ufshcd_dme_get(hba, UIC_ARG_MIB(VS_SAVEPOWERCONTROL), &tmp);
++	if (ret)
++		return ret;
++
++	tmp &= ~(1 << 6);
++
++	ret = ufshcd_dme_set(hba, UIC_ARG_MIB(VS_SAVEPOWERCONTROL), tmp);
++
++	return ret;
++}
++
++static int ufs_mtk_post_link(struct ufs_hba *hba)
++{
++	/* disable device LCC */
++	ufshcd_dme_set_attr(hba, UIC_ARG_MIB(PA_LOCALTXLCCENABLE),
++			    0, 0, 0);
++
++	/* enable unipro clock gating feature */
++	ufs_mtk_cfg_unipro_cg(hba, true);
++
++	return 0;
++}
++
++static int ufs_mtk_link_startup_notify(struct ufs_hba *hba,
++				       enum ufs_notify_change_status stage)
++{
++	int ret = 0;
++
++	switch (stage) {
++	case PRE_CHANGE:
++		ret = ufs_mtk_pre_link(hba);
++		break;
++	case POST_CHANGE:
++		ret = ufs_mtk_post_link(hba);
++		break;
++	default:
++		break;
++	}
++
++	return ret;
++}
++
++int ufs_mtk_resume_mphy(struct ufs_hba *hba)
++{
++	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
++	u32 reg;
++
++	/* release DA_MP_PLL_PWR_ON */
++	reg = mphy_readl(host, MP_LN_DIG_RX_8C);
++	reg = reg | PLL_PWR_ON;
++	mphy_writel(host, reg, MP_LN_DIG_RX_8C);
++	reg = mphy_readl(host, MP_LN_DIG_RX_8C);
++	reg = reg & ~PLL_FRC_PWR_ON;
++	mphy_writel(host, reg, MP_LN_DIG_RX_8C);
++
++	/* release DA_MP_PLL_ISO_EN */
++	reg = mphy_readl(host, MP_LN_DIG_RX_8C);
++	reg = reg & ~PLL_ISO_EN1;
++	mphy_writel(host, reg, MP_LN_DIG_RX_8C);
++	reg = mphy_readl(host, MP_LN_DIG_RX_8C);
++	reg = reg & ~PLL_ISO_EN0;
++	mphy_writel(host, reg, MP_LN_DIG_RX_8C);
++
++	/* release DA_MP_CDR_PWR_ON */
++	reg = mphy_readl(host, MP_LN_DIG_RX_44);
++	reg = reg | CDR_PWR_ON;
++	mphy_writel(host, reg, MP_LN_DIG_RX_44);
++	reg = mphy_readl(host, MP_LN_DIG_RX_44);
++	reg = reg & ~CDR_FRC_PWR_ON;
++	mphy_writel(host, reg, MP_LN_DIG_RX_44);
++
++	/* release DA_MP_CDR_ISO_EN */
++	reg = mphy_readl(host, MP_LN_DIG_RX_44);
++	reg = reg & ~CDR_ISO_EN1;
++	mphy_writel(host, reg, MP_LN_DIG_RX_44);
++	reg = mphy_readl(host, MP_LN_DIG_RX_44);
++	reg = reg & ~CDR_ISO_EN0;
++	mphy_writel(host, reg, MP_LN_DIG_RX_44);
++
++	/* release DA_MP_RX0_SQ_EN */
++	reg = mphy_readl(host, MP_LN_DIG_RX_AC);
++	reg = reg | RX_SQ_EN;
++	mphy_writel(host, reg, MP_LN_DIG_RX_AC);
++	reg = mphy_readl(host, MP_LN_DIG_RX_AC);
++	reg = reg & ~RX_FRC_SQ_EN;
++	mphy_writel(host, reg, MP_LN_DIG_RX_AC);
++
++	/* delay 1us to wait DIFZ stable */
++	udelay(1);
++
++	/* release DIFZ */
++	reg = mphy_readl(host, MP_LN_DIG_RX_9C);
++	reg = reg & ~FSM_DIFZ_FRC;
++	mphy_writel(host, reg, MP_LN_DIG_RX_9C);
++
++	return 0;
++}
++
++int ufs_mtk_suspend_mphy(struct ufs_hba *hba)
++{
++	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
++	u32 reg;
++
++	/* force DIFZ */
++	reg = mphy_readl(host, MP_LN_DIG_RX_9C);
++	reg = reg | FSM_DIFZ_FRC;
++	mphy_writel(host, reg, MP_LN_DIG_RX_9C);
++
++	/* force DA_MP_RX0_SQ_EN */
++	reg = mphy_readl(host, MP_LN_DIG_RX_AC);
++	reg = reg | RX_FRC_SQ_EN;
++	mphy_writel(host, reg, MP_LN_DIG_RX_AC);
++	reg = mphy_readl(host, MP_LN_DIG_RX_AC);
++	reg = reg & ~RX_SQ_EN;
++	mphy_writel(host, reg, MP_LN_DIG_RX_AC);
++
++	/* force DA_MP_CDR_ISO_EN */
++	reg = mphy_readl(host, MP_LN_DIG_RX_44);
++	reg = reg | CDR_ISO_EN0;
++	mphy_writel(host, reg, MP_LN_DIG_RX_44);
++	reg = mphy_readl(host, MP_LN_DIG_RX_44);
++	reg = reg | CDR_ISO_EN1;
++	mphy_writel(host, reg, MP_LN_DIG_RX_44);
++
++	/* force DA_MP_CDR_PWR_ON */
++	reg = mphy_readl(host, MP_LN_DIG_RX_44);
++	reg = reg | CDR_FRC_PWR_ON;
++	mphy_writel(host, reg, MP_LN_DIG_RX_44);
++	reg = mphy_readl(host, MP_LN_DIG_RX_44);
++	reg = reg & ~CDR_PWR_ON;
++	mphy_writel(host, reg, MP_LN_DIG_RX_44);
++
++	/* force DA_MP_PLL_ISO_EN */
++	reg = mphy_readl(host, MP_LN_DIG_RX_8C);
++	reg = reg | PLL_ISO_EN0;
++	mphy_writel(host, reg, MP_LN_DIG_RX_8C);
++	reg = mphy_readl(host, MP_LN_DIG_RX_8C);
++	reg = reg | PLL_ISO_EN1;
++	mphy_writel(host, reg, MP_LN_DIG_RX_8C);
++
++	/* force DA_MP_PLL_PWR_ON */
++	reg = mphy_readl(host, MP_LN_DIG_RX_8C);
++	reg = reg | PLL_FRC_PWR_ON;
++	mphy_writel(host, reg, MP_LN_DIG_RX_8C);
++	reg = mphy_readl(host, MP_LN_DIG_RX_8C);
++	reg = reg & ~PLL_PWR_ON;
++	mphy_writel(host, reg, MP_LN_DIG_RX_8C);
++
++	return 0;
++}
++
++static int ufs_mtk_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
++{
++	if (ufshcd_is_link_hibern8(hba))
++		ufs_mtk_suspend_mphy(hba);
++
++	return 0;
++}
++
++static int ufs_mtk_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
++{
++	if (ufshcd_is_link_hibern8(hba))
++		ufs_mtk_resume_mphy(hba);
++
++	return 0;
++}
++
++/**
++ * struct ufs_hba_mtk_vops - UFS MTK specific variant operations
++ *
++ * The variant operations configure the necessary controller and PHY
++ * handshake during initialization.
++ */
++static struct ufs_hba_variant_ops ufs_hba_mtk_vops = {
++	.name                = "mediatek.ufshci",
++	.init                = ufs_mtk_init,
++	.link_startup_notify = ufs_mtk_link_startup_notify,
++	.pwr_change_notify   = ufs_mtk_pwr_change_notify,
++	.suspend             = ufs_mtk_suspend,
++	.resume              = ufs_mtk_resume,
 +};
 +
 +/**
-+ * struct rpmsg_ns_msg - dynamic name service announcement message
-+ * @name: name of remote service that is published
-+ * @addr: address of remote service that is published
++ * ufs_mtk_probe - probe routine of the driver
++ * @pdev: pointer to Platform device handle
 + *
-+ * This message is sent across to publish a new service. When we receive these
-+ * messages, an appropriate rpmsg channel (i.e device) is created. In turn, the
-+ * ->probe() handler of the appropriate rpmsg driver will be invoked
-+ *  (if/as-soon-as one is registered).
++ * Return zero for success and non-zero for failure
 + */
-+struct rpmsg_ns_msg {
-+	char name[RPMSG_NAME_SIZE];
-+	u32 addr;
-+} __packed;
-+
-+#define to_scp_device(r)	container_of(r, struct mtk_rpmsg_device, rpdev)
-+#define to_scp_endpoint(r)	container_of(r, struct mtk_rpmsg_endpoint, ept)
-+
-+static const struct rpmsg_endpoint_ops mtk_rpmsg_endpoint_ops;
-+
-+static void __ept_release(struct kref *kref)
++static int ufs_mtk_probe(struct platform_device *pdev)
 +{
-+	struct rpmsg_endpoint *ept = container_of(kref, struct rpmsg_endpoint,
-+						  refcount);
-+	kfree(to_scp_endpoint(ept));
++	int err;
++	struct device *dev = &pdev->dev;
++
++	/* perform generic probe */
++	err = ufshcd_pltfrm_init(pdev, &ufs_hba_mtk_vops);
++	if (err)
++		dev_info(dev, "probe failed %d\n", err);
++
++	return err;
 +}
 +
-+static void mtk_rpmsg_ipi_handler(void *data, unsigned int len, void *priv)
++/**
++ * ufs_mtk_remove - set driver_data of the device to NULL
++ * @pdev: pointer to platform device handle
++ *
++ * Always return 0
++ */
++static int ufs_mtk_remove(struct platform_device *pdev)
 +{
-+	struct mtk_rpmsg_endpoint *mept = priv;
-+	struct rpmsg_endpoint *ept = &mept->ept;
-+	int ret;
++	struct ufs_hba *hba =  platform_get_drvdata(pdev);
 +
-+	ret = (*ept->cb)(ept->rpdev, data, len, ept->priv, ept->addr);
-+	if (ret)
-+		dev_warn(&ept->rpdev->dev, "rpmsg handler return error = %d",
-+			 ret);
++	pm_runtime_get_sync(&(pdev)->dev);
++	ufshcd_remove(hba);
++	return 0;
 +}
 +
-+static struct rpmsg_endpoint *
-+__rpmsg_create_ept(struct platform_device *scp_pdev, struct rpmsg_device *rpdev,
-+		   rpmsg_rx_cb_t cb, void *priv,
-+		   u32 id)
-+{
-+	struct mtk_rpmsg_endpoint *mept;
-+	struct rpmsg_endpoint *ept;
-+	int ret;
-+
-+	mept = kzalloc(sizeof(*mept), GFP_KERNEL);
-+	if (!mept)
-+		return NULL;
-+	mept->scp_pdev = scp_pdev;
-+
-+	ept = &mept->ept;
-+	kref_init(&ept->refcount);
-+
-+	ept->rpdev = rpdev;
-+	ept->cb = cb;
-+	ept->priv = priv;
-+	ept->ops = &mtk_rpmsg_endpoint_ops;
-+	ept->addr = id;
-+
-+	ret = scp_ipi_register(scp_pdev, id, mtk_rpmsg_ipi_handler, mept);
-+	if (ret) {
-+		dev_err(&scp_pdev->dev, "IPI register failed, id = %d", id);
-+		kref_put(&ept->refcount, __ept_release);
-+		return NULL;
-+	}
-+
-+	return ept;
-+}
-+
-+static struct rpmsg_endpoint *
-+mtk_rpmsg_create_ept(struct rpmsg_device *rpdev, rpmsg_rx_cb_t cb, void *priv,
-+		     struct rpmsg_channel_info chinfo)
-+{
-+	struct platform_device *scp_pdev = to_scp_device(rpdev)->scp_pdev;
-+
-+	return __rpmsg_create_ept(scp_pdev, rpdev, cb, priv, chinfo.src);
-+}
-+
-+static void mtk_rpmsg_destroy_ept(struct rpmsg_endpoint *ept)
-+{
-+	struct mtk_rpmsg_endpoint *mept = to_scp_endpoint(ept);
-+
-+	scp_ipi_unregister(mept->scp_pdev, ept->addr);
-+	kref_put(&ept->refcount, __ept_release);
-+}
-+
-+static int mtk_rpmsg_send(struct rpmsg_endpoint *ept, void *data, int len)
-+{
-+	struct mtk_rpmsg_endpoint *mept = to_scp_endpoint(ept);
-+
-+	return scp_ipi_send(mept->scp_pdev, mept->ept.addr, data, len, 0);
-+}
-+
-+static int mtk_rpmsg_trysend(struct rpmsg_endpoint *ept, void *data, int len)
-+{
-+	struct mtk_rpmsg_endpoint *mept = to_scp_endpoint(ept);
-+
-+	/*
-+	 * TODO: This currently is same as mtk_rpmsg_send, and wait until SCP
-+	 * received the last command.
-+	 */
-+	return scp_ipi_send(mept->scp_pdev, mept->ept.addr, data, len, 0);
-+}
-+
-+static const struct rpmsg_endpoint_ops mtk_rpmsg_endpoint_ops = {
-+	.destroy_ept = mtk_rpmsg_destroy_ept,
-+	.send = mtk_rpmsg_send,
-+	.trysend = mtk_rpmsg_trysend,
++const struct of_device_id ufs_mtk_of_match[] = {
++	{ .compatible = "mediatek,ufshci"},
++	{},
 +};
 +
-+static void mtk_rpmsg_release_device(struct device *dev)
-+{
-+	struct rpmsg_device *rpdev = to_rpmsg_device(dev);
-+	struct mtk_rpmsg_device *mdev = to_scp_device(rpdev);
-+
-+	kfree(mdev);
-+}
-+
-+static const struct rpmsg_device_ops mtk_rpmsg_device_ops = {
-+	.create_ept = mtk_rpmsg_create_ept,
++static const struct dev_pm_ops ufs_mtk_pm_ops = {
++	.suspend         = ufshcd_pltfrm_suspend,
++	.resume          = ufshcd_pltfrm_resume,
++	.runtime_suspend = ufshcd_pltfrm_runtime_suspend,
++	.runtime_resume  = ufshcd_pltfrm_runtime_resume,
++	.runtime_idle    = ufshcd_pltfrm_runtime_idle,
 +};
 +
-+static struct device_node *
-+mtk_rpmsg_match_device_subnode(struct device_node *node, const char *channel)
-+{
-+	struct device_node *child;
-+	const char *name;
-+	int ret;
++static struct platform_driver ufs_mtk_pltform = {
++	.probe      = ufs_mtk_probe,
++	.remove     = ufs_mtk_remove,
++	.shutdown   = ufshcd_pltfrm_shutdown,
++	.driver = {
++		.name   = "ufshcd-mtk",
++		.owner  = THIS_MODULE,
++		.pm     = &ufs_mtk_pm_ops,
++		.of_match_table = ufs_mtk_of_match,
++	},
++};
 +
-+	for_each_available_child_of_node(node, child) {
-+		ret = of_property_read_string(child, "mtk,rpmsg-name", &name);
-+		if (ret)
-+			continue;
++module_platform_driver(ufs_mtk_pltform);
 +
-+		if (strcmp(name, channel) == 0)
-+			return child;
-+	}
-+
-+	return NULL;
-+}
-+
-+static int mtk_rpmsg_register_device(struct platform_device *scp_pdev,
-+				     struct rpmsg_channel_info *info)
-+{
-+	struct rpmsg_device *rpdev;
-+	struct mtk_rpmsg_device *mdev;
-+	int ret;
-+
-+	mdev = kzalloc(sizeof(*mdev), GFP_KERNEL);
-+	if (!mdev)
-+		return -ENOMEM;
-+
-+	mdev->scp_pdev = scp_pdev;
-+
-+	rpdev = &mdev->rpdev;
-+	rpdev->ops = &mtk_rpmsg_device_ops;
-+	rpdev->src = info->src;
-+	rpdev->dst = info->dst;
-+	strncpy(rpdev->id.name, info->name, RPMSG_NAME_SIZE);
-+
-+	rpdev->dev.of_node = mtk_rpmsg_match_device_subnode(
-+		scp_pdev->dev.of_node, info->name);
-+	rpdev->dev.parent = &scp_pdev->dev;
-+	rpdev->dev.release = mtk_rpmsg_release_device;
-+
-+	ret = rpmsg_register_device(rpdev);
-+	if (ret) {
-+		kfree(mdev);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static void mtk_register_device_work_function(struct work_struct *register_work)
-+{
-+	struct mtk_rpmsg_rproc_subdev *mtk_subdev = container_of(
-+		register_work, struct mtk_rpmsg_rproc_subdev, register_work);
-+	struct platform_device *scp_pdev = mtk_subdev->scp_pdev;
-+	struct mtk_rpmsg_channel_info *info;
-+	int ret;
-+
-+	mutex_lock(&mtk_subdev->channels_lock);
-+	list_for_each_entry(info, &mtk_subdev->channels, list) {
-+		if (info->registered)
-+			continue;
-+
-+		ret = mtk_rpmsg_register_device(scp_pdev, &info->info);
-+		if (ret) {
-+			dev_err(&scp_pdev->dev, "Can't create rpmsg_device\n");
-+			continue;
-+		}
-+
-+		info->registered = true;
-+	}
-+	mutex_unlock(&mtk_subdev->channels_lock);
-+}
-+
-+static int mtk_rpmsg_create_device(struct mtk_rpmsg_rproc_subdev *mtk_subdev,
-+				   char *name, u32 addr)
-+{
-+	struct mtk_rpmsg_channel_info *info;
-+
-+	info = kzalloc(sizeof(*info), GFP_KERNEL);
-+	if (!info)
-+		return -ENOMEM;
-+
-+	strncpy(info->info.name, name, RPMSG_NAME_SIZE);
-+	info->info.src = addr;
-+	info->info.dst = RPMSG_ADDR_ANY;
-+	mutex_lock(&mtk_subdev->channels_lock);
-+	list_add(&info->list, &mtk_subdev->channels);
-+	mutex_unlock(&mtk_subdev->channels_lock);
-+
-+	schedule_work(&mtk_subdev->register_work);
-+	return 0;
-+}
-+
-+static int mtk_rpmsg_ns_cb(struct rpmsg_device *rpdev, void *data, int len,
-+			   void *priv, u32 src)
-+{
-+	struct rpmsg_ns_msg *msg = data;
-+	struct mtk_rpmsg_rproc_subdev *mtk_subdev = priv;
-+	struct device *dev = &mtk_subdev->scp_pdev->dev;
-+
-+	int ret;
-+
-+	if (len != sizeof(*msg)) {
-+		dev_err(dev, "malformed ns msg (%d)\n", len);
-+		return -EINVAL;
-+	}
-+
-+	/*
-+	 * the name service ept does _not_ belong to a real rpmsg channel,
-+	 * and is handled by the rpmsg bus itself.
-+	 * for sanity reasons, make sure a valid rpdev has _not_ sneaked
-+	 * in somehow.
-+	 */
-+	if (rpdev) {
-+		dev_err(dev, "anomaly: ns ept has an rpdev handle\n");
-+		return -EINVAL;
-+	}
-+
-+	/* don't trust the remote processor for null terminating the name */
-+	msg->name[RPMSG_NAME_SIZE - 1] = '\0';
-+
-+	dev_info(dev, "creating channel %s addr 0x%x\n", msg->name, msg->addr);
-+
-+	ret = mtk_rpmsg_create_device(mtk_subdev, msg->name, msg->addr);
-+	if (ret) {
-+		dev_err(dev, "create rpmsg device failed\n");
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+int mtk_rpmsg_prepare(struct rproc_subdev *subdev)
-+{
-+	struct mtk_rpmsg_rproc_subdev *mtk_subdev = to_mtk_subdev(subdev);
-+	struct platform_device *scp_pdev = mtk_subdev->scp_pdev;
-+
-+	/* a dedicated endpoint handles the name service msgs */
-+	mtk_subdev->ns_ept =
-+		__rpmsg_create_ept(scp_pdev, NULL, mtk_rpmsg_ns_cb, mtk_subdev,
-+				   SCP_IPI_NS_SERVICE);
-+	if (!mtk_subdev->ns_ept) {
-+		dev_err(&scp_pdev->dev,
-+			"failed to create name service endpoint\n");
-+		return -ENOMEM;
-+	}
-+
-+	return 0;
-+}
-+
-+void mtk_rpmsg_stop(struct rproc_subdev *subdev, bool crashed)
-+{
-+	struct mtk_rpmsg_channel_info *info, *next;
-+	struct mtk_rpmsg_rproc_subdev *mtk_subdev = to_mtk_subdev(subdev);
-+	struct device *dev = &mtk_subdev->scp_pdev->dev;
-+
-+	mtk_rpmsg_destroy_ept(mtk_subdev->ns_ept);
-+	cancel_work_sync(&mtk_subdev->register_work);
-+
-+	mutex_lock(&mtk_subdev->channels_lock);
-+	list_for_each_entry(info, &mtk_subdev->channels, list) {
-+		if (!info->registered)
-+			continue;
-+		if (rpmsg_unregister_device(dev, &info->info)) {
-+			dev_warn(
-+				dev,
-+				"rpmsg_unregister_device failed for %s.%d.%d\n",
-+				info->info.name, info->info.src,
-+				info->info.dst);
-+		}
-+	}
-+
-+	list_for_each_entry_safe(info, next,
-+				 &mtk_subdev->channels, list) {
-+		list_del(&info->list);
-+		kfree(info);
-+	}
-+	mutex_unlock(&mtk_subdev->channels_lock);
-+}
-+
-+struct rproc_subdev *
-+mtk_rpmsg_create_rproc_subdev(struct platform_device *scp_pdev,
-+			      struct rproc *scp_rproc)
-+{
-+	struct mtk_rpmsg_rproc_subdev *mtk_subdev;
-+
-+	mtk_subdev = kzalloc(sizeof(*mtk_subdev), GFP_KERNEL);
-+	if (!mtk_subdev)
-+		return NULL;
-+
-+	mtk_subdev->scp_pdev = scp_pdev;
-+	mtk_subdev->scp_rproc = scp_rproc;
-+	mtk_subdev->subdev.prepare = mtk_rpmsg_prepare;
-+	mtk_subdev->subdev.stop = mtk_rpmsg_stop;
-+	INIT_LIST_HEAD(&mtk_subdev->channels);
-+	INIT_WORK(&mtk_subdev->register_work,
-+		  mtk_register_device_work_function);
-+	mutex_init(&mtk_subdev->channels_lock);
-+
-+	return &mtk_subdev->subdev;
-+}
-+EXPORT_SYMBOL_GPL(mtk_rpmsg_create_rproc_subdev);
-+
-+void mtk_rpmsg_destroy_rproc_subdev(struct rproc_subdev *subdev)
-+{
-+	struct mtk_rpmsg_rproc_subdev *mtk_subdev = to_mtk_subdev(subdev);
-+
-+	kfree(mtk_subdev);
-+}
-+EXPORT_SYMBOL_GPL(mtk_rpmsg_destroy_rproc_subdev);
-+
-+MODULE_LICENSE("GPL v2");
-+MODULE_DESCRIPTION("MediaTek scp rpmsg driver");
-diff --git a/include/linux/platform_data/mtk_scp.h b/include/linux/platform_data/mtk_scp.h
-index 7625eede2e5832..e26e5f6146e68e 100644
---- a/include/linux/platform_data/mtk_scp.h
-+++ b/include/linux/platform_data/mtk_scp.h
-@@ -34,9 +34,11 @@ enum scp_ipi_id {
- 	SCP_IPI_VENC_VP8,
- 	SCP_IPI_MDP,
- 	SCP_IPI_CROS_HOST_CMD,
--	SCP_IPI_MAX,
-+	SCP_IPI_NS_SERVICE = 0xFF,
-+	SCP_IPI_MAX = 0x100,
- };
- 
-+
- /**
-  * scp_ipi_register - register an ipi function
-  *
-diff --git a/include/linux/rpmsg/mtk_rpmsg.h b/include/linux/rpmsg/mtk_rpmsg.h
+diff --git a/drivers/scsi/ufs/ufs-mediatek.h b/drivers/scsi/ufs/ufs-mediatek.h
 new file mode 100644
-index 00000000000000..8d21cd3d35b012
+index 000000000000..6431155fc36c
 --- /dev/null
-+++ b/include/linux/rpmsg/mtk_rpmsg.h
-@@ -0,0 +1,35 @@
++++ b/drivers/scsi/ufs/ufs-mediatek.h
+@@ -0,0 +1,91 @@
 +/* SPDX-License-Identifier: GPL-2.0 */
 +/*
-+ * Copyright 2018 Google LLC.
++ * Copyright (C) 2019 MediaTek Inc.
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 as
++ * published by the Free Software Foundation.
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
++ * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
 + */
 +
-+#ifndef __LINUX_RPMSG_MTK_RPMSG_H
-+#define __LINUX_RPMSG_MTK_RPMSG_H
++#ifndef _UFS_MEDIATEK_H
++#define _UFS_MEDIATEK_H
 +
-+#include <linux/device.h>
-+#include <linux/remoteproc.h>
++/*
++ * Vendor specific pre-defined parameters
++ */
++#define SLOW 1
++#define FAST 2
 +
-+#if IS_ENABLED(CONFIG_RPMSG_MTK_SCP)
++#define UFS_MTK_LIMIT_NUM_LANES_RX  2
++#define UFS_MTK_LIMIT_NUM_LANES_TX  2
++#define UFS_MTK_LIMIT_HSGEAR_RX     UFS_HS_G3
++#define UFS_MTK_LIMIT_HSGEAR_TX     UFS_HS_G3
++#define UFS_MTK_LIMIT_PWMGEAR_RX    UFS_PWM_G4
++#define UFS_MTK_LIMIT_PWMGEAR_TX    UFS_PWM_G4
++#define UFS_MTK_LIMIT_RX_PWR_PWM    SLOW_MODE
++#define UFS_MTK_LIMIT_TX_PWR_PWM    SLOW_MODE
++#define UFS_MTK_LIMIT_RX_PWR_HS     FAST_MODE
++#define UFS_MTK_LIMIT_TX_PWR_HS     FAST_MODE
++#define UFS_MTK_LIMIT_HS_RATE       PA_HS_MODE_B
++#define UFS_MTK_LIMIT_DESIRED_MODE  FAST
 +
-+struct rproc_subdev *
-+mtk_rpmsg_create_rproc_subdev(struct platform_device *scp_pdev,
-+			      struct rproc *scp_rproc);
++/*
++ * MPHY register and offsets
++ */
++#define MP_LN_DIG_RX_44             0xA044
++#define CDR_FRC_PWR_ON              BIT(17)
++#define CDR_PWR_ON                  BIT(18)
++#define CDR_ISO_EN0                 BIT(19)
++#define CDR_ISO_EN1                 BIT(20)
 +
-+void mtk_rpmsg_destroy_rproc_subdev(struct rproc_subdev *subdev);
++#define MP_LN_DIG_RX_8C             0xA08C
++#define PLL_ISO_EN0                 BIT(8)
++#define PLL_ISO_EN1                 BIT(9)
++#define PLL_FRC_PWR_ON              BIT(10)
++#define PLL_PWR_ON                  BIT(11)
 +
-+#else
++#define MP_LN_DIG_RX_9C             0xA09C
++#define FSM_DIFZ_FRC                BIT(18)
 +
-+static inline struct rproc_subdev *
-+mtk_rpmsg_create_rproc_subdev(struct platform_device *scp_pdev,
-+			      struct rproc *scp_rproc)
-+{
-+	return NULL;
-+}
++#define MP_LN_DIG_RX_AC             0xA0AC
++#define RX_FRC_SQ_EN                BIT(0)
++#define RX_SQ_EN                    BIT(1)
 +
-+static inline void mtk_rpmsg_destroy_rproc_subdev(struct rproc_subdev *subdev)
-+{
-+}
++/*
++ * PHY Adpater attributes
++ */
++#define PA_LOCALTXLCCENABLE         0x155E
 +
-+#endif
++/*
++ * Other attributes
++ */
++#define VS_DEBUGCLOCKENABLE         0xD0A1
++#define VS_SAVEPOWERCONTROL         0xD0A6
++#define VS_UNIPROPOWERDOWNCONTROL   0xD0A8
 +
-+#endif
++/*
++ * VS_DEBUGCLOCKENABLE
++ */
++enum {
++	TX_SYMBOL_CLK_REQ_FORCE = 5,
++};
++
++/*
++ * VS_SAVEPOWERCONTROL
++ */
++enum {
++	RX_SYMBOL_CLK_GATE_EN   = 0,
++	SYS_CLK_GATE_EN         = 2,
++	TX_CLK_GATE_EN          = 3,
++};
++
++struct ufs_mtk_host {
++	struct ufs_hba *hba;
++	void __iomem *mphy_base;
++};
++
++#endif /* !_UFS_MEDIATEK_H */
++
 -- 
-2.21.0.rc0.258.g878e2cd30e-goog
+2.18.0
