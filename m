@@ -1,73 +1,95 @@
-From: Wen Yang <wen.yang99-Th6q7B73Y6EnDS1+zs4M5A@public.gmane.org>
-Subject: [PATCH 2/5] net: mscc: ocelot: fix a leaked reference by adding a missing of_node_put
-Date: Fri, 22 Feb 2019 15:15:39 +0800
-Message-ID: <1550819742-32155-2-git-send-email-wen.yang99@zte.com.cn>
-References: <1550819742-32155-1-git-send-email-wen.yang99@zte.com.cn>
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1550819742-32155-1-git-send-email-wen.yang99-Th6q7B73Y6EnDS1+zs4M5A@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
-Cc: andrew-g2DYL2Zd6BY@public.gmane.org, vivien.didelot-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, UNGLinuxDriver-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org, nbd-Vt+b4OUoWG0@public.gmane.org, lorenzo.bianconi83-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, anirudh-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org, John.Linn-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org, michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org, wang.yi59-Th6q7B73Y6EnDS1+zs4M5A@public.gmane.org, Wen Yang <wen.yang99-Th6q7B73Y6EnDS1+zs4M5A@public.gmane.org>
+From: Wen Yang <wen.yang99@zte.com.cn>
+Subject: [PATCH 1/5] net: dsa: fix a leaked reference by adding a missing of_node_put
+Date: Fri, 22 Feb 2019 15:15:38 +0800
+Message-ID: <1550819742-32155-1-git-send-email-wen.yang99@zte.com.cn>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linus.walleij@linaro.org
+Cc: andrew@lunn.ch, vivien.didelot@gmail.com, f.fainelli@gmail.com, davem@davemloft.net, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, alexandre.belloni@bootlin.com, UNGLinuxDriver@microchip.com, nbd@nbd.name, lorenzo.bianconi83@gmail.com, kvalo@codeaurora.org, matthias.bgg@gmail.com, linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, anirudh@xilinx.com, John.Linn@xilinx.com, michal.simek@xilinx.com, wang.yi59@zte.com.cn, Wen Yang <wen.yang99@zte.com.cn>
 List-Id: linux-mediatek@lists.infradead.org
 
-The call to of_parse_phandle returns a node pointer with refcount
+The call to of_get_child_by_name returns a node pointer with refcount
 incremented thus it must be explicitly decremented after the last
 usage.
 
 Detected by coccinelle with the following warnings:
-./drivers/net/ethernet/mscc/ocelot_board.c:293:3-9: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 249, but without a corresponding object release within this function.
-./drivers/net/ethernet/mscc/ocelot_board.c:312:3-9: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 249, but without a corresponding object release within this function.
-./drivers/net/ethernet/mscc/ocelot_board.c:336:1-7: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 249, but without a corresponding object release within this function.
-./drivers/net/ethernet/mscc/ocelot_board.c:339:1-7: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 249, but without a corresponding object release within this function.
+./drivers/net/dsa/rtl8366rb.c:510:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 501, but without a corresponding object release within this function.
+./drivers/net/dsa/rtl8366rb.c:518:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 501, but without a corresponding object release within this function.
+./drivers/net/dsa/rtl8366rb.c:540:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 501, but without a corresponding object release within this function.
+./drivers/net/dsa/rtl8366rb.c:548:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 501, but without a corresponding object release within this function.
+./drivers/net/dsa/rtl8366rb.c:556:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 501, but without a corresponding object release within this function.
+./drivers/net/dsa/rtl8366rb.c:561:1-7: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 501, but without a corresponding object release within this function.
 
-Signed-off-by: Wen Yang <wen.yang99-Th6q7B73Y6EnDS1+zs4M5A@public.gmane.org>
-Cc: Alexandre Belloni <alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Cc: Microchip Linux Driver Support <UNGLinuxDriver-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>
-Cc: "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
-Cc: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
+Cc: Linus Walleij <linus.walleij@linaro.org>
+Cc: Andrew Lunn <andrew@lunn.ch>
+Cc: Vivien Didelot <vivien.didelot@gmail.com>
+Cc: Florian Fainelli <f.fainelli@gmail.com>
+Cc: "David S. Miller" <davem@davemloft.net>
+Cc: netdev@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org
 ---
- drivers/net/ethernet/mscc/ocelot_board.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ drivers/net/dsa/rtl8366rb.c | 16 ++++++++++------
+ 1 file changed, 10 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/net/ethernet/mscc/ocelot_board.c b/drivers/net/ethernet/mscc/ocelot_board.c
-index ca3ea2f..f1485a6 100644
---- a/drivers/net/ethernet/mscc/ocelot_board.c
-+++ b/drivers/net/ethernet/mscc/ocelot_board.c
-@@ -290,7 +290,7 @@ static int mscc_ocelot_probe(struct platform_device *pdev)
- 
- 		err = ocelot_probe_port(ocelot, port, regs, phy);
- 		if (err)
--			return err;
-+			goto err_probe_ports;
- 
- 		err = of_get_phy_mode(portnp);
- 		if (err < 0)
-@@ -309,7 +309,8 @@ static int mscc_ocelot_probe(struct platform_device *pdev)
- 			dev_err(ocelot->dev,
- 				"invalid phy mode for port%d, (Q)SGMII only\n",
- 				port);
--			return -EINVAL;
-+			err = -EINVAL;
-+			goto err_probe_ports;
- 		}
- 
- 		serdes = devm_of_phy_get(ocelot->dev, portnp, NULL);
-@@ -328,6 +329,7 @@ static int mscc_ocelot_probe(struct platform_device *pdev)
- 		ocelot->ports[port]->serdes = serdes;
+diff --git a/drivers/net/dsa/rtl8366rb.c b/drivers/net/dsa/rtl8366rb.c
+index a4d5049..f4b14b6 100644
+--- a/drivers/net/dsa/rtl8366rb.c
++++ b/drivers/net/dsa/rtl8366rb.c
+@@ -507,7 +507,8 @@ static int rtl8366rb_setup_cascaded_irq(struct realtek_smi *smi)
+ 	irq = of_irq_get(intc, 0);
+ 	if (irq <= 0) {
+ 		dev_err(smi->dev, "failed to get parent IRQ\n");
+-		return irq ? irq : -EINVAL;
++		ret = irq ? irq : -EINVAL;
++		goto out_put_node;
  	}
  
-+	of_node_put(ports);
- 	register_netdevice_notifier(&ocelot_netdevice_nb);
- 	register_switchdev_blocking_notifier(&ocelot_switchdev_blocking_nb);
+ 	/* This clears the IRQ status register */
+@@ -515,7 +516,7 @@ static int rtl8366rb_setup_cascaded_irq(struct realtek_smi *smi)
+ 			  &val);
+ 	if (ret) {
+ 		dev_err(smi->dev, "can't read interrupt status\n");
+-		return ret;
++		goto out_put_node;
+ 	}
  
-@@ -336,6 +338,7 @@ static int mscc_ocelot_probe(struct platform_device *pdev)
- 	return 0;
+ 	/* Fetch IRQ edge information from the descriptor */
+@@ -537,7 +538,7 @@ static int rtl8366rb_setup_cascaded_irq(struct realtek_smi *smi)
+ 				 val);
+ 	if (ret) {
+ 		dev_err(smi->dev, "could not configure IRQ polarity\n");
+-		return ret;
++		goto out_put_node;
+ 	}
  
- err_probe_ports:
-+	of_node_put(ports);
- 	return err;
+ 	ret = devm_request_threaded_irq(smi->dev, irq, NULL,
+@@ -545,7 +546,7 @@ static int rtl8366rb_setup_cascaded_irq(struct realtek_smi *smi)
+ 					"RTL8366RB", smi);
+ 	if (ret) {
+ 		dev_err(smi->dev, "unable to request irq: %d\n", ret);
+-		return ret;
++		goto out_put_node;
+ 	}
+ 	smi->irqdomain = irq_domain_add_linear(intc,
+ 					       RTL8366RB_NUM_INTERRUPT,
+@@ -553,12 +554,15 @@ static int rtl8366rb_setup_cascaded_irq(struct realtek_smi *smi)
+ 					       smi);
+ 	if (!smi->irqdomain) {
+ 		dev_err(smi->dev, "failed to create IRQ domain\n");
+-		return -EINVAL;
++		ret = -EINVAL;
++		goto out_put_node;
+ 	}
+ 	for (i = 0; i < smi->num_ports; i++)
+ 		irq_set_parent(irq_create_mapping(smi->irqdomain, i), irq);
+ 
+-	return 0;
++out_put_node:
++	of_node_put(intc);
++	return ret;
  }
  
+ static int rtl8366rb_set_addr(struct realtek_smi *smi)
 -- 
 2.9.5
