@@ -1,37 +1,44 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH v1 2/2] clk: mediatek: correct cpu clock name for MT8173
- SoC
-Date: Thu, 21 Feb 2019 14:03:41 -0800
-Message-ID: <155078662163.77512.15925700437277835877@swboyd.mtv.corp.google.com>
-References: <20190211071555.31430-1-seiya.wang@mediatek.com>
- <20190211071555.31430-2-seiya.wang@mediatek.com>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Subject: Re: [PATCH] i2c: mediatek: modify threshold passed to i2c_get_dma_safe_msg_buf()
+Date: Fri, 22 Feb 2019 14:04:11 +0800
+Message-ID: <CAJMQK-jzvMBD_AaB7XMJtMqNWiEin25bem4Zo9T5W86Z-U=Tww@mail.gmail.com>
+References: <20190215090202.157100-1-hsinyi@chromium.org> <20190215090959.soxkf3ho3or2geme@ninjato>
+ <CAJMQK-jrpnfzKNYh01Pg6QydSSa-=6x44Pj1wwMdXw7G3x-ybA@mail.gmail.com>
+ <20190215092500.6q3hqnoufyowiqaz@ninjato> <20190215163657.fs6t7p3vqez53su3@ninjato>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190211071555.31430-2-seiya.wang@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>, Rob Herring <robh+dt@kernel.org>
-Cc: devicetree@vger.kernel.org, Seiya Wang <seiya.wang@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190215163657.fs6t7p3vqez53su3@ninjato>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Wolfram Sang <wsa@the-dreams.de>
+Cc: linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jun Gao <jun.gao@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-i2c@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, qii.wang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting Seiya Wang (2019-02-10 23:15:55)
-> Change cpu clock name from ca57 to ca72 since MT8173 does use cortex-a72.
-> 
-> Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
-> ---
+Thanks for the solution.
+Previously we were testing if the driver can handle zero-length
+transfer, but it turns out it will timeout. (Also checked this from
+mtk's datasheet)
+Adding original owner qii.wang to verify that. We'll apply this after
+verification.
 
-Acked-by: Stephen Boyd <sboyd@kernel.org>
-
-I'm guessing I can't apply this patch because the define is renamed
-which would break older DTs. Another option would be to just add another
-define and mark the old define as deprecated and unsupported. Then I
-could apply the patch to clk tree.
+On Sat, Feb 16, 2019 at 12:36 AM Wolfram Sang <wsa@the-dreams.de> wrote:
+>
+>
+> >> > Ok, I can add a check in another patch. Should we return NULL pointer
+> >> > if msg->len is 0 or print out some warnings? Thanks.
+> >>
+> >> No warning, msg->len == 0 is a valid setting. But interesting question:
+> >> I was about to say NULL, but your driver would assume ENOMEM there and
+> >> discard the message which is also not correct since msg->len == 0 is a
+> >> valid setting. So, should we just return msg->buf then? Will this work
+> >> with your driver? Can it handle zero-length transfers?
+> >
+> > dma_map_single(i2c->dev, msg->buf , msgs->len, DMA_TO_DEVICE); breaks
+> > kernel if msgs->len is 0, so I think it doesn't handle zero-length transfer.
+>
+> Please don't drop the lists.
+>
+> Then, the correct solution is to forbid those transfer with this
+> controller. Check I2C_AQ_NO_ZERO_LEN. Also, update the functionality
+> like this .. (I2C_FUNC_SMBUS_EMUL & ~I2C_FUNC_SMBUS_QUICK).
+>
