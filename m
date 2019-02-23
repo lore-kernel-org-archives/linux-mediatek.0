@@ -1,35 +1,92 @@
-From: Chaotian Jing <chaotian.jing@mediatek.com>
-Subject: Re: [PATCH v2] Fix HS setting in mmc_hs400_to_hs200()
-Date: Sat, 23 Feb 2019 14:42:46 +0800
-Message-ID: <1550904166.16070.33.camel@mhfsdcap03>
-References: <1550210375-32270-1-git-send-email-chaotian.jing@mediatek.com>
+From: <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Subject: Patch "gpio: MT7621: use a per instance irq_chip structure" has been
+ added to the 4.19-stable tree
+Date: Sat, 23 Feb 2019 12:12:11 +0100
+Message-ID: <155092033114830@kroah.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1550210375-32270-1-git-send-email-chaotian.jing@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Simon Horman <horms+renesas@verge.net.au>, Avri Altman <avri.altman@wdc.com>, Kyle Roeschley <kyle.roeschley@ni.com>, Hongjie Fang <hongjiefang@asrmicro.com>, Adrian Hunter <adrian.hunter@intel.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: gerg-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org
+Cc: stable-commits-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Ulf,
-
-this is just a ping, do you have any comments of this series of
-patches ?
-
-Thx!
-
-On Fri, 2019-02-15 at 13:59 +0800, Chaotian Jing wrote:
-> Change vs v1:
->   do not retry CMD6 in __mmc_switch()
->   do not move the reduce clock operation after switch HS
-> 
-> Chaotian Jing (2):
->   mmc: core: do not retry CMD6 in __mmc_switch()
->   mmc: mmc: Fix HS setting in mmc_hs400_to_hs200()
-> 
->  drivers/mmc/core/mmc.c     | 21 +++++++++++++++++++--
->  drivers/mmc/core/mmc_ops.c |  2 +-
->  2 files changed, 20 insertions(+), 3 deletions(-)
-> 
+ClRoaXMgaXMgYSBub3RlIHRvIGxldCB5b3Uga25vdyB0aGF0IEkndmUganVzdCBhZGRlZCB0aGUg
+cGF0Y2ggdGl0bGVkCgogICAgZ3BpbzogTVQ3NjIxOiB1c2UgYSBwZXIgaW5zdGFuY2UgaXJxX2No
+aXAgc3RydWN0dXJlCgp0byB0aGUgNC4xOS1zdGFibGUgdHJlZSB3aGljaCBjYW4gYmUgZm91bmQg
+YXQ6CiAgICBodHRwOi8vd3d3Lmtlcm5lbC5vcmcvZ2l0Lz9wPWxpbnV4L2tlcm5lbC9naXQvc3Rh
+YmxlL3N0YWJsZS1xdWV1ZS5naXQ7YT1zdW1tYXJ5CgpUaGUgZmlsZW5hbWUgb2YgdGhlIHBhdGNo
+IGlzOgogICAgIGdwaW8tbXQ3NjIxLXVzZS1hLXBlci1pbnN0YW5jZS1pcnFfY2hpcC1zdHJ1Y3R1
+cmUucGF0Y2gKYW5kIGl0IGNhbiBiZSBmb3VuZCBpbiB0aGUgcXVldWUtNC4xOSBzdWJkaXJlY3Rv
+cnkuCgpJZiB5b3UsIG9yIGFueW9uZSBlbHNlLCBmZWVscyBpdCBzaG91bGQgbm90IGJlIGFkZGVk
+IHRvIHRoZSBzdGFibGUgdHJlZSwKcGxlYXNlIGxldCA8c3RhYmxlQHZnZXIua2VybmVsLm9yZz4g
+a25vdyBhYm91dCBpdC4KCgpGcm9tIGZhODQ2NjdiOThmZDFhMTkxYjI0NjVkNjZiNDQwYmRhNjcx
+NGIzYmYgTW9uIFNlcCAxNyAwMDowMDowMCAyMDAxCkZyb206ID0/VVRGLTg/cT9SZW49QzM9QTk9
+MjB2YW49MjBEb3JzdD89IDxvcGVuc291cmNlQHZkb3JzdC5jb20+CkRhdGU6IFdlZCwgMzAgSmFu
+IDIwMTkgMTc6MTA6NDkgKzAxMDAKU3ViamVjdDogZ3BpbzogTVQ3NjIxOiB1c2UgYSBwZXIgaW5z
+dGFuY2UgaXJxX2NoaXAgc3RydWN0dXJlCk1JTUUtVmVyc2lvbjogMS4wCkNvbnRlbnQtVHlwZTog
+dGV4dC9wbGFpbjsgY2hhcnNldD1VVEYtOApDb250ZW50LVRyYW5zZmVyLUVuY29kaW5nOiA4Yml0
+CgpGcm9tOiBSZW7DqSB2YW4gRG9yc3QgPG9wZW5zb3VyY2VAdmRvcnN0LmNvbT4KCmNvbW1pdCBm
+YTg0NjY3Yjk4ZmQxYTE5MWIyNDY1ZDY2YjQ0MGJkYTY3MTRiM2JmIHVwc3RyZWFtLgoKVGhpcyBm
+aXhlcyB0aGUga2VybmVsIGNvbXBsYWluczoKZ3BpbyBncGlvY2hpcDE6ICgxZTAwMDYwMC5ncGlv
+LWJhbmsxKTogZGV0ZWN0ZWQgaXJxY2hpcCB0aGF0IGlzIHNoYXJlZAoJICAgIHdpdGggbXVsdGlw
+bGUgZ3Bpb2NoaXBzOiBwbGVhc2UgZml4IHRoZSBkcml2ZXIuCmdwaW8gZ3Bpb2NoaXAyOiAoMWUw
+MDA2MDAuZ3Bpby1iYW5rMik6IGRldGVjdGVkIGlycWNoaXAgdGhhdCBpcyBzaGFyZWQKCSAgICB3
+aXRoIG11bHRpcGxlIGdwaW9jaGlwczogcGxlYXNlIGZpeCB0aGUgZHJpdmVyLgoKRml4ZXM6IDRi
+YTljM2FmZGE0MSAoImdwaW86IG10NzYyMTogQWRkIGEgZHJpdmVyIGZvciBNVDc2MjEiKQpDYzog
+c3RhYmxlQHZnZXIua2VybmVsLm9yZwpTaWduZWQtb2ZmLWJ5OiBSZW7DqSB2YW4gRG9yc3QgPG9w
+ZW5zb3VyY2VAdmRvcnN0LmNvbT4KQ2M6IGxpbnV4LWdwaW9Admdlci5rZXJuZWwub3JnCkNjOiBs
+aW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnClRlc3RlZC1ieTogR3JlZyBVbmdlcmVy
+IDxnZXJnQGtlcm5lbC5vcmc+ClNpZ25lZC1vZmYtYnk6IExpbnVzIFdhbGxlaWogPGxpbnVzLndh
+bGxlaWpAbGluYXJvLm9yZz4KU2lnbmVkLW9mZi1ieTogR3JlZyBLcm9haC1IYXJ0bWFuIDxncmVn
+a2hAbGludXhmb3VuZGF0aW9uLm9yZz4KCi0tLQogZHJpdmVycy9ncGlvL2dwaW8tbXQ3NjIxLmMg
+fCAgIDIwICsrKysrKysrKystLS0tLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgMTAgaW5zZXJ0aW9u
+cygrKSwgMTAgZGVsZXRpb25zKC0pCgotLS0gYS9kcml2ZXJzL2dwaW8vZ3Bpby1tdDc2MjEuYwor
+KysgYi9kcml2ZXJzL2dwaW8vZ3Bpby1tdDc2MjEuYwpAQCAtMzAsNiArMzAsNyBAQAogI2RlZmlu
+ZSBHUElPX1JFR19FREdFCQkweEEwCiAKIHN0cnVjdCBtdGtfZ2MgeworCXN0cnVjdCBpcnFfY2hp
+cCBpcnFfY2hpcDsKIAlzdHJ1Y3QgZ3Bpb19jaGlwIGNoaXA7CiAJc3BpbmxvY2tfdCBsb2NrOwog
+CWludCBiYW5rOwpAQCAtMTg5LDEzICsxOTAsNiBAQCBtZWRpYXRla19ncGlvX2lycV90eXBlKHN0
+cnVjdCBpcnFfZGF0YSAqCiAJcmV0dXJuIDA7CiB9CiAKLXN0YXRpYyBzdHJ1Y3QgaXJxX2NoaXAg
+bWVkaWF0ZWtfZ3Bpb19pcnFfY2hpcCA9IHsKLQkuaXJxX3VubWFzawkJPSBtZWRpYXRla19ncGlv
+X2lycV91bm1hc2ssCi0JLmlycV9tYXNrCQk9IG1lZGlhdGVrX2dwaW9faXJxX21hc2ssCi0JLmly
+cV9tYXNrX2FjawkJPSBtZWRpYXRla19ncGlvX2lycV9tYXNrLAotCS5pcnFfc2V0X3R5cGUJCT0g
+bWVkaWF0ZWtfZ3Bpb19pcnFfdHlwZSwKLX07Ci0KIHN0YXRpYyBpbnQKIG1lZGlhdGVrX2dwaW9f
+eGxhdGUoc3RydWN0IGdwaW9fY2hpcCAqY2hpcCwKIAkJICAgIGNvbnN0IHN0cnVjdCBvZl9waGFu
+ZGxlX2FyZ3MgKnNwZWMsIHUzMiAqZmxhZ3MpCkBAIC0yNTQsNiArMjQ4LDEzIEBAIG1lZGlhdGVr
+X2dwaW9fYmFua19wcm9iZShzdHJ1Y3QgZGV2aWNlICoKIAkJcmV0dXJuIHJldDsKIAl9CiAKKwly
+Zy0+aXJxX2NoaXAubmFtZSA9IGRldl9uYW1lKGRldik7CisJcmctPmlycV9jaGlwLnBhcmVudF9k
+ZXZpY2UgPSBkZXY7CisJcmctPmlycV9jaGlwLmlycV91bm1hc2sgPSBtZWRpYXRla19ncGlvX2ly
+cV91bm1hc2s7CisJcmctPmlycV9jaGlwLmlycV9tYXNrID0gbWVkaWF0ZWtfZ3Bpb19pcnFfbWFz
+azsKKwlyZy0+aXJxX2NoaXAuaXJxX21hc2tfYWNrID0gbWVkaWF0ZWtfZ3Bpb19pcnFfbWFzazsK
+KwlyZy0+aXJxX2NoaXAuaXJxX3NldF90eXBlID0gbWVkaWF0ZWtfZ3Bpb19pcnFfdHlwZTsKKwog
+CWlmIChtdGstPmdwaW9faXJxKSB7CiAJCS8qCiAJCSAqIE1hbnVhbGx5IHJlcXVlc3QgdGhlIGly
+cSBoZXJlIGluc3RlYWQgb2YgcGFzc2luZwpAQCAtMjcwLDE0ICsyNzEsMTQgQEAgbWVkaWF0ZWtf
+Z3Bpb19iYW5rX3Byb2JlKHN0cnVjdCBkZXZpY2UgKgogCQkJcmV0dXJuIHJldDsKIAkJfQogCi0J
+CXJldCA9IGdwaW9jaGlwX2lycWNoaXBfYWRkKCZyZy0+Y2hpcCwgJm1lZGlhdGVrX2dwaW9faXJx
+X2NoaXAsCisJCXJldCA9IGdwaW9jaGlwX2lycWNoaXBfYWRkKCZyZy0+Y2hpcCwgJnJnLT5pcnFf
+Y2hpcCwKIAkJCQkJICAgMCwgaGFuZGxlX3NpbXBsZV9pcnEsIElSUV9UWVBFX05PTkUpOwogCQlp
+ZiAocmV0KSB7CiAJCQlkZXZfZXJyKGRldiwgImZhaWxlZCB0byBhZGQgZ3Bpb2NoaXBfaXJxY2hp
+cFxuIik7CiAJCQlyZXR1cm4gcmV0OwogCQl9CiAKLQkJZ3Bpb2NoaXBfc2V0X2NoYWluZWRfaXJx
+Y2hpcCgmcmctPmNoaXAsICZtZWRpYXRla19ncGlvX2lycV9jaGlwLAorCQlncGlvY2hpcF9zZXRf
+Y2hhaW5lZF9pcnFjaGlwKCZyZy0+Y2hpcCwgJnJnLT5pcnFfY2hpcCwKIAkJCQkJICAgICBtdGst
+PmdwaW9faXJxLCBOVUxMKTsKIAl9CiAKQEAgLTMxMCw3ICszMTEsNiBAQCBtZWRpYXRla19ncGlv
+X3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpCiAJbXRrLT5ncGlvX2lycSA9IGlycV9vZl9wYXJz
+ZV9hbmRfbWFwKG5wLCAwKTsKIAltdGstPmRldiA9IGRldjsKIAlwbGF0Zm9ybV9zZXRfZHJ2ZGF0
+YShwZGV2LCBtdGspOwotCW1lZGlhdGVrX2dwaW9faXJxX2NoaXAubmFtZSA9IGRldl9uYW1lKGRl
+dik7CiAKIAlmb3IgKGkgPSAwOyBpIDwgTVRLX0JBTktfQ05UOyBpKyspIHsKIAkJcmV0ID0gbWVk
+aWF0ZWtfZ3Bpb19iYW5rX3Byb2JlKGRldiwgbnAsIGkpOwoKClBhdGNoZXMgY3VycmVudGx5IGlu
+IHN0YWJsZS1xdWV1ZSB3aGljaCBtaWdodCBiZSBmcm9tIG9wZW5zb3VyY2VAdmRvcnN0LmNvbSBh
+cmUKCnF1ZXVlLTQuMTkvZ3Bpby1tdDc2MjEtdXNlLWEtcGVyLWluc3RhbmNlLWlycV9jaGlwLXN0
+cnVjdHVyZS5wYXRjaAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmlu
+ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
+aW51eC1tZWRpYXRlawo=
