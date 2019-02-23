@@ -1,92 +1,66 @@
-From: <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
-Subject: Patch "gpio: MT7621: use a per instance irq_chip structure" has been
- added to the 4.20-stable tree
-Date: Sat, 23 Feb 2019 12:12:28 +0100
-Message-ID: <1550920348138128@kroah.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: gerg-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org
-Cc: stable-commits-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: [PATCH 10/18] dt-bindings: timer: mediatek: update bindings for MT7629 SoC
+Date: Sat, 23 Feb 2019 14:06:58 +0100
+Message-ID: <20190223130707.16704-10-daniel.lezcano@linaro.org>
+References: <b5d75b05-b78c-535c-2b35-9a1f5a3a853f@linaro.org>
+ <20190223130707.16704-1-daniel.lezcano@linaro.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190223130707.16704-1-daniel.lezcano@linaro.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: tglx@linutronix.de
+Cc: linux-kernel@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:OPEN FIRMWARE AND FLATTENED
+        DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC
+        support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+        support" <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-ClRoaXMgaXMgYSBub3RlIHRvIGxldCB5b3Uga25vdyB0aGF0IEkndmUganVzdCBhZGRlZCB0aGUg
-cGF0Y2ggdGl0bGVkCgogICAgZ3BpbzogTVQ3NjIxOiB1c2UgYSBwZXIgaW5zdGFuY2UgaXJxX2No
-aXAgc3RydWN0dXJlCgp0byB0aGUgNC4yMC1zdGFibGUgdHJlZSB3aGljaCBjYW4gYmUgZm91bmQg
-YXQ6CiAgICBodHRwOi8vd3d3Lmtlcm5lbC5vcmcvZ2l0Lz9wPWxpbnV4L2tlcm5lbC9naXQvc3Rh
-YmxlL3N0YWJsZS1xdWV1ZS5naXQ7YT1zdW1tYXJ5CgpUaGUgZmlsZW5hbWUgb2YgdGhlIHBhdGNo
-IGlzOgogICAgIGdwaW8tbXQ3NjIxLXVzZS1hLXBlci1pbnN0YW5jZS1pcnFfY2hpcC1zdHJ1Y3R1
-cmUucGF0Y2gKYW5kIGl0IGNhbiBiZSBmb3VuZCBpbiB0aGUgcXVldWUtNC4yMCBzdWJkaXJlY3Rv
-cnkuCgpJZiB5b3UsIG9yIGFueW9uZSBlbHNlLCBmZWVscyBpdCBzaG91bGQgbm90IGJlIGFkZGVk
-IHRvIHRoZSBzdGFibGUgdHJlZSwKcGxlYXNlIGxldCA8c3RhYmxlQHZnZXIua2VybmVsLm9yZz4g
-a25vdyBhYm91dCBpdC4KCgpGcm9tIGZhODQ2NjdiOThmZDFhMTkxYjI0NjVkNjZiNDQwYmRhNjcx
-NGIzYmYgTW9uIFNlcCAxNyAwMDowMDowMCAyMDAxCkZyb206ID0/VVRGLTg/cT9SZW49QzM9QTk9
-MjB2YW49MjBEb3JzdD89IDxvcGVuc291cmNlQHZkb3JzdC5jb20+CkRhdGU6IFdlZCwgMzAgSmFu
-IDIwMTkgMTc6MTA6NDkgKzAxMDAKU3ViamVjdDogZ3BpbzogTVQ3NjIxOiB1c2UgYSBwZXIgaW5z
-dGFuY2UgaXJxX2NoaXAgc3RydWN0dXJlCk1JTUUtVmVyc2lvbjogMS4wCkNvbnRlbnQtVHlwZTog
-dGV4dC9wbGFpbjsgY2hhcnNldD1VVEYtOApDb250ZW50LVRyYW5zZmVyLUVuY29kaW5nOiA4Yml0
-CgpGcm9tOiBSZW7DqSB2YW4gRG9yc3QgPG9wZW5zb3VyY2VAdmRvcnN0LmNvbT4KCmNvbW1pdCBm
-YTg0NjY3Yjk4ZmQxYTE5MWIyNDY1ZDY2YjQ0MGJkYTY3MTRiM2JmIHVwc3RyZWFtLgoKVGhpcyBm
-aXhlcyB0aGUga2VybmVsIGNvbXBsYWluczoKZ3BpbyBncGlvY2hpcDE6ICgxZTAwMDYwMC5ncGlv
-LWJhbmsxKTogZGV0ZWN0ZWQgaXJxY2hpcCB0aGF0IGlzIHNoYXJlZAoJICAgIHdpdGggbXVsdGlw
-bGUgZ3Bpb2NoaXBzOiBwbGVhc2UgZml4IHRoZSBkcml2ZXIuCmdwaW8gZ3Bpb2NoaXAyOiAoMWUw
-MDA2MDAuZ3Bpby1iYW5rMik6IGRldGVjdGVkIGlycWNoaXAgdGhhdCBpcyBzaGFyZWQKCSAgICB3
-aXRoIG11bHRpcGxlIGdwaW9jaGlwczogcGxlYXNlIGZpeCB0aGUgZHJpdmVyLgoKRml4ZXM6IDRi
-YTljM2FmZGE0MSAoImdwaW86IG10NzYyMTogQWRkIGEgZHJpdmVyIGZvciBNVDc2MjEiKQpDYzog
-c3RhYmxlQHZnZXIua2VybmVsLm9yZwpTaWduZWQtb2ZmLWJ5OiBSZW7DqSB2YW4gRG9yc3QgPG9w
-ZW5zb3VyY2VAdmRvcnN0LmNvbT4KQ2M6IGxpbnV4LWdwaW9Admdlci5rZXJuZWwub3JnCkNjOiBs
-aW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnClRlc3RlZC1ieTogR3JlZyBVbmdlcmVy
-IDxnZXJnQGtlcm5lbC5vcmc+ClNpZ25lZC1vZmYtYnk6IExpbnVzIFdhbGxlaWogPGxpbnVzLndh
-bGxlaWpAbGluYXJvLm9yZz4KU2lnbmVkLW9mZi1ieTogR3JlZyBLcm9haC1IYXJ0bWFuIDxncmVn
-a2hAbGludXhmb3VuZGF0aW9uLm9yZz4KCi0tLQogZHJpdmVycy9ncGlvL2dwaW8tbXQ3NjIxLmMg
-fCAgIDIwICsrKysrKysrKystLS0tLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgMTAgaW5zZXJ0aW9u
-cygrKSwgMTAgZGVsZXRpb25zKC0pCgotLS0gYS9kcml2ZXJzL2dwaW8vZ3Bpby1tdDc2MjEuYwor
-KysgYi9kcml2ZXJzL2dwaW8vZ3Bpby1tdDc2MjEuYwpAQCAtMzAsNiArMzAsNyBAQAogI2RlZmlu
-ZSBHUElPX1JFR19FREdFCQkweEEwCiAKIHN0cnVjdCBtdGtfZ2MgeworCXN0cnVjdCBpcnFfY2hp
-cCBpcnFfY2hpcDsKIAlzdHJ1Y3QgZ3Bpb19jaGlwIGNoaXA7CiAJc3BpbmxvY2tfdCBsb2NrOwog
-CWludCBiYW5rOwpAQCAtMTg5LDEzICsxOTAsNiBAQCBtZWRpYXRla19ncGlvX2lycV90eXBlKHN0
-cnVjdCBpcnFfZGF0YSAqCiAJcmV0dXJuIDA7CiB9CiAKLXN0YXRpYyBzdHJ1Y3QgaXJxX2NoaXAg
-bWVkaWF0ZWtfZ3Bpb19pcnFfY2hpcCA9IHsKLQkuaXJxX3VubWFzawkJPSBtZWRpYXRla19ncGlv
-X2lycV91bm1hc2ssCi0JLmlycV9tYXNrCQk9IG1lZGlhdGVrX2dwaW9faXJxX21hc2ssCi0JLmly
-cV9tYXNrX2FjawkJPSBtZWRpYXRla19ncGlvX2lycV9tYXNrLAotCS5pcnFfc2V0X3R5cGUJCT0g
-bWVkaWF0ZWtfZ3Bpb19pcnFfdHlwZSwKLX07Ci0KIHN0YXRpYyBpbnQKIG1lZGlhdGVrX2dwaW9f
-eGxhdGUoc3RydWN0IGdwaW9fY2hpcCAqY2hpcCwKIAkJICAgIGNvbnN0IHN0cnVjdCBvZl9waGFu
-ZGxlX2FyZ3MgKnNwZWMsIHUzMiAqZmxhZ3MpCkBAIC0yNTQsNiArMjQ4LDEzIEBAIG1lZGlhdGVr
-X2dwaW9fYmFua19wcm9iZShzdHJ1Y3QgZGV2aWNlICoKIAkJcmV0dXJuIHJldDsKIAl9CiAKKwly
-Zy0+aXJxX2NoaXAubmFtZSA9IGRldl9uYW1lKGRldik7CisJcmctPmlycV9jaGlwLnBhcmVudF9k
-ZXZpY2UgPSBkZXY7CisJcmctPmlycV9jaGlwLmlycV91bm1hc2sgPSBtZWRpYXRla19ncGlvX2ly
-cV91bm1hc2s7CisJcmctPmlycV9jaGlwLmlycV9tYXNrID0gbWVkaWF0ZWtfZ3Bpb19pcnFfbWFz
-azsKKwlyZy0+aXJxX2NoaXAuaXJxX21hc2tfYWNrID0gbWVkaWF0ZWtfZ3Bpb19pcnFfbWFzazsK
-KwlyZy0+aXJxX2NoaXAuaXJxX3NldF90eXBlID0gbWVkaWF0ZWtfZ3Bpb19pcnFfdHlwZTsKKwog
-CWlmIChtdGstPmdwaW9faXJxKSB7CiAJCS8qCiAJCSAqIE1hbnVhbGx5IHJlcXVlc3QgdGhlIGly
-cSBoZXJlIGluc3RlYWQgb2YgcGFzc2luZwpAQCAtMjcwLDE0ICsyNzEsMTQgQEAgbWVkaWF0ZWtf
-Z3Bpb19iYW5rX3Byb2JlKHN0cnVjdCBkZXZpY2UgKgogCQkJcmV0dXJuIHJldDsKIAkJfQogCi0J
-CXJldCA9IGdwaW9jaGlwX2lycWNoaXBfYWRkKCZyZy0+Y2hpcCwgJm1lZGlhdGVrX2dwaW9faXJx
-X2NoaXAsCisJCXJldCA9IGdwaW9jaGlwX2lycWNoaXBfYWRkKCZyZy0+Y2hpcCwgJnJnLT5pcnFf
-Y2hpcCwKIAkJCQkJICAgMCwgaGFuZGxlX3NpbXBsZV9pcnEsIElSUV9UWVBFX05PTkUpOwogCQlp
-ZiAocmV0KSB7CiAJCQlkZXZfZXJyKGRldiwgImZhaWxlZCB0byBhZGQgZ3Bpb2NoaXBfaXJxY2hp
-cFxuIik7CiAJCQlyZXR1cm4gcmV0OwogCQl9CiAKLQkJZ3Bpb2NoaXBfc2V0X2NoYWluZWRfaXJx
-Y2hpcCgmcmctPmNoaXAsICZtZWRpYXRla19ncGlvX2lycV9jaGlwLAorCQlncGlvY2hpcF9zZXRf
-Y2hhaW5lZF9pcnFjaGlwKCZyZy0+Y2hpcCwgJnJnLT5pcnFfY2hpcCwKIAkJCQkJICAgICBtdGst
-PmdwaW9faXJxLCBOVUxMKTsKIAl9CiAKQEAgLTMxMCw3ICszMTEsNiBAQCBtZWRpYXRla19ncGlv
-X3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpCiAJbXRrLT5ncGlvX2lycSA9IGlycV9vZl9wYXJz
-ZV9hbmRfbWFwKG5wLCAwKTsKIAltdGstPmRldiA9IGRldjsKIAlwbGF0Zm9ybV9zZXRfZHJ2ZGF0
-YShwZGV2LCBtdGspOwotCW1lZGlhdGVrX2dwaW9faXJxX2NoaXAubmFtZSA9IGRldl9uYW1lKGRl
-dik7CiAKIAlmb3IgKGkgPSAwOyBpIDwgTVRLX0JBTktfQ05UOyBpKyspIHsKIAkJcmV0ID0gbWVk
-aWF0ZWtfZ3Bpb19iYW5rX3Byb2JlKGRldiwgbnAsIGkpOwoKClBhdGNoZXMgY3VycmVudGx5IGlu
-IHN0YWJsZS1xdWV1ZSB3aGljaCBtaWdodCBiZSBmcm9tIG9wZW5zb3VyY2VAdmRvcnN0LmNvbSBh
-cmUKCnF1ZXVlLTQuMjAvZ3Bpby1tdDc2MjEtdXNlLWEtcGVyLWluc3RhbmNlLWlycV9jaGlwLXN0
-cnVjdHVyZS5wYXRjaAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1tZWRpYXRlawo=
+From: Ryder Lee <ryder.lee@mediatek.com>
+
+Update the binding for MT7629 SoC, which uses fallback compatible to
+MT6765 SYST, so add more descriptions to distinguish it from the other
+SoCs that use GPT.
+
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>
+Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+---
+ .../devicetree/bindings/timer/mediatek,mtk-timer.txt  | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+index 18d4d0166c76..ff7c567a7972 100644
+--- a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
++++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+@@ -1,7 +1,7 @@
+-Mediatek Timers
++MediaTek Timers
+ ---------------
+ 
+-Mediatek SoCs have two different timers on different platforms,
++MediaTek SoCs have two different timers on different platforms,
+ - GPT (General Purpose Timer)
+ - SYST (System Timer)
+ 
+@@ -9,6 +9,7 @@ The proper timer will be selected automatically by driver.
+ 
+ Required properties:
+ - compatible should contain:
++	For those SoCs that use GPT
+ 	* "mediatek,mt2701-timer" for MT2701 compatible timers (GPT)
+ 	* "mediatek,mt6580-timer" for MT6580 compatible timers (GPT)
+ 	* "mediatek,mt6589-timer" for MT6589 compatible timers (GPT)
+@@ -17,7 +18,11 @@ Required properties:
+ 	* "mediatek,mt8135-timer" for MT8135 compatible timers (GPT)
+ 	* "mediatek,mt8173-timer" for MT8173 compatible timers (GPT)
+ 	* "mediatek,mt6577-timer" for MT6577 and all above compatible timers (GPT)
+-	* "mediatek,mt6765-timer" for MT6765 compatible timers (SYST)
++
++	For those SoCs that use SYST
++	* "mediatek,mt7629-timer" for MT7629 compatible timers (SYST)
++	* "mediatek,mt6765-timer" for MT6765 and all above compatible timers (SYST)
++
+ - reg: Should contain location and length for timer register.
+ - clocks: Should contain system clock.
+ 
+-- 
+2.17.1
