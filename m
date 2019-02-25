@@ -1,7 +1,7 @@
 From: wangyan wang <wangyan.wang@mediatek.com>
-Subject: [PATCH V6 6/8] clk: mediatek: using CLK_MUX_ROUND_CLOSEST for the clock of dpi1_sel
-Date: Mon, 25 Feb 2019 10:09:10 +0800
-Message-ID: <20190225020912.29120-7-wangyan.wang@mediatek.com>
+Subject: [PATCH V6 7/8] drm/mediatek: using new factor for tvdpll in MT2701
+Date: Mon, 25 Feb 2019 10:09:11 +0800
+Message-ID: <20190225020912.29120-8-wangyan.wang@mediatek.com>
 References: <20190225020912.29120-1-wangyan.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -14,29 +14,35 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: chunhui dai <chunhui.dai@mediatek.com>
 
-The MUX clock of dpi1_sel should select the closet clock for itself.
-We could add this flag to enable this function of MUX in CCF.
+The factor depends on the divider of DPI in MT2701, therefore,
+we should fix this factor to the right and new one.
 
 Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
 Signed-off-by: wangyan wang <wangyan.wang@mediatek.com>
 ---
- drivers/clk/mediatek/clk-mt2701.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt2701.c b/drivers/clk/mediatek/clk-mt2701.c
-index ab6ab07f53e6..905a2316f6a7 100644
---- a/drivers/clk/mediatek/clk-mt2701.c
-+++ b/drivers/clk/mediatek/clk-mt2701.c
-@@ -535,8 +535,8 @@ static const struct mtk_composite top_muxes[] = {
- 		0x0080, 8, 2, 15),
- 	MUX_GATE(CLK_TOP_DPI0_SEL, "dpi0_sel", dpi0_parents,
- 		0x0080, 16, 3, 23),
--	MUX_GATE(CLK_TOP_DPI1_SEL, "dpi1_sel", dpi1_parents,
--		0x0080, 24, 2, 31),
-+	MUX_GATE_FLAGS_2(CLK_TOP_DPI1_SEL, "dpi1_sel", dpi1_parents,
-+		0x0080, 24, 2, 31, 0, CLK_MUX_ROUND_CLOSEST),
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 69c6e42dad6b..4a2f4a650494 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -662,13 +662,11 @@ static unsigned int mt8173_calculate_factor(int clock)
+ static unsigned int mt2701_calculate_factor(int clock)
+ {
+ 	if (clock <= 64000)
+-		return 16;
+-	else if (clock <= 128000)
+-		return 8;
+-	else if (clock <= 256000)
+ 		return 4;
+-	else
++	else if (clock <= 128000)
+ 		return 2;
++	else
++		return 1;
+ }
  
- 	MUX_GATE(CLK_TOP_TVE_SEL, "tve_sel", tve_parents,
- 		0x0090, 0, 3, 7),
+ static const struct mtk_dpi_conf mt8173_conf = {
 -- 
 2.14.1
