@@ -1,43 +1,34 @@
-From: <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v1 0/3] scsi: ufs: Re-factor ufshcd_get_pwr_dev_param
-Date: Mon, 25 Feb 2019 12:10:22 +0800
-Message-ID: <1551067825-22654-2-git-send-email-stanley.chu@mediatek.com>
-References: <1551067825-22654-1-git-send-email-stanley.chu@mediatek.com>
+From: Seiya Wang <seiya.wang@mediatek.com>
+Subject: Re: [PATCH v1 2/2] clk: mediatek: correct cpu clock name for MT8173
+ SoC
+Date: Mon, 25 Feb 2019 14:14:15 +0800
+Message-ID: <1551075255.1446.8.camel@mtksdccf07>
+References: <20190211071555.31430-1-seiya.wang@mediatek.com>
+         <20190211071555.31430-2-seiya.wang@mediatek.com>
+         <155078662163.77512.15925700437277835877@swboyd.mtv.corp.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1551067825-22654-1-git-send-email-stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org, avri.altman-Sjgp3cTcYWE@public.gmane.org, alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org
-Cc: chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, liwei213-hv44wF8Li93QT0dZR+AlfA@public.gmane.org, vivek.gautam-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, subhashj-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <155078662163.77512.15925700437277835877@swboyd.mtv.corp.google.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Stephen Boyd <sboyd@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On Thu, 2019-02-21 at 14:03 -0800, Stephen Boyd wrote:
+> Quoting Seiya Wang (2019-02-10 23:15:55)
+> > Change cpu clock name from ca57 to ca72 since MT8173 does use cortex-a72.
+> > 
+> > Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
+> > ---
+> 
+> Acked-by: Stephen Boyd <sboyd@kernel.org>
+> 
+> I'm guessing I can't apply this patch because the define is renamed
+> which would break older DTs. Another option would be to just add another
+> define and mark the old define as deprecated and unsupported. Then I
+> could apply the patch to clk tree.
 
-Hello,
-
-This series re-factors ufshcd_get_pwr_dev_param in vendors' drivers. This function is for vendors to decide finally agreed attributes for power mode change if vendors define
-their host capability in struct ufs_dev_params. Because it is using by both ufs-qcom and ufs-hisi currently and may be used in other vendors in the future, simply re-factor it and then evevry vendors can reuse it.
-
-Stanley Chu (3):
-  scsi: ufs: Introduce ufshcd_get_pwr_dev_param
-  scsi: ufs-qcom: Re-factor ufshcd_get_pwr_dev_param
-  scsi: ufs-hisi: Re-factor ufshcd_get_pwr_dev_param
-
- drivers/scsi/ufs/ufs-hisi.c      | 109 ++-----------------------------
- drivers/scsi/ufs/ufs-qcom.c      | 106 ++----------------------------
- drivers/scsi/ufs/ufshcd-pltfrm.c |  98 +++++++++++++++++++++++++++
- drivers/scsi/ufs/ufshcd-pltfrm.h |  21 ++++++
- 4 files changed, 127 insertions(+), 207 deletions(-)
-
--- 
-2.18.0
+Thank you so much for your advice. We will update the patches and resend
+soon.
