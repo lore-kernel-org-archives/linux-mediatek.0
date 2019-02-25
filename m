@@ -1,7 +1,7 @@
 From: wangyan wang <wangyan.wang@mediatek.com>
-Subject: [PATCH V6 4/8] drm/mediatek: fix the rate and divder of hdmi phy for MT2701
-Date: Mon, 25 Feb 2019 10:09:08 +0800
-Message-ID: <20190225020912.29120-5-wangyan.wang@mediatek.com>
+Subject: [PATCH V6 5/8] clk: mediatek: add MUX_GATE_FLAGS_2
+Date: Mon, 25 Feb 2019 10:09:09 +0800
+Message-ID: <20190225020912.29120-6-wangyan.wang@mediatek.com>
 References: <20190225020912.29120-1-wangyan.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -14,32 +14,71 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: chunhui dai <chunhui.dai@mediatek.com>
 
-Due to a clerical error,there is one zero less for 12800000.
-Fix it for 128000000.
+Add MUX_GATE_FLAGS_2 for the clock which needs to set two falgs.
+Such as some mux need to set the flags of "CLK_MUX_ROUND_CLOSEST".
 
-Fixes: 0fc721b2968e ("drm/mediatek: add hdmi driver for MT2701 and MT7623")
-
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
 Signed-off-by: wangyan wang <wangyan.wang@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/clk/mediatek/clk-mtk.c |  2 +-
+ drivers/clk/mediatek/clk-mtk.h | 20 ++++++++++++++------
+ 2 files changed, 15 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-index 43bc058d5528..88dd9e812ca0 100644
---- a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-+++ b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-@@ -114,8 +114,8 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
+index 9c0ae4278a94..2ed996404804 100644
+--- a/drivers/clk/mediatek/clk-mtk.c
++++ b/drivers/clk/mediatek/clk-mtk.c
+@@ -167,7 +167,7 @@ struct clk *mtk_clk_register_composite(const struct mtk_composite *mc,
+ 		mux->mask = BIT(mc->mux_width) - 1;
+ 		mux->shift = mc->mux_shift;
+ 		mux->lock = lock;
+-
++		mux->flags = mc->mux_flags;
+ 		mux_hw = &mux->hw;
+ 		mux_ops = &clk_mux_ops;
  
- 	if (rate <= 64000000)
- 		pos_div = 3;
--	else if (rate <= 12800000)
--		pos_div = 1;
-+	else if (rate <= 128000000)
-+		pos_div = 2;
- 	else
- 		pos_div = 1;
+diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+index f83c2bbb677e..4b88d196d52f 100644
+--- a/drivers/clk/mediatek/clk-mtk.h
++++ b/drivers/clk/mediatek/clk-mtk.h
+@@ -81,15 +81,13 @@ struct mtk_composite {
+ 	signed char divider_shift;
+ 	signed char divider_width;
  
++	u8 mux_flags;
++
+ 	signed char num_parents;
+ };
+ 
+-/*
+- * In case the rate change propagation to parent clocks is undesirable,
+- * this macro allows to specify the clock flags manually.
+- */
+-#define MUX_GATE_FLAGS(_id, _name, _parents, _reg, _shift, _width,	\
+-			_gate, _flags) {				\
++#define MUX_GATE_FLAGS_2(_id, _name, _parents, _reg, _shift,		\
++				_width, _gate, _flags, _muxflags) {	\
+ 		.id = _id,						\
+ 		.name = _name,						\
+ 		.mux_reg = _reg,					\
+@@ -101,8 +99,18 @@ struct mtk_composite {
+ 		.parent_names = _parents,				\
+ 		.num_parents = ARRAY_SIZE(_parents),			\
+ 		.flags = _flags,					\
++		.mux_flags = _muxflags,					\
+ 	}
+ 
++/*
++ * In case the rate change propagation to parent clocks is undesirable,
++ * this macro allows to specify the clock flags manually.
++ */
++#define MUX_GATE_FLAGS(_id, _name, _parents, _reg, _shift, _width,	\
++			_gate, _flags)					\
++		MUX_GATE_FLAGS_2(_id, _name, _parents, _reg,		\
++					_shift, _width, _gate, _flags, 0)
++
+ /*
+  * Unless necessary, all MUX_GATE clocks propagate rate changes to their
+  * parent clock by default.
 -- 
 2.14.1
