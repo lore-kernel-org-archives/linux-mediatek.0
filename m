@@ -1,34 +1,142 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH 5/5] net: dsa: fix a leaked reference by adding missing
- of_node_put
-Date: Sun, 24 Feb 2019 12:32:30 -0800 (PST)
-Message-ID: <20190224.123230.261167641058555597.davem@davemloft.net>
-References: <1550819742-32155-1-git-send-email-wen.yang99@zte.com.cn>
-        <1550819742-32155-5-git-send-email-wen.yang99@zte.com.cn>
+From: Min Guo <min.guo@mediatek.com>
+Subject: Re: [PATCH v5 1/6] dt-bindings: usb: musb: Add support for MediaTek
+ musb controller
+Date: Mon, 25 Feb 2019 09:36:44 +0800
+Message-ID: <1551058604.12020.34.camel@mhfsdcap03>
+References: <1550561795-31132-1-git-send-email-min.guo@mediatek.com>
+         <1550561795-31132-2-git-send-email-min.guo@mediatek.com>
+         <20190222164923.GA26413@bogus>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1550819742-32155-5-git-send-email-wen.yang99@zte.com.cn>
+In-Reply-To: <20190222164923.GA26413@bogus>
 Sender: linux-kernel-owner@vger.kernel.org
-To: wen.yang99@zte.com.cn
-Cc: linus.walleij@linaro.org, andrew@lunn.ch, vivien.didelot@gmail.com, f.fainelli@gmail.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, alexandre.belloni@bootlin.com, UNGLinuxDriver@microchip.com, nbd@nbd.name, lorenzo.bianconi83@gmail.com, kvalo@codeaurora.org, matthias.bgg@gmail.com, linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, anirudh@xilinx.com, John.Linn@xilinx.com, michal.simek@xilinx.com, wang.yi59@zte.com.cn
+To: Rob Herring <robh@kernel.org>
+Cc: Bin Liu <b-liu@ti.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, chunfeng.yun@mediatek.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, tony@atomide.com, hdegoede@redhat.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Wen Yang <wen.yang99@zte.com.cn>
-Date: Fri, 22 Feb 2019 15:15:42 +0800
+Hi Rob,
+On Fri, 2019-02-22 at 10:49 -0600, Rob Herring wrote:
+> On Tue, Feb 19, 2019 at 03:36:30PM +0800, min.guo@mediatek.com wrote:
+> > From: Min Guo <min.guo@mediatek.com>
+> > 
+> > This adds support for MediaTek musb controller in
+> > host, peripheral and otg mode.
+> > 
+> > Signed-off-by: Min Guo <min.guo@mediatek.com>
+> > ---
+> > changes in v5:
+> > suggested by Rob:
+> > 1. Modify compatible as 
+> > - compatible : should be one of:
+> >                "mediatek,mt-2701"
+> >                ...
+> >                followed by "mediatek,mtk-musb"
+> > 2. Add usb connector child node
+> > 
+> > changes in v4:
+> > suggested by Sergei:
+> > 1. String alignment
+> > 
+> > changes in v3:
+> > 1. no changes
+> > 
+> > changes in v2:
+> > suggested by Bin:
+> > 1. Modify DRC to DRD
+> > suggested by Rob:
+> > 2. Drop the "<soc-model>-musb" in compatible
+> > 3. Remove phy-names
+> > 4. Add space after comma in clock-names
+> > ---
+> >  .../devicetree/bindings/usb/mediatek,musb.txt      | 54 ++++++++++++++++++++++
+> >  1 file changed, 54 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/usb/mediatek,musb.txt
+> > 
+> > diff --git a/Documentation/devicetree/bindings/usb/mediatek,musb.txt b/Documentation/devicetree/bindings/usb/mediatek,musb.txt
+> > new file mode 100644
+> > index 0000000..0632e6e
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/usb/mediatek,musb.txt
+> > @@ -0,0 +1,54 @@
+> > +MediaTek musb DRD/OTG controller
+> > +-------------------------------------------
+> > +
+> > +Required properties:
+> > + - compatible      : should be one of:
+> > +                     "mediatek,mt-2701"
+> 
+> That looks like a top-level SoC compatible and doesn't match the 
+> example.
+"mediatek,mt-2701" is an example, just to describe a specific SOC.
+May I modify compatibel like:
+compatible : should be "mediatek,mtk-musb"
 
-> diff --git a/net/dsa/dsa2.c b/net/dsa/dsa2.c
-> index 8c431e0..89823f0 100644
-> --- a/net/dsa/dsa2.c
-> +++ b/net/dsa/dsa2.c
-> @@ -613,7 +613,7 @@ static int dsa_switch_parse_ports_of(struct dsa_switch *ds,
->  	struct device_node *ports, *port;
->  	struct dsa_port *dp;
->  	u32 reg;
-> -	int err;
-> +	int err = 0;
+> > +                     ...
+> > +                     followed by "mediatek,mtk-musb"
+> > + - reg             : specifies physical base address and size of
+> > +                     the registers
+> > + - interrupts      : interrupt used by musb controller
+> > + - interrupt-names : must be "mc"
+> 
+> Not much point in a name when there is only 1.
+The MUSB core driver has two interrupts, one is for MAC, another for
+DMA, but on MTK platform, there is only a MAC interrupt, musb core
+driver uses platform_get_irq_byname(pdev, "mc") to get this interrupt
+number.
 
-Please preserve the reverse christmas tree ordering of variables here.
+> > + - phys            : PHY specifier for the OTG phy
+> > + - dr_mode         : should be one of "host", "peripheral" or "otg",
+> > +                     refer to usb/generic.txt
+> > + - clocks          : a list of phandle + clock-specifier pairs, one for
+> > +                     each entry in clock-names
+> > + - clock-names     : must contain "main", "mcu", "univpll"
+> > +                     for clocks of controller
+> > +
+> > +Optional properties:
+> > + - power-domains   : a phandle to USB power domain node to control USB's
+> > +                     MTCMOS
+> > +
+> > +Required child nodes:
+> > + usb connector node as defined in bindings/connector/usb-connector.txt
+> > + - extcon          : for VBUS and ID pin changes detection, needed when
+> > +                     supports dual-role mode
+> > + - vbus-supply     : reference to the VBUS regulator, needed when supports
+> > +                     dual-role mode
+> > +
+> > +Example:
+> > +
+> > +usb2: usb@11200000 {
+> > +	compatible = "mediatek,mt2701-musb",
+> > +		     "mediatek,mtk-musb";
+> > +	reg = <0 0x11200000 0 0x1000>;
+> > +	interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_LOW>;
+> > +	interrupt-names = "mc";
+> > +	phys = <&u2port2 PHY_TYPE_USB2>;
+> > +	dr_mode = "otg";
+> > +	clocks = <&pericfg CLK_PERI_USB0>,
+> > +		 <&pericfg CLK_PERI_USB0_MCU>,
+> > +		 <&pericfg CLK_PERI_USB_SLV>;
+> > +	clock-names = "main","mcu","univpll";
+> > +	power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
+> > +	usb_con: connector{
+> > +		compatible = "usb-b-connector";
+> > +		label = "micro-USB";
+> > +		type = "micro";
+> > +		extcon = <&extcon_usb>;
+> 
+> The connector node should replace 'extcon'. Add what you need here 
+> directly (e.g. id-gpios). What you add needs to be defined in 
+> usb-connector.txt.
+OK.
 
-Thank you.
+> > +		vbus-supply = <&usb_vbus>;
+> > +	};
+> > +};
+> > -- 
+> > 1.9.1
+> > 
+
+Regards,
+Min.
