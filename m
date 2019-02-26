@@ -1,78 +1,45 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v4 0/3] Mark clocks as critical for MT6797
-Date: Tue, 26 Feb 2019 13:59:44 +0100
-Message-ID: <f7ed0750-665a-76bc-df1a-95af39fef8ec@gmail.com>
-References: <20190214163026.26073-1-matthias.bgg@kernel.org>
+From: Qii Wang <qii.wang@mediatek.com>
+Subject: [PATCH v5 0/5] add i2c support for mt8183
+Date: Tue, 26 Feb 2019 21:10:55 +0800
+Message-ID: <1551186660-16902-1-git-send-email-qii.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190214163026.26073-1-matthias.bgg@kernel.org>
-Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: matthias.bgg@kernel.org, mturquette@baylibre.com, sboyd@kernel.org, kevin-cw.chen@mediatek.com, mars.cheng@mediatek.com
-Cc: sean.wang@mediatek.com, jasu@njomotys.info, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
+To: wsa@the-dreams.de
+Cc: linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, leilk.liu@mediatek.com, qii.wang@mediatek.com, xinping.qian@mediatek.com, liguo.zhang@mediatek.com, robh@kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
+This series are based on 5.0-rc1 and provide five patches to support
+mt8183 IC.
 
+Main changes compared to v4:
+--modify the commit of arb clock dt-binding
+--split a patch(3/3) into three(3/5 4/5 5/5)
 
-On 14/02/2019 17:30, matthias.bgg@kernel.org wrote:
-> From: Matthias Brugger <mbrugger@suse.com>
-> 
-> Jasper send this series some month ago. As there was no reaction from
-> his side, I'll do a friendly take-over.
-> I tested the patches on my Helios X20 boards and they fix the issue.
-> I didn't add a Tested-by tag as I added my Signed-off-by.
-> 
-> Changes since v3:
-> - add comments explaining why the clock muxer and gates are marked
->   as critical
-> 
-> Changes since v2 (https://patchwork.kernel.org/patch/10686759/):
-> - axi_sel is not needed, drop CLK_IS_CRITICAL for it.
-> - update commit message
-> - add Acked-by from Mars
-> 
-> Changes since v1:
-> - add a fixes tag.
-> 
+Main changes compared to v3:
+--remove the patches which have been applied to for-next
+--remove i2c fallback for i3c controller 
 
-Steven, Mike any comments on this?
+Main changes compared to v2:
+--update commit message
+--add Reviewed-by from Rob Herring, Nicolas and Sean
 
-Regards,
-Matthias
+Main changes compared to v1:
+--remove useless dt-binding for mt7629
+--split a patch into two(2/6 3/6)
+--muti-user feature was dropped
 
-> ---
-> 
-> Currently, DRAM-related clocks and the axi_sel MUX are not marked with
-> CLK_IS_CRITICAL for MT6797. This causes memory corruption when the
-> system is booted without clk_ignore_unused.
-> 
-> This patchset
-> 
-> 1. Makes it possible to mark outputs of MUXes as critical by introducing
->    a new macro, MUX_FLAGS,
-> 2. Makes it possible to mark gates as critical by adding flags to
->    mtk_gate, and
-> 3. Marks axi_sel, ddrphycfg_sel, infra_dramc_f26m and infra_dramc_b_f26m
->    as critical.
-> 
-> The addition of flags to mtk_gate also exists in the patch series "Add
-> basic and clock support for Mediatek MT8183 SoC" [1].  The type of
-> flags is unsigned int in that series, but the real type is unsigned
-> long, so my patch differs from that patch.
-> 
-> [1] https://patchwork.kernel.org/patch/10549953/
-> 
-> Jasper Mattsson (3):
->   clk: mediatek: Add MUX_FLAGS macro
->   clk: mediatek: Add flags to mtk_gate
->   clk: mediatek: Mark bus and DRAM related clocks as critical
-> 
->  drivers/clk/mediatek/clk-gate.c   |  4 +-
->  drivers/clk/mediatek/clk-gate.h   |  3 +-
->  drivers/clk/mediatek/clk-mt6797.c | 68 +++++++++++++++++++------------
->  drivers/clk/mediatek/clk-mtk.c    |  2 +-
->  drivers/clk/mediatek/clk-mtk.h    |  9 +++-
->  5 files changed, 56 insertions(+), 30 deletions(-)
-> 
+Qii Wang (5):
+  i2c: mediatek: Add offsets array for new i2c registers
+  dt-bindings: i2c: Add Mediatek MT8183 i2c binding
+  i2c: mediatek: Add arb clock in i2c driver
+  i2c: mediatek: Add i2c and apdma sync in i2c driver
+  i2c: mediatek: Add i2c support for MediaTek MT8183
+
+ Documentation/devicetree/bindings/i2c/i2c-mtk.txt |   4 +-
+ drivers/i2c/busses/i2c-mt65xx.c                   | 246 ++++++++++++++++------
+ 2 files changed, 188 insertions(+), 62 deletions(-)
+
+-- 
+1.9.1
