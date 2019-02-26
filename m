@@ -1,125 +1,45 @@
 From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH v4 08/12] clk: mediatek: Add MT8183 clock support
-Date: Tue, 26 Feb 2019 09:50:58 -0800
-Message-ID: <155120345816.260864.13433355004684800350@swboyd.mtv.corp.google.com>
-References: <20190201083016.25856-1-weiyi.lu@mediatek.com> <20190201083016.25856-10-weiyi.lu@mediatek.com>
+Subject: Re: [PATCH v4 0/3] Mark clocks as critical for MT6797
+Date: Tue, 26 Feb 2019 09:53:09 -0800
+Message-ID: <155120358914.260864.17734674975447226263@swboyd.mtv.corp.google.com>
+References: <20190214163026.26073-1-matthias.bgg@kernel.org> <f7ed0750-665a-76bc-df1a-95af39fef8ec@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190201083016.25856-10-weiyi.lu@mediatek.com>
+In-Reply-To: <f7ed0750-665a-76bc-df1a-95af39fef8ec@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh@kernel.org>, Stephen Boyd <sboyd@codeaurora.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, kevin-cw.chen@mediatek.com, mars.cheng@mediatek.com, matthias.bgg@kernel.org, mturquette@baylibre.com
+Cc: sean.wang@mediatek.com, jasu@njomotys.info, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting Weiyi Lu (2019-02-01 00:30:12)
-> diff --git a/drivers/clk/mediatek/clk-mt8183.c b/drivers/clk/mediatek/clk=
--mt8183.c
-> new file mode 100644
-> index 000000000000..e9de9fe774ca
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-mt8183.c
-> @@ -0,0 +1,1285 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +//
-> +// Copyright (c) 2018 MediaTek Inc.
-> +// Author: Weiyi Lu <weiyi.lu@mediatek.com>
-> +
-> +#include <linux/delay.h>
-> +#include <linux/mfd/syscon.h>
-> +#include <linux/of.h>
-> +#include <linux/of_address.h>
-> +#include <linux/of_device.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/slab.h>
-> +
-[....]
-> +
-> +static int clk_mt8183_top_probe(struct platform_device *pdev)
-> +{
-> +       struct resource *res =3D platform_get_resource(pdev, IORESOURCE_M=
-EM, 0);
-> +       void __iomem *base;
-> +       struct clk_onecell_data *clk_data;
-> +       struct device_node *node =3D pdev->dev.of_node;
-> +
-> +       base =3D devm_ioremap_resource(&pdev->dev, res);
-> +       if (IS_ERR(base)) {
-> +               pr_err("%s(): ioremap failed\n", __func__);
+Quoting Matthias Brugger (2019-02-26 04:59:44)
+>=20
+>=20
+> On 14/02/2019 17:30, matthias.bgg@kernel.org wrote:
+> > From: Matthias Brugger <mbrugger@suse.com>
+> >=20
+> > Jasper send this series some month ago. As there was no reaction from
+> > his side, I'll do a friendly take-over.
+> > I tested the patches on my Helios X20 boards and they fix the issue.
+> > I didn't add a Tested-by tag as I added my Signed-off-by.
+> >=20
+> > Changes since v3:
+> > - add comments explaining why the clock muxer and gates are marked
+> >   as critical
+> >=20
+> > Changes since v2 (https://patchwork.kernel.org/patch/10686759/):
+> > - axi_sel is not needed, drop CLK_IS_CRITICAL for it.
+> > - update commit message
+> > - add Acked-by from Mars
+> >=20
+> > Changes since v1:
+> > - add a fixes tag.
+> >=20
+>=20
+> Steven, Mike any comments on this?
+>=20
 
-This API already prints an error so please remove this duplicate error
-message
-
-> +               return PTR_ERR(base);
-> +       }
-> +
-> +       clk_data =3D mtk_alloc_clk_data(CLK_TOP_NR_CLK);
-> +
-> +       mtk_clk_register_fixed_clks(top_fixed_clks, ARRAY_SIZE(top_fixed_=
-clks),
-> +               clk_data);
-> +
-> +       mtk_clk_register_factors(top_divs, ARRAY_SIZE(top_divs), clk_data=
-);
-> +
-> +       mtk_clk_register_muxes(top_muxes, ARRAY_SIZE(top_muxes),
-> +               node, &mt8183_clk_lock, clk_data);
-> +
-> +       mtk_clk_register_composites(top_aud_muxes, ARRAY_SIZE(top_aud_mux=
-es),
-> +               base, &mt8183_clk_lock, clk_data);
-> +
-> +       mtk_clk_register_composites(top_aud_divs, ARRAY_SIZE(top_aud_divs=
-),
-> +               base, &mt8183_clk_lock, clk_data);
-> +
-> +       mtk_clk_register_gates(node, top_clks, ARRAY_SIZE(top_clks),
-> +               clk_data);
-> +
-> +       return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data=
-);
-> +}
-> +
-> +static int clk_mt8183_infra_probe(struct platform_device *pdev)
-> +{
-> +       struct clk_onecell_data *clk_data;
-> +       struct device_node *node =3D pdev->dev.of_node;
-> +
-> +       clk_data =3D mtk_alloc_clk_data(CLK_INFRA_NR_CLK);
-> +
-> +       mtk_clk_register_gates(node, infra_clks, ARRAY_SIZE(infra_clks),
-> +               clk_data);
-> +
-> +       return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data=
-);
-> +}
-> +
-> +static int clk_mt8183_mcu_probe(struct platform_device *pdev)
-> +{
-> +       struct clk_onecell_data *clk_data;
-> +       struct device_node *node =3D pdev->dev.of_node;
-> +       void __iomem *base;
-> +       struct resource *res =3D platform_get_resource(pdev, IORESOURCE_M=
-EM, 0);
-> +
-> +       base =3D devm_ioremap_resource(&pdev->dev, res);
-> +       if (IS_ERR(base)) {
-> +               pr_err("%s(): ioremap failed\n", __func__);
-> +               return PTR_ERR(base);
-> +       }
-> +
-> +       clk_data =3D mtk_alloc_clk_data(CLK_MCU_NR_CLK);
-
-Can this fail? It doesn't seem to be checked for failure so I guess we
-don't care?
-
-> +
-> +       mtk_clk_register_composites(mcu_muxes, ARRAY_SIZE(mcu_muxes), bas=
-e,
-> +                       &mt8183_clk_lock, clk_data);
-> +
-> +       return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data=
-);
-> +}
-> +
+I got patch #1 and #2 in my queue and they're not threaded properly as
+replies to each other. I'll have to go dig out the last patch somehow,
+but probably I can apply them now.
