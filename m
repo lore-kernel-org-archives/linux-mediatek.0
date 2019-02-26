@@ -1,45 +1,113 @@
-From: Qii Wang <qii.wang@mediatek.com>
-Subject: [PATCH v5 2/5] dt-bindings: i2c: Add Mediatek MT8183 i2c binding
-Date: Tue, 26 Feb 2019 21:10:57 +0800
-Message-ID: <1551186660-16902-3-git-send-email-qii.wang@mediatek.com>
-References: <1551186660-16902-1-git-send-email-qii.wang@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v4 01/12] clk: mediatek: Disable tuner_en before change
+ PLL rate
+Date: Tue, 26 Feb 2019 16:59:30 +0100
+Message-ID: <41aed6f5-8794-ddf5-d5c2-17ee82e33db3@gmail.com>
+References: <20190201083016.25856-1-weiyi.lu@mediatek.com>
+ <20190201083016.25856-3-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1551186660-16902-1-git-send-email-qii.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: wsa@the-dreams.de
-Cc: linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, leilk.liu@mediatek.com, qii.wang@mediatek.com, xinping.qian@mediatek.com, liguo.zhang@mediatek.com, robh@kernel.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <20190201083016.25856-3-weiyi.lu@mediatek.com>
+Content-Language: en-US
+Sender: stable-owner@vger.kernel.org
+To: Weiyi Lu <weiyi.lu@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org, Owen Chen <owen.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add MT8183 i2c binding to binding file. Compare to MT2712 i2c
-controller, MT8183 has different registers, offsets, and clock.
 
-Signed-off-by: Qii Wang <qii.wang@mediatek.com>
----
- Documentation/devicetree/bindings/i2c/i2c-mtk.txt |    4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/i2c/i2c-mtk.txt b/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
-index ee4c324..b052f29 100644
---- a/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
-+++ b/Documentation/devicetree/bindings/i2c/i2c-mtk.txt
-@@ -12,13 +12,15 @@ Required properties:
-       "mediatek,mt7623-i2c", "mediatek,mt6577-i2c": for MediaTek MT7623
-       "mediatek,mt7629-i2c", "mediatek,mt2712-i2c": for MediaTek MT7629
-       "mediatek,mt8173-i2c": for MediaTek MT8173
-+      "mediatek,mt8183-i2c": for MediaTek MT8183
-   - reg: physical base address of the controller and dma base, length of memory
-     mapped region.
-   - interrupts: interrupt number to the cpu.
-   - clock-div: the fixed value for frequency divider of clock source in i2c
-     module. Each IC may be different.
-   - clocks: clock name from clock manager
--  - clock-names: Must include "main" and "dma", if enable have-pmic need include
-+  - clock-names: Must include "main" and "dma", "arb" is for multi-master that
-+    one bus has more than two i2c controllers, if enable have-pmic need include
-     "pmic" extra.
- 
- Optional properties:
--- 
-1.7.9.5
+On 01/02/2019 09:30, Weiyi Lu wrote:
+> From: Owen Chen <owen.chen@mediatek.com>
+> 
+> PLLs with tuner_en bit, such as APLL1, need to disable
+> tuner_en before apply new frequency settings, or the new frequency
+> settings (pcw) will not be applied.
+> The tuner_en bit will be disabled during changing PLL rate
+> and be restored after new settings applied.
+> Another minor change is to correct the macro name of pcw change bit
+> to CON1_PCW_CHG because PCW_CHG(BIT31) is on CON1.
+> 
+> Fixes: e2f744a82d725 (clk: mediatek: Add MT2712 clock support)
+> Cc: <stable@vger.kernel.org>
+> Signed-off-by: Owen Chen <owen.chen@mediatek.com>
+> ---
+>  drivers/clk/mediatek/clk-pll.c | 33 +++++++++++++++++++++++++++++++--
+>  1 file changed, 31 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
+> index f54e4015b0b1..f0ff5f535c7e 100644
+> --- a/drivers/clk/mediatek/clk-pll.c
+> +++ b/drivers/clk/mediatek/clk-pll.c
+> @@ -27,7 +27,7 @@
+>  #define CON0_BASE_EN		BIT(0)
+>  #define CON0_PWR_ON		BIT(0)
+>  #define CON0_ISO_EN		BIT(1)
+> -#define CON0_PCW_CHG		BIT(31)
+> +#define CON1_PCW_CHG		BIT(31)
+>  
+>  #define AUDPLL_TUNER_EN		BIT(31)
+>  
+> @@ -93,9 +93,31 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
+>  {
+>  	u32 con1, val;
+>  	int pll_en;
+> +	u32 tuner_en = 0;
+> +	u32 tuner_en_mask;
+> +	void __iomem *tuner_en_addr = NULL;
+>  
+>  	pll_en = readl(pll->base_addr + REG_CON0) & CON0_BASE_EN;
+>  
+> +	/* disable tuner */
+> +	if (pll->tuner_en_addr) {
+> +		tuner_en_addr = pll->tuner_en_addr;
+> +		tuner_en_mask = BIT(pll->data->tuner_en_bit);
+> +	} else if (pll->tuner_addr) {
+> +		tuner_en_addr = pll->tuner_addr;
+> +		tuner_en_mask = AUDPLL_TUNER_EN;
+> +	}
+> +
+> +	if (tuner_en_addr) {
+> +		val = readl(tuner_en_addr);
+> +		tuner_en = val & tuner_en_mask;
+> +
+> +		if (tuner_en) {
+> +			val &= ~tuner_en_mask;
+> +			writel(val, tuner_en_addr);
+> +		}
+> +	}
+> +
+
+Why don't we use a flag here, it would make the code easier to understand.
+I think it would also help if you put this code in a separate function.
+
+Regards,
+Matthias
+
+
+>  	/* set postdiv */
+>  	val = readl(pll->pd_addr);
+>  	val &= ~(POSTDIV_MASK << pll->data->pd_shift);
+> @@ -116,12 +138,19 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
+>  	con1 = readl(pll->base_addr + REG_CON1);
+>  
+>  	if (pll_en)
+> -		con1 |= CON0_PCW_CHG;
+> +		con1 |= CON1_PCW_CHG;
+>  
+>  	writel(con1, pll->base_addr + REG_CON1);
+>  	if (pll->tuner_addr)
+>  		writel(con1 + 1, pll->tuner_addr);
+>  
+> +	/* restore tuner_en */
+> +	if (tuner_en_addr && tuner_en) {
+> +		val = readl(tuner_en_addr);
+> +		val |= tuner_en_mask;
+> +		writel(val, tuner_en_addr);
+> +	}
+> +
+>  	if (pll_en)
+>  		udelay(20);
+>  }
+> 
