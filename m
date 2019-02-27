@@ -1,138 +1,129 @@
-From: KaiChieh Chuang <kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH] ASoC: mediatek: btcvsd add loopback
-Date: Wed, 27 Feb 2019 09:30:44 +0800
-Message-ID: <1551231044-24062-1-git-send-email-kaichieh.chuang@mediatek.com>
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+Subject: Re: [PATCH v4 08/12] clk: mediatek: Add MT8183 clock support
+Date: Wed, 27 Feb 2019 10:51:37 +0800
+Message-ID: <1551235897.1047.11.camel@mtksdaap41>
+References: <20190201083016.25856-1-weiyi.lu@mediatek.com>
+         <20190201083016.25856-10-weiyi.lu@mediatek.com>
+         <155120345816.260864.13433355004684800350@swboyd.mtv.corp.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, stephen.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <155120345816.260864.13433355004684800350@swboyd.mtv.corp.google.com>
+Sender: stable-owner@vger.kernel.org
+To: Stephen Boyd <sboyd@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh@kernel.org>, Stephen Boyd <sboyd@codeaurora.org>, James Liao <jamesjj.liao@mediatek.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, stable@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-add direct loopback path from rx to tx
+On Tue, 2019-02-26 at 09:50 -0800, Stephen Boyd wrote:
+> Quoting Weiyi Lu (2019-02-01 00:30:12)
+> > diff --git a/drivers/clk/mediatek/clk-mt8183.c b/drivers/clk/mediatek/clk-mt8183.c
+> > new file mode 100644
+> > index 000000000000..e9de9fe774ca
+> > --- /dev/null
+> > +++ b/drivers/clk/mediatek/clk-mt8183.c
+> > @@ -0,0 +1,1285 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +//
+> > +// Copyright (c) 2018 MediaTek Inc.
+> > +// Author: Weiyi Lu <weiyi.lu@mediatek.com>
+> > +
+> > +#include <linux/delay.h>
+> > +#include <linux/mfd/syscon.h>
+> > +#include <linux/of.h>
+> > +#include <linux/of_address.h>
+> > +#include <linux/of_device.h>
+> > +#include <linux/platform_device.h>
+> > +#include <linux/slab.h>
+> > +
+> [....]
+> > +
+> > +static int clk_mt8183_top_probe(struct platform_device *pdev)
+> > +{
+> > +       struct resource *res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> > +       void __iomem *base;
+> > +       struct clk_onecell_data *clk_data;
+> > +       struct device_node *node = pdev->dev.of_node;
+> > +
+> > +       base = devm_ioremap_resource(&pdev->dev, res);
+> > +       if (IS_ERR(base)) {
+> > +               pr_err("%s(): ioremap failed\n", __func__);
+> 
+> This API already prints an error so please remove this duplicate error
+> message
+> 
 
-Signed-off-by: KaiChieh Chuang <kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- sound/soc/mediatek/common/mtk-btcvsd.c | 69 +++++++++++++++++++++++++++++++++-
- 1 file changed, 68 insertions(+), 1 deletion(-)
+ok, I'll remove those duplicate error message in next version.
 
-diff --git a/sound/soc/mediatek/common/mtk-btcvsd.c b/sound/soc/mediatek/common/mtk-btcvsd.c
-index 1b8bcdaf..9a163d7 100644
---- a/sound/soc/mediatek/common/mtk-btcvsd.c
-+++ b/sound/soc/mediatek/common/mtk-btcvsd.c
-@@ -49,6 +49,7 @@ enum bt_sco_state {
- 	BT_SCO_STATE_IDLE,
- 	BT_SCO_STATE_RUNNING,
- 	BT_SCO_STATE_ENDING,
-+	BT_SCO_STATE_LOOPBACK,
- };
- 
- enum bt_sco_direct {
-@@ -486,7 +487,8 @@ static irqreturn_t mtk_btcvsd_snd_irq_handler(int irq_id, void *dev)
- 	if (bt->rx->state != BT_SCO_STATE_RUNNING &&
- 	    bt->rx->state != BT_SCO_STATE_ENDING &&
- 	    bt->tx->state != BT_SCO_STATE_RUNNING &&
--	    bt->tx->state != BT_SCO_STATE_ENDING) {
-+	    bt->tx->state != BT_SCO_STATE_ENDING &&
-+	    bt->tx->state != BT_SCO_STATE_LOOPBACK) {
- 		dev_warn(bt->dev, "%s(), in idle state: rx->state: %d, tx->state: %d\n",
- 			 __func__, bt->rx->state, bt->tx->state);
- 		goto irq_handler_exit;
-@@ -512,6 +514,42 @@ static irqreturn_t mtk_btcvsd_snd_irq_handler(int irq_id, void *dev)
- 	buf_cnt_tx = btsco_packet_info[packet_type][2];
- 	buf_cnt_rx = btsco_packet_info[packet_type][3];
- 
-+	if (bt->tx->state == BT_SCO_STATE_LOOPBACK) {
-+		u8 *src, *dst;
-+		unsigned long connsys_addr_rx, ap_addr_rx;
-+		unsigned long connsys_addr_tx, ap_addr_tx;
-+
-+		connsys_addr_rx = *bt->bt_reg_pkt_r;
-+		ap_addr_rx = (unsigned long)bt->bt_sram_bank2_base +
-+			     (connsys_addr_rx & 0xFFFF);
-+
-+		connsys_addr_tx = *bt->bt_reg_pkt_w;
-+		ap_addr_tx = (unsigned long)bt->bt_sram_bank2_base +
-+			     (connsys_addr_tx & 0xFFFF);
-+
-+		if (connsys_addr_tx == 0xdeadfeed ||
-+		    connsys_addr_rx == 0xdeadfeed) {
-+			/* bt return 0xdeadfeed if read reg during bt sleep */
-+			dev_warn(bt->dev, "%s(), connsys_addr_tx == 0xdeadfeed\n",
-+				 __func__);
-+			goto irq_handler_exit;
-+		}
-+
-+		src = (u8 *)ap_addr_rx;
-+		dst = (u8 *)ap_addr_tx;
-+
-+		mtk_btcvsd_snd_data_transfer(BT_SCO_DIRECT_BT2ARM, src,
-+					     bt->tx->temp_packet_buf,
-+					     packet_length,
-+					     packet_num);
-+		mtk_btcvsd_snd_data_transfer(BT_SCO_DIRECT_ARM2BT,
-+					     bt->tx->temp_packet_buf, dst,
-+					     packet_length,
-+					     packet_num);
-+		bt->rx->rw_cnt++;
-+		bt->tx->rw_cnt++;
-+	}
-+
- 	if (bt->rx->state == BT_SCO_STATE_RUNNING ||
- 	    bt->rx->state == BT_SCO_STATE_ENDING) {
- 		if (bt->rx->xrun) {
-@@ -1067,6 +1105,33 @@ static int btcvsd_band_set(struct snd_kcontrol *kcontrol,
- 	return 0;
- }
- 
-+static int btcvsd_loopback_get(struct snd_kcontrol *kcontrol,
-+			       struct snd_ctl_elem_value *ucontrol)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_kcontrol_component(kcontrol);
-+	struct mtk_btcvsd_snd *bt = snd_soc_component_get_drvdata(cmpnt);
-+	bool lpbk_en = bt->tx->state == BT_SCO_STATE_LOOPBACK;
-+
-+	ucontrol->value.integer.value[0] = lpbk_en;
-+	return 0;
-+}
-+
-+static int btcvsd_loopback_set(struct snd_kcontrol *kcontrol,
-+			       struct snd_ctl_elem_value *ucontrol)
-+{
-+	struct snd_soc_component *cmpnt = snd_soc_kcontrol_component(kcontrol);
-+	struct mtk_btcvsd_snd *bt = snd_soc_component_get_drvdata(cmpnt);
-+
-+	if (ucontrol->value.integer.value[0]) {
-+		mtk_btcvsd_snd_set_state(bt, bt->tx, BT_SCO_STATE_LOOPBACK);
-+		mtk_btcvsd_snd_set_state(bt, bt->rx, BT_SCO_STATE_LOOPBACK);
-+	} else {
-+		mtk_btcvsd_snd_set_state(bt, bt->tx, BT_SCO_STATE_RUNNING);
-+		mtk_btcvsd_snd_set_state(bt, bt->rx, BT_SCO_STATE_RUNNING);
-+	}
-+	return 0;
-+}
-+
- static int btcvsd_tx_mute_get(struct snd_kcontrol *kcontrol,
- 			      struct snd_ctl_elem_value *ucontrol)
- {
-@@ -1202,6 +1267,8 @@ static int btcvsd_tx_timestamp_get(struct snd_kcontrol *kcontrol,
- static const struct snd_kcontrol_new mtk_btcvsd_snd_controls[] = {
- 	SOC_ENUM_EXT("BTCVSD Band", btcvsd_enum[0],
- 		     btcvsd_band_get, btcvsd_band_set),
-+	SOC_SINGLE_BOOL_EXT("BTCVSD Loopback Switch", 0,
-+			    btcvsd_loopback_get, btcvsd_loopback_set),
- 	SOC_SINGLE_BOOL_EXT("BTCVSD Tx Mute Switch", 0,
- 			    btcvsd_tx_mute_get, btcvsd_tx_mute_set),
- 	SOC_SINGLE_BOOL_EXT("BTCVSD Tx Irq Received Switch", 0,
--- 
-1.9.1
+> > +               return PTR_ERR(base);
+> > +       }
+> > +
+> > +       clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
+> > +
+> > +       mtk_clk_register_fixed_clks(top_fixed_clks, ARRAY_SIZE(top_fixed_clks),
+> > +               clk_data);
+> > +
+> > +       mtk_clk_register_factors(top_divs, ARRAY_SIZE(top_divs), clk_data);
+> > +
+> > +       mtk_clk_register_muxes(top_muxes, ARRAY_SIZE(top_muxes),
+> > +               node, &mt8183_clk_lock, clk_data);
+> > +
+> > +       mtk_clk_register_composites(top_aud_muxes, ARRAY_SIZE(top_aud_muxes),
+> > +               base, &mt8183_clk_lock, clk_data);
+> > +
+> > +       mtk_clk_register_composites(top_aud_divs, ARRAY_SIZE(top_aud_divs),
+> > +               base, &mt8183_clk_lock, clk_data);
+> > +
+> > +       mtk_clk_register_gates(node, top_clks, ARRAY_SIZE(top_clks),
+> > +               clk_data);
+> > +
+> > +       return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+> > +}
+> > +
+> > +static int clk_mt8183_infra_probe(struct platform_device *pdev)
+> > +{
+> > +       struct clk_onecell_data *clk_data;
+> > +       struct device_node *node = pdev->dev.of_node;
+> > +
+> > +       clk_data = mtk_alloc_clk_data(CLK_INFRA_NR_CLK);
+> > +
+> > +       mtk_clk_register_gates(node, infra_clks, ARRAY_SIZE(infra_clks),
+> > +               clk_data);
+> > +
+> > +       return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+> > +}
+> > +
+> > +static int clk_mt8183_mcu_probe(struct platform_device *pdev)
+> > +{
+> > +       struct clk_onecell_data *clk_data;
+> > +       struct device_node *node = pdev->dev.of_node;
+> > +       void __iomem *base;
+> > +       struct resource *res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> > +
+> > +       base = devm_ioremap_resource(&pdev->dev, res);
+> > +       if (IS_ERR(base)) {
+> > +               pr_err("%s(): ioremap failed\n", __func__);
+> > +               return PTR_ERR(base);
+> > +       }
+> > +
+> > +       clk_data = mtk_alloc_clk_data(CLK_MCU_NR_CLK);
+> 
+> Can this fail? It doesn't seem to be checked for failure so I guess we
+> don't care?
+> 
+
+It might fail but we have data validity checks in all the
+mtk_clk_register APIs.
+
+> > +
+> > +       mtk_clk_register_composites(mcu_muxes, ARRAY_SIZE(mcu_muxes), base,
+> > +                       &mt8183_clk_lock, clk_data);
+> > +
+> > +       return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+> > +}
+> > +
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
