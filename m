@@ -1,47 +1,70 @@
-From: Mars Cheng <mars.cheng@mediatek.com>
-Subject: Re: [PATCH v4 3/3] clk: mediatek: Mark bus and DRAM related clocks
- as critical
-Date: Wed, 27 Feb 2019 18:36:31 +0800
-Message-ID: <1551263791.9274.1.camel@mtkswgap22>
-References: <20190214163242.26259-1-matthias.bgg@kernel.org>
-         <155120371334.260864.14503820089028591730@swboyd.mtv.corp.google.com>
+From: Yong Wu <yong.wu@mediatek.com>
+Subject: Re: [PATCH 05/13] memory: mtk-smi: Add device-link between smi-larb
+ and smi-common
+Date: Wed, 27 Feb 2019 22:33:05 +0800
+Message-ID: <1551277985.17917.48.camel@mhfsdcap03>
+References: <1546318276-18993-1-git-send-email-yong.wu@mediatek.com>
+         <1546318276-18993-6-git-send-email-yong.wu@mediatek.com>
+         <CAE=gft71J+5ui_FFm4D+62uSy6KHYzT7wru_NNdPsvrCDV3ekw@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <155120371334.260864.14503820089028591730@swboyd.mtv.corp.google.com>
+In-Reply-To: <CAE=gft71J+5ui_FFm4D+62uSy6KHYzT7wru_NNdPsvrCDV3ekw@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@kernel.org>
-Cc: kevin-cw.chen@mediatek.com, matthias.bgg@kernel.org, mturquette@baylibre.com, sean.wang@mediatek.com, linux-kernel@vger.kernel.org, jasu@njomotys.info, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Evan Green <evgreen@chromium.org>
+Cc: Joerg Roedel <joro@8bytes.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Tomasz Figa <tfiga@google.com>, Will Deacon <will.deacon@arm.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, Arnd Bergmann <arnd@arndb.de>, yingjoe.chen@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Stephen
-
-On Tue, 2019-02-26 at 09:55 -0800, Stephen Boyd wrote:
-> Quoting matthias.bgg@kernel.org (2019-02-14 08:32:42)
-> > From: Jasper Mattsson <jasu@njomotys.info>
-> > 
-> > Currently, DRAM-related clocks are not marked with CLK_IS_CRITICAL
-> > for MT6797. This causes memory corruption when the system is
-> > booted without clk_ignore_unused.
-> > This patch marks MUX ddrphycfg_sel as well as gates infra_dramc_f26m
-> > and infra_dramc_b_f26m as CLK_IS_CRITICAL.
-> > 
-> > Signed-off-by: Jasper Mattsson <jasu@njomotys.info>
-> > Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+On Mon, 2019-02-25 at 15:54 -0800, Evan Green wrote:
+> On Mon, Dec 31, 2018 at 8:52 PM Yong Wu <yong.wu@mediatek.com> wrote:
+> >
+> > Normally, If the smi-larb HW need work, we should enable the smi-common
+> > HW power and clock firstly.
+> > This patch adds device-link between the smi-larb dev and the smi-common
+> > dev. then If pm_runtime_get_sync(smi-larb-dev), the pm_runtime_get_sync
+> > (smi-common-dev) will be called automatically.
+> >
+> > Since smi is built-in driver like IOMMU and never unbound,
+> > DL_FLAG_AUTOREMOVE_* is not needed.
+> >
+> > CC: Matthias Brugger <matthias.bgg@gmail.com>
+> > Suggested-by: Tomasz Figa <tfiga@chromium.org>
+> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 > > ---
+> >  drivers/memory/mtk-smi.c | 16 +++++++---------
+> >  1 file changed, 7 insertions(+), 9 deletions(-)
+> >
+> > diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+> > index 9688341..30930e4 100644
+> > --- a/drivers/memory/mtk-smi.c
+> > +++ b/drivers/memory/mtk-smi.c
+> > @@ -271,6 +271,7 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
+> >         struct device *dev = &pdev->dev;
+> >         struct device_node *smi_node;
+> >         struct platform_device *smi_pdev;
+> > +       struct device_link *link;
+> >
+> >         larb = devm_kzalloc(dev, sizeof(*larb), GFP_KERNEL);
+> >         if (!larb)
+> > @@ -310,6 +311,12 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
+> >                 if (!platform_get_drvdata(smi_pdev))
+> >                         return -EPROBE_DEFER;
+> >                 larb->smi_common_dev = &smi_pdev->dev;
+> > +               link = device_link_add(dev, larb->smi_common_dev,
+> > +                                      DL_FLAG_PM_RUNTIME);
 > 
-> Applied to clk-next
-> 
-> Would be nice to get someone from mediatek to ack it, but I can't wait
-> forever.
+> Doesn't this need to be torn down in remove()? You mention that it's
+> built-in and never removed, but it does seem to have a remove()
 
-Acked-by:Mars Cheng <mars.cheng@mediatek.com>
+The MTK IOMMU driver need depend on this SMI driver. the IOMMU is a
+builtin driver, thus the SMI also should be a builtin driver.
 
-Thanks a lot.
-> 
-> 
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+Technically, If the driver is builtin, then the "remove" function can be
+removed? If yes, I could use a new patch do it.
+
+It looks the MACRO(builtin_platform_driver) only support one driver, but
+we have two driver(smi-common and smi-larb) here.
+
+> function that tears down everything else, so it seemed a shame to
+> start leaking now. Maybe the AUTOREMOVE flag would do it.
