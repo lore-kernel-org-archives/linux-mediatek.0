@@ -1,139 +1,130 @@
-From: Yong Wu <yong.wu@mediatek.com>
+From: Robin Murphy <robin.murphy@arm.com>
 Subject: Re: [PATCH 04/13] iommu/mediatek: Add device_link between the
  consumer and the larb devices
-Date: Wed, 27 Feb 2019 22:34:43 +0800
-Message-ID: <1551278083.17917.53.camel@mhfsdcap03>
+Date: Wed, 27 Feb 2019 19:30:10 +0000
+Message-ID: <709d7d66-9610-eeb3-128e-e2156bcfb616@arm.com>
 References: <1546318276-18993-1-git-send-email-yong.wu@mediatek.com>
-         <1546318276-18993-5-git-send-email-yong.wu@mediatek.com>
-         <CAE=gft7R4tkR9hAif4izQi1J1QTcC0rUVyrLAnDdzu_RHV6yHA@mail.gmail.com>
+ <1546318276-18993-5-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAE=gft7R4tkR9hAif4izQi1J1QTcC0rUVyrLAnDdzu_RHV6yHA@mail.gmail.com>
+In-Reply-To: <1546318276-18993-5-git-send-email-yong.wu@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Evan Green <evgreen@chromium.org>
-Cc: youlin.pei@mediatek.com, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Arnd Bergmann <arnd@arndb.de>, srv_heupstream@mediatek.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, LKML <linux-kernel@vger.kernel.org>, Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>, arnd@arndb.de, srv_heupstream@mediatek.com, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2019-02-25 at 15:54 -0800, Evan Green wrote:
-> On Mon, Dec 31, 2018 at 8:52 PM Yong Wu <yong.wu@mediatek.com> wrote:
-> >
-> > MediaTek IOMMU don't have its power-domain. all the consumer connect
-> > with smi-larb, then connect with smi-common.
-> >
-> >         M4U
-> >          |
-> >     smi-common
-> >          |
-> >   -------------
-> >   |         |    ...
-> >   |         |
-> > larb1     larb2
-> >   |         |
-> > vdec       venc
-> >
-> > When the consumer works, it should enable the smi-larb's power which
-> > also need enable the smi-common's power firstly.
-> >
-> > Thus, First of all, use the device link connect the consumer and the
-> > smi-larbs. then add device link between the smi-larb and smi-common.
-> >
-> > This patch adds device_link between the consumer and the larbs.
-> >
-> > Suggested-by: Tomasz Figa <tfiga@chromium.org>
-> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > ---
-> >  drivers/iommu/mtk_iommu.c    | 15 +++++++++++++--
-> >  drivers/iommu/mtk_iommu_v1.c | 14 ++++++++++++--
-> >  2 files changed, 25 insertions(+), 4 deletions(-)
-> >
-> > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> > index 202e41b..735ae8d 100644
-> > --- a/drivers/iommu/mtk_iommu.c
-> > +++ b/drivers/iommu/mtk_iommu.c
-> > @@ -247,6 +247,7 @@ static void mtk_iommu_config(struct mtk_iommu_data *data,
-> >         struct mtk_smi_larb_iommu    *larb_mmu;
-> >         unsigned int                 larbid, portid;
-> >         struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
-> > +       struct device_link *link;
-> >         int i;
-> >
-> >         for (i = 0; i < fwspec->num_ids; ++i) {
-> > @@ -257,10 +258,20 @@ static void mtk_iommu_config(struct mtk_iommu_data *data,
-> >                 dev_dbg(dev, "%s iommu port: %d\n",
-> >                         enable ? "enable" : "disable", portid);
-> >
-> > -               if (enable)
-> > +               if (enable) {
-> >                         larb_mmu->mmu |= MTK_SMI_MMU_EN(portid);
-> > -               else
-> > +                       /* Link the consumer with the larb device(supplier) */
-> > +                       link = device_link_add(dev, larb_mmu->dev,
-> > +                                              DL_FLAG_PM_RUNTIME |
-> > +                                              DL_FLAG_AUTOREMOVE_CONSUMER);
-> > +                       if (!link) {
-> > +                               dev_err(dev, "Unable to link %s\n",
-> > +                                       dev_name(larb_mmu->dev));
-> > +                               return;
+On 01/01/2019 04:51, Yong Wu wrote:
+> MediaTek IOMMU don't have its power-domain. all the consumer connect
+> with smi-larb, then connect with smi-common.
 > 
-> The return is a little odd here, given that you don't return an error
-> and this function doesn't do anything else. If it's non-fatal that
-> this link didn't get set up, then remove the return. If it is fatal,
-> then return an error code.
+>          M4U
+>           |
+>      smi-common
+>           |
+>    -------------
+>    |         |    ...
+>    |         |
+> larb1     larb2
+>    |         |
+> vdec       venc
+> 
+> When the consumer works, it should enable the smi-larb's power which
+> also need enable the smi-common's power firstly.
+> 
+> Thus, First of all, use the device link connect the consumer and the
+> smi-larbs. then add device link between the smi-larb and smi-common.
+> 
+> This patch adds device_link between the consumer and the larbs.
+> 
+> Suggested-by: Tomasz Figa <tfiga@chromium.org>
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+>   drivers/iommu/mtk_iommu.c    | 15 +++++++++++++--
+>   drivers/iommu/mtk_iommu_v1.c | 14 ++++++++++++--
+>   2 files changed, 25 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index 202e41b..735ae8d 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -247,6 +247,7 @@ static void mtk_iommu_config(struct mtk_iommu_data *data,
+>   	struct mtk_smi_larb_iommu    *larb_mmu;
+>   	unsigned int                 larbid, portid;
+>   	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+> +	struct device_link *link;
+>   	int i;
+>   
+>   	for (i = 0; i < fwspec->num_ids; ++i) {
+> @@ -257,10 +258,20 @@ static void mtk_iommu_config(struct mtk_iommu_data *data,
+>   		dev_dbg(dev, "%s iommu port: %d\n",
+>   			enable ? "enable" : "disable", portid);
+>   
+> -		if (enable)
+> +		if (enable) {
+>   			larb_mmu->mmu |= MTK_SMI_MMU_EN(portid);
+> -		else
+> +			/* Link the consumer with the larb device(supplier) */
+> +			link = device_link_add(dev, larb_mmu->dev,
+> +					       DL_FLAG_PM_RUNTIME |
+> +					       DL_FLAG_AUTOREMOVE_CONSUMER);
 
-I will remove the "return". Thanks.
+This looks technically wrong, since we get here from 
+mtk_iommu_attach_device(), and in theory a device could get attached to 
+any number of domains over its lifetime, so adding a link at this point 
+when there's no corresponding cleanup on detach is definitely 
+unbalanced. If you want this layer to manage the link on behalf of the 
+consumer, it would probably be better to do it at the point of 
+mtk_iommu_add_device(), and either track it for manual cleanup in 
+mtk_iommu_remove_device() or rely on AUTOREMOVE_SUPPLIER.
 
+Robin.
+
+> +			if (!link) {
+> +				dev_err(dev, "Unable to link %s\n",
+> +					dev_name(larb_mmu->dev));
+> +				return;
+> +			}
+> +		} else {
+>   			larb_mmu->mmu &= ~MTK_SMI_MMU_EN(portid);
+> +		}
+>   	}
+>   }
+>   
+> diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+> index 9386aee..022bad9 100644
+> --- a/drivers/iommu/mtk_iommu_v1.c
+> +++ b/drivers/iommu/mtk_iommu_v1.c
+> @@ -201,6 +201,7 @@ static void mtk_iommu_config(struct mtk_iommu_data *data,
+>   	struct mtk_smi_larb_iommu    *larb_mmu;
+>   	unsigned int                 larbid, portid;
+>   	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+> +	struct device_link *link;
+>   	int i;
+>   
+>   	for (i = 0; i < fwspec->num_ids; ++i) {
+> @@ -211,10 +212,19 @@ static void mtk_iommu_config(struct mtk_iommu_data *data,
+>   		dev_dbg(dev, "%s iommu port: %d\n",
+>   			enable ? "enable" : "disable", portid);
+>   
+> -		if (enable)
+> +		if (enable) {
+>   			larb_mmu->mmu |= MTK_SMI_MMU_EN(portid);
+> -		else
+> +			link = device_link_add(dev, larb_mmu->dev,
+> +					       DL_FLAG_PM_RUNTIME |
+> +					       DL_FLAG_AUTOREMOVE_CONSUMER);
+> +			if (!link) {
+> +				dev_err(dev, "Unable to link %s\n",
+> +					dev_name(larb_mmu->dev));
+> +				return;
+> +			}
+> +		} else {
+>   			larb_mmu->mmu &= ~MTK_SMI_MMU_EN(portid);
+> +		}
+>   	}
+>   }
+>   
 > 
-> > +                       }
-> > +               } else {
-> >                         larb_mmu->mmu &= ~MTK_SMI_MMU_EN(portid);
-> > +               }
-> >         }
-> >  }
-> >
-> > diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-> > index 9386aee..022bad9 100644
-> > --- a/drivers/iommu/mtk_iommu_v1.c
-> > +++ b/drivers/iommu/mtk_iommu_v1.c
-> > @@ -201,6 +201,7 @@ static void mtk_iommu_config(struct mtk_iommu_data *data,
-> >         struct mtk_smi_larb_iommu    *larb_mmu;
-> >         unsigned int                 larbid, portid;
-> >         struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
-> > +       struct device_link *link;
-> >         int i;
-> >
-> >         for (i = 0; i < fwspec->num_ids; ++i) {
-> > @@ -211,10 +212,19 @@ static void mtk_iommu_config(struct mtk_iommu_data *data,
-> >                 dev_dbg(dev, "%s iommu port: %d\n",
-> >                         enable ? "enable" : "disable", portid);
-> >
-> > -               if (enable)
-> > +               if (enable) {
-> >                         larb_mmu->mmu |= MTK_SMI_MMU_EN(portid);
-> > -               else
-> > +                       link = device_link_add(dev, larb_mmu->dev,
-> > +                                              DL_FLAG_PM_RUNTIME |
-> > +                                              DL_FLAG_AUTOREMOVE_CONSUMER);
-> > +                       if (!link) {
-> > +                               dev_err(dev, "Unable to link %s\n",
-> > +                                       dev_name(larb_mmu->dev));
-> > +                               return;
-> 
-> Same for this one.
-> 
-> > +                       }
-> > +               } else {
-> >                         larb_mmu->mmu &= ~MTK_SMI_MMU_EN(portid);
-> > +               }
-> >         }
-> >  }
-> >
-> > --
-> > 1.9.1
-> >
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
