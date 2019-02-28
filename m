@@ -1,45 +1,74 @@
-From: Yang Wei <albin_yang@163.com>
-Subject: [PATCH] iommu/mediatek: fix semicolon code style issue
-Date: Thu, 28 Feb 2019 22:45:01 +0800
-Message-ID: <1551365101-4397-1-git-send-email-albin_yang@163.com>
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Subject: Re: [PATCH v3 2/2] PCI: mediatek: Enlarge PCIe2AHB window size to
+ support 4GB DRAM
+Date: Thu, 28 Feb 2019 17:42:57 +0000
+Message-ID: <20190228174257.GA26501@e107981-ln.cambridge.arm.com>
+References: <1548999367-11733-1-git-send-email-honghui.zhang@mediatek.com>
+ <1548999367-11733-3-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: iommu@lists.linux-foundation.org
-Cc: joro@8bytes.org, albin_yang@163.com, yang.wei9@zte.com.cn, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1548999367-11733-3-git-send-email-honghui.zhang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: honghui.zhang@mediatek.com
+Cc: bhelgaas@google.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com, rafael.j.wysocki@intel.com, fred@fredlawl.com, poza@codeaurora.org, youlin.pei@mediatek.com, jianjun.wang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Yang Wei <yang.wei9@zte.com.cn>
+On Fri, Feb 01, 2019 at 01:36:07PM +0800, honghui.zhang@mediatek.com wrote:
+> From: Honghui Zhang <honghui.zhang@mediatek.com>
+> 
+> The PCIE_AXI_WINDOW0 defines the translate window size for the request
+> from EP side. Request outside of this window will be treated as
+> unsupported request.
+> 
+> Enlarge this window size from fls(0xffffffff) to 2^33 to support 8GB
+> translate address range then EP DMA is capable of fully access 4GB
+> DRAM range(physical DRAM is start from 0x40000000).
 
-Delete a superfluous semicolon in mtk_iommu_add_device().
+I have rewritten both patches logs with the aim of merging them even if
+it is quite late in the cycle, first you have to explain something to
+me.
 
-Signed-off-by: Yang Wei <yang.wei9@zte.com.cn>
----
- drivers/iommu/mtk_iommu_v1.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+fls(0xffffffff) = 0x1f, which by your logic -> 2^31
 
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index 7e0df67..52b01e3 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -474,7 +474,7 @@ static int mtk_iommu_add_device(struct device *dev)
- 		return err;
- 	}
- 
--	return iommu_device_link(&data->iommu, dev);;
-+	return iommu_device_link(&data->iommu, dev);
- }
- 
- static void mtk_iommu_remove_device(struct device *dev)
--- 
-2.7.4
+What does it mean given what you say above ? That PCI devices can't
+do _any_ DMA in the current setting (given the DRAM start address) ?
+
+Lorenzo
+
+> Reported-by: Bjorn Helgaas <bhelgaas@google.com>
+> Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+> ---
+>  drivers/pci/controller/pcie-mediatek.c | 8 +++++++-
+>  1 file changed, 7 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> index c42fe5c..0b6c728 100644
+> --- a/drivers/pci/controller/pcie-mediatek.c
+> +++ b/drivers/pci/controller/pcie-mediatek.c
+> @@ -90,6 +90,12 @@
+>  #define AHB2PCIE_SIZE(x)	((x) & GENMASK(4, 0))
+>  #define PCIE_AXI_WINDOW0	0x448
+>  #define WIN_ENABLE		BIT(7)
+> +/*
+> + * Define PCIe to AHB window size as 2^33 to support max 8GB address space
+> + * translate, support least 4GB DRAM size access from EP DMA(physical DRAM
+> + * start from 0x40000000).
+> + */
+> +#define PCIE2AHB_SIZE	0x21
+>  
+>  /* PCIe V2 configuration transaction header */
+>  #define PCIE_CFG_HEADER0	0x460
+> @@ -713,7 +719,7 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+>  	writel(val, port->base + PCIE_AHB_TRANS_BASE0_H);
+>  
+>  	/* Set PCIe to AXI translation memory space.*/
+> -	val = fls(0xffffffff) | WIN_ENABLE;
+> +	val = PCIE2AHB_SIZE | WIN_ENABLE;
+>  	writel(val, port->base + PCIE_AXI_WINDOW0);
+>  
+>  	return 0;
+> -- 
+> 2.6.4
+> 
