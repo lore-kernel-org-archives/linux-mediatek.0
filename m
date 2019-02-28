@@ -1,56 +1,172 @@
-From: Kalle Valo <kvalo@codeaurora.org>
-Subject: Re: [PATCH 3/5] mt76: fix a leaked reference by adding a missing
- of_node_put
-Date: Thu, 28 Feb 2019 08:39:04 +0000 (UTC)
-Message-ID: <20190228083905.4B85260EA5@smtp.codeaurora.org>
-References: <1550819742-32155-3-git-send-email-wen.yang99@zte.com.cn>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Applied "ASoC: mediatek: btcvsd add loopback" to the asoc tree
+Date: Thu, 28 Feb 2019 14:46:31 +0000 (GMT)
+Message-ID: <20190228144631.1CCFF1127605@debutante.sirena.org.uk>
+References: <1551231044-24062-1-git-send-email-kaichieh.chuang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1550819742-32155-3-git-send-email-wen.yang99@zte.com.cn>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-Cc: wang.yi59@zte.com.cn, andrew@lunn.ch, alexandre.belloni@bootlin.com, f.fainelli@gmail.com, michal.simek@xilinx.com, netdev@vger.kernel.org, linus.walleij@linaro.org, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, davem@davemloft.net, Wen Yang <wen.yang99@zte.com.cn>, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, anirudh@xilinx.com, lorenzo.bianconi83@gmail.com, UNGLinuxDriver@microchip.com, John.Linn@xilinx.com, vivien.didelot@gmail.com, linux-arm-kernel@lists.infradead.org, nbd@nbd.name
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1551231044-24062-1-git-send-email-kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, stephen.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Wen Yang <wen.yang99@zte.com.cn> wrote:
+The patch
 
-> The call to of_find_node_by_phandle returns a node pointer with refcount
-> incremented thus it must be explicitly decremented after the last
-> usage.
-> 
-> Detected by coccinelle with the following warnings:
-> ./drivers/net/wireless/mediatek/mt76/eeprom.c:58:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 48, but without a corresponding object release within this function.
-> ./drivers/net/wireless/mediatek/mt76/eeprom.c:61:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 48, but without a corresponding object release within this function.
-> ./drivers/net/wireless/mediatek/mt76/eeprom.c:67:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 48, but without a corresponding object release within this function.
-> ./drivers/net/wireless/mediatek/mt76/eeprom.c:70:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 48, but without a corresponding object release within this function.
-> ./drivers/net/wireless/mediatek/mt76/eeprom.c:72:1-7: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 48, but without a corresponding object release within this function.
-> 
-> Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
-> Cc: Felix Fietkau <nbd@nbd.name>
-> Cc: Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>
-> Cc: Kalle Valo <kvalo@codeaurora.org>
-> Cc: "David S. Miller" <davem@davemloft.net>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: linux-wireless@vger.kernel.org
-> Cc: netdev@vger.kernel.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-mediatek@lists.infradead.org
-> Cc: linux-kernel@vger.kernel.org
+   ASoC: mediatek: btcvsd add loopback
 
-Patch applied to wireless-drivers-next.git, thanks.
+has been applied to the asoc tree at
 
-34e022d8b780 mt76: fix a leaked reference by adding a missing of_node_put
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
 
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+>From f060f46f09bb920d1e0d436d654996033b856e26 Mon Sep 17 00:00:00 2001
+From: KaiChieh Chuang <kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Date: Wed, 27 Feb 2019 09:30:44 +0800
+Subject: [PATCH] ASoC: mediatek: btcvsd add loopback
+
+add direct loopback path from rx to tx
+
+Signed-off-by: KaiChieh Chuang <kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+---
+ sound/soc/mediatek/common/mtk-btcvsd.c | 69 +++++++++++++++++++++++++-
+ 1 file changed, 68 insertions(+), 1 deletion(-)
+
+diff --git a/sound/soc/mediatek/common/mtk-btcvsd.c b/sound/soc/mediatek/common/mtk-btcvsd.c
+index 1b8bcdaf02d1..9a163d7064d1 100644
+--- a/sound/soc/mediatek/common/mtk-btcvsd.c
++++ b/sound/soc/mediatek/common/mtk-btcvsd.c
+@@ -49,6 +49,7 @@ enum bt_sco_state {
+ 	BT_SCO_STATE_IDLE,
+ 	BT_SCO_STATE_RUNNING,
+ 	BT_SCO_STATE_ENDING,
++	BT_SCO_STATE_LOOPBACK,
+ };
+ 
+ enum bt_sco_direct {
+@@ -486,7 +487,8 @@ static irqreturn_t mtk_btcvsd_snd_irq_handler(int irq_id, void *dev)
+ 	if (bt->rx->state != BT_SCO_STATE_RUNNING &&
+ 	    bt->rx->state != BT_SCO_STATE_ENDING &&
+ 	    bt->tx->state != BT_SCO_STATE_RUNNING &&
+-	    bt->tx->state != BT_SCO_STATE_ENDING) {
++	    bt->tx->state != BT_SCO_STATE_ENDING &&
++	    bt->tx->state != BT_SCO_STATE_LOOPBACK) {
+ 		dev_warn(bt->dev, "%s(), in idle state: rx->state: %d, tx->state: %d\n",
+ 			 __func__, bt->rx->state, bt->tx->state);
+ 		goto irq_handler_exit;
+@@ -512,6 +514,42 @@ static irqreturn_t mtk_btcvsd_snd_irq_handler(int irq_id, void *dev)
+ 	buf_cnt_tx = btsco_packet_info[packet_type][2];
+ 	buf_cnt_rx = btsco_packet_info[packet_type][3];
+ 
++	if (bt->tx->state == BT_SCO_STATE_LOOPBACK) {
++		u8 *src, *dst;
++		unsigned long connsys_addr_rx, ap_addr_rx;
++		unsigned long connsys_addr_tx, ap_addr_tx;
++
++		connsys_addr_rx = *bt->bt_reg_pkt_r;
++		ap_addr_rx = (unsigned long)bt->bt_sram_bank2_base +
++			     (connsys_addr_rx & 0xFFFF);
++
++		connsys_addr_tx = *bt->bt_reg_pkt_w;
++		ap_addr_tx = (unsigned long)bt->bt_sram_bank2_base +
++			     (connsys_addr_tx & 0xFFFF);
++
++		if (connsys_addr_tx == 0xdeadfeed ||
++		    connsys_addr_rx == 0xdeadfeed) {
++			/* bt return 0xdeadfeed if read reg during bt sleep */
++			dev_warn(bt->dev, "%s(), connsys_addr_tx == 0xdeadfeed\n",
++				 __func__);
++			goto irq_handler_exit;
++		}
++
++		src = (u8 *)ap_addr_rx;
++		dst = (u8 *)ap_addr_tx;
++
++		mtk_btcvsd_snd_data_transfer(BT_SCO_DIRECT_BT2ARM, src,
++					     bt->tx->temp_packet_buf,
++					     packet_length,
++					     packet_num);
++		mtk_btcvsd_snd_data_transfer(BT_SCO_DIRECT_ARM2BT,
++					     bt->tx->temp_packet_buf, dst,
++					     packet_length,
++					     packet_num);
++		bt->rx->rw_cnt++;
++		bt->tx->rw_cnt++;
++	}
++
+ 	if (bt->rx->state == BT_SCO_STATE_RUNNING ||
+ 	    bt->rx->state == BT_SCO_STATE_ENDING) {
+ 		if (bt->rx->xrun) {
+@@ -1067,6 +1105,33 @@ static int btcvsd_band_set(struct snd_kcontrol *kcontrol,
+ 	return 0;
+ }
+ 
++static int btcvsd_loopback_get(struct snd_kcontrol *kcontrol,
++			       struct snd_ctl_elem_value *ucontrol)
++{
++	struct snd_soc_component *cmpnt = snd_soc_kcontrol_component(kcontrol);
++	struct mtk_btcvsd_snd *bt = snd_soc_component_get_drvdata(cmpnt);
++	bool lpbk_en = bt->tx->state == BT_SCO_STATE_LOOPBACK;
++
++	ucontrol->value.integer.value[0] = lpbk_en;
++	return 0;
++}
++
++static int btcvsd_loopback_set(struct snd_kcontrol *kcontrol,
++			       struct snd_ctl_elem_value *ucontrol)
++{
++	struct snd_soc_component *cmpnt = snd_soc_kcontrol_component(kcontrol);
++	struct mtk_btcvsd_snd *bt = snd_soc_component_get_drvdata(cmpnt);
++
++	if (ucontrol->value.integer.value[0]) {
++		mtk_btcvsd_snd_set_state(bt, bt->tx, BT_SCO_STATE_LOOPBACK);
++		mtk_btcvsd_snd_set_state(bt, bt->rx, BT_SCO_STATE_LOOPBACK);
++	} else {
++		mtk_btcvsd_snd_set_state(bt, bt->tx, BT_SCO_STATE_RUNNING);
++		mtk_btcvsd_snd_set_state(bt, bt->rx, BT_SCO_STATE_RUNNING);
++	}
++	return 0;
++}
++
+ static int btcvsd_tx_mute_get(struct snd_kcontrol *kcontrol,
+ 			      struct snd_ctl_elem_value *ucontrol)
+ {
+@@ -1202,6 +1267,8 @@ static int btcvsd_tx_timestamp_get(struct snd_kcontrol *kcontrol,
+ static const struct snd_kcontrol_new mtk_btcvsd_snd_controls[] = {
+ 	SOC_ENUM_EXT("BTCVSD Band", btcvsd_enum[0],
+ 		     btcvsd_band_get, btcvsd_band_set),
++	SOC_SINGLE_BOOL_EXT("BTCVSD Loopback Switch", 0,
++			    btcvsd_loopback_get, btcvsd_loopback_set),
+ 	SOC_SINGLE_BOOL_EXT("BTCVSD Tx Mute Switch", 0,
+ 			    btcvsd_tx_mute_get, btcvsd_tx_mute_set),
+ 	SOC_SINGLE_BOOL_EXT("BTCVSD Tx Irq Received Switch", 0,
 -- 
-https://patchwork.kernel.org/patch/10825315/
-
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+2.20.1
