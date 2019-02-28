@@ -1,29 +1,32 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/6] dt-bindings: net: bluetooth: add support for
- MediaTek MT7663U and MT7668U UART devices
-Date: Thu, 28 Feb 2019 12:35:43 -0600
-Message-ID: <20190228183543.GA4454@bogus>
-References: <cover.1550184473.git.sean.wang@mediatek.com>
- <c31b9ed0f2c711f53ad88c96f2d0a1bd22d9de58.1550184473.git.sean.wang@mediatek.com>
+Subject: Re: [PATCH 1/3] dt-bindings: mediatek: update bindings for MT7629 SoC
+Date: Thu, 28 Feb 2019 12:43:11 -0600
+Message-ID: <20190228184311.GA15417@bogus>
+References: <56a2c38c9efa41be940858e19501fe07fbd5120e.1550233614.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <c31b9ed0f2c711f53ad88c96f2d0a1bd22d9de58.1550184473.git.sean.wang@mediatek.com>
+In-Reply-To: <56a2c38c9efa41be940858e19501fe07fbd5120e.1550233614.git.ryder.lee@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, marcel@holtmann.org, johan.hedberg@gmail.com, devicetree@vger.kernel.org, linux-bluetooth@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
+To: Ryder Lee <ryder.lee@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Weijie Gao <weijie.gao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Marc Zyngier <marc.zyngier@arm.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 15 Feb 2019 07:19:33 +0800, <sean.wang@mediatek.com> wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
+On Sun, 17 Feb 2019 21:50:30 +0800, Ryder Lee wrote:
+> From: Ryder Lee <ryder.lee@mediatek.com>
 > 
-> Update binding document with adding support of MT7663U and MT7668U UART
-> devices to mediatek-bluetooth.
+> This updates bindings for MT7629 SoC, which includes very basic items
+> such as system timer, UART, sysirq and scpsys unit.
 > 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> Cc: Marc Zyngier <marc.zyngier@arm.com>
+> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 > ---
->  .../bindings/net/mediatek-bluetooth.txt       | 64 +++++++++++++++++++
->  1 file changed, 64 insertions(+)
+>  .../devicetree/bindings/interrupt-controller/mediatek,sysirq.txt     | 5 +++--
+>  Documentation/devicetree/bindings/serial/mtk-uart.txt                | 3 ++-
+>  Documentation/devicetree/bindings/soc/mediatek/scpsys.txt            | 3 ++-
+>  3 files changed, 7 insertions(+), 4 deletions(-)
 > 
 
 Reviewed-by: Rob Herring <robh@kernel.org>
