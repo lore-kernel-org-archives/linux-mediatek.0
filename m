@@ -1,37 +1,366 @@
-From: Seiya Wang <seiya.wang@mediatek.com>
-Subject: Re: [PATCH v2 2/2] clk: mediatek: correct cpu clock name for MT8173
- SoC
-Date: Thu, 28 Feb 2019 10:03:37 +0800
-Message-ID: <1551319417.3477.0.camel@mtksdccf07>
-References: <20190225065112.3400-1-seiya.wang@mediatek.com>
-         <20190225065112.3400-2-seiya.wang@mediatek.com>
-         <155120509627.260864.5936412356126577519@swboyd.mtv.corp.google.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [RFC PATCH V0 7/7] [media] platform: mtk-isp: Add Mediatek DIP
+ driver
+Date: Wed, 27 Feb 2019 19:24:13 -0800
+Message-ID: <20190228032411.GA84890@google.com>
+References: <1549020091-42064-1-git-send-email-frederic.chen@mediatek.com>
+ <1549020091-42064-8-git-send-email-frederic.chen@mediatek.com>
+ <20190207190824.GA98164@google.com>
+ <1550756198.11724.86.camel@mtksdccf07>
+ <1550902734.18654.36.camel@mtksdccf07>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <155120509627.260864.5936412356126577519@swboyd.mtv.corp.google.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <1550902734.18654.36.camel@mtksdccf07>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Frederic Chen <frederic.chen@mediatek.com>
+Cc: Sean Cheng =?utf-8?B?KOmEreaYh+W8mCk=?= <Sean.Cheng@mediatek.com>, "laurent.pinchart+renesas@ideasonboard.com" <laurent.pinchart+renesas@ideasonboard.com>, Rynn Wu =?utf-8?B?KOWQs+iCsuaBqSk=?= <Rynn.Wu@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>, Holmes Chiou =?utf-8?B?KOmCseaMuik=?= <holmes.chiou@mediatek.com>, Jerry-ch Chen =?utf-8?B?KOmZs+aVrOaGsik=?= <Jerry-ch.Chen@mediatek.com>, "tfiga@chromium.org" <tfiga@chromium.org>, Jungo Lin =?utf-8?B?KOael+aYjuS/iik=?= <jungo.lin@mediatek.com>, Sj Huang =?utf-8?B?KOm7g+S/oeeSiyk=?= <sj.huang@mediatek.com>, "hans.verkuil@cisco.com" <hans.verkuil@cisco.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, Christie Yu =?utf-8?B?KOa4uOmbheaDoCk=?= <christie.yu@mediatek.com>, "mchehab@kernel.org" <mchehab@kernel.org>, linux-arm-kernel@
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-02-26 at 10:18 -0800, Stephen Boyd wrote:
-> Quoting Seiya Wang (2019-02-24 22:51:12)
-> > diff --git a/include/dt-bindings/clock/mt8173-clk.h b/include/dt-bindings/clock/mt8173-clk.h
-> > index 8aea623dd518..76e4e5b65353 100644
-> > --- a/include/dt-bindings/clock/mt8173-clk.h
-> > +++ b/include/dt-bindings/clock/mt8173-clk.h
-> > @@ -194,7 +194,8 @@
-> >  #define CLK_INFRA_PMICWRAP             11
-> >  #define CLK_INFRA_CLK_13M              12
-> >  #define CLK_INFRA_CA53SEL               13
-> > -#define CLK_INFRA_CA57SEL               14
-> > +#define CLK_INFRA_CA57SEL               14 /* Deprecated. Don't use it. */
-> > +#define CLK_INFRA_CA72SEL               14
-> 
-> Also, please send a followup patch to remove the deprecated define later
-> when the dts file is fixed up.
-> 
+Hi Frederic,
 
-Sure. Thank you so much~
+On Sat, Feb 23, 2019 at 02:18:54PM +0800, Frederic Chen wrote:
+> Dear Brian,
+> 
+> I appreciate your comments. I'm really sorry for the delay in responding
+> to the comments due to some mail subscribing failed issue inside my company.
+
+No problem.
+
+> On Thu, 2019-02-21 at 21:36 +0800, Jungo Lin wrote:
+> > On Thu, 2019-02-07 at 11:08 -0800, Brian Norris wrote:
+> > > On Fri, Feb 01, 2019 at 07:21:31PM +0800, Frederic Chen wrote:
+
+> > > > +static void dip_submit_worker(struct work_struct *work)
+> > > > +{
+> > > > +	struct mtk_dip_submit_work *dip_submit_work =
+> > > > +		container_of(work, struct mtk_dip_submit_work, frame_work);
+> > > > +
+> > > > +	struct mtk_dip_hw_ctx  *dip_ctx = dip_submit_work->dip_ctx;
+> > > > +	struct mtk_dip_work *dip_work;
+> > > > +	struct dip_device *dip_dev;
+> > > > +	struct dip_subframe *buf;
+> > > > +	u32 len, num;
+> > > > +	int ret;
+> > > > +
+> > > > +	dip_dev = container_of(dip_ctx, struct dip_device, dip_ctx);
+> > > > +	num  = atomic_read(&dip_ctx->num_composing);
+> > > > +
+> > > > +	mutex_lock(&dip_ctx->dip_worklist.queuelock);
+> > > > +	dip_work = list_first_entry(&dip_ctx->dip_worklist.queue,
+> > > > +				    struct mtk_dip_work, list_entry);
+> > > > +	mutex_unlock(&dip_ctx->dip_worklist.queuelock);
+> > > 
+> > > I see you grab the head of the list here, but then you release the lock.
+> > > Then you later assume that reference is still valid, throughout this
+> > > function.
+> > > 
+> > > That's usually true, because you only remove/delete entries from this
+> > > list within this same workqueue (at the end of this function). But it's
+> > > not true in dip_release_context() (which doesn't even grab the lock,
+> > > BTW).
+> > > 
+> > > I think there could be several ways to solve this, but judging by how
+> > > this list entry is used...couldn't you just remove it from the list
+> > > here, while holding the lock? Then you only have to kfree() it when
+> > > you're done under the free_work_list label.
+> > > 
+> 
+> I see. I would like to modify the codes as following:
+> 
+> mutex_lock(&dip_ctx->dip_useridlist.queuelock);
+
+You missed the part where you get the head of the list:
+
+	dip_work = list_first_entry(...);
+
+But otherwise mostly looks OK.
+
+> dip_work->user_id->num--;
+
+Why do you need to do that with the queuelock held? Once you remove this
+work item from the list (safely under the lock), shouldn't you be the
+only one accessing it?
+
+(Note, I don't actually know what that 'num' really means. I'm just
+looking at basic driver mechanics.)
+
+> list_del(&dip_work->list_entry);
+> dip_ctx->dip_worklist.queue_cnt--;
+> len = dip_ctx->dip_worklist.queue_cnt;
+> mutex_unlock(&dip_ctx->dip_useridlist.queuelock);
+> 
+> goto free_work_list;
+> 
+> /* ...... */
+> 
+> free_work_list:
+> 	kfree(dip_work);
+> 
+> > > > +
+> > > > +	mutex_lock(&dip_ctx->dip_useridlist.queuelock);
+> > > > +	if (dip_work->user_id->state == DIP_STATE_STREAMOFF) {
+> > > > +		mutex_unlock(&dip_ctx->dip_useridlist.queuelock);
+> > > > +
+> > > > +		dip_work->frameparams.state = FRAME_STATE_STREAMOFF;
+> > > > +		call_mtk_dip_ctx_finish(dip_dev, &dip_work->frameparams);
+> > > > +
+> > > > +		mutex_lock(&dip_ctx->dip_useridlist.queuelock);
+> > > > +		dip_work->user_id->num--;
+> > > > +		dev_dbg(&dip_dev->pdev->dev,
+> > > > +			"user_id(%x) is streamoff and num: %d, frame_no(%d) index: %x\n",
+> > > > +			dip_work->user_id->id, dip_work->user_id->num,
+> > > > +			dip_work->frameparams.frame_no,
+> > > > +			dip_work->frameparams.index);
+> > > > +		mutex_unlock(&dip_ctx->dip_useridlist.queuelock);
+> > > > +
+> > > > +		goto free_work_list;
+> > > > +	}
+> > > > +	mutex_unlock(&dip_ctx->dip_useridlist.queuelock);
+> > > > +
+> > > > +	while (num >= DIP_COMPOSING_MAX_NUM) {
+> > > > +		ret = wait_event_interruptible_timeout
+> > > > +			(dip_ctx->composing_wq,
+> > > > +			 (num < DIP_COMPOSING_MAX_NUM),
+> > > > +			 msecs_to_jiffies(DIP_COMPOSING_WQ_TIMEOUT));
+> > > > +
+> > > > +		if (ret == -ERESTARTSYS)
+> > > > +			dev_err(&dip_dev->pdev->dev,
+> > > > +				"interrupted by a signal!\n");
+> > > > +		else if (ret == 0)
+> > > > +			dev_dbg(&dip_dev->pdev->dev,
+> > > > +				"timeout frame_no(%d), num: %d\n",
+> > > > +				dip_work->frameparams.frame_no, num);
+> > > > +		else
+> > > > +			dev_dbg(&dip_dev->pdev->dev,
+> > > > +				"wakeup frame_no(%d), num: %d\n",
+> > > > +				dip_work->frameparams.frame_no, num);
+> > > > +
+> > > > +		num = atomic_read(&dip_ctx->num_composing);
+> > > > +	};
+> > > > +
+> > > > +	mutex_lock(&dip_ctx->dip_freebufferlist.queuelock);
+> > > > +	if (list_empty(&dip_ctx->dip_freebufferlist.queue)) {
+> > > > +		mutex_unlock(&dip_ctx->dip_freebufferlist.queuelock);
+> > > > +
+> > > > +		dev_err(&dip_dev->pdev->dev,
+> > > > +			"frame_no(%d) index: %x no free buffer: %d\n",
+> > > > +			dip_work->frameparams.frame_no,
+> > > > +			dip_work->frameparams.index,
+> > > > +			dip_ctx->dip_freebufferlist.queue_cnt);
+> > > > +
+> > > > +		/* Call callback to notify V4L2 common framework
+> > > > +		 * for failure of enqueue
+> > > > +		 */
+> > > > +		dip_work->frameparams.state = FRAME_STATE_ERROR;
+> > > > +		call_mtk_dip_ctx_finish(dip_dev, &dip_work->frameparams);
+> > > > +
+> > > > +		mutex_lock(&dip_ctx->dip_useridlist.queuelock);
+> > > > +		dip_work->user_id->num--;
+> > > > +		mutex_unlock(&dip_ctx->dip_useridlist.queuelock);
+> > > > +
+> > > > +		goto free_work_list;
+> > > > +	}
+> > > > +
+> > > > +	buf = list_first_entry(&dip_ctx->dip_freebufferlist.queue,
+> > > > +			       struct dip_subframe,
+> > > > +			       list_entry);
+> > > > +	list_del(&buf->list_entry);
+> > > > +	dip_ctx->dip_freebufferlist.queue_cnt--;
+> > > > +	mutex_unlock(&dip_ctx->dip_freebufferlist.queuelock);
+> > > > +
+> > > > +	mutex_lock(&dip_ctx->dip_usedbufferlist.queuelock);
+> > > > +	list_add_tail(&buf->list_entry, &dip_ctx->dip_usedbufferlist.queue);
+> > > > +	dip_ctx->dip_usedbufferlist.queue_cnt++;
+> > > > +	mutex_unlock(&dip_ctx->dip_usedbufferlist.queuelock);
+> > > > +
+> > > > +	memcpy(&dip_work->frameparams.subfrm_data,
+> > > > +	       &buf->buffer, sizeof(buf->buffer));
+> > > > +
+> > > > +	memset((char *)buf->buffer.va, 0, DIP_SUB_FRM_SZ);
+> > > > +
+> > > > +	memcpy(&dip_work->frameparams.config_data,
+> > > > +	       &buf->config_data, sizeof(buf->config_data));
+> > > > +
+> > > > +	memset((char *)buf->config_data.va, 0, DIP_COMP_SZ);
+> > > > +
+> > > > +	if (dip_work->frameparams.tuning_data.pa == 0) {
+> > > > +		dev_dbg(&dip_dev->pdev->dev,
+> > > > +			"frame_no(%d) has no tuning_data\n",
+> > > > +			dip_work->frameparams.frame_no);
+> > > > +
+> > > > +		memcpy(&dip_work->frameparams.tuning_data,
+> > > > +		       &buf->tuning_buf, sizeof(buf->tuning_buf));
+> > > > +
+> > > > +		memset((char *)buf->tuning_buf.va, 0, DIP_TUNING_SZ);
+> > > > +		/* When user enqueued without tuning buffer,
+> > > > +		 * it would use driver internal buffer.
+> > > > +		 * So, tuning_data.va should be 0
+> > > > +		 */
+> > > > +		dip_work->frameparams.tuning_data.va = 0;
+> > > > +	}
+> > > > +
+> > > > +	dip_work->frameparams.drv_data = (u64)dip_ctx;
+> > > > +	dip_work->frameparams.state = FRAME_STATE_COMPOSING;
+> > > > +
+> > > > +	memcpy((void *)buf->frameparam.va, &dip_work->frameparams,
+> > > > +	       sizeof(dip_work->frameparams));
+> > > > +
+> > > > +	dip_send(dip_ctx->vpu_pdev, IPI_DIP_FRAME,
+> > > > +		 (void *)&dip_work->frameparams,
+> > > > +		 sizeof(dip_work->frameparams), 0);
+> > > > +	num = atomic_inc_return(&dip_ctx->num_composing);
+> > > > +
+> > > > +free_work_list:
+> > > > +
+> > > > +	mutex_lock(&dip_ctx->dip_worklist.queuelock);
+> > > > +	list_del(&dip_work->list_entry);
+> > > > +	dip_ctx->dip_worklist.queue_cnt--;
+> > > > +	len = dip_ctx->dip_worklist.queue_cnt;
+> > > > +	mutex_unlock(&dip_ctx->dip_worklist.queuelock);
+> > > > +
+> > > > +	dev_dbg(&dip_dev->pdev->dev,
+> > > > +		"frame_no(%d) index: %x, worklist count: %d, composing num: %d\n",
+> > > > +		dip_work->frameparams.frame_no, dip_work->frameparams.index,
+> > > > +		len, num);
+> > > > +
+> > > > +	kfree(dip_work);
+> > > > +}
+
+
+> > > > +int dip_release_context(struct dip_device *dip_dev)
+> > > 
+> > > Should be static.
+> > > 
+> 
+> I will change it to static.
+> 
+> > > > +{
+> > > > +	u32 i = 0;
+> > > > +	struct dip_subframe *buf, *tmpbuf;
+> > > > +	struct mtk_dip_work *dip_work, *tmp_work;
+> > > > +	struct dip_user_id  *dip_userid, *tmp_id;
+> > > > +	struct mtk_dip_hw_ctx *dip_ctx;
+> > > > +
+> > > > +	dip_ctx = &dip_dev->dip_ctx;
+> > > > +	dev_dbg(&dip_dev->pdev->dev, "composer work queue = %d\n",
+> > > > +		dip_ctx->dip_worklist.queue_cnt);
+> > > > +
+> > > > +	list_for_each_entry_safe(dip_work, tmp_work,
+> > > > +				 &dip_ctx->dip_worklist.queue,
+> > > > +				 list_entry) {
+> > > 
+> > > Shouldn't you be holding the mutex for this? Or alternatively, cancel
+> > > any outstanding work and move the flush_workqueue()/destroy_workqueue()
+> > > up.
+> > > 
+> > > Similar questions for the other lists we're going through here.
+> > > 
+> 
+> We missed the mutex holding here. I would like to change the codes as following:
+> 
+> mutex_lock(&dip_ctx->dip_worklist.queuelock);
+> list_for_each_entry_safe(dip_work, tmp_work,
+> 			 &dip_ctx->dip_worklist.queue,
+> 			 list_entry) {
+> 	list_del(&dip_work->list_entry);
+> 	dip_ctx->dip_worklist.queue_cnt--;
+> 	kfree(dip_work);
+> }
+> mutex_unlock(&dip_ctx->dip_worklist.queuelock);
+> 
+> I will also modify dip_useridlist and dip_ctx->dip_freebufferlist 
+> parts like dip_ctx->dip_worklist.
+
+Seems about right.
+
+Brian
+
+> > > > +		list_del(&dip_work->list_entry);
+> > > > +		dev_dbg(&dip_dev->pdev->dev, "dip work frame no: %d\n",
+> > > > +			dip_work->frameparams.frame_no);
+> > > > +		kfree(dip_work);
+> > > > +		dip_ctx->dip_worklist.queue_cnt--;
+> > > > +	}
+> > > > +
+> > > > +	if (dip_ctx->dip_worklist.queue_cnt != 0)
+> > > > +		dev_dbg(&dip_dev->pdev->dev,
+> > > > +			"dip_worklist is not empty (%d)\n",
+> > > > +			dip_ctx->dip_worklist.queue_cnt);
+> > > > +
+> > > > +	list_for_each_entry_safe(dip_userid, tmp_id,
+> > > > +				 &dip_ctx->dip_useridlist.queue,
+> > > > +				 list_entry) {
+> > > > +		list_del(&dip_userid->list_entry);
+> > > > +		dev_dbg(&dip_dev->pdev->dev, "dip user id: %x\n",
+> > > > +			dip_userid->id);
+> > > > +		kfree(dip_userid);
+> > > > +		dip_ctx->dip_useridlist.queue_cnt--;
+> > > > +	}
+> > > > +
+> > > > +	if (dip_ctx->dip_useridlist.queue_cnt != 0)
+> > > > +		dev_dbg(&dip_dev->pdev->dev,
+> > > > +			"dip_useridlist is not empty (%d)\n",
+> > > > +			dip_ctx->dip_useridlist.queue_cnt);
+> > > > +
+> > > > +	flush_workqueue(dip_ctx->mdpcb_workqueue);
+> > > > +	destroy_workqueue(dip_ctx->mdpcb_workqueue);
+> > > > +	dip_ctx->mdpcb_workqueue = NULL;
+> > > > +
+> > > > +	flush_workqueue(dip_ctx->composer_wq);
+> > > > +	destroy_workqueue(dip_ctx->composer_wq);
+> > > > +	dip_ctx->composer_wq = NULL;
+> > > > +
+> > > > +	atomic_set(&dip_ctx->num_composing, 0);
+> > > > +	atomic_set(&dip_ctx->num_running, 0);
+> > > > +
+> > > > +	kthread_stop(dip_ctx->dip_runner_thread.thread);
+> > > > +	dip_ctx->dip_runner_thread.thread = NULL;
+> > > > +
+> > > > +	atomic_set(&dip_ctx->dip_user_cnt, 0);
+> > > > +	atomic_set(&dip_ctx->dip_stream_cnt, 0);
+> > > > +	atomic_set(&dip_ctx->dip_enque_cnt, 0);
+> > > > +
+> > > > +	/* All the buffer should be in the freebufferlist when release */
+> > > > +	list_for_each_entry_safe(buf, tmpbuf,
+> > > > +				 &dip_ctx->dip_freebufferlist.queue,
+> > > > +				 list_entry) {
+> > > > +		struct sg_table *sgt = &buf->table;
+> > > > +
+> > > > +		dev_dbg(&dip_dev->pdev->dev,
+> > > > +			"buf pa (%d): %x\n", i, buf->buffer.pa);
+> > > > +		dip_ctx->dip_freebufferlist.queue_cnt--;
+> > > > +		dma_unmap_sg_attrs(&dip_dev->pdev->dev, sgt->sgl,
+> > > > +				   sgt->orig_nents,
+> > > > +				   DMA_BIDIRECTIONAL, DMA_ATTR_SKIP_CPU_SYNC);
+> > > > +		sg_free_table(sgt);
+> > > > +		list_del(&buf->list_entry);
+> > > > +		kfree(buf);
+> > > > +		buf = NULL;
+> > > > +		i++;
+> > > > +	}
+> > > > +
+> > > > +	if (dip_ctx->dip_freebufferlist.queue_cnt != 0 &&
+> > > > +	    i != DIP_SUB_FRM_DATA_NUM)
+> > > > +		dev_err(&dip_dev->pdev->dev,
+> > > > +			"dip_freebufferlist is not empty (%d/%d)\n",
+> > > > +			dip_ctx->dip_freebufferlist.queue_cnt, i);
+> > > > +
+> > > > +	mutex_destroy(&dip_ctx->dip_useridlist.queuelock);
+> > > > +	mutex_destroy(&dip_ctx->dip_worklist.queuelock);
+> > > > +	mutex_destroy(&dip_ctx->dip_usedbufferlist.queuelock);
+> > > > +	mutex_destroy(&dip_ctx->dip_freebufferlist.queuelock);
+> > > > +
+> > > > +	return 0;
+> > > > +}
+> > > > +
