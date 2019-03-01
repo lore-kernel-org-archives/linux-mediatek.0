@@ -1,35 +1,44 @@
-From: Joerg Roedel <joro@8bytes.org>
-Subject: Re: [PATCH] iommu/mediatek: fix semicolon code style issue
-Date: Fri, 1 Mar 2019 10:18:22 +0100
-Message-ID: <20190301091821.GE1594@8bytes.org>
-References: <1551365101-4397-1-git-send-email-albin_yang@163.com>
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Subject: Re: [PATCH v3 0/2] PCI: mediatek: enable whole MMIO range and
+ enlarge the PCIe2AHB window size
+Date: Fri, 1 Mar 2019 11:30:26 +0000
+Message-ID: <20190301113026.GA17669@e107981-ln.cambridge.arm.com>
+References: <1548999367-11733-1-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1551365101-4397-1-git-send-email-albin_yang@163.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Yang Wei <albin_yang@163.com>
-Cc: matthias.bgg@gmail.com, yang.wei9@zte.com.cn, iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <1548999367-11733-1-git-send-email-honghui.zhang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: honghui.zhang@mediatek.com
+Cc: bhelgaas@google.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com, rafael.j.wysocki@intel.com, fred@fredlawl.com, poza@codeaurora.org, youlin.pei@mediatek.com, jianjun.wang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Feb 28, 2019 at 10:45:01PM +0800, Yang Wei wrote:
-> From: Yang Wei <yang.wei9@zte.com.cn>
+On Fri, Feb 01, 2019 at 01:36:05PM +0800, honghui.zhang@mediatek.com wrote:
+> From: Honghui Zhang <honghui.zhang@mediatek.com>
 > 
-> Delete a superfluous semicolon in mtk_iommu_add_device().
+> Two patches:
+> patch 1 enable whole MMIO range which also fix the complain of scripts/coccinelle/api/resource_size.cocci
+> patch 2 enlarge the PCIe2AHB window size to support fully access of 4GB DRAM from EP DMA.
 > 
-> Signed-off-by: Yang Wei <yang.wei9@zte.com.cn>
-> ---
->  drivers/iommu/mtk_iommu_v1.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> v3:
+>  - update the changlog title for patch1 and update commit message following Bjorn's suggestion
+>  - move the "|" into the previous line.
+> 
+> v2:
+>  - Fix the checkpatch complains for patch 1.
+>  - update the commit message and change title of patch 1 for changelog conventions.
+>  - Add patch 2.
+> 
+> Honghui Zhang (2):
+>   PCI: mediatek: Enable the whole memory mapped IO range
+>   PCI: mediatek: Enlarge PCIe2AHB window size to support 4GB DRAM
+> 
+>  drivers/pci/controller/pcie-mediatek.c | 13 +++++++++----
+>  1 file changed, 9 insertions(+), 4 deletions(-)
 
-Applied, thanks.
+I have basically rewritten the commit logs and applied the
+patches to pci/mediatek for v5.1 (pending testing), please
+have a look.
+
+Lorenzo
