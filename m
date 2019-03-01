@@ -1,260 +1,310 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH] usb: introduce usb_ep_type_string() function
-Date: Fri, 1 Mar 2019 14:58:23 +0800
-Message-ID: <e2ff70a3608dce315b52aea710398ba79d0f6f93.1551422947.git.chunfeng.yun@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v3 6/7] phy: mediatek: Add UFS M-PHY driver
+Date: Fri, 1 Mar 2019 15:13:23 +0800
+Message-ID: <1551424403.2210.56.camel@mhfsdcap03>
+References: <1551252192-535-1-git-send-email-stanley.chu@mediatek.com>
+ <1551252192-535-8-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <balbi@kernel.org>, Mathias Nyman <mathias.nyman@intel.com>
-Cc: Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>, Matthias Brugger <matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Arnd Bergmann <arnd@arndb.de>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Alan Stern <stern@rowland.harvard.edu>, Roger Quadros <rogerq@ti.com>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, "Gustavo A. R. Silva" <gustavo@embeddedor.com>, Johan Hovold <johan@kernel.org>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Colin Ian King <colin.king@canonical.com>, Jaejoong Kim <climbbb.kim@gmail.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1551252192-535-8-git-send-email-stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org, linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, avri.altman-Sjgp3cTcYWE@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, liwei213-hv44wF8Li93QT0dZR+AlfA@public.gmane.org, alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, subhashj-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, vivek.gautam-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-In some places, the code prints a human-readable USB endpoint
-transfer type (e.g. "bulk"). This involves a switch statement
-sometimes wrapped around in ({ ... }) block leading to code
-repetition.
-To make this scenario easier, here introduces usb_ep_type_string()
-function, which returns a human-readable name of provided
-endpoint type.
-It also changes a few places switch was used to use this
-new function.
+Hi, Stanley
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/usb/common/common.c              | 16 ++++++++++++++++
- drivers/usb/core/endpoint.c              | 18 ++----------------
- drivers/usb/core/hcd.c                   | 17 ++---------------
- drivers/usb/dwc3/debugfs.c               | 23 ++++-------------------
- drivers/usb/gadget/udc/aspeed-vhub/epn.c |  6 +-----
- drivers/usb/gadget/udc/dummy_hcd.c       | 16 +---------------
- drivers/usb/host/xhci-trace.h            | 19 ++-----------------
- include/linux/usb/ch9.h                  |  8 ++++++++
- 8 files changed, 36 insertions(+), 87 deletions(-)
+On Wed, 2019-02-27 at 15:23 +0800, Stanley Chu wrote:
+> Add UFS M-PHY driver on MediaTek chipsets.
+> 
+> Signed-off-by: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  drivers/phy/mediatek/Kconfig       |   9 ++
+>  drivers/phy/mediatek/Makefile      |   1 +
+>  drivers/phy/mediatek/phy-mtk-ufs.c | 239 +++++++++++++++++++++++++++++
+>  3 files changed, 249 insertions(+)
+>  create mode 100644 drivers/phy/mediatek/phy-mtk-ufs.c
+> 
+> diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
+> index 8857d00b3c65..4a20110a511d 100644
+> --- a/drivers/phy/mediatek/Kconfig
+> +++ b/drivers/phy/mediatek/Kconfig
+> @@ -21,3 +21,12 @@ config PHY_MTK_XSPHY
+>  	  Enable this to support the SuperSpeedPlus XS-PHY transceiver for
+>  	  USB3.1 GEN2 controllers on MediaTek chips. The driver supports
+>  	  multiple USB2.0, USB3.1 GEN2 ports.
+> +
+> +config PHY_MTK_UFS
+> +	tristate "MediaTek UFS M-PHY driver"
+> +	depends on ARCH_MEDIATEK && OF
+> +	select GENERIC_PHY
+> +	help
+> +	  Support for UFS M-PHY on MediaTek chipsets. Enable this to provide
+> +	  vendor-specific initialization, power on and off flow of specified
+> +	  M-PHYs.
+> diff --git a/drivers/phy/mediatek/Makefile b/drivers/phy/mediatek/Makefile
+> index ee49edc97ee9..14e9aa0b8aa4 100644
+> --- a/drivers/phy/mediatek/Makefile
+> +++ b/drivers/phy/mediatek/Makefile
+> @@ -5,3 +5,4 @@
+>  
+>  obj-$(CONFIG_PHY_MTK_TPHY)		+= phy-mtk-tphy.o
+>  obj-$(CONFIG_PHY_MTK_XSPHY)		+= phy-mtk-xsphy.o
+> +obj-$(CONFIG_PHY_MTK_UFS)		+= phy-mtk-ufs.o
+> diff --git a/drivers/phy/mediatek/phy-mtk-ufs.c b/drivers/phy/mediatek/phy-mtk-ufs.c
+> new file mode 100644
+> index 000000000000..7375ad83af05
+> --- /dev/null
+> +++ b/drivers/phy/mediatek/phy-mtk-ufs.c
+> @@ -0,0 +1,239 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (C) 2019 MediaTek Inc.
+> + * Author: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> + */
+> +
+> +#include <linux/clk.h>
+> +#include <linux/delay.h>
+> +#include <linux/io.h>
+> +#include <linux/module.h>
+> +#include <linux/phy/phy.h>
+> +#include <linux/platform_device.h>
+> +
+> +/* mphy register and offsets */
+> +#define MP_GLB_DIG_8C               0x008C
+> +#define FRC_PLL_ISO_EN              BIT(8)
+> +#define PLL_ISO_EN                  BIT(9)
+> +#define FRC_FRC_PWR_ON              BIT(10)
+> +#define PLL_PWR_ON                  BIT(11)
+> +
+> +#define MP_LN_DIG_RX_9C             0xA09C
+> +#define FSM_DIFZ_FRC                BIT(18)
+> +
+> +#define MP_LN_DIG_RX_AC             0xA0AC
+> +#define FRC_RX_SQ_EN                BIT(0)
+> +#define RX_SQ_EN                    BIT(1)
+> +
+> +#define MP_LN_RX_44                 0xB044
+> +#define FRC_CDR_PWR_ON              BIT(17)
+> +#define CDR_PWR_ON                  BIT(18)
+> +#define FRC_CDR_ISO_EN              BIT(19)
+> +#define CDR_ISO_EN                  BIT(20)
+> +
+> +#define mphy_readl(phy, ofs) readl((phy)->mmio + (ofs))
+> +#define mphy_writel(phy, val, ofs) writel((val), (phy)->mmio + (ofs))
+> +
+> +struct ufs_mtk_phy {
+> +	struct device *dev;
+> +	void __iomem *mmio;
+> +	struct clk *mp_clk;
+> +	struct clk *unipro_clk;
+> +};
+> +
+> +static inline void mphy_set_bit(struct ufs_mtk_phy *phy, u32 reg, u32 ofs)
+> +{
+> +	u32 val;
+> +
+> +	val = mphy_readl(phy, reg);
+> +	val |= ofs;
+> +	mphy_writel(phy, val, reg);
+> +}
+> +
+> +static inline void mphy_clr_bit(struct ufs_mtk_phy *phy, u32 reg, u32 ofs)
+> +{
+> +	u32 val;
+> +
+> +	val = mphy_readl(phy, reg);
+> +	val &= ~ofs;
+> +	mphy_writel(phy, val, reg);
+> +}
+> +
+> +static struct ufs_mtk_phy *get_ufs_mtk_phy(struct phy *generic_phy)
+> +{
+> +	return (struct ufs_mtk_phy *)phy_get_drvdata(generic_phy);
+> +}
+> +
+> +static int ufs_mtk_phy_clk_init(struct ufs_mtk_phy *phy)
+> +{
+> +	struct device *dev = phy->dev;
+> +
+> +	phy->unipro_clk = devm_clk_get(dev, "unipro-clk");
+> +	if (IS_ERR(phy->unipro_clk)) {
+> +		dev_err(dev, "failed to get unipro-clk");
+> +		return PTR_ERR(phy->unipro_clk);
+> +	}
+> +
+> +	phy->mp_clk = devm_clk_get(dev, "mp-clk");
+> +	if (IS_ERR(phy->mp_clk)) {
+> +		dev_err(dev, "failed to get mp-clk");
+> +		return PTR_ERR(phy->mp_clk);
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static void ufs_mtk_phy_set_active(struct ufs_mtk_phy *phy)
+> +{
+> +	/* release DA_MP_PLL_PWR_ON */
+> +	mphy_set_bit(phy, MP_GLB_DIG_8C, PLL_PWR_ON);
+> +	mphy_clr_bit(phy, MP_GLB_DIG_8C, FRC_FRC_PWR_ON);
+> +
+> +	/* release DA_MP_PLL_ISO_EN */
+> +	mphy_clr_bit(phy, MP_GLB_DIG_8C, PLL_ISO_EN);
+> +	mphy_clr_bit(phy, MP_GLB_DIG_8C, FRC_PLL_ISO_EN);
+> +
+> +	/* release DA_MP_CDR_PWR_ON */
+> +	mphy_set_bit(phy, MP_LN_RX_44, CDR_PWR_ON);
+> +	mphy_clr_bit(phy, MP_LN_RX_44, FRC_CDR_PWR_ON);
+> +
+> +	/* release DA_MP_CDR_ISO_EN */
+> +	mphy_clr_bit(phy, MP_LN_RX_44, CDR_ISO_EN);
+> +	mphy_clr_bit(phy, MP_LN_RX_44, FRC_CDR_ISO_EN);
+> +
+> +	/* release DA_MP_RX0_SQ_EN */
+> +	mphy_set_bit(phy, MP_LN_DIG_RX_AC, RX_SQ_EN);
+> +	mphy_clr_bit(phy, MP_LN_DIG_RX_AC, FRC_RX_SQ_EN);
+> +
+> +	/* delay 1us to wait DIFZ stable */
+> +	udelay(1);
+> +
+> +	/* release DIFZ */
+> +	mphy_clr_bit(phy, MP_LN_DIG_RX_9C, FSM_DIFZ_FRC);
+> +}
+> +
+> +static void ufs_mtk_phy_set_deep_hibern(struct ufs_mtk_phy *phy)
+> +{
+> +	/* force DIFZ */
+> +	mphy_set_bit(phy, MP_LN_DIG_RX_9C, FSM_DIFZ_FRC);
+> +
+> +	/* force DA_MP_RX0_SQ_EN */
+> +	mphy_set_bit(phy, MP_LN_DIG_RX_AC, FRC_RX_SQ_EN);
+> +	mphy_clr_bit(phy, MP_LN_DIG_RX_AC, RX_SQ_EN);
+> +
+> +	/* force DA_MP_CDR_ISO_EN */
+> +	mphy_set_bit(phy, MP_LN_RX_44, FRC_CDR_ISO_EN);
+> +	mphy_set_bit(phy, MP_LN_RX_44, CDR_ISO_EN);
+> +
+> +	/* force DA_MP_CDR_PWR_ON */
+> +	mphy_set_bit(phy, MP_LN_RX_44, FRC_CDR_PWR_ON);
+> +	mphy_clr_bit(phy, MP_LN_RX_44, CDR_PWR_ON);
+> +
+> +	/* force DA_MP_PLL_ISO_EN */
+> +	mphy_set_bit(phy, MP_GLB_DIG_8C, FRC_PLL_ISO_EN);
+> +	mphy_set_bit(phy, MP_GLB_DIG_8C, PLL_ISO_EN);
+> +
+> +	/* force DA_MP_PLL_PWR_ON */
+> +	mphy_set_bit(phy, MP_GLB_DIG_8C, FRC_FRC_PWR_ON);
+> +	mphy_clr_bit(phy, MP_GLB_DIG_8C, PLL_PWR_ON);
+> +}
+> +
+> +static int ufs_mtk_phy_power_on(struct phy *generic_phy)
+> +{
+> +	struct ufs_mtk_phy *phy = get_ufs_mtk_phy(generic_phy);
+> +	int ret;
+> +
+> +	ret = clk_prepare_enable(phy->unipro_clk);
+> +	if (ret) {
+> +		dev_err(phy->dev, "unipro_clk enable failed %d\n", ret);
+> +		goto out;
+> +	}
+> +
+> +	ret = clk_prepare_enable(phy->mp_clk);
+> +	if (ret) {
+> +		dev_err(phy->dev, "mp_clk enable failed %d\n", ret);
+> +		goto out_unprepare_unipro_clk;
+> +	}
+> +
+> +	ufs_mtk_phy_set_active(phy);
+> +
+> +	return 0;
+> +
+> +out_unprepare_unipro_clk:
+> +	clk_disable_unprepare(phy->unipro_clk);
+> +out:
+> +	return ret;
+> +}
+> +
+> +static int ufs_mtk_phy_power_off(struct phy *generic_phy)
+> +{
+> +	struct ufs_mtk_phy *phy = get_ufs_mtk_phy(generic_phy);
+> +
+> +	ufs_mtk_phy_set_deep_hibern(phy);
+> +
+> +	clk_disable_unprepare(phy->unipro_clk);
+> +	clk_disable_unprepare(phy->mp_clk);
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct phy_ops ufs_mtk_phy_ops = {
+> +	.power_on       = ufs_mtk_phy_power_on,
+> +	.power_off      = ufs_mtk_phy_power_off,
+> +	.owner          = THIS_MODULE,
+> +};
+> +
+> +static int ufs_mtk_phy_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct phy *generic_phy;
+> +	struct phy_provider *phy_provider;
+> +	struct resource *res;
+> +	struct ufs_mtk_phy *phy;
+> +	int ret;
+> +
+> +	phy = devm_kzalloc(dev, sizeof(*phy), GFP_KERNEL);
+> +	if (!phy)
+> +		return -ENOMEM;
+> +
+> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> +	phy->mmio = devm_ioremap_resource(dev, res);
+> +	if (IS_ERR(phy->mmio))
+> +		return PTR_ERR(phy->mmio);
+> +
+> +	phy->dev = dev;
+> +
+> +	ret = ufs_mtk_phy_clk_init(phy);
+> +	if (ret)
+> +		return ret;
+> +
+> +	generic_phy = devm_phy_create(dev, NULL, &ufs_mtk_phy_ops);
+> +	if (IS_ERR(generic_phy))
+> +		return PTR_ERR(generic_phy);
+> +
+> +	phy_set_drvdata(generic_phy, phy);
+> +
+> +	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
+> +
+> +	return PTR_ERR_OR_ZERO(phy_provider);
+> +}
+> +
+> +static const struct of_device_id ufs_mtk_phy_of_match[] = {
+> +	{.compatible = "mediatek,ufs-mphy"},
+> +	{},
+> +};
+> +MODULE_DEVICE_TABLE(of, ufs_mtk_phy_of_match);
+> +
+> +static struct platform_driver ufs_mtk_phy_driver = {
+> +	.probe = ufs_mtk_phy_probe,
+> +	.driver = {
+> +		.of_match_table = ufs_mtk_phy_of_match,
+> +		.name = "ufs_mtk_phy",
+> +	},
+> +};
+> +module_platform_driver(ufs_mtk_phy_driver);
+> +
+> +MODULE_DESCRIPTION("Universal Flash Storage (UFS) MediaTek MPHY");
+> +MODULE_AUTHOR("Stanley Chu <stanley.chu-c+3QU6Y0cdFWk0Htik3J/w@public.gmane.org>");
+> +MODULE_LICENSE("GPL v2");
+> +
 
-diff --git a/drivers/usb/common/common.c b/drivers/usb/common/common.c
-index 48277bbc15e4..2174dd9ec176 100644
---- a/drivers/usb/common/common.c
-+++ b/drivers/usb/common/common.c
-@@ -16,6 +16,22 @@
- #include <linux/usb/otg.h>
- #include <linux/of_platform.h>
- 
-+static const char *const ep_type_names[] = {
-+	[USB_ENDPOINT_XFER_CONTROL] = "ctrl",
-+	[USB_ENDPOINT_XFER_ISOC] = "isoc",
-+	[USB_ENDPOINT_XFER_BULK] = "bulk",
-+	[USB_ENDPOINT_XFER_INT] = "intr",
-+};
-+
-+const char *usb_ep_type_string(int ep_type)
-+{
-+	if (ep_type < 0 || ep_type >= ARRAY_SIZE(ep_type_names))
-+		return "unknown";
-+
-+	return ep_type_names[ep_type];
-+}
-+EXPORT_SYMBOL_GPL(usb_ep_type_string);
-+
- const char *usb_otg_state_string(enum usb_otg_state state)
- {
- 	static const char *const names[] = {
-diff --git a/drivers/usb/core/endpoint.c b/drivers/usb/core/endpoint.c
-index 1c2c04079676..afa43f9a47b2 100644
---- a/drivers/usb/core/endpoint.c
-+++ b/drivers/usb/core/endpoint.c
-@@ -60,23 +60,9 @@ static ssize_t type_show(struct device *dev, struct device_attribute *attr,
- 			 char *buf)
- {
- 	struct ep_device *ep = to_ep_device(dev);
--	char *type = "unknown";
-+	int ep_type = usb_endpoint_type(ep->desc);
- 
--	switch (usb_endpoint_type(ep->desc)) {
--	case USB_ENDPOINT_XFER_CONTROL:
--		type = "Control";
--		break;
--	case USB_ENDPOINT_XFER_ISOC:
--		type = "Isoc";
--		break;
--	case USB_ENDPOINT_XFER_BULK:
--		type = "Bulk";
--		break;
--	case USB_ENDPOINT_XFER_INT:
--		type = "Interrupt";
--		break;
--	}
--	return sprintf(buf, "%s\n", type);
-+	return sprintf(buf, "%s\n", usb_ep_type_string(ep_type));
- }
- static DEVICE_ATTR_RO(type);
- 
-diff --git a/drivers/usb/core/hcd.c b/drivers/usb/core/hcd.c
-index 015b126ce455..193ee92b2fdb 100644
---- a/drivers/usb/core/hcd.c
-+++ b/drivers/usb/core/hcd.c
-@@ -1875,23 +1875,10 @@ void usb_hcd_flush_endpoint(struct usb_device *udev,
- 		/* kick hcd */
- 		unlink1(hcd, urb, -ESHUTDOWN);
- 		dev_dbg (hcd->self.controller,
--			"shutdown urb %pK ep%d%s%s\n",
-+			"shutdown urb %pK ep%d%s-%s\n",
- 			urb, usb_endpoint_num(&ep->desc),
- 			is_in ? "in" : "out",
--			({	char *s;
--
--				 switch (usb_endpoint_type(&ep->desc)) {
--				 case USB_ENDPOINT_XFER_CONTROL:
--					s = ""; break;
--				 case USB_ENDPOINT_XFER_BULK:
--					s = "-bulk"; break;
--				 case USB_ENDPOINT_XFER_INT:
--					s = "-intr"; break;
--				 default:
--					s = "-iso"; break;
--				};
--				s;
--			}));
-+			usb_ep_type_string(usb_endpoint_type(&ep->desc)));
- 		usb_put_urb (urb);
- 
- 		/* list contents may have changed */
-diff --git a/drivers/usb/dwc3/debugfs.c b/drivers/usb/dwc3/debugfs.c
-index 1c792710348f..d9e2a63835fe 100644
---- a/drivers/usb/dwc3/debugfs.c
-+++ b/drivers/usb/dwc3/debugfs.c
-@@ -750,28 +750,13 @@ static int dwc3_transfer_type_show(struct seq_file *s, void *unused)
- 	unsigned long		flags;
- 
- 	spin_lock_irqsave(&dwc->lock, flags);
--	if (!(dep->flags & DWC3_EP_ENABLED) ||
--			!dep->endpoint.desc) {
--		seq_printf(s, "--\n");
-+	if (!(dep->flags & DWC3_EP_ENABLED) || !dep->endpoint.desc) {
-+		seq_puts(s, "unknown\n");
- 		goto out;
- 	}
- 
--	switch (usb_endpoint_type(dep->endpoint.desc)) {
--	case USB_ENDPOINT_XFER_CONTROL:
--		seq_printf(s, "control\n");
--		break;
--	case USB_ENDPOINT_XFER_ISOC:
--		seq_printf(s, "isochronous\n");
--		break;
--	case USB_ENDPOINT_XFER_BULK:
--		seq_printf(s, "bulk\n");
--		break;
--	case USB_ENDPOINT_XFER_INT:
--		seq_printf(s, "interrupt\n");
--		break;
--	default:
--		seq_printf(s, "--\n");
--	}
-+	seq_printf(s, "%s\n",
-+		   usb_ep_type_string(usb_endpoint_type(dep->endpoint.desc)));
- 
- out:
- 	spin_unlock_irqrestore(&dwc->lock, flags);
-diff --git a/drivers/usb/gadget/udc/aspeed-vhub/epn.c b/drivers/usb/gadget/udc/aspeed-vhub/epn.c
-index 4a28e3fbeb0b..165b0a43670e 100644
---- a/drivers/usb/gadget/udc/aspeed-vhub/epn.c
-+++ b/drivers/usb/gadget/udc/aspeed-vhub/epn.c
-@@ -593,10 +593,6 @@ static int ast_vhub_epn_disable(struct usb_ep* u_ep)
- static int ast_vhub_epn_enable(struct usb_ep* u_ep,
- 			       const struct usb_endpoint_descriptor *desc)
- {
--	static const char *ep_type_string[] __maybe_unused = { "ctrl",
--							       "isoc",
--							       "bulk",
--							       "intr" };
- 	struct ast_vhub_ep *ep = to_ast_ep(u_ep);
- 	struct ast_vhub_dev *dev;
- 	struct ast_vhub *vhub;
-@@ -646,7 +642,7 @@ static int ast_vhub_epn_enable(struct usb_ep* u_ep,
- 	ep->epn.wedged = false;
- 
- 	EPDBG(ep, "Enabling [%s] %s num %d maxpacket=%d\n",
--	      ep->epn.is_in ? "in" : "out", ep_type_string[type],
-+	      ep->epn.is_in ? "in" : "out", usb_ep_type_string(type),
- 	      usb_endpoint_num(desc), maxpacket);
- 
- 	/* Can we use DMA descriptor mode ? */
-diff --git a/drivers/usb/gadget/udc/dummy_hcd.c b/drivers/usb/gadget/udc/dummy_hcd.c
-index baf72f95f0f1..40c6a484e232 100644
---- a/drivers/usb/gadget/udc/dummy_hcd.c
-+++ b/drivers/usb/gadget/udc/dummy_hcd.c
-@@ -617,21 +617,7 @@ static int dummy_enable(struct usb_ep *_ep,
- 		_ep->name,
- 		desc->bEndpointAddress & 0x0f,
- 		(desc->bEndpointAddress & USB_DIR_IN) ? "in" : "out",
--		({ char *val;
--		 switch (usb_endpoint_type(desc)) {
--		 case USB_ENDPOINT_XFER_BULK:
--			 val = "bulk";
--			 break;
--		 case USB_ENDPOINT_XFER_ISOC:
--			 val = "iso";
--			 break;
--		 case USB_ENDPOINT_XFER_INT:
--			 val = "intr";
--			 break;
--		 default:
--			 val = "ctrl";
--			 break;
--		 } val; }),
-+		usb_ep_type_string(usb_endpoint_type(desc)),
- 		max, ep->stream_en ? "enabled" : "disabled");
- 
- 	/* at this point real hardware should be NAKing transfers
-diff --git a/drivers/usb/host/xhci-trace.h b/drivers/usb/host/xhci-trace.h
-index 88b427434bd8..bac73d688f11 100644
---- a/drivers/usb/host/xhci-trace.h
-+++ b/drivers/usb/host/xhci-trace.h
-@@ -289,23 +289,8 @@ DECLARE_EVENT_CLASS(xhci_log_urb,
- 	),
- 	TP_printk("ep%d%s-%s: urb %p pipe %u slot %d length %d/%d sgs %d/%d stream %d flags %08x",
- 			__entry->epnum, __entry->dir_in ? "in" : "out",
--			({ char *s;
--			switch (__entry->type) {
--			case USB_ENDPOINT_XFER_INT:
--				s = "intr";
--				break;
--			case USB_ENDPOINT_XFER_CONTROL:
--				s = "control";
--				break;
--			case USB_ENDPOINT_XFER_BULK:
--				s = "bulk";
--				break;
--			case USB_ENDPOINT_XFER_ISOC:
--				s = "isoc";
--				break;
--			default:
--				s = "UNKNOWN";
--			} s; }), __entry->urb, __entry->pipe, __entry->slot_id,
-+			usb_ep_type_string(__entry->type),
-+			__entry->urb, __entry->pipe, __entry->slot_id,
- 			__entry->actual, __entry->length, __entry->num_mapped_sgs,
- 			__entry->num_sgs, __entry->stream, __entry->flags
- 		)
-diff --git a/include/linux/usb/ch9.h b/include/linux/usb/ch9.h
-index 523aa088f6ab..da82606be605 100644
---- a/include/linux/usb/ch9.h
-+++ b/include/linux/usb/ch9.h
-@@ -36,6 +36,14 @@
- #include <linux/device.h>
- #include <uapi/linux/usb/ch9.h>
- 
-+/**
-+ * usb_ep_type_string() - Returns human readable-name of the endpoint type.
-+ * @ep_type: The endpoint type to return human-readable name for.  If it's not
-+ *   any of the types: USB_ENDPOINT_XFER_{CONTROL, ISOC, BULK, INT},
-+ *   usually got by usb_endpoint_type(), the string 'unknown' will be returned.
-+ */
-+extern const char *usb_ep_type_string(int ep_type);
-+
- /**
-  * usb_speed_string() - Returns human readable-name of the speed.
-  * @speed: The speed to return human-readable name for.  If it's not
--- 
-2.20.1
+Reviewed-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
