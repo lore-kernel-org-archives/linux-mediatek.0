@@ -1,39 +1,79 @@
-From: Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH net-next] mt76: fix return value check in mt76_wmac_probe()
-Date: Mon, 4 Mar 2019 01:10:00 +0000
-Message-ID: <20190304011000.62693-1-weiyongjun1@huawei.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v5 1/6] dt-bindings: usb: musb: Add support for MediaTek
+ musb controller
+Date: Mon, 4 Mar 2019 11:42:58 -0600
+Message-ID: <CAL_JsqKb_afdZFaOoB5yvs2hX-T9HPVy_d30zu7f7yiqaRPaLg@mail.gmail.com>
+References: <1550561795-31132-1-git-send-email-min.guo@mediatek.com>
+ <1550561795-31132-2-git-send-email-min.guo@mediatek.com> <20190222164923.GA26413@bogus>
+ <1551058604.12020.34.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7BIT
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi83-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-janitors-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1551058604.12020.34.camel@mhfsdcap03>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Min Guo <min.guo@mediatek.com>
+Cc: Bin Liu <b-liu@ti.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Linux USB List <linux-usb@vger.kernel.org>, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Tony Lindgren <tony@atomide.com>, Hans de Goede <hdegoede@redhat.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-In case of error, the function devm_ioremap_resource() returns ERR_PTR()
-and never returns NULL. The NULL test in the return value check should
-be replaced with IS_ERR().
+On Sun, Feb 24, 2019 at 7:36 PM Min Guo <min.guo@mediatek.com> wrote:
+>
+> Hi Rob,
+> On Fri, 2019-02-22 at 10:49 -0600, Rob Herring wrote:
+> > On Tue, Feb 19, 2019 at 03:36:30PM +0800, min.guo@mediatek.com wrote:
+> > > From: Min Guo <min.guo@mediatek.com>
+> > >
+> > > This adds support for MediaTek musb controller in
+> > > host, peripheral and otg mode.
+> > >
+> > > Signed-off-by: Min Guo <min.guo@mediatek.com>
+> > > ---
+> > > changes in v5:
+> > > suggested by Rob:
+> > > 1. Modify compatible as
+> > > - compatible : should be one of:
+> > >                "mediatek,mt-2701"
+> > >                ...
+> > >                followed by "mediatek,mtk-musb"
+> > > 2. Add usb connector child node
+> > >
+> > > changes in v4:
+> > > suggested by Sergei:
+> > > 1. String alignment
+> > >
+> > > changes in v3:
+> > > 1. no changes
+> > >
+> > > changes in v2:
+> > > suggested by Bin:
+> > > 1. Modify DRC to DRD
+> > > suggested by Rob:
+> > > 2. Drop the "<soc-model>-musb" in compatible
+> > > 3. Remove phy-names
+> > > 4. Add space after comma in clock-names
+> > > ---
+> > >  .../devicetree/bindings/usb/mediatek,musb.txt      | 54 ++++++++++++++++++++++
+> > >  1 file changed, 54 insertions(+)
+> > >  create mode 100644 Documentation/devicetree/bindings/usb/mediatek,musb.txt
+> > >
+> > > diff --git a/Documentation/devicetree/bindings/usb/mediatek,musb.txt b/Documentation/devicetree/bindings/usb/mediatek,musb.txt
+> > > new file mode 100644
+> > > index 0000000..0632e6e
+> > > --- /dev/null
+> > > +++ b/Documentation/devicetree/bindings/usb/mediatek,musb.txt
+> > > @@ -0,0 +1,54 @@
+> > > +MediaTek musb DRD/OTG controller
+> > > +-------------------------------------------
+> > > +
+> > > +Required properties:
+> > > + - compatible      : should be one of:
+> > > +                     "mediatek,mt-2701"
+> >
+> > That looks like a top-level SoC compatible and doesn't match the
+> > example.
+> "mediatek,mt-2701" is an example, just to describe a specific SOC.
+> May I modify compatibel like:
+> compatible : should be "mediatek,mtk-musb"
 
-Fixes: c8846e101502 ("mt76: add driver for MT7603E and MT7628/7688")
-Signed-off-by: Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
----
- drivers/net/wireless/mediatek/mt76/mt7603/soc.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+No, you should fix the example adding "mediatek,mtk-musb".
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/soc.c b/drivers/net/wireless/mediatek/mt76/mt7603/soc.c
-index e13fea80d970..b920be1f5718 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/soc.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/soc.c
-@@ -23,9 +23,9 @@ mt76_wmac_probe(struct platform_device *pdev)
- 	}
- 
- 	mem_base = devm_ioremap_resource(&pdev->dev, res);
--	if (!mem_base) {
-+	if (IS_ERR(mem_base)) {
- 		dev_err(&pdev->dev, "Failed to get memory resource\n");
--		return -EINVAL;
-+		return PTR_ERR(mem_base);
- 	}
- 
- 	mdev = mt76_alloc_device(&pdev->dev, sizeof(*dev), &mt7603_ops,
+Rob
