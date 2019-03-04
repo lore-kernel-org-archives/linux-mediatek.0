@@ -1,122 +1,172 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH] Remove deductively redundant NULL pointer checks
-Date: Sun, 03 Mar 2019 20:34:09 -0300
-Message-ID: <1f7ab3d0a759c583fc33a83ee24ed780e40ce7a1.camel@collabora.com>
-References: <1551228250-36426-1-git-send-email-shaobo@cs.utah.edu>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Applied "ASoC: mediatek: btcvsd add loopback" to the asoc tree
+Date: Mon,  4 Mar 2019 00:06:15 +0000 (GMT)
+Message-ID: <20190304000615.40475440083@finisterre.ee.mobilebroadband>
+References: <1551231044-24062-1-git-send-email-kaichieh.chuang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1551228250-36426-1-git-send-email-shaobo@cs.utah.edu>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Shaobo He <shaobo@cs.utah.edu>, linux-media@vger.kernel.org
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, Mauro Carvalho Chehab <mchehab@kernel.org>, Rick Chang <rick.chang@mediatek.com>, Bin Liu <bin.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>, Jacob chen <jacob2.chen@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Kyungmin Park <kyungmin.park@samsung.com>, Kamil Debski <kamil@wypas.org>, Andrzej Hajda <a.hajda@samsung.com>, Andrzej Pietrasiewicz <andrzej.p@samsung.com>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Benoit Parrot <bparrot@ti.com>, Hans Verkuil <hans.verkuil@cisco.com>, Kees
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1551231044-24062-1-git-send-email-kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, stephen.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-02-26 at 17:43 -0700, Shaobo He wrote:
-> The fixes included in this commit essentially removes NULL pointer
-> checks on the return values of function `get_queue_ctx` as well as
-> `v4l2_m2m_get_vq` defined in file v4l2-mem2mem.c.
-> 
-> Function `get_queue_ctx` is very unlikely to return a NULL pointer
-> because its return value is an address composed of the base address
-> pointed by `m2m_ctx` and an offset of field `out_q_ctx` or `cap_q_ctx`.
-> Since the offset of either field is not 0, for the return value to be
-> NULL, pointer `m2m_ctx` must be a very large unsigned value such that
-> its addition to the offset overflows to NULL which may be undefined
-> according to this post:
-> https://wdtz.org/catching-pointer-overflow-bugs.html. Moreover, even if
-> `m2m_ctx` is NULL, the return value cannot be NULL, either. Therefore, I
-> think it is reasonable to conclude that the return value of function
-> `get_queue_ctx` cannot be NULL.
-> 
-> Given the return values of `get_queue_ctx` not being NULL, we can follow
-> a similar reasoning to conclude that the return value of
-> `v4l2_mem_get_vq` cannot be NULL since its return value is the same
-> address as the return value of `get_queue_ctx`. Therefore, this patch
-> also removes NULL pointer checks on the return values of
-> `v4l2_mem_get_vq`.
-> 
-> Signed-off-by: Shaobo He <shaobo@cs.utah.edu>
+The patch
 
-Hi Shaobo,
+   ASoC: mediatek: btcvsd add loopback
 
-It seems this is v2 of 1551128631-19713-1-git-send-email-shaobo@cs.utah.edu,
-and it should be marked as such.
+has been applied to the asoc tree at
 
-Do you think you can read Documentation/process/submitting-patches.rst,
-for your future patches?
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
 
-Also, two comments...
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
 
->  drivers/media/platform/coda/coda-common.c          |  4 ----
->  drivers/media/platform/imx-pxp.c                   |  7 -------
->  drivers/media/platform/m2m-deinterlace.c           |  7 -------
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c    |  7 -------
->  drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c |  7 -------
->  drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c | 13 -------------
->  drivers/media/platform/mx2_emmaprp.c               |  7 -------
->  drivers/media/platform/rcar_fdp1.c                 |  3 ---
->  drivers/media/platform/rcar_jpu.c                  |  8 --------
->  drivers/media/platform/rockchip/rga/rga.c          |  4 ----
->  drivers/media/platform/s5p-g2d/g2d.c               |  4 ----
->  drivers/media/platform/s5p-jpeg/jpeg-core.c        |  7 -------
->  drivers/media/platform/sh_veu.c                    |  2 --
->  drivers/media/platform/ti-vpe/vpe.c                |  7 -------
->  drivers/media/platform/vicodec/vicodec-core.c      |  5 -----
->  drivers/media/platform/vim2m.c                     |  7 -------
->  drivers/media/v4l2-core/v4l2-mem2mem.c             |  4 ----
->  17 files changed, 103 deletions(-)
-> 
-> diff --git a/drivers/media/platform/coda/coda-common.c b/drivers/media/platform/coda/coda-common.c
-> index 7518f01..ee1e05b 100644
-> --- a/drivers/media/platform/coda/coda-common.c
-> +++ b/drivers/media/platform/coda/coda-common.c
-> @@ -696,8 +696,6 @@ static int coda_s_fmt(struct coda_ctx *ctx, struct v4l2_format *f,
->  	struct vb2_queue *vq;
->  
->  	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
-> -	if (!vq)
-> -		return -EINVAL;
->  
->  	q_data = get_q_data(ctx, f->type);
->  	if (!q_data)
-> @@ -817,8 +815,6 @@ static int coda_s_fmt_vid_out(struct file *file, void *priv,
->  	ctx->quantization = f->fmt.pix.quantization;
->  
->  	dst_vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE);
-> -	if (!dst_vq)
-> -		return -EINVAL;
->  
->  	/*
->  	 * Setting the capture queue format is not possible while the capture
-> diff --git a/drivers/media/platform/imx-pxp.c b/drivers/media/platform/imx-pxp.c
-> index c1c2554..d079b3c 100644
-> --- a/drivers/media/platform/imx-pxp.c
-> +++ b/drivers/media/platform/imx-pxp.c
-> @@ -1071,13 +1071,8 @@ static int pxp_enum_fmt_vid_out(struct file *file, void *priv,
->  
->  static int pxp_g_fmt(struct pxp_ctx *ctx, struct v4l2_format *f)
->  {
-> -	struct vb2_queue *vq;
->  	struct pxp_q_data *q_data;
->  
-> -	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
-> -	if (!vq)
-> -		return -EINVAL;
-> -
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-It seems your patch also removes unused code, but this is not really explained in the
-commit log.
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-Perhaps it is better to split all these changes on their own patch:
-one patch to remove dead code, and then another patch to remove unneeded null checks.
-
-And also, I think you should add some comments, either in v4l2_m2m_get_vq's declaration
-or definition, explaining that the return value cannot be NULL.
-
-I have to say: I'm not a fan of "improvement" patches in code paths that
-are anything but hot... but knock yourself out!
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
 Thanks,
-Eze
+Mark
+
+>From f060f46f09bb920d1e0d436d654996033b856e26 Mon Sep 17 00:00:00 2001
+From: KaiChieh Chuang <kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Date: Wed, 27 Feb 2019 09:30:44 +0800
+Subject: [PATCH] ASoC: mediatek: btcvsd add loopback
+
+add direct loopback path from rx to tx
+
+Signed-off-by: KaiChieh Chuang <kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+---
+ sound/soc/mediatek/common/mtk-btcvsd.c | 69 +++++++++++++++++++++++++-
+ 1 file changed, 68 insertions(+), 1 deletion(-)
+
+diff --git a/sound/soc/mediatek/common/mtk-btcvsd.c b/sound/soc/mediatek/common/mtk-btcvsd.c
+index 1b8bcdaf02d1..9a163d7064d1 100644
+--- a/sound/soc/mediatek/common/mtk-btcvsd.c
++++ b/sound/soc/mediatek/common/mtk-btcvsd.c
+@@ -49,6 +49,7 @@ enum bt_sco_state {
+ 	BT_SCO_STATE_IDLE,
+ 	BT_SCO_STATE_RUNNING,
+ 	BT_SCO_STATE_ENDING,
++	BT_SCO_STATE_LOOPBACK,
+ };
+ 
+ enum bt_sco_direct {
+@@ -486,7 +487,8 @@ static irqreturn_t mtk_btcvsd_snd_irq_handler(int irq_id, void *dev)
+ 	if (bt->rx->state != BT_SCO_STATE_RUNNING &&
+ 	    bt->rx->state != BT_SCO_STATE_ENDING &&
+ 	    bt->tx->state != BT_SCO_STATE_RUNNING &&
+-	    bt->tx->state != BT_SCO_STATE_ENDING) {
++	    bt->tx->state != BT_SCO_STATE_ENDING &&
++	    bt->tx->state != BT_SCO_STATE_LOOPBACK) {
+ 		dev_warn(bt->dev, "%s(), in idle state: rx->state: %d, tx->state: %d\n",
+ 			 __func__, bt->rx->state, bt->tx->state);
+ 		goto irq_handler_exit;
+@@ -512,6 +514,42 @@ static irqreturn_t mtk_btcvsd_snd_irq_handler(int irq_id, void *dev)
+ 	buf_cnt_tx = btsco_packet_info[packet_type][2];
+ 	buf_cnt_rx = btsco_packet_info[packet_type][3];
+ 
++	if (bt->tx->state == BT_SCO_STATE_LOOPBACK) {
++		u8 *src, *dst;
++		unsigned long connsys_addr_rx, ap_addr_rx;
++		unsigned long connsys_addr_tx, ap_addr_tx;
++
++		connsys_addr_rx = *bt->bt_reg_pkt_r;
++		ap_addr_rx = (unsigned long)bt->bt_sram_bank2_base +
++			     (connsys_addr_rx & 0xFFFF);
++
++		connsys_addr_tx = *bt->bt_reg_pkt_w;
++		ap_addr_tx = (unsigned long)bt->bt_sram_bank2_base +
++			     (connsys_addr_tx & 0xFFFF);
++
++		if (connsys_addr_tx == 0xdeadfeed ||
++		    connsys_addr_rx == 0xdeadfeed) {
++			/* bt return 0xdeadfeed if read reg during bt sleep */
++			dev_warn(bt->dev, "%s(), connsys_addr_tx == 0xdeadfeed\n",
++				 __func__);
++			goto irq_handler_exit;
++		}
++
++		src = (u8 *)ap_addr_rx;
++		dst = (u8 *)ap_addr_tx;
++
++		mtk_btcvsd_snd_data_transfer(BT_SCO_DIRECT_BT2ARM, src,
++					     bt->tx->temp_packet_buf,
++					     packet_length,
++					     packet_num);
++		mtk_btcvsd_snd_data_transfer(BT_SCO_DIRECT_ARM2BT,
++					     bt->tx->temp_packet_buf, dst,
++					     packet_length,
++					     packet_num);
++		bt->rx->rw_cnt++;
++		bt->tx->rw_cnt++;
++	}
++
+ 	if (bt->rx->state == BT_SCO_STATE_RUNNING ||
+ 	    bt->rx->state == BT_SCO_STATE_ENDING) {
+ 		if (bt->rx->xrun) {
+@@ -1067,6 +1105,33 @@ static int btcvsd_band_set(struct snd_kcontrol *kcontrol,
+ 	return 0;
+ }
+ 
++static int btcvsd_loopback_get(struct snd_kcontrol *kcontrol,
++			       struct snd_ctl_elem_value *ucontrol)
++{
++	struct snd_soc_component *cmpnt = snd_soc_kcontrol_component(kcontrol);
++	struct mtk_btcvsd_snd *bt = snd_soc_component_get_drvdata(cmpnt);
++	bool lpbk_en = bt->tx->state == BT_SCO_STATE_LOOPBACK;
++
++	ucontrol->value.integer.value[0] = lpbk_en;
++	return 0;
++}
++
++static int btcvsd_loopback_set(struct snd_kcontrol *kcontrol,
++			       struct snd_ctl_elem_value *ucontrol)
++{
++	struct snd_soc_component *cmpnt = snd_soc_kcontrol_component(kcontrol);
++	struct mtk_btcvsd_snd *bt = snd_soc_component_get_drvdata(cmpnt);
++
++	if (ucontrol->value.integer.value[0]) {
++		mtk_btcvsd_snd_set_state(bt, bt->tx, BT_SCO_STATE_LOOPBACK);
++		mtk_btcvsd_snd_set_state(bt, bt->rx, BT_SCO_STATE_LOOPBACK);
++	} else {
++		mtk_btcvsd_snd_set_state(bt, bt->tx, BT_SCO_STATE_RUNNING);
++		mtk_btcvsd_snd_set_state(bt, bt->rx, BT_SCO_STATE_RUNNING);
++	}
++	return 0;
++}
++
+ static int btcvsd_tx_mute_get(struct snd_kcontrol *kcontrol,
+ 			      struct snd_ctl_elem_value *ucontrol)
+ {
+@@ -1202,6 +1267,8 @@ static int btcvsd_tx_timestamp_get(struct snd_kcontrol *kcontrol,
+ static const struct snd_kcontrol_new mtk_btcvsd_snd_controls[] = {
+ 	SOC_ENUM_EXT("BTCVSD Band", btcvsd_enum[0],
+ 		     btcvsd_band_get, btcvsd_band_set),
++	SOC_SINGLE_BOOL_EXT("BTCVSD Loopback Switch", 0,
++			    btcvsd_loopback_get, btcvsd_loopback_set),
+ 	SOC_SINGLE_BOOL_EXT("BTCVSD Tx Mute Switch", 0,
+ 			    btcvsd_tx_mute_get, btcvsd_tx_mute_set),
+ 	SOC_SINGLE_BOOL_EXT("BTCVSD Tx Irq Received Switch", 0,
+-- 
+2.20.1
