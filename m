@@ -1,138 +1,152 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v5 1/6] dt-bindings: Add a binding for Mediatek SCP
-Date: Mon, 4 Mar 2019 11:51:55 -0600
-Message-ID: <CAL_Jsq+rqeJX9LHOvVi7rPUzCeWhM2QjicJXyJyn23-gBo=Qcg@mail.gmail.com>
-References: <20190221084729.101784-1-pihsun@chromium.org> <20190221084729.101784-2-pihsun@chromium.org>
- <20190222144316.GA19284@bogus> <CANdKZ0d+2CqbVEwruW+pbqUeRMBwzXV7tFC7Cp7i+98CWiB_4w@mail.gmail.com>
+From: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
+Subject: [bug report] mt76: add driver for MT7603E and MT7628/7688
+Date: Mon, 4 Mar 2019 23:03:44 +0300
+Message-ID: <20190304200344.GA14085@kadam>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CANdKZ0d+2CqbVEwruW+pbqUeRMBwzXV7tFC7Cp7i+98CWiB_4w@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Pi-Hsun Shih <pihsun@chromium.org>
-Cc: Erin Lo <erin.lo@mediatek.com>, Ohad Ben-Cohen <ohad@wizery.com>, Bjorn Andersson <bjorn.andersson@linaro.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:REMOTE PROCESSOR (REMOTEPROC) SUBSYSTEM" <linux-remoteproc@vger.kernel.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: nbd-Vt+b4OUoWG0@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Feb 25, 2019 at 12:15 AM Pi-Hsun Shih <pihsun@chromium.org> wrote:
->
-> On Fri, Feb 22, 2019 at 10:43 PM Rob Herring <robh@kernel.org> wrote:
-> >
-> > On Thu, Feb 21, 2019 at 04:47:24PM +0800, Pi-Hsun Shih wrote:
-> > > From: Erin Lo <erin.lo@mediatek.com>
-> > >
-> > > Add a DT binding documentation of SCP for the
-> > > MT8183 SoC from Mediatek.
-> > >
-> > > Signed-off-by: Erin Lo <erin.lo@mediatek.com>
-> > > ---
-> > > Changes from v4:
-> > >  - Add detail of more properties.
-> > >  - Document the usage of mtk,rpmsg-name in subnode from the new design.
-> > >
-> > > Changes from v3:
-> > >  - No change.
-> > >
-> > > Changes from v2:
-> > >  - No change. I realized that for this patch series, there's no need to
-> > >    add anything under the mt8183-scp node (neither the mt8183-rpmsg or
-> > >    the cros-ec-rpmsg) for them to work, since mt8183-rpmsg is added
-> > >    directly as a rproc_subdev by code, and cros-ec-rpmsg is dynamically
-> > >    created by SCP name service.
-> > >
-> > > Changes from v1:
-> > >  - No change.
-> > > ---
-> > >  .../bindings/remoteproc/mtk,scp.txt           | 37 +++++++++++++++++++
-> > >  1 file changed, 37 insertions(+)
-> > >  create mode 100644 Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
-> > >
-> > > diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt b/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
-> > > new file mode 100644
-> > > index 00000000000000..8cf8b0e0d98a4c
-> > > --- /dev/null
-> > > +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
-> > > @@ -0,0 +1,37 @@
-> > > +Mediatek SCP Bindings
-> > > +----------------------------------------
-> > > +
-> > > +This binding provides support for ARM Cortex M4 Co-processor found on some
-> > > +Mediatek SoCs.
-> > > +
-> > > +Required properties:
-> > > +- compatible         Should be "mediatek,mt8183-scp"
-> > > +- reg                        Should contain the address ranges for the two memory
-> > > +                     regions, SRAM and CFG.
-> > > +- reg-names          Contains the corresponding names for the two memory
-> > > +                     regions. These should be named "sram" & "cfg".
-> > > +- clocks             Clock for co-processor (See: ../clock/clock-bindings.txt)
-> > > +- clock-names                Contains the corresponding name for the clock. This
-> > > +                     should be named "main".
-> > > +
-> > > +Subnodes
-> > > +--------
-> > > +
-> > > +When CONFIG_RPMSG_MTK_SCP is enabled, subnodes of the SCP represent rpmsg
-> >
-> > Bindings can't depend on kernel config options.
-> >
->
-> What's the recommendation here if the subnode only has effect when the
-> config is enabled? Should I just skip the sentence "When ... is
-> enabled"?
+Hello Felix Fietkau,
 
-Sure.
+The patch c8846e101502: "mt76: add driver for MT7603E and
+MT7628/7688" from Nov 6, 2018, leads to the following static checker
+warning:
 
->
-> > > +devices. The names of the devices are not important. The properties of these
-> > > +nodes are defined by the individual bindings for the rpmsg devices - but must
-> > > +contain the following property:
-> > > +
-> > > +- mtk,rpmsg-name     Contains the name for the rpmsg device. Used to match
-> > > +                     the subnode to rpmsg device announced by SCP.
-> >
-> > I don't think this belongs in DT, but without some examples I'm not
-> > really sure.
-> >
->
-> This is similar to the qcom,smd-channels property in
-> Documentation/devicetree/bindings/soc/qcom/qcom,smd.txt, a example DT
-> for this:
+	drivers/net/wireless/mediatek/mt76/mt7603/mac.c:1075 mt7603_fill_txs()
+	error: uninitialized symbol 'i'.
 
-QCom has lots of strange buses and communication channels. Probably
-not the best place for inspiration.
+drivers/net/wireless/mediatek/mt76/mt7603/mac.c
+    976 static bool
+    977 mt7603_fill_txs(struct mt7603_dev *dev, struct mt7603_sta *sta,
+    978 		struct ieee80211_tx_info *info, __le32 *txs_data)
+    979 {
+    980 	struct ieee80211_supported_band *sband;
+    981 	int final_idx = 0;
+    982 	u32 final_rate;
+    983 	u32 final_rate_flags;
+    984 	bool final_mpdu;
+    985 	bool ack_timeout;
+    986 	bool fixed_rate;
+    987 	bool probe;
+    988 	bool ampdu;
+    989 	bool cck = false;
+    990 	int count;
+    991 	u32 txs;
+    992 	u8 pid;
+    993 	int idx;
+    994 	int i;
+                ^^^^^
 
-> scp {
->         compatible = "mediatek,mt8183-scp";
->         ...
->         cros_ec {
->                 compatible = "google,cros-ec-rpmsg";
->                 mtk,rpmsg-name = "cros-ec-rpmsg";
+    995 
+    996 	fixed_rate = info->status.rates[0].count;
+    997 	probe = !!(info->flags & IEEE80211_TX_CTL_RATE_CTRL_PROBE);
+    998 
+    999 	txs = le32_to_cpu(txs_data[4]);
+    1000 	final_mpdu = txs & MT_TXS4_ACKED_MPDU;
+    1001 	ampdu = !fixed_rate && (txs & MT_TXS4_AMPDU);
+    1002 	pid = FIELD_GET(MT_TXS4_PID, txs);
+    1003 	count = FIELD_GET(MT_TXS4_TX_COUNT, txs);
+    1004 
+    1005 	txs = le32_to_cpu(txs_data[0]);
+    1006 	final_rate = FIELD_GET(MT_TXS0_TX_RATE, txs);
+    1007 	ack_timeout = txs & MT_TXS0_ACK_TIMEOUT;
+    1008 
+    1009 	if (!ampdu && (txs & MT_TXS0_RTS_TIMEOUT))
+    1010 		return false;
+    1011 
+    1012 	if (txs & MT_TXS0_QUEUE_TIMEOUT)
+    1013 		return false;
+    1014 
+    1015 	if (!ack_timeout)
+    1016 		info->flags |= IEEE80211_TX_STAT_ACK;
+    1017 
+    1018 	info->status.ampdu_len = 1;
+    1019 	info->status.ampdu_ack_len = !!(info->flags &
+    1020 					IEEE80211_TX_STAT_ACK);
+    1021 
+    1022 	if (ampdu || (info->flags & IEEE80211_TX_CTL_AMPDU))
+    1023 		info->flags |= IEEE80211_TX_STAT_AMPDU | IEEE80211_TX_CTL_AMPDU;
+    1024 
+    1025 	if (fixed_rate && !probe) {
+    1026 		info->status.rates[0].count = count;
+    1027 		goto out;
+                        ^^^^^^^^
 
-Why do we need the same string twice? It's just the compatible string
-minus the vendor prefix.
+    1028 	}
+    1029 
+    1030 	for (i = 0, idx = 0; i < ARRAY_SIZE(info->status.rates); i++) {
+    1031 		int cur_count = min_t(int, count, 2 * MT7603_RATE_RETRY);
+    1032 
+    1033 		if (!i && probe) {
+    1034 			cur_count = 1;
+    1035 		} else {
+    1036 			info->status.rates[i] = sta->rates[idx];
+    1037 			idx++;
+    1038 		}
+    1039 
+    1040 		if (i && info->status.rates[i].idx < 0) {
+    1041 			info->status.rates[i - 1].count += count;
+    1042 			break;
+    1043 		}
+    1044 
+    1045 		if (!count) {
+    1046 			info->status.rates[i].idx = -1;
+    1047 			break;
+    1048 		}
+    1049 
+    1050 		info->status.rates[i].count = cur_count;
+    1051 		final_idx = i;
+    1052 		count -= cur_count;
+    1053 	}
+    1054 
+    1055 out:
+    1056 	final_rate_flags = info->status.rates[final_idx].flags;
+    1057 
+    1058 	switch (FIELD_GET(MT_TX_RATE_MODE, final_rate)) {
+    1059 	case MT_PHY_TYPE_CCK:
+    1060 		cck = true;
+    1061 		/* fall through */
+    1062 	case MT_PHY_TYPE_OFDM:
+    1063 		if (dev->mt76.chandef.chan->band == NL80211_BAND_5GHZ)
+    1064 			sband = &dev->mt76.sband_5g.sband;
+    1065 		else
+    1066 			sband = &dev->mt76.sband_2g.sband;
+    1067 		final_rate &= GENMASK(5, 0);
+    1068 		final_rate = mt7603_get_rate(dev, sband, final_rate, cck);
+    1069 		final_rate_flags = 0;
+    1070 		break;
+    1071 	case MT_PHY_TYPE_HT_GF:
+    1072 	case MT_PHY_TYPE_HT:
+    1073 		final_rate_flags |= IEEE80211_TX_RC_MCS;
+    1074 		final_rate &= GENMASK(5, 0);
+--> 1075 		if (i > 15)
+                            ^^^^^^
 
->
->                 cros_ec_codec {
->                         compatible = "google,cros-ec-codec";
->                         ...
+    1076 			return false;
+    1077 		break;
+    1078 	default:
+    1079 		return false;
+    1080 	}
+    1081 
+    1082 	info->status.rates[final_idx].idx = final_rate;
+    1083 	info->status.rates[final_idx].flags = final_rate_flags;
+    1084 
+    1085 	return true;
+    1086 }
 
-What's this? I can't review bindings piece by piece.
-
->                 };
->         };
-> };
->
-> > > +
-> > > +Example:
-> > > +
-> > > +     scp: scp@10500000 {
-> > > +             compatible = "mediatek,mt8183-scp";
-> > > +             reg = <0 0x10500000 0 0x80000>,
-> > > +                   <0 0x105c0000 0 0x5000>;
-> > > +             reg-names = "sram", "cfg";
-> > > +             clocks = <&infracfg CLK_INFRA_SCPSYS>;
-> > > +             clock-names = "main";
-> > > +     };
-> > > --
-> > > 2.21.0.rc0.258.g878e2cd30e-goog
-> > >
+regards,
+dan carpenter
