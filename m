@@ -1,84 +1,100 @@
 From: Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: [PATCH v5 9/9] clk: mediatek: Allow changing PLL rate when it is off
-Date: Tue, 5 Mar 2019 13:05:46 +0800
-Message-ID: <20190305050546.23431-11-weiyi.lu@mediatek.com>
+Subject: [PATCH v5 3/9] clk: mediatek: Add configurable pcwibits and fmin to mtk_pll_data
+Date: Tue, 5 Mar 2019 13:05:40 +0800
+Message-ID: <20190305050546.23431-5-weiyi.lu@mediatek.com>
 References: <20190305050546.23431-1-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20190305050546.23431-1-weiyi.lu@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Sender: linux-kernel-owner@vger.kernel.org
 To: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, stable@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>, Owen Chen <owen.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: James Liao <jamesjj.liao@mediatek.com>
+From: Owen Chen <owen.chen@mediatek.com>
 
-Some modules may need to change its clock rate before turn on it.
-So changing PLL's rate when it is off should be allowed.
-This patch removes PLL enabled check before set rate, so that
-PLLs can set new frequency even if they are off.
+1. pcwibits: The integer bits of pcw for plls is extend to 8 bits,
+   add a variable to indicate this change and
+   backward-compatible.
+2. fmin: The pll freqency lower-bound is vary from 1GMhz to
+   1.5Ghz, add a variable to indicate platform-dependent.
 
-On MT8173 for example, ARMPLL's enable bit can be controlled by
-other HW. That means ARMPLL may be turned on even if we (CPU / SW)
-set ARMPLL's enable bit as 0. In this case, SW may want and can
-still change ARMPLL's rate by changing its pcw and postdiv settings.
-But without this patch, new pcw setting will not be applied because
-its enable bit is 0.
-
-Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
-Acked-by: Michael Turquette <mturuqette@baylibre.com>
+Signed-off-by: Owen Chen <owen.chen@mediatek.com>
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+Acked-by: Sean Wang <sean.wang@kernel.org>
 ---
- drivers/clk/mediatek/clk-pll.c | 13 ++-----------
- 1 file changed, 2 insertions(+), 11 deletions(-)
+ drivers/clk/mediatek/clk-mtk.h |  2 ++
+ drivers/clk/mediatek/clk-pll.c | 15 +++++++++++----
+ 2 files changed, 13 insertions(+), 4 deletions(-)
 
+diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+index f83c2bbb677e..11b5517903d0 100644
+--- a/drivers/clk/mediatek/clk-mtk.h
++++ b/drivers/clk/mediatek/clk-mtk.h
+@@ -214,8 +214,10 @@ struct mtk_pll_data {
+ 	unsigned int flags;
+ 	const struct clk_ops *ops;
+ 	u32 rst_bar_mask;
++	unsigned long fmin;
+ 	unsigned long fmax;
+ 	int pcwbits;
++	int pcwibits;
+ 	uint32_t pcw_reg;
+ 	int pcw_shift;
+ 	const struct mtk_pll_div_table *div_table;
 diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-index 65cee1d6c400..8d556fc99fed 100644
+index 18842d660317..67aaa3082d9b 100644
 --- a/drivers/clk/mediatek/clk-pll.c
 +++ b/drivers/clk/mediatek/clk-pll.c
-@@ -124,9 +124,6 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
- 		int postdiv)
- {
- 	u32 chg, val;
--	int pll_en;
--
--	pll_en = readl(pll->base_addr + REG_CON0) & CON0_BASE_EN;
+@@ -32,6 +32,8 @@
+ #define AUDPLL_TUNER_EN		BIT(31)
  
- 	/* disable tuner */
- 	__mtk_pll_tuner_disable(pll);
-@@ -147,12 +144,7 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
- 			pll->data->pcw_shift);
- 	val |= pcw << pll->data->pcw_shift;
- 	writel(val, pll->pcw_addr);
--
--	chg = readl(pll->pcw_chg_addr);
--
--	if (pll_en)
--		chg |= PCW_CHG_MASK;
--
-+	chg = readl(pll->pcw_chg_addr) | PCW_CHG_MASK;
- 	writel(chg, pll->pcw_chg_addr);
- 	if (pll->tuner_addr)
- 		writel(val + 1, pll->tuner_addr);
-@@ -160,8 +152,7 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
- 	/* restore tuner_en */
- 	__mtk_pll_tuner_enable(pll);
- 
--	if (pll_en)
--		udelay(20);
-+	udelay(20);
- }
+ #define POSTDIV_MASK		0x7
++
++/* default 7 bits integer, can be overridden with pcwibits. */
+ #define INTEGER_BITS		7
  
  /*
+@@ -68,12 +70,15 @@ static unsigned long __mtk_pll_recalc_rate(struct mtk_clk_pll *pll, u32 fin,
+ 		u32 pcw, int postdiv)
+ {
+ 	int pcwbits = pll->data->pcwbits;
+-	int pcwfbits;
++	int pcwfbits = 0;
++	int ibits;
+ 	u64 vco;
+ 	u8 c = 0;
+ 
+ 	/* The fractional part of the PLL divider. */
+-	pcwfbits = pcwbits > INTEGER_BITS ? pcwbits - INTEGER_BITS : 0;
++	ibits = pll->data->pcwibits ? pll->data->pcwibits : INTEGER_BITS;
++	if (pcwbits > ibits)
++		pcwfbits = pcwbits - ibits;
+ 
+ 	vco = (u64)fin * pcw;
+ 
+@@ -170,9 +175,10 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
+ static void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
+ 		u32 freq, u32 fin)
+ {
+-	unsigned long fmin = 1000 * MHZ;
++	unsigned long fmin = pll->data->fmin ? pll->data->fmin : (1000 * MHZ);
+ 	const struct mtk_pll_div_table *div_table = pll->data->div_table;
+ 	u64 _pcw;
++	int ibits;
+ 	u32 val;
+ 
+ 	if (freq > pll->data->fmax)
+@@ -196,7 +202,8 @@ static void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
+ 	}
+ 
+ 	/* _pcw = freq * postdiv / fin * 2^pcwfbits */
+-	_pcw = ((u64)freq << val) << (pll->data->pcwbits - INTEGER_BITS);
++	ibits = pll->data->pcwibits ? pll->data->pcwibits : INTEGER_BITS;
++	_pcw = ((u64)freq << val) << (pll->data->pcwbits - ibits);
+ 	do_div(_pcw, fin);
+ 
+ 	*pcw = (u32)_pcw;
 -- 
 2.18.0
