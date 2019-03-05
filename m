@@ -1,88 +1,284 @@
-From: Min Guo <min.guo@mediatek.com>
-Subject: Re: [PATCH v5 1/6] dt-bindings: usb: musb: Add support for MediaTek
- musb controller
-Date: Tue, 5 Mar 2019 09:19:31 +0800
-Message-ID: <1551748771.12020.36.camel@mhfsdcap03>
-References: <1550561795-31132-1-git-send-email-min.guo@mediatek.com>
-         <1550561795-31132-2-git-send-email-min.guo@mediatek.com>
-         <20190222164923.GA26413@bogus> <1551058604.12020.34.camel@mhfsdcap03>
-         <CAL_JsqKb_afdZFaOoB5yvs2hX-T9HPVy_d30zu7f7yiqaRPaLg@mail.gmail.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH] usb: introduce usb_ep_type_string() function
+Date: Tue, 5 Mar 2019 10:22:28 +0800
+Message-ID: <1551752548.2210.94.camel@mhfsdcap03>
+References: <e2ff70a3608dce315b52aea710398ba79d0f6f93.1551422947.git.chunfeng.yun@mediatek.com>
+ <20190301162141.GB19937@kroah.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAL_JsqKb_afdZFaOoB5yvs2hX-T9HPVy_d30zu7f7yiqaRPaLg@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: Bin Liu <b-liu@ti.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Linux USB List <linux-usb@vger.kernel.org>, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Tony Lindgren <tony@atomide.com>, Hans de Goede <hdegoede@redhat.com>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190301162141.GB19937@kroah.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Felipe Balbi <balbi@kernel.org>, Arnd Bergmann <arnd@arndb.de>, Mathias Nyman <mathias.nyman@intel.com>, "Gustavo A. R. Silva" <gustavo@embeddedor.com>, Andrew Jeffery <andrew@aj.id.au>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, Johan Hovold <johan@kernel.org>, linux-kernel@vger.kernel.org, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, linux-aspeed@lists.ozlabs.org, Alan Stern <stern@rowland.harvard.edu>, Joel Stanley <joel@jms.id.au>, Matthias Brugger <matthias.bgg@gmail.com>, Colin Ian King <colin.king@canonical.com>, Jaejoong Kim <climbbb.kim@gmail.com>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, linux-arm-kernel@lists.infradead.org, Roger Quadros <rogerq@ti.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Rob,
-
-On Mon, 2019-03-04 at 11:42 -0600, Rob Herring wrote:
-> On Sun, Feb 24, 2019 at 7:36 PM Min Guo <min.guo@mediatek.com> wrote:
-> >
-> > Hi Rob,
-> > On Fri, 2019-02-22 at 10:49 -0600, Rob Herring wrote:
-> > > On Tue, Feb 19, 2019 at 03:36:30PM +0800, min.guo@mediatek.com wrote:
-> > > > From: Min Guo <min.guo@mediatek.com>
-> > > >
-> > > > This adds support for MediaTek musb controller in
-> > > > host, peripheral and otg mode.
-> > > >
-> > > > Signed-off-by: Min Guo <min.guo@mediatek.com>
-> > > > ---
-> > > > changes in v5:
-> > > > suggested by Rob:
-> > > > 1. Modify compatible as
-> > > > - compatible : should be one of:
-> > > >                "mediatek,mt-2701"
-> > > >                ...
-> > > >                followed by "mediatek,mtk-musb"
-> > > > 2. Add usb connector child node
-> > > >
-> > > > changes in v4:
-> > > > suggested by Sergei:
-> > > > 1. String alignment
-> > > >
-> > > > changes in v3:
-> > > > 1. no changes
-> > > >
-> > > > changes in v2:
-> > > > suggested by Bin:
-> > > > 1. Modify DRC to DRD
-> > > > suggested by Rob:
-> > > > 2. Drop the "<soc-model>-musb" in compatible
-> > > > 3. Remove phy-names
-> > > > 4. Add space after comma in clock-names
-> > > > ---
-> > > >  .../devicetree/bindings/usb/mediatek,musb.txt      | 54 ++++++++++++++++++++++
-> > > >  1 file changed, 54 insertions(+)
-> > > >  create mode 100644 Documentation/devicetree/bindings/usb/mediatek,musb.txt
-> > > >
-> > > > diff --git a/Documentation/devicetree/bindings/usb/mediatek,musb.txt b/Documentation/devicetree/bindings/usb/mediatek,musb.txt
-> > > > new file mode 100644
-> > > > index 0000000..0632e6e
-> > > > --- /dev/null
-> > > > +++ b/Documentation/devicetree/bindings/usb/mediatek,musb.txt
-> > > > @@ -0,0 +1,54 @@
-> > > > +MediaTek musb DRD/OTG controller
-> > > > +-------------------------------------------
-> > > > +
-> > > > +Required properties:
-> > > > + - compatible      : should be one of:
-> > > > +                     "mediatek,mt-2701"
-> > >
-> > > That looks like a top-level SoC compatible and doesn't match the
-> > > example.
-> > "mediatek,mt-2701" is an example, just to describe a specific SOC.
-> > May I modify compatibel like:
-> > compatible : should be "mediatek,mtk-musb"
+Hi,
+On Fri, 2019-03-01 at 17:21 +0100, Greg Kroah-Hartman wrote:
+> On Fri, Mar 01, 2019 at 02:58:23PM +0800, Chunfeng Yun wrote:
+> > In some places, the code prints a human-readable USB endpoint
+> > transfer type (e.g. "bulk"). This involves a switch statement
+> > sometimes wrapped around in ({ ... }) block leading to code
+> > repetition.
+> > To make this scenario easier, here introduces usb_ep_type_string()
+> > function, which returns a human-readable name of provided
+> > endpoint type.
+> > It also changes a few places switch was used to use this
+> > new function.
+> > 
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > ---
+> >  drivers/usb/common/common.c              | 16 ++++++++++++++++
+> >  drivers/usb/core/endpoint.c              | 18 ++----------------
+> >  drivers/usb/core/hcd.c                   | 17 ++---------------
+> >  drivers/usb/dwc3/debugfs.c               | 23 ++++-------------------
+> >  drivers/usb/gadget/udc/aspeed-vhub/epn.c |  6 +-----
+> >  drivers/usb/gadget/udc/dummy_hcd.c       | 16 +---------------
+> >  drivers/usb/host/xhci-trace.h            | 19 ++-----------------
+> >  include/linux/usb/ch9.h                  |  8 ++++++++
+> >  8 files changed, 36 insertions(+), 87 deletions(-)
+> > 
+> > diff --git a/drivers/usb/common/common.c b/drivers/usb/common/common.c
+> > index 48277bbc15e4..2174dd9ec176 100644
+> > --- a/drivers/usb/common/common.c
+> > +++ b/drivers/usb/common/common.c
+> > @@ -16,6 +16,22 @@
+> >  #include <linux/usb/otg.h>
+> >  #include <linux/of_platform.h>
+> >  
+> > +static const char *const ep_type_names[] = {
+> > +	[USB_ENDPOINT_XFER_CONTROL] = "ctrl",
+> > +	[USB_ENDPOINT_XFER_ISOC] = "isoc",
+> > +	[USB_ENDPOINT_XFER_BULK] = "bulk",
+> > +	[USB_ENDPOINT_XFER_INT] = "intr",
+> > +};
+> > +
+> > +const char *usb_ep_type_string(int ep_type)
+> > +{
+> > +	if (ep_type < 0 || ep_type >= ARRAY_SIZE(ep_type_names))
+> > +		return "unknown";
+> > +
+> > +	return ep_type_names[ep_type];
+> > +}
+> > +EXPORT_SYMBOL_GPL(usb_ep_type_string);
+> > +
+> >  const char *usb_otg_state_string(enum usb_otg_state state)
+> >  {
+> >  	static const char *const names[] = {
+> > diff --git a/drivers/usb/core/endpoint.c b/drivers/usb/core/endpoint.c
+> > index 1c2c04079676..afa43f9a47b2 100644
+> > --- a/drivers/usb/core/endpoint.c
+> > +++ b/drivers/usb/core/endpoint.c
+> > @@ -60,23 +60,9 @@ static ssize_t type_show(struct device *dev, struct device_attribute *attr,
+> >  			 char *buf)
+> >  {
+> >  	struct ep_device *ep = to_ep_device(dev);
+> > -	char *type = "unknown";
+> > +	int ep_type = usb_endpoint_type(ep->desc);
+> >  
+> > -	switch (usb_endpoint_type(ep->desc)) {
+> > -	case USB_ENDPOINT_XFER_CONTROL:
+> > -		type = "Control";
+> > -		break;
+> > -	case USB_ENDPOINT_XFER_ISOC:
+> > -		type = "Isoc";
+> > -		break;
+> > -	case USB_ENDPOINT_XFER_BULK:
+> > -		type = "Bulk";
+> > -		break;
+> > -	case USB_ENDPOINT_XFER_INT:
+> > -		type = "Interrupt";
+> > -		break;
+> > -	}
+> > -	return sprintf(buf, "%s\n", type);
+> > +	return sprintf(buf, "%s\n", usb_ep_type_string(ep_type));
 > 
-> No, you should fix the example adding "mediatek,mtk-musb".
-OK.
+> You just changed a user/kernel API here, the strings are now different
+> from what they used to be :(
+How about using these type string to keep them unchanged?
 
-> Rob
+I need help from Felipe and Mathias to check whether the changes in dwc3
+and xhci have side effect or not, and waiting for their comments
 
-Regards,
-Min.
+Thanks
+> 
+> That's not ok, odds are you will break tools if you do this.
+> 
+> >  }
+> >  static DEVICE_ATTR_RO(type);
+> >  
+> > diff --git a/drivers/usb/core/hcd.c b/drivers/usb/core/hcd.c
+> > index 015b126ce455..193ee92b2fdb 100644
+> > --- a/drivers/usb/core/hcd.c
+> > +++ b/drivers/usb/core/hcd.c
+> > @@ -1875,23 +1875,10 @@ void usb_hcd_flush_endpoint(struct usb_device *udev,
+> >  		/* kick hcd */
+> >  		unlink1(hcd, urb, -ESHUTDOWN);
+> >  		dev_dbg (hcd->self.controller,
+> > -			"shutdown urb %pK ep%d%s%s\n",
+> > +			"shutdown urb %pK ep%d%s-%s\n",
+> >  			urb, usb_endpoint_num(&ep->desc),
+> >  			is_in ? "in" : "out",
+> > -			({	char *s;
+> > -
+> > -				 switch (usb_endpoint_type(&ep->desc)) {
+> > -				 case USB_ENDPOINT_XFER_CONTROL:
+> > -					s = ""; break;
+> > -				 case USB_ENDPOINT_XFER_BULK:
+> > -					s = "-bulk"; break;
+> > -				 case USB_ENDPOINT_XFER_INT:
+> > -					s = "-intr"; break;
+> > -				 default:
+> > -					s = "-iso"; break;
+> > -				};
+> > -				s;
+> > -			}));
+> > +			usb_ep_type_string(usb_endpoint_type(&ep->desc)));
+> 
+> You also changed the message here for control endpoints, but that's not
+> a big deal, it's ok.
+> 
+> >  		usb_put_urb (urb);
+> >  
+> >  		/* list contents may have changed */
+> > diff --git a/drivers/usb/dwc3/debugfs.c b/drivers/usb/dwc3/debugfs.c
+> > index 1c792710348f..d9e2a63835fe 100644
+> > --- a/drivers/usb/dwc3/debugfs.c
+> > +++ b/drivers/usb/dwc3/debugfs.c
+> > @@ -750,28 +750,13 @@ static int dwc3_transfer_type_show(struct seq_file *s, void *unused)
+> >  	unsigned long		flags;
+> >  
+> >  	spin_lock_irqsave(&dwc->lock, flags);
+> > -	if (!(dep->flags & DWC3_EP_ENABLED) ||
+> > -			!dep->endpoint.desc) {
+> > -		seq_printf(s, "--\n");
+> > +	if (!(dep->flags & DWC3_EP_ENABLED) || !dep->endpoint.desc) {
+> > +		seq_puts(s, "unknown\n");
+> >  		goto out;
+> >  	}
+> >  
+> > -	switch (usb_endpoint_type(dep->endpoint.desc)) {
+> > -	case USB_ENDPOINT_XFER_CONTROL:
+> > -		seq_printf(s, "control\n");
+> > -		break;
+> > -	case USB_ENDPOINT_XFER_ISOC:
+> > -		seq_printf(s, "isochronous\n");
+> > -		break;
+> > -	case USB_ENDPOINT_XFER_BULK:
+> > -		seq_printf(s, "bulk\n");
+> > -		break;
+> > -	case USB_ENDPOINT_XFER_INT:
+> > -		seq_printf(s, "interrupt\n");
+> > -		break;
+> > -	default:
+> > -		seq_printf(s, "--\n");
+> > -	}
+> > +	seq_printf(s, "%s\n",
+> > +		   usb_ep_type_string(usb_endpoint_type(dep->endpoint.desc)));
+> 
+> It is debugfs, so no real API guarantees at all, but you did change the
+> output format, and that's not always good.
+got it
+> 
+> >  
+> >  out:
+> >  	spin_unlock_irqrestore(&dwc->lock, flags);
+> > diff --git a/drivers/usb/gadget/udc/aspeed-vhub/epn.c b/drivers/usb/gadget/udc/aspeed-vhub/epn.c
+> > index 4a28e3fbeb0b..165b0a43670e 100644
+> > --- a/drivers/usb/gadget/udc/aspeed-vhub/epn.c
+> > +++ b/drivers/usb/gadget/udc/aspeed-vhub/epn.c
+> > @@ -593,10 +593,6 @@ static int ast_vhub_epn_disable(struct usb_ep* u_ep)
+> >  static int ast_vhub_epn_enable(struct usb_ep* u_ep,
+> >  			       const struct usb_endpoint_descriptor *desc)
+> >  {
+> > -	static const char *ep_type_string[] __maybe_unused = { "ctrl",
+> > -							       "isoc",
+> > -							       "bulk",
+> > -							       "intr" };
+> >  	struct ast_vhub_ep *ep = to_ast_ep(u_ep);
+> >  	struct ast_vhub_dev *dev;
+> >  	struct ast_vhub *vhub;
+> > @@ -646,7 +642,7 @@ static int ast_vhub_epn_enable(struct usb_ep* u_ep,
+> >  	ep->epn.wedged = false;
+> >  
+> >  	EPDBG(ep, "Enabling [%s] %s num %d maxpacket=%d\n",
+> > -	      ep->epn.is_in ? "in" : "out", ep_type_string[type],
+> > +	      ep->epn.is_in ? "in" : "out", usb_ep_type_string(type),
+> >  	      usb_endpoint_num(desc), maxpacket);
+> >  
+> >  	/* Can we use DMA descriptor mode ? */
+> > diff --git a/drivers/usb/gadget/udc/dummy_hcd.c b/drivers/usb/gadget/udc/dummy_hcd.c
+> > index baf72f95f0f1..40c6a484e232 100644
+> > --- a/drivers/usb/gadget/udc/dummy_hcd.c
+> > +++ b/drivers/usb/gadget/udc/dummy_hcd.c
+> > @@ -617,21 +617,7 @@ static int dummy_enable(struct usb_ep *_ep,
+> >  		_ep->name,
+> >  		desc->bEndpointAddress & 0x0f,
+> >  		(desc->bEndpointAddress & USB_DIR_IN) ? "in" : "out",
+> > -		({ char *val;
+> > -		 switch (usb_endpoint_type(desc)) {
+> > -		 case USB_ENDPOINT_XFER_BULK:
+> > -			 val = "bulk";
+> > -			 break;
+> > -		 case USB_ENDPOINT_XFER_ISOC:
+> > -			 val = "iso";
+> > -			 break;
+> > -		 case USB_ENDPOINT_XFER_INT:
+> > -			 val = "intr";
+> > -			 break;
+> > -		 default:
+> > -			 val = "ctrl";
+> > -			 break;
+> > -		 } val; }),
+> > +		usb_ep_type_string(usb_endpoint_type(desc)),
+> >  		max, ep->stream_en ? "enabled" : "disabled");
+> >  
+> >  	/* at this point real hardware should be NAKing transfers
+> > diff --git a/drivers/usb/host/xhci-trace.h b/drivers/usb/host/xhci-trace.h
+> > index 88b427434bd8..bac73d688f11 100644
+> > --- a/drivers/usb/host/xhci-trace.h
+> > +++ b/drivers/usb/host/xhci-trace.h
+> > @@ -289,23 +289,8 @@ DECLARE_EVENT_CLASS(xhci_log_urb,
+> >  	),
+> >  	TP_printk("ep%d%s-%s: urb %p pipe %u slot %d length %d/%d sgs %d/%d stream %d flags %08x",
+> >  			__entry->epnum, __entry->dir_in ? "in" : "out",
+> > -			({ char *s;
+> > -			switch (__entry->type) {
+> > -			case USB_ENDPOINT_XFER_INT:
+> > -				s = "intr";
+> > -				break;
+> > -			case USB_ENDPOINT_XFER_CONTROL:
+> > -				s = "control";
+> > -				break;
+> > -			case USB_ENDPOINT_XFER_BULK:
+> > -				s = "bulk";
+> > -				break;
+> > -			case USB_ENDPOINT_XFER_ISOC:
+> > -				s = "isoc";
+> > -				break;
+> > -			default:
+> > -				s = "UNKNOWN";
+> > -			} s; }), __entry->urb, __entry->pipe, __entry->slot_id,
+> > +			usb_ep_type_string(__entry->type),
+> > +			__entry->urb, __entry->pipe, __entry->slot_id,
+> >  			__entry->actual, __entry->length, __entry->num_mapped_sgs,
+> >  			__entry->num_sgs, __entry->stream, __entry->flags
+> >  		)
+> 
+> Another api change with "control" :(
+> 
+> I like the idea, but you can not break user/kernel apis like this
+> without knowing the affects that could happen.
+> 
+> thanks,
+> 
+> greg k-h
