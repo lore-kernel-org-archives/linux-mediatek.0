@@ -1,52 +1,41 @@
-From: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 2/2] ASoC: mediatek: add document for mt8183-mt6358
-Date: Tue, 5 Mar 2019 12:06:45 +0800
-Message-ID: <1551758805-34880-3-git-send-email-shunli.wang@mediatek.com>
-References: <1551758805-34880-1-git-send-email-shunli.wang@mediatek.com>
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+Subject: [PATCH v5 0/9] Mediatek MT8183 clock support
+Date: Tue, 5 Mar 2019 13:05:36 +0800
+Message-ID: <20190305050546.23431-1-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1551758805-34880-1-git-send-email-shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain
+Return-path: <stable-owner@vger.kernel.org>
+Sender: stable-owner@vger.kernel.org
+To: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-A device node usage notice for the machine with mt8183 as soc
-and mt6358 as codec.
+Resend clock patches from v4 based on v5.0-rc1.
 
-Signed-off-by: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- Documentation/devicetree/bindings/sound/mt8183-mt6358.txt | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/sound/mt8183-mt6358.txt
+The whole series now is composed of
+a fix for PLL tuner (PATCH 1),
+clock common changes for both MT8183 & MT6765 (PATCH 2-3),
+clock support of MT8183 (PATCH 4-8) and
+resend a clock patch long time ago(PTACH 9).
 
-diff --git a/Documentation/devicetree/bindings/sound/mt8183-mt6358.txt b/Documentation/devicetree/bindings/sound/mt8183-mt6358.txt
-new file mode 100644
-index 0000000..75b19f3
---- /dev/null
-+++ b/Documentation/devicetree/bindings/sound/mt8183-mt6358.txt
-@@ -0,0 +1,12 @@
-+MT8183 with MT6358 CODEC
-+
-+Required properties:
-+- compatible: "mediatek,mt8183-mt6358-sound"
-+- mediatek,platform: the phandle of MT8183 ASoC platform
-+
-+Example:
-+
-+	sound {
-+		compatible = "mediatek,mt8183-mt6358-sound";
-+		mediatek,platform = <&afe>;
-+	};
--- 
-1.9.1
+changes since v4:
+- refine for the fix of PLL tuner(PATCH 1).
+- add configurable pcw_chg_reg for MT8183 and the following IC(PATCH 7).
+
+changes sinve v3:
+- add fix tag.
+- small change of mtk_clk_mux data structure.
+- use of_property_for_each_string to iterate dependent subsys clock of power domain.
+- document critical clocks.
+- reduce some clock register error log.
+- few coding style fix.
+
+changes sinve v2:
+- refine for implementation consistency of mtk clk mux.
+- separate the onoff API into enable/disable API for mtk scpsys.
+- resend a patch about PLL rate changing.
+
+changes since v1:
+- refine for better code quality.
+- some minor bug fix of clock part, like incorrect control address
+  and missing clocks.
