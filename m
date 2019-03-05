@@ -1,237 +1,84 @@
 From: Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: [PATCH v5 4/9] dt-bindings: ARM: Mediatek: Document bindings for MT8183
-Date: Tue, 5 Mar 2019 13:05:41 +0800
-Message-ID: <20190305050546.23431-6-weiyi.lu@mediatek.com>
+Subject: [PATCH v5 9/9] clk: mediatek: Allow changing PLL rate when it is off
+Date: Tue, 5 Mar 2019 13:05:46 +0800
+Message-ID: <20190305050546.23431-11-weiyi.lu@mediatek.com>
 References: <20190305050546.23431-1-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 In-Reply-To: <20190305050546.23431-1-weiyi.lu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, stable@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds the binding documentation for apmixedsys, audiosys,
-camsys, imgsys, infracfg, mcucfg, mfgcfg, mmsys, topckgen, vdecsys,
-vencsys and ipu for Mediatek MT8183.
+From: James Liao <jamesjj.liao@mediatek.com>
 
+Some modules may need to change its clock rate before turn on it.
+So changing PLL's rate when it is off should be allowed.
+This patch removes PLL enabled check before set rate, so that
+PLLs can set new frequency even if they are off.
+
+On MT8173 for example, ARMPLL's enable bit can be controlled by
+other HW. That means ARMPLL may be turned on even if we (CPU / SW)
+set ARMPLL's enable bit as 0. In this case, SW may want and can
+still change ARMPLL's rate by changing its pcw and postdiv settings.
+But without this patch, new pcw setting will not be applied because
+its enable bit is 0.
+
+Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
+Acked-by: Michael Turquette <mturuqette@baylibre.com>
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
-Acked-by: Stephen Boyd <sboyd@kernel.org>
 ---
- .../arm/mediatek/mediatek,apmixedsys.txt      |  1 +
- .../bindings/arm/mediatek/mediatek,audsys.txt |  1 +
- .../bindings/arm/mediatek/mediatek,camsys.txt | 22 ++++++++++
- .../bindings/arm/mediatek/mediatek,imgsys.txt |  1 +
- .../arm/mediatek/mediatek,infracfg.txt        |  1 +
- .../bindings/arm/mediatek/mediatek,ipu.txt    | 43 +++++++++++++++++++
- .../bindings/arm/mediatek/mediatek,mcucfg.txt |  1 +
- .../bindings/arm/mediatek/mediatek,mfgcfg.txt |  1 +
- .../bindings/arm/mediatek/mediatek,mmsys.txt  |  1 +
- .../arm/mediatek/mediatek,topckgen.txt        |  1 +
- .../arm/mediatek/mediatek,vdecsys.txt         |  1 +
- .../arm/mediatek/mediatek,vencsys.txt         |  1 +
- 12 files changed, 75 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys.txt
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,ipu.txt
+ drivers/clk/mediatek/clk-pll.c | 13 ++-----------
+ 1 file changed, 2 insertions(+), 11 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
-index de4075413d91..9adf28d0141b 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
-@@ -14,6 +14,7 @@ Required Properties:
- 	- "mediatek,mt7629-apmixedsys"
- 	- "mediatek,mt8135-apmixedsys"
- 	- "mediatek,mt8173-apmixedsys"
-+	- "mediatek,mt8183-apmixedsys", "syscon"
- - #clock-cells: Must be 1
+diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
+index 65cee1d6c400..8d556fc99fed 100644
+--- a/drivers/clk/mediatek/clk-pll.c
++++ b/drivers/clk/mediatek/clk-pll.c
+@@ -124,9 +124,6 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
+ 		int postdiv)
+ {
+ 	u32 chg, val;
+-	int pll_en;
+-
+-	pll_en = readl(pll->base_addr + REG_CON0) & CON0_BASE_EN;
  
- The apmixedsys controller uses the common clk binding from
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
-index d1606b2c3e63..f3cef1a6d95c 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
-@@ -9,6 +9,7 @@ Required Properties:
- 	- "mediatek,mt2701-audsys", "syscon"
- 	- "mediatek,mt7622-audsys", "syscon"
- 	- "mediatek,mt7623-audsys", "mediatek,mt2701-audsys", "syscon"
-+	- "mediatek,mt8183-audiosys", "syscon"
- - #clock-cells: Must be 1
+ 	/* disable tuner */
+ 	__mtk_pll_tuner_disable(pll);
+@@ -147,12 +144,7 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
+ 			pll->data->pcw_shift);
+ 	val |= pcw << pll->data->pcw_shift;
+ 	writel(val, pll->pcw_addr);
+-
+-	chg = readl(pll->pcw_chg_addr);
+-
+-	if (pll_en)
+-		chg |= PCW_CHG_MASK;
+-
++	chg = readl(pll->pcw_chg_addr) | PCW_CHG_MASK;
+ 	writel(chg, pll->pcw_chg_addr);
+ 	if (pll->tuner_addr)
+ 		writel(val + 1, pll->tuner_addr);
+@@ -160,8 +152,7 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
+ 	/* restore tuner_en */
+ 	__mtk_pll_tuner_enable(pll);
  
- The AUDSYS controller uses the common clk binding from
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys.txt
-new file mode 100644
-index 000000000000..d8930f64aa98
---- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys.txt
-@@ -0,0 +1,22 @@
-+MediaTek CAMSYS controller
-+============================
-+
-+The MediaTek camsys controller provides various clocks to the system.
-+
-+Required Properties:
-+
-+- compatible: Should be one of:
-+	- "mediatek,mt8183-camsys", "syscon"
-+- #clock-cells: Must be 1
-+
-+The camsys controller uses the common clk binding from
-+Documentation/devicetree/bindings/clock/clock-bindings.txt
-+The available clocks are defined in dt-bindings/clock/mt*-clk.h.
-+
-+Example:
-+
-+camsys: camsys@1a000000  {
-+	compatible = "mediatek,mt8183-camsys", "syscon";
-+	reg = <0 0x1a000000  0 0x1000>;
-+	#clock-cells = <1>;
-+};
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
-index 3f99672163e3..e3bc4a1e7a6e 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
-@@ -11,6 +11,7 @@ Required Properties:
- 	- "mediatek,mt6797-imgsys", "syscon"
- 	- "mediatek,mt7623-imgsys", "mediatek,mt2701-imgsys", "syscon"
- 	- "mediatek,mt8173-imgsys", "syscon"
-+	- "mediatek,mt8183-imgsys", "syscon"
- - #clock-cells: Must be 1
+-	if (pll_en)
+-		udelay(20);
++	udelay(20);
+ }
  
- The imgsys controller uses the common clk binding from
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
-index 417bd83d1378..0b324d216724 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
-@@ -15,6 +15,7 @@ Required Properties:
- 	- "mediatek,mt7629-infracfg", "syscon"
- 	- "mediatek,mt8135-infracfg", "syscon"
- 	- "mediatek,mt8173-infracfg", "syscon"
-+	- "mediatek,mt8183-infracfg", "syscon"
- - #clock-cells: Must be 1
- - #reset-cells: Must be 1
- 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ipu.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ipu.txt
-new file mode 100644
-index 000000000000..aabc8c5c8ed2
---- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ipu.txt
-@@ -0,0 +1,43 @@
-+Mediatek IPU controller
-+============================
-+
-+The Mediatek ipu controller provides various clocks to the system.
-+
-+Required Properties:
-+
-+- compatible: Should be one of:
-+	- "mediatek,mt8183-ipu_conn", "syscon"
-+	- "mediatek,mt8183-ipu_adl", "syscon"
-+	- "mediatek,mt8183-ipu_core0", "syscon"
-+	- "mediatek,mt8183-ipu_core1", "syscon"
-+- #clock-cells: Must be 1
-+
-+The ipu controller uses the common clk binding from
-+Documentation/devicetree/bindings/clock/clock-bindings.txt
-+The available clocks are defined in dt-bindings/clock/mt*-clk.h.
-+
-+Example:
-+
-+ipu_conn: syscon@19000000 {
-+	compatible = "mediatek,mt8183-ipu_conn", "syscon";
-+	reg = <0 0x19000000 0 0x1000>;
-+	#clock-cells = <1>;
-+};
-+
-+ipu_adl: syscon@19010000 {
-+	compatible = "mediatek,mt8183-ipu_adl", "syscon";
-+	reg = <0 0x19010000 0 0x1000>;
-+	#clock-cells = <1>;
-+};
-+
-+ipu_core0: syscon@19180000 {
-+	compatible = "mediatek,mt8183-ipu_core0", "syscon";
-+	reg = <0 0x19180000 0 0x1000>;
-+	#clock-cells = <1>;
-+};
-+
-+ipu_core1: syscon@19280000 {
-+	compatible = "mediatek,mt8183-ipu_core1", "syscon";
-+	reg = <0 0x19280000 0 0x1000>;
-+	#clock-cells = <1>;
-+};
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mcucfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mcucfg.txt
-index b8fb03f3613e..2b882b7ca72e 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mcucfg.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mcucfg.txt
-@@ -7,6 +7,7 @@ Required Properties:
- 
- - compatible: Should be one of:
- 	- "mediatek,mt2712-mcucfg", "syscon"
-+	- "mediatek,mt8183-mcucfg", "syscon"
- - #clock-cells: Must be 1
- 
- The mcucfg controller uses the common clk binding from
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt
-index 859e67b416d5..72787e7dd227 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.txt
-@@ -7,6 +7,7 @@ Required Properties:
- 
- - compatible: Should be one of:
- 	- "mediatek,mt2712-mfgcfg", "syscon"
-+	- "mediatek,mt8183-mfgcfg", "syscon"
- - #clock-cells: Must be 1
- 
- The mfgcfg controller uses the common clk binding from
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
-index 15d977afad31..545eab717c96 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
-@@ -11,6 +11,7 @@ Required Properties:
- 	- "mediatek,mt6797-mmsys", "syscon"
- 	- "mediatek,mt7623-mmsys", "mediatek,mt2701-mmsys", "syscon"
- 	- "mediatek,mt8173-mmsys", "syscon"
-+	- "mediatek,mt8183-mmsys", "syscon"
- - #clock-cells: Must be 1
- 
- The mmsys controller uses the common clk binding from
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
-index d160c2b4b6fe..46a1cfeb8b1d 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
-@@ -14,6 +14,7 @@ Required Properties:
- 	- "mediatek,mt7629-topckgen"
- 	- "mediatek,mt8135-topckgen"
- 	- "mediatek,mt8173-topckgen"
-+	- "mediatek,mt8183-topckgen", "syscon"
- - #clock-cells: Must be 1
- 
- The topckgen controller uses the common clk binding from
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
-index 3212afc753c8..57176bb8dbb5 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
-@@ -11,6 +11,7 @@ Required Properties:
- 	- "mediatek,mt6797-vdecsys", "syscon"
- 	- "mediatek,mt7623-vdecsys", "mediatek,mt2701-vdecsys", "syscon"
- 	- "mediatek,mt8173-vdecsys", "syscon"
-+	- "mediatek,mt8183-vdecsys", "syscon"
- - #clock-cells: Must be 1
- 
- The vdecsys controller uses the common clk binding from
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
-index 851545357e94..c9faa6269087 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
-@@ -9,6 +9,7 @@ Required Properties:
- 	- "mediatek,mt2712-vencsys", "syscon"
- 	- "mediatek,mt6797-vencsys", "syscon"
- 	- "mediatek,mt8173-vencsys", "syscon"
-+	- "mediatek,mt8183-vencsys", "syscon"
- - #clock-cells: Must be 1
- 
- The vencsys controller uses the common clk binding from
+ /*
 -- 
 2.18.0
