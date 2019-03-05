@@ -1,119 +1,112 @@
 From: Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: [PATCH v5 1/9] clk: mediatek: Disable tuner_en before change PLL rate
-Date: Tue, 5 Mar 2019 13:05:38 +0800
-Message-ID: <20190305050546.23431-3-weiyi.lu@mediatek.com>
+Subject: [PATCH v5 7/9] clk: mediatek: Add configurable pcw_chg_reg to
+ mtk_pll_data
+Date: Tue, 5 Mar 2019 13:05:44 +0800
+Message-ID: <20190305050546.23431-9-weiyi.lu@mediatek.com>
 References: <20190305050546.23431-1-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <stable-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 In-Reply-To: <20190305050546.23431-1-weiyi.lu@mediatek.com>
-Sender: stable-owner@vger.kernel.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>, Owen Chen <owen.chen@mediatek.com>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, stable@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Owen Chen <owen.chen@mediatek.com>
+In previous MediaTek PLL design, it assumes the pcw change control
+is always on the CON1 register.
+However, the pcw change bit on MT8183 was moved onto CON0 because
+the the PCW length of audio PLLs are extended to 32-bit.
+Add configurable pcw_chg_reg to set the pcw change control register
+address or using the default control register CON1 if without
+setting in pll data.
 
-PLLs with tuner_en bit, such as APLL1, need to disable
-tuner_en before apply new frequency settings, or the new frequency
-settings (pcw) will not be applied.
-The tuner_en bit will be disabled during changing PLL rate
-and be restored after new settings applied.
-
-Fixes: e2f744a82d725 (clk: mediatek: Add MT2712 clock support)
-Cc: <stable@vger.kernel.org>
-Signed-off-by: Owen Chen <owen.chen@mediatek.com>
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- drivers/clk/mediatek/clk-pll.c | 48 ++++++++++++++++++++++++----------
- 1 file changed, 34 insertions(+), 14 deletions(-)
+ drivers/clk/mediatek/clk-mtk.h |  1 +
+ drivers/clk/mediatek/clk-pll.c | 17 +++++++++++------
+ 2 files changed, 12 insertions(+), 6 deletions(-)
 
+diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+index 928905496c4b..37ae944548e9 100644
+--- a/drivers/clk/mediatek/clk-mtk.h
++++ b/drivers/clk/mediatek/clk-mtk.h
+@@ -221,6 +221,7 @@ struct mtk_pll_data {
+ 	int pcwibits;
+ 	uint32_t pcw_reg;
+ 	int pcw_shift;
++	uint32_t pcw_chg_reg;
+ 	const struct mtk_pll_div_table *div_table;
+ 	const char *parent_name;
+ };
 diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-index f54e4015b0b1..18842d660317 100644
+index 67aaa3082d9b..65cee1d6c400 100644
 --- a/drivers/clk/mediatek/clk-pll.c
 +++ b/drivers/clk/mediatek/clk-pll.c
-@@ -88,6 +88,32 @@ static unsigned long __mtk_pll_recalc_rate(struct mtk_clk_pll *pll, u32 fin,
- 	return ((unsigned long)vco + postdiv - 1) / postdiv;
- }
+@@ -27,7 +27,7 @@
+ #define CON0_BASE_EN		BIT(0)
+ #define CON0_PWR_ON		BIT(0)
+ #define CON0_ISO_EN		BIT(1)
+-#define CON0_PCW_CHG		BIT(31)
++#define PCW_CHG_MASK		BIT(31)
  
-+static void __mtk_pll_tuner_enable(struct mtk_clk_pll *pll)
-+{
-+	u32 r;
-+
-+	if (pll->tuner_en_addr) {
-+		r = readl(pll->tuner_en_addr) | BIT(pll->data->tuner_en_bit);
-+		writel(r, pll->tuner_en_addr);
-+	} else if (pll->tuner_addr) {
-+		r = readl(pll->tuner_addr) | AUDPLL_TUNER_EN;
-+		writel(r, pll->tuner_addr);
-+	}
-+}
-+
-+static void __mtk_pll_tuner_disable(struct mtk_clk_pll *pll)
-+{
-+	u32 r;
-+
-+	if (pll->tuner_en_addr) {
-+		r = readl(pll->tuner_en_addr) & ~BIT(pll->data->tuner_en_bit);
-+		writel(r, pll->tuner_en_addr);
-+	} else if (pll->tuner_addr) {
-+		r = readl(pll->tuner_addr) & ~AUDPLL_TUNER_EN;
-+		writel(r, pll->tuner_addr);
-+	}
-+}
-+
+ #define AUDPLL_TUNER_EN		BIT(31)
+ 
+@@ -51,6 +51,7 @@ struct mtk_clk_pll {
+ 	void __iomem	*tuner_addr;
+ 	void __iomem	*tuner_en_addr;
+ 	void __iomem	*pcw_addr;
++	void __iomem	*pcw_chg_addr;
+ 	const struct mtk_pll_data *data;
+ };
+ 
+@@ -122,7 +123,7 @@ static void __mtk_pll_tuner_disable(struct mtk_clk_pll *pll)
  static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
  		int postdiv)
  {
-@@ -96,6 +122,9 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
+-	u32 con1, val;
++	u32 chg, val;
+ 	int pll_en;
  
  	pll_en = readl(pll->base_addr + REG_CON0) & CON0_BASE_EN;
+@@ -147,14 +148,14 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
+ 	val |= pcw << pll->data->pcw_shift;
+ 	writel(val, pll->pcw_addr);
  
-+	/* disable tuner */
-+	__mtk_pll_tuner_disable(pll);
-+
- 	/* set postdiv */
- 	val = readl(pll->pd_addr);
- 	val &= ~(POSTDIV_MASK << pll->data->pd_shift);
-@@ -122,6 +151,9 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
- 	if (pll->tuner_addr)
- 		writel(con1 + 1, pll->tuner_addr);
+-	con1 = readl(pll->base_addr + REG_CON1);
++	chg = readl(pll->pcw_chg_addr);
  
-+	/* restore tuner_en */
-+	__mtk_pll_tuner_enable(pll);
-+
  	if (pll_en)
- 		udelay(20);
- }
-@@ -228,13 +260,7 @@ static int mtk_pll_prepare(struct clk_hw *hw)
- 	r |= pll->data->en_mask;
- 	writel(r, pll->base_addr + REG_CON0);
+-		con1 |= CON0_PCW_CHG;
++		chg |= PCW_CHG_MASK;
  
--	if (pll->tuner_en_addr) {
--		r = readl(pll->tuner_en_addr) | BIT(pll->data->tuner_en_bit);
--		writel(r, pll->tuner_en_addr);
--	} else if (pll->tuner_addr) {
--		r = readl(pll->tuner_addr) | AUDPLL_TUNER_EN;
--		writel(r, pll->tuner_addr);
--	}
-+	__mtk_pll_tuner_enable(pll);
+-	writel(con1, pll->base_addr + REG_CON1);
++	writel(chg, pll->pcw_chg_addr);
+ 	if (pll->tuner_addr)
+-		writel(con1 + 1, pll->tuner_addr);
++		writel(val + 1, pll->tuner_addr);
  
- 	udelay(20);
- 
-@@ -258,13 +284,7 @@ static void mtk_pll_unprepare(struct clk_hw *hw)
- 		writel(r, pll->base_addr + REG_CON0);
- 	}
- 
--	if (pll->tuner_en_addr) {
--		r = readl(pll->tuner_en_addr) & ~BIT(pll->data->tuner_en_bit);
--		writel(r, pll->tuner_en_addr);
--	} else if (pll->tuner_addr) {
--		r = readl(pll->tuner_addr) & ~AUDPLL_TUNER_EN;
--		writel(r, pll->tuner_addr);
--	}
-+	__mtk_pll_tuner_disable(pll);
- 
- 	r = readl(pll->base_addr + REG_CON0);
- 	r &= ~CON0_BASE_EN;
+ 	/* restore tuner_en */
+ 	__mtk_pll_tuner_enable(pll);
+@@ -329,6 +330,10 @@ static struct clk *mtk_clk_register_pll(const struct mtk_pll_data *data,
+ 	pll->pwr_addr = base + data->pwr_reg;
+ 	pll->pd_addr = base + data->pd_reg;
+ 	pll->pcw_addr = base + data->pcw_reg;
++	if (data->pcw_chg_reg)
++		pll->pcw_chg_addr = base + data->pcw_chg_reg;
++	else
++		pll->pcw_chg_addr = pll->base_addr + REG_CON1;
+ 	if (data->tuner_reg)
+ 		pll->tuner_addr = base + data->tuner_reg;
+ 	if (data->tuner_en_reg)
 -- 
 2.18.0
