@@ -1,129 +1,116 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH V6 8/8] drm/mediatek: fix the rate of parent for hdmi
- phy in MT2701
-Date: Wed, 6 Mar 2019 18:13:14 +0800
-Message-ID: <1551867194.1001.8.camel@mtksdaap41>
-References: <20190225020912.29120-1-wangyan.wang@mediatek.com>
-         <20190225020912.29120-9-wangyan.wang@mediatek.com>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Subject: Re: [PATCH v5 3/5] i2c: mediatek: Add arb clock in i2c driver
+Date: Wed, 6 Mar 2019 18:44:05 +0800
+Message-ID: <CANMq1KArROL7F+KDWktg6vzZyXifZrKCO8khf_QGRoiLkfDegw@mail.gmail.com>
+References: <1551186660-16902-1-git-send-email-qii.wang@mediatek.com> <1551186660-16902-4-git-send-email-qii.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190225020912.29120-9-wangyan.wang@mediatek.com>
+In-Reply-To: <1551186660-16902-4-git-send-email-qii.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: wangyan wang <wangyan.wang@mediatek.com>
-Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, chunhui dai <chunhui.dai@mediatek.com>, Colin Ian King <colin.king@canonical.com>, Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, srv_heupstream@mediatek.com
+To: Qii Wang <qii.wang@mediatek.com>
+Cc: wsa@the-dreams.de, linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, lkml <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, Leilk Liu <leilk.liu@mediatek.com>, xinping.qian@mediatek.com, liguo.zhang@mediatek.com, Rob Herring <robh@kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Wangyan:
+On Tue, Feb 26, 2019 at 9:11 PM Qii Wang <qii.wang@mediatek.com> wrote:
+>
+> When two i2c controllers are internally connected to the same
+> GPIO pins, the arb clock is needed to ensure that the waveforms
+> do not interfere with each other.
+>
+> Signed-off-by: Qii Wang <qii.wang@mediatek.com>
 
-On Mon, 2019-02-25 at 10:09 +0800, wangyan wang wrote:
-> From: chunhui dai <chunhui.dai@mediatek.com>
-> 
-> We should not change the rate of parent for hdmi phy when
-> doing round_rate for this clock. The parent clock of hdmi
-> phy must be the same as it. We change it when doing set_rate
-> only.
-> 
-> Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
-> Signed-off-by: wangyan wang <wangyan.wang@mediatek.com>
+Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
+
 > ---
->  drivers/gpu/drm/mediatek/mtk_hdmi_phy.c        | 14 --------------
->  drivers/gpu/drm/mediatek/mtk_hdmi_phy.h        |  3 ---
->  drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c | 11 +++++++++++
->  drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c | 14 ++++++++++++++
->  4 files changed, 25 insertions(+), 17 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-> index 370309d684ec..ca8bc1489f37 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-> @@ -15,20 +15,6 @@ static const struct phy_ops mtk_hdmi_phy_dev_ops = {
->  	.owner = THIS_MODULE,
->  };
->  
-> -long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
-> -			     unsigned long *parent_rate)
-> -{
-> -	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
-> -
-> -	hdmi_phy->pll_rate = rate;
-> -	if (rate <= 74250000)
-> -		*parent_rate = rate;
-> -	else
-> -		*parent_rate = rate / 2;
-> -
-> -	return rate;
-> -}
-> -
->  u32 mtk_hdmi_phy_read(struct mtk_hdmi_phy *hdmi_phy, u32 offset)
+>  drivers/i2c/busses/i2c-mt65xx.c |   25 ++++++++++++++++++++++---
+>  1 file changed, 22 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+> index 428ac99..14d6b38 100644
+> --- a/drivers/i2c/busses/i2c-mt65xx.c
+> +++ b/drivers/i2c/busses/i2c-mt65xx.c
+> @@ -35,6 +35,7 @@
+>  #include <linux/slab.h>
+>
+>  #define I2C_RS_TRANSFER                        (1 << 4)
+> +#define I2C_ARB_LOST                   (1 << 3)
+>  #define I2C_HS_NACKERR                 (1 << 2)
+>  #define I2C_ACKERR                     (1 << 1)
+>  #define I2C_TRANSAC_COMP               (1 << 0)
+> @@ -181,6 +182,7 @@ struct mtk_i2c {
+>         struct clk *clk_main;           /* main clock for i2c bus */
+>         struct clk *clk_dma;            /* DMA clock for i2c via DMA */
+>         struct clk *clk_pmic;           /* PMIC clock for i2c from PMIC */
+> +       struct clk *clk_arb;            /* Arbitrator clock for i2c */
+>         bool have_pmic;                 /* can use i2c pins from PMIC */
+>         bool use_push_pull;             /* IO config push-pull mode */
+>
+> @@ -299,8 +301,18 @@ static int mtk_i2c_clock_enable(struct mtk_i2c *i2c)
+>                 if (ret)
+>                         goto err_pmic;
+>         }
+> +
+> +       if (i2c->clk_arb) {
+> +               ret = clk_prepare_enable(i2c->clk_arb);
+> +               if (ret)
+> +                       goto err_arb;
+> +       }
+> +
+>         return 0;
+>
+> +err_arb:
+> +       if (i2c->have_pmic)
+> +               clk_disable_unprepare(i2c->clk_pmic);
+>  err_pmic:
+>         clk_disable_unprepare(i2c->clk_main);
+>  err_main:
+> @@ -311,6 +323,9 @@ static int mtk_i2c_clock_enable(struct mtk_i2c *i2c)
+>
+>  static void mtk_i2c_clock_disable(struct mtk_i2c *i2c)
 >  {
->  	return readl(hdmi_phy->regs + offset);
-> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-> index 446e2acd1926..c6061ad15ff0 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-> @@ -50,9 +50,6 @@ void mtk_hdmi_phy_set_bits(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
->  void mtk_hdmi_phy_mask(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
->  		       u32 val, u32 mask);
->  struct mtk_hdmi_phy *to_mtk_hdmi_phy(struct clk_hw *hw);
-> -long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
-> -			     unsigned long *parent_rate);
-> -
->  extern struct platform_driver mtk_hdmi_phy_driver;
->  extern struct mtk_hdmi_phy_conf mtk_hdmi_phy_8173_conf;
->  extern struct mtk_hdmi_phy_conf mtk_hdmi_phy_2701_conf;
-> diff --git a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-> index 88dd9e812ca0..33893a180c2e 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-> @@ -152,6 +152,17 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
->  			  RG_HDMITX_DRV_IBIAS_MASK);
->  	return 0;
->  }
+> +       if (i2c->clk_arb)
+> +               clk_disable_unprepare(i2c->clk_arb);
 > +
-> +static long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
-> +			     unsigned long *parent_rate)
-> +{
-> +	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
+>         if (i2c->have_pmic)
+>                 clk_disable_unprepare(i2c->clk_pmic);
+>
+> @@ -519,13 +534,13 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+>
+>         /* Clear interrupt status */
+>         mtk_i2c_writew(i2c, restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
+> -              I2C_TRANSAC_COMP, OFFSET_INTR_STAT);
+> +                           I2C_ARB_LOST | I2C_TRANSAC_COMP, OFFSET_INTR_STAT);
+>
+>         mtk_i2c_writew(i2c, I2C_FIFO_ADDR_CLR, OFFSET_FIFO_ADDR_CLR);
+>
+>         /* Enable interrupt */
+>         mtk_i2c_writew(i2c, restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
+> -              I2C_TRANSAC_COMP, OFFSET_INTR_MASK);
+> +                           I2C_ARB_LOST | I2C_TRANSAC_COMP, OFFSET_INTR_MASK);
+>
+>         /* Set transfer and transaction len */
+>         if (i2c->op == I2C_MASTER_WRRD) {
+> @@ -659,7 +674,7 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+>
+>         /* Clear interrupt mask */
+>         mtk_i2c_writew(i2c, ~(restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
+> -              I2C_TRANSAC_COMP), OFFSET_INTR_MASK);
+> +                           I2C_ARB_LOST | I2C_TRANSAC_COMP), OFFSET_INTR_MASK);
+>
+>         if (i2c->op == I2C_MASTER_WR) {
+>                 dma_unmap_single(i2c->dev, wpaddr,
+> @@ -884,6 +899,10 @@ static int mtk_i2c_probe(struct platform_device *pdev)
+>                 return PTR_ERR(i2c->clk_dma);
+>         }
+>
+> +       i2c->clk_arb = devm_clk_get(&pdev->dev, "arb");
+> +       if (IS_ERR(i2c->clk_arb))
+> +               i2c->clk_arb = NULL;
 > +
-> +	hdmi_phy->pll_rate = rate;
-
-I think you don't need to save the rate into pll_rate here, pll_rate
-would be set in set_rate() or recalc_rate().
-
-Regards,
-CK
-
-> +
-> +	return rate;
-> +}
-> +
->  static unsigned long mtk_hdmi_pll_recalc_rate(struct clk_hw *hw,
->  				       unsigned long parent_rate)
->  {
-> diff --git a/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
-> index 63dde42521b8..3a339f516613 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
-> @@ -285,6 +285,20 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
->  	return 0;
->  }
->  
-> +static long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
-> +			     unsigned long *parent_rate)
-> +{
-> +	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
-> +
-> +	hdmi_phy->pll_rate = rate;
-> +	if (rate <= 74250000)
-> +		*parent_rate = rate;
-> +	else
-> +		*parent_rate = rate / 2;
-> +
-> +	return rate;
-> +}
-> +
->  static unsigned long mtk_hdmi_pll_recalc_rate(struct clk_hw *hw,
->  				       unsigned long parent_rate)
->  {
+>         clk = i2c->clk_main;
+>         if (i2c->have_pmic) {
+>                 i2c->clk_pmic = devm_clk_get(&pdev->dev, "pmic");
+> --
+> 1.7.9.5
+>
