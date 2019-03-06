@@ -1,87 +1,48 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH V6 0/8] make mt7623 clock of hdmi stable
-Date: Wed, 6 Mar 2019 09:52:21 +0800
-Message-ID: <1551837141.23995.13.camel@mtksdaap41>
-References: <20190225020912.29120-1-wangyan.wang@mediatek.com>
+From: Alexandre Courbot <acourbot@chromium.org>
+Subject: [PATCH] media: mtk-vcodec: fix access to vb2_v4l2_buffer struct
+Date: Wed,  6 Mar 2019 15:15:02 +0900
+Message-ID: <20190306061502.126904-1-acourbot@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190225020912.29120-1-wangyan.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: wangyan wang <wangyan.wang@mediatek.com>
-Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, chunhui dai <chunhui.dai@mediatek.com>, Colin Ian King <colin.king@canonical.com>, Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, srv_heupstream@mediatek.com
+To: Ezequiel Garcia <ezequiel@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2019-02-25 at 10:09 +0800, wangyan wang wrote:
-> From: Wangyan Wang <wangyan.wang@mediatek.com>
-> 
-> V6 adopt maintainer's suggestion.
-> Here is the change list between V5 & V6
-> 1. change "unsigned char mux_flags;" to "u8 mux_flags;" to
-> match with the struct in " clk: mediatek: add MUX_GATE_FLAGS_2".
-> 
+Commit 0650a91499e0 ("media: mtk-vcodec: Correct return type for mem2mem
+buffer helpers") fixed the return types for mem2mem buffer helper
+functions, but omitted two occurrences that are accessed in the
+mtk_v4l2_debug() macro. These only trigger compiler errors when DEBUG is
+defined.
 
-Hi, Wangyan:
+Fixes: 0650a91499e0 ("media: mtk-vcodec: Correct return type for mem2mem buffer helpers")
+Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
+---
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-I'm not familiar with this clock system, so I still have some question
-about it, if you could describe more clear, it would help us to speed up
-this review process.
-
-In [1], I find the clock that dpi and hdmi_phy controls,
-
-	dpi0: dpi@14014000 {
-		clocks = <&mmsys CLK_MM_DPI1_DIGL>,
-			 <&mmsys CLK_MM_DPI1_ENGINE>,
-			 <&topckgen CLK_TOP_TVDPLL>;
-		clock-names = "pixel", "engine", "pll";
-	};
-
-
-	hdmi_phy: phy@10209100 {
-		clocks = <&apmixedsys CLK_APMIXED_HDMI_REF>;
-		clock-names = "pll_ref";
-	};
-
-In [2], You say that to prevent changing tvdpll would let hdmi stable,
-and this clock is controlled by dpi, why do you modify the control flow
-in hdmi_phy? If these two have relationship, please describe more clear
-because I'm not familiar with this clock system.
-
-And I think that patch 'drm/mediatek: using new factor for tvdpll in
-MT2701' is the major patch to prevent modifying tvdpll because it reduce
-the factor case. Does MT8173 has the same problem? Just ask, I does not
-require you to modify MT8173 part.
-
-[1]
-https://github.com/frank-w/BPI-R2-4.14/blob/663f7def421952eb49b2d698eadaff12d02622d2/arch/arm/boot/dts/mt7623.dtsi
-[2]
-http://lists.infradead.org/pipermail/linux-mediatek/2019-February/017693.html
-
-
-Regards,
-CK
-
-
-> 
-> chunhui dai (8):
->   drm/mediatek: recalculate hdmi phy clock of MT2701 by querying
->     hardware
->   drm/mediatek: move the setting of fixed divider
->   drm/mediatek: using different flags of clk for HDMI phy
->   drm/mediatek: fix the rate and divder of hdmi phy for MT2701
->   clk: mediatek: add MUX_GATE_FLAGS_2
->   clk: mediatek: using CLK_MUX_ROUND_CLOSEST for the clock of dpi1_sel
->   drm/mediatek: using new factor for tvdpll in MT2701
->   drm/mediatek: fix the rate of parent for hdmi phy in MT2701
-> 
->  drivers/clk/mediatek/clk-mt2701.c              |  4 +-
->  drivers/clk/mediatek/clk-mtk.c                 |  2 +-
->  drivers/clk/mediatek/clk-mtk.h                 | 20 ++++++---
->  drivers/gpu/drm/mediatek/mtk_dpi.c             |  8 ++--
->  drivers/gpu/drm/mediatek/mtk_hdmi_phy.c        | 34 ++++------------
->  drivers/gpu/drm/mediatek/mtk_hdmi_phy.h        |  7 +---
->  drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c | 56 +++++++++++++++++++++++---
->  drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c | 23 +++++++++++
->  8 files changed, 102 insertions(+), 52 deletions(-)
-> 
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+index d022c65bb34c..a85c7cc8328e 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+@@ -1158,7 +1158,7 @@ static void vb2ops_vdec_buf_queue(struct vb2_buffer *vb)
+ 	src_mem.size = (size_t)src_buf->planes[0].bytesused;
+ 	mtk_v4l2_debug(2,
+ 			"[%d] buf id=%d va=%p dma=%pad size=%zx",
+-			ctx->id, src_buf->index,
++			ctx->id, src_buf->vb2_buf.index,
+ 			src_mem.va, &src_mem.dma_addr,
+ 			src_mem.size);
+ 
+@@ -1182,7 +1182,7 @@ static void vb2ops_vdec_buf_queue(struct vb2_buffer *vb)
+ 		}
+ 		mtk_v4l2_debug(ret ? 0 : 1,
+ 			       "[%d] vdec_if_decode() src_buf=%d, size=%zu, fail=%d, res_chg=%d",
+-			       ctx->id, src_buf->index,
++			       ctx->id, src_buf->vb2_buf.index,
+ 			       src_mem.size, ret, res_chg);
+ 		return;
+ 	}
+-- 
+2.21.0.352.gf09ad66450-goog
