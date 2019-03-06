@@ -1,48 +1,51 @@
-From: Pi-Hsun Shih <pihsun@chromium.org>
-Subject: Re: [PATCH v2 08/10] soc: mediatek: cmdq: add polling function
-Date: Wed, 6 Mar 2019 18:58:44 +0800
-Message-ID: <CANdKZ0cBRfSjS021waSWB-RE6PPBt+ZpvnZmVWABgB8Y1nVe+w@mail.gmail.com>
-References: <1551865835-50974-1-git-send-email-bibby.hsieh@mediatek.com> <1551865835-50974-9-git-send-email-bibby.hsieh@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH 04/11] usb: mtu3: rebuild the code of getting vbus regulator
+Date: Wed, 6 Mar 2019 19:46:16 +0800
+Message-ID: <1551872783-13707-5-git-send-email-chunfeng.yun@mediatek.com>
+References: <1551872783-13707-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1551865835-50974-9-git-send-email-bibby.hsieh@mediatek.com>
+In-Reply-To: <1551872783-13707-1-git-send-email-chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, CK HU <ck.hu@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <ji>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Mar 6, 2019 at 5:51 PM Bibby Hsieh <bibby.hsieh@mediatek.com> wrote:
-> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> index d3873ab..71c167c 100644
-> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> @@ -231,6 +231,27 @@ int cmdq_pkt_clear_event(struct cmdq_pkt *pkt, u16 event)
->  }
->  EXPORT_SYMBOL(cmdq_pkt_clear_event);
->
-> +int cmdq_pkt_poll(struct cmdq_pkt *pkt, u8 subsys,
-> +                 u16 offset, u32 value, u32 mask)
-> +{
-> +       int err;
-> +
-> +       if (mask != 0xffffffff) {
-> +               err = cmdq_pkt_append_command(pkt, CMDQ_GET_ARG_C(~mask),
-> +                                             CMDQ_GET_ARG_B(~mask),
-> +                                             0, 0, 0, 0, 0, CMDQ_CODE_MASK);
+Remove local variable @vbus and use @dev instead of @pdev->dev
 
-All other codes use CMDQ_IMMEDIATE_VALUE instead of 0 for arguments of
-cmdq_pkt_append_command. Also use CMDQ_IMMEDIATE_VALUE here?
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ drivers/usb/mtu3/mtu3_plat.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
-> +
-> +               if (err != 0)
-> +                       return err;
-> +       }
-> +       offset = offset | 0x1;
-> +
-> +       return cmdq_pkt_append_command(pkt, CMDQ_GET_ARG_C(value),
-> +                                      CMDQ_GET_ARG_B(value),
-> +                                      offset, subsys, 0, 0, 0, CMDQ_CODE_POLL);
-> +}
-> +EXPORT_SYMBOL(cmdq_pkt_poll);
-> +
+diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
+index 3a4a80f15957..a326b1d6006a 100644
+--- a/drivers/usb/mtu3/mtu3_plat.c
++++ b/drivers/usb/mtu3/mtu3_plat.c
+@@ -228,7 +228,6 @@ static int get_ssusb_rscs(struct platform_device *pdev, struct ssusb_mtk *ssusb)
+ 	struct device_node *node = pdev->dev.of_node;
+ 	struct otg_switch_mtk *otg_sx = &ssusb->otg_switch;
+ 	struct device *dev = &pdev->dev;
+-	struct regulator *vbus;
+ 	struct resource *res;
+ 	int i;
+ 	int ret;
+@@ -299,12 +298,11 @@ static int get_ssusb_rscs(struct platform_device *pdev, struct ssusb_mtk *ssusb)
+ 	of_property_read_u32(node, "mediatek,u3p-dis-msk",
+ 			     &ssusb->u3p_dis_msk);
+ 
+-	vbus = devm_regulator_get(&pdev->dev, "vbus");
+-	if (IS_ERR(vbus)) {
++	otg_sx->vbus = devm_regulator_get(dev, "vbus");
++	if (IS_ERR(otg_sx->vbus)) {
+ 		dev_err(dev, "failed to get vbus\n");
+-		return PTR_ERR(vbus);
++		return PTR_ERR(otg_sx->vbus);
+ 	}
+-	otg_sx->vbus = vbus;
+ 
+ 	if (ssusb->dr_mode == USB_DR_MODE_HOST)
+ 		goto out;
+-- 
+2.20.1
