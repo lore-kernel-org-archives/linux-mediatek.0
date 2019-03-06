@@ -1,67 +1,81 @@
-From: Evan Green <evgreen@chromium.org>
-Subject: Re: [PATCH 02/13] driver core: Remove the link if there is no driver
- with AUTO flag
-Date: Tue, 5 Mar 2019 11:03:49 -0800
-Message-ID: <CAE=gft4iHRo8VQot26dH2NaRNLtxxRYWBmSpjkoL2BE_i6eXQw@mail.gmail.com>
-References: <1546318276-18993-1-git-send-email-yong.wu@mediatek.com>
- <1546318276-18993-3-git-send-email-yong.wu@mediatek.com> <CAE=gft7mWs1jc+KQQcPuuhcmxpFRnRBTt35+uC3F20N6R554bQ@mail.gmail.com>
- <1551278000.17917.50.camel@mhfsdcap03>
+From: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v3 0/7] scsi: ufs-mediatek: Add UFS support for Mediatek
+ SoC chips
+Date: Wed, 6 Mar 2019 09:32:00 +0800
+Message-ID: <1551835920.30977.29.camel@mtkswgap22>
+References: <1551252192-535-1-git-send-email-stanley.chu@mediatek.com>
+ <1551252192-535-2-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1551278000.17917.50.camel@mhfsdcap03>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: Joerg Roedel <joro@8bytes.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Tomasz Figa <tfiga@google.com>, Will Deacon <will.deacon@arm.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, Arnd Bergmann <arnd@arndb.de>, yingjoe.chen@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1551252192-535-2-git-send-email-stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, vivek.gautam-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org, robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, subhashj-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, avri.altman-Sjgp3cTcYWE@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, liwei213-hv44wF8Li93QT0dZR+AlfA@public.gmane.org, alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Feb 27, 2019 at 6:33 AM Yong Wu <yong.wu@mediatek.com> wrote:
->
-> On Mon, 2019-02-25 at 15:53 -0800, Evan Green wrote:
-> > On Mon, Dec 31, 2018 at 8:52 PM Yong Wu <yong.wu@mediatek.com> wrote:
-> > >
-> > > DL_FLAG_AUTOREMOVE_CONSUMER/SUPPLIER means "Remove the link
-> > > automatically on consumer/supplier driver unbind", that means we should
-> > > remove whole the device_link when there is no this driver no matter what
-> > > the ref_count of the link is.
-> > >
-> > > CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > > ---
-> > > The ref_count of our device_link normally is over 1. When the consumer
-> > > device driver is removed, whole the device_link should be removed.
-> > > Thus, I add this patch.
-> > > ---
-> >
-> > I will admit to reading about device links for the first time while
-> > reviewing this patch, but I don't really get this. Why use a kref at
-> > all if we're just going to ignore its value? For instance, I see that
-> > if you call device_link_add() with the same supplier and consumer, it
-> > uses the kref to return the same link. That machinery is broken with
-> > your change. Although I don't see any uses of it, you might also
-> > expect a supplier or consumer could do a kref_get() on the link it got
-> > back from device_link_add(), and have a reasonable expectation that
-> > the link wouldn't be freed out from under it. This would also be
-> > broken.
-> >
-> > Can you explain why your device_links normally have a reference count
-> > >1,
->
-> I use device link between the smi-larb device and the iommu-consumer
-> device. Take a example, smi-larb1 have 4 VDEC ports. From 4/13 in this
-> patchset, we use device_link to link the VDEC device and the smi-larb1
-> device in the function(mtk_iommu_config). since there are 4 ports, it
-> will call device_link_add 4 times.
->
-> >
-> > and why those additional references can't be cleaned up in an
-> > orderly fashion?
->
-> If the iommu-consume device(like VDEC above) is removed, It should enter
-> device_links_driver_cleanup which only ref_put one time. I guess whole
-> the link should be removed at that time.
+Hi Rob,
 
-It seems like Robin had some suggestions about using
-mtk_iommu_add_device() rather than the attach_dev() to set the links
-up, and then track them for removal in the corresponding
-remove_device() callback. Then you wouldn't need this change, right?
+Gentle ping for 2 dt-bindings documents patch in this series.
+
+On Wed, 2019-02-27 at 15:23 +0800, Stanley Chu wrote:
+> Hello,
+> 
+> This patch series adds UFS M-PHY and UFS host driver support in MediaTek chipsets.
+> 
+> In the meantime, re-factors ufshcd_get_pwr_dev_param in vendors' drivers. This function is for vendors to decide finally agreed attributes for power mode change if vendors define
+> their host capability in struct ufs_dev_params. Because it is using by both ufs-qcom and ufs-hisi and also used in ufs-mediatek in this serious, simply re-factor it and then every vendors can reuse it.
+> 
+> Changes since v2:
+> -	Fix header style with SPDX-License-Identifier declaration used.
+> -	Simplify ufs-phy-mtk to single source file since we has one MPHY version now, and do fixes according to Chunfeng Yun's comments.
+> -	Add dt-bindings of ufs-phy-mtk.
+> 
+> Changes since v1:
+> -	Re-factor ufshcd_get_pwr_dev_param in mediatek/qcom/hisi vendor drivers.
+> -	Introduce ufs-phy-mtk to have a good extension capability for different power control flows in future different MPHY versions.
+> -	Bind ufs-phy-mtk and hook suitable callbacks in ufs-mediatek driver.
+> -	Use PA_LOCAL_TX_LCC_ENABLE attribute defined in unipro.h instead.
+> -	Do some minor format fixes.
+> 
+> Stanley Chu (7):
+>   scsi: ufs: Introduce ufshcd_get_pwr_dev_param
+>   scsi: ufs-qcom: Re-factor ufshcd_get_pwr_dev_param
+>   scsi: ufs-hisi: Re-factor ufshcd_get_pwr_dev_param
+>   dt-bindings: phy: Add document for phy-mtk-ufs
+>   dt-bindings: scsi: ufs: Add document for ufs-mediatek
+>   phy: mediatek: Add UFS M-PHY driver
+>   scsi: ufs-mediatek: Add UFS support for Mediatek SoC chips
+> 
+>  .../devicetree/bindings/phy/phy-mtk-ufs.txt   |  35 ++
+>  .../devicetree/bindings/ufs/ufs-mediatek.txt  |  47 +++
+>  drivers/phy/mediatek/Kconfig                  |   9 +
+>  drivers/phy/mediatek/Makefile                 |   1 +
+>  drivers/phy/mediatek/phy-mtk-ufs.c            | 239 ++++++++++++
+>  drivers/scsi/ufs/Kconfig                      |  14 +
+>  drivers/scsi/ufs/Makefile                     |   1 +
+>  drivers/scsi/ufs/ufs-hisi.c                   | 109 +-----
+>  drivers/scsi/ufs/ufs-mediatek.c               | 368 ++++++++++++++++++
+>  drivers/scsi/ufs/ufs-mediatek.h               |  54 +++
+>  drivers/scsi/ufs/ufs-qcom.c                   | 106 +----
+>  drivers/scsi/ufs/ufshcd-pltfrm.c              |  98 +++++
+>  drivers/scsi/ufs/ufshcd-pltfrm.h              |  21 +
+>  13 files changed, 895 insertions(+), 207 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt
+>  create mode 100644 Documentation/devicetree/bindings/ufs/ufs-mediatek.txt
+>  create mode 100644 drivers/phy/mediatek/phy-mtk-ufs.c
+>  create mode 100644 drivers/scsi/ufs/ufs-mediatek.c
+>  create mode 100644 drivers/scsi/ufs/ufs-mediatek.h
+> 
+
+Thanks,
+Stanley
