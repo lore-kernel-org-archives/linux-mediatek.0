@@ -1,102 +1,61 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH V6 0/8] make mt7623 clock of hdmi stable
-Date: Wed, 6 Mar 2019 17:48:24 +0800
-Message-ID: <1551865704.1001.3.camel@mtksdaap41>
-References: <20190225020912.29120-1-wangyan.wang@mediatek.com>
-         <1551837141.23995.13.camel@mtksdaap41>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: [PATCH v2 03/10] dt-binding: gce: add binding for gce subsys property
+Date: Wed, 6 Mar 2019 17:50:28 +0800
+Message-ID: <1551865835-50974-4-git-send-email-bibby.hsieh@mediatek.com>
+References: <1551865835-50974-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1551837141.23995.13.camel@mtksdaap41>
+In-Reply-To: <1551865835-50974-1-git-send-email-bibby.hsieh@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: wangyan wang <wangyan.wang@mediatek.com>
-Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, chunhui dai <chunhui.dai@mediatek.com>, Colin Ian King <colin.king@canonical.com>, Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, srv_heupstream@mediatek.com
+To: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, CK HU <ck.hu@mediatek.com>
+Cc: Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.chen@mediatek.com, kendrick.hsu@mediatek.com, Frederic Chen <Frederic.Chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Wangyan:
+cmdq driver provide a function that get the relationship
+of sub system number from device node for client.
+add specification for #subsys-cells, mediatek,gce-subsys.
 
-On Wed, 2019-03-06 at 09:52 +0800, CK Hu wrote:
-> On Mon, 2019-02-25 at 10:09 +0800, wangyan wang wrote:
-> > From: Wangyan Wang <wangyan.wang@mediatek.com>
-> > 
-> > V6 adopt maintainer's suggestion.
-> > Here is the change list between V5 & V6
-> > 1. change "unsigned char mux_flags;" to "u8 mux_flags;" to
-> > match with the struct in " clk: mediatek: add MUX_GATE_FLAGS_2".
-> > 
-> 
-> Hi, Wangyan:
-> 
-> I'm not familiar with this clock system, so I still have some question
-> about it, if you could describe more clear, it would help us to speed up
-> this review process.
-> 
-> In [1], I find the clock that dpi and hdmi_phy controls,
-> 
-> 	dpi0: dpi@14014000 {
-> 		clocks = <&mmsys CLK_MM_DPI1_DIGL>,
-> 			 <&mmsys CLK_MM_DPI1_ENGINE>,
-> 			 <&topckgen CLK_TOP_TVDPLL>;
-> 		clock-names = "pixel", "engine", "pll";
-> 	};
-> 
-> 
-> 	hdmi_phy: phy@10209100 {
-> 		clocks = <&apmixedsys CLK_APMIXED_HDMI_REF>;
-> 		clock-names = "pll_ref";
-> 	};
-> 
-> In [2], You say that to prevent changing tvdpll would let hdmi stable,
-> and this clock is controlled by dpi, why do you modify the control flow
-> in hdmi_phy? If these two have relationship, please describe more clear
-> because I'm not familiar with this clock system.
-> 
+Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+---
+ Documentation/devicetree/bindings/mailbox/mtk-gce.txt | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
 
-As discuss offline, in [3] we can find out that CLK_APMIXED_HDMI_REF is
-derived from tvdpll, so tvdpll is the parent clock of hdmi_phy_pll.
-Therefore, this series should modify hdmi_phy flow as well.
-
-[3]
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/clk/mediatek/clk-mt2701.c?h=v5.0#n973
-
-Regards,
-CK
-
-> And I think that patch 'drm/mediatek: using new factor for tvdpll in
-> MT2701' is the major patch to prevent modifying tvdpll because it reduce
-> the factor case. Does MT8173 has the same problem? Just ask, I does not
-> require you to modify MT8173 part.
-> [1]
-> https://github.com/frank-w/BPI-R2-4.14/blob/663f7def421952eb49b2d698eadaff12d02622d2/arch/arm/boot/dts/mt7623.dtsi
-> [2]
-> http://lists.infradead.org/pipermail/linux-mediatek/2019-February/017693.html
-> 
-> 
-> Regards,
-> CK
-> 
-> 
-> > 
-> > chunhui dai (8):
-> >   drm/mediatek: recalculate hdmi phy clock of MT2701 by querying
-> >     hardware
-> >   drm/mediatek: move the setting of fixed divider
-> >   drm/mediatek: using different flags of clk for HDMI phy
-> >   drm/mediatek: fix the rate and divder of hdmi phy for MT2701
-> >   clk: mediatek: add MUX_GATE_FLAGS_2
-> >   clk: mediatek: using CLK_MUX_ROUND_CLOSEST for the clock of dpi1_sel
-> >   drm/mediatek: using new factor for tvdpll in MT2701
-> >   drm/mediatek: fix the rate of parent for hdmi phy in MT2701
-> > 
-> >  drivers/clk/mediatek/clk-mt2701.c              |  4 +-
-> >  drivers/clk/mediatek/clk-mtk.c                 |  2 +-
-> >  drivers/clk/mediatek/clk-mtk.h                 | 20 ++++++---
-> >  drivers/gpu/drm/mediatek/mtk_dpi.c             |  8 ++--
-> >  drivers/gpu/drm/mediatek/mtk_hdmi_phy.c        | 34 ++++------------
-> >  drivers/gpu/drm/mediatek/mtk_hdmi_phy.h        |  7 +---
-> >  drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c | 56 +++++++++++++++++++++++---
-> >  drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c | 23 +++++++++++
-> >  8 files changed, 102 insertions(+), 52 deletions(-)
-> > 
-> 
+diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+index 812698f..07b2adf 100644
+--- a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
++++ b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+@@ -26,6 +26,13 @@ Required properties:
+ 	phandle: Label name of a gce node.
+ 	event_number: the event number defined in 'dt-bindings/gce/mt8173-gce.h'
+ 		      or 'dt-binding/gce/mt8183-gce.h'.
++#subsys-cells: Should be 2.
++	<&phandle register_base_address subsys_number>
++	phandle: Label name of a gce node.
++	register_base_address: the register base address that client
++			       want to write or read.
++	subsys_number: specify the sub-system id which is corresponding
++		       to the register address.
+ 
+ Required properties for a client device:
+ - mboxes: Client use mailbox to communicate with GCE, it should have this
+@@ -50,6 +57,7 @@ Example:
+ 		thread-num = CMDQ_THR_MAX_COUNT;
+ 		#mbox-cells = <3>;
+ 		#event-cells = <1>;
++		#subsys-cells = <2>;
+ 	};
+ 
+ Example for a client device:
+@@ -58,7 +66,8 @@ Example for a client device:
+ 		compatible = "mediatek,mt8173-mmsys";
+ 		mboxes = <&gce 0 CMDQ_THR_PRIO_LOWEST 1>,
+ 			 <&gce 1 CMDQ_THR_PRIO_LOWEST 1>;
+-		mediatek,gce-subsys = <SUBSYS_1400XXXX>;
++		mediatek,gce-subsys = <&gce 0x14000000 SUBSYS_1400XXXX>,
++				      <&gce 0x14010000 SUBSYS_1401XXXX>;
+ 		mediatek,gce-event-names = "rdma0_sof",
+ 					   "rsz0_sof";
+ 		mediatek,gce-events = <&gce CMDQ_EVENT_MDP_RDMA0_SOF>,
+-- 
+1.9.1
