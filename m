@@ -1,47 +1,30 @@
-From: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Subject: Re: [PATCH] mt76: Fix an IS_ERR() vs NULL check in mt76_wmac_probe()
-Date: Wed, 06 Mar 2019 10:50:11 +0200
-Message-ID: <875zswfku4.fsf@kamboji.qca.qualcomm.com>
-References: <20190306072633.GA2625@kadam>
+From: Pi-Hsun Shih <pihsun@chromium.org>
+Subject: [PATCH 0/2] Fix UBSAN warning in mtk-afe-fe-dai
+Date: Wed,  6 Mar 2019 17:09:01 +0800
+Message-ID: <20190306090922.117634-1-pihsun@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20190306072633.GA2625@kadam> (Dan Carpenter's message of "Wed, 6
-        Mar 2019 10:26:33 +0300")
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
-Cc: Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi83-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-janitors-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: Pi-Hsun Shih <pihsun@chromium.org>, "moderated list:SOUND - SOC LAYER / DYNAMIC
+        AUDIO POWER MANAGEM..." <alsa-devel@alsa-project.org>, Garlic Tseng <garlic.tseng@mediatek.com>, KaiChieh Chuang <kaichieh.chuang@mediatek.com>, Kees Cook <keescook@chromium.org>, "moderated list:ARM/Mediatek SoC
+        support" <linux-arm-kernel@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC
+        support" <linux-mediatek@lists.infradead.org>, Mark Brown <broonie@kernel.org>, Masanari Iida <standby24x7@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shunli Wang <shunli.wang@mediatek.com>, Wei Yongjun <weiyongjun1@huawei.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org> writes:
+This fix a UBSAN warning on mediatek mtk-afe-fe-dai, and also clean up
+code to prevent new config introduce the UBSAN warning again.
 
-> The devm_ioremap_resource() function never returns NULL, it returns
-> error pointers.
->
-> Fixes: c8846e101502 ("mt76: add driver for MT7603E and MT7628/7688")
-> Signed-off-by: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
-> ---
->  drivers/net/wireless/mediatek/mt76/mt7603/soc.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/soc.c b/drivers/net/wireless/mediatek/mt76/mt7603/soc.c
-> index e13fea80d970..b920be1f5718 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7603/soc.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7603/soc.c
-> @@ -23,9 +23,9 @@ mt76_wmac_probe(struct platform_device *pdev)
->  	}
->  
->  	mem_base = devm_ioremap_resource(&pdev->dev, res);
-> -	if (!mem_base) {
-> +	if (IS_ERR(mem_base)) {
->  		dev_err(&pdev->dev, "Failed to get memory resource\n");
-> -		return -EINVAL;
-> +		return PTR_ERR(mem_base);
->  	}
+Pi-Hsun Shih (2):
+  ASoC: mediatek: Fix UBSAN warning.
+  ASoC: mediatek: Reduce repititive code on mtk_regmap_update_bits.
 
-Wei already posted an identical patch:
-
-https://patchwork.kernel.org/patch/10837285/
+ sound/soc/mediatek/common/mtk-afe-fe-dai.c | 51 +++++++++-------------
+ sound/soc/mediatek/mt2701/mt2701-afe-pcm.c | 13 ------
+ sound/soc/mediatek/mt6797/mt6797-afe-pcm.c | 16 -------
+ sound/soc/mediatek/mt8173/mt8173-afe-pcm.c | 16 -------
+ sound/soc/mediatek/mt8183/mt8183-afe-pcm.c | 20 ---------
+ 5 files changed, 20 insertions(+), 96 deletions(-)
 
 -- 
-Kalle Valo
+2.21.0.352.gf09ad66450-goog
