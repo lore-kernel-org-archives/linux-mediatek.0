@@ -1,128 +1,59 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v5 1/9] clk: mediatek: Disable tuner_en before change PLL
- rate
-Date: Thu, 7 Mar 2019 17:09:23 +0100
-Message-ID: <43f25b61-73ea-1083-7ab0-9e73a6d87b89@gmail.com>
-References: <20190305050546.23431-1-weiyi.lu@mediatek.com>
- <20190305050546.23431-3-weiyi.lu@mediatek.com>
+From: Nathan Chancellor <natechancellor@gmail.com>
+Subject: [PATCH] soc: mediatek: pwrap: Zero initialize rdata in
+ pwrap_init_cipher
+Date: Thu,  7 Mar 2019 15:56:51 -0700
+Message-ID: <20190307225650.23001-1-natechancellor@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190305050546.23431-3-weiyi.lu@mediatek.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Weiyi Lu <weiyi.lu@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org, Owen Chen <owen.chen@mediatek.com>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Nick Desaulniers <ndesaulniers@google.com>, linux-kernel@vger.kernel.org, clang-built-linux@googlegroups.com, linux-mediatek@lists.infradead.org, Nathan Chancellor <natechancellor@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+When building with -Wsometimes-uninitialized, Clang warns:
 
+drivers/soc/mediatek/mtk-pmic-wrap.c:1358:6: error: variable 'rdata' is
+used uninitialized whenever '||' condition is true
+[-Werror,-Wsometimes-uninitialized]
 
-On 05/03/2019 06:05, Weiyi Lu wrote:
-> From: Owen Chen <owen.chen@mediatek.com>
-> 
-> PLLs with tuner_en bit, such as APLL1, need to disable
-> tuner_en before apply new frequency settings, or the new frequency
-> settings (pcw) will not be applied.
-> The tuner_en bit will be disabled during changing PLL rate
-> and be restored after new settings applied.
-> 
-> Fixes: e2f744a82d725 (clk: mediatek: Add MT2712 clock support)
-> Cc: <stable@vger.kernel.org>
-> Signed-off-by: Owen Chen <owen.chen@mediatek.com>
-> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+If pwrap_write returns non-zero, pwrap_read will not be called to
+initialize rdata, meaning that we will use some random uninitialized
+stack value in our print statement. Zero initialize rdata in case this
+happens.
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Link: https://github.com/ClangBuiltLinux/linux/issues/401
+Signed-off-by: Nathan Chancellor <natechancellor@gmail.com>
+---
 
-> ---
->  drivers/clk/mediatek/clk-pll.c | 48 ++++++++++++++++++++++++----------
->  1 file changed, 34 insertions(+), 14 deletions(-)
-> 
-> diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-> index f54e4015b0b1..18842d660317 100644
-> --- a/drivers/clk/mediatek/clk-pll.c
-> +++ b/drivers/clk/mediatek/clk-pll.c
-> @@ -88,6 +88,32 @@ static unsigned long __mtk_pll_recalc_rate(struct mtk_clk_pll *pll, u32 fin,
->  	return ((unsigned long)vco + postdiv - 1) / postdiv;
->  }
->  
-> +static void __mtk_pll_tuner_enable(struct mtk_clk_pll *pll)
-> +{
-> +	u32 r;
-> +
-> +	if (pll->tuner_en_addr) {
-> +		r = readl(pll->tuner_en_addr) | BIT(pll->data->tuner_en_bit);
-> +		writel(r, pll->tuner_en_addr);
-> +	} else if (pll->tuner_addr) {
-> +		r = readl(pll->tuner_addr) | AUDPLL_TUNER_EN;
-> +		writel(r, pll->tuner_addr);
-> +	}
-> +}
-> +
-> +static void __mtk_pll_tuner_disable(struct mtk_clk_pll *pll)
-> +{
-> +	u32 r;
-> +
-> +	if (pll->tuner_en_addr) {
-> +		r = readl(pll->tuner_en_addr) & ~BIT(pll->data->tuner_en_bit);
-> +		writel(r, pll->tuner_en_addr);
-> +	} else if (pll->tuner_addr) {
-> +		r = readl(pll->tuner_addr) & ~AUDPLL_TUNER_EN;
-> +		writel(r, pll->tuner_addr);
-> +	}
-> +}
-> +
->  static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
->  		int postdiv)
->  {
-> @@ -96,6 +122,9 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
->  
->  	pll_en = readl(pll->base_addr + REG_CON0) & CON0_BASE_EN;
->  
-> +	/* disable tuner */
-> +	__mtk_pll_tuner_disable(pll);
-> +
->  	/* set postdiv */
->  	val = readl(pll->pd_addr);
->  	val &= ~(POSTDIV_MASK << pll->data->pd_shift);
-> @@ -122,6 +151,9 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
->  	if (pll->tuner_addr)
->  		writel(con1 + 1, pll->tuner_addr);
->  
-> +	/* restore tuner_en */
-> +	__mtk_pll_tuner_enable(pll);
-> +
->  	if (pll_en)
->  		udelay(20);
->  }
-> @@ -228,13 +260,7 @@ static int mtk_pll_prepare(struct clk_hw *hw)
->  	r |= pll->data->en_mask;
->  	writel(r, pll->base_addr + REG_CON0);
->  
-> -	if (pll->tuner_en_addr) {
-> -		r = readl(pll->tuner_en_addr) | BIT(pll->data->tuner_en_bit);
-> -		writel(r, pll->tuner_en_addr);
-> -	} else if (pll->tuner_addr) {
-> -		r = readl(pll->tuner_addr) | AUDPLL_TUNER_EN;
-> -		writel(r, pll->tuner_addr);
-> -	}
-> +	__mtk_pll_tuner_enable(pll);
->  
->  	udelay(20);
->  
-> @@ -258,13 +284,7 @@ static void mtk_pll_unprepare(struct clk_hw *hw)
->  		writel(r, pll->base_addr + REG_CON0);
->  	}
->  
-> -	if (pll->tuner_en_addr) {
-> -		r = readl(pll->tuner_en_addr) & ~BIT(pll->data->tuner_en_bit);
-> -		writel(r, pll->tuner_en_addr);
-> -	} else if (pll->tuner_addr) {
-> -		r = readl(pll->tuner_addr) & ~AUDPLL_TUNER_EN;
-> -		writel(r, pll->tuner_addr);
-> -	}
-> +	__mtk_pll_tuner_disable(pll);
->  
->  	r = readl(pll->base_addr + REG_CON0);
->  	r &= ~CON0_BASE_EN;
-> 
+I don't know if this is better or to just restructure the if statement
+below (I'm not an expert in this code so I'll leave that up to the
+maintainers to decide).
+
+ drivers/soc/mediatek/mtk-pmic-wrap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+index 8236a6c87e19..2f632e8790f7 100644
+--- a/drivers/soc/mediatek/mtk-pmic-wrap.c
++++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+@@ -1281,7 +1281,7 @@ static bool pwrap_is_pmic_cipher_ready(struct pmic_wrapper *wrp)
+ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
+ {
+ 	int ret;
+-	u32 rdata;
++	u32 rdata = 0;
+ 
+ 	pwrap_writel(wrp, 0x1, PWRAP_CIPHER_SWRST);
+ 	pwrap_writel(wrp, 0x0, PWRAP_CIPHER_SWRST);
+-- 
+2.21.0
