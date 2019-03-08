@@ -1,15 +1,14 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v2 03/10] dt-binding: gce: add binding for gce subsys
- property
-Date: Fri, 8 Mar 2019 09:41:23 +0800
-Message-ID: <1552009283.2863.12.camel@mtksdaap41>
+Subject: Re: [PATCH v2 04/10] soc: mediatek: cmdq: add mt8183 compatible name
+Date: Fri, 8 Mar 2019 11:40:21 +0800
+Message-ID: <1552016421.2863.16.camel@mtksdaap41>
 References: <1551865835-50974-1-git-send-email-bibby.hsieh@mediatek.com>
-         <1551865835-50974-4-git-send-email-bibby.hsieh@mediatek.com>
+         <1551865835-50974-5-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1551865835-50974-4-git-send-email-bibby.hsieh@mediatek.com>
+In-Reply-To: <1551865835-50974-5-git-send-email-bibby.hsieh@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Bibby Hsieh <bibby.hsieh@mediatek.com>
 Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.chen@mediatek.com, kendrick.hsu@mediatek.com
@@ -18,67 +17,32 @@ List-Id: linux-mediatek@lists.infradead.org
 Hi, Bibby:
 
 On Wed, 2019-03-06 at 17:50 +0800, Bibby Hsieh wrote:
-> cmdq driver provide a function that get the relationship
-> of sub system number from device node for client.
-> add specification for #subsys-cells, mediatek,gce-subsys.
-> 
-> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/mailbox/mtk-gce.txt | 11 ++++++++++-
->  1 file changed, 10 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> index 812698f..07b2adf 100644
-> --- a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> +++ b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> @@ -26,6 +26,13 @@ Required properties:
->  	phandle: Label name of a gce node.
->  	event_number: the event number defined in 'dt-bindings/gce/mt8173-gce.h'
->  		      or 'dt-binding/gce/mt8183-gce.h'.
-> +#subsys-cells: Should be 2.
-> +	<&phandle register_base_address subsys_number>
-> +	phandle: Label name of a gce node.
-> +	register_base_address: the register base address that client
-> +			       want to write or read.
-> +	subsys_number: specify the sub-system id which is corresponding
-> +		       to the register address.
+> add mt8183 compatible name
 
-I would like this description similar to 'reg' property. For example:
+This patch doest not just add compatible name, it let this driver
+support mt8183 gce function.
 
-If a client want GCE to access register from 0x14002000 ~ 0x14002fff,
-in the view of GCE, it would access register from SUBSYS_1400XXXX with
-an offset 0x2000 to SUBSYS_1400XXXX with an offset 0x2fff
-So the description could be:
-
-mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x2000 0x1000>
-
-the second parameter is subsys, the third parameter is start offset, and
-the fourth parameter is the size.
-
-I change the property name to 'mediatek,gce-client-reg' because this
-whole property describe the range GCE access rather than the subsys. 
+And I think this patch should be moved after the patch 'soc: mediatek:
+cmdq: move the CMDQ_IRQ_MASK into cmdq driver data'.
 
 Regards,
 CK
 
+> 
+> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+> ---
+>  drivers/mailbox/mtk-cmdq-mailbox.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+> index 2281178..909eb23 100644
+> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+> @@ -536,6 +536,7 @@ static int cmdq_probe(struct platform_device *pdev)
 >  
->  Required properties for a client device:
->  - mboxes: Client use mailbox to communicate with GCE, it should have this
-> @@ -50,6 +57,7 @@ Example:
->  		thread-num = CMDQ_THR_MAX_COUNT;
->  		#mbox-cells = <3>;
->  		#event-cells = <1>;
-> +		#subsys-cells = <2>;
->  	};
+>  static const struct of_device_id cmdq_of_ids[] = {
+>  	{.compatible = "mediatek,mt8173-gce", .data = (void *)16},
+> +	{.compatible = "mediatek,mt8183-gce", .data = (void *)24},
+>  	{}
+>  };
 >  
->  Example for a client device:
-> @@ -58,7 +66,8 @@ Example for a client device:
->  		compatible = "mediatek,mt8173-mmsys";
->  		mboxes = <&gce 0 CMDQ_THR_PRIO_LOWEST 1>,
->  			 <&gce 1 CMDQ_THR_PRIO_LOWEST 1>;
-> -		mediatek,gce-subsys = <SUBSYS_1400XXXX>;
-> +		mediatek,gce-subsys = <&gce 0x14000000 SUBSYS_1400XXXX>,
-> +				      <&gce 0x14010000 SUBSYS_1401XXXX>;
->  		mediatek,gce-event-names = "rdma0_sof",
->  					   "rsz0_sof";
->  		mediatek,gce-events = <&gce CMDQ_EVENT_MDP_RDMA0_SOF>,
