@@ -1,7 +1,7 @@
-From: KaiChieh Chuang <kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v3] ASoC: dpcm: prevent snd_soc_dpcm use after free
-Date: Fri, 8 Mar 2019 13:05:53 +0800
-Message-ID: <1552021553-31547-1-git-send-email-kaichieh.chuang@mediatek.com>
+From: Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [RFC v1 0/4] media: mediatek: support mdp3 on mt8183 platform
+Date: Fri, 8 Mar 2019 13:49:16 +0800
+Message-ID: <1552024160-33055-1-git-send-email-daoyuan.huang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -15,274 +15,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, hochi.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kuninori.morimoto.gx-zM6kxYcvzFBBDgjK7y7TUQ@public.gmane.org, garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eason.yen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, michael.hsiao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+To: hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean.Cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Rynn.Wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, daoyuan huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, holmes.chiou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Jerry-ch.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jungo.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sj.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yuzhao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, ping-hsun.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, zwisler-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, christie.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The dpcm get from fe_clients/be_clients
-may be free before use
+From: daoyuan huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Add a spin lock at snd_soc_card level,
-to protect the dpcm instance.
-The lock may be used in atomic context, so use spin lock.
+This is the first version of RFC patch for Media Data Path 3 (MDP3),
+MDP3 is used for scaling and color format conversion.
+support using GCE to write register in critical time limitation.
+support V4L2 m2m device control.
 
-Use irq spin lock version,
-since the lock may be used in interrupts.
-
-possible race condition between
-void dpcm_be_disconnect(
-	...
-	list_del(&dpcm->list_be);
-	list_del(&dpcm->list_fe);
-	kfree(dpcm);
-	...
-
-and
-	for_each_dpcm_fe()
-	for_each_dpcm_be*()
-
-race condition example
-Thread 1:
-    snd_soc_dapm_mixer_update_power()
-        -> soc_dpcm_runtime_update()
-            -> dpcm_be_disconnect()
-                -> kfree(dpcm);
-Thread 2:
-    dpcm_fe_dai_trigger()
-        -> dpcm_be_dai_trigger()
-            -> snd_soc_dpcm_can_be_free_stop()
-                -> if (dpcm->fe == fe)
-
-Excpetion Scenario:
-	two FE link to same BE
-	FE1 -> BE
-	FE2 ->
-
-	Thread 1: switch of mixer between FE2 -> BE
-	Thread 2: pcm_stop FE1
-
-Exception:
-
-Unable to handle kernel paging request at virtual address dead0000000000e0
-
-pc=<> [<ffffff8960e2cd10>] dpcm_be_dai_trigger+0x29c/0x47c
-	sound/soc/soc-pcm.c:3226
-		if (dpcm->fe == fe)
-lr=<> [<ffffff8960e2f694>] dpcm_fe_dai_do_trigger+0x94/0x26c
-
-Backtrace:
-[<ffffff89602dba80>] notify_die+0x68/0xb8
-[<ffffff896028c7dc>] die+0x118/0x2a8
-[<ffffff89602a2f84>] __do_kernel_fault+0x13c/0x14c
-[<ffffff89602a27f4>] do_translation_fault+0x64/0xa0
-[<ffffff8960280cf8>] do_mem_abort+0x4c/0xd0
-[<ffffff8960282ad0>] el1_da+0x24/0x40
-[<ffffff8960e2cd10>] dpcm_be_dai_trigger+0x29c/0x47c
-[<ffffff8960e2f694>] dpcm_fe_dai_do_trigger+0x94/0x26c
-[<ffffff8960e2edec>] dpcm_fe_dai_trigger+0x3c/0x44
-[<ffffff8960de5588>] snd_pcm_do_stop+0x50/0x5c
-[<ffffff8960dded24>] snd_pcm_action+0xb4/0x13c
-[<ffffff8960ddfdb4>] snd_pcm_drop+0xa0/0x128
-[<ffffff8960de69bc>] snd_pcm_common_ioctl+0x9d8/0x30f0
-[<ffffff8960de1cac>] snd_pcm_ioctl_compat+0x29c/0x2f14
-[<ffffff89604c9d60>] compat_SyS_ioctl+0x128/0x244
-[<ffffff8960283740>] el0_svc_naked+0x34/0x38
-[<ffffffffffffffff>] 0xffffffffffffffff
-
-Signed-off-by: KaiChieh Chuang <kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- include/sound/soc.h  |  2 ++
- sound/soc/soc-core.c |  1 +
- sound/soc/soc-pcm.c  | 40 +++++++++++++++++++++++++++++++++-------
- 3 files changed, 36 insertions(+), 7 deletions(-)
+Based on v5.0-rc1 and these series:
+device tree:
+http://lists.infradead.org/pipermail/linux-mediatek/2019-February/017570.html
+clock control:
+http://lists.infradead.org/pipermail/linux-mediatek/2019-February/017320.html
+system control processor (SCP):
+http://lists.infradead.org/pipermail/linux-mediatek/2019-February/017774.html
+global command engine (GCE):
+http://lists.infradead.org/pipermail/linux-mediatek/2019-January/017143.html
+---
 
-diff --git a/include/sound/soc.h b/include/sound/soc.h
-index eb7db60..1e2be35 100644
---- a/include/sound/soc.h
-+++ b/include/sound/soc.h
-@@ -1083,6 +1083,8 @@ struct snd_soc_card {
- 	struct mutex mutex;
- 	struct mutex dapm_mutex;
- 
-+	spinlock_t dpcm_lock;
-+
- 	bool instantiated;
- 	bool topology_shortname_created;
- 
-diff --git a/sound/soc/soc-core.c b/sound/soc/soc-core.c
-index 5a5764d..d887576 100644
---- a/sound/soc/soc-core.c
-+++ b/sound/soc/soc-core.c
-@@ -2820,6 +2820,7 @@ int snd_soc_register_card(struct snd_soc_card *card)
- 	card->instantiated = 0;
- 	mutex_init(&card->mutex);
- 	mutex_init(&card->dapm_mutex);
-+	spin_lock_init(&card->dpcm_lock);
- 
- 	return snd_soc_bind_card(card);
- }
-diff --git a/sound/soc/soc-pcm.c b/sound/soc/soc-pcm.c
-index a5b40e8..30df83a 100644
---- a/sound/soc/soc-pcm.c
-+++ b/sound/soc/soc-pcm.c
-@@ -1213,6 +1213,7 @@ static int dpcm_be_connect(struct snd_soc_pcm_runtime *fe,
- 		struct snd_soc_pcm_runtime *be, int stream)
- {
- 	struct snd_soc_dpcm *dpcm;
-+	unsigned long flags;
- 
- 	/* only add new dpcms */
- 	for_each_dpcm_be(fe, stream, dpcm) {
-@@ -1228,8 +1229,10 @@ static int dpcm_be_connect(struct snd_soc_pcm_runtime *fe,
- 	dpcm->fe = fe;
- 	be->dpcm[stream].runtime = fe->dpcm[stream].runtime;
- 	dpcm->state = SND_SOC_DPCM_LINK_STATE_NEW;
-+	spin_lock_irqsave(&fe->card->dpcm_lock, flags);
- 	list_add(&dpcm->list_be, &fe->dpcm[stream].be_clients);
- 	list_add(&dpcm->list_fe, &be->dpcm[stream].fe_clients);
-+	spin_unlock_irqrestore(&fe->card->dpcm_lock, flags);
- 
- 	dev_dbg(fe->dev, "connected new DPCM %s path %s %s %s\n",
- 			stream ? "capture" : "playback",  fe->dai_link->name,
-@@ -1275,6 +1278,7 @@ static void dpcm_be_reparent(struct snd_soc_pcm_runtime *fe,
- void dpcm_be_disconnect(struct snd_soc_pcm_runtime *fe, int stream)
- {
- 	struct snd_soc_dpcm *dpcm, *d;
-+	unsigned long flags;
- 
- 	for_each_dpcm_be_safe(fe, stream, dpcm, d) {
- 		dev_dbg(fe->dev, "ASoC: BE %s disconnect check for %s\n",
-@@ -1294,8 +1298,10 @@ void dpcm_be_disconnect(struct snd_soc_pcm_runtime *fe, int stream)
- #ifdef CONFIG_DEBUG_FS
- 		debugfs_remove(dpcm->debugfs_state);
- #endif
-+		spin_lock_irqsave(&fe->card->dpcm_lock, flags);
- 		list_del(&dpcm->list_be);
- 		list_del(&dpcm->list_fe);
-+		spin_unlock_irqrestore(&fe->card->dpcm_lock, flags);
- 		kfree(dpcm);
- 	}
- }
-@@ -1547,10 +1553,13 @@ int dpcm_process_paths(struct snd_soc_pcm_runtime *fe,
- void dpcm_clear_pending_state(struct snd_soc_pcm_runtime *fe, int stream)
- {
- 	struct snd_soc_dpcm *dpcm;
-+	unsigned long flags;
- 
-+	spin_lock_irqsave(&fe->card->dpcm_lock, flags);
- 	for_each_dpcm_be(fe, stream, dpcm)
- 		dpcm->be->dpcm[stream].runtime_update =
- 						SND_SOC_DPCM_UPDATE_NO;
-+	spin_unlock_irqrestore(&fe->card->dpcm_lock, flags);
- }
- 
- static void dpcm_be_dai_startup_unwind(struct snd_soc_pcm_runtime *fe,
-@@ -2571,6 +2580,7 @@ static int dpcm_run_update_startup(struct snd_soc_pcm_runtime *fe, int stream)
- 	struct snd_soc_dpcm *dpcm;
- 	enum snd_soc_dpcm_trigger trigger = fe->dai_link->trigger[stream];
- 	int ret;
-+	unsigned long flags;
- 
- 	dev_dbg(fe->dev, "ASoC: runtime %s open on FE %s\n",
- 			stream ? "capture" : "playback", fe->dai_link->name);
-@@ -2640,11 +2650,13 @@ static int dpcm_run_update_startup(struct snd_soc_pcm_runtime *fe, int stream)
- 	dpcm_be_dai_shutdown(fe, stream);
- disconnect:
- 	/* disconnect any non started BEs */
-+	spin_lock_irqsave(&fe->card->dpcm_lock, flags);
- 	for_each_dpcm_be(fe, stream, dpcm) {
- 		struct snd_soc_pcm_runtime *be = dpcm->be;
- 		if (be->dpcm[stream].state != SND_SOC_DPCM_STATE_START)
- 				dpcm->state = SND_SOC_DPCM_LINK_STATE_FREE;
- 	}
-+	spin_unlock_irqrestore(&fe->card->dpcm_lock, flags);
- 
- 	return ret;
- }
-@@ -3220,7 +3232,10 @@ int snd_soc_dpcm_can_be_free_stop(struct snd_soc_pcm_runtime *fe,
- {
- 	struct snd_soc_dpcm *dpcm;
- 	int state;
-+	int ret = 1;
-+	unsigned long flags;
- 
-+	spin_lock_irqsave(&fe->card->dpcm_lock, flags);
- 	for_each_dpcm_fe(be, stream, dpcm) {
- 
- 		if (dpcm->fe == fe)
-@@ -3229,12 +3244,15 @@ int snd_soc_dpcm_can_be_free_stop(struct snd_soc_pcm_runtime *fe,
- 		state = dpcm->fe->dpcm[stream].state;
- 		if (state == SND_SOC_DPCM_STATE_START ||
- 			state == SND_SOC_DPCM_STATE_PAUSED ||
--			state == SND_SOC_DPCM_STATE_SUSPEND)
--			return 0;
-+			state == SND_SOC_DPCM_STATE_SUSPEND) {
-+			ret = 0;
-+			break;
-+		}
- 	}
-+	spin_unlock_irqrestore(&fe->card->dpcm_lock, flags);
- 
- 	/* it's safe to free/stop this BE DAI */
--	return 1;
-+	return ret;
- }
- EXPORT_SYMBOL_GPL(snd_soc_dpcm_can_be_free_stop);
- 
-@@ -3247,7 +3265,10 @@ int snd_soc_dpcm_can_be_params(struct snd_soc_pcm_runtime *fe,
- {
- 	struct snd_soc_dpcm *dpcm;
- 	int state;
-+	int ret = 1;
-+	unsigned long flags;
- 
-+	spin_lock_irqsave(&fe->card->dpcm_lock, flags);
- 	for_each_dpcm_fe(be, stream, dpcm) {
- 
- 		if (dpcm->fe == fe)
-@@ -3257,12 +3278,15 @@ int snd_soc_dpcm_can_be_params(struct snd_soc_pcm_runtime *fe,
- 		if (state == SND_SOC_DPCM_STATE_START ||
- 			state == SND_SOC_DPCM_STATE_PAUSED ||
- 			state == SND_SOC_DPCM_STATE_SUSPEND ||
--			state == SND_SOC_DPCM_STATE_PREPARE)
--			return 0;
-+			state == SND_SOC_DPCM_STATE_PREPARE) {
-+			ret = 0;
-+			break;
-+		}
- 	}
-+	spin_unlock_irqrestore(&fe->card->dpcm_lock, flags);
- 
- 	/* it's safe to change hw_params */
--	return 1;
-+	return ret;
- }
- EXPORT_SYMBOL_GPL(snd_soc_dpcm_can_be_params);
- 
-@@ -3301,6 +3325,7 @@ static ssize_t dpcm_show_state(struct snd_soc_pcm_runtime *fe,
- 	struct snd_pcm_hw_params *params = &fe->dpcm[stream].hw_params;
- 	struct snd_soc_dpcm *dpcm;
- 	ssize_t offset = 0;
-+	unsigned long flags;
- 
- 	/* FE state */
- 	offset += snprintf(buf + offset, size - offset,
-@@ -3328,6 +3353,7 @@ static ssize_t dpcm_show_state(struct snd_soc_pcm_runtime *fe,
- 		goto out;
- 	}
- 
-+	spin_lock_irqsave(&fe->card->dpcm_lock, flags);
- 	for_each_dpcm_be(fe, stream, dpcm) {
- 		struct snd_soc_pcm_runtime *be = dpcm->be;
- 		params = &dpcm->hw_params;
-@@ -3348,7 +3374,7 @@ static ssize_t dpcm_show_state(struct snd_soc_pcm_runtime *fe,
- 				params_channels(params),
- 				params_rate(params));
- 	}
--
-+	spin_unlock_irqrestore(&fe->card->dpcm_lock, flags);
- out:
- 	return offset;
- }
+daoyuan huang (4):
+  dt-binding: mt8183: Add Mediatek MDP3 dt-bindings
+  dts: arm64: mt8183: Add Mediatek MDP3 nodes
+  media: platform: Add Mediatek MDP3 driver KConfig
+  media: platform: mtk-mdp3: Add Mediatek MDP3 driver
+
+ .../bindings/media/mediatek,mt8183-mdp3.txt        |  217 ++++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi           |  109 ++
+ drivers/media/platform/Kconfig                     |   18 +
+ drivers/media/platform/Makefile                    |    2 +
+ drivers/media/platform/mtk-mdp3/Makefile           |    9 +
+ drivers/media/platform/mtk-mdp3/isp_reg.h          |   38 +
+ drivers/media/platform/mtk-mdp3/mdp-platform.h     |   67 ++
+ drivers/media/platform/mtk-mdp3/mdp_reg_ccorr.h    |   76 ++
+ drivers/media/platform/mtk-mdp3/mdp_reg_rdma.h     |  207 ++++
+ drivers/media/platform/mtk-mdp3/mdp_reg_rsz.h      |  110 ++
+ drivers/media/platform/mtk-mdp3/mdp_reg_wdma.h     |  126 +++
+ drivers/media/platform/mtk-mdp3/mdp_reg_wrot.h     |  116 ++
+ drivers/media/platform/mtk-mdp3/mmsys_config.h     |  189 ++++
+ drivers/media/platform/mtk-mdp3/mmsys_mutex.h      |   36 +
+ drivers/media/platform/mtk-mdp3/mmsys_reg_base.h   |   39 +
+ drivers/media/platform/mtk-mdp3/mtk-img-ipi.h      |  272 +++++
+ drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c    |  407 +++++++
+ drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.h    |   52 +
+ drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c    | 1180 ++++++++++++++++++++
+ drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.h    |  176 +++
+ drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c    |  257 +++++
+ drivers/media/platform/mtk-mdp3/mtk-mdp3-core.h    |   89 ++
+ drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c     |  784 +++++++++++++
+ drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.h     |   52 +
+ drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c    |  778 +++++++++++++
+ drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.h    |  382 +++++++
+ drivers/media/platform/mtk-mdp3/mtk-mdp3-vpu.c     |  277 +++++
+ drivers/media/platform/mtk-mdp3/mtk-mdp3-vpu.h     |   90 ++
+ 28 files changed, 6155 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8183-mdp3.txt
+ create mode 100644 drivers/media/platform/mtk-mdp3/Makefile
+ create mode 100644 drivers/media/platform/mtk-mdp3/isp_reg.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mdp-platform.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_ccorr.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_rdma.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_rsz.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_wdma.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_wrot.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mmsys_config.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mmsys_mutex.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mmsys_reg_base.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-img-ipi.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-core.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-vpu.c
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-vpu.h
+
 -- 
 1.9.1
