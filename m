@@ -1,119 +1,65 @@
-From: Nicolas Boichat <drinkcat@chromium.org>
-Subject: Re: [PATCH v5 8/9] clk: mediatek: Add MT8183 clock support
-Date: Fri, 8 Mar 2019 22:46:01 +0800
-Message-ID: <CANMq1KCFCBfaXff3qdGd7CXmz-rNt+aMVP87J84YNgxojV8TZA@mail.gmail.com>
-References: <20190305050546.23431-1-weiyi.lu@mediatek.com> <20190305050546.23431-10-weiyi.lu@mediatek.com>
- <CANMq1KBuTcVis2CyHB+sysp56YJwkzWytMsx8Tzk_SZyC1H=aQ@mail.gmail.com>
+From: Wolfram Sang <wsa@the-dreams.de>
+Subject: Re: [PATCH] i2c: mediatek: modify threshold passed to
+ i2c_get_dma_safe_msg_buf()
+Date: Fri, 8 Mar 2019 15:52:03 +0100
+Message-ID: <20190308145203.GA4743@kunai>
+References: <20190215090202.157100-1-hsinyi@chromium.org>
+ <20190215090959.soxkf3ho3or2geme@ninjato>
+ <CAJMQK-jrpnfzKNYh01Pg6QydSSa-=6x44Pj1wwMdXw7G3x-ybA@mail.gmail.com>
+ <20190215092500.6q3hqnoufyowiqaz@ninjato>
+ <20190215163657.fs6t7p3vqez53su3@ninjato>
+ <CAJMQK-jzvMBD_AaB7XMJtMqNWiEin25bem4Zo9T5W86Z-U=Tww@mail.gmail.com>
+ <20190308112919.GA1674@kunai>
+ <CAJMQK-j9b3o+KQfN8nLXGiP+TXi8i77=yTTQsEARa6cotPhxzw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <CANMq1KBuTcVis2CyHB+sysp56YJwkzWytMsx8Tzk_SZyC1H=aQ@mail.gmail.com>
-Sender: stable-owner@vger.kernel.org
-To: Weiyi Lu <weiyi.lu@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>, James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, lkml <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, linux-clk@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, stable@vger.kernel.org
+Content-Type: multipart/signed; micalg=pgp-sha512;
+        protocol="application/pgp-signature"; boundary="mP3DRpeJDSE+ciuQ"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CAJMQK-j9b3o+KQfN8nLXGiP+TXi8i77=yTTQsEARa6cotPhxzw@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jun Gao <jun.gao@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-i2c@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, qii.wang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Mar 8, 2019 at 2:42 PM Nicolas Boichat <drinkcat@chromium.org> wrote:
->
-> )
-> On Tue, Mar 5, 2019 at 1:05 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
+
+--mP3DRpeJDSE+ciuQ
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+
+> > I just checked this issue again and concluded that both are reasonable,
+> > the suggestion from me below with the adapter quirk AND your original
+> > patch setting the threshold to 1. With my suggestion the core will
+> > prevent 0-length messages. But still, we should set the threshold to 1
+> > because 0 is a value the HW is not capable of.
 > >
-> > Add MT8183 clock support, include topckgen, apmixedsys,
-> > infracfg, mcucfg and subsystem clocks.
-> >
-> > Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
->
-> In v1 a while back (https://patchwork.kernel.org/patch/10669765/) I
-> was complaining about code duplication between these many files, and
-> wondering if we can make simplify a lot of this code.
+> I think quirk might be better, since mediatek said they might have some ICs
+> that can handle zero-length transfer in the future, so flags might be
+> more clear if they want to restore functionality.
 
-Okay, we had a discussion on this gerrit:
-https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/1510921,
-and I didn't know the history that having separate clock domains that
-we can enable/disable with config options. And the same pattern
-already exists on clk-mt2712-*.c, for example.
+But I guess you don't want to do the zero-length transfer with DMA then?
+With that in mind, raising the threshold still makes sense to me.
 
-So, for now:
-Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
 
-Some comment below about how this could be improved, potentially:
+--mP3DRpeJDSE+ciuQ
+Content-Type: application/pgp-signature; name="signature.asc"
 
-> Apart from that:
-> Tested-by: Nicolas Boichat <drinkcat@chromium.org>
->
-[snip]
-> > --- /dev/null
-> > +++ b/drivers/clk/mediatek/clk-mt8183-audio.c
-> > @@ -0,0 +1,105 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> > +//
-> > +// Copyright (c) 2018 MediaTek Inc.
-> > +// Author: Weiyi Lu <weiyi.lu@mediatek.com>
-> > +
-> > +#include <linux/clk-provider.h>
-> > +#include <linux/of_platform.h>
-> > +#include <linux/platform_device.h>
-> > +
-> > +#include "clk-mtk.h"
-> > +#include "clk-gate.h"
-> > +
-> > +#include <dt-bindings/clock/mt8183-clk.h>
-> > +
-> > +static const struct mtk_gate_regs audio0_cg_regs = {
-> > +       .set_ofs = 0x0,
-> > +       .clr_ofs = 0x0,
-> > +       .sta_ofs = 0x0,
-> > +};
-> > +
-> > +static const struct mtk_gate_regs audio1_cg_regs = {
-> > +       .set_ofs = 0x4,
-> > +       .clr_ofs = 0x4,
-> > +       .sta_ofs = 0x4,
-> > +};
-> > +
-> > +#define GATE_AUDIO0(_id, _name, _parent, _shift)               \
-> > +       GATE_MTK(_id, _name, _parent, &audio0_cg_regs, _shift,  \
-> > +               &mtk_clk_gate_ops_no_setclr)
+-----BEGIN PGP SIGNATURE-----
 
-This macro (or variants that end up being equivalent) is repeated 103
-times in drivers/clk/mediatek/*. We can probably do better. My
-suggestion is to do something like this:
-#define GATE_MTK_CLK(reg, _id, _name, _parent, _shift) \
-GATE_MTK(_id, _name, _parent, &reg##_cg_regs, _shift, \
-&mtk_clk_gate_ops_setclr_inv)
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAlyCgY8ACgkQFA3kzBSg
+KbZ2Qg/9GaOmyLxHs9ayEmGtGSYNxgpXmj+fMfBqvL2OlsSPG8EDNtIs5n7+p7Lq
+gPz2Tm0EnnCkIWmpp4EFhON17ZkuIVthAO7lMTacqk6lAxMqP2d5qtbtTllHerdZ
+2whXvhfxEOobWGDQoxstTv/mgSLckRaltjteITi17UqFdRAQsIJOerJ+MY9QOFrt
+xi+bDnwiV8YEsgRX9iWSUx3kKPel+n36oiAY+5/ONHE1+R5KOmdGHpRPHTzhB99Q
+sn8XZe2hGPKNbF/j3RdDOmO6Qbd5jlWEg7IlHnqJx1Bbi2rJfEqPG/Z6kcI+lE8l
+gUPlYlS2VMLZ7D6td11AVgBAThDjlguVzzVr0vf/kKBXRojRf3rNd6AQDg46TSE4
+5k73pVpD2G1mnlbryQKG2tQOw1XB8CCIfgRQA1AquCoUdwrPZAdTYD9V7qdqkW7y
+9OWwM/bmkEZHpnpUZNxxGBKuGoTIOOmhAIgjMpKw1/z2iIm3cZM/T/J9wRCH70Jr
+1cRwRSUgz2SgrqZ2SjGC/arXgyhUCv6Xtn1XXRRr+dnhOVQGynfls0ooNcLO6O9V
+TlrASHvc5wmXTtYr3QIeytDqwmbZmj7H8LtItRlTAz2XH7zTkfDHEijW9HAMJ0zu
+3k4PWLCIwV93n3127uNNwXGpUTHlhgxWlIwVR1WsLOsreLblXZY=
+=7FL8
+-----END PGP SIGNATURE-----
 
-and use GATE_MTK_CLK(audio0, ...) in the gate clock arrays.
-
-> > +static int clk_mt8183_audio_probe(struct platform_device *pdev)
-> > +{
-> > +       struct clk_onecell_data *clk_data;
-> > +       int r;
-> > +       struct device_node *node = pdev->dev.of_node;
-> > +
-> > +       clk_data = mtk_alloc_clk_data(CLK_AUDIO_NR_CLK);
-> > +
-> > +       mtk_clk_register_gates(node, audio_clks, ARRAY_SIZE(audio_clks),
-> > +                       clk_data);
-> > +
-> > +       r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
-> > +       if (r)
-> > +               return r;
-> > +
-> > +       r = devm_of_platform_populate(&pdev->dev);
-> > +       if (r)
-> > +               of_clk_del_provider(node);
-> > +
-> > +       return r;
-> > +}
-
-This (almost exact) function is now repeated 33 times in
-drivers/clk/mediatek, I think it's really time for a cleanup... Maybe
-there should be a common helper in clk-gate.c (or another file, not
-sure), that fetches the clocks (and number of clocks from .data field
-in the structure below).
-
-> > +static const struct of_device_id of_match_clk_mt8183_audio[] = {
-> > +       { .compatible = "mediatek,mt8183-audiosys", },
-> > +       {}
-> > +};
-[snip]
+--mP3DRpeJDSE+ciuQ--
