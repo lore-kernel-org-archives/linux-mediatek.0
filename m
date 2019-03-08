@@ -1,92 +1,82 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH] i2c: mediatek: modify threshold passed to
- i2c_get_dma_safe_msg_buf()
-Date: Fri, 8 Mar 2019 12:29:19 +0100
-Message-ID: <20190308112919.GA1674@kunai>
-References: <20190215090202.157100-1-hsinyi@chromium.org>
- <20190215090959.soxkf3ho3or2geme@ninjato>
- <CAJMQK-jrpnfzKNYh01Pg6QydSSa-=6x44Pj1wwMdXw7G3x-ybA@mail.gmail.com>
- <20190215092500.6q3hqnoufyowiqaz@ninjato>
- <20190215163657.fs6t7p3vqez53su3@ninjato>
- <CAJMQK-jzvMBD_AaB7XMJtMqNWiEin25bem4Zo9T5W86Z-U=Tww@mail.gmail.com>
+From: Hans de Goede <hdegoede@redhat.com>
+Subject: Re: [PATCH 1/5] dt-bindings: connector: add optional properties for
+ Type-B
+Date: Fri, 8 Mar 2019 13:07:38 +0100
+Message-ID: <693b11e7-fa9e-ab1f-561a-beb758b1872f@redhat.com>
+References: <1552025622-15582-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1552025622-15582-2-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="6c2NcOVqGQ03X4Wi"
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAJMQK-jzvMBD_AaB7XMJtMqNWiEin25bem4Zo9T5W86Z-U=Tww@mail.gmail.com>
+In-Reply-To: <1552025622-15582-2-git-send-email-chunfeng.yun@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jun Gao <jun.gao@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-i2c@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, qii.wang@mediatek.com
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heikki Krogerus <heikki.krogerus@linux.intel.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi,
 
---6c2NcOVqGQ03X4Wi
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On 08-03-19 07:13, Chunfeng Yun wrote:
+> Add id-gpios, vbus-gpios, vbus-supply and pinctrl properties for
+> usb-b-connector
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>   .../devicetree/bindings/connector/usb-connector.txt    | 10 ++++++++++
+>   1 file changed, 10 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/connector/usb-connector.txt b/Documentation/devicetree/bindings/connector/usb-connector.txt
+> index a9a2f2fc44f2..7a07b0f4f973 100644
+> --- a/Documentation/devicetree/bindings/connector/usb-connector.txt
+> +++ b/Documentation/devicetree/bindings/connector/usb-connector.txt
+> @@ -17,6 +17,16 @@ Optional properties:
+>   - self-powered: Set this property if the usb device that has its own power
+>     source.
+>   
+> +Optional properties for usb-b-connector:
+> +- id-gpios: gpio for USB ID pin.
 
-On Fri, Feb 22, 2019 at 02:04:11PM +0800, Hsin-Yi Wang wrote:
-> Thanks for the solution.
-> Previously we were testing if the driver can handle zero-length
-> transfer, but it turns out it will timeout. (Also checked this from
-> mtk's datasheet)
-> Adding original owner qii.wang to verify that. We'll apply this after
-> verification.
+What about boards where the ID pin is *not* connected to a GPIO,
+but e.g. to a special pin on the PMIC which can also detect
+an ACA adapter ? Currently this case is handled by extcon
+drivers, but we have no way to set e.g. vbus-supply for the
+connector. Maybe in this case the usb-connector node should
+be a child of the PMIC node ?
 
-I just checked this issue again and concluded that both are reasonable,
-the suggestion from me below with the adapter quirk AND your original
-patch setting the threshold to 1. With my suggestion the core will
-prevent 0-length messages. But still, we should set the threshold to 1
-because 0 is a value the HW is not capable of.
+And in many cases there also is a mux to switch the datalines
+between the host and device(gadget) controllers, how should
+that be described in this model?  See the new usb-role-switch
+code under drivers/usb/roles
 
->=20
-> On Sat, Feb 16, 2019 at 12:36 AM Wolfram Sang <wsa@the-dreams.de> wrote:
-> >
-> >
-> > >> > Ok, I can add a check in another patch. Should we return NULL poin=
-ter
-> > >> > if msg->len is 0 or print out some warnings? Thanks.
-> > >>
-> > >> No warning, msg->len =3D=3D 0 is a valid setting. But interesting qu=
-estion:
-> > >> I was about to say NULL, but your driver would assume ENOMEM there a=
-nd
-> > >> discard the message which is also not correct since msg->len =3D=3D =
-0 is a
-> > >> valid setting. So, should we just return msg->buf then? Will this wo=
-rk
-> > >> with your driver? Can it handle zero-length transfers?
-> > >
-> > > dma_map_single(i2c->dev, msg->buf , msgs->len, DMA_TO_DEVICE); breaks
-> > > kernel if msgs->len is 0, so I think it doesn't handle zero-length tr=
-ansfer.
-> >
-> > Please don't drop the lists.
-> >
-> > Then, the correct solution is to forbid those transfer with this
-> > controller. Check I2C_AQ_NO_ZERO_LEN. Also, update the functionality
-> > like this .. (I2C_FUNC_SMBUS_EMUL & ~I2C_FUNC_SMBUS_QUICK).
-> >
+In some cases the mux is controlled through a gpio, so we
+may want to add a "mux-gpios" here in which case we also
+need to define what 0/1 means.
 
---6c2NcOVqGQ03X4Wi
-Content-Type: application/pgp-signature; name="signature.asc"
+> +- vbus-gpios: gpio for USB VBUS pin.
+> +  see gpio/gpio.txt.
+> +- vbus-supply: reference to the VBUS regulator, needed when supports
+> +  dual-role mode.
 
------BEGIN PGP SIGNATURE-----
+I think this needs some text that there can be either a vbus-gpio or
+a vbus-supply. Oh wait reading:
 
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAlyCUgsACgkQFA3kzBSg
-Kba9Yg/+M7cbMDhNMb4QMvsx2CXavB/39rfypl8ZMb3+9ie+XUgHO69Eni+lZyyn
-z8TcGgTAoQaYepbdDLMgQdrppkIf+JdZPBLoeFQ+Gom9c6qGME0ib8bc+ZltG9BV
-INl6N9P3ZtRSjccRcGGcicjQGi32ctmYYqwr82tXD9xDuaOYM1Mch9Boet7bnsj8
-vaO/CmVHhg7dUjx/TZAVbvHmhcG6GudqvYEbBZM5kwinZzy7O78usan9imr2saYC
-c71Tij0lTgoEVhEqZac+166BZccT8qXaJPYs8t9Vclu5PmKkeuU+lSzMsBAdiQcJ
-U1YbFIH6xPa1up1o53AcSsHeaZmKI/X6ph9g7MuqqLFvej8MbfXIz9Swix3kjiOd
-yzYyqPdqOyl0bQ5k8DJI9XT2phnOMixHHlhwn2n9TGDFQpfOh5kUqJ0bn9Qc/ydt
-eR0c0Sj3CQDQQk6RyJOvv+svdsknVBHgL8md7rsu3PRnPXJrnNAEvf4L+QFLNhpj
-Y6WshPVyqbhUt3V/sXOUVyhBMX5j+I8KPvlSmtYQZxpx0b58EzUduk5spdjy/x/o
-KVvwXFuGCNSWB9Hhb/nKPNcwyVd7w+EhqOgdKK+Uz8dsar14UBTy7NDrdxvQ4WBj
-rE/ZTfbfK/lFppbEx1nIDGtlse1TJW92mHYfM+2SzkDaHtw6lqM=
-=Q2xm
------END PGP SIGNATURE-----
+https://patchwork.kernel.org/patch/10819377/
 
---6c2NcOVqGQ03X4Wi--
+I see that this GPIO is for detecting vbus presence, not for driving/enabling
+5v to Vbus from the board, that needs to be described more clearly.
+
+> +- pinctrl-names : a pinctrl state named "default" is optional
+> +- pinctrl-0 : pin control group
+> +  see pinctrl/pinctrl-bindings.txt
+> +
+>   Optional properties for usb-c-connector:
+>   - power-role: should be one of "source", "sink" or "dual"(DRP) if typec
+>     connector has power support.
+> 
+
+
+Regards,
+
+Hans
