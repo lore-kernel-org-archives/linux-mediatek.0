@@ -1,41 +1,88 @@
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Subject: Re: [PATCH] i2c: mediatek: modify threshold passed to i2c_get_dma_safe_msg_buf()
-Date: Sat, 9 Mar 2019 00:22:35 +0800
-Message-ID: <CAJMQK-jRheyFwvKDURF9kxW4MXTQmgQjuGbXjerth26PLF_3dQ@mail.gmail.com>
-References: <20190215090202.157100-1-hsinyi@chromium.org> <20190215090959.soxkf3ho3or2geme@ninjato>
- <CAJMQK-jrpnfzKNYh01Pg6QydSSa-=6x44Pj1wwMdXw7G3x-ybA@mail.gmail.com>
- <20190215092500.6q3hqnoufyowiqaz@ninjato> <20190215163657.fs6t7p3vqez53su3@ninjato>
- <CAJMQK-jzvMBD_AaB7XMJtMqNWiEin25bem4Zo9T5W86Z-U=Tww@mail.gmail.com>
- <20190308112919.GA1674@kunai> <CAJMQK-j9b3o+KQfN8nLXGiP+TXi8i77=yTTQsEARa6cotPhxzw@mail.gmail.com>
- <20190308145203.GA4743@kunai>
+From: Wolfram Sang <wsa@the-dreams.de>
+Subject: Re: [PATCH] i2c: mediatek: modify threshold passed to
+ i2c_get_dma_safe_msg_buf()
+Date: Sat, 9 Mar 2019 10:42:36 +0100
+Message-ID: <20190309094236.GA1340@kunai>
+References: <20190215090202.157100-1-hsinyi@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190308145203.GA4743@kunai>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Wolfram Sang <wsa@the-dreams.de>
-Cc: linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jun Gao <jun.gao@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-i2c@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, qii.wang@mediatek.com
+Content-Type: multipart/mixed; boundary="===============0587128818285975164=="
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190215090202.157100-1-hsinyi@chromium.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Jun Gao <jun.gao@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Mar 8, 2019 at 10:52 PM Wolfram Sang <wsa@the-dreams.de> wrote:
->
->
-> > > I just checked this issue again and concluded that both are reasonable,
-> > > the suggestion from me below with the adapter quirk AND your original
-> > > patch setting the threshold to 1. With my suggestion the core will
-> > > prevent 0-length messages. But still, we should set the threshold to 1
-> > > because 0 is a value the HW is not capable of.
-> > >
-> > I think quirk might be better, since mediatek said they might have some ICs
-> > that can handle zero-length transfer in the future, so flags might be
-> > more clear if they want to restore functionality.
->
-> But I guess you don't want to do the zero-length transfer with DMA then?
-> With that in mind, raising the threshold still makes sense to me.
->
-Yes. Then I think this patch is okay for merge?
 
-And since the mt8183 patches are still under reviewing, we'll upload adapter
-quirk patch after those are merged.
+--===============0587128818285975164==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="82I3+IH0IqGh5yIs"
+Content-Disposition: inline
 
-Thanks
+
+--82I3+IH0IqGh5yIs
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Feb 15, 2019 at 05:02:02PM +0800, Hsin-Yi Wang wrote:
+> i2c_get_dma_safe_msg_buf() allocates space based on msg->len. If threshol=
+d is
+> 0 and msg->len is also 0, function makes zero-length allocation, which re=
+turns
+> a special ZERO_SIZE_PTR instead of a NULL pointer, and this will cause la=
+ter
+> code to fail. Modify the threshold to > 0 so the function returns NULL po=
+inter.
+>=20
+> Fixes: fc66b39fe36a ("i2c: mediatek: Use DMA safe buffers for i2c transac=
+tions")
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+
+Reworded commit message to "HW doesn't support 0 length" and applied to
+for-current, thanks!
+
+
+--82I3+IH0IqGh5yIs
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAlyDioMACgkQFA3kzBSg
+KbZAhw//VvjmWX2V1D7BqMoYtsWT9g6U9UWiy4+ovG8ttogdHVOKkDfaHp2IT58Y
+sQced8n/GBZv4x9a7tK4zXazCOI0zNbUqXWfv4WPqqXCp15wNdG6MzokU1hnTGE8
+WuTbXkgS5f/l+r18+bqwsuuk/0kMZ0NH+226y5BJQo9/f3mWefXNX5lgMumsN9P0
+ple/6Oy6GS3bL7QyncE9aiMBJoJnjvpNnQBjVfvUt12yGtrDZvdQR5zQxwvDJMXw
+oCtZtioGZndbsnBKqozPm5XtlKPrsCPeiHorrIZiOreccerL3ORkmMZgGJo1urRs
+Uic7hyPiQ68SE5mbpzRer8GTZ19EhDNOyMEaoscYOQvlCiU3hcMijUJs/eKx0R04
+SbU0Cwr1Bg1XD8pYvWOrf5rDeig1MEpknyZFguvcwJr14nB6d1ul05djL3K3ywJt
+xUdrQgScWddJ8Rvj8MSNmxg52FzQHpXeSU1qXPsug7PIB3BCAXHS1gRpU66CZw9q
+zlYsAIEAXCaeGuIPBvUvnHZyWUL+V/zgOfDvcIIQjdIueGMkTwnT/y2lSHzQRZI2
+m0qabT7TEBC8QFAdwxoECWzOB7ImM6DS3xEh2h79lGVtvSU49Su23rU1pT18fUfb
+Ca9kQqVfssz+3iD5SpkbD33LBBYedi9hV+665sC+DZeHmiXe3/8=
+=KWi3
+-----END PGP SIGNATURE-----
+
+--82I3+IH0IqGh5yIs--
+
+
+--===============0587128818285975164==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+linux-arm-kernel mailing list
+linux-arm-kernel@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+
+--===============0587128818285975164==--
