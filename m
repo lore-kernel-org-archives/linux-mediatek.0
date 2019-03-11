@@ -1,53 +1,53 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 3/9] dt-bindings: mfd: Add compatible for the MediaTek
- MT6358 PMIC
-Date: Mon, 11 Mar 2019 17:06:30 -0500
-Message-ID: <20190311220630.GA4082@bogus>
-References: <1552275991-34648-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1552275991-34648-4-git-send-email-hsin-hsiung.wang@mediatek.com>
- <CAGp9LzrWawWy+mX5VpLeqdV85f0iEdRv6JtJbjS5pamN5xfKjA@mail.gmail.com>
+Subject: Re: [PATCH v6 1/7] dt-bindings: Add a binding for Mediatek SCP
+Date: Mon, 11 Mar 2019 17:09:53 -0500
+Message-ID: <20190311220953.GA8432@bogus>
+References: <20190311063458.137473-1-pihsun@chromium.org>
+ <20190311063458.137473-2-pihsun@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <CAGp9LzrWawWy+mX5VpLeqdV85f0iEdRv6JtJbjS5pamN5xfKjA@mail.gmail.com>
+In-Reply-To: <20190311063458.137473-2-pihsun@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@kernel.org>
-Cc: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, Lee Jones <lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, Eddie Huang <eddie.huang@mediatek.com>, linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, srv_heupstream <srv_heupstream@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Marc Zyngier <marc.zyngier@arm.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, linux-mediatek@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+Cc: Pi-Hsun Shih <pihsun@chromium.org>, Erin Lo <erin.lo@mediatek.com>, Ohad Ben-Cohen <ohad@wizery.com>, Bjorn Andersson <bjorn.andersson@linaro.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:REMOTE PROCESSOR (REMOTEPROC) SUBSYSTEM" <linux-remoteproc@vger.kernel.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Mar 11, 2019 at 12:19:32PM -0700, Sean Wang wrote:
-> Hi,
+On Mon, 11 Mar 2019 14:34:52 +0800, Pi-Hsun Shih wrote:
+> From: Erin Lo <erin.lo@mediatek.com>
 > 
-> Always put the patches about dt-binding changes at the head of the
-> series to let the related maintainer more easily find them.
+> Add a DT binding documentation of SCP for the
+> MT8183 SoC from Mediatek.
 > 
-> On Sun, Mar 10, 2019 at 8:48 PM Hsin-Hsiung Wang
-> <hsin-hsiung.wang@mediatek.com> wrote:
-> >
-> > This adds compatible for the MediaTek MT6358 PMIC.
-> >
-> > Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> > ---
-> >  Documentation/devicetree/bindings/mfd/mt6397.txt | 11 ++++++++---
-> >  1 file changed, 8 insertions(+), 3 deletions(-)
-> >
-> > diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
-> > index 0ebd08a..62f1c17 100644
-> > --- a/Documentation/devicetree/bindings/mfd/mt6397.txt
-> > +++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
-> > @@ -17,22 +17,27 @@ Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-> >  This document describes the binding for MFD device and its sub module.
-> >
-> >  Required properties:
-> > -compatible: "mediatek,mt6397" or "mediatek,mt6323"
-> > +compatible:
-> > +       "mediatek,mt6323" for PMIC MT6323
-> > +       "mediatek,mt6358" for PMIC MT6358
-> > +       "mediatek,mt6397" for PMIC MT6397
+> Signed-off-by: Erin Lo <erin.lo@mediatek.com>
+> ---
+> Changes from v5:
+>  - Remove dependency on CONFIG_RPMSG_MTK_SCP.
 > 
-> don't change anything not related MT6358
+> Changes from v4:
+>  - Add detail of more properties.
+>  - Document the usage of mtk,rpmsg-name in subnode from the new design.
+> 
+> Changes from v3:
+>  - No change.
+> 
+> Changes from v2:
+>  - No change. I realized that for this patch series, there's no need to
+>    add anything under the mt8183-scp node (neither the mt8183-rpmsg or
+>    the cros-ec-rpmsg) for them to work, since mt8183-rpmsg is added
+>    directly as a rproc_subdev by code, and cros-ec-rpmsg is dynamically
+>    created by SCP name service.
+> 
+> Changes from v1:
+>  - No change.
+> ---
+>  .../bindings/remoteproc/mtk,scp.txt           | 36 +++++++++++++++++++
+>  1 file changed, 36 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
+> 
 
-Reformatting like this is preferred.
+Please add Acked-by/Reviewed-by tags when posting new versions. However,
+there's no need to repost patches *only* to add the tags. The upstream
+maintainer will do that for acks received on the version they apply.
 
-Rob
+If a tag was not added on purpose, please state why and what changed.
