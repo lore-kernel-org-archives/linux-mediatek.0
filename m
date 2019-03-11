@@ -1,88 +1,73 @@
-From: Pavel Machek <pavel@ucw.cz>
-Subject: Re: [PATCH v4 4/4] gnss: add driver for mediatek receivers
-Date: Mon, 11 Mar 2019 12:21:14 +0100
-Message-ID: <20190311112114.GD14118@amd>
-References: <1550070569-18588-1-git-send-email-lollivier@baylibre.com>
- <1550070569-18588-5-git-send-email-lollivier@baylibre.com>
- <20190214100019.GA4197@Red>
- <20190214101212.GJ28278@localhost>
-Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-        protocol="application/pgp-signature"; boundary="/unnNtmY43mpUSKx"
+From: Marcel Holtmann <marcel@holtmann.org>
+Subject: Re: [PATCH v1 2/2] Bluetooth: mediatek: add support for MediaTek
+ MT7663S and MT7668S SDIO devices
+Date: Mon, 11 Mar 2019 17:38:51 +0100
+Message-ID: <71123002-4772-4BDC-BFEF-4C520F4459FE@holtmann.org>
+References: <cover.1552007058.git.sean.wang@mediatek.com>
+ <89776e11d742196e50e2d5f3ccc4336dc5aee134.1552007059.git.sean.wang@mediatek.com>
+Mime-Version: 1.0 (Mac OS X Mail 12.2 \(3445.102.3\))
+Content-Type: text/plain;
+        charset=utf-8
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190214101212.GJ28278@localhost>
+In-Reply-To: <89776e11d742196e50e2d5f3ccc4336dc5aee134.1552007059.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Johan Hovold <johan@kernel.org>
-Cc: Corentin Labbe <clabbe.montjoie@gmail.com>, Loys Ollivier <lollivier@baylibre.com>, devicetree@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Kevin Hilman <khilman@baylibre.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: Johan Hedberg <johan.hedberg@gmail.com>, Ulf Hansson <ulf.hansson@linaro.org>, "open list:BLUETOOTH DRIVERS" <linux-bluetooth@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Sean,
 
---/unnNtmY43mpUSKx
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> This adds the support of enabling MT7663S and MT7668S SDIO-based
+> Bluetooth function.
+> 
+> There are quite many differences between MT766[3,8]S and standard
+> Bluetooth SDIO devices such as Type-A and Type-B devices. For example,
+> MT766[3,8]S have its own SDIO registers layout, definition, SDIO packet
+> format, and the specific flow should be programmed on them to complete
+> the device initialization and low power control and so on.
+> 
+> Currently, there are many independent programming sequences from the
+> transport which are exactly the same as the ones in btusb.c about MediaTek
+> support [1] and btmtkuart.c. We can try to split the transport independent
+> Bluetooth setups on the advance, place them into the common files and allow
+> varous transport drivers to reuse them in the future.
+> 
+> [1] http://lists.infradead.org/pipermail/linux-mediatek/2019-January/017074.html
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+> drivers/bluetooth/Kconfig     |  11 +
+> drivers/bluetooth/Makefile    |   1 +
+> drivers/bluetooth/btmtksdio.c | 979 ++++++++++++++++++++++++++++++++++
+> 3 files changed, 991 insertions(+)
+> create mode 100644 drivers/bluetooth/btmtksdio.c
 
-On Thu 2019-02-14 11:12:12, Johan Hovold wrote:
-> On Thu, Feb 14, 2019 at 11:00:19AM +0100, Corentin Labbe wrote:
-> > On Wed, Feb 13, 2019 at 04:09:29PM +0100, Loys Ollivier wrote:
-> > > Add driver for serial-connected Mediatek-based GNSS receivers.
-> > >=20
-> > > These devices typically boot transmitting vendor specific NMEA output
-> > > sequences. The serial port bit rate is read from the device tree
-> > > "current-speed".
-> > >=20
-> > > Note that the driver uses the generic GNSS serial implementation and
-> > > therefore essentially only manages power abstracted into three power
-> > > states: ACTIVE, STANDBY, and OFF.
-> > >=20
-> > > For mediatek receivers with a main supply and no enable-gpios, this s=
-imply
-> > > means that the main supply is disabled in STANDBY and OFF (the option=
-al
-> > > backup supply is kept enabled while the driver is bound).
-> > >=20
-> > > Note that the timepulse-support is left unimplemented.
-> > >=20
-> > > Signed-off-by: Loys Ollivier <lollivier@baylibre.com>
->=20
-> > > +static int mtk_set_active(struct gnss_serial *gserial)
-> > > +{
-> > > +	struct mtk_data *data =3D gnss_serial_get_drvdata(gserial);
-> > > +	int ret;
-> > > +
-> > > +	ret =3D regulator_enable(data->vcc);
-> > > +	if (ret)
-> > > +		return ret;
-> > > +
-> > > +	return 0;
-> > > +}
-> >=20
-> > Hello
-> >=20
-> > This could be simplified to return regulator_enable(data->vcc);
->=20
-> Indeed, but I prefer this style which clearly separates the error path
-> from the success path while making the success return value explicit.
+patch has been applied to bluetooth-next tree.
 
-What is clear about useless code? That function can be two lines, this
-only leads people to wonder "what is going on here?".
-								Pavel
---=20
-(english) http://www.livejournal.com/~pavelmachek
-(cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blo=
-g.html
+You also need to send an extra patch providing a fix for this:
 
---/unnNtmY43mpUSKx
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
+  CC      drivers/bluetooth/btmtksdio.o
+drivers/bluetooth/btmtksdio.c: In function ‘btmtksdio_interrupt’:
+drivers/bluetooth/btmtksdio.c:470:2: warning: ‘old_len’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+  print_hex_dump(KERN_ERR, "err sdio rx: ", DUMP_PREFIX_NONE, 4, 1,
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          old_data, old_len, true);
+          ~~~~~~~~~~~~~~~~~~~~~~~~
+drivers/bluetooth/btmtksdio.c:376:15: note: ‘old_len’ was declared here
+  unsigned int old_len;
+               ^~~~~~~
+drivers/bluetooth/btmtksdio.c:470:2: warning: ‘old_data’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+  print_hex_dump(KERN_ERR, "err sdio rx: ", DUMP_PREFIX_NONE, 4, 1,
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          old_data, old_len, true);
+          ~~~~~~~~~~~~~~~~~~~~~~~~
+drivers/bluetooth/btmtksdio.c:375:17: note: ‘old_data’ was declared here
+  unsigned char *old_data;
+                 ^~~~~~~~
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
+And can we actually introduce module_sdio_driver similar to module_usb_driver.
 
-iEYEARECAAYFAlyGRKoACgkQMOfwapXb+vJqAwCfScGhWTgpO+dfu2CFL1ZJgSkD
-N6AAoIRtpiQeraSW32y0NcjTq66hwSeP
-=o1Tv
------END PGP SIGNATURE-----
+Regards
 
---/unnNtmY43mpUSKx--
+Marcel
