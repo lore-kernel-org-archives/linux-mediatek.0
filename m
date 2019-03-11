@@ -1,50 +1,53 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v1 1/2] mmc: add SDIO identifiers for MediaTek Bluetooth
- devices
-Date: Tue, 12 Mar 2019 05:41:52 +0800
-Message-ID: <1552340512.17993.4.camel@mtkswgap22>
-References: <cover.1552007058.git.sean.wang@mediatek.com>
-         <97d7949c00bd78f8ec282fb9cd380ad161244616.1552007059.git.sean.wang@mediatek.com>
-         <7C99941A-306E-4233-9EA4-5D681308C490@holtmann.org>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 3/9] dt-bindings: mfd: Add compatible for the MediaTek
+ MT6358 PMIC
+Date: Mon, 11 Mar 2019 17:06:30 -0500
+Message-ID: <20190311220630.GA4082@bogus>
+References: <1552275991-34648-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <1552275991-34648-4-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <CAGp9LzrWawWy+mX5VpLeqdV85f0iEdRv6JtJbjS5pamN5xfKjA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <7C99941A-306E-4233-9EA4-5D681308C490@holtmann.org>
+Content-Disposition: inline
+In-Reply-To: <CAGp9LzrWawWy+mX5VpLeqdV85f0iEdRv6JtJbjS5pamN5xfKjA@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Marcel Holtmann <marcel@holtmann.org>
-Cc: ulf.hansson@linaro.org, Johan Hedberg <johan.hedberg@gmail.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: Sean Wang <sean.wang@kernel.org>
+Cc: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, Lee Jones <lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, Eddie Huang <eddie.huang@mediatek.com>, linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, srv_heupstream <srv_heupstream@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Marc Zyngier <marc.zyngier@arm.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, linux-mediatek@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2019-03-11 at 17:38 +0100, Marcel Holtmann wrote:
-> Hi Sean,
+On Mon, Mar 11, 2019 at 12:19:32PM -0700, Sean Wang wrote:
+> Hi,
 > 
-> > The SDIO identifier for MediaTek Bluetooth devices were defined in the
-> > MediaTek Bluetooth driver. Moving the definitions in MMC header file
-> > seems common sense.
-> > 
-> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Always put the patches about dt-binding changes at the head of the
+> series to let the related maintainer more easily find them.
+> 
+> On Sun, Mar 10, 2019 at 8:48 PM Hsin-Hsiung Wang
+> <hsin-hsiung.wang@mediatek.com> wrote:
+> >
+> > This adds compatible for the MediaTek MT6358 PMIC.
+> >
+> > Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
 > > ---
-> > include/linux/mmc/sdio_ids.h | 2 ++
-> > 1 file changed, 2 insertions(+)
+> >  Documentation/devicetree/bindings/mfd/mt6397.txt | 11 ++++++++---
+> >  1 file changed, 8 insertions(+), 3 deletions(-)
+> >
+> > diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
+> > index 0ebd08a..62f1c17 100644
+> > --- a/Documentation/devicetree/bindings/mfd/mt6397.txt
+> > +++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
+> > @@ -17,22 +17,27 @@ Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
+> >  This document describes the binding for MFD device and its sub module.
+> >
+> >  Required properties:
+> > -compatible: "mediatek,mt6397" or "mediatek,mt6323"
+> > +compatible:
+> > +       "mediatek,mt6323" for PMIC MT6323
+> > +       "mediatek,mt6358" for PMIC MT6358
+> > +       "mediatek,mt6397" for PMIC MT6397
 > 
-> patch has been applied to bluetooth-next tree.
-> 
-> Can we also update the sdio.ids database inside systemd.
-> 
-> https://github.com/systemd/systemd/blob/master/hwdb/sdio.ids
-> 
+> don't change anything not related MT6358
 
+Reformatting like this is preferred.
 
-Sure, thanks for showing me the information and I'll update the database
-for the card.
-
-> Regards
-> 
-> Marcel
-> 
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+Rob
