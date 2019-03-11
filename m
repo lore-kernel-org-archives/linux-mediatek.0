@@ -1,90 +1,202 @@
-From: Hans de Goede <hdegoede@redhat.com>
-Subject: Re: [PATCH 1/5] dt-bindings: connector: add optional properties for
- Type-B
-Date: Mon, 11 Mar 2019 09:06:36 +0100
-Message-ID: <c8084259-74d3-c85f-1275-854826c935a0@redhat.com>
-References: <1552025622-15582-1-git-send-email-chunfeng.yun@mediatek.com>
- <1552025622-15582-2-git-send-email-chunfeng.yun@mediatek.com>
- <693b11e7-fa9e-ab1f-561a-beb758b1872f@redhat.com>
- <1552282383.10179.21.camel@mhfsdcap03>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Subject: Re: [PATCH v2 5/9] mfd: Add support for the MediaTek MT6358 PMIC
+Date: Mon, 11 Mar 2019 16:22:05 +0800
+Message-ID: <CANMq1KDPPuDC4O3W1EjqoLAzfwitx-pqX0Aq8zycomsigcHLFw@mail.gmail.com>
+References: <1552275991-34648-1-git-send-email-hsin-hsiung.wang@mediatek.com> <1552275991-34648-6-git-send-email-hsin-hsiung.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1552282383.10179.21.camel@mhfsdcap03>
-Content-Language: en-US
+In-Reply-To: <1552275991-34648-6-git-send-email-hsin-hsiung.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+Cc: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, Eddie Huang <eddie.huang@mediatek.com>, Marc Zyngier <marc.zyngier@arm.com>, srv_heupstream <srv_heupstream@mediatek.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, linux-rtc@vger.kernel.org, lkml <linux-kernel@vger.kernel.org>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, devicetree@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Sean Wang <sean.wang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+On Mon, Mar 11, 2019 at 11:48 AM Hsin-Hsiung Wang
+<hsin-hsiung.wang@mediatek.com> wrote:
+>
+> This adds support for the MediaTek MT6358 PMIC. This is a
+> multifunction device with the following sub modules:
+>
+> - Regulator
+> - RTC
+> - Codec
+> - Interrupt
+>
+> It is interfaced to the host controller using SPI interface
+> by a proprietary hardware called PMIC wrapper or pwrap.
+> MT6358 MFD is a child device of the pwrap.
+>
+> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+> ---
+>  drivers/mfd/Makefile                 |    2 +-
+>  drivers/mfd/mt6358-irq.c             |  236 +++++
+>  drivers/mfd/mt6397-core.c            |   63 +-
+>  include/linux/mfd/mt6358/core.h      |  158 +++
+>  include/linux/mfd/mt6358/registers.h | 1926 ++++++++++++++++++++++++++++++++++
+>  include/linux/mfd/mt6397/core.h      |    3 +
+>  6 files changed, 2386 insertions(+), 2 deletions(-)
+>  create mode 100644 drivers/mfd/mt6358-irq.c
+>  create mode 100644 include/linux/mfd/mt6358/core.h
+>  create mode 100644 include/linux/mfd/mt6358/registers.h
+>
+> diff --git a/drivers/mfd/Makefile b/drivers/mfd/Makefile
+> index 088e249..50be021 100644
+> --- a/drivers/mfd/Makefile
+> +++ b/drivers/mfd/Makefile
+> @@ -230,7 +230,7 @@ obj-$(CONFIG_INTEL_SOC_PMIC)        += intel-soc-pmic.o
+>  obj-$(CONFIG_INTEL_SOC_PMIC_BXTWC)     += intel_soc_pmic_bxtwc.o
+>  obj-$(CONFIG_INTEL_SOC_PMIC_CHTWC)     += intel_soc_pmic_chtwc.o
+>  obj-$(CONFIG_INTEL_SOC_PMIC_CHTDC_TI)  += intel_soc_pmic_chtdc_ti.o
+> -obj-$(CONFIG_MFD_MT6397)       += mt6397-core.o mt6397-irq.o
+> +obj-$(CONFIG_MFD_MT6397)       += mt6397-core.o mt6397-irq.o mt6358-irq.o
+>
+>  obj-$(CONFIG_MFD_ALTERA_A10SR) += altera-a10sr.o
+>  obj-$(CONFIG_MFD_SUN4I_GPADC)  += sun4i-gpadc.o
+> diff --git a/drivers/mfd/mt6358-irq.c b/drivers/mfd/mt6358-irq.c
+> new file mode 100644
+> index 0000000..2941d87
+> --- /dev/null
+> +++ b/drivers/mfd/mt6358-irq.c
+> @@ -0,0 +1,236 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +//
+> +// Copyright (c) 2019 MediaTek Inc.
+> +
+> +#include <linux/interrupt.h>
+> +#include <linux/mfd/mt6358/core.h>
+> +#include <linux/mfd/mt6358/registers.h>
+> +#include <linux/mfd/mt6397/core.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/of_device.h>
+> +#include <linux/of_irq.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/regmap.h>
+> +
+> +static struct irq_top_t mt6358_ints[] = {
+> +       MT6358_TOP_GEN(BUCK),
+> +       MT6358_TOP_GEN(LDO),
+> +       MT6358_TOP_GEN(PSC),
+> +       MT6358_TOP_GEN(SCK),
+> +       MT6358_TOP_GEN(BM),
+> +       MT6358_TOP_GEN(HK),
+> +       MT6358_TOP_GEN(AUD),
+> +       MT6358_TOP_GEN(MISC),
+> +};
+> +
+> +static int parsing_hwirq_to_top_group(unsigned int hwirq)
 
-On 11-03-19 06:33, Chunfeng Yun wrote:
-> Hi,
-> 
-> On Fri, 2019-03-08 at 13:07 +0100, Hans de Goede wrote:
->> Hi,
->>
->> On 08-03-19 07:13, Chunfeng Yun wrote:
->>> Add id-gpios, vbus-gpios, vbus-supply and pinctrl properties for
->>> usb-b-connector
->>>
->>> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
->>> ---
->>>    .../devicetree/bindings/connector/usb-connector.txt    | 10 ++++++++++
->>>    1 file changed, 10 insertions(+)
->>>
->>> diff --git a/Documentation/devicetree/bindings/connector/usb-connector.txt b/Documentation/devicetree/bindings/connector/usb-connector.txt
->>> index a9a2f2fc44f2..7a07b0f4f973 100644
->>> --- a/Documentation/devicetree/bindings/connector/usb-connector.txt
->>> +++ b/Documentation/devicetree/bindings/connector/usb-connector.txt
->>> @@ -17,6 +17,16 @@ Optional properties:
->>>    - self-powered: Set this property if the usb device that has its own power
->>>      source.
->>>    
->>> +Optional properties for usb-b-connector:
->>> +- id-gpios: gpio for USB ID pin.
->>
->> What about boards where the ID pin is *not* connected to a GPIO,
->> but e.g. to a special pin on the PMIC which can also detect
->> an ACA adapter ? Currently this case is handled by extcon
->> drivers, but we have no way to set e.g. vbus-supply for the
->> connector. Maybe in this case the usb-connector node should
->> be a child of the PMIC node ?
-> Yes, it would be, PMIC is in charger of detecting the status of ID pin
+I think mka@ already told you that, but I'd rename to something like
+get_hwirq_top_group.
 
-Ok, then I think this should be documented too.
+> +{
+> +       int top_group;
+> +
 
->> And in many cases there also is a mux to switch the datalines
->> between the host and device(gadget) controllers, how should
->> that be described in this model?  See the new usb-role-switch
->> code under drivers/usb/roles
->>
->> In some cases the mux is controlled through a gpio, so we
->> may want to add a "mux-gpios" here in which case we also
->> need to define what 0/1 means.
-> I'm not sure, the mux seems not belong to this connector,
-> and may need another driver to register usb-role-switch,
-> similar to:
-> 
-> [v2,2/2] usb: typec: add typec switch via GPIO control
-> https://patchwork.kernel.org/patch/10834327/
+Should we also add this? (I know that MT6358_TOP_GEN(BUCK).hwirq_base
+== 0, but nothing really guarantees that.
+if (mt6358_ints[0].hwirq_base < hwirq)
+   return -1;
 
-Right the mux/role-switch will need a driver, but the "owner"
-of the usb_connector, e.g. the PMIC or the owner of the
-id GPIO pin needs to know which device is the role-switch so
-that it can set the role correctly based on the id-pin.
+> +       for (top_group = 1; top_group < ARRAY_SIZE(mt6358_ints); top_group++) {
+> +               if (mt6358_ints[top_group].hwirq_base > hwirq) {
+> +                       top_group--;
+> +                       break;
 
-Your binding already contains Vbus info, allowing the owner
-of the usb_connector to enable/disable Vbus based on the id-pin,
-but the owner will also be responsible for setting the role-switch.
+More simply:
+return top_group-1;
 
-Note we cannot simply assume there will be only one role-switch,
-we really need some link from the usb_connector to the role-switch
-(or if it is a GPIO driven role-switch simply a role-switch-gpios
-member in the usb_connector).
+> +               }
+> +       }
+> +       return top_group;
 
-Regards,
+return -1 on error, and check for errors in the code below. If you
+don't do that, you run the risk of accessing some array out of bounds.
 
-Hans
+> +}
+> +
+> +static void pmic_irq_enable(struct irq_data *data)
+> +{
+> +       unsigned int hwirq = irqd_to_hwirq(data);
+> +       struct mt6397_chip *chip = irq_data_get_irq_chip_data(data);
+> +       struct pmic_irq_data *irqd = chip->irq_data;
+> +
+> +       irqd->enable_hwirq[hwirq] = true;
+> +}
+> +
+> +static void pmic_irq_disable(struct irq_data *data)
+> +{
+> +       unsigned int hwirq = irqd_to_hwirq(data);
+> +       struct mt6397_chip *chip = irq_data_get_irq_chip_data(data);
+> +       struct pmic_irq_data *irqd = chip->irq_data;
+> +
+> +       irqd->enable_hwirq[hwirq] = false;
+> +}
+> +
+> +static void pmic_irq_lock(struct irq_data *data)
+> +{
+> +       struct mt6397_chip *chip = irq_data_get_irq_chip_data(data);
+> +
+> +       mutex_lock(&chip->irqlock);
+> +}
+> +
+> +static void pmic_irq_sync_unlock(struct irq_data *data)
+> +{
+> +       unsigned int i, top_gp, en_reg, int_regs, shift;
+> +       struct mt6397_chip *chip = irq_data_get_irq_chip_data(data);
+> +       struct pmic_irq_data *irqd = chip->irq_data;
+> +
+> +       for (i = 0; i < irqd->num_pmic_irqs; i++) {
+> +               if (irqd->enable_hwirq[i] ==
+> +                               irqd->cache_hwirq[i])
+
+I think this fits in 80 chars.
+
+> +                       continue;
+> +
+> +               top_gp = parsing_hwirq_to_top_group(i);
+
+This is quite inefficient: you keep going through mt6358_ints for all
+i. Can you just figure out (and remember) which group we are currently
+in in this loop?
+
+outside the loop:
+top_gp = 0;
+
+here:
+while ((top_gp+1) < ARRAY_SIZE(mt6358_ints) && i >=
+mt6358_ints[top_gp+1].hwirq_base)
+   top_gp++;
+
+> +               int_regs = mt6358_ints[top_gp].num_int_bits / MT6358_REG_WIDTH;
+> +               en_reg = mt6358_ints[top_gp].en_reg +
+> +                       mt6358_ints[top_gp].en_reg_shift * int_regs;
+> +               shift = (i - mt6358_ints[top_gp].hwirq_base) % MT6358_REG_WIDTH;
+> +               regmap_update_bits(chip->regmap, en_reg, BIT(shift),
+> +                                  irqd->enable_hwirq[i] << shift);
+> +               irqd->cache_hwirq[i] = irqd->enable_hwirq[i];
+> +       }
+> +       mutex_unlock(&chip->irqlock);
+> +}
+> +
+> +static int pmic_irq_set_type(struct irq_data *data, unsigned int type)
+> +{
+> +       return 0;
+> +}
+
+Why do you need to stub this function out? I think the core will
+already check if the irq_chip supports this function or not. I think
+you can just leave it as NULL in the struct below.
+
+> +
+> +static struct irq_chip mt6358_irq_chip = {
+> +       .name = "mt6358-irq",
+> +       .irq_enable = pmic_irq_enable,
+> +       .irq_disable = pmic_irq_disable,
+> +       .irq_bus_lock = pmic_irq_lock,
+> +       .irq_bus_sync_unlock = pmic_irq_sync_unlock,
+> +       .irq_set_type = pmic_irq_set_type,
+> +};
+> +
+[snip]
