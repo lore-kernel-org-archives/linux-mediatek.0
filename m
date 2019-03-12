@@ -1,101 +1,84 @@
-From: Hans de Goede <hdegoede@redhat.com>
-Subject: Re: [PATCH 1/5] dt-bindings: connector: add optional properties for
- Type-B
-Date: Tue, 12 Mar 2019 13:45:44 +0100
-Message-ID: <464f1021-4c5e-9137-489d-65fd578575d3@redhat.com>
-References: <1552025622-15582-1-git-send-email-chunfeng.yun@mediatek.com>
- <1552025622-15582-2-git-send-email-chunfeng.yun@mediatek.com>
- <693b11e7-fa9e-ab1f-561a-beb758b1872f@redhat.com>
- <1552282383.10179.21.camel@mhfsdcap03>
- <c8084259-74d3-c85f-1275-854826c935a0@redhat.com>
- <1552360688.10179.55.camel@mhfsdcap03>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v3 4/7] dt-bindings: phy: Add document for phy-mtk-ufs
+Date: Tue, 12 Mar 2019 08:25:24 -0500
+Message-ID: <20190312132524.GA27601@bogus>
+References: <1551252192-535-1-git-send-email-stanley.chu@mediatek.com>
+ <1551252192-535-6-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1552360688.10179.55.camel@mhfsdcap03>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1551252192-535-6-git-send-email-stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org, subhashj-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, avri.altman-Sjgp3cTcYWE@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, liwei213-hv44wF8Li93QT0dZR+AlfA@public.gmane.org, alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, vivek.gautam-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+On Wed, Feb 27, 2019 at 03:23:09PM +0800, Stanley Chu wrote:
+> Add UFS M-PHY node document for MediaTek SoC chips.
+> 
+> Signed-off-by: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  .../devicetree/bindings/phy/phy-mtk-ufs.txt   | 35 +++++++++++++++++++
+>  1 file changed, 35 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt b/Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt
+> new file mode 100644
+> index 000000000000..5fc22c7fe0bc
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt
+> @@ -0,0 +1,35 @@
+> +MediaTek Universal Flash Storage (UFS) M-PHY binding
+> +--------------------------------------------------------
+> +
+> +UFS M-PHY nodes are defined to describe on-chip UFS M-PHY hardware macro.
+> +Each UFS M-PHY node should have its own node.
+> +
+> +To bind UFS M-PHY with UFS host controller, the controller node should
+> +contain a phandle reference to UFS M-PHY node.
+> +
+> +Required properties for UFS M-PHY nodes:
+> +- compatible         : Compatible list, contains the following controller:
+> +                       "mediatek,ufs-mphy"
 
-On 12-03-19 04:18, Chunfeng Yun wrote:
-> Hi,
-> On Mon, 2019-03-11 at 09:06 +0100, Hans de Goede wrote:
->> Hi,
->>
->> On 11-03-19 06:33, Chunfeng Yun wrote:
->>> Hi,
->>>
->>> On Fri, 2019-03-08 at 13:07 +0100, Hans de Goede wrote:
->>>> Hi,
->>>>
->>>> On 08-03-19 07:13, Chunfeng Yun wrote:
->>>>> Add id-gpios, vbus-gpios, vbus-supply and pinctrl properties for
->>>>> usb-b-connector
->>>>>
->>>>> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
->>>>> ---
->>>>>     .../devicetree/bindings/connector/usb-connector.txt    | 10 ++++++++++
->>>>>     1 file changed, 10 insertions(+)
->>>>>
->>>>> diff --git a/Documentation/devicetree/bindings/connector/usb-connector.txt b/Documentation/devicetree/bindings/connector/usb-connector.txt
->>>>> index a9a2f2fc44f2..7a07b0f4f973 100644
->>>>> --- a/Documentation/devicetree/bindings/connector/usb-connector.txt
->>>>> +++ b/Documentation/devicetree/bindings/connector/usb-connector.txt
->>>>> @@ -17,6 +17,16 @@ Optional properties:
->>>>>     - self-powered: Set this property if the usb device that has its own power
->>>>>       source.
->>>>>     
->>>>> +Optional properties for usb-b-connector:
->>>>> +- id-gpios: gpio for USB ID pin.
->>>>
->>>> What about boards where the ID pin is *not* connected to a GPIO,
->>>> but e.g. to a special pin on the PMIC which can also detect
->>>> an ACA adapter ? Currently this case is handled by extcon
->>>> drivers, but we have no way to set e.g. vbus-supply for the
->>>> connector. Maybe in this case the usb-connector node should
->>>> be a child of the PMIC node ?
->>> Yes, it would be, PMIC is in charger of detecting the status of ID pin
->>
->> Ok, then I think this should be documented too.
->>
->>>> And in many cases there also is a mux to switch the datalines
->>>> between the host and device(gadget) controllers, how should
->>>> that be described in this model?  See the new usb-role-switch
->>>> code under drivers/usb/roles
->>>>
->>>> In some cases the mux is controlled through a gpio, so we
->>>> may want to add a "mux-gpios" here in which case we also
->>>> need to define what 0/1 means.
->>> I'm not sure, the mux seems not belong to this connector,
->>> and may need another driver to register usb-role-switch,
->>> similar to:
->>>
->>> [v2,2/2] usb: typec: add typec switch via GPIO control
->>> https://patchwork.kernel.org/patch/10834327/
->>
->> Right the mux/role-switch will need a driver, but the "owner"
->> of the usb_connector, e.g. the PMIC or the owner of the
->> id GPIO pin needs to know which device is the role-switch so
->> that it can set the role correctly based on the id-pin.
->>
->> Your binding already contains Vbus info, allowing the owner
->> of the usb_connector to enable/disable Vbus based on the id-pin,
->> but the owner will also be responsible for setting the role-switch.
-> In this patch series, I make usb_connector driver enable/disable Vbus,
-> but not the parent(USB controller) of usb_connector which registers a
-> usb-role-switch, which way do you think it is better?
+Needs a more specific compatible string.
 
-IMHO there should not be a driver for the usb_connector child-node,
-only for the parent-device of that child-node.
+> +- reg                : Address and length of the UFS M-PHY register set.
+> +- #phy-cells         : This property shall be set to 0
+> +- clocks             : List of phandle and clock specifier pairs.
+> +- clock-names        : List of clock input name strings sorted in the same
+> +                       order as the clocks property. "unipro-clk" and
+> +                       "mp-clk" are mandatory.
+> +
+> +Example:
+> +
+> +	ufs_mphy: ufs_mphy@11fa0000 {
 
-There are going to be too many specific setups surrounding PMICs to
-be able to do a single generic driver for the connector.
+phy@...
 
-Regards,
-
-Hans
+> +		compatible = "mediatek,ufs-mphy";
+> +		reg = <0 0x11fa0000 0 0xc000>;
+> +		#phy-cells = <0>;
+> +
+> +		clocks = <&infracfg_ao INFRACFG_AO_UNIPRO_SCK_CG>,
+> +			 <&infracfg_ao INFRACFG_AO_UFS_MP_SAP_BCLK_CG>;
+> +		clock-names = "unipro-clk", "mp-clk";
+> +	};
+> +
+> +	ufshci:ufshci@11270000 {
+> +		...
+> +		phys = <&ufs_mphy>;
+> +	};
+> -- 
+> 2.18.0
+> 
