@@ -1,11 +1,15 @@
-From: Armando Miraglia <arma2ff0-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH] spi: mediatek: Attempt to address style issues in mt7621-spi.c
-Date: Wed, 13 Mar 2019 12:27:48 +0100
-Message-ID: <20190313112747.GA235429@google.com>
+From: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v3 4/7] dt-bindings: phy: Add document for phy-mtk-ufs
+Date: Wed, 13 Mar 2019 10:42:54 +0800
+Message-ID: <1552444974.30977.40.camel@mtkswgap22>
+References: <1551252192-535-1-git-send-email-stanley.chu@mediatek.com>
+ <1551252192-535-6-git-send-email-stanley.chu@mediatek.com>
+ <20190312132524.GA27601@bogus>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="2oS5YaxWCcQjTEyO"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
+In-Reply-To: <20190312132524.GA27601@bogus>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -15,96 +19,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: neil-+NVA1uvv1dVBDLzU/O5InQ@public.gmane.org
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: "mark.rutland-5wv7dgnIgG8@public.gmane.org" <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org" <martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, "subhashj-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org" <subhashj-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Chun-Hung Wu =?UTF-8?Q?=28=E5=B7=AB=E9=A7=BF=E5=AE=8F=29?= <Chun-hung.Wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Kuohong Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=8B=E9=B4=BB=29?= <kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Peter Wang =?UTF-8?Q?=28=E7=8E=8B=E4=BF=A1=E5=8F=8B=29?= <peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "kishon-l0cyMroinI0@public.gmane.org" <kishon-l0cyMroinI0@public.gmane.org>, "avri.altman-Sjgp3cTcYWE@public.gmane.org" <avri.altman-Sjgp3cTcYWE@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "liwei213-hv44wF8Li93QT0dZR+AlfA@public.gmane.org" <liwei213-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, "alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org" <alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Chunfeng Yun =?UTF-8?Q?=28=E4=BA=91=E6=98=A5=E5=B3=B0=29?= <Chunfeng.Yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>pe
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Rob,
 
---2oS5YaxWCcQjTEyO
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+On Tue, 2019-03-12 at 21:25 +0800, Rob Herring wrote:
+> On Wed, Feb 27, 2019 at 03:23:09PM +0800, Stanley Chu wrote:
+> > Add UFS M-PHY node document for MediaTek SoC chips.
+> > 
+> > Signed-off-by: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  .../devicetree/bindings/phy/phy-mtk-ufs.txt   | 35 +++++++++++++++++++
+> >  1 file changed, 35 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt
+> > 
+> > diff --git a/Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt b/Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt
+> > new file mode 100644
+> > index 000000000000..5fc22c7fe0bc
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt
+> > @@ -0,0 +1,35 @@
+> > +MediaTek Universal Flash Storage (UFS) M-PHY binding
+> > +--------------------------------------------------------
+> > +
+> > +UFS M-PHY nodes are defined to describe on-chip UFS M-PHY hardware macro.
+> > +Each UFS M-PHY node should have its own node.
+> > +
+> > +To bind UFS M-PHY with UFS host controller, the controller node should
+> > +contain a phandle reference to UFS M-PHY node.
+> > +
+> > +Required properties for UFS M-PHY nodes:
+> > +- compatible         : Compatible list, contains the following controller:
+> > +                       "mediatek,ufs-mphy"
+> 
+> Needs a more specific compatible string.
 
-Running Lindent on the mt7621-spi.c file in drivers/staging I noticed that the
-file contained style issues. This change attempts to address such style
-problems.
+Will add it.
 
-Signed-off-by: Armando Miraglia <armax-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+> 
+> > +- reg                : Address and length of the UFS M-PHY register set.
+> > +- #phy-cells         : This property shall be set to 0
+> > +- clocks             : List of phandle and clock specifier pairs.
+> > +- clock-names        : List of clock input name strings sorted in the same
+> > +                       order as the clocks property. "unipro-clk" and
+> > +                       "mp-clk" are mandatory.
+> > +
+> > +Example:
+> > +
+> > +	ufs_mphy: ufs_mphy@11fa0000 {
+> 
+> phy@...
 
---2oS5YaxWCcQjTEyO
-Content-Type: text/x-diff; charset=us-ascii
-Content-Disposition: attachment; filename="mt7621-spi.patch"
+Will fix it.
 
-diff --git a/drivers/staging/mt7621-spi/spi-mt7621.c b/drivers/staging/mt7621-spi/spi-mt7621.c
-index b509f9fe3346..03d53845f8c5 100644
---- a/drivers/staging/mt7621-spi/spi-mt7621.c
-+++ b/drivers/staging/mt7621-spi/spi-mt7621.c
-@@ -52,14 +52,14 @@
- #define MT7621_LSB_FIRST	BIT(3)
- 
- struct mt7621_spi {
--	struct spi_master	*master;
--	void __iomem		*base;
--	unsigned int		sys_freq;
--	unsigned int		speed;
--	struct clk		*clk;
--	int			pending_write;
--
--	struct mt7621_spi_ops	*ops;
-+	struct spi_master *master;
-+	void __iomem *base;
-+	unsigned int sys_freq;
-+	unsigned int speed;
-+	struct clk *clk;
-+	int pending_write;
-+
-+	struct mt7621_spi_ops *ops;
- };
- 
- static inline struct mt7621_spi *spidev_to_mt7621_spi(struct spi_device *spi)
-@@ -303,7 +303,7 @@ static int mt7621_spi_setup(struct spi_device *spi)
- 	struct mt7621_spi *rs = spidev_to_mt7621_spi(spi);
- 
- 	if ((spi->max_speed_hz == 0) ||
--		(spi->max_speed_hz > (rs->sys_freq / 2)))
-+	    (spi->max_speed_hz > (rs->sys_freq / 2)))
- 		spi->max_speed_hz = (rs->sys_freq / 2);
- 
- 	if (spi->max_speed_hz < (rs->sys_freq / 4097)) {
-@@ -316,9 +316,10 @@ static int mt7621_spi_setup(struct spi_device *spi)
- }
- 
- static const struct of_device_id mt7621_spi_match[] = {
--	{ .compatible = "ralink,mt7621-spi" },
-+	{.compatible = "ralink,mt7621-spi"},
- 	{},
- };
-+
- MODULE_DEVICE_TABLE(of, mt7621_spi_match);
- 
- static int mt7621_spi_probe(struct platform_device *pdev)
-@@ -408,9 +409,9 @@ MODULE_ALIAS("platform:" DRIVER_NAME);
- 
- static struct platform_driver mt7621_spi_driver = {
- 	.driver = {
--		.name = DRIVER_NAME,
--		.of_match_table = mt7621_spi_match,
--	},
-+		   .name = DRIVER_NAME,
-+		   .of_match_table = mt7621_spi_match,
-+		   },
- 	.probe = mt7621_spi_probe,
- 	.remove = mt7621_spi_remove,
- };
+> 
+> > +		compatible = "mediatek,ufs-mphy";
+> > +		reg = <0 0x11fa0000 0 0xc000>;
+> > +		#phy-cells = <0>;
+> > +
+> > +		clocks = <&infracfg_ao INFRACFG_AO_UNIPRO_SCK_CG>,
+> > +			 <&infracfg_ao INFRACFG_AO_UFS_MP_SAP_BCLK_CG>;
+> > +		clock-names = "unipro-clk", "mp-clk";
+> > +	};
+> > +
+> > +	ufshci:ufshci@11270000 {
+> > +		...
+> > +		phys = <&ufs_mphy>;
+> > +	};
+> > -- 
+> > 2.18.0
+> > 
 
---2oS5YaxWCcQjTEyO
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---2oS5YaxWCcQjTEyO--
+Thanks,
+Stanley.
