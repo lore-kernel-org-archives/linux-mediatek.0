@@ -1,100 +1,933 @@
-From: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v3 4/7] dt-bindings: phy: Add document for phy-mtk-ufs
-Date: Wed, 13 Mar 2019 18:27:32 +0800
-Message-ID: <1552472852.30977.43.camel@mtkswgap22>
-References: <1551252192-535-1-git-send-email-stanley.chu@mediatek.com>
- <1551252192-535-6-git-send-email-stanley.chu@mediatek.com>
- <20190312132524.GA27601@bogus>
+From: Jungo Lin <jungo.lin@mediatek.com>
+Subject: Re: [RFC PATCH V0 7/7] [media] platform: mtk-isp: Add Mediatek ISP
+ Pass 1 driver
+Date: Wed, 13 Mar 2019 14:54:04 +0800
+Message-ID: <1552460044.13953.114.camel@mtksdccf07>
+References: <1549348966-14451-1-git-send-email-frederic.chen@mediatek.com>
+ <1549348966-14451-8-git-send-email-frederic.chen@mediatek.com>
+ <CAAFQd5CUi9MqZ+j+DhRZtgByvfVH-FBFJHiaxb_JOqsLGNoK2Q@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190312132524.GA27601@bogus>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: "mark.rutland-5wv7dgnIgG8@public.gmane.org" <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org" <martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, "subhashj-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org" <subhashj-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Chun-Hung Wu =?UTF-8?Q?=28=E5=B7=AB=E9=A7=BF=E5=AE=8F=29?= <Chun-hung.Wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Kuohong Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=8B=E9=B4=BB=29?= <kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Peter Wang =?UTF-8?Q?=28=E7=8E=8B=E4=BF=A1=E5=8F=8B=29?= <peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "kishon-l0cyMroinI0@public.gmane.org" <kishon-l0cyMroinI0@public.gmane.org>, "avri.altman-Sjgp3cTcYWE@public.gmane.org" <avri.altman-Sjgp3cTcYWE@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "liwei213-hv44wF8Li93QT0dZR+AlfA@public.gmane.org" <liwei213-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, "alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org" <alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Chunfeng Yun =?UTF-8?Q?=28=E4=BA=91=E6=98=A5=E5=B3=B0=29?= <Chunfeng.Yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>pe
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <CAAFQd5CUi9MqZ+j+DhRZtgByvfVH-FBFJHiaxb_JOqsLGNoK2Q@mail.gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: Sean Cheng =?UTF-8?Q?=28=E9=84=AD=E6=98=87=E5=BC=98=29?= <Sean.Cheng@mediatek.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Rynn Wu =?UTF-8?Q?=28=E5=90=B3=E8=82=B2=E6=81=A9=29?= <Rynn.Wu@mediatek.com>, srv_heupstream@mediatek.com, Mauro Carvalho Chehab <mchehab@kernel.org>, Holmes Chiou =?UTF-8?Q?=28=E9=82=B1=E6=8C=BA=29?= <holmes.chiou@mediatek.com>, Jerry-ch Chen <Jerry-ch.Chen@mediatek.com>, Sj Huang <sj.huang@mediatek.com>, yuzhao@chromium.org, Christie Yu =?UTF-8?Q?=28=E6=B8=B8=E9=9B=85=E6=83=A0=29?= <christie.yu@mediatek.com>, zwisler@chromium.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Frederic Chen <frederic.chen@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, "list@263.net:IOMMU DRIVERS
+ <iommu@lists.linux-foundation.org>, Joerg  Roedel <joro@8bytes.org>,
+ " <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Rob,
-
-On Tue, 2019-03-12 at 21:25 +0800, Rob Herring wrote:
-> On Wed, Feb 27, 2019 at 03:23:09PM +0800, Stanley Chu wrote:
-> > Add UFS M-PHY node document for MediaTek SoC chips.
-> > 
-> > Signed-off-by: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  .../devicetree/bindings/phy/phy-mtk-ufs.txt   | 35 +++++++++++++++++++
-> >  1 file changed, 35 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt
-> > 
-> > diff --git a/Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt b/Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt
-> > new file mode 100644
-> > index 000000000000..5fc22c7fe0bc
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt
-> > @@ -0,0 +1,35 @@
-> > +MediaTek Universal Flash Storage (UFS) M-PHY binding
-> > +--------------------------------------------------------
-> > +
-> > +UFS M-PHY nodes are defined to describe on-chip UFS M-PHY hardware macro.
-> > +Each UFS M-PHY node should have its own node.
-> > +
-> > +To bind UFS M-PHY with UFS host controller, the controller node should
-> > +contain a phandle reference to UFS M-PHY node.
-> > +
-> > +Required properties for UFS M-PHY nodes:
-> > +- compatible         : Compatible list, contains the following controller:
-> > +                       "mediatek,ufs-mphy"
+On Tue, 2019-03-12 at 19:04 +0900, Tomasz Figa wrote:
+> Hi Frederic, Jungo,
 > 
-> Needs a more specific compatible string.
+> Please see more comments inline.
 > 
-> > +- reg                : Address and length of the UFS M-PHY register set.
-> > +- #phy-cells         : This property shall be set to 0
-> > +- clocks             : List of phandle and clock specifier pairs.
-> > +- clock-names        : List of clock input name strings sorted in the same
-> > +                       order as the clocks property. "unipro-clk" and
-> > +                       "mp-clk" are mandatory.
-> > +
-> > +Example:
-> > +
-> > +	ufs_mphy: ufs_mphy@11fa0000 {
+
+Hi Tomasz:
+
+Thanks for your part 3 comments.
+Below is our feedback.
+
+> > +static int mtk_cam_vb2_queue_setup(struct vb2_queue *vq,
+> > +                                  unsigned int *num_buffers,
+> > +                               unsigned int *num_planes,
+> > +                               unsigned int sizes[],
+> > +                               struct device *alloc_devs[])
+> > +{
+> > +       struct mtk_cam_mem2mem2_device *m2m2 = vb2_get_drv_priv(vq);
+> > +       struct mtk_cam_dev_video_device *node =
+> > +               mtk_cam_vbq_to_isp_node(vq);
+> > +       struct mtk_cam_dev *isp_dev = mtk_cam_m2m_to_dev(m2m2);
+> > +       struct device *dev = &isp_dev->pdev->dev;
+> > +       void *buf_alloc_ctx = NULL;
 > 
-> phy@...
+> Don't initialize by default, if not strictly necessary.
 > 
-> > +		compatible = "mediatek,ufs-mphy";
-> > +		reg = <0 0x11fa0000 0 0xc000>;
-> > +		#phy-cells = <0>;
+
+Ok, fixed in next patch.
+
+> > +       int queue_id = mtk_cam_dev_get_queue_id_of_dev_node(isp_dev, node);
 > > +
-> > +		clocks = <&infracfg_ao INFRACFG_AO_UNIPRO_SCK_CG>,
-> > +			 <&infracfg_ao INFRACFG_AO_UFS_MP_SAP_BCLK_CG>;
-> > +		clock-names = "unipro-clk", "mp-clk";
-
-Question about clock name:
-
-Shall we drop "-clk" in clock names?
-
-For example,
-clock-names = "unipro-clk", "mp-clk";
-becomes 
-clock-names = "unipro", "mp"; ?
-
-> > +	};
+> > +       /* Get V4L2 format with the following method */
+> > +       const struct v4l2_format *fmt = &node->vdev_fmt;
 > > +
-> > +	ufshci:ufshci@11270000 {
-> > +		...
-> > +		phys = <&ufs_mphy>;
-> > +	};
-> > -- 
-> > 2.18.0
-> > 
+> > +       *num_planes = 1;
+> 
+> This doesn't handle VIDIOC_CREATE_BUFS, which triggers a
+> .queue_setup() call with *num_planes > 0 and sizes[] already
+> initialized. The driver needs to validate that the sizes and number of
+> planes are valid in that case and return -EINVAL otherwise. Perhaps
+> you should try running v4l2-compliance
+> (https://git.linuxtv.org/v4l-utils.git/tree/utils/v4l2-compliance) on
+> this driver, which should catch issues like this.
+> 
 
-Thanks,
-Stanley.
+Ok, we will add code check logic for this user case.
+The function will be similar to below:
+https://elixir.bootlin.com/linux/latest/source/drivers/media/platform/vivid/vivid-vid-cap.c#L87
+https://elixir.bootlin.com/linux/latest/source/drivers/staging/media/ipu3/ipu3-v4l2.c#L388
+
+> > +       *num_buffers = clamp_val(*num_buffers, 1, VB2_MAX_FRAME);
+> > +
+> > +       if (isp_dev->ctx.queue[queue_id].desc.smem_alloc) {
+> > +               buf_alloc_ctx = isp_dev->ctx.smem_vb2_alloc_ctx;
+> > +               dev_dbg(dev, "Select smem_vb2_alloc_ctx(%llx)\n",
+> > +                       (unsigned long long)buf_alloc_ctx);
+> 
+> Use %p for printing pointers.
+> 
+
+For security reason, we will change to use "%pK" for printing kernel
+pointers.
+
+> > +       } else {
+> > +               buf_alloc_ctx = isp_dev->ctx.default_vb2_alloc_ctx;
+> > +               dev_dbg(dev, "Select default_vb2_alloc_ctx(%llx)\n",
+> > +                       (unsigned long long)buf_alloc_ctx);
+> > +       }
+> > +
+> > +       vq->dma_attrs |= DMA_ATTR_NON_CONSISTENT;
+> > +       dev_dbg(dev, "queue(%d): cached mmap enabled\n", queue_id);
+> 
+> This isn't supported in upstream. (By the way, neither it is in Chrome
+> OS 4.19 kernel. If we really need cached mmap for some reason, we
+> should propose a proper solution upstream. I'd still first investigate
+> why write-combine mmap is slow for operations that should be simple
+> one-time writes or reads.)
+> 
+
+Ok, we will remove this in upstream version and follow your suggestion
+to find out better solution.
+
+> > +
+> > +       if (vq->type == V4L2_BUF_TYPE_META_CAPTURE ||
+> > +           vq->type == V4L2_BUF_TYPE_META_OUTPUT)
+> > +               sizes[0] = fmt->fmt.meta.buffersize;
+> > +       else
+> > +               sizes[0] = fmt->fmt.pix_mp.plane_fmt[0].sizeimage;
+> > +
+> > +       alloc_devs[0] = (struct device *)buf_alloc_ctx;
+> 
+> Please don't add random type casts. If the compiler gives a type
+> error, that normally means that there is something wrong elsewhere in
+> the code (i.e. the type of buf_alloc_ctx variable is wrong here - it
+> should be struct device *) and casting just masks the original
+> problem.
+> 
+
+Ok, we will fix this coding defect.
+
+> > +
+> > +       dev_dbg(dev, "queue(%d):type(%d),size(%d),alloc_ctx(%llx)\n",
+> > +               queue_id, vq->type, sizes[0],
+> > +               (unsigned long long)buf_alloc_ctx);
+> > +
+> > +       /* Initialize buffer queue */
+> > +       INIT_LIST_HEAD(&node->buffers);
+> 
+> This is incorrect. .queue_setup() can be also called on
+> VIDIOC_CREATE_BUFS, which must preserve the other buffers in the
+> queue.
+> 
+
+In our new version, we have removed this for request-API new design.
+
+> > +
+> > +       return 0;
+> > +}
+> [snip]
+> > +static int mtk_cam_vb2_start_streaming(struct vb2_queue *vq, unsigned int count)
+> > +{
+> > +       struct mtk_cam_mem2mem2_device *m2m2 = vb2_get_drv_priv(vq);
+> > +       struct mtk_cam_dev_video_device *node =
+> > +               mtk_cam_vbq_to_isp_node(vq);
+> > +       int r;
+> 
+> nit: "ret" is more common and already used by some other functions in
+> this patch.
+> 
+
+We will rename this variable in next patch and try to unify the variable
+naming in our driver.
+
+> > +
+> > +       if (m2m2->streaming) {
+> > +               r = -EBUSY;
+> > +               goto fail_return_bufs;
+> > +       }
+> 
+> We shouldn't need to check this ourselves. It's not possible to have
+> this call on an already streaming vb2 queue. Since we start streaming
+> the m2m2 subdev only when all video nodes start streaming, this should
+> never happen.
+> 
+
+Ok, we will remove this redundant checking in next patch.
+
+> > +
+> > +       if (!node->enabled) {
+> > +               pr_err("Node (%ld) is not enable\n", node - m2m2->nodes);
+> > +               r = -EINVAL;
+> > +               goto fail_return_bufs;
+> > +       }
+> > +
+> > +       r = media_pipeline_start(&node->vdev.entity, &m2m2->pipeline);
+> > +       if (r < 0) {
+> > +               pr_err("Node (%ld) media_pipeline_start failed\n",
+> > +                      node - m2m2->nodes);
+> > +               goto fail_return_bufs;
+> > +       }
+> > +
+> > +       if (!mtk_cam_all_nodes_streaming(m2m2, node))
+> > +               return 0;
+> > +
+> > +       /* Start streaming of the whole pipeline now */
+> > +
+> > +       r = v4l2_subdev_call(&m2m2->subdev, video, s_stream, 1);
+> > +       if (r < 0) {
+> > +               pr_err("Node (%ld) v4l2_subdev_call s_stream failed\n",
+> > +                      node - m2m2->nodes);
+> > +               goto fail_stop_pipeline;
+> > +       }
+> > +       return 0;
+> > +
+> > +fail_stop_pipeline:
+> > +       media_pipeline_stop(&node->vdev.entity);
+> > +fail_return_bufs:
+> > +       mtk_cam_return_all_buffers(m2m2, node, VB2_BUF_STATE_QUEUED);
+> > +
+> > +       return r;
+> > +}
+> > +
+> > +static void mtk_cam_vb2_stop_streaming(struct vb2_queue *vq)
+> > +{
+> > +       struct mtk_cam_mem2mem2_device *m2m2 = vb2_get_drv_priv(vq);
+> > +       struct mtk_cam_dev_video_device *node =
+> > +               mtk_cam_vbq_to_isp_node(vq);
+> > +       int r;
+> > +
+> > +       WARN_ON(!node->enabled);
+> > +
+> > +       /* Was this the first node with streaming disabled? */
+> > +       if (mtk_cam_all_nodes_streaming(m2m2, node)) {
+> > +               /* Yes, really stop streaming now */
+> > +               r = v4l2_subdev_call(&m2m2->subdev, video, s_stream, 0);
+> > +               if (r)
+> > +                       dev_err(m2m2->dev, "failed to stop streaming\n");
+> > +       }
+> > +
+> > +       mtk_cam_return_all_buffers(m2m2, node, VB2_BUF_STATE_ERROR);
+> > +       media_pipeline_stop(&node->vdev.entity);
+> > +}
+> > +
+> > +static int mtk_cam_videoc_querycap(struct file *file, void *fh,
+> > +                                  struct v4l2_capability *cap)
+> > +{
+> > +       struct mtk_cam_mem2mem2_device *m2m2 = video_drvdata(file);
+> > +       struct mtk_cam_dev_video_device *node = file_to_mtk_cam_node(file);
+> > +       struct mtk_cam_dev *isp_dev = mtk_cam_m2m_to_dev(m2m2);
+> > +       int queue_id =
+> > +               mtk_cam_dev_get_queue_id_of_dev_node(isp_dev, node);
+> > +       struct mtk_cam_ctx_queue *node_ctx = &isp_dev->ctx.queue[queue_id];
+> 
+> It feels like this could be just stored as node->ctx.
+> 
+
+After refactoring this function, the node_ctx is removed.
+Moreover, we will follow your suggestion to store mtk_cam_ctx_queue
+pointer in mtk_cam_dev_video_device for better access.
+
+> > +
+> > +       strlcpy(cap->driver, m2m2->name, sizeof(cap->driver));
+> > +       strlcpy(cap->card, m2m2->model, sizeof(cap->card));
+> > +       snprintf(cap->bus_info, sizeof(cap->bus_info), "platform:%s",
+> > +                node->name);
+> > +
+> > +       cap->device_caps =
+> > +               mtk_cam_node_get_v4l2_cap(node_ctx) | V4L2_CAP_STREAMING;
+> > +       cap->capabilities = cap->device_caps | V4L2_CAP_DEVICE_CAPS;
+> 
+> No need to set these 2 fields manually. They are filled in
+> automatically from struct video_device::device_caps.
+> 
+
+We will remove this redundant code.
+
+> > +
+> > +       return 0;
+> > +}
+> > +
+> > +/* Propagate forward always the format from the mtk_cam_dev subdev */
+> 
+> It doesn't seem to match what the function is doing, i.e. returning
+> the format structure of the node itself. I'd just drop this comment.
+> The code should be written in a self-explaining way anyway.
+> 
+
+Ok, we will remove this comment to avoid misunderstanding.
+
+> > +static int mtk_cam_videoc_g_fmt(struct file *file, void *fh,
+> > +                               struct v4l2_format *f)
+> > +{
+> > +       struct mtk_cam_dev_video_device *node = file_to_mtk_cam_node(file);
+> > +
+> > +       f->fmt = node->vdev_fmt.fmt;
+> > +
+> > +       return 0;
+> > +}
+> > +
+> > +static int mtk_cam_videoc_try_fmt(struct file *file,
+> > +                                 void *fh,
+> > +        struct v4l2_format *f)
+> > +{
+> > +       struct mtk_cam_mem2mem2_device *m2m2 = video_drvdata(file);
+> > +       struct mtk_cam_dev *isp_dev = mtk_cam_m2m_to_dev(m2m2);
+> > +       struct mtk_cam_ctx *dev_ctx = &isp_dev->ctx;
+> > +       struct mtk_cam_dev_video_device *node = file_to_mtk_cam_node(file);
+> > +       int queue_id =
+> > +               mtk_cam_dev_get_queue_id_of_dev_node(isp_dev, node);
+> > +       int ret = 0;
+> > +
+> > +       ret = mtk_cam_ctx_fmt_set_img(dev_ctx, queue_id,
+> > +                                     &f->fmt.pix_mp,
+> > +               &node->vdev_fmt.fmt.pix_mp);
+> 
+> Doesn't this actually change the current node format? VIDIOC_TRY_FMT
+> must not have any side effects on current driver state.
+> 
+
+This is a bug in our implementation. We will fix it in next patch.
+
+> > +
+> > +       /* Simply set the format to the node context in the initial version */
+> > +       if (ret) {
+> > +               pr_warn("Fmt(%d) not support for queue(%d), will load default fmt\n",
+> > +                       f->fmt.pix_mp.pixelformat, queue_id);
+> 
+> No need for this warning.
+> 
+
+Ok, we will remove this in next patch.
+
+> > +
+> > +               ret =   mtk_cam_ctx_format_load_default_fmt
+> > +                       (&dev_ctx->queue[queue_id], f);
+> 
+> Wouldn't this also change the current node state?
+> 
+> Also, something wrong with the number of spaces after "ret =".
+> 
+
+Ditto.
+
+> > +       }
+> > +
+> > +       if (!ret) {
+> > +               node->vdev_fmt.fmt.pix_mp = f->fmt.pix_mp;
+> > +               dev_ctx->queue[queue_id].fmt.pix_mp = node->vdev_fmt.fmt.pix_mp;
+> 
+> Ditto.
+> 
+> > +       }
+> > +
+> > +       return ret;
+> 
+> VIDIOC_TRY_FMT must not return an error unless for the cases described
+> in https://www.kernel.org/doc/html/latest/media/uapi/v4l/vidioc-g-fmt.html#return-value
+> .
+> 
+
+Ok, we will try to follow the VIDIOC_TYPE_FMT  API description of V4L2
+manual.
+
+> > +}
+> > +
+> > +static int mtk_cam_videoc_s_fmt(struct file *file, void *fh,
+> > +                               struct v4l2_format *f)
+> > +{
+> > +       struct mtk_cam_mem2mem2_device *m2m2 = video_drvdata(file);
+> > +       struct mtk_cam_dev *isp_dev = mtk_cam_m2m_to_dev(m2m2);
+> > +       struct mtk_cam_ctx *dev_ctx = &isp_dev->ctx;
+> > +       struct mtk_cam_dev_video_device *node = file_to_mtk_cam_node(file);
+> > +       int queue_id = mtk_cam_dev_get_queue_id_of_dev_node(isp_dev, node);
+> > +       int ret = 0;
+> > +
+> > +       ret = mtk_cam_ctx_fmt_set_img(dev_ctx, queue_id,
+> > +                                     &f->fmt.pix_mp,
+> > +               &node->vdev_fmt.fmt.pix_mp);
+> > +
+> > +       /* Simply set the format to the node context in the initial version */
+> > +       if (!ret)
+> > +               dev_ctx->queue[queue_id].fmt.pix_mp = node->vdev_fmt.fmt.pix_mp;
+> > +       else
+> > +               dev_warn(&isp_dev->pdev->dev,
+> > +                        "s_fmt, format not support\n");
+> 
+> No need for error messages for userspace errors.
+> 
+
+Ok, we will remove this check.
+
+> > +
+> > +       return ret;
+> 
+> Instead of opencoding most of this function, one would normally call
+> mtk_cam_videoc_try_fmt() first to adjust the format struct and then
+> just update the driver state with the adjusted format.
+> 
+> Also, similarly to VIDIOC_TRY_FMT, VIDIOC_SET_FMT doesn't fail unless
+> in the very specific cases, as described in
+> https://www.kernel.org/doc/html/latest/media/uapi/v4l/vidioc-g-fmt.html#return-value
+> .
+> 
+
+Ok, below is our revised version of this function.
+
+int mtk_cam_videoc_s_fmt(struct file *file, void *fh,
+			 struct v4l2_format *f)
+{
+	struct mtk_cam_mem2mem2_device *m2m2 = video_drvdata(file);
+	struct mtk_cam_dev *cam_dev = mtk_cam_m2m_to_dev(m2m2);
+	struct mtk_cam_video_device *node = file_to_mtk_cam_node(file);
+
+	/* Get the valid format*/
+	mtk_cam_videoc_try_fmt(file, fh, f);
+	/* Configure to video device */
+	mtk_cam_ctx_fmt_set_img(&cam_dev->pdev->dev,
+				&node->vdev_fmt.fmt.pix_mp,
+				&f->fmt.pix_mp,
+				node->queue_id);
+
+	return 0;
+}
+
+> > +}
+> > +
+> > +static int mtk_cam_enum_framesizes(struct file *filp, void *priv,
+> > +                                  struct v4l2_frmsizeenum *sizes)
+> > +{
+> > +       struct mtk_cam_mem2mem2_device *m2m2 = video_drvdata(filp);
+> > +       struct mtk_cam_dev *isp_dev = mtk_cam_m2m_to_dev(m2m2);
+> > +       struct mtk_cam_dev_video_device *node =
+> > +               file_to_mtk_cam_node(filp);
+> > +       int queue_id = mtk_cam_dev_get_queue_id_of_dev_node(isp_dev, node);
+> > +
+> > +       if (sizes->index != 0)
+> > +               return -EINVAL;
+> > +
+> > +       if (queue_id == MTK_CAM_CTX_P1_MAIN_STREAM_OUT) {
+> > +               sizes->type = V4L2_FRMSIZE_TYPE_CONTINUOUS;
+> > +               sizes->stepwise.max_width = CAM_B_MAX_WIDTH;
+> > +               sizes->stepwise.min_width = CAM_MIN_WIDTH;
+> > +               sizes->stepwise.max_height = CAM_B_MAX_HEIGHT;
+> > +               sizes->stepwise.min_height = CAM_MIN_HEIGHT;
+> > +               sizes->stepwise.step_height = 1;
+> > +               sizes->stepwise.step_width = 1;
+> > +       } else if (queue_id == MTK_CAM_CTX_P1_PACKED_BIN_OUT) {
+> > +               sizes->type = V4L2_FRMSIZE_TYPE_CONTINUOUS;
+> > +               sizes->stepwise.max_width = RRZ_MAX_WIDTH;
+> > +               sizes->stepwise.min_width = RRZ_MIN_WIDTH;
+> > +               sizes->stepwise.max_height = RRZ_MAX_HEIGHT;
+> > +               sizes->stepwise.min_height = RRZ_MIN_HEIGHT;
+> > +               sizes->stepwise.step_height = 1;
+> > +               sizes->stepwise.step_width = 1;
+> > +       }
+> > +
+> > +       return 0;
+> > +}
+> > +
+> > +static int mtk_cam_meta_enum_format(struct file *file,
+> > +                                   void *fh, struct v4l2_fmtdesc *f)
+> > +{
+> > +       struct mtk_cam_dev_video_device *node = file_to_mtk_cam_node(file);
+> > +
+> > +       if (f->index > 0 || f->type != node->vbq.type)
+> > +               return -EINVAL;
+> 
+> f->type is already checked by the V4L2 core. See v4l_enum_fmt().
+> 
+
+We will remove the redundant checking in next patch.
+
+> > +
+> > +       f->pixelformat = node->vdev_fmt.fmt.meta.dataformat;
+> > +
+> > +       return 0;
+> > +}
+> > +
+> > +static int mtk_cam_videoc_s_meta_fmt(struct file *file,
+> > +                                    void *fh, struct v4l2_format *f)
+> > +{
+> > +       struct mtk_cam_mem2mem2_device *m2m2 = video_drvdata(file);
+> > +       struct mtk_cam_dev *isp_dev = mtk_cam_m2m_to_dev(m2m2);
+> > +       struct mtk_cam_ctx *dev_ctx = &isp_dev->ctx;
+> > +       struct mtk_cam_dev_video_device *node = file_to_mtk_cam_node(file);
+> > +       int queue_id = mtk_cam_dev_get_queue_id_of_dev_node(isp_dev, node);
+> > +
+> 
+> No need for this blank line.
+> 
+
+We will fix this coding style in next patch.
+
+> > +       int ret = 0;
+> 
+> Please don't default-initialize without a good reason.
+> 
+
+Ok, fix in next patch.
+
+> > +
+> > +       if (f->type != node->vbq.type)
+> > +               return -EINVAL;
+> 
+> Ditto.
+> 
+
+Ok, fix in next patch.
+
+> > +
+> > +       ret = mtk_cam_ctx_format_load_default_fmt(&dev_ctx->queue[queue_id], f);
+> > +
+> 
+> No need for this blank line.
+> 
+
+Ok, fix in next patch.
+
+> > +       if (!ret) {
+> > +               node->vdev_fmt.fmt.meta = f->fmt.meta;
+> > +               dev_ctx->queue[queue_id].fmt.meta = node->vdev_fmt.fmt.meta;
+> > +       } else {
+> > +               dev_warn(&isp_dev->pdev->dev,
+> > +                        "s_meta_fm failed, format not support\n");
+> 
+> No need for this warning.
+> 
+
+Ok, fix in next patch.
+
+> > +       }
+> > +
+> > +       return ret;
+> > +}
+> 
+> Actually, why do we even need to do all the things? Do we support
+> multiple different meta formats on the same video node? If not, we can
+> just have all the TRY_FMT/S_FMT/G_FMT return the hardcoded format.
+> 
+
+Ok, it is a good idea. We will return the hardcode format for meta video
+devices.
+Below is the revision version.
+
+int mtk_cam_meta_enum_format(struct file *file,
+			     void *fh, struct v4l2_fmtdesc *f)
+{
+	struct mtk_cam_video_device *node = file_to_mtk_cam_node(file);
+
+	f->pixelformat = node->vdev_fmt.fmt.meta.dataformat;
+
+	return 0;
+}
+
+const struct v4l2_ioctl_ops mtk_cam_v4l2_meta_cap_ioctl_ops = {
+	.vidioc_querycap = mtk_cam_videoc_querycap,
+	.vidioc_enum_fmt_meta_cap = mtk_cam_meta_enum_format,
+	.vidioc_g_fmt_meta_cap = mtk_cam_videoc_g_meta_fmt,
+	.vidioc_s_fmt_meta_cap = mtk_cam_videoc_g_meta_fmt,
+	.vidioc_try_fmt_meta_cap = mtk_cam_videoc_g_meta_fmt,
+...
+
+> > +
+> > +static int mtk_cam_videoc_g_meta_fmt(struct file *file,
+> > +                                    void *fh, struct v4l2_format *f)
+> > +{
+> > +       struct mtk_cam_dev_video_device *node = file_to_mtk_cam_node(file);
+> > +
+> > +       if (f->type != node->vbq.type)
+> > +               return -EINVAL;
+> 
+> Not needed.
+> 
+
+Ok, remove it in next patch.
+
+> > +
+> > +       f->fmt = node->vdev_fmt.fmt;
+> > +
+> > +       return 0;
+> > +}
+> > +
+> > +int mtk_cam_videoc_qbuf(struct file *file, void *priv, struct v4l2_buffer *p)
+> > +{
+> > +       struct video_device *vdev = video_devdata(file);
+> > +       struct vb2_buffer *vb;
+> > +       struct mtk_cam_dev_buffer *db;
+> > +       int r = 0;
+> > +
+> > +       /* check if vb2 queue is busy */
+> > +       if (vdev->queue->owner &&
+> > +           vdev->queue->owner != file->private_data)
+> > +               return -EBUSY;
+> 
+> This should be already handled by the core.
+> 
+
+Ok, remove it in next patch.
+
+> > +
+> > +       /* Keep the value of sequence in v4l2_buffer */
+> > +       /* in ctx buf since vb2_qbuf will set it to 0 */
+> > +       vb = vdev->queue->bufs[p->index];
+> 
+> Why do you need a sequence number for buffers on queue time? The field
+> is not specified to be set by the userspace and should be ignored by
+> the driver. The driver should rely on the Request API to match any
+> buffers together anyway.
+> 
+
+It is our old design for frame-sync mechanism.
+However, we change to use "Request API" design and this function
+is removed in new version.
+
+> > +
+> > +       if (vb) {
+> > +               db = mtk_cam_vb2_buf_to_dev_buf(vb);
+> > +               pr_debug("qbuf: p:%llx,vb:%llx, db:%llx\n",
+> > +                        (unsigned long long)p,
+> > +                       (unsigned long long)vb,
+> > +                       (unsigned long long)db);
+> > +               db->ctx_buf.user_sequence = p->sequence;
+> > +       }
+> > +
+> 
+> Generally this driver shouldn't need to implement this callback
+> itself. Instead it can just use the vb2_ioctl_qbuf() helper.
+> 
+
+Same as above. This function is removed in new version.
+
+> > +       r = vb2_qbuf(vdev->queue, vdev->v4l2_dev->mdev, p);
+> > +
+> > +       if (r)
+> > +               pr_err("vb2_qbuf failed(err=%d): buf idx(%d)\n",
+> > +                      r, p->index);
+> > +
+> > +       return r;
+> > +}
+> > +EXPORT_SYMBOL_GPL(mtk_cam_videoc_qbuf);
+> > +
+> > +/******************** function pointers ********************/
+> > +
+> > +/* subdev internal operations */
+> > +static const struct v4l2_subdev_internal_ops mtk_cam_subdev_internal_ops = {
+> > +       .open = mtk_cam_subdev_open,
+> > +       .close = mtk_cam_subdev_close,
+> > +};
+> > +
+> > +static const struct v4l2_subdev_core_ops mtk_cam_subdev_core_ops = {
+> > +       .subscribe_event = mtk_cam_subdev_subscribe_event,
+> > +       .unsubscribe_event = mtk_cam_subdev_unsubscribe_event,
+> > +};
+> > +
+> > +static const struct v4l2_subdev_video_ops mtk_cam_subdev_video_ops = {
+> > +       .s_stream = mtk_cam_subdev_s_stream,
+> > +};
+> > +
+> > +static const struct v4l2_subdev_ops mtk_cam_subdev_ops = {
+> > +       .core = &mtk_cam_subdev_core_ops,
+> > +       .video = &mtk_cam_subdev_video_ops,
+> > +};
+> > +
+> > +static const struct media_entity_operations mtk_cam_media_ops = {
+> > +       .link_setup = mtk_cam_link_setup,
+> > +       .link_validate = v4l2_subdev_link_validate,
+> > +};
+> > +
+> > +#ifdef CONFIG_MEDIATEK_MEDIA_REQUEST
+> > +static void mtk_cam_vb2_buf_request_complete(struct vb2_buffer *vb)
+> > +{
+> > +       struct mtk_cam_mem2mem2_device *m2m2 = vb2_get_drv_priv(vb->vb2_queue);
+> > +
+> > +       v4l2_ctrl_request_complete(vb->req_obj.req,
+> > +                                  m2m2->v4l2_dev->ctrl_handler);
+> > +}
+> > +#endif
+> > +
+> > +static const struct vb2_ops mtk_cam_vb2_ops = {
+> > +       .buf_queue = mtk_cam_vb2_buf_queue,
+> > +       .queue_setup = mtk_cam_vb2_queue_setup,
+> > +       .start_streaming = mtk_cam_vb2_start_streaming,
+> > +       .stop_streaming = mtk_cam_vb2_stop_streaming,
+> > +       .wait_prepare = vb2_ops_wait_prepare,
+> > +       .wait_finish = vb2_ops_wait_finish,
+> > +#ifdef CONFIG_MEDIATEK_MEDIA_REQUEST
+> > +       .buf_request_complete = mtk_cam_vb2_buf_request_complete,
+> > +#endif
+> > +};
+> > +
+> > +static const struct v4l2_file_operations mtk_cam_v4l2_fops = {
+> > +       .unlocked_ioctl = video_ioctl2,
+> > +       .open = v4l2_fh_open,
+> > +       .release = vb2_fop_release,
+> > +       .poll = vb2_fop_poll,
+> > +       .mmap = vb2_fop_mmap,
+> > +#ifdef CONFIG_COMPAT
+> > +       .compat_ioctl32 = v4l2_compat_ioctl32,
+> > +#endif
+> > +};
+> > +
+> > +static const struct v4l2_ioctl_ops mtk_cam_v4l2_ioctl_ops = {
+> > +       .vidioc_querycap = mtk_cam_videoc_querycap,
+> > +       .vidioc_enum_framesizes = mtk_cam_enum_framesizes,
+> > +
+> > +       .vidioc_g_fmt_vid_cap_mplane = mtk_cam_videoc_g_fmt,
+> > +       .vidioc_s_fmt_vid_cap_mplane = mtk_cam_videoc_s_fmt,
+> > +       .vidioc_try_fmt_vid_cap_mplane = mtk_cam_videoc_try_fmt,
+> > +
+> > +       .vidioc_g_fmt_vid_out_mplane = mtk_cam_videoc_g_fmt,
+> > +       .vidioc_s_fmt_vid_out_mplane = mtk_cam_videoc_s_fmt,
+> > +       .vidioc_try_fmt_vid_out_mplane = mtk_cam_videoc_try_fmt,
+> > +
+> > +       /* buffer queue management */
+> > +       .vidioc_reqbufs = vb2_ioctl_reqbufs,
+> > +       .vidioc_create_bufs = vb2_ioctl_create_bufs,
+> > +       .vidioc_prepare_buf = vb2_ioctl_prepare_buf,
+> > +       .vidioc_querybuf = vb2_ioctl_querybuf,
+> > +       .vidioc_qbuf = mtk_cam_videoc_qbuf,
+> > +       .vidioc_dqbuf = vb2_ioctl_dqbuf,
+> > +       .vidioc_streamon = vb2_ioctl_streamon,
+> > +       .vidioc_streamoff = vb2_ioctl_streamoff,
+> > +       .vidioc_expbuf = vb2_ioctl_expbuf,
+> > +};
+> > +
+> > +static const struct v4l2_ioctl_ops mtk_cam_v4l2_meta_ioctl_ops = {
+> > +       .vidioc_querycap = mtk_cam_videoc_querycap,
+> > +
+> > +       .vidioc_enum_fmt_meta_cap = mtk_cam_meta_enum_format,
+> > +       .vidioc_g_fmt_meta_cap = mtk_cam_videoc_g_meta_fmt,
+> > +       .vidioc_s_fmt_meta_cap = mtk_cam_videoc_s_meta_fmt,
+> > +       .vidioc_try_fmt_meta_cap = mtk_cam_videoc_g_meta_fmt,
+> > +
+> > +       .vidioc_enum_fmt_meta_out = mtk_cam_meta_enum_format,
+> > +       .vidioc_g_fmt_meta_out = mtk_cam_videoc_g_meta_fmt,
+> > +       .vidioc_s_fmt_meta_out = mtk_cam_videoc_s_meta_fmt,
+> > +       .vidioc_try_fmt_meta_out = mtk_cam_videoc_g_meta_fmt,
+> > +
+> > +       .vidioc_reqbufs = vb2_ioctl_reqbufs,
+> > +       .vidioc_create_bufs = vb2_ioctl_create_bufs,
+> > +       .vidioc_prepare_buf = vb2_ioctl_prepare_buf,
+> > +       .vidioc_querybuf = vb2_ioctl_querybuf,
+> > +       .vidioc_qbuf = mtk_cam_videoc_qbuf,
+> > +       .vidioc_dqbuf = vb2_ioctl_dqbuf,
+> > +       .vidioc_streamon = vb2_ioctl_streamon,
+> > +       .vidioc_streamoff = vb2_ioctl_streamoff,
+> > +       .vidioc_expbuf = vb2_ioctl_expbuf,
+> > +};
+> 
+> The ops should be split for each node type, {VIDEO, META} x {OUTPUT,
+> CAPTURE}. Then the core would validate the type given to all the
+> ioctls automatically.
+> 
+
+Ok, below is new implementation.
+
+static const struct v4l2_ioctl_ops mtk_cam_v4l2_vcap_ioctl_ops
+static const struct v4l2_ioctl_ops mtk_cam_v4l2_vout_ioctl_ops
+static  const struct v4l2_ioctl_ops mtk_cam_v4l2_meta_cap_ioctl_ops
+static  const struct v4l2_ioctl_ops mtk_cam_v4l2_meta_out_ioctl_ops
+
+> > +
+> > +static u32 mtk_cam_node_get_v4l2_cap(struct mtk_cam_ctx_queue *node_ctx)
+> > +{
+> > +       u32 cap = 0;
+> > +
+> > +       if (node_ctx->desc.capture)
+> > +               if (node_ctx->desc.image)
+> > +                       cap = V4L2_CAP_VIDEO_CAPTURE_MPLANE;
+> > +               else
+> > +                       cap = V4L2_CAP_META_CAPTURE;
+> > +       else
+> > +               if (node_ctx->desc.image)
+> > +                       cap = V4L2_CAP_VIDEO_OUTPUT_MPLANE;
+> > +               else
+> > +                       cap = V4L2_CAP_META_OUTPUT;
+> > +
+> > +       return cap;
+> > +}
+> 
+> Why not just have this defined statically as node_ctx->desc.cap?
+> 
+
+Ok, it is refactoring done.
+
+> > +
+> > +static u32 mtk_cam_node_get_format_type(struct mtk_cam_ctx_queue *node_ctx)
+> > +{
+> > +       u32 type;
+> > +
+> > +       if (node_ctx->desc.capture)
+> > +               if (node_ctx->desc.image)
+> > +                       type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+> > +               else
+> > +                       type = V4L2_BUF_TYPE_META_CAPTURE;
+> > +       else
+> > +               if (node_ctx->desc.image)
+> > +                       type = V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
+> > +               else
+> > +                       type = V4L2_BUF_TYPE_META_OUTPUT;
+> > +
+> > +       return type;
+> > +}
+> 
+> Why not just have this defined statically as node_ctx->desc.buf_type?
+> 
+
+Same as above.
+
+> > +
+> > +static const struct v4l2_ioctl_ops *mtk_cam_node_get_ioctl_ops
+> > +       (struct mtk_cam_ctx_queue *node_ctx)
+> > +{
+> > +       const struct v4l2_ioctl_ops *ops = NULL;
+> > +
+> > +       if (node_ctx->desc.image)
+> > +               ops = &mtk_cam_v4l2_ioctl_ops;
+> > +       else
+> > +               ops = &mtk_cam_v4l2_meta_ioctl_ops;
+> > +       return ops;
+> > +}
+> 
+> It's also preferable to just put this inside some structure rather
+> than have getter functions. (node_ctx->desc.ioctl_ops?)
+> 
+
+Same as above.
+Below is the new version for struct mtk_cam_ctx_queue_desc
+
+/*
+ * struct mtk_cam_ctx_queue_desc - queue attributes
+ *				setup by device context owner
+ * @id:		id of the context queue
+ * @name:		media entity name
+ * @cap:		mapped to V4L2 capabilities
+ * @buf_type:	mapped to V4L2 buffer type
+ * @capture:	true for capture queue (device to user)
+ *				false for output queue (from user to device)
+ * @image:		true for image, false for meta data
+ * @smem_alloc:	Using the cam_smem_drv as alloc ctx or not
+ * @dma_port:	the dma port associated to the buffer
+ * @fmts:	supported format
+ * @num_fmts:	the number of supported formats
+ * @default_fmt_idx: default format of this queue
+ * @max_buf_count: maximum V4L2 buffer count
+ * @max_buf_count: mapped to v4l2_ioctl_ops
+ */
+struct mtk_cam_ctx_queue_desc {
+	u8 id;
+	char *name;
+	u32 cap;
+	u32 buf_type;
+	u32 dma_port;
+	u32 smem_alloc:1;
+	u8 capture:1;
+	u8 image:1;
+	u8 num_fmts;
+	u8 default_fmt_idx;
+	u8 max_buf_count;
+	const struct v4l2_ioctl_ops *ioctl_ops;
+	struct v4l2_format *fmts;
+};
+
+> > +
+> > +/* Config node's video properties */
+> > +/* according to the device context requirement */
+> > +static void mtk_cam_node_to_v4l2(struct mtk_cam_dev *isp_dev, u32 node,
+> > +                                struct video_device *vdev,
+> > +                                struct v4l2_format *f)
+> > +{
+> > +       u32 cap;
+> > +       struct mtk_cam_ctx *device_ctx = &isp_dev->ctx;
+> > +       struct mtk_cam_ctx_queue *node_ctx = &device_ctx->queue[node];
+> > +
+> > +       WARN_ON(node >= mtk_cam_dev_get_total_node(isp_dev));
+> > +       WARN_ON(!node_ctx);
+> 
+> How is this possible?
+> 
+
+Ok, we will remove this in next version.
+
+> > +
+> > +       /* set cap of the node */
+> > +       cap = mtk_cam_node_get_v4l2_cap(node_ctx);
+> > +       f->type = mtk_cam_node_get_format_type(node_ctx);
+> > +       vdev->ioctl_ops = mtk_cam_node_get_ioctl_ops(node_ctx);
+> > +
+> > +       if (mtk_cam_ctx_format_load_default_fmt(&device_ctx->queue[node], f)) {
+> > +               dev_err(&isp_dev->pdev->dev,
+> > +                       "Can't load default for node (%d): (%s)",
+> > +               node, device_ctx->queue[node].desc.name);
+> 
+> mtk_cam_ctx_format_load_default_fmt() doesn't fail (and that's right).
+> It should be actually made void.
+> 
+
+Ok, we will revise this in next version.
+
+> > +       }       else {
+> > +               if (device_ctx->queue[node].desc.image) {
+> > +                       dev_dbg(&isp_dev->pdev->dev,
+> > +                               "Node (%d): (%s), dfmt (f:0x%x w:%d: h:%d s:%d)\n",
+> > +                       node, device_ctx->queue[node].desc.name,
+> > +                       f->fmt.pix_mp.pixelformat,
+> > +                       f->fmt.pix_mp.width,
+> > +                       f->fmt.pix_mp.height,
+> > +                       f->fmt.pix_mp.plane_fmt[0].sizeimage
+> > +                       );
+> > +                       node_ctx->fmt.pix_mp = f->fmt.pix_mp;
+> > +               } else {
+> > +                       dev_dbg(&isp_dev->pdev->dev,
+> > +                               "Node (%d): (%s), dfmt (f:0x%x s:%u)\n",
+> > +                       node, device_ctx->queue[node].desc.name,
+> > +                       f->fmt.meta.dataformat,
+> > +                       f->fmt.meta.buffersize
+> > +                       );
+> > +                       node_ctx->fmt.meta = f->fmt.meta;
+> > +               }
+> 
+> Drop the debugging messages and just replace the whole if/else block with:
+> 
+> node_ctx->fmt = f->fmt;
+> 
+
+Same as above.
+
+> Sorry, ran out of time for today. Fourth part will come. :)
+> 
+> Best regards,
+> Tomasz
+> 
+
+Appreciate your support and hard working on this review.
+We will look forward your part 4 review.
+ 
+
+Best regards,
+
+Jungo
+
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
