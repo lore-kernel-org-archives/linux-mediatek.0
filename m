@@ -1,165 +1,99 @@
-From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Subject: [RESEND PATCH v1,
- 15/18] drm/mediatek: add RDMA1 fifo size into RDMA private data
-Date: Wed, 13 Mar 2019 16:26:00 +0800
-Message-ID: <1552465563-6940-16-git-send-email-yongqiang.niu@mediatek.com>
-References: <1552465563-6940-1-git-send-email-yongqiang.niu@mediatek.com>
+From: Yong Wu <yong.wu@mediatek.com>
+Subject: Re: [PATCH 02/13] driver core: Remove the link if there is no
+ driver with AUTO flag
+Date: Wed, 13 Mar 2019 17:08:23 +0800
+Message-ID: <1552468103.7433.11.camel@mhfsdcap03>
+References: <1546318276-18993-1-git-send-email-yong.wu@mediatek.com>
+         <1546318276-18993-3-git-send-email-yong.wu@mediatek.com>
+         <CAE=gft7mWs1jc+KQQcPuuhcmxpFRnRBTt35+uC3F20N6R554bQ@mail.gmail.com>
+         <1551278000.17917.50.camel@mhfsdcap03>
+         <CAE=gft4iHRo8VQot26dH2NaRNLtxxRYWBmSpjkoL2BE_i6eXQw@mail.gmail.com>
+         <e15e94be-3eb9-dc7b-2073-4163f91f0259@gmail.com>
+         <CAE=gft47TODOqKUxCvd+kDKfGbkQC1OVBarb1MaU3KrptcXiNw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0595865049=="
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1552465563-6940-1-git-send-email-yongqiang.niu@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Yongqiang Niu <yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAE=gft47TODOqKUxCvd+kDKfGbkQC1OVBarb1MaU3KrptcXiNw@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Evan Green <evgreen@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring <robh+dt@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Tomasz Figa <tfiga@google.com>, Will Deacon <will.deacon@arm.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, Arnd Bergmann <arnd@arndb.de>, yingjoe.chen@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
---===============0595865049==
-Content-Type: multipart/related;
-	boundary="__=_Part_Boundary_007_106913879.1393182818"
+On Tue, 2019-03-12 at 16:17 -0700, Evan Green wrote:
+> On Tue, Mar 12, 2019 at 7:21 AM Matthias Brugger <matthias.bgg@gmail.com> wrote:
+> >
+> >
+> >
+> > On 05/03/2019 20:03, Evan Green wrote:
+> > > On Wed, Feb 27, 2019 at 6:33 AM Yong Wu <yong.wu@mediatek.com> wrote:
+> > >>
+> > >> On Mon, 2019-02-25 at 15:53 -0800, Evan Green wrote:
+> > >>> On Mon, Dec 31, 2018 at 8:52 PM Yong Wu <yong.wu@mediatek.com> wrote:
+> > >>>>
+> > >>>> DL_FLAG_AUTOREMOVE_CONSUMER/SUPPLIER means "Remove the link
+> > >>>> automatically on consumer/supplier driver unbind", that means we should
+> > >>>> remove whole the device_link when there is no this driver no matter what
+> > >>>> the ref_count of the link is.
+> > >>>>
+> > >>>> CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> > >>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > >>>> ---
+> > >>>> The ref_count of our device_link normally is over 1. When the consumer
+> > >>>> device driver is removed, whole the device_link should be removed.
+> > >>>> Thus, I add this patch.
+> > >>>> ---
+> > >>>
+> > >>> I will admit to reading about device links for the first time while
+> > >>> reviewing this patch, but I don't really get this. Why use a kref at
+> > >>> all if we're just going to ignore its value? For instance, I see that
+> > >>> if you call device_link_add() with the same supplier and consumer, it
+> > >>> uses the kref to return the same link. That machinery is broken with
+> > >>> your change. Although I don't see any uses of it, you might also
+> > >>> expect a supplier or consumer could do a kref_get() on the link it got
+> > >>> back from device_link_add(), and have a reasonable expectation that
+> > >>> the link wouldn't be freed out from under it. This would also be
+> > >>> broken.
+> > >>>
+> > >>> Can you explain why your device_links normally have a reference count
+> > >>>> 1,
+> > >>
+> > >> I use device link between the smi-larb device and the iommu-consumer
+> > >> device. Take a example, smi-larb1 have 4 VDEC ports. From 4/13 in this
+> > >> patchset, we use device_link to link the VDEC device and the smi-larb1
+> > >> device in the function(mtk_iommu_config). since there are 4 ports, it
+> > >> will call device_link_add 4 times.
+> > >>
+> > >>>
+> > >>> and why those additional references can't be cleaned up in an
+> > >>> orderly fashion?
+> > >>
+> > >> If the iommu-consume device(like VDEC above) is removed, It should enter
+> > >> device_links_driver_cleanup which only ref_put one time. I guess whole
+> > >> the link should be removed at that time.
+> > >
+> > > It seems like Robin had some suggestions about using
+> > > mtk_iommu_add_device() rather than the attach_dev() to set the links
+> > > up, and then track them for removal in the corresponding
+> > > remove_device() callback. Then you wouldn't need this change, right?
 
---__=_Part_Boundary_007_106913879.1393182818
-Content-Transfer-Encoding: base64
-Content-Type: multipart/alternative;
-	boundary="__=_Part_Boundary_008_1633762523.1277265807"
+Hi Evan,  sorry for reply you so late. I have not got time to try
+this(Put it in the add_device), But I guess it works.
+At that time the ref_cnt here should be 1, then this patch is
+unnecessary.
 
---__=_Part_Boundary_008_1633762523.1277265807
-Content-Type: text/html
-Content-Transfer-Encoding: base64
+> > >
+> >
+> > FYI, Evan the patch is queued for v5.1-rc1 as
+> > 0fe6f7874d46 ("driver core: Remove the link if there is no driver with AUTO flag")
+> >
+> > So if you think there is something wrong with it, then please provide a fix or
+> > raise awareness :)
+> 
+> Oh. Thanks for the heads-up Matthias. It's pretty weird that we have
+> the kref there whose count we just completely ignore. I'll try to find
+> some time to submit a patch.
 
-PHByZT4NClRoaXMgcGF0Y2ggYWRkIFJETUExIGZpZm8gc2l6ZSBpbnRvIFJETUEgcHJpdmF0ZSBk
-YXRhDQoNClNpZ25lZC1vZmYtYnk6IFlvbmdxaWFuZyBOaXUgJmx0O3lvbmdxaWFuZy5uaXVAbWVk
-aWF0ZWsuY29tJmd0Ow0KLS0tDQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3Jk
-bWEuYyB8IDE2ICsrKysrKysrKysrKysrKy0NCiAxIGZpbGUgY2hhbmdlZCwgMTUgaW5zZXJ0aW9u
-cygrKSwgMSBkZWxldGlvbigtKQ0KDQpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlh
-dGVrL210a19kaXNwX3JkbWEuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9y
-ZG1hLmMNCmluZGV4IGIwYTVjZmYuLjNmOWI0ZDQgMTAwNjQ0DQotLS0gYS9kcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5jDQorKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2Rpc3BfcmRtYS5jDQpAQCAtNTMsMTIgKzUzLDE0IEBADQogI2RlZmluZSBSRE1BX0ZJ
-Rk9fUFNFVURPX1NJWkUoYnl0ZXMpCQkJKCgoYnl0ZXMpIC8gMTYpICZsdDsmbHQ7IDE2KQ0KICNk
-ZWZpbmUgUkRNQV9PVVRQVVRfVkFMSURfRklGT19USFJFU0hPTEQoYnl0ZXMpCQkoKGJ5dGVzKSAv
-IDE2KQ0KICNkZWZpbmUgUkRNQV9GSUZPX1NJWkUocmRtYSkJCQkoKHJkbWEpLSZndDtkYXRhLSZn
-dDtmaWZvX3NpemUpDQorI2RlZmluZSBSRE1BX0ZJRk9fU0laRTEocmRtYSkJCQkoKHJkbWEpLSZn
-dDtkYXRhLSZndDtmaWZvX3NpemUxKQ0KICNkZWZpbmUgRElTUF9SRE1BX01FTV9TVEFSVF9BRERS
-CQkweDBmMDANCiANCiAjZGVmaW5lIFJETUFfTUVNX0dNQwkJCQkweDQwNDAyMDIwDQogDQogc3Ry
-dWN0IG10a19kaXNwX3JkbWFfZGF0YSB7DQogCXVuc2lnbmVkIGludCBmaWZvX3NpemU7DQorCXVu
-c2lnbmVkIGludCBmaWZvX3NpemUxOw0KIH07DQogDQogLyoqDQpAQCAtMTM3LDExICsxMzksMTcg
-QEAgc3RhdGljIHZvaWQgbXRrX3JkbWFfY29uZmlnKHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXAs
-IHVuc2lnbmVkIGludCB3aWR0aCwNCiB7DQogCXVuc2lnbmVkIGludCB0aHJlc2hvbGQ7DQogCXVu
-c2lnbmVkIGludCByZWc7DQorCXVuc2lnbmVkIGludCByZG1hX2ZpZm9fc2l6ZTsNCiAJc3RydWN0
-IG10a19kaXNwX3JkbWEgKnJkbWEgPSBjb21wX3RvX3JkbWEoY29tcCk7DQogDQogCXJkbWFfdXBk
-YXRlX2JpdHMoY29tcCwgRElTUF9SRUdfUkRNQV9TSVpFX0NPTl8wLCAweGZmZiwgd2lkdGgpOw0K
-IAlyZG1hX3VwZGF0ZV9iaXRzKGNvbXAsIERJU1BfUkVHX1JETUFfU0laRV9DT05fMSwgMHhmZmZm
-ZiwgaGVpZ2h0KTsNCiANCisJaWYgKGNvbXAtJmd0O2lkID09IEREUF9DT01QT05FTlRfUkRNQTEp
-DQorCQlyZG1hX2ZpZm9fc2l6ZSA9IFJETUFfRklGT19TSVpFMShyZG1hKTsNCisJZWxzZQ0KKwkJ
-cmRtYV9maWZvX3NpemUgPSBSRE1BX0ZJRk9fU0laRShyZG1hKTsNCisNCiAJLyoNCiAJICogRW5h
-YmxlIEZJRk8gdW5kZXJmbG93IHNpbmNlIERTSSBhbmQgRFBJIGNhbiYjMzk7dCBiZSBibG9ja2Vk
-Lg0KIAkgKiBLZWVwIHRoZSBGSUZPIHBzZXVkbyBzaXplIHJlc2V0IGRlZmF1bHQgb2YgOCBLaUIu
-IFNldCB0aGUNCkBAIC0xNDksOCArMTU3LDEyIEBAIHN0YXRpYyB2b2lkIG10a19yZG1hX2NvbmZp
-ZyhzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wLCB1bnNpZ25lZCBpbnQgd2lkdGgsDQogCSAqIGFj
-Y291bnQgZm9yIGJsYW5raW5nLCBhbmQgd2l0aCBhIHBpeGVsIGRlcHRoIG9mIDQgYnl0ZXM6DQog
-CSAqLw0KIAl0aHJlc2hvbGQgPSB3aWR0aCAqIGhlaWdodCAqIHZyZWZyZXNoICogNCAqIDcgLyAx
-MDAwMDAwOw0KKw0KKwlpZiAodGhyZXNob2xkICZndDsgcmRtYV9maWZvX3NpemUpDQorCQl0aHJl
-c2hvbGQgPSByZG1hX2ZpZm9fc2l6ZTsNCisNCiAJcmVnID0gUkRNQV9GSUZPX1VOREVSRkxPV19F
-TiB8DQotCSAgICAgIFJETUFfRklGT19QU0VVRE9fU0laRShSRE1BX0ZJRk9fU0laRShyZG1hKSkg
-fA0KKwkgICAgICBSRE1BX0ZJRk9fUFNFVURPX1NJWkUocmRtYV9maWZvX3NpemUpIHwNCiAJICAg
-ICAgUkRNQV9PVVRQVVRfVkFMSURfRklGT19USFJFU0hPTEQodGhyZXNob2xkKTsNCiAJd3JpdGVs
-KHJlZywgY29tcC0mZ3Q7cmVncyArIERJU1BfUkVHX1JETUFfRklGT19DT04pOw0KIH0NCkBAIC0z
-MzAsMTAgKzM0MiwxMiBAQCBzdGF0aWMgaW50IG10a19kaXNwX3JkbWFfcmVtb3ZlKHN0cnVjdCBw
-bGF0Zm9ybV9kZXZpY2UgKnBkZXYpDQogDQogc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfZGlzcF9y
-ZG1hX2RhdGEgbXQyNzAxX3JkbWFfZHJpdmVyX2RhdGEgPSB7DQogCS5maWZvX3NpemUgPSBTWl80
-SywNCisJLmZpZm9fc2l6ZTEgPSBTWl80SywNCiB9Ow0KIA0KIHN0YXRpYyBjb25zdCBzdHJ1Y3Qg
-bXRrX2Rpc3BfcmRtYV9kYXRhIG10ODE3M19yZG1hX2RyaXZlcl9kYXRhID0gew0KIAkuZmlmb19z
-aXplID0gU1pfOEssDQorCS5maWZvX3NpemUxID0gU1pfOEssDQogfTsNCiANCiBzdGF0aWMgY29u
-c3Qgc3RydWN0IG9mX2RldmljZV9pZCBtdGtfZGlzcF9yZG1hX2RyaXZlcl9kdF9tYXRjaFtdID0g
-ew0KLS0gDQoxLjguMS4xLmRpcnR5DQoNCjwvcHJlPjwhLS10eXBlOnRleHQtLT48IS0tey0tPjxw
-cmU+KioqKioqKioqKioqKiBFbWFpbCBDb25maWRlbnRpYWxpdHkgTm90aWNlDQogKioqKioqKioq
-KioqKioqKioqKioNClRoZSBpbmZvcm1hdGlvbiBjb250YWluZWQgaW4gdGhpcyBlLW1haWwgbWVz
-c2FnZSAoaW5jbHVkaW5nIGFueSANCmF0dGFjaG1lbnRzKSBtYXkgYmUgY29uZmlkZW50aWFsLCBw
-cm9wcmlldGFyeSwgcHJpdmlsZWdlZCwgb3Igb3RoZXJ3aXNlDQpleGVtcHQgZnJvbSBkaXNjbG9z
-dXJlIHVuZGVyIGFwcGxpY2FibGUgbGF3cy4gSXQgaXMgaW50ZW5kZWQgdG8gYmUgDQpjb252ZXll
-ZCBvbmx5IHRvIHRoZSBkZXNpZ25hdGVkIHJlY2lwaWVudChzKS4gQW55IHVzZSwgZGlzc2VtaW5h
-dGlvbiwgDQpkaXN0cmlidXRpb24sIHByaW50aW5nLCByZXRhaW5pbmcgb3IgY29weWluZyBvZiB0
-aGlzIGUtbWFpbCAoaW5jbHVkaW5nIGl0cyANCmF0dGFjaG1lbnRzKSBieSB1bmludGVuZGVkIHJl
-Y2lwaWVudChzKSBpcyBzdHJpY3RseSBwcm9oaWJpdGVkIGFuZCBtYXkgDQpiZSB1bmxhd2Z1bC4g
-SWYgeW91IGFyZSBub3QgYW4gaW50ZW5kZWQgcmVjaXBpZW50IG9mIHRoaXMgZS1tYWlsLCBvciBi
-ZWxpZXZlDQogDQp0aGF0IHlvdSBoYXZlIHJlY2VpdmVkIHRoaXMgZS1tYWlsIGluIGVycm9yLCBw
-bGVhc2Ugbm90aWZ5IHRoZSBzZW5kZXIgDQppbW1lZGlhdGVseSAoYnkgcmVwbHlpbmcgdG8gdGhp
-cyBlLW1haWwpLCBkZWxldGUgYW55IGFuZCBhbGwgY29waWVzIG9mIA0KdGhpcyBlLW1haWwgKGlu
-Y2x1ZGluZyBhbnkgYXR0YWNobWVudHMpIGZyb20geW91ciBzeXN0ZW0sIGFuZCBkbyBub3QNCmRp
-c2Nsb3NlIHRoZSBjb250ZW50IG9mIHRoaXMgZS1tYWlsIHRvIGFueSBvdGhlciBwZXJzb24uIFRo
-YW5rDQogeW91ITwvcHJlPjwhLS19LS0+
+Thanks very much if you improve this.
 
---__=_Part_Boundary_008_1633762523.1277265807
-Content-Type: text/plain
-Content-Transfer-Encoding: base64
-
-VGhpcyBwYXRjaCBhZGQgUkRNQTEgZmlmbyBzaXplIGludG8gUkRNQSBwcml2YXRlIGRhdGENCg0K
-U2lnbmVkLW9mZi1ieTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3FpYW5nLm5pdUBtZWRpYXRlay5jb20+
-DQotLS0NCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5jIHwgMTYgKysr
-KysrKysrKysrKysrLQ0KIDEgZmlsZSBjaGFuZ2VkLCAxNSBpbnNlcnRpb25zKCspLCAxIGRlbGV0
-aW9uKC0pDQoNCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bf
-cmRtYS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYw0KaW5kZXgg
-YjBhNWNmZi4uM2Y5YjRkNCAxMDA2NDQNCi0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZGlzcF9yZG1hLmMNCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9y
-ZG1hLmMNCkBAIC01MywxMiArNTMsMTQgQEANCiAjZGVmaW5lIFJETUFfRklGT19QU0VVRE9fU0la
-RShieXRlcykJCQkoKChieXRlcykgLyAxNikgPDwgMTYpDQogI2RlZmluZSBSRE1BX09VVFBVVF9W
-QUxJRF9GSUZPX1RIUkVTSE9MRChieXRlcykJCSgoYnl0ZXMpIC8gMTYpDQogI2RlZmluZSBSRE1B
-X0ZJRk9fU0laRShyZG1hKQkJCSgocmRtYSktPmRhdGEtPmZpZm9fc2l6ZSkNCisjZGVmaW5lIFJE
-TUFfRklGT19TSVpFMShyZG1hKQkJCSgocmRtYSktPmRhdGEtPmZpZm9fc2l6ZTEpDQogI2RlZmlu
-ZSBESVNQX1JETUFfTUVNX1NUQVJUX0FERFIJCTB4MGYwMA0KIA0KICNkZWZpbmUgUkRNQV9NRU1f
-R01DCQkJCTB4NDA0MDIwMjANCiANCiBzdHJ1Y3QgbXRrX2Rpc3BfcmRtYV9kYXRhIHsNCiAJdW5z
-aWduZWQgaW50IGZpZm9fc2l6ZTsNCisJdW5zaWduZWQgaW50IGZpZm9fc2l6ZTE7DQogfTsNCiAN
-CiAvKioNCkBAIC0xMzcsMTEgKzEzOSwxNyBAQCBzdGF0aWMgdm9pZCBtdGtfcmRtYV9jb25maWco
-c3RydWN0IG10a19kZHBfY29tcCAqY29tcCwgdW5zaWduZWQgaW50IHdpZHRoLA0KIHsNCiAJdW5z
-aWduZWQgaW50IHRocmVzaG9sZDsNCiAJdW5zaWduZWQgaW50IHJlZzsNCisJdW5zaWduZWQgaW50
-IHJkbWFfZmlmb19zaXplOw0KIAlzdHJ1Y3QgbXRrX2Rpc3BfcmRtYSAqcmRtYSA9IGNvbXBfdG9f
-cmRtYShjb21wKTsNCiANCiAJcmRtYV91cGRhdGVfYml0cyhjb21wLCBESVNQX1JFR19SRE1BX1NJ
-WkVfQ09OXzAsIDB4ZmZmLCB3aWR0aCk7DQogCXJkbWFfdXBkYXRlX2JpdHMoY29tcCwgRElTUF9S
-RUdfUkRNQV9TSVpFX0NPTl8xLCAweGZmZmZmLCBoZWlnaHQpOw0KIA0KKwlpZiAoY29tcC0+aWQg
-PT0gRERQX0NPTVBPTkVOVF9SRE1BMSkNCisJCXJkbWFfZmlmb19zaXplID0gUkRNQV9GSUZPX1NJ
-WkUxKHJkbWEpOw0KKwllbHNlDQorCQlyZG1hX2ZpZm9fc2l6ZSA9IFJETUFfRklGT19TSVpFKHJk
-bWEpOw0KKw0KIAkvKg0KIAkgKiBFbmFibGUgRklGTyB1bmRlcmZsb3cgc2luY2UgRFNJIGFuZCBE
-UEkgY2FuJ3QgYmUgYmxvY2tlZC4NCiAJICogS2VlcCB0aGUgRklGTyBwc2V1ZG8gc2l6ZSByZXNl
-dCBkZWZhdWx0IG9mIDggS2lCLiBTZXQgdGhlDQpAQCAtMTQ5LDggKzE1NywxMiBAQCBzdGF0aWMg
-dm9pZCBtdGtfcmRtYV9jb25maWcoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCwgdW5zaWduZWQg
-aW50IHdpZHRoLA0KIAkgKiBhY2NvdW50IGZvciBibGFua2luZywgYW5kIHdpdGggYSBwaXhlbCBk
-ZXB0aCBvZiA0IGJ5dGVzOg0KIAkgKi8NCiAJdGhyZXNob2xkID0gd2lkdGggKiBoZWlnaHQgKiB2
-cmVmcmVzaCAqIDQgKiA3IC8gMTAwMDAwMDsNCisNCisJaWYgKHRocmVzaG9sZCA+IHJkbWFfZmlm
-b19zaXplKQ0KKwkJdGhyZXNob2xkID0gcmRtYV9maWZvX3NpemU7DQorDQogCXJlZyA9IFJETUFf
-RklGT19VTkRFUkZMT1dfRU4gfA0KLQkgICAgICBSRE1BX0ZJRk9fUFNFVURPX1NJWkUoUkRNQV9G
-SUZPX1NJWkUocmRtYSkpIHwNCisJICAgICAgUkRNQV9GSUZPX1BTRVVET19TSVpFKHJkbWFfZmlm
-b19zaXplKSB8DQogCSAgICAgIFJETUFfT1VUUFVUX1ZBTElEX0ZJRk9fVEhSRVNIT0xEKHRocmVz
-aG9sZCk7DQogCXdyaXRlbChyZWcsIGNvbXAtPnJlZ3MgKyBESVNQX1JFR19SRE1BX0ZJRk9fQ09O
-KTsNCiB9DQpAQCAtMzMwLDEwICszNDIsMTIgQEAgc3RhdGljIGludCBtdGtfZGlzcF9yZG1hX3Jl
-bW92ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQ0KIA0KIHN0YXRpYyBjb25zdCBzdHJ1
-Y3QgbXRrX2Rpc3BfcmRtYV9kYXRhIG10MjcwMV9yZG1hX2RyaXZlcl9kYXRhID0gew0KIAkuZmlm
-b19zaXplID0gU1pfNEssDQorCS5maWZvX3NpemUxID0gU1pfNEssDQogfTsNCiANCiBzdGF0aWMg
-Y29uc3Qgc3RydWN0IG10a19kaXNwX3JkbWFfZGF0YSBtdDgxNzNfcmRtYV9kcml2ZXJfZGF0YSA9
-IHsNCiAJLmZpZm9fc2l6ZSA9IFNaXzhLLA0KKwkuZmlmb19zaXplMSA9IFNaXzhLLA0KIH07DQog
-DQogc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgbXRrX2Rpc3BfcmRtYV9kcml2ZXJf
-ZHRfbWF0Y2hbXSA9IHsNCi0tIA0KMS44LjEuMS5kaXJ0eQ0K
-
---__=_Part_Boundary_008_1633762523.1277265807--
-
---__=_Part_Boundary_007_106913879.1393182818--
-
-
---===============0595865049==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
-
---===============0595865049==--
+> -Evan
