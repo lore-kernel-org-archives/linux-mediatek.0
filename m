@@ -1,124 +1,85 @@
-From: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [PATCH] spi: mediatek: Attempt to address style issues in
- spi-mt7621.c
-Date: Wed, 13 Mar 2019 15:34:54 +0300
-Message-ID: <20190313123454.GB2202@kadam>
-References: <20190313122403.248873-1-armax@google.com>
+From: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [SPAM][PATCH v3 4/7] dt-bindings: phy: Add document for
+ phy-mtk-ufs
+Date: Wed, 13 Mar 2019 22:05:18 +0800
+Message-ID: <1552485918.30977.56.camel@mtkswgap22>
+References: <1551252192-535-1-git-send-email-stanley.chu@mediatek.com>
+ <1551252192-535-6-git-send-email-stanley.chu@mediatek.com>
+ <1552472519.500.1.camel@mtksdaap41>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
-Content-Disposition: inline
-In-Reply-To: <20190313122403.248873-1-armax@google.com>
-List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
-List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
-List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
-List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
-List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Errors-To: driverdev-devel-bounces@linuxdriverproject.org
-Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
-To: Armando Miraglia <arma2ff0@gmail.com>
-Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, matthias.bgg@gmail.com, Armando Miraglia <armax@google.com>, linux-mediatek@lists.infradead.org, sankalpnegi2310@gmail.com, neil@brown.name, sr@denx.de, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1552472519.500.1.camel@mtksdaap41>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: "mark.rutland-5wv7dgnIgG8@public.gmane.org" <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org" <martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, "linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "subhashj-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org" <subhashj-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Chun-Hung Wu =?UTF-8?Q?=28=E5=B7=AB=E9=A7=BF=E5=AE=8F=29?= <Chun-hung.Wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Kuohong Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=8B=E9=B4=BB=29?= <kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "kishon-l0cyMroinI0@public.gmane.org" <kishon-l0cyMroinI0@public.gmane.org>, "avri.altman-Sjgp3cTcYWE@public.gmane.org" <avri.altman-Sjgp3cTcYWE@public.gmane.org>, "robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org" <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "liwei213-hv44wF8Li93QT0dZR+AlfA@public.gmane.org" <liwei213-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, "alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org" <alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Chunfeng Yun =?UTF-8?Q?=28=E4=BA=91=E6=98=A5=E5=B3=B0=29?= <Chunfeng.Yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XQ@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Mar 13, 2019 at 01:24:04PM +0100, Armando Miraglia wrote:
-> Running Lindent on the mt7621-spi.c file in drivers/staging I noticed that the
-> file contained style issues. This change attempts to address such style
-> problems.
+Hi Yingjoe,
+
+On Wed, 2019-03-13 at 18:21 +0800, Yingjoe Chen wrote:
+> On Wed, 2019-02-27 at 15:23 +0800, Stanley Chu wrote:
+> > Add UFS M-PHY node document for MediaTek SoC chips.
+> > 
+> > Signed-off-by: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  .../devicetree/bindings/phy/phy-mtk-ufs.txt   | 35 +++++++++++++++++++
+> >  1 file changed, 35 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt
+> > 
+> > diff --git a/Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt b/Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt
+> > new file mode 100644
+> > index 000000000000..5fc22c7fe0bc
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt
+> > @@ -0,0 +1,35 @@
+> > +MediaTek Universal Flash Storage (UFS) M-PHY binding
+> > +--------------------------------------------------------
+> > +
+> > +UFS M-PHY nodes are defined to describe on-chip UFS M-PHY hardware macro.
+> > +Each UFS M-PHY node should have its own node.
+> > +
+> > +To bind UFS M-PHY with UFS host controller, the controller node should
+> > +contain a phandle reference to UFS M-PHY node.
+> > +
+> > +Required properties for UFS M-PHY nodes:
+> > +- compatible         : Compatible list, contains the following controller:
+> > +                       "mediatek,ufs-mphy"
+> > +- reg                : Address and length of the UFS M-PHY register set.
+> > +- #phy-cells         : This property shall be set to 0
+> > +- clocks             : List of phandle and clock specifier pairs.
+> > +- clock-names        : List of clock input name strings sorted in the same
+> > +                       order as the clocks property. "unipro-clk" and
+> > +                       "mp-clk" are mandatory.
+> 
+> All names in clock-names are clock, don't need to add -clk again.
+> Please describe shortly what these clock are used.
 > 
 
-Don't run lindent.  I think checkpatch.pl has a --fix option that might
-be better, but once the code is merged then our standard become much
-higher for follow up patches.
+Sorry this mail is marked as [SPAM] so I did not notice this before
+sending the same question to Rob.
 
-> Signed-off-by: Armando Miraglia <armax@google.com>
-> ---
-> NOTE: resend this patch to include all mainteners listed by get_mantainers.pl.
->  drivers/staging/mt7621-spi/spi-mt7621.c | 27 +++++++++++++------------
->  1 file changed, 14 insertions(+), 13 deletions(-)
+This style seems suitable in phy documents but existed ufs documents
+already have lots of "_clk" so I am confused.
+
+Maybe I need to drop "-clk" in phy documents and use "_clk" in ufs
+documents?
+
+Or wait for Rob's feedback in another mail?
+
+> Joe.C
 > 
-> diff --git a/drivers/staging/mt7621-spi/spi-mt7621.c b/drivers/staging/mt7621-spi/spi-mt7621.c
-> index b509f9fe3346..03d53845f8c5 100644
-> --- a/drivers/staging/mt7621-spi/spi-mt7621.c
-> +++ b/drivers/staging/mt7621-spi/spi-mt7621.c
-> @@ -52,14 +52,14 @@
->  #define MT7621_LSB_FIRST	BIT(3)
->  
->  struct mt7621_spi {
-> -	struct spi_master	*master;
-> -	void __iomem		*base;
-> -	unsigned int		sys_freq;
-> -	unsigned int		speed;
-> -	struct clk		*clk;
-> -	int			pending_write;
-> -
-> -	struct mt7621_spi_ops	*ops;
-> +	struct spi_master *master;
-> +	void __iomem *base;
-> +	unsigned int sys_freq;
-> +	unsigned int speed;
-> +	struct clk *clk;
-> +	int pending_write;
-> +
-> +	struct mt7621_spi_ops *ops;
+> 
+> 
 
-The original is fine.  I don't encourage people to do fancy indenting
-with their local variable declarations inside functions but for a struct
-the declarations aren't going to change a lot so people can get fancy
-if they want.
-
-The problem with a local is if you need to add a new variable then you
-have to re-indent a bunch of unrelated lines or have one out of
-alignment line.  Most people know this intuitively so they don't get
-fancy.
-
->  };
->  
->  static inline struct mt7621_spi *spidev_to_mt7621_spi(struct spi_device *spi)
-> @@ -303,7 +303,7 @@ static int mt7621_spi_setup(struct spi_device *spi)
->  	struct mt7621_spi *rs = spidev_to_mt7621_spi(spi);
->  
->  	if ((spi->max_speed_hz == 0) ||
-> -		(spi->max_speed_hz > (rs->sys_freq / 2)))
-> +	    (spi->max_speed_hz > (rs->sys_freq / 2)))
-
-Yeah.  Lindent is correct here.
-
->  		spi->max_speed_hz = (rs->sys_freq / 2);
->  
->  	if (spi->max_speed_hz < (rs->sys_freq / 4097)) {
-> @@ -316,9 +316,10 @@ static int mt7621_spi_setup(struct spi_device *spi)
->  }
->  
->  static const struct of_device_id mt7621_spi_match[] = {
-> -	{ .compatible = "ralink,mt7621-spi" },
-> +	{.compatible = "ralink,mt7621-spi"},
-
-The original was better.
-
->  	{},
->  };
-> +
->  MODULE_DEVICE_TABLE(of, mt7621_spi_match);
-
-No need for a blank.  These are closely related.
-
->  
->  static int mt7621_spi_probe(struct platform_device *pdev)
-> @@ -408,9 +409,9 @@ MODULE_ALIAS("platform:" DRIVER_NAME);
->  
->  static struct platform_driver mt7621_spi_driver = {
->  	.driver = {
-> -		.name = DRIVER_NAME,
-> -		.of_match_table = mt7621_spi_match,
-> -	},
-> +		   .name = DRIVER_NAME,
-> +		   .of_match_table = mt7621_spi_match,
-> +		   },
-
-The new indenting is very wrong.
-
-regards,
-dan carpenter
+Thanks.
+Stanley.
