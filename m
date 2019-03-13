@@ -1,85 +1,143 @@
-From: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [SPAM][PATCH v3 4/7] dt-bindings: phy: Add document for
- phy-mtk-ufs
-Date: Wed, 13 Mar 2019 22:05:18 +0800
-Message-ID: <1552485918.30977.56.camel@mtkswgap22>
-References: <1551252192-535-1-git-send-email-stanley.chu@mediatek.com>
- <1551252192-535-6-git-send-email-stanley.chu@mediatek.com>
- <1552472519.500.1.camel@mtksdaap41>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v2 6/9] regulator: mt6358: Add support for MT6358 regulator
+Date: Wed, 13 Mar 2019 15:01:32 +0000
+Message-ID: <20190313150132.GA5951@sirena.org.uk>
+References: <1552275991-34648-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <1552275991-34648-7-git-send-email-hsin-hsiung.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1552472519.500.1.camel@mtksdaap41>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: "mark.rutland-5wv7dgnIgG8@public.gmane.org" <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org" <martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, "linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "subhashj-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org" <subhashj-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Chun-Hung Wu =?UTF-8?Q?=28=E5=B7=AB=E9=A7=BF=E5=AE=8F=29?= <Chun-hung.Wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Kuohong Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=8B=E9=B4=BB=29?= <kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "kishon-l0cyMroinI0@public.gmane.org" <kishon-l0cyMroinI0@public.gmane.org>, "avri.altman-Sjgp3cTcYWE@public.gmane.org" <avri.altman-Sjgp3cTcYWE@public.gmane.org>, "robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org" <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "liwei213-hv44wF8Li93QT0dZR+AlfA@public.gmane.org" <liwei213-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, "alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org" <alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Chunfeng Yun =?UTF-8?Q?=28=E4=BA=91=E6=98=A5=E5=B3=B0=29?= <Chunfeng.Yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XQ@public.gmane.org
+Content-Type: multipart/mixed; boundary="===============0366961588999294646=="
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1552275991-34648-7-git-send-email-hsin-hsiung.wang@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+Cc: linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, srv_heupstream@mediatek.com, Alessandro Zummo <a.zummo@towertech.it>, Marc Zyngier <marc.zyngier@arm.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Eddie Huang <eddie.huang@mediatek.com>, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Yingjoe,
 
-On Wed, 2019-03-13 at 18:21 +0800, Yingjoe Chen wrote:
-> On Wed, 2019-02-27 at 15:23 +0800, Stanley Chu wrote:
-> > Add UFS M-PHY node document for MediaTek SoC chips.
-> > 
-> > Signed-off-by: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  .../devicetree/bindings/phy/phy-mtk-ufs.txt   | 35 +++++++++++++++++++
-> >  1 file changed, 35 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt
-> > 
-> > diff --git a/Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt b/Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt
-> > new file mode 100644
-> > index 000000000000..5fc22c7fe0bc
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt
-> > @@ -0,0 +1,35 @@
-> > +MediaTek Universal Flash Storage (UFS) M-PHY binding
-> > +--------------------------------------------------------
-> > +
-> > +UFS M-PHY nodes are defined to describe on-chip UFS M-PHY hardware macro.
-> > +Each UFS M-PHY node should have its own node.
-> > +
-> > +To bind UFS M-PHY with UFS host controller, the controller node should
-> > +contain a phandle reference to UFS M-PHY node.
-> > +
-> > +Required properties for UFS M-PHY nodes:
-> > +- compatible         : Compatible list, contains the following controller:
-> > +                       "mediatek,ufs-mphy"
-> > +- reg                : Address and length of the UFS M-PHY register set.
-> > +- #phy-cells         : This property shall be set to 0
-> > +- clocks             : List of phandle and clock specifier pairs.
-> > +- clock-names        : List of clock input name strings sorted in the same
-> > +                       order as the clocks property. "unipro-clk" and
-> > +                       "mp-clk" are mandatory.
-> 
-> All names in clock-names are clock, don't need to add -clk again.
-> Please describe shortly what these clock are used.
-> 
+--===============0366961588999294646==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="jI8keyz6grp/JLjh"
+Content-Disposition: inline
 
-Sorry this mail is marked as [SPAM] so I did not notice this before
-sending the same question to Rob.
 
-This style seems suitable in phy documents but existed ufs documents
-already have lots of "_clk" so I am confused.
+--jI8keyz6grp/JLjh
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Maybe I need to drop "-clk" in phy documents and use "_clk" in ufs
-documents?
+On Mon, Mar 11, 2019 at 11:46:28AM +0800, Hsin-Hsiung Wang wrote:
 
-Or wait for Rob's feedback in another mail?
+> +static const u32 vefuse_voltages[] = {
+> +	1700000, 1800000, 1900000,
+> +};
 
-> Joe.C
-> 
-> 
-> 
+This and a bunch of the other regulators look like they're just linear
+ranges and could use the linear range helpers.
 
-Thanks.
-Stanley.
+> +static const u32 vcn33_bt_voltages[] = {
+> +	3300000, 3400000, 3500000,
+> +};
+> +
+> +static const u32 vcn33_wifi_voltages[] = {
+> +	3300000, 3400000, 3500000,
+> +};
+
+These also have the same range so no matter which helpers are used I'd
+expect the data to be shared, I think some of the other regulators might
+have shared tables but didn't confirm.
+
+> +static inline unsigned int mt6358_map_mode(unsigned int mode)
+> +{
+> +	return mode == MT6358_BUCK_MODE_FORCE_PWM ?
+> +		REGULATOR_MODE_FAST : REGULATOR_MODE_NORMAL;
+> +}
+
+Please write normal if statements, it makes the code more readable.
+
+> +static int mt6358_set_voltage_sel(struct regulator_dev *rdev,
+> +				  unsigned int selector)
+> +{
+> +	int idx, ret;
+> +	const u32 *pvol;
+> +	struct mt6358_regulator_info *info = rdev_get_drvdata(rdev);
+> +
+> +	pvol = (const u32 *)info->index_table;
+> +
+> +	idx = pvol[selector];
+> +	ret = regmap_update_bits(rdev->regmap, info->desc.vsel_reg,
+> +				 info->desc.vsel_mask,
+> +				 idx << info->vsel_shift);
+> +
+> +	return ret;
+> +}
+
+This looks like something other devices might do - rather than implement
+it in the driver it would be a bit better to add it to helpers.c as a
+reusable function.
+
+> +static int mt6358_get_buck_voltage_sel(struct regulator_dev *rdev)
+> +{
+> +	int ret, regval;
+> +	struct mt6358_regulator_info *info = rdev_get_drvdata(rdev);
+> +
+> +	ret = regmap_read(rdev->regmap, info->da_vsel_reg, &regval);
+> +	if (ret != 0) {
+> +		dev_info(&rdev->dev,
+> +			 "Failed to get mt6358 Buck %s vsel reg: %d\n",
+> +			 info->desc.name, ret);
+> +		return ret;
+> +	}
+> +
+> +	ret = (regval >> info->da_vsel_shift) & info->da_vsel_mask;
+> +
+> +	return ret;
+> +}
+
+This is just the generic get_voltage_sel() as far as I can see?
+
+> +	/* Read PMIC chip revision to update constraints and voltage table */
+> +	if (regmap_read(mt6397->regmap, MT6358_SWCID, &reg_value) < 0) {
+> +		dev_err(&pdev->dev, "Failed to read Chip ID\n");
+> +		return -EIO;
+> +	}
+
+We never use the value we read here?
+
+
+--jI8keyz6grp/JLjh
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlyJG0kACgkQJNaLcl1U
+h9Bqcwf/cBs7hTJMGSxxGTMQXuOiF7spWZKUwkRLK+rWiYzZv7xUeHEoUoSLZzm/
+d1xUkLNQ48R3p7Ey4aVzFf3HltiH9RGj+3g8OszIJS6SdTybiZYhJqMsAMnqfX/x
+tIbiu6NhlLrtm6qfKEEjHHnYSu1dIhMm6Y6JJ4D/yjpxWBed6xR0LlGTk7s3b3Gs
+xf1hGjBU2Hl0CE4TiamypPcVTzEIx4mzw1VpB2qBXwCoDLG1wnJKwjAmFVFNyWLo
+jpEeWmmqBboKOiRw+LfVXPW7CF35a3smalwrzBhIYToBop3b95kY5Pza/r7Vmr84
+203AJzm4IdIG7xe56xcuLu3AOOQqaA==
+=Aw1h
+-----END PGP SIGNATURE-----
+
+--jI8keyz6grp/JLjh--
+
+
+--===============0366961588999294646==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+linux-arm-kernel mailing list
+linux-arm-kernel@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+
+--===============0366961588999294646==--
