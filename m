@@ -1,128 +1,129 @@
-From: Hans de Goede <hdegoede@redhat.com>
-Subject: Re: [PATCH 1/5] dt-bindings: connector: add optional properties for
- Type-B
-Date: Wed, 13 Mar 2019 11:18:37 +0100
-Message-ID: <0c3ca095-9077-0b9d-839f-61ebc066e3f9@redhat.com>
-References: <1552025622-15582-1-git-send-email-chunfeng.yun@mediatek.com>
- <1552025622-15582-2-git-send-email-chunfeng.yun@mediatek.com>
- <693b11e7-fa9e-ab1f-561a-beb758b1872f@redhat.com>
- <1552282383.10179.21.camel@mhfsdcap03>
- <c8084259-74d3-c85f-1275-854826c935a0@redhat.com>
- <1552360688.10179.55.camel@mhfsdcap03>
- <464f1021-4c5e-9137-489d-65fd578575d3@redhat.com>
- <1552472109.10179.103.camel@mhfsdcap03>
+From: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v3 6/7] phy: mediatek: Add UFS M-PHY driver
+Date: Wed, 13 Mar 2019 17:37:31 +0800
+Message-ID: <1552469851.25686.3.camel@mtksdaap41>
+References: <1551252192-535-1-git-send-email-stanley.chu@mediatek.com>
+ <1551252192-535-8-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1552472109.10179.103.camel@mhfsdcap03>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1551252192-535-8-git-send-email-stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org, linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, subhashj-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, avri.altman-Sjgp3cTcYWE@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, liwei213-hv44wF8Li93QT0dZR+AlfA@public.gmane.org, alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, vivek.gautam-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
-
-On 3/13/19 11:15 AM, Chunfeng Yun wrote:
-> Hi,
-> On Tue, 2019-03-12 at 13:45 +0100, Hans de Goede wrote:
->> Hi,
->> On 12-03-19 04:18, Chunfeng Yun wrote:
->>> Hi,
->>> On Mon, 2019-03-11 at 09:06 +0100, Hans de Goede wrote:
->>>> Hi,
->>>>
->>>> On 11-03-19 06:33, Chunfeng Yun wrote:
->>>>> Hi,
->>>>>
->>>>> On Fri, 2019-03-08 at 13:07 +0100, Hans de Goede wrote:
->>>>>> Hi,
->>>>>>
->>>>>> On 08-03-19 07:13, Chunfeng Yun wrote:
->>>>>>> Add id-gpios, vbus-gpios, vbus-supply and pinctrl properties for
->>>>>>> usb-b-connector
->>>>>>>
->>>>>>> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
->>>>>>> ---
->>>>>>>      .../devicetree/bindings/connector/usb-connector.txt    | 10 ++++++++++
->>>>>>>      1 file changed, 10 insertions(+)
->>>>>>>
->>>>>>> diff --git a/Documentation/devicetree/bindings/connector/usb-connector.txt b/Documentation/devicetree/bindings/connector/usb-connector.txt
->>>>>>> index a9a2f2fc44f2..7a07b0f4f973 100644
->>>>>>> --- a/Documentation/devicetree/bindings/connector/usb-connector.txt
->>>>>>> +++ b/Documentation/devicetree/bindings/connector/usb-connector.txt
->>>>>>> @@ -17,6 +17,16 @@ Optional properties:
->>>>>>>      - self-powered: Set this property if the usb device that has its own power
->>>>>>>        source.
->>>>>>>      
->>>>>>> +Optional properties for usb-b-connector:
->>>>>>> +- id-gpios: gpio for USB ID pin.
->>>>>>
->>>>>> What about boards where the ID pin is *not* connected to a GPIO,
->>>>>> but e.g. to a special pin on the PMIC which can also detect
->>>>>> an ACA adapter ? Currently this case is handled by extcon
->>>>>> drivers, but we have no way to set e.g. vbus-supply for the
->>>>>> connector. Maybe in this case the usb-connector node should
->>>>>> be a child of the PMIC node ?
->>>>> Yes, it would be, PMIC is in charger of detecting the status of ID pin
->>>>
->>>> Ok, then I think this should be documented too.
->>>>
->>>>>> And in many cases there also is a mux to switch the datalines
->>>>>> between the host and device(gadget) controllers, how should
->>>>>> that be described in this model?  See the new usb-role-switch
->>>>>> code under drivers/usb/roles
->>>>>>
->>>>>> In some cases the mux is controlled through a gpio, so we
->>>>>> may want to add a "mux-gpios" here in which case we also
->>>>>> need to define what 0/1 means.
->>>>> I'm not sure, the mux seems not belong to this connector,
->>>>> and may need another driver to register usb-role-switch,
->>>>> similar to:
->>>>>
->>>>> [v2,2/2] usb: typec: add typec switch via GPIO control
->>>>> https://patchwork.kernel.org/patch/10834327/
->>>>
->>>> Right the mux/role-switch will need a driver, but the "owner"
->>>> of the usb_connector, e.g. the PMIC or the owner of the
->>>> id GPIO pin needs to know which device is the role-switch so
->>>> that it can set the role correctly based on the id-pin.
->>>>
->>>> Your binding already contains Vbus info, allowing the owner
->>>> of the usb_connector to enable/disable Vbus based on the id-pin,
->>>> but the owner will also be responsible for setting the role-switch.
->>> In this patch series, I make usb_connector driver enable/disable Vbus,
->>> but not the parent(USB controller) of usb_connector which registers a
->>> usb-role-switch, which way do you think it is better?
->>
->> IMHO there should not be a driver for the usb_connector child-node,
->> only for the parent-device of that child-node.
-> If so, each USB controller driver should process this special case by
-> itself when use a gpio to detect the status of ID pin, it's not a
-> friendly way. And it's easy by using extcon-usb-gpio driver before, so
-> we also want to provide a simple way when support usb_connector, no
-> matter what method we choose.
+On Wed, 2019-02-27 at 15:23 +0800, Stanley Chu wrote:
+> Add UFS M-PHY driver on MediaTek chipsets.
 > 
-> Ideally, the only one thing that USB controller driver need to do, just
-> register a usb-role-switch, and leave decision when switch the role to
-> other drivers, such as type-C, PMIC/charger, also include gpio
+> Signed-off-by: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  drivers/phy/mediatek/Kconfig       |   9 ++
+>  drivers/phy/mediatek/Makefile      |   1 +
+>  drivers/phy/mediatek/phy-mtk-ufs.c | 239 +++++++++++++++++++++++++++++
+>  3 files changed, 249 insertions(+)
+>  create mode 100644 drivers/phy/mediatek/phy-mtk-ufs.c
 > 
->>
->> There are going to be too many specific setups surrounding PMICs to
->> be able to do a single generic driver for the connector.
->>
-> Fortunately, these patches only focus on the simplest gpio driven role
-> switch :)
+> diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
+> index 8857d00b3c65..4a20110a511d 100644
+> --- a/drivers/phy/mediatek/Kconfig
+> +++ b/drivers/phy/mediatek/Kconfig
+> @@ -21,3 +21,12 @@ config PHY_MTK_XSPHY
+>  	  Enable this to support the SuperSpeedPlus XS-PHY transceiver for
+>  	  USB3.1 GEN2 controllers on MediaTek chips. The driver supports
+>  	  multiple USB2.0, USB3.1 GEN2 ports.
+> +
+> +config PHY_MTK_UFS
+> +	tristate "MediaTek UFS M-PHY driver"
 
-In that case there should be an extra compatible added to the
-usb_b_connector node to which the "simple gpio" driver binds,
-so that not all devicetree-s declaring a usb_b_connector child-node
-automatically get that driver bound, and the gpio / vbus
-properties should be mandatory properties for usb_b_connector
-child nodes declaring the extra compatible, rather then being
-optional for the generic compatible.
+Please sorting according to config name.
 
-Regards,
+> +	depends on ARCH_MEDIATEK && OF
+> +	select GENERIC_PHY
+> +	help
+> +	  Support for UFS M-PHY on MediaTek chipsets. Enable this to provide
+> +	  vendor-specific initialization, power on and off flow of specified
+> +	  M-PHYs.
+> diff --git a/drivers/phy/mediatek/Makefile b/drivers/phy/mediatek/Makefile
+> index ee49edc97ee9..14e9aa0b8aa4 100644
+> --- a/drivers/phy/mediatek/Makefile
+> +++ b/drivers/phy/mediatek/Makefile
+> @@ -5,3 +5,4 @@
+>  
+>  obj-$(CONFIG_PHY_MTK_TPHY)		+= phy-mtk-tphy.o
+>  obj-$(CONFIG_PHY_MTK_XSPHY)		+= phy-mtk-xsphy.o
+> +obj-$(CONFIG_PHY_MTK_UFS)		+= phy-mtk-ufs.o
 
-Hans
+Same here.
+
+> diff --git a/drivers/phy/mediatek/phy-mtk-ufs.c b/drivers/phy/mediatek/phy-mtk-ufs.c
+> new file mode 100644
+> index 000000000000..7375ad83af05
+> --- /dev/null
+> +++ b/drivers/phy/mediatek/phy-mtk-ufs.c
+> @@ -0,0 +1,239 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (C) 2019 MediaTek Inc.
+> + * Author: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> + */
+> +
+> +#include <linux/clk.h>
+> +#include <linux/delay.h>
+> +#include <linux/io.h>
+> +#include <linux/module.h>
+> +#include <linux/phy/phy.h>
+> +#include <linux/platform_device.h>
+> +
+> +/* mphy register and offsets */
+> +#define MP_GLB_DIG_8C               0x008C
+> +#define FRC_PLL_ISO_EN              BIT(8)
+> +#define PLL_ISO_EN                  BIT(9)
+> +#define FRC_FRC_PWR_ON              BIT(10)
+> +#define PLL_PWR_ON                  BIT(11)
+> +
+> +#define MP_LN_DIG_RX_9C             0xA09C
+> +#define FSM_DIFZ_FRC                BIT(18)
+> +
+> +#define MP_LN_DIG_RX_AC             0xA0AC
+> +#define FRC_RX_SQ_EN                BIT(0)
+> +#define RX_SQ_EN                    BIT(1)
+> +
+> +#define MP_LN_RX_44                 0xB044
+> +#define FRC_CDR_PWR_ON              BIT(17)
+> +#define CDR_PWR_ON                  BIT(18)
+> +#define FRC_CDR_ISO_EN              BIT(19)
+> +#define CDR_ISO_EN                  BIT(20)
+> +
+> +#define mphy_readl(phy, ofs) readl((phy)->mmio + (ofs))
+> +#define mphy_writel(phy, val, ofs) writel((val), (phy)->mmio + (ofs))
+> +
+> +struct ufs_mtk_phy {
+> +	struct device *dev;
+> +	void __iomem *mmio;
+> +	struct clk *mp_clk;
+> +	struct clk *unipro_clk;
+> +};
+> +
+> +static inline void mphy_set_bit(struct ufs_mtk_phy *phy, u32 reg, u32 ofs)
+
+Don't need to add inline, let compiler decide this.
+
+> +{
+> +	u32 val;
+> +
+> +	val = mphy_readl(phy, reg);
+> +	val |= ofs;
+
+Value in ofs is bit value, not offset. Maybe need a better name.
+
+Joe.C
