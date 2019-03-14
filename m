@@ -1,79 +1,73 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] spi: mediatek: Attempt to address style issues in
- spi-mt7621.c
-Date: Thu, 14 Mar 2019 18:01:42 +0100
-Message-ID: <feebd6b1-4108-a771-a178-a60aa8633e9e@gmail.com>
-References: <20190313122403.248873-1-armax@google.com>
- <20190313123454.GB2202@kadam> <20190314111313.GB8034@google.com>
- <f620e4ef-3d9e-4230-30e8-5cc608710695@denx.de>
- <CAOcbMd3tfFiVjvPE+mvCjP22-a6oY2LJRig05PJPRAL4DvpCMA@mail.gmail.com>
- <96fb1765-971b-2329-bccd-88e0517f6f23@gmail.com>
- <ae1cea3e-9790-1ce0-a43a-5cfe588a2fd6@denx.de>
+Subject: Re: [RESEND PATCH v1 00/18] add drm support for MT8183
+Date: Thu, 14 Mar 2019 18:35:25 +0100
+Message-ID: <c6859dd1-5689-d64d-69cd-5996eb0abea8@gmail.com>
+References: <1552565120-24329-1-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <ae1cea3e-9790-1ce0-a43a-5cfe588a2fd6@denx.de>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1552565120-24329-1-git-send-email-yongqiang.niu@mediatek.com>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Stefan Roese <sr@denx.de>, Armando Miraglia <arma2ff0@gmail.com>
-Cc: Dan Carpenter <dan.carpenter@oracle.com>, Neil Brown <neil@brown.name>, devel@driverdev.osuosl.org, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sankalp Negi <sankalpnegi2310@gmail.com>, linux-arm-kernel@lists.infradead.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: yongqiang.niu@mediatek.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, robh+dt@kernel.org
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 14/03/2019 14:24, Stefan Roese wrote:
-> On 14.03.19 14:14, Matthias Brugger wrote:
->>
->>
->> On 14/03/2019 12:37, Armando Miraglia wrote:
->>> Absolutely!
->>
->> Please don't top post :)
->>
->>>
->>> Cheers,
->>> A.
->>>
->>> On Thu, Mar 14, 2019 at 12:36 PM Stefan Roese <sr@denx.de> wrote:
->> [...]
->>>>
->>>> Would it be possible for you to wait a bit with this minor cleanup?
->>>> As I'm preparing a patch to move this driver out of staging right
->>>> now. You can definitely follow-up with your cleanup, once this move
->>>> is done. Otherwise the move might be delayed even more.
->>>>
->>
->> Hm but shouldn't style issues be a criteria for not accepting a move out of
->> staging?
-> 
-> I would agree, if those style issues where non trivial. In the end we
-> are talking about one non-optimal identation now.>
-
-Fair enough, anyway I'm not the person to decide on that :)
-
-Regards,
-Matthias
-
->> I think so. You could add Armandos patch in your series or rebase your
->> series against Greg's tree, once he took the clean-up. Normally Greg is
->> incredibly fast :)
-> 
-> I should have included the history here to make this more clean. I've
-> started pulling this driver out of staging a few weeks ago:
-> 
-> https://patchwork.kernel.org/patch/10790537/
-> ...
-> 
-> Here you find Greg's comment, that the style patches should be merged
-> first before the move out of staging. This is what I worked on after
-> this first patch series:
-> 
-> https://patchwork.kernel.org/patch/10792455/
-> ...
-> 
-> Now these 9 style issue patches from me have been merged and I would
-> like to proceed with the driver move.
-> 
-> Thanks,
-> Stefan
+CgpPbiAxNC8wMy8yMDE5IDEzOjA1LCB5b25ncWlhbmcubml1QG1lZGlhdGVrLmNvbSB3cm90ZToK
+PiBGcm9tOiBZb25ncWlhbmcgTml1IDx5b25ncWlhbmcubml1QG1lZGlhdGVrLmNvbT4KPiAKPiBU
+aGlzIHNlcmllcyBhcmUgYmFzZWQgb24gNC4yMC1yYzEgYW5kIHByb3ZpZGUgMTggcGF0Y2hlcyB0
+bwo+IHN1cHBvcnQgbWVkaWF0ZWsgU09DIE1UODE4Mwo+IFJlc2VuZCBmaXJzdCB2ZXJzaW9uIAo+
+IAoKSSB0aGluayB5b3Ugc2VuZCB0aGUgdmVyeSBzYW1lIHNlcmllcyBzZXZlcmFsIHRpbWVzIHll
+c3RlcmRheS4gUGxlYXNlIGNoZWNrIHlvdXIKY29uZmlnIGFuZCBtYWtlIHN1cmUgdGhhdCB5b3Ug
+ZG9uJ3Qgc2VuZCBhIHNlcmllcyBtb3JlIHRoZW4gb25jZS4gSWYgZm9yIGFueQpyZWFzb24geW91
+IGhhdmUgdG8gcmVzZW5kIHRoZSBzZXJpZXMgdGhlbiBwbGVhc2Ugc3BlY2lmeSBpbiB0aGUgY292
+ZXIgbGV0dGVyIHdoeQp5b3UgcmVzZW5kIGl0LgoKUmV2aWV3aW5nIHNlcmllcyBjYW4gdGFrZSBh
+IHdoaWxlLCBiZSBwYXRpZW50LiBJZiBub2JvZHkgcmVhY3RzIHRvIHlvdXIgc2VyaWVzCnlvdSBj
+YW4gc2VuZCBhIHJlbWluZGVyIGVtYWlsIChiZXN0IGlmIHlvdSBqdXN0IGhpdCByZXBseS1hbGwg
+b24gdGhlIGNvdmVyCmxldHRlcikgYXNraW5nIGtpbmRseSBmb3IgcmV2aWV3LiBTZW5kaW5nIG91
+dCB0aGUgc2FtZSBzZXJpZXMgb24gYSBkYWlseSBvcgpob3VybHkgYmFzaXMgd2lsbCBtb3N0IHBy
+b2JhYmx5IGxlYWQgdG8gY29uZnVzaW9uLCBhcyBwZW9wbGUgZG9uJ3Qga25vdyB3aGljaAp2ZXJz
+aW9uIGlzIHRoZSAiZ29vZCIgb25lLiBJbiB0aGUgZW5kIGl0IGhhcyB0aGUgY29udHJhcnkgYWZm
+ZWN0IGZyb20gd2hhdCB5b3UKd2FudCB0byBhY2hpZXZlIChnZXR0aW5nIHNvbWVvbmUgdG8gcmV2
+aWV3IHlvdXIgc2VyaWVzKS4KClJlZ2FyZHMsCk1hdHRoaWFzCgo+IFlvbmdxaWFuZyBOaXUgKDE4
+KToKPiAgIGRybS9tZWRpYXRlazogdXBkYXRlIGR0LWJpbmRpbmdzIGZvciBtdDgxODMKPiAgIGRy
+bS9tZWRpYXRlazogYWRkIG11dGV4IG1vZCBhbmQgc29mIGludG8gZGRwIHByaXZhdGUgZGF0YQo+
+ICAgZHJtL21lZGlhdGVrOiByZWRlZmluZSBtdGtfZGRwX3NvdXRfc2VsCj4gICBkcm0vbWVkaWF0
+ZWs6IG1vdmUgcmRtYSBzb3V0IGZyb20gbXRrX2RkcF9tb3V0X2VuIGludG8KPiAgICAgbXRrX2Rk
+cF9zb3V0X3NlbAo+ICAgZHJtL21lZGlhdGVrOiBhZGQgZGRwIGNvbXBvbmVudCBDQ09SUgo+ICAg
+ZHJtL21lZGlhdGVrOiBhZGQgbW1zeXMgcHJpdmF0ZSBkYXRhIGZvciBkZHAgcGF0aCBjb25maWcK
+PiAgIGRybS9tZWRpYXRlazogYWRkIGNvbW1wb25lbnQgT1ZMMF8yTAo+ICAgZHJtL21lZGlhdGVr
+OiBhZGQgY29tcG9uZW50IE9WTDFfMkwKPiAgIGRybS9tZWRpYXRlazogYWRkIGNvbXBvbmVudCBE
+SVRIRVIKPiAgIGRybS9tZWRpYXRlazogYWRkIGdtY19iaXRzIGZvciBvdmwgcHJpdmF0ZSBkYXRh
+Cj4gICBkcm0vbWVkYWl0ZWs6IGFkZCBsYXllcl9uciBmb3Igb3ZsIHByaXZhdGUgZGF0YQo+ICAg
+ZHJtL21lZGlhdGVrOiBhZGQgZnVuY3Rpb24gdG8gY29ubmVjdCBtb2R1bGUgd2l0aCBpdCdzIHBy
+ZXZpb3VzIG9uZQo+ICAgZHJtL21lZGlhdGVrOiBhZGQgZGRwIHdyaXRlIHJlZ2lzdGVyIGNvbW1v
+biBhcGkKPiAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3QgZnVuY3Rpb24gZm9yIG92bAo+ICAg
+ZHJtL21lZGlhdGVrOiBhZGQgUkRNQTEgZmlmbyBzaXplIGludG8gUkRNQSBwcml2YXRlIGRhdGEK
+PiAgIGRybS9tZWRpYXRlazogYWRkIGZ1bmN0aW9uIG10a19kZHBfY29tcF9nZXRfdHlwZQo+ICAg
+ZHJtL21lZGlhdGVrOiBhZGQgb3ZsMC9vdmwwXzJsIHVzZWNhc2UKPiAgIGRybS9tZWRpYXRlazog
+YWRkIHN1cHBvcnQgZm9yIG1lZGlhdGVrIFNPQyBNVDgxODMKPiAKPiAgLi4uL2JpbmRpbmdzL2Rp
+c3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlzcC50eHQgICAgfCAgMTEgKy0KPiAgZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bC5jICAgICAgICAgICAgfCAgNjQgKystCj4gIGRy
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMgICAgICAgICAgIHwgIDIzICst
+Cj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYyAgICAgICAgICAgIHwg
+IDQyICstCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jICAgICAgICAg
+ICAgIHwgNDU4ICsrKysrKysrKysrKysrKystLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RybV9kZHAuaCAgICAgICAgICAgICB8ICAxMSArCj4gIGRyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMgICAgICAgIHwgMTAwICsrKysrCj4gIGRyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmggICAgICAgIHwgIDI0ICsrCj4gIGRy
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jICAgICAgICAgICAgIHwgIDU1ICsr
+Kwo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuaCAgICAgICAgICAgICB8
+ICAgNCArCj4gIDEwIGZpbGVzIGNoYW5nZWQsIDY4OCBpbnNlcnRpb25zKCspLCAxMDQgZGVsZXRp
+b25zKC0pCj4gCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
+dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
