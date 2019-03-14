@@ -1,73 +1,32 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [RESEND PATCH v1 00/18] add drm support for MT8183
-Date: Thu, 14 Mar 2019 18:35:25 +0100
-Message-ID: <c6859dd1-5689-d64d-69cd-5996eb0abea8@gmail.com>
-References: <1552565120-24329-1-git-send-email-yongqiang.niu@mediatek.com>
+From: Joe Perches <joe@perches.com>
+Subject: Re: [PATCH] spi: mediatek: Attempt to address style issues in
+ spi-mt7621.c
+Date: Thu, 14 Mar 2019 13:50:48 -0700
+Message-ID: <dc871c3e4eb911220e7b079a25ea449413749b09.camel@perches.com>
+References: <20190313122403.248873-1-armax@google.com>
+         <20190313123454.GB2202@kadam> <20190314111313.GB8034@google.com>
+         <20190314112732.GJ2227@kadam> <20190314150737.61eed622@endymion>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1552565120-24329-1-git-send-email-yongqiang.niu@mediatek.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: yongqiang.niu@mediatek.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, robh+dt@kernel.org
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190314150737.61eed622@endymion>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jean Delvare <jdelvare@suse.de>, Dan Carpenter <dan.carpenter@oracle.com>
+Cc: Armando Miraglia <arma2ff0@gmail.com>, neil@brown.name, devel@driverdev.osuosl.org, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, sankalpnegi2310@gmail.com, matthias.bgg@gmail.com, sr@denx.de, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-CgpPbiAxNC8wMy8yMDE5IDEzOjA1LCB5b25ncWlhbmcubml1QG1lZGlhdGVrLmNvbSB3cm90ZToK
-PiBGcm9tOiBZb25ncWlhbmcgTml1IDx5b25ncWlhbmcubml1QG1lZGlhdGVrLmNvbT4KPiAKPiBU
-aGlzIHNlcmllcyBhcmUgYmFzZWQgb24gNC4yMC1yYzEgYW5kIHByb3ZpZGUgMTggcGF0Y2hlcyB0
-bwo+IHN1cHBvcnQgbWVkaWF0ZWsgU09DIE1UODE4Mwo+IFJlc2VuZCBmaXJzdCB2ZXJzaW9uIAo+
-IAoKSSB0aGluayB5b3Ugc2VuZCB0aGUgdmVyeSBzYW1lIHNlcmllcyBzZXZlcmFsIHRpbWVzIHll
-c3RlcmRheS4gUGxlYXNlIGNoZWNrIHlvdXIKY29uZmlnIGFuZCBtYWtlIHN1cmUgdGhhdCB5b3Ug
-ZG9uJ3Qgc2VuZCBhIHNlcmllcyBtb3JlIHRoZW4gb25jZS4gSWYgZm9yIGFueQpyZWFzb24geW91
-IGhhdmUgdG8gcmVzZW5kIHRoZSBzZXJpZXMgdGhlbiBwbGVhc2Ugc3BlY2lmeSBpbiB0aGUgY292
-ZXIgbGV0dGVyIHdoeQp5b3UgcmVzZW5kIGl0LgoKUmV2aWV3aW5nIHNlcmllcyBjYW4gdGFrZSBh
-IHdoaWxlLCBiZSBwYXRpZW50LiBJZiBub2JvZHkgcmVhY3RzIHRvIHlvdXIgc2VyaWVzCnlvdSBj
-YW4gc2VuZCBhIHJlbWluZGVyIGVtYWlsIChiZXN0IGlmIHlvdSBqdXN0IGhpdCByZXBseS1hbGwg
-b24gdGhlIGNvdmVyCmxldHRlcikgYXNraW5nIGtpbmRseSBmb3IgcmV2aWV3LiBTZW5kaW5nIG91
-dCB0aGUgc2FtZSBzZXJpZXMgb24gYSBkYWlseSBvcgpob3VybHkgYmFzaXMgd2lsbCBtb3N0IHBy
-b2JhYmx5IGxlYWQgdG8gY29uZnVzaW9uLCBhcyBwZW9wbGUgZG9uJ3Qga25vdyB3aGljaAp2ZXJz
-aW9uIGlzIHRoZSAiZ29vZCIgb25lLiBJbiB0aGUgZW5kIGl0IGhhcyB0aGUgY29udHJhcnkgYWZm
-ZWN0IGZyb20gd2hhdCB5b3UKd2FudCB0byBhY2hpZXZlIChnZXR0aW5nIHNvbWVvbmUgdG8gcmV2
-aWV3IHlvdXIgc2VyaWVzKS4KClJlZ2FyZHMsCk1hdHRoaWFzCgo+IFlvbmdxaWFuZyBOaXUgKDE4
-KToKPiAgIGRybS9tZWRpYXRlazogdXBkYXRlIGR0LWJpbmRpbmdzIGZvciBtdDgxODMKPiAgIGRy
-bS9tZWRpYXRlazogYWRkIG11dGV4IG1vZCBhbmQgc29mIGludG8gZGRwIHByaXZhdGUgZGF0YQo+
-ICAgZHJtL21lZGlhdGVrOiByZWRlZmluZSBtdGtfZGRwX3NvdXRfc2VsCj4gICBkcm0vbWVkaWF0
-ZWs6IG1vdmUgcmRtYSBzb3V0IGZyb20gbXRrX2RkcF9tb3V0X2VuIGludG8KPiAgICAgbXRrX2Rk
-cF9zb3V0X3NlbAo+ICAgZHJtL21lZGlhdGVrOiBhZGQgZGRwIGNvbXBvbmVudCBDQ09SUgo+ICAg
-ZHJtL21lZGlhdGVrOiBhZGQgbW1zeXMgcHJpdmF0ZSBkYXRhIGZvciBkZHAgcGF0aCBjb25maWcK
-PiAgIGRybS9tZWRpYXRlazogYWRkIGNvbW1wb25lbnQgT1ZMMF8yTAo+ICAgZHJtL21lZGlhdGVr
-OiBhZGQgY29tcG9uZW50IE9WTDFfMkwKPiAgIGRybS9tZWRpYXRlazogYWRkIGNvbXBvbmVudCBE
-SVRIRVIKPiAgIGRybS9tZWRpYXRlazogYWRkIGdtY19iaXRzIGZvciBvdmwgcHJpdmF0ZSBkYXRh
-Cj4gICBkcm0vbWVkYWl0ZWs6IGFkZCBsYXllcl9uciBmb3Igb3ZsIHByaXZhdGUgZGF0YQo+ICAg
-ZHJtL21lZGlhdGVrOiBhZGQgZnVuY3Rpb24gdG8gY29ubmVjdCBtb2R1bGUgd2l0aCBpdCdzIHBy
-ZXZpb3VzIG9uZQo+ICAgZHJtL21lZGlhdGVrOiBhZGQgZGRwIHdyaXRlIHJlZ2lzdGVyIGNvbW1v
-biBhcGkKPiAgIGRybS9tZWRpYXRlazogYWRkIGNvbm5lY3QgZnVuY3Rpb24gZm9yIG92bAo+ICAg
-ZHJtL21lZGlhdGVrOiBhZGQgUkRNQTEgZmlmbyBzaXplIGludG8gUkRNQSBwcml2YXRlIGRhdGEK
-PiAgIGRybS9tZWRpYXRlazogYWRkIGZ1bmN0aW9uIG10a19kZHBfY29tcF9nZXRfdHlwZQo+ICAg
-ZHJtL21lZGlhdGVrOiBhZGQgb3ZsMC9vdmwwXzJsIHVzZWNhc2UKPiAgIGRybS9tZWRpYXRlazog
-YWRkIHN1cHBvcnQgZm9yIG1lZGlhdGVrIFNPQyBNVDgxODMKPiAKPiAgLi4uL2JpbmRpbmdzL2Rp
-c3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlzcC50eHQgICAgfCAgMTEgKy0KPiAgZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bC5jICAgICAgICAgICAgfCAgNjQgKystCj4gIGRy
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMgICAgICAgICAgIHwgIDIzICst
-Cj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYyAgICAgICAgICAgIHwg
-IDQyICstCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jICAgICAgICAg
-ICAgIHwgNDU4ICsrKysrKysrKysrKysrKystLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RybV9kZHAuaCAgICAgICAgICAgICB8ICAxMSArCj4gIGRyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMgICAgICAgIHwgMTAwICsrKysrCj4gIGRyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmggICAgICAgIHwgIDI0ICsrCj4gIGRy
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jICAgICAgICAgICAgIHwgIDU1ICsr
-Kwo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuaCAgICAgICAgICAgICB8
-ICAgNCArCj4gIDEwIGZpbGVzIGNoYW5nZWQsIDY4OCBpbnNlcnRpb25zKCspLCAxMDQgZGVsZXRp
-b25zKC0pCj4gCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
-dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+On Thu, 2019-03-14 at 15:07 +0100, Jean Delvare wrote:
+> My principle is that if a script
+> is present in the kernel tree then it can and should be maintained. If
+> it is deemed not worth the maintenance effort then it should be
+> deleted.
+
+I've suggested deleting Lindent in the past.
+https://lkml.org/lkml/2013/2/11/390
+
+Also there is now the clang-format tool that
+does an OK job of reflowing source to something
+approximating the typical kernel style.
+
+See:  Documentation/process/clang-format.rst
