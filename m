@@ -1,74 +1,143 @@
-From: NeilBrown <neil@brown.name>
-Subject: Re: [PATCH] spi: mediatek: Attempt to address style issues in spi-mt7621.c
-Date: Thu, 14 Mar 2019 13:36:11 +1100
-Message-ID: <87mulyp4h0.fsf@notabene.neil.brown.name>
-References: <20190313122403.248873-1-armax@google.com> <eb85ea17-babd-fe3a-f0ff-9c7f13498bd1@gmail.com> <CAJsYDVKF-3jZo4E3EMiYOqeWXVLu0hBra6Qp0sFoCz8y=BAjSw@mail.gmail.com> <4789d739-d2b5-357b-b9d8-bfaf587d33fc@gmail.com> <4172ce05-8dfc-c956-6af0-47c8367c215e@denx.de> <87y35ipgkt.fsf@notabene.neil.brown.name> <CAJsYDVKwJZmaLMkzYOeGnhnor7rXe21Xwvogx7aPfzfXOdqZAg@mail.gmail.com>
+From: mtk14576 <ran.bi@mediatek.com>
+Subject: Re: [PATCH v2 8/9] rtc: mt6397: fix alarm register overwrite
+Date: Thu, 14 Mar 2019 10:46:21 +0800
+Message-ID: <1552531581.18390.8.camel@mhfsdcap03>
+References: <1552275991-34648-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+         <1552275991-34648-9-git-send-email-hsin-hsiung.wang@mediatek.com>
+         <CAGp9Lzq4D56PbivbHkQd41-TCoGACTiBqLz+Jyiqiog=YMvEbQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
-        micalg=pgp-sha256; protocol="application/pgp-signature"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAJsYDVKwJZmaLMkzYOeGnhnor7rXe21Xwvogx7aPfzfXOdqZAg@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chuanhong Guo <gch981213@gmail.com>
-Cc: John Crispin <john@phrozen.org>, Stefan Roese <sr@denx.de>, Matthias Brugger <matthias.bgg@gmail.com>, Armando Miraglia <arma2ff0@gmail.com>, Armando Miraglia <armax@google.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, sankalpnegi2310@gmail.com, devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <CAGp9Lzq4D56PbivbHkQd41-TCoGACTiBqLz+Jyiqiog=YMvEbQ@mail.gmail.com>
+Sender: stable-owner@vger.kernel.org
+To: Sean Wang <sean.wang@kernel.org>
+Cc: stable@vger.kernel.org, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, Eddie Huang <eddie.huang@mediatek.com>, linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, srv_heupstream <srv_heupstream@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Marc Zyngier <marc.zyngier@arm.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, linux-mediatek@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
---=-=-=
-Content-Type: text/plain
+Hi,
 
-On Thu, Mar 14 2019, Chuanhong Guo wrote:
+On Mon, 2019-03-11 at 13:50 -0700, Sean Wang wrote:
+> Hi,
+> 
+> On Sun, Mar 10, 2019 at 8:49 PM Hsin-Hsiung Wang
+> <hsin-hsiung.wang@mediatek.com> wrote:
+> >
+> > From: Ran Bi <ran.bi@mediatek.com>
+> >
+> > Alarm registers high byte was reserved for other functions.
+> > This add mask in alarm registers operation functions.
+> > This also fix error condition in interrupt handler.
+> >
+> > Fixes: fc2979118f3f ("rtc: mediatek: Add MT6397 RTC driver")
+> >
+> 
+> add a  Cc: stable@vger.kernel.org  here to apply to all stable kernels
+> for the critical fixup patch.
+> 
+> > Signed-off-by: Ran Bi <ran.bi@mediatek.com>
+> > ---
+> >  drivers/rtc/rtc-mt6397.c | 47 +++++++++++++++++++++++++++++++++--------------
+> >  1 file changed, 33 insertions(+), 14 deletions(-)
+> >
+> > diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+> > index e9a25ec..f85f1fc 100644
+> > --- a/drivers/rtc/rtc-mt6397.c
+> > +++ b/drivers/rtc/rtc-mt6397.c
+> > @@ -55,6 +55,14 @@
+> >
+> >  #define RTC_AL_SEC             0x0018
+> >
+> > +#define RTC_AL_SEC_MASK                0x003f
+> > +#define RTC_AL_MIN_MASK                0x003f
+> > +#define RTC_AL_HOU_MASK                0x001f
+> > +#define RTC_AL_DOM_MASK                0x001f
+> > +#define RTC_AL_DOW_MASK                0x0007
+> > +#define RTC_AL_MTH_MASK                0x000f
+> > +#define RTC_AL_YEA_MASK                0x007f
+> > +
+> >  #define RTC_PDN2               0x002e
+> >  #define RTC_PDN2_PWRON_ALARM   BIT(4)
+> >
+> > @@ -111,7 +119,7 @@ static irqreturn_t mtk_rtc_irq_handler_thread(int irq, void *data)
+> >                 irqen = irqsta & ~RTC_IRQ_EN_AL;
+> >                 mutex_lock(&rtc->lock);
+> >                 if (regmap_write(rtc->regmap, rtc->addr_base + RTC_IRQ_EN,
+> > -                                irqen) < 0)
+> > +                                irqen) == 0)
+> >                         mtk_rtc_write_trigger(rtc);
+> >                 mutex_unlock(&rtc->lock);
+> >
+> > @@ -233,12 +241,12 @@ static int mtk_rtc_read_alarm(struct device *dev, struct rtc_wkalrm *alm)
+> >         alm->pending = !!(pdn2 & RTC_PDN2_PWRON_ALARM);
+> >         mutex_unlock(&rtc->lock);
+> >
+> > -       tm->tm_sec = data[RTC_OFFSET_SEC];
+> > -       tm->tm_min = data[RTC_OFFSET_MIN];
+> > -       tm->tm_hour = data[RTC_OFFSET_HOUR];
+> > -       tm->tm_mday = data[RTC_OFFSET_DOM];
+> > -       tm->tm_mon = data[RTC_OFFSET_MTH];
+> > -       tm->tm_year = data[RTC_OFFSET_YEAR];
+> > +       tm->tm_sec = data[RTC_OFFSET_SEC] & RTC_AL_SEC_MASK;
+> > +       tm->tm_min = data[RTC_OFFSET_MIN] & RTC_AL_MIN_MASK;
+> > +       tm->tm_hour = data[RTC_OFFSET_HOUR] & RTC_AL_HOU_MASK;
+> > +       tm->tm_mday = data[RTC_OFFSET_DOM] & RTC_AL_DOM_MASK;
+> > +       tm->tm_mon = data[RTC_OFFSET_MTH] & RTC_AL_MTH_MASK;
+> > +       tm->tm_year = data[RTC_OFFSET_YEAR] & RTC_AL_YEA_MASK;
+> >
+> >         tm->tm_year += RTC_MIN_YEAR_OFFSET;
+> >         tm->tm_mon--;
+> > @@ -259,14 +267,25 @@ static int mtk_rtc_set_alarm(struct device *dev, struct rtc_wkalrm *alm)
+> >         tm->tm_year -= RTC_MIN_YEAR_OFFSET;
+> >         tm->tm_mon++;
+> >
+> > -       data[RTC_OFFSET_SEC] = tm->tm_sec;
+> > -       data[RTC_OFFSET_MIN] = tm->tm_min;
+> > -       data[RTC_OFFSET_HOUR] = tm->tm_hour;
+> > -       data[RTC_OFFSET_DOM] = tm->tm_mday;
+> > -       data[RTC_OFFSET_MTH] = tm->tm_mon;
+> > -       data[RTC_OFFSET_YEAR] = tm->tm_year;
+> > -
+> >         mutex_lock(&rtc->lock);
+> > +       ret = regmap_bulk_read(rtc->regmap, rtc->addr_base + RTC_AL_SEC,
+> > +                              data, RTC_OFFSET_COUNT);
+> > +       if (ret < 0)
+> > +               goto exit;
+> > +
+> 
+> Why did we need an additional regmap_bulk_read here? I would suppose
+> data[RTC_OFFSET_*] & ~(RTC_AL_*_MASK) is always equal to 0.
 
-> Hi!
-> On Thu, Mar 14, 2019 at 6:14 AM NeilBrown <neil@brown.name> wrote:
->>
->> [...]
->> My only small concern is that this driver was backported to openwrt
->> (4.14 based) and then reverted
->>
->> https://github.com/openwrt/openwrt/commit/749a29f76ca780d8df70a5163d43bbdc6f13ba3f
->>
->>  "This breaks some mt7621 devices."
->>
->> Possibly it was backported badly, or possibly there is a problem.
-> Last time I backported the version with broken SPI modes so it got
-> broken SPI CS1 support. There is one mt7621 router using SPI CS1 in
-> OpenWrt and the backported driver broke it.
-> It has been fixed by my two "drop broken spi modes" patches.
+In bootloader, RTC init part need to operate these RTC_AL_* registers
+high byte for RTC operating mode settings and data storage, while
+RTC_AL_* low byte was used as alarm register here. So we need an
+additional regmap_bulk_read here to keep the RTC settings correct.
 
-Ahh, thanks for the clarification.  Good to know all known problems are
-fixed.
-
-Thanks,
-NeilBrown
-
-
->>
->> John: do you have any more details of the problem other than what is in
->> the commit message?
->>
->> Thanks,
->> NeilBrown
->
-> Regards,
-> Chuanhong Guo
-
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEG8Yp69OQ2HB7X0l6Oeye3VZigbkFAlyJvhwACgkQOeye3VZi
-gbnSyg/6A4cJK3Y6QVKHque374sHdHn+JkGuuP2+lNs/SQMknyXuHJiOQVWuJFh3
-YthVDHhRodQM87ilVji48sJQEZoXkwC2mvglabGxL9ior1qGUYE01R3qp5OTcvZ9
-UrMOJNILFKvfRh/u0ZcjntPj7DodjvkBFbJaWP96/PZQrrAMvjFlkYOVw/Bpnz8O
-sZR8dkp7jytaX10hnEgLM/vvE98j0igoY8dOXIgd45ZY28tHpRfRxVFvUZfeOtfD
-OcyaqtICFJaMcQOC1Ehfl/haems1rxNCaiJnQ/7ZJRpzz/pY16H7I9V1JxdS6oti
-zwLbhp7qQHtyRxYAdlAUE6H4krLYC/EsJVIgOdMZyVTKEIdF5FAmTnibnoz5LMOW
-RHVXRa93tgpKiANfM1suxjIA04HnpfSBwaCz/xmYOWjhRc5tkwYO57AaEdZA3AsQ
-b1vD68vQCqMTrP5KtbQNFGih0upuQG+7xHUVHLHBgTy4zMgzHofEodSHjSxaiY2U
-XLwcba3M92hO7z023P3vtLlgUhtOGsyJ1SFw/SxBaTUiv91kgQ5Kpg2FI5rxywXi
-LYO7k+u2p1Y9MD5iOFUHSMabselNGPIZ3hGSRUehtK0tlowelR1UU6sc2r0Nw+JM
-3Mttp/kKuoYjC5l57kHzUWo8hjoOniCPFBn49O6tm5EI8wgOSww=
-=HXHg
------END PGP SIGNATURE-----
---=-=-=--
+> 
+> It might be another fixup since change is not being mentioned in the
+> git message.
+> 
+> > +       data[RTC_OFFSET_SEC] = ((data[RTC_OFFSET_SEC] & ~(RTC_AL_SEC_MASK)) |
+> > +                               (tm->tm_sec & RTC_AL_SEC_MASK));
+> > +       data[RTC_OFFSET_MIN] = ((data[RTC_OFFSET_MIN] & ~(RTC_AL_MIN_MASK)) |
+> > +                               (tm->tm_min & RTC_AL_MIN_MASK));
+> > +       data[RTC_OFFSET_HOUR] = ((data[RTC_OFFSET_HOUR] & ~(RTC_AL_HOU_MASK)) |
+> > +                               (tm->tm_hour & RTC_AL_HOU_MASK));
+> > +       data[RTC_OFFSET_DOM] = ((data[RTC_OFFSET_DOM] & ~(RTC_AL_DOM_MASK)) |
+> > +                               (tm->tm_mday & RTC_AL_DOM_MASK));
+> > +       data[RTC_OFFSET_MTH] = ((data[RTC_OFFSET_MTH] & ~(RTC_AL_MTH_MASK)) |
+> > +                               (tm->tm_mon & RTC_AL_MTH_MASK));
+> > +       data[RTC_OFFSET_YEAR] = ((data[RTC_OFFSET_YEAR] & ~(RTC_AL_YEA_MASK)) |
+> > +                               (tm->tm_year & RTC_AL_YEA_MASK));
+> > +
+> >         if (alm->enabled) {
+> >                 ret = regmap_bulk_write(rtc->regmap,
+> >                                         rtc->addr_base + RTC_AL_SEC,
+> > --
+> > 1.9.1
+> >
+> >
+> > _______________________________________________
+> > Linux-mediatek mailing list
+> > Linux-mediatek@lists.infradead.org
+> > http://lists.infradead.org/mailman/listinfo/linux-mediatek
