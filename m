@@ -1,13 +1,14 @@
 From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [RFC PATCH V0 0/4] media: support Mediatek sensor interface driver
-Date: Thu, 14 Mar 2019 09:42:18 +0100
-Message-ID: <d65ff907-51af-cf95-9f95-84aef95af505@xs4all.nl>
-References: <1550733718-31702-1-git-send-email-louis.kuo@mediatek.com>
+Subject: Re: [RFC PATCH V0 0/7] media: platform: Add support for Digital Image
+ Processing (DIP) on mt8183 SoC
+Date: Thu, 14 Mar 2019 09:46:07 +0100
+Message-ID: <3eadd21f-de2c-404c-c2c2-f819bc29947c@xs4all.nl>
+References: <1549020091-42064-1-git-send-email-frederic.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1550733718-31702-1-git-send-email-louis.kuo@mediatek.com>
+In-Reply-To: <1549020091-42064-1-git-send-email-frederic.chen@mediatek.com>
 Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
@@ -18,74 +19,137 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Louis Kuo <louis.kuo@mediatek.com>, hans.verkuil@cisco.com, laurent.pinchart+renesas@ideasonboard.com, tfiga@chromium.org, matthias.bgg@gmail.com, mchehab@kernel.org
-Cc: devicetree@vger.kernel.org, Sean.Cheng@mediatek.com, Rynn.Wu@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, Jerry-ch.Chen@mediatek.com, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, linux-mediatek@lists.infradead.org, zwisler@chromium.org, christie.yu@mediatek.com, frederic.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+To: Frederic Chen <frederic.chen@mediatek.com>, hans.verkuil@cisco.com, laurent.pinchart+renesas@ideasonboard.com, tfiga@chromium.org, matthias.bgg@gmail.com, mchehab@kernel.org
+Cc: Sean.Cheng@mediatek.com, Rynn.Wu@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, Jerry-ch.Chen@mediatek.com, jungo.lin@mediatek.com, sj.huang@mediatek.com, christie.yu@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Louis Kuo,
-
-On 2/21/19 8:21 AM, Louis Kuo wrote:
-> Hello,
-> 
-> This is the first version of the RFC patch series adding Sensor Inferface(seninf) driver on
-> Mediatek mt8183 SoC, which will be used in camera features on CrOS application.
-> It belongs to the first Mediatek's camera driver series based on V4L2 and media controller framework.
-> I posted the main part of the seninf driver as RFC to discuss first and would like some review comments
-> on the overall structure of the driver.
-> 
-> The driver is implemented with V4L2 framework.
-> 1. Register as a V4L2 sub-device.
-> 2. Only one entity with sink pads linked to camera sensors for choosing desired camera sensor by setup link
->    and with source pads linked to cam-io for routing different types of decoded packet datas to PASS1 driver
->    to generate sensor image frame and meta-data.
-
-Just a high-level comment before you post the next version of this series:
-
-Please compile the latest version of v4l2-compliance (part of
-git://linuxtv.org/v4l-utils.git) and run it against your driver:
-
-v4l2-compliance -d /dev/videoX -s10 -f
-
-Whenever you post a new version of this series, please do a 'git pull' of
-the v4l-utils repo, recompile and retest with v4l2-compliance and post the
-test results in the cover letter.
-
-Obviously, there should be no FAILs and probably no warnings.
-
-Regards,
-
-	Hans
-
-> 
-> The overall file structure of the seninf driver is as following:
-> 
-> * mtk_seninf.c: Implement software and HW control flow of seninf driver.
-> * seninf_drv_def.h: Define data structure and enumeration.
-> * seninf_reg.h: Define HW register R/W macros and HW register names.
-> 
-> Louis Kuo (4):
->   media: platform: mtk-isp: Add Mediatek sensor interface driver
->   media: platform: Add Mediatek sensor interface driver KConfig
->   dt-bindings: mt8183: Added sensor interface dt-bindings
->   dts: arm64: mt8183: Add sensor interface nodes
-> 
->  .../devicetree/bindings/media/mediatek-seninf.txt  |   52 +
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi           |   34 +
->  drivers/media/platform/Makefile                    |    2 +
->  drivers/media/platform/mtk-isp/Kconfig             |   16 +
->  drivers/media/platform/mtk-isp/Makefile            |   14 +
->  drivers/media/platform/mtk-isp/isp_50/Makefile     |   17 +
->  .../media/platform/mtk-isp/isp_50/seninf/Makefile  |    4 +
->  .../platform/mtk-isp/isp_50/seninf/mtk_seninf.c    | 1339 ++++++++++++++++++++
->  .../mtk-isp/isp_50/seninf/seninf_drv_def.h         |  201 +++
->  .../platform/mtk-isp/isp_50/seninf/seninf_reg.h    |  992 +++++++++++++++
->  10 files changed, 2671 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek-seninf.txt
->  create mode 100644 drivers/media/platform/mtk-isp/Kconfig
->  create mode 100644 drivers/media/platform/mtk-isp/Makefile
->  create mode 100644 drivers/media/platform/mtk-isp/isp_50/Makefile
->  create mode 100644 drivers/media/platform/mtk-isp/isp_50/seninf/Makefile
->  create mode 100644 drivers/media/platform/mtk-isp/isp_50/seninf/mtk_seninf.c
->  create mode 100644 drivers/media/platform/mtk-isp/isp_50/seninf/seninf_drv_def.h
->  create mode 100644 drivers/media/platform/mtk-isp/isp_50/seninf/seninf_reg.h
-> 
+SGkgRnJlZGVyaWMgQ2hlbiwKCk9uIDIvMS8xOSAxMjoyMSBQTSwgRnJlZGVyaWMgQ2hlbiB3cm90
+ZToKPiBIZWxsbywKPiAKPiBUaGlzIGlzIHRoZSBmaXJzdCB2ZXJzaW9uIG9mIHRoZSBSRkMgcGF0
+Y2ggc2VyaWVzIGFkZGluZyBEaWdpdGFsIEltYWdlCj4gUHJvY2Vzc2luZyAoRElQKSBkcml2ZXIg
+b24gTWVkaWF0ZWsgbXQ4MTgzIFNvQywgd2hpY2ggd2lsbCBiZSB1c2VkIGluIGNhbWVyYQo+IGZl
+YXR1cmVzIG9uIENyT1MgYXBwbGljYXRpb24uIEl0IGJlbG9uZ3MgdG8gdGhlIGZpcnN0IE1lZGlh
+dGVr4oCZcyBJU1AgZHJpdmVyCj4gc2VyaWVzIGJhc2VkIG9uIFY0TDIgYW5kIG1lZGlhIGNvbnRy
+b2xsZXIgZnJhbWV3b3JrLiBJIHBvc3RlZCB0aGUgbWFpbiBwYXJ0IG9mCj4gdGhlIERJUCBkcml2
+ZXIgYXMgUkZDIHRvIGRpc2N1c3MgZmlyc3QgYW5kIHdvdWxkIGxpa2Ugc29tZSByZXZpZXcgY29t
+bWVudHMgb24KPiB0aGUgb3ZlcmFsbCBzdHJ1Y3R1cmUgb2YgdGhlIGRyaXZlci4KPiAKPiBEaWdp
+dGFsIEltYWdlIFByb2Nlc3NpbmcgKERJUCkgdW5pdCBjYW4gYWNjZXB0IHRoZSB0dW5pbmcgcGFy
+YW1ldGVycyBhbmQgYWRqdXN0Cj4gdGhlIGltYWdlIGNvbnRlbnQgaW4gTWVkaWF0ZWsgSVNQIHN5
+c3RlbS4gRnVydGhlcm1vcmUsIGl0IHBlcmZvcm1zIGRlbW9zYWljaW5nCj4gYW5kIG5vaXNlIHJl
+ZHVjdGlvbiBvbiB0aGUgaW1hZ2UgdG8gc3VwcG9ydCB0aGUgYWR2YW5jZWQgY2FtZXJhIGZlYXR1
+cmVzIG9mIHRoZQo+IGFwcGxpY2F0aW9uLiBUaGUgRElQIGRyaXZlciBhbHNvIHN1cHBvcnQgaW1h
+Z2UgZm9ybWF0IGNvbnZlcnNpb24sIHJlc2l6aW5nIGFuZAo+IHJvdGF0aW9uIHdpdGggaXRzIGhh
+cmR3YXJlIHBhdGguCj4gCj4gVGhlIGRyaXZlciBpcyBpbXBsZW1lbnRlZCB3aXRoIFY0TDIgYW5k
+IG1lZGlhIGNvbnRyb2xsZXIgZnJhbWV3b3JrLiBXZSBoYXZlIHRoZQo+IGZvbGxvd2luZyBlbnRp
+dGllcyBkZXNjcmliaW5nIHRoZSBESVAgcGF0aC4KPiAKPiAxLiBNZXRhIChvdXRwdXQgdmlkZW8g
+ZGV2aWNlKTogY29ubmVjdHMgdG8gRElQIHN1YiBkZXZpY2UuIEl0IGFjY2VwdHMgdGhlIGlucHV0
+Cj4gICAgdHVuaW5nIGJ1ZmZlciBmcm9tIHVzZXJzcGFjZS4gVGhlIG1ldGFkYXRhIGludGVyZmFj
+ZSB1c2VkIGN1cnJlbnRseSBpcyBvbmx5Cj4gICAgYSB0ZW1wb3Jhcnkgc29sdXRpb24gdG8ga2lj
+ayBvZmYgZHJpdmVyIGRldmVsb3BtZW50IGFuZCBpcyBub3QgcmVhZHkgZm9yCj4gICAgcmV2aWV3
+ZWQgeWV0Lgo+IAo+IDIuIFJBVyAob3V0cHV0IHZpZGVvIGRldmljZSk6IGNvbm5lY3RzIHRvIERJ
+UCBzdWIgZGV2aWNlLiBJdCBhY2NlcHRzIGlucHV0IGltYWdlCj4gICAgYnVmZmVyIGZyb20gdXNl
+cnNwYWNlLgo+IAo+IDMuIERJUCAoc3ViIGRldmljZSk6IGNvbm5lY3RzIHRvIE1EUC0wIGFuZCBN
+RFAtMS4gV2hlbiBwcm9jZXNzaW5nIGFuIGltYWdlLCBESVAKPiAgICBoYXJkd2FyZSBzdXBwb3J0
+IG11bHRpcGxlIG91dHB1dCBpbWFnZSB3aXRoIGRpZmZlcmVudCBzaXplIGFuZCBmb3JtYXQgc28g
+aXQKPiAgICBuZWVkcyB0d28gY2FwdHVyZSB2aWRlbyBkZXZpY2VzIHRvIHJldHVybiB0aGUgc3Ry
+ZWFtaW5nIGRhdGEgdG8gdGhlIHVzZXIuCj4gCj4gNC4gTURQLTAgKGNhcHR1cmUgdmlkZW8gZGV2
+aWNlKTogcmV0dXJuIHRoZSBwcm9jZXNzZWQgaW1hZ2UgZGF0YS4KPiAKPiA1LiBNRFAtMSAoY2Fw
+dHVyZSB2aWRlbyBkZXZpY2UpOiByZXR1cm4gdGhlIHByb2Nlc3NlZCBpbWFnZSBkYXRhLCB0aGUg
+aW1hZ2UKPiAgICBzaXplIGFuZCBmb3JtYXQgY2FuIGJlIGRpZmZlcmVudCBmcm9tIHRoZSBvbmVz
+IG9mIE1EUC0wLgoKSnVzdCBhIGhpZ2gtbGV2ZWwgY29tbWVudCBiZWZvcmUgeW91IHBvc3QgdGhl
+IG5leHQgdmVyc2lvbiBvZiB0aGlzIHNlcmllcwphbmQgZm9yIHlvdXIgInBsYXRmb3JtOiBBZGQg
+c3VwcG9ydCBmb3IgSVNQIFBhc3MgMSBvbiBtdDgxODMgU29DIiBzZXJpZXMKClBsZWFzZSBjb21w
+aWxlIHRoZSBsYXRlc3QgdmVyc2lvbiBvZiB2NGwyLWNvbXBsaWFuY2UgKHBhcnQgb2YKZ2l0Oi8v
+bGludXh0di5vcmcvdjRsLXV0aWxzLmdpdCkgYW5kIHJ1biBpdCBhZ2FpbnN0IHlvdXIgZHJpdmVy
+OgoKdjRsMi1jb21wbGlhbmNlIC1tIC9kZXYvbWVkaWFYCgpXaGVuZXZlciB5b3UgcG9zdCBhIG5l
+dyB2ZXJzaW9uIG9mIHRoaXMgc2VyaWVzLCBwbGVhc2UgZG8gYSAnZ2l0IHB1bGwnIG9mCnRoZSB2
+NGwtdXRpbHMgcmVwbywgcmVjb21waWxlIGFuZCByZXRlc3Qgd2l0aCB2NGwyLWNvbXBsaWFuY2Ug
+YW5kIHBvc3QgdGhlCnRlc3QgcmVzdWx0cyBpbiB0aGUgY292ZXIgbGV0dGVyLgoKT2J2aW91c2x5
+LCB0aGVyZSBzaG91bGQgYmUgbm8gRkFJTHMgYW5kIHByb2JhYmx5IG5vIHdhcm5pbmdzLgoKSSBz
+dXNwZWN0IHRoYXQgc3RyZWFtaW5nIChlLmcuIGFkZGluZyB0aGUgLXMxMCBvcHRpb24gdG8gdjRs
+Mi1jb21wbGlhbmNlKQptaWdodCBub3Qgd29yayBzaW5jZSB2NGwyLWNvbXBsaWFuY2UgZG9lc24n
+dCBrbm93IGFib3V0IHRoZSBtZXRhIGRhdGEKZm9ybWF0cy4gQnV0IGdpdmUgaXQgYSB0cnkgYW5k
+IHNlZSB3aGF0IGhhcHBlbnMgOi0pCgpSZWdhcmRzLAoKCUhhbnMKCj4gCj4gVGhlIG92ZXJhbGwg
+ZmlsZSBzdHJ1Y3R1cmUgb2YgdGhlIERJUCBkcml2ZXIgaXMgYXMgZm9sbG93aW5nOgo+IAo+ICog
+bXRrX2RpcC1kZXYtY3R4LWNvcmUuYzogSW1wbGVtZW50cyBjb21tb24gc29mdHdhcmUgZmxvdyBv
+ZiBESVAgZHJpdmVyLgo+ICAgRElQIGRyaXZlciBzdXBwb3J0cyB0d28gb3IgbW9yZSBzb2Z0d2Fy
+ZSBjb250ZXh0cy4gRm9yIGV4YW1wbGUsIGNvbnRleHQgMCBpcwo+ICAgY3JlYXRlZCBmb3IgcHJl
+dmlldyBwYXRoIGFuZCBjb250ZXh0IDEgaXMgZm9yIGNhcHR1cmUgcGF0aC4gQm90aCB0aGUgdHdv
+Cj4gICBjb250ZXh0cyBzaGFyZSB0aGUgc2FtZSBESVAgaGFyZHdhcmUgdG8gcHJvY2VzcyB0aGUg
+aW1hZ2VzLgo+ICogbXRrX2RpcC12NGwyLmM6IFN0YXRpYyBESVAgY29udGV4dHMgY29uZmlndXJh
+dGlvbi4KPiAqIG10a19kaXAuYzogQ29udHJvbHMgdGhlIGhhcmR3YXJlIGZsb3cuCj4gKiBtdGtf
+ZGlwLWRldi5jOiBJbXBsZW1lbnRzIGNvbnRleHQtaW5kZXBlbmRlbnQgZmxvdy4KPiAqIG10a19k
+aXAtY3RybC5jOiBIYW5kbGVzIHRoZSBIVyBjdHJsIHJlcXVlc3QgZnJvbSB1c2Vyc3BhY2UuCj4g
+KiBtdGtfZGlwLXNtZW0tZHJ2LmM6IFByb3ZpZGVzIHRoZSBzaGFyZWQgbWVtb3J5IG1hbmFnZW1l
+bnQgcmVxdWlyZWQgb3BlcmF0aW9uLgo+ICAgV2UgcmVzZXJ2ZWQgYSBtZW1vcnkgcmVnaW9uIGZv
+ciB0aGUgY28tcHJvY2Vzc29yIGFuZCBESVAgdG8gZXhjaGFuZ2UgdGhlCj4gICB0dW5pbmcgYW5k
+IGhhcmR3YXJlIGNvbmZpZ3VyYXRpb24gZGF0YS4KPiAqIG10a19kaXAtdjRsMi11dGlsLmM6IElt
+cGxlbWVudHMgVjRMMiBhbmQgdmIyIG9wcy4KPiAKPiBGcmVkZXJpYyBDaGVuICg3KToKPiAgIFtt
+ZWRpYV0gZHQtYmluZGluZ3M6IG10ODE4MzogQWRkIGJpbmRpbmcgZm9yIERJUCBzaGFyZWQgbWVt
+b3J5Cj4gICBkdHM6IGFybTY0OiBtdDgxODM6IEFkZCBESVAgc2hhcmVkIG1lbW9yeSBub2RlCj4g
+ICBbbWVkaWFdIGR0LWJpbmRpbmdzOiBtdDgxODM6IEFkZGVkIERJUC1TTUVNIGR0LWJpbmRpbmdz
+Cj4gICBbbWVkaWFdIGR0LWJpbmRpbmdzOiBtdDgxODM6IEFkZGVkIERJUCBkdC1iaW5kaW5ncwo+
+ICAgZHRzOiBhcm02NDogbXQ4MTgzOiBBZGQgRElQIG5vZGVzCj4gICBtZWRpYTogcGxhdGZvcm06
+IEFkZCBNZWRpYXRlayBESVAgZHJpdmVyIEtDb25maWcKPiAgIFttZWRpYV0gcGxhdGZvcm06IG10
+ay1pc3A6IEFkZCBNZWRpYXRlayBESVAgZHJpdmVyCj4gCj4gIC4uLi9iaW5kaW5ncy9tZWRpYS9t
+ZWRpYXRlayxkaXBfc21lbS50eHQgICAgICAgICAgIHwgICAyOSArCj4gIC4uLi9iaW5kaW5ncy9t
+ZWRpYS9tZWRpYXRlayxtdDgxODMtZGlwLnR4dCAgICAgICAgIHwgICAzNSArCj4gIC4uLi9tZWRp
+YXRlayxyZXNlcnZlLW1lbW9yeS1kaXBfc21lbS50eHQgICAgICAgICAgIHwgICA0NSArCj4gIGFy
+Y2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTgzLmR0c2kgICAgICAgICAgIHwgICAzNiAr
+Cj4gIGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vS2NvbmZpZyAgICAgICAgICAgICAgICAgICAgIHwg
+ICAgMiArCj4gIGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLWlzcC9LY29uZmlnICAgICAgICAg
+ICAgIHwgICAyMSArCj4gIGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLWlzcC9NYWtlZmlsZSAg
+ICAgICAgICAgIHwgICAxOCArCj4gIGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLWlzcC9pc3Bf
+NTAvTWFrZWZpbGUgICAgIHwgICAxNyArCj4gIGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLWlz
+cC9pc3BfNTAvZGlwL01ha2VmaWxlIHwgICAzNSArCj4gIC4uLi9wbGF0Zm9ybS9tdGstaXNwL2lz
+cF81MC9kaXAvbXRrX2RpcC1jb3JlLmggICAgIHwgIDE4OCArKysKPiAgLi4uL3BsYXRmb3JtL210
+ay1pc3AvaXNwXzUwL2RpcC9tdGtfZGlwLWN0cmwuYyAgICAgfCAgMTczICsrKwo+ICAuLi4vcGxh
+dGZvcm0vbXRrLWlzcC9pc3BfNTAvZGlwL210a19kaXAtY3RybC5oICAgICB8ICAgNDMgKwo+ICAu
+Li4vcGxhdGZvcm0vbXRrLWlzcC9pc3BfNTAvZGlwL210a19kaXAtY3R4LmggICAgICB8ICAzMTkg
+KysrKwo+ICAuLi4vbXRrLWlzcC9pc3BfNTAvZGlwL210a19kaXAtZGV2LWN0eC1jb3JlLmMgICAg
+ICB8IDE2NDMgKysrKysrKysrKysrKysrKysrKysKPiAgLi4uL3BsYXRmb3JtL210ay1pc3AvaXNw
+XzUwL2RpcC9tdGtfZGlwLWRldi5jICAgICAgfCAgMzc0ICsrKysrCj4gIC4uLi9wbGF0Zm9ybS9t
+dGstaXNwL2lzcF81MC9kaXAvbXRrX2RpcC1kZXYuaCAgICAgIHwgIDE5MSArKysKPiAgLi4uL3Bs
+YXRmb3JtL210ay1pc3AvaXNwXzUwL2RpcC9tdGtfZGlwLXNtZW0tZHJ2LmMgfCAgNDUyICsrKysr
+Kwo+ICAuLi4vcGxhdGZvcm0vbXRrLWlzcC9pc3BfNTAvZGlwL210a19kaXAtc21lbS5oICAgICB8
+ICAgMjUgKwo+ICAuLi4vbXRrLWlzcC9pc3BfNTAvZGlwL210a19kaXAtdjRsMi11dGlsLmMgICAg
+ICAgICB8IDEwMDAgKysrKysrKysrKysrCj4gIC4uLi9tdGstaXNwL2lzcF81MC9kaXAvbXRrX2Rp
+cC12NGwyLXV0aWwuaCAgICAgICAgIHwgICAzOCArCj4gIC4uLi9wbGF0Zm9ybS9tdGstaXNwL2lz
+cF81MC9kaXAvbXRrX2RpcC12NGwyLmMgICAgIHwgIDI5MiArKysrCj4gIC4uLi9wbGF0Zm9ybS9t
+dGstaXNwL2lzcF81MC9kaXAvbXRrX2RpcC12NGwyLmggICAgIHwgICA2MCArCj4gIC4uLi9tZWRp
+YS9wbGF0Zm9ybS9tdGstaXNwL2lzcF81MC9kaXAvbXRrX2RpcC5jICAgIHwgMTM4NSArKysrKysr
+KysrKysrKysrKwo+ICAuLi4vbWVkaWEvcGxhdGZvcm0vbXRrLWlzcC9pc3BfNTAvZGlwL210a19k
+aXAuaCAgICB8ICAgOTMgKysKPiAgMjQgZmlsZXMgY2hhbmdlZCwgNjUxNCBpbnNlcnRpb25zKCsp
+Cj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mv
+bWVkaWEvbWVkaWF0ZWssZGlwX3NtZW0udHh0Cj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVu
+dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWVkaWEvbWVkaWF0ZWssbXQ4MTgzLWRpcC50eHQK
+PiAgY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9y
+ZXNlcnZlZC1tZW1vcnkvbWVkaWF0ZWsscmVzZXJ2ZS1tZW1vcnktZGlwX3NtZW0udHh0Cj4gIGNy
+ZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1pc3AvS2NvbmZpZwo+
+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstaXNwL01ha2Vm
+aWxlCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1pc3Av
+aXNwXzUwL01ha2VmaWxlCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21lZGlhL3BsYXRm
+b3JtL210ay1pc3AvaXNwXzUwL2RpcC9NYWtlZmlsZQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJp
+dmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstaXNwL2lzcF81MC9kaXAvbXRrX2RpcC1jb3JlLmgKPiAg
+Y3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLWlzcC9pc3BfNTAv
+ZGlwL210a19kaXAtY3RybC5jCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21lZGlhL3Bs
+YXRmb3JtL210ay1pc3AvaXNwXzUwL2RpcC9tdGtfZGlwLWN0cmwuaAo+ICBjcmVhdGUgbW9kZSAx
+MDA2NDQgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstaXNwL2lzcF81MC9kaXAvbXRrX2RpcC1j
+dHguaAo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstaXNw
+L2lzcF81MC9kaXAvbXRrX2RpcC1kZXYtY3R4LWNvcmUuYwo+ICBjcmVhdGUgbW9kZSAxMDA2NDQg
+ZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstaXNwL2lzcF81MC9kaXAvbXRrX2RpcC1kZXYuYwo+
+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstaXNwL2lzcF81
+MC9kaXAvbXRrX2RpcC1kZXYuaAo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9tZWRpYS9w
+bGF0Zm9ybS9tdGstaXNwL2lzcF81MC9kaXAvbXRrX2RpcC1zbWVtLWRydi5jCj4gIGNyZWF0ZSBt
+b2RlIDEwMDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1pc3AvaXNwXzUwL2RpcC9tdGtf
+ZGlwLXNtZW0uaAo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9t
+dGstaXNwL2lzcF81MC9kaXAvbXRrX2RpcC12NGwyLXV0aWwuYwo+ICBjcmVhdGUgbW9kZSAxMDA2
+NDQgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstaXNwL2lzcF81MC9kaXAvbXRrX2RpcC12NGwy
+LXV0aWwuaAo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGst
+aXNwL2lzcF81MC9kaXAvbXRrX2RpcC12NGwyLmMKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZl
+cnMvbWVkaWEvcGxhdGZvcm0vbXRrLWlzcC9pc3BfNTAvZGlwL210a19kaXAtdjRsMi5oCj4gIGNy
+ZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1pc3AvaXNwXzUwL2Rp
+cC9tdGtfZGlwLmMKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0v
+bXRrLWlzcC9pc3BfNTAvZGlwL210a19kaXAuaAo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0Cmxp
+bnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
