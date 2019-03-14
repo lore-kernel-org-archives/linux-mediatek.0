@@ -1,35 +1,79 @@
-From: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v5 4/7] dt-bindings: phy: Add document for phy-mtk-ufs
-Date: Thu, 14 Mar 2019 11:38:25 -0500
-Message-ID: <CAL_JsqKXxgYTqHrND+M7=8+aUe4pSo5b=UtukcuG6BH05e2+rw@mail.gmail.com>
-References: <1552536516-12723-1-git-send-email-stanley.chu@mediatek.com>
- <1552536516-12723-6-git-send-email-stanley.chu@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH] spi: mediatek: Attempt to address style issues in
+ spi-mt7621.c
+Date: Thu, 14 Mar 2019 18:01:42 +0100
+Message-ID: <feebd6b1-4108-a771-a178-a60aa8633e9e@gmail.com>
+References: <20190313122403.248873-1-armax@google.com>
+ <20190313123454.GB2202@kadam> <20190314111313.GB8034@google.com>
+ <f620e4ef-3d9e-4230-30e8-5cc608710695@denx.de>
+ <CAOcbMd3tfFiVjvPE+mvCjP22-a6oY2LJRig05PJPRAL4DvpCMA@mail.gmail.com>
+ <96fb1765-971b-2329-bccd-88e0517f6f23@gmail.com>
+ <ae1cea3e-9790-1ce0-a43a-5cfe588a2fd6@denx.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1552536516-12723-6-git-send-email-stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "Martin K. Petersen" <martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Subhash Jadavani <subhashj-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, =?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?S3VvaG9uZyBXYW5nICjnjovlnIvptLsp?= <kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, avri.altman-Sjgp3cTcYWE@public.gmane.org, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Li Wei <liwei213-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Alim Akhtar <alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, Vivek Gautam <vivek.gautam-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <ae1cea3e-9790-1ce0-a43a-5cfe588a2fd6@denx.de>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Stefan Roese <sr@denx.de>, Armando Miraglia <arma2ff0@gmail.com>
+Cc: Dan Carpenter <dan.carpenter@oracle.com>, Neil Brown <neil@brown.name>, devel@driverdev.osuosl.org, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sankalp Negi <sankalpnegi2310@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Mar 13, 2019 at 11:09 PM Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
->
-> Add UFS M-PHY node document for MediaTek SoC chips.
->
-> Signed-off-by: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  .../devicetree/bindings/phy/phy-mtk-ufs.txt   | 38 +++++++++++++++++++
->  1 file changed, 38 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/phy/phy-mtk-ufs.txt
 
-Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+
+On 14/03/2019 14:24, Stefan Roese wrote:
+> On 14.03.19 14:14, Matthias Brugger wrote:
+>>
+>>
+>> On 14/03/2019 12:37, Armando Miraglia wrote:
+>>> Absolutely!
+>>
+>> Please don't top post :)
+>>
+>>>
+>>> Cheers,
+>>> A.
+>>>
+>>> On Thu, Mar 14, 2019 at 12:36 PM Stefan Roese <sr@denx.de> wrote:
+>> [...]
+>>>>
+>>>> Would it be possible for you to wait a bit with this minor cleanup?
+>>>> As I'm preparing a patch to move this driver out of staging right
+>>>> now. You can definitely follow-up with your cleanup, once this move
+>>>> is done. Otherwise the move might be delayed even more.
+>>>>
+>>
+>> Hm but shouldn't style issues be a criteria for not accepting a move out of
+>> staging?
+> 
+> I would agree, if those style issues where non trivial. In the end we
+> are talking about one non-optimal identation now.>
+
+Fair enough, anyway I'm not the person to decide on that :)
+
+Regards,
+Matthias
+
+>> I think so. You could add Armandos patch in your series or rebase your
+>> series against Greg's tree, once he took the clean-up. Normally Greg is
+>> incredibly fast :)
+> 
+> I should have included the history here to make this more clean. I've
+> started pulling this driver out of staging a few weeks ago:
+> 
+> https://patchwork.kernel.org/patch/10790537/
+> ...
+> 
+> Here you find Greg's comment, that the style patches should be merged
+> first before the move out of staging. This is what I worked on after
+> this first patch series:
+> 
+> https://patchwork.kernel.org/patch/10792455/
+> ...
+> 
+> Now these 9 style issue patches from me have been merged and I would
+> like to proceed with the driver move.
+> 
+> Thanks,
+> Stefan
