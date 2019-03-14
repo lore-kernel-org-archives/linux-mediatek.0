@@ -1,70 +1,41 @@
-From: Stefan Roese <sr@denx.de>
+From: Jean Delvare <jdelvare@suse.de>
 Subject: Re: [PATCH] spi: mediatek: Attempt to address style issues in
  spi-mt7621.c
-Date: Thu, 14 Mar 2019 14:24:11 +0100
-Message-ID: <ae1cea3e-9790-1ce0-a43a-5cfe588a2fd6@denx.de>
+Date: Thu, 14 Mar 2019 15:07:37 +0100
+Message-ID: <20190314150737.61eed622@endymion>
 References: <20190313122403.248873-1-armax@google.com>
- <20190313123454.GB2202@kadam> <20190314111313.GB8034@google.com>
- <f620e4ef-3d9e-4230-30e8-5cc608710695@denx.de>
- <CAOcbMd3tfFiVjvPE+mvCjP22-a6oY2LJRig05PJPRAL4DvpCMA@mail.gmail.com>
- <96fb1765-971b-2329-bccd-88e0517f6f23@gmail.com>
+        <20190313123454.GB2202@kadam>
+        <20190314111313.GB8034@google.com>
+        <20190314112732.GJ2227@kadam>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <96fb1765-971b-2329-bccd-88e0517f6f23@gmail.com>
-Content-Language: en-US
+In-Reply-To: <20190314112732.GJ2227@kadam>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Armando Miraglia <arma2ff0@gmail.com>
-Cc: Dan Carpenter <dan.carpenter@oracle.com>, Neil Brown <neil@brown.name>, devel@driverdev.osuosl.org, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sankalp Negi <sankalpnegi2310@gmail.com>, linux-arm-kernel@lists.infradead.org
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: Armando Miraglia <arma2ff0@gmail.com>, neil@brown.name, devel@driverdev.osuosl.org, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, sankalpnegi2310@gmail.com, matthias.bgg@gmail.com, sr@denx.de, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 14.03.19 14:14, Matthias Brugger wrote:
+Hi Dan,
+
+On Thu, 14 Mar 2019 14:27:32 +0300, Dan Carpenter wrote:
+> On Thu, Mar 14, 2019 at 12:13:15PM +0100, Armando Miraglia wrote:
+> > Is there an explicit intent to deprecate Lindent in favor of checkpatch.pl
+> > --fix? If one would like to contribute to fixing the tooling for linting which
+> > of the two would be the right target for such an effort?
 > 
-> 
-> On 14/03/2019 12:37, Armando Miraglia wrote:
->> Absolutely!
-> 
-> Please don't top post :)
-> 
->>
->> Cheers,
->> A.
->>
->> On Thu, Mar 14, 2019 at 12:36 PM Stefan Roese <sr@denx.de> wrote:
-> [...]
->>>
->>> Would it be possible for you to wait a bit with this minor cleanup?
->>> As I'm preparing a patch to move this driver out of staging right
->>> now. You can definitely follow-up with your cleanup, once this move
->>> is done. Otherwise the move might be delayed even more.
->>>
-> 
-> Hm but shouldn't style issues be a criteria for not accepting a move out of
-> staging?
+> I've added Jean to the CC list because he worked on Lindent a few
+> years ago.  I really think we should just delete Lindent.  I haven't
+> used the checkpatch.pl --fix option but Joe Perches has good style.
 
-I would agree, if those style issues where non trivial. In the end we
-are talking about one non-optimal identation now.
+I merely fixed obvious but minor issues in Lindent as I stumbled upon
+them the one time in my life I used that script. That was years ago.
+I'm not using it on a regular basis. My principle is that if a script
+is present in the kernel tree then it can and should be maintained. If
+it is deemed not worth the maintenance effort then it should be
+deleted. I don't care either way.
 
-> I think so. You could add Armandos patch in your series or rebase your
-> series against Greg's tree, once he took the clean-up. Normally Greg is
-> incredibly fast :)
-
-I should have included the history here to make this more clean. I've
-started pulling this driver out of staging a few weeks ago:
-
-https://patchwork.kernel.org/patch/10790537/
-...
-
-Here you find Greg's comment, that the style patches should be merged
-first before the move out of staging. This is what I worked on after
-this first patch series:
-
-https://patchwork.kernel.org/patch/10792455/
-...
-
-Now these 9 style issue patches from me have been merged and I would
-like to proceed with the driver move.
-
-Thanks,
-Stefan
+-- 
+Jean Delvare
+SUSE L3 Support
