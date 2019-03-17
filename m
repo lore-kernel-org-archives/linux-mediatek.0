@@ -1,78 +1,57 @@
-From: Masahiro Yamada <yamada.masahiro@socionext.com>
-Subject: [PATCH] mt76: Use the correct hweight8() function again
-Date: Sun, 17 Mar 2019 11:32:28 +0900
-Message-ID: <1552789948-31564-1-git-send-email-yamada.masahiro@socionext.com>
+From: Armando Miraglia <arma2ff0@gmail.com>
+Subject: [PATCH] dma: mediatek: addres minor style issues flagged by
+ clang-format.
+Date: Sun, 17 Mar 2019 09:44:45 +0100
+Message-ID: <20190317084443.158913-1-armax@google.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Felix Fietkau <nbd@nbd.name>, linux-wireless@vger.kernel.org
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Ben Hutchings <ben@decadent.org.uk>, "David S. Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
+List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
+List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
+List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
+List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
+List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Errors-To: driverdev-devel-bounces@linuxdriverproject.org
+Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
+To: matthias.bgg@gmail.com, neil@brown.name
+Cc: devel@driverdev.osuosl.org, jbi.octave@gmail.com, gustavo@embeddedor.com, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, Armando Miraglia <armax@google.com>, linux-mediatek@lists.infradead.org, bhanusreemahesh@gmail.com, christian@lkamp.de, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Commit d0ff23c1107e ("mt76: Use the correct hweight8() function")
-fixed the wrong use of __sw_hweight8().
+Running clang-format on mtk-hsdma.c I noticed that few lines would not
+need to be wrapped, since they fit 80 columns. This change changes such
+lines to better fit the style-guide.
 
-Just a week later, commit c8846e101502 ("mt76: add driver for MT7603E
-and MT7628/7688") was applid, introducing __sw_hweight8() again.
-
-Fixes: c8846e101502 ("mt76: add driver for MT7603E and MT7628/7688")
-Signed-off-by: Masahiro Yamada <yamada.masahiro@socionext.com>
+Signed-off-by: Armando Miraglia <armax@google.com>
 ---
+ drivers/staging/mt7621-dma/mtk-hsdma.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
- drivers/net/wireless/mediatek/mt76/mt7603/beacon.c | 3 +--
- drivers/net/wireless/mediatek/mt76/mt7603/init.c   | 2 +-
- drivers/net/wireless/mediatek/mt76/mt7603/mcu.c    | 2 +-
- 3 files changed, 3 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/beacon.c b/drivers/net/wireless/mediatek/mt76/mt7603/beacon.c
-index afcd86f..4dcb465 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/beacon.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/beacon.c
-@@ -135,8 +135,7 @@ void mt7603_pre_tbtt_tasklet(unsigned long arg)
+diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
+index 97571f1d697b..74c374f7bef4 100644
+--- a/drivers/staging/mt7621-dma/mtk-hsdma.c
++++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
+@@ -264,8 +264,7 @@ static void mtk_hsdma_reset(struct mtk_hsdam_engine *hsdma,
+ 	/* init desc value */
+ 	for (i = 0; i < HSDMA_DESCS_NUM; i++) {
+ 		chan->tx_ring[i].addr0 = 0;
+-		chan->tx_ring[i].flags = HSDMA_DESC_LS0 |
+-			HSDMA_DESC_DONE;
++		chan->tx_ring[i].flags = HSDMA_DESC_LS0 | HSDMA_DESC_DONE;
+ 	}
+ 	for (i = 0; i < HSDMA_DESCS_NUM; i++) {
+ 		chan->rx_ring[i].addr0 = 0;
+@@ -435,8 +434,7 @@ static irqreturn_t mtk_hsdma_irq(int irq, void *devid)
+ 	if (likely(status & HSDMA_INT_RX_Q0))
+ 		tasklet_schedule(&hsdma->task);
+ 	else
+-		dev_dbg(hsdma->ddev.dev, "unhandle irq status %08x\n",
+-			status);
++		dev_dbg(hsdma->ddev.dev, "unhandle irq status %08x\n", status);
+ 	/* clean intr bits */
+ 	mtk_hsdma_write(hsdma, HSDMA_REG_INT_STATUS, status);
  
- out:
- 	mt76_queue_tx_cleanup(dev, MT_TXQ_BEACON, false);
--	if (dev->mt76.q_tx[MT_TXQ_BEACON].queued >
--	    __sw_hweight8(dev->beacon_mask))
-+	if (dev->mt76.q_tx[MT_TXQ_BEACON].queued > hweight8(dev->beacon_mask))
- 		dev->beacon_check++;
- }
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/init.c b/drivers/net/wireless/mediatek/mt76/mt7603/init.c
-index 15cc8f3..d54dda6 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/init.c
-@@ -112,7 +112,7 @@ static void
- mt7603_phy_init(struct mt7603_dev *dev)
- {
- 	int rx_chains = dev->mt76.antenna_mask;
--	int tx_chains = __sw_hweight8(rx_chains) - 1;
-+	int tx_chains = hweight8(rx_chains) - 1;
- 
- 	mt76_rmw(dev, MT_WF_RMAC_RMCR,
- 		 (MT_WF_RMAC_RMCR_SMPS_MODE |
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7603/mcu.c
-index 4b0713f..d06905e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/mcu.c
-@@ -433,7 +433,7 @@ int mt7603_mcu_set_channel(struct mt7603_dev *dev)
- {
- 	struct cfg80211_chan_def *chandef = &dev->mt76.chandef;
- 	struct ieee80211_hw *hw = mt76_hw(dev);
--	int n_chains = __sw_hweight8(dev->mt76.antenna_mask);
-+	int n_chains = hweight8(dev->mt76.antenna_mask);
- 	struct {
- 		u8 control_chan;
- 		u8 center_chan;
 -- 
-2.7.4
+2.21.0.360.g471c308f928-goog
