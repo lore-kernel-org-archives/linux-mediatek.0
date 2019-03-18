@@ -1,70 +1,36 @@
 From: Marcel Holtmann <marcel@holtmann.org>
-Subject: Re: [PATCH] Bluetooth: mediatek: fix uninitialized symbol errors in
- btmtksdio_rx_packet
-Date: Mon, 18 Mar 2019 17:55:37 +0100
-Message-ID: <93CB6259-6FB8-4D3D-9FF3-8EB59499A6A1@holtmann.org>
-References: <8fb8e6840a39127112597963d665fbe6c21d8b91.1552509647.git.sean.wang@mediatek.com>
+Subject: Re: [PATCH v1 0/3] add module_sdio_driver and enable a few users
+Date: Mon, 18 Mar 2019 18:17:39 +0100
+Message-ID: <D233C009-8EA4-4C47-9CB3-A26C74C200D1@holtmann.org>
+References: <cover.1552510141.git.sean.wang@mediatek.com>
 Mime-Version: 1.0 (Mac OS X Mail 12.2 \(3445.102.3\))
 Content-Type: text/plain;
-        charset=utf-8
+        charset=us-ascii
 Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <8fb8e6840a39127112597963d665fbe6c21d8b91.1552509647.git.sean.wang@mediatek.com>
+In-Reply-To: <cover.1552510141.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: Johan Hedberg <johan.hedberg@gmail.com>, linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: Johan Hedberg <johan.hedberg@gmail.com>, ulf.hansson@linaro.org, linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
 Hi Sean,
 
-> Fixed all the below warnings. They would probably cause the following
-> error handling path would use the uninitialized value and then produce
-> unexpected behavior.
+> Add module_sdio_driver exactly like the function module_usb_drivear offers to
+> and enable a few users to eliminate a few lines of boilerplate code per SDIO
+> driver.
 > 
-> drivers/bluetooth/btmtksdio.c:470:2: warning: ‘old_len’ may be used
-> uninitialized in this function [-Wmaybe-uninitialized]
->  print_hex_dump(KERN_ERR, "err sdio rx: ", DUMP_PREFIX_NONE, 4, 1,
->  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->          old_data, old_len, true);
->          ~~~~~~~~~~~~~~~~~~~~~~~~
-> drivers/bluetooth/btmtksdio.c:376:15: note: ‘old_len’ was declared here
->  unsigned int old_len;
->               ^~~~~~~
-> drivers/bluetooth/btmtksdio.c:470:2: warning: ‘old_data’ may be used
-> uninitialized in this function [-Wmaybe-uninitialized]
->  print_hex_dump(KERN_ERR, "err sdio rx: ", DUMP_PREFIX_NONE, 4, 1,
->  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->          old_data, old_len, true);
->          ~~~~~~~~~~~~~~~~~~~~~~~~
-> drivers/bluetooth/btmtksdio.c:375:17: note: ‘old_data’ was declared here
->  unsigned char *old_data;
->                 ^~~~~~~~
+> Sean Wang (3):
+>  mmc: sdio: Add helper macro for sdio_driver boilerplate
+>  Bluetooth: mediatek: Use module_sdio_driver helper
+>  Bluetooth: btsdio: Use module_sdio_driver helper
 > 
-> Fixes: d74eef2834b5 ("Bluetooth: mediatek: add support for MediaTek MT7663S and MT7668S SDIO devices")
-> Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
-> Reported-by: Marcel Holtmann <marcel@holtmann.org>
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
-> drivers/bluetooth/btmtksdio.c | 4 ++--
-> 1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-> index b4b8320f279e..23cf63888bac 100644
-> --- a/drivers/bluetooth/btmtksdio.c
-> +++ b/drivers/bluetooth/btmtksdio.c
-> @@ -372,8 +372,8 @@ static int btmtksdio_rx_packet(struct btmtksdio_dev *bdev, u16 rx_size)
-> 	const struct h4_recv_pkt *pkts = mtk_recv_pkts;
-> 	int pkts_count = ARRAY_SIZE(mtk_recv_pkts);
-> 	struct mtkbtsdio_hdr *sdio_hdr;
-> -	unsigned char *old_data;
-> -	unsigned int old_len;
-> +	unsigned char *old_data = NULL;
-> +	unsigned int old_len = 0;
-> 	int err, i, pad_size;
-> 	struct sk_buff *skb;
-> 	u16 dlen;
+> drivers/bluetooth/btmtksdio.c | 15 +--------------
+> drivers/bluetooth/btsdio.c    | 15 +--------------
+> include/linux/mmc/sdio_func.h | 12 ++++++++++++
+> 3 files changed, 14 insertions(+), 28 deletions(-)
 
-or instead just remove this whole old_len + old_data stuff anyway since it is rather pointless. Or at least introduce a proper error path for sdio_readsb since you know when it fails, there is no point in writing the SKB.
+all 3 patches have been applied to bluetooth-next tree.
 
 Regards
 
