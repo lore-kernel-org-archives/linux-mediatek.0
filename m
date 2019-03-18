@@ -1,60 +1,88 @@
-From: Sean Wang <sean.wang@kernel.org>
-Subject: Re: [PATCH] dma: mediatek: addres minor style issues flagged by clang-format.
-Date: Sun, 17 Mar 2019 11:02:28 -0700
-Message-ID: <CAGp9LzoWhFzjryv1BhUyjNZOU-K7pgKji94n_7B-Bzbu2mJ1Ow@mail.gmail.com>
-References: <20190317084443.158913-1-armax@google.com>
+From: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v3 3/5] scsi: ufs: Fix regulator load and icc-level
+ configuration
+Date: Mon, 18 Mar 2019 10:14:38 +0800
+Message-ID: <1552875280-16196-5-git-send-email-stanley.chu@mediatek.com>
+References: <1552875280-16196-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190317084443.158913-1-armax@google.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Armando Miraglia <arma2ff0@gmail.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Neil Brown <neil@brown.name>, devel@driverdev.osuosl.org, jbi.octave@gmail.com, gustavo@embeddedor.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org, sergio.paracuellos@gmail.com, Armando Miraglia <armax@google.com>, linux-mediatek@lists.infradead.org, bhanusreemahesh@gmail.com, christian@lkamp.de, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1552875280-16196-1-git-send-email-stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org, avri.altman-Sjgp3cTcYWE@public.gmane.org, alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org
+Cc: marc.w.gonzalez-GANU6spQydw@public.gmane.org, chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, Mar 17, 2019 at 1:45 AM Armando Miraglia <arma2ff0@gmail.com> wrote:
->
-> Running clang-format on mtk-hsdma.c I noticed that few lines would not
-> need to be wrapped, since they fit 80 columns. This change changes such
-> lines to better fit the style-guide.
->
-> Signed-off-by: Armando Miraglia <armax@google.com>
-> ---
->  drivers/staging/mt7621-dma/mtk-hsdma.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
-> index 97571f1d697b..74c374f7bef4 100644
-> --- a/drivers/staging/mt7621-dma/mtk-hsdma.c
-> +++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
-> @@ -264,8 +264,7 @@ static void mtk_hsdma_reset(struct mtk_hsdam_engine *hsdma,
->         /* init desc value */
->         for (i = 0; i < HSDMA_DESCS_NUM; i++) {
->                 chan->tx_ring[i].addr0 = 0;
-> -               chan->tx_ring[i].flags = HSDMA_DESC_LS0 |
-> -                       HSDMA_DESC_DONE;
-> +               chan->tx_ring[i].flags = HSDMA_DESC_LS0 | HSDMA_DESC_DONE;
->         }
->         for (i = 0; i < HSDMA_DESCS_NUM; i++) {
->                 chan->rx_ring[i].addr0 = 0;
-> @@ -435,8 +434,7 @@ static irqreturn_t mtk_hsdma_irq(int irq, void *devid)
->         if (likely(status & HSDMA_INT_RX_Q0))
->                 tasklet_schedule(&hsdma->task);
->         else
-> -               dev_dbg(hsdma->ddev.dev, "unhandle irq status %08x\n",
-> -                       status);
-> +               dev_dbg(hsdma->ddev.dev, "unhandle irq status %08x\n", status);
->         /* clean intr bits */
->         mtk_hsdma_write(hsdma, HSDMA_REG_INT_STATUS, status);
->
+Currently if a regulator has "<name>-fixed-regulator"
+property in device tree, it will skip current limit configuration.
+This lead to a zero "max_uA" value in struct ufs_vreg.
 
-Acked-by: Sean Wang <sean.wang@kernel.org>
+However, "regulator_set_load" operation shall be required
+on those regulators which specifically configured current
+limit, otherwise a zero max_uA value may cause unexpected behavior
+when this regulator is enabled or set as high power mode.
 
-> --
-> 2.21.0.360.g471c308f928-goog
->
->
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+Similarly, in icc_level configuration flow, icc_level shall be
+updated if specified regulator has also configured current limit,
+otherwise a zero max_uA will lead to wrong icc_level which may
+cause unexpected results after written to device.
+
+Signed-off-by: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/scsi/ufs/ufshcd.c | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 4e41fdfd0e53..9ae3256a705b 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -6279,19 +6279,19 @@ static u32 ufshcd_find_max_sup_active_icc_level(struct ufs_hba *hba,
+ 		goto out;
+ 	}
+ 
+-	if (hba->vreg_info.vcc)
++	if (hba->vreg_info.vcc && hba->vreg_info.vcc->max_uA)
+ 		icc_level = ufshcd_get_max_icc_level(
+ 				hba->vreg_info.vcc->max_uA,
+ 				POWER_DESC_MAX_ACTV_ICC_LVLS - 1,
+ 				&desc_buf[PWR_DESC_ACTIVE_LVLS_VCC_0]);
+ 
+-	if (hba->vreg_info.vccq)
++	if (hba->vreg_info.vccq && hba->vreg_info.vccq->max_uA)
+ 		icc_level = ufshcd_get_max_icc_level(
+ 				hba->vreg_info.vccq->max_uA,
+ 				icc_level,
+ 				&desc_buf[PWR_DESC_ACTIVE_LVLS_VCCQ_0]);
+ 
+-	if (hba->vreg_info.vccq2)
++	if (hba->vreg_info.vccq2 && hba->vreg_info.vccq2->max_uA)
+ 		icc_level = ufshcd_get_max_icc_level(
+ 				hba->vreg_info.vccq2->max_uA,
+ 				icc_level,
+@@ -6989,6 +6989,15 @@ static int ufshcd_config_vreg_load(struct device *dev, struct ufs_vreg *vreg,
+ 	if (!vreg)
+ 		return 0;
+ 
++	/*
++	 * "set_load" operation shall be required on those regulators
++	 * which specifically configured current limitation. Otherwise
++	 * zero max_uA may cause unexpected behavior when regulator is
++	 * enabled or set as high power mode.
++	 */
++	if (!vreg->max_uA)
++		return 0;
++
+ 	ret = regulator_set_load(vreg->reg, ua);
+ 	if (ret < 0) {
+ 		dev_err(dev, "%s: %s set load (ua=%d) failed, err=%d\n",
+-- 
+2.18.0
