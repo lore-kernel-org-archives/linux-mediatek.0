@@ -1,7 +1,7 @@
-From: <honghui.zhang@mediatek.com>
-Subject: [PATCH] arm64: dts: mt2712: Remove un-used property for PCIe
-Date: Mon, 18 Mar 2019 16:27:55 +0800
-Message-ID: <1552897675-8051-1-git-send-email-honghui.zhang@mediatek.com>
+From: Erin Lo <erin.lo@mediatek.com>
+Subject: [PATCH v9] Add basic and clock support for Mediatek MT8183 SoC
+Date: Mon, 18 Mar 2019 16:42:31 +0800
+Message-ID: <1552898552-13045-1-git-send-email-erin.lo@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -15,38 +15,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: matthias.bgg@gmail.com, robh@kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, ryder.lee@mediatek.com, robh+dt@kernel.org
-Cc: youlin.pei@mediatek.com, jianjun.wang@mediatek.com, Honghui Zhang <honghui.zhang@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+Cc: devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, erin.lo@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org, mars.cheng@mediatek.com, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Honghui Zhang <honghui.zhang@mediatek.com>
+MT8183 is a SoC based on 64bit ARMv8 architecture.
+It contains 4 CA53 and 4 CA73 cores.
+MT8183 share many HW IP with MT65xx series.
+This patchset was tested on MT8183 evaluation board and use correct clock to shell.
 
-The "num-lanes" property for PCIe is not used, remove it.
+Based on v5.1-rc1 and
+http://lists.infradead.org/pipermail/linux-mediatek/2019-March/017963.html
 
-Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt2712e.dtsi | 2 --
- 1 file changed, 2 deletions(-)
+Change in v9:
+Remove pio node since binding is not documented yet
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-index 976d92a..43307ba 100644
---- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-@@ -819,7 +819,6 @@
- 			#size-cells = <2>;
- 			#interrupt-cells = <1>;
- 			ranges;
--			num-lanes = <1>;
- 			interrupt-map-mask = <0 0 0 7>;
- 			interrupt-map = <0 0 0 1 &pcie_intc0 0>,
- 					<0 0 0 2 &pcie_intc0 1>,
-@@ -840,7 +839,6 @@
- 			#size-cells = <2>;
- 			#interrupt-cells = <1>;
- 			ranges;
--			num-lanes = <1>;
- 			interrupt-map-mask = <0 0 0 7>;
- 			interrupt-map = <0 0 0 1 &pcie_intc1 0>,
- 					<0 0 0 2 &pcie_intc1 1>,
--- 
-2.6.4
+Change in v8:
+1. Fix interrupt-parent of pio node
+2. Remove pinfunc.h and spi node patches
+
+Change in v7:
+1. Place all the MMIO peripherals under one or more simple-bus nodes
+2. Make the pinfunc.h and spi node into seperate patch
+3. Modify SPIs pamerater from 4 back to 3
+   and remove patch "support 4 interrupt parameters for sysirq"
+4. Rename intpol-controller to interrupt-controller
+5. Rename pinctrl@1000b000 to pinctrl@10005000
+
+Change in v6:
+1. Remove power and iommu nodes
+2. Fix dtb build warning
+3. Fix pinctrl binding doc
+4. Fix '_' in node names
+
+Change in v5:
+1. Collect all device tree nodes to the last patch
+2. Add PMU
+3. Add Signed-off-by
+4. Remove clock driver code and binding doc
+5. Add pinctrl, iommu, spi, and pwrap nodes
+
+Change in v4:
+1. Correct syntax error in dtsi
+2. Add MT8183 clock support
+
+Change in v3:
+1. Fill out GICC, GICH, GICV regions
+2. Update Copyright to 2018
+
+Change in v2:
+1. Split dt-bindings into different patches
+2. Correct bindings for supported SoCs (mtk-uart.txt)
+
+Ben Ho (1):
+  arm64: dts: Add Mediatek SoC MT8183 and evaluation board dts and
+    Makefile
+
+ arch/arm64/boot/dts/mediatek/Makefile       |   1 +
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts |  31 +++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi    | 311 ++++++++++++++++++++++++++++
+ 3 files changed, 343 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183.dtsi
+
+--
+1.9.1
