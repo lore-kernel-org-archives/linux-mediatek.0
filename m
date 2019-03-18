@@ -1,81 +1,32 @@
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Subject: [PATCH] gpu/drm: mediatek: call mtk_dsi_stop() after
- mtk_drm_crtc_atomic_disable()
-Date: Mon, 18 Mar 2019 12:09:15 +0800
-Message-ID: <20190318040915.101218-1-hsinyi@chromium.org>
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH 1/2] staging, mt7621-eth: fix api for linkmode bitmap
+Date: Mon, 18 Mar 2019 07:58:46 +0100
+Message-ID: <20190318065846.GA15948@kroah.com>
+References: <20190309095400.26930-1-mussitantesmortem@gmail.com>
+ <20190309095400.26930-2-mussitantesmortem@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-arm-kernel@lists.infradead.org
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20190309095400.26930-2-mussitantesmortem@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Maxim Zhukov <mussitantesmortem@gmail.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-mtk_dsi_stop() should be called after mtk_drm_crtc_atomic_disable(), which needs
-ovl irq for drm_crtc_wait_one_vblank(), since after mtk_dsi_stop() is called,
-ovl irq will be disabled. If drm_crtc_wait_one_vblank() is called after last
-irq, it will timeout with this message: "vblank wait timed out on crtc 0". This
-happens sometimes when turning off the screen.
+On Sat, Mar 09, 2019 at 12:53:59PM +0300, Maxim Zhukov wrote:
+> Start using new api for linkmode bitmap
+> 
+> Fixed build after 3c1bcc8614db ("net: ethernet: Convert phydev advertize and supported from u32 to link mode")
+> 
+> Signed-off-by: Maxim Zhukov <mussitantesmortem@gmail.com>
+> ---
+>  drivers/staging/mt7621-eth/mdio.c | 12 +++++++++---
+>  1 file changed, 9 insertions(+), 3 deletions(-)
 
-In drm_atomic_helper.c#disable_outputs(),
-the calling sequence when turning off the screen is:
+This driver is now dropped from the tree, so no need to fix any build
+issues :)
 
-1. mtk_dsi_encoder_disable()
-     --> mtk_output_dsi_disable()
-       --> mtk_dsi_stop();  // sometimes make vblank timeout in atomic_disable
-         --> mtk_dsi_poweroff();
-2. mtk_drm_crtc_atomic_disable()
-     --> drm_crtc_wait_one_vblank();
-     ...
-       --> mtk_dsi_ddp_stop()
-         --> mtk_dsi_poweroff();
+thanks,
 
-Change to make mtk_dsi_stop() called in mtk_dsi_ddp_stop() instead of
-mtk_output_dsi_disable().
-
-Fixes: 0707632b5bac ("drm/mediatek: update DSI sub driver flow for sending commands to panel")
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
----
- drivers/gpu/drm/mediatek/mtk_dsi.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index b00eb2d2e086..cdd9637dd517 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -696,7 +696,6 @@ static void mtk_output_dsi_disable(struct mtk_dsi *dsi)
- 		}
- 	}
- 
--	mtk_dsi_stop(dsi);
- 	mtk_dsi_poweroff(dsi);
- 
- 	dsi->enabled = false;
-@@ -857,6 +856,7 @@ static void mtk_dsi_ddp_stop(struct mtk_ddp_comp *comp)
- {
- 	struct mtk_dsi *dsi = container_of(comp, struct mtk_dsi, ddp_comp);
- 
-+	mtk_dsi_stop(dsi);
- 	mtk_dsi_poweroff(dsi);
- }
- 
-@@ -1178,6 +1178,8 @@ static int mtk_dsi_remove(struct platform_device *pdev)
- 	struct mtk_dsi *dsi = platform_get_drvdata(pdev);
- 
- 	mtk_output_dsi_disable(dsi);
-+	mtk_dsi_stop(dsi);
-+	mtk_dsi_poweroff(dsi);
- 	component_del(&pdev->dev, &mtk_dsi_component_ops);
- 
- 	return 0;
--- 
-2.20.1
+greg k-h
