@@ -1,33 +1,43 @@
-From: "Frank Wunderlich" <frank-w@public-files.de>
-Subject: Aw: Re:  Re:  [PATCH 2/2] drm/mediatek: Add Mediatek framebuffer
- device
-Date: Tue, 19 Mar 2019 17:52:32 +0100
-Message-ID: <trinity-2a241119-4398-49c4-bcb6-177d13530d31-1553014352943@3c-app-gmx-bs54>
-References: <20190116013924.11345-1-ck.hu@mediatek.com>
- <20190116013924.11345-2-ck.hu@mediatek.com>
- <trinity-1adab8be-573a-4816-9e9f-feddf07bdcd3-1547734452313@3c-app-gmx-bs28>
- <1547775975.4221.11.camel@mtksdaap41>
- <74eba84d-4686-698a-6100-d72dabd15a21@gmail.com>
- <trinity-1c369adc-b489-43dd-87c9-5b43d49561c5-1547991406711@3c-app-gmx-bs40>
- <1552965129.7881.5.camel@mtksdaap41>
+From: "Martin K. Petersen" <martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH v6 0/7] scsi: ufs-mediatek: Add UFS support for Mediatek
+ SoC chips
+Date: Tue, 19 Mar 2019 16:57:09 -0400
+Message-ID: <yq1a7hqd1lm.fsf@oracle.com>
+References: <1552712687-20186-1-git-send-email-stanley.chu@mediatek.com>
+ <1552712687-20186-2-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1552965129.7881.5.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, =?UTF-8?Q?=22Noralf_Tr=EF=BF=BDnnes=22?= <noralf@tronnes.org>, linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1552712687-20186-2-git-send-email-stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+ (Stanley Chu's message of "Sat, 16 Mar 2019 13:04:40 +0800")
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org, linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, subhashj-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, avri.altman-Sjgp3cTcYWE@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, liwei213-hv44wF8Li93QT0dZR+AlfA@public.gmane.org, alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, vivek.gautam-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
 
-i try to get hdmi running on bananapi-r2 with 5.1 but also without CK Hu's frambuffer-Patch i get no x-server working
+Stanley,
 
-my codebase: https://github.com/frank-w/BPI-R2-4.14/commits/5.1-hdmi
-reused some Patches working on 5.0 (here X-server is working, but not fbcon)
+> This patch series adds UFS M-PHY and UFS host driver support in
+> MediaTek chipsets.
+>
+> In the meantime, re-factors ufshcd_get_pwr_dev_param in vendors'
+> drivers. This function is for vendors to decide finally agreed
+> attributes for power mode change if vendors define their host
+> capability in struct ufs_dev_params. Because it is using by both
+> ufs-qcom and ufs-hisi and also used in ufs-mediatek in this series,
+> simply re-factor it and then every vendors can reuse it.
 
-WARNING: CPU: 2 PID: 895 at drivers/gpu/drm/drm_atomic_helper.c:1430 drm_atomic_helper_wait_for_vblanks.part.1+0x2a4/0x2a8
+Applied to 5.2/scsi-queue, thanks!
 
-any hint how to fix this? if needed i can send full bootlog (with drm.debug=7)
-
-regards Frank
+-- 
+Martin K. Petersen	Oracle Linux Engineering
