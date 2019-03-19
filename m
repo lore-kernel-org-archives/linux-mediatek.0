@@ -1,15 +1,14 @@
 From: Marcel Holtmann <marcel@holtmann.org>
-Subject: Re: [PATCH v2] Bluetooth: btmtksdio: fix uninitialized symbol errors
- in btmtksdio_rx_packet
-Date: Tue, 19 Mar 2019 07:57:07 +0100
-Message-ID: <8DD976C7-5512-4228-ADC1-62AE2A3921A1@holtmann.org>
-References: <741bf172b7d0b77e664e7edeab1bd798c955cc5b.1552942432.git.sean.wang@mediatek.com>
+Subject: Re: [PATCH] Bluetooth: mediatek: Fixed incorrect type in assignment
+Date: Tue, 19 Mar 2019 07:58:10 +0100
+Message-ID: <53100DF6-DAB8-40C2-8DEF-CE4146FC6023@holtmann.org>
+References: <64582ec6b953c055bc3cf18e7bba18d578f03b0a.1551744635.git.sean.wang@mediatek.com>
 Mime-Version: 1.0 (Mac OS X Mail 12.2 \(3445.102.3\))
 Content-Type: text/plain;
-        charset=utf-8
+        charset=us-ascii
 Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <741bf172b7d0b77e664e7edeab1bd798c955cc5b.1552942432.git.sean.wang@mediatek.com>
+In-Reply-To: <64582ec6b953c055bc3cf18e7bba18d578f03b0a.1551744635.git.sean.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Sean Wang <sean.wang@mediatek.com>
 Cc: Johan Hedberg <johan.hedberg@gmail.com>, linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
@@ -17,39 +16,48 @@ List-Id: linux-mediatek@lists.infradead.org
 
 Hi Sean,
 
-> Fixed all the below warnings. They would probably cause the following
-> error handling path would use the uninitialized value and then produce
-> unexpected behavior.
+> Fixed warning: incorrect type in assignment reported by kbuild test robot.
+> The detailed warning is shown as below.
 > 
-> drivers/bluetooth/btmtksdio.c:470:2: warning: ‘old_len’ may be used
-> uninitialized in this function [-Wmaybe-uninitialized]
->  print_hex_dump(KERN_ERR, "err sdio rx: ", DUMP_PREFIX_NONE, 4, 1,
->  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->          old_data, old_len, true);
->          ~~~~~~~~~~~~~~~~~~~~~~~~
-> drivers/bluetooth/btmtksdio.c:376:15: note: ‘old_len’ was declared here
->  unsigned int old_len;
->               ^~~~~~~
-> drivers/bluetooth/btmtksdio.c:470:2: warning: ‘old_data’ may be used
-> uninitialized in this function [-Wmaybe-uninitialized]
->  print_hex_dump(KERN_ERR, "err sdio rx: ", DUMP_PREFIX_NONE, 4, 1,
->  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->          old_data, old_len, true);
->          ~~~~~~~~~~~~~~~~~~~~~~~~
-> drivers/bluetooth/btmtksdio.c:375:17: note: ‘old_data’ was declared here
->  unsigned char *old_data;
->                 ^~~~~~~~
+> make ARCH=x86_64 allmodconfig
+> make C=1 CF='-fdiagnostic-prefix -D__CHECK_ENDIAN__'
 > 
-> v2: Remove old_len and old_data because the error path for sdio_readsb also
->    seems wrong. And change the prefix from "mediatek" to "btmtksdio".
+> All warnings (new ones prefixed by >>):
 > 
-> Fixes: d74eef2834b5 ("Bluetooth: mediatek: add support for MediaTek MT7663S and MT7668S SDIO devices")
-> Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
-> Reported-by: Marcel Holtmann <marcel@holtmann.org>
+> btmtkuart.c:671:18: sparse:    warning: incorrect type in assignment
+> 			       (different base types)
+> btmtkuart.c:671:18: sparse:    expected unsigned int [usertype] baudrate
+> btmtkuart.c:671:18: sparse:    got restricted __le32 [usertype]
+> 
+> sparse warnings: (new ones prefixed by >>)
+> btmtkuart.c:671:18: sparse: warning: incorrect type in assignment
+> 			       (different base types)
+> btmtkuart.c:671:18: sparse:    expected unsigned int [usertype] baudrate
+> btmtkuart.c:671:18: sparse:    got restricted __le32 [usertype]
+> 
+> vim +671 drivers/bluetooth/btmtkuart.c
+> 
+>   659
+>   660	static int btmtkuart_change_baudrate(struct hci_dev *hdev)
+>   661	{
+>   662		struct btmtkuart_dev *bdev = hci_get_drvdata(hdev);
+>   663		struct btmtk_hci_wmt_params wmt_params;
+>   664		u32 baudrate;
+>   665		u8 param;
+>   666		int err;
+>   667
+>   668		/* Indicate the device to enter the probe state the host is
+>   669		 * ready to change a new baudrate.
+>   670		 */
+>> 671		baudrate = cpu_to_le32(bdev->desired_speed);
+>   672		wmt_params.op = MTK_WMT_HIF;
+> 
+> Fixes: 22eaf6c9946a ("Bluetooth: mediatek: add support for MediaTek MT7663U and MT7668U UART devices")
+> Reported-by: kernel test robot <lkp@intel.com>
 > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 > ---
-> drivers/bluetooth/btmtksdio.c | 10 ----------
-> 1 file changed, 10 deletions(-)
+> drivers/bluetooth/btmtkuart.c | 2 +-
+> 1 file changed, 1 insertion(+), 1 deletion(-)
 
 patch has been applied to bluetooth-next tree.
 
