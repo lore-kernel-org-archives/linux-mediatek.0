@@ -1,12 +1,12 @@
 From: Nicolas Boichat <drinkcat@chromium.org>
-Subject: Re: [PATCH v5 06/14] soc: mediatek: Refactor clock control
-Date: Tue, 19 Mar 2019 20:02:53 +0800
-Message-ID: <CANMq1KCxhnn+fKaxS1RbpYYJ7pcXzD8XkqTBJHiauHbfrYVTGA@mail.gmail.com>
-References: <20190319080140.24055-1-weiyi.lu@mediatek.com> <20190319080140.24055-7-weiyi.lu@mediatek.com>
+Subject: Re: [PATCH v5 07/14] soc: mediatek: Refactor sram control
+Date: Tue, 19 Mar 2019 20:07:28 +0800
+Message-ID: <CANMq1KAYU8xVcdhYBDwy8Nh+=naH5bDYyJ2seZWHzvNHW=eDvw@mail.gmail.com>
+References: <20190319080140.24055-1-weiyi.lu@mediatek.com> <20190319080140.24055-8-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190319080140.24055-7-weiyi.lu@mediatek.com>
+In-Reply-To: <20190319080140.24055-8-weiyi.lu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Weiyi Lu <weiyi.lu@mediatek.com>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, lkml <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>
@@ -14,121 +14,147 @@ List-Id: linux-mediatek@lists.infradead.org
 
 On Tue, Mar 19, 2019 at 4:02 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
 >
-> Put clock enable and disable control in separate function.
+> Put sram enable and disable control in separate functions.
 >
 > Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+
+Refactoring looks ok, just a small comment.
+
+Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
+
 > ---
->  drivers/soc/mediatek/mtk-scpsys.c | 49 ++++++++++++++++++++-----------
->  1 file changed, 32 insertions(+), 17 deletions(-)
+>  drivers/soc/mediatek/mtk-scpsys.c | 79 ++++++++++++++++++++-----------
+>  1 file changed, 51 insertions(+), 28 deletions(-)
 >
 > diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-> index 765ad4a5e5df..3e9be07a2627 100644
+> index 3e9be07a2627..65b734b40098 100644
 > --- a/drivers/soc/mediatek/mtk-scpsys.c
 > +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> @@ -208,6 +208,33 @@ static int scpsys_regulator_disable(struct scp_domain *scpd)
->         return regulator_disable(scpd->supply);
+> @@ -235,12 +235,55 @@ static void scpsys_clk_disable(struct clk *clk[], int max_num)
+>         }
 >  }
 >
-> +static int scpsys_clk_enable(struct clk *clk[], int max_num)
+> +static int scpsys_sram_enable(struct scp_domain *scpd, void __iomem *ctl_addr)
 > +{
-> +       int i, ret = 0;
+> +       u32 val;
+> +       u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
+> +       int tmp;
 > +
-> +       for (i = 0; i < max_num && clk[i]; i++) {
-> +               ret = clk_prepare_enable(clk[i]);
-> +               if (ret) {
-> +                       for (--i; i >= 0; i--)
-> +                               clk_disable_unprepare(clk[i]);
-
-Would it be simpler to just call scpsys_clk_disable(clk, i) ?
-
+> +       val = readl(ctl_addr) & ~scpd->data->sram_pdn_bits;
+> +       writel(val, ctl_addr);
 > +
-> +                       break;
-> +               }
+> +       /* Either wait until SRAM_PDN_ACK all 0 or have a force wait */
+> +       if (MTK_SCPD_CAPS(scpd, MTK_SCPD_FWAIT_SRAM)) {
+> +               /*
+> +                * Currently, MTK_SCPD_FWAIT_SRAM is necessary only for
+> +                * MT7622_POWER_DOMAIN_WB and thus just a trivial setup
+> +                * is applied here.
+> +                */
+> +               usleep_range(12000, 12100);
+
+Does the range really need to be so tight? Would 12000, 13000 also be ok?
+
+> +       } else {
+> +               /* Either wait until SRAM_PDN_ACK all 1 or 0 */
+> +               int ret = readl_poll_timeout(ctl_addr, tmp,
+> +                               (tmp & pdn_ack) == 0,
+> +                               MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> +               if (ret < 0)
+> +                       return ret;
 > +       }
 > +
-> +       return ret;
+> +       return 0;
 > +}
-
-Maybe not for this series, but could you use clk_bulk_prepare_enable
-instead? The only issue is that it'd still call clk_prepare_enable on
-NULL clocks, but that does nothing, so it's just a little less
-efficient...
-
 > +
-> +static void scpsys_clk_disable(struct clk *clk[], int max_num)
+> +static int scpsys_sram_disable(struct scp_domain *scpd, void __iomem *ctl_addr)
 > +{
-> +       int i;
+> +       u32 val;
+> +       u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
+> +       int tmp;
 > +
-> +       for (i = max_num - 1; i >= 0; i--) {
-> +               if (clk[i])
-
-if test not needed, clk_disable_unprepare ignores NULL parameters.
-
-> +                       clk_disable_unprepare(clk[i]);
-> +       }
+> +       val = readl(ctl_addr) | scpd->data->sram_pdn_bits;
+> +       writel(val, ctl_addr);
+> +
+> +       /* Either wait until SRAM_PDN_ACK all 1 or 0 */
+> +       return readl_poll_timeout(ctl_addr, tmp,
+> +                       (tmp & pdn_ack) == pdn_ack,
+> +                       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
 > +}
-
-ditto: clk_bulk_disable_unprepare
-
 > +
 >  static int scpsys_power_on(struct generic_pm_domain *genpd)
 >  {
 >         struct scp_domain *scpd = container_of(genpd, struct scp_domain, genpd);
-> @@ -216,21 +243,14 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
->         u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
+>         struct scp *scp = scpd->scp;
+>         void __iomem *ctl_addr = scp->base + scpd->data->ctl_offs;
+> -       u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
 >         u32 val;
 >         int ret, tmp;
-> -       int i;
 >
->         ret = scpsys_regulator_enable(scpd);
->         if (ret < 0)
->                 return ret;
+> @@ -252,6 +295,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+>         if (ret)
+>                 goto err_clk;
 >
-> -       for (i = 0; i < MAX_CLKS && scpd->clk[i]; i++) {
-> -               ret = clk_prepare_enable(scpd->clk[i]);
-> -               if (ret) {
-> -                       for (--i; i >= 0; i--)
-> -                               clk_disable_unprepare(scpd->clk[i]);
-> -
-> -                       goto err_clk;
-> -               }
-> -       }
-> +       ret = scpsys_clk_enable(scpd->clk, MAX_CLKS);
-> +       if (ret)
-> +               goto err_clk;
->
+> +       /* subsys power on */
 >         val = readl(ctl_addr);
 >         val |= PWR_ON_BIT;
-> @@ -283,10 +303,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
->         return 0;
+>         writel(val, ctl_addr);
+> @@ -273,24 +317,9 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+>         val |= PWR_RST_B_BIT;
+>         writel(val, ctl_addr);
 >
->  err_pwr_ack:
-> -       for (i = MAX_CLKS - 1; i >= 0; i--) {
-> -               if (scpd->clk[i])
-> -                       clk_disable_unprepare(scpd->clk[i]);
+> -       val &= ~scpd->data->sram_pdn_bits;
+> -       writel(val, ctl_addr);
+> -
+> -       /* Either wait until SRAM_PDN_ACK all 0 or have a force wait */
+> -       if (MTK_SCPD_CAPS(scpd, MTK_SCPD_FWAIT_SRAM)) {
+> -               /*
+> -                * Currently, MTK_SCPD_FWAIT_SRAM is necessary only for
+> -                * MT7622_POWER_DOMAIN_WB and thus just a trivial setup is
+> -                * applied here.
+> -                */
+> -               usleep_range(12000, 12100);
+> -
+> -       } else {
+> -               ret = readl_poll_timeout(ctl_addr, tmp, (tmp & pdn_ack) == 0,
+> -                                        MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> -               if (ret < 0)
+> -                       goto err_pwr_ack;
 > -       }
-> +       scpsys_clk_disable(scpd->clk, MAX_CLKS);
->  err_clk:
->         scpsys_regulator_disable(scpd);
->
-> @@ -303,7 +320,6 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
->         u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
->         u32 val;
->         int ret, tmp;
-> -       int i;
+> +       ret = scpsys_sram_enable(scpd, ctl_addr);
+> +       if (ret < 0)
+> +               goto err_pwr_ack;
 >
 >         if (scpd->data->bus_prot_mask) {
->                 ret = mtk_infracfg_set_bus_protection(scp->infracfg,
-> @@ -344,8 +360,7 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+>                 ret = mtk_infracfg_clear_bus_protection(scp->infracfg,
+> @@ -317,7 +346,6 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+>         struct scp_domain *scpd = container_of(genpd, struct scp_domain, genpd);
+>         struct scp *scp = scpd->scp;
+>         void __iomem *ctl_addr = scp->base + scpd->data->ctl_offs;
+> -       u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
+>         u32 val;
+>         int ret, tmp;
+>
+> @@ -329,17 +357,12 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+>                         goto out;
+>         }
+>
+> -       val = readl(ctl_addr);
+> -       val |= scpd->data->sram_pdn_bits;
+> -       writel(val, ctl_addr);
+> -
+> -       /* wait until SRAM_PDN_ACK all 1 */
+> -       ret = readl_poll_timeout(ctl_addr, tmp, (tmp & pdn_ack) == pdn_ack,
+> -                                MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> +       ret = scpsys_sram_disable(scpd, ctl_addr);
 >         if (ret < 0)
 >                 goto out;
 >
-> -       for (i = 0; i < MAX_CLKS && scpd->clk[i]; i++)
-> -               clk_disable_unprepare(scpd->clk[i]);
-> +       scpsys_clk_disable(scpd->clk, MAX_CLKS);
+> -       val |= PWR_ISO_BIT;
+> +       /* subsys power off */
+> +       val = readl(ctl_addr) | PWR_ISO_BIT;
+>         writel(val, ctl_addr);
 >
->         ret = scpsys_regulator_disable(scpd);
->         if (ret < 0)
+>         val &= ~PWR_RST_B_BIT;
 > --
 > 2.18.0
 >
