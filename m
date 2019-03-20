@@ -1,73 +1,103 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH] gpu/drm: mediatek: call mtk_dsi_stop() after
- mtk_drm_crtc_atomic_disable()
-Date: Wed, 20 Mar 2019 11:09:16 +0800
-Message-ID: <1553051356.20221.23.camel@mtksdaap41>
-References: <20190318040915.101218-1-hsinyi@chromium.org>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Subject: Re: [PATCH] gpu/drm: mediatek: call mtk_dsi_stop() after mtk_drm_crtc_atomic_disable()
+Date: Wed, 20 Mar 2019 13:39:25 +0800
+Message-ID: <CAJMQK-gSWiqu-cdBpsz54U_427bB7w3vZ01u6n2L0Ghd9vG6Dw@mail.gmail.com>
+References: <20190318040915.101218-1-hsinyi@chromium.org> <1553051356.20221.23.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190318040915.101218-1-hsinyi@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1553051356.20221.23.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: CK Hu <ck.hu@mediatek.com>
+Cc: linux-arm-kernel@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIEhzaW4teWk6CgpPbiBNb24sIDIwMTktMDMtMTggYXQgMTI6MDkgKzA4MDAsIEhzaW4tWWkg
-V2FuZyB3cm90ZToKPiBtdGtfZHNpX3N0b3AoKSBzaG91bGQgYmUgY2FsbGVkIGFmdGVyIG10a19k
-cm1fY3J0Y19hdG9taWNfZGlzYWJsZSgpLCB3aGljaCBuZWVkcwo+IG92bCBpcnEgZm9yIGRybV9j
-cnRjX3dhaXRfb25lX3ZibGFuaygpLCBzaW5jZSBhZnRlciBtdGtfZHNpX3N0b3AoKSBpcyBjYWxs
-ZWQsCj4gb3ZsIGlycSB3aWxsIGJlIGRpc2FibGVkLiBJZiBkcm1fY3J0Y193YWl0X29uZV92Ymxh
-bmsoKSBpcyBjYWxsZWQgYWZ0ZXIgbGFzdAo+IGlycSwgaXQgd2lsbCB0aW1lb3V0IHdpdGggdGhp
-cyBtZXNzYWdlOiAidmJsYW5rIHdhaXQgdGltZWQgb3V0IG9uIGNydGMgMCIuIFRoaXMKPiBoYXBw
-ZW5zIHNvbWV0aW1lcyB3aGVuIHR1cm5pbmcgb2ZmIHRoZSBzY3JlZW4uCj4gCj4gSW4gZHJtX2F0
-b21pY19oZWxwZXIuYyNkaXNhYmxlX291dHB1dHMoKSwKPiB0aGUgY2FsbGluZyBzZXF1ZW5jZSB3
-aGVuIHR1cm5pbmcgb2ZmIHRoZSBzY3JlZW4gaXM6Cj4gCj4gMS4gbXRrX2RzaV9lbmNvZGVyX2Rp
-c2FibGUoKQo+ICAgICAgLS0+IG10a19vdXRwdXRfZHNpX2Rpc2FibGUoKQo+ICAgICAgICAtLT4g
-bXRrX2RzaV9zdG9wKCk7ICAvLyBzb21ldGltZXMgbWFrZSB2YmxhbmsgdGltZW91dCBpbiBhdG9t
-aWNfZGlzYWJsZQo+ICAgICAgICAgIC0tPiBtdGtfZHNpX3Bvd2Vyb2ZmKCk7Cj4gMi4gbXRrX2Ry
-bV9jcnRjX2F0b21pY19kaXNhYmxlKCkKPiAgICAgIC0tPiBkcm1fY3J0Y193YWl0X29uZV92Ymxh
-bmsoKTsKPiAgICAgIC4uLgo+ICAgICAgICAtLT4gbXRrX2RzaV9kZHBfc3RvcCgpCj4gICAgICAg
-ICAgLS0+IG10a19kc2lfcG93ZXJvZmYoKTsKPiAKClRoYW5rcyBmb3IgeW91ciBpbmZlcmVuY2Us
-IGJ1dCBJIHdvbmRlciB0aGlzIHBhdGNoIG1lZXQgYWxsCmNvbnNpZGVyYXRpb24uIEluIE1UODE3
-MyB3aXRoIGEgYnJpZGdlIGNoaXAsIHRoZSB0aW1pbmcgdG8gZGlzYWJsZSBkc2kKc2lnbmFsIG91
-dHB1dCB3b3VsZCBpbmZsdWVuY2UgYnJpZGdlIGNoaXAgb3V0cHV0IGdhcmJhZ2Ugb3Igbm90LiBJ
-dCdzCmJldHRlciB0aGF0IHlvdSBjb3VsZCB0ZXN0IHRoaXMgb24gTVQ4MTczLCBvciBsZXQgdGhp
-cyBwYXRjaCBnbyBmb3IKd2Vla3MgYW5kIHdhaXQgZm9yIHNvbWVvbmUgdG8gdGVzdC4gSWYgbm8g
-b25lIGNhcmUgYWJvdXQgTVQ4MTczLCBJIGNvdWxkCmFjY2VwdCB0aGlzIHBhdGNoLgoKPiBDaGFu
-Z2UgdG8gbWFrZSBtdGtfZHNpX3N0b3AoKSBjYWxsZWQgaW4gbXRrX2RzaV9kZHBfc3RvcCgpIGlu
-c3RlYWQgb2YKPiBtdGtfb3V0cHV0X2RzaV9kaXNhYmxlKCkuCgptdGtfZHNpX3Bvd2Vyb2ZmKCkg
-aGFzIHJlZmVyZW5jZSBjb3VudCwgd2h5IG5vdCBqdXN0IG1vdmUgbXRrX2RzaV9zdG9wKCkKaW50
-byBtdGtfZHNpX3Bvd2Vyb2ZmKCk/CgpSZWdhcmRzLApDSwoKPiAKPiBGaXhlczogMDcwNzYzMmI1
-YmFjICgiZHJtL21lZGlhdGVrOiB1cGRhdGUgRFNJIHN1YiBkcml2ZXIgZmxvdyBmb3Igc2VuZGlu
-ZyBjb21tYW5kcyB0byBwYW5lbCIpCj4gU2lnbmVkLW9mZi1ieTogSHNpbi1ZaSBXYW5nIDxoc2lu
-eWlAY2hyb21pdW0ub3JnPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rz
-aS5jIHwgNCArKystCj4gIDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKyksIDEgZGVsZXRp
-b24oLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2ku
-YyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiBpbmRleCBiMDBlYjJkMmUw
-ODYuLmNkZDk2MzdkZDUxNyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2RzaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYwo+IEBA
-IC02OTYsNyArNjk2LDYgQEAgc3RhdGljIHZvaWQgbXRrX291dHB1dF9kc2lfZGlzYWJsZShzdHJ1
-Y3QgbXRrX2RzaSAqZHNpKQo+ICAJCX0KPiAgCX0KPiAgCj4gLQltdGtfZHNpX3N0b3AoZHNpKTsK
-PiAgCW10a19kc2lfcG93ZXJvZmYoZHNpKTsKPiAgCj4gIAlkc2ktPmVuYWJsZWQgPSBmYWxzZTsK
-PiBAQCAtODU3LDYgKzg1Niw3IEBAIHN0YXRpYyB2b2lkIG10a19kc2lfZGRwX3N0b3Aoc3RydWN0
-IG10a19kZHBfY29tcCAqY29tcCkKPiAgewo+ICAJc3RydWN0IG10a19kc2kgKmRzaSA9IGNvbnRh
-aW5lcl9vZihjb21wLCBzdHJ1Y3QgbXRrX2RzaSwgZGRwX2NvbXApOwo+ICAKPiArCW10a19kc2lf
-c3RvcChkc2kpOwo+ICAJbXRrX2RzaV9wb3dlcm9mZihkc2kpOwo+ICB9Cj4gIAo+IEBAIC0xMTc4
-LDYgKzExNzgsOCBAQCBzdGF0aWMgaW50IG10a19kc2lfcmVtb3ZlKHN0cnVjdCBwbGF0Zm9ybV9k
-ZXZpY2UgKnBkZXYpCj4gIAlzdHJ1Y3QgbXRrX2RzaSAqZHNpID0gcGxhdGZvcm1fZ2V0X2RydmRh
-dGEocGRldik7Cj4gIAo+ICAJbXRrX291dHB1dF9kc2lfZGlzYWJsZShkc2kpOwo+ICsJbXRrX2Rz
-aV9zdG9wKGRzaSk7Cj4gKwltdGtfZHNpX3Bvd2Vyb2ZmKGRzaSk7Cj4gIAljb21wb25lbnRfZGVs
-KCZwZGV2LT5kZXYsICZtdGtfZHNpX2NvbXBvbmVudF9vcHMpOwo+ICAKPiAgCXJldHVybiAwOwoK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZl
-bCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xp
-c3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+On Wed, Mar 20, 2019 at 11:09 AM CK Hu <ck.hu@mediatek.com> wrote:
+>
+> Hi, Hsin-yi:
+>
+> On Mon, 2019-03-18 at 12:09 +0800, Hsin-Yi Wang wrote:
+> > mtk_dsi_stop() should be called after mtk_drm_crtc_atomic_disable(), which needs
+> > ovl irq for drm_crtc_wait_one_vblank(), since after mtk_dsi_stop() is called,
+> > ovl irq will be disabled. If drm_crtc_wait_one_vblank() is called after last
+> > irq, it will timeout with this message: "vblank wait timed out on crtc 0". This
+> > happens sometimes when turning off the screen.
+> >
+> > In drm_atomic_helper.c#disable_outputs(),
+> > the calling sequence when turning off the screen is:
+> >
+> > 1. mtk_dsi_encoder_disable()
+> >      --> mtk_output_dsi_disable()
+> >        --> mtk_dsi_stop();  // sometimes make vblank timeout in atomic_disable
+> >          --> mtk_dsi_poweroff();
+> > 2. mtk_drm_crtc_atomic_disable()
+> >      --> drm_crtc_wait_one_vblank();
+> >      ...
+> >        --> mtk_dsi_ddp_stop()
+> >          --> mtk_dsi_poweroff();
+> >
+>
+> Thanks for your inference, but I wonder this patch meet all
+> consideration. In MT8173 with a bridge chip, the timing to disable dsi
+> signal output would influence bridge chip output garbage or not. It's
+> better that you could test this on MT8173, or let this patch go for
+> weeks and wait for someone to test. If no one care about MT8173, I could
+> accept this patch.
+We care about MT8173, but it's not easy to test since we have to bring
+the whole kernel to >= 4.19 to be able to test latest dsi driver.
+The patch (0707632b5bac) that added mtk_dsi_stop() was after MT8173
+(on 3.18), for panel without bridge, so I think without mtk_dsi_stop()
+was also working fine for MT8173.
+
+>
+> > Change to make mtk_dsi_stop() called in mtk_dsi_ddp_stop() instead of
+> > mtk_output_dsi_disable().
+>
+> mtk_dsi_poweroff() has reference count, why not just move mtk_dsi_stop()
+> into mtk_dsi_poweroff()?
+Yes, we can also call mtk_dsi_stop() in mtk_dsi_poweroff() when
+refcount is 0. I can send v2 if you think this way is better.
+
+Thanks
+>
+> Regards,
+> CK
+>
+> >
+> > Fixes: 0707632b5bac ("drm/mediatek: update DSI sub driver flow for sending commands to panel")
+> > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_dsi.c | 4 +++-
+> >  1 file changed, 3 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > index b00eb2d2e086..cdd9637dd517 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > @@ -696,7 +696,6 @@ static void mtk_output_dsi_disable(struct mtk_dsi *dsi)
+> >               }
+> >       }
+> >
+> > -     mtk_dsi_stop(dsi);
+> >       mtk_dsi_poweroff(dsi);
+> >
+> >       dsi->enabled = false;
+> > @@ -857,6 +856,7 @@ static void mtk_dsi_ddp_stop(struct mtk_ddp_comp *comp)
+> >  {
+> >       struct mtk_dsi *dsi = container_of(comp, struct mtk_dsi, ddp_comp);
+> >
+> > +     mtk_dsi_stop(dsi);
+> >       mtk_dsi_poweroff(dsi);
+> >  }
+> >
+> > @@ -1178,6 +1178,8 @@ static int mtk_dsi_remove(struct platform_device *pdev)
+> >       struct mtk_dsi *dsi = platform_get_drvdata(pdev);
+> >
+> >       mtk_output_dsi_disable(dsi);
+> > +     mtk_dsi_stop(dsi);
+> > +     mtk_dsi_poweroff(dsi);
+> >       component_del(&pdev->dev, &mtk_dsi_component_ops);
+> >
+> >       return 0;
+>
+>
