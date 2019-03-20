@@ -1,103 +1,96 @@
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Subject: Re: [PATCH] gpu/drm: mediatek: call mtk_dsi_stop() after mtk_drm_crtc_atomic_disable()
-Date: Wed, 20 Mar 2019 13:39:25 +0800
-Message-ID: <CAJMQK-gSWiqu-cdBpsz54U_427bB7w3vZ01u6n2L0Ghd9vG6Dw@mail.gmail.com>
-References: <20190318040915.101218-1-hsinyi@chromium.org> <1553051356.20221.23.camel@mtksdaap41>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH] gpu/drm: mediatek: call mtk_dsi_stop() after
+ mtk_drm_crtc_atomic_disable()
+Date: Wed, 20 Mar 2019 14:47:58 +0800
+Message-ID: <1553064478.28297.3.camel@mtksdaap41>
+References: <20190318040915.101218-1-hsinyi@chromium.org>
+ <1553051356.20221.23.camel@mtksdaap41>
+ <CAJMQK-gSWiqu-cdBpsz54U_427bB7w3vZ01u6n2L0Ghd9vG6Dw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1553051356.20221.23.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>
-Cc: linux-arm-kernel@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAJMQK-gSWiqu-cdBpsz54U_427bB7w3vZ01u6n2L0Ghd9vG6Dw@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Mar 20, 2019 at 11:09 AM CK Hu <ck.hu@mediatek.com> wrote:
->
-> Hi, Hsin-yi:
->
-> On Mon, 2019-03-18 at 12:09 +0800, Hsin-Yi Wang wrote:
-> > mtk_dsi_stop() should be called after mtk_drm_crtc_atomic_disable(), which needs
-> > ovl irq for drm_crtc_wait_one_vblank(), since after mtk_dsi_stop() is called,
-> > ovl irq will be disabled. If drm_crtc_wait_one_vblank() is called after last
-> > irq, it will timeout with this message: "vblank wait timed out on crtc 0". This
-> > happens sometimes when turning off the screen.
-> >
-> > In drm_atomic_helper.c#disable_outputs(),
-> > the calling sequence when turning off the screen is:
-> >
-> > 1. mtk_dsi_encoder_disable()
-> >      --> mtk_output_dsi_disable()
-> >        --> mtk_dsi_stop();  // sometimes make vblank timeout in atomic_disable
-> >          --> mtk_dsi_poweroff();
-> > 2. mtk_drm_crtc_atomic_disable()
-> >      --> drm_crtc_wait_one_vblank();
-> >      ...
-> >        --> mtk_dsi_ddp_stop()
-> >          --> mtk_dsi_poweroff();
-> >
->
-> Thanks for your inference, but I wonder this patch meet all
-> consideration. In MT8173 with a bridge chip, the timing to disable dsi
-> signal output would influence bridge chip output garbage or not. It's
-> better that you could test this on MT8173, or let this patch go for
-> weeks and wait for someone to test. If no one care about MT8173, I could
-> accept this patch.
-We care about MT8173, but it's not easy to test since we have to bring
-the whole kernel to >= 4.19 to be able to test latest dsi driver.
-The patch (0707632b5bac) that added mtk_dsi_stop() was after MT8173
-(on 3.18), for panel without bridge, so I think without mtk_dsi_stop()
-was also working fine for MT8173.
-
->
-> > Change to make mtk_dsi_stop() called in mtk_dsi_ddp_stop() instead of
-> > mtk_output_dsi_disable().
->
-> mtk_dsi_poweroff() has reference count, why not just move mtk_dsi_stop()
-> into mtk_dsi_poweroff()?
-Yes, we can also call mtk_dsi_stop() in mtk_dsi_poweroff() when
-refcount is 0. I can send v2 if you think this way is better.
-
-Thanks
->
-> Regards,
-> CK
->
-> >
-> > Fixes: 0707632b5bac ("drm/mediatek: update DSI sub driver flow for sending commands to panel")
-> > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_dsi.c | 4 +++-
-> >  1 file changed, 3 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > index b00eb2d2e086..cdd9637dd517 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > @@ -696,7 +696,6 @@ static void mtk_output_dsi_disable(struct mtk_dsi *dsi)
-> >               }
-> >       }
-> >
-> > -     mtk_dsi_stop(dsi);
-> >       mtk_dsi_poweroff(dsi);
-> >
-> >       dsi->enabled = false;
-> > @@ -857,6 +856,7 @@ static void mtk_dsi_ddp_stop(struct mtk_ddp_comp *comp)
-> >  {
-> >       struct mtk_dsi *dsi = container_of(comp, struct mtk_dsi, ddp_comp);
-> >
-> > +     mtk_dsi_stop(dsi);
-> >       mtk_dsi_poweroff(dsi);
-> >  }
-> >
-> > @@ -1178,6 +1178,8 @@ static int mtk_dsi_remove(struct platform_device *pdev)
-> >       struct mtk_dsi *dsi = platform_get_drvdata(pdev);
-> >
-> >       mtk_output_dsi_disable(dsi);
-> > +     mtk_dsi_stop(dsi);
-> > +     mtk_dsi_poweroff(dsi);
-> >       component_del(&pdev->dev, &mtk_dsi_component_ops);
-> >
-> >       return 0;
->
->
+SGksIEhzaW4teWk6CgpPbiBXZWQsIDIwMTktMDMtMjAgYXQgMTM6MzkgKzA4MDAsIEhzaW4tWWkg
+V2FuZyB3cm90ZToKPiBPbiBXZWQsIE1hciAyMCwgMjAxOSBhdCAxMTowOSBBTSBDSyBIdSA8Y2su
+aHVAbWVkaWF0ZWsuY29tPiB3cm90ZToKPiA+Cj4gPiBIaSwgSHNpbi15aToKPiA+Cj4gPiBPbiBN
+b24sIDIwMTktMDMtMTggYXQgMTI6MDkgKzA4MDAsIEhzaW4tWWkgV2FuZyB3cm90ZToKPiA+ID4g
+bXRrX2RzaV9zdG9wKCkgc2hvdWxkIGJlIGNhbGxlZCBhZnRlciBtdGtfZHJtX2NydGNfYXRvbWlj
+X2Rpc2FibGUoKSwgd2hpY2ggbmVlZHMKPiA+ID4gb3ZsIGlycSBmb3IgZHJtX2NydGNfd2FpdF9v
+bmVfdmJsYW5rKCksIHNpbmNlIGFmdGVyIG10a19kc2lfc3RvcCgpIGlzIGNhbGxlZCwKPiA+ID4g
+b3ZsIGlycSB3aWxsIGJlIGRpc2FibGVkLiBJZiBkcm1fY3J0Y193YWl0X29uZV92YmxhbmsoKSBp
+cyBjYWxsZWQgYWZ0ZXIgbGFzdAo+ID4gPiBpcnEsIGl0IHdpbGwgdGltZW91dCB3aXRoIHRoaXMg
+bWVzc2FnZTogInZibGFuayB3YWl0IHRpbWVkIG91dCBvbiBjcnRjIDAiLiBUaGlzCj4gPiA+IGhh
+cHBlbnMgc29tZXRpbWVzIHdoZW4gdHVybmluZyBvZmYgdGhlIHNjcmVlbi4KPiA+ID4KPiA+ID4g
+SW4gZHJtX2F0b21pY19oZWxwZXIuYyNkaXNhYmxlX291dHB1dHMoKSwKPiA+ID4gdGhlIGNhbGxp
+bmcgc2VxdWVuY2Ugd2hlbiB0dXJuaW5nIG9mZiB0aGUgc2NyZWVuIGlzOgo+ID4gPgo+ID4gPiAx
+LiBtdGtfZHNpX2VuY29kZXJfZGlzYWJsZSgpCj4gPiA+ICAgICAgLS0+IG10a19vdXRwdXRfZHNp
+X2Rpc2FibGUoKQo+ID4gPiAgICAgICAgLS0+IG10a19kc2lfc3RvcCgpOyAgLy8gc29tZXRpbWVz
+IG1ha2UgdmJsYW5rIHRpbWVvdXQgaW4gYXRvbWljX2Rpc2FibGUKPiA+ID4gICAgICAgICAgLS0+
+IG10a19kc2lfcG93ZXJvZmYoKTsKPiA+ID4gMi4gbXRrX2RybV9jcnRjX2F0b21pY19kaXNhYmxl
+KCkKPiA+ID4gICAgICAtLT4gZHJtX2NydGNfd2FpdF9vbmVfdmJsYW5rKCk7Cj4gPiA+ICAgICAg
+Li4uCj4gPiA+ICAgICAgICAtLT4gbXRrX2RzaV9kZHBfc3RvcCgpCj4gPiA+ICAgICAgICAgIC0t
+PiBtdGtfZHNpX3Bvd2Vyb2ZmKCk7Cj4gPiA+Cj4gPgo+ID4gVGhhbmtzIGZvciB5b3VyIGluZmVy
+ZW5jZSwgYnV0IEkgd29uZGVyIHRoaXMgcGF0Y2ggbWVldCBhbGwKPiA+IGNvbnNpZGVyYXRpb24u
+IEluIE1UODE3MyB3aXRoIGEgYnJpZGdlIGNoaXAsIHRoZSB0aW1pbmcgdG8gZGlzYWJsZSBkc2kK
+PiA+IHNpZ25hbCBvdXRwdXQgd291bGQgaW5mbHVlbmNlIGJyaWRnZSBjaGlwIG91dHB1dCBnYXJi
+YWdlIG9yIG5vdC4gSXQncwo+ID4gYmV0dGVyIHRoYXQgeW91IGNvdWxkIHRlc3QgdGhpcyBvbiBN
+VDgxNzMsIG9yIGxldCB0aGlzIHBhdGNoIGdvIGZvcgo+ID4gd2Vla3MgYW5kIHdhaXQgZm9yIHNv
+bWVvbmUgdG8gdGVzdC4gSWYgbm8gb25lIGNhcmUgYWJvdXQgTVQ4MTczLCBJIGNvdWxkCj4gPiBh
+Y2NlcHQgdGhpcyBwYXRjaC4KPiBXZSBjYXJlIGFib3V0IE1UODE3MywgYnV0IGl0J3Mgbm90IGVh
+c3kgdG8gdGVzdCBzaW5jZSB3ZSBoYXZlIHRvIGJyaW5nCj4gdGhlIHdob2xlIGtlcm5lbCB0byA+
+PSA0LjE5IHRvIGJlIGFibGUgdG8gdGVzdCBsYXRlc3QgZHNpIGRyaXZlci4KPiBUaGUgcGF0Y2gg
+KDA3MDc2MzJiNWJhYykgdGhhdCBhZGRlZCBtdGtfZHNpX3N0b3AoKSB3YXMgYWZ0ZXIgTVQ4MTcz
+Cj4gKG9uIDMuMTgpLCBmb3IgcGFuZWwgd2l0aG91dCBicmlkZ2UsIHNvIEkgdGhpbmsgd2l0aG91
+dCBtdGtfZHNpX3N0b3AoKQo+IHdhcyBhbHNvIHdvcmtpbmcgZmluZSBmb3IgTVQ4MTczLgoKT0ss
+IEkgZmluZCB0aGF0IGluIHRoZSBmaXJzdCB2ZXJzaW9uIG9mIHRoaXMgZHJpdmVyLCB0aGVyZSBp
+cyBubwptdGtfZHNpX3N0b3AoKSBiZWZvcmUgbXRrX2RzaV9wb3dlcm9mZigpLCBzbyBJIHRoaW5r
+IE1UODE3MyBkb2VzIG5vdCBkbwptdGtfZHNpX3N0b3AoKS4gU28gbWF5YmUgdGhpcyB3b3JrcyBm
+aW5lIGZvciBNVDgxNzMuCgpSZWdhcmRzLApDSwoKPiAKPiA+Cj4gPiA+IENoYW5nZSB0byBtYWtl
+IG10a19kc2lfc3RvcCgpIGNhbGxlZCBpbiBtdGtfZHNpX2RkcF9zdG9wKCkgaW5zdGVhZCBvZgo+
+ID4gPiBtdGtfb3V0cHV0X2RzaV9kaXNhYmxlKCkuCj4gPgo+ID4gbXRrX2RzaV9wb3dlcm9mZigp
+IGhhcyByZWZlcmVuY2UgY291bnQsIHdoeSBub3QganVzdCBtb3ZlIG10a19kc2lfc3RvcCgpCj4g
+PiBpbnRvIG10a19kc2lfcG93ZXJvZmYoKT8KPiBZZXMsIHdlIGNhbiBhbHNvIGNhbGwgbXRrX2Rz
+aV9zdG9wKCkgaW4gbXRrX2RzaV9wb3dlcm9mZigpIHdoZW4KPiByZWZjb3VudCBpcyAwLiBJIGNh
+biBzZW5kIHYyIGlmIHlvdSB0aGluayB0aGlzIHdheSBpcyBiZXR0ZXIuCj4gCj4gVGhhbmtzCj4g
+Pgo+ID4gUmVnYXJkcywKPiA+IENLCj4gPgo+ID4gPgo+ID4gPiBGaXhlczogMDcwNzYzMmI1YmFj
+ICgiZHJtL21lZGlhdGVrOiB1cGRhdGUgRFNJIHN1YiBkcml2ZXIgZmxvdyBmb3Igc2VuZGluZyBj
+b21tYW5kcyB0byBwYW5lbCIpCj4gPiA+IFNpZ25lZC1vZmYtYnk6IEhzaW4tWWkgV2FuZyA8aHNp
+bnlpQGNocm9taXVtLm9yZz4KPiA+ID4gLS0tCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RzaS5jIHwgNCArKystCj4gPiA+ICAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25z
+KCspLCAxIGRlbGV0aW9uKC0pCj4gPiA+Cj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2RzaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2ku
+Ywo+ID4gPiBpbmRleCBiMDBlYjJkMmUwODYuLmNkZDk2MzdkZDUxNyAxMDA2NDQKPiA+ID4gLS0t
+IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYwo+ID4gPiArKysgYi9kcml2ZXJz
+L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gPiA+IEBAIC02OTYsNyArNjk2LDYgQEAgc3Rh
+dGljIHZvaWQgbXRrX291dHB1dF9kc2lfZGlzYWJsZShzdHJ1Y3QgbXRrX2RzaSAqZHNpKQo+ID4g
+PiAgICAgICAgICAgICAgIH0KPiA+ID4gICAgICAgfQo+ID4gPgo+ID4gPiAtICAgICBtdGtfZHNp
+X3N0b3AoZHNpKTsKPiA+ID4gICAgICAgbXRrX2RzaV9wb3dlcm9mZihkc2kpOwo+ID4gPgo+ID4g
+PiAgICAgICBkc2ktPmVuYWJsZWQgPSBmYWxzZTsKPiA+ID4gQEAgLTg1Nyw2ICs4NTYsNyBAQCBz
+dGF0aWMgdm9pZCBtdGtfZHNpX2RkcF9zdG9wKHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXApCj4g
+PiA+ICB7Cj4gPiA+ICAgICAgIHN0cnVjdCBtdGtfZHNpICpkc2kgPSBjb250YWluZXJfb2YoY29t
+cCwgc3RydWN0IG10a19kc2ksIGRkcF9jb21wKTsKPiA+ID4KPiA+ID4gKyAgICAgbXRrX2RzaV9z
+dG9wKGRzaSk7Cj4gPiA+ICAgICAgIG10a19kc2lfcG93ZXJvZmYoZHNpKTsKPiA+ID4gIH0KPiA+
+ID4KPiA+ID4gQEAgLTExNzgsNiArMTE3OCw4IEBAIHN0YXRpYyBpbnQgbXRrX2RzaV9yZW1vdmUo
+c3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiA+ID4gICAgICAgc3RydWN0IG10a19kc2kg
+KmRzaSA9IHBsYXRmb3JtX2dldF9kcnZkYXRhKHBkZXYpOwo+ID4gPgo+ID4gPiAgICAgICBtdGtf
+b3V0cHV0X2RzaV9kaXNhYmxlKGRzaSk7Cj4gPiA+ICsgICAgIG10a19kc2lfc3RvcChkc2kpOwo+
+ID4gPiArICAgICBtdGtfZHNpX3Bvd2Vyb2ZmKGRzaSk7Cj4gPiA+ICAgICAgIGNvbXBvbmVudF9k
+ZWwoJnBkZXYtPmRldiwgJm10a19kc2lfY29tcG9uZW50X29wcyk7Cj4gPiA+Cj4gPiA+ICAgICAg
+IHJldHVybiAwOwo+ID4KPiA+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
+ZHJpLWRldmVs
