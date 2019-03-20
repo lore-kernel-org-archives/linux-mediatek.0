@@ -1,63 +1,87 @@
-From: Felipe Balbi <balbi@kernel.org>
-Subject: Re: [PATCH v2] usb: introduce usb_ep_type_string() function
-Date: Wed, 20 Mar 2019 08:55:11 +0200
-Message-ID: <87r2b2ujao.fsf@linux.intel.com>
-References: <28a8e9f1518e47c35e4563706cbe592b972a7f9d.1552977710.git.chunfeng.yun@mediatek.com> <1552982059.10179.143.camel@mhfsdcap03> <20190319092331.GA21652@kroah.com> <1553044567.10179.148.camel@mhfsdcap03>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Subject: [PATCH v2] gpu/drm: mediatek: call mtk_dsi_stop() after
+ mtk_drm_crtc_atomic_disable()
+Date: Wed, 20 Mar 2019 15:18:25 +0800
+Message-ID: <20190320071825.20268-1-hsinyi@chromium.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
-        micalg=pgp-sha256; protocol="application/pgp-signature"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1553044567.10179.148.camel@mhfsdcap03>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Mathias Nyman <mathias.nyman@intel.com>, Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>, Matthias Brugger <matthias.bgg@gmail.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Arnd Bergmann <arnd@arndb.de>, Roger Quadros <rogerq@ti.com>, Alan Stern <stern@rowland.harvard.edu>, "Gustavo A. R. Silva" <gustavo@embeddedor.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, Miquel Raynal <miquel.raynal@bootlin.com>, Dmitry Torokhov <dtor@chromium.org>, Johan Hovold <johan@kernel.org>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Colin Ian King <colin.king@canonical.com>, Matteo Croce <mcroce@redhat.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-ar
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-arm-kernel@lists.infradead.org
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+mtk_dsi_stop() should be called after mtk_drm_crtc_atomic_disable(), which needs
+ovl irq for drm_crtc_wait_one_vblank(), since after mtk_dsi_stop() is called,
+ovl irq will be disabled. If drm_crtc_wait_one_vblank() is called after last
+irq, it will timeout with this message: "vblank wait timed out on crtc 0". This
+happens sometimes when turning off the screen.
 
-Chunfeng Yun <chunfeng.yun@mediatek.com> writes:
+In drm_atomic_helper.c#disable_outputs(),
+the calling sequence when turning off the screen is:
 
-> Hi Greg,
->
-> On Tue, 2019-03-19 at 10:23 +0100, Greg Kroah-Hartman wrote:
->> On Tue, Mar 19, 2019 at 03:54:19PM +0800, Chunfeng Yun wrote:
->> >=20
->> > Hi Felipe & Mathias,
->> >=20
->> > Could you please comment this patch, if there is some-effect on dwc3 a=
-nd
->> > xhci, I'll remove its change.
-> typo: some-effect/side-effect
+1. mtk_dsi_encoder_disable()
+     --> mtk_output_dsi_disable()
+       --> mtk_dsi_stop();  // sometimes make vblank timeout in atomic_disable
+       --> mtk_dsi_poweroff();
+2. mtk_drm_crtc_atomic_disable()
+     --> drm_crtc_wait_one_vblank();
+     ...
+       --> mtk_dsi_ddp_stop()
+         --> mtk_dsi_poweroff();
 
-well, we don't really know if there are tools parsing the output. The
-side-effect _does_ exist (i.e. you change the string :-), what we don't
-know is if this will cause problems to possibly existing tools.
+mtk_dsi_poweroff() has reference count design, change to make mtk_dsi_stop()
+called in mtk_dsi_poweroff() when refcount is 0.
 
-Personally, I don't mind the patch, but if it breaks existing parsers,
-that would be a little annoying.
+Fixes: 0707632b5bac ("drm/mediatek: update DSI sub driver flow for sending commands to panel")
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+---
+change log:
+v1->v2:
+ * update commit message.
+ * call mtk_dsi_stop() in mtk_dsi_poweroff() when refcount is 0.
+---
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-=2D-=20
-balbi
-
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEElLzh7wn96CXwjh2IzL64meEamQYFAlyR488ACgkQzL64meEa
-mQaAWg//S95naaisDElfGnzXqBw3k2BoHlVBjEBB8ZxEjMzsKRAeg6D+9cUcnr/X
-He/uixVvKfFAnAUVpOFe6gCJi+djcJ+XiPWkPerR0Rrpe2/jk2UN1czQgtf1HRR2
-K4hyy9wny3xoKguLXs8qTCqBW6WnKRhrrfP0XR5X8xN8Nz9bFcqdvN0rj9TAguoO
-LROa4F8afo1M5ImdXA0wnjQkFqVUZNP9/feXlTPjXDWVBK5AdwRFf+ErUXJCofJ+
-YEF05yfB+rnrr4ttlZ6MMWJQ+2CmqxQ0xk0w4aqubhWwbrw6f1LJDNj3j+9cA4mS
-G7H+ZHBBfpa+93X1iyDPkBv0pE+Ztx6s4UkN3B/YbM6IUwYoID14sBKjcmwzpeYS
-0aUc1Fi/91qsj747UyMWwhZFlLhFyycl8oajr+YIz0oWYZBO5S5W4RQ+txOO0YJZ
-3dPE/boIblZaY9GqmLQDtEHHpw7jeynu6+JJWpY6dowiHvLjSGAnbnZisHgdOtxy
-crm+gcocmt5Czl0FVBeuSDQdv5cMfrGIB4bTUa8uuS72WkNVIownQzG4VUl1LH8J
-rudrRmca2jZiq3iP8EXsukiITglgde5hTrN6p8ONK9ZTT8b7DV4OC8osGkOIZ+Eq
-Slx/MHsARCrK+J6h5BzBPom+Wl0rUusvIanvS5zPhqEJ5qRkPPE=
-=A4FC
------END PGP SIGNATURE-----
---=-=-=--
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index b00eb2d2e086..e152f37af57d 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -630,6 +630,8 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
+ 	if (--dsi->refcount != 0)
+ 		return;
+ 
++	mtk_dsi_stop(dsi);
++
+ 	if (!mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500)) {
+ 		if (dsi->panel) {
+ 			if (drm_panel_unprepare(dsi->panel)) {
+@@ -696,7 +698,6 @@ static void mtk_output_dsi_disable(struct mtk_dsi *dsi)
+ 		}
+ 	}
+ 
+-	mtk_dsi_stop(dsi);
+ 	mtk_dsi_poweroff(dsi);
+ 
+ 	dsi->enabled = false;
+@@ -1178,6 +1179,8 @@ static int mtk_dsi_remove(struct platform_device *pdev)
+ 	struct mtk_dsi *dsi = platform_get_drvdata(pdev);
+ 
+ 	mtk_output_dsi_disable(dsi);
++	mtk_dsi_stop(dsi);
++	mtk_dsi_poweroff(dsi);
+ 	component_del(&pdev->dev, &mtk_dsi_component_ops);
+ 
+ 	return 0;
+-- 
+2.20.1
