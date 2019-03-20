@@ -1,58 +1,96 @@
-From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
-Subject: Re: [PATCH][next] scsi: phy: mediatek: fix typo in author's email
- address
-Date: Wed, 20 Mar 2019 16:33:02 -0500
-Message-ID: <3e4f18e8-9324-e4c5-4b11-dc57eddd41e2@embeddedor.com>
-References: <20190320212205.5726-1-colin.king@canonical.com>
+From: Nick Desaulniers <ndesaulniers@google.com>
+Subject: Re: [PATCH] scsi: ufs-mediatek: Avoid using ret uninitialized in ufs_mtk_setup_clocks
+Date: Wed, 20 Mar 2019 15:23:44 -0700
+Message-ID: <CAKwvOdn0fcGSsX7XQD2v9iV=FMM6z5shqN4=Zjkkyyrd+y8rWw@mail.gmail.com>
+References: <20190320180340.25795-1-natechancellor@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190320212205.5726-1-colin.king@canonical.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Colin King <colin.king@canonical.com>, Stanley Chu <stanley.chu@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I <kishon@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190320180340.25795-1-natechancellor@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Nathan Chancellor <natechancellor@gmail.com>
+Cc: "James E.J. Bottomley" <jejb@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>, Stanley Chu <stanley.chu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>, Pedro Sousa <pedrom.sousa@synopsys.com>, linux-scsi@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, clang-built-linux@googlegroups.com
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 3/20/19 4:22 PM, Colin King wrote:
-> From: Colin Ian King <colin.king@canonical.com>
-> 
-> There is a typo in the module author's email address. Fix this.
-> 
-
-This is priceless!
-
-Acked-by: Gustavo A. R. Silva <gustavo@embeddedor.com>
-
-Thanks, Colin.
---
-Gustavo
-
-> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+On Wed, Mar 20, 2019 at 11:06 AM Nathan Chancellor
+<natechancellor@gmail.com> wrote:
+>
+> When building with -Wsometimes-uninitialized, Clang warns:
+>
+> drivers/scsi/ufs/ufs-mediatek.c:112:7: warning: variable 'ret' is used
+> uninitialized whenever 'if' condition is false
+> [-Wsometimes-uninitialized]
+>                 if (on)
+>                     ^~
+> drivers/scsi/ufs/ufs-mediatek.c:120:9: note: uninitialized use occurs
+> here
+>         return ret;
+>                ^~~
+> drivers/scsi/ufs/ufs-mediatek.c:112:3: note: remove the 'if' if its
+> condition is always true
+>                 if (on)
+>                 ^~~~~~~
+> drivers/scsi/ufs/ufs-mediatek.c:108:7: warning: variable 'ret' is used
+> uninitialized whenever 'if' condition is false
+> [-Wsometimes-uninitialized]
+>                 if (!on)
+>                     ^~~
+> drivers/scsi/ufs/ufs-mediatek.c:120:9: note: uninitialized use occurs
+> here
+>         return ret;
+>                ^~~
+> drivers/scsi/ufs/ufs-mediatek.c:108:3: note: remove the 'if' if its
+> condition is always true
+>                 if (!on)
+>                 ^~~~~~~~
+> drivers/scsi/ufs/ufs-mediatek.c:96:9: note: initialize the variable
+> 'ret' to silence this warning
+>         int ret;
+>                ^
+>                 = 0
+> 2 warnings generated.
+>
+> Remove the default case and initialize ret to -EINVAL to properly fix
+> this warning.
+>
+> Fixes: ddd90623ce26 ("scsi: ufs-mediatek: Add UFS support for Mediatek SoC chips")
+> Link: https://github.com/ClangBuiltLinux/linux/issues/426
+> Signed-off-by: Nathan Chancellor <natechancellor@gmail.com>
 > ---
->  drivers/phy/mediatek/phy-mtk-ufs.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/phy/mediatek/phy-mtk-ufs.c b/drivers/phy/mediatek/phy-mtk-ufs.c
-> index 9a80a76d7990..cf94f5c35dc5 100644
-> --- a/drivers/phy/mediatek/phy-mtk-ufs.c
-> +++ b/drivers/phy/mediatek/phy-mtk-ufs.c
-> @@ -241,5 +241,5 @@ static struct platform_driver ufs_mtk_phy_driver = {
->  module_platform_driver(ufs_mtk_phy_driver);
->  
->  MODULE_DESCRIPTION("Universal Flash Storage (UFS) MediaTek MPHY");
-> -MODULE_AUTHOR("Stanley Chu <stanley.chu@medaitek.com>");
-> +MODULE_AUTHOR("Stanley Chu <stanley.chu@mediatek.com>");
->  MODULE_LICENSE("GPL v2");
-> 
+>  drivers/scsi/ufs/ufs-mediatek.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
+>
+> diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
+> index c3b78fc83d3f..34aecad04468 100644
+> --- a/drivers/scsi/ufs/ufs-mediatek.c
+> +++ b/drivers/scsi/ufs/ufs-mediatek.c
+> @@ -93,7 +93,7 @@ static int ufs_mtk_setup_clocks(struct ufs_hba *hba, bool on,
+>                                 enum ufs_notify_change_status status)
+>  {
+>         struct ufs_mtk_host *host = ufshcd_get_variant(hba);
+> -       int ret;
+> +       int ret = -EINVAL;
+>
+>         /*
+>          * In case ufs_mtk_init() is not yet done, simply ignore.
+> @@ -112,9 +112,6 @@ static int ufs_mtk_setup_clocks(struct ufs_hba *hba, bool on,
+>                 if (on)
+>                         ret = phy_power_on(host->mphy);
+>                 break;
+> -       default:
+> -               ret = -EINVAL;
+> -               break;
+>         }
+>
+>         return ret;
+> --
+> 2.21.0
+>
+
+The enum being switched on (enum ufs_notify_change_status) only has 2
+values; so the default case is impossible.  A switch is probably
+overkill, but this change is fine as is.  Thanks for sending it.
+Reviewed-by: Nick Desaulniers <ndesaulniers@google.com>
+-- 
+Thanks,
+~Nick Desaulniers
