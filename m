@@ -1,17 +1,17 @@
 From: Tomasz Figa <tfiga@chromium.org>
 Subject: Re: [RFC PATCH V0 7/7] [media] platform: mtk-isp: Add Mediatek ISP
  Pass 1 driver
-Date: Thu, 21 Mar 2019 12:48:34 +0900
-Message-ID: <CAAFQd5C=dmoUU9=FdkaeErSFVpA--uFZJ0P1jrb3DTXFZ_tdpg@mail.gmail.com>
+Date: Thu, 21 Mar 2019 12:59:41 +0900
+Message-ID: <CAAFQd5CAY73b4jR=BFaJnhnHL-4QfEV7kQsiQusf=k-KghO0=g@mail.gmail.com>
 References: <1549348966-14451-1-git-send-email-frederic.chen@mediatek.com>
  <1549348966-14451-8-git-send-email-frederic.chen@mediatek.com>
- <CAAFQd5BGFmTbRF+LdRvXs0MBZifRd9zB_+OT6Xwo=dzwqajgGA@mail.gmail.com>
- <1552378607.13953.71.camel@mtksdccf07>
+ <CAAFQd5CUi9MqZ+j+DhRZtgByvfVH-FBFJHiaxb_JOqsLGNoK2Q@mail.gmail.com>
+ <1552460044.13953.114.camel@mtksdccf07>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1552378607.13953.71.camel@mtksdccf07>
+In-Reply-To: <1552460044.13953.114.camel@mtksdccf07>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -22,103 +22,249 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: Jungo Lin <jungo.lin@mediatek.com>
-Cc: =?UTF-8?B?U2VhbiBDaGVuZyAo6YSt5piH5byYKQ==?= <Sean.Cheng@mediatek.com>, Frederic Chen <frederic.chen@mediatek.com>, =?UTF-8?B?UnlubiBXdSAo5ZCz6IKy5oGpKQ==?= <Rynn.Wu@mediatek.com>, =?UTF-8?B?Q2hyaXN0aWUgWXUgKOa4uOmbheaDoCk=?= <christie.yu@mediatek.com>, srv_heupstream@mediatek.com, =?UTF-8?B?SG9sbWVzIENoaW91ICjpgrHmjLop?= <holmes.chiou@mediatek.com>, Jerry-ch Chen <Jerry-ch.Chen@mediatek.com>, yuzhao@chromium.org, Sj Huang <sj.huang@mediatek.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, linux-mediatek@lists.infradead.org, zwisler@chromium.org, Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil <hans.verkuil@cisco.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
- Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>, Linux Media Mailing List <linux-media@vger.ke>
+Cc: =?UTF-8?B?U2VhbiBDaGVuZyAo6YSt5piH5byYKQ==?= <Sean.Cheng@mediatek.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, =?UTF-8?B?UnlubiBXdSAo5ZCz6IKy5oGpKQ==?= <Rynn.Wu@mediatek.com>, srv_heupstream@mediatek.com, Mauro Carvalho Chehab <mchehab@kernel.org>, =?UTF-8?B?SG9sbWVzIENoaW91ICjpgrHmjLop?= <holmes.chiou@mediatek.com>, Jerry-ch Chen <Jerry-ch.Chen@mediatek.com>, Sj Huang <sj.huang@mediatek.com>, yuzhao@chromium.org, =?UTF-8?B?Q2hyaXN0aWUgWXUgKOa4uOmbheaDoCk=?= <christie.yu@mediatek.com>, zwisler@chromium.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Frederic Chen <frederic.chen@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
+ Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>, Linux Media Mailing List <linux-media@vger.kern>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Mar 12, 2019 at 5:16 PM Jungo Lin <jungo.lin@mediatek.com> wrote:
+On Wed, Mar 13, 2019 at 3:54 PM Jungo Lin <jungo.lin@mediatek.com> wrote:
 >
-> On Thu, 2019-03-07 at 19:04 +0900, Tomasz Figa wrote:
+> On Tue, 2019-03-12 at 19:04 +0900, Tomasz Figa wrote:
 [snip]
-> > > +struct mtk_cam_mem2mem2_device {
-> > > +       const char *name;
-> > > +       const char *model;
+> > Instead of opencoding most of this function, one would normally call
+> > mtk_cam_videoc_try_fmt() first to adjust the format struct and then
+> > just update the driver state with the adjusted format.
 > >
-> > For both of the fields above, they seem to be always
-> > MTK_CAM_DEV_P1_NAME, so we can just use the macro directly whenever
-> > needed. No need for this indirection.
-> >
->
-> OK. These two fields will be removed in next patch.
->
-> > > +       struct device *dev;
-> > > +       int num_nodes;
-> > > +       struct mtk_cam_dev_video_device *nodes;
-> > > +       const struct vb2_mem_ops *vb2_mem_ops;
-> >
-> > This is always "vb2_dma_contig_memops", so it can be used directly.
+> > Also, similarly to VIDIOC_TRY_FMT, VIDIOC_SET_FMT doesn't fail unless
+> > in the very specific cases, as described in
+> > https://www.kernel.org/doc/html/latest/media/uapi/v4l/vidioc-g-fmt.html#return-value
+> > .
 > >
 >
-> Ditto.
+> Ok, below is our revised version of this function.
 >
-> > > +       unsigned int buf_struct_size;
-> >
-> > This is always sizeof(struct mtk_cam_dev_buffer), so no need to save
-> > it in the struct.
-> >
+> int mtk_cam_videoc_s_fmt(struct file *file, void *fh,
+>                          struct v4l2_format *f)
+> {
+>         struct mtk_cam_mem2mem2_device *m2m2 = video_drvdata(file);
+>         struct mtk_cam_dev *cam_dev = mtk_cam_m2m_to_dev(m2m2);
+>         struct mtk_cam_video_device *node = file_to_mtk_cam_node(file);
 >
-> Ditto.
+>         /* Get the valid format*/
+>         mtk_cam_videoc_try_fmt(file, fh, f);
+>         /* Configure to video device */
+>         mtk_cam_ctx_fmt_set_img(&cam_dev->pdev->dev,
+>                                 &node->vdev_fmt.fmt.pix_mp,
+>                                 &f->fmt.pix_mp,
+>                                 node->queue_id);
 >
-> > > +       int streaming;
-> > > +       struct v4l2_device *v4l2_dev;
-> > > +       struct media_device *media_dev;
-> >
-> > These 2 fields are already in mtk_cam_dev which is a superclass of
-> > this struct. One can just access them from there directly.
-> >
->
-> Ditto.
->
-> > > +       struct media_pipeline pipeline;
-> > > +       struct v4l2_subdev subdev;
-> >
-> > Could you remind me what was the media topology exposed by this
-> > driver? This is already the second subdev I spotted in this patch,
-> > which looks strange.
-> >
->
->
-> For sub-device design, we will remove the sub-device for CIO and keep
-> only one sub-device for ISP driver in next patch. We will also provide
-> the media topology in RFC v1 patch to clarify.
->
-> > > +       struct media_pad *subdev_pads;
-> > > +       struct v4l2_file_operations v4l2_file_ops;
-> > > +       const struct file_operations fops;
-> > > +};
-> >
-> > Given most of the comments above, it looks like the remaining useful
-> > fields in this struct could be just moved to mtk_cam_dev, without the
-> > need for this separate struct.
-> >
->
-> This is the final revision for these two structures.
-> Do you suggest to merge it to simplify?
->
-> struct mtk_cam_mem2mem2_device {
->         struct mtk_cam_video_device *nodes;
->         struct media_pipeline pipeline;
->         struct v4l2_subdev subdev;
->         struct media_pad *subdev_pads;
-> };
->
-> struct mtk_cam_dev {
->         struct platform_device *pdev;
->         struct mtk_cam_video_device     mem2mem2_nodes[MTK_CAM_DEV_NODE_MAX];
->         struct mtk_cam_mem2mem2_device mem2mem2;
->         struct mtk_cam_io_connection cio;
->         struct v4l2_device v4l2_dev;
->         struct media_device media_dev;
->         struct mtk_cam_ctx ctx;
->         struct v4l2_async_notifier notifier;
-> };
+>         return 0;
+> }
 >
 
-I feel like there is not much benefit in having this split. Similarly,
-I'm not sure if there is a reason to have separate structs for
-mtk_cam_io_connection and mtk_cam_ctx.
+Looks almost good. We still need to signal the -EBUSY error condition
+if an attempt to change the format is made while streaming is active.
 
-(Sorry, missed this one in previous reply.)
+[snip]
+> > > +static int mtk_cam_videoc_s_meta_fmt(struct file *file,
+> > > +                                    void *fh, struct v4l2_format *f)
+> > > +{
+> > > +       struct mtk_cam_mem2mem2_device *m2m2 = video_drvdata(file);
+> > > +       struct mtk_cam_dev *isp_dev = mtk_cam_m2m_to_dev(m2m2);
+> > > +       struct mtk_cam_ctx *dev_ctx = &isp_dev->ctx;
+> > > +       struct mtk_cam_dev_video_device *node = file_to_mtk_cam_node(file);
+> > > +       int queue_id = mtk_cam_dev_get_queue_id_of_dev_node(isp_dev, node);
+> > > +
+> >
+> > No need for this blank line.
+> >
+>
+> We will fix this coding style in next patch.
+>
+> > > +       int ret = 0;
+> >
+> > Please don't default-initialize without a good reason.
+> >
+>
+> Ok, fix in next patch.
+>
+> > > +
+> > > +       if (f->type != node->vbq.type)
+> > > +               return -EINVAL;
+> >
+> > Ditto.
+> >
+>
+> Ok, fix in next patch.
+>
+> > > +
+> > > +       ret = mtk_cam_ctx_format_load_default_fmt(&dev_ctx->queue[queue_id], f);
+> > > +
+> >
+> > No need for this blank line.
+> >
+>
+> Ok, fix in next patch.
+>
+> > > +       if (!ret) {
+> > > +               node->vdev_fmt.fmt.meta = f->fmt.meta;
+> > > +               dev_ctx->queue[queue_id].fmt.meta = node->vdev_fmt.fmt.meta;
+> > > +       } else {
+> > > +               dev_warn(&isp_dev->pdev->dev,
+> > > +                        "s_meta_fm failed, format not support\n");
+> >
+> > No need for this warning.
+> >
+>
+> Ok, fix in next patch.
+>
+> > > +       }
+> > > +
+> > > +       return ret;
+> > > +}
+> >
+> > Actually, why do we even need to do all the things? Do we support
+> > multiple different meta formats on the same video node? If not, we can
+> > just have all the TRY_FMT/S_FMT/G_FMT return the hardcoded format.
+> >
+>
+> Ok, it is a good idea. We will return the hardcode format for meta video
+> devices.
+> Below is the revision version.
+>
+> int mtk_cam_meta_enum_format(struct file *file,
+>                              void *fh, struct v4l2_fmtdesc *f)
+> {
+>         struct mtk_cam_video_device *node = file_to_mtk_cam_node(file);
+>
+>         f->pixelformat = node->vdev_fmt.fmt.meta.dataformat;
+>
+>         return 0;
+> }
+
+Need to error out if f->index > 0. Also need to initialize the other
+output fields - flags and description.
+
+[snip]
+> > > +static u32 mtk_cam_node_get_v4l2_cap(struct mtk_cam_ctx_queue *node_ctx)
+> > > +{
+> > > +       u32 cap = 0;
+> > > +
+> > > +       if (node_ctx->desc.capture)
+> > > +               if (node_ctx->desc.image)
+> > > +                       cap = V4L2_CAP_VIDEO_CAPTURE_MPLANE;
+> > > +               else
+> > > +                       cap = V4L2_CAP_META_CAPTURE;
+> > > +       else
+> > > +               if (node_ctx->desc.image)
+> > > +                       cap = V4L2_CAP_VIDEO_OUTPUT_MPLANE;
+> > > +               else
+> > > +                       cap = V4L2_CAP_META_OUTPUT;
+> > > +
+> > > +       return cap;
+> > > +}
+> >
+> > Why not just have this defined statically as node_ctx->desc.cap?
+> >
+>
+> Ok, it is refactoring done.
+>
+> > > +
+> > > +static u32 mtk_cam_node_get_format_type(struct mtk_cam_ctx_queue *node_ctx)
+> > > +{
+> > > +       u32 type;
+> > > +
+> > > +       if (node_ctx->desc.capture)
+> > > +               if (node_ctx->desc.image)
+> > > +                       type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+> > > +               else
+> > > +                       type = V4L2_BUF_TYPE_META_CAPTURE;
+> > > +       else
+> > > +               if (node_ctx->desc.image)
+> > > +                       type = V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
+> > > +               else
+> > > +                       type = V4L2_BUF_TYPE_META_OUTPUT;
+> > > +
+> > > +       return type;
+> > > +}
+> >
+> > Why not just have this defined statically as node_ctx->desc.buf_type?
+> >
+>
+> Same as above.
+>
+> > > +
+> > > +static const struct v4l2_ioctl_ops *mtk_cam_node_get_ioctl_ops
+> > > +       (struct mtk_cam_ctx_queue *node_ctx)
+> > > +{
+> > > +       const struct v4l2_ioctl_ops *ops = NULL;
+> > > +
+> > > +       if (node_ctx->desc.image)
+> > > +               ops = &mtk_cam_v4l2_ioctl_ops;
+> > > +       else
+> > > +               ops = &mtk_cam_v4l2_meta_ioctl_ops;
+> > > +       return ops;
+> > > +}
+> >
+> > It's also preferable to just put this inside some structure rather
+> > than have getter functions. (node_ctx->desc.ioctl_ops?)
+> >
+>
+> Same as above.
+> Below is the new version for struct mtk_cam_ctx_queue_desc
+>
+> /*
+>  * struct mtk_cam_ctx_queue_desc - queue attributes
+>  *                              setup by device context owner
+>  * @id:         id of the context queue
+>  * @name:               media entity name
+>  * @cap:                mapped to V4L2 capabilities
+>  * @buf_type:   mapped to V4L2 buffer type
+>  * @capture:    true for capture queue (device to user)
+>  *                              false for output queue (from user to device)
+>  * @image:              true for image, false for meta data
+>  * @smem_alloc: Using the cam_smem_drv as alloc ctx or not
+>  * @dma_port:   the dma port associated to the buffer
+>  * @fmts:       supported format
+>  * @num_fmts:   the number of supported formats
+>  * @default_fmt_idx: default format of this queue
+>  * @max_buf_count: maximum V4L2 buffer count
+>  * @max_buf_count: mapped to v4l2_ioctl_ops
+>  */
+> struct mtk_cam_ctx_queue_desc {
+>         u8 id;
+>         char *name;
+>         u32 cap;
+>         u32 buf_type;
+>         u32 dma_port;
+>         u32 smem_alloc:1;
+>         u8 capture:1;
+>         u8 image:1;
+>         u8 num_fmts;
+>         u8 default_fmt_idx;
+>         u8 max_buf_count;
+>         const struct v4l2_ioctl_ops *ioctl_ops;
+>         struct v4l2_format *fmts;
+> };
+
+SGTM +/- the missing kerneldoc for the new fields.
+
+[snip]
+> > Sorry, ran out of time for today. Fourth part will come. :)
+> >
+> > Best regards,
+> > Tomasz
+> >
+>
+> Appreciate your support and hard working on this review.
+> We will look forward your part 4 review.
+
+Thanks for replying to all the comments, it's very helpful.
+
+As I mentioned in another reply, I'm going to be busy for the next few
+days, so I'd suggest addressing the existing comments, fixing any
+v4l2-compliance issues and also checking if any changes could be
+applied to the other drivers (DIP, FD, Seninf, MDP) too and then
+sending RFC V1.
 
 Best regards,
 Tomasz
