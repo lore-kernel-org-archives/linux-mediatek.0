@@ -1,137 +1,82 @@
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Subject: Re: [PATCH v2] gpu/drm: mediatek: call mtk_dsi_stop() after mtk_drm_crtc_atomic_disable()
-Date: Thu, 21 Mar 2019 22:09:42 +0800
-Message-ID: <CAJMQK-j9af8_L7DsWzgUy3=0Mr65FFeU71owan+acQgRuAnE7w@mail.gmail.com>
-References: <20190320071825.20268-1-hsinyi@chromium.org> <1553131722.18216.10.camel@mtksdaap41>
- <1553132815.18216.18.camel@mtksdaap41>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/2] ASoC: mediatek: mt8183: add mt8183-mt6358 machine
+ driver
+Date: Thu, 21 Mar 2019 14:54:15 +0000
+Message-ID: <20190321145415.GH5684@sirena.org.uk>
+References: <1551758805-34880-1-git-send-email-shunli.wang@mediatek.com>
+ <1551758805-34880-2-git-send-email-shunli.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1553132815.18216.18.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>
-Cc: linux-arm-kernel@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============1662067823895188433=="
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1551758805-34880-2-git-send-email-shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Mar 21, 2019 at 9:46 AM CK Hu <ck.hu@mediatek.com> wrote:
->
-> Hi, Hsin-yi:
->
-> On Thu, 2019-03-21 at 09:28 +0800, CK Hu wrote:
-> > Hi, Hsin-yi:
-> >
-> > On Wed, 2019-03-20 at 15:18 +0800, Hsin-Yi Wang wrote:
-> > > mtk_dsi_stop() should be called after mtk_drm_crtc_atomic_disable(), which needs
-> > > ovl irq for drm_crtc_wait_one_vblank(), since after mtk_dsi_stop() is called,
-> > > ovl irq will be disabled. If drm_crtc_wait_one_vblank() is called after last
-> > > irq, it will timeout with this message: "vblank wait timed out on crtc 0". This
-> > > happens sometimes when turning off the screen.
-> > >
-> > > In drm_atomic_helper.c#disable_outputs(),
-> > > the calling sequence when turning off the screen is:
-> > >
-> > > 1. mtk_dsi_encoder_disable()
-> > >      --> mtk_output_dsi_disable()
-> > >        --> mtk_dsi_stop();  // sometimes make vblank timeout in atomic_disable
-> > >        --> mtk_dsi_poweroff();
-> > > 2. mtk_drm_crtc_atomic_disable()
-> > >      --> drm_crtc_wait_one_vblank();
-> > >      ...
-> > >        --> mtk_dsi_ddp_stop()
-> > >          --> mtk_dsi_poweroff();
-> > >
-> > > mtk_dsi_poweroff() has reference count design, change to make mtk_dsi_stop()
-> > > called in mtk_dsi_poweroff() when refcount is 0.
-> > >
-> > > Fixes: 0707632b5bac ("drm/mediatek: update DSI sub driver flow for sending commands to panel")
-> > > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> > > ---
-> > > change log:
-> > > v1->v2:
-> > >  * update commit message.
-> > >  * call mtk_dsi_stop() in mtk_dsi_poweroff() when refcount is 0.
-> > > ---
-> > >  drivers/gpu/drm/mediatek/mtk_dsi.c | 5 ++++-
-> > >  1 file changed, 4 insertions(+), 1 deletion(-)
-> > >
-> > > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > > index b00eb2d2e086..e152f37af57d 100644
-> > > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > > @@ -630,6 +630,8 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
-> > >     if (--dsi->refcount != 0)
-> > >             return;
-> > >
-> > > +   mtk_dsi_stop(dsi);
-> > > +
-> > >     if (!mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500)) {
-> > >             if (dsi->panel) {
-> > >                     if (drm_panel_unprepare(dsi->panel)) {
-> >
-> > I think you just move mtk_dsi_stop() into mtk_dsi_poweroff() would works
-> > fine, but I would rather like calling mtk_dsi_start() and mtk_dsi_stop()
-> > in a symmetric manner. That means you may also move below functions into
-> > mtk_dsi_poweron():
-> >
-> > mtk_dsi_set_mode(dsi);
-> > mtk_dsi_clk_hs_mode(dsi, 1);
-> > mtk_dsi_start(dsi);
 
-For MT8183 with bridge panel, calling mtk_dsi_start() in
-mtk_dsi_poweron() when refcount is 0->1, like the following order,
-will results in no irq, not sure why though. I think this might be the
-timing issue you mentioned in patch v1. (MT8183 without bridge panel
-doesn't have this issue.)
+--===============1662067823895188433==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Yia77v5a8fyVHJSl"
+Content-Disposition: inline
 
-atomic_enable
-  --> mtk_crtc_ddp_hw_init
-    --> mtk_dsi_ddp_start
-      --> mtk_dsi_poweron (ref 0->1)
-        --> drm_panel_prepare
-        --> *mtk_dsi_start  // results in no irq for MT8183 with bridge
-  --> drm_crtc_vblank_on
 
-mtk_output_dsi_enable
-  --> mtk_dsi_poweron (ref 1->2, ignored)
-  --> mtk_dsi_start //original position
+--Yia77v5a8fyVHJSl
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-For mtk_dsi_stop() both with or without bridge is fine.
+On Tue, Mar 05, 2019 at 12:06:44PM +0800, Shunli Wang wrote:
 
-> >
-> >
-> > > @@ -696,7 +698,6 @@ static void mtk_output_dsi_disable(struct mtk_dsi *dsi)
-> > >             }
-> > >     }
-> > >
-> > > -   mtk_dsi_stop(dsi);
-> > >     mtk_dsi_poweroff(dsi);
-> > >
-> > >     dsi->enabled = false;
-> > > @@ -1178,6 +1179,8 @@ static int mtk_dsi_remove(struct platform_device *pdev)
-> > >     struct mtk_dsi *dsi = platform_get_drvdata(pdev);
-> > >
-> > >     mtk_output_dsi_disable(dsi);
-> > > +   mtk_dsi_stop(dsi);
-> > > +   mtk_dsi_poweroff(dsi);
-> >
-> > I think mtk_output_dsi_disable() would call mtk_dsi_poweroff(), and
-> > mtk_dsi_poweroff() would call mtk_dsi_stop(), so these two line are
-> > redundant. And I think you should remove mtk_dsi_stop() in
-> > mtk_output_dsi_disable(), why not in this patch?
->
-> You've removed mtk_dsi_stop() in mtk_output_dsi_disable(), I just miss
-> it, sorry for this.
->
-> Regards,
-> CK
->
-> >
-> > Regards,
-> > CK
-> >
-> > >     component_del(&pdev->dev, &mtk_dsi_component_ops);
-> > >
-> > >     return 0;
-> >
->
->
+> +config SND_SOC_MT8183_MT6358
+> +	tristate "ASoc Audio driver for MT8183 with MT6358 codec"
+> +	depends on SND_SOC_MT8183 && MTK_PMIC_WRAP
+> +	select SND_SOC_MT8183
+> +	help
+
+This doesn't build:
+
+scripts/kconfig/conf  --oldconfig Kconfig
+sound/soc/mediatek/Kconfig:119:error: recursive dependency detected!
+sound/soc/mediatek/Kconfig:119:	symbol SND_SOC_MT8183_MT6358 depends on SND_SOC_MT8183
+sound/soc/mediatek/Kconfig:109:	symbol SND_SOC_MT8183 is selected by SND_SOC_MT8183_MT6358
+For a resolution refer to Documentation/kbuild/kconfig-language.txt
+
+
+--Yia77v5a8fyVHJSl
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlyTpZYACgkQJNaLcl1U
+h9AjbAf8DuYIz4/B85CMwAGAQAnmgfjrOtnC5KQxpkM6m3PuHNBUHSFEpmyLYWy7
+p4ojMoDzQH/uaEChf3fOWD6oVyulAsMYx+1X2vEC+pQ5m/00FX/hBTcFfWT+7Eq5
+yERPCyhfvYgxhx4zURNKaTUpV3zfjarXM3ahqBj5DvuIXZU3NmyUhlUKSxqPKlSB
+UNYP71z6m8lP9Bp3NH/8sUKJQ2tXxKswRKhZDeXJqP5DygS+F5IqPD+cv+5Ms2xa
+av+d9Glg+/lgDEeoBTmzIYcRJGU0IePpECx9FHBkq9+Cwwp0snIe/n59u8F93Ys1
+NQdiiaT0WJACLBgUs0MfymQlHEO0fA==
+=MOOc
+-----END PGP SIGNATURE-----
+
+--Yia77v5a8fyVHJSl--
+
+
+--===============1662067823895188433==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============1662067823895188433==--
