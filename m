@@ -1,120 +1,90 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH V6 8/8] drm/mediatek: fix the rate of parent for hdmi
- phy in MT2701
-Date: Thu, 21 Mar 2019 15:20:50 +0800
-Message-ID: <1553152850.576.3.camel@mtksdaap41>
-References: <20190225020912.29120-1-wangyan.wang@mediatek.com>
- <20190225020912.29120-9-wangyan.wang@mediatek.com>
- <1551867194.1001.8.camel@mtksdaap41> <1553146377.18216.30.camel@mtksdaap41>
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: Re: [PATCH v2 9/9] rtc: Add support for the MediaTek MT6358 RTC
+Date: Thu, 21 Mar 2019 17:51:26 +0800
+Message-ID: <1553161886.13384.7.camel@mtksdaap41>
+References: <1552275991-34648-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+         <1552275991-34648-10-git-send-email-hsin-hsiung.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1553146377.18216.30.camel@mtksdaap41>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: wangyan wang <wangyan.wang@mediatek.com>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, srv_heupstream@mediatek.com, chunhui dai <chunhui.dai@mediatek.com>, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Colin Ian King <colin.king@canonical.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1552275991-34648-10-git-send-email-hsin-hsiung.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+Cc: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, Eddie Huang <eddie.huang@mediatek.com>, linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, srv_heupstream@mediatek.com, Alessandro Zummo <a.zummo@towertech.it>, Marc Zyngier <marc.zyngier@arm.com>, Ran Bi <ran.bi@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, linux-mediatek@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFdhbmd5YW46CgpPbiBUaHUsIDIwMTktMDMtMjEgYXQgMTM6MzIgKzA4MDAsIENLIEh1IHdy
-b3RlOgo+IEhpLCBXYW5neWFuOgo+IAo+IE9uIFdlZCwgMjAxOS0wMy0wNiBhdCAxODoxMyArMDgw
-MCwgQ0sgSHUgd3JvdGU6Cj4gPiBIaSwgV2FuZ3lhbjoKPiA+IAo+ID4gT24gTW9uLCAyMDE5LTAy
-LTI1IGF0IDEwOjA5ICswODAwLCB3YW5neWFuIHdhbmcgd3JvdGU6Cj4gPiA+IEZyb206IGNodW5o
-dWkgZGFpIDxjaHVuaHVpLmRhaUBtZWRpYXRlay5jb20+Cj4gPiA+IAo+ID4gPiBXZSBzaG91bGQg
-bm90IGNoYW5nZSB0aGUgcmF0ZSBvZiBwYXJlbnQgZm9yIGhkbWkgcGh5IHdoZW4KPiA+ID4gZG9p
-bmcgcm91bmRfcmF0ZSBmb3IgdGhpcyBjbG9jay4gVGhlIHBhcmVudCBjbG9jayBvZiBoZG1pCj4g
-PiA+IHBoeSBtdXN0IGJlIHRoZSBzYW1lIGFzIGl0LiBXZSBjaGFuZ2UgaXQgd2hlbiBkb2luZyBz
-ZXRfcmF0ZQo+ID4gPiBvbmx5Lgo+ID4gPiAKPiA+ID4gU2lnbmVkLW9mZi1ieTogY2h1bmh1aSBk
-YWkgPGNodW5odWkuZGFpQG1lZGlhdGVrLmNvbT4KPiA+ID4gU2lnbmVkLW9mZi1ieTogd2FuZ3lh
-biB3YW5nIDx3YW5neWFuLndhbmdAbWVkaWF0ZWsuY29tPgo+ID4gPiAtLS0KPiA+ID4gIGRyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuYyAgICAgICAgfCAxNCAtLS0tLS0tLS0t
-LS0tLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3BoeS5oICAgICAg
-ICB8ICAzIC0tLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDI3MDFfaGRt
-aV9waHkuYyB8IDExICsrKysrKysrKysrCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX210ODE3M19oZG1pX3BoeS5jIHwgMTQgKysrKysrKysrKysrKysKPiA+ID4gIDQgZmlsZXMg
-Y2hhbmdlZCwgMjUgaW5zZXJ0aW9ucygrKSwgMTcgZGVsZXRpb25zKC0pCj4gPiA+IAo+ID4gPiBk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3BoeS5jIGIvZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3BoeS5jCj4gPiA+IGluZGV4IDM3MDMwOWQ2
-ODRlYy4uY2E4YmMxNDg5ZjM3IDEwMDY0NAo+ID4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2hkbWlfcGh5LmMKPiA+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19oZG1pX3BoeS5jCj4gPiA+IEBAIC0xNSwyMCArMTUsNiBAQCBzdGF0aWMgY29uc3Qgc3Ry
-dWN0IHBoeV9vcHMgbXRrX2hkbWlfcGh5X2Rldl9vcHMgPSB7Cj4gPiA+ICAJLm93bmVyID0gVEhJ
-U19NT0RVTEUsCj4gPiA+ICB9Owo+ID4gPiAgCj4gPiA+IC1sb25nIG10a19oZG1pX3BsbF9yb3Vu
-ZF9yYXRlKHN0cnVjdCBjbGtfaHcgKmh3LCB1bnNpZ25lZCBsb25nIHJhdGUsCj4gPiA+IC0JCQkg
-ICAgIHVuc2lnbmVkIGxvbmcgKnBhcmVudF9yYXRlKQo+ID4gPiAtewo+ID4gPiAtCXN0cnVjdCBt
-dGtfaGRtaV9waHkgKmhkbWlfcGh5ID0gdG9fbXRrX2hkbWlfcGh5KGh3KTsKPiA+ID4gLQo+ID4g
-PiAtCWhkbWlfcGh5LT5wbGxfcmF0ZSA9IHJhdGU7Cj4gPiA+IC0JaWYgKHJhdGUgPD0gNzQyNTAw
-MDApCj4gPiA+IC0JCSpwYXJlbnRfcmF0ZSA9IHJhdGU7Cj4gPiA+IC0JZWxzZQo+ID4gPiAtCQkq
-cGFyZW50X3JhdGUgPSByYXRlIC8gMjsKPiA+ID4gLQo+ID4gPiAtCXJldHVybiByYXRlOwo+ID4g
-PiAtfQo+ID4gPiAtCj4gPiA+ICB1MzIgbXRrX2hkbWlfcGh5X3JlYWQoc3RydWN0IG10a19oZG1p
-X3BoeSAqaGRtaV9waHksIHUzMiBvZmZzZXQpCj4gPiA+ICB7Cj4gPiA+ICAJcmV0dXJuIHJlYWRs
-KGhkbWlfcGh5LT5yZWdzICsgb2Zmc2V0KTsKPiA+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuaCBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfaGRtaV9waHkuaAo+ID4gPiBpbmRleCA0NDZlMmFjZDE5MjYuLmM2MDYxYWQxNWZmMCAxMDA2
-NDQKPiA+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3BoeS5oCj4g
-PiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuaAo+ID4gPiBA
-QCAtNTAsOSArNTAsNiBAQCB2b2lkIG10a19oZG1pX3BoeV9zZXRfYml0cyhzdHJ1Y3QgbXRrX2hk
-bWlfcGh5ICpoZG1pX3BoeSwgdTMyIG9mZnNldCwKPiA+ID4gIHZvaWQgbXRrX2hkbWlfcGh5X21h
-c2soc3RydWN0IG10a19oZG1pX3BoeSAqaGRtaV9waHksIHUzMiBvZmZzZXQsCj4gPiA+ICAJCSAg
-ICAgICB1MzIgdmFsLCB1MzIgbWFzayk7Cj4gPiA+ICBzdHJ1Y3QgbXRrX2hkbWlfcGh5ICp0b19t
-dGtfaGRtaV9waHkoc3RydWN0IGNsa19odyAqaHcpOwo+ID4gPiAtbG9uZyBtdGtfaGRtaV9wbGxf
-cm91bmRfcmF0ZShzdHJ1Y3QgY2xrX2h3ICpodywgdW5zaWduZWQgbG9uZyByYXRlLAo+ID4gPiAt
-CQkJICAgICB1bnNpZ25lZCBsb25nICpwYXJlbnRfcmF0ZSk7Cj4gPiA+IC0KPiA+ID4gIGV4dGVy
-biBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyIG10a19oZG1pX3BoeV9kcml2ZXI7Cj4gPiA+ICBleHRl
-cm4gc3RydWN0IG10a19oZG1pX3BoeV9jb25mIG10a19oZG1pX3BoeV84MTczX2NvbmY7Cj4gPiA+
-ICBleHRlcm4gc3RydWN0IG10a19oZG1pX3BoeV9jb25mIG10a19oZG1pX3BoeV8yNzAxX2NvbmY7
-Cj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210MjcwMV9o
-ZG1pX3BoeS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDI3MDFfaGRtaV9waHku
-Ywo+ID4gPiBpbmRleCA4OGRkOWU4MTJjYTAuLjMzODkzYTE4MGMyZSAxMDA2NDQKPiA+ID4gLS0t
-IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDI3MDFfaGRtaV9waHkuYwo+ID4gPiAr
-KysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210MjcwMV9oZG1pX3BoeS5jCj4gPiA+
-IEBAIC0xNTIsNiArMTUyLDE3IEBAIHN0YXRpYyBpbnQgbXRrX2hkbWlfcGxsX3NldF9yYXRlKHN0
-cnVjdCBjbGtfaHcgKmh3LCB1bnNpZ25lZCBsb25nIHJhdGUsCj4gPiA+ICAJCQkgIFJHX0hETUlU
-WF9EUlZfSUJJQVNfTUFTSyk7Cj4gPiA+ICAJcmV0dXJuIDA7Cj4gPiA+ICB9Cj4gPiA+ICsKPiA+
-ID4gK3N0YXRpYyBsb25nIG10a19oZG1pX3BsbF9yb3VuZF9yYXRlKHN0cnVjdCBjbGtfaHcgKmh3
-LCB1bnNpZ25lZCBsb25nIHJhdGUsCj4gPiA+ICsJCQkgICAgIHVuc2lnbmVkIGxvbmcgKnBhcmVu
-dF9yYXRlKQo+ID4gPiArewo+ID4gPiArCXN0cnVjdCBtdGtfaGRtaV9waHkgKmhkbWlfcGh5ID0g
-dG9fbXRrX2hkbWlfcGh5KGh3KTsKPiA+ID4gKwo+ID4gPiArCWhkbWlfcGh5LT5wbGxfcmF0ZSA9
-IHJhdGU7Cj4gPiAKPiA+IEkgdGhpbmsgeW91IGRvbid0IG5lZWQgdG8gc2F2ZSB0aGUgcmF0ZSBp
-bnRvIHBsbF9yYXRlIGhlcmUsIHBsbF9yYXRlCj4gPiB3b3VsZCBiZSBzZXQgaW4gc2V0X3JhdGUo
-KSBvciByZWNhbGNfcmF0ZSgpLgo+IAo+IEFzIG9mZmxpbmUgZGlzY3VzcywgeW91IG1lbnRpb24g
-dGhhdCB0aGlzIGZ1bmN0aW9uIGp1c3QgbmVlZCB0byByZXR1cm4KPiBjdXJyZW50IHJhdGUuIEkg
-dGhpbmsgeW91IGNvdWxkIGp1c3QgcmVtb3ZlIHRoaXMgbGluZQo+ICdoZG1pX3BoeS0+cGxsX3Jh
-dGUgPSByYXRlOycgYW5kIHJldHVybiByYXRlIG9ubHkuIFlvdSBkb24ndCBuZWVkIHRvCj4gYXNz
-aWduIGhkbWlfcGh5LT5wbGxfcmF0ZSBoZXJlIGJlY2F1c2UgaXQgd291bGQgYmUgc2V0IGxhdGVy
-IGluCj4gc2V0X3JhdGUoKS4KCklmIHlvdSBkbyBub3QgZG8gYW55IHRoaW5nIGluIG10a19oZG1p
-X3BsbF9yb3VuZF9yYXRlKCksIEkgdGhpbmsgeW91CmNvdWxkIGp1c3QgZG9uJ3QgaW1wbGVtZW50
-IHJvdW5kX3JhdGUoKSBjYWxsYmFjayBmdW5jdGlvbiBiZWNhdXNlIGNjZgp3b3VsZCBub3QgY2Fs
-bCByb3VuZF9yYXRlKCkgaWYgaXQgaXMgbm90IGltcGxlbWVudGVkLgoKUmVnYXJkcywKQ0sKCj4g
-Cj4gUmVnYXJkcywKPiBDSwo+IAo+ID4gCj4gPiBSZWdhcmRzLAo+ID4gQ0sKPiA+IAo+ID4gPiAr
-Cj4gPiA+ICsJcmV0dXJuIHJhdGU7Cj4gPiA+ICt9Cj4gPiA+ICsKPiA+ID4gIHN0YXRpYyB1bnNp
-Z25lZCBsb25nIG10a19oZG1pX3BsbF9yZWNhbGNfcmF0ZShzdHJ1Y3QgY2xrX2h3ICpodywKPiA+
-ID4gIAkJCQkgICAgICAgdW5zaWduZWQgbG9uZyBwYXJlbnRfcmF0ZSkKPiA+ID4gIHsKPiA+ID4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5
-LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210ODE3M19oZG1pX3BoeS5jCj4gPiA+
-IGluZGV4IDYzZGRlNDI1MjFiOC4uM2EzMzlmNTE2NjEzIDEwMDY0NAo+ID4gPiAtLS0gYS9kcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210ODE3M19oZG1pX3BoeS5jCj4gPiA+ICsrKyBiL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMKPiA+ID4gQEAgLTI4
-NSw2ICsyODUsMjAgQEAgc3RhdGljIGludCBtdGtfaGRtaV9wbGxfc2V0X3JhdGUoc3RydWN0IGNs
-a19odyAqaHcsIHVuc2lnbmVkIGxvbmcgcmF0ZSwKPiA+ID4gIAlyZXR1cm4gMDsKPiA+ID4gIH0K
-PiA+ID4gIAo+ID4gPiArc3RhdGljIGxvbmcgbXRrX2hkbWlfcGxsX3JvdW5kX3JhdGUoc3RydWN0
-IGNsa19odyAqaHcsIHVuc2lnbmVkIGxvbmcgcmF0ZSwKPiA+ID4gKwkJCSAgICAgdW5zaWduZWQg
-bG9uZyAqcGFyZW50X3JhdGUpCj4gPiA+ICt7Cj4gPiA+ICsJc3RydWN0IG10a19oZG1pX3BoeSAq
-aGRtaV9waHkgPSB0b19tdGtfaGRtaV9waHkoaHcpOwo+ID4gPiArCj4gPiA+ICsJaGRtaV9waHkt
-PnBsbF9yYXRlID0gcmF0ZTsKPiA+ID4gKwlpZiAocmF0ZSA8PSA3NDI1MDAwMCkKPiA+ID4gKwkJ
-KnBhcmVudF9yYXRlID0gcmF0ZTsKPiA+ID4gKwllbHNlCj4gPiA+ICsJCSpwYXJlbnRfcmF0ZSA9
-IHJhdGUgLyAyOwo+ID4gPiArCj4gPiA+ICsJcmV0dXJuIHJhdGU7Cj4gPiA+ICt9Cj4gPiA+ICsK
-PiA+ID4gIHN0YXRpYyB1bnNpZ25lZCBsb25nIG10a19oZG1pX3BsbF9yZWNhbGNfcmF0ZShzdHJ1
-Y3QgY2xrX2h3ICpodywKPiA+ID4gIAkJCQkgICAgICAgdW5zaWduZWQgbG9uZyBwYXJlbnRfcmF0
-ZSkKPiA+ID4gIHsKPiA+IAo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVk
-ZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2RyaS1kZXZlbA==
+
+Hi,
+
+
+Should use 'rtc: mt6397: ' as prefix for this patch.
+
+
+On Mon, 2019-03-11 at 11:46 +0800, Hsin-Hsiung Wang wrote:
+> From: Ran Bi <ran.bi@mediatek.com>
+> 
+> This add support for the MediaTek MT6358 RTC. MT6397 mfd will pass
+> RTC_WRTGR address offset to RTC driver.
+> 
+> Signed-off-by: Ran Bi <ran.bi@mediatek.com>
+> ---
+>  drivers/rtc/rtc-mt6397.c | 16 ++++++++++++++--
+>  1 file changed, 14 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+> index f85f1fc..c8a0090 100644
+> --- a/drivers/rtc/rtc-mt6397.c
+> +++ b/drivers/rtc/rtc-mt6397.c
+> @@ -27,7 +27,7 @@
+>  #define RTC_BBPU		0x0000
+>  #define RTC_BBPU_CBUSY		BIT(6)
+>  
+> -#define RTC_WRTGR		0x003c
+> +#define RTC_WRTGR_DEFAULT	0x003c
+>  
+>  #define RTC_IRQ_STA		0x0002
+>  #define RTC_IRQ_STA_AL		BIT(0)
+> @@ -78,6 +78,7 @@ struct mt6397_rtc {
+>  	struct regmap		*regmap;
+>  	int			irq;
+>  	u32			addr_base;
+> +	u32			wrtgr_offset;
+>  };
+>  
+>  static int mtk_rtc_write_trigger(struct mt6397_rtc *rtc)
+> @@ -86,7 +87,8 @@ static int mtk_rtc_write_trigger(struct mt6397_rtc *rtc)
+>  	int ret;
+>  	u32 data;
+>  
+> -	ret = regmap_write(rtc->regmap, rtc->addr_base + RTC_WRTGR, 1);
+> +	ret = regmap_write(rtc->regmap,
+> +			   rtc->addr_base + rtc->wrtgr_offset, 1);
+>  	if (ret < 0)
+>  		return ret;
+>  
+> @@ -341,6 +343,15 @@ static int mtk_rtc_probe(struct platform_device *pdev)
+>  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>  	rtc->addr_base = res->start;
+>  
+> +	res = platform_get_resource(pdev, IORESOURCE_REG, 0);
+> +	if (res) {
+> +		rtc->wrtgr_offset = res->start;
+> +		dev_info(&pdev->dev, "register offset:%d\n", rtc->wrtgr_offset);
+> +	} else {
+> +		rtc->wrtgr_offset = RTC_WRTGR_DEFAULT;
+> +		dev_err(&pdev->dev, "Failed to get register offset\n");
+> +	}
+> +
+
+Since this will be passed by MFD, do we still need to keep the DEFAULT?
+Any case this platform_get_resource will failed?
+
+It's too bad HW changed this offset, but I'm not sure about passing this
+information from MFD. We have 1 register that have different offset now,
+and might have others for future chips, adding each one by
+IORESOURCE_IRQ doesn't looks like a good solution. Keeping this
+information in RTC driver only also looks better.
+
+
+Joe.C
