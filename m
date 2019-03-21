@@ -1,165 +1,66 @@
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [v3 PATCH] usb: introduce usb_ep_type_string() function
-Date: Thu, 21 Mar 2019 10:27:56 +0800
-Message-ID: <dfa55cfc48369945983d7cb9f97d09daf2670927.1553134542.git.chunfeng.yun@mediatek.com>
+Subject: [RESEND PATCH 00/11] add debugfs consumers,
+ tracepoints and supports USB Gen2 ISOC
+Date: Thu, 21 Mar 2019 10:53:38 +0800
+Message-ID: <1553136829-14712-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Felipe Balbi <balbi@kernel.org>, Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>, Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Arnd Bergmann <arnd@arndb.de>, Roger Quadros <rogerq@ti.com>, Alan Stern <stern@rowland.harvard.edu>, "Gustavo A. R. Silva" <gustavo@embeddedor.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, Miquel Raynal <miquel.raynal@bootlin.com>, Dmitry Torokhov <dtor@chromium.org>, Johan Hovold <johan@kernel.org>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Colin Ian King <colin.king@canonical.com>, Matteo Croce <mcroce@red>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-In some places, the code prints a human-readable USB endpoint
-transfer type (e.g. "bulk"). This involves a switch statement
-sometimes wrapped around in ({ ... }) block leading to code
-repetition.
-To make this scenario easier, here introduces usb_ep_type_string()
-function, which returns a human-readable name of provided
-endpoint type.
-It also changes a few places switch was used to use this
-new function.
+In order to help debug, this series add more debugfs consumers,
+introduce a few initial tracepoints;
+And support new features introduced by USB3 Gen2 ISOC:
+1. TXCSR/RXCSR registers are adjusted to support greater MULT
+   and MAX_PKT
+2. QMU format is also improved
+last, some small problems are fixed.
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-v2 changes:
-    1. keep type string consistent with type_show() used in endpoint.c
-v3 changes:
-    1. abandon changes that will break user/kernel apis
----
- drivers/usb/common/common.c              | 16 ++++++++++++++++
- drivers/usb/core/hcd.c                   | 17 ++---------------
- drivers/usb/gadget/udc/aspeed-vhub/epn.c |  6 +-----
- drivers/usb/gadget/udc/dummy_hcd.c       | 16 +---------------
- include/linux/usb/ch9.h                  |  8 ++++++++
- 5 files changed, 28 insertions(+), 35 deletions(-)
+Chunfeng Yun (11):
+  usb: mtu3: check return value of devm_extcon_register_notifier()
+  usb: mtu3: print useful information also for device and host modes
+  usb: mtu3: remove unnecessary local variable @req
+  usb: mtu3: rebuild the code of getting vbus regulator
+  usb: mtu3: fix transfer error of USB3 Gen2 isoc
+  usb: mtu3: rebuild qmu_gpd struct to prepare to support new QMU format
+  usb: mtu3: supports new QMU format
+  usb: mtu3: add debugfs interface files
+  usb: mtu3: move vbus and mode debugfs interfaces into mtu3_debugfs.c
+  usb: mtu3: add tracepoints to help debug
+  usb: mtu3: add a function to switch mailbox state to string
 
-diff --git a/drivers/usb/common/common.c b/drivers/usb/common/common.c
-index 48277bbc15e4..2174dd9ec176 100644
---- a/drivers/usb/common/common.c
-+++ b/drivers/usb/common/common.c
-@@ -16,6 +16,22 @@
- #include <linux/usb/otg.h>
- #include <linux/of_platform.h>
- 
-+static const char *const ep_type_names[] = {
-+	[USB_ENDPOINT_XFER_CONTROL] = "ctrl",
-+	[USB_ENDPOINT_XFER_ISOC] = "isoc",
-+	[USB_ENDPOINT_XFER_BULK] = "bulk",
-+	[USB_ENDPOINT_XFER_INT] = "intr",
-+};
-+
-+const char *usb_ep_type_string(int ep_type)
-+{
-+	if (ep_type < 0 || ep_type >= ARRAY_SIZE(ep_type_names))
-+		return "unknown";
-+
-+	return ep_type_names[ep_type];
-+}
-+EXPORT_SYMBOL_GPL(usb_ep_type_string);
-+
- const char *usb_otg_state_string(enum usb_otg_state state)
- {
- 	static const char *const names[] = {
-diff --git a/drivers/usb/core/hcd.c b/drivers/usb/core/hcd.c
-index 3189181bb628..0ccf2efeb40b 100644
---- a/drivers/usb/core/hcd.c
-+++ b/drivers/usb/core/hcd.c
-@@ -1878,23 +1878,10 @@ void usb_hcd_flush_endpoint(struct usb_device *udev,
- 		/* kick hcd */
- 		unlink1(hcd, urb, -ESHUTDOWN);
- 		dev_dbg (hcd->self.controller,
--			"shutdown urb %pK ep%d%s%s\n",
-+			"shutdown urb %pK ep%d%s-%s\n",
- 			urb, usb_endpoint_num(&ep->desc),
- 			is_in ? "in" : "out",
--			({	char *s;
--
--				 switch (usb_endpoint_type(&ep->desc)) {
--				 case USB_ENDPOINT_XFER_CONTROL:
--					s = ""; break;
--				 case USB_ENDPOINT_XFER_BULK:
--					s = "-bulk"; break;
--				 case USB_ENDPOINT_XFER_INT:
--					s = "-intr"; break;
--				 default:
--					s = "-iso"; break;
--				};
--				s;
--			}));
-+			usb_ep_type_string(usb_endpoint_type(&ep->desc)));
- 		usb_put_urb (urb);
- 
- 		/* list contents may have changed */
-diff --git a/drivers/usb/gadget/udc/aspeed-vhub/epn.c b/drivers/usb/gadget/udc/aspeed-vhub/epn.c
-index 83340f4fdc6e..35941dc125f9 100644
---- a/drivers/usb/gadget/udc/aspeed-vhub/epn.c
-+++ b/drivers/usb/gadget/udc/aspeed-vhub/epn.c
-@@ -593,10 +593,6 @@ static int ast_vhub_epn_disable(struct usb_ep* u_ep)
- static int ast_vhub_epn_enable(struct usb_ep* u_ep,
- 			       const struct usb_endpoint_descriptor *desc)
- {
--	static const char *ep_type_string[] __maybe_unused = { "ctrl",
--							       "isoc",
--							       "bulk",
--							       "intr" };
- 	struct ast_vhub_ep *ep = to_ast_ep(u_ep);
- 	struct ast_vhub_dev *dev;
- 	struct ast_vhub *vhub;
-@@ -646,7 +642,7 @@ static int ast_vhub_epn_enable(struct usb_ep* u_ep,
- 	ep->epn.wedged = false;
- 
- 	EPDBG(ep, "Enabling [%s] %s num %d maxpacket=%d\n",
--	      ep->epn.is_in ? "in" : "out", ep_type_string[type],
-+	      ep->epn.is_in ? "in" : "out", usb_ep_type_string(type),
- 	      usb_endpoint_num(desc), maxpacket);
- 
- 	/* Can we use DMA descriptor mode ? */
-diff --git a/drivers/usb/gadget/udc/dummy_hcd.c b/drivers/usb/gadget/udc/dummy_hcd.c
-index baf72f95f0f1..40c6a484e232 100644
---- a/drivers/usb/gadget/udc/dummy_hcd.c
-+++ b/drivers/usb/gadget/udc/dummy_hcd.c
-@@ -617,21 +617,7 @@ static int dummy_enable(struct usb_ep *_ep,
- 		_ep->name,
- 		desc->bEndpointAddress & 0x0f,
- 		(desc->bEndpointAddress & USB_DIR_IN) ? "in" : "out",
--		({ char *val;
--		 switch (usb_endpoint_type(desc)) {
--		 case USB_ENDPOINT_XFER_BULK:
--			 val = "bulk";
--			 break;
--		 case USB_ENDPOINT_XFER_ISOC:
--			 val = "iso";
--			 break;
--		 case USB_ENDPOINT_XFER_INT:
--			 val = "intr";
--			 break;
--		 default:
--			 val = "ctrl";
--			 break;
--		 } val; }),
-+		usb_ep_type_string(usb_endpoint_type(desc)),
- 		max, ep->stream_en ? "enabled" : "disabled");
- 
- 	/* at this point real hardware should be NAKing transfers
-diff --git a/include/linux/usb/ch9.h b/include/linux/usb/ch9.h
-index 523aa088f6ab..da82606be605 100644
---- a/include/linux/usb/ch9.h
-+++ b/include/linux/usb/ch9.h
-@@ -36,6 +36,14 @@
- #include <linux/device.h>
- #include <uapi/linux/usb/ch9.h>
- 
-+/**
-+ * usb_ep_type_string() - Returns human readable-name of the endpoint type.
-+ * @ep_type: The endpoint type to return human-readable name for.  If it's not
-+ *   any of the types: USB_ENDPOINT_XFER_{CONTROL, ISOC, BULK, INT},
-+ *   usually got by usb_endpoint_type(), the string 'unknown' will be returned.
-+ */
-+extern const char *usb_ep_type_string(int ep_type);
-+
- /**
-  * usb_speed_string() - Returns human readable-name of the speed.
-  * @speed: The speed to return human-readable name for.  If it's not
+ drivers/usb/mtu3/Makefile          |  11 +
+ drivers/usb/mtu3/mtu3.h            |  57 ++-
+ drivers/usb/mtu3/mtu3_core.c       |  27 +-
+ drivers/usb/mtu3/mtu3_debug.h      |  50 +++
+ drivers/usb/mtu3/mtu3_debugfs.c    | 539 +++++++++++++++++++++++++++++
+ drivers/usb/mtu3/mtu3_dr.c         | 156 ++-------
+ drivers/usb/mtu3/mtu3_dr.h         |   4 +
+ drivers/usb/mtu3/mtu3_gadget.c     |  20 +-
+ drivers/usb/mtu3/mtu3_gadget_ep0.c |   4 +
+ drivers/usb/mtu3/mtu3_hw_regs.h    |  48 ++-
+ drivers/usb/mtu3/mtu3_plat.c       |  28 +-
+ drivers/usb/mtu3/mtu3_qmu.c        | 118 ++++---
+ drivers/usb/mtu3/mtu3_qmu.h        |   1 +
+ drivers/usb/mtu3/mtu3_trace.c      |  23 ++
+ drivers/usb/mtu3/mtu3_trace.h      | 279 +++++++++++++++
+ 15 files changed, 1146 insertions(+), 219 deletions(-)
+ create mode 100644 drivers/usb/mtu3/mtu3_debug.h
+ create mode 100644 drivers/usb/mtu3/mtu3_debugfs.c
+ create mode 100644 drivers/usb/mtu3/mtu3_trace.c
+ create mode 100644 drivers/usb/mtu3/mtu3_trace.h
+
 -- 
 2.20.1
