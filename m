@@ -1,146 +1,65 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v6 1/8] drm/mediatek: recalculate hdmi phy clock of
- MT2701 by querying hardware
-Date: Fri, 22 Mar 2019 14:02:43 +0800
-Message-ID: <1553234563.21474.6.camel@mtksdaap41>
-References: <20190225020912.29120-1-wangyan.wang@mediatek.com>
- <20190225020912.29120-2-wangyan.wang@mediatek.com>
- <1551866854.1001.6.camel@mtksdaap41> <1553138590.18216.26.camel@mtksdaap41>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [PATCH] soc: mediatek: pwrap: Zero initialize rdata in pwrap_init_cipher
+Date: Fri, 22 Mar 2019 15:22:38 +0100
+Message-ID: <CAK8P3a1qw4qMjvF-=0=9tJz_HmWYamS6TDDSPSMz_-XHrevwVA@mail.gmail.com>
+References: <20190307225650.23001-1-natechancellor@gmail.com> <CAKwvOd=Exr0y_3m9aJJEjPbFcWvLPjO6EtKHsXvymAU=WdQHtQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1553138590.18216.26.camel@mtksdaap41>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: wangyan wang <wangyan.wang@mediatek.com>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, srv_heupstream@mediatek.com, chunhui dai <chunhui.dai@mediatek.com>, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Colin Ian King <colin.king@canonical.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAKwvOd=Exr0y_3m9aJJEjPbFcWvLPjO6EtKHsXvymAU=WdQHtQ@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Nick Desaulniers <ndesaulniers@google.com>
+Cc: Nathan Chancellor <natechancellor@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>, clang-built-linux@googlegroups.com
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFdhbmd5YW46CgpPbiBUaHUsIDIwMTktMDMtMjEgYXQgMTE6MjMgKzA4MDAsIENLIEh1IHdy
-b3RlOgo+IEhpLCBXYW5neWFuOgo+IAo+IE9uIFdlZCwgMjAxOS0wMy0wNiBhdCAxODowNyArMDgw
-MCwgQ0sgSHUgd3JvdGU6Cj4gPiBIaSwgV2FuZ3lhbjoKPiA+IAo+ID4gT24gTW9uLCAyMDE5LTAy
-LTI1IGF0IDEwOjA5ICswODAwLCB3YW5neWFuIHdhbmcgd3JvdGU6Cj4gPiA+IEZyb206IGNodW5o
-dWkgZGFpIDxjaHVuaHVpLmRhaUBtZWRpYXRlay5jb20+Cj4gPiA+IAo+ID4gPiBSZWNhbGN1bGF0
-ZSB0aGUgcmF0ZSBvZiB0aGlzIGNsb2NrLCBieSBxdWVyeWluZyBoYXJkd2FyZS4KPiA+ID4gCj4g
-PiA+IFNpZ25lZC1vZmYtYnk6IGNodW5odWkgZGFpIDxjaHVuaHVpLmRhaUBtZWRpYXRlay5jb20+
-Cj4gPiA+IFNpZ25lZC1vZmYtYnk6IHdhbmd5YW4gd2FuZyA8d2FuZ3lhbi53YW5nQG1lZGlhdGVr
-LmNvbT4KPiA+ID4gLS0tCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlf
-cGh5LmMgICAgICAgIHwgIDcgKystLS0tCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2hkbWlfcGh5LmggICAgICAgIHwgIDMgKy0tCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX210MjcwMV9oZG1pX3BoeS5jIHwgMzUgKysrKysrKysrKysrKysrKysrKysrKysr
-KysKPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMg
-fCAgOCArKysrKysKPiA+ID4gIDQgZmlsZXMgY2hhbmdlZCwgNDYgaW5zZXJ0aW9ucygrKSwgNyBk
-ZWxldGlvbnMoLSkKPiA+ID4gCj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2hkbWlfcGh5LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlf
-cGh5LmMKPiA+ID4gaW5kZXggNGVmOWM1N2ZmZDQ0Li4xM2M1ZTY1YjllYWQgMTAwNjQ0Cj4gPiA+
-IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuYwo+ID4gPiArKysg
-Yi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmMKPiA+ID4gQEAgLTI5LDEy
-ICsyOSw5IEBAIGxvbmcgbXRrX2hkbWlfcGxsX3JvdW5kX3JhdGUoc3RydWN0IGNsa19odyAqaHcs
-IHVuc2lnbmVkIGxvbmcgcmF0ZSwKPiA+ID4gIAlyZXR1cm4gcmF0ZTsKPiA+ID4gIH0KPiA+ID4g
-IAo+ID4gPiAtdW5zaWduZWQgbG9uZyBtdGtfaGRtaV9wbGxfcmVjYWxjX3JhdGUoc3RydWN0IGNs
-a19odyAqaHcsCj4gPiA+IC0JCQkJICAgICAgIHVuc2lnbmVkIGxvbmcgcGFyZW50X3JhdGUpCj4g
-PiA+ICt1MzIgbXRrX2hkbWlfcGh5X3JlYWQoc3RydWN0IG10a19oZG1pX3BoeSAqaGRtaV9waHks
-IHUzMiBvZmZzZXQpCj4gPiA+ICB7Cj4gPiA+IC0Jc3RydWN0IG10a19oZG1pX3BoeSAqaGRtaV9w
-aHkgPSB0b19tdGtfaGRtaV9waHkoaHcpOwo+ID4gPiAtCj4gPiA+IC0JcmV0dXJuIGhkbWlfcGh5
-LT5wbGxfcmF0ZTsKPiA+ID4gKwlyZXR1cm4gcmVhZGwoaGRtaV9waHktPnJlZ3MgKyBvZmZzZXQp
-OwoKSW5zaWRlIG10a19oZG1pX3BsbF9yZWNhbGNfcmF0ZSgpLCB0aGVyZSBpcyBqdXN0IG9uZSBm
-dW5jdGlvbiwgd2h5IG5vdApkaXJlY3RseSBjYWxsIHJlYWRsKCkgaW4gdGhlIGNhbGxlciBmdW5j
-dGlvbj8KCj4gPiA+ICB9Cj4gPiA+ICAKPiA+ID4gIHZvaWQgbXRrX2hkbWlfcGh5X2NsZWFyX2Jp
-dHMoc3RydWN0IG10a19oZG1pX3BoeSAqaGRtaV9waHksIHUzMiBvZmZzZXQsCj4gPiA+IGRpZmYg
-LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmggYi9kcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmgKPiA+ID4gaW5kZXggZjM5YjFmYzY2NjEy
-Li5mZGFkOGIxN2E5MTUgMTAwNjQ0Cj4gPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfaGRtaV9waHkuaAo+ID4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2hkbWlfcGh5LmgKPiA+ID4gQEAgLTQxLDYgKzQxLDcgQEAgc3RydWN0IG10a19oZG1pX3BoeSB7
-Cj4gPiA+ICAJdW5zaWduZWQgaW50IGliaWFzX3VwOwo+ID4gPiAgfTsKPiA+ID4gIAo+ID4gPiAr
-dTMyIG10a19oZG1pX3BoeV9yZWFkKHN0cnVjdCBtdGtfaGRtaV9waHkgKmhkbWlfcGh5LCB1MzIg
-b2Zmc2V0KTsKPiA+ID4gIHZvaWQgbXRrX2hkbWlfcGh5X2NsZWFyX2JpdHMoc3RydWN0IG10a19o
-ZG1pX3BoeSAqaGRtaV9waHksIHUzMiBvZmZzZXQsCj4gPiA+ICAJCQkgICAgIHUzMiBiaXRzKTsK
-PiA+ID4gIHZvaWQgbXRrX2hkbWlfcGh5X3NldF9iaXRzKHN0cnVjdCBtdGtfaGRtaV9waHkgKmhk
-bWlfcGh5LCB1MzIgb2Zmc2V0LAo+ID4gPiBAQCAtNTAsOCArNTEsNiBAQCB2b2lkIG10a19oZG1p
-X3BoeV9tYXNrKHN0cnVjdCBtdGtfaGRtaV9waHkgKmhkbWlfcGh5LCB1MzIgb2Zmc2V0LAo+ID4g
-PiAgc3RydWN0IG10a19oZG1pX3BoeSAqdG9fbXRrX2hkbWlfcGh5KHN0cnVjdCBjbGtfaHcgKmh3
-KTsKPiA+ID4gIGxvbmcgbXRrX2hkbWlfcGxsX3JvdW5kX3JhdGUoc3RydWN0IGNsa19odyAqaHcs
-IHVuc2lnbmVkIGxvbmcgcmF0ZSwKPiA+ID4gIAkJCSAgICAgdW5zaWduZWQgbG9uZyAqcGFyZW50
-X3JhdGUpOwo+ID4gPiAtdW5zaWduZWQgbG9uZyBtdGtfaGRtaV9wbGxfcmVjYWxjX3JhdGUoc3Ry
-dWN0IGNsa19odyAqaHcsCj4gPiA+IC0JCQkJICAgICAgIHVuc2lnbmVkIGxvbmcgcGFyZW50X3Jh
-dGUpOwo+ID4gPiAgCj4gPiA+ICBleHRlcm4gc3RydWN0IHBsYXRmb3JtX2RyaXZlciBtdGtfaGRt
-aV9waHlfZHJpdmVyOwo+ID4gPiAgZXh0ZXJuIHN0cnVjdCBtdGtfaGRtaV9waHlfY29uZiBtdGtf
-aGRtaV9waHlfODE3M19jb25mOwo+ID4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19tdDI3MDFfaGRtaV9waHkuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfbXQyNzAxX2hkbWlfcGh5LmMKPiA+ID4gaW5kZXggZmNjNDJkYzZlYTdmLi5iMjVjOWRmYzQz
-MmEgMTAwNjQ0Cj4gPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQyNzAx
-X2hkbWlfcGh5LmMKPiA+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDI3
-MDFfaGRtaV9waHkuYwo+ID4gPiBAQCAtMTUzLDYgKzE1Myw0MSBAQCBzdGF0aWMgaW50IG10a19o
-ZG1pX3BsbF9zZXRfcmF0ZShzdHJ1Y3QgY2xrX2h3ICpodywgdW5zaWduZWQgbG9uZyByYXRlLAo+
-ID4gPiAgCQkJICBSR19IRE1JVFhfRFJWX0lCSUFTX01BU0spOwo+ID4gPiAgCXJldHVybiAwOwo+
-ID4gPiAgfQo+ID4gPiArc3RhdGljIHVuc2lnbmVkIGxvbmcgbXRrX2hkbWlfcGxsX3JlY2FsY19y
-YXRlKHN0cnVjdCBjbGtfaHcgKmh3LAo+ID4gPiArCQkJCSAgICAgICB1bnNpZ25lZCBsb25nIHBh
-cmVudF9yYXRlKQo+ID4gPiArewo+ID4gPiArCXN0cnVjdCBtdGtfaGRtaV9waHkgKmhkbWlfcGh5
-ID0gdG9fbXRrX2hkbWlfcGh5KGh3KTsKPiA+ID4gKwl1bnNpZ25lZCBsb25nIG91dF9yYXRlLCB2
-YWw7Cj4gPiA+ICsKPiA+ID4gKwl2YWwgPSAobXRrX2hkbWlfcGh5X3JlYWQoaGRtaV9waHksIEhE
-TUlfQ09ONikKPiA+ID4gKwkJCSYgUkdfSFRQTExfUFJFRElWX01BU0spID4+IFJHX0hUUExMX1BS
-RURJVjsKPiA+ID4gKwlzd2l0Y2ggKHZhbCkgewo+ID4gPiArCWNhc2UgMHgwMDoKPiA+ID4gKwkJ
-b3V0X3JhdGUgPSBwYXJlbnRfcmF0ZTsKPiA+ID4gKwkJYnJlYWs7Cj4gPiA+ICsJY2FzZSAweDAx
-Ogo+ID4gPiArCQlvdXRfcmF0ZSA9IHBhcmVudF9yYXRlIC8gMjsKPiA+ID4gKwkJYnJlYWs7Cj4g
-PiA+ICsJZGVmYXVsdDoKPiA+ID4gKwkJb3V0X3JhdGUgPSBwYXJlbnRfcmF0ZSAvIDQ7Cj4gPiA+
-ICsJCWJyZWFrOwo+ID4gPiArCX0KPiA+ID4gKwo+ID4gPiArCXZhbCA9IChtdGtfaGRtaV9waHlf
-cmVhZChoZG1pX3BoeSwgSERNSV9DT042KQo+ID4gPiArCQkJJiBSR19IVFBMTF9GQktESVZfTUFT
-SykgPj4gUkdfSFRQTExfRkJLRElWOwo+ID4gPiArCW91dF9yYXRlICo9ICh2YWwgKyAxKSAqIDI7
-Cj4gPiA+ICsJdmFsID0gKG10a19oZG1pX3BoeV9yZWFkKGhkbWlfcGh5LCBIRE1JX0NPTjIpCj4g
-PiA+ICsJCQkmIFJHX0hETUlUWF9UWF9QT1NESVZfTUFTSyk7Cj4gPiA+ICsKPiA+ID4gKwlvdXRf
-cmF0ZSA+Pj0gKHZhbCA+PiBSR19IRE1JVFhfVFhfUE9TRElWKTsKPiA+ID4gKwo+ID4gPiArCWlm
-IChtdGtfaGRtaV9waHlfcmVhZChoZG1pX3BoeSwgSERNSV9DT04yKSAmIFJHX0hETUlUWF9FTl9U
-WF9QT1NESVYpCj4gPiA+ICsJCW91dF9yYXRlID0gb3V0X3JhdGUgLyA1Owo+ID4gPiArCj4gPiAK
-PiA+IEFsbCB0aGUgcmVnaXN0ZXIgeW91IHJlYWQgaGVyZSBpcyBzZXQgaW4gbXRrX2hkbWlfcGxs
-X3NldF9yYXRlKCksIHNvIEkKPiA+IHRoaW5rIHlvdSBjb3VsZCBkZXRlcm1pbmUgdGhlIG91dF9y
-YXRlIGluIG10a19oZG1pX3BsbF9zZXRfcmF0ZSgpLgo+IAo+IEFzIG9mZmxpbmUgZGlzY3Vzcywg
-eW91IG1lbnRpb24gdGhhdCB3aGVuCj4gY2F0IC9zeXMva2VybmVsL2RlYnVnL2NrbC9jbGtfc3Vt
-bWFyeSwgbXRrX2hkbWlfcGxsX3JlY2FsY19yYXRlKCkgaXMKPiBjYWxsZWQsIHNvIHJlYWQgcmVn
-aXN0ZXIgdG8gZ2V0IHRoZSByZWFsIGNsb2NrLiBUaGUgY2xrX3N1bW1hcnkgY2FsbAo+IGNsa19j
-b3JlX2dldF9yYXRlKCkgdG8gZ2V0IHJhdGUsIGFuZCBjbGtfY29yZV9nZXRfcmF0ZSgpIHdvdWxk
-IGNoZWNrIHRoZQo+IGZsYWcgQ0xLX0dFVF9SQVRFX05PQ0FDSEUgdG8gY2FsbCBfX2Nsa19yZWNh
-bGNfcmF0ZXMoKSwgYnV0IG10a19oZG1pX3BoeQo+IGRvZXMgbm90IGhhdmUgdGhpcyBmbGFnLCBz
-byB0aGlzIGZ1bmN0aW9uIHdvdWxkIG5vdCBiZSBjYWxsZWQgd2hlbgo+IGNsa19zdW1tYXJ5LiBT
-byBJIHN0aWxsIHRoaW5rIHlvdSBjb3VsZCBkZXRlcm1pbmUgdGhlIG91dF9yYXRlIGluCj4gbXRr
-X2hkbWlfcGxsX3NldF9yYXRlKCkuCgpBcyBvZmZsaW5lIGRpc2N1c3MsIHJlY2FsY19yYXRlIGlz
-IGRlZmluZWQgYXMgZm9sbG93OgoKICogQHJlY2FsY19yYXRlCVJlY2FsY3VsYXRlIHRoZSByYXRl
-IG9mIHRoaXMgY2xvY2ssIGJ5IHF1ZXJ5aW5nCmhhcmR3YXJlLiBUaGUKICoJCXBhcmVudCByYXRl
-IGlzIGFuIGlucHV0IHBhcmFtZXRlci4gIEl0IGlzIHVwIHRvIHRoZSBjYWxsZXIgdG8KICoJCWVu
-c3VyZSB0aGF0IHRoZSBwcmVwYXJlX211dGV4IGlzIGhlbGQgYWNyb3NzIHRoaXMgY2FsbC4KICoJ
-CVJldHVybnMgdGhlIGNhbGN1bGF0ZWQgcmF0ZS4gIE9wdGlvbmFsLCBidXQgcmVjb21tZW5kZWQg
-LSBpZgogKgkJdGhpcyBvcCBpcyBub3Qgc2V0IHRoZW4gY2xvY2sgcmF0ZSB3aWxsIGJlIGluaXRp
-YWxpemVkIHRvIDAuCgpTbyBpdCBsb29rcyB0aGF0IHJlY2FsY19yYXRlIGlzIGV4cGVjdGVkIHRv
-IHF1ZXJ5IGhhcmR3YXJlIHRvIGdldCB0aGUKb3V0X3JhdGUuIFNvIHRoaXMgaW1wbGVtZW50YXRp
-b24gaXMgT0suCgo+IAo+IFJlZ2FyZHMsCj4gQ0sKPiAKPiA+IAo+ID4gUmVnYXJkcywKPiA+IENL
-Cj4gPiAKPiA+ID4gKwloZG1pX3BoeS0+cGxsX3JhdGUgPSBvdXRfcmF0ZTsKCkkgdGhpbmsgeW91
-IGRvbid0IG5lZWQgdG8gYXNzaWduIGhkbWlfcGh5LT5wbGxfcmF0ZSBpbiBNVDI3MDEgYmVjYXVz
-ZQppdCdzIHVzZWxlc3MgaW4gTVQyNzAxLgoKUmVnYXJkcywKQ0sKCj4gPiA+ICsKPiA+ID4gKwly
-ZXR1cm4gaGRtaV9waHktPnBsbF9yYXRlOwo+ID4gPiArfQo+ID4gPiAgCj4gPiA+ICBzdGF0aWMg
-Y29uc3Qgc3RydWN0IGNsa19vcHMgbXRrX2hkbWlfcGh5X3BsbF9vcHMgPSB7Cj4gPiA+ICAJLnBy
-ZXBhcmUgPSBtdGtfaGRtaV9wbGxfcHJlcGFyZSwKPiA+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMgYi9kcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX210ODE3M19oZG1pX3BoeS5jCj4gPiA+IGluZGV4IGVkNTkxNmIyNzY1OC4u
-Y2IyM2MxZTQ2OTJhIDEwMDY0NAo+ID4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX210ODE3M19oZG1pX3BoeS5jCj4gPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMKPiA+ID4gQEAgLTI4NSw2ICsyODUsMTQgQEAgc3RhdGlj
-IGludCBtdGtfaGRtaV9wbGxfc2V0X3JhdGUoc3RydWN0IGNsa19odyAqaHcsIHVuc2lnbmVkIGxv
-bmcgcmF0ZSwKPiA+ID4gIAlyZXR1cm4gMDsKPiA+ID4gIH0KPiA+ID4gIAo+ID4gPiArc3RhdGlj
-IHVuc2lnbmVkIGxvbmcgbXRrX2hkbWlfcGxsX3JlY2FsY19yYXRlKHN0cnVjdCBjbGtfaHcgKmh3
-LAo+ID4gPiArCQkJCSAgICAgICB1bnNpZ25lZCBsb25nIHBhcmVudF9yYXRlKQo+ID4gPiArewo+
-ID4gPiArCXN0cnVjdCBtdGtfaGRtaV9waHkgKmhkbWlfcGh5ID0gdG9fbXRrX2hkbWlfcGh5KGh3
-KTsKPiA+ID4gKwo+ID4gPiArCXJldHVybiBoZG1pX3BoeS0+cGxsX3JhdGU7Cj4gPiA+ICt9Cj4g
-PiA+ICsKPiA+ID4gIHN0YXRpYyBjb25zdCBzdHJ1Y3QgY2xrX29wcyBtdGtfaGRtaV9waHlfcGxs
-X29wcyA9IHsKPiA+ID4gIAkucHJlcGFyZSA9IG10a19oZG1pX3BsbF9wcmVwYXJlLAo+ID4gPiAg
-CS51bnByZXBhcmUgPSBtdGtfaGRtaV9wbGxfdW5wcmVwYXJlLAo+ID4gCj4gCgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
-bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+On Fri, Mar 8, 2019 at 1:18 AM 'Nick Desaulniers' via Clang Built
+Linux <clang-built-linux@googlegroups.com> wrote:
+>
+> On Thu, Mar 7, 2019 at 2:57 PM Nathan Chancellor
+> <natechancellor@gmail.com> wrote:
+> >
+> > When building with -Wsometimes-uninitialized, Clang warns:
+> >
+> > drivers/soc/mediatek/mtk-pmic-wrap.c:1358:6: error: variable 'rdata' is
+> > used uninitialized whenever '||' condition is true
+> > [-Werror,-Wsometimes-uninitialized]
+> >
+> > If pwrap_write returns non-zero, pwrap_read will not be called to
+> > initialize rdata, meaning that we will use some random uninitialized
+> > stack value in our print statement. Zero initialize rdata in case this
+> > happens.
+> >
+> > Link: https://github.com/ClangBuiltLinux/linux/issues/401
+> > Signed-off-by: Nathan Chancellor <natechancellor@gmail.com>
+> > ---
+> >
+> > I don't know if this is better or to just restructure the if statement
+> > below (I'm not an expert in this code so I'll leave that up to the
+> > maintainers to decide).
+>
+> No, I the way you have it here is most correct.  That condition writes
+> a value somewhere, reads it back, then compares it.  The write or read
+> could fail.  Better to just initialize rdata in case the write fails.
+> Thanks for the patch.
+> Reviewed-by: Nick Desaulniers <ndesaulniers@google.com>
+
+I also came up with a similar patch here, but I move the initialization
+to just before the first use of the variable:
+
+diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c
+b/drivers/soc/mediatek/mtk-pmic-wrap.c
+index 8236a6c87e19..eb5035fd8ecd 100644
+--- a/drivers/soc/mediatek/mtk-pmic-wrap.c
++++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+@@ -1355,6 +1355,7 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
+        pwrap_writel(wrp, 1, PWRAP_CIPHER_MODE);
+
+        /* Write Test */
++       rdata = 0;
+        if (pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_WRITE_TEST],
+                        PWRAP_DEW_WRITE_TEST_VAL) ||
+            pwrap_read(wrp, wrp->slave->dew_regs[PWRAP_DEW_WRITE_TEST],
+
+Very little difference, so let's go with your patch
+
+Reviewed-by: Arnd Bergmann <arnd@arndb.de>
