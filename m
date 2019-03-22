@@ -1,309 +1,160 @@
-From: Jungo Lin <jungo.lin@mediatek.com>
-Subject: Re: [RFC PATCH V0 7/7] [media] platform: mtk-isp: Add Mediatek ISP
- Pass 1 driver
-Date: Fri, 22 Mar 2019 10:20:53 +0800
-Message-ID: <1553221253.7066.32.camel@mtksdccf07>
-References: <1549348966-14451-1-git-send-email-frederic.chen@mediatek.com>
- <1549348966-14451-8-git-send-email-frederic.chen@mediatek.com>
- <CAAFQd5CUi9MqZ+j+DhRZtgByvfVH-FBFJHiaxb_JOqsLGNoK2Q@mail.gmail.com>
- <1552460044.13953.114.camel@mtksdccf07>
- <CAAFQd5CAY73b4jR=BFaJnhnHL-4QfEV7kQsiQusf=k-KghO0=g@mail.gmail.com>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Subject: Re: [PATCH v2] gpu/drm: mediatek: call mtk_dsi_stop() after mtk_drm_crtc_atomic_disable()
+Date: Fri, 22 Mar 2019 13:05:54 +0800
+Message-ID: <CAJMQK-g3JZ3Eg5U9OmYP9UU3k22VXGWOvZSBrFtAFFHw0Uq0cA@mail.gmail.com>
+References: <20190320071825.20268-1-hsinyi@chromium.org> <1553131722.18216.10.camel@mtksdaap41>
+ <1553132815.18216.18.camel@mtksdaap41> <CAJMQK-j9af8_L7DsWzgUy3=0Mr65FFeU71owan+acQgRuAnE7w@mail.gmail.com>
+ <1553217695.25217.5.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAAFQd5CAY73b4jR=BFaJnhnHL-4QfEV7kQsiQusf=k-KghO0=g@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: Sean Cheng =?UTF-8?Q?=28=E9=84=AD=E6=98=87=E5=BC=98=29?= <Sean.Cheng@mediatek.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Rynn Wu =?UTF-8?Q?=28=E5=90=B3=E8=82=B2=E6=81=A9=29?= <Rynn.Wu@mediatek.com>, srv_heupstream@mediatek.com, Mauro Carvalho Chehab <mchehab@kernel.org>, Holmes Chiou =?UTF-8?Q?=28=E9=82=B1=E6=8C=BA=29?= <holmes.chiou@mediatek.com>, Jerry-ch Chen <Jerry-ch.Chen@mediatek.com>, Sj Huang <sj.huang@mediatek.com>, yuzhao@chromium.org, Christie Yu =?UTF-8?Q?=28=E6=B8=B8=E9=9B=85=E6=83=A0=29?= <christie.yu@mediatek.com>, zwisler@chromium.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Frederic Chen <frederic.chen@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, "list@263.net:IOMMU DRIVERS
- <iommu@lists.linux-foundation.org>, Joerg  Roedel <joro@8bytes.org>,
- " <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1553217695.25217.5.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: CK Hu <ck.hu@mediatek.com>
+Cc: linux-arm-kernel@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, jitao.shi@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2019-03-21 at 12:59 +0900, Tomasz Figa wrote:
-> On Wed, Mar 13, 2019 at 3:54 PM Jungo Lin <jungo.lin@mediatek.com> wrote:
-> >
-> > On Tue, 2019-03-12 at 19:04 +0900, Tomasz Figa wrote:
-> [snip]
-> > > Instead of opencoding most of this function, one would normally call
-> > > mtk_cam_videoc_try_fmt() first to adjust the format struct and then
-> > > just update the driver state with the adjusted format.
+On Fri, Mar 22, 2019 at 9:21 AM CK Hu <ck.hu@mediatek.com> wrote:
+>
+> Hi, Hsin-yi:
+>
+> On Thu, 2019-03-21 at 22:09 +0800, Hsin-Yi Wang wrote:
+> > On Thu, Mar 21, 2019 at 9:46 AM CK Hu <ck.hu@mediatek.com> wrote:
 > > >
-> > > Also, similarly to VIDIOC_TRY_FMT, VIDIOC_SET_FMT doesn't fail unless
-> > > in the very specific cases, as described in
-> > > https://www.kernel.org/doc/html/latest/media/uapi/v4l/vidioc-g-fmt.html#return-value
-> > > .
+> > > Hi, Hsin-yi:
 > > >
+> > > On Thu, 2019-03-21 at 09:28 +0800, CK Hu wrote:
+> > > > Hi, Hsin-yi:
+> > > >
+> > > > On Wed, 2019-03-20 at 15:18 +0800, Hsin-Yi Wang wrote:
+> > > > > mtk_dsi_stop() should be called after mtk_drm_crtc_atomic_disable(), which needs
+> > > > > ovl irq for drm_crtc_wait_one_vblank(), since after mtk_dsi_stop() is called,
+> > > > > ovl irq will be disabled. If drm_crtc_wait_one_vblank() is called after last
+> > > > > irq, it will timeout with this message: "vblank wait timed out on crtc 0". This
+> > > > > happens sometimes when turning off the screen.
+> > > > >
+> > > > > In drm_atomic_helper.c#disable_outputs(),
+> > > > > the calling sequence when turning off the screen is:
+> > > > >
+> > > > > 1. mtk_dsi_encoder_disable()
+> > > > >      --> mtk_output_dsi_disable()
+> > > > >        --> mtk_dsi_stop();  // sometimes make vblank timeout in atomic_disable
+> > > > >        --> mtk_dsi_poweroff();
+> > > > > 2. mtk_drm_crtc_atomic_disable()
+> > > > >      --> drm_crtc_wait_one_vblank();
+> > > > >      ...
+> > > > >        --> mtk_dsi_ddp_stop()
+> > > > >          --> mtk_dsi_poweroff();
+> > > > >
+> > > > > mtk_dsi_poweroff() has reference count design, change to make mtk_dsi_stop()
+> > > > > called in mtk_dsi_poweroff() when refcount is 0.
+> > > > >
+> > > > > Fixes: 0707632b5bac ("drm/mediatek: update DSI sub driver flow for sending commands to panel")
+> > > > > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> > > > > ---
+> > > > > change log:
+> > > > > v1->v2:
+> > > > >  * update commit message.
+> > > > >  * call mtk_dsi_stop() in mtk_dsi_poweroff() when refcount is 0.
+> > > > > ---
+> > > > >  drivers/gpu/drm/mediatek/mtk_dsi.c | 5 ++++-
+> > > > >  1 file changed, 4 insertions(+), 1 deletion(-)
+> > > > >
+> > > > > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > > > > index b00eb2d2e086..e152f37af57d 100644
+> > > > > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > > > > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > > > > @@ -630,6 +630,8 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
+> > > > >     if (--dsi->refcount != 0)
+> > > > >             return;
+> > > > >
+> > > > > +   mtk_dsi_stop(dsi);
+> > > > > +
+> > > > >     if (!mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500)) {
+> > > > >             if (dsi->panel) {
+> > > > >                     if (drm_panel_unprepare(dsi->panel)) {
+> > > >
+> > > > I think you just move mtk_dsi_stop() into mtk_dsi_poweroff() would works
+> > > > fine, but I would rather like calling mtk_dsi_start() and mtk_dsi_stop()
+> > > > in a symmetric manner. That means you may also move below functions into
+> > > > mtk_dsi_poweron():
+> > > >
+> > > > mtk_dsi_set_mode(dsi);
+> > > > mtk_dsi_clk_hs_mode(dsi, 1);
+> > > > mtk_dsi_start(dsi);
 > >
-> > Ok, below is our revised version of this function.
+> > For MT8183 with bridge panel, calling mtk_dsi_start() in
+> > mtk_dsi_poweron() when refcount is 0->1, like the following order,
+> > will results in no irq, not sure why though. I think this might be the
+> > timing issue you mentioned in patch v1. (MT8183 without bridge panel
+> > doesn't have this issue.)
 > >
-> > int mtk_cam_videoc_s_fmt(struct file *file, void *fh,
-> >                          struct v4l2_format *f)
-> > {
-> >         struct mtk_cam_mem2mem2_device *m2m2 = video_drvdata(file);
-> >         struct mtk_cam_dev *cam_dev = mtk_cam_m2m_to_dev(m2m2);
-> >         struct mtk_cam_video_device *node = file_to_mtk_cam_node(file);
+> > atomic_enable
+> >   --> mtk_crtc_ddp_hw_init
+> >     --> mtk_dsi_ddp_start
+> >       --> mtk_dsi_poweron (ref 0->1)
+> >         --> drm_panel_prepare
+> >         --> *mtk_dsi_start  // results in no irq for MT8183 with bridge
+> >   --> drm_crtc_vblank_on
 > >
-> >         /* Get the valid format*/
-> >         mtk_cam_videoc_try_fmt(file, fh, f);
-> >         /* Configure to video device */
-> >         mtk_cam_ctx_fmt_set_img(&cam_dev->pdev->dev,
-> >                                 &node->vdev_fmt.fmt.pix_mp,
-> >                                 &f->fmt.pix_mp,
-> >                                 node->queue_id);
+> > mtk_output_dsi_enable
+> >   --> mtk_dsi_poweron (ref 1->2, ignored)
+> >   --> mtk_dsi_start //original position
 > >
-> >         return 0;
-> > }
-> >
-> 
-> Looks almost good. We still need to signal the -EBUSY error condition
-> if an attempt to change the format is made while streaming is active.
-> 
-> [snip]
+> > For mtk_dsi_stop() both with or without bridge is fine.
+Add cc Jitao.
 
-Ok, we will add streaming status checking in this function.
+Hi Jitao,
+Do you know if this is a known hardware behavior?
 
-> > > > +static int mtk_cam_videoc_s_meta_fmt(struct file *file,
-> > > > +                                    void *fh, struct v4l2_format *f)
-> > > > +{
-> > > > +       struct mtk_cam_mem2mem2_device *m2m2 = video_drvdata(file);
-> > > > +       struct mtk_cam_dev *isp_dev = mtk_cam_m2m_to_dev(m2m2);
-> > > > +       struct mtk_cam_ctx *dev_ctx = &isp_dev->ctx;
-> > > > +       struct mtk_cam_dev_video_device *node = file_to_mtk_cam_node(file);
-> > > > +       int queue_id = mtk_cam_dev_get_queue_id_of_dev_node(isp_dev, node);
-> > > > +
+Thanks
+>
+> I'm not familiar with dsi hardware, so I could not answer why this
+> problem happen. Jitao is familiar with dsi hardware, you may ask him for
+> help. If this is hardware behavior, I could accept asymmetric flow, but
+> please be sure this is hardware behavior not software bug.
+>
+> Regards,
+> CK
+>
+> >
+> > > >
+> > > >
+> > > > > @@ -696,7 +698,6 @@ static void mtk_output_dsi_disable(struct mtk_dsi *dsi)
+> > > > >             }
+> > > > >     }
+> > > > >
+> > > > > -   mtk_dsi_stop(dsi);
+> > > > >     mtk_dsi_poweroff(dsi);
+> > > > >
+> > > > >     dsi->enabled = false;
+> > > > > @@ -1178,6 +1179,8 @@ static int mtk_dsi_remove(struct platform_device *pdev)
+> > > > >     struct mtk_dsi *dsi = platform_get_drvdata(pdev);
+> > > > >
+> > > > >     mtk_output_dsi_disable(dsi);
+> > > > > +   mtk_dsi_stop(dsi);
+> > > > > +   mtk_dsi_poweroff(dsi);
+> > > >
+> > > > I think mtk_output_dsi_disable() would call mtk_dsi_poweroff(), and
+> > > > mtk_dsi_poweroff() would call mtk_dsi_stop(), so these two line are
+> > > > redundant. And I think you should remove mtk_dsi_stop() in
+> > > > mtk_output_dsi_disable(), why not in this patch?
 > > >
-> > > No need for this blank line.
+> > > You've removed mtk_dsi_stop() in mtk_output_dsi_disable(), I just miss
+> > > it, sorry for this.
 > > >
-> >
-> > We will fix this coding style in next patch.
-> >
-> > > > +       int ret = 0;
+> > > Regards,
+> > > CK
 > > >
-> > > Please don't default-initialize without a good reason.
+> > > >
+> > > > Regards,
+> > > > CK
+> > > >
+> > > > >     component_del(&pdev->dev, &mtk_dsi_component_ops);
+> > > > >
+> > > > >     return 0;
+> > > >
 > > >
-> >
-> > Ok, fix in next patch.
-> >
-> > > > +
-> > > > +       if (f->type != node->vbq.type)
-> > > > +               return -EINVAL;
 > > >
-> > > Ditto.
-> > >
-> >
-> > Ok, fix in next patch.
-> >
-> > > > +
-> > > > +       ret = mtk_cam_ctx_format_load_default_fmt(&dev_ctx->queue[queue_id], f);
-> > > > +
-> > >
-> > > No need for this blank line.
-> > >
-> >
-> > Ok, fix in next patch.
-> >
-> > > > +       if (!ret) {
-> > > > +               node->vdev_fmt.fmt.meta = f->fmt.meta;
-> > > > +               dev_ctx->queue[queue_id].fmt.meta = node->vdev_fmt.fmt.meta;
-> > > > +       } else {
-> > > > +               dev_warn(&isp_dev->pdev->dev,
-> > > > +                        "s_meta_fm failed, format not support\n");
-> > >
-> > > No need for this warning.
-> > >
-> >
-> > Ok, fix in next patch.
-> >
-> > > > +       }
-> > > > +
-> > > > +       return ret;
-> > > > +}
-> > >
-> > > Actually, why do we even need to do all the things? Do we support
-> > > multiple different meta formats on the same video node? If not, we can
-> > > just have all the TRY_FMT/S_FMT/G_FMT return the hardcoded format.
-> > >
-> >
-> > Ok, it is a good idea. We will return the hardcode format for meta video
-> > devices.
-> > Below is the revision version.
-> >
-> > int mtk_cam_meta_enum_format(struct file *file,
-> >                              void *fh, struct v4l2_fmtdesc *f)
-> > {
-> >         struct mtk_cam_video_device *node = file_to_mtk_cam_node(file);
-> >
-> >         f->pixelformat = node->vdev_fmt.fmt.meta.dataformat;
-> >
-> >         return 0;
-> > }
-> 
-> Need to error out if f->index > 0. Also need to initialize the other
-> output fields - flags and description.
-> 
-> [snip]
-
-Ok, we will add format index & type checking in the beginning of this
-function. Moreover, we will initialize flags & description based on
-current meta format value. 
-
-> > > > +static u32 mtk_cam_node_get_v4l2_cap(struct mtk_cam_ctx_queue *node_ctx)
-> > > > +{
-> > > > +       u32 cap = 0;
-> > > > +
-> > > > +       if (node_ctx->desc.capture)
-> > > > +               if (node_ctx->desc.image)
-> > > > +                       cap = V4L2_CAP_VIDEO_CAPTURE_MPLANE;
-> > > > +               else
-> > > > +                       cap = V4L2_CAP_META_CAPTURE;
-> > > > +       else
-> > > > +               if (node_ctx->desc.image)
-> > > > +                       cap = V4L2_CAP_VIDEO_OUTPUT_MPLANE;
-> > > > +               else
-> > > > +                       cap = V4L2_CAP_META_OUTPUT;
-> > > > +
-> > > > +       return cap;
-> > > > +}
-> > >
-> > > Why not just have this defined statically as node_ctx->desc.cap?
-> > >
-> >
-> > Ok, it is refactoring done.
-> >
-> > > > +
-> > > > +static u32 mtk_cam_node_get_format_type(struct mtk_cam_ctx_queue *node_ctx)
-> > > > +{
-> > > > +       u32 type;
-> > > > +
-> > > > +       if (node_ctx->desc.capture)
-> > > > +               if (node_ctx->desc.image)
-> > > > +                       type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
-> > > > +               else
-> > > > +                       type = V4L2_BUF_TYPE_META_CAPTURE;
-> > > > +       else
-> > > > +               if (node_ctx->desc.image)
-> > > > +                       type = V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
-> > > > +               else
-> > > > +                       type = V4L2_BUF_TYPE_META_OUTPUT;
-> > > > +
-> > > > +       return type;
-> > > > +}
-> > >
-> > > Why not just have this defined statically as node_ctx->desc.buf_type?
-> > >
-> >
-> > Same as above.
-> >
-> > > > +
-> > > > +static const struct v4l2_ioctl_ops *mtk_cam_node_get_ioctl_ops
-> > > > +       (struct mtk_cam_ctx_queue *node_ctx)
-> > > > +{
-> > > > +       const struct v4l2_ioctl_ops *ops = NULL;
-> > > > +
-> > > > +       if (node_ctx->desc.image)
-> > > > +               ops = &mtk_cam_v4l2_ioctl_ops;
-> > > > +       else
-> > > > +               ops = &mtk_cam_v4l2_meta_ioctl_ops;
-> > > > +       return ops;
-> > > > +}
-> > >
-> > > It's also preferable to just put this inside some structure rather
-> > > than have getter functions. (node_ctx->desc.ioctl_ops?)
-> > >
-> >
-> > Same as above.
-> > Below is the new version for struct mtk_cam_ctx_queue_desc
-> >
-> > /*
-> >  * struct mtk_cam_ctx_queue_desc - queue attributes
-> >  *                              setup by device context owner
-> >  * @id:         id of the context queue
-> >  * @name:               media entity name
-> >  * @cap:                mapped to V4L2 capabilities
-> >  * @buf_type:   mapped to V4L2 buffer type
-> >  * @capture:    true for capture queue (device to user)
-> >  *                              false for output queue (from user to device)
-> >  * @image:              true for image, false for meta data
-> >  * @smem_alloc: Using the cam_smem_drv as alloc ctx or not
-> >  * @dma_port:   the dma port associated to the buffer
-> >  * @fmts:       supported format
-> >  * @num_fmts:   the number of supported formats
-> >  * @default_fmt_idx: default format of this queue
-> >  * @max_buf_count: maximum V4L2 buffer count
-> >  * @max_buf_count: mapped to v4l2_ioctl_ops
-> >  */
-> > struct mtk_cam_ctx_queue_desc {
-> >         u8 id;
-> >         char *name;
-> >         u32 cap;
-> >         u32 buf_type;
-> >         u32 dma_port;
-> >         u32 smem_alloc:1;
-> >         u8 capture:1;
-> >         u8 image:1;
-> >         u8 num_fmts;
-> >         u8 default_fmt_idx;
-> >         u8 max_buf_count;
-> >         const struct v4l2_ioctl_ops *ioctl_ops;
-> >         struct v4l2_format *fmts;
-> > };
-> 
-> SGTM +/- the missing kerneldoc for the new fields.
-> 
-> [snip]
-
-Ok, we will fix the missing part.
-
-> > > Sorry, ran out of time for today. Fourth part will come. :)
-> > >
-> > > Best regards,
-> > > Tomasz
-> > >
-> >
-> > Appreciate your support and hard working on this review.
-> > We will look forward your part 4 review.
-> 
-> Thanks for replying to all the comments, it's very helpful.
-> 
-> As I mentioned in another reply, I'm going to be busy for the next few
-> days, so I'd suggest addressing the existing comments, fixing any
-> v4l2-compliance issues and also checking if any changes could be
-> applied to the other drivers (DIP, FD, Seninf, MDP) too and then
-> sending RFC V1.
-> 
-> Best regards,
-> Tomasz
-
-Ok, we will deliver the RFC V1 next week.
-Btw, for v4l2-compliance testing, we have some questions about this.
-We list these two issues below.
-If you have time, please kindly provide your comments.
-Or we could discuss these two issues in RFC V1.
-
-
-1. Kernel minor issue for 32 bit test program.
-=> fail: v4l2-test-media.cpp(368): check_0(links.reserved,
-sizeof(links.reserved))
-This issue is similar to below patch.
-https://patchwork.kernel.org/patch/8578421/
-The reserved fields of media_links_enum is missing copy from kernel
-space to user space in media_device_enum_links32 function.
-So it makes the above failed.
-Do we provide our patch to fix it?
-
-2. Some v4l2-compliance testing results are failed in the sensor
-drivers's sub devices nodes. which are implemented in ov5695 & ov2685
-driver. Do you suggest us to fix them?
-
-Best regards,
-
-Jungo
+>
+>
