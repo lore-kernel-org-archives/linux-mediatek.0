@@ -1,138 +1,116 @@
-From: Jungo Lin <jungo.lin@mediatek.com>
-Subject: Re: [RFC PATCH V0 7/7] [media] platform: mtk-isp: Add Mediatek ISP
- Pass 1 driver
-Date: Fri, 22 Mar 2019 08:17:57 +0800
-Message-ID: <1553213877.7066.16.camel@mtksdccf07>
-References: <1549348966-14451-1-git-send-email-frederic.chen@mediatek.com>
- <1549348966-14451-8-git-send-email-frederic.chen@mediatek.com>
- <CAAFQd5BGFmTbRF+LdRvXs0MBZifRd9zB_+OT6Xwo=dzwqajgGA@mail.gmail.com>
- <1552378607.13953.71.camel@mtksdccf07>
- <CAAFQd5C=dmoUU9=FdkaeErSFVpA--uFZJ0P1jrb3DTXFZ_tdpg@mail.gmail.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v2] gpu/drm: mediatek: call mtk_dsi_stop() after
+ mtk_drm_crtc_atomic_disable()
+Date: Fri, 22 Mar 2019 09:21:35 +0800
+Message-ID: <1553217695.25217.5.camel@mtksdaap41>
+References: <20190320071825.20268-1-hsinyi@chromium.org>
+ <1553131722.18216.10.camel@mtksdaap41>
+ <1553132815.18216.18.camel@mtksdaap41>
+ <CAJMQK-j9af8_L7DsWzgUy3=0Mr65FFeU71owan+acQgRuAnE7w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAAFQd5C=dmoUU9=FdkaeErSFVpA--uFZJ0P1jrb3DTXFZ_tdpg@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: Sean Cheng =?UTF-8?Q?=28=E9=84=AD=E6=98=87=E5=BC=98=29?= <Sean.Cheng@mediatek.com>, Frederic Chen <frederic.chen@mediatek.com>, Rynn Wu =?UTF-8?Q?=28=E5=90=B3=E8=82=B2=E6=81=A9=29?= <Rynn.Wu@mediatek.com>, Christie Yu =?UTF-8?Q?=28=E6=B8=B8=E9=9B=85=E6=83=A0=29?= <christie.yu@mediatek.com>, srv_heupstream@mediatek.com, Holmes Chiou =?UTF-8?Q?=28=E9=82=B1=E6=8C=BA=29?= <holmes.chiou@mediatek.com>, Jerry-ch Chen <Jerry-ch.Chen@mediatek.com>, yuzhao@chromium.org, Sj Huang <sj.huang@mediatek.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, linux-mediatek@lists.infradead.org, zwisler@chromium.org, Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil <hans.verkuil@cisco.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, "list@263.net:IOMMU DRIVERS
- <iommu@lists.linux-foundation.org>, Joerg  Roedel <joro@8bytes.org>,
- " <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAJMQK-j9af8_L7DsWzgUy3=0Mr65FFeU71owan+acQgRuAnE7w@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2019-03-21 at 12:48 +0900, Tomasz Figa wrote:
-> On Tue, Mar 12, 2019 at 5:16 PM Jungo Lin <jungo.lin@mediatek.com> wrote:
-> >
-> > On Thu, 2019-03-07 at 19:04 +0900, Tomasz Figa wrote:
-> [snip]
-> > > > +struct mtk_cam_mem2mem2_device {
-> > > > +       const char *name;
-> > > > +       const char *model;
-> > >
-> > > For both of the fields above, they seem to be always
-> > > MTK_CAM_DEV_P1_NAME, so we can just use the macro directly whenever
-> > > needed. No need for this indirection.
-> > >
-> >
-> > OK. These two fields will be removed in next patch.
-> >
-> > > > +       struct device *dev;
-> > > > +       int num_nodes;
-> > > > +       struct mtk_cam_dev_video_device *nodes;
-> > > > +       const struct vb2_mem_ops *vb2_mem_ops;
-> > >
-> > > This is always "vb2_dma_contig_memops", so it can be used directly.
-> > >
-> >
-> > Ditto.
-> >
-> > > > +       unsigned int buf_struct_size;
-> > >
-> > > This is always sizeof(struct mtk_cam_dev_buffer), so no need to save
-> > > it in the struct.
-> > >
-> >
-> > Ditto.
-> >
-> > > > +       int streaming;
-> > > > +       struct v4l2_device *v4l2_dev;
-> > > > +       struct media_device *media_dev;
-> > >
-> > > These 2 fields are already in mtk_cam_dev which is a superclass of
-> > > this struct. One can just access them from there directly.
-> > >
-> >
-> > Ditto.
-> >
-> > > > +       struct media_pipeline pipeline;
-> > > > +       struct v4l2_subdev subdev;
-> > >
-> > > Could you remind me what was the media topology exposed by this
-> > > driver? This is already the second subdev I spotted in this patch,
-> > > which looks strange.
-> > >
-> >
-> >
-> > For sub-device design, we will remove the sub-device for CIO and keep
-> > only one sub-device for ISP driver in next patch. We will also provide
-> > the media topology in RFC v1 patch to clarify.
-> >
-> > > > +       struct media_pad *subdev_pads;
-> > > > +       struct v4l2_file_operations v4l2_file_ops;
-> > > > +       const struct file_operations fops;
-> > > > +};
-> > >
-> > > Given most of the comments above, it looks like the remaining useful
-> > > fields in this struct could be just moved to mtk_cam_dev, without the
-> > > need for this separate struct.
-> > >
-> >
-> > This is the final revision for these two structures.
-> > Do you suggest to merge it to simplify?
-> >
-> > struct mtk_cam_mem2mem2_device {
-> >         struct mtk_cam_video_device *nodes;
-> >         struct media_pipeline pipeline;
-> >         struct v4l2_subdev subdev;
-> >         struct media_pad *subdev_pads;
-> > };
-> >
-> > struct mtk_cam_dev {
-> >         struct platform_device *pdev;
-> >         struct mtk_cam_video_device     mem2mem2_nodes[MTK_CAM_DEV_NODE_MAX];
-> >         struct mtk_cam_mem2mem2_device mem2mem2;
-> >         struct mtk_cam_io_connection cio;
-> >         struct v4l2_device v4l2_dev;
-> >         struct media_device media_dev;
-> >         struct mtk_cam_ctx ctx;
-> >         struct v4l2_async_notifier notifier;
-> > };
-> >
-> 
-> I feel like there is not much benefit in having this split. Similarly,
-> I'm not sure if there is a reason to have separate structs for
-> mtk_cam_io_connection and mtk_cam_ctx.
-> 
-> (Sorry, missed this one in previous reply.)
-> 
-> Best regards,
-> Tomasz
-
-Ok, agree your comment.
-We will remove both mtk_cam_io_connection and mtk_cam_ctx and
-merge those fields into mtk_cam_dev.
-
-Thanks for your suggestion.
-
-Best regards,
-
-
-Jungo
+SGksIEhzaW4teWk6CgpPbiBUaHUsIDIwMTktMDMtMjEgYXQgMjI6MDkgKzA4MDAsIEhzaW4tWWkg
+V2FuZyB3cm90ZToKPiBPbiBUaHUsIE1hciAyMSwgMjAxOSBhdCA5OjQ2IEFNIENLIEh1IDxjay5o
+dUBtZWRpYXRlay5jb20+IHdyb3RlOgo+ID4KPiA+IEhpLCBIc2luLXlpOgo+ID4KPiA+IE9uIFRo
+dSwgMjAxOS0wMy0yMSBhdCAwOToyOCArMDgwMCwgQ0sgSHUgd3JvdGU6Cj4gPiA+IEhpLCBIc2lu
+LXlpOgo+ID4gPgo+ID4gPiBPbiBXZWQsIDIwMTktMDMtMjAgYXQgMTU6MTggKzA4MDAsIEhzaW4t
+WWkgV2FuZyB3cm90ZToKPiA+ID4gPiBtdGtfZHNpX3N0b3AoKSBzaG91bGQgYmUgY2FsbGVkIGFm
+dGVyIG10a19kcm1fY3J0Y19hdG9taWNfZGlzYWJsZSgpLCB3aGljaCBuZWVkcwo+ID4gPiA+IG92
+bCBpcnEgZm9yIGRybV9jcnRjX3dhaXRfb25lX3ZibGFuaygpLCBzaW5jZSBhZnRlciBtdGtfZHNp
+X3N0b3AoKSBpcyBjYWxsZWQsCj4gPiA+ID4gb3ZsIGlycSB3aWxsIGJlIGRpc2FibGVkLiBJZiBk
+cm1fY3J0Y193YWl0X29uZV92YmxhbmsoKSBpcyBjYWxsZWQgYWZ0ZXIgbGFzdAo+ID4gPiA+IGly
+cSwgaXQgd2lsbCB0aW1lb3V0IHdpdGggdGhpcyBtZXNzYWdlOiAidmJsYW5rIHdhaXQgdGltZWQg
+b3V0IG9uIGNydGMgMCIuIFRoaXMKPiA+ID4gPiBoYXBwZW5zIHNvbWV0aW1lcyB3aGVuIHR1cm5p
+bmcgb2ZmIHRoZSBzY3JlZW4uCj4gPiA+ID4KPiA+ID4gPiBJbiBkcm1fYXRvbWljX2hlbHBlci5j
+I2Rpc2FibGVfb3V0cHV0cygpLAo+ID4gPiA+IHRoZSBjYWxsaW5nIHNlcXVlbmNlIHdoZW4gdHVy
+bmluZyBvZmYgdGhlIHNjcmVlbiBpczoKPiA+ID4gPgo+ID4gPiA+IDEuIG10a19kc2lfZW5jb2Rl
+cl9kaXNhYmxlKCkKPiA+ID4gPiAgICAgIC0tPiBtdGtfb3V0cHV0X2RzaV9kaXNhYmxlKCkKPiA+
+ID4gPiAgICAgICAgLS0+IG10a19kc2lfc3RvcCgpOyAgLy8gc29tZXRpbWVzIG1ha2UgdmJsYW5r
+IHRpbWVvdXQgaW4gYXRvbWljX2Rpc2FibGUKPiA+ID4gPiAgICAgICAgLS0+IG10a19kc2lfcG93
+ZXJvZmYoKTsKPiA+ID4gPiAyLiBtdGtfZHJtX2NydGNfYXRvbWljX2Rpc2FibGUoKQo+ID4gPiA+
+ICAgICAgLS0+IGRybV9jcnRjX3dhaXRfb25lX3ZibGFuaygpOwo+ID4gPiA+ICAgICAgLi4uCj4g
+PiA+ID4gICAgICAgIC0tPiBtdGtfZHNpX2RkcF9zdG9wKCkKPiA+ID4gPiAgICAgICAgICAtLT4g
+bXRrX2RzaV9wb3dlcm9mZigpOwo+ID4gPiA+Cj4gPiA+ID4gbXRrX2RzaV9wb3dlcm9mZigpIGhh
+cyByZWZlcmVuY2UgY291bnQgZGVzaWduLCBjaGFuZ2UgdG8gbWFrZSBtdGtfZHNpX3N0b3AoKQo+
+ID4gPiA+IGNhbGxlZCBpbiBtdGtfZHNpX3Bvd2Vyb2ZmKCkgd2hlbiByZWZjb3VudCBpcyAwLgo+
+ID4gPiA+Cj4gPiA+ID4gRml4ZXM6IDA3MDc2MzJiNWJhYyAoImRybS9tZWRpYXRlazogdXBkYXRl
+IERTSSBzdWIgZHJpdmVyIGZsb3cgZm9yIHNlbmRpbmcgY29tbWFuZHMgdG8gcGFuZWwiKQo+ID4g
+PiA+IFNpZ25lZC1vZmYtYnk6IEhzaW4tWWkgV2FuZyA8aHNpbnlpQGNocm9taXVtLm9yZz4KPiA+
+ID4gPiAtLS0KPiA+ID4gPiBjaGFuZ2UgbG9nOgo+ID4gPiA+IHYxLT52MjoKPiA+ID4gPiAgKiB1
+cGRhdGUgY29tbWl0IG1lc3NhZ2UuCj4gPiA+ID4gICogY2FsbCBtdGtfZHNpX3N0b3AoKSBpbiBt
+dGtfZHNpX3Bvd2Vyb2ZmKCkgd2hlbiByZWZjb3VudCBpcyAwLgo+ID4gPiA+IC0tLQo+ID4gPiA+
+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jIHwgNSArKysrLQo+ID4gPiA+ICAx
+IGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4gPiA+ID4KPiA+
+ID4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyBiL2Ry
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiA+ID4gPiBpbmRleCBiMDBlYjJkMmUw
+ODYuLmUxNTJmMzdhZjU3ZCAxMDA2NDQKPiA+ID4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX2RzaS5jCj4gPiA+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19kc2kuYwo+ID4gPiA+IEBAIC02MzAsNiArNjMwLDggQEAgc3RhdGljIHZvaWQgbXRrX2RzaV9w
+b3dlcm9mZihzdHJ1Y3QgbXRrX2RzaSAqZHNpKQo+ID4gPiA+ICAgICBpZiAoLS1kc2ktPnJlZmNv
+dW50ICE9IDApCj4gPiA+ID4gICAgICAgICAgICAgcmV0dXJuOwo+ID4gPiA+Cj4gPiA+ID4gKyAg
+IG10a19kc2lfc3RvcChkc2kpOwo+ID4gPiA+ICsKPiA+ID4gPiAgICAgaWYgKCFtdGtfZHNpX3N3
+aXRjaF90b19jbWRfbW9kZShkc2ksIFZNX0RPTkVfSU5UX0ZMQUcsIDUwMCkpIHsKPiA+ID4gPiAg
+ICAgICAgICAgICBpZiAoZHNpLT5wYW5lbCkgewo+ID4gPiA+ICAgICAgICAgICAgICAgICAgICAg
+aWYgKGRybV9wYW5lbF91bnByZXBhcmUoZHNpLT5wYW5lbCkpIHsKPiA+ID4KPiA+ID4gSSB0aGlu
+ayB5b3UganVzdCBtb3ZlIG10a19kc2lfc3RvcCgpIGludG8gbXRrX2RzaV9wb3dlcm9mZigpIHdv
+dWxkIHdvcmtzCj4gPiA+IGZpbmUsIGJ1dCBJIHdvdWxkIHJhdGhlciBsaWtlIGNhbGxpbmcgbXRr
+X2RzaV9zdGFydCgpIGFuZCBtdGtfZHNpX3N0b3AoKQo+ID4gPiBpbiBhIHN5bW1ldHJpYyBtYW5u
+ZXIuIFRoYXQgbWVhbnMgeW91IG1heSBhbHNvIG1vdmUgYmVsb3cgZnVuY3Rpb25zIGludG8KPiA+
+ID4gbXRrX2RzaV9wb3dlcm9uKCk6Cj4gPiA+Cj4gPiA+IG10a19kc2lfc2V0X21vZGUoZHNpKTsK
+PiA+ID4gbXRrX2RzaV9jbGtfaHNfbW9kZShkc2ksIDEpOwo+ID4gPiBtdGtfZHNpX3N0YXJ0KGRz
+aSk7Cj4gCj4gRm9yIE1UODE4MyB3aXRoIGJyaWRnZSBwYW5lbCwgY2FsbGluZyBtdGtfZHNpX3N0
+YXJ0KCkgaW4KPiBtdGtfZHNpX3Bvd2Vyb24oKSB3aGVuIHJlZmNvdW50IGlzIDAtPjEsIGxpa2Ug
+dGhlIGZvbGxvd2luZyBvcmRlciwKPiB3aWxsIHJlc3VsdHMgaW4gbm8gaXJxLCBub3Qgc3VyZSB3
+aHkgdGhvdWdoLiBJIHRoaW5rIHRoaXMgbWlnaHQgYmUgdGhlCj4gdGltaW5nIGlzc3VlIHlvdSBt
+ZW50aW9uZWQgaW4gcGF0Y2ggdjEuIChNVDgxODMgd2l0aG91dCBicmlkZ2UgcGFuZWwKPiBkb2Vz
+bid0IGhhdmUgdGhpcyBpc3N1ZS4pCj4gCj4gYXRvbWljX2VuYWJsZQo+ICAgLS0+IG10a19jcnRj
+X2RkcF9od19pbml0Cj4gICAgIC0tPiBtdGtfZHNpX2RkcF9zdGFydAo+ICAgICAgIC0tPiBtdGtf
+ZHNpX3Bvd2Vyb24gKHJlZiAwLT4xKQo+ICAgICAgICAgLS0+IGRybV9wYW5lbF9wcmVwYXJlCj4g
+ICAgICAgICAtLT4gKm10a19kc2lfc3RhcnQgIC8vIHJlc3VsdHMgaW4gbm8gaXJxIGZvciBNVDgx
+ODMgd2l0aCBicmlkZ2UKPiAgIC0tPiBkcm1fY3J0Y192Ymxhbmtfb24KPiAKPiBtdGtfb3V0cHV0
+X2RzaV9lbmFibGUKPiAgIC0tPiBtdGtfZHNpX3Bvd2Vyb24gKHJlZiAxLT4yLCBpZ25vcmVkKQo+
+ICAgLS0+IG10a19kc2lfc3RhcnQgLy9vcmlnaW5hbCBwb3NpdGlvbgo+IAo+IEZvciBtdGtfZHNp
+X3N0b3AoKSBib3RoIHdpdGggb3Igd2l0aG91dCBicmlkZ2UgaXMgZmluZS4KCkknbSBub3QgZmFt
+aWxpYXIgd2l0aCBkc2kgaGFyZHdhcmUsIHNvIEkgY291bGQgbm90IGFuc3dlciB3aHkgdGhpcwpw
+cm9ibGVtIGhhcHBlbi4gSml0YW8gaXMgZmFtaWxpYXIgd2l0aCBkc2kgaGFyZHdhcmUsIHlvdSBt
+YXkgYXNrIGhpbSBmb3IKaGVscC4gSWYgdGhpcyBpcyBoYXJkd2FyZSBiZWhhdmlvciwgSSBjb3Vs
+ZCBhY2NlcHQgYXN5bW1ldHJpYyBmbG93LCBidXQKcGxlYXNlIGJlIHN1cmUgdGhpcyBpcyBoYXJk
+d2FyZSBiZWhhdmlvciBub3Qgc29mdHdhcmUgYnVnLgoKUmVnYXJkcywKQ0sKCj4gCj4gPiA+Cj4g
+PiA+Cj4gPiA+ID4gQEAgLTY5Niw3ICs2OTgsNiBAQCBzdGF0aWMgdm9pZCBtdGtfb3V0cHV0X2Rz
+aV9kaXNhYmxlKHN0cnVjdCBtdGtfZHNpICpkc2kpCj4gPiA+ID4gICAgICAgICAgICAgfQo+ID4g
+PiA+ICAgICB9Cj4gPiA+ID4KPiA+ID4gPiAtICAgbXRrX2RzaV9zdG9wKGRzaSk7Cj4gPiA+ID4g
+ICAgIG10a19kc2lfcG93ZXJvZmYoZHNpKTsKPiA+ID4gPgo+ID4gPiA+ICAgICBkc2ktPmVuYWJs
+ZWQgPSBmYWxzZTsKPiA+ID4gPiBAQCAtMTE3OCw2ICsxMTc5LDggQEAgc3RhdGljIGludCBtdGtf
+ZHNpX3JlbW92ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ID4gPiA+ICAgICBzdHJ1
+Y3QgbXRrX2RzaSAqZHNpID0gcGxhdGZvcm1fZ2V0X2RydmRhdGEocGRldik7Cj4gPiA+ID4KPiA+
+ID4gPiAgICAgbXRrX291dHB1dF9kc2lfZGlzYWJsZShkc2kpOwo+ID4gPiA+ICsgICBtdGtfZHNp
+X3N0b3AoZHNpKTsKPiA+ID4gPiArICAgbXRrX2RzaV9wb3dlcm9mZihkc2kpOwo+ID4gPgo+ID4g
+PiBJIHRoaW5rIG10a19vdXRwdXRfZHNpX2Rpc2FibGUoKSB3b3VsZCBjYWxsIG10a19kc2lfcG93
+ZXJvZmYoKSwgYW5kCj4gPiA+IG10a19kc2lfcG93ZXJvZmYoKSB3b3VsZCBjYWxsIG10a19kc2lf
+c3RvcCgpLCBzbyB0aGVzZSB0d28gbGluZSBhcmUKPiA+ID4gcmVkdW5kYW50LiBBbmQgSSB0aGlu
+ayB5b3Ugc2hvdWxkIHJlbW92ZSBtdGtfZHNpX3N0b3AoKSBpbgo+ID4gPiBtdGtfb3V0cHV0X2Rz
+aV9kaXNhYmxlKCksIHdoeSBub3QgaW4gdGhpcyBwYXRjaD8KPiA+Cj4gPiBZb3UndmUgcmVtb3Zl
+ZCBtdGtfZHNpX3N0b3AoKSBpbiBtdGtfb3V0cHV0X2RzaV9kaXNhYmxlKCksIEkganVzdCBtaXNz
+Cj4gPiBpdCwgc29ycnkgZm9yIHRoaXMuCj4gPgo+ID4gUmVnYXJkcywKPiA+IENLCj4gPgo+ID4g
+Pgo+ID4gPiBSZWdhcmRzLAo+ID4gPiBDSwo+ID4gPgo+ID4gPiA+ICAgICBjb21wb25lbnRfZGVs
+KCZwZGV2LT5kZXYsICZtdGtfZHNpX2NvbXBvbmVudF9vcHMpOwo+ID4gPiA+Cj4gPiA+ID4gICAg
+IHJldHVybiAwOwo+ID4gPgo+ID4KPiA+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
+dGluZm8vZHJpLWRldmVs
