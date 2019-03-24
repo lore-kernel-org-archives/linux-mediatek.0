@@ -1,36 +1,41 @@
-From: Alexandre Belloni <alexandre.belloni@bootlin.com>
-Subject: Re: [PATCH] mfd: mt6397: Don't call irq_dispose_mapping.
-Date: Sun, 24 Mar 2019 14:39:34 +0100
-Message-ID: <20190324133934.GH30105@piout.net>
-References: <20190311075540.26117-1-pihsun@chromium.org>
+From: Guenter Roeck <linux@roeck-us.net>
+Subject: Re: [PATCH 17/24] dt-bindings: wdog: mtk-wdt: add support for MT851
+Date: Sun, 24 Mar 2019 08:13:45 -0700
+Message-ID: <741058cb-ef57-bda4-9d36-d7295fab9230@roeck-us.net>
+References: <20190323211612.860-1-fparent@baylibre.com>
+ <20190323211612.860-18-fparent@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190311075540.26117-1-pihsun@chromium.org>
+In-Reply-To: <20190323211612.860-18-fparent@baylibre.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Pi-Hsun Shih <pihsun@chromium.org>
-Cc: Eddie Huang <eddie.huang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek RTC DRIVER" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek RTC DRIVER" <linux-mediatek@lists.infradead.org>, "open list:REAL TIME CLOCK (RTC) SUBSYSTEM" <linux-rtc@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>
+To: Fabien Parent <fparent@baylibre.com>, matthias.bgg@gmail.com, robh+dt@kernel.org, mark.rutland@arm.com
+Cc: sean.wang@kernel.org, ryder.lee@mediatek.com, hsin-hsiung.wang@mediatek.com, wenzhen.yu@mediatek.com, chaotian.jing@mediatek.com, yong.mao@mediatek.com, jjian.zhou@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org, linux-gpio@vger.kernel.org, linux-serial@vger.kernel.org, linux-spi@vger.kernel.org, linux-watchdog@vger.kernel.org, linux-clk@vger.kernel.org, stephane.leprovost@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On 11/03/2019 15:55:40+0800, Pi-Hsun Shih wrote:
-> The IRQ mapping was changed to not being created in the rtc-mt6397
-> driver, so the irq_dispose_mapping is no longer needed.
-> Also the dev_id passed to free_irq should be the same as the last
-> argument passed to request_threaded_irq.
-> This prevents a "Trying to free already-free IRQ 274" warning when
-> unbinding the driver.
+On 3/23/19 2:16 PM, Fabien Parent wrote:
+> Add binding documentation of mtk-wdt for MT8516 SoC.
 > 
-> Fixes: e695d3a0b3b3 ("mfd: mt6397: Create irq mappings in mfd core driver")
-> Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
-> 
-> ---
->  drivers/rtc/rtc-mt6397.c | 9 +++------
->  1 file changed, 3 insertions(+), 6 deletions(-)
-> 
-Applied, thanks.
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
 
--- 
-Alexandre Belloni, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+Acked-by: Guenter Roeck <linux@roeck-us.net>
+
+> ---
+>   Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+> index 8682d6a93e5b..fd380eb28df5 100644
+> --- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+> +++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+> @@ -9,6 +9,7 @@ Required properties:
+>   	"mediatek,mt7622-wdt", "mediatek,mt6589-wdt": for MT7622
+>   	"mediatek,mt7623-wdt", "mediatek,mt6589-wdt": for MT7623
+>   	"mediatek,mt7629-wdt", "mediatek,mt6589-wdt": for MT7629
+> +	"mediatek,mt8516-wdt", "mediatek,mt6589-wdt": for MT8516
+>   
+>   - reg : Specifies base physical address and size of the registers.
+>   
+> 
