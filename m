@@ -1,51 +1,40 @@
-From: Thomas Gleixner <tglx@linutronix.de>
-Subject: Re: [PATCH 1/1] sched/clock: Prevent generic sched_clock wrap caused
- by tick_freeze()
-Date: Mon, 25 Mar 2019 14:54:05 +0100 (CET)
-Message-ID: <alpine.DEB.2.21.1903251449580.1656@nanos.tec.linutronix.de>
-References: <1553497460-24166-1-git-send-email-chang-an.chen@mediatek.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH] usb: mtu3: fix EXTCON dependency
+Date: Mon, 25 Mar 2019 14:54:30 +0100
+Message-ID: <20190325135440.2166315-1-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1553497460-24166-1-git-send-email-chang-an.chen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chang-An Chen <chang-an.chen@mediatek.com>
-Cc: Frederic Weisbecker <fweisbec@gmail.com>, Ingo Molnar <mingo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Pavel Tatashin <pasha.tatashin@oracle.com>, John Stultz <john.stultz@linaro.org>, Kees Cook <keescook@chromium.org>, Corey Minyard <cminyard@mvista.com>, linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Stanley Chu <stanley.chu@mediatek.com>, kuohong.wang@mediatek.com
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Arnd Bergmann <arnd@arndb.de>, Felipe Balbi <felipe.balbi@linux.intel.com>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 25 Mar 2019, Chang-An Chen wrote:
-> --- a/include/linux/sched_clock.h
-> +++ b/include/linux/sched_clock.h
-> @@ -13,6 +13,10 @@
->  
->  extern void sched_clock_register(u64 (*read)(void), int bits,
->  				 unsigned long rate);
-> +
-> +extern int sched_clock_suspend(void);
-> +
-> +extern void sched_clock_resume(void);
->  #else
->  static inline void generic_sched_clock_init(void) { }
->  
-> @@ -20,6 +24,10 @@ static inline void sched_clock_register(u64 (*read)(void), int bits,
->  					unsigned long rate)
->  {
->  }
-> +
-> +static int sched_clock_suspend(void) { }
+When EXTCON is a loadable module, mtu3 fails to link as built-in:
 
-static inline ...
+drivers/usb/mtu3/mtu3_plat.o: In function `mtu3_probe':
+mtu3_plat.c:(.text+0x690): undefined reference to `extcon_get_edev_by_phandle'
 
-> +
-> +static void sched_clock_resume(void) { }
+Add a Kconfig dependency to force mtu3 also to be a loadable module
+if extconn is, but still allow it to be built without extcon.
 
-Ditto
+Fixes: d0ed062a8b75 ("usb: mtu3: dual-role mode support")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ drivers/usb/mtu3/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
->  #endif
-
-Please do not expose this in the global header. All of this is local to
-kernel/time/. So adding this to kernel/time/timekeeping.h is sufficient.
-
-Thanks,
-
-	tglx
+diff --git a/drivers/usb/mtu3/Kconfig b/drivers/usb/mtu3/Kconfig
+index bcc23486c4ed..928c2cd6fc00 100644
+--- a/drivers/usb/mtu3/Kconfig
++++ b/drivers/usb/mtu3/Kconfig
+@@ -6,6 +6,7 @@ config USB_MTU3
+ 	tristate "MediaTek USB3 Dual Role controller"
+ 	depends on USB || USB_GADGET
+ 	depends on ARCH_MEDIATEK || COMPILE_TEST
++	depends on EXTCON || !EXTCON
+ 	select USB_XHCI_MTK if USB_SUPPORT && USB_XHCI_HCD
+ 	help
+ 	  Say Y or M here if your system runs on MediaTek SoCs with
+-- 
+2.20.0
