@@ -1,40 +1,73 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: [PATCH] usb: mtu3: fix EXTCON dependency
-Date: Mon, 25 Mar 2019 14:54:30 +0100
-Message-ID: <20190325135440.2166315-1-arnd@arndb.de>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Subject: Re: [PATCH RESEND v3 3/4] arm64: dts: mt8183: add pintcrl device node
+Date: Mon, 25 Mar 2019 11:17:37 -0700
+Message-ID: <CANMq1KCSN11fH0JS72iheDwKjo06ShKiFu+Yn51xVObcvV37GA@mail.gmail.com>
+References: <20190325124137.6117-1-zhiyong.tao@mediatek.com> <20190325124137.6117-4-zhiyong.tao@mediatek.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190325124137.6117-4-zhiyong.tao@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Arnd Bergmann <arnd@arndb.de>, Felipe Balbi <felipe.balbi@linux.intel.com>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Zhiyong Tao <zhiyong.tao@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, hui.liu@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>, chuanjia.liu@mediatek.com, biao.huang@mediatek.com, hongzhou.yang@mediatek.com, Erin Lo <erin.lo@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org, lkml <linux-kernel@vger.kernel.org>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, linux-gpio@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-When EXTCON is a loadable module, mtu3 fails to link as built-in:
+On Mon, Mar 25, 2019 at 5:41 AM Zhiyong Tao <zhiyong.tao@mediatek.com> wrote:
+>
+> The commit adds pintcrl device node for mt8183
 
-drivers/usb/mtu3/mtu3_plat.o: In function `mtu3_probe':
-mtu3_plat.c:(.text+0x690): undefined reference to `extcon_get_edev_by_phandle'
+Minor nit: This should say pinctrl (in the commit title as well).
 
-Add a Kconfig dependency to force mtu3 also to be a loadable module
-if extconn is, but still allow it to be built without extcon.
-
-Fixes: d0ed062a8b75 ("usb: mtu3: dual-role mode support")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
----
- drivers/usb/mtu3/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/usb/mtu3/Kconfig b/drivers/usb/mtu3/Kconfig
-index bcc23486c4ed..928c2cd6fc00 100644
---- a/drivers/usb/mtu3/Kconfig
-+++ b/drivers/usb/mtu3/Kconfig
-@@ -6,6 +6,7 @@ config USB_MTU3
- 	tristate "MediaTek USB3 Dual Role controller"
- 	depends on USB || USB_GADGET
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	depends on EXTCON || !EXTCON
- 	select USB_XHCI_MTK if USB_SUPPORT && USB_XHCI_HCD
- 	help
- 	  Say Y or M here if your system runs on MediaTek SoCs with
--- 
-2.20.0
+>
+> Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 26 +++++++++++++++++++++++++-
+>  1 file changed, 25 insertions(+), 1 deletion(-)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index 75c4881bbe5e..cf92504e2a9b 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -9,7 +9,7 @@
+>  #include <dt-bindings/interrupt-controller/arm-gic.h>
+>  #include <dt-bindings/interrupt-controller/irq.h>
+>  #include <dt-bindings/power/mt8183-power.h>
+> -
+> +#include "mt8183-pinfunc.h"
+>  / {
+>         compatible = "mediatek,mt8183";
+>         interrupt-parent = <&sysirq>;
+> @@ -197,6 +197,30 @@
+>                         #clock-cells = <1>;
+>                 };
+>
+> +               pio: pinctrl@10005000 {
+> +                       compatible = "mediatek,mt8183-pinctrl";
+> +                       reg = <0 0x10005000 0 0x1000>,
+> +                             <0 0x11f20000 0 0x1000>,
+> +                             <0 0x11e80000 0 0x1000>,
+> +                             <0 0x11e70000 0 0x1000>,
+> +                             <0 0x11e90000 0 0x1000>,
+> +                             <0 0x11d30000 0 0x1000>,
+> +                             <0 0x11d20000 0 0x1000>,
+> +                             <0 0x11c50000 0 0x1000>,
+> +                             <0 0x11f30000 0 0x1000>,
+> +                             <0 0x1000b000 0 0x1000>;
+> +                       reg-names = "iocfg0", "iocfg1", "iocfg2",
+> +                                   "iocfg3", "iocfg4", "iocfg5",
+> +                                   "iocfg6", "iocfg7", "iocfg8",
+> +                                   "eint";
+> +                       gpio-controller;
+> +                       #gpio-cells = <2>;
+> +                       gpio-ranges = <&pio 0 0 192>;
+> +                       interrupt-controller;
+> +                       interrupts = <GIC_SPI 177 IRQ_TYPE_LEVEL_HIGH>;
+> +                       #interrupt-cells = <2>;
+> +               };
+> +
+>                 scpsys: syscon@10006000 {
+>                         compatible = "mediatek,mt8183-scpsys", "syscon";
+>                         #power-domain-cells = <1>;
+> --
+> 2.12.5
+>
