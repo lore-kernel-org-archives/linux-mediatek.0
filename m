@@ -1,7 +1,7 @@
 From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH 4/4] MAINTAINERS: update entry for mt76 wireless driver
-Date: Tue, 26 Mar 2019 22:28:10 +0800
-Message-ID: <e7da670d5a03e1639eb3916c24fb1533b0f93b73.1553607739.git.ryder.lee@mediatek.com>
+Subject: [PATCH 2/4] mt76: add unlikely() for dma_mapping_error() check
+Date: Tue, 26 Mar 2019 22:28:08 +0800
+Message-ID: <ebd07347cc26a2e7dd7d7e1e1d213d80fc9d0940.1553607739.git.ryder.lee@mediatek.com>
 References: <cover.1553607739.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -12,25 +12,53 @@ To: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Felix Fietkau <nbd@nbd.name>
 Cc: Roy Luo <royluo@google.com>, Sean Wang <sean.wang@mediatek.com>, Nelson Chang <nelson.chang@mediatek.com>, YF Luo <yf.luo@mediatek.com>, Kai Lin <kai.lin@mediatek.com>, Rorscha Yang <rorscha.yang@mediatek.com>, Kyle Lee <kyle.lee@mediatek.com>, Miller Shen <miller.shen@mediatek.com>, Haipin Liang <haipin.liang@mediatek.com>, linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Roy and I actively join the development and review.
+In the tx/rx fastpath, the funciton dma_map_single() rarely fails.
+This adds unlikely() optimization to this error check conditional.
 
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- MAINTAINERS | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/net/wireless/mediatek/mt76/dma.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index e17ebf7..7d92a87 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -9768,6 +9768,8 @@ F:	Documentation/devicetree/bindings/media/mediatek-vpu.txt
- MEDIATEK MT76 WIRELESS LAN DRIVER
- M:	Felix Fietkau <nbd@nbd.name>
- M:	Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>
-+R:	Ryder Lee <ryder.lee@mediatek.com>
-+R:	Roy Luo <royluo@google.com>
- L:	linux-wireless@vger.kernel.org
- S:	Maintained
- F:	drivers/net/wireless/mediatek/mt76/
+diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
+index 8a4b935..6f3ef09 100644
+--- a/drivers/net/wireless/mediatek/mt76/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/dma.c
+@@ -272,7 +272,7 @@
+ 
+ 	addr = dma_map_single(dev->dev, skb->data, skb->len,
+ 			      DMA_TO_DEVICE);
+-	if (dma_mapping_error(dev->dev, addr))
++	if (unlikely(dma_mapping_error(dev->dev, addr)))
+ 		return -ENOMEM;
+ 
+ 	buf.addr = addr;
+@@ -315,7 +315,7 @@
+ 
+ 	len = skb_headlen(skb);
+ 	addr = dma_map_single(dev->dev, skb->data, len, DMA_TO_DEVICE);
+-	if (dma_mapping_error(dev->dev, addr))
++	if (unlikely(dma_mapping_error(dev->dev, addr)))
+ 		goto free;
+ 
+ 	tx_info.buf[n].addr = t->dma_addr;
+@@ -329,7 +329,7 @@
+ 
+ 		addr = dma_map_single(dev->dev, iter->data, iter->len,
+ 				      DMA_TO_DEVICE);
+-		if (dma_mapping_error(dev->dev, addr))
++		if (unlikely(dma_mapping_error(dev->dev, addr)))
+ 			goto unmap;
+ 
+ 		tx_info.buf[n].addr = addr;
+@@ -386,7 +386,7 @@
+ 			break;
+ 
+ 		addr = dma_map_single(dev->dev, buf, len, DMA_FROM_DEVICE);
+-		if (dma_mapping_error(dev->dev, addr)) {
++		if (unlikely(dma_mapping_error(dev->dev, addr))) {
+ 			skb_free_frag(buf);
+ 			break;
+ 		}
 -- 
 1.9.1
