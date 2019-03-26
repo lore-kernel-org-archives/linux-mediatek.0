@@ -1,101 +1,75 @@
 From: Alexandre Courbot <acourbot@chromium.org>
-Subject: [PATCH] media: mtk-vcodec: fix access to incorrect planes member
-Date: Tue, 26 Mar 2019 16:44:23 +0900
-Message-ID: <20190326074423.123864-1-acourbot@chromium.org>
+Subject: [PATCH] media: mtk-vcodec: remove ready_to_display
+Date: Tue, 26 Mar 2019 16:44:46 +0900
+Message-ID: <20190326074446.123945-1-acourbot@chromium.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>
+To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>
 Cc: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Commit 0650a91499e0 ("media: mtk-vcodec: Correct return type for mem2mem
-buffer helpers") fixed the return types for mem2mem buffer helper
-functions by changing a few local variables from vb2_buffer to
-vb2_v4l2_buffer. However, it left a few accesses to vb2_buffer::planes
-as-is, accidentally turning them into accesses to
-vb2_v4l2_buffer::planes and resulting in values being read from/written
-to the wrong place.
-
-Fix this by inserting vb2_buf into these accesses so they mimic their
-original behavior.
-
-Fixes: 0650a91499e0 ("media: mtk-vcodec: Correct return type for mem2mem buffer helpers")
+This member is never read throughout the code, so remove it.
 
 Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
 ---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c |  4 ++--
- drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c | 10 +++++-----
- 2 files changed, 7 insertions(+), 7 deletions(-)
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c | 5 -----
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h | 2 --
+ 2 files changed, 7 deletions(-)
 
 diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-index a85c7cc8328e..e20b340855e7 100644
+index e20b340855e7..710dcebb42b3 100644
 --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
 +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-@@ -388,7 +388,7 @@ static void mtk_vdec_worker(struct work_struct *work)
- 	}
- 	buf.va = vb2_plane_vaddr(&src_buf->vb2_buf, 0);
- 	buf.dma_addr = vb2_dma_contig_plane_dma_addr(&src_buf->vb2_buf, 0);
--	buf.size = (size_t)src_buf->planes[0].bytesused;
-+	buf.size = (size_t)src_buf->vb2_buf.planes[0].bytesused;
- 	if (!buf.va) {
- 		v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
- 		mtk_v4l2_err("[%d] id=%d src_addr is NULL!!",
-@@ -1155,7 +1155,7 @@ static void vb2ops_vdec_buf_queue(struct vb2_buffer *vb)
+@@ -133,8 +133,6 @@ static struct vb2_buffer *get_display_buffer(struct mtk_vcodec_ctx *ctx)
+ 		vb2_set_plane_payload(&dstbuf->vb.vb2_buf, 1,
+ 					ctx->picinfo.c_bs_sz);
  
- 	src_mem.va = vb2_plane_vaddr(&src_buf->vb2_buf, 0);
- 	src_mem.dma_addr = vb2_dma_contig_plane_dma_addr(&src_buf->vb2_buf, 0);
--	src_mem.size = (size_t)src_buf->planes[0].bytesused;
-+	src_mem.size = (size_t)src_buf->vb2_buf.planes[0].bytesused;
- 	mtk_v4l2_debug(2,
- 			"[%d] buf id=%d va=%p dma=%pad size=%zx",
- 			ctx->id, src_buf->vb2_buf.index,
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-index c6b48b5925fb..50351adafc47 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-@@ -894,7 +894,7 @@ static void vb2ops_venc_stop_streaming(struct vb2_queue *q)
- 
- 	if (q->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE) {
- 		while ((dst_buf = v4l2_m2m_dst_buf_remove(ctx->m2m_ctx))) {
--			dst_buf->planes[0].bytesused = 0;
-+			dst_buf->vb2_buf.planes[0].bytesused = 0;
- 			v4l2_m2m_buf_done(dst_buf, VB2_BUF_STATE_ERROR);
+-		dstbuf->ready_to_display = true;
+-
+ 		mtk_v4l2_debug(2,
+ 				"[%d]status=%x queue id=%d to done_list %d",
+ 				ctx->id, disp_frame_buffer->status,
+@@ -1122,11 +1120,9 @@ static void vb2ops_vdec_buf_queue(struct vb2_buffer *vb)
+ 			v4l2_m2m_buf_queue(ctx->m2m_ctx, vb2_v4l2);
+ 			buf->queued_in_vb2 = true;
+ 			buf->queued_in_v4l2 = true;
+-			buf->ready_to_display = false;
+ 		} else {
+ 			buf->queued_in_vb2 = false;
+ 			buf->queued_in_v4l2 = true;
+-			buf->ready_to_display = false;
  		}
+ 		mutex_unlock(&ctx->lock);
+ 		return;
+@@ -1253,7 +1249,6 @@ static int vb2ops_vdec_buf_init(struct vb2_buffer *vb)
+ 
+ 	if (vb->vb2_queue->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE) {
+ 		buf->used = false;
+-		buf->ready_to_display = false;
+ 		buf->queued_in_v4l2 = false;
  	} else {
-@@ -947,7 +947,7 @@ static int mtk_venc_encode_header(void *priv)
+ 		buf->lastframe = false;
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h
+index dc4fc1df63c5..e4984edec4f8 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h
+@@ -45,7 +45,6 @@ struct vdec_fb {
+  * @list:	link list
+  * @used:	Capture buffer contain decoded frame data and keep in
+  *			codec data structure
+- * @ready_to_display:	Capture buffer not display yet
+  * @queued_in_vb2:	Capture buffer is queue in vb2
+  * @queued_in_v4l2:	Capture buffer is in v4l2 driver, but not in vb2
+  *			queue yet
+@@ -60,7 +59,6 @@ struct mtk_video_dec_buf {
+ 	struct list_head	list;
  
- 	bs_buf.va = vb2_plane_vaddr(&dst_buf->vb2_buf, 0);
- 	bs_buf.dma_addr = vb2_dma_contig_plane_dma_addr(&dst_buf->vb2_buf, 0);
--	bs_buf.size = (size_t)dst_buf->planes[0].length;
-+	bs_buf.size = (size_t)dst_buf->vb2_buf.planes[0].length;
- 
- 	mtk_v4l2_debug(1,
- 			"[%d] buf id=%d va=0x%p dma_addr=0x%llx size=%zu",
-@@ -976,7 +976,7 @@ static int mtk_venc_encode_header(void *priv)
- 	}
- 
- 	ctx->state = MTK_STATE_HEADER;
--	dst_buf->planes[0].bytesused = enc_result.bs_size;
-+	dst_buf->vb2_buf.planes[0].bytesused = enc_result.bs_size;
- 	v4l2_m2m_buf_done(dst_buf, VB2_BUF_STATE_DONE);
- 
- 	return 0;
-@@ -1107,12 +1107,12 @@ static void mtk_venc_worker(struct work_struct *work)
- 
- 	if (ret) {
- 		v4l2_m2m_buf_done(src_buf, VB2_BUF_STATE_ERROR);
--		dst_buf->planes[0].bytesused = 0;
-+		dst_buf->vb2_buf.planes[0].bytesused = 0;
- 		v4l2_m2m_buf_done(dst_buf, VB2_BUF_STATE_ERROR);
- 		mtk_v4l2_err("venc_if_encode failed=%d", ret);
- 	} else {
- 		v4l2_m2m_buf_done(src_buf, VB2_BUF_STATE_DONE);
--		dst_buf->planes[0].bytesused = enc_result.bs_size;
-+		dst_buf->vb2_buf.planes[0].bytesused = enc_result.bs_size;
- 		v4l2_m2m_buf_done(dst_buf, VB2_BUF_STATE_DONE);
- 		mtk_v4l2_debug(2, "venc_if_encode bs size=%d",
- 				 enc_result.bs_size);
+ 	bool	used;
+-	bool	ready_to_display;
+ 	bool	queued_in_vb2;
+ 	bool	queued_in_v4l2;
+ 	bool	lastframe;
 -- 
 2.21.0.392.gf8f6787159e-goog
