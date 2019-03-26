@@ -1,38 +1,50 @@
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-Subject: Re: [PATCH v2] drivers: ufs: Add missing MODULE_* information
-Date: Mon, 25 Mar 2019 22:10:32 -0400
-Message-ID: <yq17ecm1j3b.fsf@oracle.com>
-References: <20190321132444.28659-1-anders.roxell@linaro.org>
+From: Zhiyong Tao <zhiyong.tao@mediatek.com>
+Subject: Re: [PATCH 2/4] arm64: dts: mt8183: add pintcrl file
+Date: Tue, 26 Mar 2019 10:54:35 +0800
+Message-ID: <1553568875.21970.5.camel@mhfsdcap03>
+References: <20190325122302.5483-1-zhiyong.tao@mediatek.com>
+         <20190325122302.5483-3-zhiyong.tao@mediatek.com>
+         <20190325193005.GA18114@bogus>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190321132444.28659-1-anders.roxell@linaro.org> (Anders
- Roxell's message of "Thu, 21 Mar 2019 14:24:44 +0100")
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Anders Roxell <anders.roxell@linaro.org>
-Cc: martin.petersen@oracle.com, linux-scsi@vger.kernel.org, jejb@linux.ibm.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190325193005.GA18114@bogus>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh@kernel.org>
+Cc: linus.walleij@linaro.org, mark.rutland@arm.com, matthias.bgg@gmail.com, sean.wang@kernel.org, srv_heupstream@mediatek.com, hui.liu@mediatek.com, eddie.huang@mediatek.com, chuanjia.liu@mediatek.com, biao.huang@mediatek.com, hongzhou.yang@mediatek.com, erin.lo@mediatek.com, sean.wang@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
+On Mon, 2019-03-25 at 14:30 -0500, Rob Herring wrote:
+> On Mon, Mar 25, 2019 at 08:23:00PM +0800, Zhiyong Tao wrote:
+> > This patch adds pinctrl file for mt8183.
+> 
+> Still has a typo in the subject.
 
-Anders,
+==>we will change it in next version
+> 
+> > 
+> > Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
+> > ---
+> >  arch/arm64/boot/dts/mediatek/mt8183-pinfunc.h | 1120 +++++++++++++++++++++++++
+> >  1 file changed, 1120 insertions(+)
+> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-pinfunc.h
+> 
+> Add acks/reviewed-bys when posting new versions. This should also be 
+> called v8 even though a different person sent it.
 
-> When building the ufs-mediatek module the following warning shows up:
->
-> WARNING: modpost: missing MODULE_LICENSE() in
->   drivers/scsi/ufs/ufs-mediatek.o
->
-> Rework to add MODULE_LICENSE,MODULE_AUTHOR and MODULE_DESCRIPTION.
+==>we will add acks/reviewed-bys when posting new versions in nxet
+version.
+This patch is based on "https://patchwork.kernel.org/patch/10814251/".
+If it is based on the patch
+"https://patchwork.kernel.org/patch/10814251/", it should called v8.
+But I send this patch, we call it v3. Because it it is based on the
+patch "https://patchwork.kernel.org/patch/10836969/".
 
-Applied to 5.2/scsi-queue, thanks.
+In these v3 patches, we send 4 patches. So we should call 1/4,2/4,3/4 as
+v9 in next patch, and call 4/4 patch as v5. is it right?
 
--- 
-Martin K. Petersen	Oracle Linux Engineering
+Thanks.
+> 
+> Rob
+> 
