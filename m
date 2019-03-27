@@ -1,7 +1,7 @@
 From: wangyan wang <wangyan.wang@mediatek.com>
-Subject: [PATCH V7 1/6] drm/mediatek: recalculate hdmi phy clock of MT2701 by querying hardware
-Date: Wed, 27 Mar 2019 17:19:24 +0800
-Message-ID: <20190327091929.73162-2-wangyan.wang@mediatek.com>
+Subject: [PATCH V7 2/6] drm/mediatek: move the setting of fixed divider
+Date: Wed, 27 Mar 2019 17:19:25 +0800
+Message-ID: <20190327091929.73162-3-wangyan.wang@mediatek.com>
 References: <20190327091929.73162-1-wangyan.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -14,119 +14,62 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: chunhui dai <chunhui.dai@mediatek.com>
 
-Recalculate the rate of this clock, by querying hardware.
+move the setting of fixed divider from enable/disable
+to the function of setting rate.
+
+the patch is for hdmi pll divider, the divder should
+be configured before clock calculation to ensure the
+clock is right.
 
 Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
 Signed-off-by: wangyan wang <wangyan.wang@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_hdmi_phy.c        |  7 ++----
- drivers/gpu/drm/mediatek/mtk_hdmi_phy.h        |  3 +--
- drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c | 33 ++++++++++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c |  8 +++++++
- 4 files changed, 44 insertions(+), 7 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-index 4ef9c57ffd44..13c5e65b9ead 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-@@ -29,12 +29,9 @@ long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
- 	return rate;
- }
- 
--unsigned long mtk_hdmi_pll_recalc_rate(struct clk_hw *hw,
--				       unsigned long parent_rate)
-+u32 mtk_hdmi_phy_read(struct mtk_hdmi_phy *hdmi_phy, u32 offset)
- {
--	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
--
--	return hdmi_phy->pll_rate;
-+	return readl(hdmi_phy->regs + offset);
- }
- 
- void mtk_hdmi_phy_clear_bits(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-index f39b1fc66612..fdad8b17a915 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-@@ -41,6 +41,7 @@ struct mtk_hdmi_phy {
- 	unsigned int ibias_up;
- };
- 
-+u32 mtk_hdmi_phy_read(struct mtk_hdmi_phy *hdmi_phy, u32 offset);
- void mtk_hdmi_phy_clear_bits(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
- 			     u32 bits);
- void mtk_hdmi_phy_set_bits(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
-@@ -50,8 +51,6 @@ void mtk_hdmi_phy_mask(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
- struct mtk_hdmi_phy *to_mtk_hdmi_phy(struct clk_hw *hw);
- long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
- 			     unsigned long *parent_rate);
--unsigned long mtk_hdmi_pll_recalc_rate(struct clk_hw *hw,
--				       unsigned long parent_rate);
- 
- extern struct platform_driver mtk_hdmi_phy_driver;
- extern struct mtk_hdmi_phy_conf mtk_hdmi_phy_8173_conf;
 diff --git a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-index fcc42dc6ea7f..9dcf9c2ff37a 100644
+index 9dcf9c2ff37a..6f29e87eefd0 100644
 --- a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
 +++ b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-@@ -153,6 +153,39 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
- 			  RG_HDMITX_DRV_IBIAS_MASK);
- 	return 0;
- }
-+static unsigned long mtk_hdmi_pll_recalc_rate(struct clk_hw *hw,
-+				       unsigned long parent_rate)
-+{
-+	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
-+	unsigned long out_rate, val;
-+
-+	val = (readl(hdmi_phy->regs + HDMI_CON6)
-+			& RG_HTPLL_PREDIV_MASK) >> RG_HTPLL_PREDIV;
-+	switch (val) {
-+	case 0x00:
-+		out_rate = parent_rate;
-+		break;
-+	case 0x01:
-+		out_rate = parent_rate / 2;
-+		break;
-+	default:
-+		out_rate = parent_rate / 4;
-+		break;
-+	}
-+
-+	val = (readl(hdmi_phy->regs + HDMI_CON6)
-+			& RG_HTPLL_FBKDIV_MASK) >> RG_HTPLL_FBKDIV;
-+	out_rate *= (val + 1) * 2;
-+	val = (readl(hdmi_phy->regs + HDMI_CON2)
-+			& RG_HDMITX_TX_POSDIV_MASK);
-+
-+	out_rate >>= (val >> RG_HDMITX_TX_POSDIV);
-+
-+	if (readl(hdmi_phy->regs + HDMI_CON2) & RG_HDMITX_EN_TX_POSDIV)
-+		out_rate = out_rate / 5;
-+
-+	return out_rate;
-+}
+@@ -79,7 +79,6 @@ static int mtk_hdmi_pll_prepare(struct clk_hw *hw)
+ 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SLDO_MASK);
+ 	usleep_range(80, 100);
+ 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_MBIAS_LPF_EN);
+-	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_EN_TX_POSDIV);
+ 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SER_MASK);
+ 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_PRED_MASK);
+ 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_DRV_MASK);
+@@ -94,7 +93,6 @@ static void mtk_hdmi_pll_unprepare(struct clk_hw *hw)
+ 	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_DRV_MASK);
+ 	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_PRED_MASK);
+ 	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SER_MASK);
+-	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_EN_TX_POSDIV);
+ 	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_MBIAS_LPF_EN);
+ 	usleep_range(80, 100);
+ 	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SLDO_MASK);
+@@ -123,6 +121,7 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
  
- static const struct clk_ops mtk_hdmi_phy_pll_ops = {
- 	.prepare = mtk_hdmi_pll_prepare,
-diff --git a/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
-index ed5916b27658..cb23c1e4692a 100644
---- a/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
-+++ b/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
-@@ -285,6 +285,14 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
- 	return 0;
- }
- 
-+static unsigned long mtk_hdmi_pll_recalc_rate(struct clk_hw *hw,
-+				       unsigned long parent_rate)
-+{
-+	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
-+
-+	return hdmi_phy->pll_rate;
-+}
-+
- static const struct clk_ops mtk_hdmi_phy_pll_ops = {
- 	.prepare = mtk_hdmi_pll_prepare,
- 	.unprepare = mtk_hdmi_pll_unprepare,
+ 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON6, RG_HTPLL_PREDIV_MASK);
+ 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON6, RG_HTPLL_POSDIV_MASK);
++	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_EN_TX_POSDIV);
+ 	mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON6, (0x1 << RG_HTPLL_IC),
+ 			  RG_HTPLL_IC_MASK);
+ 	mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON6, (0x1 << RG_HTPLL_IR),
+@@ -207,7 +206,6 @@ static void mtk_hdmi_phy_enable_tmds(struct mtk_hdmi_phy *hdmi_phy)
+ 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SLDO_MASK);
+ 	usleep_range(80, 100);
+ 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_MBIAS_LPF_EN);
+-	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_EN_TX_POSDIV);
+ 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SER_MASK);
+ 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_PRED_MASK);
+ 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_DRV_MASK);
+@@ -219,7 +217,6 @@ static void mtk_hdmi_phy_disable_tmds(struct mtk_hdmi_phy *hdmi_phy)
+ 	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_DRV_MASK);
+ 	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_PRED_MASK);
+ 	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SER_MASK);
+-	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_EN_TX_POSDIV);
+ 	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_MBIAS_LPF_EN);
+ 	usleep_range(80, 100);
+ 	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SLDO_MASK);
 -- 
 2.14.1
