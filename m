@@ -1,49 +1,50 @@
-From: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH] MAINTAINERS: Add maintainer for MediaTek UFS driver
-Date: Wed, 27 Mar 2019 14:27:05 +0800
-Message-ID: <1553668025-20135-1-git-send-email-stanley.chu@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH] usb: mtu3: fix EXTCON dependency
+Date: Wed, 27 Mar 2019 14:56:19 +0800
+Message-ID: <1553669779.10179.172.camel@mhfsdcap03>
+References: <20190325135440.2166315-1-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org, avri.altman-Sjgp3cTcYWE@public.gmane.org, alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org
-Cc: chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190325135440.2166315-1-arnd@arndb.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Stanley actively join the development and review on
-MediaTek UFS driver.
+Hi Arnd,
 
-Signed-off-by: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- MAINTAINERS | 7 +++++++
- 1 file changed, 7 insertions(+)
+On Mon, 2019-03-25 at 14:54 +0100, Arnd Bergmann wrote:
+> When EXTCON is a loadable module, mtu3 fails to link as built-in:
+> 
+> drivers/usb/mtu3/mtu3_plat.o: In function `mtu3_probe':
+> mtu3_plat.c:(.text+0x690): undefined reference to `extcon_get_edev_by_phandle'
+> 
+> Add a Kconfig dependency to force mtu3 also to be a loadable module
+> if extconn is, but still allow it to be built without extcon.
+     ^^ extcon
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index e17ebf70b548..30f280b560a6 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -15971,6 +15971,13 @@ L:	linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
- S:	Supported
- F:	drivers/scsi/ufs/*dwc*
- 
-+UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER MEDIATEK HOOKS
-+M:	Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-+L:	linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-+L:	linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org (moderated for non-subscribers)
-+S:	Maintained
-+F:	drivers/scsi/ufs/ufs-mediatek*
-+
- UNSORTED BLOCK IMAGES (UBI)
- M:	Artem Bityutskiy <dedekind1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
- M:	Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>
--- 
-2.18.0
+> 
+> Fixes: d0ed062a8b75 ("usb: mtu3: dual-role mode support")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> ---
+>  drivers/usb/mtu3/Kconfig | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/usb/mtu3/Kconfig b/drivers/usb/mtu3/Kconfig
+> index bcc23486c4ed..928c2cd6fc00 100644
+> --- a/drivers/usb/mtu3/Kconfig
+> +++ b/drivers/usb/mtu3/Kconfig
+> @@ -6,6 +6,7 @@ config USB_MTU3
+>  	tristate "MediaTek USB3 Dual Role controller"
+>  	depends on USB || USB_GADGET
+>  	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +	depends on EXTCON || !EXTCON
+>  	select USB_XHCI_MTK if USB_SUPPORT && USB_XHCI_HCD
+>  	help
+>  	  Say Y or M here if your system runs on MediaTek SoCs with
+
+Tested-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+
+Thank you!
