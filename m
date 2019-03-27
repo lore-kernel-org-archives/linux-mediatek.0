@@ -1,48 +1,105 @@
-From: wangyan wang <wangyan.wang@mediatek.com>
-Subject: [PATCH V7 5/6] drm/mediatek: using new factor for tvdpll in MT2701
-Date: Wed, 27 Mar 2019 17:19:28 +0800
-Message-ID: <20190327091929.73162-6-wangyan.wang@mediatek.com>
-References: <20190327091929.73162-1-wangyan.wang@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v2 02/25] dt-bindings: mediatek: add binding for mt8183
+ display
+Date: Wed, 27 Mar 2019 17:39:47 +0800
+Message-ID: <1553679587.18612.7.camel@mtksdaap41>
+References: <1553667561-25447-1-git-send-email-yongqiang.niu@mediatek.com>
+         <1553667561-25447-3-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190327091929.73162-1-wangyan.wang@mediatek.com>
+In-Reply-To: <1553667561-25447-3-git-send-email-yongqiang.niu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, CK Hu <ck.hu@mediatek.com>
-Cc: wangyan wang <wangyan.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, chunhui dai <chunhui.dai@mediatek.com>, Colin Ian King <colin.king@canonical.com>, Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, srv_heupstream@mediatek.com
+To: yongqiang.niu@mediatek.com
+Cc: p.zabel@pengutronix.de, robh+dt@kernel.org, matthias.bgg@gmail.com, airlied@linux.ie, mark.rutland@arm.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Bibby.Hsieh@mediatek.com, yt.shen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: chunhui dai <chunhui.dai@mediatek.com>
+Hi, Yongqiang:
 
-The factor depends on the divider of DPI in MT2701, therefore,
-we should fix this factor to the right and new one.
+On Wed, 2019-03-27 at 14:18 +0800, yongqiang.niu@mediatek.com wrote:
+> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> 
+> Update device tree binding documention for the display subsystem for
+> Mediatek MT8183 SOCs
+> 
+> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> ---
+>  .../bindings/display/mediatek/mediatek,disp.txt    | 37 ++++++++++++++--------
+>  1 file changed, 23 insertions(+), 14 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+> index 8469de5..5467470c 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+> @@ -27,20 +27,23 @@ Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt.
+>  
+>  Required properties (all function blocks):
+>  - compatible: "mediatek,<chip>-disp-<function>", one of
+> -	"mediatek,<chip>-disp-ovl"   - overlay (4 layers, blending, csc)
+> -	"mediatek,<chip>-disp-rdma"  - read DMA / line buffer
+> -	"mediatek,<chip>-disp-wdma"  - write DMA
+> -	"mediatek,<chip>-disp-color" - color processor
+> -	"mediatek,<chip>-disp-aal"   - adaptive ambient light controller
+> -	"mediatek,<chip>-disp-gamma" - gamma correction
+> -	"mediatek,<chip>-disp-merge" - merge streams from two RDMA sources
+> -	"mediatek,<chip>-disp-split" - split stream to two encoders
+> -	"mediatek,<chip>-disp-ufoe"  - data compression engine
+> -	"mediatek,<chip>-dsi"        - DSI controller, see mediatek,dsi.txt
+> -	"mediatek,<chip>-dpi"        - DPI controller, see mediatek,dpi.txt
+> -	"mediatek,<chip>-disp-mutex" - display mutex
+> -	"mediatek,<chip>-disp-od"    - overdrive
+> -  the supported chips are mt2701, mt2712 and mt8173.
+> +	"mediatek,<chip>-disp-ovl"   		- overlay (4 layers, blending, csc)
+> +	"mediatek,<chip>-disp-ovl-2l"   	- overlay (2 layers, blending, csc)
 
-Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
-Signed-off-by: wangyan wang <wangyan.wang@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_dpi.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+I prefer adding disp-ovl-2l to be an independent patch.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 69c6e42dad6b..4a2f4a650494 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -662,13 +662,11 @@ static unsigned int mt8173_calculate_factor(int clock)
- static unsigned int mt2701_calculate_factor(int clock)
- {
- 	if (clock <= 64000)
--		return 16;
--	else if (clock <= 128000)
--		return 8;
--	else if (clock <= 256000)
- 		return 4;
--	else
-+	else if (clock <= 128000)
- 		return 2;
-+	else
-+		return 1;
- }
- 
- static const struct mtk_dpi_conf mt8173_conf = {
--- 
-2.14.1
+> +	"mediatek,<chip>-disp-rdma"  		- read DMA / line buffer
+> +	"mediatek,<chip>-disp-wdma"  		- write DMA
+> +	"mediatek,<chip>-disp-ccorr" 		- color correction
+
+I prefer adding disp-ccorr to be an independent patch.
+
+> +	"mediatek,<chip>-disp-color" 		- color processor
+> +	"mediatek,<chip>-disp-dither" 		- dither
+
+I prefer adding disp-dither to be an independent patch.
+
+> +	"mediatek,<chip>-disp-aal"   		- adaptive ambient light controller
+> +	"mediatek,<chip>-disp-gamma" 		- gamma correction
+> +	"mediatek,<chip>-disp-merge" 		- merge streams from two RDMA sources
+> +	"mediatek,<chip>-disp-split" 		- split stream to two encoders
+> +	"mediatek,<chip>-disp-ufoe"  		- data compression engine
+> +	"mediatek,<chip>-dsi"        		- DSI controller, see mediatek,dsi.txt
+> +	"mediatek,<chip>-dpi"        		- DPI controller, see mediatek,dpi.txt
+> +	"mediatek,<chip>-disp-mutex" 		- display mutex
+> +	"mediatek,<chip>-disp-od"    		- overdrive
+> +  the supported chips are mt2701, mt2712, mt8173 and mt8183.
+>  - reg: Physical base address and length of the function block register space
+>  - interrupts: The interrupt signal from the function block (required, except for
+>    merge and split function blocks).
+> @@ -71,6 +74,12 @@ mmsys: clock-controller@14000000 {
+>  	#clock-cells = <1>;
+>  };
+>  
+> +display_components: dispsys@14000000 {
+> +		compatible = "mediatek,mt8183-display";
+
+"mediatek,mt8183-display" is undefined. I think this should be
+"mediatek,mt8183-mmsys" and you have met the same problem in [1]. You
+may depend on that series to develop your patches.
+
+[1]
+http://lists.infradead.org/pipermail/linux-mediatek/2018-November/015860.html
+
+Regards,
+CK
+
+> +		reg = <0 0x14000000 0 0x1000>;
+> +		power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
+> +};
+> +
+>  ovl0: ovl@1400c000 {
+>  	compatible = "mediatek,mt8173-disp-ovl";
+>  	reg = <0 0x1400c000 0 0x1000>;
