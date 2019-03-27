@@ -1,7 +1,7 @@
 From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 5.0 054/262] PCI: mediatek: Fix memory mapped IO range size computation
-Date: Wed, 27 Mar 2019 13:58:29 -0400
-Message-ID: <20190327180158.10245-54-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.0 064/262] mt76: fix a leaked reference by adding a missing of_node_put
+Date: Wed, 27 Mar 2019 13:58:39 -0400
+Message-ID: <20190327180158.10245-64-sashal@kernel.org>
 References: <20190327180158.10245-1-sashal@kernel.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -9,80 +9,83 @@ Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20190327180158.10245-1-sashal@kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
-Cc: Honghui Zhang <honghui.zhang@mediatek.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Sasha Levin <sashal@kernel.org>, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: Wen Yang <wen.yang99@zte.com.cn>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Kalle Valo <kvalo@codeaurora.org>, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Sasha Levin <sashal@kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Honghui Zhang <honghui.zhang@mediatek.com>
+From: Wen Yang <wen.yang99@zte.com.cn>
 
-[ Upstream commit c61df57343bf05743f8abbb31eec9a6f05820dd1 ]
+[ Upstream commit 34e022d8b780a03902d82fb3997ba7c7b1f40c81 ]
 
-Mediatek's HW assigns a MMIO address range (typically starts from
-0x20000000 to 0x2fffffff for both mt2712 and mt7622) for PCI usage.
+The call to of_find_node_by_phandle returns a node pointer with refcount
+incremented thus it must be explicitly decremented after the last
+usage.
 
-This MMIO address space represents the address space that can
-be allocated to PCI devices through Base Address Registers.
+Detected by coccinelle with the following warnings:
+./drivers/net/wireless/mediatek/mt76/eeprom.c:58:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 48, but without a corresponding object release within this function.
+./drivers/net/wireless/mediatek/mt76/eeprom.c:61:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 48, but without a corresponding object release within this function.
+./drivers/net/wireless/mediatek/mt76/eeprom.c:67:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 48, but without a corresponding object release within this function.
+./drivers/net/wireless/mediatek/mt76/eeprom.c:70:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 48, but without a corresponding object release within this function.
+./drivers/net/wireless/mediatek/mt76/eeprom.c:72:1-7: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 48, but without a corresponding object release within this function.
 
-Even though the full MMIO address range is available to be allocated, it
-should be enabled by the PCIE_AHB_TRANS_BASE register in the host
-controller and the size that is enabled is determined by AHB2PCIE_SIZE
-bits in this register.
-
-Owing to a bug in the MMIO window size computation, current code does
-not enable the full size of the available MMIO address range in the
-PCI host controller; if the PCI devices BARs requested size exceeds the
-size enabled through the PCIE_AHB_TRANS_BASE register the requests
-targeting the disabled address address space will be blocked by the root
-complex causing a system error.
-
-Existing code has never run into a system error in production because
-even half of the enabled MMIO range (128MB) is big enough for typical
-devices BAR requests (4MB) but the full MMIO address range should
-be enabled regardless.
-
-Fix the MMIO window size computation by using resource_size(mem) instead
-of mem->end - mem->start.
-
-Since the MMIO window size for both MT2712 and MT7622 is 0x10000000,
-this change will update the parameter passed to fls() from 0xfffffff to
-0x10000000 and calculate the whole memory mapped IO range size
-correctly.
-
-Detected through coccinelle semantic patch (and related warning):
-
-scripts/coccinelle/api/resource_size.cocci:
-
-pcie-mediatek.c:720:13-16: WARNING: Suspicious code. resource_size is maybe missing with mem
-
-Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-[lorenzo.pieralisi@arm.com: rewrote the commit log]
-Signed-off-by: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
+Cc: Felix Fietkau <nbd@nbd.name>
+Cc: Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>
+Cc: Kalle Valo <kvalo@codeaurora.org>
+Cc: "David S. Miller" <davem@davemloft.net>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-wireless@vger.kernel.org
+Cc: netdev@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+Signed-off-by: Kalle Valo <kvalo@codeaurora.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/pci/controller/pcie-mediatek.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ drivers/net/wireless/mediatek/mt76/eeprom.c | 24 ++++++++++++++-------
+ 1 file changed, 16 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 55e471c18e8d..c42fe5c4319f 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -654,7 +654,6 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
- 	struct resource *mem = &pcie->mem;
- 	const struct mtk_pcie_soc *soc = port->pcie->soc;
- 	u32 val;
--	size_t size;
- 	int err;
+diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
+index 530e5593765c..a1529920d877 100644
+--- a/drivers/net/wireless/mediatek/mt76/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
+@@ -54,22 +54,30 @@ mt76_get_of_eeprom(struct mt76_dev *dev, int len)
+ 		part = np->name;
  
- 	/* MT7622 platforms need to enable LTSSM and ASPM from PCIe subsys */
-@@ -706,8 +705,8 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
- 		mtk_pcie_enable_msi(port);
+ 	mtd = get_mtd_device_nm(part);
+-	if (IS_ERR(mtd))
+-		return PTR_ERR(mtd);
++	if (IS_ERR(mtd)) {
++		ret =  PTR_ERR(mtd);
++		goto out_put_node;
++	}
  
- 	/* Set AHB to PCIe translation windows */
--	size = mem->end - mem->start;
--	val = lower_32_bits(mem->start) | AHB2PCIE_SIZE(fls(size));
-+	val = lower_32_bits(mem->start) |
-+	      AHB2PCIE_SIZE(fls(resource_size(mem)));
- 	writel(val, port->base + PCIE_AHB_TRANS_BASE0_L);
+-	if (size <= sizeof(*list))
+-		return -EINVAL;
++	if (size <= sizeof(*list)) {
++		ret = -EINVAL;
++		goto out_put_node;
++	}
  
- 	val = upper_32_bits(mem->start);
+ 	offset = be32_to_cpup(list);
+ 	ret = mtd_read(mtd, offset, len, &retlen, dev->eeprom.data);
+ 	put_mtd_device(mtd);
+ 	if (ret)
+-		return ret;
++		goto out_put_node;
+ 
+-	if (retlen < len)
+-		return -EINVAL;
++	if (retlen < len) {
++		ret = -EINVAL;
++		goto out_put_node;
++	}
+ 
+-	return 0;
++out_put_node:
++	of_node_put(np);
++	return ret;
+ #else
+ 	return -ENOENT;
+ #endif
 -- 
 2.19.1
