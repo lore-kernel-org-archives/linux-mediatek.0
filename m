@@ -1,105 +1,54 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v2 02/25] dt-bindings: mediatek: add binding for mt8183
- display
-Date: Wed, 27 Mar 2019 17:39:47 +0800
-Message-ID: <1553679587.18612.7.camel@mtksdaap41>
-References: <1553667561-25447-1-git-send-email-yongqiang.niu@mediatek.com>
-         <1553667561-25447-3-git-send-email-yongqiang.niu@mediatek.com>
+From: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH RESEND v3 0/5] scsi: ufs: Fix regulator operations and remove
+ "<name>-fixed-regulator" device tree property
+Date: Wed, 27 Mar 2019 17:58:22 +0800
+Message-ID: <1553680707-28579-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1553667561-25447-3-git-send-email-yongqiang.niu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: yongqiang.niu@mediatek.com
-Cc: p.zabel@pengutronix.de, robh+dt@kernel.org, matthias.bgg@gmail.com, airlied@linux.ie, mark.rutland@arm.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Bibby.Hsieh@mediatek.com, yt.shen@mediatek.com
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org, avri.altman-Sjgp3cTcYWE@public.gmane.org, alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org
+Cc: marc.w.gonzalez-GANU6spQydw@public.gmane.org, chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Yongqiang:
+Hi,
 
-On Wed, 2019-03-27 at 14:18 +0800, yongqiang.niu@mediatek.com wrote:
-> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> 
-> Update device tree binding documention for the display subsystem for
-> Mediatek MT8183 SOCs
-> 
-> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> ---
->  .../bindings/display/mediatek/mediatek,disp.txt    | 37 ++++++++++++++--------
->  1 file changed, 23 insertions(+), 14 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-> index 8469de5..5467470c 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-> @@ -27,20 +27,23 @@ Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt.
->  
->  Required properties (all function blocks):
->  - compatible: "mediatek,<chip>-disp-<function>", one of
-> -	"mediatek,<chip>-disp-ovl"   - overlay (4 layers, blending, csc)
-> -	"mediatek,<chip>-disp-rdma"  - read DMA / line buffer
-> -	"mediatek,<chip>-disp-wdma"  - write DMA
-> -	"mediatek,<chip>-disp-color" - color processor
-> -	"mediatek,<chip>-disp-aal"   - adaptive ambient light controller
-> -	"mediatek,<chip>-disp-gamma" - gamma correction
-> -	"mediatek,<chip>-disp-merge" - merge streams from two RDMA sources
-> -	"mediatek,<chip>-disp-split" - split stream to two encoders
-> -	"mediatek,<chip>-disp-ufoe"  - data compression engine
-> -	"mediatek,<chip>-dsi"        - DSI controller, see mediatek,dsi.txt
-> -	"mediatek,<chip>-dpi"        - DPI controller, see mediatek,dpi.txt
-> -	"mediatek,<chip>-disp-mutex" - display mutex
-> -	"mediatek,<chip>-disp-od"    - overdrive
-> -  the supported chips are mt2701, mt2712 and mt8173.
-> +	"mediatek,<chip>-disp-ovl"   		- overlay (4 layers, blending, csc)
-> +	"mediatek,<chip>-disp-ovl-2l"   	- overlay (2 layers, blending, csc)
+Resend this patch series for review.
 
-I prefer adding disp-ovl-2l to be an independent patch.
+This version (v3) fixed and added more details in commit messages, and added one patch to fix "undefined voltage range" issue as well.
 
-> +	"mediatek,<chip>-disp-rdma"  		- read DMA / line buffer
-> +	"mediatek,<chip>-disp-wdma"  		- write DMA
-> +	"mediatek,<chip>-disp-ccorr" 		- color correction
+This patch series fixes UFS regulator operations, including voltage and current (re-)configuration flow during UFS initialization and power mode switching.
 
-I prefer adding disp-ccorr to be an independent patch.
+In the end, remove "<name>-fixed-regulator" device tree property because it is not necessary anymore after these fixes.
 
-> +	"mediatek,<chip>-disp-color" 		- color processor
-> +	"mediatek,<chip>-disp-dither" 		- dither
+V3:
+- Fix and add more details in commit messages.
+- Add one patch "scsi: ufs: Avoid configuring undefined voltage range on a regulator".
 
-I prefer adding disp-dither to be an independent patch.
+V2:
+- Add two patches to prepare to and remove "<name>-fixed-regulator" device tree property.
+- Add more details on patch "scsi: ufs: remove unused min_uA field in struct ufs_vreg" (Marc Gonzalez).
 
-> +	"mediatek,<chip>-disp-aal"   		- adaptive ambient light controller
-> +	"mediatek,<chip>-disp-gamma" 		- gamma correction
-> +	"mediatek,<chip>-disp-merge" 		- merge streams from two RDMA sources
-> +	"mediatek,<chip>-disp-split" 		- split stream to two encoders
-> +	"mediatek,<chip>-disp-ufoe"  		- data compression engine
-> +	"mediatek,<chip>-dsi"        		- DSI controller, see mediatek,dsi.txt
-> +	"mediatek,<chip>-dpi"        		- DPI controller, see mediatek,dpi.txt
-> +	"mediatek,<chip>-disp-mutex" 		- display mutex
-> +	"mediatek,<chip>-disp-od"    		- overdrive
-> +  the supported chips are mt2701, mt2712, mt8173 and mt8183.
->  - reg: Physical base address and length of the function block register space
->  - interrupts: The interrupt signal from the function block (required, except for
->    merge and split function blocks).
-> @@ -71,6 +74,12 @@ mmsys: clock-controller@14000000 {
->  	#clock-cells = <1>;
->  };
->  
-> +display_components: dispsys@14000000 {
-> +		compatible = "mediatek,mt8183-display";
+Stanley Chu (5):
+  scsi: ufs: Remove unused min_uA field in struct ufs_vreg
+  scsi: ufs: Avoid configuring regulator with undefined voltage range
+  scsi: ufs: Fix regulator load and icc-level configuration
+  scsi: ufs: Change "<name>-max-microamp" to non-mandatory property
+  scsi: ufs: Remove "<name>-fixed-regulator" device tree property
 
-"mediatek,mt8183-display" is undefined. I think this should be
-"mediatek,mt8183-mmsys" and you have met the same problem in [1]. You
-may depend on that series to develop your patches.
+ drivers/scsi/ufs/ufs.h           |  1 -
+ drivers/scsi/ufs/ufshcd-pltfrm.c | 14 +++-----------
+ drivers/scsi/ufs/ufshcd.c        | 28 ++++++++++++++++++++--------
+ 3 files changed, 23 insertions(+), 20 deletions(-)
 
-[1]
-http://lists.infradead.org/pipermail/linux-mediatek/2018-November/015860.html
-
-Regards,
-CK
-
-> +		reg = <0 0x14000000 0 0x1000>;
-> +		power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
-> +};
-> +
->  ovl0: ovl@1400c000 {
->  	compatible = "mediatek,mt8173-disp-ovl";
->  	reg = <0 0x1400c000 0 0x1000>;
+-- 
+2.18.0
