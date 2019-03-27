@@ -1,72 +1,88 @@
-From: Alim Akhtar <alim.akhtar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH RESEND v3 0/5] scsi: ufs: Fix regulator operations and
- remove "<name>-fixed-regulator" device tree property
-Date: Wed, 27 Mar 2019 22:48:54 +0530
-Message-ID: <CAGOxZ51zdtoLz=E_vmpwt+2wTJq32yUQa=h_OiV7qO1N-c=NUA@mail.gmail.com>
-References: <1553680707-28579-1-git-send-email-stanley.chu@mediatek.com>
+From: Sasha Levin <sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.0 054/262] PCI: mediatek: Fix memory mapped IO range size computation
+Date: Wed, 27 Mar 2019 13:58:29 -0400
+Message-ID: <20190327180158.10245-54-sashal@kernel.org>
+References: <20190327180158.10245-1-sashal@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1553680707-28579-1-git-send-email-stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "Martin K. Petersen" <martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, marc.w.gonzalez-GANU6spQydw@public.gmane.org, chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Kuohong Wang <kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Avri Altman <avri.altman-Sjgp3cTcYWE@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Alim Akhtar <alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Pedro Sousa <pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190327180158.10245-1-sashal@kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
+Cc: Honghui Zhang <honghui.zhang@mediatek.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Sasha Levin <sashal@kernel.org>, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Stanley,
-Please collect all the {review/acked}-by tags when reposting so that
-people are aware which all patches need to review.
-https://www.spinics.net/lists/linux-scsi/msg128818.html
-This series looks good, it will be if we get a Tested-by as well.
-For this series
-Acked-by: Alim Akhtar <alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+From: Honghui Zhang <honghui.zhang@mediatek.com>
 
-On Wed, Mar 27, 2019 at 3:29 PM Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
->
-> Hi,
->
-> Resend this patch series for review.
->
-> This version (v3) fixed and added more details in commit messages, and added one patch to fix "undefined voltage range" issue as well.
->
-> This patch series fixes UFS regulator operations, including voltage and current (re-)configuration flow during UFS initialization and power mode switching.
->
-> In the end, remove "<name>-fixed-regulator" device tree property because it is not necessary anymore after these fixes.
->
-> V3:
-> - Fix and add more details in commit messages.
-> - Add one patch "scsi: ufs: Avoid configuring undefined voltage range on a regulator".
->
-> V2:
-> - Add two patches to prepare to and remove "<name>-fixed-regulator" device tree property.
-> - Add more details on patch "scsi: ufs: remove unused min_uA field in struct ufs_vreg" (Marc Gonzalez).
->
-> Stanley Chu (5):
->   scsi: ufs: Remove unused min_uA field in struct ufs_vreg
->   scsi: ufs: Avoid configuring regulator with undefined voltage range
->   scsi: ufs: Fix regulator load and icc-level configuration
->   scsi: ufs: Change "<name>-max-microamp" to non-mandatory property
->   scsi: ufs: Remove "<name>-fixed-regulator" device tree property
->
->  drivers/scsi/ufs/ufs.h           |  1 -
->  drivers/scsi/ufs/ufshcd-pltfrm.c | 14 +++-----------
->  drivers/scsi/ufs/ufshcd.c        | 28 ++++++++++++++++++++--------
->  3 files changed, 23 insertions(+), 20 deletions(-)
->
-> --
-> 2.18.0
->
+[ Upstream commit c61df57343bf05743f8abbb31eec9a6f05820dd1 ]
 
+Mediatek's HW assigns a MMIO address range (typically starts from
+0x20000000 to 0x2fffffff for both mt2712 and mt7622) for PCI usage.
 
+This MMIO address space represents the address space that can
+be allocated to PCI devices through Base Address Registers.
+
+Even though the full MMIO address range is available to be allocated, it
+should be enabled by the PCIE_AHB_TRANS_BASE register in the host
+controller and the size that is enabled is determined by AHB2PCIE_SIZE
+bits in this register.
+
+Owing to a bug in the MMIO window size computation, current code does
+not enable the full size of the available MMIO address range in the
+PCI host controller; if the PCI devices BARs requested size exceeds the
+size enabled through the PCIE_AHB_TRANS_BASE register the requests
+targeting the disabled address address space will be blocked by the root
+complex causing a system error.
+
+Existing code has never run into a system error in production because
+even half of the enabled MMIO range (128MB) is big enough for typical
+devices BAR requests (4MB) but the full MMIO address range should
+be enabled regardless.
+
+Fix the MMIO window size computation by using resource_size(mem) instead
+of mem->end - mem->start.
+
+Since the MMIO window size for both MT2712 and MT7622 is 0x10000000,
+this change will update the parameter passed to fls() from 0xfffffff to
+0x10000000 and calculate the whole memory mapped IO range size
+correctly.
+
+Detected through coccinelle semantic patch (and related warning):
+
+scripts/coccinelle/api/resource_size.cocci:
+
+pcie-mediatek.c:720:13-16: WARNING: Suspicious code. resource_size is maybe missing with mem
+
+Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+[lorenzo.pieralisi@arm.com: rewrote the commit log]
+Signed-off-by: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/pci/controller/pcie-mediatek.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index 55e471c18e8d..c42fe5c4319f 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -654,7 +654,6 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+ 	struct resource *mem = &pcie->mem;
+ 	const struct mtk_pcie_soc *soc = port->pcie->soc;
+ 	u32 val;
+-	size_t size;
+ 	int err;
+ 
+ 	/* MT7622 platforms need to enable LTSSM and ASPM from PCIe subsys */
+@@ -706,8 +705,8 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+ 		mtk_pcie_enable_msi(port);
+ 
+ 	/* Set AHB to PCIe translation windows */
+-	size = mem->end - mem->start;
+-	val = lower_32_bits(mem->start) | AHB2PCIE_SIZE(fls(size));
++	val = lower_32_bits(mem->start) |
++	      AHB2PCIE_SIZE(fls(resource_size(mem)));
+ 	writel(val, port->base + PCIE_AHB_TRANS_BASE0_L);
+ 
+ 	val = upper_32_bits(mem->start);
 -- 
-Regards,
-Alim
+2.19.1
