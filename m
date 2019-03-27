@@ -1,55 +1,45 @@
-From: Avri Altman <Avri.Altman-Sjgp3cTcYWE@public.gmane.org>
-Subject: RE: [PATCH] MAINTAINERS: Add maintainer for MediaTek UFS driver
-Date: Wed, 27 Mar 2019 07:48:08 +0000
-Message-ID: <SN6PR04MB49257BFA361BFC4D2E6D9A25FC580@SN6PR04MB4925.namprd04.prod.outlook.com>
-References: <1553668025-20135-1-git-send-email-stanley.chu@mediatek.com>
+From: wangyan wang <wangyan.wang@mediatek.com>
+Subject: [PATCH V7 0/6] make mt7623 clock of hdmi stable
+Date: Wed, 27 Mar 2019 17:19:23 +0800
+Message-ID: <20190327091929.73162-1-wangyan.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1553668025-20135-1-git-send-email-stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org" <martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, "alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org" <alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Cc: "matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org" <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, CK Hu <ck.hu@mediatek.com>
+Cc: wangyan wang <wangyan.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, chunhui dai <chunhui.dai@mediatek.com>, Colin Ian King <colin.king@canonical.com>, Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-> 
-> Stanley actively join the development and review on
-> MediaTek UFS driver.
-> 
-> Signed-off-by: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Acked-by: Avri Altman <avri.altman-Sjgp3cTcYWE@public.gmane.org>
+From: Wangyan Wang <wangyan.wang@mediatek.com>
 
-> ---
->  MAINTAINERS | 7 +++++++
->  1 file changed, 7 insertions(+)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index e17ebf70b548..30f280b560a6 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -15971,6 +15971,13 @@ L:	linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
->  S:	Supported
->  F:	drivers/scsi/ufs/*dwc*
-> 
-> +UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER MEDIATEK HOOKS
-> +M:	Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> +L:	linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> +L:	linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org (moderated for non-subscribers)
-> +S:	Maintained
-> +F:	drivers/scsi/ufs/ufs-mediatek*
-> +
->  UNSORTED BLOCK IMAGES (UBI)
->  M:	Artem Bityutskiy <dedekind1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
->  M:	Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>
-> --
-> 2.18.0
+V7 adopt maintainer's suggestion.
+Here is the change list between V6 & V7
+
+1. use readl directly & delete hdmi_phy->pll_rate in
+mtk_hdmi_pll_recalc_rate(). 
+in "drm/mediatek: recalculate hdmi ..."
+
+2. detele mtk_hdmi_phy_read() in mtk_hdmi_phy.c.
+in "fix the rate of parent for hdmi phy in MT2701"
+
+3. optimize mtk_hdmi_pll_round_rate().
+in "fix the rate of parent for hdmi phy in MT2701"
+
+chunhui dai (6):
+  drm/mediatek: recalculate hdmi phy clock of MT2701 by querying
+    hardware
+  drm/mediatek: move the setting of fixed divider
+  drm/mediatek: using different flags of clk for HDMI phy
+  drm/mediatek: fix the rate and divder of hdmi phy for MT2701
+  drm/mediatek: using new factor for tvdpll in MT2701
+  drm/mediatek: fix the rate of parent for hdmi phy in MT2701
+
+ drivers/gpu/drm/mediatek/mtk_dpi.c             |  8 ++---
+ drivers/gpu/drm/mediatek/mtk_hdmi_phy.c        | 35 +++---------------
+ drivers/gpu/drm/mediatek/mtk_hdmi_phy.h        |  6 +---
+ drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c | 50 ++++++++++++++++++++++----
+ drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c | 23 ++++++++++++
+ 5 files changed, 76 insertions(+), 46 deletions(-)
+
+-- 
+2.14.1
