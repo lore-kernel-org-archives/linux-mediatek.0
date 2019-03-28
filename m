@@ -1,97 +1,177 @@
-From: Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v3 07/12] soc: mediatek: cmdq: clear the event in cmdq initial
- flow
-Date: Thu, 28 Mar 2019 10:19:28 +0800
-Message-ID: <1553739573-19708-8-git-send-email-bibby.hsieh@mediatek.com>
-References: <1553739573-19708-1-git-send-email-bibby.hsieh@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v2 04/25] drm/mediatek: add mutex sof into ddp private
+ data
+Date: Thu, 28 Mar 2019 11:02:00 +0800
+Message-ID: <1553742120.14682.3.camel@mtksdaap41>
+References: <1553667561-25447-1-git-send-email-yongqiang.niu@mediatek.com>
+         <1553667561-25447-5-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1553739573-19708-1-git-send-email-bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jassi Brar <jassisinghbrar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, CK HU <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Dennis-YC Hsieh <dennis-yc.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, kendrick.hsu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Houlong Wei <houlong.wei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Frederic Chen <Frederic.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jiaguang Zhang <jiaguang.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, ginny.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1553667561-25447-5-git-send-email-yongqiang.niu@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: yongqiang.niu@mediatek.com
+Cc: p.zabel@pengutronix.de, robh+dt@kernel.org, matthias.bgg@gmail.com, airlied@linux.ie, mark.rutland@arm.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Bibby.Hsieh@mediatek.com, yt.shen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-GCE hardware stored event information in own internal sysram,
-if the initial value in those sysram is not zero value
-it will cause a situation that gce can wait the event immediately
-after client ask gce to wait event but not really trigger the
-corresponding hardware.
+Hi, Yongqiang:
 
-In order to make sure that the wait event function is
-exactly correct, we need to clear the sysram value in
-cmdq initial flow.
+On Wed, 2019-03-27 at 14:19 +0800, yongqiang.niu@mediatek.com wrote:
+> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> 
+> mutex0 SOF register offset not always 0x30.
+> for mt8183, that offset will be 0x2C,
+> add this regsiter offset into private data
 
-Fixes: 623a6143a845 ("mailbox: mediatek: Add Mediatek CMDQ driver")
+I think you do two things in this patch. One is mutex0 SOF register
+offset, and another is making sof value variable. So please split this
+into two patches.
 
-Signed-off-by: Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/mailbox/mtk-cmdq-mailbox.c       | 5 +++++
- include/linux/mailbox/mtk-cmdq-mailbox.h | 2 ++
- include/linux/soc/mediatek/mtk-cmdq.h    | 3 ---
- 3 files changed, 7 insertions(+), 3 deletions(-)
+> 
+> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp.c | 51 ++++++++++++++++++++++++++++------
+>  1 file changed, 42 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> index 7f0d46e..495ebc5 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> @@ -42,12 +42,13 @@
+>  #define DISP_REG_CONFIG_DPI_SEL			0x064
+>  
+>  #define MT2701_DISP_MUTEX0_MOD0 0x2C
+> +#define MT2701_DISP_MUTEX0_SOF0  0x30
+>  
+>  #define DISP_REG_MUTEX_EN(n)	(0x20 + 0x20 * (n))
+>  #define DISP_REG_MUTEX(n)	(0x24 + 0x20 * (n))
+>  #define DISP_REG_MUTEX_RST(n)	(0x28 + 0x20 * (n))
+>  #define DISP_REG_MUTEX_MOD(data, n)	((data)->mutex_mod_reg + 0x20 * (n))
+> -#define DISP_REG_MUTEX_SOF(n)	(0x30 + 0x20 * (n))
+> +#define DISP_REG_MUTEX_SOF(data, n)	((data)->mutex_sof_reg + 0x20 * (n))
 
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index 6db1e2d..4e744cf 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -33,6 +33,7 @@
- #define CMDQ_THR_END_ADDR		0x24
- #define CMDQ_THR_WAIT_TOKEN		0x30
- #define CMDQ_THR_PRIORITY		0x40
-+#define CMDQ_SYNC_TOKEN_UPDATE		0x68
- 
- #define CMDQ_THR_ACTIVE_SLOT_CYCLES	0x3200
- #define CMDQ_THR_ENABLED		0x1
-@@ -103,8 +104,12 @@ static void cmdq_thread_resume(struct cmdq_thread *thread)
- 
- static void cmdq_init(struct cmdq *cmdq)
- {
-+	int i;
-+
- 	WARN_ON(clk_enable(cmdq->clock) < 0);
- 	writel(CMDQ_THR_ACTIVE_SLOT_CYCLES, cmdq->base + CMDQ_THR_SLOT_CYCLES);
-+	for (i = 0; i <= CMDQ_MAX_EVENT; i++)
-+		writel(i, cmdq->base + CMDQ_SYNC_TOKEN_UPDATE);
- 	clk_disable(cmdq->clock);
- }
- 
-diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
-index ccb7342..911475da 100644
---- a/include/linux/mailbox/mtk-cmdq-mailbox.h
-+++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
-@@ -19,6 +19,8 @@
- #define CMDQ_WFE_UPDATE			BIT(31)
- #define CMDQ_WFE_WAIT			BIT(15)
- #define CMDQ_WFE_WAIT_VALUE		0x1
-+/** cmdq event maximum */
-+#define CMDQ_MAX_EVENT			0x3ff
- 
- /*
-  * CMDQ_CODE_MASK:
-diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-index 54ade13..4e88999 100644
---- a/include/linux/soc/mediatek/mtk-cmdq.h
-+++ b/include/linux/soc/mediatek/mtk-cmdq.h
-@@ -13,9 +13,6 @@
- 
- #define CMDQ_NO_TIMEOUT		0xffffffffu
- 
--/** cmdq event maximum */
--#define CMDQ_MAX_EVENT				0x3ff
--
- struct cmdq_pkt;
- 
- struct cmdq_client {
--- 
-1.9.1
+Even though previous patch's indent is not aligned, I would like you to
+align this indent.
+
+Regards,
+CK
+
+>  #define DISP_REG_MUTEX_MOD2(n)	(0x34 + 0x20 * (n))
+>  
+>  #define INT_MUTEX				BIT(1)
+> @@ -149,9 +150,22 @@ struct mtk_disp_mutex {
+>  	bool claimed;
+>  };
+>  
+> +enum mtk_ddp_mutex_sof_id {
+> +	DDP_MUTEX_SOF_SINGLE_MODE,
+> +	DDP_MUTEX_SOF_DSI0,
+> +	DDP_MUTEX_SOF_DSI1,
+> +	DDP_MUTEX_SOF_DPI0,
+> +	DDP_MUTEX_SOF_DPI1,
+> +	DDP_MUTEX_SOF_DSI2,
+> +	DDP_MUTEX_SOF_DSI3,
+> +	DDP_MUTEX_SOF_MAX,
+> +};
+> +
+>  struct mtk_ddp_data {
+>  	const unsigned int *mutex_mod;
+> +	const unsigned int *mutex_sof;
+>  	unsigned int mutex_mod_reg;
+> +	unsigned int mutex_sof_reg;
+>  };
+>  
+>  struct mtk_ddp {
+> @@ -209,19 +223,35 @@ struct mtk_ddp {
+>  	[DDP_COMPONENT_WDMA1] = MT8173_MUTEX_MOD_DISP_WDMA1,
+>  };
+>  
+> +static const unsigned int mt2712_mutex_sof[DDP_MUTEX_SOF_MAX] = {
+> +	[DDP_MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
+> +	[DDP_MUTEX_SOF_DSI0] = MUTEX_SOF_DSI0,
+> +	[DDP_MUTEX_SOF_DSI1] = MUTEX_SOF_DSI1,
+> +	[DDP_MUTEX_SOF_DPI0] = MUTEX_SOF_DPI0,
+> +	[DDP_MUTEX_SOF_DPI1] = MUTEX_SOF_DPI1,
+> +	[DDP_MUTEX_SOF_DSI2] = MUTEX_SOF_DSI2,
+> +	[DDP_MUTEX_SOF_DSI3] = MUTEX_SOF_DSI3,
+> +};
+> +
+>  static const struct mtk_ddp_data mt2701_ddp_driver_data = {
+>  	.mutex_mod = mt2701_mutex_mod,
+> +	.mutex_sof = mt2712_mutex_sof,
+>  	.mutex_mod_reg = MT2701_DISP_MUTEX0_MOD0,
+> +	.mutex_sof_reg = MT2701_DISP_MUTEX0_SOF0,
+>  };
+>  
+>  static const struct mtk_ddp_data mt2712_ddp_driver_data = {
+>  	.mutex_mod = mt2712_mutex_mod,
+> +	.mutex_sof = mt2712_mutex_sof,
+>  	.mutex_mod_reg = MT2701_DISP_MUTEX0_MOD0,
+> +	.mutex_sof_reg = MT2701_DISP_MUTEX0_SOF0,
+>  };
+>  
+>  static const struct mtk_ddp_data mt8173_ddp_driver_data = {
+>  	.mutex_mod = mt8173_mutex_mod,
+> +	.mutex_sof = mt2712_mutex_sof,
+>  	.mutex_mod_reg = MT2701_DISP_MUTEX0_MOD0,
+> +	.mutex_sof_reg = MT2701_DISP_MUTEX0_SOF0,
+>  };
+>  
+>  static unsigned int mtk_ddp_mout_en(enum mtk_ddp_comp_id cur,
+> @@ -462,28 +492,29 @@ void mtk_disp_mutex_add_comp(struct mtk_disp_mutex *mutex,
+>  	struct mtk_ddp *ddp = container_of(mutex, struct mtk_ddp,
+>  					   mutex[mutex->id]);
+>  	unsigned int reg;
+> +	unsigned int sof_id;
+>  	unsigned int offset;
+>  
+>  	WARN_ON(&ddp->mutex[mutex->id] != mutex);
+>  
+>  	switch (id) {
+>  	case DDP_COMPONENT_DSI0:
+> -		reg = MUTEX_SOF_DSI0;
+> +		sof_id = DDP_MUTEX_SOF_DSI0;
+>  		break;
+>  	case DDP_COMPONENT_DSI1:
+> -		reg = MUTEX_SOF_DSI0;
+> +		sof_id = DDP_MUTEX_SOF_DSI0;
+>  		break;
+>  	case DDP_COMPONENT_DSI2:
+> -		reg = MUTEX_SOF_DSI2;
+> +		sof_id = DDP_MUTEX_SOF_DSI2;
+>  		break;
+>  	case DDP_COMPONENT_DSI3:
+> -		reg = MUTEX_SOF_DSI3;
+> +		sof_id = DDP_MUTEX_SOF_DSI3;
+>  		break;
+>  	case DDP_COMPONENT_DPI0:
+> -		reg = MUTEX_SOF_DPI0;
+> +		sof_id = DDP_MUTEX_SOF_DPI0;
+>  		break;
+>  	case DDP_COMPONENT_DPI1:
+> -		reg = MUTEX_SOF_DPI1;
+> +		sof_id = DDP_MUTEX_SOF_DPI1;
+>  		break;
+>  	default:
+>  		if (ddp->data->mutex_mod[id] < 32) {
+> @@ -500,7 +531,8 @@ void mtk_disp_mutex_add_comp(struct mtk_disp_mutex *mutex,
+>  		return;
+>  	}
+>  
+> -	writel_relaxed(reg, ddp->regs + DISP_REG_MUTEX_SOF(mutex->id));
+> +	writel_relaxed(ddp->data->mutex_sof[sof_id],
+> +		       ddp->regs + DISP_REG_MUTEX_SOF(ddp->data, mutex->id));
+>  }
+>  
+>  void mtk_disp_mutex_remove_comp(struct mtk_disp_mutex *mutex,
+> @@ -521,7 +553,8 @@ void mtk_disp_mutex_remove_comp(struct mtk_disp_mutex *mutex,
+>  	case DDP_COMPONENT_DPI0:
+>  	case DDP_COMPONENT_DPI1:
+>  		writel_relaxed(MUTEX_SOF_SINGLE_MODE,
+> -			       ddp->regs + DISP_REG_MUTEX_SOF(mutex->id));
+> +			       ddp->regs +
+> +			       DISP_REG_MUTEX_SOF(ddp->data, mutex->id));
+>  		break;
+>  	default:
+>  		if (ddp->data->mutex_mod[id] < 32) {
