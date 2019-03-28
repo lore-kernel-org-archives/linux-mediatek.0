@@ -1,8 +1,7 @@
 From: Jungo Lin <jungo.lin@mediatek.com>
-Subject: [RFC V1 01/12] dt-bindings: mt8183: Add binding for ISP Pass 1
- reserved memory
-Date: Thu, 28 Mar 2019 17:56:36 +0800
-Message-ID: <1553767007-11909-2-git-send-email-jungo.lin@mediatek.com>
+Subject: [RFC V1 02/12] dts: arm64: mt8183: Add ISP Pass 1 shared memory node
+Date: Thu, 28 Mar 2019 17:56:37 +0800
+Message-ID: <1553767007-11909-3-git-send-email-jungo.lin@mediatek.com>
 References: <jungo.lin@mediatek.com>
  <1553767007-11909-1-git-send-email-jungo.lin@mediatek.com>
 Mime-Version: 1.0
@@ -23,66 +22,38 @@ To: tfiga@chromium.org, hans.verkuil@cisco.com, laurent.pinchart+renesas@ideason
 Cc: Sean.Cheng@mediatek.com, Rynn.Wu@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, ryan.yu@mediatek.com, Jerry-ch.Chen@mediatek.com, frankie.chiu@mediatek.com, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, christie.yu@mediatek.com, seraph.huang@mediatek.com, zwisler@chromium.org, linux-mediatek@lists.infradead.org, frederic.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds the binding for describing the reserved shared memory
-used to exchange configuration and tuning data between the
-co-processor and Pass 1 (P1) unit of the camera ISP system on
-Mediatek SoCs.
+This patch adds a shared memory region used on mt8183 for
+exchanging tuning data between co-processor and the
+Pass 1 unit of the camera ISP system.
 
 Signed-off-by: Jungo Lin <jungo.lin@mediatek.com>
 ---
- .../mediatek,reserve-memory-cam_smem.txt           | 44 ++++++++++++++++++++++
- 1 file changed, 44 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-cam_smem.txt
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-cam_smem.txt b/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-cam_smem.txt
-new file mode 100644
-index 0000000..05c1bf1
---- /dev/null
-+++ b/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-cam_smem.txt
-@@ -0,0 +1,44 @@
-+Mediatek ISP Pass 1 Shared Memory binding
-+
-+This binding describes the shared memory, which serves the purpose of
-+describing the shared memory region used to exchange data between Pass 1
-+unit of Image Signal Processor (ISP) and the co-processor in Mediatek
-+SoCs.
-+
-+The co-processor doesn't have the iommu so we need to use the physical
-+address to access the shared buffer in the firmware.
-+
-+The Pass 1 unit of ISP can access memory through the iommu so it
-+uses the dma address to access the memory region.
-+(See iommu/mediatek,iommu.txt for the detailed description of Mediatek IOMMU)
-+
-+
-+Required properties:
-+
-+- compatible: must be "mediatek,reserve-memory-cam_smem"
-+
-+- reg: required for static allocation (see reserved-memory.txt for
-+  the detailed usage)
-+
-+- alloc-range: required for dynamic allocation. The range must
-+  between 0x00000400 and 0x100000000 due to the co-processer's
-+  addressing limitation
-+
-+- size: required for dynamic allocation. The unit is bytes.
-+
-+
-+Example:
-+
-+The following example shows the ISP Pass1 shared memory setup for MT8183.
-+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 75c4881..c73f7ff 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -133,6 +133,19 @@
+ 		clock-output-names = "clk26m";
+ 	};
+ 
 +	reserved-memory {
 +		#address-cells = <2>;
 +		#size-cells = <2>;
 +		ranges;
 +		reserve-memory-cam_smem {
 +			compatible = "mediatek,reserve-memory-cam_smem";
-+			size = <0 0x1400000>;
++			no-map;
++			size = <0 0x01400000>; /*20 MB share mem size */
 +			alignment = <0 0x1000>;
-+			alloc-ranges = <0 0x40000000 0 0x50000000>;
++			alloc-ranges = <0 0x40000000 0 0x10000000>;
 +		};
 +	};
++
+ 	timer {
+ 		compatible = "arm,armv8-timer";
+ 		interrupt-parent = <&gic>;
 -- 
 1.9.1
