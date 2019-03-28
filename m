@@ -1,55 +1,51 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v2 05/25] drm/mediatek: split DISP_REG_CONFIG_DSI_SEL
- setting into another use case
-Date: Thu, 28 Mar 2019 11:37:59 +0800
-Message-ID: <1553744279.14682.10.camel@mtksdaap41>
-References: <1553667561-25447-1-git-send-email-yongqiang.niu@mediatek.com>
- <1553667561-25447-6-git-send-email-yongqiang.niu@mediatek.com>
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+Subject: Re: [PATCH v5 0/9] Mediatek MT8183 clock support
+Date: Thu, 28 Mar 2019 13:18:20 +0800
+Message-ID: <1553750300.20204.2.camel@mtksdaap41>
+References: <20190305050546.23431-1-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1553667561-25447-6-git-send-email-yongqiang.niu@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: yongqiang.niu@mediatek.com
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190305050546.23431-1-weiyi.lu@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Stephen Boyd <sboyd@codeaurora.org>
+Cc: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFlvbmdxaWFuZzoKCk9uIFdlZCwgMjAxOS0wMy0yNyBhdCAxNDoxOSArMDgwMCwgeW9uZ3Fp
-YW5nLm5pdUBtZWRpYXRlay5jb20gd3JvdGU6Cj4gRnJvbTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3Fp
-YW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gCj4gSGVyZSBpcyB0d28gbW9kaWZpdGlvbiBpbiB0aGlz
-IHBhdGNoOgo+IDEuYmxzLT5kcGkwIGFuZCByZG1hMS0+ZHNpIGFyZSBkaWZmZXJlbiB1c2VjYXNl
-LAo+IFNwbGl0IERJU1BfUkVHX0NPTkZJR19EU0lfU0VMIHNldHRpbmcgaW50byBhbnRoZXIgdXNl
-Y2FzZQo+IDIucmVtb3ZlIERJU1BfUkVHX0NPTkZJR19EUElfU0VMIHNldHRpbmcsIERQSV9TRUxf
-SU5fQkxTIGlzIDAgYW5kCj4gdGhpcyBpcyBzYW1lIHdpdGggaGFyZHdhcmUgZGVmYXV0bCBzZXR0
-aW5nLAo+IAo+IFNpZ25lZC1vZmYtYnk6IFlvbmdxaWFuZyBOaXUgPHlvbmdxaWFuZy5uaXVAbWVk
-aWF0ZWsuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAu
-YyB8IDMgKy0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMiBkZWxldGlvbnMo
-LSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRw
-LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYwo+IGluZGV4IDQ5NWVi
-YzUuLjgwZGM5MWYgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
-cm1fZGRwLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYwo+
-IEBAIC00MDEsMTAgKzQwMSw5IEBAIHN0YXRpYyB2b2lkIG10a19kZHBfc291dF9zZWwodm9pZCBf
-X2lvbWVtICpjb25maWdfcmVncywKPiAgCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRf
-QkxTICYmIG5leHQgPT0gRERQX0NPTVBPTkVOVF9EUEkwKSB7Cj4gIAkJd3JpdGVsX3JlbGF4ZWQo
-QkxTX1RPX0RQSV9SRE1BMV9UT19EU0ksCj4gIAkJCSAgICAgICBjb25maWdfcmVncyArIERJU1Bf
-UkVHX0NPTkZJR19PVVRfU0VMKTsKPiArCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRf
-UkRNQTEgJiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX0RTSTApIHsKPiAgCQl3cml0ZWxfcmVsYXhl
-ZChEU0lfU0VMX0lOX1JETUEsCj4gIAkJCSAgICAgICBjb25maWdfcmVncyArIERJU1BfUkVHX0NP
-TkZJR19EU0lfU0VMKTsKPiAtCQl3cml0ZWxfcmVsYXhlZChEUElfU0VMX0lOX0JMUywKPiAtCQkJ
-ICAgICAgIGNvbmZpZ19yZWdzICsgRElTUF9SRUdfQ09ORklHX0RQSV9TRUwpOwoKVGhlIG9yaWdp
-bmFsIGNvZGUgaXMgaW1wbGVtZW50ZWQgYnkgQmliYnkgYW5kIEkgdGhpbmsgTVQyNzAxIGhhcyBz
-b21lCmhhcmR3YXJlIGxpbWl0YXRpb24gc28gdGhlIGNvZGUgd29ya3MgbGlrZSB0aGlzLiBQbGVh
-c2UgbWFrZSBzdXJlIHRoYXQKeW91ciBwYXRjaCB3b3VsZCBtYWtlIG90aGVyIFNvQyB3b3Jrcy4K
-ClJlZ2FyZHMsCkNLCgo+ICAJfQo+ICB9Cj4gIAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxp
-c3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2RyaS1kZXZlbA==
+On Tue, 2019-03-05 at 13:05 +0800, Weiyi Lu wrote:
+
+Hi Stephen,
+Just gentle ping. Many thanks.
+
+> Resend clock patches from v4 based on v5.0-rc1.
+> 
+> The whole series now is composed of
+> a fix for PLL tuner (PATCH 1),
+> clock common changes for both MT8183 & MT6765 (PATCH 2-3),
+> clock support of MT8183 (PATCH 4-8) and
+> resend a clock patch long time ago(PTACH 9).
+> 
+> changes since v4:
+> - refine for the fix of PLL tuner(PATCH 1).
+> - add configurable pcw_chg_reg for MT8183 and the following IC(PATCH 7).
+> 
+> changes sinve v3:
+> - add fix tag.
+> - small change of mtk_clk_mux data structure.
+> - use of_property_for_each_string to iterate dependent subsys clock of power domain.
+> - document critical clocks.
+> - reduce some clock register error log.
+> - few coding style fix.
+> 
+> changes sinve v2:
+> - refine for implementation consistency of mtk clk mux.
+> - separate the onoff API into enable/disable API for mtk scpsys.
+> - resend a patch about PLL rate changing.
+> 
+> changes since v1:
+> - refine for better code quality.
+> - some minor bug fix of clock part, like incorrect control address
+>   and missing clocks.
+> 
+> 
