@@ -1,101 +1,82 @@
-From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 4.19 048/192] mt76: fix a leaked reference by adding a
- missing of_node_put
-Date: Wed, 27 Mar 2019 14:08:00 -0400
-Message-ID: <20190327181025.13507-48-sashal@kernel.org>
-References: <20190327181025.13507-1-sashal@kernel.org>
+From: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH RESEND v3 0/5] scsi: ufs: Fix regulator operations and
+ remove "<name>-fixed-regulator" device tree property
+Date: Thu, 28 Mar 2019 09:21:15 +0800
+Message-ID: <1553736075.30977.97.camel@mtkswgap22>
+References: <1553680707-28579-1-git-send-email-stanley.chu@mediatek.com>
+ <CAGOxZ51zdtoLz=E_vmpwt+2wTJq32yUQa=h_OiV7qO1N-c=NUA@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190327181025.13507-1-sashal@kernel.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
-Cc: Sasha Levin <sashal@kernel.org>, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, Wen Yang <wen.yang99@zte.com.cn>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, "David S. Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>, Felix Fietkau <nbd@nbd.name>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAGOxZ51zdtoLz=E_vmpwt+2wTJq32yUQa=h_OiV7qO1N-c=NUA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Alim Akhtar <alim.akhtar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "Martin K. Petersen" <martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, marc.w.gonzalez-GANU6spQydw@public.gmane.org, chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Kuohong Wang <kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Avri Altman <avri.altman-Sjgp3cTcYWE@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Alim Akhtar <alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Pedro Sousa <pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Wen Yang <wen.yang99@zte.com.cn>
+Hi Alim,
 
-[ Upstream commit 34e022d8b780a03902d82fb3997ba7c7b1f40c81 ]
+On Wed, 2019-03-27 at 22:48 +0530, Alim Akhtar wrote:
+> Hi Stanley,
+> Please collect all the {review/acked}-by tags when reposting so that
+> people are aware which all patches need to review.
+> https://www.spinics.net/lists/linux-scsi/msg128818.html
 
-The call to of_find_node_by_phandle returns a node pointer with refcount
-incremented thus it must be explicitly decremented after the last
-usage.
+Sorry it's my mistake to miss some tags in reposted patch.
+Will fix it in next version.
 
-Detected by coccinelle with the following warnings:
-./drivers/net/wireless/mediatek/mt76/eeprom.c:58:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 48, but without a corresponding object release within this function.
-./drivers/net/wireless/mediatek/mt76/eeprom.c:61:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 48, but without a corresponding object release within this function.
-./drivers/net/wireless/mediatek/mt76/eeprom.c:67:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 48, but without a corresponding object release within this function.
-./drivers/net/wireless/mediatek/mt76/eeprom.c:70:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 48, but without a corresponding object release within this function.
-./drivers/net/wireless/mediatek/mt76/eeprom.c:72:1-7: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 48, but without a corresponding object release within this function.
+> This series looks good, it will be if we get a Tested-by as well.
+> For this series
+> Acked-by: Alim Akhtar <alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 
-Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
-Cc: Felix Fietkau <nbd@nbd.name>
-Cc: Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>
-Cc: Kalle Valo <kvalo@codeaurora.org>
-Cc: "David S. Miller" <davem@davemloft.net>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-wireless@vger.kernel.org
-Cc: netdev@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
-Signed-off-by: Kalle Valo <kvalo@codeaurora.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/eeprom.c | 24 ++++++++++++++-------
- 1 file changed, 16 insertions(+), 8 deletions(-)
+Thanks so much for review.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
-index 530e5593765c..a1529920d877 100644
---- a/drivers/net/wireless/mediatek/mt76/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
-@@ -54,22 +54,30 @@ mt76_get_of_eeprom(struct mt76_dev *dev, int len)
- 		part = np->name;
- 
- 	mtd = get_mtd_device_nm(part);
--	if (IS_ERR(mtd))
--		return PTR_ERR(mtd);
-+	if (IS_ERR(mtd)) {
-+		ret =  PTR_ERR(mtd);
-+		goto out_put_node;
-+	}
- 
--	if (size <= sizeof(*list))
--		return -EINVAL;
-+	if (size <= sizeof(*list)) {
-+		ret = -EINVAL;
-+		goto out_put_node;
-+	}
- 
- 	offset = be32_to_cpup(list);
- 	ret = mtd_read(mtd, offset, len, &retlen, dev->eeprom.data);
- 	put_mtd_device(mtd);
- 	if (ret)
--		return ret;
-+		goto out_put_node;
- 
--	if (retlen < len)
--		return -EINVAL;
-+	if (retlen < len) {
-+		ret = -EINVAL;
-+		goto out_put_node;
-+	}
- 
--	return 0;
-+out_put_node:
-+	of_node_put(np);
-+	return ret;
- #else
- 	return -ENOENT;
- #endif
--- 
-2.19.1
+> 
+> On Wed, Mar 27, 2019 at 3:29 PM Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> >
+> > Hi,
+> >
+> > Resend this patch series for review.
+> >
+> > This version (v3) fixed and added more details in commit messages, and added one patch to fix "undefined voltage range" issue as well.
+> >
+> > This patch series fixes UFS regulator operations, including voltage and current (re-)configuration flow during UFS initialization and power mode switching.
+> >
+> > In the end, remove "<name>-fixed-regulator" device tree property because it is not necessary anymore after these fixes.
+> >
+> > V3:
+> > - Fix and add more details in commit messages.
+> > - Add one patch "scsi: ufs: Avoid configuring undefined voltage range on a regulator".
+> >
+> > V2:
+> > - Add two patches to prepare to and remove "<name>-fixed-regulator" device tree property.
+> > - Add more details on patch "scsi: ufs: remove unused min_uA field in struct ufs_vreg" (Marc Gonzalez).
+> >
+> > Stanley Chu (5):
+> >   scsi: ufs: Remove unused min_uA field in struct ufs_vreg
+> >   scsi: ufs: Avoid configuring regulator with undefined voltage range
+> >   scsi: ufs: Fix regulator load and icc-level configuration
+> >   scsi: ufs: Change "<name>-max-microamp" to non-mandatory property
+> >   scsi: ufs: Remove "<name>-fixed-regulator" device tree property
+> >
+> >  drivers/scsi/ufs/ufs.h           |  1 -
+> >  drivers/scsi/ufs/ufshcd-pltfrm.c | 14 +++-----------
+> >  drivers/scsi/ufs/ufshcd.c        | 28 ++++++++++++++++++++--------
+> >  3 files changed, 23 insertions(+), 20 deletions(-)
+> >
+> > --
+> > 2.18.0
+> >
+> 
+> 
+Thanks,
+Stanley
