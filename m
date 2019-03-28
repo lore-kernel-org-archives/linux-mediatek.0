@@ -1,51 +1,90 @@
-From: Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: Re: [PATCH v5 0/9] Mediatek MT8183 clock support
-Date: Thu, 28 Mar 2019 13:18:20 +0800
-Message-ID: <1553750300.20204.2.camel@mtksdaap41>
-References: <20190305050546.23431-1-weiyi.lu@mediatek.com>
+From: Stanley Chu <stanley.chu@mediatek.com>
+Subject: [PATCH v4 3/5] scsi: ufs: Fix regulator load and icc-level
+ configuration
+Date: Thu, 28 Mar 2019 17:16:25 +0800
+Message-ID: <1553764587-26357-4-git-send-email-stanley.chu@mediatek.com>
+References: <1553764587-26357-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190305050546.23431-1-weiyi.lu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>
-Cc: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1553764587-26357-1-git-send-email-stanley.chu@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com, pedrom.sousa@synopsys.com
+Cc: marc.w.gonzalez@free.fr, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, evgreen@chromium.org, subhashj@codeaurora.org, linux-mediatek@lists.infradead.org, peter.wang@mediatek.com, vivek.gautam@codeaurora.org, matthias.bgg@gmail.com, sayalil@codeaurora.org, Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-03-05 at 13:05 +0800, Weiyi Lu wrote:
+Currently if a regulator has "<name>-fixed-regulator"
+property in device tree, it will skip current limit initialization.
+This lead to a zero "max_uA" value in struct ufs_vreg.
 
-Hi Stephen,
-Just gentle ping. Many thanks.
+However, "regulator_set_load" operation shall be required
+on regulators which have valid current limits, otherwise a zero
+"max_uA" set by "regulator_set_load" may cause unexpected behavior
+when this regulator is enabled or set as high power mode.
 
-> Resend clock patches from v4 based on v5.0-rc1.
-> 
-> The whole series now is composed of
-> a fix for PLL tuner (PATCH 1),
-> clock common changes for both MT8183 & MT6765 (PATCH 2-3),
-> clock support of MT8183 (PATCH 4-8) and
-> resend a clock patch long time ago(PTACH 9).
-> 
-> changes since v4:
-> - refine for the fix of PLL tuner(PATCH 1).
-> - add configurable pcw_chg_reg for MT8183 and the following IC(PATCH 7).
-> 
-> changes sinve v3:
-> - add fix tag.
-> - small change of mtk_clk_mux data structure.
-> - use of_property_for_each_string to iterate dependent subsys clock of power domain.
-> - document critical clocks.
-> - reduce some clock register error log.
-> - few coding style fix.
-> 
-> changes sinve v2:
-> - refine for implementation consistency of mtk clk mux.
-> - separate the onoff API into enable/disable API for mtk scpsys.
-> - resend a patch about PLL rate changing.
-> 
-> changes since v1:
-> - refine for better code quality.
-> - some minor bug fix of clock part, like incorrect control address
->   and missing clocks.
-> 
-> 
+Similarly, in device's icc_level configuration flow, the target
+icc_level shall be updated if regulator also has valid current limit,
+otherwise a wrong icc_level will be calculated by zero "max_uA" and
+thus causes unexpected results after it is written to device.
+
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+Reviewed-by: Avri Altman <avri.altman@wdc.com>
+Acked-by: Alim Akhtar <alim.akhtar@samsung.com>
+---
+ drivers/scsi/ufs/ufshcd.c | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 81d99aebb867..5ba49c8cd2a3 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -6294,19 +6294,19 @@ static u32 ufshcd_find_max_sup_active_icc_level(struct ufs_hba *hba,
+ 		goto out;
+ 	}
+ 
+-	if (hba->vreg_info.vcc)
++	if (hba->vreg_info.vcc && hba->vreg_info.vcc->max_uA)
+ 		icc_level = ufshcd_get_max_icc_level(
+ 				hba->vreg_info.vcc->max_uA,
+ 				POWER_DESC_MAX_ACTV_ICC_LVLS - 1,
+ 				&desc_buf[PWR_DESC_ACTIVE_LVLS_VCC_0]);
+ 
+-	if (hba->vreg_info.vccq)
++	if (hba->vreg_info.vccq && hba->vreg_info.vccq->max_uA)
+ 		icc_level = ufshcd_get_max_icc_level(
+ 				hba->vreg_info.vccq->max_uA,
+ 				icc_level,
+ 				&desc_buf[PWR_DESC_ACTIVE_LVLS_VCCQ_0]);
+ 
+-	if (hba->vreg_info.vccq2)
++	if (hba->vreg_info.vccq2 && hba->vreg_info.vccq2->max_uA)
+ 		icc_level = ufshcd_get_max_icc_level(
+ 				hba->vreg_info.vccq2->max_uA,
+ 				icc_level,
+@@ -7004,6 +7004,15 @@ static int ufshcd_config_vreg_load(struct device *dev, struct ufs_vreg *vreg,
+ 	if (!vreg)
+ 		return 0;
+ 
++	/*
++	 * "set_load" operation shall be required on those regulators
++	 * which specifically configured current limitation. Otherwise
++	 * zero max_uA may cause unexpected behavior when regulator is
++	 * enabled or set as high power mode.
++	 */
++	if (!vreg->max_uA)
++		return 0;
++
+ 	ret = regulator_set_load(vreg->reg, ua);
+ 	if (ret < 0) {
+ 		dev_err(dev, "%s: %s set load (ua=%d) failed, err=%d\n",
+-- 
+2.18.0
