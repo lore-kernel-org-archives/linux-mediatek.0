@@ -1,82 +1,172 @@
-From: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH RESEND v3 0/5] scsi: ufs: Fix regulator operations and
- remove "<name>-fixed-regulator" device tree property
-Date: Thu, 28 Mar 2019 09:21:15 +0800
-Message-ID: <1553736075.30977.97.camel@mtkswgap22>
-References: <1553680707-28579-1-git-send-email-stanley.chu@mediatek.com>
- <CAGOxZ51zdtoLz=E_vmpwt+2wTJq32yUQa=h_OiV7qO1N-c=NUA@mail.gmail.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v2 03/25] drm/mediatek: add mutex mod into ddp private
+ data
+Date: Thu, 28 Mar 2019 09:33:56 +0800
+Message-ID: <1553736836.18612.12.camel@mtksdaap41>
+References: <1553667561-25447-1-git-send-email-yongqiang.niu@mediatek.com>
+         <1553667561-25447-4-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAGOxZ51zdtoLz=E_vmpwt+2wTJq32yUQa=h_OiV7qO1N-c=NUA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Alim Akhtar <alim.akhtar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "Martin K. Petersen" <martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, marc.w.gonzalez-GANU6spQydw@public.gmane.org, chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Kuohong Wang <kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Avri Altman <avri.altman-Sjgp3cTcYWE@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Alim Akhtar <alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Pedro Sousa <pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1553667561-25447-4-git-send-email-yongqiang.niu@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: yongqiang.niu@mediatek.com
+Cc: p.zabel@pengutronix.de, robh+dt@kernel.org, matthias.bgg@gmail.com, airlied@linux.ie, mark.rutland@arm.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Bibby.Hsieh@mediatek.com, yt.shen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Alim,
+Hi, Yongqiang:
 
-On Wed, 2019-03-27 at 22:48 +0530, Alim Akhtar wrote:
-> Hi Stanley,
-> Please collect all the {review/acked}-by tags when reposting so that
-> people are aware which all patches need to review.
-> https://www.spinics.net/lists/linux-scsi/msg128818.html
-
-Sorry it's my mistake to miss some tags in reposted patch.
-Will fix it in next version.
-
-> This series looks good, it will be if we get a Tested-by as well.
-> For this series
-> Acked-by: Alim Akhtar <alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-
-Thanks so much for review.
-
+On Wed, 2019-03-27 at 14:18 +0800, yongqiang.niu@mediatek.com wrote:
+> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 > 
-> On Wed, Mar 27, 2019 at 3:29 PM Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> >
-> > Hi,
-> >
-> > Resend this patch series for review.
-> >
-> > This version (v3) fixed and added more details in commit messages, and added one patch to fix "undefined voltage range" issue as well.
-> >
-> > This patch series fixes UFS regulator operations, including voltage and current (re-)configuration flow during UFS initialization and power mode switching.
-> >
-> > In the end, remove "<name>-fixed-regulator" device tree property because it is not necessary anymore after these fixes.
-> >
-> > V3:
-> > - Fix and add more details in commit messages.
-> > - Add one patch "scsi: ufs: Avoid configuring undefined voltage range on a regulator".
-> >
-> > V2:
-> > - Add two patches to prepare to and remove "<name>-fixed-regulator" device tree property.
-> > - Add more details on patch "scsi: ufs: remove unused min_uA field in struct ufs_vreg" (Marc Gonzalez).
-> >
-> > Stanley Chu (5):
-> >   scsi: ufs: Remove unused min_uA field in struct ufs_vreg
-> >   scsi: ufs: Avoid configuring regulator with undefined voltage range
-> >   scsi: ufs: Fix regulator load and icc-level configuration
-> >   scsi: ufs: Change "<name>-max-microamp" to non-mandatory property
-> >   scsi: ufs: Remove "<name>-fixed-regulator" device tree property
-> >
-> >  drivers/scsi/ufs/ufs.h           |  1 -
-> >  drivers/scsi/ufs/ufshcd-pltfrm.c | 14 +++-----------
-> >  drivers/scsi/ufs/ufshcd.c        | 28 ++++++++++++++++++++--------
-> >  3 files changed, 23 insertions(+), 20 deletions(-)
-> >
-> > --
-> > 2.18.0
-> >
+> mutex0 MOD register offset not always 0x2C.
+> for mt8183, that offset will be 0x30,
+> add this regsiter offset into private data
 > 
+> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp.c | 53 +++++++++++++++++++++++++---------
+>  1 file changed, 39 insertions(+), 14 deletions(-)
 > 
-Thanks,
-Stanley
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> index 579ce28..7f0d46e 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> @@ -41,10 +41,12 @@
+>  #define DISP_REG_CONFIG_DSI_SEL			0x050
+>  #define DISP_REG_CONFIG_DPI_SEL			0x064
+>  
+> +#define MT2701_DISP_MUTEX0_MOD0 0x2C
+
+Lower case, 0x2c.
+
+> +
+>  #define DISP_REG_MUTEX_EN(n)	(0x20 + 0x20 * (n))
+>  #define DISP_REG_MUTEX(n)	(0x24 + 0x20 * (n))
+>  #define DISP_REG_MUTEX_RST(n)	(0x28 + 0x20 * (n))
+> -#define DISP_REG_MUTEX_MOD(n)	(0x2c + 0x20 * (n))
+> +#define DISP_REG_MUTEX_MOD(data, n)	((data)->mutex_mod_reg + 0x20 * (n))
+
+Why not just define as:
+
+#define DISP_REG_MUTEX_MOD(mutex_mod_reg, n)	(mutex_mod_reg + 0x20 *
+(n))
+
+The mutex_mod_reg inside a structure or not is decided by the caller.
+
+>  #define DISP_REG_MUTEX_SOF(n)	(0x30 + 0x20 * (n))
+>  #define DISP_REG_MUTEX_MOD2(n)	(0x34 + 0x20 * (n))
+>  
+> @@ -147,12 +149,17 @@ struct mtk_disp_mutex {
+>  	bool claimed;
+>  };
+>  
+> +struct mtk_ddp_data {
+> +	const unsigned int *mutex_mod;
+> +	unsigned int mutex_mod_reg;
+
+const
+
+Regards,
+cK
+
+> +};
+> +
+>  struct mtk_ddp {
+>  	struct device			*dev;
+>  	struct clk			*clk;
+>  	void __iomem			*regs;
+>  	struct mtk_disp_mutex		mutex[10];
+> -	const unsigned int		*mutex_mod;
+> +	const struct mtk_ddp_data	*data;
+>  };
+>  
+>  static const unsigned int mt2701_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+> @@ -202,6 +209,21 @@ struct mtk_ddp {
+>  	[DDP_COMPONENT_WDMA1] = MT8173_MUTEX_MOD_DISP_WDMA1,
+>  };
+>  
+> +static const struct mtk_ddp_data mt2701_ddp_driver_data = {
+> +	.mutex_mod = mt2701_mutex_mod,
+> +	.mutex_mod_reg = MT2701_DISP_MUTEX0_MOD0,
+> +};
+> +
+> +static const struct mtk_ddp_data mt2712_ddp_driver_data = {
+> +	.mutex_mod = mt2712_mutex_mod,
+> +	.mutex_mod_reg = MT2701_DISP_MUTEX0_MOD0,
+> +};
+> +
+> +static const struct mtk_ddp_data mt8173_ddp_driver_data = {
+> +	.mutex_mod = mt8173_mutex_mod,
+> +	.mutex_mod_reg = MT2701_DISP_MUTEX0_MOD0,
+> +};
+> +
+>  static unsigned int mtk_ddp_mout_en(enum mtk_ddp_comp_id cur,
+>  				    enum mtk_ddp_comp_id next,
+>  				    unsigned int *addr)
+> @@ -464,15 +486,15 @@ void mtk_disp_mutex_add_comp(struct mtk_disp_mutex *mutex,
+>  		reg = MUTEX_SOF_DPI1;
+>  		break;
+>  	default:
+> -		if (ddp->mutex_mod[id] < 32) {
+> -			offset = DISP_REG_MUTEX_MOD(mutex->id);
+> +		if (ddp->data->mutex_mod[id] < 32) {
+> +			offset = DISP_REG_MUTEX_MOD(ddp->data, mutex->id);
+>  			reg = readl_relaxed(ddp->regs + offset);
+> -			reg |= 1 << ddp->mutex_mod[id];
+> +			reg |= 1 << ddp->data->mutex_mod[id];
+>  			writel_relaxed(reg, ddp->regs + offset);
+>  		} else {
+>  			offset = DISP_REG_MUTEX_MOD2(mutex->id);
+>  			reg = readl_relaxed(ddp->regs + offset);
+> -			reg |= 1 << (ddp->mutex_mod[id] - 32);
+> +			reg |= 1 << (ddp->data->mutex_mod[id] - 32);
+>  			writel_relaxed(reg, ddp->regs + offset);
+>  		}
+>  		return;
+> @@ -502,15 +524,15 @@ void mtk_disp_mutex_remove_comp(struct mtk_disp_mutex *mutex,
+>  			       ddp->regs + DISP_REG_MUTEX_SOF(mutex->id));
+>  		break;
+>  	default:
+> -		if (ddp->mutex_mod[id] < 32) {
+> -			offset = DISP_REG_MUTEX_MOD(mutex->id);
+> +		if (ddp->data->mutex_mod[id] < 32) {
+> +			offset = DISP_REG_MUTEX_MOD(ddp->data, mutex->id);
+>  			reg = readl_relaxed(ddp->regs + offset);
+> -			reg &= ~(1 << ddp->mutex_mod[id]);
+> +			reg &= ~(1 << ddp->data->mutex_mod[id]);
+>  			writel_relaxed(reg, ddp->regs + offset);
+>  		} else {
+>  			offset = DISP_REG_MUTEX_MOD2(mutex->id);
+>  			reg = readl_relaxed(ddp->regs + offset);
+> -			reg &= ~(1 << (ddp->mutex_mod[id] - 32));
+> +			reg &= ~(1 << (ddp->data->mutex_mod[id] - 32));
+>  			writel_relaxed(reg, ddp->regs + offset);
+>  		}
+>  		break;
+> @@ -585,7 +607,7 @@ static int mtk_ddp_probe(struct platform_device *pdev)
+>  		return PTR_ERR(ddp->regs);
+>  	}
+>  
+> -	ddp->mutex_mod = of_device_get_match_data(dev);
+> +	ddp->data = of_device_get_match_data(dev);
+>  
+>  	platform_set_drvdata(pdev, ddp);
+>  
+> @@ -598,9 +620,12 @@ static int mtk_ddp_remove(struct platform_device *pdev)
+>  }
+>  
+>  static const struct of_device_id ddp_driver_dt_match[] = {
+> -	{ .compatible = "mediatek,mt2701-disp-mutex", .data = mt2701_mutex_mod},
+> -	{ .compatible = "mediatek,mt2712-disp-mutex", .data = mt2712_mutex_mod},
+> -	{ .compatible = "mediatek,mt8173-disp-mutex", .data = mt8173_mutex_mod},
+> +	{ .compatible = "mediatek,mt2701-disp-mutex",
+> +	  .data = &mt2701_ddp_driver_data},
+> +	{ .compatible = "mediatek,mt2712-disp-mutex",
+> +	  .data = &mt2712_ddp_driver_data},
+> +	{ .compatible = "mediatek,mt8173-disp-mutex",
+> +	  .data = &mt8173_ddp_driver_data},
+>  	{},
+>  };
+>  MODULE_DEVICE_TABLE(of, ddp_driver_dt_match);
