@@ -1,82 +1,24 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v3 03/12] dt-binding: gce: add binding for gce event
- property
-Date: Thu, 28 Mar 2019 13:44:25 -0500
-Message-ID: <20190328184425.GA21602@bogus>
-References: <1553739573-19708-1-git-send-email-bibby.hsieh@mediatek.com>
- <1553739573-19708-4-git-send-email-bibby.hsieh@mediatek.com>
+From: Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH 03/24] dt-bindings: pwrap: mediatek: add pwrap support for MT8516
+Date: Thu, 28 Mar 2019 14:09:03 -0500
+Message-ID: <CAL_JsqKr=SNqcFGQ53L6HVV1ec+aP_n_SZwtkTa3O8HqHhW51w@mail.gmail.com>
+References: <20190323211612.860-1-fparent@baylibre.com> <20190323211612.860-4-fparent@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1553739573-19708-4-git-send-email-bibby.hsieh@mediatek.com>
+In-Reply-To: <20190323211612.860-4-fparent@baylibre.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, CK HU <ck.hu@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.chen@mediatek.com, kendrick.hsu@mediatek.com, Frederic Chen <Frederic.Chen@med>
+To: Fabien Parent <fparent@baylibre.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Sean Wang <sean.wang@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, Wenzhen Yu <wenzhen.yu@mediatek.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Yong Mao <yong.mao@mediatek.com>, jjian.zhou@mediatek.com, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Linux I2C <linux-i2c@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, linux-mmc <linux-mmc@vger.kernel.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, open list:SE
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Mar 28, 2019 at 10:19:24AM +0800, Bibby Hsieh wrote:
-> Client hardware would send event to GCE hardware,
-> so #event-cells, mediatek,gce-event-names, mediatek,gce-events.
-> present the event.
-> 
-> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+On Sat, Mar 23, 2019 at 4:16 PM Fabien Parent <fparent@baylibre.com> wrote:
+>
+> Add binding documentation of pwrap for MT8516 SoCs.
+>
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
 > ---
->  Documentation/devicetree/bindings/mailbox/mtk-gce.txt | 17 ++++++++++++++---
->  1 file changed, 14 insertions(+), 3 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> index 1f7f8f2..2f175d6 100644
-> --- a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> +++ b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> @@ -21,12 +21,21 @@ Required properties:
->  	priority: Priority of GCE thread.
->  	atomic_exec: GCE processing continuous packets of commands in atomic
->  		way.
-> +- #event-cells: Should be 1.
-> +	<&phandle event_number>
-> +	phandle: Label name of a gce node.
-> +	event_number: the event number defined in 'dt-bindings/gce/mt8173-gce.h'
-> +		      or 'dt-binding/gce/mt8183-gce.h'.
+>  Documentation/devicetree/bindings/soc/mediatek/pwrap.txt | 1 +
+>  1 file changed, 1 insertion(+)
 
-You only need to have a #*-cells if the number is variable.
-
-What are 'events' here? Sounds like interrupts or MSI?
-
->  
->  Required properties for a client device:
->  - mboxes: Client use mailbox to communicate with GCE, it should have this
->    property and list of phandle, mailbox specifiers.
->  - mediatek,gce-subsys: u32, specify the sub-system id which is corresponding
->    to the register address.
-> +Optional propertier for a client device:
-> +- mediatek,gce-event-names: the event name can be defined by user.
-> +- mediatek,gce-events: u32, the event number defined in
-> +  'dt-bindings/gce/mt8173-gce.h' or 'dt-binding/gce/mt8183-gce.h'.
->  
->  Some vaules of properties are defined in 'dt-bindings/gce/mt8173-gce.h'
->  or 'dt-binding/gce/mt8183-gce.h'. Such as sub-system ids, thread priority, event ids.
-> @@ -40,6 +49,7 @@ Example:
->  		clocks = <&infracfg CLK_INFRA_GCE>;
->  		clock-names = "gce";
->  		#mbox-cells = <3>;
-> +		#event-cells = <1>;
->  	};
->  
->  Example for a client device:
-> @@ -49,8 +59,9 @@ Example for a client device:
->  		mboxes = <&gce 0 CMDQ_THR_PRIO_LOWEST 1>,
->  			 <&gce 1 CMDQ_THR_PRIO_LOWEST 1>;
->  		mediatek,gce-subsys = <SUBSYS_1400XXXX>;
-> -		mutex-event-eof = <CMDQ_EVENT_MUTEX0_STREAM_EOF
-> -				CMDQ_EVENT_MUTEX1_STREAM_EOF>;
-> -
-> +		mediatek,gce-event-names = "rdma0_sof",
-> +					   "rsz0_sof";
-> +		mediatek,gce-events = <&gce CMDQ_EVENT_MDP_RDMA0_SOF>,
-> +				      <&gce CMDQ_EVENT_MDP_RSZ0_SOF>;
->  		...
->  	};
-> -- 
-> 1.9.1
-> 
+Acked-by: Rob Herring <robh@kernel.org>
