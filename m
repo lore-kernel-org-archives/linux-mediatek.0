@@ -1,7 +1,7 @@
 From: Jungo Lin <jungo.lin@mediatek.com>
-Subject: [RFC V1 02/12] dts: arm64: mt8183: Add ISP Pass 1 shared memory node
-Date: Thu, 28 Mar 2019 17:56:37 +0800
-Message-ID: <1553767007-11909-3-git-send-email-jungo.lin@mediatek.com>
+Subject: [RFC V1 05/12] dts: arm64: mt8183: Add ISP Pass 1 nodes
+Date: Thu, 28 Mar 2019 17:56:40 +0800
+Message-ID: <1553767007-11909-6-git-send-email-jungo.lin@mediatek.com>
 References: <jungo.lin@mediatek.com>
  <1553767007-11909-1-git-send-email-jungo.lin@mediatek.com>
 Mime-Version: 1.0
@@ -22,38 +22,67 @@ To: tfiga@chromium.org, hans.verkuil@cisco.com, laurent.pinchart+renesas@ideason
 Cc: Sean.Cheng@mediatek.com, Rynn.Wu@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, ryan.yu@mediatek.com, Jerry-ch.Chen@mediatek.com, frankie.chiu@mediatek.com, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, christie.yu@mediatek.com, seraph.huang@mediatek.com, zwisler@chromium.org, linux-mediatek@lists.infradead.org, frederic.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds a shared memory region used on mt8183 for
-exchanging tuning data between co-processor and the
-Pass 1 unit of the camera ISP system.
+Add nodes for Pass 1 unit of Mediatek's camera ISP system.
+Pass 1 unit embedded in Mediatek SoCs, works with the
+co-processor to process image signal from the image sensor
+and output RAW data.
 
 Signed-off-by: Jungo Lin <jungo.lin@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 42 ++++++++++++++++++++++++++++++++
+ 1 file changed, 42 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 75c4881..c73f7ff 100644
+index c73f7ff..7df39bd 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -133,6 +133,19 @@
- 		clock-output-names = "clk26m";
- 	};
- 
-+	reserved-memory {
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+		reserve-memory-cam_smem {
-+			compatible = "mediatek,reserve-memory-cam_smem";
-+			no-map;
-+			size = <0 0x01400000>; /*20 MB share mem size */
-+			alignment = <0 0x1000>;
-+			alloc-ranges = <0 0x40000000 0 0x10000000>;
-+		};
-+	};
+@@ -382,5 +382,47 @@
+ 			reg = <0 0x1a000000 0 0x1000>;
+ 			#clock-cells = <1>;
+ 		};
 +
- 	timer {
- 		compatible = "arm,armv8-timer";
- 		interrupt-parent = <&gic>;
++		cam_smem: cam_smem {
++			compatible = "mediatek,mt8183-cam_smem";
++			mediatek,larb = <&larb3>,
++					<&larb6>;
++			iommus = <&iommu M4U_PORT_CAM_LSCI0>,
++				 <&iommu M4U_PORT_CAM_LSCI1>,
++				 <&iommu M4U_PORT_CAM_BPCI>;
++		};
++
++		camisp: camisp@1a000000 {
++			compatible = "mediatek,mt8183-camisp", "syscon";
++			reg = <0 0x1a000000 0 0x1000>,
++			      <0 0x1a003000 0 0x1000>,
++			      <0 0x1a004000 0 0x2000>,
++			      <0 0x1a006000 0 0x2000>;
++			reg-names = "camisp",
++				    "cam1",
++				    "cam2",
++				    "cam3";
++			interrupts = <GIC_SPI 253 IRQ_TYPE_LEVEL_LOW>,
++				     <GIC_SPI 254 IRQ_TYPE_LEVEL_LOW>,
++				     <GIC_SPI 255 IRQ_TYPE_LEVEL_LOW>;
++			interrupt-names = "cam1",
++					  "cam2",
++					  "cam3";
++			iommus = <&iommu M4U_PORT_CAM_LSCI0>,
++				 <&iommu M4U_PORT_CAM_LSCI1>,
++				 <&iommu M4U_PORT_CAM_BPCI>;
++			#clock-cells = <1>;
++			power-domains = <&scpsys MT8183_POWER_DOMAIN_CAM>;
++			/* Camera CCF */
++			clocks = <&camsys CLK_CAM_CAM>,
++				 <&camsys CLK_CAM_CAMTG>;
++			clock-names = "CAMSYS_CAM_CGPDN",
++				      "CAMSYS_CAMTG_CGPDN";
++			mediatek,larb = <&larb3>,
++					<&larb6>;
++			mediatek,scp = <&scp>;
++			smem_device = <&cam_smem>;
++		};
++
+ 	};
+ };
 -- 
 1.9.1
