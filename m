@@ -1,116 +1,62 @@
-From: Chang-An Chen <chang-an.chen@mediatek.com>
-Subject: [PATCH v2] sched/clock: Prevent generic sched_clock wrap caused by tick_freeze()
-Date: Fri, 29 Mar 2019 10:59:09 +0800
-Message-ID: <1553828349-8914-1-git-send-email-chang-an.chen@mediatek.com>
+From: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
+Subject: [PATCH v2 3/4] dt-bindings: devfreq: add compatible for mt8183 cci
+ devfreq
+Date: Fri, 29 Mar 2019 14:46:11 +0800
+Message-ID: <1553841972-19737-4-git-send-email-andrew-sh.cheng@mediatek.com>
+References: <1553841972-19737-1-git-send-email-andrew-sh.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Frederic Weisbecker <fweisbec@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, Ingo Molnar <mingo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: John Stultz <john.stultz@linaro.org>, Kees Cook <keescook@chromium.org>, Corey Minyard <cminyard@mvista.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Stanley Chu <stanley.chu@mediatek.com>, kuohong.wang@mediatek.com, freddy.hsin@mediatek.com, Chang-An Chen <chang-an.chen@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1553841972-19737-1-git-send-email-andrew-sh.cheng@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob
+ Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>
+Cc: devicetree@vger.kernel.org, "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>, srv_heupstream@mediatek.com, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, fan.chen@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-tick_freeze() introduced by suspend-to-idle in commit 124cf9117c5f
-("PM / sleep: Make it possible to quiesce timers during suspend-to-idle")
-will use timekeeping_suspend() instead of syscore_suspend() during
-suspend-to-idle. It means that generic sched_clock will keep going because
-sched_clock_suspend() and sched_clock_resume() are not taken during
-suspend-to-idle. This will lead to generic sched_clock wrap.
+This adds dt-binding documentation of cci devfreq
+for Mediatek MT8183 SoC platform.
 
-For example:
-In my arm system with suspend-to-idle enabled, sched_clock is registered
-as "56 bits at 13MHz, resolution 76ns, wraps every 4398046511101ns", which
-means the real wrapping duration is 8796093022202ns.
-
-[  134.551779] suspend-to-idle suspend (timekeeping_suspend())
-[ 1204.912239] suspend-to-idle resume (timekeeping_resume())
-......
-[ 1206.912239] suspend-to-idle suspend (timekeeping_suspend())
-[ 5880.502807] suspend-to-idle resume (timekeeping_resume())
-......
-[ 6000.403724] suspend-to-idle suspend (timekeeping_suspend())
-[ 8035.753167] suspend-to-idle resume  (timekeeping_resume())
-......
-[ 8795.786684] (2)[321:charger_thread]......
-[ 8795.788387] (2)[321:charger_thread]......
-[    0.057226] (0)[0:swapper/0]......
-[    0.061447] (2)[0:swapper/2]......
-
-Sched_clock was not stopped during suspend-to-idle, and sched_clock_poll
-hrtimer was not expired because timekeeping_suspend() is taken during
-suspend-to-idle. It makes sched_clock wrap at kernel time 8796s.
-
-To fix this issue, we add sched_clock_suspend() and sched_clock_resume() in
-tick_freeze() together with timekeeping_suspend() and timekeeping_resume()
-to make sure generic sched_clock wrapping will not happen.
-
-Signed-off-by: Chang-An Chen <chang-an.chen@mediatek.com>
-Fixes: 124cf9117c5f (PM / sleep: Make it possible to quiesce timers during suspend-to-idle)
+Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
 ---
- kernel/time/sched_clock.c |    4 ++--
- kernel/time/tick-common.c |    2 ++
- kernel/time/timekeeping.h |    7 +++++++
- 3 files changed, 11 insertions(+), 2 deletions(-)
+ .../bindings/devfreq/mt8183-cci-devfreq.txt           | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/devfreq/mt8183-cci-devfreq.txt
 
-diff --git a/kernel/time/sched_clock.c b/kernel/time/sched_clock.c
-index 094b82c..930113b 100644
---- a/kernel/time/sched_clock.c
-+++ b/kernel/time/sched_clock.c
-@@ -272,7 +272,7 @@ static u64 notrace suspended_sched_clock_read(void)
- 	return cd.read_data[seq & 1].epoch_cyc;
- }
- 
--static int sched_clock_suspend(void)
-+int sched_clock_suspend(void)
- {
- 	struct clock_read_data *rd = &cd.read_data[0];
- 
-@@ -283,7 +283,7 @@ static int sched_clock_suspend(void)
- 	return 0;
- }
- 
--static void sched_clock_resume(void)
-+void sched_clock_resume(void)
- {
- 	struct clock_read_data *rd = &cd.read_data[0];
- 
-diff --git a/kernel/time/tick-common.c b/kernel/time/tick-common.c
-index 529143b..df40146 100644
---- a/kernel/time/tick-common.c
-+++ b/kernel/time/tick-common.c
-@@ -487,6 +487,7 @@ void tick_freeze(void)
- 		trace_suspend_resume(TPS("timekeeping_freeze"),
- 				     smp_processor_id(), true);
- 		system_state = SYSTEM_SUSPEND;
-+		sched_clock_suspend();
- 		timekeeping_suspend();
- 	} else {
- 		tick_suspend_local();
-@@ -510,6 +511,7 @@ void tick_unfreeze(void)
- 
- 	if (tick_freeze_depth == num_online_cpus()) {
- 		timekeeping_resume();
-+		sched_clock_resume();
- 		system_state = SYSTEM_RUNNING;
- 		trace_suspend_resume(TPS("timekeeping_freeze"),
- 				     smp_processor_id(), false);
-diff --git a/kernel/time/timekeeping.h b/kernel/time/timekeeping.h
-index 7a9b4eb..141ab3a 100644
---- a/kernel/time/timekeeping.h
-+++ b/kernel/time/timekeeping.h
-@@ -14,6 +14,13 @@ extern ktime_t ktime_get_update_offsets_now(unsigned int *cwsseq,
- extern void timekeeping_warp_clock(void);
- extern int timekeeping_suspend(void);
- extern void timekeeping_resume(void);
-+#ifdef CONFIG_GENERIC_SCHED_CLOCK
-+extern int sched_clock_suspend(void);
-+extern void sched_clock_resume(void);
-+#else
-+static inline int sched_clock_suspend(void) { return 0; }
-+static inline void sched_clock_resume(void) { }
-+#endif
- 
- extern void do_timer(unsigned long ticks);
- extern void update_wall_time(void);
+diff --git a/Documentation/devicetree/bindings/devfreq/mt8183-cci-devfreq.txt b/Documentation/devicetree/bindings/devfreq/mt8183-cci-devfreq.txt
+new file mode 100644
+index 0000000..e2b61cf
+--- /dev/null
++++ b/Documentation/devicetree/bindings/devfreq/mt8183-cci-devfreq.txt
+@@ -0,0 +1,19 @@
++* Mediatek CCI frequency device
++
++Required properties:
++- compatible: should contain "mediatek,mt8183-cci" for cci devfreq
++
++- clocks: for cci devfreq
++
++- clock-names: for cci devfreq driver to reference
++
++- operating-points-v2: for cci devfreq opp table
++
++Example:
++	cci: cci {
++		compatible = "mediatek,cci";
++		clocks = <&apmixedsys CLK_APMIXED_CCIPLL>;
++		clock-names = "cci_clock";
++		operating-points-v2 = <&cci_opp>;
++	};
++
 -- 
-1.7.9.5
+1.8.1.1.dirty
