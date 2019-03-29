@@ -1,125 +1,116 @@
-From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: Re: [PATCH v3 03/12] dt-binding: gce: add binding for gce event
- property
-Date: Fri, 29 Mar 2019 10:38:51 +0800
-Message-ID: <1553827131.12091.8.camel@mtksdaap41>
-References: <1553739573-19708-1-git-send-email-bibby.hsieh@mediatek.com>
- <1553739573-19708-4-git-send-email-bibby.hsieh@mediatek.com>
- <20190328184425.GA21602@bogus>
+From: Chang-An Chen <chang-an.chen@mediatek.com>
+Subject: [PATCH v2] sched/clock: Prevent generic sched_clock wrap caused by tick_freeze()
+Date: Fri, 29 Mar 2019 10:59:09 +0800
+Message-ID: <1553828349-8914-1-git-send-email-chang-an.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190328184425.GA21602@bogus>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh@kernel.org>
-Cc: devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, srv_heupstream@mediatek.com, kendrick.hsu@mediatek.com, Daoyuan Huang <daoyuan.huang@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Jassi Brar <jassisinghbrar@gmail.com>, linux-kernel@vger.kernel.org, Daniel Kurtz <djkurtz@chromium.org>, YT Shen <yt.shen@mediatek.com>, CK HU <ck.hu@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, linux-mediatek@lists.infradead.org, Houlong Wei <houlong.wei@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Frederic Chen <Frederic.Chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, ginny.chen@mediatek.com
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Frederic Weisbecker <fweisbec@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, Ingo Molnar <mingo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: John Stultz <john.stultz@linaro.org>, Kees Cook <keescook@chromium.org>, Corey Minyard <cminyard@mvista.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Stanley Chu <stanley.chu@mediatek.com>, kuohong.wang@mediatek.com, freddy.hsin@mediatek.com, Chang-An Chen <chang-an.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Rob,
+tick_freeze() introduced by suspend-to-idle in commit 124cf9117c5f
+("PM / sleep: Make it possible to quiesce timers during suspend-to-idle")
+will use timekeeping_suspend() instead of syscore_suspend() during
+suspend-to-idle. It means that generic sched_clock will keep going because
+sched_clock_suspend() and sched_clock_resume() are not taken during
+suspend-to-idle. This will lead to generic sched_clock wrap.
 
-Thanks for your review and comments.
+For example:
+In my arm system with suspend-to-idle enabled, sched_clock is registered
+as "56 bits at 13MHz, resolution 76ns, wraps every 4398046511101ns", which
+means the real wrapping duration is 8796093022202ns.
 
-On Thu, 2019-03-28 at 13:44 -0500, Rob Herring wrote:
-> On Thu, Mar 28, 2019 at 10:19:24AM +0800, Bibby Hsieh wrote:
-> > Client hardware would send event to GCE hardware,
-> > so #event-cells, mediatek,gce-event-names, mediatek,gce-events.
-> > present the event.
-> > 
-> > Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-> > ---
-> >  Documentation/devicetree/bindings/mailbox/mtk-gce.txt | 17 ++++++++++++++---
-> >  1 file changed, 14 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> > index 1f7f8f2..2f175d6 100644
-> > --- a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> > +++ b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> > @@ -21,12 +21,21 @@ Required properties:
-> >  	priority: Priority of GCE thread.
-> >  	atomic_exec: GCE processing continuous packets of commands in atomic
-> >  		way.
-> > +- #event-cells: Should be 1.
-> > +	<&phandle event_number>
-> > +	phandle: Label name of a gce node.
-> > +	event_number: the event number defined in 'dt-bindings/gce/mt8173-gce.h'
-> > +		      or 'dt-binding/gce/mt8183-gce.h'.
-> 
-> You only need to have a #*-cells if the number is variable.
-> 
-I think #event-cells can be removed here.The cmdq_dev_get_event can be
-modified as:
+[  134.551779] suspend-to-idle suspend (timekeeping_suspend())
+[ 1204.912239] suspend-to-idle resume (timekeeping_resume())
+......
+[ 1206.912239] suspend-to-idle suspend (timekeeping_suspend())
+[ 5880.502807] suspend-to-idle resume (timekeeping_resume())
+......
+[ 6000.403724] suspend-to-idle suspend (timekeeping_suspend())
+[ 8035.753167] suspend-to-idle resume  (timekeeping_resume())
+......
+[ 8795.786684] (2)[321:charger_thread]......
+[ 8795.788387] (2)[321:charger_thread]......
+[    0.057226] (0)[0:swapper/0]......
+[    0.061447] (2)[0:swapper/2]......
 
-+u32 cmdq_dev_get_event(struct device *dev, const char *name)
-+{
-+	<... snip ...>
+Sched_clock was not stopped during suspend-to-idle, and sched_clock_poll
+hrtimer was not expired because timekeeping_suspend() is taken during
+suspend-to-idle. It makes sched_clock wrap at kernel time 8796s.
 
-+	index = of_property_match_string(dev->of_node,
-+					 "mediatek,gce-event-names", 
-+	<... snip ...>
+To fix this issue, we add sched_clock_suspend() and sched_clock_resume() in
+tick_freeze() together with timekeeping_suspend() and timekeeping_resume()
+to make sure generic sched_clock wrapping will not happen.
 
-+
-+	if (of_property_read_u32_index(dev->of_node, "mediatek,gce-events",
-index, &result)) {
-+		dev_err(dev, "can't parse gce-events property");
-+
-+		return -ENODEV;
-+	}
-+
-+	return result;
-+}
-+EXPORT_SYMBOL(cmdq_dev_get_event);
+Signed-off-by: Chang-An Chen <chang-an.chen@mediatek.com>
+Fixes: 124cf9117c5f (PM / sleep: Make it possible to quiesce timers during suspend-to-idle)
+---
+ kernel/time/sched_clock.c |    4 ++--
+ kernel/time/tick-common.c |    2 ++
+ kernel/time/timekeeping.h |    7 +++++++
+ 3 files changed, 11 insertions(+), 2 deletions(-)
 
-> What are 'events' here? Sounds like interrupts or MSI?
-Yes, events is a kind of communicating method from the other hardware
-with GCE. It's likes interrupts.
-
-> 
-> >  
-> >  Required properties for a client device:
-> >  - mboxes: Client use mailbox to communicate with GCE, it should have this
-> >    property and list of phandle, mailbox specifiers.
-> >  - mediatek,gce-subsys: u32, specify the sub-system id which is corresponding
-> >    to the register address.
-> > +Optional propertier for a client device:
-> > +- mediatek,gce-event-names: the event name can be defined by user.
-> > +- mediatek,gce-events: u32, the event number defined in
-> > +  'dt-bindings/gce/mt8173-gce.h' or 'dt-binding/gce/mt8183-gce.h'.
-> >  
-> >  Some vaules of properties are defined in 'dt-bindings/gce/mt8173-gce.h'
-> >  or 'dt-binding/gce/mt8183-gce.h'. Such as sub-system ids, thread priority, event ids.
-> > @@ -40,6 +49,7 @@ Example:
-> >  		clocks = <&infracfg CLK_INFRA_GCE>;
-> >  		clock-names = "gce";
-> >  		#mbox-cells = <3>;
-> > +		#event-cells = <1>;
-> >  	};
-> >  
-> >  Example for a client device:
-> > @@ -49,8 +59,9 @@ Example for a client device:
-> >  		mboxes = <&gce 0 CMDQ_THR_PRIO_LOWEST 1>,
-> >  			 <&gce 1 CMDQ_THR_PRIO_LOWEST 1>;
-> >  		mediatek,gce-subsys = <SUBSYS_1400XXXX>;
-> > -		mutex-event-eof = <CMDQ_EVENT_MUTEX0_STREAM_EOF
-> > -				CMDQ_EVENT_MUTEX1_STREAM_EOF>;
-> > -
-> > +		mediatek,gce-event-names = "rdma0_sof",
-> > +					   "rsz0_sof";
-> > +		mediatek,gce-events = <&gce CMDQ_EVENT_MDP_RDMA0_SOF>,
-> > +				      <&gce CMDQ_EVENT_MDP_RSZ0_SOF>;
-> >  		...
-> >  	};
-> > -- 
-> > 1.9.1
-> > 
-
+diff --git a/kernel/time/sched_clock.c b/kernel/time/sched_clock.c
+index 094b82c..930113b 100644
+--- a/kernel/time/sched_clock.c
++++ b/kernel/time/sched_clock.c
+@@ -272,7 +272,7 @@ static u64 notrace suspended_sched_clock_read(void)
+ 	return cd.read_data[seq & 1].epoch_cyc;
+ }
+ 
+-static int sched_clock_suspend(void)
++int sched_clock_suspend(void)
+ {
+ 	struct clock_read_data *rd = &cd.read_data[0];
+ 
+@@ -283,7 +283,7 @@ static int sched_clock_suspend(void)
+ 	return 0;
+ }
+ 
+-static void sched_clock_resume(void)
++void sched_clock_resume(void)
+ {
+ 	struct clock_read_data *rd = &cd.read_data[0];
+ 
+diff --git a/kernel/time/tick-common.c b/kernel/time/tick-common.c
+index 529143b..df40146 100644
+--- a/kernel/time/tick-common.c
++++ b/kernel/time/tick-common.c
+@@ -487,6 +487,7 @@ void tick_freeze(void)
+ 		trace_suspend_resume(TPS("timekeeping_freeze"),
+ 				     smp_processor_id(), true);
+ 		system_state = SYSTEM_SUSPEND;
++		sched_clock_suspend();
+ 		timekeeping_suspend();
+ 	} else {
+ 		tick_suspend_local();
+@@ -510,6 +511,7 @@ void tick_unfreeze(void)
+ 
+ 	if (tick_freeze_depth == num_online_cpus()) {
+ 		timekeeping_resume();
++		sched_clock_resume();
+ 		system_state = SYSTEM_RUNNING;
+ 		trace_suspend_resume(TPS("timekeeping_freeze"),
+ 				     smp_processor_id(), false);
+diff --git a/kernel/time/timekeeping.h b/kernel/time/timekeeping.h
+index 7a9b4eb..141ab3a 100644
+--- a/kernel/time/timekeeping.h
++++ b/kernel/time/timekeeping.h
+@@ -14,6 +14,13 @@ extern ktime_t ktime_get_update_offsets_now(unsigned int *cwsseq,
+ extern void timekeeping_warp_clock(void);
+ extern int timekeeping_suspend(void);
+ extern void timekeeping_resume(void);
++#ifdef CONFIG_GENERIC_SCHED_CLOCK
++extern int sched_clock_suspend(void);
++extern void sched_clock_resume(void);
++#else
++static inline int sched_clock_suspend(void) { return 0; }
++static inline void sched_clock_resume(void) { }
++#endif
+ 
+ extern void do_timer(unsigned long ticks);
+ extern void update_wall_time(void);
 -- 
-Bibby
+1.7.9.5
