@@ -1,73 +1,86 @@
-From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [next PATCH] usb: mtu3: get optional clock by devm_clk_get_optional()
-Date: Sat, 30 Mar 2019 17:40:18 +0800
-Message-ID: <1553938818-9883-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH] PCI: mediatek: get optional clock by devm_clk_get_optional()
+Date: Sat, 30 Mar 2019 18:00:51 +0800
+Message-ID: <1553940051-10367-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>, Honghui Zhang <honghui.zhang@mediatek.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Chunfeng Yun <chunfeng.yun@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
 Use devm_clk_get_optional() to get optional clock
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/usb/mtu3/mtu3_plat.c | 19 +++----------------
- 1 file changed, 3 insertions(+), 16 deletions(-)
+ drivers/pci/controller/pcie-mediatek.c | 46 ++++++--------------------
+ 1 file changed, 11 insertions(+), 35 deletions(-)
 
-diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
-index dca8bd864e63..fd0f6c5dfbc1 100644
---- a/drivers/usb/mtu3/mtu3_plat.c
-+++ b/drivers/usb/mtu3/mtu3_plat.c
-@@ -211,19 +211,6 @@ static void ssusb_ip_sw_reset(struct ssusb_mtk *ssusb)
- 	mtu3_setbits(ssusb->ippc_base, U3D_SSUSB_IP_PW_CTRL2, SSUSB_IP_DEV_PDN);
- }
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index 0b6c72804e03..9a66a018489b 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -915,49 +915,25 @@ static int mtk_pcie_parse_port(struct mtk_pcie *pcie,
  
--/* ignore the error if the clock does not exist */
--static struct clk *get_optional_clk(struct device *dev, const char *id)
--{
--	struct clk *opt_clk;
+ 	/* sys_ck might be divided into the following parts in some chips */
+ 	snprintf(name, sizeof(name), "ahb_ck%d", slot);
+-	port->ahb_ck = devm_clk_get(dev, name);
+-	if (IS_ERR(port->ahb_ck)) {
+-		if (PTR_ERR(port->ahb_ck) == -EPROBE_DEFER)
+-			return -EPROBE_DEFER;
 -
--	opt_clk = devm_clk_get(dev, id);
--	/* ignore error number except EPROBE_DEFER */
--	if (IS_ERR(opt_clk) && (PTR_ERR(opt_clk) != -EPROBE_DEFER))
--		opt_clk = NULL;
+-		port->ahb_ck = NULL;
+-	}
++	port->ahb_ck = devm_clk_get_optional(dev, name);
++	if (IS_ERR(port->ahb_ck))
++		return PTR_ERR(port->ahb_ck);
+ 
+ 	snprintf(name, sizeof(name), "axi_ck%d", slot);
+-	port->axi_ck = devm_clk_get(dev, name);
+-	if (IS_ERR(port->axi_ck)) {
+-		if (PTR_ERR(port->axi_ck) == -EPROBE_DEFER)
+-			return -EPROBE_DEFER;
 -
--	return opt_clk;
--}
+-		port->axi_ck = NULL;
+-	}
++	port->axi_ck = devm_clk_get_optional(dev, name);
++		return PTR_ERR(port->axi_ck);
+ 
+ 	snprintf(name, sizeof(name), "aux_ck%d", slot);
+-	port->aux_ck = devm_clk_get(dev, name);
+-	if (IS_ERR(port->aux_ck)) {
+-		if (PTR_ERR(port->aux_ck) == -EPROBE_DEFER)
+-			return -EPROBE_DEFER;
 -
- static int get_ssusb_rscs(struct platform_device *pdev, struct ssusb_mtk *ssusb)
- {
- 	struct device_node *node = pdev->dev.of_node;
-@@ -245,15 +232,15 @@ static int get_ssusb_rscs(struct platform_device *pdev, struct ssusb_mtk *ssusb)
- 		return PTR_ERR(ssusb->sys_clk);
- 	}
+-		port->aux_ck = NULL;
+-	}
++	port->aux_ck = devm_clk_get_optional(dev, name);
++		return PTR_ERR(port->aux_ck);
  
--	ssusb->ref_clk = get_optional_clk(dev, "ref_ck");
-+	ssusb->ref_clk = devm_clk_get_optional(dev, "ref_ck");
- 	if (IS_ERR(ssusb->ref_clk))
- 		return PTR_ERR(ssusb->ref_clk);
+ 	snprintf(name, sizeof(name), "obff_ck%d", slot);
+-	port->obff_ck = devm_clk_get(dev, name);
+-	if (IS_ERR(port->obff_ck)) {
+-		if (PTR_ERR(port->obff_ck) == -EPROBE_DEFER)
+-			return -EPROBE_DEFER;
+-
+-		port->obff_ck = NULL;
+-	}
++	port->obff_ck = devm_clk_get_optional(dev, name);
++		return PTR_ERR(port->obff_ck);
  
--	ssusb->mcu_clk = get_optional_clk(dev, "mcu_ck");
-+	ssusb->mcu_clk = devm_clk_get_optional(dev, "mcu_ck");
- 	if (IS_ERR(ssusb->mcu_clk))
- 		return PTR_ERR(ssusb->mcu_clk);
+ 	snprintf(name, sizeof(name), "pipe_ck%d", slot);
+-	port->pipe_ck = devm_clk_get(dev, name);
+-	if (IS_ERR(port->pipe_ck)) {
+-		if (PTR_ERR(port->pipe_ck) == -EPROBE_DEFER)
+-			return -EPROBE_DEFER;
+-
+-		port->pipe_ck = NULL;
+-	}
++	port->pipe_ck = devm_clk_get_optional(dev, name);
++		return PTR_ERR(port->pipe_ck);
  
--	ssusb->dma_clk = get_optional_clk(dev, "dma_ck");
-+	ssusb->dma_clk = devm_clk_get_optional(dev, "dma_ck");
- 	if (IS_ERR(ssusb->dma_clk))
- 		return PTR_ERR(ssusb->dma_clk);
- 
+ 	snprintf(name, sizeof(name), "pcie-rst%d", slot);
+ 	port->reset = devm_reset_control_get_optional_exclusive(dev, name);
 -- 
 2.20.1
