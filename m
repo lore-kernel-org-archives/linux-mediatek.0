@@ -1,107 +1,136 @@
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH 2/5] usb: host: xhci-plat: get optional clock by devm_clk_get_optional()
-Date: Sat, 30 Mar 2019 17:28:17 +0800
-Message-ID: <9f610fc23753d6e37de9c37680ee591da6afa49c.1553937592.git.chunfeng.yun@mediatek.com>
+Subject: [PATCH 3/5] usb: misc: usb3503: get optional clock by
+ devm_clk_get_optional()
+Date: Sat, 30 Mar 2019 17:28:18 +0800
+Message-ID: <ae25effac3e4e6f559a4e043caf6607f7cee5cac.1553937592.git.chunfeng.yun@mediatek.com>
 References: <2ec86ffd7de45dabaa7257019a79f1e80751934c.1553937592.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 In-Reply-To: <2ec86ffd7de45dabaa7257019a79f1e80751934c.1553937592.git.chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Mathias Nyman <mathias.nyman@intel.com>
+Cc: Dongjin Kim <tobetter@gmail.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 Use devm_clk_get_optional() to get optional clock
 
-Cc: Mathias Nyman <mathias.nyman@intel.com>
+Cc: Dongjin Kim <tobetter@gmail.com>
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/usb/host/xhci-plat.c | 39 +++++++++++++++++-------------------
- 1 file changed, 18 insertions(+), 21 deletions(-)
+ drivers/usb/misc/usb3503.c | 48 ++++++++++++++------------------------
+ 1 file changed, 18 insertions(+), 30 deletions(-)
 
-diff --git a/drivers/usb/host/xhci-plat.c b/drivers/usb/host/xhci-plat.c
-index 0ac4ec975547..998241f5fce3 100644
---- a/drivers/usb/host/xhci-plat.c
-+++ b/drivers/usb/host/xhci-plat.c
-@@ -165,8 +165,6 @@ static int xhci_plat_probe(struct platform_device *pdev)
- 	struct xhci_hcd		*xhci;
- 	struct resource         *res;
- 	struct usb_hcd		*hcd;
--	struct clk              *clk;
--	struct clk              *reg_clk;
- 	int			ret;
- 	int			irq;
+diff --git a/drivers/usb/misc/usb3503.c b/drivers/usb/misc/usb3503.c
+index d5141aa79dd4..72f39a9751b5 100644
+--- a/drivers/usb/misc/usb3503.c
++++ b/drivers/usb/misc/usb3503.c
+@@ -172,7 +172,6 @@ static int usb3503_probe(struct usb3503 *hub)
+ 		hub->gpio_reset		= pdata->gpio_reset;
+ 		hub->mode		= pdata->initial_mode;
+ 	} else if (np) {
+-		struct clk *clk;
+ 		u32 rate = 0;
+ 		hub->port_off_mask = 0;
  
-@@ -235,31 +233,32 @@ static int xhci_plat_probe(struct platform_device *pdev)
- 	hcd->rsrc_start = res->start;
- 	hcd->rsrc_len = resource_size(res);
+@@ -198,34 +197,29 @@ static int usb3503_probe(struct usb3503 *hub)
+ 			}
+ 		}
  
-+	xhci = hcd_to_xhci(hcd);
+-		clk = devm_clk_get(dev, "refclk");
+-		if (IS_ERR(clk) && PTR_ERR(clk) != -ENOENT) {
++		hub->clk = devm_clk_get_optional(dev, "refclk");
++		if (IS_ERR(hub->clk)) {
+ 			dev_err(dev, "unable to request refclk (%ld)\n",
+-					PTR_ERR(clk));
+-			return PTR_ERR(clk);
++					PTR_ERR(hub->clk));
++			return PTR_ERR(hub->clk);
+ 		}
+ 
+-		if (!IS_ERR(clk)) {
+-			hub->clk = clk;
+-
+-			if (rate != 0) {
+-				err = clk_set_rate(hub->clk, rate);
+-				if (err) {
+-					dev_err(dev,
+-						"unable to set reference clock rate to %d\n",
+-						(int) rate);
+-					return err;
+-				}
+-			}
+-
+-			err = clk_prepare_enable(hub->clk);
++		if (rate != 0) {
++			err = clk_set_rate(hub->clk, rate);
+ 			if (err) {
+ 				dev_err(dev,
+-					"unable to enable reference clock\n");
++					"unable to set reference clock rate to %d\n",
++					(int)rate);
+ 				return err;
+ 			}
+ 		}
+ 
++		err = clk_prepare_enable(hub->clk);
++		if (err) {
++			dev_err(dev, "unable to enable reference clock\n");
++			return err;
++		}
 +
- 	/*
- 	 * Not all platforms have clks so it is not an error if the
- 	 * clock do not exist.
- 	 */
--	reg_clk = devm_clk_get(&pdev->dev, "reg");
--	if (!IS_ERR(reg_clk)) {
--		ret = clk_prepare_enable(reg_clk);
--		if (ret)
--			goto put_hcd;
--	} else if (PTR_ERR(reg_clk) == -EPROBE_DEFER) {
--		ret = -EPROBE_DEFER;
-+	xhci->reg_clk = devm_clk_get_optional(&pdev->dev, "reg");
-+	if (IS_ERR(xhci->reg_clk)) {
-+		ret = PTR_ERR(xhci->reg_clk);
- 		goto put_hcd;
- 	}
+ 		property = of_get_property(np, "disabled-ports", &len);
+ 		if (property && (len / sizeof(u32)) > 0) {
+ 			int i;
+@@ -324,8 +318,7 @@ static int usb3503_i2c_remove(struct i2c_client *i2c)
+ 	struct usb3503 *hub;
  
--	clk = devm_clk_get(&pdev->dev, NULL);
--	if (!IS_ERR(clk)) {
--		ret = clk_prepare_enable(clk);
--		if (ret)
--			goto disable_reg_clk;
--	} else if (PTR_ERR(clk) == -EPROBE_DEFER) {
--		ret = -EPROBE_DEFER;
-+	ret = clk_prepare_enable(xhci->reg_clk);
-+	if (ret)
-+		goto put_hcd;
-+
-+	xhci->clk = devm_clk_get_optional(&pdev->dev, NULL);
-+	if (IS_ERR(xhci->clk)) {
-+		ret = PTR_ERR(xhci->clk);
- 		goto disable_reg_clk;
- 	}
+ 	hub = i2c_get_clientdata(i2c);
+-	if (hub->clk)
+-		clk_disable_unprepare(hub->clk);
++	clk_disable_unprepare(hub->clk);
  
--	xhci = hcd_to_xhci(hcd);
-+	ret = clk_prepare_enable(xhci->clk);
-+	if (ret)
-+		goto disable_reg_clk;
-+
- 	priv_match = of_device_get_match_data(&pdev->dev);
- 	if (priv_match) {
- 		struct xhci_plat_priv *priv = hcd_to_xhci_priv(hcd);
-@@ -271,8 +270,6 @@ static int xhci_plat_probe(struct platform_device *pdev)
+ 	return 0;
+ }
+@@ -348,8 +341,7 @@ static int usb3503_platform_remove(struct platform_device *pdev)
+ 	struct usb3503 *hub;
  
- 	device_wakeup_enable(hcd->self.controller);
+ 	hub = platform_get_drvdata(pdev);
+-	if (hub->clk)
+-		clk_disable_unprepare(hub->clk);
++	clk_disable_unprepare(hub->clk);
  
--	xhci->clk = clk;
--	xhci->reg_clk = reg_clk;
- 	xhci->main_hcd = hcd;
- 	xhci->shared_hcd = __usb_create_hcd(driver, sysdev, &pdev->dev,
- 			dev_name(&pdev->dev), hcd);
-@@ -348,10 +345,10 @@ static int xhci_plat_probe(struct platform_device *pdev)
- 	usb_put_hcd(xhci->shared_hcd);
+ 	return 0;
+ }
+@@ -358,18 +350,14 @@ static int usb3503_platform_remove(struct platform_device *pdev)
+ static int usb3503_suspend(struct usb3503 *hub)
+ {
+ 	usb3503_switch_mode(hub, USB3503_MODE_STANDBY);
+-
+-	if (hub->clk)
+-		clk_disable_unprepare(hub->clk);
++	clk_disable_unprepare(hub->clk);
  
- disable_clk:
--	clk_disable_unprepare(clk);
-+	clk_disable_unprepare(xhci->clk);
+ 	return 0;
+ }
  
- disable_reg_clk:
--	clk_disable_unprepare(reg_clk);
-+	clk_disable_unprepare(xhci->reg_clk);
+ static int usb3503_resume(struct usb3503 *hub)
+ {
+-	if (hub->clk)
+-		clk_prepare_enable(hub->clk);
+-
++	clk_prepare_enable(hub->clk);
+ 	usb3503_switch_mode(hub, hub->mode);
  
- put_hcd:
- 	usb_put_hcd(hcd);
+ 	return 0;
 -- 
 2.20.1
