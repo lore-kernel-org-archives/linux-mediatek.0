@@ -1,48 +1,52 @@
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH 2/4] phy: qcom-qusb2: get optional clock by devm_clk_get_optional()
-Date: Sat, 30 Mar 2019 17:11:36 +0800
-Message-ID: <50f5c2410bb86691329e5cb4d7ec38d1811fff33.1553914418.git.chunfeng.yun@mediatek.com>
-References: <a8539bcf66065380069676fbea99a51254309803.1553914418.git.chunfeng.yun@mediatek.com>
+Subject: [PATCH 1/4] phy: phy-mtk-tphy: get optional clock by
+ devm_clk_get_optional()
+Date: Sat, 30 Mar 2019 17:11:35 +0800
+Message-ID: <a8539bcf66065380069676fbea99a51254309803.1553914418.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <a8539bcf66065380069676fbea99a51254309803.1553914418.git.chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Vivek Gautam <vivek.gautam@codeaurora.org>
+Cc: linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 Use devm_clk_get_optional() to get optional clock
 
-Cc: Andy Gross <andy.gross@linaro.org>
-Cc: David Brown <david.brown@linaro.org>
-Cc: Vivek Gautam <vivek.gautam@codeaurora.org>
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/phy/qualcomm/phy-qcom-qusb2.c | 11 +++--------
- 1 file changed, 3 insertions(+), 8 deletions(-)
+ drivers/phy/mediatek/phy-mtk-tphy.c | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/phy/qualcomm/phy-qcom-qusb2.c b/drivers/phy/qualcomm/phy-qcom-qusb2.c
-index 8fd7ce139772..1cbf1d6f28ce 100644
---- a/drivers/phy/qualcomm/phy-qcom-qusb2.c
-+++ b/drivers/phy/qualcomm/phy-qcom-qusb2.c
-@@ -822,14 +822,9 @@ static int qusb2_phy_probe(struct platform_device *pdev)
- 		return ret;
+diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
+index 5b6a470ca145..cb2ed3b25068 100644
+--- a/drivers/phy/mediatek/phy-mtk-tphy.c
++++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+@@ -1103,13 +1103,9 @@ static int mtk_tphy_probe(struct platform_device *pdev)
  	}
  
--	qphy->iface_clk = devm_clk_get(dev, "iface");
--	if (IS_ERR(qphy->iface_clk)) {
--		ret = PTR_ERR(qphy->iface_clk);
--		if (ret == -EPROBE_DEFER)
--			return ret;
--		qphy->iface_clk = NULL;
--		dev_dbg(dev, "failed to get iface clk, %d\n", ret);
+ 	/* it's deprecated, make it optional for backward compatibility */
+-	tphy->u3phya_ref = devm_clk_get(dev, "u3phya_ref");
+-	if (IS_ERR(tphy->u3phya_ref)) {
+-		if (PTR_ERR(tphy->u3phya_ref) == -EPROBE_DEFER)
+-			return -EPROBE_DEFER;
+-
+-		tphy->u3phya_ref = NULL;
 -	}
-+	qphy->iface_clk = devm_clk_get_optional(dev, "iface");
-+	if (IS_ERR(qphy->iface_clk))
-+		return PTR_ERR(qphy->iface_clk);
++	tphy->u3phya_ref = devm_clk_get_optional(dev, "u3phya_ref");
++	if (IS_ERR(tphy->u3phya_ref))
++		return PTR_ERR(tphy->u3phya_ref);
  
- 	qphy->phy_reset = devm_reset_control_get_by_index(&pdev->dev, 0);
- 	if (IS_ERR(qphy->phy_reset)) {
+ 	tphy->src_ref_clk = U3P_REF_CLK;
+ 	tphy->src_coef = U3P_SLEW_RATE_COEF;
 -- 
 2.20.1
