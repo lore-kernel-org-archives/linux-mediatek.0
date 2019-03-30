@@ -1,7 +1,7 @@
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH 4/4] phy: phy-meson-gxl-usb2: get optional clock by devm_clk_get_optional()
-Date: Sat, 30 Mar 2019 17:11:38 +0800
-Message-ID: <c0d6e2a75efc26eb1af49506e6c2cead394abecb.1553914418.git.chunfeng.yun@mediatek.com>
+Subject: [PATCH 2/4] phy: qcom-qusb2: get optional clock by devm_clk_get_optional()
+Date: Sat, 30 Mar 2019 17:11:36 +0800
+Message-ID: <50f5c2410bb86691329e5cb4d7ec38d1811fff33.1553914418.git.chunfeng.yun@mediatek.com>
 References: <a8539bcf66065380069676fbea99a51254309803.1553914418.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -9,38 +9,40 @@ Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <a8539bcf66065380069676fbea99a51254309803.1553914418.git.chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Vivek Gautam <vivek.gautam@codeaurora.org>
 List-Id: linux-mediatek@lists.infradead.org
 
 Use devm_clk_get_optional() to get optional clock
 
-Cc: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Cc: Andy Gross <andy.gross@linaro.org>
+Cc: David Brown <david.brown@linaro.org>
+Cc: Vivek Gautam <vivek.gautam@codeaurora.org>
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/phy/amlogic/phy-meson-gxl-usb2.c | 11 +++--------
+ drivers/phy/qualcomm/phy-qcom-qusb2.c | 11 +++--------
  1 file changed, 3 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/phy/amlogic/phy-meson-gxl-usb2.c b/drivers/phy/amlogic/phy-meson-gxl-usb2.c
-index 148ef0bdb9c1..4cbee412f2b0 100644
---- a/drivers/phy/amlogic/phy-meson-gxl-usb2.c
-+++ b/drivers/phy/amlogic/phy-meson-gxl-usb2.c
-@@ -261,14 +261,9 @@ static int phy_meson_gxl_usb2_probe(struct platform_device *pdev)
- 	if (IS_ERR(priv->regmap))
- 		return PTR_ERR(priv->regmap);
+diff --git a/drivers/phy/qualcomm/phy-qcom-qusb2.c b/drivers/phy/qualcomm/phy-qcom-qusb2.c
+index 8fd7ce139772..1cbf1d6f28ce 100644
+--- a/drivers/phy/qualcomm/phy-qcom-qusb2.c
++++ b/drivers/phy/qualcomm/phy-qcom-qusb2.c
+@@ -822,14 +822,9 @@ static int qusb2_phy_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
  
--	priv->clk = devm_clk_get(dev, "phy");
--	if (IS_ERR(priv->clk)) {
--		ret = PTR_ERR(priv->clk);
--		if (ret == -ENOENT)
--			priv->clk = NULL;
--		else
+-	qphy->iface_clk = devm_clk_get(dev, "iface");
+-	if (IS_ERR(qphy->iface_clk)) {
+-		ret = PTR_ERR(qphy->iface_clk);
+-		if (ret == -EPROBE_DEFER)
 -			return ret;
+-		qphy->iface_clk = NULL;
+-		dev_dbg(dev, "failed to get iface clk, %d\n", ret);
 -	}
-+	priv->clk = devm_clk_get_optional(dev, "phy");
-+	if (IS_ERR(priv->clk))
-+		return PTR_ERR(priv->clk);
++	qphy->iface_clk = devm_clk_get_optional(dev, "iface");
++	if (IS_ERR(qphy->iface_clk))
++		return PTR_ERR(qphy->iface_clk);
  
- 	priv->reset = devm_reset_control_get_optional_shared(dev, "phy");
- 	if (IS_ERR(priv->reset))
+ 	qphy->phy_reset = devm_reset_control_get_by_index(&pdev->dev, 0);
+ 	if (IS_ERR(qphy->phy_reset)) {
 -- 
 2.20.1
