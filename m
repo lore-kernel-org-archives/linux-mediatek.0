@@ -1,48 +1,56 @@
-From: Brian Masney <masneyb@onstation.org>
-Subject: [PATCH] dt-bindings: arm: correct dt_binding_check parse error
-Date: Sat, 30 Mar 2019 22:42:40 -0400
-Message-ID: <20190331024240.3012-1-masneyb@onstation.org>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 1/6] dt-bindings: connector: add optional properties
+ for Type-B
+Date: Sun, 31 Mar 2019 01:40:28 -0500
+Message-ID: <5ca060de.1c69fb81.12138.c73c@mx.google.com>
+References: <1552635513-2378-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1552635513-2378-2-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1552635513-2378-2-git-send-email-chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: arnd@arndb.de
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, sugaya.taichi@socionext.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-'make dt_binding_check' fails with the following error:
+On Fri, Mar 15, 2019 at 03:38:28PM +0800, Chunfeng Yun wrote:
+> Add id-gpios, vbus-gpios, vbus-supply and pinctrl properties for
+> usb-b-connector
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+> v2 changes:
+>   1. describe more clear for vbus-gpios and vbus-supply suggested by Hans
+> ---
+>  .../devicetree/bindings/connector/usb-connector.txt      | 9 +++++++++
+>  1 file changed, 9 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/connector/usb-connector.txt b/Documentation/devicetree/bindings/connector/usb-connector.txt
+> index a9a2f2fc44f2..1c4ed6c9afa8 100644
+> --- a/Documentation/devicetree/bindings/connector/usb-connector.txt
+> +++ b/Documentation/devicetree/bindings/connector/usb-connector.txt
+> @@ -17,6 +17,15 @@ Optional properties:
+>  - self-powered: Set this property if the usb device that has its own power
+>    source.
+>  
+> +Optional properties for usb-b-connector:
+> +- id-gpios: gpio for USB ID pin.
+> +- vbus-gpios: gpio for USB VBUS pin, used to detect presence of VBUS 5V.
+> +  see gpio/gpio.txt.
 
-  Documentation/devicetree/bindings/arm/cpus.yaml:  while scanning a
-  plain scalar
-    in "<unicode string>", line 231, column 19
-  found a tab character that violates indentation
-    in "<unicode string>", line 232, column 1
-  make[1]: *** [Documentation/devicetree/bindings/Makefile:12:
-    Documentation/devicetree/bindings/arm/cpus.example.dts] Error 1
+Please make it explicit that this is an input gpio. An output GPIO 
+controlling a Vbus regulator should be modelled as a regulator.
 
-Correct the parse error by replacing the tabs with spaces to keep
-'make dt_binding_check' happy.
-
-Signed-off-by: Brian Masney <masneyb@onstation.org>
-Fixes: fd73403a4862 ("dt-bindings: arm: Add SMP enable-method for Milbeaut")
----
-Issue is in linux-next-20190329.
-
- Documentation/devicetree/bindings/arm/cpus.yaml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/Documentation/devicetree/bindings/arm/cpus.yaml b/Documentation/devicetree/bindings/arm/cpus.yaml
-index 60eab6dc3c0b..591bbd012d63 100644
---- a/Documentation/devicetree/bindings/arm/cpus.yaml
-+++ b/Documentation/devicetree/bindings/arm/cpus.yaml
-@@ -229,7 +229,7 @@ patternProperties:
-                 - renesas,r9a06g032-smp
-                 - rockchip,rk3036-smp
-                 - rockchip,rk3066-smp
--		- socionext,milbeaut-m10v-smp
-+                - socionext,milbeaut-m10v-smp
-                 - ste,dbx500-smp
- 
-       cpu-release-addr:
--- 
-2.20.1
+> +- vbus-supply: a phandle to the regulator for USB VBUS if needed.
+> +- pinctrl-names : a pinctrl state named "default" is optional
+> +- pinctrl-0 : pin control group
+> +  see pinctrl/pinctrl-bindings.txt
+> +
+>  Optional properties for usb-c-connector:
+>  - power-role: should be one of "source", "sink" or "dual"(DRP) if typec
+>    connector has power support.
+> -- 
+> 2.20.1
+> 
