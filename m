@@ -1,56 +1,90 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 1/6] dt-bindings: connector: add optional properties
- for Type-B
-Date: Sun, 31 Mar 2019 01:40:28 -0500
-Message-ID: <5ca060de.1c69fb81.12138.c73c@mx.google.com>
-References: <1552635513-2378-1-git-send-email-chunfeng.yun@mediatek.com>
- <1552635513-2378-2-git-send-email-chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH v2 02/25] dt-bindings: mediatek: add binding for mt8183
+ display
+Date: Sun, 31 Mar 2019 01:42:30 -0500
+Message-ID: <5ca06158.1c69fb81.bd33a.eaae@mx.google.com>
+References: <1553667561-25447-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1553667561-25447-3-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-In-Reply-To: <1552635513-2378-2-git-send-email-chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <1553667561-25447-3-git-send-email-yongqiang.niu@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: yongqiang.niu@mediatek.com
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Mar 15, 2019 at 03:38:28PM +0800, Chunfeng Yun wrote:
-> Add id-gpios, vbus-gpios, vbus-supply and pinctrl properties for
-> usb-b-connector
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
-> v2 changes:
->   1. describe more clear for vbus-gpios and vbus-supply suggested by Hans
-> ---
->  .../devicetree/bindings/connector/usb-connector.txt      | 9 +++++++++
->  1 file changed, 9 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/connector/usb-connector.txt b/Documentation/devicetree/bindings/connector/usb-connector.txt
-> index a9a2f2fc44f2..1c4ed6c9afa8 100644
-> --- a/Documentation/devicetree/bindings/connector/usb-connector.txt
-> +++ b/Documentation/devicetree/bindings/connector/usb-connector.txt
-> @@ -17,6 +17,15 @@ Optional properties:
->  - self-powered: Set this property if the usb device that has its own power
->    source.
->  
-> +Optional properties for usb-b-connector:
-> +- id-gpios: gpio for USB ID pin.
-> +- vbus-gpios: gpio for USB VBUS pin, used to detect presence of VBUS 5V.
-> +  see gpio/gpio.txt.
-
-Please make it explicit that this is an input gpio. An output GPIO 
-controlling a Vbus regulator should be modelled as a regulator.
-
-> +- vbus-supply: a phandle to the regulator for USB VBUS if needed.
-> +- pinctrl-names : a pinctrl state named "default" is optional
-> +- pinctrl-0 : pin control group
-> +  see pinctrl/pinctrl-bindings.txt
-> +
->  Optional properties for usb-c-connector:
->  - power-role: should be one of "source", "sink" or "dual"(DRP) if typec
->    connector has power support.
-> -- 
-> 2.20.1
-> 
+T24gV2VkLCBNYXIgMjcsIDIwMTkgYXQgMDI6MTg6NThQTSArMDgwMCwgeW9uZ3FpYW5nLm5pdUBt
+ZWRpYXRlay5jb20gd3JvdGU6Cj4gRnJvbTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3FpYW5nLm5pdUBt
+ZWRpYXRlay5jb20+Cj4gCj4gVXBkYXRlIGRldmljZSB0cmVlIGJpbmRpbmcgZG9jdW1lbnRpb24g
+Zm9yIHRoZSBkaXNwbGF5IHN1YnN5c3RlbSBmb3IKPiBNZWRpYXRlayBNVDgxODMgU09Dcwo+IAo+
+IFNpZ25lZC1vZmYtYnk6IFlvbmdxaWFuZyBOaXUgPHlvbmdxaWFuZy5uaXVAbWVkaWF0ZWsuY29t
+Pgo+IC0tLQo+ICAuLi4vYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxkaXNwLnR4
+dCAgICB8IDM3ICsrKysrKysrKysrKysrLS0tLS0tLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDIzIGlu
+c2VydGlvbnMoKyksIDE0IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0
+aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxkaXNwLnR4
+dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21l
+ZGlhdGVrLGRpc3AudHh0Cj4gaW5kZXggODQ2OWRlNS4uNTQ2NzQ3MGMgMTAwNjQ0Cj4gLS0tIGEv
+RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0
+ZWssZGlzcC50eHQKPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlz
+cGxheS9tZWRpYXRlay9tZWRpYXRlayxkaXNwLnR4dAo+IEBAIC0yNywyMCArMjcsMjMgQEAgRG9j
+dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWss
+ZHBpLnR4dC4KPiAgCj4gIFJlcXVpcmVkIHByb3BlcnRpZXMgKGFsbCBmdW5jdGlvbiBibG9ja3Mp
+Ogo+ICAtIGNvbXBhdGlibGU6ICJtZWRpYXRlayw8Y2hpcD4tZGlzcC08ZnVuY3Rpb24+Iiwgb25l
+IG9mCj4gLQkibWVkaWF0ZWssPGNoaXA+LWRpc3Atb3ZsIiAgIC0gb3ZlcmxheSAoNCBsYXllcnMs
+IGJsZW5kaW5nLCBjc2MpCj4gLQkibWVkaWF0ZWssPGNoaXA+LWRpc3AtcmRtYSIgIC0gcmVhZCBE
+TUEgLyBsaW5lIGJ1ZmZlcgo+IC0JIm1lZGlhdGVrLDxjaGlwPi1kaXNwLXdkbWEiICAtIHdyaXRl
+IERNQQo+IC0JIm1lZGlhdGVrLDxjaGlwPi1kaXNwLWNvbG9yIiAtIGNvbG9yIHByb2Nlc3Nvcgo+
+IC0JIm1lZGlhdGVrLDxjaGlwPi1kaXNwLWFhbCIgICAtIGFkYXB0aXZlIGFtYmllbnQgbGlnaHQg
+Y29udHJvbGxlcgo+IC0JIm1lZGlhdGVrLDxjaGlwPi1kaXNwLWdhbW1hIiAtIGdhbW1hIGNvcnJl
+Y3Rpb24KPiAtCSJtZWRpYXRlayw8Y2hpcD4tZGlzcC1tZXJnZSIgLSBtZXJnZSBzdHJlYW1zIGZy
+b20gdHdvIFJETUEgc291cmNlcwo+IC0JIm1lZGlhdGVrLDxjaGlwPi1kaXNwLXNwbGl0IiAtIHNw
+bGl0IHN0cmVhbSB0byB0d28gZW5jb2RlcnMKPiAtCSJtZWRpYXRlayw8Y2hpcD4tZGlzcC11Zm9l
+IiAgLSBkYXRhIGNvbXByZXNzaW9uIGVuZ2luZQo+IC0JIm1lZGlhdGVrLDxjaGlwPi1kc2kiICAg
+ICAgICAtIERTSSBjb250cm9sbGVyLCBzZWUgbWVkaWF0ZWssZHNpLnR4dAo+IC0JIm1lZGlhdGVr
+LDxjaGlwPi1kcGkiICAgICAgICAtIERQSSBjb250cm9sbGVyLCBzZWUgbWVkaWF0ZWssZHBpLnR4
+dAo+IC0JIm1lZGlhdGVrLDxjaGlwPi1kaXNwLW11dGV4IiAtIGRpc3BsYXkgbXV0ZXgKPiAtCSJt
+ZWRpYXRlayw8Y2hpcD4tZGlzcC1vZCIgICAgLSBvdmVyZHJpdmUKPiAtICB0aGUgc3VwcG9ydGVk
+IGNoaXBzIGFyZSBtdDI3MDEsIG10MjcxMiBhbmQgbXQ4MTczLgo+ICsJIm1lZGlhdGVrLDxjaGlw
+Pi1kaXNwLW92bCIgICAJCS0gb3ZlcmxheSAoNCBsYXllcnMsIGJsZW5kaW5nLCBjc2MpCj4gKwki
+bWVkaWF0ZWssPGNoaXA+LWRpc3Atb3ZsLTJsIiAgIAktIG92ZXJsYXkgKDIgbGF5ZXJzLCBibGVu
+ZGluZywgY3NjKQo+ICsJIm1lZGlhdGVrLDxjaGlwPi1kaXNwLXJkbWEiICAJCS0gcmVhZCBETUEg
+LyBsaW5lIGJ1ZmZlcgo+ICsJIm1lZGlhdGVrLDxjaGlwPi1kaXNwLXdkbWEiICAJCS0gd3JpdGUg
+RE1BCj4gKwkibWVkaWF0ZWssPGNoaXA+LWRpc3AtY2NvcnIiIAkJLSBjb2xvciBjb3JyZWN0aW9u
+Cj4gKwkibWVkaWF0ZWssPGNoaXA+LWRpc3AtY29sb3IiIAkJLSBjb2xvciBwcm9jZXNzb3IKPiAr
+CSJtZWRpYXRlayw8Y2hpcD4tZGlzcC1kaXRoZXIiIAkJLSBkaXRoZXIKPiArCSJtZWRpYXRlayw8
+Y2hpcD4tZGlzcC1hYWwiICAgCQktIGFkYXB0aXZlIGFtYmllbnQgbGlnaHQgY29udHJvbGxlcgo+
+ICsJIm1lZGlhdGVrLDxjaGlwPi1kaXNwLWdhbW1hIiAJCS0gZ2FtbWEgY29ycmVjdGlvbgo+ICsJ
+Im1lZGlhdGVrLDxjaGlwPi1kaXNwLW1lcmdlIiAJCS0gbWVyZ2Ugc3RyZWFtcyBmcm9tIHR3byBS
+RE1BIHNvdXJjZXMKPiArCSJtZWRpYXRlayw8Y2hpcD4tZGlzcC1zcGxpdCIgCQktIHNwbGl0IHN0
+cmVhbSB0byB0d28gZW5jb2RlcnMKPiArCSJtZWRpYXRlayw8Y2hpcD4tZGlzcC11Zm9lIiAgCQkt
+IGRhdGEgY29tcHJlc3Npb24gZW5naW5lCj4gKwkibWVkaWF0ZWssPGNoaXA+LWRzaSIgICAgICAg
+IAkJLSBEU0kgY29udHJvbGxlciwgc2VlIG1lZGlhdGVrLGRzaS50eHQKPiArCSJtZWRpYXRlayw8
+Y2hpcD4tZHBpIiAgICAgICAgCQktIERQSSBjb250cm9sbGVyLCBzZWUgbWVkaWF0ZWssZHBpLnR4
+dAo+ICsJIm1lZGlhdGVrLDxjaGlwPi1kaXNwLW11dGV4IiAJCS0gZGlzcGxheSBtdXRleAo+ICsJ
+Im1lZGlhdGVrLDxjaGlwPi1kaXNwLW9kIiAgICAJCS0gb3ZlcmRyaXZlCj4gKyAgdGhlIHN1cHBv
+cnRlZCBjaGlwcyBhcmUgbXQyNzAxLCBtdDI3MTIsIG10ODE3MyBhbmQgbXQ4MTgzLgo+ICAtIHJl
+ZzogUGh5c2ljYWwgYmFzZSBhZGRyZXNzIGFuZCBsZW5ndGggb2YgdGhlIGZ1bmN0aW9uIGJsb2Nr
+IHJlZ2lzdGVyIHNwYWNlCj4gIC0gaW50ZXJydXB0czogVGhlIGludGVycnVwdCBzaWduYWwgZnJv
+bSB0aGUgZnVuY3Rpb24gYmxvY2sgKHJlcXVpcmVkLCBleGNlcHQgZm9yCj4gICAgbWVyZ2UgYW5k
+IHNwbGl0IGZ1bmN0aW9uIGJsb2NrcykuCj4gQEAgLTcxLDYgKzc0LDEyIEBAIG1tc3lzOiBjbG9j
+ay1jb250cm9sbGVyQDE0MDAwMDAwIHsKPiAgCSNjbG9jay1jZWxscyA9IDwxPjsKPiAgfTsKPiAg
+Cj4gK2Rpc3BsYXlfY29tcG9uZW50czogZGlzcHN5c0AxNDAwMDAwMCB7Cj4gKwkJY29tcGF0aWJs
+ZSA9ICJtZWRpYXRlayxtdDgxODMtZGlzcGxheSI7CgpEb2N1bWVudGVkPwoKPiArCQlyZWcgPSA8
+MCAweDE0MDAwMDAwIDAgMHgxMDAwPjsKPiArCQlwb3dlci1kb21haW5zID0gPCZzY3BzeXMgTVQ4
+MTgzX1BPV0VSX0RPTUFJTl9ESVNQPjsKPiArfTsKPiArCj4gIG92bDA6IG92bEAxNDAwYzAwMCB7
+Cj4gIAljb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1kaXNwLW92bCI7Cj4gIAlyZWcgPSA8
+MCAweDE0MDBjMDAwIDAgMHgxMDAwPjsKPiAtLSAKPiAxLjguMS4xLmRpcnR5Cj4gCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
+ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
+ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
