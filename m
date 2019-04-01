@@ -1,50 +1,88 @@
-From: Minas Harutyunyan <minas.harutyunyan@synopsys.com>
-Subject: Re: [PATCH 4/5] usb: dwc2: get optional clock by
- devm_clk_get_optional()
-Date: Mon, 1 Apr 2019 08:47:47 +0000
-Message-ID: <410670D7E743164D87FA6160E7907A56013A7FDF13@am04wembxa.internal.synopsys.com>
-References: <2ec86ffd7de45dabaa7257019a79f1e80751934c.1553937592.git.chunfeng.yun@mediatek.com>
- <e14524a4e6b38140f41e55bb74aedb6599e963e1.1553937592.git.chunfeng.yun@mediatek.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Applied "ASoC: Mediatek: Add document for mt8183-da7219-max98357" to
+ the asoc tree
+Date: Mon,  1 Apr 2019 09:53:01 +0100 (BST)
+Message-ID: <20190401085301.698AF440082@finisterre.ee.mobilebroadband>
+References: <1553848489-27926-5-git-send-email-shunli.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Minas Harutyunyan <minas.harutyunyan@synopsys.com>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1553848489-27926-5-git-send-email-shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, tzungbi-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 3/30/2019 1:28 PM, Chunfeng Yun wrote:=0A=
-> Use devm_clk_get_optional() to get optional clock=0A=
-> =0A=
-> Cc: Minas Harutyunyan <hminas@synopsys.com>=0A=
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>=0A=
-=0A=
-Acked-by: Minas Harutyunyan <hminas@synopsys.com>=0A=
-=0A=
-> ---=0A=
->   drivers/usb/dwc2/platform.c | 6 +++---=0A=
->   1 file changed, 3 insertions(+), 3 deletions(-)=0A=
-> =0A=
-> diff --git a/drivers/usb/dwc2/platform.c b/drivers/usb/dwc2/platform.c=0A=
-> index c0b64d483552..9aa9682a5cd2 100644=0A=
-> --- a/drivers/usb/dwc2/platform.c=0A=
-> +++ b/drivers/usb/dwc2/platform.c=0A=
-> @@ -284,10 +284,10 @@ static int dwc2_lowlevel_hw_init(struct dwc2_hsotg =
-*hsotg)=0A=
->   	}=0A=
->   =0A=
->   	/* Clock */=0A=
-> -	hsotg->clk =3D devm_clk_get(hsotg->dev, "otg");=0A=
-> +	hsotg->clk =3D devm_clk_get_optional(hsotg->dev, "otg");=0A=
->   	if (IS_ERR(hsotg->clk)) {=0A=
-> -		hsotg->clk =3D NULL;=0A=
-> -		dev_dbg(hsotg->dev, "cannot get otg clock\n");=0A=
-> +		dev_err(hsotg->dev, "cannot get otg clock\n");=0A=
-> +		return PTR_ERR(hsotg->clk);=0A=
->   	}=0A=
->   =0A=
->   	/* Regulators */=0A=
-> =0A=
-=0A=
+The patch
+
+   ASoC: Mediatek: Add document for mt8183-da7219-max98357
+
+has been applied to the asoc tree at
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+>From 5a79acf9a9188d85e1f1a697ed7531e0f0f36943 Mon Sep 17 00:00:00 2001
+From: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Date: Fri, 29 Mar 2019 16:34:49 +0800
+Subject: [PATCH] ASoC: Mediatek: Add document for mt8183-da7219-max98357
+
+This patch adds document for the machine board with
+mt6358, da7219 and max98357 codecs.
+
+Signed-off-by: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+---
+ .../bindings/sound/mt8183-da7219-max98357.txt     | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/sound/mt8183-da7219-max98357.txt
+
+diff --git a/Documentation/devicetree/bindings/sound/mt8183-da7219-max98357.txt b/Documentation/devicetree/bindings/sound/mt8183-da7219-max98357.txt
+new file mode 100644
+index 000000000000..92ac86f83822
+--- /dev/null
++++ b/Documentation/devicetree/bindings/sound/mt8183-da7219-max98357.txt
+@@ -0,0 +1,15 @@
++MT8183 with MT6358, DA7219 and MAX98357 CODECS
++
++Required properties:
++- compatible : "mediatek,mt8183_da7219_max98357"
++- mediatek,headset-codec: the phandles of da7219 codecs
++- mediatek,platform: the phandle of MT8183 ASoC platform
++
++Example:
++
++	sound {
++		compatible = "mediatek,mt8183_da7219_max98357";
++		mediatek,headset-codec = <&da7219>;
++		mediatek,platform = <&afe>;
++	};
++
+-- 
+2.20.1
