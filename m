@@ -1,55 +1,108 @@
-From: Stanislaw Gruszka <sgruszka@redhat.com>
-Subject: Re: [PATCH 1/4] mt76: add mac80211 driver for MT7615 PCIe-based
- chipsets
-Date: Mon, 1 Apr 2019 11:46:34 +0200
-Message-ID: <20190401094633.GC19802@redhat.com>
-References: <cover.1553607739.git.ryder.lee@mediatek.com>
- <2849359e0b0ede6c13ae9f142aff77a016fd0a80.1553607739.git.ryder.lee@mediatek.com>
- <87lg0wyjvj.fsf@purkki.adurom.net>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH V7 6/6] drm/mediatek: fix the rate of parent for hdmi
+ phy in MT2701
+Date: Mon, 1 Apr 2019 17:47:20 +0800
+Message-ID: <1554112040.2011.25.camel@mtksdaap41>
+References: <20190327091929.73162-1-wangyan.wang@mediatek.com>
+ <20190327091929.73162-7-wangyan.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <87lg0wyjvj.fsf@purkki.adurom.net>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kalle Valo <kvalo@codeaurora.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Felix Fietkau <nbd@nbd.name>, Roy Luo <royluo@google.com>, Sean Wang <sean.wang@mediatek.com>, Nelson Chang <nelson.chang@mediatek.com>, YF Luo <yf.luo@mediatek.com>, Kai Lin <kai.lin@mediatek.com>, Rorscha Yang <rorscha.yang@mediatek.com>, Kyle Lee <kyle.lee@mediatek.com>, Miller Shen <miller.shen@mediatek.com>, Haipin Liang <haipin.liang@mediatek.com>, linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Lorenzo Bianconi <lorenzo@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190327091929.73162-7-wangyan.wang@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: wangyan wang <wangyan.wang@mediatek.com>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, srv_heupstream@mediatek.com, chunhui dai <chunhui.dai@mediatek.com>, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Colin Ian King <colin.king@canonical.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, Mar 30, 2019 at 08:08:32AM +0200, Kalle Valo wrote:
-> Ryder Lee <ryder.lee@mediatek.com> writes:
-> 
-> > This driver is for a newer generation of MediaTek MT7615 4x4 802.11ac
-> > PCIe-based chipsets, which support wave2 MU-MIMO up to 4 users/group
-> > and also support up to 160MHz bandwidth.
-> >
-> > The driver fully supports AP, station and monitor mode.
-> >
-> > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> > Signed-off-by: Roy Luo <royluo@google.com>
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> 
-> [...]
-> 
-> > --- /dev/null
-> > +++ b/drivers/net/wireless/mediatek/mt76/mt7615/dma.c
-> > @@ -0,0 +1,204 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> 
-> mt76 is under ISC so why did you choose GPLv2 here? I don't think it's a
-> good idea to use different licenses within the same driver.
-
-mt76x0 is GPL only as some parts of it are modified copy of either out
-of tree Mediatek GPL driver or Jakub's mt7601u also realised under GPL.
-
-Is ISC equal to "Dual BSD/GPL" what is marked by MODULE_LICENSE ?
-I think this should be clarified too.
-
-> Also mt76 does not use SPDX tags yet. I would prefer that the whole
-> driver is converted in one go to have consistent licensing information.
-
-Agree. However not sure if we can unify of all mt76 code to the same
-license (and which one: GPL ?), but at least we can convert source 
-files to SPDX identifier.
-
-Stanislaw
+SGksIFdhbmd5YW46CgpJIHdvdWxkIGxpa2UgdGhlIHRpdGxlIHRvIG1vcmUgY2xlYXIgYWJvdXQg
+d2hhdCB0aGlzIHBhdGNoIGRvLiBGb3IKZXhhbXBsZToKCmRybS9tZWRpYXRlazogbm8gY2hhbmdl
+IHBhcmVudCByYXRlIGluIHJvdW5kX3JhdGUoKSBmb3IgTVQyNzAxIEhETUkgcGh5CgoKT24gV2Vk
+LCAyMDE5LTAzLTI3IGF0IDE3OjE5ICswODAwLCB3YW5neWFuIHdhbmcgd3JvdGU6Cj4gRnJvbTog
+Y2h1bmh1aSBkYWkgPGNodW5odWkuZGFpQG1lZGlhdGVrLmNvbT4KPiAKPiBXZSBzaG91bGQgbm90
+IGNoYW5nZSB0aGUgcmF0ZSBvZiBwYXJlbnQgZm9yIGhkbWkgcGh5IHdoZW4KPiBkb2luZyByb3Vu
+ZF9yYXRlIGZvciB0aGlzIGNsb2NrLiBUaGUgcGFyZW50IGNsb2NrIG9mIGhkbWkKPiBwaHkgbXVz
+dCBiZSB0aGUgc2FtZSBhcyBpdC4gV2UgY2hhbmdlIGl0IHdoZW4gZG9pbmcgc2V0X3JhdGUKPiBv
+bmx5Lgo+IAo+IFNpZ25lZC1vZmYtYnk6IGNodW5odWkgZGFpIDxjaHVuaHVpLmRhaUBtZWRpYXRl
+ay5jb20+Cj4gU2lnbmVkLW9mZi1ieTogd2FuZ3lhbiB3YW5nIDx3YW5neWFuLndhbmdAbWVkaWF0
+ZWsuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmMg
+ICAgICAgIHwgMTkgLS0tLS0tLS0tLS0tLS0tLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2hkbWlfcGh5LmggICAgICAgIHwgIDQgLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX210MjcwMV9oZG1pX3BoeS5jIHwgIDcgKysrKysrKwo+ICBkcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX210ODE3M19oZG1pX3BoeS5jIHwgMTQgKysrKysrKysrKysrKysKPiAg
+NCBmaWxlcyBjaGFuZ2VkLCAyMSBpbnNlcnRpb25zKCspLCAyMyBkZWxldGlvbnMoLSkKPiAKPiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3BoeS5jIGIvZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3BoeS5jCj4gaW5kZXggMzcwMzA5ZDY4NGVj
+Li5mNzUzZWU3Mjk3MWUgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19oZG1pX3BoeS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3Bo
+eS5jCj4gQEAgLTE1LDI1ICsxNSw2IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgcGh5X29wcyBtdGtf
+aGRtaV9waHlfZGV2X29wcyA9IHsKPiAgCS5vd25lciA9IFRISVNfTU9EVUxFLAo+ICB9Owo+ICAK
+PiAtbG9uZyBtdGtfaGRtaV9wbGxfcm91bmRfcmF0ZShzdHJ1Y3QgY2xrX2h3ICpodywgdW5zaWdu
+ZWQgbG9uZyByYXRlLAo+IC0JCQkgICAgIHVuc2lnbmVkIGxvbmcgKnBhcmVudF9yYXRlKQo+IC17
+Cj4gLQlzdHJ1Y3QgbXRrX2hkbWlfcGh5ICpoZG1pX3BoeSA9IHRvX210a19oZG1pX3BoeShodyk7
+Cj4gLQo+IC0JaGRtaV9waHktPnBsbF9yYXRlID0gcmF0ZTsKPiAtCWlmIChyYXRlIDw9IDc0MjUw
+MDAwKQo+IC0JCSpwYXJlbnRfcmF0ZSA9IHJhdGU7Cj4gLQllbHNlCj4gLQkJKnBhcmVudF9yYXRl
+ID0gcmF0ZSAvIDI7Cj4gLQo+IC0JcmV0dXJuIHJhdGU7Cj4gLX0KPiAtCj4gLXUzMiBtdGtfaGRt
+aV9waHlfcmVhZChzdHJ1Y3QgbXRrX2hkbWlfcGh5ICpoZG1pX3BoeSwgdTMyIG9mZnNldCkKPiAt
+ewo+IC0JcmV0dXJuIHJlYWRsKGhkbWlfcGh5LT5yZWdzICsgb2Zmc2V0KTsKPiAtfQoKSSB0aGlu
+ayB0aGlzIGZ1bmN0aW9uIHNob3VsZCBhbHJlYWR5IGJlIHJlbW92ZWQgYnkgdGhlIHBhdGNoCiJk
+cm0vbWVkaWF0ZWs6IHJlY2FsY3VsYXRlIGhkbWkgcGh5IGNsb2NrIG9mIE1UMjcwMSBieSBxdWVy
+eWluZwpoYXJkd2FyZSIKClJlZ2FyZHMsCkNLCgo+IC0KPiAgdm9pZCBtdGtfaGRtaV9waHlfY2xl
+YXJfYml0cyhzdHJ1Y3QgbXRrX2hkbWlfcGh5ICpoZG1pX3BoeSwgdTMyIG9mZnNldCwKPiAgCQkJ
+ICAgICB1MzIgYml0cykKPiAgewo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2hkbWlfcGh5LmggYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5
+LmgKPiBpbmRleCA0NDZlMmFjZDE5MjYuLjRkNGRlNGRlODk3NyAxMDA2NDQKPiAtLS0gYS9kcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmgKPiArKysgYi9kcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmgKPiBAQCAtNDIsNyArNDIsNiBAQCBzdHJ1Y3QgbXRr
+X2hkbWlfcGh5IHsKPiAgCXVuc2lnbmVkIGludCBpYmlhc191cDsKPiAgfTsKPiAgCj4gLXUzMiBt
+dGtfaGRtaV9waHlfcmVhZChzdHJ1Y3QgbXRrX2hkbWlfcGh5ICpoZG1pX3BoeSwgdTMyIG9mZnNl
+dCk7Cj4gIHZvaWQgbXRrX2hkbWlfcGh5X2NsZWFyX2JpdHMoc3RydWN0IG10a19oZG1pX3BoeSAq
+aGRtaV9waHksIHUzMiBvZmZzZXQsCj4gIAkJCSAgICAgdTMyIGJpdHMpOwo+ICB2b2lkIG10a19o
+ZG1pX3BoeV9zZXRfYml0cyhzdHJ1Y3QgbXRrX2hkbWlfcGh5ICpoZG1pX3BoeSwgdTMyIG9mZnNl
+dCwKPiBAQCAtNTAsOSArNDksNiBAQCB2b2lkIG10a19oZG1pX3BoeV9zZXRfYml0cyhzdHJ1Y3Qg
+bXRrX2hkbWlfcGh5ICpoZG1pX3BoeSwgdTMyIG9mZnNldCwKPiAgdm9pZCBtdGtfaGRtaV9waHlf
+bWFzayhzdHJ1Y3QgbXRrX2hkbWlfcGh5ICpoZG1pX3BoeSwgdTMyIG9mZnNldCwKPiAgCQkgICAg
+ICAgdTMyIHZhbCwgdTMyIG1hc2spOwo+ICBzdHJ1Y3QgbXRrX2hkbWlfcGh5ICp0b19tdGtfaGRt
+aV9waHkoc3RydWN0IGNsa19odyAqaHcpOwo+IC1sb25nIG10a19oZG1pX3BsbF9yb3VuZF9yYXRl
+KHN0cnVjdCBjbGtfaHcgKmh3LCB1bnNpZ25lZCBsb25nIHJhdGUsCj4gLQkJCSAgICAgdW5zaWdu
+ZWQgbG9uZyAqcGFyZW50X3JhdGUpOwo+IC0KPiAgZXh0ZXJuIHN0cnVjdCBwbGF0Zm9ybV9kcml2
+ZXIgbXRrX2hkbWlfcGh5X2RyaXZlcjsKPiAgZXh0ZXJuIHN0cnVjdCBtdGtfaGRtaV9waHlfY29u
+ZiBtdGtfaGRtaV9waHlfODE3M19jb25mOwo+ICBleHRlcm4gc3RydWN0IG10a19oZG1pX3BoeV9j
+b25mIG10a19oZG1pX3BoeV8yNzAxX2NvbmY7Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfbXQyNzAxX2hkbWlfcGh5LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX210MjcwMV9oZG1pX3BoeS5jCj4gaW5kZXggY2IwYzY4Yzk0MDEzLi42ZmI0Y2E5NDM0
+NjMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDI3MDFfaGRt
+aV9waHkuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQyNzAxX2hkbWlf
+cGh5LmMKPiBAQCAtMTUyLDYgKzE1MiwxMyBAQCBzdGF0aWMgaW50IG10a19oZG1pX3BsbF9zZXRf
+cmF0ZShzdHJ1Y3QgY2xrX2h3ICpodywgdW5zaWduZWQgbG9uZyByYXRlLAo+ICAJCQkgIFJHX0hE
+TUlUWF9EUlZfSUJJQVNfTUFTSyk7Cj4gIAlyZXR1cm4gMDsKPiAgfQo+ICsKPiArc3RhdGljIGxv
+bmcgbXRrX2hkbWlfcGxsX3JvdW5kX3JhdGUoc3RydWN0IGNsa19odyAqaHcsIHVuc2lnbmVkIGxv
+bmcgcmF0ZSwKPiArCQkJICAgICB1bnNpZ25lZCBsb25nICpwYXJlbnRfcmF0ZSkKPiArewo+ICsJ
+cmV0dXJuIHJhdGU7Cj4gK30KPiArCj4gIHN0YXRpYyB1bnNpZ25lZCBsb25nIG10a19oZG1pX3Bs
+bF9yZWNhbGNfcmF0ZShzdHJ1Y3QgY2xrX2h3ICpodywKPiAgCQkJCSAgICAgICB1bnNpZ25lZCBs
+b25nIHBhcmVudF9yYXRlKQo+ICB7Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X210ODE3M19oZG1pX3BoeS5jCj4gaW5kZXggNjNkZGU0MjUyMWI4Li4zYTMzOWY1MTY2MTMgMTAw
+NjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxNzNfaGRtaV9waHku
+Ywo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMK
+PiBAQCAtMjg1LDYgKzI4NSwyMCBAQCBzdGF0aWMgaW50IG10a19oZG1pX3BsbF9zZXRfcmF0ZShz
+dHJ1Y3QgY2xrX2h3ICpodywgdW5zaWduZWQgbG9uZyByYXRlLAo+ICAJcmV0dXJuIDA7Cj4gIH0K
+PiAgCj4gK3N0YXRpYyBsb25nIG10a19oZG1pX3BsbF9yb3VuZF9yYXRlKHN0cnVjdCBjbGtfaHcg
+Kmh3LCB1bnNpZ25lZCBsb25nIHJhdGUsCj4gKwkJCSAgICAgdW5zaWduZWQgbG9uZyAqcGFyZW50
+X3JhdGUpCj4gK3sKPiArCXN0cnVjdCBtdGtfaGRtaV9waHkgKmhkbWlfcGh5ID0gdG9fbXRrX2hk
+bWlfcGh5KGh3KTsKPiArCj4gKwloZG1pX3BoeS0+cGxsX3JhdGUgPSByYXRlOwo+ICsJaWYgKHJh
+dGUgPD0gNzQyNTAwMDApCj4gKwkJKnBhcmVudF9yYXRlID0gcmF0ZTsKPiArCWVsc2UKPiArCQkq
+cGFyZW50X3JhdGUgPSByYXRlIC8gMjsKPiArCj4gKwlyZXR1cm4gcmF0ZTsKPiArfQo+ICsKPiAg
+c3RhdGljIHVuc2lnbmVkIGxvbmcgbXRrX2hkbWlfcGxsX3JlY2FsY19yYXRlKHN0cnVjdCBjbGtf
+aHcgKmh3LAo+ICAJCQkJICAgICAgIHVuc2lnbmVkIGxvbmcgcGFyZW50X3JhdGUpCj4gIHsKCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
+bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
