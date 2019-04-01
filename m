@@ -1,94 +1,83 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH V7 2/6] drm/mediatek: move the setting of fixed divider
-Date: Mon, 1 Apr 2019 17:14:35 +0800
-Message-ID: <1554110075.2011.4.camel@mtksdaap41>
-References: <20190327091929.73162-1-wangyan.wang@mediatek.com>
- <20190327091929.73162-3-wangyan.wang@mediatek.com>
+From: Kunihiko Hayashi <hayashi.kunihiko@socionext.com>
+Subject: Re: [PATCH 3/4] phy: socionext: get optional clock by devm_clk_get_optional()
+Date: Mon, 01 Apr 2019 18:15:19 +0900
+Message-ID: <20190401181519.2595.4A936039@socionext.com>
+References: <a8539bcf66065380069676fbea99a51254309803.1553914418.git.chunfeng.yun@mediatek.com> <f3370a0619d40c40676ed029cc04a3ed1c12b991.1553914418.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190327091929.73162-3-wangyan.wang@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: wangyan wang <wangyan.wang@mediatek.com>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, srv_heupstream@mediatek.com, chunhui dai <chunhui.dai@mediatek.com>, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, Colin Ian King <colin.king@canonical.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <f3370a0619d40c40676ed029cc04a3ed1c12b991.1553914418.git.chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Wangyan:
+Hi,
 
-On Wed, 2019-03-27 at 17:19 +0800, wangyan wang wrote:
-> From: chunhui dai <chunhui.dai@mediatek.com>
+This looks good to me.
+
+Reviewed-by: Kunihiko Hayashi <hayashi.kunihiko@socionext.com>
+
+Thanks,
+
+On Sat, 30 Mar 2019 17:11:37 +0800
+Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
+
+> Use devm_clk_get_optional() to get optional clock
 > 
-> move the setting of fixed divider from enable/disable
-> to the function of setting rate.
-> 
-> the patch is for hdmi pll divider, the divder should
-> be configured before clock calculation to ensure the
-> clock is right.
-
-I think this patch is introduced by the patch "drm/mediatek: recalculate
-hdmi phy clock of MT2701 by querying hardware", so I would like to
-squash this patch into that patch.
-
-Regards,
-CK
-
-> 
-> Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
-> Signed-off-by: wangyan wang <wangyan.wang@mediatek.com>
+> Cc: Kunihiko Hayashi <hayashi.kunihiko@socionext.com>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 > ---
->  drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
+>  drivers/phy/socionext/phy-uniphier-usb3hs.c | 10 +++-------
+>  drivers/phy/socionext/phy-uniphier-usb3ss.c | 10 +++-------
+>  2 files changed, 6 insertions(+), 14 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-> index 9dcf9c2ff37a..6f29e87eefd0 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-> @@ -79,7 +79,6 @@ static int mtk_hdmi_pll_prepare(struct clk_hw *hw)
->  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SLDO_MASK);
->  	usleep_range(80, 100);
->  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_MBIAS_LPF_EN);
-> -	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_EN_TX_POSDIV);
->  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SER_MASK);
->  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_PRED_MASK);
->  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_DRV_MASK);
-> @@ -94,7 +93,6 @@ static void mtk_hdmi_pll_unprepare(struct clk_hw *hw)
->  	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_DRV_MASK);
->  	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_PRED_MASK);
->  	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SER_MASK);
-> -	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_EN_TX_POSDIV);
->  	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_MBIAS_LPF_EN);
->  	usleep_range(80, 100);
->  	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SLDO_MASK);
-> @@ -123,6 +121,7 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+> diff --git a/drivers/phy/socionext/phy-uniphier-usb3hs.c b/drivers/phy/socionext/phy-uniphier-usb3hs.c
+> index b1b048be6166..50f379fc4e06 100644
+> --- a/drivers/phy/socionext/phy-uniphier-usb3hs.c
+> +++ b/drivers/phy/socionext/phy-uniphier-usb3hs.c
+> @@ -335,13 +335,9 @@ static int uniphier_u3hsphy_probe(struct platform_device *pdev)
+>  	if (IS_ERR(priv->clk_parent))
+>  		return PTR_ERR(priv->clk_parent);
 >  
->  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON6, RG_HTPLL_PREDIV_MASK);
->  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON6, RG_HTPLL_POSDIV_MASK);
-> +	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_EN_TX_POSDIV);
->  	mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON6, (0x1 << RG_HTPLL_IC),
->  			  RG_HTPLL_IC_MASK);
->  	mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON6, (0x1 << RG_HTPLL_IR),
-> @@ -207,7 +206,6 @@ static void mtk_hdmi_phy_enable_tmds(struct mtk_hdmi_phy *hdmi_phy)
->  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SLDO_MASK);
->  	usleep_range(80, 100);
->  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_MBIAS_LPF_EN);
-> -	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_EN_TX_POSDIV);
->  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SER_MASK);
->  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_PRED_MASK);
->  	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_DRV_MASK);
-> @@ -219,7 +217,6 @@ static void mtk_hdmi_phy_disable_tmds(struct mtk_hdmi_phy *hdmi_phy)
->  	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_DRV_MASK);
->  	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_PRED_MASK);
->  	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SER_MASK);
-> -	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_EN_TX_POSDIV);
->  	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_MBIAS_LPF_EN);
->  	usleep_range(80, 100);
->  	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SLDO_MASK);
+> -	priv->clk_ext = devm_clk_get(dev, "phy-ext");
+> -	if (IS_ERR(priv->clk_ext)) {
+> -		if (PTR_ERR(priv->clk_ext) == -ENOENT)
+> -			priv->clk_ext = NULL;
+> -		else
+> -			return PTR_ERR(priv->clk_ext);
+> -	}
+> +	priv->clk_ext = devm_clk_get_optional(dev, "phy-ext");
+> +	if (IS_ERR(priv->clk_ext))
+> +		return PTR_ERR(priv->clk_ext);
+>  
+>  	priv->rst = devm_reset_control_get_shared(dev, "phy");
+>  	if (IS_ERR(priv->rst))
+> diff --git a/drivers/phy/socionext/phy-uniphier-usb3ss.c b/drivers/phy/socionext/phy-uniphier-usb3ss.c
+> index 4be95679c7d8..ec231e40ef2a 100644
+> --- a/drivers/phy/socionext/phy-uniphier-usb3ss.c
+> +++ b/drivers/phy/socionext/phy-uniphier-usb3ss.c
+> @@ -238,13 +238,9 @@ static int uniphier_u3ssphy_probe(struct platform_device *pdev)
+>  		if (IS_ERR(priv->clk))
+>  			return PTR_ERR(priv->clk);
+>  
+> -		priv->clk_ext = devm_clk_get(dev, "phy-ext");
+> -		if (IS_ERR(priv->clk_ext)) {
+> -			if (PTR_ERR(priv->clk_ext) == -ENOENT)
+> -				priv->clk_ext = NULL;
+> -			else
+> -				return PTR_ERR(priv->clk_ext);
+> -		}
+> +		priv->clk_ext = devm_clk_get_optional(dev, "phy-ext");
+> +		if (IS_ERR(priv->clk_ext))
+> +			return PTR_ERR(priv->clk_ext);
+>  
+>  		priv->rst = devm_reset_control_get_shared(dev, "phy");
+>  		if (IS_ERR(priv->rst))
+> -- 
+> 2.20.1
+
+---
+Best Regards,
+Kunihiko Hayashi
