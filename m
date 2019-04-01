@@ -1,271 +1,145 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH] media: mtk-vcodec: enlarge struct vdec_pic_info fields
-Date: Mon, 1 Apr 2019 11:06:15 +0200
-Message-ID: <fde8b68d-b38c-34ea-208c-bd1338b90412@xs4all.nl>
-References: <1554106699-25469-1-git-send-email-yunfei.dong@mediatek.com>
- <1554106699-25469-2-git-send-email-yunfei.dong@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH V7 1/6] drm/mediatek: recalculate hdmi phy clock of
+ MT2701 by querying hardware
+Date: Mon, 1 Apr 2019 17:13:11 +0800
+Message-ID: <1554109991.2011.2.camel@mtksdaap41>
+References: <20190327091929.73162-1-wangyan.wang@mediatek.com>
+         <20190327091929.73162-2-wangyan.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1554106699-25469-2-git-send-email-yunfei.dong@mediatek.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Yunfei Dong <yunfei.dong@mediatek.com>, linux-firmware@kernel.org
-Cc: tiffany.lin@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190327091929.73162-2-wangyan.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: wangyan wang <wangyan.wang@mediatek.com>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, chunhui dai <chunhui.dai@mediatek.com>, Colin Ian King <colin.king@canonical.com>, Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On 4/1/19 10:18 AM, Yunfei Dong wrote:
-> Enlarge the plane number to support more complex case
-> and add the support for fmt change case.
+On Wed, 2019-03-27 at 17:19 +0800, wangyan wang wrote:
+> From: chunhui dai <chunhui.dai@mediatek.com>
+> 
+> Recalculate the rate of this clock, by querying hardware.
 
-Is this v4 of this patch? What are the changes since v3?
+You just describe _WHAT_ do you do here, I would like you to describe
+_WHT_ do you do here. I think this patch is to make implementation of
+recalc_rate() to match the definition.
+
+> 
+> Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
+> Signed-off-by: wangyan wang <wangyan.wang@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_hdmi_phy.c        |  7 ++----
+>  drivers/gpu/drm/mediatek/mtk_hdmi_phy.h        |  3 +--
+>  drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c | 33 ++++++++++++++++++++++++++
+>  drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c |  8 +++++++
+>  4 files changed, 44 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
+> index 4ef9c57ffd44..13c5e65b9ead 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
+> @@ -29,12 +29,9 @@ long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
+>  	return rate;
+>  }
+>  
+> -unsigned long mtk_hdmi_pll_recalc_rate(struct clk_hw *hw,
+> -				       unsigned long parent_rate)
+> +u32 mtk_hdmi_phy_read(struct mtk_hdmi_phy *hdmi_phy, u32 offset)
+>  {
+> -	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
+> -
+> -	return hdmi_phy->pll_rate;
+> +	return readl(hdmi_phy->regs + offset);
+>  }
+
+This function is useless, so remove it.
 
 Regards,
+CK
 
-	Hans
-
-> 
-> Change-Id: If61f994b8853f370967fb81b92b407e2c2ae94b8
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> ---
->  drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c |   62 +++++++++++++-------
->  drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h |   16 ++---
->  .../media/platform/mtk-vcodec/vdec/vdec_h264_if.c  |    4 +-
->  .../media/platform/mtk-vcodec/vdec/vdec_vp8_if.c   |    4 +-
->  .../media/platform/mtk-vcodec/vdec/vdec_vp9_if.c   |   11 ++--
->  5 files changed, 57 insertions(+), 40 deletions(-)
-> 
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-> index d022c65..43587c0 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-> @@ -129,9 +129,9 @@ static struct vb2_buffer *get_display_buffer(struct mtk_vcodec_ctx *ctx)
->  	mutex_lock(&ctx->lock);
->  	if (dstbuf->used) {
->  		vb2_set_plane_payload(&dstbuf->vb.vb2_buf, 0,
-> -					ctx->picinfo.y_bs_sz);
-> +					ctx->picinfo.fb_sz[0]);
->  		vb2_set_plane_payload(&dstbuf->vb.vb2_buf, 1,
-> -					ctx->picinfo.c_bs_sz);
-> +					ctx->picinfo.fb_sz[1]);
 >  
->  		dstbuf->ready_to_display = true;
->  
-> @@ -278,6 +278,27 @@ static void mtk_vdec_flush_decoder(struct mtk_vcodec_ctx *ctx)
->  	clean_free_buffer(ctx);
->  }
->  
-> +static void mtk_vdec_update_fmt(struct mtk_vcodec_ctx *ctx,
-> +				unsigned int pixelformat)
-> +{
-> +	struct mtk_video_fmt *fmt;
-> +	struct mtk_q_data *dst_q_data;
-> +	unsigned int k;
-> +
-> +	dst_q_data = &ctx->q_data[MTK_Q_DATA_DST];
-> +	for (k = 0; k < NUM_FORMATS; k++) {
-> +		fmt = &mtk_video_formats[k];
-> +		if (fmt->fourcc == pixelformat) {
-> +			mtk_v4l2_debug(1, "Update cap fourcc(%d -> %d)",
-> +				dst_q_data->fmt.fourcc, pixelformat);
-> +			dst_q_data->fmt = fmt;
-> +			return;
-> +		}
-> +	}
-> +
-> +	mtk_v4l2_err("Cannot get fourcc(%d), using init value", pixelformat);
-> +}
-> +
->  static int mtk_vdec_pic_info_update(struct mtk_vcodec_ctx *ctx)
->  {
->  	unsigned int dpbsize = 0;
-> @@ -299,6 +320,10 @@ static int mtk_vdec_pic_info_update(struct mtk_vcodec_ctx *ctx)
->  		return -EINVAL;
->  	}
->  
-> +	if (ctx->last_decoded_picinfo.cap_fourcc != ctx->picinfo.cap_fourcc &&
-> +		ctx->picinfo.cap_fourcc != 0)
-> +		mtk_vdec_update_fmt(ctx, ctx->picinfo.cap_fourcc);
-> +
->  	if ((ctx->last_decoded_picinfo.pic_w == ctx->picinfo.pic_w) ||
->  	    (ctx->last_decoded_picinfo.pic_h == ctx->picinfo.pic_h))
->  		return 0;
-> @@ -352,11 +377,11 @@ static void mtk_vdec_worker(struct work_struct *work)
->  	pfb = &dst_buf_info->frame_buffer;
->  	pfb->base_y.va = vb2_plane_vaddr(&dst_buf->vb2_buf, 0);
->  	pfb->base_y.dma_addr = vb2_dma_contig_plane_dma_addr(&dst_buf->vb2_buf, 0);
-> -	pfb->base_y.size = ctx->picinfo.y_bs_sz + ctx->picinfo.y_len_sz;
-> +	pfb->base_y.size = ctx->picinfo.fb_sz[0];
->  
->  	pfb->base_c.va = vb2_plane_vaddr(&dst_buf->vb2_buf, 1);
->  	pfb->base_c.dma_addr = vb2_dma_contig_plane_dma_addr(&dst_buf->vb2_buf, 1);
-> -	pfb->base_c.size = ctx->picinfo.c_bs_sz + ctx->picinfo.c_len_sz;
-> +	pfb->base_c.size = ctx->picinfo.fb_sz[1];
->  	pfb->status = 0;
->  	mtk_v4l2_debug(3, "===>[%d] vdec_if_decode() ===>", ctx->id);
->  
-> @@ -976,14 +1001,13 @@ static int vidioc_vdec_g_fmt(struct file *file, void *priv,
->  		 * So we just return picinfo yet, and update picinfo in
->  		 * stop_streaming hook function
->  		 */
-> -		q_data->sizeimage[0] = ctx->picinfo.y_bs_sz +
-> -					ctx->picinfo.y_len_sz;
-> -		q_data->sizeimage[1] = ctx->picinfo.c_bs_sz +
-> -					ctx->picinfo.c_len_sz;
-> +		q_data->sizeimage[0] = ctx->picinfo.fb_sz[0];
-> +		q_data->sizeimage[1] = ctx->picinfo.fb_sz[1];
->  		q_data->bytesperline[0] = ctx->last_decoded_picinfo.buf_w;
->  		q_data->bytesperline[1] = ctx->last_decoded_picinfo.buf_w;
->  		q_data->coded_width = ctx->picinfo.buf_w;
->  		q_data->coded_height = ctx->picinfo.buf_h;
-> +		ctx->last_decoded_picinfo.cap_fourcc = q_data->fmt->fourcc;
->  
->  		/*
->  		 * Width and height are set to the dimensions
-> @@ -1103,10 +1127,11 @@ static void vb2ops_vdec_buf_queue(struct vb2_buffer *vb)
->  	struct mtk_vcodec_mem src_mem;
->  	bool res_chg = false;
->  	int ret = 0;
-> -	unsigned int dpbsize = 1;
-> +	unsigned int dpbsize = 1, i = 0;
->  	struct mtk_vcodec_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
->  	struct vb2_v4l2_buffer *vb2_v4l2 = NULL;
->  	struct mtk_video_dec_buf *buf = NULL;
-> +	struct mtk_q_data *dst_q_data;
->  
->  	mtk_v4l2_debug(3, "[%d] (%d) id=%d, vb=%p",
->  			ctx->id, vb->vb2_queue->type,
-> @@ -1194,21 +1219,18 @@ static void vb2ops_vdec_buf_queue(struct vb2_buffer *vb)
->  	}
->  
->  	ctx->last_decoded_picinfo = ctx->picinfo;
-> -	ctx->q_data[MTK_Q_DATA_DST].sizeimage[0] =
-> -						ctx->picinfo.y_bs_sz +
-> -						ctx->picinfo.y_len_sz;
-> -	ctx->q_data[MTK_Q_DATA_DST].bytesperline[0] =
-> -						ctx->picinfo.buf_w;
-> -	ctx->q_data[MTK_Q_DATA_DST].sizeimage[1] =
-> -						ctx->picinfo.c_bs_sz +
-> -						ctx->picinfo.c_len_sz;
-> -	ctx->q_data[MTK_Q_DATA_DST].bytesperline[1] = ctx->picinfo.buf_w;
-> +	dst_q_data = &ctx->q_data[MTK_Q_DATA_DST];
-> +	for (i = 0; i < dst_q_data->fmt->num_planes; i++) {
-> +		dst_q_data->sizeimage[i] = ctx->picinfo.fb_sz[i];
-> +		dst_q_data->bytesperline[i] = ctx->picinfo.buf_w;
-> +	}
-> +
->  	mtk_v4l2_debug(2, "[%d] vdec_if_init() OK wxh=%dx%d pic wxh=%dx%d sz[0]=0x%x sz[1]=0x%x",
->  			ctx->id,
->  			ctx->picinfo.buf_w, ctx->picinfo.buf_h,
->  			ctx->picinfo.pic_w, ctx->picinfo.pic_h,
-> -			ctx->q_data[MTK_Q_DATA_DST].sizeimage[0],
-> -			ctx->q_data[MTK_Q_DATA_DST].sizeimage[1]);
-> +			dst_q_data->sizeimage[0],
-> +			dst_q_data->sizeimage[1]);
->  
->  	ret = vdec_if_get_param(ctx, GET_PARAM_DPB_SIZE, &dpbsize);
->  	if (dpbsize == 0)
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> index e7e2a10..662a84b 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> @@ -211,24 +211,20 @@ struct mtk_vcodec_pm {
->   * @pic_h: picture height
->   * @buf_w: picture buffer width (64 aligned up from pic_w)
->   * @buf_h: picture buffer heiht (64 aligned up from pic_h)
-> - * @y_bs_sz: Y bitstream size
-> - * @c_bs_sz: CbCr bitstream size
-> - * @y_len_sz: additional size required to store decompress information for y
-> - *		plane
-> - * @c_len_sz: additional size required to store decompress information for cbcr
-> - *		plane
-> + * @fb_sz: bitstream size of each plane
->   * E.g. suppose picture size is 176x144,
->   *      buffer size will be aligned to 176x160.
-> + * @cap_fourcc: fourcc number(may changed when resolution change)
-> + * @reserved: align struct to 64-bit in order to adjust 32-bit and 64-bit os.
->   */
->  struct vdec_pic_info {
->  	unsigned int pic_w;
->  	unsigned int pic_h;
->  	unsigned int buf_w;
->  	unsigned int buf_h;
-> -	unsigned int y_bs_sz;
-> -	unsigned int c_bs_sz;
-> -	unsigned int y_len_sz;
-> -	unsigned int c_len_sz;
-> +	unsigned int fb_sz[VIDEO_MAX_PLANES];
-> +	unsigned int cap_fourcc;
-> +	unsigned int reserved;
+>  void mtk_hdmi_phy_clear_bits(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
+> index f39b1fc66612..fdad8b17a915 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
+> @@ -41,6 +41,7 @@ struct mtk_hdmi_phy {
+>  	unsigned int ibias_up;
 >  };
 >  
->  /**
-> diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-> index 02c960c..cdbcd69 100644
-> --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-> @@ -253,8 +253,8 @@ static void get_pic_info(struct vdec_h264_inst *inst,
->  	*pic = inst->vsi->pic;
->  	mtk_vcodec_debug(inst, "pic(%d, %d), buf(%d, %d)",
->  			 pic->pic_w, pic->pic_h, pic->buf_w, pic->buf_h);
-> -	mtk_vcodec_debug(inst, "Y(%d, %d), C(%d, %d)", pic->y_bs_sz,
-> -			 pic->y_len_sz, pic->c_bs_sz, pic->c_len_sz);
-> +	mtk_vcodec_debug(inst, "fb size: Y(%d), C(%d)",
-> +			 pic->fb_sz[0], pic->fb_sz[1]);
+> +u32 mtk_hdmi_phy_read(struct mtk_hdmi_phy *hdmi_phy, u32 offset);
+>  void mtk_hdmi_phy_clear_bits(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
+>  			     u32 bits);
+>  void mtk_hdmi_phy_set_bits(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
+> @@ -50,8 +51,6 @@ void mtk_hdmi_phy_mask(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
+>  struct mtk_hdmi_phy *to_mtk_hdmi_phy(struct clk_hw *hw);
+>  long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
+>  			     unsigned long *parent_rate);
+> -unsigned long mtk_hdmi_pll_recalc_rate(struct clk_hw *hw,
+> -				       unsigned long parent_rate);
+>  
+>  extern struct platform_driver mtk_hdmi_phy_driver;
+>  extern struct mtk_hdmi_phy_conf mtk_hdmi_phy_8173_conf;
+> diff --git a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
+> index fcc42dc6ea7f..9dcf9c2ff37a 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
+> @@ -153,6 +153,39 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+>  			  RG_HDMITX_DRV_IBIAS_MASK);
+>  	return 0;
+>  }
+> +static unsigned long mtk_hdmi_pll_recalc_rate(struct clk_hw *hw,
+> +				       unsigned long parent_rate)
+> +{
+> +	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
+> +	unsigned long out_rate, val;
+> +
+> +	val = (readl(hdmi_phy->regs + HDMI_CON6)
+> +			& RG_HTPLL_PREDIV_MASK) >> RG_HTPLL_PREDIV;
+> +	switch (val) {
+> +	case 0x00:
+> +		out_rate = parent_rate;
+> +		break;
+> +	case 0x01:
+> +		out_rate = parent_rate / 2;
+> +		break;
+> +	default:
+> +		out_rate = parent_rate / 4;
+> +		break;
+> +	}
+> +
+> +	val = (readl(hdmi_phy->regs + HDMI_CON6)
+> +			& RG_HTPLL_FBKDIV_MASK) >> RG_HTPLL_FBKDIV;
+> +	out_rate *= (val + 1) * 2;
+> +	val = (readl(hdmi_phy->regs + HDMI_CON2)
+> +			& RG_HDMITX_TX_POSDIV_MASK);
+> +
+> +	out_rate >>= (val >> RG_HDMITX_TX_POSDIV);
+> +
+> +	if (readl(hdmi_phy->regs + HDMI_CON2) & RG_HDMITX_EN_TX_POSDIV)
+> +		out_rate = out_rate / 5;
+> +
+> +	return out_rate;
+> +}
+>  
+>  static const struct clk_ops mtk_hdmi_phy_pll_ops = {
+>  	.prepare = mtk_hdmi_pll_prepare,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
+> index ed5916b27658..cb23c1e4692a 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
+> @@ -285,6 +285,14 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+>  	return 0;
 >  }
 >  
->  static void get_crop_info(struct vdec_h264_inst *inst, struct v4l2_rect *cr)
-> diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
-> index bac3723..ba79136 100644
-> --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
-> @@ -294,8 +294,8 @@ static void get_pic_info(struct vdec_vp8_inst *inst, struct vdec_pic_info *pic)
->  
->  	mtk_vcodec_debug(inst, "pic(%d, %d), buf(%d, %d)",
->  			 pic->pic_w, pic->pic_h, pic->buf_w, pic->buf_h);
-> -	mtk_vcodec_debug(inst, "Y(%d, %d), C(%d, %d)", pic->y_bs_sz,
-> -			 pic->y_len_sz, pic->c_bs_sz, pic->c_len_sz);
-> +	mtk_vcodec_debug(inst, "fb size: Y(%d), C(%d)",
-> +			 pic->fb_sz[0], pic->fb_sz[1]);
->  }
->  
->  static void vp8_dec_finish(struct vdec_vp8_inst *inst)
-> diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-> index bc8349b..6fe8320 100644
-> --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-> @@ -702,10 +702,8 @@ static void init_all_fb_lists(struct vdec_vp9_inst *inst)
->  
->  static void get_pic_info(struct vdec_vp9_inst *inst, struct vdec_pic_info *pic)
->  {
-> -	pic->y_bs_sz = inst->vsi->buf_sz_y_bs;
-> -	pic->c_bs_sz = inst->vsi->buf_sz_c_bs;
-> -	pic->y_len_sz = inst->vsi->buf_len_sz_y;
-> -	pic->c_len_sz = inst->vsi->buf_len_sz_c;
-> +	pic->fb_sz[0] = inst->vsi->buf_sz_y_bs + inst->vsi->buf_len_sz_y;
-> +	pic->fb_sz[1] = inst->vsi->buf_sz_c_bs + inst->vsi->buf_len_sz_c;
->  
->  	pic->pic_w = inst->vsi->pic_w;
->  	pic->pic_h = inst->vsi->pic_h;
-> @@ -714,8 +712,9 @@ static void get_pic_info(struct vdec_vp9_inst *inst, struct vdec_pic_info *pic)
->  
->  	mtk_vcodec_debug(inst, "pic(%d, %d), buf(%d, %d)",
->  		 pic->pic_w, pic->pic_h, pic->buf_w, pic->buf_h);
-> -	mtk_vcodec_debug(inst, "Y(%d, %d), C(%d, %d)", pic->y_bs_sz,
-> -		 pic->y_len_sz, pic->c_bs_sz, pic->c_len_sz);
-> +	mtk_vcodec_debug(inst, "fb size: Y(%d), C(%d)",
-> +		pic->fb_sz[0],
-> +		pic->fb_sz[1]);
->  }
->  
->  static void get_disp_fb(struct vdec_vp9_inst *inst, struct vdec_fb **out_fb)
-> 
+> +static unsigned long mtk_hdmi_pll_recalc_rate(struct clk_hw *hw,
+> +				       unsigned long parent_rate)
+> +{
+> +	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
+> +
+> +	return hdmi_phy->pll_rate;
+> +}
+> +
+>  static const struct clk_ops mtk_hdmi_phy_pll_ops = {
+>  	.prepare = mtk_hdmi_pll_prepare,
+>  	.unprepare = mtk_hdmi_pll_unprepare,
