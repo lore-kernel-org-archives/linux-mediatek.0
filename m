@@ -1,36 +1,79 @@
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v2 4/4] MAINTAINERS : update entry for mt76 wireless driver
-Date: Mon, 1 Apr 2019 14:56:25 +0800
-Message-ID: <6159437c8ecff17629685e34d1c19f42e3a67573.1554100584.git.ryder.lee@mediatek.com>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH v2 3/4] mt76: use macro for sn and seq_ctrl conversion
+Date: Mon, 1 Apr 2019 14:56:24 +0800
+Message-ID: <8834b4f687f6d5bc92c72b9d784bfc37bb92ed02.1554100584.git.ryder.lee@mediatek.com>
 References: <cover.1554100584.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <cover.1554100584.git.ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
-Cc: Roy Luo <royluo-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Nelson Chang <nelson.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YF Luo <yf.luo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Kai Lin <kai.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rorscha Yang <rorscha.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Kyle Lee <kyle.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Miller Shen <miller.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Haipin Liang <haipin.liang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, KL Huang <kl.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YH chen <yh.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cover.1554100584.git.ryder.lee@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Felix Fietkau <nbd@nbd.name>
+Cc: Roy Luo <royluo@google.com>, Sean Wang <sean.wang@mediatek.com>, Nelson Chang <nelson.chang@mediatek.com>, YF Luo <yf.luo@mediatek.com>, Kai Lin <kai.lin@mediatek.com>, Rorscha Yang <rorscha.yang@mediatek.com>, Kyle Lee <kyle.lee@mediatek.com>, Miller Shen <miller.shen@mediatek.com>, Haipin Liang <haipin.liang@mediatek.com>, KL Huang <kl.huang@mediatek.com>, YH chen <yh.chen@mediatek.com>, linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Roy and I actively join the development and review.
+Use macro to convert sn and seq_ctrl for better readability.
 
-Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Roy Luo <royluo@google.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- MAINTAINERS | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/net/wireless/mediatek/mt76/agg-rx.c       | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt7603/mac.c   | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt7603/main.c  | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt76x02_util.c | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index e17ebf7..7d92a87 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -9768,6 +9768,8 @@ F:	Documentation/devicetree/bindings/media/mediatek-vpu.txt
- MEDIATEK MT76 WIRELESS LAN DRIVER
- M:	Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
- M:	Lorenzo Bianconi <lorenzo.bianconi83-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-+R:	Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-+R:	Roy Luo <royluo-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
- L:	linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
- S:	Maintained
- F:	drivers/net/wireless/mediatek/mt76/
+diff --git a/drivers/net/wireless/mediatek/mt76/agg-rx.c b/drivers/net/wireless/mediatek/mt76/agg-rx.c
+index 73c8b28..27e3ff0 100644
+--- a/drivers/net/wireless/mediatek/mt76/agg-rx.c
++++ b/drivers/net/wireless/mediatek/mt76/agg-rx.c
+@@ -135,7 +135,7 @@
+ 		return;
+ 
+ 	status->tid = le16_to_cpu(bar->control) >> 12;
+-	seqno = le16_to_cpu(bar->start_seq_num) >> 4;
++	seqno = IEEE80211_SEQ_TO_SN(le16_to_cpu(bar->start_seq_num));
+ 	tid = rcu_dereference(wcid->aggr[status->tid]);
+ 	if (!tid)
+ 		return;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
+index e498169..2f2961e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
+@@ -627,7 +627,7 @@ void mt7603_mac_tx_ba_reset(struct mt7603_dev *dev, int wcid, int tid, int ssn,
+ 	status->aggr = unicast &&
+ 		       !ieee80211_is_qos_nullfunc(hdr->frame_control);
+ 	status->tid = *ieee80211_get_qos_ctl(hdr) & IEEE80211_QOS_CTL_TID_MASK;
+-	status->seqno = hdr->seq_ctrl >> 4;
++	status->seqno = IEEE80211_SEQ_TO_SN(hdr->seq_ctrl);
+ 
+ 	return 0;
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/main.c b/drivers/net/wireless/mediatek/mt76/mt7603/main.c
+index 5d38392..0c78044 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7603/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7603/main.c
+@@ -594,7 +594,7 @@
+ 		mt7603_mac_tx_ba_reset(dev, msta->wcid.idx, tid, *ssn, -1);
+ 		break;
+ 	case IEEE80211_AMPDU_TX_START:
+-		mtxq->agg_ssn = *ssn << 4;
++		mtxq->agg_ssn = IEEE80211_SN_TO_SEQ(*ssn);
+ 		ieee80211_start_tx_ba_cb_irqsafe(vif, sta->addr, tid);
+ 		break;
+ 	case IEEE80211_AMPDU_TX_STOP_CONT:
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
+index b137ce8..f0e1e12 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
+@@ -378,7 +378,7 @@ int mt76x02_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 		ieee80211_send_bar(vif, sta->addr, tid, mtxq->agg_ssn);
+ 		break;
+ 	case IEEE80211_AMPDU_TX_START:
+-		mtxq->agg_ssn = *ssn << 4;
++		mtxq->agg_ssn = IEEE80211_SN_TO_SEQ(*ssn);
+ 		ieee80211_start_tx_ba_cb_irqsafe(vif, sta->addr, tid);
+ 		break;
+ 	case IEEE80211_AMPDU_TX_STOP_CONT:
 -- 
 1.9.1
