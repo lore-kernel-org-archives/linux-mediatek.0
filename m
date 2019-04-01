@@ -1,32 +1,53 @@
-From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Subject: Re: [PATCH 4/4] phy: phy-meson-gxl-usb2: get optional clock by devm_clk_get_optional()
-Date: Sun, 31 Mar 2019 22:39:56 +0200
-Message-ID: <CAFBinCA3L650-9s0-y_hAP=pS2n=E_YTxn3LnRL_CTs76u2H9A@mail.gmail.com>
-References: <a8539bcf66065380069676fbea99a51254309803.1553914418.git.chunfeng.yun@mediatek.com>
- <c0d6e2a75efc26eb1af49506e6c2cead394abecb.1553914418.git.chunfeng.yun@mediatek.com>
+From: MyungJoo Ham <myungjoo.ham@samsung.com>
+Subject: RE: [PATCH v2 2/4] opp: add API which get max freq by voltage
+Date: Mon, 01 Apr 2019 11:30:47 +0900
+Message-ID: <20190401023047epcms1p888e2dba45fcbc1de98d71d8a37acb976@epcms1p8>
+References: <1553841972-19737-3-git-send-email-andrew-sh.cheng@mediatek.com>
+ <1553841972-19737-1-git-send-email-andrew-sh.cheng@mediatek.com>
+ <CGME20190329064632epcas2p4d10ea099bfea4ad682d7312a75bfbe68@epcms1p8>
+Reply-To: myungjoo.ham@samsung.com
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <c0d6e2a75efc26eb1af49506e6c2cead394abecb.1553914418.git.chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1553841972-19737-3-git-send-email-andrew-sh.cheng@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Rafael
+ J. Wysocki" <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>
+Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>, "srv_heupstream@mediatek.com" <srv_heupstream@mediatek.com>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "fan.chen@mediatek.com" <fan.chen@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, Mar 30, 2019 at 10:12 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
+>This API will get voltage as input parameter.
+>Search all opp items for the item which with max frequency,
+>and the voltae is smaller than provided voltage.
 >
-> Use devm_clk_get_optional() to get optional clock
+>Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
+>---
+> drivers/opp/core.c     | 55 ++++++++++++++++++++++++++++++++++++++++++++++++++
+> include/linux/pm_opp.h |  8 ++++++++
+> 2 files changed, 63 insertions(+)
 >
-> Cc: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Acked-by: Martin Blumenstingl<martin.blumenstingl@googlemail.com>
+>diff --git a/include/linux/pm_opp.h b/include/linux/pm_opp.h
+>index 24c757a..57deef9 100644
+>--- a/include/linux/pm_opp.h
+>+++ b/include/linux/pm_opp.h
+>@@ -102,6 +102,8 @@ struct dev_pm_opp *dev_pm_opp_find_freq_exact(struct device *dev,
+> 
+> struct dev_pm_opp *dev_pm_opp_find_freq_floor(struct device *dev,
+> 					      unsigned long *freq);
+>+struct dev_pm_opp *dev_pm_opp_find_max_freq_by_volt(struct device *dev,
+>+					      unsigned long u_volt);
 
-thank you for this cleanup!
+For the symmetricity, wouldn't it be better to name it
+dev_pm_opp_find_volt_ceiling(dev, u_volt); ?
 
-if you also want a Tested-by then please give me a few days (until I
-have time to boot with this patch applied on my Khadas VIM or VIM2)
-
-
-Regards
-
-Martin
+Cheers,
+MyungJoo
