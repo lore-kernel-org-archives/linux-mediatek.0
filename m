@@ -1,46 +1,41 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH] drm/mediatek: Fix an error code in
- mtk_hdmi_dt_parse_pdata()
-Date: Tue, 2 Apr 2019 09:43:03 +0800
-Message-ID: <1554169383.20131.1.camel@mtksdaap41>
-References: <20190328143130.GO32590@kadam>
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+Subject: pull request: linux-firmware: Update Mediatek MT8173 VPU firmware
+Date: Tue, 2 Apr 2019 10:05:00 +0800
+Message-ID: <1554170701-10210-1-git-send-email-yunfei.dong@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190328143130.GO32590@kadam>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Cc: Jie Qiu <jie.qiu@mediatek.com>, David Airlie <airlied@linux.ie>, kernel-janitors@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-firmware@kernel.org
+Cc: srv_heupstream@mediatek.com, yunfei.dong@mediatek.com, linux-mediatek@lists.infradead.org, tiffany.lin@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIERhbjoKCk9uIFRodSwgMjAxOS0wMy0yOCBhdCAxNzozMSArMDMwMCwgRGFuIENhcnBlbnRl
-ciB3cm90ZToKPiBXZSBkb24ndCB3YW50IHRvIG92ZXJ3cml0ZSAicmV0IiwgaXQgYWxyZWFkeSBo
-b2xkcyB0aGUgY29ycmVjdCBlcnJvcgo+IGNvZGUuICBUaGUgInJlZ21hcCIgdmFyaWFibGUgbWln
-aHQgYmUgYSB2YWxpZCBwb2ludGVyIGFzIHRoaXMgcG9pbnQuCj4gCj4gRml4ZXM6IDhmODNmMjY4
-OTFlMSAoImRybS9tZWRpYXRlazogQWRkIEhETUkgc3VwcG9ydCIpCj4gU2lnbmVkLW9mZi1ieTog
-RGFuIENhcnBlbnRlciA8ZGFuLmNhcnBlbnRlckBvcmFjbGUuY29tPgoKQXBwbGllZCB0byBtZWRp
-YXRlay1kcm0tZml4ZXMtNS4xIFsxXSwgdGhhbmtzLgoKWzFdCmh0dHBzOi8vZ2l0aHViLmNvbS9j
-a2h1LW1lZGlhdGVrL2xpbnV4LmdpdC10YWdzL2NvbW1pdHMvbWVkaWF0ZWstZHJtLWZpeGVzLTUu
-MQoKUmVnYXJkcywKQ0sKCj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRt
-aS5jIHwgMSAtCj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGRlbGV0aW9uKC0pCj4gCj4gZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jIGIvZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19oZG1pLmMKPiBpbmRleCA5MTVjYzg0NjIxYWUuLjU0M2EyNWU1NzY1ZSAx
-MDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYwo+ICsrKyBi
-L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCj4gQEAgLTE0ODAsNyArMTQ4MCw2
-IEBAIHN0YXRpYyBpbnQgbXRrX2hkbWlfZHRfcGFyc2VfcGRhdGEoc3RydWN0IG10a19oZG1pICpo
-ZG1pLAo+ICAJaWYgKElTX0VSUihyZWdtYXApKQo+ICAJCXJldCA9IFBUUl9FUlIocmVnbWFwKTsK
-PiAgCWlmIChyZXQpIHsKPiAtCQlyZXQgPSBQVFJfRVJSKHJlZ21hcCk7Cj4gIAkJZGV2X2Vycihk
-ZXYsCj4gIAkJCSJGYWlsZWQgdG8gZ2V0IHN5c3RlbSBjb25maWd1cmF0aW9uIHJlZ2lzdGVyczog
-JWRcbiIsCj4gIAkJCXJldCk7CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
-ZHJpLWRldmVs
+Hi linux-firmware maintainers,
+
+The following changes since commit 7bc246451318b3536d9bfd3c4e46d541a9831b33:
+
+  Merge branch 'for-upstream' of git://git.chelsio.net/pub/git/linux-firmware (2019-03-14 08:22:39 -0400)
+
+are available in the git repository at:
+
+  https://github.com/yunfei-dong/linux_fw_vpu_v1.1.2.git v1.1.2
+
+for you to fetch changes up to c1b685587a6ffd651e900eff4e945619487f91bc:
+
+  mediatek: update MT8173 VPU firmware to v1.1.2 (2019-04-01 16:02:08 +0800)
+
+ ----------------------------------------------------------------
+Yunfei Dong (1):
+    mediatek: update MT8173 VPU firmware to v1.1.2
+
+vpu_d.bin |  Bin 2977008 -> 2977008 bytes vpu_p.bin |  Bin 131168 -> 131180 bytes
+2 files changed, 0 insertions(+), 0 deletions(-)
