@@ -1,10 +1,12 @@
 From: wangyan wang <wangyan.wang@mediatek.com>
-Subject: [PATCH V8 0/5] make mt7623 clock of hdmi stable
-Date: Tue, 2 Apr 2019 17:36:00 +0800
-Message-ID: <20190402093605.82004-1-wangyan.wang@mediatek.com>
+Subject: [PATCH V8 3/5] drm/mediatek: using new factor for tvdpll in MT2701
+Date: Tue, 2 Apr 2019 17:36:03 +0800
+Message-ID: <20190402093605.82004-4-wangyan.wang@mediatek.com>
+References: <20190402093605.82004-1-wangyan.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190402093605.82004-1-wangyan.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, CK Hu <ck.hu@mediatek.com>
 Cc: wangyan wang <wangyan.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, chunhui dai <chunhui.dai@mediatek.com>, Colin Ian King <colin.king@canonical.com>, Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, srv_heupstream@mediatek.com
@@ -12,38 +14,35 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Wangyan Wang <wangyan.wang@mediatek.com>
 
-V8 adopt maintainer's suggestion.
-Here is the change list between V7 & V8
+This is the second step to make MT2701 HDMI stable.
+The factor depends on the divider of DPI in MT2701, therefore,
+we should fix this factor to the right and new one.
 
-1. Make title more clear in patch commit message.
+Signed-off-by: Wangyan Wang <wangyan.wang@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
-2. To make MT2701 HDMI stable, TVDPLL should not be adjusted and
-it's the parent clock of HDMI phy, so HDMI phy could not adjust parent
-rate. there are 3 steps to make MT2701 HDMI stable.
-    1). remove flag CLK_SET_RATE_PARENT for mt2701 hdmi phy to not propagate
-rate change to parent in "drm/mediatek: remove flag ...".
-    2). Using new factor for tvdpll in mt2701 to match divider of DPI in
-mt2701 in "drm/mediatek: using new...".
-    3). No change parent rate in round_rate() for mt2701 hdmi phy in
-"drm/mediatek: no change parent...".
-
-3. Recalculate the rate of this clock, by querying hardware to
-make implementation of recalc_rate() to match the definition.
-
-
-Wangyan Wang (5):
-  drm/mediatek: remove flag CLK_SET_RATE_PARENT for mt2701 hdmi phy
-  drm/mediatek: fix the rate and divder of hdmi phy for MT2701
-  drm/mediatek: using new factor for tvdpll in MT2701
-  drm/mediatek: no change parent rate in round_rate() for mt2701 hdmi phy
-  drm/mediatek: make implementation of recalc_rate() to match the definition
-
- drivers/gpu/drm/mediatek/mtk_dpi.c             |  8 ++---
- drivers/gpu/drm/mediatek/mtk_hdmi_phy.c        | 35 +++---------------
- drivers/gpu/drm/mediatek/mtk_hdmi_phy.h        |  5 +--
- drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c | 50 ++++++++++++++++++++++----
- drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c | 23 ++++++++++++
- 5 files changed, 76 insertions(+), 45 deletions(-)
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 69c6e42dad6b..4a2f4a650494 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -662,13 +662,11 @@ static unsigned int mt8173_calculate_factor(int clock)
+ static unsigned int mt2701_calculate_factor(int clock)
+ {
+ 	if (clock <= 64000)
+-		return 16;
+-	else if (clock <= 128000)
+-		return 8;
+-	else if (clock <= 256000)
+ 		return 4;
+-	else
++	else if (clock <= 128000)
+ 		return 2;
++	else
++		return 1;
+ }
+ 
+ static const struct mtk_dpi_conf mt8173_conf = {
 -- 
 2.14.1
