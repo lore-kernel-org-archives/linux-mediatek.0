@@ -1,165 +1,73 @@
-From: wangyan wang <wangyan.wang@mediatek.com>
-Subject: [PATCH V8 5/5] drm/mediatek: make implementation of recalc_rate() to match the definition
-Date: Tue, 2 Apr 2019 17:36:05 +0800
-Message-ID: <20190402093605.82004-6-wangyan.wang@mediatek.com>
-References: <20190402093605.82004-1-wangyan.wang@mediatek.com>
+From: Jungo Lin <jungo.lin@mediatek.com>
+Subject: [PATCH v1] media: media_device_enum_links32: fix missing reserved
+ field copy
+Date: Tue, 2 Apr 2019 18:04:04 +0800
+Message-ID: <1554199444-16827-1-git-send-email-jungo.lin@mediatek.com>
+References: <Jungo Lin <jungo.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190402093605.82004-1-wangyan.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, CK Hu <ck.hu@mediatek.com>
-Cc: wangyan wang <wangyan.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, chunhui dai <chunhui.dai@mediatek.com>, Colin Ian King <colin.king@canonical.com>, Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, srv_heupstream@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <Jungo Lin <jungo.lin@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: tfiga@chromium.org, hans.verkuil@cisco.com, laurent.pinchart+renesas@ideasonboard.com, matthias.bgg@gmail.com, mchehab@kernel.org
+Cc: Sean.Cheng@mediatek.com, Jungo Lin <jungo.lin@mediatek.corp-partner.google.com>, Rynn.Wu@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, ryan.yu@mediatek.com, Jerry-ch.Chen@mediatek.com, frankie.chiu@mediatek.com, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, christie.yu@mediatek.com, seraph.huang@mediatek.com, zwisler@chromium.org, linux-mediatek@lists.infradead.org, frederic.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Wangyan Wang <wangyan.wang@mediatek.com>
+From: Jungo Lin <jungo.lin@mediatek.corp-partner.google.com>
 
-Recalculate the rate of this clock, by querying hardware to
-make implementation of recalc_rate() to match the definition.
+In v4l2-compliance utility, test MEDIA_IOC_ENUM_ENTITIES
+will check whether reserved field of media_links_enum filled
+with zero. Reserved field is filled with zero in media_device_enum_links.
 
-Signed-off-by: Wangyan Wang <wangyan.wang@mediatek.com>
+However, for 32 bit program, the reserved field is missing
+copy from kernel space to user space in media_device_enum_links32
+function.
+
+This patch copies reserved field of media_links_enum from kernel space
+to user space.
+
+Signed-off-by: Jungo Lin <jungo.lin@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_hdmi_phy.c        |  8 ------
- drivers/gpu/drm/mediatek/mtk_hdmi_phy.h        |  2 --
- drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c | 39 +++++++++++++++++++++++---
- drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c |  8 ++++++
- 4 files changed, 43 insertions(+), 14 deletions(-)
+ drivers/media/media-device.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-index fe05aa762107..f753ee72971e 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-@@ -15,14 +15,6 @@ static const struct phy_ops mtk_hdmi_phy_dev_ops = {
- 	.owner = THIS_MODULE,
- };
- 
--unsigned long mtk_hdmi_pll_recalc_rate(struct clk_hw *hw,
--				       unsigned long parent_rate)
--{
--	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
--
--	return hdmi_phy->pll_rate;
--}
--
- void mtk_hdmi_phy_clear_bits(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
- 			     u32 bits)
+diff --git a/drivers/media/media-device.c b/drivers/media/media-device.c
+index b8ec886..f420829 100644
+--- a/drivers/media/media-device.c
++++ b/drivers/media/media-device.c
+@@ -502,6 +502,7 @@ static long media_device_enum_links32(struct media_device *mdev,
  {
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-index 86895be0d192..2d8b3182470d 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-@@ -49,8 +49,6 @@ void mtk_hdmi_phy_set_bits(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
- void mtk_hdmi_phy_mask(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
- 		       u32 val, u32 mask);
- struct mtk_hdmi_phy *to_mtk_hdmi_phy(struct clk_hw *hw);
--unsigned long mtk_hdmi_pll_recalc_rate(struct clk_hw *hw,
--				       unsigned long parent_rate);
+ 	struct media_links_enum links;
+ 	compat_uptr_t pads_ptr, links_ptr;
++	int ret;
  
- extern struct platform_driver mtk_hdmi_phy_driver;
- extern struct mtk_hdmi_phy_conf mtk_hdmi_phy_8173_conf;
-diff --git a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-index 5f8c2b044034..3bb72ae6a7b5 100644
---- a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-+++ b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-@@ -79,7 +79,6 @@ static int mtk_hdmi_pll_prepare(struct clk_hw *hw)
- 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SLDO_MASK);
- 	usleep_range(80, 100);
- 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_MBIAS_LPF_EN);
--	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_EN_TX_POSDIV);
- 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SER_MASK);
- 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_PRED_MASK);
- 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_DRV_MASK);
-@@ -94,7 +93,6 @@ static void mtk_hdmi_pll_unprepare(struct clk_hw *hw)
- 	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_DRV_MASK);
- 	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_PRED_MASK);
- 	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SER_MASK);
--	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_EN_TX_POSDIV);
- 	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_MBIAS_LPF_EN);
- 	usleep_range(80, 100);
- 	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SLDO_MASK);
-@@ -123,6 +121,7 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+ 	memset(&links, 0, sizeof(links));
  
- 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON6, RG_HTPLL_PREDIV_MASK);
- 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON6, RG_HTPLL_POSDIV_MASK);
-+	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_EN_TX_POSDIV);
- 	mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON6, (0x1 << RG_HTPLL_IC),
- 			  RG_HTPLL_IC_MASK);
- 	mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON6, (0x1 << RG_HTPLL_IR),
-@@ -160,6 +159,40 @@ static long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
- 	return rate;
+@@ -513,7 +514,15 @@ static long media_device_enum_links32(struct media_device *mdev,
+ 	links.pads = compat_ptr(pads_ptr);
+ 	links.links = compat_ptr(links_ptr);
+ 
+-	return media_device_enum_links(mdev, &links);
++	ret = media_device_enum_links(mdev, &links);
++	if (ret)
++		return ret;
++
++	if (copy_to_user(ulinks->reserved, &links.reserved,
++			 sizeof(links.reserved)))
++		return -EFAULT;
++
++	return 0;
  }
  
-+static unsigned long mtk_hdmi_pll_recalc_rate(struct clk_hw *hw,
-+				       unsigned long parent_rate)
-+{
-+	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
-+	unsigned long out_rate, val;
-+
-+	val = (readl(hdmi_phy->regs + HDMI_CON6)
-+			& RG_HTPLL_PREDIV_MASK) >> RG_HTPLL_PREDIV;
-+	switch (val) {
-+	case 0x00:
-+		out_rate = parent_rate;
-+		break;
-+	case 0x01:
-+		out_rate = parent_rate / 2;
-+		break;
-+	default:
-+		out_rate = parent_rate / 4;
-+		break;
-+	}
-+
-+	val = (readl(hdmi_phy->regs + HDMI_CON6)
-+			& RG_HTPLL_FBKDIV_MASK) >> RG_HTPLL_FBKDIV;
-+	out_rate *= (val + 1) * 2;
-+	val = (readl(hdmi_phy->regs + HDMI_CON2)
-+			& RG_HDMITX_TX_POSDIV_MASK);
-+
-+	out_rate >>= (val >> RG_HDMITX_TX_POSDIV);
-+
-+	if (readl(hdmi_phy->regs + HDMI_CON2) & RG_HDMITX_EN_TX_POSDIV)
-+		out_rate = out_rate / 5;
-+
-+	return out_rate;
-+}
-+
- static const struct clk_ops mtk_hdmi_phy_pll_ops = {
- 	.prepare = mtk_hdmi_pll_prepare,
- 	.unprepare = mtk_hdmi_pll_unprepare,
-@@ -180,7 +213,6 @@ static void mtk_hdmi_phy_enable_tmds(struct mtk_hdmi_phy *hdmi_phy)
- 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SLDO_MASK);
- 	usleep_range(80, 100);
- 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_MBIAS_LPF_EN);
--	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_EN_TX_POSDIV);
- 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SER_MASK);
- 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_PRED_MASK);
- 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_DRV_MASK);
-@@ -192,7 +224,6 @@ static void mtk_hdmi_phy_disable_tmds(struct mtk_hdmi_phy *hdmi_phy)
- 	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_DRV_MASK);
- 	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_PRED_MASK);
- 	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SER_MASK);
--	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_EN_TX_POSDIV);
- 	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON2, RG_HDMITX_MBIAS_LPF_EN);
- 	usleep_range(80, 100);
- 	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_EN_SLDO_MASK);
-diff --git a/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
-index 472d2fda0a03..3a339f516613 100644
---- a/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
-+++ b/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
-@@ -299,6 +299,14 @@ static long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
- 	return rate;
- }
- 
-+static unsigned long mtk_hdmi_pll_recalc_rate(struct clk_hw *hw,
-+				       unsigned long parent_rate)
-+{
-+	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
-+
-+	return hdmi_phy->pll_rate;
-+}
-+
- static const struct clk_ops mtk_hdmi_phy_pll_ops = {
- 	.prepare = mtk_hdmi_pll_prepare,
- 	.unprepare = mtk_hdmi_pll_unprepare,
+ #define MEDIA_IOC_ENUM_LINKS32		_IOWR('|', 0x02, struct media_links_enum32)
 -- 
-2.14.1
+1.9.1
