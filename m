@@ -1,48 +1,47 @@
-From: Wen Yang <wen.yang99@zte.com.cn>
-Subject: [PATCH 1/7] drm/mediatek: fix possible object reference leak
-Date: Thu, 4 Apr 2019 00:04:09 +0800
-Message-ID: <1554307455-40361-2-git-send-email-wen.yang99@zte.com.cn>
-References: <1554307455-40361-1-git-send-email-wen.yang99@zte.com.cn>
+From: Fabien Parent <fparent@baylibre.com>
+Subject: [PATCH v2] mmc: mtk-sd: check for valid optional memory resource
+Date: Wed,  3 Apr 2019 21:30:50 +0200
+Message-ID: <20190403193050.22180-1-fparent@baylibre.com>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1554307455-40361-1-git-send-email-wen.yang99@zte.com.cn>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: wang.yi59@zte.com.cn, Wen Yang <wen.yang99@zte.com.cn>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: ulf.hansson@linaro.org, matthias.bgg@gmail.com, yingjoe.chen@mediatek.com
+Cc: chaotian.jing@mediatek.com, ryder.lee@mediatek.com, jjian.zhou@mediatek.com, linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Fabien Parent <fparent@baylibre.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-The call to of_parse_phandle returns a node pointer with refcount
-incremented thus it must be explicitly decremented after the last
-usage.
+'top_base' memory region is optional. Check that the resource is valid
+before using it. This avoid getting a "invalid resource" error message
+printed by the kernel.
 
-Detected by coccinelle with the following warnings:
-drivers/gpu/drm/mediatek/mtk_hdmi.c:1521:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 1509, but without a corresponding object release within this function.
-drivers/gpu/drm/mediatek/mtk_hdmi.c:1524:1-7: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 1509, but without a corresponding object release within this function.
-
-Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
-Cc: CK Hu <ck.hu@mediatek.com>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: David Airlie <airlied@linux.ie>
-Cc: Daniel Vetter <daniel@ffwll.ch>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: dri-devel@lists.freedesktop.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
- drivers/gpu/drm/mediatek/mtk_hdmi.c | 1 +
- 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index 915cc84..ed10f4d 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -1516,6 +1516,7 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
- 	of_node_put(remote);
+V2:
+	Fix invalid condition: check against 'res' variable instead of 'ret'.
+
+---
+ drivers/mmc/host/mtk-sd.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index 833ef0590af8..61bf8704491c 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -2123,9 +2123,11 @@ static int msdc_drv_probe(struct platform_device *pdev)
+ 	}
  
- 	hdmi->ddc_adpt = of_find_i2c_adapter_by_node(i2c_np);
-+	of_node_put(i2c_np);
- 	if (!hdmi->ddc_adpt) {
- 		dev_err(dev, "Failed to get ddc i2c adapter by node\n");
- 		return -EINVAL;
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 1);
+-	host->top_base = devm_ioremap_resource(&pdev->dev, res);
+-	if (IS_ERR(host->top_base))
+-		host->top_base = NULL;
++	if (res) {
++		host->top_base = devm_ioremap_resource(&pdev->dev, res);
++		if (IS_ERR(host->top_base))
++			host->top_base = NULL;
++	}
+ 
+ 	ret = mmc_regulator_get_supply(mmc);
+ 	if (ret)
 -- 
-2.9.5
+2.20.1
