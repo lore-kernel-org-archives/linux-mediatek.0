@@ -1,94 +1,35 @@
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 5.0 060/246] mt76: fix a leaked reference by adding a missing of_node_put
-Date: Thu,  4 Apr 2019 10:46:00 +0200
-Message-ID: <20190404084621.274424274@linuxfoundation.org>
-References: <20190404084619.236418459@linuxfoundation.org>
+From: =?UTF-8?q?Antti=20Ker=C3=A4nen?= <detegr@gmail.com>
+Subject: [PATCH] staging: mt7621-pci-phy: prevent use of uninitialized variable
+Date: Thu,  4 Apr 2019 15:44:17 +0300
+Message-ID: <20190404124414.22846-1-detegr@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190404084619.236418459@linuxfoundation.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, stable@vger.kernel.org, Wen Yang <wen.yang99@zte.com.cn>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Kalle Valo <kvalo@codeaurora.org>, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Sasha Levin <sashal@kernel.org>
+To: matthias.bgg@gmail.com
+Cc: gregkh@linuxfoundation.org, sergio.paracuellos@gmail.com, benniciemanuel78@gmail.com, neil@brown.name, devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, =?UTF-8?q?Antti=20Ker=C3=A4nen?= <detegr@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-5.0-stable review patch.  If anyone has any objections, please let me know.
+Do not use uninitialized variable 'port' when printing an error message
 
-------------------
-
-[ Upstream commit 34e022d8b780a03902d82fb3997ba7c7b1f40c81 ]
-
-The call to of_find_node_by_phandle returns a node pointer with refcount
-incremented thus it must be explicitly decremented after the last
-usage.
-
-Detected by coccinelle with the following warnings:
-./drivers/net/wireless/mediatek/mt76/eeprom.c:58:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 48, but without a corresponding object release within this function.
-./drivers/net/wireless/mediatek/mt76/eeprom.c:61:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 48, but without a corresponding object release within this function.
-./drivers/net/wireless/mediatek/mt76/eeprom.c:67:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 48, but without a corresponding object release within this function.
-./drivers/net/wireless/mediatek/mt76/eeprom.c:70:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 48, but without a corresponding object release within this function.
-./drivers/net/wireless/mediatek/mt76/eeprom.c:72:1-7: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 48, but without a corresponding object release within this function.
-
-Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
-Cc: Felix Fietkau <nbd@nbd.name>
-Cc: Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>
-Cc: Kalle Valo <kvalo@codeaurora.org>
-Cc: "David S. Miller" <davem@davemloft.net>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-wireless@vger.kernel.org
-Cc: netdev@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
-Signed-off-by: Kalle Valo <kvalo@codeaurora.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Signed-off-by: Antti Keränen <detegr@gmail.com>
 ---
- drivers/net/wireless/mediatek/mt76/eeprom.c | 24 ++++++++++++++-------
- 1 file changed, 16 insertions(+), 8 deletions(-)
+ drivers/staging/mt7621-pci-phy/pci-mt7621-phy.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
-index 530e5593765c..a1529920d877 100644
---- a/drivers/net/wireless/mediatek/mt76/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
-@@ -54,22 +54,30 @@ mt76_get_of_eeprom(struct mt76_dev *dev, int len)
- 		part = np->name;
+diff --git a/drivers/staging/mt7621-pci-phy/pci-mt7621-phy.c b/drivers/staging/mt7621-pci-phy/pci-mt7621-phy.c
+index 118302c122ee..aa3ae7777632 100644
+--- a/drivers/staging/mt7621-pci-phy/pci-mt7621-phy.c
++++ b/drivers/staging/mt7621-pci-phy/pci-mt7621-phy.c
+@@ -331,7 +331,7 @@ static int mt7621_pci_phy_probe(struct platform_device *pdev)
  
- 	mtd = get_mtd_device_nm(part);
--	if (IS_ERR(mtd))
--		return PTR_ERR(mtd);
-+	if (IS_ERR(mtd)) {
-+		ret =  PTR_ERR(mtd);
-+		goto out_put_node;
-+	}
+ 	ret = of_address_to_resource(np, 0, &res);
+ 	if (ret) {
+-		dev_err(dev, "failed to get address resource(id-%d)\n", port);
++		dev_err(dev, "failed to get address resource\n");
+ 		return ret;
+ 	}
  
--	if (size <= sizeof(*list))
--		return -EINVAL;
-+	if (size <= sizeof(*list)) {
-+		ret = -EINVAL;
-+		goto out_put_node;
-+	}
- 
- 	offset = be32_to_cpup(list);
- 	ret = mtd_read(mtd, offset, len, &retlen, dev->eeprom.data);
- 	put_mtd_device(mtd);
- 	if (ret)
--		return ret;
-+		goto out_put_node;
- 
--	if (retlen < len)
--		return -EINVAL;
-+	if (retlen < len) {
-+		ret = -EINVAL;
-+		goto out_put_node;
-+	}
- 
--	return 0;
-+out_put_node:
-+	of_node_put(np);
-+	return ret;
- #else
- 	return -ENOENT;
- #endif
 -- 
-2.19.1
+2.21.0
