@@ -1,38 +1,48 @@
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-Subject: Re: [PATCH 0/2] scsi: dt-bindings: ufs: Remove
- "<name>-fixed-regulator" property and add VCC capability on MediaTek UFS
- driver
-Date: Wed, 03 Apr 2019 23:26:40 -0400
-Message-ID: <yq1imvutpqn.fsf@oracle.com>
-References: <1553873568-9177-1-git-send-email-stanley.chu@mediatek.com>
+From: Peter Chen <peter.chen@nxp.com>
+Subject: RE: [PATCH 5/5] usb: chipidea: msm: get optional clock by
+ devm_clk_get_optional()
+Date: Thu, 4 Apr 2019 07:28:57 +0000
+Message-ID: <VI1PR04MB53271D981843769FEFDD60E78B500@VI1PR04MB5327.eurprd04.prod.outlook.com>
+References: <2ec86ffd7de45dabaa7257019a79f1e80751934c.1553937592.git.chunfeng.yun@mediatek.com>
+ <2f4b8d77c6ec99ef6cc8e71155d820e080ad9af5.1553937592.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1553873568-9177-1-git-send-email-stanley.chu@mediatek.com>
- (Stanley Chu's message of "Fri, 29 Mar 2019 23:32:46 +0800")
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Stanley Chu <stanley.chu@mediatek.com>
-Cc: devicetree@vger.kernel.org, linux-scsi@vger.kernel.org, martin.petersen@oracle.com, robh@kernel.org, vivek.gautam@codeaurora.org, subhashj@codeaurora.org, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, evgreen@chromium.org, avri.altman@wdc.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, peter.wang@mediatek.com, alim.akhtar@samsung.com, matthias.bgg@gmail.com, sayalil@codeaurora.org, pedrom.sousa@synopsys.com, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <2f4b8d77c6ec99ef6cc8e71155d820e080ad9af5.1553937592.git.chunfeng.yun@mediatek.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+=20
+>  drivers/usb/chipidea/ci_hdrc_msm.c | 9 +++------
+>  1 file changed, 3 insertions(+), 6 deletions(-)
+>=20
+> diff --git a/drivers/usb/chipidea/ci_hdrc_msm.c
+> b/drivers/usb/chipidea/ci_hdrc_msm.c
+> index 880009987460..b8b3caad889c 100644
+> --- a/drivers/usb/chipidea/ci_hdrc_msm.c
+> +++ b/drivers/usb/chipidea/ci_hdrc_msm.c
+> @@ -205,12 +205,9 @@ static int ci_hdrc_msm_probe(struct platform_device
+> *pdev)
+>  	if (IS_ERR(clk))
+>  		return PTR_ERR(clk);
+>=20
+> -	ci->fs_clk =3D clk =3D devm_clk_get(&pdev->dev, "fs");
+> -	if (IS_ERR(clk)) {
+> -		if (PTR_ERR(clk) =3D=3D -EPROBE_DEFER)
+> -			return -EPROBE_DEFER;
+> -		ci->fs_clk =3D NULL;
+> -	}
+> +	ci->fs_clk =3D clk =3D devm_clk_get_optional(&pdev->dev, "fs");
+> +	if (IS_ERR(clk))
+> +		return PTR_ERR(clk);
+>=20
+>  	res =3D platform_get_resource(pdev, IORESOURCE_MEM, 1);
+>  	ci->base =3D devm_ioremap_resource(&pdev->dev, res);
+> --
+> 2.20.1
 
-Stanley,
-
-> Now we can remove custom device tree property "<name>-fixed-regulator" for
-> UFS because,
-
-> Besides, add VCC supply capability on MediaTek UFS driver.
-
-Applied to 5.2/scsi-queue, thanks!
-
--- 
-Martin K. Petersen	Oracle Linux Engineering
+Acked-by: Peter Chen <peter.chen@nxp.com>
