@@ -1,45 +1,45 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH v4 4/4] pinctrl: add drive for I2C related pins on MT8183
-Date: Fri, 5 Apr 2019 10:45:24 +0700
-Message-ID: <CACRpkdb8T71y9TZFXhefArKhbtPPe2b4syGWx6LwFaFkANEk4g@mail.gmail.com>
-References: <20190401033535.16910-1-zhiyong.tao@mediatek.com> <20190401033535.16910-5-zhiyong.tao@mediatek.com>
+From: Markus Elfring <Markus.Elfring@web.de>
+Subject: Re: [PATCH 3/5] mt76: fix a leaked reference by adding a missing
+ of_node_put
+Date: Fri, 5 Apr 2019 15:15:49 +0200
+Message-ID: <799adbb0-23a6-bf20-f22d-4af68e9d0012@web.de>
+References: <1550819742-32155-3-git-send-email-wen.yang99@zte.com.cn>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190401033535.16910-5-zhiyong.tao@mediatek.com>
+In-Reply-To: <1550819742-32155-3-git-send-email-wen.yang99@zte.com.cn>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Zhiyong Tao <zhiyong.tao@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>, srv_heupstream@mediatek.com, hui.liu@mediatek.com, huang eddie <eddie.huang@mediatek.com>, chuanjia.liu@mediatek.com, Biao Huang <biao.huang@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Erin Lo <erin.lo@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>
+To: Wen Yang <wen.yang99@zte.com.cn>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org, netdev@vger.kernel.org
+Cc: UNGLinuxDriver@microchip.com, Alexandre Belloni <alexandre.belloni@bootlin.com>, Andrew Lunn <andrew@lunn.ch>, Anirudha Sarangi <anirudh@xilinx.com>, "David S. Miller" <davem@davemloft.net>, Florian Fainelli <f.fainelli@gmail.com>, Kalle Valo <kvalo@codeaurora.org>, Linus Walleij <linus.walleij@linaro.org>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Michal Simek <michal.simek@xilinx.com>, Felix Fietkau <nbd@nbd.name>, vivien.didelot@gmail.com, John Linn <John.Linn@xilinx.com>, Yi Wang <wang.yi59@zte.com.cn>, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Apr 1, 2019 at 10:35 AM Zhiyong Tao <zhiyong.tao@mediatek.com> wrote:
-
-> This patch provides the advanced drive for I2C used pins on MT8183.
-> The detail strength specification description of the I2C pin:
-> When E1=0/E0=0, the strength is 0.125mA.
-> When E1=0/E0=1, the strength is 0.25mA.
-> When E1=1/E0=0, the strength is 0.5mA.
-> When E1=1/E0=1, the strength is 1mA.
-> For I2C pins, there are existing generic driving setup and the above
-> specific driving setup. I2C pins can only support 2/4/6/8/10/12/14/16mA
-> driving adjustment in generic driving setup. But in specific driving
-> setup, they can support 0.125/0.25/0.5/1mA adjustment.
-> If we enable specific driving setup for I2C pins,
-> the existing generic driving setup will be disabled.
-> For some special features, we need the I2C pins specific driving setup.
-> The specific driving setup is controlled by E1E0EN.
-> So we need add extra vendor driving preperty instead of the generic
-> driving property. We can add "mediatek,drive-strength-adv = <XXX>;"
-> to describe the specific driving setup property.
-> "XXX" means the value of E1E0EN. So the valid arguments of
-> "mediatek,drive-strength-adv" are from 0 to 7.
+> @@ -54,22 +54,30 @@  mt76_get_of_eeprom(struct mt76_dev *dev, int len)
+>  		part =3D np->name;
 >
-> Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
+>  	mtd =3D get_mtd_device_nm(part);
+=E2=80=A6
+> +	if (retlen < len) {
+> +		ret =3D -EINVAL;
+> +		goto out_put_node;
 
-Patch applied tentatively to the pin control tree.
+I find a jump to an immediately following source code place unnecessary.
+Would you like to delete it?
 
-If other MTK maintainers have opinions we might need to patch on
-top or revert it, but it looks OK to me so I put it in.
 
-Yours,
-Linus Walleij
+> +	}
+>
+> -	return 0;
+> +out_put_node:
+> +	of_node_put(np);
+> +	return ret;
+>  #else
+
+Can another bit of fine-tuning matter here?
+https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/tree/d=
+rivers/net/wireless/mediatek/mt76/eeprom.c?id=3D34e022d8b780a03902d82fb399=
+7ba7c7b1f40c81#n73
+
+Regards,
+Markus
