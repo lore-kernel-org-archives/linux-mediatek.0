@@ -1,58 +1,49 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH RESEND v6 0/6] add i2c support for mt8183
-Date: Fri, 5 Apr 2019 01:09:16 +0200
-Message-ID: <20190404230916.GA964@kunai>
-References: <1554208560-14817-1-git-send-email-qii.wang@mediatek.com>
+From: Chuanhong Guo <gch981213@gmail.com>
+Subject: Re: [PATCH] MT7621-SPI: spi-mt7621: Fix alignment and style problems
+ Fixed Coding function and style issues
+Date: Fri, 5 Apr 2019 11:05:26 +0800
+Message-ID: <CAJsYDVKHmW7TtvuUb8mhZ0X1Or15EEA39eNtQqVf9F8vqVoEig@mail.gmail.com>
+References: <20190404185235.5257-1-nilhase25@gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="J2SCkAp4GZ/dPZZf"
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1554208560-14817-1-git-send-email-qii.wang@mediatek.com>
+In-Reply-To: <20190404185235.5257-1-nilhase25@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Qii Wang <qii.wang@mediatek.com>
-Cc: linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, leilk.liu@mediatek.com, xinping.qian@mediatek.com, liguo.zhang@mediatek.com, robh@kernel.org
+To: Nilesh Hase <nilhase25@gmail.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, NeilBrown <neil@brown.name>, Stefan Roese <sr@denx.de>, sankalpnegi2310@gmail.com, devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, open list <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi!
 
---J2SCkAp4GZ/dPZZf
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Fri, Apr 5, 2019 at 2:53 AM Nilesh Hase <nilhase25@gmail.com> wrote:
+>
+> Fix checkpatch issues: "CHECK: Alignment should match open parenthesis"
+>
+> Signed-off-by: Nilesh Hase <nilhase25@gmail.com>
+> ---
+>  drivers/staging/mt7621-spi/spi-mt7621.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/mt7621-spi/spi-mt7621.c b/drivers/staging/mt7621-spi/spi-mt7621.c
+> index b509f9fe3346..6fa9876f5a92 100644
+> --- a/drivers/staging/mt7621-spi/spi-mt7621.c
+> +++ b/drivers/staging/mt7621-spi/spi-mt7621.c
+FYI This file doesn't exist now. The driver has been moved into
+drivers/spi by this commit:
+cbd66c626e16 spi: mt7621: Move SPI driver out of staging
 
-On Tue, Apr 02, 2019 at 08:35:54PM +0800, Qii Wang wrote:
-> This series are based on 5.1-rc1 and the patch
-> https://patchwork.kernel.org/patch/10856987/(for dts)
-> We provide six patches to support mt8183 IC.
->=20
-> Main changes compared to v5:
-> --add i2c controller nodes in mt8183.dtsi
-> --add a note that old i2c controllers also have I2C_ARB_LOST bit
-> --add a flag(ltiming_adjust) to avoid unnecessary settings
-> --add Reviewed-by from Rob Herring, Nicolas and Matthias
-
-Well, it seems you missed Rob's Rev-by. No need to resend, I can add it.
-I just wonder if Matthias wants to have another look at this?
-
-
---J2SCkAp4GZ/dPZZf
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAlymjpgACgkQFA3kzBSg
-KbY0tA/+MJxfAKLYnkDVA9r9dddlyeI37eVD1M5GLY8LjOg1UGxOmbTv2jFvfwqO
-gFuEQiFmtsIPRTPiA/1xLkeM8QxrRPOKacsBcrXLhrobjDiTG8xm/7cSrp1RdDMJ
-8yjLIr/4YihJ7HLGEGygrRqSfFnY5VuTfoXyCjAwWWvgkkx+4h8uN/eKesGWTHZO
-1P2jTTTldpDZoYY6QTZ++x00oSJ+9VxJCs7a1ZtVEHBKDQAUtE1OTnbZy6TOWjm9
-FifVc+YCHcmQo8eEKsHudqOqFg9bUeCAr4eM01rP7EU5eJrF2nsl8JYgmqDhiDvd
-6K1rlRdtmF34oi5WnlWt6q0GtdnNUfaZgXRw3ct7U+USc9O47zyjQpVj2cLYTECv
-/49D37usj+bx7VajndEyaSMAXxInwFk5Rn0BJYQIOkvvdj/MMDI2z3bHZkHJXUjl
-3JpR4GYR/3j01Smoa+iL/exOjWO1QCf8ew/P49LE1K5+AoXxWQmk/jO175Z3sC7k
-DqXKn2oKohT+ZwxzO4RdjQxtcItlMx38qswxzUlLiVwM8qZIx5SkSD//VFDc+FO5
-RE1hSAVGQ9kWNdX/HQ9HtEryMsMzX2iZNBUh77BHJ3lJIi3L8qy9yQ93I/wehaym
-jIxklKE1d/6823idNwK2rFOLbRRjjE/r6JsOmPANHbYZBFNyPO0=
-=jqBi
------END PGP SIGNATURE-----
-
---J2SCkAp4GZ/dPZZf--
+It's in linux-next-20190329 and later tags.
+> @@ -303,7 +303,7 @@ static int mt7621_spi_setup(struct spi_device *spi)
+>         struct mt7621_spi *rs = spidev_to_mt7621_spi(spi);
+>
+>         if ((spi->max_speed_hz == 0) ||
+> -               (spi->max_speed_hz > (rs->sys_freq / 2)))
+> +           (spi->max_speed_hz > (rs->sys_freq / 2)))
+>                 spi->max_speed_hz = (rs->sys_freq / 2);
+>
+>         if (spi->max_speed_hz < (rs->sys_freq / 4097)) {
+> --
+> 2.20.1
+>
+Regards,
+ Chuanhong Guo
