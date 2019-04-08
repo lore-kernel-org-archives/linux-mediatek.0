@@ -1,7 +1,7 @@
 From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: [PATCH 07/14] [media] mtk-mipicsi: enable/disable ana clk
-Date: Mon, 8 Apr 2019 19:54:58 +0800
-Message-ID: <1554724505-19882-8-git-send-email-stu.hsieh@mediatek.com>
+Subject: [PATCH 10/14] [media] mtk-mipicsi: set the output address in HW reg
+Date: Mon, 8 Apr 2019 19:55:01 +0800
+Message-ID: <1554724505-19882-11-git-send-email-stu.hsieh@mediatek.com>
 References: <1554724505-19882-1-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -12,7 +12,7 @@ To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@g
 Cc: Stu Hsieh <stu.hsieh@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch enable/disable ana clk when power on/off
+This patch set the output address in HW reg when buffer queue and ISR.
 
 Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
 ---
@@ -20,68 +20,88 @@ Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
  1 file changed, 39 insertions(+)
 
 diff --git a/drivers/media/platform/mtk-mipicsi/mtk_mipicsi.c b/drivers/media/platform/mtk-mipicsi/mtk_mipicsi.c
-index c2f75d9b64b8..99991f698edf 100644
+index c8ce561dcc58..2098e3e30de6 100644
 --- a/drivers/media/platform/mtk-mipicsi/mtk_mipicsi.c
 +++ b/drivers/media/platform/mtk-mipicsi/mtk_mipicsi.c
-@@ -164,6 +164,41 @@ struct mtk_mipicsi_dev {
- 		V4L2_MBUS_PCLK_SAMPLE_FALLING |	\
- 		V4L2_MBUS_DATA_ACTIVE_HIGH)
+@@ -110,6 +110,7 @@
+ #define CAMSV_TG_SEN_GRAB_LIN				0x50C
+ #define CAMSV_TG_PATH_CFG				0x510
  
-+static void mtk_mipicsi_ana_clk_enable(void __iomem *base, bool enable)
++#define IMGO_BASE_ADDR					0x220
+ #define IMGO_XSIZE					0x230
+ #define IMGO_YSIZE					0x234
+ #define IMGO_STRIDE					0x238
+@@ -522,12 +523,22 @@ static int mtk_mipicsi_vb2_prepare(struct vb2_buffer *vb)
+ 	return 0;
+ }
+ 
++static void mtk_mipicsi_fill_buffer(void __iomem *base, dma_addr_t dma_handle)
 +{
-+	if (enable) {
-+		writel(1UL | readl(base + MIPI_RX_ANA00_CSI),
-+			base + MIPI_RX_ANA00_CSI);
-+		writel(1UL | readl(base + MIPI_RX_ANA04_CSI),
-+			base + MIPI_RX_ANA04_CSI);
-+		writel(1UL | readl(base + MIPI_RX_ANA08_CSI),
-+			base + MIPI_RX_ANA08_CSI);
-+		writel(1UL | readl(base + MIPI_RX_ANA0C_CSI),
-+			base + MIPI_RX_ANA0C_CSI);
-+		writel(1UL | readl(base + MIPI_RX_ANA10_CSI),
-+			base + MIPI_RX_ANA10_CSI);
-+		writel(1UL | readl(base + MIPI_RX_ANA20_CSI),
-+			base + MIPI_RX_ANA20_CSI);
-+		writel(1UL | readl(base + MIPI_RX_ANA24_CSI),
-+			base + MIPI_RX_ANA24_CSI);
-+	} else {
-+		writel(~1UL & readl(base + MIPI_RX_ANA00_CSI),
-+			base + MIPI_RX_ANA00_CSI);
-+		writel(~1UL & readl(base + MIPI_RX_ANA04_CSI),
-+			base + MIPI_RX_ANA04_CSI);
-+		writel(~1UL & readl(base + MIPI_RX_ANA08_CSI),
-+			base + MIPI_RX_ANA08_CSI);
-+		writel(~1UL & readl(base + MIPI_RX_ANA0C_CSI),
-+			base + MIPI_RX_ANA0C_CSI);
-+		writel(~1UL & readl(base + MIPI_RX_ANA10_CSI),
-+			base + MIPI_RX_ANA10_CSI);
-+		writel(~1UL & readl(base + MIPI_RX_ANA20_CSI),
-+			base + MIPI_RX_ANA20_CSI);
-+		writel(~1UL & readl(base + MIPI_RX_ANA24_CSI),
-+			base + MIPI_RX_ANA24_CSI);
-+	}
++	writel(dma_handle, base + IMGO_BASE_ADDR);
 +}
 +
- static int get_subdev_register(const struct soc_camera_device *icd,
- 	struct v4l2_dbg_register *reg)
+ static void mtk_mipicsi_vb2_queue(struct vb2_buffer *vb)
  {
-@@ -802,6 +837,8 @@ static int mtk_mipicsi_pm_suspend(struct device *dev)
- 	for (i = 0; i < mipicsi->clk_num; ++i)
- 		clk_disable_unprepare(mipicsi->clk[i]);
+ 	struct soc_camera_device *icd = soc_camera_from_vb2q(vb->vb2_queue);
+ 	struct soc_camera_host *ici = to_soc_camera_host(icd->parent);
+ 	struct mtk_mipicsi_dev *mipicsi = ici->priv;
++	unsigned int i = 0;
++	u64 offset = 0;
++	u8 link_index = 0U;
+ 	char *va = NULL;
++	u32 bytesperline = mipicsi->bytesperline;
++	u32 height = mipicsi->height;
  
-+	mtk_mipicsi_ana_clk_enable(mipicsi->ana, false);
+ 	spin_lock(&mipicsi->queue_lock);
+ 	list_add_tail(&(mipicsi->cam_buf[vb->index].queue),
+@@ -536,6 +547,20 @@ static void mtk_mipicsi_vb2_queue(struct vb2_buffer *vb)
+ 
+ 	va = vb2_plane_vaddr(vb, 0);
+ 
++	for (i = 0U; (mipicsi->enqueue_cnt == 0UL) && (i < MTK_CAMDMA_MAX_NUM);
++		++i)
++		if (((mipicsi->link_reg_val >> i) & 0x01U) == 0x01U) {
++			offset = (u64)link_index * bytesperline * height;
 +
- 	if (mipicsi->larb_pdev != NULL)
- 		mtk_smi_larb_put(mipicsi->larb_pdev);
++			spin_lock(&mipicsi->lock);
++			mtk_mipicsi_fill_buffer(mipicsi->camsv[i],
++				mipicsi->cam_buf[vb->index].vb_dma_addr_phy
++					+ offset);
++			spin_unlock(&mipicsi->lock);
++
++			link_index++;
++		}
++
+ 	++(mipicsi->enqueue_cnt);
+ }
  
-@@ -839,6 +876,8 @@ static int mtk_mipicsi_pm_resume(struct device *dev)
- 			return ret;
+@@ -967,6 +992,10 @@ static void mtk_mipicsi_irq_buf_process(struct mtk_mipicsi_dev *mipicsi)
+ 	struct mtk_mipicsi_buf *tmp = NULL;
+ 	unsigned int index = 0U;
+ 	unsigned int next = 0U;
++	u64 offset = 0ULL;
++	u8 link_index = 0U;
++	void __iomem *base = NULL;
++	dma_addr_t pa;
+ 
+ 	for (i = 0U; i < MTK_CAMDMA_MAX_NUM; ++i)
+ 		mipicsi->irq_status[i] = false;
+@@ -989,6 +1018,16 @@ static void mtk_mipicsi_irq_buf_process(struct mtk_mipicsi_dev *mipicsi)
+ 		++i;
  	}
  
-+	mtk_mipicsi_ana_clk_enable(mipicsi->ana, true);
-+
- 	/* enable digtal clock */
- 	for (i = 0; i < mipicsi->clk_num; ++i)
- 		(void)clk_prepare_enable(mipicsi->clk[i]);
++	for (i = 0U; i < MTK_CAMDMA_MAX_NUM; ++i) {
++		if (((mipicsi->link_reg_val >> i) & 0x01U) == 0x01U) {
++			offset = (u64)link_index *
++				mipicsi->bytesperline * mipicsi->height;
++			base = mipicsi->camsv[i];
++			pa = mipicsi->cam_buf[next].vb_dma_addr_phy;
++			mtk_mipicsi_fill_buffer(base, pa + offset);
++			link_index++;
++		}
++	}
+ 	/*
+ 	 * fb_list has one more buffer. Free the first buffer to user
+ 	 * and fill the second buffer to HW.
 -- 
 2.18.0
