@@ -1,123 +1,76 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v2 08/25] drm/mediatek: add ddp component CCORR
-Date: Thu, 11 Apr 2019 13:57:26 +0800
-Message-ID: <1554962246.4768.2.camel@mtksdaap41>
-References: <1553667561-25447-1-git-send-email-yongqiang.niu@mediatek.com>
-         <1553667561-25447-9-git-send-email-yongqiang.niu@mediatek.com>
+From: <wen.yang99-Th6q7B73Y6EnDS1+zs4M5A@public.gmane.org>
+Subject: =?UTF-8?B?UmU6IFtQQVRDSCAzLzVdIG10NzY6IGZpeCBhIGxlYWtlZCByZWZlcmVuY2UgYnkgYWRkaW5nIGEgbWlzc2luZ29mX25vZGVfcHV0?=
+Date: Mon, 8 Apr 2019 14:55:56 +0800 (CST)
+Message-ID: <201904081455561126540@zte.com.cn>
+References: <799adbb0-23a6-bf20-f22d-4af68e9d0012@web.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1553667561-25447-9-git-send-email-yongqiang.niu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: yongqiang.niu@mediatek.com
-Cc: p.zabel@pengutronix.de, robh+dt@kernel.org, matthias.bgg@gmail.com, airlied@linux.ie, mark.rutland@arm.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Bibby.Hsieh@mediatek.com, yt.shen@mediatek.com
+Content-Type: multipart/mixed;
+	boundary="=====_001_next====="
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <799adbb0-23a6-bf20-f22d-4af68e9d0012-S0/GAf8tV78@public.gmane.org>
+References: 1550819742-32155-3-git-send-email-wen.yang99-Th6q7B73Y6EnDS1+zs4M5A@public.gmane.org,
+ 799adbb0-23a6-bf20-f22d-4af68e9d0012-S0/GAf8tV78@public.gmane.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Markus.Elfring-S0/GAf8tV78@public.gmane.org
+Cc: wang.yi59-Th6q7B73Y6EnDS1+zs4M5A@public.gmane.org, andrew-g2DYL2Zd6BY@public.gmane.org, alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org, UNGLinuxDriver-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, anirudh-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org, lorenzo.bianconi83-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, vivien.didelot-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, John.Linn-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, nbd-Vt+b4OUoWG0@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Yongqiang:
 
-On Wed, 2019-03-27 at 14:19 +0800, yongqiang.niu@mediatek.com wrote:
-> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> 
-> This patch add ddp component CCORR
 
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
+--=====_001_next=====
+Content-Type: multipart/alternative;
+	boundary="=====_003_next====="
 
-> 
-> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 32 +++++++++++++++++++++++++++++
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  2 ++
->  2 files changed, 34 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> index 54ca794..310c0b9 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> @@ -41,6 +41,12 @@
->  #define DISP_AAL_EN				0x0000
->  #define DISP_AAL_SIZE				0x0030
->  
-> +#define DISP_CCORR_EN				0x0000
-> +#define CCORR_EN				BIT(0)
-> +#define DISP_CCORR_CFG				0x0020
-> +#define CCORR_RELAY_MODE			BIT(0)
-> +#define DISP_CCORR_SIZE				0x0030
-> +
->  #define DISP_GAMMA_EN				0x0000
->  #define DISP_GAMMA_CFG				0x0020
->  #define DISP_GAMMA_SIZE				0x0030
-> @@ -131,6 +137,24 @@ static void mtk_aal_stop(struct mtk_ddp_comp *comp)
->  	writel_relaxed(0x0, comp->regs + DISP_AAL_EN);
->  }
->  
-> +static void mtk_ccorr_config(struct mtk_ddp_comp *comp, unsigned int w,
-> +			     unsigned int h, unsigned int vrefresh,
-> +			     unsigned int bpc)
-> +{
-> +	writel(h << 16 | w, comp->regs + DISP_CCORR_SIZE);
-> +	writel(CCORR_RELAY_MODE, comp->regs + DISP_CCORR_CFG);
-> +}
-> +
-> +static void mtk_ccorr_start(struct mtk_ddp_comp *comp)
-> +{
-> +	writel(CCORR_EN, comp->regs + DISP_CCORR_EN);
-> +}
-> +
-> +static void mtk_ccorr_stop(struct mtk_ddp_comp *comp)
-> +{
-> +	writel_relaxed(0x0, comp->regs + DISP_CCORR_EN);
-> +}
-> +
->  static void mtk_gamma_config(struct mtk_ddp_comp *comp, unsigned int w,
->  			     unsigned int h, unsigned int vrefresh,
->  			     unsigned int bpc)
-> @@ -179,6 +203,12 @@ static void mtk_gamma_set(struct mtk_ddp_comp *comp,
->  	.stop = mtk_aal_stop,
->  };
->  
-> +static const struct mtk_ddp_comp_funcs ddp_ccorr = {
-> +	.config = mtk_ccorr_config,
-> +	.start = mtk_ccorr_start,
-> +	.stop = mtk_ccorr_stop,
-> +};
-> +
->  static const struct mtk_ddp_comp_funcs ddp_gamma = {
->  	.gamma_set = mtk_gamma_set,
->  	.config = mtk_gamma_config,
-> @@ -200,6 +230,7 @@ static void mtk_gamma_set(struct mtk_ddp_comp *comp,
->  	[MTK_DISP_RDMA] = "rdma",
->  	[MTK_DISP_WDMA] = "wdma",
->  	[MTK_DISP_COLOR] = "color",
-> +	[MTK_DISP_CCORR] = "ccorr",
->  	[MTK_DISP_AAL] = "aal",
->  	[MTK_DISP_GAMMA] = "gamma",
->  	[MTK_DISP_UFOE] = "ufoe",
-> @@ -221,6 +252,7 @@ struct mtk_ddp_comp_match {
->  	[DDP_COMPONENT_AAL0]	= { MTK_DISP_AAL,	0, &ddp_aal },
->  	[DDP_COMPONENT_AAL1]	= { MTK_DISP_AAL,	1, &ddp_aal },
->  	[DDP_COMPONENT_BLS]	= { MTK_DISP_BLS,	0, NULL },
-> +	[DDP_COMPONENT_CCORR]	= { MTK_DISP_CCORR,	0, &ddp_ccorr },
->  	[DDP_COMPONENT_COLOR0]	= { MTK_DISP_COLOR,	0, NULL },
->  	[DDP_COMPONENT_COLOR1]	= { MTK_DISP_COLOR,	1, NULL },
->  	[DDP_COMPONENT_DPI0]	= { MTK_DPI,		0, NULL },
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> index 8399229..87ef290 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> @@ -28,6 +28,7 @@ enum mtk_ddp_comp_type {
->  	MTK_DISP_RDMA,
->  	MTK_DISP_WDMA,
->  	MTK_DISP_COLOR,
-> +	MTK_DISP_CCORR,
->  	MTK_DISP_AAL,
->  	MTK_DISP_GAMMA,
->  	MTK_DISP_UFOE,
-> @@ -44,6 +45,7 @@ enum mtk_ddp_comp_id {
->  	DDP_COMPONENT_AAL0,
->  	DDP_COMPONENT_AAL1,
->  	DDP_COMPONENT_BLS,
-> +	DDP_COMPONENT_CCORR,
->  	DDP_COMPONENT_COLOR0,
->  	DDP_COMPONENT_COLOR1,
->  	DDP_COMPONENT_DPI0,
+
+--=====_003_next=====
+Content-Type: text/plain;
+	charset="UTF-8"
+Content-Transfer-Encoding: base64
+
+PiA+IEBAIC01NCwyMiArNTQsMzAgQEAgIG10NzZfZ2V0X29mX2VlcHJvbShzdHJ1Y3QgbXQ3Nl9k
+ZXYgKmRldiwgaW50IGxlbikKPiA+ICAgICAgICAgIHBhcnQgPSBucC0+bmFtZTsKPiA+Cj4gPiAg
+ICAgIG10ZCA9IGdldF9tdGRfZGV2aWNlX25tKHBhcnQpOwo+IOKApgo+ID4gKyAgICBpZiAocmV0
+bGVuIDwgbGVuKSB7Cj4gPiArICAgICAgICByZXQgPSAtRUlOVkFMOwo+ID4gKyAgICAgICAgZ290
+byBvdXRfcHV0X25vZGU7Cj4gCj4gSSBmaW5kIGEganVtcCB0byBhbiBpbW1lZGlhdGVseSBmb2xs
+b3dpbmcgc291cmNlIGNvZGUgcGxhY2UgdW5uZWNlc3NhcnkuCj4gV291bGQgeW91IGxpa2UgdG8g
+ZGVsZXRlIGl0Pwo+IAo+IAo+ID4gKyAgICB9Cj4gPgo+ID4gLSAgICByZXR1cm4gMDsKPiA+ICtv
+dXRfcHV0X25vZGU6Cj4gPiArICAgIG9mX25vZGVfcHV0KG5wKTsKPiA+ICsgICAgcmV0dXJuIHJl
+dDsKPiA+ICAjZWxzZQo+IAo+IENhbiBhbm90aGVyIGJpdCBvZiBmaW5lLXR1bmluZyBtYXR0ZXIg
+aGVyZT8KPiBodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9u
+ZXh0L2xpbnV4LW5leHQuZ2l0L3RyZWUvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3
+Ni9lZXByb20uYz9pZD0zNGUwMjJkOGI3ODBhMDM5MDJkODJmYjM5OTdiYTdjN2IxZjQwYzgxI243
+Mwo+IAoKSGkgTWFya3VzLApUaGFuayB5b3UgZm9yIHlvdXIgY29tbWVudHMuCldlIG1heSBoYXZl
+IHNvbWUgZGlmZmVyZW50IG9waW5pb25zIGhlcmUuCkRlbGV0aW5nIHRoZSBnb3RvIHN0YXRlbWVu
+dCBtYXkgbm90IGJlIGdvb2QuCklmIHRoZSBjb2RlIGZ1cnRoZXIgdXAgaXMgY2hhbmdlZCBpdCdz
+IGVhc3kgZW5vdWdoIHRvIG1pc3MgdGhhdCBhIGdvdG8gc3RhdGVtZW50IG5lZWRzIHRvIGJlIGFk
+ZGVkIGhlcmUuCgpCZXR0ZXIgdG8gc2V0IHJldCB0byB6ZXJvIGV4cGxpY2l0bHksIHRoaXMgaXMg
+dGhlIHN1Y2Nlc3MgcGF0aCBhZnRlciBhbGwuCgotLS0gYS9kcml2ZXJzL25ldC93aXJlbGVzcy9t
+ZWRpYXRlay9tdDc2L2VlcHJvbS5jCisrKyBiL2RyaXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVr
+L210NzYvZWVwcm9tLmMKQEAgLTc1LDYgKzc1LDggQEAgbXQ3Nl9nZXRfb2ZfZWVwcm9tKHN0cnVj
+dCBtdDc2X2RldiAqZGV2LCBpbnQgbGVuKQogICAgICAgICAgICAgICAgZ290byBvdXRfcHV0X25v
+ZGU7CiAgICAgICAgfQoKKyAgICAgICByZXQgPSAwOworCiBvdXRfcHV0X25vZGU6CiAgICAgICAg
+b2Zfbm9kZV9wdXQobnApOwogICAgICAgIHJldHVybiByZXQ7CgotLQpSZWdhcmRzLApXZW4=
+
+
+--=====_003_next=====--
+
+--=====_001_next=====
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--=====_001_next=====--
