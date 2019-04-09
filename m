@@ -1,151 +1,126 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH V9 4/5] drm/mediatek: make implementation of
- recalc_rate() to match the definition
-Date: Tue, 9 Apr 2019 13:40:34 +0800
-Message-ID: <1554788434.336.6.camel@mtksdaap41>
+Subject: Re: [PATCH V9 5/5] drm/mediatek: no change parent rate in
+ round_rate() for mt2701 hdmi phy
+Date: Tue, 9 Apr 2019 13:41:37 +0800
+Message-ID: <1554788497.336.7.camel@mtksdaap41>
 References: <20190409030756.69496-1-wangyan.wang@mediatek.com>
- <20190409030756.69496-5-wangyan.wang@mediatek.com>
+         <20190409030756.69496-6-wangyan.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190409030756.69496-5-wangyan.wang@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190409030756.69496-6-wangyan.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: wangyan wang <wangyan.wang@mediatek.com>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, srv_heupstream@mediatek.com, chunhui dai <chunhui.dai@mediatek.com>, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Colin Ian King <colin.king@canonical.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, chunhui dai <chunhui.dai@mediatek.com>, Colin Ian King <colin.king@canonical.com>, Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFdhbmd5YW46CgpPbiBUdWUsIDIwMTktMDQtMDkgYXQgMTE6MDcgKzA4MDAsIHdhbmd5YW4g
-d2FuZyB3cm90ZToKPiBGcm9tOiBXYW5neWFuIFdhbmcgPHdhbmd5YW4ud2FuZ0BtZWRpYXRlay5j
-b20+Cj4gCj4gUmVjYWxjdWxhdGUgdGhlIHJhdGUgb2YgdGhpcyBjbG9jaywgYnkgcXVlcnlpbmcg
-aGFyZHdhcmUgdG8KPiBtYWtlIGltcGxlbWVudGF0aW9uIG9mIHJlY2FsY19yYXRlKCkgdG8gbWF0
-Y2ggdGhlIGRlZmluaXRpb24uCj4gCj4gU2lnbmVkLW9mZi1ieTogV2FuZ3lhbiBXYW5nIDx3YW5n
-eWFuLndhbmdAbWVkaWF0ZWsuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2hkbWlfcGh5LmMgICAgICAgIHwgIDggLS0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRp
-YXRlay9tdGtfaGRtaV9waHkuaCAgICAgICAgfCAgMiAtLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX210MjcwMV9oZG1pX3BoeS5jIHwgMzkgKysrKysrKysrKysrKysrKysrKysrKyst
-LS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxNzNfaGRtaV9waHkuYyB8ICA4
-ICsrKysrKwo+ICA0IGZpbGVzIGNoYW5nZWQsIDQzIGluc2VydGlvbnMoKyksIDE0IGRlbGV0aW9u
-cygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlf
-cGh5LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmMKPiBpbmRleCAw
-ODc5Y2U0N2Q0YzUuLjllMTUzZTA4MDczOSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2hkbWlfcGh5LmMKPiBAQCAtMjksMTQgKzI5LDYgQEAgbG9uZyBtdGtfaGRtaV9wbGxfcm91
-bmRfcmF0ZShzdHJ1Y3QgY2xrX2h3ICpodywgdW5zaWduZWQgbG9uZyByYXRlLAo+ICAJcmV0dXJu
-IHJhdGU7Cj4gIH0KPiAgCj4gLXVuc2lnbmVkIGxvbmcgbXRrX2hkbWlfcGxsX3JlY2FsY19yYXRl
-KHN0cnVjdCBjbGtfaHcgKmh3LAo+IC0JCQkJICAgICAgIHVuc2lnbmVkIGxvbmcgcGFyZW50X3Jh
-dGUpCj4gLXsKPiAtCXN0cnVjdCBtdGtfaGRtaV9waHkgKmhkbWlfcGh5ID0gdG9fbXRrX2hkbWlf
-cGh5KGh3KTsKPiAtCj4gLQlyZXR1cm4gaGRtaV9waHktPnBsbF9yYXRlOwo+IC19Cj4gLQo+ICB2
-b2lkIG10a19oZG1pX3BoeV9jbGVhcl9iaXRzKHN0cnVjdCBtdGtfaGRtaV9waHkgKmhkbWlfcGh5
-LCB1MzIgb2Zmc2V0LAo+ICAJCQkgICAgIHUzMiBiaXRzKQo+ICB7Cj4gZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuaCBiL2RyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfaGRtaV9waHkuaAo+IGluZGV4IDAwNDU4MjRjMWJlOS4uZDI4YjhkNWVkMmI0
-IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuaAo+
-ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuaAo+IEBAIC01MSw4
-ICs1MSw2IEBAIHZvaWQgbXRrX2hkbWlfcGh5X21hc2soc3RydWN0IG10a19oZG1pX3BoeSAqaGRt
-aV9waHksIHUzMiBvZmZzZXQsCj4gIHN0cnVjdCBtdGtfaGRtaV9waHkgKnRvX210a19oZG1pX3Bo
-eShzdHJ1Y3QgY2xrX2h3ICpodyk7Cj4gIGxvbmcgbXRrX2hkbWlfcGxsX3JvdW5kX3JhdGUoc3Ry
-dWN0IGNsa19odyAqaHcsIHVuc2lnbmVkIGxvbmcgcmF0ZSwKPiAgCQkJICAgICB1bnNpZ25lZCBs
-b25nICpwYXJlbnRfcmF0ZSk7Cj4gLXVuc2lnbmVkIGxvbmcgbXRrX2hkbWlfcGxsX3JlY2FsY19y
-YXRlKHN0cnVjdCBjbGtfaHcgKmh3LAo+IC0JCQkJICAgICAgIHVuc2lnbmVkIGxvbmcgcGFyZW50
-X3JhdGUpOwo+ICAKPiAgZXh0ZXJuIHN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIgbXRrX2hkbWlfcGh5
-X2RyaXZlcjsKPiAgZXh0ZXJuIHN0cnVjdCBtdGtfaGRtaV9waHlfY29uZiBtdGtfaGRtaV9waHlf
-ODE3M19jb25mOwo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210
-MjcwMV9oZG1pX3BoeS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDI3MDFfaGRt
-aV9waHkuYwo+IGluZGV4IDg0NGU2MjJmMDUyYy4uYjI0ZWE2NjUxZGI0IDEwMDY0NAo+IC0tLSBh
-L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQyNzAxX2hkbWlfcGh5LmMKPiArKysgYi9k
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210MjcwMV9oZG1pX3BoeS5jCj4gQEAgLTc5LDcg
-Kzc5LDYgQEAgc3RhdGljIGludCBtdGtfaGRtaV9wbGxfcHJlcGFyZShzdHJ1Y3QgY2xrX2h3ICpo
-dykKPiAgCW10a19oZG1pX3BoeV9zZXRfYml0cyhoZG1pX3BoeSwgSERNSV9DT04wLCBSR19IRE1J
-VFhfRU5fU0xET19NQVNLKTsKPiAgCXVzbGVlcF9yYW5nZSg4MCwgMTAwKTsKPiAgCW10a19oZG1p
-X3BoeV9zZXRfYml0cyhoZG1pX3BoeSwgSERNSV9DT04yLCBSR19IRE1JVFhfTUJJQVNfTFBGX0VO
-KTsKPiAtCW10a19oZG1pX3BoeV9zZXRfYml0cyhoZG1pX3BoeSwgSERNSV9DT04yLCBSR19IRE1J
-VFhfRU5fVFhfUE9TRElWKTsKPiAgCW10a19oZG1pX3BoeV9zZXRfYml0cyhoZG1pX3BoeSwgSERN
-SV9DT04wLCBSR19IRE1JVFhfRU5fU0VSX01BU0spOwo+ICAJbXRrX2hkbWlfcGh5X3NldF9iaXRz
-KGhkbWlfcGh5LCBIRE1JX0NPTjAsIFJHX0hETUlUWF9FTl9QUkVEX01BU0spOwo+ICAJbXRrX2hk
-bWlfcGh5X3NldF9iaXRzKGhkbWlfcGh5LCBIRE1JX0NPTjAsIFJHX0hETUlUWF9FTl9EUlZfTUFT
-Syk7Cj4gQEAgLTk0LDcgKzkzLDYgQEAgc3RhdGljIHZvaWQgbXRrX2hkbWlfcGxsX3VucHJlcGFy
-ZShzdHJ1Y3QgY2xrX2h3ICpodykKPiAgCW10a19oZG1pX3BoeV9jbGVhcl9iaXRzKGhkbWlfcGh5
-LCBIRE1JX0NPTjAsIFJHX0hETUlUWF9FTl9EUlZfTUFTSyk7Cj4gIAltdGtfaGRtaV9waHlfY2xl
-YXJfYml0cyhoZG1pX3BoeSwgSERNSV9DT04wLCBSR19IRE1JVFhfRU5fUFJFRF9NQVNLKTsKPiAg
-CW10a19oZG1pX3BoeV9jbGVhcl9iaXRzKGhkbWlfcGh5LCBIRE1JX0NPTjAsIFJHX0hETUlUWF9F
-Tl9TRVJfTUFTSyk7Cj4gLQltdGtfaGRtaV9waHlfY2xlYXJfYml0cyhoZG1pX3BoeSwgSERNSV9D
-T04yLCBSR19IRE1JVFhfRU5fVFhfUE9TRElWKTsKPiAgCW10a19oZG1pX3BoeV9jbGVhcl9iaXRz
-KGhkbWlfcGh5LCBIRE1JX0NPTjIsIFJHX0hETUlUWF9NQklBU19MUEZfRU4pOwo+ICAJdXNsZWVw
-X3JhbmdlKDgwLCAxMDApOwo+ICAJbXRrX2hkbWlfcGh5X2NsZWFyX2JpdHMoaGRtaV9waHksIEhE
-TUlfQ09OMCwgUkdfSERNSVRYX0VOX1NMRE9fTUFTSyk7Cj4gQEAgLTEyMyw2ICsxMjEsNyBAQCBz
-dGF0aWMgaW50IG10a19oZG1pX3BsbF9zZXRfcmF0ZShzdHJ1Y3QgY2xrX2h3ICpodywgdW5zaWdu
-ZWQgbG9uZyByYXRlLAo+ICAKPiAgCW10a19oZG1pX3BoeV9zZXRfYml0cyhoZG1pX3BoeSwgSERN
-SV9DT042LCBSR19IVFBMTF9QUkVESVZfTUFTSyk7Cj4gIAltdGtfaGRtaV9waHlfc2V0X2JpdHMo
-aGRtaV9waHksIEhETUlfQ09ONiwgUkdfSFRQTExfUE9TRElWX01BU0spOwo+ICsJbXRrX2hkbWlf
-cGh5X3NldF9iaXRzKGhkbWlfcGh5LCBIRE1JX0NPTjIsIFJHX0hETUlUWF9FTl9UWF9QT1NESVYp
-Owo+ICAJbXRrX2hkbWlfcGh5X21hc2soaGRtaV9waHksIEhETUlfQ09ONiwgKDB4MSA8PCBSR19I
-VFBMTF9JQyksCj4gIAkJCSAgUkdfSFRQTExfSUNfTUFTSyk7Cj4gIAltdGtfaGRtaV9waHlfbWFz
-ayhoZG1pX3BoeSwgSERNSV9DT042LCAoMHgxIDw8IFJHX0hUUExMX0lSKSwKPiBAQCAtMTU0LDYg
-KzE1Myw0MCBAQCBzdGF0aWMgaW50IG10a19oZG1pX3BsbF9zZXRfcmF0ZShzdHJ1Y3QgY2xrX2h3
-ICpodywgdW5zaWduZWQgbG9uZyByYXRlLAo+ICAJcmV0dXJuIDA7Cj4gIH0KPiAgCj4gK3N0YXRp
-YyB1bnNpZ25lZCBsb25nIG10a19oZG1pX3BsbF9yZWNhbGNfcmF0ZShzdHJ1Y3QgY2xrX2h3ICpo
-dywKPiArCQkJCSAgICAgICAJICAgICAgCSAgIHVuc2lnbmVkIGxvbmcgcGFyZW50X3JhdGUpCgpJ
-IHRoaW5rIHlvdSd2ZSB0cmllZCB0byBhbGlnbiwgYnV0IHRoZSByZXN1bHQgbG9va3Mgbm90IGFs
-aWduZWQuIE1ha2UKc3VyZSB5b3VyIGVkaXRvciBoYXZlIGVxdWFsIHNpemUgZm9yIGVhY2ggY2hh
-cmFjdGVyIGFuZCB0aGUgJ3RhYicgbGVuZ3RoCmlzIDggY2hhcmFjdGVyLgoKUmVnYXJkcywKQ0sK
-Cj4gKwo+ICt7Cj4gKwlzdHJ1Y3QgbXRrX2hkbWlfcGh5ICpoZG1pX3BoeSA9IHRvX210a19oZG1p
-X3BoeShodyk7Cj4gKwl1bnNpZ25lZCBsb25nIG91dF9yYXRlLCB2YWw7Cj4gKwo+ICsJdmFsID0g
-KHJlYWRsKGhkbWlfcGh5LT5yZWdzICsgSERNSV9DT042KQo+ICsJCSAgICYgUkdfSFRQTExfUFJF
-RElWX01BU0spID4+IFJHX0hUUExMX1BSRURJVjsKPiArCXN3aXRjaCAodmFsKSB7Cj4gKwljYXNl
-IDB4MDA6Cj4gKwkJb3V0X3JhdGUgPSBwYXJlbnRfcmF0ZTsKPiArCQlicmVhazsKPiArCWNhc2Ug
-MHgwMToKPiArCQlvdXRfcmF0ZSA9IHBhcmVudF9yYXRlIC8gMjsKPiArCQlicmVhazsKPiArCWRl
-ZmF1bHQ6Cj4gKwkJb3V0X3JhdGUgPSBwYXJlbnRfcmF0ZSAvIDQ7Cj4gKwkJYnJlYWs7Cj4gKwl9
-Cj4gKwo+ICsJdmFsID0gKHJlYWRsKGhkbWlfcGh5LT5yZWdzICsgSERNSV9DT042KQo+ICsJCSAg
-ICYgUkdfSFRQTExfRkJLRElWX01BU0spID4+IFJHX0hUUExMX0ZCS0RJVjsKPiArCW91dF9yYXRl
-ICo9ICh2YWwgKyAxKSAqIDI7Cj4gKwl2YWwgPSAocmVhZGwoaGRtaV9waHktPnJlZ3MgKyBIRE1J
-X0NPTjIpCj4gKwkJICAgJiBSR19IRE1JVFhfVFhfUE9TRElWX01BU0spOwo+ICsKPiArCW91dF9y
-YXRlID4+PSAodmFsID4+IFJHX0hETUlUWF9UWF9QT1NESVYpOwo+ICsKPiArCWlmIChyZWFkbCho
-ZG1pX3BoeS0+cmVncyArIEhETUlfQ09OMikgJiBSR19IRE1JVFhfRU5fVFhfUE9TRElWKQo+ICsJ
-CW91dF9yYXRlID0gb3V0X3JhdGUgLyA1Owo+ICsKPiArCXJldHVybiBvdXRfcmF0ZTsKPiArfQo+
-ICsKPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBjbGtfb3BzIG10a19oZG1pX3BoeV9wbGxfb3BzID0g
-ewo+ICAJLnByZXBhcmUgPSBtdGtfaGRtaV9wbGxfcHJlcGFyZSwKPiAgCS51bnByZXBhcmUgPSBt
-dGtfaGRtaV9wbGxfdW5wcmVwYXJlLAo+IEBAIC0xNzQsNyArMjA3LDYgQEAgc3RhdGljIHZvaWQg
-bXRrX2hkbWlfcGh5X2VuYWJsZV90bWRzKHN0cnVjdCBtdGtfaGRtaV9waHkgKmhkbWlfcGh5KQo+
-ICAJbXRrX2hkbWlfcGh5X3NldF9iaXRzKGhkbWlfcGh5LCBIRE1JX0NPTjAsIFJHX0hETUlUWF9F
-Tl9TTERPX01BU0spOwo+ICAJdXNsZWVwX3JhbmdlKDgwLCAxMDApOwo+ICAJbXRrX2hkbWlfcGh5
-X3NldF9iaXRzKGhkbWlfcGh5LCBIRE1JX0NPTjIsIFJHX0hETUlUWF9NQklBU19MUEZfRU4pOwo+
-IC0JbXRrX2hkbWlfcGh5X3NldF9iaXRzKGhkbWlfcGh5LCBIRE1JX0NPTjIsIFJHX0hETUlUWF9F
-Tl9UWF9QT1NESVYpOwo+ICAJbXRrX2hkbWlfcGh5X3NldF9iaXRzKGhkbWlfcGh5LCBIRE1JX0NP
-TjAsIFJHX0hETUlUWF9FTl9TRVJfTUFTSyk7Cj4gIAltdGtfaGRtaV9waHlfc2V0X2JpdHMoaGRt
-aV9waHksIEhETUlfQ09OMCwgUkdfSERNSVRYX0VOX1BSRURfTUFTSyk7Cj4gIAltdGtfaGRtaV9w
-aHlfc2V0X2JpdHMoaGRtaV9waHksIEhETUlfQ09OMCwgUkdfSERNSVRYX0VOX0RSVl9NQVNLKTsK
-PiBAQCAtMTg2LDcgKzIxOCw2IEBAIHN0YXRpYyB2b2lkIG10a19oZG1pX3BoeV9kaXNhYmxlX3Rt
-ZHMoc3RydWN0IG10a19oZG1pX3BoeSAqaGRtaV9waHkpCj4gIAltdGtfaGRtaV9waHlfY2xlYXJf
-Yml0cyhoZG1pX3BoeSwgSERNSV9DT04wLCBSR19IRE1JVFhfRU5fRFJWX01BU0spOwo+ICAJbXRr
-X2hkbWlfcGh5X2NsZWFyX2JpdHMoaGRtaV9waHksIEhETUlfQ09OMCwgUkdfSERNSVRYX0VOX1BS
-RURfTUFTSyk7Cj4gIAltdGtfaGRtaV9waHlfY2xlYXJfYml0cyhoZG1pX3BoeSwgSERNSV9DT04w
-LCBSR19IRE1JVFhfRU5fU0VSX01BU0spOwo+IC0JbXRrX2hkbWlfcGh5X2NsZWFyX2JpdHMoaGRt
-aV9waHksIEhETUlfQ09OMiwgUkdfSERNSVRYX0VOX1RYX1BPU0RJVik7Cj4gIAltdGtfaGRtaV9w
-aHlfY2xlYXJfYml0cyhoZG1pX3BoeSwgSERNSV9DT04yLCBSR19IRE1JVFhfTUJJQVNfTFBGX0VO
-KTsKPiAgCXVzbGVlcF9yYW5nZSg4MCwgMTAwKTsKPiAgCW10a19oZG1pX3BoeV9jbGVhcl9iaXRz
-KGhkbWlfcGh5LCBIRE1JX0NPTjAsIFJHX0hETUlUWF9FTl9TTERPX01BU0spOwo+IGRpZmYgLS1n
-aXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210ODE3M19oZG1pX3BoeS5jIGIvZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxNzNfaGRtaV9waHkuYwo+IGluZGV4IGY0NDA2
-Njg3NWRjZC4uNjI1NzM5YjRlOTM4IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRp
-YXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX210ODE3M19oZG1pX3BoeS5jCj4gQEAgLTI4NSw2ICsyODUsMTQgQEAgc3RhdGljIGlu
-dCBtdGtfaGRtaV9wbGxfc2V0X3JhdGUoc3RydWN0IGNsa19odyAqaHcsIHVuc2lnbmVkIGxvbmcg
-cmF0ZSwKPiAgCXJldHVybiAwOwo+ICB9Cj4gIAo+ICt1bnNpZ25lZCBsb25nIG10a19oZG1pX3Bs
-bF9yZWNhbGNfcmF0ZShzdHJ1Y3QgY2xrX2h3ICpodywKPiArCQkJCSAgICAgIAkgICAgICAgdW5z
-aWduZWQgbG9uZyBwYXJlbnRfcmF0ZSkKPiArCj4gK3sKPiArCXN0cnVjdCBtdGtfaGRtaV9waHkg
-KmhkbWlfcGh5ID0gdG9fbXRrX2hkbWlfcGh5KGh3KTsKPiArCj4gKwlyZXR1cm4gaGRtaV9waHkt
-PnBsbF9yYXRlOwo+ICt9Cj4gKwo+ICBzdGF0aWMgY29uc3Qgc3RydWN0IGNsa19vcHMgbXRrX2hk
-bWlfcGh5X3BsbF9vcHMgPSB7Cj4gIAkucHJlcGFyZSA9IG10a19oZG1pX3BsbF9wcmVwYXJlLAo+
-ICAJLnVucHJlcGFyZSA9IG10a19oZG1pX3BsbF91bnByZXBhcmUsCgoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
-cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+Hi, Wangyan:
+
+On Tue, 2019-04-09 at 11:07 +0800, wangyan wang wrote:
+> From: Wangyan Wang <wangyan.wang@mediatek.com>
+> 
+> This is the third step to make MT2701 HDMI stable.
+> We should not change the rate of parent for hdmi phy when
+> doing round_rate for this clock. The parent clock of hdmi
+> phy must be the same as it. We change it when doing set_rate
+> only.
+> 
+> Signed-off-by: Wangyan Wang <wangyan.wang@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_hdmi_phy.c        | 14 --------------
+>  drivers/gpu/drm/mediatek/mtk_hdmi_phy.h        |  2 --
+>  drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c |  6 ++++++
+>  drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c | 14 ++++++++++++++
+>  4 files changed, 20 insertions(+), 16 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
+> index 9e153e080739..e3a6b50e0cf2 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
+> @@ -15,20 +15,6 @@ static const struct phy_ops mtk_hdmi_phy_dev_ops = {
+>  	.owner = THIS_MODULE,
+>  };
+>  
+> -long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
+> -			     unsigned long *parent_rate)
+> -{
+> -	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
+> -
+> -	hdmi_phy->pll_rate = rate;
+> -	if (rate <= 74250000)
+> -		*parent_rate = rate;
+> -	else
+> -		*parent_rate = rate / 2;
+> -
+> -	return rate;
+> -}
+> -
+>  void mtk_hdmi_phy_clear_bits(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
+>  			     u32 bits)
+>  {
+> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
+> index d28b8d5ed2b4..2d8b3182470d 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
+> @@ -49,8 +49,6 @@ void mtk_hdmi_phy_set_bits(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
+>  void mtk_hdmi_phy_mask(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
+>  		       u32 val, u32 mask);
+>  struct mtk_hdmi_phy *to_mtk_hdmi_phy(struct clk_hw *hw);
+> -long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
+> -			     unsigned long *parent_rate);
+>  
+>  extern struct platform_driver mtk_hdmi_phy_driver;
+>  extern struct mtk_hdmi_phy_conf mtk_hdmi_phy_8173_conf;
+> diff --git a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
+> index b24ea6651db4..e3f05ad89b1e 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
+> @@ -106,6 +106,12 @@ static void mtk_hdmi_pll_unprepare(struct clk_hw *hw)
+>  	usleep_range(80, 100);
+>  }
+>  
+> +static long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
+> +			     	                unsigned long *parent_rate)
+
+I think you've tried to align, but the result looks not aligned. Make
+sure your editor have equal size for each character and the 'tab' length
+is 8 character.
+
+Regards,
+CK
+
+> +
+> +{
+> +	return rate;
+> +}
+> +
+>  static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+>  				 unsigned long parent_rate)
+>  {
+> diff --git a/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
+> index 625739b4e938..78c638c29102 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
+> @@ -199,6 +199,20 @@ static void mtk_hdmi_pll_unprepare(struct clk_hw *hw)
+>  	usleep_range(100, 150);
+>  }
+>  
+> +long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
+> +			                    unsigned long *parent_rate)
+> +
+> +{
+> +	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
+> +
+> +	hdmi_phy->pll_rate = rate;
+> +	if (rate <= 74250000)
+> +		*parent_rate = rate;
+> +	else
+> +		*parent_rate = rate / 2;
+> +
+> +	return rate;
+> +}
+> +
+>  static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+>  				 unsigned long parent_rate)
+>  {
