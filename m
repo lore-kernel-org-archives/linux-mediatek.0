@@ -1,25 +1,62 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH 15/24] dt-bindings: pinctrl: pinctrl-mt65xx: add support
- for MT8516
-Date: Mon, 8 Apr 2019 22:44:59 +0200
-Message-ID: <CACRpkdZZ6-+MVdK4bOP4SHxQ8uQ8zENcir7DSteHy4g+B5uySQ@mail.gmail.com>
-References: <20190323211612.860-1-fparent@baylibre.com> <20190323211612.860-16-fparent@baylibre.com>
+From: wangyan wang <wangyan.wang@mediatek.com>
+Subject: [PATCH V9 0/5] make mt7623 clock of hdmi stable
+Date: Tue, 9 Apr 2019 11:07:51 +0800
+Message-ID: <20190409030756.69496-1-wangyan.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190323211612.860-16-fparent@baylibre.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Fabien Parent <fparent@baylibre.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Sean Wang <sean.wang@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, hsin-hsiung.wang@mediatek.com, wenzhen.yu@mediatek.com, Chaotian Jing <chaotian.jing@mediatek.com>, Yong Mao <yong.mao@mediatek.com>, jjian.zhou@mediatek.com, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-i2c@vger.kernel.org, Linux ARM <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, linux-mmc <linux-mmc@vger.kernel.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, linux-se
+To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, CK Hu <ck.hu@mediatek.com>
+Cc: wangyan wang <wangyan.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, chunhui dai <chunhui.dai@mediatek.com>, Colin Ian King <colin.king@canonical.com>, Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, Mar 23, 2019 at 10:17 PM Fabien Parent <fparent@baylibre.com> wrote:
+From: Wangyan Wang <wangyan.wang@mediatek.com>
 
-> Add binding documentation of pinctrl-mt65xx for MT8516 SoC.
->
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+V9 adopt maintainer's suggestion.
+Here is the change list between V8 & V9
 
-Patch applied with Rob's ACK.
+1. Align the first character to the right of '(' in
+mtk_hdmi_phy_clk_get_data() of "drm/mediatek: remove flag ..."
+2. Align the first character to the right of '(' in
+mtk_hdmi_pll_recalc_rate() of "drm/mediatek: make implementation ..." 
+3. Align the first character to the right of '(' in
+mtk_hdmi_pll_round_rate() of "drm/mediatek: no change ..."
+4. move patch " drm/mediatek: make implementation ..." before
+patch "drm/mediatek: no change parent ..." 
+5. To make MT2701 HDMI stable, TVDPLL should not be adjusted and
+it's the parent clock of HDMI phy, so HDMI phy could not adjust parent
+rate. there are 3 steps to make MT2701 HDMI stable.
+    1). remove flag CLK_SET_RATE_PARENT for mt2701 hdmi phy to not propagate
+rate change to parent in "drm/mediatek: remove flag ...".
+    2). Using new factor for tvdpll in mt2701 to match divider of DPI in
+mt2701 in "drm/mediatek: using new...".
+    3). No change parent rate in round_rate() for mt2701 hdmi phy in
+"drm/mediatek: no change parent...".
 
-Yours,
-Linus Walleij
+6. Recalculate the rate of this clock, by querying hardware to
+make implementation of recalc_rate() to match the definition.
+
+Wangyan Wang (5):
+  drm/mediatek: remove flag CLK_SET_RATE_PARENT for mt2701 hdmi phy
+  drm/mediatek: fix the rate and divder of hdmi phy for MT2701
+  drm/mediatek: using new factor for tvdpll in MT2701
+  drm/mediatek: make implementation of recalc_rate() to match the definition
+  drm/mediatek: no change parent rate in round_rate() for mt2701 hdmi phy
+
+ 03_27_ck.diff                                  | 91 ++++++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_dpi.c             |  8 +--
+ drivers/gpu/drm/mediatek/mtk_hdmi_phy.c        | 35 ++--------
+ drivers/gpu/drm/mediatek/mtk_hdmi_phy.h        |  5 +-
+ drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c | 50 ++++++++++++--
+ drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c | 23 +++++++
+ patch1.diff                                    | 75 ++++++++++++++++++++
+ patch_5_4.diff                                 | 95 ++++++++++++++++++++++++++
+ remove_parent_flag.diff                        | 75 ++++++++++++++++++++
+ 9 files changed, 412 insertions(+), 45 deletions(-)
+ create mode 100644 03_27_ck.diff
+ create mode 100644 patch1.diff
+ create mode 100644 patch_5_4.diff
+ create mode 100644 remove_parent_flag.diff
+
+-- 
+2.14.1
