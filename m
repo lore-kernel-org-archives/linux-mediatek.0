@@ -1,7 +1,7 @@
 From: wangyan wang <wangyan.wang@mediatek.com>
-Subject: [PATCH V9 2/5] drm/mediatek: fix the rate and divder of hdmi phy for MT2701
-Date: Tue, 9 Apr 2019 11:07:53 +0800
-Message-ID: <20190409030756.69496-3-wangyan.wang@mediatek.com>
+Subject: [PATCH V9 3/5] drm/mediatek: using new factor for tvdpll in MT2701
+Date: Tue, 9 Apr 2019 11:07:54 +0800
+Message-ID: <20190409030756.69496-4-wangyan.wang@mediatek.com>
 References: <20190409030756.69496-1-wangyan.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -14,30 +14,37 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Wangyan Wang <wangyan.wang@mediatek.com>
 
-Due to a clerical error,there is one zero less for 12800000.
-Fix it for 128000000
-Fixes: 0fc721b2968e ("drm/mediatek: add hdmi driver for MT2701 and MT7623")
+This is the second step to make MT2701 HDMI stable.
+The factor depends on the divider of DPI in MT2701, therefore,
+we should fix this factor to the right and new one.
+Test: search ok
 
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Signed-off-by: Wangyan Wang <wangyan.wang@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-index 67a814649e19..844e622f052c 100644
---- a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-+++ b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-@@ -116,8 +116,8 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 69c6e42dad6b..4a2f4a650494 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -662,13 +662,11 @@ static unsigned int mt8173_calculate_factor(int clock)
+ static unsigned int mt2701_calculate_factor(int clock)
+ {
+ 	if (clock <= 64000)
+-		return 16;
+-	else if (clock <= 128000)
+-		return 8;
+-	else if (clock <= 256000)
+ 		return 4;
+-	else
++	else if (clock <= 128000)
+ 		return 2;
++	else
++		return 1;
+ }
  
- 	if (rate <= 64000000)
- 		pos_div = 3;
--	else if (rate <= 12800000)
--		pos_div = 1;
-+	else if (rate <= 128000000)
-+		pos_div = 2;
- 	else
- 		pos_div = 1;
- 
+ static const struct mtk_dpi_conf mt8173_conf = {
 -- 
 2.14.1
