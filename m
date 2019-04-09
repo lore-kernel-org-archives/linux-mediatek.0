@@ -1,112 +1,32 @@
-From: wangyan wang <wangyan.wang@mediatek.com>
-Subject: [PATCH V10 5/5] drm/mediatek: no change parent rate in round_rate() for mt2701 hdmi phy
-Date: Tue, 9 Apr 2019 14:53:07 +0800
-Message-ID: <20190409065307.82280-6-wangyan.wang@mediatek.com>
-References: <20190409065307.82280-1-wangyan.wang@mediatek.com>
+From: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 0/1] ASoC: Mediatek: MT8183: add I2S2 control path from UL2
+ and UL3
+Date: Tue, 9 Apr 2019 17:13:36 +0800
+Message-ID: <20190409091337.43934-1-shunli.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190409065307.82280-1-wangyan.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, CK Hu <ck.hu@mediatek.com>
-Cc: wangyan wang <wangyan.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, chunhui dai <chunhui.dai@mediatek.com>, Colin Ian King <colin.king@canonical.com>, Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, srv_heupstream@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, tzungbi-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Wangyan Wang <wangyan.wang@mediatek.com>
+ASoC: Mediatek: MT8183: add I2S2 control path from UL2 and UL3
 
-This is the third step to make MT2701 HDMI stable.
-We should not change the rate of parent for hdmi phy when
-doing round_rate for this clock. The parent clock of hdmi
-phy must be the same as it. We change it when doing set_rate
-only.
+Shunli Wang (1):
+  ASoC: Mediatek: MT8183: add I2S2 control path from UL2 and UL3
 
-Signed-off-by: Wangyan Wang <wangyan.wang@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_hdmi_phy.c        | 14 --------------
- drivers/gpu/drm/mediatek/mtk_hdmi_phy.h        |  2 --
- drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c |  6 ++++++
- drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c | 14 ++++++++++++++
- 4 files changed, 20 insertions(+), 16 deletions(-)
+ sound/soc/mediatek/mt8183/mt8183-afe-pcm.c | 38 ++++++++++++++++++++++
+ 1 file changed, 38 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-index 9e153e080739..e3a6b50e0cf2 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-@@ -15,20 +15,6 @@ static const struct phy_ops mtk_hdmi_phy_dev_ops = {
- 	.owner = THIS_MODULE,
- };
- 
--long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
--			     unsigned long *parent_rate)
--{
--	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
--
--	hdmi_phy->pll_rate = rate;
--	if (rate <= 74250000)
--		*parent_rate = rate;
--	else
--		*parent_rate = rate / 2;
--
--	return rate;
--}
--
- void mtk_hdmi_phy_clear_bits(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
- 			     u32 bits)
- {
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-index d28b8d5ed2b4..2d8b3182470d 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-@@ -49,8 +49,6 @@ void mtk_hdmi_phy_set_bits(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
- void mtk_hdmi_phy_mask(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
- 		       u32 val, u32 mask);
- struct mtk_hdmi_phy *to_mtk_hdmi_phy(struct clk_hw *hw);
--long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
--			     unsigned long *parent_rate);
- 
- extern struct platform_driver mtk_hdmi_phy_driver;
- extern struct mtk_hdmi_phy_conf mtk_hdmi_phy_8173_conf;
-diff --git a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-index b24ea6651db4..e3f05ad89b1e 100644
---- a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-+++ b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-@@ -106,6 +106,12 @@ static void mtk_hdmi_pll_unprepare(struct clk_hw *hw)
- 	usleep_range(80, 100);
- }
- 
-+static long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
-+				     unsigned long *parent_rate)
-+{
-+	return rate;
-+}
-+
- static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
- 				 unsigned long parent_rate)
- {
-diff --git a/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
-index 625739b4e938..78c638c29102 100644
---- a/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
-+++ b/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
-@@ -199,6 +199,20 @@ static void mtk_hdmi_pll_unprepare(struct clk_hw *hw)
- 	usleep_range(100, 150);
- }
- 
-+long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
-+			      unsigned long *parent_rate)
-+{
-+	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
-+
-+	hdmi_phy->pll_rate = rate;
-+	if (rate <= 74250000)
-+		*parent_rate = rate;
-+	else
-+		*parent_rate = rate / 2;
-+
-+	return rate;
-+}
-+
- static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
- 				 unsigned long parent_rate)
- {
 -- 
-2.14.1
+2.18.0
