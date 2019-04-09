@@ -1,70 +1,105 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH 1/7] drm/mediatek: fix possible object reference leak
-Date: Tue, 9 Apr 2019 13:15:59 +0800
-Message-ID: <1554786959.336.1.camel@mtksdaap41>
-References: <1554307455-40361-1-git-send-email-wen.yang99@zte.com.cn>
- <1554307455-40361-2-git-send-email-wen.yang99@zte.com.cn>
+Subject: Re: [PATCH V9 1/5] drm/mediatek: remove flag CLK_SET_RATE_PARENT
+ for mt2701 hdmi phy to not propagate rate change to parent
+Date: Tue, 9 Apr 2019 13:39:23 +0800
+Message-ID: <1554788363.336.5.camel@mtksdaap41>
+References: <20190409030756.69496-1-wangyan.wang@mediatek.com>
+ <20190409030756.69496-2-wangyan.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1554307455-40361-2-git-send-email-wen.yang99@zte.com.cn>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Wen Yang <wen.yang99@zte.com.cn>
-Cc: wang.yi59@zte.com.cn, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190409030756.69496-2-wangyan.wang@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: wangyan wang <wangyan.wang@mediatek.com>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, srv_heupstream@mediatek.com, chunhui dai <chunhui.dai@mediatek.com>, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Colin Ian King <colin.king@canonical.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Wen:
-
-On Thu, 2019-04-04 at 00:04 +0800, Wen Yang wrote:
-> The call to of_parse_phandle returns a node pointer with refcount
-> incremented thus it must be explicitly decremented after the last
-> usage.
-> 
-> Detected by coccinelle with the following warnings:
-> drivers/gpu/drm/mediatek/mtk_hdmi.c:1521:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 1509, but without a corresponding object release within this function.
-> drivers/gpu/drm/mediatek/mtk_hdmi.c:1524:1-7: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 1509, but without a corresponding object release within this function.
-
-For this patch, applied to mediatek-drm-fixes-5.1 [1], thanks.
-
-[1]
-https://github.com/ckhu-mediatek/linux.git-tags/commits/mediatek-drm-fixes-5.1
-
-Regards,
-CK
-
-> 
-> Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
-> Cc: CK Hu <ck.hu@mediatek.com>
-> Cc: Philipp Zabel <p.zabel@pengutronix.de>
-> Cc: David Airlie <airlied@linux.ie>
-> Cc: Daniel Vetter <daniel@ffwll.ch>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: dri-devel@lists.freedesktop.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-mediatek@lists.infradead.org
-> Cc: linux-kernel@vger.kernel.org
-> ---
->  drivers/gpu/drm/mediatek/mtk_hdmi.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> index 915cc84..ed10f4d 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> @@ -1516,6 +1516,7 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
->  	of_node_put(remote);
->  
->  	hdmi->ddc_adpt = of_find_i2c_adapter_by_node(i2c_np);
-> +	of_node_put(i2c_np);
->  	if (!hdmi->ddc_adpt) {
->  		dev_err(dev, "Failed to get ddc i2c adapter by node\n");
->  		return -EINVAL;
+SGksIFdhbmd5YW46CgpPbiBUdWUsIDIwMTktMDQtMDkgYXQgMTE6MDcgKzA4MDAsIHdhbmd5YW4g
+d2FuZyB3cm90ZToKPiBGcm9tOiBXYW5neWFuIFdhbmcgPHdhbmd5YW4ud2FuZ0BtZWRpYXRlay5j
+b20+Cj4gCj4gVGhpcyBpcyB0aGUgZmlyc3Qgc3RlcCB0byBtYWtlIE1UMjcwMSBoZG1pIHN0YWJs
+ZS4KPiBUaGUgcGFyZW50IHJhdGUgb2YgaGRtaSBwaHkgaGFkIHNldCBieSBEUEkgZHJpdmVyLgo+
+IFdlIHNob3VsZCBub3Qgc2V0IG9yIGNoYW5nZSB0aGUgcGFyZW50IHJhdGUgb2YgTVQyNzAxIGhk
+bWkgcGh5LAo+IGFzIGEgcmVzdWx0IHdlIHNob3VsZCByZW1vdmUgdGhlIGZsYWdzIG9mICJDTEtf
+U0VUX1JBVEVfUEFSRU5UIgo+IGZyb20gdGhlIGNsb2NrIG9mIE1UMjcwMSBoZG1pIHBoeS4KPiAK
+PiBTaWduZWQtb2ZmLWJ5OiBXYW5neWFuIFdhbmcgPHdhbmd5YW4ud2FuZ0BtZWRpYXRlay5jb20+
+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuYyAgICAgICAg
+fCAxMyArKysrKy0tLS0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9w
+aHkuaCAgICAgICAgfCAgMSArCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQyNzAx
+X2hkbWlfcGh5LmMgfCAgMSArCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTcz
+X2hkbWlfcGh5LmMgfCAgMSArCj4gIDQgZmlsZXMgY2hhbmdlZCwgOCBpbnNlcnRpb25zKCspLCA4
+IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
+bXRrX2hkbWlfcGh5LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmMK
+PiBpbmRleCA0ZWY5YzU3ZmZkNDQuLjEzYmJhZjk5NzgxOSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJz
+L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmMKPiBAQCAtMTEwLDEzICsxMTAsMTEgQEAgbXRrX2hkbWlf
+cGh5X2Rldl9nZXRfb3BzKGNvbnN0IHN0cnVjdCBtdGtfaGRtaV9waHkgKmhkbWlfcGh5KQo+ICAJ
+CXJldHVybiBOVUxMOwo+ICB9Cj4gIAo+IC1zdGF0aWMgdm9pZCBtdGtfaGRtaV9waHlfY2xrX2dl
+dF9vcHMoc3RydWN0IG10a19oZG1pX3BoeSAqaGRtaV9waHksCj4gLQkJCQkgICAgIGNvbnN0IHN0
+cnVjdCBjbGtfb3BzICoqb3BzKQo+ICtzdGF0aWMgdm9pZCBtdGtfaGRtaV9waHlfY2xrX2dldF9k
+YXRhKHN0cnVjdCBtdGtfaGRtaV9waHkgKmhkbWlfcGh5LAo+ICsJCQkJICAJICAgICAgc3RydWN0
+IGNsa19pbml0X2RhdGEgKmNsa19pbml0KQoKSSB0aGluayB5b3UndmUgdHJpZWQgdG8gYWxpZ24s
+IGJ1dCB0aGUgcmVzdWx0IGxvb2tzIG5vdCBhbGlnbmVkLiBNYWtlCnN1cmUgeW91ciBlZGl0b3Ig
+aGF2ZSBlcXVhbCBzaXplIGZvciBlYWNoIGNoYXJhY3RlciBhbmQgYW5kIHRoZSAndGFiJwpsZW5n
+dGggaXMgOCBjaGFyYWN0ZXIuCgpSZWdhcmRzLApDSwoKPiAgewo+IC0JaWYgKGhkbWlfcGh5ICYm
+IGhkbWlfcGh5LT5jb25mICYmIGhkbWlfcGh5LT5jb25mLT5oZG1pX3BoeV9jbGtfb3BzKQo+IC0J
+CSpvcHMgPSBoZG1pX3BoeS0+Y29uZi0+aGRtaV9waHlfY2xrX29wczsKPiAtCWVsc2UKPiAtCQlk
+ZXZfZXJyKGhkbWlfcGh5LT5kZXYsICJGYWlsZWQgdG8gZ2V0IGNsayBvcHMgb2YgcGh5XG4iKTsK
+PiArCWNsa19pbml0LT5mbGFncyA9IGhkbWlfcGh5LT5jb25mLT5mbGFnczsKPiArCWNsa19pbml0
+LT5vcHMgPSBoZG1pX3BoeS0+Y29uZi0+aGRtaV9waHlfY2xrX29wczsKPiAgfQo+ICAKPiAgc3Rh
+dGljIGludCBtdGtfaGRtaV9waHlfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikK
+PiBAQCAtMTI5LDcgKzEyNyw2IEBAIHN0YXRpYyBpbnQgbXRrX2hkbWlfcGh5X3Byb2JlKHN0cnVj
+dCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAlzdHJ1Y3QgY2xrX2luaXRfZGF0YSBjbGtfaW5p
+dCA9IHsKPiAgCQkubnVtX3BhcmVudHMgPSAxLAo+ICAJCS5wYXJlbnRfbmFtZXMgPSAoY29uc3Qg
+Y2hhciAqIGNvbnN0ICopJnJlZl9jbGtfbmFtZSwKPiAtCQkuZmxhZ3MgPSBDTEtfU0VUX1JBVEVf
+UEFSRU5UIHwgQ0xLX1NFVF9SQVRFX0dBVEUsCj4gIAl9Owo+ICAKPiAgCXN0cnVjdCBwaHkgKnBo
+eTsKPiBAQCAtMTY3LDcgKzE2NCw3IEBAIHN0YXRpYyBpbnQgbXRrX2hkbWlfcGh5X3Byb2JlKHN0
+cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAloZG1pX3BoeS0+ZGV2ID0gZGV2Owo+ICAJ
+aGRtaV9waHktPmNvbmYgPQo+ICAJCShzdHJ1Y3QgbXRrX2hkbWlfcGh5X2NvbmYgKilvZl9kZXZp
+Y2VfZ2V0X21hdGNoX2RhdGEoZGV2KTsKPiAtCW10a19oZG1pX3BoeV9jbGtfZ2V0X29wcyhoZG1p
+X3BoeSwgJmNsa19pbml0Lm9wcyk7Cj4gKwltdGtfaGRtaV9waHlfY2xrX2dldF9kYXRhKGhkbWlf
+cGh5LCAmY2xrX2luaXQpOwo+ICAJaGRtaV9waHktPnBsbF9ody5pbml0ID0gJmNsa19pbml0Owo+
+ICAJaGRtaV9waHktPnBsbCA9IGRldm1fY2xrX3JlZ2lzdGVyKGRldiwgJmhkbWlfcGh5LT5wbGxf
+aHcpOwo+ICAJaWYgKElTX0VSUihoZG1pX3BoeS0+cGxsKSkgewo+IGRpZmYgLS1naXQgYS9kcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmggYi9kcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX2hkbWlfcGh5LmgKPiBpbmRleCBmMzliMWZjNjY2MTIuLjAwNDU4MjRjMWJlOSAx
+MDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmgKPiAr
+KysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmgKPiBAQCAtMjEsNiAr
+MjEsNyBAQCBzdHJ1Y3QgbXRrX2hkbWlfcGh5Owo+ICAKPiAgc3RydWN0IG10a19oZG1pX3BoeV9j
+b25mIHsKPiAgCWJvb2wgdHpfZGlzYWJsZWQ7Cj4gKwl1bnNpZ25lZCBsb25nIGZsYWdzOwo+ICAJ
+Y29uc3Qgc3RydWN0IGNsa19vcHMgKmhkbWlfcGh5X2Nsa19vcHM7Cj4gIAl2b2lkICgqaGRtaV9w
+aHlfZW5hYmxlX3RtZHMpKHN0cnVjdCBtdGtfaGRtaV9waHkgKmhkbWlfcGh5KTsKPiAgCXZvaWQg
+KCpoZG1pX3BoeV9kaXNhYmxlX3RtZHMpKHN0cnVjdCBtdGtfaGRtaV9waHkgKmhkbWlfcGh5KTsK
+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDI3MDFfaGRtaV9w
+aHkuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQyNzAxX2hkbWlfcGh5LmMKPiBp
+bmRleCBmY2M0MmRjNmVhN2YuLjY3YTgxNDY0OWUxOSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX210MjcwMV9oZG1pX3BoeS5jCj4gKysrIGIvZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19tdDI3MDFfaGRtaV9waHkuYwo+IEBAIC0yMDIsNiArMjAyLDcgQEAg
+c3RhdGljIHZvaWQgbXRrX2hkbWlfcGh5X2Rpc2FibGVfdG1kcyhzdHJ1Y3QgbXRrX2hkbWlfcGh5
+ICpoZG1pX3BoeSkKPiAgCj4gIHN0cnVjdCBtdGtfaGRtaV9waHlfY29uZiBtdGtfaGRtaV9waHlf
+MjcwMV9jb25mID0gewo+ICAJLnR6X2Rpc2FibGVkID0gdHJ1ZSwKPiArCS5mbGFncyA9IENMS19T
+RVRfUkFURV9HQVRFLAo+ICAJLmhkbWlfcGh5X2Nsa19vcHMgPSAmbXRrX2hkbWlfcGh5X3BsbF9v
+cHMsCj4gIAkuaGRtaV9waHlfZW5hYmxlX3RtZHMgPSBtdGtfaGRtaV9waHlfZW5hYmxlX3RtZHMs
+Cj4gIAkuaGRtaV9waHlfZGlzYWJsZV90bWRzID0gbXRrX2hkbWlfcGh5X2Rpc2FibGVfdG1kcywK
+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxNzNfaGRtaV9w
+aHkuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMKPiBp
+bmRleCBlZDU5MTZiMjc2NTguLmY0NDA2Njg3NWRjZCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX210ODE3M19oZG1pX3BoeS5jCj4gKysrIGIvZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19tdDgxNzNfaGRtaV9waHkuYwo+IEBAIC0zMDksNiArMzA5LDcgQEAg
+c3RhdGljIHZvaWQgbXRrX2hkbWlfcGh5X2Rpc2FibGVfdG1kcyhzdHJ1Y3QgbXRrX2hkbWlfcGh5
+ICpoZG1pX3BoeSkKPiAgfQo+ICAKPiAgc3RydWN0IG10a19oZG1pX3BoeV9jb25mIG10a19oZG1p
+X3BoeV84MTczX2NvbmYgPSB7Cj4gKwkuZmxhZ3MgPSBDTEtfU0VUX1JBVEVfUEFSRU5UIHwgQ0xL
+X1NFVF9SQVRFX0dBVEUsCj4gIAkuaGRtaV9waHlfY2xrX29wcyA9ICZtdGtfaGRtaV9waHlfcGxs
+X29wcywKPiAgCS5oZG1pX3BoeV9lbmFibGVfdG1kcyA9IG10a19oZG1pX3BoeV9lbmFibGVfdG1k
+cywKPiAgCS5oZG1pX3BoeV9kaXNhYmxlX3RtZHMgPSBtdGtfaGRtaV9waHlfZGlzYWJsZV90bWRz
+LAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
+ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
+L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
