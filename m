@@ -1,15 +1,11 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH 03/14] [media] mtk-mipicsi: add color format support for
- mt2712
-Date: Tue, 9 Apr 2019 14:18:29 +0800
-Message-ID: <1554790709.10331.6.camel@mtksdaap41>
-References: <1554724505-19882-1-git-send-email-stu.hsieh@mediatek.com>
- <1554724505-19882-4-git-send-email-stu.hsieh@mediatek.com>
+From: wangyan wang <wangyan.wang@mediatek.com>
+Subject: [PATCH V10 0/5] make mt7623 clock of hdmi stable
+Date: Tue, 9 Apr 2019 14:53:02 +0800
+Message-ID: <20190409065307.82280-1-wangyan.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1554724505-19882-4-git-send-email-stu.hsieh@mediatek.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -19,80 +15,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Stu Hsieh <stu.hsieh@mediatek.com>
-Cc: srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, CK Hu <ck.hu@mediatek.com>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, srv_heupstream@mediatek.com, chunhui dai <chunhui.dai@mediatek.com>, David Airlie <airlied@linux.ie>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, wangyan wang <wangyan.wang@mediatek.com>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, Colin Ian King <colin.king@canonical.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Stu:
+From: Wangyan Wang <wangyan.wang@mediatek.com>
 
-On Mon, 2019-04-08 at 19:54 +0800, Stu Hsieh wrote:
-> This patch add color format support for mt2712
+V10 adopt maintainer's suggestion.
+Here is the change list between V9 & V10
 
-Without this patch, I think this driver still support these color
-format. In this patch, you just check for the non-supported color
-format.
+1. Align the first character to the right of '(' in
+mtk_hdmi_phy_clk_get_data() of "drm/mediatek: remove flag ..."
+2. Align the first character to the right of '(' in
+mtk_hdmi_pll_recalc_rate() of "drm/mediatek: make implementation ..." 
+3. Align the first character to the right of '(' in
+mtk_hdmi_pll_round_rate() of "drm/mediatek: no change ..."
+4. move patch " drm/mediatek: make implementation ..." before
+patch "drm/mediatek: no change parent ..." 
+5. To make MT2701 HDMI stable, TVDPLL should not be adjusted and
+it's the parent clock of HDMI phy, so HDMI phy could not adjust parent
+rate. there are 3 steps to make MT2701 HDMI stable.
+    1). remove flag CLK_SET_RATE_PARENT for mt2701 hdmi phy to not propagate
+rate change to parent in "drm/mediatek: remove flag ...".
+    2). Using new factor for tvdpll in mt2701 to match divider of DPI in
+mt2701 in "drm/mediatek: using new...".
+    3). No change parent rate in round_rate() for mt2701 hdmi phy in
+"drm/mediatek: no change parent...".
 
-> 
-> Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
-> ---
->  .../media/platform/mtk-mipicsi/mtk_mipicsi.c  | 25 +++++++++++++++++++
->  1 file changed, 25 insertions(+)
-> 
-> diff --git a/drivers/media/platform/mtk-mipicsi/mtk_mipicsi.c b/drivers/media/platform/mtk-mipicsi/mtk_mipicsi.c
-> index a5ed720df900..ccf2d18a3e74 100644
-> --- a/drivers/media/platform/mtk-mipicsi/mtk_mipicsi.c
-> +++ b/drivers/media/platform/mtk-mipicsi/mtk_mipicsi.c
-> @@ -139,6 +139,25 @@ static void mtk_mipicsi_remove_device(struct soc_camera_device *icd)
->  	(void)pm_runtime_put_sync(icd->parent);
->  }
->  
-> +static bool is_supported(struct soc_camera_device *icd, const u32 pixformat)
+6. Recalculate the rate of this clock, by querying hardware to
+make implementation of recalc_rate() to match the definition.
 
-icd is useless, so remove it.
+Wangyan Wang (5):
+  drm/mediatek: remove flag CLK_SET_RATE_PARENT for mt2701 hdmi phy
+  drm/mediatek: fix the rate and divder of hdmi phy for MT2701
+  drm/mediatek: using new factor for tvdpll in MT2701
+  drm/mediatek: make implementation of recalc_rate() to match the definition
+  drm/mediatek: no change parent rate in round_rate() for mt2701 hdmi phy
 
-> +{
-> +	bool ret = false;
-> +
-> +	switch (pixformat) {
-> +	/* YUV422 */
-> +	case V4L2_PIX_FMT_YUYV:
-> +	case V4L2_PIX_FMT_UYVY:
-> +	case V4L2_PIX_FMT_YVYU:
-> +	case V4L2_PIX_FMT_VYUY:
-> +		ret = true;
+ 03_27_ck.diff                                  | 91 ++++++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_dpi.c             |  8 +--
+ drivers/gpu/drm/mediatek/mtk_hdmi_phy.c        | 35 ++--------
+ drivers/gpu/drm/mediatek/mtk_hdmi_phy.h        |  5 +-
+ drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c | 50 ++++++++++++--
+ drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c | 23 +++++++
+ patch1.diff                                    | 75 ++++++++++++++++++++
+ patch_5_4.diff                                 | 95 ++++++++++++++++++++++++++
+ remove_parent_flag.diff                        | 75 ++++++++++++++++++++
+ 9 files changed, 412 insertions(+), 45 deletions(-)
+ create mode 100644 03_27_ck.diff
+ create mode 100644 patch1.diff
+ create mode 100644 patch_5_4.diff
+ create mode 100644 remove_parent_flag.diff
 
-You could just return true.
-
-> +		break;
-> +	default:
-> +		break;
-
-You don't need the 'default' part.
-
-> +	}
-> +
-> +	return ret;
-
-You could just return false.
-
-Regards,
-CK
-
-> +}
-> +
->  static int mtk_mipicsi_set_fmt(struct soc_camera_device *icd,
->  				struct v4l2_format *f)
->  {
-> @@ -154,6 +173,12 @@ static int mtk_mipicsi_set_fmt(struct soc_camera_device *icd,
->  	struct v4l2_mbus_framefmt *mf = &format.format;
->  	int ret = 0;
->  
-> +	if (!is_supported(icd, pix->pixelformat)) {
-> +		dev_err(dev, "Format %x not support. set V4L2_PIX_FMT_YUYV as default\n",
-> +			pix->pixelformat);
-> +		pix->pixelformat = V4L2_PIX_FMT_YUYV;
-> +	}
-> +
->  	xlate = soc_camera_xlate_by_fourcc(icd, pix->pixelformat);
->  	if (xlate == NULL) {
->  		dev_err(dev, "Format 0x%x not found\n", pix->pixelformat);
+-- 
+2.14.1
