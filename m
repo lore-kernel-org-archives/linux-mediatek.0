@@ -1,66 +1,106 @@
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [v2 PATCH 1/6] usb: xhci-mtk: get optional clock by devm_clk_get_optional()
-Date: Wed, 10 Apr 2019 14:47:24 +0800
-Message-ID: <bc6cdc2dce698dddbd692ba100fbf08c15c7b023.1554877692.git.chunfeng.yun@mediatek.com>
+Subject: [v3 PATCH] PCI: mediatek: get optional clock by
+ devm_clk_get_optional()
+Date: Wed, 10 Apr 2019 14:54:16 +0800
+Message-ID: <c4579e5a72f169808a9ad4aefdd7bf7b75d10d61.1554879079.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Marek Szyprowski <m.szyprowski@samsung.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Ryder Lee <ryder.lee@mediatek.com>, Honghui Zhang <honghui.zhang@mediatek.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Cc: linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-mediatek@lists.infradead.org, Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 Use devm_clk_get_optional() to get optional clock
 
+Cc: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Honghui Zhang <honghui.zhang@mediatek.com>
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+Acked-by: Honghui Zhang <honghui.zhang@mediatek.com>
 ---
-v2: no changes
+v3: add Acked-by Ryder and Honghui
 ---
- drivers/usb/host/xhci-mtk.c | 19 +++----------------
- 1 file changed, 3 insertions(+), 16 deletions(-)
+ drivers/pci/controller/pcie-mediatek.c | 50 ++++++++------------------
+ 1 file changed, 15 insertions(+), 35 deletions(-)
 
-diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-index 60987c787e44..026fe18972d3 100644
---- a/drivers/usb/host/xhci-mtk.c
-+++ b/drivers/usb/host/xhci-mtk.c
-@@ -206,19 +206,6 @@ static int xhci_mtk_ssusb_config(struct xhci_hcd_mtk *mtk)
- 	return xhci_mtk_host_enable(mtk);
- }
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index 0b6c72804e03..adb6cb15daa2 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -915,49 +915,29 @@ static int mtk_pcie_parse_port(struct mtk_pcie *pcie,
  
--/* ignore the error if the clock does not exist */
--static struct clk *optional_clk_get(struct device *dev, const char *id)
--{
--	struct clk *opt_clk;
+ 	/* sys_ck might be divided into the following parts in some chips */
+ 	snprintf(name, sizeof(name), "ahb_ck%d", slot);
+-	port->ahb_ck = devm_clk_get(dev, name);
+-	if (IS_ERR(port->ahb_ck)) {
+-		if (PTR_ERR(port->ahb_ck) == -EPROBE_DEFER)
+-			return -EPROBE_DEFER;
 -
--	opt_clk = devm_clk_get(dev, id);
--	/* ignore error number except EPROBE_DEFER */
--	if (IS_ERR(opt_clk) && (PTR_ERR(opt_clk) != -EPROBE_DEFER))
--		opt_clk = NULL;
+-		port->ahb_ck = NULL;
+-	}
++	port->ahb_ck = devm_clk_get_optional(dev, name);
++	if (IS_ERR(port->ahb_ck))
++		return PTR_ERR(port->ahb_ck);
+ 
+ 	snprintf(name, sizeof(name), "axi_ck%d", slot);
+-	port->axi_ck = devm_clk_get(dev, name);
+-	if (IS_ERR(port->axi_ck)) {
+-		if (PTR_ERR(port->axi_ck) == -EPROBE_DEFER)
+-			return -EPROBE_DEFER;
 -
--	return opt_clk;
--}
+-		port->axi_ck = NULL;
+-	}
++	port->axi_ck = devm_clk_get_optional(dev, name);
++	if (IS_ERR(port->axi_ck))
++		return PTR_ERR(port->axi_ck);
+ 
+ 	snprintf(name, sizeof(name), "aux_ck%d", slot);
+-	port->aux_ck = devm_clk_get(dev, name);
+-	if (IS_ERR(port->aux_ck)) {
+-		if (PTR_ERR(port->aux_ck) == -EPROBE_DEFER)
+-			return -EPROBE_DEFER;
 -
- static int xhci_mtk_clks_get(struct xhci_hcd_mtk *mtk)
- {
- 	struct device *dev = mtk->dev;
-@@ -229,15 +216,15 @@ static int xhci_mtk_clks_get(struct xhci_hcd_mtk *mtk)
- 		return PTR_ERR(mtk->sys_clk);
- 	}
+-		port->aux_ck = NULL;
+-	}
++	port->aux_ck = devm_clk_get_optional(dev, name);
++	if (IS_ERR(port->aux_ck))
++		return PTR_ERR(port->aux_ck);
  
--	mtk->ref_clk = optional_clk_get(dev, "ref_ck");
-+	mtk->ref_clk = devm_clk_get_optional(dev, "ref_ck");
- 	if (IS_ERR(mtk->ref_clk))
- 		return PTR_ERR(mtk->ref_clk);
+ 	snprintf(name, sizeof(name), "obff_ck%d", slot);
+-	port->obff_ck = devm_clk_get(dev, name);
+-	if (IS_ERR(port->obff_ck)) {
+-		if (PTR_ERR(port->obff_ck) == -EPROBE_DEFER)
+-			return -EPROBE_DEFER;
+-
+-		port->obff_ck = NULL;
+-	}
++	port->obff_ck = devm_clk_get_optional(dev, name);
++	if (IS_ERR(port->obff_ck))
++		return PTR_ERR(port->obff_ck);
  
--	mtk->mcu_clk = optional_clk_get(dev, "mcu_ck");
-+	mtk->mcu_clk = devm_clk_get_optional(dev, "mcu_ck");
- 	if (IS_ERR(mtk->mcu_clk))
- 		return PTR_ERR(mtk->mcu_clk);
+ 	snprintf(name, sizeof(name), "pipe_ck%d", slot);
+-	port->pipe_ck = devm_clk_get(dev, name);
+-	if (IS_ERR(port->pipe_ck)) {
+-		if (PTR_ERR(port->pipe_ck) == -EPROBE_DEFER)
+-			return -EPROBE_DEFER;
+-
+-		port->pipe_ck = NULL;
+-	}
++	port->pipe_ck = devm_clk_get_optional(dev, name);
++	if (IS_ERR(port->pipe_ck))
++		return PTR_ERR(port->pipe_ck);
  
--	mtk->dma_clk = optional_clk_get(dev, "dma_ck");
-+	mtk->dma_clk = devm_clk_get_optional(dev, "dma_ck");
- 	return PTR_ERR_OR_ZERO(mtk->dma_clk);
- }
- 
+ 	snprintf(name, sizeof(name), "pcie-rst%d", slot);
+ 	port->reset = devm_reset_control_get_optional_exclusive(dev, name);
 -- 
 2.21.0
