@@ -1,57 +1,44 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: [GIT,PULL] mediatek drm fixes for 5.1
-Date: Wed, 10 Apr 2019 09:48:34 +0800
-Message-ID: <1554860914.29842.4.camel@mtksdaap41>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [v2 PATCH 1/4] phy: phy-mtk-tphy: get optional clock by devm_clk_get_optional()
+Date: Wed, 10 Apr 2019 14:13:03 +0800
+Message-ID: <a8539bcf66065380069676fbea99a51254309803.1554874961.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Dave Airlie <airlied@gmail.com>, Daniel Vetter <daniel.vetter@intel.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Kevin Hilman <khilman@baylibre.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Masahiro Yamada <yamada.masahiro@socionext.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Grygorii Strashko <grygorii.strashko@ti.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <masami.hiramatsu@linaro.org>, Motoya Tanigawa <tanigawa.motoya@socionext.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgRGF2ZSwgRGFuaWVsOgoKVGhpcyBpbmNsdWRlIHN0YWJsZSBNVDI3MDEgSERNSSwgZnJhbWVi
-dWZmZXIgZGV2aWNlIGFuZCBzb21lIGZpeGVzIGZvcgptZWRpYXRlayBkcm0gZHJpdmVyLgoKUmVn
-YXJkcywKQ0sKClRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21taXQKOWU5OGM2NzhjMmQ2
-YWUzYTE3Y2IyZGU1NWQxN2Y2OWRkZGFhMjMxYjoKCiAgTGludXggNS4xLXJjMSAoMjAxOS0wMy0x
-NyAxNDoyMjoyNiAtMDcwMCkKCmFyZSBhdmFpbGFibGUgaW4gdGhlIEdpdCByZXBvc2l0b3J5IGF0
-OgoKICBodHRwczovL2dpdGh1Yi5jb20vY2todS1tZWRpYXRlay9saW51eC5naXQtdGFncy5naXQK
-bWVkaWF0ZWstZHJtLWZpeGVzLTUuMQoKZm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRvIDll
-ZTc2MDk4YTFiOGFlMjFjY2NhYzY0MWI3MzVlZTRkM2E3N2JjY2Y6CgogIGRybS9tZWRpYXRlazog
-bm8gY2hhbmdlIHBhcmVudCByYXRlIGluIHJvdW5kX3JhdGUoKSBmb3IgTVQyNzAxIGhkbWkKcGh5
-ICgyMDE5LTA0LTA5IDE3OjQ3OjAxICswODAwKQoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpDSyBIdSAoMik6CiAgICAgIGRy
-bS9tZWRpYXRlazogSW1wbGVtZW50IGdlbSBwcmltZSB2bWFwL3Z1bm1hcCBmdW5jdGlvbgogICAg
-ICBkcm0vbWVkaWF0ZWs6IEFkZCBNZWRpYXRlayBmcmFtZWJ1ZmZlciBkZXZpY2UKCkRhbiBDYXJw
-ZW50ZXIgKDEpOgogICAgICBkcm0vbWVkaWF0ZWs6IEZpeCBhbiBlcnJvciBjb2RlIGluIG10a19o
-ZG1pX2R0X3BhcnNlX3BkYXRhKCkKCldhbmd5YW4gV2FuZyAoNSk6CiAgICAgIGRybS9tZWRpYXRl
-azogZml4IHRoZSByYXRlIGFuZCBkaXZkZXIgb2YgaGRtaSBwaHkgZm9yIE1UMjcwMQogICAgICBk
-cm0vbWVkaWF0ZWs6IG1ha2UgaW1wbGVtZW50YXRpb24gb2YgcmVjYWxjX3JhdGUoKSBmb3IgTVQy
-NzAxIGhkbWkKcGh5CiAgICAgIGRybS9tZWRpYXRlazogcmVtb3ZlIGZsYWcgQ0xLX1NFVF9SQVRF
-X1BBUkVOVCBmb3IgTVQyNzAxIGhkbWkgcGh5CiAgICAgIGRybS9tZWRpYXRlazogdXNpbmcgbmV3
-IGZhY3RvciBmb3IgdHZkcGxsIGZvciBNVDI3MDEgaGRtaSBwaHkKICAgICAgZHJtL21lZGlhdGVr
-OiBubyBjaGFuZ2UgcGFyZW50IHJhdGUgaW4gcm91bmRfcmF0ZSgpIGZvciBNVDI3MDEKaGRtaSBw
-aHkKCldlbiBZYW5nICgxKToKICAgICAgZHJtL21lZGlhdGVrOiBmaXggcG9zc2libGUgb2JqZWN0
-IHJlZmVyZW5jZSBsZWFrCgogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYyAgICAg
-ICAgICAgICB8ICA4ICsrLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYu
-YyAgICAgICAgIHwgIDcgKysrKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZ2Vt
-LmMgICAgICAgICB8IDQ2CisrKysrKysrKysrKysrKysrKysrKysrKwogZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19kcm1fZ2VtLmggICAgICAgICB8ICAzICsrCiBkcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2hkbWkuYyAgICAgICAgICAgIHwgIDIgKy0KIGRyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfaGRtaV9waHkuYyAgICAgICAgfCAzNSArKystLS0tLS0tLS0tLS0tLS0KIGRy
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuaCAgICAgICAgfCAgNSArLS0KIGRy
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQyNzAxX2hkbWlfcGh5LmMgfCA0OQorKysrKysr
-KysrKysrKysrKysrKysrLS0tLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxNzNf
-aGRtaV9waHkuYyB8IDIzICsrKysrKysrKysrKwogOSBmaWxlcyBjaGFuZ2VkLCAxMzIgaW5zZXJ0
-aW9ucygrKSwgNDYgZGVsZXRpb25zKC0pCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
-dGluZm8vZHJpLWRldmVs
+Use devm_clk_get_optional() to get optional clock
+
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+v2: no changes
+---
+ drivers/phy/mediatek/phy-mtk-tphy.c | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
+index 5b6a470ca145..cb2ed3b25068 100644
+--- a/drivers/phy/mediatek/phy-mtk-tphy.c
++++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+@@ -1103,13 +1103,9 @@ static int mtk_tphy_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	/* it's deprecated, make it optional for backward compatibility */
+-	tphy->u3phya_ref = devm_clk_get(dev, "u3phya_ref");
+-	if (IS_ERR(tphy->u3phya_ref)) {
+-		if (PTR_ERR(tphy->u3phya_ref) == -EPROBE_DEFER)
+-			return -EPROBE_DEFER;
+-
+-		tphy->u3phya_ref = NULL;
+-	}
++	tphy->u3phya_ref = devm_clk_get_optional(dev, "u3phya_ref");
++	if (IS_ERR(tphy->u3phya_ref))
++		return PTR_ERR(tphy->u3phya_ref);
+ 
+ 	tphy->src_ref_clk = U3P_REF_CLK;
+ 	tphy->src_coef = U3P_SLEW_RATE_COEF;
+-- 
+2.21.0
