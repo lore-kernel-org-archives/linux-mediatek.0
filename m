@@ -1,11 +1,13 @@
-From: Jjian Zhou <jjian.zhou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH] arm64: dts: mt8183: add mmc node
-Date: Wed, 10 Apr 2019 17:25:41 +0800
-Message-ID: <1554888341-5249-1-git-send-email-jjian.zhou@mediatek.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 0/1] ASoC: Mediatek: MT8183: add I2S2 control path
+ from UL2 and UL3
+Date: Wed, 10 Apr 2019 10:35:30 +0100
+Message-ID: <20190410093530.GB6106@sirena.org.uk>
+References: <20190409091337.43934-1-shunli.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6534884139436181741=="
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190409091337.43934-1-shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -15,227 +17,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: =linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, jjian zhou <jjian.zhou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+To: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, tzungbi-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: jjian zhou <jjian.zhou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Add mmc DTS node to the mt8183 and mt8183-evb.
+--===============6534884139436181741==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="7ZAtKRhVyVSsbBD2"
+Content-Disposition: inline
 
-Signed-off-by: Jjian Zhou <jjian.zhou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
-This patch is based on v5.1-rc1 and these patches:
-http://lists.infradead.org/pipermail/linux-mediatek/2019-March/017963.html
-https://patchwork.kernel.org/patch/10856987/
-https://patchwork.kernel.org/cover/10879001/
-https://patchwork.kernel.org/cover/10846677/
----
- arch/arm64/boot/dts/mediatek/mt8183-evb.dts | 149 ++++++++++++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8183.dtsi    |  24 +++++
- 2 files changed, 173 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-index 9b52559..465cdab 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-@@ -7,6 +7,7 @@
+--7ZAtKRhVyVSsbBD2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
- /dts-v1/;
- #include "mt8183.dtsi"
-+#include "mt6358.dtsi"
+On Tue, Apr 09, 2019 at 05:13:36PM +0800, Shunli Wang wrote:
+> ASoC: Mediatek: MT8183: add I2S2 control path from UL2 and UL3
+>=20
+> Shunli Wang (1):
+>   ASoC: Mediatek: MT8183: add I2S2 control path from UL2 and UL3
+>=20
+>  sound/soc/mediatek/mt8183/mt8183-afe-pcm.c | 38 ++++++++++++++++++++++
+>  1 file changed, 38 insertions(+)
 
- / {
- 	model = "MediaTek MT8183 evaluation board";
-@@ -26,6 +27,154 @@
- 	};
- };
+Please don't send cover letters for single patches, if there is anything
+that needs saying put it in the changelog of the patch or after the ---
+if it's administrative stuff.  This reduces mail volume and ensures that=20
+any important information is recorded in the changelog rather than being
+lost.=20
 
-+&mmc0 {
-+	status = "okay";
-+	pinctrl-names = "default", "state_uhs";
-+	pinctrl-0 = <&mmc0_pins_default>;
-+	pinctrl-1 = <&mmc0_pins_uhs>;
-+	bus-width = <8>;
-+	max-frequency = <200000000>;
-+	cap-mmc-highspeed;
-+	mmc-hs200-1_8v;
-+	mmc-hs400-1_8v;
-+	cap-mmc-hw-reset;
-+	no-sdio;
-+	no-sd;
-+	hs400-ds-delay = <0x12814>;
-+	vmmc-supply = <&mt6358_vemc_reg>;
-+	vqmmc-supply = <&mt6358_vio18_reg>;
-+	assigned-clocks = <&topckgen CLK_TOP_MUX_MSDC50_0>;
-+	assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL_CK>;
-+	non-removable;
-+};
-+
-+&mmc1 {
-+	status = "okay";
-+	pinctrl-names = "default", "state_uhs";
-+	pinctrl-0 = <&mmc1_pins_default>;
-+	pinctrl-1 = <&mmc1_pins_uhs>;
-+	bus-width = <4>;
-+	max-frequency = <200000000>;
-+	cap-sd-highspeed;
-+	sd-uhs-sdr50;
-+	sd-uhs-sdr104;
-+	cap-sdio-irq;
-+	no-mmc;
-+	no-sd;
-+	vmmc-supply = <&mt6358_vmch_reg>;
-+	vqmmc-supply = <&mt6358_vmc_reg>;
-+	keep-power-in-suspend;
-+	enable-sdio-wakeup;
-+	non-removable;
-+};
-+
-+&pio {
-+	mmc0_pins_default: mmc0default {
-+		pins_cmd_dat {
-+			pinmux = <PINMUX_GPIO123__FUNC_MSDC0_DAT0>,
-+				 <PINMUX_GPIO128__FUNC_MSDC0_DAT1>,
-+				 <PINMUX_GPIO125__FUNC_MSDC0_DAT2>,
-+				 <PINMUX_GPIO132__FUNC_MSDC0_DAT3>,
-+				 <PINMUX_GPIO126__FUNC_MSDC0_DAT4>,
-+				 <PINMUX_GPIO129__FUNC_MSDC0_DAT5>,
-+				 <PINMUX_GPIO127__FUNC_MSDC0_DAT6>,
-+				 <PINMUX_GPIO130__FUNC_MSDC0_DAT7>,
-+				 <PINMUX_GPIO122__FUNC_MSDC0_CMD>;
-+			input-enable;
-+			bias-pull-up;
-+		};
-+
-+		pins_clk {
-+			pinmux = <PINMUX_GPIO124__FUNC_MSDC0_CLK>;
-+			bias-pull-down;
-+		};
-+
-+		pins_rst {
-+			pinmux = <PINMUX_GPIO133__FUNC_MSDC0_RSTB>;
-+			bias-pull-up;
-+		};
-+	};
-+
-+	mmc0_pins_uhs: mmc0@0{
-+		pins_cmd_dat {
-+			pinmux = <PINMUX_GPIO123__FUNC_MSDC0_DAT0>,
-+				 <PINMUX_GPIO128__FUNC_MSDC0_DAT1>,
-+				 <PINMUX_GPIO125__FUNC_MSDC0_DAT2>,
-+				 <PINMUX_GPIO132__FUNC_MSDC0_DAT3>,
-+				 <PINMUX_GPIO126__FUNC_MSDC0_DAT4>,
-+				 <PINMUX_GPIO129__FUNC_MSDC0_DAT5>,
-+				 <PINMUX_GPIO127__FUNC_MSDC0_DAT6>,
-+				 <PINMUX_GPIO130__FUNC_MSDC0_DAT7>,
-+				 <PINMUX_GPIO122__FUNC_MSDC0_CMD>;
-+			input-enable;
-+			drive-strength = <MTK_DRIVE_10mA>;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+		};
-+
-+		pins_clk {
-+			pinmux = <PINMUX_GPIO124__FUNC_MSDC0_CLK>;
-+			drive-strength = <MTK_DRIVE_10mA>;
-+			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+		};
-+
-+		pins_ds {
-+			pinmux = <PINMUX_GPIO131__FUNC_MSDC0_DSL>;
-+			drive-strength = <MTK_DRIVE_10mA>;
-+			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+		};
-+
-+		pins_rst {
-+			pinmux = <PINMUX_GPIO133__FUNC_MSDC0_RSTB>;
-+			drive-strength = <MTK_DRIVE_10mA>;
-+			bias-pull-up;
-+		};
-+	};
-+
-+	mmc1_pins_default: mmc1default {
-+		pins_cmd_dat {
-+			pinmux = <PINMUX_GPIO31__FUNC_MSDC1_CMD>,
-+				   <PINMUX_GPIO32__FUNC_MSDC1_DAT0>,
-+				   <PINMUX_GPIO34__FUNC_MSDC1_DAT1>,
-+				   <PINMUX_GPIO33__FUNC_MSDC1_DAT2>,
-+				   <PINMUX_GPIO30__FUNC_MSDC1_DAT3>;
-+			input-enable;
-+			bias-pull-up;
-+		};
-+
-+		pins_clk {
-+			pinmux = <PINMUX_GPIO29__FUNC_MSDC1_CLK>;
-+			input-enable;
-+			bias-pull-down;
-+		};
-+
-+		pins_pmu {
-+			pinmux = <PINMUX_GPIO178__FUNC_GPIO178>,
-+				   <PINMUX_GPIO166__FUNC_GPIO166>;
-+			output-high;
-+		};
-+	};
-+
-+	mmc1_pins_uhs: mmc1@0{
-+		pins_cmd_dat {
-+			pinmux = <PINMUX_GPIO31__FUNC_MSDC1_CMD>,
-+				   <PINMUX_GPIO32__FUNC_MSDC1_DAT0>,
-+				   <PINMUX_GPIO34__FUNC_MSDC1_DAT1>,
-+				   <PINMUX_GPIO33__FUNC_MSDC1_DAT2>,
-+				   <PINMUX_GPIO30__FUNC_MSDC1_DAT3>;
-+			drive-strength = <MTK_DRIVE_6mA>;
-+			input-enable;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+		};
-+
-+		pins_clk {
-+			pinmux = <PINMUX_GPIO29__FUNC_MSDC1_CLK>;
-+			drive-strength = <MTK_DRIVE_6mA>;
-+			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+			input-enable;
-+		};
-+	};
-+};
-+
- &uart0 {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 482e451..38cec41 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -273,6 +273,30 @@
- 			#clock-cells = <1>;
- 		};
+--7ZAtKRhVyVSsbBD2
+Content-Type: application/pgp-signature; name="signature.asc"
 
-+		mmc0: mmc@11230000 {
-+			compatible = "mediatek,mt8183-mmc";
-+			reg = <0 0x11230000 0 0x1000>,
-+			      <0 0x11f50000 0 0x1000>;
-+			interrupts = <GIC_SPI 77 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&topckgen CLK_TOP_MUX_MSDC50_0>,
-+				 <&infracfg CLK_INFRA_MSDC0>,
-+				 <&infracfg CLK_INFRA_MSDC0_SCK>;
-+			clock-names = "source", "hclk", "source_cg";
-+			status = "disabled";
-+		};
-+
-+		mmc1: mmc@11240000 {
-+			compatible = "mediatek,mt8183-mmc";
-+			reg = <0 0x11240000 0 0x1000>,
-+			      <0 0x11e10000 0 0x1000>;
-+			interrupts = <GIC_SPI 78 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&topckgen CLK_TOP_MUX_MSDC30_1>,
-+				 <&infracfg CLK_INFRA_MSDC1>,
-+				 <&infracfg CLK_INFRA_MSDC1_SCK>;
-+			clock-names = "source", "hclk", "source_cg";
-+			status = "disabled";
-+		};
-+
- 		mfgcfg: syscon@13000000 {
- 			compatible = "mediatek,mt8183-mfgcfg", "syscon";
- 			reg = <0 0x13000000 0 0x1000>;
---
-1.9.1
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlytuOEACgkQJNaLcl1U
+h9DHNAf/dlx4IJydb6KythBwiVaJvkDCgOxwxC+hF44H73d0W9VHNL4viNE+jbaN
+6rzj46try2XnWwcQzG4qNUtVtMNInZPiaC0hGLjXVgK80dBtptlzE3Pc6258JsRr
+cO7L/b7+mA1KKq4pcGL73KhD6/kQ3KvjJIBU7dTaosPx/pHU4VaZ2BosW3DTewXB
+aaPdUy98PUKSUG4rZsC7qeadMBrYbUtEB5/uyY5PQMYRABuKZF2wMdjeUmdAw00n
+Nq6HW81mpQPUun5OV6ijc6Rf/QIN5SedR3velXhvmXaFQI60Zzqgo1K8XLeLMN8J
+PrJwhAk/s39pbvQLBL65a4TVGw4zYQ==
+=5E9n
+-----END PGP SIGNATURE-----
+
+--7ZAtKRhVyVSsbBD2--
+
+
+--===============6534884139436181741==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============6534884139436181741==--
