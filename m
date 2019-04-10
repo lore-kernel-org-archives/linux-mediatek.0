@@ -1,54 +1,241 @@
-From: Jerome Brunet <jbrunet@baylibre.com>
-Subject: Re: [v2 PATCH 4/4] phy: phy-meson-gxl-usb2: get optional clock by
- devm_clk_get_optional()
-Date: Wed, 10 Apr 2019 10:18:47 +0200
-Message-ID: <ece510f7d393e4b04c920e88968e9bb41cde6b14.camel@baylibre.com>
-References: <a8539bcf66065380069676fbea99a51254309803.1554874961.git.chunfeng.yun@mediatek.com>
-         <9f04a619e8a2cc44f5b1fe299a08f237f069d56d.1554874961.git.chunfeng.yun@mediatek.com>
+From: Jjian Zhou <jjian.zhou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] arm64: dts: mt8183: add mmc node
+Date: Wed, 10 Apr 2019 17:25:41 +0800
+Message-ID: <1554888341-5249-1-git-send-email-jjian.zhou@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <9f04a619e8a2cc44f5b1fe299a08f237f069d56d.1554874961.git.chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Masahiro Yamada <yamada.masahiro@socionext.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Grygorii Strashko <grygorii.strashko@ti.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <masami.hiramatsu@linaro.org>, Motoya Tanigawa <tanigawa.motoya@socionext.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: =linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, jjian zhou <jjian.zhou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2019-04-10 at 14:13 +0800, Chunfeng Yun wrote:
-> Use devm_clk_get_optional() to get optional clock
-> 
-> Cc: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> Acked-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+From: jjian zhou <jjian.zhou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Reviewed-by: Jerome Brunet <jbrunet@baylibre.com>
+Add mmc DTS node to the mt8183 and mt8183-evb.
 
-> ---
-> v2: add Acked-by Martin Blumenstingl
-> ---
->  drivers/phy/amlogic/phy-meson-gxl-usb2.c | 11 +++--------
->  1 file changed, 3 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/phy/amlogic/phy-meson-gxl-usb2.c b/drivers/phy/amlogic/phy-meson-gxl-usb2.c
-> index 148ef0bdb9c1..4cbee412f2b0 100644
-> --- a/drivers/phy/amlogic/phy-meson-gxl-usb2.c
-> +++ b/drivers/phy/amlogic/phy-meson-gxl-usb2.c
-> @@ -261,14 +261,9 @@ static int phy_meson_gxl_usb2_probe(struct platform_device *pdev)
->  	if (IS_ERR(priv->regmap))
->  		return PTR_ERR(priv->regmap);
->  
-> -	priv->clk = devm_clk_get(dev, "phy");
-> -	if (IS_ERR(priv->clk)) {
-> -		ret = PTR_ERR(priv->clk);
-> -		if (ret == -ENOENT)
-> -			priv->clk = NULL;
-> -		else
-> -			return ret;
-> -	}
-> +	priv->clk = devm_clk_get_optional(dev, "phy");
-> +	if (IS_ERR(priv->clk))
-> +		return PTR_ERR(priv->clk);
->  
->  	priv->reset = devm_reset_control_get_optional_shared(dev, "phy");
->  	if (IS_ERR(priv->reset))
+Signed-off-by: Jjian Zhou <jjian.zhou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+This patch is based on v5.1-rc1 and these patches:
+http://lists.infradead.org/pipermail/linux-mediatek/2019-March/017963.html
+https://patchwork.kernel.org/patch/10856987/
+https://patchwork.kernel.org/cover/10879001/
+https://patchwork.kernel.org/cover/10846677/
+---
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts | 149 ++++++++++++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi    |  24 +++++
+ 2 files changed, 173 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+index 9b52559..465cdab 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+@@ -7,6 +7,7 @@
+
+ /dts-v1/;
+ #include "mt8183.dtsi"
++#include "mt6358.dtsi"
+
+ / {
+ 	model = "MediaTek MT8183 evaluation board";
+@@ -26,6 +27,154 @@
+ 	};
+ };
+
++&mmc0 {
++	status = "okay";
++	pinctrl-names = "default", "state_uhs";
++	pinctrl-0 = <&mmc0_pins_default>;
++	pinctrl-1 = <&mmc0_pins_uhs>;
++	bus-width = <8>;
++	max-frequency = <200000000>;
++	cap-mmc-highspeed;
++	mmc-hs200-1_8v;
++	mmc-hs400-1_8v;
++	cap-mmc-hw-reset;
++	no-sdio;
++	no-sd;
++	hs400-ds-delay = <0x12814>;
++	vmmc-supply = <&mt6358_vemc_reg>;
++	vqmmc-supply = <&mt6358_vio18_reg>;
++	assigned-clocks = <&topckgen CLK_TOP_MUX_MSDC50_0>;
++	assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL_CK>;
++	non-removable;
++};
++
++&mmc1 {
++	status = "okay";
++	pinctrl-names = "default", "state_uhs";
++	pinctrl-0 = <&mmc1_pins_default>;
++	pinctrl-1 = <&mmc1_pins_uhs>;
++	bus-width = <4>;
++	max-frequency = <200000000>;
++	cap-sd-highspeed;
++	sd-uhs-sdr50;
++	sd-uhs-sdr104;
++	cap-sdio-irq;
++	no-mmc;
++	no-sd;
++	vmmc-supply = <&mt6358_vmch_reg>;
++	vqmmc-supply = <&mt6358_vmc_reg>;
++	keep-power-in-suspend;
++	enable-sdio-wakeup;
++	non-removable;
++};
++
++&pio {
++	mmc0_pins_default: mmc0default {
++		pins_cmd_dat {
++			pinmux = <PINMUX_GPIO123__FUNC_MSDC0_DAT0>,
++				 <PINMUX_GPIO128__FUNC_MSDC0_DAT1>,
++				 <PINMUX_GPIO125__FUNC_MSDC0_DAT2>,
++				 <PINMUX_GPIO132__FUNC_MSDC0_DAT3>,
++				 <PINMUX_GPIO126__FUNC_MSDC0_DAT4>,
++				 <PINMUX_GPIO129__FUNC_MSDC0_DAT5>,
++				 <PINMUX_GPIO127__FUNC_MSDC0_DAT6>,
++				 <PINMUX_GPIO130__FUNC_MSDC0_DAT7>,
++				 <PINMUX_GPIO122__FUNC_MSDC0_CMD>;
++			input-enable;
++			bias-pull-up;
++		};
++
++		pins_clk {
++			pinmux = <PINMUX_GPIO124__FUNC_MSDC0_CLK>;
++			bias-pull-down;
++		};
++
++		pins_rst {
++			pinmux = <PINMUX_GPIO133__FUNC_MSDC0_RSTB>;
++			bias-pull-up;
++		};
++	};
++
++	mmc0_pins_uhs: mmc0@0{
++		pins_cmd_dat {
++			pinmux = <PINMUX_GPIO123__FUNC_MSDC0_DAT0>,
++				 <PINMUX_GPIO128__FUNC_MSDC0_DAT1>,
++				 <PINMUX_GPIO125__FUNC_MSDC0_DAT2>,
++				 <PINMUX_GPIO132__FUNC_MSDC0_DAT3>,
++				 <PINMUX_GPIO126__FUNC_MSDC0_DAT4>,
++				 <PINMUX_GPIO129__FUNC_MSDC0_DAT5>,
++				 <PINMUX_GPIO127__FUNC_MSDC0_DAT6>,
++				 <PINMUX_GPIO130__FUNC_MSDC0_DAT7>,
++				 <PINMUX_GPIO122__FUNC_MSDC0_CMD>;
++			input-enable;
++			drive-strength = <MTK_DRIVE_10mA>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++
++		pins_clk {
++			pinmux = <PINMUX_GPIO124__FUNC_MSDC0_CLK>;
++			drive-strength = <MTK_DRIVE_10mA>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++		};
++
++		pins_ds {
++			pinmux = <PINMUX_GPIO131__FUNC_MSDC0_DSL>;
++			drive-strength = <MTK_DRIVE_10mA>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++		};
++
++		pins_rst {
++			pinmux = <PINMUX_GPIO133__FUNC_MSDC0_RSTB>;
++			drive-strength = <MTK_DRIVE_10mA>;
++			bias-pull-up;
++		};
++	};
++
++	mmc1_pins_default: mmc1default {
++		pins_cmd_dat {
++			pinmux = <PINMUX_GPIO31__FUNC_MSDC1_CMD>,
++				   <PINMUX_GPIO32__FUNC_MSDC1_DAT0>,
++				   <PINMUX_GPIO34__FUNC_MSDC1_DAT1>,
++				   <PINMUX_GPIO33__FUNC_MSDC1_DAT2>,
++				   <PINMUX_GPIO30__FUNC_MSDC1_DAT3>;
++			input-enable;
++			bias-pull-up;
++		};
++
++		pins_clk {
++			pinmux = <PINMUX_GPIO29__FUNC_MSDC1_CLK>;
++			input-enable;
++			bias-pull-down;
++		};
++
++		pins_pmu {
++			pinmux = <PINMUX_GPIO178__FUNC_GPIO178>,
++				   <PINMUX_GPIO166__FUNC_GPIO166>;
++			output-high;
++		};
++	};
++
++	mmc1_pins_uhs: mmc1@0{
++		pins_cmd_dat {
++			pinmux = <PINMUX_GPIO31__FUNC_MSDC1_CMD>,
++				   <PINMUX_GPIO32__FUNC_MSDC1_DAT0>,
++				   <PINMUX_GPIO34__FUNC_MSDC1_DAT1>,
++				   <PINMUX_GPIO33__FUNC_MSDC1_DAT2>,
++				   <PINMUX_GPIO30__FUNC_MSDC1_DAT3>;
++			drive-strength = <MTK_DRIVE_6mA>;
++			input-enable;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++
++		pins_clk {
++			pinmux = <PINMUX_GPIO29__FUNC_MSDC1_CLK>;
++			drive-strength = <MTK_DRIVE_6mA>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++			input-enable;
++		};
++	};
++};
++
+ &uart0 {
+ 	status = "okay";
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 482e451..38cec41 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -273,6 +273,30 @@
+ 			#clock-cells = <1>;
+ 		};
+
++		mmc0: mmc@11230000 {
++			compatible = "mediatek,mt8183-mmc";
++			reg = <0 0x11230000 0 0x1000>,
++			      <0 0x11f50000 0 0x1000>;
++			interrupts = <GIC_SPI 77 IRQ_TYPE_LEVEL_LOW>;
++			clocks = <&topckgen CLK_TOP_MUX_MSDC50_0>,
++				 <&infracfg CLK_INFRA_MSDC0>,
++				 <&infracfg CLK_INFRA_MSDC0_SCK>;
++			clock-names = "source", "hclk", "source_cg";
++			status = "disabled";
++		};
++
++		mmc1: mmc@11240000 {
++			compatible = "mediatek,mt8183-mmc";
++			reg = <0 0x11240000 0 0x1000>,
++			      <0 0x11e10000 0 0x1000>;
++			interrupts = <GIC_SPI 78 IRQ_TYPE_LEVEL_LOW>;
++			clocks = <&topckgen CLK_TOP_MUX_MSDC30_1>,
++				 <&infracfg CLK_INFRA_MSDC1>,
++				 <&infracfg CLK_INFRA_MSDC1_SCK>;
++			clock-names = "source", "hclk", "source_cg";
++			status = "disabled";
++		};
++
+ 		mfgcfg: syscon@13000000 {
+ 			compatible = "mediatek,mt8183-mfgcfg", "syscon";
+ 			reg = <0 0x13000000 0 0x1000>;
+--
+1.9.1
