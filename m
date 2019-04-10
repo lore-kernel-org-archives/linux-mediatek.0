@@ -1,106 +1,54 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [v3 PATCH] PCI: mediatek: get optional clock by
+From: Jerome Brunet <jbrunet@baylibre.com>
+Subject: Re: [v2 PATCH 4/4] phy: phy-meson-gxl-usb2: get optional clock by
  devm_clk_get_optional()
-Date: Wed, 10 Apr 2019 14:54:16 +0800
-Message-ID: <c4579e5a72f169808a9ad4aefdd7bf7b75d10d61.1554879079.git.chunfeng.yun@mediatek.com>
+Date: Wed, 10 Apr 2019 10:18:47 +0200
+Message-ID: <ece510f7d393e4b04c920e88968e9bb41cde6b14.camel@baylibre.com>
+References: <a8539bcf66065380069676fbea99a51254309803.1554874961.git.chunfeng.yun@mediatek.com>
+         <9f04a619e8a2cc44f5b1fe299a08f237f069d56d.1554874961.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Ryder Lee <ryder.lee@mediatek.com>, Honghui Zhang <honghui.zhang@mediatek.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-mediatek@lists.infradead.org, Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <9f04a619e8a2cc44f5b1fe299a08f237f069d56d.1554874961.git.chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Masahiro Yamada <yamada.masahiro@socionext.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Grygorii Strashko <grygorii.strashko@ti.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <masami.hiramatsu@linaro.org>, Motoya Tanigawa <tanigawa.motoya@socionext.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Use devm_clk_get_optional() to get optional clock
+On Wed, 2019-04-10 at 14:13 +0800, Chunfeng Yun wrote:
+> Use devm_clk_get_optional() to get optional clock
+> 
+> Cc: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> Acked-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 
-Cc: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Honghui Zhang <honghui.zhang@mediatek.com>
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Acked-by: Ryder Lee <ryder.lee@mediatek.com>
-Acked-by: Honghui Zhang <honghui.zhang@mediatek.com>
----
-v3: add Acked-by Ryder and Honghui
----
- drivers/pci/controller/pcie-mediatek.c | 50 ++++++++------------------
- 1 file changed, 15 insertions(+), 35 deletions(-)
+Reviewed-by: Jerome Brunet <jbrunet@baylibre.com>
 
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 0b6c72804e03..adb6cb15daa2 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -915,49 +915,29 @@ static int mtk_pcie_parse_port(struct mtk_pcie *pcie,
- 
- 	/* sys_ck might be divided into the following parts in some chips */
- 	snprintf(name, sizeof(name), "ahb_ck%d", slot);
--	port->ahb_ck = devm_clk_get(dev, name);
--	if (IS_ERR(port->ahb_ck)) {
--		if (PTR_ERR(port->ahb_ck) == -EPROBE_DEFER)
--			return -EPROBE_DEFER;
--
--		port->ahb_ck = NULL;
--	}
-+	port->ahb_ck = devm_clk_get_optional(dev, name);
-+	if (IS_ERR(port->ahb_ck))
-+		return PTR_ERR(port->ahb_ck);
- 
- 	snprintf(name, sizeof(name), "axi_ck%d", slot);
--	port->axi_ck = devm_clk_get(dev, name);
--	if (IS_ERR(port->axi_ck)) {
--		if (PTR_ERR(port->axi_ck) == -EPROBE_DEFER)
--			return -EPROBE_DEFER;
--
--		port->axi_ck = NULL;
--	}
-+	port->axi_ck = devm_clk_get_optional(dev, name);
-+	if (IS_ERR(port->axi_ck))
-+		return PTR_ERR(port->axi_ck);
- 
- 	snprintf(name, sizeof(name), "aux_ck%d", slot);
--	port->aux_ck = devm_clk_get(dev, name);
--	if (IS_ERR(port->aux_ck)) {
--		if (PTR_ERR(port->aux_ck) == -EPROBE_DEFER)
--			return -EPROBE_DEFER;
--
--		port->aux_ck = NULL;
--	}
-+	port->aux_ck = devm_clk_get_optional(dev, name);
-+	if (IS_ERR(port->aux_ck))
-+		return PTR_ERR(port->aux_ck);
- 
- 	snprintf(name, sizeof(name), "obff_ck%d", slot);
--	port->obff_ck = devm_clk_get(dev, name);
--	if (IS_ERR(port->obff_ck)) {
--		if (PTR_ERR(port->obff_ck) == -EPROBE_DEFER)
--			return -EPROBE_DEFER;
--
--		port->obff_ck = NULL;
--	}
-+	port->obff_ck = devm_clk_get_optional(dev, name);
-+	if (IS_ERR(port->obff_ck))
-+		return PTR_ERR(port->obff_ck);
- 
- 	snprintf(name, sizeof(name), "pipe_ck%d", slot);
--	port->pipe_ck = devm_clk_get(dev, name);
--	if (IS_ERR(port->pipe_ck)) {
--		if (PTR_ERR(port->pipe_ck) == -EPROBE_DEFER)
--			return -EPROBE_DEFER;
--
--		port->pipe_ck = NULL;
--	}
-+	port->pipe_ck = devm_clk_get_optional(dev, name);
-+	if (IS_ERR(port->pipe_ck))
-+		return PTR_ERR(port->pipe_ck);
- 
- 	snprintf(name, sizeof(name), "pcie-rst%d", slot);
- 	port->reset = devm_reset_control_get_optional_exclusive(dev, name);
--- 
-2.21.0
+> ---
+> v2: add Acked-by Martin Blumenstingl
+> ---
+>  drivers/phy/amlogic/phy-meson-gxl-usb2.c | 11 +++--------
+>  1 file changed, 3 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/phy/amlogic/phy-meson-gxl-usb2.c b/drivers/phy/amlogic/phy-meson-gxl-usb2.c
+> index 148ef0bdb9c1..4cbee412f2b0 100644
+> --- a/drivers/phy/amlogic/phy-meson-gxl-usb2.c
+> +++ b/drivers/phy/amlogic/phy-meson-gxl-usb2.c
+> @@ -261,14 +261,9 @@ static int phy_meson_gxl_usb2_probe(struct platform_device *pdev)
+>  	if (IS_ERR(priv->regmap))
+>  		return PTR_ERR(priv->regmap);
+>  
+> -	priv->clk = devm_clk_get(dev, "phy");
+> -	if (IS_ERR(priv->clk)) {
+> -		ret = PTR_ERR(priv->clk);
+> -		if (ret == -ENOENT)
+> -			priv->clk = NULL;
+> -		else
+> -			return ret;
+> -	}
+> +	priv->clk = devm_clk_get_optional(dev, "phy");
+> +	if (IS_ERR(priv->clk))
+> +		return PTR_ERR(priv->clk);
+>  
+>  	priv->reset = devm_reset_control_get_optional_shared(dev, "phy");
+>  	if (IS_ERR(priv->reset))
