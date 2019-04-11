@@ -1,122 +1,59 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v2 09/25] drm/mediatek: add mmsys private data for ddp
- path config
-Date: Thu, 11 Apr 2019 18:42:01 +0800
-Message-ID: <1554979321.31912.9.camel@mtksdaap41>
-References: <1553667561-25447-1-git-send-email-yongqiang.niu@mediatek.com>
- <1553667561-25447-10-git-send-email-yongqiang.niu@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v2] mmc: mtk-sd: check for valid optional memory resource
+Date: Thu, 11 Apr 2019 12:43:13 +0200
+Message-ID: <CAPDyKFrKxGxp5K38P-AHrRpjOGjKhBv333HXAHPNKYWqLJmz+g@mail.gmail.com>
+References: <20190403193050.22180-1-fparent@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1553667561-25447-10-git-send-email-yongqiang.niu@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: yongqiang.niu@mediatek.com
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190403193050.22180-1-fparent@baylibre.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Fabien Parent <fparent@baylibre.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, Jjian Zhou <jjian.zhou@mediatek.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFlvbmdxaWFuZzoKCk9uIFdlZCwgMjAxOS0wMy0yNyBhdCAxNDoxOSArMDgwMCwgeW9uZ3Fp
-YW5nLm5pdUBtZWRpYXRlay5jb20gd3JvdGU6Cj4gRnJvbTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3Fp
-YW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gCj4gVGhpcyBwYXRjaCBhZGQgbW1zeXMgcHJpdmF0ZSBk
-YXRhIGZvciBkZHAgcGF0aCBjb25maWcKPiBhbGwgdGhlc2UgcmVnaXN0ZXIgb2Zmc2V0IGFuZCB2
-YWx1ZSB3aWxsIGJlIGRpZmZlcmVudCBpbiBmdXR1cmUgU09DCj4gYWRkIHRoZXNlIGRlZmluZSBp
-bnRvIG1tc3lzIHByaXZhdGUgZGF0YQo+IAl1MzIgb3ZsMF9tb3V0X2VuOwo+IAl1MzIgcmRtYTBf
-c291dF9zZWxfaW47Cj4gCXUzMiByZG1hMF9zb3V0X2NvbG9yMDsKPiAJdTMyIHJkbWExX3NvdXRf
-c2VsX2luOwo+IAl1MzIgcmRtYTFfc291dF9kcGkwOwo+IAl1MzIgcmRtYTFfc291dF9kc2kwOwo+
-IAl1MzIgZHBpMF9zZWxfaW47Cj4gCXUzMiBkcGkwX3NlbF9pbl9yZG1hMTsKPiAJdTMyIGRzaTBf
-c2VsX2luOwo+IAl1MzIgZHNpMF9zZWxfaW5fcmRtYTE7Cj4gCj4gU2lnbmVkLW9mZi1ieTogWW9u
-Z3FpYW5nIE5pdSA8eW9uZ3FpYW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gLS0tCj4gIGRyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYyB8ICAgNCArKwo+ICBkcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYyAgfCAxMDMgKysrKysrKysrKysrKysrKysrKysrKysr
-KystLS0tLS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmggIHwgIDEw
-ICsrKysKPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMgIHwgIDExICsr
-KysKPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmggIHwgICA0ICsrCj4g
-IDUgZmlsZXMgY2hhbmdlZCwgMTEzIGluc2VydGlvbnMoKyksIDE5IGRlbGV0aW9ucygtKQoKW3Nu
-aXBdCgo+ICAKPiArY29uc3Qgc3RydWN0IG10a19tbXN5c19yZWdfZGF0YSAqbXRrX2RkcF9nZXRf
-bW1zeXNfZGF0YShlbnVtIG10a19tbXN5c19pZCBpZCkKPiArewo+ICsJY29uc3Qgc3RydWN0IG10
-a19tbXN5c19yZWdfZGF0YSAqZGF0YSA9IE5VTEw7Cj4gKwo+ICsJc3dpdGNoIChpZCkgewo+ICsJ
-Y2FzZSBNTVNZU19NVDI3MDE6Cj4gKwkJZGF0YSA9ICZtdDI3MDFfbW1zeXNfcmVnX2RhdGE7Cj4g
-KwkJYnJlYWs7Cj4gKwljYXNlIE1NU1lTX01UMjcxMjoKPiArCQlkYXRhID0gJm10ODE3M19tbXN5
-c19yZWdfZGF0YTsKPiArCQlicmVhazsKPiArCWNhc2UgTU1TWVNfTVQ4MTczOgo+ICsJCWRhdGEg
-PSAmbXQ4MTczX21tc3lzX3JlZ19kYXRhOwo+ICsJCWJyZWFrOwo+ICsJZGVmYXVsdDoKPiArCQlw
-cl9pbmZvKCJtdGsgZHJtIG5vdCBzdXBwb3J0IG1tc3lzIGlkICVkXG4iLAo+ICsJCQlpZCk7Cj4g
-KwkJYnJlYWs7Cj4gKwl9Cj4gKwo+ICsJcmV0dXJuIGRhdGE7Cj4gK30KPiArCj4gIHN0cnVjdCBt
-dGtfZGlzcF9tdXRleCAqbXRrX2Rpc3BfbXV0ZXhfZ2V0KHN0cnVjdCBkZXZpY2UgKmRldiwgdW5z
-aWduZWQgaW50IGlkKQo+ICB7Cj4gIAlzdHJ1Y3QgbXRrX2RkcCAqZGRwID0gZGV2X2dldF9kcnZk
-YXRhKGRldik7Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJt
-X2RkcC5oIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmgKPiBpbmRleCBm
-OWE3OTkxLi5lZDJiNzAyIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHJtX2RkcC5oCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRw
-LmgKPiBAQCAtMTksMTEgKzE5LDIxIEBACj4gIHN0cnVjdCByZWdtYXA7Cj4gIHN0cnVjdCBkZXZp
-Y2U7Cj4gIHN0cnVjdCBtdGtfZGlzcF9tdXRleDsKPiArc3RydWN0IG10a19tbXN5c19yZWdfZGF0
-YTsKPiArZW51bSBtdGtfbW1zeXNfaWQgewo+ICsJTU1TWVNfTVQyNzAxLAo+ICsJTU1TWVNfTVQy
-NzEyLAo+ICsJTU1TWVNfTVQ4MTczLAo+ICsJTU1TWVNfTUFYLAo+ICt9Owo+ICAKPiArY29uc3Qg
-c3RydWN0IG10a19tbXN5c19yZWdfZGF0YSAqbXRrX2RkcF9nZXRfbW1zeXNfZGF0YShlbnVtIG10
-a19tbXN5c19pZCBpZCk7Cj4gIHZvaWQgbXRrX2RkcF9hZGRfY29tcF90b19wYXRoKHZvaWQgX19p
-b21lbSAqY29uZmlnX3JlZ3MsCj4gKwkJCSAgICAgIGNvbnN0IHN0cnVjdCBtdGtfbW1zeXNfcmVn
-X2RhdGEgKnJlZ19kYXRhLAo+ICAJCQkgICAgICBlbnVtIG10a19kZHBfY29tcF9pZCBjdXIsCj4g
-IAkJCSAgICAgIGVudW0gbXRrX2RkcF9jb21wX2lkIG5leHQpOwo+ICB2b2lkIG10a19kZHBfcmVt
-b3ZlX2NvbXBfZnJvbV9wYXRoKHZvaWQgX19pb21lbSAqY29uZmlnX3JlZ3MsCj4gKwkJCQkgICBj
-b25zdCBzdHJ1Y3QgbXRrX21tc3lzX3JlZ19kYXRhICpyZWdfZGF0YSwKPiAgCQkJCSAgIGVudW0g
-bXRrX2RkcF9jb21wX2lkIGN1ciwKPiAgCQkJCSAgIGVudW0gbXRrX2RkcF9jb21wX2lkIG5leHQp
-Owo+ICAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2
-LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+IGluZGV4IGNmNTll
-YTkuLjM1Njg1M2MgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
-cm1fZHJ2LmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+
-IEBAIC0xOTYsNiArMTk2LDcgQEAgc3RhdGljIGludCBtdGtfYXRvbWljX2NvbW1pdChzdHJ1Y3Qg
-ZHJtX2RldmljZSAqZHJtLAo+ICAJLm1haW5fbGVuID0gQVJSQVlfU0laRShtdDI3MDFfbXRrX2Rk
-cF9tYWluKSwKPiAgCS5leHRfcGF0aCA9IG10MjcwMV9tdGtfZGRwX2V4dCwKPiAgCS5leHRfbGVu
-ID0gQVJSQVlfU0laRShtdDI3MDFfbXRrX2RkcF9leHQpLAo+ICsJLm1tc3lzX2lkID0gTU1TWVNf
-TVQyNzAxLAo+ICAJLnNoYWRvd19yZWdpc3RlciA9IHRydWUsCj4gIH07Cj4gIAo+IEBAIC0yMDYs
-NiArMjA3LDcgQEAgc3RhdGljIGludCBtdGtfYXRvbWljX2NvbW1pdChzdHJ1Y3QgZHJtX2Rldmlj
-ZSAqZHJtLAo+ICAJLmV4dF9sZW4gPSBBUlJBWV9TSVpFKG10MjcxMl9tdGtfZGRwX2V4dCksCj4g
-IAkudGhpcmRfcGF0aCA9IG10MjcxMl9tdGtfZGRwX3RoaXJkLAo+ICAJLnRoaXJkX2xlbiA9IEFS
-UkFZX1NJWkUobXQyNzEyX210a19kZHBfdGhpcmQpLAo+ICsJLm1tc3lzX2lkID0gTU1TWVNfTVQy
-NzEyLAo+ICB9Owo+ICAKPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfbW1zeXNfZHJpdmVyX2Rh
-dGEgbXQ4MTczX21tc3lzX2RyaXZlcl9kYXRhID0gewo+IEBAIC0yMTMsNiArMjE1LDcgQEAgc3Rh
-dGljIGludCBtdGtfYXRvbWljX2NvbW1pdChzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLAo+ICAJLm1h
-aW5fbGVuID0gQVJSQVlfU0laRShtdDgxNzNfbXRrX2RkcF9tYWluKSwKPiAgCS5leHRfcGF0aCA9
-IG10ODE3M19tdGtfZGRwX2V4dCwKPiAgCS5leHRfbGVuID0gQVJSQVlfU0laRShtdDgxNzNfbXRr
-X2RkcF9leHQpLAo+ICsJLm1tc3lzX2lkID0gTU1TWVNfTVQ4MTczLAo+ICB9Owo+ICAKPiAgc3Rh
-dGljIGludCBtdGtfZHJtX2ttc19pbml0KHN0cnVjdCBkcm1fZGV2aWNlICpkcm0pCj4gQEAgLTQ2
-MSw2ICs0NjQsMTQgQEAgc3RhdGljIGludCBtdGtfZHJtX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9k
-ZXZpY2UgKnBkZXYpCj4gIAlJTklUX1dPUksoJnByaXZhdGUtPmNvbW1pdC53b3JrLCBtdGtfYXRv
-bWljX3dvcmspOwo+ICAJcHJpdmF0ZS0+ZGF0YSA9IG9mX2RldmljZV9nZXRfbWF0Y2hfZGF0YShk
-ZXYpOwo+ICAKPiArCXByaXZhdGUtPnJlZ19kYXRhID0gbXRrX2RkcF9nZXRfbW1zeXNfZGF0YShw
-cml2YXRlLT5kYXRhLT5tbXN5c19pZCk7CgpXaHkgZG8geW91IGNyZWF0ZSBhIGZ1bmN0aW9uIHRv
-IHNlbGVjdCByZWdfZGF0YSwgSSB0aGluayB5b3UgY291bGQganVzdAphZGQgcmVnX2RhdGEgaW4g
-c3RydWN0IG10a19tbXN5c19kcml2ZXJfZGF0YSBzbyB5b3UgZG9uJ3QgbmVlZCBhCmZ1bmN0aW9u
-IHRvIHNlbGVjdCBpdC4KClJlZ2FyZHMsCkNLCgo+ICsJaWYgKElTX0VSUihwcml2YXRlLT5yZWdf
-ZGF0YSkpIHsKPiArCQlyZXQgPSBQVFJfRVJSKHByaXZhdGUtPmNvbmZpZ19yZWdzKTsKPiArCQlw
-cl9pbmZvKCJGYWlsZWQgdG8gZ2V0IG1tc3lzIHJlZ2lzdGVyIGRhdGE6ICVkXG4iLAo+ICsJCQly
-ZXQpOwo+ICsJCXJldHVybiByZXQ7Cj4gKwl9Cj4gKwo+ICAJbWVtID0gcGxhdGZvcm1fZ2V0X3Jl
-c291cmNlKHBkZXYsIElPUkVTT1VSQ0VfTUVNLCAwKTsKPiAgCXByaXZhdGUtPmNvbmZpZ19yZWdz
-ID0gZGV2bV9pb3JlbWFwX3Jlc291cmNlKGRldiwgbWVtKTsKPiAgCWlmIChJU19FUlIocHJpdmF0
-ZS0+Y29uZmlnX3JlZ3MpKSB7Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfZHJtX2Rydi5oIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmgK
-PiBpbmRleCBlY2MwMGNhLi4xMWRlN2Y4IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfZHJtX2Rydi5oCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19kcm1fZHJ2LmgKPiBAQCAtMTUsNiArMTUsNyBAQAo+ICAjZGVmaW5lIE1US19EUk1fRFJWX0gK
-PiAgCj4gICNpbmNsdWRlIDxsaW51eC9pby5oPgo+ICsjaW5jbHVkZSAibXRrX2RybV9kZHAuaCIK
-PiAgI2luY2x1ZGUgIm10a19kcm1fZGRwX2NvbXAuaCIKPiAgCj4gICNkZWZpbmUgTUFYX0NSVEMJ
-Mwo+IEBAIC0zNiw2ICszNyw4IEBAIHN0cnVjdCBtdGtfbW1zeXNfZHJpdmVyX2RhdGEgewo+ICAJ
-Y29uc3QgZW51bSBtdGtfZGRwX2NvbXBfaWQgKnRoaXJkX3BhdGg7Cj4gIAl1bnNpZ25lZCBpbnQg
-dGhpcmRfbGVuOwo+ICAKPiArCWVudW0gbXRrX21tc3lzX2lkIG1tc3lzX2lkOwo+ICsKPiAgCWJv
-b2wgc2hhZG93X3JlZ2lzdGVyOwo+ICB9Owo+ICAKPiBAQCAtNDgsNiArNTEsNyBAQCBzdHJ1Y3Qg
-bXRrX2RybV9wcml2YXRlIHsKPiAgCXN0cnVjdCBkZXZpY2Vfbm9kZSAqbXV0ZXhfbm9kZTsKPiAg
-CXN0cnVjdCBkZXZpY2UgKm11dGV4X2RldjsKPiAgCXZvaWQgX19pb21lbSAqY29uZmlnX3JlZ3M7
-Cj4gKwljb25zdCBzdHJ1Y3QgbXRrX21tc3lzX3JlZ19kYXRhICpyZWdfZGF0YTsKPiAgCXN0cnVj
-dCBkZXZpY2Vfbm9kZSAqY29tcF9ub2RlW0REUF9DT01QT05FTlRfSURfTUFYXTsKPiAgCXN0cnVj
-dCBtdGtfZGRwX2NvbXAgKmRkcF9jb21wW0REUF9DT01QT05FTlRfSURfTUFYXTsKPiAgCWNvbnN0
-IHN0cnVjdCBtdGtfbW1zeXNfZHJpdmVyX2RhdGEgKmRhdGE7CgoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
-ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+On Wed, 3 Apr 2019 at 21:31, Fabien Parent <fparent@baylibre.com> wrote:
+>
+> 'top_base' memory region is optional. Check that the resource is valid
+> before using it. This avoid getting a "invalid resource" error message
+> printed by the kernel.
+>
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+
+Applied for next, thanks!
+
+Kind regards
+Uffe
+
+
+> ---
+>
+> V2:
+>         Fix invalid condition: check against 'res' variable instead of 'ret'.
+>
+> ---
+>  drivers/mmc/host/mtk-sd.c | 8 +++++---
+>  1 file changed, 5 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index 833ef0590af8..61bf8704491c 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -2123,9 +2123,11 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>         }
+>
+>         res = platform_get_resource(pdev, IORESOURCE_MEM, 1);
+> -       host->top_base = devm_ioremap_resource(&pdev->dev, res);
+> -       if (IS_ERR(host->top_base))
+> -               host->top_base = NULL;
+> +       if (res) {
+> +               host->top_base = devm_ioremap_resource(&pdev->dev, res);
+> +               if (IS_ERR(host->top_base))
+> +                       host->top_base = NULL;
+> +       }
+>
+>         ret = mmc_regulator_get_supply(mmc);
+>         if (ret)
+> --
+> 2.20.1
+>
