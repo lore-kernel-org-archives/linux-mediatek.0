@@ -1,51 +1,78 @@
-From: Tom Murphy <tmurphy@arista.com>
-Subject: [PATCH 9/9] iommu/amd: Add allocated domain to global list earlier
-Date: Thu, 11 Apr 2019 19:47:38 +0100
-Message-ID: <20190411184741.27540-10-tmurphy@arista.com>
-References: <20190411184741.27540-1-tmurphy@arista.com>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH v5 2/9] clk: mediatek: Add new clkmux register API
+Date: Thu, 11 Apr 2019 13:12:55 -0700
+Message-ID: <155501357547.20095.14128079106803580356@swboyd.mtv.corp.google.com>
+References: <20190305050546.23431-1-weiyi.lu@mediatek.com> <20190305050546.23431-4-weiyi.lu@mediatek.com> <CANMq1KCBnvscDcwvV-dqFbn+TTxZ97WXMdGZdmPOOter-0HxnQ@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190411184741.27540-1-tmurphy@arista.com>
+In-Reply-To: <CANMq1KCBnvscDcwvV-dqFbn+TTxZ97WXMdGZdmPOOter-0HxnQ@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: iommu@lists.linux-foundation.org
-Cc: dima@arista.com, jamessewart@arista.com, murphyt7@tcd.ie, Tom Murphy <tmurphy@arista.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <marc.zyngier@arm.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-rockchi
+To: Nicolas Boichat <drinkcat@chromium.org>, Weiyi Lu <weiyi.lu@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>, James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, lkml <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, linux-clk@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, stable@vger.kernel.org, Owen Chen <owen.chen@mediatek.com>, Guenter Roeck <groeck@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-dma_ops_domain_free() expects domain to be in a global list.
-Arguably, could be called before protection_domain_init().
+(Please trim replies to save me time)
 
-Signed-off-by: Dmitry Safonov <dima@arista.com>
-Signed-off-by: Tom Murphy <tmurphy@arista.com>
----
- drivers/iommu/amd_iommu.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+Quoting Nicolas Boichat (2019-03-14 16:21:26)
+> On Tue, Mar 5, 2019 at 1:06 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
+> > +static u8 mtk_clk_mux_get_parent(struct clk_hw *hw)
+> > +{
+> > +       struct mtk_clk_mux *mux =3D to_mtk_clk_mux(hw);
+> > +       u32 mask =3D GENMASK(mux->data->mux_width - 1, 0);
+> > +       u32 val;
+> > +
+> > +       regmap_read(mux->regmap, mux->data->mux_ofs, &val);
+> > +       val =3D (val >> mux->data->mux_shift) & mask;
+> > +
+> > +       return val;
+> > +}
+> > +
+> > +static int mtk_clk_mux_set_parent_lock(struct clk_hw *hw, u8 index)
+> > +{
+> > +       struct mtk_clk_mux *mux =3D to_mtk_clk_mux(hw);
+> > +       u32 mask =3D GENMASK(mux->data->mux_width - 1, 0);
+> > +       unsigned long flags;
+>=20
+> Guenter reported the following issue
+> (https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel=
+/+/1524422):
+> ""
+> The construct conditionally acquiring a spinlock is too complex for
+> gcc to understand. This results in the following build warning.
+>=20
+> drivers/clk/mediatek/clk-mux.c: In function
+> 'mtk_clk_mux_set_parent_lock': ./include/linux/spinlock.h:279:3:
+> warning: 'flags' may be used uninitialized in this function
+>=20
+> Other clock drivers avoid the problem by initializing flags with 0.
+> Lets do that here as well.
+> """
 
-diff --git a/drivers/iommu/amd_iommu.c b/drivers/iommu/amd_iommu.c
-index 02b351834a3b..bfb021d656aa 100644
---- a/drivers/iommu/amd_iommu.c
-+++ b/drivers/iommu/amd_iommu.c
-@@ -1801,8 +1801,12 @@ static struct protection_domain *dma_ops_domain_alloc(void)
- 	if (!domain)
- 		return NULL;
- 
--	if (protection_domain_init(domain))
--		goto free_domain;
-+	if (protection_domain_init(domain)) {
-+		kfree(domain);
-+		return NULL;
-+	}
-+
-+	add_domain_to_list(domain);
- 
- 	domain->mode = PAGE_MODE_3_LEVEL;
- 	domain->pt_root = (void *)get_zeroed_page(GFP_KERNEL);
-@@ -1824,8 +1828,6 @@ static struct protection_domain *dma_ops_domain_alloc(void)
- 	/* Initialize reserved ranges */
- 	iommu_dma_copy_reserved_iova(&reserved_iova_ranges, &domain->domain);
- 
--	add_domain_to_list(domain);
--
- 	return domain;
- 
- free_cookie:
--- 
-2.17.1
+Ok. I'll squash in this fix.
+
+diff --git a/drivers/clk/mediatek/clk-mux.c b/drivers/clk/mediatek/clk-mux.c
+index 877a883fa616..76f9cd039195 100644
+--- a/drivers/clk/mediatek/clk-mux.c
++++ b/drivers/clk/mediatek/clk-mux.c
+@@ -76,7 +76,7 @@ static int mtk_clk_mux_set_parent_lock(struct clk_hw *hw,=
+ u8 index)
+ {
+ 	struct mtk_clk_mux *mux =3D to_mtk_clk_mux(hw);
+ 	u32 mask =3D GENMASK(mux->data->mux_width - 1, 0);
+-	unsigned long flags;
++	unsigned long flags =3D 0;
+=20
+ 	if (mux->lock)
+ 		spin_lock_irqsave(mux->lock, flags);
+@@ -99,7 +99,7 @@ static int mtk_clk_mux_set_parent_setclr_lock(struct clk_=
+hw *hw, u8 index)
+ 	struct mtk_clk_mux *mux =3D to_mtk_clk_mux(hw);
+ 	u32 mask =3D GENMASK(mux->data->mux_width - 1, 0);
+ 	u32 val, orig;
+-	unsigned long flags;
++	unsigned long flags =3D 0;
+=20
+ 	if (mux->lock)
+ 		spin_lock_irqsave(mux->lock, flags);
