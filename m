@@ -1,120 +1,95 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: Re: [v3 PATCH] PCI: mediatek: get optional clock by
- devm_clk_get_optional()
-Date: Thu, 11 Apr 2019 10:08:56 +0100
-Message-ID: <20190411090856.GA6227@red-moon>
-References: <c4579e5a72f169808a9ad4aefdd7bf7b75d10d61.1554879079.git.chunfeng.yun@mediatek.com>
+From: Light Hsieh <light.hsieh@mediatek.com>
+Subject: [PATCH] pinctrl: Add kernel config PINCTRL_MTK_V2
+Date: Thu, 11 Apr 2019 17:32:18 +0800
+Message-ID: <1554975138-801-1-git-send-email-light.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <c4579e5a72f169808a9ad4aefdd7bf7b75d10d61.1554879079.git.chunfeng.yun@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>, linux-mediatek@lists.infradead.org, Honghui Zhang <honghui.zhang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, sean.wang@kernel.org, wsd_upstream@mediatek.com, Light Hsieh <light.hsieh@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Apr 10, 2019 at 02:54:16PM +0800, Chunfeng Yun wrote:
-> Use devm_clk_get_optional() to get optional clock
-> 
-> Cc: Ryder Lee <ryder.lee@mediatek.com>
-> Cc: Honghui Zhang <honghui.zhang@mediatek.com>
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> Acked-by: Ryder Lee <ryder.lee@mediatek.com>
-> Acked-by: Honghui Zhang <honghui.zhang@mediatek.com>
-> ---
-> v3: add Acked-by Ryder and Honghui
-> ---
->  drivers/pci/controller/pcie-mediatek.c | 50 ++++++++------------------
->  1 file changed, 15 insertions(+), 35 deletions(-)
+Since no single Mediatek chip use code for PINCTRL_MTK and code for
+PINCTRL_MTK_MOORE/PINCTRL_MTK_PARIS simultaneously, it is better to use
+different config to determine if related code will be built or not on
+building non-generic kernel.
 
-Applied to pci/mediatek for v5.2, thanks.
+Add kernel config PINCTRL_MTK_V2 selected by either PINCTRL_MTK_MOORE
+or PINCTRL_MTK_PARIS.
+Use PINCTRL_MTK and PINCTRL_MTK_V2 to control building of
+drivers/pinctrl/medaitek/.
+Remove selection of EINT_MTK from PINCTRL_MTK since code for EINT_MTK is
+only related to PINCTRL_MTK_MOORE/PINCTRL_MTK_PARIS, i.e. PINCTL_MTK_V2.
 
-Lorenzo
+---
+ drivers/pinctrl/Makefile         |  3 ++-
+ drivers/pinctrl/mediatek/Kconfig | 15 ++++++++++++---
+ 2 files changed, 14 insertions(+), 4 deletions(-)
 
-> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> index 0b6c72804e03..adb6cb15daa2 100644
-> --- a/drivers/pci/controller/pcie-mediatek.c
-> +++ b/drivers/pci/controller/pcie-mediatek.c
-> @@ -915,49 +915,29 @@ static int mtk_pcie_parse_port(struct mtk_pcie *pcie,
->  
->  	/* sys_ck might be divided into the following parts in some chips */
->  	snprintf(name, sizeof(name), "ahb_ck%d", slot);
-> -	port->ahb_ck = devm_clk_get(dev, name);
-> -	if (IS_ERR(port->ahb_ck)) {
-> -		if (PTR_ERR(port->ahb_ck) == -EPROBE_DEFER)
-> -			return -EPROBE_DEFER;
-> -
-> -		port->ahb_ck = NULL;
-> -	}
-> +	port->ahb_ck = devm_clk_get_optional(dev, name);
-> +	if (IS_ERR(port->ahb_ck))
-> +		return PTR_ERR(port->ahb_ck);
->  
->  	snprintf(name, sizeof(name), "axi_ck%d", slot);
-> -	port->axi_ck = devm_clk_get(dev, name);
-> -	if (IS_ERR(port->axi_ck)) {
-> -		if (PTR_ERR(port->axi_ck) == -EPROBE_DEFER)
-> -			return -EPROBE_DEFER;
-> -
-> -		port->axi_ck = NULL;
-> -	}
-> +	port->axi_ck = devm_clk_get_optional(dev, name);
-> +	if (IS_ERR(port->axi_ck))
-> +		return PTR_ERR(port->axi_ck);
->  
->  	snprintf(name, sizeof(name), "aux_ck%d", slot);
-> -	port->aux_ck = devm_clk_get(dev, name);
-> -	if (IS_ERR(port->aux_ck)) {
-> -		if (PTR_ERR(port->aux_ck) == -EPROBE_DEFER)
-> -			return -EPROBE_DEFER;
-> -
-> -		port->aux_ck = NULL;
-> -	}
-> +	port->aux_ck = devm_clk_get_optional(dev, name);
-> +	if (IS_ERR(port->aux_ck))
-> +		return PTR_ERR(port->aux_ck);
->  
->  	snprintf(name, sizeof(name), "obff_ck%d", slot);
-> -	port->obff_ck = devm_clk_get(dev, name);
-> -	if (IS_ERR(port->obff_ck)) {
-> -		if (PTR_ERR(port->obff_ck) == -EPROBE_DEFER)
-> -			return -EPROBE_DEFER;
-> -
-> -		port->obff_ck = NULL;
-> -	}
-> +	port->obff_ck = devm_clk_get_optional(dev, name);
-> +	if (IS_ERR(port->obff_ck))
-> +		return PTR_ERR(port->obff_ck);
->  
->  	snprintf(name, sizeof(name), "pipe_ck%d", slot);
-> -	port->pipe_ck = devm_clk_get(dev, name);
-> -	if (IS_ERR(port->pipe_ck)) {
-> -		if (PTR_ERR(port->pipe_ck) == -EPROBE_DEFER)
-> -			return -EPROBE_DEFER;
-> -
-> -		port->pipe_ck = NULL;
-> -	}
-> +	port->pipe_ck = devm_clk_get_optional(dev, name);
-> +	if (IS_ERR(port->pipe_ck))
-> +		return PTR_ERR(port->pipe_ck);
->  
->  	snprintf(name, sizeof(name), "pcie-rst%d", slot);
->  	port->reset = devm_reset_control_get_optional_exclusive(dev, name);
-> -- 
-> 2.21.0
-> 
-> 
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+diff --git a/drivers/pinctrl/Makefile b/drivers/pinctrl/Makefile
+index 712184b..fcee0e0 100644
+--- a/drivers/pinctrl/Makefile
++++ b/drivers/pinctrl/Makefile
+@@ -65,6 +65,7 @@ obj-$(CONFIG_PINCTRL_SUNXI)	+= sunxi/
+ obj-y				+= ti/
+ obj-$(CONFIG_PINCTRL_UNIPHIER)	+= uniphier/
+ obj-$(CONFIG_ARCH_VT8500)	+= vt8500/
+-obj-y				+= mediatek/
++obj-$(CONFIG_PINCTRL_MTK)	+= mediatek/
++obj-$(CONFIG_PINCTRL_MTK_V2)	+= mediatek/
+ obj-$(CONFIG_PINCTRL_ZX)	+= zte/
+ obj-y				+= cirrus/
+diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
+index a005cbc..5e26462 100644
+--- a/drivers/pinctrl/mediatek/Kconfig
++++ b/drivers/pinctrl/mediatek/Kconfig
+@@ -2,10 +2,15 @@ menu "MediaTek pinctrl drivers"
+ 	depends on ARCH_MEDIATEK || COMPILE_TEST
+ 
+ config EINT_MTK
+-	bool "MediaTek External Interrupt Support"
+-	depends on PINCTRL_MTK || PINCTRL_MTK_MOORE || PINCTRL_MTK_PARIS || COMPILE_TEST
++	bool "MediaTek External Interrupt driver that is based on PINCTRL_MTK_V2"
++	depends on PINCTRL_MTK_MOORE || PINCTRL_MTK_PARIS || COMPILE_TEST
+ 	select GPIOLIB
+ 	select IRQ_DOMAIN
++	help
++	  Say yes here to enable support for MediaTek External Interrupt
++	  (EINT) driver based on PINCTRL_MTK version 2.
++	  This driver is combined with MediaTek Pinctrl driver version 2
++	  so PINCTRL_MTK_V2 shall be set first.
+ 
+ config PINCTRL_MTK
+ 	bool
+@@ -13,9 +18,11 @@ config PINCTRL_MTK
+ 	select PINMUX
+ 	select GENERIC_PINCONF
+ 	select GPIOLIB
+-	select EINT_MTK
+ 	select OF_GPIO
+ 
++config PINCTRL_MTK_V2
++	bool "MediaTek Pinctrl Support V2"
++
+ config PINCTRL_MTK_MOORE
+ 	bool
+ 	depends on OF
+@@ -24,6 +31,7 @@ config PINCTRL_MTK_MOORE
+ 	select GENERIC_PINMUX_FUNCTIONS
+ 	select GPIOLIB
+ 	select OF_GPIO
++	select PINCTRL_MTK_V2
+ 
+ config PINCTRL_MTK_PARIS
+ 	bool
+@@ -33,6 +41,7 @@ config PINCTRL_MTK_PARIS
+ 	select GPIOLIB
+ 	select EINT_MTK
+ 	select OF_GPIO
++	select PINCTRL_MTK_V2
+ 
+ # For ARMv7 SoCs
+ config PINCTRL_MT2701
+-- 
+1.8.1.1.dirty
