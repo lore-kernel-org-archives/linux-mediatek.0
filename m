@@ -1,36 +1,112 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH v5 9/9] clk: mediatek: Allow changing PLL rate when it is off
-Date: Thu, 11 Apr 2019 13:24:46 -0700
-Message-ID: <155501428642.20095.13010940386938154148@swboyd.mtv.corp.google.com>
-References: <20190305050546.23431-1-weiyi.lu@mediatek.com> <20190305050546.23431-11-weiyi.lu@mediatek.com>
+From: Sean Wang <sean.wang@kernel.org>
+Subject: Re: [PATCH] pinctrl: Add kernel config PINCTRL_MTK_V2
+Date: Thu, 11 Apr 2019 15:04:05 -0700
+Message-ID: <CAGp9LzpExWGCHtiggQmPtCwBD6o4JUmGSGfm7VostCq+EK2egw@mail.gmail.com>
+References: <1554975138-801-1-git-send-email-light.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190305050546.23431-11-weiyi.lu@mediatek.com>
+In-Reply-To: <1554975138-801-1-git-send-email-light.hsieh@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh@kernel.org>, Stephen Boyd <sboyd@codeaurora.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>
+To: Light Hsieh <light.hsieh@mediatek.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting Weiyi Lu (2019-03-04 21:05:46)
-> From: James Liao <jamesjj.liao@mediatek.com>
->=20
-> Some modules may need to change its clock rate before turn on it.
-> So changing PLL's rate when it is off should be allowed.
-> This patch removes PLL enabled check before set rate, so that
-> PLLs can set new frequency even if they are off.
->=20
-> On MT8173 for example, ARMPLL's enable bit can be controlled by
-> other HW. That means ARMPLL may be turned on even if we (CPU / SW)
-> set ARMPLL's enable bit as 0. In this case, SW may want and can
-> still change ARMPLL's rate by changing its pcw and postdiv settings.
-> But without this patch, new pcw setting will not be applied because
-> its enable bit is 0.
->=20
-> Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
-> Acked-by: Michael Turquette <mturuqette@baylibre.com>
-> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> ---
+Hi, Light
 
-Applied to clk-next
+On Thu, Apr 11, 2019 at 2:32 AM Light Hsieh <light.hsieh@mediatek.com> wrote:
+>
+> Since no single Mediatek chip use code for PINCTRL_MTK and code for
+> PINCTRL_MTK_MOORE/PINCTRL_MTK_PARIS simultaneously, it is better to use
+> different config to determine if related code will be built or not on
+> building non-generic kernel.
+>
+> Add kernel config PINCTRL_MTK_V2 selected by either PINCTRL_MTK_MOORE
+> or PINCTRL_MTK_PARIS.
+> Use PINCTRL_MTK and PINCTRL_MTK_V2 to control building of
+> drivers/pinctrl/medaitek/.
+> Remove selection of EINT_MTK from PINCTRL_MTK since code for EINT_MTK is
+> only related to PINCTRL_MTK_MOORE/PINCTRL_MTK_PARIS, i.e. PINCTL_MTK_V2.
+>
+
+PINCTRL_MTK also depends on EINT_MTK such as the symbol
+mtk_eint_do_init, it is a common library for the two kinds of the
+pinctrl core.
+
+> ---
+>  drivers/pinctrl/Makefile         |  3 ++-
+>  drivers/pinctrl/mediatek/Kconfig | 15 ++++++++++++---
+>  2 files changed, 14 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/pinctrl/Makefile b/drivers/pinctrl/Makefile
+> index 712184b..fcee0e0 100644
+> --- a/drivers/pinctrl/Makefile
+> +++ b/drivers/pinctrl/Makefile
+> @@ -65,6 +65,7 @@ obj-$(CONFIG_PINCTRL_SUNXI)   += sunxi/
+>  obj-y                          += ti/
+>  obj-$(CONFIG_PINCTRL_UNIPHIER) += uniphier/
+>  obj-$(CONFIG_ARCH_VT8500)      += vt8500/
+> -obj-y                          += mediatek/
+> +obj-$(CONFIG_PINCTRL_MTK)      += mediatek/
+> +obj-$(CONFIG_PINCTRL_MTK_V2)   += mediatek/
+
+I would think it is good if deciding V1 or not should be done inside
+the vendor directory and the change also would cause COMPILE_TEST not
+be applied to
+
+>  obj-$(CONFIG_PINCTRL_ZX)       += zte/
+>  obj-y                          += cirrus/
+> diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
+> index a005cbc..5e26462 100644
+> --- a/drivers/pinctrl/mediatek/Kconfig
+> +++ b/drivers/pinctrl/mediatek/Kconfig
+> @@ -2,10 +2,15 @@ menu "MediaTek pinctrl drivers"
+>         depends on ARCH_MEDIATEK || COMPILE_TEST
+>
+>  config EINT_MTK
+> -       bool "MediaTek External Interrupt Support"
+> -       depends on PINCTRL_MTK || PINCTRL_MTK_MOORE || PINCTRL_MTK_PARIS || COMPILE_TEST
+> +       bool "MediaTek External Interrupt driver that is based on PINCTRL_MTK_V2"
+> +       depends on PINCTRL_MTK_MOORE || PINCTRL_MTK_PARIS || COMPILE_TEST
+>         select GPIOLIB
+>         select IRQ_DOMAIN
+> +       help
+> +         Say yes here to enable support for MediaTek External Interrupt
+> +         (EINT) driver based on PINCTRL_MTK version 2.
+> +         This driver is combined with MediaTek Pinctrl driver version 2
+> +         so PINCTRL_MTK_V2 shall be set first.
+>
+>  config PINCTRL_MTK
+>         bool
+> @@ -13,9 +18,11 @@ config PINCTRL_MTK
+>         select PINMUX
+>         select GENERIC_PINCONF
+>         select GPIOLIB
+> -       select EINT_MTK
+>         select OF_GPIO
+>
+> +config PINCTRL_MTK_V2
+> +       bool "MediaTek Pinctrl Support V2"
+> +
+>  config PINCTRL_MTK_MOORE
+>         bool
+>         depends on OF
+> @@ -24,6 +31,7 @@ config PINCTRL_MTK_MOORE
+>         select GENERIC_PINMUX_FUNCTIONS
+>         select GPIOLIB
+>         select OF_GPIO
+> +       select PINCTRL_MTK_V2
+>
+>  config PINCTRL_MTK_PARIS
+>         bool
+> @@ -33,6 +41,7 @@ config PINCTRL_MTK_PARIS
+>         select GPIOLIB
+>         select EINT_MTK
+>         select OF_GPIO
+> +       select PINCTRL_MTK_V2
+>
+>  # For ARMv7 SoCs
+>  config PINCTRL_MT2701
+> --
+> 1.8.1.1.dirty
+>
