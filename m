@@ -1,132 +1,123 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v2 07/25] drm/mediatek: move rdma sout from
- mtk_ddp_mout_en into mtk_ddp_sout_sel
-Date: Thu, 11 Apr 2019 13:30:16 +0800
-Message-ID: <1554960616.4768.1.camel@mtksdaap41>
+Subject: Re: [PATCH v2 08/25] drm/mediatek: add ddp component CCORR
+Date: Thu, 11 Apr 2019 13:57:26 +0800
+Message-ID: <1554962246.4768.2.camel@mtksdaap41>
 References: <1553667561-25447-1-git-send-email-yongqiang.niu@mediatek.com>
- <1553667561-25447-8-git-send-email-yongqiang.niu@mediatek.com>
+         <1553667561-25447-9-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1553667561-25447-8-git-send-email-yongqiang.niu@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1553667561-25447-9-git-send-email-yongqiang.niu@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: yongqiang.niu@mediatek.com
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
+Cc: p.zabel@pengutronix.de, robh+dt@kernel.org, matthias.bgg@gmail.com, airlied@linux.ie, mark.rutland@arm.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Bibby.Hsieh@mediatek.com, yt.shen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFlvbmdxaWFuZzoKCk9uIFdlZCwgMjAxOS0wMy0yNyBhdCAxNDoxOSArMDgwMCwgeW9uZ3Fp
-YW5nLm5pdUBtZWRpYXRlay5jb20gd3JvdGU6Cj4gRnJvbTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3Fp
-YW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gCj4gVGhpcyBwYXRjaCBtb3ZlIHJkbWEgc291dCBmcm9t
-IG10a19kZHBfbW91dF9lbiBpbnRvIG10a19kZHBfc291dF9zZWwKPiByZG1hIG9ubHkgaGFzIHNp
-bmdsZSBvdXRwdXQsIGJ1dCBubyBtdWx0aSBvdXRwdXQsCj4gYWxsIHRoZXNlIHJkbWEtPmRzaS9k
-cGkgdXNlY2FzZSBzaG91bGQgbW92ZSB0byBtdGtfZGRwX3NvdXRfc2VsCgpSZXZpZXdlZC1ieTog
-Q0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4KCj4gCj4gU2lnbmVkLW9mZi1ieTogWW9uZ3FpYW5n
-IE5pdSA8eW9uZ3FpYW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jIHwgOTAgKysrKysrKysrKysrKysrKystLS0tLS0tLS0t
-LS0tLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgNDUgaW5zZXJ0aW9ucygrKSwgNDUgZGVsZXRpb25z
-KC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rk
-cC5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMKPiBpbmRleCBlNGRh
-ZmUwLi41YWUxM2IwIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
-ZHJtX2RkcC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMK
-PiBAQCAtMjgxLDUxICsyODEsNiBAQCBzdGF0aWMgdW5zaWduZWQgaW50IG10a19kZHBfbW91dF9l
-bihlbnVtIG10a19kZHBfY29tcF9pZCBjdXIsCj4gIAl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09N
-UE9ORU5UX09EMSAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfUkRNQTEpIHsKPiAgCQkqYWRkciA9
-IERJU1BfUkVHX0NPTkZJR19ESVNQX09EX01PVVRfRU47Cj4gIAkJdmFsdWUgPSBPRDFfTU9VVF9F
-Tl9SRE1BMTsKPiAtCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRfUkRNQTAgJiYgbmV4
-dCA9PSBERFBfQ09NUE9ORU5UX0RQSTApIHsKPiAtCQkqYWRkciA9IERJU1BfUkVHX0NPTkZJR19E
-SVNQX1JETUEwX1NPVVRfRU47Cj4gLQkJdmFsdWUgPSBSRE1BMF9TT1VUX0RQSTA7Cj4gLQl9IGVs
-c2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUEwICYmIG5leHQgPT0gRERQX0NPTVBPTkVO
-VF9EUEkxKSB7Cj4gLQkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElTUF9SRE1BMF9TT1VUX0VO
-Owo+IC0JCXZhbHVlID0gUkRNQTBfU09VVF9EUEkxOwo+IC0JfSBlbHNlIGlmIChjdXIgPT0gRERQ
-X0NPTVBPTkVOVF9SRE1BMCAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfRFNJMSkgewo+IC0JCSph
-ZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTBfU09VVF9FTjsKPiAtCQl2YWx1ZSA9IFJE
-TUEwX1NPVVRfRFNJMTsKPiAtCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRfUkRNQTAg
-JiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX0RTSTIpIHsKPiAtCQkqYWRkciA9IERJU1BfUkVHX0NP
-TkZJR19ESVNQX1JETUEwX1NPVVRfRU47Cj4gLQkJdmFsdWUgPSBSRE1BMF9TT1VUX0RTSTI7Cj4g
-LQl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUEwICYmIG5leHQgPT0gRERQX0NP
-TVBPTkVOVF9EU0kzKSB7Cj4gLQkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElTUF9SRE1BMF9T
-T1VUX0VOOwo+IC0JCXZhbHVlID0gUkRNQTBfU09VVF9EU0kzOwo+IC0JfSBlbHNlIGlmIChjdXIg
-PT0gRERQX0NPTVBPTkVOVF9SRE1BMSAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfRFNJMSkgewo+
-IC0JCSphZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTFfU09VVF9FTjsKPiAtCQl2YWx1
-ZSA9IFJETUExX1NPVVRfRFNJMTsKPiAtCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRf
-UkRNQTEgJiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX0RTSTIpIHsKPiAtCQkqYWRkciA9IERJU1Bf
-UkVHX0NPTkZJR19ESVNQX1JETUExX1NPVVRfRU47Cj4gLQkJdmFsdWUgPSBSRE1BMV9TT1VUX0RT
-STI7Cj4gLQl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUExICYmIG5leHQgPT0g
-RERQX0NPTVBPTkVOVF9EU0kzKSB7Cj4gLQkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElTUF9S
-RE1BMV9TT1VUX0VOOwo+IC0JCXZhbHVlID0gUkRNQTFfU09VVF9EU0kzOwo+IC0JfSBlbHNlIGlm
-IChjdXIgPT0gRERQX0NPTVBPTkVOVF9SRE1BMSAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfRFBJ
-MCkgewo+IC0JCSphZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTFfU09VVF9FTjsKPiAt
-CQl2YWx1ZSA9IFJETUExX1NPVVRfRFBJMDsKPiAtCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01Q
-T05FTlRfUkRNQTEgJiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX0RQSTEpIHsKPiAtCQkqYWRkciA9
-IERJU1BfUkVHX0NPTkZJR19ESVNQX1JETUExX1NPVVRfRU47Cj4gLQkJdmFsdWUgPSBSRE1BMV9T
-T1VUX0RQSTE7Cj4gLQl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUEyICYmIG5l
-eHQgPT0gRERQX0NPTVBPTkVOVF9EUEkwKSB7Cj4gLQkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdf
-RElTUF9SRE1BMl9TT1VUOwo+IC0JCXZhbHVlID0gUkRNQTJfU09VVF9EUEkwOwo+IC0JfSBlbHNl
-IGlmIChjdXIgPT0gRERQX0NPTVBPTkVOVF9SRE1BMiAmJiBuZXh0ID09IEREUF9DT01QT05FTlRf
-RFBJMSkgewo+IC0JCSphZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTJfU09VVDsKPiAt
-CQl2YWx1ZSA9IFJETUEyX1NPVVRfRFBJMTsKPiAtCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01Q
-T05FTlRfUkRNQTIgJiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX0RTSTEpIHsKPiAtCQkqYWRkciA9
-IERJU1BfUkVHX0NPTkZJR19ESVNQX1JETUEyX1NPVVQ7Cj4gLQkJdmFsdWUgPSBSRE1BMl9TT1VU
-X0RTSTE7Cj4gLQl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUEyICYmIG5leHQg
-PT0gRERQX0NPTVBPTkVOVF9EU0kyKSB7Cj4gLQkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElT
-UF9SRE1BMl9TT1VUOwo+IC0JCXZhbHVlID0gUkRNQTJfU09VVF9EU0kyOwo+IC0JfSBlbHNlIGlm
-IChjdXIgPT0gRERQX0NPTVBPTkVOVF9SRE1BMiAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfRFNJ
-Mykgewo+IC0JCSphZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTJfU09VVDsKPiAtCQl2
-YWx1ZSA9IFJETUEyX1NPVVRfRFNJMzsKPiAgCX0gZWxzZSB7Cj4gIAkJdmFsdWUgPSAwOwo+ICAJ
-fQo+IEBAIC00MDYsNiArMzYxLDUxIEBAIHN0YXRpYyB1bnNpZ25lZCBpbnQgbXRrX2RkcF9zb3V0
-X3NlbChlbnVtIG10a19kZHBfY29tcF9pZCBjdXIsCj4gIAl9IGVsc2UgaWYgKGN1ciA9PSBERFBf
-Q09NUE9ORU5UX1JETUExICYmIG5leHQgPT0gRERQX0NPTVBPTkVOVF9EU0kwKSB7Cj4gIAkJKmFk
-ZHIgPSBESVNQX1JFR19DT05GSUdfRFNJX1NFTDsKPiAgCQl2YWx1ZSA9IERTSV9TRUxfSU5fUkRN
-QTsKPiArCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRfUkRNQTAgJiYgbmV4dCA9PSBE
-RFBfQ09NUE9ORU5UX0RQSTApIHsKPiArCQkqYWRkciA9IERJU1BfUkVHX0NPTkZJR19ESVNQX1JE
-TUEwX1NPVVRfRU47Cj4gKwkJdmFsdWUgPSBSRE1BMF9TT1VUX0RQSTA7Cj4gKwl9IGVsc2UgaWYg
-KGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUEwICYmIG5leHQgPT0gRERQX0NPTVBPTkVOVF9EUEkx
-KSB7Cj4gKwkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElTUF9SRE1BMF9TT1VUX0VOOwo+ICsJ
-CXZhbHVlID0gUkRNQTBfU09VVF9EUEkxOwo+ICsJfSBlbHNlIGlmIChjdXIgPT0gRERQX0NPTVBP
-TkVOVF9SRE1BMCAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfRFNJMSkgewo+ICsJCSphZGRyID0g
-RElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTBfU09VVF9FTjsKPiArCQl2YWx1ZSA9IFJETUEwX1NP
-VVRfRFNJMTsKPiArCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRfUkRNQTAgJiYgbmV4
-dCA9PSBERFBfQ09NUE9ORU5UX0RTSTIpIHsKPiArCQkqYWRkciA9IERJU1BfUkVHX0NPTkZJR19E
-SVNQX1JETUEwX1NPVVRfRU47Cj4gKwkJdmFsdWUgPSBSRE1BMF9TT1VUX0RTSTI7Cj4gKwl9IGVs
-c2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUEwICYmIG5leHQgPT0gRERQX0NPTVBPTkVO
-VF9EU0kzKSB7Cj4gKwkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElTUF9SRE1BMF9TT1VUX0VO
-Owo+ICsJCXZhbHVlID0gUkRNQTBfU09VVF9EU0kzOwo+ICsJfSBlbHNlIGlmIChjdXIgPT0gRERQ
-X0NPTVBPTkVOVF9SRE1BMSAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfRFNJMSkgewo+ICsJCSph
-ZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTFfU09VVF9FTjsKPiArCQl2YWx1ZSA9IFJE
-TUExX1NPVVRfRFNJMTsKPiArCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRfUkRNQTEg
-JiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX0RTSTIpIHsKPiArCQkqYWRkciA9IERJU1BfUkVHX0NP
-TkZJR19ESVNQX1JETUExX1NPVVRfRU47Cj4gKwkJdmFsdWUgPSBSRE1BMV9TT1VUX0RTSTI7Cj4g
-Kwl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUExICYmIG5leHQgPT0gRERQX0NP
-TVBPTkVOVF9EU0kzKSB7Cj4gKwkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElTUF9SRE1BMV9T
-T1VUX0VOOwo+ICsJCXZhbHVlID0gUkRNQTFfU09VVF9EU0kzOwo+ICsJfSBlbHNlIGlmIChjdXIg
-PT0gRERQX0NPTVBPTkVOVF9SRE1BMSAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfRFBJMCkgewo+
-ICsJCSphZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTFfU09VVF9FTjsKPiArCQl2YWx1
-ZSA9IFJETUExX1NPVVRfRFBJMDsKPiArCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRf
-UkRNQTEgJiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX0RQSTEpIHsKPiArCQkqYWRkciA9IERJU1Bf
-UkVHX0NPTkZJR19ESVNQX1JETUExX1NPVVRfRU47Cj4gKwkJdmFsdWUgPSBSRE1BMV9TT1VUX0RQ
-STE7Cj4gKwl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUEyICYmIG5leHQgPT0g
-RERQX0NPTVBPTkVOVF9EUEkwKSB7Cj4gKwkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElTUF9S
-RE1BMl9TT1VUOwo+ICsJCXZhbHVlID0gUkRNQTJfU09VVF9EUEkwOwo+ICsJfSBlbHNlIGlmIChj
-dXIgPT0gRERQX0NPTVBPTkVOVF9SRE1BMiAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfRFBJMSkg
-ewo+ICsJCSphZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTJfU09VVDsKPiArCQl2YWx1
-ZSA9IFJETUEyX1NPVVRfRFBJMTsKPiArCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRf
-UkRNQTIgJiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX0RTSTEpIHsKPiArCQkqYWRkciA9IERJU1Bf
-UkVHX0NPTkZJR19ESVNQX1JETUEyX1NPVVQ7Cj4gKwkJdmFsdWUgPSBSRE1BMl9TT1VUX0RTSTE7
-Cj4gKwl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUEyICYmIG5leHQgPT0gRERQ
-X0NPTVBPTkVOVF9EU0kyKSB7Cj4gKwkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElTUF9SRE1B
-Ml9TT1VUOwo+ICsJCXZhbHVlID0gUkRNQTJfU09VVF9EU0kyOwo+ICsJfSBlbHNlIGlmIChjdXIg
-PT0gRERQX0NPTVBPTkVOVF9SRE1BMiAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfRFNJMykgewo+
-ICsJCSphZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTJfU09VVDsKPiArCQl2YWx1ZSA9
-IFJETUEyX1NPVVRfRFNJMzsKPiAgCX0gZWxzZSB7Cj4gIAkJdmFsdWUgPSAwOwo+ICAJfQoKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBt
-YWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3Rz
-LmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+Hi, Yongqiang:
+
+On Wed, 2019-03-27 at 14:19 +0800, yongqiang.niu@mediatek.com wrote:
+> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> 
+> This patch add ddp component CCORR
+
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+
+> 
+> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 32 +++++++++++++++++++++++++++++
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  2 ++
+>  2 files changed, 34 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> index 54ca794..310c0b9 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> @@ -41,6 +41,12 @@
+>  #define DISP_AAL_EN				0x0000
+>  #define DISP_AAL_SIZE				0x0030
+>  
+> +#define DISP_CCORR_EN				0x0000
+> +#define CCORR_EN				BIT(0)
+> +#define DISP_CCORR_CFG				0x0020
+> +#define CCORR_RELAY_MODE			BIT(0)
+> +#define DISP_CCORR_SIZE				0x0030
+> +
+>  #define DISP_GAMMA_EN				0x0000
+>  #define DISP_GAMMA_CFG				0x0020
+>  #define DISP_GAMMA_SIZE				0x0030
+> @@ -131,6 +137,24 @@ static void mtk_aal_stop(struct mtk_ddp_comp *comp)
+>  	writel_relaxed(0x0, comp->regs + DISP_AAL_EN);
+>  }
+>  
+> +static void mtk_ccorr_config(struct mtk_ddp_comp *comp, unsigned int w,
+> +			     unsigned int h, unsigned int vrefresh,
+> +			     unsigned int bpc)
+> +{
+> +	writel(h << 16 | w, comp->regs + DISP_CCORR_SIZE);
+> +	writel(CCORR_RELAY_MODE, comp->regs + DISP_CCORR_CFG);
+> +}
+> +
+> +static void mtk_ccorr_start(struct mtk_ddp_comp *comp)
+> +{
+> +	writel(CCORR_EN, comp->regs + DISP_CCORR_EN);
+> +}
+> +
+> +static void mtk_ccorr_stop(struct mtk_ddp_comp *comp)
+> +{
+> +	writel_relaxed(0x0, comp->regs + DISP_CCORR_EN);
+> +}
+> +
+>  static void mtk_gamma_config(struct mtk_ddp_comp *comp, unsigned int w,
+>  			     unsigned int h, unsigned int vrefresh,
+>  			     unsigned int bpc)
+> @@ -179,6 +203,12 @@ static void mtk_gamma_set(struct mtk_ddp_comp *comp,
+>  	.stop = mtk_aal_stop,
+>  };
+>  
+> +static const struct mtk_ddp_comp_funcs ddp_ccorr = {
+> +	.config = mtk_ccorr_config,
+> +	.start = mtk_ccorr_start,
+> +	.stop = mtk_ccorr_stop,
+> +};
+> +
+>  static const struct mtk_ddp_comp_funcs ddp_gamma = {
+>  	.gamma_set = mtk_gamma_set,
+>  	.config = mtk_gamma_config,
+> @@ -200,6 +230,7 @@ static void mtk_gamma_set(struct mtk_ddp_comp *comp,
+>  	[MTK_DISP_RDMA] = "rdma",
+>  	[MTK_DISP_WDMA] = "wdma",
+>  	[MTK_DISP_COLOR] = "color",
+> +	[MTK_DISP_CCORR] = "ccorr",
+>  	[MTK_DISP_AAL] = "aal",
+>  	[MTK_DISP_GAMMA] = "gamma",
+>  	[MTK_DISP_UFOE] = "ufoe",
+> @@ -221,6 +252,7 @@ struct mtk_ddp_comp_match {
+>  	[DDP_COMPONENT_AAL0]	= { MTK_DISP_AAL,	0, &ddp_aal },
+>  	[DDP_COMPONENT_AAL1]	= { MTK_DISP_AAL,	1, &ddp_aal },
+>  	[DDP_COMPONENT_BLS]	= { MTK_DISP_BLS,	0, NULL },
+> +	[DDP_COMPONENT_CCORR]	= { MTK_DISP_CCORR,	0, &ddp_ccorr },
+>  	[DDP_COMPONENT_COLOR0]	= { MTK_DISP_COLOR,	0, NULL },
+>  	[DDP_COMPONENT_COLOR1]	= { MTK_DISP_COLOR,	1, NULL },
+>  	[DDP_COMPONENT_DPI0]	= { MTK_DPI,		0, NULL },
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> index 8399229..87ef290 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> @@ -28,6 +28,7 @@ enum mtk_ddp_comp_type {
+>  	MTK_DISP_RDMA,
+>  	MTK_DISP_WDMA,
+>  	MTK_DISP_COLOR,
+> +	MTK_DISP_CCORR,
+>  	MTK_DISP_AAL,
+>  	MTK_DISP_GAMMA,
+>  	MTK_DISP_UFOE,
+> @@ -44,6 +45,7 @@ enum mtk_ddp_comp_id {
+>  	DDP_COMPONENT_AAL0,
+>  	DDP_COMPONENT_AAL1,
+>  	DDP_COMPONENT_BLS,
+> +	DDP_COMPONENT_CCORR,
+>  	DDP_COMPONENT_COLOR0,
+>  	DDP_COMPONENT_COLOR1,
+>  	DDP_COMPONENT_DPI0,
