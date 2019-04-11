@@ -1,32 +1,43 @@
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [v2 PATCH 4/4] phy: phy-meson-gxl-usb2: get optional clock by
- devm_clk_get_optional()
-Date: Thu, 11 Apr 2019 09:04:59 +0800
-Message-ID: <1554944699.10179.181.camel@mhfsdcap03>
-References: <a8539bcf66065380069676fbea99a51254309803.1554874961.git.chunfeng.yun@mediatek.com>
-         <9f04a619e8a2cc44f5b1fe299a08f237f069d56d.1554874961.git.chunfeng.yun@mediatek.com>
-         <CAFBinCBoQ6C7MrtwSctDgFPpXnaRVKm490piGOFmN2i2PV3GOQ@mail.gmail.com>
+Subject: Re: [v3 PATCH 6/6] usb: mtu3: register a USB Role Switch for dual
+ role mode
+Date: Thu, 11 Apr 2019 09:05:59 +0800
+Message-ID: <1554944759.10179.182.camel@mhfsdcap03>
+References: <1554257354-7440-1-git-send-email-chunfeng.yun@mediatek.com>
+         <1554257354-7440-7-git-send-email-chunfeng.yun@mediatek.com>
+         <20190410102415.GH20058@kuha.fi.intel.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAFBinCBoQ6C7MrtwSctDgFPpXnaRVKm490piGOFmN2i2PV3GOQ@mail.gmail.com>
+In-Reply-To: <20190410102415.GH20058@kuha.fi.intel.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, Kevin Hilman <khilman@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Masahiro Yamada <yamada.masahiro@socionext.com>, Grygorii Strashko <grygorii.strashko@ti.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <masami.hiramatsu@linaro.org>, Motoya Tanigawa <tanigawa.motoya@socionext.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
+To: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, Alan Stern <stern@rowland.harvard.edu>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2019-04-10 at 19:59 +0200, Martin Blumenstingl wrote:
-> On Wed, Apr 10, 2019 at 8:13 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
-> >
-> > Use devm_clk_get_optional() to get optional clock
-> >
-> > Cc: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > Acked-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-> now also:
-> Tested-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-> (on my Khadas VIM by manually adjusting meson-gxl.dtsi and dropping
-> the clocks in usb2_phy0 and usb2_phy1)
+On Wed, 2019-04-10 at 13:24 +0300, Heikki Krogerus wrote:
+> On Wed, Apr 03, 2019 at 10:09:14AM +0800, Chunfeng Yun wrote:
+> > +static int ssusb_role_sw_register(struct otg_switch_mtk *otg_sx)
+> > +{
+> > +	struct usb_role_switch_desc role_sx_desc = { 0 };
+> > +	struct ssusb_mtk *ssusb =
+> > +		container_of(otg_sx, struct ssusb_mtk, otg_switch);
+> > +
+> > +	if (!otg_sx->role_sw_used)
+> > +		return 0;
+> > +
+> > +	role_sx_desc.set = ssusb_role_sw_set;
+> > +	role_sx_desc.get = ssusb_role_sw_get;
+> 
+>         role_sw_desc.fwnode = dev_fwnode(ssusb->dev);
+Ok, thanks
 
-Thank you:)
+> 
+> > +	otg_sx->role_sw = usb_role_switch_register(ssusb->dev, &role_sx_desc);
+> > +
+> > +	return PTR_ERR_OR_ZERO(otg_sx->role_sw);
+> > +}
+> 
+> thanks,
+> 
