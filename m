@@ -1,129 +1,132 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [v3 PATCH 4/6] usb: roles: add API to get usb_role_switch by node
-Date: Thu, 11 Apr 2019 11:11:09 +0800
-Message-ID: <1554952269.10179.185.camel@mhfsdcap03>
-References: <1554257354-7440-1-git-send-email-chunfeng.yun@mediatek.com>
- <1554257354-7440-5-git-send-email-chunfeng.yun@mediatek.com>
- <20190410102239.GG20058@kuha.fi.intel.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v2 07/25] drm/mediatek: move rdma sout from
+ mtk_ddp_mout_en into mtk_ddp_sout_sel
+Date: Thu, 11 Apr 2019 13:30:16 +0800
+Message-ID: <1554960616.4768.1.camel@mtksdaap41>
+References: <1553667561-25447-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1553667561-25447-8-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190410102239.GG20058@kuha.fi.intel.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Hans de Goede <hdegoede@redhat.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, Badhri Jagan Sridharan <badhri@google.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Rob Herring <robh+dt@kernel.org>, Alan Stern <stern@rowland.harvard.edu>, Min Guo <min.guo@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, linux-arm-kernel@lists.infradead.org, Li Jun <jun.li@nxp.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1553667561-25447-8-git-send-email-yongqiang.niu@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: yongqiang.niu@mediatek.com
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2019-04-10 at 13:22 +0300, Heikki Krogerus wrote:
-> On Wed, Apr 03, 2019 at 10:09:12AM +0800, Chunfeng Yun wrote:
-> > Add fwnode_usb_role_switch_get() to make easier to get
-> > usb_role_switch by fwnode which register it.
-> > It's useful when there is not device_connection registered
-> > between two drivers and only knows the fwnode which register
-> > usb_role_switch.
-> > 
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > ---
-> > v3 changes:
-> >   1. use fwnodes instead of node suggested by Andy
-> >   2. rebuild the API suggested by Heikki
-> > 
-> > v2 no changes
-> > ---
-> >  drivers/usb/roles/class.c | 31 +++++++++++++++++++++++++++++++
-> >  include/linux/usb/role.h  |  2 ++
-> >  2 files changed, 33 insertions(+)
-> > 
-> > diff --git a/drivers/usb/roles/class.c b/drivers/usb/roles/class.c
-> > index f45d8df5cfb8..5ecb57f8960b 100644
-> > --- a/drivers/usb/roles/class.c
-> > +++ b/drivers/usb/roles/class.c
-> > @@ -12,6 +12,7 @@
-> >  #include <linux/device.h>
-> >  #include <linux/module.h>
-> >  #include <linux/mutex.h>
-> > +#include <linux/of.h>
-> >  #include <linux/slab.h>
-> >  
-> >  static struct class *role_class;
-> > @@ -135,6 +136,36 @@ struct usb_role_switch *usb_role_switch_get(struct device *dev)
-> >  }
-> >  EXPORT_SYMBOL_GPL(usb_role_switch_get);
-> >  
-> > +static int __switch_match_fwnode(struct device *dev, const void *fwnode)
-> > +{
-> > +	return dev_fwnode(dev->parent) == (const struct fwnode_handle *)fwnode;
-> > +}
-> 
-> I don't think this is actually needed. 
-Yes, you are right
-
-> Why not just assign the
-> parent's fwnode for the mux as well?
-will do it in next version
-
-> 
-> I'll add an example to the patch 6/6 in this series.
-> 
-> > +/**
-> > + * fwnode_usb_role_switch_get - Find USB role switch by it's parent fwnode
-> > + * @fwnode: The fwnode that register USB role switch
-> > + *
-> > + * Finds and returns role switch registered by @fwnode. The reference count
-> > + * for the found switch is incremented.
-> > + */
-> > +struct usb_role_switch *
-> > +fwnode_usb_role_switch_get(struct fwnode_handle *fwnode)
-> > +{
-> > +	struct usb_role_switch *sw;
-> > +	struct device *dev;
-> > +
-> > +	dev = class_find_device(role_class, NULL, fwnode,
-> > +				__switch_match_fwnode);
-> 
-> So here you can then reuse switch_fwnode_match():
-> 
-> 	dev = class_find_device(role_class, NULL, fwnode, switch_fwnode_match);
-I make a fast test, it works, thanks a lot Heikki
-
-> 
-> > +	if (!dev)
-> > +		return ERR_PTR(-EPROBE_DEFER);
-> > +
-> > +	sw = to_role_switch(dev);
-> > +	WARN_ON(!try_module_get(sw->dev.parent->driver->owner));
-> > +
-> > +	return sw;
-> > +}
-> > +EXPORT_SYMBOL_GPL(fwnode_usb_role_switch_get);
-> > +
-> >  /**
-> >   * usb_role_switch_put - Release handle to a switch
-> >   * @sw: USB Role Switch
-> > diff --git a/include/linux/usb/role.h b/include/linux/usb/role.h
-> > index c05ffa6abda9..d21cd55d9e45 100644
-> > --- a/include/linux/usb/role.h
-> > +++ b/include/linux/usb/role.h
-> > @@ -46,6 +46,8 @@ int usb_role_switch_set_role(struct usb_role_switch *sw, enum usb_role role);
-> >  enum usb_role usb_role_switch_get_role(struct usb_role_switch *sw);
-> >  struct usb_role_switch *usb_role_switch_get(struct device *dev);
-> >  void usb_role_switch_put(struct usb_role_switch *sw);
-> > +struct usb_role_switch *
-> > +fwnode_usb_role_switch_get(struct fwnode_handle *fwnode);
-> >  
-> >  struct usb_role_switch *
-> >  usb_role_switch_register(struct device *parent,
-> > -- 
-> > 2.20.1
-> 
-> thanks,
-> 
+SGksIFlvbmdxaWFuZzoKCk9uIFdlZCwgMjAxOS0wMy0yNyBhdCAxNDoxOSArMDgwMCwgeW9uZ3Fp
+YW5nLm5pdUBtZWRpYXRlay5jb20gd3JvdGU6Cj4gRnJvbTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3Fp
+YW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gCj4gVGhpcyBwYXRjaCBtb3ZlIHJkbWEgc291dCBmcm9t
+IG10a19kZHBfbW91dF9lbiBpbnRvIG10a19kZHBfc291dF9zZWwKPiByZG1hIG9ubHkgaGFzIHNp
+bmdsZSBvdXRwdXQsIGJ1dCBubyBtdWx0aSBvdXRwdXQsCj4gYWxsIHRoZXNlIHJkbWEtPmRzaS9k
+cGkgdXNlY2FzZSBzaG91bGQgbW92ZSB0byBtdGtfZGRwX3NvdXRfc2VsCgpSZXZpZXdlZC1ieTog
+Q0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4KCj4gCj4gU2lnbmVkLW9mZi1ieTogWW9uZ3FpYW5n
+IE5pdSA8eW9uZ3FpYW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jIHwgOTAgKysrKysrKysrKysrKysrKystLS0tLS0tLS0t
+LS0tLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgNDUgaW5zZXJ0aW9ucygrKSwgNDUgZGVsZXRpb25z
+KC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rk
+cC5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMKPiBpbmRleCBlNGRh
+ZmUwLi41YWUxM2IwIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+ZHJtX2RkcC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMK
+PiBAQCAtMjgxLDUxICsyODEsNiBAQCBzdGF0aWMgdW5zaWduZWQgaW50IG10a19kZHBfbW91dF9l
+bihlbnVtIG10a19kZHBfY29tcF9pZCBjdXIsCj4gIAl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09N
+UE9ORU5UX09EMSAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfUkRNQTEpIHsKPiAgCQkqYWRkciA9
+IERJU1BfUkVHX0NPTkZJR19ESVNQX09EX01PVVRfRU47Cj4gIAkJdmFsdWUgPSBPRDFfTU9VVF9F
+Tl9SRE1BMTsKPiAtCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRfUkRNQTAgJiYgbmV4
+dCA9PSBERFBfQ09NUE9ORU5UX0RQSTApIHsKPiAtCQkqYWRkciA9IERJU1BfUkVHX0NPTkZJR19E
+SVNQX1JETUEwX1NPVVRfRU47Cj4gLQkJdmFsdWUgPSBSRE1BMF9TT1VUX0RQSTA7Cj4gLQl9IGVs
+c2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUEwICYmIG5leHQgPT0gRERQX0NPTVBPTkVO
+VF9EUEkxKSB7Cj4gLQkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElTUF9SRE1BMF9TT1VUX0VO
+Owo+IC0JCXZhbHVlID0gUkRNQTBfU09VVF9EUEkxOwo+IC0JfSBlbHNlIGlmIChjdXIgPT0gRERQ
+X0NPTVBPTkVOVF9SRE1BMCAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfRFNJMSkgewo+IC0JCSph
+ZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTBfU09VVF9FTjsKPiAtCQl2YWx1ZSA9IFJE
+TUEwX1NPVVRfRFNJMTsKPiAtCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRfUkRNQTAg
+JiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX0RTSTIpIHsKPiAtCQkqYWRkciA9IERJU1BfUkVHX0NP
+TkZJR19ESVNQX1JETUEwX1NPVVRfRU47Cj4gLQkJdmFsdWUgPSBSRE1BMF9TT1VUX0RTSTI7Cj4g
+LQl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUEwICYmIG5leHQgPT0gRERQX0NP
+TVBPTkVOVF9EU0kzKSB7Cj4gLQkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElTUF9SRE1BMF9T
+T1VUX0VOOwo+IC0JCXZhbHVlID0gUkRNQTBfU09VVF9EU0kzOwo+IC0JfSBlbHNlIGlmIChjdXIg
+PT0gRERQX0NPTVBPTkVOVF9SRE1BMSAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfRFNJMSkgewo+
+IC0JCSphZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTFfU09VVF9FTjsKPiAtCQl2YWx1
+ZSA9IFJETUExX1NPVVRfRFNJMTsKPiAtCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRf
+UkRNQTEgJiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX0RTSTIpIHsKPiAtCQkqYWRkciA9IERJU1Bf
+UkVHX0NPTkZJR19ESVNQX1JETUExX1NPVVRfRU47Cj4gLQkJdmFsdWUgPSBSRE1BMV9TT1VUX0RT
+STI7Cj4gLQl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUExICYmIG5leHQgPT0g
+RERQX0NPTVBPTkVOVF9EU0kzKSB7Cj4gLQkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElTUF9S
+RE1BMV9TT1VUX0VOOwo+IC0JCXZhbHVlID0gUkRNQTFfU09VVF9EU0kzOwo+IC0JfSBlbHNlIGlm
+IChjdXIgPT0gRERQX0NPTVBPTkVOVF9SRE1BMSAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfRFBJ
+MCkgewo+IC0JCSphZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTFfU09VVF9FTjsKPiAt
+CQl2YWx1ZSA9IFJETUExX1NPVVRfRFBJMDsKPiAtCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01Q
+T05FTlRfUkRNQTEgJiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX0RQSTEpIHsKPiAtCQkqYWRkciA9
+IERJU1BfUkVHX0NPTkZJR19ESVNQX1JETUExX1NPVVRfRU47Cj4gLQkJdmFsdWUgPSBSRE1BMV9T
+T1VUX0RQSTE7Cj4gLQl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUEyICYmIG5l
+eHQgPT0gRERQX0NPTVBPTkVOVF9EUEkwKSB7Cj4gLQkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdf
+RElTUF9SRE1BMl9TT1VUOwo+IC0JCXZhbHVlID0gUkRNQTJfU09VVF9EUEkwOwo+IC0JfSBlbHNl
+IGlmIChjdXIgPT0gRERQX0NPTVBPTkVOVF9SRE1BMiAmJiBuZXh0ID09IEREUF9DT01QT05FTlRf
+RFBJMSkgewo+IC0JCSphZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTJfU09VVDsKPiAt
+CQl2YWx1ZSA9IFJETUEyX1NPVVRfRFBJMTsKPiAtCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01Q
+T05FTlRfUkRNQTIgJiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX0RTSTEpIHsKPiAtCQkqYWRkciA9
+IERJU1BfUkVHX0NPTkZJR19ESVNQX1JETUEyX1NPVVQ7Cj4gLQkJdmFsdWUgPSBSRE1BMl9TT1VU
+X0RTSTE7Cj4gLQl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUEyICYmIG5leHQg
+PT0gRERQX0NPTVBPTkVOVF9EU0kyKSB7Cj4gLQkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElT
+UF9SRE1BMl9TT1VUOwo+IC0JCXZhbHVlID0gUkRNQTJfU09VVF9EU0kyOwo+IC0JfSBlbHNlIGlm
+IChjdXIgPT0gRERQX0NPTVBPTkVOVF9SRE1BMiAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfRFNJ
+Mykgewo+IC0JCSphZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTJfU09VVDsKPiAtCQl2
+YWx1ZSA9IFJETUEyX1NPVVRfRFNJMzsKPiAgCX0gZWxzZSB7Cj4gIAkJdmFsdWUgPSAwOwo+ICAJ
+fQo+IEBAIC00MDYsNiArMzYxLDUxIEBAIHN0YXRpYyB1bnNpZ25lZCBpbnQgbXRrX2RkcF9zb3V0
+X3NlbChlbnVtIG10a19kZHBfY29tcF9pZCBjdXIsCj4gIAl9IGVsc2UgaWYgKGN1ciA9PSBERFBf
+Q09NUE9ORU5UX1JETUExICYmIG5leHQgPT0gRERQX0NPTVBPTkVOVF9EU0kwKSB7Cj4gIAkJKmFk
+ZHIgPSBESVNQX1JFR19DT05GSUdfRFNJX1NFTDsKPiAgCQl2YWx1ZSA9IERTSV9TRUxfSU5fUkRN
+QTsKPiArCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRfUkRNQTAgJiYgbmV4dCA9PSBE
+RFBfQ09NUE9ORU5UX0RQSTApIHsKPiArCQkqYWRkciA9IERJU1BfUkVHX0NPTkZJR19ESVNQX1JE
+TUEwX1NPVVRfRU47Cj4gKwkJdmFsdWUgPSBSRE1BMF9TT1VUX0RQSTA7Cj4gKwl9IGVsc2UgaWYg
+KGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUEwICYmIG5leHQgPT0gRERQX0NPTVBPTkVOVF9EUEkx
+KSB7Cj4gKwkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElTUF9SRE1BMF9TT1VUX0VOOwo+ICsJ
+CXZhbHVlID0gUkRNQTBfU09VVF9EUEkxOwo+ICsJfSBlbHNlIGlmIChjdXIgPT0gRERQX0NPTVBP
+TkVOVF9SRE1BMCAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfRFNJMSkgewo+ICsJCSphZGRyID0g
+RElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTBfU09VVF9FTjsKPiArCQl2YWx1ZSA9IFJETUEwX1NP
+VVRfRFNJMTsKPiArCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRfUkRNQTAgJiYgbmV4
+dCA9PSBERFBfQ09NUE9ORU5UX0RTSTIpIHsKPiArCQkqYWRkciA9IERJU1BfUkVHX0NPTkZJR19E
+SVNQX1JETUEwX1NPVVRfRU47Cj4gKwkJdmFsdWUgPSBSRE1BMF9TT1VUX0RTSTI7Cj4gKwl9IGVs
+c2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUEwICYmIG5leHQgPT0gRERQX0NPTVBPTkVO
+VF9EU0kzKSB7Cj4gKwkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElTUF9SRE1BMF9TT1VUX0VO
+Owo+ICsJCXZhbHVlID0gUkRNQTBfU09VVF9EU0kzOwo+ICsJfSBlbHNlIGlmIChjdXIgPT0gRERQ
+X0NPTVBPTkVOVF9SRE1BMSAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfRFNJMSkgewo+ICsJCSph
+ZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTFfU09VVF9FTjsKPiArCQl2YWx1ZSA9IFJE
+TUExX1NPVVRfRFNJMTsKPiArCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRfUkRNQTEg
+JiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX0RTSTIpIHsKPiArCQkqYWRkciA9IERJU1BfUkVHX0NP
+TkZJR19ESVNQX1JETUExX1NPVVRfRU47Cj4gKwkJdmFsdWUgPSBSRE1BMV9TT1VUX0RTSTI7Cj4g
+Kwl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUExICYmIG5leHQgPT0gRERQX0NP
+TVBPTkVOVF9EU0kzKSB7Cj4gKwkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElTUF9SRE1BMV9T
+T1VUX0VOOwo+ICsJCXZhbHVlID0gUkRNQTFfU09VVF9EU0kzOwo+ICsJfSBlbHNlIGlmIChjdXIg
+PT0gRERQX0NPTVBPTkVOVF9SRE1BMSAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfRFBJMCkgewo+
+ICsJCSphZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTFfU09VVF9FTjsKPiArCQl2YWx1
+ZSA9IFJETUExX1NPVVRfRFBJMDsKPiArCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRf
+UkRNQTEgJiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX0RQSTEpIHsKPiArCQkqYWRkciA9IERJU1Bf
+UkVHX0NPTkZJR19ESVNQX1JETUExX1NPVVRfRU47Cj4gKwkJdmFsdWUgPSBSRE1BMV9TT1VUX0RQ
+STE7Cj4gKwl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUEyICYmIG5leHQgPT0g
+RERQX0NPTVBPTkVOVF9EUEkwKSB7Cj4gKwkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElTUF9S
+RE1BMl9TT1VUOwo+ICsJCXZhbHVlID0gUkRNQTJfU09VVF9EUEkwOwo+ICsJfSBlbHNlIGlmIChj
+dXIgPT0gRERQX0NPTVBPTkVOVF9SRE1BMiAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfRFBJMSkg
+ewo+ICsJCSphZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTJfU09VVDsKPiArCQl2YWx1
+ZSA9IFJETUEyX1NPVVRfRFBJMTsKPiArCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRf
+UkRNQTIgJiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX0RTSTEpIHsKPiArCQkqYWRkciA9IERJU1Bf
+UkVHX0NPTkZJR19ESVNQX1JETUEyX1NPVVQ7Cj4gKwkJdmFsdWUgPSBSRE1BMl9TT1VUX0RTSTE7
+Cj4gKwl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX1JETUEyICYmIG5leHQgPT0gRERQ
+X0NPTVBPTkVOVF9EU0kyKSB7Cj4gKwkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdfRElTUF9SRE1B
+Ml9TT1VUOwo+ICsJCXZhbHVlID0gUkRNQTJfU09VVF9EU0kyOwo+ICsJfSBlbHNlIGlmIChjdXIg
+PT0gRERQX0NPTVBPTkVOVF9SRE1BMiAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfRFNJMykgewo+
+ICsJCSphZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTJfU09VVDsKPiArCQl2YWx1ZSA9
+IFJETUEyX1NPVVRfRFNJMzsKPiAgCX0gZWxzZSB7Cj4gIAkJdmFsdWUgPSAwOwo+ICAJfQoKCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBt
+YWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3Rz
+LmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
