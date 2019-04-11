@@ -1,59 +1,73 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v2] mmc: mtk-sd: check for valid optional memory resource
-Date: Thu, 11 Apr 2019 12:43:13 +0200
-Message-ID: <CAPDyKFrKxGxp5K38P-AHrRpjOGjKhBv333HXAHPNKYWqLJmz+g@mail.gmail.com>
-References: <20190403193050.22180-1-fparent@baylibre.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v2 14/25] drm/medaitek: add layer_nr for ovl private data
+Date: Thu, 11 Apr 2019 18:57:09 +0800
+Message-ID: <1554980229.27008.4.camel@mtksdaap41>
+References: <1553667561-25447-1-git-send-email-yongqiang.niu@mediatek.com>
+         <1553667561-25447-15-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190403193050.22180-1-fparent@baylibre.com>
+In-Reply-To: <1553667561-25447-15-git-send-email-yongqiang.niu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Fabien Parent <fparent@baylibre.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, Jjian Zhou <jjian.zhou@mediatek.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+To: yongqiang.niu@mediatek.com
+Cc: p.zabel@pengutronix.de, robh+dt@kernel.org, matthias.bgg@gmail.com, airlied@linux.ie, mark.rutland@arm.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Bibby.Hsieh@mediatek.com, yt.shen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 3 Apr 2019 at 21:31, Fabien Parent <fparent@baylibre.com> wrote:
->
-> 'top_base' memory region is optional. Check that the resource is valid
-> before using it. This avoid getting a "invalid resource" error message
-> printed by the kernel.
->
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+Hi, Yongqiang:
 
-Applied for next, thanks!
+On Wed, 2019-03-27 at 14:19 +0800, yongqiang.niu@mediatek.com wrote:
+> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> 
+> This patch add layer_nr for ovl private data
+> ovl_2l almost same with with ovl hardware, except the
+> layer number for ovl_2l is 2 and ovl is 4.
+> this patch is a preparation for ovl-2l and
+> ovl share the same driver.
 
-Kind regards
-Uffe
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
 
-
+> 
+> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
 > ---
->
-> V2:
->         Fix invalid condition: check against 'res' variable instead of 'ret'.
->
-> ---
->  drivers/mmc/host/mtk-sd.c | 8 +++++---
->  1 file changed, 5 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 833ef0590af8..61bf8704491c 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -2123,9 +2123,11 @@ static int msdc_drv_probe(struct platform_device *pdev)
->         }
->
->         res = platform_get_resource(pdev, IORESOURCE_MEM, 1);
-> -       host->top_base = devm_ioremap_resource(&pdev->dev, res);
-> -       if (IS_ERR(host->top_base))
-> -               host->top_base = NULL;
-> +       if (res) {
-> +               host->top_base = devm_ioremap_resource(&pdev->dev, res);
-> +               if (IS_ERR(host->top_base))
-> +                       host->top_base = NULL;
-> +       }
->
->         ret = mmc_regulator_get_supply(mmc);
->         if (ret)
-> --
-> 2.20.1
->
+>  drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> index afb313c..a0ab760 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> @@ -60,6 +60,7 @@
+>  struct mtk_disp_ovl_data {
+>  	unsigned int addr;
+>  	unsigned int gmc_bits;
+> +	unsigned int layer_nr;
+>  	bool fmt_rgb565_is_0;
+>  };
+>  
+> @@ -137,7 +138,9 @@ static void mtk_ovl_config(struct mtk_ddp_comp *comp, unsigned int w,
+>  
+>  static unsigned int mtk_ovl_layer_nr(struct mtk_ddp_comp *comp)
+>  {
+> -	return 4;
+> +	struct mtk_disp_ovl *ovl = comp_to_ovl(comp);
+> +
+> +	return ovl->data->layer_nr;
+>  }
+>  
+>  static void mtk_ovl_layer_on(struct mtk_ddp_comp *comp, unsigned int idx)
+> @@ -342,12 +345,14 @@ static int mtk_disp_ovl_remove(struct platform_device *pdev)
+>  static const struct mtk_disp_ovl_data mt2701_ovl_driver_data = {
+>  	.addr = DISP_REG_OVL_ADDR_MT2701,
+>  	.gmc_bits = 8,
+> +	.layer_nr = 4,
+>  	.fmt_rgb565_is_0 = false,
+>  };
+>  
+>  static const struct mtk_disp_ovl_data mt8173_ovl_driver_data = {
+>  	.addr = DISP_REG_OVL_ADDR_MT8173,
+>  	.gmc_bits = 8,
+> +	.layer_nr = 4,
+>  	.fmt_rgb565_is_0 = true,
+>  };
+>  
