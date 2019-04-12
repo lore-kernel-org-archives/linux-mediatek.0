@@ -1,210 +1,86 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH RESEND v6 5/6] i2c: mediatek: Add i2c support for MediaTek
- MT8183
-Date: Fri, 12 Apr 2019 20:42:27 +0200
-Message-ID: <ececdd86-1176-1b2b-c662-5fe4857f0472@gmail.com>
-References: <1554208560-14817-1-git-send-email-qii.wang@mediatek.com>
- <1554208560-14817-6-git-send-email-qii.wang@mediatek.com>
+Subject: Re: [v2 PATCH 6/6] usb: mtu3: get optional clock by
+ devm_clk_get_optional()
+Date: Fri, 12 Apr 2019 21:06:23 +0200
+Message-ID: <5978a0ce-7559-40f6-1bcb-de84c63cbbda@gmail.com>
+References: <bc6cdc2dce698dddbd692ba100fbf08c15c7b023.1554877692.git.chunfeng.yun@mediatek.com>
+ <147496a43bb93120bbd00a39668612c96e369691.1554877692.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1554208560-14817-6-git-send-email-qii.wang@mediatek.com>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <147496a43bb93120bbd00a39668612c96e369691.1554877692.git.chunfeng.yun@mediatek.com>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Qii Wang <qii.wang@mediatek.com>, wsa@the-dreams.de
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com, robh@kernel.org, leilk.liu@mediatek.com, xinping.qian@mediatek.com, linux-kernel@vger.kernel.org, liguo.zhang@mediatek.com, linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Mathias Nyman <mathias.nyman@intel.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Marek Szyprowski <m.szyprowski@samsung.com>
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 02/04/2019 14:35, Qii Wang wrote:
-> Add i2c compatible for MT8183. Compare to MT2712 i2c controller,
-> MT8183 has different register offsets. Ltiming_reg is added to
-> adjust low width of SCL. Arb clock and dma_sync are needed.
+On 10/04/2019 08:47, Chunfeng Yun wrote:
+> Use devm_clk_get_optional() to get optional clock
 > 
-> Signed-off-by: Qii Wang <qii.wang@mediatek.com>
-> Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
-> ---
->  drivers/i2c/busses/i2c-mt65xx.c |   62 +++++++++++++++++++++++++++++++++++++--
->  1 file changed, 60 insertions(+), 2 deletions(-)
-> 
-
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 
 Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-> index 6137ad7..745b0d0 100644
-> --- a/drivers/i2c/busses/i2c-mt65xx.c
-> +++ b/drivers/i2c/busses/i2c-mt65xx.c
-> @@ -133,6 +133,7 @@ enum I2C_REGS_OFFSET {
->  	OFFSET_DEBUGCTRL,
->  	OFFSET_TRANSFER_LEN_AUX,
->  	OFFSET_CLOCK_DIV,
-> +	OFFSET_LTIMING,
->  };
+> ---
+> v2: new patch, merged into this series from
+>     https://patchwork.kernel.org/patch/10878235/
+> ---
+>  drivers/usb/mtu3/mtu3_plat.c | 19 +++----------------
+>  1 file changed, 3 insertions(+), 16 deletions(-)
+> 
+> diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
+> index e086630e41a9..745a1da5c9c0 100644
+> --- a/drivers/usb/mtu3/mtu3_plat.c
+> +++ b/drivers/usb/mtu3/mtu3_plat.c
+> @@ -210,19 +210,6 @@ static void ssusb_ip_sw_reset(struct ssusb_mtk *ssusb)
+>  	mtu3_setbits(ssusb->ippc_base, U3D_SSUSB_IP_PW_CTRL2, SSUSB_IP_DEV_PDN);
+>  }
 >  
->  static const u16 mt_i2c_regs_v1[] = {
-> @@ -162,6 +163,32 @@ enum I2C_REGS_OFFSET {
->  	[OFFSET_CLOCK_DIV] = 0x70,
->  };
->  
-> +static const u16 mt_i2c_regs_v2[] = {
-> +	[OFFSET_DATA_PORT] = 0x0,
-> +	[OFFSET_SLAVE_ADDR] = 0x4,
-> +	[OFFSET_INTR_MASK] = 0x8,
-> +	[OFFSET_INTR_STAT] = 0xc,
-> +	[OFFSET_CONTROL] = 0x10,
-> +	[OFFSET_TRANSFER_LEN] = 0x14,
-> +	[OFFSET_TRANSAC_LEN] = 0x18,
-> +	[OFFSET_DELAY_LEN] = 0x1c,
-> +	[OFFSET_TIMING] = 0x20,
-> +	[OFFSET_START] = 0x24,
-> +	[OFFSET_EXT_CONF] = 0x28,
-> +	[OFFSET_LTIMING] = 0x2c,
-> +	[OFFSET_HS] = 0x30,
-> +	[OFFSET_IO_CONFIG] = 0x34,
-> +	[OFFSET_FIFO_ADDR_CLR] = 0x38,
-> +	[OFFSET_TRANSFER_LEN_AUX] = 0x44,
-> +	[OFFSET_CLOCK_DIV] = 0x48,
-> +	[OFFSET_SOFTRESET] = 0x50,
-> +	[OFFSET_DEBUGSTAT] = 0xe0,
-> +	[OFFSET_DEBUGCTRL] = 0xe8,
-> +	[OFFSET_FIFO_STAT] = 0xf4,
-> +	[OFFSET_FIFO_THRESH] = 0xf8,
-> +	[OFFSET_DCM_EN] = 0xf88,
-> +};
-> +
->  struct mtk_i2c_compatible {
->  	const struct i2c_adapter_quirks *quirks;
->  	const u16 *regs;
-> @@ -172,6 +199,7 @@ struct mtk_i2c_compatible {
->  	unsigned char support_33bits: 1;
->  	unsigned char timing_adjust: 1;
->  	unsigned char dma_sync: 1;
-> +	unsigned char ltiming_adjust: 1;
->  };
->  
->  struct mtk_i2c {
-> @@ -195,6 +223,7 @@ struct mtk_i2c {
->  	enum mtk_trans_op op;
->  	u16 timing_reg;
->  	u16 high_speed_reg;
-> +	u16 ltiming_reg;
->  	unsigned char auto_restart;
->  	bool ignore_restart_irq;
->  	const struct mtk_i2c_compatible *dev_comp;
-> @@ -222,6 +251,7 @@ struct mtk_i2c {
->  	.support_33bits = 1,
->  	.timing_adjust = 1,
->  	.dma_sync = 0,
-> +	.ltiming_adjust = 0,
->  };
->  
->  static const struct mtk_i2c_compatible mt6577_compat = {
-> @@ -234,6 +264,7 @@ struct mtk_i2c {
->  	.support_33bits = 0,
->  	.timing_adjust = 0,
->  	.dma_sync = 0,
-> +	.ltiming_adjust = 0,
->  };
->  
->  static const struct mtk_i2c_compatible mt6589_compat = {
-> @@ -246,6 +277,7 @@ struct mtk_i2c {
->  	.support_33bits = 0,
->  	.timing_adjust = 0,
->  	.dma_sync = 0,
-> +	.ltiming_adjust = 0,
->  };
->  
->  static const struct mtk_i2c_compatible mt7622_compat = {
-> @@ -258,6 +290,7 @@ struct mtk_i2c {
->  	.support_33bits = 0,
->  	.timing_adjust = 0,
->  	.dma_sync = 0,
-> +	.ltiming_adjust = 0,
->  };
->  
->  static const struct mtk_i2c_compatible mt8173_compat = {
-> @@ -269,6 +302,19 @@ struct mtk_i2c {
->  	.support_33bits = 1,
->  	.timing_adjust = 0,
->  	.dma_sync = 0,
-> +	.ltiming_adjust = 0,
-> +};
-> +
-> +static const struct mtk_i2c_compatible mt8183_compat = {
-> +	.regs = mt_i2c_regs_v2,
-> +	.pmic_i2c = 0,
-> +	.dcm = 0,
-> +	.auto_restart = 1,
-> +	.aux_len_reg = 1,
-> +	.support_33bits = 1,
-> +	.timing_adjust = 1,
-> +	.dma_sync = 1,
-> +	.ltiming_adjust = 1,
->  };
->  
->  static const struct of_device_id mtk_i2c_of_match[] = {
-> @@ -277,6 +323,7 @@ struct mtk_i2c {
->  	{ .compatible = "mediatek,mt6589-i2c", .data = &mt6589_compat },
->  	{ .compatible = "mediatek,mt7622-i2c", .data = &mt7622_compat },
->  	{ .compatible = "mediatek,mt8173-i2c", .data = &mt8173_compat },
-> +	{ .compatible = "mediatek,mt8183-i2c", .data = &mt8183_compat },
->  	{}
->  };
->  MODULE_DEVICE_TABLE(of, mtk_i2c_of_match);
-> @@ -361,6 +408,8 @@ static void mtk_i2c_init_hw(struct mtk_i2c *i2c)
->  
->  	mtk_i2c_writew(i2c, i2c->timing_reg, OFFSET_TIMING);
->  	mtk_i2c_writew(i2c, i2c->high_speed_reg, OFFSET_HS);
-> +	if (i2c->dev_comp->ltiming_adjust)
-> +		mtk_i2c_writew(i2c, i2c->ltiming_reg, OFFSET_LTIMING);
->  
->  	/* If use i2c pin from PMIC mt6397 side, need set PATH_DIR first */
->  	if (i2c->have_pmic)
-> @@ -460,6 +509,8 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk)
->  	unsigned int clk_src;
->  	unsigned int step_cnt;
->  	unsigned int sample_cnt;
-> +	unsigned int l_step_cnt;
-> +	unsigned int l_sample_cnt;
->  	unsigned int target_speed;
->  	int ret;
->  
-> @@ -469,11 +520,11 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk)
->  	if (target_speed > MAX_FS_MODE_SPEED) {
->  		/* Set master code speed register */
->  		ret = mtk_i2c_calculate_speed(i2c, clk_src, MAX_FS_MODE_SPEED,
-> -					      &step_cnt, &sample_cnt);
-> +					      &l_step_cnt, &l_sample_cnt);
->  		if (ret < 0)
->  			return ret;
->  
-> -		i2c->timing_reg = (sample_cnt << 8) | step_cnt;
-> +		i2c->timing_reg = (l_sample_cnt << 8) | l_step_cnt;
->  
->  		/* Set the high speed mode register */
->  		ret = mtk_i2c_calculate_speed(i2c, clk_src, target_speed,
-> @@ -483,6 +534,10 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk)
->  
->  		i2c->high_speed_reg = I2C_TIME_DEFAULT_VALUE |
->  			(sample_cnt << 12) | (step_cnt << 8);
-> +
-> +		if (i2c->dev_comp->ltiming_adjust)
-> +			i2c->ltiming_reg = (l_sample_cnt << 6) | l_step_cnt |
-> +					   (sample_cnt << 12) | (step_cnt << 9);
->  	} else {
->  		ret = mtk_i2c_calculate_speed(i2c, clk_src, target_speed,
->  					      &step_cnt, &sample_cnt);
-> @@ -493,6 +548,9 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk)
->  
->  		/* Disable the high speed transaction */
->  		i2c->high_speed_reg = I2C_TIME_CLR_VALUE;
-> +
-> +		if (i2c->dev_comp->ltiming_adjust)
-> +			i2c->ltiming_reg = (sample_cnt << 6) | step_cnt;
+> -/* ignore the error if the clock does not exist */
+> -static struct clk *get_optional_clk(struct device *dev, const char *id)
+> -{
+> -	struct clk *opt_clk;
+> -
+> -	opt_clk = devm_clk_get(dev, id);
+> -	/* ignore error number except EPROBE_DEFER */
+> -	if (IS_ERR(opt_clk) && (PTR_ERR(opt_clk) != -EPROBE_DEFER))
+> -		opt_clk = NULL;
+> -
+> -	return opt_clk;
+> -}
+> -
+>  static int get_ssusb_rscs(struct platform_device *pdev, struct ssusb_mtk *ssusb)
+>  {
+>  	struct device_node *node = pdev->dev.of_node;
+> @@ -245,15 +232,15 @@ static int get_ssusb_rscs(struct platform_device *pdev, struct ssusb_mtk *ssusb)
+>  		return PTR_ERR(ssusb->sys_clk);
 >  	}
 >  
->  	return 0;
+> -	ssusb->ref_clk = get_optional_clk(dev, "ref_ck");
+> +	ssusb->ref_clk = devm_clk_get_optional(dev, "ref_ck");
+>  	if (IS_ERR(ssusb->ref_clk))
+>  		return PTR_ERR(ssusb->ref_clk);
+>  
+> -	ssusb->mcu_clk = get_optional_clk(dev, "mcu_ck");
+> +	ssusb->mcu_clk = devm_clk_get_optional(dev, "mcu_ck");
+>  	if (IS_ERR(ssusb->mcu_clk))
+>  		return PTR_ERR(ssusb->mcu_clk);
+>  
+> -	ssusb->dma_clk = get_optional_clk(dev, "dma_ck");
+> +	ssusb->dma_clk = devm_clk_get_optional(dev, "dma_ck");
+>  	if (IS_ERR(ssusb->dma_clk))
+>  		return PTR_ERR(ssusb->dma_clk);
+>  
 > 
