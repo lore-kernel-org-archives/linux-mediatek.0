@@ -1,128 +1,46 @@
-From: Light Hsieh <light.hsieh@mediatek.com>
-Subject: Re: [PATCH] pinctrl: Add kernel config PINCTRL_MTK_V2
-Date: Fri, 12 Apr 2019 09:58:13 +0800
-Message-ID: <1555034293.349.6.camel@mtkswgap22>
-References: <1554975138-801-1-git-send-email-light.hsieh@mediatek.com>
-         <CAGp9LzpExWGCHtiggQmPtCwBD6o4JUmGSGfm7VostCq+EK2egw@mail.gmail.com>
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+Subject: Re: [PATCH v5 6/9] clk: mediatek: Add flags support for mtk_gate
+ data
+Date: Fri, 12 Apr 2019 10:42:17 +0800
+Message-ID: <1555036937.2654.5.camel@mtksdaap41>
+References: <20190305050546.23431-1-weiyi.lu@mediatek.com>
+         <20190305050546.23431-8-weiyi.lu@mediatek.com>
+         <155501399858.20095.16525048679717411283@swboyd.mtv.corp.google.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAGp9LzpExWGCHtiggQmPtCwBD6o4JUmGSGfm7VostCq+EK2egw@mail.gmail.com>
+In-Reply-To: <155501399858.20095.16525048679717411283@swboyd.mtv.corp.google.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@kernel.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com
+To: Stephen Boyd <sboyd@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh@kernel.org>, Stephen Boyd <sboyd@codeaurora.org>, James Liao <jamesjj.liao@mediatek.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, stable@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Dear reviewer,
-
-The points of  Sean are right. Please forget this patch proposal.
-
-
-On Thu, 2019-04-11 at 15:04 -0700, Sean Wang wrote:
-> Hi, Light
+On Thu, 2019-04-11 at 13:19 -0700, Stephen Boyd wrote:
+> Quoting Weiyi Lu (2019-03-04 21:05:43)
+> > On some Mediatek platforms, there are critical clocks of
+> > clock gate type.
+> > To register clock gate with flags CLK_IS_CRITICAL,
+> > we need to add the flags field in mtk_gate data and register APIs.
+> > 
+> > Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 > 
-> On Thu, Apr 11, 2019 at 2:32 AM Light Hsieh <light.hsieh@mediatek.com> wrote:
-> >
-> > Since no single Mediatek chip use code for PINCTRL_MTK and code for
-> > PINCTRL_MTK_MOORE/PINCTRL_MTK_PARIS simultaneously, it is better to use
-> > different config to determine if related code will be built or not on
-> > building non-generic kernel.
-> >
-> > Add kernel config PINCTRL_MTK_V2 selected by either PINCTRL_MTK_MOORE
-> > or PINCTRL_MTK_PARIS.
-> > Use PINCTRL_MTK and PINCTRL_MTK_V2 to control building of
-> > drivers/pinctrl/medaitek/.
-> > Remove selection of EINT_MTK from PINCTRL_MTK since code for EINT_MTK is
-> > only related to PINCTRL_MTK_MOORE/PINCTRL_MTK_PARIS, i.e. PINCTL_MTK_V2.
-> >
+> This patch doesn't apply, because it's already there via commit
+> 5a1cc4c27ad2 ("clk: mediatek: Add flags to mtk_gate").
 > 
-> PINCTRL_MTK also depends on EINT_MTK such as the symbol
-> mtk_eint_do_init, it is a commonlibrary for the two kinds of the
-> pinctrl core.
+Got it, but just catch a minor defect by 5a1cc4c27ad2 ("clk: mediatek:
+Add flags to mtk_gate").
+
+init.flags = CLK_SET_RATE_PARENT;
+...
+init.flags = flags;
+
+I'll send a fix later.
+
+Thanks for the help on the MT8183 clk series.
+
 > 
-
-Yes, you are right. 
-It is my fault that I don't see some mtk_eint_* functions originally in
-pinctrl-mtk-common.c had been moved to mtk-eint.c since kernel-4.18 and
-now pinctrl-mtk-common.c depends on mtk-eint.c.
-
-> > ---
-> >  drivers/pinctrl/Makefile         |  3 ++-
-> >  drivers/pinctrl/mediatek/Kconfig | 15 ++++++++++++---
-> >  2 files changed, 14 insertions(+), 4 deletions(-)
-> >
-> > diff --git a/drivers/pinctrl/Makefile b/drivers/pinctrl/Makefile
-> > index 712184b..fcee0e0 100644
-> > --- a/drivers/pinctrl/Makefile
-> > +++ b/drivers/pinctrl/Makefile
-> > @@ -65,6 +65,7 @@ obj-$(CONFIG_PINCTRL_SUNXI)   += sunxi/
-> >  obj-y                          += ti/
-> >  obj-$(CONFIG_PINCTRL_UNIPHIER) += uniphier/
-> >  obj-$(CONFIG_ARCH_VT8500)      += vt8500/
-> > -obj-y                          += mediatek/
-> > +obj-$(CONFIG_PINCTRL_MTK)      += mediatek/
-> > +obj-$(CONFIG_PINCTRL_MTK_V2)   += mediatek/
-> 
-> I would think it is good if deciding V1 or not should be done inside
-> the vendor directory and the change also would cause COMPILE_TEST not
-> be applied to
-
-Agree.
-
-> >  obj-$(CONFIG_PINCTRL_ZX)       += zte/
-> >  obj-y                          += cirrus/
-> > diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
-> > index a005cbc..5e26462 100644
-> > --- a/drivers/pinctrl/mediatek/Kconfig
-> > +++ b/drivers/pinctrl/mediatek/Kconfig
-> > @@ -2,10 +2,15 @@ menu "MediaTek pinctrl drivers"
-> >         depends on ARCH_MEDIATEK || COMPILE_TEST
-> >
-> >  config EINT_MTK
-> > -       bool "MediaTek External Interrupt Support"
-> > -       depends on PINCTRL_MTK || PINCTRL_MTK_MOORE || PINCTRL_MTK_PARIS || COMPILE_TEST
-> > +       bool "MediaTek External Interrupt driver that is based on PINCTRL_MTK_V2"
-> > +       depends on PINCTRL_MTK_MOORE || PINCTRL_MTK_PARIS || COMPILE_TEST
-> >         select GPIOLIB
-> >         select IRQ_DOMAIN
-> > +       help
-> > +         Say yes here to enable support for MediaTek External Interrupt
-> > +         (EINT) driver based on PINCTRL_MTK version 2.
-> > +         This driver is combined with MediaTek Pinctrl driver version 2
-> > +         so PINCTRL_MTK_V2 shall be set first.
-> >
-> >  config PINCTRL_MTK
-> >         bool
-> > @@ -13,9 +18,11 @@ config PINCTRL_MTK
-> >         select PINMUX
-> >         select GENERIC_PINCONF
-> >         select GPIOLIB
-> > -       select EINT_MTK
-> >         select OF_GPIO
-> >
-> > +config PINCTRL_MTK_V2
-> > +       bool "MediaTek Pinctrl Support V2"
-> > +
-> >  config PINCTRL_MTK_MOORE
-> >         bool
-> >         depends on OF
-> > @@ -24,6 +31,7 @@ config PINCTRL_MTK_MOORE
-> >         select GENERIC_PINMUX_FUNCTIONS
-> >         select GPIOLIB
-> >         select OF_GPIO
-> > +       select PINCTRL_MTK_V2
-> >
-> >  config PINCTRL_MTK_PARIS
-> >         bool
-> > @@ -33,6 +41,7 @@ config PINCTRL_MTK_PARIS
-> >         select GPIOLIB
-> >         select EINT_MTK
-> >         select OF_GPIO
-> > +       select PINCTRL_MTK_V2
-> >
-> >  # For ARMv7 SoCs
-> >  config PINCTRL_MT2701
-> > --
-> > 1.8.1.1.dirty
-> >
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
