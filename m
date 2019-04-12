@@ -1,52 +1,52 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: Re: [PATCH] arm64: dts: mt2712: Remove un-used property for PCIe
-Date: Fri, 12 Apr 2019 11:02:51 +0100
-Message-ID: <20190412100251.GC8113@red-moon>
-References: <1552897675-8051-1-git-send-email-honghui.zhang@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v1] clk: mediatek: fix clk-gate flag setting
+Date: Fri, 12 Apr 2019 15:49:30 +0200
+Message-ID: <ab8f6023-95b6-ccb7-e0fb-a7123d51a99c@gmail.com>
+References: <20190412033027.3516-1-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1552897675-8051-1-git-send-email-honghui.zhang@mediatek.com>
+In-Reply-To: <20190412033027.3516-1-weiyi.lu@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: honghui.zhang@mediatek.com
-Cc: matthias.bgg@gmail.com, robh@kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, ryder.lee@mediatek.com, robh+dt@kernel.org, youlin.pei@mediatek.com, jianjun.wang@mediatek.com
+To: Weiyi Lu <weiyi.lu@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Mar 18, 2019 at 04:27:55PM +0800, honghui.zhang@mediatek.com wrote:
-> From: Honghui Zhang <honghui.zhang@mediatek.com>
+
+
+On 12/04/2019 05:30, Weiyi Lu wrote:
+> CLK_SET_RATE_PARENT would be dropped.
+> Merge two flag setting together to correct the error.
 > 
-> The "num-lanes" property for PCIe is not used, remove it.
-> 
-> Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
+> Fixes: 5a1cc4c27ad2 ("clk: mediatek: Add flags to mtk_gate")
+> Cc: <stable@vger.kernel.org>
+> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+
+Good catch.
+
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
 > ---
->  arch/arm64/boot/dts/mediatek/mt2712e.dtsi | 2 --
->  1 file changed, 2 deletions(-)
-
-Applied to pci/mediatek for v5.2, thanks.
-
-Lorenzo
-
-> diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> index 976d92a..43307ba 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> @@ -819,7 +819,6 @@
->  			#size-cells = <2>;
->  			#interrupt-cells = <1>;
->  			ranges;
-> -			num-lanes = <1>;
->  			interrupt-map-mask = <0 0 0 7>;
->  			interrupt-map = <0 0 0 1 &pcie_intc0 0>,
->  					<0 0 0 2 &pcie_intc0 1>,
-> @@ -840,7 +839,6 @@
->  			#size-cells = <2>;
->  			#interrupt-cells = <1>;
->  			ranges;
-> -			num-lanes = <1>;
->  			interrupt-map-mask = <0 0 0 7>;
->  			interrupt-map = <0 0 0 1 &pcie_intc1 0>,
->  					<0 0 0 2 &pcie_intc1 1>,
-> -- 
-> 2.6.4
+>  drivers/clk/mediatek/clk-gate.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/drivers/clk/mediatek/clk-gate.c b/drivers/clk/mediatek/clk-gate.c
+> index 9628d4e7690b..85daf826619a 100644
+> --- a/drivers/clk/mediatek/clk-gate.c
+> +++ b/drivers/clk/mediatek/clk-gate.c
+> @@ -169,11 +169,10 @@ struct clk *mtk_clk_register_gate(
+>  		return ERR_PTR(-ENOMEM);
+>  
+>  	init.name = name;
+> -	init.flags = CLK_SET_RATE_PARENT;
+> +	init.flags = flags | CLK_SET_RATE_PARENT;
+>  	init.parent_names = parent_name ? &parent_name : NULL;
+>  	init.num_parents = parent_name ? 1 : 0;
+>  	init.ops = ops;
+> -	init.flags = flags;
+>  
+>  	cg->regmap = regmap;
+>  	cg->set_ofs = set_ofs;
 > 
