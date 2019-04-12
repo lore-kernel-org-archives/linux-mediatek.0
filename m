@@ -1,120 +1,200 @@
 From: Pi-Hsun Shih <pihsun@chromium.org>
-Subject: [PATCH v8 0/7] Add support for mt8183 SCP.
-Date: Fri, 12 Apr 2019 15:18:44 +0800
-Message-ID: <20190412071851.60332-1-pihsun@chromium.org>
+Subject: [PATCH v8 3/7] remoteproc: mt8183: add reserved memory manager API
+Date: Fri, 12 Apr 2019 15:18:47 +0800
+Message-ID: <20190412071851.60332-4-pihsun@chromium.org>
+References: <20190412071851.60332-1-pihsun@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, Pi-Hsun Shih <pihsun@chromium.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190412071851.60332-1-pihsun@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: Pi-Hsun Shih <pihsun@chromium.org>, Erin Lo <erin.lo@mediatek.com>, Ohad Ben-Cohen <ohad@wizery.com>, Bjorn Andersson <bjorn.andersson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, "open list:REMOTE PROCESSOR
+        REMOTEPROC SUBSYSTEM" <linux-remoteproc@vger.kernel.org>, "moderated list:ARM/Mediatek SoC
+        support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+        support" <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add support for controlling and communicating with mt8183's system
-control processor (SCP), using the remoteproc & rpmsg framework.
-And also add a cros_ec driver for CrOS EC host command over rpmsg.
+From: Erin Lo <erin.lo@mediatek.com>
 
-The overall structure of the series is:
-* remoteproc/mtk_scp.c: Control the start / stop of SCP (Patch 2, 3).
-* remoteproc/mtk_scp_ipi.c: Communicates to SCP using inter-processor
-  interrupt (IPI) and shared memory (Patch 2, 3).
-* rpmsg/mtk_rpmsg.c: Wrapper to wrap the IPI communication into a rpmsg
-  device. Supports name service for SCP firmware to
-  announce channels (Patch 4).
-* platform/chrome/cros_ec_rpmsg.c: Communicates with the SCP over the
-  rpmsg framework (like what platform/chrome/cros_ec_{i2c,spi}.c does)
-  (Patch 5, 6, 7).
+Add memory table mapping API for other driver to lookup
+reserved physical and virtual memory
 
-This series (In particular, Patch 7) is based on
-https://lore.kernel.org/patchwork/patch/1059196/.
-
+Signed-off-by: Erin Lo <erin.lo@mediatek.com>
+Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
+---
 Changes from v7:
- - Rebase onto https://lore.kernel.org/patchwork/patch/1059196/.
- - Fix clock enable/disable timing for SCP driver.
- - Add more SCP IPI ID.
+ - No change.
 
 Changes from v6:
- - Decouple mtk_rpmsg from mtk_scp.
- - Change data of EC response to be aligned to 4 bytes.
+ - No change.
 
 Changes from v5:
- - Add device tree binding document for cros_ec_rpmsg.
- - Better document in comments for cros_ec_rpmsg.
- - Remove dependency on CONFIG_ in binding tree document.
+ - No change.
 
 Changes from v4:
- - Merge patch 6 (Load ELF firmware) into patch 2, so the driver loads
-   ELF firmware by default, and no longer accept plain binary.
- - rpmsg_device listed in device tree (as a child of the SCP node) would
-   have it's device tree node mapped to the rpmsg_device, so the rpmsg
-   driver can use the properties on device tree.
+ - New patch.
+---
+ drivers/remoteproc/mtk_scp.c          | 111 ++++++++++++++++++++++++++
+ include/linux/platform_data/mtk_scp.h |  20 +++++
+ 2 files changed, 131 insertions(+)
 
-Changes from v3:
- - Make writing to SCP SRAM aligned.
- - Add a new patch (Patch 6) to load ELF instead of bin firmware.
- - Add host event support for EC driver.
- - Fix some bugs found in testing (missing spin_lock_init,
-   rproc_subdev_unprepare to rproc_subdev_stop).
- - Fix some coding style issue found by checkpatch.pl.
-
-Changes from v2:
- - Fold patch 3 into patch 2 in v2.
- - Move IPI id around to support cross-testing for old and new firmware.
- - Finish more TODO items.
-
-Changes from v1:
- - Extract functions and rename variables in mtk_scp.c.
- - Do cleanup properly in mtk_rpmsg.c, which also removes the problem of
-   short-lived work items.
- - Code format fix based on feedback for cros_ec_rpmsg.c.
- - Extract feature detection for SCP into separate patch (Patch 6).
-
-Erin Lo (3):
-  dt-bindings: Add a binding for Mediatek SCP
-  remoteproc/mediatek: add SCP support for mt8183
-  remoteproc: mt8183: add reserved memory manager API
-
-Pi-Hsun Shih (4):
-  rpmsg: add rpmsg support for mt8183 SCP.
-  dt-bindings: Add binding for cros-ec-rpmsg.
-  platform/chrome: cros_ec: add EC host command support using rpmsg.
-  mfd: cros_ec: differentiate SCP from EC by feature bit.
-
- .../devicetree/bindings/mfd/cros-ec.txt       |   5 +-
- .../bindings/remoteproc/mtk,scp.txt           |  36 +
- drivers/mfd/cros_ec_dev.c                     |  10 +
- drivers/platform/chrome/Kconfig               |   9 +
- drivers/platform/chrome/Makefile              |   1 +
- drivers/platform/chrome/cros_ec_rpmsg.c       | 258 +++++++
- drivers/remoteproc/Kconfig                    |  10 +
- drivers/remoteproc/Makefile                   |   1 +
- drivers/remoteproc/mtk_common.h               |  77 +++
- drivers/remoteproc/mtk_scp.c                  | 654 ++++++++++++++++++
- drivers/remoteproc/mtk_scp_ipi.c              | 163 +++++
- drivers/rpmsg/Kconfig                         |   9 +
- drivers/rpmsg/Makefile                        |   1 +
- drivers/rpmsg/mtk_rpmsg.c                     | 396 +++++++++++
- include/linux/mfd/cros_ec.h                   |   1 +
- include/linux/mfd/cros_ec_commands.h          |   2 +-
- include/linux/platform_data/mtk_scp.h         | 163 +++++
- include/linux/rpmsg/mtk_rpmsg.h               |  30 +
- 18 files changed, 1824 insertions(+), 2 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
- create mode 100644 drivers/platform/chrome/cros_ec_rpmsg.c
- create mode 100644 drivers/remoteproc/mtk_common.h
- create mode 100644 drivers/remoteproc/mtk_scp.c
- create mode 100644 drivers/remoteproc/mtk_scp_ipi.c
- create mode 100644 drivers/rpmsg/mtk_rpmsg.c
- create mode 100644 include/linux/platform_data/mtk_scp.h
- create mode 100644 include/linux/rpmsg/mtk_rpmsg.h
-
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index 6acaf92c1e2d..b9b8005f1d64 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -348,6 +348,113 @@ void *scp_mapping_dm_addr(struct platform_device *pdev, u32 mem_addr)
+ }
+ EXPORT_SYMBOL_GPL(scp_mapping_dm_addr);
+ 
++#if SCP_RESERVED_MEM
++phys_addr_t scp_mem_base_phys;
++phys_addr_t scp_mem_base_virt;
++phys_addr_t scp_mem_size;
++
++static struct scp_reserve_mblock scp_reserve_mblock[] = {
++	{
++		.num = SCP_ISP_MEM_ID,
++		.start_phys = 0x0,
++		.start_virt = 0x0,
++		.size = 0x1400000,  /*20MB*/
++	},
++};
++
++static int scp_reserve_mem_init(struct mtk_scp *scp)
++{
++	enum scp_reserve_mem_id_t id;
++	phys_addr_t accumlate_memory_size = 0;
++
++	scp_mem_base_phys = (phys_addr_t) (scp->phys_addr + MAX_CODE_SIZE);
++	scp_mem_size = (phys_addr_t) (scp->dram_size - MAX_CODE_SIZE);
++
++	dev_info(scp->dev,
++		 "phys:0x%llx - 0x%llx (0x%llx)\n",
++		 scp_mem_base_phys,
++		 scp_mem_base_phys + scp_mem_size,
++		 scp_mem_size);
++	accumlate_memory_size = 0;
++	for (id = 0; id < SCP_NUMS_MEM_ID; id++) {
++		scp_reserve_mblock[id].start_phys =
++			scp_mem_base_phys + accumlate_memory_size;
++		accumlate_memory_size += scp_reserve_mblock[id].size;
++		dev_info(scp->dev,
++			 "[reserve_mem:%d]: phys:0x%llx - 0x%llx (0x%llx)\n",
++			 id, scp_reserve_mblock[id].start_phys,
++			 scp_reserve_mblock[id].start_phys +
++				 scp_reserve_mblock[id].size,
++			 scp_reserve_mblock[id].size);
++	}
++	return 0;
++}
++
++static int scp_reserve_memory_ioremap(struct mtk_scp *scp)
++{
++	enum scp_reserve_mem_id_t id;
++	phys_addr_t accumlate_memory_size = 0;
++
++	scp_mem_base_virt = (phys_addr_t)(size_t)ioremap_wc(scp_mem_base_phys,
++							    scp_mem_size);
++
++	dev_info(scp->dev,
++		 "virt:0x%llx - 0x%llx (0x%llx)\n",
++		(phys_addr_t)scp_mem_base_virt,
++		(phys_addr_t)scp_mem_base_virt + (phys_addr_t)scp_mem_size,
++		scp_mem_size);
++	for (id = 0; id < SCP_NUMS_MEM_ID; id++) {
++		scp_reserve_mblock[id].start_virt =
++			scp_mem_base_virt + accumlate_memory_size;
++		accumlate_memory_size += scp_reserve_mblock[id].size;
++	}
++	/* the reserved memory should be larger then expected memory
++	 * or scp_reserve_mblock does not match dts
++	 */
++	WARN_ON(accumlate_memory_size > scp_mem_size);
++#ifdef DEBUG
++	for (id = 0; id < NUMS_MEM_ID; id++) {
++		dev_info(scp->dev,
++			 "[mem_reserve-%d] phys:0x%llx,virt:0x%llx,size:0x%llx\n",
++			 id,
++			 scp_get_reserve_mem_phys(id),
++			 scp_get_reserve_mem_virt(id),
++			 scp_get_reserve_mem_size(id));
++	}
++#endif
++	return 0;
++}
++phys_addr_t scp_get_reserve_mem_phys(enum scp_reserve_mem_id_t id)
++{
++	if (id >= SCP_NUMS_MEM_ID) {
++		pr_err("[SCP] no reserve memory for %d", id);
++		return 0;
++	} else
++		return scp_reserve_mblock[id].start_phys;
++}
++EXPORT_SYMBOL_GPL(scp_get_reserve_mem_phys);
++
++phys_addr_t scp_get_reserve_mem_virt(enum scp_reserve_mem_id_t id)
++{
++	if (id >= SCP_NUMS_MEM_ID) {
++		pr_err("[SCP] no reserve memory for %d", id);
++		return 0;
++	} else
++		return scp_reserve_mblock[id].start_virt;
++}
++EXPORT_SYMBOL_GPL(scp_get_reserve_mem_virt);
++
++phys_addr_t scp_get_reserve_mem_size(enum scp_reserve_mem_id_t id)
++{
++	if (id >= SCP_NUMS_MEM_ID) {
++		pr_err("[SCP] no reserve memory for %d", id);
++		return 0;
++	} else
++		return scp_reserve_mblock[id].size;
++}
++EXPORT_SYMBOL_GPL(scp_get_reserve_mem_size);
++#endif
++
+ static int scp_map_memory_region(struct mtk_scp *scp)
+ {
+ 	struct device_node *node;
+@@ -375,6 +482,10 @@ static int scp_map_memory_region(struct mtk_scp *scp)
+ 		return -EBUSY;
+ 	}
+ 
++#if SCP_RESERVED_MEM
++	scp_reserve_mem_init(scp);
++	scp_reserve_memory_ioremap(scp);
++#endif
+ 	return 0;
+ }
+ 
+diff --git a/include/linux/platform_data/mtk_scp.h b/include/linux/platform_data/mtk_scp.h
+index b81ac5c7d320..0d1c07a5d886 100644
+--- a/include/linux/platform_data/mtk_scp.h
++++ b/include/linux/platform_data/mtk_scp.h
+@@ -138,4 +138,24 @@ unsigned int scp_get_venc_hw_capa(struct platform_device *pdev);
+ void *scp_mapping_dm_addr(struct platform_device *pdev,
+ 			  u32 mem_addr);
+ 
++#define SCP_RESERVED_MEM	(1)
++#if SCP_RESERVED_MEM
++/* scp reserve memory ID definition*/
++enum scp_reserve_mem_id_t {
++	SCP_ISP_MEM_ID,
++	SCP_NUMS_MEM_ID,
++};
++
++struct scp_reserve_mblock {
++	enum scp_reserve_mem_id_t num;
++	u64 start_phys;
++	u64 start_virt;
++	u64 size;
++};
++
++extern phys_addr_t scp_get_reserve_mem_phys(enum scp_reserve_mem_id_t id);
++extern phys_addr_t scp_get_reserve_mem_virt(enum scp_reserve_mem_id_t id);
++extern phys_addr_t scp_get_reserve_mem_size(enum scp_reserve_mem_id_t id);
++#endif
++
+ #endif /* _MTK_SCP_H */
 -- 
 2.21.0.392.gf8f6787159e-goog
