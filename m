@@ -1,41 +1,61 @@
-From: Felix Fietkau <nbd@nbd.name>
-Subject: Re: [PATCH v3 1/4] mt76: add mac80211 driver for MT7615 PCIe-based
- chipsets
-Date: Sat, 13 Apr 2019 15:06:47 +0200
-Message-ID: <1d8ef32e-32ef-d3f9-2b49-5dfcbc04990f@nbd.name>
-References: <cover.1554102584.git.ryder.lee@mediatek.com>
- <4e974271e93b719e0463aa0269b4b970cc2b267f.1554102584.git.ryder.lee@mediatek.com>
+From: "Frank Wunderlich" <frank-w-SipyoOjXbOMoAHOVJHB0wA@public.gmane.org>
+Subject: Aw: Re: [PATCH V10 0/5] make mt7623 clock of hdmi stable
+Date: Sun, 14 Apr 2019 19:08:40 +0200
+Message-ID: <trinity-28840ab1-2bca-46d1-a6d4-374ba31aa2e2-1555261720443@3c-app-gmx-bs62>
+References: <20190409065307.82280-1-wangyan.wang@mediatek.com>
+ <1554803700.4573.2.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <4e974271e93b719e0463aa0269b4b970cc2b267f.1554102584.git.ryder.lee@mediatek.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
-Cc: Roy Luo <royluo@google.com>, Sean Wang <sean.wang@mediatek.com>, Nelson Chang <nelson.chang@mediatek.com>, YF Luo <yf.luo@mediatek.com>, Kai Lin <kai.lin@mediatek.com>, Rorscha Yang <rorscha.yang@mediatek.com>, Kyle Lee <kyle.lee@mediatek.com>, Miller Shen <miller.shen@mediatek.com>, Haipin Liang <haipin.liang@mediatek.com>, KL Huang <kl.huang@mediatek.com>, YH chen <yh.chen@mediatek.com>, linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Lorenzo Bianconi <lorenzo@kernel.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1554803700.4573.2.camel@mtksdaap41>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, wangyan wang <wangyan.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, chunhui dai <chunhui.dai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 2019-04-01 09:16, Ryder Lee wrote:
-> This driver is for a newer generation of MediaTek MT7615 4x4 802.11ac
-> PCIe-based chipsets, which support wave2 MU-MIMO up to 4 users/group
-> and also support up to 160MHz bandwidth.
-> 
-> The driver fully supports AP, station and monitor mode.
-> 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> Signed-off-by: Roy Luo <royluo@google.com>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>I'll fold in the following missing bit when I apply this patch.
+Hi,
 
-- Felix
+have you got hdmi on mt7623 and kernel 5.1 working?
 
----
---- a/mt76.h
-+++ b/mt76.h
-@@ -69,6 +69,7 @@ enum mt76_txq_id {
- 	MT_TXQ_MCU,
- 	MT_TXQ_BEACON,
- 	MT_TXQ_CAB,
-+	MT_TXQ_FWDL,
- 	__MT_TXQ_MAX
- };
+i have applied this patchset, the clockpatch and some additional Patches like dts for bananapi r2 here, but i can't get hdmi (xserver) running
+
+https://github.com/frank-w/BPI-R2-4.14/commits/5.1-hdmi-v10
+
+found no errors in dmesg, also no error when starting xserver, but it still shows nothing
+
+5.0 works with xserver:
+
+https://github.com/frank-w/BPI-R2-4.14/commits/5.0-hdmi
+
+anyone can guide me get it working?
+
+regards Frank
+
+
+> Gesendet: Dienstag, 09. April 2019 um 11:55 Uhr
+> Von: "CK Hu" <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> An: "wangyan wang" <wangyan.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Cc: "Ryder Lee" <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "Philipp Zabel" <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, "chunhui dai" <chunhui.dai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "Stephen Boyd" <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "Michael Turquette" <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, "Sean Wang" <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, "David Airlie" <airlied-cv59FeDIM0c@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "Daniel Vetter" <daniel-/w4YWyX8dFk@public.gmane.org>, "Matthias Brugger" <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "Colin Ian King" <colin.king-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> Betreff: Re: [PATCH V10 0/5] make mt7623 clock of hdmi stable
+>
+> Hi, Wangyan:
+>
+> This version still has alignment problem, but I've fixed it and for this
+> series,
+>
+> Applied to mediatek-drm-fixes-5.1 [1], thanks.
+>
+> [1]
+> https://github.com/ckhu-mediatek/linux.git-tags/commits/mediatek-drm-fixes-5.1
+>
+> Regards,
+> CK
