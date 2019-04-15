@@ -1,34 +1,62 @@
-From: Christoph Hellwig <hch-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
-Subject: Re: [PATCH 5/9] iommu/amd: Implement .flush_np_cache
-Date: Sun, 14 Apr 2019 23:33:51 -0700
-Message-ID: <20190415063351.GD1377@infradead.org>
-References: <20190411184741.27540-1-tmurphy@arista.com>
- <20190411184741.27540-6-tmurphy@arista.com>
+From: Wolfram Sang <wsa@the-dreams.de>
+Subject: Re: [PATCH RESEND v6 0/6] add i2c support for mt8183
+Date: Mon, 15 Apr 2019 13:30:37 +0200
+Message-ID: <20190415113037.GA2751@kunai>
+References: <1554208560-14817-1-git-send-email-qii.wang@mediatek.com>
+ <20190404230916.GA964@kunai>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: multipart/signed; micalg=pgp-sha512;
+        protocol="application/pgp-signature"; boundary="vtzGhvizbBRQ85DL"
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20190411184741.27540-6-tmurphy-nzgTgzXrdUbQT0dZR+AlfA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Tom Murphy <tmurphy-nzgTgzXrdUbQT0dZR+AlfA@public.gmane.org>
-Cc: linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, dima-nzgTgzXrdUbQT0dZR+AlfA@public.gmane.org, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, murphyt7-/Zw1syy4LHg@public.gmane.org, Andy Gross <andy.gross-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <20190404230916.GA964@kunai>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Qii Wang <qii.wang@mediatek.com>
+Cc: linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, leilk.liu@mediatek.com, xinping.qian@mediatek.com, liguo.zhang@mediatek.com, robh@kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-> +static void amd_iommu_flush_np_cache(struct iommu_domain *domain,
-> +		unsigned long iova, size_t size)
-> +{
-> +	struct protection_domain *dom = to_pdomain(domain);
-> +
-> +	if (unlikely(amd_iommu_np_cache)) {
 
-Is this case really so unlikely that it needs a static branch prediction
-hint?
+--vtzGhvizbBRQ85DL
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Apr 05, 2019 at 01:09:16AM +0200, Wolfram Sang wrote:
+> On Tue, Apr 02, 2019 at 08:35:54PM +0800, Qii Wang wrote:
+> > This series are based on 5.1-rc1 and the patch
+> > https://patchwork.kernel.org/patch/10856987/(for dts)
+> > We provide six patches to support mt8183 IC.
+> >=20
+> > Main changes compared to v5:
+> > --add i2c controller nodes in mt8183.dtsi
+> > --add a note that old i2c controllers also have I2C_ARB_LOST bit
+> > --add a flag(ltiming_adjust) to avoid unnecessary settings
+> > --add Reviewed-by from Rob Herring, Nicolas and Matthias
+>=20
+> Well, it seems you missed Rob's Rev-by. No need to resend, I can add it.
+> I just wonder if Matthias wants to have another look at this?
+
+Thanks Matthias! Patches 1-5 applied to for-next.
+
+
+--vtzGhvizbBRQ85DL
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAly0a1kACgkQFA3kzBSg
+KbaRqw//W6Yqr4N1qOn8OrTcXiGxV2kYIlJZGifVdPC87dDKQuV+c10MmePB/zgL
+mwdrFlvO0nKQE8cVzTB594+DJR/icbR7kQ4pRNXQaNKqzzHv9V021VPlWiFyklbF
+TKheBbdXSG4GWcIOzQWmukrMPuZONGtyQzWJdrVHlDrifXnbwchXw5rGsq7yvRxr
+E3nweabEvp2sRSyw0k1yzd9/I9aOGyfFuRnrYIEZ4HRL+7NUOzb3LCZLtRcTKUEM
+sx6fJpMs5GzCwMwSYl2Kh1Fn4xUhvjSBzSZ5Yt6Usz03nvNiXLX4pvWNp98Ert4k
+2QB0VWY9FdwmHDI0kUOdzBkNzTRRHc1kuiOgofOZjxYzGM/9zKAucVRbTGK5Jr/7
+bMbLToxDNKrXMVwQ8G/t0PcwbGboquhhnOS5Sb/G47NumDNmWqEOZ4coH8gu5y5H
+Cnf57CQKbH9NFmnSh7ovMqVeGDOfSapgiVrjjNrwZ8iEUeSCpO/3d503emWW97Xq
+OVWw28npGySAdprdUrilUtJAW+xyeIN8LZ+z+oO3+ns5Av2pIbsBz10h5ooSyq6b
+cHTHVW3TMlbFiWaEKvMwm1IpOL4qkLdGZJhqZX2xmfWzIIivCa9CvUw5LZqIImn4
+NYmiP8mDh2Kwhsigpzho8qAXeodpTI0d8QTb1ecTp3/qezbLGGw=
+=U4jH
+-----END PGP SIGNATURE-----
+
+--vtzGhvizbBRQ85DL--
