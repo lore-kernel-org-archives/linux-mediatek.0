@@ -1,51 +1,72 @@
-From: Stanley Chu <stanley.chu@mediatek.com>
-Subject: [PATCH 1/1] scsi: ufs: Print real incorrect request response code
-Date: Mon, 15 Apr 2019 20:23:38 +0800
-Message-ID: <1555331018-32734-1-git-send-email-stanley.chu@mediatek.com>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: [PATCH v4 03/12] dt-binding: gce: add binding for gce event property
+Date: Mon, 15 Apr 2019 20:58:24 +0800
+Message-ID: <20190415125833.38704-4-bibby.hsieh@mediatek.com>
+References: <20190415125833.38704-1-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com, pedrom.sousa@synopsys.com
-Cc: marc.w.gonzalez@free.fr, andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, evgreen@chromium.org, linux-mediatek@lists.infradead.org, peter.wang@mediatek.com, matthias.bgg@gmail.com, Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190415125833.38704-1-bibby.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, CK HU <ck.hu@mediatek.com>
+Cc: Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.chen@mediatek.com, kendrick.hsu@mediatek.com, Frederic Chen <Frederic.Chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-If UFS device responds an unknown request response code,
-we can not know what it was via logs because the code
-is replaced by "DID_ERROR << 16" before log printing.
+Client hardware would send event to GCE hardware,
+so #event-cells, mediatek,gce-event-names, mediatek,gce-events.
+present the event.
 
-Fix this to provide precise request response code information
-for easier issue breakdown.
-
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
 ---
- drivers/scsi/ufs/ufshcd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../devicetree/bindings/mailbox/mtk-gce.txt     | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index e040f9dd9ff3..fbe1e88eec55 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -4704,10 +4704,10 @@ ufshcd_transfer_rsp_status(struct ufs_hba *hba, struct ufshcd_lrb *lrbp)
- 				"Reject UPIU not fully implemented\n");
- 			break;
- 		default:
--			result = DID_ERROR << 16;
- 			dev_err(hba->dev,
- 				"Unexpected request response code = %x\n",
- 				result);
-+			result = DID_ERROR << 16;
- 			break;
- 		}
- 		break;
+diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+index 1f7f8f2a3f49..2f175d6b296d 100644
+--- a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
++++ b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+@@ -21,12 +21,21 @@ Required properties:
+ 	priority: Priority of GCE thread.
+ 	atomic_exec: GCE processing continuous packets of commands in atomic
+ 		way.
++- #event-cells: Should be 1.
++	<&phandle event_number>
++	phandle: Label name of a gce node.
++	event_number: the event number defined in 'dt-bindings/gce/mt8173-gce.h'
++		      or 'dt-binding/gce/mt8183-gce.h'.
+ 
+ Required properties for a client device:
+ - mboxes: Client use mailbox to communicate with GCE, it should have this
+   property and list of phandle, mailbox specifiers.
+ - mediatek,gce-subsys: u32, specify the sub-system id which is corresponding
+   to the register address.
++Optional propertier for a client device:
++- mediatek,gce-event-names: the event name can be defined by user.
++- mediatek,gce-events: u32, the event number defined in
++  'dt-bindings/gce/mt8173-gce.h' or 'dt-binding/gce/mt8183-gce.h'.
+ 
+ Some vaules of properties are defined in 'dt-bindings/gce/mt8173-gce.h'
+ or 'dt-binding/gce/mt8183-gce.h'. Such as sub-system ids, thread priority, event ids.
+@@ -40,6 +49,7 @@ Example:
+ 		clocks = <&infracfg CLK_INFRA_GCE>;
+ 		clock-names = "gce";
+ 		#mbox-cells = <3>;
++		#event-cells = <1>;
+ 	};
+ 
+ Example for a client device:
+@@ -49,8 +59,9 @@ Example for a client device:
+ 		mboxes = <&gce 0 CMDQ_THR_PRIO_LOWEST 1>,
+ 			 <&gce 1 CMDQ_THR_PRIO_LOWEST 1>;
+ 		mediatek,gce-subsys = <SUBSYS_1400XXXX>;
+-		mutex-event-eof = <CMDQ_EVENT_MUTEX0_STREAM_EOF
+-				CMDQ_EVENT_MUTEX1_STREAM_EOF>;
+-
++		mediatek,gce-event-names = "rdma0_sof",
++					   "rsz0_sof";
++		mediatek,gce-events = <&gce CMDQ_EVENT_MDP_RDMA0_SOF>,
++				      <&gce CMDQ_EVENT_MDP_RSZ0_SOF>;
+ 		...
+ 	};
 -- 
 2.18.0
