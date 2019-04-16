@@ -1,97 +1,55 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH 6/9] iommu/amd: Implement map_atomic
-Date: Tue, 16 Apr 2019 15:13:16 +0100
-Message-ID: <78f2114b-0dcb-2dcf-c3b3-411e064b079f@arm.com>
-References: <20190411184741.27540-1-tmurphy@arista.com>
- <20190411184741.27540-7-tmurphy@arista.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH 19/24] dt-bindings: spi: spi-mt65xx: add support for
+ MT8516
+Date: Tue, 16 Apr 2019 15:28:14 +0100
+Message-ID: <20190416142814.GB4834@sirena.org.uk>
+References: <20190323211612.860-1-fparent@baylibre.com>
+ <20190323211612.860-20-fparent@baylibre.com>
+ <5bc3fbfa-6d7e-08d3-116c-a8f78bc680cd@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+        protocol="application/pgp-signature"; boundary="0eh6TmSyL6TZE2Uz"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190411184741.27540-7-tmurphy@arista.com>
-Content-Language: en-GB
+Content-Disposition: inline
+In-Reply-To: <5bc3fbfa-6d7e-08d3-116c-a8f78bc680cd@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Tom Murphy <tmurphy@arista.com>, iommu@lists.linux-foundation.org
-Cc: dima@arista.com, jamessewart@arista.com, murphyt7@tcd.ie, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Marc Zyngier <marc.zyngier@arm.com>, Thomas Gleixner <tglx@linutronix.de>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Fabien Parent <fparent@baylibre.com>, robh+dt@kernel.org, mark.rutland@arm.com, sean.wang@kernel.org, ryder.lee@mediatek.com, hsin-hsiung.wang@mediatek.com, wenzhen.yu@mediatek.com, chaotian.jing@mediatek.com, yong.mao@mediatek.com, jjian.zhou@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org, linux-gpio@vger.kernel.org, linux-serial@vger.kernel.org, linux-spi@vger.kernel.org, linux-watchdog@vger.kernel.org, linux-clk@vger.kernel.org, stephane.leprovost@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On 11/04/2019 19:47, Tom Murphy wrote:
-> Instead of using a spin lock I removed the mutex lock from both the
-> amd_iommu_map and amd_iommu_unmap path as well. iommu_map doesn’t lock
-> while mapping and so if iommu_map is called by two different threads on
-> the same iova region it results in a race condition even with the locks.
-> So the locking in amd_iommu_map and amd_iommu_unmap doesn't add any real
-> protection. The solution to this is for whatever manages the allocated
-> iova’s externally to make sure iommu_map isn’t called twice on the same
-> region at the same time.
 
-Note that that assumption is not necessarily sufficient - even with 
-correct address space management you can have cases like two threads 
-mapping adjacent pages, where even thought they are targeting different 
-PTEs they can race to install/modify intermediate levels of the 
-pagetable. I believe AMD is actually OK in that regard, but some drivers 
-*are* relying on locking for correctness so it can't just be 
-unequivocally removed everywhere.
+--0eh6TmSyL6TZE2Uz
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Robin.
+On Tue, Apr 16, 2019 at 09:55:41AM +0200, Matthias Brugger wrote:
+> On 23/03/2019 22:16, Fabien Parent wrote:
+> > Add binding documentation of spi-mt65xx for MT8516 SoC.
 
-> Signed-off-by: Tom Murphy <tmurphy@arista.com>
-> ---
->   drivers/iommu/amd_iommu.c | 25 ++++++++++++++++++-------
->   1 file changed, 18 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/iommu/amd_iommu.c b/drivers/iommu/amd_iommu.c
-> index 2d4ee10626b4..b45e0e033adc 100644
-> --- a/drivers/iommu/amd_iommu.c
-> +++ b/drivers/iommu/amd_iommu.c
-> @@ -3089,12 +3089,12 @@ static int amd_iommu_attach_device(struct iommu_domain *dom,
->   	return ret;
->   }
->   
-> -static int amd_iommu_map(struct iommu_domain *dom, unsigned long iova,
-> -			 phys_addr_t paddr, size_t page_size, int iommu_prot)
-> +static int __amd_iommu_map(struct iommu_domain *dom, unsigned long iova,
-> +			 phys_addr_t paddr, size_t page_size, int iommu_prot,
-> +			 gfp_t gfp)
->   {
->   	struct protection_domain *domain = to_pdomain(dom);
->   	int prot = 0;
-> -	int ret;
->   
->   	if (domain->mode == PAGE_MODE_NONE)
->   		return -EINVAL;
-> @@ -3104,11 +3104,21 @@ static int amd_iommu_map(struct iommu_domain *dom, unsigned long iova,
->   	if (iommu_prot & IOMMU_WRITE)
->   		prot |= IOMMU_PROT_IW;
->   
-> -	mutex_lock(&domain->api_lock);
-> -	ret = iommu_map_page(domain, iova, paddr, page_size, prot, GFP_KERNEL);
-> -	mutex_unlock(&domain->api_lock);
-> +	return iommu_map_page(domain, iova, paddr, page_size, prot, gfp);
-> +}
->   
-> -	return ret;
-> +static int amd_iommu_map(struct iommu_domain *dom, unsigned long iova,
-> +			 phys_addr_t paddr, size_t page_size, int iommu_prot)
-> +{
-> +	return __amd_iommu_map(dom, iova, paddr, page_size, iommu_prot,
-> +			GFP_KERNEL);
-> +}
-> +
-> +static int amd_iommu_map_atomic(struct iommu_domain *dom, unsigned long iova,
-> +			 phys_addr_t paddr, size_t page_size, int iommu_prot)
-> +{
-> +	return __amd_iommu_map(dom, iova, paddr, page_size, iommu_prot,
-> +			GFP_ATOMIC);
->   }
->   
->   static size_t amd_iommu_unmap(struct iommu_domain *dom, unsigned long iova,
-> @@ -3262,6 +3272,7 @@ const struct iommu_ops amd_iommu_ops = {
->   	.attach_dev = amd_iommu_attach_device,
->   	.detach_dev = amd_iommu_detach_device,
->   	.map = amd_iommu_map,
-> +	.map_atomic = amd_iommu_map_atomic,
->   	.unmap = amd_iommu_unmap,
->   	.iova_to_phys = amd_iommu_iova_to_phys,
->   	.add_device = amd_iommu_add_device,
-> 
+> > Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> > ---
+> >  Documentation/devicetree/bindings/spi/spi-mt65xx.txt | 1 +
+> >  1 file changed, 1 insertion(+)
+
+> applied to v5.1-next/dts64
+
+> Mark let me know if you want to take it through your tree and I drop the patch.
+
+Yes, DT bindings generally get reviewed in the subsystem :(
+
+--0eh6TmSyL6TZE2Uz
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAly15n0ACgkQJNaLcl1U
+h9DZ1gf9H2Yrq00KAenFGyeh+9in9sO60dj3xTkLjw+cqBEC68iT6kOwJF1bGe49
+cTerjLC7g1Z4O7Fas/ExIVqn6vQ2DYvGTRDEQ/3OyrGJa0mL8WZe5ZxSPBrIqFGN
+DM83Tt+WHi26ZhKZ7F3eLtoN8TZcs7mNt9OAi2YF4OnoOS51JSyrOKA1sQn00xGf
+uQi9IfnJkLOxel+qQhsefoWYKwNZFcIz2qV4K1eKjcnvZKVW+3OeZ2QJok7qWFNf
+g/JHvvdaPgHk0ObyQXGNH83a2urwHLFrWNFWZIIHlR1HfpsOUXcTy4luxYlikFxg
+1F4MbBZ6WhZuYSlOJ2pQaNJHhEamgQ==
+=t4yQ
+-----END PGP SIGNATURE-----
+
+--0eh6TmSyL6TZE2Uz--
