@@ -1,59 +1,108 @@
-From: <michael.mei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 2/2] dt-bindings: nvmem: mediatek: add support for MediaTek
- mt8183 SoC
-Date: Tue, 16 Apr 2019 16:19:22 +0800
-Message-ID: <20190416081922.21711-5-michael.mei@mediatek.com>
-References: <20190416081922.21711-1-michael.mei@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v2 22/25] drm/mediatek: adjust ddp clock control flow
+Date: Tue, 16 Apr 2019 16:24:50 +0800
+Message-ID: <1555403090.11519.7.camel@mtksdaap41>
+References: <1553667561-25447-1-git-send-email-yongqiang.niu@mediatek.com>
+         <1553667561-25447-23-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190416081922.21711-1-michael.mei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: orz811017-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Michael Mei <michael.mei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1553667561-25447-23-git-send-email-yongqiang.niu@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: yongqiang.niu@mediatek.com
+Cc: p.zabel@pengutronix.de, robh+dt@kernel.org, matthias.bgg@gmail.com, airlied@linux.ie, mark.rutland@arm.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Bibby.Hsieh@mediatek.com, yt.shen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Michael Mei <michael.mei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Hi, Yongqiang:
 
-This updates dt-binding documentation for MediaTek mt8183
-For the both SoCs supported all rely on the fallback binding
-of the generic case with "mediatek,efuse".
+On Wed, 2019-03-27 at 14:19 +0800, yongqiang.niu@mediatek.com wrote:
+> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> 
+> display hardware clock will not unprepare when
+> crtc is disable, until crtc is destroyed.
+> with this patch, hard clock will disable and unprepare
+> at the same time.
 
-Signed-off-by: Michael Mei <michael.mei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
-This patch is based on v5.1-rc1 and these patches:
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
 
-https://patchwork.kernel.org/patch/10856987/
-https://patchwork.kernel.org/patch/10839021/
-https://patchwork.kernel.org/patch/10879015/
-https://patchwork.kernel.org/patch/10878999/
-https://patchwork.kernel.org/patch/10858941/
-https://patchwork.kernel.org/patch/10846685/
-https://patchwork.kernel.org/patch/10893519
----
- Documentation/devicetree/bindings/nvmem/mtk-efuse.txt | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt b/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
-index 0668c45a156d..b4d448bb60ce 100644
---- a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
-+++ b/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
-@@ -7,6 +7,7 @@ Required properties:
- 	      "mediatek,mt7622-efuse", "mediatek,efuse": for MT7622
- 	      "mediatek,mt7623-efuse", "mediatek,efuse": for MT7623
- 	      "mediatek,mt8173-efuse" or "mediatek,efuse": for MT8173
-+	      "mediatek,mt8183-efuse" or "mediatek,efuse": for MT8183
- - reg: Should contain registers location and length
- 
- = Data cells =
--- 
-2.18.0
+> 
+> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 26 ++++++--------------------
+>  1 file changed, 6 insertions(+), 20 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> index 0f97ee3..606c6e2 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> @@ -195,7 +195,7 @@ static int mtk_crtc_ddp_clk_enable(struct mtk_drm_crtc *mtk_crtc)
+>  
+>  	DRM_DEBUG_DRIVER("%s\n", __func__);
+>  	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
+> -		ret = clk_enable(mtk_crtc->ddp_comp[i]->clk);
+> +		ret = clk_prepare_enable(mtk_crtc->ddp_comp[i]->clk);
+>  		if (ret) {
+>  			DRM_ERROR("Failed to enable clock %d: %d\n", i, ret);
+>  			goto err;
+> @@ -205,7 +205,7 @@ static int mtk_crtc_ddp_clk_enable(struct mtk_drm_crtc *mtk_crtc)
+>  	return 0;
+>  err:
+>  	while (--i >= 0)
+> -		clk_disable(mtk_crtc->ddp_comp[i]->clk);
+> +		clk_disable_unprepare(mtk_crtc->ddp_comp[i]->clk);
+>  	return ret;
+>  }
+>  
+> @@ -215,7 +215,7 @@ static void mtk_crtc_ddp_clk_disable(struct mtk_drm_crtc *mtk_crtc)
+>  
+>  	DRM_DEBUG_DRIVER("%s\n", __func__);
+>  	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++)
+> -		clk_disable(mtk_crtc->ddp_comp[i]->clk);
+> +		clk_disable_unprepare(mtk_crtc->ddp_comp[i]->clk);
+>  }
+>  
+>  static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
+> @@ -615,15 +615,7 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+>  		if (!comp) {
+>  			dev_err(dev, "Component %pOF not initialized\n", node);
+>  			ret = -ENODEV;
+> -			goto unprepare;
+> -		}
+> -
+> -		ret = clk_prepare(comp->clk);
+> -		if (ret) {
+> -			dev_err(dev,
+> -				"Failed to prepare clock for component %pOF: %d\n",
+> -				node, ret);
+> -			goto unprepare;
+> +			return ret;
+>  		}
+>  
+>  		mtk_crtc->ddp_comp[i] = comp;
+> @@ -649,23 +641,17 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+>  		ret = mtk_plane_init(drm_dev, &mtk_crtc->planes[zpos],
+>  				     BIT(pipe), type);
+>  		if (ret)
+> -			goto unprepare;
+> +			return ret;
+>  	}
+>  
+>  	ret = mtk_drm_crtc_init(drm_dev, mtk_crtc, &mtk_crtc->planes[0],
+>  				mtk_crtc->layer_nr > 1 ? &mtk_crtc->planes[1] :
+>  				NULL, pipe);
+>  	if (ret < 0)
+> -		goto unprepare;
+> +		return ret;
+>  	drm_mode_crtc_set_gamma_size(&mtk_crtc->base, MTK_LUT_SIZE);
+>  	drm_crtc_enable_color_mgmt(&mtk_crtc->base, 0, false, MTK_LUT_SIZE);
+>  	priv->num_pipes++;
+>  
+>  	return 0;
+> -
+> -unprepare:
+> -	while (--i >= 0)
+> -		clk_unprepare(mtk_crtc->ddp_comp[i]->clk);
+> -
+> -	return ret;
+>  }
