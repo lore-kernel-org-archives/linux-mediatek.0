@@ -1,90 +1,35 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 1/2] arm64: dts: mt8183: add efuse and Mediatek Chip id
- node to read
-Date: Tue, 16 Apr 2019 11:07:39 +0200
-Message-ID: <042cf793-13ef-0d7b-738d-e4521d9f6288@gmail.com>
-References: <20190416081922.21711-1-michael.mei@mediatek.com>
- <20190416081922.21711-2-michael.mei@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 15/24] dt-bindings: pinctrl: pinctrl-mt65xx: add support
+ for MT8516
+Date: Tue, 16 Apr 2019 11:12:04 +0200
+Message-ID: <b1e4eb6c-0d53-0307-99e4-9fef9e2b33d8@gmail.com>
+References: <20190323211612.860-1-fparent@baylibre.com>
+ <20190323211612.860-16-fparent@baylibre.com>
+ <CACRpkdZZ6-+MVdK4bOP4SHxQ8uQ8zENcir7DSteHy4g+B5uySQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190416081922.21711-2-michael.mei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CACRpkdZZ6-+MVdK4bOP4SHxQ8uQ8zENcir7DSteHy4g+B5uySQ@mail.gmail.com>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: michael.mei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, orz811017-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: Weiyi Lu <weiyi.lu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, jjian.zhou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Hsin-Hsiung Wang <hsin-hsiung.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Linus Walleij <linus.walleij@linaro.org>, Fabien Parent <fparent@baylibre.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Sean Wang <sean.wang@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, hsin-hsiung.wang@mediatek.com, wenzhen.yu@mediatek.com, Chaotian Jing <chaotian.jing@mediatek.com>, Yong Mao <yong.mao@mediatek.com>, jjian.zhou@mediatek.com, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-i2c@vger.kernel.org, Linux ARM <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, linux-mmc <linux-mmc@vger.kernel.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, linux-serial@vger.kernel.org, linux-spi <linux-spi@>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Michael,
+Hi Linus,
 
-On 16/04/2019 10:19, michael.mei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: Michael Mei <michael.mei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On 08/04/2019 22:44, Linus Walleij wrote:
+> On Sat, Mar 23, 2019 at 10:17 PM Fabien Parent <fparent@baylibre.com> wrote:
 > 
-> support for reading chip ID and efuse
+>> Add binding documentation of pinctrl-mt65xx for MT8516 SoC.
+>>
+>> Signed-off-by: Fabien Parent <fparent@baylibre.com>
 > 
-> Signed-off-by: Michael Mei <michael.mei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
-> This patch is based on v5.1-rc1 and these patches:
+> Patch applied with Rob's ACK.
 > 
-> https://patchwork.kernel.org/patch/10856987/
-> https://patchwork.kernel.org/patch/10839021/
-> https://patchwork.kernel.org/patch/10879015/
-> https://patchwork.kernel.org/patch/10878999/
-> https://patchwork.kernel.org/patch/10858941/
-> https://patchwork.kernel.org/patch/10846685/
-> https://patchwork.kernel.org/patch/10893519
 
-Can you please work with JJian, Hsin-Hsiung, Weiyi, Erin and Zhiyong (hope I
-didn't forgot anyone) to send this all as a series once the driver parts are
-taken by the respective maintainers? This would make my live much easier.
+I don't see this in your for-next branch. Did the patch got lost?
 
-Thanks a lot!
+Regards,
 Matthias
-
-> ---
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 15 +++++++++++++++
->  1 file changed, 15 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index b36e37fcdfe3..405cd7e2ca4b 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -148,6 +148,15 @@
->  		compatible = "simple-bus";
->  		ranges;
->  
-> +		soc_data: soc_data@08000000 {
-> +			compatible = "mediatek,mt8183-efuse",
-> +				     "mediatek,efuse";
-> +			reg = <0 0x08000000 0 0x0010>;
-> +			#address-cells = <1>;
-> +			#size-cells = <1>;
-> +			status = "disabled";
-> +		};
-> +
->  		gic: interrupt-controller@c000000 {
->  			compatible = "arm,gic-v3";
->  			#interrupt-cells = <4>;
-> @@ -353,6 +362,12 @@
->  			status = "disabled";
->  		};
->  
-> +		efuse: efuse@11f10000 {
-> +			compatible = "mediatek,mt8183-efuse",
-> +				     "mediatek,efuse";
-> +			reg = <0 0x11f10000 0 0x1000>;
-> +		};
-> +
->  		mfgcfg: syscon@13000000 {
->  			compatible = "mediatek,mt8183-mfgcfg", "syscon";
->  			reg = <0 0x13000000 0 0x1000>;
-> 
