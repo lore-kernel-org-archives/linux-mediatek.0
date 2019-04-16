@@ -1,85 +1,66 @@
-From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Subject: Re: [PATCH v2 18/25] drm/mediatek: add RDMA fifo size error handle
-Date: Tue, 16 Apr 2019 16:37:17 +0800
-Message-ID: <1555403837.31200.31.camel@mhfsdcap03>
-References: <1553667561-25447-1-git-send-email-yongqiang.niu@mediatek.com>
-         <1553667561-25447-19-git-send-email-yongqiang.niu@mediatek.com>
-         <1555401647.11519.2.camel@mtksdaap41>
-Reply-To: <yongqiang.niu@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 19/24] dt-bindings: spi: spi-mt65xx: add support for
+ MT8516
+Date: Tue, 16 Apr 2019 10:52:55 +0200
+Message-ID: <7472f850-b8da-368b-7879-fe9d29ec5724@gmail.com>
+References: <20190323211612.860-1-fparent@baylibre.com>
+ <20190323211612.860-20-fparent@baylibre.com>
+ <5bc3fbfa-6d7e-08d3-116c-a8f78bc680cd@gmail.com>
+ <1555403151.7441.4.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1555401647.11519.2.camel@mtksdaap41>
+In-Reply-To: <1555403151.7441.4.camel@mhfsdcap03>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>
-Cc: p.zabel@pengutronix.de, robh+dt@kernel.org, matthias.bgg@gmail.com, airlied@linux.ie, mark.rutland@arm.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Bibby.Hsieh@mediatek.com, yt.shen@mediatek.com
+To: lei liu <leilk.liu@mediatek.com>
+Cc: Fabien Parent <fparent@baylibre.com>, robh+dt@kernel.org, mark.rutland@arm.com, Mark Brown <broonie@kernel.org>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, ryder.lee@mediatek.com, linux-watchdog@vger.kernel.org, jjian.zhou@mediatek.com, wenzhen.yu@mediatek.com, stephane.leprovost@mediatek.com, sean.wang@kernel.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, yong.mao@mediatek.com, linux-spi@vger.kernel.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, hsin-hsiung.wang@mediatek.com, linux-serial@vger.kernel.org, linux-clk@vger.kernel.org, chaotian.jing@mediatek.com, linux-i2c@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-04-16 at 16:00 +0800, CK Hu wrote:
-> Hi, Yongqiang:
-> 
-> On Wed, 2019-03-27 at 14:19 +0800, yongqiang.niu@mediatek.com wrote:
-> > From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> > 
-> > This patch add RDMA fifo size error handle
-> > rdma fifo size will not always bigger than the calculated threshold
-> > if that case happened, we need set fifo size as the threshold
-> > 
-> > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 9 ++++++++-
-> >  1 file changed, 8 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> > index b0a5cff..ead38ba 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> > @@ -137,11 +137,14 @@ static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
-> >  {
-> >  	unsigned int threshold;
-> >  	unsigned int reg;
-> > +	unsigned int rdma_fifo_size;
-> >  	struct mtk_disp_rdma *rdma = comp_to_rdma(comp);
-> >  
-> >  	rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_0, 0xfff, width);
-> >  	rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_1, 0xfffff, height);
-> >  
-> > +	rdma_fifo_size = RDMA_FIFO_SIZE(rdma);
-> > +
-> >  	/*
-> >  	 * Enable FIFO underflow since DSI and DPI can't be blocked.
-> >  	 * Keep the FIFO pseudo size reset default of 8 KiB. Set the
-> > @@ -149,8 +152,12 @@ static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
-> >  	 * account for blanking, and with a pixel depth of 4 bytes:
-> >  	 */
-> >  	threshold = width * height * vrefresh * 4 * 7 / 1000000;
-> > +
-> > +	if (threshold > rdma_fifo_size)
-> > +		threshold = rdma_fifo_size;
-> 
-> I think this is a work around not a correct solution. Why MT8173 has no
-> this problem but MT8183 has? Is the formula of threshold different in
-> MT8173 and MT8183?
-> 
-> Regards,
-> CK
+
+
+On 16/04/2019 10:25, lei liu wrote:
+> On Tue, 2019-04-16 at 09:55 +0200, Matthias Brugger wrote:
+>>
+>> On 23/03/2019 22:16, Fabien Parent wrote:
+>>> Add binding documentation of spi-mt65xx for MT8516 SoC.
+>>>
+>>> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+>>> ---
+>>>  Documentation/devicetree/bindings/spi/spi-mt65xx.txt | 1 +
+>>>  1 file changed, 1 insertion(+)
+>>>
+>>
+>>
+>> applied to v5.1-next/dts64
+>>
+>> Mark let me know if you want to take it through your tree and I drop the patch.
+>>
+>>> diff --git a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
+>>> index 69c356767cf8..69ac5976b952 100644
+>>> --- a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
+>>> +++ b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
+>>> @@ -10,6 +10,7 @@ Required properties:
+>>>      - mediatek,mt8135-spi: for mt8135 platforms
+>>>      - mediatek,mt8173-spi: for mt8173 platforms
+>>>      - mediatek,mt8183-spi: for mt8183 platforms
+>>> +    - "mediatek,mt8516-spi", "mediatek,mt2701-spi": for mt8516 platforms
+> Hi Fabien,
+> mt8516 SPI design comes from mt2712 and it's different from mt2701. Here
+> it should compatible with mt2712.
 > 
 
-fifo size of RDMA0 and RDMA1 in MT8173 are same, which is SZ_8K.
-this formula calculate result will not overflow if the screen size is
-not big enough. 
+Ok, please resend. I dropped the patch for now.
 
-but fifo size of RDMA1 in MT8183 only SZ_2K, if RDMA1 display with
-solution 1080p60hz, this formula calculate result 3483 will overflow
-SZ_2K. 
-
-> > +
-> >  	reg = RDMA_FIFO_UNDERFLOW_EN |
-> > -	      RDMA_FIFO_PSEUDO_SIZE(RDMA_FIFO_SIZE(rdma)) |
-> > +	      RDMA_FIFO_PSEUDO_SIZE(rdma_fifo_size) |
-> >  	      RDMA_OUTPUT_VALID_FIFO_THRESHOLD(threshold);
-> >  	writel(reg, comp->regs + DISP_REG_RDMA_FIFO_CON);
-> >  }
+>>>  
+>>>  - #address-cells: should be 1.
+>>>  
+>>>
+>>
+>> _______________________________________________
+>> Linux-mediatek mailing list
+>> Linux-mediatek@lists.infradead.org
+>> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 > 
 > 
