@@ -1,50 +1,79 @@
-From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: [PATCH v2 00/15] Add mediatek mipicsi driver for Mediatek SOC MT2712
-Date: Tue, 16 Apr 2019 17:30:00 +0800
-Message-ID: <1555407015-18130-1-git-send-email-stu.hsieh@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v9] arm64: dts: Add Mediatek SoC MT8183 and evaluation
+ board dts and Makefile
+Date: Tue, 16 Apr 2019 12:35:34 +0200
+Message-ID: <f18dbb3a-c141-ebb8-87f3-a6c437800136@gmail.com>
+References: <1552898552-13045-2-git-send-email-erin.lo@mediatek.com>
+ <201903190247.QZDwfpLQ%lkp@intel.com>
+ <135d7e3a-d5a3-0f13-05c9-4a8ec0524256@gmail.com>
+ <1555406836.27018.10.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1555406836.27018.10.camel@mtksdaap41>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, CK Hu <ck.hu@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Stu Hsieh <stu.hsieh@mediatek.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
+To: Erin Lo <erin.lo@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, mars.cheng@mediatek.com, eddie.huang@mediatek.com, Ben Ho <Ben.Ho@mediatek.com>, Seiya Wang <seiya.wang@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add mediatek mipicsi driver for Mediatek SOC MT2712
 
-Change in v2:
-- Add the dt-binding document for mediatek mipicsi driver
-- Modify the logic about "is_support" function in patch
-  "[media] mtk-mipicsi: add color format support for mt2712"
 
-Stu Hsieh (15):
-  dt-bindings: media: Add binding for MT2712 MIPI-CSI2
-  [media] mtk-mipicsi: add mediatek mipicsi driver for mt2712
-  [media] mtk-mipicsi: add pm function
-  [media] mtk-mipicsi: add color format support for mt2712
-  [media] mtk-mipicsi: get the w/h/bytepwerline for mtk_mipicsi
-  [media] mtk-mipicsi: add function to support SerDes for link number
-  [media] mtk-mipicsi: add mipicsi reg setting for mt2712
-  [media] mtk-mipicsi: enable/disable ana clk
-  [media] mtk-mipicsi: enable/disable cmos for mt2712
-  [media] mtk-mipicsi: add ISR for writing the data to buffer
-  [media] mtk-mipicsi: set the output address in HW reg
-  [media] mtk-mipicsi: add function to get the format
-  [media] mtk-mipicsi: add the function for Get/Set PARM for application
-  [media] mtk-mipicsi: add debug message for mipicsi driver
-  [media] mtk-mipicsi: add debugfs for mipicsi driver
+On 16/04/2019 11:27, Erin Lo wrote:
+> On Tue, 2019-04-16 at 10:29 +0200, Matthias Brugger wrote:
+>>
+>> On 18/03/2019 19:42, kbuild test robot wrote:
+>>> Hi Erin,
+>>>
+>>> Thank you for the patch! Yet something to improve:
+>>>
+>>> [auto build test ERROR on robh/for-next]
+>>> [also build test ERROR on v5.1-rc1 next-20190318]
+>>> [if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
+>>>
+>>> url:    https://github.com/0day-ci/linux/commits/Erin-Lo/arm64-dts-Add-Mediatek-SoC-MT8183-and-evaluation-board-dts-and-Makefile/20190318-170422
+>>> base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
+>>> config: arm64-allyesconfig (attached as .config)
+>>> compiler: aarch64-linux-gnu-gcc (Debian 7.2.0-11) 7.2.0
+>>> reproduce:
+>>>         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+>>>         chmod +x ~/bin/make.cross
+>>>         # save the attached .config to linux build tree
+>>>         GCC_VERSION=7.2.0 make.cross ARCH=arm64 
+>>>
+>>> All errors (new ones prefixed by >>):
+>>>
+>>>    In file included from arch/arm64/boot/dts/mediatek/mt8183-evb.dts:9:0:
+>>>>> arch/arm64/boot/dts/mediatek/mt8183.dtsi:8:10: fatal error: dt-bindings/clock/mt8183-clk.h: No such file or directory
+>>>     #include <dt-bindings/clock/mt8183-clk.h>
+>>>              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>>>    compilation terminated.
+>>>
+>>> vim +8 arch/arm64/boot/dts/mediatek/mt8183.dtsi
+>>>
+>>>    > 8	#include <dt-bindings/clock/mt8183-clk.h>
+>>>      9	#include <dt-bindings/interrupt-controller/arm-gic.h>
+>>>     10	#include <dt-bindings/interrupt-controller/irq.h>
+>>>     11	
+>>>
+>>
+>> Stephen queued the corresponding patch for v5.2.
+>> I propose we wait for v5.2-rc1 and then apply the basic support and the others
+>> based on this one.
+>>
+>> Erin: There are may mt8183 dts patches floating around that depend on this or
+>> more patches. Can you coordinate with your colleagues to resend them as a
+>> series? Then it will be easier for me to take them for v5.3, as some have
+>> dependencies on other series etc.
+>>
+>> Thanks a lot.
+>> Matthias
+> 
+> OK, I will coordinate with my colleagues to resend mt8183 dts patches as
+> a series base on v5.2-rc1 when v5.2-rc1 release.
+> Since we want to send this series more confident so they still send
+> separate patch in v5.1 just for review in advance. Is that ok for you?
+> 
 
- .../bindings/media/mediatek-mipicsi-camsv.txt |   53 +
- .../media/mediatek-mipicsi-common.txt         |   19 +
- .../bindings/media/mediatek-mipicsi.txt       |   54 +
- drivers/media/platform/mtk-mipicsi/Makefile   |    4 +
- .../media/platform/mtk-mipicsi/mtk_mipicsi.c  | 1686 +++++++++++++++++
- 5 files changed, 1816 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/mediatek-mipicsi-camsv.txt
- create mode 100644 Documentation/devicetree/bindings/media/mediatek-mipicsi-common.txt
- create mode 100644 Documentation/devicetree/bindings/media/mediatek-mipicsi.txt
- create mode 100644 drivers/media/platform/mtk-mipicsi/Makefile
- create mode 100644 drivers/media/platform/mtk-mipicsi/mtk_mipicsi.c
-
--- 
-2.18.0
+Sure no problem. Thanks for helping!
