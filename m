@@ -1,79 +1,52 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v9] arm64: dts: Add Mediatek SoC MT8183 and evaluation
- board dts and Makefile
-Date: Tue, 16 Apr 2019 12:35:34 +0200
-Message-ID: <f18dbb3a-c141-ebb8-87f3-a6c437800136@gmail.com>
-References: <1552898552-13045-2-git-send-email-erin.lo@mediatek.com>
- <201903190247.QZDwfpLQ%lkp@intel.com>
- <135d7e3a-d5a3-0f13-05c9-4a8ec0524256@gmail.com>
- <1555406836.27018.10.camel@mtksdaap41>
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [v2 PATCH 1/6] usb: xhci-mtk: get optional clock by
+ devm_clk_get_optional()
+Date: Tue, 16 Apr 2019 12:12:58 +0200
+Message-ID: <20190416101258.GA26091@kroah.com>
+References: <bc6cdc2dce698dddbd692ba100fbf08c15c7b023.1554877692.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1555406836.27018.10.camel@mtksdaap41>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <bc6cdc2dce698dddbd692ba100fbf08c15c7b023.1554877692.git.chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Erin Lo <erin.lo@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, mars.cheng@mediatek.com, eddie.huang@mediatek.com, Ben Ho <Ben.Ho@mediatek.com>, Seiya Wang <seiya.wang@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Marek Szyprowski <m.szyprowski@samsung.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 16/04/2019 11:27, Erin Lo wrote:
-> On Tue, 2019-04-16 at 10:29 +0200, Matthias Brugger wrote:
->>
->> On 18/03/2019 19:42, kbuild test robot wrote:
->>> Hi Erin,
->>>
->>> Thank you for the patch! Yet something to improve:
->>>
->>> [auto build test ERROR on robh/for-next]
->>> [also build test ERROR on v5.1-rc1 next-20190318]
->>> [if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
->>>
->>> url:    https://github.com/0day-ci/linux/commits/Erin-Lo/arm64-dts-Add-Mediatek-SoC-MT8183-and-evaluation-board-dts-and-Makefile/20190318-170422
->>> base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
->>> config: arm64-allyesconfig (attached as .config)
->>> compiler: aarch64-linux-gnu-gcc (Debian 7.2.0-11) 7.2.0
->>> reproduce:
->>>         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
->>>         chmod +x ~/bin/make.cross
->>>         # save the attached .config to linux build tree
->>>         GCC_VERSION=7.2.0 make.cross ARCH=arm64 
->>>
->>> All errors (new ones prefixed by >>):
->>>
->>>    In file included from arch/arm64/boot/dts/mediatek/mt8183-evb.dts:9:0:
->>>>> arch/arm64/boot/dts/mediatek/mt8183.dtsi:8:10: fatal error: dt-bindings/clock/mt8183-clk.h: No such file or directory
->>>     #include <dt-bindings/clock/mt8183-clk.h>
->>>              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->>>    compilation terminated.
->>>
->>> vim +8 arch/arm64/boot/dts/mediatek/mt8183.dtsi
->>>
->>>    > 8	#include <dt-bindings/clock/mt8183-clk.h>
->>>      9	#include <dt-bindings/interrupt-controller/arm-gic.h>
->>>     10	#include <dt-bindings/interrupt-controller/irq.h>
->>>     11	
->>>
->>
->> Stephen queued the corresponding patch for v5.2.
->> I propose we wait for v5.2-rc1 and then apply the basic support and the others
->> based on this one.
->>
->> Erin: There are may mt8183 dts patches floating around that depend on this or
->> more patches. Can you coordinate with your colleagues to resend them as a
->> series? Then it will be easier for me to take them for v5.3, as some have
->> dependencies on other series etc.
->>
->> Thanks a lot.
->> Matthias
+On Wed, Apr 10, 2019 at 02:47:24PM +0800, Chunfeng Yun wrote:
+> Use devm_clk_get_optional() to get optional clock
 > 
-> OK, I will coordinate with my colleagues to resend mt8183 dts patches as
-> a series base on v5.2-rc1 when v5.2-rc1 release.
-> Since we want to send this series more confident so they still send
-> separate patch in v5.1 just for review in advance. Is that ok for you?
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+> v2: no changes
+> ---
+>  drivers/usb/host/xhci-mtk.c | 19 +++----------------
+>  1 file changed, 3 insertions(+), 16 deletions(-)
 > 
+> diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+> index 60987c787e44..026fe18972d3 100644
+> --- a/drivers/usb/host/xhci-mtk.c
+> +++ b/drivers/usb/host/xhci-mtk.c
+> @@ -206,19 +206,6 @@ static int xhci_mtk_ssusb_config(struct xhci_hcd_mtk *mtk)
+>  	return xhci_mtk_host_enable(mtk);
+>  }
+>  
+> -/* ignore the error if the clock does not exist */
+> -static struct clk *optional_clk_get(struct device *dev, const char *id)
+> -{
+> -	struct clk *opt_clk;
+> -
+> -	opt_clk = devm_clk_get(dev, id);
+> -	/* ignore error number except EPROBE_DEFER */
+> -	if (IS_ERR(opt_clk) && (PTR_ERR(opt_clk) != -EPROBE_DEFER))
 
-Sure no problem. Thanks for helping!
+Are you sure about this?
+
+devm_clk_get_optional() does not check for -EPROBE_DEFER, so you just
+changed the functionality of this code.  Is that ok?  If so, please call
+it out explicitly in your changelog comment when you resend this.
+
+thanks,
+
+greg k-h
