@@ -1,11 +1,14 @@
 From: <michael.mei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 0/2] Add Mediatek Efuse Device Node
-Date: Tue, 16 Apr 2019 16:19:18 +0800
-Message-ID: <20190416081922.21711-1-michael.mei@mediatek.com>
+Subject: [PATCH 2/2] dt-bindings: nvmem: mediatek: add support for MediaTek
+ mt8183 SoC
+Date: Tue, 16 Apr 2019 16:19:22 +0800
+Message-ID: <20190416081922.21711-5-michael.mei@mediatek.com>
+References: <20190416081922.21711-1-michael.mei@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190416081922.21711-1-michael.mei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -21,18 +24,36 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Michael Mei <michael.mei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-This patch adds efuse and soc_data device nodes to read via NVMEM.
-These device nodes store data including thermal calibration, chip ID,
-and drivers like thermal sensor will read out theses data to configure
-dirver.
+This updates dt-binding documentation for MediaTek mt8183
+For the both SoCs supported all rely on the fallback binding
+of the generic case with "mediatek,efuse".
 
-Michael Mei (2):
-  arm64: dts: mt8183: add efuse and Mediatek Chip id node to read
-  dt-bindings: nvmem: mediatek: add support for MediaTek mt8183 SoC
+Signed-off-by: Michael Mei <michael.mei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+This patch is based on v5.1-rc1 and these patches:
 
- .../devicetree/bindings/nvmem/mtk-efuse.txt       |  1 +
- arch/arm64/boot/dts/mediatek/mt8183.dtsi          | 15 +++++++++++++++
- 2 files changed, 16 insertions(+)
+https://patchwork.kernel.org/patch/10856987/
+https://patchwork.kernel.org/patch/10839021/
+https://patchwork.kernel.org/patch/10879015/
+https://patchwork.kernel.org/patch/10878999/
+https://patchwork.kernel.org/patch/10858941/
+https://patchwork.kernel.org/patch/10846685/
+https://patchwork.kernel.org/patch/10893519
+---
+ Documentation/devicetree/bindings/nvmem/mtk-efuse.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
+diff --git a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt b/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
+index 0668c45a156d..b4d448bb60ce 100644
+--- a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
++++ b/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
+@@ -7,6 +7,7 @@ Required properties:
+ 	      "mediatek,mt7622-efuse", "mediatek,efuse": for MT7622
+ 	      "mediatek,mt7623-efuse", "mediatek,efuse": for MT7623
+ 	      "mediatek,mt8173-efuse" or "mediatek,efuse": for MT8173
++	      "mediatek,mt8183-efuse" or "mediatek,efuse": for MT8183
+ - reg: Should contain registers location and length
+ 
+ = Data cells =
 -- 
 2.18.0
