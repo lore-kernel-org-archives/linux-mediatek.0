@@ -1,97 +1,105 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 1/3] dt-bindings: mediatek: update bindings for MT7629 SoC
-Date: Tue, 16 Apr 2019 09:32:57 +0200
-Message-ID: <44f04b3d-35ea-9a5d-749d-5bafb59ec29c@gmail.com>
-References: <56a2c38c9efa41be940858e19501fe07fbd5120e.1550233614.git.ryder.lee@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v2 17/25] drm/mediatek: add background color input
+ select function for ovl/ovl_2l
+Date: Tue, 16 Apr 2019 15:38:17 +0800
+Message-ID: <1555400297.29874.2.camel@mtksdaap41>
+References: <1553667561-25447-1-git-send-email-yongqiang.niu@mediatek.com>
+         <1553667561-25447-18-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <56a2c38c9efa41be940858e19501fe07fbd5120e.1550233614.git.ryder.lee@mediatek.com>
-Content-Language: en-US
+In-Reply-To: <1553667561-25447-18-git-send-email-yongqiang.niu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@kernel.org>, Rob Herring <robh+dt@kernel.org>
-Cc: Weijie Gao <weijie.gao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Marc Zyngier <marc.zyngier@arm.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: yongqiang.niu@mediatek.com
+Cc: p.zabel@pengutronix.de, robh+dt@kernel.org, matthias.bgg@gmail.com, airlied@linux.ie, mark.rutland@arm.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Bibby.Hsieh@mediatek.com, yt.shen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi, Yongqiang:
 
-
-On 17/02/2019 14:50, Ryder Lee wrote:
-> From: Ryder Lee <ryder.lee@mediatek.com>
+On Wed, 2019-03-27 at 14:19 +0800, yongqiang.niu@mediatek.com wrote:
+> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 > 
-> This updates bindings for MT7629 SoC, which includes very basic items
-> such as system timer, UART, sysirq and scpsys unit.
+> This patch add background color input select function for ovl/ovl_2l
 > 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> Cc: Marc Zyngier <marc.zyngier@arm.com>
-> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> ovl include 4 DRAM layer and 1 background color layer
+> ovl_2l include 4 DRAM layer and 1 background color layer
+> DRAM layer frame buffer data from render hardware, GPU for example.
+> backgournd color layer is embed in ovl/ovl_2l, we can only set
+> it color, but not support DRAM frame buffer.
+> 
+> for ovl0->ovl0_2l direct link usecase,
+> we need set ovl0_2l background color intput select from ovl0
+> if render send DRAM buffer layer number <=4, all these layer read
+> by ovl.
+> layer0 is at the bottom of all layers.
+> layer3 is at the top of all layers.
+> if render send DRAM buffer layer numbfer >=4 && <=6
+> ovl0 read layer0~3
+> ovl0_2l read layer4~5
+> layer5 is at the top ot all these layers.
+> 
+> the decision of how to setting ovl0/ovl0_2l read these layer data
+> is controlled in mtk crtc, which will be another patch
+> 
+> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
 > ---
-
-patch 1 and 2 applied. Thanks
-
->  .../devicetree/bindings/interrupt-controller/mediatek,sysirq.txt     | 5 +++--
->  Documentation/devicetree/bindings/serial/mtk-uart.txt                | 3 ++-
->  Documentation/devicetree/bindings/soc/mediatek/scpsys.txt            | 3 ++-
->  3 files changed, 7 insertions(+), 4 deletions(-)
+>  drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 24 ++++++++++++++++++++++++
+>  1 file changed, 24 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt b/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
-> index c5d5891..e8b3688 100644
-> --- a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
-> +++ b/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
-> @@ -1,6 +1,6 @@
-> -+Mediatek MT65xx/MT67xx/MT81xx sysirq
-> +MediaTek sysirq
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> index a0ab760..c226284 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> @@ -27,6 +27,8 @@
+>  #define DISP_REG_OVL_EN				0x000c
+>  #define DISP_REG_OVL_RST			0x0014
+>  #define DISP_REG_OVL_ROI_SIZE			0x0020
+> +#define DISP_REG_OVL_DATAPATH_CON		0x0024
+> +#define OVL_BGCLR_SEL_IN                        BIT(2)
+>  #define DISP_REG_OVL_ROI_BGCLR			0x0028
+>  #define DISP_REG_OVL_SRC_CON			0x002c
+>  #define DISP_REG_OVL_CON(n)			(0x0030 + 0x20 * (n))
+> @@ -245,6 +247,26 @@ static void mtk_ovl_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
+>  		mtk_ovl_layer_on(comp, idx);
+>  }
 >  
-> -Mediatek SOCs sysirq support controllable irq inverter for each GIC SPI
-> +MediaTek SOCs sysirq support controllable irq inverter for each GIC SPI
->  interrupt.
+> +static void mtk_ovl_bgclr_in_on(struct mtk_ddp_comp *comp,
+> +				enum mtk_ddp_comp_id prev)
+> +{
+> +	int is_ovl = 0;
+> +
+> +        if (prev == DDP_COMPONENT_OVL0 ||
+> +            prev == DDP_COMPONENT_OVL0_2L ||
+> +            prev == DDP_COMPONENT_OVL1_2L)
+> +		is_ovl = 1;
+
+I think this logic should be moved to mtk crtc and OVL need not to care
+about which component is in front of it.
+
+Regards,
+CK
+
+> +
+> +	mtk_ddp_write_mask((is_ovl << 2), comp,
+> +			   DISP_REG_OVL_DATAPATH_CON, OVL_BGCLR_SEL_IN);
+> +}
+> +
+> +static void mtk_ovl_bgclr_in_off(struct mtk_ddp_comp *comp)
+> +{
+> +        mtk_ddp_write_mask(0, comp,
+> +                           DISP_REG_OVL_DATAPATH_CON, OVL_BGCLR_SEL_IN);
+> +}
+> +
+>  static const struct mtk_ddp_comp_funcs mtk_disp_ovl_funcs = {
+>  	.config = mtk_ovl_config,
+>  	.start = mtk_ovl_start,
+> @@ -255,6 +277,8 @@ static void mtk_ovl_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
+>  	.layer_on = mtk_ovl_layer_on,
+>  	.layer_off = mtk_ovl_layer_off,
+>  	.layer_config = mtk_ovl_layer_config,
+> +	.bgclr_in_on = mtk_ovl_bgclr_in_on,
+> +	.bgclr_in_off = mtk_ovl_bgclr_in_off,
+>  };
 >  
->  Required properties:
-> @@ -10,6 +10,7 @@ Required properties:
->  	"mediatek,mt8127-sysirq", "mediatek,mt6577-sysirq": for MT8127
->  	"mediatek,mt7622-sysirq", "mediatek,mt6577-sysirq": for MT7622
->  	"mediatek,mt7623-sysirq", "mediatek,mt6577-sysirq": for MT7623
-> +	"mediatek,mt7629-sysirq", "mediatek,mt6577-sysirq": for MT7629
->  	"mediatek,mt6795-sysirq", "mediatek,mt6577-sysirq": for MT6795
->  	"mediatek,mt6797-sysirq", "mediatek,mt6577-sysirq": for MT6797
->  	"mediatek,mt6765-sysirq", "mediatek,mt6577-sysirq": for MT6765
-> diff --git a/Documentation/devicetree/bindings/serial/mtk-uart.txt b/Documentation/devicetree/bindings/serial/mtk-uart.txt
-> index 742cb47..4910f63 100644
-> --- a/Documentation/devicetree/bindings/serial/mtk-uart.txt
-> +++ b/Documentation/devicetree/bindings/serial/mtk-uart.txt
-> @@ -1,4 +1,4 @@
-> -* Mediatek Universal Asynchronous Receiver/Transmitter (UART)
-> +* MediaTek Universal Asynchronous Receiver/Transmitter (UART)
->  
->  Required properties:
->  - compatible should contain:
-> @@ -13,6 +13,7 @@ Required properties:
->    * "mediatek,mt6797-uart" for MT6797 compatible UARTS
->    * "mediatek,mt7622-uart" for MT7622 compatible UARTS
->    * "mediatek,mt7623-uart" for MT7623 compatible UARTS
-> +  * "mediatek,mt7629-uart" for MT7629 compatible UARTS
->    * "mediatek,mt8127-uart" for MT8127 compatible UARTS
->    * "mediatek,mt8135-uart" for MT8135 compatible UARTS
->    * "mediatek,mt8173-uart" for MT8173 compatible UARTS
-> diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> index d6fe16f..9a88d418 100644
-> --- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> +++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> @@ -23,6 +23,7 @@ Required properties:
->  	- "mediatek,mt7622-scpsys"
->  	- "mediatek,mt7623-scpsys", "mediatek,mt2701-scpsys": For MT7623 SoC
->  	- "mediatek,mt7623a-scpsys": For MT7623A SoC
-> +	- "mediatek,mt7629-scpsys", "mediatek,mt7622-scpsys": For MT7629 SoC
->  	- "mediatek,mt8173-scpsys"
->  - #power-domain-cells: Must be 1
->  - reg: Address range of the SCPSYS unit
-> @@ -33,7 +34,7 @@ Required properties:
->  	Required clocks for MT2701 or MT7623: "mm", "mfg", "ethif"
->  	Required clocks for MT2712: "mm", "mfg", "venc", "jpgdec", "audio", "vdec"
->  	Required clocks for MT6797: "mm", "mfg", "vdec"
-> -	Required clocks for MT7622: "hif_sel"
-> +	Required clocks for MT7622 or MT7629: "hif_sel"
->  	Required clocks for MT7622A: "ethif"
->  	Required clocks for MT8173: "mm", "mfg", "venc", "venc_lt"
->  
-> 
+>  static int mtk_disp_ovl_bind(struct device *dev, struct device *master,
