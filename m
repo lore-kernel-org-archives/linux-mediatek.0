@@ -1,32 +1,38 @@
-From: Tom Murphy <tmurphy@arista.com>
-Subject: Re: [PATCH 5/9] iommu/amd: Implement .flush_np_cache
-Date: Mon, 15 Apr 2019 19:18:21 +0100
-Message-ID: <CAPL0++49xZk=bfkBu4e0cS_NA3gs7_z0tiifZBL+Jp8d_6S1rg@mail.gmail.com>
-References: <20190411184741.27540-1-tmurphy@arista.com> <20190411184741.27540-6-tmurphy@arista.com>
- <20190415063351.GD1377@infradead.org>
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+Subject: Re: [PATCH 1/1] scsi: ufs: Print real incorrect request response code
+Date: Mon, 15 Apr 2019 22:18:03 -0400
+Message-ID: <yq11s22hew4.fsf@oracle.com>
+References: <1555331018-32734-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190415063351.GD1377@infradead.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Christoph Hellwig <hch@infradead.org>, joerg.roedel@amd.com
-Cc: iommu@lists.linux-foundation.org, Heiko Stuebner <heiko@sntech.de>, Will Deacon <will.deacon@arm.com>, David Brown <david.brown@linaro.org>, linux-samsung-soc@vger.kernel.org, Dmitry Safonov <dima@arista.com>, Krzysztof Kozlowski <krzk@kernel.org>, linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Andy Gross <andy.gross@linaro.org>, Marc Zyngier <marc.zyngier@arm.com>, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Tom Murphy <murphyt7@tcd.ie>, Robin Murphy <robin.murphy@arm.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1555331018-32734-1-git-send-email-stanley.chu@mediatek.com>
+ (Stanley Chu's message of "Mon, 15 Apr 2019 20:23:38 +0800")
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Stanley Chu <stanley.chu@mediatek.com>
+Cc: linux-scsi@vger.kernel.org, martin.petersen@oracle.com, marc.w.gonzalez@free.fr, andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, evgreen@chromium.org, avri.altman@wdc.com, linux-mediatek@lists.infradead.org, peter.wang@mediatek.com, alim.akhtar@samsung.com, matthias.bgg@gmail.com, pedrom.sousa@synopsys.com, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 List-Id: linux-mediatek@lists.infradead.org
 
-This is a cut and paste from the current amd_iommu driver. I really
-have no idea if it's a good idea or not. It looks like
-joerg.roedel@amd.com might be the person to ask.
 
-@Joerg Roedel should we keep this?
+Stanley,
 
-On Mon, Apr 15, 2019 at 7:33 AM Christoph Hellwig <hch@infradead.org> wrote:
+> If UFS device responds an unknown request response code, we can not
+> know what it was via logs because the code is replaced by "DID_ERROR
+> << 16" before log printing.
 >
-> > +static void amd_iommu_flush_np_cache(struct iommu_domain *domain,
-> > +             unsigned long iova, size_t size)
-> > +{
-> > +     struct protection_domain *dom = to_pdomain(domain);
-> > +
-> > +     if (unlikely(amd_iommu_np_cache)) {
->
-> Is this case really so unlikely that it needs a static branch prediction
-> hint?
+> Fix this to provide precise request response code information for
+> easier issue breakdown.
+
+Applied to 5.2/scsi-queue, thank you!
+
+-- 
+Martin K. Petersen	Oracle Linux Engineering
