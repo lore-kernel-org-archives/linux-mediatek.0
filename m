@@ -1,8 +1,8 @@
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Subject: Re: [v2 PATCH 1/6] usb: xhci-mtk: get optional clock by
  devm_clk_get_optional()
-Date: Tue, 16 Apr 2019 12:12:58 +0200
-Message-ID: <20190416101258.GA26091@kroah.com>
+Date: Tue, 16 Apr 2019 12:15:06 +0200
+Message-ID: <20190416101506.GB26091@kroah.com>
 References: <bc6cdc2dce698dddbd692ba100fbf08c15c7b023.1554877692.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -40,12 +40,38 @@ On Wed, Apr 10, 2019 at 02:47:24PM +0800, Chunfeng Yun wrote:
 > -	opt_clk = devm_clk_get(dev, id);
 > -	/* ignore error number except EPROBE_DEFER */
 > -	if (IS_ERR(opt_clk) && (PTR_ERR(opt_clk) != -EPROBE_DEFER))
+> -		opt_clk = NULL;
+> -
+> -	return opt_clk;
+> -}
+> -
+>  static int xhci_mtk_clks_get(struct xhci_hcd_mtk *mtk)
+>  {
+>  	struct device *dev = mtk->dev;
+> @@ -229,15 +216,15 @@ static int xhci_mtk_clks_get(struct xhci_hcd_mtk *mtk)
+>  		return PTR_ERR(mtk->sys_clk);
+>  	}
+>  
+> -	mtk->ref_clk = optional_clk_get(dev, "ref_ck");
+> +	mtk->ref_clk = devm_clk_get_optional(dev, "ref_ck");
+>  	if (IS_ERR(mtk->ref_clk))
+>  		return PTR_ERR(mtk->ref_clk);
+>  
+> -	mtk->mcu_clk = optional_clk_get(dev, "mcu_ck");
+> +	mtk->mcu_clk = devm_clk_get_optional(dev, "mcu_ck");
+>  	if (IS_ERR(mtk->mcu_clk))
+>  		return PTR_ERR(mtk->mcu_clk);
+>  
+> -	mtk->dma_clk = optional_clk_get(dev, "dma_ck");
+> +	mtk->dma_clk = devm_clk_get_optional(dev, "dma_ck");
 
-Are you sure about this?
+Also, now that this clock (and the others here) are controlled by the
+devm infrastructure, do you have to change when you were cleaning up and
+stopping the clock?  That logic seems to be the same here, which does
+not seem to be correct to me.
 
-devm_clk_get_optional() does not check for -EPROBE_DEFER, so you just
-changed the functionality of this code.  Is that ok?  If so, please call
-it out explicitly in your changelog comment when you resend this.
+Please also document that in your changelog comments when resending this
+series, as all of these patches have this issue as well.
 
 thanks,
 
