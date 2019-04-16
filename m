@@ -1,8 +1,8 @@
 From: <michael.mei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 1/2] arm64: dts: mt8183: add efuse and Mediatek Chip id node
- to read
-Date: Tue, 16 Apr 2019 16:19:21 +0800
-Message-ID: <20190416081922.21711-4-michael.mei@mediatek.com>
+Subject: [PATCH 2/2] dt-bindings: nvmem: mediatek: add support for MediaTek
+ mt8183 SoC
+Date: Tue, 16 Apr 2019 16:19:20 +0800
+Message-ID: <20190416081922.21711-3-michael.mei@mediatek.com>
 References: <20190416081922.21711-1-michael.mei@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -24,7 +24,9 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Michael Mei <michael.mei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-support for reading chip ID and efuse
+This updates dt-binding documentation for MediaTek mt8183
+For the both SoCs supported all rely on the fallback binding
+of the generic case with "mediatek,efuse".
 
 Signed-off-by: Michael Mei <michael.mei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
@@ -38,41 +40,20 @@ https://patchwork.kernel.org/patch/10858941/
 https://patchwork.kernel.org/patch/10846685/
 https://patchwork.kernel.org/patch/10893519
 ---
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ Documentation/devicetree/bindings/nvmem/mtk-efuse.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index b36e37fcdfe3..405cd7e2ca4b 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -148,6 +148,15 @@
- 		compatible = "simple-bus";
- 		ranges;
+diff --git a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt b/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
+index 0668c45a156d..b4d448bb60ce 100644
+--- a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
++++ b/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
+@@ -7,6 +7,7 @@ Required properties:
+ 	      "mediatek,mt7622-efuse", "mediatek,efuse": for MT7622
+ 	      "mediatek,mt7623-efuse", "mediatek,efuse": for MT7623
+ 	      "mediatek,mt8173-efuse" or "mediatek,efuse": for MT8173
++	      "mediatek,mt8183-efuse" or "mediatek,efuse": for MT8183
+ - reg: Should contain registers location and length
  
-+		soc_data: soc_data@08000000 {
-+			compatible = "mediatek,mt8183-efuse",
-+				     "mediatek,efuse";
-+			reg = <0 0x08000000 0 0x0010>;
-+			#address-cells = <1>;
-+			#size-cells = <1>;
-+			status = "disabled";
-+		};
-+
- 		gic: interrupt-controller@c000000 {
- 			compatible = "arm,gic-v3";
- 			#interrupt-cells = <4>;
-@@ -353,6 +362,12 @@
- 			status = "disabled";
- 		};
- 
-+		efuse: efuse@11f10000 {
-+			compatible = "mediatek,mt8183-efuse",
-+				     "mediatek,efuse";
-+			reg = <0 0x11f10000 0 0x1000>;
-+		};
-+
- 		mfgcfg: syscon@13000000 {
- 			compatible = "mediatek,mt8183-mfgcfg", "syscon";
- 			reg = <0 0x13000000 0 0x1000>;
+ = Data cells =
 -- 
 2.18.0
