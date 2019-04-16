@@ -1,66 +1,77 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v9] arm64: dts: Add Mediatek SoC MT8183 and evaluation
- board dts and Makefile
-Date: Tue, 16 Apr 2019 10:29:42 +0200
-Message-ID: <135d7e3a-d5a3-0f13-05c9-4a8ec0524256@gmail.com>
-References: <1552898552-13045-2-git-send-email-erin.lo@mediatek.com>
- <201903190247.QZDwfpLQ%lkp@intel.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v2 23/25] drm/mediatek: add vmap support for mediatek drm
+Date: Tue, 16 Apr 2019 16:30:56 +0800
+Message-ID: <1555403456.11519.10.camel@mtksdaap41>
+References: <1553667561-25447-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1553667561-25447-24-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <201903190247.QZDwfpLQ%lkp@intel.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Erin Lo <erin.lo@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, mars.cheng@mediatek.com, eddie.huang@mediatek.com, Ben Ho <Ben.Ho@mediatek.com>, Seiya Wang <seiya.wang@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1553667561-25447-24-git-send-email-yongqiang.niu@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: yongqiang.niu@mediatek.com
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 18/03/2019 19:42, kbuild test robot wrote:
-> Hi Erin,
-> 
-> Thank you for the patch! Yet something to improve:
-> 
-> [auto build test ERROR on robh/for-next]
-> [also build test ERROR on v5.1-rc1 next-20190318]
-> [if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
-> 
-> url:    https://github.com/0day-ci/linux/commits/Erin-Lo/arm64-dts-Add-Mediatek-SoC-MT8183-and-evaluation-board-dts-and-Makefile/20190318-170422
-> base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
-> config: arm64-allyesconfig (attached as .config)
-> compiler: aarch64-linux-gnu-gcc (Debian 7.2.0-11) 7.2.0
-> reproduce:
->         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
->         chmod +x ~/bin/make.cross
->         # save the attached .config to linux build tree
->         GCC_VERSION=7.2.0 make.cross ARCH=arm64 
-> 
-> All errors (new ones prefixed by >>):
-> 
->    In file included from arch/arm64/boot/dts/mediatek/mt8183-evb.dts:9:0:
->>> arch/arm64/boot/dts/mediatek/mt8183.dtsi:8:10: fatal error: dt-bindings/clock/mt8183-clk.h: No such file or directory
->     #include <dt-bindings/clock/mt8183-clk.h>
->              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->    compilation terminated.
-> 
-> vim +8 arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> 
->    > 8	#include <dt-bindings/clock/mt8183-clk.h>
->      9	#include <dt-bindings/interrupt-controller/arm-gic.h>
->     10	#include <dt-bindings/interrupt-controller/irq.h>
->     11	
-> 
-
-Stephen queued the corresponding patch for v5.2.
-I propose we wait for v5.2-rc1 and then apply the basic support and the others
-based on this one.
-
-Erin: There are may mt8183 dts patches floating around that depend on this or
-more patches. Can you coordinate with your colleagues to resend them as a
-series? Then it will be easier for me to take them for v5.3, as some have
-dependencies on other series etc.
-
-Thanks a lot.
-Matthias
+SGksIFlvbmdxaWFuZzoKCk9uIFdlZCwgMjAxOS0wMy0yNyBhdCAxNDoxOSArMDgwMCwgeW9uZ3Fp
+YW5nLm5pdUBtZWRpYXRlay5jb20gd3JvdGU6Cj4gRnJvbTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3Fp
+YW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gCj4gVGhpcyBwYXRjaCBhZGQgYWRkIHZtYXAgc3VwcG9y
+dCBmb3IgbWVkaWF0ZWsgZHJtCgpJIHRoaW5rIHRoZSB1cHN0cmVhbWVkIHBhdGNoICdkcm0vbWVk
+aWF0ZWs6IEltcGxlbWVudCBnZW0gcHJpbWUKdm1hcC92dW5tYXAgZnVuY3Rpb24nIFsxXSBoYXMg
+dGhlIHNhbWUgZnVuY3Rpb24gb2YgdGhpcyBwYXRjaC4gWW91IGNvdWxkCmNoZXJyeS1waWNrIHRo
+YXQgcGF0Y2ggdG8geW91ciBsb2NhbCBhbmQgbmVlZCBub3QgdG8gdXBzdHJlYW0gdGhpcwpwYXRj
+aC4KClsxXQpodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC90
+b3J2YWxkcy9saW51eC5naXQvY29tbWl0L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlaz9oPXY1LjEt
+cmM1JmlkPTNkZjY0ZDdiMGE0ZjcwZjE3OTdmMjNjZmQ0Y2NhNWM0ZDQ4MTMxZmUKClJlZ2FyZHMs
+CkNLCgo+IAo+IFNpZ25lZC1vZmYtYnk6IFlvbmdxaWFuZyBOaXUgPHlvbmdxaWFuZy5uaXVAbWVk
+aWF0ZWsuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYu
+YyB8IDEgKwo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uYyB8IDcgKysr
+KysrKwo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uaCB8IDEgKwo+ICAz
+IGZpbGVzIGNoYW5nZWQsIDkgaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJz
+L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
+ay9tdGtfZHJtX2Rydi5jCj4gaW5kZXggODRjNjYyNi4uOTQyNzg5ZCAxMDA2NDQKPiAtLS0gYS9k
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gQEAgLTM3MCw2ICszNzAsNyBAQCBzdGF0aWMg
+dm9pZCBtdGtfZHJtX2ttc19kZWluaXQoc3RydWN0IGRybV9kZXZpY2UgKmRybSkKPiAgCS5nZW1f
+cHJpbWVfZ2V0X3NnX3RhYmxlID0gbXRrX2dlbV9wcmltZV9nZXRfc2dfdGFibGUsCj4gIAkuZ2Vt
+X3ByaW1lX2ltcG9ydF9zZ190YWJsZSA9IG10a19nZW1fcHJpbWVfaW1wb3J0X3NnX3RhYmxlLAo+
+ICAJLmdlbV9wcmltZV9tbWFwID0gbXRrX2RybV9nZW1fbW1hcF9idWYsCj4gKwkuZ2VtX3ByaW1l
+X3ZtYXAgPSBtdGtfZHJtX2dlbV92bWFwX2J1ZiwKPiAgCS5mb3BzID0gJm10a19kcm1fZm9wcywK
+PiAgCj4gIAkubmFtZSA9IERSSVZFUl9OQU1FLAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+ZHJtX2dlbS5jCj4gaW5kZXggMjU5YjdiMC4uYzIzMDIzNyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJz
+L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZHJtX2dlbS5jCj4gQEAgLTE2NSw2ICsxNjUsMTMgQEAgaW50IG10a19kcm1f
+Z2VtX21tYXBfYnVmKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqLCBzdHJ1Y3Qgdm1fYXJlYV9z
+dHJ1Y3QgKnZtYSkKPiAgCXJldHVybiBtdGtfZHJtX2dlbV9vYmplY3RfbW1hcChvYmosIHZtYSk7
+Cj4gIH0KPiAgCj4gK3ZvaWQgKm10a19kcm1fZ2VtX3ZtYXBfYnVmKHN0cnVjdCBkcm1fZ2VtX29i
+amVjdCAqb2JqKQo+ICt7Cj4gKwlzdHJ1Y3QgbXRrX2RybV9nZW1fb2JqICptdGtfZ2VtID0gdG9f
+bXRrX2dlbV9vYmoob2JqKTsKPiArCj4gKwlyZXR1cm4gbXRrX2dlbS0+Y29va2llOwo+ICt9Cj4g
+Kwo+ICBpbnQgbXRrX2RybV9nZW1fbW1hcChzdHJ1Y3QgZmlsZSAqZmlscCwgc3RydWN0IHZtX2Fy
+ZWFfc3RydWN0ICp2bWEpCj4gIHsKPiAgCXN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqOwo+IGRp
+ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uaCBiL2RyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2dlbS5oCj4gaW5kZXggNTM0NjM5Yi4uM2M0OGFm
+OSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uaAo+
+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2dlbS5oCj4gQEAgLTQ5LDYg
+KzQ5LDcgQEAgaW50IG10a19kcm1fZ2VtX2R1bWJfY3JlYXRlKHN0cnVjdCBkcm1fZmlsZSAqZmls
+ZV9wcml2LCBzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+ICBpbnQgbXRrX2RybV9nZW1fbW1hcChz
+dHJ1Y3QgZmlsZSAqZmlscCwgc3RydWN0IHZtX2FyZWFfc3RydWN0ICp2bWEpOwo+ICBpbnQgbXRr
+X2RybV9nZW1fbW1hcF9idWYoc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmosCj4gIAkJCSBzdHJ1
+Y3Qgdm1fYXJlYV9zdHJ1Y3QgKnZtYSk7Cj4gK3ZvaWQgKm10a19kcm1fZ2VtX3ZtYXBfYnVmKHN0
+cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqKTsKPiAgc3RydWN0IHNnX3RhYmxlICptdGtfZ2VtX3By
+aW1lX2dldF9zZ190YWJsZShzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaik7Cj4gIHN0cnVjdCBk
+cm1fZ2VtX29iamVjdCAqbXRrX2dlbV9wcmltZV9pbXBvcnRfc2dfdGFibGUoc3RydWN0IGRybV9k
+ZXZpY2UgKmRldiwKPiAgCQkJc3RydWN0IGRtYV9idWZfYXR0YWNobWVudCAqYXR0YWNoLCBzdHJ1
+Y3Qgc2dfdGFibGUgKnNnKTsKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
+a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
+cmktZGV2ZWw=
