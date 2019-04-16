@@ -1,78 +1,52 @@
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [v2 PATCH 1/6] usb: xhci-mtk: get optional clock by
- devm_clk_get_optional()
-Date: Tue, 16 Apr 2019 12:15:06 +0200
-Message-ID: <20190416101506.GB26091@kroah.com>
-References: <bc6cdc2dce698dddbd692ba100fbf08c15c7b023.1554877692.git.chunfeng.yun@mediatek.com>
+From: Wolfram Sang <wsa@the-dreams.de>
+Subject: Re: [PATCH 22/24] dt-bindings: i2c: i2c-mtk: add support for MT8516
+Date: Tue, 16 Apr 2019 13:05:34 +0200
+Message-ID: <20190416110534.ndcnjjy3dzdb6xbv@ninjato>
+References: <20190323211612.860-1-fparent@baylibre.com>
+ <20190323211612.860-23-fparent@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="vcxgegcyuczhk53y"
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <bc6cdc2dce698dddbd692ba100fbf08c15c7b023.1554877692.git.chunfeng.yun@mediatek.com>
+In-Reply-To: <20190323211612.860-23-fparent@baylibre.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Marek Szyprowski <m.szyprowski@samsung.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Fabien Parent <fparent@baylibre.com>
+Cc: matthias.bgg@gmail.com, robh+dt@kernel.org, mark.rutland@arm.com, sean.wang@kernel.org, ryder.lee@mediatek.com, hsin-hsiung.wang@mediatek.com, wenzhen.yu@mediatek.com, chaotian.jing@mediatek.com, yong.mao@mediatek.com, jjian.zhou@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org, linux-gpio@vger.kernel.org, linux-serial@vger.kernel.org, linux-spi@vger.kernel.org, linux-watchdog@vger.kernel.org, linux-clk@vger.kernel.org, stephane.leprovost@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Apr 10, 2019 at 02:47:24PM +0800, Chunfeng Yun wrote:
-> Use devm_clk_get_optional() to get optional clock
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
-> v2: no changes
-> ---
->  drivers/usb/host/xhci-mtk.c | 19 +++----------------
->  1 file changed, 3 insertions(+), 16 deletions(-)
-> 
-> diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-> index 60987c787e44..026fe18972d3 100644
-> --- a/drivers/usb/host/xhci-mtk.c
-> +++ b/drivers/usb/host/xhci-mtk.c
-> @@ -206,19 +206,6 @@ static int xhci_mtk_ssusb_config(struct xhci_hcd_mtk *mtk)
->  	return xhci_mtk_host_enable(mtk);
->  }
->  
-> -/* ignore the error if the clock does not exist */
-> -static struct clk *optional_clk_get(struct device *dev, const char *id)
-> -{
-> -	struct clk *opt_clk;
-> -
-> -	opt_clk = devm_clk_get(dev, id);
-> -	/* ignore error number except EPROBE_DEFER */
-> -	if (IS_ERR(opt_clk) && (PTR_ERR(opt_clk) != -EPROBE_DEFER))
-> -		opt_clk = NULL;
-> -
-> -	return opt_clk;
-> -}
-> -
->  static int xhci_mtk_clks_get(struct xhci_hcd_mtk *mtk)
->  {
->  	struct device *dev = mtk->dev;
-> @@ -229,15 +216,15 @@ static int xhci_mtk_clks_get(struct xhci_hcd_mtk *mtk)
->  		return PTR_ERR(mtk->sys_clk);
->  	}
->  
-> -	mtk->ref_clk = optional_clk_get(dev, "ref_ck");
-> +	mtk->ref_clk = devm_clk_get_optional(dev, "ref_ck");
->  	if (IS_ERR(mtk->ref_clk))
->  		return PTR_ERR(mtk->ref_clk);
->  
-> -	mtk->mcu_clk = optional_clk_get(dev, "mcu_ck");
-> +	mtk->mcu_clk = devm_clk_get_optional(dev, "mcu_ck");
->  	if (IS_ERR(mtk->mcu_clk))
->  		return PTR_ERR(mtk->mcu_clk);
->  
-> -	mtk->dma_clk = optional_clk_get(dev, "dma_ck");
-> +	mtk->dma_clk = devm_clk_get_optional(dev, "dma_ck");
 
-Also, now that this clock (and the others here) are controlled by the
-devm infrastructure, do you have to change when you were cleaning up and
-stopping the clock?  That logic seems to be the same here, which does
-not seem to be correct to me.
+--vcxgegcyuczhk53y
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Please also document that in your changelog comments when resending this
-series, as all of these patches have this issue as well.
+On Sat, Mar 23, 2019 at 10:16:10PM +0100, Fabien Parent wrote:
+> Add binding documentation of i2c-mtk for MT8516 SoC.
+>=20
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
 
-thanks,
+Applied to for-next, thanks!
 
-greg k-h
+
+--vcxgegcyuczhk53y
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAly1tv4ACgkQFA3kzBSg
+Kba07w/+KTVnldbBtdAYM6iGz11cWe28Ofxfurg1FNf4t6S9ar2RYhtGMYaJpNwQ
+YYKURH2tM7i8cAB2sVG+h6TbSPr+WeXmeqXFtgdste+rlcHcU7W8xJG0DUgvjVUa
+uC5cJlB9nFzpwX4AVsyhlZHmlT6lwccvtbVE0ZhO9HF3QAAGyzCLTrcwz9upiw06
+uXASUNd8vbNt+Wxh1I5d+bhlmFHtn88+cOm5G2u7wibcOhStgJnqo/VXs11ha48E
+TQdT+WiMSE1JBMq5szsrjaCA094yEh2muSKBTyKi7uOdxAdN3qv8HJHReM9q5HH8
+coLVq8RYb6I7BgbDnuYMTCO2K/GqVstsIp8F/3Mq6ea6uh/5mFME/p5EGHeKBKDM
+sGYj2wehgWE/qsVs3NUJiy/Z7lDpuzkgRo0ULpSx64evmwQWmtHeOuGuTny51G44
+S/0B1boZJerOLpoJTKctG8Eq6lRkUWvRQzX9fZZmhtiyeEGbXE7sRTLeiLTaDvuc
+ma8cDNp7VKfDob4SJeRszjMmgyjOIRtGOutjeS8MipNlKrO8b4AkiiKXoZDWmTt1
+q3tDg1hBsfV5T/Pawr4QJHOEXoZ/sh5AT7fh4HdE0aqYTqNZ5jt11dVVktO56U4X
+VG54fSn9KZ1GIiAFAyhSG9hac8ldBwxR9tdn2DSHmx0Qh6HYg28=
+=TvId
+-----END PGP SIGNATURE-----
+
+--vcxgegcyuczhk53y--
