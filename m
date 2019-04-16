@@ -1,105 +1,46 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v2 17/25] drm/mediatek: add background color input
- select function for ovl/ovl_2l
-Date: Tue, 16 Apr 2019 15:38:17 +0800
-Message-ID: <1555400297.29874.2.camel@mtksdaap41>
-References: <1553667561-25447-1-git-send-email-yongqiang.niu@mediatek.com>
-         <1553667561-25447-18-git-send-email-yongqiang.niu@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 18/24] dt-bindings: timer: mtk-timer: add support for
+ MT8516
+Date: Tue, 16 Apr 2019 09:54:46 +0200
+Message-ID: <182f1ae5-9f4f-8ef4-695f-353bbd1966c6@gmail.com>
+References: <20190323211612.860-1-fparent@baylibre.com>
+ <20190323211612.860-19-fparent@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1553667561-25447-18-git-send-email-yongqiang.niu@mediatek.com>
+In-Reply-To: <20190323211612.860-19-fparent@baylibre.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: yongqiang.niu@mediatek.com
-Cc: p.zabel@pengutronix.de, robh+dt@kernel.org, matthias.bgg@gmail.com, airlied@linux.ie, mark.rutland@arm.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Bibby.Hsieh@mediatek.com, yt.shen@mediatek.com
+To: Fabien Parent <fparent@baylibre.com>, robh+dt@kernel.org, mark.rutland@arm.com, Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: sean.wang@kernel.org, ryder.lee@mediatek.com, hsin-hsiung.wang@mediatek.com, wenzhen.yu@mediatek.com, chaotian.jing@mediatek.com, yong.mao@mediatek.com, jjian.zhou@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org, linux-gpio@vger.kernel.org, linux-serial@vger.kernel.org, linux-spi@vger.kernel.org, linux-watchdog@vger.kernel.org, linux-clk@vger.kernel.org, stephane.leprovost@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Yongqiang:
 
-On Wed, 2019-03-27 at 14:19 +0800, yongqiang.niu@mediatek.com wrote:
-> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+
+On 23/03/2019 22:16, Fabien Parent wrote:
+> Add binding documentation of mtk-timer for MT8516 SoC.
 > 
-> This patch add background color input select function for ovl/ovl_2l
-> 
-> ovl include 4 DRAM layer and 1 background color layer
-> ovl_2l include 4 DRAM layer and 1 background color layer
-> DRAM layer frame buffer data from render hardware, GPU for example.
-> backgournd color layer is embed in ovl/ovl_2l, we can only set
-> it color, but not support DRAM frame buffer.
-> 
-> for ovl0->ovl0_2l direct link usecase,
-> we need set ovl0_2l background color intput select from ovl0
-> if render send DRAM buffer layer number <=4, all these layer read
-> by ovl.
-> layer0 is at the bottom of all layers.
-> layer3 is at the top of all layers.
-> if render send DRAM buffer layer numbfer >=4 && <=6
-> ovl0 read layer0~3
-> ovl0_2l read layer4~5
-> layer5 is at the top ot all these layers.
-> 
-> the decision of how to setting ovl0/ovl0_2l read these layer data
-> is controlled in mtk crtc, which will be another patch
-> 
-> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
 > ---
->  drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 24 ++++++++++++++++++++++++
->  1 file changed, 24 insertions(+)
+>  Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt | 1 +
+>  1 file changed, 1 insertion(+)
+
+applied to v5.1-next/dts64
+
+Daniel let me know if you want to take it through your tree and I drop the patch.
+
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> index a0ab760..c226284 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> @@ -27,6 +27,8 @@
->  #define DISP_REG_OVL_EN				0x000c
->  #define DISP_REG_OVL_RST			0x0014
->  #define DISP_REG_OVL_ROI_SIZE			0x0020
-> +#define DISP_REG_OVL_DATAPATH_CON		0x0024
-> +#define OVL_BGCLR_SEL_IN                        BIT(2)
->  #define DISP_REG_OVL_ROI_BGCLR			0x0028
->  #define DISP_REG_OVL_SRC_CON			0x002c
->  #define DISP_REG_OVL_CON(n)			(0x0030 + 0x20 * (n))
-> @@ -245,6 +247,26 @@ static void mtk_ovl_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
->  		mtk_ovl_layer_on(comp, idx);
->  }
+> diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+> index ff7c567a7972..74c3eadad844 100644
+> --- a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+> +++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+> @@ -17,6 +17,7 @@ Required properties:
+>  	* "mediatek,mt8127-timer" for MT8127 compatible timers (GPT)
+>  	* "mediatek,mt8135-timer" for MT8135 compatible timers (GPT)
+>  	* "mediatek,mt8173-timer" for MT8173 compatible timers (GPT)
+> +	* "mediatek,mt8516-timer" for MT8516 compatible timers (GPT)
+>  	* "mediatek,mt6577-timer" for MT6577 and all above compatible timers (GPT)
 >  
-> +static void mtk_ovl_bgclr_in_on(struct mtk_ddp_comp *comp,
-> +				enum mtk_ddp_comp_id prev)
-> +{
-> +	int is_ovl = 0;
-> +
-> +        if (prev == DDP_COMPONENT_OVL0 ||
-> +            prev == DDP_COMPONENT_OVL0_2L ||
-> +            prev == DDP_COMPONENT_OVL1_2L)
-> +		is_ovl = 1;
-
-I think this logic should be moved to mtk crtc and OVL need not to care
-about which component is in front of it.
-
-Regards,
-CK
-
-> +
-> +	mtk_ddp_write_mask((is_ovl << 2), comp,
-> +			   DISP_REG_OVL_DATAPATH_CON, OVL_BGCLR_SEL_IN);
-> +}
-> +
-> +static void mtk_ovl_bgclr_in_off(struct mtk_ddp_comp *comp)
-> +{
-> +        mtk_ddp_write_mask(0, comp,
-> +                           DISP_REG_OVL_DATAPATH_CON, OVL_BGCLR_SEL_IN);
-> +}
-> +
->  static const struct mtk_ddp_comp_funcs mtk_disp_ovl_funcs = {
->  	.config = mtk_ovl_config,
->  	.start = mtk_ovl_start,
-> @@ -255,6 +277,8 @@ static void mtk_ovl_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
->  	.layer_on = mtk_ovl_layer_on,
->  	.layer_off = mtk_ovl_layer_off,
->  	.layer_config = mtk_ovl_layer_config,
-> +	.bgclr_in_on = mtk_ovl_bgclr_in_on,
-> +	.bgclr_in_off = mtk_ovl_bgclr_in_off,
->  };
->  
->  static int mtk_disp_ovl_bind(struct device *dev, struct device *master,
+>  	For those SoCs that use SYST
+> 
