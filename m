@@ -1,8 +1,8 @@
 From: <michael.mei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Subject: [PATCH 1/2] arm64: dts: mt8183: add efuse and Mediatek Chip id node
  to read
-Date: Tue, 16 Apr 2019 16:19:19 +0800
-Message-ID: <20190416081922.21711-2-michael.mei@mediatek.com>
+Date: Tue, 16 Apr 2019 16:19:21 +0800
+Message-ID: <20190416081922.21711-4-michael.mei@mediatek.com>
 References: <20190416081922.21711-1-michael.mei@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
