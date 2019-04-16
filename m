@@ -1,71 +1,48 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v2 18/25] drm/mediatek: add RDMA fifo size error handle
-Date: Tue, 16 Apr 2019 16:00:47 +0800
-Message-ID: <1555401647.11519.2.camel@mtksdaap41>
-References: <1553667561-25447-1-git-send-email-yongqiang.niu@mediatek.com>
-         <1553667561-25447-19-git-send-email-yongqiang.niu@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 23/24] arm64: dts: mediatek: add dtsi for MT8516
+Date: Tue, 16 Apr 2019 10:04:02 +0200
+Message-ID: <24517390-0015-d804-8c57-4e1030edba02@gmail.com>
+References: <20190323211612.860-1-fparent@baylibre.com>
+ <20190323211612.860-24-fparent@baylibre.com>
+ <CAL_Jsq+Q06O84-MTpgTWGG312VXm_vGOkjMCjtWuS0eZ-j_0yw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1553667561-25447-19-git-send-email-yongqiang.niu@mediatek.com>
+In-Reply-To: <CAL_Jsq+Q06O84-MTpgTWGG312VXm_vGOkjMCjtWuS0eZ-j_0yw@mail.gmail.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: yongqiang.niu@mediatek.com
-Cc: p.zabel@pengutronix.de, robh+dt@kernel.org, matthias.bgg@gmail.com, airlied@linux.ie, mark.rutland@arm.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Bibby.Hsieh@mediatek.com, yt.shen@mediatek.com
+To: Rob Herring <robh+dt@kernel.org>, Fabien Parent <fparent@baylibre.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Sean Wang <sean.wang@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, Wenzhen Yu <wenzhen.yu@mediatek.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Yong Mao <yong.mao@mediatek.com>, jjian.zhou@mediatek.com, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Linux I2C <linux-i2c@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, linux-mmc <linux-mmc@vger.kernel.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Yongqiang:
 
-On Wed, 2019-03-27 at 14:19 +0800, yongqiang.niu@mediatek.com wrote:
-> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> 
-> This patch add RDMA fifo size error handle
-> rdma fifo size will not always bigger than the calculated threshold
-> if that case happened, we need set fifo size as the threshold
-> 
-> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 9 ++++++++-
->  1 file changed, 8 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> index b0a5cff..ead38ba 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> @@ -137,11 +137,14 @@ static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
->  {
->  	unsigned int threshold;
->  	unsigned int reg;
-> +	unsigned int rdma_fifo_size;
->  	struct mtk_disp_rdma *rdma = comp_to_rdma(comp);
->  
->  	rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_0, 0xfff, width);
->  	rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_1, 0xfffff, height);
->  
-> +	rdma_fifo_size = RDMA_FIFO_SIZE(rdma);
-> +
->  	/*
->  	 * Enable FIFO underflow since DSI and DPI can't be blocked.
->  	 * Keep the FIFO pseudo size reset default of 8 KiB. Set the
-> @@ -149,8 +152,12 @@ static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
->  	 * account for blanking, and with a pixel depth of 4 bytes:
->  	 */
->  	threshold = width * height * vrefresh * 4 * 7 / 1000000;
-> +
-> +	if (threshold > rdma_fifo_size)
-> +		threshold = rdma_fifo_size;
 
-I think this is a work around not a correct solution. Why MT8173 has no
-this problem but MT8183 has? Is the formula of threshold different in
-MT8173 and MT8183?
+On 28/03/2019 20:22, Rob Herring wrote:
+> On Sat, Mar 23, 2019 at 4:17 PM Fabien Parent <fparent@baylibre.com> wrote:
+>>
+>> The MT8516 SoC provides the following peripherals: GPIO, UART, USB2,
+>> SPI, eMMC, SDIO, NAND, Flash, ADC, I2C, PWM, Timers, IR, Ethernet, and
+>> Audio (I2S, SPDIF, TDM).
+>>
+>> This commit is adding the basic dtsi file with the support of the
+>> following IOs: GPIO, UART, SPI, eMMC, I2C, Timers.
+>>
+>> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+>> ---
+>>  arch/arm64/boot/dts/mediatek/mt8516-pinfunc.h | 663 ++++++++++++++++++
+>>  arch/arm64/boot/dts/mediatek/mt8516.dtsi      | 409 +++++++++++
+>>  2 files changed, 1072 insertions(+)
+>>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8516-pinfunc.h
+>>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8516.dtsi
+> 
+> Reviewed-by: Rob Herring <robh@kernel.org>
+> 
+
+Fabien, before taking this through my tree, I'd like to see the drivers merged.
+Can you please resubmit taking into account the outcome of get_maintainers.pl
+script. From my experience it is easier to send one series per driver, as it
+makes the amount of emails every maintainer gets more manageable.
 
 Regards,
-CK
-
-> +
->  	reg = RDMA_FIFO_UNDERFLOW_EN |
-> -	      RDMA_FIFO_PSEUDO_SIZE(RDMA_FIFO_SIZE(rdma)) |
-> +	      RDMA_FIFO_PSEUDO_SIZE(rdma_fifo_size) |
->  	      RDMA_OUTPUT_VALID_FIFO_THRESHOLD(threshold);
->  	writel(reg, comp->regs + DISP_REG_RDMA_FIFO_CON);
->  }
+Matthias
