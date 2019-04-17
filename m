@@ -1,42 +1,88 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] dt-bindings: spi: spi-mt65xx: add support for MT8516
-Date: Wed, 17 Apr 2019 11:15:42 +0200
-Message-ID: <c0801222-3e13-6d68-967e-dd76bdd01051@gmail.com>
-References: <1555490836-13382-1-git-send-email-leilk.liu@mediatek.com>
+From: Frederic Chen <frederic.chen@mediatek.com>
+Subject: [RFC PATCH V1 1/6] dt-bindings: mt8183: Add binding for DIP shared
+ memory
+Date: Wed, 17 Apr 2019 18:45:06 +0800
+Message-ID: <20190417104511.21514-2-frederic.chen@mediatek.com>
+References: <20190417104511.21514-1-frederic.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1555490836-13382-1-git-send-email-leilk.liu@mediatek.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Leilk Liu <leilk.liu@mediatek.com>, Mark Brown <broonie@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, fparent@baylibre.com
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190417104511.21514-1-frederic.chen@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: hans.verkuil@cisco.com, laurent.pinchart+renesas@ideasonboard.com, tfiga@chromium.org, matthias.bgg@gmail.com, mchehab@kernel.org
+Cc: shik@chromium.org, devicetree@vger.kernel.org, Sean.Cheng@mediatek.com, Rynn.Wu@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, suleiman@chromium.org, Jerry-ch.Chen@mediatek.com, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, linux-mediatek@lists.infradead.org, zwisler@chromium.org, christie.yu@mediatek.com, frederic.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
+This patch adds the binding for describing the shared memory
+used to exchange configuration and tuning data between the
+co-processor and Digital Image Processing (DIP) unit of the
+camera ISP system on Mediatek SoCs.
 
+Signed-off-by: Frederic Chen <frederic.chen@mediatek.com>
+---
+ .../mediatek,reserve-memory-dip_smem.txt      | 45 +++++++++++++++++++
+ 1 file changed, 45 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt
 
-On 17/04/2019 10:47, Leilk Liu wrote:
-> Add binding documentation of spi-mt65xx for MT8516 SOC.
-> 
-> Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
-
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
-> ---
->  .../devicetree/bindings/spi/spi-mt65xx.txt         |    1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-> index 69c3567..c0f6c8e 100644
-> --- a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-> +++ b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-> @@ -10,6 +10,7 @@ Required properties:
->      - mediatek,mt8135-spi: for mt8135 platforms
->      - mediatek,mt8173-spi: for mt8173 platforms
->      - mediatek,mt8183-spi: for mt8183 platforms
-> +    - "mediatek,mt8516-spi", "mediatek,mt2712-spi": for mt8516 platforms
->  
->  - #address-cells: should be 1.
->  
-> 
+diff --git a/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt b/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt
+new file mode 100644
+index 000000000000..64c001b476b9
+--- /dev/null
++++ b/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt
+@@ -0,0 +1,45 @@
++Mediatek DIP Shared Memory binding
++
++This binding describes the shared memory, which serves the purpose of
++describing the shared memory region used to exchange data between Digital
++Image Processing (DIP) and co-processor in Mediatek SoCs.
++
++The co-processor doesn't have the iommu so we need to use the physical
++address to access the shared buffer in the firmware.
++
++The Digital Image Processing (DIP) can access memory through mt8183 IOMMU so
++it can use dma address to access the memory region.
++(See iommu/mediatek,iommu.txt for the detailed description of Mediatek IOMMU)
++
++
++Required properties:
++
++- compatible: must be "mediatek,reserve-memory-dip_smem"
++
++- reg: required for static allocation (see reserved-memory.txt for
++  the detailed usage)
++
++- alloc-range: required for dynamic allocation. The range must
++  between 0x00000400 and 0x100000000 due to the co-processer's
++  addressing limitation
++
++- size: required for dynamic allocation. The unit is bytes.
++  If you want to enable the full feature of Digital Processing Unit,
++  you need 20 MB at least.
++
++
++Example:
++
++The following example shows the DIP shared memory setup for MT8183.
++
++	reserved-memory {
++		#address-cells = <2>;
++		#size-cells = <2>;
++		ranges;
++		reserve-memory-dip_smem {
++			compatible = "mediatek,reserve-memory-dip_smem";
++			size = <0 0x1400000>;
++			alignment = <0 0x1000>;
++			alloc-ranges = <0 0x40000000 0 0x50000000>;
++		};
++	};
+-- 
+2.18.0
