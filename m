@@ -1,34 +1,43 @@
-From: Markus Elfring <Markus.Elfring@web.de>
-Subject: Re: [PATCH] iommu/mediatek: fix leaked of_node references
-Date: Wed, 17 Apr 2019 15:33:53 +0200
-Message-ID: <13cb52b9-2e41-2b47-96cd-37748de86531@web.de>
-References: <1555468879-34684-1-git-send-email-wen.yang99@zte.com.cn>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH] dt-bindings: spi: spi-mt65xx: add support for MT8516
+Date: Wed, 17 Apr 2019 15:38:46 +0100
+Message-ID: <20190417143846.GA5703@sirena.org.uk>
+References: <1555490836-13382-1-git-send-email-leilk.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: multipart/signed; micalg=pgp-sha512;
+        protocol="application/pgp-signature"; boundary="IS0zKkzwUGydFO0o"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1555468879-34684-1-git-send-email-wen.yang99@zte.com.cn>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <1555490836-13382-1-git-send-email-leilk.liu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Wen Yang <wen.yang99@zte.com.cn>, iommu@lists.linux-foundation.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, =?UTF-8?B?SsO2cmcgUsO2ZGVs?= <joro@8bytes.org>, Matthias Brugger <mbrugger@suse.com>, Yi Wang <wang.yi59@zte.com.cn>
+To: Leilk Liu <leilk.liu@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, fparent@baylibre.com
 List-Id: linux-mediatek@lists.infradead.org
 
-> The call to of_parse_phandle returns a node pointer with refcount
-> incremented thus it must be explicitly decremented after the last
-> usage.
 
-Can a splitting of this information into two sentences help?
+--IS0zKkzwUGydFO0o
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
+On Wed, Apr 17, 2019 at 04:47:16PM +0800, Leilk Liu wrote:
+> Add binding documentation of spi-mt65xx for MT8516 SOC.
 
-> 581 static int mtk_iommu_probe(struct platform_device *pdev)
-> 582 {
->     ...
+Please use subject lines matching the style for the subsystem.  This
+makes it easier for people to identify relevant patches.
 
-I suggest to reconsider such a commit description once more.
-Would it be better to mention that another function call should be added
-in two if branches so that the exception handling would be completed
-(instead of copying source code where a software update should become
-clear also from the provided diff hunk)?
+--IS0zKkzwUGydFO0o
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Regards,
-Markus
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAly3OnMACgkQJNaLcl1U
+h9CDkgf7Bx0bnRJJVFtQpite9Bwk7qhLVPQLE2niAQnuTpnQfiPcVJNEYN1NZY77
+JJgxEgnbj2h9umXbA3LRx3dGJ7CzkEoJ+3UGI5nL8LA12cMpzT5xCfa+7wMgxnzh
+x06IziNXB7fkG7TWnk98S45A5ULUAHXOo24znTbZz+5SxfGw5H2E6lGKOaMBJhd9
+oMMqefjcLLQK+AGEk97o8crtziPHYHukAg5twenB9qQdOlSqHuywFQ7G+gStSRmO
+tSDUWRInPf6sJfRmoNw13qzP/ESvbq5onFc+dsoLfRDfqyhy/DMV7DAYAh4UJj9D
+3i/gX2LDoJmrRbIHACBjllcgOPV9wQ==
+=JoPM
+-----END PGP SIGNATURE-----
+
+--IS0zKkzwUGydFO0o--
