@@ -1,67 +1,33 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "dt-bindings: spi: spi-mt65xx: add support for MT8516" to the spi tree
-Date: Wed, 17 Apr 2019 17:42:16 +0100 (BST)
-Message-ID: <20190417164216.ABE661128FCC@debutante.sirena.org.uk>
-References: <1555490836-13382-1-git-send-email-leilk.liu@mediatek.com>
+From: "Angus Ainslie (Purism)" <angus@akkea.ca>
+Subject: [PATCH v5 2/3] dt-bindings: Add an entry for Purism SPC
+Date: Wed, 17 Apr 2019 09:55:13 -0700
+Message-ID: <20190417165514.18689-3-angus@akkea.ca>
+References: <20190417165514.18689-1-angus@akkea.ca>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1555490836-13382-1-git-send-email-leilk.liu@mediatek.com>
+In-Reply-To: <20190417165514.18689-1-angus@akkea.ca>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Leilk Liu <leilk.liu@mediatek.com>
-Cc: devicetree@vger.kernel.org, fparent@baylibre.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-spi@vger.kernel.org, Mark Brown <broonie@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>
+To: angus.ainslie@puri.sm
+Cc: m.felsch@pengutronix.de, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, Palmer Dabbelt <palmer@sifive.com>, Albert Ou <aou@eecs.berkeley.edu>, Paul Walmsley <paul.walmsley@sifive.com>, Matthias Brugger <matthias.bgg@gmail.com>, Guo Ren <guoren@kernel.org>, "Angus Ainslie (Purism)" <angus@akkea.ca>, Thierry Reding <treding@nvidia.com>, Jonathan Cameron <Jonathan.Cameron@huawei.com>, Kevin Hilman <khilman@baylibre.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Andrey Smirnov <andrew.smirnov@gmail.com>, =?UTF-8?q?Jo
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
+Add an entry for Purism, SPC
 
-   dt-bindings: spi: spi-mt65xx: add support for MT8516
-
-has been applied to the spi tree at
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-5.2
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
->From bee5c20b7323a7af027d1b4ba538137b518ad232 Mon Sep 17 00:00:00 2001
-From: Leilk Liu <leilk.liu@mediatek.com>
-Date: Wed, 17 Apr 2019 16:47:16 +0800
-Subject: [PATCH] dt-bindings: spi: spi-mt65xx: add support for MT8516
-
-Add binding documentation of spi-mt65xx for MT8516 SOC.
-
-Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
+Signed-off-by: Angus Ainslie (Purism) <angus@akkea.ca>
 ---
- Documentation/devicetree/bindings/spi/spi-mt65xx.txt | 1 +
+ Documentation/devicetree/bindings/vendor-prefixes.txt | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-index 69c356767cf8..c0f6c8ecfa2e 100644
---- a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-+++ b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-@@ -10,6 +10,7 @@ Required properties:
-     - mediatek,mt8135-spi: for mt8135 platforms
-     - mediatek,mt8173-spi: for mt8173 platforms
-     - mediatek,mt8183-spi: for mt8183 platforms
-+    - "mediatek,mt8516-spi", "mediatek,mt2712-spi": for mt8516 platforms
- 
- - #address-cells: should be 1.
- 
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.txt b/Documentation/devicetree/bindings/vendor-prefixes.txt
+index 40f632db7bc2..44ba42e48007 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.txt
++++ b/Documentation/devicetree/bindings/vendor-prefixes.txt
+@@ -331,6 +331,7 @@ poslab	Poslab Technology Co., Ltd.
+ powervr	PowerVR (deprecated, use img)
+ probox2	PROBOX2 (by W2COMP Co., Ltd.)
+ pulsedlight	PulsedLight, Inc
++purism	Purism, SPC
+ qca	Qualcomm Atheros, Inc.
+ qcom	Qualcomm Technologies, Inc
+ qemu	QEMU, a generic and open source machine emulator and virtualizer
 -- 
-2.20.1
+2.17.1
