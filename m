@@ -1,81 +1,58 @@
-From: Wen Yang <wen.yang99@zte.com.cn>
-Subject: [PATCH] iommu/mediatek: fix leaked of_node references
-Date: Wed, 17 Apr 2019 10:41:19 +0800
-Message-ID: <1555468879-34684-1-git-send-email-wen.yang99@zte.com.cn>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: wang.yi59@zte.com.cn, Wen Yang <wen.yang99@zte.com.cn>, Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, iommu@lists.linux-foundation.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v1 0/4] make hdmi work on bananapi-r2
+Date: Wed, 17 Apr 2019 11:10:07 +0800
+Message-ID: <1555470607.16005.12.camel@mtksdaap41>
+References: <20190416145848.11932-1-frank-w@public-files.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190416145848.11932-1-frank-w@public-files.de>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, chunhui dai <chunhui.dai@mediatek.com>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The call to of_parse_phandle returns a node pointer with refcount
-incremented thus it must be explicitly decremented after the last
-usage.
-
-581 static int mtk_iommu_probe(struct platform_device *pdev)
-582 {
-    ...
-626         for (i = 0; i < larb_nr; i++) {
-627                 struct device_node *larbnode;
-    ...
-631                 larbnode = of_parse_phandle(...);
-632                 if (!larbnode)
-633                         return -EINVAL;
-634
-635                 if (!of_device_is_available(larbnode))
-636                         continue;             ---> leaked here
-637
-    ...
-643                 if (!plarbdev)
-644                         return -EPROBE_DEFER; ---> leaked here
-    ...
-647                 component_match_add_release(dev, &match, release_of,
-648                                             compare_of, larbnode);
-                                   ---> release_of will call of_node_put
-649         }
-    ...
-650
-
-Detected by coccinelle with the following warnings:
-./drivers/iommu/mtk_iommu.c:644:3-9: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 631, but without a corresponding object release within this function.
-
-Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
-Cc: Joerg Roedel <joro@8bytes.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: iommu@lists.linux-foundation.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
----
- drivers/iommu/mtk_iommu.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index de3e022..b66d11b 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -632,16 +632,20 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 		if (!larbnode)
- 			return -EINVAL;
- 
--		if (!of_device_is_available(larbnode))
-+		if (!of_device_is_available(larbnode)) {
-+			of_node_put(larbnode);
- 			continue;
-+		}
- 
- 		ret = of_property_read_u32(larbnode, "mediatek,larb-id", &id);
- 		if (ret)/* The id is consecutive if there is no this property */
- 			id = i;
- 
- 		plarbdev = of_find_device_by_node(larbnode);
--		if (!plarbdev)
-+		if (!plarbdev) {
-+			of_node_put(larbnode);
- 			return -EPROBE_DEFER;
-+		}
- 		data->smi_imu.larb_imu[id].dev = &plarbdev->dev;
- 
- 		component_match_add_release(dev, &match, release_of,
--- 
-2.9.5
+SGksIEZyYW5rOgoKT24gVHVlLCAyMDE5LTA0LTE2IGF0IDE2OjU4ICswMjAwLCBGcmFuayBXdW5k
+ZXJsaWNoIHdyb3RlOgo+IFRoaXMgUGF0Y2gtU2VyaWVzIGFkZHMgbWlzc2luZyBQYXRjaGVzL0J1
+Z2ZpeGVzIHRvIGdldCBoZG1pIHdvcmtpbmcgb24gQlBJLVIyCj4gCj4gZmlyc3QgMiBQYXRjaGVz
+IHdlcmUgYWxyZWFkeSBwb3N0ZWQsIGJ1dCBub3QgeWV0IG1lcmdlZCBpbnRvIG1haW5saW5lCj4g
+aSBmb3VuZCBubyBoaW50IHdoeQo+IC0gY29uZmlnIGNvbXBvbmVudCBvdXRwdXQgYnkgZGV2aWNl
+IG5vZGUgcG9ydAo+ICAgaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC8xMDYwOTAw
+Ny8KPiAtIGFkZCBkaXNwbGF5IHN1YnN5c3RlbSByZWxhdGVkIGRldmljZSBub2RlcyAocmVzZW5k
+KQo+ICAgaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC8xMDU4ODk1MS8KPiAKClRo
+ZXNlIHBhdGNoZXMgbmVlZCB0byBtb2RpZnkgYmluZGluZyBkb2N1bWVudCBhbmQgbmVlZCBsb25n
+IHRlcm0KZGlzY3Vzcy4gSSBoYXZlIGFuIGlkZWEgbm90IHRvIG1vZGlmeSBiaW5kaW5nIGRvY3Vt
+ZW50IHNvIHlvdSBjb3VsZCBiZQpxdWlja2VyIHRvIG1lcmdlIHRoZXNlIHBhdGNoZXMuIFRoZSBp
+ZGVhIGlzOgoKMS4gS2VlcCB0aGUgcGF0Y2ggJ2RybS9tZWRpYXRlazogZml4IHBvc3NpYmxlX2Ny
+dGNzJywgbGV0IERQSSBlbmNvZGVyCnN1cHBvcnQgYm90aCBjcnRjMCBhbmQgY3J0YzEuCjIuIEZv
+ciBlbmNvZGVyIGFuZCBjcnRjLCBpdCBjb3VsZCBmaW5kIGVhY2ggb3RoZXIgYnkgZW5jb2Rlci0+
+Y3J0YyBhbmQKY3J0Yy0+ZW5jb2Rlcl9tYXNrIHRvIGNvbmZpZ3VyZSBoYXJkd2FyZSBjb3JyZWN0
+bHkuCgpSZWdhcmRzLApDSwoKPiBCaWJieSBIc2llaCAoMSk6Cj4gICBkcm0vbWVkaWF0ZWs6IGNv
+bmZpZyBjb21wb25lbnQgb3V0cHV0IGJ5IGRldmljZSBub2RlIHBvcnQKPiAKPiBSeWRlciBMZWUg
+KDIpOgo+ICAgYXJtOiBkdHM6IG10NzYyMzogYWRkIGRpc3BsYXkgc3Vic3lzdGVtIHJlbGF0ZWQg
+ZGV2aWNlIG5vZGVzCj4gICBkcm0vbWVkaWF0ZWs6IGZpeCBwb3NzaWJsZV9jcnRjcwo+IAo+IGNo
+dW5odWkgZGFpICgxKToKPiAgIGRybS9tZWRpYXRlazogZml4IGJvb3QgdXAgZm9yIDcyMCBhbmQg
+NDgwIGJ1dCAxMDgwCj4gCj4gIGFyY2gvYXJtL2Jvb3QvZHRzL210NzYyMy5kdHNpICAgICAgICAg
+ICAgICAgICB8IDE3NyArKysrKysrKysrKysrKysrKysKPiAgYXJjaC9hcm0vYm9vdC9kdHMvbXQ3
+NjIzbi1iYW5hbmFwaS1icGktcjIuZHRzIHwgIDg1ICsrKysrKysrKwo+ICBhcmNoL2FybS9ib290
+L2R0cy9tdDc2MjNuLXJmYi1lbW1jLmR0cyAgICAgICAgfCAgODUgKysrKysrKysrCj4gIGRyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBpLmMgICAgICAgICAgICB8ICAgMiArLQo+ICBkcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyAgICAgICAgfCAgNDEgKysrLQo+ICBk
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuaCAgICAgICAgfCAgIDQgKy0KPiAg
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3BoeS5jICAgICAgIHwgICAzICsKPiAg
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3BoeS5oICAgICAgIHwgICAxICsKPiAg
+Li4uL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210MjcwMV9oZG1pX3BoeS5jICAgIHwgICAxICsKPiAg
+OSBmaWxlcyBjaGFuZ2VkLCAzOTAgaW5zZXJ0aW9ucygrKSwgOSBkZWxldGlvbnMoLSkKPiAKPiAt
+LQo+IDIuMTcuMQo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9w
+Lm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1k
+ZXZlbA==
