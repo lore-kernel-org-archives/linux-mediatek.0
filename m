@@ -1,44 +1,92 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 19/24] dt-bindings: spi: spi-mt65xx: add support for
- MT8516
-Date: Wed, 17 Apr 2019 10:19:20 +0200
-Message-ID: <de48f4db-2d03-e47a-48ba-45cc884fc088@gmail.com>
-References: <20190323211612.860-1-fparent@baylibre.com>
- <20190323211612.860-20-fparent@baylibre.com>
- <5bc3fbfa-6d7e-08d3-116c-a8f78bc680cd@gmail.com>
- <20190416142814.GB4834@sirena.org.uk>
+Subject: Re: [PATCH] iommu/mediatek: fix leaked of_node references
+Date: Wed, 17 Apr 2019 10:28:21 +0200
+Message-ID: <cddad8e5-ccdc-f8b7-6b0c-8dcbe33768a6@gmail.com>
+References: <1555468879-34684-1-git-send-email-wen.yang99@zte.com.cn>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190416142814.GB4834@sirena.org.uk>
+In-Reply-To: <1555468879-34684-1-git-send-email-wen.yang99@zte.com.cn>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Fabien Parent <fparent@baylibre.com>, robh+dt@kernel.org, mark.rutland@arm.com, sean.wang@kernel.org, ryder.lee@mediatek.com, hsin-hsiung.wang@mediatek.com, wenzhen.yu@mediatek.com, chaotian.jing@mediatek.com, yong.mao@mediatek.com, jjian.zhou@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org, linux-gpio@vger.kernel.org, linux-serial@vger.kernel.org, linux-spi@vger.kernel.org, linux-watchdog@vger.kernel.org, linux-clk@vger.kernel.org, stephane.leprovost@mediatek.com
+To: Wen Yang <wen.yang99@zte.com.cn>, linux-kernel@vger.kernel.org
+Cc: wang.yi59@zte.com.cn, Joerg Roedel <joro@8bytes.org>, iommu@lists.linux-foundation.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 16/04/2019 16:28, Mark Brown wrote:
-> On Tue, Apr 16, 2019 at 09:55:41AM +0200, Matthias Brugger wrote:
->> On 23/03/2019 22:16, Fabien Parent wrote:
->>> Add binding documentation of spi-mt65xx for MT8516 SoC.
+On 17/04/2019 04:41, Wen Yang wrote:
+> The call to of_parse_phandle returns a node pointer with refcount
+> incremented thus it must be explicitly decremented after the last
+> usage.
 > 
->>> Signed-off-by: Fabien Parent <fparent@baylibre.com> --- 
->>> Documentation/devicetree/bindings/spi/spi-mt65xx.txt | 1 + 1 file
->>> changed, 1 insertion(+)
+> 581 static int mtk_iommu_probe(struct platform_device *pdev)
+> 582 {
+>     ...
+> 626         for (i = 0; i < larb_nr; i++) {
+> 627                 struct device_node *larbnode;
+>     ...
+> 631                 larbnode = of_parse_phandle(...);
+> 632                 if (!larbnode)
+> 633                         return -EINVAL;
+> 634
+> 635                 if (!of_device_is_available(larbnode))
+> 636                         continue;             ---> leaked here
+> 637
+>     ...
+> 643                 if (!plarbdev)
+> 644                         return -EPROBE_DEFER; ---> leaked here
+>     ...
+> 647                 component_match_add_release(dev, &match, release_of,
+> 648                                             compare_of, larbnode);
+>                                    ---> release_of will call of_node_put
+> 649         }
+>     ...
+> 650
 > 
->> applied to v5.1-next/dts64
+> Detected by coccinelle with the following warnings:
+> ./drivers/iommu/mtk_iommu.c:644:3-9: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 631, but without a corresponding object release within this function.
 > 
->> Mark let me know if you want to take it through your tree and I drop the
->> patch.
-> 
-> Yes, DT bindings generally get reviewed in the subsystem :(
-> 
+> Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
+> Cc: Joerg Roedel <joro@8bytes.org>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: iommu@lists.linux-foundation.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-mediatek@lists.infradead.org
+> Cc: linux-kernel@vger.kernel.org
 
-I already dropped it due to some comments from Lei Liu:
-https://patchwork.kernel.org/patch/10867251/
+Reviewed-by: Matthias Brugger <mbrugger@suse.com>
 
-Regards,
-Matthias
+> ---
+>  drivers/iommu/mtk_iommu.c | 8 ++++++--
+>  1 file changed, 6 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index de3e022..b66d11b 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -632,16 +632,20 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>  		if (!larbnode)
+>  			return -EINVAL;
+>  
+> -		if (!of_device_is_available(larbnode))
+> +		if (!of_device_is_available(larbnode)) {
+> +			of_node_put(larbnode);
+>  			continue;
+> +		}
+>  
+>  		ret = of_property_read_u32(larbnode, "mediatek,larb-id", &id);
+>  		if (ret)/* The id is consecutive if there is no this property */
+>  			id = i;
+>  
+>  		plarbdev = of_find_device_by_node(larbnode);
+> -		if (!plarbdev)
+> +		if (!plarbdev) {
+> +			of_node_put(larbnode);
+>  			return -EPROBE_DEFER;
+> +		}
+>  		data->smi_imu.larb_imu[id].dev = &plarbdev->dev;
+>  
+>  		component_match_add_release(dev, &match, release_of,
+> 
