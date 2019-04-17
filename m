@@ -1,33 +1,81 @@
-From: Will Deacon <will.deacon@arm.com>
-Subject: Re: [PATCH v3 1/5] arm64: Use the correct style for SPDX License
- Identifier
-Date: Tue, 16 Apr 2019 22:34:47 +0100
-Message-ID: <20190416213447.GA11724@brain-police>
-References: <cover.1555427418.git.nishadkamdar@gmail.com>
- <ecdbe63bea1b1d2d67db6cc577aa32bf872f2310.1555427419.git.nishadkamdar@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+From: Wen Yang <wen.yang99@zte.com.cn>
+Subject: [PATCH] iommu/mediatek: fix leaked of_node references
+Date: Wed, 17 Apr 2019 10:41:19 +0800
+Message-ID: <1555468879-34684-1-git-send-email-wen.yang99@zte.com.cn>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <ecdbe63bea1b1d2d67db6cc577aa32bf872f2310.1555427419.git.nishadkamdar@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Nishad Kamdar <nishadkamdar@gmail.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Joe Perches <joe@perches.com>, Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+To: linux-kernel@vger.kernel.org
+Cc: wang.yi59@zte.com.cn, Wen Yang <wen.yang99@zte.com.cn>, Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, iommu@lists.linux-foundation.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Apr 16, 2019 at 08:49:35PM +0530, Nishad Kamdar wrote:
-> This patch corrects the SPDX License Identifier style
-> in the arm64 Hardware Architecture related files.
-> 
-> Suggested-by: Joe Perches <joe@perches.com>
-> Signed-off-by: Nishad Kamdar <nishadkamdar@gmail.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt2712-pinfunc.h | 2 +-
->  arch/arm64/include/asm/pointer_auth.h         | 2 +-
->  arch/arm64/include/asm/sdei.h                 | 2 +-
->  arch/arm64/include/asm/vmap_stack.h           | 2 +-
->  4 files changed, 4 insertions(+), 4 deletions(-)
+The call to of_parse_phandle returns a node pointer with refcount
+incremented thus it must be explicitly decremented after the last
+usage.
 
-I'll pick this up for 5.2.
+581 static int mtk_iommu_probe(struct platform_device *pdev)
+582 {
+    ...
+626         for (i = 0; i < larb_nr; i++) {
+627                 struct device_node *larbnode;
+    ...
+631                 larbnode = of_parse_phandle(...);
+632                 if (!larbnode)
+633                         return -EINVAL;
+634
+635                 if (!of_device_is_available(larbnode))
+636                         continue;             ---> leaked here
+637
+    ...
+643                 if (!plarbdev)
+644                         return -EPROBE_DEFER; ---> leaked here
+    ...
+647                 component_match_add_release(dev, &match, release_of,
+648                                             compare_of, larbnode);
+                                   ---> release_of will call of_node_put
+649         }
+    ...
+650
 
-Will
+Detected by coccinelle with the following warnings:
+./drivers/iommu/mtk_iommu.c:644:3-9: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 631, but without a corresponding object release within this function.
+
+Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
+Cc: Joerg Roedel <joro@8bytes.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: iommu@lists.linux-foundation.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+---
+ drivers/iommu/mtk_iommu.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index de3e022..b66d11b 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -632,16 +632,20 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+ 		if (!larbnode)
+ 			return -EINVAL;
+ 
+-		if (!of_device_is_available(larbnode))
++		if (!of_device_is_available(larbnode)) {
++			of_node_put(larbnode);
+ 			continue;
++		}
+ 
+ 		ret = of_property_read_u32(larbnode, "mediatek,larb-id", &id);
+ 		if (ret)/* The id is consecutive if there is no this property */
+ 			id = i;
+ 
+ 		plarbdev = of_find_device_by_node(larbnode);
+-		if (!plarbdev)
++		if (!plarbdev) {
++			of_node_put(larbnode);
+ 			return -EPROBE_DEFER;
++		}
+ 		data->smi_imu.larb_imu[id].dev = &plarbdev->dev;
+ 
+ 		component_match_add_release(dev, &match, release_of,
+-- 
+2.9.5
