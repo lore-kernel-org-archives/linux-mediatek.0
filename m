@@ -1,83 +1,62 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v1 3/4] drm/mediatek: fix boot up for 720 and 480 but
- 1080
-Date: Wed, 17 Apr 2019 13:47:08 +0800
-Message-ID: <1555480028.3515.4.camel@mtksdaap41>
-References: <20190416145848.11932-1-frank-w@public-files.de>
-         <20190416145848.11932-4-frank-w@public-files.de>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [v2 PATCH 1/6] usb: xhci-mtk: get optional clock by
+ devm_clk_get_optional()
+Date: Wed, 17 Apr 2019 13:53:28 +0800
+Message-ID: <1555480408.10179.202.camel@mhfsdcap03>
+References: <bc6cdc2dce698dddbd692ba100fbf08c15c7b023.1554877692.git.chunfeng.yun@mediatek.com>
+         <20190416101258.GA26091@kroah.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190416145848.11932-4-frank-w@public-files.de>
+In-Reply-To: <20190416101258.GA26091@kroah.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, chunhui dai <chunhui.dai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Marek Szyprowski <m.szyprowski@samsung.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Frank:
+On Tue, 2019-04-16 at 12:12 +0200, Greg Kroah-Hartman wrote:
+> On Wed, Apr 10, 2019 at 02:47:24PM +0800, Chunfeng Yun wrote:
+> > Use devm_clk_get_optional() to get optional clock
+> > 
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > ---
+> > v2: no changes
+> > ---
+> >  drivers/usb/host/xhci-mtk.c | 19 +++----------------
+> >  1 file changed, 3 insertions(+), 16 deletions(-)
+> > 
+> > diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+> > index 60987c787e44..026fe18972d3 100644
+> > --- a/drivers/usb/host/xhci-mtk.c
+> > +++ b/drivers/usb/host/xhci-mtk.c
+> > @@ -206,19 +206,6 @@ static int xhci_mtk_ssusb_config(struct xhci_hcd_mtk *mtk)
+> >  	return xhci_mtk_host_enable(mtk);
+> >  }
+> >  
+> > -/* ignore the error if the clock does not exist */
+> > -static struct clk *optional_clk_get(struct device *dev, const char *id)
+> > -{
+> > -	struct clk *opt_clk;
+> > -
+> > -	opt_clk = devm_clk_get(dev, id);
+> > -	/* ignore error number except EPROBE_DEFER */
+> > -	if (IS_ERR(opt_clk) && (PTR_ERR(opt_clk) != -EPROBE_DEFER))
+> 
+> Are you sure about this?
+> 
+> devm_clk_get_optional() does not check for -EPROBE_DEFER, so you just
+> changed the functionality of this code.  Is that ok?  
+Yes, checking for -ENOENT covers more error cases than -EPROBE_DEFER,
+and the original purpose also wants to ignore non-exist clock
 
-On Tue, 2019-04-16 at 16:58 +0200, Frank Wunderlich wrote:
-> From: chunhui dai <chunhui.dai@mediatek.com>
-> 
-> - 1080 plg in/out with ng/ok
-> - support other resolutions like 1280x1024
+> If so, please call
+> it out explicitly in your changelog comment when you resend this.
+I'll add it in next version
 
-The description is so simple and I could not understand why
-pll_default_off could fix this problem. And why only MT2701 has this
-problem? Please describe more clear about this patch.
-
-Regards,
-CK
+Thanks a lot
 
 > 
-> Signed-off-by: chunhui dai <chunhui.dai@mediatek.com>
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> Tested-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
->  drivers/gpu/drm/mediatek/mtk_hdmi_phy.c        | 3 +++
->  drivers/gpu/drm/mediatek/mtk_hdmi_phy.h        | 1 +
->  drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c | 1 +
->  3 files changed, 5 insertions(+)
+> thanks,
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-> index 5223498502c4..edadb7a700f1 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
-> @@ -184,6 +184,9 @@ static int mtk_hdmi_phy_probe(struct platform_device *pdev)
->  		return PTR_ERR(phy_provider);
->  	}
-> 
-> +	if (hdmi_phy->conf->pll_default_off)
-> +		hdmi_phy->conf->hdmi_phy_disable_tmds(hdmi_phy);
-> +
->  	return of_clk_add_provider(dev->of_node, of_clk_src_simple_get,
->  				   hdmi_phy->pll);
->  }
-> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-> index 2d8b3182470d..f472fdeb63dc 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-> @@ -22,6 +22,7 @@ struct mtk_hdmi_phy;
->  struct mtk_hdmi_phy_conf {
->  	bool tz_disabled;
->  	unsigned long flags;
-> +	bool pll_default_off;
->  	const struct clk_ops *hdmi_phy_clk_ops;
->  	void (*hdmi_phy_enable_tmds)(struct mtk_hdmi_phy *hdmi_phy);
->  	void (*hdmi_phy_disable_tmds)(struct mtk_hdmi_phy *hdmi_phy);
-> diff --git a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-> index d3cc4022e988..6fbedacfc1e8 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-> @@ -239,6 +239,7 @@ static void mtk_hdmi_phy_disable_tmds(struct mtk_hdmi_phy *hdmi_phy)
->  struct mtk_hdmi_phy_conf mtk_hdmi_phy_2701_conf = {
->  	.tz_disabled = true,
->  	.flags = CLK_SET_RATE_GATE,
-> +	.pll_default_off = true,
->  	.hdmi_phy_clk_ops = &mtk_hdmi_phy_pll_ops,
->  	.hdmi_phy_enable_tmds = mtk_hdmi_phy_enable_tmds,
->  	.hdmi_phy_disable_tmds = mtk_hdmi_phy_disable_tmds,
-> --
-> 2.17.1
-> 
+> greg k-h
