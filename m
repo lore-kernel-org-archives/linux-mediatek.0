@@ -1,43 +1,67 @@
 From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH] dt-bindings: spi: spi-mt65xx: add support for MT8516
-Date: Wed, 17 Apr 2019 15:38:46 +0100
-Message-ID: <20190417143846.GA5703@sirena.org.uk>
+Subject: Applied "dt-bindings: spi: spi-mt65xx: add support for MT8516" to the spi tree
+Date: Wed, 17 Apr 2019 17:42:16 +0100 (BST)
+Message-ID: <20190417164216.ABE661128FCC@debutante.sirena.org.uk>
 References: <1555490836-13382-1-git-send-email-leilk.liu@mediatek.com>
-Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="IS0zKkzwUGydFO0o"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
 In-Reply-To: <1555490836-13382-1-git-send-email-leilk.liu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Leilk Liu <leilk.liu@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, fparent@baylibre.com
+Cc: devicetree@vger.kernel.org, fparent@baylibre.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-spi@vger.kernel.org, Mark Brown <broonie@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+The patch
 
---IS0zKkzwUGydFO0o
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+   dt-bindings: spi: spi-mt65xx: add support for MT8516
 
-On Wed, Apr 17, 2019 at 04:47:16PM +0800, Leilk Liu wrote:
-> Add binding documentation of spi-mt65xx for MT8516 SOC.
+has been applied to the spi tree at
 
-Please use subject lines matching the style for the subsystem.  This
-makes it easier for people to identify relevant patches.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-5.2
 
---IS0zKkzwUGydFO0o
-Content-Type: application/pgp-signature; name="signature.asc"
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
 
------BEGIN PGP SIGNATURE-----
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAly3OnMACgkQJNaLcl1U
-h9CDkgf7Bx0bnRJJVFtQpite9Bwk7qhLVPQLE2niAQnuTpnQfiPcVJNEYN1NZY77
-JJgxEgnbj2h9umXbA3LRx3dGJ7CzkEoJ+3UGI5nL8LA12cMpzT5xCfa+7wMgxnzh
-x06IziNXB7fkG7TWnk98S45A5ULUAHXOo24znTbZz+5SxfGw5H2E6lGKOaMBJhd9
-oMMqefjcLLQK+AGEk97o8crtziPHYHukAg5twenB9qQdOlSqHuywFQ7G+gStSRmO
-tSDUWRInPf6sJfRmoNw13qzP/ESvbq5onFc+dsoLfRDfqyhy/DMV7DAYAh4UJj9D
-3i/gX2LDoJmrRbIHACBjllcgOPV9wQ==
-=JoPM
------END PGP SIGNATURE-----
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
---IS0zKkzwUGydFO0o--
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+>From bee5c20b7323a7af027d1b4ba538137b518ad232 Mon Sep 17 00:00:00 2001
+From: Leilk Liu <leilk.liu@mediatek.com>
+Date: Wed, 17 Apr 2019 16:47:16 +0800
+Subject: [PATCH] dt-bindings: spi: spi-mt65xx: add support for MT8516
+
+Add binding documentation of spi-mt65xx for MT8516 SOC.
+
+Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ Documentation/devicetree/bindings/spi/spi-mt65xx.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
+index 69c356767cf8..c0f6c8ecfa2e 100644
+--- a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
++++ b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
+@@ -10,6 +10,7 @@ Required properties:
+     - mediatek,mt8135-spi: for mt8135 platforms
+     - mediatek,mt8173-spi: for mt8173 platforms
+     - mediatek,mt8183-spi: for mt8183 platforms
++    - "mediatek,mt8516-spi", "mediatek,mt2712-spi": for mt8516 platforms
+ 
+ - #address-cells: should be 1.
+ 
+-- 
+2.20.1
