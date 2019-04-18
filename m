@@ -1,17 +1,16 @@
 From: tip-bot for Chang-An Chen <tipbot@zytor.com>
-Subject: [tip:timers/urgent] tiemrs/sched_clock: Prevent generic sched_clock
+Subject: [tip:timers/urgent] timers/sched_clock: Prevent generic sched_clock
  wrap caused by tick_freeze()
-Date: Thu, 18 Apr 2019 05:19:08 -0700
-Message-ID: <tip-fe4a9a665de982b9eeb4a5e61f9c1c1abe80fb51@git.kernel.org>
+Date: Thu, 18 Apr 2019 05:40:58 -0700
+Message-ID: <tip-3f2552f7e9c5abef2775c53f7af66532f8bf65bc@git.kernel.org>
 References: <1553828349-8914-1-git-send-email-chang-an.chen@mediatek.com>
-Reply-To: matthias.bgg@gmail.com, tglx@linutronix.de, mingo@kernel.org,
-          linux-kernel@vger.kernel.org, hpa@zytor.com,
-          keescook@chromium.org, kuohong.wang@mediatek.com,
-          freddy.hsin@mediatek.com, chang-an.chen@mediatek.com,
-          fweisbec@gmail.com, stanley.chu@mediatek.com,
-          linux-arm-kernel@lists.infradead.org,
-          linux-mediatek@lists.infradead.org, cminyard@mvista.com,
-          john.stultz@linaro.org
+Reply-To: john.stultz@linaro.org, matthias.bgg@gmail.com,
+          freddy.hsin@mediatek.com, hpa@zytor.com, keescook@chromium.org,
+          chang-an.chen@mediatek.com, linux-kernel@vger.kernel.org,
+          tglx@linutronix.de, linux-arm-kernel@lists.infradead.org,
+          kuohong.wang@mediatek.com, mingo@kernel.org, cminyard@mvista.com,
+          fweisbec@gmail.com, linux-mediatek@lists.infradead.org,
+          stanley.chu@mediatek.com
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -20,17 +19,17 @@ In-Reply-To: <1553828349-8914-1-git-send-email-chang-an.chen@mediatek.com>
 Content-Disposition: inline
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-tip-commits@vger.kernel.org
-Cc: freddy.hsin@mediatek.com, kuohong.wang@mediatek.com, chang-an.chen@mediatek.com, hpa@zytor.com, keescook@chromium.org, linux-kernel@vger.kernel.org, mingo@kernel.org, matthias.bgg@gmail.com, tglx@linutronix.de, cminyard@mvista.com, john.stultz@linaro.org, linux-mediatek@lists.infradead.org, stanley.chu@mediatek.com, linux-arm-kernel@lists.infradead.org, fweisbec@gmail.com
+Cc: stanley.chu@mediatek.com, fweisbec@gmail.com, cminyard@mvista.com, linux-mediatek@lists.infradead.org, tglx@linutronix.de, linux-arm-kernel@lists.infradead.org, chang-an.chen@mediatek.com, linux-kernel@vger.kernel.org, mingo@kernel.org, kuohong.wang@mediatek.com, freddy.hsin@mediatek.com, john.stultz@linaro.org, matthias.bgg@gmail.com, hpa@zytor.com, keescook@chromium.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Commit-ID:  fe4a9a665de982b9eeb4a5e61f9c1c1abe80fb51
-Gitweb:     https://git.kernel.org/tip/fe4a9a665de982b9eeb4a5e61f9c1c1abe80fb51
+Commit-ID:  3f2552f7e9c5abef2775c53f7af66532f8bf65bc
+Gitweb:     https://git.kernel.org/tip/3f2552f7e9c5abef2775c53f7af66532f8bf65bc
 Author:     Chang-An Chen <chang-an.chen@mediatek.com>
 AuthorDate: Fri, 29 Mar 2019 10:59:09 +0800
 Committer:  Thomas Gleixner <tglx@linutronix.de>
-CommitDate: Thu, 18 Apr 2019 14:16:31 +0200
+CommitDate: Thu, 18 Apr 2019 14:34:53 +0200
 
-tiemrs/sched_clock: Prevent generic sched_clock wrap caused by tick_freeze()
+timers/sched_clock: Prevent generic sched_clock wrap caused by tick_freeze()
 
 tick_freeze() introduced by suspend-to-idle in commit 124cf9117c5f ("PM /
 sleep: Make it possible to quiesce timers during suspend-to-idle") uses
@@ -79,7 +78,6 @@ Cc: <kuohong.wang@mediatek.com>
 Cc: <freddy.hsin@mediatek.com>
 Cc: stable@vger.kernel.org
 Link: https://lkml.kernel.org/r/1553828349-8914-1-git-send-email-chang-an.chen@mediatek.com
-
 ---
  kernel/time/sched_clock.c | 4 ++--
  kernel/time/tick-common.c | 2 ++
