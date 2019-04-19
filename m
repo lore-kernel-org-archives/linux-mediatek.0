@@ -1,104 +1,43 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [v3 PATCH 2/6] dt-bindings: usb: add binding for Type-B GPIO
- connector driver
-Date: Fri, 19 Apr 2019 16:43:30 +0800
-Message-ID: <1555663410.10179.205.camel@mhfsdcap03>
-References: <1554257354-7440-1-git-send-email-chunfeng.yun@mediatek.com>
- <1554257354-7440-3-git-send-email-chunfeng.yun@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1554257354-7440-3-git-send-email-chunfeng.yun@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Hans de Goede <hdegoede@redhat.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, Badhri Jagan Sridharan <badhri@google.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, Min Guo <min.guo@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, linux-arm-kernel@lists.infradead.org, Li Jun <jun.li@nxp.com>
+From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Subject: [PATCH] Staging: mt7621-mmc: Cleanup in msdc_app_cmd()
+Date: Fri, 19 Apr 2019 16:11:30 -0500
+Message-ID: <20190419211130.25284-1-madhumithabiw@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: gregkh@linuxfoundation.org, matthias.bgg@gmail.com, devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Rob,
+Remove unwanted variable and replace the respective return type.
 
-Gentle ping, could you please comment on this patch?
+Issue suggested by Coccinelle.
 
-Thanks a lot
+Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+---
+ drivers/staging/mt7621-mmc/sd.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-On Wed, 2019-04-03 at 10:09 +0800, Chunfeng Yun wrote:
-> It's used to support dual role switch via GPIO when use Type-B
-> receptacle, typically the USB ID pin is connected to an input
-> GPIO pin
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
-> v3 changes:
->  1. treat type-B connector as a virtual device, but not child device of
->     USB controller's
-> 
-> v2 changes:
->   1. new patch to make binding clear suggested by Hans
-> ---
->  .../bindings/usb/typeb-conn-gpio.txt          | 49 +++++++++++++++++++
->  1 file changed, 49 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/usb/typeb-conn-gpio.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/usb/typeb-conn-gpio.txt b/Documentation/devicetree/bindings/usb/typeb-conn-gpio.txt
-> new file mode 100644
-> index 000000000000..d2e1c4e01b6d
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/usb/typeb-conn-gpio.txt
-> @@ -0,0 +1,49 @@
-> +USB Type-B GPIO Connector
-> +
-> +This is a virtual device used to switch dual role mode from the USB ID pin
-> +connected to an input GPIO pin.
-> +
-> +Required properties:
-> +- compatible : Should be "linux,typeb-conn-gpio"
-> +
-> +Sub-nodes:
-> +- connector : should be present.
-> +	- compatible : should be "usb-b-connector".
-> +	- id-gpios, vbus-gpios : either one of them must be present,
-> +		and both can be present as well.
-> +	- vbus-supply : can be present if needed when supports dual role mode.
-> +	see connector/usb-connector.txt
-> +
-> +- port : should be present.
-> +	see graph.txt
-> +
-> +Example:
-> +
-> +rsw_iddig: role_sw_iddig {
-> +	compatible = "linux,typeb-conn-gpio";
-> +	status = "okay";
-> +
-> +	connector {
-> +		compatible = "usb-b-connector";
-> +		label = "micro-USB";
-> +		type = "micro";
-> +		id-gpios = <&pio 12 GPIO_ACTIVE_HIGH>;
-> +		vbus-supply = <&usb_p0_vbus>;
-> +	};
-> +
-> +	port {
-> +		bconn_ep: endpoint@0 {
-> +			remote-endpoint = <&usb_role_sw>;
-> +		};
-> +	};
-> +};
-> +
-> +&mtu3 {
-> +	status = "okay";
-> +
-> +	port {
-> +		usb_role_sw: endpoint@0 {
-> +			remote-endpoint = <&bconn_ep>;
-> +		};
-> +	};
-> +};
+diff --git a/drivers/staging/mt7621-mmc/sd.c b/drivers/staging/mt7621-mmc/sd.c
+index b12ed2c988fd..2b327fde7145 100644
+--- a/drivers/staging/mt7621-mmc/sd.c
++++ b/drivers/staging/mt7621-mmc/sd.c
+@@ -752,7 +752,6 @@ static int msdc_app_cmd(struct mmc_host *mmc, struct msdc_host *host)
+ {
+ 	struct mmc_command cmd;
+ 	struct mmc_request mrq;
+-	u32 err;
+ 
+ 	memset(&cmd, 0, sizeof(struct mmc_command));
+ 	cmd.opcode = MMC_APP_CMD;
+@@ -763,8 +762,7 @@ static int msdc_app_cmd(struct mmc_host *mmc, struct msdc_host *host)
+ 	mrq.cmd = &cmd; cmd.mrq = &mrq;
+ 	cmd.data = NULL;
+ 
+-	err = msdc_do_command(host, &cmd, 0, CMD_TIMEOUT);
+-	return err;
++	return msdc_do_command(host, &cmd, 0, CMD_TIMEOUT);
+ }
+ 
+ static int msdc_tune_cmdrsp(struct msdc_host *host, struct mmc_command *cmd)
+-- 
+2.17.1
