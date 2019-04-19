@@ -1,7 +1,7 @@
 From: Yong Liang <yong.liang@mediatek.com>
 Subject: [PATCH 1/2] arm64: dts: mt8183: Add reset-cells in infracfg
-Date: Fri, 19 Apr 2019 14:17:59 +0800
-Message-ID: <1555654680-19721-1-git-send-email-yong.liang@mediatek.com>
+Date: Fri, 19 Apr 2019 14:22:56 +0800
+Message-ID: <1555654977-20050-1-git-send-email-yong.liang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -15,7 +15,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, robh+dt@kernel.org, mark.rutland@arm.com, drinkcat@chromium.org, weiyi.lu@mediatek.com, jamesjj.liao@mediatek.com, jasu@njomotys.info, owen.chen@mediatek.com, chunhui.dai@mediatek.com
+To: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, robh+dt@kernel.org, mark.rutland@arm.com, drinkcat@chromium.org, weiyi.lu@mediatek.com, jamesjj.liao@mediatek.com, jasu@njomotys.info, owen.chen@mediatek.com, chunhui.dai@mediatek.com, erin.lo@mediatek.com, eddie.huang@mediatek.com
 Cc: "yong.liang" <yong.liang@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
