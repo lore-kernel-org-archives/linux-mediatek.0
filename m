@@ -1,183 +1,111 @@
-From: Angus Ainslie <angus@akkea.ca>
-Subject: Re: [PATCH v5 1/3] arm64: dts: fsl: librem5: Add a device tree for  the Librem5 devkit
-Date: Thu, 18 Apr 2019 10:44:50 -0700
-Message-ID: <79d43377285d6897847ac1452afbb18a@www.akkea.ca>
-References: <20190417165514.18689-1-angus@akkea.ca>
- <20190417165514.18689-2-angus@akkea.ca> <20190418151350.GC32345@bogus>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v2 05/15] [media] mtk-mipicsi: get the w/h/bytepwerline
+ for mtk_mipicsi
+Date: Fri, 19 Apr 2019 11:52:07 +0800
+Message-ID: <1555645927.24433.4.camel@mtksdaap41>
+References: <1555407015-18130-1-git-send-email-stu.hsieh@mediatek.com>
+         <1555407015-18130-6-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190418151350.GC32345@bogus>
+In-Reply-To: <1555407015-18130-6-git-send-email-stu.hsieh@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: angus.ainslie@puri.sm, m.felsch@pengutronix.de, Mark Rutland <mark.rutland@arm.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, Palmer Dabbelt <palmer@sifive.com>, Albert Ou <aou@eecs.berkeley.edu>, Paul Walmsley <paul.walmsley@sifive.com>, Matthias Brugger <matthias.bgg@gmail.com>, Guo Ren <guoren@kernel.org>, Thierry Reding <treding@nvidia.com>, Jonathan Cameron <Jonathan.Cameron@huawei.com>, Kevin Hilman <khilman@baylibre.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Andrey Smirnov <andrew.smirnov@gmail.com>, =?UTF-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, Jack
+To: Stu Hsieh <stu.hsieh@mediatek.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Rob,
+Hi, Stu:
 
-
-On 2019-04-18 08:13, Rob Herring wrote:
-> On Wed, Apr 17, 2019 at 09:55:12AM -0700, Angus Ainslie (Purism) wrote:
->> This is the development kit board for the Librem 5. The current level 
->> of
->> support yields a working console and is able to boot userspace from 
->> the
->> Network or eMMC.
->> 
->> Additional subsystems that are active :
->> 
->> - Both USB ports
->> - SD card socket
->> - WiFi usdhc
->> - WWAN modem
->> - GNSS
->> - GPIO keys
->> - LEDs
->> - gyro
->> - magnetometer
->> - touchscreen
->> - pwm
->> - backlight
->> - haptic motor
->> 
->> Signed-off-by: Angus Ainslie (Purism) <angus@akkea.ca>
->> ---
->>  arch/arm64/boot/dts/freescale/Makefile        |   1 +
->>  .../dts/freescale/imx8mq-librem5-devkit.dts   | 833 
->> ++++++++++++++++++
->>  2 files changed, 834 insertions(+)
->>  create mode 100644 
->> arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts
->> 
->> diff --git a/arch/arm64/boot/dts/freescale/Makefile 
->> b/arch/arm64/boot/dts/freescale/Makefile
->> index 0bd122f60549..c043aca66572 100644
->> --- a/arch/arm64/boot/dts/freescale/Makefile
->> +++ b/arch/arm64/boot/dts/freescale/Makefile
->> @@ -22,6 +22,7 @@ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-lx2160a-rdb.dtb
->> 
->>  dtb-$(CONFIG_ARCH_MXC) += imx8mm-evk.dtb
->>  dtb-$(CONFIG_ARCH_MXC) += imx8mq-evk.dtb
->> +dtb-$(CONFIG_ARCH_MXC) += imx8mq-librem5-devkit.dtb
->>  dtb-$(CONFIG_ARCH_MXC) += imx8mq-zii-ultra-rmb3.dtb
->>  dtb-$(CONFIG_ARCH_MXC) += imx8mq-zii-ultra-zest.dtb
->>  dtb-$(CONFIG_ARCH_MXC) += imx8qxp-mek.dtb
->> diff --git a/arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts 
->> b/arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts
->> new file mode 100644
->> index 000000000000..846a72dc7640
->> --- /dev/null
->> +++ b/arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts
+On Tue, 2019-04-16 at 17:30 +0800, Stu Hsieh wrote:
+> This patch get the w/h/bytepwerline to save in mtk_mipicsi.
 > 
->> +&usb3_phy0 {
->> +	#address-cells = <1>;
->> +	#size-cells = <0>;
->> +	status = "okay";
->> +
->> +	port@0 {
->> +		reg = <0>;
->> +
->> +		typec_hs: endpoint {
->> +			remote-endpoint = <&usb_con_hs>;
->> +		};
->> +	};
->> +
->> +	port@1 {
->> +		reg = <1>;
->> +
->> +		typec_ss: endpoint {
->> +			remote-endpoint = <&usb_con_ss>;
->> +		};
->> +	};
+> Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
+> ---
+>  .../media/platform/mtk-mipicsi/mtk_mipicsi.c  | 39 +++++++++++++++++++
+>  1 file changed, 39 insertions(+)
 > 
-> This is wrong. The graph should be between the USB controller and the
-> connector. The phy is not involved.
-> 
->> +};
->> +
->> +&usb3_phy1 {
->> +	status = "okay";
->> +};
->> +
->> +&usb_dwc3_0 {
->> +	extcon = <&typec_ptn5100>;
-> 
-> extcon is deprecated and you should only have the usb-connector 
-> binding.
-> From the controller, you can walk the graph to the connector.
-> 
+> diff --git a/drivers/media/platform/mtk-mipicsi/mtk_mipicsi.c b/drivers/media/platform/mtk-mipicsi/mtk_mipicsi.c
+> index 16f6bc480f4e..10782fccca79 100644
+> --- a/drivers/media/platform/mtk-mipicsi/mtk_mipicsi.c
+> +++ b/drivers/media/platform/mtk-mipicsi/mtk_mipicsi.c
+> @@ -99,6 +99,9 @@ struct mtk_mipicsi_dev {
+>  	u32 id;
+>  	int clk_num;
+>  	struct clk		*clk[MIPICSI_CLK];
+> +	u32 width;
+> +	u32 height;
+> +	u32 bytesperline;
+>  };
+>  
+>  #define MTK_MIPICSI_BUS_PARAM (V4L2_MBUS_MASTER |	\
+> @@ -110,13 +113,36 @@ struct mtk_mipicsi_dev {
+>  		V4L2_MBUS_PCLK_SAMPLE_FALLING |	\
+>  		V4L2_MBUS_DATA_ACTIVE_HIGH)
+>  
+> +static u32 get_bytesperline(const u32 fmt, const u32 width)
+> +{
+> +	u32 bytesperline = 0;
+> +
+> +	switch (fmt) {
+> +	case MEDIA_BUS_FMT_UYVY8_2X8:
+> +	case MEDIA_BUS_FMT_VYUY8_2X8:
+> +	case MEDIA_BUS_FMT_YUYV8_2X8:
+> +	case MEDIA_BUS_FMT_YVYU8_2X8:
+> +		bytesperline = width * 2U;
+> +		break;
+> +	default:
+> +		break;
+> +	}
+> +
+> +	return bytesperline;
+> +}
+> +
+>  static int mtk_mipicsi_add_device(struct soc_camera_device *icd)
+>  {
+> +	struct soc_camera_host *ici = to_soc_camera_host(icd->parent);
+> +	struct mtk_mipicsi_dev *mipicsi = ici->priv;
+>  	struct v4l2_subdev *sd = soc_camera_to_subdev(icd);
+>  	struct v4l2_subdev_format format = {
+>  		.which = V4L2_SUBDEV_FORMAT_ACTIVE,
+>  	};
+>  	int ret;
+> +	u32 width;
+> +	u32 height;
+> +	u32 fmt;
+>  
+>  	/* Get width/height info from subdev. Then use them to set register */
+>  	ret = v4l2_subdev_call(sd, pad, get_fmt, NULL, &format);
+> @@ -125,6 +151,19 @@ static int mtk_mipicsi_add_device(struct soc_camera_device *icd)
+>  		return ret;
+>  	}
+>  
+> +	width = format.format.width;
+> +	height = format.format.height;
+> +	fmt = format.format.code;
+> +	mipicsi->bytesperline = get_bytesperline(fmt, width);
+> +	if ((width == 0U) || (height == 0U) || (mipicsi->bytesperline == 0U)) {
 
-I not sure that I'm clear on what you mean. Here's what I think you want 
-it changed to.
+You could check more completely, for example, if the valid range of width is 1 ~ 4095, you could check as:
 
-diff --git a/arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts 
-b/arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts
-index 846a72dc7640..7b8770fdc5fb 100644
---- a/arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts
-+++ b/arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts
-@@ -755,51 +755,50 @@
-  };
+#define WIDTH_MIN 1
+#define WIDTH_MAX 4095
 
-  &uart4 { /* BT */
-         pinctrl-names = "default";
-         pinctrl-0 = <&pinctrl_uart4>, <&pinctrl_bt>;
-         uart-has-rtscts;
-         status = "okay";
-  };
+if ((width < WIDTH_MIN) || (width > WIDTH_MAX)) {
+	/* invalid value */
+}
 
-  &usb3_phy0 {
-+       status = "okay";
-+};
-+
-+&usb3_phy1 {
-+       status = "okay";
-+};
-+
-+&usb_dwc3_0 {
-         #address-cells = <1>;
-         #size-cells = <0>;
-+       dr_mode = "otg";
-         status = "okay";
+Regards,
+CK
 
-         port@0 {
-                 reg = <0>;
-
-                 typec_hs: endpoint {
-                         remote-endpoint = <&usb_con_hs>;
-                 };
-         };
-
-         port@1 {
-                 reg = <1>;
-
-                 typec_ss: endpoint {
-                         remote-endpoint = <&usb_con_ss>;
-                 };
-         };
-  };
-
--&usb3_phy1 {
--       status = "okay";
--};
--
--&usb_dwc3_0 {
--       extcon = <&typec_ptn5100>;
--       dr_mode = "otg";
--       status = "okay";
--};
--
-  &usb_dwc3_1 {
-         dr_mode = "host";
-         status = "okay";
-  };
-
-
-
-Thanks
-Angus
-
->> +	dr_mode = "otg";
->> +	status = "okay";
->> +};
+> +		dev_err(icd->parent, "invalid sub device width/height/bytesperline %d/%d/%d\n",
+> +			width, height, mipicsi->bytesperline);
+> +		return -EINVAL;
+> +	}
+> +
+> +	mipicsi->width = width;
+> +	mipicsi->height = height;
+> +
+>  	/*
+>  	 * If power domain was closed before, it will be open.
+>  	 * Then clock will be open and register will be set
