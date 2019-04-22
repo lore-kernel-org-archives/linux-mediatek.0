@@ -1,89 +1,56 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH,v1] media: mtk-vcodec: fix vp9 content playback error with
- show exist frame
-Date: Mon, 22 Apr 2019 15:44:27 +0900
-Message-ID: <CAAFQd5CUL=yE2-igsAPrt42DWW=4Xjzcyb_8zGWHRtiC5Acs6g@mail.gmail.com>
-References: <1554106718-23107-1-git-send-email-maoguang.meng@mediatek.com>
+From: YT Shen <yt.shen@mediatek.com>
+Subject: Re: [PATCH v1 4/4] drm/mediatek: fix possible_crtcs
+Date: Mon, 22 Apr 2019 16:59:19 +0800
+Message-ID: <1555923559.2854.14.camel@mtksdaap41>
+References: <20190416145848.11932-1-frank-w@public-files.de>
+ <20190416145848.11932-5-frank-w@public-files.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1554106718-23107-1-git-send-email-maoguang.meng@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: maoguang.meng@mediatek.com
-Cc: Hans Verkuil <hverkuil@xs4all.nl>, Tiffany Lin <tiffany.lin@mediatek.com>, Longfei Wang <longfei.wang@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, gtk_ruiwang@mediatek.com, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, devicetree@vger.kernel.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>, Joerg
-        Roedel <joro@8bytes.org>," <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190416145848.11932-5-frank-w@public-files.de>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, chunhui dai <chunhui.dai@mediatek.com>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Apr 1, 2019 at 5:19 PM <maoguang.meng@mediatek.com> wrote:
->
-> From: Maoguang Meng <maoguang.meng@mediatek.com>
->
-> Update referenced frame buffer's reference count when playing vp9
-> content which has show_existing_frame flag, and copy enough buffer
-> data to current shown frame.
->
-> Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
-> ---
->  .../media/platform/mtk-vcodec/vdec/vdec_vp9_if.c   |   16 +++++++---------
->  1 file changed, 7 insertions(+), 9 deletions(-)
->
-> diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-> index bc8349b..d950837 100644
-> --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-> @@ -481,15 +481,15 @@ static void vp9_swap_frm_bufs(struct vdec_vp9_inst *inst)
->                  */
->                 if ((frm_to_show->fb != NULL) &&
->                         (inst->cur_fb->base_y.size >=
-> -                       frm_to_show->fb->base_y.size)) {
-> +                       frm_to_show->fb->base_y.size) &&
-> +                       (inst->cur_fb->base_c.size >=
-> +                       frm_to_show->fb->base_c.size)) {
->                         memcpy((void *)inst->cur_fb->base_y.va,
->                                 (void *)frm_to_show->fb->base_y.va,
-> -                               vsi->buf_w *
-> -                               vsi->buf_h);
-> +                               frm_to_show->fb->base_y.size);
->                         memcpy((void *)inst->cur_fb->base_c.va,
->                                 (void *)frm_to_show->fb->base_c.va,
-> -                               vsi->buf_w *
-> -                               vsi->buf_h / 2);
-> +                               frm_to_show->fb->base_c.size);
->                 } else {
->                         /* After resolution change case, current CAPTURE buffer
->                          * may have less buffer size than frm_to_show buffer
-> @@ -895,7 +895,7 @@ static int vdec_vp9_decode(unsigned long h_vdec, struct mtk_vcodec_mem *bs,
->
->                 if (vsi->resolution_changed) {
->                         if (!vp9_alloc_work_buf(inst)) {
-> -                               ret = -EINVAL;
-> +                               ret = -EIO;
->                                 goto DECODE_ERROR;
->                         }
->                 }
-> @@ -924,14 +924,12 @@ static int vdec_vp9_decode(unsigned long h_vdec, struct mtk_vcodec_mem *bs,
->
->                 if (vsi->show_existing_frame && (vsi->frm_to_show_idx <
->                                         VP9_MAX_FRM_BUF_NUM)) {
-> -                       mtk_vcodec_err(inst,
-> +                       mtk_vcodec_debug(inst,
->                                 "Skip Decode drv->new_fb_idx=%d, drv->frm_to_show_idx=%d",
->                                 vsi->new_fb_idx, vsi->frm_to_show_idx);
->
->                         vp9_ref_cnt_fb(inst, &vsi->new_fb_idx,
->                                         vsi->frm_to_show_idx);
-> -                       ret = -EINVAL;
-> -                       goto DECODE_ERROR;
->                 }
->
->                 /* VPU assign the buffer pointer in its address space,
-> --
-> 1.7.9.5
->
-
-Thanks for the patch!
-
-Reviewed-by: Tomasz Figa <tfiga@chromium.org>
-
-Best regards,
-Tomasz
+SGkgRnJhbmssCk9uIFR1ZSwgMjAxOS0wNC0xNiBhdCAxNjo1OCArMDIwMCwgRnJhbmsgV3VuZGVy
+bGljaCB3cm90ZToKPiBGcm9tOiBSeWRlciBMZWUgPHJ5ZGVyLmxlZUBtZWRpYXRlay5jb20+Cj4g
+Cj4gd2l0aG91dCB0aGlzIHBhdGNoIHRoZXJlIGlzIHB1cnBsZSBzdHJldGNoZWQgZm9udCBvbiBm
+YmNvbnNvbGUKPiAKPiBzb3VyY2U6IGh0dHA6Ly9mb3J1bS5iYW5hbmEtcGkub3JnL3Qva2VybmVs
+LTQtMTktcmMxLWZvci10ZXN0ZXJzLzY2MTgvNTIKPiAKPiBTaWduZWQtb2ZmLWJ5OiBSeWRlciBM
+ZWUgPHJ5ZGVyLmxlZUBtZWRpYXRlay5jb20+Cj4gVGVzdGVkLWJ5OiBGcmFuayBXdW5kZXJsaWNo
+IDxmcmFuay13QHB1YmxpYy1maWxlcy5kZT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlh
+dGVrL210a19kcGkuYyB8IDIgKy0KPiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAx
+IGRlbGV0aW9uKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
+dGtfZHBpLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jCj4gaW5kZXggNWQz
+MzMxMzhmOTEzLi5jMTcxYjAxZjc3ZTAgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19kcGkuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBp
+LmMKPiBAQCAtNjEwLDcgKzYxMCw3IEBAIHN0YXRpYyBpbnQgbXRrX2RwaV9iaW5kKHN0cnVjdCBk
+ZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLCB2b2lkICpkYXRhKQo+ICAJZHJtX2Vu
+Y29kZXJfaGVscGVyX2FkZCgmZHBpLT5lbmNvZGVyLCAmbXRrX2RwaV9lbmNvZGVyX2hlbHBlcl9m
+dW5jcyk7Cj4gCj4gIAkvKiBDdXJyZW50bHkgRFBJMCBpcyBmaXhlZCB0byBiZSBkcml2ZW4gYnkg
+T1ZMMSAqLwo+IC0JZHBpLT5lbmNvZGVyLnBvc3NpYmxlX2NydGNzID0gQklUKDEpOwo+ICsJZHBp
+LT5lbmNvZGVyLnBvc3NpYmxlX2NydGNzID0gQklUKDApfEJJVCgxKTsKVGhpcyBwYXRjaCBpcyBu
+b3QgYSBnb29kIHNvbHV0aW9uLgoKVGhlIHNvbHV0aW9uIHNob3VsZCBmaW5kIHRoZSBjb21wb25l
+bnRzIGluIHRoZSBhcnJheXMgdG8gZGV0ZXJtaW5lIHRoZQpjb3JyZWN0IGNydGNzLCBub3QganVz
+dCBzZXQgYWxsIGF2YWlsYWJsZSBiaXRzLiAgWW91IHNlZSB0aGUgcHJvYmxlbQpiZWNhdXNlIHRo
+ZSBoYXJkd2FyZSBjb25uZWN0aW9ucyhCSVQwKSBpcyBub3QgdGhlIHNhbWUgYXMgZHJpdmVyCnJl
+cG9ydHMoQklUMSBjaGFuZ2VkIHRvIEJJVDB8QklUMSwgYnV0IEJJVDEgaXMgbm90IHN1cHBvcnRl
+ZCkuCgpSZWdhcmRzLAp5dC5zaGVuCgo+IAo+ICAJcmV0ID0gZHJtX2JyaWRnZV9hdHRhY2goJmRw
+aS0+ZW5jb2RlciwgZHBpLT5icmlkZ2UsIE5VTEwpOwo+ICAJaWYgKHJldCkgewo+IC0tCj4gMi4x
+Ny4xCj4gCj4gCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KPiBMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKPiBMaW51eC1tZWRpYXRla0BsaXN0cy5p
+bmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9saW51eC1tZWRpYXRlawoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
+dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
+aS1kZXZlbA==
