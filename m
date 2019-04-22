@@ -1,56 +1,25 @@
-From: YT Shen <yt.shen@mediatek.com>
-Subject: Re: [PATCH v1 4/4] drm/mediatek: fix possible_crtcs
-Date: Mon, 22 Apr 2019 16:59:19 +0800
-Message-ID: <1555923559.2854.14.camel@mtksdaap41>
-References: <20190416145848.11932-1-frank-w@public-files.de>
- <20190416145848.11932-5-frank-w@public-files.de>
+From: Zhiyong Tao <zhiyong.tao@mediatek.com>
+Subject: [PATCH 0/1] AUXADC: Mediatek auxadc driver on MT8183
+Date: Mon, 22 Apr 2019 19:54:15 +0800
+Message-ID: <20190422115417.16751-1-zhiyong.tao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190416145848.11932-5-frank-w@public-files.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, chunhui dai <chunhui.dai@mediatek.com>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: robh+dt@kernel.org, jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net
+Cc: srv_heupstream@mediatek.com, hui.liu@mediatek.com, yingjoe.chen@mediatek.com, sean.wang@mediatek.com, erin.lo@mediatek.com, eddie.huang@mediatek.com, matthias.bgg@gmail.com, s.hauer@pengutronix.de, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-iio@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgRnJhbmssCk9uIFR1ZSwgMjAxOS0wNC0xNiBhdCAxNjo1OCArMDIwMCwgRnJhbmsgV3VuZGVy
-bGljaCB3cm90ZToKPiBGcm9tOiBSeWRlciBMZWUgPHJ5ZGVyLmxlZUBtZWRpYXRlay5jb20+Cj4g
-Cj4gd2l0aG91dCB0aGlzIHBhdGNoIHRoZXJlIGlzIHB1cnBsZSBzdHJldGNoZWQgZm9udCBvbiBm
-YmNvbnNvbGUKPiAKPiBzb3VyY2U6IGh0dHA6Ly9mb3J1bS5iYW5hbmEtcGkub3JnL3Qva2VybmVs
-LTQtMTktcmMxLWZvci10ZXN0ZXJzLzY2MTgvNTIKPiAKPiBTaWduZWQtb2ZmLWJ5OiBSeWRlciBM
-ZWUgPHJ5ZGVyLmxlZUBtZWRpYXRlay5jb20+Cj4gVGVzdGVkLWJ5OiBGcmFuayBXdW5kZXJsaWNo
-IDxmcmFuay13QHB1YmxpYy1maWxlcy5kZT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlh
-dGVrL210a19kcGkuYyB8IDIgKy0KPiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAx
-IGRlbGV0aW9uKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHBpLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jCj4gaW5kZXggNWQz
-MzMxMzhmOTEzLi5jMTcxYjAxZjc3ZTAgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19kcGkuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBp
-LmMKPiBAQCAtNjEwLDcgKzYxMCw3IEBAIHN0YXRpYyBpbnQgbXRrX2RwaV9iaW5kKHN0cnVjdCBk
-ZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLCB2b2lkICpkYXRhKQo+ICAJZHJtX2Vu
-Y29kZXJfaGVscGVyX2FkZCgmZHBpLT5lbmNvZGVyLCAmbXRrX2RwaV9lbmNvZGVyX2hlbHBlcl9m
-dW5jcyk7Cj4gCj4gIAkvKiBDdXJyZW50bHkgRFBJMCBpcyBmaXhlZCB0byBiZSBkcml2ZW4gYnkg
-T1ZMMSAqLwo+IC0JZHBpLT5lbmNvZGVyLnBvc3NpYmxlX2NydGNzID0gQklUKDEpOwo+ICsJZHBp
-LT5lbmNvZGVyLnBvc3NpYmxlX2NydGNzID0gQklUKDApfEJJVCgxKTsKVGhpcyBwYXRjaCBpcyBu
-b3QgYSBnb29kIHNvbHV0aW9uLgoKVGhlIHNvbHV0aW9uIHNob3VsZCBmaW5kIHRoZSBjb21wb25l
-bnRzIGluIHRoZSBhcnJheXMgdG8gZGV0ZXJtaW5lIHRoZQpjb3JyZWN0IGNydGNzLCBub3QganVz
-dCBzZXQgYWxsIGF2YWlsYWJsZSBiaXRzLiAgWW91IHNlZSB0aGUgcHJvYmxlbQpiZWNhdXNlIHRo
-ZSBoYXJkd2FyZSBjb25uZWN0aW9ucyhCSVQwKSBpcyBub3QgdGhlIHNhbWUgYXMgZHJpdmVyCnJl
-cG9ydHMoQklUMSBjaGFuZ2VkIHRvIEJJVDB8QklUMSwgYnV0IEJJVDEgaXMgbm90IHN1cHBvcnRl
-ZCkuCgpSZWdhcmRzLAp5dC5zaGVuCgo+IAo+ICAJcmV0ID0gZHJtX2JyaWRnZV9hdHRhY2goJmRw
-aS0+ZW5jb2RlciwgZHBpLT5icmlkZ2UsIE5VTEwpOwo+ICAJaWYgKHJldCkgewo+IC0tCj4gMi4x
-Ny4xCj4gCj4gCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KPiBMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKPiBMaW51eC1tZWRpYXRla0BsaXN0cy5p
-bmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1tZWRpYXRlawoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
-dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
-aS1kZXZlbA==
+This series includes two patches:
+1.Add mt8183 auxadc compatible node in binding document.
+1.Add mt8183 auxadc device node.
+
+Zhiyong Tao (1):
+  arm64: dts: mt8183: Add auxadc device node
+
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts |  4 ++++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi    | 10 ++++++++++
+ 2 files changed, 14 insertions(+)
+
+--
+2.12.5
