@@ -1,51 +1,89 @@
-From: Yong Liang <yong.liang@mediatek.com>
-Subject: [PATCH 2/2] arm64: dts: mt8183: Add watchdog device node
-Date: Mon, 22 Apr 2019 14:08:04 +0800
-Message-ID: <1555913284-5591-2-git-send-email-yong.liang@mediatek.com>
-References: <1555913284-5591-1-git-send-email-yong.liang@mediatek.com>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [PATCH,v1] media: mtk-vcodec: fix vp9 content playback error with
+ show exist frame
+Date: Mon, 22 Apr 2019 15:44:27 +0900
+Message-ID: <CAAFQd5CUL=yE2-igsAPrt42DWW=4Xjzcyb_8zGWHRtiC5Acs6g@mail.gmail.com>
+References: <1554106718-23107-1-git-send-email-maoguang.meng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1555913284-5591-1-git-send-email-yong.liang@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: wim@linux-watchdog.org, linux@roeck-us.net, robh+dt@kernel.org, mark.rutland@arm.com, matthias.bgg@gmail.com
-Cc: devicetree@vger.kernel.org, "yong.liang" <yong.liang@mediatek.com>, linux-watchdog@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1554106718-23107-1-git-send-email-maoguang.meng@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: maoguang.meng@mediatek.com
+Cc: Hans Verkuil <hverkuil@xs4all.nl>, Tiffany Lin <tiffany.lin@mediatek.com>, Longfei Wang <longfei.wang@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, gtk_ruiwang@mediatek.com, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, devicetree@vger.kernel.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>, Joerg
+        Roedel <joro@8bytes.org>," <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: "yong.liang" <yong.liang@mediatek.com>
+On Mon, Apr 1, 2019 at 5:19 PM <maoguang.meng@mediatek.com> wrote:
+>
+> From: Maoguang Meng <maoguang.meng@mediatek.com>
+>
+> Update referenced frame buffer's reference count when playing vp9
+> content which has show_existing_frame flag, and copy enough buffer
+> data to current shown frame.
+>
+> Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
+> ---
+>  .../media/platform/mtk-vcodec/vdec/vdec_vp9_if.c   |   16 +++++++---------
+>  1 file changed, 7 insertions(+), 9 deletions(-)
+>
+> diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
+> index bc8349b..d950837 100644
+> --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
+> +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
+> @@ -481,15 +481,15 @@ static void vp9_swap_frm_bufs(struct vdec_vp9_inst *inst)
+>                  */
+>                 if ((frm_to_show->fb != NULL) &&
+>                         (inst->cur_fb->base_y.size >=
+> -                       frm_to_show->fb->base_y.size)) {
+> +                       frm_to_show->fb->base_y.size) &&
+> +                       (inst->cur_fb->base_c.size >=
+> +                       frm_to_show->fb->base_c.size)) {
+>                         memcpy((void *)inst->cur_fb->base_y.va,
+>                                 (void *)frm_to_show->fb->base_y.va,
+> -                               vsi->buf_w *
+> -                               vsi->buf_h);
+> +                               frm_to_show->fb->base_y.size);
+>                         memcpy((void *)inst->cur_fb->base_c.va,
+>                                 (void *)frm_to_show->fb->base_c.va,
+> -                               vsi->buf_w *
+> -                               vsi->buf_h / 2);
+> +                               frm_to_show->fb->base_c.size);
+>                 } else {
+>                         /* After resolution change case, current CAPTURE buffer
+>                          * may have less buffer size than frm_to_show buffer
+> @@ -895,7 +895,7 @@ static int vdec_vp9_decode(unsigned long h_vdec, struct mtk_vcodec_mem *bs,
+>
+>                 if (vsi->resolution_changed) {
+>                         if (!vp9_alloc_work_buf(inst)) {
+> -                               ret = -EINVAL;
+> +                               ret = -EIO;
+>                                 goto DECODE_ERROR;
+>                         }
+>                 }
+> @@ -924,14 +924,12 @@ static int vdec_vp9_decode(unsigned long h_vdec, struct mtk_vcodec_mem *bs,
+>
+>                 if (vsi->show_existing_frame && (vsi->frm_to_show_idx <
+>                                         VP9_MAX_FRM_BUF_NUM)) {
+> -                       mtk_vcodec_err(inst,
+> +                       mtk_vcodec_debug(inst,
+>                                 "Skip Decode drv->new_fb_idx=%d, drv->frm_to_show_idx=%d",
+>                                 vsi->new_fb_idx, vsi->frm_to_show_idx);
+>
+>                         vp9_ref_cnt_fb(inst, &vsi->new_fb_idx,
+>                                         vsi->frm_to_show_idx);
+> -                       ret = -EINVAL;
+> -                       goto DECODE_ERROR;
+>                 }
+>
+>                 /* VPU assign the buffer pointer in its address space,
+> --
+> 1.7.9.5
+>
 
-Add watchdog device node in dtsi file.
+Thanks for the patch!
 
-Signed-off-by: yong.liang <yong.liang@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8183.dtsi |    6 ++++++
- 1 file changed, 6 insertions(+)
+Reviewed-by: Tomasz Figa <tfiga@chromium.org>
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 75c4881..491bef0 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -253,6 +253,12 @@
- 			smi_comm = <&smi_common>;
- 		};
- 
-+		watchdog: watchdog@10007000 {
-+			compatible = "mediatek,mt8183-wdt",
-+				      "mediatek,mt6589-wdt";
-+			reg = <0 0x10007000 0 0x100>;
-+		};
-+
- 		apmixedsys: syscon@1000c000 {
- 			compatible = "mediatek,mt8183-apmixedsys", "syscon";
- 			reg = <0 0x1000c000 0 0x1000>;
--- 
-1.7.9.5
+Best regards,
+Tomasz
