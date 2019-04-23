@@ -1,8 +1,8 @@
 From: <gregkh@linuxfoundation.org>
 Subject: Patch "timers/sched_clock: Prevent generic sched_clock wrap caused by
- tick_freeze()" has been added to the 4.19-stable tree
-Date: Tue, 23 Apr 2019 22:54:26 +0200
-Message-ID: <1556052866246250@kroah.com>
+ tick_freeze()" has been added to the 5.0-stable tree
+Date: Tue, 23 Apr 2019 22:54:57 +0200
+Message-ID: <155605289769178@kroah.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -25,12 +25,12 @@ This is a note to let you know that I've just added the patch titled
 
     timers/sched_clock: Prevent generic sched_clock wrap caused by tick_freeze()
 
-to the 4.19-stable tree which can be found at:
+to the 5.0-stable tree which can be found at:
     http://www.kernel.org/git/?p=linux/kernel/git/stable/stable-queue.git;a=summary
 
 The filename of the patch is:
      timers-sched_clock-prevent-generic-sched_clock-wrap-caused-by-tick_freeze.patch
-and it can be found in the queue-4.19 subdirectory.
+and it can be found in the queue-5.0 subdirectory.
 
 If you, or anyone else, feels it should not be added to the stable tree,
 please let <stable@vger.kernel.org> know about it.
@@ -102,7 +102,7 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 
 --- a/kernel/time/sched_clock.c
 +++ b/kernel/time/sched_clock.c
-@@ -275,7 +275,7 @@ static u64 notrace suspended_sched_clock
+@@ -272,7 +272,7 @@ static u64 notrace suspended_sched_clock
  	return cd.read_data[seq & 1].epoch_cyc;
  }
  
@@ -111,7 +111,7 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
  {
  	struct clock_read_data *rd = &cd.read_data[0];
  
-@@ -286,7 +286,7 @@ static int sched_clock_suspend(void)
+@@ -283,7 +283,7 @@ static int sched_clock_suspend(void)
  	return 0;
  }
  
@@ -122,7 +122,7 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
  
 --- a/kernel/time/tick-common.c
 +++ b/kernel/time/tick-common.c
-@@ -491,6 +491,7 @@ void tick_freeze(void)
+@@ -487,6 +487,7 @@ void tick_freeze(void)
  		trace_suspend_resume(TPS("timekeeping_freeze"),
  				     smp_processor_id(), true);
  		system_state = SYSTEM_SUSPEND;
@@ -130,7 +130,7 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
  		timekeeping_suspend();
  	} else {
  		tick_suspend_local();
-@@ -514,6 +515,7 @@ void tick_unfreeze(void)
+@@ -510,6 +511,7 @@ void tick_unfreeze(void)
  
  	if (tick_freeze_depth == num_online_cpus()) {
  		timekeeping_resume();
@@ -158,4 +158,4 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 
 Patches currently in stable-queue which might be from chang-an.chen@mediatek.com are
 
-queue-4.19/timers-sched_clock-prevent-generic-sched_clock-wrap-caused-by-tick_freeze.patch
+queue-5.0/timers-sched_clock-prevent-generic-sched_clock-wrap-caused-by-tick_freeze.patch
