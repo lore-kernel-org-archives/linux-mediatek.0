@@ -1,51 +1,49 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 15/24] dt-bindings: pinctrl: pinctrl-mt65xx: add support
- for MT8516
-Date: Tue, 23 Apr 2019 16:24:44 +0200
-Message-ID: <470d475e-b694-ab6a-5ff7-b5635af629bb@gmail.com>
-References: <20190323211612.860-1-fparent@baylibre.com>
- <20190323211612.860-16-fparent@baylibre.com>
- <CACRpkdZZ6-+MVdK4bOP4SHxQ8uQ8zENcir7DSteHy4g+B5uySQ@mail.gmail.com>
- <b1e4eb6c-0d53-0307-99e4-9fef9e2b33d8@gmail.com>
- <CACRpkdZ8gq+hGRT6EAyP2w9K0jz5RAzWeZ6_UrW+v-BOjd-wbg@mail.gmail.com>
+Subject: Re: [PATCH 1/2] dt-bindings: adc: mt8183: add binding document
+Date: Tue, 23 Apr 2019 16:35:49 +0200
+Message-ID: <4c7f244f-4111-9e28-5134-8f108b1dbafa@gmail.com>
+References: <20190422115417.16751-1-zhiyong.tao@mediatek.com>
+ <20190422115417.16751-2-zhiyong.tao@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CACRpkdZ8gq+hGRT6EAyP2w9K0jz5RAzWeZ6_UrW+v-BOjd-wbg@mail.gmail.com>
+In-Reply-To: <20190422115417.16751-2-zhiyong.tao@mediatek.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Fabien Parent <fparent@baylibre.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Sean Wang <sean.wang@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, hsin-hsiung.wang@mediatek.com, wenzhen.yu@mediatek.com, Chaotian Jing <chaotian.jing@mediatek.com>, Yong Mao <yong.mao@mediatek.com>, jjian.zhou@mediatek.com, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-i2c@vger.kernel.org, Linux ARM <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, linux-mmc <linux-mmc@vger.kernel.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, linux-serial@
+To: Zhiyong Tao <zhiyong.tao@mediatek.com>, robh+dt@kernel.org, jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net
+Cc: srv_heupstream@mediatek.com, hui.liu@mediatek.com, yingjoe.chen@mediatek.com, sean.wang@mediatek.com, erin.lo@mediatek.com, eddie.huang@mediatek.com, s.hauer@pengutronix.de, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-iio@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 23/04/2019 13:01, Linus Walleij wrote:
-> On Tue, Apr 16, 2019 at 11:12 AM Matthias Brugger
-> <matthias.bgg@gmail.com> wrote:
+On 22/04/2019 13:54, Zhiyong Tao wrote:
+> The commit adds mt8183 compatible node in binding document.
 > 
->> Hi Linus,
->>
->> On 08/04/2019 22:44, Linus Walleij wrote:
->>> On Sat, Mar 23, 2019 at 10:17 PM Fabien Parent <fparent@baylibre.com> wrote:
->>>
->>>> Add binding documentation of pinctrl-mt65xx for MT8516 SoC.
->>>>
->>>> Signed-off-by: Fabien Parent <fparent@baylibre.com>
->>>
->>> Patch applied with Rob's ACK.
->>>
->>
->> I don't see this in your for-next branch. Did the patch got lost?
+> Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/iio/adc/mt6577_auxadc.txt | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> I usually push the devel branch to be tested by the build robots
-> and then mix down the for-next branch.
-> 
-> Recent week(s) the build robot was not responding so it got delayed.
+> diff --git a/Documentation/devicetree/bindings/iio/adc/mt6577_auxadc.txt b/Documentation/devicetree/bindings/iio/adc/mt6577_auxadc.txt
+> index 0df9befdaecc..05bc79d8483c 100644
+> --- a/Documentation/devicetree/bindings/iio/adc/mt6577_auxadc.txt
+> +++ b/Documentation/devicetree/bindings/iio/adc/mt6577_auxadc.txt
+> @@ -15,6 +15,7 @@ Required properties:
+>      - "mediatek,mt2712-auxadc": For MT2712 family of SoCs
+>      - "mediatek,mt7622-auxadc": For MT7622 family of SoCs
+>      - "mediatek,mt8173-auxadc": For MT8173 family of SoCs
+> +    - "mediatek,mt8183-auxadc": For MT8183 family of SoCs
+>    - reg: Address range of the AUXADC unit.
+>    - clocks: Should contain a clock specifier for each entry in clock-names
+>    - clock-names: Should contain "main".
 > 
 
-I don't see it in the devel branch [1]. Can you please double check?
+You are missing the logic in the driver to bind against this compatible.
+If there is nothing different from other SoCs then you could add a compatible
+with a fallback, like:
 
-[1]
-https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git/log/?h=devel
+"mediatek,mt8183-auxadc", "mediatek,mt7622-auxadc": For MT8183 family of SoCs
+
+Regards,
+Matthias
