@@ -1,188 +1,57 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v5 1/3] arm64: dts: fsl: librem5: Add a device tree for
- the Librem5 devkit
-Date: Mon, 22 Apr 2019 08:39:55 -0500
-Message-ID: <CAL_JsqLZwUWrLO-m4BC6vXjBVDyY7hf8LE-amyDNgaJz3-=n0g@mail.gmail.com>
-References: <20190417165514.18689-1-angus@akkea.ca> <20190417165514.18689-2-angus@akkea.ca>
- <20190418151350.GC32345@bogus> <79d43377285d6897847ac1452afbb18a@www.akkea.ca>
+From: Jerry-ch Chen <Jerry-Ch.chen@mediatek.com>
+Subject: [RFC PATCH V1 2/6] dts: arm64: mt8183: Add FD shared memory node
+Date: Tue, 23 Apr 2019 18:45:01 +0800
+Message-ID: <20190423104505.38778-3-Jerry-Ch.chen@mediatek.com>
+References: <20190423104505.38778-1-Jerry-Ch.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <79d43377285d6897847ac1452afbb18a@www.akkea.ca>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Angus Ainslie <angus@akkea.ca>
-Cc: angus.ainslie@puri.sm, Marco Felsch <m.felsch@pengutronix.de>, Mark Rutland <mark.rutland@arm.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, Palmer Dabbelt <palmer@sifive.com>, Albert Ou <aou@eecs.berkeley.edu>, Paul Walmsley <paul.walmsley@sifive.com>, Matthias Brugger <matthias.bgg@gmail.com>, Guo Ren <guoren@kernel.org>, Thierry Reding <treding@nvidia.com>, Jonathan Cameron <Jonathan.Cameron@huawei.com>, Kevin Hilman <khilman@baylibre.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Andrey Smirnov <andrew.smirnov@gmail.com>, =?UTF-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190423104505.38778-1-Jerry-Ch.chen@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: hans.verkuil@cisco.com, laurent.pinchart+renesas@ideasonboard.com, tfiga@chromium.org, matthias.bgg@gmail.com, mchehab@kernel.org
+Cc: shik@chromium.org, devicetree@vger.kernel.org, Sean.Cheng@mediatek.com, Rynn.Wu@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, suleiman@chromium.org, Jerry-ch Chen <jerry-ch.chen@mediatek.com>, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, linux-mediatek@lists.infradead.org, zwisler@chromium.org, christie.yu@mediatek.com, frederic.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Apr 18, 2019 at 12:44 PM Angus Ainslie <angus@akkea.ca> wrote:
->
-> Hi Rob,
->
->
-> On 2019-04-18 08:13, Rob Herring wrote:
-> > On Wed, Apr 17, 2019 at 09:55:12AM -0700, Angus Ainslie (Purism) wrote:
-> >> This is the development kit board for the Librem 5. The current level
-> >> of
-> >> support yields a working console and is able to boot userspace from
-> >> the
-> >> Network or eMMC.
-> >>
-> >> Additional subsystems that are active :
-> >>
-> >> - Both USB ports
-> >> - SD card socket
-> >> - WiFi usdhc
-> >> - WWAN modem
-> >> - GNSS
-> >> - GPIO keys
-> >> - LEDs
-> >> - gyro
-> >> - magnetometer
-> >> - touchscreen
-> >> - pwm
-> >> - backlight
-> >> - haptic motor
-> >>
-> >> Signed-off-by: Angus Ainslie (Purism) <angus@akkea.ca>
-> >> ---
-> >>  arch/arm64/boot/dts/freescale/Makefile        |   1 +
-> >>  .../dts/freescale/imx8mq-librem5-devkit.dts   | 833
-> >> ++++++++++++++++++
-> >>  2 files changed, 834 insertions(+)
-> >>  create mode 100644
-> >> arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts
-> >>
-> >> diff --git a/arch/arm64/boot/dts/freescale/Makefile
-> >> b/arch/arm64/boot/dts/freescale/Makefile
-> >> index 0bd122f60549..c043aca66572 100644
-> >> --- a/arch/arm64/boot/dts/freescale/Makefile
-> >> +++ b/arch/arm64/boot/dts/freescale/Makefile
-> >> @@ -22,6 +22,7 @@ dtb-$(CONFIG_ARCH_LAYERSCAPE) += fsl-lx2160a-rdb.dtb
-> >>
-> >>  dtb-$(CONFIG_ARCH_MXC) += imx8mm-evk.dtb
-> >>  dtb-$(CONFIG_ARCH_MXC) += imx8mq-evk.dtb
-> >> +dtb-$(CONFIG_ARCH_MXC) += imx8mq-librem5-devkit.dtb
-> >>  dtb-$(CONFIG_ARCH_MXC) += imx8mq-zii-ultra-rmb3.dtb
-> >>  dtb-$(CONFIG_ARCH_MXC) += imx8mq-zii-ultra-zest.dtb
-> >>  dtb-$(CONFIG_ARCH_MXC) += imx8qxp-mek.dtb
-> >> diff --git a/arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts
-> >> b/arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts
-> >> new file mode 100644
-> >> index 000000000000..846a72dc7640
-> >> --- /dev/null
-> >> +++ b/arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts
-> >
-> >> +&usb3_phy0 {
-> >> +    #address-cells = <1>;
-> >> +    #size-cells = <0>;
-> >> +    status = "okay";
-> >> +
-> >> +    port@0 {
-> >> +            reg = <0>;
-> >> +
-> >> +            typec_hs: endpoint {
-> >> +                    remote-endpoint = <&usb_con_hs>;
-> >> +            };
-> >> +    };
-> >> +
-> >> +    port@1 {
-> >> +            reg = <1>;
-> >> +
-> >> +            typec_ss: endpoint {
-> >> +                    remote-endpoint = <&usb_con_ss>;
-> >> +            };
-> >> +    };
-> >
-> > This is wrong. The graph should be between the USB controller and the
-> > connector. The phy is not involved.
-> >
-> >> +};
-> >> +
-> >> +&usb3_phy1 {
-> >> +    status = "okay";
-> >> +};
-> >> +
-> >> +&usb_dwc3_0 {
-> >> +    extcon = <&typec_ptn5100>;
-> >
-> > extcon is deprecated and you should only have the usb-connector
-> > binding.
-> > From the controller, you can walk the graph to the connector.
-> >
->
-> I not sure that I'm clear on what you mean. Here's what I think you want
-> it changed to.
+From: Jerry-ch Chen <jerry-ch.chen@mediatek.com>
 
-Yes, this looks correct.
+This patch adds a shared memory region used on mt8183 for
+exchanging meta data between co-processor and
+Face Detection (FD) unit.
 
->
-> diff --git a/arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts
-> b/arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts
-> index 846a72dc7640..7b8770fdc5fb 100644
-> --- a/arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts
-> +++ b/arch/arm64/boot/dts/freescale/imx8mq-librem5-devkit.dts
-> @@ -755,51 +755,50 @@
->   };
->
->   &uart4 { /* BT */
->          pinctrl-names = "default";
->          pinctrl-0 = <&pinctrl_uart4>, <&pinctrl_bt>;
->          uart-has-rtscts;
->          status = "okay";
->   };
->
->   &usb3_phy0 {
-> +       status = "okay";
-> +};
-> +
-> +&usb3_phy1 {
-> +       status = "okay";
-> +};
-> +
-> +&usb_dwc3_0 {
->          #address-cells = <1>;
->          #size-cells = <0>;
-> +       dr_mode = "otg";
->          status = "okay";
->
->          port@0 {
->                  reg = <0>;
->
->                  typec_hs: endpoint {
->                          remote-endpoint = <&usb_con_hs>;
->                  };
->          };
->
->          port@1 {
->                  reg = <1>;
->
->                  typec_ss: endpoint {
->                          remote-endpoint = <&usb_con_ss>;
->                  };
->          };
->   };
->
-> -&usb3_phy1 {
-> -       status = "okay";
-> -};
-> -
-> -&usb_dwc3_0 {
-> -       extcon = <&typec_ptn5100>;
-> -       dr_mode = "otg";
-> -       status = "okay";
-> -};
-> -
->   &usb_dwc3_1 {
->          dr_mode = "host";
->          status = "okay";
->   };
->
->
->
-> Thanks
-> Angus
->
-> >> +    dr_mode = "otg";
-> >> +    status = "okay";
-> >> +};
->
+Signed-off-by: Jerry-ch Chen <jerry-ch.chen@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index c3a516e63141..dc0b4cad5200 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -134,6 +134,16 @@
+ 		clock-output-names = "clk26m";
+ 	};
+ 
++	reserved-memory {
++		reserve-memory-fd_smem {
++			compatible = "mediatek,reserve-memory-fd_smem";
++			no-map;
++			size = <0 0x00100000>;  /*1 MB share mem size */
++			alignment = <0 0x1000>;
++			alloc-ranges = <0 0x40000000 0 0x10000000>;
++		};
++	};
++
+ 	timer {
+ 		compatible = "arm,armv8-timer";
+ 		interrupt-parent = <&gic>;
+-- 
+2.18.0
