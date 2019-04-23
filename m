@@ -1,36 +1,161 @@
-From: Marcel Holtmann <marcel@holtmann.org>
-Subject: Re: [PATCH v1 0/4] Add a couple of enhancements to btmtksdio
-Date: Tue, 23 Apr 2019 18:36:49 +0200
-Message-ID: <43F9EB53-7994-4727-948D-29D455C4F19B@holtmann.org>
-References: <cover.1555577565.git.sean.wang@mediatek.com>
-Mime-Version: 1.0 (Mac OS X Mail 12.4 \(3445.104.8\))
-Content-Type: text/plain;
-        charset=us-ascii
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1555577565.git.sean.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: Johan Hedberg <johan.hedberg@gmail.com>, Ulf Hansson <ulf.hansson@linaro.org>, "open list:BLUETOOTH DRIVERS" <linux-bluetooth@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org
+From: <gregkh@linuxfoundation.org>
+Subject: Patch "timers/sched_clock: Prevent generic sched_clock wrap caused by
+ tick_freeze()" has been added to the 4.19-stable tree
+Date: Tue, 23 Apr 2019 22:54:26 +0200
+Message-ID: <1556052866246250@kroah.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: 1553828349-8914-1-git-send-email-chang-an.chen@mediatek.comchang-an.chen@mediatek.com, cminyard@mvista.com, freddy.hsin@mediatek.com, fweisbec@gmail.com, gregkh@linuxfoundation.org, john.stultz@linaro.org, keescook@chromium.org, kuohong.wang@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, stanley.chu@mediatek.com, tglx@linutronix.de
+Cc: stable-commits@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Sean,
 
-> First three are all minor changes and the final one adds a runtime pm support to
-> enter a lower power state for decreasing power dissipation when there is idle
-> traffic in SDIO transport for a while.
-> 
-> Sean Wang (4):
->  Bluetooth: btmtksdio: Drop newline with bt_dev logging macros
->  Bluetooth: btmtksdio: Add a bit definition for CHLPCR
->  Bluetooth: btmtksdio: Fix hdev->stat.byte_rx accumulation
->  Bluetooth: btmtksdio: Add runtime PM support to SDIO based Bluetooth
-> 
-> drivers/bluetooth/btmtksdio.c | 161 ++++++++++++++++++++++++++++++++--
-> 1 file changed, 153 insertions(+), 8 deletions(-)
+This is a note to let you know that I've just added the patch titled
 
-all 4 patches have been applied to bluetooth-next tree.
+    timers/sched_clock: Prevent generic sched_clock wrap caused by tick_freeze()
 
-Regards
+to the 4.19-stable tree which can be found at:
+    http://www.kernel.org/git/?p=linux/kernel/git/stable/stable-queue.git;a=summary
 
-Marcel
+The filename of the patch is:
+     timers-sched_clock-prevent-generic-sched_clock-wrap-caused-by-tick_freeze.patch
+and it can be found in the queue-4.19 subdirectory.
+
+If you, or anyone else, feels it should not be added to the stable tree,
+please let <stable@vger.kernel.org> know about it.
+
+
+>From 3f2552f7e9c5abef2775c53f7af66532f8bf65bc Mon Sep 17 00:00:00 2001
+From: Chang-An Chen <chang-an.chen@mediatek.com>
+Date: Fri, 29 Mar 2019 10:59:09 +0800
+Subject: timers/sched_clock: Prevent generic sched_clock wrap caused by tick_freeze()
+
+From: Chang-An Chen <chang-an.chen@mediatek.com>
+
+commit 3f2552f7e9c5abef2775c53f7af66532f8bf65bc upstream.
+
+tick_freeze() introduced by suspend-to-idle in commit 124cf9117c5f ("PM /
+sleep: Make it possible to quiesce timers during suspend-to-idle") uses
+timekeeping_suspend() instead of syscore_suspend() during
+suspend-to-idle. As a consequence generic sched_clock will keep going
+because sched_clock_suspend() and sched_clock_resume() are not invoked
+during suspend-to-idle which can result in a generic sched_clock wrap.
+
+On a ARM system with suspend-to-idle enabled, sched_clock is registered
+as "56 bits at 13MHz, resolution 76ns, wraps every 4398046511101ns", which
+means the real wrapping duration is 8796093022202ns.
+
+[  134.551779] suspend-to-idle suspend (timekeeping_suspend())
+[ 1204.912239] suspend-to-idle resume (timekeeping_resume())
+......
+[ 1206.912239] suspend-to-idle suspend (timekeeping_suspend())
+[ 5880.502807] suspend-to-idle resume (timekeeping_resume())
+......
+[ 6000.403724] suspend-to-idle suspend (timekeeping_suspend())
+[ 8035.753167] suspend-to-idle resume  (timekeeping_resume())
+......
+[ 8795.786684] (2)[321:charger_thread]......
+[ 8795.788387] (2)[321:charger_thread]......
+[    0.057226] (0)[0:swapper/0]......
+[    0.061447] (2)[0:swapper/2]......
+
+sched_clock was not stopped during suspend-to-idle, and sched_clock_poll
+hrtimer was not expired because timekeeping_suspend() was invoked during
+suspend-to-idle. It makes sched_clock wrap at kernel time 8796s.
+
+To prevent this, invoke sched_clock_suspend() and sched_clock_resume() in
+tick_freeze() together with timekeeping_suspend() and timekeeping_resume().
+
+Fixes: 124cf9117c5f (PM / sleep: Make it possible to quiesce timers during suspend-to-idle)
+Signed-off-by: Chang-An Chen <chang-an.chen@mediatek.com>
+Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
+Cc: Frederic Weisbecker <fweisbec@gmail.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: John Stultz <john.stultz@linaro.org>
+Cc: Kees Cook <keescook@chromium.org>
+Cc: Corey Minyard <cminyard@mvista.com>
+Cc: <linux-mediatek@lists.infradead.org>
+Cc: <linux-arm-kernel@lists.infradead.org>
+Cc: Stanley Chu <stanley.chu@mediatek.com>
+Cc: <kuohong.wang@mediatek.com>
+Cc: <freddy.hsin@mediatek.com>
+Cc: stable@vger.kernel.org
+Link: https://lkml.kernel.org/r/1553828349-8914-1-git-send-email-chang-an.chen@mediatek.com
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+---
+ kernel/time/sched_clock.c |    4 ++--
+ kernel/time/tick-common.c |    2 ++
+ kernel/time/timekeeping.h |    7 +++++++
+ 3 files changed, 11 insertions(+), 2 deletions(-)
+
+--- a/kernel/time/sched_clock.c
++++ b/kernel/time/sched_clock.c
+@@ -275,7 +275,7 @@ static u64 notrace suspended_sched_clock
+ 	return cd.read_data[seq & 1].epoch_cyc;
+ }
+ 
+-static int sched_clock_suspend(void)
++int sched_clock_suspend(void)
+ {
+ 	struct clock_read_data *rd = &cd.read_data[0];
+ 
+@@ -286,7 +286,7 @@ static int sched_clock_suspend(void)
+ 	return 0;
+ }
+ 
+-static void sched_clock_resume(void)
++void sched_clock_resume(void)
+ {
+ 	struct clock_read_data *rd = &cd.read_data[0];
+ 
+--- a/kernel/time/tick-common.c
++++ b/kernel/time/tick-common.c
+@@ -491,6 +491,7 @@ void tick_freeze(void)
+ 		trace_suspend_resume(TPS("timekeeping_freeze"),
+ 				     smp_processor_id(), true);
+ 		system_state = SYSTEM_SUSPEND;
++		sched_clock_suspend();
+ 		timekeeping_suspend();
+ 	} else {
+ 		tick_suspend_local();
+@@ -514,6 +515,7 @@ void tick_unfreeze(void)
+ 
+ 	if (tick_freeze_depth == num_online_cpus()) {
+ 		timekeeping_resume();
++		sched_clock_resume();
+ 		system_state = SYSTEM_RUNNING;
+ 		trace_suspend_resume(TPS("timekeeping_freeze"),
+ 				     smp_processor_id(), false);
+--- a/kernel/time/timekeeping.h
++++ b/kernel/time/timekeeping.h
+@@ -14,6 +14,13 @@ extern u64 timekeeping_max_deferment(voi
+ extern void timekeeping_warp_clock(void);
+ extern int timekeeping_suspend(void);
+ extern void timekeeping_resume(void);
++#ifdef CONFIG_GENERIC_SCHED_CLOCK
++extern int sched_clock_suspend(void);
++extern void sched_clock_resume(void);
++#else
++static inline int sched_clock_suspend(void) { return 0; }
++static inline void sched_clock_resume(void) { }
++#endif
+ 
+ extern void do_timer(unsigned long ticks);
+ extern void update_wall_time(void);
+
+
+Patches currently in stable-queue which might be from chang-an.chen@mediatek.com are
+
+queue-4.19/timers-sched_clock-prevent-generic-sched_clock-wrap-caused-by-tick_freeze.patch
