@@ -1,45 +1,128 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: Jorge Ramirez <jorge.ramirez-ortiz@linaro.org>
 Subject: Re: [RFC PATCH 1/1] mtd: rawnand: mtk: Re-license MTK NAND driver as
  Dual MIT/GPL
-Date: Wed, 24 Apr 2019 15:15:35 +0200
-Message-ID: <5c674c6c-7df7-d452-8971-53caeff82a3f@gmail.com>
+Date: Wed, 24 Apr 2019 18:15:30 +0200
+Message-ID: <7be16a76-0099-2776-9ee1-9c87ce492839@linaro.org>
 References: <20190424064522.33501-1-xiaolei.li@mediatek.com>
  <20190424064522.33501-2-xiaolei.li@mediatek.com>
- <1868653.V2KA8McHNA@blindfold> <1556094347.26455.5.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1556094347.26455.5.camel@mhfsdcap03>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
+In-Reply-To: <20190424064522.33501-2-xiaolei.li@mediatek.com>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>
-Cc: daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
+List-Post: <mailto:linux-mtd@lists.infradead.org>
+List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
+Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
+To: Xiaolei Li <xiaolei.li@mediatek.com>, miquel.raynal@bootlin.com, richard@nod.at
+Cc: daniel.thompson@linaro.org, srv_heupstream@mediatek.com, boris.brezillon@bootlin.com, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, linux-mtd@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-CgpPbiAyNC8wNC8yMDE5IDEwOjI1LCB4aWFvbGVpIGxpIHdyb3RlOgo+IEhpIFJpY2hhcmQsCj4g
-Cj4gT24gV2VkLCAyMDE5LTA0LTI0IGF0IDA5OjI5ICswMjAwLCBSaWNoYXJkIFdlaW5iZXJnZXIg
-d3JvdGU6Cj4+IEFtIE1pdHR3b2NoLCAyNC4gQXByaWwgMjAxOSwgMDg6NDU6MjIgQ0VTVCBzY2hy
-aWViIFhpYW9sZWkgTGk6Cj4+PiBJdCBpcyBhbGxvd2VkIHRvIHVzZSBNVEsgTkFORCBkcml2ZXIg
-d2l0aCBHUEwtMi4wIG9yIE1JVCBsaWNlbnNlLgo+Pj4gQnV0IG5vdyBpdCBpcyBvbmx5IGxpY2Vu
-c2VkIGFzIEdQTC0yLjAuCj4+PiBTbyByZS1saWNlbnNlIGl0IGFzIGR1YWwgTUlUL0dQTC4KPj4K
-Pj4gSSBmZWFyIHRoaXMgbmVlZHMgQUNLcyBmcm9tIGFsbCBhdXRob3JzIGFuZCBtYWpvciBjb250
-cmlidXRvcnMgb2YgdGhlIGRyaXZlcgo+PiBiZWZvcmUgd2UgY2FuIGFwcGx5IHN1Y2ggYSBjaGFu
-Z2UuCj4gCj4gWWVzLiBNVEsgd2FudHMgdG8gc29saWNpdCBBQ0tzIGZvciB0aGlzIGNoYW5nZSBm
-cm9tIGNvcHlyaWdodHMgaG9sZGVycwo+IGhlcmUuCj4gSSBhZGRlZCBhbm90aGVyIGRyaXZlciBh
-dXRob3IgSm9yZ2UsIGFuZCBsZXQncyB3YWl0IGZvciB0aGUgcmVzcG9uc2UuCj4gCgpZb3UgYXJl
-IG1pc3NpbmcgYXQgbGVhc3QgUnlkZXIgTGVlLCBSYWZhxYIgTWnFgmVja2kgYW5kIFdlbiBZYW5n
-IGluIHRoZSBDQyBsaXN0LgpJIHRoaW5rIGl0IHdvdWxkIGJlIGdvb2QgdG8gdW5kZXJzdGFuZCB3
-aHkgeW91IHdhbnQgdG8gZGlzdHJpYnV0ZSB0aGUgZHJpdmVyCnVuZGVyIE1JVCBsaWNlbnNlLgoK
-UmVnYXJkcywKTWF0dGhpYXMKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtbWVkaWF0ZWsK
+On 4/24/19 08:45, Xiaolei Li wrote:
+> It is allowed to use MTK NAND driver with GPL-2.0 or MIT license.
+> But now it is only licensed as GPL-2.0.
+> So re-license it as dual MIT/GPL.
+
+Relicensing is OK with respect to any Linaro copyright interest deriving
+from upstreaming this work.
+
+Acked-by: Jorge Ramirez-Ortiz <jorge.ramirez-ortiz@linaro.org>
+
+> 
+> Signed-off-by: Xiaolei Li <xiaolei.li@mediatek.com>
+> ---
+>  drivers/mtd/nand/raw/mtk_ecc.c  | 12 ++----------
+>  drivers/mtd/nand/raw/mtk_ecc.h  |  4 +---
+>  drivers/mtd/nand/raw/mtk_nand.c | 12 ++----------
+>  3 files changed, 5 insertions(+), 23 deletions(-)
+> 
+> diff --git a/drivers/mtd/nand/raw/mtk_ecc.c b/drivers/mtd/nand/raw/mtk_ecc.c
+> index 6432bd70c3b3..eea0f903bc24 100644
+> --- a/drivers/mtd/nand/raw/mtk_ecc.c
+> +++ b/drivers/mtd/nand/raw/mtk_ecc.c
+> @@ -1,17 +1,9 @@
+> +// SPDX-License-Identifier: GPL-2.0 OR MIT
+>  /*
+>   * MTK ECC controller driver.
+>   * Copyright (C) 2016  MediaTek Inc.
+>   * Authors:	Xiaolei Li		<xiaolei.li@mediatek.com>
+>   *		Jorge Ramirez-Ortiz	<jorge.ramirez-ortiz@linaro.org>
+> - *
+> - * This program is free software; you can redistribute it and/or modify
+> - * it under the terms of the GNU General Public License version 2 as
+> - * published by the Free Software Foundation.
+> - *
+> - * This program is distributed in the hope that it will be useful,
+> - * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> - * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> - * GNU General Public License for more details.
+>   */
+>  
+>  #include <linux/platform_device.h>
+> @@ -600,4 +592,4 @@ module_platform_driver(mtk_ecc_driver);
+>  
+>  MODULE_AUTHOR("Xiaolei Li <xiaolei.li@mediatek.com>");
+>  MODULE_DESCRIPTION("MTK Nand ECC Driver");
+> -MODULE_LICENSE("GPL");
+> +MODULE_LICENSE("Dual MIT/GPL");
+> diff --git a/drivers/mtd/nand/raw/mtk_ecc.h b/drivers/mtd/nand/raw/mtk_ecc.h
+> index a455df080952..0e48c36e6ca0 100644
+> --- a/drivers/mtd/nand/raw/mtk_ecc.h
+> +++ b/drivers/mtd/nand/raw/mtk_ecc.h
+> @@ -1,12 +1,10 @@
+> +/* SPDX-License-Identifier: GPL-2.0 OR MIT */
+>  /*
+>   * MTK SDG1 ECC controller
+>   *
+>   * Copyright (c) 2016 Mediatek
+>   * Authors:	Xiaolei Li		<xiaolei.li@mediatek.com>
+>   *		Jorge Ramirez-Ortiz	<jorge.ramirez-ortiz@linaro.org>
+> - * This program is free software; you can redistribute it and/or modify it
+> - * under the terms of the GNU General Public License version 2 as published
+> - * by the Free Software Foundation.
+>   */
+>  
+>  #ifndef __DRIVERS_MTD_NAND_MTK_ECC_H__
+> diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
+> index b6b4602f5132..3cbc25793062 100644
+> --- a/drivers/mtd/nand/raw/mtk_nand.c
+> +++ b/drivers/mtd/nand/raw/mtk_nand.c
+> @@ -1,17 +1,9 @@
+> +// SPDX-License-Identifier: GPL-2.0 OR MIT
+>  /*
+>   * MTK NAND Flash controller driver.
+>   * Copyright (C) 2016 MediaTek Inc.
+>   * Authors:	Xiaolei Li		<xiaolei.li@mediatek.com>
+>   *		Jorge Ramirez-Ortiz	<jorge.ramirez-ortiz@linaro.org>
+> - *
+> - * This program is free software; you can redistribute it and/or modify
+> - * it under the terms of the GNU General Public License version 2 as
+> - * published by the Free Software Foundation.
+> - *
+> - * This program is distributed in the hope that it will be useful,
+> - * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> - * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> - * GNU General Public License for more details.
+>   */
+>  
+>  #include <linux/platform_device.h>
+> @@ -1598,6 +1590,6 @@ static struct platform_driver mtk_nfc_driver = {
+>  
+>  module_platform_driver(mtk_nfc_driver);
+>  
+> -MODULE_LICENSE("GPL");
+> +MODULE_LICENSE("Dual MIT/GPL");
+>  MODULE_AUTHOR("Xiaolei Li <xiaolei.li@mediatek.com>");
+>  MODULE_DESCRIPTION("MTK Nand Flash Controller Driver");
+> 
+
+
+______________________________________________________
+Linux MTD discussion mailing list
+http://lists.infradead.org/mailman/listinfo/linux-mtd/
