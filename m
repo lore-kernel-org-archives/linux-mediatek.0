@@ -1,25 +1,16 @@
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 4.19 76/96] timers/sched_clock: Prevent generic sched_clock
- wrap caused by tick_freeze()
-Date: Wed, 24 Apr 2019 19:10:21 +0200
-Message-ID: <20190424170924.889524656@linuxfoundation.org>
-References: <20190424170919.829037226@linuxfoundation.org>
+Subject: [PATCH 5.0 099/115] timers/sched_clock: Prevent generic sched_clock wrap caused by tick_freeze()
+Date: Wed, 24 Apr 2019 19:10:35 +0200
+Message-ID: <20190424170930.567577364@linuxfoundation.org>
+References: <20190424170924.797924502@linuxfoundation.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190424170919.829037226@linuxfoundation.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190424170924.797924502@linuxfoundation.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: linux-kernel@vger.kernel.org
-Cc: Corey Minyard <cminyard@mvista.com>, freddy.hsin@mediatek.com, Kees Cook <keescook@chromium.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mediatek@lists.infradead.org, stable@vger.kernel.org, kuohong.wang@mediatek.com, Chang-An Chen <chang-an.chen@mediatek.com>, Frederic Weisbecker <fweisbec@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, John Stultz <john.stultz@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, stable@vger.kernel.org, Chang-An Chen <chang-an.chen@mediatek.com>, Thomas Gleixner <tglx@linutronix.de>, Frederic Weisbecker <fweisbec@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, John Stultz <john.stultz@linaro.org>, Kees Cook <keescook@chromium.org>, Corey Minyard <cminyard@mvista.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Stanley Chu <stanley.chu@mediatek.com>, kuohong.wang@mediatek.com, freddy.hsin@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
 From: Chang-An Chen <chang-an.chen@mediatek.com>
@@ -83,7 +74,7 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 
 --- a/kernel/time/sched_clock.c
 +++ b/kernel/time/sched_clock.c
-@@ -275,7 +275,7 @@ static u64 notrace suspended_sched_clock
+@@ -272,7 +272,7 @@ static u64 notrace suspended_sched_clock
  	return cd.read_data[seq & 1].epoch_cyc;
  }
  
@@ -92,7 +83,7 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
  {
  	struct clock_read_data *rd = &cd.read_data[0];
  
-@@ -286,7 +286,7 @@ static int sched_clock_suspend(void)
+@@ -283,7 +283,7 @@ static int sched_clock_suspend(void)
  	return 0;
  }
  
@@ -103,7 +94,7 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
  
 --- a/kernel/time/tick-common.c
 +++ b/kernel/time/tick-common.c
-@@ -491,6 +491,7 @@ void tick_freeze(void)
+@@ -487,6 +487,7 @@ void tick_freeze(void)
  		trace_suspend_resume(TPS("timekeeping_freeze"),
  				     smp_processor_id(), true);
  		system_state = SYSTEM_SUSPEND;
@@ -111,7 +102,7 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
  		timekeeping_suspend();
  	} else {
  		tick_suspend_local();
-@@ -514,6 +515,7 @@ void tick_unfreeze(void)
+@@ -510,6 +511,7 @@ void tick_unfreeze(void)
  
  	if (tick_freeze_depth == num_online_cpus()) {
  		timekeeping_resume();
