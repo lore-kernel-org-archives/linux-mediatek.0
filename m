@@ -1,83 +1,51 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v4 03/12] dt-binding: gce: add binding for gce event
- property
-Date: Wed, 24 Apr 2019 14:56:21 -0500
-Message-ID: <20190424195621.GC7270@bogus>
-References: <20190415125833.38704-1-bibby.hsieh@mediatek.com>
- <20190415125833.38704-4-bibby.hsieh@mediatek.com>
+From: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [RFC PATCH 1/1] mtd: rawnand: mtk: Re-license MTK NAND driver
+ as Dual MIT/GPL
+Date: Thu, 25 Apr 2019 09:12:21 +0800
+Message-ID: <1556154741.26455.23.camel@mhfsdcap03>
+References: <20190424064522.33501-1-xiaolei.li@mediatek.com>
+ <20190424064522.33501-2-xiaolei.li@mediatek.com>
+ <1868653.V2KA8McHNA@blindfold> <1556094347.26455.5.camel@mhfsdcap03>
+ <5c674c6c-7df7-d452-8971-53caeff82a3f@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190415125833.38704-4-bibby.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, CK HU <ck.hu@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.chen@mediatek.com, kendrick.hsu@mediatek.com, Frederic Chen <Frederic.Chen@med>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <5c674c6c-7df7-d452-8971-53caeff82a3f-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Apr 15, 2019 at 08:58:24PM +0800, Bibby Hsieh wrote:
-> Client hardware would send event to GCE hardware,
-> so #event-cells, mediatek,gce-event-names, mediatek,gce-events.
-> present the event.
-> 
-> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-> ---
->  .../devicetree/bindings/mailbox/mtk-gce.txt     | 17 ++++++++++++++---
->  1 file changed, 14 insertions(+), 3 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> index 1f7f8f2a3f49..2f175d6b296d 100644
-> --- a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> +++ b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> @@ -21,12 +21,21 @@ Required properties:
->  	priority: Priority of GCE thread.
->  	atomic_exec: GCE processing continuous packets of commands in atomic
->  		way.
-> +- #event-cells: Should be 1.
-> +	<&phandle event_number>
-> +	phandle: Label name of a gce node.
-> +	event_number: the event number defined in 'dt-bindings/gce/mt8173-gce.h'
-> +		      or 'dt-binding/gce/mt8183-gce.h'.
-
-I thought you were going to remove this.
-
->  
->  Required properties for a client device:
->  - mboxes: Client use mailbox to communicate with GCE, it should have this
->    property and list of phandle, mailbox specifiers.
->  - mediatek,gce-subsys: u32, specify the sub-system id which is corresponding
->    to the register address.
-> +Optional propertier for a client device:
-> +- mediatek,gce-event-names: the event name can be defined by user.
-> +- mediatek,gce-events: u32, the event number defined in
-> +  'dt-bindings/gce/mt8173-gce.h' or 'dt-binding/gce/mt8183-gce.h'.
-
->From the example, looks like a phandle plus 1 cell.
-
->  
->  Some vaules of properties are defined in 'dt-bindings/gce/mt8173-gce.h'
->  or 'dt-binding/gce/mt8183-gce.h'. Such as sub-system ids, thread priority, event ids.
-> @@ -40,6 +49,7 @@ Example:
->  		clocks = <&infracfg CLK_INFRA_GCE>;
->  		clock-names = "gce";
->  		#mbox-cells = <3>;
-> +		#event-cells = <1>;
->  	};
->  
->  Example for a client device:
-> @@ -49,8 +59,9 @@ Example for a client device:
->  		mboxes = <&gce 0 CMDQ_THR_PRIO_LOWEST 1>,
->  			 <&gce 1 CMDQ_THR_PRIO_LOWEST 1>;
->  		mediatek,gce-subsys = <SUBSYS_1400XXXX>;
-> -		mutex-event-eof = <CMDQ_EVENT_MUTEX0_STREAM_EOF
-> -				CMDQ_EVENT_MUTEX1_STREAM_EOF>;
-> -
-> +		mediatek,gce-event-names = "rdma0_sof",
-> +					   "rsz0_sof";
-> +		mediatek,gce-events = <&gce CMDQ_EVENT_MDP_RDMA0_SOF>,
-> +				      <&gce CMDQ_EVENT_MDP_RSZ0_SOF>;
->  		...
->  	};
-> -- 
-> 2.18.0
-> 
+SGkgTWF0dGhpYXMsCgpPbiBXZWQsIDIwMTktMDQtMjQgYXQgMTU6MTUgKzAyMDAsIE1hdHRoaWFz
+IEJydWdnZXIgd3JvdGU6Cj4gCj4gT24gMjQvMDQvMjAxOSAxMDoyNSwgeGlhb2xlaSBsaSB3cm90
+ZToKPiA+IEhpIFJpY2hhcmQsCj4gPiAKPiA+IE9uIFdlZCwgMjAxOS0wNC0yNCBhdCAwOToyOSAr
+MDIwMCwgUmljaGFyZCBXZWluYmVyZ2VyIHdyb3RlOgo+ID4+IEFtIE1pdHR3b2NoLCAyNC4gQXBy
+aWwgMjAxOSwgMDg6NDU6MjIgQ0VTVCBzY2hyaWViIFhpYW9sZWkgTGk6Cj4gPj4+IEl0IGlzIGFs
+bG93ZWQgdG8gdXNlIE1USyBOQU5EIGRyaXZlciB3aXRoIEdQTC0yLjAgb3IgTUlUIGxpY2Vuc2Uu
+Cj4gPj4+IEJ1dCBub3cgaXQgaXMgb25seSBsaWNlbnNlZCBhcyBHUEwtMi4wLgo+ID4+PiBTbyBy
+ZS1saWNlbnNlIGl0IGFzIGR1YWwgTUlUL0dQTC4KPiA+Pgo+ID4+IEkgZmVhciB0aGlzIG5lZWRz
+IEFDS3MgZnJvbSBhbGwgYXV0aG9ycyBhbmQgbWFqb3IgY29udHJpYnV0b3JzIG9mIHRoZSBkcml2
+ZXIKPiA+PiBiZWZvcmUgd2UgY2FuIGFwcGx5IHN1Y2ggYSBjaGFuZ2UuCj4gPiAKPiA+IFllcy4g
+TVRLIHdhbnRzIHRvIHNvbGljaXQgQUNLcyBmb3IgdGhpcyBjaGFuZ2UgZnJvbSBjb3B5cmlnaHRz
+IGhvbGRlcnMKPiA+IGhlcmUuCj4gPiBJIGFkZGVkIGFub3RoZXIgZHJpdmVyIGF1dGhvciBKb3Jn
+ZSwgYW5kIGxldCdzIHdhaXQgZm9yIHRoZSByZXNwb25zZS4KPiA+IAo+IAo+IFlvdSBhcmUgbWlz
+c2luZyBhdCBsZWFzdCBSeWRlciBMZWUsIFJhZmHFgiBNacWCZWNraSBhbmQgV2VuIFlhbmcgaW4g
+dGhlIENDIGxpc3QuClRoYW5rcyBmb3IgeW91ciByZW1pbmRpbmcuIEkgd2lsbCBhZGQgdGhlbSBp
+biBuZXh0IHBhdGNoIHZlcnNpb24uCgo+IEkgdGhpbmsgaXQgd291bGQgYmUgZ29vZCB0byB1bmRl
+cnN0YW5kIHdoeSB5b3Ugd2FudCB0byBkaXN0cmlidXRlIHRoZSBkcml2ZXIKPiB1bmRlciBNSVQg
+bGljZW5zZS4KTVRLIHdhbnRzIHRvIG1vZGlmeSBhbmQgcHVibGlzaCB0aGlzIGRyaXZlciB3aXRo
+IE1JVCBsaWNlbnNlIGluCmJvb3Rsb2FkZXIuIFNvLCBoZXJlIHdlIGFzayBmb3IgQUNLcyB3aGV0
+aGVyIHdlIGNhbiByZS1saWNlbnNlIGl0IGFzCmR1YWwgTUlUL0dQTC4KClRoYW5rcywKWGlhb2xl
+aQo+IAo+IFJlZ2FyZHMsCj4gTWF0dGhpYXMKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1l
+ZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
