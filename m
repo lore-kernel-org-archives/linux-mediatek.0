@@ -1,171 +1,46 @@
-From: Long Cheng <long.cheng@mediatek.com>
-Subject: [PATCH 2/2] serial: 8250-mtk: modify baudrate setting
-Date: Thu, 25 Apr 2019 16:41:31 +0800
-Message-ID: <1556181691-10293-3-git-send-email-long.cheng@mediatek.com>
-References: <1556181691-10293-1-git-send-email-long.cheng@mediatek.com>
+From: Felix Fietkau <nbd@nbd.name>
+Subject: Re: [PATCH v3 0/4] Add support for MediaTek MT7615 wireless chipsets
+Date: Thu, 25 Apr 2019 12:07:05 +0200
+Message-ID: <98c68ec4-bedb-cf6a-9221-eb82a2497e6c@nbd.name>
+References: <cover.1554102584.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1556181691-10293-1-git-send-email-long.cheng@mediatek.com>
+In-Reply-To: <cover.1554102584.git.ryder.lee@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Jiri Slaby <jslaby@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, Long Cheng <long.cheng@mediatek.com>, "Gustavo A. R. Silva" <gustavo@embeddedor.com>, Peter Shih <pihsun@chromium.org>, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Yingjoe Chen <yingjoe.chen@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Zhenbao Liu <zhenbao.liu@mediatek.com>, Changqi Hu <changqi.hu@mediatek.com>
+To: Ryder Lee <ryder.lee@mediatek.com>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
+Cc: Roy Luo <royluo@google.com>, Sean Wang <sean.wang@mediatek.com>, Nelson Chang <nelson.chang@mediatek.com>, YF Luo <yf.luo@mediatek.com>, Kai Lin <kai.lin@mediatek.com>, Rorscha Yang <rorscha.yang@mediatek.com>, Kyle Lee <kyle.lee@mediatek.com>, Miller Shen <miller.shen@mediatek.com>, Haipin Liang <haipin.liang@mediatek.com>, KL Huang <kl.huang@mediatek.com>, YH chen <yh.chen@mediatek.com>, linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-In termios function, add Fractional divider to adjust baudrate.
+On 2019-04-01 09:16, Ryder Lee wrote:
+> This adds support for MediaTek MT7615E 4x4 802.11ac PCIe-based chipsets.
+> 
+> The series is based on the Lorenzo's patches:
+> https://patchwork.kernel.org/project/linux-wireless/list/?series=95969
+> 
+> In the legacy tx arch, we move and store the whole skb content to the
+> on-device memory when we send packets via high speed interface. (e.g. PCIe)
+> 
+> However, MT7615 and the following generation use a new tx arch called
+> “cut-through”, which only passes the physical address to the hardware,
+> and the packet engine will fetch the packets before transmission.
+> 
+> It saves on-chip memory for high throughput devices, and the token mechanism
+> is used to manage the release of skb under this arch.
+> 
+> And there might be other (existing or future) chips that use the same driver
+> (e.g. mt7622/mt7663...), this is a starting point to unify MTK wireless chipsets.
+> 
+> Detailed hardware information for this chip could be found on 
+> https://wikidevi.com/wiki/MediaTek_MT7615
+> 
+> Ryder Lee (4):
+>   mt76: add mac80211 driver for MT7615 PCIe-based chipsets
+>   mt76: add unlikely() for dma_mapping_error() check
+>   mt76: use macro for sn and seq_ctrl conversion
+>   MAINTAINERS : update entry for mt76 wireless driver
+Applied, thanks.
 
-Signed-off-by: Long Cheng <long.cheng@mediatek.com>
----
- drivers/tty/serial/8250/8250_mtk.c |  102 ++++++++++++++++++++++++++++++++++++
- 1 file changed, 102 insertions(+)
-
-diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-index 959fd85..417c7c8 100644
---- a/drivers/tty/serial/8250/8250_mtk.c
-+++ b/drivers/tty/serial/8250/8250_mtk.c
-@@ -25,13 +25,28 @@
- #define MTK_UART_SAMPLE_COUNT	0x0a	/* Sample count register */
- #define MTK_UART_SAMPLE_POINT	0x0b	/* Sample point register */
- #define MTK_UART_RATE_FIX	0x0d	/* UART Rate Fix Register */
-+#define MTK_UART_ESCAPE_DAT	0x10	/* Escape Character register */
-+#define MTK_UART_ESCAPE_EN	0x11	/* Escape Enable register */
- #define MTK_UART_DMA_EN		0x13	/* DMA Enable register */
- #define MTK_UART_RXTRI_AD	0x14	/* RX Trigger address */
- #define MTK_UART_FRACDIV_L	0x15	/* Fractional divider LSB address */
- #define MTK_UART_FRACDIV_M	0x16	/* Fractional divider MSB address */
-+#define MTK_UART_IER_XOFFI	0x20	/* Enable XOFF character interrupt */
-+#define MTK_UART_IER_RTSI	0x40	/* Enable RTS Modem status interrupt */
-+#define MTK_UART_IER_CTSI	0x80	/* Enable CTS Modem status interrupt */
-+
-+#define MTK_UART_EFR_EN		0x10	/* Enable enhancement feature */
-+#define MTK_UART_EFR_RTS	0x40	/* Enable hardware rx flow control */
-+#define MTK_UART_EFR_CTS	0x80	/* Enable hardware tx flow control */
-+#define MTK_UART_EFR_NO_SW_FC	0x0	/* no sw flow control */
-+#define MTK_UART_EFR_XON1_XOFF1	0xa	/* XON1/XOFF1 as sw flow control */
-+#define MTK_UART_EFR_XON2_XOFF2	0x5	/* XON2/XOFF2 as sw flow control */
-+#define MTK_UART_EFR_SW_FC_MASK	0xf	/* Enable CTS Modem status interrupt */
-+#define MTK_UART_EFR_HW_FC	(MTK_UART_EFR_RTS | MTK_UART_EFR_CTS)
- #define MTK_UART_DMA_EN_TX	0x2
- #define MTK_UART_DMA_EN_RX	0x5
- 
-+#define MTK_UART_ESCAPE_CHAR	0x77	/* Escape char added under sw fc */
- #define MTK_UART_TX_SIZE	UART_XMIT_SIZE
- #define MTK_UART_RX_SIZE	0x8000
- #define MTK_UART_TX_TRIGGER	1
-@@ -57,6 +72,13 @@ struct mtk8250_data {
- #endif
- };
- 
-+/* flow control mode */
-+enum {
-+	MTK_UART_FC_NONE,
-+	MTK_UART_FC_SW,
-+	MTK_UART_FC_HW,
-+};
-+
- #ifdef CONFIG_SERIAL_8250_DMA
- static void mtk8250_rx_dma(struct uart_8250_port *up);
- 
-@@ -195,6 +217,75 @@ static void mtk8250_shutdown(struct uart_port *port)
- 	return serial8250_do_shutdown(port);
- }
- 
-+static void mtk8250_disable_intrs(struct uart_8250_port *up, int mask)
-+{
-+	serial_out(up, UART_IER, serial_in(up, UART_IER) & (~mask));
-+}
-+
-+static void mtk8250_enable_intrs(struct uart_8250_port *up, int mask)
-+{
-+	serial_out(up, UART_IER, serial_in(up, UART_IER) | mask);
-+}
-+
-+static void mtk8250_set_flow_ctrl(struct uart_8250_port *up, int mode)
-+{
-+	struct uart_port *port = &up->port;
-+	int lcr = serial_in(up, UART_LCR);
-+
-+	serial_out(up, UART_LCR, UART_LCR_CONF_MODE_B);
-+	serial_out(up, UART_EFR, UART_EFR_ECB);
-+	serial_out(up, UART_LCR, lcr);
-+	lcr = serial_in(up, UART_LCR);
-+
-+	switch (mode) {
-+	case MTK_UART_FC_NONE:
-+		serial_out(up, MTK_UART_ESCAPE_DAT, MTK_UART_ESCAPE_CHAR);
-+		serial_out(up, MTK_UART_ESCAPE_EN, 0x00);
-+		serial_out(up, UART_LCR, UART_LCR_CONF_MODE_B);
-+		serial_out(up, UART_EFR, serial_in(up, UART_EFR) &
-+			(~(MTK_UART_EFR_HW_FC | MTK_UART_EFR_SW_FC_MASK)));
-+		serial_out(up, UART_LCR, lcr);
-+		mtk8250_disable_intrs(up, MTK_UART_IER_XOFFI |
-+			MTK_UART_IER_RTSI | MTK_UART_IER_CTSI);
-+		break;
-+
-+	case MTK_UART_FC_HW:
-+		serial_out(up, MTK_UART_ESCAPE_DAT, MTK_UART_ESCAPE_CHAR);
-+		serial_out(up, MTK_UART_ESCAPE_EN, 0x00);
-+		serial_out(up, UART_MCR, UART_MCR_RTS);
-+		serial_out(up, UART_LCR, UART_LCR_CONF_MODE_B);
-+
-+		/*enable hw flow control*/
-+		serial_out(up, UART_EFR, MTK_UART_EFR_HW_FC |
-+			(serial_in(up, UART_EFR) &
-+			(~(MTK_UART_EFR_HW_FC | MTK_UART_EFR_SW_FC_MASK))));
-+
-+		serial_out(up, UART_LCR, lcr);
-+		mtk8250_disable_intrs(up, MTK_UART_IER_XOFFI);
-+		mtk8250_enable_intrs(up, MTK_UART_IER_CTSI | MTK_UART_IER_RTSI);
-+		break;
-+
-+	case MTK_UART_FC_SW:	/*MTK software flow control */
-+		serial_out(up, MTK_UART_ESCAPE_DAT, MTK_UART_ESCAPE_CHAR);
-+		serial_out(up, MTK_UART_ESCAPE_EN, 0x01);
-+		serial_out(up, UART_LCR, UART_LCR_CONF_MODE_B);
-+
-+		/*enable sw flow control */
-+		serial_out(up, UART_EFR, MTK_UART_EFR_XON1_XOFF1 |
-+			(serial_in(up, UART_EFR) &
-+			(~(MTK_UART_EFR_HW_FC | MTK_UART_EFR_SW_FC_MASK))));
-+
-+		serial_out(up, UART_XON1, START_CHAR(port->state->port.tty));
-+		serial_out(up, UART_XOFF1, STOP_CHAR(port->state->port.tty));
-+		serial_out(up, UART_LCR, lcr);
-+		mtk8250_disable_intrs(up, MTK_UART_IER_CTSI|MTK_UART_IER_RTSI);
-+		mtk8250_enable_intrs(up, MTK_UART_IER_XOFFI);
-+		break;
-+	default:
-+		break;
-+	}
-+}
-+
- static void
- mtk8250_set_termios(struct uart_port *port, struct ktermios *termios,
- 			struct ktermios *old)
-@@ -208,6 +299,7 @@ static void mtk8250_shutdown(struct uart_port *port)
- 	struct uart_8250_port *up = up_to_u8250p(port);
- 	unsigned int baud, quot, fraction;
- 	unsigned long flags;
-+	int mode;
- 
- #ifdef CONFIG_SERIAL_8250_DMA
- 	if (up->dma) {
-@@ -281,6 +373,16 @@ static void mtk8250_shutdown(struct uart_port *port)
- 		serial_port_out(port, MTK_UART_FRACDIV_L, 0x00);
- 		serial_port_out(port, MTK_UART_FRACDIV_M, 0x00);
- 	}
-+
-+	if ((termios->c_cflag & CRTSCTS) && (!(termios->c_iflag & CRTSCTS)))
-+		mode = MTK_UART_FC_HW;
-+	else if (termios->c_iflag & CRTSCTS)
-+		mode = MTK_UART_FC_SW;
-+	else
-+		mode = MTK_UART_FC_NONE;
-+
-+	mtk8250_set_flow_ctrl(up, mode);
-+
- 	if (uart_console(port))
- 		up->port.cons->cflag = termios->c_cflag;
- 
--- 
-1.7.9.5
+- Felix
