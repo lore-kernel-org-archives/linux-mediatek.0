@@ -1,60 +1,87 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [RFC PATCH v2 0/1] Re-license MTK NAND driver
-Date: Thu, 25 Apr 2019 12:47:36 +0200
-Message-ID: <60757393-f040-b194-9594-e8a387792695@gmail.com>
-References: <20190425015552.42638-1-xiaolei.li@mediatek.com>
+From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] mt76: fix endianness sparse warnings
+Date: Thu, 25 Apr 2019 22:42:01 +0800
+Message-ID: <865a5eb36f295fc81e3dcbe95929dcfce4956897.1556203212.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190425015552.42638-1-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org
-Cc: daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yellowriver2010-PkbjNfxxIARBDgjK7y7TUQ@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, rafal-g1n6cQUeyibVItvQsEIGlw@public.gmane.org, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
+Cc: Roy Luo <royluo-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Adding Boris new email address.
+Fix many warnings with incorrect endian assumptions.
 
-On 25/04/2019 03:55, Xiaolei Li wrote:
-> Hello,
-> 
-> Currently, MTK NAND driver is licensed as GPL. And we would like to
-> modify and publish it in bootloader with MIT license. So, here we send
-> this RFC patch to solicit ACKs from MTK NAND driver authors and
-> contributors whether we can re-license MTK NAND driver as dual MIT/GPL.
-> 
-> Thanks and looking forward to your reply,
-> Xiaolei
-> 
-> Patch v2:
-> ---------
-> - Add Ryder, Rafal, Wen in CC list.
-> - Introduce why we want to re-license MTK NAND driver.
-> 
-> Xiaolei Li (1):
->   mtd: rawnand: mtk: Re-license MTK NAND driver as Dual MIT/GPL
-> 
->  drivers/mtd/nand/raw/mtk_ecc.c  | 12 ++----------
->  drivers/mtd/nand/raw/mtk_ecc.h  |  4 +---
->  drivers/mtd/nand/raw/mtk_nand.c | 12 ++----------
->  3 files changed, 5 insertions(+), 23 deletions(-)
-> 
-> --
-> 2.18.0
-> 
-> 
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
-> 
+Reported-by: kbuild test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt7603/mac.c |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt7615/mac.c | 12 ++++++------
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
+index 2f2961ee0a92..af5769d05e6f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
+@@ -627,7 +627,7 @@ mt7603_mac_fill_rx(struct mt7603_dev *dev, struct sk_buff *skb)
+ 	status->aggr = unicast &&
+ 		       !ieee80211_is_qos_nullfunc(hdr->frame_control);
+ 	status->tid = *ieee80211_get_qos_ctl(hdr) & IEEE80211_QOS_CTL_TID_MASK;
+-	status->seqno = IEEE80211_SEQ_TO_SN(hdr->seq_ctrl);
++	status->seqno = IEEE80211_SEQ_TO_SN(__le16_to_cpu(hdr->seq_ctrl));
+ 
+ 	return 0;
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+index 1bf3e7b5f6a7..4b934b0f5a39 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+@@ -235,7 +235,7 @@ int mt7615_mac_fill_rx(struct mt7615_dev *dev, struct sk_buff *skb)
+ 	status->aggr = unicast &&
+ 		       !ieee80211_is_qos_nullfunc(hdr->frame_control);
+ 	status->tid = *ieee80211_get_qos_ctl(hdr) & IEEE80211_QOS_CTL_TID_MASK;
+-	status->seqno = IEEE80211_SEQ_TO_SN(hdr->seq_ctrl);
++	status->seqno = IEEE80211_SEQ_TO_SN(__le16_to_cpu(hdr->seq_ctrl));
+ 
+ 	return 0;
+ }
+@@ -337,7 +337,7 @@ int mt7615_mac_write_txwi(struct mt7615_dev *dev, __le32 *txwi,
+ 	struct ieee80211_vif *vif = info->control.vif;
+ 	int tx_count = 8;
+ 	u8 fc_type, fc_stype, p_fmt, q_idx, omac_idx = 0;
+-	u16 fc = le16_to_cpu(hdr->frame_control);
++	__le16 fc = hdr->frame_control;
+ 	u16 seqno = 0;
+ 	u32 val;
+ 
+@@ -353,8 +353,8 @@ int mt7615_mac_write_txwi(struct mt7615_dev *dev, __le32 *txwi,
+ 		tx_count = msta->rate_count;
+ 	}
+ 
+-	fc_type = (fc & IEEE80211_FCTL_FTYPE) >> 2;
+-	fc_stype = (fc & IEEE80211_FCTL_STYPE) >> 4;
++	fc_type = (le16_to_cpu(fc) & IEEE80211_FCTL_FTYPE) >> 2;
++	fc_stype = (le16_to_cpu(fc) & IEEE80211_FCTL_STYPE) >> 4;
+ 
+ 	if (ieee80211_is_data(fc)) {
+ 		q_idx = skb_get_queue_mapping(skb);
+@@ -468,7 +468,7 @@ void mt7615_txp_skb_unmap(struct mt76_dev *dev,
+ 	txp = (struct mt7615_txp *)(txwi + MT_TXD_SIZE);
+ 	for (i = 1; i < txp->nbuf; i++)
+ 		dma_unmap_single(dev->dev, le32_to_cpu(txp->buf[i]),
+-				 le32_to_cpu(txp->len[i]), DMA_TO_DEVICE);
++				 le16_to_cpu(txp->len[i]), DMA_TO_DEVICE);
+ }
+ 
+ int mt7615_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
+@@ -506,7 +506,7 @@ int mt7615_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
+ 	txp = (struct mt7615_txp *)(txwi + MT_TXD_SIZE);
+ 	for (i = 0; i < nbuf; i++) {
+ 		txp->buf[i] = cpu_to_le32(tx_info->buf[i + 1].addr);
+-		txp->len[i] = cpu_to_le32(tx_info->buf[i + 1].len);
++		txp->len[i] = cpu_to_le16(tx_info->buf[i + 1].len);
+ 	}
+ 	txp->nbuf = nbuf;
+ 
+-- 
+2.18.0
