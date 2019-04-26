@@ -1,22 +1,52 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH 14/24] clk: mediatek: add clock driver for MT8516
-Date: Thu, 25 Apr 2019 14:39:24 -0700
-Message-ID: <155622836474.15276.3720750789980463871@swboyd.mtv.corp.google.com>
-References: <20190323211612.860-1-fparent@baylibre.com> <20190323211612.860-15-fparent@baylibre.com>
+From: KaiChieh Chuang <kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] ASoC: mediatek: btcvsd fix irq mask
+Date: Fri, 26 Apr 2019 10:09:43 +0800
+Message-ID: <1556244583-18084-1-git-send-email-kaichieh.chuang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190323211612.860-15-fparent@baylibre.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: mark.rutland@arm.com, matthias.bgg@gmail.com, robh+dt@kernel.org
-Cc: sean.wang@kernel.org, ryder.lee@mediatek.com, hsin-hsiung.wang@mediatek.com, wenzhen.yu@mediatek.com, chaotian.jing@mediatek.com, yong.mao@mediatek.com, jjian.zhou@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org, linux-gpio@vger.kernel.org, linux-serial@vger.kernel.org, linux-spi@vger.kernel.org, linux-watchdog@vger.kernel.org, linux-clk@vger.kernel.org, stephane.leprovost@mediatek.com, Fabien Parent <fparent@baylibre.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: tina.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, stephen.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting Fabien Parent (2019-03-23 14:16:02)
-> Add the clock driver for the MT8516 SoC.
->=20
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> ---
+disable = 1
+enable = 0
+prevent AP wake up, when not AP BTSCO scenario
 
-Applied to clk-next
+Signed-off-by: KaiChieh Chuang <kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ sound/soc/mediatek/common/mtk-btcvsd.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/sound/soc/mediatek/common/mtk-btcvsd.c b/sound/soc/mediatek/common/mtk-btcvsd.c
+index 6784e35..b918f79 100644
+--- a/sound/soc/mediatek/common/mtk-btcvsd.c
++++ b/sound/soc/mediatek/common/mtk-btcvsd.c
+@@ -194,13 +194,13 @@ struct mtk_btcvsd_snd_time_buffer_info {
+ static void mtk_btcvsd_snd_irq_enable(struct mtk_btcvsd_snd *bt)
+ {
+ 	regmap_update_bits(bt->infra, bt->infra_misc_offset,
+-			   bt->conn_bt_cvsd_mask, bt->conn_bt_cvsd_mask);
++			   bt->conn_bt_cvsd_mask, 0);
+ }
+ 
+ static void mtk_btcvsd_snd_irq_disable(struct mtk_btcvsd_snd *bt)
+ {
+ 	regmap_update_bits(bt->infra, bt->infra_misc_offset,
+-			   bt->conn_bt_cvsd_mask, 0);
++			   bt->conn_bt_cvsd_mask, bt->conn_bt_cvsd_mask);
+ }
+ 
+ static void mtk_btcvsd_snd_set_state(struct mtk_btcvsd_snd *bt,
+-- 
+1.9.1
