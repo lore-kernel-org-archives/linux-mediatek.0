@@ -1,35 +1,20 @@
-From: Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH v4 1/6] dt-bindings: connector: add optional properties
- for Type-B
-Date: Fri, 26 Apr 2019 08:19:40 -0500
-Message-ID: <CAL_Jsq+2jWJHm3-5BU6NUqFsSN=K15douOyYWeKoKseqhPDysw@mail.gmail.com>
-References: <1556261237-13823-1-git-send-email-chunfeng.yun@mediatek.com> <1556261237-13823-2-git-send-email-chunfeng.yun@mediatek.com>
+From: Joerg Roedel <joro@8bytes.org>
+Subject: Re: [PATCH] iommu/mediatek: fix leaked of_node references
+Date: Fri, 26 Apr 2019 15:25:09 +0200
+Message-ID: <20190426132509.GB24576@8bytes.org>
+References: <1555468879-34684-1-git-send-email-wen.yang99@zte.com.cn>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1556261237-13823-2-git-send-email-chunfeng.yun@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1555468879-34684-1-git-send-email-wen.yang99@zte.com.cn>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Linux USB List <linux-usb@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Biju Das <biju.das@bp.renesas.com>
+To: Wen Yang <wen.yang99@zte.com.cn>
+Cc: linux-kernel@vger.kernel.org, wang.yi59@zte.com.cn, Matthias Brugger <matthias.bgg@gmail.com>, iommu@lists.linux-foundation.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Apr 26, 2019 at 1:47 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
->
-> Add id-gpios, vbus-gpios, vbus-supply and pinctrl properties for
-> usb-b-connector
->
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
-> v4 no changes
->
-> v3 changes:
->  1. add GPIO direction, and use fixed-regulator for GPIO controlled
->     VBUS regulator suggested by Rob;
->
-> v2 changes:
->   1. describe more clear for vbus-gpios and vbus-supply suggested by Hans
-> ---
->  .../bindings/connector/usb-connector.txt           | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
+On Wed, Apr 17, 2019 at 10:41:19AM +0800, Wen Yang wrote:
+>  drivers/iommu/mtk_iommu.c | 8 ++++++--
+>  1 file changed, 6 insertions(+), 2 deletions(-)
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Applied, thanks.
