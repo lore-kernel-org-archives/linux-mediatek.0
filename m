@@ -1,58 +1,71 @@
-From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 4.9 12/16] drm/mediatek: fix possible object reference
- leak
-Date: Fri, 26 Apr 2019 21:43:20 -0400
-Message-ID: <20190427014325.8704-12-sashal@kernel.org>
-References: <20190427014325.8704-1-sashal@kernel.org>
+From: Long Cheng <long.cheng@mediatek.com>
+Subject: [PATCH v12 0/4] add uart DMA function
+Date: Sat, 27 Apr 2019 11:36:29 +0800
+Message-ID: <1556336193-15198-1-git-send-email-long.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190427014325.8704-1-sashal@kernel.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
-Cc: Sasha Levin <sashal@kernel.org>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Wen Yang <wen.yang99@zte.com.cn>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Vinod Koul <vkoul@kernel.org>, Randy Dunlap <rdunlap@infradead.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Dan Williams <dan.j.williams@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>, Sean Wang <sean.wang@mediatek.com>, dmaengine@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, srv_heupstream@mediatek.com, Yingjoe Chen <yingjoe.chen@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Zhenbao Liu <zhenbao.liu@mediatek.com>, Long Cheng <long.cheng@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-RnJvbTogV2VuIFlhbmcgPHdlbi55YW5nOTlAenRlLmNvbS5jbj4KClsgVXBzdHJlYW0gY29tbWl0
-IDJhZTJjMzMxNmZiNzdkY2Y2NDI3NWQwMTE1OTZiNjAxMDRjNDU0MjYgXQoKVGhlIGNhbGwgdG8g
-b2ZfcGFyc2VfcGhhbmRsZSByZXR1cm5zIGEgbm9kZSBwb2ludGVyIHdpdGggcmVmY291bnQKaW5j
-cmVtZW50ZWQgdGh1cyBpdCBtdXN0IGJlIGV4cGxpY2l0bHkgZGVjcmVtZW50ZWQgYWZ0ZXIgdGhl
-IGxhc3QKdXNhZ2UuCgpEZXRlY3RlZCBieSBjb2NjaW5lbGxlIHdpdGggdGhlIGZvbGxvd2luZyB3
-YXJuaW5nczoKZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmM6MTUyMToyLTg6IEVS
-Uk9SOiBtaXNzaW5nIG9mX25vZGVfcHV0OyBhY3F1aXJlZCBhIG5vZGUgcG9pbnRlciB3aXRoIHJl
-ZmNvdW50IGluY3JlbWVudGVkIG9uIGxpbmUgMTUwOSwgYnV0IHdpdGhvdXQgYSBjb3JyZXNwb25k
-aW5nIG9iamVjdCByZWxlYXNlIHdpdGhpbiB0aGlzIGZ1bmN0aW9uLgpkcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2hkbWkuYzoxNTI0OjEtNzogRVJST1I6IG1pc3Npbmcgb2Zfbm9kZV9wdXQ7
-IGFjcXVpcmVkIGEgbm9kZSBwb2ludGVyIHdpdGggcmVmY291bnQgaW5jcmVtZW50ZWQgb24gbGlu
-ZSAxNTA5LCBidXQgd2l0aG91dCBhIGNvcnJlc3BvbmRpbmcgb2JqZWN0IHJlbGVhc2Ugd2l0aGlu
-IHRoaXMgZnVuY3Rpb24uCgpTaWduZWQtb2ZmLWJ5OiBXZW4gWWFuZyA8d2VuLnlhbmc5OUB6dGUu
-Y29tLmNuPgpDYzogQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4KQ2M6IFBoaWxpcHAgWmFiZWwg
-PHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+CkNjOiBEYXZpZCBBaXJsaWUgPGFpcmxpZWRAbGludXgu
-aWU+CkNjOiBEYW5pZWwgVmV0dGVyIDxkYW5pZWxAZmZ3bGwuY2g+CkNjOiBNYXR0aGlhcyBCcnVn
-Z2VyIDxtYXR0aGlhcy5iZ2dAZ21haWwuY29tPgpDYzogZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
-dG9wLm9yZwpDYzogbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCkNjOiBsaW51
-eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCkNjOiBsaW51eC1rZXJuZWxAdmdlci5rZXJu
-ZWwub3JnClNpZ25lZC1vZmYtYnk6IENLIEh1IDxjay5odUBtZWRpYXRlay5jb20+ClNpZ25lZC1v
-ZmYtYnk6IFNhc2hhIExldmluIDxzYXNoYWxAa2VybmVsLm9yZz4KLS0tCiBkcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2hkbWkuYyB8IDEgKwogMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9u
-KCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMgYi9k
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYwppbmRleCAyMDBmNzVlMWQ2MTkuLmU3
-YTY2NTFjZWVhYiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1p
-LmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMKQEAgLTE1MjgsNiAr
-MTUyOCw3IEBAIHN0YXRpYyBpbnQgbXRrX2hkbWlfZHRfcGFyc2VfcGRhdGEoc3RydWN0IG10a19o
-ZG1pICpoZG1pLAogCW9mX25vZGVfcHV0KHJlbW90ZSk7CiAKIAloZG1pLT5kZGNfYWRwdCA9IG9m
-X2ZpbmRfaTJjX2FkYXB0ZXJfYnlfbm9kZShpMmNfbnApOworCW9mX25vZGVfcHV0KGkyY19ucCk7
-CiAJaWYgKCFoZG1pLT5kZGNfYWRwdCkgewogCQlkZXZfZXJyKGRldiwgIkZhaWxlZCB0byBnZXQg
-ZGRjIGkyYyBhZGFwdGVyIGJ5IG5vZGVcbiIpOwogCQlyZXR1cm4gLUVJTlZBTDsKLS0gCjIuMTku
-MQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRl
-dmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8v
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+In Mediatek SOCs, the uart can support DMA function.
+Base on DMA engine formwork, we add the DMA code to support uart. And put the code under drivers/dma/mediatek.
+
+This series contains document bindings, Kconfig to control the function enable or not,
+device tree including interrupt and dma device node, the code of UART DMA
+
+Changes compared to v11
+-modify TX/RX
+-pause function by software
+Changes compared to v10
+-modify DMA tx status function
+-modify 8250_mtk for DMA rx
+-add notes to binding Document.
+Changes compared to v9
+-rename dt-bindings file
+-remove direction from device_config
+-simplified code
+Changes compared to v8
+-revise missing items
+Changes compared to v7:
+-modify apdma uart tx
+Changes compared to v6:
+-Correct spelling
+Changes compared to v5:
+-move 'requst irqs' to alloc channel
+-remove tasklet.
+Changes compared to v4:
+-modify Kconfig depends on.
+Changes compared to v3:
+-fix CONFIG_PM, will cause build fail
+Changes compared to v2:
+-remove unimportant parameters
+-instead of cookie, use APIs of virtual channel.
+-use of_dma_xlate_by_chan_id.
+Changes compared to v1:
+-mian revised file, 8250_mtk_dma.c
+--parameters renamed for standard
+--remove atomic operation
+
+Long Cheng (4):
+  dmaengine: mediatek: Add MediaTek UART APDMA support
+  arm: dts: mt2712: add uart APDMA to device tree
+  dt-bindings: dma: uart: rename binding
+  serial: 8250-mtk: modify uart DMA rx
+
+ .../devicetree/bindings/dma/8250_mtk_dma.txt       |   33 -
+ .../devicetree/bindings/dma/mtk-uart-apdma.txt     |   55 ++
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi          |   51 ++
+ drivers/dma/mediatek/Kconfig                       |   11 +
+ drivers/dma/mediatek/Makefile                      |    1 +
+ drivers/dma/mediatek/mtk-uart-apdma.c              |  666 ++++++++++++++++++++
+ drivers/tty/serial/8250/8250_mtk.c                 |   53 +-
+ 7 files changed, 807 insertions(+), 63 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/dma/8250_mtk_dma.txt
+ create mode 100644 Documentation/devicetree/bindings/dma/mtk-uart-apdma.txt
+ create mode 100644 drivers/dma/mediatek/mtk-uart-apdma.c
+
+-- 
+1.7.9.5
