@@ -1,12 +1,12 @@
 From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 5.0 54/79] drm/mediatek: fix possible object reference leak
-Date: Fri, 26 Apr 2019 21:38:13 -0400
-Message-ID: <20190427013838.6596-54-sashal@kernel.org>
-References: <20190427013838.6596-1-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 41/53] drm/mediatek: fix possible object reference leak
+Date: Fri, 26 Apr 2019 21:40:38 -0400
+Message-ID: <20190427014051.7522-41-sashal@kernel.org>
+References: <20190427014051.7522-1-sashal@kernel.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190427013838.6596-1-sashal@kernel.org>
+In-Reply-To: <20190427014051.7522-1-sashal@kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
 Cc: Wen Yang <wen.yang99@zte.com.cn>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Sasha Levin <sashal@kernel.org>
@@ -41,10 +41,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 1 insertion(+)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index c910850d2077..a687fe3e1d6c 100644
+index c7a77d6f612b..62444a3a5742 100644
 --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
 +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -1514,6 +1514,7 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
+@@ -1508,6 +1508,7 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
  	of_node_put(remote);
  
  	hdmi->ddc_adpt = of_find_i2c_adapter_by_node(i2c_np);
