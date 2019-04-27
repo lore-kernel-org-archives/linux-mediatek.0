@@ -1,14 +1,14 @@
 From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 4.14 23/32] drm/mediatek: fix possible object
- reference leak
-Date: Fri, 26 Apr 2019 21:42:14 -0400
-Message-ID: <20190427014224.8274-23-sashal@kernel.org>
-References: <20190427014224.8274-1-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.9 12/16] drm/mediatek: fix possible object reference
+ leak
+Date: Fri, 26 Apr 2019 21:43:20 -0400
+Message-ID: <20190427014325.8704-12-sashal@kernel.org>
+References: <20190427014325.8704-1-sashal@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190427014224.8274-1-sashal@kernel.org>
+In-Reply-To: <20190427014325.8704-1-sashal@kernel.org>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -45,10 +45,10 @@ ZWwub3JnClNpZ25lZC1vZmYtYnk6IENLIEh1IDxjay5odUBtZWRpYXRlay5jb20+ClNpZ25lZC1v
 ZmYtYnk6IFNhc2hhIExldmluIDxzYXNoYWxAa2VybmVsLm9yZz4KLS0tCiBkcml2ZXJzL2dwdS9k
 cm0vbWVkaWF0ZWsvbXRrX2hkbWkuYyB8IDEgKwogMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9u
 KCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMgYi9k
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYwppbmRleCBhMzNhMTkxODQ2M2QuLjNj
-NjljNzNmYmQ0NyAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1p
-LmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMKQEAgLTE1MDgsNiAr
-MTUwOCw3IEBAIHN0YXRpYyBpbnQgbXRrX2hkbWlfZHRfcGFyc2VfcGRhdGEoc3RydWN0IG10a19o
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYwppbmRleCAyMDBmNzVlMWQ2MTkuLmU3
+YTY2NTFjZWVhYiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1p
+LmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMKQEAgLTE1MjgsNiAr
+MTUyOCw3IEBAIHN0YXRpYyBpbnQgbXRrX2hkbWlfZHRfcGFyc2VfcGRhdGEoc3RydWN0IG10a19o
 ZG1pICpoZG1pLAogCW9mX25vZGVfcHV0KHJlbW90ZSk7CiAKIAloZG1pLT5kZGNfYWRwdCA9IG9m
 X2ZpbmRfaTJjX2FkYXB0ZXJfYnlfbm9kZShpMmNfbnApOworCW9mX25vZGVfcHV0KGkyY19ucCk7
 CiAJaWYgKCFoZG1pLT5kZGNfYWRwdCkgewogCQlkZXZfZXJyKGRldiwgIkZhaWxlZCB0byBnZXQg
