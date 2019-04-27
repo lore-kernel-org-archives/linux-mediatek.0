@@ -1,132 +1,34 @@
-From: Long Cheng <long.cheng@mediatek.com>
-Subject: [PATCH 4/4] serial: 8250-mtk: modify uart DMA rx
-Date: Sat, 27 Apr 2019 11:36:33 +0800
-Message-ID: <1556336193-15198-5-git-send-email-long.cheng@mediatek.com>
-References: <1556336193-15198-1-git-send-email-long.cheng@mediatek.com>
+From: Andrew Lunn <andrew@lunn.ch>
+Subject: Re: [PATCH 2/4] dt-bindings: doc: Reflect new NVMEM
+ of_get_mac_address behaviour
+Date: Sat, 27 Apr 2019 18:31:27 +0200
+Message-ID: <20190427163127.GB9816@lunn.ch>
+References: <1556320002-26213-1-git-send-email-ynezz@true.cz>
+ <1556320002-26213-3-git-send-email-ynezz@true.cz>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1556336193-15198-1-git-send-email-long.cheng@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1556320002-26213-3-git-send-email-ynezz@true.cz>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Vinod Koul <vkoul@kernel.org>, Randy Dunlap <rdunlap@infradead.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Dan Williams <dan.j.williams@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>, Sean Wang <sean.wang@mediatek.com>, dmaengine@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, srv_heupstream@mediatek.com, Yingjoe Chen <yingjoe.chen@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Zhenbao Liu <zhenbao.liu@mediatek.com>, Long Cheng <long.cheng@mediatek.com>
+To: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Vivien Didelot <vivien.didelot@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Fugang Duan <fugang.duan@nxp.com>, Claudiu Manoil <claudiu.manoil@nxp.com>, Yisen Zhuang <yisen.zhuang@huawei.com>, Salil Mehta <salil.mehta@huawei.com>, Woojung Huh <woojung.huh@microchip.com>, Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>, Neil Armstrong <narmstrong@baylibre.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Jassi Brar <jaswinder.singh@linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Modify uart rx and complete for DMA.
+> diff --git a/Documentation/devicetree/bindings/net/ethernet.txt b/Documentation/devicetree/bindings/net/ethernet.txt
+> index 2974e63..1e2bc9a 100644
+> --- a/Documentation/devicetree/bindings/net/ethernet.txt
+> +++ b/Documentation/devicetree/bindings/net/ethernet.txt
+> @@ -10,6 +10,8 @@ Documentation/devicetree/bindings/phy/phy-bindings.txt.
+>    the boot program; should be used in cases where the MAC address assigned to
+>    the device by the boot program is different from the "local-mac-address"
+>    property;
+> +- nvmem-cells: phandle, reference to an nvmem node for the MAC address
+> +- nvmem-cell-names: string, should be "mac-address" if nvmem is to be used
 
-Signed-off-by: Long Cheng <long.cheng@mediatek.com>
----
- drivers/tty/serial/8250/8250_mtk.c |   53 ++++++++++++++++--------------------
- 1 file changed, 23 insertions(+), 30 deletions(-)
+You put the new values after local-mac-address and mac-address. That
+suggests they are of lower priority. That conflicts with the current
+patch. If you think NVMEM should take priority, please put the
+properties first.
 
-diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-index c1fdbc0..04081a6 100644
---- a/drivers/tty/serial/8250/8250_mtk.c
-+++ b/drivers/tty/serial/8250/8250_mtk.c
-@@ -30,7 +30,6 @@
- #define MTK_UART_DMA_EN_TX	0x2
- #define MTK_UART_DMA_EN_RX	0x5
- 
--#define MTK_UART_TX_SIZE	UART_XMIT_SIZE
- #define MTK_UART_RX_SIZE	0x8000
- #define MTK_UART_TX_TRIGGER	1
- #define MTK_UART_RX_TRIGGER	MTK_UART_RX_SIZE
-@@ -64,28 +63,30 @@ static void mtk8250_dma_rx_complete(void *param)
- 	struct mtk8250_data *data = up->port.private_data;
- 	struct tty_port *tty_port = &up->port.state->port;
- 	struct dma_tx_state state;
-+	int copied, cnt, tmp;
- 	unsigned char *ptr;
--	int copied;
- 
--	dma_sync_single_for_cpu(dma->rxchan->device->dev, dma->rx_addr,
--				dma->rx_size, DMA_FROM_DEVICE);
-+	if (data->rx_status == DMA_RX_SHUTDOWN)
-+		return;
- 
- 	dmaengine_tx_status(dma->rxchan, dma->rx_cookie, &state);
-+	cnt = dma->rx_size - state.residue;
-+	tmp = cnt;
- 
--	if (data->rx_status == DMA_RX_SHUTDOWN)
--		return;
-+	if ((data->rx_pos + cnt) > dma->rx_size)
-+		tmp = dma->rx_size - data->rx_pos;
- 
--	if ((data->rx_pos + state.residue) <= dma->rx_size) {
--		ptr = (unsigned char *)(data->rx_pos + dma->rx_buf);
--		copied = tty_insert_flip_string(tty_port, ptr, state.residue);
--	} else {
--		ptr = (unsigned char *)(data->rx_pos + dma->rx_buf);
--		copied = tty_insert_flip_string(tty_port, ptr,
--						dma->rx_size - data->rx_pos);
-+	ptr = (unsigned char *)(data->rx_pos + dma->rx_buf);
-+	copied = tty_insert_flip_string(tty_port, ptr, tmp);
-+	data->rx_pos += tmp;
-+
-+	if (cnt > tmp) {
- 		ptr = (unsigned char *)(dma->rx_buf);
--		copied += tty_insert_flip_string(tty_port, ptr,
--				data->rx_pos + state.residue - dma->rx_size);
-+		tmp = cnt - tmp;
-+		copied += tty_insert_flip_string(tty_port, ptr, tmp);
-+		data->rx_pos = tmp;
- 	}
-+
- 	up->port.icount.rx += copied;
- 
- 	tty_flip_buffer_push(tty_port);
-@@ -96,9 +97,7 @@ static void mtk8250_dma_rx_complete(void *param)
- static void mtk8250_rx_dma(struct uart_8250_port *up)
- {
- 	struct uart_8250_dma *dma = up->dma;
--	struct mtk8250_data *data = up->port.private_data;
- 	struct dma_async_tx_descriptor	*desc;
--	struct dma_tx_state	 state;
- 
- 	desc = dmaengine_prep_slave_single(dma->rxchan, dma->rx_addr,
- 					   dma->rx_size, DMA_DEV_TO_MEM,
-@@ -113,12 +112,6 @@ static void mtk8250_rx_dma(struct uart_8250_port *up)
- 
- 	dma->rx_cookie = dmaengine_submit(desc);
- 
--	dmaengine_tx_status(dma->rxchan, dma->rx_cookie, &state);
--	data->rx_pos = state.residue;
--
--	dma_sync_single_for_device(dma->rxchan->device->dev, dma->rx_addr,
--				   dma->rx_size, DMA_FROM_DEVICE);
--
- 	dma_async_issue_pending(dma->rxchan);
- }
- 
-@@ -131,13 +124,13 @@ static void mtk8250_dma_enable(struct uart_8250_port *up)
- 	if (data->rx_status != DMA_RX_START)
- 		return;
- 
--	dma->rxconf.direction		= DMA_DEV_TO_MEM;
--	dma->rxconf.src_addr_width	= dma->rx_size / 1024;
--	dma->rxconf.src_addr		= dma->rx_addr;
-+	dma->rxconf.direction				= DMA_DEV_TO_MEM;
-+	dma->rxconf.src_port_window_size	= dma->rx_size;
-+	dma->rxconf.src_addr				= dma->rx_addr;
- 
--	dma->txconf.direction		= DMA_MEM_TO_DEV;
--	dma->txconf.dst_addr_width	= MTK_UART_TX_SIZE / 1024;
--	dma->txconf.dst_addr		= dma->tx_addr;
-+	dma->txconf.direction				= DMA_MEM_TO_DEV;
-+	dma->txconf.dst_port_window_size	= UART_XMIT_SIZE;
-+	dma->txconf.dst_addr				= dma->tx_addr;
- 
- 	serial_out(up, UART_FCR, UART_FCR_ENABLE_FIFO | UART_FCR_CLEAR_RCVR |
- 		UART_FCR_CLEAR_XMIT);
-@@ -217,7 +210,7 @@ static void mtk8250_shutdown(struct uart_port *port)
- 	 * Mediatek UARTs use an extra highspeed register (UART_MTK_HIGHS)
- 	 *
- 	 * We need to recalcualte the quot register, as the claculation depends
--	 * on the vaule in the highspeed register.
-+	 * on the value in the highspeed register.
- 	 *
- 	 * Some baudrates are not supported by the chip, so we use the next
- 	 * lower rate supported and update termios c_flag.
--- 
-1.7.9.5
+	   Andrew
