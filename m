@@ -1,7 +1,7 @@
 From: Biao Huang <biao.huang@mediatek.com>
-Subject: [PATCH 3/6] net: stmmac: write the modified value back to MTL_OPERATION_MODE
-Date: Sun, 28 Apr 2019 14:30:06 +0800
-Message-ID: <1556433009-25759-4-git-send-email-biao.huang@mediatek.com>
+Subject: [PATCH 6/6] stmmac: dwmac-mediatek: modify csr_clk value to fix mdio read/write fail
+Date: Sun, 28 Apr 2019 14:30:09 +0800
+Message-ID: <1556433009-25759-7-git-send-email-biao.huang@mediatek.com>
 References: <1556433009-25759-1-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -12,26 +12,28 @@ To: Jose Abreu <joabreu@synopsys.com>, davem@davemloft.net
 Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, biao.huang@mediatek.com, jianguo.zhang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-The value of MTL_OPERATION_MODE is modified, and should
-be write back to the register.
+The frequency of  csr clock is 66.5MHz, so the csr_clk value should
+be 0. Modify the csr_clk value to fix mdio read/write fail issue.
 
 Signed-off-by: Biao Huang <biao.huang@mediatek.com>
 ---
- drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c |    2 ++
- 1 file changed, 2 insertions(+)
+ .../net/ethernet/stmicro/stmmac/dwmac-mediatek.c   |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
-index 7e5d5db..b4bb562 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
-@@ -192,6 +192,8 @@ static void dwmac4_prog_mtl_tx_algorithms(struct mac_device_info *hw,
- 	default:
- 		break;
- 	}
-+
-+	writel(value, ioaddr + MTL_OPERATION_MODE);
- }
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+index bf25629..6b12d0f 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+@@ -346,8 +346,8 @@ static int mediatek_dwmac_probe(struct platform_device *pdev)
+ 		return PTR_ERR(plat_dat);
  
- static void dwmac4_set_mtl_tx_queue_weight(struct mac_device_info *hw,
+ 	plat_dat->interface = priv_plat->phy_mode;
+-	/* clk_csr_i = 250-300MHz & MDC = clk_csr_i/124 */
+-	plat_dat->clk_csr = 5;
++	/* clk_csr_i = 60-100MHz & MDC = clk_csr_i/42 */
++	plat_dat->clk_csr = 0;
+ 	plat_dat->has_gmac4 = 1;
+ 	plat_dat->has_gmac = 0;
+ 	plat_dat->pmt = 0;
 -- 
 1.7.9.5
