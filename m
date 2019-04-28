@@ -1,470 +1,59 @@
-From: =?UTF-8?q?Petr=20=C5=A0tetiar?= <ynezz@true.cz>
-Subject: [PATCH v2 2/4] dt-bindings: doc: Reflect new NVMEM of_get_mac_address behaviour
-Date: Sun, 28 Apr 2019 14:53:20 +0200
-Message-ID: <1556456002-13430-3-git-send-email-ynezz@true.cz>
-References: <1556456002-13430-1-git-send-email-ynezz@true.cz>
+From: Andrew Lunn <andrew@lunn.ch>
+Subject: Re: [PATCH 5/6] net: stmmac: add mdio clause 45 access from mac
+ device for dwmac4
+Date: Sun, 28 Apr 2019 18:37:05 +0200
+Message-ID: <20190428163705.GH23059@lunn.ch>
+References: <1556433009-25759-1-git-send-email-biao.huang@mediatek.com>
+ <1556433009-25759-6-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1556456002-13430-1-git-send-email-ynezz@true.cz>
-Sender: netdev-owner@vger.kernel.org
-To: netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, Yisen Zhuang <yisen.zhuang@huawei.com>, Salil Mehta <salil.mehta@huawei.com>, Woojung Huh <woojung.huh@microchip.com>, Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Jassi Brar <jaswinder.singh@linaro.org>, Kalle Valo <kvalo@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Heiner Kallweit <hkallweit1@gmail.com>, Frank Rowand <frowand.list@gmail.com>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Maxime Ripard <maxime.ripard@bootlin.com>, Alban Bedel <albeu@free.fr>, =?UTF-8?q?Petr=20=C5=A0tetiar?= <ynezz@true.cz>, linux-arm-kernel@lists.infradead.org, linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <1556433009-25759-6-git-send-email-biao.huang@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Biao Huang <biao.huang@mediatek.com>
+Cc: jianguo.zhang@mediatek.com, Alexandre Torgue <alexandre.torgue@st.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, yt.shen@mediatek.com, Jose Abreu <joabreu@synopsys.com>, linux-mediatek@lists.infradead.org, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, davem@davemloft.net, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-As of_get_mac_address now supports NVMEM under the hood, we need to update
-the bindings documentation with the new nvmem-cell* properties, which would
-mean copy&pasting a lot of redundant information to every binding
-documentation currently referencing some of the MAC address properties.
+On Sun, Apr 28, 2019 at 02:30:08PM +0800, Biao Huang wrote:
+> +static int stmmac_c45_read(struct mii_bus *bus, int phyaddr,
+> +			   int devad, int prtad)
+> +{
+> +	struct net_device *ndev = bus->priv;
+> +	struct stmmac_priv *priv = netdev_priv(ndev);
+> +	unsigned int mii_address = priv->hw->mii.addr;
+> +	unsigned int mii_data = priv->hw->mii.data;
+> +	u32 v, value;
+> +	int data;
+> +
+> +	if (readl_poll_timeout(priv->ioaddr + mii_address, v, !(v & MII_BUSY),
+> +			       100, 10000))
+> +		return -EBUSY;
 
-So I've just removed all the references to the optional MAC address
-properties and replaced them with the reference to the net/ethernet.txt
-file.  While at it, I've also removed other optional Ethernet properties.
+Hi Biao
 
-Signed-off-by: Petr Štetiar <ynezz@true.cz>
----
+readl_poll_timeout() returns an error code. It is better to return
+that, than make up some other error code. Yes, i know the C22 read
+returns EBUSY, but we don't need to copy that behaviour into C45.
 
- Changes since v1:
+> +
+> +	value = 0;
+> +	value |= (prtad << priv->hw->mii.cl45_reg_shift)
+> +			& priv->hw->mii.cl45_reg_mask;
+> +	writel(value, priv->ioaddr + mii_data);
+> +
+> +	/* delay 2ms to avoid error value of get_phy_c45_devs_in_pkg */
+> +	mdelay(2);
 
- * instead of updating all bindings documentation with nvmem properties,
-   I've just updated those docs which were already referencing MAC address
-   properties and replaced them with reference to common net/ethernet.txt
+Please could you explain this a bit more?
 
- Documentation/devicetree/bindings/net/altera_tse.txt        |  5 ++---
- Documentation/devicetree/bindings/net/amd-xgbe.txt          |  5 +++--
- Documentation/devicetree/bindings/net/brcm,amac.txt         |  4 ++--
- Documentation/devicetree/bindings/net/cpsw.txt              |  5 +++--
- Documentation/devicetree/bindings/net/davinci_emac.txt      |  5 +++--
- Documentation/devicetree/bindings/net/dsa/dsa.txt           | 13 ++-----------
- Documentation/devicetree/bindings/net/ethernet.txt          |  6 ++++--
- Documentation/devicetree/bindings/net/hisilicon-femac.txt   |  6 ++----
- .../devicetree/bindings/net/hisilicon-hix5hd2-gmac.txt      |  7 +++----
- Documentation/devicetree/bindings/net/keystone-netcp.txt    |  8 +++-----
- Documentation/devicetree/bindings/net/macb.txt              |  5 ++---
- Documentation/devicetree/bindings/net/marvell-pxa168.txt    |  5 +++--
- .../devicetree/bindings/net/microchip,enc28j60.txt          |  3 ++-
- Documentation/devicetree/bindings/net/microchip,lan78xx.txt |  5 ++---
- Documentation/devicetree/bindings/net/qca,qca7000.txt       |  4 +++-
- Documentation/devicetree/bindings/net/samsung-sxgbe.txt     |  6 ++----
- .../devicetree/bindings/net/snps,dwc-qos-ethernet.txt       |  6 +++---
- .../devicetree/bindings/net/socionext,uniphier-ave4.txt     |  4 ++--
- Documentation/devicetree/bindings/net/socionext-netsec.txt  |  7 +++----
- .../devicetree/bindings/net/wireless/mediatek,mt76.txt      |  5 +++--
- .../devicetree/bindings/net/wireless/qca,ath9k.txt          |  4 ++--
- 21 files changed, 54 insertions(+), 64 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/net/altera_tse.txt b/Documentation/devicetree/bindings/net/altera_tse.txt
-index 0e21df9..c85a589 100644
---- a/Documentation/devicetree/bindings/net/altera_tse.txt
-+++ b/Documentation/devicetree/bindings/net/altera_tse.txt
-@@ -46,9 +46,8 @@ Required properties:
- 	- reg: phy id used to communicate to phy.
- 	- device_type: Must be "ethernet-phy".
- 
--Optional properties:
--- local-mac-address: See ethernet.txt in the same directory.
--- max-frame-size: See ethernet.txt in the same directory.
-+For all other optional Ethernet properties, please refer to
-+Documentation/devicetree/bindings/net/ethernet.txt.
- 
- Example:
- 
-diff --git a/Documentation/devicetree/bindings/net/amd-xgbe.txt b/Documentation/devicetree/bindings/net/amd-xgbe.txt
-index 93dcb79..b607765 100644
---- a/Documentation/devicetree/bindings/net/amd-xgbe.txt
-+++ b/Documentation/devicetree/bindings/net/amd-xgbe.txt
-@@ -24,8 +24,6 @@ Required properties:
- - phy-mode: See ethernet.txt file in the same directory
- 
- Optional properties:
--- mac-address: mac address to be assigned to the device. Can be overridden
--  by UEFI.
- - dma-coherent: Present if dma operations are coherent
- - amd,per-channel-interrupt: Indicates that Rx and Tx complete will generate
-   a unique interrupt for each DMA channel - this requires an additional
-@@ -48,6 +46,9 @@ property is used.
- - amd,serdes-dfe-tap-config: DFE taps available to run
- - amd,serdes-dfe-tap-enable: DFE taps to enable
- 
-+For all other optional Ethernet properties, please refer to
-+Documentation/devicetree/bindings/net/ethernet.txt.
-+
- Example:
- 	xgbe@e0700000 {
- 		compatible = "amd,xgbe-seattle-v1a";
-diff --git a/Documentation/devicetree/bindings/net/brcm,amac.txt b/Documentation/devicetree/bindings/net/brcm,amac.txt
-index 0bfad65..5e0ba27 100644
---- a/Documentation/devicetree/bindings/net/brcm,amac.txt
-+++ b/Documentation/devicetree/bindings/net/brcm,amac.txt
-@@ -16,8 +16,8 @@ Required properties:
- 				registers (required for Northstar2)
-  - interrupts:	Interrupt number
- 
--Optional properties:
--- mac-address:	See ethernet.txt file in the same directory
-+For all other optional Ethernet properties, please refer to
-+Documentation/devicetree/bindings/net/ethernet.txt.
- 
- Examples:
- 
-diff --git a/Documentation/devicetree/bindings/net/cpsw.txt b/Documentation/devicetree/bindings/net/cpsw.txt
-index 3264e19..370161c9 100644
---- a/Documentation/devicetree/bindings/net/cpsw.txt
-+++ b/Documentation/devicetree/bindings/net/cpsw.txt
-@@ -49,9 +49,10 @@ Required properties:
- 
- Optional properties:
- - dual_emac_res_vlan	: Specifies VID to be used to segregate the ports
--- mac-address		: See ethernet.txt file in the same directory
- - phy_id		: Specifies slave phy id (deprecated, use phy-handle)
--- phy-handle		: See ethernet.txt file in the same directory
-+
-+For all other optional Ethernet properties, please refer to
-+Documentation/devicetree/bindings/net/ethernet.txt.
- 
- Slave sub-nodes:
- - fixed-link		: See fixed-link.txt file in the same directory
-diff --git a/Documentation/devicetree/bindings/net/davinci_emac.txt b/Documentation/devicetree/bindings/net/davinci_emac.txt
-index ca83dcc..d250c8e 100644
---- a/Documentation/devicetree/bindings/net/davinci_emac.txt
-+++ b/Documentation/devicetree/bindings/net/davinci_emac.txt
-@@ -20,11 +20,12 @@ Required properties:
- Optional properties:
- - phy-handle: See ethernet.txt file in the same directory.
-               If absent, davinci_emac driver defaults to 100/FULL.
--- nvmem-cells: phandle, reference to an nvmem node for the MAC address
--- nvmem-cell-names: string, should be "mac-address" if nvmem is to be used
- - ti,davinci-rmii-en: 1 byte, 1 means use RMII
- - ti,davinci-no-bd-ram: boolean, does EMAC have BD RAM?
- 
-+For all other optional Ethernet properties, please refer to
-+Documentation/devicetree/bindings/net/ethernet.txt.
-+
- Example (enbw_cmc board):
- 	eth0: emac@1e20000 {
- 		compatible = "ti,davinci-dm6467-emac";
-diff --git a/Documentation/devicetree/bindings/net/dsa/dsa.txt b/Documentation/devicetree/bindings/net/dsa/dsa.txt
-index d66a529..6c8da44 100644
---- a/Documentation/devicetree/bindings/net/dsa/dsa.txt
-+++ b/Documentation/devicetree/bindings/net/dsa/dsa.txt
-@@ -58,22 +58,13 @@ A user port has the following optional property:
- Port child nodes may also contain the following optional standardised
- properties, described in binding documents:
- 
--- phy-handle		: Phandle to a PHY on an MDIO bus. See
--			  Documentation/devicetree/bindings/net/ethernet.txt
--			  for details.
--
--- phy-mode		: See
--			  Documentation/devicetree/bindings/net/ethernet.txt
--			  for details.
--
- - fixed-link		: Fixed-link subnode describing a link to a non-MDIO
- 			  managed entity. See
- 			  Documentation/devicetree/bindings/net/fixed-link.txt
- 			  for details.
- 
--- local-mac-address	: See
--			  Documentation/devicetree/bindings/net/ethernet.txt
--			  for details.
-+For all other optional Ethernet properties, please refer to
-+Documentation/devicetree/bindings/net/ethernet.txt.
- 
- Example
- 
-diff --git a/Documentation/devicetree/bindings/net/ethernet.txt b/Documentation/devicetree/bindings/net/ethernet.txt
-index 2974e63..e6e01e0 100644
---- a/Documentation/devicetree/bindings/net/ethernet.txt
-+++ b/Documentation/devicetree/bindings/net/ethernet.txt
-@@ -4,12 +4,14 @@ NOTE: All 'phy*' properties documented below are Ethernet specific. For the
- generic PHY 'phys' property, see
- Documentation/devicetree/bindings/phy/phy-bindings.txt.
- 
--- local-mac-address: array of 6 bytes, specifies the MAC address that was
--  assigned to the network device;
- - mac-address: array of 6 bytes, specifies the MAC address that was last used by
-   the boot program; should be used in cases where the MAC address assigned to
-   the device by the boot program is different from the "local-mac-address"
-   property;
-+- local-mac-address: array of 6 bytes, specifies the MAC address that was
-+  assigned to the network device;
-+- nvmem-cells: phandle, reference to an nvmem node for the MAC address
-+- nvmem-cell-names: string, should be "mac-address" if nvmem is to be used
- - max-speed: number, specifies maximum speed in Mbit/s supported by the device;
- - max-frame-size: number, maximum transfer unit (IEEE defined MTU), rather than
-   the maximum frame size (there's contradiction in the Devicetree
-diff --git a/Documentation/devicetree/bindings/net/hisilicon-femac.txt b/Documentation/devicetree/bindings/net/hisilicon-femac.txt
-index d11af5e..99ad4d5 100644
---- a/Documentation/devicetree/bindings/net/hisilicon-femac.txt
-+++ b/Documentation/devicetree/bindings/net/hisilicon-femac.txt
-@@ -14,15 +14,13 @@ Required properties:
- 	the PHY reset signal(optional).
- - reset-names: should contain the reset signal name "mac"(required)
- 	and "phy"(optional).
--- mac-address: see ethernet.txt [1].
--- phy-mode: see ethernet.txt [1].
--- phy-handle: see ethernet.txt [1].
- - hisilicon,phy-reset-delays-us: triplet of delays if PHY reset signal given.
- 	The 1st cell is reset pre-delay in micro seconds.
- 	The 2nd cell is reset pulse in micro seconds.
- 	The 3rd cell is reset post-delay in micro seconds.
- 
--[1] Documentation/devicetree/bindings/net/ethernet.txt
-+For all other optional Ethernet properties, please refer to
-+Documentation/devicetree/bindings/net/ethernet.txt.
- 
- Example:
- 	hisi_femac: ethernet@10090000 {
-diff --git a/Documentation/devicetree/bindings/net/hisilicon-hix5hd2-gmac.txt b/Documentation/devicetree/bindings/net/hisilicon-hix5hd2-gmac.txt
-index eea73ad..f4aad2a 100644
---- a/Documentation/devicetree/bindings/net/hisilicon-hix5hd2-gmac.txt
-+++ b/Documentation/devicetree/bindings/net/hisilicon-hix5hd2-gmac.txt
-@@ -16,9 +16,6 @@ Required properties:
- - interrupts: should contain the MAC interrupt.
- - #address-cells: must be <1>.
- - #size-cells: must be <0>.
--- phy-mode: see ethernet.txt [1].
--- phy-handle: see ethernet.txt [1].
--- mac-address: see ethernet.txt [1].
- - clocks: clock phandle and specifier pair.
- - clock-names: contain the clock name "mac_core"(required) and "mac_ifc"(optional).
- - resets: should contain the phandle to the MAC core reset signal(optional),
-@@ -31,9 +28,11 @@ Required properties:
- 	The 2nd cell is reset pulse in micro seconds.
- 	The 3rd cell is reset post-delay in micro seconds.
- 
-+For all other optional Ethernet properties, please refer to
-+Documentation/devicetree/bindings/net/ethernet.txt.
-+
- - PHY subnode: inherits from phy binding [2]
- 
--[1] Documentation/devicetree/bindings/net/ethernet.txt
- [2] Documentation/devicetree/bindings/net/phy.txt
- 
- Example:
-diff --git a/Documentation/devicetree/bindings/net/keystone-netcp.txt b/Documentation/devicetree/bindings/net/keystone-netcp.txt
-index 04ba1dc..2c9e8ac 100644
---- a/Documentation/devicetree/bindings/net/keystone-netcp.txt
-+++ b/Documentation/devicetree/bindings/net/keystone-netcp.txt
-@@ -135,14 +135,12 @@ Optional properties:
- 		are swapped.  The netcp driver will swap the two DWORDs
- 		back to the proper order when this property is set to 2
- 		when it obtains the mac address from efuse.
--- local-mac-address:	the driver is designed to use the of_get_mac_address api
--			only if efuse-mac is 0. When efuse-mac is 0, the MAC
--			address is obtained from local-mac-address. If this
--			attribute is not present, then the driver will use a
--			random MAC address.
- - "netcp-device label":	phandle to the device specification for each of NetCP
- 			sub-module attached to this interface.
- 
-+For all other optional Ethernet properties, please refer to
-+Documentation/devicetree/bindings/net/ethernet.txt.
-+
- Example binding:
- 
- netcp: netcp@2000000 {
-diff --git a/Documentation/devicetree/bindings/net/macb.txt b/Documentation/devicetree/bindings/net/macb.txt
-index 8b80515..58923f3 100644
---- a/Documentation/devicetree/bindings/net/macb.txt
-+++ b/Documentation/devicetree/bindings/net/macb.txt
-@@ -26,9 +26,8 @@ Required properties:
- 	Optional elements: 'tsu_clk'
- - clocks: Phandles to input clocks.
- 
--Optional properties:
--- nvmem-cells: phandle, reference to an nvmem node for the MAC address
--- nvmem-cell-names: string, should be "mac-address" if nvmem is to be used
-+For all other optional Ethernet properties, please refer to
-+Documentation/devicetree/bindings/net/ethernet.txt.
- 
- Optional properties for PHY child node:
- - reset-gpios : Should specify the gpio for phy reset
-diff --git a/Documentation/devicetree/bindings/net/marvell-pxa168.txt b/Documentation/devicetree/bindings/net/marvell-pxa168.txt
-index 845a148..0d36fcb 100644
---- a/Documentation/devicetree/bindings/net/marvell-pxa168.txt
-+++ b/Documentation/devicetree/bindings/net/marvell-pxa168.txt
-@@ -10,8 +10,9 @@ Optional properties:
- - port-id: Ethernet port number. Should be '0','1' or '2'.
- - #address-cells: must be 1 when using sub-nodes.
- - #size-cells: must be 0 when using sub-nodes.
--- phy-handle: see ethernet.txt file in the same directory.
--- local-mac-address: see ethernet.txt file in the same directory.
-+
-+For all other optional Ethernet properties, please refer to
-+Documentation/devicetree/bindings/net/ethernet.txt.
- 
- Sub-nodes:
- Each PHY can be represented as a sub-node. This is not mandatory.
-diff --git a/Documentation/devicetree/bindings/net/microchip,enc28j60.txt b/Documentation/devicetree/bindings/net/microchip,enc28j60.txt
-index 24626e0..dc15eba 100644
---- a/Documentation/devicetree/bindings/net/microchip,enc28j60.txt
-+++ b/Documentation/devicetree/bindings/net/microchip,enc28j60.txt
-@@ -21,8 +21,9 @@ Optional properties:
- - spi-max-frequency: Maximum frequency of the SPI bus when accessing the ENC28J60.
-   According to the ENC28J80 datasheet, the chip allows a maximum of 20 MHz, however,
-   board designs may need to limit this value.
--- local-mac-address: See ethernet.txt in the same directory.
- 
-+For all other optional Ethernet properties, please refer to
-+Documentation/devicetree/bindings/net/ethernet.txt.
- 
- Example (for NXP i.MX28 with pin control stuff for GPIO irq):
- 
-diff --git a/Documentation/devicetree/bindings/net/microchip,lan78xx.txt b/Documentation/devicetree/bindings/net/microchip,lan78xx.txt
-index 76786a0..7824581 100644
---- a/Documentation/devicetree/bindings/net/microchip,lan78xx.txt
-+++ b/Documentation/devicetree/bindings/net/microchip,lan78xx.txt
-@@ -7,9 +7,8 @@ The Device Tree properties, if present, override the OTP and EEPROM.
- Required properties:
- - compatible: Should be one of "usb424,7800", "usb424,7801" or "usb424,7850".
- 
--Optional properties:
--- local-mac-address:   see ethernet.txt
--- mac-address:         see ethernet.txt
-+For all other optional Ethernet properties, please refer to
-+Documentation/devicetree/bindings/net/ethernet.txt.
- 
- Optional properties of the embedded PHY:
- - microchip,led-modes: a 0..4 element vector, with each element configuring
-diff --git a/Documentation/devicetree/bindings/net/qca,qca7000.txt b/Documentation/devicetree/bindings/net/qca,qca7000.txt
-index e4a8a51..26cce1c 100644
---- a/Documentation/devicetree/bindings/net/qca,qca7000.txt
-+++ b/Documentation/devicetree/bindings/net/qca,qca7000.txt
-@@ -23,7 +23,6 @@ Optional properties:
- 		      Numbers smaller than 1000000 or greater than 16000000
- 		      are invalid. Missing the property will set the SPI
- 		      frequency to 8000000 Hertz.
--- local-mac-address : see ./ethernet.txt
- - qca,legacy-mode   : Set the SPI data transfer of the QCA7000 to legacy mode.
- 		      In this mode the SPI master must toggle the chip select
- 		      between each data word. In burst mode these gaps aren't
-@@ -31,6 +30,9 @@ Optional properties:
- 		      the QCA7000 is setup via GPIO pin strapping. If the
- 		      property is missing the driver defaults to burst mode.
- 
-+For all other optional Ethernet properties, please refer to
-+Documentation/devicetree/bindings/net/ethernet.txt.
-+
- SPI Example:
- 
- /* Freescale i.MX28 SPI master*/
-diff --git a/Documentation/devicetree/bindings/net/samsung-sxgbe.txt b/Documentation/devicetree/bindings/net/samsung-sxgbe.txt
-index 46e5911..09bd850 100644
---- a/Documentation/devicetree/bindings/net/samsung-sxgbe.txt
-+++ b/Documentation/devicetree/bindings/net/samsung-sxgbe.txt
-@@ -20,10 +20,8 @@ Required properties:
-   When fixed length is needed for burst mode, it can be set within allowable
-   range.
- 
--Optional properties:
--- mac-address: 6 bytes, mac address
--- max-frame-size: Maximum Transfer Unit (IEEE defined MTU), rather
--		  than the maximum frame size.
-+For all other optional Ethernet properties, please refer to
-+Documentation/devicetree/bindings/net/ethernet.txt.
- 
- Example:
- 
-diff --git a/Documentation/devicetree/bindings/net/snps,dwc-qos-ethernet.txt b/Documentation/devicetree/bindings/net/snps,dwc-qos-ethernet.txt
-index 36f1aef..db4c698 100644
---- a/Documentation/devicetree/bindings/net/snps,dwc-qos-ethernet.txt
-+++ b/Documentation/devicetree/bindings/net/snps,dwc-qos-ethernet.txt
-@@ -103,8 +103,6 @@ Required properties:
- 
- Optional properties:
- - dma-coherent: Present if dma operations are coherent
--- mac-address: See ethernet.txt in the same directory
--- local-mac-address: See ethernet.txt in the same directory
- - phy-reset-gpios: Phandle and specifier for any GPIO used to reset the PHY.
-   See ../gpio/gpio.txt.
- - snps,en-lpi: If present it enables use of the AXI low-power interface
-@@ -118,7 +116,6 @@ Optional properties:
- - snps,rxpbl: DMA Programmable burst length for the RX DMA
- - snps,en-tx-lpi-clockgating: Enable gating of the MAC TX clock during
-   TX low-power mode.
--- phy-handle: See ethernet.txt file in the same directory
- - mdio device tree subnode: When the GMAC has a phy connected to its local
-     mdio, there must be device tree subnode with the following
-     required properties:
-@@ -133,6 +130,9 @@ Optional properties:
-     - device_type: Must be "ethernet-phy".
-     - fixed-mode device tree subnode: see fixed-link.txt in the same directory
- 
-+For all other optional Ethernet properties, please refer to
-+Documentation/devicetree/bindings/net/ethernet.txt.
-+
- Examples:
- ethernet2@40010000 {
- 	clock-names = "phy_ref_clk", "apb_pclk";
-diff --git a/Documentation/devicetree/bindings/net/socionext,uniphier-ave4.txt b/Documentation/devicetree/bindings/net/socionext,uniphier-ave4.txt
-index fc8f017..d90d27e 100644
---- a/Documentation/devicetree/bindings/net/socionext,uniphier-ave4.txt
-+++ b/Documentation/devicetree/bindings/net/socionext,uniphier-ave4.txt
-@@ -31,8 +31,8 @@ Required properties:
-  - socionext,syscon-phy-mode: A phandle to syscon with one argument
- 	that configures phy mode. The argument is the ID of MAC instance.
- 
--Optional properties:
-- - local-mac-address: See ethernet.txt in the same directory.
-+For all other optional Ethernet properties, please refer to
-+Documentation/devicetree/bindings/net/ethernet.txt.
- 
- Required subnode:
-  - mdio: A container for child nodes representing phy nodes.
-diff --git a/Documentation/devicetree/bindings/net/socionext-netsec.txt b/Documentation/devicetree/bindings/net/socionext-netsec.txt
-index 0cff94f..3073c16 100644
---- a/Documentation/devicetree/bindings/net/socionext-netsec.txt
-+++ b/Documentation/devicetree/bindings/net/socionext-netsec.txt
-@@ -26,10 +26,9 @@ Required properties:
- Optional properties: (See ethernet.txt file in the same directory)
- - dma-coherent: Boolean property, must only be present if memory
- 	accesses performed by the device are cache coherent.
--- local-mac-address: See ethernet.txt in the same directory.
--- mac-address: See ethernet.txt in the same directory.
--- max-speed: See ethernet.txt in the same directory.
--- max-frame-size: See ethernet.txt in the same directory.
-+
-+For all other optional Ethernet properties, please refer to
-+Documentation/devicetree/bindings/net/ethernet.txt.
- 
- Example:
- 	eth0: ethernet@522d0000 {
-diff --git a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.txt b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.txt
-index 7b9a776..bcccbb9 100644
---- a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.txt
-+++ b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.txt
-@@ -13,11 +13,12 @@ properties:
- 
- Optional properties:
- 
--- mac-address: See ethernet.txt in the parent directory
--- local-mac-address: See ethernet.txt in the parent directory
- - ieee80211-freq-limit: See ieee80211.txt
- - mediatek,mtd-eeprom: Specify a MTD partition + offset containing EEPROM data
- 
-+For all other optional Ethernet properties, please refer to
-+Documentation/devicetree/bindings/net/ethernet.txt.
-+
- Optional nodes:
- - led: Properties for a connected LED
-   Optional properties:
-diff --git a/Documentation/devicetree/bindings/net/wireless/qca,ath9k.txt b/Documentation/devicetree/bindings/net/wireless/qca,ath9k.txt
-index b7396c8..d07542f 100644
---- a/Documentation/devicetree/bindings/net/wireless/qca,ath9k.txt
-+++ b/Documentation/devicetree/bindings/net/wireless/qca,ath9k.txt
-@@ -34,9 +34,9 @@ Optional properties:
- 			ath9k wireless chip (in this case the calibration /
- 			EEPROM data will be loaded from userspace using the
- 			kernel firmware loader).
--- mac-address: See ethernet.txt in the parent directory
--- local-mac-address: See ethernet.txt in the parent directory
- 
-+For all other optional Ethernet properties, please refer to
-+Documentation/devicetree/bindings/net/ethernet.txt.
- 
- In this example, the node is defined as child node of the PCI controller:
- &pci0 {
--- 
-1.9.1
+       Andrew
