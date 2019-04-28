@@ -1,7 +1,7 @@
 From: Biao Huang <biao.huang@mediatek.com>
-Subject: [PATCH 1/6] net: stmmac: update rx tail pointer register to fix rx dma hang issue.
-Date: Sun, 28 Apr 2019 14:30:04 +0800
-Message-ID: <1556433009-25759-2-git-send-email-biao.huang@mediatek.com>
+Subject: [PATCH 2/6] net: stmmac: fix csr_clk can't be zero issue
+Date: Sun, 28 Apr 2019 14:30:05 +0800
+Message-ID: <1556433009-25759-3-git-send-email-biao.huang@mediatek.com>
 References: <1556433009-25759-1-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -12,31 +12,28 @@ To: Jose Abreu <joabreu@synopsys.com>, davem@davemloft.net
 Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, biao.huang@mediatek.com, jianguo.zhang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Currently we will not update the receive descriptor tail pointer in
-stmmac_rx_refill. Rx dma will think no available descriptors and stop
-once received packets exceed DMA_RX_SIZE, so that the rx only test will fail.
-
-Update the receive tail pointer in stmmac_rx_refill to add more descriptors
-to the rx channel, so packets can be received continually
+The specific clk_csr value can be zero, and
+stmmac_clk is necessary for MDC clock which can be set dynamically.
+So, change the condition from plat->clk_csr to plat->stmmac_clk to
+fix clk_csr can't be zero issue.
 
 Signed-off-by: Biao Huang <biao.huang@mediatek.com>
 ---
- drivers/net/ethernet/stmicro/stmmac/stmmac_main.c |    3 +++
- 1 file changed, 3 insertions(+)
+ drivers/net/ethernet/stmicro/stmmac/stmmac_main.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-index 97c5e1a..818ad88 100644
+index 818ad88..9e89b94 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-@@ -3336,6 +3336,9 @@ static inline void stmmac_rx_refill(struct stmmac_priv *priv, u32 queue)
- 		entry = STMMAC_GET_ENTRY(entry, DMA_RX_SIZE);
- 	}
- 	rx_q->dirty_rx = entry;
-+	stmmac_set_rx_tail_ptr(priv, priv->ioaddr,
-+			       rx_q->dma_rx_phy + (entry * sizeof(struct dma_desc)),
-+			       queue);
- }
- 
- /**
+@@ -4376,7 +4376,7 @@ int stmmac_dvr_probe(struct device *device,
+ 	 * set the MDC clock dynamically according to the csr actual
+ 	 * clock input.
+ 	 */
+-	if (!priv->plat->clk_csr)
++	if (priv->plat->stmmac_clk)
+ 		stmmac_clk_csr_set(priv);
+ 	else
+ 		priv->clk_csr = priv->plat->clk_csr;
 -- 
 1.7.9.5
