@@ -1,69 +1,53 @@
-From: Nicolas Boichat <drinkcat@chromium.org>
-Subject: [PATCH 1/2] pinctrl: mediatek: Add mtk_eint_pm_ops to common-v2
-Date: Mon, 29 Apr 2019 11:25:50 +0800
-Message-ID: <20190429032551.65975-2-drinkcat@chromium.org>
-References: <20190429032551.65975-1-drinkcat@chromium.org>
+From: <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] mtd-tests: nandbiterrs: Fix issue that just insert error at
+ bit 7
+Date: Mon, 29 Apr 2019 11:28:34 +0800
+Message-ID: <20190429032834.7550-1-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190429032551.65975-1-drinkcat@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-mediatek@lists.infradead.org
-Cc: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Chuanjia Liu <Chuanjia.Liu@mediatek.com>, evgreen@chromium.org, swboyd@chromium.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: david.oberhollenzer-S6VGOU4v5edDinCvNWH78Q@public.gmane.org
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org, bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-pinctrl variants that include pinctrl-mtk-common-v2.h (and not
-pinctrl-mtk-common.h) also need to use mtk_eint_pm_ops to setup
-wake mask properly, so copy over the pm_ops to v2.
+From: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-It is not easy to merge the 2 copies (or move
-mtk_eint_suspend/resume to mtk-eint.c), as we need to
-dereference pctrl->eint, and struct mtk_pinctrl *pctl has a
-different structure definition for v1 and v2.
+The function insert_biterror should be designed to insert error at
+the first '1' bit starting at offset byte.
 
-Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
-Reviewed-by: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
+But now, only bit 7 of each byte is checked, because checking mask
+is always 0x80.
+
+So, do right shift for checking mask after each checking to check
+the whole 8 bits of each bytes.
+
+Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  | 19 +++++++++++++++++++
- .../pinctrl/mediatek/pinctrl-mtk-common-v2.h  |  1 +
- 2 files changed, 20 insertions(+)
+ tests/mtd-tests/nandbiterrs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-index 20e1c890e73b30c..7e19b5a4748eafe 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-@@ -723,3 +723,22 @@ int mtk_pinconf_adv_drive_get(struct mtk_pinctrl *hw,
+diff --git a/tests/mtd-tests/nandbiterrs.c b/tests/mtd-tests/nandbiterrs.c
+index 24a6c03..f583c14 100644
+--- a/tests/mtd-tests/nandbiterrs.c
++++ b/tests/mtd-tests/nandbiterrs.c
+@@ -333,7 +333,7 @@ static int insert_biterror(void)
+ 	int bit, mask, byte;
  
- 	return 0;
- }
-+
-+static int mtk_eint_suspend(struct device *device)
-+{
-+	struct mtk_pinctrl *pctl = dev_get_drvdata(device);
-+
-+	return mtk_eint_do_suspend(pctl->eint);
-+}
-+
-+static int mtk_eint_resume(struct device *device)
-+{
-+	struct mtk_pinctrl *pctl = dev_get_drvdata(device);
-+
-+	return mtk_eint_do_resume(pctl->eint);
-+}
-+
-+const struct dev_pm_ops mtk_eint_pm_ops = {
-+	.suspend_noirq = mtk_eint_suspend,
-+	.resume_noirq = mtk_eint_resume,
-+};
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-index 1b7da42aa1d53e4..e2048db5bb16671 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-@@ -299,4 +299,5 @@ int mtk_pinconf_adv_drive_set(struct mtk_pinctrl *hw,
- int mtk_pinconf_adv_drive_get(struct mtk_pinctrl *hw,
- 			      const struct mtk_pin_desc *desc, u32 *val);
- 
-+extern const struct dev_pm_ops mtk_eint_pm_ops;
- #endif /* __PINCTRL_MTK_COMMON_V2_H */
+ 	for (byte = 0; byte < pagesize; ++byte) {
+-		for (bit = 7, mask = 0x80; bit >= 0; bit--, mask>>=0) {
++		for (bit = 7, mask = 0x80; bit >= 0; bit--, mask >>= 1) {
+ 			if (wbuffer[byte] & mask) {
+ 				wbuffer[byte] &= ~mask;
+ 				printf("Inserted biterror @ %u/%u\n", byte, bit);
 -- 
-2.21.0.593.g511ec345e18-goog
+2.18.0
