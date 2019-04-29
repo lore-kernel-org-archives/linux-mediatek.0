@@ -1,8 +1,8 @@
 From: Xiaolei Li <xiaolei.li@mediatek.com>
-Subject: [PATCH 1/5] mtd: rawnand: mtk: Correct low level time calculation of
- r/w cycle
-Date: Mon, 29 Apr 2019 14:38:30 +0800
-Message-ID: <20190429063834.45967-2-xiaolei.li@mediatek.com>
+Subject: [PATCH 4/5] mtd: rawnand: mtk: Fix wrongly assigned oob buffer
+ pointer issue
+Date: Mon, 29 Apr 2019 14:38:33 +0800
+Message-ID: <20190429063834.45967-5-xiaolei.li@mediatek.com>
 References: <20190429063834.45967-1-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,65 +22,79 @@ To: miquel.raynal@bootlin.com, richard@nod.at
 Cc: linux-mediatek@lists.infradead.org, xiaolei.li@mediatek.com, linux-mtd@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-At present, the flow of calculating AC timing of read/write cycle in SDR
-mode is that:
-At first, calculate high hold time which is valid for both read and write
-cycle using the max value between tREH_min and tWH_min.
-Secondly, calculate WE# pulse width using tWP_min.
-Thridly, calculate RE# pulse width using the bigger one between tREA_max
-and tRP_min.
+One main goal of the function mtk_nfc_update_ecc_stats is to check
+whether sectors are all empty. If they are empty, set these sectors's
+data buffer and oob buffer as 0xff.
 
-But NAND SPEC shows that Controller should also meet write/read cycle time.
-That is write cycle time should be more than tWC_min and read cycle should
-be more than tRC_min. Obviously, we do not achieve that now.
+But now, the sector oob buffer pointer is wrongly assigned. We always
+do memset from sector 0.
 
-This patch corrects the low level time calculation to meet minimum
-read/write cycle time required. After getting the high hold time, WE# low
-level time will be promised to meet tWP_min and tWC_min requirement,
-and RE# low level time will be promised to meet tREA_max, tRP_min and
-tRC_min requirement.
+To fix this issue, pass start secotr number to make oob buffer pointer
+be properly assigned.
 
 Fixes: 93db446a424c ("mtd: nand: move raw NAND related code to the raw/ subdir")
 Signed-off-by: Xiaolei Li <xiaolei.li@mediatek.com>
 ---
- drivers/mtd/nand/raw/mtk_nand.c | 14 +++++++++++---
- 1 file changed, 11 insertions(+), 3 deletions(-)
+ drivers/mtd/nand/raw/mtk_nand.c | 21 ++++++++++-----------
+ 1 file changed, 10 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
-index b6b4602f5132..dd855f860a4b 100644
+index 7a5e8c9cf61b..cf5e50e704ae 100644
 --- a/drivers/mtd/nand/raw/mtk_nand.c
 +++ b/drivers/mtd/nand/raw/mtk_nand.c
-@@ -508,7 +508,7 @@ static int mtk_nfc_setup_data_interface(struct nand_chip *chip, int csline,
+@@ -873,19 +873,21 @@ static int mtk_nfc_write_oob_std(struct nand_chip *chip, int page)
+ 	return mtk_nfc_write_page_raw(chip, NULL, 1, page);
+ }
+ 
+-static int mtk_nfc_update_ecc_stats(struct mtd_info *mtd, u8 *buf, u32 sectors)
++static int mtk_nfc_update_ecc_stats(struct mtd_info *mtd, u8 *buf, u32 start,
++				    u32 sectors)
  {
+ 	struct nand_chip *chip = mtd_to_nand(mtd);
  	struct mtk_nfc *nfc = nand_get_controller_data(chip);
- 	const struct nand_sdr_timings *timings;
--	u32 rate, tpoecs, tprecs, tc2r, tw2r, twh, twst, trlt;
-+	u32 rate, tpoecs, tprecs, tc2r, tw2r, twh, twst = 0, trlt = 0;
+ 	struct mtk_nfc_nand_chip *mtk_nand = to_mtk_nand(chip);
+ 	struct mtk_ecc_stats stats;
++	u32 reg_size = mtk_nand->fdm.reg_size;
+ 	int rc, i;
  
- 	timings = nand_get_sdr_timings(conf);
- 	if (IS_ERR(timings))
-@@ -544,11 +544,19 @@ static int mtk_nfc_setup_data_interface(struct nand_chip *chip, int csline,
- 	twh = DIV_ROUND_UP(twh * rate, 1000000) - 1;
- 	twh &= 0xf;
+ 	rc = nfi_readl(nfc, NFI_STA) & STA_EMP_PAGE;
+ 	if (rc) {
+ 		memset(buf, 0xff, sectors * chip->ecc.size);
+ 		for (i = 0; i < sectors; i++)
+-			memset(oob_ptr(chip, i), 0xff, mtk_nand->fdm.reg_size);
++			memset(oob_ptr(chip, start + i), 0xff, reg_size);
+ 		return 0;
+ 	}
  
--	twst = timings->tWP_min / 1000;
-+	/* Calculate min low level timing for write cycle */
-+	if ((twh + 1) * 1000000 / rate < timings->tWC_min / 1000)
-+		twst = (timings->tWC_min / 1000 - (twh + 1) * 1000000 / rate)
-+			* 1000;
-+	twst = max(timings->tWP_min, twst) / 1000;
- 	twst = DIV_ROUND_UP(twst * rate, 1000000) - 1;
- 	twst &= 0xf;
+@@ -905,7 +907,7 @@ static int mtk_nfc_read_subpage(struct mtd_info *mtd, struct nand_chip *chip,
+ 	u32 spare = mtk_nand->spare_per_sector;
+ 	u32 column, sectors, start, end, reg;
+ 	dma_addr_t addr;
+-	int bitflips;
++	int bitflips = 0;
+ 	size_t len;
+ 	u8 *buf;
+ 	int rc;
+@@ -972,14 +974,11 @@ static int mtk_nfc_read_subpage(struct mtd_info *mtd, struct nand_chip *chip,
+ 	if (rc < 0) {
+ 		dev_err(nfc->dev, "subpage done timeout\n");
+ 		bitflips = -EIO;
+-	} else {
+-		bitflips = 0;
+-		if (!raw) {
+-			rc = mtk_ecc_wait_done(nfc->ecc, ECC_DECODE);
+-			bitflips = rc < 0 ? -ETIMEDOUT :
+-				mtk_nfc_update_ecc_stats(mtd, buf, sectors);
+-			mtk_nfc_read_fdm(chip, start, sectors);
+-		}
++	} else if (!raw) {
++		rc = mtk_ecc_wait_done(nfc->ecc, ECC_DECODE);
++		bitflips = rc < 0 ? -ETIMEDOUT :
++			mtk_nfc_update_ecc_stats(mtd, buf, start, sectors);
++		mtk_nfc_read_fdm(chip, start, sectors);
+ 	}
  
--	trlt = max(timings->tREA_max, timings->tRP_min) / 1000;
-+	/* Calculate min low level timing for read cycle */
-+	if ((twh + 1) * 1000000 / rate < timings->tRC_min / 1000)
-+		trlt = (timings->tRC_min / 1000 - (twh + 1) * 1000000 / rate)
-+			* 1000;
-+	trlt = max3(trlt, timings->tREA_max, timings->tRP_min) / 1000;
- 	trlt = DIV_ROUND_UP(trlt * rate, 1000000) - 1;
- 	trlt &= 0xf;
- 
+ 	dma_unmap_single(nfc->dev, addr, len, DMA_FROM_DEVICE);
 -- 
 2.18.0
 
