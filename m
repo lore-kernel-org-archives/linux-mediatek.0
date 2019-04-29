@@ -1,60 +1,42 @@
-From: Olof Johansson <olof@lixom.net>
-Subject: Re: [GIT PULL] soc: mediatek: soc driver updates for v5.2
-Date: Mon, 29 Apr 2019 09:52:42 -0700
-Message-ID: <20190429165242.lzujqpkym4p43etl@localhost>
-References: <269cf168-14c0-6a72-5078-0c8e307655eb@gmail.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [v2 1/3] dt-bindings: display: mediatek: update dsi supported
+ chips
+Date: Mon, 29 Apr 2019 17:26:46 -0500
+Message-ID: <20190429222646.GA20752@bogus>
+References: <20190416054217.75387-1-jitao.shi@mediatek.com>
+ <20190416054217.75387-2-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <269cf168-14c0-6a72-5078-0c8e307655eb@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Fabien Parent <fparent@baylibre.com>, Nathan Chancellor <natechancellor@gmail.com>, arm-soc <arm@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+In-Reply-To: <20190416054217.75387-2-jitao.shi@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jitao Shi <jitao.shi@mediatek.com>
+Cc: Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.in
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Apr 23, 2019 at 06:14:24PM +0200, Matthias Brugger wrote:
-> Hi Olof and Arnd,
+On Tue, Apr 16, 2019 at 01:42:15PM +0800, Jitao Shi wrote:
+> Update device tree binding documentation for the dsi for
+> Mediatek MT8183 SoCs.
 > 
-> Below you can find the updates for soc drivers ready to be merged for v5.2.
-> 
-> Please take them into account.
-> 
-> Best regards,
-> Matthias
-> 
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 > ---
+>  .../devicetree/bindings/display/mediatek/mediatek,dsi.txt       | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> The following changes since commit 9e98c678c2d6ae3a17cb2de55d17f69dddaa231b:
-> 
->   Linux 5.1-rc1 (2019-03-17 14:22:26 -0700)
-> 
-> are available in the Git repository at:
-> 
->   https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
-> tags/v5.1-next-soc
-> 
-> for you to fetch changes up to 89e28da82836530f1ac7a3a32fecc31f22d79b3e:
-> 
->   soc: mediatek: pwrap: Zero initialize rdata in pwrap_init_cipher (2019-04-12
-> 21:57:49 +0200)
-> 
-> ----------------------------------------------------------------
-> pmic wrapper:
-> - add mt8516 bindings
-> - add mt8516 driver support
-> - fix clang warning
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
+> index fadf327c7cdf..bd68195458b9 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
+> @@ -26,7 +26,7 @@ The MIPI TX configuration module controls the MIPI D-PHY.
+>  
+>  Required properties:
+>  - compatible: "mediatek,<chip>-mipi-tx"
+> -  the supported chips are mt2701 and mt8173.
+> +  the supported chips are mt2701 , mt8173 and mt8183.
 
-Merged, thanks!
+drop the space                     ^
 
+With that,
 
--Olof
+Acked-by: Rob Herring <robh@kernel.org>
