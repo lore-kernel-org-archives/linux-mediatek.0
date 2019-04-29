@@ -1,40 +1,59 @@
-From: xiaolei li <xiaolei.li@mediatek.com>
-Subject: Re: [RFC PATCH v2 1/1] mtd: rawnand: mtk: Re-license MTK NAND
- driver as Dual MIT/GPL
-Date: Mon, 29 Apr 2019 15:57:34 +0800
-Message-ID: <1556524654.26455.27.camel@mhfsdcap03>
-References: <20190425015552.42638-1-xiaolei.li@mediatek.com>
- <20190425015552.42638-2-xiaolei.li@mediatek.com>
- <20190429094430.7715f7a1@xps13>
+From: biao huang <biao.huang@mediatek.com>
+Subject: Re: [PATCH 2/6] net: stmmac: fix csr_clk can't be zero issue
+Date: Mon, 29 Apr 2019 16:09:13 +0800
+Message-ID: <1556525353.24897.30.camel@mhfsdcap03>
+References: <1556433009-25759-1-git-send-email-biao.huang@mediatek.com>
+         <1556433009-25759-3-git-send-email-biao.huang@mediatek.com>
+         <24f4b268-aa7f-e1f7-59fc-2bc163eb8277@st.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
-In-Reply-To: <20190429094430.7715f7a1@xps13>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
-List-Post: <mailto:linux-mtd@lists.infradead.org>
-List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
-Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
-To: Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: daniel.thompson@linaro.org, ryder.lee@mediatek.com, srv_heupstream@mediatek.com, richard@nod.at, yingjoe.chen@mediatek.com, jorge.ramirez-ortiz@linaro.org, boris.brezillon@bootlin.com, linux-mtd@lists.infradead.org, yellowriver2010@hotmail.com, rafal@milecki.pl, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <24f4b268-aa7f-e1f7-59fc-2bc163eb8277@st.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Alexandre Torgue <alexandre.torgue@st.com>
+Cc: Jose Abreu <joabreu@synopsys.com>, davem@davemloft.net, Giuseppe Cavallaro <peppe.cavallaro@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, jianguo.zhang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgTWlxdWVsLAoKT24gTW9uLCAyMDE5LTA0LTI5IGF0IDA5OjQ0ICswMjAwLCBNaXF1ZWwgUmF5
-bmFsIHdyb3RlOgo+IEhpIFhpYW9sZWksCj4gCj4gWGlhb2xlaSBMaSA8eGlhb2xlaS5saUBtZWRp
-YXRlay5jb20+IHdyb3RlIG9uIFRodSwgMjUgQXByIDIwMTkgMDk6NTU6NTIKPiArMDgwMDoKPiAK
-PiA+IEl0IGlzIGFsbG93ZWQgdG8gdXNlIE1USyBOQU5EIGRyaXZlciB3aXRoIEdQTC0yLjAgb3Ig
-TUlUIGxpY2Vuc2UuCj4gPiBCdXQgbm93IGl0IGlzIG9ubHkgbGljZW5zZWQgYXMgR1BMLTIuMC4K
-PiA+IFNvIHJlLWxpY2Vuc2UgaXQgYXMgZHVhbCBNSVQvR1BMLgo+ID4gCj4gCj4gWW91IGFsc28g
-cmVtb3ZlIHRoZSBsaWNlbnNlIHRleHQgYW5kIHJlcGxhY2UgaXQgd2l0aCBhbiBTUERYIHRhZywK
-PiBwbGVhc2UgZGVzY3JpYmUgdGhpcyBjaGFuZ2UgdG9vLgpPSy4gTm8gcHJvYmxlbS4KClRoYW5r
-cywKWGlhb2xlaQo+IAo+ID4gU2lnbmVkLW9mZi1ieTogWGlhb2xlaSBMaSA8eGlhb2xlaS5saUBt
-ZWRpYXRlay5jb20+Cj4gPiBBY2tlZC1ieTogSm9yZ2UgUmFtaXJlei1PcnRpeiA8am9yZ2UucmFt
-aXJlei1vcnRpekBsaW5hcm8ub3JnPgo+ID4gLS0tCj4gCj4gVGhhbmtzLAo+IE1pcXXDqGwKCgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4IE1URCBkaXNjdXNzaW9uIG1haWxpbmcgbGlzdApodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW10ZC8K
+Hi,
+
+On Mon, 2019-04-29 at 09:18 +0200, Alexandre Torgue wrote:
+> Hi
+> 
+> On 4/28/19 8:30 AM, Biao Huang wrote:
+> > The specific clk_csr value can be zero, and
+> > stmmac_clk is necessary for MDC clock which can be set dynamically.
+> > So, change the condition from plat->clk_csr to plat->stmmac_clk to
+> > fix clk_csr can't be zero issue.
+> > 
+> > Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> > ---
+> >   drivers/net/ethernet/stmicro/stmmac/stmmac_main.c |    2 +-
+> >   1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+> > index 818ad88..9e89b94 100644
+> > --- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+> > +++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+> > @@ -4376,7 +4376,7 @@ int stmmac_dvr_probe(struct device *device,
+> >   	 * set the MDC clock dynamically according to the csr actual
+> >   	 * clock input.
+> >   	 */
+> > -	if (!priv->plat->clk_csr)
+> > +	if (priv->plat->stmmac_clk)
+> >   		stmmac_clk_csr_set(priv);
+> >   	else
+> >   		priv->clk_csr = priv->plat->clk_csr;
+> > 
+> 
+> So, as soon as stmmac_clk will be declared, it is no longer possible to 
+> fix a CSR through the device tree ?
+
+let's focus on the condition:
+1. clk_csr may be zero, it should not be the condition. or the clk_csr =
+0 will jump to the wrong block.
+2. Since stmmac_clk_csr_set will get_clk_rate from stmmac_clk,
+the plat->stmmac_clk is a more proper condition.
+
+In some case, it's impossible to get the clk rate of stmmac_clk,
+so it's better to remain the clk_csr flow.
