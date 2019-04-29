@@ -1,55 +1,37 @@
-From: Alexandre Torgue <alexandre.torgue@st.com>
-Subject: Re: [PATCH 2/6] net: stmmac: fix csr_clk can't be zero issue
-Date: Mon, 29 Apr 2019 09:18:41 +0200
-Message-ID: <24f4b268-aa7f-e1f7-59fc-2bc163eb8277@st.com>
-References: <1556433009-25759-1-git-send-email-biao.huang@mediatek.com>
- <1556433009-25759-3-git-send-email-biao.huang@mediatek.com>
+From: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Subject: Re: [RFC PATCH v2 1/1] mtd: rawnand: mtk: Re-license MTK NAND
+ driver as Dual MIT/GPL
+Date: Mon, 29 Apr 2019 09:44:30 +0200
+Message-ID: <20190429094430.7715f7a1@xps13>
+References: <20190425015552.42638-1-xiaolei.li@mediatek.com>
+ <20190425015552.42638-2-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1556433009-25759-3-git-send-email-biao.huang@mediatek.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Biao Huang <biao.huang@mediatek.com>, Jose Abreu <joabreu@synopsys.com>, davem@davemloft.net
-Cc: jianguo.zhang@mediatek.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, yt.shen@mediatek.com, linux-mediatek@lists.infradead.org, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190425015552.42638-2-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, boris.brezillon-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yellowriver2010-PkbjNfxxIARBDgjK7y7TUQ@public.gmane.org, rafal-g1n6cQUeyibVItvQsEIGlw@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi
-
-On 4/28/19 8:30 AM, Biao Huang wrote:
-> The specific clk_csr value can be zero, and
-> stmmac_clk is necessary for MDC clock which can be set dynamically.
-> So, change the condition from plat->clk_csr to plat->stmmac_clk to
-> fix clk_csr can't be zero issue.
-> 
-> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
-> ---
->   drivers/net/ethernet/stmicro/stmmac/stmmac_main.c |    2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-> index 818ad88..9e89b94 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-> +++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-> @@ -4376,7 +4376,7 @@ int stmmac_dvr_probe(struct device *device,
->   	 * set the MDC clock dynamically according to the csr actual
->   	 * clock input.
->   	 */
-> -	if (!priv->plat->clk_csr)
-> +	if (priv->plat->stmmac_clk)
->   		stmmac_clk_csr_set(priv);
->   	else
->   		priv->clk_csr = priv->plat->clk_csr;
-> 
-
-So, as soon as stmmac_clk will be declared, it is no longer possible to 
-fix a CSR through the device tree ?
+SGkgWGlhb2xlaSwKClhpYW9sZWkgTGkgPHhpYW9sZWkubGlAbWVkaWF0ZWsuY29tPiB3cm90ZSBv
+biBUaHUsIDI1IEFwciAyMDE5IDA5OjU1OjUyCiswODAwOgoKPiBJdCBpcyBhbGxvd2VkIHRvIHVz
+ZSBNVEsgTkFORCBkcml2ZXIgd2l0aCBHUEwtMi4wIG9yIE1JVCBsaWNlbnNlLgo+IEJ1dCBub3cg
+aXQgaXMgb25seSBsaWNlbnNlZCBhcyBHUEwtMi4wLgo+IFNvIHJlLWxpY2Vuc2UgaXQgYXMgZHVh
+bCBNSVQvR1BMLgo+IAoKWW91IGFsc28gcmVtb3ZlIHRoZSBsaWNlbnNlIHRleHQgYW5kIHJlcGxh
+Y2UgaXQgd2l0aCBhbiBTUERYIHRhZywKcGxlYXNlIGRlc2NyaWJlIHRoaXMgY2hhbmdlIHRvby4K
+Cj4gU2lnbmVkLW9mZi1ieTogWGlhb2xlaSBMaSA8eGlhb2xlaS5saUBtZWRpYXRlay5jb20+Cj4g
+QWNrZWQtYnk6IEpvcmdlIFJhbWlyZXotT3J0aXogPGpvcmdlLnJhbWlyZXotb3J0aXpAbGluYXJv
+Lm9yZz4KPiAtLS0KClRoYW5rcywKTWlxdcOobAoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1l
+ZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
