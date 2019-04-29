@@ -1,11 +1,13 @@
 From: Xiaolei Li <xiaolei.li@mediatek.com>
-Subject: [PATCH 0/5] MTK NAND driver improvements and fixes
-Date: Mon, 29 Apr 2019 14:38:29 +0800
-Message-ID: <20190429063834.45967-1-xiaolei.li@mediatek.com>
+Subject: [PATCH 3/5] mtd: rawnand: mtk: Add validity check for CE# pin setting
+Date: Mon, 29 Apr 2019 14:38:32 +0800
+Message-ID: <20190429063834.45967-4-xiaolei.li@mediatek.com>
+References: <20190429063834.45967-1-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
+In-Reply-To: <20190429063834.45967-1-xiaolei.li@mediatek.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
  <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
@@ -19,60 +21,51 @@ To: miquel.raynal@bootlin.com, richard@nod.at
 Cc: linux-mediatek@lists.infradead.org, xiaolei.li@mediatek.com, linux-mtd@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello Maintainers,
+Currently, we only check how many CE# pins are set in device tree.
+But it should be necessary to check whether CE# pin setting is
+duplicated or if CE# pin index exceeds the maximum CE# number that
+controller supports.
 
-The following patch set is used to do MTK NAND driver improvements and
-bug fixes, include:
-* Fix low level time calculation of read/write cycle to meet tRC_min
-  and tWC_min requirements.
-* Refine RE# pulse width calculation and data sampling to improve read
-  performance.
-* Add CS validity check.
-* Fix oob buffer pointer wrongly setting and empty page threshold setting.
+So, add validity check to avoid these invalid settings.
 
-Changes relative to:
---------------------
+Signed-off-by: Xiaolei Li <xiaolei.li@mediatek.com>
+---
+ drivers/mtd/nand/raw/mtk_nand.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-tree    : git://git.infradead.org/linux-mtd.git
-branch  : master
-commit  :
-        'commit 3e35730dd754 ("mtd: powernv_flash: Fix device
-         registration error")
-
-Tests:
-------
-
-* ubifs and jffs2 are validated on NAND device MT29F16G08ADBCA by
-  'dd' command.
-* all drivers/mtd/tests/* pass.
-* speed test:
-  eraseblock write speed is 11087 KiB/s
-  eraseblock read speed is 19986 KiB/s
-  page write speed is 10689 KiB/s
-  page read speed is 18724 KiB/s
-  2 page write speed is 10611 KiB/s
-  2 page read speed is 18713 KiB/s
-  erase speed is 103696 KiB/s
-  2x multi-block erase speed is 354248 KiB/s
-  4x multi-block erase speed is 350459 KiB/s
-  8x multi-block erase speed is 356173 KiB/s
-  16x multi-block erase speed is 356173 KiB/s
-  32x multi-block erase speed is 358120 KiB/s
-  64x multi-block erase speed is 356173 KiB/s
-
-Xiaolei Li (5):
-  mtd: rawnand: mtk: Correct low level time calculation of r/w cycle
-  mtd: rawnand: mtk: Improve data sampling timing for read cycle
-  mtd: rawnand: mtk: Add validity check for CE# pin setting
-  mtd: rawnand: mtk: Fix wrongly assigned oob buffer pointer issue
-  mtd: rawnand: mtk: Setup empty page threshold correctly
-
- drivers/mtd/nand/raw/mtk_nand.c | 73 ++++++++++++++++++++++++++-------
- 1 file changed, 59 insertions(+), 14 deletions(-)
-
---
+diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
+index a2f7af536380..7a5e8c9cf61b 100644
+--- a/drivers/mtd/nand/raw/mtk_nand.c
++++ b/drivers/mtd/nand/raw/mtk_nand.c
+@@ -162,6 +162,8 @@ struct mtk_nfc {
+ 	struct list_head chips;
+ 
+ 	u8 *buffer;
++
++	unsigned long assigned_cs;
+ };
+ 
+ /*
+@@ -1351,6 +1353,17 @@ static int mtk_nfc_nand_chip_init(struct device *dev, struct mtk_nfc *nfc,
+ 			dev_err(dev, "reg property failure : %d\n", ret);
+ 			return ret;
+ 		}
++
++		if (tmp >= MTK_NAND_MAX_NSELS) {
++			dev_err(dev, "invalid CS: %u\n", tmp);
++			return -EINVAL;
++		}
++
++		if (test_and_set_bit(tmp, &nfc->assigned_cs)) {
++			dev_err(dev, "CS %u already assigned\n", tmp);
++			return -EINVAL;
++		}
++
+ 		chip->sels[i] = tmp;
+ 	}
+ 
+-- 
 2.18.0
-
 
 
 ______________________________________________________
