@@ -1,8 +1,7 @@
 From: Xiaolei Li <xiaolei.li@mediatek.com>
-Subject: [PATCH 4/5] mtd: rawnand: mtk: Fix wrongly assigned oob buffer
- pointer issue
-Date: Mon, 29 Apr 2019 14:38:33 +0800
-Message-ID: <20190429063834.45967-5-xiaolei.li@mediatek.com>
+Subject: [PATCH 5/5] mtd: rawnand: mtk: Setup empty page threshold correctly
+Date: Mon, 29 Apr 2019 14:38:34 +0800
+Message-ID: <20190429063834.45967-6-xiaolei.li@mediatek.com>
 References: <20190429063834.45967-1-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,79 +21,45 @@ To: miquel.raynal@bootlin.com, richard@nod.at
 Cc: linux-mediatek@lists.infradead.org, xiaolei.li@mediatek.com, linux-mtd@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-One main goal of the function mtk_nfc_update_ecc_stats is to check
-whether sectors are all empty. If they are empty, set these sectors's
-data buffer and oob buffer as 0xff.
+MTK NAND Controller has the ability to check whether read data are
+mostly 0xff by comparing zero bit conut of read data with empty
+threshold automatically.
 
-But now, the sector oob buffer pointer is wrongly assigned. We always
-do memset from sector 0.
+But now we never set this threshold and always make it be default value
+which is 10.
 
-To fix this issue, pass start secotr number to make oob buffer pointer
-be properly assigned.
+This patch fixes this problem by setting empty threshold as the product
+of read sector count and ecc strength.
 
 Fixes: 93db446a424c ("mtd: nand: move raw NAND related code to the raw/ subdir")
 Signed-off-by: Xiaolei Li <xiaolei.li@mediatek.com>
 ---
- drivers/mtd/nand/raw/mtk_nand.c | 21 ++++++++++-----------
- 1 file changed, 10 insertions(+), 11 deletions(-)
+ drivers/mtd/nand/raw/mtk_nand.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
-index 7a5e8c9cf61b..cf5e50e704ae 100644
+index cf5e50e704ae..675d4faa3480 100644
 --- a/drivers/mtd/nand/raw/mtk_nand.c
 +++ b/drivers/mtd/nand/raw/mtk_nand.c
-@@ -873,19 +873,21 @@ static int mtk_nfc_write_oob_std(struct nand_chip *chip, int page)
- 	return mtk_nfc_write_page_raw(chip, NULL, 1, page);
- }
+@@ -94,6 +94,7 @@
+ #define NFI_MASTER_STA		(0x224)
+ #define		MASTER_STA_MASK		(0x0FFF)
+ #define NFI_EMPTY_THRESH	(0x23C)
++#define		EMPTY_THRESH_MASK	GENMASK(7, 0)
  
--static int mtk_nfc_update_ecc_stats(struct mtd_info *mtd, u8 *buf, u32 sectors)
-+static int mtk_nfc_update_ecc_stats(struct mtd_info *mtd, u8 *buf, u32 start,
-+				    u32 sectors)
- {
- 	struct nand_chip *chip = mtd_to_nand(mtd);
- 	struct mtk_nfc *nfc = nand_get_controller_data(chip);
- 	struct mtk_nfc_nand_chip *mtk_nand = to_mtk_nand(chip);
- 	struct mtk_ecc_stats stats;
-+	u32 reg_size = mtk_nand->fdm.reg_size;
- 	int rc, i;
- 
- 	rc = nfi_readl(nfc, NFI_STA) & STA_EMP_PAGE;
- 	if (rc) {
- 		memset(buf, 0xff, sectors * chip->ecc.size);
- 		for (i = 0; i < sectors; i++)
--			memset(oob_ptr(chip, i), 0xff, mtk_nand->fdm.reg_size);
-+			memset(oob_ptr(chip, start + i), 0xff, reg_size);
- 		return 0;
+ #define MTK_NAME		"mtk-nand"
+ #define KB(x)			((x) * 1024UL)
+@@ -931,6 +932,10 @@ static int mtk_nfc_read_subpage(struct mtd_info *mtd, struct nand_chip *chip,
+ 		return -EINVAL;
  	}
  
-@@ -905,7 +907,7 @@ static int mtk_nfc_read_subpage(struct mtd_info *mtd, struct nand_chip *chip,
- 	u32 spare = mtk_nand->spare_per_sector;
- 	u32 column, sectors, start, end, reg;
- 	dma_addr_t addr;
--	int bitflips;
-+	int bitflips = 0;
- 	size_t len;
- 	u8 *buf;
- 	int rc;
-@@ -972,14 +974,11 @@ static int mtk_nfc_read_subpage(struct mtd_info *mtd, struct nand_chip *chip,
- 	if (rc < 0) {
- 		dev_err(nfc->dev, "subpage done timeout\n");
- 		bitflips = -EIO;
--	} else {
--		bitflips = 0;
--		if (!raw) {
--			rc = mtk_ecc_wait_done(nfc->ecc, ECC_DECODE);
--			bitflips = rc < 0 ? -ETIMEDOUT :
--				mtk_nfc_update_ecc_stats(mtd, buf, sectors);
--			mtk_nfc_read_fdm(chip, start, sectors);
--		}
-+	} else if (!raw) {
-+		rc = mtk_ecc_wait_done(nfc->ecc, ECC_DECODE);
-+		bitflips = rc < 0 ? -ETIMEDOUT :
-+			mtk_nfc_update_ecc_stats(mtd, buf, start, sectors);
-+		mtk_nfc_read_fdm(chip, start, sectors);
- 	}
- 
- 	dma_unmap_single(nfc->dev, addr, len, DMA_FROM_DEVICE);
++	/* Setup empty threshold */
++	reg = max(sectors * chip->ecc.strength, EMPTY_THRESH_MASK);
++	nfi_writel(nfc, reg, NFI_EMPTY_THRESH);
++
+ 	reg = nfi_readw(nfc, NFI_CNFG);
+ 	reg |= CNFG_READ_EN | CNFG_DMA_BURST_EN | CNFG_AHB;
+ 	if (!raw) {
 -- 
 2.18.0
 
