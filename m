@@ -1,39 +1,37 @@
 From: Biao Huang <biao.huang@mediatek.com>
-Subject: [PATCH 2/4] net: stmmac: fix csr_clk can't be zero issue
-Date: Mon, 29 Apr 2019 14:15:54 +0800
-Message-ID: <1556518556-32464-3-git-send-email-biao.huang@mediatek.com>
+Subject: [PATCH 3/4] net: stmmac: write the modified value back to MTL_OPERATION_MODE
+Date: Mon, 29 Apr 2019 14:15:55 +0800
+Message-ID: <1556518556-32464-4-git-send-email-biao.huang@mediatek.com>
 References: <1556518556-32464-1-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <netdev-owner@vger.kernel.org>
 In-Reply-To: <1556518556-32464-1-git-send-email-biao.huang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Sender: netdev-owner@vger.kernel.org
 To: Jose Abreu <joabreu@synopsys.com>, davem@davemloft.net
 Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, biao.huang@mediatek.com, jianguo.zhang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-The specific clk_csr value can be zero, and
-stmmac_clk is necessary for MDC clock which can be set dynamically.
-So, change the condition from plat->clk_csr to plat->stmmac_clk to
-fix clk_csr can't be zero issue.
+The value of MTL_OPERATION_MODE is modified, and should
+be write back to the register.
 
 Signed-off-by: Biao Huang <biao.huang@mediatek.com>
 ---
- drivers/net/ethernet/stmicro/stmmac/stmmac_main.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c |    2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-index 818ad88..9e89b94 100644
---- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-@@ -4376,7 +4376,7 @@ int stmmac_dvr_probe(struct device *device,
- 	 * set the MDC clock dynamically according to the csr actual
- 	 * clock input.
- 	 */
--	if (!priv->plat->clk_csr)
-+	if (priv->plat->stmmac_clk)
- 		stmmac_clk_csr_set(priv);
- 	else
- 		priv->clk_csr = priv->plat->clk_csr;
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
+index 7e5d5db..b4bb562 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
+@@ -192,6 +192,8 @@ static void dwmac4_prog_mtl_tx_algorithms(struct mac_device_info *hw,
+ 	default:
+ 		break;
+ 	}
++
++	writel(value, ioaddr + MTL_OPERATION_MODE);
+ }
+ 
+ static void dwmac4_set_mtl_tx_queue_weight(struct mac_device_info *hw,
 -- 
 1.7.9.5
