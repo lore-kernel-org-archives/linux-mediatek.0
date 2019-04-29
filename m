@@ -1,36 +1,82 @@
-From: Jose Abreu <Jose.Abreu@synopsys.com>
-Subject: RE: [PATCH 1/2] net-next: stmmac: add support for hash table size
- 128/256 in dwmac4
-Date: Mon, 29 Apr 2019 09:00:53 +0000
-Message-ID: <78EB27739596EE489E55E81C33FEC33A0B46DE20@DE02WEMBXB.internal.synopsys.com>
-References: <1556519724-1576-1-git-send-email-biao.huang@mediatek.com>
- <1556519724-1576-2-git-send-email-biao.huang@mediatek.com>
+From: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Subject: Re: [PATCH 1/5] mtd: rawnand: mtk: Correct low level time
+ calculation of r/w cycle
+Date: Mon, 29 Apr 2019 11:03:41 +0200
+Message-ID: <20190429110341.208c096e@xps13>
+References: <20190429063834.45967-1-xiaolei.li@mediatek.com>
+ <20190429063834.45967-2-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1556519724-1576-2-git-send-email-biao.huang@mediatek.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Biao Huang <biao.huang@mediatek.com>, "davem@davemloft.net" <davem@davemloft.net>
-Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "linux-stm32@st-md-mailman.stormreply.com" <linux-stm32@st-md-mailman.stormreply.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "yt.shen@mediatek.com" <yt.shen@mediatek.com>, "jianguo.zhang@mediatek.com" <jianguo.zhang@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190429063834.45967-2-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: richard-/L3Ra7n9ekc@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Biao Huang <biao.huang@mediatek.com>
-Date: Mon, Apr 29, 2019 at 07:35:23
-
-> +#define GMAC_HASH_TAB(x)		(0x10 + x * 4)
-
-You need to guard x here with parenthesis.
-
->  	void __iomem *ioaddr =3D (void __iomem *)dev->base_addr;
-> -	unsigned int value =3D 0;
-> +	unsigned int value;
-> +	int i;
-> +	int numhashregs =3D (hw->multicast_filter_bins >> 5);
-> +	int mcbitslog2 =3D hw->mcast_bits_log2;
-
-Reverse Christmas tree order here please.
-
-Thanks,
-Jose Miguel Abreu
+SGkgWGlhb2xlaSwKClhpYW9sZWkgTGkgPHhpYW9sZWkubGlAbWVkaWF0ZWsuY29tPiB3cm90ZSBv
+biBNb24sIDI5IEFwciAyMDE5IDE0OjM4OjMwCiswODAwOgoKPiBBdCBwcmVzZW50LCB0aGUgZmxv
+dyBvZiBjYWxjdWxhdGluZyBBQyB0aW1pbmcgb2YgcmVhZC93cml0ZSBjeWNsZSBpbiBTRFIKPiBt
+b2RlIGlzIHRoYXQ6Cj4gQXQgZmlyc3QsIGNhbGN1bGF0ZSBoaWdoIGhvbGQgdGltZSB3aGljaCBp
+cyB2YWxpZCBmb3IgYm90aCByZWFkIGFuZCB3cml0ZQo+IGN5Y2xlIHVzaW5nIHRoZSBtYXggdmFs
+dWUgYmV0d2VlbiB0UkVIX21pbiBhbmQgdFdIX21pbi4KPiBTZWNvbmRseSwgY2FsY3VsYXRlIFdF
+IyBwdWxzZSB3aWR0aCB1c2luZyB0V1BfbWluLgo+IFRocmlkbHksIGNhbGN1bGF0ZSBSRSMgcHVs
+c2Ugd2lkdGggdXNpbmcgdGhlIGJpZ2dlciBvbmUgYmV0d2VlbiB0UkVBX21heAo+IGFuZCB0UlBf
+bWluLgo+IAo+IEJ1dCBOQU5EIFNQRUMgc2hvd3MgdGhhdCBDb250cm9sbGVyIHNob3VsZCBhbHNv
+IG1lZXQgd3JpdGUvcmVhZCBjeWNsZSB0aW1lLgo+IFRoYXQgaXMgd3JpdGUgY3ljbGUgdGltZSBz
+aG91bGQgYmUgbW9yZSB0aGFuIHRXQ19taW4gYW5kIHJlYWQgY3ljbGUgc2hvdWxkCj4gYmUgbW9y
+ZSB0aGFuIHRSQ19taW4uIE9idmlvdXNseSwgd2UgZG8gbm90IGFjaGlldmUgdGhhdCBub3cuCj4g
+Cj4gVGhpcyBwYXRjaCBjb3JyZWN0cyB0aGUgbG93IGxldmVsIHRpbWUgY2FsY3VsYXRpb24gdG8g
+bWVldCBtaW5pbXVtCj4gcmVhZC93cml0ZSBjeWNsZSB0aW1lIHJlcXVpcmVkLiBBZnRlciBnZXR0
+aW5nIHRoZSBoaWdoIGhvbGQgdGltZSwgV0UjIGxvdwo+IGxldmVsIHRpbWUgd2lsbCBiZSBwcm9t
+aXNlZCB0byBtZWV0IHRXUF9taW4gYW5kIHRXQ19taW4gcmVxdWlyZW1lbnQsCj4gYW5kIFJFIyBs
+b3cgbGV2ZWwgdGltZSB3aWxsIGJlIHByb21pc2VkIHRvIG1lZXQgdFJFQV9tYXgsIHRSUF9taW4g
+YW5kCj4gdFJDX21pbiByZXF1aXJlbWVudC4KPiAKPiBGaXhlczogOTNkYjQ0NmE0MjRjICgibXRk
+OiBuYW5kOiBtb3ZlIHJhdyBOQU5EIHJlbGF0ZWQgY29kZSB0byB0aGUgcmF3LyBzdWJkaXIiKQoK
+VGhpcyBpcyBkZWZpbml0ZWx5IG5vdCB0aGUgZmF1bHR5IHBhdGNoLiBQbGVhc2UgdXNlIC0tZm9s
+bG93IHdoZW4Kc2VhcmNoaW5nIGZvciB0aGUgY3VscHJpdCwgdG8gYXZvaWQgYmVpbmcgYmxvY2tl
+ZCBieSB0aGUKcmVuYW1pbmcvbW92aW5nIHdvcmsuCgpBbHNvIGEgQ2M6IHN0YWJsZSBtaWdodCBi
+ZSB3b3J0aC4KCj4gU2lnbmVkLW9mZi1ieTogWGlhb2xlaSBMaSA8eGlhb2xlaS5saUBtZWRpYXRl
+ay5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvbXRkL25hbmQvcmF3L210a19uYW5kLmMgfCAxNCArKysr
+KysrKysrKy0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgMTEgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlv
+bnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tdGQvbmFuZC9yYXcvbXRrX25hbmQuYyBi
+L2RyaXZlcnMvbXRkL25hbmQvcmF3L210a19uYW5kLmMKPiBpbmRleCBiNmI0NjAyZjUxMzIuLmRk
+ODU1Zjg2MGE0YiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL210ZC9uYW5kL3Jhdy9tdGtfbmFuZC5j
+Cj4gKysrIGIvZHJpdmVycy9tdGQvbmFuZC9yYXcvbXRrX25hbmQuYwo+IEBAIC01MDgsNyArNTA4
+LDcgQEAgc3RhdGljIGludCBtdGtfbmZjX3NldHVwX2RhdGFfaW50ZXJmYWNlKHN0cnVjdCBuYW5k
+X2NoaXAgKmNoaXAsIGludCBjc2xpbmUsCj4gIHsKPiAgCXN0cnVjdCBtdGtfbmZjICpuZmMgPSBu
+YW5kX2dldF9jb250cm9sbGVyX2RhdGEoY2hpcCk7Cj4gIAljb25zdCBzdHJ1Y3QgbmFuZF9zZHJf
+dGltaW5ncyAqdGltaW5nczsKPiAtCXUzMiByYXRlLCB0cG9lY3MsIHRwcmVjcywgdGMyciwgdHcy
+ciwgdHdoLCB0d3N0LCB0cmx0Owo+ICsJdTMyIHJhdGUsIHRwb2VjcywgdHByZWNzLCB0YzJyLCB0
+dzJyLCB0d2gsIHR3c3QgPSAwLCB0cmx0ID0gMDsKPiAgCj4gIAl0aW1pbmdzID0gbmFuZF9nZXRf
+c2RyX3RpbWluZ3MoY29uZik7Cj4gIAlpZiAoSVNfRVJSKHRpbWluZ3MpKQo+IEBAIC01NDQsMTEg
+KzU0NCwxOSBAQCBzdGF0aWMgaW50IG10a19uZmNfc2V0dXBfZGF0YV9pbnRlcmZhY2Uoc3RydWN0
+IG5hbmRfY2hpcCAqY2hpcCwgaW50IGNzbGluZSwKPiAgCXR3aCA9IERJVl9ST1VORF9VUCh0d2gg
+KiByYXRlLCAxMDAwMDAwKSAtIDE7Cj4gIAl0d2ggJj0gMHhmOwo+ICAKPiAtCXR3c3QgPSB0aW1p
+bmdzLT50V1BfbWluIC8gMTAwMDsKPiArCS8qIENhbGN1bGF0ZSBtaW4gbG93IGxldmVsIHRpbWlu
+ZyBmb3Igd3JpdGUgY3ljbGUgKi8KPiArCWlmICgodHdoICsgMSkgKiAxMDAwMDAwIC8gcmF0ZSA8
+IHRpbWluZ3MtPnRXQ19taW4gLyAxMDAwKQo+ICsJCXR3c3QgPSAodGltaW5ncy0+dFdDX21pbiAv
+IDEwMDAgLSAodHdoICsgMSkgKiAxMDAwMDAwIC8gcmF0ZSkKPiArCQkJKiAxMDAwOwo+ICsJdHdz
+dCA9IG1heCh0aW1pbmdzLT50V1BfbWluLCB0d3N0KSAvIDEwMDA7Cj4gIAl0d3N0ID0gRElWX1JP
+VU5EX1VQKHR3c3QgKiByYXRlLCAxMDAwMDAwKSAtIDE7Cj4gIAl0d3N0ICY9IDB4ZjsKPiAgCj4g
+LQl0cmx0ID0gbWF4KHRpbWluZ3MtPnRSRUFfbWF4LCB0aW1pbmdzLT50UlBfbWluKSAvIDEwMDA7
+Cj4gKwkvKiBDYWxjdWxhdGUgbWluIGxvdyBsZXZlbCB0aW1pbmcgZm9yIHJlYWQgY3ljbGUgKi8K
+PiArCWlmICgodHdoICsgMSkgKiAxMDAwMDAwIC8gcmF0ZSA8IHRpbWluZ3MtPnRSQ19taW4gLyAx
+MDAwKQo+ICsJCXRybHQgPSAodGltaW5ncy0+dFJDX21pbiAvIDEwMDAgLSAodHdoICsgMSkgKiAx
+MDAwMDAwIC8gcmF0ZSkKPiArCQkJKiAxMDAwOwo+ICsJdHJsdCA9IG1heDModHJsdCwgdGltaW5n
+cy0+dFJFQV9tYXgsIHRpbWluZ3MtPnRSUF9taW4pIC8gMTAwMDsKPiAgCXRybHQgPSBESVZfUk9V
+TkRfVVAodHJsdCAqIHJhdGUsIDEwMDAwMDApIC0gMTsKPiAgCXRybHQgJj0gMHhmOwo+ICAKCgpX
+aXRoIHRoaXMgZml4ZWQsCgpSZXZpZXdlZC1ieTogTWlxdWVsIFJheW5hbCA8bWlxdWVsLnJheW5h
+bEBib290bGluLmNvbT4KClRoYW5rcywKTWlxdcOobAoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4
+LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
