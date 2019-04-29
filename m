@@ -1,89 +1,50 @@
-From: Alexandre Torgue <alexandre.torgue@st.com>
-Subject: Re: [PATCH 2/6] net: stmmac: fix csr_clk can't be zero issue
-Date: Mon, 29 Apr 2019 10:26:52 +0200
-Message-ID: <738b37cd-4719-9257-18fc-aab1dc7424f4@st.com>
-References: <1556433009-25759-1-git-send-email-biao.huang@mediatek.com>
- <1556433009-25759-3-git-send-email-biao.huang@mediatek.com>
- <24f4b268-aa7f-e1f7-59fc-2bc163eb8277@st.com>
- <1556525353.24897.30.camel@mhfsdcap03>
+From: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [RFC PATCH v3 0/1] Re-license MTK NAND driver
+Date: Mon, 29 Apr 2019 16:51:15 +0800
+Message-ID: <20190429085116.60081-1-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1556525353.24897.30.camel@mhfsdcap03>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: biao huang <biao.huang@mediatek.com>
-Cc: jianguo.zhang@mediatek.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, yt.shen@mediatek.com, Jose Abreu <joabreu@synopsys.com>, linux-mediatek@lists.infradead.org, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, davem@davemloft.net, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org
+Cc: daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yellowriver2010-PkbjNfxxIARBDgjK7y7TUQ@public.gmane.org, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, rafal-g1n6cQUeyibVItvQsEIGlw@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Hello,
 
+Currently, MTK NAND driver is licensed as GPL. And we would like to
+modify and publish it in bootloader with MIT license. So, here we send
+this RFC patch to solicit ACKs from MTK NAND driver authors and
+contributors whether we can re-license MTK NAND driver as dual MIT/GPL.
 
-On 4/29/19 10:09 AM, biao huang wrote:
-> Hi,
-> 
-> On Mon, 2019-04-29 at 09:18 +0200, Alexandre Torgue wrote:
->> Hi
->>
->> On 4/28/19 8:30 AM, Biao Huang wrote:
->>> The specific clk_csr value can be zero, and
->>> stmmac_clk is necessary for MDC clock which can be set dynamically.
->>> So, change the condition from plat->clk_csr to plat->stmmac_clk to
->>> fix clk_csr can't be zero issue.
->>>
->>> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
->>> ---
->>>    drivers/net/ethernet/stmicro/stmmac/stmmac_main.c |    2 +-
->>>    1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
->>> index 818ad88..9e89b94 100644
->>> --- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
->>> +++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
->>> @@ -4376,7 +4376,7 @@ int stmmac_dvr_probe(struct device *device,
->>>    	 * set the MDC clock dynamically according to the csr actual
->>>    	 * clock input.
->>>    	 */
->>> -	if (!priv->plat->clk_csr)
->>> +	if (priv->plat->stmmac_clk)
->>>    		stmmac_clk_csr_set(priv);
->>>    	else
->>>    		priv->clk_csr = priv->plat->clk_csr;
->>>
->>
->> So, as soon as stmmac_clk will be declared, it is no longer possible to
->> fix a CSR through the device tree ?
-> 
-> let's focus on the condition:
-> 1. clk_csr may be zero, it should not be the condition. or the clk_csr =
-> 0 will jump to the wrong block.
-> 2. Since stmmac_clk_csr_set will get_clk_rate from stmmac_clk,
-> the plat->stmmac_clk is a more proper condition.
-> 
+Thanks and looking forward to your reply,
+Xiaolei
 
-Ok, but here you remove one possibility: stmmac_clk and clk_csr defined. 
-no ?
+Patch v3:
+---------
+- Add license text replacement description in commit log.
 
-Other way could be the following code + initialize priv->plat->clk_csr 
-with a non null value before read it in device tree (in stmmac_platform).
+Patch v2:
+---------
+- Add Ryder, Rafal, Wen in CC list.
+- Introduce why we want to re-license MTK NAND driver.
 
-if (priv->plat->clk_csr >= 0)
-	priv->clk_csr = priv->plat->clk_csr;
-else
-	stmmac_clk_csr_set(priv);
+Xiaolei Li (1):
+  mtd: rawnand: mtk: Re-license MTK NAND driver as Dual MIT/GPL
 
+ drivers/mtd/nand/raw/mtk_ecc.c  | 12 ++----------
+ drivers/mtd/nand/raw/mtk_ecc.h  |  4 +---
+ drivers/mtd/nand/raw/mtk_nand.c | 12 ++----------
+ 3 files changed, 5 insertions(+), 23 deletions(-)
 
-
-> In some case, it's impossible to get the clk rate of stmmac_clk,
-> so it's better to remain the clk_csr flow.
-> 
-> 
-> 
+-- 
+2.18.0
