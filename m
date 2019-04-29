@@ -1,118 +1,36 @@
-From: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [RFC PATCH v3 1/1] mtd: rawnand: mtk: Re-license MTK NAND driver as
- Dual MIT/GPL
-Date: Mon, 29 Apr 2019 16:51:16 +0800
-Message-ID: <20190429085116.60081-2-xiaolei.li@mediatek.com>
-References: <20190429085116.60081-1-xiaolei.li@mediatek.com>
+From: Jose Abreu <Jose.Abreu@synopsys.com>
+Subject: RE: [PATCH 1/2] net-next: stmmac: add support for hash table size
+ 128/256 in dwmac4
+Date: Mon, 29 Apr 2019 09:00:53 +0000
+Message-ID: <78EB27739596EE489E55E81C33FEC33A0B46DE20@DE02WEMBXB.internal.synopsys.com>
+References: <1556519724-1576-1-git-send-email-biao.huang@mediatek.com>
+ <1556519724-1576-2-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190429085116.60081-1-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org
-Cc: daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yellowriver2010-PkbjNfxxIARBDgjK7y7TUQ@public.gmane.org, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, rafal-g1n6cQUeyibVItvQsEIGlw@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1556519724-1576-2-git-send-email-biao.huang@mediatek.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Biao Huang <biao.huang@mediatek.com>, "davem@davemloft.net" <davem@davemloft.net>
+Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "linux-stm32@st-md-mailman.stormreply.com" <linux-stm32@st-md-mailman.stormreply.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "yt.shen@mediatek.com" <yt.shen@mediatek.com>, "jianguo.zhang@mediatek.com" <jianguo.zhang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-It is allowed to use MTK NAND driver with GPL-2.0 or MIT license.
-But now it is only licensed as GPL-2.0.
-So re-license it as dual MIT/GPL and replace license text with
-SPDX tag.
+From: Biao Huang <biao.huang@mediatek.com>
+Date: Mon, Apr 29, 2019 at 07:35:23
 
-Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Acked-by: Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Acked-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/mtd/nand/raw/mtk_ecc.c  | 12 ++----------
- drivers/mtd/nand/raw/mtk_ecc.h  |  4 +---
- drivers/mtd/nand/raw/mtk_nand.c | 12 ++----------
- 3 files changed, 5 insertions(+), 23 deletions(-)
+> +#define GMAC_HASH_TAB(x)		(0x10 + x * 4)
 
-diff --git a/drivers/mtd/nand/raw/mtk_ecc.c b/drivers/mtd/nand/raw/mtk_ecc.c
-index 6432bd70c3b3..eea0f903bc24 100644
---- a/drivers/mtd/nand/raw/mtk_ecc.c
-+++ b/drivers/mtd/nand/raw/mtk_ecc.c
-@@ -1,17 +1,9 @@
-+// SPDX-License-Identifier: GPL-2.0 OR MIT
- /*
-  * MTK ECC controller driver.
-  * Copyright (C) 2016  MediaTek Inc.
-  * Authors:	Xiaolei Li		<xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-  *		Jorge Ramirez-Ortiz	<jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-  */
- 
- #include <linux/platform_device.h>
-@@ -600,4 +592,4 @@ module_platform_driver(mtk_ecc_driver);
- 
- MODULE_AUTHOR("Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
- MODULE_DESCRIPTION("MTK Nand ECC Driver");
--MODULE_LICENSE("GPL");
-+MODULE_LICENSE("Dual MIT/GPL");
-diff --git a/drivers/mtd/nand/raw/mtk_ecc.h b/drivers/mtd/nand/raw/mtk_ecc.h
-index a455df080952..0e48c36e6ca0 100644
---- a/drivers/mtd/nand/raw/mtk_ecc.h
-+++ b/drivers/mtd/nand/raw/mtk_ecc.h
-@@ -1,12 +1,10 @@
-+/* SPDX-License-Identifier: GPL-2.0 OR MIT */
- /*
-  * MTK SDG1 ECC controller
-  *
-  * Copyright (c) 2016 Mediatek
-  * Authors:	Xiaolei Li		<xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-  *		Jorge Ramirez-Ortiz	<jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-- * This program is free software; you can redistribute it and/or modify it
-- * under the terms of the GNU General Public License version 2 as published
-- * by the Free Software Foundation.
-  */
- 
- #ifndef __DRIVERS_MTD_NAND_MTK_ECC_H__
-diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
-index b6b4602f5132..3cbc25793062 100644
---- a/drivers/mtd/nand/raw/mtk_nand.c
-+++ b/drivers/mtd/nand/raw/mtk_nand.c
-@@ -1,17 +1,9 @@
-+// SPDX-License-Identifier: GPL-2.0 OR MIT
- /*
-  * MTK NAND Flash controller driver.
-  * Copyright (C) 2016 MediaTek Inc.
-  * Authors:	Xiaolei Li		<xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-  *		Jorge Ramirez-Ortiz	<jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-  */
- 
- #include <linux/platform_device.h>
-@@ -1598,6 +1590,6 @@ static struct platform_driver mtk_nfc_driver = {
- 
- module_platform_driver(mtk_nfc_driver);
- 
--MODULE_LICENSE("GPL");
-+MODULE_LICENSE("Dual MIT/GPL");
- MODULE_AUTHOR("Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
- MODULE_DESCRIPTION("MTK Nand Flash Controller Driver");
--- 
-2.18.0
+You need to guard x here with parenthesis.
+
+>  	void __iomem *ioaddr =3D (void __iomem *)dev->base_addr;
+> -	unsigned int value =3D 0;
+> +	unsigned int value;
+> +	int i;
+> +	int numhashregs =3D (hw->multicast_filter_bins >> 5);
+> +	int mcbitslog2 =3D hw->mcast_bits_log2;
+
+Reverse Christmas tree order here please.
+
+Thanks,
+Jose Miguel Abreu
