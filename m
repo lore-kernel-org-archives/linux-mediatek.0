@@ -1,8 +1,8 @@
 From: Xiaolei Li <xiaolei.li@mediatek.com>
-Subject: [PATCH 2/5] mtd: rawnand: mtk: Improve data sampling timing for read
- cycle
-Date: Mon, 29 Apr 2019 14:38:31 +0800
-Message-ID: <20190429063834.45967-3-xiaolei.li@mediatek.com>
+Subject: [PATCH 1/5] mtd: rawnand: mtk: Correct low level time calculation of
+ r/w cycle
+Date: Mon, 29 Apr 2019 14:38:30 +0800
+Message-ID: <20190429063834.45967-2-xiaolei.li@mediatek.com>
 References: <20190429063834.45967-1-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,90 +22,65 @@ To: miquel.raynal@bootlin.com, richard@nod.at
 Cc: linux-mediatek@lists.infradead.org, xiaolei.li@mediatek.com, linux-mtd@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Currently, we expand RE# low level time by choosing the max value
-between RE# pulse width and RE# access time, and sample data at the
-rising edge of RE#.
+At present, the flow of calculating AC timing of read/write cycle in SDR
+mode is that:
+At first, calculate high hold time which is valid for both read and write
+cycle using the max value between tREH_min and tWH_min.
+Secondly, calculate WE# pulse width using tWP_min.
+Thridly, calculate RE# pulse width using the bigger one between tREA_max
+and tRP_min.
 
-Then, if RE# access time is bigger than RE# pulse width, the real
-read cycle time may be more than NAND SPEC required. This makes
-read performance be worse than that expected.
+But NAND SPEC shows that Controller should also meet write/read cycle time.
+That is write cycle time should be more than tWC_min and read cycle should
+be more than tRC_min. Obviously, we do not achieve that now.
 
-This patch improves data sampling timing by calculating RE# low level
-time according to RE# pulse width. If RE# access time is bigger than
-RE# pulse width, then delay sampling data timing.
+This patch corrects the low level time calculation to meet minimum
+read/write cycle time required. After getting the high hold time, WE# low
+level time will be promised to meet tWP_min and tWC_min requirement,
+and RE# low level time will be promised to meet tREA_max, tRP_min and
+tRC_min requirement.
 
-The result of contrast test base on MT2712 evaluat board is as follow.
-
-nand: Micron MT29F16G08ADBCAH4
-nand: 2048 MiB, SLC, erase size: 256 KiB, page size: 4096, OOB size: 224
-
-NFI 2x clock rate: 124800000 HZ.
-
-Test tool: mtd_speedtest.ko
-
-Read speed without this patch:
-mtd_speedtest: page read speed is 14012 KiB/s
-mtd_speedtest: 2 page read speed is 14860 KiB/s
-
-Read speed with this patch:
-mtd_speedtest: page read speed is 18724 KiB/s
-mtd_speedtest: 2 page read speed is 18713 KiB/s
-
+Fixes: 93db446a424c ("mtd: nand: move raw NAND related code to the raw/ subdir")
 Signed-off-by: Xiaolei Li <xiaolei.li@mediatek.com>
 ---
- drivers/mtd/nand/raw/mtk_nand.c | 22 +++++++++++++++++++++-
- 1 file changed, 21 insertions(+), 1 deletion(-)
+ drivers/mtd/nand/raw/mtk_nand.c | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
-index dd855f860a4b..a2f7af536380 100644
+index b6b4602f5132..dd855f860a4b 100644
 --- a/drivers/mtd/nand/raw/mtk_nand.c
 +++ b/drivers/mtd/nand/raw/mtk_nand.c
-@@ -87,6 +87,10 @@
- #define NFI_FDMM(x)		(0xA4 + (x) * sizeof(u32) * 2)
- #define NFI_FDM_MAX_SIZE	(8)
- #define NFI_FDM_MIN_SIZE	(1)
-+#define NFI_DEBUG_CON1		(0x220)
-+#define		STROBE_MASK		GENMASK(4, 3)
-+#define		STROBE_SHIFT		(3)
-+#define		MAX_STROBE_DLY		(3)
- #define NFI_MASTER_STA		(0x224)
- #define		MASTER_STA_MASK		(0x0FFF)
- #define NFI_EMPTY_THRESH	(0x23C)
-@@ -509,6 +513,7 @@ static int mtk_nfc_setup_data_interface(struct nand_chip *chip, int csline,
+@@ -508,7 +508,7 @@ static int mtk_nfc_setup_data_interface(struct nand_chip *chip, int csline,
+ {
  	struct mtk_nfc *nfc = nand_get_controller_data(chip);
  	const struct nand_sdr_timings *timings;
- 	u32 rate, tpoecs, tprecs, tc2r, tw2r, twh, twst = 0, trlt = 0;
-+	u32 tsel, reg;
+-	u32 rate, tpoecs, tprecs, tc2r, tw2r, twh, twst, trlt;
++	u32 rate, tpoecs, tprecs, tc2r, tw2r, twh, twst = 0, trlt = 0;
  
  	timings = nand_get_sdr_timings(conf);
  	if (IS_ERR(timings))
-@@ -556,10 +561,25 @@ static int mtk_nfc_setup_data_interface(struct nand_chip *chip, int csline,
- 	if ((twh + 1) * 1000000 / rate < timings->tRC_min / 1000)
- 		trlt = (timings->tRC_min / 1000 - (twh + 1) * 1000000 / rate)
- 			* 1000;
--	trlt = max3(trlt, timings->tREA_max, timings->tRP_min) / 1000;
-+	trlt = max(trlt, timings->tRP_min) / 1000;
+@@ -544,11 +544,19 @@ static int mtk_nfc_setup_data_interface(struct nand_chip *chip, int csline,
+ 	twh = DIV_ROUND_UP(twh * rate, 1000000) - 1;
+ 	twh &= 0xf;
+ 
+-	twst = timings->tWP_min / 1000;
++	/* Calculate min low level timing for write cycle */
++	if ((twh + 1) * 1000000 / rate < timings->tWC_min / 1000)
++		twst = (timings->tWC_min / 1000 - (twh + 1) * 1000000 / rate)
++			* 1000;
++	twst = max(timings->tWP_min, twst) / 1000;
+ 	twst = DIV_ROUND_UP(twst * rate, 1000000) - 1;
+ 	twst &= 0xf;
+ 
+-	trlt = max(timings->tREA_max, timings->tRP_min) / 1000;
++	/* Calculate min low level timing for read cycle */
++	if ((twh + 1) * 1000000 / rate < timings->tRC_min / 1000)
++		trlt = (timings->tRC_min / 1000 - (twh + 1) * 1000000 / rate)
++			* 1000;
++	trlt = max3(trlt, timings->tREA_max, timings->tRP_min) / 1000;
  	trlt = DIV_ROUND_UP(trlt * rate, 1000000) - 1;
  	trlt &= 0xf;
  
-+	/* Calculate strobe sel */
-+	reg = nfi_readl(nfc, NFI_DEBUG_CON1);
-+	reg &= ~STROBE_MASK;
-+	if ((trlt + 1) * 1000000 / rate < timings->tREA_max / 1000) {
-+		tsel = timings->tREA_max / 1000;
-+		tsel = DIV_ROUND_UP(tsel * rate, 1000000);
-+		tsel -= (trlt + 1);
-+		if (tsel > MAX_STROBE_DLY) {
-+			trlt += tsel - MAX_STROBE_DLY;
-+			tsel = MAX_STROBE_DLY;
-+		}
-+		reg |= tsel << STROBE_SHIFT;
-+	}
-+	nfi_writel(nfc, reg, NFI_DEBUG_CON1);
-+
- 	/*
- 	 * ACCON: access timing control register
- 	 * -------------------------------------
 -- 
 2.18.0
 
