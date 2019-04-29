@@ -1,50 +1,53 @@
-From: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [RFC PATCH v3 0/1] Re-license MTK NAND driver
-Date: Mon, 29 Apr 2019 16:51:15 +0800
-Message-ID: <20190429085116.60081-1-xiaolei.li@mediatek.com>
+From: Jose Abreu <Jose.Abreu@synopsys.com>
+Subject: RE: [PATCH 1/4] net: stmmac: update rx tail pointer register to fix
+ rx dma hang issue.
+Date: Mon, 29 Apr 2019 08:51:39 +0000
+Message-ID: <78EB27739596EE489E55E81C33FEC33A0B46DDF0@DE02WEMBXB.internal.synopsys.com>
+References: <1556518556-32464-1-git-send-email-biao.huang@mediatek.com>
+ <1556518556-32464-2-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org
-Cc: daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yellowriver2010-PkbjNfxxIARBDgjK7y7TUQ@public.gmane.org, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, rafal-g1n6cQUeyibVItvQsEIGlw@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1556518556-32464-2-git-send-email-biao.huang@mediatek.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Biao Huang <biao.huang@mediatek.com>, "davem@davemloft.net" <davem@davemloft.net>
+Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "linux-stm32@st-md-mailman.stormreply.com" <linux-stm32@st-md-mailman.stormreply.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "yt.shen@mediatek.com" <yt.shen@mediatek.com>, "jianguo.zhang@mediatek.com" <jianguo.zhang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello,
+From: Biao Huang <biao.huang@mediatek.com>
+Date: Mon, Apr 29, 2019 at 07:15:53
 
-Currently, MTK NAND driver is licensed as GPL. And we would like to
-modify and publish it in bootloader with MIT license. So, here we send
-this RFC patch to solicit ACKs from MTK NAND driver authors and
-contributors whether we can re-license MTK NAND driver as dual MIT/GPL.
+> Currently we will not update the receive descriptor tail pointer in
+> stmmac_rx_refill. Rx dma will think no available descriptors and stop
+> once received packets exceed DMA_RX_SIZE, so that the rx only test will f=
+ail.
+>=20
+> Update the receive tail pointer in stmmac_rx_refill to add more descripto=
+rs
+> to the rx channel, so packets can be received continually
+>=20
+> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> ---
+>  drivers/net/ethernet/stmicro/stmmac/stmmac_main.c |    3 +++
+>  1 file changed, 3 insertions(+)
+>=20
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/=
+net/ethernet/stmicro/stmmac/stmmac_main.c
+> index 97c5e1a..818ad88 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+> @@ -3336,6 +3336,9 @@ static inline void stmmac_rx_refill(struct stmmac_p=
+riv *priv, u32 queue)
+>  		entry =3D STMMAC_GET_ENTRY(entry, DMA_RX_SIZE);
+>  	}
+>  	rx_q->dirty_rx =3D entry;
+> +	stmmac_set_rx_tail_ptr(priv, priv->ioaddr,
+> +			       rx_q->dma_rx_phy + (entry * sizeof(struct dma_desc)),
 
-Thanks and looking forward to your reply,
-Xiaolei
+I think you can just use the "rx_q->rx_tail_addr" here. It'll always=20
+trigger a poll demand for the channel.
 
-Patch v3:
----------
-- Add license text replacement description in commit log.
-
-Patch v2:
----------
-- Add Ryder, Rafal, Wen in CC list.
-- Introduce why we want to re-license MTK NAND driver.
-
-Xiaolei Li (1):
-  mtd: rawnand: mtk: Re-license MTK NAND driver as Dual MIT/GPL
-
- drivers/mtd/nand/raw/mtk_ecc.c  | 12 ++----------
- drivers/mtd/nand/raw/mtk_ecc.h  |  4 +---
- drivers/mtd/nand/raw/mtk_nand.c | 12 ++----------
- 3 files changed, 5 insertions(+), 23 deletions(-)
-
--- 
-2.18.0
+Thanks,
+Jose Miguel Abreu
