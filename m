@@ -1,86 +1,78 @@
-From: Nicolas Boichat <drinkcat@chromium.org>
-Subject: [PATCH 2/2] pinctrl: mediatek: Update cur_mask in mask/mask ops
-Date: Mon, 29 Apr 2019 11:55:15 +0800
-Message-ID: <20190429035515.73611-3-drinkcat@chromium.org>
-References: <20190429035515.73611-1-drinkcat@chromium.org>
+From: biao huang <biao.huang@mediatek.com>
+Subject: Re: [PATCH 5/6] net: stmmac: add mdio clause 45 access from mac
+ device for dwmac4
+Date: Mon, 29 Apr 2019 14:05:25 +0800
+Message-ID: <1556517925.24897.17.camel@mhfsdcap03>
+References: <1556433009-25759-1-git-send-email-biao.huang@mediatek.com>
+         <1556433009-25759-6-git-send-email-biao.huang@mediatek.com>
+         <20190428163705.GH23059@lunn.ch>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190429035515.73611-1-drinkcat@chromium.org>
+In-Reply-To: <20190428163705.GH23059@lunn.ch>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-mediatek@lists.infradead.org
-Cc: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Chuanjia Liu <Chuanjia.Liu@mediatek.com>, evgreen@chromium.org, swboyd@chromium.org
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Jose Abreu <joabreu@synopsys.com>, davem@davemloft.net, Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, jianguo.zhang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-During suspend/resume, mtk_eint_mask may be called while
-wake_mask is active. For example, this happens if a wake-source
-with an active interrupt handler wakes the system:
-irq/pm.c:irq_pm_check_wakeup would disable the interrupt, so
-that it can be handled later on in the resume flow.
+Hi Andrew,
 
-However, this may happen before mtk_eint_do_resume is called:
-in this case, wake_mask is loaded, and cur_mask is restored
-from an older copy, re-enabling the interrupt, and causing
-an interrupt storm (especially for level interrupts).
+On Sun, 2019-04-28 at 18:37 +0200, Andrew Lunn wrote:
+> On Sun, Apr 28, 2019 at 02:30:08PM +0800, Biao Huang wrote:
+> > +static int stmmac_c45_read(struct mii_bus *bus, int phyaddr,
+> > +			   int devad, int prtad)
+> > +{
+> > +	struct net_device *ndev = bus->priv;
+> > +	struct stmmac_priv *priv = netdev_priv(ndev);
+> > +	unsigned int mii_address = priv->hw->mii.addr;
+> > +	unsigned int mii_data = priv->hw->mii.data;
+> > +	u32 v, value;
+> > +	int data;
+> > +
+> > +	if (readl_poll_timeout(priv->ioaddr + mii_address, v, !(v & MII_BUSY),
+> > +			       100, 10000))
+> > +		return -EBUSY;
+> 
+> Hi Biao
+> 
+> readl_poll_timeout() returns an error code. It is better to return
+> that, than make up some other error code. Yes, i know the C22 read
+> returns EBUSY, but we don't need to copy that behaviour into C45.
+> 
+OK, will return error code here.
+> > +
+> > +	value = 0;
+> > +	value |= (prtad << priv->hw->mii.cl45_reg_shift)
+> > +			& priv->hw->mii.cl45_reg_mask;
+> > +	writel(value, priv->ioaddr + mii_data);
+> > +
+> > +	/* delay 2ms to avoid error value of get_phy_c45_devs_in_pkg */
+> > +	mdelay(2);
+> 
+> Please could you explain this a bit more?
+when of_mdiobus_register is invoked,
+the C22 PHY addr information will be obtained in device tree(reg = xx,
+no need through mdiobus),
+but C45 PHY addr should be got through mdiobus->read according to
+current flow.
+    of_mdiobus_register -->
+    of_mdiobus_register_phy -->
+    get_phy_device -->
+    get_phy_id -->
+    get_phy_c45_ids -->
+    get_phy_c45_devs_in_pkg
 
-Instead, we just record mask/unmask changes in cur_mask. This
-also avoids the need to read the current mask in eint_do_suspend,
-and we can remove mtk_eint_chip_read_mask function.
+In my platform, mdio bus read will return 0xffff or 0x0000 for C45 in
+of_mdiobus_register callstack, and that's not the expected value. 
+So that the mdiobus register fails.
 
-Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
----
- drivers/pinctrl/mediatek/mtk-eint.c | 18 ++++--------------
- 1 file changed, 4 insertions(+), 14 deletions(-)
+We took some time to find that only after adding 2ms delay here,
+the read action will be stable and return the expected value.
 
-diff --git a/drivers/pinctrl/mediatek/mtk-eint.c b/drivers/pinctrl/mediatek/mtk-eint.c
-index 737385e86beb807..7e526bcf5e0b55c 100644
---- a/drivers/pinctrl/mediatek/mtk-eint.c
-+++ b/drivers/pinctrl/mediatek/mtk-eint.c
-@@ -113,6 +113,8 @@ static void mtk_eint_mask(struct irq_data *d)
- 	void __iomem *reg = mtk_eint_get_offset(eint, d->hwirq,
- 						eint->regs->mask_set);
- 
-+	eint->cur_mask[d->hwirq >> 5] &= ~mask;
-+
- 	writel(mask, reg);
- }
- 
-@@ -123,6 +125,8 @@ static void mtk_eint_unmask(struct irq_data *d)
- 	void __iomem *reg = mtk_eint_get_offset(eint, d->hwirq,
- 						eint->regs->mask_clr);
- 
-+	eint->cur_mask[d->hwirq >> 5] |= mask;
-+
- 	writel(mask, reg);
- 
- 	if (eint->dual_edge[d->hwirq])
-@@ -217,19 +221,6 @@ static void mtk_eint_chip_write_mask(const struct mtk_eint *eint,
- 	}
- }
- 
--static void mtk_eint_chip_read_mask(const struct mtk_eint *eint,
--				    void __iomem *base, u32 *buf)
--{
--	int port;
--	void __iomem *reg;
--
--	for (port = 0; port < eint->hw->ports; port++) {
--		reg = base + eint->regs->mask + (port << 2);
--		buf[port] = ~readl_relaxed(reg);
--		/* Mask is 0 when irq is enabled, and 1 when disabled. */
--	}
--}
--
- static int mtk_eint_irq_request_resources(struct irq_data *d)
- {
- 	struct mtk_eint *eint = irq_data_get_irq_chip_data(d);
-@@ -384,7 +375,6 @@ static void mtk_eint_irq_handler(struct irq_desc *desc)
- 
- int mtk_eint_do_suspend(struct mtk_eint *eint)
- {
--	mtk_eint_chip_read_mask(eint, eint->base, eint->cur_mask);
- 	mtk_eint_chip_write_mask(eint, eint->base, eint->wake_mask);
- 
- 	return 0;
--- 
-2.21.0.593.g511ec345e18-goog
+did you try C45 support in your platform? I can't tell whether it's a
+common or specified issue.
+
+our version is 4.21a.
+> 
+>        Andrew
