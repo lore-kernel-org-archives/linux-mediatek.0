@@ -1,59 +1,55 @@
-From: Jjian Zhou <jjian.zhou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH] dt-bindings: soc: Add MT8183 emi dt-bindings
-Date: Mon, 29 Apr 2019 15:12:25 +0800
-Message-ID: <1556521945-3045-1-git-send-email-jjian.zhou@mediatek.com>
+From: Alexandre Torgue <alexandre.torgue@st.com>
+Subject: Re: [PATCH 2/6] net: stmmac: fix csr_clk can't be zero issue
+Date: Mon, 29 Apr 2019 09:18:41 +0200
+Message-ID: <24f4b268-aa7f-e1f7-59fc-2bc163eb8277@st.com>
+References: <1556433009-25759-1-git-send-email-biao.huang@mediatek.com>
+ <1556433009-25759-3-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1556433009-25759-3-git-send-email-biao.huang@mediatek.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Biao Huang <biao.huang@mediatek.com>, Jose Abreu <joabreu@synopsys.com>, davem@davemloft.net
+Cc: jianguo.zhang@mediatek.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, yt.shen@mediatek.com, linux-mediatek@lists.infradead.org, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Hi
 
-Add emi dt-bindings of MT8183 in binding document.
+On 4/28/19 8:30 AM, Biao Huang wrote:
+> The specific clk_csr value can be zero, and
+> stmmac_clk is necessary for MDC clock which can be set dynamically.
+> So, change the condition from plat->clk_csr to plat->stmmac_clk to
+> fix clk_csr can't be zero issue.
+> 
+> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> ---
+>   drivers/net/ethernet/stmicro/stmmac/stmmac_main.c |    2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+> index 818ad88..9e89b94 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+> @@ -4376,7 +4376,7 @@ int stmmac_dvr_probe(struct device *device,
+>   	 * set the MDC clock dynamically according to the csr actual
+>   	 * clock input.
+>   	 */
+> -	if (!priv->plat->clk_csr)
+> +	if (priv->plat->stmmac_clk)
+>   		stmmac_clk_csr_set(priv);
+>   	else
+>   		priv->clk_csr = priv->plat->clk_csr;
+> 
 
-Change-Id: I73b44ccc851acb393ef94f00b1484d6a040b4b5e
-Signed-off-by: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- .../bindings/memory-controllers/mediatek,emi.txt   |   19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
-
-diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt b/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
-new file mode 100644
-index 0000000..a19e3b3
---- /dev/null
-+++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
-@@ -0,0 +1,19 @@
-+EMI (External Memory Interface)
-+
-+Required properties:
-+- compatible : must be one of :
-+	"mediatek,mt8183-emi"
-+- reg : the register and size of the EMI block.
-+- interrupts : includes MPU, CGM, ELM.
-+
-+Example:
-+	emi@10219000 {
-+	compatible = "mediatek,mt8183-emi";
-+	reg = <0 0x10219000 0 0x1000>, /* CEN EMI */
-+		  <0 0x10226000 0 0x1000>, /* EMI MPU */
-+		  <0 0x1022d000 0 0x1000>, /* CHA EMI */
-+		  <0 0x10235000 0 0x1000>; /* CHB EMI */
-+	interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_LOW>, /* MPU */
-+			 <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>, /* CGM */
-+			 <GIC_SPI 155 IRQ_TYPE_LEVEL_HIGH>; /* ELM */
-+};
---
-1.7.9.5
+So, as soon as stmmac_clk will be declared, it is no longer possible to 
+fix a CSR through the device tree ?
