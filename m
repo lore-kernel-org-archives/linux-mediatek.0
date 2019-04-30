@@ -1,675 +1,103 @@
-From: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 2/2] mt8183: emi: add bandwidth driver support
-Date: Tue, 30 Apr 2019 09:39:26 +0800
-Message-ID: <1556588366.20107.14.camel@mtksdaap41>
-References: <1556532571-8234-1-git-send-email-jjian.zhou@mediatek.com>
- <1556532571-8234-2-git-send-email-jjian.zhou@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH v4 3/6] dt-bindings: usb: mtu3: add properties about USB
+ Role Switch
+Date: Tue, 30 Apr 2019 14:57:37 +0800
+Message-ID: <1556607457.10179.259.camel@mhfsdcap03>
+References: <1556261237-13823-1-git-send-email-chunfeng.yun@mediatek.com>
+         <1556261237-13823-4-git-send-email-chunfeng.yun@mediatek.com>
+         <20190426204906.GB15074@bogus> <1556453788.10179.224.camel@mhfsdcap03>
+         <CAL_JsqKXKRetoy4u_yAMgS+RA0vaRhzjR0zpLjKMtgRvFHXn7A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1556532571-8234-2-git-send-email-jjian.zhou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jjian Zhou <jjian.zhou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAL_JsqKXKRetoy4u_yAMgS+RA0vaRhzjR0zpLjKMtgRvFHXn7A@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh@kernel.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Linux USB List <linux-usb@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Biju Das <biju.das@bp.renesas.>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Jjian:
-
-On Mon, 2019-04-29 at 18:09 +0800, Jjian Zhou wrote:
-> From: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On Mon, 2019-04-29 at 11:25 -0500, Rob Herring wrote:
+> On Sun, Apr 28, 2019 at 7:16 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
+> >
+> > On Fri, 2019-04-26 at 15:49 -0500, Rob Herring wrote:
+> > > On Fri, Apr 26, 2019 at 02:47:14PM +0800, Chunfeng Yun wrote:
+> > > > Now the USB Role Switch is supported, so add properties about it
+> > > >
+> > > > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > > > ---
+> > > > v4: no changes
+> > > > v3: no changes
+> > > >
+> > > > v2 changes:
+> > > >   1. fix typo
+> > > >   2. refer new binding about connector property
+> > > > ---
+> > > >  .../devicetree/bindings/usb/mediatek,mtu3.txt          | 10 ++++++++--
+> > > >  1 file changed, 8 insertions(+), 2 deletions(-)
+> > > >
+> > > > diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtu3.txt b/Documentation/devicetree/bindings/usb/mediatek,mtu3.txt
+> > > > index 3382b5cb471d..6e004c4a89af 100644
+> > > > --- a/Documentation/devicetree/bindings/usb/mediatek,mtu3.txt
+> > > > +++ b/Documentation/devicetree/bindings/usb/mediatek,mtu3.txt
+> > > > @@ -27,7 +27,9 @@ Optional properties:
+> > > >   - ranges : allows valid 1:1 translation between child's address space and
+> > > >     parent's address space
+> > > >   - extcon : external connector for vbus and idpin changes detection, needed
+> > > > -   when supports dual-role mode.
+> > > > +   when supports dual-role mode; it's consiedered valid for compatibility
+> > > > +   reasons, and not allowed for new bindings, use the property
+> > > > +   usb-role-switch instead.
+> > > >   - vbus-supply : reference to the VBUS regulator, needed when supports
+> > > >     dual-role mode.
+> > > >   - pinctrl-names : a pinctrl state named "default" is optional, and need be
+> > > > @@ -36,7 +38,8 @@ Optional properties:
+> > > >     is not set.
+> > > >   - pinctrl-0 : pin control group
+> > > >     See: Documentation/devicetree/bindings/pinctrl/pinctrl-bindings.txt
+> > > > -
+> > > > + - usb-role-switch : use USB Role Switch to support dual-role switch, but
+> > > > +   not extcon
+> > >
+> > > Coordinate with the Renesas and HiSilicon folks implementing the same
+> > > thing and put this in a common spot.
+> > I'll prepare a patch for it, and CC Biju and Yu
+> >
+> > > However, I think this should not
+> > > even be needed as knowing the controller capabilities (based on the
+> > > compatible) and knowing the type of connector should be enough
+> > > information to tell you if dual role is supported or not.
+> > Some Dual-Role controller drivers already used extcon framework to
+> > handle role switch, if try to support the new USB Role Switch framework,
+> > the driver may want to know which way will be used.
 > 
-> EMI provides interface for get bandwidth  on every 1 miliseconds.
-> Currently, just support GPU bandwidth info.
+> Wouldn't it know by presence of 'extcon' property or not?
+
+non-presence of 'extcon' doesn't mean the driver need USB Role Switch,
+e.g. support manual role switch decided by user, of course, we can check
+some cases and then decide whether need USB Role Switch or not, maybe
+provide a property will make it easier.
+
 > 
-> Change-Id: I515db6194b0978b0d27a51d966c914a0b0f9d362
-> Signed-off-by: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  drivers/memory/Kconfig     |    9 +
->  drivers/memory/Makefile    |    1 +
->  drivers/memory/mtk-emi.c   |  412 ++++++++++++++++++++++++++++++++++++++++++++
->  include/soc/mediatek/emi.h |  116 +++++++++++++
->  4 files changed, 538 insertions(+)
->  create mode 100644 drivers/memory/mtk-emi.c
->  create mode 100644 include/soc/mediatek/emi.h
+> > Sometimes users also want to use dual-role even use the type-A, such as
+> > use sys interface to handle role switch, so only knowing the connector
+> > type can't tell driver which way to use
 > 
-> diff --git a/drivers/memory/Kconfig b/drivers/memory/Kconfig
-> index 2d91b00..6209818 100644
-> --- a/drivers/memory/Kconfig
-> +++ b/drivers/memory/Kconfig
-> @@ -129,6 +129,15 @@ config JZ4780_NEMC
->  	  the Ingenic JZ4780. This controller is used to handle external
->  	  memory devices such as NAND and SRAM.
+> That use case doesn't sound like something that should be in DT
+> though. That would be possible for any controller that supports
+> dual-role. 
+I give manual role switch by sysfs interface a higher priority than
+other ways, if manual switch is enabled, e.g. 'extcon' will be ignored.
+this may be different from other USB dual-role controller drivers.
+
+> Though perhaps that requires some specific Vbus wiring? Or
+> a cable with Vbus disconnected. 
+Yes, some projects use PMIC or Charger to detect Vbus, but some don't
+have Vbus detection circuit, and some even don't provide vbus pin
+
+> Either way, doesn't sound USB compliant.
+Yes, it's more related with customer usage, or cost down, anyway, it's
+better to support cases as many as possible.
+
 > 
-> +config MTK_EMI_MBW
-> +	bool
-> +	depends on ARCH_MEDIATEK || COMPILE_TEST
-> +	help
-> +	  This driver is for MTK EMI control.
-> +	  If unsure, use N.
-> +	  This is the first time emi upstream.
-> +	  Only support emi bw statistics.
-> +
->  config MTK_SMI
->  	bool
->  	depends on ARCH_MEDIATEK || COMPILE_TEST
-> diff --git a/drivers/memory/Makefile b/drivers/memory/Makefile
-> index 90161de..4f8b241 100644
-> --- a/drivers/memory/Makefile
-> +++ b/drivers/memory/Makefile
-> @@ -17,6 +17,7 @@ obj-$(CONFIG_FSL_CORENET_CF)	+= fsl-corenet-cf.o
->  obj-$(CONFIG_FSL_IFC)		+= fsl_ifc.o
->  obj-$(CONFIG_MVEBU_DEVBUS)	+= mvebu-devbus.o
->  obj-$(CONFIG_JZ4780_NEMC)	+= jz4780-nemc.o
-> +obj-$(CONFIG_MTK_EMI_MBW)	+= mtk-emi.o
->  obj-$(CONFIG_MTK_SMI)		+= mtk-smi.o
->  obj-$(CONFIG_DA8XX_DDRCTL)	+= da8xx-ddrctl.o
->  obj-$(CONFIG_PL353_SMC)		+= pl353-smc.o
-> diff --git a/drivers/memory/mtk-emi.c b/drivers/memory/mtk-emi.c
-> new file mode 100644
-> index 0000000..5d00c05
-> --- /dev/null
-> +++ b/drivers/memory/mtk-emi.c
-> @@ -0,0 +1,412 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2015-2016 MediaTek Inc.
-
-No copyright now?
-
-> + * Author: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> + */
-> +
-> +#include <linux/cdev.h>
-> +#include <linux/clk.h>
-> +#include <linux/component.h>
-> +#include <linux/device.h>
-> +#include <linux/err.h>
-> +#include <linux/fs.h>
-> +#include <linux/io.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/of_platform.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/pm_runtime.h>
-> +#include <linux/time.h>
-> +#include <linux/timer.h>
-> +#include <soc/mediatek/emi.h>
-> +
-> +/* 67ms emi bw  */
-> +#define EMI_BW_ARRAY_SIZE	67
-> +
-> +#define MT8173_SMI_LARB_NR	6
-> +#define MT8167_SMI_LARB_NR	3
-> +#define MTK_SMI_LARB_NR_MAX	8
-> +#define MT8173_MMU_EN		0xf00
-> +#define MT8167_MMU_EN		0xfc0
-> +#define MT8167_LARB0_OFF	0
-> +#define MT8167_LARB1_OFF	8
-> +#define MT8167_LARB2_OFF	21
-> +
-> +/*****************************************************************************
-> + *  Type Definitions
-> + *****************************************************************************/
-> +enum DDRTYPE {
-> +	TYPE_LPDDR3 = 1,
-> +	TYPE_LPDDR4,
-> +	TYPE_LPDDR4X
-> +};
-
-Useless, so remove.
-
-> +
-> +enum {
-> +	EMI_BASE_IDX_EMI = 0,
-> +	EMI_BASE_IDX_EMI_CH0,
-> +	EMI_BASE_IDX_EMI_CH1,
-> +
-> +	NR_EMI_BASE_IDX,
-> +};
-
-Useless, so remove.
-
-> +
-> +struct emi_base_addr {
-> +	unsigned int phy_addr;
-> +	unsigned int remap_addr;
-> +};
-
-Useless, so remove.
-
-> +
-> +struct mtk_emi {
-> +	void __iomem *cen_emi_base;
-> +	void __iomem *chn_emi_base[MAX_CH];
-> +	void __iomem *emi_mpu_base;
-
-Useless, so remove.
-
-> +
-> +	struct emi_info_t emi_info;
-
-Useless, so remove.
-
-> +
-> +	struct timer_list emi_bw_timer;
-> +	struct timeval old_tv;
-
-Useless, so remove.
-
-> +
-> +	unsigned long long emi_bw_array[EMI_BW_ARRAY_SIZE];
-> +	int emi_bw_cur_idx;
-> +	int emi_bw_max_idx;
-
-I think emi_bw_max_idx is equal to EMI_BW_ARRAY_SIZE. Why create a
-variable to store a constant?
-
-> +};
-> +
-> +/* because timer can't pass argument, so add the global
-> + * static struct device * for timer callback usage
-> + */
-> +static struct device *emi_dev;
-> +
-> +unsigned long long emi_get_max_bw_in_last_array(struct device *dev,
-> +	unsigned long long arr[], unsigned int size)
-> +{
-> +	unsigned int i = 0;
-> +	unsigned long long max = arr[0];
-> +
-> +	while (i < size) {
-> +		if (arr[i] > max)
-> +			max = arr[i];
-> +		++i;
-> +	}
-> +	return max;
-> +}
-> +
-> +unsigned long long mtk_emi_get_max_bw(void)
-> +{
-> +	struct mtk_emi *emi;
-> +
-> +	if (!emi_dev)
-> +		return 0;
-> +
-> +	emi = dev_get_drvdata(emi_dev);
-
-I think you should pass 'struct device dev' as a parameter and do not
-use a global variable.
-
-> +	return emi_get_max_bw_in_last_array(emi_dev,
-> +		emi->emi_bw_array, ARRAY_SIZE(emi->emi_bw_array));
-> +}
-> +EXPORT_SYMBOL(mtk_emi_get_max_bw);
-> +
-> +void emi_update_bw_array(struct device *dev, unsigned int val)
-> +{
-> +	struct mtk_emi *emi = dev_get_drvdata(emi_dev);
-> +
-> +	if (emi->emi_bw_cur_idx == emi->emi_bw_max_idx) {
-> +		/* remove the first array element */
-> +		memmove(emi->emi_bw_array, emi->emi_bw_array + 1,
-> +			sizeof(unsigned long long) * (emi->emi_bw_max_idx - 1));
-
-I think you need not to do memory copy on this array. You could just do
-as:
-
-emi->emi_bw_cur_idx++;
-if (emi->emi_bw_cur_idx == emi->emi_bw_max_idx)
-	emi->emi_bw_cur_idx = 0;
-
-emi->emi_bw_array[emi->emi_bw_max_idx] = val;
-
-> +		emi->emi_bw_array[emi->emi_bw_max_idx - 1] = val;
-> +	} else
-> +		emi->emi_bw_array[emi->emi_bw_cur_idx++] = val;
-> +}
-> +
-> +static void emi_dump_bw_array(struct device *dev)
-> +{
-> +	int i = 0;
-> +	const int unit = 10;
-> +	struct mtk_emi *emi = dev_get_drvdata(emi_dev);
-> +
-> +	while (i < emi->emi_bw_max_idx) {
-> +		if (i != 0 && i % unit == 0)
-> +			pr_info("\n");
-> +		pr_info("0x%x ", emi->emi_bw_array[i]);
-> +
-> +		++i;
-> +	}
-> +
-> +	pr_info("\n");
-> +}
-> +
-> +static void emi_counter_reset(struct device *dev)
-> +{
-> +	struct mtk_emi *emi = dev_get_drvdata(dev);
-> +
-> +	writel(EMI_BMEN_DEFAULT_VALUE, EMI_BMEN);
-> +	writel(EMI_MSEL_DEFAULT_VALUE, EMI_MSEL);
-> +	writel(EMI_MSEL2_DEFAULT_VALUE, EMI_MSEL2);
-> +	writel(EMI_BMEN2_DEFAULT_VALUE, EMI_BMEN2);
-> +	writel(EMI_BMRW0_DEFAULT_VALUE, EMI_BMRW0);
-> +}
-> +
-> +static void emi_counter_pause(struct device *dev)
-> +{
-> +	struct mtk_emi *emi = dev_get_drvdata(dev);
-> +	const unsigned int value = readl(EMI_BMEN);
-> +
-> +	/* BW monitor */
-> +	writel(value | BUS_MON_PAUSE, EMI_BMEN);
-> +}
-> +
-> +static void emi_counter_continue(struct device *dev)
-> +{
-> +	struct mtk_emi *emi = dev_get_drvdata(dev);
-> +	const unsigned int value = readl(EMI_BMEN);
-> +
-> +	/* BW monitor */
-> +	writel(value & (~BUS_MON_PAUSE), EMI_BMEN);
-> +}
-> +
-> +static void emi_counter_enable(struct device *dev, const unsigned int enable)
-> +{
-> +	unsigned int value, value_set;
-> +	struct mtk_emi *emi = dev_get_drvdata(dev);
-> +
-> +	value = readl(EMI_BMEN);
-> +	if (enable == 0) {	/* disable monitor circuit */
-
-if (!enable)
-
-> +		/*  bit3 =1	bit0 = 0-> clear */
-> +		value_set = (value) | (BUS_MON_IDLE);
-> +		writel(value_set, EMI_BMEN);
-> +
-> +		value_set = ((value) | (BUS_MON_IDLE)) & ~(BUS_MON_EN);
-> +		writel(value_set, EMI_BMEN);
-> +
-> +		value_set = ((value) & ~(BUS_MON_IDLE)) & ~(BUS_MON_EN);
-> +		writel(value_set, EMI_BMEN);
-> +	} else {		/* enable monitor circuit */
-> +		/*  bit3 =0	&   bit0=1 */
-> +		value_set = (value & ~(BUS_MON_IDLE));
-> +		writel(value_set, EMI_BMEN);
-> +
-> +		value_set = (value & ~(BUS_MON_IDLE)) | (BUS_MON_EN);
-> +		writel(value_set, EMI_BMEN);
-> +	}
-> +}
-> +
-> +/*****************************************************************************
-> + *  APIs
-> + *****************************************************************************/
-> +static void mtk_emi_mon_start(struct device *dev)
-> +{
-> +	emi_counter_enable(dev, 0);
-> +	emi_counter_reset(dev);
-> +	emi_counter_enable(dev, 1);
-> +}
-> +
-> +static void mtk_emi_mon_restart(struct device *dev)
-> +{
-> +	emi_counter_continue(dev);
-> +	emi_counter_enable(dev, 0);
-> +	emi_counter_reset(dev);
-> +	emi_counter_enable(dev, 1);
-> +}
-> +
-> +static void mtk_emi_mon_stop(struct device *dev)
-> +{
-> +	emi_counter_pause(dev);
-> +}
-> +
-> +static ssize_t emi_show_max_bw(struct device *dev,
-> +				struct device_attribute *attr, char *buf)
-> +{
-> +	unsigned long long var, bw_cpu;
-> +	unsigned int bw_gpu;
-> +	struct mtk_emi *emi = dev_get_drvdata(dev);
-> +
-> +	if (!dev) {
-> +		pr_warn("dev is null!!\n");
-> +		return 0;
-> +	}
-> +
-> +	var = mtk_emi_get_max_bw();
-> +	bw_gpu = readl(EMI_BWVL_4TH) & 0x7f;
-> +	bw_cpu = readl(EMI_WSCT3);
-> +
-> +	return scnprintf(buf, PAGE_SIZE,
-> +		"gpu_max_bw:%llu(0x%x) EMI_BWVL_4TH:0x%x, cpu:%llu(0x%x)\n",
-> +		var, var, bw_gpu, bw_cpu, bw_cpu);
-> +}
-> +
-> +DEVICE_ATTR(bw,  0440, emi_show_max_bw, NULL);
-> +
-> +static ssize_t emi_dump_bw(struct device *dev, struct device_attribute *attr,
-> +			   char *buf)
-> +{
-> +	unsigned long long var;
-> +
-> +	if (!dev) {
-> +		pr_warn("dev is null!!\n");
-> +		return 0;
-> +	}
-> +
-> +	emi_dump_bw_array(dev);
-> +	var = mtk_emi_get_max_bw();
-> +
-> +	return scnprintf(buf, PAGE_SIZE,
-> +		"\temi_max_bw:%llu(0x%x)\n", var, var);
-> +}
-> +
-> +DEVICE_ATTR(dump_bw,  0440, emi_dump_bw, NULL);
-> +
-> +static int emi_bw_ms = 1;
-> +module_param_named(bw_ms, emi_bw_ms, int, 0664);
-> +
-> +static void emi_bw_timer_callback(struct timer_list *tm)
-> +{
-> +	struct timeval tv;
-> +	unsigned long long val, cur_max;
-> +	struct mtk_emi *emi = dev_get_drvdata(emi_dev);
-> +
-> +	do_gettimeofday(&tv);
-> +
-> +	/* pasue emi monitor for get WACT value*/
-> +	mtk_emi_mon_stop(emi_dev);
-> +
-> +	val = readl(EMI_WSCT4);	/* GPU BW */
-> +	val *= 8;
-> +
-> +	cur_max = mtk_emi_get_max_bw();
-> +	emi_update_bw_array(emi_dev, val);
-> +
-> +	/* set mew timer expires and restart emi monitor */
-> +	emi->old_tv = tv;
-> +	emi->emi_bw_timer.expires = jiffies + msecs_to_jiffies(emi_bw_ms);
-> +
-> +	add_timer(&(emi->emi_bw_timer));
-> +	mtk_emi_mon_restart(emi_dev);
-> +}
-> +
-> +static int emi_probe(struct platform_device *pdev)
-> +{
-> +	struct mtk_emi *emi;
-> +	struct resource *res;
-> +	struct device *dev = &pdev->dev;
-> +	int i, ret;
-> +
-> +	emi = devm_kzalloc(dev, sizeof(*emi), GFP_KERNEL);
-> +	if (!emi)
-> +		return -ENOMEM;
-> +
-> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +	emi->cen_emi_base = devm_ioremap_resource(dev, res);
-> +	if (IS_ERR(emi->cen_emi_base)) {
-> +		pr_err("[EMI] unable to map cen_emi_base\n");
-> +		devm_kfree(dev, emi);
-> +		return -EINVAL;
-> +	}
-> +
-> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 1);
-> +	emi->emi_mpu_base = devm_ioremap_resource(dev, res);
-> +	if (IS_ERR(emi->emi_mpu_base)) {
-> +		pr_err("[EMI] unable to map emi_mpu_base\n");
-> +		devm_kfree(dev, emi);
-> +		return -EINVAL;
-> +	}
-> +
-> +	for (i = 0; i < MAX_CH; i++) {
-> +		res = platform_get_resource(pdev, IORESOURCE_MEM, 2 + i);
-> +		emi->chn_emi_base[i] = devm_ioremap_resource(dev, res);
-> +		if (IS_ERR(emi->chn_emi_base[i])) {
-> +			pr_err("[EMI] unable to map ch%d_emi_base\n", i);
-> +			devm_kfree(dev, emi);
-> +			return -EINVAL;
-> +		}
-> +	}
-> +
-> +	platform_set_drvdata(pdev, emi);
-> +
-> +	emi_dev = dev;
-> +	/* start emi bw monitor */
-> +	mtk_emi_mon_start(dev);
-> +
-> +	emi->emi_bw_max_idx = ARRAY_SIZE(emi->emi_bw_array);
-> +	/* setup timer */
-> +	timer_setup(&(emi->emi_bw_timer), NULL, 0);
-> +	do_gettimeofday(&(emi->old_tv));
-> +
-> +	emi->emi_bw_timer.function = emi_bw_timer_callback;
-> +	emi->emi_bw_timer.expires = jiffies + msecs_to_jiffies(1);
-
-You could set
-
-emi->emi_bw_timer.data = emi;
-
-So timer function could get emi.
-
-Regards,
-CK
-
-> +	add_timer(&(emi->emi_bw_timer));
-> +
-> +	/* debug node */
-> +	ret = device_create_file(dev, &dev_attr_bw);
-> +	if (ret) {
-> +		dev_err(dev, "create bw file failed!\n");
-> +		goto err_create_attr_bw;
-> +	}
-> +	ret = device_create_file(dev, &dev_attr_dump_bw);
-> +	if (ret) {
-> +		dev_err(dev, "create dump_bw file failed!\n");
-> +		goto err_create_attr_dump_bw;
-> +	}
-> +
-> +	return 0;
-> +
-> +err_create_attr_dump_bw:
-> +	del_timer(&(emi->emi_bw_timer));
-> +	device_remove_file(dev, &dev_attr_bw);
-> +err_create_attr_bw:
-> +	devm_kfree(dev, emi);
-> +	return -ENOMEM;
-> +}
-> +
-> +static int emi_remove(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct mtk_emi *emi = dev_get_drvdata(dev);
-> +
-> +	del_timer(&(emi->emi_bw_timer));
-> +	device_remove_file(dev, &dev_attr_dump_bw);
-> +	device_remove_file(dev, &dev_attr_bw);
-> +
-> +	devm_kfree(dev, emi);
-> +	return 0;
-> +}
-> +
-> +
-> +#ifdef CONFIG_OF
-> +static const struct of_device_id emi_of_ids[] = {
-> +	{.compatible = "mediatek,mt8183-emi",},
-> +	{}
-> +};
-> +#endif
-> +
-> +static struct platform_driver emi_bw_driver = {
-> +	.probe = emi_probe,
-> +	.remove = emi_remove,
-> +	.driver = {
-> +		.name = "emi_bw",
-> +		.owner = THIS_MODULE,
-> +		.pm = NULL,
-> +#ifdef CONFIG_OF
-> +		.of_match_table = emi_of_ids,
-> +#endif
-> +	},
-> +};
-> +
-> +
-> +static int __init emi_bw_init(void)
-> +{
-> +	int ret;
-> +
-> +	/* register EMI ctrl interface */
-> +	ret = platform_driver_register(&emi_bw_driver);
-> +	if (ret) {
-> +		pr_err("[EMI/BWL] fail to register emi_bw_driver\n");
-> +		return -ENODEV;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static void __exit emi_bw_exit(void)
-> +{
-> +	platform_driver_unregister(&emi_bw_driver);
-> +}
-> +
-> +postcore_initcall(emi_bw_init);
-> +module_exit(emi_bw_exit);
-> +
-> diff --git a/include/soc/mediatek/emi.h b/include/soc/mediatek/emi.h
-> new file mode 100644
-> index 0000000..83bdaeb
-> --- /dev/null
-> +++ b/include/soc/mediatek/emi.h
-> @@ -0,0 +1,116 @@
-> +/* SPDX-License-Identifier: GPL-2.0  */
-> +/*
-> + * Copyright (c) 2015-2016 MediaTek Inc.
-> + * Author: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> + */
-> +
-> +#ifndef _MTK_EMI_H_
-> +#define _MTK_EMI_H_
-> +
-> +#define MAX_CH		2
-> +#define MAX_RK		2
-> +
-> +struct emi_info_t {
-> +	unsigned int dram_type;
-> +	unsigned int ch_num;
-> +	unsigned int rk_num;
-> +	unsigned int rank_size[MAX_RK];
-> +};
-> +
-> +/*****************************************************************************
-> + *  Macro Definiations
-> + *****************************************************************************/
-> +#define EMI_REG_BASE                (0x10219000)
-> +#define EMI_REG_BASE_MAPPED         (emi->cen_emi_base)
-> +
-> +#define EMI_MDCT                    (EMI_REG_BASE_MAPPED + 0x078)
-> +#define EMI_MDCT_2ND                (EMI_REG_BASE_MAPPED + 0x07C)
-> +
-> +#define EMI_ARBA                    (EMI_REG_BASE_MAPPED + 0x100)
-> +#define EMI_ARBB                    (EMI_REG_BASE_MAPPED + 0x108)
-> +#define EMI_ARBC                    (EMI_REG_BASE_MAPPED + 0x110)
-> +#define EMI_ARBD                    (EMI_REG_BASE_MAPPED + 0x118)
-> +#define EMI_ARBE                    (EMI_REG_BASE_MAPPED + 0x120)
-> +#define EMI_ARBF                    (EMI_REG_BASE_MAPPED + 0x128)
-> +#define EMI_ARBG                    (EMI_REG_BASE_MAPPED + 0x130)
-> +#define EMI_ARBH                    (EMI_REG_BASE_MAPPED + 0x138)
-> +
-> +#define EMI_BMEN                    (EMI_REG_BASE_MAPPED + 0x400)
-> +#define EMI_BCNT                    (EMI_REG_BASE_MAPPED + 0x408)
-> +#define EMI_TACT                    (EMI_REG_BASE_MAPPED + 0x410)
-> +#define EMI_TSCT                    (EMI_REG_BASE_MAPPED + 0x418)
-> +#define EMI_WACT                    (EMI_REG_BASE_MAPPED + 0x420)
-> +#define EMI_WSCT                    (EMI_REG_BASE_MAPPED + 0x428)
-> +#define EMI_BACT                    (EMI_REG_BASE_MAPPED + 0x430)
-> +#define EMI_BSCT                    (EMI_REG_BASE_MAPPED + 0x438)
-> +#define EMI_MSEL                    (EMI_REG_BASE_MAPPED + 0x440)
-> +#define EMI_TSCT2                   (EMI_REG_BASE_MAPPED + 0x448)
-> +#define EMI_TSCT3                   (EMI_REG_BASE_MAPPED + 0x450)
-> +#define EMI_WSCT2                   (EMI_REG_BASE_MAPPED + 0x458)
-> +#define EMI_WSCT3                   (EMI_REG_BASE_MAPPED + 0x460)
-> +#define EMI_WSCT4                   (EMI_REG_BASE_MAPPED + 0x464)
-> +#define EMI_MSEL2                   (EMI_REG_BASE_MAPPED + 0x468)
-> +
-> +#define EMI_BMEN2                   (EMI_REG_BASE_MAPPED + 0x4E8)
-> +
-> +#define EMI_BMRW0                   (EMI_REG_BASE_MAPPED + 0x4F8)
-> +
-> +#define EMI_TTYPE1                  (EMI_REG_BASE_MAPPED + 0x500)
-> +#define EMI_TTYPE17                 (EMI_REG_BASE_MAPPED + 0x580)
-> +
-> +#define EMI_BWVL                    (EMI_REG_BASE_MAPPED + 0x7D0)
-> +#define EMI_BWVL_2ND                (EMI_REG_BASE_MAPPED + 0x7D4)
-> +#define EMI_BWVL_3RD                (EMI_REG_BASE_MAPPED + 0x7D8)
-> +#define EMI_BWVL_4TH                (EMI_REG_BASE_MAPPED + 0x7DC)
-> +#define EMI_BWVL_5TH                (EMI_REG_BASE_MAPPED + 0x7E0)
-> +
-> +#define EMI_CH0_REG_BASE            (0x1022D000)
-> +#define EMI_CH0_REG_BASE_MAPPED     (emi->chn_emi_base[0])
-> +#define EMI_CH0_DRS_ST2             (EMI_CH0_REG_BASE_MAPPED + 0x17C)
-> +#define EMI_CH0_DRS_ST3             (EMI_CH0_REG_BASE_MAPPED + 0x180)
-> +#define EMI_CH0_DRS_ST4             (EMI_CH0_REG_BASE_MAPPED + 0x184)
-> +
-> +#define EMI_CH1_REG_BASE            (0x10235000)
-> +#define EMI_CH1_REG_BASE_MAPPED     (emi->chn_emi_base[1])
-> +#define EMI_CH1_DRS_ST2             (EMI_CH1_REG_BASE_MAPPED + 0x17C)
-> +#define EMI_CH1_DRS_ST3             (EMI_CH1_REG_BASE_MAPPED + 0x180)
-> +#define EMI_CH1_DRS_ST4             (EMI_CH1_REG_BASE_MAPPED + 0x184)
-> +
-> +/*
-> + * DEFAULT_VALUE
-> + */
-> +#define EMI_BMEN_DEFAULT_VALUE    (0x00FF0000)
-> +#define EMI_BMEN2_DEFAULT_VALUE   (0x02000000)
-> +#define EMI_BMRW0_DEFAULT_VALUE   (0xFFFFFFFF)
-> +#define EMI_MSEL_DEFAULT_VALUE    (0x00030024)
-> +#define EMI_MSEL2_DEFAULT_VALUE   (0x000000C0)
-> +#define BC_OVERRUN                (0x00000100)
-> +
-> +/* EMI_BMEN */
-> +#define BUS_MON_EN          BIT(0)
-> +#define BUS_MON_PAUSE       BIT(1)
-> +#define BUS_MON_IDLE        BIT(3)
-> +
-> +#define MAX_DRAM_CH_NUM     (2)
-> +#define DRAM_RANK_NUM       (2)
-> +#define DRAM_PDIR_NUM       (8)
-> +#define EMI_TTYPE_NUM       (21)
-> +#define EMI_TSCT_NUM        (3)
-> +#define EMI_MDCT_NUM        (2)
-> +#define EMI_DRS_ST_NUM      (3)
-> +#define EMI_BW_LIMIT_NUM    (8)
-> +
-> +#define DRAMC_CG_SHIFT      (9)
-> +
-> +#define EMI_IDX_SIZE        (1024)
-> +
-> +#define EMI_BWVL_UNIT       (271)
-> +
-> +#define MBW_BUF_LEN         (0x800000)
-> +#define DATA_CNT_PER_BLK    (35)
-> +#define BLK_CNT_PER_BUF     (0x800)
-> +
-> +/* public apis */
-> +unsigned long long emi_get_max_bw(void);
-> +
-> +#endif
-> --
-> 1.7.9.5
-> 
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> Rob
