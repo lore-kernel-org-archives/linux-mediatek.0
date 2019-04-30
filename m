@@ -1,45 +1,40 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH v2 3/4] iommu/dma-iommu: Use the dev->coherent_dma_mask
-Date: Tue, 30 Apr 2019 13:04:55 +0100
-Message-ID: <96ebb6fc-a889-fa94-09ba-65d505b85724@arm.com>
-References: <20190430002952.18909-1-tmurphy@arista.com>
- <20190430002952.18909-4-tmurphy@arista.com>
- <20190430111222.GA3191@infradead.org>
- <da835ce2-f73e-3035-e1d7-d3028cc1a838@arm.com>
- <20190430113253.GA23210@infradead.org>
+From: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Subject: Re: [PATCH v2 0/5] MTK NAND driver improvements and fixes
+Date: Tue, 30 Apr 2019 14:08:33 +0200
+Message-ID: <20190430140833.08039a9f@xps13>
+References: <20190430100250.28083-1-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190430113253.GA23210@infradead.org>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: Christoph Hellwig <hch@infradead.org>
-Cc: Tom Murphy <tmurphy@arista.com>, iommu@lists.linux-foundation.org, Heiko Stuebner <heiko@sntech.de>, Will Deacon <will.deacon@arm.com>, David Brown <david.brown@linaro.org>, Thierry Reding <thierry.reding@gmail.com>, linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Andy Gross <andy.gross@linaro.org>, linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, murphyt7@tcd.ie, David Woodhouse <dwmw2@infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190430100250.28083-1-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: richard-/L3Ra7n9ekc@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 30/04/2019 12:32, Christoph Hellwig wrote:
-> On Tue, Apr 30, 2019 at 12:27:02PM +0100, Robin Murphy wrote:
->>> Hmm, I don't think we need the DMA mask for the MSI mapping, this
->>> should probably always use a 64-bit mask.
->>
->> If that were true then we wouldn't need DMA masks for regular mappings
->> either. If we have to map the MSI doorbell at all, then we certainly have to
->> place it at an IOVA that the relevant device is actually capable of
->> addressing.
-> 
-> Well, as shown by the patch below we don't even look at the DMA mask
-> for the MSI page - we just allocate from bottom to top.
-
-In the trivial cookie for unmanaged domains, yes, but in that case the 
-responsibility is on VFIO to provide a suitable (i.e. sub-32-bit) 
-address range for that cookie in the first place. In the managed case, 
-allocation uses the streaming mask via iommu_dma_get_msi_page() calling 
-__iommu_dma_map(). Admittedly the mask can then get overlooked when 
-reusing an existing mapping, which strictly could pose a problem if you 
-have multiple devices with incompatible masks in the same group (and 
-such that the PCI stuff doesn't already mitigate it), but that's such an 
-obscure corner case that I'm reticent to introduce the complication to 
-handle it until it's actually proven necessary.
-
-Robin.
+SGkgWGlhb2xlaSwKClhpYW9sZWkgTGkgPHhpYW9sZWkubGlAbWVkaWF0ZWsuY29tPiB3cm90ZSBv
+biBUdWUsIDMwIEFwciAyMDE5IDE4OjAyOjQ1CiswODAwOgoKPiBUaGUgZm9sbG93aW5nIHBhdGNo
+IHNldCBtYWlubHkgY29udGFpbnM6Cj4gKiBGaXggbG93IGxldmVsIHRpbWUgY2FsY3VsYXRpb24g
+b2YgcmVhZC93cml0ZSBjeWNsZSB0byBtZWV0IHRSQ19taW4KPiAgIGFuZCB0V0NfbWluIHJlcXVp
+cmVtZW50cy4KPiAqIFJlZmluZSBSRSMgcHVsc2Ugd2lkdGggY2FsY3VsYXRpb24gYW5kIGRhdGEg
+c2FtcGxpbmcgdG8gaW1wcm92ZSByZWFkCj4gICBwZXJmb3JtYW5jZS4KPiAqIEFkZCBDUyB2YWxp
+ZGl0eSBjaGVjay4KPiAqIEZpeCBvb2IgYnVmZmVyIHBvaW50ZXIgd3JvbmdseSBzZXR0aW5nIGFu
+ZCBlbXB0eSBwYWdlIHRocmVzaG9sZCBzZXR0aW5nLgo+IAo+IENoYW5nZXMgb24gdjIgcmVsYXRp
+dmUgdG86Cj4gLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiAKPiB0cmVlICAgIDogZ2l0Oi8vZ2l0Lmlu
+ZnJhZGVhZC5vcmcvbGludXgtbXRkLmdpdAo+IGJyYW5jaCAgOiBtYXN0ZXIKCldlIGp1c3Qgc3dp
+dGNoZWQgdG8gYSByZXBvc2l0b3J5IGhvc3RlZCBvbiBrZXJuZWwub3JnOgpodHRwczovL2dpdC5r
+ZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9tdGQvbGludXguZ2l0LwpuYW5kL25l
+eHQgaXMgdGhlIGJyYW5jaCBmb3IgdGhpcyBraW5kIG9mIHNlcmllcy4KClRoYW5rcywKTWlxdcOo
+bAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
+bWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRl
+awo=
