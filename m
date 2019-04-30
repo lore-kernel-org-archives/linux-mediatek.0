@@ -1,200 +1,105 @@
-From: Tom Murphy <tmurphy@arista.com>
-Subject: Re: [PATCH v2 2/4] iommu/dma-iommu: Handle deferred devices
-Date: Tue, 30 Apr 2019 15:04:55 +0100
-Message-ID: <CAPL0++4UeWczgmSa+X0L2_27Xr5tsXTU4k_B1JB33Tm=vQAa8Q@mail.gmail.com>
-References: <20190430002952.18909-1-tmurphy@arista.com> <20190430002952.18909-3-tmurphy@arista.com>
- <2750fa37-a59c-3074-6545-b19046ce3699@arm.com>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [RFC v1 1/3] dt-bindings: soc: add mtk svs dt-bindings
+Date: Tue, 30 Apr 2019 13:31:32 -0700
+Message-ID: <155665629219.168659.8221738507474891604@swboyd.mtv.corp.google.com>
+References: <20190430112012.4514-1-roger.lu@mediatek.com> <20190430112012.4514-2-roger.lu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2750fa37-a59c-3074-6545-b19046ce3699@arm.com>
+In-Reply-To: <20190430112012.4514-2-roger.lu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: iommu@lists.linux-foundation.org, Tom Murphy <murphyt7@tcd.ie>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infrade
+To: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Viresh Kumar <vireshk@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>, Kevin Hilman <khilman@kernel.org>, Roger Lu <roger.lu@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Apr 30, 2019 at 2:42 PM Robin Murphy <robin.murphy@arm.com> wrote:
->
-> On 30/04/2019 01:29, Tom Murphy wrote:
-> > Handle devices which defer their attach to the iommu in the dma-iommu api
->
-> I've just spent a while trying to understand what this is about...
->
-> AFAICS it's a kdump thing where the regular default domain attachment
-> may lead to ongoing DMA traffic from the crashed kernel raising a fault
-> storm, so we put off the "real" attach of a given device until we know
-> it's been reset and brought into a sane state, but the only way to
-> reliably detect that is to wait until the kdump kernel driver starts
-> making new DMA mappings. Is that about right?
+Quoting Roger Lu (2019-04-30 04:20:10)
+> Document the binding for enabling mtk svs on MediaTek SoC.
+>=20
+> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+> ---
+>  .../devicetree/bindings/power/mtk-svs.txt     | 70 +++++++++++++++++++
+>  1 file changed, 70 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/power/mtk-svs.txt
+>=20
+> diff --git a/Documentation/devicetree/bindings/power/mtk-svs.txt b/Docume=
+ntation/devicetree/bindings/power/mtk-svs.txt
+> new file mode 100644
+> index 000000000000..355329db74ba
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/power/mtk-svs.txt
+> @@ -0,0 +1,70 @@
+> +* Mediatek Smart Voltage Scaling (MTK SVS)
+> +
+> +This describes the device tree binding for the MTK SVS controller
+> +which helps provide the optimized CPU/GPU/CCI voltages. This device also
+> +needs thermal data to calculate thermal slope for accurately compensate
+> +the voltages when temperature change.
+> +
+> +Required properties:
+> +- compatible:
+> +  - "mediatek,mt8183-svs" : For MT8183 family of SoCs
+> +- reg: Address range of the MTK SVS controller.
+> +- interrupts: IRQ for the MTK SVS controller.
+> +- clocks, clock-names: Clocks needed for the svs controller. required
+> +                       clocks are:
+> +                      "main_clk": Main clock needed for register access
+> +- nvmem-cells: Phandle to the calibration data provided by a nvmem devic=
+e.
+> +- nvmem-cell-names: Should be "svs-calibration-data" and "calibration-da=
+ta"
+> +- svs_xxx: Phandle of svs_bank device for controlling corresponding opp
 
-That's the impression I got too. The many iterations of the patch
-series which contributed this code makes it hard to figure out exactly
-why it's doing what it's doing but AFAIK it works how you described
-it.
+Properties shouldn't have underscores in them. Use dashes?
 
->
-> (I note that for SMMUv3 we now handle that situation with the slightly
-> more heavy-handed approach of just turning off reporting and letting the
-> 'rogue' devices fault silently, but I appreciate that not all IOMMUs may
-> have that option)
->
-> > Signed-off-by: Tom Murphy <tmurphy@arista.com>
-> > ---
-> >   drivers/iommu/dma-iommu.c | 30 ++++++++++++++++++++++++++++++
-> >   1 file changed, 30 insertions(+)
-> >
-> > diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
-> > index 7a96c2c8f56b..c18f74ad1e8b 100644
-> > --- a/drivers/iommu/dma-iommu.c
-> > +++ b/drivers/iommu/dma-iommu.c
-> > @@ -322,6 +322,17 @@ static int iommu_dma_init_domain(struct iommu_domain *domain, dma_addr_t base,
-> >       return iova_reserve_iommu_regions(dev, domain);
-> >   }
-> >
-> > +static int handle_deferred_device(struct device *dev)
-> > +{
-> > +     struct iommu_domain *domain = iommu_get_domain_for_dev(dev);
->
-> We don't want iommu_get_domain_for_dev() in fast-paths, as the
-> contention on the group refcount has proven to have a surprisingly high
-> overhead on some large systems. That's what iommu_get_dma_domain()
-> solves, but ideally, can this be wrapped in is_kdump_kernel() such as to
-> have no impact at all on the general case?
+> +           table and power-domains.
+> +- vxxx-supply: Phandle to each regulator. vxxx can be "vcpu_little",
+> +              "vcpu_big", "vcci" and "vgpu".
+> +
+> +Example:
+> +
+> +       svs: svs@1100b000 {
+> +               compatible =3D "mediatek,mt8183-svs";
+> +               reg =3D <0 0x1100b000 0 0x1000>;
+> +               interrupts =3D <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW 0>;
+> +               clocks =3D <&infracfg CLK_INFRA_THERM>;
+> +               clock-names =3D "main_clk";
+> +               nvmem-cells =3D <&svs_calibration>, <&thermal_calibration=
+>;
+> +               nvmem-cell-names =3D "svs-calibration-data", "calibration=
+-data";
+> +
+> +               svs_cpu_little: svs_cpu_little {
+> +                       compatible =3D "mediatek,mt8183-svs-cpu-little";
+> +                       operating-points-v2 =3D <&cluster0_opp>;
+> +               };
+> +
+> +               svs_cpu_big: svs_cpu_big {
+> +                       compatible =3D "mediatek,mt8183-svs-cpu-big";
+> +                       operating-points-v2 =3D <&cluster1_opp>;
+> +               };
+> +
+> +               svs_cci: svs_cci {
+> +                       compatible =3D "mediatek,mt8183-svs-cci";
+> +                       operating-points-v2 =3D <&cluster2_opp>;
+> +               };
+> +
+> +               svs_gpu: svs_gpu {
+> +                       compatible =3D "mediatek,mt8183-svs-gpu";
+> +                       power-domains =3D <&scpsys MT8183_POWER_DOMAIN_MF=
+G_2D>;
+> +                       operating-points-v2 =3D <&gpu_opp_table>;
+> +               };
 
-will do.
+It looks like you need multiple OPPs for a single device, because it has
+different independent power supplies it wants to associate the OPP
+tables with? Why can't these OPP tables be attached to the devices that
+use them, i.e. CPU, GPU, CCI, etc.? Seems odd that those devices don't
+have OPP tables that this hardware block can look up somehow. Similarly,
+the power domains should probably be part of the devices that are using
+them and not these sub-nodes that are mirroring the other hardware
+blocks in the system?
 
->
-> > +     const struct iommu_ops *ops = domain->ops;
-> > +
-> > +     if (ops->is_attach_deferred && ops->is_attach_deferred(domain, dev))
-> > +             return iommu_attach_device(domain, dev);
-> > +
-> > +     return 0;
-> > +}
-> > +
-> >   /**
-> >    * dma_info_to_prot - Translate DMA API directions and attributes to IOMMU API
-> >    *                    page flags.
-> > @@ -835,6 +846,8 @@ static dma_addr_t iommu_dma_map_page(struct device *dev, struct page *page,
-> >       bool coherent = dev_is_dma_coherent(dev);
-> >       dma_addr_t dma_handle;
-> >
-> > +     handle_deferred_device(dev);
-> > +
-> >       dma_handle =__iommu_dma_map(dev, phys, size,
-> >                       dma_info_to_prot(dir, coherent, attrs),
-> >                       iommu_get_dma_domain(dev));
-> > @@ -849,6 +862,8 @@ static void iommu_dma_unmap_page(struct device *dev, dma_addr_t dma_handle,
-> >   {
-> >       struct iommu_domain *domain = iommu_get_dma_domain(dev);
-> >
-> > +     handle_deferred_device(dev);
->
-> You don't need this - it's completely bogus to make an unmap call
-> without having already called the corresponding map function, so we can
-> assume it's already been dealt with.
->
-> > +
-> >       if (!dev_is_dma_coherent(dev) && !(attrs & DMA_ATTR_SKIP_CPU_SYNC)) {
-> >               phys_addr_t phys = iommu_iova_to_phys(domain, dma_handle);
-> >
-> > @@ -873,6 +888,8 @@ static int __finalise_sg(struct device *dev, struct scatterlist *sg, int nents,
-> >       unsigned int cur_len = 0, max_len = dma_get_max_seg_size(dev);
-> >       int i, count = 0;
-> >
-> > +     handle_deferred_device(dev);
->
-> Hmm, this should be in iommu_dma_map_sg() - that's the guy that needs a
-> valid domain, and it's impossible to get to __finalise_sg() without
-> having been through there anyway.
->
-> > +
-> >       for_each_sg(sg, s, nents, i) {
-> >               /* Restore this segment's original unaligned fields first */
-> >               unsigned int s_iova_off = sg_dma_address(s);
-> > @@ -1022,6 +1039,8 @@ static void iommu_dma_unmap_sg(struct device *dev, struct scatterlist *sg,
-> >       struct scatterlist *tmp;
-> >       int i;
-> >
-> > +     handle_deferred_device(dev);
->
-> Again, not necessary.
->
-> > +
-> >       if (!(attrs & DMA_ATTR_SKIP_CPU_SYNC) == 0)
-> >               iommu_dma_sync_sg_for_cpu(dev, sg, nents, dir);
-> >
-> > @@ -1042,6 +1061,8 @@ static void iommu_dma_unmap_sg(struct device *dev, struct scatterlist *sg,
-> >   static dma_addr_t iommu_dma_map_resource(struct device *dev, phys_addr_t phys,
-> >               size_t size, enum dma_data_direction dir, unsigned long attrs)
-> >   {
-> > +     handle_deferred_device(dev);
->
-> Ditto.
->
-> > +
-> >       return __iommu_dma_map(dev, phys, size,
-> >                       dma_info_to_prot(dir, false, attrs) | IOMMU_MMIO,
-> >                       iommu_get_dma_domain(dev));
-> > @@ -1050,12 +1071,15 @@ static dma_addr_t iommu_dma_map_resource(struct device *dev, phys_addr_t phys,
-> >   static void iommu_dma_unmap_resource(struct device *dev, dma_addr_t handle,
-> >               size_t size, enum dma_data_direction dir, unsigned long attrs)
-> >   {
-> > +     handle_deferred_device(dev);
->
-> Ditto.
->
-> > +
-> >       __iommu_dma_unmap(iommu_get_dma_domain(dev), handle, size);
-> >   }
-> >
-> >   static void *iommu_dma_alloc(struct device *dev, size_t size,
-> >               dma_addr_t *dma_handle, gfp_t gfp, unsigned long attrs)
-> >   {
-> > +     handle_deferred_device(dev);
-> >       gfp |= __GFP_ZERO;
-> >
-> >   #ifdef CONFIG_DMA_DIRECT_REMAP
-> > @@ -1076,6 +1100,8 @@ static void iommu_dma_free(struct device *dev, size_t size, void *cpu_addr,
-> >   {
-> >       struct page *page;
-> >
-> > +     handle_deferred_device(dev);
->
-> Similarly, you can't free anything that hasn't already come from a
-> successful call to iommu_dma_alloc()...
->
-> > +
-> >       /*
-> >        * cpu_addr can be one of 4 things depending on how it was allocated:
-> >        *
-> > @@ -1115,6 +1141,8 @@ static int iommu_dma_mmap(struct device *dev, struct vm_area_struct *vma,
-> >       unsigned long pfn;
-> >       int ret;
-> >
-> > +     handle_deferred_device(dev);
->
-> ...nor can you mmap() it...
->
-> > +
-> >       vma->vm_page_prot = arch_dma_mmap_pgprot(dev, vma->vm_page_prot, attrs);
-> >
-> >       if (dma_mmap_from_dev_coherent(dev, vma, cpu_addr, size, &ret))
-> > @@ -1143,6 +1171,8 @@ static int iommu_dma_get_sgtable(struct device *dev, struct sg_table *sgt,
-> >       struct page *page;
-> >       int ret;
-> >
-> > +     handle_deferred_device(dev);
->
-> ...nor attempt to export it.
-
-That all makes sense. Will fix.
-
->
-> Robin.
->
-> > +
-> >   #ifdef CONFIG_DMA_DIRECT_REMAP
-> >       if (is_vmalloc_addr(cpu_addr)) {
-> >               if (!(attrs & DMA_ATTR_FORCE_CONTIGUOUS))
-> >
+> +       };
+> +
+> +       &svs_cpu_little {
