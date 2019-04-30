@@ -1,86 +1,70 @@
-From: Xiaolei Li <xiaolei.li@mediatek.com>
-Subject: [PATCH v2 1/5] mtd: rawnand: mtk: Correct low level time calculation of r/w cycle
-Date: Tue, 30 Apr 2019 18:02:46 +0800
-Message-ID: <20190430100250.28083-2-xiaolei.li@mediatek.com>
+From: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 3/5] mtd: rawnand: mtk: Add validity check for CE# pin
+ setting
+Date: Tue, 30 Apr 2019 18:02:48 +0800
+Message-ID: <20190430100250.28083-4-xiaolei.li@mediatek.com>
 References: <20190430100250.28083-1-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <20190430100250.28083-1-xiaolei.li@mediatek.com>
-Sender: stable-owner@vger.kernel.org
-To: miquel.raynal@bootlin.com, richard@nod.at
-Cc: linux-mtd@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, xiaolei.li@mediatek.com, stable@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190430100250.28083-1-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-At present, the flow of calculating AC timing of read/write cycle in SDR
-mode is that:
-At first, calculate high hold time which is valid for both read and write
-cycle using the max value between tREH_min and tWH_min.
-Secondly, calculate WE# pulse width using tWP_min.
-Thridly, calculate RE# pulse width using the bigger one between tREA_max
-and tRP_min.
+Currently, we only check how many CE# pins are set in device tree.
+But it should be necessary to check whether CE# pin setting is
+duplicated or if CE# pin index exceeds the maximum CE# number that
+controller supports.
 
-But NAND SPEC shows that Controller should also meet write/read cycle time.
-That is write cycle time should be more than tWC_min and read cycle should
-be more than tRC_min. Obviously, we do not achieve that now.
+So, add validity check to avoid these invalid settings.
 
-This patch corrects the low level time calculation to meet minimum
-read/write cycle time required. After getting the high hold time, WE# low
-level time will be promised to meet tWP_min and tWC_min requirement,
-and RE# low level time will be promised to meet tREA_max, tRP_min and
-tRC_min requirement.
-
-Fixes: edfee3619c49 ("mtd: nand: mtk: add ->setup_data_interface() hook")
-Cc: stable@vger.kernel.org
-Signed-off-by: Xiaolei Li <xiaolei.li@mediatek.com>
+Signed-off-by: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Reviewed-by: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 ---
- drivers/mtd/nand/raw/mtk_nand.c | 24 +++++++++++++++++++++---
- 1 file changed, 21 insertions(+), 3 deletions(-)
+ drivers/mtd/nand/raw/mtk_nand.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
 diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
-index b6b4602f5132..4fbb0c6ecae3 100644
+index e90c38c6f835..23ebd668bbcd 100644
 --- a/drivers/mtd/nand/raw/mtk_nand.c
 +++ b/drivers/mtd/nand/raw/mtk_nand.c
-@@ -508,7 +508,8 @@ static int mtk_nfc_setup_data_interface(struct nand_chip *chip, int csline,
- {
- 	struct mtk_nfc *nfc = nand_get_controller_data(chip);
- 	const struct nand_sdr_timings *timings;
--	u32 rate, tpoecs, tprecs, tc2r, tw2r, twh, twst, trlt;
-+	u32 rate, tpoecs, tprecs, tc2r, tw2r, twh, twst = 0, trlt = 0;
-+	u32 thold;
+@@ -162,6 +162,8 @@ struct mtk_nfc {
+ 	struct list_head chips;
  
- 	timings = nand_get_sdr_timings(conf);
- 	if (IS_ERR(timings))
-@@ -544,11 +545,28 @@ static int mtk_nfc_setup_data_interface(struct nand_chip *chip, int csline,
- 	twh = DIV_ROUND_UP(twh * rate, 1000000) - 1;
- 	twh &= 0xf;
- 
--	twst = timings->tWP_min / 1000;
-+	/* Calculate real WE#/RE# hold time in nanosecond */
-+	thold = (twh + 1) * 1000000 / rate;
-+	/* nanosecond to picosecond */
-+	thold *= 1000;
+ 	u8 *buffer;
 +
-+	/**
-+	 * WE# low level time should be expaned to meet WE# pulse time
-+	 * and WE# cycle time at the same time.
-+	 */
-+	if (thold < timings->tWC_min)
-+		twst = timings->tWC_min - thold;
-+	twst = max(timings->tWP_min, twst) / 1000;
- 	twst = DIV_ROUND_UP(twst * rate, 1000000) - 1;
- 	twst &= 0xf;
++	unsigned long assigned_cs;
+ };
  
--	trlt = max(timings->tREA_max, timings->tRP_min) / 1000;
-+	/**
-+	 * RE# low level time should be expaned to meet RE# pulse time,
-+	 * RE# access time and RE# cycle time at the same time.
-+	 */
-+	if (thold < timings->tRC_min)
-+		trlt = timings->tRC_min - thold;
-+	trlt = max3(trlt, timings->tREA_max, timings->tRP_min) / 1000;
- 	trlt = DIV_ROUND_UP(trlt * rate, 1000000) - 1;
- 	trlt &= 0xf;
+ /*
+@@ -1367,6 +1369,17 @@ static int mtk_nfc_nand_chip_init(struct device *dev, struct mtk_nfc *nfc,
+ 			dev_err(dev, "reg property failure : %d\n", ret);
+ 			return ret;
+ 		}
++
++		if (tmp >= MTK_NAND_MAX_NSELS) {
++			dev_err(dev, "invalid CS: %u\n", tmp);
++			return -EINVAL;
++		}
++
++		if (test_and_set_bit(tmp, &nfc->assigned_cs)) {
++			dev_err(dev, "CS %u already assigned\n", tmp);
++			return -EINVAL;
++		}
++
+ 		chip->sels[i] = tmp;
+ 	}
  
 -- 
 2.18.0
