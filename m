@@ -1,117 +1,86 @@
-From: Henry Chen <henryc.chen@mediatek.com>
-Subject: [PATCH RFC V2] Add driver for dvfsrc, support for active state of scpsys
-Date: Tue, 30 Apr 2019 16:50:54 +0800
-Message-ID: <1556614265-12745-1-git-send-email-henryc.chen@mediatek.com>
+From: Xiaolei Li <xiaolei.li@mediatek.com>
+Subject: [PATCH v2 1/5] mtd: rawnand: mtk: Correct low level time calculation of r/w cycle
+Date: Tue, 30 Apr 2019 18:02:46 +0800
+Message-ID: <20190430100250.28083-2-xiaolei.li@mediatek.com>
+References: <20190430100250.28083-1-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Georgi Djakov <georgi.djakov@linaro.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Viresh Kumar <vireshk@kernel.org>, Stephen Boyd <swboyd@chromium.org>
-Cc: Nicolas Boichat <drinkcat@google.com>, Fan Chen <fan.chen@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <20190430100250.28083-1-xiaolei.li@mediatek.com>
+Sender: stable-owner@vger.kernel.org
+To: miquel.raynal@bootlin.com, richard@nod.at
+Cc: linux-mtd@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, xiaolei.li@mediatek.com, stable@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The patchsets add support for MediaTek hardware module named DVFSRC
-(dynamic voltage and frequency scaling resource collector). The DVFSRC is
-a HW module which is used to collect all the requests from both software
-and hardware and turn into the decision of minimum operating voltage and
-minimum DRAM frequency to fulfill those requests.
+At present, the flow of calculating AC timing of read/write cycle in SDR
+mode is that:
+At first, calculate high hold time which is valid for both read and write
+cycle using the max value between tREH_min and tWH_min.
+Secondly, calculate WE# pulse width using tWP_min.
+Thridly, calculate RE# pulse width using the bigger one between tREA_max
+and tRP_min.
 
-So, This series is to implement the dvfsrc driver to collect all the
-requests of operating voltage or DRAM bandwidth from other device drivers
-likes GPU/Camera through 2 frameworks basically:
+But NAND SPEC shows that Controller should also meet write/read cycle time.
+That is write cycle time should be more than tWC_min and read cycle should
+be more than tRC_min. Obviously, we do not achieve that now.
 
-1. interconnect framework: to aggregate the bandwidth
-   requirements from different clients
+This patch corrects the low level time calculation to meet minimum
+read/write cycle time required. After getting the high hold time, WE# low
+level time will be promised to meet tWP_min and tWC_min requirement,
+and RE# low level time will be promised to meet tREA_max, tRP_min and
+tRC_min requirement.
 
-[1] https://patchwork.kernel.org/cover/10766329/
+Fixes: edfee3619c49 ("mtd: nand: mtk: add ->setup_data_interface() hook")
+Cc: stable@vger.kernel.org
+Signed-off-by: Xiaolei Li <xiaolei.li@mediatek.com>
+---
+ drivers/mtd/nand/raw/mtk_nand.c | 24 +++++++++++++++++++++---
+ 1 file changed, 21 insertions(+), 3 deletions(-)
 
-Below is the emi bandwidth map of mt8183. There has a hw module "DRAM scheduler"
-which used to control the throughput. The DVFSRC will collect forecast data
-of dram bandwidth from SW consumers(camera/gpu...), and according the forecast
-to change the DRAM frequency
-
-           ICC provider         ICC Nodes
-                            ----          ----
-           ---------       |CPU |   |--->|VPU |
-  -----   |         |-----> ----    |     ----
- |DRAM |--|DRAM     |       ----    |     ----
- |     |--|scheduler|----->|GPU |   |--->|DISP|
- |     |--|(EMI)    |       ----    |     ----
- |     |--|         |       -----   |     ----
-  -----   |         |----->|MMSYS|--|--->|VDEC|
-           ---------        -----   |     ----
-             /|\                    |     ----
-              |change DRAM freq     |--->|VENC|
-           ----------               |     ----
-          |  DVFSR   |              |
-          |          |              |     ----
-           ----------               |--->|IMG |
-                                    |     ----
-                                    |     ----
-                                    |--->|CAM |
-                                          ----
-
-2. Active state management of power domains[1]: to handle the operating
-   voltage opp requirement from different power domains
-
-[2] https://lwn.net/Articles/744047/
-
-Changes in RFC V2:
-* Remove the DT property dram_type. (Rob)
-* Used generic dts property 'opp-level' to get the performace state. (Stephen)
-* Remove unecessary dependency config on Kconfig. (Stephen)
-* Remove unused header file, fixed some coding style issue, typo,
-error handling on dvfsrc driver. (Nicolas/Stephen)
-* Remove irq handler on dvfsrc driver. (Stephen)
-* Remove init table on dvfsrc driver, combine hw init on trustzone.
-* Add interconnect support of mt8183 to aggregate the emi bandwidth.
-(Georgi)
-
-RFC V1: https://lore.kernel.org/patchwork/cover/1028535/
-
-Henry Chen (11):
-  dt-bindings: soc: Add dvfsrc driver bindings
-  dt-bindings: soc: Add opp table on scpsys bindings
-  soc: mediatek: add support for the performance state
-  arm64: dts: mt8183: add performance state support of scpsys
-  soc: mediatek: add header for mediatek SIP interface
-  soc: mediatek: add MT8183 dvfsrc support
-  arm64: dts: mt8183: add dvfsrc related nodes
-  dt-bindings: interconnect: add MT8183 interconnect dt-bindings
-  dt-bindings: interconnect: Add header for interconnect node
-  interconnect: mediatek: Add mt8183 interconnect provider driver
-  arm64: dts: mt8183: Add interconnect provider DT nodes
-
- .../bindings/interconnect/mtk,mt8183.txt           |  24 ++
- .../devicetree/bindings/soc/mediatek/dvfsrc.txt    |  23 ++
- .../devicetree/bindings/soc/mediatek/scpsys.txt    |  42 +++
- arch/arm64/boot/dts/mediatek/mt8183.dtsi           |  33 ++
- drivers/interconnect/Kconfig                       |   1 +
- drivers/interconnect/Makefile                      |   1 +
- drivers/interconnect/mediatek/Kconfig              |  13 +
- drivers/interconnect/mediatek/Makefile             |   5 +
- drivers/interconnect/mediatek/mt8183.c             | 223 +++++++++++++
- drivers/soc/mediatek/Kconfig                       |  15 +
- drivers/soc/mediatek/Makefile                      |   1 +
- drivers/soc/mediatek/mtk-dvfsrc.c                  | 347 +++++++++++++++++++++
- drivers/soc/mediatek/mtk-scpsys.c                  |  53 ++++
- drivers/soc/mediatek/mtk-scpsys.h                  |  22 ++
- include/dt-bindings/interconnect/mtk,mt8183.h      |  18 ++
- include/dt-bindings/soc/mtk,dvfsrc.h               |  14 +
- include/soc/mediatek/mtk_dvfsrc.h                  |  22 ++
- include/soc/mediatek/mtk_sip.h                     |  17 +
- 18 files changed, 874 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/interconnect/mtk,mt8183.txt
- create mode 100644 Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt
- create mode 100644 drivers/interconnect/mediatek/Kconfig
- create mode 100644 drivers/interconnect/mediatek/Makefile
- create mode 100644 drivers/interconnect/mediatek/mt8183.c
- create mode 100644 drivers/soc/mediatek/mtk-dvfsrc.c
- create mode 100644 drivers/soc/mediatek/mtk-scpsys.h
- create mode 100644 include/dt-bindings/interconnect/mtk,mt8183.h
- create mode 100644 include/dt-bindings/soc/mtk,dvfsrc.h
- create mode 100644 include/soc/mediatek/mtk_dvfsrc.h
- create mode 100644 include/soc/mediatek/mtk_sip.h
-
+diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
+index b6b4602f5132..4fbb0c6ecae3 100644
+--- a/drivers/mtd/nand/raw/mtk_nand.c
++++ b/drivers/mtd/nand/raw/mtk_nand.c
+@@ -508,7 +508,8 @@ static int mtk_nfc_setup_data_interface(struct nand_chip *chip, int csline,
+ {
+ 	struct mtk_nfc *nfc = nand_get_controller_data(chip);
+ 	const struct nand_sdr_timings *timings;
+-	u32 rate, tpoecs, tprecs, tc2r, tw2r, twh, twst, trlt;
++	u32 rate, tpoecs, tprecs, tc2r, tw2r, twh, twst = 0, trlt = 0;
++	u32 thold;
+ 
+ 	timings = nand_get_sdr_timings(conf);
+ 	if (IS_ERR(timings))
+@@ -544,11 +545,28 @@ static int mtk_nfc_setup_data_interface(struct nand_chip *chip, int csline,
+ 	twh = DIV_ROUND_UP(twh * rate, 1000000) - 1;
+ 	twh &= 0xf;
+ 
+-	twst = timings->tWP_min / 1000;
++	/* Calculate real WE#/RE# hold time in nanosecond */
++	thold = (twh + 1) * 1000000 / rate;
++	/* nanosecond to picosecond */
++	thold *= 1000;
++
++	/**
++	 * WE# low level time should be expaned to meet WE# pulse time
++	 * and WE# cycle time at the same time.
++	 */
++	if (thold < timings->tWC_min)
++		twst = timings->tWC_min - thold;
++	twst = max(timings->tWP_min, twst) / 1000;
+ 	twst = DIV_ROUND_UP(twst * rate, 1000000) - 1;
+ 	twst &= 0xf;
+ 
+-	trlt = max(timings->tREA_max, timings->tRP_min) / 1000;
++	/**
++	 * RE# low level time should be expaned to meet RE# pulse time,
++	 * RE# access time and RE# cycle time at the same time.
++	 */
++	if (thold < timings->tRC_min)
++		trlt = timings->tRC_min - thold;
++	trlt = max3(trlt, timings->tREA_max, timings->tRP_min) / 1000;
+ 	trlt = DIV_ROUND_UP(trlt * rate, 1000000) - 1;
+ 	trlt &= 0xf;
+ 
 -- 
-1.9.1
+2.18.0
