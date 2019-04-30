@@ -1,58 +1,188 @@
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: Re: [PATCH v2 5/5] mtd: rawnand: mtk: Setup empty page threshold
- correctly
-Date: Tue, 30 Apr 2019 14:17:23 +0200
-Message-ID: <20190430141723.3b775a53@xps13>
-References: <20190430100250.28083-1-xiaolei.li@mediatek.com>
- <20190430100250.28083-6-xiaolei.li@mediatek.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH v2 2/4] iommu/dma-iommu: Handle deferred devices
+Date: Tue, 30 Apr 2019 14:42:03 +0100
+Message-ID: <2750fa37-a59c-3074-6545-b19046ce3699@arm.com>
+References: <20190430002952.18909-1-tmurphy@arista.com>
+ <20190430002952.18909-3-tmurphy@arista.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
-In-Reply-To: <20190430100250.28083-6-xiaolei.li@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
-List-Post: <mailto:linux-mtd@lists.infradead.org>
-List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
-Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
-To: Xiaolei Li <xiaolei.li@mediatek.com>
-Cc: richard@nod.at, linux-mediatek@lists.infradead.org, linux-mtd@lists.infradead.org, srv_heupstream@mediatek.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190430002952.18909-3-tmurphy@arista.com>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: Tom Murphy <tmurphy@arista.com>, iommu@lists.linux-foundation.org
+Cc: murphyt7@tcd.ie, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.orglin
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgWGlhb2xlaSwKClhpYW9sZWkgTGkgPHhpYW9sZWkubGlAbWVkaWF0ZWsuY29tPiB3cm90ZSBv
-biBUdWUsIDMwIEFwciAyMDE5IDE4OjAyOjUwCiswODAwOgoKPiBNVEsgTkFORCBDb250cm9sbGVy
-IGhhcyB0aGUgYWJpbGl0eSB0byBjaGVjayB3aGV0aGVyIHJlYWQgZGF0YSBhcmUKPiBtb3N0bHkg
-MHhmZiBieSBjb21wYXJpbmcgemVybyBiaXQgY291bnQgb2YgcmVhZCBkYXRhIHdpdGggZW1wdHkK
-PiB0aHJlc2hvbGQgYXV0b21hdGljYWxseS4KPiAKPiBCdXQgbm93IHdlIG5ldmVyIHNldCB0aGlz
-IHRocmVzaG9sZCBhbmQgYWx3YXlzIG1ha2UgaXQgYmUgZGVmYXVsdCB2YWx1ZQo+IHdoaWNoIGlz
-IDEwLgo+IAo+IFRoaXMgcGF0Y2ggZml4ZXMgdGhpcyBwcm9ibGVtIGJ5IHNldHRpbmcgZW1wdHkg
-dGhyZXNob2xkIGFzIHRoZSBwcm9kdWN0Cj4gb2YgcmVhZCBzZWN0b3IgY291bnQgYW5kIEVDQyBz
-dHJlbmd0aC4KCkFyZSB5b3Ugc3VyZSBpdCBpcyBub3QgYSBwZXItc2VjdG9yIHZhbHVlPwoKRGlk
-IHlvdSB1c2UgbmFuZGJpdGVycnMgdG8gdmFsaWRhdGU/Cgo+IAo+IEZpeGVzOiAxZDZiMWU0NjQ5
-NTAgKCJtdGQ6IG1lZGlhdGVrOiBkcml2ZXIgZm9yIE1USyBTbWFydCBEZXZpY2UiKQo+IFNpZ25l
-ZC1vZmYtYnk6IFhpYW9sZWkgTGkgPHhpYW9sZWkubGlAbWVkaWF0ZWsuY29tPgo+IC0tLQo+ICBk
-cml2ZXJzL210ZC9uYW5kL3Jhdy9tdGtfbmFuZC5jIHwgOSArKysrKysrKysKPiAgMSBmaWxlIGNo
-YW5nZWQsIDkgaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL210ZC9uYW5k
-L3Jhdy9tdGtfbmFuZC5jIGIvZHJpdmVycy9tdGQvbmFuZC9yYXcvbXRrX25hbmQuYwo+IGluZGV4
-IDQ4NzU5YWY1YzA1OC4uYjU2OTY1MzI4NzcxIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbXRkL25h
-bmQvcmF3L210a19uYW5kLmMKPiArKysgYi9kcml2ZXJzL210ZC9uYW5kL3Jhdy9tdGtfbmFuZC5j
-Cj4gQEAgLTk0LDYgKzk0LDcgQEAKPiAgI2RlZmluZSBORklfTUFTVEVSX1NUQQkJKDB4MjI0KQo+
-ICAjZGVmaW5lCQlNQVNURVJfU1RBX01BU0sJCSgweDBGRkYpCj4gICNkZWZpbmUgTkZJX0VNUFRZ
-X1RIUkVTSAkoMHgyM0MpCj4gKyNkZWZpbmUJCUVNUFRZX1RIUkVTSF9NQVNLCUdFTk1BU0soNywg
-MCkKPiAgCj4gICNkZWZpbmUgTVRLX05BTUUJCSJtdGstbmFuZCIKPiAgI2RlZmluZSBLQih4KQkJ
-CSgoeCkgKiAxMDI0VUwpCj4gQEAgLTk0Nyw2ICs5NDgsMTQgQEAgc3RhdGljIGludCBtdGtfbmZj
-X3JlYWRfc3VicGFnZShzdHJ1Y3QgbXRkX2luZm8gKm10ZCwgc3RydWN0IG5hbmRfY2hpcCAqY2hp
-cCwKPiAgCQlyZXR1cm4gLUVJTlZBTDsKPiAgCX0KPiAgCj4gKwkvKioKCiAgICAgICAgLyoKCj4g
-KwkgKiBTZXR1cCBlbXB0eSB0aHJlc2hvbGQgYXMgdGhlIHByb2R1Y3Qgb2Ygc2VjdG9yIGNvdW50
-Cj4gKwkgKiBhbmQgRUNDIHN0cmVuZ3RoCj4gKwkgKi8KPiArCXJlZyA9IHNlY3RvcnMgKiBjaGlw
-LT5lY2Muc3RyZW5ndGg7Cj4gKwlyZWcgPSBtaW5fdCh1bnNpZ25lZCBpbnQsIHJlZywgRU1QVFlf
-VEhSRVNIX01BU0spOwo+ICsJbmZpX3dyaXRlbChuZmMsIHJlZywgTkZJX0VNUFRZX1RIUkVTSCk7
-Cj4gKwo+ICAJcmVnID0gbmZpX3JlYWR3KG5mYywgTkZJX0NORkcpOwo+ICAJcmVnIHw9IENORkdf
-UkVBRF9FTiB8IENORkdfRE1BX0JVUlNUX0VOIHwgQ05GR19BSEI7Cj4gIAlpZiAoIXJhdykgewoK
-ClRoYW5rcywKTWlxdcOobAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkxpbnV4IE1URCBkaXNjdXNzaW9uIG1haWxpbmcgbGlzdApodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW10ZC8K
+On 30/04/2019 01:29, Tom Murphy wrote:
+> Handle devices which defer their attach to the iommu in the dma-iommu api
+
+I've just spent a while trying to understand what this is about...
+
+AFAICS it's a kdump thing where the regular default domain attachment 
+may lead to ongoing DMA traffic from the crashed kernel raising a fault 
+storm, so we put off the "real" attach of a given device until we know 
+it's been reset and brought into a sane state, but the only way to 
+reliably detect that is to wait until the kdump kernel driver starts 
+making new DMA mappings. Is that about right?
+
+(I note that for SMMUv3 we now handle that situation with the slightly 
+more heavy-handed approach of just turning off reporting and letting the 
+'rogue' devices fault silently, but I appreciate that not all IOMMUs may 
+have that option)
+
+> Signed-off-by: Tom Murphy <tmurphy@arista.com>
+> ---
+>   drivers/iommu/dma-iommu.c | 30 ++++++++++++++++++++++++++++++
+>   1 file changed, 30 insertions(+)
+> 
+> diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
+> index 7a96c2c8f56b..c18f74ad1e8b 100644
+> --- a/drivers/iommu/dma-iommu.c
+> +++ b/drivers/iommu/dma-iommu.c
+> @@ -322,6 +322,17 @@ static int iommu_dma_init_domain(struct iommu_domain *domain, dma_addr_t base,
+>   	return iova_reserve_iommu_regions(dev, domain);
+>   }
+>   
+> +static int handle_deferred_device(struct device *dev)
+> +{
+> +	struct iommu_domain *domain = iommu_get_domain_for_dev(dev);
+
+We don't want iommu_get_domain_for_dev() in fast-paths, as the 
+contention on the group refcount has proven to have a surprisingly high 
+overhead on some large systems. That's what iommu_get_dma_domain() 
+solves, but ideally, can this be wrapped in is_kdump_kernel() such as to 
+have no impact at all on the general case?
+
+> +	const struct iommu_ops *ops = domain->ops;
+> +
+> +	if (ops->is_attach_deferred && ops->is_attach_deferred(domain, dev))
+> +		return iommu_attach_device(domain, dev);
+> +
+> +	return 0;
+> +}
+> +
+>   /**
+>    * dma_info_to_prot - Translate DMA API directions and attributes to IOMMU API
+>    *                    page flags.
+> @@ -835,6 +846,8 @@ static dma_addr_t iommu_dma_map_page(struct device *dev, struct page *page,
+>   	bool coherent = dev_is_dma_coherent(dev);
+>   	dma_addr_t dma_handle;
+>   
+> +	handle_deferred_device(dev);
+> +
+>   	dma_handle =__iommu_dma_map(dev, phys, size,
+>   			dma_info_to_prot(dir, coherent, attrs),
+>   			iommu_get_dma_domain(dev));
+> @@ -849,6 +862,8 @@ static void iommu_dma_unmap_page(struct device *dev, dma_addr_t dma_handle,
+>   {
+>   	struct iommu_domain *domain = iommu_get_dma_domain(dev);
+>   
+> +	handle_deferred_device(dev);
+
+You don't need this - it's completely bogus to make an unmap call 
+without having already called the corresponding map function, so we can 
+assume it's already been dealt with.
+
+> +
+>   	if (!dev_is_dma_coherent(dev) && !(attrs & DMA_ATTR_SKIP_CPU_SYNC)) {
+>   		phys_addr_t phys = iommu_iova_to_phys(domain, dma_handle);
+>   
+> @@ -873,6 +888,8 @@ static int __finalise_sg(struct device *dev, struct scatterlist *sg, int nents,
+>   	unsigned int cur_len = 0, max_len = dma_get_max_seg_size(dev);
+>   	int i, count = 0;
+>   
+> +	handle_deferred_device(dev);
+
+Hmm, this should be in iommu_dma_map_sg() - that's the guy that needs a 
+valid domain, and it's impossible to get to __finalise_sg() without 
+having been through there anyway.
+
+> +
+>   	for_each_sg(sg, s, nents, i) {
+>   		/* Restore this segment's original unaligned fields first */
+>   		unsigned int s_iova_off = sg_dma_address(s);
+> @@ -1022,6 +1039,8 @@ static void iommu_dma_unmap_sg(struct device *dev, struct scatterlist *sg,
+>   	struct scatterlist *tmp;
+>   	int i;
+>   
+> +	handle_deferred_device(dev);
+
+Again, not necessary.
+
+> +
+>   	if (!(attrs & DMA_ATTR_SKIP_CPU_SYNC) == 0)
+>   		iommu_dma_sync_sg_for_cpu(dev, sg, nents, dir);
+>   
+> @@ -1042,6 +1061,8 @@ static void iommu_dma_unmap_sg(struct device *dev, struct scatterlist *sg,
+>   static dma_addr_t iommu_dma_map_resource(struct device *dev, phys_addr_t phys,
+>   		size_t size, enum dma_data_direction dir, unsigned long attrs)
+>   {
+> +	handle_deferred_device(dev);
+
+Ditto.
+
+> +
+>   	return __iommu_dma_map(dev, phys, size,
+>   			dma_info_to_prot(dir, false, attrs) | IOMMU_MMIO,
+>   			iommu_get_dma_domain(dev));
+> @@ -1050,12 +1071,15 @@ static dma_addr_t iommu_dma_map_resource(struct device *dev, phys_addr_t phys,
+>   static void iommu_dma_unmap_resource(struct device *dev, dma_addr_t handle,
+>   		size_t size, enum dma_data_direction dir, unsigned long attrs)
+>   {
+> +	handle_deferred_device(dev);
+
+Ditto.
+
+> +
+>   	__iommu_dma_unmap(iommu_get_dma_domain(dev), handle, size);
+>   }
+>   
+>   static void *iommu_dma_alloc(struct device *dev, size_t size,
+>   		dma_addr_t *dma_handle, gfp_t gfp, unsigned long attrs)
+>   {
+> +	handle_deferred_device(dev);
+>   	gfp |= __GFP_ZERO;
+>   
+>   #ifdef CONFIG_DMA_DIRECT_REMAP
+> @@ -1076,6 +1100,8 @@ static void iommu_dma_free(struct device *dev, size_t size, void *cpu_addr,
+>   {
+>   	struct page *page;
+>   
+> +	handle_deferred_device(dev);
+
+Similarly, you can't free anything that hasn't already come from a 
+successful call to iommu_dma_alloc()...
+
+> +
+>   	/*
+>   	 * cpu_addr can be one of 4 things depending on how it was allocated:
+>   	 *
+> @@ -1115,6 +1141,8 @@ static int iommu_dma_mmap(struct device *dev, struct vm_area_struct *vma,
+>   	unsigned long pfn;
+>   	int ret;
+>   
+> +	handle_deferred_device(dev);
+
+...nor can you mmap() it...
+
+> +
+>   	vma->vm_page_prot = arch_dma_mmap_pgprot(dev, vma->vm_page_prot, attrs);
+>   
+>   	if (dma_mmap_from_dev_coherent(dev, vma, cpu_addr, size, &ret))
+> @@ -1143,6 +1171,8 @@ static int iommu_dma_get_sgtable(struct device *dev, struct sg_table *sgt,
+>   	struct page *page;
+>   	int ret;
+>   
+> +	handle_deferred_device(dev);
+
+...nor attempt to export it.
+
+Robin.
+
+> +
+>   #ifdef CONFIG_DMA_DIRECT_REMAP
+>   	if (is_vmalloc_addr(cpu_addr)) {
+>   		if (!(attrs & DMA_ATTR_FORCE_CONTIGUOUS))
+> 
