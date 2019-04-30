@@ -1,46 +1,29 @@
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2] mt76: mt7615: add TX/RX antenna pattern capabilities
-Date: Tue, 30 Apr 2019 19:27:58 +0800
-Message-ID: <1556623678.4496.1.camel@mtkswgap22>
-References: <4f7160cb9f52335ce15fccac087fec25e7650884.1556255852.git.ryder.lee@mediatek.com>
-         <c3f6e202-8c2f-a103-a104-e0d1cde8147b@nbd.name>
+From: Christoph Hellwig <hch@infradead.org>
+Subject: Re: [PATCH v2 3/4] iommu/dma-iommu: Use the dev->coherent_dma_mask
+Date: Tue, 30 Apr 2019 04:32:53 -0700
+Message-ID: <20190430113253.GA23210@infradead.org>
+References: <20190430002952.18909-1-tmurphy@arista.com>
+ <20190430002952.18909-4-tmurphy@arista.com>
+ <20190430111222.GA3191@infradead.org>
+ <da835ce2-f73e-3035-e1d7-d3028cc1a838@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <c3f6e202-8c2f-a103-a104-e0d1cde8147b-Vt+b4OUoWG0@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
-Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Roy Luo <royluo-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, YF Luo <yf.luo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yiwei Chung <yiwei.chung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <da835ce2-f73e-3035-e1d7-d3028cc1a838@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Christoph Hellwig <hch@infradead.org>, Tom Murphy <tmurphy@arista.com>, iommu@lists.linux-foundation.org, Heiko Stuebner <heiko@sntech.de>, Will Deacon <will.deacon@arm.com>, David Brown <david.brown@linaro.org>, Thierry Reding <thierry.reding@gmail.com>, linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Andy Gross <andy.gross@linaro.org>, linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, murphyt7@tcd.i
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-04-30 at 11:24 +0200, Felix Fietkau wrote:
-> On 2019-04-26 07:23, Ryder Lee wrote:
-> > Announce antenna pattern cap to adapt PHY and baseband settings.
-> > 
-> > Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> > Changes since v2:
-> > - Add a prefix mt76 in the title.
-> > ---
-> >  drivers/net/wireless/mediatek/mt76/mt7615/init.c | 2 ++
-> >  1 file changed, 2 insertions(+)
-> > 
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-> > index 3ab3ff553ef2..122f7a565540 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-> > +++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-> > @@ -190,6 +190,8 @@ int mt7615_register_device(struct mt7615_dev *dev)
-> >  			IEEE80211_VHT_CAP_SHORT_GI_160 |
-> >  			IEEE80211_VHT_CAP_MAX_MPDU_LENGTH_11454 |
-> >  			IEEE80211_VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_MASK |
-> > +			IEEE80211_VHT_CAP_RX_ANTENNA_PATTERN |
-> > +			IEEE80211_VHT_CAP_TX_ANTENNA_PATTERN |
-> If I read the standard correctly, these flags indicate that the rx/tx
-> antenna pattern does NOT change during association.
-> Doesn't that mean that we should set it in mac80211.c instead, so that
-> it also applies to MT76x2?
+On Tue, Apr 30, 2019 at 12:27:02PM +0100, Robin Murphy wrote:
+> > Hmm, I don't think we need the DMA mask for the MSI mapping, this
+> > should probably always use a 64-bit mask.
 > 
-Right. I will add these flags in common code.
+> If that were true then we wouldn't need DMA masks for regular mappings
+> either. If we have to map the MSI doorbell at all, then we certainly have to
+> place it at an IOVA that the relevant device is actually capable of
+> addressing.
 
-Ryder
+Well, as shown by the patch below we don't even look at the DMA mask
+for the MSI page - we just allocate from bottom to top.
