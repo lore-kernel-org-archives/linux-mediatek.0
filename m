@@ -1,397 +1,102 @@
-From: andrew-sh.cheng <andrew-sh.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] Add cpufreq DTS node to the mt8183 and mt8183-evb.
-Date: Tue, 30 Apr 2019 09:09:43 +0800
-Message-ID: <1556586583.16357.1.camel@mtksdaap41>
-References: <1556536674-27068-1-git-send-email-andrew-sh.cheng@mediatek.com>
- <1556536674-27068-2-git-send-email-andrew-sh.cheng@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [RFC PATCH V1 1/6] dt-bindings: mt8183: Add binding for DIP
+ shared memory
+Date: Mon, 29 Apr 2019 20:15:06 -0500
+Message-ID: <20190430011506.GA8514@bogus>
+References: <20190417104511.21514-1-frederic.chen@mediatek.com>
+ <20190417104511.21514-2-frederic.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1556536674-27068-2-git-send-email-andrew-sh.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <20190417104511.21514-2-frederic.chen@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Frederic Chen <frederic.chen@mediatek.com>
+Cc: shik@chromium.org, devicetree@vger.kernel.org, Sean.Cheng@mediatek.com, laurent.pinchart+renesas@ideasonboard.com, Rynn.Wu@mediatek.com, christie.yu@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, suleiman@chromium.org, Jerry-ch.Chen@mediatek.com, tfiga@chromium.org, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, hans.verkuil@cisco.com, zwisler@chromium.org, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2019-04-29 at 19:17 +0800, Andrew-sh.Cheng wrote:
-> From: "Andrew-sh.Cheng" <andrew-sh.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On Wed, Apr 17, 2019 at 06:45:06PM +0800, Frederic Chen wrote:
+> This patch adds the binding for describing the shared memory
+> used to exchange configuration and tuning data between the
+> co-processor and Digital Image Processing (DIP) unit of the
+> camera ISP system on Mediatek SoCs.
 > 
-> Feature: cpufreq
-> Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Frederic Chen <frederic.chen@mediatek.com>
 > ---
-> This patch is based on v5.1-rc1 and these patches:
-> https://patchwork.kernel.org/patch/10893519/
-> ---
->  arch/arm64/boot/dts/mediatek/mt8183-evb.dts |  35 ++++
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi    | 244 ++++++++++++++++++++++++++++
->  2 files changed, 279 insertions(+)
+>  .../mediatek,reserve-memory-dip_smem.txt      | 45 +++++++++++++++++++
+>  1 file changed, 45 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt
 > 
-Due to this patch title is not match rule,
-I will correct it and send patch v2.
+> diff --git a/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt b/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt
+> new file mode 100644
+> index 000000000000..64c001b476b9
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt
+> @@ -0,0 +1,45 @@
+> +Mediatek DIP Shared Memory binding
+> +
+> +This binding describes the shared memory, which serves the purpose of
+> +describing the shared memory region used to exchange data between Digital
+> +Image Processing (DIP) and co-processor in Mediatek SoCs.
+> +
+> +The co-processor doesn't have the iommu so we need to use the physical
+> +address to access the shared buffer in the firmware.
+> +
+> +The Digital Image Processing (DIP) can access memory through mt8183 IOMMU so
+> +it can use dma address to access the memory region.
+> +(See iommu/mediatek,iommu.txt for the detailed description of Mediatek IOMMU)
+> +
+> +
+> +Required properties:
+> +
+> +- compatible: must be "mediatek,reserve-memory-dip_smem"
 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-> index 465cdab..b8057fb 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-> @@ -175,6 +175,41 @@
->  	};
->  };
->  
-> +&cci {
-> +	proc-supply = <&mt6358_vproc12_reg>;
-> +};
+Don't use '_'.
+
 > +
-> +&cpu0 {
-> +	proc-supply = <&mt6358_vproc12_reg>;
-> +};
+> +- reg: required for static allocation (see reserved-memory.txt for
+> +  the detailed usage)
 > +
-> +&cpu1 {
-> +	proc-supply = <&mt6358_vproc12_reg>;
-> +};
+> +- alloc-range: required for dynamic allocation. The range must
+> +  between 0x00000400 and 0x100000000 due to the co-processer's
+> +  addressing limitation
+
+Generally, you should pick either static or dynamic allocation for a 
+given binding. Static if there's some address restriction or sharing, 
+dynamic if not.
+
+Sounds like static in this case.
+
 > +
-> +&cpu2 {
-> +	proc-supply = <&mt6358_vproc12_reg>;
-> +};
+> +- size: required for dynamic allocation. The unit is bytes.
+> +  If you want to enable the full feature of Digital Processing Unit,
+> +  you need 20 MB at least.
 > +
-> +&cpu3 {
-> +	proc-supply = <&mt6358_vproc12_reg>;
-> +};
 > +
-> +&cpu4 {
-> +	proc-supply = <&mt6358_vproc11_reg>;
-> +};
+> +Example:
 > +
-> +&cpu5 {
-> +	proc-supply = <&mt6358_vproc11_reg>;
-> +};
+> +The following example shows the DIP shared memory setup for MT8183.
 > +
-> +&cpu6 {
-> +	proc-supply = <&mt6358_vproc11_reg>;
-> +};
-> +
-> +&cpu7 {
-> +	proc-supply = <&mt6358_vproc11_reg>;
-> +};
->  &uart0 {
->  	status = "okay";
->  };
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index b36e37f..78d1ccf 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -15,6 +15,218 @@
->  	interrupt-parent = <&sysirq>;
->  	#address-cells = <2>;
->  	#size-cells = <2>;
-> +	cluster0_opp: opp_table1 {
-> +		compatible = "operating-points-v2";
-> +		opp-shared;
-> +		opp00 {
-> +			opp-hz = /bits/ 64 <793000000>;
-> +			opp-microvolt = <650000>;
-> +		};
-> +		opp01 {
-> +			opp-hz = /bits/ 64 <910000000>;
-> +			opp-microvolt = <675000>;
-> +		};
-> +		opp02 {
-> +			opp-hz = /bits/ 64 <1014000000>;
-> +			opp-microvolt = <700000>;
-> +		};
-> +		opp03 {
-> +			opp-hz = /bits/ 64 <1131000000>;
-> +			opp-microvolt = <725000>;
-> +		};
-> +		opp04 {
-> +			opp-hz = /bits/ 64 <1248000000>;
-> +			opp-microvolt = <750000>;
-> +		};
-> +		opp05 {
-> +			opp-hz = /bits/ 64 <1326000000>;
-> +			opp-microvolt = <775000>;
-> +		};
-> +		opp06 {
-> +			opp-hz = /bits/ 64 <1417000000>;
-> +			opp-microvolt = <800000>;
-> +		};
-> +		opp07 {
-> +			opp-hz = /bits/ 64 <1508000000>;
-> +			opp-microvolt = <825000>;
-> +		};
-> +		opp08 {
-> +			opp-hz = /bits/ 64 <1586000000>;
-> +			opp-microvolt = <850000>;
-> +		};
-> +		opp09 {
-> +			opp-hz = /bits/ 64 <1625000000>;
-> +			opp-microvolt = <862500>;
-> +		};
-> +		opp10 {
-> +			opp-hz = /bits/ 64 <1677000000>;
-> +			opp-microvolt = <881250>;
-> +		};
-> +		opp11 {
-> +			opp-hz = /bits/ 64 <1716000000>;
-> +			opp-microvolt = <900000>;
-> +		};
-> +		opp12 {
-> +			opp-hz = /bits/ 64 <1781000000>;
-> +			opp-microvolt = <925000>;
-> +		};
-> +		opp13 {
-> +			opp-hz = /bits/ 64 <1846000000>;
-> +			opp-microvolt = <950000>;
-> +		};
-> +		opp14 {
-> +			opp-hz = /bits/ 64 <1924000000>;
-> +			opp-microvolt = <975000>;
-> +		};
-> +		opp15 {
-> +			opp-hz = /bits/ 64 <1989000000>;
-> +			opp-microvolt = <1000000>;
-> +		};	};
-> +
-> +	cluster1_opp: opp_table2 {
-> +		compatible = "operating-points-v2";
-> +		opp-shared;
-> +		opp00 {
-> +			opp-hz = /bits/ 64 <793000000>;
-> +			opp-microvolt = <650000>;
-> +		};
-> +		opp01 {
-> +			opp-hz = /bits/ 64 <910000000>;
-> +			opp-microvolt = <675000>;
-> +		};
-> +		opp02 {
-> +			opp-hz = /bits/ 64 <1014000000>;
-> +			opp-microvolt = <700000>;
-> +		};
-> +		opp03 {
-> +			opp-hz = /bits/ 64 <1131000000>;
-> +			opp-microvolt = <725000>;
-> +		};
-> +		opp04 {
-> +			opp-hz = /bits/ 64 <1248000000>;
-> +			opp-microvolt = <750000>;
-> +		};
-> +		opp05 {
-> +			opp-hz = /bits/ 64 <1326000000>;
-> +			opp-microvolt = <775000>;
-> +		};
-> +		opp06 {
-> +			opp-hz = /bits/ 64 <1417000000>;
-> +			opp-microvolt = <800000>;
-> +		};
-> +		opp07 {
-> +			opp-hz = /bits/ 64 <1508000000>;
-> +			opp-microvolt = <825000>;
-> +		};
-> +		opp08 {
-> +			opp-hz = /bits/ 64 <1586000000>;
-> +			opp-microvolt = <850000>;
-> +		};
-> +		opp09 {
-> +			opp-hz = /bits/ 64 <1625000000>;
-> +			opp-microvolt = <862500>;
-> +		};
-> +		opp10 {
-> +			opp-hz = /bits/ 64 <1677000000>;
-> +			opp-microvolt = <881250>;
-> +		};
-> +		opp11 {
-> +			opp-hz = /bits/ 64 <1716000000>;
-> +			opp-microvolt = <900000>;
-> +		};
-> +		opp12 {
-> +			opp-hz = /bits/ 64 <1781000000>;
-> +			opp-microvolt = <925000>;
-> +		};
-> +		opp13 {
-> +			opp-hz = /bits/ 64 <1846000000>;
-> +			opp-microvolt = <950000>;
-> +		};
-> +		opp14 {
-> +			opp-hz = /bits/ 64 <1924000000>;
-> +			opp-microvolt = <975000>;
-> +		};
-> +		opp15 {
-> +			opp-hz = /bits/ 64 <1989000000>;
-> +			opp-microvolt = <1000000>;
+> +	reserved-memory {
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+> +		ranges;
+> +		reserve-memory-dip_smem {
+> +			compatible = "mediatek,reserve-memory-dip_smem";
+> +			size = <0 0x1400000>;
+> +			alignment = <0 0x1000>;
+> +			alloc-ranges = <0 0x40000000 0 0x50000000>;
 > +		};
 > +	};
-> +
-> +	cluster2_opp: opp_table3 {
-> +		compatible = "operating-points-v2";
-> +		opp-shared;
-> +		opp00 {
-> +			opp-hz = /bits/ 64 <273000000>;
-> +			opp-microvolt = <650000>;
-> +		};
-> +		opp01 {
-> +			opp-hz = /bits/ 64 <338000000>;
-> +			opp-microvolt = <675000>;
-> +		};
-> +		opp02 {
-> +			opp-hz = /bits/ 64 <403000000>;
-> +			opp-microvolt = <700000>;
-> +		};
-> +		opp03 {
-> +			opp-hz = /bits/ 64 <463000000>;
-> +			opp-microvolt = <725000>;
-> +		};
-> +		opp04 {
-> +			opp-hz = /bits/ 64 <546000000>;
-> +			opp-microvolt = <750000>;
-> +		};
-> +		opp05 {
-> +			opp-hz = /bits/ 64 <624000000>;
-> +			opp-microvolt = <775000>;
-> +		};
-> +		opp06 {
-> +			opp-hz = /bits/ 64 <689000000>;
-> +			opp-microvolt = <800000>;
-> +		};
-> +		opp07 {
-> +			opp-hz = /bits/ 64 <767000000>;
-> +			opp-microvolt = <825000>;
-> +		};
-> +		opp08 {
-> +			opp-hz = /bits/ 64 <845000000>;
-> +			opp-microvolt = <850000>;
-> +		};
-> +		opp09 {
-> +			opp-hz = /bits/ 64 <871000000>;
-> +			opp-microvolt = <862500>;
-> +		};
-> +		opp10 {
-> +			opp-hz = /bits/ 64 <923000000>;
-> +			opp-microvolt = <881250>;
-> +		};
-> +		opp11 {
-> +			opp-hz = /bits/ 64 <962000000>;
-> +			opp-microvolt = <900000>;
-> +		};
-> +		opp12 {
-> +			opp-hz = /bits/ 64 <1027000000>;
-> +			opp-microvolt = <925000>;
-> +		};
-> +		opp13 {
-> +			opp-hz = /bits/ 64 <1092000000>;
-> +			opp-microvolt = <950000>;
-> +		};
-> +		opp14 {
-> +			opp-hz = /bits/ 64 <1144000000>;
-> +			opp-microvolt = <975000>;
-> +		};
-> +		opp15 {
-> +			opp-hz = /bits/ 64 <1196000000>;
-> +			opp-microvolt = <1000000>;
-> +		};
-> +	};
-> +
-> +	cci: cci {
-> +		compatible = "mediatek,mt8183-cci";
-> +		clocks = <&apmixedsys CLK_APMIXED_CCIPLL>;
-> +		clock-names = "cci_clock";
-> +		operating-points-v2 = <&cluster2_opp>;
-> +	};
->  
->  	cpus {
->  		#address-cells = <1>;
-> @@ -57,6 +269,10 @@
->  			compatible = "arm,cortex-a53";
->  			reg = <0x000>;
->  			enable-method = "psci";
-> +			clocks = <&mcucfg CLK_MCU_MP0_SEL>,
-> +				<&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-> +			clock-names = "cpu", "intermediate";
-> +			operating-points-v2 = <&cluster0_opp>;
->  		};
->  
->  		cpu1: cpu@1 {
-> @@ -64,6 +280,10 @@
->  			compatible = "arm,cortex-a53";
->  			reg = <0x001>;
->  			enable-method = "psci";
-> +			clocks = <&mcucfg CLK_MCU_MP0_SEL>,
-> +				<&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-> +			clock-names = "cpu", "intermediate";
-> +			operating-points-v2 = <&cluster0_opp>;
->  		};
->  
->  		cpu2: cpu@2 {
-> @@ -71,6 +291,10 @@
->  			compatible = "arm,cortex-a53";
->  			reg = <0x002>;
->  			enable-method = "psci";
-> +			clocks = <&mcucfg CLK_MCU_MP0_SEL>,
-> +				<&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-> +			clock-names = "cpu", "intermediate";
-> +			operating-points-v2 = <&cluster0_opp>;
->  		};
->  
->  		cpu3: cpu@3 {
-> @@ -78,6 +302,10 @@
->  			compatible = "arm,cortex-a53";
->  			reg = <0x003>;
->  			enable-method = "psci";
-> +			clocks = <&mcucfg CLK_MCU_MP0_SEL>,
-> +				<&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-> +			clock-names = "cpu", "intermediate";
-> +			operating-points-v2 = <&cluster0_opp>;
->  		};
->  
->  		cpu4: cpu@100 {
-> @@ -85,6 +313,10 @@
->  			compatible = "arm,cortex-a73";
->  			reg = <0x100>;
->  			enable-method = "psci";
-> +			clocks = <&mcucfg CLK_MCU_MP2_SEL>,
-> +				<&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-> +			clock-names = "cpu", "intermediate";
-> +			operating-points-v2 = <&cluster1_opp>;
->  		};
->  
->  		cpu5: cpu@101 {
-> @@ -92,6 +324,10 @@
->  			compatible = "arm,cortex-a73";
->  			reg = <0x101>;
->  			enable-method = "psci";
-> +			clocks = <&mcucfg CLK_MCU_MP2_SEL>,
-> +				<&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-> +			clock-names = "cpu", "intermediate";
-> +			operating-points-v2 = <&cluster1_opp>;
->  		};
->  
->  		cpu6: cpu@102 {
-> @@ -99,6 +335,10 @@
->  			compatible = "arm,cortex-a73";
->  			reg = <0x102>;
->  			enable-method = "psci";
-> +			clocks = <&mcucfg CLK_MCU_MP2_SEL>,
-> +				<&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-> +			clock-names = "cpu", "intermediate";
-> +			operating-points-v2 = <&cluster1_opp>;
->  		};
->  
->  		cpu7: cpu@103 {
-> @@ -106,6 +346,10 @@
->  			compatible = "arm,cortex-a73";
->  			reg = <0x103>;
->  			enable-method = "psci";
-> +			clocks = <&mcucfg CLK_MCU_MP2_SEL>,
-> +				<&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-> +			clock-names = "cpu", "intermediate";
-> +			operating-points-v2 = <&cluster1_opp>;
->  		};
->  	};
->  
+> -- 
+> 2.18.0
+> 
