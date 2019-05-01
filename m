@@ -1,25 +1,52 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 1/2] dt-bindings: adc: mt8183: add binding document
-Date: Wed, 1 May 2019 15:01:25 -0500
-Message-ID: <20190501200125.GA29927@bogus>
-References: <20190424011112.14283-1-zhiyong.tao@mediatek.com>
- <20190424011112.14283-2-zhiyong.tao@mediatek.com>
+Subject: Re: [PATCH v2 2/4] dt-bindings: doc: Reflect new NVMEM
+ of_get_mac_address behaviour
+Date: Wed, 1 May 2019 15:22:00 -0500
+Message-ID: <20190501202200.GB15495@bogus>
+References: <1556456002-13430-1-git-send-email-ynezz@true.cz>
+ <1556456002-13430-3-git-send-email-ynezz@true.cz>
+ <20190428165326.GI23059@lunn.ch>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20190424011112.14283-2-zhiyong.tao@mediatek.com>
+In-Reply-To: <20190428165326.GI23059@lunn.ch>
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: robh+dt@kernel.org, jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net, srv_heupstream@mediatek.com, hui.liu@mediatek.com, yingjoe.chen@mediatek.com, sean.wang@mediatek.com, erin.lo@mediatek.com, eddie.huang@mediatek.com, matthias.bgg@gmail.com, s.hauer@pengutronix.de, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-iio@vger.kernel.org, linux-mediatek@lists.infradead.org, Zhiyong Tao <zhiyong.tao@mediatek.com>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>, netdev@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, Mark Rutland <mark.rutland@arm.com>, Vivien Didelot <vivien.didelot@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, Yisen Zhuang <yisen.zhuang@huawei.com>, Salil Mehta <salil.mehta@huawei.com>, Woojung Huh <woojung.huh@microchip.com>, Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Jassi Brar <jaswinder.singh@linaro.org>, Kalle Valo <kvalo@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, Frank Rowand <frowand.list@g>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 24 Apr 2019 09:11:11 +0800, Zhiyong Tao wrote:
-> The commit adds mt8183 compatible node in binding document.
+On Sun, Apr 28, 2019 at 06:53:26PM +0200, Andrew Lunn wrote:
+> On Sun, Apr 28, 2019 at 02:53:20PM +0200, Petr Štetiar wrote:
+> > As of_get_mac_address now supports NVMEM under the hood, we need to update
+> > the bindings documentation with the new nvmem-cell* properties, which would
+> > mean copy&pasting a lot of redundant information to every binding
+> > documentation currently referencing some of the MAC address properties.
+> > 
+> > So I've just removed all the references to the optional MAC address
+> > properties and replaced them with the reference to the net/ethernet.txt
+> > file.  While at it, I've also removed other optional Ethernet properties.
 > 
-> Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/iio/adc/mt6577_auxadc.txt | 1 +
->  1 file changed, 1 insertion(+)
+> Hi Petr
 > 
+> I think each individual binding needs to give a hint if
+> of_get_mac_address() is used, and hence if these optional properties
+> are respected. The same is true for other optional properties. I don't
+> want to have to look at the driver to know which optional properties
+> are implemented, the binding should tell me. What the optional
+> properties mean, and which order they are used in can then be defined
+> in ethernet.txt.
+> 
+> So i would suggests something like:
+> 
+> The MAC address will be determined using the optional properties
+> defined in ethernet.txt.
+> 
+> And leave all the other optional parameters in the bindings.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Yes. Generally we need to know which properties from a common pool of 
+properties apply to a specific binding. Also there are typically 
+additional constraints for a specific binding.
+
+Rob
