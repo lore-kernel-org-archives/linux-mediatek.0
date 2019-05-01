@@ -1,105 +1,25 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [RFC v1 1/3] dt-bindings: soc: add mtk svs dt-bindings
-Date: Tue, 30 Apr 2019 13:31:32 -0700
-Message-ID: <155665629219.168659.8221738507474891604@swboyd.mtv.corp.google.com>
-References: <20190430112012.4514-1-roger.lu@mediatek.com> <20190430112012.4514-2-roger.lu@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 1/2] dt-bindings: adc: mt8183: add binding document
+Date: Wed, 1 May 2019 15:01:25 -0500
+Message-ID: <20190501200125.GA29927@bogus>
+References: <20190424011112.14283-1-zhiyong.tao@mediatek.com>
+ <20190424011112.14283-2-zhiyong.tao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190430112012.4514-2-roger.lu@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <20190424011112.14283-2-zhiyong.tao@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Viresh Kumar <vireshk@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>, Kevin Hilman <khilman@kernel.org>, Roger Lu <roger.lu@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org
+Cc: robh+dt@kernel.org, jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net, srv_heupstream@mediatek.com, hui.liu@mediatek.com, yingjoe.chen@mediatek.com, sean.wang@mediatek.com, erin.lo@mediatek.com, eddie.huang@mediatek.com, matthias.bgg@gmail.com, s.hauer@pengutronix.de, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-iio@vger.kernel.org, linux-mediatek@lists.infradead.org, Zhiyong Tao <zhiyong.tao@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting Roger Lu (2019-04-30 04:20:10)
-> Document the binding for enabling mtk svs on MediaTek SoC.
->=20
-> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+On Wed, 24 Apr 2019 09:11:11 +0800, Zhiyong Tao wrote:
+> The commit adds mt8183 compatible node in binding document.
+> 
+> Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
 > ---
->  .../devicetree/bindings/power/mtk-svs.txt     | 70 +++++++++++++++++++
->  1 file changed, 70 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/power/mtk-svs.txt
->=20
-> diff --git a/Documentation/devicetree/bindings/power/mtk-svs.txt b/Docume=
-ntation/devicetree/bindings/power/mtk-svs.txt
-> new file mode 100644
-> index 000000000000..355329db74ba
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/power/mtk-svs.txt
-> @@ -0,0 +1,70 @@
-> +* Mediatek Smart Voltage Scaling (MTK SVS)
-> +
-> +This describes the device tree binding for the MTK SVS controller
-> +which helps provide the optimized CPU/GPU/CCI voltages. This device also
-> +needs thermal data to calculate thermal slope for accurately compensate
-> +the voltages when temperature change.
-> +
-> +Required properties:
-> +- compatible:
-> +  - "mediatek,mt8183-svs" : For MT8183 family of SoCs
-> +- reg: Address range of the MTK SVS controller.
-> +- interrupts: IRQ for the MTK SVS controller.
-> +- clocks, clock-names: Clocks needed for the svs controller. required
-> +                       clocks are:
-> +                      "main_clk": Main clock needed for register access
-> +- nvmem-cells: Phandle to the calibration data provided by a nvmem devic=
-e.
-> +- nvmem-cell-names: Should be "svs-calibration-data" and "calibration-da=
-ta"
-> +- svs_xxx: Phandle of svs_bank device for controlling corresponding opp
+>  Documentation/devicetree/bindings/iio/adc/mt6577_auxadc.txt | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
-Properties shouldn't have underscores in them. Use dashes?
-
-> +           table and power-domains.
-> +- vxxx-supply: Phandle to each regulator. vxxx can be "vcpu_little",
-> +              "vcpu_big", "vcci" and "vgpu".
-> +
-> +Example:
-> +
-> +       svs: svs@1100b000 {
-> +               compatible =3D "mediatek,mt8183-svs";
-> +               reg =3D <0 0x1100b000 0 0x1000>;
-> +               interrupts =3D <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW 0>;
-> +               clocks =3D <&infracfg CLK_INFRA_THERM>;
-> +               clock-names =3D "main_clk";
-> +               nvmem-cells =3D <&svs_calibration>, <&thermal_calibration=
->;
-> +               nvmem-cell-names =3D "svs-calibration-data", "calibration=
--data";
-> +
-> +               svs_cpu_little: svs_cpu_little {
-> +                       compatible =3D "mediatek,mt8183-svs-cpu-little";
-> +                       operating-points-v2 =3D <&cluster0_opp>;
-> +               };
-> +
-> +               svs_cpu_big: svs_cpu_big {
-> +                       compatible =3D "mediatek,mt8183-svs-cpu-big";
-> +                       operating-points-v2 =3D <&cluster1_opp>;
-> +               };
-> +
-> +               svs_cci: svs_cci {
-> +                       compatible =3D "mediatek,mt8183-svs-cci";
-> +                       operating-points-v2 =3D <&cluster2_opp>;
-> +               };
-> +
-> +               svs_gpu: svs_gpu {
-> +                       compatible =3D "mediatek,mt8183-svs-gpu";
-> +                       power-domains =3D <&scpsys MT8183_POWER_DOMAIN_MF=
-G_2D>;
-> +                       operating-points-v2 =3D <&gpu_opp_table>;
-> +               };
-
-It looks like you need multiple OPPs for a single device, because it has
-different independent power supplies it wants to associate the OPP
-tables with? Why can't these OPP tables be attached to the devices that
-use them, i.e. CPU, GPU, CCI, etc.? Seems odd that those devices don't
-have OPP tables that this hardware block can look up somehow. Similarly,
-the power domains should probably be part of the devices that are using
-them and not these sub-nodes that are mirroring the other hardware
-blocks in the system?
-
-> +       };
-> +
-> +       &svs_cpu_little {
+Reviewed-by: Rob Herring <robh@kernel.org>
