@@ -1,28 +1,82 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [RFC V2 09/11] dt-bindings: interconnect: Add header for
- interconnect node
-Date: Wed, 1 May 2019 15:28:44 -0500
-Message-ID: <20190501202844.GA5092@bogus>
-References: <1556614265-12745-1-git-send-email-henryc.chen@mediatek.com>
- <1556614265-12745-10-git-send-email-henryc.chen@mediatek.com>
+Subject: Re: [RFC PATCH V1 1/6] dt-bindings: mt8183: Add binding for FD
+ shared memory
+Date: Wed, 1 May 2019 17:45:12 -0500
+Message-ID: <20190501224512.GA4287@bogus>
+References: <20190423104505.38778-1-Jerry-Ch.chen@mediatek.com>
+ <20190423104505.38778-2-Jerry-Ch.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <1556614265-12745-10-git-send-email-henryc.chen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Henry Chen <henryc.chen@mediatek.com>
-Cc: Georgi Djakov <georgi.djakov@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Viresh Kumar <vireshk@kernel.org>, Stephen Boyd <swboyd@chromium.org>, Nicolas Boichat <drinkcat@google.com>, Fan Chen <fan.chen@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20190423104505.38778-2-Jerry-Ch.chen@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Jerry-ch Chen <Jerry-Ch.chen@mediatek.com>
+Cc: devicetree@vger.kernel.org, Sean.Cheng@mediatek.com, laurent.pinchart+renesas@ideasonboard.com, Rynn.Wu@mediatek.com, christie.yu@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, suleiman@chromium.org, shik@chromium.org, tfiga@chromium.org, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, hans.verkuil@cisco.com, zwisler@chromium.org, frederic.chen@mediatek.com, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Apr 30, 2019 at 04:51:03PM +0800, Henry Chen wrote:
-> Add header file for mt8183 interconnect node that could be shared between
-> the interconeect provider driver and Device Tree source files.
+On Tue, Apr 23, 2019 at 06:45:00PM +0800, Jerry-ch Chen wrote:
+> From: Jerry-ch Chen <jerry-ch.chen@mediatek.com>
 > 
-> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+> This patch adds the binding for describing the shared memory
+> used to exchange meta data between the co-processor and Face
+> Detection (FD) unit of the camera system on Mediatek SoCs.
+> 
+> Signed-off-by: Jerry-ch Chen <jerry-ch.chen@mediatek.com>
 > ---
->  include/dt-bindings/interconnect/mtk,mt8183.h | 18 ++++++++++++++++++
->  1 file changed, 18 insertions(+)
->  create mode 100644 include/dt-bindings/interconnect/mtk,mt8183.h
+>  .../mediatek,reserve-memory-fd_smem.txt       | 44 +++++++++++++++++++
+>  1 file changed, 44 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-fd_smem.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-fd_smem.txt b/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-fd_smem.txt
+> new file mode 100644
+> index 000000000000..52ae5071e238
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-fd_smem.txt
+> @@ -0,0 +1,44 @@
+> +Mediatek FD Shared Memory binding
+> +
+> +This binding describes the shared memory, which serves the purpose of
+> +describing the shared memory region used to exchange data between Face
+> +Detection hardware (FD) and co-processor in Mediatek SoCs.
+> +
+> +The co-processor doesn't have the iommu so we need to use the physical
+> +address to access the shared buffer in the firmware.
+> +
+> +The Face Detection hardware (FD) can access memory through mt8183 IOMMU so
+> +it can use dma address to access the memory region.
+> +(See iommu/mediatek,iommu.txt for the detailed description of Mediatek IOMMU)
+> +
+> +
+> +Required properties:
+> +
+> +- compatible: must be "mediatek,reserve-memory-fd_smem"
+> +
+> +- reg: required for static allocation (see reserved-memory.txt for
+> +  the detailed usage)
+> +
+> +- alloc-range: required for dynamic allocation. The range must
+> +  between 0x00000400 and 0x100000000 due to the co-processer's
+> +  addressing limitation
+> +
+> +- size: required for dynamic allocation. The unit is bytes.
+> +  for Face Detection Unit, you need 1 MB at least.
 
-This goes with the binding patch.
+What's the most?
+
+I don't think you really need reserved memory here if you don't need a 
+fixed address. The size is not that big that a contiguous allocation 
+shouldn't be a problem (though with IOMMU you don't even need that). 
+'dma-ranges' can be used to set the kernel's dma mask and ensure a 
+range below 0x10000000.
+
+Rob
