@@ -1,118 +1,96 @@
 From: Nicolas Boichat <drinkcat@chromium.org>
-Subject: [PATCH 1/2] usb: xhci: Make it possible to not have a secondary HCD
- (3.0)
-Date: Thu,  2 May 2019 12:56:29 +0800
-Message-ID: <20190502045631.229386-1-drinkcat@chromium.org>
+Subject: [PATCH 2/2] usb: xhci-mtk: Do not create shared_hcd if no USB 3.0 port available
+Date: Thu,  2 May 2019 12:56:30 +0800
+Message-ID: <20190502045631.229386-2-drinkcat@chromium.org>
+References: <20190502045631.229386-1-drinkcat@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190502045631.229386-1-drinkcat@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Khuong Dinh <khuong@os.amperecomputing.com>, Mathias Nyman <mathias.nyman@intel.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Hoan Tran <hoan@os.amperecomputing.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Cc: Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Khuong Dinh <khuong@os.amperecomputing.com>, Hoan Tran <hoan@os.amperecomputing.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Some XHCI controllers may not have any USB 3.0 port, in this case, it
-is not useful to create add hcd->shared_hcd, which has 2 main
-downsides:
- - A useless USB 3.0 root hub is created.
- - A warning is thrown on boot:
-hub 2-0:1.0: config failed, hub doesn't have any ports! (err -19)
-
-The change is mostly about checking if hcd->shared_hcd is NULL before
-accessing it. The one special case is in xhci_run, where we need to
-call xhci_run_finished immediately, if there is no secondary hcd.
+When the controller only supports USB 2.0, do not even create the
+USB 3.0 hcd/root hub.
 
 Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
 ---
+ drivers/usb/host/xhci-mtk.c | 44 +++++++++++++++++++++++--------------
+ 1 file changed, 28 insertions(+), 16 deletions(-)
 
-This is a respin of https://lore.kernel.org/patchwork/patch/863993/,
-hopefully addressing the comments there. Note that I dropped the change
-in xhci-plat.c, as I do not have a device to test it, but made a
-similar change in xhci-mtk.c, in the next patch.
-
-(the @apm.com addresses seem to bounce, so I added some
-@amperecomputing.com instead, if somebody there can track back the
-original issue, I'm happy to provide a patch for xhci-plat.c as well)
-
-drivers/usb/host/xhci-hub.c |  7 ++++--
- drivers/usb/host/xhci.c     | 45 +++++++++++++++++++++++++++----------
- 2 files changed, 38 insertions(+), 14 deletions(-)
-
-diff --git a/drivers/usb/host/xhci-hub.c b/drivers/usb/host/xhci-hub.c
-index 3abe70ff1b1e2af..9a9c5a63ae57c6d 100644
---- a/drivers/usb/host/xhci-hub.c
-+++ b/drivers/usb/host/xhci-hub.c
-@@ -627,8 +627,11 @@ static int xhci_enter_test_mode(struct xhci_hcd *xhci,
- 	/* Put all ports to the Disable state by clear PP */
- 	xhci_dbg(xhci, "Disable all port (PP = 0)\n");
- 	/* Power off USB3 ports*/
--	for (i = 0; i < xhci->usb3_rhub.num_ports; i++)
--		xhci_set_port_power(xhci, xhci->shared_hcd, i, false, flags);
-+	if (xhci->shared_hcd) {
-+		for (i = 0; i < xhci->usb3_rhub.num_ports; i++)
-+			xhci_set_port_power(xhci, xhci->shared_hcd, i, false,
-+					flags);
-+	}
- 	/* Power off USB2 ports*/
- 	for (i = 0; i < xhci->usb2_rhub.num_ports; i++)
- 		xhci_set_port_power(xhci, xhci->main_hcd, i, false, flags);
-diff --git a/drivers/usb/host/xhci.c b/drivers/usb/host/xhci.c
-index a9bb796794e3937..a2cf715c53f2164 100644
---- a/drivers/usb/host/xhci.c
-+++ b/drivers/usb/host/xhci.c
-@@ -523,6 +523,10 @@ static void compliance_mode_recovery(struct timer_list *t)
-  */
- static void compliance_mode_recovery_timer_init(struct xhci_hcd *xhci)
- {
-+	/* No compliance mode recovery needed if there is no USB 3.0 hcd. */
-+	if (!xhci->shared_hcd)
-+		return;
-+
- 	xhci->port_status_u0 = 0;
- 	timer_setup(&xhci->comp_mode_recovery_timer, compliance_mode_recovery,
- 		    0);
-@@ -610,7 +614,8 @@ static int xhci_run_finished(struct xhci_hcd *xhci)
- 		xhci_halt(xhci);
- 		return -ENODEV;
+diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+index 026fe18972d3e5b..189f5dc614e6e05 100644
+--- a/drivers/usb/host/xhci-mtk.c
++++ b/drivers/usb/host/xhci-mtk.c
+@@ -527,23 +527,28 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+ 	xhci->imod_interval = 5000;
+ 	device_property_read_u32(dev, "imod-interval-ns", &xhci->imod_interval);
+ 
+-	xhci->shared_hcd = usb_create_shared_hcd(driver, dev,
++	/* Only create shared_hcd when USB3.0 port is available. */
++	if (xhci->usb3_rhub.num_ports > 0) {
++		xhci->shared_hcd = usb_create_shared_hcd(driver, dev,
+ 			dev_name(dev), hcd);
+-	if (!xhci->shared_hcd) {
+-		ret = -ENOMEM;
+-		goto disable_device_wakeup;
++		if (!xhci->shared_hcd) {
++			ret = -ENOMEM;
++			goto disable_device_wakeup;
++		}
  	}
--	xhci->shared_hcd->state = HC_STATE_RUNNING;
-+	if (xhci->shared_hcd)
-+		xhci->shared_hcd->state = HC_STATE_RUNNING;
- 	xhci->cmd_ring_state = CMD_RING_STATE_RUNNING;
  
- 	if (xhci->quirks & XHCI_NEC_HOST)
-@@ -698,6 +703,10 @@ int xhci_run(struct usb_hcd *hcd)
+ 	ret = usb_add_hcd(hcd, irq, IRQF_SHARED);
+ 	if (ret)
+ 		goto put_usb3_hcd;
  
- 	xhci_debugfs_init(xhci);
+-	if (HCC_MAX_PSA(xhci->hcc_params) >= 4)
+-		xhci->shared_hcd->can_do_streams = 1;
++	if (xhci->usb3_rhub.num_ports > 0) {
++		if (HCC_MAX_PSA(xhci->hcc_params) >= 4)
++			xhci->shared_hcd->can_do_streams = 1;
  
-+	/* There is no secondary HCD, start the host controller immediately. */
-+	if (!xhci->shared_hcd)
-+		return xhci_run_finished(xhci);
-+
+-	ret = usb_add_hcd(xhci->shared_hcd, irq, IRQF_SHARED);
+-	if (ret)
+-		goto dealloc_usb2_hcd;
++		ret = usb_add_hcd(xhci->shared_hcd, irq, IRQF_SHARED);
++		if (ret)
++			goto dealloc_usb2_hcd;
++	}
+ 
  	return 0;
- }
- EXPORT_SYMBOL_GPL(xhci_run);
-@@ -984,7 +993,8 @@ int xhci_suspend(struct xhci_hcd *xhci, bool do_wakeup)
- 		return 0;
  
- 	if (hcd->state != HC_STATE_SUSPENDED ||
--			xhci->shared_hcd->state != HC_STATE_SUSPENDED)
-+			(xhci->shared_hcd &&
-+				xhci->shared_hcd->state != HC_STATE_SUSPENDED))
- 		return -EINVAL;
+@@ -552,7 +557,8 @@ static int xhci_mtk_probe(struct platform_device *pdev)
  
- 	xhci_dbc_suspend(xhci);
-@@ -997,15 +1007,18 @@ int xhci_suspend(struct xhci_hcd *xhci, bool do_wakeup)
- 	xhci_dbg(xhci, "%s: stopping port polling.\n", __func__);
+ put_usb3_hcd:
+ 	xhci_mtk_sch_exit(mtk);
+-	usb_put_hcd(xhci->shared_hcd);
++	if (xhci->shared_hcd)
++		usb_put_hcd(xhci->shared_hcd);
+ 
+ disable_device_wakeup:
+ 	device_init_wakeup(dev, false);
+@@ -579,12 +585,14 @@ static int xhci_mtk_remove(struct platform_device *dev)
+ 	struct xhci_hcd	*xhci = hcd_to_xhci(hcd);
+ 	struct usb_hcd  *shared_hcd = xhci->shared_hcd;
+ 
+-	usb_remove_hcd(shared_hcd);
++	if (shared_hcd)
++		usb_remove_hcd(shared_hcd);
+ 	xhci->shared_hcd = NULL;
+ 	device_init_wakeup(&dev->dev, false);
+ 
+ 	usb_remove_hcd(hcd);
+-	usb_put_hcd(shared_hcd);
++	if (shared_hcd)
++		usb_put_hcd(shared_hcd);
+ 	usb_put_hcd(hcd);
+ 	xhci_mtk_sch_exit(mtk);
+ 	xhci_mtk_clks_disable(mtk);
+@@ -611,8 +619,10 @@ static int __maybe_unused xhci_mtk_suspend(struct device *dev)
+ 	xhci_dbg(xhci, "%s: stop port polling\n", __func__);
  	clear_bit(HCD_FLAG_POLL_RH, &hcd->flags);
  	del_timer_sync(&hcd->rh_timer);
 -	clear_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
@@ -122,67 +100,12 @@ index a9bb796794e3937..a2cf715c53f2164 100644
 +		del_timer_sync(&xhci->shared_hcd->rh_timer);
 +	}
  
- 	if (xhci->quirks & XHCI_SUSPEND_DELAY)
- 		usleep_range(1000, 1500);
+ 	xhci_mtk_host_disable(mtk);
+ 	xhci_mtk_clks_disable(mtk);
+@@ -631,8 +641,10 @@ static int __maybe_unused xhci_mtk_resume(struct device *dev)
+ 	xhci_mtk_host_enable(mtk);
  
- 	spin_lock_irq(&xhci->lock);
- 	clear_bit(HCD_FLAG_HW_ACCESSIBLE, &hcd->flags);
--	clear_bit(HCD_FLAG_HW_ACCESSIBLE, &xhci->shared_hcd->flags);
-+	if (xhci->shared_hcd)
-+		clear_bit(HCD_FLAG_HW_ACCESSIBLE, &xhci->shared_hcd->flags);
- 	/* step 1: stop endpoint */
- 	/* skipped assuming that port suspend has done */
- 
-@@ -1103,7 +1116,8 @@ int xhci_resume(struct xhci_hcd *xhci, bool hibernated)
- 		msleep(100);
- 
- 	set_bit(HCD_FLAG_HW_ACCESSIBLE, &hcd->flags);
--	set_bit(HCD_FLAG_HW_ACCESSIBLE, &xhci->shared_hcd->flags);
-+	if (xhci->shared_hcd)
-+		set_bit(HCD_FLAG_HW_ACCESSIBLE, &xhci->shared_hcd->flags);
- 
- 	spin_lock_irq(&xhci->lock);
- 	if ((xhci->quirks & XHCI_RESET_ON_RESUME) || xhci->broken_suspend)
-@@ -1145,7 +1159,9 @@ int xhci_resume(struct xhci_hcd *xhci, bool hibernated)
- 
- 		/* Let the USB core know _both_ roothubs lost power. */
- 		usb_root_hub_lost_power(xhci->main_hcd->self.root_hub);
--		usb_root_hub_lost_power(xhci->shared_hcd->self.root_hub);
-+		if (xhci->shared_hcd)
-+			usb_root_hub_lost_power(
-+					xhci->shared_hcd->self.root_hub);
- 
- 		xhci_dbg(xhci, "Stop HCD\n");
- 		xhci_halt(xhci);
-@@ -1185,10 +1201,12 @@ int xhci_resume(struct xhci_hcd *xhci, bool hibernated)
- 		retval = xhci_run(hcd->primary_hcd);
- 		if (!retval) {
- 			xhci_dbg(xhci, "Start the secondary HCD\n");
--			retval = xhci_run(secondary_hcd);
-+			if (secondary_hcd)
-+				retval = xhci_run(secondary_hcd);
- 		}
- 		hcd->state = HC_STATE_SUSPENDED;
--		xhci->shared_hcd->state = HC_STATE_SUSPENDED;
-+		if (xhci->shared_hcd)
-+			xhci->shared_hcd->state = HC_STATE_SUSPENDED;
- 		goto done;
- 	}
- 
-@@ -1216,7 +1234,8 @@ int xhci_resume(struct xhci_hcd *xhci, bool hibernated)
- 	if (retval == 0) {
- 		/* Resume root hubs only when have pending events. */
- 		if (xhci_pending_portevent(xhci)) {
--			usb_hcd_resume_root_hub(xhci->shared_hcd);
-+			if (xhci->shared_hcd)
-+				usb_hcd_resume_root_hub(xhci->shared_hcd);
- 			usb_hcd_resume_root_hub(hcd);
- 		}
- 	}
-@@ -1235,8 +1254,10 @@ int xhci_resume(struct xhci_hcd *xhci, bool hibernated)
- 
- 	/* Re-enable port polling. */
- 	xhci_dbg(xhci, "%s: starting port polling.\n", __func__);
+ 	xhci_dbg(xhci, "%s: restart port polling\n", __func__);
 -	set_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
 -	usb_hcd_poll_rh_status(xhci->shared_hcd);
 +	if (xhci->shared_hcd) {
@@ -191,6 +114,6 @@ index a9bb796794e3937..a2cf715c53f2164 100644
 +	}
  	set_bit(HCD_FLAG_POLL_RH, &hcd->flags);
  	usb_hcd_poll_rh_status(hcd);
- 
+ 	return 0;
 -- 
 2.21.0.593.g511ec345e18-goog
