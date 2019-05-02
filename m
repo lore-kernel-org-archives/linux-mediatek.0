@@ -1,67 +1,196 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "dt-bindings: spi: spi-mt65xx: add support for MT8516" to the spi tree
-Date: Thu,  2 May 2019 03:19:07 +0100 (BST)
-Message-ID: <20190502021907.C4AF8441D3D@finisterre.ee.mobilebroadband>
-References: <1555490836-13382-1-git-send-email-leilk.liu@mediatek.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1555490836-13382-1-git-send-email-leilk.liu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Leilk Liu <leilk.liu@mediatek.com>
-Cc: devicetree@vger.kernel.org, fparent@baylibre.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-spi@vger.kernel.org, Mark Brown <broonie@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Subject: [PATCH 1/2] usb: xhci: Make it possible to not have a secondary HCD
+ (3.0)
+Date: Thu,  2 May 2019 12:56:29 +0800
+Message-ID: <20190502045631.229386-1-drinkcat@chromium.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Khuong Dinh <khuong@os.amperecomputing.com>, Mathias Nyman <mathias.nyman@intel.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Hoan Tran <hoan@os.amperecomputing.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
+Some XHCI controllers may not have any USB 3.0 port, in this case, it
+is not useful to create add hcd->shared_hcd, which has 2 main
+downsides:
+ - A useless USB 3.0 root hub is created.
+ - A warning is thrown on boot:
+hub 2-0:1.0: config failed, hub doesn't have any ports! (err -19)
 
-   dt-bindings: spi: spi-mt65xx: add support for MT8516
+The change is mostly about checking if hcd->shared_hcd is NULL before
+accessing it. The one special case is in xhci_run, where we need to
+call xhci_run_finished immediately, if there is no secondary hcd.
 
-has been applied to the spi tree at
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git 
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
->From bf6e839657598b77e40eb18225f8660c4778cb19 Mon Sep 17 00:00:00 2001
-From: Leilk Liu <leilk.liu@mediatek.com>
-Date: Wed, 17 Apr 2019 16:47:16 +0800
-Subject: [PATCH] dt-bindings: spi: spi-mt65xx: add support for MT8516
-
-Add binding documentation of spi-mt65xx for MT8516 SOC.
-
-Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
+Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
 ---
- Documentation/devicetree/bindings/spi/spi-mt65xx.txt | 1 +
- 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-index 69c356767cf8..c0f6c8ecfa2e 100644
---- a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-+++ b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-@@ -10,6 +10,7 @@ Required properties:
-     - mediatek,mt8135-spi: for mt8135 platforms
-     - mediatek,mt8173-spi: for mt8173 platforms
-     - mediatek,mt8183-spi: for mt8183 platforms
-+    - "mediatek,mt8516-spi", "mediatek,mt2712-spi": for mt8516 platforms
+This is a respin of https://lore.kernel.org/patchwork/patch/863993/,
+hopefully addressing the comments there. Note that I dropped the change
+in xhci-plat.c, as I do not have a device to test it, but made a
+similar change in xhci-mtk.c, in the next patch.
+
+(the @apm.com addresses seem to bounce, so I added some
+@amperecomputing.com instead, if somebody there can track back the
+original issue, I'm happy to provide a patch for xhci-plat.c as well)
+
+drivers/usb/host/xhci-hub.c |  7 ++++--
+ drivers/usb/host/xhci.c     | 45 +++++++++++++++++++++++++++----------
+ 2 files changed, 38 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/usb/host/xhci-hub.c b/drivers/usb/host/xhci-hub.c
+index 3abe70ff1b1e2af..9a9c5a63ae57c6d 100644
+--- a/drivers/usb/host/xhci-hub.c
++++ b/drivers/usb/host/xhci-hub.c
+@@ -627,8 +627,11 @@ static int xhci_enter_test_mode(struct xhci_hcd *xhci,
+ 	/* Put all ports to the Disable state by clear PP */
+ 	xhci_dbg(xhci, "Disable all port (PP = 0)\n");
+ 	/* Power off USB3 ports*/
+-	for (i = 0; i < xhci->usb3_rhub.num_ports; i++)
+-		xhci_set_port_power(xhci, xhci->shared_hcd, i, false, flags);
++	if (xhci->shared_hcd) {
++		for (i = 0; i < xhci->usb3_rhub.num_ports; i++)
++			xhci_set_port_power(xhci, xhci->shared_hcd, i, false,
++					flags);
++	}
+ 	/* Power off USB2 ports*/
+ 	for (i = 0; i < xhci->usb2_rhub.num_ports; i++)
+ 		xhci_set_port_power(xhci, xhci->main_hcd, i, false, flags);
+diff --git a/drivers/usb/host/xhci.c b/drivers/usb/host/xhci.c
+index a9bb796794e3937..a2cf715c53f2164 100644
+--- a/drivers/usb/host/xhci.c
++++ b/drivers/usb/host/xhci.c
+@@ -523,6 +523,10 @@ static void compliance_mode_recovery(struct timer_list *t)
+  */
+ static void compliance_mode_recovery_timer_init(struct xhci_hcd *xhci)
+ {
++	/* No compliance mode recovery needed if there is no USB 3.0 hcd. */
++	if (!xhci->shared_hcd)
++		return;
++
+ 	xhci->port_status_u0 = 0;
+ 	timer_setup(&xhci->comp_mode_recovery_timer, compliance_mode_recovery,
+ 		    0);
+@@ -610,7 +614,8 @@ static int xhci_run_finished(struct xhci_hcd *xhci)
+ 		xhci_halt(xhci);
+ 		return -ENODEV;
+ 	}
+-	xhci->shared_hcd->state = HC_STATE_RUNNING;
++	if (xhci->shared_hcd)
++		xhci->shared_hcd->state = HC_STATE_RUNNING;
+ 	xhci->cmd_ring_state = CMD_RING_STATE_RUNNING;
  
- - #address-cells: should be 1.
+ 	if (xhci->quirks & XHCI_NEC_HOST)
+@@ -698,6 +703,10 @@ int xhci_run(struct usb_hcd *hcd)
+ 
+ 	xhci_debugfs_init(xhci);
+ 
++	/* There is no secondary HCD, start the host controller immediately. */
++	if (!xhci->shared_hcd)
++		return xhci_run_finished(xhci);
++
+ 	return 0;
+ }
+ EXPORT_SYMBOL_GPL(xhci_run);
+@@ -984,7 +993,8 @@ int xhci_suspend(struct xhci_hcd *xhci, bool do_wakeup)
+ 		return 0;
+ 
+ 	if (hcd->state != HC_STATE_SUSPENDED ||
+-			xhci->shared_hcd->state != HC_STATE_SUSPENDED)
++			(xhci->shared_hcd &&
++				xhci->shared_hcd->state != HC_STATE_SUSPENDED))
+ 		return -EINVAL;
+ 
+ 	xhci_dbc_suspend(xhci);
+@@ -997,15 +1007,18 @@ int xhci_suspend(struct xhci_hcd *xhci, bool do_wakeup)
+ 	xhci_dbg(xhci, "%s: stopping port polling.\n", __func__);
+ 	clear_bit(HCD_FLAG_POLL_RH, &hcd->flags);
+ 	del_timer_sync(&hcd->rh_timer);
+-	clear_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
+-	del_timer_sync(&xhci->shared_hcd->rh_timer);
++	if (xhci->shared_hcd) {
++		clear_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
++		del_timer_sync(&xhci->shared_hcd->rh_timer);
++	}
+ 
+ 	if (xhci->quirks & XHCI_SUSPEND_DELAY)
+ 		usleep_range(1000, 1500);
+ 
+ 	spin_lock_irq(&xhci->lock);
+ 	clear_bit(HCD_FLAG_HW_ACCESSIBLE, &hcd->flags);
+-	clear_bit(HCD_FLAG_HW_ACCESSIBLE, &xhci->shared_hcd->flags);
++	if (xhci->shared_hcd)
++		clear_bit(HCD_FLAG_HW_ACCESSIBLE, &xhci->shared_hcd->flags);
+ 	/* step 1: stop endpoint */
+ 	/* skipped assuming that port suspend has done */
+ 
+@@ -1103,7 +1116,8 @@ int xhci_resume(struct xhci_hcd *xhci, bool hibernated)
+ 		msleep(100);
+ 
+ 	set_bit(HCD_FLAG_HW_ACCESSIBLE, &hcd->flags);
+-	set_bit(HCD_FLAG_HW_ACCESSIBLE, &xhci->shared_hcd->flags);
++	if (xhci->shared_hcd)
++		set_bit(HCD_FLAG_HW_ACCESSIBLE, &xhci->shared_hcd->flags);
+ 
+ 	spin_lock_irq(&xhci->lock);
+ 	if ((xhci->quirks & XHCI_RESET_ON_RESUME) || xhci->broken_suspend)
+@@ -1145,7 +1159,9 @@ int xhci_resume(struct xhci_hcd *xhci, bool hibernated)
+ 
+ 		/* Let the USB core know _both_ roothubs lost power. */
+ 		usb_root_hub_lost_power(xhci->main_hcd->self.root_hub);
+-		usb_root_hub_lost_power(xhci->shared_hcd->self.root_hub);
++		if (xhci->shared_hcd)
++			usb_root_hub_lost_power(
++					xhci->shared_hcd->self.root_hub);
+ 
+ 		xhci_dbg(xhci, "Stop HCD\n");
+ 		xhci_halt(xhci);
+@@ -1185,10 +1201,12 @@ int xhci_resume(struct xhci_hcd *xhci, bool hibernated)
+ 		retval = xhci_run(hcd->primary_hcd);
+ 		if (!retval) {
+ 			xhci_dbg(xhci, "Start the secondary HCD\n");
+-			retval = xhci_run(secondary_hcd);
++			if (secondary_hcd)
++				retval = xhci_run(secondary_hcd);
+ 		}
+ 		hcd->state = HC_STATE_SUSPENDED;
+-		xhci->shared_hcd->state = HC_STATE_SUSPENDED;
++		if (xhci->shared_hcd)
++			xhci->shared_hcd->state = HC_STATE_SUSPENDED;
+ 		goto done;
+ 	}
+ 
+@@ -1216,7 +1234,8 @@ int xhci_resume(struct xhci_hcd *xhci, bool hibernated)
+ 	if (retval == 0) {
+ 		/* Resume root hubs only when have pending events. */
+ 		if (xhci_pending_portevent(xhci)) {
+-			usb_hcd_resume_root_hub(xhci->shared_hcd);
++			if (xhci->shared_hcd)
++				usb_hcd_resume_root_hub(xhci->shared_hcd);
+ 			usb_hcd_resume_root_hub(hcd);
+ 		}
+ 	}
+@@ -1235,8 +1254,10 @@ int xhci_resume(struct xhci_hcd *xhci, bool hibernated)
+ 
+ 	/* Re-enable port polling. */
+ 	xhci_dbg(xhci, "%s: starting port polling.\n", __func__);
+-	set_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
+-	usb_hcd_poll_rh_status(xhci->shared_hcd);
++	if (xhci->shared_hcd) {
++		set_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
++		usb_hcd_poll_rh_status(xhci->shared_hcd);
++	}
+ 	set_bit(HCD_FLAG_POLL_RH, &hcd->flags);
+ 	usb_hcd_poll_rh_status(hcd);
  
 -- 
-2.20.1
+2.21.0.593.g511ec345e18-goog
