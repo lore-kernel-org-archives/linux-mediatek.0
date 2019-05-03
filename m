@@ -1,113 +1,94 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [RFC v1 1/3] dt-bindings: soc: add mtk svs dt-bindings
-Date: Thu, 2 May 2019 16:06:47 -0500
-Message-ID: <20190502210647.GA32209@bogus>
-References: <20190430112012.4514-1-roger.lu@mediatek.com>
- <20190430112012.4514-2-roger.lu@mediatek.com>
- <155665629219.168659.8221738507474891604@swboyd.mtv.corp.google.com>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Subject: Re: [PATCH 1/2] pinctrl: mediatek: Add mtk_eint_pm_ops to common-v2
+Date: Fri, 3 May 2019 08:52:58 +0800
+Message-ID: <CANMq1KAugRiL+-bAFijEM7NngLSoOUQtN=rNV5+YYdJ12u+jVQ@mail.gmail.com>
+References: <20190429032551.65975-1-drinkcat@chromium.org> <20190429032551.65975-2-drinkcat@chromium.org>
+ <1556804888.28808.6.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <155665629219.168659.8221738507474891604@swboyd.mtv.corp.google.com>
+In-Reply-To: <1556804888.28808.6.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@kernel.org>
-Cc: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Matthias Brugger <matthias.bgg@gmail.com>, Roger Lu <roger.lu@mediatek.com>, Viresh Kumar <vireshk@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>, Kevin Hilman <khilman@kernel.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org
+To: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Cc: Chuanjia Liu <Chuanjia.Liu@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, lkml <linux-kernel@vger.kernel.org>, Evan Green <evgreen@chromium.org>, Stephen Boyd <swboyd@chromium.org>, linux-gpio@vger.kernel.org, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Apr 30, 2019 at 01:31:32PM -0700, Stephen Boyd wrote:
-> Quoting Roger Lu (2019-04-30 04:20:10)
-> > Document the binding for enabling mtk svs on MediaTek SoC.
-> > 
-> > Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+On Thu, May 2, 2019 at 9:48 PM Yingjoe Chen <yingjoe.chen@mediatek.com> wrote:
+>
+> On Mon, 2019-04-29 at 11:25 +0800, Nicolas Boichat wrote:
+> > pinctrl variants that include pinctrl-mtk-common-v2.h (and not
+> > pinctrl-mtk-common.h) also need to use mtk_eint_pm_ops to setup
+> > wake mask properly, so copy over the pm_ops to v2.
+> >
+> > It is not easy to merge the 2 copies (or move
+> > mtk_eint_suspend/resume to mtk-eint.c), as we need to
+> > dereference pctrl->eint, and struct mtk_pinctrl *pctl has a
+> > different structure definition for v1 and v2.
+> >
+> > Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
+> > Reviewed-by: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
 > > ---
-> >  .../devicetree/bindings/power/mtk-svs.txt     | 70 +++++++++++++++++++
-> >  1 file changed, 70 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/power/mtk-svs.txt
-> > 
-> > diff --git a/Documentation/devicetree/bindings/power/mtk-svs.txt b/Documentation/devicetree/bindings/power/mtk-svs.txt
-> > new file mode 100644
-> > index 000000000000..355329db74ba
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/power/mtk-svs.txt
-> > @@ -0,0 +1,70 @@
-> > +* Mediatek Smart Voltage Scaling (MTK SVS)
+> >  .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  | 19 +++++++++++++++++++
+> >  .../pinctrl/mediatek/pinctrl-mtk-common-v2.h  |  1 +
+> >  2 files changed, 20 insertions(+)
+> >
+> > diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> > index 20e1c890e73b30c..7e19b5a4748eafe 100644
+> > --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> > +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> > @@ -723,3 +723,22 @@ int mtk_pinconf_adv_drive_get(struct mtk_pinctrl *hw,
+> >
+> >       return 0;
+> >  }
 > > +
-> > +This describes the device tree binding for the MTK SVS controller
-> > +which helps provide the optimized CPU/GPU/CCI voltages. This device also
-> > +needs thermal data to calculate thermal slope for accurately compensate
-> > +the voltages when temperature change.
+> > +static int mtk_eint_suspend(struct device *device)
+> > +{
+> > +     struct mtk_pinctrl *pctl = dev_get_drvdata(device);
 > > +
-> > +Required properties:
-> > +- compatible:
-> > +  - "mediatek,mt8183-svs" : For MT8183 family of SoCs
-> > +- reg: Address range of the MTK SVS controller.
-> > +- interrupts: IRQ for the MTK SVS controller.
-> > +- clocks, clock-names: Clocks needed for the svs controller. required
-> > +                       clocks are:
-> > +                      "main_clk": Main clock needed for register access
-> > +- nvmem-cells: Phandle to the calibration data provided by a nvmem device.
-> > +- nvmem-cell-names: Should be "svs-calibration-data" and "calibration-data"
-> > +- svs_xxx: Phandle of svs_bank device for controlling corresponding opp
-> 
-> Properties shouldn't have underscores in them. Use dashes?
+> > +     return mtk_eint_do_suspend(pctl->eint);
+> > +}
+> > +
+> > +static int mtk_eint_resume(struct device *device)
+> > +{
+> > +     struct mtk_pinctrl *pctl = dev_get_drvdata(device);
+> > +
+> > +     return mtk_eint_do_resume(pctl->eint);
+> > +}
+> > +
+> > +const struct dev_pm_ops mtk_eint_pm_ops = {
+> > +     .suspend_noirq = mtk_eint_suspend,
+> > +     .resume_noirq = mtk_eint_resume,
+> > +};
+>
+> This is identical to the one in pinctrl-mtk-common.c and will have name
+> clash if both pinctrl-mtk-common.c and pinctrl-mtk-common-v2.c are
+> built.
+>
+> It would be better if we try to merge both version into mtk-eint.c, this
+> way we could also remove some global functions.
 
-It's also a node, not a property.
+Argh, I didn't think about the name clash, you're right. I guess the
+easy way is to rename this one mtk_eint_pm_ops_v2 ...
 
-> 
-> > +           table and power-domains.
-> > +- vxxx-supply: Phandle to each regulator. vxxx can be "vcpu_little",
-> > +              "vcpu_big", "vcci" and "vgpu".
+As highlighted in the commit message, it's tricky to merge the 2 sets
+of functions, they look identical, but they actually work on struct
+mtk_pinctrl that are defined differently (in
+pinctrl-mtk-common[-v2].h), so the ->eint member is at different
+addresses...
 
-Just list each property instead of the indirection with 'xxx'. Though 
-here to, these should be in the nodes actually getting the power.
+I don't really see a way around this... Unless we want to change
+platform_set_drvdata(pdev, pctl); to pass another type of structure
+that could be shared (but I think that'll make the code fairly
+verbose, with another layer of indirection). Or just assign struct
+mtk_eint to that, since that contains pctl so we could get back the
+struct mtk_pinctrl from that, but that feels ugly as well...
 
-> > +
-> > +Example:
-> > +
-> > +       svs: svs@1100b000 {
-> > +               compatible = "mediatek,mt8183-svs";
-> > +               reg = <0 0x1100b000 0 0x1000>;
-> > +               interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW 0>;
-> > +               clocks = <&infracfg CLK_INFRA_THERM>;
-> > +               clock-names = "main_clk";
-> > +               nvmem-cells = <&svs_calibration>, <&thermal_calibration>;
-> > +               nvmem-cell-names = "svs-calibration-data", "calibration-data";
-> > +
-> > +               svs_cpu_little: svs_cpu_little {
-> > +                       compatible = "mediatek,mt8183-svs-cpu-little";
-
-Not documented. Though I think the child nodes should be removed if you 
-do as Stephen suggests below.
-
-> > +                       operating-points-v2 = <&cluster0_opp>;
-> > +               };
-> > +
-> > +               svs_cpu_big: svs_cpu_big {
-> > +                       compatible = "mediatek,mt8183-svs-cpu-big";
-> > +                       operating-points-v2 = <&cluster1_opp>;
-> > +               };
-> > +
-> > +               svs_cci: svs_cci {
-> > +                       compatible = "mediatek,mt8183-svs-cci";
-> > +                       operating-points-v2 = <&cluster2_opp>;
-> > +               };
-> > +
-> > +               svs_gpu: svs_gpu {
-> > +                       compatible = "mediatek,mt8183-svs-gpu";
-> > +                       power-domains = <&scpsys MT8183_POWER_DOMAIN_MFG_2D>;
-> > +                       operating-points-v2 = <&gpu_opp_table>;
-> > +               };
-> 
-> It looks like you need multiple OPPs for a single device, because it has
-> different independent power supplies it wants to associate the OPP
-> tables with? Why can't these OPP tables be attached to the devices that
-> use them, i.e. CPU, GPU, CCI, etc.? Seems odd that those devices don't
-> have OPP tables that this hardware block can look up somehow. Similarly,
-> the power domains should probably be part of the devices that are using
-> them and not these sub-nodes that are mirroring the other hardware
-> blocks in the system?
-> 
-> > +       };
-> > +
-> > +       &svs_cpu_little {
+>
+> Joe.C
+>
+>
+>
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
