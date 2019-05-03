@@ -1,94 +1,52 @@
-From: Nicolas Boichat <drinkcat@chromium.org>
-Subject: Re: [PATCH 1/2] pinctrl: mediatek: Add mtk_eint_pm_ops to common-v2
-Date: Fri, 3 May 2019 08:52:58 +0800
-Message-ID: <CANMq1KAugRiL+-bAFijEM7NngLSoOUQtN=rNV5+YYdJ12u+jVQ@mail.gmail.com>
-References: <20190429032551.65975-1-drinkcat@chromium.org> <20190429032551.65975-2-drinkcat@chromium.org>
- <1556804888.28808.6.camel@mtksdaap41>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH 4/5] ASoC: mediatek: mt8516: Add ADDA DAI driver
+Date: Fri, 3 May 2019 15:00:34 +0900
+Message-ID: <20190503060034.GD14916@sirena.org.uk>
+References: <20190502121041.8045-1-fparent@baylibre.com>
+ <20190502121041.8045-5-fparent@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/signed; micalg=pgp-sha512;
+        protocol="application/pgp-signature"; boundary="/EQiL+SffV/fXkvV"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1556804888.28808.6.camel@mtksdaap41>
+Content-Disposition: inline
+In-Reply-To: <20190502121041.8045-5-fparent@baylibre.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Cc: Chuanjia Liu <Chuanjia.Liu@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@kernel.org>, lkml <linux-kernel@vger.kernel.org>, Evan Green <evgreen@chromium.org>, Stephen Boyd <swboyd@chromium.org>, linux-gpio@vger.kernel.org, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+To: Fabien Parent <fparent@baylibre.com>
+Cc: lgirdwood@gmail.com, robh+dt@kernel.org, mark.rutland@arm.com, matthias.bgg@gmail.com, perex@perex.cz, tiwai@suse.com, kaichieh.chuang@mediatek.com, shunli.wang@mediatek.com, alsa-devel@alsa-project.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, May 2, 2019 at 9:48 PM Yingjoe Chen <yingjoe.chen@mediatek.com> wrote:
->
-> On Mon, 2019-04-29 at 11:25 +0800, Nicolas Boichat wrote:
-> > pinctrl variants that include pinctrl-mtk-common-v2.h (and not
-> > pinctrl-mtk-common.h) also need to use mtk_eint_pm_ops to setup
-> > wake mask properly, so copy over the pm_ops to v2.
-> >
-> > It is not easy to merge the 2 copies (or move
-> > mtk_eint_suspend/resume to mtk-eint.c), as we need to
-> > dereference pctrl->eint, and struct mtk_pinctrl *pctl has a
-> > different structure definition for v1 and v2.
-> >
-> > Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
-> > Reviewed-by: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
-> > ---
-> >  .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  | 19 +++++++++++++++++++
-> >  .../pinctrl/mediatek/pinctrl-mtk-common-v2.h  |  1 +
-> >  2 files changed, 20 insertions(+)
-> >
-> > diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> > index 20e1c890e73b30c..7e19b5a4748eafe 100644
-> > --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> > +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> > @@ -723,3 +723,22 @@ int mtk_pinconf_adv_drive_get(struct mtk_pinctrl *hw,
-> >
-> >       return 0;
-> >  }
-> > +
-> > +static int mtk_eint_suspend(struct device *device)
-> > +{
-> > +     struct mtk_pinctrl *pctl = dev_get_drvdata(device);
-> > +
-> > +     return mtk_eint_do_suspend(pctl->eint);
-> > +}
-> > +
-> > +static int mtk_eint_resume(struct device *device)
-> > +{
-> > +     struct mtk_pinctrl *pctl = dev_get_drvdata(device);
-> > +
-> > +     return mtk_eint_do_resume(pctl->eint);
-> > +}
-> > +
-> > +const struct dev_pm_ops mtk_eint_pm_ops = {
-> > +     .suspend_noirq = mtk_eint_suspend,
-> > +     .resume_noirq = mtk_eint_resume,
-> > +};
->
-> This is identical to the one in pinctrl-mtk-common.c and will have name
-> clash if both pinctrl-mtk-common.c and pinctrl-mtk-common-v2.c are
-> built.
->
-> It would be better if we try to merge both version into mtk-eint.c, this
-> way we could also remove some global functions.
 
-Argh, I didn't think about the name clash, you're right. I guess the
-easy way is to rename this one mtk_eint_pm_ops_v2 ...
+--/EQiL+SffV/fXkvV
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-As highlighted in the commit message, it's tricky to merge the 2 sets
-of functions, they look identical, but they actually work on struct
-mtk_pinctrl that are defined differently (in
-pinctrl-mtk-common[-v2].h), so the ->eint member is at different
-addresses...
+On Thu, May 02, 2019 at 02:10:40PM +0200, Fabien Parent wrote:
 
-I don't really see a way around this... Unless we want to change
-platform_set_drvdata(pdev, pctl); to pass another type of structure
-that could be shared (but I think that'll make the code fairly
-verbose, with another layer of indirection). Or just assign struct
-mtk_eint to that, since that contains pctl so we could get back the
-struct mtk_pinctrl from that, but that feels ugly as well...
+> +static int mt8516_afe_adda_hw_params(struct snd_pcm_substream *substream,
+> +			  struct snd_pcm_hw_params *params,
+> +			  struct snd_soc_dai *dai)
+> +{
+> +	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
+> +	unsigned int width_val = params_width(params) > 16 ?
+> +		(AFE_CONN_24BIT_O03 | AFE_CONN_24BIT_O04) : 0;
 
->
-> Joe.C
->
->
->
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+Please write normal conditional statements rather than burying things in
+the variable declarations usin the ternery operator, it makes things
+much more legible.
+
+--/EQiL+SffV/fXkvV
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlzL2QEACgkQJNaLcl1U
+h9CnBQf+I75JGpPa7HZs9a5wiVauteNssp4QFPfRbk8PmvqiqEycEs+1ykqmWwhK
+K7c2GX0MELLAlaU9UmlelicrJB5+xaGGOAUFl5CVnVt9zxLdrXPvfeet/dK9FBtY
+Vpjh1BVvkUYgD9gz/u2sRgOtysfwQzfB17Uh3GtNHfoofg4Fhi/MqevPdkDyRf00
+ZelGCTTFYLeFLm66hzyjZHfGPlRBTG1G7IcNJ/mRgGg7Asc2LaxhauBM0nLTqANG
+H5t9WOoaoIbQy2JDR0PCw22mB0gE+tY7gkMZZy3NWxnzZk4uNTgR5Me2P/vly6Bc
+x6jXh8xYjanv7sdTg/r/in0JXtVYTA==
+=rEDi
+-----END PGP SIGNATURE-----
+
+--/EQiL+SffV/fXkvV--
