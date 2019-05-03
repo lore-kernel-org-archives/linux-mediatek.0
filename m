@@ -1,388 +1,197 @@
-From: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Subject: [PATCH v3 08/10] arm64: dts: mt6358: add PMIC MT6358 related nodes
-Date: Fri, 3 May 2019 17:31:15 +0800
-Message-ID: <20190503093117.54830-9-hsin-hsiung.wang@mediatek.com>
-References: <20190503093117.54830-1-hsin-hsiung.wang@mediatek.com>
+From: =?UTF-8?q?Petr=20=C5=A0tetiar?= <ynezz@true.cz>
+Subject: [PATCH v3 00/10] of_net: Add NVMEM support to of_get_mac_address
+Date: Fri,  3 May 2019 09:55:57 +0200
+Message-ID: <1556870168-26864-1-git-send-email-ynezz@true.cz>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190503093117.54830-1-hsin-hsiung.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Eddie Huang <eddie.huang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rtc@vger.kernel.org, srv_heupstream@mediatek.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <netdev-owner@vger.kernel.org>
+Sender: netdev-owner@vger.kernel.org
+To: netdev@vger.kernel.org, devicetree@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, Frank Rowand <frowand.list@gmail.com>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Maxime Ripard <maxime.ripard@bootlin.com>, =?UTF-8?q?Petr=20=C5=A0tetiar?= <ynezz@true.cz>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-add PMIC MT6358 related nodes which is for MT8183 platform
+Hi,
 
-Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt6358.dtsi | 358 +++++++++++++++++++++++
- 1 file changed, 358 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt6358.dtsi
+this patch series is a continuation of my previous attempt[1], where I've
+tried to wire MTD layer into of_get_mac_address, so it would be possible to
+load MAC addresses from various NVMEMs as EEPROMs etc.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6358.dtsi b/arch/arm64/boot/dts/mediatek/mt6358.dtsi
-new file mode 100644
-index 000000000000..74da59de3794
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt6358.dtsi
-@@ -0,0 +1,358 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (c) 2019 MediaTek Inc.
-+ */
-+
-+&pwrap {
-+	pmic: mt6358 {
-+		compatible = "mediatek,mt6358";
-+		interrupt-controller;
-+		interrupt-parent = <&pio>;
-+		interrupts = <182 IRQ_TYPE_LEVEL_HIGH>;
-+		#interrupt-cells = <2>;
-+
-+		mt6358codec: mt6358codec {
-+			compatible = "mediatek,mt6358-sound";
-+		};
-+
-+		mt6358regulator: mt6358regulator {
-+			compatible = "mediatek,mt6358-regulator";
-+
-+			mt6358_vdram1_reg: buck_vdram1 {
-+				regulator-compatible = "buck_vdram1";
-+				regulator-name = "vdram1";
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <2087500>;
-+				regulator-ramp-delay = <12500>;
-+				regulator-enable-ramp-delay = <0>;
-+				regulator-always-on;
-+				regulator-allowed-modes = <0 1>;
-+			};
-+
-+			mt6358_vcore_reg: buck_vcore {
-+				regulator-name = "vcore";
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <1293750>;
-+				regulator-ramp-delay = <6250>;
-+				regulator-enable-ramp-delay = <200>;
-+				regulator-always-on;
-+				regulator-allowed-modes = <0 1>;
-+			};
-+
-+			mt6358_vpa_reg: buck_vpa {
-+				regulator-name = "vpa";
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <3650000>;
-+				regulator-ramp-delay = <50000>;
-+				regulator-enable-ramp-delay = <250>;
-+				regulator-allowed-modes = <0 1>;
-+			};
-+
-+			mt6358_vproc11_reg: buck_vproc11 {
-+				regulator-name = "vproc11";
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <1293750>;
-+				regulator-ramp-delay = <6250>;
-+				regulator-enable-ramp-delay = <200>;
-+				regulator-always-on;
-+				regulator-allowed-modes = <0 1>;
-+			};
-+
-+			mt6358_vproc12_reg: buck_vproc12 {
-+				regulator-name = "vproc12";
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <1293750>;
-+				regulator-ramp-delay = <6250>;
-+				regulator-enable-ramp-delay = <200>;
-+				regulator-always-on;
-+				regulator-allowed-modes = <0 1>;
-+			};
-+
-+			mt6358_vgpu_reg: buck_vgpu {
-+				regulator-name = "vgpu";
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <1293750>;
-+				regulator-ramp-delay = <6250>;
-+				regulator-enable-ramp-delay = <200>;
-+				regulator-allowed-modes = <0 1>;
-+			};
-+
-+			mt6358_vs2_reg: buck_vs2 {
-+				regulator-name = "vs2";
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <2087500>;
-+				regulator-ramp-delay = <12500>;
-+				regulator-enable-ramp-delay = <0>;
-+				regulator-always-on;
-+			};
-+
-+			mt6358_vmodem_reg: buck_vmodem {
-+				regulator-name = "vmodem";
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <1293750>;
-+				regulator-ramp-delay = <6250>;
-+				regulator-enable-ramp-delay = <900>;
-+				regulator-always-on;
-+				regulator-allowed-modes = <0 1>;
-+			};
-+
-+			mt6358_vs1_reg: buck_vs1 {
-+				regulator-name = "vs1";
-+				regulator-min-microvolt = <1000000>;
-+				regulator-max-microvolt = <2587500>;
-+				regulator-ramp-delay = <12500>;
-+				regulator-enable-ramp-delay = <0>;
-+				regulator-always-on;
-+			};
-+
-+			mt6358_vdram2_reg: ldo_vdram2 {
-+				regulator-name = "vdram2";
-+				regulator-min-microvolt = <600000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-enable-ramp-delay = <3300>;
-+			};
-+
-+			mt6358_vsim1_reg: ldo_vsim1 {
-+				regulator-name = "vsim1";
-+				regulator-min-microvolt = <1700000>;
-+				regulator-max-microvolt = <3100000>;
-+				regulator-enable-ramp-delay = <540>;
-+			};
-+
-+			mt6358_vibr_reg: ldo_vibr {
-+				regulator-name = "vibr";
-+				regulator-min-microvolt = <1200000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-enable-ramp-delay = <60>;
-+			};
-+
-+			mt6358_vrf12_reg: ldo_vrf12 {
-+				compatible = "regulator-fixed";
-+				regulator-name = "vrf12";
-+				regulator-min-microvolt = <1200000>;
-+				regulator-max-microvolt = <1200000>;
-+				regulator-enable-ramp-delay = <120>;
-+			};
-+
-+			mt6358_vio18_reg: ldo_vio18 {
-+				compatible = "regulator-fixed";
-+				regulator-name = "vio18";
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-enable-ramp-delay = <2700>;
-+				regulator-always-on;
-+			};
-+
-+			mt6358_vusb_reg: ldo_vusb {
-+				regulator-name = "vusb";
-+				regulator-min-microvolt = <3000000>;
-+				regulator-max-microvolt = <3100000>;
-+				regulator-enable-ramp-delay = <270>;
-+				regulator-always-on;
-+			};
-+
-+			mt6358_vcamio_reg: ldo_vcamio {
-+				compatible = "regulator-fixed";
-+				regulator-name = "vcamio";
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-enable-ramp-delay = <270>;
-+			};
-+
-+			mt6358_vcamd_reg: ldo_vcamd {
-+				regulator-name = "vcamd";
-+				regulator-min-microvolt = <900000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-enable-ramp-delay = <270>;
-+			};
-+
-+			mt6358_vcn18_reg: ldo_vcn18 {
-+				compatible = "regulator-fixed";
-+				regulator-name = "vcn18";
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-enable-ramp-delay = <270>;
-+			};
-+
-+			mt6358_vfe28_reg: ldo_vfe28 {
-+				compatible = "regulator-fixed";
-+				regulator-name = "vfe28";
-+				regulator-min-microvolt = <2800000>;
-+				regulator-max-microvolt = <2800000>;
-+				regulator-enable-ramp-delay = <270>;
-+			};
-+
-+			mt6358_vsram_proc11_reg: ldo_vsram_proc11 {
-+				regulator-name = "vsram_proc11";
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <1293750>;
-+				regulator-ramp-delay = <6250>;
-+				regulator-enable-ramp-delay = <240>;
-+				regulator-always-on;
-+			};
-+
-+			mt6358_vcn28_reg: ldo_vcn28 {
-+				compatible = "regulator-fixed";
-+				regulator-name = "vcn28";
-+				regulator-min-microvolt = <2800000>;
-+				regulator-max-microvolt = <2800000>;
-+				regulator-enable-ramp-delay = <270>;
-+			};
-+
-+			mt6358_vsram_others_reg: ldo_vsram_others {
-+				regulator-name = "vsram_others";
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <1293750>;
-+				regulator-ramp-delay = <6250>;
-+				regulator-enable-ramp-delay = <240>;
-+				regulator-always-on;
-+			};
-+
-+			mt6358_vsram_gpu_reg: ldo_vsram_gpu {
-+				regulator-name = "vsram_gpu";
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <1293750>;
-+				regulator-ramp-delay = <6250>;
-+				regulator-enable-ramp-delay = <240>;
-+			};
-+
-+			mt6358_vxo22_reg: ldo_vxo22 {
-+				compatible = "regulator-fixed";
-+				regulator-name = "vxo22";
-+				regulator-min-microvolt = <2200000>;
-+				regulator-max-microvolt = <2200000>;
-+				regulator-enable-ramp-delay = <120>;
-+				regulator-always-on;
-+			};
-+
-+			mt6358_vefuse_reg: ldo_vefuse {
-+				regulator-name = "vefuse";
-+				regulator-min-microvolt = <1700000>;
-+				regulator-max-microvolt = <1900000>;
-+				regulator-enable-ramp-delay = <270>;
-+			};
-+
-+			mt6358_vaux18_reg: ldo_vaux18 {
-+				compatible = "regulator-fixed";
-+				regulator-name = "vaux18";
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-enable-ramp-delay = <270>;
-+			};
-+
-+			mt6358_vmch_reg: ldo_vmch {
-+				regulator-name = "vmch";
-+				regulator-min-microvolt = <2900000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-enable-ramp-delay = <60>;
-+			};
-+
-+			mt6358_vbif28_reg: ldo_vbif28 {
-+				compatible = "regulator-fixed";
-+				regulator-name = "vbif28";
-+				regulator-min-microvolt = <2800000>;
-+				regulator-max-microvolt = <2800000>;
-+				regulator-enable-ramp-delay = <270>;
-+			};
-+
-+			mt6358_vsram_proc12_reg: ldo_vsram_proc12 {
-+				regulator-name = "vsram_proc12";
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <1293750>;
-+				regulator-ramp-delay = <6250>;
-+				regulator-enable-ramp-delay = <240>;
-+				regulator-always-on;
-+			};
-+
-+			mt6358_vcama1_reg: ldo_vcama1 {
-+				regulator-name = "vcama1";
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <3000000>;
-+				regulator-enable-ramp-delay = <270>;
-+			};
-+
-+			mt6358_vemc_reg: ldo_vemc {
-+				regulator-name = "vemc";
-+				regulator-min-microvolt = <2900000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-enable-ramp-delay = <60>;
-+				regulator-always-on;
-+			};
-+
-+			mt6358_vio28_reg: ldo_vio28 {
-+				compatible = "regulator-fixed";
-+				regulator-name = "vio28";
-+				regulator-min-microvolt = <2800000>;
-+				regulator-max-microvolt = <2800000>;
-+				regulator-enable-ramp-delay = <270>;
-+			};
-+
-+			mt6358_va12_reg: ldo_va12 {
-+				compatible = "regulator-fixed";
-+				regulator-name = "va12";
-+				regulator-min-microvolt = <1200000>;
-+				regulator-max-microvolt = <1200000>;
-+				regulator-enable-ramp-delay = <270>;
-+				regulator-always-on;
-+			};
-+
-+			mt6358_vrf18_reg: ldo_vrf18 {
-+				compatible = "regulator-fixed";
-+				regulator-name = "vrf18";
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-enable-ramp-delay = <120>;
-+			};
-+
-+			mt6358_vcn33_bt_reg: ldo_vcn33_bt {
-+				regulator-name = "vcn33_bt";
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3500000>;
-+				regulator-enable-ramp-delay = <270>;
-+			};
-+
-+			mt6358_vcn33_wifi_reg: ldo_vcn33_wifi {
-+				regulator-name = "vcn33_wifi";
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3500000>;
-+				regulator-enable-ramp-delay = <270>;
-+			};
-+
-+			mt6358_vcama2_reg: ldo_vcama2 {
-+				regulator-name = "vcama2";
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <3000000>;
-+				regulator-enable-ramp-delay = <270>;
-+			};
-+
-+			mt6358_vmc_reg: ldo_vmc {
-+				regulator-name = "vmc";
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-enable-ramp-delay = <60>;
-+			};
-+
-+			mt6358_vldo28_reg: ldo_vldo28 {
-+				regulator-name = "vldo28";
-+				regulator-min-microvolt = <2800000>;
-+				regulator-max-microvolt = <3000000>;
-+				regulator-enable-ramp-delay = <270>;
-+			};
-+
-+			mt6358_vaud28_reg: ldo_vaud28 {
-+				compatible = "regulator-fixed";
-+				regulator-name = "vaud28";
-+				regulator-min-microvolt = <2800000>;
-+				regulator-max-microvolt = <2800000>;
-+				regulator-enable-ramp-delay = <270>;
-+			};
-+
-+			mt6358_vsim2_reg: ldo_vsim2 {
-+				regulator-name = "vsim2";
-+				regulator-min-microvolt = <1700000>;
-+				regulator-max-microvolt = <3100000>;
-+				regulator-enable-ramp-delay = <540>;
-+			};
-+		};
-+	};
-+};
+Predecessor of this patch which used directly MTD layer has originated in
+OpenWrt some time ago and supports already about 497 use cases in 357
+device tree files.
+
+During the review process of my 1st attempt I was told, that I shouldn't be
+using MTD directly, but that I should rather use new NVMEM subsystem and
+durring the review proccess of v2 I was told, that I should handle
+EPROBE_DEFFER error as well, so this v3 patch series tries to accommodate
+all this remarks.
+
+First patch is wiring NVMEM support directly into of_get_mac_address as
+it's obvious, that adding support for NVMEM into every other driver would
+mean adding a lot of repetitive code. This patch allows us to configure MAC
+addresses in various devices like ethernet and wireless adapters directly
+from of_get_mac_address, which is used by quite a lot of drivers in the
+tree already.
+
+Second patch is simply updating documentation with NVMEM bits, and cleaning
+up all current binding documentation referencing any of the MAC address
+related properties.
+
+Third and fourth patches are simply removing duplicate NVMEM code which is
+no longer needed as the first patch has wired NVMEM support directly into
+of_get_mac_address.
+
+Patches 5-10 are converting all current users of of_get_mac_address to the
+new ERR_PTR encoded error value, as of_get_mac_address could now return
+valid pointer, NULL and ERR_PTR.
+
+Just for a better picture, this patch series and one simple patch[2] on top
+of it, allows me to configure 8Devices Carambola2 board's MAC addresses
+with following DTS (simplified):
+
+ &spi {
+ 	flash@0 {
+ 		partitions {
+			art: partition@ff0000 {
+				label = "art";
+				reg = <0xff0000 0x010000>;
+				read-only;
+
+				nvmem-cells {
+					compatible = "nvmem-cells";
+					#address-cells = <1>;
+					#size-cells = <1>;
+
+					eth0_addr: eth-mac-addr@0 {
+						reg = <0x0 0x6>;
+					};
+
+					eth1_addr: eth-mac-addr@6 {
+						reg = <0x6 0x6>;
+					};
+
+					wmac_addr: wifi-mac-addr@1002 {
+						reg = <0x1002 0x6>;
+					};
+				};
+			};
+		};
+	};
+ };
+
+ &eth0 {
+	nvmem-cells = <&eth0_addr>;
+	nvmem-cell-names = "mac-address";
+ };
+
+ &eth1 {
+	nvmem-cells = <&eth1_addr>;
+	nvmem-cell-names = "mac-address";
+ };
+
+ &wmac {
+	nvmem-cells = <&wmac_addr>;
+	nvmem-cell-names = "mac-address";
+ };
+
+
+1. https://patchwork.ozlabs.org/patch/1086628/
+2. https://patchwork.ozlabs.org/patch/890738/
+
+-- ynezz
+
+Petr Štetiar (10):
+  of_net: add NVMEM support to of_get_mac_address
+  dt-bindings: doc: reflect new NVMEM of_get_mac_address behaviour
+  net: macb: support of_get_mac_address new ERR_PTR error
+  net: davinci: support of_get_mac_address new ERR_PTR error
+  net: ethernet: support of_get_mac_address new ERR_PTR error
+  net: usb: support of_get_mac_address new ERR_PTR error
+  net: wireless: support of_get_mac_address new ERR_PTR error
+  staging: octeon-ethernet: support of_get_mac_address new ERR_PTR error
+  ARM: Kirkwood: support of_get_mac_address new ERR_PTR error
+  powerpc: tsi108: support of_get_mac_address new ERR_PTR error
+
+ .../devicetree/bindings/net/altera_tse.txt         |  5 +-
+ Documentation/devicetree/bindings/net/amd-xgbe.txt |  5 +-
+ .../devicetree/bindings/net/brcm,amac.txt          |  4 +-
+ Documentation/devicetree/bindings/net/cpsw.txt     |  4 +-
+ .../devicetree/bindings/net/davinci_emac.txt       |  5 +-
+ Documentation/devicetree/bindings/net/dsa/dsa.txt  |  5 +-
+ Documentation/devicetree/bindings/net/ethernet.txt |  6 +-
+ .../devicetree/bindings/net/hisilicon-femac.txt    |  4 +-
+ .../bindings/net/hisilicon-hix5hd2-gmac.txt        |  4 +-
+ .../devicetree/bindings/net/keystone-netcp.txt     | 10 ++--
+ Documentation/devicetree/bindings/net/macb.txt     |  5 +-
+ .../devicetree/bindings/net/marvell-pxa168.txt     |  4 +-
+ .../devicetree/bindings/net/microchip,enc28j60.txt |  3 +-
+ .../devicetree/bindings/net/microchip,lan78xx.txt  |  5 +-
+ .../devicetree/bindings/net/qca,qca7000.txt        |  4 +-
+ .../devicetree/bindings/net/samsung-sxgbe.txt      |  4 +-
+ .../bindings/net/snps,dwc-qos-ethernet.txt         |  5 +-
+ .../bindings/net/socionext,uniphier-ave4.txt       |  4 +-
+ .../devicetree/bindings/net/socionext-netsec.txt   |  5 +-
+ .../bindings/net/wireless/mediatek,mt76.txt        |  5 +-
+ .../devicetree/bindings/net/wireless/qca,ath9k.txt |  4 +-
+ arch/arm/mach-mvebu/kirkwood.c                     |  3 +-
+ arch/powerpc/sysdev/tsi108_dev.c                   |  2 +-
+ drivers/net/ethernet/aeroflex/greth.c              |  2 +-
+ drivers/net/ethernet/allwinner/sun4i-emac.c        |  2 +-
+ drivers/net/ethernet/altera/altera_tse_main.c      |  2 +-
+ drivers/net/ethernet/arc/emac_main.c               |  2 +-
+ drivers/net/ethernet/aurora/nb8800.c               |  2 +-
+ drivers/net/ethernet/broadcom/bcmsysport.c         |  2 +-
+ drivers/net/ethernet/broadcom/bgmac-bcma.c         |  2 +-
+ drivers/net/ethernet/broadcom/bgmac-platform.c     |  2 +-
+ drivers/net/ethernet/broadcom/genet/bcmgenet.c     |  2 +-
+ drivers/net/ethernet/cadence/macb_main.c           | 12 ++--
+ drivers/net/ethernet/cavium/octeon/octeon_mgmt.c   |  2 +-
+ drivers/net/ethernet/cavium/thunder/thunder_bgx.c  |  2 +-
+ drivers/net/ethernet/davicom/dm9000.c              |  2 +-
+ drivers/net/ethernet/ethoc.c                       |  2 +-
+ drivers/net/ethernet/ezchip/nps_enet.c             |  2 +-
+ drivers/net/ethernet/freescale/fec_main.c          |  2 +-
+ drivers/net/ethernet/freescale/fec_mpc52xx.c       |  2 +-
+ drivers/net/ethernet/freescale/fman/mac.c          |  2 +-
+ .../net/ethernet/freescale/fs_enet/fs_enet-main.c  |  2 +-
+ drivers/net/ethernet/freescale/gianfar.c           |  2 +-
+ drivers/net/ethernet/freescale/ucc_geth.c          |  2 +-
+ drivers/net/ethernet/hisilicon/hisi_femac.c        |  2 +-
+ drivers/net/ethernet/hisilicon/hix5hd2_gmac.c      |  2 +-
+ drivers/net/ethernet/lantiq_xrx200.c               |  2 +-
+ drivers/net/ethernet/marvell/mv643xx_eth.c         |  2 +-
+ drivers/net/ethernet/marvell/mvneta.c              |  2 +-
+ drivers/net/ethernet/marvell/pxa168_eth.c          |  2 +-
+ drivers/net/ethernet/marvell/sky2.c                |  2 +-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c        |  2 +-
+ drivers/net/ethernet/micrel/ks8851.c               |  2 +-
+ drivers/net/ethernet/micrel/ks8851_mll.c           |  2 +-
+ drivers/net/ethernet/microchip/enc28j60.c          |  2 +-
+ drivers/net/ethernet/nxp/lpc_eth.c                 |  2 +-
+ drivers/net/ethernet/qualcomm/qca_spi.c            |  2 +-
+ drivers/net/ethernet/qualcomm/qca_uart.c           |  2 +-
+ drivers/net/ethernet/renesas/ravb_main.c           |  2 +-
+ drivers/net/ethernet/renesas/sh_eth.c              |  2 +-
+ .../net/ethernet/samsung/sxgbe/sxgbe_platform.c    |  2 +-
+ drivers/net/ethernet/socionext/sni_ave.c           |  2 +-
+ drivers/net/ethernet/stmicro/stmmac/stmmac_main.c  |  2 +-
+ drivers/net/ethernet/ti/cpsw.c                     |  2 +-
+ drivers/net/ethernet/ti/davinci_emac.c             | 16 ++----
+ drivers/net/ethernet/ti/netcp_core.c               |  2 +-
+ drivers/net/ethernet/wiznet/w5100.c                |  2 +-
+ drivers/net/ethernet/xilinx/ll_temac_main.c        |  2 +-
+ drivers/net/ethernet/xilinx/xilinx_axienet_main.c  |  2 +-
+ drivers/net/ethernet/xilinx/xilinx_emaclite.c      |  2 +-
+ drivers/net/usb/smsc75xx.c                         |  2 +-
+ drivers/net/usb/smsc95xx.c                         |  2 +-
+ drivers/net/wireless/ath/ath9k/init.c              |  2 +-
+ drivers/net/wireless/mediatek/mt76/eeprom.c        |  2 +-
+ drivers/net/wireless/ralink/rt2x00/rt2x00dev.c     |  2 +-
+ drivers/of/of_net.c                                | 65 +++++++++++++++++++++-
+ drivers/staging/octeon/ethernet.c                  |  2 +-
+ net/ethernet/eth.c                                 |  2 +-
+ 78 files changed, 186 insertions(+), 116 deletions(-)
+
 -- 
-2.18.0
+1.9.1
