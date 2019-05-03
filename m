@@ -1,198 +1,53 @@
-From: =?UTF-8?q?Petr=20=C5=A0tetiar?= <ynezz@true.cz>
-Subject: [PATCH v4 00/10] of_net: Add NVMEM support to of_get_mac_address
-Date: Fri,  3 May 2019 16:27:05 +0200
-Message-ID: <1556893635-18549-1-git-send-email-ynezz@true.cz>
+From: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
+Subject: [PATCH] mt76: Fix a signedness bug in mt7615_add_interface()
+Date: Fri, 3 May 2019 15:54:36 +0300
+Message-ID: <20190502212341.GA31847@mwanda>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Return-path: <netdev-owner@vger.kernel.org>
-Sender: netdev-owner@vger.kernel.org
-To: netdev@vger.kernel.org, devicetree@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, Frank Rowand <frowand.list@gmail.com>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Maxime Ripard <maxime.ripard@bootlin.com>, =?UTF-8?q?Petr=20=C5=A0tetiar?= <ynezz@true.cz>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: kernel-janitors-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roy Luo <royluo-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi83-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+The problem is that "mvif->omac_idx" is a u8 so it can't be negative
+and the error handling won't work.  The get_omac_idx() function returns
+-1 on error.
 
-this patch series is a continuation of my previous attempt[1], where I've
-tried to wire MTD layer into of_get_mac_address, so it would be possible to
-load MAC addresses from various NVMEMs as EEPROMs etc.
+Fixes: 04b8e65922f6 ("mt76: add mac80211 driver for MT7615 PCIe-based chipsets")
+Signed-off-by: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt7615/main.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-Predecessor of this patch which used directly MTD layer has originated in
-OpenWrt some time ago and supports already about 497 use cases in 357
-device tree files.
-
-During the review process of my 1st attempt I was told, that I shouldn't be
-using MTD directly, but that I should rather use new NVMEM subsystem and
-during the review process of v2 I was told, that I should handle
-EPROBE_DEFFER error as well, during the review process of v3 I was told,
-that returning pointer/NULL/ERR_PTR is considered as wrong API design, so
-this v4 patch series tries to accommodate all this previous remarks.
-
-First patch is wiring NVMEM support directly into of_get_mac_address as
-it's obvious, that adding support for NVMEM into every other driver would
-mean adding a lot of repetitive code. This patch allows us to configure MAC
-addresses in various devices like ethernet and wireless adapters directly
-from of_get_mac_address, which is used by quite a lot of drivers in the
-tree already.
-
-Second patch is simply updating documentation with NVMEM bits, and cleaning
-up all current binding documentation referencing any of the MAC address
-related properties.
-
-Third and fourth patches are simply removing duplicate NVMEM code which is
-no longer needed as the first patch has wired NVMEM support directly into
-of_get_mac_address.
-
-Patches 5-10 are converting all current users of of_get_mac_address to the
-new ERR_PTR encoded error value, as of_get_mac_address could now return
-valid pointer, NULL and ERR_PTR.
-
-Just for a better picture, this patch series and one simple patch[2] on top
-of it, allows me to configure 8Devices Carambola2 board's MAC addresses
-with following DTS (simplified):
-
- &spi {
- 	flash@0 {
- 		partitions {
-			art: partition@ff0000 {
-				label = "art";
-				reg = <0xff0000 0x010000>;
-				read-only;
-
-				nvmem-cells {
-					compatible = "nvmem-cells";
-					#address-cells = <1>;
-					#size-cells = <1>;
-
-					eth0_addr: eth-mac-addr@0 {
-						reg = <0x0 0x6>;
-					};
-
-					eth1_addr: eth-mac-addr@6 {
-						reg = <0x6 0x6>;
-					};
-
-					wmac_addr: wifi-mac-addr@1002 {
-						reg = <0x1002 0x6>;
-					};
-				};
-			};
-		};
-	};
- };
-
- &eth0 {
-	nvmem-cells = <&eth0_addr>;
-	nvmem-cell-names = "mac-address";
- };
-
- &eth1 {
-	nvmem-cells = <&eth1_addr>;
-	nvmem-cell-names = "mac-address";
- };
-
- &wmac {
-	nvmem-cells = <&wmac_addr>;
-	nvmem-cell-names = "mac-address";
- };
-
-
-1. https://patchwork.ozlabs.org/patch/1086628/
-2. https://patchwork.ozlabs.org/patch/890738/
-
--- ynezz
-
-Petr Štetiar (10):
-  of_net: add NVMEM support to of_get_mac_address
-  dt-bindings: doc: reflect new NVMEM of_get_mac_address behaviour
-  net: macb: support of_get_mac_address new ERR_PTR error
-  net: davinci: support of_get_mac_address new ERR_PTR error
-  net: ethernet: support of_get_mac_address new ERR_PTR error
-  net: usb: support of_get_mac_address new ERR_PTR error
-  net: wireless: support of_get_mac_address new ERR_PTR error
-  staging: octeon-ethernet: support of_get_mac_address new ERR_PTR error
-  ARM: Kirkwood: support of_get_mac_address new ERR_PTR error
-  powerpc: tsi108: support of_get_mac_address new ERR_PTR error
-
- .../devicetree/bindings/net/altera_tse.txt         |  5 +-
- Documentation/devicetree/bindings/net/amd-xgbe.txt |  5 +-
- .../devicetree/bindings/net/brcm,amac.txt          |  4 +-
- Documentation/devicetree/bindings/net/cpsw.txt     |  4 +-
- .../devicetree/bindings/net/davinci_emac.txt       |  5 +-
- Documentation/devicetree/bindings/net/dsa/dsa.txt  |  5 +-
- Documentation/devicetree/bindings/net/ethernet.txt |  6 ++-
- .../devicetree/bindings/net/hisilicon-femac.txt    |  4 +-
- .../bindings/net/hisilicon-hix5hd2-gmac.txt        |  4 +-
- .../devicetree/bindings/net/keystone-netcp.txt     | 10 ++--
- Documentation/devicetree/bindings/net/macb.txt     |  5 +-
- .../devicetree/bindings/net/marvell-pxa168.txt     |  4 +-
- .../devicetree/bindings/net/microchip,enc28j60.txt |  3 +-
- .../devicetree/bindings/net/microchip,lan78xx.txt  |  5 +-
- .../devicetree/bindings/net/qca,qca7000.txt        |  4 +-
- .../devicetree/bindings/net/samsung-sxgbe.txt      |  4 +-
- .../bindings/net/snps,dwc-qos-ethernet.txt         |  5 +-
- .../bindings/net/socionext,uniphier-ave4.txt       |  4 +-
- .../devicetree/bindings/net/socionext-netsec.txt   |  5 +-
- .../bindings/net/wireless/mediatek,mt76.txt        |  5 +-
- .../devicetree/bindings/net/wireless/qca,ath9k.txt |  4 +-
- arch/arm/mach-mvebu/kirkwood.c                     |  3 +-
- arch/powerpc/sysdev/tsi108_dev.c                   |  2 +-
- drivers/net/ethernet/aeroflex/greth.c              |  2 +-
- drivers/net/ethernet/allwinner/sun4i-emac.c        |  2 +-
- drivers/net/ethernet/altera/altera_tse_main.c      |  2 +-
- drivers/net/ethernet/arc/emac_main.c               |  2 +-
- drivers/net/ethernet/aurora/nb8800.c               |  2 +-
- drivers/net/ethernet/broadcom/bcmsysport.c         |  2 +-
- drivers/net/ethernet/broadcom/bgmac-bcma.c         |  2 +-
- drivers/net/ethernet/broadcom/bgmac-platform.c     |  2 +-
- drivers/net/ethernet/broadcom/genet/bcmgenet.c     |  2 +-
- drivers/net/ethernet/cadence/macb_main.c           | 12 ++---
- drivers/net/ethernet/cavium/octeon/octeon_mgmt.c   |  2 +-
- drivers/net/ethernet/cavium/thunder/thunder_bgx.c  |  2 +-
- drivers/net/ethernet/davicom/dm9000.c              |  2 +-
- drivers/net/ethernet/ethoc.c                       |  2 +-
- drivers/net/ethernet/ezchip/nps_enet.c             |  2 +-
- drivers/net/ethernet/freescale/fec_main.c          |  2 +-
- drivers/net/ethernet/freescale/fec_mpc52xx.c       |  2 +-
- drivers/net/ethernet/freescale/fman/mac.c          |  2 +-
- .../net/ethernet/freescale/fs_enet/fs_enet-main.c  |  2 +-
- drivers/net/ethernet/freescale/gianfar.c           |  2 +-
- drivers/net/ethernet/freescale/ucc_geth.c          |  2 +-
- drivers/net/ethernet/hisilicon/hisi_femac.c        |  2 +-
- drivers/net/ethernet/hisilicon/hix5hd2_gmac.c      |  2 +-
- drivers/net/ethernet/lantiq_xrx200.c               |  2 +-
- drivers/net/ethernet/marvell/mv643xx_eth.c         |  2 +-
- drivers/net/ethernet/marvell/mvneta.c              |  2 +-
- drivers/net/ethernet/marvell/pxa168_eth.c          |  2 +-
- drivers/net/ethernet/marvell/sky2.c                |  2 +-
- drivers/net/ethernet/mediatek/mtk_eth_soc.c        |  2 +-
- drivers/net/ethernet/micrel/ks8851.c               |  2 +-
- drivers/net/ethernet/micrel/ks8851_mll.c           |  2 +-
- drivers/net/ethernet/microchip/enc28j60.c          |  2 +-
- drivers/net/ethernet/nxp/lpc_eth.c                 |  2 +-
- drivers/net/ethernet/qualcomm/qca_spi.c            |  2 +-
- drivers/net/ethernet/qualcomm/qca_uart.c           |  2 +-
- drivers/net/ethernet/renesas/ravb_main.c           |  2 +-
- drivers/net/ethernet/renesas/sh_eth.c              |  2 +-
- .../net/ethernet/samsung/sxgbe/sxgbe_platform.c    |  2 +-
- drivers/net/ethernet/socionext/sni_ave.c           |  2 +-
- drivers/net/ethernet/stmicro/stmmac/stmmac_main.c  |  2 +-
- drivers/net/ethernet/ti/cpsw.c                     |  2 +-
- drivers/net/ethernet/ti/davinci_emac.c             | 16 +++----
- drivers/net/ethernet/ti/netcp_core.c               |  2 +-
- drivers/net/ethernet/wiznet/w5100.c                |  2 +-
- drivers/net/ethernet/xilinx/ll_temac_main.c        |  2 +-
- drivers/net/ethernet/xilinx/xilinx_axienet_main.c  |  2 +-
- drivers/net/ethernet/xilinx/xilinx_emaclite.c      |  2 +-
- drivers/net/usb/smsc75xx.c                         |  2 +-
- drivers/net/usb/smsc95xx.c                         |  2 +-
- drivers/net/wireless/ath/ath9k/init.c              |  2 +-
- drivers/net/wireless/mediatek/mt76/eeprom.c        |  2 +-
- drivers/net/wireless/ralink/rt2x00/rt2x00dev.c     |  2 +-
- drivers/of/of_net.c                                | 54 ++++++++++++++++++++--
- drivers/staging/octeon/ethernet.c                  |  2 +-
- net/ethernet/eth.c                                 |  2 +-
- 78 files changed, 175 insertions(+), 116 deletions(-)
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+index 80e6b211f60b..8d7a47d1b205 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+@@ -77,11 +77,12 @@ static int mt7615_add_interface(struct ieee80211_hw *hw,
+ 		goto out;
+ 	}
+ 
+-	mvif->omac_idx = get_omac_idx(vif->type, dev->omac_mask);
+-	if (mvif->omac_idx < 0) {
++	idx = get_omac_idx(vif->type, dev->omac_mask);
++	if (idx < 0) {
+ 		ret = -ENOSPC;
+ 		goto out;
+ 	}
++	mvif->omac_idx = idx;
+ 
+ 	/* TODO: DBDC support. Use band 0 and wmm 0 for now */
+ 	mvif->band_idx = 0;
 -- 
-1.9.1
+2.18.0
