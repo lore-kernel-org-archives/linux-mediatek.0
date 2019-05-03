@@ -1,112 +1,106 @@
-From: Sean Wang <sean.wang@kernel.org>
-Subject: Re: [PATCH 1/2] pinctrl: mediatek: Add mtk_eint_pm_ops to common-v2
-Date: Fri, 3 May 2019 10:08:50 -0700
-Message-ID: <CAGp9LzqdYapagHUH1uuuHRR+j5JcphN7hhM2SyZoXQFCP8_fSw@mail.gmail.com>
-References: <20190429032551.65975-1-drinkcat@chromium.org> <20190429032551.65975-2-drinkcat@chromium.org>
- <1556804888.28808.6.camel@mtksdaap41> <CANMq1KAugRiL+-bAFijEM7NngLSoOUQtN=rNV5+YYdJ12u+jVQ@mail.gmail.com>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: Re: [PATCH 1/8] arm64: dts: mt8183: add thermal zone node
+Date: Fri, 3 May 2019 09:46:51 -0700
+Message-ID: <20190503164651.GB40515@google.com>
+References: <1556793795-25204-1-git-send-email-michael.kao@mediatek.com>
+ <1556793795-25204-2-git-send-email-michael.kao@mediatek.com>
+ <CAJMQK-isJf6f+OubbCdoXs8L2cup=rm3Z8Mr7Q26QshMP-0wxA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CANMq1KAugRiL+-bAFijEM7NngLSoOUQtN=rNV5+YYdJ12u+jVQ@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <CAJMQK-isJf6f+OubbCdoXs8L2cup=rm3Z8Mr7Q26QshMP-0wxA@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Nicolas Boichat <drinkcat@chromium.org>
-Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Chuanjia Liu <Chuanjia.Liu@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, lkml <linux-kernel@vger.kernel.org>, Evan Green <evgreen@chromium.org>, Stephen Boyd <swboyd@chromium.org>, linux-gpio@vger.kernel.org, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: "michael.kao" <michael.kao@mediatek.com>, fan.chen@mediatek.com, jamesjj.liao@mediatek.com, dawei.chien@mediatek.com, louis.yu@mediatek.com, roger.lu@mediatek.com, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Nicolas
+Hi,
 
-On Thu, May 2, 2019 at 5:53 PM Nicolas Boichat <drinkcat@chromium.org> wrote:
->
-> On Thu, May 2, 2019 at 9:48 PM Yingjoe Chen <yingjoe.chen@mediatek.com> wrote:
+On Fri, May 03, 2019 at 04:03:58PM +0800, Hsin-Yi Wang wrote:
+> On Thu, May 2, 2019 at 10:43 AM michael.kao <michael.kao@mediatek.com> wrote:
 > >
-> > On Mon, 2019-04-29 at 11:25 +0800, Nicolas Boichat wrote:
-> > > pinctrl variants that include pinctrl-mtk-common-v2.h (and not
-> > > pinctrl-mtk-common.h) also need to use mtk_eint_pm_ops to setup
-> > > wake mask properly, so copy over the pm_ops to v2.
-> > >
-> > > It is not easy to merge the 2 copies (or move
-> > > mtk_eint_suspend/resume to mtk-eint.c), as we need to
-> > > dereference pctrl->eint, and struct mtk_pinctrl *pctl has a
-> > > different structure definition for v1 and v2.
-> > >
-> > > Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
-> > > Reviewed-by: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
-> > > ---
-> > >  .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  | 19 +++++++++++++++++++
-> > >  .../pinctrl/mediatek/pinctrl-mtk-common-v2.h  |  1 +
-> > >  2 files changed, 20 insertions(+)
-> > >
-> > > diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> > > index 20e1c890e73b30c..7e19b5a4748eafe 100644
-> > > --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> > > +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> > > @@ -723,3 +723,22 @@ int mtk_pinconf_adv_drive_get(struct mtk_pinctrl *hw,
-> > >
-> > >       return 0;
-> > >  }
-> > > +
-> > > +static int mtk_eint_suspend(struct device *device)
-> > > +{
-> > > +     struct mtk_pinctrl *pctl = dev_get_drvdata(device);
-> > > +
-> > > +     return mtk_eint_do_suspend(pctl->eint);
-> > > +}
-> > > +
-> > > +static int mtk_eint_resume(struct device *device)
-> > > +{
-> > > +     struct mtk_pinctrl *pctl = dev_get_drvdata(device);
-> > > +
-> > > +     return mtk_eint_do_resume(pctl->eint);
-> > > +}
-> > > +
-> > > +const struct dev_pm_ops mtk_eint_pm_ops = {
-> > > +     .suspend_noirq = mtk_eint_suspend,
-> > > +     .resume_noirq = mtk_eint_resume,
-> > > +};
+> > Add thermal zone node to Mediatek MT8183 dts file.
 > >
-> > This is identical to the one in pinctrl-mtk-common.c and will have name
-> > clash if both pinctrl-mtk-common.c and pinctrl-mtk-common-v2.c are
-> > built.
+> > Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+> > ---
+> >  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 64 ++++++++++++++++++++++++++++++++
+> >  1 file changed, 64 insertions(+)
 > >
-> > It would be better if we try to merge both version into mtk-eint.c, this
-> > way we could also remove some global functions.
->
-> Argh, I didn't think about the name clash, you're right. I guess the
-> easy way is to rename this one mtk_eint_pm_ops_v2 ...
->
-> As highlighted in the commit message, it's tricky to merge the 2 sets
-> of functions, they look identical, but they actually work on struct
-> mtk_pinctrl that are defined differently (in
-> pinctrl-mtk-common[-v2].h), so the ->eint member is at different
-> addresses...
->
-> I don't really see a way around this... Unless we want to change
-> platform_set_drvdata(pdev, pctl); to pass another type of structure
-> that could be shared (but I think that'll make the code fairly
-> verbose, with another layer of indirection). Or just assign struct
-> mtk_eint to that, since that contains pctl so we could get back the
-> struct mtk_pinctrl from that, but that feels ugly as well...
->
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > index 926df75..b92116f 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > @@ -334,6 +334,67 @@
+> >                         status = "disabled";
+> >                 };
+> >
+> > +               thermal: thermal@1100b000 {
+> > +                       #thermal-sensor-cells = <1>;
+> > +                       compatible = "mediatek,mt8183-thermal";
+> > +                       reg = <0 0x1100b000 0 0x1000>;
+> > +                       interrupts = <0 76 IRQ_TYPE_LEVEL_LOW>;
+> > +                       clocks = <&infracfg CLK_INFRA_THERM>,
+> > +                                <&infracfg CLK_INFRA_AUXADC>;
+> > +                       clock-names = "therm", "auxadc";
+> > +                       resets = <&infracfg  MT8183_INFRACFG_AO_THERM_SW_RST>;
+> > +                       mediatek,auxadc = <&auxadc>;
+> > +                       mediatek,apmixedsys = <&apmixedsys>;
+> > +                       mediatek,hw-reset-temp = <117000>;
+> > +                       nvmem-cells = <&thermal_calibration>;
+> > +                       nvmem-cell-names = "calibration-data";
+> > +               };
+> > +
+> > +               thermal-zones {
+> > +                       cpu_thermal: cpu_thermal {
+> > +                               polling-delay-passive = <1000>;
+> > +                               polling-delay = <1000>;
+> > +
+> > +                               thermal-sensors = <&thermal 0>;
+> > +                               sustainable-power = <1500>;
+> > +                       };
+> > +
+> > +                       tzts1: tzts1 {
+> > +                               polling-delay-passive = <1000>;
+> > +                               polling-delay = <1000>;
+> > +                               thermal-sensors = <&thermal 1>;
+> Is sustainable-power required for tzts? Though it's an optional
+> property, kernel would have warning:
+> [    0.631556] thermal thermal_zone1: power_allocator:
+> sustainable_power will be estimated
+> [    0.639586] thermal thermal_zone2: power_allocator:
+> sustainable_power will be estimated
+> [    0.647611] thermal thermal_zone3: power_allocator:
+> sustainable_power will be estimated
+> [    0.655635] thermal thermal_zone4: power_allocator:
+> sustainable_power will be estimated
+> [    0.663658] thermal thermal_zone5: power_allocator:
+> sustainable_power will be estimated
+> if no sustainable-power assigned.
 
-I agree on renaming would make the thing simple. but I wouldn't like
-to rename to mtk_eint_pm_ops_v2 since this would make people
-misunderstand that is mtk_eint_v2.
+The property is indeed optional, if it isn't specified IPA will use
+the sum of the minimum power of all 'power actors' of the zone as
+estimate (see estimate_sustainable_power()). This may lead to overly
+agressive throttling, since the nominal sustainable power will always
+be <= the requested power.
 
-How about renaming to mtk_paris_pinctrl_pm_ops and then place related
-logic you added into pinctrl-paris.c? Because I prefer to keep pure
-pinctrl hardware operations in pinctrl-mtk-common-v2.c, and for
-relevant to other modules (mtk eint) or others subsystem (device tree
-binding, GPIO subsytem, PM something like that) they should be moved
-to pinctrl-paris.c or pinctrl-moore.c
+In my understanding the sustainable power may varies between devices,
+even for the same SoC. One could have all the hardware crammed into a
+tiny plastic enclosure (e.g. ASUS Chromebit), another might have a
+laptop form factor and a metal enclosure (e.g. ASUS C201). Both
+examples are based on an Rockchip rk3288, but they have completely
+different thermal behavior, and would likely have different values for
+'sustainable-power'.
 
-     Sean
+In this sense I tend to consider 'sustainable-power' more a device,
+than a SoC property. You could specify a 'reasonable' value as a
+starting point, but it will likely not be optimal for all or even most
+devices. The warning might even be useful for device makers by
+indicating them that there is room for tweaking.
 
-> >
-> > Joe.C
-> >
-> >
-> >
-> > _______________________________________________
-> > Linux-mediatek mailing list
-> > Linux-mediatek@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-mediatek
+I'm not an expert in the matter though, just happend to look into this
+recently :)
+
+Cheers
+
+Matthias
