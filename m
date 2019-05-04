@@ -1,37 +1,53 @@
-From: YueHaibing <yuehaibing@huawei.com>
-Subject: [PATCH] mt76: mt7615: Make mt7615_irq_handler static
-Date: Sat, 4 May 2019 18:22:47 +0800
-Message-ID: <20190504102247.43720-1-yuehaibing@huawei.com>
-Mime-Version: 1.0
-Content-Type: text/plain
+From: Tom Murphy <tmurphy@arista.com>
+Subject: [RFC 0/7] Convert the Intel iommu driver to the dma-ops api
+Date: Sat,  4 May 2019 14:23:16 +0100
+Message-ID: <20190504132327.27041-1-tmurphy@arista.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: nbd@nbd.name, lorenzo.bianconi83@gmail.com, ryder.lee@mediatek.com, royluo@google.com, kvalo@codeaurora.org, matthias.bgg@gmail.com
-Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-wireless@vger.kernel.org, YueHaibing <yuehaibing@huawei.com>
+To: iommu@lists.linux-foundation.org
+Cc: murphyt7@tcd.ie, Tom Murphy <tmurphy@arista.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Alex Williamson <alex.williamson@redhat.com>, Marc Zyngier <marc.zyngier@arm.com>, Thomas Gleixner <tglx@linutronix.de>li
 List-Id: linux-mediatek@lists.infradead.org
 
-Fix sparse warning:
+Convert the intel iommu driver to the dma-ops api so that we can remove a bunch of repeated code.
 
-drivers/net/wireless/mediatek/mt76/mt7615/pci.c:37:13:
- warning: symbol 'mt7615_irq_handler' was not declared. Should it be static?
+This patchset depends on the "iommu/vt-d: Delegate DMA domain to generic iommu" and
+"iommu/amd: Convert the AMD iommu driver to the dma-iommu api" patch sets which haven't
+yet merged so this is just a RFC to get some feedback before I do more testing.
 
-Signed-off-by: YueHaibing <yuehaibing@huawei.com>
----
- drivers/net/wireless/mediatek/mt76/mt7615/pci.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Tom Murphy (7):
+  iommu/vt-d: Set the dma_ops per device so we can remove the
+    iommu_no_mapping code
+  iommu/vt-d: Remove iova handling code from non-dma ops path
+  iommu: improve iommu iotlb flushing
+  iommu/dma-iommu: Handle freelists in the dma-iommu api path
+  iommu/dma-iommu: add wrapper for iommu_dma_free_cpu_cached_iovas
+  iommu/vt-d: convert the intel iommu driver to the dma-iommu ops api
+  iommu/vt-d: Always set DMA_PTE_READ if the iommu doens't support zero
+    length reads
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/pci.c b/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
-index 11122bd..c181e59 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
-@@ -34,7 +34,7 @@ void mt7615_rx_poll_complete(struct mt76_dev *mdev, enum mt76_rxq_id q)
- 	mt7615_irq_enable(dev, MT_INT_RX_DONE(q));
- }
- 
--irqreturn_t mt7615_irq_handler(int irq, void *dev_instance)
-+static irqreturn_t mt7615_irq_handler(int irq, void *dev_instance)
- {
- 	struct mt7615_dev *dev = dev_instance;
- 	u32 intr;
+ drivers/iommu/Kconfig           |   1 +
+ drivers/iommu/amd_iommu.c       |  14 +-
+ drivers/iommu/arm-smmu-v3.c     |   3 +-
+ drivers/iommu/arm-smmu.c        |   2 +-
+ drivers/iommu/dma-iommu.c       |  48 ++-
+ drivers/iommu/exynos-iommu.c    |   3 +-
+ drivers/iommu/intel-iommu.c     | 605 +++++---------------------------
+ drivers/iommu/iommu.c           |  21 +-
+ drivers/iommu/ipmmu-vmsa.c      |   2 +-
+ drivers/iommu/msm_iommu.c       |   2 +-
+ drivers/iommu/mtk_iommu.c       |   3 +-
+ drivers/iommu/mtk_iommu_v1.c    |   3 +-
+ drivers/iommu/omap-iommu.c      |   2 +-
+ drivers/iommu/qcom_iommu.c      |   2 +-
+ drivers/iommu/rockchip-iommu.c  |   2 +-
+ drivers/iommu/s390-iommu.c      |   3 +-
+ drivers/iommu/tegra-gart.c      |   2 +-
+ drivers/iommu/tegra-smmu.c      |   2 +-
+ drivers/vfio/vfio_iommu_type1.c |   3 +-
+ include/linux/dma-iommu.h       |   3 +
+ include/linux/intel-iommu.h     |   1 -
+ include/linux/iommu.h           |  24 +-
+ 22 files changed, 175 insertions(+), 576 deletions(-)
+
 -- 
-2.7.4
+2.17.1
