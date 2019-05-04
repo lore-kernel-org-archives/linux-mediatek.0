@@ -1,55 +1,77 @@
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [bug report] mt76: add mac80211 driver for MT7615 PCIe-based
- chipsets
-Date: Sat, 4 May 2019 08:01:02 +0800
-Message-ID: <1556928062.5650.5.camel@mtkswgap22>
-References: <20190503130642.GH29695@mwanda>
+From: Lorenzo Bianconi <lorenzo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH] mt76: mt7615: Use after free in mt7615_mcu_set_bcn()
+Date: Sat, 4 May 2019 11:52:16 +0200
+Message-ID: <20190504095215.GA23263@localhost.localdomain>
+References: <20190503130909.GI29695@mwanda>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190503130642.GH29695@mwanda>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="PNTmBPCT7hxwcZjr"
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20190503130909.GI29695@mwanda>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi83-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Roy Luo <royluo-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-janitors-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2019-05-03 at 16:06 +0300, Dan Carpenter wrote:
-> Hello Ryder Lee,
-> 
-> This is a semi-automatic email about new static checker warnings.
-> 
-> The patch 04b8e65922f6: "mt76: add mac80211 driver for MT7615 
-> PCIe-based chipsets" from Apr 1, 2019, leads to the following Smatch 
-> complaint:
-> 
->     drivers/net/wireless/mediatek/mt76/mt7615/mcu.c:1012 mt7615_mcu_set_wtbl_key()
->     error: we previously assumed 'key' could be null (see line 1008)
-> 
-> drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
->   1007			cipher = mt7615_get_key_info(key, wtbl_sec_key.key_material);
->   1008			if (cipher == MT_CIPHER_NONE && key)
->                                                         ^^^
-> This check doesn't make much sense.  Do you want to just remove it?
 
-Just in case that 'key != NULL' but 'cipher == MT_CIPHER_NONE'. It
-should not happen.
+--PNTmBPCT7hxwcZjr
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
->   1009				return -EOPNOTSUPP;
->   1010	
->   1011			wtbl_sec_key.cipher_id = cipher;
->   1012			wtbl_sec_key.key_id = key->keyidx;
->                                               ^^^^^^^^^^^
->   1013			wtbl_sec_key.key_len = key->keylen;
->   1014		} else {
-> 
-> regards,
-> dan carpenter
+Acked-by: Lorenzo Bianconi <lorenzo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+
+> We dereference "skb" when we assign:
+>=20
+> 	req.pkt_len =3D cpu_to_le16(MT_TXD_SIZE + skb->len);
+>                                                 ^^^^^^^^
+> So this patch just moves the dev_kfree_skb() down a bit to avoid the
+> use after free.
+>=20
+> Fixes: 04b8e65922f6 ("mt76: add mac80211 driver for MT7615 PCIe-based chi=
+psets")
+> Signed-off-by: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7615/mcu.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7615/mcu.c
+> index ea67c6022fe6..dc1301effa24 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+> @@ -1270,7 +1270,6 @@ int mt7615_mcu_set_bcn(struct mt7615_dev *dev, stru=
+ct ieee80211_vif *vif,
+>  	mt7615_mac_write_txwi(dev, (__le32 *)(req.pkt), skb, wcid, NULL,
+>  			      0, NULL);
+>  	memcpy(req.pkt + MT_TXD_SIZE, skb->data, skb->len);
+> -	dev_kfree_skb(skb);
+> =20
+>  	req.omac_idx =3D mvif->omac_idx;
+>  	req.enable =3D en;
+> @@ -1281,6 +1280,7 @@ int mt7615_mcu_set_bcn(struct mt7615_dev *dev, stru=
+ct ieee80211_vif *vif,
+>  	req.pkt_len =3D cpu_to_le16(MT_TXD_SIZE + skb->len);
+>  	req.tim_ie_pos =3D cpu_to_le16(MT_TXD_SIZE + tim_off);
+> =20
+> +	dev_kfree_skb(skb);
+>  	skb =3D mt7615_mcu_msg_alloc(&req, sizeof(req));
+> =20
+>  	return mt7615_mcu_msg_send(dev, skb, MCU_EXT_CMD_BCN_OFFLOAD,
+> --=20
+> 2.18.0
+>=20
+
+--PNTmBPCT7hxwcZjr
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCXM1gzAAKCRA6cBh0uS2t
+rDeKAQDGjECddgKPoW1n3Dnye8aHew95bCQqgsIeRCLiVSH00QD/VWP4FLjdbVHM
++9OT95BeBDbj0eG7VaB6OROPr+8wLwg=
+=UKNW
+-----END PGP SIGNATURE-----
+
+--PNTmBPCT7hxwcZjr--
