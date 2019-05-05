@@ -1,113 +1,115 @@
 From: xiaolei li <xiaolei.li@mediatek.com>
-Subject: Re: [PATCH v2 1/5] mtd: rawnand: mtk: Correct low level time
- calculation of r/w cycle
-Date: Sun, 5 May 2019 15:12:29 +0800
-Message-ID: <1557040349.26455.61.camel@mhfsdcap03>
+Subject: Re: [PATCH v2 2/5] mtd: rawnand: mtk: Improve data sampling timing
+ for read cycle
+Date: Sun, 5 May 2019 15:29:03 +0800
+Message-ID: <1557041343.26455.62.camel@mhfsdcap03>
 References: <20190430100250.28083-1-xiaolei.li@mediatek.com>
-         <20190430100250.28083-2-xiaolei.li@mediatek.com>
-         <20190430135910.1deddd51@xps13>
+ <20190430100250.28083-3-xiaolei.li@mediatek.com>
+ <20190430141152.3d215b52@xps13>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <20190430135910.1deddd51@xps13>
-Sender: stable-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
+In-Reply-To: <20190430141152.3d215b52@xps13>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
+List-Post: <mailto:linux-mtd@lists.infradead.org>
+List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
+Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
 To: Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: richard@nod.at, linux-mtd@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, stable@vger.kernel.org
+Cc: richard@nod.at, linux-mediatek@lists.infradead.org, linux-mtd@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-04-30 at 13:59 +0200, Miquel Raynal wrote:
-> Hi Xiaolei,
-> 
-> Xiaolei Li <xiaolei.li@mediatek.com> wrote on Tue, 30 Apr 2019 18:02:46
-> +0800:
-> 
-> > At present, the flow of calculating AC timing of read/write cycle in SDR
-> > mode is that:
-> > At first, calculate high hold time which is valid for both read and write
-> > cycle using the max value between tREH_min and tWH_min.
-> > Secondly, calculate WE# pulse width using tWP_min.
-> > Thridly, calculate RE# pulse width using the bigger one between tREA_max
-> > and tRP_min.
-> > 
-> > But NAND SPEC shows that Controller should also meet write/read cycle time.
-> > That is write cycle time should be more than tWC_min and read cycle should
-> > be more than tRC_min. Obviously, we do not achieve that now.
-> > 
-> > This patch corrects the low level time calculation to meet minimum
-> > read/write cycle time required. After getting the high hold time, WE# low
-> > level time will be promised to meet tWP_min and tWC_min requirement,
-> > and RE# low level time will be promised to meet tREA_max, tRP_min and
-> > tRC_min requirement.
-> > 
-> > Fixes: edfee3619c49 ("mtd: nand: mtk: add ->setup_data_interface() hook")
-> > Cc: stable@vger.kernel.org
-> > Signed-off-by: Xiaolei Li <xiaolei.li@mediatek.com>
-> > ---
-> >  drivers/mtd/nand/raw/mtk_nand.c | 24 +++++++++++++++++++++---
-> >  1 file changed, 21 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
-> > index b6b4602f5132..4fbb0c6ecae3 100644
-> > --- a/drivers/mtd/nand/raw/mtk_nand.c
-> > +++ b/drivers/mtd/nand/raw/mtk_nand.c
-> > @@ -508,7 +508,8 @@ static int mtk_nfc_setup_data_interface(struct nand_chip *chip, int csline,
-> >  {
-> >  	struct mtk_nfc *nfc = nand_get_controller_data(chip);
-> >  	const struct nand_sdr_timings *timings;
-> > -	u32 rate, tpoecs, tprecs, tc2r, tw2r, twh, twst, trlt;
-> > +	u32 rate, tpoecs, tprecs, tc2r, tw2r, twh, twst = 0, trlt = 0;
-> > +	u32 thold;
-> >  
-> >  	timings = nand_get_sdr_timings(conf);
-> >  	if (IS_ERR(timings))
-> > @@ -544,11 +545,28 @@ static int mtk_nfc_setup_data_interface(struct nand_chip *chip, int csline,
-> >  	twh = DIV_ROUND_UP(twh * rate, 1000000) - 1;
-> >  	twh &= 0xf;
-> >  
-> > -	twst = timings->tWP_min / 1000;
-> > +	/* Calculate real WE#/RE# hold time in nanosecond */
-> > +	thold = (twh + 1) * 1000000 / rate;
-> > +	/* nanosecond to picosecond */
-> > +	thold *= 1000;
-> > +
-> > +	/**
-> 
->         /*
-> 
-> > +	 * WE# low level time should be expaned to meet WE# pulse time
-> > +	 * and WE# cycle time at the same time.
-> > +	 */
-> > +	if (thold < timings->tWC_min)
-> > +		twst = timings->tWC_min - thold;
-> > +	twst = max(timings->tWP_min, twst) / 1000;
-> >  	twst = DIV_ROUND_UP(twst * rate, 1000000) - 1;
-> >  	twst &= 0xf;
-> >  
-> > -	trlt = max(timings->tREA_max, timings->tRP_min) / 1000;
-> > +	/**
-> 
-> Ditto
-OK.
-
-> 
-> > +	 * RE# low level time should be expaned to meet RE# pulse time,
-> > +	 * RE# access time and RE# cycle time at the same time.
-> > +	 */
-> > +	if (thold < timings->tRC_min)
-> > +		trlt = timings->tRC_min - thold;
-> > +	trlt = max3(trlt, timings->tREA_max, timings->tRP_min) / 1000;
-> >  	trlt = DIV_ROUND_UP(trlt * rate, 1000000) - 1;
-> >  	trlt &= 0xf;
-> >  
-> 
-> With this fixed:
-> 
-> Reviewed-by: Miquel Raynal <miquel.raynal@bootlin.com>
-> 
-> 
-> Thanks,
-> Miquèl
-
-Thanks,
-Xiaolei
+T24gVHVlLCAyMDE5LTA0LTMwIGF0IDE0OjExICswMjAwLCBNaXF1ZWwgUmF5bmFsIHdyb3RlOgo+
+IEhpIFhpYW9sZWksCj4gCj4gWGlhb2xlaSBMaSA8eGlhb2xlaS5saUBtZWRpYXRlay5jb20+IHdy
+b3RlIG9uIFR1ZSwgMzAgQXByIDIwMTkgMTg6MDI6NDcKPiArMDgwMDoKPiAKPiA+IEN1cnJlbnRs
+eSwgd2UgZXhwYW5kIFJFIyBsb3cgbGV2ZWwgdGltZSBieSBjaG9vc2luZyB0aGUgbWF4IHZhbHVl
+Cj4gPiBiZXR3ZWVuIFJFIyBwdWxzZSB3aWR0aCBhbmQgUkUjIGFjY2VzcyB0aW1lLCBhbmQgc2Ft
+cGxlIGRhdGEgYXQgdGhlCj4gPiByaXNpbmcgZWRnZSBvZiBSRSMuCj4gPiAKPiA+IFRoZW4sIGlm
+IFJFIyBhY2Nlc3MgdGltZSBpcyBiaWdnZXIgdGhhbiBSRSMgcHVsc2Ugd2lkdGgsIHRoZSByZWFs
+Cj4gPiByZWFkIGN5Y2xlIHRpbWUgbWF5IGJlIG1vcmUgdGhhbiBOQU5EIFNQRUMgcmVxdWlyZWQu
+IFRoaXMgbWFrZXMKPiA+IHJlYWQgcGVyZm9ybWFuY2UgYmUgd29yc2UgdGhhbiB0aGF0IGV4cGVj
+dGVkLgo+ID4gCj4gPiBUaGlzIHBhdGNoIGltcHJvdmVzIGRhdGEgc2FtcGxpbmcgdGltaW5nIGJ5
+IGNhbGN1bGF0aW5nIFJFIyBsb3cgbGV2ZWwKPiA+IHRpbWUgYWNjb3JkaW5nIHRvIFJFIyBwdWxz
+ZSB3aWR0aC4gSWYgUkUjIGFjY2VzcyB0aW1lIGlzIGJpZ2dlciB0aGFuCj4gPiBSRSMgcHVsc2Ug
+d2lkdGgsIHRoZW4gZGVsYXkgc2FtcGxpbmcgZGF0YSB0aW1pbmcuCj4gPiAKPiA+IFRoZSByZXN1
+bHQgb2YgY29udHJhc3QgdGVzdCBiYXNlIG9uIE1UMjcxMiBldmFsdWF0IGJvYXJkIGlzIGFzIGZv
+bGxvdy4KPiA+IAo+ID4gbmFuZDogTWljcm9uIE1UMjlGMTZHMDhBREJDQUg0Cj4gPiBuYW5kOiAy
+MDQ4IE1pQiwgU0xDLCBlcmFzZSBzaXplOiAyNTYgS2lCLCBwYWdlIHNpemU6IDQwOTYsIE9PQiBz
+aXplOiAyMjQKPiA+IE5GSSAyeCBjbG9jayByYXRlOiAxMjQ4MDAwMDAgSFouCj4gPiAKPiA+IFJl
+YWQgc3BlZWQgd2l0aG91dCB0aGlzIHBhdGNoOgo+ID4gbXRkX3NwZWVkdGVzdDogcGFnZSByZWFk
+IHNwZWVkIGlzIDE0MDEyIEtpQi9zCj4gPiBtdGRfc3BlZWR0ZXN0OiAyIHBhZ2UgcmVhZCBzcGVl
+ZCBpcyAxNDg2MCBLaUIvcwo+ID4gCj4gPiBSZWFkIHNwZWVkIHdpdGggdGhpcyBwYXRjaDoKPiA+
+IG10ZF9zcGVlZHRlc3Q6IHBhZ2UgcmVhZCBzcGVlZCBpcyAxODcyNCBLaUIvcwo+ID4gbXRkX3Nw
+ZWVkdGVzdDogMiBwYWdlIHJlYWQgc3BlZWQgaXMgMTg3MTMgS2lCL3MKPiA+IAo+ID4gU2lnbmVk
+LW9mZi1ieTogWGlhb2xlaSBMaSA8eGlhb2xlaS5saUBtZWRpYXRlay5jb20+Cj4gPiAtLS0KPiA+
+ICBkcml2ZXJzL210ZC9uYW5kL3Jhdy9tdGtfbmFuZC5jIHwgNDYgKysrKysrKysrKysrKysrKysr
+KysrKysrKystLS0tLS0tCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDM2IGluc2VydGlvbnMoKyksIDEw
+IGRlbGV0aW9ucygtKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tdGQvbmFuZC9yYXcv
+bXRrX25hbmQuYyBiL2RyaXZlcnMvbXRkL25hbmQvcmF3L210a19uYW5kLmMKPiA+IGluZGV4IDRm
+YmIwYzZlY2FlMy4uZTkwYzM4YzZmODM1IDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9tdGQvbmFu
+ZC9yYXcvbXRrX25hbmQuYwo+ID4gKysrIGIvZHJpdmVycy9tdGQvbmFuZC9yYXcvbXRrX25hbmQu
+Ywo+ID4gQEAgLTg3LDYgKzg3LDEwIEBACj4gPiAgI2RlZmluZSBORklfRkRNTSh4KQkJKDB4QTQg
+KyAoeCkgKiBzaXplb2YodTMyKSAqIDIpCj4gPiAgI2RlZmluZSBORklfRkRNX01BWF9TSVpFCSg4
+KQo+ID4gICNkZWZpbmUgTkZJX0ZETV9NSU5fU0laRQkoMSkKPiA+ICsjZGVmaW5lIE5GSV9ERUJV
+R19DT04xCQkoMHgyMjApCj4gPiArI2RlZmluZQkJU1RST0JFX01BU0sJCUdFTk1BU0soNCwgMykK
+PiA+ICsjZGVmaW5lCQlTVFJPQkVfU0hJRlQJCSgzKQo+ID4gKyNkZWZpbmUJCU1BWF9TVFJPQkVf
+RExZCQkoMykKPiA+ICAjZGVmaW5lIE5GSV9NQVNURVJfU1RBCQkoMHgyMjQpCj4gPiAgI2RlZmlu
+ZQkJTUFTVEVSX1NUQV9NQVNLCQkoMHgwRkZGKQo+ID4gICNkZWZpbmUgTkZJX0VNUFRZX1RIUkVT
+SAkoMHgyM0MpCj4gPiBAQCAtNTA5LDcgKzUxMyw3IEBAIHN0YXRpYyBpbnQgbXRrX25mY19zZXR1
+cF9kYXRhX2ludGVyZmFjZShzdHJ1Y3QgbmFuZF9jaGlwICpjaGlwLCBpbnQgY3NsaW5lLAo+ID4g
+IAlzdHJ1Y3QgbXRrX25mYyAqbmZjID0gbmFuZF9nZXRfY29udHJvbGxlcl9kYXRhKGNoaXApOwo+
+ID4gIAljb25zdCBzdHJ1Y3QgbmFuZF9zZHJfdGltaW5ncyAqdGltaW5nczsKPiA+ICAJdTMyIHJh
+dGUsIHRwb2VjcywgdHByZWNzLCB0YzJyLCB0dzJyLCB0d2gsIHR3c3QgPSAwLCB0cmx0ID0gMDsK
+PiA+IC0JdTMyIHRob2xkOwo+ID4gKwl1MzIgdGVtcCwgdHNlbCA9IDA7Cj4gPiAgCj4gPiAgCXRp
+bWluZ3MgPSBuYW5kX2dldF9zZHJfdGltaW5ncyhjb25mKTsKPiA+ICAJaWYgKElTX0VSUih0aW1p
+bmdzKSkKPiA+IEBAIC01NDYsMzAgKzU1MCw1MiBAQCBzdGF0aWMgaW50IG10a19uZmNfc2V0dXBf
+ZGF0YV9pbnRlcmZhY2Uoc3RydWN0IG5hbmRfY2hpcCAqY2hpcCwgaW50IGNzbGluZSwKPiA+ICAJ
+dHdoICY9IDB4ZjsKPiA+ICAKPiA+ICAJLyogQ2FsY3VsYXRlIHJlYWwgV0UjL1JFIyBob2xkIHRp
+bWUgaW4gbmFub3NlY29uZCAqLwo+ID4gLQl0aG9sZCA9ICh0d2ggKyAxKSAqIDEwMDAwMDAgLyBy
+YXRlOwo+ID4gKwl0ZW1wID0gKHR3aCArIDEpICogMTAwMDAwMCAvIHJhdGU7Cj4gPiAgCS8qIG5h
+bm9zZWNvbmQgdG8gcGljb3NlY29uZCAqLwo+ID4gLQl0aG9sZCAqPSAxMDAwOwo+ID4gKwl0ZW1w
+ICo9IDEwMDA7Cj4gPiAgCj4gPiAgCS8qKgo+ID4gIAkgKiBXRSMgbG93IGxldmVsIHRpbWUgc2hv
+dWxkIGJlIGV4cGFuZWQgdG8gbWVldCBXRSMgcHVsc2UgdGltZQo+ID4gIAkgKiBhbmQgV0UjIGN5
+Y2xlIHRpbWUgYXQgdGhlIHNhbWUgdGltZS4KPiA+ICAJICovCj4gPiAtCWlmICh0aG9sZCA8IHRp
+bWluZ3MtPnRXQ19taW4pCj4gPiAtCQl0d3N0ID0gdGltaW5ncy0+dFdDX21pbiAtIHRob2xkOwo+
+ID4gKwlpZiAodGVtcCA8IHRpbWluZ3MtPnRXQ19taW4pCj4gPiArCQl0d3N0ID0gdGltaW5ncy0+
+dFdDX21pbiAtIHRlbXA7Cj4gPiAgCXR3c3QgPSBtYXgodGltaW5ncy0+dFdQX21pbiwgdHdzdCkg
+LyAxMDAwOwo+ID4gIAl0d3N0ID0gRElWX1JPVU5EX1VQKHR3c3QgKiByYXRlLCAxMDAwMDAwKSAt
+IDE7Cj4gPiAgCXR3c3QgJj0gMHhmOwo+ID4gIAo+ID4gIAkvKioKPiA+IC0JICogUkUjIGxvdyBs
+ZXZlbCB0aW1lIHNob3VsZCBiZSBleHBhbmVkIHRvIG1lZXQgUkUjIHB1bHNlIHRpbWUsCj4gPiAt
+CSAqIFJFIyBhY2Nlc3MgdGltZSBhbmQgUkUjIGN5Y2xlIHRpbWUgYXQgdGhlIHNhbWUgdGltZS4K
+PiA+ICsJICogUkUjIGxvdyBsZXZlbCB0aW1lIHNob3VsZCBiZSBleHBhbmVkIHRvIG1lZXQgUkUj
+IHB1bHNlIHRpbWUKPiA+ICsJICogYW5kIFJFIyBjeWNsZSB0aW1lIGF0IHRoZSBzYW1lIHRpbWUu
+Cj4gPiAgCSAqLwo+ID4gLQlpZiAodGhvbGQgPCB0aW1pbmdzLT50UkNfbWluKQo+ID4gLQkJdHJs
+dCA9IHRpbWluZ3MtPnRSQ19taW4gLSB0aG9sZDsKPiA+IC0JdHJsdCA9IG1heDModHJsdCwgdGlt
+aW5ncy0+dFJFQV9tYXgsIHRpbWluZ3MtPnRSUF9taW4pIC8gMTAwMDsKPiA+ICsJaWYgKHRlbXAg
+PCB0aW1pbmdzLT50UkNfbWluKQo+ID4gKwkJdHJsdCA9IHRpbWluZ3MtPnRSQ19taW4gLSB0ZW1w
+Owo+ID4gKwl0cmx0ID0gbWF4KHRybHQsIHRpbWluZ3MtPnRSUF9taW4pIC8gMTAwMDsKPiA+ICAJ
+dHJsdCA9IERJVl9ST1VORF9VUCh0cmx0ICogcmF0ZSwgMTAwMDAwMCkgLSAxOwo+ID4gIAl0cmx0
+ICY9IDB4ZjsKPiA+ICAKPiA+ICsJLyoqCj4gCj4gICAgICAgICAvKgo+IAo+ID4gKwkgKiBDYWxj
+dWxhdGUgc3Ryb2JlIHNlbGVjdCB0aW1pbmcuCj4gPiArCSAqIElmIFJFIyBhY2Nlc3MgdGltZSBp
+cyBiaWdnZXIgdGhhbiBSRSMgcHVsc2UgdGltZSwKPiA+ICsJICogZGVsYXkgc2FtcGxpbmcgZGF0
+YSB0aW1pbmcuCj4gPiArCSAqLwo+ID4gKwl0ZW1wID0gKHRybHQgKyAxKSAqIDEwMDAwMDAgLyBy
+YXRlOwo+IAo+IFlvdSBjb3VsZCBwcmVjaXNlIHdoYXQgdW5pdCBjb252ZXJzaW9uIHlvdSBkbyBo
+ZXJlLgpPSy4gVW5pdCBoZXJlIGlzIG5hbm9zZWNvbmQuIEkgd2lsbCBkZXNjcmliZSBpdCBpbiBu
+ZXh0IHBhdGNoIHZlcnNpb24uCgo+IAo+ID4gKwkvKiBuYW5vc2Vjb25kIHRvIHBpY29zZWNvbmQg
+Ki8KPiA+ICsJdGVtcCAqPSAxMDAwOwo+ID4gKwlpZiAodGVtcCA8IHRpbWluZ3MtPnRSRUFfbWF4
+KSB7Cj4gPiArCQl0c2VsID0gdGltaW5ncy0+dFJFQV9tYXggLyAxMDAwOwo+ID4gKwkJdHNlbCA9
+IERJVl9ST1VORF9VUCh0c2VsICogcmF0ZSwgMTAwMDAwMCk7Cj4gPiArCQl0c2VsIC09ICh0cmx0
+ICsgMSk7Cj4gPiArCQlpZiAodHNlbCA+IE1BWF9TVFJPQkVfRExZKSB7Cj4gPiArCQkJdHJsdCAr
+PSB0c2VsIC0gTUFYX1NUUk9CRV9ETFk7Cj4gPiArCQkJdHNlbCA9IE1BWF9TVFJPQkVfRExZOwo+
+ID4gKwkJfQo+ID4gKwl9Cj4gPiArCXRlbXAgPSBuZmlfcmVhZGwobmZjLCBORklfREVCVUdfQ09O
+MSk7Cj4gPiArCXRlbXAgJj0gflNUUk9CRV9NQVNLOwo+ID4gKwl0ZW1wIHw9IHRzZWwgPDwgU1RS
+T0JFX1NISUZUOwo+ID4gKwluZmlfd3JpdGVsKG5mYywgdGVtcCwgTkZJX0RFQlVHX0NPTjEpOwo+
+ID4gKwo+ID4gIAkvKgo+ID4gIAkgKiBBQ0NPTjogYWNjZXNzIHRpbWluZyBjb250cm9sIHJlZ2lz
+dGVyCj4gPiAgCSAqIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiAKPiBX
+aXRoIHRoaXM6Cj4gCj4gUmV2aWV3ZWQtYnk6IE1pcXVlbCBSYXluYWwgPG1pcXVlbC5yYXluYWxA
+Ym9vdGxpbi5jb20+Cj4gCj4gCj4gVGhhbmtzLAo+IE1pcXXDqGwKClRoYW5rcywKWGlhb2xlaQoK
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXggTVREIGRpc2N1c3Npb24gbWFpbGluZyBsaXN0Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbXRkLwo=
