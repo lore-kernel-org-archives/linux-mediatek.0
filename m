@@ -1,90 +1,59 @@
-From: Lu Baolu <baolu.lu@linux.intel.com>
-Subject: Re: [RFC 6/7] iommu/vt-d: convert the intel iommu driver to the
- dma-iommu ops api
-Date: Sun, 5 May 2019 10:37:32 +0800
-Message-ID: <602b77a2-9c68-ad14-b64f-904a7ff27a15@linux.intel.com>
-References: <20190504132327.27041-1-tmurphy@arista.com>
- <20190504132327.27041-7-tmurphy@arista.com>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: linux-next: Tree for May 2 (drivers/usb/mtu3/mtu3_debugfs.o)
+Date: Sun, 5 May 2019 11:20:56 +0800
+Message-ID: <1557026456.10179.261.camel@mhfsdcap03>
+References: <20190502201028.707453d8@canb.auug.org.au>
+ <3e56059c-e024-324f-f584-75a806d9b0e0@infradead.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190504132327.27041-7-tmurphy@arista.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tom Murphy <tmurphy@arista.com>, iommu@lists.linux-foundation.org
-Cc: baolu.lu@linux.intel.com, murphyt7@tcd.ie, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Alex Williamson <alex.williamson@redhat.com>, Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <marc.zyngier@arm.com>, linux-ker
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <3e56059c-e024-324f-f584-75a806d9b0e0-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Randy Dunlap <rdunlap-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
+Cc: Stephen Rothwell <sfr-3FnU+UHB4dNDw9hX6IcOSA@public.gmane.org>, Linux Next Mailing List <linux-next-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, USB list <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+Hi Randy,
+On Thu, 2019-05-02 at 08:17 -0700, Randy Dunlap wrote:
+> On 5/2/19 3:10 AM, Stephen Rothwell wrote:
+> > Hi all,
+> > 
+> > Changes since 20190501:
+> > 
+> 
+> on i386:
+> 
+> ld: drivers/usb/mtu3/mtu3_debugfs.o: in function `ssusb_debugfs_create_root':
+> mtu3_debugfs.c:(.text+0xba3): undefined reference to `usb_debug_root'
+> 
+> CONFIG_USB_SUPPORT=y
+> CONFIG_USB_COMMON=y
+> CONFIG_USB_ARCH_HAS_HCD=y
+> # CONFIG_USB is not set     <<<<< no host-side USB
+> # CONFIG_USB_PCI is not set
+> CONFIG_USB_MTU3=y
+> CONFIG_USB_MTU3_GADGET=y     <<<<< gadget-only mode
+> # CONFIG_USB_MTU3_DEBUG is not set
+> CONFIG_USB_MUSB_HDRC=m
+> CONFIG_USB_MUSB_GADGET=y
+> 
+> usb_debug_root is in drivers/usb/core/usb.c, which is only built
+> when CONFIG_USB is set/enabled.
+> 
+I'll fix it ASAP.
 
-On 5/4/19 9:23 PM, Tom Murphy wrote:
-> static int intel_iommu_add_device(struct device *dev)
->   {
-> +	struct dmar_domain *dmar_domain;
-> +	struct iommu_domain *domain;
->   	struct intel_iommu *iommu;
->   	struct iommu_group *group;
-> -	struct iommu_domain *domain;
-> +	dma_addr_t base;
->   	u8 bus, devfn;
->   
->   	iommu = device_to_iommu(dev, &bus, &devfn);
-> @@ -4871,9 +4514,12 @@ static int intel_iommu_add_device(struct device *dev)
->   	if (IS_ERR(group))
->   		return PTR_ERR(group);
->   
-> +	base = IOVA_START_PFN << VTD_PAGE_SHIFT;
->   	domain = iommu_get_domain_for_dev(dev);
-> +	dmar_domain = to_dmar_domain(domain);
->   	if (domain->type == IOMMU_DOMAIN_DMA)
-> -		dev->dma_ops = &intel_dma_ops;
-> +		iommu_setup_dma_ops(dev, base,
-> +				__DOMAIN_MAX_ADDR(dmar_domain->gaw) - base);
+Thanks a lot
 
-I didn't find the implementation of iommu_setup_dma_ops() in this
-series. Will the iova resource be initialized in this function?
-
-If so, will this block iommu_group_create_direct_mappings() which
-reserves and maps the reserved iova ranges.
-
->   
->   	iommu_group_put(group);
->   	return 0;
-> @@ -5002,19 +4648,6 @@ int intel_iommu_enable_pasid(struct intel_iommu *iommu, struct intel_svm_dev *sd
->   	return ret;
->   }
->   
-> -static void intel_iommu_apply_resv_region(struct device *dev,
-> -					  struct iommu_domain *domain,
-> -					  struct iommu_resv_region *region)
-> -{
-> -	struct dmar_domain *dmar_domain = to_dmar_domain(domain);
-> -	unsigned long start, end;
-> -
-> -	start = IOVA_PFN(region->start);
-> -	end   = IOVA_PFN(region->start + region->length - 1);
-> -
-> -	WARN_ON_ONCE(!reserve_iova(&dmar_domain->iovad, start, end));
-> -}
-> -
->   struct intel_iommu *intel_svm_device_to_iommu(struct device *dev)
->   {
->   	struct intel_iommu *iommu;
-> @@ -5050,13 +4683,13 @@ const struct iommu_ops intel_iommu_ops = {
->   	.detach_dev		= intel_iommu_detach_device,
->   	.map			= intel_iommu_map,
->   	.unmap			= intel_iommu_unmap,
-> +	.flush_iotlb_all	= iommu_flush_iova,
->   	.flush_iotlb_range	= intel_iommu_flush_iotlb_range,
->   	.iova_to_phys		= intel_iommu_iova_to_phys,
->   	.add_device		= intel_iommu_add_device,
->   	.remove_device		= intel_iommu_remove_device,
->   	.get_resv_regions	= intel_iommu_get_resv_regions,
->   	.put_resv_regions	= intel_iommu_put_resv_regions,
-> -	.apply_resv_region	= intel_iommu_apply_resv_region,
-
-With this removed, how will iommu_group_create_direct_mappings() work?
-
-Best regards,
-Lu Baolu
+> 
+> 
+> Full randconfig file is attached.
+> 
