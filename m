@@ -1,44 +1,79 @@
-From: Jonathan Cameron <jic23@kernel.org>
-Subject: Re: [PATCH v2 1/2] dt-bindings: adc: mt8183: add binding document
-Date: Sun, 5 May 2019 12:37:31 +0100
-Message-ID: <20190505123731.4fda09b8@archlinux>
-References: <20190424011112.14283-1-zhiyong.tao@mediatek.com>
- <20190424011112.14283-2-zhiyong.tao@mediatek.com>
- <20190501200125.GA29927@bogus>
+From: =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <rafal-g1n6cQUeyibVItvQsEIGlw@public.gmane.org>
+Subject: Re: [RFC PATCH v3 1/1] mtd: rawnand: mtk: Re-license MTK NAND driver
+ as Dual MIT/GPL
+Date: Sun, 05 May 2019 17:06:36 +0200
+Message-ID: <79539034414767c95e456a79391a18e7@milecki.pl>
+References: <20190429085116.60081-1-xiaolei.li@mediatek.com>
+ <20190429085116.60081-2-xiaolei.li@mediatek.com>
+ <82cc648b1e92d5ed6876b025a2da1821@milecki.pl>
+ <1557047534.26455.81.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190501200125.GA29927@bogus>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh@kernel.org>
-Cc: devicetree@vger.kernel.org, lars@metafoo.de, srv_heupstream@mediatek.com, linux-iio@vger.kernel.org, Zhiyong Tao <zhiyong.tao@mediatek.com>, erin.lo@mediatek.com, hui.liu@mediatek.com, linux-kernel@vger.kernel.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, pmeerw@pmeerw.net, knaack.h@gmx.de, matthias.bgg@gmail.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, s.hauer@pengutronix.de, sean.wang@mediatek.com
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1557047534.26455.81.camel@mhfsdcap03>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org, miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yellowriver2010-PkbjNfxxIARBDgjK7y7TUQ@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 1 May 2019 15:01:25 -0500
-Rob Herring <robh@kernel.org> wrote:
-
-> On Wed, 24 Apr 2019 09:11:11 +0800, Zhiyong Tao wrote:
-> > The commit adds mt8183 compatible node in binding document.
-> > 
-> > Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
-> > ---
-> >  Documentation/devicetree/bindings/iio/adc/mt6577_auxadc.txt | 1 +
-> >  1 file changed, 1 insertion(+)
-> >   
-> 
-> Reviewed-by: Rob Herring <robh@kernel.org>
-
-Applied to the togreg branch of iio.git and pushed out as testing to
-be ignored by the autobuilders. I'll assume the dts patch will go
-via the normal soc trees.
-
-Jonathan
+T24gMjAxOS0wNS0wNSAxMToxMiwgeGlhb2xlaSBsaSB3cm90ZToKPiBVcCB0byBub3csCj4gWGlh
+b2xlaSBMaSA8eGlhb2xlaS5saUBtZWRpYXRlay5jb20+ICh0aGUgYXV0aG9yIGFuZCBtYWpvciAK
+PiBjb250cmlidXRvciksCj4gSm9yZ2UgUmFtaXJlei1PcnRpeiA8am9yZ2UucmFtaXJlei1vcnRp
+ekBsaW5hcm8ub3JnPiAodGhlIGF1dGhvciBhbmQKPiBtYWpvciBjb250cmlidXRvciksCj4gUnlk
+ZXIgTGVlIDxyeWRlci5sZWVAbWVkaWF0ZWsuY29tPiAoZGV2ZWxvcGVyKSwKPiBSYWZhxYIgTWnF
+gmVja2kgPHJhZmFsQG1pbGVja2kucGw+IChkZXZlbG9wZXIpCj4gc2VudCBBQ0sgZm9yIHRoaXMg
+UkZDIHBhdGNoLgo+IAo+IE1heSBJIGFzayBpZiBpdCBpcyBlbm91Z2ggdG8gYWNjZXB0IHRoaXMg
+Y2hhbmdlPyBPciBzaG91bGQgSSB3YWl0IGZvcgo+IG90aGVyIGRldmVsb3BlcidzIHJlc3BvbnNl
+PwoKSSBjYW4ndCBpbWFnaW5lIHJlLWxpY2Vuc2luZyBzb21lb25lJ3Mgd29yayB3aXRob3V0IGEg
+cGVybWlzc2lvbi4KClRoZSBiZXN0IHlvdSBjYW4gZG8gaXMgaWdub3JpbmcgY29udHJpYnV0b3Jz
+IHRoYXQgc3VibWl0dGVkIGNoYW5nZXMgdGhhdAphcmVuJ3QgcmVhbGx5IGNvcHlyaWdodGFibGUg
+KHNvbWV0aGluZyBsaWtlIGZpeGluZyBhIGNvbW1lbnQgdHlwbywgc29tZQphdXRvLWdlbmVyYXRl
+ZCBkaWZmLXMpLgoKSSB1c2VkIGZvbGxvd2luZyBjb21tYW5kIHRvIGNoZWNrIG10a19uYW5kLmMg
+ZmlsZSBoaXN0b3J5OgojIGdpdCBsb2cgLS1mb2xsb3cgZHJpdmVycy9tdGQvbmFuZC9yYXcvbXRr
+X25hbmQuYyB8IGdyZXAgCiJTaWduZWQtb2ZmLWJ5IiB8IHNvcnQgfCB1bmlxIC1jIHwgc29ydCAt
+ciAtbgogICAgICAxOSAgICAgU2lnbmVkLW9mZi1ieTogTWlxdWVsIFJheW5hbCA8bWlxdWVsLnJh
+eW5hbEBib290bGluLmNvbT4KICAgICAgMTggICAgIFNpZ25lZC1vZmYtYnk6IEJvcmlzIEJyZXpp
+bGxvbiA8Ym9yaXMuYnJlemlsbG9uQGJvb3RsaW4uY29tPgogICAgICAxNSAgICAgU2lnbmVkLW9m
+Zi1ieTogQm9yaXMgQnJlemlsbG9uIAo8Ym9yaXMuYnJlemlsbG9uQGZyZWUtZWxlY3Ryb25zLmNv
+bT4KICAgICAgIDYgICAgIFNpZ25lZC1vZmYtYnk6IFhpYW9sZWkgTGkgPHhpYW9sZWkubGlAbWVk
+aWF0ZWsuY29tPgogICAgICAgMyAgICAgU2lnbmVkLW9mZi1ieTogUm9nZXJDQyBMaW4gPHJvZ2Vy
+Y2MubGluQG1lZGlhdGVrLmNvbT4KICAgICAgIDIgICAgIFNpZ25lZC1vZmYtYnk6IE1pcXVlbCBS
+YXluYWwgCjxtaXF1ZWwucmF5bmFsQGZyZWUtZWxlY3Ryb25zLmNvbT4KICAgICAgIDEgICAgIFNp
+Z25lZC1vZmYtYnk6IFdlaSBZb25nanVuIDx3ZWl5b25nanVuMUBodWF3ZWkuY29tPgogICAgICAg
+MSAgICAgU2lnbmVkLW9mZi1ieTogUnlkZXIgTGVlIDxyeWRlci5sZWVAbWVkaWF0ZWsuY29tPgog
+ICAgICAgMSAgICAgU2lnbmVkLW9mZi1ieTogUmFmYcWCIE1pxYJlY2tpIDxyYWZhbEBtaWxlY2tp
+LnBsPgogICAgICAgMSAgICAgU2lnbmVkLW9mZi1ieTogUGV0ZXIgUGFuIDxwZXRlcnBhbmRvbmdA
+bWljcm9uLmNvbT4KICAgICAgIDEgICAgIFNpZ25lZC1vZmYtYnk6IE1hc2FoaXJvIFlhbWFkYSAK
+PHlhbWFkYS5tYXNhaGlyb0Bzb2Npb25leHQuY29tPgogICAgICAgMSAgICAgU2lnbmVkLW9mZi1i
+eTogSm9yZ2UgUmFtaXJlei1PcnRpeiAKPGpvcmdlLnJhbWlyZXotb3J0aXpAbGluYXJvLm9yZz4K
+CklkZWFsbHkgeW91IHNob3VsZCBzdGlsbCBnZXQgYWNrcyBmcm9tOgoKMSkgTWlxdWVsCkNvbnRy
+aWJ1dG9yIG9mIDIxIGNoYW5nZXMKCjIpIEJvcmlzCkNvbnRyaWJ1dG9yIG9mIDMzIGNoYW5nZXMK
+CjMpIFJvZ2VyQ0MKQ29udHJpYnV0b3Igb2YgMyBjaGFuZ2VzOgo5OGRlYThkNzE5MzEgKCJtdGQ6
+IG5hbmQ6IG10azogU3VwcG9ydCBNVDc2MjIgTkFORCBmbGFzaCBjb250cm9sbGVyLiIpCmI0NWVl
+NTUwMWVkZSAoIm10ZDogbmFuZDogbXRrOiBTdXBwb3J0IGRpZmZlcmVudCBNVEsgTkFORCBmbGFz
+aCAKY29udHJvbGxlciBJUCIpCjU1OWU1OGU3ZWQyZCAoIm10ZDogbmFuZDogZml4IGNoYW5jZXMg
+dG8gY3JlYXRlIGluY29tcGxldGUgRUNDIGRhdGEgd2hlbiAKd3JpdGluZyIpCgo0KSBXZWkKQ29u
+dHJpYnV0b3Igb2YgMSBjaGFuZ2U6CjA3Zjc2NDQzZWY4MSAoIm10ZDogbmFuZDogbWVkaWF0ZWs6
+IHJlbW92ZSByZWR1bmRhbnQgZGV2X2VyciBjYWxsIGluIAptdGtfbmZjX3Byb2JlKCkiKQoKNSkg
+UGV0ZXIKQ29udHJpYnV0b3Igb2YgMSBjaGFuZ2U6CmQ0MDkyZDc2YTRhNCAoIm10ZDogbmFuZDog
+UmVuYW1lIG5hbmQuaCBpbnRvIHJhd25hbmQuaCIpCgo2KSBNYXNhaGlybwpDb250cmlidXRvciBv
+ZiAxIGNoYW5nZToKZjBkYmU0YWEzNWU3ICgibXRkOiBuYW5kOiBtZWRpYXRlazogcmV0dXJuIGVy
+cm9yIGNvZGUgb2YgCm5hbmRfc2Nhbl9pZGVudC90YWlsKCkgb24gZXJyb3IiKQoKSSBndWVzcyB3
+ZSBjb3VsZCBhY2NlcHQgeW91ciBwYXRjaCB3aXRob3V0IGFja3MgZnJvbSBXZWksIFBldGVyIGFu
+ZCAKTWFzYWhpcm8uCgpZb3UgZGVmaW5pdGVseSBuZWVkIGFuIGFwcHJvdmFsIGZyb20gTWlxdWVs
+LCBCb3JpcyBhbmQgUm9nZXJDQy4KCkl0IGRvZXNuJ3Qgc2VlbSB5b3UgdG9vayB0aGlzIHJlLWxp
+Y2Vuc2luZyB0YXNrIHRvbyBzZXJpb3VzbHkuCgpQbGVhc2UgcGF5IG1vcmUgYXR0ZW50aW9uIHRv
+IHRoaXMgbGljZW5zaW5nIHByb2JsZW0sIHlvdSBjYW4gc3RhcnQgd2l0aCAKZG9pbmcKYSBzaW1p
+bGFyIHJlc2VhcmNoIGZvciBtdGtfZWNjLmMgYW5kIG10a19lY2MuaC4KCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcg
+bGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
+YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
