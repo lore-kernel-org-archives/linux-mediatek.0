@@ -1,51 +1,32 @@
-From: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [RFC PATCH v3 1/1] mtd: rawnand: mtk: Re-license MTK NAND
- driver as Dual MIT/GPL
-Date: Sun, 5 May 2019 17:12:14 +0800
-Message-ID: <1557047534.26455.81.camel@mhfsdcap03>
-References: <20190429085116.60081-1-xiaolei.li@mediatek.com>
- <20190429085116.60081-2-xiaolei.li@mediatek.com>
- <82cc648b1e92d5ed6876b025a2da1821@milecki.pl>
+From: Jitao Shi <jitao.shi@mediatek.com>
+Subject: [PATCH v2 0/2] add dsi pwm0 node for mt8183
+Date: Sun, 5 May 2019 19:05:15 +0800
+Message-ID: <20190505110517.965-1-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <82cc648b1e92d5ed6876b025a2da1821-g1n6cQUeyibVItvQsEIGlw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: richard-/L3Ra7n9ekc@public.gmane.org, miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org
-Cc: daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yellowriver2010-PkbjNfxxIARBDgjK7y7TUQ@public.gmane.org, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <rafal-g1n6cQUeyibVItvQsEIGlw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Jitao Shi <jitao.shi@mediatek.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, cawa.cheng@mediatek.com, bibby.hsieh@mediatek.com, ck.hu@mediate
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgUmljaGFyZCwgTWlxdWVsLAoKVXAgdG8gbm93LApYaWFvbGVpIExpIDx4aWFvbGVpLmxpQG1l
-ZGlhdGVrLmNvbT4gKHRoZSBhdXRob3IgYW5kIG1ham9yIGNvbnRyaWJ1dG9yKSwKSm9yZ2UgUmFt
-aXJlei1PcnRpeiA8am9yZ2UucmFtaXJlei1vcnRpekBsaW5hcm8ub3JnPiAodGhlIGF1dGhvciBh
-bmQKbWFqb3IgY29udHJpYnV0b3IpLApSeWRlciBMZWUgPHJ5ZGVyLmxlZUBtZWRpYXRlay5jb20+
-IChkZXZlbG9wZXIpLApSYWZhxYIgTWnFgmVja2kgPHJhZmFsQG1pbGVja2kucGw+IChkZXZlbG9w
-ZXIpCnNlbnQgQUNLIGZvciB0aGlzIFJGQyBwYXRjaC4KCk1heSBJIGFzayBpZiBpdCBpcyBlbm91
-Z2ggdG8gYWNjZXB0IHRoaXMgY2hhbmdlPyBPciBzaG91bGQgSSB3YWl0IGZvcgpvdGhlciBkZXZl
-bG9wZXIncyByZXNwb25zZT8KClRoYW5rcywKWGlhb2xlaQoKT24gTW9uLCAyMDE5LTA0LTI5IGF0
-IDExOjQxICswMjAwLCBSYWZhxYIgTWnFgmVja2kgd3JvdGU6Cj4gT24gMjAxOS0wNC0yOSAxMDo1
-MSwgWGlhb2xlaSBMaSB3cm90ZToKPiA+IEl0IGlzIGFsbG93ZWQgdG8gdXNlIE1USyBOQU5EIGRy
-aXZlciB3aXRoIEdQTC0yLjAgb3IgTUlUIGxpY2Vuc2UuCj4gCj4gV2hhdCBkbyB5b3UgbWVhbiBi
-eSAiSXQgaXMgYWxsb3dlZCI/IEFjY29yZGluZyB0byB0aGUgbGljZW5zZSBpdCdzIAo+IHJhdGhl
-ciBub3QuCj4gCj4gRGlkIHlvdSBtZWFuIHNvbWV0aGluZyBsaWtlICJJdCBpdCB3YW50ZWQiPwo+
-IAo+IAo+ID4gQnV0IG5vdyBpdCBpcyBvbmx5IGxpY2Vuc2VkIGFzIEdQTC0yLjAuCj4gPiBTbyBy
-ZS1saWNlbnNlIGl0IGFzIGR1YWwgTUlUL0dQTCBhbmQgcmVwbGFjZSBsaWNlbnNlIHRleHQgd2l0
-aAo+ID4gU1BEWCB0YWcuCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IFhpYW9sZWkgTGkgPHhpYW9s
-ZWkubGlAbWVkaWF0ZWsuY29tPgo+ID4gQWNrZWQtYnk6IEpvcmdlIFJhbWlyZXotT3J0aXogPGpv
-cmdlLnJhbWlyZXotb3J0aXpAbGluYXJvLm9yZz4KPiA+IEFja2VkLWJ5OiBSeWRlciBMZWUgPHJ5
-ZGVyLmxlZUBtZWRpYXRlay5jb20+Cj4gCj4gTXkgZGV2ZWxvcG1lbnQgaW52b2x2ZW1lbnQgd2Fz
-IHRyaXZpYWwvbWluaW1hbCwgc28gSSdtIE9LIGlmIHRoYXQncyB3aGF0IAo+IG1vc3QKPiBkZXZl
-bG9wZXJzIHdhbnQuCj4gCj4gQWNrZWQtYnk6IFJhZmHFgiBNacWCZWNraSA8cmFmYWxAbWlsZWNr
-aS5wbD4KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-TGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1t
-ZWRpYXRlawo=
+Changes since v1:
+ - remove "mediatek,mt8173-dsi" from dsi node.
+
+This patch is based on v5.1-rc1 and these patches:
+http://lists.infradead.org/pipermail/linux-mediatek/2019-March/017963.html
+https://patchwork.kernel.org/patch/10856987/
+https://patchwork.kernel.org/cover/10879001/
+https://patchwork.kernel.org/cover/10846677/
+https://patchwork.kernel.org/patch/10893519/
+
+Jitao Shi (2):
+  arm64: dts: mt8183: add dsi node
+  arm64: dts: mt8183: add pwm0 node
+
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 35 ++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
+
+-- 
+2.21.0
