@@ -1,58 +1,109 @@
-From: Randy Dunlap <rdunlap@infradead.org>
-Subject: Re: [next PATCH] usb: mtu3: fix up undefined reference to
- usb_debug_root
-Date: Sun, 5 May 2019 08:40:14 -0700
-Message-ID: <493f7e77-2c84-9812-2c27-760496610522@infradead.org>
-References: <2b79c411c5d07a6846967c41803b328e300df8c6.1557035810.git.chunfeng.yun@mediatek.com>
+From: Tom Murphy <tmurphy@arista.com>
+Subject: Re: [RFC 6/7] iommu/vt-d: convert the intel iommu driver to the
+ dma-iommu ops api
+Date: Sun, 5 May 2019 18:03:02 +0100
+Message-ID: <CAPL0++57nyLYP1fq=-6zvNS0z_iCqjWLbQ1MsG5F60ODkmRCQQ@mail.gmail.com>
+References: <20190504132327.27041-1-tmurphy@arista.com> <20190504132327.27041-7-tmurphy@arista.com>
+ <602b77a2-9c68-ad14-b64f-904a7ff27a15@linux.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2b79c411c5d07a6846967c41803b328e300df8c6.1557035810.git.chunfeng.yun@mediatek.com>
-Content-Language: en-US
+In-Reply-To: <602b77a2-9c68-ad14-b64f-904a7ff27a15@linux.intel.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Lu Baolu <baolu.lu@linux.intel.com>
+Cc: iommu@lists.linux-foundation.org, Tom Murphy <murphyt7@tcd.ie>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Alex Williamson <alex.williamson@redhat.com>, Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <marc.zyngier@arm.co>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 5/4/19 11:02 PM, Chunfeng Yun wrote:
-> When CONFIG_USB is not set, and CONFIG_USB_GADGET is set,
-> there is an issue:
-> 
-> ld:
-> drivers/usb/mtu3/mtu3_debugfs.o: in function 'ssusb_debugfs_create_root':
-> mtu3_debugfs.c:(.text+0xba3): undefined reference to 'usb_debug_root'
-> 
-> usb_debug_root is only built when CONFIG_USB is enabled, so here drop it
-> and use NULL instead.
-> 
-> Reported-by: Randy Dunlap <rdunlap@infradead.org>
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+On Sun, May 5, 2019 at 3:44 AM Lu Baolu <baolu.lu@linux.intel.com> wrote:
+>
+> Hi,
+>
+> On 5/4/19 9:23 PM, Tom Murphy wrote:
+> > static int intel_iommu_add_device(struct device *dev)
+> >   {
+> > +     struct dmar_domain *dmar_domain;
+> > +     struct iommu_domain *domain;
+> >       struct intel_iommu *iommu;
+> >       struct iommu_group *group;
+> > -     struct iommu_domain *domain;
+> > +     dma_addr_t base;
+> >       u8 bus, devfn;
+> >
+> >       iommu = device_to_iommu(dev, &bus, &devfn);
+> > @@ -4871,9 +4514,12 @@ static int intel_iommu_add_device(struct device *dev)
+> >       if (IS_ERR(group))
+> >               return PTR_ERR(group);
+> >
+> > +     base = IOVA_START_PFN << VTD_PAGE_SHIFT;
+> >       domain = iommu_get_domain_for_dev(dev);
+> > +     dmar_domain = to_dmar_domain(domain);
+> >       if (domain->type == IOMMU_DOMAIN_DMA)
+> > -             dev->dma_ops = &intel_dma_ops;
+> > +             iommu_setup_dma_ops(dev, base,
+> > +                             __DOMAIN_MAX_ADDR(dmar_domain->gaw) - base);
+>
+> I didn't find the implementation of iommu_setup_dma_ops() in this
+> series. Will the iova resource be initialized in this function?
 
-Acked-by: Randy Dunlap <rdunlap@infradead.org> # build-tested
+Ah sorry, I should've mentioned this is based on the
+http://git.infradead.org/users/hch/misc.git/shortlog/refs/heads/dma-iommu-ops.3
+branch with the "iommu/vt-d: Delegate DMA domain to generic iommu" and
+"iommu/amd: Convert the AMD iommu driver to the dma-iommu api" patch
+sets applied.
 
-Thanks.
+>
+> If so, will this block iommu_group_create_direct_mappings() which
+> reserves and maps the reserved iova ranges.
 
-> ---
->  drivers/usb/mtu3/mtu3_debugfs.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> diff --git a/drivers/usb/mtu3/mtu3_debugfs.c b/drivers/usb/mtu3/mtu3_debugfs.c
-> index c96e5dab0a48..3ed666f94dd9 100644
-> --- a/drivers/usb/mtu3/mtu3_debugfs.c
-> +++ b/drivers/usb/mtu3/mtu3_debugfs.c
-> @@ -528,8 +528,7 @@ void ssusb_dr_debugfs_init(struct ssusb_mtk *ssusb)
->  
->  void ssusb_debugfs_create_root(struct ssusb_mtk *ssusb)
->  {
-> -	ssusb->dbgfs_root =
-> -		debugfs_create_dir(dev_name(ssusb->dev), usb_debug_root);
-> +	ssusb->dbgfs_root = debugfs_create_dir(dev_name(ssusb->dev), NULL);
->  }
->  
->  void ssusb_debugfs_remove_root(struct ssusb_mtk *ssusb)
-> 
+The reserved regions will be reserved by the
+iova_reserve_iommu_regions function instead:
+( https://github.com/torvalds/linux/blob/6203838dec05352bc357625b1e9ba0a10d3bca35/drivers/iommu/dma-iommu.c#L238
+)
+iommu_setup_dma_ops calls iommu_dma_init_domain which calls
+iova_reserve_iommu_regions.
+iommu_group_create_direct_mappings will still execute normally but it
+won't be able to call the intel_iommu_apply_resv_region function
+because it's been removed in this patchset.
+This shouldn't change any behavior and the same regions should be reserved.
 
-
--- 
-~Randy
+>
+> >
+> >       iommu_group_put(group);
+> >       return 0;
+> > @@ -5002,19 +4648,6 @@ int intel_iommu_enable_pasid(struct intel_iommu *iommu, struct intel_svm_dev *sd
+> >       return ret;
+> >   }
+> >
+> > -static void intel_iommu_apply_resv_region(struct device *dev,
+> > -                                       struct iommu_domain *domain,
+> > -                                       struct iommu_resv_region *region)
+> > -{
+> > -     struct dmar_domain *dmar_domain = to_dmar_domain(domain);
+> > -     unsigned long start, end;
+> > -
+> > -     start = IOVA_PFN(region->start);
+> > -     end   = IOVA_PFN(region->start + region->length - 1);
+> > -
+> > -     WARN_ON_ONCE(!reserve_iova(&dmar_domain->iovad, start, end));
+> > -}
+> > -
+> >   struct intel_iommu *intel_svm_device_to_iommu(struct device *dev)
+> >   {
+> >       struct intel_iommu *iommu;
+> > @@ -5050,13 +4683,13 @@ const struct iommu_ops intel_iommu_ops = {
+> >       .detach_dev             = intel_iommu_detach_device,
+> >       .map                    = intel_iommu_map,
+> >       .unmap                  = intel_iommu_unmap,
+> > +     .flush_iotlb_all        = iommu_flush_iova,
+> >       .flush_iotlb_range      = intel_iommu_flush_iotlb_range,
+> >       .iova_to_phys           = intel_iommu_iova_to_phys,
+> >       .add_device             = intel_iommu_add_device,
+> >       .remove_device          = intel_iommu_remove_device,
+> >       .get_resv_regions       = intel_iommu_get_resv_regions,
+> >       .put_resv_regions       = intel_iommu_put_resv_regions,
+> > -     .apply_resv_region      = intel_iommu_apply_resv_region,
+>
+> With this removed, how will iommu_group_create_direct_mappings() work?
+>
+> Best regards,
+> Lu Baolu
