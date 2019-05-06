@@ -1,78 +1,43 @@
-From: Mathias Nyman <mathias.nyman@linux.intel.com>
-Subject: Re: [PATCH 1/2] usb: xhci: Make it possible to not have a secondary
- HCD (3.0)
-Date: Mon, 6 May 2019 16:21:53 +0300
-Message-ID: <6844539f-3d5e-e3ff-b498-390cdc731880@linux.intel.com>
-References: <20190502045631.229386-1-drinkcat@chromium.org>
+From: Maxime Chevallier <maxime.chevallier@bootlin.com>
+Subject: Re: [PATCH v4 00/10] of_net: Add NVMEM support to of_get_mac_address
+Date: Mon, 6 May 2019 16:41:32 +0200
+Message-ID: <20190506164132.10342ef6@bootlin.com>
+References: <1556893635-18549-1-git-send-email-ynezz@true.cz>
+ <20190505.214727.1839442238121977055.davem@davemloft.net>
+ <20190506083207.GG81826@meh.true.cz>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190502045631.229386-1-drinkcat@chromium.org>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Nicolas Boichat <drinkcat@chromium.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Khuong Dinh <khuong@os.amperecomputing.com>, Hoan Tran <hoan@os.amperecomputing.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190506083207.GG81826@meh.true.cz>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Petr =?UTF-8?B?xaB0ZXRpYXI=?= <ynezz@true.cz>
+Cc: andrew@lunn.ch, f.fainelli@gmail.com, devicetree@vger.kernel.org, maxime.ripard@bootlin.com, netdev@vger.kernel.org, srinivas.kandagatla@linaro.org, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, frowand.list@gmail.com, David Miller <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, hkallweit1@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On 2.5.2019 7.56, Nicolas Boichat wrote:
-> Some XHCI controllers may not have any USB 3.0 port, in this case, it
-> is not useful to create add hcd->shared_hcd, which has 2 main
-> downsides:
->   - A useless USB 3.0 root hub is created.
->   - A warning is thrown on boot:
-> hub 2-0:1.0: config failed, hub doesn't have any ports! (err -19)
-> 
-> The change is mostly about checking if hcd->shared_hcd is NULL before
-> accessing it. The one special case is in xhci_run, where we need to
-> call xhci_run_finished immediately, if there is no secondary hcd.
-
-To me it looks like this creates an controller starting issue for
-xHC hardware that have both usb2 and usb3 ports.
-
-When we have usb3 ports xhci->shared_hcd is not set yet when xhci_run is called
-the first time. We will end up starting the xHC before properly setting up the secondary hcd.
-
-See further down for details
-
-> 
-> Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
-> ---
-> 
-> This is a respin of https://lore.kernel.org/patchwork/patch/863993/,
-> hopefully addressing the comments there. Note that I dropped the change
-> in xhci-plat.c, as I do not have a device to test it, but made a
-> similar change in xhci-mtk.c, in the next patch.
-> 
-> (the @apm.com addresses seem to bounce, so I added some
-> @amperecomputing.com instead, if somebody there can track back the
-> original issue, I'm happy to provide a patch for xhci-plat.c as well)
-> 
-> drivers/usb/host/xhci-hub.c |  7 ++++--
->   drivers/usb/host/xhci.c     | 45 +++++++++++++++++++++++++++----------
->   2 files changed, 38 insertions(+), 14 deletions(-)
-> 
-
-...
-
-> @@ -698,6 +703,10 @@ int xhci_run(struct usb_hcd *hcd)
->   
->   	xhci_debugfs_init(xhci);
->   
-> +	/* There is no secondary HCD, start the host controller immediately. */
-> +	if (!xhci->shared_hcd)
-> +		return xhci_run_finished(xhci);
-> +
-
-PCI xHC controllers with both usb2 and usb3 ports will be started before usb3 parts are properly set up.
-
-xhci_pci_probe()
-   usb_hcd_pci_probe()
-     usb_add_hcd()
-       hcd->driver->start(hcd)  // .start = xhci_run
-         xhci_run()
-           if (!xhci->shared_hcd)  // TRUE as xhci->shared_hcd is not yet set,
-	    return xhci_run_finished(xhci)  // starting controller too early here
-   xhci->shared_hcd = usb_create_shared_hcd()   // now xhci->shared_hcd is set.
-
--Mathias
+SGkgUGV0ciwKCk9uIE1vbiwgNiBNYXkgMjAxOSAxMDozMjowNyArMDIwMApQZXRyIMWgdGV0aWFy
+IDx5bmV6ekB0cnVlLmN6PiB3cm90ZToKCj5EYXZpZCBNaWxsZXIgPGRhdmVtQGRhdmVtbG9mdC5u
+ZXQ+IFsyMDE5LTA1LTA1IDIxOjQ3OjI3XToKPgo+SGkgRGF2aWQsCj4KPj4gU2VyaWVzIGFwcGxp
+ZWQsIHRoYW5rIHlvdS4gIAo+Cj5JIGRpZCBwcm9iYWJseSBzb21ldGhpbmcgdGVycmlibHkgd3Jv
+bmcsIGJ1dCBwYXRjaCAiW1BBVENIIHY0IDA1LzEwXSBuZXQ6Cj5ldGhlcm5ldDogc3VwcG9ydCBv
+Zl9nZXRfbWFjX2FkZHJlc3MgbmV3IEVSUl9QVFIgZXJyb3IiIGhhcyBub3QgcmVhY2hlZCB0aGUK
+PnBhdGNod29yaywgYnV0IEknbSBzdXJlLCB0aGF0IGl0IHdhcyBzZW50IG91dCBhcyBIYXVrZSBN
+ZWhydGVucyAobWFpbnRhaW5lcgo+Zm9yIGV0aGVybmV0L2xhbnRpcV94cngyMDAuYykgaGFzIGNv
+bmZpcm1lZCB0byBtZSBvbiBJUkMsIHRoYXQgaGUgaGFzIHJlY2VpdmVkCj5pdC4KCkl0IHNlZW1z
+IGluZGVlZCB0aGF0IHRoZSA1dGggcGF0Y2ggaGFzbid0IGJlZWQgYXBwbGllZCwgd2hpY2ggZWZm
+ZWN0aXZlbHkKYnJlYWtzIG12bmV0YSBvbiBuZXQtbmV4dCwgYW5kIEkgZ3Vlc3MgYSBsb3Qgb2Yg
+b3RoZXIgZHJpdmVycyB0aGF0IHJlbHkKb24gaGFuZGxpbmcgdGhlIG5ldyByZXR1cm4gdmFsdWVz
+LgoKSSBzYXcgeW91IHNlbnQgYSBmb2xsb3d1cCBzZXJpZXMgZml4aW5nIHRoYXQsIGJ1dCBvbmx5
+IHBhdGNoIDIvMwpzaG93cy11cCBvbiBuZXRkZXYsIHNvIHlvdSBtaWdodCBiZSBmYWNpbmcgYSBz
+aW1pbGFyIGlzc3VlIGhlcmUuCgpNYXhpbWUKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFy
+bS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
