@@ -1,125 +1,93 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH 1/8] arm64: dts: mt8183: add thermal zone node
-Date: Mon, 6 May 2019 11:43:00 +0200
-Message-ID: <8e0fad21-57d1-923c-fd8b-f5f2c47a5c94@linaro.org>
-References: <1556793795-25204-1-git-send-email-michael.kao@mediatek.com>
- <1556793795-25204-2-git-send-email-michael.kao@mediatek.com>
+From: =?UTF-8?q?Petr=20=C5=A0tetiar?= <ynezz@true.cz>
+Subject: [PATCH net-next 0/3] of_get_mac_address ERR_PTR fixes
+Date: Mon,  6 May 2019 11:58:34 +0200
+Message-ID: <1557136717-531-1-git-send-email-ynezz@true.cz>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1556793795-25204-2-git-send-email-michael.kao@mediatek.com>
-Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: "michael.kao" <michael.kao@mediatek.com>, fan.chen@mediatek.com, jamesjj.liao@mediatek.com, dawei.chien@mediatek.com, louis.yu@mediatek.com, roger.lu@mediatek.com, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, Frank Rowand <frowand.list@gmail.com>, devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Maxime Ripard <maxime.ripard@bootlin.com>, =?UTF-8?q?Petr=20=C5=A0tetiar?= <ynezz@true.cz>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 02/05/2019 12:43, michael.kao wrote:
-> Add thermal zone node to Mediatek MT8183 dts file.
-> 
-> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
-> ---
+Hi,
 
-Hi Michael,
+this patch series is an attempt to fix the mess, I've somehow managed to
+introduce.
 
-the device tree binding for thermal specifies the thermal zone must
-define a cooling-maps (it is a required field).
+First patch in this series is defacto v5 of the previous 05/10 patch in the
+series, but since the v4 of this 05/10 patch wasn't picked up by the
+patchwork for some unknown reason, this patch wasn't applied with the other
+9 patches in the series, so I'm resending it as a separate patch of this
+fixup series again.
 
-All the thermal zones below tzts1, tzts2, etc ... do not have it.
+Second patch is a result of this rebase against net-next tree, where I was
+checking again all current users of of_get_mac_address and found out, that
+there's new one in DSA, so I've converted this user to the new ERR_PTR
+encoded error value as well.
 
+Third patch which was sent as v5 wasn't considered for merge, but I still
+think, that we need to check for possible NULL value, thus current IS_ERR
+check isn't sufficient and we need to use IS_ERR_OR_NULL instead.
 
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 64 ++++++++++++++++++++++++++++++++
->  1 file changed, 64 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index 926df75..b92116f 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -334,6 +334,67 @@
->  			status = "disabled";
->  		};
->  
-> +		thermal: thermal@1100b000 {
-> +			#thermal-sensor-cells = <1>;
-> +			compatible = "mediatek,mt8183-thermal";
-> +			reg = <0 0x1100b000 0 0x1000>;
-> +			interrupts = <0 76 IRQ_TYPE_LEVEL_LOW>;
-> +			clocks = <&infracfg CLK_INFRA_THERM>,
-> +				 <&infracfg CLK_INFRA_AUXADC>;
-> +			clock-names = "therm", "auxadc";
-> +			resets = <&infracfg  MT8183_INFRACFG_AO_THERM_SW_RST>;
-> +			mediatek,auxadc = <&auxadc>;
-> +			mediatek,apmixedsys = <&apmixedsys>;
-> +			mediatek,hw-reset-temp = <117000>;
-> +			nvmem-cells = <&thermal_calibration>;
-> +			nvmem-cell-names = "calibration-data";
-> +		};
-> +
-> +		thermal-zones {
-> +			cpu_thermal: cpu_thermal {
-> +				polling-delay-passive = <1000>;
-> +				polling-delay = <1000>;
-> +
-> +				thermal-sensors = <&thermal 0>;
-> +				sustainable-power = <1500>;
-> +			};
-> +
-> +			tzts1: tzts1 {
-> +				polling-delay-passive = <1000>;
-> +				polling-delay = <1000>;
-> +				thermal-sensors = <&thermal 1>;
-> +			};
-> +
-> +			tzts2: tzts2 {
-> +				polling-delay-passive = <1000>;
-> +				polling-delay = <1000>;
-> +				thermal-sensors = <&thermal 2>;
-> +			};
-> +
-> +			tzts3: tzts3 {
-> +				polling-delay-passive = <1000>;
-> +				polling-delay = <1000>;
-> +				thermal-sensors = <&thermal 3>;
-> +			};
-> +
-> +			tzts4: tzts4 {
-> +				polling-delay-passive = <1000>;
-> +				polling-delay = <1000>;
-> +				thermal-sensors = <&thermal 4>;
-> +			};
-> +
-> +			tzts5: tzts5 {
-> +				polling-delay-passive = <1000>;
-> +				polling-delay = <1000>;
-> +				thermal-sensors = <&thermal 5>;
-> +			};
-> +
-> +			tztsABB: tztsABB {
-> +				polling-delay-passive = <1000>;
-> +				polling-delay = <1000>;
-> +				thermal-sensors = <&thermal 6>;
-> +			};
-> +		};
->  		audiosys: syscon@11220000 {
->  			compatible = "mediatek,mt8183-audiosys", "syscon";
->  			reg = <0 0x11220000 0 0x1000>;
-> @@ -368,6 +429,9 @@
->  			compatible = "mediatek,mt8183-efuse",
->  				     "mediatek,efuse";
->  			reg = <0 0x11f10000 0 0x1000>;
-> +			thermal_calibration: calib@180 {
-> +				reg = <0x180 0xc>;
-> +			};
->  		};
->  
->  		mfgcfg: syscon@13000000 {
-> 
+Cheers,
 
+Petr
+
+Petr Štetiar (3):
+  net: ethernet: support of_get_mac_address new ERR_PTR error
+  net: dsa: support of_get_mac_address new ERR_PTR error
+  staging: octeon-ethernet: Fix of_get_mac_address ERR_PTR check
+
+ drivers/net/ethernet/aeroflex/greth.c                 | 2 +-
+ drivers/net/ethernet/allwinner/sun4i-emac.c           | 2 +-
+ drivers/net/ethernet/altera/altera_tse_main.c         | 2 +-
+ drivers/net/ethernet/arc/emac_main.c                  | 2 +-
+ drivers/net/ethernet/aurora/nb8800.c                  | 2 +-
+ drivers/net/ethernet/broadcom/bcmsysport.c            | 2 +-
+ drivers/net/ethernet/broadcom/bgmac-bcma.c            | 2 +-
+ drivers/net/ethernet/broadcom/bgmac-platform.c        | 2 +-
+ drivers/net/ethernet/broadcom/genet/bcmgenet.c        | 2 +-
+ drivers/net/ethernet/cavium/octeon/octeon_mgmt.c      | 2 +-
+ drivers/net/ethernet/cavium/thunder/thunder_bgx.c     | 2 +-
+ drivers/net/ethernet/davicom/dm9000.c                 | 2 +-
+ drivers/net/ethernet/ethoc.c                          | 2 +-
+ drivers/net/ethernet/ezchip/nps_enet.c                | 2 +-
+ drivers/net/ethernet/freescale/fec_main.c             | 2 +-
+ drivers/net/ethernet/freescale/fec_mpc52xx.c          | 2 +-
+ drivers/net/ethernet/freescale/fman/mac.c             | 2 +-
+ drivers/net/ethernet/freescale/fs_enet/fs_enet-main.c | 2 +-
+ drivers/net/ethernet/freescale/gianfar.c              | 2 +-
+ drivers/net/ethernet/freescale/ucc_geth.c             | 2 +-
+ drivers/net/ethernet/hisilicon/hisi_femac.c           | 2 +-
+ drivers/net/ethernet/hisilicon/hix5hd2_gmac.c         | 2 +-
+ drivers/net/ethernet/lantiq_xrx200.c                  | 2 +-
+ drivers/net/ethernet/marvell/mv643xx_eth.c            | 2 +-
+ drivers/net/ethernet/marvell/mvneta.c                 | 2 +-
+ drivers/net/ethernet/marvell/pxa168_eth.c             | 2 +-
+ drivers/net/ethernet/marvell/sky2.c                   | 2 +-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c           | 2 +-
+ drivers/net/ethernet/micrel/ks8851.c                  | 2 +-
+ drivers/net/ethernet/micrel/ks8851_mll.c              | 2 +-
+ drivers/net/ethernet/nxp/lpc_eth.c                    | 2 +-
+ drivers/net/ethernet/qualcomm/qca_spi.c               | 2 +-
+ drivers/net/ethernet/qualcomm/qca_uart.c              | 2 +-
+ drivers/net/ethernet/renesas/ravb_main.c              | 2 +-
+ drivers/net/ethernet/renesas/sh_eth.c                 | 2 +-
+ drivers/net/ethernet/samsung/sxgbe/sxgbe_platform.c   | 2 +-
+ drivers/net/ethernet/socionext/sni_ave.c              | 2 +-
+ drivers/net/ethernet/stmicro/stmmac/stmmac_main.c     | 2 +-
+ drivers/net/ethernet/ti/cpsw.c                        | 2 +-
+ drivers/net/ethernet/ti/netcp_core.c                  | 2 +-
+ drivers/net/ethernet/wiznet/w5100.c                   | 2 +-
+ drivers/net/ethernet/xilinx/ll_temac_main.c           | 2 +-
+ drivers/net/ethernet/xilinx/xilinx_axienet_main.c     | 2 +-
+ drivers/net/ethernet/xilinx/xilinx_emaclite.c         | 2 +-
+ drivers/staging/octeon/ethernet.c                     | 2 +-
+ net/dsa/slave.c                                       | 2 +-
+ net/ethernet/eth.c                                    | 2 +-
+ 47 files changed, 47 insertions(+), 47 deletions(-)
 
 -- 
- <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+1.9.1
