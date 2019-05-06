@@ -1,43 +1,96 @@
-From: Kalle Valo <kvalo@codeaurora.org>
-Subject: Re: [PATCH v4 07/10] net: wireless: support of_get_mac_address new ERR_PTR error
-Date: Mon, 06 May 2019 10:59:29 +0300
-Message-ID: <878svkvwri.fsf@codeaurora.org>
-References: <1556893635-18549-1-git-send-email-ynezz@true.cz>
-        <1556893635-18549-8-git-send-email-ynezz@true.cz>
+From: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Subject: Re: [RFC PATCH v3 1/1] mtd: rawnand: mtk: Re-license MTK NAND
+ driver as Dual MIT/GPL
+Date: Mon, 6 May 2019 10:09:16 +0200
+Message-ID: <20190506100916.33b7c103@xps13>
+References: <20190429085116.60081-1-xiaolei.li@mediatek.com>
+ <20190429085116.60081-2-xiaolei.li@mediatek.com>
+ <82cc648b1e92d5ed6876b025a2da1821@milecki.pl>
+ <1557047534.26455.81.camel@mhfsdcap03>
+ <79539034414767c95e456a79391a18e7@milecki.pl>
+ <1557104180.26455.89.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1556893635-18549-8-git-send-email-ynezz@true.cz> ("Petr
-        \=\?utf-8\?Q\?\=C5\=A0tetiar\=22's\?\= message of "Fri, 3 May 2019 16:27:12 +0200")
-Sender: linux-kernel-owner@vger.kernel.org
-To: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org, QCA ath9k Development <ath9k-devel@qca.qualcomm.com>, "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Stanislaw Gruszka <sgruszka@redhat.com>, Helmut Schaa <helmut.schaa@googlemail.com>, Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, Frank Rowand <frowand.list@gmail.com>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Maxime Ripard <maxime.ripard@bootlin.com>, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1557104180.26455.89.camel@mhfsdcap03>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yellowriver2010-PkbjNfxxIARBDgjK7y7TUQ@public.gmane.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal-g1n6cQUeyibVItvQsEIGlw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Petr =C5=A0tetiar <ynezz@true.cz> writes:
-
-> There was NVMEM support added to of_get_mac_address, so it could now retu=
-rn
-> ERR_PTR encoded error values, so we need to adjust all current users of
-> of_get_mac_address to this new fact.
->
-> Signed-off-by: Petr =C5=A0tetiar <ynezz@true.cz>
-> ---
->
->  Changes since v3:
->
->   * IS_ERR_OR_NULL -> IS_ERR
->
->  drivers/net/wireless/ath/ath9k/init.c          | 2 +-
->  drivers/net/wireless/mediatek/mt76/eeprom.c    | 2 +-
->  drivers/net/wireless/ralink/rt2x00/rt2x00dev.c | 2 +-
->  3 files changed, 3 insertions(+), 3 deletions(-)
-
-Via which tree is this supposed to go? In case something else than my
-wireless-drivers-next:
-
-Acked-by: Kalle Valo <kvalo@codeaurora.org>
-
---=20
-Kalle Valo
+SGkgeGlhb2xlaSwKCnhpYW9sZWkgbGkgPHhpYW9sZWkubGlAbWVkaWF0ZWsuY29tPiB3cm90ZSBv
+biBNb24sIDYgTWF5IDIwMTkgMDg6NTY6MjAKKzA4MDA6Cgo+IEhpIFJhZmFsLAo+IAo+IE9uIFN1
+biwgMjAxOS0wNS0wNSBhdCAxNzowNiArMDIwMCwgUmFmYcWCIE1pxYJlY2tpIHdyb3RlOgo+ID4g
+T24gMjAxOS0wNS0wNSAxMToxMiwgeGlhb2xlaSBsaSB3cm90ZTogIAo+ID4gPiBVcCB0byBub3cs
+Cj4gPiA+IFhpYW9sZWkgTGkgPHhpYW9sZWkubGlAbWVkaWF0ZWsuY29tPiAodGhlIGF1dGhvciBh
+bmQgbWFqb3IgCj4gPiA+IGNvbnRyaWJ1dG9yKSwKPiA+ID4gSm9yZ2UgUmFtaXJlei1PcnRpeiA8
+am9yZ2UucmFtaXJlei1vcnRpekBsaW5hcm8ub3JnPiAodGhlIGF1dGhvciBhbmQKPiA+ID4gbWFq
+b3IgY29udHJpYnV0b3IpLAo+ID4gPiBSeWRlciBMZWUgPHJ5ZGVyLmxlZUBtZWRpYXRlay5jb20+
+IChkZXZlbG9wZXIpLAo+ID4gPiBSYWZhxYIgTWnFgmVja2kgPHJhZmFsQG1pbGVja2kucGw+IChk
+ZXZlbG9wZXIpCj4gPiA+IHNlbnQgQUNLIGZvciB0aGlzIFJGQyBwYXRjaC4KPiA+ID4gCj4gPiA+
+IE1heSBJIGFzayBpZiBpdCBpcyBlbm91Z2ggdG8gYWNjZXB0IHRoaXMgY2hhbmdlPyBPciBzaG91
+bGQgSSB3YWl0IGZvcgo+ID4gPiBvdGhlciBkZXZlbG9wZXIncyByZXNwb25zZT8gIAo+ID4gCj4g
+PiBJIGNhbid0IGltYWdpbmUgcmUtbGljZW5zaW5nIHNvbWVvbmUncyB3b3JrIHdpdGhvdXQgYSBw
+ZXJtaXNzaW9uLiAgCj4gCj4gSSBoYXZlIG5vIGludGVudGlvbiB0byBvZmZlbmQgb3RoZXIncyBj
+b250cmlidXRpb24uCj4gVGhhdCBpcyB3aHkgSSBzZW50IHRoaXMgUkZDIHBhdGNoIHRvIGFzayBm
+b3IgQUNLcyBmcm9tIGNvbnRyaWJ1dG9ycy4KPiAKPiA+IAo+ID4gVGhlIGJlc3QgeW91IGNhbiBk
+byBpcyBpZ25vcmluZyBjb250cmlidXRvcnMgdGhhdCBzdWJtaXR0ZWQgY2hhbmdlcyB0aGF0Cj4g
+PiBhcmVuJ3QgcmVhbGx5IGNvcHlyaWdodGFibGUgKHNvbWV0aGluZyBsaWtlIGZpeGluZyBhIGNv
+bW1lbnQgdHlwbywgc29tZQo+ID4gYXV0by1nZW5lcmF0ZWQgZGlmZi1zKS4KPiA+IAo+ID4gSSB1
+c2VkIGZvbGxvd2luZyBjb21tYW5kIHRvIGNoZWNrIG10a19uYW5kLmMgZmlsZSBoaXN0b3J5Ogo+
+ID4gIyBnaXQgbG9nIC0tZm9sbG93IGRyaXZlcnMvbXRkL25hbmQvcmF3L210a19uYW5kLmMgfCBn
+cmVwIAo+ID4gIlNpZ25lZC1vZmYtYnkiIHwgc29ydCB8IHVuaXEgLWMgfCBzb3J0IC1yIC1uCj4g
+PiAgICAgICAxOSAgICAgU2lnbmVkLW9mZi1ieTogTWlxdWVsIFJheW5hbCA8bWlxdWVsLnJheW5h
+bEBib290bGluLmNvbT4KPiA+ICAgICAgIDE4ICAgICBTaWduZWQtb2ZmLWJ5OiBCb3JpcyBCcmV6
+aWxsb24gPGJvcmlzLmJyZXppbGxvbkBib290bGluLmNvbT4KPiA+ICAgICAgIDE1ICAgICBTaWdu
+ZWQtb2ZmLWJ5OiBCb3JpcyBCcmV6aWxsb24gCj4gPiA8Ym9yaXMuYnJlemlsbG9uQGZyZWUtZWxl
+Y3Ryb25zLmNvbT4KPiA+ICAgICAgICA2ICAgICBTaWduZWQtb2ZmLWJ5OiBYaWFvbGVpIExpIDx4
+aWFvbGVpLmxpQG1lZGlhdGVrLmNvbT4KPiA+ICAgICAgICAzICAgICBTaWduZWQtb2ZmLWJ5OiBS
+b2dlckNDIExpbiA8cm9nZXJjYy5saW5AbWVkaWF0ZWsuY29tPgo+ID4gICAgICAgIDIgICAgIFNp
+Z25lZC1vZmYtYnk6IE1pcXVlbCBSYXluYWwgCj4gPiA8bWlxdWVsLnJheW5hbEBmcmVlLWVsZWN0
+cm9ucy5jb20+Cj4gPiAgICAgICAgMSAgICAgU2lnbmVkLW9mZi1ieTogV2VpIFlvbmdqdW4gPHdl
+aXlvbmdqdW4xQGh1YXdlaS5jb20+Cj4gPiAgICAgICAgMSAgICAgU2lnbmVkLW9mZi1ieTogUnlk
+ZXIgTGVlIDxyeWRlci5sZWVAbWVkaWF0ZWsuY29tPgo+ID4gICAgICAgIDEgICAgIFNpZ25lZC1v
+ZmYtYnk6IFJhZmHFgiBNacWCZWNraSA8cmFmYWxAbWlsZWNraS5wbD4KPiA+ICAgICAgICAxICAg
+ICBTaWduZWQtb2ZmLWJ5OiBQZXRlciBQYW4gPHBldGVycGFuZG9uZ0BtaWNyb24uY29tPgo+ID4g
+ICAgICAgIDEgICAgIFNpZ25lZC1vZmYtYnk6IE1hc2FoaXJvIFlhbWFkYSAKPiA+IDx5YW1hZGEu
+bWFzYWhpcm9Ac29jaW9uZXh0LmNvbT4KPiA+ICAgICAgICAxICAgICBTaWduZWQtb2ZmLWJ5OiBK
+b3JnZSBSYW1pcmV6LU9ydGl6IAo+ID4gPGpvcmdlLnJhbWlyZXotb3J0aXpAbGluYXJvLm9yZz4K
+PiA+IAo+ID4gSWRlYWxseSB5b3Ugc2hvdWxkIHN0aWxsIGdldCBhY2tzIGZyb206Cj4gPiAKPiA+
+IDEpIE1pcXVlbAo+ID4gQ29udHJpYnV0b3Igb2YgMjEgY2hhbmdlcwo+ID4gCj4gPiAyKSBCb3Jp
+cwo+ID4gQ29udHJpYnV0b3Igb2YgMzMgY2hhbmdlcwo+ID4gCj4gPiAzKSBSb2dlckNDCj4gPiBD
+b250cmlidXRvciBvZiAzIGNoYW5nZXM6Cj4gPiA5OGRlYThkNzE5MzEgKCJtdGQ6IG5hbmQ6IG10
+azogU3VwcG9ydCBNVDc2MjIgTkFORCBmbGFzaCBjb250cm9sbGVyLiIpCj4gPiBiNDVlZTU1MDFl
+ZGUgKCJtdGQ6IG5hbmQ6IG10azogU3VwcG9ydCBkaWZmZXJlbnQgTVRLIE5BTkQgZmxhc2ggCj4g
+PiBjb250cm9sbGVyIElQIikKPiA+IDU1OWU1OGU3ZWQyZCAoIm10ZDogbmFuZDogZml4IGNoYW5j
+ZXMgdG8gY3JlYXRlIGluY29tcGxldGUgRUNDIGRhdGEgd2hlbiAKPiA+IHdyaXRpbmciKQo+ID4g
+Cj4gPiA0KSBXZWkKPiA+IENvbnRyaWJ1dG9yIG9mIDEgY2hhbmdlOgo+ID4gMDdmNzY0NDNlZjgx
+ICgibXRkOiBuYW5kOiBtZWRpYXRlazogcmVtb3ZlIHJlZHVuZGFudCBkZXZfZXJyIGNhbGwgaW4g
+Cj4gPiBtdGtfbmZjX3Byb2JlKCkiKQo+ID4gCj4gPiA1KSBQZXRlcgo+ID4gQ29udHJpYnV0b3Ig
+b2YgMSBjaGFuZ2U6Cj4gPiBkNDA5MmQ3NmE0YTQgKCJtdGQ6IG5hbmQ6IFJlbmFtZSBuYW5kLmgg
+aW50byByYXduYW5kLmgiKQo+ID4gCj4gPiA2KSBNYXNhaGlybwo+ID4gQ29udHJpYnV0b3Igb2Yg
+MSBjaGFuZ2U6Cj4gPiBmMGRiZTRhYTM1ZTcgKCJtdGQ6IG5hbmQ6IG1lZGlhdGVrOiByZXR1cm4g
+ZXJyb3IgY29kZSBvZiAKPiA+IG5hbmRfc2Nhbl9pZGVudC90YWlsKCkgb24gZXJyb3IiKQo+ID4g
+Cj4gPiBJIGd1ZXNzIHdlIGNvdWxkIGFjY2VwdCB5b3VyIHBhdGNoIHdpdGhvdXQgYWNrcyBmcm9t
+IFdlaSwgUGV0ZXIgYW5kIAo+ID4gTWFzYWhpcm8uCj4gPiAKPiA+IFlvdSBkZWZpbml0ZWx5IG5l
+ZWQgYW4gYXBwcm92YWwgZnJvbSBNaXF1ZWwsIEJvcmlzIGFuZCBSb2dlckNDLgoKQWNrZWQtYnk6
+IE1pcXVlbCBSYXluYWwgPG1pcXVlbC5yYXluYWxAYm9vdGxpbi5jb20+CgpMZXQncyB3YWl0IGZv
+ciBSb2dlckNDIGFuZCBCb3JpcyBhY2tzLiBUaGFua3MgUmFmYcWCIGZvciB0aGUgZGV0YWlscy4K
+Cj4gPiAKPiA+IEl0IGRvZXNuJ3Qgc2VlbSB5b3UgdG9vayB0aGlzIHJlLWxpY2Vuc2luZyB0YXNr
+IHRvbyBzZXJpb3VzbHkuCj4gPiAKPiA+IFBsZWFzZSBwYXkgbW9yZSBhdHRlbnRpb24gdG8gdGhp
+cyBsaWNlbnNpbmcgcHJvYmxlbSwgeW91IGNhbiBzdGFydCB3aXRoIAo+ID4gZG9pbmcKPiA+IGEg
+c2ltaWxhciByZXNlYXJjaCBmb3IgbXRrX2VjYy5jIGFuZCBtdGtfZWNjLmguICAKPiAKPiBUaGFu
+a3MgZm9yIHlvdXIgQUNLIGFuZCBnb29kIHN1Z2dlc3Rpb24uIEl0IGlzIHJlYWxseSBoZWxwZnVs
+IGZvciBtZS4KPiAKPiBUaGFua3MsCj4gWGlhb2xlaQo+IAoKClRoYW5rcywKTWlxdcOobAoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0
+ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
+L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
