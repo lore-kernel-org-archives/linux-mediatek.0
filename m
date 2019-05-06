@@ -1,51 +1,50 @@
-From: Eddie Huang <eddie.huang@mediatek.com>
-Subject: Re: [PATCH 3/8] arm64: dts: mt8183: Add #cooling-cells to CPU nodes
-Date: Mon, 6 May 2019 13:25:32 +0800
-Message-ID: <1557120332.13225.2.camel@mtksdaap41>
-References: <1556793795-25204-1-git-send-email-michael.kao@mediatek.com>
- <1556793795-25204-4-git-send-email-michael.kao@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1556793795-25204-4-git-send-email-michael.kao@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: "michael.kao" <michael.kao@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, JamesJJ Liao =?UTF-8?Q?=28=E5=BB=96=E5=BB=BA=E6=99=BA=29?= <jamesjj.liao@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Louis Yu =?UTF-8?Q?=28=E6=B8=B8=E6=94=BF=E9=8C=95=29?= <louis.yu@mediatek.com>, Dawei Chien =?UTF-8?Q?=28=E9=8C=A2=E5=A4=A7=E8=A1=9B=29?= <Dawei.Chien@mediatek.com>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, Roger Lu =?UTF-8?Q?=28=E9=99=B8=E7=91=9E=E5=82=91=29?= <Roger.Lu@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Eduardo Valentin <edubezval@gmail.com>, Fan Chen =?UTF-8?Q?=28=E9=99=B3=E5=87=A1=29?= <fan.chen@mediatek.com>, Rob Herring <robh+dt@kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Zhang Rui <rui.zhang@intel>
+From: Wen Yang <wen.yang99@zte.com.cn>
+Subject: [PATCH 3/4] media: mtk-vcodec: fix leaked of_node references
+Date: Mon, 6 May 2019 15:05:17 +0800
+Message-ID: <1557126318-21487-4-git-send-email-wen.yang99@zte.com.cn>
+References: <1557126318-21487-1-git-send-email-wen.yang99@zte.com.cn>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1557126318-21487-1-git-send-email-wen.yang99@zte.com.cn>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: wang.yi59@zte.com.cn, Wen Yang <wen.yang99@zte.com.cn>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Michael,
+The call to of_find_device_by_node returns a node pointer with refcount
+incremented thus it must be explicitly decremented after the last
+usage.
 
-On Thu, 2019-05-02 at 18:43 +0800, michael.kao wrote:
-> The #cooling-cells property needs to be specified to allow a CPU
-> to be used as cooling device.
-> 
-> Signed-off-by: michael.kao <Michael.Kao@mediatek.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index 5668fb8..95f1d7b 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -11,6 +11,8 @@
->  #include <dt-bindings/power/mt8183-power.h>
->  #include <dt-bindings/reset-controller/mt8183-resets.h>
->  #include "mt8183-pinfunc.h"
-> +#include <dt-bindings/thermal/thermal.h>
-> +
->  / {
->  	compatible = "mediatek,mt8183";
->  	interrupt-parent = <&sysirq>;
+Detected by coccinelle with the following warnings:
+drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c:60:3-9: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 38, but without a corresponding object release within this function.
+drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c:63:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 38, but without a corresponding object release within this function.
+drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c:72:3-9: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 38, but without a corresponding object release within this function.
 
-It seems this patch don't have #cooling-cells but in your 2/8 patch in
-this series
+Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
+Cc: Tiffany Lin <tiffany.lin@mediatek.com>
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-media@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+---
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+index 7884465..11c45c5 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+@@ -42,8 +42,8 @@ int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
+ 	}
+ 
+ 	pdev = of_find_device_by_node(node);
++	of_node_put(node);
+ 	if (WARN_ON(!pdev)) {
+-		of_node_put(node);
+ 		return -1;
+ 	}
+ 	pm->larbvdec = &pdev->dev;
+-- 
+2.9.5
