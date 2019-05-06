@@ -1,38 +1,100 @@
-From: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [PATCH net-next 1/3] net: ethernet: support of_get_mac_address
- new ERR_PTR error
-Date: Mon, 6 May 2019 18:07:13 +0300
-Message-ID: <20190506150713.GH2269@kadam>
-References: <1557136717-531-1-git-send-email-ynezz@true.cz>
- <1557136717-531-2-git-send-email-ynezz@true.cz>
+From: Tom Murphy <tmurphy@arista.com>
+Subject: Re: [RFC 1/7] iommu/vt-d: Set the dma_ops per device so we can remove
+ the iommu_no_mapping code
+Date: Mon, 6 May 2019 16:27:09 +0100
+Message-ID: <CAPL0++4_Qa+dxzQ2k6BJi_o+VSSrHEtomYgVmRqjtjsOfHbGew@mail.gmail.com>
+References: <20190504132327.27041-1-tmurphy@arista.com> <20190504132327.27041-2-tmurphy@arista.com>
+ <8fef18f5-773c-e1c9-2537-c9dff5bfd35e@linux.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
-Content-Disposition: inline
-In-Reply-To: <1557136717-531-2-git-send-email-ynezz@true.cz>
-List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
-List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
-List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
-List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
-List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Errors-To: driverdev-devel-bounces@linuxdriverproject.org
-Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
-To: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
-Cc: Andrew Lunn <andrew@lunn.ch>, Thor Thayer <thor.thayer@linux.intel.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Andreas Larsson <andreas@gaisler.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Pantelis Antoniou <pantelis.antoniou@gmail.com>, Byungho An <bh74.an@samsung.com>, Frank Rowand <frowand.list@gmail.com>, John Linn <John.Linn@xilinx.com>, Alexandre Torgue <alexandre.torgue@st.com>, Vipul Pandya <vipul.pandya@samsung.com>, linux-renesas-soc@vger.kernel.org, Felix Fietkau <nbd@openwrt.org>, Florian Fainelli <f.fainelli@gmail.com>, Madalin Bucur <madalin.bucur@nxp.com>, Michal Simek <michal.simek@xilinx.com>, linux-stm32@st-md-mailman.stormreply.com, Chen-Yu Tsai <wens@csie.org>, Jose Abreu <joabreu@synopsys.com>, bcm-kernel-feedback-list@broadcom.com, Sylvain Lemieux <slemieux.tyco@gmail.com>, Sunil
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <8fef18f5-773c-e1c9-2537-c9dff5bfd35e@linux.intel.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Lu Baolu <baolu.lu@linux.intel.com>
+Cc: iommu@lists.linux-foundation.org, Tom Murphy <murphyt7@tcd.ie>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Alex Williamson <alex.williamson@redhat.com>, Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <marc.zyngier@arm.co>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gTW9uLCBNYXkgMDYsIDIwMTkgYXQgMTE6NTg6MzVBTSArMDIwMCwgUGV0ciDFoHRldGlhciB3
-cm90ZToKPiBUaGVyZSB3YXMgTlZNRU0gc3VwcG9ydCBhZGRlZCB0byBvZl9nZXRfbWFjX2FkZHJl
-c3MsIHNvIGl0IGNvdWxkIG5vdyByZXR1cm4KPiBFUlJfUFRSIGVuY29kZWQgZXJyb3IgdmFsdWVz
-LCBzbyB3ZSBuZWVkIHRvIGFkanVzdCBhbGwgY3VycmVudCB1c2VycyBvZgo+IG9mX2dldF9tYWNf
-YWRkcmVzcyB0byB0aGlzIG5ldyBmYWN0LgoKV2UgbmVlZCBhIEZpeGVzIHRhZyBzbyB3ZSBjYW4g
-bG9vayBhdCB0aGUgY29tbWl0IHdoaWNoIGFkZHMgTlZNRU0Kc3VwcG9ydC4KCkl0J3Mgbm90IGNs
-ZWFyIHRvIG1lIHRoYXQgYW55b25lIGV2ZXIgYXBwbGllZCB0aGF0IHBhdGNoLiAgSWYgbm90IHRo
-ZW4Kd2hvIGhvbyEgIExldCdzIG5vdCBhcHBseSBpdC4gIEJ1dCBpZiBpdCBoYXMgYmVlbiBjb21t
-aXR0ZWQgdGhlbiBpdCBoYXMKYSBnaXQgaGFzaC4KCnJlZ2FyZHMsCmRhbiBjYXJwZW50ZXIKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGlu
-ZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51
-eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+On Mon, May 6, 2019 at 2:48 AM Lu Baolu <baolu.lu@linux.intel.com> wrote:
+>
+> Hi,
+>
+> On 5/4/19 9:23 PM, Tom Murphy wrote:
+> > Set the dma_ops per device so we can remove the iommu_no_mapping code.
+> >
+> > Signed-off-by: Tom Murphy<tmurphy@arista.com>
+> > ---
+> >   drivers/iommu/intel-iommu.c | 85 +++----------------------------------
+> >   1 file changed, 6 insertions(+), 79 deletions(-)
+> >
+> > diff --git a/drivers/iommu/intel-iommu.c b/drivers/iommu/intel-iommu.c
+> > index eace915602f0..2db1dc47e7e4 100644
+> > --- a/drivers/iommu/intel-iommu.c
+> > +++ b/drivers/iommu/intel-iommu.c
+> > @@ -2622,17 +2622,6 @@ static int __init si_domain_init(int hw)
+> >       return 0;
+> >   }
+> >
+> > -static int identity_mapping(struct device *dev)
+> > -{
+> > -     struct device_domain_info *info;
+> > -
+> > -     info = dev->archdata.iommu;
+> > -     if (info && info != DUMMY_DEVICE_DOMAIN_INFO)
+> > -             return (info->domain == si_domain);
+> > -
+> > -     return 0;
+> > -}
+> > -
+> >   static int domain_add_dev_info(struct dmar_domain *domain, struct device *dev)
+> >   {
+> >       struct dmar_domain *ndomain;
+> > @@ -3270,43 +3259,6 @@ static unsigned long intel_alloc_iova(struct device *dev,
+> >       return iova_pfn;
+> >   }
+> >
+> > -/* Check if the dev needs to go through non-identity map and unmap process.*/
+> > -static int iommu_no_mapping(struct device *dev)
+> > -{
+> > -     int found;
+> > -
+> > -     if (iommu_dummy(dev))
+> > -             return 1;
+> > -
+> > -     found = identity_mapping(dev);
+> > -     if (found) {
+> > -             /*
+> > -              * If the device's dma_mask is less than the system's memory
+> > -              * size then this is not a candidate for identity mapping.
+> > -              */
+> > -             u64 dma_mask = *dev->dma_mask;
+> > -
+> > -             if (dev->coherent_dma_mask &&
+> > -                 dev->coherent_dma_mask < dma_mask)
+> > -                     dma_mask = dev->coherent_dma_mask;
+> > -
+> > -             if (dma_mask < dma_get_required_mask(dev)) {
+> > -                     /*
+> > -                      * 32 bit DMA is removed from si_domain and fall back
+> > -                      * to non-identity mapping.
+> > -                      */
+> > -                     dmar_remove_one_dev_info(dev);
+> > -                     dev_warn(dev, "32bit DMA uses non-identity mapping\n");
+> > -
+> > -                     return 0;
+> > -             }
+>
+> The iommu_no_mapping() also checks whether any 32bit DMA device uses
+> identity mapping. The device might not work if the system memory space
+> is bigger than 4G.
+
+It looks like their is actually a bug in the v3 of the "iommu/vt-d:
+Delegate DMA domain to generic iommu" patch set. I will leave a
+message in that email thread. Fixing that bug should also fix this
+issue.
+
+
+>
+> Will you add this to other place, or it's unnecessary?
+>
+> Best regards,
+> Lu Baolu
