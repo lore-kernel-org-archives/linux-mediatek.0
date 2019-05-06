@@ -1,93 +1,25 @@
-From: Lu Baolu <baolu.lu@linux.intel.com>
-Subject: Re: [RFC 1/7] iommu/vt-d: Set the dma_ops per device so we can remove
- the iommu_no_mapping code
-Date: Mon, 6 May 2019 09:42:15 +0800
-Message-ID: <8fef18f5-773c-e1c9-2537-c9dff5bfd35e@linux.intel.com>
-References: <20190504132327.27041-1-tmurphy@arista.com>
- <20190504132327.27041-2-tmurphy@arista.com>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH v4 00/10] of_net: Add NVMEM support to
+ of_get_mac_address
+Date: Sun, 05 May 2019 21:47:27 -0700 (PDT)
+Message-ID: <20190505.214727.1839442238121977055.davem@davemloft.net>
+References: <1556893635-18549-1-git-send-email-ynezz@true.cz>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190504132327.27041-2-tmurphy@arista.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tom Murphy <tmurphy@arista.com>, iommu@lists.linux-foundation.org
-Cc: baolu.lu@linux.intel.com, murphyt7@tcd.ie, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Alex Williamson <alex.williamson@redhat.com>, Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <marc.zyngier@arm.com>, linux-ker
+Content-Type: Text/Plain; charset=iso-8859-15
+Content-Transfer-Encoding: 8BIT
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1556893635-18549-1-git-send-email-ynezz@true.cz>
+Sender: netdev-owner@vger.kernel.org
+To: ynezz@true.cz
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org, matthias.bgg@gmail.com, andrew@lunn.ch, f.fainelli@gmail.com, hkallweit1@gmail.com, frowand.list@gmail.com, srinivas.kandagatla@linaro.org, maxime.ripard@bootlin.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+From: Petr ¦tetiar <ynezz@true.cz>
+Date: Fri,  3 May 2019 16:27:05 +0200
 
-On 5/4/19 9:23 PM, Tom Murphy wrote:
-> Set the dma_ops per device so we can remove the iommu_no_mapping code.
-> 
-> Signed-off-by: Tom Murphy<tmurphy@arista.com>
-> ---
->   drivers/iommu/intel-iommu.c | 85 +++----------------------------------
->   1 file changed, 6 insertions(+), 79 deletions(-)
-> 
-> diff --git a/drivers/iommu/intel-iommu.c b/drivers/iommu/intel-iommu.c
-> index eace915602f0..2db1dc47e7e4 100644
-> --- a/drivers/iommu/intel-iommu.c
-> +++ b/drivers/iommu/intel-iommu.c
-> @@ -2622,17 +2622,6 @@ static int __init si_domain_init(int hw)
->   	return 0;
->   }
->   
-> -static int identity_mapping(struct device *dev)
-> -{
-> -	struct device_domain_info *info;
-> -
-> -	info = dev->archdata.iommu;
-> -	if (info && info != DUMMY_DEVICE_DOMAIN_INFO)
-> -		return (info->domain == si_domain);
-> -
-> -	return 0;
-> -}
-> -
->   static int domain_add_dev_info(struct dmar_domain *domain, struct device *dev)
->   {
->   	struct dmar_domain *ndomain;
-> @@ -3270,43 +3259,6 @@ static unsigned long intel_alloc_iova(struct device *dev,
->   	return iova_pfn;
->   }
->   
-> -/* Check if the dev needs to go through non-identity map and unmap process.*/
-> -static int iommu_no_mapping(struct device *dev)
-> -{
-> -	int found;
-> -
-> -	if (iommu_dummy(dev))
-> -		return 1;
-> -
-> -	found = identity_mapping(dev);
-> -	if (found) {
-> -		/*
-> -		 * If the device's dma_mask is less than the system's memory
-> -		 * size then this is not a candidate for identity mapping.
-> -		 */
-> -		u64 dma_mask = *dev->dma_mask;
-> -
-> -		if (dev->coherent_dma_mask &&
-> -		    dev->coherent_dma_mask < dma_mask)
-> -			dma_mask = dev->coherent_dma_mask;
-> -
-> -		if (dma_mask < dma_get_required_mask(dev)) {
-> -			/*
-> -			 * 32 bit DMA is removed from si_domain and fall back
-> -			 * to non-identity mapping.
-> -			 */
-> -			dmar_remove_one_dev_info(dev);
-> -			dev_warn(dev, "32bit DMA uses non-identity mapping\n");
-> -
-> -			return 0;
-> -		}
+> this patch series is a continuation of my previous attempt[1], where I've
+> tried to wire MTD layer into of_get_mac_address, so it would be possible to
+> load MAC addresses from various NVMEMs as EEPROMs etc.
+ ...
 
-The iommu_no_mapping() also checks whether any 32bit DMA device uses
-identity mapping. The device might not work if the system memory space
-is bigger than 4G.
-
-Will you add this to other place, or it's unnecessary?
-
-Best regards,
-Lu Baolu
+Series applied, thank you.
