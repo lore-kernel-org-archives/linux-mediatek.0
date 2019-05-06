@@ -1,88 +1,75 @@
-From: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [RFC PATCH v3 1/1] mtd: rawnand: mtk: Re-license MTK NAND
- driver as Dual MIT/GPL
-Date: Mon, 6 May 2019 08:56:20 +0800
-Message-ID: <1557104180.26455.89.camel@mhfsdcap03>
-References: <20190429085116.60081-1-xiaolei.li@mediatek.com>
- <20190429085116.60081-2-xiaolei.li@mediatek.com>
- <82cc648b1e92d5ed6876b025a2da1821@milecki.pl>
- <1557047534.26455.81.camel@mhfsdcap03>
- <79539034414767c95e456a79391a18e7@milecki.pl>
+From: Lu Baolu <baolu.lu@linux.intel.com>
+Subject: Re: [RFC 6/7] iommu/vt-d: convert the intel iommu driver to the
+ dma-iommu ops api
+Date: Mon, 6 May 2019 09:34:59 +0800
+Message-ID: <2419e94d-bfdb-e70d-bbfd-425671886e99@linux.intel.com>
+References: <20190504132327.27041-1-tmurphy@arista.com>
+ <20190504132327.27041-7-tmurphy@arista.com>
+ <602b77a2-9c68-ad14-b64f-904a7ff27a15@linux.intel.com>
+ <CAPL0++57nyLYP1fq=-6zvNS0z_iCqjWLbQ1MsG5F60ODkmRCQQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <79539034414767c95e456a79391a18e7-g1n6cQUeyibVItvQsEIGlw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <rafal-g1n6cQUeyibVItvQsEIGlw@public.gmane.org>
-Cc: daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org, miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yellowriver2010-PkbjNfxxIARBDgjK7y7TUQ@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAPL0++57nyLYP1fq=-6zvNS0z_iCqjWLbQ1MsG5F60ODkmRCQQ@mail.gmail.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Tom Murphy <tmurphy@arista.com>
+Cc: baolu.lu@linux.intel.com, iommu@lists.linux-foundation.org, Tom Murphy <murphyt7@tcd.ie>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Alex Williamson <alex.williamson@redhat.com>, Thomas Gleixner <tglx@linutronix.de>, Marc
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgUmFmYWwsCgpPbiBTdW4sIDIwMTktMDUtMDUgYXQgMTc6MDYgKzAyMDAsIFJhZmHFgiBNacWC
-ZWNraSB3cm90ZToKPiBPbiAyMDE5LTA1LTA1IDExOjEyLCB4aWFvbGVpIGxpIHdyb3RlOgo+ID4g
-VXAgdG8gbm93LAo+ID4gWGlhb2xlaSBMaSA8eGlhb2xlaS5saUBtZWRpYXRlay5jb20+ICh0aGUg
-YXV0aG9yIGFuZCBtYWpvciAKPiA+IGNvbnRyaWJ1dG9yKSwKPiA+IEpvcmdlIFJhbWlyZXotT3J0
-aXogPGpvcmdlLnJhbWlyZXotb3J0aXpAbGluYXJvLm9yZz4gKHRoZSBhdXRob3IgYW5kCj4gPiBt
-YWpvciBjb250cmlidXRvciksCj4gPiBSeWRlciBMZWUgPHJ5ZGVyLmxlZUBtZWRpYXRlay5jb20+
-IChkZXZlbG9wZXIpLAo+ID4gUmFmYcWCIE1pxYJlY2tpIDxyYWZhbEBtaWxlY2tpLnBsPiAoZGV2
-ZWxvcGVyKQo+ID4gc2VudCBBQ0sgZm9yIHRoaXMgUkZDIHBhdGNoLgo+ID4gCj4gPiBNYXkgSSBh
-c2sgaWYgaXQgaXMgZW5vdWdoIHRvIGFjY2VwdCB0aGlzIGNoYW5nZT8gT3Igc2hvdWxkIEkgd2Fp
-dCBmb3IKPiA+IG90aGVyIGRldmVsb3BlcidzIHJlc3BvbnNlPwo+IAo+IEkgY2FuJ3QgaW1hZ2lu
-ZSByZS1saWNlbnNpbmcgc29tZW9uZSdzIHdvcmsgd2l0aG91dCBhIHBlcm1pc3Npb24uCgpJIGhh
-dmUgbm8gaW50ZW50aW9uIHRvIG9mZmVuZCBvdGhlcidzIGNvbnRyaWJ1dGlvbi4KVGhhdCBpcyB3
-aHkgSSBzZW50IHRoaXMgUkZDIHBhdGNoIHRvIGFzayBmb3IgQUNLcyBmcm9tIGNvbnRyaWJ1dG9y
-cy4KCj4gCj4gVGhlIGJlc3QgeW91IGNhbiBkbyBpcyBpZ25vcmluZyBjb250cmlidXRvcnMgdGhh
-dCBzdWJtaXR0ZWQgY2hhbmdlcyB0aGF0Cj4gYXJlbid0IHJlYWxseSBjb3B5cmlnaHRhYmxlIChz
-b21ldGhpbmcgbGlrZSBmaXhpbmcgYSBjb21tZW50IHR5cG8sIHNvbWUKPiBhdXRvLWdlbmVyYXRl
-ZCBkaWZmLXMpLgo+IAo+IEkgdXNlZCBmb2xsb3dpbmcgY29tbWFuZCB0byBjaGVjayBtdGtfbmFu
-ZC5jIGZpbGUgaGlzdG9yeToKPiAjIGdpdCBsb2cgLS1mb2xsb3cgZHJpdmVycy9tdGQvbmFuZC9y
-YXcvbXRrX25hbmQuYyB8IGdyZXAgCj4gIlNpZ25lZC1vZmYtYnkiIHwgc29ydCB8IHVuaXEgLWMg
-fCBzb3J0IC1yIC1uCj4gICAgICAgMTkgICAgIFNpZ25lZC1vZmYtYnk6IE1pcXVlbCBSYXluYWwg
-PG1pcXVlbC5yYXluYWxAYm9vdGxpbi5jb20+Cj4gICAgICAgMTggICAgIFNpZ25lZC1vZmYtYnk6
-IEJvcmlzIEJyZXppbGxvbiA8Ym9yaXMuYnJlemlsbG9uQGJvb3RsaW4uY29tPgo+ICAgICAgIDE1
-ICAgICBTaWduZWQtb2ZmLWJ5OiBCb3JpcyBCcmV6aWxsb24gCj4gPGJvcmlzLmJyZXppbGxvbkBm
-cmVlLWVsZWN0cm9ucy5jb20+Cj4gICAgICAgIDYgICAgIFNpZ25lZC1vZmYtYnk6IFhpYW9sZWkg
-TGkgPHhpYW9sZWkubGlAbWVkaWF0ZWsuY29tPgo+ICAgICAgICAzICAgICBTaWduZWQtb2ZmLWJ5
-OiBSb2dlckNDIExpbiA8cm9nZXJjYy5saW5AbWVkaWF0ZWsuY29tPgo+ICAgICAgICAyICAgICBT
-aWduZWQtb2ZmLWJ5OiBNaXF1ZWwgUmF5bmFsIAo+IDxtaXF1ZWwucmF5bmFsQGZyZWUtZWxlY3Ry
-b25zLmNvbT4KPiAgICAgICAgMSAgICAgU2lnbmVkLW9mZi1ieTogV2VpIFlvbmdqdW4gPHdlaXlv
-bmdqdW4xQGh1YXdlaS5jb20+Cj4gICAgICAgIDEgICAgIFNpZ25lZC1vZmYtYnk6IFJ5ZGVyIExl
-ZSA8cnlkZXIubGVlQG1lZGlhdGVrLmNvbT4KPiAgICAgICAgMSAgICAgU2lnbmVkLW9mZi1ieTog
-UmFmYcWCIE1pxYJlY2tpIDxyYWZhbEBtaWxlY2tpLnBsPgo+ICAgICAgICAxICAgICBTaWduZWQt
-b2ZmLWJ5OiBQZXRlciBQYW4gPHBldGVycGFuZG9uZ0BtaWNyb24uY29tPgo+ICAgICAgICAxICAg
-ICBTaWduZWQtb2ZmLWJ5OiBNYXNhaGlybyBZYW1hZGEgCj4gPHlhbWFkYS5tYXNhaGlyb0Bzb2Np
-b25leHQuY29tPgo+ICAgICAgICAxICAgICBTaWduZWQtb2ZmLWJ5OiBKb3JnZSBSYW1pcmV6LU9y
-dGl6IAo+IDxqb3JnZS5yYW1pcmV6LW9ydGl6QGxpbmFyby5vcmc+Cj4gCj4gSWRlYWxseSB5b3Ug
-c2hvdWxkIHN0aWxsIGdldCBhY2tzIGZyb206Cj4gCj4gMSkgTWlxdWVsCj4gQ29udHJpYnV0b3Ig
-b2YgMjEgY2hhbmdlcwo+IAo+IDIpIEJvcmlzCj4gQ29udHJpYnV0b3Igb2YgMzMgY2hhbmdlcwo+
-IAo+IDMpIFJvZ2VyQ0MKPiBDb250cmlidXRvciBvZiAzIGNoYW5nZXM6Cj4gOThkZWE4ZDcxOTMx
-ICgibXRkOiBuYW5kOiBtdGs6IFN1cHBvcnQgTVQ3NjIyIE5BTkQgZmxhc2ggY29udHJvbGxlci4i
-KQo+IGI0NWVlNTUwMWVkZSAoIm10ZDogbmFuZDogbXRrOiBTdXBwb3J0IGRpZmZlcmVudCBNVEsg
-TkFORCBmbGFzaCAKPiBjb250cm9sbGVyIElQIikKPiA1NTllNThlN2VkMmQgKCJtdGQ6IG5hbmQ6
-IGZpeCBjaGFuY2VzIHRvIGNyZWF0ZSBpbmNvbXBsZXRlIEVDQyBkYXRhIHdoZW4gCj4gd3JpdGlu
-ZyIpCj4gCj4gNCkgV2VpCj4gQ29udHJpYnV0b3Igb2YgMSBjaGFuZ2U6Cj4gMDdmNzY0NDNlZjgx
-ICgibXRkOiBuYW5kOiBtZWRpYXRlazogcmVtb3ZlIHJlZHVuZGFudCBkZXZfZXJyIGNhbGwgaW4g
-Cj4gbXRrX25mY19wcm9iZSgpIikKPiAKPiA1KSBQZXRlcgo+IENvbnRyaWJ1dG9yIG9mIDEgY2hh
-bmdlOgo+IGQ0MDkyZDc2YTRhNCAoIm10ZDogbmFuZDogUmVuYW1lIG5hbmQuaCBpbnRvIHJhd25h
-bmQuaCIpCj4gCj4gNikgTWFzYWhpcm8KPiBDb250cmlidXRvciBvZiAxIGNoYW5nZToKPiBmMGRi
-ZTRhYTM1ZTcgKCJtdGQ6IG5hbmQ6IG1lZGlhdGVrOiByZXR1cm4gZXJyb3IgY29kZSBvZiAKPiBu
-YW5kX3NjYW5faWRlbnQvdGFpbCgpIG9uIGVycm9yIikKPiAKPiBJIGd1ZXNzIHdlIGNvdWxkIGFj
-Y2VwdCB5b3VyIHBhdGNoIHdpdGhvdXQgYWNrcyBmcm9tIFdlaSwgUGV0ZXIgYW5kIAo+IE1hc2Fo
-aXJvLgo+IAo+IFlvdSBkZWZpbml0ZWx5IG5lZWQgYW4gYXBwcm92YWwgZnJvbSBNaXF1ZWwsIEJv
-cmlzIGFuZCBSb2dlckNDLgo+IAo+IEl0IGRvZXNuJ3Qgc2VlbSB5b3UgdG9vayB0aGlzIHJlLWxp
-Y2Vuc2luZyB0YXNrIHRvbyBzZXJpb3VzbHkuCj4gCj4gUGxlYXNlIHBheSBtb3JlIGF0dGVudGlv
-biB0byB0aGlzIGxpY2Vuc2luZyBwcm9ibGVtLCB5b3UgY2FuIHN0YXJ0IHdpdGggCj4gZG9pbmcK
-PiBhIHNpbWlsYXIgcmVzZWFyY2ggZm9yIG10a19lY2MuYyBhbmQgbXRrX2VjYy5oLgoKVGhhbmtz
-IGZvciB5b3VyIEFDSyBhbmQgZ29vZCBzdWdnZXN0aW9uLiBJdCBpcyByZWFsbHkgaGVscGZ1bCBm
-b3IgbWUuCgpUaGFua3MsClhpYW9sZWkKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0
-ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+Hi,
+
+On 5/6/19 1:03 AM, Tom Murphy wrote:
+> On Sun, May 5, 2019 at 3:44 AM Lu Baolu<baolu.lu@linux.intel.com>  wrote:
+>> Hi,
+>>
+>> On 5/4/19 9:23 PM, Tom Murphy wrote:
+>>> static int intel_iommu_add_device(struct device *dev)
+>>>    {
+>>> +     struct dmar_domain *dmar_domain;
+>>> +     struct iommu_domain *domain;
+>>>        struct intel_iommu *iommu;
+>>>        struct iommu_group *group;
+>>> -     struct iommu_domain *domain;
+>>> +     dma_addr_t base;
+>>>        u8 bus, devfn;
+>>>
+>>>        iommu = device_to_iommu(dev, &bus, &devfn);
+>>> @@ -4871,9 +4514,12 @@ static int intel_iommu_add_device(struct device *dev)
+>>>        if (IS_ERR(group))
+>>>                return PTR_ERR(group);
+>>>
+>>> +     base = IOVA_START_PFN << VTD_PAGE_SHIFT;
+>>>        domain = iommu_get_domain_for_dev(dev);
+>>> +     dmar_domain = to_dmar_domain(domain);
+>>>        if (domain->type == IOMMU_DOMAIN_DMA)
+>>> -             dev->dma_ops = &intel_dma_ops;
+>>> +             iommu_setup_dma_ops(dev, base,
+>>> +                             __DOMAIN_MAX_ADDR(dmar_domain->gaw) - base);
+>> I didn't find the implementation of iommu_setup_dma_ops() in this
+>> series. Will the iova resource be initialized in this function?
+> Ah sorry, I should've mentioned this is based on the
+> http://git.infradead.org/users/hch/misc.git/shortlog/refs/heads/dma-iommu-ops.3
+> branch with the "iommu/vt-d: Delegate DMA domain to generic iommu" and
+> "iommu/amd: Convert the AMD iommu driver to the dma-iommu api" patch
+> sets applied.
+> 
+>> If so, will this block iommu_group_create_direct_mappings() which
+>> reserves and maps the reserved iova ranges.
+> The reserved regions will be reserved by the
+> iova_reserve_iommu_regions function instead:
+> (https://github.com/torvalds/linux/blob/6203838dec05352bc357625b1e9ba0a10d3bca35/drivers/iommu/dma-iommu.c#L238
+> )
+> iommu_setup_dma_ops calls iommu_dma_init_domain which calls
+> iova_reserve_iommu_regions.
+> iommu_group_create_direct_mappings will still execute normally but it
+> won't be able to call the intel_iommu_apply_resv_region function
+> because it's been removed in this patchset.
+> This shouldn't change any behavior and the same regions should be reserved.
+> 
+
+Okay, I understand it now. Thanks for the explanation.
+
+Best regards,
+Lu Baolu
