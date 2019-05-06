@@ -1,46 +1,104 @@
-From: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
-Subject: Re: [PATCH v4 00/10] of_net: Add NVMEM support to of_get_mac_address
-Date: Mon, 6 May 2019 10:32:07 +0200
-Message-ID: <20190506083207.GG81826@meh.true.cz>
-References: <1556893635-18549-1-git-send-email-ynezz@true.cz>
- <20190505.214727.1839442238121977055.davem@davemloft.net>
-Reply-To: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
+From: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [RFC PATCH v3 1/1] mtd: rawnand: mtk: Re-license MTK NAND
+ driver as Dual MIT/GPL
+Date: Mon, 6 May 2019 17:11:46 +0800
+Message-ID: <1557133906.26455.91.camel@mhfsdcap03>
+References: <20190429085116.60081-1-xiaolei.li@mediatek.com>
+ <20190429085116.60081-2-xiaolei.li@mediatek.com>
+ <82cc648b1e92d5ed6876b025a2da1821@milecki.pl>
+ <1557047534.26455.81.camel@mhfsdcap03>
+ <79539034414767c95e456a79391a18e7@milecki.pl>
+ <1557104180.26455.89.camel@mhfsdcap03>
+ <20190506101819.28cff338@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <netdev-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190505.214727.1839442238121977055.davem@davemloft.net>
-Sender: netdev-owner@vger.kernel.org
-To: David Miller <davem@davemloft.net>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org, matthias.bgg@gmail.com, andrew@lunn.ch, f.fainelli@gmail.com, hkallweit1@gmail.com, frowand.list@gmail.com, srinivas.kandagatla@linaro.org, maxime.ripard@bootlin.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190506101819.28cff338-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yellowriver2010-PkbjNfxxIARBDgjK7y7TUQ@public.gmane.org, =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <rafal-g1n6cQUeyibVItvQsEIGlw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-David Miller <davem@davemloft.net> [2019-05-05 21:47:27]:
-
-Hi David,
-
-> Series applied, thank you.
-
-I did probably something terribly wrong, but patch "[PATCH v4 05/10] net:
-ethernet: support of_get_mac_address new ERR_PTR error" has not reached the
-patchwork, but I'm sure, that it was sent out as Hauke Mehrtens (maintainer
-for ethernet/lantiq_xrx200.c) has confirmed to me on IRC, that he has received
-it.
-
-I've as well noticed, that you've not considered "[PATCH v5] staging:
-octeon-ethernet: support of_get_mac_address new ERR_PTR error"[1] which
-contained a fix for possible NULL value of mac variable:
-
-        const u8 *mac = NULL;
-
-        if (priv->of_node)
-                mac = of_get_mac_address(priv->of_node);
-
-        if (!IS_ERR(mac))
-
-I'll send those two patches again against net-next in a few moments. Sorry for
-this mess.
-
-1. https://patchwork.ozlabs.org/patch/1094942/
-
--- ynezz
+TWlxdWVsLCBCb3JpcywgdGhhbmtzIGZvciB5b3VyIEFDSy4KCk9uIE1vbiwgMjAxOS0wNS0wNiBh
+dCAxMDoxOCArMDIwMCwgQm9yaXMgQnJlemlsbG9uIHdyb3RlOgo+IE9uIE1vbiwgNiBNYXkgMjAx
+OSAwODo1NjoyMCArMDgwMAo+IHhpYW9sZWkgbGkgPHhpYW9sZWkubGlAbWVkaWF0ZWsuY29tPiB3
+cm90ZToKPiAKPiA+IEhpIFJhZmFsLAo+ID4gCj4gPiBPbiBTdW4sIDIwMTktMDUtMDUgYXQgMTc6
+MDYgKzAyMDAsIFJhZmHFgiBNacWCZWNraSB3cm90ZToKPiA+ID4gT24gMjAxOS0wNS0wNSAxMTox
+MiwgeGlhb2xlaSBsaSB3cm90ZTogIAo+ID4gPiA+IFVwIHRvIG5vdywKPiA+ID4gPiBYaWFvbGVp
+IExpIDx4aWFvbGVpLmxpQG1lZGlhdGVrLmNvbT4gKHRoZSBhdXRob3IgYW5kIG1ham9yIAo+ID4g
+PiA+IGNvbnRyaWJ1dG9yKSwKPiA+ID4gPiBKb3JnZSBSYW1pcmV6LU9ydGl6IDxqb3JnZS5yYW1p
+cmV6LW9ydGl6QGxpbmFyby5vcmc+ICh0aGUgYXV0aG9yIGFuZAo+ID4gPiA+IG1ham9yIGNvbnRy
+aWJ1dG9yKSwKPiA+ID4gPiBSeWRlciBMZWUgPHJ5ZGVyLmxlZUBtZWRpYXRlay5jb20+IChkZXZl
+bG9wZXIpLAo+ID4gPiA+IFJhZmHFgiBNacWCZWNraSA8cmFmYWxAbWlsZWNraS5wbD4gKGRldmVs
+b3BlcikKPiA+ID4gPiBzZW50IEFDSyBmb3IgdGhpcyBSRkMgcGF0Y2guCj4gPiA+ID4gCj4gPiA+
+ID4gTWF5IEkgYXNrIGlmIGl0IGlzIGVub3VnaCB0byBhY2NlcHQgdGhpcyBjaGFuZ2U/IE9yIHNo
+b3VsZCBJIHdhaXQgZm9yCj4gPiA+ID4gb3RoZXIgZGV2ZWxvcGVyJ3MgcmVzcG9uc2U/ICAKPiA+
+ID4gCj4gPiA+IEkgY2FuJ3QgaW1hZ2luZSByZS1saWNlbnNpbmcgc29tZW9uZSdzIHdvcmsgd2l0
+aG91dCBhIHBlcm1pc3Npb24uICAKPiA+IAo+ID4gSSBoYXZlIG5vIGludGVudGlvbiB0byBvZmZl
+bmQgb3RoZXIncyBjb250cmlidXRpb24uCj4gPiBUaGF0IGlzIHdoeSBJIHNlbnQgdGhpcyBSRkMg
+cGF0Y2ggdG8gYXNrIGZvciBBQ0tzIGZyb20gY29udHJpYnV0b3JzLgo+ID4gCj4gPiA+IAo+ID4g
+PiBUaGUgYmVzdCB5b3UgY2FuIGRvIGlzIGlnbm9yaW5nIGNvbnRyaWJ1dG9ycyB0aGF0IHN1Ym1p
+dHRlZCBjaGFuZ2VzIHRoYXQKPiA+ID4gYXJlbid0IHJlYWxseSBjb3B5cmlnaHRhYmxlIChzb21l
+dGhpbmcgbGlrZSBmaXhpbmcgYSBjb21tZW50IHR5cG8sIHNvbWUKPiA+ID4gYXV0by1nZW5lcmF0
+ZWQgZGlmZi1zKS4KPiA+ID4gCj4gPiA+IEkgdXNlZCBmb2xsb3dpbmcgY29tbWFuZCB0byBjaGVj
+ayBtdGtfbmFuZC5jIGZpbGUgaGlzdG9yeToKPiA+ID4gIyBnaXQgbG9nIC0tZm9sbG93IGRyaXZl
+cnMvbXRkL25hbmQvcmF3L210a19uYW5kLmMgfCBncmVwIAo+ID4gPiAiU2lnbmVkLW9mZi1ieSIg
+fCBzb3J0IHwgdW5pcSAtYyB8IHNvcnQgLXIgLW4KPiA+ID4gICAgICAgMTkgICAgIFNpZ25lZC1v
+ZmYtYnk6IE1pcXVlbCBSYXluYWwgPG1pcXVlbC5yYXluYWxAYm9vdGxpbi5jb20+Cj4gPiA+ICAg
+ICAgIDE4ICAgICBTaWduZWQtb2ZmLWJ5OiBCb3JpcyBCcmV6aWxsb24gPGJvcmlzLmJyZXppbGxv
+bkBib290bGluLmNvbT4KPiA+ID4gICAgICAgMTUgICAgIFNpZ25lZC1vZmYtYnk6IEJvcmlzIEJy
+ZXppbGxvbiAKPiA+ID4gPGJvcmlzLmJyZXppbGxvbkBmcmVlLWVsZWN0cm9ucy5jb20+Cj4gPiA+
+ICAgICAgICA2ICAgICBTaWduZWQtb2ZmLWJ5OiBYaWFvbGVpIExpIDx4aWFvbGVpLmxpQG1lZGlh
+dGVrLmNvbT4KPiA+ID4gICAgICAgIDMgICAgIFNpZ25lZC1vZmYtYnk6IFJvZ2VyQ0MgTGluIDxy
+b2dlcmNjLmxpbkBtZWRpYXRlay5jb20+Cj4gPiA+ICAgICAgICAyICAgICBTaWduZWQtb2ZmLWJ5
+OiBNaXF1ZWwgUmF5bmFsIAo+ID4gPiA8bWlxdWVsLnJheW5hbEBmcmVlLWVsZWN0cm9ucy5jb20+
+Cj4gPiA+ICAgICAgICAxICAgICBTaWduZWQtb2ZmLWJ5OiBXZWkgWW9uZ2p1biA8d2VpeW9uZ2p1
+bjFAaHVhd2VpLmNvbT4KPiA+ID4gICAgICAgIDEgICAgIFNpZ25lZC1vZmYtYnk6IFJ5ZGVyIExl
+ZSA8cnlkZXIubGVlQG1lZGlhdGVrLmNvbT4KPiA+ID4gICAgICAgIDEgICAgIFNpZ25lZC1vZmYt
+Ynk6IFJhZmHFgiBNacWCZWNraSA8cmFmYWxAbWlsZWNraS5wbD4KPiA+ID4gICAgICAgIDEgICAg
+IFNpZ25lZC1vZmYtYnk6IFBldGVyIFBhbiA8cGV0ZXJwYW5kb25nQG1pY3Jvbi5jb20+Cj4gPiA+
+ICAgICAgICAxICAgICBTaWduZWQtb2ZmLWJ5OiBNYXNhaGlybyBZYW1hZGEgCj4gPiA+IDx5YW1h
+ZGEubWFzYWhpcm9Ac29jaW9uZXh0LmNvbT4KPiA+ID4gICAgICAgIDEgICAgIFNpZ25lZC1vZmYt
+Ynk6IEpvcmdlIFJhbWlyZXotT3J0aXogCj4gPiA+IDxqb3JnZS5yYW1pcmV6LW9ydGl6QGxpbmFy
+by5vcmc+Cj4gPiA+IAo+ID4gPiBJZGVhbGx5IHlvdSBzaG91bGQgc3RpbGwgZ2V0IGFja3MgZnJv
+bToKPiA+ID4gCj4gPiA+IDEpIE1pcXVlbAo+ID4gPiBDb250cmlidXRvciBvZiAyMSBjaGFuZ2Vz
+Cj4gPiA+IAo+ID4gPiAyKSBCb3Jpcwo+ID4gPiBDb250cmlidXRvciBvZiAzMyBjaGFuZ2VzCj4g
+Cj4gTm90IHN1cmUgdGhhdCdzIHJlYWxseSBuZWNlc3NhcnkgZ2l2ZW4gdGhlIHR5cGUgb2YgY2hh
+bmdlcyBkb25lIGluIHRob3NlCj4gMzMgY29tbWl0cyAobW9zdGx5IG1lY2hhbmljYWwgY2hhbmdl
+cyBkdWUgdG8gbW9kaWZpY2F0aW9ucyBpbiB0aGUgTkFORAo+IGZyYW1ld29yayksIGJ1dCBoZXJl
+IGlzIG15Cj4gCj4gQWNrZWQtYnk6IEJvcmlzIEJyZXppbGxvbiA8Ym9yaXMuYnJlemlsbG9uQGNv
+bGxhYm9yYS5jb20+Cj4gCj4gPiA+IAo+ID4gPiAzKSBSb2dlckNDCj4gPiA+IENvbnRyaWJ1dG9y
+IG9mIDMgY2hhbmdlczoKPiA+ID4gOThkZWE4ZDcxOTMxICgibXRkOiBuYW5kOiBtdGs6IFN1cHBv
+cnQgTVQ3NjIyIE5BTkQgZmxhc2ggY29udHJvbGxlci4iKQo+ID4gPiBiNDVlZTU1MDFlZGUgKCJt
+dGQ6IG5hbmQ6IG10azogU3VwcG9ydCBkaWZmZXJlbnQgTVRLIE5BTkQgZmxhc2ggCj4gPiA+IGNv
+bnRyb2xsZXIgSVAiKQo+ID4gPiA1NTllNThlN2VkMmQgKCJtdGQ6IG5hbmQ6IGZpeCBjaGFuY2Vz
+IHRvIGNyZWF0ZSBpbmNvbXBsZXRlIEVDQyBkYXRhIHdoZW4gCj4gPiA+IHdyaXRpbmciKQo+ID4g
+PiAKPiA+ID4gNCkgV2VpCj4gPiA+IENvbnRyaWJ1dG9yIG9mIDEgY2hhbmdlOgo+ID4gPiAwN2Y3
+NjQ0M2VmODEgKCJtdGQ6IG5hbmQ6IG1lZGlhdGVrOiByZW1vdmUgcmVkdW5kYW50IGRldl9lcnIg
+Y2FsbCBpbiAKPiA+ID4gbXRrX25mY19wcm9iZSgpIikKPiA+ID4gCj4gPiA+IDUpIFBldGVyCj4g
+PiA+IENvbnRyaWJ1dG9yIG9mIDEgY2hhbmdlOgo+ID4gPiBkNDA5MmQ3NmE0YTQgKCJtdGQ6IG5h
+bmQ6IFJlbmFtZSBuYW5kLmggaW50byByYXduYW5kLmgiKQo+ID4gPiAKPiA+ID4gNikgTWFzYWhp
+cm8KPiA+ID4gQ29udHJpYnV0b3Igb2YgMSBjaGFuZ2U6Cj4gPiA+IGYwZGJlNGFhMzVlNyAoIm10
+ZDogbmFuZDogbWVkaWF0ZWs6IHJldHVybiBlcnJvciBjb2RlIG9mIAo+ID4gPiBuYW5kX3NjYW5f
+aWRlbnQvdGFpbCgpIG9uIGVycm9yIikKPiA+ID4gCj4gPiA+IEkgZ3Vlc3Mgd2UgY291bGQgYWNj
+ZXB0IHlvdXIgcGF0Y2ggd2l0aG91dCBhY2tzIGZyb20gV2VpLCBQZXRlciBhbmQgCj4gPiA+IE1h
+c2FoaXJvLgo+ID4gPiAKPiA+ID4gWW91IGRlZmluaXRlbHkgbmVlZCBhbiBhcHByb3ZhbCBmcm9t
+IE1pcXVlbCwgQm9yaXMgYW5kIFJvZ2VyQ0MuCj4gPiA+IAo+ID4gPiBJdCBkb2Vzbid0IHNlZW0g
+eW91IHRvb2sgdGhpcyByZS1saWNlbnNpbmcgdGFzayB0b28gc2VyaW91c2x5Lgo+ID4gPiAKPiA+
+ID4gUGxlYXNlIHBheSBtb3JlIGF0dGVudGlvbiB0byB0aGlzIGxpY2Vuc2luZyBwcm9ibGVtLCB5
+b3UgY2FuIHN0YXJ0IHdpdGggCj4gPiA+IGRvaW5nCj4gPiA+IGEgc2ltaWxhciByZXNlYXJjaCBm
+b3IgbXRrX2VjYy5jIGFuZCBtdGtfZWNjLmguICAKPiA+IAo+ID4gVGhhbmtzIGZvciB5b3VyIEFD
+SyBhbmQgZ29vZCBzdWdnZXN0aW9uLiBJdCBpcyByZWFsbHkgaGVscGZ1bCBmb3IgbWUuCj4gPiAK
+PiA+IFRoYW5rcywKPiA+IFhpYW9sZWkKPiA+IAo+IAoKCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGlu
+dXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
