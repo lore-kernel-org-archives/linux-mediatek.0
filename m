@@ -1,98 +1,46 @@
-From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [RFC PATCH v3 1/1] mtd: rawnand: mtk: Re-license MTK NAND
- driver as Dual MIT/GPL
-Date: Mon, 6 May 2019 10:18:19 +0200
-Message-ID: <20190506101819.28cff338@collabora.com>
-References: <20190429085116.60081-1-xiaolei.li@mediatek.com>
- <20190429085116.60081-2-xiaolei.li@mediatek.com>
- <82cc648b1e92d5ed6876b025a2da1821@milecki.pl>
- <1557047534.26455.81.camel@mhfsdcap03>
- <79539034414767c95e456a79391a18e7@milecki.pl>
- <1557104180.26455.89.camel@mhfsdcap03>
+From: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
+Subject: Re: [PATCH v4 00/10] of_net: Add NVMEM support to of_get_mac_address
+Date: Mon, 6 May 2019 10:32:07 +0200
+Message-ID: <20190506083207.GG81826@meh.true.cz>
+References: <1556893635-18549-1-git-send-email-ynezz@true.cz>
+ <20190505.214727.1839442238121977055.davem@davemloft.net>
+Reply-To: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1557104180.26455.89.camel@mhfsdcap03>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org, miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yellowriver2010-PkbjNfxxIARBDgjK7y7TUQ@public.gmane.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal-g1n6cQUeyibVItvQsEIGlw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <netdev-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20190505.214727.1839442238121977055.davem@davemloft.net>
+Sender: netdev-owner@vger.kernel.org
+To: David Miller <davem@davemloft.net>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org, matthias.bgg@gmail.com, andrew@lunn.ch, f.fainelli@gmail.com, hkallweit1@gmail.com, frowand.list@gmail.com, srinivas.kandagatla@linaro.org, maxime.ripard@bootlin.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gTW9uLCA2IE1heSAyMDE5IDA4OjU2OjIwICswODAwCnhpYW9sZWkgbGkgPHhpYW9sZWkubGlA
-bWVkaWF0ZWsuY29tPiB3cm90ZToKCj4gSGkgUmFmYWwsCj4gCj4gT24gU3VuLCAyMDE5LTA1LTA1
-IGF0IDE3OjA2ICswMjAwLCBSYWZhxYIgTWnFgmVja2kgd3JvdGU6Cj4gPiBPbiAyMDE5LTA1LTA1
-IDExOjEyLCB4aWFvbGVpIGxpIHdyb3RlOiAgCj4gPiA+IFVwIHRvIG5vdywKPiA+ID4gWGlhb2xl
-aSBMaSA8eGlhb2xlaS5saUBtZWRpYXRlay5jb20+ICh0aGUgYXV0aG9yIGFuZCBtYWpvciAKPiA+
-ID4gY29udHJpYnV0b3IpLAo+ID4gPiBKb3JnZSBSYW1pcmV6LU9ydGl6IDxqb3JnZS5yYW1pcmV6
-LW9ydGl6QGxpbmFyby5vcmc+ICh0aGUgYXV0aG9yIGFuZAo+ID4gPiBtYWpvciBjb250cmlidXRv
-ciksCj4gPiA+IFJ5ZGVyIExlZSA8cnlkZXIubGVlQG1lZGlhdGVrLmNvbT4gKGRldmVsb3Blciks
-Cj4gPiA+IFJhZmHFgiBNacWCZWNraSA8cmFmYWxAbWlsZWNraS5wbD4gKGRldmVsb3BlcikKPiA+
-ID4gc2VudCBBQ0sgZm9yIHRoaXMgUkZDIHBhdGNoLgo+ID4gPiAKPiA+ID4gTWF5IEkgYXNrIGlm
-IGl0IGlzIGVub3VnaCB0byBhY2NlcHQgdGhpcyBjaGFuZ2U/IE9yIHNob3VsZCBJIHdhaXQgZm9y
-Cj4gPiA+IG90aGVyIGRldmVsb3BlcidzIHJlc3BvbnNlPyAgCj4gPiAKPiA+IEkgY2FuJ3QgaW1h
-Z2luZSByZS1saWNlbnNpbmcgc29tZW9uZSdzIHdvcmsgd2l0aG91dCBhIHBlcm1pc3Npb24uICAK
-PiAKPiBJIGhhdmUgbm8gaW50ZW50aW9uIHRvIG9mZmVuZCBvdGhlcidzIGNvbnRyaWJ1dGlvbi4K
-PiBUaGF0IGlzIHdoeSBJIHNlbnQgdGhpcyBSRkMgcGF0Y2ggdG8gYXNrIGZvciBBQ0tzIGZyb20g
-Y29udHJpYnV0b3JzLgo+IAo+ID4gCj4gPiBUaGUgYmVzdCB5b3UgY2FuIGRvIGlzIGlnbm9yaW5n
-IGNvbnRyaWJ1dG9ycyB0aGF0IHN1Ym1pdHRlZCBjaGFuZ2VzIHRoYXQKPiA+IGFyZW4ndCByZWFs
-bHkgY29weXJpZ2h0YWJsZSAoc29tZXRoaW5nIGxpa2UgZml4aW5nIGEgY29tbWVudCB0eXBvLCBz
-b21lCj4gPiBhdXRvLWdlbmVyYXRlZCBkaWZmLXMpLgo+ID4gCj4gPiBJIHVzZWQgZm9sbG93aW5n
-IGNvbW1hbmQgdG8gY2hlY2sgbXRrX25hbmQuYyBmaWxlIGhpc3Rvcnk6Cj4gPiAjIGdpdCBsb2cg
-LS1mb2xsb3cgZHJpdmVycy9tdGQvbmFuZC9yYXcvbXRrX25hbmQuYyB8IGdyZXAgCj4gPiAiU2ln
-bmVkLW9mZi1ieSIgfCBzb3J0IHwgdW5pcSAtYyB8IHNvcnQgLXIgLW4KPiA+ICAgICAgIDE5ICAg
-ICBTaWduZWQtb2ZmLWJ5OiBNaXF1ZWwgUmF5bmFsIDxtaXF1ZWwucmF5bmFsQGJvb3RsaW4uY29t
-Pgo+ID4gICAgICAgMTggICAgIFNpZ25lZC1vZmYtYnk6IEJvcmlzIEJyZXppbGxvbiA8Ym9yaXMu
-YnJlemlsbG9uQGJvb3RsaW4uY29tPgo+ID4gICAgICAgMTUgICAgIFNpZ25lZC1vZmYtYnk6IEJv
-cmlzIEJyZXppbGxvbiAKPiA+IDxib3Jpcy5icmV6aWxsb25AZnJlZS1lbGVjdHJvbnMuY29tPgo+
-ID4gICAgICAgIDYgICAgIFNpZ25lZC1vZmYtYnk6IFhpYW9sZWkgTGkgPHhpYW9sZWkubGlAbWVk
-aWF0ZWsuY29tPgo+ID4gICAgICAgIDMgICAgIFNpZ25lZC1vZmYtYnk6IFJvZ2VyQ0MgTGluIDxy
-b2dlcmNjLmxpbkBtZWRpYXRlay5jb20+Cj4gPiAgICAgICAgMiAgICAgU2lnbmVkLW9mZi1ieTog
-TWlxdWVsIFJheW5hbCAKPiA+IDxtaXF1ZWwucmF5bmFsQGZyZWUtZWxlY3Ryb25zLmNvbT4KPiA+
-ICAgICAgICAxICAgICBTaWduZWQtb2ZmLWJ5OiBXZWkgWW9uZ2p1biA8d2VpeW9uZ2p1bjFAaHVh
-d2VpLmNvbT4KPiA+ICAgICAgICAxICAgICBTaWduZWQtb2ZmLWJ5OiBSeWRlciBMZWUgPHJ5ZGVy
-LmxlZUBtZWRpYXRlay5jb20+Cj4gPiAgICAgICAgMSAgICAgU2lnbmVkLW9mZi1ieTogUmFmYcWC
-IE1pxYJlY2tpIDxyYWZhbEBtaWxlY2tpLnBsPgo+ID4gICAgICAgIDEgICAgIFNpZ25lZC1vZmYt
-Ynk6IFBldGVyIFBhbiA8cGV0ZXJwYW5kb25nQG1pY3Jvbi5jb20+Cj4gPiAgICAgICAgMSAgICAg
-U2lnbmVkLW9mZi1ieTogTWFzYWhpcm8gWWFtYWRhIAo+ID4gPHlhbWFkYS5tYXNhaGlyb0Bzb2Np
-b25leHQuY29tPgo+ID4gICAgICAgIDEgICAgIFNpZ25lZC1vZmYtYnk6IEpvcmdlIFJhbWlyZXot
-T3J0aXogCj4gPiA8am9yZ2UucmFtaXJlei1vcnRpekBsaW5hcm8ub3JnPgo+ID4gCj4gPiBJZGVh
-bGx5IHlvdSBzaG91bGQgc3RpbGwgZ2V0IGFja3MgZnJvbToKPiA+IAo+ID4gMSkgTWlxdWVsCj4g
-PiBDb250cmlidXRvciBvZiAyMSBjaGFuZ2VzCj4gPiAKPiA+IDIpIEJvcmlzCj4gPiBDb250cmli
-dXRvciBvZiAzMyBjaGFuZ2VzCgpOb3Qgc3VyZSB0aGF0J3MgcmVhbGx5IG5lY2Vzc2FyeSBnaXZl
-biB0aGUgdHlwZSBvZiBjaGFuZ2VzIGRvbmUgaW4gdGhvc2UKMzMgY29tbWl0cyAobW9zdGx5IG1l
-Y2hhbmljYWwgY2hhbmdlcyBkdWUgdG8gbW9kaWZpY2F0aW9ucyBpbiB0aGUgTkFORApmcmFtZXdv
-cmspLCBidXQgaGVyZSBpcyBteQoKQWNrZWQtYnk6IEJvcmlzIEJyZXppbGxvbiA8Ym9yaXMuYnJl
-emlsbG9uQGNvbGxhYm9yYS5jb20+Cgo+ID4gCj4gPiAzKSBSb2dlckNDCj4gPiBDb250cmlidXRv
-ciBvZiAzIGNoYW5nZXM6Cj4gPiA5OGRlYThkNzE5MzEgKCJtdGQ6IG5hbmQ6IG10azogU3VwcG9y
-dCBNVDc2MjIgTkFORCBmbGFzaCBjb250cm9sbGVyLiIpCj4gPiBiNDVlZTU1MDFlZGUgKCJtdGQ6
-IG5hbmQ6IG10azogU3VwcG9ydCBkaWZmZXJlbnQgTVRLIE5BTkQgZmxhc2ggCj4gPiBjb250cm9s
-bGVyIElQIikKPiA+IDU1OWU1OGU3ZWQyZCAoIm10ZDogbmFuZDogZml4IGNoYW5jZXMgdG8gY3Jl
-YXRlIGluY29tcGxldGUgRUNDIGRhdGEgd2hlbiAKPiA+IHdyaXRpbmciKQo+ID4gCj4gPiA0KSBX
-ZWkKPiA+IENvbnRyaWJ1dG9yIG9mIDEgY2hhbmdlOgo+ID4gMDdmNzY0NDNlZjgxICgibXRkOiBu
-YW5kOiBtZWRpYXRlazogcmVtb3ZlIHJlZHVuZGFudCBkZXZfZXJyIGNhbGwgaW4gCj4gPiBtdGtf
-bmZjX3Byb2JlKCkiKQo+ID4gCj4gPiA1KSBQZXRlcgo+ID4gQ29udHJpYnV0b3Igb2YgMSBjaGFu
-Z2U6Cj4gPiBkNDA5MmQ3NmE0YTQgKCJtdGQ6IG5hbmQ6IFJlbmFtZSBuYW5kLmggaW50byByYXdu
-YW5kLmgiKQo+ID4gCj4gPiA2KSBNYXNhaGlybwo+ID4gQ29udHJpYnV0b3Igb2YgMSBjaGFuZ2U6
-Cj4gPiBmMGRiZTRhYTM1ZTcgKCJtdGQ6IG5hbmQ6IG1lZGlhdGVrOiByZXR1cm4gZXJyb3IgY29k
-ZSBvZiAKPiA+IG5hbmRfc2Nhbl9pZGVudC90YWlsKCkgb24gZXJyb3IiKQo+ID4gCj4gPiBJIGd1
-ZXNzIHdlIGNvdWxkIGFjY2VwdCB5b3VyIHBhdGNoIHdpdGhvdXQgYWNrcyBmcm9tIFdlaSwgUGV0
-ZXIgYW5kIAo+ID4gTWFzYWhpcm8uCj4gPiAKPiA+IFlvdSBkZWZpbml0ZWx5IG5lZWQgYW4gYXBw
-cm92YWwgZnJvbSBNaXF1ZWwsIEJvcmlzIGFuZCBSb2dlckNDLgo+ID4gCj4gPiBJdCBkb2Vzbid0
-IHNlZW0geW91IHRvb2sgdGhpcyByZS1saWNlbnNpbmcgdGFzayB0b28gc2VyaW91c2x5Lgo+ID4g
-Cj4gPiBQbGVhc2UgcGF5IG1vcmUgYXR0ZW50aW9uIHRvIHRoaXMgbGljZW5zaW5nIHByb2JsZW0s
-IHlvdSBjYW4gc3RhcnQgd2l0aCAKPiA+IGRvaW5nCj4gPiBhIHNpbWlsYXIgcmVzZWFyY2ggZm9y
-IG10a19lY2MuYyBhbmQgbXRrX2VjYy5oLiAgCj4gCj4gVGhhbmtzIGZvciB5b3VyIEFDSyBhbmQg
-Z29vZCBzdWdnZXN0aW9uLiBJdCBpcyByZWFsbHkgaGVscGZ1bCBmb3IgbWUuCj4gCj4gVGhhbmtz
-LAo+IFhpYW9sZWkKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LW1lZGlhdGVrCg==
+David Miller <davem@davemloft.net> [2019-05-05 21:47:27]:
+
+Hi David,
+
+> Series applied, thank you.
+
+I did probably something terribly wrong, but patch "[PATCH v4 05/10] net:
+ethernet: support of_get_mac_address new ERR_PTR error" has not reached the
+patchwork, but I'm sure, that it was sent out as Hauke Mehrtens (maintainer
+for ethernet/lantiq_xrx200.c) has confirmed to me on IRC, that he has received
+it.
+
+I've as well noticed, that you've not considered "[PATCH v5] staging:
+octeon-ethernet: support of_get_mac_address new ERR_PTR error"[1] which
+contained a fix for possible NULL value of mac variable:
+
+        const u8 *mac = NULL;
+
+        if (priv->of_node)
+                mac = of_get_mac_address(priv->of_node);
+
+        if (!IS_ERR(mac))
+
+I'll send those two patches again against net-next in a few moments. Sorry for
+this mess.
+
+1. https://patchwork.ozlabs.org/patch/1094942/
+
+-- ynezz
