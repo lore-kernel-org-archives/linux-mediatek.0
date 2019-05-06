@@ -1,55 +1,47 @@
-From: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
-Subject: Re: [PATCH v4 00/10] of_net: Add NVMEM support to of_get_mac_address
-Date: Mon, 6 May 2019 18:19:17 +0200
-Message-ID: <20190506161917.GH81826@meh.true.cz>
-References: <1556893635-18549-1-git-send-email-ynezz@true.cz>
- <20190505.214727.1839442238121977055.davem@davemloft.net>
- <20190506083207.GG81826@meh.true.cz>
- <20190506164132.10342ef6@bootlin.com>
-Reply-To: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
+From: Tom Murphy <tmurphy@arista.com>
+Subject: Re: [PATCH v2 3/4] iommu/dma-iommu: Use the dev->coherent_dma_mask
+Date: Mon, 6 May 2019 18:56:13 +0100
+Message-ID: <CAPL0++61WytVhs63tvt+hdpZKXGinrkYx=4nDtNx1UoNTRWWjw@mail.gmail.com>
+References: <20190430002952.18909-1-tmurphy@arista.com> <20190430002952.18909-4-tmurphy@arista.com>
+ <20190430111222.GA3191@infradead.org> <da835ce2-f73e-3035-e1d7-d3028cc1a838@arm.com>
+ <20190430113253.GA23210@infradead.org> <96ebb6fc-a889-fa94-09ba-65d505b85724@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <netdev-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190506164132.10342ef6@bootlin.com>
-Sender: netdev-owner@vger.kernel.org
-To: Maxime Chevallier <maxime.chevallier@bootlin.com>
-Cc: David Miller <davem@davemloft.net>, netdev@vger.kernel.org, devicetree@vger.kernel.org, matthias.bgg@gmail.com, andrew@lunn.ch, f.fainelli@gmail.com, hkallweit1@gmail.com, frowand.list@gmail.com, srinivas.kandagatla@linaro.org, maxime.ripard@bootlin.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <96ebb6fc-a889-fa94-09ba-65d505b85724@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Christoph Hellwig <hch@infradead.org>, iommu@lists.linux-foundation.org, Heiko Stuebner <heiko@sntech.de>, Will Deacon <will.deacon@arm.com>, David Brown <david.brown@linaro.org>, Thierry Reding <thierry.reding@gmail.com>, linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Andy Gross <andy.gross@linaro.org>, linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Tom Murphy <murphyt7@tcd.ie>
 List-Id: linux-mediatek@lists.infradead.org
 
-Maxime Chevallier <maxime.chevallier@bootlin.com> [2019-05-06 16:41:32]:
+Just to make this clear, I won't apply Christoph's patch (the one in
+this email thread) and instead the only change I will make is to
+rename dma_limit to dma_mask.
 
-Hi Maxime,
-
-> On Mon, 6 May 2019 10:32:07 +0200
-> Petr Štetiar <ynezz@true.cz> wrote:
-> 
-> >David Miller <davem@davemloft.net> [2019-05-05 21:47:27]:
+On Tue, Apr 30, 2019 at 1:05 PM Robin Murphy <robin.murphy@arm.com> wrote:
+>
+> On 30/04/2019 12:32, Christoph Hellwig wrote:
+> > On Tue, Apr 30, 2019 at 12:27:02PM +0100, Robin Murphy wrote:
+> >>> Hmm, I don't think we need the DMA mask for the MSI mapping, this
+> >>> should probably always use a 64-bit mask.
+> >>
+> >> If that were true then we wouldn't need DMA masks for regular mappings
+> >> either. If we have to map the MSI doorbell at all, then we certainly have to
+> >> place it at an IOVA that the relevant device is actually capable of
+> >> addressing.
 > >
-> >Hi David,
-> >
-> >> Series applied, thank you.  
-> >
-> >I did probably something terribly wrong, but patch "[PATCH v4 05/10] net:
-> >ethernet: support of_get_mac_address new ERR_PTR error" has not reached the
-> >patchwork, but I'm sure, that it was sent out as Hauke Mehrtens (maintainer
-> >for ethernet/lantiq_xrx200.c) has confirmed to me on IRC, that he has received
-> >it.
-> 
-> It seems indeed that the 5th patch hasn't beed applied, which effectively
-> breaks mvneta on net-next, and I guess a lot of other drivers that rely
-> on handling the new return values.
-
-Yep, sorry for that.
-
-> I saw you sent a followup series fixing that, but only patch 2/3
-> shows-up on netdev, so you might be facing a similar issue here.
-
-Indeed, seems like patchwork hiccup with a long list of recepients in the
-To/Cc headers, so I've just resend it again with only netdev@vger.kernel.org
-in the To: header and it was happily picked up[1].
-
-1. https://patchwork.ozlabs.org/project/netdev/list/?series=106369
-
--- ynezz
+> > Well, as shown by the patch below we don't even look at the DMA mask
+> > for the MSI page - we just allocate from bottom to top.
+>
+> In the trivial cookie for unmanaged domains, yes, but in that case the
+> responsibility is on VFIO to provide a suitable (i.e. sub-32-bit)
+> address range for that cookie in the first place. In the managed case,
+> allocation uses the streaming mask via iommu_dma_get_msi_page() calling
+> __iommu_dma_map(). Admittedly the mask can then get overlooked when
+> reusing an existing mapping, which strictly could pose a problem if you
+> have multiple devices with incompatible masks in the same group (and
+> such that the PCI stuff doesn't already mitigate it), but that's such an
+> obscure corner case that I'm reticent to introduce the complication to
+> handle it until it's actually proven necessary.
+>
+> Robin.
