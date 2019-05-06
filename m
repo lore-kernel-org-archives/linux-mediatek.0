@@ -1,105 +1,43 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v3 07/10] regulator: mt6358: Add support for MT6358
- regulator
-Date: Mon, 6 May 2019 12:37:33 +0900
-Message-ID: <20190506033733.GH14916@sirena.org.uk>
-References: <20190503093117.54830-1-hsin-hsiung.wang@mediatek.com>
- <20190503093117.54830-8-hsin-hsiung.wang@mediatek.com>
+From: Kalle Valo <kvalo@codeaurora.org>
+Subject: Re: [PATCH v4 07/10] net: wireless: support of_get_mac_address new ERR_PTR error
+Date: Mon, 06 May 2019 10:59:29 +0300
+Message-ID: <878svkvwri.fsf@codeaurora.org>
+References: <1556893635-18549-1-git-send-email-ynezz@true.cz>
+        <1556893635-18549-8-git-send-email-ynezz@true.cz>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="RbAp84Sx/Z5HOs1D"
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190503093117.54830-8-hsin-hsiung.wang@mediatek.com>
+In-Reply-To: <1556893635-18549-8-git-send-email-ynezz@true.cz> ("Petr
+        \=\?utf-8\?Q\?\=C5\=A0tetiar\=22's\?\= message of "Fri, 3 May 2019 16:27:12 +0200")
 Sender: linux-kernel-owner@vger.kernel.org
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Eddie Huang <eddie.huang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rtc@vger.kernel.org, srv_heupstream@mediatek.com
+To: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org, QCA ath9k Development <ath9k-devel@qca.qualcomm.com>, "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Stanislaw Gruszka <sgruszka@redhat.com>, Helmut Schaa <helmut.schaa@googlemail.com>, Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, Frank Rowand <frowand.list@gmail.com>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Maxime Ripard <maxime.ripard@bootlin.com>, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Petr =C5=A0tetiar <ynezz@true.cz> writes:
 
---RbAp84Sx/Z5HOs1D
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+> There was NVMEM support added to of_get_mac_address, so it could now retu=
+rn
+> ERR_PTR encoded error values, so we need to adjust all current users of
+> of_get_mac_address to this new fact.
+>
+> Signed-off-by: Petr =C5=A0tetiar <ynezz@true.cz>
+> ---
+>
+>  Changes since v3:
+>
+>   * IS_ERR_OR_NULL -> IS_ERR
+>
+>  drivers/net/wireless/ath/ath9k/init.c          | 2 +-
+>  drivers/net/wireless/mediatek/mt76/eeprom.c    | 2 +-
+>  drivers/net/wireless/ralink/rt2x00/rt2x00dev.c | 2 +-
+>  3 files changed, 3 insertions(+), 3 deletions(-)
 
-On Fri, May 03, 2019 at 05:31:14PM +0800, Hsin-Hsiung Wang wrote:
+Via which tree is this supposed to go? In case something else than my
+wireless-drivers-next:
 
-A few fairly minor things but mostly this looks good.
+Acked-by: Kalle Valo <kvalo@codeaurora.org>
 
-> +static const u32 vcama1_voltages[] = {
-> +	1800000, 2500000, 2700000,
-> +	2800000, 2900000, 3000000,
-> +};
-
-> +static const u32 vcama2_voltages[] = {
-> +	1800000, 2500000, 2700000,
-> +	2800000, 2900000, 3000000,
-> +};
-> +
-
-These two tables look the same?
-
-> +static int mt6358_get_voltage_sel(struct regulator_dev *rdev)
-> +{
-> +	int idx, ret;
-> +	u32 selector;
-> +	struct mt6358_regulator_info *info = rdev_get_drvdata(rdev);
-> +	const u32 *pvol;
-> +
-> +	ret = regmap_read(rdev->regmap, info->desc.vsel_reg, &selector);
-> +	if (ret != 0) {
-> +		dev_info(&rdev->dev,
-> +			 "Failed to get mt6358 %s vsel reg: %d\n",
-> +			 info->desc.name, ret);
-> +		return ret;
-> +	}
-> +
-> +	selector = (selector & info->desc.vsel_mask) >> info->vsel_shift;
-> +	pvol = (const u32 *)info->index_table;
-> +	ret = -1;
-> +	for (idx = 0; idx < info->desc.n_voltages; idx++) {
-> +		if (pvol[idx] == selector) {
-> +			ret = idx;
-> +			break;
-> +		}
-> +	}
-> +
-> +	return ret;
-> +}
-
-I don't entirely understand what this is intended to do which suggests
-it could use some comments.  As far as I can tell it's looking up the
-hardware selector in a table and then using the index of the entry in
-that table as the selector in order to deal with a sparse set of
-selectors, is that right?  You should be able to handle this by having
-_list_voltage() return an error code for the invalid selectors though we
-don't have helpers for that yet as it's an unusual design.
-
-Also -1 is not a good return value in the case where you fail to do a
-mapping, use -EINVAL.
-
-> +	ret = regmap_read(rdev->regmap, info->da_vsel_reg, &regval);
-> +	if (ret != 0) {
-> +		dev_info(&rdev->dev,
-> +			 "Failed to get mt6358 Buck %s vsel reg: %d\n",
-> +			 info->desc.name, ret);
-> +		return ret;
-> +	}
-
-These error messages should be dev_err().
-
---RbAp84Sx/Z5HOs1D
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlzPq/oACgkQJNaLcl1U
-h9BktAf/aapG5sI3j3lduVVaxhPGb7OblQA1/rmv6rhzowc0XcjywrRfMMlL6sep
-mS9qN1bqSNfzF9jPmK9OZS012K04jHqCbDzeJ8tJbRdq1SXNO0KpIukzTaPghrsc
-I42t/n4iqmnDtVyHRlBmhIpzeeJPdghqNRL+Q0WnBFEAtCjMq3TBXasmbEqPNFBs
-zMZHo7/pfbBJfeNiVYj4Z9Fujt9G1cLEiG0386sgTZLt2GXC1tFk5nsh1Z7dJppa
-U+L2jM+HMVU9ylQcVEMzsJx//3eEQHBMvGL18tkGtjU8zWnYUpue/A4MKziwwRyI
-WXOx4oPTy0KypDnnAhOZhT12VM+D1g==
-=otJk
------END PGP SIGNATURE-----
-
---RbAp84Sx/Z5HOs1D--
+--=20
+Kalle Valo
