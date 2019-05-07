@@ -1,124 +1,53 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH 2/2] usb: xhci-mtk: Do not create shared_hcd if no USB
- 3.0 port available
-Date: Tue, 7 May 2019 15:37:24 +0800
-Message-ID: <1557214644.10179.266.camel@mhfsdcap03>
-References: <20190502045631.229386-1-drinkcat@chromium.org>
-         <20190502045631.229386-2-drinkcat@chromium.org>
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH net-next v2 0/4] of_get_mac_address ERR_PTR fixes
+Date: Tue, 7 May 2019 09:41:26 +0200
+Message-ID: <20190507074126.GA26478@kroah.com>
+References: <1557177887-30446-1-git-send-email-ynezz@true.cz>
+ <20190507071914.GJ2269@kadam>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190502045631.229386-2-drinkcat@chromium.org>
+Content-Disposition: inline
+In-Reply-To: <20190507071914.GJ2269@kadam>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Nicolas Boichat <drinkcat@chromium.org>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Khuong Dinh <khuong@os.amperecomputing.com>, Hoan Tran <hoan@os.amperecomputing.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>, Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
+Cc: netdev@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, devel@driverdev.osuosl.org, Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, Maxime Ripard <maxime.ripard@bootlin.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Frank Rowand <frowand.list@gmail.com>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Nicolas,
-On Thu, 2019-05-02 at 12:56 +0800, Nicolas Boichat wrote:
-> When the controller only supports USB 2.0, do not even create the
-> USB 3.0 hcd/root hub.
+On Tue, May 07, 2019 at 10:19:14AM +0300, Dan Carpenter wrote:
+> On Mon, May 06, 2019 at 11:24:43PM +0200, Petr Štetiar wrote:
+> > Hi,
+> > 
+> > this patch series is an attempt to fix the mess, I've somehow managed to
+> > introduce.
+> > 
+> > First patch in this series is defacto v5 of the previous 05/10 patch in the
+> > series, but since the v4 of this 05/10 patch wasn't picked up by the
+> > patchwork for some unknown reason, this patch wasn't applied with the other
+> > 9 patches in the series, so I'm resending it as a separate patch of this
+> > fixup series again.
 > 
-> Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
-> ---
->  drivers/usb/host/xhci-mtk.c | 44 +++++++++++++++++++++++--------------
->  1 file changed, 28 insertions(+), 16 deletions(-)
+> I feel sort of ridiculous asking this over and over...  Maybe your spam
+> filter is eating my emails?
 > 
-> diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-> index 026fe18972d3e5b..189f5dc614e6e05 100644
-> --- a/drivers/usb/host/xhci-mtk.c
-> +++ b/drivers/usb/host/xhci-mtk.c
-> @@ -527,23 +527,28 @@ static int xhci_mtk_probe(struct platform_device *pdev)
->  	xhci->imod_interval = 5000;
->  	device_property_read_u32(dev, "imod-interval-ns", &xhci->imod_interval);
->  
-> -	xhci->shared_hcd = usb_create_shared_hcd(driver, dev,
-> +	/* Only create shared_hcd when USB3.0 port is available. */
-> +	if (xhci->usb3_rhub.num_ports > 0) {
-xhci->usb3_rhub.num_ports is not set until usb_add_hcd() is called.
+> This bug was introduced in https://patchwork.ozlabs.org/patch/1094916/
+> "[v4,01/10] of_net: add NVMEM support to of_get_mac_address" but it
+> looks like no one applied it.
+> 
+> You're acting as if it *was* applied but you refuse to answer my
+> question who applied it and which to which tree so I can figure out what
+> went wrong.
+> 
+> I only see comments from last Friday that it shouldn't be applied...  I
+> also told you on Friday in a different thread that that patch shouldn't
+> be applied.  Breaking git bisect is a bug, and we never do that.  I'm
+> just very confused right now...  What I'm trying to do is figure out in
+> my head how this process failed so we can do better next time.
 
-> +		xhci->shared_hcd = usb_create_shared_hcd(driver, dev,
->  			dev_name(dev), hcd);
-> -	if (!xhci->shared_hcd) {
-> -		ret = -ENOMEM;
-> -		goto disable_device_wakeup;
-> +		if (!xhci->shared_hcd) {
-> +			ret = -ENOMEM;
-> +			goto disable_device_wakeup;
-> +		}
->  	}
->  
->  	ret = usb_add_hcd(hcd, irq, IRQF_SHARED);
->  	if (ret)
->  		goto put_usb3_hcd;
->  
-> -	if (HCC_MAX_PSA(xhci->hcc_params) >= 4)
-> -		xhci->shared_hcd->can_do_streams = 1;
-> +	if (xhci->usb3_rhub.num_ports > 0) {
-> +		if (HCC_MAX_PSA(xhci->hcc_params) >= 4)
-> +			xhci->shared_hcd->can_do_streams = 1;
->  
-> -	ret = usb_add_hcd(xhci->shared_hcd, irq, IRQF_SHARED);
-> -	if (ret)
-> -		goto dealloc_usb2_hcd;
-> +		ret = usb_add_hcd(xhci->shared_hcd, irq, IRQF_SHARED);
-> +		if (ret)
-> +			goto dealloc_usb2_hcd;
-> +	}
->  
->  	return 0;
->  
-> @@ -552,7 +557,8 @@ static int xhci_mtk_probe(struct platform_device *pdev)
->  
->  put_usb3_hcd:
->  	xhci_mtk_sch_exit(mtk);
-> -	usb_put_hcd(xhci->shared_hcd);
-> +	if (xhci->shared_hcd)
-> +		usb_put_hcd(xhci->shared_hcd);
->  
->  disable_device_wakeup:
->  	device_init_wakeup(dev, false);
-> @@ -579,12 +585,14 @@ static int xhci_mtk_remove(struct platform_device *dev)
->  	struct xhci_hcd	*xhci = hcd_to_xhci(hcd);
->  	struct usb_hcd  *shared_hcd = xhci->shared_hcd;
->  
-> -	usb_remove_hcd(shared_hcd);
-> +	if (shared_hcd)
-> +		usb_remove_hcd(shared_hcd);
->  	xhci->shared_hcd = NULL;
->  	device_init_wakeup(&dev->dev, false);
->  
->  	usb_remove_hcd(hcd);
-> -	usb_put_hcd(shared_hcd);
-> +	if (shared_hcd)
-> +		usb_put_hcd(shared_hcd);
->  	usb_put_hcd(hcd);
->  	xhci_mtk_sch_exit(mtk);
->  	xhci_mtk_clks_disable(mtk);
-> @@ -611,8 +619,10 @@ static int __maybe_unused xhci_mtk_suspend(struct device *dev)
->  	xhci_dbg(xhci, "%s: stop port polling\n", __func__);
->  	clear_bit(HCD_FLAG_POLL_RH, &hcd->flags);
->  	del_timer_sync(&hcd->rh_timer);
-> -	clear_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
-> -	del_timer_sync(&xhci->shared_hcd->rh_timer);
-> +	if (xhci->shared_hcd) {
-> +		clear_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
-> +		del_timer_sync(&xhci->shared_hcd->rh_timer);
-> +	}
->  
->  	xhci_mtk_host_disable(mtk);
->  	xhci_mtk_clks_disable(mtk);
-> @@ -631,8 +641,10 @@ static int __maybe_unused xhci_mtk_resume(struct device *dev)
->  	xhci_mtk_host_enable(mtk);
->  
->  	xhci_dbg(xhci, "%s: restart port polling\n", __func__);
-> -	set_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
-> -	usb_hcd_poll_rh_status(xhci->shared_hcd);
-> +	if (xhci->shared_hcd) {
-> +		set_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
-> +		usb_hcd_poll_rh_status(xhci->shared_hcd);
-> +	}
->  	set_bit(HCD_FLAG_POLL_RH, &hcd->flags);
->  	usb_hcd_poll_rh_status(hcd);
->  	return 0;
+Just to resend this, so that it hopefully does _not_ get stuck in a spam
+filter.
+
+Petr, please address Dan's comments, do not ignore them.
+
+greg k-h
