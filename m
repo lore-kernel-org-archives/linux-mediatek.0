@@ -1,147 +1,70 @@
-From: Roger Lu <roger.lu@mediatek.com>
-Subject: Re: [RFC v1 1/3] dt-bindings: soc: add mtk svs dt-bindings
-Date: Tue, 7 May 2019 15:50:57 +0800
-Message-ID: <1557215457.2147.90.camel@mtksdaap41>
-References: <20190430112012.4514-1-roger.lu@mediatek.com>
-         <20190430112012.4514-2-roger.lu@mediatek.com>
-         <155665629219.168659.8221738507474891604@swboyd.mtv.corp.google.com>
-         <1556777971.12123.35.camel@mtksdaap41>
-         <155691770027.200842.16164651681407381397@swboyd.mtv.corp.google.com>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: [PATCH v5 03/12] dt-binding: gce: add binding for gce subsys property
+Date: Tue, 7 May 2019 16:13:46 +0800
+Message-ID: <20190507081355.52630-4-bibby.hsieh@mediatek.com>
+References: <20190507081355.52630-1-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <155691770027.200842.16164651681407381397@swboyd.mtv.corp.google.com>
+In-Reply-To: <20190507081355.52630-1-bibby.hsieh@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>, Angus.Lin@mediatek.com, devicetree@vger.kernel.org, Viresh Kumar <vireshk@kernel.org>, linux-pm@vger.kernel.org, "Rafael J . Wysocki" <rjw@rjwysocki.net>, linux-kernel@vger.kernel.org, Kevin Hilman <khilman@kernel.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Andy-YT.Liu@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, HenryC.Chen@mediatek.com
+To: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, CK HU <ck.hu@mediatek.com>
+Cc: Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.chen@mediatek.com, kendrick.hsu@mediatek.com, Frederic Chen <Frederic.Chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Dear Stephen,
+tcmdq driver provide a function that get the relationship
+of sub system number from device node for client.
+add specification for #subsys-cells, mediatek,gce-subsys.
 
-Sorry for the late reply.
+Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+---
+ .../devicetree/bindings/mailbox/mtk-gce.txt       | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
 
-On Fri, 2019-05-03 at 14:08 -0700, Stephen Boyd wrote:
-> Quoting Roger Lu (2019-05-01 23:19:31)
-> > On Tue, 2019-04-30 at 13:31 -0700, Stephen Boyd wrote:
-> > > Quoting Roger Lu (2019-04-30 04:20:10)
-> > > > diff --git a/Documentation/devicetree/bindings/power/mtk-svs.txt b/Documentation/devicetree/bindings/power/mtk-svs.txt
-> > > > new file mode 100644
-> > > > index 000000000000..355329db74ba
-> > > > --- /dev/null
-> > > > +++ b/Documentation/devicetree/bindings/power/mtk-svs.txt
-> [..]
-> > > > +
-> > > > +               svs_gpu: svs_gpu {
-> > > > +                       compatible = "mediatek,mt8183-svs-gpu";
-> > > > +                       power-domains = <&scpsys MT8183_POWER_DOMAIN_MFG_2D>;
-> > > > +                       operating-points-v2 = <&gpu_opp_table>;
-> > > > +               };
-> > > 
-> > > It looks like you need multiple OPPs for a single device, because it has
-> > > different independent power supplies it wants to associate the OPP
-> > > tables with?
-> > Yes. SVS has different controllers inside the hardware in order to
-> > calculate and optimize different OPP table voltage part.
-> 
-> So is there more than one SVS register region that needs certain devices
-> to be powered on or at least have their power domain enabled so that the
-> SVS hardware can read the voltage and adjust accordingly? I should read
-> the driver I suppose.
-No, basically, each SVS controller (aka SVS bank) only has one SVS
-register region that needs to be powered on for the init.
-In MT8183 SVS case, SVS has four controllers (banks). Each SVS bank
-needs corresponding power domain to be on for its init.
-
-#SVS bank corresponding power domain
-svs_cpu_little: Needs CPU-A53 power on for init
-svs_cpu_big: Needs CPU-A73 power on for init
-svs_cci: Needs CPU-A53 power on for init
-svs_gpu: Needs MFG_2D power on for init
-
-P.S SVS driver will use pm_runtime_get_sync() to turn on power before
-svs bank init and pm_runtime_put_sync() to turn off power power after
-svs bank init.
-
-> 
-> > 
-> > > Why can't these OPP tables be attached to the devices that
-> > > use them, i.e. CPU, GPU, CCI, etc.? Seems odd that those devices don't
-> > > have OPP tables that this hardware block can look up somehow.
-> > Those OPP tables are attached by our DVFS node (please refers below
-> > patch). SVS just shares with their OPP table and help optimize these OPP
-> > tables' voltage part.
-> > 
-> > Add cpufreq DTS node to the mt8183 and mt8183-evb
-> > https://patchwork.kernel.org/patch/10921675/
-> 
-> Cool thanks for the pointer.
-> 
-> > 
-> > 
-> > > Similarly,
-> > > the power domains should probably be part of the devices that are using
-> > > them and not these sub-nodes that are mirroring the other hardware
-> > > blocks in the system?
-> > Oh. There is a svs controller in GPU power-domain. We need to turn on
-> > GPU power so that svs controller can work functionally. Therefore, we
-> > add GPU power-domains in our svs_gpu sub-node.
-> > 
-> > 
-> 
-> Sorry, I'm not really following what you're saying too closely. I think
-> I get it but it sounds complicated.
-> 
-> I'm mostly wondering if having properties like svs-gpu = <&gpu_node>,
-> and svs-cci = <&cci_node> would work for you. The idea would be to link
-> this hardware block to the nodes that it's going to adjust the OPPs of.
-> Once you have the node, use some sort of OPP API to get the OPP table
-> for a device_node and adjust it at runtime for the current OPP.
-Yes, I understand your idea. Thank you. I share my design purpose and
-the troubles I encountered when linking other hardware block.
-
-#my design purpose
-1. SVS bank doesn't need all the resources in other device node like
-cci_node. Therefore, I model SVS sub-nodes to declare what svs bank
-needs.
-
-#troubles - linking other hardware block
-1. I don't know how to get cpu devcie after we link CPU node
-(svs_cpu_little = <cpu0>). I use "get_cpu_device(unsigned cpu)" in Linux
-driver to attain cpuX device generally.
-2. Our MT8183 has three gpu-related node as below, svs_gpu need the
-reference of gpu (OPP table) & gpu_core2 (power-domain MFG_2D) to make
-sure svs_gpu can init and update gpu OPP table. I don't know how to
-refer two nodes by one property. Therefore, I model a svs_gpu to declare
-what it needs.
-
-gpu: mali@13040000 {
-	...
-	power-domains = <&scpsys MT8183_POWER_DOMAIN_MFG_CORE0>;
-	operating-points-v2 = <&gpu_opp_table>;
-	...
-}
-
-gpu_core1: mali_gpu_core1 {
-	...
-	power-domains = <&scpsys MT8183_POWER_DOMAIN_MFG_CORE1>;
-};
-
-gpu_core2: mali_gpu_core2 {
-	...
-	power-domains = <&scpsys MT8183_POWER_DOMAIN_MFG_2D>;
-};
-
-P.S MT8183 GPU won't do upstream. So, there is no patchwork weblink to
-refer.
-
-> It sounds like it might be a little more complicated if the hardware goes
-> haywire when the device like GPU is powered down and the power domain is
-> shut off. Hopefully it isn't though, so that the driver can mostly sit
-> on top of the SVS hardware and poke OPP every once and a while when the
-> voltage needs to change, regardless of the power state of the device.
-
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+index 1f7f8f2a3f49..8fd9479bc9f6 100644
+--- a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
++++ b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+@@ -21,11 +21,19 @@ Required properties:
+ 	priority: Priority of GCE thread.
+ 	atomic_exec: GCE processing continuous packets of commands in atomic
+ 		way.
++- #subsys-cells: Should be 3.
++	<&phandle subsys_number start_offset size>
++	phandle: Label name of a gce node.
++	subsys_number: specify the sub-system id which is corresponding
++		       to the register address.
++	start_offset: the start offset of register address that GCE can access.
++	size: the total size of register address that GCE can access.
+ 
+ Required properties for a client device:
+ - mboxes: Client use mailbox to communicate with GCE, it should have this
+   property and list of phandle, mailbox specifiers.
+-- mediatek,gce-subsys: u32, specify the sub-system id which is corresponding
++Optional propertier for a client device:
++- mediatek,gce-client-reg: u32, specify the sub-system id which is corresponding
+   to the register address.
+ 
+ Some vaules of properties are defined in 'dt-bindings/gce/mt8173-gce.h'
+@@ -40,6 +48,7 @@ Example:
+ 		clocks = <&infracfg CLK_INFRA_GCE>;
+ 		clock-names = "gce";
+ 		#mbox-cells = <3>;
++		#subsys-cells = <3>;
+ 	};
+ 
+ Example for a client device:
+@@ -48,9 +57,9 @@ Example for a client device:
+ 		compatible = "mediatek,mt8173-mmsys";
+ 		mboxes = <&gce 0 CMDQ_THR_PRIO_LOWEST 1>,
+ 			 <&gce 1 CMDQ_THR_PRIO_LOWEST 1>;
+-		mediatek,gce-subsys = <SUBSYS_1400XXXX>;
+ 		mutex-event-eof = <CMDQ_EVENT_MUTEX0_STREAM_EOF
+ 				CMDQ_EVENT_MUTEX1_STREAM_EOF>;
+-
++		mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000 0x1000>,
++					  <&gce SUBSYS_1401XXXX 0x2000 0x100>;
+ 		...
+ 	};
+-- 
+2.18.0
