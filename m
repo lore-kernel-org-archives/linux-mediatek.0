@@ -1,35 +1,104 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v4 00/10] of_net: Add NVMEM support to of_get_mac_address
-Date: Tue, 7 May 2019 10:57:36 -0500
-Message-ID: <CAL_JsqL66PdCv7bFwfD9p6VQCcXOesz3EjPcYB9FGosgjOS8yw@mail.gmail.com>
-References: <1556893635-18549-1-git-send-email-ynezz@true.cz> <20190505.214727.1839442238121977055.davem@davemloft.net>
+From: Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH v4 02/10] dt-bindings: doc: reflect new NVMEM
+ of_get_mac_address behaviour
+Date: Tue, 7 May 2019 11:44:57 -0500
+Message-ID: <CAL_JsqLt6UFU_6bmh3Pc0taXUgMtAEV7kL7eZU13cLOjoakf=Q@mail.gmail.com>
+References: <1556893635-18549-1-git-send-email-ynezz@true.cz> <1556893635-18549-3-git-send-email-ynezz@true.cz>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20190505.214727.1839442238121977055.davem@davemloft.net>
-Sender: netdev-owner@vger.kernel.org
-To: David Miller <davem@davemloft.net>
-Cc: =?UTF-8?Q?Petr_=C5=A0tetiar?= <ynezz@true.cz>, netdev <netdev@vger.kernel.org>, devicetree@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, Frank Rowand <frowand.list@gmail.com>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Maxime Ripard <maxime.ripard@bootlin.com>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1556893635-18549-3-git-send-email-ynezz@true.cz>
+Sender: linux-kernel-owner@vger.kernel.org
+To: =?UTF-8?Q?Petr_=C5=A0tetiar?= <ynezz@true.cz>
+Cc: netdev <netdev@vger.kernel.org>, devicetree@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, Mark Rutland <mark.rutland@arm.com>, Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, Yisen Zhuang <yisen.zhuang@huawei.com>, Salil Mehta <salil.mehta@huawei.com>, Woojung Huh <woojung.huh@microchip.com>, Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Jassi Brar <jaswinder.singh@linaro.org>, Kalle Valo <kvalo@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, Frank Rowand <frowand.list@gmail.com>, Srinivas Kandagatla <sriniv>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, May 5, 2019 at 11:47 PM David Miller <davem@davemloft.net> wrote:
+On Fri, May 3, 2019 at 9:27 AM Petr =C5=A0tetiar <ynezz@true.cz> wrote:
 >
-> From: Petr =C5=A0tetiar <ynezz@true.cz>
-> Date: Fri,  3 May 2019 16:27:05 +0200
+> As of_get_mac_address now supports NVMEM under the hood, we need to updat=
+e
+> the bindings documentation with the new nvmem-cell* properties, which wou=
+ld
+> mean copy&pasting a lot of redundant information to every binding
+> documentation currently referencing some of the MAC address properties.
 >
-> > this patch series is a continuation of my previous attempt[1], where I'=
-ve
-> > tried to wire MTD layer into of_get_mac_address, so it would be possibl=
-e to
-> > load MAC addresses from various NVMEMs as EEPROMs etc.
->  ...
+> So I've just removed all the references to the optional MAC address
+> properties and replaced them with the small note referencing
+> net/ethernet.txt file.
 >
-> Series applied, thank you.
+> Signed-off-by: Petr =C5=A0tetiar <ynezz@true.cz>
+> ---
+>
+>  Changes since v2:
+>
+>  * replaced only MAC address related optional properties with a text
+>    referencing ethernet.txt
+>
+>  Documentation/devicetree/bindings/net/altera_tse.txt           |  5 ++--=
+-
+>  Documentation/devicetree/bindings/net/amd-xgbe.txt             |  5 +++-=
+-
+>  Documentation/devicetree/bindings/net/brcm,amac.txt            |  4 ++--
+>  Documentation/devicetree/bindings/net/cpsw.txt                 |  4 +++-
+>  Documentation/devicetree/bindings/net/davinci_emac.txt         |  5 +++-=
+-
+>  Documentation/devicetree/bindings/net/dsa/dsa.txt              |  5 ++--=
+-
+>  Documentation/devicetree/bindings/net/ethernet.txt             |  6 ++++=
+--
+>  Documentation/devicetree/bindings/net/hisilicon-femac.txt      |  4 +++-
+>  .../devicetree/bindings/net/hisilicon-hix5hd2-gmac.txt         |  4 +++-
+>  Documentation/devicetree/bindings/net/keystone-netcp.txt       | 10 ++++=
++-----
+>  Documentation/devicetree/bindings/net/macb.txt                 |  5 ++--=
+-
+>  Documentation/devicetree/bindings/net/marvell-pxa168.txt       |  4 +++-
+>  Documentation/devicetree/bindings/net/microchip,enc28j60.txt   |  3 ++-
+>  Documentation/devicetree/bindings/net/microchip,lan78xx.txt    |  5 ++--=
+-
+>  Documentation/devicetree/bindings/net/qca,qca7000.txt          |  4 +++-
+>  Documentation/devicetree/bindings/net/samsung-sxgbe.txt        |  4 +++-
+>  .../devicetree/bindings/net/snps,dwc-qos-ethernet.txt          |  5 +++-=
+-
+>  .../devicetree/bindings/net/socionext,uniphier-ave4.txt        |  4 ++--
+>  Documentation/devicetree/bindings/net/socionext-netsec.txt     |  5 +++-=
+-
+>  .../devicetree/bindings/net/wireless/mediatek,mt76.txt         |  5 +++-=
+-
+>  Documentation/devicetree/bindings/net/wireless/qca,ath9k.txt   |  4 ++--
+>  21 files changed, 58 insertions(+), 42 deletions(-)
 
-Patch 1 at least is still be discussed. What was implemented based on
-my comments on v2 is really broken. Now the allocated buffer is
-tracked by both devm and DT refcounting. Whoever's ref count drops
-first will free the buffer.
+[...]
+
+> diff --git a/Documentation/devicetree/bindings/net/keystone-netcp.txt b/D=
+ocumentation/devicetree/bindings/net/keystone-netcp.txt
+> index 04ba1dc..3a65aab 100644
+> --- a/Documentation/devicetree/bindings/net/keystone-netcp.txt
+> +++ b/Documentation/devicetree/bindings/net/keystone-netcp.txt
+> @@ -135,14 +135,14 @@ Optional properties:
+>                 are swapped.  The netcp driver will swap the two DWORDs
+>                 back to the proper order when this property is set to 2
+>                 when it obtains the mac address from efuse.
+> -- local-mac-address:   the driver is designed to use the of_get_mac_addr=
+ess api
+> -                       only if efuse-mac is 0. When efuse-mac is 0, the =
+MAC
+> -                       address is obtained from local-mac-address. If th=
+is
+> -                       attribute is not present, then the driver will us=
+e a
+> -                       random MAC address.
+>  - "netcp-device label":        phandle to the device specification for e=
+ach of NetCP
+>                         sub-module attached to this interface.
+>
+> +The MAC address will be determined using the optional properties defined=
+ in
+> +ethernet.txt, as provided by the of_get_mac_address API and only if efus=
+e-mac
+
+Don't make references to Linux in bindings. You can talk about
+expectations of client programs (e.g Linux, u-boot, BSD, etc.) though.
 
 Rob
