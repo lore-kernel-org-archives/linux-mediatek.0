@@ -1,62 +1,434 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH] dt-binding: usb: add usb-role-switch property
-Date: Tue, 7 May 2019 10:26:34 +0800
-Message-ID: <1557195994.10179.263.camel@mhfsdcap03>
-References: <5756e05930f5e6a3940ad9d019399c8e63d24f18.1556454324.git.chunfeng.yun@mediatek.com>
-         <20190502194905.GA22144@bogus>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Subject: Re: [PATCH v3 02/10] mfd: mt6397: extract irq related code from core driver
+Date: Tue, 7 May 2019 14:11:32 +0900
+Message-ID: <CANMq1KCGudrXDB-A=1VZ5PbA0gS49S5M-On4Tbn8OW+615joSQ@mail.gmail.com>
+References: <20190503093117.54830-1-hsin-hsiung.wang@mediatek.com> <20190503093117.54830-3-hsin-hsiung.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190502194905.GA22144@bogus>
+In-Reply-To: <20190503093117.54830-3-hsin-hsiung.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Biju Das <biju.das@bp.renesas.com>, Yu Chen <chenyu56@huawei.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Min Guo <min.guo@mediatek.com>, Felipe Balbi <felipe.balbi@linux.intel.com>
+To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+Cc: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, srv_heupstream <srv_heupstream@mediatek.com>, devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>, lkml <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, Eddie Huang <eddie.huang@mediatek.com>, linux-rtc@vger.kernel.org, Claire Chang <tientzu@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2019-05-02 at 14:49 -0500, Rob Herring wrote:
-> On Sun, Apr 28, 2019 at 08:27:46PM +0800, Chunfeng Yun wrote:
-> > Add a property usb-role-switch to tell Dual-Role controller driver
-> > that use USB Role Switch framework to handle the role switch between
-> > host mode and device mode, it's useful when the driver has already
-> > supported other ways, such as extcon framework etc.
-> > 
-> > Cc: Biju Das <biju.das@bp.renesas.com>
-> > Cc: Yu Chen <chenyu56@huawei.com>
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > ---
-> > v1:
-> > the property is discussed in:
-> > [v2,2/7] dt-bindings: usb: renesas_usb3: add usb-role-switch property
-> > https://patchwork.kernel.org/patch/10852497/
-> > 
-> > Mediatek and Hisilicon also try to use it:
-> > [v4,3/6] dt-bindings: usb: mtu3: add properties about USB Role Switch
-> > https://patchwork.kernel.org/patch/10918385/
-> > [v4,6/6] usb: mtu3: register a USB Role Switch for dual role mode
-> > https://patchwork.kernel.org/patch/10918367/
-> > 
-> > [v6,10/13] usb: dwc3: Registering a role switch in the DRD code
-> > https://patchwork.kernel.org/patch/10909981/
-> > ---
-> >  Documentation/devicetree/bindings/usb/generic.txt | 3 +++
-> >  1 file changed, 3 insertions(+)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/usb/generic.txt b/Documentation/devicetree/bindings/usb/generic.txt
-> > index 0a74ab8dfdc2..c73950b72513 100644
-> > --- a/Documentation/devicetree/bindings/usb/generic.txt
-> > +++ b/Documentation/devicetree/bindings/usb/generic.txt
-> > @@ -30,6 +30,9 @@ Optional properties:
-> >  			optional for OTG device.
-> >   - adp-disable: tells OTG controllers we want to disable OTG ADP, ADP is
-> >  			optional for OTG device.
-> > + - usb-role-switch: tells Dual-Role USB controller driver that we want to use
-> > +			USB Role Switch framework to handle the role switch
-> > +			between host mode and device mode.
-> 
-> Please describe this in terms of h/w functionality, not drivers and 
-> Linux things.
-Sorry for the late reply, v2 is posted
+On Fri, May 3, 2019 at 6:33 PM Hsin-Hsiung Wang
+<hsin-hsiung.wang@mediatek.com> wrote:
+>
+> In order to support different types of irq design, we decide to add
+> separate irq drivers for different design and keep mt6397 mfd core
+> simple and reusable to all generations of PMICs so far.
+>
+> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+> ---
+>  drivers/mfd/Makefile            |   3 +-
+>  drivers/mfd/mt6397-core.c       | 146 --------------------------
+>  drivers/mfd/mt6397-irq.c        | 181 ++++++++++++++++++++++++++++++++
+>  include/linux/mfd/mt6397/core.h |   9 ++
+>  4 files changed, 192 insertions(+), 147 deletions(-)
+>  create mode 100644 drivers/mfd/mt6397-irq.c
+>
+> diff --git a/drivers/mfd/Makefile b/drivers/mfd/Makefile
+> index b4569ed7f3f3..ab1e228b5a2f 100644
+> --- a/drivers/mfd/Makefile
+> +++ b/drivers/mfd/Makefile
+> @@ -234,7 +234,8 @@ obj-$(CONFIG_INTEL_SOC_PMIC)        += intel-soc-pmic.o
+>  obj-$(CONFIG_INTEL_SOC_PMIC_BXTWC)     += intel_soc_pmic_bxtwc.o
+>  obj-$(CONFIG_INTEL_SOC_PMIC_CHTWC)     += intel_soc_pmic_chtwc.o
+>  obj-$(CONFIG_INTEL_SOC_PMIC_CHTDC_TI)  += intel_soc_pmic_chtdc_ti.o
+> -obj-$(CONFIG_MFD_MT6397)       += mt6397-core.o
+> +mt6397-objs    := mt6397-core.o mt6397-irq.o
+> +obj-$(CONFIG_MFD_MT6397)       += mt6397.o
+>
+>  obj-$(CONFIG_MFD_ALTERA_A10SR) += altera-a10sr.o
+>  obj-$(CONFIG_MFD_STPMIC1)      += stpmic1.o
+> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+> index c9393bc86743..c80f0449fe7e 100644
+> --- a/drivers/mfd/mt6397-core.c
+> +++ b/drivers/mfd/mt6397-core.c
+> @@ -26,10 +26,6 @@
+>  #define MT6397_RTC_BASE                0xe000
+>  #define MT6397_RTC_SIZE                0x3e
+>
+> -#define MT6323_CHIP_ID         0x23
+> -#define MT6391_CHIP_ID         0x91
+> -#define MT6397_CHIP_ID         0x97
+> -
+>  static const struct resource mt6397_rtc_resources[] = {
+>         {
+>                 .start = MT6397_RTC_BASE,
+> @@ -94,148 +90,6 @@ static const struct mfd_cell mt6397_devs[] = {
+>         }
+>  };
+>
+> -static void mt6397_irq_lock(struct irq_data *data)
+> -{
+> -       struct mt6397_chip *mt6397 = irq_data_get_irq_chip_data(data);
+> -
+> -       mutex_lock(&mt6397->irqlock);
+> -}
+> -
+> -static void mt6397_irq_sync_unlock(struct irq_data *data)
+> -{
+> -       struct mt6397_chip *mt6397 = irq_data_get_irq_chip_data(data);
+> -
+> -       regmap_write(mt6397->regmap, mt6397->int_con[0],
+> -                    mt6397->irq_masks_cur[0]);
+> -       regmap_write(mt6397->regmap, mt6397->int_con[1],
+> -                    mt6397->irq_masks_cur[1]);
+> -
+> -       mutex_unlock(&mt6397->irqlock);
+> -}
+> -
+> -static void mt6397_irq_disable(struct irq_data *data)
+> -{
+> -       struct mt6397_chip *mt6397 = irq_data_get_irq_chip_data(data);
+> -       int shift = data->hwirq & 0xf;
+> -       int reg = data->hwirq >> 4;
+> -
+> -       mt6397->irq_masks_cur[reg] &= ~BIT(shift);
+> -}
+> -
+> -static void mt6397_irq_enable(struct irq_data *data)
+> -{
+> -       struct mt6397_chip *mt6397 = irq_data_get_irq_chip_data(data);
+> -       int shift = data->hwirq & 0xf;
+> -       int reg = data->hwirq >> 4;
+> -
+> -       mt6397->irq_masks_cur[reg] |= BIT(shift);
+> -}
+> -
+> -#ifdef CONFIG_PM_SLEEP
+> -static int mt6397_irq_set_wake(struct irq_data *irq_data, unsigned int on)
+> -{
+> -       struct mt6397_chip *mt6397 = irq_data_get_irq_chip_data(irq_data);
+> -       int shift = irq_data->hwirq & 0xf;
+> -       int reg = irq_data->hwirq >> 4;
+> -
+> -       if (on)
+> -               mt6397->wake_mask[reg] |= BIT(shift);
+> -       else
+> -               mt6397->wake_mask[reg] &= ~BIT(shift);
+> -
+> -       return 0;
+> -}
+> -#else
+> -#define mt6397_irq_set_wake NULL
+> -#endif
+> -
+> -static struct irq_chip mt6397_irq_chip = {
+> -       .name = "mt6397-irq",
+> -       .irq_bus_lock = mt6397_irq_lock,
+> -       .irq_bus_sync_unlock = mt6397_irq_sync_unlock,
+> -       .irq_enable = mt6397_irq_enable,
+> -       .irq_disable = mt6397_irq_disable,
+> -       .irq_set_wake = mt6397_irq_set_wake,
+> -};
+> -
+> -static void mt6397_irq_handle_reg(struct mt6397_chip *mt6397, int reg,
+> -               int irqbase)
+> -{
+> -       unsigned int status;
+> -       int i, irq, ret;
+> -
+> -       ret = regmap_read(mt6397->regmap, reg, &status);
+> -       if (ret) {
+> -               dev_err(mt6397->dev, "Failed to read irq status: %d\n", ret);
+> -               return;
+> -       }
+> -
+> -       for (i = 0; i < 16; i++) {
+> -               if (status & BIT(i)) {
+> -                       irq = irq_find_mapping(mt6397->irq_domain, irqbase + i);
+> -                       if (irq)
+> -                               handle_nested_irq(irq);
+> -               }
+> -       }
+> -
+> -       regmap_write(mt6397->regmap, reg, status);
+> -}
+> -
+> -static irqreturn_t mt6397_irq_thread(int irq, void *data)
+> -{
+> -       struct mt6397_chip *mt6397 = data;
+> -
+> -       mt6397_irq_handle_reg(mt6397, mt6397->int_status[0], 0);
+> -       mt6397_irq_handle_reg(mt6397, mt6397->int_status[1], 16);
+> -
+> -       return IRQ_HANDLED;
+> -}
+> -
+> -static int mt6397_irq_domain_map(struct irq_domain *d, unsigned int irq,
+> -                                       irq_hw_number_t hw)
+> -{
+> -       struct mt6397_chip *mt6397 = d->host_data;
+> -
+> -       irq_set_chip_data(irq, mt6397);
+> -       irq_set_chip_and_handler(irq, &mt6397_irq_chip, handle_level_irq);
+> -       irq_set_nested_thread(irq, 1);
+> -       irq_set_noprobe(irq);
+> -
+> -       return 0;
+> -}
+> -
+> -static const struct irq_domain_ops mt6397_irq_domain_ops = {
+> -       .map = mt6397_irq_domain_map,
+> -};
+> -
+> -static int mt6397_irq_init(struct mt6397_chip *mt6397)
+> -{
+> -       int ret;
+> -
+> -       mutex_init(&mt6397->irqlock);
+> -
+> -       /* Mask all interrupt sources */
+> -       regmap_write(mt6397->regmap, mt6397->int_con[0], 0x0);
+> -       regmap_write(mt6397->regmap, mt6397->int_con[1], 0x0);
+> -
+> -       mt6397->irq_domain = irq_domain_add_linear(mt6397->dev->of_node,
+> -               MT6397_IRQ_NR, &mt6397_irq_domain_ops, mt6397);
+> -       if (!mt6397->irq_domain) {
+> -               dev_err(mt6397->dev, "could not create irq domain\n");
+> -               return -ENOMEM;
+> -       }
+> -
+> -       ret = devm_request_threaded_irq(mt6397->dev, mt6397->irq, NULL,
+> -               mt6397_irq_thread, IRQF_ONESHOT, "mt6397-pmic", mt6397);
+> -       if (ret) {
+> -               dev_err(mt6397->dev, "failed to register irq=%d; err: %d\n",
+> -                       mt6397->irq, ret);
+> -               return ret;
+> -       }
+> -
+> -       return 0;
+> -}
+> -
+>  #ifdef CONFIG_PM_SLEEP
+>  static int mt6397_irq_suspend(struct device *dev)
+>  {
+> diff --git a/drivers/mfd/mt6397-irq.c b/drivers/mfd/mt6397-irq.c
+> new file mode 100644
+> index 000000000000..b2d3ce1f3115
+> --- /dev/null
+> +++ b/drivers/mfd/mt6397-irq.c
+> @@ -0,0 +1,181 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +//
+> +// Copyright (c) 2019 MediaTek Inc.
+> +
+> +#include <linux/interrupt.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/of_device.h>
+> +#include <linux/of_irq.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/regmap.h>
+> +#include <linux/mfd/mt6323/core.h>
+> +#include <linux/mfd/mt6323/registers.h>
+> +#include <linux/mfd/mt6397/core.h>
+> +#include <linux/mfd/mt6397/registers.h>
+> +
+> +static void mt6397_irq_lock(struct irq_data *data)
+> +{
+> +       struct mt6397_chip *mt6397 = irq_data_get_irq_chip_data(data);
+> +
+> +       mutex_lock(&mt6397->irqlock);
+> +}
+> +
+> +static void mt6397_irq_sync_unlock(struct irq_data *data)
+> +{
+> +       struct mt6397_chip *mt6397 = irq_data_get_irq_chip_data(data);
+> +
+> +       regmap_write(mt6397->regmap, mt6397->int_con[0],
+> +                    mt6397->irq_masks_cur[0]);
+> +       regmap_write(mt6397->regmap, mt6397->int_con[1],
+> +                    mt6397->irq_masks_cur[1]);
+> +
+> +       mutex_unlock(&mt6397->irqlock);
+> +}
+> +
+> +static void mt6397_irq_disable(struct irq_data *data)
+> +{
+> +       struct mt6397_chip *mt6397 = irq_data_get_irq_chip_data(data);
+> +       int shift = data->hwirq & 0xf;
+> +       int reg = data->hwirq >> 4;
+> +
+> +       mt6397->irq_masks_cur[reg] &= ~BIT(shift);
+> +}
+> +
+> +static void mt6397_irq_enable(struct irq_data *data)
+> +{
+> +       struct mt6397_chip *mt6397 = irq_data_get_irq_chip_data(data);
+> +       int shift = data->hwirq & 0xf;
+> +       int reg = data->hwirq >> 4;
+> +
+> +       mt6397->irq_masks_cur[reg] |= BIT(shift);
+> +}
+> +
+> +#ifdef CONFIG_PM_SLEEP
+> +static int mt6397_irq_set_wake(struct irq_data *irq_data, unsigned int on)
+> +{
+> +       struct mt6397_chip *mt6397 = irq_data_get_irq_chip_data(irq_data);
+> +       int shift = irq_data->hwirq & 0xf;
+> +       int reg = irq_data->hwirq >> 4;
+> +
+> +       if (on)
+> +               mt6397->wake_mask[reg] |= BIT(shift);
+> +       else
+> +               mt6397->wake_mask[reg] &= ~BIT(shift);
+> +
+> +       return 0;
+> +}
+> +#else
+> +#define mt6397_irq_set_wake NULL
+> +#endif
+> +
+> +static struct irq_chip mt6397_irq_chip = {
+> +       .name = "mt6397-irq",
+> +       .irq_bus_lock = mt6397_irq_lock,
+> +       .irq_bus_sync_unlock = mt6397_irq_sync_unlock,
+> +       .irq_enable = mt6397_irq_enable,
+> +       .irq_disable = mt6397_irq_disable,
+> +       .irq_set_wake = mt6397_irq_set_wake,
+> +};
+> +
+> +static void mt6397_irq_handle_reg(struct mt6397_chip *mt6397, int reg,
+> +                                 int irqbase)
+> +{
+> +       unsigned int status;
+> +       int i, irq, ret;
+> +
+> +       ret = regmap_read(mt6397->regmap, reg, &status);
+> +       if (ret) {
+> +               dev_err(mt6397->dev, "Failed to read irq status: %d\n", ret);
+> +               return;
+> +       }
+> +
+> +       for (i = 0; i < 16; i++) {
+> +               if (status & BIT(i)) {
+> +                       irq = irq_find_mapping(mt6397->irq_domain, irqbase + i);
+> +                       if (irq)
+> +                               handle_nested_irq(irq);
+> +               }
+> +       }
+> +
+> +       regmap_write(mt6397->regmap, reg, status);
+> +}
+> +
+> +static irqreturn_t mt6397_irq_thread(int irq, void *data)
+> +{
+> +       struct mt6397_chip *mt6397 = data;
+> +
+> +       mt6397_irq_handle_reg(mt6397, mt6397->int_status[0], 0);
+> +       mt6397_irq_handle_reg(mt6397, mt6397->int_status[1], 16);
+> +
+> +       return IRQ_HANDLED;
+> +}
+> +
+> +static int mt6397_irq_domain_map(struct irq_domain *d, unsigned int irq,
+> +                                irq_hw_number_t hw)
+> +{
+> +       struct mt6397_chip *mt6397 = d->host_data;
+> +
+> +       irq_set_chip_data(irq, mt6397);
+> +       irq_set_chip_and_handler(irq, &mt6397_irq_chip, handle_level_irq);
+> +       irq_set_nested_thread(irq, 1);
+> +       irq_set_noprobe(irq);
+> +
+> +       return 0;
+> +}
+> +
+> +static const struct irq_domain_ops mt6397_irq_domain_ops = {
+> +       .map = mt6397_irq_domain_map,
+> +};
+> +
+> +int mt6397_irq_init(struct mt6397_chip *chip)
+> +{
+> +       int ret;
+> +
+> +       mutex_init(&chip->irqlock);
+> +
+> +       switch (chip->chip_id) {
+> +       case MT6323_CHIP_ID:
+> +               chip->int_con[0] = MT6323_INT_CON0;
+> +               chip->int_con[1] = MT6323_INT_CON1;
+> +               chip->int_status[0] = MT6323_INT_STATUS0;
+> +               chip->int_status[1] = MT6323_INT_STATUS1;
+> +               break;
+> +
+> +       case MT6391_CHIP_ID:
+> +       case MT6397_CHIP_ID:
+> +               chip->int_con[0] = MT6397_INT_CON0;
+> +               chip->int_con[1] = MT6397_INT_CON1;
+> +               chip->int_status[0] = MT6397_INT_STATUS0;
+> +               chip->int_status[1] = MT6397_INT_STATUS1;
+> +               break;
+> +
+> +       default:
+> +               dev_err(chip->dev, "unsupported chip: 0x%x\n", chip->chip_id);
+> +               return -ENODEV;
+> +       }
 
-> 
-> Rob
+This switch/case wasn't there before the move... Doesn't that now
+duplicates with code in mt6397_probe, or am I missing something?
+
+> +
+> +       /* Mask all interrupt sources */
+> +       regmap_write(chip->regmap, chip->int_con[0], 0x0);
+> +       regmap_write(chip->regmap, chip->int_con[1], 0x0);
+> +
+> +       chip->irq_domain = irq_domain_add_linear(chip->dev->of_node,
+> +                                                MT6397_IRQ_NR,
+> +                                                &mt6397_irq_domain_ops,
+> +                                                chip);
+> +       if (!chip->irq_domain) {
+> +               dev_err(chip->dev, "could not create irq domain\n");
+> +               return -ENOMEM;
+> +       }
+> +
+> +       ret = devm_request_threaded_irq(chip->dev, chip->irq, NULL,
+> +                                       mt6397_irq_thread, IRQF_ONESHOT,
+> +                                       "mt6397-pmic", chip);
+> +       if (ret) {
+> +               dev_err(chip->dev, "failed to register irq=%d; err: %d\n",
+> +                       chip->irq, ret);
+> +               return ret;
+> +       }
+> +
+> +       return 0;
+> +}
+> diff --git a/include/linux/mfd/mt6397/core.h b/include/linux/mfd/mt6397/core.h
+> index d678f526e498..93f9f5235575 100644
+> --- a/include/linux/mfd/mt6397/core.h
+> +++ b/include/linux/mfd/mt6397/core.h
+> @@ -15,6 +15,12 @@
+>  #ifndef __MFD_MT6397_CORE_H__
+>  #define __MFD_MT6397_CORE_H__
+>
+> +enum chip_id {
+> +       MT6323_CHIP_ID = 0x23,
+> +       MT6391_CHIP_ID = 0x91,
+> +       MT6397_CHIP_ID = 0x97,
+> +};
+> +
+>  enum mt6397_irq_numbers {
+>         MT6397_IRQ_SPKL_AB = 0,
+>         MT6397_IRQ_SPKR_AB,
+> @@ -62,6 +68,9 @@ struct mt6397_chip {
+>         u16 irq_masks_cache[2];
+>         u16 int_con[2];
+>         u16 int_status[2];
+> +       u16 chip_id;
+>  };
+>
+> +int mt6397_irq_init(struct mt6397_chip *chip);
+> +
+>  #endif /* __MFD_MT6397_CORE_H__ */
+> --
+> 2.18.0
+>
+>
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
