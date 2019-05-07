@@ -1,8 +1,8 @@
 From: Xiaolei Li <xiaolei.li@mediatek.com>
-Subject: [PATCH v3 4/4] mtd: rawnand: mtk: Fix wrongly assigned OOB buffer
- pointer issue
-Date: Tue, 7 May 2019 18:25:41 +0800
-Message-ID: <20190507102541.34341-5-xiaolei.li@mediatek.com>
+Subject: [PATCH v3 2/4] mtd: rawnand: mtk: Improve data sampling timing for
+ read cycle
+Date: Tue, 7 May 2019 18:25:39 +0800
+Message-ID: <20190507102541.34341-3-xiaolei.li@mediatek.com>
 References: <20190507102541.34341-1-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,80 +22,124 @@ To: miquel.raynal@bootlin.com, richard@nod.at
 Cc: linux-mediatek@lists.infradead.org, xiaolei.li@mediatek.com, linux-mtd@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-One main goal of the function mtk_nfc_update_ecc_stats is to check
-whether sectors are all empty. If they are empty, set these sectors's
-data buffer and OOB buffer as 0xff.
+Currently, we expand RE# low level time by choosing the max value
+between RE# pulse width and RE# access time, and sample data at the
+rising edge of RE#.
 
-But now, the sector OOB buffer pointer is wrongly assigned. We always
-do memset from sector 0.
+Then, if RE# access time is bigger than RE# pulse width, the real
+read cycle time may be more than NAND SPEC required. This makes
+read performance be worse than that expected.
 
-To fix this issue, pass start sector number to make OOB buffer pointer
-be properly assigned.
+This patch improves data sampling timing by calculating RE# low level
+time according to RE# pulse width. If RE# access time is bigger than
+RE# pulse width, then delay sampling data timing.
 
-Fixes: 1d6b1e464950 ("mtd: mediatek: driver for MTK Smart Device")
+The result of contrast test base on MT2712 evaluat board is as follow.
+
+nand: Micron MT29F16G08ADBCAH4
+nand: 2048 MiB, SLC, erase size: 256 KiB, page size: 4096, OOB size: 224
+NFI 2x clock rate: 124800000 HZ.
+
+Read speed without this patch:
+mtd_speedtest: page read speed is 14012 KiB/s
+mtd_speedtest: 2 page read speed is 14860 KiB/s
+
+Read speed with this patch:
+mtd_speedtest: page read speed is 18724 KiB/s
+mtd_speedtest: 2 page read speed is 18713 KiB/s
+
 Signed-off-by: Xiaolei Li <xiaolei.li@mediatek.com>
 Reviewed-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- drivers/mtd/nand/raw/mtk_nand.c | 21 ++++++++++-----------
- 1 file changed, 10 insertions(+), 11 deletions(-)
+ drivers/mtd/nand/raw/mtk_nand.c | 46 ++++++++++++++++++++++++++-------
+ 1 file changed, 36 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
-index 14a9b8c2a8db..617f9656a045 100644
+index 717f17bcffb4..6b79a0f9aef8 100644
 --- a/drivers/mtd/nand/raw/mtk_nand.c
 +++ b/drivers/mtd/nand/raw/mtk_nand.c
-@@ -889,19 +889,21 @@ static int mtk_nfc_write_oob_std(struct nand_chip *chip, int page)
- 	return mtk_nfc_write_page_raw(chip, NULL, 1, page);
- }
- 
--static int mtk_nfc_update_ecc_stats(struct mtd_info *mtd, u8 *buf, u32 sectors)
-+static int mtk_nfc_update_ecc_stats(struct mtd_info *mtd, u8 *buf, u32 start,
-+				    u32 sectors)
- {
- 	struct nand_chip *chip = mtd_to_nand(mtd);
+@@ -87,6 +87,10 @@
+ #define NFI_FDMM(x)		(0xA4 + (x) * sizeof(u32) * 2)
+ #define NFI_FDM_MAX_SIZE	(8)
+ #define NFI_FDM_MIN_SIZE	(1)
++#define NFI_DEBUG_CON1		(0x220)
++#define		STROBE_MASK		GENMASK(4, 3)
++#define		STROBE_SHIFT		(3)
++#define		MAX_STROBE_DLY		(3)
+ #define NFI_MASTER_STA		(0x224)
+ #define		MASTER_STA_MASK		(0x0FFF)
+ #define NFI_EMPTY_THRESH	(0x23C)
+@@ -509,7 +513,7 @@ static int mtk_nfc_setup_data_interface(struct nand_chip *chip, int csline,
  	struct mtk_nfc *nfc = nand_get_controller_data(chip);
- 	struct mtk_nfc_nand_chip *mtk_nand = to_mtk_nand(chip);
- 	struct mtk_ecc_stats stats;
-+	u32 reg_size = mtk_nand->fdm.reg_size;
- 	int rc, i;
+ 	const struct nand_sdr_timings *timings;
+ 	u32 rate, tpoecs, tprecs, tc2r, tw2r, twh, twst = 0, trlt = 0;
+-	u32 thold;
++	u32 temp, tsel = 0;
  
- 	rc = nfi_readl(nfc, NFI_STA) & STA_EMP_PAGE;
- 	if (rc) {
- 		memset(buf, 0xff, sectors * chip->ecc.size);
- 		for (i = 0; i < sectors; i++)
--			memset(oob_ptr(chip, i), 0xff, mtk_nand->fdm.reg_size);
-+			memset(oob_ptr(chip, start + i), 0xff, reg_size);
- 		return 0;
- 	}
+ 	timings = nand_get_sdr_timings(conf);
+ 	if (IS_ERR(timings))
+@@ -546,30 +550,52 @@ static int mtk_nfc_setup_data_interface(struct nand_chip *chip, int csline,
+ 	twh &= 0xf;
  
-@@ -921,7 +923,7 @@ static int mtk_nfc_read_subpage(struct mtd_info *mtd, struct nand_chip *chip,
- 	u32 spare = mtk_nand->spare_per_sector;
- 	u32 column, sectors, start, end, reg;
- 	dma_addr_t addr;
--	int bitflips;
-+	int bitflips = 0;
- 	size_t len;
- 	u8 *buf;
- 	int rc;
-@@ -988,14 +990,11 @@ static int mtk_nfc_read_subpage(struct mtd_info *mtd, struct nand_chip *chip,
- 	if (rc < 0) {
- 		dev_err(nfc->dev, "subpage done timeout\n");
- 		bitflips = -EIO;
--	} else {
--		bitflips = 0;
--		if (!raw) {
--			rc = mtk_ecc_wait_done(nfc->ecc, ECC_DECODE);
--			bitflips = rc < 0 ? -ETIMEDOUT :
--				mtk_nfc_update_ecc_stats(mtd, buf, sectors);
--			mtk_nfc_read_fdm(chip, start, sectors);
--		}
-+	} else if (!raw) {
-+		rc = mtk_ecc_wait_done(nfc->ecc, ECC_DECODE);
-+		bitflips = rc < 0 ? -ETIMEDOUT :
-+			mtk_nfc_update_ecc_stats(mtd, buf, start, sectors);
-+		mtk_nfc_read_fdm(chip, start, sectors);
- 	}
+ 	/* Calculate real WE#/RE# hold time in nanosecond */
+-	thold = (twh + 1) * 1000000 / rate;
++	temp = (twh + 1) * 1000000 / rate;
+ 	/* nanosecond to picosecond */
+-	thold *= 1000;
++	temp *= 1000;
  
- 	dma_unmap_single(nfc->dev, addr, len, DMA_FROM_DEVICE);
+ 	/*
+ 	 * WE# low level time should be expaned to meet WE# pulse time
+ 	 * and WE# cycle time at the same time.
+ 	 */
+-	if (thold < timings->tWC_min)
+-		twst = timings->tWC_min - thold;
++	if (temp < timings->tWC_min)
++		twst = timings->tWC_min - temp;
+ 	twst = max(timings->tWP_min, twst) / 1000;
+ 	twst = DIV_ROUND_UP(twst * rate, 1000000) - 1;
+ 	twst &= 0xf;
+ 
+ 	/*
+-	 * RE# low level time should be expaned to meet RE# pulse time,
+-	 * RE# access time and RE# cycle time at the same time.
++	 * RE# low level time should be expaned to meet RE# pulse time
++	 * and RE# cycle time at the same time.
+ 	 */
+-	if (thold < timings->tRC_min)
+-		trlt = timings->tRC_min - thold;
+-	trlt = max3(trlt, timings->tREA_max, timings->tRP_min) / 1000;
++	if (temp < timings->tRC_min)
++		trlt = timings->tRC_min - temp;
++	trlt = max(trlt, timings->tRP_min) / 1000;
+ 	trlt = DIV_ROUND_UP(trlt * rate, 1000000) - 1;
+ 	trlt &= 0xf;
+ 
++	/* Calculate RE# pulse time in nanosecond. */
++	temp = (trlt + 1) * 1000000 / rate;
++	/* nanosecond to picosecond */
++	temp *= 1000;
++	/*
++	 * If RE# access time is bigger than RE# pulse time,
++	 * delay sampling data timing.
++	 */
++	if (temp < timings->tREA_max) {
++		tsel = timings->tREA_max / 1000;
++		tsel = DIV_ROUND_UP(tsel * rate, 1000000);
++		tsel -= (trlt + 1);
++		if (tsel > MAX_STROBE_DLY) {
++			trlt += tsel - MAX_STROBE_DLY;
++			tsel = MAX_STROBE_DLY;
++		}
++	}
++	temp = nfi_readl(nfc, NFI_DEBUG_CON1);
++	temp &= ~STROBE_MASK;
++	temp |= tsel << STROBE_SHIFT;
++	nfi_writel(nfc, temp, NFI_DEBUG_CON1);
++
+ 	/*
+ 	 * ACCON: access timing control register
+ 	 * -------------------------------------
 -- 
 2.18.0
 
