@@ -1,52 +1,79 @@
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Subject: Re: [PATCH 6/8] thermal: mediatek: mt8183: fix bank number settings
-Date: Tue, 7 May 2019 16:58:40 +0800
-Message-ID: <CAJMQK-i6oZ1dTbTXV2_nX+mGfZ7JcafRMKbb81YgPk67Gdbjbg@mail.gmail.com>
-References: <1556793795-25204-1-git-send-email-michael.kao@mediatek.com> <1556793795-25204-7-git-send-email-michael.kao@mediatek.com>
+From: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
+Subject: netdev patchwork issues [Was: Re: [PATCH net-next v2 0/4]
+ of_get_mac_address ERR_PTR fixes]
+Date: Tue, 7 May 2019 11:01:37 +0200
+Message-ID: <20190507090137.GJ81826@meh.true.cz>
+References: <1557177887-30446-1-git-send-email-ynezz@true.cz>
+ <20190507071914.GJ2269@kadam>
+ <20190507083918.GI81826@meh.true.cz>
+Reply-To: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1556793795-25204-7-git-send-email-michael.kao@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <20190507083918.GI81826@meh.true.cz>
 Sender: linux-kernel-owner@vger.kernel.org
-To: "michael.kao" <michael.kao@mediatek.com>
-Cc: fan.chen@mediatek.com, jamesjj.liao@mediatek.com, dawei.chien@mediatek.com, louis.yu@mediatek.com, roger.lu@mediatek.com, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: netdev@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, devel@driverdev.osuosl.org, Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Frank Rowand <frowand.list@gmail.com>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>, Jeremy Kerr <jk@ozlabs.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, May 2, 2019 at 10:43 AM michael.kao <michael.kao@mediatek.com> wrote:
->
-> From: Michael Kao <michael.kao@mediatek.com>
->
-> MT8183_NUM_ZONES should be set to 1
-> because MT8183 doesn't have multiple banks.
->
-> Fixes: a4ffe6b52d27 ("thermal: mediatek: add support for MT8183")
-> Signed-off-by: Michael Kao <Michael.Kao@mediatek.com>
-> ---
->  drivers/thermal/mtk_thermal.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-> index 5c07a61..cb41e46 100644
-> --- a/drivers/thermal/mtk_thermal.c
-> +++ b/drivers/thermal/mtk_thermal.c
-> @@ -216,6 +216,9 @@ enum {
->  /* The total number of temperature sensors in the MT8183 */
->  #define MT8183_NUM_SENSORS     6
->
-> +/* The number of banks in the MT8183 */
-> +#define MT8183_NUM_ZONES               1
-> +
->  /* The number of sensing points per bank */
->  #define MT8183_NUM_SENSORS_PER_ZONE     6
->
-> @@ -503,7 +506,7 @@ struct mtk_thermal {
->
->  static const struct mtk_thermal_data mt8183_thermal_data = {
->         .auxadc_channel = MT8183_TEMP_AUXADC_CHANNEL,
-> -       .num_banks = MT8183_NUM_SENSORS_PER_ZONE,
-> +       .num_banks = MT8183_NUM_ZONES,
->         .num_sensors = MT8183_NUM_SENSORS,
->         .vts_index = mt8183_vts_index,
->         .cali_val = MT8183_CALIBRATION,
+Petr Štetiar <ynezz@true.cz> [2019-05-07 10:39:18]:
 
-Tested-by: Hsin-Yi Wang <hsinyi@chromium.org>
+[adding Jeremy to the Cc: loop]
+
+> it was applied[2] to David's net-next tree, but unfortunately partialy, just 9
+> patches out of 10, as the patch 05/10 in that series (which is patch 1/4 in
+> this series) never reached netdev mailing list and patchwork, probably because
+> of some netdev mailing list software and/or patchwork hiccup, very likely due
+> to the long list of recipients in that patch and as I'm not subscribed to the
+> netdev (due to the high traffic) I'm probably treaten somehow differently.
+
+For the record, I've following in my ~/.gitconfig:
+
+ [sendemail.linux]
+    tocmd ="`pwd`/scripts/get_maintainer.pl --nogit --nogit-fallback --norolestats --nol"
+    cccmd ="`pwd`/scripts/get_maintainer.pl --nogit --nogit-fallback --norolestats --nom"
+
+and I've sent the patches with the following command:
+
+ git send-email \
+	--to netdev@vger.kernel.org \
+	--to 'David S. Miller <davem@davemloft.net>' \
+	--cc 'Andrew Lunn <andrew@lunn.ch>' \
+	--cc 'Florian Fainelli <f.fainelli@gmail.com>' \
+	--cc 'Heiner Kallweit <hkallweit1@gmail.com>' \
+	--cc 'Frank Rowand <frowand.list@gmail.com>' \
+	--cc 'devel@driverdev.osuosl.org' \
+	--cc 'linux-kernel@vger.kernel.org' \
+	--cc 'Greg Kroah-Hartman <gregkh@linuxfoundation.org>' \
+	--cc 'Maxime Ripard <maxime.ripard@bootlin.com>' \
+	--identity linux tmp/nvmem-fix-v2/000*
+
+which resulted just in the following 4 bounces:
+
+ * nbd@openwrt.org (no such recipient)
+ * ks.giri@samsung.com (no such recipient)
+ * vipul.pandya@samsung.com (no such recipient)
+
+ Your mail to 'linux-arm-kernel' with the subject
+
+    [PATCH net-next v2 1/4] net: ethernet: support of_get_mac_address new ERR_PTR error
+
+ Is being held until the list moderator can review it for approval.  The reason
+ it is being held:
+
+    Too many recipients to the message
+
+So maybe netdev have similar moderation stuff enabled, but doesn't send out
+this notices back? I've "fixed" the issue with the following workaround:
+
+ git send-email \
+ 	--to netdev@vger.kernel.org \
+	--in-reply-to '<1557177887-30446-1-git-send-email-ynezz@true.cz>' \
+	tmp/nvmem-fix-v2/0001-net-ethernet-support-of_get_mac_address-new-ERR_PTR-.patch
+
+That is, just using netdev as the sole recipient and then the patch has
+appeared in the patchwork and in the mailing list archive as well.
+
+-- ynezz
