@@ -1,94 +1,110 @@
-From: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
-Subject: Re: [PATCH net-next v2 0/4] of_get_mac_address ERR_PTR fixes
-Date: Tue, 7 May 2019 10:39:18 +0200
-Message-ID: <20190507083918.GI81826@meh.true.cz>
-References: <1557177887-30446-1-git-send-email-ynezz@true.cz>
- <20190507071914.GJ2269@kadam>
-Reply-To: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
+From: RogerCC.Lin <rogercc.lin@mediatek.com>
+Subject: Re: [RFC PATCH v3 1/1] mtd: rawnand: mtk: Re-license MTK NAND
+ driver as Dual MIT/GPL
+Date: Tue, 7 May 2019 16:40:15 +0800
+Message-ID: <1557218415.17298.1.camel@mtkswgap22>
+References: <20190429085116.60081-1-xiaolei.li@mediatek.com>
+ <20190429085116.60081-2-xiaolei.li@mediatek.com>
+ <82cc648b1e92d5ed6876b025a2da1821@milecki.pl>
+ <1557047534.26455.81.camel@mhfsdcap03>
+ <79539034414767c95e456a79391a18e7@milecki.pl>
+ <1557104180.26455.89.camel@mhfsdcap03>
+ <20190506101819.28cff338@collabora.com>
+ <1557133906.26455.91.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190507071914.GJ2269@kadam>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Cc: netdev@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, devel@driverdev.osuosl.org, Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Frank Rowand <frowand.list@gmail.com>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
+In-Reply-To: <1557133906.26455.91.camel@mhfsdcap03>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
+List-Post: <mailto:linux-mtd@lists.infradead.org>
+List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
+Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
+To: xiaolei li <xiaolei.li@mediatek.com>
+Cc: daniel.thompson@linaro.org, ryder.lee@mediatek.com, srv_heupstream@mediatek.com, richard@nod.at, miquel.raynal@bootlin.com, jorge.ramirez-ortiz@linaro.org, yingjoe.chen@mediatek.com, Boris Brezillon <boris.brezillon@collabora.com>, linux-mtd@lists.infradead.org, yellowriver2010@hotmail.com, =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Dan Carpenter <dan.carpenter@oracle.com> [2019-05-07 10:19:14]:
-
-Hi,
-
-> On Mon, May 06, 2019 at 11:24:43PM +0200, Petr Štetiar wrote:
-> > 
-> > this patch series is an attempt to fix the mess, I've somehow managed to
-> > introduce.
-> > 
-> > First patch in this series is defacto v5 of the previous 05/10 patch in the
-> > series, but since the v4 of this 05/10 patch wasn't picked up by the
-> > patchwork for some unknown reason, this patch wasn't applied with the other
-> > 9 patches in the series, so I'm resending it as a separate patch of this
-> > fixup series again.
-> 
-> I feel sort of ridiculous asking this over and over...  Maybe your spam
-> filter is eating my emails?
-
-nope, I've read your email, that's the only reason I've sent out this v2 which
-added Fixes: tag you've suggested in your email.
-
-> This bug was introduced in https://patchwork.ozlabs.org/patch/1094916/
-> "[v4,01/10] of_net: add NVMEM support to of_get_mac_address" but it
-> looks like no one applied it.
-
-this patch series is against net-next, and I've added Fixes: tag as you've
-requested in this v2 series[1] (which expands to commit[2] in net-next):
-
- Fixes: d01f449c008a ("of_net: add NVMEM support to of_get_mac_address")
-
-> You're acting as if it *was* applied but you refuse to answer my
-> question who applied it and which to which tree so I can figure out what
-> went wrong.
-
-it was applied[2] to David's net-next tree, but unfortunately partialy, just 9
-patches out of 10, as the patch 05/10 in that series (which is patch 1/4 in
-this series) never reached netdev mailing list and patchwork, probably because
-of some netdev mailing list software and/or patchwork hiccup, very likely due
-to the long list of recipients in that patch and as I'm not subscribed to the
-netdev (due to the high traffic) I'm probably treaten somehow differently.
-
-So to sum it up, I've simply thought, that it was enough to send out v2 with
-that Fixes: tag and considered it done.
-
-> I only see comments from last Friday that it shouldn't be applied...
-
-I'm sorry, but which comments do you mean exactly? Those about the
-`nvmem-mac-address` DT (sysfs) entry? If that is the case, from my point of
-view, I've provided reasonable arguments and nobody told me, that I'm wrong
-with my reasoning or NACKed this explicitly, so David probably considered my
-arguments good enough and merged it as it is? I don't have any other
-explanation.
-
-> I also told you on Friday in a different thread that that patch shouldn't be
-> applied.  Breaking git bisect is a bug, and we never do that. 
-
-Yes, and I agree with you, but I've simply thought, that if any of the
-maintainers who previously reviewed the series didn't objected about this,
-that they're possibly going to squash those patches by themselves during the
-merging process or that they're going to tell me to do so and I would address
-this in the latest interation of the patchset before merge.
-
-Anyway, is there any possibility how to fix that now?
-
-> I'm just very confused right now.  What I'm trying to do is figure out in
-> my head how this process failed so we can do better next time.
-
-I'm just occasional contributor, so I'm sorry, but I can hardly provide any
-input.
-
-1. https://patchwork.ozlabs.org/patch/1096054/
-2. https://git.kernel.org/pub/scm/linux/kernel/git/davem/net-next.git/commit/?id=d01f449c008a3f41fa44c603e28a7452ab8f8e68
-
-Cheers,
-
-Petr
+T24gTW9uLCAyMDE5LTA1LTA2IGF0IDE3OjExICswODAwLCB4aWFvbGVpIGxpIHdyb3RlOgo+IE1p
+cXVlbCwgQm9yaXMsIHRoYW5rcyBmb3IgeW91ciBBQ0suCj4gCj4gT24gTW9uLCAyMDE5LTA1LTA2
+IGF0IDEwOjE4ICswMjAwLCBCb3JpcyBCcmV6aWxsb24gd3JvdGU6Cj4gPiBPbiBNb24sIDYgTWF5
+IDIwMTkgMDg6NTY6MjAgKzA4MDAKPiA+IHhpYW9sZWkgbGkgPHhpYW9sZWkubGlAbWVkaWF0ZWsu
+Y29tPiB3cm90ZToKPiA+IAo+ID4gPiBIaSBSYWZhbCwKPiA+ID4gCj4gPiA+IE9uIFN1biwgMjAx
+OS0wNS0wNSBhdCAxNzowNiArMDIwMCwgUmFmYcWCIE1pxYJlY2tpIHdyb3RlOgo+ID4gPiA+IE9u
+IDIwMTktMDUtMDUgMTE6MTIsIHhpYW9sZWkgbGkgd3JvdGU6ICAKPiA+ID4gPiA+IFVwIHRvIG5v
+dywKPiA+ID4gPiA+IFhpYW9sZWkgTGkgPHhpYW9sZWkubGlAbWVkaWF0ZWsuY29tPiAodGhlIGF1
+dGhvciBhbmQgbWFqb3IgCj4gPiA+ID4gPiBjb250cmlidXRvciksCj4gPiA+ID4gPiBKb3JnZSBS
+YW1pcmV6LU9ydGl6IDxqb3JnZS5yYW1pcmV6LW9ydGl6QGxpbmFyby5vcmc+ICh0aGUgYXV0aG9y
+IGFuZAo+ID4gPiA+ID4gbWFqb3IgY29udHJpYnV0b3IpLAo+ID4gPiA+ID4gUnlkZXIgTGVlIDxy
+eWRlci5sZWVAbWVkaWF0ZWsuY29tPiAoZGV2ZWxvcGVyKSwKPiA+ID4gPiA+IFJhZmHFgiBNacWC
+ZWNraSA8cmFmYWxAbWlsZWNraS5wbD4gKGRldmVsb3BlcikKPiA+ID4gPiA+IHNlbnQgQUNLIGZv
+ciB0aGlzIFJGQyBwYXRjaC4KPiA+ID4gPiA+IAo+ID4gPiA+ID4gTWF5IEkgYXNrIGlmIGl0IGlz
+IGVub3VnaCB0byBhY2NlcHQgdGhpcyBjaGFuZ2U/IE9yIHNob3VsZCBJIHdhaXQgZm9yCj4gPiA+
+ID4gPiBvdGhlciBkZXZlbG9wZXIncyByZXNwb25zZT8gIAo+ID4gPiA+IAo+ID4gPiA+IEkgY2Fu
+J3QgaW1hZ2luZSByZS1saWNlbnNpbmcgc29tZW9uZSdzIHdvcmsgd2l0aG91dCBhIHBlcm1pc3Np
+b24uICAKPiA+ID4gCj4gPiA+IEkgaGF2ZSBubyBpbnRlbnRpb24gdG8gb2ZmZW5kIG90aGVyJ3Mg
+Y29udHJpYnV0aW9uLgo+ID4gPiBUaGF0IGlzIHdoeSBJIHNlbnQgdGhpcyBSRkMgcGF0Y2ggdG8g
+YXNrIGZvciBBQ0tzIGZyb20gY29udHJpYnV0b3JzLgo+ID4gPiAKPiA+ID4gPiAKPiA+ID4gPiBU
+aGUgYmVzdCB5b3UgY2FuIGRvIGlzIGlnbm9yaW5nIGNvbnRyaWJ1dG9ycyB0aGF0IHN1Ym1pdHRl
+ZCBjaGFuZ2VzIHRoYXQKPiA+ID4gPiBhcmVuJ3QgcmVhbGx5IGNvcHlyaWdodGFibGUgKHNvbWV0
+aGluZyBsaWtlIGZpeGluZyBhIGNvbW1lbnQgdHlwbywgc29tZQo+ID4gPiA+IGF1dG8tZ2VuZXJh
+dGVkIGRpZmYtcykuCj4gPiA+ID4gCj4gPiA+ID4gSSB1c2VkIGZvbGxvd2luZyBjb21tYW5kIHRv
+IGNoZWNrIG10a19uYW5kLmMgZmlsZSBoaXN0b3J5Ogo+ID4gPiA+ICMgZ2l0IGxvZyAtLWZvbGxv
+dyBkcml2ZXJzL210ZC9uYW5kL3Jhdy9tdGtfbmFuZC5jIHwgZ3JlcCAKPiA+ID4gPiAiU2lnbmVk
+LW9mZi1ieSIgfCBzb3J0IHwgdW5pcSAtYyB8IHNvcnQgLXIgLW4KPiA+ID4gPiAgICAgICAxOSAg
+ICAgU2lnbmVkLW9mZi1ieTogTWlxdWVsIFJheW5hbCA8bWlxdWVsLnJheW5hbEBib290bGluLmNv
+bT4KPiA+ID4gPiAgICAgICAxOCAgICAgU2lnbmVkLW9mZi1ieTogQm9yaXMgQnJlemlsbG9uIDxi
+b3Jpcy5icmV6aWxsb25AYm9vdGxpbi5jb20+Cj4gPiA+ID4gICAgICAgMTUgICAgIFNpZ25lZC1v
+ZmYtYnk6IEJvcmlzIEJyZXppbGxvbiAKPiA+ID4gPiA8Ym9yaXMuYnJlemlsbG9uQGZyZWUtZWxl
+Y3Ryb25zLmNvbT4KPiA+ID4gPiAgICAgICAgNiAgICAgU2lnbmVkLW9mZi1ieTogWGlhb2xlaSBM
+aSA8eGlhb2xlaS5saUBtZWRpYXRlay5jb20+Cj4gPiA+ID4gICAgICAgIDMgICAgIFNpZ25lZC1v
+ZmYtYnk6IFJvZ2VyQ0MgTGluIDxyb2dlcmNjLmxpbkBtZWRpYXRlay5jb20+Cj4gPiA+ID4gICAg
+ICAgIDIgICAgIFNpZ25lZC1vZmYtYnk6IE1pcXVlbCBSYXluYWwgCj4gPiA+ID4gPG1pcXVlbC5y
+YXluYWxAZnJlZS1lbGVjdHJvbnMuY29tPgo+ID4gPiA+ICAgICAgICAxICAgICBTaWduZWQtb2Zm
+LWJ5OiBXZWkgWW9uZ2p1biA8d2VpeW9uZ2p1bjFAaHVhd2VpLmNvbT4KPiA+ID4gPiAgICAgICAg
+MSAgICAgU2lnbmVkLW9mZi1ieTogUnlkZXIgTGVlIDxyeWRlci5sZWVAbWVkaWF0ZWsuY29tPgo+
+ID4gPiA+ICAgICAgICAxICAgICBTaWduZWQtb2ZmLWJ5OiBSYWZhxYIgTWnFgmVja2kgPHJhZmFs
+QG1pbGVja2kucGw+Cj4gPiA+ID4gICAgICAgIDEgICAgIFNpZ25lZC1vZmYtYnk6IFBldGVyIFBh
+biA8cGV0ZXJwYW5kb25nQG1pY3Jvbi5jb20+Cj4gPiA+ID4gICAgICAgIDEgICAgIFNpZ25lZC1v
+ZmYtYnk6IE1hc2FoaXJvIFlhbWFkYSAKPiA+ID4gPiA8eWFtYWRhLm1hc2FoaXJvQHNvY2lvbmV4
+dC5jb20+Cj4gPiA+ID4gICAgICAgIDEgICAgIFNpZ25lZC1vZmYtYnk6IEpvcmdlIFJhbWlyZXot
+T3J0aXogCj4gPiA+ID4gPGpvcmdlLnJhbWlyZXotb3J0aXpAbGluYXJvLm9yZz4KPiA+ID4gPiAK
+PiA+ID4gPiBJZGVhbGx5IHlvdSBzaG91bGQgc3RpbGwgZ2V0IGFja3MgZnJvbToKPiA+ID4gPiAK
+PiA+ID4gPiAxKSBNaXF1ZWwKPiA+ID4gPiBDb250cmlidXRvciBvZiAyMSBjaGFuZ2VzCj4gPiA+
+ID4gCj4gPiA+ID4gMikgQm9yaXMKPiA+ID4gPiBDb250cmlidXRvciBvZiAzMyBjaGFuZ2VzCj4g
+PiAKPiA+IE5vdCBzdXJlIHRoYXQncyByZWFsbHkgbmVjZXNzYXJ5IGdpdmVuIHRoZSB0eXBlIG9m
+IGNoYW5nZXMgZG9uZSBpbiB0aG9zZQo+ID4gMzMgY29tbWl0cyAobW9zdGx5IG1lY2hhbmljYWwg
+Y2hhbmdlcyBkdWUgdG8gbW9kaWZpY2F0aW9ucyBpbiB0aGUgTkFORAo+ID4gZnJhbWV3b3JrKSwg
+YnV0IGhlcmUgaXMgbXkKPiA+IAo+ID4gQWNrZWQtYnk6IEJvcmlzIEJyZXppbGxvbiA8Ym9yaXMu
+YnJlemlsbG9uQGNvbGxhYm9yYS5jb20+Cj4gPiAKPiA+ID4gPiAKPiA+ID4gPiAzKSBSb2dlckND
+Cj4gPiA+ID4gQ29udHJpYnV0b3Igb2YgMyBjaGFuZ2VzOgo+ID4gPiA+IDk4ZGVhOGQ3MTkzMSAo
+Im10ZDogbmFuZDogbXRrOiBTdXBwb3J0IE1UNzYyMiBOQU5EIGZsYXNoIGNvbnRyb2xsZXIuIikK
+PiA+ID4gPiBiNDVlZTU1MDFlZGUgKCJtdGQ6IG5hbmQ6IG10azogU3VwcG9ydCBkaWZmZXJlbnQg
+TVRLIE5BTkQgZmxhc2ggCj4gPiA+ID4gY29udHJvbGxlciBJUCIpCj4gPiA+ID4gNTU5ZTU4ZTdl
+ZDJkICgibXRkOiBuYW5kOiBmaXggY2hhbmNlcyB0byBjcmVhdGUgaW5jb21wbGV0ZSBFQ0MgZGF0
+YSB3aGVuIAo+ID4gPiA+IHdyaXRpbmciKQo+ID4gPiA+IApBY2tlZC1ieTogUm9nZXJDQyBMaW4g
+PHJvZ2VyY2MubGluQG1lZGlhdGVrLmNvbT4KPiA+ID4gPiA0KSBXZWkKPiA+ID4gPiBDb250cmli
+dXRvciBvZiAxIGNoYW5nZToKPiA+ID4gPiAwN2Y3NjQ0M2VmODEgKCJtdGQ6IG5hbmQ6IG1lZGlh
+dGVrOiByZW1vdmUgcmVkdW5kYW50IGRldl9lcnIgY2FsbCBpbiAKPiA+ID4gPiBtdGtfbmZjX3By
+b2JlKCkiKQo+ID4gPiA+IAo+ID4gPiA+IDUpIFBldGVyCj4gPiA+ID4gQ29udHJpYnV0b3Igb2Yg
+MSBjaGFuZ2U6Cj4gPiA+ID4gZDQwOTJkNzZhNGE0ICgibXRkOiBuYW5kOiBSZW5hbWUgbmFuZC5o
+IGludG8gcmF3bmFuZC5oIikKPiA+ID4gPiAKPiA+ID4gPiA2KSBNYXNhaGlybwo+ID4gPiA+IENv
+bnRyaWJ1dG9yIG9mIDEgY2hhbmdlOgo+ID4gPiA+IGYwZGJlNGFhMzVlNyAoIm10ZDogbmFuZDog
+bWVkaWF0ZWs6IHJldHVybiBlcnJvciBjb2RlIG9mIAo+ID4gPiA+IG5hbmRfc2Nhbl9pZGVudC90
+YWlsKCkgb24gZXJyb3IiKQo+ID4gPiA+IAo+ID4gPiA+IEkgZ3Vlc3Mgd2UgY291bGQgYWNjZXB0
+IHlvdXIgcGF0Y2ggd2l0aG91dCBhY2tzIGZyb20gV2VpLCBQZXRlciBhbmQgCj4gPiA+ID4gTWFz
+YWhpcm8uCj4gPiA+ID4gCj4gPiA+ID4gWW91IGRlZmluaXRlbHkgbmVlZCBhbiBhcHByb3ZhbCBm
+cm9tIE1pcXVlbCwgQm9yaXMgYW5kIFJvZ2VyQ0MuCj4gPiA+ID4gCj4gPiA+ID4gSXQgZG9lc24n
+dCBzZWVtIHlvdSB0b29rIHRoaXMgcmUtbGljZW5zaW5nIHRhc2sgdG9vIHNlcmlvdXNseS4KPiA+
+ID4gPiAKPiA+ID4gPiBQbGVhc2UgcGF5IG1vcmUgYXR0ZW50aW9uIHRvIHRoaXMgbGljZW5zaW5n
+IHByb2JsZW0sIHlvdSBjYW4gc3RhcnQgd2l0aCAKPiA+ID4gPiBkb2luZwo+ID4gPiA+IGEgc2lt
+aWxhciByZXNlYXJjaCBmb3IgbXRrX2VjYy5jIGFuZCBtdGtfZWNjLmguICAKPiA+ID4gCj4gPiA+
+IFRoYW5rcyBmb3IgeW91ciBBQ0sgYW5kIGdvb2Qgc3VnZ2VzdGlvbi4gSXQgaXMgcmVhbGx5IGhl
+bHBmdWwgZm9yIG1lLgo+ID4gPiAKPiA+ID4gVGhhbmtzLAo+ID4gPiBYaWFvbGVpCj4gPiA+IAo+
+ID4gCj4gCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eCBNVEQgZGlzY3Vzc2lvbiBtYWlsaW5nIGxpc3QKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tdGQvCg==
