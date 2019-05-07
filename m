@@ -1,56 +1,61 @@
-From: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [v2,1/3] dt-bindings: soc: Add MT8183 emi dt-bindings
-Date: Tue, 7 May 2019 17:15:23 +0800
-Message-ID: <1557220523-24992-1-git-send-email-xixi.chen@mediatek.com>
+From: Xiaolei Li <xiaolei.li@mediatek.com>
+Subject: [RFC PATCH v4 0/1] Re-license MTK NAND driver
+Date: Tue, 7 May 2019 17:20:19 +0800
+Message-ID: <20190507092020.1917-1-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
+List-Post: <mailto:linux-mtd@lists.infradead.org>
+List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
+Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
+To: miquel.raynal@bootlin.com, richard@nod.at
+Cc: daniel.thompson@linaro.org, ryder.lee@mediatek.com, arnd@arndb.de, srv_heupstream@mediatek.com, yamada.masahiro@socionext.com, yellowriver2010@hotmail.com, gustavo@embeddedor.com, jorge.ramirez-ortiz@linaro.org, matthias.bgg@gmail.com, boris.brezillon@collabora.com, linux-mtd@lists.infradead.org, weiyongjun1@huawei.com, yingjoe.chen@mediatek.com, rafal@milecki.pl, linux-mediatek@lists.infradead.org, xiaolei.li@mediatek.com, rogercc.lin@mediatek.com, dan.carpenter@oracle.com, peterpandong@micron.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Add emi dt-bindings of MT8183 in binding document.
+Hello,
 
-Signed-off-by: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- .../bindings/memory-controllers/mediatek,emi.txt      | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
+Currently, MTK NAND driver is licensed as GPL. And we would like to
+modify and publish it in bootloader with MIT license. So, here we send
+this RFC patch to solicit ACKs from MTK NAND driver authors and
+contributors whether we can re-license MTK NAND driver as dual MIT/GPL.
 
-diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt b/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
-new file mode 100644
-index 0000000..a19e3b3
---- /dev/null
-+++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
-@@ -0,0 +1,19 @@
-+EMI (External Memory Interface)
-+
-+Required properties:
-+- compatible : must be one of :
-+	"mediatek,mt8183-emi"
-+- reg : the register and size of the EMI block.
-+- interrupts : includes MPU, CGM, ELM.
-+
-+Example:
-+	emi@10219000 {
-+	compatible = "mediatek,mt8183-emi";
-+	reg = <0 0x10219000 0 0x1000>, /* CEN EMI */
-+		  <0 0x10226000 0 0x1000>, /* EMI MPU */
-+		  <0 0x1022d000 0 0x1000>, /* CHA EMI */
-+		  <0 0x10235000 0 0x1000>; /* CHB EMI */
-+	interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_LOW>, /* MPU */
-+			 <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>, /* CGM */
-+			 <GIC_SPI 155 IRQ_TYPE_LEVEL_HIGH>; /* ELM */
-+};
+Thanks and looking forward to your reply,
+Xiaolei
+
+Patch v4:
+---------
+- Append ACK from Miquel, Boris, RogerCC, Ryder, Rafal.
+- Use "git log --follow" to find all contributors and add them all in Cc list.
+
+Patch v3:
+---------
+- Add license text replacement description in commit log.
+
+Patch v2:
+---------
+- Add Ryder, Rafal, Wen in CC list.
+- Introduce why we want to re-license MTK NAND driver.
+
+Xiaolei Li (1):
+  mtd: rawnand: mtk: Re-license MTK NAND driver as Dual MIT/GPL
+
+ drivers/mtd/nand/raw/mtk_ecc.c  | 12 ++----------
+ drivers/mtd/nand/raw/mtk_ecc.h  |  4 +---
+ drivers/mtd/nand/raw/mtk_nand.c | 12 ++----------
+ 3 files changed, 5 insertions(+), 23 deletions(-)
+
 -- 
-1.9.1
+2.18.0
+
+
+
+______________________________________________________
+Linux MTD discussion mailing list
+http://lists.infradead.org/mailman/listinfo/linux-mtd/
