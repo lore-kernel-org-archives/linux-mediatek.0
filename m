@@ -1,63 +1,57 @@
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Subject: Re: [PATCH net-next v2 0/4] of_get_mac_address ERR_PTR fixes
-Date: Tue, 7 May 2019 11:07:31 +0200
-Message-ID: <CAMuHMdVra2h00OUCxZ1s=ExpkgkN_SGZdUtdohBapjNHf6hesQ@mail.gmail.com>
-References: <1557177887-30446-1-git-send-email-ynezz@true.cz>
+From: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] [1/3] dt-bindings: soc: Add MT8183 emi dt-bindings
+Date: Tue, 7 May 2019 17:12:53 +0800
+Message-ID: <1557220373-24853-1-git-send-email-xixi.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1557177887-30446-1-git-send-email-ynezz@true.cz>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Petr_=C5=A0tetiar?= <ynezz@true.cz>
-Cc: netdev <netdev@vger.kernel.org>, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, driverdevel <devel@driverdev.osuosl.org>, Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Frank Rowand <frowand.list@gmail.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Heiner Kallweit <hkallweit1@gmail.com>, Linux-Renesas <linux-renesas-soc@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Petr,
+Add emi dt-bindings of MT8183 in binding document.
 
-On Mon, May 6, 2019 at 11:25 PM Petr Štetiar <ynezz@true.cz> wrote:
-> this patch series is an attempt to fix the mess, I've somehow managed to
-> introduce.
->
-> First patch in this series is defacto v5 of the previous 05/10 patch in the
-> series, but since the v4 of this 05/10 patch wasn't picked up by the
-> patchwork for some unknown reason, this patch wasn't applied with the other
-> 9 patches in the series, so I'm resending it as a separate patch of this
-> fixup series again.
->
-> Second patch is a result of this rebase against net-next tree, where I was
-> checking again all current users of of_get_mac_address and found out, that
-> there's new one in DSA, so I've converted this user to the new ERR_PTR
-> encoded error value as well.
->
-> Third patch which was sent as v5 wasn't considered for merge, but I still
-> think, that we need to check for possible NULL value, thus current IS_ERR
-> check isn't sufficient and we need to use IS_ERR_OR_NULL instead.
->
-> Fourth patch fixes warning reported by kbuild test robot.
->
-> Cheers,
->
-> Petr
->
-> Petr Štetiar (4):
->   net: ethernet: support of_get_mac_address new ERR_PTR error
+Change-Id: I6704ad444093778462b9a16f6c03a1ca7ecc1e0d
+Signed-off-by: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ .../bindings/memory-controllers/mediatek,emi.txt      | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
 
-I didn't receive the patch through email, but patchwork does have it:
-https://patchwork.ozlabs.org/patch/1096054/
-
-This fixes the crash ("Unable to handle kernel paging request atvirtual
-address fffffffe") I'm seeing with sh_eth on r8a7791/koelsch, so
-
-Tested-by: Geert Uytterhoeven <geert+renesas@glider.be>
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt b/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
+new file mode 100644
+index 0000000..a19e3b3
+--- /dev/null
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
+@@ -0,0 +1,19 @@
++EMI (External Memory Interface)
++
++Required properties:
++- compatible : must be one of :
++	"mediatek,mt8183-emi"
++- reg : the register and size of the EMI block.
++- interrupts : includes MPU, CGM, ELM.
++
++Example:
++	emi@10219000 {
++	compatible = "mediatek,mt8183-emi";
++	reg = <0 0x10219000 0 0x1000>, /* CEN EMI */
++		  <0 0x10226000 0 0x1000>, /* EMI MPU */
++		  <0 0x1022d000 0 0x1000>, /* CHA EMI */
++		  <0 0x10235000 0 0x1000>; /* CHB EMI */
++	interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_LOW>, /* MPU */
++			 <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>, /* CGM */
++			 <GIC_SPI 155 IRQ_TYPE_LEVEL_HIGH>; /* ELM */
++};
 -- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+1.9.1
