@@ -1,149 +1,127 @@
-From: Xiaolei Li <xiaolei.li@mediatek.com>
-Subject: [PATCH v3 2/4] mtd: rawnand: mtk: Improve data sampling timing for
- read cycle
-Date: Tue, 7 May 2019 18:25:39 +0800
-Message-ID: <20190507102541.34341-3-xiaolei.li@mediatek.com>
-References: <20190507102541.34341-1-xiaolei.li@mediatek.com>
+From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal-g1n6cQUeyibVItvQsEIGlw@public.gmane.org>
+Subject: Re: [RFC PATCH v4 1/1] mtd: rawnand: mtk: Re-license MTK NAND driver
+ as Dual MIT/GPL
+Date: Tue, 7 May 2019 12:48:54 +0200
+Message-ID: <3edbd5a4-4226-4cec-052a-81f7251817a1@milecki.pl>
+References: <20190507092020.1917-1-xiaolei.li@mediatek.com>
+ <20190507092020.1917-2-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
-In-Reply-To: <20190507102541.34341-1-xiaolei.li@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
-List-Post: <mailto:linux-mtd@lists.infradead.org>
-List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
-Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
-To: miquel.raynal@bootlin.com, richard@nod.at
-Cc: linux-mediatek@lists.infradead.org, xiaolei.li@mediatek.com, linux-mtd@lists.infradead.org, srv_heupstream@mediatek.com
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190507092020.1917-2-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org
+Cc: daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, gustavo-L1vi/lXTdts+Va1GwOuvDg@public.gmane.org, yellowriver2010-PkbjNfxxIARBDgjK7y7TUQ@public.gmane.org, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org, peterpandong-AL4WhLSQfzjQT0dZR+AlfA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Currently, we expand RE# low level time by choosing the max value
-between RE# pulse width and RE# access time, and sample data at the
-rising edge of RE#.
-
-Then, if RE# access time is bigger than RE# pulse width, the real
-read cycle time may be more than NAND SPEC required. This makes
-read performance be worse than that expected.
-
-This patch improves data sampling timing by calculating RE# low level
-time according to RE# pulse width. If RE# access time is bigger than
-RE# pulse width, then delay sampling data timing.
-
-The result of contrast test base on MT2712 evaluat board is as follow.
-
-nand: Micron MT29F16G08ADBCAH4
-nand: 2048 MiB, SLC, erase size: 256 KiB, page size: 4096, OOB size: 224
-NFI 2x clock rate: 124800000 HZ.
-
-Read speed without this patch:
-mtd_speedtest: page read speed is 14012 KiB/s
-mtd_speedtest: 2 page read speed is 14860 KiB/s
-
-Read speed with this patch:
-mtd_speedtest: page read speed is 18724 KiB/s
-mtd_speedtest: 2 page read speed is 18713 KiB/s
-
-Signed-off-by: Xiaolei Li <xiaolei.li@mediatek.com>
-Reviewed-by: Miquel Raynal <miquel.raynal@bootlin.com>
----
- drivers/mtd/nand/raw/mtk_nand.c | 46 ++++++++++++++++++++++++++-------
- 1 file changed, 36 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
-index 717f17bcffb4..6b79a0f9aef8 100644
---- a/drivers/mtd/nand/raw/mtk_nand.c
-+++ b/drivers/mtd/nand/raw/mtk_nand.c
-@@ -87,6 +87,10 @@
- #define NFI_FDMM(x)		(0xA4 + (x) * sizeof(u32) * 2)
- #define NFI_FDM_MAX_SIZE	(8)
- #define NFI_FDM_MIN_SIZE	(1)
-+#define NFI_DEBUG_CON1		(0x220)
-+#define		STROBE_MASK		GENMASK(4, 3)
-+#define		STROBE_SHIFT		(3)
-+#define		MAX_STROBE_DLY		(3)
- #define NFI_MASTER_STA		(0x224)
- #define		MASTER_STA_MASK		(0x0FFF)
- #define NFI_EMPTY_THRESH	(0x23C)
-@@ -509,7 +513,7 @@ static int mtk_nfc_setup_data_interface(struct nand_chip *chip, int csline,
- 	struct mtk_nfc *nfc = nand_get_controller_data(chip);
- 	const struct nand_sdr_timings *timings;
- 	u32 rate, tpoecs, tprecs, tc2r, tw2r, twh, twst = 0, trlt = 0;
--	u32 thold;
-+	u32 temp, tsel = 0;
- 
- 	timings = nand_get_sdr_timings(conf);
- 	if (IS_ERR(timings))
-@@ -546,30 +550,52 @@ static int mtk_nfc_setup_data_interface(struct nand_chip *chip, int csline,
- 	twh &= 0xf;
- 
- 	/* Calculate real WE#/RE# hold time in nanosecond */
--	thold = (twh + 1) * 1000000 / rate;
-+	temp = (twh + 1) * 1000000 / rate;
- 	/* nanosecond to picosecond */
--	thold *= 1000;
-+	temp *= 1000;
- 
- 	/*
- 	 * WE# low level time should be expaned to meet WE# pulse time
- 	 * and WE# cycle time at the same time.
- 	 */
--	if (thold < timings->tWC_min)
--		twst = timings->tWC_min - thold;
-+	if (temp < timings->tWC_min)
-+		twst = timings->tWC_min - temp;
- 	twst = max(timings->tWP_min, twst) / 1000;
- 	twst = DIV_ROUND_UP(twst * rate, 1000000) - 1;
- 	twst &= 0xf;
- 
- 	/*
--	 * RE# low level time should be expaned to meet RE# pulse time,
--	 * RE# access time and RE# cycle time at the same time.
-+	 * RE# low level time should be expaned to meet RE# pulse time
-+	 * and RE# cycle time at the same time.
- 	 */
--	if (thold < timings->tRC_min)
--		trlt = timings->tRC_min - thold;
--	trlt = max3(trlt, timings->tREA_max, timings->tRP_min) / 1000;
-+	if (temp < timings->tRC_min)
-+		trlt = timings->tRC_min - temp;
-+	trlt = max(trlt, timings->tRP_min) / 1000;
- 	trlt = DIV_ROUND_UP(trlt * rate, 1000000) - 1;
- 	trlt &= 0xf;
- 
-+	/* Calculate RE# pulse time in nanosecond. */
-+	temp = (trlt + 1) * 1000000 / rate;
-+	/* nanosecond to picosecond */
-+	temp *= 1000;
-+	/*
-+	 * If RE# access time is bigger than RE# pulse time,
-+	 * delay sampling data timing.
-+	 */
-+	if (temp < timings->tREA_max) {
-+		tsel = timings->tREA_max / 1000;
-+		tsel = DIV_ROUND_UP(tsel * rate, 1000000);
-+		tsel -= (trlt + 1);
-+		if (tsel > MAX_STROBE_DLY) {
-+			trlt += tsel - MAX_STROBE_DLY;
-+			tsel = MAX_STROBE_DLY;
-+		}
-+	}
-+	temp = nfi_readl(nfc, NFI_DEBUG_CON1);
-+	temp &= ~STROBE_MASK;
-+	temp |= tsel << STROBE_SHIFT;
-+	nfi_writel(nfc, temp, NFI_DEBUG_CON1);
-+
- 	/*
- 	 * ACCON: access timing control register
- 	 * -------------------------------------
--- 
-2.18.0
-
-
-______________________________________________________
-Linux MTD discussion mailing list
-http://lists.infradead.org/mailman/listinfo/linux-mtd/
+QXJuZDogd291bGQgeW91IHNlbmQgeW91IEFjaywganVzdCBzbyB3ZSBhcmUgMTAwJSBvbiBhIGxl
+Z2FsIHNpZGU/CgoKT24gMDcuMDUuMjAxOSAxMToyMCwgWGlhb2xlaSBMaSB3cm90ZToKPiBJdCBp
+cyB3YW50ZWQgdG8gdXNlIE1USyBOQU5EIGRyaXZlciB3aXRoIEdQTC0yLjAgb3IgTUlUIGxpY2Vu
+c2UuCj4gQnV0IG5vdyBpdCBpcyBvbmx5IGxpY2Vuc2VkIGFzIEdQTC0yLjAuCj4gU28gcmUtbGlj
+ZW5zZSBpdCBhcyBkdWFsIE1JVC9HUEwgYW5kIHJlcGxhY2UgbGljZW5zZSB0ZXh0IHdpdGgKPiBT
+UERYIHRhZy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBYaWFvbGVpIExpIDx4aWFvbGVpLmxpQG1lZGlh
+dGVrLmNvbT4KPiBBY2tlZC1ieTogSm9yZ2UgUmFtaXJlei1PcnRpeiA8am9yZ2UucmFtaXJlei1v
+cnRpekBsaW5hcm8ub3JnPgo+IEFja2VkLWJ5OiBSeWRlciBMZWUgPHJ5ZGVyLmxlZUBtZWRpYXRl
+ay5jb20+Cj4gQWNrZWQtYnk6IFJhZmHFgiBNacWCZWNraSA8cmFmYWxAbWlsZWNraS5wbD4KPiBB
+Y2tlZC1ieTogTWlxdWVsIFJheW5hbCA8bWlxdWVsLnJheW5hbEBib290bGluLmNvbT4KPiBBY2tl
+ZC1ieTogQm9yaXMgQnJlemlsbG9uIDxib3Jpcy5icmV6aWxsb25AY29sbGFib3JhLmNvbT4KPiBB
+Y2tlZC1ieTogUm9nZXJDQyBMaW4gPHJvZ2VyY2MubGluQG1lZGlhdGVrLmNvbT4KCgpGb3IgbXRr
+X25hbmQuYyB3ZSBhcmUgbWlzc2luZyBhY2tzIGZyb20gKGNvLSlhdXRob3JzIG9mIGZvbGxvd2lu
+ZyBjb21taXRzOgoxKSBXZWk6Cmh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9r
+ZXJuZWwvZ2l0L3RvcnZhbGRzL2xpbnV4LmdpdC9jb21taXQvP2lkPTA3Zjc2NDQzZWY4MWUyYjc2
+YmI2Zjc4NThiYTE4M2NkNjAzNTdhZGEKMikgUGV0ZXI6Cmh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcv
+cHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L3RvcnZhbGRzL2xpbnV4LmdpdC9jb21taXQvP2lkPWQ0
+MDkyZDc2YTRhNGU1N2I2NTkxMDg5OTk0OGE4M2NjODY0NmM1YTUKMykgTWFzYWhpcm86Cmh0dHBz
+Oi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L3RvcnZhbGRzL2xpbnV4
+LmdpdC9jb21taXQvP2lkPWYwZGJlNGFhMzVlNzNlNDI4MmQ5NDQ2YWJiODkwMGFiMDYzNmQ0ODMK
+CkFsbCBhcmUgYWJzb2x1dGVseSB0cml2aWFsLgoKCkZvciBtdGtfZWNjLmMgYXJlIGFyZSBtaXNz
+aW5nIGFja3MgZnJvbSAoY28tKWF1dGhvcnMgb2YgZm9sbG93aW5nIGNvbW1pdHM6CjEpIFdlbjoK
+aHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvdG9ydmFsZHMv
+bGludXguZ2l0L2NvbW1pdC8/aWQ9MDExOTcyMGEwMGIyMDA3NGE1MTI0NTQyN2YwNTM2NmVkZTJm
+YTkwYQoyKSBHdXN0YXZvOgpodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2Vy
+bmVsL2dpdC90b3J2YWxkcy9saW51eC5naXQvY29tbWl0Lz9pZD0yMzg3MDliMjIwOTdhMTY4Mzkw
+Nzg1MzBlMGExMDgxMmRkZTg2ZjE2CjMpIEFybmQ6Cmh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHVi
+L3NjbS9saW51eC9rZXJuZWwvZ2l0L3RvcnZhbGRzL2xpbnV4LmdpdC9jb21taXQvP2lkPThmZjA1
+MTNiZGNkZDcxZTg0YWE1NjFjY2UyMTY2NzVkNDNmYjQxYjgKClRoZSBvbmx5IC9jb21wbGV4LyBj
+aGFuZ2UgaXMgZnJvbSBBcm5kLiBJJ20gbm90IHN1cmUgaWYgdGhhdCBpcwpjb3B5cmlnaHRhYmxl
+IG9yIG5vdC4KCgoKCiMgZ2l0IGxvZyAtLWZvbGxvdyBkcml2ZXJzL210ZC9uYW5kL3Jhdy9tdGtf
+bmFuZC5jIHwgZ3JlcCAiU2lnbmVkLW9mZi1ieSIgfCBzb3J0IHwgdW5pcSAtYyB8IHNvcnQgLW4g
+LXIKICAgICAgMjAgICAgIFNpZ25lZC1vZmYtYnk6IE1pcXVlbCBSYXluYWwgPG1pcXVlbC5yYXlu
+YWxAYm9vdGxpbi5jb20+CiAgICAgIDE4ICAgICBTaWduZWQtb2ZmLWJ5OiBCb3JpcyBCcmV6aWxs
+b24gPGJvcmlzLmJyZXppbGxvbkBib290bGluLmNvbT4KICAgICAgMTUgICAgIFNpZ25lZC1vZmYt
+Ynk6IEJvcmlzIEJyZXppbGxvbiA8Ym9yaXMuYnJlemlsbG9uQGZyZWUtZWxlY3Ryb25zLmNvbT4K
+ICAgICAgIDYgICAgIFNpZ25lZC1vZmYtYnk6IFhpYW9sZWkgTGkgPHhpYW9sZWkubGlAbWVkaWF0
+ZWsuY29tPgogICAgICAgMyAgICAgU2lnbmVkLW9mZi1ieTogUm9nZXJDQyBMaW4gPHJvZ2VyY2Mu
+bGluQG1lZGlhdGVrLmNvbT4KICAgICAgIDIgICAgIFNpZ25lZC1vZmYtYnk6IE1pcXVlbCBSYXlu
+YWwgPG1pcXVlbC5yYXluYWxAZnJlZS1lbGVjdHJvbnMuY29tPgogICAgICAgMSAgICAgU2lnbmVk
+LW9mZi1ieTogV2VpIFlvbmdqdW4gPHdlaXlvbmdqdW4xQGh1YXdlaS5jb20+CiAgICAgICAxICAg
+ICBTaWduZWQtb2ZmLWJ5OiBSeWRlciBMZWUgPHJ5ZGVyLmxlZUBtZWRpYXRlay5jb20+CiAgICAg
+ICAxICAgICBTaWduZWQtb2ZmLWJ5OiBSYWZhxYIgTWnFgmVja2kgPHJhZmFsQG1pbGVja2kucGw+
+CiAgICAgICAxICAgICBTaWduZWQtb2ZmLWJ5OiBQZXRlciBQYW4gPHBldGVycGFuZG9uZ0BtaWNy
+b24uY29tPgogICAgICAgMSAgICAgU2lnbmVkLW9mZi1ieTogTWFzYWhpcm8gWWFtYWRhIDx5YW1h
+ZGEubWFzYWhpcm9Ac29jaW9uZXh0LmNvbT4KICAgICAgIDEgICAgIFNpZ25lZC1vZmYtYnk6IEpv
+cmdlIFJhbWlyZXotT3J0aXogPGpvcmdlLnJhbWlyZXotb3J0aXpAbGluYXJvLm9yZz4KICAgICAg
+IDEgICAgIFNpZ25lZC1vZmYtYnk6IEJvcmlzIEJyZXppbGxvbiA8YmJyZXppbGxvbkBrZXJuZWwu
+b3JnPgoKKiBCb3JpcyAoY29udHJpYnV0b3Igb2YgMzQgY2hhbmdlcykgLSBBY2tlZAoqIE1pcXVl
+bCAoY29udHJpYnV0b3Igb2YgMjIgY2hhbmdlcykgLSBBY2tlZAoqIFhpYW9sZWkgKGNvbnRyaWJ1
+dG9yIG9mIDYgY2hhbmdlcykgLSBTaWduZWQKKiBSb2dlckNDIChjb250cmlidXRvciBvZiAzIGNo
+YW5nZXMpIC0gQWNrZWQKKiBSYWZhxYIgKGNvbnRyaWJ1dG9yIG9mIDEgY2hhbmdlKSAtIEFja2Vk
+CiogSm9yZ2UgKGNvbnRyaWJ1dG9yIG9mIDEgY2hhbmdlKSAtIEFja2VkCiogUnlkZXIgKGNvbnRy
+aWJ1dG9yIG9mIDEgY2hhbmdlKSAtIEFja2VkCgoqIFdlaSAoY29udHJpYnV0b3Igb2YgMSBjaGFu
+Z2UpOgowN2Y3NjQ0M2VmODEgKCJtdGQ6IG5hbmQ6IG1lZGlhdGVrOiByZW1vdmUgcmVkdW5kYW50
+IGRldl9lcnIgY2FsbCBpbiBtdGtfbmZjX3Byb2JlKCkiKQoKKiBQZXRlciAoY29udHJpYnV0b3Ig
+b2YgMSBjaGFuZ2UpOgpkNDA5MmQ3NmE0YTQgKCJtdGQ6IG5hbmQ6IFJlbmFtZSBuYW5kLmggaW50
+byByYXduYW5kLmgiKQoKKiBNYXNhaGlybyAoY29udHJpYnV0b3Igb2YgMSBjaGFuZ2UpOgpmMGRi
+ZTRhYTM1ZTcgKCJtdGQ6IG5hbmQ6IG1lZGlhdGVrOiByZXR1cm4gZXJyb3IgY29kZSBvZiBuYW5k
+X3NjYW5faWRlbnQvdGFpbCgpIG9uIGVycm9yIikKCgoKCiMgZ2l0IGxvZyAtLWZvbGxvdyBkcml2
+ZXJzL210ZC9uYW5kL3Jhdy9tdGtfZWNjLmMgfCBncmVwICJTaWduZWQtb2ZmLWJ5IiB8IHNvcnQg
+fCB1bmlxIC1jIHwgc29ydCAtbiAtcgogICAgICAxMyAgICAgU2lnbmVkLW9mZi1ieTogQm9yaXMg
+QnJlemlsbG9uIDxib3Jpcy5icmV6aWxsb25AZnJlZS1lbGVjdHJvbnMuY29tPgogICAgICAgNiAg
+ICAgU2lnbmVkLW9mZi1ieTogWGlhb2xlaSBMaSA8eGlhb2xlaS5saUBtZWRpYXRlay5jb20+CiAg
+ICAgICAzICAgICBTaWduZWQtb2ZmLWJ5OiBSb2dlckNDIExpbiA8cm9nZXJjYy5saW5AbWVkaWF0
+ZWsuY29tPgogICAgICAgMiAgICAgU2lnbmVkLW9mZi1ieTogQm9yaXMgQnJlemlsbG9uIDxib3Jp
+cy5icmV6aWxsb25AYm9vdGxpbi5jb20+CiAgICAgICAxICAgICBTaWduZWQtb2ZmLWJ5OiBXZW4g
+WWFuZyA8eWVsbG93cml2ZXIyMDEwQGhvdG1haWwuY29tPgogICAgICAgMSAgICAgU2lnbmVkLW9m
+Zi1ieTogUnlkZXIgTGVlIDxyeWRlci5sZWVAbWVkaWF0ZWsuY29tPgogICAgICAgMSAgICAgU2ln
+bmVkLW9mZi1ieTogTWlxdWVsIFJheW5hbCA8bWlxdWVsLnJheW5hbEBib290bGluLmNvbT4KICAg
+ICAgIDEgICAgIFNpZ25lZC1vZmYtYnk6IEpvcmdlIFJhbWlyZXotT3J0aXogPGpvcmdlLnJhbWly
+ZXotb3J0aXpAbGluYXJvLm9yZz4KICAgICAgIDEgICAgIFNpZ25lZC1vZmYtYnk6IEd1c3Rhdm8g
+QS4gUi4gU2lsdmEgPGd1c3Rhdm9AZW1iZWRkZWRvci5jb20+CiAgICAgICAxICAgICBTaWduZWQt
+b2ZmLWJ5OiBEYW4gQ2FycGVudGVyIDxkYW4uY2FycGVudGVyQG9yYWNsZS5jb20+CiAgICAgICAx
+ICAgICBTaWduZWQtb2ZmLWJ5OiBBcm5kIEJlcmdtYW5uIDxhcm5kQGFybmRiLmRlPgoKKiBCb3Jp
+cyAoY29udHJpYnV0b3Igb2YgMTUgY2hhbmdlcykgLSBBY2tlZAoqIFhpYW9sZWkgKGNvbnRyaWJ1
+dG9yIG9mIDYgY2hhbmdlcykgLSBTaWduZWQKKiBSb2dlckNDIChjb250cmlidXRvciBvZiAzIGNo
+YW5nZXMpIC0gQWNrZWQKKiBSeWRlciAoY29udHJpYnV0b3Igb2YgMSBjaGFuZ2UpIC0gQWNrZWQK
+KiBNaXF1ZWwgKGNvbnRyaWJ1dG9yIG9mIDEgY2hhbmdlKSAtIEFja2VkCiogSm9yZ2UgKGNvbnRy
+aWJ1dG9yIG9mIDEgY2hhbmdlKSAtIEFja2VkCiogRGFuIChjb250cmlidXRvciBvZiAxIGNoYW5n
+ZSkgLSBBY2tlZAoKKiBXZW4gKGNvbnRyaWJ1dG9yIG9mIDEgY2hhbmdlKToKMDExOTcyMGEwMGIy
+ICgibXRkOiByYXduYW5kOiBtdGs6IGZpeCBwb3NzaWJsZSBvYmplY3QgcmVmZXJlbmNlIGxlYWsi
+KQoKKiBHdXN0YXZvIChjb250cmlidXRvciBvZiAxIGNoYW5nZSk6CjIzODcwOWIyMjA5NyAoIm10
+ZDogbmFuZDogbXRrOiBmaXggZXJyb3IgcmV0dXJuIGNvZGUgaW4gbXRrX2VjY19wcm9iZSgpIikK
+CiogQXJuZCAoY29udHJpYnV0b3Igb2YgMSBjaGFuZ2UpOgo4ZmYwNTEzYmRjZGQgKCJtdGQ6IG10
+azogYXZvaWQgd2FybmluZyBpbiBtdGtfZWNjX2VuY29kZSIpCgoKCgojIGdpdCBsb2cgLS1mb2xs
+b3cgZHJpdmVycy9tdGQvbmFuZC9yYXcvbXRrX2VjYy5oIHwgZ3JlcCAiU2lnbmVkLW9mZi1ieSIg
+fCBzb3J0IHwgdW5pcSAtYyB8IHNvcnQgLW4gLXIKICAgICAgIDMgICAgIFNpZ25lZC1vZmYtYnk6
+IEJvcmlzIEJyZXppbGxvbiA8Ym9yaXMuYnJlemlsbG9uQGZyZWUtZWxlY3Ryb25zLmNvbT4KICAg
+ICAgIDEgICAgIFNpZ25lZC1vZmYtYnk6IFhpYW9sZWkgTGkgPHhpYW9sZWkubGlAbWVkaWF0ZWsu
+Y29tPgogICAgICAgMSAgICAgU2lnbmVkLW9mZi1ieTogUm9nZXJDQyBMaW4gPHJvZ2VyY2MubGlu
+QG1lZGlhdGVrLmNvbT4KICAgICAgIDEgICAgIFNpZ25lZC1vZmYtYnk6IEpvcmdlIFJhbWlyZXot
+T3J0aXogPGpvcmdlLnJhbWlyZXotb3J0aXpAbGluYXJvLm9yZz4KICAgICAgIDEgICAgIFNpZ25l
+ZC1vZmYtYnk6IEJvcmlzIEJyZXppbGxvbiA8Ym9yaXMuYnJlemlsbG9uQGJvb3RsaW4uY29tPgoK
+KiBCb3JpcyAoY29udHJpYnV0b3Igb2YgNCBjaGFuZ2VzKSAtIEFja2VkCiogWGlhb2xlaSAoY29u
+dHJpYnV0b3Igb2YgMSBjaGFuZ2UpIC0gU2lnbmVkCiogUm9nZXJDQyAoY29udHJpYnV0b3Igb2Yg
+MSBjaGFuZ2UpIC0gQWNrZWQKKiBKb3JnZSAoY29udHJpYnV0b3Igb2YgMSBjaGFuZ2UpIC0gQWNr
+ZWQKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
+LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3Jn
+Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0
+ZWsK
