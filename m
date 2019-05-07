@@ -1,50 +1,56 @@
-From: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [PATCH net-next v2 0/4] of_get_mac_address ERR_PTR fixes
-Date: Tue, 7 May 2019 10:19:14 +0300
-Message-ID: <20190507071914.GJ2269@kadam>
-References: <1557177887-30446-1-git-send-email-ynezz@true.cz>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [v3 2/3] drm/mediatek: dpi dual edge support
+Date: Tue, 7 May 2019 15:35:28 +0800
+Message-ID: <1557214528.3498.3.camel@mtksdaap41>
+References: <20190416055242.75764-1-jitao.shi@mediatek.com>
+ <20190416055242.75764-3-jitao.shi@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
-Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
-Content-Disposition: inline
-In-Reply-To: <1557177887-30446-1-git-send-email-ynezz@true.cz>
-List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
-List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
-List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
-List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
-List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Errors-To: driverdev-devel-bounces@linuxdriverproject.org
-Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
-To: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
-Cc: devel@driverdev.osuosl.org, Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, Maxime Ripard <maxime.ripard@bootlin.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, Frank Rowand <frowand.list@gmail.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190416055242.75764-3-jitao.shi@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Jitao Shi <jitao.shi@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, stonea168@163.com, dri-devel@lists.freedesktop.org, yingjoe.chen@mediatek.com, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa.cheng@mediatek.com, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, linux-pwm@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, Matthias Brugger <matthias.bgg@gmail.com>, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, Sean Paul <seanpaul@chromium>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gTW9uLCBNYXkgMDYsIDIwMTkgYXQgMTE6MjQ6NDNQTSArMDIwMCwgUGV0ciDFoHRldGlhciB3
-cm90ZToKPiBIaSwKPiAKPiB0aGlzIHBhdGNoIHNlcmllcyBpcyBhbiBhdHRlbXB0IHRvIGZpeCB0
-aGUgbWVzcywgSSd2ZSBzb21laG93IG1hbmFnZWQgdG8KPiBpbnRyb2R1Y2UuCj4gCj4gRmlyc3Qg
-cGF0Y2ggaW4gdGhpcyBzZXJpZXMgaXMgZGVmYWN0byB2NSBvZiB0aGUgcHJldmlvdXMgMDUvMTAg
-cGF0Y2ggaW4gdGhlCj4gc2VyaWVzLCBidXQgc2luY2UgdGhlIHY0IG9mIHRoaXMgMDUvMTAgcGF0
-Y2ggd2Fzbid0IHBpY2tlZCB1cCBieSB0aGUKPiBwYXRjaHdvcmsgZm9yIHNvbWUgdW5rbm93biBy
-ZWFzb24sIHRoaXMgcGF0Y2ggd2Fzbid0IGFwcGxpZWQgd2l0aCB0aGUgb3RoZXIKPiA5IHBhdGNo
-ZXMgaW4gdGhlIHNlcmllcywgc28gSSdtIHJlc2VuZGluZyBpdCBhcyBhIHNlcGFyYXRlIHBhdGNo
-IG9mIHRoaXMKPiBmaXh1cCBzZXJpZXMgYWdhaW4uCgpJIGZlZWwgc29ydCBvZiByaWRpY3Vsb3Vz
-IGFza2luZyB0aGlzIG92ZXIgYW5kIG92ZXIuLi4gIE1heWJlIHlvdXIgc3BhbQpmaWx0ZXIgaXMg
-ZWF0aW5nIG15IGVtYWlscz8KClRoaXMgYnVnIHdhcyBpbnRyb2R1Y2VkIGluIGh0dHBzOi8vcGF0
-Y2h3b3JrLm96bGFicy5vcmcvcGF0Y2gvMTA5NDkxNi8KIlt2NCwwMS8xMF0gb2ZfbmV0OiBhZGQg
-TlZNRU0gc3VwcG9ydCB0byBvZl9nZXRfbWFjX2FkZHJlc3MiIGJ1dCBpdApsb29rcyBsaWtlIG5v
-IG9uZSBhcHBsaWVkIGl0LgoKWW91J3JlIGFjdGluZyBhcyBpZiBpdCAqd2FzKiBhcHBsaWVkIGJ1
-dCB5b3UgcmVmdXNlIHRvIGFuc3dlciBteQpxdWVzdGlvbiB3aG8gYXBwbGllZCBpdCBhbmQgd2hp
-Y2ggdG8gd2hpY2ggdHJlZSBzbyBJIGNhbiBmaWd1cmUgb3V0IHdoYXQKd2VudCB3cm9uZy4KCkkg
-b25seSBzZWUgY29tbWVudHMgZnJvbSBsYXN0IEZyaWRheSB0aGF0IGl0IHNob3VsZG4ndCBiZSBh
-cHBsaWVkLi4uICBJCmFsc28gdG9sZCB5b3Ugb24gRnJpZGF5IGluIGEgZGlmZmVyZW50IHRocmVh
-ZCB0aGF0IHRoYXQgcGF0Y2ggc2hvdWxkbid0CmJlIGFwcGxpZWQuICBCcmVha2luZyBnaXQgYmlz
-ZWN0IGlzIGEgYnVnLCBhbmQgd2UgbmV2ZXIgZG8gdGhhdC4gIEknbQpqdXN0IHZlcnkgY29uZnVz
-ZWQgcmlnaHQgbm93Li4uICBXaGF0IEknbSB0cnlpbmcgdG8gZG8gaXMgZmlndXJlIG91dCBpbgpt
-eSBoZWFkIGhvdyB0aGlzIHByb2Nlc3MgZmFpbGVkIHNvIHdlIGNhbiBkbyBiZXR0ZXIgbmV4dCB0
-aW1lLgoKcmVnYXJkcywKZGFuIGNhcnBlbnRlcgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVy
-cHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+SGksIEppdGFvOgoKT24gVHVlLCAyMDE5LTA0LTE2IGF0IDEzOjUyICswODAwLCBKaXRhbyBTaGkg
+d3JvdGU6CgpXaGVyZSBpcyB0aGUgY29tbWl0IG1lc3NhZ2U/IEkgdGhpbmsgeW91IGNvdWxkIGlu
+dHJvZHVjZSB3aGF0IGlzIGR1YWwKZWRnZSAoTWF5YmUgaXQncyB0cml2aWFsIGZvciB5b3UsIGJ1
+dCBub3QgZm9yIG1lKQoKUmVnYXJkcywKQ0sKCj4gU2lnbmVkLW9mZi1ieTogSml0YW8gU2hpIDxq
+aXRhby5zaGlAbWVkaWF0ZWsuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
+bXRrX2RwaS5jIHwgMTAgKysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgMTAgaW5zZXJ0aW9u
+cygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5j
+IGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYwo+IGluZGV4IDIyZTY4YTEwMGU3
+Yi4uNjY0MDUxNTkxNDFhIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
+dGtfZHBpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jCj4gQEAg
+LTExNyw2ICsxMTcsNyBAQCBzdHJ1Y3QgbXRrX2RwaV9jb25mIHsKPiAgCXVuc2lnbmVkIGludCAo
+KmNhbF9mYWN0b3IpKGludCBjbG9jayk7Cj4gIAl1MzIgcmVnX2hfZnJlX2NvbjsKPiAgCWJvb2wg
+ZWRnZV9zZWxfZW47Cj4gKwlib29sIGR1YWxfZWRnZTsKPiAgfTsKPiAgCj4gIHN0YXRpYyB2b2lk
+IG10a19kcGlfbWFzayhzdHJ1Y3QgbXRrX2RwaSAqZHBpLCB1MzIgb2Zmc2V0LCB1MzIgdmFsLCB1
+MzIgbWFzaykKPiBAQCAtMzUzLDYgKzM1NCwxMyBAQCBzdGF0aWMgdm9pZCBtdGtfZHBpX2NvbmZp
+Z19kaXNhYmxlX2VkZ2Uoc3RydWN0IG10a19kcGkgKmRwaSkKPiAgCQltdGtfZHBpX21hc2soZHBp
+LCBkcGktPmNvbmYtPnJlZ19oX2ZyZV9jb24sIDAsIEVER0VfU0VMX0VOKTsKPiAgfQo+ICAKPiAr
+c3RhdGljIHZvaWQgbXRrX2RwaV9lbmFibGVfZHVhbF9lZGdlKHN0cnVjdCBtdGtfZHBpICpkcGkp
+Cj4gK3sKPiArCW10a19kcGlfbWFzayhkcGksIERQSV9ERFJfU0VUVElORywgRERSX0VOIHwgRERS
+XzRQSEFTRSwKPiArCQkgICAgIEREUl9FTiB8IEREUl80UEhBU0UpOwo+ICsJbXRrX2RwaV9tYXNr
+KGRwaSwgRFBJX09VVFBVVF9TRVRUSU5HLCBFREdFX1NFTCwgRURHRV9TRUwpOwo+ICt9Cj4gKwo+
+ICBzdGF0aWMgdm9pZCBtdGtfZHBpX2NvbmZpZ19jb2xvcl9mb3JtYXQoc3RydWN0IG10a19kcGkg
+KmRwaSwKPiAgCQkJCQllbnVtIG10a19kcGlfb3V0X2NvbG9yX2Zvcm1hdCBmb3JtYXQpCj4gIHsK
+PiBAQCAtNTA5LDYgKzUxNyw4IEBAIHN0YXRpYyBpbnQgbXRrX2RwaV9zZXRfZGlzcGxheV9tb2Rl
+KHN0cnVjdCBtdGtfZHBpICpkcGksCj4gIAltdGtfZHBpX2NvbmZpZ19jb2xvcl9mb3JtYXQoZHBp
+LCBkcGktPmNvbG9yX2Zvcm1hdCk7Cj4gIAltdGtfZHBpX2NvbmZpZ18ybl9oX2ZyZShkcGkpOwo+
+ICAJbXRrX2RwaV9jb25maWdfZGlzYWJsZV9lZGdlKGRwaSk7Cj4gKwlpZiAoZHBpLT5jb25mLT5k
+dWFsX2VkZ2UpCj4gKwkJbXRrX2RwaV9lbmFibGVfZHVhbF9lZGdlKGRwaSk7Cj4gIAltdGtfZHBp
+X3N3X3Jlc2V0KGRwaSwgZmFsc2UpOwo+ICAKPiAgCXJldHVybiAwOwoKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QK
+ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
