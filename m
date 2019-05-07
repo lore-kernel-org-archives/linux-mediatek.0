@@ -1,16 +1,15 @@
-From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal-g1n6cQUeyibVItvQsEIGlw@public.gmane.org>
-Subject: Re: [RFC PATCH v4 1/1] mtd: rawnand: mtk: Re-license MTK NAND driver
- as Dual MIT/GPL
-Date: Tue, 7 May 2019 12:48:54 +0200
-Message-ID: <3edbd5a4-4226-4cec-052a-81f7251817a1@milecki.pl>
-References: <20190507092020.1917-1-xiaolei.li@mediatek.com>
- <20190507092020.1917-2-xiaolei.li@mediatek.com>
+From: Jerry-ch Chen <Jerry-ch.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [RFC PATCH V1 3/6] dt-bindings: mt8183: Added FD dt-bindings
+Date: Tue, 7 May 2019 21:52:30 +0800
+Message-ID: <1557237150.11458.45.camel@mtksdccf07>
+References: <20190423104505.38778-1-Jerry-Ch.chen@mediatek.com>
+ <20190423104505.38778-4-Jerry-Ch.chen@mediatek.com>
+ <20190501224647.GA12044@bogus>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190507092020.1917-2-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Content-Language: en-US
+In-Reply-To: <20190501224647.GA12044@bogus>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -20,108 +19,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org
-Cc: daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, gustavo-L1vi/lXTdts+Va1GwOuvDg@public.gmane.org, yellowriver2010-PkbjNfxxIARBDgjK7y7TUQ@public.gmane.org, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org, peterpandong-AL4WhLSQfzjQT0dZR+AlfA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, Rynn.Wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, suleiman-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, jerry-ch.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jungo.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, holmes.chiou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, shik-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, yuzhao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sean.Cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sj.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, christie.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, zwisler-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-QXJuZDogd291bGQgeW91IHNlbmQgeW91IEFjaywganVzdCBzbyB3ZSBhcmUgMTAwJSBvbiBhIGxl
-Z2FsIHNpZGU/CgoKT24gMDcuMDUuMjAxOSAxMToyMCwgWGlhb2xlaSBMaSB3cm90ZToKPiBJdCBp
-cyB3YW50ZWQgdG8gdXNlIE1USyBOQU5EIGRyaXZlciB3aXRoIEdQTC0yLjAgb3IgTUlUIGxpY2Vu
-c2UuCj4gQnV0IG5vdyBpdCBpcyBvbmx5IGxpY2Vuc2VkIGFzIEdQTC0yLjAuCj4gU28gcmUtbGlj
-ZW5zZSBpdCBhcyBkdWFsIE1JVC9HUEwgYW5kIHJlcGxhY2UgbGljZW5zZSB0ZXh0IHdpdGgKPiBT
-UERYIHRhZy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBYaWFvbGVpIExpIDx4aWFvbGVpLmxpQG1lZGlh
-dGVrLmNvbT4KPiBBY2tlZC1ieTogSm9yZ2UgUmFtaXJlei1PcnRpeiA8am9yZ2UucmFtaXJlei1v
-cnRpekBsaW5hcm8ub3JnPgo+IEFja2VkLWJ5OiBSeWRlciBMZWUgPHJ5ZGVyLmxlZUBtZWRpYXRl
-ay5jb20+Cj4gQWNrZWQtYnk6IFJhZmHFgiBNacWCZWNraSA8cmFmYWxAbWlsZWNraS5wbD4KPiBB
-Y2tlZC1ieTogTWlxdWVsIFJheW5hbCA8bWlxdWVsLnJheW5hbEBib290bGluLmNvbT4KPiBBY2tl
-ZC1ieTogQm9yaXMgQnJlemlsbG9uIDxib3Jpcy5icmV6aWxsb25AY29sbGFib3JhLmNvbT4KPiBB
-Y2tlZC1ieTogUm9nZXJDQyBMaW4gPHJvZ2VyY2MubGluQG1lZGlhdGVrLmNvbT4KCgpGb3IgbXRr
-X25hbmQuYyB3ZSBhcmUgbWlzc2luZyBhY2tzIGZyb20gKGNvLSlhdXRob3JzIG9mIGZvbGxvd2lu
-ZyBjb21taXRzOgoxKSBXZWk6Cmh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9r
-ZXJuZWwvZ2l0L3RvcnZhbGRzL2xpbnV4LmdpdC9jb21taXQvP2lkPTA3Zjc2NDQzZWY4MWUyYjc2
-YmI2Zjc4NThiYTE4M2NkNjAzNTdhZGEKMikgUGV0ZXI6Cmh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcv
-cHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L3RvcnZhbGRzL2xpbnV4LmdpdC9jb21taXQvP2lkPWQ0
-MDkyZDc2YTRhNGU1N2I2NTkxMDg5OTk0OGE4M2NjODY0NmM1YTUKMykgTWFzYWhpcm86Cmh0dHBz
-Oi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L3RvcnZhbGRzL2xpbnV4
-LmdpdC9jb21taXQvP2lkPWYwZGJlNGFhMzVlNzNlNDI4MmQ5NDQ2YWJiODkwMGFiMDYzNmQ0ODMK
-CkFsbCBhcmUgYWJzb2x1dGVseSB0cml2aWFsLgoKCkZvciBtdGtfZWNjLmMgYXJlIGFyZSBtaXNz
-aW5nIGFja3MgZnJvbSAoY28tKWF1dGhvcnMgb2YgZm9sbG93aW5nIGNvbW1pdHM6CjEpIFdlbjoK
-aHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvdG9ydmFsZHMv
-bGludXguZ2l0L2NvbW1pdC8/aWQ9MDExOTcyMGEwMGIyMDA3NGE1MTI0NTQyN2YwNTM2NmVkZTJm
-YTkwYQoyKSBHdXN0YXZvOgpodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2Vy
-bmVsL2dpdC90b3J2YWxkcy9saW51eC5naXQvY29tbWl0Lz9pZD0yMzg3MDliMjIwOTdhMTY4Mzkw
-Nzg1MzBlMGExMDgxMmRkZTg2ZjE2CjMpIEFybmQ6Cmh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHVi
-L3NjbS9saW51eC9rZXJuZWwvZ2l0L3RvcnZhbGRzL2xpbnV4LmdpdC9jb21taXQvP2lkPThmZjA1
-MTNiZGNkZDcxZTg0YWE1NjFjY2UyMTY2NzVkNDNmYjQxYjgKClRoZSBvbmx5IC9jb21wbGV4LyBj
-aGFuZ2UgaXMgZnJvbSBBcm5kLiBJJ20gbm90IHN1cmUgaWYgdGhhdCBpcwpjb3B5cmlnaHRhYmxl
-IG9yIG5vdC4KCgoKCiMgZ2l0IGxvZyAtLWZvbGxvdyBkcml2ZXJzL210ZC9uYW5kL3Jhdy9tdGtf
-bmFuZC5jIHwgZ3JlcCAiU2lnbmVkLW9mZi1ieSIgfCBzb3J0IHwgdW5pcSAtYyB8IHNvcnQgLW4g
-LXIKICAgICAgMjAgICAgIFNpZ25lZC1vZmYtYnk6IE1pcXVlbCBSYXluYWwgPG1pcXVlbC5yYXlu
-YWxAYm9vdGxpbi5jb20+CiAgICAgIDE4ICAgICBTaWduZWQtb2ZmLWJ5OiBCb3JpcyBCcmV6aWxs
-b24gPGJvcmlzLmJyZXppbGxvbkBib290bGluLmNvbT4KICAgICAgMTUgICAgIFNpZ25lZC1vZmYt
-Ynk6IEJvcmlzIEJyZXppbGxvbiA8Ym9yaXMuYnJlemlsbG9uQGZyZWUtZWxlY3Ryb25zLmNvbT4K
-ICAgICAgIDYgICAgIFNpZ25lZC1vZmYtYnk6IFhpYW9sZWkgTGkgPHhpYW9sZWkubGlAbWVkaWF0
-ZWsuY29tPgogICAgICAgMyAgICAgU2lnbmVkLW9mZi1ieTogUm9nZXJDQyBMaW4gPHJvZ2VyY2Mu
-bGluQG1lZGlhdGVrLmNvbT4KICAgICAgIDIgICAgIFNpZ25lZC1vZmYtYnk6IE1pcXVlbCBSYXlu
-YWwgPG1pcXVlbC5yYXluYWxAZnJlZS1lbGVjdHJvbnMuY29tPgogICAgICAgMSAgICAgU2lnbmVk
-LW9mZi1ieTogV2VpIFlvbmdqdW4gPHdlaXlvbmdqdW4xQGh1YXdlaS5jb20+CiAgICAgICAxICAg
-ICBTaWduZWQtb2ZmLWJ5OiBSeWRlciBMZWUgPHJ5ZGVyLmxlZUBtZWRpYXRlay5jb20+CiAgICAg
-ICAxICAgICBTaWduZWQtb2ZmLWJ5OiBSYWZhxYIgTWnFgmVja2kgPHJhZmFsQG1pbGVja2kucGw+
-CiAgICAgICAxICAgICBTaWduZWQtb2ZmLWJ5OiBQZXRlciBQYW4gPHBldGVycGFuZG9uZ0BtaWNy
-b24uY29tPgogICAgICAgMSAgICAgU2lnbmVkLW9mZi1ieTogTWFzYWhpcm8gWWFtYWRhIDx5YW1h
-ZGEubWFzYWhpcm9Ac29jaW9uZXh0LmNvbT4KICAgICAgIDEgICAgIFNpZ25lZC1vZmYtYnk6IEpv
-cmdlIFJhbWlyZXotT3J0aXogPGpvcmdlLnJhbWlyZXotb3J0aXpAbGluYXJvLm9yZz4KICAgICAg
-IDEgICAgIFNpZ25lZC1vZmYtYnk6IEJvcmlzIEJyZXppbGxvbiA8YmJyZXppbGxvbkBrZXJuZWwu
-b3JnPgoKKiBCb3JpcyAoY29udHJpYnV0b3Igb2YgMzQgY2hhbmdlcykgLSBBY2tlZAoqIE1pcXVl
-bCAoY29udHJpYnV0b3Igb2YgMjIgY2hhbmdlcykgLSBBY2tlZAoqIFhpYW9sZWkgKGNvbnRyaWJ1
-dG9yIG9mIDYgY2hhbmdlcykgLSBTaWduZWQKKiBSb2dlckNDIChjb250cmlidXRvciBvZiAzIGNo
-YW5nZXMpIC0gQWNrZWQKKiBSYWZhxYIgKGNvbnRyaWJ1dG9yIG9mIDEgY2hhbmdlKSAtIEFja2Vk
-CiogSm9yZ2UgKGNvbnRyaWJ1dG9yIG9mIDEgY2hhbmdlKSAtIEFja2VkCiogUnlkZXIgKGNvbnRy
-aWJ1dG9yIG9mIDEgY2hhbmdlKSAtIEFja2VkCgoqIFdlaSAoY29udHJpYnV0b3Igb2YgMSBjaGFu
-Z2UpOgowN2Y3NjQ0M2VmODEgKCJtdGQ6IG5hbmQ6IG1lZGlhdGVrOiByZW1vdmUgcmVkdW5kYW50
-IGRldl9lcnIgY2FsbCBpbiBtdGtfbmZjX3Byb2JlKCkiKQoKKiBQZXRlciAoY29udHJpYnV0b3Ig
-b2YgMSBjaGFuZ2UpOgpkNDA5MmQ3NmE0YTQgKCJtdGQ6IG5hbmQ6IFJlbmFtZSBuYW5kLmggaW50
-byByYXduYW5kLmgiKQoKKiBNYXNhaGlybyAoY29udHJpYnV0b3Igb2YgMSBjaGFuZ2UpOgpmMGRi
-ZTRhYTM1ZTcgKCJtdGQ6IG5hbmQ6IG1lZGlhdGVrOiByZXR1cm4gZXJyb3IgY29kZSBvZiBuYW5k
-X3NjYW5faWRlbnQvdGFpbCgpIG9uIGVycm9yIikKCgoKCiMgZ2l0IGxvZyAtLWZvbGxvdyBkcml2
-ZXJzL210ZC9uYW5kL3Jhdy9tdGtfZWNjLmMgfCBncmVwICJTaWduZWQtb2ZmLWJ5IiB8IHNvcnQg
-fCB1bmlxIC1jIHwgc29ydCAtbiAtcgogICAgICAxMyAgICAgU2lnbmVkLW9mZi1ieTogQm9yaXMg
-QnJlemlsbG9uIDxib3Jpcy5icmV6aWxsb25AZnJlZS1lbGVjdHJvbnMuY29tPgogICAgICAgNiAg
-ICAgU2lnbmVkLW9mZi1ieTogWGlhb2xlaSBMaSA8eGlhb2xlaS5saUBtZWRpYXRlay5jb20+CiAg
-ICAgICAzICAgICBTaWduZWQtb2ZmLWJ5OiBSb2dlckNDIExpbiA8cm9nZXJjYy5saW5AbWVkaWF0
-ZWsuY29tPgogICAgICAgMiAgICAgU2lnbmVkLW9mZi1ieTogQm9yaXMgQnJlemlsbG9uIDxib3Jp
-cy5icmV6aWxsb25AYm9vdGxpbi5jb20+CiAgICAgICAxICAgICBTaWduZWQtb2ZmLWJ5OiBXZW4g
-WWFuZyA8eWVsbG93cml2ZXIyMDEwQGhvdG1haWwuY29tPgogICAgICAgMSAgICAgU2lnbmVkLW9m
-Zi1ieTogUnlkZXIgTGVlIDxyeWRlci5sZWVAbWVkaWF0ZWsuY29tPgogICAgICAgMSAgICAgU2ln
-bmVkLW9mZi1ieTogTWlxdWVsIFJheW5hbCA8bWlxdWVsLnJheW5hbEBib290bGluLmNvbT4KICAg
-ICAgIDEgICAgIFNpZ25lZC1vZmYtYnk6IEpvcmdlIFJhbWlyZXotT3J0aXogPGpvcmdlLnJhbWly
-ZXotb3J0aXpAbGluYXJvLm9yZz4KICAgICAgIDEgICAgIFNpZ25lZC1vZmYtYnk6IEd1c3Rhdm8g
-QS4gUi4gU2lsdmEgPGd1c3Rhdm9AZW1iZWRkZWRvci5jb20+CiAgICAgICAxICAgICBTaWduZWQt
-b2ZmLWJ5OiBEYW4gQ2FycGVudGVyIDxkYW4uY2FycGVudGVyQG9yYWNsZS5jb20+CiAgICAgICAx
-ICAgICBTaWduZWQtb2ZmLWJ5OiBBcm5kIEJlcmdtYW5uIDxhcm5kQGFybmRiLmRlPgoKKiBCb3Jp
-cyAoY29udHJpYnV0b3Igb2YgMTUgY2hhbmdlcykgLSBBY2tlZAoqIFhpYW9sZWkgKGNvbnRyaWJ1
-dG9yIG9mIDYgY2hhbmdlcykgLSBTaWduZWQKKiBSb2dlckNDIChjb250cmlidXRvciBvZiAzIGNo
-YW5nZXMpIC0gQWNrZWQKKiBSeWRlciAoY29udHJpYnV0b3Igb2YgMSBjaGFuZ2UpIC0gQWNrZWQK
-KiBNaXF1ZWwgKGNvbnRyaWJ1dG9yIG9mIDEgY2hhbmdlKSAtIEFja2VkCiogSm9yZ2UgKGNvbnRy
-aWJ1dG9yIG9mIDEgY2hhbmdlKSAtIEFja2VkCiogRGFuIChjb250cmlidXRvciBvZiAxIGNoYW5n
-ZSkgLSBBY2tlZAoKKiBXZW4gKGNvbnRyaWJ1dG9yIG9mIDEgY2hhbmdlKToKMDExOTcyMGEwMGIy
-ICgibXRkOiByYXduYW5kOiBtdGs6IGZpeCBwb3NzaWJsZSBvYmplY3QgcmVmZXJlbmNlIGxlYWsi
-KQoKKiBHdXN0YXZvIChjb250cmlidXRvciBvZiAxIGNoYW5nZSk6CjIzODcwOWIyMjA5NyAoIm10
-ZDogbmFuZDogbXRrOiBmaXggZXJyb3IgcmV0dXJuIGNvZGUgaW4gbXRrX2VjY19wcm9iZSgpIikK
-CiogQXJuZCAoY29udHJpYnV0b3Igb2YgMSBjaGFuZ2UpOgo4ZmYwNTEzYmRjZGQgKCJtdGQ6IG10
-azogYXZvaWQgd2FybmluZyBpbiBtdGtfZWNjX2VuY29kZSIpCgoKCgojIGdpdCBsb2cgLS1mb2xs
-b3cgZHJpdmVycy9tdGQvbmFuZC9yYXcvbXRrX2VjYy5oIHwgZ3JlcCAiU2lnbmVkLW9mZi1ieSIg
-fCBzb3J0IHwgdW5pcSAtYyB8IHNvcnQgLW4gLXIKICAgICAgIDMgICAgIFNpZ25lZC1vZmYtYnk6
-IEJvcmlzIEJyZXppbGxvbiA8Ym9yaXMuYnJlemlsbG9uQGZyZWUtZWxlY3Ryb25zLmNvbT4KICAg
-ICAgIDEgICAgIFNpZ25lZC1vZmYtYnk6IFhpYW9sZWkgTGkgPHhpYW9sZWkubGlAbWVkaWF0ZWsu
-Y29tPgogICAgICAgMSAgICAgU2lnbmVkLW9mZi1ieTogUm9nZXJDQyBMaW4gPHJvZ2VyY2MubGlu
-QG1lZGlhdGVrLmNvbT4KICAgICAgIDEgICAgIFNpZ25lZC1vZmYtYnk6IEpvcmdlIFJhbWlyZXot
-T3J0aXogPGpvcmdlLnJhbWlyZXotb3J0aXpAbGluYXJvLm9yZz4KICAgICAgIDEgICAgIFNpZ25l
-ZC1vZmYtYnk6IEJvcmlzIEJyZXppbGxvbiA8Ym9yaXMuYnJlemlsbG9uQGJvb3RsaW4uY29tPgoK
-KiBCb3JpcyAoY29udHJpYnV0b3Igb2YgNCBjaGFuZ2VzKSAtIEFja2VkCiogWGlhb2xlaSAoY29u
-dHJpYnV0b3Igb2YgMSBjaGFuZ2UpIC0gU2lnbmVkCiogUm9nZXJDQyAoY29udHJpYnV0b3Igb2Yg
-MSBjaGFuZ2UpIC0gQWNrZWQKKiBKb3JnZSAoY29udHJpYnV0b3Igb2YgMSBjaGFuZ2UpIC0gQWNr
-ZWQKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0
-ZWsK
+Hi Rob,
+
+Thank you for your comments.
+
+On Wed, 2019-05-01 at 17:46 -0500, Rob Herring wrote:
+> On Tue, Apr 23, 2019 at 06:45:02PM +0800, Jerry-ch Chen wrote:
+> > From: Jerry-ch Chen <jerry-ch.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > 
+> > This patch adds DT binding documentation for the Face Detection (FD)
+> > unit of the camera system on Mediatek's SoCs.
+> > 
+> > Signed-off-by: Jerry-ch Chen <jerry-ch.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  .../bindings/media/mediatek,mt8183-fd.txt     | 34 +++++++++++++++++++
+> >  1 file changed, 34 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8183-fd.txt
+> > 
+> > diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8183-fd.txt b/Documentation/devicetree/bindings/media/mediatek,mt8183-fd.txt
+> > new file mode 100644
+> > index 000000000000..97c12fd93e7e
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/media/mediatek,mt8183-fd.txt
+> > @@ -0,0 +1,34 @@
+> > +* Mediatek Face Detection Unit (FD)
+> > +
+> > +Face Detection (FD) unit is a typical memory-to-memory HW device.
+> > +It provides hardware accelerated face detection function, and it
+> > +is able to detect different poses of faces. FD will writre result
+> > +of detected face into memory as output.
+> > +
+> > +Required properties:
+> > +- compatible: "mediatek,mt8183-fd"
+> > +- reg: Physical base address and length of the function block register space
+> > +- interrupts: interrupt number to the cpu.
+> > +- iommus: should point to the respective IOMMU block with master port as
+> > +  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+> > +  for details.
+> 
+> How many entries? Looks like 3 from the example.
+> 
+
+Yes, we have 3 entries.  I would like to update this part as
+following:
+
+iommus: should point to the 3 entries:  M4U_PORT_CAM_FDVT_RP,
+M4U_PORT_CAM_FDVT_WR and M4U_PORT_CAM_FDVT_RB.  (Please see
+Documentation/devicetree/bindings/iommu/mediatek,iommu.txt for details.)
+
+> > +- mediatek,larb: must contain the local arbiters in the current Socs, see
+> > +  Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
+> > +  for details.
+> > +- clocks : must contain the FDVT clock
+> > +- clock-names: must contain FD_CLK_IMG_FD
+> > +
+> > +Example:
+> > +	fd:fd@1502b000 {
+>            ^ space needed
+> 
+
+We will fix it in next version of the patch.
+
+> > +		compatible = "mediatek,mt8183-fd";
+> > +		mediatek,larb = <&larb5>;
+> > +		mediatek,scp = <&scp>;
+> > +		iommus = <&iommu M4U_PORT_CAM_FDVT_RP>,
+> > +			 <&iommu M4U_PORT_CAM_FDVT_WR>,
+> > +			 <&iommu M4U_PORT_CAM_FDVT_RB>;
+> > +		reg = <0 0x1502b000 0 0x1000>;
+> > +		interrupts = <GIC_SPI 269 IRQ_TYPE_LEVEL_LOW>;
+> > +		clocks = <&imgsys CLK_IMG_FDVT>;
+> > +		clock-names = "FD_CLK_IMG_FD";
+> > +	};
+> > +
+> > -- 
+> > 2.18.0
+> > 
+
+Sincerely,
+
+Jerry
