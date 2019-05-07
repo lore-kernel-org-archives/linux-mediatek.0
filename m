@@ -1,52 +1,35 @@
-From: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [v2,2/3] arm64: dts: mt8183: add emi node
-Date: Tue, 7 May 2019 17:38:42 +0800
-Message-ID: <1557221922-26035-1-git-send-email-xixi.chen@mediatek.com>
+From: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [RFC PATCH v4 0/1] Re-license MTK NAND driver
+Date: Tue, 7 May 2019 12:40:10 +0300
+Message-ID: <20190507094010.GU2239@kadam>
+References: <20190507092020.1917-1-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <20190507092020.1917-1-xiaolei.li@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
+List-Post: <mailto:linux-mtd@lists.infradead.org>
+List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
+Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
+To: Xiaolei Li <xiaolei.li@mediatek.com>
+Cc: daniel.thompson@linaro.org, ryder.lee@mediatek.com, arnd@arndb.de, srv_heupstream@mediatek.com, yamada.masahiro@socionext.com, richard@nod.at, miquel.raynal@bootlin.com, gustavo@embeddedor.com, jorge.ramirez-ortiz@linaro.org, yingjoe.chen@mediatek.com, boris.brezillon@collabora.com, linux-mtd@lists.infradead.org, weiyongjun1@huawei.com, yellowriver2010@hotmail.com, rafal@milecki.pl, linux-mediatek@lists.infradead.org, peterpandong@micron.com, rogercc.lin@mediatek.com, matthias.bgg@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Add emi dts node.
+Fine by me.
 
-Signed-off-by: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+Acked-by: Dan Carpenter <dan.carpenter@oracle.com>
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 75c4881..2a176e9 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -269,6 +269,17 @@
- 			clock-names = "spi", "wrap";
- 		};
- 
-+		emi@10219000 {
-+			compatible = "mediatek,mt8183-emi";
-+			reg = <0 0x10219000 0 0x1000>, /* CEN EMI */
-+				  <0 0x10226000 0 0x1000>, /* EMI MPU */
-+				  <0 0x1022d000 0 0x1000>, /* CHA EMI */
-+			      <0 0x10235000 0 0x1000>; /* CHB EMI */
-+			interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_LOW>, /* MPU */
-+						 <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>, /* CGM */
-+						 <GIC_SPI 155 IRQ_TYPE_LEVEL_HIGH>; /* ELM */
-+		};
-+
- 		uart0: serial@11002000 {
- 			compatible = "mediatek,mt8183-uart",
- 				     "mediatek,mt6577-uart";
--- 
-1.9.1
+regards,
+dan carpenter
+
+
+______________________________________________________
+Linux MTD discussion mailing list
+http://lists.infradead.org/mailman/listinfo/linux-mtd/
