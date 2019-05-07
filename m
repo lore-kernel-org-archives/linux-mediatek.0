@@ -1,104 +1,82 @@
-From: Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH v4 02/10] dt-bindings: doc: reflect new NVMEM
- of_get_mac_address behaviour
-Date: Tue, 7 May 2019 11:44:57 -0500
-Message-ID: <CAL_JsqLt6UFU_6bmh3Pc0taXUgMtAEV7kL7eZU13cLOjoakf=Q@mail.gmail.com>
-References: <1556893635-18549-1-git-send-email-ynezz@true.cz> <1556893635-18549-3-git-send-email-ynezz@true.cz>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v5 03/12] dt-binding: gce: add binding for gce subsys
+ property
+Date: Tue, 7 May 2019 12:41:10 -0500
+Message-ID: <20190507174110.GA6767@bogus>
+References: <20190507081355.52630-1-bibby.hsieh@mediatek.com>
+ <20190507081355.52630-4-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1556893635-18549-3-git-send-email-ynezz@true.cz>
+Content-Disposition: inline
+In-Reply-To: <20190507081355.52630-4-bibby.hsieh@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Petr_=C5=A0tetiar?= <ynezz@true.cz>
-Cc: netdev <netdev@vger.kernel.org>, devicetree@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, Mark Rutland <mark.rutland@arm.com>, Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, Yisen Zhuang <yisen.zhuang@huawei.com>, Salil Mehta <salil.mehta@huawei.com>, Woojung Huh <woojung.huh@microchip.com>, Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Jassi Brar <jaswinder.singh@linaro.org>, Kalle Valo <kvalo@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, Frank Rowand <frowand.list@gmail.com>, Srinivas Kandagatla <sriniv>
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, CK HU <ck.hu@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.chen@mediatek.com, kendrick.hsu@mediatek.com, Frederic Chen <Frederic.Chen@med>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, May 3, 2019 at 9:27 AM Petr =C5=A0tetiar <ynezz@true.cz> wrote:
->
-> As of_get_mac_address now supports NVMEM under the hood, we need to updat=
-e
-> the bindings documentation with the new nvmem-cell* properties, which wou=
-ld
-> mean copy&pasting a lot of redundant information to every binding
-> documentation currently referencing some of the MAC address properties.
->
-> So I've just removed all the references to the optional MAC address
-> properties and replaced them with the small note referencing
-> net/ethernet.txt file.
->
-> Signed-off-by: Petr =C5=A0tetiar <ynezz@true.cz>
+On Tue, May 07, 2019 at 04:13:46PM +0800, Bibby Hsieh wrote:
+> tcmdq driver provide a function that get the relationship
+> of sub system number from device node for client.
+> add specification for #subsys-cells, mediatek,gce-subsys.
+> 
+> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
 > ---
->
->  Changes since v2:
->
->  * replaced only MAC address related optional properties with a text
->    referencing ethernet.txt
->
->  Documentation/devicetree/bindings/net/altera_tse.txt           |  5 ++--=
--
->  Documentation/devicetree/bindings/net/amd-xgbe.txt             |  5 +++-=
--
->  Documentation/devicetree/bindings/net/brcm,amac.txt            |  4 ++--
->  Documentation/devicetree/bindings/net/cpsw.txt                 |  4 +++-
->  Documentation/devicetree/bindings/net/davinci_emac.txt         |  5 +++-=
--
->  Documentation/devicetree/bindings/net/dsa/dsa.txt              |  5 ++--=
--
->  Documentation/devicetree/bindings/net/ethernet.txt             |  6 ++++=
---
->  Documentation/devicetree/bindings/net/hisilicon-femac.txt      |  4 +++-
->  .../devicetree/bindings/net/hisilicon-hix5hd2-gmac.txt         |  4 +++-
->  Documentation/devicetree/bindings/net/keystone-netcp.txt       | 10 ++++=
-+-----
->  Documentation/devicetree/bindings/net/macb.txt                 |  5 ++--=
--
->  Documentation/devicetree/bindings/net/marvell-pxa168.txt       |  4 +++-
->  Documentation/devicetree/bindings/net/microchip,enc28j60.txt   |  3 ++-
->  Documentation/devicetree/bindings/net/microchip,lan78xx.txt    |  5 ++--=
--
->  Documentation/devicetree/bindings/net/qca,qca7000.txt          |  4 +++-
->  Documentation/devicetree/bindings/net/samsung-sxgbe.txt        |  4 +++-
->  .../devicetree/bindings/net/snps,dwc-qos-ethernet.txt          |  5 +++-=
--
->  .../devicetree/bindings/net/socionext,uniphier-ave4.txt        |  4 ++--
->  Documentation/devicetree/bindings/net/socionext-netsec.txt     |  5 +++-=
--
->  .../devicetree/bindings/net/wireless/mediatek,mt76.txt         |  5 +++-=
--
->  Documentation/devicetree/bindings/net/wireless/qca,ath9k.txt   |  4 ++--
->  21 files changed, 58 insertions(+), 42 deletions(-)
+>  .../devicetree/bindings/mailbox/mtk-gce.txt       | 15 ++++++++++++---
+>  1 file changed, 12 insertions(+), 3 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+> index 1f7f8f2a3f49..8fd9479bc9f6 100644
+> --- a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+> +++ b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+> @@ -21,11 +21,19 @@ Required properties:
+>  	priority: Priority of GCE thread.
+>  	atomic_exec: GCE processing continuous packets of commands in atomic
+>  		way.
+> +- #subsys-cells: Should be 3.
+> +	<&phandle subsys_number start_offset size>
+> +	phandle: Label name of a gce node.
+> +	subsys_number: specify the sub-system id which is corresponding
+> +		       to the register address.
+> +	start_offset: the start offset of register address that GCE can access.
+> +	size: the total size of register address that GCE can access.
 
-[...]
+Like the #event-cells, do you need this if it isn't variable?
 
-> diff --git a/Documentation/devicetree/bindings/net/keystone-netcp.txt b/D=
-ocumentation/devicetree/bindings/net/keystone-netcp.txt
-> index 04ba1dc..3a65aab 100644
-> --- a/Documentation/devicetree/bindings/net/keystone-netcp.txt
-> +++ b/Documentation/devicetree/bindings/net/keystone-netcp.txt
-> @@ -135,14 +135,14 @@ Optional properties:
->                 are swapped.  The netcp driver will swap the two DWORDs
->                 back to the proper order when this property is set to 2
->                 when it obtains the mac address from efuse.
-> -- local-mac-address:   the driver is designed to use the of_get_mac_addr=
-ess api
-> -                       only if efuse-mac is 0. When efuse-mac is 0, the =
-MAC
-> -                       address is obtained from local-mac-address. If th=
-is
-> -                       attribute is not present, then the driver will us=
-e a
-> -                       random MAC address.
->  - "netcp-device label":        phandle to the device specification for e=
-ach of NetCP
->                         sub-module attached to this interface.
->
-> +The MAC address will be determined using the optional properties defined=
- in
-> +ethernet.txt, as provided by the of_get_mac_address API and only if efus=
-e-mac
+>  
+>  Required properties for a client device:
+>  - mboxes: Client use mailbox to communicate with GCE, it should have this
+>    property and list of phandle, mailbox specifiers.
+> -- mediatek,gce-subsys: u32, specify the sub-system id which is corresponding
+> +Optional propertier for a client device:
+> +- mediatek,gce-client-reg: u32, specify the sub-system id which is corresponding
+>    to the register address.
 
-Don't make references to Linux in bindings. You can talk about
-expectations of client programs (e.g Linux, u-boot, BSD, etc.) though.
+This isn't a u32, but a phandle + 3 cells (or a list of those). How many 
+entries can there be?
 
-Rob
+>  
+>  Some vaules of properties are defined in 'dt-bindings/gce/mt8173-gce.h'
+> @@ -40,6 +48,7 @@ Example:
+>  		clocks = <&infracfg CLK_INFRA_GCE>;
+>  		clock-names = "gce";
+>  		#mbox-cells = <3>;
+> +		#subsys-cells = <3>;
+>  	};
+>  
+>  Example for a client device:
+> @@ -48,9 +57,9 @@ Example for a client device:
+>  		compatible = "mediatek,mt8173-mmsys";
+>  		mboxes = <&gce 0 CMDQ_THR_PRIO_LOWEST 1>,
+>  			 <&gce 1 CMDQ_THR_PRIO_LOWEST 1>;
+> -		mediatek,gce-subsys = <SUBSYS_1400XXXX>;
+>  		mutex-event-eof = <CMDQ_EVENT_MUTEX0_STREAM_EOF
+>  				CMDQ_EVENT_MUTEX1_STREAM_EOF>;
+> -
+> +		mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000 0x1000>,
+> +					  <&gce SUBSYS_1401XXXX 0x2000 0x100>;
+>  		...
+>  	};
+> -- 
+> 2.18.0
+> 
