@@ -1,56 +1,124 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [v3 2/3] drm/mediatek: dpi dual edge support
-Date: Tue, 7 May 2019 15:35:28 +0800
-Message-ID: <1557214528.3498.3.camel@mtksdaap41>
-References: <20190416055242.75764-1-jitao.shi@mediatek.com>
- <20190416055242.75764-3-jitao.shi@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH 2/2] usb: xhci-mtk: Do not create shared_hcd if no USB
+ 3.0 port available
+Date: Tue, 7 May 2019 15:37:24 +0800
+Message-ID: <1557214644.10179.266.camel@mhfsdcap03>
+References: <20190502045631.229386-1-drinkcat@chromium.org>
+         <20190502045631.229386-2-drinkcat@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190416055242.75764-3-jitao.shi@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jitao Shi <jitao.shi@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, stonea168@163.com, dri-devel@lists.freedesktop.org, yingjoe.chen@mediatek.com, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa.cheng@mediatek.com, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, linux-pwm@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, Matthias Brugger <matthias.bgg@gmail.com>, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, Sean Paul <seanpaul@chromium>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190502045631.229386-2-drinkcat@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Nicolas Boichat <drinkcat@chromium.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Khuong Dinh <khuong@os.amperecomputing.com>, Hoan Tran <hoan@os.amperecomputing.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIEppdGFvOgoKT24gVHVlLCAyMDE5LTA0LTE2IGF0IDEzOjUyICswODAwLCBKaXRhbyBTaGkg
-d3JvdGU6CgpXaGVyZSBpcyB0aGUgY29tbWl0IG1lc3NhZ2U/IEkgdGhpbmsgeW91IGNvdWxkIGlu
-dHJvZHVjZSB3aGF0IGlzIGR1YWwKZWRnZSAoTWF5YmUgaXQncyB0cml2aWFsIGZvciB5b3UsIGJ1
-dCBub3QgZm9yIG1lKQoKUmVnYXJkcywKQ0sKCj4gU2lnbmVkLW9mZi1ieTogSml0YW8gU2hpIDxq
-aXRhby5zaGlAbWVkaWF0ZWsuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2RwaS5jIHwgMTAgKysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgMTAgaW5zZXJ0aW9u
-cygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5j
-IGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYwo+IGluZGV4IDIyZTY4YTEwMGU3
-Yi4uNjY0MDUxNTkxNDFhIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHBpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jCj4gQEAg
-LTExNyw2ICsxMTcsNyBAQCBzdHJ1Y3QgbXRrX2RwaV9jb25mIHsKPiAgCXVuc2lnbmVkIGludCAo
-KmNhbF9mYWN0b3IpKGludCBjbG9jayk7Cj4gIAl1MzIgcmVnX2hfZnJlX2NvbjsKPiAgCWJvb2wg
-ZWRnZV9zZWxfZW47Cj4gKwlib29sIGR1YWxfZWRnZTsKPiAgfTsKPiAgCj4gIHN0YXRpYyB2b2lk
-IG10a19kcGlfbWFzayhzdHJ1Y3QgbXRrX2RwaSAqZHBpLCB1MzIgb2Zmc2V0LCB1MzIgdmFsLCB1
-MzIgbWFzaykKPiBAQCAtMzUzLDYgKzM1NCwxMyBAQCBzdGF0aWMgdm9pZCBtdGtfZHBpX2NvbmZp
-Z19kaXNhYmxlX2VkZ2Uoc3RydWN0IG10a19kcGkgKmRwaSkKPiAgCQltdGtfZHBpX21hc2soZHBp
-LCBkcGktPmNvbmYtPnJlZ19oX2ZyZV9jb24sIDAsIEVER0VfU0VMX0VOKTsKPiAgfQo+ICAKPiAr
-c3RhdGljIHZvaWQgbXRrX2RwaV9lbmFibGVfZHVhbF9lZGdlKHN0cnVjdCBtdGtfZHBpICpkcGkp
-Cj4gK3sKPiArCW10a19kcGlfbWFzayhkcGksIERQSV9ERFJfU0VUVElORywgRERSX0VOIHwgRERS
-XzRQSEFTRSwKPiArCQkgICAgIEREUl9FTiB8IEREUl80UEhBU0UpOwo+ICsJbXRrX2RwaV9tYXNr
-KGRwaSwgRFBJX09VVFBVVF9TRVRUSU5HLCBFREdFX1NFTCwgRURHRV9TRUwpOwo+ICt9Cj4gKwo+
-ICBzdGF0aWMgdm9pZCBtdGtfZHBpX2NvbmZpZ19jb2xvcl9mb3JtYXQoc3RydWN0IG10a19kcGkg
-KmRwaSwKPiAgCQkJCQllbnVtIG10a19kcGlfb3V0X2NvbG9yX2Zvcm1hdCBmb3JtYXQpCj4gIHsK
-PiBAQCAtNTA5LDYgKzUxNyw4IEBAIHN0YXRpYyBpbnQgbXRrX2RwaV9zZXRfZGlzcGxheV9tb2Rl
-KHN0cnVjdCBtdGtfZHBpICpkcGksCj4gIAltdGtfZHBpX2NvbmZpZ19jb2xvcl9mb3JtYXQoZHBp
-LCBkcGktPmNvbG9yX2Zvcm1hdCk7Cj4gIAltdGtfZHBpX2NvbmZpZ18ybl9oX2ZyZShkcGkpOwo+
-ICAJbXRrX2RwaV9jb25maWdfZGlzYWJsZV9lZGdlKGRwaSk7Cj4gKwlpZiAoZHBpLT5jb25mLT5k
-dWFsX2VkZ2UpCj4gKwkJbXRrX2RwaV9lbmFibGVfZHVhbF9lZGdlKGRwaSk7Cj4gIAltdGtfZHBp
-X3N3X3Jlc2V0KGRwaSwgZmFsc2UpOwo+ICAKPiAgCXJldHVybiAwOwoKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QK
-ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+Hi Nicolas,
+On Thu, 2019-05-02 at 12:56 +0800, Nicolas Boichat wrote:
+> When the controller only supports USB 2.0, do not even create the
+> USB 3.0 hcd/root hub.
+> 
+> Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
+> ---
+>  drivers/usb/host/xhci-mtk.c | 44 +++++++++++++++++++++++--------------
+>  1 file changed, 28 insertions(+), 16 deletions(-)
+> 
+> diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+> index 026fe18972d3e5b..189f5dc614e6e05 100644
+> --- a/drivers/usb/host/xhci-mtk.c
+> +++ b/drivers/usb/host/xhci-mtk.c
+> @@ -527,23 +527,28 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+>  	xhci->imod_interval = 5000;
+>  	device_property_read_u32(dev, "imod-interval-ns", &xhci->imod_interval);
+>  
+> -	xhci->shared_hcd = usb_create_shared_hcd(driver, dev,
+> +	/* Only create shared_hcd when USB3.0 port is available. */
+> +	if (xhci->usb3_rhub.num_ports > 0) {
+xhci->usb3_rhub.num_ports is not set until usb_add_hcd() is called.
+
+> +		xhci->shared_hcd = usb_create_shared_hcd(driver, dev,
+>  			dev_name(dev), hcd);
+> -	if (!xhci->shared_hcd) {
+> -		ret = -ENOMEM;
+> -		goto disable_device_wakeup;
+> +		if (!xhci->shared_hcd) {
+> +			ret = -ENOMEM;
+> +			goto disable_device_wakeup;
+> +		}
+>  	}
+>  
+>  	ret = usb_add_hcd(hcd, irq, IRQF_SHARED);
+>  	if (ret)
+>  		goto put_usb3_hcd;
+>  
+> -	if (HCC_MAX_PSA(xhci->hcc_params) >= 4)
+> -		xhci->shared_hcd->can_do_streams = 1;
+> +	if (xhci->usb3_rhub.num_ports > 0) {
+> +		if (HCC_MAX_PSA(xhci->hcc_params) >= 4)
+> +			xhci->shared_hcd->can_do_streams = 1;
+>  
+> -	ret = usb_add_hcd(xhci->shared_hcd, irq, IRQF_SHARED);
+> -	if (ret)
+> -		goto dealloc_usb2_hcd;
+> +		ret = usb_add_hcd(xhci->shared_hcd, irq, IRQF_SHARED);
+> +		if (ret)
+> +			goto dealloc_usb2_hcd;
+> +	}
+>  
+>  	return 0;
+>  
+> @@ -552,7 +557,8 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+>  
+>  put_usb3_hcd:
+>  	xhci_mtk_sch_exit(mtk);
+> -	usb_put_hcd(xhci->shared_hcd);
+> +	if (xhci->shared_hcd)
+> +		usb_put_hcd(xhci->shared_hcd);
+>  
+>  disable_device_wakeup:
+>  	device_init_wakeup(dev, false);
+> @@ -579,12 +585,14 @@ static int xhci_mtk_remove(struct platform_device *dev)
+>  	struct xhci_hcd	*xhci = hcd_to_xhci(hcd);
+>  	struct usb_hcd  *shared_hcd = xhci->shared_hcd;
+>  
+> -	usb_remove_hcd(shared_hcd);
+> +	if (shared_hcd)
+> +		usb_remove_hcd(shared_hcd);
+>  	xhci->shared_hcd = NULL;
+>  	device_init_wakeup(&dev->dev, false);
+>  
+>  	usb_remove_hcd(hcd);
+> -	usb_put_hcd(shared_hcd);
+> +	if (shared_hcd)
+> +		usb_put_hcd(shared_hcd);
+>  	usb_put_hcd(hcd);
+>  	xhci_mtk_sch_exit(mtk);
+>  	xhci_mtk_clks_disable(mtk);
+> @@ -611,8 +619,10 @@ static int __maybe_unused xhci_mtk_suspend(struct device *dev)
+>  	xhci_dbg(xhci, "%s: stop port polling\n", __func__);
+>  	clear_bit(HCD_FLAG_POLL_RH, &hcd->flags);
+>  	del_timer_sync(&hcd->rh_timer);
+> -	clear_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
+> -	del_timer_sync(&xhci->shared_hcd->rh_timer);
+> +	if (xhci->shared_hcd) {
+> +		clear_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
+> +		del_timer_sync(&xhci->shared_hcd->rh_timer);
+> +	}
+>  
+>  	xhci_mtk_host_disable(mtk);
+>  	xhci_mtk_clks_disable(mtk);
+> @@ -631,8 +641,10 @@ static int __maybe_unused xhci_mtk_resume(struct device *dev)
+>  	xhci_mtk_host_enable(mtk);
+>  
+>  	xhci_dbg(xhci, "%s: restart port polling\n", __func__);
+> -	set_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
+> -	usb_hcd_poll_rh_status(xhci->shared_hcd);
+> +	if (xhci->shared_hcd) {
+> +		set_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
+> +		usb_hcd_poll_rh_status(xhci->shared_hcd);
+> +	}
+>  	set_bit(HCD_FLAG_POLL_RH, &hcd->flags);
+>  	usb_hcd_poll_rh_status(hcd);
+>  	return 0;
