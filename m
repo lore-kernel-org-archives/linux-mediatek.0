@@ -1,7 +1,7 @@
 From: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH] [1/3] dt-bindings: soc: Add MT8183 emi dt-bindings
-Date: Tue, 7 May 2019 17:12:53 +0800
-Message-ID: <1557220373-24853-1-git-send-email-xixi.chen@mediatek.com>
+Subject: [v2,1/3] dt-bindings: soc: Add MT8183 emi dt-bindings
+Date: Tue, 7 May 2019 17:15:23 +0800
+Message-ID: <1557220523-24992-1-git-send-email-xixi.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -21,7 +21,6 @@ List-Id: linux-mediatek@lists.infradead.org
 
 Add emi dt-bindings of MT8183 in binding document.
 
-Change-Id: I6704ad444093778462b9a16f6c03a1ca7ecc1e0d
 Signed-off-by: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
  .../bindings/memory-controllers/mediatek,emi.txt      | 19 +++++++++++++++++++
