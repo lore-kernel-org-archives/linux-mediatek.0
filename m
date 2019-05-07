@@ -1,236 +1,94 @@
-From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v5 02/12] dt-binding: gce: add gce header file for mt8183
-Date: Tue, 7 May 2019 16:13:45 +0800
-Message-ID: <20190507081355.52630-3-bibby.hsieh@mediatek.com>
-References: <20190507081355.52630-1-bibby.hsieh@mediatek.com>
+From: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
+Subject: Re: [PATCH net-next v2 0/4] of_get_mac_address ERR_PTR fixes
+Date: Tue, 7 May 2019 10:39:18 +0200
+Message-ID: <20190507083918.GI81826@meh.true.cz>
+References: <1557177887-30446-1-git-send-email-ynezz@true.cz>
+ <20190507071914.GJ2269@kadam>
+Reply-To: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190507081355.52630-1-bibby.hsieh@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <20190507071914.GJ2269@kadam>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, CK HU <ck.hu@mediatek.com>
-Cc: Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.chen@mediatek.com, kendrick.hsu@mediatek.com, Frederic Chen <Frederic.Chen@mediatek.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: netdev@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, devel@driverdev.osuosl.org, Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Frank Rowand <frowand.list@gmail.com>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add documentation for the mt8183 gce.
+Dan Carpenter <dan.carpenter@oracle.com> [2019-05-07 10:19:14]:
 
-Add gce header file defined the gce hardware event,
-subsys number and constant for mt8183.
+Hi,
 
-Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
----
- .../devicetree/bindings/mailbox/mtk-gce.txt   |   6 +-
- include/dt-bindings/gce/mt8183-gce.h          | 177 ++++++++++++++++++
- 2 files changed, 180 insertions(+), 3 deletions(-)
- create mode 100644 include/dt-bindings/gce/mt8183-gce.h
+> On Mon, May 06, 2019 at 11:24:43PM +0200, Petr Štetiar wrote:
+> > 
+> > this patch series is an attempt to fix the mess, I've somehow managed to
+> > introduce.
+> > 
+> > First patch in this series is defacto v5 of the previous 05/10 patch in the
+> > series, but since the v4 of this 05/10 patch wasn't picked up by the
+> > patchwork for some unknown reason, this patch wasn't applied with the other
+> > 9 patches in the series, so I'm resending it as a separate patch of this
+> > fixup series again.
+> 
+> I feel sort of ridiculous asking this over and over...  Maybe your spam
+> filter is eating my emails?
 
-diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-index cfe40b01d164..1f7f8f2a3f49 100644
---- a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-+++ b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-@@ -9,7 +9,7 @@ CMDQ driver uses mailbox framework for communication. Please refer to
- mailbox.txt for generic information about mailbox device-tree bindings.
- 
- Required properties:
--- compatible: Must be "mediatek,mt8173-gce"
-+- compatible: can be "mediatek,mt8173-gce" or "mediatek,mt8183-gce"
- - reg: Address range of the GCE unit
- - interrupts: The interrupt signal from the GCE block
- - clock: Clocks according to the common clock binding
-@@ -28,8 +28,8 @@ Required properties for a client device:
- - mediatek,gce-subsys: u32, specify the sub-system id which is corresponding
-   to the register address.
- 
--Some vaules of properties are defined in 'dt-bindings/gce/mt8173-gce.h'. Such as
--sub-system ids, thread priority, event ids.
-+Some vaules of properties are defined in 'dt-bindings/gce/mt8173-gce.h'
-+or 'dt-binding/gce/mt8183-gce.h'. Such as sub-system ids, thread priority, event ids.
- 
- Example:
- 
-diff --git a/include/dt-bindings/gce/mt8183-gce.h b/include/dt-bindings/gce/mt8183-gce.h
-new file mode 100644
-index 000000000000..aeb95154fac2
---- /dev/null
-+++ b/include/dt-bindings/gce/mt8183-gce.h
-@@ -0,0 +1,177 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * Copyright (c) 2019 MediaTek Inc.
-+ * Author: Bibby Hsieh <bibby.hsieh@mediatek.com>
-+ *
-+ */
-+
-+#ifndef _DT_BINDINGS_GCE_MT8183_H
-+#define _DT_BINDINGS_GCE_MT8183_H
-+
-+#define CMDQ_NO_TIMEOUT		0xffffffff
-+
-+#define CMDQ_THR_MAX_COUNT	24
-+
-+/* GCE HW thread priority */
-+#define CMDQ_THR_PRIO_LOWEST	0
-+#define CMDQ_THR_PRIO_HIGHEST	1
-+
-+/* GCE SUBSYS */
-+#define SUBSYS_1300XXXX		0
-+#define SUBSYS_1400XXXX		1
-+#define SUBSYS_1401XXXX		2
-+#define SUBSYS_1402XXXX		3
-+#define SUBSYS_1502XXXX		4
-+#define SUBSYS_1880XXXX		5
-+#define SUBSYS_1881XXXX		6
-+#define SUBSYS_1882XXXX		7
-+#define SUBSYS_1883XXXX		8
-+#define SUBSYS_1884XXXX		9
-+#define SUBSYS_1000XXXX		10
-+#define SUBSYS_1001XXXX		11
-+#define SUBSYS_1002XXXX		12
-+#define SUBSYS_1003XXXX		13
-+#define SUBSYS_1004XXXX		14
-+#define SUBSYS_1005XXXX		15
-+#define SUBSYS_1020XXXX		16
-+#define SUBSYS_1028XXXX		17
-+#define SUBSYS_1700XXXX		18
-+#define SUBSYS_1701XXXX		19
-+#define SUBSYS_1702XXXX		20
-+#define SUBSYS_1703XXXX		21
-+#define SUBSYS_1800XXXX		22
-+#define SUBSYS_1801XXXX		23
-+#define SUBSYS_1802XXXX		24
-+#define SUBSYS_1804XXXX		25
-+#define SUBSYS_1805XXXX		26
-+#define SUBSYS_1808XXXX		27
-+#define SUBSYS_180aXXXX		28
-+#define SUBSYS_180bXXXX		29
-+
-+#define CMDQ_EVENT_DISP_RDMA0_SOF					0
-+#define CMDQ_EVENT_DISP_RDMA1_SOF					1
-+#define CMDQ_EVENT_MDP_RDMA0_SOF					2
-+#define CMDQ_EVENT_MDP_RSZ0_SOF						4
-+#define CMDQ_EVENT_MDP_RSZ1_SOF						5
-+#define CMDQ_EVENT_MDP_TDSHP_SOF					6
-+#define CMDQ_EVENT_MDP_WROT0_SOF					7
-+#define CMDQ_EVENT_MDP_WDMA0_SOF					8
-+#define CMDQ_EVENT_DISP_OVL0_SOF					9
-+#define CMDQ_EVENT_DISP_OVL0_2L_SOF					10
-+#define CMDQ_EVENT_DISP_OVL1_2L_SOF					11
-+#define CMDQ_EVENT_DISP_WDMA0_SOF					12
-+#define CMDQ_EVENT_DISP_COLOR0_SOF					13
-+#define CMDQ_EVENT_DISP_CCORR0_SOF					14
-+#define CMDQ_EVENT_DISP_AAL0_SOF					15
-+#define CMDQ_EVENT_DISP_GAMMA0_SOF					16
-+#define CMDQ_EVENT_DISP_DITHER0_SOF					17
-+#define CMDQ_EVENT_DISP_PWM0_SOF					18
-+#define CMDQ_EVENT_DISP_DSI0_SOF					19
-+#define CMDQ_EVENT_DISP_DPI0_SOF					20
-+#define CMDQ_EVENT_DISP_RSZ_SOF						22
-+#define CMDQ_EVENT_MDP_AAL_SOF						23
-+#define CMDQ_EVENT_MDP_CCORR_SOF					24
-+#define CMDQ_EVENT_DISP_DBI_SOF						25
-+#define CMDQ_EVENT_DISP_RDMA0_EOF					26
-+#define CMDQ_EVENT_DISP_RDMA1_EOF					27
-+#define CMDQ_EVENT_MDP_RDMA0_EOF					28
-+#define CMDQ_EVENT_MDP_RSZ0_EOF						30
-+#define CMDQ_EVENT_MDP_RSZ1_EOF						31
-+#define CMDQ_EVENT_MDP_TDSHP_EOF					32
-+#define CMDQ_EVENT_MDP_WROT0_EOF					33
-+#define CMDQ_EVENT_MDP_WDMA0_EOF					34
-+#define CMDQ_EVENT_DISP_OVL0_EOF					35
-+#define CMDQ_EVENT_DISP_OVL0_2L_EOF					36
-+#define CMDQ_EVENT_DISP_OVL1_2L_EOF					37
-+#define CMDQ_EVENT_DISP_WDMA0_EOF					38
-+#define CMDQ_EVENT_DISP_COLOR0_EOF					39
-+#define CMDQ_EVENT_DISP_CCORR0_EOF					40
-+#define CMDQ_EVENT_DISP_AAL0_EOF					41
-+#define CMDQ_EVENT_DISP_GAMMA0_EOF					42
-+#define CMDQ_EVENT_DISP_DITHER0_EOF					43
-+#define CMDQ_EVENT_DSI0_EOF						44
-+#define CMDQ_EVENT_DPI0_EOF						45
-+#define CMDQ_EVENT_DISP_RSZ_EOF						47
-+#define CMDQ_EVENT_MDP_AAL_EOF						48
-+#define CMDQ_EVENT_MDP_CCORR_EOF					49
-+#define CMDQ_EVENT_DBI_EOF						50
-+#define CMDQ_EVENT_MUTEX_STREAM_DONE0					130
-+#define CMDQ_EVENT_MUTEX_STREAM_DONE1					131
-+#define CMDQ_EVENT_MUTEX_STREAM_DONE2					132
-+#define CMDQ_EVENT_MUTEX_STREAM_DONE3					133
-+#define CMDQ_EVENT_MUTEX_STREAM_DONE4					134
-+#define CMDQ_EVENT_MUTEX_STREAM_DONE5					135
-+#define CMDQ_EVENT_MUTEX_STREAM_DONE6					136
-+#define CMDQ_EVENT_MUTEX_STREAM_DONE7					137
-+#define CMDQ_EVENT_MUTEX_STREAM_DONE8					138
-+#define CMDQ_EVENT_MUTEX_STREAM_DONE9					139
-+#define CMDQ_EVENT_MUTEX_STREAM_DONE10					140
-+#define CMDQ_EVENT_MUTEX_STREAM_DONE11					141
-+#define CMDQ_EVENT_DISP_RDMA0_BUF_UNDERRUN_EVEN				142
-+#define CMDQ_EVENT_DISP_RDMA1_BUF_UNDERRUN_EVEN				143
-+#define CMDQ_EVENT_DSI0_TE_EVENT					144
-+#define CMDQ_EVENT_DSI0_IRQ_EVENT					145
-+#define CMDQ_EVENT_DSI0_DONE_EVENT					146
-+#define CMDQ_EVENT_DISP_WDMA0_SW_RST_DONE				150
-+#define CMDQ_EVENT_MDP_WDMA_SW_RST_DONE					151
-+#define CMDQ_EVENT_MDP_WROT0_SW_RST_DONE				152
-+#define CMDQ_EVENT_MDP_RDMA0_SW_RST_DONE				154
-+#define CMDQ_EVENT_DISP_OVL0_FRAME_RST_DONE_PULE			155
-+#define CMDQ_EVENT_DISP_OVL0_2L_FRAME_RST_DONE_ULSE			156
-+#define CMDQ_EVENT_DISP_OVL1_2L_FRAME_RST_DONE_ULSE			157
-+#define CMDQ_EVENT_ISP_FRAME_DONE_P2_0					257
-+#define CMDQ_EVENT_ISP_FRAME_DONE_P2_1					258
-+#define CMDQ_EVENT_ISP_FRAME_DONE_P2_2					259
-+#define CMDQ_EVENT_ISP_FRAME_DONE_P2_3					260
-+#define CMDQ_EVENT_ISP_FRAME_DONE_P2_4					261
-+#define CMDQ_EVENT_ISP_FRAME_DONE_P2_5					262
-+#define CMDQ_EVENT_ISP_FRAME_DONE_P2_6					263
-+#define CMDQ_EVENT_ISP_FRAME_DONE_P2_7					264
-+#define CMDQ_EVENT_ISP_FRAME_DONE_P2_8					265
-+#define CMDQ_EVENT_ISP_FRAME_DONE_P2_9					266
-+#define CMDQ_EVENT_ISP_FRAME_DONE_P2_10					267
-+#define CMDQ_EVENT_ISP_FRAME_DONE_P2_11					268
-+#define CMDQ_EVENT_ISP_FRAME_DONE_P2_12					269
-+#define CMDQ_EVENT_ISP_FRAME_DONE_P2_13					270
-+#define CMDQ_EVENT_ISP_FRAME_DONE_P2_14					271
-+#define CMDQ_EVENT_ISP_FRAME_DONE_P2_15					272
-+#define CMDQ_EVENT_ISP_FRAME_DONE_P2_16					273
-+#define CMDQ_EVENT_ISP_FRAME_DONE_P2_17					274
-+#define CMDQ_EVENT_ISP_FRAME_DONE_P2_18					275
-+#define CMDQ_EVENT_AMD_FRAME_DONE					276
-+#define CMDQ_EVENT_DVE_DONE						277
-+#define CMDQ_EVENT_WMFE_DONE						278
-+#define CMDQ_EVENT_RSC_DONE						279
-+#define CMDQ_EVENT_MFB_DONE						280
-+#define CMDQ_EVENT_WPE_A_DONE						281
-+#define CMDQ_EVENT_SPE_B_DONE						282
-+#define CMDQ_EVENT_OCC_DONE						283
-+#define CMDQ_EVENT_VENC_CMDQ_FRAME_DONE					289
-+#define CMDQ_EVENT_JPG_ENC_CMDQ_DONE					290
-+#define CMDQ_EVENT_JPG_DEC_CMDQ_DONE					291
-+#define CMDQ_EVENT_VENC_CMDQ_MB_DONE					292
-+#define CMDQ_EVENT_VENC_CMDQ_128BYTE_DONE				293
-+#define CMDQ_EVENT_ISP_FRAME_DONE_A					321
-+#define CMDQ_EVENT_ISP_FRAME_DONE_B					322
-+#define CMDQ_EVENT_CAMSV0_PASS1_DONE					323
-+#define CMDQ_EVENT_CAMSV1_PASS1_DONE					324
-+#define CMDQ_EVENT_CAMSV2_PASS1_DONE					325
-+#define CMDQ_EVENT_TSF_DONE						326
-+#define CMDQ_EVENT_SENINF_CAM0_FIFO_FULL				327
-+#define CMDQ_EVENT_SENINF_CAM1_FIFO_FULL				328
-+#define CMDQ_EVENT_SENINF_CAM2_FIFO_FULL				329
-+#define CMDQ_EVENT_SENINF_CAM3_FIFO_FULL				330
-+#define CMDQ_EVENT_SENINF_CAM4_FIFO_FULL				331
-+#define CMDQ_EVENT_SENINF_CAM5_FIFO_FULL				332
-+#define CMDQ_EVENT_SENINF_CAM6_FIFO_FULL				333
-+#define CMDQ_EVENT_SENINF_CAM7_FIFO_FULL				334
-+#define CMDQ_EVENT_IPU_CORE0_DONE0					353
-+#define CMDQ_EVENT_IPU_CORE0_DONE1					354
-+#define CMDQ_EVENT_IPU_CORE0_DONE2					355
-+#define CMDQ_EVENT_IPU_CORE0_DONE3					356
-+#define CMDQ_EVENT_IPU_CORE1_DONE0					385
-+#define CMDQ_EVENT_IPU_CORE1_DONE1					386
-+#define CMDQ_EVENT_IPU_CORE1_DONE2					387
-+#define CMDQ_EVENT_IPU_CORE1_DONE3					388
-+
-+#endif
--- 
-2.18.0
+nope, I've read your email, that's the only reason I've sent out this v2 which
+added Fixes: tag you've suggested in your email.
+
+> This bug was introduced in https://patchwork.ozlabs.org/patch/1094916/
+> "[v4,01/10] of_net: add NVMEM support to of_get_mac_address" but it
+> looks like no one applied it.
+
+this patch series is against net-next, and I've added Fixes: tag as you've
+requested in this v2 series[1] (which expands to commit[2] in net-next):
+
+ Fixes: d01f449c008a ("of_net: add NVMEM support to of_get_mac_address")
+
+> You're acting as if it *was* applied but you refuse to answer my
+> question who applied it and which to which tree so I can figure out what
+> went wrong.
+
+it was applied[2] to David's net-next tree, but unfortunately partialy, just 9
+patches out of 10, as the patch 05/10 in that series (which is patch 1/4 in
+this series) never reached netdev mailing list and patchwork, probably because
+of some netdev mailing list software and/or patchwork hiccup, very likely due
+to the long list of recipients in that patch and as I'm not subscribed to the
+netdev (due to the high traffic) I'm probably treaten somehow differently.
+
+So to sum it up, I've simply thought, that it was enough to send out v2 with
+that Fixes: tag and considered it done.
+
+> I only see comments from last Friday that it shouldn't be applied...
+
+I'm sorry, but which comments do you mean exactly? Those about the
+`nvmem-mac-address` DT (sysfs) entry? If that is the case, from my point of
+view, I've provided reasonable arguments and nobody told me, that I'm wrong
+with my reasoning or NACKed this explicitly, so David probably considered my
+arguments good enough and merged it as it is? I don't have any other
+explanation.
+
+> I also told you on Friday in a different thread that that patch shouldn't be
+> applied.  Breaking git bisect is a bug, and we never do that. 
+
+Yes, and I agree with you, but I've simply thought, that if any of the
+maintainers who previously reviewed the series didn't objected about this,
+that they're possibly going to squash those patches by themselves during the
+merging process or that they're going to tell me to do so and I would address
+this in the latest interation of the patchset before merge.
+
+Anyway, is there any possibility how to fix that now?
+
+> I'm just very confused right now.  What I'm trying to do is figure out in
+> my head how this process failed so we can do better next time.
+
+I'm just occasional contributor, so I'm sorry, but I can hardly provide any
+input.
+
+1. https://patchwork.ozlabs.org/patch/1096054/
+2. https://git.kernel.org/pub/scm/linux/kernel/git/davem/net-next.git/commit/?id=d01f449c008a3f41fa44c603e28a7452ab8f8e68
+
+Cheers,
+
+Petr
