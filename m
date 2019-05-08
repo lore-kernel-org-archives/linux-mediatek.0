@@ -1,80 +1,41 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v5 03/12] dt-binding: gce: add binding for gce subsys
- property
-Date: Wed, 8 May 2019 11:43:55 +0800
-Message-ID: <1557287035.3936.2.camel@mtksdaap41>
-References: <20190507081355.52630-1-bibby.hsieh@mediatek.com>
-         <20190507081355.52630-4-bibby.hsieh@mediatek.com>
+From: <neal.liu@mediatek.com>
+Subject: [PATCH 0/3] MT67XX random number generator support
+Date: Wed, 8 May 2019 11:58:54 +0800
+Message-ID: <1557287937-2410-1-git-send-email-neal.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190507081355.52630-4-bibby.hsieh@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.chen@mediatek.com, kendrick.hsu@mediatek.com
+To: mpm@selenic.com, herbert@gondor.apana.org.au, robh+dt@kernel.org, mark.rutland@arm.com, matthias.bgg@gmail.com
+Cc: wsd_upstream@mediatek.com, linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Bibby:
+These patch series introduce a generic rng driver for Trustzone
+based kernel driver which would like to communicate with ATF
+SIP services.
 
-On Tue, 2019-05-07 at 16:13 +0800, Bibby Hsieh wrote:
-> tcmdq driver provide a function that get the relationship
-> of sub system number from device node for client.
-> add specification for #subsys-cells, mediatek,gce-subsys.
-> 
-> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-> ---
->  .../devicetree/bindings/mailbox/mtk-gce.txt       | 15 ++++++++++++---
->  1 file changed, 12 insertions(+), 3 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> index 1f7f8f2a3f49..8fd9479bc9f6 100644
-> --- a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> +++ b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> @@ -21,11 +21,19 @@ Required properties:
->  	priority: Priority of GCE thread.
->  	atomic_exec: GCE processing continuous packets of commands in atomic
->  		way.
-> +- #subsys-cells: Should be 3.
-> +	<&phandle subsys_number start_offset size>
-> +	phandle: Label name of a gce node.
-> +	subsys_number: specify the sub-system id which is corresponding
-> +		       to the register address.
-> +	start_offset: the start offset of register address that GCE can access.
-> +	size: the total size of register address that GCE can access.
->  
->  Required properties for a client device:
->  - mboxes: Client use mailbox to communicate with GCE, it should have this
->    property and list of phandle, mailbox specifiers.
-> -- mediatek,gce-subsys: u32, specify the sub-system id which is corresponding
-> +Optional propertier for a client device:
+Patch #1 initials SMC fid table for Mediatek SIP interfaces and
+adds HWRNG related SMC call.
 
-properties
+Patch #2..3 adds mt67xx-rng kernel driver for Trustzone based SoCs.
+For Mediatek SoCs on ARMv8 with TrustZone enabled, peripherals like
+entropy sources is not accessible from normal world (linux) and
+rather accessible from secure world (ATF/TEE) only. This driver aims
+to provide a generic interface to ATF rng service.
 
-Regards,
-CK
+Neal Liu (3):
+  soc: mediatek: add SMC fid table for SIP interface
+  dt-bindings: rng: update bindings for MT67xx SoCs
+  hwrng: add mt67xx-rng driver
 
-> +- mediatek,gce-client-reg: u32, specify the sub-system id which is corresponding
->    to the register address.
->  
->  Some vaules of properties are defined in 'dt-bindings/gce/mt8173-gce.h'
-> @@ -40,6 +48,7 @@ Example:
->  		clocks = <&infracfg CLK_INFRA_GCE>;
->  		clock-names = "gce";
->  		#mbox-cells = <3>;
-> +		#subsys-cells = <3>;
->  	};
->  
->  Example for a client device:
-> @@ -48,9 +57,9 @@ Example for a client device:
->  		compatible = "mediatek,mt8173-mmsys";
->  		mboxes = <&gce 0 CMDQ_THR_PRIO_LOWEST 1>,
->  			 <&gce 1 CMDQ_THR_PRIO_LOWEST 1>;
-> -		mediatek,gce-subsys = <SUBSYS_1400XXXX>;
->  		mutex-event-eof = <CMDQ_EVENT_MUTEX0_STREAM_EOF
->  				CMDQ_EVENT_MUTEX1_STREAM_EOF>;
-> -
-> +		mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000 0x1000>,
-> +					  <&gce SUBSYS_1401XXXX 0x2000 0x100>;
->  		...
->  	};
+ Documentation/devicetree/bindings/rng/mtk-rng.txt |   13 ++-
+ drivers/char/hw_random/Kconfig                    |   16 ++++
+ drivers/char/hw_random/Makefile                   |    1 +
+ drivers/char/hw_random/mt67xx-rng.c               |  104 +++++++++++++++++++++
+ include/linux/soc/mediatek/mtk_sip_svc.h          |   55 +++++++++++
+ 5 files changed, 186 insertions(+), 3 deletions(-)
+ create mode 100644 drivers/char/hw_random/mt67xx-rng.c
+ create mode 100644 include/linux/soc/mediatek/mtk_sip_svc.h
+
+-- 
+1.7.9.5
