@@ -1,60 +1,32 @@
-From: andrew-sh.cheng <andrew-sh.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 3/4] dt-bindings: devfreq: add compatible for mt8183
- cci devfreq
-Date: Wed, 8 May 2019 17:27:56 +0800
-Message-ID: <1557307676.27568.1.camel@mtksdaap41>
-References: <1553841972-19737-1-git-send-email-andrew-sh.cheng@mediatek.com>
- <CGME20190329064630epcas5p216f8d9263dc6fea26bb71165b5673111@epcas5p2.samsung.com>
- <1553841972-19737-4-git-send-email-andrew-sh.cheng@mediatek.com>
- <28f2c90a-9588-3afa-193d-2572c9cc9bf5@samsung.com>
+From: allen <allen.chen@ite.com.tw>
+Subject: [PATCH 0/3] IT6505 cover letter
+Date: Wed, 8 May 2019 17:31:55 +0800
+Message-ID: <1557307985-21228-1-git-send-email-allen.chen@ite.com.tw>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <28f2c90a-9588-3afa-193d-2572c9cc9bf5-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, "Rafael J.
- Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, fan.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, MyungJoo Ham <myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: allen.chen@ite.com.tw
+Cc: Pi-Hsun Shih <pihsun@chromium.org>, Amithash Prasad <amithash@fb.com>, Ben Whitten <ben.whitten@gmail.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "open list:DRM DRIVERS" <dri-devel@lists.freedesktop.org>, Heiko Stuebner <heiko@sntech.de>, Johan Hovold <johan@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, =?UTF-8?q?Michal=20Vok=C3=A1=C4=8D?= <michal.vokac@ysoft.com>, Nickey Yang <nickey.yang@rock-chips.com>, Rob
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVHVlLCAyMDE5LTA0LTE2IGF0IDE4OjA4ICswOTAwLCBDaGFud29vIENob2kgd3JvdGU6Cj4g
-SGksCj4gCj4gSSBhbHJlYWR5IHJldmlld2VkIHRoaXMgcGF0Y2ggb24gdjFbMV0uCj4gWzFdIGh0
-dHBzOi8vbGttbC5vcmcvbGttbC8yMDE5LzIvMTEvMjIyOAo+IAo+IEJ1dCwgdGhlIHNlY29uZCB2
-ZXJzaW9uIHBhdGNoIGRvZXNuJ3QgaW5jbHVkZSB0aGUgYW55dGhpbmcKPiBhYm91dCByZXZpZXcu
-IFBsZWFzZSBjaGVjayBpdFsxXS4KSEkgQ2hhbndvbywKU29ycnkgZm9yIHRoaXMgY2x1bXN5IG1p
-c3Rha2UuCkkgd2lsbCB1cGRhdGUgYXQgcGF0Y2ggdjMKPiAKPiBPbiAxOS4gMy4gMjkuIOyYpO2b
-hCAzOjQ2LCBBbmRyZXctc2guQ2hlbmcgd3JvdGU6Cj4gPiBUaGlzIGFkZHMgZHQtYmluZGluZyBk
-b2N1bWVudGF0aW9uIG9mIGNjaSBkZXZmcmVxCj4gPiBmb3IgTWVkaWF0ZWsgTVQ4MTgzIFNvQyBw
-bGF0Zm9ybS4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogQW5kcmV3LXNoLkNoZW5nIDxhbmRyZXct
-c2guY2hlbmdAbWVkaWF0ZWsuY29tPgo+ID4gLS0tCj4gPiAgLi4uL2JpbmRpbmdzL2RldmZyZXEv
-bXQ4MTgzLWNjaS1kZXZmcmVxLnR4dCAgICAgICAgICAgfCAxOSArKysrKysrKysrKysrKysrKysr
-Cj4gPiAgMSBmaWxlIGNoYW5nZWQsIDE5IGluc2VydGlvbnMoKykKPiA+ICBjcmVhdGUgbW9kZSAx
-MDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2RldmZyZXEvbXQ4MTgzLWNj
-aS1kZXZmcmVxLnR4dAo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0
-cmVlL2JpbmRpbmdzL2RldmZyZXEvbXQ4MTgzLWNjaS1kZXZmcmVxLnR4dCBiL0RvY3VtZW50YXRp
-b24vZGV2aWNldHJlZS9iaW5kaW5ncy9kZXZmcmVxL210ODE4My1jY2ktZGV2ZnJlcS50eHQKPiA+
-IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4gPiBpbmRleCAwMDAwMDAwLi5lMmI2MWNmCj4gPiAtLS0g
-L2Rldi9udWxsCj4gPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGV2
-ZnJlcS9tdDgxODMtY2NpLWRldmZyZXEudHh0Cj4gPiBAQCAtMCwwICsxLDE5IEBACj4gPiArKiBN
-ZWRpYXRlayBDQ0kgZnJlcXVlbmN5IGRldmljZQo+ID4gKwo+ID4gK1JlcXVpcmVkIHByb3BlcnRp
-ZXM6Cj4gPiArLSBjb21wYXRpYmxlOiBzaG91bGQgY29udGFpbiAibWVkaWF0ZWssbXQ4MTgzLWNj
-aSIgZm9yIGNjaSBkZXZmcmVxCj4gPiArCj4gPiArLSBjbG9ja3M6IGZvciBjY2kgZGV2ZnJlcQo+
-ID4gKwo+ID4gKy0gY2xvY2stbmFtZXM6IGZvciBjY2kgZGV2ZnJlcSBkcml2ZXIgdG8gcmVmZXJl
-bmNlCj4gPiArCj4gPiArLSBvcGVyYXRpbmctcG9pbnRzLXYyOiBmb3IgY2NpIGRldmZyZXEgb3Bw
-IHRhYmxlCj4gPiArCj4gPiArRXhhbXBsZToKPiA+ICsJY2NpOiBjY2kgewo+ID4gKwkJY29tcGF0
-aWJsZSA9ICJtZWRpYXRlayxjY2kiOwo+ID4gKwkJY2xvY2tzID0gPCZhcG1peGVkc3lzIENMS19B
-UE1JWEVEX0NDSVBMTD47Cj4gPiArCQljbG9jay1uYW1lcyA9ICJjY2lfY2xvY2siOwo+ID4gKwkJ
-b3BlcmF0aW5nLXBvaW50cy12MiA9IDwmY2NpX29wcD47Cj4gPiArCX07Cj4gPiArCj4gPiAKPiAK
-PiAKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
-dXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5v
-cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRp
-YXRlawo=
+The IT6505 is a high-performance DisplayPort 1.1a transmitter, fully compliant with DisplayPort 1.1a, HDCP 1.3 specifications. The IT6505 supports color depth of up to 36 bits (12 bits/color) and ensures robust transmission of high-quality uncompressed video content, along with uncompressed and compressed digital audio content.
+
+This series contains document bindings, Kconfig to control the function enable or not.
+
+Allen Chen (3):
+  dt-bindings: Add binding for IT6505.
+  drm/bridge: add it6505 driver
+  drm/bridge: it6505 driver add char device feature.
+
+ .../bindings/display/bridge/ite,it6505.txt         |   30 +
+ .../devicetree/bindings/vendor-prefixes.txt        |    1 +
+ drivers/gpu/drm/bridge/Kconfig                     |   22 +
+ drivers/gpu/drm/bridge/Makefile                    |    1 +
+ drivers/gpu/drm/bridge/ite-it6505.c                | 2768 ++++++++++++++++++++
+ 5 files changed, 2822 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/bridge/ite,it6505.txt
+ create mode 100644 drivers/gpu/drm/bridge/ite-it6505.c
+
+-- 
+1.9.1
