@@ -1,60 +1,56 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [v2 PATCH] dt-binding: usb: add usb-role-switch property
-Date: Wed, 8 May 2019 14:26:42 +0800
-Message-ID: <1557296802.10179.272.camel@mhfsdcap03>
-References: <38ff51264e971d5c58940c8435b9d8d274662d50.1557195204.git.chunfeng.yun@mediatek.com>
-         <20190507141305.GA19816@kuha.fi.intel.com>
+From: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] [v5 0/2] dt-bindings: soc: Add MT8183 emi dt-bindings
+Date: Wed, 8 May 2019 14:18:15 +0800
+Message-ID: <1557296297-28138-1-git-send-email-xixi.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190507141305.GA19816@kuha.fi.intel.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Biju Das <biju.das@bp.renesas.com>, Yu Chen <chenyu56@huawei.com>, Min Guo <min.guo@mediatek.com>, Felipe Balbi <felipe.balbi@linux.intel.com>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-05-07 at 17:13 +0300, Heikki Krogerus wrote:
-> On Tue, May 07, 2019 at 10:22:58AM +0800, Chunfeng Yun wrote:
-> > diff --git a/Documentation/devicetree/bindings/usb/generic.txt b/Documentation/devicetree/bindings/usb/generic.txt
-> > index 0a74ab8dfdc2..f5a6ad053ecc 100644
-> > --- a/Documentation/devicetree/bindings/usb/generic.txt
-> > +++ b/Documentation/devicetree/bindings/usb/generic.txt
-> > @@ -30,6 +30,11 @@ Optional properties:
-> >  			optional for OTG device.
-> >   - adp-disable: tells OTG controllers we want to disable OTG ADP, ADP is
-> >  			optional for OTG device.
-> > + - usb-role-switch: tells Dual-Role USB controllers we want to handle the role
-> > +			switch between host and device according to the state
-> > +			detected by the USB connector, typically for Type-C,
-> > +			Type-B(micro).
-> > +			see connector/usb-connector.txt.
-> 
-> That does not look correct to me. Firstly, USB role switches are not
-> always dual-role USB controllers. 
-Thanks for review, I look through some drivers, you are right, some phys
-also switch the roles.
+Add emi dt-bindings of MT8183 in binding document.
 
-> Secondly, stating what determines
-> the role irrelevant IMO.
-> 
-> Since this is a boolean property, the description for it should simply
-> explain what does it tell about the capabilities of the device that
-> has it. The description should not make any assumptions about the
-> users of the property, and since the property is a "generic" USB
-> property, I'm not sure it should make any assumptions about the type
-> of the device that has the property either. Also, I would really like
-> the description to show the type of the property.
-Ok I'll add it.
+Signed-off-by: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ .../bindings/memory-controllers/mediatek,emi.txt      | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
 
-> 
-> Why not just say something like this:
-> 
-> "Boolean property informing that the device is capable of assigning
-> the USB data role (USB host or USB device) for a given USB connector."
-will modify it.
-
-> 
-> 
-> thanks,
-> 
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt b/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
+new file mode 100644
+index 0000000..a19e3b3
+--- /dev/null
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
+@@ -0,0 +1,19 @@
++EMI (External Memory Interface)
++
++Required properties:
++- compatible : must be one of :
++	"mediatek,mt8183-emi"
++- reg : the register and size of the EMI block.
++- interrupts : includes MPU, CGM, ELM.
++
++Example:
++	emi@10219000 {
++	compatible = "mediatek,mt8183-emi";
++	reg = <0 0x10219000 0 0x1000>, /* CEN EMI */
++		  <0 0x10226000 0 0x1000>, /* EMI MPU */
++		  <0 0x1022d000 0 0x1000>, /* CHA EMI */
++		  <0 0x10235000 0 0x1000>; /* CHB EMI */
++	interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_LOW>, /* MPU */
++			 <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>, /* CGM */
++			 <GIC_SPI 155 IRQ_TYPE_LEVEL_HIGH>; /* ELM */
++};
+-- 
+1.9.1
