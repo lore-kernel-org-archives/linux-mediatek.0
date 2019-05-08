@@ -1,87 +1,98 @@
-From: Nicolas Boichat <drinkcat@chromium.org>
-Subject: Re: [PATCH 1/2] usb: xhci: Make it possible to not have a secondary
- HCD (3.0)
-Date: Wed, 8 May 2019 10:17:48 +0900
-Message-ID: <CANMq1KArM_sttW0-hq9sS4gVfWnZbHevfJ+YEg0YQ3ML_Okygg@mail.gmail.com>
-References: <20190502045631.229386-1-drinkcat@chromium.org> <6844539f-3d5e-e3ff-b498-390cdc731880@linux.intel.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [v2 2/5] drm/mediatek: CMDQ reg address of mt8173 is different
+ with mt2701
+Date: Wed, 8 May 2019 10:39:04 +0800
+Message-ID: <1557283144.31731.4.camel@mtksdaap41>
+References: <20190416060501.76276-1-jitao.shi@mediatek.com>
+ <20190416060501.76276-3-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <6844539f-3d5e-e3ff-b498-390cdc731880@linux.intel.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mathias Nyman <mathias.nyman@linux.intel.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, lkml <linux-kernel@vger.kernel.org>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Khuong Dinh <khuong@os.amperecomputing.com>, Hoan Tran <hoan@os.amperecomputing.com>, chunfeng.yun@mediatek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190416060501.76276-3-jitao.shi@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Jitao Shi <jitao.shi@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, stonea168@163.com, dri-devel@lists.freedesktop.org, yingjoe.chen@mediatek.com, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa.cheng@mediatek.com, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, linux-pwm@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, Matthias Brugger <matthias.bgg@gmail.com>, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, Sean Paul <seanpaul@chromium>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, May 6, 2019 at 10:19 PM Mathias Nyman
-<mathias.nyman@linux.intel.com> wrote:
->
-> On 2.5.2019 7.56, Nicolas Boichat wrote:
-> > Some XHCI controllers may not have any USB 3.0 port, in this case, it
-> > is not useful to create add hcd->shared_hcd, which has 2 main
-> > downsides:
-> >   - A useless USB 3.0 root hub is created.
-> >   - A warning is thrown on boot:
-> > hub 2-0:1.0: config failed, hub doesn't have any ports! (err -19)
-> >
-> > The change is mostly about checking if hcd->shared_hcd is NULL before
-> > accessing it. The one special case is in xhci_run, where we need to
-> > call xhci_run_finished immediately, if there is no secondary hcd.
->
-> To me it looks like this creates an controller starting issue for
-> xHC hardware that have both usb2 and usb3 ports.
->
-> When we have usb3 ports xhci->shared_hcd is not set yet when xhci_run is called
-> the first time. We will end up starting the xHC before properly setting up the secondary hcd.
->
-> See further down for details
-
-Thanks Mathias and Chunfeng, I need to test this on platforms that
-actually support USB 3.0 (both PCI and MTK), as you both highlighted,
-there might be issues.
-
-I'll do that a spin a v2. It might take a while though (this is not a
-very critical issue).
-
-
-> >
-> > Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
-> > ---
-> >
-> > This is a respin of https://lore.kernel.org/patchwork/patch/863993/,
-> > hopefully addressing the comments there. Note that I dropped the change
-> > in xhci-plat.c, as I do not have a device to test it, but made a
-> > similar change in xhci-mtk.c, in the next patch.
-> >
-> > (the @apm.com addresses seem to bounce, so I added some
-> > @amperecomputing.com instead, if somebody there can track back the
-> > original issue, I'm happy to provide a patch for xhci-plat.c as well)
-> >
-> > drivers/usb/host/xhci-hub.c |  7 ++++--
-> >   drivers/usb/host/xhci.c     | 45 +++++++++++++++++++++++++++----------
-> >   2 files changed, 38 insertions(+), 14 deletions(-)
-> >
->
-> ...
->
-> > @@ -698,6 +703,10 @@ int xhci_run(struct usb_hcd *hcd)
-> >
-> >       xhci_debugfs_init(xhci);
-> >
-> > +     /* There is no secondary HCD, start the host controller immediately. */
-> > +     if (!xhci->shared_hcd)
-> > +             return xhci_run_finished(xhci);
-> > +
->
-> PCI xHC controllers with both usb2 and usb3 ports will be started before usb3 parts are properly set up.
->
-> xhci_pci_probe()
->    usb_hcd_pci_probe()
->      usb_add_hcd()
->        hcd->driver->start(hcd)  // .start = xhci_run
->          xhci_run()
->            if (!xhci->shared_hcd)  // TRUE as xhci->shared_hcd is not yet set,
->             return xhci_run_finished(xhci)  // starting controller too early here
->    xhci->shared_hcd = usb_create_shared_hcd()   // now xhci->shared_hcd is set.
->
-> -Mathias
+T24gVHVlLCAyMDE5LTA0LTE2IGF0IDE0OjA0ICswODAwLCBKaXRhbyBTaGkgd3JvdGU6Cj4gQ29u
+ZmlnIHRoZSBkaWZmZXJlbnQgQ01EUSByZWcgYWRkcmVzcyBpbiBkcml2ZXIgZGF0YS4KPiAKRm9y
+IE1UODE3MywgeW91IGNoYW5nZSByZWdfY21kX29mZiBmcm9tIDB4MTgwIHRvIDB4MjAwLCBzbyB0
+aGlzIHBhdGNoIGlzCmEgYnVnIGZpeC4gWW91IHNob3VsZCBhZGQgYSAnRml4ZXMnIHRhZy4KCj4g
+U2lnbmVkLW9mZi1ieTogSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPgo+IC0tLQo+
+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jIHwgMzkgKysrKysrKysrKysrKysr
+KysrKysrKystLS0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAzMCBpbnNlcnRpb25zKCspLCA5IGRl
+bGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2RzaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYwo+IGluZGV4IDZjNGFj
+MzdmOTgzZC4uNTczZTZiZWM2ZDM2IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZHNpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5j
+Cj4gQEAgLTEzMSw3ICsxMzEsNiBAQAo+ICAjZGVmaW5lIFZNX0NNRF9FTgkJCUJJVCgwKQo+ICAj
+ZGVmaW5lIFRTX1ZGUF9FTgkJCUJJVCg1KQo+ICAKPiAtI2RlZmluZSBEU0lfQ01EUTAJCTB4MTgw
+Cj4gICNkZWZpbmUgQ09ORklHCQkJCSgweGZmIDw8IDApCj4gICNkZWZpbmUgU0hPUlRfUEFDS0VU
+CQkJMAo+ICAjZGVmaW5lIExPTkdfUEFDS0VUCQkJMgo+IEBAIC0xNTYsNiArMTU1LDEwIEBACj4g
+IAo+ICBzdHJ1Y3QgcGh5Owo+ICAKPiArc3RydWN0IG10a19kc2lfZHJpdmVyX2RhdGEgewo+ICsJ
+Y29uc3QgdTMyIHJlZ19jbWRxX29mZjsKPiArfTsKPiArCj4gIHN0cnVjdCBtdGtfZHNpIHsKPiAg
+CXN0cnVjdCBtdGtfZGRwX2NvbXAgZGRwX2NvbXA7Cj4gIAlzdHJ1Y3QgZGV2aWNlICpkZXY7Cj4g
+QEAgLTE4Miw2ICsxODUsNyBAQCBzdHJ1Y3QgbXRrX2RzaSB7Cj4gIAlib29sIGVuYWJsZWQ7Cj4g
+IAl1MzIgaXJxX2RhdGE7Cj4gIAl3YWl0X3F1ZXVlX2hlYWRfdCBpcnFfd2FpdF9xdWV1ZTsKPiAr
+CXN0cnVjdCBtdGtfZHNpX2RyaXZlcl9kYXRhICpkcml2ZXJfZGF0YTsKPiAgfTsKPiAgCj4gIHN0
+YXRpYyBpbmxpbmUgc3RydWN0IG10a19kc2kgKmVuY29kZXJfdG9fZHNpKHN0cnVjdCBkcm1fZW5j
+b2RlciAqZSkKPiBAQCAtOTM0LDYgKzkzOCw3IEBAIHN0YXRpYyB2b2lkIG10a19kc2lfY21kcShz
+dHJ1Y3QgbXRrX2RzaSAqZHNpLCBjb25zdCBzdHJ1Y3QgbWlwaV9kc2lfbXNnICptc2cpCj4gIAlj
+b25zdCBjaGFyICp0eF9idWYgPSBtc2ctPnR4X2J1ZjsKPiAgCXU4IGNvbmZpZywgY21kcV9zaXpl
+LCBjbWRxX29mZiwgdHlwZSA9IG1zZy0+dHlwZTsKPiAgCXUzMiByZWdfdmFsLCBjbWRxX21hc2ss
+IGk7Cj4gKwl1MzIgcmVnX2NtZHFfb2ZmID0gZHNpLT5kcml2ZXJfZGF0YS0+cmVnX2NtZHFfb2Zm
+Owo+ICAKPiAgCWlmIChNVEtfRFNJX0hPU1RfSVNfUkVBRCh0eXBlKSkKPiAgCQljb25maWcgPSBC
+VEE7Cj4gQEAgLTk1Myw5ICs5NTgsMTEgQEAgc3RhdGljIHZvaWQgbXRrX2RzaV9jbWRxKHN0cnVj
+dCBtdGtfZHNpICpkc2ksIGNvbnN0IHN0cnVjdCBtaXBpX2RzaV9tc2cgKm1zZykKPiAgCX0KPiAg
+Cj4gIAlmb3IgKGkgPSAwOyBpIDwgbXNnLT50eF9sZW47IGkrKykKPiAtCQl3cml0ZWIodHhfYnVm
+W2ldLCBkc2ktPnJlZ3MgKyBEU0lfQ01EUTAgKyBjbWRxX29mZiArIGkpOwo+ICsJCW10a19kc2lf
+bWFzayhkc2ksIChyZWdfY21kcV9vZmYgKyBjbWRxX29mZiArIGkpICYgKH4weDNVKSwKPiArCQkJ
+ICAgICAoMHhmZlVMIDw8ICgoKGkgKyBjbWRxX29mZikgJiAzVSkgKiA4VSkpLAo+ICsJCQkgICAg
+IHR4X2J1ZltpXSA8PCAoKChpICsgY21kcV9vZmYpICYgM1UpICogOFUpKTsKCllvdSBzYXkgeW91
+IHdvdWxkIGZvbGxvdyBOaWNvbGFzJyBzdWdnZXN0aW9uIGhlcmUuCgo+ICAKPiAtCW10a19kc2lf
+bWFzayhkc2ksIERTSV9DTURRMCwgY21kcV9tYXNrLCByZWdfdmFsKTsKPiArCW10a19kc2lfbWFz
+ayhkc2ksIHJlZ19jbWRxX29mZiwgY21kcV9tYXNrLCByZWdfdmFsKTsKPiAgCW10a19kc2lfbWFz
+ayhkc2ksIERTSV9DTURRX1NJWkUsIENNRFFfU0laRSwgY21kcV9zaXplKTsKPiAgfQo+ICAKPiBA
+QCAtMTA3NCwxMCArMTA4MSwyNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGNvbXBvbmVudF9vcHMg
+bXRrX2RzaV9jb21wb25lbnRfb3BzID0gewo+ICAJLnVuYmluZCA9IG10a19kc2lfdW5iaW5kLAo+
+ICB9Owo+ICAKPiArc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfZHNpX2RyaXZlcl9kYXRhIG10ODE3
+M19kc2lfZHJpdmVyX2RhdGEgPSB7Cj4gKwkucmVnX2NtZHFfb2ZmID0gMHgyMDAsCj4gK307Cj4g
+Kwo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IG10a19kc2lfZHJpdmVyX2RhdGEgbXQyNzAxX2RzaV9k
+cml2ZXJfZGF0YSA9IHsKPiArCS5yZWdfY21kcV9vZmYgPSAweDE4MCwKPiArfTsKPiArCj4gK3N0
+YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIG10a19kc2lfb2ZfbWF0Y2hbXSA9IHsKPiAr
+CXsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQyNzAxLWRzaSIsCj4gKwkgIC5kYXRhID0gJm10
+MjcwMV9kc2lfZHJpdmVyX2RhdGEgfSwKPiArCXsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4
+MTczLWRzaSIsCj4gKwkgIC5kYXRhID0gJm10ODE3M19kc2lfZHJpdmVyX2RhdGEgfSwKPiArCXsg
+fSwKPiArfTsKPiArCj4gIHN0YXRpYyBpbnQgbXRrX2RzaV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1f
+ZGV2aWNlICpwZGV2KQo+ICB7Cj4gIAlzdHJ1Y3QgbXRrX2RzaSAqZHNpOwo+ICAJc3RydWN0IGRl
+dmljZSAqZGV2ID0gJnBkZXYtPmRldjsKPiArCWNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgKm9m
+X2lkOwo+ICAJc3RydWN0IHJlc291cmNlICpyZWdzOwo+ICAJaW50IGlycV9udW07Cj4gIAlpbnQg
+Y29tcF9pZDsKPiBAQCAtMTEwMSw2ICsxMTI1LDkgQEAgc3RhdGljIGludCBtdGtfZHNpX3Byb2Jl
+KHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAlpZiAocmV0KQo+ICAJCWdvdG8gZXJy
+X3VucmVnaXN0ZXJfaG9zdDsKPiAgCj4gKwlvZl9pZCA9IG9mX21hdGNoX2RldmljZShtdGtfZHNp
+X29mX21hdGNoLCAmcGRldi0+ZGV2KTsKPiArCWRzaS0+ZHJpdmVyX2RhdGEgPSBvZl9pZC0+ZGF0
+YTsKCk1heWJlIHVzZSBvZl9kZXZpY2VfZ2V0X21hdGNoX2RhdGEoKSBpcyBhIG1vcmUgc2ltcGxl
+IHdheS4gWW91IGNvdWxkCnJlZmVyIHRvIFsxXS4KClsxXQpodHRwczovL2VsaXhpci5ib290bGlu
+LmNvbS9saW51eC92NS4xL3NvdXJjZS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bf
+b3ZsLmMjTDMwMAoKUmVnYXJkcywKQ0sKCj4gKwo+ICAJZHNpLT5lbmdpbmVfY2xrID0gZGV2bV9j
+bGtfZ2V0KGRldiwgImVuZ2luZSIpOwo+ICAJaWYgKElTX0VSUihkc2ktPmVuZ2luZV9jbGspKSB7
+Cj4gIAkJcmV0ID0gUFRSX0VSUihkc2ktPmVuZ2luZV9jbGspOwo+IEBAIC0xMTkzLDEyICsxMjIw
+LDYgQEAgc3RhdGljIGludCBtdGtfZHNpX3JlbW92ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpw
+ZGV2KQo+ICAJcmV0dXJuIDA7Cj4gIH0KPiAgCj4gLXN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2
+aWNlX2lkIG10a19kc2lfb2ZfbWF0Y2hbXSA9IHsKPiAtCXsgLmNvbXBhdGlibGUgPSAibWVkaWF0
+ZWssbXQyNzAxLWRzaSIgfSwKPiAtCXsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLWRz
+aSIgfSwKPiAtCXsgfSwKPiAtfTsKPiAtCj4gIHN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIgbXRrX2Rz
+aV9kcml2ZXIgPSB7Cj4gIAkucHJvYmUgPSBtdGtfZHNpX3Byb2JlLAo+ICAJLnJlbW92ZSA9IG10
+a19kc2lfcmVtb3ZlLAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9w
+Lm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1k
+ZXZlbA==
