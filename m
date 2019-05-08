@@ -1,56 +1,108 @@
-From: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 1/3] [v4 0/2] dt-bindings: soc: Add MT8183 emi dt-bindings
-Date: Wed, 8 May 2019 13:48:49 +0800
-Message-ID: <1557294531-27530-1-git-send-email-xixi.chen@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v5 09/12] soc: mediatek: cmdq: add polling function
+Date: Wed, 8 May 2019 13:50:48 +0800
+Message-ID: <1557294648.3936.17.camel@mtksdaap41>
+References: <20190507081355.52630-1-bibby.hsieh@mediatek.com>
+         <20190507081355.52630-10-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190507081355.52630-10-bibby.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.chen@mediatek.com, kendrick.hsu@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Add emi dt-bindings of MT8183 in binding document.
+Hi, Bibby:
 
-Signed-off-by: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- .../bindings/memory-controllers/mediatek,emi.txt      | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
+On Tue, 2019-05-07 at 16:13 +0800, Bibby Hsieh wrote:
+> add polling function in cmdq helper functions
 
-diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt b/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
-new file mode 100644
-index 0000000..a19e3b3
---- /dev/null
-+++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
-@@ -0,0 +1,19 @@
-+EMI (External Memory Interface)
-+
-+Required properties:
-+- compatible : must be one of :
-+	"mediatek,mt8183-emi"
-+- reg : the register and size of the EMI block.
-+- interrupts : includes MPU, CGM, ELM.
-+
-+Example:
-+	emi@10219000 {
-+	compatible = "mediatek,mt8183-emi";
-+	reg = <0 0x10219000 0 0x1000>, /* CEN EMI */
-+		  <0 0x10226000 0 0x1000>, /* EMI MPU */
-+		  <0 0x1022d000 0 0x1000>, /* CHA EMI */
-+		  <0 0x10235000 0 0x1000>; /* CHB EMI */
-+	interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_LOW>, /* MPU */
-+			 <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>, /* CGM */
-+			 <GIC_SPI 155 IRQ_TYPE_LEVEL_HIGH>; /* ELM */
-+};
--- 
-1.9.1
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+
+> 
+> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+> ---
+>  drivers/soc/mediatek/mtk-cmdq-helper.c   | 29 ++++++++++++++++++++++++
+>  include/linux/mailbox/mtk-cmdq-mailbox.h |  1 +
+>  include/linux/soc/mediatek/mtk-cmdq.h    | 15 ++++++++++++
+>  3 files changed, 45 insertions(+)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> index 17ee8196fb3d..716f8c4f207b 100644
+> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
+> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> @@ -220,6 +220,34 @@ int cmdq_pkt_clear_event(struct cmdq_pkt *pkt, u16 event)
+>  }
+>  EXPORT_SYMBOL(cmdq_pkt_clear_event);
+>  
+> +int cmdq_pkt_poll(struct cmdq_pkt *pkt, u8 subsys,
+> +		  u16 offset, u32 value, u32 mask)
+> +{
+> +	struct cmdq_instruction *inst;
+> +
+> +	if (mask != 0xffffffff) {
+> +		inst = cmdq_pkt_append_command(pkt);
+> +		if (!inst)
+> +			return -ENOMEM;
+> +
+> +		inst->op = CMDQ_CODE_MASK;
+> +		inst->value = ~mask;
+> +		offset = offset | 0x1;
+> +	}
+> +
+> +	inst = cmdq_pkt_append_command(pkt);
+> +	if (!inst)
+> +		return -ENOMEM;
+> +
+> +	inst->op = CMDQ_CODE_POLL;
+> +	inst->value = value;
+> +	inst->offset = offset;
+> +	inst->subsys = subsys;
+> +
+> +	return 0;
+> +}
+> +EXPORT_SYMBOL(cmdq_pkt_poll);
+> +
+>  static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
+>  {
+>  	struct cmdq_instruction *inst;
+> diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
+> index f21801d32a3a..1dfd5ed5c8c5 100644
+> --- a/include/linux/mailbox/mtk-cmdq-mailbox.h
+> +++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
+> @@ -46,6 +46,7 @@
+>  enum cmdq_code {
+>  	CMDQ_CODE_MASK = 0x02,
+>  	CMDQ_CODE_WRITE = 0x04,
+> +	CMDQ_CODE_POLL = 0x08,
+>  	CMDQ_CODE_JUMP = 0x10,
+>  	CMDQ_CODE_WFE = 0x20,
+>  	CMDQ_CODE_EOC = 0x40,
+> diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
+> index 52f69c8db8de..0651a0bffa54 100644
+> --- a/include/linux/soc/mediatek/mtk-cmdq.h
+> +++ b/include/linux/soc/mediatek/mtk-cmdq.h
+> @@ -99,6 +99,21 @@ int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event);
+>   */
+>  int cmdq_pkt_clear_event(struct cmdq_pkt *pkt, u16 event);
+>  
+> +/**
+> + * cmdq_pkt_poll() - Append polling command to the CMDQ packet, ask GCE to
+> + *		     execute an instruction that wait for a specified hardware
+> + *		     register to check for the value. All GCE hardware
+> + *		     threads will be blocked by this instruction.
+> + * @pkt:	the CMDQ packet
+> + * @subsys:	the CMDQ sub system code
+> + * @offset:	register offset from CMDQ sub system
+> + * @value:	the specified target register value
+> + * @mask:	the specified target register mask
+> + *
+> + * Return: 0 for success; else the error code is returned
+> + */
+> +int cmdq_pkt_poll(struct cmdq_pkt *pkt, u8 subsys,
+> +		  u16 offset, u32 value, u32 mask);
+>  /**
+>   * cmdq_pkt_flush_async() - trigger CMDQ to asynchronously execute the CMDQ
+>   *                          packet and call back at the end of done packet
