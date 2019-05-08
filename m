@@ -1,7 +1,7 @@
 From: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v5 1/3] dt-bindings: soc: Add MT8183 emi dt-bindings
-Date: Wed, 8 May 2019 14:37:56 +0800
-Message-ID: <1557297478-29778-2-git-send-email-xixi.chen@mediatek.com>
+Subject: [PATCH v5 2/3] arm64: dts: mt8183: add emi node
+Date: Wed, 8 May 2019 14:37:57 +0800
+Message-ID: <1557297478-29778-3-git-send-email-xixi.chen@mediatek.com>
 References: <1557297478-29778-1-git-send-email-xixi.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,38 +21,34 @@ To: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm
 Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add emi dt-bindings of MT8183 in binding document.
+Add emi dts node.
 
 Signed-off-by: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- .../bindings/memory-controllers/mediatek,emi.txt      | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt b/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
-new file mode 100644
-index 0000000..a19e3b3
---- /dev/null
-+++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
-@@ -0,0 +1,19 @@
-+EMI (External Memory Interface)
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 75c4881..2a176e9 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -269,6 +269,17 @@
+ 			clock-names = "spi", "wrap";
+ 		};
+ 
++		emi@10219000 {
++			compatible = "mediatek,mt8183-emi";
++			reg = <0 0x10219000 0 0x1000>, /* CEN EMI */
++				  <0 0x10226000 0 0x1000>, /* EMI MPU */
++				  <0 0x1022d000 0 0x1000>, /* CHA EMI */
++			      <0 0x10235000 0 0x1000>; /* CHB EMI */
++			interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_LOW>, /* MPU */
++						 <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>, /* CGM */
++						 <GIC_SPI 155 IRQ_TYPE_LEVEL_HIGH>; /* ELM */
++		};
 +
-+Required properties:
-+- compatible : must be one of :
-+	"mediatek,mt8183-emi"
-+- reg : the register and size of the EMI block.
-+- interrupts : includes MPU, CGM, ELM.
-+
-+Example:
-+	emi@10219000 {
-+	compatible = "mediatek,mt8183-emi";
-+	reg = <0 0x10219000 0 0x1000>, /* CEN EMI */
-+		  <0 0x10226000 0 0x1000>, /* EMI MPU */
-+		  <0 0x1022d000 0 0x1000>, /* CHA EMI */
-+		  <0 0x10235000 0 0x1000>; /* CHB EMI */
-+	interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_LOW>, /* MPU */
-+			 <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>, /* CGM */
-+			 <GIC_SPI 155 IRQ_TYPE_LEVEL_HIGH>; /* ELM */
-+};
+ 		uart0: serial@11002000 {
+ 			compatible = "mediatek,mt8183-uart",
+ 				     "mediatek,mt6577-uart";
 -- 
 1.9.1
