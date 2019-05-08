@@ -1,48 +1,61 @@
-From: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
-Subject: Re: [PATCH v4 02/10] dt-bindings: doc: reflect new NVMEM
- of_get_mac_address behaviour
-Date: Wed, 8 May 2019 10:41:52 +0200
-Message-ID: <20190508084152.GM81826@meh.true.cz>
-References: <1556893635-18549-1-git-send-email-ynezz@true.cz>
- <1556893635-18549-3-git-send-email-ynezz@true.cz>
- <CAL_JsqLt6UFU_6bmh3Pc0taXUgMtAEV7kL7eZU13cLOjoakf=Q@mail.gmail.com>
-Reply-To: Petr =?utf-8?Q?=C5=A0tetiar?= <ynezz@true.cz>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [v3 PATCH] dt-binding: usb: add usb-role-switch property
+Date: Wed, 8 May 2019 17:17:44 +0800
+Message-ID: <c3596e996c9ab39c6b9bc14b93309244c4a55014.1557306151.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAL_JsqLt6UFU_6bmh3Pc0taXUgMtAEV7kL7eZU13cLOjoakf=Q@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Rob Herring <robh+dt@kernel.org>
-Cc: netdev <netdev@vger.kernel.org>, devicetree@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, Mark Rutland <mark.rutland@arm.com>, Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, Yisen Zhuang <yisen.zhuang@huawei.com>, Salil Mehta <salil.mehta@huawei.com>, Woojung Huh <woojung.huh@microchip.com>, Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Jassi Brar <jaswinder.singh@linaro.org>, Kalle Valo <kvalo@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, Frank Rowand <frowand.list@gmail.com>, Srinivas Kandagatla <sriniv>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Biju Das <biju.das@bp.renesas.com>, Yu Chen <chenyu56@huawei.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Min Guo <min.guo@mediatek.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Rob Herring <robh+dt@kernel.org> [2019-05-07 11:44:57]:
+Add a property usb-role-switch to tell the driver that use
+USB Role Switch framework to handle the role switch,
+it's useful when the driver has already supported other ways,
+such as extcon framework etc.
 
-Hi,
+Cc: Biju Das <biju.das@bp.renesas.com>
+Cc: Yu Chen <chenyu56@huawei.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+v3:
+    add property type, modify description suggested by Heikki
 
-> > -- local-mac-address:   the driver is designed to use the of_get_mac_address api
-> > -                       only if efuse-mac is 0. When efuse-mac is 0, the MAC
-> > -                       address is obtained from local-mac-address. If this
-> > -                       attribute is not present, then the driver will use a
-> > -                       random MAC address.
-> >  - "netcp-device label":        phandle to the device specification for each of NetCP
-> >                         sub-module attached to this interface.
-> >
-> > +The MAC address will be determined using the optional properties defined in
-> > +ethernet.txt, as provided by the of_get_mac_address API and only if efuse-mac
-> 
-> Don't make references to Linux in bindings. You can talk about
-> expectations of client programs (e.g Linux, u-boot, BSD, etc.) though.
+v2:
+    describe it in terms of h/w functionality suggested by Rob
 
-I've just tried to reword what was already there, anyway, did I understood
-your remark properly, would this be more appropriate?
+v1:
+    the property is discussed in:
+    [v2,2/7] dt-bindings: usb: renesas_usb3: add usb-role-switch property
+    https://patchwork.kernel.org/patch/10852497/
 
- The MAC address will be determined using the optional properties defined in
- ethernet.txt and only if efuse-mac is set to 0. If any of the optional MAC
- address properties are not present, then the driver will use random MAC
- address.
+    Mediatek and Hisilicon also try to use it:
+    [v4,3/6] dt-bindings: usb: mtu3: add properties about USB Role Switch
+    https://patchwork.kernel.org/patch/10918385/
+    [v4,6/6] usb: mtu3: register a USB Role Switch for dual role mode
+    https://patchwork.kernel.org/patch/10918367/
 
-Thanks!
+    [v6,10/13] usb: dwc3: Registering a role switch in the DRD code
+    https://patchwork.kernel.org/patch/10909981/
+---
+ Documentation/devicetree/bindings/usb/generic.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
 
--- ynezz
+diff --git a/Documentation/devicetree/bindings/usb/generic.txt b/Documentation/devicetree/bindings/usb/generic.txt
+index 0a74ab8dfdc2..cf5a1ad456e6 100644
+--- a/Documentation/devicetree/bindings/usb/generic.txt
++++ b/Documentation/devicetree/bindings/usb/generic.txt
+@@ -30,6 +30,10 @@ Optional properties:
+ 			optional for OTG device.
+  - adp-disable: tells OTG controllers we want to disable OTG ADP, ADP is
+ 			optional for OTG device.
++ - usb-role-switch: boolean, indicates that the device is capable of assigning
++			the USB data role (USB host or USB device) for a given
++			USB connector, such as Type-C, Type-B(micro).
++			see connector/usb-connector.txt.
+ 
+ This is an attribute to a USB controller such as:
+ 
+-- 
+2.21.0
