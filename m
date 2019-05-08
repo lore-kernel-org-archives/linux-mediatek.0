@@ -1,180 +1,64 @@
-From: <neal.liu@mediatek.com>
-Subject: [PATCH 3/3] hwrng: add mt67xx-rng driver
-Date: Wed, 8 May 2019 11:58:57 +0800
-Message-ID: <1557287937-2410-4-git-send-email-neal.liu@mediatek.com>
-References: <1557287937-2410-1-git-send-email-neal.liu@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v5 04/12] dt-binding: gce: add binding for gce event
+ property
+Date: Wed, 8 May 2019 13:10:47 +0800
+Message-ID: <1557292247.3936.5.camel@mtksdaap41>
+References: <20190507081355.52630-1-bibby.hsieh@mediatek.com>
+         <20190507081355.52630-5-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1557287937-2410-1-git-send-email-neal.liu@mediatek.com>
+In-Reply-To: <20190507081355.52630-5-bibby.hsieh@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: mpm@selenic.com, herbert@gondor.apana.org.au, robh+dt@kernel.org, mark.rutland@arm.com, matthias.bgg@gmail.com
-Cc: wsd_upstream@mediatek.com, linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Neal Liu <neal.liu@mediatek.com>
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.chen@mediatek.com, kendrick.hsu@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Neal Liu <neal.liu@mediatek.com>
+Hi, Bibby:
 
-For Mediatek SoCs on ARMv8 with TrustZone enabled, peripherals like
-entropy sources is not accessible from normal world (linux) and
-rather accessible from secure world (ATF/TEE) only. This driver aims
-to provide a generic interface to ATF rng service.
+On Tue, 2019-05-07 at 16:13 +0800, Bibby Hsieh wrote:
+> Client hardware would send event to GCE hardware,
+> mediatek,gce-event-names and mediatek,gce-events
+> can be used to present the event.
+> 
+> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/mailbox/mtk-gce.txt | 9 +++++++--
+>  1 file changed, 7 insertions(+), 2 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+> index 8fd9479bc9f6..76491f194c56 100644
+> --- a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+> +++ b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+> @@ -35,6 +35,9 @@ Required properties for a client device:
+>  Optional propertier for a client device:
+>  - mediatek,gce-client-reg: u32, specify the sub-system id which is corresponding
+>    to the register address.
+> +- mediatek,gce-event-names: the event name can be defined by user.
 
-Signed-off-by: Neal Liu <neal.liu@mediatek.com>
----
- drivers/char/hw_random/Kconfig      |   16 ++++++
- drivers/char/hw_random/Makefile     |    1 +
- drivers/char/hw_random/mt67xx-rng.c |  104 +++++++++++++++++++++++++++++++++++
- 3 files changed, 121 insertions(+)
- create mode 100644 drivers/char/hw_random/mt67xx-rng.c
+gce-event is like an interrupt from client hardware to GCE hardware, we
+do not give a name to an interrupt, so do we need to give a name for
+gce-event?
 
-diff --git a/drivers/char/hw_random/Kconfig b/drivers/char/hw_random/Kconfig
-index 25a7d8f..98751d3 100644
---- a/drivers/char/hw_random/Kconfig
-+++ b/drivers/char/hw_random/Kconfig
-@@ -398,6 +398,22 @@ config HW_RANDOM_MTK
- 
- 	  If unsure, say Y.
- 
-+config HW_RANDOM_MT67XX
-+	tristate "Mediatek MT67XX Random Number Generator support"
-+	depends on HW_RANDOM
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	default HW_RANDOM
-+	help
-+	  This driver provides kernel-side support for the Random Number
-+	  Generator hardware found on Mediatek MT67xx SoCs. The difference
-+	  with mtk-rng is the Random Number Generator hardware is secure
-+	  access only.
-+
-+	  To compile this driver as a module, choose M here. the
-+	  module will be called mt67xx-rng.
-+
-+	  If unsure, say Y.
-+
- config HW_RANDOM_S390
- 	tristate "S390 True Random Number Generator support"
- 	depends on S390
-diff --git a/drivers/char/hw_random/Makefile b/drivers/char/hw_random/Makefile
-index 7c9ef4a..4be95ab 100644
---- a/drivers/char/hw_random/Makefile
-+++ b/drivers/char/hw_random/Makefile
-@@ -36,6 +36,7 @@ obj-$(CONFIG_HW_RANDOM_PIC32) += pic32-rng.o
- obj-$(CONFIG_HW_RANDOM_MESON) += meson-rng.o
- obj-$(CONFIG_HW_RANDOM_CAVIUM) += cavium-rng.o cavium-rng-vf.o
- obj-$(CONFIG_HW_RANDOM_MTK)	+= mtk-rng.o
-+obj-$(CONFIG_HW_RANDOM_MT67XX) += mt67xx-rng.o
- obj-$(CONFIG_HW_RANDOM_S390) += s390-trng.o
- obj-$(CONFIG_HW_RANDOM_KEYSTONE) += ks-sa-rng.o
- obj-$(CONFIG_HW_RANDOM_OPTEE) += optee-rng.o
-diff --git a/drivers/char/hw_random/mt67xx-rng.c b/drivers/char/hw_random/mt67xx-rng.c
-new file mode 100644
-index 0000000..e70cbbe
---- /dev/null
-+++ b/drivers/char/hw_random/mt67xx-rng.c
-@@ -0,0 +1,104 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (C) 2019 MediaTek Inc.
-+ */
-+
-+#include <linux/module.h>
-+#include <linux/platform_device.h>
-+#include <linux/hw_random.h>
-+#include <linux/of.h>
-+#include <linux/arm-smccc.h>
-+#include <linux/soc/mediatek/mtk_sip_svc.h>
-+
-+#define PFX			KBUILD_MODNAME ": "
-+#define MT67XX_RNG_MAGIC	0x74726e67
-+#define SMC_RET_NUM		4
-+
-+struct mt67xx_rng_priv {
-+	struct hwrng rng;
-+};
-+
-+
-+static void __rng_sec_read(uint32_t *val)
-+{
-+	struct arm_smccc_res res;
-+
-+	arm_smccc_smc(MTK_SIP_KERNEL_GET_RND,
-+		      MT67XX_RNG_MAGIC, 0, 0, 0, 0, 0, 0, &res);
-+
-+	val[0] = res.a0;
-+	val[1] = res.a1;
-+	val[2] = res.a2;
-+	val[3] = res.a3;
-+}
-+
-+static int mt67xx_rng_read(struct hwrng *rng, void *buf, size_t max, bool wait)
-+{
-+	int i, retval = 0;
-+	uint32_t val[4] = {0};
-+	size_t get_rnd_size = sizeof(u32) * SMC_RET_NUM;
-+
-+	if (!buf) {
-+		pr_err("%s, buf is NULL\n", __func__);
-+		return -EFAULT;
-+	}
-+
-+	while (max >= get_rnd_size) {
-+		__rng_sec_read(val);
-+
-+		for (i = 0; i < SMC_RET_NUM; i++) {
-+			*(u32 *)buf = val[i];
-+			buf += sizeof(u32);
-+		}
-+
-+		retval += get_rnd_size;
-+		max -= get_rnd_size;
-+	}
-+
-+	return retval;
-+}
-+
-+static int mt67xx_rng_probe(struct platform_device *pdev)
-+{
-+	int ret;
-+	struct mt67xx_rng_priv *priv;
-+
-+	pr_info(PFX "driver registered\n");
-+	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	priv->rng.name = KBUILD_MODNAME;
-+	priv->rng.read = mt67xx_rng_read;
-+	priv->rng.priv = (unsigned long)&pdev->dev;
-+	priv->rng.quality = 900;
-+
-+	ret = devm_hwrng_register(&pdev->dev, &priv->rng);
-+	if (ret) {
-+		dev_err(&pdev->dev, "failed to register rng device: %d\n", ret);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id mt67xx_rng_match[] = {
-+	{ .compatible = "mediatek,mt67xx-rng", },
-+	{}
-+};
-+MODULE_DEVICE_TABLE(of, mt67xx_rng_match);
-+
-+static struct platform_driver mt67xx_rng_driver = {
-+	.probe = mt67xx_rng_probe,
-+	.driver = {
-+		.name = KBUILD_MODNAME,
-+		.owner = THIS_MODULE,
-+		.of_match_table = mt67xx_rng_match,
-+	},
-+};
-+
-+module_platform_driver(mt67xx_rng_driver);
-+
-+MODULE_DESCRIPTION("Mediatek MT67XX Random Number Generator Driver");
-+MODULE_AUTHOR("Neal Liu <neal.liu@mediatek.com>");
-+MODULE_LICENSE("GPL");
--- 
-1.7.9.5
+Regards,
+CK
+
+> +- mediatek,gce-events: u32, the event number defined in
+> +  'dt-bindings/gce/mt8173-gce.h' or 'dt-binding/gce/mt8183-gce.h'.
+>  
+>  Some vaules of properties are defined in 'dt-bindings/gce/mt8173-gce.h'
+>  or 'dt-binding/gce/mt8183-gce.h'. Such as sub-system ids, thread priority, event ids.
+> @@ -57,8 +60,10 @@ Example for a client device:
+>  		compatible = "mediatek,mt8173-mmsys";
+>  		mboxes = <&gce 0 CMDQ_THR_PRIO_LOWEST 1>,
+>  			 <&gce 1 CMDQ_THR_PRIO_LOWEST 1>;
+> -		mutex-event-eof = <CMDQ_EVENT_MUTEX0_STREAM_EOF
+> -				CMDQ_EVENT_MUTEX1_STREAM_EOF>;
+> +		mediatek,gce-event-names = "rdma0_sof",
+> +					   "rsz0_sof";
+> +		mediatek,gce-events = <CMDQ_EVENT_MDP_RDMA0_SOF>,
+> +				      <CMDQ_EVENT_MDP_RSZ0_SOF>;
+>  		mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000 0x1000>,
+>  					  <&gce SUBSYS_1401XXXX 0x2000 0x100>;
+>  		...
