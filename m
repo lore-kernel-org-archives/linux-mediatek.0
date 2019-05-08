@@ -1,641 +1,334 @@
-From: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v5 3/3] mt8183: emi: add bandwidth driver support
-Date: Thu, 9 May 2019 01:09:10 +0800
-Message-ID: <1557335350.20369.19.camel@mtksdaap41>
-References: <1557297478-29778-1-git-send-email-xixi.chen@mediatek.com>
- <1557297478-29778-4-git-send-email-xixi.chen@mediatek.com>
+From: Sam Ravnborg <sam@ravnborg.org>
+Subject: Re: [PATCH 2/3] drm/bridge: add it6505 driver
+Date: Wed, 8 May 2019 23:07:31 +0200
+Message-ID: <20190508210731.GA19781@ravnborg.org>
+References: <1557301722-20827-1-git-send-email-allen.chen@ite.com.tw>
+ <1557301722-20827-3-git-send-email-allen.chen@ite.com.tw>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1557297478-29778-4-git-send-email-xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1557301722-20827-3-git-send-email-allen.chen@ite.com.tw>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: allen <allen.chen@ite.com.tw>
+Cc: Archit Taneja <architt@codeaurora.org>, Jitao Shi <jitao.shi@mediatek.com>, Yilun Lin <yllin@google.com>, open list <linux-kernel@vger.kernel.org>, "open list:DRM DRIVERS" <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Pi-Hsun Shih <pihsun@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-eOn Wed, 2019-05-08 at 14:37 +0800, Xi Chen wrote:
-> EMI provides interface for get bandwidth  on every 1 miliseconds.
-> Currently, just support GPU bandwidth info.
-> 
-> Signed-off-by: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  drivers/memory/Kconfig     |   9 ++
->  drivers/memory/Makefile    |   1 +
->  drivers/memory/mtk-emi.c   | 395 +++++++++++++++++++++++++++++++++++++++++++++
->  include/soc/mediatek/emi.h | 116 +++++++++++++
->  4 files changed, 521 insertions(+)
->  create mode 100644 drivers/memory/mtk-emi.c
->  create mode 100644 include/soc/mediatek/emi.h
-> 
-> diff --git a/drivers/memory/Kconfig b/drivers/memory/Kconfig
-> index 2d91b00..2a76bfe 100644
-> --- a/drivers/memory/Kconfig
-> +++ b/drivers/memory/Kconfig
-> @@ -129,6 +129,15 @@ config JZ4780_NEMC
->  	  the Ingenic JZ4780. This controller is used to handle external
->  	  memory devices such as NAND and SRAM.
->  
-> +config MTK_EMI_MBW
-> +	bool "Mediatek EMI bandwidth driver"
-> +	depends on ARCH_MEDIATEK || COMPILE_TEST
-> +	help
-> +	  This driver is for MTK EMI control.
-> +	  If unsure, use N.
-> +	  This is the first time emi upstream.
-> +	  Only support emi bw statistics.
-> +
->  config MTK_SMI
->  	bool
->  	depends on ARCH_MEDIATEK || COMPILE_TEST
-> diff --git a/drivers/memory/Makefile b/drivers/memory/Makefile
-> index 90161de..4f8b241 100644
-> --- a/drivers/memory/Makefile
-> +++ b/drivers/memory/Makefile
-> @@ -17,6 +17,7 @@ obj-$(CONFIG_FSL_CORENET_CF)	+= fsl-corenet-cf.o
->  obj-$(CONFIG_FSL_IFC)		+= fsl_ifc.o
->  obj-$(CONFIG_MVEBU_DEVBUS)	+= mvebu-devbus.o
->  obj-$(CONFIG_JZ4780_NEMC)	+= jz4780-nemc.o
-> +obj-$(CONFIG_MTK_EMI_MBW)	+= mtk-emi.o
->  obj-$(CONFIG_MTK_SMI)		+= mtk-smi.o
->  obj-$(CONFIG_DA8XX_DDRCTL)	+= da8xx-ddrctl.o
->  obj-$(CONFIG_PL353_SMC)		+= pl353-smc.o
-> diff --git a/drivers/memory/mtk-emi.c b/drivers/memory/mtk-emi.c
-> new file mode 100644
-> index 0000000..20181d5
-> --- /dev/null
-> +++ b/drivers/memory/mtk-emi.c
-> @@ -0,0 +1,395 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2019 MediaTek Inc.
-> + * Author: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> + */
-> +
-> +#include <linux/cdev.h>
-> +#include <linux/clk.h>
-> +#include <linux/component.h>
-> +#include <linux/device.h>
-> +#include <linux/err.h>
-> +#include <linux/fs.h>
-> +#include <linux/io.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/of_platform.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/pm_runtime.h>
-> +#include <linux/time.h>
-> +#include <linux/timer.h>
-> +#include <soc/mediatek/emi.h>
-> +
-> +/* 67ms emi bw  */
-> +#define EMI_BW_ARRAY_SIZE	67
-> +
-> +#define MT8173_SMI_LARB_NR	6
-> +#define MT8167_SMI_LARB_NR	3
-> +#define MTK_SMI_LARB_NR_MAX	8
-> +#define MT8173_MMU_EN		0xf00
-> +#define MT8167_MMU_EN		0xfc0
-> +#define MT8167_LARB0_OFF	0
-> +#define MT8167_LARB1_OFF	8
-> +#define MT8167_LARB2_OFF	21
-
-You are not upstream MT8167, and these are not used.
-Please remove them.
-
-> +
-> +/*****************************************************************************
-> + *  Type Definitions
-> + *****************************************************************************/
-> +enum DDRTYPE {
-> +	TYPE_LPDDR3 = 1,
-> +	TYPE_LPDDR4,
-> +	TYPE_LPDDR4X
-> +};
-
-No one use this. Please remove it.
-
-
-> +
-> +struct mtk_emi {
-> +	void __iomem *cen_emi_base;
-> +	void __iomem *chn_emi_base[MAX_CH];
-> +	void __iomem *emi_mpu_base;
-> +
-> +	struct timer_list emi_bw_timer;
-> +	struct timeval old_tv;
-> +
-> +	unsigned long long emi_bw_array[EMI_BW_ARRAY_SIZE];
-> +	int emi_bw_cur_idx;
-> +};
-> +
-> +/* because timer can't pass argument, so add the global
-> + * static struct device * for timer callback usage
-> + */
-> +static struct device *emi_dev;
-
-In emi_bw_timer_callback, you already use from_timer to get mtk_emi.
-You could just put struct device* in mtk_emi to get rid of this global.
-
-> +
-> +unsigned long long emi_get_max_bw_in_last_array(struct device *dev,
-> +	unsigned long long arr[], unsigned int size)
-
-static?
-
-> +{
-> +	unsigned int i = 0;
-> +	unsigned long long max = arr[0];
-> +
-> +	while (i < size) {
-> +		if (arr[i] > max)
-> +			max = arr[i];
-> +		++i;
-> +	}
-> +	return max;
-> +}
-> +
-> +unsigned long long mtk_emi_get_max_bw(void)
-> +{
-> +	struct mtk_emi *emi;
-> +
-> +	if (!emi_dev)
-> +		return 0;
-> +
-> +	emi = dev_get_drvdata(emi_dev);
-> +	return emi_get_max_bw_in_last_array(emi_dev,
-> +		emi->emi_bw_array, ARRAY_SIZE(emi->emi_bw_array));
-> +}
-> +EXPORT_SYMBOL(mtk_emi_get_max_bw);
-> +
-> +static void emi_update_bw_array(struct device *dev, unsigned int val)
-> +{
-> +	struct mtk_emi *emi = dev_get_drvdata(emi_dev);
-> +
-> +	if (emi->emi_bw_cur_idx == emi->EMI_BW_ARRAY_SIZE) {
-> +		/* remove the first array element */
-> +		memmove(emi->emi_bw_array, emi->emi_bw_array + 1,
-> +			sizeof(unsigned long long) * (emi->EMI_BW_ARRAY_SIZE - 1));
-> +		emi->emi_bw_array[emi->EMI_BW_ARRAY_SIZE - 1] = val;
-> +	} else
-> +		emi->emi_bw_array[emi->emi_bw_cur_idx++] = val;
-> +}
-> +
-> +static void emi_dump_bw_array(struct device *dev)
-> +{
-> +	int i = 0;
-> +	const int unit = 10;
-> +	struct mtk_emi *emi = dev_get_drvdata(emi_dev);
-> +
-> +	while (i < emi->EMI_BW_ARRAY_SIZE) {
-> +		if (i != 0 && i % unit == 0)
-> +			pr_info("\n");
-> +		pr_info("0x%x ", emi->emi_bw_array[i]);
-> +
-> +		++i;
-> +	}
-> +
-> +	pr_info("\n");
-> +}
-> +
-> +static void emi_counter_reset(struct device *dev)
-> +{
-> +	struct mtk_emi *emi = dev_get_drvdata(dev);
-> +
-> +	writel(EMI_BMEN_DEFAULT_VALUE, EMI_BMEN);
-> +	writel(EMI_MSEL_DEFAULT_VALUE, EMI_MSEL);
-> +	writel(EMI_MSEL2_DEFAULT_VALUE, EMI_MSEL2);
-> +	writel(EMI_BMEN2_DEFAULT_VALUE, EMI_BMEN2);
-> +	writel(EMI_BMRW0_DEFAULT_VALUE, EMI_BMRW0);
-> +}
-> +
-> +static void emi_counter_pause(struct device *dev)
-> +{
-> +	struct mtk_emi *emi = dev_get_drvdata(dev);
-> +	const unsigned int value = readl(EMI_BMEN);
-> +
-> +	/* BW monitor */
-> +	writel(value | BUS_MON_PAUSE, EMI_BMEN);
-> +}
-> +
-> +static void emi_counter_continue(struct device *dev)
-> +{
-> +	struct mtk_emi *emi = dev_get_drvdata(dev);
-> +	const unsigned int value = readl(EMI_BMEN);
-> +
-> +	/* BW monitor */
-> +	writel(value & (~BUS_MON_PAUSE), EMI_BMEN);
-> +}
-> +
-> +static void emi_counter_enable(struct device *dev, const unsigned int enable)
-> +{
-> +	unsigned int value, value_set;
-> +	struct mtk_emi *emi = dev_get_drvdata(dev);
-> +
-> +	value = readl(EMI_BMEN);
-> +	if (!enable) {	/* disable monitor circuit */
-> +		/*  bit3 =1	bit0 = 0-> clear */
-> +		value_set = (value) | (BUS_MON_IDLE);
-> +		writel(value_set, EMI_BMEN);
-> +
-> +		value_set = ((value) | (BUS_MON_IDLE)) & ~(BUS_MON_EN);
-> +		writel(value_set, EMI_BMEN);
-> +
-> +		value_set = ((value) & ~(BUS_MON_IDLE)) & ~(BUS_MON_EN);
-> +		writel(value_set, EMI_BMEN);
-> +	} else {		/* enable monitor circuit */
-> +		/*  bit3 =0	&   bit0=1 */
-> +		value_set = (value & ~(BUS_MON_IDLE));
-> +		writel(value_set, EMI_BMEN);
-> +
-> +		value_set = (value & ~(BUS_MON_IDLE)) | (BUS_MON_EN);
-> +		writel(value_set, EMI_BMEN);
-> +	}
-
-The main part of the code is different for enable and disable.
-Please make them 2 function, emi_counter_enable and emi_counter_disable.
-
-
-> +}
-> +
-> +/*****************************************************************************
-> + *  APIs
-> + *****************************************************************************/
-> +static void mtk_emi_mon_start(struct device *dev)
-> +{
-> +	emi_counter_enable(dev, 0);
-> +	emi_counter_reset(dev);
-> +	emi_counter_enable(dev, 1);
-> +}
-> +
-> +static void mtk_emi_mon_restart(struct device *dev)
-> +{
-> +	emi_counter_continue(dev);
-> +	emi_counter_enable(dev, 0);
-> +	emi_counter_reset(dev);
-> +	emi_counter_enable(dev, 1);
-> +}
-> +
-> +static void mtk_emi_mon_stop(struct device *dev)
-> +{
-> +	emi_counter_pause(dev);
-> +}
-> +
-> +static ssize_t emi_show_max_bw(struct device *dev,
-> +				struct device_attribute *attr, char *buf)
-> +{
-> +	unsigned long long var, bw_cpu;
-> +	unsigned int bw_gpu;
-> +	struct mtk_emi *emi = dev_get_drvdata(dev);
-> +
-> +	if (!dev) {
-> +		pr_warn("dev is null!!\n");
-> +		return 0;
-> +	}
-> +
-> +	var = mtk_emi_get_max_bw();
-> +	bw_gpu = readl(EMI_BWVL_4TH) & 0x7f;
-> +	bw_cpu = readl(EMI_WSCT3);
-> +
-> +	return scnprintf(buf, PAGE_SIZE,
-> +		"gpu_max_bw:%llu(0x%x) EMI_BWVL_4TH:0x%x, cpu:%llu(0x%x)\n",
-> +		var, var, bw_gpu, bw_cpu, bw_cpu);
-> +}
-> +
-> +DEVICE_ATTR(bw,  0440, emi_show_max_bw, NULL);
-> +
-> +static ssize_t emi_dump_bw(struct device *dev, struct device_attribute *attr,
-> +			   char *buf)
-> +{
-> +	unsigned long long var;
-> +
-> +	if (!dev) {
-> +		pr_warn("dev is null!!\n");
-> +		return 0;
-> +	}
-> +
-> +	emi_dump_bw_array(dev);
-> +	var = mtk_emi_get_max_bw();
-> +
-> +	return scnprintf(buf, PAGE_SIZE,
-> +		"\temi_max_bw:%llu(0x%x)\n", var, var);
-> +}
-> +
-
-Don't need this blank.
-
-> +DEVICE_ATTR(dump_bw,  0440, emi_dump_bw, NULL);
-
-So this driver only support dump bw information to userspace?
-Who will use this?
-
-
-> +
-> +static int emi_bw_ms = 1;
-> +module_param_named(bw_ms, emi_bw_ms, int, 0664);
-> +
-> +static void emi_bw_timer_callback(struct timer_list *tm)
-> +{
-> +	struct timeval tv;
-> +	unsigned long long val, cur_max;
-> +	struct mtk_emi *emi = from_timer(mtk_emi, tm, emi_bw_timer);
-> +
-> +	do_gettimeofday(&tv);
-> +
-> +	/* pasue emi monitor for get WACT value*/
-> +	mtk_emi_mon_stop(emi_dev);
-> +
-> +	val = readl(EMI_WSCT4);	/* GPU BW */
-> +	val *= 8;
-> +
-> +	cur_max = mtk_emi_get_max_bw();
-> +	emi_update_bw_array(emi_dev, val);
-> +
-> +	/* set mew timer expires and restart emi monitor */
-> +	emi->old_tv = tv;
-> +	emi->emi_bw_timer.expires = jiffies + msecs_to_jiffies(emi_bw_ms);
-> +
-> +	add_timer(&(emi->emi_bw_timer));
-> +	mtk_emi_mon_restart(emi_dev);
-> +}
-> +
-> +static int emi_probe(struct platform_device *pdev)
-> +{
-> +	struct mtk_emi *emi;
-> +	struct resource *res;
-> +	struct device *dev = &pdev->dev;
-> +	int i, ret;
-> +
-> +	emi = devm_kzalloc(dev, sizeof(*emi), GFP_KERNEL);
-> +	if (!emi)
-> +		return -ENOMEM;
-> +
-> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +	emi->cen_emi_base = devm_ioremap_resource(dev, res);
-> +	if (IS_ERR(emi->cen_emi_base)) {
-> +		pr_err("[EMI] unable to map cen_emi_base\n");
-> +		devm_kfree(dev, emi);
-
-You already use devm_kzalloc to allocate it, don't need to free it
-explicit when fail. Please remove all similar cases.
-
-
-> +		return -EINVAL;
-
-Please return error code returned by ioremap.
-
-> +	}
-> +
-> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 1);
-> +	emi->emi_mpu_base = devm_ioremap_resource(dev, res);
-> +	if (IS_ERR(emi->emi_mpu_base)) {
-> +		pr_err("[EMI] unable to map emi_mpu_base\n");
-> +		devm_kfree(dev, emi);
-> +		return -EINVAL;
-> +	}
-> +
-> +	for (i = 0; i < MAX_CH; i++) {
-> +		res = platform_get_resource(pdev, IORESOURCE_MEM, 2 + i);
-> +		emi->chn_emi_base[i] = devm_ioremap_resource(dev, res);
-> +		if (IS_ERR(emi->chn_emi_base[i])) {
-> +			pr_err("[EMI] unable to map ch%d_emi_base\n", i);
-> +			devm_kfree(dev, emi);
-> +			return -EINVAL;
-> +		}
-> +	}
-> +
-> +	platform_set_drvdata(pdev, emi);
-> +
-> +	emi_dev = dev;
-> +	/* start emi bw monitor */
-> +	mtk_emi_mon_start(dev);
-> +
-> +	/* setup timer */
-> +	timer_setup(&(emi->emi_bw_timer), NULL, 0);
-> +	do_gettimeofday(&(emi->old_tv));
-> +
-> +	emi->emi_bw_timer.function = emi_bw_timer_callback;
-> +	emi->emi_bw_timer.expires = jiffies + msecs_to_jiffies(1);
-> +	add_timer(&(emi->emi_bw_timer));
-> +
-> +	/* debug node */
-> +	ret = device_create_file(dev, &dev_attr_bw);
-> +	if (ret) {
-> +		dev_err(dev, "create bw file failed!\n");
-> +		goto err_create_attr_bw;
-> +	}
-> +	ret = device_create_file(dev, &dev_attr_dump_bw);
-> +	if (ret) {
-> +		dev_err(dev, "create dump_bw file failed!\n");
-> +		goto err_create_attr_dump_bw;
-> +	}
-> +
-> +	return 0;
-> +
-> +err_create_attr_dump_bw:
-> +	del_timer(&(emi->emi_bw_timer));
-> +	device_remove_file(dev, &dev_attr_bw);
-> +err_create_attr_bw:
-> +	devm_kfree(dev, emi);
-> +	return -ENOMEM;
-> +}
-> +
-> +static int emi_remove(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct mtk_emi *emi = dev_get_drvdata(dev);
-> +
-> +	del_timer(&(emi->emi_bw_timer));
-> +	device_remove_file(dev, &dev_attr_dump_bw);
-> +	device_remove_file(dev, &dev_attr_bw);
-> +
-> +	devm_kfree(dev, emi);
-> +	return 0;
-> +}
-> +
-> +
-> +#ifdef CONFIG_OF
-> +static const struct of_device_id emi_of_ids[] = {
-> +	{.compatible = "mediatek,mt8183-emi",},
-> +	{}
-> +};
-> +#endif
-> +
-> +static struct platform_driver emi_bw_driver = {
-> +	.probe = emi_probe,
-> +	.remove = emi_remove,
-> +	.driver = {
-> +		.name = "emi_bw",
-> +		.owner = THIS_MODULE,
-
-Don't need this line.
-
-> +		.pm = NULL,
-> +#ifdef CONFIG_OF
-> +		.of_match_table = emi_of_ids,
-> +#endif
-> +	},
-> +};
-> +
-> +
-> +static int __init emi_bw_init(void)
-> +{
-> +	int ret;
-> +
-> +	/* register EMI ctrl interface */
-> +	ret = platform_driver_register(&emi_bw_driver);
-> +	if (ret) {
-> +		pr_err("[EMI/BWL] fail to register emi_bw_driver\n");
-> +		return -ENODEV;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static void __exit emi_bw_exit(void)
-> +{
-> +	platform_driver_unregister(&emi_bw_driver);
-> +}
-> +
-> +postcore_initcall(emi_bw_init);
-> +module_exit(emi_bw_exit);
-> +
-> diff --git a/include/soc/mediatek/emi.h b/include/soc/mediatek/emi.h
-> new file mode 100644
-> index 0000000..83bdaeb
-> --- /dev/null
-> +++ b/include/soc/mediatek/emi.h
-> @@ -0,0 +1,116 @@
-> +/* SPDX-License-Identifier: GPL-2.0  */
-> +/*
-> + * Copyright (c) 2015-2016 MediaTek Inc.
-> + * Author: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> + */
-> +
-> +#ifndef _MTK_EMI_H_
-> +#define _MTK_EMI_H_
-> +
-> +#define MAX_CH		2
-> +#define MAX_RK		2
-> +
-> +struct emi_info_t {
-> +	unsigned int dram_type;
-> +	unsigned int ch_num;
-> +	unsigned int rk_num;
-> +	unsigned int rank_size[MAX_RK];
-> +};
-> +
-> +/*****************************************************************************
-> + *  Macro Definiations
-> + *****************************************************************************/
-> +#define EMI_REG_BASE                (0x10219000)
-> +#define EMI_REG_BASE_MAPPED         (emi->cen_emi_base)
-> +
-> +#define EMI_MDCT                    (EMI_REG_BASE_MAPPED + 0x078)
-> +#define EMI_MDCT_2ND                (EMI_REG_BASE_MAPPED + 0x07C)
-> +
-> +#define EMI_ARBA                    (EMI_REG_BASE_MAPPED + 0x100)
-> +#define EMI_ARBB                    (EMI_REG_BASE_MAPPED + 0x108)
-> +#define EMI_ARBC                    (EMI_REG_BASE_MAPPED + 0x110)
-> +#define EMI_ARBD                    (EMI_REG_BASE_MAPPED + 0x118)
-> +#define EMI_ARBE                    (EMI_REG_BASE_MAPPED + 0x120)
-> +#define EMI_ARBF                    (EMI_REG_BASE_MAPPED + 0x128)
-> +#define EMI_ARBG                    (EMI_REG_BASE_MAPPED + 0x130)
-> +#define EMI_ARBH                    (EMI_REG_BASE_MAPPED + 0x138)
-> +
-> +#define EMI_BMEN                    (EMI_REG_BASE_MAPPED + 0x400)
-> +#define EMI_BCNT                    (EMI_REG_BASE_MAPPED + 0x408)
-> +#define EMI_TACT                    (EMI_REG_BASE_MAPPED + 0x410)
-> +#define EMI_TSCT                    (EMI_REG_BASE_MAPPED + 0x418)
-> +#define EMI_WACT                    (EMI_REG_BASE_MAPPED + 0x420)
-> +#define EMI_WSCT                    (EMI_REG_BASE_MAPPED + 0x428)
-> +#define EMI_BACT                    (EMI_REG_BASE_MAPPED + 0x430)
-> +#define EMI_BSCT                    (EMI_REG_BASE_MAPPED + 0x438)
-> +#define EMI_MSEL                    (EMI_REG_BASE_MAPPED + 0x440)
-> +#define EMI_TSCT2                   (EMI_REG_BASE_MAPPED + 0x448)
-> +#define EMI_TSCT3                   (EMI_REG_BASE_MAPPED + 0x450)
-> +#define EMI_WSCT2                   (EMI_REG_BASE_MAPPED + 0x458)
-> +#define EMI_WSCT3                   (EMI_REG_BASE_MAPPED + 0x460)
-> +#define EMI_WSCT4                   (EMI_REG_BASE_MAPPED + 0x464)
-> +#define EMI_MSEL2                   (EMI_REG_BASE_MAPPED + 0x468)
-> +
-> +#define EMI_BMEN2                   (EMI_REG_BASE_MAPPED + 0x4E8)
-> +
-> +#define EMI_BMRW0                   (EMI_REG_BASE_MAPPED + 0x4F8)
-> +
-> +#define EMI_TTYPE1                  (EMI_REG_BASE_MAPPED + 0x500)
-> +#define EMI_TTYPE17                 (EMI_REG_BASE_MAPPED + 0x580)
-> +
-> +#define EMI_BWVL                    (EMI_REG_BASE_MAPPED + 0x7D0)
-> +#define EMI_BWVL_2ND                (EMI_REG_BASE_MAPPED + 0x7D4)
-> +#define EMI_BWVL_3RD                (EMI_REG_BASE_MAPPED + 0x7D8)
-> +#define EMI_BWVL_4TH                (EMI_REG_BASE_MAPPED + 0x7DC)
-> +#define EMI_BWVL_5TH                (EMI_REG_BASE_MAPPED + 0x7E0)
-> +
-> +#define EMI_CH0_REG_BASE            (0x1022D000)
-> +#define EMI_CH0_REG_BASE_MAPPED     (emi->chn_emi_base[0])
-> +#define EMI_CH0_DRS_ST2             (EMI_CH0_REG_BASE_MAPPED + 0x17C)
-> +#define EMI_CH0_DRS_ST3             (EMI_CH0_REG_BASE_MAPPED + 0x180)
-> +#define EMI_CH0_DRS_ST4             (EMI_CH0_REG_BASE_MAPPED + 0x184)
-> +
-> +#define EMI_CH1_REG_BASE            (0x10235000)
-> +#define EMI_CH1_REG_BASE_MAPPED     (emi->chn_emi_base[1])
-> +#define EMI_CH1_DRS_ST2             (EMI_CH1_REG_BASE_MAPPED + 0x17C)
-> +#define EMI_CH1_DRS_ST3             (EMI_CH1_REG_BASE_MAPPED + 0x180)
-> +#define EMI_CH1_DRS_ST4             (EMI_CH1_REG_BASE_MAPPED + 0x184)
-
-
-Please remove unused macros, struct, enums. Just keep what necessary in
-this patch.
-
-> +
-> +/*
-> + * DEFAULT_VALUE
-> + */
-> +#define EMI_BMEN_DEFAULT_VALUE    (0x00FF0000)
-> +#define EMI_BMEN2_DEFAULT_VALUE   (0x02000000)
-> +#define EMI_BMRW0_DEFAULT_VALUE   (0xFFFFFFFF)
-> +#define EMI_MSEL_DEFAULT_VALUE    (0x00030024)
-> +#define EMI_MSEL2_DEFAULT_VALUE   (0x000000C0)
-> +#define BC_OVERRUN                (0x00000100)
-> +
-> +/* EMI_BMEN */
-> +#define BUS_MON_EN          BIT(0)
-> +#define BUS_MON_PAUSE       BIT(1)
-> +#define BUS_MON_IDLE        BIT(3)
-> +
-> +#define MAX_DRAM_CH_NUM     (2)
-> +#define DRAM_RANK_NUM       (2)
-> +#define DRAM_PDIR_NUM       (8)
-> +#define EMI_TTYPE_NUM       (21)
-> +#define EMI_TSCT_NUM        (3)
-> +#define EMI_MDCT_NUM        (2)
-> +#define EMI_DRS_ST_NUM      (3)
-> +#define EMI_BW_LIMIT_NUM    (8)
-> +
-> +#define DRAMC_CG_SHIFT      (9)
-> +
-> +#define EMI_IDX_SIZE        (1024)
-> +
-> +#define EMI_BWVL_UNIT       (271)
-> +
-> +#define MBW_BUF_LEN         (0x800000)
-> +#define DATA_CNT_PER_BLK    (35)
-> +#define BLK_CNT_PER_BUF     (0x800)
-> +
-> +/* public apis */
-> +unsigned long long emi_get_max_bw(void);
-
-
-Who will use this public API?
-
-
-Joe.C
+SGkgYWxsZW4uCgpUaGFua3MgZm9yIHRoaXMgZmluZSBwYXRjaC4KQSBmZXcgY29tbWVudHMgZm9s
+bG93cy4KCkNvbnNpZGVyIHRvIHVzZSBEUk1fREVWX0VSUk9SIGFuZCBmcmllbmRzLgpUaGVuIHlv
+dSBnZXQgdGhlIGRldmljZW5hbWUgaW5jbHVkZWQgaW4gbG9nZ2luZwphbmQgdGhpcyBtYWtlcyBp
+dCBtdWNoIGVhc2llciB0byBmaW5kIHJlbGV2YW50IGVudHJpZXMuCgpPbiBXZWQsIE1heSAwOCwg
+MjAxOSBhdCAwMzo0ODo0MVBNICswODAwLCBhbGxlbiB3cm90ZToKPiBGcm9tOiBBbGxlbiBDaGVu
+IDxhbGxlbi5jaGVuQGl0ZS5jb20udHc+Cj4gCj4gVGhpcyBhZGRzIHN1cHBvcnQgZm9yIHRoZSBp
+VEUgSVQ2NTA1Lgo+IFRoaXMgZGV2aWNlIGNhbiBjb252ZXJ0IERQSSBzaWduYWwgdG8gRFAgb3V0
+cHV0Lgo+IAo+IFNpZ25lZC1vZmYtYnk6IEppdGFvIFNoaSA8aml0YW8uc2hpQG1lZGlhdGVrLmNv
+bT4KPiBTaWduZWQtb2ZmLWJ5OiBZaWx1biBMaW4gPHlsbGluQGdvb2dsZS5jb20+Cj4gU2lnbmVk
+LW9mZi1ieTogQWxsZW4gQ2hlbiA8YWxsZW4uY2hlbkBpdGUuY29tLnR3Pgo+IC0tLQo+ICBkcml2
+ZXJzL2dwdS9kcm0vYnJpZGdlL0tjb25maWcgICAgICB8ICAgMjIgKwo+ICBkcml2ZXJzL2dwdS9k
+cm0vYnJpZGdlL01ha2VmaWxlICAgICB8ICAgIDEgKwo+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdl
+L2l0ZS1pdDY1MDUuYyB8IDI2MzcgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysK
+PiAgMyBmaWxlcyBjaGFuZ2VkLCAyNjYwIGluc2VydGlvbnMoKykKPiAgY3JlYXRlIG1vZGUgMTAw
+NjQ0IGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvaXRlLWl0NjUwNS5jCj4gCj4gZGlmZiAtLWdpdCBh
+L2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvS2NvbmZpZyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uv
+S2NvbmZpZwo+IGluZGV4IDljOWM0ZGYuLmQxMmU0OGMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9n
+cHUvZHJtL2JyaWRnZS9LY29uZmlnCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9LY29u
+ZmlnCj4gQEAgLTQzLDYgKzQzLDI4IEBAIGNvbmZpZyBEUk1fRFVNQl9WR0FfREFDCj4gIAkgIFN1
+cHBvcnQgZm9yIG5vbi1wcm9ncmFtbWFibGUgUkdCIHRvIFZHQSBEQUMgYnJpZGdlcywgc3VjaCBh
+cyBBREkKPiAgCSAgQURWNzEyMywgVEkgVEhTODEzNCBhbmQgVEhTODEzNSBvciBwYXNzaXZlIHJl
+c2lzdG9yIGxhZGRlciBEQUNzLgo+ICAKPiArY29uZmlnIERSTV9JVEVfSVQ2NTA1Cj4gKwl0cmlz
+dGF0ZSAiSVRFIElUNjUwNSBEUCBicmlkZ2UiCj4gKwlkZXBlbmRzIG9uIE9GCj4gKwlzZWxlY3Qg
+RFJNX0tNU19IRUxQRVIKPiArCWhlbHAKPiArCSAgSVRFIElUNjUwNSBEUCBicmlkZ2UgY2hpcCBk
+cml2ZXIuCgpXaHkgaXMgaXQgcmVsZXZhbnQgdG8gaGF2ZSB0aGVzZSBmZWF0dXJlcyBhcyBmZWF0
+dXJlcwp0aGF0IGNhbiBiZSBlbmFiZWQvZGlzYWJsZWQgb24gS2NvbmZpZyBsZXZlbD8KSXQgaXMg
+bGlrZWx5IG1vcmUgZmxleGlibGUgdG8gZG8gaXQgcnVuLXRpbWUKaWYgbmVlZGVkIHRvIHR1cm4g
+dGhlbSBvZmYuCkFuZCBpdCB3b3VsZCBzaW1wbGlmeSB0aGUgY29kZS4KCj4gKwo+ICtjb25maWcg
+RFJNX0lURV9JVDY1MDVfRU5IRENQCj4gKwl0cmlzdGF0ZSAiRW5hYmxlIElUNjUwNSBIRENQIGZ1
+bmN0aW9uIgo+ICsJZGVwZW5kcyBvbiBEUk1fSVRFX0lUNjUwNQo+ICsJZGVmYXVsdCB5Cj4gKwo+
+ICtjb25maWcgRFJNX0lURV9JVDY1MDVfRU5BVUQKPiArICAgICAgICB0cmlzdGF0ZSAiRW5hYmxl
+IElUNjUwNSBhdWRpbyBmdW5jdGlvbiIKPiArICAgICAgICBkZXBlbmRzIG9uIERSTV9JVEVfSVQ2
+NTA1Cj4gKyAgICAgICAgZGVmYXVsdCB5Cj4gKwo+ICtjb25maWcgRFJNX0lURV9JVDY1MDVfRU5Q
+V1JPTk9GRgo+ICsgICAgICAgIHRyaXN0YXRlICJFbmFibGUgSVQ2NTA1IHBvd2VyIG9uL29mZiBm
+dW5jdGlvbiIKPiArICAgICAgICBkZXBlbmRzIG9uIERSTV9JVEVfSVQ2NTA1Cj4gKyAgICAgICAg
+ZGVmYXVsdCB5Cj4gKwo+ICBjb25maWcgRFJNX0xWRFNfRU5DT0RFUgo+ICAJdHJpc3RhdGUgIlRy
+YW5zcGFyZW50IHBhcmFsbGVsIHRvIExWRFMgZW5jb2RlciBzdXBwb3J0Igo+ICAJZGVwZW5kcyBv
+biBPRgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL01ha2VmaWxlIGIvZHJp
+dmVycy9ncHUvZHJtL2JyaWRnZS9NYWtlZmlsZQo+IGluZGV4IDQ5MzRmY2YuLmY1YWJjYTUgMTAw
+NjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9NYWtlZmlsZQo+ICsrKyBiL2RyaXZl
+cnMvZ3B1L2RybS9icmlkZ2UvTWFrZWZpbGUKPiBAQCAtMiw2ICsyLDcgQEAKPiAgb2JqLSQoQ09O
+RklHX0RSTV9BTkFMT0dJWF9BTlg3OFhYKSArPSBhbmFsb2dpeC1hbng3OHh4Lm8KPiAgb2JqLSQo
+Q09ORklHX0RSTV9DRE5TX0RTSSkgKz0gY2Rucy1kc2kubwo+ICBvYmotJChDT05GSUdfRFJNX0RV
+TUJfVkdBX0RBQykgKz0gZHVtYi12Z2EtZGFjLm8KPiArb2JqLSQoQ09ORklHX0RSTV9JVEVfSVQ2
+NTA1KSArPSBpdGUtaXQ2NTA1Lm8KPiAgb2JqLSQoQ09ORklHX0RSTV9MVkRTX0VOQ09ERVIpICs9
+IGx2ZHMtZW5jb2Rlci5vCj4gIG9iai0kKENPTkZJR19EUk1fTUVHQUNISVBTX1NURFBYWFhYX0dF
+X0I4NTBWM19GVykgKz0gbWVnYWNoaXBzLXN0ZHB4eHh4LWdlLWI4NTB2My1mdy5vCj4gIG9iai0k
+KENPTkZJR19EUk1fTlhQX1BUTjM0NjApICs9IG54cC1wdG4zNDYwLm8KPiBkaWZmIC0tZ2l0IGEv
+ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9pdGUtaXQ2NTA1LmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJp
+ZGdlL2l0ZS1pdDY1MDUuYwo+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4gaW5kZXggMDAwMDAwMC4u
+MTMwNzlhOAo+IC0tLSAvZGV2L251bGwKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2l0
+ZS1pdDY1MDUuYwo+IEBAIC0wLDAgKzEsMjYzNyBAQAo+ICsvLyBTUERYLUxpY2Vuc2UtSWRlbnRp
+ZmllcjogR1BMLTIuMAo+ICsvKgo+ICsgKiBDb3B5cmlnaHQgKGMpIDIwMTgsIFRoZSBMaW51eCBG
+b3VuZGF0aW9uLiBBbGwgcmlnaHRzIHJlc2VydmVkLgo+ICsgKi8KPiArI2luY2x1ZGUgPGxpbnV4
+L2JpdHMuaD4KPiArI2luY2x1ZGUgPGxpbnV4L2RlbGF5Lmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9k
+ZXZpY2UuaD4KPiArI2luY2x1ZGUgPGxpbnV4L2Vyci5oPgo+ICsjaW5jbHVkZSA8bGludXgvZXh0
+Y29uLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9mcy5oPgo+ICsjaW5jbHVkZSA8bGludXgvZ3Bpby9j
+b25zdW1lci5oPgo+ICsjaW5jbHVkZSA8bGludXgvaTJjLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9p
+bnRlcnJ1cHQuaD4KPiArI2luY2x1ZGUgPGxpbnV4L2tlcm5lbC5oPgo+ICsjaW5jbHVkZSA8bGlu
+dXgvbW9kdWxlLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9yZWdtYXAuaD4KPiArI2luY2x1ZGUgPGxp
+bnV4L3JlZ3VsYXRvci9jb25zdW1lci5oPgo+ICsjaW5jbHVkZSA8bGludXgvc2VtYXBob3JlLmg+
+Cj4gKyNpbmNsdWRlIDxsaW51eC90eXBlcy5oPgo+ICsjaW5jbHVkZSA8Y3J5cHRvL2hhc2guaD4K
+PiArI2luY2x1ZGUgPGNyeXB0by9zaGEuaD4KPiArI2luY2x1ZGUgPGRybS9kcm1QLmg+Cj4gKyNp
+bmNsdWRlIDxkcm0vZHJtX2F0b21pY19oZWxwZXIuaD4KPiArI2luY2x1ZGUgPGRybS9kcm1fY3J0
+Yy5oPgo+ICsjaW5jbHVkZSA8ZHJtL2RybV9jcnRjX2hlbHBlci5oPgo+ICsjaW5jbHVkZSA8ZHJt
+L2RybV9kcF9oZWxwZXIuaD4KPiArI2luY2x1ZGUgPGRybS9kcm1fZWRpZC5oPgpQbGVhc2UgcHV0
+IGEgYmxhbmsgbGluZSBiZXR3ZWVuIHRoZSBpbmRpdmlkdWFsIGJsb2NrcwpvZiBpbmNsdWRlIGZp
+bGVzLgpTbyBhbGwgI2luY2x1ZGUgPGxpbnV4Ly4uLiBjb21lbnMgZmlyc3QKClRoZW4gI2luY2x1
+ZGUgPGNyeXB0by8uLi4KCkFuZCBmaW5hbGx5ICNpbmNsdWRlIDxkcm0vLi4uCgpVc2Ugb2YgZHJt
+UC5oIGlzIGRlcHJlY2F0ZWQuIFBsZWFzZSBkbyBub3QgdXNlIGl0LgpZb3UgbmVlZCB0byBhZGQg
+Zm9yd2FyZHMgb3IgaW5jbHVkZXMgdG8gYXZvaWRzLgoKCj4gKwo+ICsjZGVmaW5lIEFYIDAKPiAr
+I2RlZmluZSBCWCAxCj4gKyNkZWZpbmUgQVVEU0VMIEkyUwo+ICsjZGVmaW5lIEFVRFRZUEUgTFBD
+TQo+ICsjZGVmaW5lIEFVREZTIEFVRDQ4Swo+ICsjZGVmaW5lIEFVRENIIDIKPiArLyogMDogU3Rh
+bmRhcmQgSTJTOzE6IDMyYml0IEkyUyAqLwo+ICsjZGVmaW5lIEkyU0lOUFVURk1UIDEKPiArLyog
+MDogTGVmdC1qdXN0aWZpZWQ7MTogUmlnaHQtanVzdGlmaWVkICovCj4gKyNkZWZpbmUgSTJTSlVT
+VElGSUVEIDAKPiArLyogMDogRGF0YSBkZWxheSAxVCBjb3JyZXNwb25kIHRvIFdTOzE6IE5vIGRh
+dGEgZGVsYXkgY29ycmVzcG9uZCB0byBXUyAqLwo+ICsjZGVmaW5lIEkyU0RBVEFERUxBWSAwCj4g
+Ky8qIDA6IGlzIGxlZnQgY2hhbm5lbDsxOiBpcyByaWdodCBjaGFubmVsICovCj4gKyNkZWZpbmUg
+STJTV1NDSEFOTkVMIDAKPiArLyogMDogTVNCIHNoaWZ0IGZpcnN0OzE6IExTQiBzaGlmdCBmaXJz
+dCAqLwo+ICsjZGVmaW5lIEkyU0RBVEFTRVEgMAo+ICsKPiArI2RlZmluZSBMQU5FU1dBUCAwCj4g
+KyNkZWZpbmUgTEFORSA0Cj4gKyNkZWZpbmUgX0hCUiAxCj4gKyNkZWZpbmUgRU5IRlJBTUUgMQo+
+ICsjZGVmaW5lIEVOU1NDIDEKPiArCj4gKyNkZWZpbmUgRkxBR1RSQUlORE9XTiAxMDAKPiArI2Rl
+ZmluZSBUUkFJTkZBSUxDTlQgNQo+ICsjZGVmaW5lIEFVWF9XQUlUX1RJTUVPVVRfTVMgMTUKPiAr
+I2RlZmluZSBQQ0xLX0RFTEFZIDEKPiArI2RlZmluZSBQQ0xLX0lOViAwCj4gKyNkZWZpbmUgRURJ
+RFJFVFJZVElNRSA1Cj4gKyNkZWZpbmUgU0hPV1ZJREVPVElNSU5HIDIKPiArI2RlZmluZSBQV1JP
+RkZSRVRSWVRJTUUgNQo+ICsKPiArLyogQVggb3IgQlggKi8KPiArI2RlZmluZSBDSElQX1ZFUlNJ
+T04gQlgKCklmIHRoaXMgZHJpdmVyIGlzIGZvciBCWCBvbmx5IHRoZW4gZHJvcCB0aGUgQVggcmVs
+ZWF0ZWQgY29kZS4KVGhpcyB3b3VsZCBzaW1wbGlmeSB0aGUgZHJpdmVyLgoKSWYgdGhpcyBpcyBy
+ZWFsbHkgbmVlZGVkIHRoZW4gcHJvdmlkZSBhbiBlbXB0eSB2YXJpYW50IG9mCml0NjUwNV90ZXJt
+aW5hdGlvbigpIGZvciBBWCwgdG8gc2ltcGxpZnkgdGhlIGNhbGwgc2l0ZXMuCgpBbmQgaXQ2NTA1
+X3Rlcm1pbmF0aW9uKCkgY2FsbHMgZm9yIHR3byBmdW5jdGlvbnMgc28gd2UKdm9pZCBhIGJvb2wg
+cGFyYW1ldGVyIHRoYXQgbWFrZXMgdGhlIGZ1bmN0aW9uIGRvIHR3bwpkaWZmZXJlbnQgdGhpbmdz
+LgoKPiArCj4gKy8qIGlmIHVzZSB0aGlzIGRlZmluZSB3aWxsIHBvd2VyIG9uIGluIHByb2JlICov
+Cj4gKy8qICNkZWZpbmUgVEVTVF9NT0RFICovCj4gKwo+ICsvKiBpZiB1c2UgdGhpcyBkZWZpbmUg
+d2lsbCBlbmFibGUgQVVYIGRlYnVnIG9wdGlvbiAqLwo+ICsvKiAjZGVmaW5lIEVOQVVYX1RSQU5T
+RkVSX0RFQlVHICovCj4gKwo+ICsvKiBpZiB1c2UgdGhpcyBkZWZpbmUgd2lsbCBlbmFibGUgU0hB
+IGRlYnVnICovCj4gKy8qICNkZWZpbmUgU0hBX0RFQlVHICovCkNvbnNpZGVyIGhvdyBtdWNoIG9m
+IHRoaXMgcmVhbGx5IGJlbG9uZ3MgaW4gYSBwcm9kdWN0aW9uIGRyaXZlci4KSWYgcmVsZXZhbnQg
+Y29uc2lkZXIgdG8gYWRkIHNvbWUgd2F5IHRvIGVuYWJsZSB0aGlzIHJ1bnRpbWUuCj4gKwo+ICtl
+bnVtIHN5c19zdGF0dXMgewo+ICsJU1lTX1VOUExVRyA9IDAsCj4gKwlTWVNfSFBELAo+ICsJU1lT
+X0FVVE9UUkFJTiwKPiArCVNZU19XQUlULAo+ICsJU1lTX1RSQUlORkFJTCwKPiArCVNZU19SZUhE
+Q1AsCj4gKwlTWVNfUFdSRE4sCj4gKwlTWVNfTk9ST1AsCj4gKwlTWVNfVW5rbm93biwKPiArfTsK
+PiArCj4gK2VudW0gaXQ2NTA1X2F1ZF9zZWwgewo+ICsJSTJTID0gMCwKPiArCVNQRElGLAo+ICt9
+Owo+ICsKPiArZW51bSBpdDY1MDVfYXVkX2ZzIHsKPiArCUFVRDI0SyA9IDB4NiwKPiArCUFVRDMy
+SyA9IDB4MywKPiArCUFVRDQ4SyA9IDB4MiwKPiArCUFVRDk2SyA9IDB4QSwKPiArCUFVRDE5Mksg
+PSAweEUsCj4gKwlBVUQ0NFAxSyA9IDB4MCwKPiArCUFVRDg4UDJLID0gMHg4LAo+ICsJQVVEMTc2
+UDRLID0gMHhDLAo+ICt9Owo+ICsKPiArZW51bSBpdDY1MDVfYXVkX3R5cGUgewo+ICsJTFBDTSA9
+IDAsCj4gKwlOTFBDTSwKPiArCURTUywKPiArCUhCUiwKPiArfTsKPiArCj4gK2VudW0gYXVkX3dv
+cmRfbGVuZ3RoIHsKPiArCUFVRDE2QklUID0gMCwKPiArCUFVRDE4QklULAo+ICsJQVVEMjBCSVQs
+Cj4gKwlBVUQyNEJJVCwKPiArfTsKPiArCj4gKy8qIEF1ZGlvIFNhbXBsZSBXb3JkIExlbmd0aDog
+QVVEMTZCSVQsIEFVRDE4QklULCBBVUQyMEJJVCwgQVVEMjRCSVQgKi8KPiArI2RlZmluZSBBVURX
+T1JETEVOR1RIIEFVRDI0QklUCj4gKwo+ICtzdHJ1Y3QgaXQ2NTA1X3BsYXRmb3JtX2RhdGEgewo+
+ICsJc3RydWN0IHJlZ3VsYXRvciAqcHdyMTg7Cj4gKwlzdHJ1Y3QgcmVndWxhdG9yICpvdmRkOwo+
+ICsJc3RydWN0IGdwaW9fZGVzYyAqZ3Bpb2RfaHBkOwo+ICsJc3RydWN0IGdwaW9fZGVzYyAqZ3Bp
+b2RfcGQ7CgpncGlvZF9wZCBpcyBub3QgdXNlZCBhbmQgY2FuIGJlIGRlbGV0ZWQuCgo+ICsJc3Ry
+dWN0IGdwaW9fZGVzYyAqZ3Bpb2RfcmVzZXQ7Cj4gKwo+ICsJaW50IGhwZF9pcnE7Cj4gKwlpbnQg
+aW50cF9pcnE7CmhwZF9pcnEgYW5kIGludHBfaXJxIGFyZSBvbmx5IHVzZWQgaW4gb25lIGZ1bmN0
+aW9uLgpEcm9wIHRoZW0gZnJvbSBpdDY1MDVfcGxhdGZvcm1fZGF0YSBhbmQgdXNlIGxvY2FsIHZh
+cmlhYmxlcy4KCj4gK307Cj4gKwo+ICtzdHJ1Y3QgaXQ2NTA1X2RwX3BvcnQgewo+ICsJc3RydWN0
+IGl0NjUwNSAqaXQ2NTA1X2RwOwo+ICsJc3RydWN0IG5vdGlmaWVyX2Jsb2NrIGV2ZW50X25iOwo+
+ICsJc3RydWN0IGV4dGNvbl9kZXYgKmV4dGNvbjsKPiArCXN0cnVjdCB3b3JrX3N0cnVjdCBleHRj
+b25fd3E7Cj4gKwl1OCBpZDsKSXQgZGlkIG5vdCBzZWUgdGhpcyB1c2VkLCBvbmx5IGFzc2lnbmVk
+LiBNYXliZSBJIG1pc3NlZCBzb21ldGhpbmc/Cj4gK307Cj4gKwo+ICtzdHJ1Y3QgaXQ2NTA1IHsK
+PiArCXN0cnVjdCBkcm1fZHBfYXV4IGF1eDsKPiArCXN0cnVjdCBkcm1fYnJpZGdlIGJyaWRnZTsK
+PiArCXN0cnVjdCBpMmNfY2xpZW50ICpjbGllbnQ7Cj4gKwlzdHJ1Y3QgZWRpZCAqZWRpZDsKPiAr
+CXN0cnVjdCBkcm1fY29ubmVjdG9yIGNvbm5lY3RvcjsKPiArCXN0cnVjdCBkcm1fZHBfbGluayBs
+aW5rOwo+ICsJc3RydWN0IGl0NjUwNV9wbGF0Zm9ybV9kYXRhIHBkYXRhOwo+ICsJc3RydWN0IG11
+dGV4IGxvY2s7Ckkgd291bGQgYmUgaGVscGZ1bGwgd2l0aCBhIGNvbW1lbnQgd2hhdCB0aGUgbG9j
+ayBwcm90ZWN0cy4KCj4gKwlzdHJ1Y3QgcmVnbWFwICpyZWdtYXA7Cj4gKwlzdHJ1Y3QgaXQ2NTA1
+X2RwX3BvcnQgKnBvcnQ7Cj4gKwkvKiB0aHJlYWQgc2VxdWVuY2UgY29udHJvbCAqLwo+ICsJc3Ry
+dWN0IHNlbWFwaG9yZSBzZW1fbm90aWZpZXI7Cj4gKwo+ICsJdTggZHBjZFtEUF9SRUNFSVZFUl9D
+QVBfU0laRV07Cj4gKwllbnVtIHN5c19zdGF0dXMgc3RhdHVzOwo+ICsJdTggZHVtcGRwY2RbMzBd
+Owo+ICsJdTggZHBjZF9yZXY7CmRwY2RfcmV2IGlzIG9ubHkgdXNlZCBpbiBvbmUgZnVuY3Rpb24u
+CkRyb3AgaXQgYW5kIHVzZSBsb2NhbCB2YXJpYWJlbC4KCkkgZGlkIG5vdCBjaGVjayBmdXJ0aGVy
+IC0gcGxlYXNlIHZlcmlmeSB0aGF0IGFsbAptZW1iZXJzIGFyZSB1c2VkIGFuZCBhcmUgcmVsZXZh
+bnQgdG8gaGF2ZSBpbiB0aGlzCnN0cnVjdC4KCj4gKwlib29sIGhicjsKPiArCXU4IGxhbmU7Cj4g
+Kwl1OCBlbl9zc2M7Cj4gKwlib29sIGVuX2hmcmFtZTsKPiArCWJvb2wgbGFuZXN3YXA7Cj4gKwo+
+ICsJZW51bSBpdDY1MDVfYXVkX3NlbCBhdWRfc2VsOwo+ICsJZW51bSBpdDY1MDVfYXVkX2ZzIGF1
+ZF9mczsKPiArCWVudW0gaXQ2NTA1X2F1ZF90eXBlIGF1ZF90eXBlOwo+ICsJdTggYXVkX2NoOwo+
+ICsJdTggaTJzX2lucHV0X2ZtdDsKPiArCXU4IGkyc19qdXN0aWZpZWQ7Cj4gKwl1OCBpMnNfZGF0
+YV9kZWxheTsKPiArCXU4IGkyc193c19jaGFubmVsOwo+ICsJdTggaTJzX2RhdGFfc2VxOwo+ICsJ
+dTggdmlkc3RhYmxlX2RvbmU7Cj4gKwllbnVtIGF1ZF93b3JkX2xlbmd0aCBhdWR3b3JkbGVuZ3Ro
+Owo+ICsJdTggY250ZnNtOwo+ICsJYm9vbCBjcF9yZWFkeTsKPiArCXVuc2lnbmVkIGludCBic3Rh
+dHVzOwo+ICsJYm9vbCBjcF9kb25lOwo+ICsJdTggZG93bnN0cmVhbV9yZXBlYXRlcjsKPiArCXU4
+IGFtMFs4XTsKPiArCXU4IGJpbmZvWzJdOwo+ICsJdTgga3N2bGlzdFs1ICogMTJdOwo+ICsJdW5z
+aWduZWQgaW50IHNoYVs1XTsKPiArCXVuc2lnbmVkIGludCB3WzgwXTsKPiArCXU4IHNoYWlucHV0
+WzY0XTsKPiArCXU4IGF2WzVdWzRdOwo+ICsJdTggYnZbNV1bNF07Cj4gKwl1OCBwYXNzc2hhOwo+
+ICsJYm9vbCBwb3dlcmVkOwo+ICsJLyogaXQ2NTA1IGRyaXZlciBob2xkIG9wdGlvbiAqLwo+ICsJ
+dW5zaWduZWQgaW50IGl0NjUwNV9kcnZfaG9sZDsKPiArfTsKPiArCj4gK3N0YXRpYyBpbnQgaXQ2
+NTA1X3Bvd2Vyb24oc3RydWN0IGl0NjUwNSAqaXQ2NTA1KTsKPiArI2lmZGVmIENPTkZJR19EUk1f
+SVRFX0lUNjUwNV9FTlBXUk9OT0ZGCj4gK3N0YXRpYyBpbnQgaXQ2NTA1X3Bvd2Vyb2ZmKHN0cnVj
+dCBpdDY1MDUgKml0NjUwNSk7Cj4gKyNlbmRpZgo+ICsKPiArc3RhdGljIGNvbnN0IHN0cnVjdCBy
+ZWdtYXBfcmFuZ2UgaXQ2NTA1X2JyaWRnZV92b2xhdGlsZV9yYW5nZXNbXSA9IHsKPiArCXsgLnJh
+bmdlX21pbiA9IDAsIC5yYW5nZV9tYXggPSAweEZGIH0sCj4gK307Cj4gKwo+ICtzdGF0aWMgY29u
+c3Qgc3RydWN0IHJlZ21hcF9hY2Nlc3NfdGFibGUgaXQ2NTA1X2JyaWRnZV92b2xhdGlsZV90YWJs
+ZSA9IHsKPiArCS55ZXNfcmFuZ2VzID0gaXQ2NTA1X2JyaWRnZV92b2xhdGlsZV9yYW5nZXMsCj4g
+Kwkubl95ZXNfcmFuZ2VzID0gQVJSQVlfU0laRShpdDY1MDVfYnJpZGdlX3ZvbGF0aWxlX3Jhbmdl
+cyksCj4gK307Cj4gKwo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IHJlZ21hcF9jb25maWcgaXQ2NTA1
+X2JyaWRnZV9yZWdtYXBfY29uZmlnID0gewo+ICsJLnJlZ19iaXRzID0gOCwKPiArCS52YWxfYml0
+cyA9IDgsCj4gKwkudm9sYXRpbGVfdGFibGUgPSAmaXQ2NTA1X2JyaWRnZV92b2xhdGlsZV90YWJs
+ZSwKPiArCS5jYWNoZV90eXBlID0gUkVHQ0FDSEVfTk9ORSwKPiArfTsKPiArCj4gK3N0YXRpYyBp
+bnQgZHB0eHJkKHN0cnVjdCBpdDY1MDUgKml0NjUwNSwgdW5zaWduZWQgaW50IHJlZ19hZGRyLAo+
+ICsJCSAgdW5zaWduZWQgaW50ICp2YWx1ZSkKPiArewo+ICsJaW50IGVycjsKPiArCj4gKwllcnIg
+PSByZWdtYXBfcmVhZChpdDY1MDUtPnJlZ21hcCwgcmVnX2FkZHIsIHZhbHVlKTsKPiArCWlmIChl
+cnIgPCAwKSB7Cj4gKwkJRFJNX0VSUk9SKCIlcyByZWFkIGZhaWwgZXJyIHJlZ19hZGRyWzB4JXhd
+IGVycjolZFxuIiwKPiArCQkJICBfX2Z1bmNfXywgcmVnX2FkZHIsIGVycik7Cj4gKwkJcmV0dXJu
+IGVycjsKPiArCX0KPiArCj4gKwlyZXR1cm4gMDsKPiArfQo+ICsKPiArc3RhdGljIHZvaWQgaXQ2
+NTA1X2R1bXAoc3RydWN0IGl0NjUwNSAqaXQ2NTA1KQo+ICt7Cj4gKwl1bnNpZ25lZCBpbnQgdmFs
+dWUsIGk7Cj4gKwo+ICsJRFJNX0RFQlVHX0RSSVZFUigiXG4tLS0tLS0tLS0tJXMgc3RhcnQtLS0t
+LS0tLS0tXG4iLCBfX2Z1bmNfXyk7Cj4gKwlmb3IgKGkgPSAwOyBpIDw9IDB4ZmY7IGkrKykgewo+
+ICsJCWRwdHhyZChpdDY1MDUsIGksICZ2YWx1ZSk7Cj4gKwkJRFJNX0RFQlVHX0RSSVZFUigiJXNb
+MHgleF0gPSAweCV4XG4iLCBfX2Z1bmNfXywgaSwgdmFsdWUpOwo+ICsJfQo+ICsJRFJNX0RFQlVH
+X0RSSVZFUigiXG4tLS0tLS0tLS0tJXMgZW5kLS0tLS0tLS0tLVxuXG4iLCBfX2Z1bmNfXyk7Cj4g
+K30KQXJlIHRoZXNlIGhlYWRlcnMgcmVhbGx5IG5lZWRlZCBpbiBhIHByb2R1Y3Rpb24gZHJpdmVy
+PwoKPiArCj4gK3N0YXRpYyBpbnQgZHB0eHdyKHN0cnVjdCBpdDY1MDUgKml0NjUwNSwgdW5zaWdu
+ZWQgaW50IHJlZ19hZGRyLAo+ICsJCSAgdW5zaWduZWQgaW50IHJlZ192YWwpCj4gK3sKPiArCWlu
+dCBlcnI7Cj4gKwo+ICsJZXJyID0gcmVnbWFwX3dyaXRlKGl0NjUwNS0+cmVnbWFwLCByZWdfYWRk
+ciwgcmVnX3ZhbCk7Cj4gKwo+ICsJaWYgKGVyciA8IDApIHsKPiArCQlEUk1fRVJST1IoIiVzIHdy
+aXRlIGZhaWwgZXJyIHJlZ1sweCV4XSA9IDB4JXggZXJyID0gJWRcbiIsCj4gKwkJCV9fZnVuY19f
+LCByZWdfYWRkciwgcmVnX3ZhbCwgZXJyKTsKPiArCQlyZXR1cm4gZXJyOwo+ICsJfQo+ICsKPiAr
+CXJldHVybiAwOwo+ICt9Cj4gKwo+ICtzdGF0aWMgaW50IGRwdHhzZXQoc3RydWN0IGl0NjUwNSAq
+aXQ2NTA1LCB1bnNpZ25lZCBpbnQgcmVnLCB1bnNpZ25lZCBpbnQgbWFzaywKPiArCQkgICB1bnNp
+Z25lZCBpbnQgdmFsdWUpCj4gK3sKPiArCWludCBlcnI7Cj4gKwo+ICsJZXJyID0gcmVnbWFwX3Vw
+ZGF0ZV9iaXRzKGl0NjUwNS0+cmVnbWFwLCByZWcsIG1hc2ssIHZhbHVlKTsKPiArCWlmIChlcnIg
+PCAwKSB7Cj4gKwkJRFJNX0VSUk9SKCIlcyB3cml0ZSBmYWlsIGVyciAlZFxuIiwgX19mdW5jX18s
+IGVycik7Cj4gKwkJcmV0dXJuIGVycjsKPiArCX0KPiArCj4gKwlyZXR1cm4gMDsKPiArfQo+ICsK
+PiArc3RhdGljIGlubGluZSBzdHJ1Y3QgaXQ2NTA1ICpjb25uZWN0b3JfdG9faXQ2NTA1KHN0cnVj
+dCBkcm1fY29ubmVjdG9yICpjKQo+ICt7Cj4gKwlyZXR1cm4gY29udGFpbmVyX29mKGMsIHN0cnVj
+dCBpdDY1MDUsIGNvbm5lY3Rvcik7Cj4gK30KPiArCj4gK3N0YXRpYyBpbmxpbmUgc3RydWN0IGl0
+NjUwNSAqYnJpZGdlX3RvX2l0NjUwNShzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlKQo+ICt7Cj4g
+KwlyZXR1cm4gY29udGFpbmVyX29mKGJyaWRnZSwgc3RydWN0IGl0NjUwNSwgYnJpZGdlKTsKPiAr
+fQo+ICsKPiArc3RhdGljIHZvaWQgaXQ2NTA1X2luaXRfZnNtKHN0cnVjdCBpdDY1MDUgKml0NjUw
+NSkKPiArewo+ICsJaXQ2NTA1LT5hdWRfc2VsID0gQVVEU0VMOwo+ICsJaXQ2NTA1LT5hdWRfZnMg
+PSBBVURGUzsKPiArCWl0NjUwNS0+YXVkX2NoID0gQVVEQ0g7Cj4gKwlpdDY1MDUtPmF1ZF90eXBl
+ID0gQVVEVFlQRTsKPiArCWl0NjUwNS0+aTJzX2lucHV0X2ZtdCA9IEkyU0lOUFVURk1UOwo+ICsJ
+aXQ2NTA1LT5pMnNfanVzdGlmaWVkID0gSTJTSlVTVElGSUVEOwo+ICsJaXQ2NTA1LT5pMnNfZGF0
+YV9kZWxheSA9IEkyU0RBVEFERUxBWTsKPiArCWl0NjUwNS0+aTJzX3dzX2NoYW5uZWwgPSBJMlNX
+U0NIQU5ORUw7Cj4gKwlpdDY1MDUtPmkyc19kYXRhX3NlcSA9IEkyU0RBVEFTRVE7Cj4gKwlpdDY1
+MDUtPmF1ZHdvcmRsZW5ndGggPSBBVURXT1JETEVOR1RIOwo+ICsKPiArCWl0NjUwNS0+c3RhdHVz
+ID0gU1lTX1Vua25vd247Cj4gKwlpdDY1MDUtPmhiciA9IF9IQlI7Cj4gKwlpdDY1MDUtPmxhbmUg
+PSBMQU5FOwo+ICsJaXQ2NTA1LT5lbl9zc2MgPSBFTlNTQzsKPiArCWl0NjUwNS0+ZW5faGZyYW1l
+ID0gRU5IRlJBTUU7Cj4gKwlpdDY1MDUtPmxhbmVzd2FwID0gTEFORVNXQVA7Cj4gKwlpdDY1MDUt
+PnZpZHN0YWJsZV9kb25lID0gMDsKPiArfQo+ICsKPiArI2lmIChDSElQX1ZFUlNJT04gPT0gQlgp
+Cj4gK3N0YXRpYyB2b2lkIGl0NjUwNV90ZXJtaW5hdGlvbihzdHJ1Y3QgaXQ2NTA1ICppdDY1MDUs
+IGJvb2wgcykKPiArewo+ICsJRFJNX0RFQlVHX0RSSVZFUigiJXMgc3dpdGNoISFcbiIsIF9fZnVu
+Y19fKTsKPiArCWlmIChzKSB7Cj4gKwkJZHB0eHNldChpdDY1MDUsIDB4NUQsIDB4ODAsIDB4MDAp
+Owo+ICsJCWRwdHhzZXQoaXQ2NTA1LCAweDVFLCAweDAyLCAweDAyKTsKPiArCQlEUk1fREVCVUdf
+RFJJVkVSKCIlcyBPTiEhXG4iLCBfX2Z1bmNfXyk7Cj4gKwl9IGVsc2Ugewo+ICsJCWRwdHhzZXQo
+aXQ2NTA1LCAweDVELCAweDgwLCAweDgwKTsKPiArCQlkcHR4c2V0KGl0NjUwNSwgMHg1RSwgMHgw
+MiwgMHgwMCk7Cj4gKwkJZHB0eHNldChpdDY1MDUsIDB4NUMsIDB4RjAsIDB4MDApOwo+ICsJCURS
+TV9ERUJVR19EUklWRVIoIiVzIE9GRiEhXG4iLCBfX2Z1bmNfXyk7Cj4gKwl9Cj4gK30KPiArI2Vu
+ZGlmCj4gKwo+ICtzdGF0aWMgYm9vbCBkcHR4X2dldHNpbmtocGQoc3RydWN0IGl0NjUwNSAqaXQ2
+NTA1KQo+ICt7Cj4gKwl1bnNpZ25lZCBpbnQgdmFsdWU7Cj4gKwlpbnQgcmV0Owo+ICsKPiArCXJl
+dCA9IGRwdHhyZChpdDY1MDUsIDB4MEQsICZ2YWx1ZSk7Cj4gKwo+ICsJaWYgKHJldCA8IDApCj4g
+KwkJcmV0dXJuIGZhbHNlOwo+ICsKPiArCXJldHVybiAodmFsdWUgJiAyKSA9PSAyOwo+ICt9Cj4g
+Kwo+ICtzdGF0aWMgdm9pZCBzaG93X3ZpZF9pbmZvKHN0cnVjdCBpdDY1MDUgKml0NjUwNSkKPiAr
+ewo+ICsJaW50IGhzeW5jX3BvbCwgdnN5bmNfcG9sLCBpbnRlcmxhY2VkOwo+ICsJaW50IGh0b3Rh
+bCwgaGRlcywgaGRldywgaGZwaCwgaHN5bmN3Owo+ICsJaW50IHZ0b3RhbCwgdmRlcywgdmRldywg
+dmZwaCwgdnN5bmN3Owo+ICsJaW50IHJkZGF0YSwgcmRkYXRhMSwgaTsKPiArCWludCBwY2xrLCBz
+dW07Cj4gKwo+ICsJdXNsZWVwX3JhbmdlKDEwMDAwLCAxNTAwMCk7Cj4gKwlkcHR4d3IoaXQ2NTA1
+LCAweDBGLCAweDAwKTsKPiArCWRwdHhyZChpdDY1MDUsIDB4YTAsICZyZGRhdGEpOwo+ICsJaHN5
+bmNfcG9sID0gcmRkYXRhICYgQklUKDApOwo+ICsJdnN5bmNfcG9sID0gKHJkZGF0YSAmIEJJVCgy
+KSkgPj4gMjsKPiArCWludGVybGFjZWQgPSAocmRkYXRhICYgQklUKDQpKSA+PiA0Owo+ICsKPiAr
+CWRwdHhyZChpdDY1MDUsIDB4YTEsICZyZGRhdGEpOwo+ICsJZHB0eHJkKGl0NjUwNSwgMHhhMiwg
+JnJkZGF0YTEpOwo+ICsJaHRvdGFsID0gKChyZGRhdGExICYgMHgxRikgPDwgOCkgKyByZGRhdGE7
+Cj4gKwo+ICsJZHB0eHJkKGl0NjUwNSwgMHhhMywgJnJkZGF0YSk7Cj4gKwlkcHR4cmQoaXQ2NTA1
+LCAweGE0LCAmcmRkYXRhMSk7Cj4gKwo+ICsJaGRlcyA9ICgocmRkYXRhMSAmIDB4MUYpIDw8IDgp
+ICsgcmRkYXRhOwo+ICsKPiArCWRwdHhyZChpdDY1MDUsIDB4YTUsICZyZGRhdGEpOwo+ICsJZHB0
+eHJkKGl0NjUwNSwgMHhhNiwgJnJkZGF0YTEpOwo+ICsKPiArCWhkZXcgPSAoKHJkZGF0YTEgJiAw
+eDFGKSA8PCA4KSArIHJkZGF0YTsKPiArCj4gKwlkcHR4cmQoaXQ2NTA1LCAweGE3LCAmcmRkYXRh
+KTsKPiArCWRwdHhyZChpdDY1MDUsIDB4YTgsICZyZGRhdGExKTsKPiArCj4gKwloZnBoID0gKChy
+ZGRhdGExICYgMHgxRikgPDwgOCkgKyByZGRhdGE7Cj4gKwo+ICsJZHB0eHJkKGl0NjUwNSwgMHhh
+OSwgJnJkZGF0YSk7Cj4gKwlkcHR4cmQoaXQ2NTA1LCAweGFhLCAmcmRkYXRhMSk7Cj4gKwo+ICsJ
+aHN5bmN3ID0gKChyZGRhdGExICYgMHgxRikgPDwgOCkgKyByZGRhdGE7Cj4gKwo+ICsJZHB0eHJk
+KGl0NjUwNSwgMHhhYiwgJnJkZGF0YSk7Cj4gKwlkcHR4cmQoaXQ2NTA1LCAweGFjLCAmcmRkYXRh
+MSk7Cj4gKwl2dG90YWwgPSAoKHJkZGF0YTEgJiAweDBGKSA8PCA4KSArIHJkZGF0YTsKPiArCj4g
+KwlkcHR4cmQoaXQ2NTA1LCAweGFkLCAmcmRkYXRhKTsKPiArCWRwdHhyZChpdDY1MDUsIDB4YWUs
+ICZyZGRhdGExKTsKPiArCXZkZXMgPSAoKHJkZGF0YTEgJiAweDBGKSA8PCA4KSArIHJkZGF0YTsK
+PiArCj4gKwlkcHR4cmQoaXQ2NTA1LCAweGFmLCAmcmRkYXRhKTsKPiArCWRwdHhyZChpdDY1MDUs
+IDB4YjAsICZyZGRhdGExKTsKPiArCXZkZXcgPSAoKHJkZGF0YTEgJiAweDBGKSA8PCA4KSArIHJk
+ZGF0YTsKPiArCj4gKwlkcHR4cmQoaXQ2NTA1LCAweGIxLCAmcmRkYXRhKTsKPiArCWRwdHhyZChp
+dDY1MDUsIDB4YjIsICZyZGRhdGExKTsKPiArCXZmcGggPSAoKHJkZGF0YTEgJiAweDBGKSA8PCA4
+KSArIHJkZGF0YTsKPiArCj4gKwlkcHR4cmQoaXQ2NTA1LCAweGIzLCAmcmRkYXRhKTsKPiArCWRw
+dHhyZChpdDY1MDUsIDB4YjQsICZyZGRhdGExKTsKPiArCXZzeW5jdyA9ICgocmRkYXRhMSAmIDB4
+MEYpIDw8IDgpICsgcmRkYXRhOwo+ICsKPiArCXN1bSA9IDA7Cj4gKwlmb3IgKGkgPSAwOyBpIDwg
+MTAwOyBpKyspIHsKPiArCQlkcHR4c2V0KGl0NjUwNSwgMHgxMiwgMHg4MCwgMHg4MCk7Cj4gKwkJ
+dXNsZWVwX3JhbmdlKDEwMDAwLCAxNTAwMCk7Cj4gKwkJZHB0eHNldChpdDY1MDUsIDB4MTIsIDB4
+ODAsIDB4MDApOwo+ICsKPiArCQlkcHR4cmQoaXQ2NTA1LCAweDEzLCAmcmRkYXRhKTsKPiArCQlk
+cHR4cmQoaXQ2NTA1LCAweDE0LCAmcmRkYXRhMSk7Cj4gKwkJcmRkYXRhID0gKChyZGRhdGExICYg
+MHgwRikgPDwgOCkgKyByZGRhdGE7Cj4gKwo+ICsJCXN1bSArPSByZGRhdGE7Cj4gKwl9Cj4gKwo+
+ICsJc3VtIC89IDEwMDsKPiArCXBjbGsgPSAxMzUwMCAqIDIwNDggLyBzdW07Cj4gKwo+ICsJRFJN
+X0RFQlVHX0RSSVZFUigiXG4tLS0tLS0tLS0tVmlkZW8gSW5wdXQgVGltaW5nLS0tLS0tLS0tLVxu
+Iik7Cj4gKwlEUk1fREVCVUdfRFJJVkVSKCJQQ0xLID0gJWQuJWRNSHpcbiIsIHBjbGsgLyAxMDAw
+LCBwY2xrICUgMTAwMCk7Cj4gKwlEUk1fREVCVUdfRFJJVkVSKCJIVG90YWwgPSAlZFxuIiwgaHRv
+dGFsKTsKPiArCURSTV9ERUJVR19EUklWRVIoIkhBY3RpdmUgPSAlZFxuIiwgaGRldyk7Cj4gKwlE
+Uk1fREVCVUdfRFJJVkVSKCJIRnJvbnRQb3JjaCA9ICVkXG4iLCBoZnBoKTsKPiArCURSTV9ERUJV
+R19EUklWRVIoIkhTeW5jV2lkdGggPSAlZFxuIiwgaHN5bmN3KTsKPiArCURSTV9ERUJVR19EUklW
+RVIoIkhCYWNrUG9yY2ggPSAlZFxuIiwgaHRvdGFsIC0gaGRldyAtIGhmcGggLSBoc3luY3cpOwo+
+ICsJRFJNX0RFQlVHX0RSSVZFUigiVlRvdGFsID0gJWRcbiIsIHZ0b3RhbCk7Cj4gKwlEUk1fREVC
+VUdfRFJJVkVSKCJWQWN0aXZlID0gJWRcbiIsIHZkZXcpOwo+ICsJRFJNX0RFQlVHX0RSSVZFUigi
+VkZyb250UG9yY2ggPSAlZFxuIiwgdmZwaCk7Cj4gKwlEUk1fREVCVUdfRFJJVkVSKCJWU3luY1dp
+ZHRoID0gJWRcbiIsIHZzeW5jdyk7Cj4gKwlEUk1fREVCVUdfRFJJVkVSKCJWQmFja1BvcmNoID0g
+JWRcbiIsIHZ0b3RhbCAtIHZkZXcgLSB2ZnBoIC0gdnN5bmN3KTsKCkNhbiBEUk1fTU9ERV9GTVQg
+YW5kIERSTV9NT0RFX0FSRyBiZSB1c2VkIGhlcmU/Cgo+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCBk
+cHR4X3N5c19jaGcoc3RydWN0IGl0NjUwNSAqaXQ2NTA1LCBlbnVtIHN5c19zdGF0dXMgbmV3c3Rh
+dGUpCj4gK3sKPiArCXVuc2lnbmVkIGludCBpID0gMDsKPiArCXVuc2lnbmVkIGludCByZWcwNiwg
+cmVnMDcsIHJlZzA4LCByZWcwZCwgcmVnMGU7Cj4gKwo+ICsJZHB0eHJkKGl0NjUwNSwgMHgwNiwg
+JnJlZzA2KTsKPiArCWRwdHhyZChpdDY1MDUsIDB4MDcsICZyZWcwNyk7Cj4gKwlkcHR4cmQoaXQ2
+NTA1LCAweDA4LCAmcmVnMDgpOwo+ICsJZHB0eHJkKGl0NjUwNSwgMHgwZCwgJnJlZzBkKTsKPiAr
+CWRwdHhyZChpdDY1MDUsIDB4MGUsICZyZWcwZSk7Cj4gKwo+ICsJRFJNX0RFQlVHX0RSSVZFUigi
+WyVzXXJlZzA2ID0gMHgleFxuIiwgX19mdW5jX18sIHJlZzA2KTsKPiArCURSTV9ERUJVR19EUklW
+RVIoIlslc11yZWcwNyA9IDB4JXhcbiIsIF9fZnVuY19fLCByZWcwNyk7Cj4gKwlEUk1fREVCVUdf
+RFJJVkVSKCJbJXNdcmVnMDggPSAweCV4XG4iLCBfX2Z1bmNfXywgcmVnMDgpOwo+ICsJRFJNX0RF
+QlVHX0RSSVZFUigiWyVzXXJlZzBkID0gMHgleFxuIiwgX19mdW5jX18sIHJlZzBkKTsKPiArCURS
+TV9ERUJVR19EUklWRVIoIlslc11yZWcwZSA9IDB4JXhcbiIsIF9fZnVuY19fLCByZWcwZSk7Ckxv
+b2tzIGxpa2UgZGVidWdnaW5nIGFydGlmYWN0cyB0aGF0IGFyZSBub3QgcmVsZXZhbnQgaW4gYSBw
+cm9kdWN0aW9uCmRyaXZlci4KCj4gKwo+ICsJaWYgKG5ld3N0YXRlICE9IFNZU19VTlBMVUcpIHsK
+PiArCQlpZiAoIWRwdHhfZ2V0c2lua2hwZChpdDY1MDUpKQo+ICsJCQluZXdzdGF0ZSA9IFNZU19V
+TlBMVUc7Cj4gKwl9Cj4gKwo+ICsJaXQ2NTA1LT5zdGF0dXMgPSBuZXdzdGF0ZTsKPiArCj4gKwlz
+d2l0Y2ggKGl0NjUwNS0+c3RhdHVzKSB7Cj4gKwljYXNlIFNZU19VTlBMVUc6Cj4gKwkJRFJNX0RF
+QlVHX0RSSVZFUigic3lzX3N0YXRlIGlzIGNoYW5naW5nIHRvIFNZU19VTlBMVUchIik7Cj4gKwkJ
+a2ZyZWUoaXQ2NTA1LT5lZGlkKTsKPiArCQlpdDY1MDUtPmVkaWQgPSBOVUxMOwo+ICsJCURSTV9E
+RUJVR19EUklWRVIoIkZyZWUgaXQ2NTA1IEVESUQgbWVtb3J5ISIpOwo+ICsjaWYgKENISVBfVkVS
+U0lPTiA9PSBCWCkKPiArCQlpdDY1MDVfdGVybWluYXRpb24oaXQ2NTA1LCBmYWxzZSk7Cj4gKyNl
+bmRpZgo+ICsJCWJyZWFrOwo+ICsJY2FzZSBTWVNfSFBEOgo+ICsJCURSTV9ERUJVR19EUklWRVIo
+InN5c19zdGF0ZSBpcyBjaGFuZ2luZyB0byBTWVNfSFBEISIpOwo+ICsjaWYgKENISVBfVkVSU0lP
+TiA9PSBCWCkKPiArCQlpdDY1MDVfdGVybWluYXRpb24oaXQ2NTA1LCB0cnVlKTsKPiArI2VuZGlm
+Cj4gKwkJYnJlYWs7Cj4gKwljYXNlIFNZU19BVVRPVFJBSU46Cj4gKwkJRFJNX0RFQlVHX0RSSVZF
+Uigic3lzX3N0YXRlIGlzIGNoYW5naW5nIHRvIFNZU19BVVRPVFJBSU4hIik7Cj4gKwkJYnJlYWs7
+Cj4gKwljYXNlIFNZU19XQUlUOgo+ICsJCURSTV9ERUJVR19EUklWRVIoInN5c19zdGF0ZSBpcyBj
+aGFuZ2luZyB0byBTWVNfV0FJVCEiKTsKPiArCQlicmVhazsKPiArI2lmZGVmIENPTkZJR19EUk1f
+SVRFX0lUNjUwNV9FTkhEQ1AKPiArCWNhc2UgU1lTX1JlSERDUDoKPiArCQlEUk1fREVCVUdfRFJJ
+VkVSKCJzeXNfc3RhdGUgaXMgY2hhbmdpbmcgdG8gU1lTX1JlSERDUCEiKTsKPiArCQlicmVhazsK
+PiArI2VuZGlmCj4gKwljYXNlIFNZU19OT1JPUDoKPiArCQlEUk1fREVCVUdfRFJJVkVSKCJzeXNf
+c3RhdGUgaXMgY2hhbmdpbmcgdG8gU1lTX05PUk9QISIpOwo+ICsJCWZvciAoaSA9IDA7IGkgPCBT
+SE9XVklERU9USU1JTkc7IGkrKykKPiArCQkJc2hvd192aWRfaW5mbyhpdDY1MDUpOwo+ICsjaWZk
+ZWYgVEVTVF9NT0RFCj4gKwkJaXQ2NTA1LT5pdDY1MDVfZHJ2X2hvbGQgPSAxOwo+ICsJCURSTV9E
+RUJVR19EUklWRVIoInNldCBpdDY1MDVfZHJ2X2hvbGQ6JWQiLAo+ICsJCQkJaXQ2NTA1LT5pdDY1
+MDVfZHJ2X2hvbGQpOwo+ICsjZW5kaWYKPiArCQlicmVhazsKPiArCWNhc2UgU1lTX1BXUkROOgo+
+ICsJCURSTV9ERUJVR19EUklWRVIoInN5c19zdGF0ZSBpcyBjaGFuZ2luZyB0byBTWVNfUFdSRE4h
+Iik7Cj4gKwkJLyogUmVzZXQgYW5kIFB3ckRuIEFGRSAqLwo+ICsJCWJyZWFrOwo+ICsJZGVmYXVs
+dDoKPiArCQlEUk1fREVCVUdfRFJJVkVSKCJzeXNfc3RhdGUgaXMgY2hhbmdpbmcgdG8gU1lTX1VO
+S05PV04hIik7Cj4gKwkJYnJlYWs7Cj4gKwl9Cj4gK30KCkkgYnJvd3NlZCB0aGUgZHJpdmVyIGFu
+ZCBkaWQgbm90IGZpbmQgYW55dGhpbmcgb3RoZXIKdGhhbiBpc3N1ZXMgdGhhdCBhcmUgYWxyZWFk
+eSByZXBvcnRlZCBhYm92ZS4KCkFzIEkgaGF2ZSBubyBleHBlcmllbmNlIHdpdGggYSBicmlkZ2Ug
+ZHJpdmVyIGFzIHN1Y2ggdGhlIGZ1bmN0aW9uYWxpdHkKd2FzIG5vdCBsb29rZWQgYXQuCgoJU2Ft
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZl
+bCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xp
+c3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
