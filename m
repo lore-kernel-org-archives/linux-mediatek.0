@@ -1,40 +1,57 @@
-From: Neal Liu <neal.liu@mediatek.com>
-Subject: Re: [PATCH 3/3] hwrng: add mt67xx-rng driver
-Date: Thu, 9 May 2019 22:54:46 +0800
-Message-ID: <1557413686.23445.6.camel@mtkswgap22>
-References: <1557287937-2410-1-git-send-email-neal.liu@mediatek.com>
-         <1557287937-2410-4-git-send-email-neal.liu@mediatek.com>
-         <12193108.aNnqf5ydOJ@tauon.chronox.de>
-         <1557311737.11818.11.camel@mtkswgap22>
-         <20190509052649.xfkgb3qd7rhcgktj@gondor.apana.org.au>
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH 4.9 14/28] drm/mediatek: fix possible object reference leak
+Date: Thu,  9 May 2019 20:42:06 +0200
+Message-ID: <20190509181253.142746342@linuxfoundation.org>
+References: <20190509181247.647767531@linuxfoundation.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190509052649.xfkgb3qd7rhcgktj@gondor.apana.org.au>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Herbert Xu <herbert@gondor.apana.org.au>
-Cc: Stephan Mueller <smueller@chronox.de>, mpm@selenic.com, robh+dt@kernel.org, mark.rutland@arm.com, matthias.bgg@gmail.com, wsd_upstream@mediatek.com, linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Crystal.Guo@mediatek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190509181247.647767531@linuxfoundation.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: linux-kernel@vger.kernel.org
+Cc: Sasha Levin <sashal@kernel.org>, David Airlie <airlied@linux.ie>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, stable@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Wen Yang <wen.yang99@zte.com.cn>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2019-05-09 at 13:26 +0800, Herbert Xu wrote:
-> On Wed, May 08, 2019 at 06:35:37PM +0800, Neal Liu wrote:
-> > Hi Stephan,
-> > 	We think the cast is fine, and it cannot guarantee the buf is
-> > word-align.
-> > 	I reference multiple rng driver's implementation and found it's common
-> > usage for this. So it might be general usage for community. Is there any
-> > suggestion that is more appropriate?
-> 
-> If you don't know whether it's unaligned or not then you should
-> do an unaligned operation.
-
-Hi Stephan/Herbert,
-	My mistake. This buffer is allocated by kmalloc with larger than 32
-bytes. So yes, it's word-align for sure.
-	reference:
-https://elixir.bootlin.com/linux/latest/source/drivers/char/hw_random/core.c#L590
-
-	Thanks
-Best Regards,
--Neal Liu
+WyBVcHN0cmVhbSBjb21taXQgMmFlMmMzMzE2ZmI3N2RjZjY0Mjc1ZDAxMTU5NmI2MDEwNGM0NTQy
+NiBdCgpUaGUgY2FsbCB0byBvZl9wYXJzZV9waGFuZGxlIHJldHVybnMgYSBub2RlIHBvaW50ZXIg
+d2l0aCByZWZjb3VudAppbmNyZW1lbnRlZCB0aHVzIGl0IG11c3QgYmUgZXhwbGljaXRseSBkZWNy
+ZW1lbnRlZCBhZnRlciB0aGUgbGFzdAp1c2FnZS4KCkRldGVjdGVkIGJ5IGNvY2NpbmVsbGUgd2l0
+aCB0aGUgZm9sbG93aW5nIHdhcm5pbmdzOgpkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hk
+bWkuYzoxNTIxOjItODogRVJST1I6IG1pc3Npbmcgb2Zfbm9kZV9wdXQ7IGFjcXVpcmVkIGEgbm9k
+ZSBwb2ludGVyIHdpdGggcmVmY291bnQgaW5jcmVtZW50ZWQgb24gbGluZSAxNTA5LCBidXQgd2l0
+aG91dCBhIGNvcnJlc3BvbmRpbmcgb2JqZWN0IHJlbGVhc2Ugd2l0aGluIHRoaXMgZnVuY3Rpb24u
+CmRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jOjE1MjQ6MS03OiBFUlJPUjogbWlz
+c2luZyBvZl9ub2RlX3B1dDsgYWNxdWlyZWQgYSBub2RlIHBvaW50ZXIgd2l0aCByZWZjb3VudCBp
+bmNyZW1lbnRlZCBvbiBsaW5lIDE1MDksIGJ1dCB3aXRob3V0IGEgY29ycmVzcG9uZGluZyBvYmpl
+Y3QgcmVsZWFzZSB3aXRoaW4gdGhpcyBmdW5jdGlvbi4KClNpZ25lZC1vZmYtYnk6IFdlbiBZYW5n
+IDx3ZW4ueWFuZzk5QHp0ZS5jb20uY24+CkNjOiBDSyBIdSA8Y2suaHVAbWVkaWF0ZWsuY29tPgpD
+YzogUGhpbGlwcCBaYWJlbCA8cC56YWJlbEBwZW5ndXRyb25peC5kZT4KQ2M6IERhdmlkIEFpcmxp
+ZSA8YWlybGllZEBsaW51eC5pZT4KQ2M6IERhbmllbCBWZXR0ZXIgPGRhbmllbEBmZndsbC5jaD4K
+Q2M6IE1hdHRoaWFzIEJydWdnZXIgPG1hdHRoaWFzLmJnZ0BnbWFpbC5jb20+CkNjOiBkcmktZGV2
+ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCkNjOiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJh
+ZGVhZC5vcmcKQ2M6IGxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKQ2M6IGxpbnV4
+LWtlcm5lbEB2Z2VyLmtlcm5lbC5vcmcKU2lnbmVkLW9mZi1ieTogQ0sgSHUgPGNrLmh1QG1lZGlh
+dGVrLmNvbT4KU2lnbmVkLW9mZi1ieTogU2FzaGEgTGV2aW4gPHNhc2hhbEBrZXJuZWwub3JnPgot
+LS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jIHwgMSArCiAxIGZpbGUgY2hh
+bmdlZCwgMSBpbnNlcnRpb24oKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2hkbWkuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCmluZGV4
+IDIwMGY3NWUxZDYxOTguLmU3YTY2NTFjZWVhYjEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfaGRtaS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+aGRtaS5jCkBAIC0xNTI4LDYgKzE1MjgsNyBAQCBzdGF0aWMgaW50IG10a19oZG1pX2R0X3BhcnNl
+X3BkYXRhKHN0cnVjdCBtdGtfaGRtaSAqaGRtaSwKIAlvZl9ub2RlX3B1dChyZW1vdGUpOwogCiAJ
+aGRtaS0+ZGRjX2FkcHQgPSBvZl9maW5kX2kyY19hZGFwdGVyX2J5X25vZGUoaTJjX25wKTsKKwlv
+Zl9ub2RlX3B1dChpMmNfbnApOwogCWlmICghaGRtaS0+ZGRjX2FkcHQpIHsKIAkJZGV2X2Vycihk
+ZXYsICJGYWlsZWQgdG8gZ2V0IGRkYyBpMmMgYWRhcHRlciBieSBub2RlXG4iKTsKIAkJcmV0dXJu
+IC1FSU5WQUw7Ci0tIAoyLjIwLjEKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
+Zm8vZHJpLWRldmVs
