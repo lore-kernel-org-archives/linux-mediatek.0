@@ -1,64 +1,40 @@
-From: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH] dmaengine: mediatek-cqdma: sleeping in atomic context
-Date: Thu, 9 May 2019 13:09:23 +0300
-Message-ID: <20190509100923.GA7024@mwanda>
+From: Neal Liu <neal.liu@mediatek.com>
+Subject: Re: [PATCH 3/3] hwrng: add mt67xx-rng driver
+Date: Thu, 9 May 2019 22:54:46 +0800
+Message-ID: <1557413686.23445.6.camel@mtkswgap22>
+References: <1557287937-2410-1-git-send-email-neal.liu@mediatek.com>
+         <1557287937-2410-4-git-send-email-neal.liu@mediatek.com>
+         <12193108.aNnqf5ydOJ@tauon.chronox.de>
+         <1557311737.11818.11.camel@mtkswgap22>
+         <20190509052649.xfkgb3qd7rhcgktj@gondor.apana.org.au>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shun-Chih Yu <shun-chih.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: kernel-janitors-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Vinod Koul <vkoul-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Dan Williams <dan.j.williams-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190509052649.xfkgb3qd7rhcgktj@gondor.apana.org.au>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Herbert Xu <herbert@gondor.apana.org.au>
+Cc: Stephan Mueller <smueller@chronox.de>, mpm@selenic.com, robh+dt@kernel.org, mark.rutland@arm.com, matthias.bgg@gmail.com, wsd_upstream@mediatek.com, linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Crystal.Guo@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-The mtk_cqdma_poll_engine_done() function takes a true/false parameter
-where true means it's called from atomic context.  There are a couple
-places where it was set to false but it's actually in atomic context
-so it should be true.
+On Thu, 2019-05-09 at 13:26 +0800, Herbert Xu wrote:
+> On Wed, May 08, 2019 at 06:35:37PM +0800, Neal Liu wrote:
+> > Hi Stephan,
+> > 	We think the cast is fine, and it cannot guarantee the buf is
+> > word-align.
+> > 	I reference multiple rng driver's implementation and found it's common
+> > usage for this. So it might be general usage for community. Is there any
+> > suggestion that is more appropriate?
+> 
+> If you don't know whether it's unaligned or not then you should
+> do an unaligned operation.
 
-All the callers for mtk_cqdma_hard_reset() are holding a spin_lock and
-in mtk_cqdma_free_chan_resources() we take a spin_lock before calling
-the mtk_cqdma_poll_engine_done() function.
+Hi Stephan/Herbert,
+	My mistake. This buffer is allocated by kmalloc with larger than 32
+bytes. So yes, it's word-align for sure.
+	reference:
+https://elixir.bootlin.com/linux/latest/source/drivers/char/hw_random/core.c#L590
 
-Fixes: b1f01e48df5a ("dmaengine: mediatek: Add MediaTek Command-Queue DMA controller for MT6765 SoC")
-Signed-off-by: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
----
-The "atomic" parameter is always true so the temptation was to just
-remove it entirely.
-
- drivers/dma/mediatek/mtk-cqdma.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/dma/mediatek/mtk-cqdma.c b/drivers/dma/mediatek/mtk-cqdma.c
-index 814853842e29..723b11c190b3 100644
---- a/drivers/dma/mediatek/mtk-cqdma.c
-+++ b/drivers/dma/mediatek/mtk-cqdma.c
-@@ -225,7 +225,7 @@ static int mtk_cqdma_hard_reset(struct mtk_cqdma_pchan *pc)
- 	mtk_dma_set(pc, MTK_CQDMA_RESET, MTK_CQDMA_HARD_RST_BIT);
- 	mtk_dma_clr(pc, MTK_CQDMA_RESET, MTK_CQDMA_HARD_RST_BIT);
- 
--	return mtk_cqdma_poll_engine_done(pc, false);
-+	return mtk_cqdma_poll_engine_done(pc, true);
- }
- 
- static void mtk_cqdma_start(struct mtk_cqdma_pchan *pc,
-@@ -671,7 +671,7 @@ static void mtk_cqdma_free_chan_resources(struct dma_chan *c)
- 		mtk_dma_set(cvc->pc, MTK_CQDMA_FLUSH, MTK_CQDMA_FLUSH_BIT);
- 
- 		/* wait for the completion of flush operation */
--		if (mtk_cqdma_poll_engine_done(cvc->pc, false) < 0)
-+		if (mtk_cqdma_poll_engine_done(cvc->pc, true) < 0)
- 			dev_err(cqdma2dev(to_cqdma_dev(c)), "cqdma flush timeout\n");
- 
- 		/* clear the flush bit and interrupt flag */
--- 
-2.18.0
+	Thanks
+Best Regards,
+-Neal Liu
