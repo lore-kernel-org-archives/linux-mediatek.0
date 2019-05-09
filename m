@@ -1,13 +1,13 @@
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 4.9 14/28] drm/mediatek: fix possible object reference leak
-Date: Thu,  9 May 2019 20:42:06 +0200
-Message-ID: <20190509181253.142746342@linuxfoundation.org>
-References: <20190509181247.647767531@linuxfoundation.org>
+Subject: [PATCH 4.14 25/42] drm/mediatek: fix possible object reference leak
+Date: Thu,  9 May 2019 20:42:14 +0200
+Message-ID: <20190509181257.722424735@linuxfoundation.org>
+References: <20190509181252.616018683@linuxfoundation.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190509181247.647767531@linuxfoundation.org>
+In-Reply-To: <20190509181252.616018683@linuxfoundation.org>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -44,9 +44,9 @@ dGVrLmNvbT4KU2lnbmVkLW9mZi1ieTogU2FzaGEgTGV2aW4gPHNhc2hhbEBrZXJuZWwub3JnPgot
 LS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jIHwgMSArCiAxIGZpbGUgY2hh
 bmdlZCwgMSBpbnNlcnRpb24oKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
 ZWsvbXRrX2hkbWkuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCmluZGV4
-IDIwMGY3NWUxZDYxOTguLmU3YTY2NTFjZWVhYjEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2Ry
+IGEzM2ExOTE4NDYzZGUuLjNjNjljNzNmYmQ0NzMgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2Ry
 bS9tZWRpYXRlay9tdGtfaGRtaS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
-aGRtaS5jCkBAIC0xNTI4LDYgKzE1MjgsNyBAQCBzdGF0aWMgaW50IG10a19oZG1pX2R0X3BhcnNl
+aGRtaS5jCkBAIC0xNTA4LDYgKzE1MDgsNyBAQCBzdGF0aWMgaW50IG10a19oZG1pX2R0X3BhcnNl
 X3BkYXRhKHN0cnVjdCBtdGtfaGRtaSAqaGRtaSwKIAlvZl9ub2RlX3B1dChyZW1vdGUpOwogCiAJ
 aGRtaS0+ZGRjX2FkcHQgPSBvZl9maW5kX2kyY19hZGFwdGVyX2J5X25vZGUoaTJjX25wKTsKKwlv
 Zl9ub2RlX3B1dChpMmNfbnApOwogCWlmICghaGRtaS0+ZGRjX2FkcHQpIHsKIAkJZGV2X2Vycihk
