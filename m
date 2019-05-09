@@ -1,55 +1,57 @@
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 4.19 43/66] drm/mediatek: fix possible object reference leak
-Date: Thu,  9 May 2019 20:42:18 +0200
-Message-ID: <20190509181306.423253638@linuxfoundation.org>
-References: <20190509181301.719249738@linuxfoundation.org>
+Subject: [PATCH 5.0 55/95] drm/mediatek: fix possible object reference leak
+Date: Thu,  9 May 2019 20:42:12 +0200
+Message-ID: <20190509181313.357629651@linuxfoundation.org>
+References: <20190509181309.180685671@linuxfoundation.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190509181301.719249738@linuxfoundation.org>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190509181309.180685671@linuxfoundation.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: linux-kernel@vger.kernel.org
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, stable@vger.kernel.org, Wen Yang <wen.yang99@zte.com.cn>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Sasha Levin <sashal@kernel.org>
+Cc: Sasha Levin <sashal@kernel.org>, David Airlie <airlied@linux.ie>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, stable@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Wen Yang <wen.yang99@zte.com.cn>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-[ Upstream commit 2ae2c3316fb77dcf64275d011596b60104c45426 ]
-
-The call to of_parse_phandle returns a node pointer with refcount
-incremented thus it must be explicitly decremented after the last
-usage.
-
-Detected by coccinelle with the following warnings:
-drivers/gpu/drm/mediatek/mtk_hdmi.c:1521:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 1509, but without a corresponding object release within this function.
-drivers/gpu/drm/mediatek/mtk_hdmi.c:1524:1-7: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 1509, but without a corresponding object release within this function.
-
-Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
-Cc: CK Hu <ck.hu@mediatek.com>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: David Airlie <airlied@linux.ie>
-Cc: Daniel Vetter <daniel@ffwll.ch>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: dri-devel@lists.freedesktop.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
-Signed-off-by: CK Hu <ck.hu@mediatek.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/gpu/drm/mediatek/mtk_hdmi.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index c7a77d6f612b2..62444a3a5742a 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -1508,6 +1508,7 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
- 	of_node_put(remote);
- 
- 	hdmi->ddc_adpt = of_find_i2c_adapter_by_node(i2c_np);
-+	of_node_put(i2c_np);
- 	if (!hdmi->ddc_adpt) {
- 		dev_err(dev, "Failed to get ddc i2c adapter by node\n");
- 		return -EINVAL;
--- 
-2.20.1
+WyBVcHN0cmVhbSBjb21taXQgMmFlMmMzMzE2ZmI3N2RjZjY0Mjc1ZDAxMTU5NmI2MDEwNGM0NTQy
+NiBdCgpUaGUgY2FsbCB0byBvZl9wYXJzZV9waGFuZGxlIHJldHVybnMgYSBub2RlIHBvaW50ZXIg
+d2l0aCByZWZjb3VudAppbmNyZW1lbnRlZCB0aHVzIGl0IG11c3QgYmUgZXhwbGljaXRseSBkZWNy
+ZW1lbnRlZCBhZnRlciB0aGUgbGFzdAp1c2FnZS4KCkRldGVjdGVkIGJ5IGNvY2NpbmVsbGUgd2l0
+aCB0aGUgZm9sbG93aW5nIHdhcm5pbmdzOgpkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hk
+bWkuYzoxNTIxOjItODogRVJST1I6IG1pc3Npbmcgb2Zfbm9kZV9wdXQ7IGFjcXVpcmVkIGEgbm9k
+ZSBwb2ludGVyIHdpdGggcmVmY291bnQgaW5jcmVtZW50ZWQgb24gbGluZSAxNTA5LCBidXQgd2l0
+aG91dCBhIGNvcnJlc3BvbmRpbmcgb2JqZWN0IHJlbGVhc2Ugd2l0aGluIHRoaXMgZnVuY3Rpb24u
+CmRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jOjE1MjQ6MS03OiBFUlJPUjogbWlz
+c2luZyBvZl9ub2RlX3B1dDsgYWNxdWlyZWQgYSBub2RlIHBvaW50ZXIgd2l0aCByZWZjb3VudCBp
+bmNyZW1lbnRlZCBvbiBsaW5lIDE1MDksIGJ1dCB3aXRob3V0IGEgY29ycmVzcG9uZGluZyBvYmpl
+Y3QgcmVsZWFzZSB3aXRoaW4gdGhpcyBmdW5jdGlvbi4KClNpZ25lZC1vZmYtYnk6IFdlbiBZYW5n
+IDx3ZW4ueWFuZzk5QHp0ZS5jb20uY24+CkNjOiBDSyBIdSA8Y2suaHVAbWVkaWF0ZWsuY29tPgpD
+YzogUGhpbGlwcCBaYWJlbCA8cC56YWJlbEBwZW5ndXRyb25peC5kZT4KQ2M6IERhdmlkIEFpcmxp
+ZSA8YWlybGllZEBsaW51eC5pZT4KQ2M6IERhbmllbCBWZXR0ZXIgPGRhbmllbEBmZndsbC5jaD4K
+Q2M6IE1hdHRoaWFzIEJydWdnZXIgPG1hdHRoaWFzLmJnZ0BnbWFpbC5jb20+CkNjOiBkcmktZGV2
+ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCkNjOiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJh
+ZGVhZC5vcmcKQ2M6IGxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKQ2M6IGxpbnV4
+LWtlcm5lbEB2Z2VyLmtlcm5lbC5vcmcKU2lnbmVkLW9mZi1ieTogQ0sgSHUgPGNrLmh1QG1lZGlh
+dGVrLmNvbT4KU2lnbmVkLW9mZi1ieTogU2FzaGEgTGV2aW4gPHNhc2hhbEBrZXJuZWwub3JnPgot
+LS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jIHwgMSArCiAxIGZpbGUgY2hh
+bmdlZCwgMSBpbnNlcnRpb24oKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2hkbWkuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCmluZGV4
+IGM5MTA4NTBkMjA3NzAuLmE2ODdmZTNlMWQ2YzUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfaGRtaS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+aGRtaS5jCkBAIC0xNTE0LDYgKzE1MTQsNyBAQCBzdGF0aWMgaW50IG10a19oZG1pX2R0X3BhcnNl
+X3BkYXRhKHN0cnVjdCBtdGtfaGRtaSAqaGRtaSwKIAlvZl9ub2RlX3B1dChyZW1vdGUpOwogCiAJ
+aGRtaS0+ZGRjX2FkcHQgPSBvZl9maW5kX2kyY19hZGFwdGVyX2J5X25vZGUoaTJjX25wKTsKKwlv
+Zl9ub2RlX3B1dChpMmNfbnApOwogCWlmICghaGRtaS0+ZGRjX2FkcHQpIHsKIAkJZGV2X2Vycihk
+ZXYsICJGYWlsZWQgdG8gZ2V0IGRkYyBpMmMgYWRhcHRlciBieSBub2RlXG4iKTsKIAkJcmV0dXJu
+IC1FSU5WQUw7Ci0tIAoyLjIwLjEKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
+Zm8vZHJpLWRldmVs
