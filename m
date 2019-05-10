@@ -1,158 +1,48 @@
-From: Michael Kao <michael.kao@mediatek.com>
-Subject: Re: [PATCH 1/8] arm64: dts: mt8183: add thermal zone node
-Date: Fri, 10 May 2019 18:52:17 +0800
-Message-ID: <1557485537.29634.27.camel@mtksdccf07>
-References: <1556793795-25204-1-git-send-email-michael.kao@mediatek.com>
-         <1556793795-25204-2-git-send-email-michael.kao@mediatek.com>
-         <CAJMQK-isJf6f+OubbCdoXs8L2cup=rm3Z8Mr7Q26QshMP-0wxA@mail.gmail.com>
-         <20190503164651.GB40515@google.com>
-         <c6cf6170-331d-8ffc-d272-e5d8ee648eda@linaro.org>
-         <1557318215.29634.7.camel@mtksdccf07>
+From: michael.kao <michael.kao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 0/8] Add Mediatek thermal dirver and dtsi
+Date: Fri, 10 May 2019 21:26:58 +0800
+Message-ID: <1557494826-6044-1-git-send-email-michael.kao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1557318215.29634.7.camel@mtksdccf07>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Matthias Kaehlcke <mka@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>, fan.chen@mediatek.com, jamesjj.liao@mediatek.com, dawei.chien@mediatek.com, louis.yu@mediatek.com, roger.lu@mediatek.com, Zhang Rui <rui.zhang@intel.com>hsinyi@chromium.org, Eduardo Valentin <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, hsinyi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2019-05-08 at 20:23 +0800, Michael Kao wrote:
-> On Mon, 2019-05-06 at 12:43 +0200, Daniel Lezcano wrote:
-> > On 03/05/2019 18:46, Matthias Kaehlcke wrote:
-> > > Hi,
-> > > 
-> > > On Fri, May 03, 2019 at 04:03:58PM +0800, Hsin-Yi Wang wrote:
-> > >> On Thu, May 2, 2019 at 10:43 AM michael.kao <michael.kao@mediatek.com> wrote:
-> > >>>
-> > >>> Add thermal zone node to Mediatek MT8183 dts file.
-> > >>>
-> > >>> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
-> > >>> ---
-> > >>>  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 64 ++++++++++++++++++++++++++++++++
-> > >>>  1 file changed, 64 insertions(+)
-> > >>>
-> > >>> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > >>> index 926df75..b92116f 100644
-> > >>> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > >>> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > >>> @@ -334,6 +334,67 @@
-> > >>>                         status = "disabled";
-> > >>>                 };
-> > >>>
-> > >>> +               thermal: thermal@1100b000 {
-> > >>> +                       #thermal-sensor-cells = <1>;
-> > >>> +                       compatible = "mediatek,mt8183-thermal";
-> > >>> +                       reg = <0 0x1100b000 0 0x1000>;
-> > >>> +                       interrupts = <0 76 IRQ_TYPE_LEVEL_LOW>;
-> > >>> +                       clocks = <&infracfg CLK_INFRA_THERM>,
-> > >>> +                                <&infracfg CLK_INFRA_AUXADC>;
-> > >>> +                       clock-names = "therm", "auxadc";
-> > >>> +                       resets = <&infracfg  MT8183_INFRACFG_AO_THERM_SW_RST>;
-> > >>> +                       mediatek,auxadc = <&auxadc>;
-> > >>> +                       mediatek,apmixedsys = <&apmixedsys>;
-> > >>> +                       mediatek,hw-reset-temp = <117000>;
-> > >>> +                       nvmem-cells = <&thermal_calibration>;
-> > >>> +                       nvmem-cell-names = "calibration-data";
-> > >>> +               };
-> > >>> +
-> > >>> +               thermal-zones {
-> > >>> +                       cpu_thermal: cpu_thermal {
-> > >>> +                               polling-delay-passive = <1000>;
-> > >>> +                               polling-delay = <1000>;
-> > >>> +
-> > >>> +                               thermal-sensors = <&thermal 0>;
-> > >>> +                               sustainable-power = <1500>;
-> > >>> +                       };
-> > >>> +
-> > >>> +                       tzts1: tzts1 {
-> > >>> +                               polling-delay-passive = <1000>;
-> > >>> +                               polling-delay = <1000>;
-> > >>> +                               thermal-sensors = <&thermal 1>;
-> > >> Is sustainable-power required for tzts? Though it's an optional
-> > >> property, kernel would have warning:
-> > >> [    0.631556] thermal thermal_zone1: power_allocator:
-> > >> sustainable_power will be estimated
-> > >> [    0.639586] thermal thermal_zone2: power_allocator:
-> > >> sustainable_power will be estimated
-> > >> [    0.647611] thermal thermal_zone3: power_allocator:
-> > >> sustainable_power will be estimated
-> > >> [    0.655635] thermal thermal_zone4: power_allocator:
-> > >> sustainable_power will be estimated
-> > >> [    0.663658] thermal thermal_zone5: power_allocator:
-> > >> sustainable_power will be estimated
-> > >> if no sustainable-power assigned.
-> > > 
-> > > The property is indeed optional, if it isn't specified IPA will use
-> > > the sum of the minimum power of all 'power actors' of the zone as
-> > > estimate (see estimate_sustainable_power()). This may lead to overly
-> > > agressive throttling, since the nominal sustainable power will always
-> > > be <= the requested power.
-> > > 
-> > > In my understanding the sustainable power may varies between devices,
-> > > even for the same SoC. One could have all the hardware crammed into a
-> > > tiny plastic enclosure (e.g. ASUS Chromebit), another might have a
-> > > laptop form factor and a metal enclosure (e.g. ASUS C201). Both
-> > > examples are based on an Rockchip rk3288, but they have completely
-> > > different thermal behavior, and would likely have different values for
-> > > 'sustainable-power'.
-> > > 
-> > > In this sense I tend to consider 'sustainable-power' more a device,
-> > > than a SoC property. You could specify a 'reasonable' value as a
-> > > starting point, but it will likely not be optimal for all or even most
-> > > devices. The warning might even be useful for device makers by
-> > > indicating them that there is room for tweaking.
-> > 
-> > 
-> > The sustainable power is the power dissipated by the devices belonging
-> > to the thermal zone at the given trip temperature.
-> > 
-> > With the power numbers and the cooling devices, the IPA will change the
-> > states of the cooling devices to leverage the dissipated power to the
-> > sustainable power.
-> > 
-> > The contribution is the cooling effect of the cooling device.
-> > 
-> > However, the IPA is limited to one thermal zone and the cooling device
-> > is the cpu cooling device. There is the devfreq cooling device but as
-> > the graphic driver is not upstream, it is found in the android tree only
-> > for the moment.
-> > 
-> > As you mentioned the sustainable power can vary depending on the form
-> > factor and the production process for the same SoC (they can go to
-> > higher frequencies thus dissipate more power). That is the reason why we
-> > split the DT per SoC and we override the values on a per SoC version basis.
-> > 
-> > You can have a look the rk3399.dtsi and their variant for experimental
-> > board (*-rock960.dts) and the chromebook version (*-gru-kevin.dts).
-> > 
-> > Do you want a empiric procedure to find out the sustainable power ?
-> > 
-> > 
-> > 
-> OK, I will add the cooling map. But the tzts1 ~ tzts6 don't need to binding cooler.
-> The "cpu_thermal" is max value of tzts1 ~tzts6. And cpu_thermal bind
-> cooler with IPA. tzts1~6 don't need to add cooler. So, do I just add
-> cooling map without any binding any cooling-cell?
-> 
-> I think thermal framework will add estimated sustainable power. Maybe I
-> should add by myself. What's procedure do you recommend to find
-> sustainable power?
-> 
-The tzts1~6 are just thermal sensor in the 8183 SoC,
-The purpose of adding the six thermal is to support svs driver to read
-thermal sensor in the SoC.
-https://patchwork.kernel.org/patch/10923289/
+This patchset supports for MT8183 chip to mtk_thermal.c.
+Add thermal zone of all the thermal sensor in SoC for
+another get temperatrue. They don't need to thermal throttle.
+And we bind coolers for thermal zone nodes of cpu_thermal.
 
-The IPA cooling SoC will be applied by cpu_thermal which is the max
-sensor value of tzts1~6.
-In Document/devicetree/binding/thermal/thermal.txt, I find the statement
-that the trip and cooling-map is required for thermal zone.
-If we don't set trip and cooling map, it will set disable mode
-"tz->mode = THERMAL_DEVICE_DISABLED"
-in the drivers/thermal/of-thermal.c
-But it still work to read the temperature of thermal zone.
-And we don't need to let these thermal zone to bind cooler.
-So, we use these way to provide temperature node for svs to read
-temperature by thermal_zone_get_zone_by_name only.
+This patch series base on these patches [1][2][3][4].
+
+[1]support for reading chip ID and efuse (https://patchwork.kernel.org/patch/10902131/)
+[2]arm64: dts: mt8183: Add reset-cells in infracfg (https://patchwork.kernel.org/patch/10908653/)
+[3]clk: reset: Modify reset-controller driver (https://patchwork.kernel.org/patch/10908657/)
+[4]PM / AVS: SVS: Introduce SVS engine (https://patchwork.kernel.org/patch/10923289/)
+
+Matthias Kaehlcke (2):
+	arm64: dts: mt8183: Configure CPU cooling
+	arm64: dts: mt8183: Increase polling frequency for CPU thermal zone
+
+Michael Kao (6):
+	arm64: dts: mt8183: add thermal zone node
+	arm64: dts: mt8183: add/update dynamic power coefficients
+	arm64: dts: mt8183: Add #cooling-cells to CPU nodes
+	thermal: mediatek: mt8183: fix bank number settings
+	thermal: mediatek: add another get_temp ops for thermal sensors
+	thermal: mediatek: use spinlock to protect PTPCORESEL
+
+arch/arm64/boot/dts/mediatek/mt8183.dtsi | 158 +++++++++++++++++++++++++++++++
+drivers/thermal/mtk_thermal.c            |  82 +++++++++++++---
+2 files changed, 226 insertions(+), 14 deletions(-)
