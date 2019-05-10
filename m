@@ -1,60 +1,67 @@
-From: =?UTF-8?q?Petr=20=C5=A0tetiar?= <ynezz-knWk7/PSn+s@public.gmane.org>
-Subject: [PATCH net 5/5] net: wireless: mt76: fix similar warning reported by kbuild test robot
-Date: Fri, 10 May 2019 11:35:18 +0200
-Message-ID: <1557480918-9627-6-git-send-email-ynezz@true.cz>
+From: =?UTF-8?q?Petr=20=C5=A0tetiar?= <ynezz@true.cz>
+Subject: [PATCH net 2/5] dt-bindings: doc: net: remove Linux API references
+Date: Fri, 10 May 2019 11:35:15 +0200
+Message-ID: <1557480918-9627-3-git-send-email-ynezz@true.cz>
 References: <1557480918-9627-1-git-send-email-ynezz@true.cz>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1557480918-9627-1-git-send-email-ynezz-knWk7/PSn+s@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi83-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Roy Luo <royluo-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, =?UTF-8?q?Petr=20=C5=A0tetiar?= <ynezz-knWk7/PSn+s@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1557480918-9627-1-git-send-email-ynezz@true.cz>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: netdev@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Kalle Valo <kvalo@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, devicetree@vger.kernel.org, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, =?UTF-8?q?Petr=20=C5=A0tetiar?= <ynezz@true.cz>, Rob Herring <robh@kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch fixes following (similar) warning reported by kbuild test robot:
-
- In function ‘memcpy’,
-  inlined from ‘smsc75xx_init_mac_address’ at drivers/net/usb/smsc75xx.c:778:3,
-  inlined from ‘smsc75xx_bind’ at drivers/net/usb/smsc75xx.c:1501:2:
-  ./include/linux/string.h:355:9: warning: argument 2 null where non-null expected [-Wnonnull]
-  return __builtin_memcpy(p, q, size);
-         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  drivers/net/usb/smsc75xx.c: In function ‘smsc75xx_bind’:
-  ./include/linux/string.h:355:9: note: in a call to built-in function ‘__builtin_memcpy’
-
-I've replaced the offending memcpy with ether_addr_copy, because I'm
-100% sure, that of_get_mac_address can't return NULL as it returns valid
-pointer or ERR_PTR encoded value, nothing else.
-
-I'm hesitant to just change IS_ERR into IS_ERR_OR_NULL check, as this
-would make the warning disappear also, but it would be confusing to
-check for impossible return value just to make a compiler happy.
-
-I'm now changing all occurencies of memcpy to ether_addr_copy after the
-of_get_mac_address call, as it's very likely, that we're going to get
-similar reports from kbuild test robot in the future.
-
-Fixes: d31a36b5f407 ("net: wireless: support of_get_mac_address new ERR_PTR error")
-Reported-by: kbuild test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Signed-off-by: Petr Štetiar <ynezz-knWk7/PSn+s@public.gmane.org>
----
- drivers/net/wireless/mediatek/mt76/eeprom.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
-index 04964937a3af..b7a49ae6b327 100644
---- a/drivers/net/wireless/mediatek/mt76/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
-@@ -95,7 +95,7 @@
- 
- 	mac = of_get_mac_address(np);
- 	if (!IS_ERR(mac))
--		memcpy(dev->macaddr, mac, ETH_ALEN);
-+		ether_addr_copy(dev->macaddr, mac);
- #endif
- 
- 	if (!is_valid_ether_addr(dev->macaddr)) {
--- 
-1.9.1
+SW4gY29tbWl0IDY4N2UzZDU1NTBjNyAoImR0LWJpbmRpbmdzOiBkb2M6IHJlZmxlY3QgbmV3IE5W
+TUVNCm9mX2dldF9tYWNfYWRkcmVzcyBiZWhhdmlvdXIiKSBJJ3ZlIGtlcHQgb3IgYWRkZWQgcmVm
+ZXJlbmNlcyB0byBMaW51eApvZl9nZXRfbWFjX2FkZHJlc3MgQVBJIHdoaWNoIGlzIHVud2FudGVk
+IHNvIHRoaXMgcGF0Y2ggZml4ZXMgdGhhdCBieQpyZW1vdmluZyB0aG9zZSByZWZlcmVuY2VzLgoK
+Rml4ZXM6IDY4N2UzZDU1NTBjNyAoImR0LWJpbmRpbmdzOiBkb2M6IHJlZmxlY3QgbmV3IE5WTUVN
+IG9mX2dldF9tYWNfYWRkcmVzcyBiZWhhdmlvdXIiKQpTdWdnZXN0ZWQtYnk6IFJvYiBIZXJyaW5n
+IDxyb2JoQGtlcm5lbC5vcmc+ClNpZ25lZC1vZmYtYnk6IFBldHIgxaB0ZXRpYXIgPHluZXp6QHRy
+dWUuY3o+Ci0tLQogRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL25ldC9rZXlzdG9u
+ZS1uZXRjcC50eHQgICAgICAgICB8IDYgKysrLS0tCiBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
+YmluZGluZ3MvbmV0L3dpcmVsZXNzL21lZGlhdGVrLG10NzYudHh0IHwgNCArKy0tCiAyIGZpbGVz
+IGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKSwgNSBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9E
+b2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbmV0L2tleXN0b25lLW5ldGNwLnR4dCBi
+L0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9uZXQva2V5c3RvbmUtbmV0Y3AudHh0
+CmluZGV4IDNhNjVhYWJjNzZhMi4uNjI2MmMyZjI5M2IwIDEwMDY0NAotLS0gYS9Eb2N1bWVudGF0
+aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbmV0L2tleXN0b25lLW5ldGNwLnR4dAorKysgYi9Eb2N1
+bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbmV0L2tleXN0b25lLW5ldGNwLnR4dApAQCAt
+MTM5LDkgKzEzOSw5IEBAIE9wdGlvbmFsIHByb3BlcnRpZXM6CiAJCQlzdWItbW9kdWxlIGF0dGFj
+aGVkIHRvIHRoaXMgaW50ZXJmYWNlLgogCiBUaGUgTUFDIGFkZHJlc3Mgd2lsbCBiZSBkZXRlcm1p
+bmVkIHVzaW5nIHRoZSBvcHRpb25hbCBwcm9wZXJ0aWVzIGRlZmluZWQgaW4KLWV0aGVybmV0LnR4
+dCwgYXMgcHJvdmlkZWQgYnkgdGhlIG9mX2dldF9tYWNfYWRkcmVzcyBBUEkgYW5kIG9ubHkgaWYg
+ZWZ1c2UtbWFjCi1pcyBzZXQgdG8gMC4gSWYgYW55IG9mIHRoZSBvcHRpb25hbCBNQUMgYWRkcmVz
+cyBwcm9wZXJ0aWVzIGFyZSBub3QgcHJlc2VudCwKLXRoZW4gdGhlIGRyaXZlciB3aWxsIHVzZSBy
+YW5kb20gTUFDIGFkZHJlc3MuCitldGhlcm5ldC50eHQgYW5kIG9ubHkgaWYgZWZ1c2UtbWFjIGlz
+IHNldCB0byAwLiBJZiBhbGwgb2YgdGhlIG9wdGlvbmFsIE1BQworYWRkcmVzcyBwcm9wZXJ0aWVz
+IGFyZSBub3QgcHJlc2VudCwgdGhlbiB0aGUgZHJpdmVyIHdpbGwgdXNlIGEgcmFuZG9tIE1BQwor
+YWRkcmVzcy4KIAogRXhhbXBsZSBiaW5kaW5nOgogCmRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9u
+L2RldmljZXRyZWUvYmluZGluZ3MvbmV0L3dpcmVsZXNzL21lZGlhdGVrLG10NzYudHh0IGIvRG9j
+dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL25ldC93aXJlbGVzcy9tZWRpYXRlayxtdDc2
+LnR4dAppbmRleCA3NDY2NTUwMmY0Y2YuLjdlNjc1ZGFmYzI1NiAxMDA2NDQKLS0tIGEvRG9jdW1l
+bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL25ldC93aXJlbGVzcy9tZWRpYXRlayxtdDc2LnR4
+dAorKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbmV0L3dpcmVsZXNzL21l
+ZGlhdGVrLG10NzYudHh0CkBAIC0xNiw4ICsxNiw4IEBAIE9wdGlvbmFsIHByb3BlcnRpZXM6CiAt
+IGllZWU4MDIxMS1mcmVxLWxpbWl0OiBTZWUgaWVlZTgwMjExLnR4dAogLSBtZWRpYXRlayxtdGQt
+ZWVwcm9tOiBTcGVjaWZ5IGEgTVREIHBhcnRpdGlvbiArIG9mZnNldCBjb250YWluaW5nIEVFUFJP
+TSBkYXRhCiAKLVRoZSBkcml2ZXIgaXMgdXNpbmcgb2ZfZ2V0X21hY19hZGRyZXNzIEFQSSwgc28g
+dGhlIE1BQyBhZGRyZXNzIGNhbiBiZSBhcyB3ZWxsCi1iZSBzZXQgd2l0aCBjb3JyZXNwb25kaW5n
+IG9wdGlvbmFsIHByb3BlcnRpZXMgZGVmaW5lZCBpbiBuZXQvZXRoZXJuZXQudHh0LgorVGhlIE1B
+QyBhZGRyZXNzIGNhbiBhcyB3ZWxsIGJlIHNldCB3aXRoIGNvcnJlc3BvbmRpbmcgb3B0aW9uYWwg
+cHJvcGVydGllcworZGVmaW5lZCBpbiBuZXQvZXRoZXJuZXQudHh0LgogCiBPcHRpb25hbCBub2Rl
+czoKIC0gbGVkOiBQcm9wZXJ0aWVzIGZvciBhIGNvbm5lY3RlZCBMRUQKLS0gCjEuOS4xCgoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtl
+cm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5l
+bAo=
