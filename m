@@ -1,26 +1,30 @@
-From: Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
-Subject: Re: [PATCH] mt76: Fix a signedness bug in mt7615_add_interface()
-Date: Sat, 11 May 2019 15:28:59 +0200
-Message-ID: <c554f3b8-e46d-9137-ad06-c31f7961a958@nbd.name>
-References: <20190502212341.GA31847@mwanda>
+From: Felix Fietkau <nbd@nbd.name>
+Subject: Re: [PATCH][next] mt76: fix less than zero check on a u8 variable
+Date: Sat, 11 May 2019 15:31:34 +0200
+Message-ID: <a0d21c98-9421-547f-6dd9-5153812107e5@nbd.name>
+References: <20190505213135.3895-1-colin.king@canonical.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20190502212341.GA31847@mwanda>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190505213135.3895-1-colin.king@canonical.com>
 Content-Language: en-US
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Lorenzo Bianconi <lorenzo.bianconi83-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Roy Luo <royluo-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-janitors-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Sender: linux-kernel-owner@vger.kernel.org
+To: Colin King <colin.king@canonical.com>, Roy Luo <royluo@google.com>, Kalle Valo <kvalo@codeaurora.org>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 2019-05-03 14:54, Dan Carpenter wrote:
-> The problem is that "mvif->omac_idx" is a u8 so it can't be negative
-> and the error handling won't work.  The get_omac_idx() function returns
-> -1 on error.
+On 2019-05-05 23:31, Colin King wrote:
+> From: Colin Ian King <colin.king@canonical.com>
 > 
+> The signed return from the call to get_omac_idx is being assigned to the
+> u8 variable mac_idx and then checked for a negative error condition
+> which is always going to be false. Fix this by assigning the return to
+> the int variable ret and checking this instead.
+> 
+> Addresses-Coverity: ("Unsigned compared against 0")
 > Fixes: 04b8e65922f6 ("mt76: add mac80211 driver for MT7615 PCIe-based chipsets")
-> Signed-off-by: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
-Applied, thanks.
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+Already fixed by a similar patch by Dan Carpenter.
 
 - Felix
