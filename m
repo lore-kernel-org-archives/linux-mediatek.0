@@ -1,49 +1,41 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [v3 PATCH] dt-binding: usb: add usb-role-switch property
-Date: Mon, 13 May 2019 12:28:47 -0500
-Message-ID: <20190513172847.GA15347@bogus>
-References: <c3596e996c9ab39c6b9bc14b93309244c4a55014.1557306151.git.chunfeng.yun@mediatek.com>
+From: "Bean Huo (beanhuo)" <beanhuo@micron.com>
+Subject: RE: [EXT] [PATCH v1 2/3] scsi: ufs: add error handling of auto-hibern8
+Date: Mon, 13 May 2019 18:21:23 +0000
+Message-ID: <BN7PR08MB568438668FC7C90A1284F53DDB0F0@BN7PR08MB5684.namprd08.prod.outlook.com>
+References: <1557758186-18706-1-git-send-email-stanley.chu@mediatek.com>
+ <1557758186-18706-3-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <c3596e996c9ab39c6b9bc14b93309244c4a55014.1557306151.git.chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Biju Das <biju.das@bp.renesas.com>, Yu Chen <chenyu56@huawei.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Min Guo <min.guo@mediatek.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1557758186-18706-3-git-send-email-stanley.chu@mediatek.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com" <martin.petersen@oracle.com>, "avri.altman@wdc.com" <avri.altman@wdc.com>, "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>, "pedrom.sousa@synopsys.com" <pedrom.sousa@synopsys.com>
+Cc: "marc.w.gonzalez@free.fr" <marc.w.gonzalez@free.fr>, "andy.teng@mediatek.com" <andy.teng@mediatek.com>, "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>, "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>, "evgreen@chromium.org" <evgreen@chromium.org>, "subhashj@codeaurora.org" <subhashj@codeaurora.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "peter.wang@mediatek.com" <peter.wang@mediatek.com>, "vivek.gautam@codeaurora.org" <vivek.gautam@codeaurora.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "sayalil@codeaurora.org" <sayalil@codeaurora.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 8 May 2019 17:17:44 +0800, Chunfeng Yun wrote:
-> Add a property usb-role-switch to tell the driver that use
-> USB Role Switch framework to handle the role switch,
-> it's useful when the driver has already supported other ways,
-> such as extcon framework etc.
-> 
-> Cc: Biju Das <biju.das@bp.renesas.com>
-> Cc: Yu Chen <chenyu56@huawei.com>
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
-> v3:
->     add property type, modify description suggested by Heikki
-> 
-> v2:
->     describe it in terms of h/w functionality suggested by Rob
-> 
-> v1:
->     the property is discussed in:
->     [v2,2/7] dt-bindings: usb: renesas_usb3: add usb-role-switch property
->     https://patchwork.kernel.org/patch/10852497/
-> 
->     Mediatek and Hisilicon also try to use it:
->     [v4,3/6] dt-bindings: usb: mtu3: add properties about USB Role Switch
->     https://patchwork.kernel.org/patch/10918385/
->     [v4,6/6] usb: mtu3: register a USB Role Switch for dual role mode
->     https://patchwork.kernel.org/patch/10918367/
-> 
->     [v6,10/13] usb: dwc3: Registering a role switch in the DRD code
->     https://patchwork.kernel.org/patch/10909981/
-> ---
->  Documentation/devicetree/bindings/usb/generic.txt | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
+Hi, Stanley
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+>+
+>+static inline bool ufshcd_is_auto_hibern8_error(struct ufs_hba *hba,
+>+						u32 intr_mask)
+>+{
+>+	return (ufshcd_is_auto_hibern8_supported(hba) &&
+>+		!hba->uic_async_done &&
+
+Here check if uic_async_done is NULL, no big problem so far, but not safe enough.
+How about setting a flag in ufshcd_auto_hibern8_enable(),
+
+I concern about how to compatible with auto_hibern8 disabled condition.
+
+
+//Bean
