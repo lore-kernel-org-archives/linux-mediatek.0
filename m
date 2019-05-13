@@ -1,26 +1,47 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v3 05/10] regulator: Add document for MT6358 regulator
-Date: Mon, 13 May 2019 10:06:01 -0500
-Message-ID: <20190513150601.GA21798@bogus>
-References: <20190503093117.54830-1-hsin-hsiung.wang@mediatek.com>
- <20190503093117.54830-6-hsin-hsiung.wang@mediatek.com>
+From: Fabien Parent <fparent@baylibre.com>
+Subject: [PATCH v2 0/5] mt6392: Add support for MediaTek MT6392 PMIC
+Date: Mon, 13 May 2019 18:10:21 +0200
+Message-ID: <20190513161026.31308-1-fparent@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190503093117.54830-6-hsin-hsiung.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Eddie Huang <eddie.huang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rtc@vger.kernel.org, srv_heupstream@mediatek.com
+To: robh+dt@kernel.org, mark.rutland@arm.com, matthias.bgg@gmail.com
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Fabien Parent <fparent@baylibre.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, May 03, 2019 at 05:31:12PM +0800, Hsin-Hsiung Wang wrote:
-> add dt-binding document for MediaTek MT6358 PMIC
-> 
-> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> ---
->  .../bindings/regulator/mt6358-regulator.txt   | 358 ++++++++++++++++++
->  1 file changed, 358 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/regulator/mt6358-regulator.txt
+This patch series aims at bringing support for the MediaTek MT6392 PMIC. This
+PMIC is used on the MT8516 Pumpkin board.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+This patch series adds support for the following features:
+ * PMIC keys
+ * regulator
+ * RTC
+
+Fabien Parent (5):
+  dt-bindings: regulator: add support for MT6392
+  regulator: mt6392: Add support for MT6392 regulator
+  dt-bindings: mfd: mt6397: Add bindings for MT6392 PMIC
+  mfd: mt6397: Add support for MT6392 pmic
+  arm64: dts: mt6392: Add PMIC mt6392 dtsi
+
+ .../devicetree/bindings/mfd/mt6397.txt        |  12 +-
+ .../bindings/regulator/mt6392-regulator.txt   | 220 ++++++++
+ arch/arm64/boot/dts/mediatek/mt6392.dtsi      | 208 ++++++++
+ drivers/mfd/mt6397-core.c                     |  55 ++
+ drivers/regulator/Kconfig                     |   9 +
+ drivers/regulator/Makefile                    |   1 +
+ drivers/regulator/mt6392-regulator.c          | 490 ++++++++++++++++++
+ include/linux/mfd/mt6392/core.h               |  42 ++
+ include/linux/mfd/mt6392/registers.h          | 487 +++++++++++++++++
+ include/linux/regulator/mt6392-regulator.h    |  40 ++
+ 10 files changed, 1562 insertions(+), 2 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/regulator/mt6392-regulator.txt
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6392.dtsi
+ create mode 100644 drivers/regulator/mt6392-regulator.c
+ create mode 100644 include/linux/mfd/mt6392/core.h
+ create mode 100644 include/linux/mfd/mt6392/registers.h
+ create mode 100644 include/linux/regulator/mt6392-regulator.h
+
+-- 
+2.20.1
