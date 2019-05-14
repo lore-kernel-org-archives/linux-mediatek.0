@@ -1,107 +1,78 @@
-From: Stu Hsieh <stu.hsieh@mediatek.com>
-Subject: [PATCH v3 10/13] [media] mtk-mipicsi: set the output address in HW reg
-Date: Tue, 14 May 2019 14:13:47 +0800
-Message-ID: <1557814430-9675-11-git-send-email-stu.hsieh@mediatek.com>
-References: <1557814430-9675-1-git-send-email-stu.hsieh@mediatek.com>
+From: Stanley Chu <stanley.chu@mediatek.com>
+Subject: Re: [PATCH v1 0/3] scsi: ufs: add error handlings of auto-hibern8
+Date: Tue, 14 May 2019 14:25:01 +0800
+Message-ID: <1557815101.24427.7.camel@mtkswgap22>
+References: <1557758186-18706-1-git-send-email-stanley.chu@mediatek.com>
+ <55818bc4-d464-bb35-25bb-9ef87af8224e@free.fr>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1557814430-9675-1-git-send-email-stu.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, CK Hu <ck.hu@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Stu Hsieh <stu.hsieh@mediatek.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <55818bc4-d464-bb35-25bb-9ef87af8224e@free.fr>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Marc Gonzalez <marc.w.gonzalez@free.fr>
+Cc: linux-scsi@vger.kernel.org, martin.petersen@oracle.com, vivek.gautam@codeaurora.org, andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, subhashj@codeaurora.org, evgreen@chromium.org, avri.altman@wdc.com, linux-mediatek@lists.infradead.org, peter.wang@mediatek.com, alim.akhtar@samsung.com, matthias.bgg@gmail.com, sayalil@codeaurora.org, pedrom.sousa@synopsys.com, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch set the output address in HW reg when buffer queue and ISR.
+Hi Marc,
 
-Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
----
- .../media/platform/mtk-mipicsi/mtk_mipicsi.c  | 39 +++++++++++++++++++
- 1 file changed, 39 insertions(+)
+Thank you so much for below suggestions. I will fix them all in next
+version.
 
-diff --git a/drivers/media/platform/mtk-mipicsi/mtk_mipicsi.c b/drivers/media/platform/mtk-mipicsi/mtk_mipicsi.c
-index af5655345754..cf46fcd01a19 100644
---- a/drivers/media/platform/mtk-mipicsi/mtk_mipicsi.c
-+++ b/drivers/media/platform/mtk-mipicsi/mtk_mipicsi.c
-@@ -105,6 +105,7 @@
- #define CAMSV_TG_SEN_GRAB_LIN				0x50C
- #define CAMSV_TG_PATH_CFG				0x510
- 
-+#define IMGO_BASE_ADDR					0x220
- #define IMGO_XSIZE					0x230
- #define IMGO_YSIZE					0x234
- #define IMGO_STRIDE					0x238
-@@ -503,12 +504,22 @@ static int mtk_mipicsi_vb2_prepare(struct vb2_buffer *vb)
- 	return 0;
- }
- 
-+static void mtk_mipicsi_fill_buffer(void __iomem *base, dma_addr_t dma_handle)
-+{
-+	writel(dma_handle, base + IMGO_BASE_ADDR);
-+}
-+
- static void mtk_mipicsi_vb2_queue(struct vb2_buffer *vb)
- {
- 	struct soc_camera_device *icd = soc_camera_from_vb2q(vb->vb2_queue);
- 	struct soc_camera_host *ici = to_soc_camera_host(icd->parent);
- 	struct mtk_mipicsi_dev *mipicsi = ici->priv;
-+	unsigned int i = 0;
-+	u64 offset = 0;
-+	u8 link_index = 0U;
- 	char *va = NULL;
-+	u32 bytesperline = mipicsi->bytesperline;
-+	u32 height = mipicsi->height;
- 
- 	spin_lock(&mipicsi->queue_lock);
- 	list_add_tail(&(mipicsi->cam_buf[vb->index].queue),
-@@ -517,6 +528,20 @@ static void mtk_mipicsi_vb2_queue(struct vb2_buffer *vb)
- 
- 	va = vb2_plane_vaddr(vb, 0);
- 
-+	for (i = 0U; (mipicsi->enqueue_cnt == 0UL) && (i < MTK_CAMDMA_MAX_NUM);
-+		++i)
-+		if (((mipicsi->link_reg_val >> i) & 0x01U) == 0x01U) {
-+			offset = (u64)link_index * bytesperline * height;
-+
-+			spin_lock(&mipicsi->lock);
-+			mtk_mipicsi_fill_buffer(mipicsi->camsv[i],
-+				mipicsi->cam_buf[vb->index].vb_dma_addr_phy
-+					+ offset);
-+			spin_unlock(&mipicsi->lock);
-+
-+			link_index++;
-+		}
-+
- 	++(mipicsi->enqueue_cnt);
- }
- 
-@@ -938,6 +963,10 @@ static void mtk_mipicsi_irq_buf_process(struct mtk_mipicsi_dev *mipicsi)
- 	struct mtk_mipicsi_buf *tmp = NULL;
- 	unsigned int index = 0U;
- 	unsigned int next = 0U;
-+	u64 offset = 0ULL;
-+	u8 link_index = 0U;
-+	void __iomem *base = NULL;
-+	dma_addr_t pa;
- 
- 	for (i = 0U; i < MTK_CAMDMA_MAX_NUM; ++i)
- 		mipicsi->irq_status[i] = false;
-@@ -960,6 +989,16 @@ static void mtk_mipicsi_irq_buf_process(struct mtk_mipicsi_dev *mipicsi)
- 		++i;
- 	}
- 
-+	for (i = 0U; i < MTK_CAMDMA_MAX_NUM; ++i) {
-+		if (((mipicsi->link_reg_val >> i) & 0x01U) == 0x01U) {
-+			offset = (u64)link_index *
-+				mipicsi->bytesperline * mipicsi->height;
-+			base = mipicsi->camsv[i];
-+			pa = mipicsi->cam_buf[next].vb_dma_addr_phy;
-+			mtk_mipicsi_fill_buffer(base, pa + offset);
-+			link_index++;
-+		}
-+	}
- 	/*
- 	 * fb_list has one more buffer. Free the first buffer to user
- 	 * and fill the second buffer to HW.
--- 
-2.18.0
+On Mon, 2019-05-13 at 16:51 +0200, Marc Gonzalez wrote:
+> On 13/05/2019 16:36, Stanley Chu wrote:
+> 
+> > Currently auto-hibern8 is activated if host supports
+> > auto-hibern8 capability. However no error handlings are existed thus
+> > this feature is kind of risky.
+> 
+> This last sentence is not very idiomatic.
+> 
+> I would suggest:
+> "However, error-handling is not implemented, which makes the feature
+> somewhat risky."
+> 
+> > If "Hibernate Enter" or "Hibernate Exit" fail happens
+> 
+> I would suggest:
+> If either "Hibernate Enter" or "Hibernate Exit" fail during ...
+> 
+> > during auto-hibern8 flow, the corresponding interrupt
+> > "UIC_HIBERNATE_ENTER" or "UIC_HIBERNATE_EXIT" shall be raised
+> > according to UFS specification.
+> > 
+> > This patch adds auto-hibern8 error handlings:
+> 
+> error-handling
+> 
+> > - Monitor "Hibernate Enter" and "Hibernate Exit" interrupts after
+> >   auto-hibern8 feature is activated.
+> 
+> I just want to take this opportunity to ask a rhetorical question.
+> 
+> Who in the Great Heavens thought it would be a good idea to call the
+> feature "auto-hibern8" ?
+> 
+> Was it really worth it to save 2 characters by writing "8" instead
+> of "ate" ?
+> 
+> This bugs me so much that I just might send a patch to fix it up.
+
+As far as I know, the term "HIBERN8" is mentioned in all UFS related
+specifications, like UFS, UFSHCI, UniPro and M-PHY. So probably this
+abbreviation has existed for a long time.
+
+> 
+> Regards.
+
+Thanks,
+
+Stanley
