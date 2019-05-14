@@ -1,25 +1,18 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/2] dt-bindings: mediatek: audsys: add support for MT8516
-Date: Tue, 14 May 2019 15:31:56 -0500
-Message-ID: <20190514203156.GA28188@bogus>
-References: <20190502121843.14493-1-fparent@baylibre.com>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [v3, PATCH 0/4] fix some bugs in stmmac
+Date: Tue, 14 May 2019 15:24:13 -0700 (PDT)
+Message-ID: <20190514.152413.759642243023046997.davem@davemloft.net>
+References: <1557805046-306-1-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190502121843.14493-1-fparent@baylibre.com>
+In-Reply-To: <1557805046-306-1-git-send-email-biao.huang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, wenzhen.yu@mediatek.com, sean.wang@mediatek.com, ryder.lee@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Fabien Parent <fparent@baylibre.com>
+To: biao.huang@mediatek.com
+Cc: joabreu@synopsys.com, peppe.cavallaro@st.com, alexandre.torgue@st.com, mcoquelin.stm32@gmail.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, jianguo.zhang@mediatek.comi, boon.leong.ong@intel.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu,  2 May 2019 14:18:42 +0200, Fabien Parent wrote:
-> Add AUDSYS device tree bindings documentation for MediaTek MT8516 SoC.
-> 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> ---
->  .../bindings/arm/mediatek/mediatek,audsys.txt   |  1 +
->  include/dt-bindings/clock/mt8516-clk.h          | 17 +++++++++++++++++
->  2 files changed, 18 insertions(+)
-> 
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+This series doesn't apply to my 'net' tree, mainly because something like
+patch #3 is already in my tree.
