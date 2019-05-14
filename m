@@ -1,62 +1,32 @@
-From: Biao Huang <biao.huang@mediatek.com>
-Subject: [v3, PATCH 2/4] net: stmmac: fix csr_clk can't be zero issue
-Date: Tue, 14 May 2019 11:37:24 +0800
-Message-ID: <1557805046-306-3-git-send-email-biao.huang@mediatek.com>
-References: <1557805046-306-1-git-send-email-biao.huang@mediatek.com>
+From: biao huang <biao.huang@mediatek.com>
+Subject: Re: [v2, PATCH 0/4] fix some bugs in stmmac
+Date: Tue, 14 May 2019 11:38:51 +0800
+Message-ID: <1557805131.24897.41.camel@mhfsdcap03>
+References: <1557800933-30759-1-git-send-email-biao.huang@mediatek.com>
+         <20190514030016.GA19642@lunn.ch>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1557805046-306-1-git-send-email-biao.huang@mediatek.com>
+In-Reply-To: <20190514030016.GA19642@lunn.ch>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jose Abreu <joabreu@synopsys.com>
-Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, biao.huang@mediatek.com, jianguo.zhang@mediatek.comi, boon.leong.ong@intel.com
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Jose Abreu <joabreu@synopsys.com>, davem@davemloft.net, jianguo.zhang@mediatek.com, Alexandre Torgue <alexandre.torgue@st.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, yt.shen@mediatek.com, linux-mediatek@lists.infradead.org, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The specific clk_csr value can be zero, and
-stmmac_clk is necessary for MDC clock which can be set dynamically.
-So, change the condition from plat->clk_csr to plat->stmmac_clk to
-fix clk_csr can't be zero issue.
+Hi Andrew,
+	Add a Fixes:tag in series v3, please review.
 
-Fixes: cd7201f477b9 ("stmmac: MDC clock dynamically based on the csr clock input")
-Signed-off-by: Biao Huang <biao.huang@mediatek.com>
----
- drivers/net/ethernet/stmicro/stmmac/stmmac_main.c  |    6 +++---
- .../net/ethernet/stmicro/stmmac/stmmac_platform.c  |    5 ++++-
- 2 files changed, 7 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-index 906f2be..a905b63 100644
---- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-@@ -4374,10 +4374,10 @@ int stmmac_dvr_probe(struct device *device,
- 	 * set the MDC clock dynamically according to the csr actual
- 	 * clock input.
- 	 */
--	if (!priv->plat->clk_csr)
--		stmmac_clk_csr_set(priv);
--	else
-+	if (priv->plat->clk_csr >= 0)
- 		priv->clk_csr = priv->plat->clk_csr;
-+	else
-+		stmmac_clk_csr_set(priv);
- 
- 	stmmac_check_pcs_mode(priv);
- 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c
-index 3031f2b..f45bfbe 100644
---- a/drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c
-@@ -408,7 +408,10 @@ struct plat_stmmacenet_data *
- 	/* Default to phy auto-detection */
- 	plat->phy_addr = -1;
- 
--	/* Get clk_csr from device tree */
-+	/* Default to get clk_csr from stmmac_clk_crs_set(),
-+	 * or get clk_csr from device tree.
-+	 */
-+	plat->clk_csr = -1;
- 	of_property_read_u32(np, "clk_csr", &plat->clk_csr);
- 
- 	/* "snps,phy-addr" is not a standard property. Mark it as deprecated
--- 
-1.7.9.5
+On Tue, 2019-05-14 at 05:00 +0200, Andrew Lunn wrote:
+> On Tue, May 14, 2019 at 10:28:49AM +0800, Biao Huang wrote:
+> > changes in v2:                                                                  
+> >         1. update rx_tail_addr as Jose's comment                                
+> >         2. changes clk_csr condition as Alex's proposition                      
+> >         3. remove init lines in dwmac-mediatek, get clk_csr from dts instead.   
+> 
+> Hi Biao
+> 
+> Since these are fixes, could you provide a Fixes: tag for each one?
+> 
+> Thanks
+> 	Andrew
