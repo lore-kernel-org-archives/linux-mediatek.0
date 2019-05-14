@@ -1,126 +1,59 @@
-From: Lecopzer Chen <lecopzer.chen@mediatek.com>
-Subject: [PATCH] test_power: Add CURRENT and CHARGE_COUNTER properties
-Date: Tue, 14 May 2019 18:04:58 +0800
-Message-ID: <1557828298-16591-1-git-send-email-lecopzer.chen@mediatek.com>
+From: "Bean Huo (beanhuo)" <beanhuo@micron.com>
+Subject: RE: [EXT] [PATCH v1 2/3] scsi: ufs: add error handling of auto-hibern8
+Date: Tue, 14 May 2019 11:14:40 +0000
+Message-ID: <BN7PR08MB56840A3CD3BA7C107D0230CADB080@BN7PR08MB5684.namprd08.prod.outlook.com>
+References: <1557758186-18706-1-git-send-email-stanley.chu@mediatek.com>
+ <1557758186-18706-3-git-send-email-stanley.chu@mediatek.com>
+ <BN7PR08MB568438668FC7C90A1284F53DDB0F0@BN7PR08MB5684.namprd08.prod.outlook.com>
+ <1557817102.24427.20.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: sre@kernel.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, lecopzer.chen@mediatek.com
-Cc: srv_heupstream@mediatek.com, yj.chiang@mediatek.com, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1557817102.24427.20.camel@mtkswgap22>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Stanley Chu <stanley.chu@mediatek.com>
+Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com" <martin.petersen@oracle.com>, "marc.w.gonzalez@free.fr" <marc.w.gonzalez@free.fr>, "andy.teng@mediatek.com" <andy.teng@mediatek.com>, "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>, "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>, "evgreen@chromium.org" <evgreen@chromium.org>, "avri.altman@wdc.com" <avri.altman@wdc.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "peter.wang@mediatek.com" <peter.wang@mediatek.com>, "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>, "subhashj@codeaurora.org" <subhashj@codeaurora.org>, "sayalil@codeaurora.org" <sayalil@codeaurora.org>, "pedrom.sousa@synopsys.com" <pedrom.sousa@synopsys.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: "Lecopzer Chen" <lecopzer.chen@mediatek.com>
-
-Emulate battery current (variable) and battery CHARGE_COUNTER
-(same as battery_capacity) properties.
-
-Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
-Cc: YJ Chiang <yj.chiang@mediatek.com>
-
----
- drivers/power/supply/test_power.c | 33 +++++++++++++++++++++++++++++++
- 1 file changed, 33 insertions(+)
-
-diff --git a/drivers/power/supply/test_power.c b/drivers/power/supply/test_power.c
-index 57246cdbd042..9f85060c84de 100644
---- a/drivers/power/supply/test_power.c
-+++ b/drivers/power/supply/test_power.c
-@@ -36,6 +36,7 @@ static int battery_present		= 1; /* true */
- static int battery_technology		= POWER_SUPPLY_TECHNOLOGY_LION;
- static int battery_capacity		= 50;
- static int battery_voltage		= 3300;
-+static int battery_current		= 1600;
- 
- static bool module_initialized;
- 
-@@ -101,6 +102,7 @@ static int test_power_get_battery_property(struct power_supply *psy,
- 		break;
- 	case POWER_SUPPLY_PROP_CAPACITY:
- 	case POWER_SUPPLY_PROP_CHARGE_NOW:
-+	case POWER_SUPPLY_PROP_CHARGE_COUNTER:
- 		val->intval = battery_capacity;
- 		break;
- 	case POWER_SUPPLY_PROP_CHARGE_FULL_DESIGN:
-@@ -117,6 +119,10 @@ static int test_power_get_battery_property(struct power_supply *psy,
- 	case POWER_SUPPLY_PROP_VOLTAGE_NOW:
- 		val->intval = battery_voltage;
- 		break;
-+	case POWER_SUPPLY_PROP_CURRENT_AVG:
-+	case POWER_SUPPLY_PROP_CURRENT_NOW:
-+		val->intval = battery_current;
-+		break;
- 	default:
- 		pr_info("%s: some properties deliberately report errors.\n",
- 			__func__);
-@@ -138,6 +144,7 @@ static enum power_supply_property test_power_battery_props[] = {
- 	POWER_SUPPLY_PROP_CHARGE_FULL_DESIGN,
- 	POWER_SUPPLY_PROP_CHARGE_FULL,
- 	POWER_SUPPLY_PROP_CHARGE_NOW,
-+	POWER_SUPPLY_PROP_CHARGE_COUNTER,
- 	POWER_SUPPLY_PROP_CAPACITY,
- 	POWER_SUPPLY_PROP_CAPACITY_LEVEL,
- 	POWER_SUPPLY_PROP_TIME_TO_EMPTY_AVG,
-@@ -147,6 +154,8 @@ static enum power_supply_property test_power_battery_props[] = {
- 	POWER_SUPPLY_PROP_SERIAL_NUMBER,
- 	POWER_SUPPLY_PROP_TEMP,
- 	POWER_SUPPLY_PROP_VOLTAGE_NOW,
-+	POWER_SUPPLY_PROP_CURRENT_AVG,
-+	POWER_SUPPLY_PROP_CURRENT_NOW,
- };
- 
- static char *test_power_ac_supplied_to[] = {
-@@ -450,6 +459,21 @@ static int param_set_battery_voltage(const char *key,
- 
- #define param_get_battery_voltage param_get_int
- 
-+static int param_set_battery_current(const char *key,
-+					const struct kernel_param *kp)
-+{
-+	int tmp;
-+
-+	if (1 != sscanf(key, "%d", &tmp))
-+		return -EINVAL;
-+
-+	battery_current = tmp;
-+	signal_power_supply_changed(test_power_supplies[TEST_BATTERY]);
-+	return 0;
-+}
-+
-+#define param_get_battery_current param_get_int
-+
- static const struct kernel_param_ops param_ops_ac_online = {
- 	.set = param_set_ac_online,
- 	.get = param_get_ac_online,
-@@ -490,6 +514,11 @@ static const struct kernel_param_ops param_ops_battery_voltage = {
- 	.get = param_get_battery_voltage,
- };
- 
-+static const struct kernel_param_ops param_ops_battery_current = {
-+	.set = param_set_battery_current,
-+	.get = param_get_battery_current,
-+};
-+
- #define param_check_ac_online(name, p) __param_check(name, p, void);
- #define param_check_usb_online(name, p) __param_check(name, p, void);
- #define param_check_battery_status(name, p) __param_check(name, p, void);
-@@ -498,6 +527,7 @@ static const struct kernel_param_ops param_ops_battery_voltage = {
- #define param_check_battery_health(name, p) __param_check(name, p, void);
- #define param_check_battery_capacity(name, p) __param_check(name, p, void);
- #define param_check_battery_voltage(name, p) __param_check(name, p, void);
-+#define param_check_battery_current(name, p) __param_check(name, p, void);
- 
- 
- module_param(ac_online, ac_online, 0644);
-@@ -528,6 +558,9 @@ MODULE_PARM_DESC(battery_capacity, "battery capacity (percentage)");
- module_param(battery_voltage, battery_voltage, 0644);
- MODULE_PARM_DESC(battery_voltage, "battery voltage (millivolts)");
- 
-+module_param(battery_current, battery_current, 0644);
-+MODULE_PARM_DESC(battery_current, "battery current (milliampere)");
-+
- MODULE_DESCRIPTION("Power supply driver for testing");
- MODULE_AUTHOR("Anton Vorontsov <cbouatmailru@gmail.com>");
- MODULE_LICENSE("GPL");
--- 
-2.18.0
+SGksIFN0YW5sZXkNClRoYW5rcyBmb3IgcmVwbHkuDQoNCj4NCj5PbiBNb24sIDIwMTktMDUtMTMg
+YXQgMTg6MjEgKzAwMDAsIEJlYW4gSHVvIChiZWFuaHVvKSB3cm90ZToNCj4+IEhpLCBTdGFubGV5
+DQo+Pg0KPj4gPisNCj4+ID4rc3RhdGljIGlubGluZSBib29sIHVmc2hjZF9pc19hdXRvX2hpYmVy
+bjhfZXJyb3Ioc3RydWN0IHVmc19oYmEgKmhiYSwNCj4+ID4rCQkJCQkJdTMyIGludHJfbWFzaykN
+Cj4+ID4rew0KPj4gPisJcmV0dXJuICh1ZnNoY2RfaXNfYXV0b19oaWJlcm44X3N1cHBvcnRlZCho
+YmEpICYmDQo+PiA+KwkJIWhiYS0+dWljX2FzeW5jX2RvbmUgJiYNCj4+DQo+PiBIZXJlIGNoZWNr
+IGlmIHVpY19hc3luY19kb25lIGlzIE5VTEwsIG5vIGJpZyBwcm9ibGVtIHNvIGZhciwgYnV0IG5v
+dCBzYWZlDQo+ZW5vdWdoLg0KPj4gSG93IGFib3V0IHNldHRpbmcgYSBmbGFnIGluIHVmc2hjZF9h
+dXRvX2hpYmVybjhfZW5hYmxlKCksDQo+DQo+Pg0KPj4gSSBjb25jZXJuIGFib3V0IGhvdyB0byBj
+b21wYXRpYmxlIHdpdGggYXV0b19oaWJlcm44IGRpc2FibGVkIGNvbmRpdGlvbi4NCj4NCj5DdXJy
+ZW50bHkgYXV0by1oaWJlcm44IGRpc2FibGluZyBtZXRob2QgaXMgbm90IGltcGxlbWVudGVkIGlu
+IG1haW5zdHJlYW0sDQo+c28gYW4gImVuYWJsaW5nIiBmbGFnIG1heSBsb29rcyByZWR1bmRhbnQg
+dW5sZXNzIGRpc2FibGluZyBwYXRoIGlzIHJlYWxseQ0KPmV4aXN0ZWQuDQo+DQpEaWQgeW91IHRy
+eSB0byB1cGRhdGUgQXV0by1IaWJlcm5hdGUgSWRsZSBUaW1lciB3aXRoIDAgdGhyb3VnaCAnL3N5
+cycgIChzY3NpOiB1ZnM6IEFkZCBzdXBwb3J0IGZvciBBdXRvLUhpYmVybmF0ZSBJZGxlIFRpbWVy
+KT8gDQpJIGRvbid0IGtub3cgaWYgdGhpcyB3aWxsIGRpc2FibGUgeW91ciBVRlMgY29udHJvbGxl
+ciBBdXRvLUhpYmVybmF0ZS4NCklmIGhhdmluZyBhIGxvb2sgYXQgVUZTIGhvc3QgU3BlYywgc29m
+dHdhcmUgd3JpdGVzIOKAnDDigJ0gdG8gZGlzYWJsZSBBdXRvLUhpYmVybmF0ZSBJZGxlIFRpbWVy
+Lg0KU29ycnkgSSBjYW5ub3QgdmVyaWZ5IHRoaXMgb24gbXkgcGxhdGZvcm0gc2luY2UgaXQgZG9l
+c24ndCBzdXBwb3J0IGF1dG8taGliZXJuYXRlLg0KDQoNCj5JIGFncmVlIHRoYXQgY2hlY2tpbmcg
+aGJhLT51aWNfYXN5bmNfZG9uZSBoZXJlIGRvZXMgbm90IGxvb2sgc28gaW50dWl0aXZlLg0KPkhv
+d2V2ZXIgZXZlbiBpZiBhdXRvLWhpYmVybjggaXMgZGlzYWJsZWQsIHRoZXNlIGNoZWNrcyBjb3Vs
+ZCBiZSBzYWZlIGVub3VnaA0KPmJlY2F1c2UgYm90aCAiVUlDX0hJQkVSTkFURV9FTlRFUiIgYW5k
+ICJVSUNfSElCRVJOQVRFX0VYSVQiIGFyZQ0KPnJhaXNlZCBvbmx5IGlmICJtYW51YWwtaGliZXJu
+YXRlIiBpcyBwZXJmb3JtZWQsIGFuZCBpbiB0aGlzIGNhc2UgaGJhLQ0KPj51aWNfYXN5bmNfZG9u
+ZSBzaGFsbCBiZSB0cnVlLg0KPg0KWWVzLCBtb3N0IG9mIGNhc2VzICx0aGlzIGlzIG5vIHByb2Js
+ZW0uDQoNCj5Bbnl0aGluZyBlbHNlIG9yIGNvcm5lciBjYXNlIEkgbWlzc2VkPw0KPg0KVGhlIG90
+aGVycyBhcmUgZmluZS4gSSBvbmx5IGNvbmNlcm4gY2hlY2tpbmcgaGJhLT51aWNfYXN5bmNfZG9u
+ZS4NCg0KLy9CZWFuDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3Rz
+LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9saW51eC1hcm0ta2VybmVsCg==
