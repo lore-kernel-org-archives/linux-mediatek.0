@@ -1,108 +1,114 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [RFC PATCH V1 1/6] dt-bindings: mt8183: Add binding for DIP
- shared memory
-Date: Tue, 14 May 2019 11:19:38 -0500
-Message-ID: <CAL_JsqKGW9WqyNgqKD0MxsqxYHKZ+VNV5A2p+neGqwmKmiODOQ@mail.gmail.com>
-References: <20190417104511.21514-1-frederic.chen@mediatek.com>
- <20190417104511.21514-2-frederic.chen@mediatek.com>
- <20190430011506.GA8514@bogus>
- <1557238925.11663.21.camel@mtksdccf07>
+Subject: Re: [PATCH v5 2/6] dt-bindings: usb: add binding for Type-B GPIO
+ connector driver
+Date: Tue, 14 May 2019 13:12:04 -0500
+Message-ID: <20190514181204.GA13949@bogus>
+References: <1557823643-8616-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1557823643-8616-3-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1557238925.11663.21.camel@mtksdccf07>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Frederic Chen <frederic.chen@mediatek.com>
-Cc: shik@chromium.org, devicetree@vger.kernel.org, Sean.Cheng@mediatek.com, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Rynn.Wu@mediatek.com, christie.yu@mediatek.com, srv_heupstream <srv_heupstream@mediatek.com>, holmes.chiou@mediatek.com, suleiman@chromium.org, Jerry-ch Chen <Jerry-ch.Chen@mediatek.com>, Tomasz Figa <tfiga@chromium.org>, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, Hans Verkuil <hans.verkuil@cisco.com>, zwisler@chromium.org, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, Linux Media Mailing List <linux-media@vger.kernel.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1557823643-8616-3-git-send-email-chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Biju Das <biju.das@bp.renesas.com>, Linus Walleij <linus.walleij@linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, May 7, 2019 at 9:22 AM Frederic Chen <frederic.chen@mediatek.com> wrote:
->
-> Dear Rob,
->
-> I appreciate your comments.
->
-> On Mon, 2019-04-29 at 20:15 -0500, Rob Herring wrote:
-> > On Wed, Apr 17, 2019 at 06:45:06PM +0800, Frederic Chen wrote:
-> > > This patch adds the binding for describing the shared memory
-> > > used to exchange configuration and tuning data between the
-> > > co-processor and Digital Image Processing (DIP) unit of the
-> > > camera ISP system on Mediatek SoCs.
-> > >
-> > > Signed-off-by: Frederic Chen <frederic.chen@mediatek.com>
-> > > ---
-> > >  .../mediatek,reserve-memory-dip_smem.txt      | 45 +++++++++++++++++++
-> > >  1 file changed, 45 insertions(+)
-> > >  create mode 100644 Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt
-> > >
-> > > diff --git a/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt b/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt
-> > > new file mode 100644
-> > > index 000000000000..64c001b476b9
-> > > --- /dev/null
-> > > +++ b/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt
-> > > @@ -0,0 +1,45 @@
-> > > +Mediatek DIP Shared Memory binding
-> > > +
-> > > +This binding describes the shared memory, which serves the purpose of
-> > > +describing the shared memory region used to exchange data between Digital
-> > > +Image Processing (DIP) and co-processor in Mediatek SoCs.
-> > > +
-> > > +The co-processor doesn't have the iommu so we need to use the physical
-> > > +address to access the shared buffer in the firmware.
-> > > +
-> > > +The Digital Image Processing (DIP) can access memory through mt8183 IOMMU so
-> > > +it can use dma address to access the memory region.
-> > > +(See iommu/mediatek,iommu.txt for the detailed description of Mediatek IOMMU)
-> > > +
-> > > +
-> > > +Required properties:
-> > > +
-> > > +- compatible: must be "mediatek,reserve-memory-dip_smem"
-> >
-> > Don't use '_'.
->
-> I got it. I will use "mediatek,reserve-memory-dip-smem" instead in next
-> version of the patch
->
-> >
-> > > +
-> > > +- reg: required for static allocation (see reserved-memory.txt for
-> > > +  the detailed usage)
-> > > +
-> > > +- alloc-range: required for dynamic allocation. The range must
-> > > +  between 0x00000400 and 0x100000000 due to the co-processer's
-> > > +  addressing limitation
-> >
-> > Generally, you should pick either static or dynamic allocation for a
-> > given binding. Static if there's some address restriction or sharing,
-> > dynamic if not.
-> >
-> > Sounds like static in this case.
-> >
->
-> DIP reserved memory has address restriction so it is the static case. I
-> would like to remove the dynamic allocation part and modify the
-> description as following:
->
-> - reg: required for DIP. The range must be between 0x00000400 and
->   0x100000000 due to the co-processor's addressing limitation.
->   The size must be 26MB. Please see reserved-memory.txt for the
->   detailed usage.
+On Tue, May 14, 2019 at 04:47:19PM +0800, Chunfeng Yun wrote:
+> It's used to support dual role switch via GPIO when use Type-B
+> receptacle, typically the USB ID pin is connected to an input
+> GPIO pin
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+> v5 changes:
+>  1. treat type-B connector as child device of USB controller's, but not
+>     as a separate virtual device, suggested by Rob
+>  2. put connector's port node under connector node, suggested by Rob
+> 
+> v4 no changes
+> 
+> v3 changes:
+>  1. treat type-B connector as a virtual device, but not child device of
+>     USB controller's
+> 
+> v2 changes:
+>   1. new patch to make binding clear suggested by Hans
+> ---
+>  .../bindings/usb/typeb-conn-gpio.txt          | 42 +++++++++++++++++++
+>  1 file changed, 42 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/usb/typeb-conn-gpio.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/usb/typeb-conn-gpio.txt b/Documentation/devicetree/bindings/usb/typeb-conn-gpio.txt
+> new file mode 100644
+> index 000000000000..20dd3499a348
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/usb/typeb-conn-gpio.txt
+> @@ -0,0 +1,42 @@
+> +USB Type-B GPIO Connector
+> +
+> +This is used to switch dual role mode from the USB ID pin connected to
+> +an input GPIO pin.
+> +
+> +Required properties:
+> +- compatible : should include "linux,typeb-conn-gpio" and "usb-b-connector".
 
-You can use dma-ranges to define addressing translations and
-restrictions like this. That will in turn set the device's dma-mask to
-ensure allocations are done in a region that is addressable.
+I don't think we need "linux,typeb-conn-gpio". A driver can decide to 
+handle GPIO lines if they present or we assume the parent device handles 
+ID and/or Vbus if they are not present.
 
-But if you have a known, fixed size, then a carve out with
-reserved-memory is fine.
+> +- id-gpios, vbus-gpios : either one of them must be present, and both
+> +	can be present as well.
 
-Rob
+Please clarify that vbus-gpios is an input to sense Vbus presence as an 
+output it should be modelled as a regulator only.
+
+These should be added to usb-connector.txt.
+
+The result of all this is you don't need this file. Just additions to 
+usb-connector.txt.
+
+> +- vbus-supply : can be present if needed when supports dual role mode or
+> +	host mode.
+> +	see connector/usb-connector.txt
+> +
+> +Sub-nodes:
+> +- port : should be present.
+> +	see graph.txt
+> +
+> +Example:
+> +
+> +&mtu3 {
+> +	status = "okay";
+
+Don't show status in examples.
+
+> +
+> +	connector {
+> +		compatible = "linux,typeb-conn-gpio", "usb-b-connector";
+> +		label = "micro-USB";
+> +		type = "micro";
+> +		id-gpios = <&pio 12 GPIO_ACTIVE_HIGH>;
+> +		vbus-supply = <&usb_p0_vbus>;
+> +
+> +		port {
+> +			bconn_ep: endpoint@0 {
+> +				remote-endpoint = <&usb_role_sw>;
+> +			};
+> +		};
+> +	};
+> +
+> +	port {
+> +		usb_role_sw: endpoint@0 {
+> +			remote-endpoint = <&bconn_ep>;
+> +		};
+> +	};
+
+When the host controller is the parent of the connector, you don't need 
+the graph unless you're describing the alternate modes in Type-C.
+
+> +};
+> -- 
+> 2.21.0
+> 
