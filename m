@@ -1,42 +1,37 @@
 From: Biao Huang <biao.huang@mediatek.com>
-Subject: [v2, PATCH 0/4] fix some bugs in stmmac
-Date: Tue, 14 May 2019 10:28:49 +0800
-Message-ID: <1557800933-30759-1-git-send-email-biao.huang@mediatek.com>
+Subject: [v2, PATCH 3/4] net: stmmac: write the modified value back to MTL_OPERATION_MODE
+Date: Tue, 14 May 2019 10:28:52 +0800
+Message-ID: <1557800933-30759-4-git-send-email-biao.huang@mediatek.com>
+References: <1557800933-30759-1-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1557800933-30759-1-git-send-email-biao.huang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Jose Abreu <joabreu@synopsys.com>, davem@davemloft.net
 Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, biao.huang@mediatek.com, jianguo.zhang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-changes in v2:                                                                  
-        1. update rx_tail_addr as Jose's comment                                
-        2. changes clk_csr condition as Alex's proposition                      
-        3. remove init lines in dwmac-mediatek, get clk_csr from dts instead.   
-                                                                                
-v1:                                                                             
-This series fix some bugs in stmmac driver                                      
-3 patches are for common stmmac or dwmac4:                                      
-        1. update rx tail pointer to fix rx dma hang issue.                     
-        2. change condition for mdc clock to fix csr_clk can't be zero issue.   
-        3. write the modified value back to MTL_OPERATION_MODE.                 
-1 patch is for dwmac-mediatek:                                                  
-        modify csr_clk value to fix mdio read/write fail issue for dwmac-mediatek
-                                                                                
-Biao Huang (4):                                                                 
-  net: stmmac: update rx tail pointer register to fix rx dma hang               
-    issue.                                                                      
-  net: stmmac: fix csr_clk can't be zero issue                                  
-  net: stmmac: write the modified value back to MTL_OPERATION_MODE              
-  net: stmmac: dwmac-mediatek: modify csr_clk value to fix mdio                 
-    read/write fail                                                             
-                                                                                
- .../net/ethernet/stmicro/stmmac/dwmac-mediatek.c   |    2 --                   
- drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c  |    2 ++                   
- drivers/net/ethernet/stmicro/stmmac/stmmac_main.c  |    7 ++++---              
- .../net/ethernet/stmicro/stmmac/stmmac_platform.c  |    5 ++++-                
- 4 files changed, 10 insertions(+), 6 deletions(-)                              
-                                                                                
---                                                                              
-1.7.9.5 
+The value of MTL_OPERATION_MODE is modified, and should
+be write back to the register.
+
+Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+---
+ drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c |    2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
+index 7e5d5db..b4bb562 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
+@@ -192,6 +192,8 @@ static void dwmac4_prog_mtl_tx_algorithms(struct mac_device_info *hw,
+ 	default:
+ 		break;
+ 	}
++
++	writel(value, ioaddr + MTL_OPERATION_MODE);
+ }
+ 
+ static void dwmac4_set_mtl_tx_queue_weight(struct mac_device_info *hw,
+-- 
+1.7.9.5
