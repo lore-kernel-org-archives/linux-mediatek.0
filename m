@@ -1,148 +1,150 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [RFC,V2,03/11] dt-bindings: mt8183: Added camera ISP Pass 1
-Date: Tue, 14 May 2019 14:54:17 -0500
-Message-ID: <20190514195417.GA21726@bogus>
-References: <jungo.lin@mediatek.com>
- <20190510015755.51495-4-jungo.lin@mediatek.com>
+From: Stephen Boyd <swboyd@chromium.org>
+Subject: Re: [PATCH 2/2] pinctrl: mediatek: Update cur_mask in mask/mask ops
+Date: Tue, 14 May 2019 13:14:36 -0700
+Message-ID: <155786487644.14659.17142525593824613967@swboyd.mtv.corp.google.com>
+References: <20190429035515.73611-1-drinkcat@chromium.org> <20190429035515.73611-3-drinkcat@chromium.org> <155778659317.14659.136626364818483852@swboyd.mtv.corp.google.com> <CANMq1KBMd7eR3dP=V9gJ6G4OgE6DsXad_gzvuNJ25_pee4+6eg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <20190510015755.51495-4-jungo.lin@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Jungo Lin <jungo.lin@mediatek.com>
-Cc: ryan.yu@mediatek.com, frankie.chiu@mediatek.com, laurent.pinchart+renesas@ideasonboard.com, Rynn.Wu@mediatek.com, suleiman@chromium.org, Jerry-ch.Chen@mediatek.com, hans.verkuil@cisco.com, frederic.chen@mediatek.com, seraph.huang@mediatek.com, linux-media@vger.kernel.org, devicetree@vger.kernel.org, shik@chromium.org, yuzhao@chromium.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, Sean.Cheng@mediatek.com, srv_heupstream@mediatek.com, sj.huang@mediatek.com, tfiga@chromium.org, christie.yu@mediatek.com, zwisler@chromium.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CANMq1KBMd7eR3dP=V9gJ6G4OgE6DsXad_gzvuNJ25_pee4+6eg@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Nicolas Boichat <drinkcat@chromium.org>
+Cc: "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-gpio@vger.kernel.org, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, lkml <linux-kernel@vger.kernel.org>, Chuanjia Liu <Chuanjia.Liu@mediatek.com>, Evan Green <evgreen@chromium.org>, Thomas Gleixner <tglx@linutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, May 10, 2019 at 09:57:52AM +0800, Jungo Lin wrote:
-> This patch adds DT binding document for the Pass 1 (P1) unit in
-> Mediatek's camera ISP system. The Pass 1 unit grabs the sensor data
-> out from the sensor interface, applies ISP image effects from tuning
-> data and outputs the image data or statistics data to DRAM.
-> 
-> Signed-off-by: Jungo Lin <jungo.lin@mediatek.com>
-> ---
->  .../bindings/media/mediatek,camisp.txt        | 92 +++++++++++++++++++
->  1 file changed, 92 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,camisp.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,camisp.txt b/Documentation/devicetree/bindings/media/mediatek,camisp.txt
-> new file mode 100644
-> index 000000000000..759e55a5dfac
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/mediatek,camisp.txt
-> @@ -0,0 +1,92 @@
-> +* Mediatek Image Signal Processor Pass 1 (ISP P1)
-> +
-> +The Pass 1 unit of Mediatek's camera ISP system grabs the sensor data out
-> +from the sensor interface, applies ISP effects from tuning data and outputs
-> +the image data and statistics data to DRAM. Furthermore, Pass 1 unit has
-> +the ability to output two different resolutions frames at the same time to
-> +increase the performance of the camera application.
-> +
-> +Required properties:
-> +- compatible: Must be "mediatek,mt8183-camisp" for MT8183.
-> +- reg: Must contain an entry for each entry in reg-names.
+Quoting Nicolas Boichat (2019-05-13 18:37:58)
+> On Tue, May 14, 2019 at 6:29 AM Stephen Boyd <swboyd@chromium.org> wrote:
+> >
+> > Quoting Nicolas Boichat (2019-04-28 20:55:15)
+> > > During suspend/resume, mtk_eint_mask may be called while
+> > > wake_mask is active. For example, this happens if a wake-source
+> > > with an active interrupt handler wakes the system:
+> > > irq/pm.c:irq_pm_check_wakeup would disable the interrupt, so
+> > > that it can be handled later on in the resume flow.
+> > >
+> > > However, this may happen before mtk_eint_do_resume is called:
+> > > in this case, wake_mask is loaded, and cur_mask is restored
+> > > from an older copy, re-enabling the interrupt, and causing
+> > > an interrupt storm (especially for level interrupts).
+> > >
+> > > Instead, we just record mask/unmask changes in cur_mask. This
+> > > also avoids the need to read the current mask in eint_do_suspend,
+> > > and we can remove mtk_eint_chip_read_mask function.
+> > >
+> > > Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
+> >
+> > It looks an awful lot like you should just use IRQCHIP_MASK_ON_SUSPEND
+> > here. Isn't that what's happening? All non-wake irqs should be masked at
+> > the hardware level so they can't cause a wakeup during suspend and on
+> > resume they can be unmasked?
+>=20
+> No, this is for an line that has both wake and interrupt enabled. To
+> reword the commit message above:
 
-Must list reg-names here and define the values. Though, I don't find 
-cam1, cam2, cam3 to be too useful.
+Is my understanding correct that there isn't a different "wake up"
+register that can be written to cause a GPIO to be configured to wake
+the system from suspend? The only way to do so is to leave the GPIO
+unmasked in the hardware by having EINT_EN[irq] =3D 1? And thus any
+interrupts that we don't want to wake us up during suspend should be
+masked in the hardware?=20
 
-> +- interrupts: interrupt number to the cpu.
-> +- iommus: shall point to the respective IOMMU block with master port
-> +  as argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
-> +  for details.
+If that's true, the code here that's trying to keep track of enabled
+irqs and wakeup enabled irqs can be replaced with the irqchip flag so
+that wakeup irqs are not masked while non-wakeups are masked.
 
-How many entries?
 
-> +- power-domains : a phandle to the power domain of this local arbiter.
-> +- clocks: device clocks, see
-> +  Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
-> +- clock-names: must be "CAMSYS_CAM_CGPDN" and "CAMSYS_CAMTG_CGPDN".
-> +- mediatek,larb: must contain the local arbiters in the current SOCs, see
-> +  Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
-> +  for details.
-> +- mediatek,scp : the node of system control processor (SCP), see
-> +  Documentation/devicetree/bindings/remoteproc/mtk,scp.txt for details.
-> +- memory-region : the reserved shared memory region between Pass 1 unit and
-> +  system control processor.
-> +
-> +Example:
-> +SoC specific DT entry:
-> +
-> +	camisp: camisp@1a000000 {
-> +		compatible = "mediatek,mt8183-camisp", "syscon";
-> +		reg = <0 0x1a000000 0 0x1000>,
-> +		      <0 0x1a003000 0 0x1000>,
-> +		      <0 0x1a004000 0 0x2000>,
-> +		      <0 0x1a006000 0 0x2000>;
-> +		reg-names = "camisp",
-> +		            "cam1",
-> +		            "cam2",
-> +		            "cam3";
-> +		interrupts = <GIC_SPI 253 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 254 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 255 IRQ_TYPE_LEVEL_LOW>;
-> +		interrupt-names = "cam1",
-> +				  "cam2",
-> +				  "cam3";
-> +		iommus = <&iommu M4U_PORT_CAM_LSCI0>,
-> +			 <&iommu M4U_PORT_CAM_LSCI1>,
-> +			 <&iommu M4U_PORT_CAM_BPCI>;
-> +		#clock-cells = <1>;
-> +		power-domains = <&scpsys MT8183_POWER_DOMAIN_CAM>;
-> +		/* Camera CCF */
-> +		clocks = <&camsys CLK_CAM_CAM>,
-> +			 <&camsys CLK_CAM_CAMTG>;
-> +		clock-names = "CAMSYS_CAM_CGPDN",
-> +			      "CAMSYS_CAMTG_CGPDN";
-> +		mediatek,larb = <&larb3>,
-> +				<&larb6>;
-> +		mediatek,scp = <&scp>;
-> +		memory-region = <&cam_mem_reserved>;
-> +	};
-> +
-> +Reserved memory specific DT entry (see reserved memory binding for more
-> +information):
-> +
-> +Example:
-> +SoC specific DT entry:
-> +
-> +	cam_mem_reserved: cam_mem_region {
-> +		compatible = "mediatek,reserve-memory-cam-smem";
-> +		no-map;
-> +		size = <0 0x01400000>; / *20 MB share mem size */
-> +		alignment = <0 0x1000>;
-> +		alloc-ranges = <0 0x40000000 0 0x10000000>;
-> +	};
-> +
-> +Mediatek ISP P1 supports a single port node with MIPI-CSI2 bus. It should
-> +contain one 'port' child node with child 'endpoint' node. Please refer to
-> +the bindings defined in Documentation/devicetree/bindings/media/video-interfaces.txt
-> +and Documentation/devicetree/bindings/media/mediatek-seninf.txt.
-> +
-> +Example:
-> +Board specific DT entry:
+>  1. cur_mask[irq] =3D 1; wake_mask[irq] =3D 1; EINT_EN[irq] =3D 1 (interr=
+upt
+> enabled at hardware level)
+>  2. System suspends, resumes due to that line (at this stage EINT_HW
+> =3D=3D wake_mask)
+>  3. irq_pm_check_wakeup is called, and disables the interrupt =3D>
+> EINT_EN[irq] =3D 0, but we still have cur_mask[irq] =3D 1
+>  4. mtk_eint_do_resume is called, and restores EINT_EN =3D cur_mask, so
+> it reenables EINT_EN[irq] =3D 1 =3D> interrupt storm.
+>=20
+> This patch fixes the issue in step 3. So that the interrupt can be
+> re-enabled properly later on, sometimes after mtk_eint_do_resume, when
+> the driver is ready to handle it.
 
-Don't split examples like this.
+Right, we'd rather not see irqchip drivers working around the genirq
+layer to do these things like tracking cur_mask and wake_mask. That
+leads to subtle bugs and makes the driver maintain state across the
+irqchip callbacks and system suspend/resume.
 
-> +
-> +	&camisp {
-> +		port@0 {
-> +			seninf_0: endpoint {
-> +				remote-endpoint = <&seninf_core>;
-> +			};
-> +		};
-> +	};
-> +
-> -- 
-> 2.18.0
-> 
+>=20
+> Also, IRQCHIP_MASK_ON_SUSPEND does not handle lines that are enabled
+> as a wake source, but without interrupt enabled (e.g. cros_ec driver
+> does that), which we do want to support.
+
+Hmm. I thought that even if the irq is disabled by a driver, that would
+be a lazy disable so it isn't really masked in the hardware. Then if an
+interrupt comes in during suspend on a wake configured irq line, the
+hardware will have left it unmasked because IRQCHIP_MASK_ON_SUSPEND in
+combination with lazy disable would mean that the line is left unmasked
+(ignoring whatever this mediatek driver is doing to mask and unmask in
+PM hooks).
+
+Just reading Documentation/power/suspend-and-interrupts.txt I'm led to
+believe that the cros_ec driver shouldn't call disable_irq() on the
+interrupt if it wants to wakeup from it:
+
+"Calling enable_irq_wake() causes suspend_device_irqs() to treat the
+given IRQ in a special way.  Namely, the IRQ remains enabled, by on the
+first interrupt it will be disabled, marked as pending and "suspended"
+so that it will be re-enabled by resume_device_irqs() during the
+subsequent system resume.  Also the PM core is notified about the event
+which causes the system suspend in progress to be aborted (that doesn't
+have to happen immediately, but at one of the points where the suspend
+thread looks for pending wakeup events)."
+
+I suppose the problem is an irq line disabled in hardware that has
+wakeup armed on it? Is this even valid? Shouldn't an irq be enabled for
+wakeup to work?
+
+We could immediately unmask those lines in the hardware when the
+set_wake() callback is called. That way the genirq layer can use the
+driver to do what it wants with the hardware and the driver can make
+sure that set_wake() will always cause the wakeup interrupt to be
+delivered to genirq even when software has disabled it.
+
+But I think that there might be a problem with how genirq understands
+the masked state of a line when the wakeup implementation conflates
+masked state with wakeup armed state. Consider this call-flow:
+
+	irq masked in hardware, IRQD_IRQ_MASKED is set
+	enable_irq_wake()
+	  unmask_irq in hardware
+	IRQD_WAKEUP_ARMED is set
+	<suspend and wakeup from irq>
+	handle_level_irq()
+	  mask_ack_irq()
+	    mask_irq()
+	      if (irqd_irq_masked()) -> returns true and skips masking!
+	    if (desc->irq_data.chip->irq_ack)
+	      ...
+	  irq_may_run()
+	    irq_pm_check_wakeup()
+	      irq_disable()
+	        mask_irq() -> does nothing again
+
+In the above flow, we never mask the irq because we thought it was
+already masked when it was disabled, but the irqchip implementation
+unmasked it to make wakeup work. Maybe we should always mask the irq if
+wakeup is armed and we're trying to call mask_irq()? Looks hacky.
+
+diff --git a/kernel/irq/chip.c b/kernel/irq/chip.c
+index 51128bea3846..20257d528880 100644
+--- a/kernel/irq/chip.c
++++ b/kernel/irq/chip.c
+@@ -411,7 +411,7 @@ static inline void mask_ack_irq(struct irq_desc *desc)
+=20
+ void mask_irq(struct irq_desc *desc)
+ {
+-	if (irqd_irq_masked(&desc->irq_data))
++	if (!irqd_is_wakeup_armed(&desc->irq_data) && irqd_irq_masked(&desc->irq_=
+data))
+ 		return;
+=20
+ 	if (desc->irq_data.chip->irq_mask) {
