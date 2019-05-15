@@ -1,137 +1,56 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH v5 2/6] dt-bindings: usb: add binding for Type-B GPIO
- connector driver
-Date: Wed, 15 May 2019 17:36:33 +0800
-Message-ID: <1557912993.10179.306.camel@mhfsdcap03>
-References: <1557823643-8616-1-git-send-email-chunfeng.yun@mediatek.com>
-         <1557823643-8616-3-git-send-email-chunfeng.yun@mediatek.com>
-         <20190514181204.GA13949@bogus>
+From: Stanley Chu <stanley.chu@mediatek.com>
+Subject: [PATCH v2 0/3] scsi: ufs: Add error handling of Auto-Hibernate
+Date: Wed, 15 May 2019 17:36:25 +0800
+Message-ID: <1557912988-26758-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190514181204.GA13949@bogus>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Biju Das <biju.das@bp.renesas.com>, Linus Walleij <linus.walleij@linaro.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com, pedrom.sousa@synopsys.com
+Cc: marc.w.gonzalez@free.fr, andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, evgreen@chromium.org, linux-mediatek@lists.infradead.org, peter.wang@mediatek.com, matthias.bgg@gmail.com, Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-05-14 at 13:12 -0500, Rob Herring wrote:
-> On Tue, May 14, 2019 at 04:47:19PM +0800, Chunfeng Yun wrote:
-> > It's used to support dual role switch via GPIO when use Type-B
-> > receptacle, typically the USB ID pin is connected to an input
-> > GPIO pin
-> > 
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > ---
-> > v5 changes:
-> >  1. treat type-B connector as child device of USB controller's, but not
-> >     as a separate virtual device, suggested by Rob
-> >  2. put connector's port node under connector node, suggested by Rob
-> > 
-> > v4 no changes
-> > 
-> > v3 changes:
-> >  1. treat type-B connector as a virtual device, but not child device of
-> >     USB controller's
-> > 
-> > v2 changes:
-> >   1. new patch to make binding clear suggested by Hans
-> > ---
-> >  .../bindings/usb/typeb-conn-gpio.txt          | 42 +++++++++++++++++++
-> >  1 file changed, 42 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/usb/typeb-conn-gpio.txt
-> > 
-> > diff --git a/Documentation/devicetree/bindings/usb/typeb-conn-gpio.txt b/Documentation/devicetree/bindings/usb/typeb-conn-gpio.txt
-> > new file mode 100644
-> > index 000000000000..20dd3499a348
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/usb/typeb-conn-gpio.txt
-> > @@ -0,0 +1,42 @@
-> > +USB Type-B GPIO Connector
-> > +
-> > +This is used to switch dual role mode from the USB ID pin connected to
-> > +an input GPIO pin.
-> > +
-> > +Required properties:
-> > +- compatible : should include "linux,typeb-conn-gpio" and "usb-b-connector".
-> 
-> I don't think we need "linux,typeb-conn-gpio". 
-Not all usb-b-connector child node need bind this driver, by adding the
-new compatible can avoid unnecessary binding.
+Currently auto-hibernate is activated if host supports
+auto-hibern8 capability. However error-handling is not implemented,
+which makes the feature somewhat risky.
 
-> A driver can decide to 
-> handle GPIO lines if they present
-Yes, the driver, e.g. USB controller driver can do it, but here I want
-to provide a common driver to handle this special case, like
-extcon-usb-gpio driver does, and try to keep transparency from USB
-controller driver. 
+If either "Hibernate Enter" or "Hibernate Exit" fail during
+auto-hibernate flow, the corresponding interrupt
+"UIC_HIBERNATE_ENTER" or "UIC_HIBERNATE_EXIT" shall be raised
+according to UFS specification.
 
->  or we assume the parent device handles 
-> ID and/or Vbus if they are not present.
-Yes, it will
-> 
-> > +- id-gpios, vbus-gpios : either one of them must be present, and both
-> > +	can be present as well.
-> 
-> Please clarify that vbus-gpios is an input to sense Vbus presence as an 
-> output it should be modelled as a regulator only.
-Ok, will add more description.
-> 
-> These should be added to usb-connector.txt.
-Already add them in [1/6].
-> 
-> The result of all this is you don't need this file. Just additions to 
-> usb-connector.txt.
-Here add more constrains for id-gpios and vbus-gpios, at least one
-should be present, although they are both optional, this is not true for
-some cases, so not suitable to add into usb-connector.txt.
-> 
-> > +- vbus-supply : can be present if needed when supports dual role mode or
-> > +	host mode.
-> > +	see connector/usb-connector.txt
-> > +
-> > +Sub-nodes:
-> > +- port : should be present.
-> > +	see graph.txt
-> > +
-> > +Example:
-> > +
-> > +&mtu3 {
-> > +	status = "okay";
-> 
-> Don't show status in examples.
-Ok, will drop it.
-> 
-> > +
-> > +	connector {
-> > +		compatible = "linux,typeb-conn-gpio", "usb-b-connector";
-> > +		label = "micro-USB";
-> > +		type = "micro";
-> > +		id-gpios = <&pio 12 GPIO_ACTIVE_HIGH>;
-> > +		vbus-supply = <&usb_p0_vbus>;
-> > +
-> > +		port {
-> > +			bconn_ep: endpoint@0 {
-> > +				remote-endpoint = <&usb_role_sw>;
-> > +			};
-> > +		};
-> > +	};
-> > +
-> > +	port {
-> > +		usb_role_sw: endpoint@0 {
-> > +			remote-endpoint = <&bconn_ep>;
-> > +		};
-> > +	};
-> 
-> When the host controller is the parent of the connector, you don't need 
-> the graph unless you're describing the alternate modes in Type-C.
-Ok, got it.
+This patch adds auto-hibernate error-handling:
 
-Thanks a lot.
+- Monitor "Hibernate Enter" and "Hibernate Exit" interrupts after
+  auto-hibernate feature is activated.
 
-> 
-> > +};
-> > -- 
-> > 2.21.0
-> > 
+- If fail happens, trigger error-handling just like "manual-hibernate"
+  fail and apply the same recovery flow: schedule UFS error handler in
+  ufshcd_check_errors(), and then do host reset and restore
+  in UFS error handler.
+
+v2:
+ - Fix sentences in commit message (Marc Gonzalez)
+ - Make "Auto-Hibernate" error detection more precise (Bean Huo)
+
+Stanley Chu (3):
+  scsi: ufs: Do not overwrite Auto-Hibernate timer
+  scsi: ufs: Add error-handling of Auto-Hibernate
+  scsi: ufs: Use re-factored Auto-Hibernate function
+
+ drivers/scsi/ufs/ufshcd.c | 33 ++++++++++++++++++++++++++++++++-
+ drivers/scsi/ufs/ufshcd.h |  5 +++++
+ drivers/scsi/ufs/ufshci.h |  3 +++
+ 3 files changed, 40 insertions(+), 1 deletion(-)
+
+-- 
+2.18.0
