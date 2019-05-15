@@ -1,137 +1,108 @@
-From: Tom Murphy <tmurphy@arista.com>
-Subject: Re: [PATCH v3 2/4] iommu/dma-iommu: Handle deferred devices
-Date: Wed, 15 May 2019 13:46:43 +0100
-Message-ID: <CAPL0++5AUyVHexpsE86PfXxmQgDHfxjSSoAAGXM5c7Mdix=OZQ@mail.gmail.com>
-References: <20190506185207.31069-1-tmurphy@arista.com> <20190506185207.31069-3-tmurphy@arista.com>
- <20190507064000.GB5173@infradead.org>
+From: Jungo Lin <jungo.lin@mediatek.com>
+Subject: Re: [RFC, V2, 06/11] media: platform: Add Mediatek ISP P1 image &
+ meta formats
+Date: Wed, 15 May 2019 20:49:39 +0800
+Message-ID: <1557924579.5721.5.camel@mtksdccf07>
+References: <Jungo Lin <jungo.lin@mediatek.com>
+ <20190510015755.51495-7-jungo.lin@mediatek.com>
+ <5aad30f8-04b0-e3f1-e1d1-def349fd2974@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190507064000.GB5173@infradead.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Christoph Hellwig <hch@infradead.org>
-Cc: iommu@lists.linux-foundation.org, Tom Murphy <murphyt7@tcd.ie>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.ker
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <5aad30f8-04b0-e3f1-e1d1-def349fd2974@xs4all.nl>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Hans Verkuil <hverkuil@xs4all.nl>
+Cc: ryan.yu@mediatek.com, frankie.chiu@mediatek.com, laurent.pinchart+renesas@ideasonboard.com, Rynn.Wu@mediatek.com, suleiman@chromium.org, Jerry-ch.Chen@mediatek.com, hans.verkuil@cisco.com, frederic.chen@mediatek.com, seraph.huang@mediatek.com, linux-media@vger.kernel.org, devicetree@vger.kernel.org, sj.huang@mediatek.com, yuzhao@chromium.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, Sean.Cheng@mediatek.com, srv_heupstream@mediatek.com, shik@chromium.org, tfiga@chromium.org, christie.yu@mediatek.com, zwisler@chromium.org
 List-Id: linux-mediatek@lists.infradead.org
 
-like this?
+Hi, Hans:
 
-In that case we need to add a call to iommu_dma_alloc_remap.
+Thanks for your comments.
 
->From 862aeebb601008cf863e3aff4ff8ed7cefebeefa Mon Sep 17 00:00:00 2001
-From: Tom Murphy <tmurphy@tmurphy-419tom-0.sjc.aristanetworks.com>
-Date: Wed, 15 May 2019 05:43:25 -0700
-Subject: [PATCH] iommu/dma-iommu: Handle deferred devices
+On Mon, 2019-05-13 at 10:35 +0200, Hans Verkuil wrote:
+> On 5/10/19 3:57 AM, Jungo Lin wrote:
+> > Add packed/unpacked/full-g bayer format with 8/10/12/14 bit
+> > for image output. Add Pass 1 (P1) specific meta formats for
+> > parameter processing and 3A/other statistics.
+> 
+> These pixel formats will need to be documented in Documentation/media/uapi/v4l/pixfmt-<something>.rst.
+> 
 
-Handle devices which defer their attach to the iommu in the dma-iommu api
+Ok, we will add these pixfmt-<something>.rst files in next patch to
+explain these pixel formats.
 
-Signed-off-by: Tom Murphy <tmurphy@arista.com>
----
- drivers/iommu/dma-iommu.c | 27 ++++++++++++++++++++++++++-
- 1 file changed, 26 insertions(+), 1 deletion(-)
+> > 
+> > Signed-off-by: Jungo Lin <jungo.lin@mediatek.com>
+> > ---
+> >  include/uapi/linux/videodev2.h | 20 ++++++++++++++++++++
+> >  1 file changed, 20 insertions(+)
+> > 
+> > diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+> > index 1db220da3bcc..b79046d2d812 100644
+> > --- a/include/uapi/linux/videodev2.h
+> > +++ b/include/uapi/linux/videodev2.h
+> > @@ -711,6 +711,20 @@ struct v4l2_pix_format {
+> >  #define V4L2_PIX_FMT_IPU3_SGRBG10	v4l2_fourcc('i', 'p', '3', 'G') /* IPU3 packed 10-bit GRBG bayer */
+> >  #define V4L2_PIX_FMT_IPU3_SRGGB10	v4l2_fourcc('i', 'p', '3', 'r') /* IPU3 packed 10-bit RGGB bayer */
+> >  
+> > +/* Vendor specific - Mediatek ISP compressed formats */
+> > +#define V4L2_PIX_FMT_MTISP_U8	v4l2_fourcc('M', 'T', 'U', '8') /* Unpacked bayer format, 16-bit */
+> > +#define V4L2_PIX_FMT_MTISP_U10  v4l2_fourcc('M', 'T', 'U', 'A') /* Unpacked bayer format, 16-bit */
+> > +#define V4L2_PIX_FMT_MTISP_U12  v4l2_fourcc('M', 'T', 'U', 'C') /* Unpacked bayer format, 16-bit */
+> > +#define V4L2_PIX_FMT_MTISP_U14  v4l2_fourcc('M', 'T', 'U', 'E') /* Unpacked bayer format, 16-bit */
+> > +#define V4L2_PIX_FMT_MTISP_B8	v4l2_fourcc('M', 'T', 'B', '8') /* Packed   bayer format,  8-bit */
+> > +#define V4L2_PIX_FMT_MTISP_B10  v4l2_fourcc('M', 'T', 'B', 'A') /* Packed   bayer format, 10-bit */
+> > +#define V4L2_PIX_FMT_MTISP_B12  v4l2_fourcc('M', 'T', 'B', 'C') /* Packed   bayer format, 12-bit */
+> > +#define V4L2_PIX_FMT_MTISP_B14  v4l2_fourcc('M', 'T', 'B', 'E') /* Packed   bayer format, 14-bit */
+> > +#define V4L2_PIX_FMT_MTISP_F8	v4l2_fourcc('M', 'T', 'F', '8') /* Full-G   bayer format,  8-bit */
+> > +#define V4L2_PIX_FMT_MTISP_F10  v4l2_fourcc('M', 'T', 'F', 'A') /* Full-G   bayer format, 10-bit */
+> > +#define V4L2_PIX_FMT_MTISP_F12  v4l2_fourcc('M', 'T', 'F', 'C') /* Full-G   bayer format, 12-bit */
+> > +#define V4L2_PIX_FMT_MTISP_F14  v4l2_fourcc('M', 'T', 'F', 'E') /* Full-G   bayer format, 14-bit */
+> 
+> Are these all compressed formats? What sort of compression is used? Can software unpack it,
+> or this is meant to be fed to other mediatek hardware blocks?
+> 
 
-diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
-index 7f313cfa9..a48ae906d 100644
---- a/drivers/iommu/dma-iommu.c
-+++ b/drivers/iommu/dma-iommu.c
-@@ -22,6 +22,7 @@
- #include <linux/pci.h>
- #include <linux/scatterlist.h>
- #include <linux/vmalloc.h>
-+#include <linux/crash_dump.h>
+No, these are not compressed formats. These images could be unpacked by
+software, not depended on Mediatek hardware blocks.
 
- struct iommu_dma_msi_page {
-     struct list_head    list;
-@@ -323,6 +324,21 @@ static int iommu_dma_init_domain(struct
-iommu_domain *domain, dma_addr_t base,
-     return iova_reserve_iommu_regions(dev, domain);
- }
-
-+static int handle_deferred_device(struct device *dev,
-+        struct iommu_domain *domain)
-+{
-+    const struct iommu_ops *ops = domain->ops;
-+
-+    if (!is_kdump_kernel())
-+        return 0;
-+
-+    if (unlikely(ops->is_attach_deferred &&
-+            ops->is_attach_deferred(domain, dev)))
-+        return iommu_attach_device(domain, dev);
-+
-+    return 0;
-+}
-+
- /**
-  * dma_info_to_prot - Translate DMA API directions and attributes to IOMMU API
-  *                    page flags.
-@@ -432,6 +448,9 @@ static dma_addr_t __iommu_dma_map(struct device
-*dev, phys_addr_t phys,
-     size_t iova_off = 0;
-     dma_addr_t iova;
-
-+    if (unlikely(handle_deferred_device(dev, domain)))
-+        return DMA_MAPPING_ERROR;
-+
-     if (cookie->type == IOMMU_DMA_IOVA_COOKIE) {
-         iova_off = iova_offset(&cookie->iovad, phys);
-         size = iova_align(&cookie->iovad, size + iova_off);
-@@ -609,6 +628,9 @@ static void *iommu_dma_alloc_remap(struct device
-*dev, size_t size,
-     dma_addr_t iova;
-     void *vaddr;
-
-+    if (unlikely(handle_deferred_device(dev, domain)))
-+        return DMA_MAPPING_ERROR;
-+
-     *dma_handle = DMA_MAPPING_ERROR;
-
-     min_size = alloc_sizes & -alloc_sizes;
-@@ -836,7 +858,7 @@ static dma_addr_t iommu_dma_map_page(struct device
-*dev, struct page *page,
-     bool coherent = dev_is_dma_coherent(dev);
-     dma_addr_t dma_handle;
-
--    dma_handle =__iommu_dma_map(dev, phys, size,
-+    dma_handle = __iommu_dma_map(dev, phys, size,
-             dma_info_to_prot(dir, coherent, attrs),
-             iommu_get_dma_domain(dev));
-     if (!coherent && !(attrs & DMA_ATTR_SKIP_CPU_SYNC) &&
-@@ -954,6 +976,9 @@ static int iommu_dma_map_sg(struct device *dev,
-struct scatterlist *sg,
-     unsigned long mask = dma_get_seg_boundary(dev);
-     int i;
-
-+    if (unlikely(handle_deferred_device(dev, domain)))
-+        return 0;
-+
-     if (!(attrs & DMA_ATTR_SKIP_CPU_SYNC))
-         iommu_dma_sync_sg_for_device(dev, sg, nents, dir);
-
--- 
-2.20.0
-
-On Tue, May 7, 2019 at 7:40 AM Christoph Hellwig <hch@infradead.org> wrote:
->
-> On Mon, May 06, 2019 at 07:52:04PM +0100, Tom Murphy wrote:
-> > +static int handle_deferred_device(struct device *dev)
-> > +{
-> > +     struct iommu_domain *domain;
-> > +     const struct iommu_ops *ops;
 > > +
-> > +     if (!is_kdump_kernel())
-> > +             return 0;
-> > +
-> > +     domain = iommu_get_domain_for_dev(dev);
->
-> > -     dma_handle =__iommu_dma_map(dev, phys, size,
-> > +     if (unlikely(handle_deferred_device(dev)))
-> > +             return DMA_MAPPING_ERROR;
-> > +
-> > +     dma_handle = __iommu_dma_map(dev, phys, size,
->
-> __iommu_dma_map already looks up the domain, and as far as I can
-> tell all callers need the handle_deferred_device call.  Should we
-> just move it to there and pass the domain from the caller?
->
-> Also shouldn't the iommu_attach_device call inside
-> handle_deferred_device also get an unlikely marker?
+> >  /* SDR formats - used only for Software Defined Radio devices */
+> >  #define V4L2_SDR_FMT_CU8          v4l2_fourcc('C', 'U', '0', '8') /* IQ u8 */
+> >  #define V4L2_SDR_FMT_CU16LE       v4l2_fourcc('C', 'U', '1', '6') /* IQ u16le */
+> > @@ -732,6 +746,12 @@ struct v4l2_pix_format {
+> >  #define V4L2_META_FMT_VSP1_HGT    v4l2_fourcc('V', 'S', 'P', 'T') /* R-Car VSP1 2-D Histogram */
+> >  #define V4L2_META_FMT_UVC         v4l2_fourcc('U', 'V', 'C', 'H') /* UVC Payload Header metadata */
+> >  #define V4L2_META_FMT_D4XX        v4l2_fourcc('D', '4', 'X', 'X') /* D4XX Payload Header metadata */
+> > +/* Vendor specific - Mediatek ISP parameters for firmware */
+> > +#define V4L2_META_FMT_MTISP_PARAMS v4l2_fourcc('M', 'T', 'f', 'p') /* ISP tuning parameters */
+> > +#define V4L2_META_FMT_MTISP_3A	   v4l2_fourcc('M', 'T', 'f', 'a') /* AE/AWB histogram */
+> > +#define V4L2_META_FMT_MTISP_AF	   v4l2_fourcc('M', 'T', 'f', 'f') /* AF histogram */
+> > +#define V4L2_META_FMT_MTISP_LCS	   v4l2_fourcc('M', 'T', 'f', 'c') /* Local contrast enhanced statistics */
+> > +#define V4L2_META_FMT_MTISP_LMV	   v4l2_fourcc('M', 'T', 'f', 'm') /* Local motion vector histogram */
+> 
+> The documentation for these meta formats either needs to point to
+> freely available mediatek documentation (i.e. no NDA needed), or it
+> has to be documented in a header or in the pixelformat documentation.
+> 
+
+Ok, we are under internal discussion how to export these meta
+information.
+
+> Regards,
+> 
+> 	Hans
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
