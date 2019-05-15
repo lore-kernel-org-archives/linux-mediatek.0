@@ -1,53 +1,47 @@
-From: Jungo Lin <jungo.lin@mediatek.com>
-Subject: Re: [RFC,V2,01/11] dt-bindings: mt8183: Add binding for ISP Pass 1
- reserved memory
-Date: Wed, 15 May 2019 21:02:55 +0800
-Message-ID: <1557925375.5721.7.camel@mtksdccf07>
-References: <jungo.lin@mediatek.com>
- <20190510015755.51495-2-jungo.lin@mediatek.com>
- <20190514195052.GA3314@bogus>
+From: Fabien Parent <fparent@baylibre.com>
+Subject: [PATCH v3 0/5] mt6392: Add support for MediaTek MT6392 PMIC
+Date: Wed, 15 May 2019 15:17:36 +0200
+Message-ID: <20190515131741.17294-1-fparent@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190514195052.GA3314@bogus>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh@kernel.org>
-Cc: ryan.yu@mediatek.com, frankie.chiu@mediatek.com, laurent.pinchart+renesas@ideasonboard.com, Rynn.Wu@mediatek.com, suleiman@chromium.org, Jerry-ch.Chen@mediatek.com, hans.verkuil@cisco.com, frederic.chen@mediatek.com, seraph.huang@mediatek.com, linux-media@vger.kernel.org, devicetree@vger.kernel.org, shik@chromium.org, yuzhao@chromium.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, Sean.Cheng@mediatek.com, srv_heupstream@mediatek.com, sj.huang@mediatek.com, tfiga@chromium.org, christie.yu@mediatek.com, zwisler@chromium.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: robh+dt@kernel.org, mark.rutland@arm.com, matthias.bgg@gmail.com
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Fabien Parent <fparent@baylibre.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Rob:
+This patch series aims at bringing support for the MediaTek MT6392 PMIC. This
+PMIC is used on the MT8516 Pumpkin board.
 
-Thanks for your comments.
+This patch series adds support for the following features:
+ * PMIC keys
+ * regulator
+ * RTC
 
-On Tue, 2019-05-14 at 14:50 -0500, Rob Herring wrote:
-> On Fri, May 10, 2019 at 09:57:47AM +0800, Jungo Lin wrote:
-> > This patch adds the binding for describing the reserved
-> > shared memory used to exchange ISP configuration and tuning
-> > data between the co-processor and Pass 1 (P1) unit of the
-> > camera ISP system on Mediatek SoCs.
-> > 
-> > Signed-off-by: Jungo Lin <jungo.lin@mediatek.com>
-> > ---
-> >  .../mediatek,reserve-memory-cam-smem.txt      | 42 +++++++++++++++++++
-> >  1 file changed, 42 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-cam-smem.txt
-> 
-> See my comments on the other 2 camera related reserved-memory bindings.
-> 
+Fabien Parent (5):
+  dt-bindings: regulator: add support for MT6392
+  regulator: mt6392: Add support for MT6392 regulator
+  dt-bindings: mfd: mt6397: Add bindings for MT6392 PMIC
+  mfd: mt6397: Add support for MT6392 pmic
+  arm64: dts: mt6392: Add PMIC mt6392 dtsi
 
-Ok, we will align DIP & FD drivers's implementation.
+ .../devicetree/bindings/mfd/mt6397.txt        |  12 +-
+ .../bindings/regulator/mt6392-regulator.txt   | 220 ++++++++
+ arch/arm64/boot/dts/mediatek/mt6392.dtsi      | 208 ++++++++
+ drivers/mfd/mt6397-core.c                     |  55 ++
+ drivers/regulator/Kconfig                     |   9 +
+ drivers/regulator/Makefile                    |   1 +
+ drivers/regulator/mt6392-regulator.c          | 490 ++++++++++++++++++
+ include/linux/mfd/mt6392/core.h               |  42 ++
+ include/linux/mfd/mt6392/registers.h          | 487 +++++++++++++++++
+ include/linux/regulator/mt6392-regulator.h    |  40 ++
+ 10 files changed, 1562 insertions(+), 2 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/regulator/mt6392-regulator.txt
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6392.dtsi
+ create mode 100644 drivers/regulator/mt6392-regulator.c
+ create mode 100644 include/linux/mfd/mt6392/core.h
+ create mode 100644 include/linux/mfd/mt6392/registers.h
+ create mode 100644 include/linux/regulator/mt6392-regulator.h
 
-Best regards,
-
-Jungo
-
-> Rob
+-- 
+2.20.1
