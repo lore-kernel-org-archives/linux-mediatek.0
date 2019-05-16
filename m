@@ -1,156 +1,126 @@
-From: Nicolas Boichat <drinkcat@chromium.org>
-Subject: Re: [PATCH 4/4] serial: 8250-mtk: modify uart DMA rx
-Date: Wed, 15 May 2019 21:48:52 +0800
-Message-ID: <CANMq1KDTyu48joV6uMksGBMz9EmjFH9SEpGAm93YCZ40jxgBpQ@mail.gmail.com>
-References: <1556336193-15198-1-git-send-email-long.cheng@mediatek.com> <1556336193-15198-5-git-send-email-long.cheng@mediatek.com>
+From: Daoyuan Huang <daoyuan.huang@mediatek.com>
+Subject: [RFC v2 0/4] media: mediatek: support mdp3 on mt8183 platform
+Date: Thu, 16 May 2019 11:23:28 +0800
+Message-ID: <20190516032332.56844-1-daoyuan.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1556336193-15198-5-git-send-email-long.cheng@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Long Cheng <long.cheng@mediatek.com>
-Cc: Vinod Koul <vkoul@kernel.org>, Randy Dunlap <rdunlap@infradead.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Dan Williams <dan.j.williams@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>, Sean Wang <sean.wang@mediatek.com>, dmaengine@vger.kernel.org, devicetree@vger.kernel.org, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, lkml <linux-kernel@vger.kernel.org>, linux-serial@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, Yingjoe Chen <yingjoe.chen@medi>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: hans.verkuil@cisco.com, laurent.pinchart+renesas@ideasonboard.com, tfiga@chromium.org, matthias.bgg@gmail.com, mchehab@kernel.org
+Cc: devicetree@vger.kernel.org, Sean.Cheng@mediatek.com, Rynn.Wu@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, Jerry-ch.Chen@mediatek.com, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, linux-mediatek@lists.infradead.org, zwisler@chromium.org, christie.yu@mediatek.com, frederic.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, Apr 27, 2019 at 11:36 AM Long Cheng <long.cheng@mediatek.com> wrote:
->
-> Modify uart rx and complete for DMA.
+Hi,
 
-I don't know much about the DMA framework, but can you please explain
-why you are making the changes in this CL? I see that you are dropping
-dma_sync_single_for_device calls, for example, why?
+This is the first version of RFC patch for Media Data Path 3 (MDP3),
+MDP3 is used for scaling and color format conversion.
+support using GCE to write register in critical time limitation.
+support V4L2 m2m device control.
 
->
-> Signed-off-by: Long Cheng <long.cheng@mediatek.com>
-> ---
->  drivers/tty/serial/8250/8250_mtk.c |   53 ++++++++++++++++--------------------
->  1 file changed, 23 insertions(+), 30 deletions(-)
->
-> diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-> index c1fdbc0..04081a6 100644
-> --- a/drivers/tty/serial/8250/8250_mtk.c
-> +++ b/drivers/tty/serial/8250/8250_mtk.c
-> @@ -30,7 +30,6 @@
->  #define MTK_UART_DMA_EN_TX     0x2
->  #define MTK_UART_DMA_EN_RX     0x5
->
-> -#define MTK_UART_TX_SIZE       UART_XMIT_SIZE
->  #define MTK_UART_RX_SIZE       0x8000
->  #define MTK_UART_TX_TRIGGER    1
->  #define MTK_UART_RX_TRIGGER    MTK_UART_RX_SIZE
-> @@ -64,28 +63,30 @@ static void mtk8250_dma_rx_complete(void *param)
->         struct mtk8250_data *data = up->port.private_data;
->         struct tty_port *tty_port = &up->port.state->port;
->         struct dma_tx_state state;
-> +       int copied, cnt, tmp;
->         unsigned char *ptr;
-> -       int copied;
->
-> -       dma_sync_single_for_cpu(dma->rxchan->device->dev, dma->rx_addr,
-> -                               dma->rx_size, DMA_FROM_DEVICE);
-> +       if (data->rx_status == DMA_RX_SHUTDOWN)
-> +               return;
->
->         dmaengine_tx_status(dma->rxchan, dma->rx_cookie, &state);
-> +       cnt = dma->rx_size - state.residue;
-> +       tmp = cnt;
+Changes since v1:
+- modify code for CMDQ v3 API support
+- EC ipi cmd migration
+- fix compliance test fail item (m2m cmd with -f)
+due to there is two problem in runing all format(-f) cmd:
+1. out of memory before test complete
+	Due to capture buffer mmap (refcount + 1) after reqbuf but seems
+	no corresponding munmap called before device close.
+	There are total 12XX items(formats) in format test and each format
+	alloc 8 capture/output buffers.
+2. unceasingly captureBufs() (randomly)
+	Seems the break statement didn't catch the count == 0 situation:
+	In v4l2-test-buffers.cpp, function: captureBufs()
+			...
+			count--;
+			if (!node->is_m2m && !count)
+				break;
+	Log is as attachment
 
-I ponder, maybe we should rename cnt to left? (like, how many bytes
-are left to transfer, in total) Or maybe "total"
-Then maybe rename tmp to cnt.
+I will paste the test result with problem part in another e-mail
 
->
-> -       if (data->rx_status == DMA_RX_SHUTDOWN)
-> -               return;
-> +       if ((data->rx_pos + cnt) > dma->rx_size)
-> +               tmp = dma->rx_size - data->rx_pos;
 
-Maybe replace this and the line above:
-tmp = max_t(int, cnt, dma->rx_size - data->rx_pos);
 
->
-> -       if ((data->rx_pos + state.residue) <= dma->rx_size) {
-> -               ptr = (unsigned char *)(data->rx_pos + dma->rx_buf);
-> -               copied = tty_insert_flip_string(tty_port, ptr, state.residue);
-> -       } else {
-> -               ptr = (unsigned char *)(data->rx_pos + dma->rx_buf);
-> -               copied = tty_insert_flip_string(tty_port, ptr,
-> -                                               dma->rx_size - data->rx_pos);
-> +       ptr = (unsigned char *)(data->rx_pos + dma->rx_buf);
-> +       copied = tty_insert_flip_string(tty_port, ptr, tmp);
-> +       data->rx_pos += tmp;
-> +
-> +       if (cnt > tmp) {
->                 ptr = (unsigned char *)(dma->rx_buf);
-> -               copied += tty_insert_flip_string(tty_port, ptr,
-> -                               data->rx_pos + state.residue - dma->rx_size);
-> +               tmp = cnt - tmp;
-> +               copied += tty_insert_flip_string(tty_port, ptr, tmp);
-> +               data->rx_pos = tmp;
->         }
-> +
->         up->port.icount.rx += copied;
->
->         tty_flip_buffer_push(tty_port);
-> @@ -96,9 +97,7 @@ static void mtk8250_dma_rx_complete(void *param)
->  static void mtk8250_rx_dma(struct uart_8250_port *up)
->  {
->         struct uart_8250_dma *dma = up->dma;
-> -       struct mtk8250_data *data = up->port.private_data;
->         struct dma_async_tx_descriptor  *desc;
-> -       struct dma_tx_state      state;
->
->         desc = dmaengine_prep_slave_single(dma->rxchan, dma->rx_addr,
->                                            dma->rx_size, DMA_DEV_TO_MEM,
-> @@ -113,12 +112,6 @@ static void mtk8250_rx_dma(struct uart_8250_port *up)
->
->         dma->rx_cookie = dmaengine_submit(desc);
->
-> -       dmaengine_tx_status(dma->rxchan, dma->rx_cookie, &state);
-> -       data->rx_pos = state.residue;
-> -
-> -       dma_sync_single_for_device(dma->rxchan->device->dev, dma->rx_addr,
-> -                                  dma->rx_size, DMA_FROM_DEVICE);
-> -
->         dma_async_issue_pending(dma->rxchan);
->  }
->
-> @@ -131,13 +124,13 @@ static void mtk8250_dma_enable(struct uart_8250_port *up)
->         if (data->rx_status != DMA_RX_START)
->                 return;
->
-> -       dma->rxconf.direction           = DMA_DEV_TO_MEM;
-> -       dma->rxconf.src_addr_width      = dma->rx_size / 1024;
-> -       dma->rxconf.src_addr            = dma->rx_addr;
-> +       dma->rxconf.direction                           = DMA_DEV_TO_MEM;
-> +       dma->rxconf.src_port_window_size        = dma->rx_size;
-> +       dma->rxconf.src_addr                            = dma->rx_addr;
->
-> -       dma->txconf.direction           = DMA_MEM_TO_DEV;
-> -       dma->txconf.dst_addr_width      = MTK_UART_TX_SIZE / 1024;
-> -       dma->txconf.dst_addr            = dma->tx_addr;
-> +       dma->txconf.direction                           = DMA_MEM_TO_DEV;
-> +       dma->txconf.dst_port_window_size        = UART_XMIT_SIZE;
-> +       dma->txconf.dst_addr                            = dma->tx_addr;
->
->         serial_out(up, UART_FCR, UART_FCR_ENABLE_FIFO | UART_FCR_CLEAR_RCVR |
->                 UART_FCR_CLEAR_XMIT);
-> @@ -217,7 +210,7 @@ static void mtk8250_shutdown(struct uart_port *port)
->          * Mediatek UARTs use an extra highspeed register (UART_MTK_HIGHS)
->          *
->          * We need to recalcualte the quot register, as the claculation depends
-> -        * on the vaule in the highspeed register.
-> +        * on the value in the highspeed register.
+---
+Based on v5.0-rc1 and these series:
+device tree:
+http://lists.infradead.org/pipermail/linux-mediatek/2019-February/017570.html
+clock control:
+http://lists.infradead.org/pipermail/linux-mediatek/2019-February/017320.html
+system control processor (SCP):
+http://lists.infradead.org/pipermail/linux-mediatek/2019-February/017774.html
+global command engine (GCE):
+http://lists.infradead.org/pipermail/linux-mediatek/2019-January/017143.html
+---
 
-Since you're doing some cosmetic changes here, you might as well fix
-recalcualte => recalculate and claculation => calculation on the line
-above.
+daoyuan huang (4):
+  dt-binding: mt8183: Add Mediatek MDP3 dt-bindings
+  dts: arm64: mt8183: Add Mediatek MDP3 nodes
+  media: platform: Add Mediatek MDP3 driver KConfig
+  media: platform: mtk-mdp3: Add Mediatek MDP3 driver
 
-But technically, this should belong in another patch...
+ .../bindings/media/mediatek,mt8183-mdp3.txt   |  217 +++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi      |  173 +++
+ drivers/media/platform/Kconfig                |   18 +
+ drivers/media/platform/Makefile               |    2 +
+ drivers/media/platform/mtk-mdp3/Makefile      |    9 +
+ drivers/media/platform/mtk-mdp3/isp_reg.h     |   38 +
+ .../media/platform/mtk-mdp3/mdp-platform.h    |   67 +
+ .../media/platform/mtk-mdp3/mdp_reg_ccorr.h   |   76 +
+ .../media/platform/mtk-mdp3/mdp_reg_rdma.h    |  207 +++
+ drivers/media/platform/mtk-mdp3/mdp_reg_rsz.h |  110 ++
+ .../media/platform/mtk-mdp3/mdp_reg_wdma.h    |  126 ++
+ .../media/platform/mtk-mdp3/mdp_reg_wrot.h    |  116 ++
+ .../media/platform/mtk-mdp3/mmsys_config.h    |  189 +++
+ drivers/media/platform/mtk-mdp3/mmsys_mutex.h |   36 +
+ .../media/platform/mtk-mdp3/mmsys_reg_base.h  |   39 +
+ drivers/media/platform/mtk-mdp3/mtk-img-ipi.h |  282 ++++
+ .../media/platform/mtk-mdp3/mtk-mdp3-cmdq.c   |  442 ++++++
+ .../media/platform/mtk-mdp3/mtk-mdp3-cmdq.h   |   57 +
+ .../media/platform/mtk-mdp3/mtk-mdp3-comp.c   | 1325 +++++++++++++++++
+ .../media/platform/mtk-mdp3/mtk-mdp3-comp.h   |  177 +++
+ .../media/platform/mtk-mdp3/mtk-mdp3-core.c   |  256 ++++
+ .../media/platform/mtk-mdp3/mtk-mdp3-core.h   |   88 ++
+ .../media/platform/mtk-mdp3/mtk-mdp3-m2m.c    |  823 ++++++++++
+ .../media/platform/mtk-mdp3/mtk-mdp3-m2m.h    |   52 +
+ .../media/platform/mtk-mdp3/mtk-mdp3-regs.c   |  757 ++++++++++
+ .../media/platform/mtk-mdp3/mtk-mdp3-regs.h   |  386 +++++
+ .../media/platform/mtk-mdp3/mtk-mdp3-vpu.c    |  277 ++++
+ .../media/platform/mtk-mdp3/mtk-mdp3-vpu.h    |   90 ++
+ 28 files changed, 6435 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8183-mdp3.txt
+ create mode 100644 drivers/media/platform/mtk-mdp3/Makefile
+ create mode 100644 drivers/media/platform/mtk-mdp3/isp_reg.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mdp-platform.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_ccorr.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_rdma.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_rsz.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_wdma.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_wrot.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mmsys_config.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mmsys_mutex.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mmsys_reg_base.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-img-ipi.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-core.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-vpu.c
+ create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-vpu.h
 
->          *
->          * Some baudrates are not supported by the chip, so we use the next
->          * lower rate supported and update termios c_flag.
-> --
-> 1.7.9.5
->
+-- 
+2.18.0
