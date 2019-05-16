@@ -1,13 +1,11 @@
 From: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 2/2] ASoC: Mediatek: MT8183: set data align
-Date: Thu, 16 May 2019 17:54:38 +0800
-Message-ID: <20190516095438.15759-3-shunli.wang@mediatek.com>
-References: <20190516095438.15759-1-shunli.wang@mediatek.com>
+Subject: [PATCH] ASoC: Mediatek: MT8183: enable IIR filter
+Date: Thu, 16 May 2019 18:15:15 +0800
+Message-ID: <20190516101515.4127-1-shunli.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190516095438.15759-1-shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -21,107 +19,45 @@ To: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
 Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, tzungbi-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch sets register and bit information about
-data align for every memory interface.
+This patch is to enable IIR filter when DMIC of PMIC
+is enabled.
 
 Signed-off-by: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- sound/soc/mediatek/mt8183/mt8183-afe-pcm.c | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+ sound/soc/mediatek/mt8183/mt8183-dai-adda.c | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
 
-diff --git a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-index 1bc0fafe5e29..ab2bce1d9b3d 100644
---- a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-@@ -437,7 +437,9 @@ static const struct mtk_base_memif_data memif_data[MT8183_MEMIF_NUM] = {
- 		.enable_reg = AFE_DAC_CON0,
- 		.enable_shift = DL1_ON_SFT,
- 		.hd_reg = AFE_MEMIF_HD_MODE,
-+		.hd_align_reg = AFE_MEMIF_HDALIGN,
- 		.hd_shift = DL1_HD_SFT,
-+		.hd_align_mshift = DL1_HD_ALIGN_MASK_SFT,
- 		.agent_disable_reg = -1,
- 		.agent_disable_shift = -1,
- 		.msb_reg = -1,
-@@ -456,7 +458,9 @@ static const struct mtk_base_memif_data memif_data[MT8183_MEMIF_NUM] = {
- 		.enable_reg = AFE_DAC_CON0,
- 		.enable_shift = DL2_ON_SFT,
- 		.hd_reg = AFE_MEMIF_HD_MODE,
-+		.hd_align_reg = AFE_MEMIF_HDALIGN,
- 		.hd_shift = DL2_HD_SFT,
-+		.hd_align_mshift = DL2_HD_ALIGN_MASK_SFT,
- 		.agent_disable_reg = -1,
- 		.agent_disable_shift = -1,
- 		.msb_reg = -1,
-@@ -475,7 +479,9 @@ static const struct mtk_base_memif_data memif_data[MT8183_MEMIF_NUM] = {
- 		.enable_reg = AFE_DAC_CON0,
- 		.enable_shift = DL3_ON_SFT,
- 		.hd_reg = AFE_MEMIF_HD_MODE,
-+		.hd_align_reg = AFE_MEMIF_HDALIGN,
- 		.hd_shift = DL3_HD_SFT,
-+		.hd_align_mshift = DL3_HD_ALIGN_MASK_SFT,
- 		.agent_disable_reg = -1,
- 		.agent_disable_shift = -1,
- 		.msb_reg = -1,
-@@ -494,7 +500,9 @@ static const struct mtk_base_memif_data memif_data[MT8183_MEMIF_NUM] = {
- 		.enable_reg = AFE_DAC_CON0,
- 		.enable_shift = VUL2_ON_SFT,
- 		.hd_reg = AFE_MEMIF_HD_MODE,
-+		.hd_align_reg = AFE_MEMIF_HDALIGN,
- 		.hd_shift = VUL2_HD_SFT,
-+		.hd_align_mshift = VUL2_HD_ALIGN_MASK_SFT,
- 		.agent_disable_reg = -1,
- 		.agent_disable_shift = -1,
- 		.msb_reg = -1,
-@@ -513,7 +521,9 @@ static const struct mtk_base_memif_data memif_data[MT8183_MEMIF_NUM] = {
- 		.enable_reg = AFE_DAC_CON0,
- 		.enable_shift = AWB_ON_SFT,
- 		.hd_reg = AFE_MEMIF_HD_MODE,
-+		.hd_align_reg = AFE_MEMIF_HDALIGN,
- 		.hd_shift = AWB_HD_SFT,
-+		.hd_align_mshift = AWB_HD_ALIGN_MASK_SFT,
- 		.agent_disable_reg = -1,
- 		.agent_disable_shift = -1,
- 		.msb_reg = -1,
-@@ -532,7 +542,9 @@ static const struct mtk_base_memif_data memif_data[MT8183_MEMIF_NUM] = {
- 		.enable_reg = AFE_DAC_CON0,
- 		.enable_shift = AWB2_ON_SFT,
- 		.hd_reg = AFE_MEMIF_HD_MODE,
-+		.hd_align_reg = AFE_MEMIF_HDALIGN,
- 		.hd_shift = AWB2_HD_SFT,
-+		.hd_align_mshift = AWB2_ALIGN_MASK_SFT,
- 		.agent_disable_reg = -1,
- 		.agent_disable_shift = -1,
- 		.msb_reg = -1,
-@@ -551,7 +563,9 @@ static const struct mtk_base_memif_data memif_data[MT8183_MEMIF_NUM] = {
- 		.enable_reg = AFE_DAC_CON0,
- 		.enable_shift = VUL12_ON_SFT,
- 		.hd_reg = AFE_MEMIF_HD_MODE,
-+		.hd_align_reg = AFE_MEMIF_HDALIGN,
- 		.hd_shift = VUL12_HD_SFT,
-+		.hd_align_mshift = VUL12_HD_ALIGN_MASK_SFT,
- 		.agent_disable_reg = -1,
- 		.agent_disable_shift = -1,
- 		.msb_reg = -1,
-@@ -570,7 +584,9 @@ static const struct mtk_base_memif_data memif_data[MT8183_MEMIF_NUM] = {
- 		.enable_reg = AFE_DAC_CON0,
- 		.enable_shift = MOD_DAI_ON_SFT,
- 		.hd_reg = AFE_MEMIF_HD_MODE,
-+		.hd_align_reg = AFE_MEMIF_HDALIGN,
- 		.hd_shift = MOD_DAI_HD_SFT,
-+		.hd_align_mshift = MOD_DAI_HD_ALIGN_MASK_SFT,
- 		.agent_disable_reg = -1,
- 		.agent_disable_shift = -1,
- 		.msb_reg = -1,
-@@ -589,7 +605,9 @@ static const struct mtk_base_memif_data memif_data[MT8183_MEMIF_NUM] = {
- 		.enable_reg = -1,	/* control in tdm for sync start */
- 		.enable_shift = -1,
- 		.hd_reg = AFE_MEMIF_HD_MODE,
-+		.hd_align_reg = AFE_MEMIF_HDALIGN,
- 		.hd_shift = HDMI_HD_SFT,
-+		.hd_align_mshift = HDMI_HD_ALIGN_MASK_SFT,
- 		.agent_disable_reg = -1,
- 		.agent_disable_shift = -1,
- 		.msb_reg = -1,
+diff --git a/sound/soc/mediatek/mt8183/mt8183-dai-adda.c b/sound/soc/mediatek/mt8183/mt8183-dai-adda.c
+index 017d7d1d9148..2b758a18c2ea 100644
+--- a/sound/soc/mediatek/mt8183/mt8183-dai-adda.c
++++ b/sound/soc/mediatek/mt8183/mt8183-dai-adda.c
+@@ -176,9 +176,6 @@ static int mtk_adda_ul_event(struct snd_soc_dapm_widget *w,
+ 	case SND_SOC_DAPM_POST_PMD:
+ 		/* should delayed 1/fs(smallest is 8k) = 125us before afe off */
+ 		usleep_range(125, 135);
+-
+-		/* reset dmic */
+-		afe_priv->mtkaif_dmic = 0;
+ 		break;
+ 	default:
+ 		break;
+@@ -426,6 +423,17 @@ static int mtk_dai_adda_hw_params(struct snd_pcm_substream *substream,
+ 
+ 		ul_src_con0 |= (voice_mode << 17) & (0x7 << 17);
+ 
++		/* enable iir */
++		ul_src_con0 |= (1 << UL_IIR_ON_TMP_CTL_SFT) &
++			       UL_IIR_ON_TMP_CTL_MASK_SFT;
++
++		/* 35Hz @ 48k */
++		regmap_write(afe->regmap, AFE_ADDA_IIR_COEF_02_01, 0x00000000);
++		regmap_write(afe->regmap, AFE_ADDA_IIR_COEF_04_03, 0x00003FB8);
++		regmap_write(afe->regmap, AFE_ADDA_IIR_COEF_06_05, 0x3FB80000);
++		regmap_write(afe->regmap, AFE_ADDA_IIR_COEF_08_07, 0x3FB80000);
++		regmap_write(afe->regmap, AFE_ADDA_IIR_COEF_10_09, 0x0000C048);
++
+ 		regmap_write(afe->regmap, AFE_ADDA_UL_SRC_CON0, ul_src_con0);
+ 
+ 		/* mtkaif_rxif_data_mode = 0, amic */
 -- 
 2.18.0
