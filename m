@@ -1,35 +1,122 @@
-From: xiaolei li <xiaolei.li@mediatek.com>
-Subject: Re: [PATCH v3 0/4] MTK NAND driver improvements and fixes
-Date: Fri, 17 May 2019 17:21:22 +0800
-Message-ID: <1558084882.26455.106.camel@mhfsdcap03>
-References: <20190507102541.34341-1-xiaolei.li@mediatek.com>
- <1558056767.26455.98.camel@mhfsdcap03> <20190517101226.17b23550@xps13>
+From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+Subject: Re: [PATCH v5 4/6] usb: roles: add API to get usb_role_switch by node
+Date: Fri, 17 May 2019 13:37:36 +0300
+Message-ID: <20190517103736.GA1490@kuha.fi.intel.com>
+References: <1557823643-8616-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1557823643-8616-5-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
-In-Reply-To: <20190517101226.17b23550@xps13>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
-List-Post: <mailto:linux-mtd@lists.infradead.org>
-List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
-Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
-To: Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: richard@nod.at, linux-mediatek@lists.infradead.org, linux-mtd@lists.infradead.org, srv_heupstream@mediatek.com
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1557823643-8616-5-git-send-email-chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Biju Das <biju.das@bp.renesas.com>, Linus Walleij <linus.walleij@linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gRnJpLCAyMDE5LTA1LTE3IGF0IDEwOjEyICswMjAwLCBNaXF1ZWwgUmF5bmFsIHdyb3RlOgo+
-IEhpIHhpYW9sZWksCj4gCj4geGlhb2xlaSBsaSA8eGlhb2xlaS5saUBtZWRpYXRlay5jb20+IHdy
-b3RlIG9uIEZyaSwgMTcgTWF5IDIwMTkgMDk6MzI6NDcKPiArMDgwMDoKPiAKPiA+IEhpIE1pcXVl
-bCwKPiA+IAo+ID4gU29ycnkgdG8gYm90aGVyIHlvdSwgYnV0IG1heSBJIGFzayBpZiBpdCBpcyBm
-aW5lIHRvIGFjY2VwdCB0aGlzIHBhdGNoCj4gPiBzZXQgbm93LCBwYXRjaGVzIGFsbCB3aXRoIHlv
-dXIgcmV2aWV3Lgo+IAo+IFdlIGFyZSBpbiB0aGUgbWlkZGxlIG9mIHRoZSBtZXJnZSB3aW5kb3cs
-IHNvIHllcywgSSB3aWxsIHRha2UgeW91cgo+IHBhdGNoZXMsIGJ1dCBub3Qgbm93LgoKR290IGl0
-LiBUaGFua3MgTWlxdWVsLgoKPiAKPiBUaGFua3MsCj4gTWlxdcOobAoKCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXggTVREIGRpc2N1
-c3Npb24gbWFpbGluZyBsaXN0Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtbXRkLwo=
+On Tue, May 14, 2019 at 04:47:21PM +0800, Chunfeng Yun wrote:
+> Add fwnode_usb_role_switch_get() to make easier to get
+> usb_role_switch by fwnode which register it.
+> It's useful when there is not device_connection registered
+> between two drivers and only knows the fwnode which register
+> usb_role_switch.
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> Tested-by: Biju Das <biju.das@bp.renesas.com>
+
+Acked-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+
+> ---
+> v5 changes:
+>  1. remove linux/of.h suggested by Biju
+>  2. add tested by Biju
+> 
+> Note: still depends on [1]
+>  [1]: [v6,08/13] usb: roles: Introduce stubs for the exiting functions in role.h
+>       https://patchwork.kernel.org/patch/10909971/
+> 
+> v4 changes:
+>   1. use switch_fwnode_match() to find fwnode suggested by Heikki
+>   2. this patch now depends on [1]
+> 
+>  [1] [v6,08/13] usb: roles: Introduce stubs for the exiting functions in role.h
+>     https://patchwork.kernel.org/patch/10909971/
+> 
+> v3 changes:
+>   1. use fwnodes instead of node suggested by Andy
+>   2. rebuild the API suggested by Heikki
+> 
+> v2 no changes
+> ---
+>  drivers/usb/roles/class.c | 24 ++++++++++++++++++++++++
+>  include/linux/usb/role.h  |  8 ++++++++
+>  2 files changed, 32 insertions(+)
+> 
+> diff --git a/drivers/usb/roles/class.c b/drivers/usb/roles/class.c
+> index f45d8df5cfb8..4a1f09a41ec0 100644
+> --- a/drivers/usb/roles/class.c
+> +++ b/drivers/usb/roles/class.c
+> @@ -135,6 +135,30 @@ struct usb_role_switch *usb_role_switch_get(struct device *dev)
+>  }
+>  EXPORT_SYMBOL_GPL(usb_role_switch_get);
+>  
+> +/**
+> + * fwnode_usb_role_switch_get - Find USB role switch by it's parent fwnode
+> + * @fwnode: The fwnode that register USB role switch
+> + *
+> + * Finds and returns role switch registered by @fwnode. The reference count
+> + * for the found switch is incremented.
+> + */
+> +struct usb_role_switch *
+> +fwnode_usb_role_switch_get(struct fwnode_handle *fwnode)
+> +{
+> +	struct usb_role_switch *sw;
+> +	struct device *dev;
+> +
+> +	dev = class_find_device(role_class, NULL, fwnode, switch_fwnode_match);
+> +	if (!dev)
+> +		return ERR_PTR(-EPROBE_DEFER);
+> +
+> +	sw = to_role_switch(dev);
+> +	WARN_ON(!try_module_get(sw->dev.parent->driver->owner));
+> +
+> +	return sw;
+> +}
+> +EXPORT_SYMBOL_GPL(fwnode_usb_role_switch_get);
+> +
+>  /**
+>   * usb_role_switch_put - Release handle to a switch
+>   * @sw: USB Role Switch
+> diff --git a/include/linux/usb/role.h b/include/linux/usb/role.h
+> index da2b9641b877..35d460f9ec40 100644
+> --- a/include/linux/usb/role.h
+> +++ b/include/linux/usb/role.h
+> @@ -48,6 +48,8 @@ int usb_role_switch_set_role(struct usb_role_switch *sw, enum usb_role role);
+>  enum usb_role usb_role_switch_get_role(struct usb_role_switch *sw);
+>  struct usb_role_switch *usb_role_switch_get(struct device *dev);
+>  void usb_role_switch_put(struct usb_role_switch *sw);
+> +struct usb_role_switch *
+> +fwnode_usb_role_switch_get(struct fwnode_handle *fwnode);
+>  
+>  struct usb_role_switch *
+>  usb_role_switch_register(struct device *parent,
+> @@ -72,6 +74,12 @@ static inline struct usb_role_switch *usb_role_switch_get(struct device *dev)
+>  
+>  static inline void usb_role_switch_put(struct usb_role_switch *sw) { }
+>  
+> +static inline struct usb_role_switch *
+> +fwnode_usb_role_switch_get(struct fwnode_handle *fwnode)
+> +{
+> +	return ERR_PTR(-ENODEV);
+> +}
+> +
+>  static inline struct usb_role_switch *
+>  usb_role_switch_register(struct device *parent,
+>  			 const struct usb_role_switch_desc *desc)
+> -- 
+> 2.21.0
+
+thanks,
+
+-- 
+heikki
