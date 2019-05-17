@@ -1,165 +1,93 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH v2] gnss: get serial speed from subdrivers
-Date: Thu, 16 May 2019 19:02:05 +0100
-Message-ID: <69b5e90c-c1c3-9f2e-57a8-64741182a96e@arm.com>
-References: <1558024626-19395-1-git-send-email-lollivier@baylibre.com>
+From: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v3 0/4] MTK NAND driver improvements and fixes
+Date: Fri, 17 May 2019 09:32:47 +0800
+Message-ID: <1558056767.26455.98.camel@mhfsdcap03>
+References: <20190507102541.34341-1-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1558024626-19395-1-git-send-email-lollivier@baylibre.com>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: Loys Ollivier <lollivier@baylibre.com>, Johan Hovold <johan@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: baylibre-upstreaming@groups.io, linux-kernel@vger.kernel.org, Corentin Labbe <clabbe.montjoie@gmail.com>, linux-mediatek@lists.infradead.org, Colin Ian King <colin.king@canonical.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190507102541.34341-1-xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org
+Cc: richard-/L3Ra7n9ekc@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 16/05/2019 17:37, Loys Ollivier wrote:
-> The default serial speed was hardcoded in the code.
-> Rename current-speed to default-speed.
-> Add a function parameter that lets the subdrivers specify their
-> default speed.
-> If not specified fallback to the device-tree default-speed.
-> 
-> Signed-off-by: Loys Ollivier <lollivier@baylibre.com>
-> ---
-> Hello,
-> 
-> This patch moves the currently hardcoded, default serial speed
-> to the subdrivers.
-> If the default speed is not specified by the subdriver then it is read
-> from the device tree.
-> 
-> Changes since v1[0]
-> - Use u32 data types instead of uint
-> 
-> [0]: https://lore.kernel.org/lkml/1557322788-10403-1-git-send-email-lollivier@baylibre.com/
-> 
-> Cheers,
-> Loys
-> 
->   drivers/gnss/mtk.c    |  7 ++++++-
->   drivers/gnss/serial.c | 21 +++++++++++++--------
->   drivers/gnss/serial.h |  3 ++-
->   drivers/gnss/ubx.c    |  3 ++-
->   4 files changed, 23 insertions(+), 11 deletions(-)
-> 
-> diff --git a/drivers/gnss/mtk.c b/drivers/gnss/mtk.c
-> index d1fc55560daf..1d35bcb52072 100644
-> --- a/drivers/gnss/mtk.c
-> +++ b/drivers/gnss/mtk.c
-> @@ -16,6 +16,10 @@
->   
->   #include "serial.h"
->   
-> +static uint serial_speed = 9600; /* Serial speed (baud rate) */
-> +module_param(serial_speed, uint, 0644);
-> +MODULE_PARM_DESC(serial_speed, "Serial baud rate (bit/s), (default = 9600)");
-> +
->   struct mtk_data {
->   	struct regulator *vbackup;
->   	struct regulator *vcc;
-> @@ -69,7 +73,8 @@ static int mtk_probe(struct serdev_device *serdev)
->   	struct mtk_data *data;
->   	int ret;
->   
-> -	gserial = gnss_serial_allocate(serdev, sizeof(*data));
-> +	gserial = gnss_serial_allocate(serdev, sizeof(*data),
-> +				       (u32)serial_speed);
->   	if (IS_ERR(gserial)) {
->   		ret = PTR_ERR(gserial);
->   		return ret;
-> diff --git a/drivers/gnss/serial.c b/drivers/gnss/serial.c
-> index def64b36d994..3be799702291 100644
-> --- a/drivers/gnss/serial.c
-> +++ b/drivers/gnss/serial.c
-> @@ -103,17 +103,13 @@ static int gnss_serial_set_power(struct gnss_serial *gserial,
->   	return gserial->ops->set_power(gserial, state);
->   }
->   
-> -/*
-> - * FIXME: need to provide subdriver defaults or separate dt parsing from
-> - * allocation.
-> - */
->   static int gnss_serial_parse_dt(struct serdev_device *serdev)
->   {
->   	struct gnss_serial *gserial = serdev_device_get_drvdata(serdev);
->   	struct device_node *node = serdev->dev.of_node;
-> -	u32 speed = 4800;
-> +	u32 speed;
->   
-> -	of_property_read_u32(node, "current-speed", &speed);
-> +	of_property_read_u32(node, "default-speed", &speed);
->   
->   	gserial->speed = speed;
+Hi Miquel,
 
-Hmm, maybe it's a bit too convoluted for the compiler to warn about, but 
-if a "default-speed" property is not present, gserial->speed will now be 
-assigned an uninitialised value. I don't know what the intent is neither 
-the driver nor the DT provides a value, but you'll either need to bring 
-back the fallback initialisation above or propagate errors from 
-of_property_read_u32().
+Sorry to bother you, but may I ask if it is fine to accept this patch
+set now, patches all with your review.
 
-Robin.
+Thanks,
+Xiaolei
 
->   
-> @@ -121,7 +117,8 @@ static int gnss_serial_parse_dt(struct serdev_device *serdev)
->   }
->   
->   struct gnss_serial *gnss_serial_allocate(struct serdev_device *serdev,
-> -						size_t data_size)
-> +					 size_t data_size,
-> +					 u32 serial_speed)
->   {
->   	struct gnss_serial *gserial;
->   	struct gnss_device *gdev;
-> @@ -146,10 +143,18 @@ struct gnss_serial *gnss_serial_allocate(struct serdev_device *serdev,
->   	serdev_device_set_drvdata(serdev, gserial);
->   	serdev_device_set_client_ops(serdev, &gnss_serial_serdev_ops);
->   
-> -	ret = gnss_serial_parse_dt(serdev);
-> +	/* Serial speed provided by subdriver takes precedence over dt*/
-> +	if (!serial_speed)
-> +		ret = gnss_serial_parse_dt(serdev);
-> +	else
-> +		gserial->speed = serial_speed;
-> +
->   	if (ret)
->   		goto err_put_device;
->   
-> +	if (!gserial->speed)
-> +		return -EINVAL;
-> +
->   	return gserial;
->   
->   err_put_device:
-> diff --git a/drivers/gnss/serial.h b/drivers/gnss/serial.h
-> index 980ffdc86c2a..17df61e399e6 100644
-> --- a/drivers/gnss/serial.h
-> +++ b/drivers/gnss/serial.h
-> @@ -33,7 +33,8 @@ struct gnss_serial_ops {
->   extern const struct dev_pm_ops gnss_serial_pm_ops;
->   
->   struct gnss_serial *gnss_serial_allocate(struct serdev_device *gserial,
-> -						size_t data_size);
-> +					 size_t data_size,
-> +					 u32 serial_speed);
->   void gnss_serial_free(struct gnss_serial *gserial);
->   
->   int gnss_serial_register(struct gnss_serial *gserial);
-> diff --git a/drivers/gnss/ubx.c b/drivers/gnss/ubx.c
-> index 7b05bc40532e..52ae6e4987e0 100644
-> --- a/drivers/gnss/ubx.c
-> +++ b/drivers/gnss/ubx.c
-> @@ -68,8 +68,9 @@ static int ubx_probe(struct serdev_device *serdev)
->   	struct gnss_serial *gserial;
->   	struct ubx_data *data;
->   	int ret;
-> +	u32 speed = 4800;
->   
-> -	gserial = gnss_serial_allocate(serdev, sizeof(*data));
-> +	gserial = gnss_serial_allocate(serdev, sizeof(*data), speed);
->   	if (IS_ERR(gserial)) {
->   		ret = PTR_ERR(gserial);
->   		return ret;
+On Tue, 2019-05-07 at 18:25 +0800, Xiaolei Li wrote:
+> The following patch set mainly contains:
+> * Fix low level time calculation of read/write cycle to meet tRC_min
+>   and tWC_min requirements.
+> * Refine RE# pulse width calculation and data sampling to improve read
+>   performance.
+> * Add CS validity check.
+> * Fix oob buffer pointer wrongly setting.
+> 
+> Changes on v3 relative to:
+> --------------------
+> 
+> tree    : https://git.kernel.org/pub/scm/linux/kernel/git/mtd/linux.git/
+> branch  : nand/next
+> commit  :
+>         'commit 1c14fe2167ef ("mtd: nandsim: switch to exec_op interface")
+> 
+> Patch v3:
+> ---------
+> - Fix some comment style.
+> - Format patch base branch: nand/next
+> - Pend to sent patch "mtd: rawnand: mtk: Setup empty page threshold
+>   correctly", because it seems that we should confirm this change has no
+>   side effect and need more test.
+> 
+> Patch v2:
+> ---------
+> - Fix type
+> - Reference correct faulty patch
+> - Refine code to do calculation and condition in separate steps
+> - Fix empty threshold calculation
+> 
+> Tests:
+> ------
+> 
+> * ubifs and jffs2 are validated on NAND device MT29F16G08ADBCA by
+>   'dd' command.
+> * all drivers/mtd/tests/* pass.
+> * speed test:
+>   eraseblock write speed is 11087 KiB/s
+>   eraseblock read speed is 19986 KiB/s
+>   page write speed is 10689 KiB/s
+>   page read speed is 18724 KiB/s
+>   2 page write speed is 10611 KiB/s
+>   2 page read speed is 18713 KiB/s
+>   erase speed is 103696 KiB/s
+>   2x multi-block erase speed is 354248 KiB/s
+>   4x multi-block erase speed is 350459 KiB/s
+>   8x multi-block erase speed is 356173 KiB/s
+>   16x multi-block erase speed is 356173 KiB/s
+>   32x multi-block erase speed is 358120 KiB/s
+>   64x multi-block erase speed is 356173 KiB/s
+> 
+> Xiaolei Li (4):
+>   mtd: rawnand: mtk: Correct low level time calculation of r/w cycle
+>   mtd: rawnand: mtk: Improve data sampling timing for read cycle
+>   mtd: rawnand: mtk: Add validity check for CE# pin setting
+>   mtd: rawnand: mtk: Fix wrongly assigned OOB buffer pointer issue
+> 
+>  drivers/mtd/nand/raw/mtk_nand.c | 84 +++++++++++++++++++++++++++------
+>  1 file changed, 70 insertions(+), 14 deletions(-)
 > 
