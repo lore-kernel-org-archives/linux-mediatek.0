@@ -1,120 +1,106 @@
 From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
 Subject: Re: [PATCH v5 4/6] usb: roles: add API to get usb_role_switch by node
-Date: Fri, 17 May 2019 13:37:36 +0300
-Message-ID: <20190517103736.GA1490@kuha.fi.intel.com>
+Date: Fri, 17 May 2019 16:05:11 +0300
+Message-ID: <20190517130511.GA1887@kuha.fi.intel.com>
 References: <1557823643-8616-1-git-send-email-chunfeng.yun@mediatek.com>
  <1557823643-8616-5-git-send-email-chunfeng.yun@mediatek.com>
+ <20190517103736.GA1490@kuha.fi.intel.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1557823643-8616-5-git-send-email-chunfeng.yun@mediatek.com>
+In-Reply-To: <20190517103736.GA1490@kuha.fi.intel.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>
 Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Biju Das <biju.das@bp.renesas.com>, Linus Walleij <linus.walleij@linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, May 14, 2019 at 04:47:21PM +0800, Chunfeng Yun wrote:
-> Add fwnode_usb_role_switch_get() to make easier to get
-> usb_role_switch by fwnode which register it.
-> It's useful when there is not device_connection registered
-> between two drivers and only knows the fwnode which register
-> usb_role_switch.
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> Tested-by: Biju Das <biju.das@bp.renesas.com>
+Hi,
 
-Acked-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+On Fri, May 17, 2019 at 01:37:36PM +0300, Heikki Krogerus wrote:
+> On Tue, May 14, 2019 at 04:47:21PM +0800, Chunfeng Yun wrote:
+> > Add fwnode_usb_role_switch_get() to make easier to get
+> > usb_role_switch by fwnode which register it.
+> > It's useful when there is not device_connection registered
+> > between two drivers and only knows the fwnode which register
+> > usb_role_switch.
+> > 
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > Tested-by: Biju Das <biju.das@bp.renesas.com>
+> 
+> Acked-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
 
-> ---
-> v5 changes:
->  1. remove linux/of.h suggested by Biju
->  2. add tested by Biju
-> 
-> Note: still depends on [1]
->  [1]: [v6,08/13] usb: roles: Introduce stubs for the exiting functions in role.h
->       https://patchwork.kernel.org/patch/10909971/
-> 
-> v4 changes:
->   1. use switch_fwnode_match() to find fwnode suggested by Heikki
->   2. this patch now depends on [1]
-> 
->  [1] [v6,08/13] usb: roles: Introduce stubs for the exiting functions in role.h
->     https://patchwork.kernel.org/patch/10909971/
-> 
-> v3 changes:
->   1. use fwnodes instead of node suggested by Andy
->   2. rebuild the API suggested by Heikki
-> 
-> v2 no changes
-> ---
->  drivers/usb/roles/class.c | 24 ++++++++++++++++++++++++
->  include/linux/usb/role.h  |  8 ++++++++
->  2 files changed, 32 insertions(+)
-> 
-> diff --git a/drivers/usb/roles/class.c b/drivers/usb/roles/class.c
-> index f45d8df5cfb8..4a1f09a41ec0 100644
-> --- a/drivers/usb/roles/class.c
-> +++ b/drivers/usb/roles/class.c
-> @@ -135,6 +135,30 @@ struct usb_role_switch *usb_role_switch_get(struct device *dev)
->  }
->  EXPORT_SYMBOL_GPL(usb_role_switch_get);
->  
-> +/**
-> + * fwnode_usb_role_switch_get - Find USB role switch by it's parent fwnode
-> + * @fwnode: The fwnode that register USB role switch
-> + *
-> + * Finds and returns role switch registered by @fwnode. The reference count
-> + * for the found switch is incremented.
-> + */
-> +struct usb_role_switch *
-> +fwnode_usb_role_switch_get(struct fwnode_handle *fwnode)
-> +{
-> +	struct usb_role_switch *sw;
-> +	struct device *dev;
-> +
-> +	dev = class_find_device(role_class, NULL, fwnode, switch_fwnode_match);
-> +	if (!dev)
-> +		return ERR_PTR(-EPROBE_DEFER);
-> +
-> +	sw = to_role_switch(dev);
-> +	WARN_ON(!try_module_get(sw->dev.parent->driver->owner));
-> +
-> +	return sw;
-> +}
-> +EXPORT_SYMBOL_GPL(fwnode_usb_role_switch_get);
-> +
->  /**
->   * usb_role_switch_put - Release handle to a switch
->   * @sw: USB Role Switch
-> diff --git a/include/linux/usb/role.h b/include/linux/usb/role.h
-> index da2b9641b877..35d460f9ec40 100644
-> --- a/include/linux/usb/role.h
-> +++ b/include/linux/usb/role.h
-> @@ -48,6 +48,8 @@ int usb_role_switch_set_role(struct usb_role_switch *sw, enum usb_role role);
->  enum usb_role usb_role_switch_get_role(struct usb_role_switch *sw);
->  struct usb_role_switch *usb_role_switch_get(struct device *dev);
->  void usb_role_switch_put(struct usb_role_switch *sw);
-> +struct usb_role_switch *
-> +fwnode_usb_role_switch_get(struct fwnode_handle *fwnode);
->  
->  struct usb_role_switch *
->  usb_role_switch_register(struct device *parent,
-> @@ -72,6 +74,12 @@ static inline struct usb_role_switch *usb_role_switch_get(struct device *dev)
->  
->  static inline void usb_role_switch_put(struct usb_role_switch *sw) { }
->  
-> +static inline struct usb_role_switch *
-> +fwnode_usb_role_switch_get(struct fwnode_handle *fwnode)
-> +{
-> +	return ERR_PTR(-ENODEV);
-> +}
-> +
->  static inline struct usb_role_switch *
->  usb_role_switch_register(struct device *parent,
->  			 const struct usb_role_switch_desc *desc)
-> -- 
-> 2.21.0
+Hold on. I just noticed Rob's comment on patch 2/6, where he points out
+that you don't need to use device graph since the controller is the
+parent of the connector. Doesn't that mean you don't really need this
+API?
+
+> > ---
+> > v5 changes:
+> >  1. remove linux/of.h suggested by Biju
+> >  2. add tested by Biju
+> > 
+> > Note: still depends on [1]
+> >  [1]: [v6,08/13] usb: roles: Introduce stubs for the exiting functions in role.h
+> >       https://patchwork.kernel.org/patch/10909971/
+> > 
+> > v4 changes:
+> >   1. use switch_fwnode_match() to find fwnode suggested by Heikki
+> >   2. this patch now depends on [1]
+> > 
+> >  [1] [v6,08/13] usb: roles: Introduce stubs for the exiting functions in role.h
+> >     https://patchwork.kernel.org/patch/10909971/
+> > 
+> > v3 changes:
+> >   1. use fwnodes instead of node suggested by Andy
+> >   2. rebuild the API suggested by Heikki
+> > 
+> > v2 no changes
+> > ---
+> >  drivers/usb/roles/class.c | 24 ++++++++++++++++++++++++
+> >  include/linux/usb/role.h  |  8 ++++++++
+> >  2 files changed, 32 insertions(+)
+> > 
+> > diff --git a/drivers/usb/roles/class.c b/drivers/usb/roles/class.c
+> > index f45d8df5cfb8..4a1f09a41ec0 100644
+> > --- a/drivers/usb/roles/class.c
+> > +++ b/drivers/usb/roles/class.c
+> > @@ -135,6 +135,30 @@ struct usb_role_switch *usb_role_switch_get(struct device *dev)
+> >  }
+> >  EXPORT_SYMBOL_GPL(usb_role_switch_get);
+> >  
+> > +/**
+> > + * fwnode_usb_role_switch_get - Find USB role switch by it's parent fwnode
+> > + * @fwnode: The fwnode that register USB role switch
+> > + *
+> > + * Finds and returns role switch registered by @fwnode. The reference count
+> > + * for the found switch is incremented.
+> > + */
+> > +struct usb_role_switch *
+> > +fwnode_usb_role_switch_get(struct fwnode_handle *fwnode)
+> > +{
+> > +	struct usb_role_switch *sw;
+> > +	struct device *dev;
+> > +
+> > +	dev = class_find_device(role_class, NULL, fwnode, switch_fwnode_match);
+> > +	if (!dev)
+> > +		return ERR_PTR(-EPROBE_DEFER);
+> > +
+> > +	sw = to_role_switch(dev);
+> > +	WARN_ON(!try_module_get(sw->dev.parent->driver->owner));
+> > +
+> > +	return sw;
+> > +}
+> > +EXPORT_SYMBOL_GPL(fwnode_usb_role_switch_get);
+
+This function only basically converts the fwnode to usb_role_switch,
+but I would actually prefer that we walked through the device graph
+here instead of expecting the caller to do that.
+
+So this function should probable be called fwnode_to_usb_role_switch()
+and not fwnode_usb_role_switch_get(), but I guess you don't need it
+at all, right?
+
 
 thanks,
 
