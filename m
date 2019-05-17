@@ -1,224 +1,131 @@
 From: Rob Herring <robh@kernel.org>
-Subject: [PATCH v3] dt-bindings: arm: Convert MediaTek board/soc bindings to json-schema
-Date: Fri, 17 May 2019 10:42:02 -0500
-Message-ID: <20190517154202.24594-1-robh@kernel.org>
+Subject: Re: [RFC PATCH V1 1/6] dt-bindings: mt8183: Add binding for DIP
+ shared memory
+Date: Fri, 17 May 2019 17:22:41 -0500
+Message-ID: <CAL_Jsq+hcgth5gT4gCKPiWtFvje8eOHFs1PxtkHJ6Raj8TOw3w@mail.gmail.com>
+References: <20190417104511.21514-1-frederic.chen@mediatek.com>
+ <20190417104511.21514-2-frederic.chen@mediatek.com>
+ <20190430011506.GA8514@bogus>
+ <1557238925.11663.21.camel@mtksdccf07>
+ <CAL_JsqKGW9WqyNgqKD0MxsqxYHKZ+VNV5A2p+neGqwmKmiODOQ@mail.gmail.com>
+ <CAAFQd5BVWjcxp9Tia9Pmgn_54bc9n5Vs1s__G7YWHiezfVVYpA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <CAAFQd5BVWjcxp9Tia9Pmgn_54bc9n5Vs1s__G7YWHiezfVVYpA@mail.gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: Shik Chen <shik@chromium.org>, devicetree@vger.kernel.org, =?UTF-8?B?U2VhbiBDaGVuZyAo6YSt5piH5byYKQ==?= <Sean.Cheng@mediatek.com>, Frederic Chen <frederic.chen@mediatek.com>, =?UTF-8?B?UnlubiBXdSAo5ZCz6IKy5oGpKQ==?= <Rynn.Wu@mediatek.com>, =?UTF-8?B?Q2hyaXN0aWUgWXUgKOa4uOmbheaDoCk=?= <christie.yu@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>, =?UTF-8?B?SG9sbWVzIENoaW91ICjpgrHmjLop?= <holmes.chiou@mediatek.com>, suleiman@chromium.org, Jerry-ch Chen <Jerry-ch.Chen@mediatek.com>, yuzhao@chromium.org, =?UTF-8?B?SnVuZ28gTGluICjmnpfmmI7kv4op?= <jungo.lin@mediatek.com>, Sj Huang <sj.huang@mediatek.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Hans Verkuil <hans.verkuil@cisco.com>, zwisler@chromium.org, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Mauro
 List-Id: linux-mediatek@lists.infradead.org
 
-Convert MediaTek SoC bindings to DT schema format using json-schema.
+On Thu, May 16, 2019 at 1:12 AM Tomasz Figa <tfiga@chromium.org> wrote:
+>
+> On Wed, May 15, 2019 at 1:19 AM Rob Herring <robh@kernel.org> wrote:
+> >
+> > On Tue, May 7, 2019 at 9:22 AM Frederic Chen <frederic.chen@mediatek.com> wrote:
+> > >
+> > > Dear Rob,
+> > >
+> > > I appreciate your comments.
+> > >
+> > > On Mon, 2019-04-29 at 20:15 -0500, Rob Herring wrote:
+> > > > On Wed, Apr 17, 2019 at 06:45:06PM +0800, Frederic Chen wrote:
+> > > > > This patch adds the binding for describing the shared memory
+> > > > > used to exchange configuration and tuning data between the
+> > > > > co-processor and Digital Image Processing (DIP) unit of the
+> > > > > camera ISP system on Mediatek SoCs.
+> > > > >
+> > > > > Signed-off-by: Frederic Chen <frederic.chen@mediatek.com>
+> > > > > ---
+> > > > >  .../mediatek,reserve-memory-dip_smem.txt      | 45 +++++++++++++++++++
+> > > > >  1 file changed, 45 insertions(+)
+> > > > >  create mode 100644 Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt
+> > > > >
+> > > > > diff --git a/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt b/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt
+> > > > > new file mode 100644
+> > > > > index 000000000000..64c001b476b9
+> > > > > --- /dev/null
+> > > > > +++ b/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt
+> > > > > @@ -0,0 +1,45 @@
+> > > > > +Mediatek DIP Shared Memory binding
+> > > > > +
+> > > > > +This binding describes the shared memory, which serves the purpose of
+> > > > > +describing the shared memory region used to exchange data between Digital
+> > > > > +Image Processing (DIP) and co-processor in Mediatek SoCs.
+> > > > > +
+> > > > > +The co-processor doesn't have the iommu so we need to use the physical
+> > > > > +address to access the shared buffer in the firmware.
+> > > > > +
+> > > > > +The Digital Image Processing (DIP) can access memory through mt8183 IOMMU so
+> > > > > +it can use dma address to access the memory region.
+> > > > > +(See iommu/mediatek,iommu.txt for the detailed description of Mediatek IOMMU)
+> > > > > +
+> > > > > +
+> > > > > +Required properties:
+> > > > > +
+> > > > > +- compatible: must be "mediatek,reserve-memory-dip_smem"
+> > > >
+> > > > Don't use '_'.
+> > >
+> > > I got it. I will use "mediatek,reserve-memory-dip-smem" instead in next
+> > > version of the patch
+> > >
+> > > >
+> > > > > +
+> > > > > +- reg: required for static allocation (see reserved-memory.txt for
+> > > > > +  the detailed usage)
+> > > > > +
+> > > > > +- alloc-range: required for dynamic allocation. The range must
+> > > > > +  between 0x00000400 and 0x100000000 due to the co-processer's
+> > > > > +  addressing limitation
+> > > >
+> > > > Generally, you should pick either static or dynamic allocation for a
+> > > > given binding. Static if there's some address restriction or sharing,
+> > > > dynamic if not.
+> > > >
+> > > > Sounds like static in this case.
+> > > >
+> > >
+> > > DIP reserved memory has address restriction so it is the static case. I
+> > > would like to remove the dynamic allocation part and modify the
+> > > description as following:
+> > >
+> > > - reg: required for DIP. The range must be between 0x00000400 and
+> > >   0x100000000 due to the co-processor's addressing limitation.
+> > >   The size must be 26MB. Please see reserved-memory.txt for the
+> > >   detailed usage.
+> >
+> > You can use dma-ranges to define addressing translations and
+> > restrictions like this. That will in turn set the device's dma-mask to
+> > ensure allocations are done in a region that is addressable.
+> >
+> > But if you have a known, fixed size, then a carve out with
+> > reserved-memory is fine.
+>
+> There is also another aspect here. The coprocessor that we're
+> allocating the memory for is behind an MPU that must be programmed
+> completely in one go and locked for security reasons to ensure that
+> the coprocessor itself doesn't rewrite the MPU settings. That means
+> that we need to have all the allocations completed before booting that
+> coprocessor.
+>
+> To be honest, I'd adopt a completely different design here.
+>
+> We're going to have a driver for that coprocessor (SCP) and IMHO any
+> shared memory areas should belong to it. Then, any specific drivers
+> talking to the firmware running on SCP should ask the SCP driver to
+> allocate some memory from its fixed pool. WDYT?
 
-Cc: Mark Rutland <mark.rutland@arm.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Signed-off-by: Rob Herring <robh@kernel.org>
----
-v3:
- - Rebase to Linus' master
+That's more than just an address restriction, so yeah, use a
+reserved-memory area.
 
- .../devicetree/bindings/arm/mediatek.txt      | 89 ------------------
- .../devicetree/bindings/arm/mediatek.yaml     | 91 +++++++++++++++++++
- 2 files changed, 91 insertions(+), 89 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/arm/mediatek.txt
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek.yaml
-
-diff --git a/Documentation/devicetree/bindings/arm/mediatek.txt b/Documentation/devicetree/bindings/arm/mediatek.txt
-deleted file mode 100644
-index 56ac7896d6d8..000000000000
---- a/Documentation/devicetree/bindings/arm/mediatek.txt
-+++ /dev/null
-@@ -1,89 +0,0 @@
--MediaTek SoC based Platforms Device Tree Bindings
--
--Boards with a MediaTek SoC shall have the following property:
--
--Required root node property:
--
--compatible: Must contain one of
--   "mediatek,mt2701"
--   "mediatek,mt2712"
--   "mediatek,mt6580"
--   "mediatek,mt6589"
--   "mediatek,mt6592"
--   "mediatek,mt6755"
--   "mediatek,mt6765"
--   "mediatek,mt6795"
--   "mediatek,mt6797"
--   "mediatek,mt7622"
--   "mediatek,mt7623"
--   "mediatek,mt7629"
--   "mediatek,mt8127"
--   "mediatek,mt8135"
--   "mediatek,mt8173"
--   "mediatek,mt8183"
--
--
--Supported boards:
--
--- Evaluation board for MT2701:
--    Required root node properties:
--      - compatible = "mediatek,mt2701-evb", "mediatek,mt2701";
--- Evaluation board for MT2712:
--    Required root node properties:
--      - compatible = "mediatek,mt2712-evb", "mediatek,mt2712";
--- Evaluation board for MT6580:
--    Required root node properties:
--      - compatible = "mediatek,mt6580-evbp1", "mediatek,mt6580";
--- bq Aquaris5 smart phone:
--    Required root node properties:
--      - compatible = "mundoreader,bq-aquaris5", "mediatek,mt6589";
--- Evaluation board for MT6592:
--    Required root node properties:
--      - compatible = "mediatek,mt6592-evb", "mediatek,mt6592";
--- Evaluation phone for MT6755(Helio P10):
--    Required root node properties:
--      - compatible = "mediatek,mt6755-evb", "mediatek,mt6755";
--- Evaluation board for MT6765(Helio P22):
--    Required root node properties:
--      - compatible = "mediatek,mt6765-evb", "mediatek,mt6765";
--- Evaluation board for MT6795(Helio X10):
--    Required root node properties:
--      - compatible = "mediatek,mt6795-evb", "mediatek,mt6795";
--- Evaluation board for MT6797(Helio X20):
--    Required root node properties:
--      - compatible = "mediatek,mt6797-evb", "mediatek,mt6797";
--- Mediatek X20 Development Board:
--    Required root node properties:
--      - compatible = "archermind,mt6797-x20-dev", "mediatek,mt6797";
--- Reference board variant 1 for MT7622:
--    Required root node properties:
--      - compatible = "mediatek,mt7622-rfb1", "mediatek,mt7622";
--- Bananapi BPI-R64 for MT7622:
--    Required root node properties:
--      - compatible = "bananapi,bpi-r64", "mediatek,mt7622";
--- Reference board for MT7623a with eMMC:
--    Required root node properties:
--      - compatible = "mediatek,mt7623a-rfb-emmc", "mediatek,mt7623";
--- Reference board for MT7623a with NAND:
--    Required root node properties:
--      - compatible = "mediatek,mt7623a-rfb-nand", "mediatek,mt7623";
--- Reference board for MT7623n with eMMC:
--    Required root node properties:
--      - compatible = "mediatek,mt7623n-rfb-emmc", "mediatek,mt7623";
--- Bananapi BPI-R2 board:
--      - compatible = "bananapi,bpi-r2", "mediatek,mt7623";
--- Reference board for MT7629:
--    Required root node properties:
--      - compatible = "mediatek,mt7629-rfb", "mediatek,mt7629";
--- MTK mt8127 tablet moose EVB:
--    Required root node properties:
--      - compatible = "mediatek,mt8127-moose", "mediatek,mt8127";
--- MTK mt8135 tablet EVB:
--    Required root node properties:
--      - compatible = "mediatek,mt8135-evbp1", "mediatek,mt8135";
--- MTK mt8173 tablet EVB:
--    Required root node properties:
--      - compatible = "mediatek,mt8173-evb", "mediatek,mt8173";
--- Evaluation board for MT8183:
--    Required root node properties:
--      - compatible = "mediatek,mt8183-evb", "mediatek,mt8183";
-diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-new file mode 100644
-index 000000000000..a4ad2eb926f9
---- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-@@ -0,0 +1,91 @@
-+# SPDX-License-Identifier: GPL-2.0
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/arm/mediatek.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek SoC based Platforms Device Tree Bindings
-+
-+maintainers:
-+  - Sean Wang <sean.wang@mediatek.com>
-+  - Matthias Brugger <matthias.bgg@gmail.com>
-+description: |
-+  Boards with a MediaTek SoC shall have the following properties.
-+
-+properties:
-+  $nodename:
-+    const: '/'
-+  compatible:
-+    oneOf:
-+      - items:
-+          - enum:
-+              - mediatek,mt2701-evb
-+          - const: mediatek,mt2701
-+
-+      - items:
-+          - enum:
-+              - mediatek,mt2712-evb
-+          - const: mediatek,mt2712
-+      - items:
-+          - enum:
-+              - mediatek,mt6580-evbp1
-+          - const: mediatek,mt6580
-+      - items:
-+          - enum:
-+              - mundoreader,bq-aquaris5
-+          - const: mediatek,mt6589
-+      - items:
-+          - enum:
-+              - mediatek,mt6592-evb
-+          - const: mediatek,mt6592
-+      - items:
-+          - enum:
-+              - mediatek,mt6755-evb
-+          - const: mediatek,mt6755
-+      - items:
-+          - enum:
-+              - mediatek,mt6765-evb
-+          - const: mediatek,mt6765
-+      - items:
-+          - enum:
-+              - mediatek,mt6795-evb
-+          - const: mediatek,mt6795
-+      - items:
-+          - enum:
-+              - archermind,mt6797-x20-dev
-+              - mediatek,mt6797-evb
-+          - const: mediatek,mt6797
-+      - items:
-+          - enum:
-+              - bananapi,bpi-r64
-+              - mediatek,mt7622-rfb1
-+          - const: mediatek,mt7622
-+      - items:
-+          - enum:
-+              - mediatek,mt7623a-rfb-emmc
-+              - mediatek,mt7623a-rfb-nand
-+              - mediatek,mt7623n-rfb-emmc
-+              - bananapi,bpi-r2
-+          - const: mediatek,mt7623
-+
-+      - items:
-+          - enum:
-+              - mediatek,mt7629-rfb
-+          - const: mediatek,mt7629
-+      - items:
-+          - enum:
-+              - mediatek,mt8127-moose
-+          - const: mediatek,mt8127
-+      - items:
-+          - enum:
-+              - mediatek,mt8135-evbp1
-+          - const: mediatek,mt8135
-+      - items:
-+          - enum:
-+              - mediatek,mt8173-evb
-+          - const: mediatek,mt8173
-+      - items:
-+          - enum:
-+              - mediatek,mt8183-evb
-+          - const: mediatek,mt8183
-+...
--- 
-2.20.1
+Rob
