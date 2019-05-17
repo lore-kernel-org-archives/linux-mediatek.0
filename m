@@ -1,85 +1,181 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v6 08/12] soc: mediatek: cmdq: define the instruction
- struct
-Date: Fri, 17 May 2019 11:32:39 +0800
-Message-ID: <1558063959.14401.18.camel@mtksdaap41>
-References: <20190516090224.59070-1-bibby.hsieh@mediatek.com>
-         <20190516090224.59070-9-bibby.hsieh@mediatek.com>
+From: Long Cheng <long.cheng@mediatek.com>
+Subject: Re: [PATCH 4/4] serial: 8250-mtk: modify uart DMA rx
+Date: Fri, 17 May 2019 15:36:42 +0800
+Message-ID: <1558078602.14150.27.camel@mhfsdcap03>
+References: <1556336193-15198-1-git-send-email-long.cheng@mediatek.com>
+ <1556336193-15198-5-git-send-email-long.cheng@mediatek.com>
+ <CANMq1KDTyu48joV6uMksGBMz9EmjFH9SEpGAm93YCZ40jxgBpQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190516090224.59070-9-bibby.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsimediatek/mtkcam/drv/fdvt/4.0/cam_fdvt_v4l2.cppeh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.ch
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <CANMq1KDTyu48joV6uMksGBMz9EmjFH9SEpGAm93YCZ40jxgBpQ@mail.gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Nicolas Boichat <drinkcat@chromium.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, Zhenbao Liu <zhenbao.liu@mediatek.com>, linux-serial@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Randy Dunlap <rdunlap@infradead.org>, lkml <linux-kernel@vger.kernel.org>, Sean Wang <sean.wang@kernel.org>, YT Shen <yt.shen@mediatek.com>, dmaengine@vger.kernel.org, Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek
+ SoC support" <linux-mediatek@lists.infradead.org>, Sean Wang <sean.wang@mediatek.com>, Jiri Slaby <jslaby@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Dan Williams <dan.j.williams@intel.com>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Bibby:
-
-On Thu, 2019-05-16 at 17:02 +0800, Bibby Hsieh wrote:
-> Define a instruction structure for gce driver to append command.
-> This structure can make the client's code more readability.
+On Wed, 2019-05-15 at 21:48 +0800, Nicolas Boichat wrote:
+> On Sat, Apr 27, 2019 at 11:36 AM Long Cheng <long.cheng@mediatek.com> wrote:
+> >
+> > Modify uart rx and complete for DMA.
 > 
-> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-> ---
->  drivers/soc/mediatek/mtk-cmdq-helper.c   | 113 +++++++++++++++--------
->  include/linux/mailbox/mtk-cmdq-mailbox.h |   2 +
->  include/linux/soc/mediatek/mtk-cmdq.h    |  14 +--
->  3 files changed, 84 insertions(+), 45 deletions(-)
+> I don't know much about the DMA framework, but can you please explain
+> why you are making the changes in this CL? I see that you are dropping
+> dma_sync_single_for_device calls, for example, why?
 > 
 
-[snip]
+the rx buffer is create by 'dma_alloc_coherent'. in the function, the
+buffer is uncache. We don't need to sync between CPU and DMA. So I
+remove it.
 
->  
->  /**
->   * cmdq_pkt_write_mask() - append write command with mask to the CMDQ packet
->   * @pkt:	the CMDQ packet
-> - * @value:	the specified target register value
->   * @subsys:	the CMDQ sub system code
->   * @offset:	register offset from CMDQ sub system
-> + * @value:	the specified target register value
->   * @mask:	the specified target register mask
->   *
->   * Return: 0 for success; else the error code is returned
->   */
-> -int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u32 value,
-> -			u32 subsys, u32 offset, u32 mask);
-> +int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u8 subsys, u16 offset,
-> +			u32 value, u32 mask);
+> >
+> > Signed-off-by: Long Cheng <long.cheng@mediatek.com>
+> > ---
+> >  drivers/tty/serial/8250/8250_mtk.c |   53 ++++++++++++++++--------------------
+> >  1 file changed, 23 insertions(+), 30 deletions(-)
+> >
+> > diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+> > index c1fdbc0..04081a6 100644
+> > --- a/drivers/tty/serial/8250/8250_mtk.c
+> > +++ b/drivers/tty/serial/8250/8250_mtk.c
+> > @@ -30,7 +30,6 @@
+> >  #define MTK_UART_DMA_EN_TX     0x2
+> >  #define MTK_UART_DMA_EN_RX     0x5
+> >
+> > -#define MTK_UART_TX_SIZE       UART_XMIT_SIZE
+> >  #define MTK_UART_RX_SIZE       0x8000
+> >  #define MTK_UART_TX_TRIGGER    1
+> >  #define MTK_UART_RX_TRIGGER    MTK_UART_RX_SIZE
+> > @@ -64,28 +63,30 @@ static void mtk8250_dma_rx_complete(void *param)
+> >         struct mtk8250_data *data = up->port.private_data;
+> >         struct tty_port *tty_port = &up->port.state->port;
+> >         struct dma_tx_state state;
+> > +       int copied, cnt, tmp;
+> >         unsigned char *ptr;
+> > -       int copied;
+> >
+> > -       dma_sync_single_for_cpu(dma->rxchan->device->dev, dma->rx_addr,
+> > -                               dma->rx_size, DMA_FROM_DEVICE);
+> > +       if (data->rx_status == DMA_RX_SHUTDOWN)
+> > +               return;
+> >
+> >         dmaengine_tx_status(dma->rxchan, dma->rx_cookie, &state);
+> > +       cnt = dma->rx_size - state.residue;
+> > +       tmp = cnt;
+> 
+> I ponder, maybe we should rename cnt to left? (like, how many bytes
+> are left to transfer, in total) Or maybe "total"
+> Then maybe rename tmp to cnt.
+> 
+like better.
 
-You have do two things for this interface: one is reordering the
-parameter, another one is changing type of subsys from u32 to u8.
+> >
+> > -       if (data->rx_status == DMA_RX_SHUTDOWN)
+> > -               return;
+> > +       if ((data->rx_pos + cnt) > dma->rx_size)
+> > +               tmp = dma->rx_size - data->rx_pos;
+> 
+> Maybe replace this and the line above:
+> tmp = max_t(int, cnt, dma->rx_size - data->rx_pos);
+> 
+Yes. It's better.
 
-Define the instruction struct is not necessary to change the order and
-type. I would like you to separate these two things to another patches.
-So the patch sequence may be:
+> >
+> > -       if ((data->rx_pos + state.residue) <= dma->rx_size) {
+> > -               ptr = (unsigned char *)(data->rx_pos + dma->rx_buf);
+> > -               copied = tty_insert_flip_string(tty_port, ptr, state.residue);
+> > -       } else {
+> > -               ptr = (unsigned char *)(data->rx_pos + dma->rx_buf);
+> > -               copied = tty_insert_flip_string(tty_port, ptr,
+> > -                                               dma->rx_size - data->rx_pos);
+> > +       ptr = (unsigned char *)(data->rx_pos + dma->rx_buf);
+> > +       copied = tty_insert_flip_string(tty_port, ptr, tmp);
+> > +       data->rx_pos += tmp;
+> > +
+> > +       if (cnt > tmp) {
+> >                 ptr = (unsigned char *)(dma->rx_buf);
+> > -               copied += tty_insert_flip_string(tty_port, ptr,
+> > -                               data->rx_pos + state.residue - dma->rx_size);
+> > +               tmp = cnt - tmp;
+> > +               copied += tty_insert_flip_string(tty_port, ptr, tmp);
+> > +               data->rx_pos = tmp;
+> >         }
+> > +
+> >         up->port.icount.rx += copied;
+> >
+> >         tty_flip_buffer_push(tty_port);
+> > @@ -96,9 +97,7 @@ static void mtk8250_dma_rx_complete(void *param)
+> >  static void mtk8250_rx_dma(struct uart_8250_port *up)
+> >  {
+> >         struct uart_8250_dma *dma = up->dma;
+> > -       struct mtk8250_data *data = up->port.private_data;
+> >         struct dma_async_tx_descriptor  *desc;
+> > -       struct dma_tx_state      state;
+> >
+> >         desc = dmaengine_prep_slave_single(dma->rxchan, dma->rx_addr,
+> >                                            dma->rx_size, DMA_DEV_TO_MEM,
+> > @@ -113,12 +112,6 @@ static void mtk8250_rx_dma(struct uart_8250_port *up)
+> >
+> >         dma->rx_cookie = dmaengine_submit(desc);
+> >
+> > -       dmaengine_tx_status(dma->rxchan, dma->rx_cookie, &state);
+> > -       data->rx_pos = state.residue;
+> > -
+> > -       dma_sync_single_for_device(dma->rxchan->device->dev, dma->rx_addr,
+> > -                                  dma->rx_size, DMA_FROM_DEVICE);
+> > -
+> >         dma_async_issue_pending(dma->rxchan);
+> >  }
+> >
+> > @@ -131,13 +124,13 @@ static void mtk8250_dma_enable(struct uart_8250_port *up)
+> >         if (data->rx_status != DMA_RX_START)
+> >                 return;
+> >
+> > -       dma->rxconf.direction           = DMA_DEV_TO_MEM;
+> > -       dma->rxconf.src_addr_width      = dma->rx_size / 1024;
+> > -       dma->rxconf.src_addr            = dma->rx_addr;
+> > +       dma->rxconf.direction                           = DMA_DEV_TO_MEM;
+> > +       dma->rxconf.src_port_window_size        = dma->rx_size;
+> > +       dma->rxconf.src_addr                            = dma->rx_addr;
+> >
+> > -       dma->txconf.direction           = DMA_MEM_TO_DEV;
+> > -       dma->txconf.dst_addr_width      = MTK_UART_TX_SIZE / 1024;
+> > -       dma->txconf.dst_addr            = dma->tx_addr;
+> > +       dma->txconf.direction                           = DMA_MEM_TO_DEV;
+> > +       dma->txconf.dst_port_window_size        = UART_XMIT_SIZE;
+> > +       dma->txconf.dst_addr                            = dma->tx_addr;
+> >
+> >         serial_out(up, UART_FCR, UART_FCR_ENABLE_FIFO | UART_FCR_CLEAR_RCVR |
+> >                 UART_FCR_CLEAR_XMIT);
+> > @@ -217,7 +210,7 @@ static void mtk8250_shutdown(struct uart_port *port)
+> >          * Mediatek UARTs use an extra highspeed register (UART_MTK_HIGHS)
+> >          *
+> >          * We need to recalcualte the quot register, as the claculation depends
+> > -        * on the vaule in the highspeed register.
+> > +        * on the value in the highspeed register.
+> 
+> Since you're doing some cosmetic changes here, you might as well fix
+> recalcualte => recalculate and claculation => calculation on the line
+> above.
+> 
 
-1. Reorder parameter of cmdq_pkt_write_mask()
-2. Change subsys type to u8
-3. define the instruction struct
+I see.
 
-Regards,
-CK
-
->  
->  /**
->   * cmdq_pkt_wfe() - append wait for event command to the CMDQ packet
-> @@ -88,7 +88,7 @@ int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u32 value,
->   *
->   * Return: 0 for success; else the error code is returned
->   */
-> -int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u32 event);
-> +int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event);
->  
->  /**
->   * cmdq_pkt_clear_event() - append clear event command to the CMDQ packet
-> @@ -97,7 +97,7 @@ int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u32 event);
->   *
->   * Return: 0 for success; else the error code is returned
->   */
-> -int cmdq_pkt_clear_event(struct cmdq_pkt *pkt, u32 event);
-> +int cmdq_pkt_clear_event(struct cmdq_pkt *pkt, u16 event);
->  
->  /**
->   * cmdq_pkt_flush_async() - trigger CMDQ to asynchronously execute the CMDQ
+> But technically, this should belong in another patch...
+> 
+> >          *
+> >          * Some baudrates are not supported by the chip, so we use the next
+> >          * lower rate supported and update termios c_flag.
+> > --
+> > 1.7.9.5
+> >
