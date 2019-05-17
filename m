@@ -1,33 +1,51 @@
-From: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Subject: Re: [PATCH v3 0/4] MTK NAND driver improvements and fixes
-Date: Fri, 17 May 2019 10:12:26 +0200
-Message-ID: <20190517101226.17b23550@xps13>
-References: <20190507102541.34341-1-xiaolei.li@mediatek.com>
- <1558056767.26455.98.camel@mhfsdcap03>
+From: Loys Ollivier <lollivier@baylibre.com>
+Subject: Re: [PATCH v2] gnss: get serial speed from subdrivers
+Date: Fri, 17 May 2019 10:45:53 +0200
+Message-ID: <86y33579ku.fsf@baylibre.com>
+References: <1558024626-19395-1-git-send-email-lollivier@baylibre.com> <69b5e90c-c1c3-9f2e-57a8-64741182a96e@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1558056767.26455.98.camel@mhfsdcap03>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: richard-/L3Ra7n9ekc@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <69b5e90c-c1c3-9f2e-57a8-64741182a96e@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Robin Murphy <robin.murphy@arm.com>, Johan Hovold <johan@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: baylibre-upstreaming@groups.io, linux-kernel@vger.kernel.org, Corentin Labbe <clabbe.montjoie@gmail.com>, linux-mediatek@lists.infradead.org, Colin Ian King <colin.king@canonical.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgeGlhb2xlaSwKCnhpYW9sZWkgbGkgPHhpYW9sZWkubGlAbWVkaWF0ZWsuY29tPiB3cm90ZSBv
-biBGcmksIDE3IE1heSAyMDE5IDA5OjMyOjQ3CiswODAwOgoKPiBIaSBNaXF1ZWwsCj4gCj4gU29y
-cnkgdG8gYm90aGVyIHlvdSwgYnV0IG1heSBJIGFzayBpZiBpdCBpcyBmaW5lIHRvIGFjY2VwdCB0
-aGlzIHBhdGNoCj4gc2V0IG5vdywgcGF0Y2hlcyBhbGwgd2l0aCB5b3VyIHJldmlldy4KCldlIGFy
-ZSBpbiB0aGUgbWlkZGxlIG9mIHRoZSBtZXJnZSB3aW5kb3csIHNvIHllcywgSSB3aWxsIHRha2Ug
-eW91cgpwYXRjaGVzLCBidXQgbm90IG5vdy4KClRoYW5rcywKTWlxdcOobAoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
-ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+On Thu 16 May 2019 at 19:02, Robin Murphy <robin.murphy@arm.com> wrote:
+
+>> -/*
+>> - * FIXME: need to provide subdriver defaults or separate dt parsing from
+>> - * allocation.
+>> - */
+>>   static int gnss_serial_parse_dt(struct serdev_device *serdev)
+>>   {
+>>   	struct gnss_serial *gserial = serdev_device_get_drvdata(serdev);
+>>   	struct device_node *node = serdev->dev.of_node;
+>> -	u32 speed = 4800;
+>> +	u32 speed;
+>>   
+>> -	of_property_read_u32(node, "current-speed", &speed);
+>> +	of_property_read_u32(node, "default-speed", &speed);
+>>   
+>>   	gserial->speed = speed;
+>
+> Hmm, maybe it's a bit too convoluted for the compiler to warn about, but 
+> if a "default-speed" property is not present, gserial->speed will now be 
+> assigned an uninitialised value. I don't know what the intent is neither 
+> the driver nor the DT provides a value, but you'll either need to bring 
+> back the fallback initialisation above or propagate errors from 
+> of_property_read_u32().
+>
+> Robin.
+>
+
+Robin,
+Good point, thank you for your review. I'll think about it and see about
+a fallback scenario.
+I would be in favour of propagating the error because default values are
+very dependent on the hardware in use.
+
+Best,
+
+Loys
