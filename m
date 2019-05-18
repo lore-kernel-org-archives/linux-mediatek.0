@@ -1,131 +1,132 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [RFC PATCH V1 1/6] dt-bindings: mt8183: Add binding for DIP
- shared memory
-Date: Fri, 17 May 2019 17:22:41 -0500
-Message-ID: <CAL_Jsq+hcgth5gT4gCKPiWtFvje8eOHFs1PxtkHJ6Raj8TOw3w@mail.gmail.com>
-References: <20190417104511.21514-1-frederic.chen@mediatek.com>
- <20190417104511.21514-2-frederic.chen@mediatek.com>
- <20190430011506.GA8514@bogus>
- <1557238925.11663.21.camel@mtksdccf07>
- <CAL_JsqKGW9WqyNgqKD0MxsqxYHKZ+VNV5A2p+neGqwmKmiODOQ@mail.gmail.com>
- <CAAFQd5BVWjcxp9Tia9Pmgn_54bc9n5Vs1s__G7YWHiezfVVYpA@mail.gmail.com>
+From: Jitao Shi <jitao.shi@mediatek.com>
+Subject: Re: [v2 3/3] drm/mediatek: add mipi_tx driver for mt8183
+Date: Sat, 18 May 2019 15:51:32 +0800
+Message-ID: <1558165892.7681.8.camel@mszsdaap41>
+References: <20190416054217.75387-1-jitao.shi@mediatek.com>
+         <20190416054217.75387-4-jitao.shi@mediatek.com>
+         <1557134258.5345.5.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAAFQd5BVWjcxp9Tia9Pmgn_54bc9n5Vs1s__G7YWHiezfVVYpA@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: Shik Chen <shik@chromium.org>, devicetree@vger.kernel.org, =?UTF-8?B?U2VhbiBDaGVuZyAo6YSt5piH5byYKQ==?= <Sean.Cheng@mediatek.com>, Frederic Chen <frederic.chen@mediatek.com>, =?UTF-8?B?UnlubiBXdSAo5ZCz6IKy5oGpKQ==?= <Rynn.Wu@mediatek.com>, =?UTF-8?B?Q2hyaXN0aWUgWXUgKOa4uOmbheaDoCk=?= <christie.yu@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>, =?UTF-8?B?SG9sbWVzIENoaW91ICjpgrHmjLop?= <holmes.chiou@mediatek.com>, suleiman@chromium.org, Jerry-ch Chen <Jerry-ch.Chen@mediatek.com>, yuzhao@chromium.org, =?UTF-8?B?SnVuZ28gTGluICjmnpfmmI7kv4op?= <jungo.lin@mediatek.com>, Sj Huang <sj.huang@mediatek.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Hans Verkuil <hans.verkuil@cisco.com>, zwisler@chromium.org, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Mauro
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1557134258.5345.5.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: CK Hu <ck.hu@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, May 16, 2019 at 1:12 AM Tomasz Figa <tfiga@chromium.org> wrote:
->
-> On Wed, May 15, 2019 at 1:19 AM Rob Herring <robh@kernel.org> wrote:
-> >
-> > On Tue, May 7, 2019 at 9:22 AM Frederic Chen <frederic.chen@mediatek.com> wrote:
-> > >
-> > > Dear Rob,
-> > >
-> > > I appreciate your comments.
-> > >
-> > > On Mon, 2019-04-29 at 20:15 -0500, Rob Herring wrote:
-> > > > On Wed, Apr 17, 2019 at 06:45:06PM +0800, Frederic Chen wrote:
-> > > > > This patch adds the binding for describing the shared memory
-> > > > > used to exchange configuration and tuning data between the
-> > > > > co-processor and Digital Image Processing (DIP) unit of the
-> > > > > camera ISP system on Mediatek SoCs.
-> > > > >
-> > > > > Signed-off-by: Frederic Chen <frederic.chen@mediatek.com>
-> > > > > ---
-> > > > >  .../mediatek,reserve-memory-dip_smem.txt      | 45 +++++++++++++++++++
-> > > > >  1 file changed, 45 insertions(+)
-> > > > >  create mode 100644 Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt
-> > > > >
-> > > > > diff --git a/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt b/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt
-> > > > > new file mode 100644
-> > > > > index 000000000000..64c001b476b9
-> > > > > --- /dev/null
-> > > > > +++ b/Documentation/devicetree/bindings/reserved-memory/mediatek,reserve-memory-dip_smem.txt
-> > > > > @@ -0,0 +1,45 @@
-> > > > > +Mediatek DIP Shared Memory binding
-> > > > > +
-> > > > > +This binding describes the shared memory, which serves the purpose of
-> > > > > +describing the shared memory region used to exchange data between Digital
-> > > > > +Image Processing (DIP) and co-processor in Mediatek SoCs.
-> > > > > +
-> > > > > +The co-processor doesn't have the iommu so we need to use the physical
-> > > > > +address to access the shared buffer in the firmware.
-> > > > > +
-> > > > > +The Digital Image Processing (DIP) can access memory through mt8183 IOMMU so
-> > > > > +it can use dma address to access the memory region.
-> > > > > +(See iommu/mediatek,iommu.txt for the detailed description of Mediatek IOMMU)
-> > > > > +
-> > > > > +
-> > > > > +Required properties:
-> > > > > +
-> > > > > +- compatible: must be "mediatek,reserve-memory-dip_smem"
-> > > >
-> > > > Don't use '_'.
-> > >
-> > > I got it. I will use "mediatek,reserve-memory-dip-smem" instead in next
-> > > version of the patch
-> > >
-> > > >
-> > > > > +
-> > > > > +- reg: required for static allocation (see reserved-memory.txt for
-> > > > > +  the detailed usage)
-> > > > > +
-> > > > > +- alloc-range: required for dynamic allocation. The range must
-> > > > > +  between 0x00000400 and 0x100000000 due to the co-processer's
-> > > > > +  addressing limitation
-> > > >
-> > > > Generally, you should pick either static or dynamic allocation for a
-> > > > given binding. Static if there's some address restriction or sharing,
-> > > > dynamic if not.
-> > > >
-> > > > Sounds like static in this case.
-> > > >
-> > >
-> > > DIP reserved memory has address restriction so it is the static case. I
-> > > would like to remove the dynamic allocation part and modify the
-> > > description as following:
-> > >
-> > > - reg: required for DIP. The range must be between 0x00000400 and
-> > >   0x100000000 due to the co-processor's addressing limitation.
-> > >   The size must be 26MB. Please see reserved-memory.txt for the
-> > >   detailed usage.
-> >
-> > You can use dma-ranges to define addressing translations and
-> > restrictions like this. That will in turn set the device's dma-mask to
-> > ensure allocations are done in a region that is addressable.
-> >
-> > But if you have a known, fixed size, then a carve out with
-> > reserved-memory is fine.
->
-> There is also another aspect here. The coprocessor that we're
-> allocating the memory for is behind an MPU that must be programmed
-> completely in one go and locked for security reasons to ensure that
-> the coprocessor itself doesn't rewrite the MPU settings. That means
-> that we need to have all the allocations completed before booting that
-> coprocessor.
->
-> To be honest, I'd adopt a completely different design here.
->
-> We're going to have a driver for that coprocessor (SCP) and IMHO any
-> shared memory areas should belong to it. Then, any specific drivers
-> talking to the firmware running on SCP should ask the SCP driver to
-> allocate some memory from its fixed pool. WDYT?
+On Mon, 2019-05-06 at 17:17 +0800, CK Hu wrote:
+> Hi, Jitao:
+> 
+> On Tue, 2019-04-16 at 13:42 +0800, Jitao Shi wrote:
+> > This patch add mt8183 mipi_tx driver.
+> > And also support other chips that use the same binding and driver.
+> > 
+> > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> > ---
+> >  drivers/gpu/drm/mediatek/Makefile             |   1 +
+> >  drivers/gpu/drm/mediatek/mtk_mipi_tx.c        |   2 +
+> >  drivers/gpu/drm/mediatek/mtk_mipi_tx.h        |   1 +
+> >  drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c | 154 ++++++++++++++++++
+> >  4 files changed, 158 insertions(+)
+> >  create mode 100644 drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c
+> > 
+> 
+> [snip]
+> 
+> > +
+> > +static int mtk_mipi_tx_pll_prepare(struct clk_hw *hw)
+> > +{
+> > +	struct mtk_mipi_tx *mipi_tx = mtk_mipi_tx_from_clk_hw(hw);
+> > +	unsigned int txdiv, txdiv0;
+> > +	u64 pcw;
+> > +	int ret;
+> > +
+> > +	dev_dbg(mipi_tx->dev, "prepare: %u bps\n", mipi_tx->data_rate);
+> > +
+> > +	if (mipi_tx->data_rate >= 2000000000) {
+> > +		txdiv = 1;
+> > +		txdiv0 = 0;
+> > +	} else if (mipi_tx->data_rate >= 1000000000) {
+> > +		txdiv = 2;
+> > +		txdiv0 = 1;
+> > +	} else if (mipi_tx->data_rate >= 500000000) {
+> > +		txdiv = 4;
+> > +		txdiv0 = 2;
+> > +	} else if (mipi_tx->data_rate > 250000000) {
+> > +		txdiv = 8;
+> > +		txdiv0 = 3;
+> > +	} else if (mipi_tx->data_rate >= 125000000) {
+> > +		txdiv = 16;
+> > +		txdiv0 = 4;
+> > +	} else {
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	ret = clk_prepare_enable(mipi_tx->ref_clk);
+> > +	if (ret < 0) {
+> > +		dev_err(mipi_tx->dev,
+> > +			"can't prepare and enable mipi_tx ref_clk %d\n", ret);
+> > +		return ret;
+> > +	}
+> 
+> You enable the parent clock when prepare this clock here, this behavior
+> looks strange. I think the flow should be:
+> 
+> 1. Parent clock prepare
+> 2. This clock prepare
+> 3. Parent clock enable
+> 4. This clock enable
+> 
+> Maybe you should implement 'enable callback' so that parent clock would
+> be already enabled.
+> 
+> One question is, mipi_tx_pll is used by dsi driver, but I does not see
+> dsi prepare_enable() mipi_tx_pll, how does this work?
+> 
+> Regards,
+> CK
+> 
 
-That's more than just an address restriction, so yeah, use a
-reserved-memory area.
+The mipi_tx can be accessed after clk_prepare_enable(mipi_tx->ref_clk);
 
-Rob
+So place the clk_prepare_enable(mipi_tx->ref_clk) before accessing
+mipitx.
+
+mipi_tx_pll is enable by mtk_mipi_tx_power_on() in mtk_mip_tx.c.
+clk_prepare_enable(mipi_tx->pll) will enable mipi_tx_pll.
+
+Beset Regards
+Jitao
+
+> > +
+> > +	mtk_mipi_tx_clear_bits(mipi_tx, MIPITX_PLL_CON4, RG_DSI_PLL_IBIAS);
+> > +
+> > +	mtk_mipi_tx_set_bits(mipi_tx, MIPITX_PLL_PWR, AD_DSI_PLL_SDM_PWR_ON);
+> > +	usleep_range(30, 100);
+> > +	mtk_mipi_tx_clear_bits(mipi_tx, MIPITX_PLL_PWR, AD_DSI_PLL_SDM_ISO_EN);
+> > +	pcw = div_u64(((u64)mipi_tx->data_rate * txdiv) << 24, 26000000);
+> > +	writel(pcw, mipi_tx->regs + MIPITX_PLL_CON0);
+> > +	mtk_mipi_tx_update_bits(mipi_tx, MIPITX_PLL_CON1, RG_DSI_PLL_POSDIV,
+> > +				txdiv0 << 8);
+> > +	usleep_range(1000, 2000);
+> > +	mtk_mipi_tx_set_bits(mipi_tx, MIPITX_PLL_CON1, RG_DSI_PLL_EN);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static void mtk_mipi_tx_pll_unprepare(struct clk_hw *hw)
+> > +{
+> > +	struct mtk_mipi_tx *mipi_tx = mtk_mipi_tx_from_clk_hw(hw);
+> > +
+> > +	dev_dbg(mipi_tx->dev, "unprepare\n");
+> > +
+> > +	mtk_mipi_tx_clear_bits(mipi_tx, MIPITX_PLL_CON1, RG_DSI_PLL_EN);
+> > +
+> > +	mtk_mipi_tx_set_bits(mipi_tx, MIPITX_PLL_PWR, AD_DSI_PLL_SDM_ISO_EN);
+> > +	mtk_mipi_tx_clear_bits(mipi_tx, MIPITX_PLL_PWR, AD_DSI_PLL_SDM_PWR_ON);
+> > +	clk_disable_unprepare(mipi_tx->ref_clk);
+> > +}
+> > +
+> 
+> 
