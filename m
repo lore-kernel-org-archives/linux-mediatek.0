@@ -1,74 +1,40 @@
-From: Chaotian Jing <chaotian.jing@mediatek.com>
-Subject: [PATCH 2/2] mmc: mediatek: support 24bits segment size
-Date: Sun, 19 May 2019 15:57:17 +0800
-Message-ID: <1558252637-10556-3-git-send-email-chaotian.jing@mediatek.com>
-References: <1558252637-10556-1-git-send-email-chaotian.jing@mediatek.com>
+From: Jitao Shi <jitao.shi@mediatek.com>
+Subject: [v3 0/7] Support dsi for mt8183
+Date: Sun, 19 May 2019 17:25:30 +0800
+Message-ID: <20190519092537.69053-1-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1558252637-10556-1-git-send-email-chaotian.jing@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: srv_heupstream@mediatek.com, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: stonea168@163.com, dri-devel@lists.freedesktop.org, Andy Yan <andy.yan@rock-chips.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa.cheng@mediatek.com, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Sean Paul <seanpaul@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-MSDC IP which support 64G DRAM will support 24bits BDMA buffer length,
-so add support it.
-
-Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
----
- drivers/mmc/host/mtk-sd.c | 16 +++++++++++++---
- 1 file changed, 13 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 7d8502a..682e483 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -336,6 +336,7 @@ struct mt_bdma_desc {
- 	u32 ptr;
- 	u32 bd_data_len;
- #define BDMA_DESC_BUFLEN	(0xffff) /* bit0 ~ bit15 */
-+#define BDMA_DESC_BUFLEN_EXT	(0xffffff) /* bit0 ~ bit23 */
- };
- 
- struct msdc_dma {
-@@ -649,8 +650,14 @@ static inline void msdc_dma_setup(struct msdc_host *host, struct msdc_dma *dma,
- 			bd[j].bd_info |= (upper_32_bits(dma_address) & 0xf)
- 					 << 28;
- 		}
--		bd[j].bd_data_len &= ~BDMA_DESC_BUFLEN;
--		bd[j].bd_data_len |= (dma_len & BDMA_DESC_BUFLEN);
-+
-+		if (host->dev_comp->support_64g) {
-+			bd[j].bd_data_len &= ~BDMA_DESC_BUFLEN_EXT;
-+			bd[j].bd_data_len |= (dma_len & BDMA_DESC_BUFLEN_EXT);
-+		} else {
-+			bd[j].bd_data_len &= ~BDMA_DESC_BUFLEN;
-+			bd[j].bd_data_len |= (dma_len & BDMA_DESC_BUFLEN);
-+		}
- 
- 		if (j == data->sg_count - 1) /* the last bd */
- 			bd[j].bd_info |= BDMA_DESC_EOL;
-@@ -2280,7 +2287,10 @@ static int msdc_drv_probe(struct platform_device *pdev)
- 	mmc->caps |= MMC_CAP_ERASE | MMC_CAP_CMD23;
- 	/* MMC core transfer sizes tunable parameters */
- 	mmc->max_segs = MAX_BD_NUM;
--	mmc->max_seg_size = BDMA_DESC_BUFLEN;
-+	if (host->dev_comp->support_64g)
-+		mmc->max_seg_size = BDMA_DESC_BUFLEN_EXT;
-+	else
-+		mmc->max_seg_size = BDMA_DESC_BUFLEN;
- 	mmc->max_blk_size = 2048;
- 	mmc->max_req_size = 512 * 1024;
- 	mmc->max_blk_count = mmc->max_req_size / 512;
--- 
-1.8.1.1.dirty
+Q2hhbmdlcyBzaW5jZSB2MjoKIC0gY2hhbmdlIHRoZSB2aWRlbyB0aW1pbmcgY2FsYyBtZXRob2QK
+IC0gZmluZSB0aGUgZHNpIGFuZCBtaXBpdHggaW5pdCBzZXF1ZW5jZQogLSBmaW5lIHR1bmUgY29t
+bWl0IG1zZwoKQ2hhbmdlcyBzaW5jZSB2MToKIC0gc2VwYXJhdGUgZnJhbWUgc2l6ZSBhbmQgcmVn
+IGNvbW1pdCBjb250cm9sIGluZGVwZW5kZW50IHBhdGNoZXMuCiAtIGZpeCBzb21lIHJldHVybiB2
+YWx1ZXMgaW4gcHJvYmUKIC0gcmVtb3ZlIERTSV9DTURXMCBpbiAiQ01EUSByZWcgYWRkcmVzcyBv
+ZiBtdDgxNzMgaXMgZGlmZmVyZW50IHdpdGggbXQyNzAxIgoKSml0YW8gU2hpICg3KToKICBkcm0v
+bWVkaWF0ZWs6IG1vdmUgbWlwaV9kc2lfaG9zdF9yZWdpc3RlciB0byBwcm9iZQogIGRybS9tZWRp
+YXRlazogZml4ZXMgQ01EUSByZWcgYWRkcmVzcyBvZiBtdDgxNzMgaXMgZGlmZmVyZW50IHdpdGgK
+ICAgIG10MjcwMQogIGRybS9tZWRpYXRlazogYWRkIGRzaSByZWcgY29tbWl0IGRpc2FibGUgY29u
+dHJvbAogIGRybS9tZWRpYXRlazogYWRkIGZyYW1lIHNpemUgY29udHJvbAogIGRybS9tZWRpYXRl
+azogYWRkIG10ODE4MyBkc2kgZHJpdmVyIHN1cHBvcnQKICBkcm0vbWVkaWF0ZWs6IGNoYW5nZSB0
+aGUgZHNpIHBoeXRpbWluZyBjYWxjdWxhdGUgbWV0aG9kCiAgZHJtOiBtZWRpYXRlazogYWRqdXN0
+IGRzaSBhbmQgbWlwaV90eCBwcm9iZSBzZXF1ZW5jZQoKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
+ay9tdGtfZHJtX2Rydi5jIHwgICAyICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rz
+aS5jICAgICB8IDIxOSArKysrKysrKysrKysrKysrKystLS0tLS0tCiAyIGZpbGVzIGNoYW5nZWQs
+IDE2MyBpbnNlcnRpb25zKCspLCA1OCBkZWxldGlvbnMoLSkKCi0tIAoyLjIxLjAKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
+IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
+ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
