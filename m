@@ -1,63 +1,43 @@
-From: Jonathan Cameron <jic23@kernel.org>
-Subject: Re: [PATCH 4/4] iio: auxadc: mediatek: change to subsys_initcall
-Date: Sat, 18 May 2019 11:36:43 +0100
-Message-ID: <20190518113643.53a42976@archlinux>
-References: <1557994247-16739-1-git-send-email-chun-hung.wu@mediatek.com>
-        <1557994247-16739-5-git-send-email-chun-hung.wu@mediatek.com>
+From: Weitao Hou <houweitaoo@gmail.com>
+Subject: [PATCH] net: fix typos in code comments
+Date: Sun, 19 May 2019 11:09:23 +0800
+Message-ID: <20190519030923.18343-1-houweitaoo@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1557994247-16739-5-git-send-email-chun-hung.wu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chun-Hung Wu <chun-hung.wu@mediatek.com>
-Cc: Hartmut Knaack <knaack.h@gmx.de>, Lars-Peter Clausen <lars@metafoo.de>, Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-iio@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com, peter.wang@mediatek.com, kuohong.wang@mediatek.com, jg_poxu@mediatek.com
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: nbd@nbd.name, lorenzo.bianconi83@gmail.com, ryder.lee@mediatek.com, royluo@google.com, kvalo@codeaurora.org, davem@davemloft.net, matthias.bgg@gmail.com
+Cc: netdev@vger.kernel.org, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, Weitao Hou <houweitaoo@gmail.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 16 May 2019 16:10:47 +0800
-Chun-Hung Wu <chun-hung.wu@mediatek.com> wrote:
+fix lenght to length
 
->   Move auxadc platform_driver_register() from module_init
-> to subsys_initcall because auxadc user drivers
-> are all moudle drivers, need to gurantee
-> auxadc driver ready before module_init.
-> 
-Is it not possible to make them use deferred handling to come
-back later if this isn't yet available?
+Signed-off-by: Weitao Hou <houweitaoo@gmail.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt76x02_usb_core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-subsys_initcall often ends up being a more fragile approach.
-
-Thanks,
-
-Jonathan
-
-> Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
-> ---
->  drivers/iio/adc/mt6577_auxadc.c | 14 +++++++++++++-
->  1 file changed, 13 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
-> index 58d7cb2..cb8e3dd 100644
-> --- a/drivers/iio/adc/mt6577_auxadc.c
-> +++ b/drivers/iio/adc/mt6577_auxadc.c
-> @@ -350,7 +350,19 @@ static int mt6577_auxadc_remove(struct platform_device *pdev)
->  	.probe	= mt6577_auxadc_probe,
->  	.remove	= mt6577_auxadc_remove,
->  };
-> -module_platform_driver(mt6577_auxadc_driver);
-> +
-> +static int __init mt6577_auxadc_init(void)
-> +{
-> +	return platform_driver_register(&mt6577_auxadc_driver);
-> +}
-> +
-> +static void __exit mt6577_auxadc_exit(void)
-> +{
-> +	platform_driver_unregister(&mt6577_auxadc_driver);
-> +}
-> +
-> +subsys_initcall(mt6577_auxadc_init);
-> +module_exit(mt6577_auxadc_exit);
->  
->  MODULE_AUTHOR("Zhiyong Tao <zhiyong.tao@mediatek.com>");
->  MODULE_DESCRIPTION("MTK AUXADC Device Driver");
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_usb_core.c b/drivers/net/wireless/mediatek/mt76/mt76x02_usb_core.c
+index 6b89f7eab26c..e0f5e6202a27 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_usb_core.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_usb_core.c
+@@ -53,7 +53,7 @@ int mt76x02u_skb_dma_info(struct sk_buff *skb, int port, u32 flags)
+ 	pad = round_up(skb->len, 4) + 4 - skb->len;
+ 
+ 	/* First packet of a A-MSDU burst keeps track of the whole burst
+-	 * length, need to update lenght of it and the last packet.
++	 * length, need to update length of it and the last packet.
+ 	 */
+ 	skb_walk_frags(skb, iter) {
+ 		last = iter;
+-- 
+2.18.0
