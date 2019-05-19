@@ -1,11 +1,13 @@
-From: Weitao Hou <houweitaoo@gmail.com>
-Subject: [PATCH] net: fix typos in code comments
-Date: Sun, 19 May 2019 11:09:23 +0800
-Message-ID: <20190519030923.18343-1-houweitaoo@gmail.com>
+From: Chaotian Jing <chaotian.jing@mediatek.com>
+Subject: [PATCH 1/2] mmc: mediatek: fix controller busy when plug out SD
+Date: Sun, 19 May 2019 15:57:16 +0800
+Message-ID: <1558252637-10556-2-git-send-email-chaotian.jing@mediatek.com>
+References: <1558252637-10556-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1558252637-10556-1-git-send-email-chaotian.jing@mediatek.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -15,29 +17,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: nbd@nbd.name, lorenzo.bianconi83@gmail.com, ryder.lee@mediatek.com, royluo@google.com, kvalo@codeaurora.org, davem@davemloft.net, matthias.bgg@gmail.com
-Cc: netdev@vger.kernel.org, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, Weitao Hou <houweitaoo@gmail.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: srv_heupstream@mediatek.com, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-fix lenght to length
+when plug out SD card, may get data CRC error, the MMC core will issue
+CMD13 to get card status, then CMD13 timeout(due to card plug out) will
+trigger CMD19 tuning, first CMD19 timeout has not call msdc_reset_hw()
+and cause the next CMD19 gets controller busy.
 
-Signed-off-by: Weitao Hou <houweitaoo@gmail.com>
+Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x02_usb_core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/mmc/host/mtk-sd.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_usb_core.c b/drivers/net/wireless/mediatek/mt76/mt76x02_usb_core.c
-index 6b89f7eab26c..e0f5e6202a27 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x02_usb_core.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_usb_core.c
-@@ -53,7 +53,7 @@ int mt76x02u_skb_dma_info(struct sk_buff *skb, int port, u32 flags)
- 	pad = round_up(skb->len, 4) + 4 - skb->len;
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index c518cc2..7d8502a 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -1077,11 +1077,13 @@ static bool msdc_cmd_done(struct msdc_host *host, int events,
+ 	}
  
- 	/* First packet of a A-MSDU burst keeps track of the whole burst
--	 * length, need to update lenght of it and the last packet.
-+	 * length, need to update length of it and the last packet.
- 	 */
- 	skb_walk_frags(skb, iter) {
- 		last = iter;
+ 	if (!sbc_error && !(events & MSDC_INT_CMDRDY)) {
+-		if (cmd->opcode != MMC_SEND_TUNING_BLOCK &&
+-		    cmd->opcode != MMC_SEND_TUNING_BLOCK_HS200)
++		if (events & MSDC_INT_CMDTMO ||
++		    (cmd->opcode != MMC_SEND_TUNING_BLOCK &&
++		     cmd->opcode != MMC_SEND_TUNING_BLOCK_HS200))
+ 			/*
+ 			 * should not clear fifo/interrupt as the tune data
+-			 * may have alreay come.
++			 * may have alreay come when cmd19/cmd21 gets response
++			 * CRC error.
+ 			 */
+ 			msdc_reset_hw(host);
+ 		if (events & MSDC_INT_RSPCRCERR) {
 -- 
-2.18.0
+1.8.1.1.dirty
