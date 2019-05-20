@@ -1,66 +1,145 @@
-From: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v2] ASoC: Mediatek: MT8183: enable IIR filter
-Date: Mon, 20 May 2019 16:24:20 +0800
-Message-ID: <20190520082420.11236-1-shunli.wang@mediatek.com>
+From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+Subject: Re: [PATCH v5 5/6] usb: roles: add USB Type-B GPIO connector driver
+Date: Mon, 20 May 2019 11:31:51 +0300
+Message-ID: <20190520083151.GD1887@kuha.fi.intel.com>
+References: <1557823643-8616-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1557823643-8616-6-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, tzungbi-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1557823643-8616-6-git-send-email-chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Biju Das <biju.das@bp.renesas.com>, Linus Walleij <linus.walleij@linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-IIR fileter can remove DC offset. It must be enabled when
-dmic or amic connected to pmic is used.
+On Tue, May 14, 2019 at 04:47:22PM +0800, Chunfeng Yun wrote:
+> +static int usb_conn_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct device_node *node = dev->of_node;
+> +	struct device_node *remote_node;
+> +	struct usb_conn_info *info;
+> +	int ret = 0;
+> +
+> +	info = devm_kzalloc(dev, sizeof(*info), GFP_KERNEL);
+> +	if (!info)
+> +		return -ENOMEM;
+> +
+> +	info->dev = dev;
+> +	info->id_gpiod = devm_gpiod_get_optional(dev, "id", GPIOD_IN);
+> +	if (IS_ERR(info->id_gpiod))
+> +		return PTR_ERR(info->id_gpiod);
+> +
+> +	info->vbus_gpiod = devm_gpiod_get_optional(dev, "vbus", GPIOD_IN);
+> +	if (IS_ERR(info->vbus_gpiod))
+> +		return PTR_ERR(info->vbus_gpiod);
+> +
+> +	if (!info->id_gpiod && !info->vbus_gpiod) {
+> +		dev_err(dev, "failed to get gpios\n");
+> +		return -ENODEV;
+> +	}
+> +
+> +	if (info->id_gpiod)
+> +		ret = gpiod_set_debounce(info->id_gpiod, USB_GPIO_DEB_US);
+> +	if (!ret && info->vbus_gpiod)
+> +		ret = gpiod_set_debounce(info->vbus_gpiod, USB_GPIO_DEB_US);
+> +	if (ret < 0)
+> +		info->debounce_jiffies = msecs_to_jiffies(USB_GPIO_DEB_MS);
+> +
+> +	INIT_DELAYED_WORK(&info->dw_det, usb_conn_detect_cable);
+> +
+> +	info->vbus = devm_regulator_get(dev, "vbus");
+> +	if (IS_ERR(info->vbus)) {
+> +		dev_err(dev, "failed to get vbus\n");
+> +		return PTR_ERR(info->vbus);
+> +	}
+> +
+> +	remote_node = of_graph_get_remote_node(node, -1, 0);
 
-Signed-off-by: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
-v2:
-correct the commit message
----
- sound/soc/mediatek/mt8183/mt8183-dai-adda.c | 14 +++++++++++---
- 1 file changed, 11 insertions(+), 3 deletions(-)
+This is really not ideal. In practice this code will only work if
+there is only one endpoint described for this device, or if the first
+endpoint is always the one we are looking for. There is no way to
+guarantee that.
 
-diff --git a/sound/soc/mediatek/mt8183/mt8183-dai-adda.c b/sound/soc/mediatek/mt8183/mt8183-dai-adda.c
-index 017d7d1d9148..2b758a18c2ea 100644
---- a/sound/soc/mediatek/mt8183/mt8183-dai-adda.c
-+++ b/sound/soc/mediatek/mt8183/mt8183-dai-adda.c
-@@ -176,9 +176,6 @@ static int mtk_adda_ul_event(struct snd_soc_dapm_widget *w,
- 	case SND_SOC_DAPM_POST_PMD:
- 		/* should delayed 1/fs(smallest is 8k) = 125us before afe off */
- 		usleep_range(125, 135);
--
--		/* reset dmic */
--		afe_priv->mtkaif_dmic = 0;
- 		break;
- 	default:
- 		break;
-@@ -426,6 +423,17 @@ static int mtk_dai_adda_hw_params(struct snd_pcm_substream *substream,
- 
- 		ul_src_con0 |= (voice_mode << 17) & (0x7 << 17);
- 
-+		/* enable iir */
-+		ul_src_con0 |= (1 << UL_IIR_ON_TMP_CTL_SFT) &
-+			       UL_IIR_ON_TMP_CTL_MASK_SFT;
-+
-+		/* 35Hz @ 48k */
-+		regmap_write(afe->regmap, AFE_ADDA_IIR_COEF_02_01, 0x00000000);
-+		regmap_write(afe->regmap, AFE_ADDA_IIR_COEF_04_03, 0x00003FB8);
-+		regmap_write(afe->regmap, AFE_ADDA_IIR_COEF_06_05, 0x3FB80000);
-+		regmap_write(afe->regmap, AFE_ADDA_IIR_COEF_08_07, 0x3FB80000);
-+		regmap_write(afe->regmap, AFE_ADDA_IIR_COEF_10_09, 0x0000C048);
-+
- 		regmap_write(afe->regmap, AFE_ADDA_UL_SRC_CON0, ul_src_con0);
- 
- 		/* mtkaif_rxif_data_mode = 0, amic */
+The code really has to walk through the entire graph, and identify the
+remote endpoint it's looking for (and for that we have the boolean
+device property).
+
+> +	if (!remote_node) {
+> +		dev_err(dev, "failed to get remote node\n");
+> +		return -ENODEV;
+> +	}
+> +
+> +	info->role_sw =
+> +		fwnode_usb_role_switch_get(of_fwnode_handle(remote_node));
+
+So fwnode_usb_role_switch_get() needs be the one that walks through
+the graph, not the drivers. Otherwise every driver will do the same
+exact steps (boilerplate). Here you need to be able to just pass the
+node of this device, not the remote endpoint:
+
+        info->role_sw = fwnode_usb_role_switch_get(dev_fwnode(&client->dev));
+
+But why do you need that function at all? Why wouldn't
+usb_role_switch_get() work?
+
+        info->role_sw = usb_role_switch_get(&client->dev);
+
+> +	of_node_put(remote_node);
+> +	if (IS_ERR(info->role_sw)) {
+> +		dev_err(dev, "failed to get role switch\n");
+> +		return PTR_ERR(info->role_sw);
+> +	}
+> +
+> +	if (info->id_gpiod) {
+> +		info->id_irq = gpiod_to_irq(info->id_gpiod);
+> +		if (info->id_irq < 0) {
+> +			dev_err(dev, "failed to get ID IRQ\n");
+> +			ret = info->id_irq;
+> +			goto put_role_sw;
+> +		}
+> +
+> +		ret = devm_request_threaded_irq(dev, info->id_irq, NULL,
+> +						usb_conn_isr, USB_CONN_IRQF,
+> +						pdev->name, info);
+> +		if (ret < 0) {
+> +			dev_err(dev, "failed to request ID IRQ\n");
+> +			goto put_role_sw;
+> +		}
+> +	}
+> +
+> +	if (info->vbus_gpiod) {
+> +		info->vbus_irq = gpiod_to_irq(info->vbus_gpiod);
+> +		if (info->vbus_irq < 0) {
+> +			dev_err(dev, "failed to get VBUS IRQ\n");
+> +			ret = info->vbus_irq;
+> +			goto put_role_sw;
+> +		}
+> +
+> +		ret = devm_request_threaded_irq(dev, info->vbus_irq, NULL,
+> +						usb_conn_isr, USB_CONN_IRQF,
+> +						pdev->name, info);
+> +		if (ret < 0) {
+> +			dev_err(dev, "failed to request VBUS IRQ\n");
+> +			goto put_role_sw;
+> +		}
+> +	}
+> +
+> +	platform_set_drvdata(pdev, info);
+> +
+> +	/* Perform initial detection */
+> +	usb_conn_queue_dwork(info, 0);
+> +
+> +	return 0;
+> +
+> +put_role_sw:
+> +	usb_role_switch_put(info->role_sw);
+> +	return ret;
+> +}
+
+thanks,
+
 -- 
-2.18.0
+heikki
