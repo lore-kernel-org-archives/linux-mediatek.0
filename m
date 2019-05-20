@@ -1,71 +1,70 @@
-From: Stanley Chu <stanley.chu@mediatek.com>
-Subject: RE: [PATCH v2 1/3] scsi: ufs: Do not overwrite Auto-Hibernate timer
-Date: Mon, 20 May 2019 13:50:44 +0800
-Message-ID: <1558331444.660.3.camel@mtkswgap22>
-References: <1557912988-26758-1-git-send-email-stanley.chu@mediatek.com>
- <CGME20190515093640epcas2p17e4c3e4545ce5e4e4b59ed7b9a954741@epcas2p1.samsung.com>
- <1557912988-26758-2-git-send-email-stanley.chu@mediatek.com>
- <15a271c6-88c8-b9d5-68a8-dc142afdf224@samsung.com>
- <SN6PR04MB4925D68D8D8EF2E16FD6525AFC060@SN6PR04MB4925.namprd04.prod.outlook.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [v4 2/5] drm/mediatek: dpi dual edge support
+Date: Mon, 20 May 2019 13:56:46 +0800
+Message-ID: <1558331806.7311.26.camel@mtksdaap41>
+References: <20190518095618.18454-1-jitao.shi@mediatek.com>
+ <20190518095618.18454-3-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <SN6PR04MB4925D68D8D8EF2E16FD6525AFC060@SN6PR04MB4925.namprd04.prod.outlook.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Avri Altman <Avri.Altman@wdc.com>
-Cc: "martin.petersen@oracle.com" <martin.petersen@oracle.com>, "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>, "marc.w.gonzalez@free.fr" <marc.w.gonzalez@free.fr>, "andy.teng@mediatek.com" <andy.teng@mediatek.com>, "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>, "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>, "evgreen@chromium.org" <evgreen@chromium.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "peter.wang@mediatek.com" <peter.wang@mediatek.com>, Alim Akhtar <alim.akhtar@samsung.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "pedrom.sousa@synopsys.com" <pedrom.sousa@synopsys.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "beanhuo@micron.com" <beanhuo@micron.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190518095618.18454-3-jitao.shi@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Jitao Shi <jitao.shi@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, stonea168@163.com, dri-devel@lists.freedesktop.org, yingjoe.chen@mediatek.com, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa.cheng@mediatek.com, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, linux-pwm@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, Matthias Brugger <matthias.bgg@gmail.com>, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, Sean Paul <seanpaul@chromium>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Avri,
-
-On Mon, 2019-05-20 at 05:47 +0000, Avri Altman wrote:
-> > 
-> > Hello Stanley,
-> > 
-> > On 5/15/19 3:06 PM, Stanley Chu wrote:
-> > > Some vendor-specific initialization flow may set its own
-> > > auto-hibernate timer. In this case, do not overwrite timer value
-> > > as "default value" in ufshcd_init().
-> > >
-> > > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> > > ---
-> > >   drivers/scsi/ufs/ufshcd.c | 2 +-
-> > >   1 file changed, 1 insertion(+), 1 deletion(-)
-> > >
-> > > diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-> > > index e040f9dd9ff3..1665820c22fd 100644
-> > > --- a/drivers/scsi/ufs/ufshcd.c
-> > > +++ b/drivers/scsi/ufs/ufshcd.c
-> > > @@ -8309,7 +8309,7 @@ int ufshcd_init(struct ufs_hba *hba, void __iomem
-> > *mmio_base, unsigned int irq)
-> > >   						UIC_LINK_HIBERN8_STATE);
-> > >
-> > >   	/* Set the default auto-hiberate idle timer value to 150 ms */
-> > > -	if (hba->capabilities & MASK_AUTO_HIBERN8_SUPPORT) {
-> > > +	if (hba->capabilities & MASK_AUTO_HIBERN8_SUPPORT & !hba->ahit) {
-> A typo?
-
-Yes! Thanks for remind this.
-Will fix it in next version.
-
-> 
-> 
-> > >   		hba->ahit = FIELD_PREP(UFSHCI_AHIBERN8_TIMER_MASK,
-> > 150) |
-> > >   			    FIELD_PREP(UFSHCI_AHIBERN8_SCALE_MASK, 3);
-> > >   	}
-> > >
-> > Looks good to me,
-> > Reviewed-by: Alim Akhtar <alim.akhtar@samsung.com>
-
-Thanks.
-Stanley
+SGksIEppdGFvOgoKT24gU2F0LCAyMDE5LTA1LTE4IGF0IDE3OjU2ICswODAwLCBKaXRhbyBTaGkg
+d3JvdGU6Cj4gRFBJIHNhbXBsZSB0aGUgZGF0YSBib3RoIHJpc2luZyBhbmQgZmFsbGluZyBlZGdl
+Lgo+IEl0IGNhbiByZWR1Y2UgaGFsZiBkYXRhIGlvIHBpbnMuCgpBbGwgdGhlIHJlZ2lzdGVycyB3
+aGljaCB5b3UgY29udHJvbCBpbiB0aGlzIHBhdGNoIGV4aXN0IGluIE1UODE3My4gU28gSQp0aGlu
+ayB0aGlzIGlzIG5vdCBhIFNvQy1sZXZlbCBmZWF0dXJlLiBUaGlzIGZlYXR1cmUgZGVwZW5kcyBv
+biBob3cgbXVjaAppbyBwaW5zIHlvdSB3YW50IHRvIHVzZSBpbiB0aGlzIHBsYXRmb3JtLiBDb3Vs
+ZCB3ZSBnZXQgdGhlIGlvIHBpbnMKaW5mb3JtYXRpb24gZnJvbSBkZXZpY2UgdHJlZSBvciBjYWxs
+aW5nIGFueSBkcml2ZXIncyBhcGkgdG8gZ2V0PyBJZgp0aGVyZSBpcyBubyB3YXkgdG8gZ2V0IHRo
+aXMgaW5mb3JtYXRpb24sIEkgY291bGQganVzdCB0ZW1wb3JhcmlseSBhcHBseQp0aGlzIHBhdGNo
+IGFuZCBuZWVkIHBsYW4gdG8gZml4IHRoaXMgdGVtcG9yYXJ5IHNvbHV0aW9uLgoKUmVnYXJkcywK
+Q0sKCj4gCj4gU2lnbmVkLW9mZi1ieTogSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29t
+Pgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jIHwgMTMgKysrKysr
+KysrKysrLQo+ICAxIGZpbGUgY2hhbmdlZCwgMTIgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigt
+KQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jIGIv
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYwo+IGluZGV4IDIyZTY4YTEwMGU3Yi4u
+Y2NlZjNhYzFjNTYwIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+ZHBpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jCj4gQEAgLTEx
+Nyw2ICsxMTcsNyBAQCBzdHJ1Y3QgbXRrX2RwaV9jb25mIHsKPiAgCXVuc2lnbmVkIGludCAoKmNh
+bF9mYWN0b3IpKGludCBjbG9jayk7Cj4gIAl1MzIgcmVnX2hfZnJlX2NvbjsKPiAgCWJvb2wgZWRn
+ZV9zZWxfZW47Cj4gKwlib29sIGR1YWxfZWRnZTsKPiAgfTsKPiAgCj4gIHN0YXRpYyB2b2lkIG10
+a19kcGlfbWFzayhzdHJ1Y3QgbXRrX2RwaSAqZHBpLCB1MzIgb2Zmc2V0LCB1MzIgdmFsLCB1MzIg
+bWFzaykKPiBAQCAtMzUzLDYgKzM1NCwxMyBAQCBzdGF0aWMgdm9pZCBtdGtfZHBpX2NvbmZpZ19k
+aXNhYmxlX2VkZ2Uoc3RydWN0IG10a19kcGkgKmRwaSkKPiAgCQltdGtfZHBpX21hc2soZHBpLCBk
+cGktPmNvbmYtPnJlZ19oX2ZyZV9jb24sIDAsIEVER0VfU0VMX0VOKTsKPiAgfQo+ICAKPiArc3Rh
+dGljIHZvaWQgbXRrX2RwaV9lbmFibGVfZHVhbF9lZGdlKHN0cnVjdCBtdGtfZHBpICpkcGkpCj4g
+K3sKPiArCW10a19kcGlfbWFzayhkcGksIERQSV9ERFJfU0VUVElORywgRERSX0VOIHwgRERSXzRQ
+SEFTRSwKPiArCQkgICAgIEREUl9FTiB8IEREUl80UEhBU0UpOwo+ICsJbXRrX2RwaV9tYXNrKGRw
+aSwgRFBJX09VVFBVVF9TRVRUSU5HLCBFREdFX1NFTCwgRURHRV9TRUwpOwo+ICt9Cj4gKwo+ICBz
+dGF0aWMgdm9pZCBtdGtfZHBpX2NvbmZpZ19jb2xvcl9mb3JtYXQoc3RydWN0IG10a19kcGkgKmRw
+aSwKPiAgCQkJCQllbnVtIG10a19kcGlfb3V0X2NvbG9yX2Zvcm1hdCBmb3JtYXQpCj4gIHsKPiBA
+QCAtNDQ0LDcgKzQ1Miw4IEBAIHN0YXRpYyBpbnQgbXRrX2RwaV9zZXRfZGlzcGxheV9tb2RlKHN0
+cnVjdCBtdGtfZHBpICpkcGksCj4gIAlwbGxfcmF0ZSA9IGNsa19nZXRfcmF0ZShkcGktPnR2ZF9j
+bGspOwo+ICAKPiAgCXZtLnBpeGVsY2xvY2sgPSBwbGxfcmF0ZSAvIGZhY3RvcjsKPiAtCWNsa19z
+ZXRfcmF0ZShkcGktPnBpeGVsX2Nsaywgdm0ucGl4ZWxjbG9jayk7Cj4gKwljbGtfc2V0X3JhdGUo
+ZHBpLT5waXhlbF9jbGssCj4gKwkJICAgICB2bS5waXhlbGNsb2NrICogKGRwaS0+Y29uZi0+ZHVh
+bF9lZGdlID8gMiA6IDEpKTsKPiAgCXZtLnBpeGVsY2xvY2sgPSBjbGtfZ2V0X3JhdGUoZHBpLT5w
+aXhlbF9jbGspOwo+ICAKPiAgCWRldl9kYmcoZHBpLT5kZXYsICJHb3QgIFBMTCAlbHUgSHosIHBp
+eGVsIGNsb2NrICVsdSBIelxuIiwKPiBAQCAtNTA5LDYgKzUxOCw4IEBAIHN0YXRpYyBpbnQgbXRr
+X2RwaV9zZXRfZGlzcGxheV9tb2RlKHN0cnVjdCBtdGtfZHBpICpkcGksCj4gIAltdGtfZHBpX2Nv
+bmZpZ19jb2xvcl9mb3JtYXQoZHBpLCBkcGktPmNvbG9yX2Zvcm1hdCk7Cj4gIAltdGtfZHBpX2Nv
+bmZpZ18ybl9oX2ZyZShkcGkpOwo+ICAJbXRrX2RwaV9jb25maWdfZGlzYWJsZV9lZGdlKGRwaSk7
+Cj4gKwlpZiAoZHBpLT5jb25mLT5kdWFsX2VkZ2UpCj4gKwkJbXRrX2RwaV9lbmFibGVfZHVhbF9l
+ZGdlKGRwaSk7Cj4gIAltdGtfZHBpX3N3X3Jlc2V0KGRwaSwgZmFsc2UpOwo+ICAKPiAgCXJldHVy
+biAwOwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
+aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
+czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
