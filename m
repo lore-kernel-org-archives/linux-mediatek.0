@@ -1,161 +1,62 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [v2 3/3] drm/mediatek: add mipi_tx driver for mt8183
-Date: Mon, 20 May 2019 13:30:27 +0800
-Message-ID: <1558330227.7311.14.camel@mtksdaap41>
-References: <20190416054217.75387-1-jitao.shi@mediatek.com>
-         <20190416054217.75387-4-jitao.shi@mediatek.com>
-         <1557134258.5345.5.camel@mtksdaap41> <1558165892.7681.8.camel@mszsdaap41>
+From: Avri Altman <Avri.Altman@wdc.com>
+Subject: RE: [PATCH v2 1/3] scsi: ufs: Do not overwrite Auto-Hibernate timer
+Date: Mon, 20 May 2019 05:47:43 +0000
+Message-ID: <SN6PR04MB4925D68D8D8EF2E16FD6525AFC060@SN6PR04MB4925.namprd04.prod.outlook.com>
+References: <1557912988-26758-1-git-send-email-stanley.chu@mediatek.com>
+ <CGME20190515093640epcas2p17e4c3e4545ce5e4e4b59ed7b9a954741@epcas2p1.samsung.com>
+ <1557912988-26758-2-git-send-email-stanley.chu@mediatek.com>
+ <15a271c6-88c8-b9d5-68a8-dc142afdf224@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1558165892.7681.8.camel@mszsdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jitao Shi <jitao.shi@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <15a271c6-88c8-b9d5-68a8-dc142afdf224@samsung.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Alim Akhtar <alim.akhtar@samsung.com>, Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com" <martin.petersen@oracle.com>, "pedrom.sousa@synopsys.com" <pedrom.sousa@synopsys.com>
+Cc: "marc.w.gonzalez@free.fr" <marc.w.gonzalez@free.fr>, "andy.teng@mediatek.com" <andy.teng@mediatek.com>, "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>, "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>, "evgreen@chromium.org" <evgreen@chromium.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "peter.wang@mediatek.com" <peter.wang@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "beanhuo@micron.com" <beanhuo@micron.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, 2019-05-18 at 15:51 +0800, Jitao Shi wrote:
-> On Mon, 2019-05-06 at 17:17 +0800, CK Hu wrote:
-> > Hi, Jitao:
-> > 
-> > On Tue, 2019-04-16 at 13:42 +0800, Jitao Shi wrote:
-> > > This patch add mt8183 mipi_tx driver.
-> > > And also support other chips that use the same binding and driver.
-> > > 
-> > > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> > > ---
-> > >  drivers/gpu/drm/mediatek/Makefile             |   1 +
-> > >  drivers/gpu/drm/mediatek/mtk_mipi_tx.c        |   2 +
-> > >  drivers/gpu/drm/mediatek/mtk_mipi_tx.h        |   1 +
-> > >  drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c | 154 ++++++++++++++++++
-> > >  4 files changed, 158 insertions(+)
-> > >  create mode 100644 drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c
-> > > 
-> > 
-> > [snip]
-> > 
-> > > +
-> > > +static int mtk_mipi_tx_pll_prepare(struct clk_hw *hw)
-> > > +{
-> > > +	struct mtk_mipi_tx *mipi_tx = mtk_mipi_tx_from_clk_hw(hw);
-> > > +	unsigned int txdiv, txdiv0;
-> > > +	u64 pcw;
-> > > +	int ret;
-> > > +
-> > > +	dev_dbg(mipi_tx->dev, "prepare: %u bps\n", mipi_tx->data_rate);
-> > > +
-> > > +	if (mipi_tx->data_rate >= 2000000000) {
-> > > +		txdiv = 1;
-> > > +		txdiv0 = 0;
-> > > +	} else if (mipi_tx->data_rate >= 1000000000) {
-> > > +		txdiv = 2;
-> > > +		txdiv0 = 1;
-> > > +	} else if (mipi_tx->data_rate >= 500000000) {
-> > > +		txdiv = 4;
-> > > +		txdiv0 = 2;
-> > > +	} else if (mipi_tx->data_rate > 250000000) {
-> > > +		txdiv = 8;
-> > > +		txdiv0 = 3;
-> > > +	} else if (mipi_tx->data_rate >= 125000000) {
-> > > +		txdiv = 16;
-> > > +		txdiv0 = 4;
-> > > +	} else {
-> > > +		return -EINVAL;
-> > > +	}
-> > > +
-> > > +	ret = clk_prepare_enable(mipi_tx->ref_clk);
-> > > +	if (ret < 0) {
-> > > +		dev_err(mipi_tx->dev,
-> > > +			"can't prepare and enable mipi_tx ref_clk %d\n", ret);
-> > > +		return ret;
-> > > +	}
-> > 
-> > You enable the parent clock when prepare this clock here, this behavior
-> > looks strange. I think the flow should be:
-> > 
-> > 1. Parent clock prepare
-> > 2. This clock prepare
-> > 3. Parent clock enable
-> > 4. This clock enable
-> > 
-> > Maybe you should implement 'enable callback' so that parent clock would
-> > be already enabled.
-> > 
-> > One question is, mipi_tx_pll is used by dsi driver, but I does not see
-> > dsi prepare_enable() mipi_tx_pll, how does this work?
-> > 
-> > Regards,
-> > CK
-> > 
-> 
-> The mipi_tx can be accessed after clk_prepare_enable(mipi_tx->ref_clk);
-> 
-> So place the clk_prepare_enable(mipi_tx->ref_clk) before accessing
-> mipitx.
-> 
-> mipi_tx_pll is enable by mtk_mipi_tx_power_on() in mtk_mip_tx.c.
-> clk_prepare_enable(mipi_tx->pll) will enable mipi_tx_pll.
-
-OK, so it start from dsi driver. The callstack is:
-
-phy_power_on(dsi->phy);
--> mtk_mipi_tx_power_on()
---> clk_prepare_enable(mipi_tx->pll);
----> mtk_mipi_tx_pll_prepare();
-
-In clk_prepare_enable(), it separately call clk_prepare() and
-clk_enable(). When clk_prepare(), it prepare the parent clock then
-prepare this clock. When clk_enable(), it enable the parent clock then
-enable this clock. So this would result in the sequence:
-
-1. Prepare mipi_tx->ref_clk
-2. Prepare mipi_tx->pll
-3. Enable mipi_tx->ref_clk
-4. Enable mipi_tx->pll
-
-You say 'So place the clk_prepare_enable(mipi_tx->ref_clk) before
-accessing mipitx.', so the step 1 and step 3 is equal to
-clk_prepare_enable(mipi_tx->ref_clk), so I require you to access mipitx
-in step 4, not in step 2.
-
-Regards,
-CK
 
 > 
-> Beset Regards
-> Jitao
+> Hello Stanley,
 > 
-> > > +
-> > > +	mtk_mipi_tx_clear_bits(mipi_tx, MIPITX_PLL_CON4, RG_DSI_PLL_IBIAS);
-> > > +
-> > > +	mtk_mipi_tx_set_bits(mipi_tx, MIPITX_PLL_PWR, AD_DSI_PLL_SDM_PWR_ON);
-> > > +	usleep_range(30, 100);
-> > > +	mtk_mipi_tx_clear_bits(mipi_tx, MIPITX_PLL_PWR, AD_DSI_PLL_SDM_ISO_EN);
-> > > +	pcw = div_u64(((u64)mipi_tx->data_rate * txdiv) << 24, 26000000);
-> > > +	writel(pcw, mipi_tx->regs + MIPITX_PLL_CON0);
-> > > +	mtk_mipi_tx_update_bits(mipi_tx, MIPITX_PLL_CON1, RG_DSI_PLL_POSDIV,
-> > > +				txdiv0 << 8);
-> > > +	usleep_range(1000, 2000);
-> > > +	mtk_mipi_tx_set_bits(mipi_tx, MIPITX_PLL_CON1, RG_DSI_PLL_EN);
-> > > +
-> > > +	return 0;
-> > > +}
-> > > +
-> > > +static void mtk_mipi_tx_pll_unprepare(struct clk_hw *hw)
-> > > +{
-> > > +	struct mtk_mipi_tx *mipi_tx = mtk_mipi_tx_from_clk_hw(hw);
-> > > +
-> > > +	dev_dbg(mipi_tx->dev, "unprepare\n");
-> > > +
-> > > +	mtk_mipi_tx_clear_bits(mipi_tx, MIPITX_PLL_CON1, RG_DSI_PLL_EN);
-> > > +
-> > > +	mtk_mipi_tx_set_bits(mipi_tx, MIPITX_PLL_PWR, AD_DSI_PLL_SDM_ISO_EN);
-> > > +	mtk_mipi_tx_clear_bits(mipi_tx, MIPITX_PLL_PWR, AD_DSI_PLL_SDM_PWR_ON);
-> > > +	clk_disable_unprepare(mipi_tx->ref_clk);
-> > > +}
-> > > +
-> > 
-> > 
-> 
-> 
+> On 5/15/19 3:06 PM, Stanley Chu wrote:
+> > Some vendor-specific initialization flow may set its own
+> > auto-hibernate timer. In this case, do not overwrite timer value
+> > as "default value" in ufshcd_init().
+> >
+> > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+> > ---
+> >   drivers/scsi/ufs/ufshcd.c | 2 +-
+> >   1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+> > index e040f9dd9ff3..1665820c22fd 100644
+> > --- a/drivers/scsi/ufs/ufshcd.c
+> > +++ b/drivers/scsi/ufs/ufshcd.c
+> > @@ -8309,7 +8309,7 @@ int ufshcd_init(struct ufs_hba *hba, void __iomem
+> *mmio_base, unsigned int irq)
+> >   						UIC_LINK_HIBERN8_STATE);
+> >
+> >   	/* Set the default auto-hiberate idle timer value to 150 ms */
+> > -	if (hba->capabilities & MASK_AUTO_HIBERN8_SUPPORT) {
+> > +	if (hba->capabilities & MASK_AUTO_HIBERN8_SUPPORT & !hba->ahit) {
+A typo?
+
+
+> >   		hba->ahit = FIELD_PREP(UFSHCI_AHIBERN8_TIMER_MASK,
+> 150) |
+> >   			    FIELD_PREP(UFSHCI_AHIBERN8_SCALE_MASK, 3);
+> >   	}
+> >
+> Looks good to me,
+> Reviewed-by: Alim Akhtar <alim.akhtar@samsung.com>
