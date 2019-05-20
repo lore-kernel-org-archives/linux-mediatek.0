@@ -1,115 +1,35 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [v3 1/7] drm/mediatek: move mipi_dsi_host_register to probe
-Date: Mon, 20 May 2019 15:18:23 +0800
-Message-ID: <1558336703.7311.37.camel@mtksdaap41>
-References: <20190519092537.69053-1-jitao.shi@mediatek.com>
- <20190519092537.69053-2-jitao.shi@mediatek.com>
+From: Jiaxin Yu <jiaxin.yu@mediatek.com>
+Subject: Re: [PATCH] ASoC: Mediatek: MT8183: enable IIR filter
+Date: Mon, 20 May 2019 15:50:15 +0800
+Message-ID: <1558338615.21415.0.camel@mhfsdcap03>
+References: <20190516101515.4127-1-shunli.wang@mediatek.com>
+ <20190516101652.GD5598@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190519092537.69053-2-jitao.shi@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jitao Shi <jitao.shi@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, stonea168@163.com, dri-devel@lists.freedesktop.org, yingjoe.chen@mediatek.com, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa.cheng@mediatek.com, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, linux-pwm@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, Matthias Brugger <matthias.bgg@gmail.com>, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, Sean Paul <seanpaul@chromium>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20190516101652.GD5598@sirena.org.uk>
+List-Unsubscribe: <https://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <https://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: "Alsa-devel" <alsa-devel-bounces@alsa-project.org>
+To: Mark Brown <broonie@kernel.org>
+Cc: alsa-devel@alsa-project.org, srv_heupstream@mediatek.com, garlic.tseng@mediatek.com, tzungbi@google.com, linux-mediatek@lists.infradead.org, Shunli Wang <shunli.wang@mediatek.com>, kaichieh.chuang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIEppdGFvOgoKT24gU3VuLCAyMDE5LTA1LTE5IGF0IDE3OjI1ICswODAwLCBKaXRhbyBTaGkg
-d3JvdGU6Cj4gRFNJIHBhbmVsIGRyaXZlciBuZWVkIGF0dGFjaCBmdW5jdGlvbiB3aGljaCBpcyBp
-bmN1bGRlIGluCj4gbWlwaV9kc2lfaG9zdF9vcHMuCj4gCj4gSWYgbWlwaV9kc2lfaG9zdF9yZWdp
-c3RlciBpcyBub3QgaW4gcHJvYmUsIGRzaSBwYW5lbCB3aWxsCj4gcHJvYmUgZmFpbCBvciBtb3Jl
-IGRlbGF5LgoKSW4gWzFdLCB5b3UgaGF2ZSBhZ3JlZWQgdGhpcyBwYXRjaCBqdXN0IGZvciBkZWxh
-eSBub3QgZm9yIHByb2JlIGZhaWwKUmVtb3ZlICdwcm9iZSBmYWlsJy5pbiBjb21taXQgbWVzc2Fn
-ZS4KClsxXQpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9waXBlcm1haWwvbGludXgtbWVkaWF0
-ZWsvMjAxOS1NYXkvMDE5ODM2Lmh0bWwKCj4gCj4gU28gbW92ZSB0aGUgbWlwaV9kc2lfaG9zdF9y
-ZWdpc3RlciB0byBwcm9iZSBmcm9tIGJpbmQuCj4gCj4gU2lnbmVkLW9mZi1ieTogSml0YW8gU2hp
-IDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RzaS5jIHwgNTAgKysrKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tCj4gIDEgZmls
-ZSBjaGFuZ2VkLCAzMCBpbnNlcnRpb25zKCspLCAyMCBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyBiL2RyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfZHNpLmMKPiBpbmRleCBiMDBlYjJkMmUwODYuLjZjNGFjMzdmOTgzZCAx
-MDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gKysrIGIv
-ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYwo+IEBAIC0xMDQ1LDEyICsxMDQ1LDYg
-QEAgc3RhdGljIGludCBtdGtfZHNpX2JpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2
-aWNlICptYXN0ZXIsIHZvaWQgKmRhdGEpCj4gIAkJcmV0dXJuIHJldDsKPiAgCX0KPiAgCj4gLQly
-ZXQgPSBtaXBpX2RzaV9ob3N0X3JlZ2lzdGVyKCZkc2ktPmhvc3QpOwo+IC0JaWYgKHJldCA8IDAp
-IHsKPiAtCQlkZXZfZXJyKGRldiwgImZhaWxlZCB0byByZWdpc3RlciBEU0kgaG9zdDogJWRcbiIs
-IHJldCk7Cj4gLQkJZ290byBlcnJfZGRwX2NvbXBfdW5yZWdpc3RlcjsKPiAtCX0KPiAtCj4gIAly
-ZXQgPSBtdGtfZHNpX2NyZWF0ZV9jb25uX2VuYyhkcm0sIGRzaSk7Cj4gIAlpZiAocmV0KSB7Cj4g
-IAkJRFJNX0VSUk9SKCJFbmNvZGVyIGNyZWF0ZSBmYWlsZWQgd2l0aCAlZFxuIiwgcmV0KTsKPiBA
-QCAtMTA2MCw4ICsxMDU0LDYgQEAgc3RhdGljIGludCBtdGtfZHNpX2JpbmQoc3RydWN0IGRldmlj
-ZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsIHZvaWQgKmRhdGEpCj4gIAlyZXR1cm4gMDsK
-PiAgCj4gIGVycl91bnJlZ2lzdGVyOgo+IC0JbWlwaV9kc2lfaG9zdF91bnJlZ2lzdGVyKCZkc2kt
-Pmhvc3QpOwo+IC1lcnJfZGRwX2NvbXBfdW5yZWdpc3RlcjoKPiAgCW10a19kZHBfY29tcF91bnJl
-Z2lzdGVyKGRybSwgJmRzaS0+ZGRwX2NvbXApOwo+ICAJcmV0dXJuIHJldDsKPiAgfQo+IEBAIC0x
-MDk3LDMxICsxMDg5LDM3IEBAIHN0YXRpYyBpbnQgbXRrX2RzaV9wcm9iZShzdHJ1Y3QgcGxhdGZv
-cm1fZGV2aWNlICpwZGV2KQo+ICAKPiAgCWRzaS0+aG9zdC5vcHMgPSAmbXRrX2RzaV9vcHM7Cj4g
-IAlkc2ktPmhvc3QuZGV2ID0gZGV2Owo+ICsJZHNpLT5kZXYgPSBkZXY7CgpUaGlzIGlzIGZvciBk
-ZWJ1ZyBtZXNzYWdlLCBub3QgZm9yIHRoZSB0aW1pbmcgb2YKbWlwaV9kc2lfaG9zdF9yZWdpc3Rl
-cigpLCBzbyBtb3ZlIHRvIGFuIGluZGVwZW5kZW50IHBhdGNoLgoKUmVnYXJkcywKQ0sKCj4gKwly
-ZXQgPSBtaXBpX2RzaV9ob3N0X3JlZ2lzdGVyKCZkc2ktPmhvc3QpOwo+ICsJaWYgKHJldCA8IDAp
-IHsKPiArCQlkZXZfZXJyKGRldiwgImZhaWxlZCB0byByZWdpc3RlciBEU0kgaG9zdDogJWRcbiIs
-IHJldCk7Cj4gKwkJcmV0dXJuIHJldDsKPiArCX0KPiAgCj4gIAlyZXQgPSBkcm1fb2ZfZmluZF9w
-YW5lbF9vcl9icmlkZ2UoZGV2LT5vZl9ub2RlLCAwLCAwLAo+ICAJCQkJCSAgJmRzaS0+cGFuZWws
-ICZkc2ktPmJyaWRnZSk7Cj4gIAlpZiAocmV0KQo+IC0JCXJldHVybiByZXQ7Cj4gKwkJZ290byBl
-cnJfdW5yZWdpc3Rlcl9ob3N0Owo+ICAKPiAgCWRzaS0+ZW5naW5lX2NsayA9IGRldm1fY2xrX2dl
-dChkZXYsICJlbmdpbmUiKTsKPiAgCWlmIChJU19FUlIoZHNpLT5lbmdpbmVfY2xrKSkgewo+ICAJ
-CXJldCA9IFBUUl9FUlIoZHNpLT5lbmdpbmVfY2xrKTsKPiAgCQlkZXZfZXJyKGRldiwgIkZhaWxl
-ZCB0byBnZXQgZW5naW5lIGNsb2NrOiAlZFxuIiwgcmV0KTsKPiAtCQlyZXR1cm4gcmV0Owo+ICsJ
-CWdvdG8gZXJyX3VucmVnaXN0ZXJfaG9zdDsKPiAgCX0KPiAgCj4gIAlkc2ktPmRpZ2l0YWxfY2xr
-ID0gZGV2bV9jbGtfZ2V0KGRldiwgImRpZ2l0YWwiKTsKPiAgCWlmIChJU19FUlIoZHNpLT5kaWdp
-dGFsX2NsaykpIHsKPiAgCQlyZXQgPSBQVFJfRVJSKGRzaS0+ZGlnaXRhbF9jbGspOwo+ICAJCWRl
-dl9lcnIoZGV2LCAiRmFpbGVkIHRvIGdldCBkaWdpdGFsIGNsb2NrOiAlZFxuIiwgcmV0KTsKPiAt
-CQlyZXR1cm4gcmV0Owo+ICsJCWdvdG8gZXJyX3VucmVnaXN0ZXJfaG9zdDsKPiAgCX0KPiAgCj4g
-IAlkc2ktPmhzX2NsayA9IGRldm1fY2xrX2dldChkZXYsICJocyIpOwo+ICAJaWYgKElTX0VSUihk
-c2ktPmhzX2NsaykpIHsKPiAgCQlyZXQgPSBQVFJfRVJSKGRzaS0+aHNfY2xrKTsKPiAgCQlkZXZf
-ZXJyKGRldiwgIkZhaWxlZCB0byBnZXQgaHMgY2xvY2s6ICVkXG4iLCByZXQpOwo+IC0JCXJldHVy
-biByZXQ7Cj4gKwkJZ290byBlcnJfdW5yZWdpc3Rlcl9ob3N0Owo+ICAJfQo+ICAKPiAgCXJlZ3Mg
-PSBwbGF0Zm9ybV9nZXRfcmVzb3VyY2UocGRldiwgSU9SRVNPVVJDRV9NRU0sIDApOwo+IEBAIC0x
-MTI5LDMzICsxMTI3LDM1IEBAIHN0YXRpYyBpbnQgbXRrX2RzaV9wcm9iZShzdHJ1Y3QgcGxhdGZv
-cm1fZGV2aWNlICpwZGV2KQo+ICAJaWYgKElTX0VSUihkc2ktPnJlZ3MpKSB7Cj4gIAkJcmV0ID0g
-UFRSX0VSUihkc2ktPnJlZ3MpOwo+ICAJCWRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGlvcmVtYXAg
-bWVtb3J5OiAlZFxuIiwgcmV0KTsKPiAtCQlyZXR1cm4gcmV0Owo+ICsJCWdvdG8gZXJyX3VucmVn
-aXN0ZXJfaG9zdDsKPiAgCX0KPiAgCj4gIAlkc2ktPnBoeSA9IGRldm1fcGh5X2dldChkZXYsICJk
-cGh5Iik7Cj4gIAlpZiAoSVNfRVJSKGRzaS0+cGh5KSkgewo+ICAJCXJldCA9IFBUUl9FUlIoZHNp
-LT5waHkpOwo+ICAJCWRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGdldCBNSVBJLURQSFk6ICVkXG4i
-LCByZXQpOwo+IC0JCXJldHVybiByZXQ7Cj4gKwkJZ290byBlcnJfdW5yZWdpc3Rlcl9ob3N0Owo+
-ICAJfQo+ICAKPiAgCWNvbXBfaWQgPSBtdGtfZGRwX2NvbXBfZ2V0X2lkKGRldi0+b2Zfbm9kZSwg
-TVRLX0RTSSk7Cj4gIAlpZiAoY29tcF9pZCA8IDApIHsKPiAgCQlkZXZfZXJyKGRldiwgIkZhaWxl
-ZCB0byBpZGVudGlmeSBieSBhbGlhczogJWRcbiIsIGNvbXBfaWQpOwo+IC0JCXJldHVybiBjb21w
-X2lkOwo+ICsJCXJldCA9IGNvbXBfaWQ7Cj4gKwkJZ290byBlcnJfdW5yZWdpc3Rlcl9ob3N0Owo+
-ICAJfQo+ICAKPiAgCXJldCA9IG10a19kZHBfY29tcF9pbml0KGRldiwgZGV2LT5vZl9ub2RlLCAm
-ZHNpLT5kZHBfY29tcCwgY29tcF9pZCwKPiAgCQkJCSZtdGtfZHNpX2Z1bmNzKTsKPiAgCWlmIChy
-ZXQpIHsKPiAgCQlkZXZfZXJyKGRldiwgIkZhaWxlZCB0byBpbml0aWFsaXplIGNvbXBvbmVudDog
-JWRcbiIsIHJldCk7Cj4gLQkJcmV0dXJuIHJldDsKPiArCQlnb3RvIGVycl91bnJlZ2lzdGVyX2hv
-c3Q7Cj4gIAl9Cj4gIAo+ICAJaXJxX251bSA9IHBsYXRmb3JtX2dldF9pcnEocGRldiwgMCk7Cj4g
-IAlpZiAoaXJxX251bSA8IDApIHsKPiAtCQlkZXZfZXJyKCZwZGV2LT5kZXYsICJmYWlsZWQgdG8g
-cmVxdWVzdCBkc2kgaXJxIHJlc291cmNlXG4iKTsKPiAtCQlyZXR1cm4gLUVQUk9CRV9ERUZFUjsK
-PiArCQlkZXZfZXJyKCZwZGV2LT5kZXYsICJmYWlsZWQgdG8gZ2V0IGRzaSBpcnFfbnVtOiAlZFxu
-IiwgaXJxX251bSk7Cj4gKwkJcmV0ID0gaXJxX251bTsKPiArCQlnb3RvIGVycl91bnJlZ2lzdGVy
-X2hvc3Q7Cj4gIAl9Cj4gIAo+ICAJaXJxX3NldF9zdGF0dXNfZmxhZ3MoaXJxX251bSwgSVJRX1RZ
-UEVfTEVWRUxfTE9XKTsKPiBAQCAtMTE2MywxNCArMTE2MywyNCBAQCBzdGF0aWMgaW50IG10a19k
-c2lfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgCQkJICAgICAgIElSUUZf
-VFJJR0dFUl9MT1csIGRldl9uYW1lKCZwZGV2LT5kZXYpLCBkc2kpOwo+ICAJaWYgKHJldCkgewo+
-ICAJCWRldl9lcnIoJnBkZXYtPmRldiwgImZhaWxlZCB0byByZXF1ZXN0IG1lZGlhdGVrIGRzaSBp
-cnFcbiIpOwo+IC0JCXJldHVybiAtRVBST0JFX0RFRkVSOwo+ICsJCWdvdG8gZXJyX3VucmVnaXN0
-ZXJfaG9zdDsKPiAgCX0KPiAgCj4gIAlpbml0X3dhaXRxdWV1ZV9oZWFkKCZkc2ktPmlycV93YWl0
-X3F1ZXVlKTsKPiAgCj4gIAlwbGF0Zm9ybV9zZXRfZHJ2ZGF0YShwZGV2LCBkc2kpOwo+ICAKPiAt
-CXJldHVybiBjb21wb25lbnRfYWRkKCZwZGV2LT5kZXYsICZtdGtfZHNpX2NvbXBvbmVudF9vcHMp
-Owo+ICsJcmV0ID0gY29tcG9uZW50X2FkZCgmcGRldi0+ZGV2LCAmbXRrX2RzaV9jb21wb25lbnRf
-b3BzKTsKPiArCWlmIChyZXQpIHsKPiArCQlkZXZfZXJyKCZwZGV2LT5kZXYsICJmYWlsZWQgdG8g
-YWRkIGNvbXBvbmVudDogJWRcbiIsIHJldCk7Cj4gKwkJZ290byBlcnJfdW5yZWdpc3Rlcl9ob3N0
-Owo+ICsJfQo+ICsKPiArCXJldHVybiAwOwo+ICsKPiArZXJyX3VucmVnaXN0ZXJfaG9zdDoKPiAr
-CW1pcGlfZHNpX2hvc3RfdW5yZWdpc3RlcigmZHNpLT5ob3N0KTsKPiArCXJldHVybiByZXQ7Cj4g
-IH0KPiAgCj4gIHN0YXRpYyBpbnQgbXRrX2RzaV9yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2Rldmlj
-ZSAqcGRldikKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
-aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
+On Thu, 2019-05-16 at 11:16 +0100, Mark Brown wrote:
+> On Thu, May 16, 2019 at 06:15:15PM +0800, Shunli Wang wrote:
+> > This patch is to enable IIR filter when DMIC of PMIC
+> > is enabled.
+> 
+> Should this not have a user control in case the user wants to avoid the
+> filter for some reason?
+
+The last commit message is incorrect,IIR filter is always required to
+open for DMIC and AMIC of PMIC.So we will send V2 which correct the
+commit message again.
