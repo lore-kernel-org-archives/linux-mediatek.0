@@ -1,69 +1,45 @@
-From: Stanley Chu <stanley.chu@mediatek.com>
-Subject: [PATCH v5 0/3] scsi: ufs: Add error handling of Auto-Hibernate
-Date: Tue, 21 May 2019 14:44:51 +0800
-Message-ID: <1558421094-3182-1-git-send-email-stanley.chu@mediatek.com>
+From: Michael Mei <michael.mei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] dt-bindings: nvmem: mediatek: add support for MediaTek mt8183
+ SoC
+Date: Tue, 21 May 2019 14:55:50 +0800
+Message-ID: <1558421750-6896-1-git-send-email-michael.mei@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com, pedrom.sousa@synopsys.com
-Cc: marc.w.gonzalez@free.fr, andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, evgreen@chromium.org, linux-mediatek@lists.infradead.org, peter.wang@mediatek.com, matthias.bgg@gmail.com, Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Michael Mei <michael.mei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Currently auto-hibernate is activated if host supports
-auto-hibern8 capability. However error-handling is not implemented,
-which makes the feature somewhat risky.
+This updates dt-binding documentation for MediaTek mt8183
+For the both SoCs supported all rely on the fallback binding
+of the generic case with "mediatek,efuse".
 
-If either "Hibernate Enter" or "Hibernate Exit" fail during
-auto-hibernate flow, the corresponding interrupt
-"UIC_HIBERNATE_ENTER" or "UIC_HIBERNATE_EXIT" shall be raised
-according to UFS specification.
+Signed-off-by: Michael Mei <michael.mei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ .../devicetree/bindings/nvmem/mtk-efuse.txt        |    1 +
+ 1 file changed, 1 insertion(+)
 
-This patch adds auto-hibernate error-handling:
-
-- Monitor "Hibernate Enter" and "Hibernate Exit" interrupts after
-  auto-hibernate feature is activated.
-
-- If fail happens, trigger error-handling just like "manual-hibernate"
-  fail and apply the same recovery flow: schedule UFS error handler in
-  ufshcd_check_errors(), and then do host reset and restore
-  in UFS error handler.
-
-v5:
- - Also re-factor checking of Auto-Hibernation support in other places, e.g., in ufshcd_auto_hibern8_enable() and in ufs-sysfs (Avri Altman)
- - Change order of patch "scsi: ufs: Introduce ufshcd_is_auto_hibern8_supported()" to #1 as a preparation patch of whole series
-
-v4:
- - Replace original patch "[3/3] scsi: ufs: Use re-factored Auto-Hibernate function" by a new preparation patch "[2/3] scsi: ufs: Introduce ufshcd_is_auto_hibern8_supported()" for re-factoring ufshcd_is_auto_hibern8_supported (Avri Altman)
- - Refine UIC mask definitions (Avri Altman)
-
-v3:
- - Fix typo in patch "scsi: ufs: Do not overwrite Auto-Hibernate timer" (Avri Altman)
- - Rebase to Linux 5.2-rc1
-
-v2:
- - Fix sentences in commit message (Marc Gonzalez)
- - Make "Auto-Hibernate" error detection more precise (Bean Huo)
-
-Stanley Chu (3):
-  scsi: ufs: Introduce ufshcd_is_auto_hibern8_supported()
-  scsi: ufs: Do not overwrite Auto-Hibernate timer
-  scsi: ufs: Add error-handling of Auto-Hibernate
-
- drivers/scsi/ufs/ufs-sysfs.c |  6 +++---
- drivers/scsi/ufs/ufshcd.c    | 35 +++++++++++++++++++++++++++++++++--
- drivers/scsi/ufs/ufshcd.h    |  5 +++++
- drivers/scsi/ufs/ufshci.h    |  6 ++++--
- 4 files changed, 45 insertions(+), 7 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt b/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
+index 0668c45..b4d448b 100644
+--- a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
++++ b/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
+@@ -7,6 +7,7 @@ Required properties:
+ 	      "mediatek,mt7622-efuse", "mediatek,efuse": for MT7622
+ 	      "mediatek,mt7623-efuse", "mediatek,efuse": for MT7623
+ 	      "mediatek,mt8173-efuse" or "mediatek,efuse": for MT8173
++	      "mediatek,mt8183-efuse" or "mediatek,efuse": for MT8183
+ - reg: Should contain registers location and length
+ 
+ = Data cells =
 -- 
-2.18.0
+1.7.9.5
