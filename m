@@ -1,225 +1,117 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v7 09/12] soc: mediatek: cmdq: define the instruction
- struct
-Date: Tue, 21 May 2019 10:48:05 +0800
-Message-ID: <1558406885.25526.3.camel@mtksdaap41>
+Subject: Re: [PATCH v7 11/12] soc: mediatek: cmdq: add
+ cmdq_dev_get_client_reg function
+Date: Tue, 21 May 2019 11:30:25 +0800
+Message-ID: <1558409425.25526.13.camel@mtksdaap41>
 References: <20190521011108.40428-1-bibby.hsieh@mediatek.com>
-         <20190521011108.40428-10-bibby.hsieh@mediatek.com>
+         <20190521011108.40428-12-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190521011108.40428-10-bibby.hsieh@mediatek.com>
+In-Reply-To: <20190521011108.40428-12-bibby.hsieh@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Bibby Hsieh <bibby.hsieh@mediatek.com>
 Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.chen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Bibby:
-
 On Tue, 2019-05-21 at 09:11 +0800, Bibby Hsieh wrote:
-> Define an instruction structure for gce driver to append command.
-> This structure can make the client's code more readability.
-
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-
+> GCE cannot know the register base address, this function
+> can help cmdq client to get the cmdq_client_reg structure.
 > 
 > Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
 > ---
->  drivers/soc/mediatek/mtk-cmdq-helper.c   | 103 +++++++++++++++--------
->  include/linux/mailbox/mtk-cmdq-mailbox.h |   2 +
->  2 files changed, 72 insertions(+), 33 deletions(-)
+>  drivers/soc/mediatek/mtk-cmdq-helper.c | 25 +++++++++++++++++++++++++
+>  include/linux/soc/mediatek/mtk-cmdq.h  | 18 ++++++++++++++++++
+>  2 files changed, 43 insertions(+)
 > 
 > diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> index 7aa0517ff2f3..0886c4967ca4 100644
+> index 70ad4d806fac..815845bb5982 100644
 > --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
 > +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> @@ -9,12 +9,24 @@
->  #include <linux/mailbox_controller.h>
->  #include <linux/soc/mediatek/mtk-cmdq.h>
+> @@ -27,6 +27,31 @@ struct cmdq_instruction {
+>  	u8 op;
+>  };
 >  
-> -#define CMDQ_ARG_A_WRITE_MASK	0xffff
->  #define CMDQ_WRITE_ENABLE_MASK	BIT(0)
->  #define CMDQ_EOC_IRQ_EN		BIT(0)
->  #define CMDQ_EOC_CMD		((u64)((CMDQ_CODE_EOC << CMDQ_OP_CODE_SHIFT)) \
->  				<< 32 | CMDQ_EOC_IRQ_EN)
->  
-> +struct cmdq_instruction {
-> +	union {
-> +		u32 value;
-> +		u32 mask;
-> +	};
-> +	union {
-> +		u16 offset;
-> +		u16 event;
-> +	};
-> +	u8 subsys;
-> +	u8 op;
-> +};
+> +struct cmdq_client_reg  *cmdq_dev_get_client_reg(struct device *dev, int idx)
+> +{
+> +	struct cmdq_client_reg *client_reg;
+> +	struct of_phandle_args spec;
+> +
+> +	client_reg  = devm_kzalloc(dev, sizeof(*client_reg), GFP_KERNEL);
+> +	if (!client_reg)
+> +		return NULL;
+> +
+> +	if (of_parse_phandle_with_args(dev->of_node, "mediatek,gce-client-reg",
+> +				       "#subsys-cells", idx, &spec)) {
+> +		dev_err(dev, "can't parse gce-client-reg property (%d)", idx);
+
+I think you should call devm_kfree(client_reg) here because this
+function may not be called in client driver's probe function. But in
+another view point, I would like you to move the memory allocation out
+of this function. When client call cmdq_dev_get_client_reg() to get a
+pointer, it's easy that client does not free it because you does not
+provide free API, Some client may embed struct cmdq_client_reg with its
+client structure together,
+
+struct client {
+	struct cmdq_client_reg client_reg;
+};
+
+Because each client may have different memory allocation strategy, so I
+would like you to move memory allocation out of this function to let
+client driver have the flexibility.
+
+Regards,
+CK
+
+> +
+> +		return NULL;
+> +	}
+> +
+> +	client_reg->subsys = spec.args[0];
+> +	client_reg->offset = spec.args[1];
+> +	client_reg->size = spec.args[2];
+> +	of_node_put(spec.np);
+> +
+> +	return client_reg;
+> +}
+> +EXPORT_SYMBOL(cmdq_dev_get_client_reg);
 > +
 >  static void cmdq_client_timeout(struct timer_list *t)
 >  {
 >  	struct cmdq_client *client = from_timer(client, t, timer);
-> @@ -110,10 +122,8 @@ void cmdq_pkt_destroy(struct cmdq_pkt *pkt)
->  }
->  EXPORT_SYMBOL(cmdq_pkt_destroy);
+> diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
+> index a345870a6d10..d0dea3780f7a 100644
+> --- a/include/linux/soc/mediatek/mtk-cmdq.h
+> +++ b/include/linux/soc/mediatek/mtk-cmdq.h
+> @@ -15,6 +15,12 @@
 >  
-> -static int cmdq_pkt_append_command(struct cmdq_pkt *pkt, enum cmdq_code code,
-> -				   u32 arg_a, u32 arg_b)
-> +static struct cmdq_instruction *cmdq_pkt_append_command(struct cmdq_pkt *pkt)
->  {
-> -	u64 *cmd_ptr;
+>  struct cmdq_pkt;
 >  
->  	if (unlikely(pkt->cmd_buf_size + CMDQ_INST_SIZE > pkt->buf_size)) {
->  		/*
-> @@ -127,81 +137,108 @@ static int cmdq_pkt_append_command(struct cmdq_pkt *pkt, enum cmdq_code code,
->  		pkt->cmd_buf_size += CMDQ_INST_SIZE;
->  		WARN_ONCE(1, "%s: buffer size %u is too small !\n",
->  			__func__, (u32)pkt->buf_size);
-> -		return -ENOMEM;
-> +		return NULL;
->  	}
-> -	cmd_ptr = pkt->va_base + pkt->cmd_buf_size;
-> -	(*cmd_ptr) = (u64)((code << CMDQ_OP_CODE_SHIFT) | arg_a) << 32 | arg_b;
+> +struct cmdq_client_reg {
+> +	u8 subsys;
+> +	u16 offset;
+> +	u16 size;
+> +};
 > +
->  	pkt->cmd_buf_size += CMDQ_INST_SIZE;
+>  struct cmdq_client {
+>  	spinlock_t lock;
+>  	u32 pkt_cnt;
+> @@ -142,4 +148,16 @@ int cmdq_pkt_flush_async(struct cmdq_pkt *pkt, cmdq_async_flush_cb cb,
+>   */
+>  int cmdq_pkt_flush(struct cmdq_pkt *pkt);
 >  
-> -	return 0;
-> +	return pkt->va_base + pkt->cmd_buf_size - CMDQ_INST_SIZE;
->  }
->  
->  int cmdq_pkt_write(struct cmdq_pkt *pkt, u8 subsys, u16 offset, u32 value)
->  {
-> -	u32 arg_a = (offset & CMDQ_ARG_A_WRITE_MASK) |
-> -		    (subsys << CMDQ_SUBSYS_SHIFT);
-> +	struct cmdq_instruction *inst;
+> +/**
+> + * cmdq_dev_get_client_reg() - parse cmdq client reg from the device node of CMDQ client
+> + * @dev:	device of CMDQ mailbox client
+> + * @idx:	the index of desired reg
+> + *
+> + * Return: CMDQ client reg pointer
+> + *
+> + * Help CMDQ client pasing the cmdq client reg
+> + * from the device node of CMDQ client.
+> + */
+> +struct cmdq_client_reg  *cmdq_dev_get_client_reg(struct device *dev, int idx);
 > +
-> +	inst = cmdq_pkt_append_command(pkt);
-> +	if (!inst)
-> +		return -ENOMEM;
-> +
-> +	inst->op = CMDQ_CODE_WRITE;
-> +	inst->value = value;
-> +	inst->offset = offset;
-> +	inst->subsys = subsys;
->  
-> -	return cmdq_pkt_append_command(pkt, CMDQ_CODE_WRITE, arg_a, value);
-> +	return 0;
->  }
->  EXPORT_SYMBOL(cmdq_pkt_write);
->  
->  int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u8 subsys,
->  			u16 offset, u32 value, u32 mask)
->  {
-> +	struct cmdq_instruction *inst;
->  	u32 offset_mask = offset;
-> -	int err = 0;
->  
->  	if (mask != 0xffffffff) {
-> -		err = cmdq_pkt_append_command(pkt, CMDQ_CODE_MASK, 0, ~mask);
-> +		inst = cmdq_pkt_append_command(pkt);
-> +		if (!inst)
-> +			return -ENOMEM;
-> +
-> +		inst->op = CMDQ_CODE_MASK;
-> +		inst->mask = ~mask;
->  		offset_mask |= CMDQ_WRITE_ENABLE_MASK;
->  	}
-> -	err |= cmdq_pkt_write(pkt, value, subsys, offset_mask);
->  
-> -	return err;
-> +	return cmdq_pkt_write(pkt, subsys, offset_mask, value);
->  }
->  EXPORT_SYMBOL(cmdq_pkt_write_mask);
->  
->  int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event)
->  {
-> -	u32 arg_b;
-> +	struct cmdq_instruction *inst;
->  
->  	if (event >= CMDQ_MAX_EVENT)
->  		return -EINVAL;
->  
-> -	/*
-> -	 * WFE arg_b
-> -	 * bit 0-11: wait value
-> -	 * bit 15: 1 - wait, 0 - no wait
-> -	 * bit 16-27: update value
-> -	 * bit 31: 1 - update, 0 - no update
-> -	 */
-> -	arg_b = CMDQ_WFE_UPDATE | CMDQ_WFE_WAIT | CMDQ_WFE_WAIT_VALUE;
-> +	inst = cmdq_pkt_append_command(pkt);
-> +	if (!inst)
-> +		return -ENOMEM;
-> +
-> +	inst->op = CMDQ_CODE_WFE;
-> +	inst->value = CMDQ_WFE_OPTION;
-> +	inst->event = event;
->  
-> -	return cmdq_pkt_append_command(pkt, CMDQ_CODE_WFE, event, arg_b);
-> +	return 0;
->  }
->  EXPORT_SYMBOL(cmdq_pkt_wfe);
->  
->  int cmdq_pkt_clear_event(struct cmdq_pkt *pkt, u16 event)
->  {
-> +	struct cmdq_instruction *inst;
-> +
->  	if (event >= CMDQ_MAX_EVENT)
->  		return -EINVAL;
->  
-> -	return cmdq_pkt_append_command(pkt, CMDQ_CODE_WFE, event,
-> -				       CMDQ_WFE_UPDATE);
-> +	inst = cmdq_pkt_append_command(pkt);
-> +	if (!inst)
-> +		return -ENOMEM;
-> +
-> +	inst->op = CMDQ_CODE_WFE;
-> +	inst->value = CMDQ_WFE_UPDATE;
-> +	inst->event = event;
-> +
-> +	return 0;
->  }
->  EXPORT_SYMBOL(cmdq_pkt_clear_event);
->  
->  static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
->  {
-> -	int err;
-> +	struct cmdq_instruction *inst;
-> +
-> +	inst = cmdq_pkt_append_command(pkt);
-> +	if (!inst)
-> +		return -ENOMEM;
->  
-> -	/* insert EOC and generate IRQ for each command iteration */
-> -	err = cmdq_pkt_append_command(pkt, CMDQ_CODE_EOC, 0, CMDQ_EOC_IRQ_EN);
-> +	inst->op = CMDQ_CODE_EOC;
-> +	inst->value = CMDQ_EOC_IRQ_EN;
->  
-> -	/* JUMP to end */
-> -	err |= cmdq_pkt_append_command(pkt, CMDQ_CODE_JUMP, 0, CMDQ_JUMP_PASS);
-> +	inst = cmdq_pkt_append_command(pkt);
-> +	if (!inst)
-> +		return -ENOMEM;
-> +
-> +	inst->op = CMDQ_CODE_JUMP;
-> +	inst->value = CMDQ_JUMP_PASS;
->  
-> -	return err;
-> +	return 0;
->  }
->  
->  static void cmdq_pkt_flush_async_cb(struct cmdq_cb_data data)
-> diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
-> index 911475da7a53..c8adedefaf42 100644
-> --- a/include/linux/mailbox/mtk-cmdq-mailbox.h
-> +++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
-> @@ -19,6 +19,8 @@
->  #define CMDQ_WFE_UPDATE			BIT(31)
->  #define CMDQ_WFE_WAIT			BIT(15)
->  #define CMDQ_WFE_WAIT_VALUE		0x1
-> +#define CMDQ_WFE_OPTION			(CMDQ_WFE_UPDATE | CMDQ_WFE_WAIT | \
-> +					CMDQ_WFE_WAIT_VALUE)
->  /** cmdq event maximum */
->  #define CMDQ_MAX_EVENT			0x3ff
->  
+>  #endif	/* __MTK_CMDQ_H__ */
