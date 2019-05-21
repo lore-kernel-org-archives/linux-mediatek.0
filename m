@@ -1,14 +1,13 @@
-From: Avri Altman <Avri.Altman-Sjgp3cTcYWE@public.gmane.org>
-Subject: RE: [PATCH v5 0/3] scsi: ufs: Add error handling of Auto-Hibernate
-Date: Tue, 21 May 2019 08:41:32 +0000
-Message-ID: <SN6PR04MB4925604BFAF0A66D54F65E3EFC070@SN6PR04MB4925.namprd04.prod.outlook.com>
-References: <1558421094-3182-1-git-send-email-stanley.chu@mediatek.com>
+From: Claire Chang <tientzu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: [PATCH 2/2] uart: mediatek: support Rx in-band wakeup
+Date: Tue, 21 May 2019 16:47:01 +0800
+Message-ID: <20190521084701.100179-3-tientzu@chromium.org>
+References: <20190521084701.100179-1-tientzu@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1558421094-3182-1-git-send-email-stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Content-Language: en-US
+In-Reply-To: <20190521084701.100179-1-tientzu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -18,68 +17,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org" <martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, "alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org" <alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Cc: "marc.w.gonzalez-GANU6spQydw@public.gmane.org" <marc.w.gonzalez-GANU6spQydw@public.gmane.org>, "andy.teng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <andy.teng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "evgreen-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <evgreen-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org" <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "beanhuo-AL4WhLSQfzjQT0dZR+AlfA@public.gmane.org" <beanhuo-AL4WhLSQfzjQT0dZR+AlfA@public.gmane.org>
+To: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org
+Cc: Claire Chang <tientzu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, changqi.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This series looks fine to me.
+In order to support Rx in-band wakeup, we need to enable irq wake on an
+edge sensitive interrupt of Rx pin before suspend and disable it when
+resuming.
 
-Thanks,
-Avri
+This interrupt is used only as wake source to resume the system when
+suspended. Note that the sent character will be lost as the controller is
+actually suspended.
 
-> 
-> Currently auto-hibernate is activated if host supports
-> auto-hibern8 capability. However error-handling is not implemented,
-> which makes the feature somewhat risky.
-> 
-> If either "Hibernate Enter" or "Hibernate Exit" fail during
-> auto-hibernate flow, the corresponding interrupt
-> "UIC_HIBERNATE_ENTER" or "UIC_HIBERNATE_EXIT" shall be raised
-> according to UFS specification.
-> 
-> This patch adds auto-hibernate error-handling:
-> 
-> - Monitor "Hibernate Enter" and "Hibernate Exit" interrupts after
->   auto-hibernate feature is activated.
-> 
-> - If fail happens, trigger error-handling just like "manual-hibernate"
->   fail and apply the same recovery flow: schedule UFS error handler in
->   ufshcd_check_errors(), and then do host reset and restore
->   in UFS error handler.
-> 
-> v5:
->  - Also re-factor checking of Auto-Hibernation support in other places, e.g., in
-> ufshcd_auto_hibern8_enable() and in ufs-sysfs (Avri Altman)
->  - Change order of patch "scsi: ufs: Introduce
-> ufshcd_is_auto_hibern8_supported()" to #1 as a preparation patch of whole
-> series
-> 
-> v4:
->  - Replace original patch "[3/3] scsi: ufs: Use re-factored Auto-Hibernate
-> function" by a new preparation patch "[2/3] scsi: ufs: Introduce
-> ufshcd_is_auto_hibern8_supported()" for re-factoring
-> ufshcd_is_auto_hibern8_supported (Avri Altman)
->  - Refine UIC mask definitions (Avri Altman)
-> 
-> v3:
->  - Fix typo in patch "scsi: ufs: Do not overwrite Auto-Hibernate timer" (Avri
-> Altman)
->  - Rebase to Linux 5.2-rc1
-> 
-> v2:
->  - Fix sentences in commit message (Marc Gonzalez)
->  - Make "Auto-Hibernate" error detection more precise (Bean Huo)
-> 
-> Stanley Chu (3):
->   scsi: ufs: Introduce ufshcd_is_auto_hibern8_supported()
->   scsi: ufs: Do not overwrite Auto-Hibernate timer
->   scsi: ufs: Add error-handling of Auto-Hibernate
-> 
->  drivers/scsi/ufs/ufs-sysfs.c |  6 +++---
->  drivers/scsi/ufs/ufshcd.c    | 35 +++++++++++++++++++++++++++++++++--
->  drivers/scsi/ufs/ufshcd.h    |  5 +++++
->  drivers/scsi/ufs/ufshci.h    |  6 ++++--
->  4 files changed, 45 insertions(+), 7 deletions(-)
-> 
-> --
-> 2.18.0
+We use this to support wakeup on bluetooth. Bluetooth will repeatedly send
+0xFD to wakeup host. Once host detects Rx falling, an interrupt is
+triggered, and the system leaves sleep state. Then, the bluetooth driver
+will send 0xFC to bluetooth and bluetooth can start to send normal HCI
+packets.
+
+Signed-off-by: Claire Chang <tientzu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+---
+ drivers/tty/serial/8250/8250_mtk.c | 33 ++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
+
+diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+index 417c7c810df9..61892abf707d 100644
+--- a/drivers/tty/serial/8250/8250_mtk.c
++++ b/drivers/tty/serial/8250/8250_mtk.c
+@@ -10,6 +10,7 @@
+ #include <linux/module.h>
+ #include <linux/of_irq.h>
+ #include <linux/of_platform.h>
++#include <linux/pinctrl/consumer.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/serial_8250.h>
+@@ -70,6 +71,7 @@ struct mtk8250_data {
+ #ifdef CONFIG_SERIAL_8250_DMA
+ 	enum dma_rx_status	rx_status;
+ #endif
++	int			rx_wakeup_irq;
+ };
+ 
+ /* flow control mode */
+@@ -551,6 +553,8 @@ static int mtk8250_probe(struct platform_device *pdev)
+ 	pm_runtime_set_active(&pdev->dev);
+ 	pm_runtime_enable(&pdev->dev);
+ 
++	data->rx_wakeup_irq = platform_get_irq(pdev, 1);
++
+ 	return 0;
+ }
+ 
+@@ -572,15 +576,44 @@ static int mtk8250_remove(struct platform_device *pdev)
+ static int __maybe_unused mtk8250_suspend(struct device *dev)
+ {
+ 	struct mtk8250_data *data = dev_get_drvdata(dev);
++	struct uart_8250_port *up = serial8250_get_port(data->line);
++	int irq = data->rx_wakeup_irq;
++	int err;
+ 
+ 	serial8250_suspend_port(data->line);
+ 
++	pinctrl_pm_select_sleep_state(dev);
++	if (irq >= 0) {
++		err = enable_irq_wake(irq);
++		if (err) {
++			dev_err(dev,
++				"failed to enable irq wake on IRQ %d: %d\n",
++				irq, err);
++			pinctrl_pm_select_default_state(dev);
++			serial8250_resume_port(data->line);
++			return err;
++		}
++	}
++
+ 	return 0;
+ }
+ 
+ static int __maybe_unused mtk8250_resume(struct device *dev)
+ {
+ 	struct mtk8250_data *data = dev_get_drvdata(dev);
++	int irq = data->rx_wakeup_irq;
++	int err;
++
++	if (irq >= 0) {
++		err = disable_irq_wake(irq);
++		if (err) {
++			dev_err(dev,
++				"failed to disable irq wake on IRQ %d: %d\n",
++				irq, err);
++			return err;
++		}
++	}
++	pinctrl_pm_select_default_state(dev);
+ 
+ 	serial8250_resume_port(data->line);
+ 
+-- 
+2.21.0.1020.gf2820cf01a-goog
