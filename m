@@ -1,76 +1,47 @@
-From: Erin Lo <erin.lo@mediatek.com>
-Subject: [PATCH] clk: mediatek: Remove MT8183 unused clock
-Date: Tue, 21 May 2019 11:40:01 +0800
-Message-ID: <20190521034001.53365-1-erin.lo@mediatek.com>
+From: Vinod Koul <vkoul-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH] dmaengine: mediatek-cqdma: sleeping in atomic context
+Date: Tue, 21 May 2019 10:28:51 +0530
+Message-ID: <20190521045851.GR15118@vkoul-mobl>
+References: <20190509100923.GA7024@mwanda>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, Erin Lo <erin.lo@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20190509100923.GA7024@mwanda>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
+Cc: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, kernel-janitors-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shun-Chih Yu <shun-chih.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Dan Williams <dan.j.williams-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Remove MT8183 sspm clock
+On 09-05-19, 13:09, Dan Carpenter wrote:
+> The mtk_cqdma_poll_engine_done() function takes a true/false parameter
+> where true means it's called from atomic context.  There are a couple
+> places where it was set to false but it's actually in atomic context
+> so it should be true.
+> 
+> All the callers for mtk_cqdma_hard_reset() are holding a spin_lock and
+> in mtk_cqdma_free_chan_resources() we take a spin_lock before calling
+> the mtk_cqdma_poll_engine_done() function.
 
-Signed-off-by: Erin Lo <erin.lo@mediatek.com>
----
-This clock should only be set in secure world.
----
- drivers/clk/mediatek/clk-mt8183.c | 19 -------------------
- 1 file changed, 19 deletions(-)
+Applied, thanks
 
-diff --git a/drivers/clk/mediatek/clk-mt8183.c b/drivers/clk/mediatek/clk-mt8183.c
-index 9d8651033ae9..1aa5f4059251 100644
---- a/drivers/clk/mediatek/clk-mt8183.c
-+++ b/drivers/clk/mediatek/clk-mt8183.c
-@@ -395,14 +395,6 @@ static const char * const atb_parents[] = {
- 	"syspll_d5"
- };
- 
--static const char * const sspm_parents[] = {
--	"clk26m",
--	"univpll_d2_d4",
--	"syspll_d2_d2",
--	"univpll_d2_d2",
--	"syspll_d3"
--};
--
- static const char * const dpi0_parents[] = {
- 	"clk26m",
- 	"tvdpll_d2",
-@@ -606,9 +598,6 @@ static const struct mtk_mux top_muxes[] = {
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_MUX_ATB, "atb_sel",
- 		atb_parents, 0xa0,
- 		0xa4, 0xa8, 0, 2, 7, 0x004, 24),
--	MUX_GATE_CLR_SET_UPD(CLK_TOP_MUX_SSPM, "sspm_sel",
--		sspm_parents, 0xa0,
--		0xa4, 0xa8, 8, 3, 15, 0x004, 25),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_MUX_DPI0, "dpi0_sel",
- 		dpi0_parents, 0xa0,
- 		0xa4, 0xa8, 16, 4, 23, 0x004, 26),
-@@ -947,12 +936,8 @@ static const struct mtk_gate infra_clks[] = {
- 		"fufs_sel", 13),
- 	GATE_INFRA2(CLK_INFRA_MD32_BCLK, "infra_md32_bclk",
- 		"axi_sel", 14),
--	GATE_INFRA2(CLK_INFRA_SSPM, "infra_sspm",
--		"sspm_sel", 15),
- 	GATE_INFRA2(CLK_INFRA_UNIPRO_MBIST, "infra_unipro_mbist",
- 		"axi_sel", 16),
--	GATE_INFRA2(CLK_INFRA_SSPM_BUS_HCLK, "infra_sspm_bus_hclk",
--		"axi_sel", 17),
- 	GATE_INFRA2(CLK_INFRA_I2C5, "infra_i2c5",
- 		"i2c_sel", 18),
- 	GATE_INFRA2(CLK_INFRA_I2C5_ARBITER, "infra_i2c5_arbiter",
-@@ -986,10 +971,6 @@ static const struct mtk_gate infra_clks[] = {
- 		"msdc50_0_sel", 1),
- 	GATE_INFRA3(CLK_INFRA_MSDC2_SELF, "infra_msdc2_self",
- 		"msdc50_0_sel", 2),
--	GATE_INFRA3(CLK_INFRA_SSPM_26M_SELF, "infra_sspm_26m_self",
--		"f_f26m_ck", 3),
--	GATE_INFRA3(CLK_INFRA_SSPM_32K_SELF, "infra_sspm_32k_self",
--		"f_f26m_ck", 4),
- 	GATE_INFRA3(CLK_INFRA_UFS_AXI, "infra_ufs_axi",
- 		"axi_sel", 5),
- 	GATE_INFRA3(CLK_INFRA_I2C6, "infra_i2c6",
+> 
+> Fixes: b1f01e48df5a ("dmaengine: mediatek: Add MediaTek Command-Queue DMA controller for MT6765 SoC")
+> Signed-off-by: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
+> ---
+> The "atomic" parameter is always true so the temptation was to just
+> remove it entirely.
+
+a patch is welcome :)
+
 -- 
-2.18.0
+~Vinod
