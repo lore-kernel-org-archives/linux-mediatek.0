@@ -1,244 +1,178 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH v5 4/6] usb: roles: add API to get usb_role_switch by
- node
-Date: Wed, 22 May 2019 11:37:42 +0800
-Message-ID: <1558496262.10179.379.camel@mhfsdcap03>
-References: <1557823643-8616-1-git-send-email-chunfeng.yun@mediatek.com>
-         <1557823643-8616-5-git-send-email-chunfeng.yun@mediatek.com>
-         <20190517103736.GA1490@kuha.fi.intel.com>
-         <20190517130511.GA1887@kuha.fi.intel.com>
-         <1558319951.10179.352.camel@mhfsdcap03>
-         <20190520080359.GC1887@kuha.fi.intel.com>
-         <OSBPR01MB2103385D996762FA54F8E437B8060@OSBPR01MB2103.jpnprd01.prod.outlook.com>
-         <20190520083601.GE1887@kuha.fi.intel.com>
-         <OSBPR01MB2103C4C8920C40E42BC1B2A9B8060@OSBPR01MB2103.jpnprd01.prod.outlook.com>
-         <1558424104.10179.365.camel@mhfsdcap03>
-         <20190521103304.GJ1887@kuha.fi.intel.com>
+From: Long Cheng <long.cheng@mediatek.com>
+Subject: Re: [PATCH 4/4] serial: 8250-mtk: modify uart DMA rx
+Date: Wed, 22 May 2019 13:24:22 +0800
+Message-ID: <1558502662.14150.31.camel@mhfsdcap03>
+References: <1556336193-15198-1-git-send-email-long.cheng@mediatek.com>
+         <1556336193-15198-5-git-send-email-long.cheng@mediatek.com>
+         <CANMq1KDTyu48joV6uMksGBMz9EmjFH9SEpGAm93YCZ40jxgBpQ@mail.gmail.com>
+         <1558078602.14150.27.camel@mhfsdcap03>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190521103304.GJ1887@kuha.fi.intel.com>
+In-Reply-To: <1558078602.14150.27.camel@mhfsdcap03>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-Cc: Biju Das <biju.das@bp.renesas.com>, Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infra>
+To: Nicolas Boichat <drinkcat@chromium.org>
+Cc: Vinod Koul <vkoul@kernel.org>, Randy Dunlap <rdunlap@infradead.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Dan Williams <dan.j.williams@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>, Sean Wang <sean.wang@mediatek.com>, dmaengine@vger.kernel.org, devicetree@vger.kernel.org, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, lkml <linux-kernel@vger.kernel.org>, linux-serial@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, Yingjoe Chen <yin>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-05-21 at 13:33 +0300, Heikki Krogerus wrote:
-> On Tue, May 21, 2019 at 03:35:04PM +0800, Chunfeng Yun wrote:
-> > Hi,
-> > On Mon, 2019-05-20 at 09:45 +0000, Biju Das wrote:
-> > > 
-> > > Hi Heikki,
-> > > 
-> > > Thanks for the feedback.
-> > > 
-> > > > Subject: Re: [PATCH v5 4/6] usb: roles: add API to get usb_role_switch by
-> > > > node
-> > > > 
-> > > > On Mon, May 20, 2019 at 08:06:41AM +0000, Biju Das wrote:
-> > > > > Hi Heikki,
-> > > > >
-> > > > > > Subject: Re: [PATCH v5 4/6] usb: roles: add API to get
-> > > > > > usb_role_switch by node
-> > > > > >
-> > > > > > On Mon, May 20, 2019 at 10:39:11AM +0800, Chunfeng Yun wrote:
-> > > > > > > Hi,
-> > > > > > > On Fri, 2019-05-17 at 16:05 +0300, Heikki Krogerus wrote:
-> > > > > > > > Hi,
-> > > > > > > >
-> > > > > > > > On Fri, May 17, 2019 at 01:37:36PM +0300, Heikki Krogerus wrote:
-> > > > > > > > > On Tue, May 14, 2019 at 04:47:21PM +0800, Chunfeng Yun wrote:
-> > > > > > > > > > Add fwnode_usb_role_switch_get() to make easier to get
-> > > > > > > > > > usb_role_switch by fwnode which register it.
-> > > > > > > > > > It's useful when there is not device_connection registered
-> > > > > > > > > > between two drivers and only knows the fwnode which register
-> > > > > > > > > > usb_role_switch.
-> > > > > > > > > >
-> > > > > > > > > > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > > > > > > > > > Tested-by: Biju Das <biju.das@bp.renesas.com>
-> > > > > > > > >
-> > > > > > > > > Acked-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-> > > > > > > >
-> > > > > > > > Hold on. I just noticed Rob's comment on patch 2/6, where he
-> > > > > > > > points out that you don't need to use device graph since the
-> > > > > > > > controller is the parent of the connector. Doesn't that mean you
-> > > > > > > > don't really need this API?
-> > > > > > > No, I still need it.
-> > > > > > > The change is about the way how to get fwnode; when use device
-> > > > > > > graph, get fwnode by of_graph_get_remote_node(); but now will get
-> > > > > > > fwnode by of_get_parent();
-> > > > > >
-> > > > > > OK, I get that, but I'm still not convinced about if something like
-> > > > > > this function is needed at all. I also have concerns regarding how
-> > > > > > you are using the function. I'll explain in comment to the patch 5/6 in this
-> > > > series...
-> > > > >
-> > > > > FYI, Currently  I am also using this api in my patch series.
-> > > > > https://patchwork.kernel.org/patch/10944637/
-> > > > 
-> > > > Yes, and I have the same question for you I jusb asked in comment I added
-> > > > to the patch 5/6 of this series. Why isn't usb_role_switch_get() enough?
-> > > 
-> > > Currently no issue. It will work with this api as well, since the port node is part of controller node.
-> > > For eg:-
-> > > https://patchwork.kernel.org/patch/10944627/
-> > > 
-> > > However if any one adds port node inside the connector node, then this api may won't work as expected.
-> > > Currently I get below error
-> > > 
-> > > [    2.299703] OF: graph: no port node found in /soc/i2c@e6500000/hd3ss3220@47
-> > > 
-> > > For eg:-
-> > > 
-> > > 	hd3ss3220@47 {
-> > > 		compatible = "ti,hd3ss3220";
-> > > 		...
-> > > 		....
-> > > 		usb_con: connector {
-> > >                                      ....
-> > >                                      ....
-> > > 			port {
-> > > 				hd3ss3220_ep: endpoint@0 {
-> > > 					reg = <0>;
-> > > 					remote-endpoint = <&usb3peri_role_switch>;
-> > > 				};
-> > > 			};
-> > > 		};
-> > > 	};
-> > > 
-> > > Regards,
-> > > Biju
+On Fri, 2019-05-17 at 15:36 +0800, Long Cheng wrote:
+> On Wed, 2019-05-15 at 21:48 +0800, Nicolas Boichat wrote:
+> > On Sat, Apr 27, 2019 at 11:36 AM Long Cheng <long.cheng@mediatek.com> wrote:
+> > >
+> > > Modify uart rx and complete for DMA.
 > > 
-> > I tested 3 cases:
+> > I don't know much about the DMA framework, but can you please explain
+> > why you are making the changes in this CL? I see that you are dropping
+> > dma_sync_single_for_device calls, for example, why?
 > > 
-> > case 1:
-> > 
-> > connector {
-> >     compatible = "linux,typeb-conn-gpio", "usb-b-connector";
-> >     label = "micro-USB";
-> >     type = "micro";
-> >     id-gpios = <&pio 12 GPIO_ACTIVE_HIGH>;
-> >     vbus-supply = <&usb_p0_vbus>;
-> > 
-> >     port {
-> >         bconn_ep: endpoint@0 {
-> >             remote-endpoint = <&usb_role_sw>;
-> >         };
-> >     };
-> > };
-> > 
-> > &mtu3 {
-> >     usb-role-switch;
-> > 
-> >     port {
-> >         usb_role_sw: endpoint@0 {
-> >             remote-endpoint = <&bconn_ep>;
-> >         };
-> >     };
-> > };
-> > 
-> > the driver of connector could use usb_role_switch_get(dev) to get
-> > mtu3's USB Role Switch. (dev is the device of connector)
-> > 
-> > case 2:
-> > 
-> > &mtu3 {
-> >     usb-role-switch;
-> > 
-> >     connector {
-> >         compatible = "linux,typeb-conn-gpio", "usb-b-connector";
-> >         label = "micro-USB";
-> >         type = "micro";
-> >         id-gpios = <&pio 12 GPIO_ACTIVE_HIGH>;
-> >         vbus-supply = <&usb_p0_vbus>;
-> >     };
-> > };
-> > 
-> > the driver of connector using usb_role_switch_get(dev) failed to get
-> > mtu3's USB Role Switch.
-> > error log:
-> > #OF: graph: no port node found in /usb@11271000/connector
-> > this is because connector hasn't child node connected to remote
-> > endpoint which register USB Role Switch
-> > 
-> > case 3:
-> > 
-> > rsw_iddig: role_sw_iddig {
-> >     compatible = "linux,typeb-conn-gpio";
-> >     status = "okay";
-> > 
-> >     connector {
-> >         compatible = "usb-b-connector";
-> >         label = "micro-USB";
-> >         type = "micro";
-> >         id-gpios = <&pio 12 GPIO_ACTIVE_HIGH>;
-> >         vbus-supply = <&usb_p0_vbus>;
-> > 
-> >         port {
-> >             bconn_ep: endpoint@0 {
-> >                 remote-endpoint = <&usb_role_sw>;
-> >             };
-> >         };
-> >     };
-> > };
-> > 
-> > &mtu3 {
-> >     usb-role-switch;
-> > 
-> >     port {
-> >         usb_role_sw: endpoint@0 {
-> >             remote-endpoint = <&bconn_ep>;
-> >         };
-> >     };
-> > };
-> > 
-> > 
-> > the driver of connector using usb_role_switch_get(dev) also failed to
-> > get mtu3's USB Role Switch. Because usb_role_switch_get() only search
-> > its child nodes (connector node), but not child's child (port node)
-> > This case is the same as Biju's
-> > 
-> > Usually type-c is similar with case 3;
-> > the next version v6 of this series will use case 2 as Rob suggested,
-> > see [v5, 2/6]
-> > 
-> > for case 2, will need the new API fwnode_usb_role_switch_get();
 > 
-> Thanks for the explanation.
+> the rx buffer is create by 'dma_alloc_coherent'. in the function, the
+> buffer is uncache. We don't need to sync between CPU and DMA. So I
+> remove it.
 > 
-> In this case, if I understood this correctly, the USB controller, which
-> is also the role switch, is the parent of the connector. So shouldn't
-> we simply consider that in the current API?
-It's better if can be added into the current API.
-I'll try it.
+> > >
+> > > Signed-off-by: Long Cheng <long.cheng@mediatek.com>
+> > > ---
+> > >  drivers/tty/serial/8250/8250_mtk.c |   53 ++++++++++++++++--------------------
+> > >  1 file changed, 23 insertions(+), 30 deletions(-)
+> > >
+> > > diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+> > > index c1fdbc0..04081a6 100644
+> > > --- a/drivers/tty/serial/8250/8250_mtk.c
+> > > +++ b/drivers/tty/serial/8250/8250_mtk.c
+> > > @@ -30,7 +30,6 @@
+> > >  #define MTK_UART_DMA_EN_TX     0x2
+> > >  #define MTK_UART_DMA_EN_RX     0x5
+> > >
+> > > -#define MTK_UART_TX_SIZE       UART_XMIT_SIZE
+> > >  #define MTK_UART_RX_SIZE       0x8000
+> > >  #define MTK_UART_TX_TRIGGER    1
+> > >  #define MTK_UART_RX_TRIGGER    MTK_UART_RX_SIZE
+> > > @@ -64,28 +63,30 @@ static void mtk8250_dma_rx_complete(void *param)
+> > >         struct mtk8250_data *data = up->port.private_data;
+> > >         struct tty_port *tty_port = &up->port.state->port;
+> > >         struct dma_tx_state state;
+> > > +       int copied, cnt, tmp;
+> > >         unsigned char *ptr;
+> > > -       int copied;
+> > >
+> > > -       dma_sync_single_for_cpu(dma->rxchan->device->dev, dma->rx_addr,
+> > > -                               dma->rx_size, DMA_FROM_DEVICE);
+> > > +       if (data->rx_status == DMA_RX_SHUTDOWN)
+> > > +               return;
+> > >
+> > >         dmaengine_tx_status(dma->rxchan, dma->rx_cookie, &state);
+> > > +       cnt = dma->rx_size - state.residue;
+> > > +       tmp = cnt;
+> > 
+> > I ponder, maybe we should rename cnt to left? (like, how many bytes
+> > are left to transfer, in total) Or maybe "total"
+> > Then maybe rename tmp to cnt.
+> > 
+> like better.
 > 
-> diff --git a/drivers/usb/roles/class.c b/drivers/usb/roles/class.c
-> index f45d8df5cfb8..2f898167b99a 100644
-> --- a/drivers/usb/roles/class.c
-> +++ b/drivers/usb/roles/class.c
-> @@ -125,6 +125,13 @@ struct usb_role_switch *usb_role_switch_get(struct device *dev)
->  {
->         struct usb_role_switch *sw;
+> > >
+> > > -       if (data->rx_status == DMA_RX_SHUTDOWN)
+> > > -               return;
+> > > +       if ((data->rx_pos + cnt) > dma->rx_size)
+> > > +               tmp = dma->rx_size - data->rx_pos;
+> > 
+> > Maybe replace this and the line above:
+> > tmp = max_t(int, cnt, dma->rx_size - data->rx_pos);
+> > 
+> Yes. It's better.
 > 
-> +       /*
-> +        * Simplest case is that a connector is looking for the controller,
-> +        * which is its parent.
-> +        */
-> +       if (device_property_present(dev->parent, "usb-role-switch"))
-> +               return to_role_switch(dev->parent);
-> +
->         sw = device_connection_find_match(dev, "usb-role-switch", NULL,
->                                           usb_role_switch_match);
+
+can't replace by 'max_t'. So I will keep original code.
+
+> > >
+> > > -       if ((data->rx_pos + state.residue) <= dma->rx_size) {
+> > > -               ptr = (unsigned char *)(data->rx_pos + dma->rx_buf);
+> > > -               copied = tty_insert_flip_string(tty_port, ptr, state.residue);
+> > > -       } else {
+> > > -               ptr = (unsigned char *)(data->rx_pos + dma->rx_buf);
+> > > -               copied = tty_insert_flip_string(tty_port, ptr,
+> > > -                                               dma->rx_size - data->rx_pos);
+> > > +       ptr = (unsigned char *)(data->rx_pos + dma->rx_buf);
+> > > +       copied = tty_insert_flip_string(tty_port, ptr, tmp);
+> > > +       data->rx_pos += tmp;
+> > > +
+> > > +       if (cnt > tmp) {
+> > >                 ptr = (unsigned char *)(dma->rx_buf);
+> > > -               copied += tty_insert_flip_string(tty_port, ptr,
+> > > -                               data->rx_pos + state.residue - dma->rx_size);
+> > > +               tmp = cnt - tmp;
+> > > +               copied += tty_insert_flip_string(tty_port, ptr, tmp);
+> > > +               data->rx_pos = tmp;
+> > >         }
+> > > +
+> > >         up->port.icount.rx += copied;
+> > >
+> > >         tty_flip_buffer_push(tty_port);
+> > > @@ -96,9 +97,7 @@ static void mtk8250_dma_rx_complete(void *param)
+> > >  static void mtk8250_rx_dma(struct uart_8250_port *up)
+> > >  {
+> > >         struct uart_8250_dma *dma = up->dma;
+> > > -       struct mtk8250_data *data = up->port.private_data;
+> > >         struct dma_async_tx_descriptor  *desc;
+> > > -       struct dma_tx_state      state;
+> > >
+> > >         desc = dmaengine_prep_slave_single(dma->rxchan, dma->rx_addr,
+> > >                                            dma->rx_size, DMA_DEV_TO_MEM,
+> > > @@ -113,12 +112,6 @@ static void mtk8250_rx_dma(struct uart_8250_port *up)
+> > >
+> > >         dma->rx_cookie = dmaengine_submit(desc);
+> > >
+> > > -       dmaengine_tx_status(dma->rxchan, dma->rx_cookie, &state);
+> > > -       data->rx_pos = state.residue;
+> > > -
+> > > -       dma_sync_single_for_device(dma->rxchan->device->dev, dma->rx_addr,
+> > > -                                  dma->rx_size, DMA_FROM_DEVICE);
+> > > -
+> > >         dma_async_issue_pending(dma->rxchan);
+> > >  }
+> > >
+> > > @@ -131,13 +124,13 @@ static void mtk8250_dma_enable(struct uart_8250_port *up)
+> > >         if (data->rx_status != DMA_RX_START)
+> > >                 return;
+> > >
+> > > -       dma->rxconf.direction           = DMA_DEV_TO_MEM;
+> > > -       dma->rxconf.src_addr_width      = dma->rx_size / 1024;
+> > > -       dma->rxconf.src_addr            = dma->rx_addr;
+> > > +       dma->rxconf.direction                           = DMA_DEV_TO_MEM;
+> > > +       dma->rxconf.src_port_window_size        = dma->rx_size;
+> > > +       dma->rxconf.src_addr                            = dma->rx_addr;
+> > >
+> > > -       dma->txconf.direction           = DMA_MEM_TO_DEV;
+> > > -       dma->txconf.dst_addr_width      = MTK_UART_TX_SIZE / 1024;
+> > > -       dma->txconf.dst_addr            = dma->tx_addr;
+> > > +       dma->txconf.direction                           = DMA_MEM_TO_DEV;
+> > > +       dma->txconf.dst_port_window_size        = UART_XMIT_SIZE;
+> > > +       dma->txconf.dst_addr                            = dma->tx_addr;
+> > >
+> > >         serial_out(up, UART_FCR, UART_FCR_ENABLE_FIFO | UART_FCR_CLEAR_RCVR |
+> > >                 UART_FCR_CLEAR_XMIT);
+> > > @@ -217,7 +210,7 @@ static void mtk8250_shutdown(struct uart_port *port)
+> > >          * Mediatek UARTs use an extra highspeed register (UART_MTK_HIGHS)
+> > >          *
+> > >          * We need to recalcualte the quot register, as the claculation depends
+> > > -        * on the vaule in the highspeed register.
+> > > +        * on the value in the highspeed register.
+> > 
+> > Since you're doing some cosmetic changes here, you might as well fix
+> > recalcualte => recalculate and claculation => calculation on the line
+> > above.
+> > 
 > 
+> I see.
 > 
-> > for case 3, use the new API, or need modify usb_role_switch_get();
-> 
-> I did not completely understand this case, but isn't it the same as
-> case 2 in the end, after you change it as Rob suggested?
-I'm afraid not, their bindings are different, see
-connector/usb-connector.txt
-> 
-> 
-> thanks,
+> > But technically, this should belong in another patch...
+> > 
+> > >          *
+> > >          * Some baudrates are not supported by the chip, so we use the next
+> > >          * lower rate supported and update termios c_flag.
+> > > --
+> > > 1.7.9.5
+> > >
 > 
