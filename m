@@ -1,72 +1,80 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH] ASoC: Mediatek: MT8183: enable dev runtime
- suspend and resume
-Date: Wed, 22 May 2019 16:31:28 +0100
-Message-ID: <20190522153128.GF8582@sirena.org.uk>
-References: <1558536724-18293-1-git-send-email-jiaxin.yu@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 3/4] iio: adc: mediatek: SET_LATE_SYSTEM_SLEEP_PM_OPS
+ support
+Date: Wed, 22 May 2019 18:28:50 +0200
+Message-ID: <7838dcae-8a69-0297-718b-a061b14a456d@gmail.com>
+References: <1557994247-16739-1-git-send-email-chun-hung.wu@mediatek.com>
+ <1557994247-16739-4-git-send-email-chun-hung.wu@mediatek.com>
+ <20190518113527.5210b0bf@archlinux> <1558332205.11080.6.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============1979129659672657977=="
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <1558536724-18293-1-git-send-email-jiaxin.yu@mediatek.com>
-List-Unsubscribe: <https://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <https://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: "Alsa-devel" <alsa-devel-bounces@alsa-project.org>
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Cc: alsa-devel@alsa-project.org, wsd_upstream@mediatek.com, srv_heupstream@mediatek.com, garlic.tseng@mediatek.com, tzungbi@google.com, linux-mediatek@list.infradead.org, kaichieh.chuang@mediatek.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1558332205.11080.6.camel@mtkswgap22>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chun-Hung Wu <chun-hung.wu@mediatek.com>, Jonathan Cameron <jic23@kernel.org>
+Cc: Hartmut Knaack <knaack.h@gmx.de>, Lars-Peter Clausen <lars@metafoo.de>, Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-iio@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com, peter.wang@mediatek.com, kuohong.wang@mediatek.com, jg_poxu@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
 
---===============1979129659672657977==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="pyE8wggRBhVBcj8z"
-Content-Disposition: inline
 
+On 20/05/2019 08:03, Chun-Hung Wu wrote:
+> Hi Jonathan:
+> 
+>   Thanks for the prompt reply,
+> 
+> On Sat, 2019-05-18 at 11:35 +0100, Jonathan Cameron wrote:
+>> On Thu, 16 May 2019 16:10:46 +0800
+>> Chun-Hung Wu <chun-hung.wu@mediatek.com> wrote:
+>>
+>>>   Move suspend/resume to late_suspend and
+>>> early_resume to gurantee users can use auxadc
+>> guarantee
+>>
+> will fix it in next version.
+>>> driver at suspend/resume stage.
+>> No problem with the patch content, but we need a reason why they may
+>> want to do so?
+> Our thermal drivers uses auxadc at suspend/resume stage.
+> In order to avoid auxadc suspended prior to thermal driver,
+> we move auxadc to late_suspend and early_resume.
+> 
 
---pyE8wggRBhVBcj8z
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+That sounds like a user of device_links [1] to me.
 
-On Wed, May 22, 2019 at 10:52:04PM +0800, Jiaxin Yu wrote:
-> System suspend will power off audio, so we need regcache sync when
-> system resume.
->=20
-> Remove pm_runtime_get_sync in dev probe and pm_runtime_put_sync in
-> dev remove.So that audio dev can triggle runitme suspend and resume.
+[1] https://www.kernel.org/doc/html/latest/driver-api/device_link.html
 
-While allowing runtime PM to run is good it'd be better to have a
-standard system power management resume function as well that ensures
-everything is restored after suspend to avoid unfortunate interactions
-with user configuration of runtime PM.
-
---pyE8wggRBhVBcj8z
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlzla08ACgkQJNaLcl1U
-h9CTmAf/aR+hpSMlz7odh/3zH6QgA5d+Q1r6lg/BubEjiLp6YWSBxnzUsz+fOcYh
-zJ66EYLu6KsH/PT/vkYXdxAvt9n/agC6ZRHcpZJOuMiDhItY94ZYTFjZvbt8krx2
-DxW2O9b6OrFu8jaPle0D5NvWWA+F1az9oaGxBicgJ4Qh7Cput5ArKP6v7mbaveuU
-Prc01/wsk81KuqObX0PchyxHabyR7ntaGf/SjrGUdcpQBLfPBKspfh5AZHo3wtRj
-vwEj5YGoXInhcVFvUEJCqmVVI3v8y9peD2BmPrz3fvE6J2UiRMAHLiPq8WzUydzR
-tK1wpu+piOp3gK0fJEydVpnjYMTHnQ==
-=mS3Q
------END PGP SIGNATURE-----
-
---pyE8wggRBhVBcj8z--
-
---===============1979129659672657977==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============1979129659672657977==--
+> Thanks,
+> Chun-Hung
+>>
+>> Thanks,
+>>
+>> Jonathan
+>>>
+>>> Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+>>> ---
+>>>  drivers/iio/adc/mt6577_auxadc.c | 7 ++++---
+>>>  1 file changed, 4 insertions(+), 3 deletions(-)
+>>>
+>>> diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
+>>> index e1bdcc0..58d7cb2 100644
+>>> --- a/drivers/iio/adc/mt6577_auxadc.c
+>>> +++ b/drivers/iio/adc/mt6577_auxadc.c
+>>> @@ -326,9 +326,10 @@ static int mt6577_auxadc_remove(struct platform_device *pdev)
+>>>  	return 0;
+>>>  }
+>>>  
+>>> -static SIMPLE_DEV_PM_OPS(mt6577_auxadc_pm_ops,
+>>> -			 mt6577_auxadc_suspend,
+>>> -			 mt6577_auxadc_resume);
+>>> +static const struct dev_pm_ops mt6577_auxadc_pm_ops = {
+>>> +	SET_LATE_SYSTEM_SLEEP_PM_OPS(mt6577_auxadc_suspend,
+>>> +				     mt6577_auxadc_resume)
+>>> +};
+>>>  
+>>>  static const struct of_device_id mt6577_auxadc_of_match[] = {
+>>>  	{ .compatible = "mediatek,mt2701-auxadc", .data = &mt8173_compat},
+>>
+> 
+> 
