@@ -1,80 +1,55 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 3/4] iio: adc: mediatek: SET_LATE_SYSTEM_SLEEP_PM_OPS
- support
-Date: Wed, 22 May 2019 18:28:50 +0200
-Message-ID: <7838dcae-8a69-0297-718b-a061b14a456d@gmail.com>
-References: <1557994247-16739-1-git-send-email-chun-hung.wu@mediatek.com>
- <1557994247-16739-4-git-send-email-chun-hung.wu@mediatek.com>
- <20190518113527.5210b0bf@archlinux> <1558332205.11080.6.camel@mtkswgap22>
+From: Sean Paul <sean@poorly.run>
+Subject: [PATCH] drm/mediatek: Fix warning about unhandled enum value
+Date: Wed, 22 May 2019 16:21:54 -0400
+Message-ID: <20190522202207.223110-1-sean@poorly.run>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1558332205.11080.6.camel@mtkswgap22>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chun-Hung Wu <chun-hung.wu@mediatek.com>, Jonathan Cameron <jic23@kernel.org>
-Cc: Hartmut Knaack <knaack.h@gmx.de>, Lars-Peter Clausen <lars@metafoo.de>, Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-iio@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com, peter.wang@mediatek.com, kuohong.wang@mediatek.com, jg_poxu@mediatek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Hans Verkuil <hansverk@cisco.com>, David Airlie <airlied@linux.ie>, Uma Shankar <uma.shankar@intel.com>, Sean Paul <seanpaul@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Sean Paul <sean@poorly.run>
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 20/05/2019 08:03, Chun-Hung Wu wrote:
-> Hi Jonathan:
-> 
->   Thanks for the prompt reply,
-> 
-> On Sat, 2019-05-18 at 11:35 +0100, Jonathan Cameron wrote:
->> On Thu, 16 May 2019 16:10:46 +0800
->> Chun-Hung Wu <chun-hung.wu@mediatek.com> wrote:
->>
->>>   Move suspend/resume to late_suspend and
->>> early_resume to gurantee users can use auxadc
->> guarantee
->>
-> will fix it in next version.
->>> driver at suspend/resume stage.
->> No problem with the patch content, but we need a reason why they may
->> want to do so?
-> Our thermal drivers uses auxadc at suspend/resume stage.
-> In order to avoid auxadc suspended prior to thermal driver,
-> we move auxadc to late_suspend and early_resume.
-> 
-
-That sounds like a user of device_links [1] to me.
-
-[1] https://www.kernel.org/doc/html/latest/driver-api/device_link.html
-
-> Thanks,
-> Chun-Hung
->>
->> Thanks,
->>
->> Jonathan
->>>
->>> Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
->>> ---
->>>  drivers/iio/adc/mt6577_auxadc.c | 7 ++++---
->>>  1 file changed, 4 insertions(+), 3 deletions(-)
->>>
->>> diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
->>> index e1bdcc0..58d7cb2 100644
->>> --- a/drivers/iio/adc/mt6577_auxadc.c
->>> +++ b/drivers/iio/adc/mt6577_auxadc.c
->>> @@ -326,9 +326,10 @@ static int mt6577_auxadc_remove(struct platform_device *pdev)
->>>  	return 0;
->>>  }
->>>  
->>> -static SIMPLE_DEV_PM_OPS(mt6577_auxadc_pm_ops,
->>> -			 mt6577_auxadc_suspend,
->>> -			 mt6577_auxadc_resume);
->>> +static const struct dev_pm_ops mt6577_auxadc_pm_ops = {
->>> +	SET_LATE_SYSTEM_SLEEP_PM_OPS(mt6577_auxadc_suspend,
->>> +				     mt6577_auxadc_resume)
->>> +};
->>>  
->>>  static const struct of_device_id mt6577_auxadc_of_match[] = {
->>>  	{ .compatible = "mediatek,mt2701-auxadc", .data = &mt8173_compat},
->>
-> 
-> 
+RnJvbTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+CgpGaXhlcyB0aGUgZm9sbG93
+aW5nIGJ1aWxkIHdhcm5pbmc6CmRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jOjMy
+NzoyOiB3YXJuaW5nOiBlbnVtZXJhdGlvbiB2YWx1ZSDigJhIRE1JX0lORk9GUkFNRV9UWVBFX0RS
+TeKAmSBub3QgaGFuZGxlZCBpbiBzd2l0Y2ggWy1Xc3dpdGNoXQoKSW50cm9kdWNlZCB3aXRoIHRo
+ZSBhZGRpdGlvbiBvZiBIRE1JX0lORk9GUkFNRV9UWVBFX0RSTSBpbiB0aGUgY29tbWl0CmJlbG93
+LCBidXQgdGhlIGNvZGUgcmVhbGx5IHNob3VsZCBoYXZlIGJlZW4gZnV0dXJlLXByb29mZWQgZnJv
+bSB0aGUKc3RhcnQuCgpGaXhlczogMmNkYmZkNjZhODI5ICgiZHJtOiBFbmFibGUgSERSIGluZm9m
+cmFtZSBzdXBwb3J0IikKQ2M6IFVtYSBTaGFua2FyIDx1bWEuc2hhbmthckBpbnRlbC5jb20+CkNj
+OiBTaGFzaGFuayBTaGFybWEgPHNoYXNoYW5rLnNoYXJtYUBpbnRlbC5jb20+CkNjOiBWaWxsZSBT
+eXJqw6Rsw6QgPHZpbGxlLnN5cmphbGFAbGludXguaW50ZWwuY29tPgpDYzogTWFhcnRlbiBMYW5r
+aG9yc3QgPG1hYXJ0ZW4ubGFua2hvcnN0QGxpbnV4LmludGVsLmNvbT4KQ2M6IE1heGltZSBSaXBh
+cmQgPG1heGltZS5yaXBhcmRAYm9vdGxpbi5jb20+CkNjOiBTZWFuIFBhdWwgPHNlYW5AcG9vcmx5
+LnJ1bj4KQ2M6IERhdmlkIEFpcmxpZSA8YWlybGllZEBsaW51eC5pZT4KQ2M6IERhbmllbCBWZXR0
+ZXIgPGRhbmllbEBmZndsbC5jaD4KQ2M6IEJhcnRsb21pZWogWm9sbmllcmtpZXdpY3ogPGIuem9s
+bmllcmtpZUBzYW1zdW5nLmNvbT4KQ2M6ICJWaWxsZSBTeXJqw6Rsw6QiIDx2aWxsZS5zeXJqYWxh
+QGxpbnV4LmludGVsLmNvbT4KQ2M6IEhhbnMgVmVya3VpbCA8aGFuc3ZlcmtAY2lzY28uY29tPgpD
+YzogZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpDYzogbGludXgtZmJkZXZAdmdlci5r
+ZXJuZWwub3JnClNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3Jn
+PgotLS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jIHwgMyArKysKIDEgZmls
+ZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2hkbWkuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5j
+CmluZGV4IGUwNGU2YzI5M2QzOS4uMTBjYzk5MTBmMTY0IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
+bXRrX2hkbWkuYwpAQCAtMzQxLDYgKzM0MSw5IEBAIHN0YXRpYyB2b2lkIG10a19oZG1pX2h3X3Nl
+bmRfaW5mb19mcmFtZShzdHJ1Y3QgbXRrX2hkbWkgKmhkbWksIHU4ICpidWZmZXIsCiAJCWN0cmxf
+ZnJhbWVfZW4gPSBWU19FTjsKIAkJY3RybF9yZWcgPSBHUkxfQUNQX0lTUkNfQ1RSTDsKIAkJYnJl
+YWs7CisJZGVmYXVsdDoKKwkJZGV2X2VycihoZG1pLT5kZXYsICJVbmtub3duIGluZm9mcmFtZSB0
+eXBlICVkXG4iLCBmcmFtZV90eXBlKTsKKwkJcmV0dXJuOwogCX0KIAltdGtfaGRtaV9jbGVhcl9i
+aXRzKGhkbWksIGN0cmxfcmVnLCBjdHJsX2ZyYW1lX2VuKTsKIAltdGtfaGRtaV93cml0ZShoZG1p
+LCBHUkxfSU5GT0ZSTV9UWVBFLCBmcmFtZV90eXBlKTsKLS0gClNlYW4gUGF1bCwgU29mdHdhcmUg
+RW5naW5lZXIsIEdvb2dsZSAvIENocm9taXVtIE9TCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
+aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9kcmktZGV2ZWw=
