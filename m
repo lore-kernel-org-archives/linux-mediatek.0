@@ -1,97 +1,244 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Applied "ASoC: Mediatek: MT8183: enable IIR filter" to the asoc tree
-Date: Tue, 21 May 2019 21:32:42 +0100 (BST)
-Message-ID: <20190521203242.E20DC1126D20@debutante.sirena.org.uk>
-References: <20190520082420.11236-1-shunli.wang@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH v5 4/6] usb: roles: add API to get usb_role_switch by
+ node
+Date: Wed, 22 May 2019 11:37:42 +0800
+Message-ID: <1558496262.10179.379.camel@mhfsdcap03>
+References: <1557823643-8616-1-git-send-email-chunfeng.yun@mediatek.com>
+         <1557823643-8616-5-git-send-email-chunfeng.yun@mediatek.com>
+         <20190517103736.GA1490@kuha.fi.intel.com>
+         <20190517130511.GA1887@kuha.fi.intel.com>
+         <1558319951.10179.352.camel@mhfsdcap03>
+         <20190520080359.GC1887@kuha.fi.intel.com>
+         <OSBPR01MB2103385D996762FA54F8E437B8060@OSBPR01MB2103.jpnprd01.prod.outlook.com>
+         <20190520083601.GE1887@kuha.fi.intel.com>
+         <OSBPR01MB2103C4C8920C40E42BC1B2A9B8060@OSBPR01MB2103.jpnprd01.prod.outlook.com>
+         <1558424104.10179.365.camel@mhfsdcap03>
+         <20190521103304.GJ1887@kuha.fi.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190520082420.11236-1-shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, tzungbi-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kaichieh.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190521103304.GJ1887@kuha.fi.intel.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+Cc: Biju Das <biju.das@bp.renesas.com>, Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infra>
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
-
-   ASoC: Mediatek: MT8183: enable IIR filter
-
-has been applied to the asoc tree at
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-5.3
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
->From 326b18176353d26df54dbc8b4b75ed4332898f61 Mon Sep 17 00:00:00 2001
-From: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Date: Mon, 20 May 2019 16:24:20 +0800
-Subject: [PATCH] ASoC: Mediatek: MT8183: enable IIR filter
-
-IIR fileter can remove DC offset. It must be enabled when
-dmic or amic connected to pmic is used.
-
-Signed-off-by: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
----
- sound/soc/mediatek/mt8183/mt8183-dai-adda.c | 14 +++++++++++---
- 1 file changed, 11 insertions(+), 3 deletions(-)
-
-diff --git a/sound/soc/mediatek/mt8183/mt8183-dai-adda.c b/sound/soc/mediatek/mt8183/mt8183-dai-adda.c
-index 017d7d1d9148..2b758a18c2ea 100644
---- a/sound/soc/mediatek/mt8183/mt8183-dai-adda.c
-+++ b/sound/soc/mediatek/mt8183/mt8183-dai-adda.c
-@@ -176,9 +176,6 @@ static int mtk_adda_ul_event(struct snd_soc_dapm_widget *w,
- 	case SND_SOC_DAPM_POST_PMD:
- 		/* should delayed 1/fs(smallest is 8k) = 125us before afe off */
- 		usleep_range(125, 135);
--
--		/* reset dmic */
--		afe_priv->mtkaif_dmic = 0;
- 		break;
- 	default:
- 		break;
-@@ -426,6 +423,17 @@ static int mtk_dai_adda_hw_params(struct snd_pcm_substream *substream,
- 
- 		ul_src_con0 |= (voice_mode << 17) & (0x7 << 17);
- 
-+		/* enable iir */
-+		ul_src_con0 |= (1 << UL_IIR_ON_TMP_CTL_SFT) &
-+			       UL_IIR_ON_TMP_CTL_MASK_SFT;
-+
-+		/* 35Hz @ 48k */
-+		regmap_write(afe->regmap, AFE_ADDA_IIR_COEF_02_01, 0x00000000);
-+		regmap_write(afe->regmap, AFE_ADDA_IIR_COEF_04_03, 0x00003FB8);
-+		regmap_write(afe->regmap, AFE_ADDA_IIR_COEF_06_05, 0x3FB80000);
-+		regmap_write(afe->regmap, AFE_ADDA_IIR_COEF_08_07, 0x3FB80000);
-+		regmap_write(afe->regmap, AFE_ADDA_IIR_COEF_10_09, 0x0000C048);
-+
- 		regmap_write(afe->regmap, AFE_ADDA_UL_SRC_CON0, ul_src_con0);
- 
- 		/* mtkaif_rxif_data_mode = 0, amic */
--- 
-2.20.1
+On Tue, 2019-05-21 at 13:33 +0300, Heikki Krogerus wrote:
+> On Tue, May 21, 2019 at 03:35:04PM +0800, Chunfeng Yun wrote:
+> > Hi,
+> > On Mon, 2019-05-20 at 09:45 +0000, Biju Das wrote:
+> > > 
+> > > Hi Heikki,
+> > > 
+> > > Thanks for the feedback.
+> > > 
+> > > > Subject: Re: [PATCH v5 4/6] usb: roles: add API to get usb_role_switch by
+> > > > node
+> > > > 
+> > > > On Mon, May 20, 2019 at 08:06:41AM +0000, Biju Das wrote:
+> > > > > Hi Heikki,
+> > > > >
+> > > > > > Subject: Re: [PATCH v5 4/6] usb: roles: add API to get
+> > > > > > usb_role_switch by node
+> > > > > >
+> > > > > > On Mon, May 20, 2019 at 10:39:11AM +0800, Chunfeng Yun wrote:
+> > > > > > > Hi,
+> > > > > > > On Fri, 2019-05-17 at 16:05 +0300, Heikki Krogerus wrote:
+> > > > > > > > Hi,
+> > > > > > > >
+> > > > > > > > On Fri, May 17, 2019 at 01:37:36PM +0300, Heikki Krogerus wrote:
+> > > > > > > > > On Tue, May 14, 2019 at 04:47:21PM +0800, Chunfeng Yun wrote:
+> > > > > > > > > > Add fwnode_usb_role_switch_get() to make easier to get
+> > > > > > > > > > usb_role_switch by fwnode which register it.
+> > > > > > > > > > It's useful when there is not device_connection registered
+> > > > > > > > > > between two drivers and only knows the fwnode which register
+> > > > > > > > > > usb_role_switch.
+> > > > > > > > > >
+> > > > > > > > > > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > > > > > > > > > Tested-by: Biju Das <biju.das@bp.renesas.com>
+> > > > > > > > >
+> > > > > > > > > Acked-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+> > > > > > > >
+> > > > > > > > Hold on. I just noticed Rob's comment on patch 2/6, where he
+> > > > > > > > points out that you don't need to use device graph since the
+> > > > > > > > controller is the parent of the connector. Doesn't that mean you
+> > > > > > > > don't really need this API?
+> > > > > > > No, I still need it.
+> > > > > > > The change is about the way how to get fwnode; when use device
+> > > > > > > graph, get fwnode by of_graph_get_remote_node(); but now will get
+> > > > > > > fwnode by of_get_parent();
+> > > > > >
+> > > > > > OK, I get that, but I'm still not convinced about if something like
+> > > > > > this function is needed at all. I also have concerns regarding how
+> > > > > > you are using the function. I'll explain in comment to the patch 5/6 in this
+> > > > series...
+> > > > >
+> > > > > FYI, Currently  I am also using this api in my patch series.
+> > > > > https://patchwork.kernel.org/patch/10944637/
+> > > > 
+> > > > Yes, and I have the same question for you I jusb asked in comment I added
+> > > > to the patch 5/6 of this series. Why isn't usb_role_switch_get() enough?
+> > > 
+> > > Currently no issue. It will work with this api as well, since the port node is part of controller node.
+> > > For eg:-
+> > > https://patchwork.kernel.org/patch/10944627/
+> > > 
+> > > However if any one adds port node inside the connector node, then this api may won't work as expected.
+> > > Currently I get below error
+> > > 
+> > > [    2.299703] OF: graph: no port node found in /soc/i2c@e6500000/hd3ss3220@47
+> > > 
+> > > For eg:-
+> > > 
+> > > 	hd3ss3220@47 {
+> > > 		compatible = "ti,hd3ss3220";
+> > > 		...
+> > > 		....
+> > > 		usb_con: connector {
+> > >                                      ....
+> > >                                      ....
+> > > 			port {
+> > > 				hd3ss3220_ep: endpoint@0 {
+> > > 					reg = <0>;
+> > > 					remote-endpoint = <&usb3peri_role_switch>;
+> > > 				};
+> > > 			};
+> > > 		};
+> > > 	};
+> > > 
+> > > Regards,
+> > > Biju
+> > 
+> > I tested 3 cases:
+> > 
+> > case 1:
+> > 
+> > connector {
+> >     compatible = "linux,typeb-conn-gpio", "usb-b-connector";
+> >     label = "micro-USB";
+> >     type = "micro";
+> >     id-gpios = <&pio 12 GPIO_ACTIVE_HIGH>;
+> >     vbus-supply = <&usb_p0_vbus>;
+> > 
+> >     port {
+> >         bconn_ep: endpoint@0 {
+> >             remote-endpoint = <&usb_role_sw>;
+> >         };
+> >     };
+> > };
+> > 
+> > &mtu3 {
+> >     usb-role-switch;
+> > 
+> >     port {
+> >         usb_role_sw: endpoint@0 {
+> >             remote-endpoint = <&bconn_ep>;
+> >         };
+> >     };
+> > };
+> > 
+> > the driver of connector could use usb_role_switch_get(dev) to get
+> > mtu3's USB Role Switch. (dev is the device of connector)
+> > 
+> > case 2:
+> > 
+> > &mtu3 {
+> >     usb-role-switch;
+> > 
+> >     connector {
+> >         compatible = "linux,typeb-conn-gpio", "usb-b-connector";
+> >         label = "micro-USB";
+> >         type = "micro";
+> >         id-gpios = <&pio 12 GPIO_ACTIVE_HIGH>;
+> >         vbus-supply = <&usb_p0_vbus>;
+> >     };
+> > };
+> > 
+> > the driver of connector using usb_role_switch_get(dev) failed to get
+> > mtu3's USB Role Switch.
+> > error log:
+> > #OF: graph: no port node found in /usb@11271000/connector
+> > this is because connector hasn't child node connected to remote
+> > endpoint which register USB Role Switch
+> > 
+> > case 3:
+> > 
+> > rsw_iddig: role_sw_iddig {
+> >     compatible = "linux,typeb-conn-gpio";
+> >     status = "okay";
+> > 
+> >     connector {
+> >         compatible = "usb-b-connector";
+> >         label = "micro-USB";
+> >         type = "micro";
+> >         id-gpios = <&pio 12 GPIO_ACTIVE_HIGH>;
+> >         vbus-supply = <&usb_p0_vbus>;
+> > 
+> >         port {
+> >             bconn_ep: endpoint@0 {
+> >                 remote-endpoint = <&usb_role_sw>;
+> >             };
+> >         };
+> >     };
+> > };
+> > 
+> > &mtu3 {
+> >     usb-role-switch;
+> > 
+> >     port {
+> >         usb_role_sw: endpoint@0 {
+> >             remote-endpoint = <&bconn_ep>;
+> >         };
+> >     };
+> > };
+> > 
+> > 
+> > the driver of connector using usb_role_switch_get(dev) also failed to
+> > get mtu3's USB Role Switch. Because usb_role_switch_get() only search
+> > its child nodes (connector node), but not child's child (port node)
+> > This case is the same as Biju's
+> > 
+> > Usually type-c is similar with case 3;
+> > the next version v6 of this series will use case 2 as Rob suggested,
+> > see [v5, 2/6]
+> > 
+> > for case 2, will need the new API fwnode_usb_role_switch_get();
+> 
+> Thanks for the explanation.
+> 
+> In this case, if I understood this correctly, the USB controller, which
+> is also the role switch, is the parent of the connector. So shouldn't
+> we simply consider that in the current API?
+It's better if can be added into the current API.
+I'll try it.
+> 
+> diff --git a/drivers/usb/roles/class.c b/drivers/usb/roles/class.c
+> index f45d8df5cfb8..2f898167b99a 100644
+> --- a/drivers/usb/roles/class.c
+> +++ b/drivers/usb/roles/class.c
+> @@ -125,6 +125,13 @@ struct usb_role_switch *usb_role_switch_get(struct device *dev)
+>  {
+>         struct usb_role_switch *sw;
+> 
+> +       /*
+> +        * Simplest case is that a connector is looking for the controller,
+> +        * which is its parent.
+> +        */
+> +       if (device_property_present(dev->parent, "usb-role-switch"))
+> +               return to_role_switch(dev->parent);
+> +
+>         sw = device_connection_find_match(dev, "usb-role-switch", NULL,
+>                                           usb_role_switch_match);
+> 
+> 
+> > for case 3, use the new API, or need modify usb_role_switch_get();
+> 
+> I did not completely understand this case, but isn't it the same as
+> case 2 in the end, after you change it as Rob suggested?
+I'm afraid not, their bindings are different, see
+connector/usb-connector.txt
+> 
+> 
+> thanks,
+> 
