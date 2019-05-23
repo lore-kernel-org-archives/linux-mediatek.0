@@ -1,62 +1,121 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH] drm/mediatek: Fix warning about unhandled enum value
-Date: Thu, 23 May 2019 14:13:20 +0800
-Message-ID: <1558592000.552.3.camel@mtksdaap41>
-References: <20190522202207.223110-1-sean@poorly.run>
+From: Long Cheng <long.cheng@mediatek.com>
+Subject: [PATCH 2/2] serial: 8250-mtk: modify uart DMA rx
+Date: Thu, 23 May 2019 15:35:09 +0800
+Message-ID: <1558596909-14084-3-git-send-email-long.cheng@mediatek.com>
+References: <1558596909-14084-1-git-send-email-long.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190522202207.223110-1-sean@poorly.run>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Sean Paul <sean@poorly.run>
-Cc: linux-fbdev@vger.kernel.org, Daniel Vetter <daniel@ffwll.ch>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, dri-devel@lists.freedesktop.org, Hans Verkuil <hansverk@cisco.com>, David Airlie <airlied@linux.ie>, Uma Shankar <uma.shankar@intel.com>, Sean Paul <seanpaul@chromium.org>, Ville =?ISO-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Shashank Sharma <shashank.sharma@intel.com>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1558596909-14084-1-git-send-email-long.cheng@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Vinod Koul <vkoul@kernel.org>, Randy Dunlap <rdunlap@infradead.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Dan Williams <dan.j.williams@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>, Sean Wang <sean.wang@mediatek.com>, dmaengine@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, srv_heupstream@mediatek.com, Yingjoe Chen <yingjoe.chen@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Zhenbao Liu <zhenbao.liu@mediatek.com>, Long Cheng <long.cheng@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFNlYW46CgpPbiBXZWQsIDIwMTktMDUtMjIgYXQgMTY6MjEgLTA0MDAsIFNlYW4gUGF1bCB3
-cm90ZToKPiBGcm9tOiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4KPiAKPiBGaXhl
-cyB0aGUgZm9sbG93aW5nIGJ1aWxkIHdhcm5pbmc6Cj4gZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19oZG1pLmM6MzI3OjI6IHdhcm5pbmc6IGVudW1lcmF0aW9uIHZhbHVlIOKAmEhETUlfSU5G
-T0ZSQU1FX1RZUEVfRFJN4oCZIG5vdCBoYW5kbGVkIGluIHN3aXRjaCBbLVdzd2l0Y2hdCj4gCj4g
-SW50cm9kdWNlZCB3aXRoIHRoZSBhZGRpdGlvbiBvZiBIRE1JX0lORk9GUkFNRV9UWVBFX0RSTSBp
-biB0aGUgY29tbWl0Cj4gYmVsb3csIGJ1dCB0aGUgY29kZSByZWFsbHkgc2hvdWxkIGhhdmUgYmVl
-biBmdXR1cmUtcHJvb2ZlZCBmcm9tIHRoZQo+IHN0YXJ0LgoKQWNrZWQtYnk6IENLIEh1IDxjay5o
-dUBtZWRpYXRlay5jb20+Cgo+IAo+IEZpeGVzOiAyY2RiZmQ2NmE4MjkgKCJkcm06IEVuYWJsZSBI
-RFIgaW5mb2ZyYW1lIHN1cHBvcnQiKQoKSSB0aGluayAiZHJtOiBFbmFibGUgSERSIGluZm9mcmFt
-ZSBzdXBwb3J0IiBleGlzdCBvbmx5IGluIGRybS1taXNjIHRyZWUsCmNvdWxkIHlvdSBqdXN0IG1l
-cmdlIHRoaXMgcGF0Y2ggdG8gImRybTogRW5hYmxlIEhEUiBpbmZvZnJhbWUgc3VwcG9ydCI/CgpS
-ZWdhcmRzLApDSwoKPiBDYzogVW1hIFNoYW5rYXIgPHVtYS5zaGFua2FyQGludGVsLmNvbT4KPiBD
-YzogU2hhc2hhbmsgU2hhcm1hIDxzaGFzaGFuay5zaGFybWFAaW50ZWwuY29tPgo+IENjOiBWaWxs
-ZSBTeXJqw6Rsw6QgPHZpbGxlLnN5cmphbGFAbGludXguaW50ZWwuY29tPgo+IENjOiBNYWFydGVu
-IExhbmtob3JzdCA8bWFhcnRlbi5sYW5raG9yc3RAbGludXguaW50ZWwuY29tPgo+IENjOiBNYXhp
-bWUgUmlwYXJkIDxtYXhpbWUucmlwYXJkQGJvb3RsaW4uY29tPgo+IENjOiBTZWFuIFBhdWwgPHNl
-YW5AcG9vcmx5LnJ1bj4KPiBDYzogRGF2aWQgQWlybGllIDxhaXJsaWVkQGxpbnV4LmllPgo+IENj
-OiBEYW5pZWwgVmV0dGVyIDxkYW5pZWxAZmZ3bGwuY2g+Cj4gQ2M6IEJhcnRsb21pZWogWm9sbmll
-cmtpZXdpY3ogPGIuem9sbmllcmtpZUBzYW1zdW5nLmNvbT4KPiBDYzogIlZpbGxlIFN5cmrDpGzD
-pCIgPHZpbGxlLnN5cmphbGFAbGludXguaW50ZWwuY29tPgo+IENjOiBIYW5zIFZlcmt1aWwgPGhh
-bnN2ZXJrQGNpc2NvLmNvbT4KPiBDYzogZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+
-IENjOiBsaW51eC1mYmRldkB2Z2VyLmtlcm5lbC5vcmcKPiBTaWduZWQtb2ZmLWJ5OiBTZWFuIFBh
-dWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlh
-dGVrL210a19oZG1pLmMgfCAzICsrKwo+ICAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCsp
-Cj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jIGIv
-ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMKPiBpbmRleCBlMDRlNmMyOTNkMzku
-LjEwY2M5OTEwZjE2NCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2hkbWkuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCj4gQEAg
-LTM0MSw2ICszNDEsOSBAQCBzdGF0aWMgdm9pZCBtdGtfaGRtaV9od19zZW5kX2luZm9fZnJhbWUo
-c3RydWN0IG10a19oZG1pICpoZG1pLCB1OCAqYnVmZmVyLAo+ICAJCWN0cmxfZnJhbWVfZW4gPSBW
-U19FTjsKPiAgCQljdHJsX3JlZyA9IEdSTF9BQ1BfSVNSQ19DVFJMOwo+ICAJCWJyZWFrOwo+ICsJ
-ZGVmYXVsdDoKPiArCQlkZXZfZXJyKGhkbWktPmRldiwgIlVua25vd24gaW5mb2ZyYW1lIHR5cGUg
-JWRcbiIsIGZyYW1lX3R5cGUpOwo+ICsJCXJldHVybjsKPiAgCX0KPiAgCW10a19oZG1pX2NsZWFy
-X2JpdHMoaGRtaSwgY3RybF9yZWcsIGN0cmxfZnJhbWVfZW4pOwo+ICAJbXRrX2hkbWlfd3JpdGUo
-aGRtaSwgR1JMX0lORk9GUk1fVFlQRSwgZnJhbWVfdHlwZSk7CgoKCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBs
-aXN0CmxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
+Modify uart rx and complete for DMA
+
+Signed-off-by: Long Cheng <long.cheng@mediatek.com>
+---
+ drivers/tty/serial/8250/8250_mtk.c |   49 +++++++++++++++---------------------
+ 1 file changed, 20 insertions(+), 29 deletions(-)
+
+diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+index 417c7c8..f470ded 100644
+--- a/drivers/tty/serial/8250/8250_mtk.c
++++ b/drivers/tty/serial/8250/8250_mtk.c
+@@ -47,7 +47,6 @@
+ #define MTK_UART_DMA_EN_RX	0x5
+ 
+ #define MTK_UART_ESCAPE_CHAR	0x77	/* Escape char added under sw fc */
+-#define MTK_UART_TX_SIZE	UART_XMIT_SIZE
+ #define MTK_UART_RX_SIZE	0x8000
+ #define MTK_UART_TX_TRIGGER	1
+ #define MTK_UART_RX_TRIGGER	MTK_UART_RX_SIZE
+@@ -89,28 +88,30 @@ static void mtk8250_dma_rx_complete(void *param)
+ 	struct mtk8250_data *data = up->port.private_data;
+ 	struct tty_port *tty_port = &up->port.state->port;
+ 	struct dma_tx_state state;
++	int copied, total, cnt;
+ 	unsigned char *ptr;
+-	int copied;
+ 
+-	dma_sync_single_for_cpu(dma->rxchan->device->dev, dma->rx_addr,
+-				dma->rx_size, DMA_FROM_DEVICE);
++	if (data->rx_status == DMA_RX_SHUTDOWN)
++		return;
+ 
+ 	dmaengine_tx_status(dma->rxchan, dma->rx_cookie, &state);
++	total = dma->rx_size - state.residue;
++	cnt = total;
+ 
+-	if (data->rx_status == DMA_RX_SHUTDOWN)
+-		return;
++	if ((data->rx_pos + cnt) > dma->rx_size)
++		cnt = dma->rx_size - data->rx_pos;
+ 
+-	if ((data->rx_pos + state.residue) <= dma->rx_size) {
+-		ptr = (unsigned char *)(data->rx_pos + dma->rx_buf);
+-		copied = tty_insert_flip_string(tty_port, ptr, state.residue);
+-	} else {
+-		ptr = (unsigned char *)(data->rx_pos + dma->rx_buf);
+-		copied = tty_insert_flip_string(tty_port, ptr,
+-						dma->rx_size - data->rx_pos);
++	ptr = (unsigned char *)(data->rx_pos + dma->rx_buf);
++	copied = tty_insert_flip_string(tty_port, ptr, cnt);
++	data->rx_pos += cnt;
++
++	if (total > cnt) {
+ 		ptr = (unsigned char *)(dma->rx_buf);
+-		copied += tty_insert_flip_string(tty_port, ptr,
+-				data->rx_pos + state.residue - dma->rx_size);
++		cnt = total - cnt;
++		copied += tty_insert_flip_string(tty_port, ptr, cnt);
++		data->rx_pos = cnt;
+ 	}
++
+ 	up->port.icount.rx += copied;
+ 
+ 	tty_flip_buffer_push(tty_port);
+@@ -121,9 +122,7 @@ static void mtk8250_dma_rx_complete(void *param)
+ static void mtk8250_rx_dma(struct uart_8250_port *up)
+ {
+ 	struct uart_8250_dma *dma = up->dma;
+-	struct mtk8250_data *data = up->port.private_data;
+ 	struct dma_async_tx_descriptor	*desc;
+-	struct dma_tx_state	 state;
+ 
+ 	desc = dmaengine_prep_slave_single(dma->rxchan, dma->rx_addr,
+ 					   dma->rx_size, DMA_DEV_TO_MEM,
+@@ -138,12 +137,6 @@ static void mtk8250_rx_dma(struct uart_8250_port *up)
+ 
+ 	dma->rx_cookie = dmaengine_submit(desc);
+ 
+-	dmaengine_tx_status(dma->rxchan, dma->rx_cookie, &state);
+-	data->rx_pos = state.residue;
+-
+-	dma_sync_single_for_device(dma->rxchan->device->dev, dma->rx_addr,
+-				   dma->rx_size, DMA_FROM_DEVICE);
+-
+ 	dma_async_issue_pending(dma->rxchan);
+ }
+ 
+@@ -156,13 +149,11 @@ static void mtk8250_dma_enable(struct uart_8250_port *up)
+ 	if (data->rx_status != DMA_RX_START)
+ 		return;
+ 
+-	dma->rxconf.direction		= DMA_DEV_TO_MEM;
+-	dma->rxconf.src_addr_width	= dma->rx_size / 1024;
+-	dma->rxconf.src_addr		= dma->rx_addr;
++	dma->rxconf.src_port_window_size	= dma->rx_size;
++	dma->rxconf.src_addr				= dma->rx_addr;
+ 
+-	dma->txconf.direction		= DMA_MEM_TO_DEV;
+-	dma->txconf.dst_addr_width	= MTK_UART_TX_SIZE / 1024;
+-	dma->txconf.dst_addr		= dma->tx_addr;
++	dma->txconf.dst_port_window_size	= UART_XMIT_SIZE;
++	dma->txconf.dst_addr				= dma->tx_addr;
+ 
+ 	serial_out(up, UART_FCR, UART_FCR_ENABLE_FIFO | UART_FCR_CLEAR_RCVR |
+ 		UART_FCR_CLEAR_XMIT);
+-- 
+1.7.9.5
