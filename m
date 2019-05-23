@@ -1,152 +1,69 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v13 1/2] arm: dts: mt2712: add uart APDMA to device tree
-Date: Thu, 23 May 2019 19:08:57 +0200
-Message-ID: <9c7fdd43-dffe-9339-272d-62311a39dbb9@gmail.com>
-References: <1558596909-14084-1-git-send-email-long.cheng@mediatek.com>
- <1558596909-14084-2-git-send-email-long.cheng@mediatek.com>
- <434cbd9b-face-de45-0d17-4096ad81a7b9@gmail.com>
+From: Sean Paul <sean@poorly.run>
+Subject: Re: [PATCH] drm/mediatek: Fix warning about unhandled enum value
+Date: Thu, 23 May 2019 13:13:41 -0400
+Message-ID: <20190523171341.GE17077@art_vandelay>
+References: <20190522202207.223110-1-sean@poorly.run>
+ <1558592000.552.3.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <434cbd9b-face-de45-0d17-4096ad81a7b9@gmail.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Long Cheng <long.cheng@mediatek.com>, Vinod Koul <vkoul@kernel.org>, Randy Dunlap <rdunlap@infradead.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>
-Cc: Dan Williams <dan.j.williams@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>, Sean Wang <sean.wang@mediatek.com>, dmaengine@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, srv_heupstream@mediatek.com, Yingjoe Chen <yingjoe.chen@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Zhenbao Liu <zhenbao.liu@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1558592000.552.3.camel@mtksdaap41>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: CK Hu <ck.hu@mediatek.com>
+Cc: linux-fbdev@vger.kernel.org, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Maxime Ripard <maxime.ripard@bootlin.com>, dri-devel@lists.freedesktop.org, Hans Verkuil <hansverk@cisco.com>, David Airlie <airlied@linux.ie>, Uma Shankar <uma.shankar@intel.com>, Sean Paul <seanpaul@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 23/05/2019 19:04, Matthias Brugger wrote:
-> 
-> 
-> On 23/05/2019 09:35, Long Cheng wrote:
->> 1. add uart APDMA controller device node
->> 2. add uart 0/1/2/3/4/5 DMA function
->>
->> Signed-off-by: Long Cheng <long.cheng@mediatek.com>
->> ---
->>  arch/arm64/boot/dts/mediatek/mt2712e.dtsi |   51 +++++++++++++++++++++++++++++
->>  1 file changed, 51 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
->> index 43307ba..a7a7362 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
->> +++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
->> @@ -300,6 +300,9 @@
->>  		interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
->>  		clocks = <&baud_clk>, <&sys_clk>;
->>  		clock-names = "baud", "bus";
->> +		dmas = <&apdma 10
->> +			&apdma 11>;
->> +		dma-names = "tx", "rx";
->>  		status = "disabled";
->>  	};
->>  
->> @@ -369,6 +372,39 @@
->>  			 (GIC_CPU_MASK_RAW(0x13) | IRQ_TYPE_LEVEL_HIGH)>;
->>  	};
->>  
->> +	apdma: dma-controller@11000400 {
->> +		compatible = "mediatek,mt2712-uart-dma",
->> +			     "mediatek,mt6577-uart-dma";
-> 
-> I was able to find a binding descpription but no actual driver.
-> drivers/dma/mediatek only has hsdma and cqdma but no apdma driver.
-> 
-> Seems there is something missing here.
-> 
-
-Sorry I just realized that tje driver got merged from v12.
-
-Regards,
-Matthias
-
-> Regards,
-> Matthias
-> 
->> +		reg = <0 0x11000400 0 0x80>,
->> +		      <0 0x11000480 0 0x80>,
->> +		      <0 0x11000500 0 0x80>,
->> +		      <0 0x11000580 0 0x80>,
->> +		      <0 0x11000600 0 0x80>,
->> +		      <0 0x11000680 0 0x80>,
->> +		      <0 0x11000700 0 0x80>,
->> +		      <0 0x11000780 0 0x80>,
->> +		      <0 0x11000800 0 0x80>,
->> +		      <0 0x11000880 0 0x80>,
->> +		      <0 0x11000900 0 0x80>,
->> +		      <0 0x11000980 0 0x80>;
->> +		interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_LOW>,
->> +			     <GIC_SPI 104 IRQ_TYPE_LEVEL_LOW>,
->> +			     <GIC_SPI 105 IRQ_TYPE_LEVEL_LOW>,
->> +			     <GIC_SPI 106 IRQ_TYPE_LEVEL_LOW>,
->> +			     <GIC_SPI 107 IRQ_TYPE_LEVEL_LOW>,
->> +			     <GIC_SPI 108 IRQ_TYPE_LEVEL_LOW>,
->> +			     <GIC_SPI 109 IRQ_TYPE_LEVEL_LOW>,
->> +			     <GIC_SPI 110 IRQ_TYPE_LEVEL_LOW>,
->> +			     <GIC_SPI 111 IRQ_TYPE_LEVEL_LOW>,
->> +			     <GIC_SPI 112 IRQ_TYPE_LEVEL_LOW>,
->> +			     <GIC_SPI 113 IRQ_TYPE_LEVEL_LOW>,
->> +			     <GIC_SPI 114 IRQ_TYPE_LEVEL_LOW>;
->> +		dma-requests = <12>;
->> +		clocks = <&pericfg CLK_PERI_AP_DMA>;
->> +		clock-names = "apdma";
->> +		#dma-cells = <1>;
->> +	};
->> +
->>  	auxadc: adc@11001000 {
->>  		compatible = "mediatek,mt2712-auxadc";
->>  		reg = <0 0x11001000 0 0x1000>;
->> @@ -385,6 +421,9 @@
->>  		interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>;
->>  		clocks = <&baud_clk>, <&sys_clk>;
->>  		clock-names = "baud", "bus";
->> +		dmas = <&apdma 0
->> +			&apdma 1>;
->> +		dma-names = "tx", "rx";
->>  		status = "disabled";
->>  	};
->>  
->> @@ -395,6 +434,9 @@
->>  		interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_LOW>;
->>  		clocks = <&baud_clk>, <&sys_clk>;
->>  		clock-names = "baud", "bus";
->> +		dmas = <&apdma 2
->> +			&apdma 3>;
->> +		dma-names = "tx", "rx";
->>  		status = "disabled";
->>  	};
->>  
->> @@ -405,6 +447,9 @@
->>  		interrupts = <GIC_SPI 93 IRQ_TYPE_LEVEL_LOW>;
->>  		clocks = <&baud_clk>, <&sys_clk>;
->>  		clock-names = "baud", "bus";
->> +		dmas = <&apdma 4
->> +			&apdma 5>;
->> +		dma-names = "tx", "rx";
->>  		status = "disabled";
->>  	};
->>  
->> @@ -415,6 +460,9 @@
->>  		interrupts = <GIC_SPI 94 IRQ_TYPE_LEVEL_LOW>;
->>  		clocks = <&baud_clk>, <&sys_clk>;
->>  		clock-names = "baud", "bus";
->> +		dmas = <&apdma 6
->> +			&apdma 7>;
->> +		dma-names = "tx", "rx";
->>  		status = "disabled";
->>  	};
->>  
->> @@ -629,6 +677,9 @@
->>  		interrupts = <GIC_SPI 126 IRQ_TYPE_LEVEL_LOW>;
->>  		clocks = <&baud_clk>, <&sys_clk>;
->>  		clock-names = "baud", "bus";
->> +		dmas = <&apdma 8
->> +			&apdma 9>;
->> +		dma-names = "tx", "rx";
->>  		status = "disabled";
->>  	};
->>  
->>
+T24gVGh1LCBNYXkgMjMsIDIwMTkgYXQgMDI6MTM6MjBQTSArMDgwMCwgQ0sgSHUgd3JvdGU6Cj4g
+SGksIFNlYW46Cj4gCj4gT24gV2VkLCAyMDE5LTA1LTIyIGF0IDE2OjIxIC0wNDAwLCBTZWFuIFBh
+dWwgd3JvdGU6Cj4gPiBGcm9tOiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4KPiA+
+IAo+ID4gRml4ZXMgdGhlIGZvbGxvd2luZyBidWlsZCB3YXJuaW5nOgo+ID4gZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19oZG1pLmM6MzI3OjI6IHdhcm5pbmc6IGVudW1lcmF0aW9uIHZhbHVl
+IOKAmEhETUlfSU5GT0ZSQU1FX1RZUEVfRFJN4oCZIG5vdCBoYW5kbGVkIGluIHN3aXRjaCBbLVdz
+d2l0Y2hdCj4gPiAKPiA+IEludHJvZHVjZWQgd2l0aCB0aGUgYWRkaXRpb24gb2YgSERNSV9JTkZP
+RlJBTUVfVFlQRV9EUk0gaW4gdGhlIGNvbW1pdAo+ID4gYmVsb3csIGJ1dCB0aGUgY29kZSByZWFs
+bHkgc2hvdWxkIGhhdmUgYmVlbiBmdXR1cmUtcHJvb2ZlZCBmcm9tIHRoZQo+ID4gc3RhcnQuCj4g
+Cj4gQWNrZWQtYnk6IENLIEh1IDxjay5odUBtZWRpYXRlay5jb20+Cj4gCj4gPiAKPiA+IEZpeGVz
+OiAyY2RiZmQ2NmE4MjkgKCJkcm06IEVuYWJsZSBIRFIgaW5mb2ZyYW1lIHN1cHBvcnQiKQo+IAo+
+IEkgdGhpbmsgImRybTogRW5hYmxlIEhEUiBpbmZvZnJhbWUgc3VwcG9ydCIgZXhpc3Qgb25seSBp
+biBkcm0tbWlzYyB0cmVlLAo+IGNvdWxkIHlvdSBqdXN0IG1lcmdlIHRoaXMgcGF0Y2ggdG8gImRy
+bTogRW5hYmxlIEhEUiBpbmZvZnJhbWUgc3VwcG9ydCI/CgpZZXMsIEkndmUgYXBwbGllZCBpdCB0
+byBkcm0tbWlzYy1uZXh0LiBUaGFua3MgZm9yIHlvdXIgQWNrIQoKU2VhbgoKPiAKPiBSZWdhcmRz
+LAo+IENLCj4gCj4gPiBDYzogVW1hIFNoYW5rYXIgPHVtYS5zaGFua2FyQGludGVsLmNvbT4KPiA+
+IENjOiBTaGFzaGFuayBTaGFybWEgPHNoYXNoYW5rLnNoYXJtYUBpbnRlbC5jb20+Cj4gPiBDYzog
+VmlsbGUgU3lyasOkbMOkIDx2aWxsZS5zeXJqYWxhQGxpbnV4LmludGVsLmNvbT4KPiA+IENjOiBN
+YWFydGVuIExhbmtob3JzdCA8bWFhcnRlbi5sYW5raG9yc3RAbGludXguaW50ZWwuY29tPgo+ID4g
+Q2M6IE1heGltZSBSaXBhcmQgPG1heGltZS5yaXBhcmRAYm9vdGxpbi5jb20+Cj4gPiBDYzogU2Vh
+biBQYXVsIDxzZWFuQHBvb3JseS5ydW4+Cj4gPiBDYzogRGF2aWQgQWlybGllIDxhaXJsaWVkQGxp
+bnV4LmllPgo+ID4gQ2M6IERhbmllbCBWZXR0ZXIgPGRhbmllbEBmZndsbC5jaD4KPiA+IENjOiBC
+YXJ0bG9taWVqIFpvbG5pZXJraWV3aWN6IDxiLnpvbG5pZXJraWVAc2Ftc3VuZy5jb20+Cj4gPiBD
+YzogIlZpbGxlIFN5cmrDpGzDpCIgPHZpbGxlLnN5cmphbGFAbGludXguaW50ZWwuY29tPgo+ID4g
+Q2M6IEhhbnMgVmVya3VpbCA8aGFuc3ZlcmtAY2lzY28uY29tPgo+ID4gQ2M6IGRyaS1kZXZlbEBs
+aXN0cy5mcmVlZGVza3RvcC5vcmcKPiA+IENjOiBsaW51eC1mYmRldkB2Z2VyLmtlcm5lbC5vcmcK
+PiA+IFNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgo+ID4g
+LS0tCj4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMgfCAzICsrKwo+ID4g
+IDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKykKPiA+IAo+ID4gZGlmZiAtLWdpdCBhL2Ry
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlh
+dGVrL210a19oZG1pLmMKPiA+IGluZGV4IGUwNGU2YzI5M2QzOS4uMTBjYzk5MTBmMTY0IDEwMDY0
+NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMKPiA+ICsrKyBi
+L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCj4gPiBAQCAtMzQxLDYgKzM0MSw5
+IEBAIHN0YXRpYyB2b2lkIG10a19oZG1pX2h3X3NlbmRfaW5mb19mcmFtZShzdHJ1Y3QgbXRrX2hk
+bWkgKmhkbWksIHU4ICpidWZmZXIsCj4gPiAgCQljdHJsX2ZyYW1lX2VuID0gVlNfRU47Cj4gPiAg
+CQljdHJsX3JlZyA9IEdSTF9BQ1BfSVNSQ19DVFJMOwo+ID4gIAkJYnJlYWs7Cj4gPiArCWRlZmF1
+bHQ6Cj4gPiArCQlkZXZfZXJyKGhkbWktPmRldiwgIlVua25vd24gaW5mb2ZyYW1lIHR5cGUgJWRc
+biIsIGZyYW1lX3R5cGUpOwo+ID4gKwkJcmV0dXJuOwo+ID4gIAl9Cj4gPiAgCW10a19oZG1pX2Ns
+ZWFyX2JpdHMoaGRtaSwgY3RybF9yZWcsIGN0cmxfZnJhbWVfZW4pOwo+ID4gIAltdGtfaGRtaV93
+cml0ZShoZG1pLCBHUkxfSU5GT0ZSTV9UWVBFLCBmcmFtZV90eXBlKTsKPiAKPiAKCi0tIApTZWFu
+IFBhdWwsIFNvZnR3YXJlIEVuZ2luZWVyLCBHb29nbGUgLyBDaHJvbWl1bSBPUwpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
+aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
+a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
