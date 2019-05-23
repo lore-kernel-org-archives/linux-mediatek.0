@@ -1,47 +1,75 @@
-From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-Subject: [PATCH] staging: mt7621-pci: pci-mt7621: Remove unneeded variable err
-Date: Fri, 24 May 2019 00:05:10 +0530
-Message-ID: <20190523183510.GA12942@hari-Inspiron-1545>
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Subject: Re: [PATCH 2/2] input: keyboard: mtk-pmic-keys: add MT6392 support
+Date: Thu, 23 May 2019 15:55:36 -0700
+Message-ID: <20190523225536.GE176265@dtor-ws>
+References: <20190513142120.6527-1-fparent@baylibre.com>
+ <20190513142120.6527-2-fparent@baylibre.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
+In-Reply-To: <20190513142120.6527-2-fparent@baylibre.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: reg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, Mamta Shukla <mamtashukla555@gmail.com>, NeilBrown <neil@brown.name>, Peter Vernia <peter.vernia@gmail.com>, devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Fabien Parent <fparent@baylibre.com>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, matthias.bgg@gmail.com, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-devm_request_pci_bus_resources function will return -EBUSY/-ENOMEM
-in fail case and returns 0 on success.
+On Mon, May 13, 2019 at 04:21:20PM +0200, Fabien Parent wrote:
+> Add support for MT6392 PMIC's keys.
+> 
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
 
-So no need to store return value in err variable.
+Apparently this depends on not-yet merged MT6392 support in MFD, so
+please merge through MFD tree with the rest of it.
 
-Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
----
- drivers/staging/mt7621-pci/pci-mt7621.c | 7 +------
- 1 file changed, 1 insertion(+), 6 deletions(-)
+Acked-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
 
-diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
-index 03d919a..bc2a3d1 100644
---- a/drivers/staging/mt7621-pci/pci-mt7621.c
-+++ b/drivers/staging/mt7621-pci/pci-mt7621.c
-@@ -596,17 +596,12 @@ static int mt7621_pcie_request_resources(struct mt7621_pcie *pcie,
- 					 struct list_head *res)
- {
- 	struct device *dev = pcie->dev;
--	int err;
- 
- 	pci_add_resource_offset(res, &pcie->io, pcie->offset.io);
- 	pci_add_resource_offset(res, &pcie->mem, pcie->offset.mem);
- 	pci_add_resource(res, &pcie->busn);
- 
--	err = devm_request_pci_bus_resources(dev, res);
--	if (err < 0)
--		return err;
--
--	return 0;
-+	return devm_request_pci_bus_resources(dev, res);
- }
- 
- static int mt7621_pcie_register_host(struct pci_host_bridge *host,
+> ---
+>  drivers/input/keyboard/mtk-pmic-keys.c | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
+> 
+> diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
+> index 8e6ebab05ab4..aaf68cbf7e5b 100644
+> --- a/drivers/input/keyboard/mtk-pmic-keys.c
+> +++ b/drivers/input/keyboard/mtk-pmic-keys.c
+> @@ -18,6 +18,7 @@
+>  #include <linux/interrupt.h>
+>  #include <linux/kernel.h>
+>  #include <linux/mfd/mt6323/registers.h>
+> +#include <linux/mfd/mt6392/registers.h>
+>  #include <linux/mfd/mt6397/core.h>
+>  #include <linux/mfd/mt6397/registers.h>
+>  #include <linux/module.h>
+> @@ -83,6 +84,16 @@ static const struct mtk_pmic_regs mt6323_regs = {
+>  	.pmic_rst_reg = MT6323_TOP_RST_MISC,
+>  };
+>  
+> +static const struct mtk_pmic_regs mt6392_regs = {
+> +	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
+> +		MTK_PMIC_KEYS_REGS(MT6392_CHRSTATUS,
+> +		0x2, MT6392_INT_MISC_CON, 0x10),
+> +	.keys_regs[MTK_PMIC_HOMEKEY_INDEX] =
+> +		MTK_PMIC_KEYS_REGS(MT6392_CHRSTATUS,
+> +		0x4, MT6392_INT_MISC_CON, 0x8),
+> +	.pmic_rst_reg = MT6392_TOP_RST_MISC,
+> +};
+> +
+>  struct mtk_pmic_keys_info {
+>  	struct mtk_pmic_keys *keys;
+>  	const struct mtk_pmic_keys_regs *regs;
+> @@ -238,6 +249,9 @@ static const struct of_device_id of_mtk_pmic_keys_match_tbl[] = {
+>  	}, {
+>  		.compatible = "mediatek,mt6323-keys",
+>  		.data = &mt6323_regs,
+> +	}, {
+> +		.compatible = "mediatek,mt6392-keys",
+> +		.data = &mt6392_regs,
+>  	}, {
+>  		/* sentinel */
+>  	}
+> -- 
+> 2.20.1
+> 
+
 -- 
-2.7.4
+Dmitry
