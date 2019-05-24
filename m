@@ -1,72 +1,62 @@
-From: Alexandre Torgue <alexandre.torgue@st.com>
-Subject: Re: [v4, PATCH 2/3] net: stmmac: fix csr_clk can't be zero issue
-Date: Fri, 24 May 2019 09:07:28 +0200
-Message-ID: <120eba91-6d7f-1365-6b1c-e8365e54136c@st.com>
-References: <1558679169-26752-1-git-send-email-biao.huang@mediatek.com>
- <1558679169-26752-3-git-send-email-biao.huang@mediatek.com>
+From: Neal Liu <neal.liu@mediatek.com>
+Subject: Re: [PATCH 3/3] hwrng: add mt67xx-rng driver
+Date: Fri, 24 May 2019 15:42:34 +0800
+Message-ID: <1558683754.5671.4.camel@mtkswgap22>
+References: <1557287937-2410-1-git-send-email-neal.liu@mediatek.com>
+         <1557287937-2410-4-git-send-email-neal.liu@mediatek.com>
+         <12193108.aNnqf5ydOJ@tauon.chronox.de>
+         <1557311737.11818.11.camel@mtkswgap22>
+         <20190509052649.xfkgb3qd7rhcgktj@gondor.apana.org.au>
+         <1557413686.23445.6.camel@mtkswgap22>
+         <20190510063915.kwqy3e5urs6j7ity@gondor.apana.org.au>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1558679169-26752-3-git-send-email-biao.huang@mediatek.com>
-Content-Language: en-US
-Sender: netdev-owner@vger.kernel.org
-To: Biao Huang <biao.huang@mediatek.com>, Jose Abreu <joabreu@synopsys.com>
-Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, jianguo.zhang@mediatek.comi, boon.leong.ong@intel.com
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190510063915.kwqy3e5urs6j7ity@gondor.apana.org.au>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Herbert Xu <herbert@gondor.apana.org.au>
+Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, wsd_upstream <wsd_upstream@mediatek.com>, Stephan Mueller <smueller@chronox.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "robh+dt@kernel.org" <robh+dt@kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-crypto@vger.kernel.org" <linux-crypto@vger.kernel.org>, "mpm@selenic.com" <mpm@selenic.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, Crystal Guo =?UTF-8?Q?=28=E9=83=AD=E6=99=B6=29?= <Crystal.Guo@mediatek.com>, Neal Liu <neal.liu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Biao
+Hi Herbert,
+	Could you kindly help to review our patches?
+	Thanks
 
-On 5/24/19 8:26 AM, Biao Huang wrote:
-> The specific clk_csr value can be zero, and
-> stmmac_clk is necessary for MDC clock which can be set dynamically.
-> So, change the condition from plat->clk_csr to plat->stmmac_clk to
-> fix clk_csr can't be zero issue.
-> 
-> Fixes: cd7201f477b9 ("stmmac: MDC clock dynamically based on the csr clock input")
-> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
-> ---
->   drivers/net/ethernet/stmicro/stmmac/stmmac_main.c  |    6 +++---
->   .../net/ethernet/stmicro/stmmac/stmmac_platform.c  |    5 ++++-
->   2 files changed, 7 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-> index 06487a6..b2feb6c 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-> +++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-> @@ -4380,10 +4380,10 @@ int stmmac_dvr_probe(struct device *device,
->   	 * set the MDC clock dynamically according to the csr actual
->   	 * clock input.
->   	 */
-> -	if (!priv->plat->clk_csr)
-> -		stmmac_clk_csr_set(priv);
-> -	else
-> +	if (priv->plat->clk_csr >= 0)
->   		priv->clk_csr = priv->plat->clk_csr;
-> +	else
-> +		stmmac_clk_csr_set(priv);
->   
->   	stmmac_check_pcs_mode(priv);
->   
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c
-> index 3031f2b..f45bfbe 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c
-> +++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c
-> @@ -408,7 +408,10 @@ struct plat_stmmacenet_data *
->   	/* Default to phy auto-detection */
->   	plat->phy_addr = -1;
->   
-> -	/* Get clk_csr from device tree */
-> +	/* Default to get clk_csr from stmmac_clk_crs_set(),
-> +	 * or get clk_csr from device tree.
-> +	 */
-> +	plat->clk_csr = -1;
->   	of_property_read_u32(np, "clk_csr", &plat->clk_csr);
->   
->   	/* "snps,phy-addr" is not a standard property. Mark it as deprecated
-> 
+From	Neal Liu <>
+Subject	[PATCH 0/3] MT67XX random number generator support
+Date	Wed, 8 May 2019 11:58:54 +0800
+share
+These patch series introduce a generic rng driver for Trustzone
+based kernel driver which would like to communicate with ATF
+SIP services.
 
-Acked-by: Alexandre TORGUE <alexandre.torgue@st.com>
+Patch #1 initials SMC fid table for Mediatek SIP interfaces and
+adds HWRNG related SMC call.
 
-thanks
-Alex
+Patch #2..3 adds mt67xx-rng kernel driver for Trustzone based SoCs.
+For Mediatek SoCs on ARMv8 with TrustZone enabled, peripherals like
+entropy sources is not accessible from normal world (linux) and
+rather accessible from secure world (ATF/TEE) only. This driver aims
+to provide a generic interface to ATF rng service.
+
+Neal Liu (3):
+  soc: mediatek: add SMC fid table for SIP interface
+  dt-bindings: rng: update bindings for MT67xx SoCs
+  hwrng: add mt67xx-rng driver
+
+ Documentation/devicetree/bindings/rng/mtk-rng.txt |   13 ++-
+ drivers/char/hw_random/Kconfig                    |   16 ++++
+ drivers/char/hw_random/Makefile                   |    1 +
+ drivers/char/hw_random/mt67xx-rng.c               |  104
++++++++++++++++++++++
+ include/linux/soc/mediatek/mtk_sip_svc.h          |   55 +++++++++++
+ 5 files changed, 186 insertions(+), 3 deletions(-)
+ create mode 100644 drivers/char/hw_random/mt67xx-rng.c
+ create mode 100644 include/linux/soc/mediatek/mtk_sip_svc.h
+
+-- 
+1.7.9.5
+
+Best Regards,
+-Neal Liu
