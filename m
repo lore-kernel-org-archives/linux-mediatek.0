@@ -1,68 +1,52 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [RESEND PATCH] usb: mtu3: fix up undefined reference to
- usb_debug_root
-Date: Fri, 24 May 2019 17:25:51 +0800
-Message-ID: <1558689951.10179.422.camel@mhfsdcap03>
-References: <ee71197a681165aa72cb73c7f6cb402953351805.1558678075.git.chunfeng.yun@mediatek.com>
-         <20190524074552.GA1080@kroah.com>
+From: biao huang <biao.huang@mediatek.com>
+Subject: RE: [v2, PATCH] net: stmmac: add support for hash table size
+ 128/256 in dwmac4
+Date: Fri, 24 May 2019 17:44:44 +0800
+Message-ID: <1558691084.24897.51.camel@mhfsdcap03>
+References: <1557802843-31718-1-git-send-email-biao.huang@mediatek.com>
+         <78EB27739596EE489E55E81C33FEC33A0B92D26F@DE02WEMBXB.internal.synopsys.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190524074552.GA1080@kroah.com>
+In-Reply-To: <78EB27739596EE489E55E81C33FEC33A0B92D26F@DE02WEMBXB.internal.synopsys.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Randy Dunlap <rdunlap@infradead.org>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Jose Abreu <Jose.Abreu@synopsys.com>
+Cc: "davem@davemloft.net" <davem@davemloft.net>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "linux-stm32@st-md-mailman.stormreply.com" <linux-stm32@st-md-mailman.stormreply.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "yt.shen@mediatek.com" <yt.shen@mediatek.com>, "jianguo.zhang@mediatek.comi" <jianguo.zhang@mediatek.comi>, "boon.leong.ong@intel.com" <boon.leong.ong@intel.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2019-05-24 at 09:45 +0200, Greg Kroah-Hartman wrote:
-> On Fri, May 24, 2019 at 02:11:33PM +0800, Chunfeng Yun wrote:
-> > When CONFIG_USB is not set, and CONFIG_USB_GADGET is set,
-> > there is an issue:
-> > 
-> > ld:
-> > drivers/usb/mtu3/mtu3_debugfs.o: in function 'ssusb_debugfs_create_root':
-> > mtu3_debugfs.c:(.text+0xba3): undefined reference to 'usb_debug_root'
-> > 
-> > usb_debug_root is only built when CONFIG_USB is enabled, so here drop it
-> > and use NULL instead.
-> > 
-> > Reported-by: Randy Dunlap <rdunlap@infradead.org>
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > Acked-by: Randy Dunlap <rdunlap@infradead.org>
-> > ---
-> >  drivers/usb/mtu3/mtu3_debugfs.c | 3 +--
-> >  1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> Why resend?
-Sorry, I should send it out as v2 due to acked-by is added.
+Seems I should modify this patch base on
+"https://patchwork.ozlabs.org/project/netdev/list/?series=109699"
 
+On Fri, 2019-05-24 at 09:24 +0000, Jose Abreu wrote:
+> From: biao huang <biao.huang@mediatek.com>
+> Date: Fri, May 24, 2019 at 09:31:44
 > 
-> > diff --git a/drivers/usb/mtu3/mtu3_debugfs.c b/drivers/usb/mtu3/mtu3_debugfs.c
-> > index 62c57ddc554e..b7c86ccd50b4 100644
-> > --- a/drivers/usb/mtu3/mtu3_debugfs.c
-> > +++ b/drivers/usb/mtu3/mtu3_debugfs.c
-> > @@ -528,8 +528,7 @@ void ssusb_dr_debugfs_init(struct ssusb_mtk *ssusb)
-> >  
-> >  void ssusb_debugfs_create_root(struct ssusb_mtk *ssusb)
-> >  {
-> > -	ssusb->dbgfs_root =
-> > -		debugfs_create_dir(dev_name(ssusb->dev), usb_debug_root);
-> > +	ssusb->dbgfs_root = debugfs_create_dir(dev_name(ssusb->dev), NULL);
+> > On Fri, 2019-05-24 at 08:24 +0000, Jose Abreu wrote:
+> > > From: biao huang <biao.huang@mediatek.com>
+> > > Date: Fri, May 24, 2019 at 07:33:37
+> > > 
+> > > > any comments about this patch?
+> > > 
+> > > Can you please test your series on top of this one [1] and let me know 
+> > > the output of :
+> > > # ethtool -t eth0
+> > "ethtol -T eth0"? This patch only affect hash table filter, seems no
+> > relation to timestamp.
+> > > 
+execute "ethtool -t eth0", then we got "Cannot test: Operation not
+supported", is there any config should be enabled?
+> > > Just to make sure that this patch does not introduce any regressions. The 
+> > > remaining ones of the series look fine by me!
+> > > 
+> > > [1] 
+> > which one? Did I miss anything here?
 > 
-> This moves the directory to a new location no matter what the
-> configuration is. What's wrong with where it is today?  
-it seems usb_debug_root is only for host, but not for gadget only, it's
-defined and created in usb/core/usb.c
-
-> And shoudn't we
-> create the usb root directory if only gadget is enabled?
-Yes, need modify udc/core.c, it's better if support it, do you want me
-to send a patch for it?
-
-Thanks
-
+> Sorry, my mail client tried to wrap the long link and ended up in a 
+> loooong email.
 > 
-> thanks,
+> [1] https://patchwork.ozlabs.org/project/netdev/list/?series=109699
 > 
-> greg k-h
+Got it.
+> Thanks,
+> Jose Miguel Abreu
