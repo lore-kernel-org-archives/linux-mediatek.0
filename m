@@ -1,75 +1,41 @@
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Subject: Re: [PATCH 2/2] input: keyboard: mtk-pmic-keys: add MT6392 support
-Date: Thu, 23 May 2019 15:55:36 -0700
-Message-ID: <20190523225536.GE176265@dtor-ws>
-References: <20190513142120.6527-1-fparent@baylibre.com>
- <20190513142120.6527-2-fparent@baylibre.com>
+From: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2, 0/3] 8183 emi driver support
+Date: Fri, 24 May 2019 11:54:23 +0800
+Message-ID: <1558670066-22484-1-git-send-email-xixi.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190513142120.6527-2-fparent@baylibre.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Fabien Parent <fparent@baylibre.com>
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, matthias.bgg@gmail.com, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, May 13, 2019 at 04:21:20PM +0200, Fabien Parent wrote:
-> Add support for MT6392 PMIC's keys.
-> 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+Remove global emi_dev.
 
-Apparently this depends on not-yet merged MT6392 support in MFD, so
-please merge through MFD tree with the rest of it.
+Xi Chen (3):
+  dt-bindings: soc: Add MT8183 emi dt-bindings
+  arm64: dts: mt8183: add emi node
+  mt8183: emi: add bandwidth driver support
 
-Acked-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-
-> ---
->  drivers/input/keyboard/mtk-pmic-keys.c | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
-> 
-> diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
-> index 8e6ebab05ab4..aaf68cbf7e5b 100644
-> --- a/drivers/input/keyboard/mtk-pmic-keys.c
-> +++ b/drivers/input/keyboard/mtk-pmic-keys.c
-> @@ -18,6 +18,7 @@
->  #include <linux/interrupt.h>
->  #include <linux/kernel.h>
->  #include <linux/mfd/mt6323/registers.h>
-> +#include <linux/mfd/mt6392/registers.h>
->  #include <linux/mfd/mt6397/core.h>
->  #include <linux/mfd/mt6397/registers.h>
->  #include <linux/module.h>
-> @@ -83,6 +84,16 @@ static const struct mtk_pmic_regs mt6323_regs = {
->  	.pmic_rst_reg = MT6323_TOP_RST_MISC,
->  };
->  
-> +static const struct mtk_pmic_regs mt6392_regs = {
-> +	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
-> +		MTK_PMIC_KEYS_REGS(MT6392_CHRSTATUS,
-> +		0x2, MT6392_INT_MISC_CON, 0x10),
-> +	.keys_regs[MTK_PMIC_HOMEKEY_INDEX] =
-> +		MTK_PMIC_KEYS_REGS(MT6392_CHRSTATUS,
-> +		0x4, MT6392_INT_MISC_CON, 0x8),
-> +	.pmic_rst_reg = MT6392_TOP_RST_MISC,
-> +};
-> +
->  struct mtk_pmic_keys_info {
->  	struct mtk_pmic_keys *keys;
->  	const struct mtk_pmic_keys_regs *regs;
-> @@ -238,6 +249,9 @@ static const struct of_device_id of_mtk_pmic_keys_match_tbl[] = {
->  	}, {
->  		.compatible = "mediatek,mt6323-keys",
->  		.data = &mt6323_regs,
-> +	}, {
-> +		.compatible = "mediatek,mt6392-keys",
-> +		.data = &mt6392_regs,
->  	}, {
->  		/* sentinel */
->  	}
-> -- 
-> 2.20.1
-> 
+ .../bindings/memory-controllers/mediatek,emi.txt   |  19 ++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi           |  11 +
+ drivers/memory/Kconfig                             |   9 +
+ drivers/memory/Makefile                            |   1 +
+ drivers/memory/mtk-emi.c                           | 379 +++++++++++++++++++++
+ include/soc/mediatek/emi.h                         | 116 +++++++
+ 6 files changed, 535 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
+ create mode 100644 drivers/memory/mtk-emi.c
+ create mode 100644 include/soc/mediatek/emi.h
 
 -- 
-Dmitry
+1.9.1
