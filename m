@@ -1,61 +1,45 @@
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Subject: Re: [PATCH] staging: mt7621-pci: pci-mt7621: Remove unneeded variable err
-Date: Fri, 24 May 2019 07:54:08 +0200
-Message-ID: <CAMhs-H9222OXrqWh4W-D7pFV6FXbhLVVGXz-29gO-Qo0eQaTvQ@mail.gmail.com>
-References: <20190523183510.GA12942@hari-Inspiron-1545>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [RESEND PATCH] usb: mtu3: fix up undefined reference to usb_debug_root
+Date: Fri, 24 May 2019 14:11:33 +0800
+Message-ID: <ee71197a681165aa72cb73c7f6cb402953351805.1558678075.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190523183510.GA12942@hari-Inspiron-1545>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-Cc: reg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mamta Shukla <mamtashukla555@gmail.com>, NeilBrown <neil@brown.name>, Peter Vernia <peter.vernia@gmail.com>, devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel <linux-kernel@vger.kernel.org>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Randy Dunlap <rdunlap@infradead.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Hariprasad,
+When CONFIG_USB is not set, and CONFIG_USB_GADGET is set,
+there is an issue:
 
+ld:
+drivers/usb/mtu3/mtu3_debugfs.o: in function 'ssusb_debugfs_create_root':
+mtu3_debugfs.c:(.text+0xba3): undefined reference to 'usb_debug_root'
 
-On Thu, May 23, 2019 at 8:35 PM Hariprasad Kelam
-<hariprasad.kelam@gmail.com> wrote:
->
-> devm_request_pci_bus_resources function will return -EBUSY/-ENOMEM
-> in fail case and returns 0 on success.
->
-> So no need to store return value in err variable.
->
-> Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-> ---
->  drivers/staging/mt7621-pci/pci-mt7621.c | 7 +------
->  1 file changed, 1 insertion(+), 6 deletions(-)
->
-> diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
-> index 03d919a..bc2a3d1 100644
-> --- a/drivers/staging/mt7621-pci/pci-mt7621.c
-> +++ b/drivers/staging/mt7621-pci/pci-mt7621.c
-> @@ -596,17 +596,12 @@ static int mt7621_pcie_request_resources(struct mt7621_pcie *pcie,
->                                          struct list_head *res)
->  {
->         struct device *dev = pcie->dev;
-> -       int err;
->
->         pci_add_resource_offset(res, &pcie->io, pcie->offset.io);
->         pci_add_resource_offset(res, &pcie->mem, pcie->offset.mem);
->         pci_add_resource(res, &pcie->busn);
->
-> -       err = devm_request_pci_bus_resources(dev, res);
-> -       if (err < 0)
-> -               return err;
-> -
-> -       return 0;
-> +       return devm_request_pci_bus_resources(dev, res);
->  }
->
+usb_debug_root is only built when CONFIG_USB is enabled, so here drop it
+and use NULL instead.
 
-In the patch title, the "mt7621-pci" is repeated twice. With that changed:
+Reported-by: Randy Dunlap <rdunlap@infradead.org>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Acked-by: Randy Dunlap <rdunlap@infradead.org>
+---
+ drivers/usb/mtu3/mtu3_debugfs.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-
->  static int mt7621_pcie_register_host(struct pci_host_bridge *host,
-> --
-> 2.7.4
->
+diff --git a/drivers/usb/mtu3/mtu3_debugfs.c b/drivers/usb/mtu3/mtu3_debugfs.c
+index 62c57ddc554e..b7c86ccd50b4 100644
+--- a/drivers/usb/mtu3/mtu3_debugfs.c
++++ b/drivers/usb/mtu3/mtu3_debugfs.c
+@@ -528,8 +528,7 @@ void ssusb_dr_debugfs_init(struct ssusb_mtk *ssusb)
+ 
+ void ssusb_debugfs_create_root(struct ssusb_mtk *ssusb)
+ {
+-	ssusb->dbgfs_root =
+-		debugfs_create_dir(dev_name(ssusb->dev), usb_debug_root);
++	ssusb->dbgfs_root = debugfs_create_dir(dev_name(ssusb->dev), NULL);
+ }
+ 
+ void ssusb_debugfs_remove_root(struct ssusb_mtk *ssusb)
+-- 
+2.21.0
