@@ -1,45 +1,50 @@
-From: =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>
+From: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
 Subject: Re: [RFC PATCH v4 1/1] mtd: rawnand: mtk: Re-license MTK NAND driver
  as Dual MIT/GPL
-Date: Fri, 24 May 2019 09:55:21 +0200
-Message-ID: <5052ea548ce89c1a588236d00319960b@milecki.pl>
+Date: Fri, 24 May 2019 16:56:56 +0900
+Message-ID: <CAK7LNAScdEk=1P5M5JEtmjtSmGTHcBSf1M7kR5s9wGsA_dTn_A@mail.gmail.com>
 References: <20190507092020.1917-1-xiaolei.li@mediatek.com>
  <20190507092020.1917-2-xiaolei.li@mediatek.com>
  <CAK8P3a3d-2U=hpb0P0+W-eZ0cviwKVwy6dWvHbhBCgF4CJUWKA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
-Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
-In-Reply-To: <CAK8P3a3d-2U=hpb0P0+W-eZ0cviwKVwy6dWvHbhBCgF4CJUWKA@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
-List-Post: <mailto:linux-mtd@lists.infradead.org>
-List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
-Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Daniel Thompson <daniel.thompson@linaro.org>, Ryder Lee <ryder.lee@mediatek.com>, srv_heupstream@mediatek.com, Masahiro Yamada <yamada.masahiro@socionext.com>, Richard Weinberger <richard@nod.at>, Miquel Raynal <miquel.raynal@bootlin.com>, "Gustavo A. R. Silva" <gustavo@embeddedor.com>, jorge.ramirez-ortiz@linaro.org, yingjoe.chen@mediatek.com, boris.brezillon@collabora.com, linux-mtd <linux-mtd@lists.infradead.org>, Wei Yongjun <weiyongjun1@huawei.com>, yellowriver2010@hotmail.com, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, Xiaolei Li <xiaolei.li@mediatek.com>, rogercc.lin@mediatek.com, Dan Carpenter <dan.carpenter@oracle.com>, peterpandong@micron.com
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAK8P3a3d-2U=hpb0P0+W-eZ0cviwKVwy6dWvHbhBCgF4CJUWKA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Cc: Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, "Gustavo A. R. Silva" <gustavo-L1vi/lXTdts+Va1GwOuvDg@public.gmane.org>, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Wen Yang <yellowriver2010-PkbjNfxxIARBDgjK7y7TUQ@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-mtd <linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal-g1n6cQUeyibVItvQsEIGlw@public.gmane.org>, Jorge Ramirez Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Xiaolei Li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, peterpandong-AL4WhLSQfzjQT0dZR+AlfA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gMjAxOS0wNS0yNCAwOTo1MiwgQXJuZCBCZXJnbWFubiB3cm90ZToKPiBPbiBUdWUsIE1heSA3
-LCAyMDE5IGF0IDExOjIwIEFNIFhpYW9sZWkgTGkgPHhpYW9sZWkubGlAbWVkaWF0ZWsuY29tPiAK
-PiB3cm90ZToKPj4gCj4+IEl0IGlzIHdhbnRlZCB0byB1c2UgTVRLIE5BTkQgZHJpdmVyIHdpdGgg
-R1BMLTIuMCBvciBNSVQgbGljZW5zZS4KPj4gQnV0IG5vdyBpdCBpcyBvbmx5IGxpY2Vuc2VkIGFz
-IEdQTC0yLjAuCj4+IFNvIHJlLWxpY2Vuc2UgaXQgYXMgZHVhbCBNSVQvR1BMIGFuZCByZXBsYWNl
-IGxpY2Vuc2UgdGV4dCB3aXRoCj4+IFNQRFggdGFnLgo+PiAKPj4gU2lnbmVkLW9mZi1ieTogWGlh
-b2xlaSBMaSA8eGlhb2xlaS5saUBtZWRpYXRlay5jb20+Cj4+IEFja2VkLWJ5OiBKb3JnZSBSYW1p
-cmV6LU9ydGl6IDxqb3JnZS5yYW1pcmV6LW9ydGl6QGxpbmFyby5vcmc+Cj4+IEFja2VkLWJ5OiBS
-eWRlciBMZWUgPHJ5ZGVyLmxlZUBtZWRpYXRlay5jb20+Cj4+IEFja2VkLWJ5OiBSYWZhxYIgTWnF
-gmVja2kgPHJhZmFsQG1pbGVja2kucGw+Cj4+IEFja2VkLWJ5OiBNaXF1ZWwgUmF5bmFsIDxtaXF1
-ZWwucmF5bmFsQGJvb3RsaW4uY29tPgo+PiBBY2tlZC1ieTogQm9yaXMgQnJlemlsbG9uIDxib3Jp
-cy5icmV6aWxsb25AY29sbGFib3JhLmNvbT4KPj4gQWNrZWQtYnk6IFJvZ2VyQ0MgTGluIDxyb2dl
-cmNjLmxpbkBtZWRpYXRlay5jb20+Cj4gCj4gQWNrZWQtYnk6IEFybmQgQmVyZ21hbm4gPGFybmRA
-YXJuZGIuZGU+Cj4gCj4gU29ycnkgZm9yIG1pc3NpbmcgdGhpcyBlYXJsaWVyLgoKVGhhbmsgeW91
-IQoKWGlhb2xlaTogcGxlYXNlIHJlc2VuZCB0aGlzIHBhdGNoIHdpdGhvdXQgUkZDIGluIGEgc3Vi
-amVjdC4gSSBiZWxpZXZlIGl0CmNhbiBiZSBhcHBsaWVkL3B1c2hlZCBub3cuCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXggTVREIGRp
-c2N1c3Npb24gbWFpbGluZyBsaXN0Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtbXRkLwo=
+T24gRnJpLCBNYXkgMjQsIDIwMTkgYXQgNDo1MyBQTSBBcm5kIEJlcmdtYW5uIDxhcm5kQGFybmRi
+LmRlPiB3cm90ZToKPgo+IE9uIFR1ZSwgTWF5IDcsIDIwMTkgYXQgMTE6MjAgQU0gWGlhb2xlaSBM
+aSA8eGlhb2xlaS5saUBtZWRpYXRlay5jb20+IHdyb3RlOgo+ID4KPiA+IEl0IGlzIHdhbnRlZCB0
+byB1c2UgTVRLIE5BTkQgZHJpdmVyIHdpdGggR1BMLTIuMCBvciBNSVQgbGljZW5zZS4KPiA+IEJ1
+dCBub3cgaXQgaXMgb25seSBsaWNlbnNlZCBhcyBHUEwtMi4wLgo+ID4gU28gcmUtbGljZW5zZSBp
+dCBhcyBkdWFsIE1JVC9HUEwgYW5kIHJlcGxhY2UgbGljZW5zZSB0ZXh0IHdpdGgKPiA+IFNQRFgg
+dGFnLgo+ID4KPiA+IFNpZ25lZC1vZmYtYnk6IFhpYW9sZWkgTGkgPHhpYW9sZWkubGlAbWVkaWF0
+ZWsuY29tPgo+ID4gQWNrZWQtYnk6IEpvcmdlIFJhbWlyZXotT3J0aXogPGpvcmdlLnJhbWlyZXot
+b3J0aXpAbGluYXJvLm9yZz4KPiA+IEFja2VkLWJ5OiBSeWRlciBMZWUgPHJ5ZGVyLmxlZUBtZWRp
+YXRlay5jb20+Cj4gPiBBY2tlZC1ieTogUmFmYcWCIE1pxYJlY2tpIDxyYWZhbEBtaWxlY2tpLnBs
+Pgo+ID4gQWNrZWQtYnk6IE1pcXVlbCBSYXluYWwgPG1pcXVlbC5yYXluYWxAYm9vdGxpbi5jb20+
+Cj4gPiBBY2tlZC1ieTogQm9yaXMgQnJlemlsbG9uIDxib3Jpcy5icmV6aWxsb25AY29sbGFib3Jh
+LmNvbT4KPiA+IEFja2VkLWJ5OiBSb2dlckNDIExpbiA8cm9nZXJjYy5saW5AbWVkaWF0ZWsuY29t
+Pgo+Cj4gQWNrZWQtYnk6IEFybmQgQmVyZ21hbm4gPGFybmRAYXJuZGIuZGU+Cj4KPiBTb3JyeSBm
+b3IgbWlzc2luZyB0aGlzIGVhcmxpZXIuCj4KPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KPiBMaW51eCBNVEQgZGlzY3Vzc2lvbiBtYWlsaW5n
+IGxpc3QKPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
+LW10ZC8KCgpJIGZvdW5kIG15IHRpbnkgY29udHJpYnV0aW9uIGZvciBtdGRfbmFuZC5jIChmMGRi
+ZTRhYTM1ZTczKS4KQW55d2F5LCBJIGRvIG5vdCBtaW5kIHRoaXMuCgpBY2tlZC1ieTogTWFzYWhp
+cm8gWWFtYWRhIDx5YW1hZGEubWFzYWhpcm9Ac29jaW9uZXh0LmNvbT4KCgoKLS0gCkJlc3QgUmVn
+YXJkcwpNYXNhaGlybyBZYW1hZGEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0Bs
+aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
+dGluZm8vbGludXgtbWVkaWF0ZWsK
