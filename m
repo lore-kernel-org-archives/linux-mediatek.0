@@ -1,161 +1,50 @@
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Subject: Re: [PATCH 8/8] devfreq: mediatek: cci devfreq register opp
- notification for SVS support
-Date: Fri, 24 May 2019 16:04:18 +0800
-Message-ID: <CAJMQK-hF3RT7wPRunE8q4uaEVaS1wkvmQO5t28Poz9ztiJ5Rmg@mail.gmail.com>
-References: <1557997725-12178-1-git-send-email-andrew-sh.cheng@mediatek.com> <1557997725-12178-9-git-send-email-andrew-sh.cheng@mediatek.com>
+From: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [RFC PATCH v4 1/1] mtd: rawnand: mtk: Re-license MTK NAND
+ driver as Dual MIT/GPL
+Date: Fri, 24 May 2019 16:18:11 +0800
+Message-ID: <1558685891.18315.33.camel@mhfsdcap03>
+References: <20190507092020.1917-1-xiaolei.li@mediatek.com>
+ <20190507092020.1917-2-xiaolei.li@mediatek.com>
+ <CAK8P3a3d-2U=hpb0P0+W-eZ0cviwKVwy6dWvHbhBCgF4CJUWKA@mail.gmail.com>
+ <5052ea548ce89c1a588236d00319960b@milecki.pl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1557997725-12178-9-git-send-email-andrew-sh.cheng@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
-Cc: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>, Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, linux-pm@vger.kernel.org, lkml <linux-kernel@vger.kernel.org>, fan.chen@mediatek.com, linux-mediatek@lists.infradead.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <5052ea548ce89c1a588236d00319960b-g1n6cQUeyibVItvQsEIGlw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <rafal-g1n6cQUeyibVItvQsEIGlw@public.gmane.org>
+Cc: Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, "Gustavo A. R. Silva" <gustavo-L1vi/lXTdts+Va1GwOuvDg@public.gmane.org>, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-mtd <linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, yellowriver2010-PkbjNfxxIARBDgjK7y7TUQ@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, peterpandong-AL4WhLSQfzjQT0dZR+AlfA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, May 16, 2019 at 9:08 AM Andrew-sh.Cheng
-<andrew-sh.cheng@mediatek.com> wrote:
->
-> From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
->
-> SVS will change the voltage of opp item.
-> CCI devfreq need to react to change frequency.
->
-> Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
-> ---
->  drivers/devfreq/mt8183-cci-devfreq.c | 63 ++++++++++++++++++++++++++++++++++++
->  1 file changed, 63 insertions(+)
->
-> diff --git a/drivers/devfreq/mt8183-cci-devfreq.c b/drivers/devfreq/mt8183-cci-devfreq.c
-> index 818a167c442f..250c963789f3 100644
-> --- a/drivers/devfreq/mt8183-cci-devfreq.c
-> +++ b/drivers/devfreq/mt8183-cci-devfreq.c
-> @@ -19,7 +19,10 @@ struct cci_devfreq {
->         struct regulator *proc_reg;
->         unsigned long proc_reg_uV;
->         struct clk *cci_clk;
-> +       unsigned long freq;
->         struct notifier_block nb;
-> +       struct notifier_block opp_nb;
-> +       int cci_min_freq;
->  };
->
->  static int cci_devfreq_regulator_notifier(struct notifier_block *nb,
-> @@ -65,17 +68,62 @@ static int cci_devfreq_regulator_notifier(struct notifier_block *nb,
->         return 0;
->  }
->
-> +static int ccidevfreq_opp_notifier(struct notifier_block *nb,
-> +unsigned long event, void *data)
-> +{
-> +       int ret;
-> +       struct dev_pm_opp *opp = data;
-> +       struct cci_devfreq *cci_df = container_of(nb, struct cci_devfreq,
-> +                                                 opp_nb);
-> +       unsigned long   freq, volt, cur_volt;
-> +
-> +       if (event == OPP_EVENT_ADJUST_VOLTAGE) {
-> +               freq = dev_pm_opp_get_freq(opp);
-> +               /* current opp item is changed */
-> +               if (freq == cci_df->freq) {
-> +                       volt = dev_pm_opp_get_voltage(opp);
-> +                       cur_volt = regulator_get_voltage(cci_df->proc_reg);
-> +
-> +                       if (volt > cur_volt) {
-> +                               /* need reduce freq */
-> +                               mutex_lock(&cci_df->devfreq->lock);
-> +                               ret = update_devfreq(cci_df->devfreq);
-> +                               if (ret)
-> +                                       pr_err("Fail to reduce cci frequency by opp notification: %d\n",
-This line is too long
-> +                                              ret);
-> +                               mutex_unlock(&cci_df->devfreq->lock);
-> +                       }
-> +               }
-> +
-> +               if (freq == cci_df->cci_min_freq) {
-> +                       volt = dev_pm_opp_get_voltage(opp);
-> +                       regulator_set_voltage(cci_df->proc_reg, volt, INT_MAX);
-> +               }
-> +       } else if (event == OPP_EVENT_DISABLE) {
-Is this case handled? If not, is this branch needed?
-> +       }
-> +
-> +       return 0;
-> +}
-> +
-> +
->  static int mtk_cci_governor_get_target(struct devfreq *devfreq,
->                                        unsigned long *freq)
->  {
->         struct cci_devfreq *cci_df;
->         struct dev_pm_opp *opp;
-> +       int ret;
->
->         cci_df = dev_get_drvdata(devfreq->dev.parent);
->
->         /* find available frequency */
->         opp = dev_pm_opp_find_freq_ceil_by_volt(devfreq->dev.parent,
->                                                 cci_df->proc_reg_uV);
-> +       ret = PTR_ERR_OR_ZERO(opp);
-> +       if (ret) {
-> +               pr_err("%s[%d], cannot find opp with voltage=%d: %d\n",
-> +                      __func__, __LINE__, cci_df->proc_reg_uV, ret);
-> +               return ret;
-> +       }
->         *freq = dev_pm_opp_get_freq(opp);
->
->         return 0;
-> @@ -87,9 +135,11 @@ static int mtk_cci_governor_event_handler(struct devfreq *devfreq,
->         int ret;
->         struct cci_devfreq *cci_df;
->         struct notifier_block *nb;
-> +       struct notifier_block *opp_nb;
->
->         cci_df = dev_get_drvdata(devfreq->dev.parent);
->         nb = &cci_df->nb;
-> +       opp_nb = &cci_df->opp_nb;
->
->         switch (event) {
->         case DEVFREQ_GOV_START:
-> @@ -100,6 +150,8 @@ static int mtk_cci_governor_event_handler(struct devfreq *devfreq,
->                 if (ret)
->                         pr_err("%s: failed to add governor: %d\n", __func__,
->                                ret);
-> +               opp_nb->notifier_call = ccidevfreq_opp_notifier;
-> +               dev_pm_opp_register_notifier(devfreq->dev.parent, opp_nb);
->                 break;
->
->         case DEVFREQ_GOV_STOP:
-> @@ -141,6 +193,8 @@ static int mtk_cci_devfreq_target(struct device *dev, unsigned long *freq,
->                 return ret;
->         }
->
-> +       cci_df->freq = *freq;
-> +
->         return 0;
->  }
->
-> @@ -152,6 +206,8 @@ static int mtk_cci_devfreq_probe(struct platform_device *pdev)
->  {
->         struct device *cci_dev = &pdev->dev;
->         struct cci_devfreq *cci_df;
-> +       unsigned long freq, volt;
-> +       struct dev_pm_opp *opp;
->         int ret;
->
->         cci_df = devm_kzalloc(cci_dev, sizeof(*cci_df), GFP_KERNEL);
-> @@ -181,6 +237,13 @@ static int mtk_cci_devfreq_probe(struct platform_device *pdev)
->                 return ret;
->         }
->
-> +       /* set voltage lower bound */
-> +       freq = 1;
-> +       opp = dev_pm_opp_find_freq_ceil(cci_dev, &freq);
-> +       cci_df->cci_min_freq = dev_pm_opp_get_freq(opp);
-> +       volt = dev_pm_opp_get_voltage(opp);
-> +       dev_pm_opp_put(opp);
-> +
->         platform_set_drvdata(pdev, cci_df);
->
->         cci_df->devfreq = devm_devfreq_add_device(cci_dev,
+SGkgQWxsLAoKVGhhbmtzIHZlcnkgbXVjaCBmb3IgeW91ciByZXNwb25zZSEKSSB3aWxsIHNlbmQg
+YSBmb3JtYWwgcGF0Y2ggc29vbi4KClRoYW5rcywKWGlhb2xlaQoKT24gRnJpLCAyMDE5LTA1LTI0
+IGF0IDA5OjU1ICswMjAwLCBSYWZhxYIgTWnFgmVja2kgd3JvdGU6Cj4gT24gMjAxOS0wNS0yNCAw
+OTo1MiwgQXJuZCBCZXJnbWFubiB3cm90ZToKPiA+IE9uIFR1ZSwgTWF5IDcsIDIwMTkgYXQgMTE6
+MjAgQU0gWGlhb2xlaSBMaSA8eGlhb2xlaS5saUBtZWRpYXRlay5jb20+IAo+ID4gd3JvdGU6Cj4g
+Pj4gCj4gPj4gSXQgaXMgd2FudGVkIHRvIHVzZSBNVEsgTkFORCBkcml2ZXIgd2l0aCBHUEwtMi4w
+IG9yIE1JVCBsaWNlbnNlLgo+ID4+IEJ1dCBub3cgaXQgaXMgb25seSBsaWNlbnNlZCBhcyBHUEwt
+Mi4wLgo+ID4+IFNvIHJlLWxpY2Vuc2UgaXQgYXMgZHVhbCBNSVQvR1BMIGFuZCByZXBsYWNlIGxp
+Y2Vuc2UgdGV4dCB3aXRoCj4gPj4gU1BEWCB0YWcuCj4gPj4gCj4gPj4gU2lnbmVkLW9mZi1ieTog
+WGlhb2xlaSBMaSA8eGlhb2xlaS5saUBtZWRpYXRlay5jb20+Cj4gPj4gQWNrZWQtYnk6IEpvcmdl
+IFJhbWlyZXotT3J0aXogPGpvcmdlLnJhbWlyZXotb3J0aXpAbGluYXJvLm9yZz4KPiA+PiBBY2tl
+ZC1ieTogUnlkZXIgTGVlIDxyeWRlci5sZWVAbWVkaWF0ZWsuY29tPgo+ID4+IEFja2VkLWJ5OiBS
+YWZhxYIgTWnFgmVja2kgPHJhZmFsQG1pbGVja2kucGw+Cj4gPj4gQWNrZWQtYnk6IE1pcXVlbCBS
+YXluYWwgPG1pcXVlbC5yYXluYWxAYm9vdGxpbi5jb20+Cj4gPj4gQWNrZWQtYnk6IEJvcmlzIEJy
+ZXppbGxvbiA8Ym9yaXMuYnJlemlsbG9uQGNvbGxhYm9yYS5jb20+Cj4gPj4gQWNrZWQtYnk6IFJv
+Z2VyQ0MgTGluIDxyb2dlcmNjLmxpbkBtZWRpYXRlay5jb20+Cj4gPiAKPiA+IEFja2VkLWJ5OiBB
+cm5kIEJlcmdtYW5uIDxhcm5kQGFybmRiLmRlPgo+ID4gCj4gPiBTb3JyeSBmb3IgbWlzc2luZyB0
+aGlzIGVhcmxpZXIuCj4gCj4gVGhhbmsgeW91IQo+IAo+IFhpYW9sZWk6IHBsZWFzZSByZXNlbmQg
+dGhpcyBwYXRjaCB3aXRob3V0IFJGQyBpbiBhIHN1YmplY3QuIEkgYmVsaWV2ZSBpdAo+IGNhbiBi
+ZSBhcHBsaWVkL3B1c2hlZCBub3cuCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRl
+a0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
+bGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
