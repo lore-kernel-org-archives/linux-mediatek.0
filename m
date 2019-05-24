@@ -1,45 +1,47 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [RESEND PATCH] usb: mtu3: fix up undefined reference to usb_debug_root
-Date: Fri, 24 May 2019 14:11:33 +0800
-Message-ID: <ee71197a681165aa72cb73c7f6cb402953351805.1558678075.git.chunfeng.yun@mediatek.com>
+From: Biao Huang <biao.huang@mediatek.com>
+Subject: [v4, PATCH 0/3] fix some bugs in stmmac
+Date: Fri, 24 May 2019 14:26:06 +0800
+Message-ID: <1558679169-26752-1-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Randy Dunlap <rdunlap@infradead.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Jose Abreu <joabreu@synopsys.com>
+Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, biao.huang@mediatek.com, jianguo.zhang@mediatek.comi, boon.leong.ong@intel.com
 List-Id: linux-mediatek@lists.infradead.org
 
-When CONFIG_USB is not set, and CONFIG_USB_GADGET is set,
-there is an issue:
-
-ld:
-drivers/usb/mtu3/mtu3_debugfs.o: in function 'ssusb_debugfs_create_root':
-mtu3_debugfs.c:(.text+0xba3): undefined reference to 'usb_debug_root'
-
-usb_debug_root is only built when CONFIG_USB is enabled, so here drop it
-and use NULL instead.
-
-Reported-by: Randy Dunlap <rdunlap@infradead.org>
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Acked-by: Randy Dunlap <rdunlap@infradead.org>
----
- drivers/usb/mtu3/mtu3_debugfs.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/drivers/usb/mtu3/mtu3_debugfs.c b/drivers/usb/mtu3/mtu3_debugfs.c
-index 62c57ddc554e..b7c86ccd50b4 100644
---- a/drivers/usb/mtu3/mtu3_debugfs.c
-+++ b/drivers/usb/mtu3/mtu3_debugfs.c
-@@ -528,8 +528,7 @@ void ssusb_dr_debugfs_init(struct ssusb_mtk *ssusb)
- 
- void ssusb_debugfs_create_root(struct ssusb_mtk *ssusb)
- {
--	ssusb->dbgfs_root =
--		debugfs_create_dir(dev_name(ssusb->dev), usb_debug_root);
-+	ssusb->dbgfs_root = debugfs_create_dir(dev_name(ssusb->dev), NULL);
- }
- 
- void ssusb_debugfs_remove_root(struct ssusb_mtk *ssusb)
--- 
-2.21.0
+changes in v4:                                                                  
+        since MTL_OPERATION_MODE write back issue has be fixed in the latest driver,
+remove original patch#3                                                         
+                                                                                
+changes in v3:                                                                  
+        add a Fixes:tag for each patch                                          
+                                                                                
+changes in v2:                                                                  
+        1. update rx_tail_addr as Jose's comment                                
+        2. changes clk_csr condition as Alex's proposition                      
+        3. remove init lines in dwmac-mediatek, get clk_csr from dts instead.   
+                                                                                
+v1:                                                                             
+This series fix some bugs in stmmac driver                                      
+3 patches are for common stmmac or dwmac4:                                      
+        1. update rx tail pointer to fix rx dma hang issue.                     
+        2. change condition for mdc clock to fix csr_clk can't be zero issue.   
+        3. write the modified value back to MTL_OPERATION_MODE.                 
+1 patch is for dwmac-mediatek:                                                  
+        modify csr_clk value to fix mdio read/write fail issue for dwmac-mediatek
+                                                                                
+Biao Huang (3):                                                                 
+  net: stmmac: update rx tail pointer register to fix rx dma hang               
+    issue.                                                                      
+  net: stmmac: fix csr_clk can't be zero issue                                  
+  net: stmmac: dwmac-mediatek: modify csr_clk value to fix mdio                 
+    read/write fail                                                             
+                                                                                
+ .../net/ethernet/stmicro/stmmac/dwmac-mediatek.c   |    2 --                   
+ drivers/net/ethernet/stmicro/stmmac/stmmac_main.c  |    7 ++++---              
+ .../net/ethernet/stmicro/stmmac/stmmac_platform.c  |    5 ++++-                
+ 3 files changed, 8 insertions(+), 6 deletions(-)                               
+                                                                                
+--                                                                              
+1.7.9.5
