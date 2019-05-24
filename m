@@ -1,184 +1,72 @@
-From: biao huang <biao.huang@mediatek.com>
-Subject: Re: [v2, PATCH] net: stmmac: add support for hash table size
- 128/256 in dwmac4
-Date: Fri, 24 May 2019 14:33:37 +0800
-Message-ID: <1558679617.24897.43.camel@mhfsdcap03>
-References: <1557802843-31718-1-git-send-email-biao.huang@mediatek.com>
-         <1557802843-31718-2-git-send-email-biao.huang@mediatek.com>
+From: Alexandre Torgue <alexandre.torgue@st.com>
+Subject: Re: [v4, PATCH 2/3] net: stmmac: fix csr_clk can't be zero issue
+Date: Fri, 24 May 2019 09:07:28 +0200
+Message-ID: <120eba91-6d7f-1365-6b1c-e8365e54136c@st.com>
+References: <1558679169-26752-1-git-send-email-biao.huang@mediatek.com>
+ <1558679169-26752-3-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1557802843-31718-2-git-send-email-biao.huang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jose Abreu <joabreu@synopsys.com>
-Cc: davem@davemloft.net, Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, jianguo.zhang@mediatek.comi, boon.leong.ong@intel.com
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1558679169-26752-3-git-send-email-biao.huang@mediatek.com>
+Content-Language: en-US
+Sender: netdev-owner@vger.kernel.org
+To: Biao Huang <biao.huang@mediatek.com>, Jose Abreu <joabreu@synopsys.com>
+Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, jianguo.zhang@mediatek.comi, boon.leong.ong@intel.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Dear All,
-any comments about this patch?
-Thanks.
-On Tue, 2019-05-14 at 11:00 +0800, Biao Huang wrote:
-> 1. get hash table size in hw feature reigster, and add support
-> for taller hash table(128/256) in dwmac4.
-> 2. only clear PR/HMC/PM bits of GMAC_PACKET_FILTER, to avoid
-> side effect to functions of other bits.
+Hi Biao
+
+On 5/24/19 8:26 AM, Biao Huang wrote:
+> The specific clk_csr value can be zero, and
+> stmmac_clk is necessary for MDC clock which can be set dynamically.
+> So, change the condition from plat->clk_csr to plat->stmmac_clk to
+> fix clk_csr can't be zero issue.
 > 
+> Fixes: cd7201f477b9 ("stmmac: MDC clock dynamically based on the csr clock input")
 > Signed-off-by: Biao Huang <biao.huang@mediatek.com>
 > ---
->  drivers/net/ethernet/stmicro/stmmac/common.h      |    7 +--
->  drivers/net/ethernet/stmicro/stmmac/dwmac4.h      |    4 +-
->  drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c |   50 ++++++++++++---------
->  drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c  |    1 +
->  drivers/net/ethernet/stmicro/stmmac/stmmac_main.c |    4 ++
->  5 files changed, 40 insertions(+), 26 deletions(-)
+>   drivers/net/ethernet/stmicro/stmmac/stmmac_main.c  |    6 +++---
+>   .../net/ethernet/stmicro/stmmac/stmmac_platform.c  |    5 ++++-
+>   2 files changed, 7 insertions(+), 4 deletions(-)
 > 
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/common.h b/drivers/net/ethernet/stmicro/stmmac/common.h
-> index 272b9ca6..709dcec 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/common.h
-> +++ b/drivers/net/ethernet/stmicro/stmmac/common.h
-> @@ -335,6 +335,7 @@ struct dma_features {
->  	/* 802.3az - Energy-Efficient Ethernet (EEE) */
->  	unsigned int eee;
->  	unsigned int av;
-> +	unsigned int hash_tb_sz;
->  	unsigned int tsoen;
->  	/* TX and RX csum */
->  	unsigned int tx_coe;
-> @@ -427,9 +428,9 @@ struct mac_device_info {
->  	struct mii_regs mii;	/* MII register Addresses */
->  	struct mac_link link;
->  	void __iomem *pcsr;     /* vpointer to device CSRs */
-> -	int multicast_filter_bins;
-> -	int unicast_filter_entries;
-> -	int mcast_bits_log2;
-> +	unsigned int multicast_filter_bins;
-> +	unsigned int unicast_filter_entries;
-> +	unsigned int mcast_bits_log2;
->  	unsigned int rx_csum;
->  	unsigned int pcs;
->  	unsigned int pmt;
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4.h b/drivers/net/ethernet/stmicro/stmmac/dwmac4.h
-> index eb013d5..a5eb7df 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac4.h
-> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4.h
-> @@ -18,8 +18,7 @@
->  /*  MAC registers */
->  #define GMAC_CONFIG			0x00000000
->  #define GMAC_PACKET_FILTER		0x00000008
-> -#define GMAC_HASH_TAB_0_31		0x00000010
-> -#define GMAC_HASH_TAB_32_63		0x00000014
-> +#define GMAC_HASH_TAB(x)		(0x10 + x * 4)
->  #define GMAC_RX_FLOW_CTRL		0x00000090
->  #define GMAC_QX_TX_FLOW_CTRL(x)		(0x70 + x * 4)
->  #define GMAC_TXQ_PRTY_MAP0		0x98
-> @@ -181,6 +180,7 @@ enum power_event {
->  #define GMAC_HW_FEAT_MIISEL		BIT(0)
->  
->  /* MAC HW features1 bitmap */
-> +#define GMAC_HW_HASH_TB_SZ		GENMASK(25, 24)
->  #define GMAC_HW_FEAT_AVSEL		BIT(20)
->  #define GMAC_HW_TSOEN			BIT(18)
->  #define GMAC_HW_TXFIFOSIZE		GENMASK(10, 6)
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
-> index 7e5d5db..1f682ec 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
-> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
-> @@ -401,41 +401,49 @@ static void dwmac4_set_filter(struct mac_device_info *hw,
->  			      struct net_device *dev)
->  {
->  	void __iomem *ioaddr = (void __iomem *)dev->base_addr;
-> -	unsigned int value = 0;
-> +	unsigned int value;
-> +	int numhashregs = (hw->multicast_filter_bins >> 5);
-> +	int mcbitslog2 = hw->mcast_bits_log2;
-> +	int i;
-> +
-> +	value = readl(ioaddr + GMAC_PACKET_FILTER);
-> +	value &= ~GMAC_PACKET_FILTER_PR;
-> +	value &= ~GMAC_PACKET_FILTER_HMC;
-> +	value &= ~GMAC_PACKET_FILTER_PM;
->  
->  	if (dev->flags & IFF_PROMISC) {
-> -		value = GMAC_PACKET_FILTER_PR;
-> +		value |= GMAC_PACKET_FILTER_PR;
->  	} else if ((dev->flags & IFF_ALLMULTI) ||
-> -			(netdev_mc_count(dev) > HASH_TABLE_SIZE)) {
-> +		   (netdev_mc_count(dev) > hw->multicast_filter_bins)) {
->  		/* Pass all multi */
-> -		value = GMAC_PACKET_FILTER_PM;
-> -		/* Set the 64 bits of the HASH tab. To be updated if taller
-> -		 * hash table is used
-> -		 */
-> -		writel(0xffffffff, ioaddr + GMAC_HASH_TAB_0_31);
-> -		writel(0xffffffff, ioaddr + GMAC_HASH_TAB_32_63);
-> +		value |= GMAC_PACKET_FILTER_PM;
-> +		/* Set all the bits of the HASH tab */
-> +		for (i = 0; i < numhashregs; i++)
-> +			writel(0xffffffff, ioaddr + GMAC_HASH_TAB(i));
->  	} else if (!netdev_mc_empty(dev)) {
-> -		u32 mc_filter[2];
-> +		u32 mc_filter[8];
->  		struct netdev_hw_addr *ha;
->  
->  		/* Hash filter for multicast */
-> -		value = GMAC_PACKET_FILTER_HMC;
-> +		value |= GMAC_PACKET_FILTER_HMC;
->  
->  		memset(mc_filter, 0, sizeof(mc_filter));
->  		netdev_for_each_mc_addr(ha, dev) {
-> -			/* The upper 6 bits of the calculated CRC are used to
-> -			 * index the content of the Hash Table Reg 0 and 1.
-> +			/* The upper n bits of the calculated CRC are used to
-> +			 * index the contents of the hash table. The number of
-> +			 * bits used depends on the hardware configuration
-> +			 * selected at core configuration time.
->  			 */
-> -			int bit_nr =
-> -				(bitrev32(~crc32_le(~0, ha->addr, 6)) >> 26);
-> -			/* The most significant bit determines the register
-> -			 * to use while the other 5 bits determines the bit
-> -			 * within the selected register
-> +			int bit_nr = bitrev32(~crc32_le(~0, ha->addr,
-> +					ETH_ALEN)) >> (32 - mcbitslog2);
-> +			/* The most significant bit determines the register to
-> +			 * use (H/L) while the other 5 bits determine the bit
-> +			 * within the register.
->  			 */
-> -			mc_filter[bit_nr >> 5] |= (1 << (bit_nr & 0x1F));
-> +			mc_filter[bit_nr >> 5] |= (1 << (bit_nr & 0x1f));
->  		}
-> -		writel(mc_filter[0], ioaddr + GMAC_HASH_TAB_0_31);
-> -		writel(mc_filter[1], ioaddr + GMAC_HASH_TAB_32_63);
-> +		for (i = 0; i < numhashregs; i++)
-> +			writel(mc_filter[i], ioaddr + GMAC_HASH_TAB(i));
->  	}
->  
->  	/* Handle multiple unicast addresses */
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c b/drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c
-> index edb6053..59afb53 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c
-> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c
-> @@ -354,6 +354,7 @@ static void dwmac4_get_hw_feature(void __iomem *ioaddr,
->  
->  	/* MAC HW feature1 */
->  	hw_cap = readl(ioaddr + GMAC_HW_FEATURE1);
-> +	dma_cap->hash_tb_sz = (hw_cap & GMAC_HW_HASH_TB_SZ) >> 24;
->  	dma_cap->av = (hw_cap & GMAC_HW_FEAT_AVSEL) >> 20;
->  	dma_cap->tsoen = (hw_cap & GMAC_HW_TSOEN) >> 18;
->  	/* RX and TX FIFO sizes are encoded as log2(n / 128). Undo that by
 > diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-> index 97c5e1a..1971f9f 100644
+> index 06487a6..b2feb6c 100644
 > --- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
 > +++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-> @@ -4159,6 +4159,10 @@ static int stmmac_hw_init(struct stmmac_priv *priv)
->  		priv->plat->enh_desc = priv->dma_cap.enh_desc;
->  		priv->plat->pmt = priv->dma_cap.pmt_remote_wake_up;
->  		priv->hw->pmt = priv->plat->pmt;
-> +		if (priv->dma_cap.hash_tb_sz) {
-> +			priv->hw->multicast_filter_bins = BIT(priv->dma_cap.hash_tb_sz) * 32;
-> +			priv->hw->mcast_bits_log2 = ilog2(priv->hw->multicast_filter_bins);
-> +		}
->  
->  		/* TXCOE doesn't work in thresh DMA mode */
->  		if (priv->plat->force_thresh_dma_mode)
+> @@ -4380,10 +4380,10 @@ int stmmac_dvr_probe(struct device *device,
+>   	 * set the MDC clock dynamically according to the csr actual
+>   	 * clock input.
+>   	 */
+> -	if (!priv->plat->clk_csr)
+> -		stmmac_clk_csr_set(priv);
+> -	else
+> +	if (priv->plat->clk_csr >= 0)
+>   		priv->clk_csr = priv->plat->clk_csr;
+> +	else
+> +		stmmac_clk_csr_set(priv);
+>   
+>   	stmmac_check_pcs_mode(priv);
+>   
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c
+> index 3031f2b..f45bfbe 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c
+> @@ -408,7 +408,10 @@ struct plat_stmmacenet_data *
+>   	/* Default to phy auto-detection */
+>   	plat->phy_addr = -1;
+>   
+> -	/* Get clk_csr from device tree */
+> +	/* Default to get clk_csr from stmmac_clk_crs_set(),
+> +	 * or get clk_csr from device tree.
+> +	 */
+> +	plat->clk_csr = -1;
+>   	of_property_read_u32(np, "clk_csr", &plat->clk_csr);
+>   
+>   	/* "snps,phy-addr" is not a standard property. Mark it as deprecated
+> 
+
+Acked-by: Alexandre TORGUE <alexandre.torgue@st.com>
+
+thanks
+Alex
