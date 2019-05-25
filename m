@@ -1,61 +1,40 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v6 04/12] dt-binding: gce: add binding for gce event
- property
-Date: Fri, 24 May 2019 16:54:07 -0500
-Message-ID: <20190524215407.GA7214@bogus>
-References: <20190516090224.59070-1-bibby.hsieh@mediatek.com>
- <20190516090224.59070-5-bibby.hsieh@mediatek.com>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [v4, PATCH 0/3] fix some bugs in stmmac
+Date: Sat, 25 May 2019 11:02:52 -0700 (PDT)
+Message-ID: <20190525.110252.292904127953775877.davem@davemloft.net>
+References: <1558679169-26752-1-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190516090224.59070-5-bibby.hsieh@mediatek.com>
+In-Reply-To: <1558679169-26752-1-git-send-email-biao.huang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, CK HU <ck.hu@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsimediatek/mtkcam/drv/fdvt/4.0/cam_fdvt_v4l2.cppeh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.chen@mediatek.com
+To: biao.huang@mediatek.com
+Cc: joabreu@synopsys.com, peppe.cavallaro@st.com, alexandre.torgue@st.com, mcoquelin.stm32@gmail.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, jianguo.zhang@mediatek.comi, boon.leong.ong@intel.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, May 16, 2019 at 05:02:16PM +0800, Bibby Hsieh wrote:
-> Client hardware would send event to GCE hardware,
-> mediatek,gce-event-names and mediatek,gce-events
+From: Biao Huang <biao.huang@mediatek.com>
+Date: Fri, 24 May 2019 14:26:06 +0800
 
-We removed mediatek,gce-event-names?
+> changes in v4:                                                                  
+>         since MTL_OPERATION_MODE write back issue has be fixed in the latest driver,
+> remove original patch#3                                                         
+>                                                                                 
+> changes in v3:                                                                  
+>         add a Fixes:tag for each patch                                          
+>                                                                                 
+> changes in v2:                                                                  
+>         1. update rx_tail_addr as Jose's comment                                
+>         2. changes clk_csr condition as Alex's proposition                      
+>         3. remove init lines in dwmac-mediatek, get clk_csr from dts instead.   
+>                                                                                 
+> v1:                                                                             
+> This series fix some bugs in stmmac driver                                      
+> 3 patches are for common stmmac or dwmac4:                                      
+>         1. update rx tail pointer to fix rx dma hang issue.                     
+>         2. change condition for mdc clock to fix csr_clk can't be zero issue.   
+>         3. write the modified value back to MTL_OPERATION_MODE.                 
+> 1 patch is for dwmac-mediatek:                                                  
+>         modify csr_clk value to fix mdio read/write fail issue for dwmac-mediatek
 
-> can be used to present the event.
-> 
-> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/mailbox/mtk-gce.txt | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> index dceab63ccd06..265bb58da7bd 100644
-> --- a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> +++ b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> @@ -35,6 +35,8 @@ Required properties for a client device:
->  Optional properties for a client device:
->  - mediatek,gce-client-reg: u32, specify the sub-system id which is corresponding
->    to the register address.
-> +- mediatek,gce-events: u32, the event number defined in
-> +  'dt-bindings/gce/mt8173-gce.h' or 'dt-binding/gce/mt8183-gce.h'.
-
-This and the example don't match. Is it an u32 or an array of u32? If 
-the latter, how many elements?
-
->  
->  Some vaules of properties are defined in 'dt-bindings/gce/mt8173-gce.h'
->  or 'dt-binding/gce/mt8183-gce.h'. Such as sub-system ids, thread priority, event ids.
-> @@ -57,8 +59,8 @@ Example for a client device:
->  		compatible = "mediatek,mt8173-mmsys";
->  		mboxes = <&gce 0 CMDQ_THR_PRIO_LOWEST 1>,
->  			 <&gce 1 CMDQ_THR_PRIO_LOWEST 1>;
-> -		mutex-event-eof = <CMDQ_EVENT_MUTEX0_STREAM_EOF
-> -				CMDQ_EVENT_MUTEX1_STREAM_EOF>;
-> +		mediatek,gce-events = <CMDQ_EVENT_MDP_RDMA0_SOF>,
-> +				      <CMDQ_EVENT_MDP_RSZ0_SOF>;
->  		mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000 0x1000>,
->  					  <&gce SUBSYS_1401XXXX 0x2000 0x100>;
->  		...
-> -- 
-> 2.18.0
-> 
+Series applied, thanks.
