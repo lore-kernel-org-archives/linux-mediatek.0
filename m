@@ -1,68 +1,52 @@
-From: Claire Chang <tientzu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v3 1/2] dt-bindings: serial: add documentation for Rx in-band
- wakeup support
-Date: Mon, 27 May 2019 16:31:49 +0800
-Message-ID: <20190527083150.220194-2-tientzu@chromium.org>
-References: <20190527083150.220194-1-tientzu@chromium.org>
+From: Neal Liu <neal.liu@mediatek.com>
+Subject: [PATCH v2 2/3] dt-bindings: rng: update bindings for MediaTek ARMv8 SoCs
+Date: Mon, 27 May 2019 16:38:45 +0800
+Message-ID: <1558946326-13630-3-git-send-email-neal.liu@mediatek.com>
+References: <1558946326-13630-1-git-send-email-neal.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190527083150.220194-1-tientzu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org
-Cc: Claire Chang <tientzu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, changqi.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1558946326-13630-1-git-send-email-neal.liu@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matt Mackall <mpm@selenic.com>, Herbert Xu <herbert@gondor.apana.org.au>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>
+Cc: Neal Liu <neal.liu@mediatek.com>, linux-crypto@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, lkml <linux-kernel@vger.kernel.org>, wsd_upstream@mediatek.com, Crystal Guo <Crystal.Guo@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-To support Rx in-band wakeup, one must create an interrupt specifier with
-edge sensitivity on Rx pin and an addtional pinctrl to reconfigure Rx pin
-to normal GPIO in sleep state. Driver will switch to sleep mode pinctrl and
-enable irq wake before suspend and restore to default settings when
-resuming.
+Document the binding used by the MediaTek ARMv8 SoCs random
+number generator with TrustZone enabled.
 
-Signed-off-by: Claire Chang <tientzu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Neal Liu <neal.liu@mediatek.com>
 ---
- .../devicetree/bindings/serial/mtk-uart.txt         | 13 +++++++++++--
- 1 file changed, 11 insertions(+), 2 deletions(-)
+ Documentation/devicetree/bindings/rng/mtk-rng.txt |   13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/serial/mtk-uart.txt b/Documentation/devicetree/bindings/serial/mtk-uart.txt
-index c6b5262eb352..11966de2a4b3 100644
---- a/Documentation/devicetree/bindings/serial/mtk-uart.txt
-+++ b/Documentation/devicetree/bindings/serial/mtk-uart.txt
-@@ -23,7 +23,12 @@ Required properties:
+diff --git a/Documentation/devicetree/bindings/rng/mtk-rng.txt b/Documentation/devicetree/bindings/rng/mtk-rng.txt
+index 2bc89f1..1fb9b1d 100644
+--- a/Documentation/devicetree/bindings/rng/mtk-rng.txt
++++ b/Documentation/devicetree/bindings/rng/mtk-rng.txt
+@@ -3,9 +3,12 @@ found in MediaTek SoC family
  
- - reg: The base address of the UART register bank.
- 
--- interrupts: A single interrupt specifier.
-+- interrupts or interrupts-extended:
-+  index 0: an interrupt specifier for the UART controller itself
-+  index 1: optional, an interrupt specifier with edge sensitivity on Rx pin to
-+           support Rx in-band wake up. If one would like to use this feature,
-+           one must create an addtional pinctrl to reconfigure Rx pin to normal
-+           GPIO before suspend.
- 
- - clocks : Must contain an entry for each entry in clock-names.
-   See ../clocks/clock-bindings.txt for details.
-@@ -39,7 +44,11 @@ Example:
- 	uart0: serial@11006000 {
- 		compatible = "mediatek,mt6589-uart", "mediatek,mt6577-uart";
- 		reg = <0x11006000 0x400>;
--		interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_LOW>;
-+		interrupts-extended = <&sysirq GIC_SPI 51 IRQ_TYPE_LEVEL_LOW>,
-+				      <&gpio 121 IRQ_TYPE_EDGE_FALLING>;
- 		clocks = <&uart_clk>, <&bus_clk>;
- 		clock-names = "baud", "bus";
-+		pinctrl-names = "default", "sleep";
-+		pinctrl-0 = <&uart_pin>;
-+		pinctrl-1 = <&uart_pin_sleep>;
- 	};
+ Required properties:
+ - compatible	    : Should be
+-			"mediatek,mt7622-rng", 	"mediatek,mt7623-rng" : for MT7622
+-			"mediatek,mt7629-rng",  "mediatek,mt7623-rng" : for MT7629
+-			"mediatek,mt7623-rng" : for MT7623
++			"mediatek,mt7622-rng", "mediatek,mt7623-rng" for MT7622
++			"mediatek,mt7629-rng", "mediatek,mt7623-rng" for MT7629
++			"mediatek,mt7623-rng" for MT7623
++			"mediatek,mtk-sec-rng" for MediaTek ARMv8 SoCs
++
++Optional properties:
+ - clocks	    : list of clock specifiers, corresponding to
+ 		      entries in clock-names property;
+ - clock-names	    : Should contain "rng" entries;
+@@ -19,3 +22,7 @@ rng: rng@1020f000 {
+ 	clocks = <&infracfg CLK_INFRA_TRNG>;
+ 	clock-names = "rng";
+ };
++
++hwrng: hwrng {
++	compatible = "mediatek,mtk-sec-rng";
++};
 -- 
-2.22.0.rc1.257.g3120a18244-goog
+1.7.9.5
