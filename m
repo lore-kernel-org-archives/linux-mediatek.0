@@ -1,47 +1,92 @@
-From: Neal Liu <neal.liu@mediatek.com>
-Subject: [PATCH v2 0/3] MediaTek Security random number generator support
-Date: Mon, 27 May 2019 16:38:43 +0800
-Message-ID: <1558946326-13630-1-git-send-email-neal.liu@mediatek.com>
+From: Erin Lo <erin.lo@mediatek.com>
+Subject: [PATCH v11 0/6] Add basic node support for Mediatek MT8183 SoC
+Date: Mon, 27 May 2019 17:04:41 +0800
+Message-ID: <1558947887-31084-1-git-send-email-erin.lo@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matt Mackall <mpm@selenic.com>, Herbert Xu <herbert@gondor.apana.org.au>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>
-Cc: Neal Liu <neal.liu@mediatek.com>, linux-crypto@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, lkml <linux-kernel@vger.kernel.org>, wsd_upstream@mediatek.com, Crystal Guo <Crystal.Guo@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+Cc: devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, erin.lo@mediatek.com, mars.cheng@mediatek.com, eddie.huang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-These patch series introduce a generic rng driver for Trustzone
-based kernel driver which would like to communicate with ATF
-SIP services.
+MT8183 is a SoC based on 64bit ARMv8 architecture.
+It contains 4 CA53 and 4 CA73 cores.
+MT8183 share many HW IP with MT65xx series.
+This patchset was tested on MT8183 evaluation board and use correct clock to shell.
 
-Patch #1 initials SMC fid table for MediaTek SIP interfaces and
-adds HWRNG related SMC call.
+Based on v5.2-rc1
 
-Patch #2..3 adds mtk-sec-rng kernel driver for Trustzone based SoCs.
-For MediaTek SoCs on ARMv8 with TrustZone enabled, peripherals like
-entropy sources is not accessible from normal world (linux) and
-rather accessible from secure world (ATF/TEE) only. This driver aims
-to provide a generic interface to ATF rng service.
+Change in v11:
+New add spi node, efuse node, pinctrl node, auxadc node, and capacity-dmips-mhz field
 
+Change in v10:
+Add the L2 cache node to prevent warning on unable to detect cache
+hierarchy.
 
-changes since v2:
-- rename mt67xx-rng to mtk-sec-rng since all MediaTek ARMv8 SoCs
-can reuse this driver.
-- refine coding style and unnecessary check.
+Change in v9:
+Remove pio node since binding is not documented yet
 
-Neal Liu (3):
-  soc: mediatek: add SMC fid table for SIP interface
-  dt-bindings: rng: update bindings for MediaTek ARMv8 SoCs
-  hwrng: add mtk-sec-rng driver
+Change in v8:
+1. Fix interrupt-parent of pio node
+2. Remove pinfunc.h and spi node patches
 
- .../devicetree/bindings/rng/mtk-rng.txt       | 13 ++-
- drivers/char/hw_random/Kconfig                | 16 +++
- drivers/char/hw_random/Makefile               |  1 +
- drivers/char/hw_random/mtk-sec-rng.c          | 97 +++++++++++++++++++
- include/linux/soc/mediatek/mtk_sip_svc.h      | 51 ++++++++++
- 5 files changed, 175 insertions(+), 3 deletions(-)
- create mode 100644 drivers/char/hw_random/mtk-sec-rng.c
- create mode 100644 include/linux/soc/mediatek/mtk_sip_svc.h
+Change in v7:
+1. Place all the MMIO peripherals under one or more simple-bus nodes
+2. Make the pinfunc.h and spi node into seperate patch
+3. Modify SPIs pamerater from 4 back to 3
+   and remove patch "support 4 interrupt parameters for sysirq"
+4. Rename intpol-controller to interrupt-controller
+5. Rename pinctrl@1000b000 to pinctrl@10005000
 
--- 
-2.18.0
+Change in v6:
+1. Remove power and iommu nodes
+2. Fix dtb build warning
+3. Fix pinctrl binding doc
+4. Fix '_' in node names
+
+Change in v5:
+1. Collect all device tree nodes to the last patch
+2. Add PMU
+3. Add Signed-off-by
+4. Remove clock driver code and binding doc
+5. Add pinctrl, iommu, spi, and pwrap nodes
+
+Change in v4:
+1. Correct syntax error in dtsi
+2. Add MT8183 clock support
+
+Change in v3:
+1. Fill out GICC, GICH, GICV regions
+2. Update Copyright to 2018
+
+Change in v2:
+1. Split dt-bindings into different patches
+2. Correct bindings for supported SoCs (mtk-uart.txt)
+
+Ben Ho (1):
+  arm64: dts: Add Mediatek SoC MT8183 and evaluation board dts and
+    Makefile
+
+Erin Lo (1):
+  arm64: dts: mt8183: add spi node
+
+Hsin-Yi, Wang (1):
+  arm64: dts: mt8183: add capacity-dmips-mhz
+
+Michael Mei (1):
+  arm64: dts: mt8183: add efuse and Mediatek Chip id node to read
+
+Zhiyong Tao (2):
+  arm64: dts: mt8183: add pinctrl device node
+  arm64: dts: mt8183: Add auxadc device node
+
+ arch/arm64/boot/dts/mediatek/Makefile       |   1 +
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts | 140 ++++++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi    | 447 ++++++++++++++++++++
+ 3 files changed, 588 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183.dtsi
+
+--
+1.8.1.1.dirty
