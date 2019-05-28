@@ -1,66 +1,85 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [v3 PATCH] usb: create usb_debug_root for gadget only
-Date: Tue, 28 May 2019 16:49:45 +0800
-Message-ID: <1559033385.10179.443.camel@mhfsdcap03>
-References: <cffd6d75f69e4d908c8f39b8a60ddae27d6b7c88.1559028752.git.chunfeng.yun@mediatek.com>
-         <87k1ebj8vt.fsf@linux.intel.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v3] gpu/drm: mediatek: call mtk_dsi_stop() after
+ mtk_drm_crtc_atomic_disable()
+Date: Tue, 28 May 2019 16:53:06 +0800
+Message-ID: <1559033586.5141.3.camel@mtksdaap41>
+References: <20190528073908.633-1-hsinyi@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <87k1ebj8vt.fsf@linux.intel.com>
+In-Reply-To: <20190528073908.633-1-hsinyi@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Felipe Balbi <felipe.balbi@linux.intel.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, Randy Dunlap <rdunlap@infradead.org>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: linux-arm-kernel@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Felipe,
-On Tue, 2019-05-28 at 11:11 +0300, Felipe Balbi wrote:
-> Hi,
-> 
-> Chunfeng Yun <chunfeng.yun@mediatek.com> writes:
-> > diff --git a/drivers/usb/core/usb.c b/drivers/usb/core/usb.c
-> > index 7fcb9f782931..88b3ee03a12d 100644
-> > --- a/drivers/usb/core/usb.c
-> > +++ b/drivers/usb/core/usb.c
-> > @@ -1190,7 +1190,7 @@ EXPORT_SYMBOL_GPL(usb_debug_root);
-> >  
-> >  static void usb_debugfs_init(void)
-> >  {
-> > -	usb_debug_root = debugfs_create_dir("usb", NULL);
-> > +	usb_debug_root = debugfs_create_dir(USB_DEBUG_ROOT_NAME, NULL);
-> >  	debugfs_create_file("devices", 0444, usb_debug_root, NULL,
-> >  			    &usbfs_devices_fops);
-> >  }
-> 
-> might be a better idea to move this to usb common. 
-Good idea, I forgot there is a common file.
+Hi, Hsin-Yi:
 
-> Then have a function
-> which can be called by both host and gadget to maybe create the
-> directory:
-I'll try it.
+On Tue, 2019-05-28 at 15:39 +0800, Hsin-Yi Wang wrote:
+> mtk_dsi_stop() should be called after mtk_drm_crtc_atomic_disable(), which needs
+> ovl irq for drm_crtc_wait_one_vblank(), since after mtk_dsi_stop() is called,
+> ovl irq will be disabled. If drm_crtc_wait_one_vblank() is called after last
+> irq, it will timeout with this message: "vblank wait timed out on crtc 0". This
+> happens sometimes when turning off the screen.
+> 
+> In drm_atomic_helper.c#disable_outputs(),
+> the calling sequence when turning off the screen is:
+> 
+> 1. mtk_dsi_encoder_disable()
+>      --> mtk_output_dsi_disable()
+>        --> mtk_dsi_stop();  // sometimes make vblank timeout in atomic_disable
+>        --> mtk_dsi_poweroff();
+> 2. mtk_drm_crtc_atomic_disable()
+>      --> drm_crtc_wait_one_vblank();
+>      ...
+>        --> mtk_dsi_ddp_stop()
+>          --> mtk_dsi_poweroff();
+> 
+> mtk_dsi_poweroff() has reference count design, change to make mtk_dsi_stop()
+> called in mtk_dsi_poweroff() when refcount is 0.
+> 
+> Fixes: 0707632b5bac ("drm/mediatek: update DSI sub driver flow for sending commands to panel")
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> ---
+> change log v2->v3:
+> * remove unnecessary codes in unbind
+> * based on discussion in v2, if we move mtk_dsi_start() to mtk_dsi_poweron(),
+> in order to make mtk_dsi_start() and mtk_dsi_stop() symmetric, will results in
+> no irq for panel with bridge. So we keep mtk_dsi_start() in original place.
 
-Thanks a lot
+I think we've already discussed in [1]. I need a reason to understand
+this is hardware behavior or software bug. If this is a software bug, we
+need to fix the bug and code could be symmetric.
 
+[1]
+http://lists.infradead.org/pipermail/linux-mediatek/2019-March/018423.html
+
+Regards,
+CK
+
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dsi.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 > 
-> static struct dentry *usb_debug_root;
-> 
-> struct dentry *usb_debugfs_init(void)
-> {
-> 	if (!usb_debug_root)
->         	usb_debug_root = debugfs_create_dir("usb", NULL);
-> 
-> 	return usb_debug_root;
-> }
-> 
-> 
-> Then usb core would be updated to something like:
-> 
-> static void usb_core_debugfs_init(void)
-> {
-> 	struct dentry *root = usb_debugfs_init();
-> 
-> 	debugfs_create_file("devices", 0444, root, NULL, &usbfs_devices_fops);
-> }
-> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> index b00eb2d2e086..b7f829ecd3ad 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -630,6 +630,8 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
+>  	if (--dsi->refcount != 0)
+>  		return;
+>  
+> +	mtk_dsi_stop(dsi);
+> +
+>  	if (!mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500)) {
+>  		if (dsi->panel) {
+>  			if (drm_panel_unprepare(dsi->panel)) {
+> @@ -696,7 +698,6 @@ static void mtk_output_dsi_disable(struct mtk_dsi *dsi)
+>  		}
+>  	}
+>  
+> -	mtk_dsi_stop(dsi);
+>  	mtk_dsi_poweroff(dsi);
+>  
+>  	dsi->enabled = false;
