@@ -1,58 +1,67 @@
-From: Felipe Balbi <felipe.balbi@linux.intel.com>
-Subject: Re: [v3 PATCH] usb: create usb_debug_root for gadget only
-Date: Tue, 28 May 2019 11:11:50 +0300
-Message-ID: <87k1ebj8vt.fsf@linux.intel.com>
-References: <cffd6d75f69e4d908c8f39b8a60ddae27d6b7c88.1559028752.git.chunfeng.yun@mediatek.com>
+From: Stanley Chu <stanley.chu@mediatek.com>
+Subject: [PATCH] scsi: ufs: Use pm_runtime_get_sync in shutdown flow
+Date: Tue, 28 May 2019 16:12:06 +0800
+Message-ID: <1559031126-6587-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cffd6d75f69e4d908c8f39b8a60ddae27d6b7c88.1559028752.git.chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Randy Dunlap <rdunlap@infradead.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com, pedrom.sousa@synopsys.com
+Cc: marc.w.gonzalez@free.fr, andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, evgreen@chromium.org, linux-mediatek@lists.infradead.org, peter.wang@mediatek.com, matthias.bgg@gmail.com, Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 List-Id: linux-mediatek@lists.infradead.org
 
+There might be a racing issue between UFS shutdown and runtime resume
+flow described as below,
 
-Hi,
+Thread #1: In UFS shutdown flow with ufshcd_shutdown() is running.
+Thread #2: In UFS runtime-resume flow which invokes
+           ufshcd_runtime_resume() because UFS was in runtime-suspended
+           state while an I/O request was issued.
 
-Chunfeng Yun <chunfeng.yun@mediatek.com> writes:
-> diff --git a/drivers/usb/core/usb.c b/drivers/usb/core/usb.c
-> index 7fcb9f782931..88b3ee03a12d 100644
-> --- a/drivers/usb/core/usb.c
-> +++ b/drivers/usb/core/usb.c
-> @@ -1190,7 +1190,7 @@ EXPORT_SYMBOL_GPL(usb_debug_root);
->  
->  static void usb_debugfs_init(void)
->  {
-> -	usb_debug_root = debugfs_create_dir("usb", NULL);
-> +	usb_debug_root = debugfs_create_dir(USB_DEBUG_ROOT_NAME, NULL);
->  	debugfs_create_file("devices", 0444, usb_debug_root, NULL,
->  			    &usbfs_devices_fops);
->  }
+In this scenario, racing may happen and possibly lead to system hang
+if Thread #2 accesses UFS host's register map after host's resource,
+like power or clocks, are disabled by Thread #1.
 
-might be a better idea to move this to usb common. Then have a function
-which can be called by both host and gadget to maybe create the
-directory:
+To avoid this racing, use PM public function pm_runtime_get_sync() in
+shutdown flow instead of internal function ufshcd_runtime_resume() for
+consolidated control of RPM status.
 
-static struct dentry *usb_debug_root;
+One concern is that pm_runtime_get_sync() may be better paired with
+pm_runtime_put_sync(), however shutdown could be one-way path thus the
+pairing is not required.
 
-struct dentry *usb_debugfs_init(void)
-{
-	if (!usb_debug_root)
-        	usb_debug_root = debugfs_create_dir("usb", NULL);
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+---
+ drivers/scsi/ufs/ufshcd.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-	return usb_debug_root;
-}
-
-
-Then usb core would be updated to something like:
-
-static void usb_core_debugfs_init(void)
-{
-	struct dentry *root = usb_debugfs_init();
-
-	debugfs_create_file("devices", 0444, root, NULL, &usbfs_devices_fops);
-}
-
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index a208589426b1..cce7303f8653 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -8095,11 +8095,8 @@ int ufshcd_shutdown(struct ufs_hba *hba)
+ 	if (ufshcd_is_ufs_dev_poweroff(hba) && ufshcd_is_link_off(hba))
+ 		goto out;
+ 
+-	if (pm_runtime_suspended(hba->dev)) {
+-		ret = ufshcd_runtime_resume(hba);
+-		if (ret)
+-			goto out;
+-	}
++	if (pm_runtime_get_sync(hba->dev) < 0)
++		goto out;
+ 
+ 	ret = ufshcd_suspend(hba, UFS_SHUTDOWN_PM);
+ out:
 -- 
-balbi
+2.18.0
