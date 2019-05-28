@@ -1,40 +1,48 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [RFCv1 00/12] media: mtk-vcodec: support for MT8183 decoder
-Date: Tue, 28 May 2019 11:18:29 +0200
-Message-ID: <f143b2e2-45ab-9d59-a607-f2032206e4e0@xs4all.nl>
-References: <20190528055635.12109-1-acourbot@chromium.org>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: RE: [PATCH v5 4/6] usb: roles: add API to get usb_role_switch by
+ node
+Date: Tue, 28 May 2019 17:23:50 +0800
+Message-ID: <1559035430.8487.11.camel@mhfsdcap03>
+References: <20190520080359.GC1887@kuha.fi.intel.com>
+         <OSBPR01MB2103385D996762FA54F8E437B8060@OSBPR01MB2103.jpnprd01.prod.outlook.com>
+         <20190520083601.GE1887@kuha.fi.intel.com>
+         <OSBPR01MB2103C4C8920C40E42BC1B2A9B8060@OSBPR01MB2103.jpnprd01.prod.outlook.com>
+         <20190521095839.GI1887@kuha.fi.intel.com>
+         <OSBPR01MB21032206146152983C8F4E8EB8000@OSBPR01MB2103.jpnprd01.prod.outlook.com>
+         <1558517436.10179.388.camel@mhfsdcap03>
+         <OSBPR01MB21038F2B99EF74831A22727BB8000@OSBPR01MB2103.jpnprd01.prod.outlook.com>
+         <20190522142640.GN1887@kuha.fi.intel.com>
+         <OSBPR01MB2103B669C24E9E261B4AFA73B8000@OSBPR01MB2103.jpnprd01.prod.outlook.com>
+         <20190524124445.GP1887@kuha.fi.intel.com>
+         <1558926515.10179.439.camel@mhfsdcap03>
+         <OSBPR01MB2103B7E9BB12FDCEB4105BAFB81E0@OSBPR01MB2103.jpnprd01.prod.outlook.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190528055635.12109-1-acourbot@chromium.org>
-Content-Language: en-US
+In-Reply-To: <OSBPR01MB2103B7E9BB12FDCEB4105BAFB81E0@OSBPR01MB2103.jpnprd01.prod.outlook.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Alexandre Courbot <acourbot@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Biju Das <biju.das@bp.renesas.com>
+Cc: Heikki Krogerus <heikki.krogerus@linux.intel.com>, Chen Yu <chenyu56@huawei.com>, Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@l
 List-Id: linux-mediatek@lists.infradead.org
 
-On 5/28/19 7:56 AM, Alexandre Courbot wrote:
-> This series is a refactoring/split of the initial patch for MT8183 codec support
-> that was posted for Chrome OS [1] in order to make it upstreamable.
-> 
-> The line count has been significantly reduced compared to the initial patch,
-> although support for the MT8183 encoder is not here yet to limit the amount of
-> code to review.
-> 
-> Although the series applies on top of today's media tree, it will not compile
-> until support for the SCP is merged, hence the RFC status. Note also that the
-> H.264 structures used and implementation of the stateless codec API may not be
-> completely up-to-date. So the goal of this publication is to review the general
-> idea (especially split unto stateful and stateless ops), and maybe merge the
-> first 5 patches.
-> 
-> Patches 1-5 are cleanup/small fixes that came while working on this series. They
-> should be harmless and can be merged.
+Hi Biju & Yu,
 
-Merging these makes sense. I should be able to do that when v2 is posted with the
-SPDX conversion.
+On Tue, 2019-05-28 at 06:52 +0000, Biju Das wrote:
+> Hi Chunfeng Yun,
+> 
+> + Chen Yu
+> 
+> Thanks for the feedback.
+[...]
+> 
+> Just a suggestion, Do you think, is it worth to add the below  patch[1] also part of this series? So that we have all common patches in this series.
+> 
+Or resend it as a single patch?
 
-Regards,
-
-	Hans
+> "usb: roles: Introduce stubs for the exiting functions in role.h."
+> [1] https://patchwork.kernel.org/patch/10909971/
+> 
+ 
+> Regards,
+> Biju
