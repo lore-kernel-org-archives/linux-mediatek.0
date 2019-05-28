@@ -1,48 +1,77 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: RE: [PATCH v5 4/6] usb: roles: add API to get usb_role_switch by
- node
-Date: Tue, 28 May 2019 17:23:50 +0800
-Message-ID: <1559035430.8487.11.camel@mhfsdcap03>
-References: <20190520080359.GC1887@kuha.fi.intel.com>
-         <OSBPR01MB2103385D996762FA54F8E437B8060@OSBPR01MB2103.jpnprd01.prod.outlook.com>
-         <20190520083601.GE1887@kuha.fi.intel.com>
-         <OSBPR01MB2103C4C8920C40E42BC1B2A9B8060@OSBPR01MB2103.jpnprd01.prod.outlook.com>
-         <20190521095839.GI1887@kuha.fi.intel.com>
-         <OSBPR01MB21032206146152983C8F4E8EB8000@OSBPR01MB2103.jpnprd01.prod.outlook.com>
-         <1558517436.10179.388.camel@mhfsdcap03>
-         <OSBPR01MB21038F2B99EF74831A22727BB8000@OSBPR01MB2103.jpnprd01.prod.outlook.com>
-         <20190522142640.GN1887@kuha.fi.intel.com>
-         <OSBPR01MB2103B669C24E9E261B4AFA73B8000@OSBPR01MB2103.jpnprd01.prod.outlook.com>
-         <20190524124445.GP1887@kuha.fi.intel.com>
-         <1558926515.10179.439.camel@mhfsdcap03>
-         <OSBPR01MB2103B7E9BB12FDCEB4105BAFB81E0@OSBPR01MB2103.jpnprd01.prod.outlook.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH] arm64: mm: make CONFIG_ZONE_DMA32 configurable
+Date: Tue, 28 May 2019 11:43:11 +0100
+Message-ID: <814b9bd0-38de-4b8d-92b3-d663931d90bf@arm.com>
+References: <1558973315-19655-1-git-send-email-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <OSBPR01MB2103B7E9BB12FDCEB4105BAFB81E0@OSBPR01MB2103.jpnprd01.prod.outlook.com>
+In-Reply-To: <1558973315-19655-1-git-send-email-miles.chen@mediatek.com>
+Content-Language: en-GB
 Sender: linux-kernel-owner@vger.kernel.org
-To: Biju Das <biju.das@bp.renesas.com>
-Cc: Heikki Krogerus <heikki.krogerus@linux.intel.com>, Chen Yu <chenyu56@huawei.com>, Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@l
+To: Miles Chen <miles.chen@mediatek.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Biju & Yu,
+On 27/05/2019 17:08, Miles Chen wrote:
+> This change makes CONFIG_ZONE_DMA32 defuly y and allows users
+> to overwrite it.
+> 
+> For the SoCs that do not need CONFIG_ZONE_DMA32, this is the
+> first step to manage all available memory by a single
+> zone(normal zone) to reduce the overhead of multiple zones.
+> 
+> The change also fixes a build error when CONFIG_NUMA=y and
+> CONFIG_ZONE_DMA32=n.
+> 
+> arch/arm64/mm/init.c:195:17: error: use of undeclared identifier 'ZONE_DMA32'
+>                  max_zone_pfns[ZONE_DMA32] = PFN_DOWN(max_zone_dma_phys());
+> 
+> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+> ---
+>   arch/arm64/Kconfig   | 3 ++-
+>   arch/arm64/mm/init.c | 2 ++
+>   2 files changed, 4 insertions(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
+> index 76f6e4765f49..9d20a736d1d1 100644
+> --- a/arch/arm64/Kconfig
+> +++ b/arch/arm64/Kconfig
+> @@ -260,7 +260,8 @@ config GENERIC_CALIBRATE_DELAY
+>   	def_bool y
+>   
+>   config ZONE_DMA32
+> -	def_bool y
+> +	bool "Support DMA32 zone"
 
-On Tue, 2019-05-28 at 06:52 +0000, Biju Das wrote:
-> Hi Chunfeng Yun,
-> 
-> + Chen Yu
-> 
-> Thanks for the feedback.
-[...]
-> 
-> Just a suggestion, Do you think, is it worth to add the below  patch[1] also part of this series? So that we have all common patches in this series.
-> 
-Or resend it as a single patch?
+This probably warrants an "if EMBEDDED" or "if EXPERT", since turning it 
+off produces a kernel which won't work at all on certain systems (I've 
+played around with this before...)
 
-> "usb: roles: Introduce stubs for the exiting functions in role.h."
-> [1] https://patchwork.kernel.org/patch/10909971/
+> +	default y
+>   
+>   config HAVE_GENERIC_GUP
+>   	def_bool y
+> diff --git a/arch/arm64/mm/init.c b/arch/arm64/mm/init.c
+> index d2adffb81b5d..96829ce21f99 100644
+> --- a/arch/arm64/mm/init.c
+> +++ b/arch/arm64/mm/init.c
+> @@ -191,8 +191,10 @@ static void __init zone_sizes_init(unsigned long min, unsigned long max)
+>   {
+>   	unsigned long max_zone_pfns[MAX_NR_ZONES]  = {0};
+>   
+> +#ifdef CONFIG_ZONE_DMA32
+>   	if (IS_ENABLED(CONFIG_ZONE_DMA32))
+
+There's no point keeping the IS_ENABLED() check when it's entirely 
+redundant with the #ifdefs.
+
+Robin.
+
+>   		max_zone_pfns[ZONE_DMA32] = PFN_DOWN(max_zone_dma_phys());
+> +#endif
+>   	max_zone_pfns[ZONE_NORMAL] = max;
+>   
+>   	free_area_init_nodes(max_zone_pfns);
 > 
- 
-> Regards,
-> Biju
