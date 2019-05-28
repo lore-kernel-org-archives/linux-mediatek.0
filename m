@@ -1,86 +1,68 @@
 From: Miles Chen <miles.chen@mediatek.com>
-Subject: Re: [PATCH] arm64: mm: make CONFIG_ZONE_DMA32 configurable
-Date: Tue, 28 May 2019 23:46:45 +0800
-Message-ID: <1559058405.26151.6.camel@mtkswgap22>
-References: <1558973315-19655-1-git-send-email-miles.chen@mediatek.com>
-         <814b9bd0-38de-4b8d-92b3-d663931d90bf@arm.com>
+Subject: [PATCH v2] arm64: mm: make CONFIG_ZONE_DMA32 configurable
+Date: Wed, 29 May 2019 00:08:20 +0800
+Message-ID: <1559059700-19078-1-git-send-email-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <814b9bd0-38de-4b8d-92b3-d663931d90bf@arm.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, wsd_upstream@mediatek.com
+To: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Miles Chen <miles.chen@mediatek.com>, Robin Murphy <robin.murphy@arm.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-05-28 at 11:43 +0100, Robin Murphy wrote:
-> On 27/05/2019 17:08, Miles Chen wrote:
-> > This change makes CONFIG_ZONE_DMA32 defuly y and allows users
-> > to overwrite it.
-> > 
-> > For the SoCs that do not need CONFIG_ZONE_DMA32, this is the
-> > first step to manage all available memory by a single
-> > zone(normal zone) to reduce the overhead of multiple zones.
-> > 
-> > The change also fixes a build error when CONFIG_NUMA=y and
-> > CONFIG_ZONE_DMA32=n.
-> > 
-> > arch/arm64/mm/init.c:195:17: error: use of undeclared identifier 'ZONE_DMA32'
-> >                  max_zone_pfns[ZONE_DMA32] = PFN_DOWN(max_zone_dma_phys());
-> > 
-> > Signed-off-by: Miles Chen <miles.chen@mediatek.com>
-> > ---
-> >   arch/arm64/Kconfig   | 3 ++-
-> >   arch/arm64/mm/init.c | 2 ++
-> >   2 files changed, 4 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
-> > index 76f6e4765f49..9d20a736d1d1 100644
-> > --- a/arch/arm64/Kconfig
-> > +++ b/arch/arm64/Kconfig
-> > @@ -260,7 +260,8 @@ config GENERIC_CALIBRATE_DELAY
-> >   	def_bool y
-> >   
-> >   config ZONE_DMA32
-> > -	def_bool y
-> > +	bool "Support DMA32 zone"
-> 
-> This probably warrants an "if EMBEDDED" or "if EXPERT", since turning it 
-> off produces a kernel which won't work at all on certain systems (I've 
-> played around with this before...)
+This change makes CONFIG_ZONE_DMA32 defuly y and allows users
+to overwrite it only when CONFIG_EXPERT=y.
 
-Thanks for your comment. 
-I'll put a "if EXPERT"  here to avoid this case.
+For the SoCs that do not need CONFIG_ZONE_DMA32, this is the
+first step to manage all available memory by a single
+zone(normal zone) to reduce the overhead of multiple zones.
 
-> 
-> > +	default y
-> >   
-> >   config HAVE_GENERIC_GUP
-> >   	def_bool y
-> > diff --git a/arch/arm64/mm/init.c b/arch/arm64/mm/init.c
-> > index d2adffb81b5d..96829ce21f99 100644
-> > --- a/arch/arm64/mm/init.c
-> > +++ b/arch/arm64/mm/init.c
-> > @@ -191,8 +191,10 @@ static void __init zone_sizes_init(unsigned long min, unsigned long max)
-> >   {
-> >   	unsigned long max_zone_pfns[MAX_NR_ZONES]  = {0};
-> >   
-> > +#ifdef CONFIG_ZONE_DMA32
-> >   	if (IS_ENABLED(CONFIG_ZONE_DMA32))
-> 
-> There's no point keeping the IS_ENABLED() check when it's entirely 
-> redundant with the #ifdefs.
+The change also fixes a build error when CONFIG_NUMA=y and
+CONFIG_ZONE_DMA32=n.
 
-I'll remove the IS_ENABLE() code in next patch.
+arch/arm64/mm/init.c:195:17: error: use of undeclared identifier 'ZONE_DMA32'
+                max_zone_pfns[ZONE_DMA32] = PFN_DOWN(max_zone_dma_phys());
 
--Miles
-> 
-> Robin.
-> 
-> >   		max_zone_pfns[ZONE_DMA32] = PFN_DOWN(max_zone_dma_phys());
-> > +#endif
-> >   	max_zone_pfns[ZONE_NORMAL] = max;
-> >   
-> >   	free_area_init_nodes(max_zone_pfns);
-> > 
+Change since v1:
+1. only expose CONFIG_ZONE_DMA32 when CONFIG_EXPERT=y
+2. remove redundant IS_ENABLED(CONFIG_ZONE_DMA32)
+
+Cc: Robin Murphy <robin.murphy@arm.com>
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+---
+ arch/arm64/Kconfig   | 3 ++-
+ arch/arm64/mm/init.c | 5 +++--
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
+index 76f6e4765f49..20c552b1302c 100644
+--- a/arch/arm64/Kconfig
++++ b/arch/arm64/Kconfig
+@@ -260,7 +260,8 @@ config GENERIC_CALIBRATE_DELAY
+ 	def_bool y
+ 
+ config ZONE_DMA32
+-	def_bool y
++	bool "Support DMA32 zone" if EXPERT
++	default y
+ 
+ config HAVE_GENERIC_GUP
+ 	def_bool y
+diff --git a/arch/arm64/mm/init.c b/arch/arm64/mm/init.c
+index d2adffb81b5d..f643bd45ff69 100644
+--- a/arch/arm64/mm/init.c
++++ b/arch/arm64/mm/init.c
+@@ -191,8 +191,9 @@ static void __init zone_sizes_init(unsigned long min, unsigned long max)
+ {
+ 	unsigned long max_zone_pfns[MAX_NR_ZONES]  = {0};
+ 
+-	if (IS_ENABLED(CONFIG_ZONE_DMA32))
+-		max_zone_pfns[ZONE_DMA32] = PFN_DOWN(max_zone_dma_phys());
++#ifdef CONFIG_ZONE_DMA32
++	max_zone_pfns[ZONE_DMA32] = PFN_DOWN(max_zone_dma_phys());
++#endif
+ 	max_zone_pfns[ZONE_NORMAL] = max;
+ 
+ 	free_area_init_nodes(max_zone_pfns);
+-- 
+2.18.0
