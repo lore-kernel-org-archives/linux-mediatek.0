@@ -1,69 +1,124 @@
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Subject: [PATCH v3] gpu/drm: mediatek: call mtk_dsi_stop() after mtk_drm_crtc_atomic_disable()
-Date: Tue, 28 May 2019 15:39:08 +0800
-Message-ID: <20190528073908.633-1-hsinyi@chromium.org>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [v3 PATCH] usb: create usb_debug_root for gadget only
+Date: Tue, 28 May 2019 15:54:59 +0800
+Message-ID: <cffd6d75f69e4d908c8f39b8a60ddae27d6b7c88.1559028752.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-arm-kernel@lists.infradead.org
-Cc: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Randy Dunlap <rdunlap@infradead.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-mtk_dsi_stop() should be called after mtk_drm_crtc_atomic_disable(), which needs
-ovl irq for drm_crtc_wait_one_vblank(), since after mtk_dsi_stop() is called,
-ovl irq will be disabled. If drm_crtc_wait_one_vblank() is called after last
-irq, it will timeout with this message: "vblank wait timed out on crtc 0". This
-happens sometimes when turning off the screen.
+When CONFIG_USB is not set, and CONFIG_USB_GADGET is set,
+there is an issue, e.g.:
 
-In drm_atomic_helper.c#disable_outputs(),
-the calling sequence when turning off the screen is:
+drivers/usb/mtu3/mtu3_debugfs.o: in function 'ssusb_debugfs_create_root':
+mtu3_debugfs.c:(.text+0xba3): undefined reference to 'usb_debug_root'
 
-1. mtk_dsi_encoder_disable()
-     --> mtk_output_dsi_disable()
-       --> mtk_dsi_stop();  // sometimes make vblank timeout in atomic_disable
-       --> mtk_dsi_poweroff();
-2. mtk_drm_crtc_atomic_disable()
-     --> drm_crtc_wait_one_vblank();
-     ...
-       --> mtk_dsi_ddp_stop()
-         --> mtk_dsi_poweroff();
+usb_debug_root is currently only built when host is supported
+(CONFIG_USB is set), for convenience, we also want it created when
+gadget only is enabled, this patch try to support it.
 
-mtk_dsi_poweroff() has reference count design, change to make mtk_dsi_stop()
-called in mtk_dsi_poweroff() when refcount is 0.
-
-Fixes: 0707632b5bac ("drm/mediatek: update DSI sub driver flow for sending commands to panel")
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Reported-by: Randy Dunlap <rdunlap@infradead.org>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
-change log v2->v3:
-* remove unnecessary codes in unbind
-* based on discussion in v2, if we move mtk_dsi_start() to mtk_dsi_poweron(),
-in order to make mtk_dsi_start() and mtk_dsi_stop() symmetric, will results in
-no irq for panel with bridge. So we keep mtk_dsi_start() in original place.
----
- drivers/gpu/drm/mediatek/mtk_dsi.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+v3:
+  1. still create usb_debug_root for gadget only
+  2. abandon mtu3's change
+  3. drop acked-by Randy
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index b00eb2d2e086..b7f829ecd3ad 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -630,6 +630,8 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
- 	if (--dsi->refcount != 0)
- 		return;
+v2(resend): add acked-by Randy
+
+v1: fix mtu3's build error, replace usb_debug_root by NULL;
+---
+ drivers/usb/core/usb.c        |  2 +-
+ drivers/usb/gadget/udc/core.c | 27 +++++++++++++++++++++++++++
+ include/linux/usb.h           |  1 +
+ 3 files changed, 29 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/usb/core/usb.c b/drivers/usb/core/usb.c
+index 7fcb9f782931..88b3ee03a12d 100644
+--- a/drivers/usb/core/usb.c
++++ b/drivers/usb/core/usb.c
+@@ -1190,7 +1190,7 @@ EXPORT_SYMBOL_GPL(usb_debug_root);
  
-+	mtk_dsi_stop(dsi);
+ static void usb_debugfs_init(void)
+ {
+-	usb_debug_root = debugfs_create_dir("usb", NULL);
++	usb_debug_root = debugfs_create_dir(USB_DEBUG_ROOT_NAME, NULL);
+ 	debugfs_create_file("devices", 0444, usb_debug_root, NULL,
+ 			    &usbfs_devices_fops);
+ }
+diff --git a/drivers/usb/gadget/udc/core.c b/drivers/usb/gadget/udc/core.c
+index 7cf34beb50df..ed45f9429e58 100644
+--- a/drivers/usb/gadget/udc/core.c
++++ b/drivers/usb/gadget/udc/core.c
+@@ -8,6 +8,7 @@
+ 
+ #include <linux/kernel.h>
+ #include <linux/module.h>
++#include <linux/debugfs.h>
+ #include <linux/device.h>
+ #include <linux/list.h>
+ #include <linux/err.h>
+@@ -1587,12 +1588,37 @@ static int usb_udc_uevent(struct device *dev, struct kobj_uevent_env *env)
+ 	return 0;
+ }
+ 
++/* if CONFIG_USB is set, leave USB core to create usb_debug_root */
++#ifndef CONFIG_USB
++struct dentry *usb_debug_root;
++EXPORT_SYMBOL_GPL(usb_debug_root);
 +
- 	if (!mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500)) {
- 		if (dsi->panel) {
- 			if (drm_panel_unprepare(dsi->panel)) {
-@@ -696,7 +698,6 @@ static void mtk_output_dsi_disable(struct mtk_dsi *dsi)
- 		}
++static void usb_debugfs_init(void)
++{
++	usb_debug_root = debugfs_create_dir(USB_DEBUG_ROOT_NAME, NULL);
++}
++
++static void usb_debugfs_cleanup(void)
++{
++	debugfs_remove_recursive(usb_debug_root);
++}
++#else
++static void usb_debugfs_init(void)
++{}
++
++static void usb_debugfs_cleanup(void)
++{}
++#endif
++
+ static int __init usb_udc_init(void)
+ {
++	usb_debugfs_init();
++
+ 	udc_class = class_create(THIS_MODULE, "udc");
+ 	if (IS_ERR(udc_class)) {
+ 		pr_err("failed to create udc class --> %ld\n",
+ 				PTR_ERR(udc_class));
++		usb_debugfs_cleanup();
+ 		return PTR_ERR(udc_class);
  	}
  
--	mtk_dsi_stop(dsi);
- 	mtk_dsi_poweroff(dsi);
+@@ -1604,6 +1630,7 @@ subsys_initcall(usb_udc_init);
+ static void __exit usb_udc_exit(void)
+ {
+ 	class_destroy(udc_class);
++	usb_debugfs_cleanup();
+ }
+ module_exit(usb_udc_exit);
  
- 	dsi->enabled = false;
+diff --git a/include/linux/usb.h b/include/linux/usb.h
+index ae82d9d1112b..9c6e7b3265af 100644
+--- a/include/linux/usb.h
++++ b/include/linux/usb.h
+@@ -1994,6 +1994,7 @@ extern void usb_register_notify(struct notifier_block *nb);
+ extern void usb_unregister_notify(struct notifier_block *nb);
+ 
+ /* debugfs stuff */
++#define USB_DEBUG_ROOT_NAME	"usb"
+ extern struct dentry *usb_debug_root;
+ 
+ /* LED triggers */
 -- 
-2.20.1
+2.21.0
