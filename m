@@ -1,68 +1,53 @@
-From: Miles Chen <miles.chen@mediatek.com>
-Subject: [PATCH v2] arm64: mm: make CONFIG_ZONE_DMA32 configurable
-Date: Wed, 29 May 2019 00:08:20 +0800
-Message-ID: <1559059700-19078-1-git-send-email-miles.chen@mediatek.com>
+From: Andrew Lunn <andrew@lunn.ch>
+Subject: Re: [v3, PATCH] net: stmmac: add support for hash table size 128/256
+ in dwmac4
+Date: Tue, 28 May 2019 18:40:19 +0200
+Message-ID: <20190528164019.GR18059@lunn.ch>
+References: <1558926867-16472-1-git-send-email-biao.huang@mediatek.com>
+ <1558926867-16472-2-git-send-email-biao.huang@mediatek.com>
+ <20190527.100800.1719164073038257292.davem@davemloft.net>
+ <1559008369.24897.66.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1559008369.24897.66.camel@mhfsdcap03>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Miles Chen <miles.chen@mediatek.com>, Robin Murphy <robin.murphy@arm.com>
+To: biao huang <biao.huang@mediatek.com>
+Cc: David Miller <davem@davemloft.net>, jianguo.zhang@mediatek.com, alexandre.torgue@st.com, boon.leong.ong@intel.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, yt.shen@mediatek.com, joabreu@synopsys.com, linux-mediatek@lists.infradead.org, mcoquelin.stm32@gmail.com, matthias.bgg@gmail.com, peppe.cavallaro@st.com, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This change makes CONFIG_ZONE_DMA32 defuly y and allows users
-to overwrite it only when CONFIG_EXPERT=y.
+On Tue, May 28, 2019 at 09:52:49AM +0800, biao huang wrote:
+> Dear David,
+> 
+> On Mon, 2019-05-27 at 10:08 -0700, David Miller wrote:
+> > From: Biao Huang <biao.huang@mediatek.com>
+> > Date: Mon, 27 May 2019 11:14:27 +0800
+> > 
+> > > diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
+> > > index 5e98da4..029a3db 100644
+> > > --- a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
+> > > +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
+> > > @@ -403,41 +403,50 @@ static void dwmac4_set_filter(struct mac_device_info *hw,
+> > >  			      struct net_device *dev)
+> > >  {
+> > >  	void __iomem *ioaddr = (void __iomem *)dev->base_addr;
+> > > -	unsigned int value = 0;
+> > > +	unsigned int value;
+> > > +	int numhashregs = (hw->multicast_filter_bins >> 5);
+> > > +	int mcbitslog2 = hw->mcast_bits_log2;
+> > > +	int i;
+> > 
+> > Please retain the reverse christmas tree ordering here.
+> I'm a little confused about the reverse xmas tree ordering.
+> 
+> should I reorder them only according to the total length like this:
+> 
+> 	void __iomem *ioaddr = (void __iomem *)dev->base_addr;
+> 	int numhashregs = (hw->multicast_filter_bins >> 5);
+> 	int mcbitslog2 = hw->mcast_bits_log2;
+> 	unsigned int value;
+> 	int i;
 
-For the SoCs that do not need CONFIG_ZONE_DMA32, this is the
-first step to manage all available memory by a single
-zone(normal zone) to reduce the overhead of multiple zones.
-
-The change also fixes a build error when CONFIG_NUMA=y and
-CONFIG_ZONE_DMA32=n.
-
-arch/arm64/mm/init.c:195:17: error: use of undeclared identifier 'ZONE_DMA32'
-                max_zone_pfns[ZONE_DMA32] = PFN_DOWN(max_zone_dma_phys());
-
-Change since v1:
-1. only expose CONFIG_ZONE_DMA32 when CONFIG_EXPERT=y
-2. remove redundant IS_ENABLED(CONFIG_ZONE_DMA32)
-
-Cc: Robin Murphy <robin.murphy@arm.com>
-Signed-off-by: Miles Chen <miles.chen@mediatek.com>
----
- arch/arm64/Kconfig   | 3 ++-
- arch/arm64/mm/init.c | 5 +++--
- 2 files changed, 5 insertions(+), 3 deletions(-)
-
-diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
-index 76f6e4765f49..20c552b1302c 100644
---- a/arch/arm64/Kconfig
-+++ b/arch/arm64/Kconfig
-@@ -260,7 +260,8 @@ config GENERIC_CALIBRATE_DELAY
- 	def_bool y
- 
- config ZONE_DMA32
--	def_bool y
-+	bool "Support DMA32 zone" if EXPERT
-+	default y
- 
- config HAVE_GENERIC_GUP
- 	def_bool y
-diff --git a/arch/arm64/mm/init.c b/arch/arm64/mm/init.c
-index d2adffb81b5d..f643bd45ff69 100644
---- a/arch/arm64/mm/init.c
-+++ b/arch/arm64/mm/init.c
-@@ -191,8 +191,9 @@ static void __init zone_sizes_init(unsigned long min, unsigned long max)
- {
- 	unsigned long max_zone_pfns[MAX_NR_ZONES]  = {0};
- 
--	if (IS_ENABLED(CONFIG_ZONE_DMA32))
--		max_zone_pfns[ZONE_DMA32] = PFN_DOWN(max_zone_dma_phys());
-+#ifdef CONFIG_ZONE_DMA32
-+	max_zone_pfns[ZONE_DMA32] = PFN_DOWN(max_zone_dma_phys());
-+#endif
- 	max_zone_pfns[ZONE_NORMAL] = max;
- 
- 	free_area_init_nodes(max_zone_pfns);
--- 
-2.18.0
+Yes.
+	Andrew
