@@ -1,47 +1,177 @@
-From: Jose Abreu <Jose.Abreu@synopsys.com>
-Subject: RE: [v5, PATCH] net: stmmac: add support for hash table size
- 128/256 in dwmac4
-Date: Wed, 29 May 2019 10:30:46 +0000
-Message-ID: <78EB27739596EE489E55E81C33FEC33A0B9334CE@DE02WEMBXB.internal.synopsys.com>
-References: <1559122268-22545-1-git-send-email-biao.huang@mediatek.com>
- <1559122268-22545-2-git-send-email-biao.huang@mediatek.com>
+From: Jitao Shi <jitao.shi@mediatek.com>
+Subject: Re: [PATCH v2] gpu/drm: mediatek: call mtk_dsi_stop() after
+ mtk_drm_crtc_atomic_disable()
+Date: Wed, 29 May 2019 18:48:39 +0800
+Message-ID: <1559126919.12097.6.camel@mszsdaap41>
+References: <20190320071825.20268-1-hsinyi@chromium.org>
+         <1553131722.18216.10.camel@mtksdaap41>
+         <1553132815.18216.18.camel@mtksdaap41>
+         <CAJMQK-j9af8_L7DsWzgUy3=0Mr65FFeU71owan+acQgRuAnE7w@mail.gmail.com>
+         <1553217695.25217.5.camel@mtksdaap41>
+         <CAJMQK-g3JZ3Eg5U9OmYP9UU3k22VXGWOvZSBrFtAFFHw0Uq0cA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1559122268-22545-2-git-send-email-biao.huang@mediatek.com>
-Content-Language: en-US
+In-Reply-To: <CAJMQK-g3JZ3Eg5U9OmYP9UU3k22VXGWOvZSBrFtAFFHw0Uq0cA@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Biao Huang <biao.huang@mediatek.com>
-Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "linux-stm32@st-md-mailman.stormreply.com" <linux-stm32@st-md-mailman.stormreply.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "yt.shen@mediatek.com" <yt.shen@mediatek.com>, "jianguo.zhang@mediatek.com" <jianguo.zhang@mediatek.com>, "boon.leong.ong@intel.com" <boon.leong.ong@intel.com>, "andrew@lunn.ch" <andrew@lunn.ch>
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: CK Hu =?UTF-8?Q?=28=E8=83=A1=E4=BF=8A=E5=85=89=29?= <ck.hu@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Biao Huang <biao.huang@mediatek.com>
-Date: Wed, May 29, 2019 at 10:31:08
+On Fri, 2019-03-22 at 13:05 +0800, Hsin-Yi Wang wrote:
+> On Fri, Mar 22, 2019 at 9:21 AM CK Hu <ck.hu@mediatek.com> wrote:
+> >
+> > Hi, Hsin-yi:
+> >
+> > On Thu, 2019-03-21 at 22:09 +0800, Hsin-Yi Wang wrote:
+> > > On Thu, Mar 21, 2019 at 9:46 AM CK Hu <ck.hu@mediatek.com> wrote:
+> > > >
+> > > > Hi, Hsin-yi:
+> > > >
+> > > > On Thu, 2019-03-21 at 09:28 +0800, CK Hu wrote:
+> > > > > Hi, Hsin-yi:
+> > > > >
+> > > > > On Wed, 2019-03-20 at 15:18 +0800, Hsin-Yi Wang wrote:
+> > > > > > mtk_dsi_stop() should be called after mtk_drm_crtc_atomic_disable(), which needs
+> > > > > > ovl irq for drm_crtc_wait_one_vblank(), since after mtk_dsi_stop() is called,
+> > > > > > ovl irq will be disabled. If drm_crtc_wait_one_vblank() is called after last
+> > > > > > irq, it will timeout with this message: "vblank wait timed out on crtc 0". This
+> > > > > > happens sometimes when turning off the screen.
+> > > > > >
+> > > > > > In drm_atomic_helper.c#disable_outputs(),
+> > > > > > the calling sequence when turning off the screen is:
+> > > > > >
+> > > > > > 1. mtk_dsi_encoder_disable()
+> > > > > >      --> mtk_output_dsi_disable()
+> > > > > >        --> mtk_dsi_stop();  // sometimes make vblank timeout in atomic_disable
+> > > > > >        --> mtk_dsi_poweroff();
+> > > > > > 2. mtk_drm_crtc_atomic_disable()
+> > > > > >      --> drm_crtc_wait_one_vblank();
+> > > > > >      ...
+> > > > > >        --> mtk_dsi_ddp_stop()
+> > > > > >          --> mtk_dsi_poweroff();
+> > > > > >
+> > > > > > mtk_dsi_poweroff() has reference count design, change to make mtk_dsi_stop()
+> > > > > > called in mtk_dsi_poweroff() when refcount is 0.
+> > > > > >
+> > > > > > Fixes: 0707632b5bac ("drm/mediatek: update DSI sub driver flow for sending commands to panel")
+> > > > > > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> > > > > > ---
+> > > > > > change log:
+> > > > > > v1->v2:
+> > > > > >  * update commit message.
+> > > > > >  * call mtk_dsi_stop() in mtk_dsi_poweroff() when refcount is 0.
+> > > > > > ---
+> > > > > >  drivers/gpu/drm/mediatek/mtk_dsi.c | 5 ++++-
+> > > > > >  1 file changed, 4 insertions(+), 1 deletion(-)
+> > > > > >
+> > > > > > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > > > > > index b00eb2d2e086..e152f37af57d 100644
+> > > > > > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > > > > > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > > > > > @@ -630,6 +630,8 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
+> > > > > >     if (--dsi->refcount != 0)
+> > > > > >             return;
+> > > > > >
+> > > > > > +   mtk_dsi_stop(dsi);
+> > > > > > +
+> > > > > >     if (!mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500)) {
+> > > > > >             if (dsi->panel) {
+> > > > > >                     if (drm_panel_unprepare(dsi->panel)) {
+> > > > >
+> > > > > I think you just move mtk_dsi_stop() into mtk_dsi_poweroff() would works
+> > > > > fine, but I would rather like calling mtk_dsi_start() and mtk_dsi_stop()
+> > > > > in a symmetric manner. That means you may also move below functions into
+> > > > > mtk_dsi_poweron():
+> > > > >
+> > > > > mtk_dsi_set_mode(dsi);
+> > > > > mtk_dsi_clk_hs_mode(dsi, 1);
+> > > > > mtk_dsi_start(dsi);
+> > >
+> > > For MT8183 with bridge panel, calling mtk_dsi_start() in
+> > > mtk_dsi_poweron() when refcount is 0->1, like the following order,
+> > > will results in no irq, not sure why though. I think this might be the
+> > > timing issue you mentioned in patch v1. (MT8183 without bridge panel
+> > > doesn't have this issue.)
+> > >
+> > > atomic_enable
+> > >   --> mtk_crtc_ddp_hw_init
+> > >     --> mtk_dsi_ddp_start
+> > >       --> mtk_dsi_poweron (ref 0->1)
+> > >         --> drm_panel_prepare
+> > >         --> *mtk_dsi_start  // results in no irq for MT8183 with bridge
+> > >   --> drm_crtc_vblank_on
+> > >
+> > > mtk_output_dsi_enable
+> > >   --> mtk_dsi_poweron (ref 1->2, ignored)
+> > >   --> mtk_dsi_start //original position
+> > >
+> > > For mtk_dsi_stop() both with or without bridge is fine.
+> Add cc Jitao.
+> 
+> Hi Jitao,
+> Do you know if this is a known hardware behavior?
+> 
+> Thanks
 
-> 1. get hash table size in hw feature reigster, and add support
-> for taller hash table(128/256) in dwmac4.
-> 2. only clear GMAC_PACKET_FILTER bits used in this function,
-> to avoid side effect to functions of other bits.
->=20
-> stmmac selftests output log:
-> 	ethtool -t eth0
-> 	The test result is FAIL
-> 	The test extra info:
-> 	 1. MAC Loopback                 0
-> 	 2. PHY Loopback                 -95
-> 	 3. MMC Counters                 0
-> 	 4. EEE                          -95
-> 	 5. Hash Filter MC               0
-> 	 6. Perfect Filter UC            0
-> 	 7. MC Filter                    0
-> 	 8. UC Filter                    0
-> 	 9. Flow Control                 1
+mtk_dsi_start must after dsi full setting.
 
-Thanks for testing, this patch looks good to me.
+If you put it in mtk_dsi_ddp_start, mtk_dsi_set_mode won't work. DSI
+will keep cmd mode. So you see no irq.
 
-Do you want to check why Flow Control selftest is failing ?
+I think we show keep the mtk_dsi_start in mtk_output_dsi_enable 
 
+Best Regards
+Jitao
 
-Thanks,
-Jose Miguel Abreu
+> >
+> > I'm not familiar with dsi hardware, so I could not answer why this
+> > problem happen. Jitao is familiar with dsi hardware, you may ask him for
+> > help. If this is hardware behavior, I could accept asymmetric flow, but
+> > please be sure this is hardware behavior not software bug.
+> >
+> > Regards,
+> > CK
+> >
+> > >
+> > > > >
+> > > > >
+> > > > > > @@ -696,7 +698,6 @@ static void mtk_output_dsi_disable(struct mtk_dsi *dsi)
+> > > > > >             }
+> > > > > >     }
+> > > > > >
+> > > > > > -   mtk_dsi_stop(dsi);
+> > > > > >     mtk_dsi_poweroff(dsi);
+> > > > > >
+> > > > > >     dsi->enabled = false;
+> > > > > > @@ -1178,6 +1179,8 @@ static int mtk_dsi_remove(struct platform_device *pdev)
+> > > > > >     struct mtk_dsi *dsi = platform_get_drvdata(pdev);
+> > > > > >
+> > > > > >     mtk_output_dsi_disable(dsi);
+> > > > > > +   mtk_dsi_stop(dsi);
+> > > > > > +   mtk_dsi_poweroff(dsi);
+> > > > >
+> > > > > I think mtk_output_dsi_disable() would call mtk_dsi_poweroff(), and
+> > > > > mtk_dsi_poweroff() would call mtk_dsi_stop(), so these two line are
+> > > > > redundant. And I think you should remove mtk_dsi_stop() in
+> > > > > mtk_output_dsi_disable(), why not in this patch?
+> > > >
+> > > > You've removed mtk_dsi_stop() in mtk_output_dsi_disable(), I just miss
+> > > > it, sorry for this.
+> > > >
+> > > > Regards,
+> > > > CK
+> > > >
+> > > > >
+> > > > > Regards,
+> > > > > CK
+> > > > >
+> > > > > >     component_del(&pdev->dev, &mtk_dsi_component_ops);
+> > > > > >
+> > > > > >     return 0;
+> > > > >
+> > > >
+> > > >
+> >
+> >
