@@ -1,686 +1,114 @@
-From: Walter Wu <walter-zh.wu@mediatek.com>
-Subject: Re: [PATCH] kasan: add memory corruption identification for
- software tag-based mode
-Date: Wed, 29 May 2019 17:35:29 +0800
-Message-ID: <1559122529.17186.24.camel@mtksdccf07>
+From: Dmitry Vyukov <dvyukov@google.com>
+Subject: Re: [PATCH] kasan: add memory corruption identification for software
+ tag-based mode
+Date: Wed, 29 May 2019 11:43:02 +0200
+Message-ID: <CACT4Y+a__7FQxqbzowLq5KOZGyBys90S8=HP_Gqu_KoNm7W39w@mail.gmail.com>
 References: <1559027797-30303-1-git-send-email-walter-zh.wu@mediatek.com>
-         <CACT4Y+aCnODuffR7PafyYispp_U+ZdY1Dr0XQYvmghkogLJzSw@mail.gmail.com>
+ <CACT4Y+aCnODuffR7PafyYispp_U+ZdY1Dr0XQYvmghkogLJzSw@mail.gmail.com>
+ <1559122529.17186.24.camel@mtksdccf07>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CACT4Y+aCnODuffR7PafyYispp_U+ZdY1Dr0XQYvmghkogLJzSw@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Dmitry Vyukov <dvyukov@google.com>
-Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Matthias Brugger <matthias.bgg@gmail.com>, Miles Chen <miles.chen@mediatek.com>, kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>, Linux-MM <linux-mm@kvack.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Catalin Marinas <catalin.marinas@arm.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1559122529.17186.24.camel@mtksdccf07>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Walter Wu <walter-zh.wu@mediatek.com>
+Cc: wsd_upstream@mediatek.com, Catalin Marinas <catalin.marinas@arm.com>, linux-mediatek@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>, Pekka Enberg <penberg@kernel.org>, Linux-MM <linux-mm@kvack.org>, Miles Chen <miles.chen@mediatek.com>, Alexander Potapenko <glider@google.com>, David Rientjes <rientjes@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrey Ryabinin <aryabinin@virtuozzo.com>, Christoph Lameter <cl@linux.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-> Hi Walter,
-> 
-> Please describe your use case.
-> For testing context the generic KASAN works better and it does have
-> quarantine already. For prod/canary environment the quarantine may be
-> unacceptable in most cases.
-> I think we also want to use tag-based KASAN as a base for ARM MTE
-> support in near future and quarantine will be most likely unacceptable
-> for main MTE use cases. So at the very least I think this should be
-> configurable. +Catalin for this.
-> 
-My patch hope the tag-based KASAN bug report make it easier for
-programmers to see memory corruption problem. 
-Because now tag-based KASAN bug report always shows “invalid-access”
-error, my patch can identify it whether it is use-after-free or
-out-of-bound.
-
-We can try to make our patch is feature option. Thanks your suggestion.
-Would you explain why the quarantine is unacceptable for main MTE?
-Thanks.
-
-
-> You don't change total quarantine size and charge only sizeof(struct
-> qlist_object). If I am reading this correctly, this means that
-> quarantine will have the same large overhead as with generic KASAN. We
-> will just cache much more objects there. The boot benchmarks may be
-> unrepresentative for this. Don't we need to reduce quarantine size or
-> something?
-> 
-Yes, we will try to choose 2. My original idea is belong to it. So we
-will reduce quarantine size.
-
-1). If quarantine size is the same with generic KASAN and tag-based
-KASAN, then the miss rate of use-after-free case in generic KASAN is
-larger than tag-based KASAN.
-2). If tag-based KASAN quarantine size is smaller generic KASAN, then
-the miss rate of use-after-free case may be the same, but tag-based
-KASAN can save slab memory usage.
-
-
-> 
-> > Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-> > ---
-> >  include/linux/kasan.h  |  20 +++++---
-> >  mm/kasan/Makefile      |   4 +-
-> >  mm/kasan/common.c      |  15 +++++-
-> >  mm/kasan/generic.c     |  11 -----
-> >  mm/kasan/kasan.h       |  45 ++++++++++++++++-
-> >  mm/kasan/quarantine.c  | 107 ++++++++++++++++++++++++++++++++++++++---
-> >  mm/kasan/report.c      |  36 +++++++++-----
-> >  mm/kasan/tags.c        |  64 ++++++++++++++++++++++++
-> >  mm/kasan/tags_report.c |   5 +-
-> >  mm/slub.c              |   2 -
-> >  10 files changed, 262 insertions(+), 47 deletions(-)
-> >
-> > diff --git a/include/linux/kasan.h b/include/linux/kasan.h
-> > index b40ea104dd36..bbb52a8bf4a9 100644
-> > --- a/include/linux/kasan.h
-> > +++ b/include/linux/kasan.h
-> > @@ -83,6 +83,9 @@ size_t kasan_metadata_size(struct kmem_cache *cache);
-> >  bool kasan_save_enable_multi_shot(void);
-> >  void kasan_restore_multi_shot(bool enabled);
-> >
-> > +void kasan_cache_shrink(struct kmem_cache *cache);
-> > +void kasan_cache_shutdown(struct kmem_cache *cache);
-> > +
-> >  #else /* CONFIG_KASAN */
-> >
-> >  static inline void kasan_unpoison_shadow(const void *address, size_t size) {}
-> > @@ -153,20 +156,14 @@ static inline void kasan_remove_zero_shadow(void *start,
-> >  static inline void kasan_unpoison_slab(const void *ptr) { }
-> >  static inline size_t kasan_metadata_size(struct kmem_cache *cache) { return 0; }
-> >
-> > +static inline void kasan_cache_shrink(struct kmem_cache *cache) {}
-> > +static inline void kasan_cache_shutdown(struct kmem_cache *cache) {}
-> >  #endif /* CONFIG_KASAN */
-> >
-> >  #ifdef CONFIG_KASAN_GENERIC
-> >
-> >  #define KASAN_SHADOW_INIT 0
-> >
-> > -void kasan_cache_shrink(struct kmem_cache *cache);
-> > -void kasan_cache_shutdown(struct kmem_cache *cache);
-> > -
-> > -#else /* CONFIG_KASAN_GENERIC */
-> > -
-> > -static inline void kasan_cache_shrink(struct kmem_cache *cache) {}
-> > -static inline void kasan_cache_shutdown(struct kmem_cache *cache) {}
-> 
-> Why do we need to move these functions?
-> For generic KASAN that's required because we store the objects
-> themselves in the quarantine, but it's not the case for tag-based mode
-> with your patch...
-> 
-The quarantine in tag-based KASAN includes new objects which we create.
-Those objects are the freed information. They can be shrunk by calling
-them. So we move these function into CONFIG_KASAN. 
-
-
-> > -
-> >  #endif /* CONFIG_KASAN_GENERIC */
-> >
-> >  #ifdef CONFIG_KASAN_SW_TAGS
-> > @@ -180,6 +177,8 @@ void *kasan_reset_tag(const void *addr);
-> >  void kasan_report(unsigned long addr, size_t size,
-> >                 bool is_write, unsigned long ip);
-> >
-> > +struct kasan_alloc_meta *get_object_track(void);
-> > +
-> >  #else /* CONFIG_KASAN_SW_TAGS */
-> >
-> >  static inline void kasan_init_tags(void) { }
-> > @@ -189,6 +188,11 @@ static inline void *kasan_reset_tag(const void *addr)
-> >         return (void *)addr;
-> >  }
-> >
-> > +static inline struct kasan_alloc_meta *get_object_track(void)
-> > +{
-> > +       return 0;
-> > +}
-> > +
-> >  #endif /* CONFIG_KASAN_SW_TAGS */
-> >
-> >  #endif /* LINUX_KASAN_H */
-> > diff --git a/mm/kasan/Makefile b/mm/kasan/Makefile
-> > index 5d1065efbd47..03b0fe22ec55 100644
-> > --- a/mm/kasan/Makefile
-> > +++ b/mm/kasan/Makefile
-> > @@ -16,6 +16,6 @@ CFLAGS_common.o := $(call cc-option, -fno-conserve-stack -fno-stack-protector)
-> >  CFLAGS_generic.o := $(call cc-option, -fno-conserve-stack -fno-stack-protector)
-> >  CFLAGS_tags.o := $(call cc-option, -fno-conserve-stack -fno-stack-protector)
-> >
-> > -obj-$(CONFIG_KASAN) := common.o init.o report.o
-> > -obj-$(CONFIG_KASAN_GENERIC) += generic.o generic_report.o quarantine.o
-> > +obj-$(CONFIG_KASAN) := common.o init.o report.o quarantine.o
-> > +obj-$(CONFIG_KASAN_GENERIC) += generic.o generic_report.o
-> >  obj-$(CONFIG_KASAN_SW_TAGS) += tags.o tags_report.o
-> > diff --git a/mm/kasan/common.c b/mm/kasan/common.c
-> > index 80bbe62b16cd..919f693a58ab 100644
-> > --- a/mm/kasan/common.c
-> > +++ b/mm/kasan/common.c
-> > @@ -81,7 +81,7 @@ static inline depot_stack_handle_t save_stack(gfp_t flags)
-> >         return depot_save_stack(&trace, flags);
-> >  }
-> >
-> > -static inline void set_track(struct kasan_track *track, gfp_t flags)
-> > +void set_track(struct kasan_track *track, gfp_t flags)
-> >  {
-> >         track->pid = current->pid;
-> >         track->stack = save_stack(flags);
-> > @@ -457,7 +457,7 @@ static bool __kasan_slab_free(struct kmem_cache *cache, void *object,
-> >                 return false;
-> >
-> >         set_track(&get_alloc_info(cache, object)->free_track, GFP_NOWAIT);
-> > -       quarantine_put(get_free_info(cache, object), cache);
-> > +       quarantine_put(get_free_info(cache, tagged_object), cache);
-> 
-> Why do we need this change?
-> 
-In order to add freed object information into quarantine.
-The freed object information is tag address , size, and free backtrace.
-
-
-> >
-> >         return IS_ENABLED(CONFIG_KASAN_GENERIC);
-> >  }
-> > @@ -614,6 +614,17 @@ void kasan_free_shadow(const struct vm_struct *vm)
-> >                 vfree(kasan_mem_to_shadow(vm->addr));
-> >  }
-> >
-> > +void kasan_cache_shrink(struct kmem_cache *cache)
-> > +{
-> > +       quarantine_remove_cache(cache);
-> > +}
-> > +
-> > +void kasan_cache_shutdown(struct kmem_cache *cache)
-> > +{
-> > +       if (!__kmem_cache_empty(cache))
-> > +               quarantine_remove_cache(cache);
-> > +}
-> > +
-> >  #ifdef CONFIG_MEMORY_HOTPLUG
-> >  static bool shadow_mapped(unsigned long addr)
-> >  {
-> > diff --git a/mm/kasan/generic.c b/mm/kasan/generic.c
-> > index 504c79363a34..5f579051dead 100644
-> > --- a/mm/kasan/generic.c
-> > +++ b/mm/kasan/generic.c
-> > @@ -191,17 +191,6 @@ void check_memory_region(unsigned long addr, size_t size, bool write,
-> >         check_memory_region_inline(addr, size, write, ret_ip);
-> >  }
-> >
-> > -void kasan_cache_shrink(struct kmem_cache *cache)
-> > -{
-> > -       quarantine_remove_cache(cache);
-> > -}
-> > -
-> > -void kasan_cache_shutdown(struct kmem_cache *cache)
-> > -{
-> > -       if (!__kmem_cache_empty(cache))
-> > -               quarantine_remove_cache(cache);
-> > -}
-> > -
-> >  static void register_global(struct kasan_global *global)
-> >  {
-> >         size_t aligned_size = round_up(global->size, KASAN_SHADOW_SCALE_SIZE);
-> > diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
-> > index 3e0c11f7d7a1..6848a93660d9 100644
-> > --- a/mm/kasan/kasan.h
-> > +++ b/mm/kasan/kasan.h
-> > @@ -95,9 +95,21 @@ struct kasan_alloc_meta {
-> >         struct kasan_track free_track;
-> >  };
-> >
-> > +#ifdef CONFIG_KASAN_GENERIC
-> >  struct qlist_node {
-> >         struct qlist_node *next;
-> >  };
-> > +#else
-> > +struct qlist_object {
-> > +       unsigned long addr;
-> > +       unsigned int size;
-> > +       struct kasan_alloc_meta free_track;
-> 
-> Why is this kasan_alloc_meta rather then kasan_track? We don't
-> memorize alloc stack...
-> 
-Yes, you are right, we only need the free_track of kasan_alloc_meta. We
-will change it.
-
-
-> > +};
-> > +struct qlist_node {
-> > +       struct qlist_object *qobject;
-> > +       struct qlist_node *next;
-> > +};
-> > +#endif
-> >  struct kasan_free_meta {
-> >         /* This field is used while the object is in the quarantine.
-> >          * Otherwise it might be used for the allocator freelist.
-> > @@ -133,16 +145,19 @@ void kasan_report(unsigned long addr, size_t size,
-> >                 bool is_write, unsigned long ip);
-> >  void kasan_report_invalid_free(void *object, unsigned long ip);
-> >
-> > -#if defined(CONFIG_KASAN_GENERIC) && \
-> > +#if defined(CONFIG_KASAN_GENERIC) || defined(CONFIG_KASAN_SW_TAGS) && \
-> 
-> This condition seems to be always true, no?
-> 
-Yes, it is always true, it should be removed.
-
-
-> >         (defined(CONFIG_SLAB) || defined(CONFIG_SLUB))
-> > +
-> >  void quarantine_put(struct kasan_free_meta *info, struct kmem_cache *cache);
-> >  void quarantine_reduce(void);
-> >  void quarantine_remove_cache(struct kmem_cache *cache);
-> > +void set_track(struct kasan_track *track, gfp_t flags);
-> >  #else
-> >  static inline void quarantine_put(struct kasan_free_meta *info,
-> >                                 struct kmem_cache *cache) { }
-> >  static inline void quarantine_reduce(void) { }
-> >  static inline void quarantine_remove_cache(struct kmem_cache *cache) { }
-> > +static inline void set_track(struct kasan_track *track, gfp_t flags) {}
-> >  #endif
-> >
-> >  #ifdef CONFIG_KASAN_SW_TAGS
-> > @@ -151,6 +166,15 @@ void print_tags(u8 addr_tag, const void *addr);
-> >
-> >  u8 random_tag(void);
-> >
-> > +bool quarantine_find_object(void *object);
-> > +
-> > +int qobject_add_size(void);
-> 
-> Would be more reasonable to use size_t type for object sizes.
-> 
-the sum of qobect and qnode size?
-
-
-> > +
-> > +struct qlist_node *qobject_create(struct kasan_free_meta *info,
-> > +               struct kmem_cache *cache);
-> > +
-> > +void qobject_free(struct qlist_node *qlink, struct kmem_cache *cache);
-> > +
-> >  #else
-> >
-> >  static inline void print_tags(u8 addr_tag, const void *addr) { }
-> > @@ -160,6 +184,25 @@ static inline u8 random_tag(void)
-> >         return 0;
-> >  }
-> >
-> > +static inline bool quarantine_find_object(void *object)
-> > +{
-> > +       return 0;
-> 
-> s/0/false/
-> 
-Thanks for your friendly reminder. we will change it.
-
-
-> > +}
-> > +
-> > +static inline int qobject_add_size(void)
-> > +{
-> > +       return 0;
-> > +}
-> > +
-> > +static inline struct qlist_node *qobject_create(struct kasan_free_meta *info,
-> > +               struct kmem_cache *cache)
-> > +{
-> > +       return 0;
-> 
-> s/0/NULL/
-> 
-Thanks for your friendly reminder. we will change it.
-
-
-> > +}
-> > +
-> > +static inline void qobject_free(struct qlist_node *qlink,
-> > +               struct kmem_cache *cache) {}
-> > +
-> >  #endif
-> >
-> >  #ifndef arch_kasan_set_tag
-> > diff --git a/mm/kasan/quarantine.c b/mm/kasan/quarantine.c
-> > index 978bc4a3eb51..f14c8dbec552 100644
-> > --- a/mm/kasan/quarantine.c
-> > +++ b/mm/kasan/quarantine.c
-> > @@ -67,7 +67,10 @@ static void qlist_put(struct qlist_head *q, struct qlist_node *qlink,
-> >                 q->tail->next = qlink;
-> >         q->tail = qlink;
-> >         qlink->next = NULL;
-> > -       q->bytes += size;
-> > +       if (IS_ENABLED(CONFIG_KASAN_SW_TAGS))
-> 
-> It would be more reasonable to pass the right size from the caller. It
-> already have to have the branch on CONFIG_KASAN_SW_TAGS because it
-> needs to allocate qobject or not, that would be the right place to
-> pass the right size.
-> 
-In tag-based KASAN, we will pass the sum of qobject and qnode size to it
-and review qlist_put() caller whether it pass right size.
-
-
-> > +               q->bytes += qobject_add_size();
-> > +       else
-> > +               q->bytes += size;
-> >  }
-> >
-> >  static void qlist_move_all(struct qlist_head *from, struct qlist_head *to)
-> > @@ -139,13 +142,18 @@ static void *qlink_to_object(struct qlist_node *qlink, struct kmem_cache *cache)
-> >
-> >  static void qlink_free(struct qlist_node *qlink, struct kmem_cache *cache)
-> >  {
-> > -       void *object = qlink_to_object(qlink, cache);
-> >         unsigned long flags;
-> > +       struct kmem_cache *obj_cache =
-> > +                       cache ? cache : qlink_to_cache(qlink);
-> > +       void *object = qlink_to_object(qlink, obj_cache);
-> > +
-> > +       if (IS_ENABLED(CONFIG_KASAN_SW_TAGS))
-> > +               qobject_free(qlink, cache);
-> >
-> >         if (IS_ENABLED(CONFIG_SLAB))
-> >                 local_irq_save(flags);
-> >
-> > -       ___cache_free(cache, object, _THIS_IP_);
-> > +       ___cache_free(obj_cache, object, _THIS_IP_);
-> >
-> >         if (IS_ENABLED(CONFIG_SLAB))
-> >                 local_irq_restore(flags);
-> > @@ -160,11 +168,9 @@ static void qlist_free_all(struct qlist_head *q, struct kmem_cache *cache)
-> >
-> >         qlink = q->head;
-> >         while (qlink) {
-> > -               struct kmem_cache *obj_cache =
-> > -                       cache ? cache : qlink_to_cache(qlink);
-> >                 struct qlist_node *next = qlink->next;
-> >
-> > -               qlink_free(qlink, obj_cache);
-> > +               qlink_free(qlink, cache);
-> >                 qlink = next;
-> >         }
-> >         qlist_init(q);
-> > @@ -187,7 +193,18 @@ void quarantine_put(struct kasan_free_meta *info, struct kmem_cache *cache)
-> >         local_irq_save(flags);
-> >
-> >         q = this_cpu_ptr(&cpu_quarantine);
-> > -       qlist_put(q, &info->quarantine_link, cache->size);
-> > +       if (IS_ENABLED(CONFIG_KASAN_SW_TAGS)) {
-> > +               struct qlist_node *free_obj_info = qobject_create(info, cache);
-> > +
-> > +               if (!free_obj_info) {
-> > +                       local_irq_restore(flags);
-> > +                       return;
-> > +               }
-> > +               qlist_put(q, free_obj_info, cache->size);
-> > +       } else {
-> > +               qlist_put(q, &info->quarantine_link, cache->size);
-> > +       }
-> > +
-> >         if (unlikely(q->bytes > QUARANTINE_PERCPU_SIZE)) {
-> >                 qlist_move_all(q, &temp);
-> >
-> > @@ -327,3 +344,79 @@ void quarantine_remove_cache(struct kmem_cache *cache)
-> >
-> >         synchronize_srcu(&remove_cache_srcu);
-> >  }
-> > +
-> > +#ifdef CONFIG_KASAN_SW_TAGS
-> > +static struct kasan_alloc_meta object_free_track;
-> 
-> This global is a dirty solution. It's better passed as argument to the
-> required functions rather than functions leave part of state in a
-> global and somebody picks it up later.
-> 
-Thanks your suggestion, we will change the implementation here.
-
-
-> > +
-> > +struct kasan_alloc_meta *get_object_track(void)
-> > +{
-> > +       return &object_free_track;
-> > +}
-> > +
-> > +static bool qlist_find_object(struct qlist_head *from, void *addr)
-> > +{
-> > +       struct qlist_node *curr;
-> > +       struct qlist_object *curr_obj;
-> > +
-> > +       if (unlikely(qlist_empty(from)))
-> > +               return false;
-> > +
-> > +       curr = from->head;
-> > +       while (curr) {
-> > +               struct qlist_node *next = curr->next;
-> > +
-> > +               curr_obj = curr->qobject;
-> > +               if (unlikely(((unsigned long)addr >= curr_obj->addr)
-> > +                       && ((unsigned long)addr <
-> > +                                       (curr_obj->addr + curr_obj->size)))) {
-> > +                       object_free_track = curr_obj->free_track;
-> > +
-> > +                       return true;
-> > +               }
-> > +
-> > +               curr = next;
-> > +       }
-> > +       return false;
-> > +}
-> > +
-> > +static int per_cpu_find_object(void *arg)
-> > +{
-> > +       void *addr = arg;
-> > +       struct qlist_head *q;
-> > +
-> > +       q = this_cpu_ptr(&cpu_quarantine);
-> > +       return qlist_find_object(q, addr);
-> > +}
-> > +
-> > +struct cpumask cpu_allowed_mask __read_mostly;
-> > +
-> > +bool quarantine_find_object(void *addr)
-> > +{
-> > +       unsigned long flags, i;
-> > +       bool find = false;
-> > +       int cpu;
-> > +
-> > +       cpumask_copy(&cpu_allowed_mask, cpu_online_mask);
-> > +       for_each_cpu(cpu, &cpu_allowed_mask) {
-> > +               find = smp_call_on_cpu(cpu, per_cpu_find_object, addr, true);
-> 
-> There can be multiple qobjects in the quarantine associated with the
-> address, right? If so, we need to find the last one rather then a
-> random one.
-> 
-The qobject includes the address which has tag and range, corruption
-address must be satisfied with the same tag and within object address
-range, then it is found in the quarantine.
-It should not easy to get multiple qobjects have the same tag and within
-object address range.
-
-
-> > +               if (find)
-> > +                       return true;
-> > +       }
-> > +
-> > +       raw_spin_lock_irqsave(&quarantine_lock, flags);
-> > +       for (i = 0; i < QUARANTINE_BATCHES; i++) {
-> > +               if (qlist_empty(&global_quarantine[i]))
-> > +                       continue;
-> > +               find = qlist_find_object(&global_quarantine[i], addr);
-> > +               /* Scanning whole quarantine can take a while. */
-> > +               raw_spin_unlock_irqrestore(&quarantine_lock, flags);
-> > +               cond_resched();
-> > +               raw_spin_lock_irqsave(&quarantine_lock, flags);
-> > +       }
-> > +       raw_spin_unlock_irqrestore(&quarantine_lock, flags);
-> > +
-> > +       synchronize_srcu(&remove_cache_srcu);
-> > +
-> > +       return find;
-> > +}
-> > +#endif
-> > diff --git a/mm/kasan/report.c b/mm/kasan/report.c
-> > index ca9418fe9232..9cfabf2f0c40 100644
-> > --- a/mm/kasan/report.c
-> > +++ b/mm/kasan/report.c
-> > @@ -150,18 +150,26 @@ static void describe_object_addr(struct kmem_cache *cache, void *object,
-> >  }
-> >
-> >  static void describe_object(struct kmem_cache *cache, void *object,
-> > -                               const void *addr)
-> > +                               const void *tagged_addr)
-> >  {
-> > +       void *untagged_addr = reset_tag(tagged_addr);
-> >         struct kasan_alloc_meta *alloc_info = get_alloc_info(cache, object);
-> >
-> >         if (cache->flags & SLAB_KASAN) {
-> > -               print_track(&alloc_info->alloc_track, "Allocated");
-> > -               pr_err("\n");
-> > -               print_track(&alloc_info->free_track, "Freed");
-> > -               pr_err("\n");
-> > +               if (IS_ENABLED(CONFIG_KASAN_SW_TAGS) &&
-> > +                       quarantine_find_object((void *)tagged_addr)) {
-> 
-> Can't this be an out-of-bound even if we find the object in quarantine?
-> For example, if we've freed an object, then reallocated and accessed
-> out-of-bounds within the object bounds?
-> Overall suggesting that this is a use-after-free rather than
-> out-of-bounds without redzones and quarantining the object itself is
-> quite imprecise. We can confuse a user even more...
-> 
-the qobject stores object range and address which has tag, even if
-the object reallocate and accessed out-of-bounds, then new object and
-old object in quarantine should be different tag value, so it should be
-no found in quarantine.
-
-
-> 
-> > +                       alloc_info = get_object_track();
-> > +                       print_track(&alloc_info->free_track, "Freed");
-> > +                       pr_err("\n");
-> > +               } else {
-> > +                       print_track(&alloc_info->alloc_track, "Allocated");
-> > +                       pr_err("\n");
-> > +                       print_track(&alloc_info->free_track, "Freed");
-> > +                       pr_err("\n");
-> > +               }
-> >         }
-> >
-> > -       describe_object_addr(cache, object, addr);
-> > +       describe_object_addr(cache, object, untagged_addr);
-> >  }
-> >
-> >  static inline bool kernel_or_module_addr(const void *addr)
-> > @@ -180,23 +188,25 @@ static inline bool init_task_stack_addr(const void *addr)
-> >                         sizeof(init_thread_union.stack));
-> >  }
-> >
-> > -static void print_address_description(void *addr)
-> > +static void print_address_description(void *tagged_addr)
-> >  {
-> > -       struct page *page = addr_to_page(addr);
-> > +       void *untagged_addr = reset_tag(tagged_addr);
-> > +       struct page *page = addr_to_page(untagged_addr);
-> >
-> >         dump_stack();
-> >         pr_err("\n");
-> >
-> >         if (page && PageSlab(page)) {
-> >                 struct kmem_cache *cache = page->slab_cache;
-> > -               void *object = nearest_obj(cache, page, addr);
-> > +               void *object = nearest_obj(cache, page, untagged_addr);
-> >
-> > -               describe_object(cache, object, addr);
-> > +               describe_object(cache, object, tagged_addr);
-> >         }
-> >
-> > -       if (kernel_or_module_addr(addr) && !init_task_stack_addr(addr)) {
-> > +       if (kernel_or_module_addr(untagged_addr) &&
-> > +                       !init_task_stack_addr(untagged_addr)) {
-> >                 pr_err("The buggy address belongs to the variable:\n");
-> > -               pr_err(" %pS\n", addr);
-> > +               pr_err(" %pS\n", untagged_addr);
-> >         }
-> >
-> >         if (page) {
-> > @@ -314,7 +324,7 @@ void kasan_report(unsigned long addr, size_t size,
-> >         pr_err("\n");
-> >
-> >         if (addr_has_shadow(untagged_addr)) {
-> > -               print_address_description(untagged_addr);
-> > +               print_address_description(tagged_addr);
-> >                 pr_err("\n");
-> >                 print_shadow_for_address(info.first_bad_addr);
-> >         } else {
-> > diff --git a/mm/kasan/tags.c b/mm/kasan/tags.c
-> > index 63fca3172659..fa5d1e29003d 100644
-> > --- a/mm/kasan/tags.c
-> > +++ b/mm/kasan/tags.c
-> > @@ -124,6 +124,70 @@ void check_memory_region(unsigned long addr, size_t size, bool write,
-> >         }
-> >  }
-> >
-> > +int qobject_add_size(void)
-> > +{
-> > +       return sizeof(struct qlist_object);
-> 
-> Shouldn't this also account for qlist_node?
-> 
-yes, we will count it.
-
-
-> > +}
-> > +
-> > +static struct kmem_cache *qobject_to_cache(struct qlist_object *qobject)
-> > +{
-> > +       return virt_to_head_page(qobject)->slab_cache;
-> > +}
-> > +
-> > +struct qlist_node *qobject_create(struct kasan_free_meta *info,
-> > +                                               struct kmem_cache *cache)
-> > +{
-> > +       struct qlist_node *free_obj_info;
-> > +       struct qlist_object *qobject_info;
-> > +       struct kasan_alloc_meta *object_track;
-> > +       void *object;
-> > +
-> > +       object = ((void *)info) - cache->kasan_info.free_meta_offset;
-> > +       qobject_info = kmalloc(sizeof(struct qlist_object), GFP_NOWAIT);
-> > +       if (!qobject_info)
-> > +               return NULL;
-> > +       qobject_info->addr = (unsigned long) object;
-> > +       qobject_info->size = cache->object_size;
-> > +       object_track = &qobject_info->free_track;
-> > +       set_track(&object_track->free_track, GFP_NOWAIT);
-> > +
-> > +       free_obj_info = kmalloc(sizeof(struct qlist_node), GFP_NOWAIT);
-> 
-> Why don't we allocate qlist_object and qlist_node in a single
-> allocation? Doing 2 allocations is both unnecessary slow and leads to
-> more complex code. We need to allocate them with a single allocations.
-> Also I think they should be allocated from a dedicated cache that opts
-> out of quarantine?
-> 
-Single allocation is good suggestion, if we only has one allocation.
-then we need to move all member of qlist_object to qlist_node?
-
-struct qlist_object {
-    unsigned long addr;
-    unsigned int size;
-    struct kasan_alloc_meta free_track;
-};
-struct qlist_node {
-    struct qlist_object *qobject;
-    struct qlist_node *next;
-};
-
-
-We call call ___cache_free() to free the qobject and qnode, it should be
-out of quarantine?
-
-
-Thanks,
-Walter
+T24gV2VkLCBNYXkgMjksIDIwMTkgYXQgMTE6MzUgQU0gV2FsdGVyIFd1IDx3YWx0ZXItemgud3VA
+bWVkaWF0ZWsuY29tPiB3cm90ZToKPgo+ID4gSGkgV2FsdGVyLAo+ID4KPiA+IFBsZWFzZSBkZXNj
+cmliZSB5b3VyIHVzZSBjYXNlLgo+ID4gRm9yIHRlc3RpbmcgY29udGV4dCB0aGUgZ2VuZXJpYyBL
+QVNBTiB3b3JrcyBiZXR0ZXIgYW5kIGl0IGRvZXMgaGF2ZQo+ID4gcXVhcmFudGluZSBhbHJlYWR5
+LiBGb3IgcHJvZC9jYW5hcnkgZW52aXJvbm1lbnQgdGhlIHF1YXJhbnRpbmUgbWF5IGJlCj4gPiB1
+bmFjY2VwdGFibGUgaW4gbW9zdCBjYXNlcy4KPiA+IEkgdGhpbmsgd2UgYWxzbyB3YW50IHRvIHVz
+ZSB0YWctYmFzZWQgS0FTQU4gYXMgYSBiYXNlIGZvciBBUk0gTVRFCj4gPiBzdXBwb3J0IGluIG5l
+YXIgZnV0dXJlIGFuZCBxdWFyYW50aW5lIHdpbGwgYmUgbW9zdCBsaWtlbHkgdW5hY2NlcHRhYmxl
+Cj4gPiBmb3IgbWFpbiBNVEUgdXNlIGNhc2VzLiBTbyBhdCB0aGUgdmVyeSBsZWFzdCBJIHRoaW5r
+IHRoaXMgc2hvdWxkIGJlCj4gPiBjb25maWd1cmFibGUuICtDYXRhbGluIGZvciB0aGlzLgo+ID4K
+PiBNeSBwYXRjaCBob3BlIHRoZSB0YWctYmFzZWQgS0FTQU4gYnVnIHJlcG9ydCBtYWtlIGl0IGVh
+c2llciBmb3IKPiBwcm9ncmFtbWVycyB0byBzZWUgbWVtb3J5IGNvcnJ1cHRpb24gcHJvYmxlbS4K
+PiBCZWNhdXNlIG5vdyB0YWctYmFzZWQgS0FTQU4gYnVnIHJlcG9ydCBhbHdheXMgc2hvd3Mg4oCc
+aW52YWxpZC1hY2Nlc3PigJ0KPiBlcnJvciwgbXkgcGF0Y2ggY2FuIGlkZW50aWZ5IGl0IHdoZXRo
+ZXIgaXQgaXMgdXNlLWFmdGVyLWZyZWUgb3IKPiBvdXQtb2YtYm91bmQuCj4KPiBXZSBjYW4gdHJ5
+IHRvIG1ha2Ugb3VyIHBhdGNoIGlzIGZlYXR1cmUgb3B0aW9uLiBUaGFua3MgeW91ciBzdWdnZXN0
+aW9uLgo+IFdvdWxkIHlvdSBleHBsYWluIHdoeSB0aGUgcXVhcmFudGluZSBpcyB1bmFjY2VwdGFi
+bGUgZm9yIG1haW4gTVRFPwo+IFRoYW5rcy4KCk1URSBpcyBzdXBwb3NlZCB0byBiZSB1c2VkIG9u
+IGFjdHVhbCBwcm9kdWN0aW9uIGRldmljZXMuCkNvbnNpZGVyIHRoYXQgYnkgc3VibWl0dGluZyB0
+aGlzIHBhdGNoIHlvdSBhcmUgYWN0dWFsbHkgcmVkdWNpbmcKYW1vdW50IG9mIGF2YWlsYWJsZSBt
+ZW1vcnkgb24geW91ciBuZXh0IHBob25lIDspCgoKPiA+IFlvdSBkb24ndCBjaGFuZ2UgdG90YWwg
+cXVhcmFudGluZSBzaXplIGFuZCBjaGFyZ2Ugb25seSBzaXplb2Yoc3RydWN0Cj4gPiBxbGlzdF9v
+YmplY3QpLiBJZiBJIGFtIHJlYWRpbmcgdGhpcyBjb3JyZWN0bHksIHRoaXMgbWVhbnMgdGhhdAo+
+ID4gcXVhcmFudGluZSB3aWxsIGhhdmUgdGhlIHNhbWUgbGFyZ2Ugb3ZlcmhlYWQgYXMgd2l0aCBn
+ZW5lcmljIEtBU0FOLiBXZQo+ID4gd2lsbCBqdXN0IGNhY2hlIG11Y2ggbW9yZSBvYmplY3RzIHRo
+ZXJlLiBUaGUgYm9vdCBiZW5jaG1hcmtzIG1heSBiZQo+ID4gdW5yZXByZXNlbnRhdGl2ZSBmb3Ig
+dGhpcy4gRG9uJ3Qgd2UgbmVlZCB0byByZWR1Y2UgcXVhcmFudGluZSBzaXplIG9yCj4gPiBzb21l
+dGhpbmc/Cj4gPgo+IFllcywgd2Ugd2lsbCB0cnkgdG8gY2hvb3NlIDIuIE15IG9yaWdpbmFsIGlk
+ZWEgaXMgYmVsb25nIHRvIGl0LiBTbyB3ZQo+IHdpbGwgcmVkdWNlIHF1YXJhbnRpbmUgc2l6ZS4K
+Pgo+IDEpLiBJZiBxdWFyYW50aW5lIHNpemUgaXMgdGhlIHNhbWUgd2l0aCBnZW5lcmljIEtBU0FO
+IGFuZCB0YWctYmFzZWQKPiBLQVNBTiwgdGhlbiB0aGUgbWlzcyByYXRlIG9mIHVzZS1hZnRlci1m
+cmVlIGNhc2UgaW4gZ2VuZXJpYyBLQVNBTiBpcwo+IGxhcmdlciB0aGFuIHRhZy1iYXNlZCBLQVNB
+Ti4KPiAyKS4gSWYgdGFnLWJhc2VkIEtBU0FOIHF1YXJhbnRpbmUgc2l6ZSBpcyBzbWFsbGVyIGdl
+bmVyaWMgS0FTQU4sIHRoZW4KPiB0aGUgbWlzcyByYXRlIG9mIHVzZS1hZnRlci1mcmVlIGNhc2Ug
+bWF5IGJlIHRoZSBzYW1lLCBidXQgdGFnLWJhc2VkCj4gS0FTQU4gY2FuIHNhdmUgc2xhYiBtZW1v
+cnkgdXNhZ2UuCj4KPgo+ID4KPiA+ID4gU2lnbmVkLW9mZi1ieTogV2FsdGVyIFd1IDx3YWx0ZXIt
+emgud3VAbWVkaWF0ZWsuY29tPgo+ID4gPiAtLS0KPiA+ID4gIGluY2x1ZGUvbGludXgva2FzYW4u
+aCAgfCAgMjAgKysrKystLS0KPiA+ID4gIG1tL2thc2FuL01ha2VmaWxlICAgICAgfCAgIDQgKy0K
+PiA+ID4gIG1tL2thc2FuL2NvbW1vbi5jICAgICAgfCAgMTUgKysrKystCj4gPiA+ICBtbS9rYXNh
+bi9nZW5lcmljLmMgICAgIHwgIDExIC0tLS0tCj4gPiA+ICBtbS9rYXNhbi9rYXNhbi5oICAgICAg
+IHwgIDQ1ICsrKysrKysrKysrKysrKystCj4gPiA+ICBtbS9rYXNhbi9xdWFyYW50aW5lLmMgIHwg
+MTA3ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrLS0tCj4gPiA+ICBtbS9r
+YXNhbi9yZXBvcnQuYyAgICAgIHwgIDM2ICsrKysrKysrKy0tLS0tCj4gPiA+ICBtbS9rYXNhbi90
+YWdzLmMgICAgICAgIHwgIDY0ICsrKysrKysrKysrKysrKysrKysrKysrKwo+ID4gPiAgbW0va2Fz
+YW4vdGFnc19yZXBvcnQuYyB8ICAgNSArLQo+ID4gPiAgbW0vc2x1Yi5jICAgICAgICAgICAgICB8
+ICAgMiAtCj4gPiA+ICAxMCBmaWxlcyBjaGFuZ2VkLCAyNjIgaW5zZXJ0aW9ucygrKSwgNDcgZGVs
+ZXRpb25zKC0pCj4gPiA+Cj4gPiA+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2xpbnV4L2thc2FuLmgg
+Yi9pbmNsdWRlL2xpbnV4L2thc2FuLmgKPiA+ID4gaW5kZXggYjQwZWExMDRkZDM2Li5iYmI1MmE4
+YmY0YTkgMTAwNjQ0Cj4gPiA+IC0tLSBhL2luY2x1ZGUvbGludXgva2FzYW4uaAo+ID4gPiArKysg
+Yi9pbmNsdWRlL2xpbnV4L2thc2FuLmgKPiA+ID4gQEAgLTgzLDYgKzgzLDkgQEAgc2l6ZV90IGth
+c2FuX21ldGFkYXRhX3NpemUoc3RydWN0IGttZW1fY2FjaGUgKmNhY2hlKTsKPiA+ID4gIGJvb2wg
+a2FzYW5fc2F2ZV9lbmFibGVfbXVsdGlfc2hvdCh2b2lkKTsKPiA+ID4gIHZvaWQga2FzYW5fcmVz
+dG9yZV9tdWx0aV9zaG90KGJvb2wgZW5hYmxlZCk7Cj4gPiA+Cj4gPiA+ICt2b2lkIGthc2FuX2Nh
+Y2hlX3NocmluayhzdHJ1Y3Qga21lbV9jYWNoZSAqY2FjaGUpOwo+ID4gPiArdm9pZCBrYXNhbl9j
+YWNoZV9zaHV0ZG93bihzdHJ1Y3Qga21lbV9jYWNoZSAqY2FjaGUpOwo+ID4gPiArCj4gPiA+ICAj
+ZWxzZSAvKiBDT05GSUdfS0FTQU4gKi8KPiA+ID4KPiA+ID4gIHN0YXRpYyBpbmxpbmUgdm9pZCBr
+YXNhbl91bnBvaXNvbl9zaGFkb3coY29uc3Qgdm9pZCAqYWRkcmVzcywgc2l6ZV90IHNpemUpIHt9
+Cj4gPiA+IEBAIC0xNTMsMjAgKzE1NiwxNCBAQCBzdGF0aWMgaW5saW5lIHZvaWQga2FzYW5fcmVt
+b3ZlX3plcm9fc2hhZG93KHZvaWQgKnN0YXJ0LAo+ID4gPiAgc3RhdGljIGlubGluZSB2b2lkIGth
+c2FuX3VucG9pc29uX3NsYWIoY29uc3Qgdm9pZCAqcHRyKSB7IH0KPiA+ID4gIHN0YXRpYyBpbmxp
+bmUgc2l6ZV90IGthc2FuX21ldGFkYXRhX3NpemUoc3RydWN0IGttZW1fY2FjaGUgKmNhY2hlKSB7
+IHJldHVybiAwOyB9Cj4gPiA+Cj4gPiA+ICtzdGF0aWMgaW5saW5lIHZvaWQga2FzYW5fY2FjaGVf
+c2hyaW5rKHN0cnVjdCBrbWVtX2NhY2hlICpjYWNoZSkge30KPiA+ID4gK3N0YXRpYyBpbmxpbmUg
+dm9pZCBrYXNhbl9jYWNoZV9zaHV0ZG93bihzdHJ1Y3Qga21lbV9jYWNoZSAqY2FjaGUpIHt9Cj4g
+PiA+ICAjZW5kaWYgLyogQ09ORklHX0tBU0FOICovCj4gPiA+Cj4gPiA+ICAjaWZkZWYgQ09ORklH
+X0tBU0FOX0dFTkVSSUMKPiA+ID4KPiA+ID4gICNkZWZpbmUgS0FTQU5fU0hBRE9XX0lOSVQgMAo+
+ID4gPgo+ID4gPiAtdm9pZCBrYXNhbl9jYWNoZV9zaHJpbmsoc3RydWN0IGttZW1fY2FjaGUgKmNh
+Y2hlKTsKPiA+ID4gLXZvaWQga2FzYW5fY2FjaGVfc2h1dGRvd24oc3RydWN0IGttZW1fY2FjaGUg
+KmNhY2hlKTsKPiA+ID4gLQo+ID4gPiAtI2Vsc2UgLyogQ09ORklHX0tBU0FOX0dFTkVSSUMgKi8K
+PiA+ID4gLQo+ID4gPiAtc3RhdGljIGlubGluZSB2b2lkIGthc2FuX2NhY2hlX3NocmluayhzdHJ1
+Y3Qga21lbV9jYWNoZSAqY2FjaGUpIHt9Cj4gPiA+IC1zdGF0aWMgaW5saW5lIHZvaWQga2FzYW5f
+Y2FjaGVfc2h1dGRvd24oc3RydWN0IGttZW1fY2FjaGUgKmNhY2hlKSB7fQo+ID4KPiA+IFdoeSBk
+byB3ZSBuZWVkIHRvIG1vdmUgdGhlc2UgZnVuY3Rpb25zPwo+ID4gRm9yIGdlbmVyaWMgS0FTQU4g
+dGhhdCdzIHJlcXVpcmVkIGJlY2F1c2Ugd2Ugc3RvcmUgdGhlIG9iamVjdHMKPiA+IHRoZW1zZWx2
+ZXMgaW4gdGhlIHF1YXJhbnRpbmUsIGJ1dCBpdCdzIG5vdCB0aGUgY2FzZSBmb3IgdGFnLWJhc2Vk
+IG1vZGUKPiA+IHdpdGggeW91ciBwYXRjaC4uLgo+ID4KPiBUaGUgcXVhcmFudGluZSBpbiB0YWct
+YmFzZWQgS0FTQU4gaW5jbHVkZXMgbmV3IG9iamVjdHMgd2hpY2ggd2UgY3JlYXRlLgo+IFRob3Nl
+IG9iamVjdHMgYXJlIHRoZSBmcmVlZCBpbmZvcm1hdGlvbi4gVGhleSBjYW4gYmUgc2hydW5rIGJ5
+IGNhbGxpbmcKPiB0aGVtLiBTbyB3ZSBtb3ZlIHRoZXNlIGZ1bmN0aW9uIGludG8gQ09ORklHX0tB
+U0FOLgoKT2ssIGthc2FuX2NhY2hlX3NocmluayBpcyB0byByZWxlYXNlIG1lbW9yeSBkdXJpbmcg
+bWVtb3J5IHByZXNzdXJlLgpCdXQgd2h5IGRvIHdlIG5lZWQga2FzYW5fY2FjaGVfc2h1dGRvd24/
+IEl0IHNlZW1zIHRoYXQgd2UgY291bGQgbGVhdmUKcW9iamVjdHMgaW4gcXVhcmFudGluZSB3aGVu
+IHRoZSBjb3JyZXNwb25kaW5nIGNhY2hlIGlzIGRlc3Ryb3llZC4gQW5kCmluIGZhY3QgaXQncyB1
+c2VmdWwgYmVjYXVzZSB3ZSBzdGlsbCBjYW4gZ2V0IHVzZS1hZnRlci1mcmVlcyBvbiB0aGVzZQpv
+YmplY3RzLgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+bGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtYXJtLWtlcm5lbAo=
