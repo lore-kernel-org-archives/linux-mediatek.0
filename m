@@ -1,64 +1,179 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH 1/3] drm: mediatek: fix unbind functions
-Date: Wed, 29 May 2019 09:35:11 +0800
-Message-ID: <1559093711.11380.6.camel@mtksdaap41>
-References: <20190527045054.113259-1-hsinyi@chromium.org>
- <20190527045054.113259-2-hsinyi@chromium.org>
+From: Biao Huang <biao.huang@mediatek.com>
+Subject: [v4, PATCH] net: stmmac: add support for hash table size 128/256 in dwmac4
+Date: Wed, 29 May 2019 09:38:44 +0800
+Message-ID: <1559093924-7791-2-git-send-email-biao.huang@mediatek.com>
+References: <1559093924-7791-1-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190527045054.113259-2-hsinyi@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1559093924-7791-1-git-send-email-biao.huang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jose Abreu <joabreu@synopsys.com>
+Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, biao.huang@mediatek.com, jianguo.zhang@mediatek.com, boon.leong.ong@intel.com, andrew@lunn.ch
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIEhzaW4teWk6CgpPbiBNb24sIDIwMTktMDUtMjcgYXQgMTI6NTAgKzA4MDAsIEhzaW4tWWkg
-V2FuZyB3cm90ZToKPiBtb3ZlIG1pcGlfZHNpX2hvc3RfdW5yZWdpc3RlcigpIHRvIC5yZW1vdmUg
-c2luY2UgbWlwaV9kc2lfaG9zdF9yZWdpc3RlcigpCj4gaXMgY2FsbGVkIGluIC5wcm9iZS4KCklu
-IHRoZSBsYXRlc3Qga2VybmVsIFsxXSwgbWlwaV9kc2lfaG9zdF9yZWdpc3RlcigpIGlzIGNhbGxl
-ZCBpbgptdGtfZHNpX2JpbmQoKSwgSSB0aGluayB3ZSBkb24ndCBuZWVkIHRoaXMgcGFydC4KClsx
-XQpodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC90b3J2YWxk
-cy9saW51eC5naXQvdHJlZS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jP2g9djUu
-Mi1yYzIKCj4gCj4gZGV0YXRjaCBwYW5lbCBpbiBtdGtfZHNpX2Rlc3Ryb3lfY29ubl9lbmMoKSwg
-c2luY2UgLmJpbmQgd2lsbCB0cnkgdG8KPiBhdHRhY2ggaXQgYWdhaW4uCj4gCj4gRml4ZXM6IDJl
-NTRjMTRlMzEwZiAoImRybS9tZWRpYXRlazogQWRkIERTSSBzdWIgZHJpdmVyIikKPiBTaWduZWQt
-b2ZmLWJ5OiBIc2luLVlpIFdhbmcgPGhzaW55aUBjaHJvbWl1bS5vcmc+Cj4gLS0tCj4gIGRyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgfCA0ICsrKy0KPiAgMSBmaWxlIGNoYW5nZWQs
-IDMgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19kc2kuYwo+IGluZGV4IGIwMGViMmQyZTA4Ni4uYzliNmQzYTY4YzhiIDEwMDY0NAo+IC0tLSBh
-L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gQEAgLTg0NCw2ICs4NDQsOCBAQCBzdGF0aWMgdm9pZCBt
-dGtfZHNpX2Rlc3Ryb3lfY29ubl9lbmMoc3RydWN0IG10a19kc2kgKmRzaSkKPiAgCS8qIFNraXAg
-Y29ubmVjdG9yIGNsZWFudXAgaWYgY3JlYXRpb24gd2FzIGRlbGVnYXRlZCB0byB0aGUgYnJpZGdl
-ICovCj4gIAlpZiAoZHNpLT5jb25uLmRldikKPiAgCQlkcm1fY29ubmVjdG9yX2NsZWFudXAoJmRz
-aS0+Y29ubik7Cj4gKwlpZiAoZHNpLT5wYW5lbCkKPiArCQlkcm1fcGFuZWxfZGV0YWNoKGRzaS0+
-cGFuZWwpOwoKSSB0aGluayBtdGtfZHNpX2Rlc3Ryb3lfY29ubl9lbmMoKSBoYXMgbXVjaCB0aGlu
-ZyB0byBkbyBhbmQgSSB3b3VsZCBsaWtlCnlvdSB0byBkbyBtb3JlLiBZb3UgY291bGQgcmVmZXIg
-dG8gWzJdIGZvciBjb21wbGV0ZSBpbXBsZW1lbnRhdGlvbi4KClsyXQpodHRwczovL2dpdC5rZXJu
-ZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC90b3J2YWxkcy9saW51eC5naXQvdHJlZS9k
-cml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4eW5vc19kcm1fZHNpLmM/aD12NS4yLXJjMiNuMTU3NQoK
-UmVnYXJkcywKQ0sKCj4gIH0KPiAgCj4gIHN0YXRpYyB2b2lkIG10a19kc2lfZGRwX3N0YXJ0KHN0
-cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXApCj4gQEAgLTEwNzMsNyArMTA3NSw2IEBAIHN0YXRpYyB2
-b2lkIG10a19kc2lfdW5iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFz
-dGVyLAo+ICAJc3RydWN0IG10a19kc2kgKmRzaSA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOwo+ICAK
-PiAgCW10a19kc2lfZGVzdHJveV9jb25uX2VuYyhkc2kpOwo+IC0JbWlwaV9kc2lfaG9zdF91bnJl
-Z2lzdGVyKCZkc2ktPmhvc3QpOwo+ICAJbXRrX2RkcF9jb21wX3VucmVnaXN0ZXIoZHJtLCAmZHNp
-LT5kZHBfY29tcCk7Cj4gIH0KPiAgCj4gQEAgLTExNzksNiArMTE4MCw3IEBAIHN0YXRpYyBpbnQg
-bXRrX2RzaV9yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgCj4gIAltdGtf
-b3V0cHV0X2RzaV9kaXNhYmxlKGRzaSk7Cj4gIAljb21wb25lbnRfZGVsKCZwZGV2LT5kZXYsICZt
-dGtfZHNpX2NvbXBvbmVudF9vcHMpOwo+ICsJbWlwaV9kc2lfaG9zdF91bnJlZ2lzdGVyKCZkc2kt
-Pmhvc3QpOwo+ICAKPiAgCXJldHVybiAwOwo+ICB9CgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpLWRldmVs
+1. get hash table size in hw feature reigster, and add support
+for taller hash table(128/256) in dwmac4.
+2. only clear GMAC_PACKET_FILTER bits used in this function,
+to avoid side effect to functions of other bits.
+
+Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+---
+ drivers/net/ethernet/stmicro/stmmac/common.h      |    7 +--
+ drivers/net/ethernet/stmicro/stmmac/dwmac4.h      |    4 +-
+ drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c |   49 ++++++++++++---------
+ drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c  |    1 +
+ drivers/net/ethernet/stmicro/stmmac/stmmac_main.c |    4 ++
+ 5 files changed, 40 insertions(+), 25 deletions(-)
+
+diff --git a/drivers/net/ethernet/stmicro/stmmac/common.h b/drivers/net/ethernet/stmicro/stmmac/common.h
+index 1961fe9..26bbcd8 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/common.h
++++ b/drivers/net/ethernet/stmicro/stmmac/common.h
+@@ -335,6 +335,7 @@ struct dma_features {
+ 	/* 802.3az - Energy-Efficient Ethernet (EEE) */
+ 	unsigned int eee;
+ 	unsigned int av;
++	unsigned int hash_tb_sz;
+ 	unsigned int tsoen;
+ 	/* TX and RX csum */
+ 	unsigned int tx_coe;
+@@ -428,9 +429,9 @@ struct mac_device_info {
+ 	struct mii_regs mii;	/* MII register Addresses */
+ 	struct mac_link link;
+ 	void __iomem *pcsr;     /* vpointer to device CSRs */
+-	int multicast_filter_bins;
+-	int unicast_filter_entries;
+-	int mcast_bits_log2;
++	unsigned int multicast_filter_bins;
++	unsigned int unicast_filter_entries;
++	unsigned int mcast_bits_log2;
+ 	unsigned int rx_csum;
+ 	unsigned int pcs;
+ 	unsigned int pmt;
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4.h b/drivers/net/ethernet/stmicro/stmmac/dwmac4.h
+index 01c1089..a37e09b 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac4.h
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4.h
+@@ -18,8 +18,7 @@
+ /*  MAC registers */
+ #define GMAC_CONFIG			0x00000000
+ #define GMAC_PACKET_FILTER		0x00000008
+-#define GMAC_HASH_TAB_0_31		0x00000010
+-#define GMAC_HASH_TAB_32_63		0x00000014
++#define GMAC_HASH_TAB(x)		(0x10 + x * 4)
+ #define GMAC_RX_FLOW_CTRL		0x00000090
+ #define GMAC_QX_TX_FLOW_CTRL(x)		(0x70 + x * 4)
+ #define GMAC_TXQ_PRTY_MAP0		0x98
+@@ -184,6 +183,7 @@ enum power_event {
+ #define GMAC_HW_FEAT_MIISEL		BIT(0)
+ 
+ /* MAC HW features1 bitmap */
++#define GMAC_HW_HASH_TB_SZ		GENMASK(25, 24)
+ #define GMAC_HW_FEAT_AVSEL		BIT(20)
+ #define GMAC_HW_TSOEN			BIT(18)
+ #define GMAC_HW_TXFIFOSIZE		GENMASK(10, 6)
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
+index 5e98da4..2544cff 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
+@@ -403,41 +403,50 @@ static void dwmac4_set_filter(struct mac_device_info *hw,
+ 			      struct net_device *dev)
+ {
+ 	void __iomem *ioaddr = (void __iomem *)dev->base_addr;
+-	unsigned int value = 0;
++	int numhashregs = (hw->multicast_filter_bins >> 5);
++	int mcbitslog2 = hw->mcast_bits_log2;
++	unsigned int value;
++	int i;
+ 
++	value = readl(ioaddr + GMAC_PACKET_FILTER);
++	value &= ~GMAC_PACKET_FILTER_HMC;
++	value &= ~GMAC_PACKET_FILTER_HPF;
++	value &= ~GMAC_PACKET_FILTER_PCF;
++	value &= ~GMAC_PACKET_FILTER_PM;
++	value &= ~GMAC_PACKET_FILTER_PR;
+ 	if (dev->flags & IFF_PROMISC) {
+ 		value = GMAC_PACKET_FILTER_PR | GMAC_PACKET_FILTER_PCF;
+ 	} else if ((dev->flags & IFF_ALLMULTI) ||
+-			(netdev_mc_count(dev) > HASH_TABLE_SIZE)) {
++		   (netdev_mc_count(dev) > hw->multicast_filter_bins)) {
+ 		/* Pass all multi */
+-		value = GMAC_PACKET_FILTER_PM;
+-		/* Set the 64 bits of the HASH tab. To be updated if taller
+-		 * hash table is used
+-		 */
+-		writel(0xffffffff, ioaddr + GMAC_HASH_TAB_0_31);
+-		writel(0xffffffff, ioaddr + GMAC_HASH_TAB_32_63);
++		value |= GMAC_PACKET_FILTER_PM;
++		/* Set all the bits of the HASH tab */
++		for (i = 0; i < numhashregs; i++)
++			writel(0xffffffff, ioaddr + GMAC_HASH_TAB(i));
+ 	} else if (!netdev_mc_empty(dev)) {
+-		u32 mc_filter[2];
++		u32 mc_filter[8];
+ 		struct netdev_hw_addr *ha;
+ 
+ 		/* Hash filter for multicast */
+-		value = GMAC_PACKET_FILTER_HMC;
++		value |= GMAC_PACKET_FILTER_HMC;
+ 
+ 		memset(mc_filter, 0, sizeof(mc_filter));
+ 		netdev_for_each_mc_addr(ha, dev) {
+-			/* The upper 6 bits of the calculated CRC are used to
+-			 * index the content of the Hash Table Reg 0 and 1.
++			/* The upper n bits of the calculated CRC are used to
++			 * index the contents of the hash table. The number of
++			 * bits used depends on the hardware configuration
++			 * selected at core configuration time.
+ 			 */
+-			int bit_nr =
+-				(bitrev32(~crc32_le(~0, ha->addr, 6)) >> 26);
+-			/* The most significant bit determines the register
+-			 * to use while the other 5 bits determines the bit
+-			 * within the selected register
++			int bit_nr = bitrev32(~crc32_le(~0, ha->addr,
++					ETH_ALEN)) >> (32 - mcbitslog2);
++			/* The most significant bit determines the register to
++			 * use (H/L) while the other 5 bits determine the bit
++			 * within the register.
+ 			 */
+-			mc_filter[bit_nr >> 5] |= (1 << (bit_nr & 0x1F));
++			mc_filter[bit_nr >> 5] |= (1 << (bit_nr & 0x1f));
+ 		}
+-		writel(mc_filter[0], ioaddr + GMAC_HASH_TAB_0_31);
+-		writel(mc_filter[1], ioaddr + GMAC_HASH_TAB_32_63);
++		for (i = 0; i < numhashregs; i++)
++			writel(mc_filter[i], ioaddr + GMAC_HASH_TAB(i));
+ 	}
+ 
+ 	value |= GMAC_PACKET_FILTER_HPF;
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c b/drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c
+index edb6053..59afb53 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c
+@@ -354,6 +354,7 @@ static void dwmac4_get_hw_feature(void __iomem *ioaddr,
+ 
+ 	/* MAC HW feature1 */
+ 	hw_cap = readl(ioaddr + GMAC_HW_FEATURE1);
++	dma_cap->hash_tb_sz = (hw_cap & GMAC_HW_HASH_TB_SZ) >> 24;
+ 	dma_cap->av = (hw_cap & GMAC_HW_FEAT_AVSEL) >> 20;
+ 	dma_cap->tsoen = (hw_cap & GMAC_HW_TSOEN) >> 18;
+ 	/* RX and TX FIFO sizes are encoded as log2(n / 128). Undo that by
+diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+index 8fcbf22..ed0d10e 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
++++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+@@ -4166,6 +4166,10 @@ static int stmmac_hw_init(struct stmmac_priv *priv)
+ 		priv->plat->enh_desc = priv->dma_cap.enh_desc;
+ 		priv->plat->pmt = priv->dma_cap.pmt_remote_wake_up;
+ 		priv->hw->pmt = priv->plat->pmt;
++		if (priv->dma_cap.hash_tb_sz) {
++			priv->hw->multicast_filter_bins = BIT(priv->dma_cap.hash_tb_sz) * 32;
++			priv->hw->mcast_bits_log2 = ilog2(priv->hw->multicast_filter_bins);
++		}
+ 
+ 		/* TXCOE doesn't work in thresh DMA mode */
+ 		if (priv->plat->force_thresh_dma_mode)
+-- 
+1.7.9.5
