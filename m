@@ -1,115 +1,57 @@
-From: James Liao <jamesjj.liao@mediatek.com>
-Subject: [PATCH] arm64: dts: mt8183: Enable CPU idle-states
-Date: Wed, 29 May 2019 16:25:03 +0800
-Message-ID: <1559118303-31875-1-git-send-email-jamesjj.liao@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH 1/3] drm: mediatek: fix unbind functions
+Date: Wed, 29 May 2019 16:28:16 +0800
+Message-ID: <1559118496.4226.11.camel@mtksdaap41>
+References: <20190527045054.113259-1-hsinyi@chromium.org>
+         <20190527045054.113259-2-hsinyi@chromium.org>
+         <1559093711.11380.6.camel@mtksdaap41>
+         <CAJMQK-jDhDNViUA3dpixG=_Pe7x0qH4utBWy3k+D_+oKwEOPig@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAJMQK-jDhDNViUA3dpixG=_Pe7x0qH4utBWy3k+D_+oKwEOPig@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, James Liao <jamesjj.liao@mediatek.com>
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, lkml <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Enable mcdi-cpu and mcdi-cluster on MT8183 CPUs.
+Hi, Hsin-Yi:
 
-Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
----
-This patch bases on v5.1-rc1 and [1], adds idle-states for MT8183 CPUs.
+On Wed, 2019-05-29 at 15:06 +0800, Hsin-Yi Wang wrote:
+> On Wed, May 29, 2019 at 9:35 AM CK Hu <ck.hu@mediatek.com> wrote:
+> 
+> >
+> > I think mtk_dsi_destroy_conn_enc() has much thing to do and I would like
+> > you to do more. You could refer to [2] for complete implementation.
+> >
+> > [2]
+> > https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/gpu/drm/exynos/exynos_drm_dsi.c?h=v5.2-rc2#n1575
+> >
+> Hi CK,
+> 
+> Since drm_encoder_cleanup() would already call drm_bridge_detach() to
+> detach bridge, I think we only need to handle panel case here.
+> We don't need to call mtk_dsi_encoder_disable() since
+> mtk_output_dsi_disable() is called in mtk_dsi_remove() and
+> dsi->enabled will be set to false. Calling second time will just
+> returns immediately.
+> So, besides setting
+> 
+> dsi->panel = NULL;
+> dsi->conn.status = connector_status_disconnected;
 
-[1] https://patchwork.kernel.org/patch/10962375/
+Sorry, I think your original patch is good enough, and you need not to
+do the besides setting.
 
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 30 ++++++++++++++++++++++++++++++
- 1 file changed, 30 insertions(+)
+Regards,
+CK
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 08274bf..ef4b054 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -56,6 +56,7 @@
- 			compatible = "arm,cortex-a53";
- 			reg = <0x000>;
- 			enable-method = "psci";
-+			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
- 		};
- 
- 		cpu1: cpu@1 {
-@@ -63,6 +64,7 @@
- 			compatible = "arm,cortex-a53";
- 			reg = <0x001>;
- 			enable-method = "psci";
-+			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
- 		};
- 
- 		cpu2: cpu@2 {
-@@ -70,6 +72,7 @@
- 			compatible = "arm,cortex-a53";
- 			reg = <0x002>;
- 			enable-method = "psci";
-+			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
- 		};
- 
- 		cpu3: cpu@3 {
-@@ -77,6 +80,7 @@
- 			compatible = "arm,cortex-a53";
- 			reg = <0x003>;
- 			enable-method = "psci";
-+			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
- 		};
- 
- 		cpu4: cpu@100 {
-@@ -84,6 +88,7 @@
- 			compatible = "arm,cortex-a73";
- 			reg = <0x100>;
- 			enable-method = "psci";
-+			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
- 		};
- 
- 		cpu5: cpu@101 {
-@@ -91,6 +96,7 @@
- 			compatible = "arm,cortex-a73";
- 			reg = <0x101>;
- 			enable-method = "psci";
-+			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
- 		};
- 
- 		cpu6: cpu@102 {
-@@ -98,6 +104,7 @@
- 			compatible = "arm,cortex-a73";
- 			reg = <0x102>;
- 			enable-method = "psci";
-+			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
- 		};
- 
- 		cpu7: cpu@103 {
-@@ -105,6 +112,29 @@
- 			compatible = "arm,cortex-a73";
- 			reg = <0x103>;
- 			enable-method = "psci";
-+			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
-+		};
-+
-+		idle-states {
-+			entry-method = "arm,psci";
-+
-+			MCDI_CPU: mcdi-cpu {
-+				compatible = "arm,idle-state";
-+				local-timer-stop;
-+				arm,psci-suspend-param = <0x00010001>;
-+				entry-latency-us = <200>;
-+				exit-latency-us = <200>;
-+				min-residency-us = <800>;
-+			};
-+
-+			MCDI_CLUSTER: mcdi-cluster {
-+				compatible = "arm,idle-state";
-+				local-timer-stop;
-+				arm,psci-suspend-param = <0x01010001>;
-+				entry-latency-us = <250>;
-+				exit-latency-us = <400>;
-+				min-residency-us = <1300>;
-+			};
- 		};
- 	};
- 
--- 
-1.9.1
+> 
+> are there other things we need to do here?
+> 
+> Original code doesn't have drm_kms_helper_hotplug_event(), and I'm not
+> sure if mtk dsi would need this.
+> Also, mtk_dsi_stop() would also stop irq.
+> 
+> Thanks
