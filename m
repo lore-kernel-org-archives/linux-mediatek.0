@@ -1,44 +1,53 @@
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Subject: Re: [PATCH 1/3] drm: mediatek: fix unbind functions
-Date: Wed, 29 May 2019 15:06:27 +0800
-Message-ID: <CAJMQK-jDhDNViUA3dpixG=_Pe7x0qH4utBWy3k+D_+oKwEOPig@mail.gmail.com>
-References: <20190527045054.113259-1-hsinyi@chromium.org> <20190527045054.113259-2-hsinyi@chromium.org>
- <1559093711.11380.6.camel@mtksdaap41>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH 2/3] drm: mediatek: remove clk_unprepare() in
+ mtk_drm_crtc_destroy()
+Date: Wed, 29 May 2019 15:12:35 +0800
+Message-ID: <1559113955.4226.1.camel@mtksdaap41>
+References: <20190527045054.113259-1-hsinyi@chromium.org>
+         <20190527045054.113259-3-hsinyi@chromium.org>
+         <1559109490.15592.6.camel@mtksdaap41>
+         <CAJMQK-gQ_j4ma_EjGbFJOz6WGXy3UZA0F9JZYnFHPZ0F08rXog@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1559093711.11380.6.camel@mtksdaap41>
+In-Reply-To: <CAJMQK-gQ_j4ma_EjGbFJOz6WGXy3UZA0F9JZYnFHPZ0F08rXog@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>
+To: Hsin-Yi Wang <hsinyi@chromium.org>
 Cc: "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, lkml <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, May 29, 2019 at 9:35 AM CK Hu <ck.hu@mediatek.com> wrote:
+Hi, Hsin-Yi:
 
->
-> I think mtk_dsi_destroy_conn_enc() has much thing to do and I would like
-> you to do more. You could refer to [2] for complete implementation.
->
-> [2]
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/gpu/drm/exynos/exynos_drm_dsi.c?h=v5.2-rc2#n1575
->
-Hi CK,
+On Wed, 2019-05-29 at 14:08 +0800, Hsin-Yi Wang wrote:
+> On Wed, May 29, 2019 at 1:58 PM CK Hu <ck.hu@mediatek.com> wrote:
+> >
+> > Hi, Hsin-Yi:
+> >
+> > On Mon, 2019-05-27 at 12:50 +0800, Hsin-Yi Wang wrote:
+> > > There is no clk_prepare() called in mtk_drm_crtc_reset(), when unbinding
+> > > drm device, mtk_drm_crtc_destroy() will be triggered, and the clocks will
+> > > be disabled and unprepared in mtk_crtc_ddp_clk_disable. If clk_unprepare()
+> > > is called here, we'll get warnings[1], so remove clk_unprepare() here.
+> >
+> > In original code, clk_prepare() is called in mtk_drm_crtc_create() and
+> > clk_unprepare() is called in mtk_drm_crtc_destroy(). This looks correct.
+> 
+> clk_prepare() is removed in https://patchwork.kernel.org/patch/10872777/.
+> 
 
-Since drm_encoder_cleanup() would already call drm_bridge_detach() to
-detach bridge, I think we only need to handle panel case here.
-We don't need to call mtk_dsi_encoder_disable() since
-mtk_output_dsi_disable() is called in mtk_dsi_remove() and
-dsi->enabled will be set to false. Calling second time will just
-returns immediately.
-So, besides setting
+I think this patch is a fix of that patch, and I've already applied that
+patch, so I merge this patch with that patch in my tree [1], thanks.
 
-dsi->panel = NULL;
-dsi->conn.status = connector_status_disconnected;
+[1]
+https://github.com/ckhu-mediatek/linux.git-tags/commit/937f861def1a1d49abb92e041efaa5c259281fbf
 
-are there other things we need to do here?
+Regards,
+CK
 
-Original code doesn't have drm_kms_helper_hotplug_event(), and I'm not
-sure if mtk dsi would need this.
-Also, mtk_dsi_stop() would also stop irq.
-
-Thanks
+> > I don't know why we should do any thing about clock in
+> > mtk_drm_crtc_reset(). To debug this, the first step is to print message
+> > when mediatek drm call clk_prepare() and clk_unprepare(). If these two
+> > interface is called in pair, I think we should not modify mediatek drm
+> > driver, the bug maybe in clock driver.
+> >
