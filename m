@@ -1,195 +1,686 @@
-From: Biao Huang <biao.huang@mediatek.com>
-Subject: [v5, PATCH] net: stmmac: add support for hash table size 128/256 in dwmac4
-Date: Wed, 29 May 2019 17:31:08 +0800
-Message-ID: <1559122268-22545-2-git-send-email-biao.huang@mediatek.com>
-References: <1559122268-22545-1-git-send-email-biao.huang@mediatek.com>
+From: Walter Wu <walter-zh.wu@mediatek.com>
+Subject: Re: [PATCH] kasan: add memory corruption identification for
+ software tag-based mode
+Date: Wed, 29 May 2019 17:35:29 +0800
+Message-ID: <1559122529.17186.24.camel@mtksdccf07>
+References: <1559027797-30303-1-git-send-email-walter-zh.wu@mediatek.com>
+         <CACT4Y+aCnODuffR7PafyYispp_U+ZdY1Dr0XQYvmghkogLJzSw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1559122268-22545-1-git-send-email-biao.huang@mediatek.com>
-Sender: netdev-owner@vger.kernel.org
-To: Jose Abreu <joabreu@synopsys.com>
-Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, biao.huang@mediatek.com, jianguo.zhang@mediatek.com, boon.leong.ong@intel.com, andrew@lunn.ch
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CACT4Y+aCnODuffR7PafyYispp_U+ZdY1Dr0XQYvmghkogLJzSw@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Dmitry Vyukov <dvyukov@google.com>
+Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Matthias Brugger <matthias.bgg@gmail.com>, Miles Chen <miles.chen@mediatek.com>, kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>, Linux-MM <linux-mm@kvack.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Catalin Marinas <catalin.marinas@arm.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-1. get hash table size in hw feature reigster, and add support
-for taller hash table(128/256) in dwmac4.
-2. only clear GMAC_PACKET_FILTER bits used in this function,
-to avoid side effect to functions of other bits.
+> Hi Walter,
+> 
+> Please describe your use case.
+> For testing context the generic KASAN works better and it does have
+> quarantine already. For prod/canary environment the quarantine may be
+> unacceptable in most cases.
+> I think we also want to use tag-based KASAN as a base for ARM MTE
+> support in near future and quarantine will be most likely unacceptable
+> for main MTE use cases. So at the very least I think this should be
+> configurable. +Catalin for this.
+> 
+My patch hope the tag-based KASAN bug report make it easier for
+programmers to see memory corruption problem. 
+Because now tag-based KASAN bug report always shows “invalid-access”
+error, my patch can identify it whether it is use-after-free or
+out-of-bound.
 
-stmmac selftests output log:
-	ethtool -t eth0
-	The test result is FAIL
-	The test extra info:
-	 1. MAC Loopback                 0
-	 2. PHY Loopback                 -95
-	 3. MMC Counters                 0
-	 4. EEE                          -95
-	 5. Hash Filter MC               0
-	 6. Perfect Filter UC            0
-	 7. MC Filter                    0
-	 8. UC Filter                    0
-	 9. Flow Control                 1
+We can try to make our patch is feature option. Thanks your suggestion.
+Would you explain why the quarantine is unacceptable for main MTE?
+Thanks.
 
-Signed-off-by: Biao Huang <biao.huang@mediatek.com>
----
- drivers/net/ethernet/stmicro/stmmac/common.h      |    7 +--
- drivers/net/ethernet/stmicro/stmmac/dwmac4.h      |    4 +-
- drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c |   49 ++++++++++++---------
- drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c  |    1 +
- drivers/net/ethernet/stmicro/stmmac/stmmac_main.c |    6 +++
- 5 files changed, 42 insertions(+), 25 deletions(-)
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/common.h b/drivers/net/ethernet/stmicro/stmmac/common.h
-index 1961fe9..26bbcd8 100644
---- a/drivers/net/ethernet/stmicro/stmmac/common.h
-+++ b/drivers/net/ethernet/stmicro/stmmac/common.h
-@@ -335,6 +335,7 @@ struct dma_features {
- 	/* 802.3az - Energy-Efficient Ethernet (EEE) */
- 	unsigned int eee;
- 	unsigned int av;
-+	unsigned int hash_tb_sz;
- 	unsigned int tsoen;
- 	/* TX and RX csum */
- 	unsigned int tx_coe;
-@@ -428,9 +429,9 @@ struct mac_device_info {
- 	struct mii_regs mii;	/* MII register Addresses */
- 	struct mac_link link;
- 	void __iomem *pcsr;     /* vpointer to device CSRs */
--	int multicast_filter_bins;
--	int unicast_filter_entries;
--	int mcast_bits_log2;
-+	unsigned int multicast_filter_bins;
-+	unsigned int unicast_filter_entries;
-+	unsigned int mcast_bits_log2;
- 	unsigned int rx_csum;
- 	unsigned int pcs;
- 	unsigned int pmt;
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4.h b/drivers/net/ethernet/stmicro/stmmac/dwmac4.h
-index 01c1089..b68785f7 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac4.h
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4.h
-@@ -18,8 +18,7 @@
- /*  MAC registers */
- #define GMAC_CONFIG			0x00000000
- #define GMAC_PACKET_FILTER		0x00000008
--#define GMAC_HASH_TAB_0_31		0x00000010
--#define GMAC_HASH_TAB_32_63		0x00000014
-+#define GMAC_HASH_TAB(x)		(0x10 + (x) * 4)
- #define GMAC_RX_FLOW_CTRL		0x00000090
- #define GMAC_QX_TX_FLOW_CTRL(x)		(0x70 + x * 4)
- #define GMAC_TXQ_PRTY_MAP0		0x98
-@@ -184,6 +183,7 @@ enum power_event {
- #define GMAC_HW_FEAT_MIISEL		BIT(0)
- 
- /* MAC HW features1 bitmap */
-+#define GMAC_HW_HASH_TB_SZ		GENMASK(25, 24)
- #define GMAC_HW_FEAT_AVSEL		BIT(20)
- #define GMAC_HW_TSOEN			BIT(18)
- #define GMAC_HW_TXFIFOSIZE		GENMASK(10, 6)
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
-index 5e98da4..4183607 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
-@@ -403,41 +403,50 @@ static void dwmac4_set_filter(struct mac_device_info *hw,
- 			      struct net_device *dev)
- {
- 	void __iomem *ioaddr = (void __iomem *)dev->base_addr;
--	unsigned int value = 0;
-+	int numhashregs = (hw->multicast_filter_bins >> 5);
-+	int mcbitslog2 = hw->mcast_bits_log2;
-+	unsigned int value;
-+	int i;
- 
-+	value = readl(ioaddr + GMAC_PACKET_FILTER);
-+	value &= ~GMAC_PACKET_FILTER_HMC;
-+	value &= ~GMAC_PACKET_FILTER_HPF;
-+	value &= ~GMAC_PACKET_FILTER_PCF;
-+	value &= ~GMAC_PACKET_FILTER_PM;
-+	value &= ~GMAC_PACKET_FILTER_PR;
- 	if (dev->flags & IFF_PROMISC) {
- 		value = GMAC_PACKET_FILTER_PR | GMAC_PACKET_FILTER_PCF;
- 	} else if ((dev->flags & IFF_ALLMULTI) ||
--			(netdev_mc_count(dev) > HASH_TABLE_SIZE)) {
-+		   (netdev_mc_count(dev) > hw->multicast_filter_bins)) {
- 		/* Pass all multi */
--		value = GMAC_PACKET_FILTER_PM;
--		/* Set the 64 bits of the HASH tab. To be updated if taller
--		 * hash table is used
--		 */
--		writel(0xffffffff, ioaddr + GMAC_HASH_TAB_0_31);
--		writel(0xffffffff, ioaddr + GMAC_HASH_TAB_32_63);
-+		value |= GMAC_PACKET_FILTER_PM;
-+		/* Set all the bits of the HASH tab */
-+		for (i = 0; i < numhashregs; i++)
-+			writel(0xffffffff, ioaddr + GMAC_HASH_TAB(i));
- 	} else if (!netdev_mc_empty(dev)) {
--		u32 mc_filter[2];
- 		struct netdev_hw_addr *ha;
-+		u32 mc_filter[8];
- 
- 		/* Hash filter for multicast */
--		value = GMAC_PACKET_FILTER_HMC;
-+		value |= GMAC_PACKET_FILTER_HMC;
- 
- 		memset(mc_filter, 0, sizeof(mc_filter));
- 		netdev_for_each_mc_addr(ha, dev) {
--			/* The upper 6 bits of the calculated CRC are used to
--			 * index the content of the Hash Table Reg 0 and 1.
-+			/* The upper n bits of the calculated CRC are used to
-+			 * index the contents of the hash table. The number of
-+			 * bits used depends on the hardware configuration
-+			 * selected at core configuration time.
- 			 */
--			int bit_nr =
--				(bitrev32(~crc32_le(~0, ha->addr, 6)) >> 26);
--			/* The most significant bit determines the register
--			 * to use while the other 5 bits determines the bit
--			 * within the selected register
-+			int bit_nr = bitrev32(~crc32_le(~0, ha->addr,
-+					ETH_ALEN)) >> (32 - mcbitslog2);
-+			/* The most significant bit determines the register to
-+			 * use (H/L) while the other 5 bits determine the bit
-+			 * within the register.
- 			 */
--			mc_filter[bit_nr >> 5] |= (1 << (bit_nr & 0x1F));
-+			mc_filter[bit_nr >> 5] |= (1 << (bit_nr & 0x1f));
- 		}
--		writel(mc_filter[0], ioaddr + GMAC_HASH_TAB_0_31);
--		writel(mc_filter[1], ioaddr + GMAC_HASH_TAB_32_63);
-+		for (i = 0; i < numhashregs; i++)
-+			writel(mc_filter[i], ioaddr + GMAC_HASH_TAB(i));
- 	}
- 
- 	value |= GMAC_PACKET_FILTER_HPF;
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c b/drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c
-index edb6053..59afb53 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c
-@@ -354,6 +354,7 @@ static void dwmac4_get_hw_feature(void __iomem *ioaddr,
- 
- 	/* MAC HW feature1 */
- 	hw_cap = readl(ioaddr + GMAC_HW_FEATURE1);
-+	dma_cap->hash_tb_sz = (hw_cap & GMAC_HW_HASH_TB_SZ) >> 24;
- 	dma_cap->av = (hw_cap & GMAC_HW_FEAT_AVSEL) >> 20;
- 	dma_cap->tsoen = (hw_cap & GMAC_HW_TSOEN) >> 18;
- 	/* RX and TX FIFO sizes are encoded as log2(n / 128). Undo that by
-diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-index 8fcbf22..f7aac15 100644
---- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-@@ -4166,6 +4166,12 @@ static int stmmac_hw_init(struct stmmac_priv *priv)
- 		priv->plat->enh_desc = priv->dma_cap.enh_desc;
- 		priv->plat->pmt = priv->dma_cap.pmt_remote_wake_up;
- 		priv->hw->pmt = priv->plat->pmt;
-+		if (priv->dma_cap.hash_tb_sz) {
-+			priv->hw->multicast_filter_bins =
-+					(BIT(priv->dma_cap.hash_tb_sz) << 5);
-+			priv->hw->mcast_bits_log2 =
-+					ilog2(priv->hw->multicast_filter_bins);
-+		}
- 
- 		/* TXCOE doesn't work in thresh DMA mode */
- 		if (priv->plat->force_thresh_dma_mode)
--- 
-1.7.9.5
+> You don't change total quarantine size and charge only sizeof(struct
+> qlist_object). If I am reading this correctly, this means that
+> quarantine will have the same large overhead as with generic KASAN. We
+> will just cache much more objects there. The boot benchmarks may be
+> unrepresentative for this. Don't we need to reduce quarantine size or
+> something?
+> 
+Yes, we will try to choose 2. My original idea is belong to it. So we
+will reduce quarantine size.
+
+1). If quarantine size is the same with generic KASAN and tag-based
+KASAN, then the miss rate of use-after-free case in generic KASAN is
+larger than tag-based KASAN.
+2). If tag-based KASAN quarantine size is smaller generic KASAN, then
+the miss rate of use-after-free case may be the same, but tag-based
+KASAN can save slab memory usage.
+
+
+> 
+> > Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+> > ---
+> >  include/linux/kasan.h  |  20 +++++---
+> >  mm/kasan/Makefile      |   4 +-
+> >  mm/kasan/common.c      |  15 +++++-
+> >  mm/kasan/generic.c     |  11 -----
+> >  mm/kasan/kasan.h       |  45 ++++++++++++++++-
+> >  mm/kasan/quarantine.c  | 107 ++++++++++++++++++++++++++++++++++++++---
+> >  mm/kasan/report.c      |  36 +++++++++-----
+> >  mm/kasan/tags.c        |  64 ++++++++++++++++++++++++
+> >  mm/kasan/tags_report.c |   5 +-
+> >  mm/slub.c              |   2 -
+> >  10 files changed, 262 insertions(+), 47 deletions(-)
+> >
+> > diff --git a/include/linux/kasan.h b/include/linux/kasan.h
+> > index b40ea104dd36..bbb52a8bf4a9 100644
+> > --- a/include/linux/kasan.h
+> > +++ b/include/linux/kasan.h
+> > @@ -83,6 +83,9 @@ size_t kasan_metadata_size(struct kmem_cache *cache);
+> >  bool kasan_save_enable_multi_shot(void);
+> >  void kasan_restore_multi_shot(bool enabled);
+> >
+> > +void kasan_cache_shrink(struct kmem_cache *cache);
+> > +void kasan_cache_shutdown(struct kmem_cache *cache);
+> > +
+> >  #else /* CONFIG_KASAN */
+> >
+> >  static inline void kasan_unpoison_shadow(const void *address, size_t size) {}
+> > @@ -153,20 +156,14 @@ static inline void kasan_remove_zero_shadow(void *start,
+> >  static inline void kasan_unpoison_slab(const void *ptr) { }
+> >  static inline size_t kasan_metadata_size(struct kmem_cache *cache) { return 0; }
+> >
+> > +static inline void kasan_cache_shrink(struct kmem_cache *cache) {}
+> > +static inline void kasan_cache_shutdown(struct kmem_cache *cache) {}
+> >  #endif /* CONFIG_KASAN */
+> >
+> >  #ifdef CONFIG_KASAN_GENERIC
+> >
+> >  #define KASAN_SHADOW_INIT 0
+> >
+> > -void kasan_cache_shrink(struct kmem_cache *cache);
+> > -void kasan_cache_shutdown(struct kmem_cache *cache);
+> > -
+> > -#else /* CONFIG_KASAN_GENERIC */
+> > -
+> > -static inline void kasan_cache_shrink(struct kmem_cache *cache) {}
+> > -static inline void kasan_cache_shutdown(struct kmem_cache *cache) {}
+> 
+> Why do we need to move these functions?
+> For generic KASAN that's required because we store the objects
+> themselves in the quarantine, but it's not the case for tag-based mode
+> with your patch...
+> 
+The quarantine in tag-based KASAN includes new objects which we create.
+Those objects are the freed information. They can be shrunk by calling
+them. So we move these function into CONFIG_KASAN. 
+
+
+> > -
+> >  #endif /* CONFIG_KASAN_GENERIC */
+> >
+> >  #ifdef CONFIG_KASAN_SW_TAGS
+> > @@ -180,6 +177,8 @@ void *kasan_reset_tag(const void *addr);
+> >  void kasan_report(unsigned long addr, size_t size,
+> >                 bool is_write, unsigned long ip);
+> >
+> > +struct kasan_alloc_meta *get_object_track(void);
+> > +
+> >  #else /* CONFIG_KASAN_SW_TAGS */
+> >
+> >  static inline void kasan_init_tags(void) { }
+> > @@ -189,6 +188,11 @@ static inline void *kasan_reset_tag(const void *addr)
+> >         return (void *)addr;
+> >  }
+> >
+> > +static inline struct kasan_alloc_meta *get_object_track(void)
+> > +{
+> > +       return 0;
+> > +}
+> > +
+> >  #endif /* CONFIG_KASAN_SW_TAGS */
+> >
+> >  #endif /* LINUX_KASAN_H */
+> > diff --git a/mm/kasan/Makefile b/mm/kasan/Makefile
+> > index 5d1065efbd47..03b0fe22ec55 100644
+> > --- a/mm/kasan/Makefile
+> > +++ b/mm/kasan/Makefile
+> > @@ -16,6 +16,6 @@ CFLAGS_common.o := $(call cc-option, -fno-conserve-stack -fno-stack-protector)
+> >  CFLAGS_generic.o := $(call cc-option, -fno-conserve-stack -fno-stack-protector)
+> >  CFLAGS_tags.o := $(call cc-option, -fno-conserve-stack -fno-stack-protector)
+> >
+> > -obj-$(CONFIG_KASAN) := common.o init.o report.o
+> > -obj-$(CONFIG_KASAN_GENERIC) += generic.o generic_report.o quarantine.o
+> > +obj-$(CONFIG_KASAN) := common.o init.o report.o quarantine.o
+> > +obj-$(CONFIG_KASAN_GENERIC) += generic.o generic_report.o
+> >  obj-$(CONFIG_KASAN_SW_TAGS) += tags.o tags_report.o
+> > diff --git a/mm/kasan/common.c b/mm/kasan/common.c
+> > index 80bbe62b16cd..919f693a58ab 100644
+> > --- a/mm/kasan/common.c
+> > +++ b/mm/kasan/common.c
+> > @@ -81,7 +81,7 @@ static inline depot_stack_handle_t save_stack(gfp_t flags)
+> >         return depot_save_stack(&trace, flags);
+> >  }
+> >
+> > -static inline void set_track(struct kasan_track *track, gfp_t flags)
+> > +void set_track(struct kasan_track *track, gfp_t flags)
+> >  {
+> >         track->pid = current->pid;
+> >         track->stack = save_stack(flags);
+> > @@ -457,7 +457,7 @@ static bool __kasan_slab_free(struct kmem_cache *cache, void *object,
+> >                 return false;
+> >
+> >         set_track(&get_alloc_info(cache, object)->free_track, GFP_NOWAIT);
+> > -       quarantine_put(get_free_info(cache, object), cache);
+> > +       quarantine_put(get_free_info(cache, tagged_object), cache);
+> 
+> Why do we need this change?
+> 
+In order to add freed object information into quarantine.
+The freed object information is tag address , size, and free backtrace.
+
+
+> >
+> >         return IS_ENABLED(CONFIG_KASAN_GENERIC);
+> >  }
+> > @@ -614,6 +614,17 @@ void kasan_free_shadow(const struct vm_struct *vm)
+> >                 vfree(kasan_mem_to_shadow(vm->addr));
+> >  }
+> >
+> > +void kasan_cache_shrink(struct kmem_cache *cache)
+> > +{
+> > +       quarantine_remove_cache(cache);
+> > +}
+> > +
+> > +void kasan_cache_shutdown(struct kmem_cache *cache)
+> > +{
+> > +       if (!__kmem_cache_empty(cache))
+> > +               quarantine_remove_cache(cache);
+> > +}
+> > +
+> >  #ifdef CONFIG_MEMORY_HOTPLUG
+> >  static bool shadow_mapped(unsigned long addr)
+> >  {
+> > diff --git a/mm/kasan/generic.c b/mm/kasan/generic.c
+> > index 504c79363a34..5f579051dead 100644
+> > --- a/mm/kasan/generic.c
+> > +++ b/mm/kasan/generic.c
+> > @@ -191,17 +191,6 @@ void check_memory_region(unsigned long addr, size_t size, bool write,
+> >         check_memory_region_inline(addr, size, write, ret_ip);
+> >  }
+> >
+> > -void kasan_cache_shrink(struct kmem_cache *cache)
+> > -{
+> > -       quarantine_remove_cache(cache);
+> > -}
+> > -
+> > -void kasan_cache_shutdown(struct kmem_cache *cache)
+> > -{
+> > -       if (!__kmem_cache_empty(cache))
+> > -               quarantine_remove_cache(cache);
+> > -}
+> > -
+> >  static void register_global(struct kasan_global *global)
+> >  {
+> >         size_t aligned_size = round_up(global->size, KASAN_SHADOW_SCALE_SIZE);
+> > diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
+> > index 3e0c11f7d7a1..6848a93660d9 100644
+> > --- a/mm/kasan/kasan.h
+> > +++ b/mm/kasan/kasan.h
+> > @@ -95,9 +95,21 @@ struct kasan_alloc_meta {
+> >         struct kasan_track free_track;
+> >  };
+> >
+> > +#ifdef CONFIG_KASAN_GENERIC
+> >  struct qlist_node {
+> >         struct qlist_node *next;
+> >  };
+> > +#else
+> > +struct qlist_object {
+> > +       unsigned long addr;
+> > +       unsigned int size;
+> > +       struct kasan_alloc_meta free_track;
+> 
+> Why is this kasan_alloc_meta rather then kasan_track? We don't
+> memorize alloc stack...
+> 
+Yes, you are right, we only need the free_track of kasan_alloc_meta. We
+will change it.
+
+
+> > +};
+> > +struct qlist_node {
+> > +       struct qlist_object *qobject;
+> > +       struct qlist_node *next;
+> > +};
+> > +#endif
+> >  struct kasan_free_meta {
+> >         /* This field is used while the object is in the quarantine.
+> >          * Otherwise it might be used for the allocator freelist.
+> > @@ -133,16 +145,19 @@ void kasan_report(unsigned long addr, size_t size,
+> >                 bool is_write, unsigned long ip);
+> >  void kasan_report_invalid_free(void *object, unsigned long ip);
+> >
+> > -#if defined(CONFIG_KASAN_GENERIC) && \
+> > +#if defined(CONFIG_KASAN_GENERIC) || defined(CONFIG_KASAN_SW_TAGS) && \
+> 
+> This condition seems to be always true, no?
+> 
+Yes, it is always true, it should be removed.
+
+
+> >         (defined(CONFIG_SLAB) || defined(CONFIG_SLUB))
+> > +
+> >  void quarantine_put(struct kasan_free_meta *info, struct kmem_cache *cache);
+> >  void quarantine_reduce(void);
+> >  void quarantine_remove_cache(struct kmem_cache *cache);
+> > +void set_track(struct kasan_track *track, gfp_t flags);
+> >  #else
+> >  static inline void quarantine_put(struct kasan_free_meta *info,
+> >                                 struct kmem_cache *cache) { }
+> >  static inline void quarantine_reduce(void) { }
+> >  static inline void quarantine_remove_cache(struct kmem_cache *cache) { }
+> > +static inline void set_track(struct kasan_track *track, gfp_t flags) {}
+> >  #endif
+> >
+> >  #ifdef CONFIG_KASAN_SW_TAGS
+> > @@ -151,6 +166,15 @@ void print_tags(u8 addr_tag, const void *addr);
+> >
+> >  u8 random_tag(void);
+> >
+> > +bool quarantine_find_object(void *object);
+> > +
+> > +int qobject_add_size(void);
+> 
+> Would be more reasonable to use size_t type for object sizes.
+> 
+the sum of qobect and qnode size?
+
+
+> > +
+> > +struct qlist_node *qobject_create(struct kasan_free_meta *info,
+> > +               struct kmem_cache *cache);
+> > +
+> > +void qobject_free(struct qlist_node *qlink, struct kmem_cache *cache);
+> > +
+> >  #else
+> >
+> >  static inline void print_tags(u8 addr_tag, const void *addr) { }
+> > @@ -160,6 +184,25 @@ static inline u8 random_tag(void)
+> >         return 0;
+> >  }
+> >
+> > +static inline bool quarantine_find_object(void *object)
+> > +{
+> > +       return 0;
+> 
+> s/0/false/
+> 
+Thanks for your friendly reminder. we will change it.
+
+
+> > +}
+> > +
+> > +static inline int qobject_add_size(void)
+> > +{
+> > +       return 0;
+> > +}
+> > +
+> > +static inline struct qlist_node *qobject_create(struct kasan_free_meta *info,
+> > +               struct kmem_cache *cache)
+> > +{
+> > +       return 0;
+> 
+> s/0/NULL/
+> 
+Thanks for your friendly reminder. we will change it.
+
+
+> > +}
+> > +
+> > +static inline void qobject_free(struct qlist_node *qlink,
+> > +               struct kmem_cache *cache) {}
+> > +
+> >  #endif
+> >
+> >  #ifndef arch_kasan_set_tag
+> > diff --git a/mm/kasan/quarantine.c b/mm/kasan/quarantine.c
+> > index 978bc4a3eb51..f14c8dbec552 100644
+> > --- a/mm/kasan/quarantine.c
+> > +++ b/mm/kasan/quarantine.c
+> > @@ -67,7 +67,10 @@ static void qlist_put(struct qlist_head *q, struct qlist_node *qlink,
+> >                 q->tail->next = qlink;
+> >         q->tail = qlink;
+> >         qlink->next = NULL;
+> > -       q->bytes += size;
+> > +       if (IS_ENABLED(CONFIG_KASAN_SW_TAGS))
+> 
+> It would be more reasonable to pass the right size from the caller. It
+> already have to have the branch on CONFIG_KASAN_SW_TAGS because it
+> needs to allocate qobject or not, that would be the right place to
+> pass the right size.
+> 
+In tag-based KASAN, we will pass the sum of qobject and qnode size to it
+and review qlist_put() caller whether it pass right size.
+
+
+> > +               q->bytes += qobject_add_size();
+> > +       else
+> > +               q->bytes += size;
+> >  }
+> >
+> >  static void qlist_move_all(struct qlist_head *from, struct qlist_head *to)
+> > @@ -139,13 +142,18 @@ static void *qlink_to_object(struct qlist_node *qlink, struct kmem_cache *cache)
+> >
+> >  static void qlink_free(struct qlist_node *qlink, struct kmem_cache *cache)
+> >  {
+> > -       void *object = qlink_to_object(qlink, cache);
+> >         unsigned long flags;
+> > +       struct kmem_cache *obj_cache =
+> > +                       cache ? cache : qlink_to_cache(qlink);
+> > +       void *object = qlink_to_object(qlink, obj_cache);
+> > +
+> > +       if (IS_ENABLED(CONFIG_KASAN_SW_TAGS))
+> > +               qobject_free(qlink, cache);
+> >
+> >         if (IS_ENABLED(CONFIG_SLAB))
+> >                 local_irq_save(flags);
+> >
+> > -       ___cache_free(cache, object, _THIS_IP_);
+> > +       ___cache_free(obj_cache, object, _THIS_IP_);
+> >
+> >         if (IS_ENABLED(CONFIG_SLAB))
+> >                 local_irq_restore(flags);
+> > @@ -160,11 +168,9 @@ static void qlist_free_all(struct qlist_head *q, struct kmem_cache *cache)
+> >
+> >         qlink = q->head;
+> >         while (qlink) {
+> > -               struct kmem_cache *obj_cache =
+> > -                       cache ? cache : qlink_to_cache(qlink);
+> >                 struct qlist_node *next = qlink->next;
+> >
+> > -               qlink_free(qlink, obj_cache);
+> > +               qlink_free(qlink, cache);
+> >                 qlink = next;
+> >         }
+> >         qlist_init(q);
+> > @@ -187,7 +193,18 @@ void quarantine_put(struct kasan_free_meta *info, struct kmem_cache *cache)
+> >         local_irq_save(flags);
+> >
+> >         q = this_cpu_ptr(&cpu_quarantine);
+> > -       qlist_put(q, &info->quarantine_link, cache->size);
+> > +       if (IS_ENABLED(CONFIG_KASAN_SW_TAGS)) {
+> > +               struct qlist_node *free_obj_info = qobject_create(info, cache);
+> > +
+> > +               if (!free_obj_info) {
+> > +                       local_irq_restore(flags);
+> > +                       return;
+> > +               }
+> > +               qlist_put(q, free_obj_info, cache->size);
+> > +       } else {
+> > +               qlist_put(q, &info->quarantine_link, cache->size);
+> > +       }
+> > +
+> >         if (unlikely(q->bytes > QUARANTINE_PERCPU_SIZE)) {
+> >                 qlist_move_all(q, &temp);
+> >
+> > @@ -327,3 +344,79 @@ void quarantine_remove_cache(struct kmem_cache *cache)
+> >
+> >         synchronize_srcu(&remove_cache_srcu);
+> >  }
+> > +
+> > +#ifdef CONFIG_KASAN_SW_TAGS
+> > +static struct kasan_alloc_meta object_free_track;
+> 
+> This global is a dirty solution. It's better passed as argument to the
+> required functions rather than functions leave part of state in a
+> global and somebody picks it up later.
+> 
+Thanks your suggestion, we will change the implementation here.
+
+
+> > +
+> > +struct kasan_alloc_meta *get_object_track(void)
+> > +{
+> > +       return &object_free_track;
+> > +}
+> > +
+> > +static bool qlist_find_object(struct qlist_head *from, void *addr)
+> > +{
+> > +       struct qlist_node *curr;
+> > +       struct qlist_object *curr_obj;
+> > +
+> > +       if (unlikely(qlist_empty(from)))
+> > +               return false;
+> > +
+> > +       curr = from->head;
+> > +       while (curr) {
+> > +               struct qlist_node *next = curr->next;
+> > +
+> > +               curr_obj = curr->qobject;
+> > +               if (unlikely(((unsigned long)addr >= curr_obj->addr)
+> > +                       && ((unsigned long)addr <
+> > +                                       (curr_obj->addr + curr_obj->size)))) {
+> > +                       object_free_track = curr_obj->free_track;
+> > +
+> > +                       return true;
+> > +               }
+> > +
+> > +               curr = next;
+> > +       }
+> > +       return false;
+> > +}
+> > +
+> > +static int per_cpu_find_object(void *arg)
+> > +{
+> > +       void *addr = arg;
+> > +       struct qlist_head *q;
+> > +
+> > +       q = this_cpu_ptr(&cpu_quarantine);
+> > +       return qlist_find_object(q, addr);
+> > +}
+> > +
+> > +struct cpumask cpu_allowed_mask __read_mostly;
+> > +
+> > +bool quarantine_find_object(void *addr)
+> > +{
+> > +       unsigned long flags, i;
+> > +       bool find = false;
+> > +       int cpu;
+> > +
+> > +       cpumask_copy(&cpu_allowed_mask, cpu_online_mask);
+> > +       for_each_cpu(cpu, &cpu_allowed_mask) {
+> > +               find = smp_call_on_cpu(cpu, per_cpu_find_object, addr, true);
+> 
+> There can be multiple qobjects in the quarantine associated with the
+> address, right? If so, we need to find the last one rather then a
+> random one.
+> 
+The qobject includes the address which has tag and range, corruption
+address must be satisfied with the same tag and within object address
+range, then it is found in the quarantine.
+It should not easy to get multiple qobjects have the same tag and within
+object address range.
+
+
+> > +               if (find)
+> > +                       return true;
+> > +       }
+> > +
+> > +       raw_spin_lock_irqsave(&quarantine_lock, flags);
+> > +       for (i = 0; i < QUARANTINE_BATCHES; i++) {
+> > +               if (qlist_empty(&global_quarantine[i]))
+> > +                       continue;
+> > +               find = qlist_find_object(&global_quarantine[i], addr);
+> > +               /* Scanning whole quarantine can take a while. */
+> > +               raw_spin_unlock_irqrestore(&quarantine_lock, flags);
+> > +               cond_resched();
+> > +               raw_spin_lock_irqsave(&quarantine_lock, flags);
+> > +       }
+> > +       raw_spin_unlock_irqrestore(&quarantine_lock, flags);
+> > +
+> > +       synchronize_srcu(&remove_cache_srcu);
+> > +
+> > +       return find;
+> > +}
+> > +#endif
+> > diff --git a/mm/kasan/report.c b/mm/kasan/report.c
+> > index ca9418fe9232..9cfabf2f0c40 100644
+> > --- a/mm/kasan/report.c
+> > +++ b/mm/kasan/report.c
+> > @@ -150,18 +150,26 @@ static void describe_object_addr(struct kmem_cache *cache, void *object,
+> >  }
+> >
+> >  static void describe_object(struct kmem_cache *cache, void *object,
+> > -                               const void *addr)
+> > +                               const void *tagged_addr)
+> >  {
+> > +       void *untagged_addr = reset_tag(tagged_addr);
+> >         struct kasan_alloc_meta *alloc_info = get_alloc_info(cache, object);
+> >
+> >         if (cache->flags & SLAB_KASAN) {
+> > -               print_track(&alloc_info->alloc_track, "Allocated");
+> > -               pr_err("\n");
+> > -               print_track(&alloc_info->free_track, "Freed");
+> > -               pr_err("\n");
+> > +               if (IS_ENABLED(CONFIG_KASAN_SW_TAGS) &&
+> > +                       quarantine_find_object((void *)tagged_addr)) {
+> 
+> Can't this be an out-of-bound even if we find the object in quarantine?
+> For example, if we've freed an object, then reallocated and accessed
+> out-of-bounds within the object bounds?
+> Overall suggesting that this is a use-after-free rather than
+> out-of-bounds without redzones and quarantining the object itself is
+> quite imprecise. We can confuse a user even more...
+> 
+the qobject stores object range and address which has tag, even if
+the object reallocate and accessed out-of-bounds, then new object and
+old object in quarantine should be different tag value, so it should be
+no found in quarantine.
+
+
+> 
+> > +                       alloc_info = get_object_track();
+> > +                       print_track(&alloc_info->free_track, "Freed");
+> > +                       pr_err("\n");
+> > +               } else {
+> > +                       print_track(&alloc_info->alloc_track, "Allocated");
+> > +                       pr_err("\n");
+> > +                       print_track(&alloc_info->free_track, "Freed");
+> > +                       pr_err("\n");
+> > +               }
+> >         }
+> >
+> > -       describe_object_addr(cache, object, addr);
+> > +       describe_object_addr(cache, object, untagged_addr);
+> >  }
+> >
+> >  static inline bool kernel_or_module_addr(const void *addr)
+> > @@ -180,23 +188,25 @@ static inline bool init_task_stack_addr(const void *addr)
+> >                         sizeof(init_thread_union.stack));
+> >  }
+> >
+> > -static void print_address_description(void *addr)
+> > +static void print_address_description(void *tagged_addr)
+> >  {
+> > -       struct page *page = addr_to_page(addr);
+> > +       void *untagged_addr = reset_tag(tagged_addr);
+> > +       struct page *page = addr_to_page(untagged_addr);
+> >
+> >         dump_stack();
+> >         pr_err("\n");
+> >
+> >         if (page && PageSlab(page)) {
+> >                 struct kmem_cache *cache = page->slab_cache;
+> > -               void *object = nearest_obj(cache, page, addr);
+> > +               void *object = nearest_obj(cache, page, untagged_addr);
+> >
+> > -               describe_object(cache, object, addr);
+> > +               describe_object(cache, object, tagged_addr);
+> >         }
+> >
+> > -       if (kernel_or_module_addr(addr) && !init_task_stack_addr(addr)) {
+> > +       if (kernel_or_module_addr(untagged_addr) &&
+> > +                       !init_task_stack_addr(untagged_addr)) {
+> >                 pr_err("The buggy address belongs to the variable:\n");
+> > -               pr_err(" %pS\n", addr);
+> > +               pr_err(" %pS\n", untagged_addr);
+> >         }
+> >
+> >         if (page) {
+> > @@ -314,7 +324,7 @@ void kasan_report(unsigned long addr, size_t size,
+> >         pr_err("\n");
+> >
+> >         if (addr_has_shadow(untagged_addr)) {
+> > -               print_address_description(untagged_addr);
+> > +               print_address_description(tagged_addr);
+> >                 pr_err("\n");
+> >                 print_shadow_for_address(info.first_bad_addr);
+> >         } else {
+> > diff --git a/mm/kasan/tags.c b/mm/kasan/tags.c
+> > index 63fca3172659..fa5d1e29003d 100644
+> > --- a/mm/kasan/tags.c
+> > +++ b/mm/kasan/tags.c
+> > @@ -124,6 +124,70 @@ void check_memory_region(unsigned long addr, size_t size, bool write,
+> >         }
+> >  }
+> >
+> > +int qobject_add_size(void)
+> > +{
+> > +       return sizeof(struct qlist_object);
+> 
+> Shouldn't this also account for qlist_node?
+> 
+yes, we will count it.
+
+
+> > +}
+> > +
+> > +static struct kmem_cache *qobject_to_cache(struct qlist_object *qobject)
+> > +{
+> > +       return virt_to_head_page(qobject)->slab_cache;
+> > +}
+> > +
+> > +struct qlist_node *qobject_create(struct kasan_free_meta *info,
+> > +                                               struct kmem_cache *cache)
+> > +{
+> > +       struct qlist_node *free_obj_info;
+> > +       struct qlist_object *qobject_info;
+> > +       struct kasan_alloc_meta *object_track;
+> > +       void *object;
+> > +
+> > +       object = ((void *)info) - cache->kasan_info.free_meta_offset;
+> > +       qobject_info = kmalloc(sizeof(struct qlist_object), GFP_NOWAIT);
+> > +       if (!qobject_info)
+> > +               return NULL;
+> > +       qobject_info->addr = (unsigned long) object;
+> > +       qobject_info->size = cache->object_size;
+> > +       object_track = &qobject_info->free_track;
+> > +       set_track(&object_track->free_track, GFP_NOWAIT);
+> > +
+> > +       free_obj_info = kmalloc(sizeof(struct qlist_node), GFP_NOWAIT);
+> 
+> Why don't we allocate qlist_object and qlist_node in a single
+> allocation? Doing 2 allocations is both unnecessary slow and leads to
+> more complex code. We need to allocate them with a single allocations.
+> Also I think they should be allocated from a dedicated cache that opts
+> out of quarantine?
+> 
+Single allocation is good suggestion, if we only has one allocation.
+then we need to move all member of qlist_object to qlist_node?
+
+struct qlist_object {
+    unsigned long addr;
+    unsigned int size;
+    struct kasan_alloc_meta free_track;
+};
+struct qlist_node {
+    struct qlist_object *qobject;
+    struct qlist_node *next;
+};
+
+
+We call call ___cache_free() to free the qobject and qnode, it should be
+out of quarantine?
+
+
+Thanks,
+Walter
