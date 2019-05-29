@@ -1,53 +1,36 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH 2/3] drm: mediatek: remove clk_unprepare() in
- mtk_drm_crtc_destroy()
-Date: Wed, 29 May 2019 15:12:35 +0800
-Message-ID: <1559113955.4226.1.camel@mtksdaap41>
-References: <20190527045054.113259-1-hsinyi@chromium.org>
-         <20190527045054.113259-3-hsinyi@chromium.org>
-         <1559109490.15592.6.camel@mtksdaap41>
-         <CAJMQK-gQ_j4ma_EjGbFJOz6WGXy3UZA0F9JZYnFHPZ0F08rXog@mail.gmail.com>
+From: Jose Abreu <Jose.Abreu@synopsys.com>
+Subject: RE: [v4, PATCH] net: stmmac: add support for hash table size
+ 128/256 in dwmac4
+Date: Wed, 29 May 2019 07:39:49 +0000
+Message-ID: <78EB27739596EE489E55E81C33FEC33A0B932F51@DE02WEMBXB.internal.synopsys.com>
+References: <1559093924-7791-1-git-send-email-biao.huang@mediatek.com>
+ <1559093924-7791-2-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAJMQK-gQ_j4ma_EjGbFJOz6WGXy3UZA0F9JZYnFHPZ0F08rXog@mail.gmail.com>
+In-Reply-To: <1559093924-7791-2-git-send-email-biao.huang@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, lkml <linux-kernel@vger.kernel.org>
+To: Biao Huang <biao.huang@mediatek.com>
+Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "linux-stm32@st-md-mailman.stormreply.com" <linux-stm32@st-md-mailman.stormreply.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "yt.shen@mediatek.com" <yt.shen@mediatek.com>, "jianguo.zhang@mediatek.com" <jianguo.zhang@mediatek.com>, "boon.leong.ong@intel.com" <boon.leong.ong@intel.com>, "andrew@lunn.ch" <andrew@lunn.ch>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Hsin-Yi:
+From: Biao Huang <biao.huang@mediatek.com>
+Date: Wed, May 29, 2019 at 02:38:44
 
-On Wed, 2019-05-29 at 14:08 +0800, Hsin-Yi Wang wrote:
-> On Wed, May 29, 2019 at 1:58 PM CK Hu <ck.hu@mediatek.com> wrote:
-> >
-> > Hi, Hsin-Yi:
-> >
-> > On Mon, 2019-05-27 at 12:50 +0800, Hsin-Yi Wang wrote:
-> > > There is no clk_prepare() called in mtk_drm_crtc_reset(), when unbinding
-> > > drm device, mtk_drm_crtc_destroy() will be triggered, and the clocks will
-> > > be disabled and unprepared in mtk_crtc_ddp_clk_disable. If clk_unprepare()
-> > > is called here, we'll get warnings[1], so remove clk_unprepare() here.
-> >
-> > In original code, clk_prepare() is called in mtk_drm_crtc_create() and
-> > clk_unprepare() is called in mtk_drm_crtc_destroy(). This looks correct.
-> 
-> clk_prepare() is removed in https://patchwork.kernel.org/patch/10872777/.
-> 
+>  	} else if (!netdev_mc_empty(dev)) {
+> -		u32 mc_filter[2];
+> +		u32 mc_filter[8];
+>  		struct netdev_hw_addr *ha;
 
-I think this patch is a fix of that patch, and I've already applied that
-patch, so I merge this patch with that patch in my tree [1], thanks.
+The reverse christmas tree also applies here.
 
-[1]
-https://github.com/ckhu-mediatek/linux.git-tags/commit/937f861def1a1d49abb92e041efaa5c259281fbf
+I also see some coding-style errors, like missing line breaks, etc...=20
+that checkpatch should complain about.
 
-Regards,
-CK
+Also, please run this patch against stmmac selftests and add the output=20
+to the commit log.
 
-> > I don't know why we should do any thing about clock in
-> > mtk_drm_crtc_reset(). To debug this, the first step is to print message
-> > when mediatek drm call clk_prepare() and clk_unprepare(). If these two
-> > interface is called in pair, I think we should not modify mediatek drm
-> > driver, the bug maybe in clock driver.
-> >
+Thanks,
+Jose Miguel Abreu
