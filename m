@@ -1,64 +1,115 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH v6 02/10] dt-bindings: connector: add optional properties for Type-B
-Date: Wed, 29 May 2019 15:43:40 +0800
-Message-ID: <1559115828-19146-3-git-send-email-chunfeng.yun@mediatek.com>
-References: <1559115828-19146-1-git-send-email-chunfeng.yun@mediatek.com>
+From: James Liao <jamesjj.liao@mediatek.com>
+Subject: [PATCH] arm64: dts: mt8183: Enable CPU idle-states
+Date: Wed, 29 May 2019 16:25:03 +0800
+Message-ID: <1559118303-31875-1-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1559115828-19146-1-git-send-email-chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heikki Krogerus <heikki.krogerus@linux.intel.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Biju Das <biju.das@bp.renesas.com>, Linus Walleij <linus.walleij@linaro.org>, Yu Chen <chenyu56@huawei.com>
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, James Liao <jamesjj.liao@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add id-gpios, vbus-gpios, vbus-supply and pinctrl properties for
-usb-b-connector
+Enable mcdi-cpu and mcdi-cluster on MT8183 CPUs.
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
+Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
 ---
-v6 no changes
+This patch bases on v5.1-rc1 and [1], adds idle-states for MT8183 CPUs.
 
-v5 changes:
- 1. add reviewed by Rob
+[1] https://patchwork.kernel.org/patch/10962375/
 
-v4 no changes
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 30 ++++++++++++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
 
-v3 changes:
- 1. add GPIO direction, and use fixed-regulator for GPIO controlled
-    VBUS regulator suggested by Rob;
-
-v2 changes:
- 1. describe more clear for vbus-gpios and vbus-supply suggested by Hans
----
- .../bindings/connector/usb-connector.txt           | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/connector/usb-connector.txt b/Documentation/devicetree/bindings/connector/usb-connector.txt
-index cef556d4e5ee..d357987181ee 100644
---- a/Documentation/devicetree/bindings/connector/usb-connector.txt
-+++ b/Documentation/devicetree/bindings/connector/usb-connector.txt
-@@ -17,6 +17,20 @@ Optional properties:
- - self-powered: Set this property if the usb device that has its own power
-   source.
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 08274bf..ef4b054 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -56,6 +56,7 @@
+ 			compatible = "arm,cortex-a53";
+ 			reg = <0x000>;
+ 			enable-method = "psci";
++			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
+ 		};
  
-+Optional properties for usb-b-connector:
-+- id-gpios: an input gpio for USB ID pin.
-+- vbus-gpios: an input gpio for USB VBUS pin, used to detect presence of
-+  VBUS 5V.
-+  see gpio/gpio.txt.
-+- vbus-supply: a phandle to the regulator for USB VBUS if needed when host
-+  mode or dual role mode is supported.
-+  Particularly, if use an output GPIO to control a VBUS regulator, should
-+  model it as a regulator.
-+  see regulator/fixed-regulator.yaml
-+- pinctrl-names : a pinctrl state named "default" is optional
-+- pinctrl-0 : pin control group
-+  see pinctrl/pinctrl-bindings.txt
+ 		cpu1: cpu@1 {
+@@ -63,6 +64,7 @@
+ 			compatible = "arm,cortex-a53";
+ 			reg = <0x001>;
+ 			enable-method = "psci";
++			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
+ 		};
+ 
+ 		cpu2: cpu@2 {
+@@ -70,6 +72,7 @@
+ 			compatible = "arm,cortex-a53";
+ 			reg = <0x002>;
+ 			enable-method = "psci";
++			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
+ 		};
+ 
+ 		cpu3: cpu@3 {
+@@ -77,6 +80,7 @@
+ 			compatible = "arm,cortex-a53";
+ 			reg = <0x003>;
+ 			enable-method = "psci";
++			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
+ 		};
+ 
+ 		cpu4: cpu@100 {
+@@ -84,6 +88,7 @@
+ 			compatible = "arm,cortex-a73";
+ 			reg = <0x100>;
+ 			enable-method = "psci";
++			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
+ 		};
+ 
+ 		cpu5: cpu@101 {
+@@ -91,6 +96,7 @@
+ 			compatible = "arm,cortex-a73";
+ 			reg = <0x101>;
+ 			enable-method = "psci";
++			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
+ 		};
+ 
+ 		cpu6: cpu@102 {
+@@ -98,6 +104,7 @@
+ 			compatible = "arm,cortex-a73";
+ 			reg = <0x102>;
+ 			enable-method = "psci";
++			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
+ 		};
+ 
+ 		cpu7: cpu@103 {
+@@ -105,6 +112,29 @@
+ 			compatible = "arm,cortex-a73";
+ 			reg = <0x103>;
+ 			enable-method = "psci";
++			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
++		};
 +
- Optional properties for usb-c-connector:
- - power-role: should be one of "source", "sink" or "dual"(DRP) if typec
-   connector has power support.
++		idle-states {
++			entry-method = "arm,psci";
++
++			MCDI_CPU: mcdi-cpu {
++				compatible = "arm,idle-state";
++				local-timer-stop;
++				arm,psci-suspend-param = <0x00010001>;
++				entry-latency-us = <200>;
++				exit-latency-us = <200>;
++				min-residency-us = <800>;
++			};
++
++			MCDI_CLUSTER: mcdi-cluster {
++				compatible = "arm,idle-state";
++				local-timer-stop;
++				arm,psci-suspend-param = <0x01010001>;
++				entry-latency-us = <250>;
++				exit-latency-us = <400>;
++				min-residency-us = <1300>;
++			};
+ 		};
+ 	};
+ 
 -- 
-2.21.0
+1.9.1
