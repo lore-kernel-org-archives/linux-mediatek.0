@@ -1,177 +1,90 @@
-From: Jitao Shi <jitao.shi@mediatek.com>
-Subject: Re: [PATCH v2] gpu/drm: mediatek: call mtk_dsi_stop() after
- mtk_drm_crtc_atomic_disable()
-Date: Wed, 29 May 2019 18:48:39 +0800
-Message-ID: <1559126919.12097.6.camel@mszsdaap41>
-References: <20190320071825.20268-1-hsinyi@chromium.org>
-         <1553131722.18216.10.camel@mtksdaap41>
-         <1553132815.18216.18.camel@mtksdaap41>
-         <CAJMQK-j9af8_L7DsWzgUy3=0Mr65FFeU71owan+acQgRuAnE7w@mail.gmail.com>
-         <1553217695.25217.5.camel@mtksdaap41>
-         <CAJMQK-g3JZ3Eg5U9OmYP9UU3k22VXGWOvZSBrFtAFFHw0Uq0cA@mail.gmail.com>
+From: YueHaibing <yuehaibing@huawei.com>
+Subject: [PATCH] mt76: Remove set but not used variables 'pid' and 'final_mpdu'
+Date: Wed, 29 May 2019 22:53:56 +0800
+Message-ID: <20190529145356.13872-1-yuehaibing@huawei.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAJMQK-g3JZ3Eg5U9OmYP9UU3k22VXGWOvZSBrFtAFFHw0Uq0cA@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: CK Hu =?UTF-8?Q?=28=E8=83=A1=E4=BF=8A=E5=85=89=29?= <ck.hu@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: nbd@nbd.name, lorenzo.bianconi83@gmail.com, ryder.lee@mediatek.com, royluo@google.com, kvalo@codeaurora.org, matthias.bgg@gmail.com, sgruszka@redhat.com
+Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, davem@davemloft.net, YueHaibing <yuehaibing@huawei.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2019-03-22 at 13:05 +0800, Hsin-Yi Wang wrote:
-> On Fri, Mar 22, 2019 at 9:21 AM CK Hu <ck.hu@mediatek.com> wrote:
-> >
-> > Hi, Hsin-yi:
-> >
-> > On Thu, 2019-03-21 at 22:09 +0800, Hsin-Yi Wang wrote:
-> > > On Thu, Mar 21, 2019 at 9:46 AM CK Hu <ck.hu@mediatek.com> wrote:
-> > > >
-> > > > Hi, Hsin-yi:
-> > > >
-> > > > On Thu, 2019-03-21 at 09:28 +0800, CK Hu wrote:
-> > > > > Hi, Hsin-yi:
-> > > > >
-> > > > > On Wed, 2019-03-20 at 15:18 +0800, Hsin-Yi Wang wrote:
-> > > > > > mtk_dsi_stop() should be called after mtk_drm_crtc_atomic_disable(), which needs
-> > > > > > ovl irq for drm_crtc_wait_one_vblank(), since after mtk_dsi_stop() is called,
-> > > > > > ovl irq will be disabled. If drm_crtc_wait_one_vblank() is called after last
-> > > > > > irq, it will timeout with this message: "vblank wait timed out on crtc 0". This
-> > > > > > happens sometimes when turning off the screen.
-> > > > > >
-> > > > > > In drm_atomic_helper.c#disable_outputs(),
-> > > > > > the calling sequence when turning off the screen is:
-> > > > > >
-> > > > > > 1. mtk_dsi_encoder_disable()
-> > > > > >      --> mtk_output_dsi_disable()
-> > > > > >        --> mtk_dsi_stop();  // sometimes make vblank timeout in atomic_disable
-> > > > > >        --> mtk_dsi_poweroff();
-> > > > > > 2. mtk_drm_crtc_atomic_disable()
-> > > > > >      --> drm_crtc_wait_one_vblank();
-> > > > > >      ...
-> > > > > >        --> mtk_dsi_ddp_stop()
-> > > > > >          --> mtk_dsi_poweroff();
-> > > > > >
-> > > > > > mtk_dsi_poweroff() has reference count design, change to make mtk_dsi_stop()
-> > > > > > called in mtk_dsi_poweroff() when refcount is 0.
-> > > > > >
-> > > > > > Fixes: 0707632b5bac ("drm/mediatek: update DSI sub driver flow for sending commands to panel")
-> > > > > > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> > > > > > ---
-> > > > > > change log:
-> > > > > > v1->v2:
-> > > > > >  * update commit message.
-> > > > > >  * call mtk_dsi_stop() in mtk_dsi_poweroff() when refcount is 0.
-> > > > > > ---
-> > > > > >  drivers/gpu/drm/mediatek/mtk_dsi.c | 5 ++++-
-> > > > > >  1 file changed, 4 insertions(+), 1 deletion(-)
-> > > > > >
-> > > > > > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > > > > > index b00eb2d2e086..e152f37af57d 100644
-> > > > > > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > > > > > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > > > > > @@ -630,6 +630,8 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
-> > > > > >     if (--dsi->refcount != 0)
-> > > > > >             return;
-> > > > > >
-> > > > > > +   mtk_dsi_stop(dsi);
-> > > > > > +
-> > > > > >     if (!mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500)) {
-> > > > > >             if (dsi->panel) {
-> > > > > >                     if (drm_panel_unprepare(dsi->panel)) {
-> > > > >
-> > > > > I think you just move mtk_dsi_stop() into mtk_dsi_poweroff() would works
-> > > > > fine, but I would rather like calling mtk_dsi_start() and mtk_dsi_stop()
-> > > > > in a symmetric manner. That means you may also move below functions into
-> > > > > mtk_dsi_poweron():
-> > > > >
-> > > > > mtk_dsi_set_mode(dsi);
-> > > > > mtk_dsi_clk_hs_mode(dsi, 1);
-> > > > > mtk_dsi_start(dsi);
-> > >
-> > > For MT8183 with bridge panel, calling mtk_dsi_start() in
-> > > mtk_dsi_poweron() when refcount is 0->1, like the following order,
-> > > will results in no irq, not sure why though. I think this might be the
-> > > timing issue you mentioned in patch v1. (MT8183 without bridge panel
-> > > doesn't have this issue.)
-> > >
-> > > atomic_enable
-> > >   --> mtk_crtc_ddp_hw_init
-> > >     --> mtk_dsi_ddp_start
-> > >       --> mtk_dsi_poweron (ref 0->1)
-> > >         --> drm_panel_prepare
-> > >         --> *mtk_dsi_start  // results in no irq for MT8183 with bridge
-> > >   --> drm_crtc_vblank_on
-> > >
-> > > mtk_output_dsi_enable
-> > >   --> mtk_dsi_poweron (ref 1->2, ignored)
-> > >   --> mtk_dsi_start //original position
-> > >
-> > > For mtk_dsi_stop() both with or without bridge is fine.
-> Add cc Jitao.
-> 
-> Hi Jitao,
-> Do you know if this is a known hardware behavior?
-> 
-> Thanks
+Fixes gcc '-Wunused-but-set-variable' warnings:
 
-mtk_dsi_start must after dsi full setting.
+drivers/net/wireless/mediatek/mt76/mt7603/mac.c: In function mt7603_fill_txs:
+drivers/net/wireless/mediatek/mt76/mt7603/mac.c:969:5: warning: variable pid set but not used [-Wunused-but-set-variable]
+drivers/net/wireless/mediatek/mt76/mt7603/mac.c:961:7: warning: variable final_mpdu set but not used [-Wunused-but-set-variable]
+drivers/net/wireless/mediatek/mt76/mt7615/mac.c: In function mt7615_fill_txs:
+drivers/net/wireless/mediatek/mt76/mt7615/mac.c:555:5: warning: variable pid set but not used [-Wunused-but-set-variable]
+drivers/net/wireless/mediatek/mt76/mt7615/mac.c:552:19: warning: variable final_mpdu set but not used [-Wunused-but-set-variable]
 
-If you put it in mtk_dsi_ddp_start, mtk_dsi_set_mode won't work. DSI
-will keep cmd mode. So you see no irq.
+They are never used, so can be removed.
 
-I think we show keep the mtk_dsi_start in mtk_output_dsi_enable 
+Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7603/mac.c | 4 ----
+ drivers/net/wireless/mediatek/mt76/mt7615/mac.c | 5 +----
+ 2 files changed, 1 insertion(+), 8 deletions(-)
 
-Best Regards
-Jitao
-
-> >
-> > I'm not familiar with dsi hardware, so I could not answer why this
-> > problem happen. Jitao is familiar with dsi hardware, you may ask him for
-> > help. If this is hardware behavior, I could accept asymmetric flow, but
-> > please be sure this is hardware behavior not software bug.
-> >
-> > Regards,
-> > CK
-> >
-> > >
-> > > > >
-> > > > >
-> > > > > > @@ -696,7 +698,6 @@ static void mtk_output_dsi_disable(struct mtk_dsi *dsi)
-> > > > > >             }
-> > > > > >     }
-> > > > > >
-> > > > > > -   mtk_dsi_stop(dsi);
-> > > > > >     mtk_dsi_poweroff(dsi);
-> > > > > >
-> > > > > >     dsi->enabled = false;
-> > > > > > @@ -1178,6 +1179,8 @@ static int mtk_dsi_remove(struct platform_device *pdev)
-> > > > > >     struct mtk_dsi *dsi = platform_get_drvdata(pdev);
-> > > > > >
-> > > > > >     mtk_output_dsi_disable(dsi);
-> > > > > > +   mtk_dsi_stop(dsi);
-> > > > > > +   mtk_dsi_poweroff(dsi);
-> > > > >
-> > > > > I think mtk_output_dsi_disable() would call mtk_dsi_poweroff(), and
-> > > > > mtk_dsi_poweroff() would call mtk_dsi_stop(), so these two line are
-> > > > > redundant. And I think you should remove mtk_dsi_stop() in
-> > > > > mtk_output_dsi_disable(), why not in this patch?
-> > > >
-> > > > You've removed mtk_dsi_stop() in mtk_output_dsi_disable(), I just miss
-> > > > it, sorry for this.
-> > > >
-> > > > Regards,
-> > > > CK
-> > > >
-> > > > >
-> > > > > Regards,
-> > > > > CK
-> > > > >
-> > > > > >     component_del(&pdev->dev, &mtk_dsi_component_ops);
-> > > > > >
-> > > > > >     return 0;
-> > > > >
-> > > >
-> > > >
-> >
-> >
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
+index 6d506e34c3ee..5182a36276fc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
+@@ -958,7 +958,6 @@ mt7603_fill_txs(struct mt7603_dev *dev, struct mt7603_sta *sta,
+ 	int final_idx = 0;
+ 	u32 final_rate;
+ 	u32 final_rate_flags;
+-	bool final_mpdu;
+ 	bool ack_timeout;
+ 	bool fixed_rate;
+ 	bool probe;
+@@ -966,7 +965,6 @@ mt7603_fill_txs(struct mt7603_dev *dev, struct mt7603_sta *sta,
+ 	bool cck = false;
+ 	int count;
+ 	u32 txs;
+-	u8 pid;
+ 	int idx;
+ 	int i;
+ 
+@@ -974,9 +972,7 @@ mt7603_fill_txs(struct mt7603_dev *dev, struct mt7603_sta *sta,
+ 	probe = !!(info->flags & IEEE80211_TX_CTL_RATE_CTRL_PROBE);
+ 
+ 	txs = le32_to_cpu(txs_data[4]);
+-	final_mpdu = txs & MT_TXS4_ACKED_MPDU;
+ 	ampdu = !fixed_rate && (txs & MT_TXS4_AMPDU);
+-	pid = FIELD_GET(MT_TXS4_PID, txs);
+ 	count = FIELD_GET(MT_TXS4_TX_COUNT, txs);
+ 
+ 	txs = le32_to_cpu(txs_data[0]);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+index b8f48d10f27a..a51bfb6990b3 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+@@ -549,23 +549,20 @@ static bool mt7615_fill_txs(struct mt7615_dev *dev, struct mt7615_sta *sta,
+ {
+ 	struct ieee80211_supported_band *sband;
+ 	int i, idx, count, final_idx = 0;
+-	bool fixed_rate, final_mpdu, ack_timeout;
++	bool fixed_rate, ack_timeout;
+ 	bool probe, ampdu, cck = false;
+ 	u32 final_rate, final_rate_flags, final_nss, txs;
+-	u8 pid;
+ 
+ 	fixed_rate = info->status.rates[0].count;
+ 	probe = !!(info->flags & IEEE80211_TX_CTL_RATE_CTRL_PROBE);
+ 
+ 	txs = le32_to_cpu(txs_data[1]);
+-	final_mpdu = txs & MT_TXS1_ACKED_MPDU;
+ 	ampdu = !fixed_rate && (txs & MT_TXS1_AMPDU);
+ 
+ 	txs = le32_to_cpu(txs_data[3]);
+ 	count = FIELD_GET(MT_TXS3_TX_COUNT, txs);
+ 
+ 	txs = le32_to_cpu(txs_data[0]);
+-	pid = FIELD_GET(MT_TXS0_PID, txs);
+ 	final_rate = FIELD_GET(MT_TXS0_TX_RATE, txs);
+ 	ack_timeout = txs & MT_TXS0_ACK_TIMEOUT;
+ 
+-- 
+2.17.1
