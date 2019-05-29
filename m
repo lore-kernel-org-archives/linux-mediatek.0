@@ -1,53 +1,64 @@
-From: Andrew Lunn <andrew@lunn.ch>
-Subject: Re: [v3, PATCH] net: stmmac: add support for hash table size 128/256
- in dwmac4
-Date: Tue, 28 May 2019 18:40:19 +0200
-Message-ID: <20190528164019.GR18059@lunn.ch>
-References: <1558926867-16472-1-git-send-email-biao.huang@mediatek.com>
- <1558926867-16472-2-git-send-email-biao.huang@mediatek.com>
- <20190527.100800.1719164073038257292.davem@davemloft.net>
- <1559008369.24897.66.camel@mhfsdcap03>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH 1/3] drm: mediatek: fix unbind functions
+Date: Wed, 29 May 2019 09:35:11 +0800
+Message-ID: <1559093711.11380.6.camel@mtksdaap41>
+References: <20190527045054.113259-1-hsinyi@chromium.org>
+ <20190527045054.113259-2-hsinyi@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1559008369.24897.66.camel@mhfsdcap03>
-Sender: linux-kernel-owner@vger.kernel.org
-To: biao huang <biao.huang@mediatek.com>
-Cc: David Miller <davem@davemloft.net>, jianguo.zhang@mediatek.com, alexandre.torgue@st.com, boon.leong.ong@intel.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, yt.shen@mediatek.com, joabreu@synopsys.com, linux-mediatek@lists.infradead.org, mcoquelin.stm32@gmail.com, matthias.bgg@gmail.com, peppe.cavallaro@st.com, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190527045054.113259-2-hsinyi@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, May 28, 2019 at 09:52:49AM +0800, biao huang wrote:
-> Dear David,
-> 
-> On Mon, 2019-05-27 at 10:08 -0700, David Miller wrote:
-> > From: Biao Huang <biao.huang@mediatek.com>
-> > Date: Mon, 27 May 2019 11:14:27 +0800
-> > 
-> > > diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
-> > > index 5e98da4..029a3db 100644
-> > > --- a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
-> > > +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
-> > > @@ -403,41 +403,50 @@ static void dwmac4_set_filter(struct mac_device_info *hw,
-> > >  			      struct net_device *dev)
-> > >  {
-> > >  	void __iomem *ioaddr = (void __iomem *)dev->base_addr;
-> > > -	unsigned int value = 0;
-> > > +	unsigned int value;
-> > > +	int numhashregs = (hw->multicast_filter_bins >> 5);
-> > > +	int mcbitslog2 = hw->mcast_bits_log2;
-> > > +	int i;
-> > 
-> > Please retain the reverse christmas tree ordering here.
-> I'm a little confused about the reverse xmas tree ordering.
-> 
-> should I reorder them only according to the total length like this:
-> 
-> 	void __iomem *ioaddr = (void __iomem *)dev->base_addr;
-> 	int numhashregs = (hw->multicast_filter_bins >> 5);
-> 	int mcbitslog2 = hw->mcast_bits_log2;
-> 	unsigned int value;
-> 	int i;
-
-Yes.
-	Andrew
+SGksIEhzaW4teWk6CgpPbiBNb24sIDIwMTktMDUtMjcgYXQgMTI6NTAgKzA4MDAsIEhzaW4tWWkg
+V2FuZyB3cm90ZToKPiBtb3ZlIG1pcGlfZHNpX2hvc3RfdW5yZWdpc3RlcigpIHRvIC5yZW1vdmUg
+c2luY2UgbWlwaV9kc2lfaG9zdF9yZWdpc3RlcigpCj4gaXMgY2FsbGVkIGluIC5wcm9iZS4KCklu
+IHRoZSBsYXRlc3Qga2VybmVsIFsxXSwgbWlwaV9kc2lfaG9zdF9yZWdpc3RlcigpIGlzIGNhbGxl
+ZCBpbgptdGtfZHNpX2JpbmQoKSwgSSB0aGluayB3ZSBkb24ndCBuZWVkIHRoaXMgcGFydC4KClsx
+XQpodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC90b3J2YWxk
+cy9saW51eC5naXQvdHJlZS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jP2g9djUu
+Mi1yYzIKCj4gCj4gZGV0YXRjaCBwYW5lbCBpbiBtdGtfZHNpX2Rlc3Ryb3lfY29ubl9lbmMoKSwg
+c2luY2UgLmJpbmQgd2lsbCB0cnkgdG8KPiBhdHRhY2ggaXQgYWdhaW4uCj4gCj4gRml4ZXM6IDJl
+NTRjMTRlMzEwZiAoImRybS9tZWRpYXRlazogQWRkIERTSSBzdWIgZHJpdmVyIikKPiBTaWduZWQt
+b2ZmLWJ5OiBIc2luLVlpIFdhbmcgPGhzaW55aUBjaHJvbWl1bS5vcmc+Cj4gLS0tCj4gIGRyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgfCA0ICsrKy0KPiAgMSBmaWxlIGNoYW5nZWQs
+IDMgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJz
+L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19kc2kuYwo+IGluZGV4IGIwMGViMmQyZTA4Ni4uYzliNmQzYTY4YzhiIDEwMDY0NAo+IC0tLSBh
+L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gQEAgLTg0NCw2ICs4NDQsOCBAQCBzdGF0aWMgdm9pZCBt
+dGtfZHNpX2Rlc3Ryb3lfY29ubl9lbmMoc3RydWN0IG10a19kc2kgKmRzaSkKPiAgCS8qIFNraXAg
+Y29ubmVjdG9yIGNsZWFudXAgaWYgY3JlYXRpb24gd2FzIGRlbGVnYXRlZCB0byB0aGUgYnJpZGdl
+ICovCj4gIAlpZiAoZHNpLT5jb25uLmRldikKPiAgCQlkcm1fY29ubmVjdG9yX2NsZWFudXAoJmRz
+aS0+Y29ubik7Cj4gKwlpZiAoZHNpLT5wYW5lbCkKPiArCQlkcm1fcGFuZWxfZGV0YWNoKGRzaS0+
+cGFuZWwpOwoKSSB0aGluayBtdGtfZHNpX2Rlc3Ryb3lfY29ubl9lbmMoKSBoYXMgbXVjaCB0aGlu
+ZyB0byBkbyBhbmQgSSB3b3VsZCBsaWtlCnlvdSB0byBkbyBtb3JlLiBZb3UgY291bGQgcmVmZXIg
+dG8gWzJdIGZvciBjb21wbGV0ZSBpbXBsZW1lbnRhdGlvbi4KClsyXQpodHRwczovL2dpdC5rZXJu
+ZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC90b3J2YWxkcy9saW51eC5naXQvdHJlZS9k
+cml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4eW5vc19kcm1fZHNpLmM/aD12NS4yLXJjMiNuMTU3NQoK
+UmVnYXJkcywKQ0sKCj4gIH0KPiAgCj4gIHN0YXRpYyB2b2lkIG10a19kc2lfZGRwX3N0YXJ0KHN0
+cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXApCj4gQEAgLTEwNzMsNyArMTA3NSw2IEBAIHN0YXRpYyB2
+b2lkIG10a19kc2lfdW5iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFz
+dGVyLAo+ICAJc3RydWN0IG10a19kc2kgKmRzaSA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOwo+ICAK
+PiAgCW10a19kc2lfZGVzdHJveV9jb25uX2VuYyhkc2kpOwo+IC0JbWlwaV9kc2lfaG9zdF91bnJl
+Z2lzdGVyKCZkc2ktPmhvc3QpOwo+ICAJbXRrX2RkcF9jb21wX3VucmVnaXN0ZXIoZHJtLCAmZHNp
+LT5kZHBfY29tcCk7Cj4gIH0KPiAgCj4gQEAgLTExNzksNiArMTE4MCw3IEBAIHN0YXRpYyBpbnQg
+bXRrX2RzaV9yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgCj4gIAltdGtf
+b3V0cHV0X2RzaV9kaXNhYmxlKGRzaSk7Cj4gIAljb21wb25lbnRfZGVsKCZwZGV2LT5kZXYsICZt
+dGtfZHNpX2NvbXBvbmVudF9vcHMpOwo+ICsJbWlwaV9kc2lfaG9zdF91bnJlZ2lzdGVyKCZkc2kt
+Pmhvc3QpOwo+ICAKPiAgCXJldHVybiAwOwo+ICB9CgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
+YW4vbGlzdGluZm8vZHJpLWRldmVs
