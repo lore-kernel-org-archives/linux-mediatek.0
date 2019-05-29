@@ -1,97 +1,36 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH 2/3] drm: mediatek: remove clk_unprepare() in
- mtk_drm_crtc_destroy()
-Date: Wed, 29 May 2019 13:58:10 +0800
-Message-ID: <1559109490.15592.6.camel@mtksdaap41>
-References: <20190527045054.113259-1-hsinyi@chromium.org>
- <20190527045054.113259-3-hsinyi@chromium.org>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Subject: Re: [PATCH 2/3] drm: mediatek: remove clk_unprepare() in mtk_drm_crtc_destroy()
+Date: Wed, 29 May 2019 14:08:17 +0800
+Message-ID: <CAJMQK-gQ_j4ma_EjGbFJOz6WGXy3UZA0F9JZYnFHPZ0F08rXog@mail.gmail.com>
+References: <20190527045054.113259-1-hsinyi@chromium.org> <20190527045054.113259-3-hsinyi@chromium.org>
+ <1559109490.15592.6.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190527045054.113259-3-hsinyi@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1559109490.15592.6.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: CK Hu <ck.hu@mediatek.com>
+Cc: "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, lkml <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIEhzaW4tWWk6CgpPbiBNb24sIDIwMTktMDUtMjcgYXQgMTI6NTAgKzA4MDAsIEhzaW4tWWkg
-V2FuZyB3cm90ZToKPiBUaGVyZSBpcyBubyBjbGtfcHJlcGFyZSgpIGNhbGxlZCBpbiBtdGtfZHJt
-X2NydGNfcmVzZXQoKSwgd2hlbiB1bmJpbmRpbmcKPiBkcm0gZGV2aWNlLCBtdGtfZHJtX2NydGNf
-ZGVzdHJveSgpIHdpbGwgYmUgdHJpZ2dlcmVkLCBhbmQgdGhlIGNsb2NrcyB3aWxsCj4gYmUgZGlz
-YWJsZWQgYW5kIHVucHJlcGFyZWQgaW4gbXRrX2NydGNfZGRwX2Nsa19kaXNhYmxlLiBJZiBjbGtf
-dW5wcmVwYXJlKCkKPiBpcyBjYWxsZWQgaGVyZSwgd2UnbGwgZ2V0IHdhcm5pbmdzWzFdLCBzbyBy
-ZW1vdmUgY2xrX3VucHJlcGFyZSgpIGhlcmUuCgpJbiBvcmlnaW5hbCBjb2RlLCBjbGtfcHJlcGFy
-ZSgpIGlzIGNhbGxlZCBpbiBtdGtfZHJtX2NydGNfY3JlYXRlKCkgYW5kCmNsa191bnByZXBhcmUo
-KSBpcyBjYWxsZWQgaW4gbXRrX2RybV9jcnRjX2Rlc3Ryb3koKS4gVGhpcyBsb29rcyBjb3JyZWN0
-LgpJIGRvbid0IGtub3cgd2h5IHdlIHNob3VsZCBkbyBhbnkgdGhpbmcgYWJvdXQgY2xvY2sgaW4K
-bXRrX2RybV9jcnRjX3Jlc2V0KCkuIFRvIGRlYnVnIHRoaXMsIHRoZSBmaXJzdCBzdGVwIGlzIHRv
-IHByaW50IG1lc3NhZ2UKd2hlbiBtZWRpYXRlayBkcm0gY2FsbCBjbGtfcHJlcGFyZSgpIGFuZCBj
-bGtfdW5wcmVwYXJlKCkuIElmIHRoZXNlIHR3bwppbnRlcmZhY2UgaXMgY2FsbGVkIGluIHBhaXIs
-IEkgdGhpbmsgd2Ugc2hvdWxkIG5vdCBtb2RpZnkgbWVkaWF0ZWsgZHJtCmRyaXZlciwgdGhlIGJ1
-ZyBtYXliZSBpbiBjbG9jayBkcml2ZXIuCgpSZWdhcmRzLApDSwoKPiAKPiBbMV0KPiBbICAgMTku
-NDE2MDIwXSBtbV9kaXNwX292bDAgYWxyZWFkeSB1bnByZXBhcmVkCj4gLi4uLgo+IFsgICAxOS40
-ODc1MzZdIHBzdGF0ZTogNjAwMDAwMDUgKG5aQ3YgZGFpZiAtUEFOIC1VQU8pCj4gWyAgIDE5LjQ5
-MjMyNV0gcGMgOiBjbGtfY29yZV91bnByZXBhcmUrMHgxZDgvMHgyMjAKPiBbICAgMTkuNDk2ODUx
-XSBsciA6IGNsa19jb3JlX3VucHJlcGFyZSsweDFkOC8weDIyMAo+IFsgICAxOS41MDEzNzNdIHNw
-IDogZmZmZmZmODAxN2JiYmEzMAo+IFsgICAxOS41MDQ2ODFdIHgyOTogZmZmZmZmODAxN2JiYmE1
-MCB4Mjg6IGZmZmZmZmYzZjc5NzgwMDAKPiBbICAgMTkuNTA5OTg5XSB4Mjc6IDAwMDAwMDAwMDAw
-MDAwMDAgeDI2OiAwMDAwMDAwMDAwMDAwMDAwCj4gWyAgIDE5LjUxNTI5OF0geDI1OiAwMDAwMDAw
-MDQ0MDAwMDAwIHgyNDogZmZmZmZmZjNmNzk3ODAwMAo+IFsgICAxOS41MjA2MDVdIHgyMzogMDAw
-MDAwMDAwMDAwMDA2MCB4MjI6IGZmZmZmZjk2ODhhODlmNDgKPiBbICAgMTkuNTI1OTEyXSB4MjE6
-IGZmZmZmZmYzZjg3NTU1NDAgeDIwOiAwMDAwMDAwMDAwMDAwMDAwCj4gWyAgIDE5LjUzMTIxOV0g
-eDE5OiBmZmZmZmZmM2Y5ZDVjYTAwIHgxODogMDAwMDAwMDBmZmZlYmQxOAo+IFsgICAxOS41MzY1
-MjZdIHgxNzogMDAwMDAwMDAwMDAwMDAzYyB4MTY6IGZmZmZmZjk2ODgxNDU4ZTQKPiBbICAgMTku
-NTQxODMzXSB4MTU6IDAwMDAwMDAwMDAwMDAwMDUgeDE0OiA3MDY1NzI3MDZlNzUyMDc5Cj4gWyAg
-IDE5LjU0NzE0MF0geDEzOiBmZmZmZmY4MDA4NWNjOTUwIHgxMjogMDAwMDAwMDAwMDAwMDAwMAo+
-IFsgICAxOS41NTI0NDZdIHgxMTogMDAwMDAwMDAwMDAwMDAwMCB4MTA6IDAwMDAwMDAwMDAwMDAw
-MDAKPiBbICAgMTkuNTU3NzU0XSB4OSA6IDFiMGZhMjFmMGVjMGQ4MDAgeDggOiAxYjBmYTIxZjBl
-YzBkODAwCj4gWyAgIDE5LjU2MzA2MF0geDcgOiAwMDAwMDAwMDAwMDAwMDAwIHg2IDogZmZmZmZm
-OTY4OGI1ZGQwNwo+IFsgICAxOS41NjgzNjZdIHg1IDogMDAwMDAwMDAwMDAwMDAwMCB4NCA6IDAw
-MDAwMDAwMDAwMDAwMDAKPiBbICAgMTkuNTczNjczXSB4MyA6IDAwMDAwMDAwMDAwMDAwMDAgeDIg
-OiBmZmZmZmZmM2ZmZmEwMjQ4Cj4gWyAgIDE5LjU3ODk3OV0geDEgOiBmZmZmZmZmM2ZmZjk3YTAw
-IHgwIDogMDAwMDAwMDAwMDAwMDAxZgo+IFsgICAxOS41ODQyODhdIENhbGwgdHJhY2U6Cj4gWyAg
-IDE5LjU4NjczNF0gIGNsa19jb3JlX3VucHJlcGFyZSsweDFkOC8weDIyMAo+IFsgICAxOS41OTA5
-MTRdICBjbGtfdW5wcmVwYXJlKzB4MzAvMHg0MAo+IFsgICAxOS41OTQ0OTFdICBtdGtfZHJtX2Ny
-dGNfZGVzdHJveSsweDMwLzB4NWMKPiBbICAgMTkuNTk4NjcyXSAgZHJtX21vZGVfY29uZmlnX2Ns
-ZWFudXArMHgxMjQvMHgyOTAKPiBbICAgMTkuNjAzMjg2XSAgbXRrX2RybV91bmJpbmQrMHg0NC8w
-eDVjCj4gWyAgIDE5LjYwNjk0Nl0gIHRha2VfZG93bl9tYXN0ZXIrMHg0MC8weDU0Cj4gWyAgIDE5
-LjYxMDc3NV0gIGNvbXBvbmVudF9tYXN0ZXJfZGVsKzB4NzAvMHg5NAo+IFsgICAxOS42MTQ5NTJd
-ICBtdGtfZHJtX3JlbW92ZSsweDI4LzB4NDQKPiBbICAgMTkuNjE4NjEyXSAgcGxhdGZvcm1fZHJ2
-X3JlbW92ZSsweDI4LzB4NTAKPiBbICAgMTkuNjIyNzAyXSAgZGV2aWNlX3JlbGVhc2VfZHJpdmVy
-X2ludGVybmFsKzB4MTM4LzB4MWVjCj4gWyAgIDE5LjYyNzkyMV0gIGRldmljZV9yZWxlYXNlX2Ry
-aXZlcisweDI0LzB4MzAKPiBbICAgMTkuNjMyMTg1XSAgdW5iaW5kX3N0b3JlKzB4OTAvMHhkYwo+
-IFsgICAxOS42MzU2NjddICBkcnZfYXR0cl9zdG9yZSsweDNjLzB4NTQKPiBbICAgMTkuNjM5MzI3
-XSAgc3lzZnNfa2Zfd3JpdGUrMHg1MC8weDY4Cj4gWyAgIDE5LjY0Mjk4Nl0gIGtlcm5mc19mb3Bf
-d3JpdGUrMHgxMmMvMHgxYzgKPiBbICAgMTkuNjQ2OTk3XSAgX192ZnNfd3JpdGUrMHg1NC8weDE1
-Ywo+IFsgICAxOS42NTA0ODJdICB2ZnNfd3JpdGUrMHhjYy8weDE4OAo+IFsgICAxOS42NTM3OTJd
-ICBrc3lzX3dyaXRlKzB4NzgvMHhkOAo+IFsgICAxOS42NTcxMDRdICBfX2FybTY0X3N5c193cml0
-ZSsweDIwLzB4MmMKPiBbICAgMTkuNjYxMDI3XSAgZWwwX3N2Y19jb21tb24rMHg5Yy8weGZjCj4g
-WyAgIDE5LjY2NDY4Nl0gIGVsMF9zdmNfY29tcGF0X2hhbmRsZXIrMHgyYy8weDM4Cj4gWyAgIDE5
-LjY2OTAzOV0gIGVsMF9zdmNfY29tcGF0KzB4OC8weDE4Cj4gWyAgIDE5LjY3MjYwOV0gLS0tWyBl
-bmQgdHJhY2UgNDFjZTk1NDg1NWNkYTZmMCBdLS0tCj4gCj4gRml4ZXM6IDExOWY1MTczNjI4YSAo
-ImRybS9tZWRpYXRlazogQWRkIERSTSBEcml2ZXIgZm9yIE1lZGlhdGVrIFNvQyBNVDgxNzMuIikK
-PiBTaWduZWQtb2ZmLWJ5OiBIc2luLVlpIFdhbmcgPGhzaW55aUBjaHJvbWl1bS5vcmc+Cj4gLS0t
-Cj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYyB8IDQgLS0tLQo+ICAx
-IGZpbGUgY2hhbmdlZCwgNCBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19kcm1fY3J0Yy5jCj4gaW5kZXggYWNhZDA4ODE3M2RhLi5jMmIzODk5N2FjOGIgMTAwNjQ0
-Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5jCj4gKysrIGIv
-ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5jCj4gQEAgLTk4LDEwICs5OCw2
-IEBAIHN0YXRpYyB2b2lkIG10a19kcm1fZmluaXNoX3BhZ2VfZmxpcChzdHJ1Y3QgbXRrX2RybV9j
-cnRjICptdGtfY3J0YykKPiAgc3RhdGljIHZvaWQgbXRrX2RybV9jcnRjX2Rlc3Ryb3koc3RydWN0
-IGRybV9jcnRjICpjcnRjKQo+ICB7Cj4gIAlzdHJ1Y3QgbXRrX2RybV9jcnRjICptdGtfY3J0YyA9
-IHRvX210a19jcnRjKGNydGMpOwo+IC0JaW50IGk7Cj4gLQo+IC0JZm9yIChpID0gMDsgaSA8IG10
-a19jcnRjLT5kZHBfY29tcF9ucjsgaSsrKQo+IC0JCWNsa191bnByZXBhcmUobXRrX2NydGMtPmRk
-cF9jb21wW2ldLT5jbGspOwo+ICAKPiAgCW10a19kaXNwX211dGV4X3B1dChtdGtfY3J0Yy0+bXV0
-ZXgpOwo+ICAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
-aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
+On Wed, May 29, 2019 at 1:58 PM CK Hu <ck.hu@mediatek.com> wrote:
+>
+> Hi, Hsin-Yi:
+>
+> On Mon, 2019-05-27 at 12:50 +0800, Hsin-Yi Wang wrote:
+> > There is no clk_prepare() called in mtk_drm_crtc_reset(), when unbinding
+> > drm device, mtk_drm_crtc_destroy() will be triggered, and the clocks will
+> > be disabled and unprepared in mtk_crtc_ddp_clk_disable. If clk_unprepare()
+> > is called here, we'll get warnings[1], so remove clk_unprepare() here.
+>
+> In original code, clk_prepare() is called in mtk_drm_crtc_create() and
+> clk_unprepare() is called in mtk_drm_crtc_destroy(). This looks correct.
+
+clk_prepare() is removed in https://patchwork.kernel.org/patch/10872777/.
+
+> I don't know why we should do any thing about clock in
+> mtk_drm_crtc_reset(). To debug this, the first step is to print message
+> when mediatek drm call clk_prepare() and clk_unprepare(). If these two
+> interface is called in pair, I think we should not modify mediatek drm
+> driver, the bug maybe in clock driver.
+>
