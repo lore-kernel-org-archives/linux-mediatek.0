@@ -1,90 +1,73 @@
 From: YueHaibing <yuehaibing@huawei.com>
-Subject: [PATCH] mt76: Remove set but not used variables 'pid' and 'final_mpdu'
-Date: Wed, 29 May 2019 22:53:56 +0800
-Message-ID: <20190529145356.13872-1-yuehaibing@huawei.com>
+Subject: [PATCH -next] ASoC: mediatek: Make some symbols static
+Date: Wed, 29 May 2019 23:04:37 +0800
+Message-ID: <20190529150437.19004-1-yuehaibing@huawei.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: nbd@nbd.name, lorenzo.bianconi83@gmail.com, ryder.lee@mediatek.com, royluo@google.com, kvalo@codeaurora.org, matthias.bgg@gmail.com, sgruszka@redhat.com
-Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, davem@davemloft.net, YueHaibing <yuehaibing@huawei.com>
+To: lgirdwood@gmail.com, broonie@kernel.org, perex@perex.cz, tiwai@suse.com, matthias.bgg@gmail.com, kaichieh.chuang@mediatek.com
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, alsa-devel@alsa-project.org, YueHaibing <yuehaibing@huawei.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Fixes gcc '-Wunused-but-set-variable' warnings:
+Fix sparse warnings:
 
-drivers/net/wireless/mediatek/mt76/mt7603/mac.c: In function mt7603_fill_txs:
-drivers/net/wireless/mediatek/mt76/mt7603/mac.c:969:5: warning: variable pid set but not used [-Wunused-but-set-variable]
-drivers/net/wireless/mediatek/mt76/mt7603/mac.c:961:7: warning: variable final_mpdu set but not used [-Wunused-but-set-variable]
-drivers/net/wireless/mediatek/mt76/mt7615/mac.c: In function mt7615_fill_txs:
-drivers/net/wireless/mediatek/mt76/mt7615/mac.c:555:5: warning: variable pid set but not used [-Wunused-but-set-variable]
-drivers/net/wireless/mediatek/mt76/mt7615/mac.c:552:19: warning: variable final_mpdu set but not used [-Wunused-but-set-variable]
+sound/soc/mediatek/common/mtk-btcvsd.c:410:5: warning: symbol 'mtk_btcvsd_write_to_bt' was not declared. Should it be static?
+sound/soc/mediatek/common/mtk-btcvsd.c:698:9: warning: symbol 'mtk_btcvsd_snd_read' was not declared. Should it be static?
+sound/soc/mediatek/common/mtk-btcvsd.c:779:9: warning: symbol 'mtk_btcvsd_snd_write' was not declared. Should it be static?
 
-They are never used, so can be removed.
-
+Reported-by: Hulk Robot <hulkci@huawei.com>
 Signed-off-by: YueHaibing <yuehaibing@huawei.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7603/mac.c | 4 ----
- drivers/net/wireless/mediatek/mt76/mt7615/mac.c | 5 +----
- 2 files changed, 1 insertion(+), 8 deletions(-)
+ sound/soc/mediatek/common/mtk-btcvsd.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
-index 6d506e34c3ee..5182a36276fc 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
-@@ -958,7 +958,6 @@ mt7603_fill_txs(struct mt7603_dev *dev, struct mt7603_sta *sta,
- 	int final_idx = 0;
- 	u32 final_rate;
- 	u32 final_rate_flags;
--	bool final_mpdu;
- 	bool ack_timeout;
- 	bool fixed_rate;
- 	bool probe;
-@@ -966,7 +965,6 @@ mt7603_fill_txs(struct mt7603_dev *dev, struct mt7603_sta *sta,
- 	bool cck = false;
- 	int count;
- 	u32 txs;
--	u8 pid;
- 	int idx;
- 	int i;
+diff --git a/sound/soc/mediatek/common/mtk-btcvsd.c b/sound/soc/mediatek/common/mtk-btcvsd.c
+index bd55c546e790..c7a81c4be068 100644
+--- a/sound/soc/mediatek/common/mtk-btcvsd.c
++++ b/sound/soc/mediatek/common/mtk-btcvsd.c
+@@ -407,11 +407,11 @@ static int mtk_btcvsd_read_from_bt(struct mtk_btcvsd_snd *bt,
+ 	return 0;
+ }
  
-@@ -974,9 +972,7 @@ mt7603_fill_txs(struct mt7603_dev *dev, struct mt7603_sta *sta,
- 	probe = !!(info->flags & IEEE80211_TX_CTL_RATE_CTRL_PROBE);
- 
- 	txs = le32_to_cpu(txs_data[4]);
--	final_mpdu = txs & MT_TXS4_ACKED_MPDU;
- 	ampdu = !fixed_rate && (txs & MT_TXS4_AMPDU);
--	pid = FIELD_GET(MT_TXS4_PID, txs);
- 	count = FIELD_GET(MT_TXS4_TX_COUNT, txs);
- 
- 	txs = le32_to_cpu(txs_data[0]);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-index b8f48d10f27a..a51bfb6990b3 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-@@ -549,23 +549,20 @@ static bool mt7615_fill_txs(struct mt7615_dev *dev, struct mt7615_sta *sta,
+-int mtk_btcvsd_write_to_bt(struct mtk_btcvsd_snd *bt,
+-			   enum bt_sco_packet_len packet_type,
+-			   unsigned int packet_length,
+-			   unsigned int packet_num,
+-			   unsigned int blk_size)
++static int mtk_btcvsd_write_to_bt(struct mtk_btcvsd_snd *bt,
++				  enum bt_sco_packet_len packet_type,
++				  unsigned int packet_length,
++				  unsigned int packet_num,
++				  unsigned int blk_size)
  {
- 	struct ieee80211_supported_band *sband;
- 	int i, idx, count, final_idx = 0;
--	bool fixed_rate, final_mpdu, ack_timeout;
-+	bool fixed_rate, ack_timeout;
- 	bool probe, ampdu, cck = false;
- 	u32 final_rate, final_rate_flags, final_nss, txs;
--	u8 pid;
+ 	unsigned int i;
+ 	unsigned long flags;
+@@ -695,9 +695,9 @@ static int wait_for_bt_irq(struct mtk_btcvsd_snd *bt,
+ 	return 0;
+ }
  
- 	fixed_rate = info->status.rates[0].count;
- 	probe = !!(info->flags & IEEE80211_TX_CTL_RATE_CTRL_PROBE);
+-ssize_t mtk_btcvsd_snd_read(struct mtk_btcvsd_snd *bt,
+-			    char __user *buf,
+-			    size_t count)
++static ssize_t mtk_btcvsd_snd_read(struct mtk_btcvsd_snd *bt,
++				   char __user *buf,
++				   size_t count)
+ {
+ 	ssize_t read_size = 0, read_count = 0, cur_read_idx, cont;
+ 	unsigned int cur_buf_ofs = 0;
+@@ -776,9 +776,9 @@ ssize_t mtk_btcvsd_snd_read(struct mtk_btcvsd_snd *bt,
+ 	return read_count;
+ }
  
- 	txs = le32_to_cpu(txs_data[1]);
--	final_mpdu = txs & MT_TXS1_ACKED_MPDU;
- 	ampdu = !fixed_rate && (txs & MT_TXS1_AMPDU);
- 
- 	txs = le32_to_cpu(txs_data[3]);
- 	count = FIELD_GET(MT_TXS3_TX_COUNT, txs);
- 
- 	txs = le32_to_cpu(txs_data[0]);
--	pid = FIELD_GET(MT_TXS0_PID, txs);
- 	final_rate = FIELD_GET(MT_TXS0_TX_RATE, txs);
- 	ack_timeout = txs & MT_TXS0_ACK_TIMEOUT;
- 
+-ssize_t mtk_btcvsd_snd_write(struct mtk_btcvsd_snd *bt,
+-			     char __user *buf,
+-			     size_t count)
++static ssize_t mtk_btcvsd_snd_write(struct mtk_btcvsd_snd *bt,
++				    char __user *buf,
++				    size_t count)
+ {
+ 	int written_size = count, avail = 0, cur_write_idx, write_size, cont;
+ 	unsigned int cur_buf_ofs = 0;
 -- 
 2.17.1
