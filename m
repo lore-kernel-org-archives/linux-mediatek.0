@@ -1,34 +1,51 @@
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Subject: Re: [PATCH v2 1/8] arm64: dts: mt8183: add thermal zone node
-Date: Thu, 30 May 2019 14:27:28 +0800
-Message-ID: <CAJMQK-giJTeERnqjxoSMjF-JXxW9SPmeARWf3f9ZyRgBsYN5fg@mail.gmail.com>
-References: <1557494826-6044-1-git-send-email-michael.kao@mediatek.com> <1557494826-6044-2-git-send-email-michael.kao@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v3] gpu/drm: mediatek: call mtk_dsi_stop() after
+ mtk_drm_crtc_atomic_disable()
+Date: Thu, 30 May 2019 15:10:26 +0800
+Message-ID: <1559200226.23119.4.camel@mtksdaap41>
+References: <20190528073908.633-1-hsinyi@chromium.org>
+         <1559033586.5141.3.camel@mtksdaap41>
+         <CAJMQK-ir9J-JN9DDZPBA1nVkJUZ_6A+fY4fA6jx6zOh_9q5a-w@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1557494826-6044-2-git-send-email-michael.kao@mediatek.com>
+In-Reply-To: <CAJMQK-ir9J-JN9DDZPBA1nVkJUZ_6A+fY4fA6jx6zOh_9q5a-w@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: "michael.kao" <michael.kao@mediatek.com>
-Cc: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, lkml <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, lkml <linux-kernel@vger.kernel.org>, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, May 10, 2019 at 9:27 PM michael.kao <michael.kao@mediatek.com> wrote:
+Hi, Hsin-Yi:
 
-> +
-> +                       tzts1: tzts1 {
-> +                               polling-delay-passive = <0>;
-> +                               polling-delay = <0>;
-> +                               thermal-sensors = <&thermal 1>;
-> +                               sustainable-power = <0>;
-> +                               trips {};
-> +                               cooling-maps {};
-> +                       };
-> +
-Is 0 a valid initial sustainable-power setting? Since we'll still get
-warning[1] about this, though it might not be harmful.
+On Thu, 2019-05-30 at 10:55 +0800, Hsin-Yi Wang wrote:
+> On Tue, May 28, 2019 at 4:53 PM CK Hu <ck.hu@mediatek.com> wrote:
+> 
+> > I think we've already discussed in [1]. I need a reason to understand
+> > this is hardware behavior or software bug. If this is a software bug, we
+> > need to fix the bug and code could be symmetric.
+> >
+> > [1]
+> > http://lists.infradead.org/pipermail/linux-mediatek/2019-March/018423.html
+> >
+> Hi CK,
+> 
+> Jitao has replied in v2[1]
+> "
+> mtk_dsi_start must after dsi full setting.
+> If you put it in mtk_dsi_ddp_start, mtk_dsi_set_mode won't work. DSI
+> will keep cmd mode. So you see no irq.
+> ...
+> "
+> 
+> [1] https://lore.kernel.org/patchwork/patch/1052505/#1276270
+> 
+> Thanks
 
-If 0 is a valid setting, maybe we should consider showing the warning
-of not setting this property in [2]?
+OK, this looks the hardware behavior, so I would like you to add comment
+in the code to describe why we need this asymmetric behavior. The
+description should be clear so that we could know how to modify the code
+flow in future.
 
-[1] https://elixir.bootlin.com/linux/latest/source/drivers/thermal/power_allocator.c#L570
-[2] https://elixir.bootlin.com/linux/latest/source/drivers/thermal/of-thermal.c#L1049
+Regards,
+CK
