@@ -1,13 +1,13 @@
 From: Biao Huang <biao.huang@mediatek.com>
-Subject: [v6, PATCH] net: stmmac: add support for hash table size 128/256 in dwmac4
-Date: Thu, 30 May 2019 17:20:19 +0800
-Message-ID: <1559208019-2778-2-git-send-email-biao.huang@mediatek.com>
-References: <1559208019-2778-1-git-send-email-biao.huang@mediatek.com>
+Subject: [v7, PATCH] net: stmmac: add support for hash table size 128/256 in dwmac4
+Date: Thu, 30 May 2019 17:30:26 +0800
+Message-ID: <1559208626-3218-2-git-send-email-biao.huang@mediatek.com>
+References: <1559208626-3218-1-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1559208019-2778-1-git-send-email-biao.huang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1559208626-3218-1-git-send-email-biao.huang@mediatek.com>
+Sender: netdev-owner@vger.kernel.org
 To: davem@davemloft.net, Jose Abreu <joabreu@synopsys.com>
 Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, biao.huang@mediatek.com, jianguo.zhang@mediatek.com, boon.leong.ong@intel.com, andrew@lunn.ch
 List-Id: linux-mediatek@lists.infradead.org
@@ -19,7 +19,7 @@ to avoid side effect to functions of other bits.
 
 stmmac selftests output log with flow control on:
 	ethtool -t eth0
-	The test result is FAIL
+	The test result is PASS
 	The test extra info:
 	 1. MAC Loopback                 0
 	 2. PHY Loopback                 -95
