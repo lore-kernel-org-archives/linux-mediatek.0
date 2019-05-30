@@ -1,45 +1,36 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v2 4/4] drm: mediatek: clear num_pipes when unbind driver
-Date: Thu, 30 May 2019 10:28:54 +0800
-Message-ID: <1559183334.6868.3.camel@mtksdaap41>
-References: <20190529102555.251579-1-hsinyi@chromium.org>
-         <20190529102555.251579-5-hsinyi@chromium.org>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Subject: Re: [PATCH v3] gpu/drm: mediatek: call mtk_dsi_stop() after mtk_drm_crtc_atomic_disable()
+Date: Thu, 30 May 2019 10:55:12 +0800
+Message-ID: <CAJMQK-ir9J-JN9DDZPBA1nVkJUZ_6A+fY4fA6jx6zOh_9q5a-w@mail.gmail.com>
+References: <20190528073908.633-1-hsinyi@chromium.org> <1559033586.5141.3.camel@mtksdaap41>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190529102555.251579-5-hsinyi@chromium.org>
+In-Reply-To: <1559033586.5141.3.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: linux-arm-kernel@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: CK Hu <ck.hu@mediatek.com>
+Cc: "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, lkml <linux-kernel@vger.kernel.org>, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Hsin-Yi:
+On Tue, May 28, 2019 at 4:53 PM CK Hu <ck.hu@mediatek.com> wrote:
 
-On Wed, 2019-05-29 at 18:25 +0800, Hsin-Yi Wang wrote:
-> num_pipes is used for mutex created in mtk_drm_crtc_create(). If we
-> don't clear num_pipes count, when rebinding driver, the count will
-> be accumulated. From mtk_disp_mutex_get(), there can only be at most
-> 10 mutex id. Clear this number so it starts from 0 in every rebind.
+> I think we've already discussed in [1]. I need a reason to understand
+> this is hardware behavior or software bug. If this is a software bug, we
+> need to fix the bug and code could be symmetric.
+>
+> [1]
+> http://lists.infradead.org/pipermail/linux-mediatek/2019-March/018423.html
+>
+Hi CK,
 
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Jitao has replied in v2[1]
+"
+mtk_dsi_start must after dsi full setting.
+If you put it in mtk_dsi_ddp_start, mtk_dsi_set_mode won't work. DSI
+will keep cmd mode. So you see no irq.
+...
+"
 
-> 
-> Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC MT8173.")
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index 8718d123ccaa..bbfe3a464aea 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -400,6 +400,7 @@ static void mtk_drm_unbind(struct device *dev)
->  	drm_dev_unregister(private->drm);
->  	mtk_drm_kms_deinit(private->drm);
->  	drm_dev_put(private->drm);
-> +	private->num_pipes = 0;
->  	private->drm = NULL;
->  }
->  
+[1] https://lore.kernel.org/patchwork/patch/1052505/#1276270
+
+Thanks
