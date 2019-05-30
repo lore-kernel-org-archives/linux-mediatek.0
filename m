@@ -1,124 +1,34 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [v3 PATCH] usb: create usb_debug_root for gadget only
-Date: Thu, 30 May 2019 15:31:39 +0800
-Message-ID: <1559201499.8487.40.camel@mhfsdcap03>
-References: <cffd6d75f69e4d908c8f39b8a60ddae27d6b7c88.1559028752.git.chunfeng.yun@mediatek.com>
-         <87k1ebj8vt.fsf@linux.intel.com>
+From: Biao Huang <biao.huang@mediatek.com>
+Subject: [PATCH 0/4] complete dwmac-mediatek driver and fix flow control issue
+Date: Thu, 30 May 2019 16:54:40 +0800
+Message-ID: <1559206484-1825-1-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <87k1ebj8vt.fsf@linux.intel.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Felipe Balbi <felipe.balbi@linux.intel.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, Randy Dunlap <rdunlap@infradead.org>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Jose Abreu <joabreu@synopsys.com>
+Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, biao.huang@mediatek.com, jianguo.zhang@mediatek.com, boon.leong.ong@intel.com, andrew@lunn.ch
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Felipe,
-On Tue, 2019-05-28 at 11:11 +0300, Felipe Balbi wrote:
-> Hi,
-> 
-> Chunfeng Yun <chunfeng.yun@mediatek.com> writes:
-> > diff --git a/drivers/usb/core/usb.c b/drivers/usb/core/usb.c
-> > index 7fcb9f782931..88b3ee03a12d 100644
-> > --- a/drivers/usb/core/usb.c
-> > +++ b/drivers/usb/core/usb.c
-> > @@ -1190,7 +1190,7 @@ EXPORT_SYMBOL_GPL(usb_debug_root);
-> >  
-> >  static void usb_debugfs_init(void)
-> >  {
-> > -	usb_debug_root = debugfs_create_dir("usb", NULL);
-> > +	usb_debug_root = debugfs_create_dir(USB_DEBUG_ROOT_NAME, NULL);
-> >  	debugfs_create_file("devices", 0444, usb_debug_root, NULL,
-> >  			    &usbfs_devices_fops);
-> >  }
-> 
-> might be a better idea to move this to usb common. Then have a function
-> which can be called by both host and gadget to maybe create the
-> directory:
-> 
-> static struct dentry *usb_debug_root;
-> 
-> struct dentry *usb_debugfs_init(void)
-> {
-> 	if (!usb_debug_root)
->         	usb_debug_root = debugfs_create_dir("usb", NULL);
-> 
-> 	return usb_debug_root;
-> }
-> 
-> 
-> Then usb core would be updated to something like:
-> 
-> static void usb_core_debugfs_init(void)
-> {
-> 	struct dentry *root = usb_debugfs_init();
-> 
-> 	debugfs_create_file("devices", 0444, root, NULL, &usbfs_devices_fops);
-> }
-> 
-I find a problem when move usb_debugfs_init() and usb_debugfs_cleanup()
-into usb common, it's easy to create "usb" directory, but difficult to
-cleanup it:
-
-common/common.c
-
-struct dentry *usb_debugfs_init(void)
-{
-    if (!usb_debug_root)
-        usb_debug_root = debugfs_create_dir("usb", NULL);
-
-    return usb_debug_root;
-}
-
-void usb_debugfs_cleanup(void)
-{
-    debugfs_remove_recursive(usb_debug_root);
-    usb_debug_root = NULL;
-}
-
-core/usb.c
-
-static void usb_core_debugfs_init(void)
-{
-    struct dentry *root = usb_debugfs_init();
-
-    debugfs_create_file("devices", 0444, root, NULL,
-&usbfs_devices_fops);
-}
-
-static int __init usb_init(void)
-{
-    ...
-    usb_core_debugfs_init();
-    ...
-}
-
-static void __exit usb_exit(void)
-{
-    ...
-    usb_debugfs_cleanup();
-    // will be error, gadget may use it.
-    ...
-}
-
-gadget/udc/core.c
-
-static int __init usb_udc_init(void)
-{
-    ...
-    usb_debugfs_init();
-    ...
-}
-
-static void __exit usb_udc_exit(void)
-{
-    ...
-    usb_debugfs_cleanup();
-    // can't cleanup in fact, usb core may use it.
-}
-
-How to handle this case? introduce a reference count? do you have any
-suggestion?
-
-Thanks a lot
+This series mainly complete dwmac-mediatek driver:                              
+        1. add power on/off operations for dwmac-mediatek.                      
+        2. disable rx watchdog to reduce rx path reponding time.                
+        3. change the default value of tx-frames from 25 to 1, so               
+           ptp4l will test pass by default.                                     
+                                                                                
+and also fix the issue that flow control won't be disabled any more             
+once being enabled.                                                               
+                                                                                
+Biao Huang (4):                                                                 
+  net: stmmac: dwmac-mediatek: enable Ethernet power domain                     
+  net: stmmac: dwmac-mediatek: disable rx watchdog                              
+  net: stmmac: modify default value of tx-frames                                
+  net: stmmac: dwmac4: fix flow control issue                                   
+                                                                                
+ drivers/net/ethernet/stmicro/stmmac/common.h       |    2 +-                   
+ .../net/ethernet/stmicro/stmmac/dwmac-mediatek.c   |   19 ++++++++++++++++++-  
+ drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c  |    8 ++++++--             
+ 3 files changed, 25 insertions(+), 4 deletions(-)                              
+                                                                                
+--                                                                              
+1.7.9.5
