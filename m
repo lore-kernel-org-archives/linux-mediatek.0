@@ -1,65 +1,34 @@
-From: biao huang <biao.huang@mediatek.com>
-Subject: RE: [v5, PATCH] net: stmmac: add support for hash table size
- 128/256 in dwmac4
-Date: Thu, 30 May 2019 11:31:40 +0800
-Message-ID: <1559187100.24897.81.camel@mhfsdcap03>
-References: <1559122268-22545-1-git-send-email-biao.huang@mediatek.com>
-         <1559122268-22545-2-git-send-email-biao.huang@mediatek.com>
-         <78EB27739596EE489E55E81C33FEC33A0B9334CE@DE02WEMBXB.internal.synopsys.com>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Subject: Re: [PATCH v2 1/8] arm64: dts: mt8183: add thermal zone node
+Date: Thu, 30 May 2019 14:27:28 +0800
+Message-ID: <CAJMQK-giJTeERnqjxoSMjF-JXxW9SPmeARWf3f9ZyRgBsYN5fg@mail.gmail.com>
+References: <1557494826-6044-1-git-send-email-michael.kao@mediatek.com> <1557494826-6044-2-git-send-email-michael.kao@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <78EB27739596EE489E55E81C33FEC33A0B9334CE@DE02WEMBXB.internal.synopsys.com>
+In-Reply-To: <1557494826-6044-2-git-send-email-michael.kao@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jose Abreu <Jose.Abreu@synopsys.com>
-Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "linux-stm32@st-md-mailman.stormreply.com" <linux-stm32@st-md-mailman.stormreply.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "yt.shen@mediatek.com" <yt.shen@mediatek.com>, "jianguo.zhang@mediatek.com" <jianguo.zhang@mediatek.com>, "boon.leong.ong@intel.com" <boon.leong.ong@intel.com>, "andrew@lunn.ch" <andrew@lunn.ch>
+To: "michael.kao" <michael.kao@mediatek.com>
+Cc: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, lkml <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Jose,
-	I also try "ethtool -A eth0 tx on rx on", and selftests pass.
+On Fri, May 10, 2019 at 9:27 PM michael.kao <michael.kao@mediatek.com> wrote:
 
-	But there are bugs in dwmac4_flow_ctrl:
-		flow control will keep on once enabled. 
-		ethtool -A eth0 tx off rx off can't change it.
+> +
+> +                       tzts1: tzts1 {
+> +                               polling-delay-passive = <0>;
+> +                               polling-delay = <0>;
+> +                               thermal-sensors = <&thermal 1>;
+> +                               sustainable-power = <0>;
+> +                               trips {};
+> +                               cooling-maps {};
+> +                       };
+> +
+Is 0 a valid initial sustainable-power setting? Since we'll still get
+warning[1] about this, though it might not be harmful.
 
-	if (fc & FLOW_RX)  {
-		pr_debug ...
-		flow |= GMAC_RX_FLOW_CTRL_RFE;
-		writel(flow, ioaddr + GMAC_RX_FLOW_CTRL);
-		>> this should move outside to enasure rx flow control will be off
-when execute "ethtool -A eth0 rx off"
-	} 
+If 0 is a valid setting, maybe we should consider showing the warning
+of not setting this property in [2]?
 
-	same for tx.
-
-On Wed, 2019-05-29 at 10:30 +0000, Jose Abreu wrote:
-> From: Biao Huang <biao.huang@mediatek.com>
-> Date: Wed, May 29, 2019 at 10:31:08
-> 
-> > 1. get hash table size in hw feature reigster, and add support
-> > for taller hash table(128/256) in dwmac4.
-> > 2. only clear GMAC_PACKET_FILTER bits used in this function,
-> > to avoid side effect to functions of other bits.
-> > 
-> > stmmac selftests output log:
-> > 	ethtool -t eth0
-> > 	The test result is FAIL
-> > 	The test extra info:
-> > 	 1. MAC Loopback                 0
-> > 	 2. PHY Loopback                 -95
-> > 	 3. MMC Counters                 0
-> > 	 4. EEE                          -95
-> > 	 5. Hash Filter MC               0
-> > 	 6. Perfect Filter UC            0
-> > 	 7. MC Filter                    0
-> > 	 8. UC Filter                    0
-> > 	 9. Flow Control                 1
-> 
-> Thanks for testing, this patch looks good to me.
-> 
-> Do you want to check why Flow Control selftest is failing ?
-> 
-> 
-> Thanks,
-> Jose Miguel Abreu
+[1] https://elixir.bootlin.com/linux/latest/source/drivers/thermal/power_allocator.c#L570
+[2] https://elixir.bootlin.com/linux/latest/source/drivers/thermal/of-thermal.c#L1049
