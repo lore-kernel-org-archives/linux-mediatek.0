@@ -1,51 +1,124 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v3] gpu/drm: mediatek: call mtk_dsi_stop() after
- mtk_drm_crtc_atomic_disable()
-Date: Thu, 30 May 2019 15:10:26 +0800
-Message-ID: <1559200226.23119.4.camel@mtksdaap41>
-References: <20190528073908.633-1-hsinyi@chromium.org>
-         <1559033586.5141.3.camel@mtksdaap41>
-         <CAJMQK-ir9J-JN9DDZPBA1nVkJUZ_6A+fY4fA6jx6zOh_9q5a-w@mail.gmail.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [v3 PATCH] usb: create usb_debug_root for gadget only
+Date: Thu, 30 May 2019 15:31:39 +0800
+Message-ID: <1559201499.8487.40.camel@mhfsdcap03>
+References: <cffd6d75f69e4d908c8f39b8a60ddae27d6b7c88.1559028752.git.chunfeng.yun@mediatek.com>
+         <87k1ebj8vt.fsf@linux.intel.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAJMQK-ir9J-JN9DDZPBA1nVkJUZ_6A+fY4fA6jx6zOh_9q5a-w@mail.gmail.com>
+In-Reply-To: <87k1ebj8vt.fsf@linux.intel.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, lkml <linux-kernel@vger.kernel.org>, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>
+To: Felipe Balbi <felipe.balbi@linux.intel.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, Randy Dunlap <rdunlap@infradead.org>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Hsin-Yi:
+Hi Felipe,
+On Tue, 2019-05-28 at 11:11 +0300, Felipe Balbi wrote:
+> Hi,
+> 
+> Chunfeng Yun <chunfeng.yun@mediatek.com> writes:
+> > diff --git a/drivers/usb/core/usb.c b/drivers/usb/core/usb.c
+> > index 7fcb9f782931..88b3ee03a12d 100644
+> > --- a/drivers/usb/core/usb.c
+> > +++ b/drivers/usb/core/usb.c
+> > @@ -1190,7 +1190,7 @@ EXPORT_SYMBOL_GPL(usb_debug_root);
+> >  
+> >  static void usb_debugfs_init(void)
+> >  {
+> > -	usb_debug_root = debugfs_create_dir("usb", NULL);
+> > +	usb_debug_root = debugfs_create_dir(USB_DEBUG_ROOT_NAME, NULL);
+> >  	debugfs_create_file("devices", 0444, usb_debug_root, NULL,
+> >  			    &usbfs_devices_fops);
+> >  }
+> 
+> might be a better idea to move this to usb common. Then have a function
+> which can be called by both host and gadget to maybe create the
+> directory:
+> 
+> static struct dentry *usb_debug_root;
+> 
+> struct dentry *usb_debugfs_init(void)
+> {
+> 	if (!usb_debug_root)
+>         	usb_debug_root = debugfs_create_dir("usb", NULL);
+> 
+> 	return usb_debug_root;
+> }
+> 
+> 
+> Then usb core would be updated to something like:
+> 
+> static void usb_core_debugfs_init(void)
+> {
+> 	struct dentry *root = usb_debugfs_init();
+> 
+> 	debugfs_create_file("devices", 0444, root, NULL, &usbfs_devices_fops);
+> }
+> 
+I find a problem when move usb_debugfs_init() and usb_debugfs_cleanup()
+into usb common, it's easy to create "usb" directory, but difficult to
+cleanup it:
 
-On Thu, 2019-05-30 at 10:55 +0800, Hsin-Yi Wang wrote:
-> On Tue, May 28, 2019 at 4:53 PM CK Hu <ck.hu@mediatek.com> wrote:
-> 
-> > I think we've already discussed in [1]. I need a reason to understand
-> > this is hardware behavior or software bug. If this is a software bug, we
-> > need to fix the bug and code could be symmetric.
-> >
-> > [1]
-> > http://lists.infradead.org/pipermail/linux-mediatek/2019-March/018423.html
-> >
-> Hi CK,
-> 
-> Jitao has replied in v2[1]
-> "
-> mtk_dsi_start must after dsi full setting.
-> If you put it in mtk_dsi_ddp_start, mtk_dsi_set_mode won't work. DSI
-> will keep cmd mode. So you see no irq.
-> ...
-> "
-> 
-> [1] https://lore.kernel.org/patchwork/patch/1052505/#1276270
-> 
-> Thanks
+common/common.c
 
-OK, this looks the hardware behavior, so I would like you to add comment
-in the code to describe why we need this asymmetric behavior. The
-description should be clear so that we could know how to modify the code
-flow in future.
+struct dentry *usb_debugfs_init(void)
+{
+    if (!usb_debug_root)
+        usb_debug_root = debugfs_create_dir("usb", NULL);
 
-Regards,
-CK
+    return usb_debug_root;
+}
+
+void usb_debugfs_cleanup(void)
+{
+    debugfs_remove_recursive(usb_debug_root);
+    usb_debug_root = NULL;
+}
+
+core/usb.c
+
+static void usb_core_debugfs_init(void)
+{
+    struct dentry *root = usb_debugfs_init();
+
+    debugfs_create_file("devices", 0444, root, NULL,
+&usbfs_devices_fops);
+}
+
+static int __init usb_init(void)
+{
+    ...
+    usb_core_debugfs_init();
+    ...
+}
+
+static void __exit usb_exit(void)
+{
+    ...
+    usb_debugfs_cleanup();
+    // will be error, gadget may use it.
+    ...
+}
+
+gadget/udc/core.c
+
+static int __init usb_udc_init(void)
+{
+    ...
+    usb_debugfs_init();
+    ...
+}
+
+static void __exit usb_udc_exit(void)
+{
+    ...
+    usb_debugfs_cleanup();
+    // can't cleanup in fact, usb core may use it.
+}
+
+How to handle this case? introduce a reference count? do you have any
+suggestion?
+
+Thanks a lot
