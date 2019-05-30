@@ -1,62 +1,35 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v2 2/4] drm: mediatek: unbind components in
- mtk_drm_unbind()
-Date: Thu, 30 May 2019 10:17:58 +0800
-Message-ID: <1559182678.6868.1.camel@mtksdaap41>
-References: <20190529102555.251579-1-hsinyi@chromium.org>
- <20190529102555.251579-3-hsinyi@chromium.org>
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+Subject: Re: [PATCH v5 0/3] scsi: ufs: Add error handling of Auto-Hibernate
+Date: Wed, 29 May 2019 22:19:03 -0400
+Message-ID: <yq1imtsy99k.fsf@oracle.com>
+References: <1558421094-3182-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190529102555.251579-3-hsinyi@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1558421094-3182-1-git-send-email-stanley.chu@mediatek.com>
+ (Stanley Chu's message of "Tue, 21 May 2019 14:44:51 +0800")
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Stanley Chu <stanley.chu@mediatek.com>
+Cc: linux-scsi@vger.kernel.org, martin.petersen@oracle.com, marc.w.gonzalez@free.fr, andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, evgreen@chromium.org, avri.altman@wdc.com, linux-mediatek@lists.infradead.org, peter.wang@mediatek.com, alim.akhtar@samsung.com, matthias.bgg@gmail.com, pedrom.sousa@synopsys.com, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIEhzaW4tWWk6CgpPbiBXZWQsIDIwMTktMDUtMjkgYXQgMTg6MjUgKzA4MDAsIEhzaW4tWWkg
-V2FuZyB3cm90ZToKPiBVbmJpbmRpbmcgY29tcG9uZW50cyAoaS5lLiBtdGtfZHNpIGFuZCBtdGtf
-ZGlzcF9vdmwvcmRtYS9jb2xvcikgd2lsbAo+IHRyaWdnZXIgbWFzdGVyKG10a19kcm0pJ3MgLnVu
-YmluZCgpLCBhbmQgY3VycmVudGx5IG10a19kcm0ncyB1bmJpbmQKPiB3b24ndCBhY3R1YWxseSB1
-bmJpbmQgY29tcG9uZW50cy4gRHVyaW5nIHRoZSBuZXh0IGJpbmQsCj4gbXRrX2RybV9rbXNfaW5p
-dCgpIGlzIGNhbGxlZCwgYW5kIHRoZSBjb21wb25lbnRzIGFyZSBhZGRlZCBiYWNrLgo+IAo+IC51
-bmJpbmQoKSBzaG91bGQgY2FsbCBtdGtfZHJtX2ttc19kZWluaXQoKSB0byB1bmJpbmQgY29tcG9u
-ZW50cy4KPiAKPiBBbmQgc2luY2UgY29tcG9uZW50X21hc3Rlcl9kZWwoKSBpbiAucmVtb3ZlKCkg
-d2lsbCB0cmlnZ2VyIC51bmJpbmQoKSwKPiB3aGljaCB3aWxsIGFsc28gdW5yZWdpc3RlciBkZXZp
-Y2UsIGl0J3MgZmluZSB0byByZW1vdmUgb3JpZ2luYWwgZnVuY3Rpb25zCj4gY2FsbGVkIGhlcmUu
-CgpSZXZpZXdlZC1ieTogQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4KCj4gCj4gRml4ZXM6IDEx
-OWY1MTczNjI4YSAoImRybS9tZWRpYXRlazogQWRkIERSTSBEcml2ZXIgZm9yIE1lZGlhdGVrIFNv
-QyBNVDgxNzMuIikKPiBTaWduZWQtb2ZmLWJ5OiBIc2luLVlpIFdhbmcgPGhzaW55aUBjaHJvbWl1
-bS5vcmc+Cj4gLS0tCj4gY2hhbmdlIGxvZyB2MS0+djI6Cj4gKiBzZXBhcmF0ZSBhbm90aGVyIDIg
-Zml4ZXMgdG8gb3RoZXIgcGF0Y2hlcy4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19kcm1fZHJ2LmMgfCA2ICstLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24o
-KyksIDUgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRp
-YXRlay9tdGtfZHJtX2Rydi5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2
-LmMKPiBpbmRleCA1N2NlNDcwOGVmMWIuLmU3MzYyYmRhZmE4MiAxMDA2NDQKPiAtLS0gYS9kcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gQEAgLTM5Nyw2ICszOTcsNyBAQCBzdGF0aWMgdm9p
-ZCBtdGtfZHJtX3VuYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYpCj4gIAlzdHJ1Y3QgbXRrX2RybV9w
-cml2YXRlICpwcml2YXRlID0gZGV2X2dldF9kcnZkYXRhKGRldik7Cj4gIAo+ICAJZHJtX2Rldl91
-bnJlZ2lzdGVyKHByaXZhdGUtPmRybSk7Cj4gKwltdGtfZHJtX2ttc19kZWluaXQocHJpdmF0ZS0+
-ZHJtKTsKPiAgCWRybV9kZXZfcHV0KHByaXZhdGUtPmRybSk7Cj4gIAlwcml2YXRlLT5kcm0gPSBO
-VUxMOwo+ICB9Cj4gQEAgLTU2OCwxMyArNTY5LDggQEAgc3RhdGljIGludCBtdGtfZHJtX3Byb2Jl
-KHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIHN0YXRpYyBpbnQgbXRrX2RybV9yZW1v
-dmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgewo+ICAJc3RydWN0IG10a19kcm1f
-cHJpdmF0ZSAqcHJpdmF0ZSA9IHBsYXRmb3JtX2dldF9kcnZkYXRhKHBkZXYpOwo+IC0Jc3RydWN0
-IGRybV9kZXZpY2UgKmRybSA9IHByaXZhdGUtPmRybTsKPiAgCWludCBpOwo+ICAKPiAtCWRybV9k
-ZXZfdW5yZWdpc3Rlcihkcm0pOwo+IC0JbXRrX2RybV9rbXNfZGVpbml0KGRybSk7Cj4gLQlkcm1f
-ZGV2X3B1dChkcm0pOwo+IC0KPiAgCWNvbXBvbmVudF9tYXN0ZXJfZGVsKCZwZGV2LT5kZXYsICZt
-dGtfZHJtX29wcyk7Cj4gIAlwbV9ydW50aW1lX2Rpc2FibGUoJnBkZXYtPmRldik7Cj4gIAlvZl9u
-b2RlX3B1dChwcml2YXRlLT5tdXRleF9ub2RlKTsKCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
-aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9kcmktZGV2ZWw=
+
+Stanley,
+
+> Currently auto-hibernate is activated if host supports auto-hibern8
+> capability. However error-handling is not implemented, which makes the
+> feature somewhat risky.
+
+Applied to 5.3/scsi-queue, thanks!
+
+-- 
+Martin K. Petersen	Oracle Linux Engineering
