@@ -1,36 +1,65 @@
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Subject: Re: [PATCH v3] gpu/drm: mediatek: call mtk_dsi_stop() after mtk_drm_crtc_atomic_disable()
-Date: Thu, 30 May 2019 10:55:12 +0800
-Message-ID: <CAJMQK-ir9J-JN9DDZPBA1nVkJUZ_6A+fY4fA6jx6zOh_9q5a-w@mail.gmail.com>
-References: <20190528073908.633-1-hsinyi@chromium.org> <1559033586.5141.3.camel@mtksdaap41>
+From: biao huang <biao.huang@mediatek.com>
+Subject: RE: [v5, PATCH] net: stmmac: add support for hash table size
+ 128/256 in dwmac4
+Date: Thu, 30 May 2019 11:31:40 +0800
+Message-ID: <1559187100.24897.81.camel@mhfsdcap03>
+References: <1559122268-22545-1-git-send-email-biao.huang@mediatek.com>
+         <1559122268-22545-2-git-send-email-biao.huang@mediatek.com>
+         <78EB27739596EE489E55E81C33FEC33A0B9334CE@DE02WEMBXB.internal.synopsys.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1559033586.5141.3.camel@mtksdaap41>
+In-Reply-To: <78EB27739596EE489E55E81C33FEC33A0B9334CE@DE02WEMBXB.internal.synopsys.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>
-Cc: "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, lkml <linux-kernel@vger.kernel.org>, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>
+To: Jose Abreu <Jose.Abreu@synopsys.com>
+Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "linux-stm32@st-md-mailman.stormreply.com" <linux-stm32@st-md-mailman.stormreply.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "yt.shen@mediatek.com" <yt.shen@mediatek.com>, "jianguo.zhang@mediatek.com" <jianguo.zhang@mediatek.com>, "boon.leong.ong@intel.com" <boon.leong.ong@intel.com>, "andrew@lunn.ch" <andrew@lunn.ch>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, May 28, 2019 at 4:53 PM CK Hu <ck.hu@mediatek.com> wrote:
+Hi Jose,
+	I also try "ethtool -A eth0 tx on rx on", and selftests pass.
 
-> I think we've already discussed in [1]. I need a reason to understand
-> this is hardware behavior or software bug. If this is a software bug, we
-> need to fix the bug and code could be symmetric.
->
-> [1]
-> http://lists.infradead.org/pipermail/linux-mediatek/2019-March/018423.html
->
-Hi CK,
+	But there are bugs in dwmac4_flow_ctrl:
+		flow control will keep on once enabled. 
+		ethtool -A eth0 tx off rx off can't change it.
 
-Jitao has replied in v2[1]
-"
-mtk_dsi_start must after dsi full setting.
-If you put it in mtk_dsi_ddp_start, mtk_dsi_set_mode won't work. DSI
-will keep cmd mode. So you see no irq.
-...
-"
+	if (fc & FLOW_RX)  {
+		pr_debug ...
+		flow |= GMAC_RX_FLOW_CTRL_RFE;
+		writel(flow, ioaddr + GMAC_RX_FLOW_CTRL);
+		>> this should move outside to enasure rx flow control will be off
+when execute "ethtool -A eth0 rx off"
+	} 
 
-[1] https://lore.kernel.org/patchwork/patch/1052505/#1276270
+	same for tx.
 
-Thanks
+On Wed, 2019-05-29 at 10:30 +0000, Jose Abreu wrote:
+> From: Biao Huang <biao.huang@mediatek.com>
+> Date: Wed, May 29, 2019 at 10:31:08
+> 
+> > 1. get hash table size in hw feature reigster, and add support
+> > for taller hash table(128/256) in dwmac4.
+> > 2. only clear GMAC_PACKET_FILTER bits used in this function,
+> > to avoid side effect to functions of other bits.
+> > 
+> > stmmac selftests output log:
+> > 	ethtool -t eth0
+> > 	The test result is FAIL
+> > 	The test extra info:
+> > 	 1. MAC Loopback                 0
+> > 	 2. PHY Loopback                 -95
+> > 	 3. MMC Counters                 0
+> > 	 4. EEE                          -95
+> > 	 5. Hash Filter MC               0
+> > 	 6. Perfect Filter UC            0
+> > 	 7. MC Filter                    0
+> > 	 8. UC Filter                    0
+> > 	 9. Flow Control                 1
+> 
+> Thanks for testing, this patch looks good to me.
+> 
+> Do you want to check why Flow Control selftest is failing ?
+> 
+> 
+> Thanks,
+> Jose Miguel Abreu
