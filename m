@@ -1,47 +1,62 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v2 1/4] drm: mediatek: fix unbind functions
-Date: Thu, 30 May 2019 10:13:35 +0800
-Message-ID: <1559182415.6868.0.camel@mtksdaap41>
+Subject: Re: [PATCH v2 2/4] drm: mediatek: unbind components in
+ mtk_drm_unbind()
+Date: Thu, 30 May 2019 10:17:58 +0800
+Message-ID: <1559182678.6868.1.camel@mtksdaap41>
 References: <20190529102555.251579-1-hsinyi@chromium.org>
-         <20190529102555.251579-2-hsinyi@chromium.org>
+ <20190529102555.251579-3-hsinyi@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190529102555.251579-2-hsinyi@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190529102555.251579-3-hsinyi@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: linux-arm-kernel@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Hsin-Yi:
-
-On Wed, 2019-05-29 at 18:25 +0800, Hsin-Yi Wang wrote:
-> detatch panel in mtk_dsi_destroy_conn_enc(), since .bind will try to
-> attach it again.
-> 
-
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-
-> Fixes: 2e54c14e310f ("drm/mediatek: Add DSI sub driver")
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> ---
-> change log v1->v2:
-> * mipi_dsi_host_unregister() should be fixed in another patch on the list.
-> ---
->  drivers/gpu/drm/mediatek/mtk_dsi.c | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> index b00eb2d2e086..1ae3be99e0ff 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -844,6 +844,8 @@ static void mtk_dsi_destroy_conn_enc(struct mtk_dsi *dsi)
->  	/* Skip connector cleanup if creation was delegated to the bridge */
->  	if (dsi->conn.dev)
->  		drm_connector_cleanup(&dsi->conn);
-> +	if (dsi->panel)
-> +		drm_panel_detach(dsi->panel);
->  }
->  
->  static void mtk_dsi_ddp_start(struct mtk_ddp_comp *comp)
+SGksIEhzaW4tWWk6CgpPbiBXZWQsIDIwMTktMDUtMjkgYXQgMTg6MjUgKzA4MDAsIEhzaW4tWWkg
+V2FuZyB3cm90ZToKPiBVbmJpbmRpbmcgY29tcG9uZW50cyAoaS5lLiBtdGtfZHNpIGFuZCBtdGtf
+ZGlzcF9vdmwvcmRtYS9jb2xvcikgd2lsbAo+IHRyaWdnZXIgbWFzdGVyKG10a19kcm0pJ3MgLnVu
+YmluZCgpLCBhbmQgY3VycmVudGx5IG10a19kcm0ncyB1bmJpbmQKPiB3b24ndCBhY3R1YWxseSB1
+bmJpbmQgY29tcG9uZW50cy4gRHVyaW5nIHRoZSBuZXh0IGJpbmQsCj4gbXRrX2RybV9rbXNfaW5p
+dCgpIGlzIGNhbGxlZCwgYW5kIHRoZSBjb21wb25lbnRzIGFyZSBhZGRlZCBiYWNrLgo+IAo+IC51
+bmJpbmQoKSBzaG91bGQgY2FsbCBtdGtfZHJtX2ttc19kZWluaXQoKSB0byB1bmJpbmQgY29tcG9u
+ZW50cy4KPiAKPiBBbmQgc2luY2UgY29tcG9uZW50X21hc3Rlcl9kZWwoKSBpbiAucmVtb3ZlKCkg
+d2lsbCB0cmlnZ2VyIC51bmJpbmQoKSwKPiB3aGljaCB3aWxsIGFsc28gdW5yZWdpc3RlciBkZXZp
+Y2UsIGl0J3MgZmluZSB0byByZW1vdmUgb3JpZ2luYWwgZnVuY3Rpb25zCj4gY2FsbGVkIGhlcmUu
+CgpSZXZpZXdlZC1ieTogQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4KCj4gCj4gRml4ZXM6IDEx
+OWY1MTczNjI4YSAoImRybS9tZWRpYXRlazogQWRkIERSTSBEcml2ZXIgZm9yIE1lZGlhdGVrIFNv
+QyBNVDgxNzMuIikKPiBTaWduZWQtb2ZmLWJ5OiBIc2luLVlpIFdhbmcgPGhzaW55aUBjaHJvbWl1
+bS5vcmc+Cj4gLS0tCj4gY2hhbmdlIGxvZyB2MS0+djI6Cj4gKiBzZXBhcmF0ZSBhbm90aGVyIDIg
+Zml4ZXMgdG8gb3RoZXIgcGF0Y2hlcy4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19kcm1fZHJ2LmMgfCA2ICstLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24o
+KyksIDUgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZHJtX2Rydi5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2
+LmMKPiBpbmRleCA1N2NlNDcwOGVmMWIuLmU3MzYyYmRhZmE4MiAxMDA2NDQKPiAtLS0gYS9kcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gQEAgLTM5Nyw2ICszOTcsNyBAQCBzdGF0aWMgdm9p
+ZCBtdGtfZHJtX3VuYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYpCj4gIAlzdHJ1Y3QgbXRrX2RybV9w
+cml2YXRlICpwcml2YXRlID0gZGV2X2dldF9kcnZkYXRhKGRldik7Cj4gIAo+ICAJZHJtX2Rldl91
+bnJlZ2lzdGVyKHByaXZhdGUtPmRybSk7Cj4gKwltdGtfZHJtX2ttc19kZWluaXQocHJpdmF0ZS0+
+ZHJtKTsKPiAgCWRybV9kZXZfcHV0KHByaXZhdGUtPmRybSk7Cj4gIAlwcml2YXRlLT5kcm0gPSBO
+VUxMOwo+ICB9Cj4gQEAgLTU2OCwxMyArNTY5LDggQEAgc3RhdGljIGludCBtdGtfZHJtX3Byb2Jl
+KHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIHN0YXRpYyBpbnQgbXRrX2RybV9yZW1v
+dmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgewo+ICAJc3RydWN0IG10a19kcm1f
+cHJpdmF0ZSAqcHJpdmF0ZSA9IHBsYXRmb3JtX2dldF9kcnZkYXRhKHBkZXYpOwo+IC0Jc3RydWN0
+IGRybV9kZXZpY2UgKmRybSA9IHByaXZhdGUtPmRybTsKPiAgCWludCBpOwo+ICAKPiAtCWRybV9k
+ZXZfdW5yZWdpc3Rlcihkcm0pOwo+IC0JbXRrX2RybV9rbXNfZGVpbml0KGRybSk7Cj4gLQlkcm1f
+ZGV2X3B1dChkcm0pOwo+IC0KPiAgCWNvbXBvbmVudF9tYXN0ZXJfZGVsKCZwZGV2LT5kZXYsICZt
+dGtfZHJtX29wcyk7Cj4gIAlwbV9ydW50aW1lX2Rpc2FibGUoJnBkZXYtPmRldik7Cj4gIAlvZl9u
+b2RlX3B1dChwcml2YXRlLT5tdXRleF9ub2RlKTsKCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
+aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9kcmktZGV2ZWw=
