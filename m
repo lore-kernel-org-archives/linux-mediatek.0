@@ -1,73 +1,71 @@
-From: YueHaibing <yuehaibing@huawei.com>
-Subject: [PATCH -next] ASoC: mediatek: Make some symbols static
-Date: Wed, 29 May 2019 23:04:37 +0800
-Message-ID: <20190529150437.19004-1-yuehaibing@huawei.com>
+From: biao huang <biao.huang@mediatek.com>
+Subject: RE: [v5, PATCH] net: stmmac: add support for hash table size
+ 128/256 in dwmac4
+Date: Thu, 30 May 2019 09:39:09 +0800
+Message-ID: <1559180349.24897.72.camel@mhfsdcap03>
+References: <1559122268-22545-1-git-send-email-biao.huang@mediatek.com>
+         <1559122268-22545-2-git-send-email-biao.huang@mediatek.com>
+         <78EB27739596EE489E55E81C33FEC33A0B9334CE@DE02WEMBXB.internal.synopsys.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <78EB27739596EE489E55E81C33FEC33A0B9334CE@DE02WEMBXB.internal.synopsys.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: lgirdwood@gmail.com, broonie@kernel.org, perex@perex.cz, tiwai@suse.com, matthias.bgg@gmail.com, kaichieh.chuang@mediatek.com
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, alsa-devel@alsa-project.org, YueHaibing <yuehaibing@huawei.com>
+To: Jose Abreu <Jose.Abreu@synopsys.com>
+Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "linux-stm32@st-md-mailman.stormreply.com" <linux-stm32@st-md-mailman.stormreply.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "yt.shen@mediatek.com" <yt.shen@mediatek.com>, "jianguo.zhang@mediatek.com" <jianguo.zhang@mediatek.com>, "boon.leong.ong@intel.com" <boon.leong.ong@intel.com>, "andrew@lunn.ch" <andrew@lunn.ch>
 List-Id: linux-mediatek@lists.infradead.org
 
-Fix sparse warnings:
+Hi Jose,
+	Flow control is disabled in v5 commit.
 
-sound/soc/mediatek/common/mtk-btcvsd.c:410:5: warning: symbol 'mtk_btcvsd_write_to_bt' was not declared. Should it be static?
-sound/soc/mediatek/common/mtk-btcvsd.c:698:9: warning: symbol 'mtk_btcvsd_snd_read' was not declared. Should it be static?
-sound/soc/mediatek/common/mtk-btcvsd.c:779:9: warning: symbol 'mtk_btcvsd_snd_write' was not declared. Should it be static?
+	I tried "insmod stmmac flow_ctrl=1", and the output log shows self test
+pass:
+	ethtool -t eth0                                    
+	The test result is PASS
+ 	The test extra info:
+ 	 1. MAC Loopback                 0
+ 	 2. PHY Loopback                 -95
+ 	 3. MMC Counters                 0
+ 	 4. EEE                          -95
+ 	 5. Hash Filter MC               0
+ 	 6. Perfect Filter UC            0
+ 	 7. MC Filter                    0
+ 	 8. UC Filter                    0
+	 9. Flow Control                 0
 
-Reported-by: Hulk Robot <hulkci@huawei.com>
-Signed-off-by: YueHaibing <yuehaibing@huawei.com>
----
- sound/soc/mediatek/common/mtk-btcvsd.c | 22 +++++++++++-----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
+	Is v5 OK? Should I resend a v6?
 
-diff --git a/sound/soc/mediatek/common/mtk-btcvsd.c b/sound/soc/mediatek/common/mtk-btcvsd.c
-index bd55c546e790..c7a81c4be068 100644
---- a/sound/soc/mediatek/common/mtk-btcvsd.c
-+++ b/sound/soc/mediatek/common/mtk-btcvsd.c
-@@ -407,11 +407,11 @@ static int mtk_btcvsd_read_from_bt(struct mtk_btcvsd_snd *bt,
- 	return 0;
- }
- 
--int mtk_btcvsd_write_to_bt(struct mtk_btcvsd_snd *bt,
--			   enum bt_sco_packet_len packet_type,
--			   unsigned int packet_length,
--			   unsigned int packet_num,
--			   unsigned int blk_size)
-+static int mtk_btcvsd_write_to_bt(struct mtk_btcvsd_snd *bt,
-+				  enum bt_sco_packet_len packet_type,
-+				  unsigned int packet_length,
-+				  unsigned int packet_num,
-+				  unsigned int blk_size)
- {
- 	unsigned int i;
- 	unsigned long flags;
-@@ -695,9 +695,9 @@ static int wait_for_bt_irq(struct mtk_btcvsd_snd *bt,
- 	return 0;
- }
- 
--ssize_t mtk_btcvsd_snd_read(struct mtk_btcvsd_snd *bt,
--			    char __user *buf,
--			    size_t count)
-+static ssize_t mtk_btcvsd_snd_read(struct mtk_btcvsd_snd *bt,
-+				   char __user *buf,
-+				   size_t count)
- {
- 	ssize_t read_size = 0, read_count = 0, cur_read_idx, cont;
- 	unsigned int cur_buf_ofs = 0;
-@@ -776,9 +776,9 @@ ssize_t mtk_btcvsd_snd_read(struct mtk_btcvsd_snd *bt,
- 	return read_count;
- }
- 
--ssize_t mtk_btcvsd_snd_write(struct mtk_btcvsd_snd *bt,
--			     char __user *buf,
--			     size_t count)
-+static ssize_t mtk_btcvsd_snd_write(struct mtk_btcvsd_snd *bt,
-+				    char __user *buf,
-+				    size_t count)
- {
- 	int written_size = count, avail = 0, cur_write_idx, write_size, cont;
- 	unsigned int cur_buf_ofs = 0;
--- 
-2.17.1
+On Wed, 2019-05-29 at 10:30 +0000, Jose Abreu wrote:
+> From: Biao Huang <biao.huang@mediatek.com>
+> Date: Wed, May 29, 2019 at 10:31:08
+> 
+> > 1. get hash table size in hw feature reigster, and add support
+> > for taller hash table(128/256) in dwmac4.
+> > 2. only clear GMAC_PACKET_FILTER bits used in this function,
+> > to avoid side effect to functions of other bits.
+> > 
+> > stmmac selftests output log:
+> > 	ethtool -t eth0
+> > 	The test result is FAIL
+> > 	The test extra info:
+> > 	 1. MAC Loopback                 0
+> > 	 2. PHY Loopback                 -95
+> > 	 3. MMC Counters                 0
+> > 	 4. EEE                          -95
+> > 	 5. Hash Filter MC               0
+> > 	 6. Perfect Filter UC            0
+> > 	 7. MC Filter                    0
+> > 	 8. UC Filter                    0
+> > 	 9. Flow Control                 1
+> 
+> Thanks for testing, this patch looks good to me.
+> 
+> Do you want to check why Flow Control selftest is failing ?
+> 
+> 
+> Thanks,
+> Jose Miguel Abreu
+
+Thanks,
+Biao
