@@ -1,61 +1,81 @@
-From: Biao Huang <biao.huang@mediatek.com>
-Subject: [RESEND, PATCH 4/4] net: stmmac: dwmac4: fix flow control issue
-Date: Thu, 30 May 2019 17:43:18 +0800
-Message-ID: <1559209398-3607-5-git-send-email-biao.huang@mediatek.com>
-References: <1559209398-3607-1-git-send-email-biao.huang@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v4] gpu/drm: mediatek: call mtk_dsi_stop() after
+ mtk_drm_crtc_atomic_disable()
+Date: Thu, 30 May 2019 18:06:10 +0800
+Message-ID: <1559210770.12373.0.camel@mtksdaap41>
+References: <20190530091847.90263-1-hsinyi@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1559209398-3607-1-git-send-email-biao.huang@mediatek.com>
+In-Reply-To: <20190530091847.90263-1-hsinyi@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: davem@davemloft.net, Jose Abreu <joabreu@synopsys.com>
-Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, biao.huang@mediatek.com, jianguo.zhang@mediatek.com, boon.leong.ong@intel.com, andrew@lunn.ch
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: linux-arm-kernel@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Current dwmac4_flow_ctrl will not clear
-GMAC_RX_FLOW_CTRL_RFE/GMAC_RX_FLOW_CTRL_RFE bits,
-so MAC hw will keep flow control on although expecting
-flow control off by ethtool. Add codes to fix it.
+Hi, Hsin-Yi:
 
-Fixes: 477286b53f55 ("stmmac: add GMAC4 core support")
-Signed-off-by: Biao Huang <biao.huang@mediatek.com>
----
- drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c |    8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+On Thu, 2019-05-30 at 17:18 +0800, Hsin-Yi Wang wrote:
+> mtk_dsi_stop() should be called after mtk_drm_crtc_atomic_disable(), which needs
+> ovl irq for drm_crtc_wait_one_vblank(), since after mtk_dsi_stop() is called,
+> ovl irq will be disabled. If drm_crtc_wait_one_vblank() is called after last
+> irq, it will timeout with this message: "vblank wait timed out on crtc 0". This
+> happens sometimes when turning off the screen.
+> 
+> In drm_atomic_helper.c#disable_outputs(),
+> the calling sequence when turning off the screen is:
+> 
+> 1. mtk_dsi_encoder_disable()
+>      --> mtk_output_dsi_disable()
+>        --> mtk_dsi_stop();  // sometimes make vblank timeout in atomic_disable
+>        --> mtk_dsi_poweroff();
+> 2. mtk_drm_crtc_atomic_disable()
+>      --> drm_crtc_wait_one_vblank();
+>      ...
+>        --> mtk_dsi_ddp_stop()
+>          --> mtk_dsi_poweroff();
+> 
+> mtk_dsi_poweroff() has reference count design, change to make mtk_dsi_stop()
+> called in mtk_dsi_poweroff() when refcount is 0.
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
-index 2544cff..9322b71 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
-@@ -488,8 +488,9 @@ static void dwmac4_flow_ctrl(struct mac_device_info *hw, unsigned int duplex,
- 	if (fc & FLOW_RX) {
- 		pr_debug("\tReceive Flow-Control ON\n");
- 		flow |= GMAC_RX_FLOW_CTRL_RFE;
--		writel(flow, ioaddr + GMAC_RX_FLOW_CTRL);
- 	}
-+	writel(flow, ioaddr + GMAC_RX_FLOW_CTRL);
-+
- 	if (fc & FLOW_TX) {
- 		pr_debug("\tTransmit Flow-Control ON\n");
- 
-@@ -497,7 +498,7 @@ static void dwmac4_flow_ctrl(struct mac_device_info *hw, unsigned int duplex,
- 			pr_debug("\tduplex mode: PAUSE %d\n", pause_time);
- 
- 		for (queue = 0; queue < tx_cnt; queue++) {
--			flow |= GMAC_TX_FLOW_CTRL_TFE;
-+			flow = GMAC_TX_FLOW_CTRL_TFE;
- 
- 			if (duplex)
- 				flow |=
-@@ -505,6 +506,9 @@ static void dwmac4_flow_ctrl(struct mac_device_info *hw, unsigned int duplex,
- 
- 			writel(flow, ioaddr + GMAC_QX_TX_FLOW_CTRL(queue));
- 		}
-+	} else {
-+		for (queue = 0; queue < tx_cnt; queue++)
-+			writel(0, ioaddr + GMAC_QX_TX_FLOW_CTRL(queue));
- 	}
- }
- 
--- 
-1.7.9.5
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+
+> 
+> Fixes: 0707632b5bac ("drm/mediatek: update DSI sub driver flow for sending commands to panel")
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> ---
+> change log v3->v4:
+> * add comment in code.
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dsi.c | 10 +++++++++-
+>  1 file changed, 9 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> index b00eb2d2e086..730594a91440 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -630,6 +630,15 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
+>  	if (--dsi->refcount != 0)
+>  		return;
+>  
+> +	/* 
+> +	 * mtk_dsi_stop() and mtk_dsi_start() is asymmetric, since
+> +	 * mtk_dsi_stop() should be called after mtk_drm_crtc_atomic_disable(),
+> +	 * which needs irq for vblank, and mtk_dsi_stop() will disable irq.
+> +	 * mtk_dsi_start() needs to be called in mtk_output_dsi_enable(),
+> +	 * after dsi is fully set.
+> +	 */
+> +	mtk_dsi_stop(dsi);
+> +
+>  	if (!mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500)) {
+>  		if (dsi->panel) {
+>  			if (drm_panel_unprepare(dsi->panel)) {
+> @@ -696,7 +705,6 @@ static void mtk_output_dsi_disable(struct mtk_dsi *dsi)
+>  		}
+>  	}
+>  
+> -	mtk_dsi_stop(dsi);
+>  	mtk_dsi_poweroff(dsi);
+>  
+>  	dsi->enabled = false;
