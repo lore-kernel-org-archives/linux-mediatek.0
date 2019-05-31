@@ -1,50 +1,98 @@
-From: Young Xiao <92siuyang@gmail.com>
-Subject: [PATCH] pinctrl: pinctrl-mtk-common: fix a possible NULL pointer deference
-Date: Fri, 31 May 2019 15:08:09 +0800
-Message-ID: <1559286489-5418-1-git-send-email-92siuyang@gmail.com>
+From: Pi-Hsun Shih <pihsun@chromium.org>
+Subject: [PATCH v9 1/7] dt-bindings: Add a binding for Mediatek SCP
+Date: Fri, 31 May 2019 15:38:42 +0800
+Message-ID: <20190531073848.155444-2-pihsun@chromium.org>
+References: <20190531073848.155444-1-pihsun@chromium.org>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190531073848.155444-1-pihsun@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@kernel.org, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Young Xiao <92siuyang@gmail.com>
+Cc: Pi-Hsun Shih <pihsun@chromium.org>, Erin Lo <erin.lo@mediatek.com>, Rob Herring <robh@kernel.org>, Ohad Ben-Cohen <ohad@wizery.com>, Bjorn Andersson <bjorn.andersson@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:REMOTE PROCESSOR
+        REMOTEPROC SUBSYSTEM" <linux-remoteproc@vger.kernel.org>, "open list:OPEN FIRMWARE AND FLATTENED
+        DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC
+        support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+        support" <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-The function, external interrupt controller, is made as an optional to
-pinctrl. But if we don't want pio behaves as an external interrupt
-controller, it would lead to pctl->eint not be created properly and then
-will cause 'kernel NULL pointer' issue when gpiochip try to call .to_irq
-or .set_config. To fix it, check pctl->eint before accessing the member.
+From: Erin Lo <erin.lo@mediatek.com>
 
-See commit 5f591543a937 ("pinctrl: mt7622: fix a kernel panic when pio
-don't work as EINT controller") for details.
+Add a DT binding documentation of SCP for the
+MT8183 SoC from Mediatek.
 
-Signed-off-by: Young Xiao <92siuyang@gmail.com>
+Signed-off-by: Erin Lo <erin.lo@mediatek.com>
+Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
+Reviewed-by: Rob Herring <robh@kernel.org>
+
 ---
- drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+Changes from v8, v7, v6:
+ - No change.
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-index 0716238..b395f0b 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-@@ -836,6 +836,9 @@ static int mtk_gpio_to_irq(struct gpio_chip *chip, unsigned offset)
- 	const struct mtk_desc_pin *pin;
- 	unsigned long eint_n;
- 
-+	if (!pctl->eint)
-+		return -ENOTSUPP;
+Changes from v5:
+ - Remove dependency on CONFIG_RPMSG_MTK_SCP.
+
+Changes from v4:
+ - Add detail of more properties.
+ - Document the usage of mtk,rpmsg-name in subnode from the new design.
+
+Changes from v3:
+ - No change.
+
+Changes from v2:
+ - No change. I realized that for this patch series, there's no need to
+   add anything under the mt8183-scp node (neither the mt8183-rpmsg or
+   the cros-ec-rpmsg) for them to work, since mt8183-rpmsg is added
+   directly as a rproc_subdev by code, and cros-ec-rpmsg is dynamically
+   created by SCP name service.
+
+Changes from v1:
+ - No change.
+---
+ .../bindings/remoteproc/mtk,scp.txt           | 36 +++++++++++++++++++
+ 1 file changed, 36 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
+
+diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt b/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
+new file mode 100644
+index 000000000000..3ba668bab14b
+--- /dev/null
++++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
+@@ -0,0 +1,36 @@
++Mediatek SCP Bindings
++----------------------------------------
 +
- 	pin = pctl->devdata->pins + offset;
- 	if (pin->eint.eintnum == NO_EINT_SUPPORT)
- 		return -EINVAL;
-@@ -853,7 +856,8 @@ static int mtk_gpio_set_config(struct gpio_chip *chip, unsigned offset,
- 	unsigned long eint_n;
- 	u32 debounce;
- 
--	if (pinconf_to_config_param(config) != PIN_CONFIG_INPUT_DEBOUNCE)
-+	if (!pctl->eint ||
-+	    pinconf_to_config_param(config) != PIN_CONFIG_INPUT_DEBOUNCE)
- 		return -ENOTSUPP;
- 
- 	pin = pctl->devdata->pins + offset;
++This binding provides support for ARM Cortex M4 Co-processor found on some
++Mediatek SoCs.
++
++Required properties:
++- compatible		Should be "mediatek,mt8183-scp"
++- reg			Should contain the address ranges for the two memory
++			regions, SRAM and CFG.
++- reg-names		Contains the corresponding names for the two memory
++			regions. These should be named "sram" & "cfg".
++- clocks		Clock for co-processor (See: ../clock/clock-bindings.txt)
++- clock-names		Contains the corresponding name for the clock. This
++			should be named "main".
++
++Subnodes
++--------
++
++Subnodes of the SCP represent rpmsg devices. The names of the devices are not
++important. The properties of these nodes are defined by the individual bindings
++for the rpmsg devices - but must contain the following property:
++
++- mtk,rpmsg-name	Contains the name for the rpmsg device. Used to match
++			the subnode to rpmsg device announced by SCP.
++
++Example:
++
++	scp: scp@10500000 {
++		compatible = "mediatek,mt8183-scp";
++		reg = <0 0x10500000 0 0x80000>,
++		      <0 0x105c0000 0 0x5000>;
++		reg-names = "sram", "cfg";
++		clocks = <&infracfg CLK_INFRA_SCPSYS>;
++		clock-names = "main";
++	};
 -- 
-2.7.4
+2.22.0.rc1.257.g3120a18244-goog
