@@ -1,97 +1,108 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH v2 2/2] mt76: mt7615: fix slow performance when enable encryption
-Date: Fri, 31 May 2019 22:09:57 +0800
-Message-ID: <ed4cb230af57cb8f3bbe3d1851ce7f8ab7eeb9d5.1559301203.git.ryder.lee@mediatek.com>
-References: <e459fbc79154da9e0e6e098d2c49a9b17e842f47.1559301203.git.ryder.lee@mediatek.com>
+From: Sakari Ailus <sakari.ailus@iki.fi>
+Subject: Re: [PATCH 3/3] media: dt-bindings: media: i2c: Add bindings for
+ ov02a10
+Date: Fri, 31 May 2019 19:16:58 +0300
+Message-ID: <20190531161658.2y2amfngbhfbllj7@valkosipuli.retiisi.org.uk>
+References: <20190523102204.24112-1-dongchun.zhu@mediatek.com>
+ <20190523102204.24112-4-dongchun.zhu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <e459fbc79154da9e0e6e098d2c49a9b17e842f47.1559301203.git.ryder.lee@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
-Cc: Roy Luo <royluo@google.com>, YF Luo <yf.luo@mediatek.com>, Yiwei Chung <yiwei.chung@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Chih-Min Chen <chih-min.Chen@mediatek.com>, linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <20190523102204.24112-4-dongchun.zhu@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: dongchun.zhu@mediatek.com
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, menghui.lin@mediatek.com, shengnan.wang@mediatek.com, louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Fix wrong WCID assignment and add RKV (RX Key of this entry is valid)
-flag to check if peer uses the same configuration with previous
-handshaking.
+Hi Dongchun,
 
-If the configuration is mismatch, WTBL indicates a “cipher mismatch”
-to stop SEC decryption to prevent the packet from damage.
+Thanks for the patch.
 
-Suggested-by: YF Luo <yf.luo@mediatek.com>
-Suggested-by: Yiwei Chung <yiwei.chung@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
-Changes since v2 - none
----
- drivers/net/wireless/mediatek/mt76/mt7615/init.c | 15 +++++++++------
- drivers/net/wireless/mediatek/mt76/mt7615/main.c |  2 +-
- drivers/net/wireless/mediatek/mt76/mt7615/mcu.c  |  1 +
- 3 files changed, 11 insertions(+), 7 deletions(-)
+On Thu, May 23, 2019 at 06:22:04PM +0800, dongchun.zhu@mediatek.com wrote:
+> From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> 
+> Add device tree binding documentation for the OV02A10 CMOS image sensor.
+> 
+> Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> ---
+>  .../devicetree/bindings/media/i2c/ov02a10.txt      | 43 ++++++++++++++++++++++
+>  1 file changed, 43 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/i2c/ov02a10.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/media/i2c/ov02a10.txt b/Documentation/devicetree/bindings/media/i2c/ov02a10.txt
+> new file mode 100644
+> index 0000000..fdc2904
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/i2c/ov02a10.txt
+> @@ -0,0 +1,43 @@
+> +* Omnivision OV02A10 MIPI CSI-2 sensor
+> +
+> +Required Properties:
+> +- compatible: shall be "ovti,ov02a10"
+> +- clocks: reference to the xvclk input clock
+> +- clock-names: shall be "xvclk"
+> +- avdd-supply: Analog voltage supply, 2.8 volts
+> +- dovdd-supply: Digital I/O voltage supply, 1.8 volts
+> +- dvdd-supply: Digital core voltage supply, 1.8 volts
+> +- reset-gpios: Low active reset gpio
+> +
+> +The device node shall contain one 'port' child node with an
+> +'endpoint' subnode for its digital output video port,
+> +in accordance with the video interface bindings defined in
+> +Documentation/devicetree/bindings/media/video-interfaces.txt.
+> +The endpoint optional property 'data-lanes' shall be "<1>".
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-index f860af6a42da..b96c753b7532 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-@@ -62,16 +62,11 @@ static void mt7615_mac_init(struct mt7615_dev *dev)
- 		 MT_AGG_ARCR_RATE_DOWN_RATIO_EN |
- 		 FIELD_PREP(MT_AGG_ARCR_RATE_DOWN_RATIO, 1) |
- 		 FIELD_PREP(MT_AGG_ARCR_RATE_UP_EXTRA_TH, 4)));
--
--	dev->mt76.global_wcid.idx = MT7615_WTBL_RESERVED;
--	dev->mt76.global_wcid.hw_key_idx = -1;
--	rcu_assign_pointer(dev->mt76.wcid[MT7615_WTBL_RESERVED],
--			   &dev->mt76.global_wcid);
- }
- 
- static int mt7615_init_hardware(struct mt7615_dev *dev)
- {
--	int ret;
-+	int ret, idx;
- 
- 	mt76_wr(dev, MT_INT_SOURCE_CSR, ~0);
- 
-@@ -98,6 +93,14 @@ static int mt7615_init_hardware(struct mt7615_dev *dev)
- 	mt7615_mcu_ctrl_pm_state(dev, 0);
- 	mt7615_mcu_del_wtbl_all(dev);
- 
-+	/* Beacon and mgmt frames should occupy wcid 0 */
-+	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7615_WTBL_STA - 1);
-+	if (idx)
-+		return -ENOSPC;
-+
-+	dev->mt76.global_wcid.idx = idx;
-+	dev->mt76.global_wcid.hw_key_idx = -1;
-+	rcu_assign_pointer(dev->mt76.wcid[idx], &dev->mt76.global_wcid);
- 	return 0;
- }
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-index 585e67fa2728..2cdd339453c8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-@@ -95,7 +95,7 @@ static int mt7615_add_interface(struct ieee80211_hw *hw,
- 
- 	dev->vif_mask |= BIT(mvif->idx);
- 	dev->omac_mask |= BIT(mvif->omac_idx);
--	idx = MT7615_WTBL_RESERVED - 1 - mvif->idx;
-+	idx = MT7615_WTBL_RESERVED - mvif->idx;
- 	mvif->sta.wcid.idx = idx;
- 	mvif->sta.wcid.hw_key_idx = -1;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-index 8b8db526cb16..5f38741e7366 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-@@ -882,6 +882,7 @@ int mt7615_mcu_set_wtbl_key(struct mt7615_dev *dev, int wcid,
- 		if (cipher == MT_CIPHER_NONE && key)
- 			return -EOPNOTSUPP;
- 
-+		req.key.rkv = 1;
- 		req.key.cipher_id = cipher;
- 		req.key.key_id = key->keyidx;
- 		req.key.key_len = key->keylen;
+If the sensor only supports a single lane configuration (one lane), you can
+omit that property altogether. Is that the only possible configuration for
+the sensor?
+
+Please also wrap the text at 80 characters, not 65 or so.
+
+> +
+> +Example:
+> +&i2c4 {
+> +	sensor_sub: sensor_sub {
+
+camera-sensor@3d {
+
+> +		compatible = "ovti,ov02a10";
+> +		reg = <0x3d>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&camera_pins_cam1_mclk_on>;
+> +
+> +		clocks = <&topckgen CLK_TOP_MUX_CAMTG2>,
+> +			<&topckgen CLK_TOP_UNIVP_192M_D8>;
+> +		clock-names = "xvclk", "freq_mux";
+> +
+> +		avdd-supply = <&mt6358_vcama1_reg>;
+> +		dvdd-supply = <&mt6358_vcn18_reg>;
+> +		dovdd-supply = <&mt6358_vcamio_reg>;
+> +		pwdn-gpios = <&pio 107 1>;
+> +		reset-gpios = <&pio 109 1>;
+> +
+> +		port@0 {
+> +		   ov02a10_core: endpoint {
+> +		       remote-endpoint = <&ov02a10_0>;
+> +			   data-lanes = <1>;
+> +		   };
+
+Tabs for indentation, please.
+
+> +		};
+> +	};
+> +};
+
 -- 
-2.18.0
+Kind regards,
+
+Sakari Ailus
