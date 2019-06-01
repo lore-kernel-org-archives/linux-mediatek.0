@@ -1,11 +1,14 @@
 From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH net-next v1 0/6] Add MT7629 ethernet support
-Date: Sat, 1 Jun 2019 08:03:09 +0800
-Message-ID: <1559347395-14058-1-git-send-email-sean.wang@mediatek.com>
+Subject: [PATCH net-next v1 1/6] dt-bindings: clock: mediatek: Add an extra
+ required property to sgmiisys
+Date: Sat, 1 Jun 2019 08:03:10 +0800
+Message-ID: <1559347395-14058-2-git-send-email-sean.wang@mediatek.com>
+References: <1559347395-14058-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1559347395-14058-1-git-send-email-sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -21,43 +24,26 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-MT7629 inlcudes two sets of SGMIIs used for external switch or PHY, and embedded
-switch (ESW) via GDM1, GePHY via GMAC2, so add several patches in the series to
-make the code base common with the old SoCs.
+add an extra required property "mediatek,physpeed" to sgmiisys to determine
+link speed to match up the capability of the target PHY.
 
-The patch 1, 3 and 6, adds extension for SGMII to have the hardware configured
-for 1G, 2.5G and AN to fit the capability of the target PHY. In patch 6 could be
-an example showing how to use these configurations for underlying PHY speed to
-match up the link speed of the target PHY.
+Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ .../devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt      | 2 ++
+ 1 file changed, 2 insertions(+)
 
-The patch 4 is used for automatically configured the hardware path from GMACx to
-the target PHY by the description in deviceetree topology to determine the
-proper value for the corresponding MUX.
-
-The patch 2 and 5 is for the update for MT7629 including dt-binding document and
-its driver.
-
-Sean Wang (6):
-  dt-bindings: clock: mediatek: Add an extra required property to
-    sgmiisys
-  dt-bindings: net: mediatek: Add support for MediaTek MT7629 SoC
-  net: ethernet: mediatek: Extend SGMII related functions
-  net: ethernet: mediatek: Integrate hardware path from GMAC to PHY
-    variants
-  net: ethernet: mediatek: Add MT7629 ethernet support
-  arm64: dts: mt7622: Enlarge the SGMII register range
-
- .../arm/mediatek/mediatek,sgmiisys.txt        |   2 +
- .../devicetree/bindings/net/mediatek-net.txt  |  14 +-
- arch/arm64/boot/dts/mediatek/mt7622.dtsi      |   3 +-
- drivers/net/ethernet/mediatek/Makefile        |   3 +-
- drivers/net/ethernet/mediatek/mtk_eth_path.c  | 323 ++++++++++++++++++
- drivers/net/ethernet/mediatek/mtk_eth_soc.c   |  97 +++---
- drivers/net/ethernet/mediatek/mtk_eth_soc.h   | 177 +++++++++-
- drivers/net/ethernet/mediatek/mtk_sgmii.c     | 105 ++++++
- 8 files changed, 647 insertions(+), 77 deletions(-)
- create mode 100644 drivers/net/ethernet/mediatek/mtk_eth_path.c
- create mode 100644 drivers/net/ethernet/mediatek/mtk_sgmii.c
-
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
+index 30cb645c0e54..f5518f26a914 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
+@@ -9,6 +9,8 @@ Required Properties:
+ 	- "mediatek,mt7622-sgmiisys", "syscon"
+ 	- "mediatek,mt7629-sgmiisys", "syscon"
+ - #clock-cells: Must be 1
++- mediatek,physpeed: Should be one of "auto", "1000" or "2500" to match up
++		     the capability of the target PHY.
+ 
+ The SGMIISYS controller uses the common clk binding from
+ Documentation/devicetree/bindings/clock/clock-bindings.txt
 -- 
 2.17.1
