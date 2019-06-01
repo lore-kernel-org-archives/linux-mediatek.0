@@ -1,8 +1,8 @@
 From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH net-next v1 1/6] dt-bindings: clock: mediatek: Add an extra
- required property to sgmiisys
-Date: Sat, 1 Jun 2019 08:03:10 +0800
-Message-ID: <1559347395-14058-2-git-send-email-sean.wang@mediatek.com>
+Subject: [PATCH net-next v1 6/6] arm64: dts: mt7622: Enlarge the SGMII
+ register range
+Date: Sat, 1 Jun 2019 08:03:15 +0800
+Message-ID: <1559347395-14058-7-git-send-email-sean.wang@mediatek.com>
 References: <1559347395-14058-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -24,26 +24,26 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-add an extra required property "mediatek,physpeed" to sgmiisys to determine
-link speed to match up the capability of the target PHY.
+Enlarge the SGMII register range and using 2.5G force mode on default.
 
 Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- .../devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt      | 2 ++
- 1 file changed, 2 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
-index 30cb645c0e54..f5518f26a914 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
-@@ -9,6 +9,8 @@ Required Properties:
- 	- "mediatek,mt7622-sgmiisys", "syscon"
- 	- "mediatek,mt7629-sgmiisys", "syscon"
- - #clock-cells: Must be 1
-+- mediatek,physpeed: Should be one of "auto", "1000" or "2500" to match up
-+		     the capability of the target PHY.
- 
- The SGMIISYS controller uses the common clk binding from
- Documentation/devicetree/bindings/clock/clock-bindings.txt
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+index 4b1f5ae710eb..d1e13d340e26 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+@@ -929,7 +929,8 @@
+ 	sgmiisys: sgmiisys@1b128000 {
+ 		compatible = "mediatek,mt7622-sgmiisys",
+ 			     "syscon";
+-		reg = <0 0x1b128000 0 0x1000>;
++		reg = <0 0x1b128000 0 0x3000>;
+ 		#clock-cells = <1>;
++		mediatek,physpeed = "2500";
+ 	};
+ };
 -- 
 2.17.1
