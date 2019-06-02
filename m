@@ -1,118 +1,38 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH v1 3/4] Bluetooth: btmtkuart: add an implementation for boot-gpios property
-Date: Sun, 2 Jun 2019 09:04:16 +0800
-Message-ID: <1559437457-26766-4-git-send-email-sean.wang@mediatek.com>
-References: <1559437457-26766-1-git-send-email-sean.wang@mediatek.com>
+From: Chaotian Jing <chaotian.jing@mediatek.com>
+Subject: Re: fix controller busy issue and add 24bits segment support
+Date: Sun, 2 Jun 2019 09:23:11 +0800
+Message-ID: <1559438591.25015.0.camel@mhfsdcap03>
+References: <1558252637-10556-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1559437457-26766-1-git-send-email-sean.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, mark.rutland@arm.com, marcel@holtmann.org, johan.hedberg@gmail.com
-Cc: devicetree@vger.kernel.org, linux-bluetooth@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1558252637-10556-1-git-send-email-chaotian.jing@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: srv_heupstream@mediatek.com, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+Hi Ulf,
 
-Not every platform has the pinctrl device integrates the GPIO the function
-such as MT7621 whose pinctrl and GPIO are separate hardware so the driver
-adds additional boot-gpios to let the MT766[3,8]U can enter the proper boot
-mode by gpiod for such platform.
+Gentle ping for this patch.
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- drivers/bluetooth/btmtkuart.c | 34 +++++++++++++++++++++++++---------
- 1 file changed, 25 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/bluetooth/btmtkuart.c b/drivers/bluetooth/btmtkuart.c
-index f5dbeec8e274..1257149cfdc4 100644
---- a/drivers/bluetooth/btmtkuart.c
-+++ b/drivers/bluetooth/btmtkuart.c
-@@ -119,6 +119,7 @@ struct btmtkuart_dev {
- 
- 	struct regulator *vcc;
- 	struct gpio_desc *reset;
-+	struct gpio_desc *boot;
- 	struct pinctrl *pinctrl;
- 	struct pinctrl_state *pins_runtime;
- 	struct pinctrl_state *pins_boot;
-@@ -911,6 +912,13 @@ static int btmtkuart_parse_dt(struct serdev_device *serdev)
- 			return err;
- 		}
- 
-+		bdev->boot = devm_gpiod_get_optional(&serdev->dev, "boot",
-+						     GPIOD_OUT_LOW);
-+		if (IS_ERR(bdev->boot)) {
-+			err = PTR_ERR(bdev->boot);
-+			return err;
-+		}
-+
- 		bdev->pinctrl = devm_pinctrl_get(&serdev->dev);
- 		if (IS_ERR(bdev->pinctrl)) {
- 			err = PTR_ERR(bdev->pinctrl);
-@@ -919,8 +927,10 @@ static int btmtkuart_parse_dt(struct serdev_device *serdev)
- 
- 		bdev->pins_boot = pinctrl_lookup_state(bdev->pinctrl,
- 						       "default");
--		if (IS_ERR(bdev->pins_boot)) {
-+		if (IS_ERR(bdev->pins_boot) && !bdev->boot) {
- 			err = PTR_ERR(bdev->pins_boot);
-+			dev_err(&serdev->dev,
-+				"Should assign RXD to LOW at boot stage\n");
- 			return err;
- 		}
- 
-@@ -996,8 +1006,14 @@ static int btmtkuart_probe(struct serdev_device *serdev)
- 	set_bit(HCI_QUIRK_NON_PERSISTENT_SETUP, &hdev->quirks);
- 
- 	if (btmtkuart_is_standalone(bdev)) {
--		/* Switch to the specific pin state for the booting requires */
--		pinctrl_select_state(bdev->pinctrl, bdev->pins_boot);
-+		if (bdev->boot) {
-+			gpiod_set_value_cansleep(bdev->boot, 1);
-+		} else {
-+			/* Switch to the specific pin state for the booting
-+			 * requires.
-+			 */
-+			pinctrl_select_state(bdev->pinctrl, bdev->pins_boot);
-+		}
- 
- 		/* Power on */
- 		err = regulator_enable(bdev->vcc);
-@@ -1017,6 +1033,10 @@ static int btmtkuart_probe(struct serdev_device *serdev)
- 		 * mode the device requires for UART transfers.
- 		 */
- 		msleep(50);
-+
-+		if (bdev->boot)
-+			devm_gpiod_put(&serdev->dev, bdev->boot);
-+
- 		pinctrl_select_state(bdev->pinctrl, bdev->pins_runtime);
- 
- 		/* A standalone device doesn't depends on power domain on SoC,
-@@ -1037,10 +1057,8 @@ static int btmtkuart_probe(struct serdev_device *serdev)
- 	return 0;
- 
- err_regulator_disable:
--	if (btmtkuart_is_standalone(bdev))  {
--		pinctrl_select_state(bdev->pinctrl, bdev->pins_boot);
-+	if (btmtkuart_is_standalone(bdev))
- 		regulator_disable(bdev->vcc);
--	}
- 
- 	return err;
- }
-@@ -1050,10 +1068,8 @@ static void btmtkuart_remove(struct serdev_device *serdev)
- 	struct btmtkuart_dev *bdev = serdev_device_get_drvdata(serdev);
- 	struct hci_dev *hdev = bdev->hdev;
- 
--	if (btmtkuart_is_standalone(bdev))  {
--		pinctrl_select_state(bdev->pinctrl, bdev->pins_boot);
-+	if (btmtkuart_is_standalone(bdev))
- 		regulator_disable(bdev->vcc);
--	}
- 
- 	hci_unregister_dev(hdev);
- 	hci_free_dev(hdev);
--- 
-2.17.1
+On Sun, 2019-05-19 at 15:57 +0800, Chaotian Jing wrote:
+> the below 2 patches fix controller busy issue when plug out SD card
+> and add 24bits segment size support.
+> 
+> Chaotian Jing (2):
+>   mmc: mediatek: fix controller busy when plug out SD
+>   mmc: mediatek: support 24bits segment size
+> 
+>  drivers/mmc/host/mtk-sd.c | 24 ++++++++++++++++++------
+>  1 file changed, 18 insertions(+), 6 deletions(-)
+> 
