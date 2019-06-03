@@ -1,122 +1,46 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH v3 1/2] mt76: mt7615: enable support for mesh
-Date: Mon, 3 Jun 2019 14:08:43 +0800
-Message-ID: <a1ff446dfc06e2443552e7ec2d754099aacce7df.1559541944.git.ryder.lee@mediatek.com>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Subject: Re: [v4 1/7] drm/mediatek: move mipi_dsi_host_register to probe
+Date: Mon, 3 Jun 2019 14:12:30 +0800
+Message-ID: <CAJMQK-iW2SfHL0Dgc6p8AmrwjL=XHP4SeyxaZz=R-5x0qLZtFw@mail.gmail.com>
+References: <20190601092615.67917-1-jitao.shi@mediatek.com> <20190601092615.67917-2-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190601092615.67917-2-jitao.shi@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
-Cc: Roy Luo <royluo@google.com>, YF Luo <yf.luo@mediatek.com>, Yiwei Chung <yiwei.chung@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Chih-Min Chen <chih-min.Chen@mediatek.com>, linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>
+To: Jitao Shi <jitao.shi@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, stonea168@163.com, dri-devel@lists.freedesktop.org, Andy Yan <andy.yan@rock-chips.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa.cheng@mediatek.com, bibby.hsieh@mediatek.com, CK Hu <ck.hu@mediatek.com>, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, devicetree@vger.kernel.org, Philipp Zabel <p.zabel@pengutronix.de>, Inki Dae <inki.dae@samsung.com>, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.co
 List-Id: linux-mediatek@lists.infradead.org
 
-Enable NL80211_IFTYPE_MESH_POINT and update its path.
+On Sat, Jun 1, 2019 at 9:26 AM Jitao Shi <jitao.shi@mediatek.com> wrote:
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
-Changes since v3 - fix a wrong expression
-Changes since v2 - remove unused definitions
----
- drivers/net/wireless/mediatek/mt76/mt7615/init.c | 6 ++++++
- drivers/net/wireless/mediatek/mt76/mt7615/main.c | 1 +
- drivers/net/wireless/mediatek/mt76/mt7615/mcu.c  | 4 +++-
- drivers/net/wireless/mediatek/mt76/mt7615/mcu.h  | 6 ------
- 4 files changed, 10 insertions(+), 7 deletions(-)
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -1045,12 +1045,6 @@ static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
+>                 return ret;
+>         }
+>
+> -       ret = mipi_dsi_host_register(&dsi->host);
+> -       if (ret < 0) {
+> -               dev_err(dev, "failed to register DSI host: %d\n", ret);
+> -               goto err_ddp_comp_unregister;
+> -       }
+> -
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-index 59f604f3161f..f860af6a42da 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-@@ -133,6 +133,9 @@ static const struct ieee80211_iface_limit if_limits[] = {
- 	{
- 		.max = MT7615_MAX_INTERFACES,
- 		.types = BIT(NL80211_IFTYPE_AP) |
-+#ifdef CONFIG_MAC80211_MESH
-+			 BIT(NL80211_IFTYPE_MESH_POINT) |
-+#endif
- 			 BIT(NL80211_IFTYPE_STATION)
- 	}
- };
-@@ -195,6 +198,9 @@ int mt7615_register_device(struct mt7615_dev *dev)
- 	dev->mt76.antenna_mask = 0xf;
- 
- 	wiphy->interface_modes = BIT(NL80211_IFTYPE_STATION) |
-+#ifdef CONFIG_MAC80211_MESH
-+				 BIT(NL80211_IFTYPE_MESH_POINT) |
-+#endif
- 				 BIT(NL80211_IFTYPE_AP);
- 
- 	ret = mt76_register_device(&dev->mt76, true, mt7615_rates,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-index b0bb7cc12385..585e67fa2728 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-@@ -37,6 +37,7 @@ static int get_omac_idx(enum nl80211_iftype type, u32 mask)
- 
- 	switch (type) {
- 	case NL80211_IFTYPE_AP:
-+	case NL80211_IFTYPE_MESH_POINT:
- 		/* ap use hw bssid 0 and ext bssid */
- 		if (~mask & BIT(HW_BSSID_0))
- 			return HW_BSSID_0;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-index 43f70195244c..e82297048449 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-@@ -754,6 +754,7 @@ int mt7615_mcu_set_bss_info(struct mt7615_dev *dev,
- 
- 	switch (vif->type) {
- 	case NL80211_IFTYPE_AP:
-+	case NL80211_IFTYPE_MESH_POINT:
- 		tx_wlan_idx = mvif->sta.wcid.idx;
- 		conn_type = CONNECTION_INFRA_AP;
- 		break;
-@@ -968,7 +969,7 @@ int mt7615_mcu_add_wtbl(struct mt7615_dev *dev, struct ieee80211_vif *vif,
- 		.rx_wtbl = {
- 			.tag = cpu_to_le16(WTBL_RX),
- 			.len = cpu_to_le16(sizeof(struct wtbl_rx)),
--			.rca1 = vif->type != NL80211_IFTYPE_AP,
-+			.rca1 = vif->type == NL80211_IFTYPE_STATION,
- 			.rca2 = 1,
- 			.rv = 1,
- 		},
-@@ -1042,6 +1043,7 @@ static void sta_rec_convert_vif_type(enum nl80211_iftype type, u32 *conn_type)
- {
- 	switch (type) {
- 	case NL80211_IFTYPE_AP:
-+	case NL80211_IFTYPE_MESH_POINT:
- 		if (conn_type)
- 			*conn_type = CONNECTION_INFRA_STA;
- 		break;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
-index e96efb13fa4d..0915cb735699 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
-@@ -105,25 +105,19 @@ enum {
- #define STA_TYPE_STA		BIT(0)
- #define STA_TYPE_AP		BIT(1)
- #define STA_TYPE_ADHOC		BIT(2)
--#define STA_TYPE_TDLS		BIT(3)
- #define STA_TYPE_WDS		BIT(4)
- #define STA_TYPE_BC		BIT(5)
- 
- #define NETWORK_INFRA		BIT(16)
- #define NETWORK_P2P		BIT(17)
- #define NETWORK_IBSS		BIT(18)
--#define NETWORK_MESH		BIT(19)
--#define NETWORK_BOW		BIT(20)
- #define NETWORK_WDS		BIT(21)
- 
- #define CONNECTION_INFRA_STA	(STA_TYPE_STA | NETWORK_INFRA)
- #define CONNECTION_INFRA_AP	(STA_TYPE_AP | NETWORK_INFRA)
- #define CONNECTION_P2P_GC	(STA_TYPE_STA | NETWORK_P2P)
- #define CONNECTION_P2P_GO	(STA_TYPE_AP | NETWORK_P2P)
--#define CONNECTION_MESH_STA	(STA_TYPE_STA | NETWORK_MESH)
--#define CONNECTION_MESH_AP	(STA_TYPE_AP | NETWORK_MESH)
- #define CONNECTION_IBSS_ADHOC	(STA_TYPE_ADHOC | NETWORK_IBSS)
--#define CONNECTION_TDLS		(STA_TYPE_STA | NETWORK_INFRA | STA_TYPE_TDLS)
- #define CONNECTION_WDS		(STA_TYPE_WDS | NETWORK_WDS)
- #define CONNECTION_INFRA_BC	(STA_TYPE_BC | NETWORK_INFRA)
- 
--- 
-2.18.0
+> @@ -1097,31 +1089,37 @@ static int mtk_dsi_probe(struct platform_device *pdev)
+>
+>         dsi->host.ops = &mtk_dsi_ops;
+>         dsi->host.dev = dev;
+> +       dsi->dev = dev;
+> +       ret = mipi_dsi_host_register(&dsi->host);
+> +       if (ret < 0) {
+> +               dev_err(dev, "failed to register DSI host: %d\n", ret);
+> +               return ret;
+> +       }
+
+(It's commented on v3, in case it's missed, sent this again.)
+Since mipi_dsi_host_register() is moved from .bind to .probe,
+mipi_dsi_host_unregister() should also be moved from .unbind to
+.remove?
+
+Thanks
