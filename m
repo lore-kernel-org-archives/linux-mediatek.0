@@ -1,58 +1,43 @@
-From: Tom Murphy <tmurphy@arista.com>
-Subject: Re: [PATCH v3 0/4] iommu/amd: Convert the AMD iommu driver to the
- dma-iommu api
-Date: Mon, 3 Jun 2019 12:27:37 +0100
-Message-ID: <CAPL0++72dekt=re1=sTWpCJtMX=mUOc3Jcq=9d1sr1QO25_zFA@mail.gmail.com>
-References: <20190506185207.31069-1-tmurphy@arista.com> <20190603105158.GL12745@8bytes.org>
+From: Jose Abreu <Jose.Abreu@synopsys.com>
+Subject: RE: [v2, PATCH 3/4] net: stmmac: modify default value of tx-frames
+Date: Mon, 3 Jun 2019 11:40:37 +0000
+Message-ID: <78EB27739596EE489E55E81C33FEC33A0B93B6DF@DE02WEMBXB.internal.synopsys.com>
+References: <1559527086-7227-1-git-send-email-biao.huang@mediatek.com>
+ <1559527086-7227-4-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190603105158.GL12745@8bytes.org>
+In-Reply-To: <1559527086-7227-4-git-send-email-biao.huang@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Joerg Roedel <joro@8bytes.org>
-Cc: iommu@lists.linux-foundation.org, Tom Murphy <murphyt7@tcd.ie>, Will Deacon <will.deacon@arm.com>, Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.in
+To: Biao Huang <biao.huang@mediatek.com>, "davem@davemloft.net" <davem@davemloft.net>, "andrew@lunn.ch" <andrew@lunn.ch>
+Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "linux-stm32@st-md-mailman.stormreply.com" <linux-stm32@st-md-mailman.stormreply.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "yt.shen@mediatek.com" <yt.shen@mediatek.com>, "jianguo.zhang@mediatek.com" <jianguo.zhang@mediatek.com>, "boon.leong.ong@intel.com" <boon.leong.ong@intel.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jun 3, 2019 at 11:52 AM Joerg Roedel <joro@8bytes.org> wrote:
->
-> Hi Tom,
->
-> On Mon, May 06, 2019 at 07:52:02PM +0100, Tom Murphy wrote:
-> > Convert the AMD iommu driver to the dma-iommu api. Remove the iova
-> > handling and reserve region code from the AMD iommu driver.
->
-> Thank you for your work on this! I appreciate that much, but I am not
-> sure we are ready to make that move for the AMD and Intel IOMMU drivers
-> yet.
->
-> My main concern right now is that these changes will add a per-page
-> table lock into the fast-path for dma-mapping operations. There has been
-> much work in the past to remove all locking from these code-paths and
-> make it scalable on x86.
+From: Biao Huang <biao.huang@mediatek.com>
 
-Where is the locking introduced? intel doesn't use a lock in it's
-iommu_map function:
-https://github.com/torvalds/linux/blob/f2c7c76c5d0a443053e94adb9f0918fa2fb85c3a/drivers/iommu/intel-iommu.c#L5302
-because it cleverly uses cmpxchg64 to avoid using locks:
-https://github.com/torvalds/linux/blob/f2c7c76c5d0a443053e94adb9f0918fa2fb85c3a/drivers/iommu/intel-iommu.c#L900
-And the locking in AMD's iommu_map function can be removed (and i have
-removed it in my patch set) because it does that same thing as intel:
-https://github.com/torvalds/linux/blob/f2c7c76c5d0a443053e94adb9f0918fa2fb85c3a/drivers/iommu/amd_iommu.c#L1486
+> the default value of tx-frames is 25, it's too late when
+> passing tstamp to stack, then the ptp4l will fail:
+>=20
+> ptp4l -i eth0 -f gPTP.cfg -m
+> ptp4l: selected /dev/ptp0 as PTP clock
+> ptp4l: port 1: INITIALIZING to LISTENING on INITIALIZE
+> ptp4l: port 0: INITIALIZING to LISTENING on INITIALIZE
+> ptp4l: port 1: link up
+> ptp4l: timed out while polling for tx timestamp
+> ptp4l: increasing tx_timestamp_timeout may correct this issue,
+>        but it is likely caused by a driver bug
+> ptp4l: port 1: send peer delay response failed
+> ptp4l: port 1: LISTENING to FAULTY on FAULT_DETECTED (FT_UNSPECIFIED)
+>=20
+> ptp4l tests pass when changing the tx-frames from 25 to 1 with
+> ethtool -C option.
+> It should be fine to set tx-frames default value to 1, so ptp4l will pass
+> by default.
 
-Is there something I'm missing?
+I'm not sure if this is the right approach ... What's the timeout value=20
+you have for TX Timestamp ?
 
->
-> The dma-ops implementations in the x86 IOMMU drivers have the benefit
-> that they can call their page-table manipulation functions directly and
-> without locks, because they can make the necessary assumptions. The
-> IOMMU-API mapping/unmapping path can't make these assumptions because it
-> is also used for non-DMA-API use-cases.
->
-> So before we can move the AMD and Intel drivers to the generic DMA-API
-> implementation we need to solve this problem to not introduce new
-> scalability regressions.
->
-> Regards,
->
->         Joerg
->
+Thanks,
+Jose Miguel Abreu
