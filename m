@@ -1,53 +1,149 @@
-From: Biao Huang <biao.huang@mediatek.com>
-Subject: [v2, PATCH 3/4] net: stmmac: modify default value of tx-frames
-Date: Mon, 3 Jun 2019 09:58:05 +0800
-Message-ID: <1559527086-7227-4-git-send-email-biao.huang@mediatek.com>
-References: <1559527086-7227-1-git-send-email-biao.huang@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [v4 2/7] drm/mediatek: fixes CMDQ reg address of mt8173 is
+ different with mt2701
+Date: Mon, 3 Jun 2019 10:13:29 +0800
+Message-ID: <1559528009.32185.3.camel@mtksdaap41>
+References: <20190601092615.67917-1-jitao.shi@mediatek.com>
+         <20190601092615.67917-3-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1559527086-7227-1-git-send-email-biao.huang@mediatek.com>
+In-Reply-To: <20190601092615.67917-3-jitao.shi@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: davem@davemloft.net, Jose Abreu <joabreu@synopsys.com>, andrew@lunn.ch
-Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, biao.huang@mediatek.com, jianguo.zhang@mediatek.com, boon.leong.ong@intel.com
+To: Jitao Shi <jitao.shi@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-media
 List-Id: linux-mediatek@lists.infradead.org
 
-the default value of tx-frames is 25, it's too late when
-passing tstamp to stack, then the ptp4l will fail:
+Hi, Jitao:
 
-ptp4l -i eth0 -f gPTP.cfg -m
-ptp4l: selected /dev/ptp0 as PTP clock
-ptp4l: port 1: INITIALIZING to LISTENING on INITIALIZE
-ptp4l: port 0: INITIALIZING to LISTENING on INITIALIZE
-ptp4l: port 1: link up
-ptp4l: timed out while polling for tx timestamp
-ptp4l: increasing tx_timestamp_timeout may correct this issue,
-       but it is likely caused by a driver bug
-ptp4l: port 1: send peer delay response failed
-ptp4l: port 1: LISTENING to FAULTY on FAULT_DETECTED (FT_UNSPECIFIED)
+On Sat, 2019-06-01 at 17:26 +0800, Jitao Shi wrote:
+> Config the different CMDQ reg address in driver data.
+> 
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dsi.c | 29 ++++++++++++++++++++++++-----
+>  1 file changed, 24 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> index 6c4ac37f983d..a48db056df6c 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -131,7 +131,6 @@
+>  #define VM_CMD_EN			BIT(0)
+>  #define TS_VFP_EN			BIT(5)
+>  
+> -#define DSI_CMDQ0		0x180
+>  #define CONFIG				(0xff << 0)
+>  #define SHORT_PACKET			0
+>  #define LONG_PACKET			2
+> @@ -156,6 +155,10 @@
+>  
+>  struct phy;
+>  
+> +struct mtk_dsi_driver_data {
+> +	const u32 reg_cmdq_off;
+> +};
+> +
+>  struct mtk_dsi {
+>  	struct mtk_ddp_comp ddp_comp;
+>  	struct device *dev;
+> @@ -182,6 +185,7 @@ struct mtk_dsi {
+>  	bool enabled;
+>  	u32 irq_data;
+>  	wait_queue_head_t irq_wait_queue;
+> +	const struct mtk_dsi_driver_data *driver_data;
+>  };
+>  
+>  static inline struct mtk_dsi *encoder_to_dsi(struct drm_encoder *e)
+> @@ -934,6 +938,7 @@ static void mtk_dsi_cmdq(struct mtk_dsi *dsi, const struct mipi_dsi_msg *msg)
+>  	const char *tx_buf = msg->tx_buf;
+>  	u8 config, cmdq_size, cmdq_off, type = msg->type;
+>  	u32 reg_val, cmdq_mask, i;
+> +	u32 reg_cmdq_off = dsi->driver_data->reg_cmdq_off;
+>  
+>  	if (MTK_DSI_HOST_IS_READ(type))
+>  		config = BTA;
+> @@ -953,9 +958,11 @@ static void mtk_dsi_cmdq(struct mtk_dsi *dsi, const struct mipi_dsi_msg *msg)
+>  	}
+>  
+>  	for (i = 0; i < msg->tx_len; i++)
+> -		writeb(tx_buf[i], dsi->regs + DSI_CMDQ0 + cmdq_off + i);
+> +		mtk_dsi_mask(dsi, (reg_cmdq_off + cmdq_off + i) & (~0x3U),
+> +			     (0xffUL << (((i + cmdq_off) & 3U) * 8U)),
+> +			     tx_buf[i] << (((i + cmdq_off) & 3U) * 8U));
 
-ptp4l tests pass when changing the tx-frames from 25 to 1 with
-ethtool -C option.
-It should be fine to set tx-frames default value to 1, so ptp4l will pass
-by default.
+I've modify this line to
 
-Signed-off-by: Biao Huang <biao.huang@mediatek.com>
----
- drivers/net/ethernet/stmicro/stmmac/common.h |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+writeb(tx_buf[i], dsi->regs + reg_cmdq_off + cmdq_off + i);
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/common.h b/drivers/net/ethernet/stmicro/stmmac/common.h
-index 26bbcd8..6a08cec 100644
---- a/drivers/net/ethernet/stmicro/stmmac/common.h
-+++ b/drivers/net/ethernet/stmicro/stmmac/common.h
-@@ -261,7 +261,7 @@ struct stmmac_safety_stats {
- #define STMMAC_COAL_TX_TIMER	1000
- #define STMMAC_MAX_COAL_TX_TICK	100000
- #define STMMAC_TX_MAX_FRAMES	256
--#define STMMAC_TX_FRAMES	25
-+#define STMMAC_TX_FRAMES	1
- 
- /* Packets types */
- enum packets_types {
--- 
-1.7.9.5
+and this works. The call trace list below
+
+[    8.189067] Call trace:
+[    8.191516]  dump_backtrace+0x0/0x164
+[    8.195172]  show_stack+0x20/0x2c
+[    8.198482]  dump_stack+0xc4/0xfc
+[    8.201792]  mtk_dsi_host_transfer+0x248/0x4ac
+[    8.206230]  mipi_dsi_device_transfer+0x50/0x64
+[    8.210753]  mipi_dsi_dcs_exit_sleep_mode+0x5c/0x8c
+[    8.215625]  innolux_panel_prepare+0x128/0x218
+[    8.220061]  mtk_dsi_poweron+0x74c/0x7c8
+[    8.223976]  mtk_dsi_ddp_start+0x1c/0x28
+[    8.227891]  mtk_drm_crtc_atomic_enable+0x310/0x428
+[    8.232765]  drm_atomic_helper_commit_modeset_enables+0xa0/0x200
+[    8.238764]  mtk_atomic_complete+0x84/0xd0
+[    8.242852]  mtk_atomic_commit+0xb8/0xe0
+[    8.246769]  drm_atomic_commit+0x50/0x5c
+[    8.250684]  drm_atomic_helper_set_config+0x98/0xa0
+[    8.255555]  drm_mode_setcrtc+0x280/0x618
+[    8.259558]  drm_ioctl_kernel+0xcc/0x10c
+[    8.263473]  drm_ioctl+0x248/0x3d4
+[    8.266868]  drm_compat_ioctl+0xd8/0xe8
+[    8.270698]  __arm64_compat_sys_ioctl+0xf4/0x25c
+[    8.275309]  el0_svc_common+0x9c/0xfc
+[    8.278965]  el0_svc_compat_handler+0x2c/0x38
+[    8.283314]  el0_svc_compat+0x8/0x18
+
+So I think writeb() could work correctly. If you have meet some problem,
+it might be other problem.
+
+Regards,
+CK
+
+>  
+> -	mtk_dsi_mask(dsi, DSI_CMDQ0, cmdq_mask, reg_val);
+> +	mtk_dsi_mask(dsi, reg_cmdq_off, cmdq_mask, reg_val);
+>  	mtk_dsi_mask(dsi, DSI_CMDQ_SIZE, CMDQ_SIZE, cmdq_size);
+>  }
+>  
+> @@ -1101,6 +1108,8 @@ static int mtk_dsi_probe(struct platform_device *pdev)
+>  	if (ret)
+>  		goto err_unregister_host;
+>  
+> +	dsi->driver_data = of_device_get_match_data(dev);
+> +
+>  	dsi->engine_clk = devm_clk_get(dev, "engine");
+>  	if (IS_ERR(dsi->engine_clk)) {
+>  		ret = PTR_ERR(dsi->engine_clk);
+> @@ -1193,9 +1202,19 @@ static int mtk_dsi_remove(struct platform_device *pdev)
+>  	return 0;
+>  }
+>  
+> +static const struct mtk_dsi_driver_data mt8173_dsi_driver_data = {
+> +	.reg_cmdq_off = 0x200,
+> +};
+> +
+> +static const struct mtk_dsi_driver_data mt2701_dsi_driver_data = {
+> +	.reg_cmdq_off = 0x180,
+> +};
+> +
+>  static const struct of_device_id mtk_dsi_of_match[] = {
+> -	{ .compatible = "mediatek,mt2701-dsi" },
+> -	{ .compatible = "mediatek,mt8173-dsi" },
+> +	{ .compatible = "mediatek,mt2701-dsi",
+> +	  .data = &mt2701_dsi_driver_data },
+> +	{ .compatible = "mediatek,mt8173-dsi",
+> +	  .data = &mt8173_dsi_driver_data },
+>  	{ },
+>  };
+>  
