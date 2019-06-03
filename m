@@ -1,61 +1,53 @@
 From: Biao Huang <biao.huang@mediatek.com>
-Subject: [v2, PATCH 4/4] net: stmmac: dwmac4: fix flow control issue
-Date: Mon, 3 Jun 2019 09:58:06 +0800
-Message-ID: <1559527086-7227-5-git-send-email-biao.huang@mediatek.com>
+Subject: [v2, PATCH 3/4] net: stmmac: modify default value of tx-frames
+Date: Mon, 3 Jun 2019 09:58:05 +0800
+Message-ID: <1559527086-7227-4-git-send-email-biao.huang@mediatek.com>
 References: <1559527086-7227-1-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <netdev-owner@vger.kernel.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1559527086-7227-1-git-send-email-biao.huang@mediatek.com>
-Sender: netdev-owner@vger.kernel.org
+Sender: linux-kernel-owner@vger.kernel.org
 To: davem@davemloft.net, Jose Abreu <joabreu@synopsys.com>, andrew@lunn.ch
 Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, biao.huang@mediatek.com, jianguo.zhang@mediatek.com, boon.leong.ong@intel.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Current dwmac4_flow_ctrl will not clear
-GMAC_RX_FLOW_CTRL_RFE/GMAC_RX_FLOW_CTRL_RFE bits,
-so MAC hw will keep flow control on although expecting
-flow control off by ethtool. Add codes to fix it.
+the default value of tx-frames is 25, it's too late when
+passing tstamp to stack, then the ptp4l will fail:
 
-Fixes: 477286b53f55 ("stmmac: add GMAC4 core support")
+ptp4l -i eth0 -f gPTP.cfg -m
+ptp4l: selected /dev/ptp0 as PTP clock
+ptp4l: port 1: INITIALIZING to LISTENING on INITIALIZE
+ptp4l: port 0: INITIALIZING to LISTENING on INITIALIZE
+ptp4l: port 1: link up
+ptp4l: timed out while polling for tx timestamp
+ptp4l: increasing tx_timestamp_timeout may correct this issue,
+       but it is likely caused by a driver bug
+ptp4l: port 1: send peer delay response failed
+ptp4l: port 1: LISTENING to FAULTY on FAULT_DETECTED (FT_UNSPECIFIED)
+
+ptp4l tests pass when changing the tx-frames from 25 to 1 with
+ethtool -C option.
+It should be fine to set tx-frames default value to 1, so ptp4l will pass
+by default.
+
 Signed-off-by: Biao Huang <biao.huang@mediatek.com>
 ---
- drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c |    8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/stmicro/stmmac/common.h |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
-index 2544cff..9322b71 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
-@@ -488,8 +488,9 @@ static void dwmac4_flow_ctrl(struct mac_device_info *hw, unsigned int duplex,
- 	if (fc & FLOW_RX) {
- 		pr_debug("\tReceive Flow-Control ON\n");
- 		flow |= GMAC_RX_FLOW_CTRL_RFE;
--		writel(flow, ioaddr + GMAC_RX_FLOW_CTRL);
- 	}
-+	writel(flow, ioaddr + GMAC_RX_FLOW_CTRL);
-+
- 	if (fc & FLOW_TX) {
- 		pr_debug("\tTransmit Flow-Control ON\n");
+diff --git a/drivers/net/ethernet/stmicro/stmmac/common.h b/drivers/net/ethernet/stmicro/stmmac/common.h
+index 26bbcd8..6a08cec 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/common.h
++++ b/drivers/net/ethernet/stmicro/stmmac/common.h
+@@ -261,7 +261,7 @@ struct stmmac_safety_stats {
+ #define STMMAC_COAL_TX_TIMER	1000
+ #define STMMAC_MAX_COAL_TX_TICK	100000
+ #define STMMAC_TX_MAX_FRAMES	256
+-#define STMMAC_TX_FRAMES	25
++#define STMMAC_TX_FRAMES	1
  
-@@ -497,7 +498,7 @@ static void dwmac4_flow_ctrl(struct mac_device_info *hw, unsigned int duplex,
- 			pr_debug("\tduplex mode: PAUSE %d\n", pause_time);
- 
- 		for (queue = 0; queue < tx_cnt; queue++) {
--			flow |= GMAC_TX_FLOW_CTRL_TFE;
-+			flow = GMAC_TX_FLOW_CTRL_TFE;
- 
- 			if (duplex)
- 				flow |=
-@@ -505,6 +506,9 @@ static void dwmac4_flow_ctrl(struct mac_device_info *hw, unsigned int duplex,
- 
- 			writel(flow, ioaddr + GMAC_QX_TX_FLOW_CTRL(queue));
- 		}
-+	} else {
-+		for (queue = 0; queue < tx_cnt; queue++)
-+			writel(0, ioaddr + GMAC_QX_TX_FLOW_CTRL(queue));
- 	}
- }
- 
+ /* Packets types */
+ enum packets_types {
 -- 
 1.7.9.5
