@@ -1,174 +1,37 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [v4 1/7] drm/mediatek: move mipi_dsi_host_register to probe
-Date: Mon, 3 Jun 2019 09:20:28 +0800
-Message-ID: <1559524828.14616.0.camel@mtksdaap41>
-References: <20190601092615.67917-1-jitao.shi@mediatek.com>
-         <20190601092615.67917-2-jitao.shi@mediatek.com>
+From: Biao Huang <biao.huang@mediatek.com>
+Subject: [v2, PATCH 2/4] net: stmmac: dwmac-mediatek: disable rx watchdog
+Date: Mon, 3 Jun 2019 09:58:04 +0800
+Message-ID: <1559527086-7227-3-git-send-email-biao.huang@mediatek.com>
+References: <1559527086-7227-1-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190601092615.67917-2-jitao.shi@mediatek.com>
+In-Reply-To: <1559527086-7227-1-git-send-email-biao.huang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jitao Shi <jitao.shi@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-media
+To: davem@davemloft.net, Jose Abreu <joabreu@synopsys.com>, andrew@lunn.ch
+Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, biao.huang@mediatek.com, jianguo.zhang@mediatek.com, boon.leong.ong@intel.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Jitao:
+disable rx watchdog for dwmac-mediatek, then the hw will
+issue a rx interrupt once receiving a packet, so the responding time
+for rx path will be reduced.
 
-On Sat, 2019-06-01 at 17:26 +0800, Jitao Shi wrote:
-> DSI panel driver need attach function which is inculde in
-> mipi_dsi_host_ops.
-> 
-> If mipi_dsi_host_register is not in probe, dsi panel will
-> probe more delay.
-> 
-> So move the mipi_dsi_host_register to probe from bind.
-> 
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_dsi.c | 50 ++++++++++++++++++------------
->  1 file changed, 30 insertions(+), 20 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> index b00eb2d2e086..6c4ac37f983d 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -1045,12 +1045,6 @@ static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
->  		return ret;
->  	}
->  
-> -	ret = mipi_dsi_host_register(&dsi->host);
-> -	if (ret < 0) {
-> -		dev_err(dev, "failed to register DSI host: %d\n", ret);
-> -		goto err_ddp_comp_unregister;
-> -	}
-> -
->  	ret = mtk_dsi_create_conn_enc(drm, dsi);
->  	if (ret) {
->  		DRM_ERROR("Encoder create failed with %d\n", ret);
-> @@ -1060,8 +1054,6 @@ static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
->  	return 0;
->  
->  err_unregister:
-> -	mipi_dsi_host_unregister(&dsi->host);
-> -err_ddp_comp_unregister:
->  	mtk_ddp_comp_unregister(drm, &dsi->ddp_comp);
->  	return ret;
->  }
-> @@ -1097,31 +1089,37 @@ static int mtk_dsi_probe(struct platform_device *pdev)
->  
->  	dsi->host.ops = &mtk_dsi_ops;
->  	dsi->host.dev = dev;
-> +	dsi->dev = dev;
+Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+---
+ .../net/ethernet/stmicro/stmmac/dwmac-mediatek.c   |    1 +
+ 1 file changed, 1 insertion(+)
 
-Except this line,
-
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-
-> +	ret = mipi_dsi_host_register(&dsi->host);
-> +	if (ret < 0) {
-> +		dev_err(dev, "failed to register DSI host: %d\n", ret);
-> +		return ret;
-> +	}
->  
->  	ret = drm_of_find_panel_or_bridge(dev->of_node, 0, 0,
->  					  &dsi->panel, &dsi->bridge);
->  	if (ret)
-> -		return ret;
-> +		goto err_unregister_host;
->  
->  	dsi->engine_clk = devm_clk_get(dev, "engine");
->  	if (IS_ERR(dsi->engine_clk)) {
->  		ret = PTR_ERR(dsi->engine_clk);
->  		dev_err(dev, "Failed to get engine clock: %d\n", ret);
-> -		return ret;
-> +		goto err_unregister_host;
->  	}
->  
->  	dsi->digital_clk = devm_clk_get(dev, "digital");
->  	if (IS_ERR(dsi->digital_clk)) {
->  		ret = PTR_ERR(dsi->digital_clk);
->  		dev_err(dev, "Failed to get digital clock: %d\n", ret);
-> -		return ret;
-> +		goto err_unregister_host;
->  	}
->  
->  	dsi->hs_clk = devm_clk_get(dev, "hs");
->  	if (IS_ERR(dsi->hs_clk)) {
->  		ret = PTR_ERR(dsi->hs_clk);
->  		dev_err(dev, "Failed to get hs clock: %d\n", ret);
-> -		return ret;
-> +		goto err_unregister_host;
->  	}
->  
->  	regs = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> @@ -1129,33 +1127,35 @@ static int mtk_dsi_probe(struct platform_device *pdev)
->  	if (IS_ERR(dsi->regs)) {
->  		ret = PTR_ERR(dsi->regs);
->  		dev_err(dev, "Failed to ioremap memory: %d\n", ret);
-> -		return ret;
-> +		goto err_unregister_host;
->  	}
->  
->  	dsi->phy = devm_phy_get(dev, "dphy");
->  	if (IS_ERR(dsi->phy)) {
->  		ret = PTR_ERR(dsi->phy);
->  		dev_err(dev, "Failed to get MIPI-DPHY: %d\n", ret);
-> -		return ret;
-> +		goto err_unregister_host;
->  	}
->  
->  	comp_id = mtk_ddp_comp_get_id(dev->of_node, MTK_DSI);
->  	if (comp_id < 0) {
->  		dev_err(dev, "Failed to identify by alias: %d\n", comp_id);
-> -		return comp_id;
-> +		ret = comp_id;
-> +		goto err_unregister_host;
->  	}
->  
->  	ret = mtk_ddp_comp_init(dev, dev->of_node, &dsi->ddp_comp, comp_id,
->  				&mtk_dsi_funcs);
->  	if (ret) {
->  		dev_err(dev, "Failed to initialize component: %d\n", ret);
-> -		return ret;
-> +		goto err_unregister_host;
->  	}
->  
->  	irq_num = platform_get_irq(pdev, 0);
->  	if (irq_num < 0) {
-> -		dev_err(&pdev->dev, "failed to request dsi irq resource\n");
-> -		return -EPROBE_DEFER;
-> +		dev_err(&pdev->dev, "failed to get dsi irq_num: %d\n", irq_num);
-> +		ret = irq_num;
-> +		goto err_unregister_host;
->  	}
->  
->  	irq_set_status_flags(irq_num, IRQ_TYPE_LEVEL_LOW);
-> @@ -1163,14 +1163,24 @@ static int mtk_dsi_probe(struct platform_device *pdev)
->  			       IRQF_TRIGGER_LOW, dev_name(&pdev->dev), dsi);
->  	if (ret) {
->  		dev_err(&pdev->dev, "failed to request mediatek dsi irq\n");
-> -		return -EPROBE_DEFER;
-> +		goto err_unregister_host;
->  	}
->  
->  	init_waitqueue_head(&dsi->irq_wait_queue);
->  
->  	platform_set_drvdata(pdev, dsi);
->  
-> -	return component_add(&pdev->dev, &mtk_dsi_component_ops);
-> +	ret = component_add(&pdev->dev, &mtk_dsi_component_ops);
-> +	if (ret) {
-> +		dev_err(&pdev->dev, "failed to add component: %d\n", ret);
-> +		goto err_unregister_host;
-> +	}
-> +
-> +	return 0;
-> +
-> +err_unregister_host:
-> +	mipi_dsi_host_unregister(&dsi->host);
-> +	return ret;
->  }
->  
->  static int mtk_dsi_remove(struct platform_device *pdev)
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+index b84269e..79f2ee3 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+@@ -356,6 +356,7 @@ static int mediatek_dwmac_probe(struct platform_device *pdev)
+ 	plat_dat->has_gmac4 = 1;
+ 	plat_dat->has_gmac = 0;
+ 	plat_dat->pmt = 0;
++	plat_dat->riwt_off = 1;
+ 	plat_dat->maxmtu = ETH_DATA_LEN;
+ 	plat_dat->bsp_priv = priv_plat;
+ 	plat_dat->init = mediatek_dwmac_init;
+-- 
+1.7.9.5
