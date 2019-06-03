@@ -1,7 +1,7 @@
 From: Biao Huang <biao.huang@mediatek.com>
-Subject: [v2, PATCH 1/4] net: stmmac: dwmac-mediatek: enable Ethernet power domain
-Date: Mon, 3 Jun 2019 09:58:03 +0800
-Message-ID: <1559527086-7227-2-git-send-email-biao.huang@mediatek.com>
+Subject: [v2, PATCH 4/4] net: stmmac: dwmac4: fix flow control issue
+Date: Mon, 3 Jun 2019 09:58:06 +0800
+Message-ID: <1559527086-7227-5-git-send-email-biao.huang@mediatek.com>
 References: <1559527086-7227-1-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -12,44 +12,50 @@ To: davem@davemloft.net, Jose Abreu <joabreu@synopsys.com>, andrew@lunn.ch
 Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, biao.huang@mediatek.com, jianguo.zhang@mediatek.com, boon.leong.ong@intel.com
 List-Id: linux-mediatek@lists.infradead.org
 
-add Ethernet power on/off operations in init/exit flow.
+Current dwmac4_flow_ctrl will not clear
+GMAC_RX_FLOW_CTRL_RFE/GMAC_RX_FLOW_CTRL_RFE bits,
+so MAC hw will keep flow control on although expecting
+flow control off by ethtool. Add codes to fix it.
 
+Fixes: 477286b53f55 ("stmmac: add GMAC4 core support")
 Signed-off-by: Biao Huang <biao.huang@mediatek.com>
 ---
- .../net/ethernet/stmicro/stmmac/dwmac-mediatek.c   |    7 +++++++
- 1 file changed, 7 insertions(+)
+ drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c |    8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-index 126b66b..b84269e 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-@@ -9,6 +9,7 @@
- #include <linux/of.h>
- #include <linux/of_device.h>
- #include <linux/of_net.h>
-+#include <linux/pm_runtime.h>
- #include <linux/regmap.h>
- #include <linux/stmmac.h>
- 
-@@ -298,6 +299,9 @@ static int mediatek_dwmac_init(struct platform_device *pdev, void *priv)
- 		return ret;
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
+index 2544cff..9322b71 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
+@@ -488,8 +488,9 @@ static void dwmac4_flow_ctrl(struct mac_device_info *hw, unsigned int duplex,
+ 	if (fc & FLOW_RX) {
+ 		pr_debug("\tReceive Flow-Control ON\n");
+ 		flow |= GMAC_RX_FLOW_CTRL_RFE;
+-		writel(flow, ioaddr + GMAC_RX_FLOW_CTRL);
  	}
- 
-+	pm_runtime_enable(&pdev->dev);
-+	pm_runtime_get_sync(&pdev->dev);
++	writel(flow, ioaddr + GMAC_RX_FLOW_CTRL);
 +
- 	return 0;
+ 	if (fc & FLOW_TX) {
+ 		pr_debug("\tTransmit Flow-Control ON\n");
+ 
+@@ -497,7 +498,7 @@ static void dwmac4_flow_ctrl(struct mac_device_info *hw, unsigned int duplex,
+ 			pr_debug("\tduplex mode: PAUSE %d\n", pause_time);
+ 
+ 		for (queue = 0; queue < tx_cnt; queue++) {
+-			flow |= GMAC_TX_FLOW_CTRL_TFE;
++			flow = GMAC_TX_FLOW_CTRL_TFE;
+ 
+ 			if (duplex)
+ 				flow |=
+@@ -505,6 +506,9 @@ static void dwmac4_flow_ctrl(struct mac_device_info *hw, unsigned int duplex,
+ 
+ 			writel(flow, ioaddr + GMAC_QX_TX_FLOW_CTRL(queue));
+ 		}
++	} else {
++		for (queue = 0; queue < tx_cnt; queue++)
++			writel(0, ioaddr + GMAC_QX_TX_FLOW_CTRL(queue));
+ 	}
  }
  
-@@ -307,6 +311,9 @@ static void mediatek_dwmac_exit(struct platform_device *pdev, void *priv)
- 	const struct mediatek_dwmac_variant *variant = plat->variant;
- 
- 	clk_bulk_disable_unprepare(variant->num_clks, plat->clks);
-+
-+	pm_runtime_put_sync(&pdev->dev);
-+	pm_runtime_disable(&pdev->dev);
- }
- 
- static int mediatek_dwmac_probe(struct platform_device *pdev)
 -- 
 1.7.9.5
