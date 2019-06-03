@@ -1,44 +1,44 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH v3 3/5] dt-bindings: mfd: mt6397: Add bindings for MT6392
- PMIC
-Date: Mon, 3 Jun 2019 10:37:19 +0100
-Message-ID: <20190603093719.GK4797@dell>
-References: <20190515131741.17294-1-fparent@baylibre.com>
- <20190515131741.17294-4-fparent@baylibre.com>
+From: Joerg Roedel <joro@8bytes.org>
+Subject: Re: [PATCH v3 0/4] iommu/amd: Convert the AMD iommu driver to the
+ dma-iommu api
+Date: Mon, 3 Jun 2019 12:51:58 +0200
+Message-ID: <20190603105158.GL12745@8bytes.org>
+References: <20190506185207.31069-1-tmurphy@arista.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20190515131741.17294-4-fparent@baylibre.com>
+In-Reply-To: <20190506185207.31069-1-tmurphy@arista.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Fabien Parent <fparent@baylibre.com>
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, matthias.bgg@gmail.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>
+To: Tom Murphy <tmurphy@arista.com>
+Cc: iommu@lists.linux-foundation.org, murphyt7@tcd.ie, Will Deacon <will.deacon@arm.com>, Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 15 May 2019, Fabien Parent wrote:
+Hi Tom,
 
-> Add the currently supported bindings for the MT6392 PMIC.
-> 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> Reviewed-by: Rob Herring <robh@kernel.org>
-> ---
-> 
-> V3:
-> 	* No change
-> 
-> V2:
-> 	* New patch
-> 
-> ---
->  Documentation/devicetree/bindings/mfd/mt6397.txt | 12 ++++++++++--
->  1 file changed, 10 insertions(+), 2 deletions(-)
+On Mon, May 06, 2019 at 07:52:02PM +0100, Tom Murphy wrote:
+> Convert the AMD iommu driver to the dma-iommu api. Remove the iova
+> handling and reserve region code from the AMD iommu driver.
 
-For my own reference:
-  Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
+Thank you for your work on this! I appreciate that much, but I am not
+sure we are ready to make that move for the AMD and Intel IOMMU drivers
+yet.
 
--- 
-Lee Jones [李琼斯]
-Linaro Services Technical Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
+My main concern right now is that these changes will add a per-page
+table lock into the fast-path for dma-mapping operations. There has been
+much work in the past to remove all locking from these code-paths and
+make it scalable on x86.
+
+The dma-ops implementations in the x86 IOMMU drivers have the benefit
+that they can call their page-table manipulation functions directly and
+without locks, because they can make the necessary assumptions. The
+IOMMU-API mapping/unmapping path can't make these assumptions because it
+is also used for non-DMA-API use-cases.
+
+So before we can move the AMD and Intel drivers to the generic DMA-API
+implementation we need to solve this problem to not introduce new
+scalability regressions.
+
+Regards,
+
+	Joerg
