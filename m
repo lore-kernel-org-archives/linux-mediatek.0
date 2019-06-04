@@ -1,71 +1,50 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v4] gpu/drm: mediatek: call mtk_dsi_stop() after
- mtk_drm_crtc_atomic_disable()
-Date: Tue, 4 Jun 2019 10:05:40 +0800
-Message-ID: <1559613940.9975.0.camel@mtksdaap41>
-References: <20190530091847.90263-1-hsinyi@chromium.org>
+From: biao huang <biao.huang@mediatek.com>
+Subject: RE: [v2, PATCH 3/4] net: stmmac: modify default value of tx-frames
+Date: Tue, 4 Jun 2019 10:31:06 +0800
+Message-ID: <1559615466.24897.106.camel@mhfsdcap03>
+References: <1559527086-7227-1-git-send-email-biao.huang@mediatek.com>
+         <1559527086-7227-4-git-send-email-biao.huang@mediatek.com>
+         <78EB27739596EE489E55E81C33FEC33A0B93B6DF@DE02WEMBXB.internal.synopsys.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190530091847.90263-1-hsinyi@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <78EB27739596EE489E55E81C33FEC33A0B93B6DF@DE02WEMBXB.internal.synopsys.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jose Abreu <Jose.Abreu@synopsys.com>
+Cc: "davem@davemloft.net" <davem@davemloft.net>, "andrew@lunn.ch" <andrew@lunn.ch>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "linux-stm32@st-md-mailman.stormreply.com" <linux-stm32@st-md-mailman.stormreply.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "yt.shen@mediatek.com" <yt.shen@mediatek.com>, "jianguo.zhang@mediatek.com" <jianguo.zhang@mediatek.com>, "boon.leong.ong@intel.com" <boon.leong.ong@in>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIEhzaW4tWWk6CgpPbiBUaHUsIDIwMTktMDUtMzAgYXQgMTc6MTggKzA4MDAsIEhzaW4tWWkg
-V2FuZyB3cm90ZToKPiBtdGtfZHNpX3N0b3AoKSBzaG91bGQgYmUgY2FsbGVkIGFmdGVyIG10a19k
-cm1fY3J0Y19hdG9taWNfZGlzYWJsZSgpLCB3aGljaCBuZWVkcwo+IG92bCBpcnEgZm9yIGRybV9j
-cnRjX3dhaXRfb25lX3ZibGFuaygpLCBzaW5jZSBhZnRlciBtdGtfZHNpX3N0b3AoKSBpcyBjYWxs
-ZWQsCj4gb3ZsIGlycSB3aWxsIGJlIGRpc2FibGVkLiBJZiBkcm1fY3J0Y193YWl0X29uZV92Ymxh
-bmsoKSBpcyBjYWxsZWQgYWZ0ZXIgbGFzdAo+IGlycSwgaXQgd2lsbCB0aW1lb3V0IHdpdGggdGhp
-cyBtZXNzYWdlOiAidmJsYW5rIHdhaXQgdGltZWQgb3V0IG9uIGNydGMgMCIuIFRoaXMKPiBoYXBw
-ZW5zIHNvbWV0aW1lcyB3aGVuIHR1cm5pbmcgb2ZmIHRoZSBzY3JlZW4uCj4gCj4gSW4gZHJtX2F0
-b21pY19oZWxwZXIuYyNkaXNhYmxlX291dHB1dHMoKSwKPiB0aGUgY2FsbGluZyBzZXF1ZW5jZSB3
-aGVuIHR1cm5pbmcgb2ZmIHRoZSBzY3JlZW4gaXM6Cj4gCj4gMS4gbXRrX2RzaV9lbmNvZGVyX2Rp
-c2FibGUoKQo+ICAgICAgLS0+IG10a19vdXRwdXRfZHNpX2Rpc2FibGUoKQo+ICAgICAgICAtLT4g
-bXRrX2RzaV9zdG9wKCk7ICAvLyBzb21ldGltZXMgbWFrZSB2YmxhbmsgdGltZW91dCBpbiBhdG9t
-aWNfZGlzYWJsZQo+ICAgICAgICAtLT4gbXRrX2RzaV9wb3dlcm9mZigpOwo+IDIuIG10a19kcm1f
-Y3J0Y19hdG9taWNfZGlzYWJsZSgpCj4gICAgICAtLT4gZHJtX2NydGNfd2FpdF9vbmVfdmJsYW5r
-KCk7Cj4gICAgICAuLi4KPiAgICAgICAgLS0+IG10a19kc2lfZGRwX3N0b3AoKQo+ICAgICAgICAg
-IC0tPiBtdGtfZHNpX3Bvd2Vyb2ZmKCk7Cj4gCj4gbXRrX2RzaV9wb3dlcm9mZigpIGhhcyByZWZl
-cmVuY2UgY291bnQgZGVzaWduLCBjaGFuZ2UgdG8gbWFrZSBtdGtfZHNpX3N0b3AoKQo+IGNhbGxl
-ZCBpbiBtdGtfZHNpX3Bvd2Vyb2ZmKCkgd2hlbiByZWZjb3VudCBpcyAwLgoKQXBwbGllZCB0byBt
-ZWRpYXRlay1kcm0tZml4ZXMtNS4yIFsxXSwgdGhhbmtzLgoKWzFdCmh0dHBzOi8vZ2l0aHViLmNv
-bS9ja2h1LW1lZGlhdGVrL2xpbnV4LmdpdC10YWdzL2NvbW1pdHMvbWVkaWF0ZWstZHJtLWZpeGVz
-LTUuMgoKUmVnYXJkcywKQ0sKCj4gCj4gRml4ZXM6IDA3MDc2MzJiNWJhYyAoImRybS9tZWRpYXRl
-azogdXBkYXRlIERTSSBzdWIgZHJpdmVyIGZsb3cgZm9yIHNlbmRpbmcgY29tbWFuZHMgdG8gcGFu
-ZWwiKQo+IFNpZ25lZC1vZmYtYnk6IEhzaW4tWWkgV2FuZyA8aHNpbnlpQGNocm9taXVtLm9yZz4K
-PiAtLS0KPiBjaGFuZ2UgbG9nIHYzLT52NDoKPiAqIGFkZCBjb21tZW50IGluIGNvZGUuCj4gLS0t
-Cj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgfCAxMCArKysrKysrKystCj4g
-IDEgZmlsZSBjaGFuZ2VkLCA5IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPiAKPiBkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyBiL2RyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiBpbmRleCBiMDBlYjJkMmUwODYuLjczMDU5NGE5MTQ0
-MCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gKysr
-IGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYwo+IEBAIC02MzAsNiArNjMwLDE1
-IEBAIHN0YXRpYyB2b2lkIG10a19kc2lfcG93ZXJvZmYoc3RydWN0IG10a19kc2kgKmRzaSkKPiAg
-CWlmICgtLWRzaS0+cmVmY291bnQgIT0gMCkKPiAgCQlyZXR1cm47Cj4gIAo+ICsJLyogCj4gKwkg
-KiBtdGtfZHNpX3N0b3AoKSBhbmQgbXRrX2RzaV9zdGFydCgpIGlzIGFzeW1tZXRyaWMsIHNpbmNl
-Cj4gKwkgKiBtdGtfZHNpX3N0b3AoKSBzaG91bGQgYmUgY2FsbGVkIGFmdGVyIG10a19kcm1fY3J0
-Y19hdG9taWNfZGlzYWJsZSgpLAo+ICsJICogd2hpY2ggbmVlZHMgaXJxIGZvciB2YmxhbmssIGFu
-ZCBtdGtfZHNpX3N0b3AoKSB3aWxsIGRpc2FibGUgaXJxLgo+ICsJICogbXRrX2RzaV9zdGFydCgp
-IG5lZWRzIHRvIGJlIGNhbGxlZCBpbiBtdGtfb3V0cHV0X2RzaV9lbmFibGUoKSwKPiArCSAqIGFm
-dGVyIGRzaSBpcyBmdWxseSBzZXQuCj4gKwkgKi8KPiArCW10a19kc2lfc3RvcChkc2kpOwo+ICsK
-PiAgCWlmICghbXRrX2RzaV9zd2l0Y2hfdG9fY21kX21vZGUoZHNpLCBWTV9ET05FX0lOVF9GTEFH
-LCA1MDApKSB7Cj4gIAkJaWYgKGRzaS0+cGFuZWwpIHsKPiAgCQkJaWYgKGRybV9wYW5lbF91bnBy
-ZXBhcmUoZHNpLT5wYW5lbCkpIHsKPiBAQCAtNjk2LDcgKzcwNSw2IEBAIHN0YXRpYyB2b2lkIG10
-a19vdXRwdXRfZHNpX2Rpc2FibGUoc3RydWN0IG10a19kc2kgKmRzaSkKPiAgCQl9Cj4gIAl9Cj4g
-IAo+IC0JbXRrX2RzaV9zdG9wKGRzaSk7Cj4gIAltdGtfZHNpX3Bvd2Vyb2ZmKGRzaSk7Cj4gIAo+
-ICAJZHNpLT5lbmFibGVkID0gZmFsc2U7CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
-dGluZm8vZHJpLWRldmVs
+On Mon, 2019-06-03 at 11:40 +0000, Jose Abreu wrote:
+> From: Biao Huang <biao.huang@mediatek.com>
+> 
+> > the default value of tx-frames is 25, it's too late when
+> > passing tstamp to stack, then the ptp4l will fail:
+> > 
+> > ptp4l -i eth0 -f gPTP.cfg -m
+> > ptp4l: selected /dev/ptp0 as PTP clock
+> > ptp4l: port 1: INITIALIZING to LISTENING on INITIALIZE
+> > ptp4l: port 0: INITIALIZING to LISTENING on INITIALIZE
+> > ptp4l: port 1: link up
+> > ptp4l: timed out while polling for tx timestamp
+> > ptp4l: increasing tx_timestamp_timeout may correct this issue,
+> >        but it is likely caused by a driver bug
+> > ptp4l: port 1: send peer delay response failed
+> > ptp4l: port 1: LISTENING to FAULTY on FAULT_DETECTED (FT_UNSPECIFIED)
+> > 
+> > ptp4l tests pass when changing the tx-frames from 25 to 1 with
+> > ethtool -C option.
+> > It should be fine to set tx-frames default value to 1, so ptp4l will pass
+> > by default.
+> 
+> I'm not sure if this is the right approach ... What's the timeout value 
+> you have for TX Timestamp ?
+I use the default tx_timestamp_timeout value 1, which represents 1ms.
+do you try ptp4l on your side?
+
+performance test is done in https://lkml.org/lkml/2019/5/30/1617
+and seems no performance degradation.
+
+> 
+> Thanks,
+> Jose Miguel Abreu
