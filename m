@@ -1,66 +1,78 @@
-From: Alexandre Courbot <acourbot@chromium.org>
-Subject: [PATCH 5/5] media: mtk-vcodec: support single-buffer frames
-Date: Tue,  4 Jun 2019 18:37:37 +0900
-Message-ID: <20190604093737.172599-6-acourbot@chromium.org>
-References: <20190604093737.172599-1-acourbot@chromium.org>
+From: Stu Hsieh <stu.hsieh@mediatek.com>
+Subject: [PATCH v4 06/14] [media] mtk-mipicsi: enable/disable ana clk
+Date: Tue, 4 Jun 2019 18:11:47 +0800
+Message-ID: <1559643115-15124-7-git-send-email-stu.hsieh@mediatek.com>
+References: <1559643115-15124-1-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190604093737.172599-1-acourbot@chromium.org>
+In-Reply-To: <1559643115-15124-1-git-send-email-stu.hsieh@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Yunfei Dong <yunfei.dong@mediatek.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@chromium.org>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, CK Hu <ck.hu@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Stu Hsieh <stu.hsieh@mediatek.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Yunfei Dong <yunfei.dong@mediatek.com>
+This patch enable/disable ana clk when power on/off
 
-MT8183 will use a multi-planar format backed by a single buffer. Adapt
-the existing code to be able to handle such frames instead of assuming
-each frame is backed by two buffers.
-
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Co-developed-by: Alexandre Courbot <acourbot@chromium.org>
-Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
-[acourbot: refactor, cleanup and split]
+Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
 ---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
+ .../media/platform/mtk-mipicsi/mtk_mipicsi.c  | 37 +++++++++++++++++++
+ 1 file changed, 37 insertions(+)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-index 131a8117ece2..6b99b877a3b4 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-@@ -117,8 +117,9 @@ static struct vb2_buffer *get_display_buffer(struct mtk_vcodec_ctx *ctx)
- 	if (dstbuf->used) {
- 		vb2_set_plane_payload(&dstbuf->vb.vb2_buf, 0,
- 					ctx->picinfo.fb_sz[0]);
--		vb2_set_plane_payload(&dstbuf->vb.vb2_buf, 1,
--					ctx->picinfo.fb_sz[1]);
-+		if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 2)
-+			vb2_set_plane_payload(&dstbuf->vb.vb2_buf, 1,
-+						ctx->picinfo.fb_sz[1]);
+diff --git a/drivers/media/platform/mtk-mipicsi/mtk_mipicsi.c b/drivers/media/platform/mtk-mipicsi/mtk_mipicsi.c
+index 28dcc683a958..f5cb29077022 100644
+--- a/drivers/media/platform/mtk-mipicsi/mtk_mipicsi.c
++++ b/drivers/media/platform/mtk-mipicsi/mtk_mipicsi.c
+@@ -182,6 +182,41 @@ static const struct mtk_format mtk_mipicsi_formats[] = {
+ },
+ };
  
- 		mtk_v4l2_debug(2,
- 				"[%d]status=%x queue id=%d to done_list %d",
-@@ -389,7 +390,8 @@ static void mtk_vdec_worker(struct work_struct *work)
- 		vdec_if_decode(ctx, NULL, NULL, &res_chg);
- 		clean_display_buffer(ctx);
- 		vb2_set_plane_payload(&dst_buf_info->vb.vb2_buf, 0, 0);
--		vb2_set_plane_payload(&dst_buf_info->vb.vb2_buf, 1, 0);
-+		if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 2)
-+			vb2_set_plane_payload(&dst_buf_info->vb.vb2_buf, 1, 0);
- 		dst_buf->flags |= V4L2_BUF_FLAG_LAST;
- 		v4l2_m2m_buf_done(&dst_buf_info->vb, VB2_BUF_STATE_DONE);
- 		clean_free_buffer(ctx);
-@@ -1320,7 +1322,8 @@ static void vb2ops_vdec_stop_streaming(struct vb2_queue *q)
++static void mtk_mipicsi_ana_clk_enable(void __iomem *base, bool enable)
++{
++	if (enable) {
++		writel(1UL | readl(base + MIPI_RX_ANA00_CSI),
++			base + MIPI_RX_ANA00_CSI);
++		writel(1UL | readl(base + MIPI_RX_ANA04_CSI),
++			base + MIPI_RX_ANA04_CSI);
++		writel(1UL | readl(base + MIPI_RX_ANA08_CSI),
++			base + MIPI_RX_ANA08_CSI);
++		writel(1UL | readl(base + MIPI_RX_ANA0C_CSI),
++			base + MIPI_RX_ANA0C_CSI);
++		writel(1UL | readl(base + MIPI_RX_ANA10_CSI),
++			base + MIPI_RX_ANA10_CSI);
++		writel(1UL | readl(base + MIPI_RX_ANA20_CSI),
++			base + MIPI_RX_ANA20_CSI);
++		writel(1UL | readl(base + MIPI_RX_ANA24_CSI),
++			base + MIPI_RX_ANA24_CSI);
++	} else {
++		writel(~1UL & readl(base + MIPI_RX_ANA00_CSI),
++			base + MIPI_RX_ANA00_CSI);
++		writel(~1UL & readl(base + MIPI_RX_ANA04_CSI),
++			base + MIPI_RX_ANA04_CSI);
++		writel(~1UL & readl(base + MIPI_RX_ANA08_CSI),
++			base + MIPI_RX_ANA08_CSI);
++		writel(~1UL & readl(base + MIPI_RX_ANA0C_CSI),
++			base + MIPI_RX_ANA0C_CSI);
++		writel(~1UL & readl(base + MIPI_RX_ANA10_CSI),
++			base + MIPI_RX_ANA10_CSI);
++		writel(~1UL & readl(base + MIPI_RX_ANA20_CSI),
++			base + MIPI_RX_ANA20_CSI);
++		writel(~1UL & readl(base + MIPI_RX_ANA24_CSI),
++			base + MIPI_RX_ANA24_CSI);
++	}
++}
++
+ static void mtk_mipicsi_ana_init(void __iomem *base)
+ {
+ 	writel(0xFEFBEFBEU & readl(base + MIPI_RX_ANA4C_CSI),
+@@ -354,6 +389,8 @@ static void mipicsi_clk_enable(struct mtk_mipicsi_dev *mipicsi, bool enable)
+ 	for (i = 0; i < mipicsi->common_clk_num; i++)
+ 		enable ? clk_prepare_enable(mipicsi->common_clk[i]) :
+ 			 clk_disable_unprepare(mipicsi->common_clk[i]);
++
++	mtk_mipicsi_ana_clk_enable(mipicsi->ana, enable);
+ }
  
- 	while ((dst_buf = v4l2_m2m_dst_buf_remove(ctx->m2m_ctx))) {
- 		vb2_set_plane_payload(&dst_buf->vb2_buf, 0, 0);
--		vb2_set_plane_payload(&dst_buf->vb2_buf, 1, 0);
-+		if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 2)
-+			vb2_set_plane_payload(&dst_buf->vb2_buf, 1, 0);
- 		v4l2_m2m_buf_done(dst_buf, VB2_BUF_STATE_ERROR);
- 	}
- 
+ static int mtk_mipicsi_pm_suspend(struct device *dev)
 -- 
-2.22.0.rc1.311.g5d7573a151-goog
+2.18.0
