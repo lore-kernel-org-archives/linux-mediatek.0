@@ -1,88 +1,68 @@
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] USB: move usb debugfs directory creation to the usb common
- core
-Date: Tue, 4 Jun 2019 11:32:58 +0200
-Message-ID: <20190604093258.GB30054@kroah.com>
+From: Alexandre Courbot <acourbot@chromium.org>
+Subject: [PATCH 0/5] media: mtk-vcodec: cleanups and fixes
+Date: Tue,  4 Jun 2019 18:37:32 +0900
+Message-ID: <20190604093737.172599-1-acourbot@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
 Sender: linux-kernel-owner@vger.kernel.org
-To: Felipe Balbi <felipe.balbi@linux.intel.com>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Yunfei Dong <yunfei.dong@mediatek.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-The USB gadget subsystem wants to use the USB debugfs root directory, so
-move it to the common "core" USB code so that it is properly initialized
-and removed as needed.
+This series extracts the cleanup patches from the RFC of MT8183 support [1] as
+these patches can already be merged. MT8183 support will be sent separately.
 
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+[1] https://patchwork.kernel.org/cover/10963769/
 
----
+Changes since RFC:
 
-This should be the "correct" version of this, Chunfeng, can you test
-this to verify it works for you?
+- Replaced all GPLv2 headers with SPDX
 
+- Replaced EXPORT_SYMBOL with EXPORT_SYMBOL_GPL
 
-diff --git a/drivers/usb/common/common.c b/drivers/usb/common/common.c
-index 18f5dcf58b0d..3b5e4263ffef 100644
---- a/drivers/usb/common/common.c
-+++ b/drivers/usb/common/common.c
-@@ -15,6 +15,7 @@
- #include <linux/usb/of.h>
- #include <linux/usb/otg.h>
- #include <linux/of_platform.h>
-+#include <linux/debugfs.h>
- 
- static const char *const ep_type_names[] = {
- 	[USB_ENDPOINT_XFER_CONTROL] = "ctrl",
-@@ -291,4 +292,21 @@ struct device *usb_of_get_companion_dev(struct device *dev)
- EXPORT_SYMBOL_GPL(usb_of_get_companion_dev);
- #endif
- 
-+struct dentry *usb_debug_root;
-+EXPORT_SYMBOL_GPL(usb_debug_root);
-+
-+static int usb_common_init(void)
-+{
-+	usb_debug_root = debugfs_create_dir("usb", NULL);
-+	return 0;
-+}
-+
-+static void usb_common_exit(void)
-+{
-+	debugfs_remove_recursive(usb_debug_root);
-+}
-+
-+module_init(usb_common_init);
-+module_exit(usb_common_exit);
-+
- MODULE_LICENSE("GPL");
-diff --git a/drivers/usb/core/usb.c b/drivers/usb/core/usb.c
-index 7fcb9f782931..f3d6b1ab80cb 100644
---- a/drivers/usb/core/usb.c
-+++ b/drivers/usb/core/usb.c
-@@ -1185,19 +1185,17 @@ static struct notifier_block usb_bus_nb = {
- 	.notifier_call = usb_bus_notify,
- };
- 
--struct dentry *usb_debug_root;
--EXPORT_SYMBOL_GPL(usb_debug_root);
-+static struct dentry *usb_devices_root;
- 
- static void usb_debugfs_init(void)
- {
--	usb_debug_root = debugfs_create_dir("usb", NULL);
--	debugfs_create_file("devices", 0444, usb_debug_root, NULL,
--			    &usbfs_devices_fops);
-+	usb_devices_root = debugfs_create_file("devices", 0444, usb_debug_root,
-+					       NULL, &usbfs_devices_fops);
- }
- 
- static void usb_debugfs_cleanup(void)
- {
--	debugfs_remove_recursive(usb_debug_root);
-+	debugfs_remove_recursive(usb_devices_root);
- }
- 
- /*
+Alexandre Courbot (4):
+  media: mtk-vcodec: replace GPLv2 with SPDX
+  media: mtk-vcodec: avoid unneeded pointer-to-long conversions
+  media: mtk-vcodec: remove unneeded proxy functions
+  media: mtk-vcodec: constify formats
+
+Yunfei Dong (1):
+  media: mtk-vcodec: support single-buffer frames
+
+ .../platform/mtk-vcodec/mtk_vcodec_dec.c      | 45 ++++++++-----------
+ .../platform/mtk-vcodec/mtk_vcodec_dec.h      | 15 +------
+ .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 15 +------
+ .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   | 14 +-----
+ .../platform/mtk-vcodec/mtk_vcodec_dec_pm.h   | 14 +-----
+ .../platform/mtk-vcodec/mtk_vcodec_drv.h      | 19 ++------
+ .../platform/mtk-vcodec/mtk_vcodec_enc.c      | 34 +++++---------
+ .../platform/mtk-vcodec/mtk_vcodec_enc.h      | 15 +------
+ .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  | 15 +------
+ .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   | 14 +-----
+ .../platform/mtk-vcodec/mtk_vcodec_enc_pm.h   | 14 +-----
+ .../platform/mtk-vcodec/mtk_vcodec_intr.c     | 14 +-----
+ .../platform/mtk-vcodec/mtk_vcodec_intr.h     | 14 +-----
+ .../platform/mtk-vcodec/mtk_vcodec_util.c     | 15 +------
+ .../platform/mtk-vcodec/mtk_vcodec_util.h     | 15 +------
+ .../platform/mtk-vcodec/vdec/vdec_h264_if.c   | 35 ++++-----------
+ .../platform/mtk-vcodec/vdec/vdec_vp8_if.c    | 36 ++++-----------
+ .../platform/mtk-vcodec/vdec/vdec_vp9_if.c    | 37 ++++-----------
+ .../media/platform/mtk-vcodec/vdec_drv_base.h | 22 +++------
+ .../media/platform/mtk-vcodec/vdec_drv_if.c   | 29 ++++--------
+ .../media/platform/mtk-vcodec/vdec_drv_if.h   | 15 +------
+ .../media/platform/mtk-vcodec/vdec_ipi_msg.h  | 15 +------
+ .../media/platform/mtk-vcodec/vdec_vpu_if.c   | 14 +-----
+ .../media/platform/mtk-vcodec/vdec_vpu_if.h   | 14 +-----
+ .../platform/mtk-vcodec/venc/venc_h264_if.c   | 36 +++------------
+ .../platform/mtk-vcodec/venc/venc_vp8_if.c    | 35 +++------------
+ .../media/platform/mtk-vcodec/venc_drv_base.h | 25 +++--------
+ .../media/platform/mtk-vcodec/venc_drv_if.c   | 27 +++--------
+ .../media/platform/mtk-vcodec/venc_drv_if.h   | 17 +------
+ .../media/platform/mtk-vcodec/venc_ipi_msg.h  | 17 +------
+ .../media/platform/mtk-vcodec/venc_vpu_if.c   | 15 +------
+ .../media/platform/mtk-vcodec/venc_vpu_if.h   | 15 +------
+ 32 files changed, 114 insertions(+), 562 deletions(-)
+
+-- 
+2.22.0.rc1.311.g5d7573a151-goog
