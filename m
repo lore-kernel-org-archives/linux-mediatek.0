@@ -1,34 +1,105 @@
-From: Alexandre Courbot <acourbot@chromium.org>
-Subject: Re: [RFCv1 07/12] media: mtk-vcodec: abstract firmware interface
-Date: Tue, 4 Jun 2019 16:53:47 +0900
-Message-ID: <CAPBb6MUTG3Pe6pU=gD0m0N3mOOHGyEp5Je58s3ahH_83a4i1rg@mail.gmail.com>
-References: <20190528055635.12109-1-acourbot@chromium.org> <20190528055635.12109-8-acourbot@chromium.org>
- <b4320740-a016-4a0e-b9ae-e042fd305b12@xs4all.nl>
+From: Boris Brezillon <boris.brezillon@collabora.com>
+Subject: Re: [PATCH 2/2] i3c: master: Add driver for MediaTek IP
+Date: Tue, 4 Jun 2019 09:58:58 +0200
+Message-ID: <20190604095858.38ed9a28@collabora.com>
+References: <1559533863-10292-1-git-send-email-qii.wang@mediatek.com>
+        <1559533863-10292-3-git-send-email-qii.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <b4320740-a016-4a0e-b9ae-e042fd305b12@xs4all.nl>
+In-Reply-To: <1559533863-10292-3-git-send-email-qii.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Cc: Yunfei Dong <yunfei.dong@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Linux Media Mailing List <linux-media@vger.kernel.org>, linux-mediatek@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>
+To: Qii Wang <qii.wang@mediatek.com>
+Cc: bbrezillon@kernel.org, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, leilk.liu@mediatek.com, gregkh@linuxfoundation.org, xinping.qian@mediatek.com, linux-kernel@vger.kernel.org, liguo.zhang@mediatek.com, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-i3c@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, May 28, 2019 at 6:16 PM Hans Verkuil <hverkuil@xs4all.nl> wrote:
->
-> On 5/28/19 7:56 AM, Alexandre Courbot wrote:
-> > From: Yunfei Dong <yunfei.dong@mediatek.com>
-> >
-> > MT8183's codec firwmare is run by a different remote processor from
-> > MT8173. While the firmware interface is basically the same, the way to
-> > invoke it differs. Abstract all firmware calls under a layer that will
-> > allow us to handle both firmware types transparently.
-> >
-> > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> > Co-developed-by: Alexandre Courbot <acourbot@chromium.org>
-> > Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
-> > [acourbot: refactor, cleanup and split]
->
-> High-level question: is the mt8183 firmware different from the MT8173?
-> And if so, is or will that firmware be part of linux-firmware?
+On Mon, 3 Jun 2019 11:51:03 +0800
+Qii Wang <qii.wang@mediatek.com> wrote:
 
-Yes, the firmware is different, and AFAICT it will be posted to linux-firmware.
+
+> +static int mtk_i3c_master_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct mtk_i3c_master *master;
+> +	struct resource *res;
+> +	int ret, irqnr;
+> +
+> +	master = devm_kzalloc(dev, sizeof(*master), GFP_KERNEL);
+> +	if (!master)
+> +		return -ENOMEM;
+> +
+> +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "main");
+> +	master->regs = devm_ioremap_resource(dev, res);
+> +	if (IS_ERR(master->regs))
+> +		return PTR_ERR(master->regs);
+> +
+> +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "dma");
+> +	master->dma_regs = devm_ioremap_resource(dev, res);
+> +	if (IS_ERR(master->dma_regs))
+> +		return PTR_ERR(master->dma_regs);
+> +
+> +	irqnr = platform_get_irq(pdev, 0);
+> +	if (irqnr < 0)
+> +		return irqnr;
+> +
+> +	ret = devm_request_irq(dev, irqnr, mtk_i3c_master_irq,
+> +			       IRQF_TRIGGER_NONE, DRV_NAME, master);
+> +	if (ret < 0) {
+> +		dev_err(dev, "Request I3C IRQ %d fail\n", irqnr);
+> +		return ret;
+> +	}
+> +
+> +	ret = of_property_read_u32(pdev->dev.of_node, "clock-div",
+> +				   &master->clk_src_div);
+
+You say in one comment that this clock divider is fixed in HW but might
+change on a per-SoC basis. If that's the case, you should get rid of
+this clock-div prop and attach the divider to the compatible (using an
+mtk_i3c_master_variant struct that contains a divider field).
+
+> +	if (ret < 0)
+> +		return -EINVAL;
+> +
+> +	spin_lock_init(&master->xferqueue.lock);
+> +	INIT_LIST_HEAD(&master->xferqueue.list);
+> +
+> +	if (dma_set_mask(dev, DMA_BIT_MASK(33))) {
+> +		dev_err(dev, "dma_set_mask return error.\n");
+> +		return -EINVAL;
+> +	}
+> +
+> +	master->clk_main = devm_clk_get(dev, "main");
+> +	if (IS_ERR(master->clk_main)) {
+> +		dev_err(dev, "cannot get main clock\n");
+> +		return PTR_ERR(master->clk_main);
+> +	}
+> +	master->clk_dma = devm_clk_get(dev, "dma");
+> +	if (IS_ERR(master->clk_dma)) {
+> +		dev_err(dev, "cannot get dma clock\n");
+> +		return PTR_ERR(master->clk_dma);
+> +	}
+> +
+> +	master->clk_arb = devm_clk_get_optional(dev, "arb");
+> +	if (IS_ERR(master->clk_arb))
+> +		return PTR_ERR(master->clk_arb);
+> +
+> +	ret = mtk_i3c_master_clock_enable(master);
+> +	if (ret) {
+> +		dev_err(dev, "clock enable failed!\n");
+> +		return ret;
+> +	}
+> +
+> +	master->dev = dev;
+> +	platform_set_drvdata(pdev, master);
+> +
+> +	ret = i3c_master_register(&master->mas_ctrler, dev,
+> +				  &mtk_i3c_master_ops, false);
+> +	if (ret) {
+> +		dev_err(dev, "Failed to add i3c bus to i3c core\n");
+> +		mtk_i3c_master_clock_disable(master);
+> +		return ret;
+> +	}
+> +
+> +	return 0;
+> +}
