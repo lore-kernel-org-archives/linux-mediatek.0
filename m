@@ -1,7 +1,7 @@
 From: Alexandre Courbot <acourbot@chromium.org>
-Subject: [PATCH 1/5] media: mtk-vcodec: replace GPLv2 with SPDX
-Date: Tue,  4 Jun 2019 18:37:33 +0900
-Message-ID: <20190604093737.172599-2-acourbot@chromium.org>
+Subject: [PATCH 3/5] media: mtk-vcodec: remove unneeded proxy functions
+Date: Tue,  4 Jun 2019 18:37:35 +0900
+Message-ID: <20190604093737.172599-4-acourbot@chromium.org>
 References: <20190604093737.172599-1-acourbot@chromium.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -12,781 +12,192 @@ To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@media
 Cc: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Replace the GPLv2 boilerplate with the corresponding SPDX reference.
+We were getting the codec interface through a proxy function that does
+not bring anything compared to just accessing the interface definition
+directly, so just do that. Also make the decoder interfaces const.
 
 Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
 ---
- .../media/platform/mtk-vcodec/mtk_vcodec_dec.c  | 15 +--------------
- .../media/platform/mtk-vcodec/mtk_vcodec_dec.h  | 15 +--------------
- .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c    | 15 +--------------
- .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c     | 14 +-------------
- .../platform/mtk-vcodec/mtk_vcodec_dec_pm.h     | 14 +-------------
- .../media/platform/mtk-vcodec/mtk_vcodec_drv.h  | 15 +--------------
- .../media/platform/mtk-vcodec/mtk_vcodec_enc.c  | 15 +--------------
- .../media/platform/mtk-vcodec/mtk_vcodec_enc.h  | 15 +--------------
- .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c    | 15 +--------------
- .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c     | 14 +-------------
- .../platform/mtk-vcodec/mtk_vcodec_enc_pm.h     | 14 +-------------
- .../media/platform/mtk-vcodec/mtk_vcodec_intr.c | 14 +-------------
- .../media/platform/mtk-vcodec/mtk_vcodec_intr.h | 14 +-------------
- .../media/platform/mtk-vcodec/mtk_vcodec_util.c | 15 +--------------
- .../media/platform/mtk-vcodec/mtk_vcodec_util.h | 15 +--------------
- .../platform/mtk-vcodec/vdec/vdec_h264_if.c     | 14 +-------------
- .../platform/mtk-vcodec/vdec/vdec_vp8_if.c      | 15 +--------------
- .../platform/mtk-vcodec/vdec/vdec_vp9_if.c      | 16 +---------------
- .../media/platform/mtk-vcodec/vdec_drv_base.h   | 14 +-------------
- drivers/media/platform/mtk-vcodec/vdec_drv_if.c | 15 +--------------
- drivers/media/platform/mtk-vcodec/vdec_drv_if.h | 15 +--------------
- .../media/platform/mtk-vcodec/vdec_ipi_msg.h    | 15 +--------------
- drivers/media/platform/mtk-vcodec/vdec_vpu_if.c | 14 +-------------
- drivers/media/platform/mtk-vcodec/vdec_vpu_if.h | 14 +-------------
- .../platform/mtk-vcodec/venc/venc_h264_if.c     | 17 +----------------
- .../platform/mtk-vcodec/venc/venc_vp8_if.c      | 16 +---------------
- .../media/platform/mtk-vcodec/venc_drv_base.h   | 17 +----------------
- drivers/media/platform/mtk-vcodec/venc_drv_if.c | 17 +----------------
- drivers/media/platform/mtk-vcodec/venc_drv_if.h | 17 +----------------
- .../media/platform/mtk-vcodec/venc_ipi_msg.h    | 17 +----------------
- drivers/media/platform/mtk-vcodec/venc_vpu_if.c | 15 +--------------
- drivers/media/platform/mtk-vcodec/venc_vpu_if.h | 15 +--------------
- 32 files changed, 32 insertions(+), 450 deletions(-)
+ .../media/platform/mtk-vcodec/vdec/vdec_h264_if.c    |  9 +--------
+ drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c |  9 +--------
+ drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c |  9 +--------
+ drivers/media/platform/mtk-vcodec/vdec_drv_if.c      | 12 ++++++------
+ .../media/platform/mtk-vcodec/venc/venc_h264_if.c    |  9 +--------
+ drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c |  9 +--------
+ drivers/media/platform/mtk-vcodec/venc_drv_if.c      |  8 ++++----
+ 7 files changed, 15 insertions(+), 50 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-index 851903867bc9..371e70d6a803 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-@@ -1,17 +1,4 @@
--/*
-- * Copyright (c) 2016 MediaTek Inc.
-- * Author: PC Chen <pc.chen@mediatek.com>
-- *         Tiffany Lin <tiffany.lin@mediatek.com>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- */
-+// SPDX-License-Identifier: GPL-2.0
- 
- #include <media/v4l2-event.h>
- #include <media/v4l2-mem2mem.h>
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h
-index e4984edec4f8..a18268694646 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h
-@@ -1,17 +1,4 @@
--/*
-- * Copyright (c) 2016 MediaTek Inc.
-- * Author: PC Chen <pc.chen@mediatek.com>
-- *         Tiffany Lin <tiffany.lin@mediatek.com>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- */
-+/* SPDX-License-Identifier: GPL-2.0 */
- 
- #ifndef _MTK_VCODEC_DEC_H_
- #define _MTK_VCODEC_DEC_H_
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-index 4334b7394861..dbe957aa138d 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-@@ -1,17 +1,4 @@
--/*
-- * Copyright (c) 2016 MediaTek Inc.
-- * Author: PC Chen <pc.chen@mediatek.com>
-- *         Tiffany Lin <tiffany.lin@mediatek.com>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- */
-+// SPDX-License-Identifier: GPL-2.0
- 
- #include <linux/slab.h>
- #include <linux/interrupt.h>
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
-index 11c45c556e88..b09242b1470d 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
-@@ -1,16 +1,4 @@
--/*
-- * Copyright (c) 2016 MediaTek Inc.
-- * Author: Tiffany Lin <tiffany.lin@mediatek.com>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- */
-+// SPDX-License-Identifier: GPL-2.0
- 
- #include <linux/clk.h>
- #include <linux/of_address.h>
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
-index 86a7825353e3..b44621ad15d8 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
-@@ -1,16 +1,4 @@
--/*
-- * Copyright (c) 2016 MediaTek Inc.
-- * Author: Tiffany Lin <tiffany.lin@mediatek.com>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- */
-+/* SPDX-License-Identifier: GPL-2.0 */
- 
- #ifndef _MTK_VCODEC_DEC_PM_H_
- #define _MTK_VCODEC_DEC_PM_H_
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-index 662a84b822af..d7b43caf7988 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-@@ -1,17 +1,4 @@
--/*
--* Copyright (c) 2016 MediaTek Inc.
--* Author: PC Chen <pc.chen@mediatek.com>
--*         Tiffany Lin <tiffany.lin@mediatek.com>
--*
--* This program is free software; you can redistribute it and/or modify
--* it under the terms of the GNU General Public License version 2 as
--* published by the Free Software Foundation.
--*
--* This program is distributed in the hope that it will be useful,
--* but WITHOUT ANY WARRANTY; without even the implied warranty of
--* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--* GNU General Public License for more details.
--*/
-+/* SPDX-License-Identifier: GPL-2.0 */
- 
- #ifndef _MTK_VCODEC_DRV_H_
- #define _MTK_VCODEC_DRV_H_
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-index 50351adafc47..1a3845809b92 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-@@ -1,17 +1,4 @@
--/*
--* Copyright (c) 2016 MediaTek Inc.
--* Author: PC Chen <pc.chen@mediatek.com>
--*         Tiffany Lin <tiffany.lin@mediatek.com>
--*
--* This program is free software; you can redistribute it and/or modify
--* it under the terms of the GNU General Public License version 2 as
--* published by the Free Software Foundation.
--*
--* This program is distributed in the hope that it will be useful,
--* but WITHOUT ANY WARRANTY; without even the implied warranty of
--* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--* GNU General Public License for more details.
--*/
-+// SPDX-License-Identifier: GPL-2.0
- 
- #include <media/v4l2-event.h>
- #include <media/v4l2-mem2mem.h>
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.h
-index d7a154a97510..e372e5ddff8a 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.h
-@@ -1,17 +1,4 @@
--/*
--* Copyright (c) 2016 MediaTek Inc.
--* Author: PC Chen <pc.chen@mediatek.com>
--*         Tiffany Lin <tiffany.lin@mediatek.com>
--*
--* This program is free software; you can redistribute it and/or modify
--* it under the terms of the GNU General Public License version 2 as
--* published by the Free Software Foundation.
--*
--* This program is distributed in the hope that it will be useful,
--* but WITHOUT ANY WARRANTY; without even the implied warranty of
--* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--* GNU General Public License for more details.
--*/
-+/* SPDX-License-Identifier: GPL-2.0 */
- 
- #ifndef _MTK_VCODEC_ENC_H_
- #define _MTK_VCODEC_ENC_H_
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-index 83f859e8509c..b6d7c602c2ad 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-@@ -1,17 +1,4 @@
--/*
--* Copyright (c) 2016 MediaTek Inc.
--* Author: PC Chen <pc.chen@mediatek.com>
--*	Tiffany Lin <tiffany.lin@mediatek.com>
--*
--* This program is free software; you can redistribute it and/or modify
--* it under the terms of the GNU General Public License version 2 as
--* published by the Free Software Foundation.
--*
--* This program is distributed in the hope that it will be useful,
--* but WITHOUT ANY WARRANTY; without even the implied warranty of
--* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--* GNU General Public License for more details.
--*/
-+// SPDX-License-Identifier: GPL-2.0
- 
- #include <linux/slab.h>
- #include <linux/interrupt.h>
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-index 39375b8ea27c..90bdad5c71b0 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-@@ -1,16 +1,4 @@
--/*
--* Copyright (c) 2016 MediaTek Inc.
--* Author: Tiffany Lin <tiffany.lin@mediatek.com>
--*
--* This program is free software; you can redistribute it and/or modify
--* it under the terms of the GNU General Public License version 2 as
--* published by the Free Software Foundation.
--*
--* This program is distributed in the hope that it will be useful,
--* but WITHOUT ANY WARRANTY; without even the implied warranty of
--* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--* GNU General Public License for more details.
--*/
-+// SPDX-License-Identifier: GPL-2.0
- 
- #include <linux/clk.h>
- #include <linux/of_address.h>
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h
-index f32167138976..dddbbe02a109 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h
-@@ -1,16 +1,4 @@
--/*
--* Copyright (c) 2016 MediaTek Inc.
--* Author: Tiffany Lin <tiffany.lin@mediatek.com>
--*
--* This program is free software; you can redistribute it and/or modify
--* it under the terms of the GNU General Public License version 2 as
--* published by the Free Software Foundation.
--*
--* This program is distributed in the hope that it will be useful,
--* but WITHOUT ANY WARRANTY; without even the implied warranty of
--* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--* GNU General Public License for more details.
--*/
-+/* SPDX-License-Identifier: GPL-2.0 */
- 
- #ifndef _MTK_VCODEC_ENC_PM_H_
- #define _MTK_VCODEC_ENC_PM_H_
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.c
-index 113b2097f061..693888e4987f 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.c
-@@ -1,16 +1,4 @@
--/*
--* Copyright (c) 2016 MediaTek Inc.
--* Author: Tiffany Lin <tiffany.lin@mediatek.com>
--*
--* This program is free software; you can redistribute it and/or modify
--* it under the terms of the GNU General Public License version 2 as
--* published by the Free Software Foundation.
--*
--* This program is distributed in the hope that it will be useful,
--* but WITHOUT ANY WARRANTY; without even the implied warranty of
--* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--* GNU General Public License for more details.
--*/
-+// SPDX-License-Identifier: GPL-2.0
- 
- #include <linux/errno.h>
- #include <linux/wait.h>
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h
-index 12131855b46a..55f046cd93a5 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h
-@@ -1,16 +1,4 @@
--/*
--* Copyright (c) 2016 MediaTek Inc.
--* Author: Tiffany Lin <tiffany.lin@mediatek.com>
--*
--* This program is free software; you can redistribute it and/or modify
--* it under the terms of the GNU General Public License version 2 as
--* published by the Free Software Foundation.
--*
--* This program is distributed in the hope that it will be useful,
--* but WITHOUT ANY WARRANTY; without even the implied warranty of
--* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--* GNU General Public License for more details.
--*/
-+/* SPDX-License-Identifier: GPL-2.0 */
- 
- #ifndef _MTK_VCODEC_INTR_H_
- #define _MTK_VCODEC_INTR_H_
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.c
-index 060c0ad6243a..e1a9ac9694e3 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.c
-@@ -1,17 +1,4 @@
--/*
--* Copyright (c) 2016 MediaTek Inc.
--* Author: PC Chen <pc.chen@mediatek.com>
--*	Tiffany Lin <tiffany.lin@mediatek.com>
--*
--* This program is free software; you can redistribute it and/or modify
--* it under the terms of the GNU General Public License version 2 as
--* published by the Free Software Foundation.
--*
--* This program is distributed in the hope that it will be useful,
--* but WITHOUT ANY WARRANTY; without even the implied warranty of
--* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--* GNU General Public License for more details.
--*/
-+// SPDX-License-Identifier: GPL-2.0
- 
- #include <linux/module.h>
- 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
-index 9bf6e8d1b9c9..daabb63548d0 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
-@@ -1,17 +1,4 @@
--/*
--* Copyright (c) 2016 MediaTek Inc.
--* Author: PC Chen <pc.chen@mediatek.com>
--*	Tiffany Lin <tiffany.lin@mediatek.com>
--*
--* This program is free software; you can redistribute it and/or modify
--* it under the terms of the GNU General Public License version 2 as
--* published by the Free Software Foundation.
--*
--* This program is distributed in the hope that it will be useful,
--* but WITHOUT ANY WARRANTY; without even the implied warranty of
--* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--* GNU General Public License for more details.
--*/
-+/* SPDX-License-Identifier: GPL-2.0 */
- 
- #ifndef _MTK_VCODEC_UTIL_H_
- #define _MTK_VCODEC_UTIL_H_
 diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-index cdbcd6909728..d725ea54b1c1 100644
+index 0c0660d2560b..85afdd6ab093 100644
 --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
 +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-@@ -1,16 +1,4 @@
--/*
-- * Copyright (c) 2016 MediaTek Inc.
-- * Author: PC Chen <pc.chen@mediatek.com>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- */
-+// SPDX-License-Identifier: GPL-2.0
+@@ -481,16 +481,9 @@ static int vdec_h264_get_param(void *h_vdec, enum vdec_get_param_type type,
+ 	return 0;
+ }
  
- #include <linux/module.h>
- #include <linux/slab.h>
+-static struct vdec_common_if vdec_h264_if = {
++const struct vdec_common_if vdec_h264_if = {
+ 	.init		= vdec_h264_init,
+ 	.decode		= vdec_h264_decode,
+ 	.get_param	= vdec_h264_get_param,
+ 	.deinit		= vdec_h264_deinit,
+ };
+-
+-struct vdec_common_if *get_h264_dec_comm_if(void);
+-
+-struct vdec_common_if *get_h264_dec_comm_if(void)
+-{
+-	return &vdec_h264_if;
+-}
 diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
-index ba79136421ef..8de997875b6b 100644
+index 1e3763881e0d..a8ca762eac76 100644
 --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
 +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
-@@ -1,17 +1,4 @@
--/*
-- * Copyright (c) 2016 MediaTek Inc.
-- * Author: Jungchang Tsao <jungchang.tsao@mediatek.com>
-- *	   PC Chen <pc.chen@mediatek.com>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- */
-+// SPDX-License-Identifier: GPL-2.0
+@@ -605,16 +605,9 @@ static void vdec_vp8_deinit(void *h_vdec)
+ 	kfree(inst);
+ }
  
- #include <linux/slab.h>
- #include "../vdec_drv_if.h"
+-static struct vdec_common_if vdec_vp8_if = {
++const struct vdec_common_if vdec_vp8_if = {
+ 	.init		= vdec_vp8_init,
+ 	.decode		= vdec_vp8_decode,
+ 	.get_param	= vdec_vp8_get_param,
+ 	.deinit		= vdec_vp8_deinit,
+ };
+-
+-struct vdec_common_if *get_vp8_dec_comm_if(void);
+-
+-struct vdec_common_if *get_vp8_dec_comm_if(void)
+-{
+-	return &vdec_vp8_if;
+-}
 diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-index 939ea14bf6c5..02b65298c87e 100644
+index 589b2fc91da2..1f99febdfbbe 100644
 --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
 +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-@@ -1,18 +1,4 @@
--/*
-- * Copyright (c) 2016 MediaTek Inc.
-- * Author: Daniel Hsiao <daniel.hsiao@mediatek.com>
-- *	Kai-Sean Yang <kai-sean.yang@mediatek.com>
-- *	Tiffany Lin <tiffany.lin@mediatek.com>
-- *
-- * This program is free software; you can redistribute it and/or
-- * modify it under the terms of the GNU General Public License
-- * version 2 as published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- */
-+// SPDX-License-Identifier: GPL-2.0
+@@ -994,16 +994,9 @@ static int vdec_vp9_get_param(void *h_vdec, enum vdec_get_param_type type,
+ 	return ret;
+ }
  
- #include <linux/fs.h>
- #include <linux/slab.h>
-diff --git a/drivers/media/platform/mtk-vcodec/vdec_drv_base.h b/drivers/media/platform/mtk-vcodec/vdec_drv_base.h
-index 7e4c1a92bbd8..014712b1312e 100644
---- a/drivers/media/platform/mtk-vcodec/vdec_drv_base.h
-+++ b/drivers/media/platform/mtk-vcodec/vdec_drv_base.h
-@@ -1,16 +1,4 @@
--/*
-- * Copyright (c) 2016 MediaTek Inc.
-- * Author: PC Chen <pc.chen@mediatek.com>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- */
-+/* SPDX-License-Identifier: GPL-2.0 */
- 
- #ifndef _VDEC_DRV_BASE_
- #define _VDEC_DRV_BASE_
+-static struct vdec_common_if vdec_vp9_if = {
++const struct vdec_common_if vdec_vp9_if = {
+ 	.init		= vdec_vp9_init,
+ 	.decode		= vdec_vp9_decode,
+ 	.get_param	= vdec_vp9_get_param,
+ 	.deinit		= vdec_vp9_deinit,
+ };
+-
+-struct vdec_common_if *get_vp9_dec_comm_if(void);
+-
+-struct vdec_common_if *get_vp9_dec_comm_if(void)
+-{
+-	return &vdec_vp9_if;
+-}
 diff --git a/drivers/media/platform/mtk-vcodec/vdec_drv_if.c b/drivers/media/platform/mtk-vcodec/vdec_drv_if.c
-index 5ffc468dd910..6835cb7d090a 100644
+index 5d8d76d55005..aa614eea3cc5 100644
 --- a/drivers/media/platform/mtk-vcodec/vdec_drv_if.c
 +++ b/drivers/media/platform/mtk-vcodec/vdec_drv_if.c
-@@ -1,17 +1,4 @@
--/*
-- * Copyright (c) 2016 MediaTek Inc.
-- * Author: PC Chen <pc.chen@mediatek.com>
-- *         Tiffany Lin <tiffany.lin@mediatek.com>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- */
-+// SPDX-License-Identifier: GPL-2.0
+@@ -10,9 +10,9 @@
+ #include "mtk_vcodec_dec_pm.h"
+ #include "mtk_vpu.h"
  
- #include <linux/interrupt.h>
- #include <linux/kernel.h>
-diff --git a/drivers/media/platform/mtk-vcodec/vdec_drv_if.h b/drivers/media/platform/mtk-vcodec/vdec_drv_if.h
-index 9a21591f3818..ceba7f55a526 100644
---- a/drivers/media/platform/mtk-vcodec/vdec_drv_if.h
-+++ b/drivers/media/platform/mtk-vcodec/vdec_drv_if.h
-@@ -1,17 +1,4 @@
--/*
-- * Copyright (c) 2016 MediaTek Inc.
-- * Author: PC Chen <pc.chen@mediatek.com>
-- *		   Tiffany Lin <tiffany.lin@mediatek.com>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- */
-+/* SPDX-License-Identifier: GPL-2.0 */
+-const struct vdec_common_if *get_h264_dec_comm_if(void);
+-const struct vdec_common_if *get_vp8_dec_comm_if(void);
+-const struct vdec_common_if *get_vp9_dec_comm_if(void);
++extern const struct vdec_common_if vdec_h264_if;
++extern const struct vdec_common_if vdec_vp8_if;
++extern const struct vdec_common_if vdec_vp9_if;
  
- #ifndef _VDEC_DRV_IF_H_
- #define _VDEC_DRV_IF_H_
-diff --git a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
-index 5a8a629f4ac9..6370f1285a63 100644
---- a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
-+++ b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
-@@ -1,17 +1,4 @@
--/*
-- * Copyright (c) 2016 MediaTek Inc.
-- * Author: PC Chen <pc.chen@mediatek.com>
-- *
-- * This program is free software; you can redistribute it and/or
-- * modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- */
-+/* SPDX-License-Identifier: GPL-2.0 */
+ int vdec_if_init(struct mtk_vcodec_ctx *ctx, unsigned int fourcc)
+ {
+@@ -20,13 +20,13 @@ int vdec_if_init(struct mtk_vcodec_ctx *ctx, unsigned int fourcc)
  
- #ifndef _VDEC_IPI_MSG_H_
- #define _VDEC_IPI_MSG_H_
-diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-index 1abd14e79565..9b240d325a84 100644
---- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-+++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-@@ -1,16 +1,4 @@
--/*
-- * Copyright (c) 2016 MediaTek Inc.
-- * Author: PC Chen <pc.chen@mediatek.com>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- */
-+// SPDX-License-Identifier: GPL-2.0
- 
- #include "mtk_vcodec_drv.h"
- #include "mtk_vcodec_util.h"
-diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
-index 79d8eac7f5e2..3c417493ccca 100644
---- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
-+++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
-@@ -1,16 +1,4 @@
--/*
-- * Copyright (c) 2016 MediaTek Inc.
-- * Author: PC Chen <pc.chen@mediatek.com>
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- */
-+/* SPDX-License-Identifier: GPL-2.0 */
- 
- #ifndef _VDEC_VPU_IF_H_
- #define _VDEC_VPU_IF_H_
+ 	switch (fourcc) {
+ 	case V4L2_PIX_FMT_H264:
+-		ctx->dec_if = get_h264_dec_comm_if();
++		ctx->dec_if = &vdec_h264_if;
+ 		break;
+ 	case V4L2_PIX_FMT_VP8:
+-		ctx->dec_if = get_vp8_dec_comm_if();
++		ctx->dec_if = &vdec_vp8_if;
+ 		break;
+ 	case V4L2_PIX_FMT_VP9:
+-		ctx->dec_if = get_vp9_dec_comm_if();
++		ctx->dec_if = &vdec_vp9_if;
+ 		break;
+ 	default:
+ 		return -EINVAL;
 diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-index 6cf31b366aad..0cf08dd7b6e3 100644
+index bfe61d5dc1cb..4e1d933395cd 100644
 --- a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
 +++ b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-@@ -1,19 +1,4 @@
--/*
-- * Copyright (c) 2016 MediaTek Inc.
-- * Author: Jungchang Tsao <jungchang.tsao@mediatek.com>
-- *         Daniel Hsiao <daniel.hsiao@mediatek.com>
-- *         PoChun Lin <pochun.lin@mediatek.com>
-- *
-- * This program is free software; you can redistribute it and/or
-- * modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- */
-+// SPDX-License-Identifier: GPL-2.0
+@@ -649,16 +649,9 @@ static int h264_enc_deinit(void *handle)
+ 	return ret;
+ }
  
- #include <linux/interrupt.h>
- #include <linux/kernel.h>
+-static const struct venc_common_if venc_h264_if = {
++const struct venc_common_if venc_h264_if = {
+ 	.init = h264_enc_init,
+ 	.encode = h264_enc_encode,
+ 	.set_param = h264_enc_set_param,
+ 	.deinit = h264_enc_deinit,
+ };
+-
+-const struct venc_common_if *get_h264_enc_comm_if(void);
+-
+-const struct venc_common_if *get_h264_enc_comm_if(void)
+-{
+-	return &venc_h264_if;
+-}
 diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-index 957420dd60de..3fb9e0c79b4f 100644
+index af23367cf1dd..2d1372ab6486 100644
 --- a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
 +++ b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-@@ -1,18 +1,4 @@
--/*
-- * Copyright (c) 2016 MediaTek Inc.
-- * Author: Daniel Hsiao <daniel.hsiao@mediatek.com>
-- *         PoChun Lin <pochun.lin@mediatek.com>
-- *
-- * This program is free software; you can redistribute it and/or
-- * modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- */
-+// SPDX-License-Identifier: GPL-2.0
+@@ -455,16 +455,9 @@ static int vp8_enc_deinit(void *handle)
+ 	return ret;
+ }
  
- #include <linux/interrupt.h>
- #include <linux/kernel.h>
-diff --git a/drivers/media/platform/mtk-vcodec/venc_drv_base.h b/drivers/media/platform/mtk-vcodec/venc_drv_base.h
-index 6308d44dedf6..2de37b47fe73 100644
---- a/drivers/media/platform/mtk-vcodec/venc_drv_base.h
-+++ b/drivers/media/platform/mtk-vcodec/venc_drv_base.h
-@@ -1,19 +1,4 @@
--/*
-- * Copyright (c) 2016 MediaTek Inc.
-- * Author: Daniel Hsiao <daniel.hsiao@mediatek.com>
-- *	Jungchang Tsao <jungchang.tsao@mediatek.com>
-- *	Tiffany Lin <tiffany.lin@mediatek.com>
-- *
-- * This program is free software; you can redistribute it and/or
-- * modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- */
-+/* SPDX-License-Identifier: GPL-2.0 */
- 
- #ifndef _VENC_DRV_BASE_
- #define _VENC_DRV_BASE_
+-static const struct venc_common_if venc_vp8_if = {
++const struct venc_common_if venc_vp8_if = {
+ 	.init = vp8_enc_init,
+ 	.encode = vp8_enc_encode,
+ 	.set_param = vp8_enc_set_param,
+ 	.deinit = vp8_enc_deinit,
+ };
+-
+-const struct venc_common_if *get_vp8_enc_comm_if(void);
+-
+-const struct venc_common_if *get_vp8_enc_comm_if(void)
+-{
+-	return &venc_vp8_if;
+-}
 diff --git a/drivers/media/platform/mtk-vcodec/venc_drv_if.c b/drivers/media/platform/mtk-vcodec/venc_drv_if.c
-index d02d5f1df279..25c1e100f5a1 100644
+index 318af1b4b6e7..cf5bfa296d20 100644
 --- a/drivers/media/platform/mtk-vcodec/venc_drv_if.c
 +++ b/drivers/media/platform/mtk-vcodec/venc_drv_if.c
-@@ -1,19 +1,4 @@
--/*
-- * Copyright (c) 2016 MediaTek Inc.
-- * Author: Daniel Hsiao <daniel.hsiao@mediatek.com>
-- *	Jungchang Tsao <jungchang.tsao@mediatek.com>
-- *	Tiffany Lin <tiffany.lin@mediatek.com>
-- *
-- * This program is free software; you can redistribute it and/or
-- * modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- */
-+// SPDX-License-Identifier: GPL-2.0
- 
- #include <linux/interrupt.h>
- #include <linux/kernel.h>
-diff --git a/drivers/media/platform/mtk-vcodec/venc_drv_if.h b/drivers/media/platform/mtk-vcodec/venc_drv_if.h
-index 55ecda844894..d6605812ebb0 100644
---- a/drivers/media/platform/mtk-vcodec/venc_drv_if.h
-+++ b/drivers/media/platform/mtk-vcodec/venc_drv_if.h
-@@ -1,19 +1,4 @@
--/*
-- * Copyright (c) 2016 MediaTek Inc.
-- * Author: Daniel Hsiao <daniel.hsiao@mediatek.com>
-- *		Jungchang Tsao <jungchang.tsao@mediatek.com>
-- *		Tiffany Lin <tiffany.lin@mediatek.com>
-- *
-- * This program is free software; you can redistribute it and/or
-- * modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- */
-+/* SPDX-License-Identifier: GPL-2.0 */
- 
- #ifndef _VENC_DRV_IF_H_
- #define _VENC_DRV_IF_H_
-diff --git a/drivers/media/platform/mtk-vcodec/venc_ipi_msg.h b/drivers/media/platform/mtk-vcodec/venc_ipi_msg.h
-index 4c869cb6fbf7..d5282f24f934 100644
---- a/drivers/media/platform/mtk-vcodec/venc_ipi_msg.h
-+++ b/drivers/media/platform/mtk-vcodec/venc_ipi_msg.h
-@@ -1,19 +1,4 @@
--/*
-- * Copyright (c) 2016 MediaTek Inc.
-- * Author: Jungchang Tsao <jungchang.tsao@mediatek.com>
-- *	   Daniel Hsiao <daniel.hsiao@mediatek.com>
-- *	   Tiffany Lin <tiffany.lin@mediatek.com>
-- *
-- * This program is free software; you can redistribute it and/or
-- * modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- */
-+/* SPDX-License-Identifier: GPL-2.0 */
- 
- #ifndef _VENC_IPI_MSG_H_
- #define _VENC_IPI_MSG_H_
-diff --git a/drivers/media/platform/mtk-vcodec/venc_vpu_if.c b/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
-index 0d882acf8830..a6906db74718 100644
---- a/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
-+++ b/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
-@@ -1,17 +1,4 @@
--/*
-- * Copyright (c) 2016 MediaTek Inc.
-- * Author: PoChun Lin <pochun.lin@mediatek.com>
-- *
-- * This program is free software; you can redistribute it and/or
-- * modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- */
-+// SPDX-License-Identifier: GPL-2.0
- 
+@@ -11,8 +11,8 @@
+ #include "mtk_vcodec_enc_pm.h"
  #include "mtk_vpu.h"
- #include "venc_ipi_msg.h"
-diff --git a/drivers/media/platform/mtk-vcodec/venc_vpu_if.h b/drivers/media/platform/mtk-vcodec/venc_vpu_if.h
-index 215d1e01362e..fd4f85646aa5 100644
---- a/drivers/media/platform/mtk-vcodec/venc_vpu_if.h
-+++ b/drivers/media/platform/mtk-vcodec/venc_vpu_if.h
-@@ -1,17 +1,4 @@
--/*
-- * Copyright (c) 2016 MediaTek Inc.
-- * Author: PoChun Lin <pochun.lin@mediatek.com>
-- *
-- * This program is free software; you can redistribute it and/or
-- * modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- */
-+/* SPDX-License-Identifier: GPL-2.0 */
  
- #ifndef _VENC_VPU_IF_H_
- #define _VENC_VPU_IF_H_
+-const struct venc_common_if *get_h264_enc_comm_if(void);
+-const struct venc_common_if *get_vp8_enc_comm_if(void);
++extern const struct venc_common_if venc_h264_if;
++extern const struct venc_common_if venc_vp8_if;
+ 
+ int venc_if_init(struct mtk_vcodec_ctx *ctx, unsigned int fourcc)
+ {
+@@ -20,10 +20,10 @@ int venc_if_init(struct mtk_vcodec_ctx *ctx, unsigned int fourcc)
+ 
+ 	switch (fourcc) {
+ 	case V4L2_PIX_FMT_VP8:
+-		ctx->enc_if = get_vp8_enc_comm_if();
++		ctx->enc_if = &venc_vp8_if;
+ 		break;
+ 	case V4L2_PIX_FMT_H264:
+-		ctx->enc_if = get_h264_enc_comm_if();
++		ctx->enc_if = &venc_h264_if;
+ 		break;
+ 	default:
+ 		return -EINVAL;
 -- 
 2.22.0.rc1.311.g5d7573a151-goog
