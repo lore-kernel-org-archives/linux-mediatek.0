@@ -1,192 +1,243 @@
 From: Nicolas Boichat <drinkcat@chromium.org>
-Subject: Re: [v4 6/7] drm/mediatek: change the dsi phytiming calculate method
-Date: Tue, 4 Jun 2019 06:36:38 +0800
-Message-ID: <CANMq1KDoGO=2yursnB8udJkvMG6GwV=qsW7HFAyTsc93dnBBXQ@mail.gmail.com>
-References: <20190601092615.67917-1-jitao.shi@mediatek.com>
- <20190601092615.67917-7-jitao.shi@mediatek.com>
+Subject: Re: [PATCH 2/2] pinctrl: mediatek: Update cur_mask in mask/mask ops
+Date: Tue, 4 Jun 2019 08:57:34 +0800
+Message-ID: <CANMq1KCYjOE277EQbDB9inJjVqUfq6=c98d3+JgNByRgA4cKTA@mail.gmail.com>
+References: <20190429035515.73611-1-drinkcat@chromium.org> <20190429035515.73611-3-drinkcat@chromium.org>
+ <155778659317.14659.136626364818483852@swboyd.mtv.corp.google.com>
+ <CANMq1KBMd7eR3dP=V9gJ6G4OgE6DsXad_gzvuNJ25_pee4+6eg@mail.gmail.com>
+ <155786487644.14659.17142525593824613967@swboyd.mtv.corp.google.com>
+ <CANMq1KCNzn-5sYJZGivUedsNaQfVW_MjgDZn27W6sz8Fk3beNA@mail.gmail.com>
+ <CAE=gft6jxR9Lt7tLwm6VKy9_shMVW7wf3g6rBGEqtB7oNH0hUA@mail.gmail.com>
+ <1559289956.13732.17.camel@mhfsdcap03> <CAE=gft7YOVFUiWD=u39xSPVFUtiqb7m93sMGBFb7Ufn2RB+B_g@mail.gmail.com>
+ <1559548885.13732.28.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190601092615.67917-7-jitao.shi@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jitao Shi <jitao.shi@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, stonea168@163.com, dri-devel@lists.freedesktop.org, Guenter Roeck <groeck@chromium.org>, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa cheng <cawa.cheng@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Thierry Reding <treding@nvidia.com>, Sean Paul <seanpaul@chromium.org>, linux-pwm@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Russell King <rmk+kernel@arm.linux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstre
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1559548885.13732.28.camel@mhfsdcap03>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chuanjia Liu <Chuanjia.Liu@mediatek.com>
+Cc: Evan Green <evgreen@chromium.org>, Stephen Boyd <swboyd@chromium.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, lkml <linux-kernel@vger.kernel.org>, Thomas Gleixner <tglx@linutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gU2F0LCBKdW4gMSwgMjAxOSBhdCA1OjI2IFBNIEppdGFvIFNoaSA8aml0YW8uc2hpQG1lZGlh
-dGVrLmNvbT4gd3JvdGU6Cj4KPiBDaGFuZ2UgdGhlIG1ldGhvZCBvZiBmcmFtZSByYXRlIGNhbGMg
-d2hpY2ggY2FuIGdldCBtb3JlIGFjY3VyYXRlCj4gZnJhbWUgcmF0ZS4KPgo+IGRhdGEgcmF0ZSA9
-IHBpeGVsX2Nsb2NrICogYml0X3Blcl9waXhlbCAvIGxhbmVzCj4gQWRqdXN0IGhmcF93YyB0byBh
-ZGFwdCB0aGUgYWRkaXRpb25hbCBwaHlfZGF0YQo+Cj4gaWYgTUlQSV9EU0lfTU9ERV9WSURFT19C
-VVJTVAo+ICAgICAgICAgaGZwX3djID0gaGZwICogYnBwIC0gZGF0YV9waHlfY3ljbGVzICogbGFu
-ZXMgLSAxMiAtIDY7Cj4gZWxzZQo+ICAgICAgICAgaGZwX3djID0gaGZwICogYnBwIC0gZGF0YV9w
-aHlfY3ljbGVzICogbGFuZXMgLSAxMjsKPgo+IE5vdGU6Cj4gLy8oMjogMSBmb3Igc3luYywgMSBm
-b3IgcGh5IGlkbGUpCj4gZGF0YV9waHlfY3ljbGVzID0gVF9oc19leGl0ICsgVF9scHggKyBUX2hz
-X3ByZXBhcmUgKyBUX2hzX3plcm8gKyAyOwo+Cj4gYnBwOiBiaXQgcGVyIHBpeGVsCj4KPiBTaWdu
-ZWQtb2ZmLWJ5OiBKaXRhbyBTaGkgPGppdGFvLnNoaUBtZWRpYXRlay5jb20+Cj4gVGVzdGVkLWJ5
-OiBSeWFuIENhc2UgPHJ5YW5kY2FzZUBjaHJvbWl1bS5vcmc+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgfCAxMjIgKysrKysrKysrKysrKysrKysrKystLS0tLS0t
-LS0KPiAgMSBmaWxlIGNoYW5nZWQsIDgzIGluc2VydGlvbnMoKyksIDM5IGRlbGV0aW9ucygtKQo+
-Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgYi9kcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gaW5kZXggYWJmNmRkZWM1ZGI2Li41NTg3
-MjdjNjBiYTMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2ku
-Ywo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiBAQCAtMTQ0LDEy
-ICsxNDQsNiBAQAo+ICAjZGVmaW5lIERBVEFfMCAgICAgICAgICAgICAgICAgICAgICAgICAoMHhm
-ZiA8PCAxNikKPiAgI2RlZmluZSBEQVRBXzEgICAgICAgICAgICAgICAgICAgICAgICAgKDB4ZmYg
-PDwgMjQpCj4KPiAtI2RlZmluZSBUX0xQWCAgICAgICAgICA1Cj4gLSNkZWZpbmUgVF9IU19QUkVQ
-ICAgICAgNgo+IC0jZGVmaW5lIFRfSFNfVFJBSUwgICAgIDgKPiAtI2RlZmluZSBUX0hTX0VYSVQg
-ICAgICA3Cj4gLSNkZWZpbmUgVF9IU19aRVJPICAgICAgMTAKPiAtCj4gICNkZWZpbmUgTlNfVE9f
-Q1lDTEUobiwgYykgICAgKChuKSAvIChjKSArICgoKG4pICUgKGMpKSA/IDEgOiAwKSkKPgo+ICAj
-ZGVmaW5lIE1US19EU0lfSE9TVF9JU19SRUFEKHR5cGUpIFwKPiBAQCAtMTU4LDYgKzE1MiwyNSBA
-QAo+ICAgICAgICAgKHR5cGUgPT0gTUlQSV9EU0lfR0VORVJJQ19SRUFEX1JFUVVFU1RfMl9QQVJB
-TSkgfHwgXAo+ICAgICAgICAgKHR5cGUgPT0gTUlQSV9EU0lfRENTX1JFQUQpKQo+Cj4gK3N0cnVj
-dCBtdGtfcGh5X3RpbWluZyB7Cj4gKyAgICAgICB1MzIgbHB4Owo+ICsgICAgICAgdTMyIGRhX2hz
-X3ByZXBhcmU7Cj4gKyAgICAgICB1MzIgZGFfaHNfemVybzsKPiArICAgICAgIHUzMiBkYV9oc190
-cmFpbDsKPiArCj4gKyAgICAgICB1MzIgdGFfZ287Cj4gKyAgICAgICB1MzIgdGFfc3VyZTsKPiAr
-ICAgICAgIHUzMiB0YV9nZXQ7Cj4gKyAgICAgICB1MzIgZGFfaHNfZXhpdDsKPiArCj4gKyAgICAg
-ICB1MzIgY2xrX2hzX3plcm87Cj4gKyAgICAgICB1MzIgY2xrX2hzX3RyYWlsOwo+ICsKPiArICAg
-ICAgIHUzMiBjbGtfaHNfcHJlcGFyZTsKPiArICAgICAgIHUzMiBjbGtfaHNfcG9zdDsKPiArICAg
-ICAgIHUzMiBjbGtfaHNfZXhpdDsKPiArfTsKPiArCj4gIHN0cnVjdCBwaHk7Cj4KPiAgc3RydWN0
-IG10a19kc2lfZHJpdmVyX2RhdGEgewo+IEBAIC0xODIsMTIgKzE5NSwxMyBAQCBzdHJ1Y3QgbXRr
-X2RzaSB7Cj4gICAgICAgICBzdHJ1Y3QgY2xrICpkaWdpdGFsX2NsazsKPiAgICAgICAgIHN0cnVj
-dCBjbGsgKmhzX2NsazsKPgo+IC0gICAgICAgdTMyIGRhdGFfcmF0ZTsKPiArICAgICAgIHU2NCBk
-YXRhX3JhdGU7CgpBcyBoaWdobGlnaHRlZCBpbgpodHRwczovL3BhdGNod29yay5rZXJuZWwub3Jn
-L3BhdGNoLzEwOTQ5MzIzLyMyMjY3MzgyOSwgdGhpcyBjaGFuZ2UKY2F1c2VzIGlzc3VlcyBvbiAz
-Mi1iaXQgcGxhdGZvcm1zLgoKPgo+ICAgICAgICAgdW5zaWduZWQgbG9uZyBtb2RlX2ZsYWdzOwo+
-ICAgICAgICAgZW51bSBtaXBpX2RzaV9waXhlbF9mb3JtYXQgZm9ybWF0Owo+ICAgICAgICAgdW5z
-aWduZWQgaW50IGxhbmVzOwo+ICAgICAgICAgc3RydWN0IHZpZGVvbW9kZSB2bTsKPiArICAgICAg
-IHN0cnVjdCBtdGtfcGh5X3RpbWluZyBwaHlfdGltaW5nOwo+ICAgICAgICAgaW50IHJlZmNvdW50
-Owo+ICAgICAgICAgYm9vbCBlbmFibGVkOwo+ICAgICAgICAgdTMyIGlycV9kYXRhOwo+IEBAIC0y
-MjEsMTcgKzIzNSwzNiBAQCBzdGF0aWMgdm9pZCBtdGtfZHNpX3BoeV90aW1jb25maWcoc3RydWN0
-IG10a19kc2kgKmRzaSkKPiAgewo+ICAgICAgICAgdTMyIHRpbWNvbjAsIHRpbWNvbjEsIHRpbWNv
-bjIsIHRpbWNvbjM7Cj4gICAgICAgICB1MzIgdWksIGN5Y2xlX3RpbWU7Cj4gKyAgICAgICBzdHJ1
-Y3QgbXRrX3BoeV90aW1pbmcgKnRpbWluZyA9ICZkc2ktPnBoeV90aW1pbmc7Cj4gKwo+ICsgICAg
-ICAgdWkgPSAxMDAwMDAwMDAwIC8gZHNpLT5kYXRhX3JhdGU7Cj4gKyAgICAgICBjeWNsZV90aW1l
-ID0gODAwMDAwMDAwMCAvIGRzaS0+ZGF0YV9yYXRlOwo+ICsKPiArICAgICAgIHRpbWluZy0+bHB4
-ID0gTlNfVE9fQ1lDTEUoNjAsIGN5Y2xlX3RpbWUpOwo+ICsgICAgICAgdGltaW5nLT5kYV9oc19w
-cmVwYXJlID0gTlNfVE9fQ1lDTEUoNDAgKyA1ICogdWksIGN5Y2xlX3RpbWUpOwo+ICsgICAgICAg
-dGltaW5nLT5kYV9oc196ZXJvID0gTlNfVE9fQ1lDTEUoMTEwICsgNiAqIHVpLCBjeWNsZV90aW1l
-KTsKPiArICAgICAgIHRpbWluZy0+ZGFfaHNfdHJhaWwgPSBOU19UT19DWUNMRSg4MCArIDQgKiB1
-aSwgY3ljbGVfdGltZSk7Cj4KPiAtICAgICAgIHVpID0gMTAwMCAvIGRzaS0+ZGF0YV9yYXRlICsg
-MHgwMTsKPiAtICAgICAgIGN5Y2xlX3RpbWUgPSA4MDAwIC8gZHNpLT5kYXRhX3JhdGUgKyAweDAx
-Owo+ICsgICAgICAgdGltaW5nLT50YV9nbyA9IDQgKiB0aW1pbmctPmxweDsKPiArICAgICAgIHRp
-bWluZy0+dGFfc3VyZSA9IDMgKiB0aW1pbmctPmxweCAvIDI7Cj4gKyAgICAgICB0aW1pbmctPnRh
-X2dldCA9IDUgKiB0aW1pbmctPmxweDsKPiArICAgICAgIHRpbWluZy0+ZGFfaHNfZXhpdCA9IDIg
-KiB0aW1pbmctPmxweDsKPgo+IC0gICAgICAgdGltY29uMCA9IFRfTFBYIHwgVF9IU19QUkVQIDw8
-IDggfCBUX0hTX1pFUk8gPDwgMTYgfCBUX0hTX1RSQUlMIDw8IDI0Owo+IC0gICAgICAgdGltY29u
-MSA9IDQgKiBUX0xQWCB8ICgzICogVF9MUFggLyAyKSA8PCA4IHwgNSAqIFRfTFBYIDw8IDE2IHwK
-PiAtICAgICAgICAgICAgICAgICBUX0hTX0VYSVQgPDwgMjQ7Cj4gLSAgICAgICB0aW1jb24yID0g
-KChOU19UT19DWUNMRSgweDY0LCBjeWNsZV90aW1lKSArIDB4YSkgPDwgMjQpIHwKPiAtICAgICAg
-ICAgICAgICAgICAoTlNfVE9fQ1lDTEUoMHgxNTAsIGN5Y2xlX3RpbWUpIDw8IDE2KTsKPiAtICAg
-ICAgIHRpbWNvbjMgPSBOU19UT19DWUNMRSgweDQwLCBjeWNsZV90aW1lKSB8ICgyICogVF9MUFgp
-IDw8IDE2IHwKPiAtICAgICAgICAgICAgICAgICBOU19UT19DWUNMRSg4MCArIDUyICogdWksIGN5
-Y2xlX3RpbWUpIDw8IDg7Cj4gKyAgICAgICB0aW1pbmctPmNsa19oc196ZXJvID0gTlNfVE9fQ1lD
-TEUoMzM2LCBjeWNsZV90aW1lKTsKPiArICAgICAgIHRpbWluZy0+Y2xrX2hzX3RyYWlsID0gTlNf
-VE9fQ1lDTEUoMTAwLCBjeWNsZV90aW1lKSArIDEwOwo+ICsKPiArICAgICAgIHRpbWluZy0+Y2xr
-X2hzX3ByZXBhcmUgPSBOU19UT19DWUNMRSg2NCwgY3ljbGVfdGltZSk7Cj4gKyAgICAgICB0aW1p
-bmctPmNsa19oc19wb3N0ID0gTlNfVE9fQ1lDTEUoODAgKyA1MiAqIHVpLCBjeWNsZV90aW1lKTsK
-PiArICAgICAgIHRpbWluZy0+Y2xrX2hzX2V4aXQgPSAyICogdGltaW5nLT5scHg7Cj4gKwo+ICsg
-ICAgICAgdGltY29uMCA9IHRpbWluZy0+bHB4IHwgdGltaW5nLT5kYV9oc19wcmVwYXJlIDw8IDgg
-fAo+ICsgICAgICAgICAgICAgICAgIHRpbWluZy0+ZGFfaHNfemVybyA8PCAxNiB8IHRpbWluZy0+
-ZGFfaHNfdHJhaWwgPDwgMjQ7Cj4gKyAgICAgICB0aW1jb24xID0gdGltaW5nLT50YV9nbyB8IHRp
-bWluZy0+dGFfc3VyZSA8PCA4IHwKPiArICAgICAgICAgICAgICAgICB0aW1pbmctPnRhX2dldCA8
-PCAxNiB8IHRpbWluZy0+ZGFfaHNfZXhpdCA8PCAyNDsKPiArICAgICAgIHRpbWNvbjIgPSAxIDw8
-IDggfCB0aW1pbmctPmNsa19oc196ZXJvIDw8IDE2IHwKPiArICAgICAgICAgICAgICAgICB0aW1p
-bmctPmNsa19oc190cmFpbCA8PCAyNDsKPiArICAgICAgIHRpbWNvbjMgPSB0aW1pbmctPmNsa19o
-c19wcmVwYXJlIHwgdGltaW5nLT5jbGtfaHNfcG9zdCA8PCA4IHwKPiArICAgICAgICAgICAgICAg
-ICB0aW1pbmctPmNsa19oc19leGl0IDw8IDE2Owo+Cj4gICAgICAgICB3cml0ZWwodGltY29uMCwg
-ZHNpLT5yZWdzICsgRFNJX1BIWV9USU1FQ09OMCk7Cj4gICAgICAgICB3cml0ZWwodGltY29uMSwg
-ZHNpLT5yZWdzICsgRFNJX1BIWV9USU1FQ09OMSk7Cj4gQEAgLTQxOCw3ICs0NTEsOCBAQCBzdGF0
-aWMgdm9pZCBtdGtfZHNpX2NvbmZpZ192ZG9fdGltaW5nKHN0cnVjdCBtdGtfZHNpICpkc2kpCj4g
-ICAgICAgICB1MzIgaG9yaXpvbnRhbF9zeW5jX2FjdGl2ZV9ieXRlOwo+ICAgICAgICAgdTMyIGhv
-cml6b250YWxfYmFja3BvcmNoX2J5dGU7Cj4gICAgICAgICB1MzIgaG9yaXpvbnRhbF9mcm9udHBv
-cmNoX2J5dGU7Cj4gLSAgICAgICB1MzIgZHNpX3RtcF9idWZfYnBwOwo+ICsgICAgICAgdTMyIGRz
-aV90bXBfYnVmX2JwcCwgZGF0YV9waHlfY3ljbGVzOwo+ICsgICAgICAgc3RydWN0IG10a19waHlf
-dGltaW5nICp0aW1pbmcgPSAmZHNpLT5waHlfdGltaW5nOwo+Cj4gICAgICAgICBzdHJ1Y3Qgdmlk
-ZW9tb2RlICp2bSA9ICZkc2ktPnZtOwo+Cj4gQEAgLTQzMyw3ICs0NjcsOCBAQCBzdGF0aWMgdm9p
-ZCBtdGtfZHNpX2NvbmZpZ192ZG9fdGltaW5nKHN0cnVjdCBtdGtfZHNpICpkc2kpCj4gICAgICAg
-ICB3cml0ZWwodm0tPnZhY3RpdmUsIGRzaS0+cmVncyArIERTSV9WQUNUX05MKTsKPgo+ICAgICAg
-ICAgaWYgKGRzaS0+ZHJpdmVyX2RhdGEtPmhhc19zaXplX2N0bCkKPiAtICAgICAgICAgICAgICAg
-d3JpdGVsKHZtLT52YWN0aXZlIDw8IDE2IHwgdm0tPmhhY3RpdmUsIGRzaS0+cmVncyArIERTSV9T
-SVpFX0NPTik7Cj4gKyAgICAgICAgICAgICAgIHdyaXRlbCh2bS0+dmFjdGl2ZSA8PCAxNiB8IHZt
-LT5oYWN0aXZlLAo+ICsgICAgICAgICAgICAgICAgICAgICAgZHNpLT5yZWdzICsgRFNJX1NJWkVf
-Q09OKTsKPgo+ICAgICAgICAgaG9yaXpvbnRhbF9zeW5jX2FjdGl2ZV9ieXRlID0gKHZtLT5oc3lu
-Y19sZW4gKiBkc2lfdG1wX2J1Zl9icHAgLSAxMCk7Cj4KPiBAQCAtNDQ0LDcgKzQ3OSwzNCBAQCBz
-dGF0aWMgdm9pZCBtdGtfZHNpX2NvbmZpZ192ZG9fdGltaW5nKHN0cnVjdCBtdGtfZHNpICpkc2kp
-Cj4gICAgICAgICAgICAgICAgIGhvcml6b250YWxfYmFja3BvcmNoX2J5dGUgPSAoKHZtLT5oYmFj
-a19wb3JjaCArIHZtLT5oc3luY19sZW4pICoKPiAgICAgICAgICAgICAgICAgICAgICAgICBkc2lf
-dG1wX2J1Zl9icHAgLSAxMCk7Cj4KPiAtICAgICAgIGhvcml6b250YWxfZnJvbnRwb3JjaF9ieXRl
-ID0gKHZtLT5oZnJvbnRfcG9yY2ggKiBkc2lfdG1wX2J1Zl9icHAgLSAxMik7Cj4gKyAgICAgICBk
-YXRhX3BoeV9jeWNsZXMgPSB0aW1pbmctPmxweCArIHRpbWluZy0+ZGFfaHNfcHJlcGFyZSArCj4g
-KyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRpbWluZy0+ZGFfaHNfemVybyArIHRp
-bWluZy0+ZGFfaHNfZXhpdCArIDI7Cj4gKwo+ICsgICAgICAgaWYgKGRzaS0+bW9kZV9mbGFncyAm
-IE1JUElfRFNJX01PREVfVklERU9fQlVSU1QpIHsKPiArICAgICAgICAgICAgICAgaWYgKHZtLT5o
-ZnJvbnRfcG9yY2ggKiBkc2lfdG1wX2J1Zl9icHAgPgo+ICsgICAgICAgICAgICAgICAgICAgZGF0
-YV9waHlfY3ljbGVzICogZHNpLT5sYW5lcyArIDE4KSB7Cj4gKyAgICAgICAgICAgICAgICAgICAg
-ICAgaG9yaXpvbnRhbF9mcm9udHBvcmNoX2J5dGUgPSB2bS0+aGZyb250X3BvcmNoICoKPiArICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRzaV90bXBf
-YnVmX2JwcCAtCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICBkYXRhX3BoeV9jeWNsZXMgKgo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgZHNpLT5sYW5lcyAtIDE4Owo+ICsgICAgICAgICAgICAg
-ICB9IGVsc2Ugewo+ICsgICAgICAgICAgICAgICAgICAgICAgIERSTV9XQVJOKCJIRlAgbGVzcyB0
-aGFuIGQtcGh5LCBGUFMgd2lsbCB1bmRlciA2MEh6XG4iKTsKPiArICAgICAgICAgICAgICAgICAg
-ICAgICBob3Jpem9udGFsX2Zyb250cG9yY2hfYnl0ZSA9IHZtLT5oZnJvbnRfcG9yY2ggKgo+ICsg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZHNpX3Rt
-cF9idWZfYnBwOwo+ICsgICAgICAgICAgICAgICB9Cj4gKyAgICAgICB9IGVsc2Ugewo+ICsgICAg
-ICAgICAgICAgICBpZiAodm0tPmhmcm9udF9wb3JjaCAqIGRzaV90bXBfYnVmX2JwcCA+Cj4gKyAg
-ICAgICAgICAgICAgICAgICBkYXRhX3BoeV9jeWNsZXMgKiBkc2ktPmxhbmVzICsgMTIpIHsKPiAr
-ICAgICAgICAgICAgICAgICAgICAgICBob3Jpem9udGFsX2Zyb250cG9yY2hfYnl0ZSA9IHZtLT5o
-ZnJvbnRfcG9yY2ggKgo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgZHNpX3RtcF9idWZfYnBwIC0KPiArICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRhdGFfcGh5X2N5Y2xlcyAqCj4gKyAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkc2ktPmxhbmVzIC0g
-MTI7Cj4gKyAgICAgICAgICAgICAgIH0gZWxzZSB7Cj4gKyAgICAgICAgICAgICAgICAgICAgICAg
-RFJNX1dBUk4oIkhGUCBsZXNzIHRoYW4gZC1waHksIEZQUyB3aWxsIHVuZGVyIDYwSHpcbiIpOwo+
-ICsgICAgICAgICAgICAgICAgICAgICAgIGhvcml6b250YWxfZnJvbnRwb3JjaF9ieXRlID0gdm0t
-Pmhmcm9udF9wb3JjaCAqCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICBkc2lfdG1wX2J1Zl9icHA7Cj4gKyAgICAgICAgICAgICAgIH0KPiArICAg
-ICAgIH0KPgo+ICAgICAgICAgd3JpdGVsKGhvcml6b250YWxfc3luY19hY3RpdmVfYnl0ZSwgZHNp
-LT5yZWdzICsgRFNJX0hTQV9XQyk7Cj4gICAgICAgICB3cml0ZWwoaG9yaXpvbnRhbF9iYWNrcG9y
-Y2hfYnl0ZSwgZHNpLT5yZWdzICsgRFNJX0hCUF9XQyk7Cj4gQEAgLTU0NCw4ICs2MDYsNyBAQCBz
-dGF0aWMgaW50IG10a19kc2lfcG93ZXJvbihzdHJ1Y3QgbXRrX2RzaSAqZHNpKQo+ICB7Cj4gICAg
-ICAgICBzdHJ1Y3QgZGV2aWNlICpkZXYgPSBkc2ktPmRldjsKPiAgICAgICAgIGludCByZXQ7Cj4g
-LSAgICAgICB1NjQgcGl4ZWxfY2xvY2ssIHRvdGFsX2JpdHM7Cj4gLSAgICAgICB1MzIgaHRvdGFs
-LCBodG90YWxfYml0cywgYml0X3Blcl9waXhlbCwgb3ZlcmhlYWRfY3ljbGVzLCBvdmVyaGVhZF9i
-aXRzOwo+ICsgICAgICAgdTMyIGJpdF9wZXJfcGl4ZWw7Cj4KPiAgICAgICAgIGlmICgrK2RzaS0+
-cmVmY291bnQgIT0gMSkKPiAgICAgICAgICAgICAgICAgcmV0dXJuIDA7Cj4gQEAgLTU2NCwyNCAr
-NjI1LDcgQEAgc3RhdGljIGludCBtdGtfZHNpX3Bvd2Vyb24oc3RydWN0IG10a19kc2kgKmRzaSkK
-PiAgICAgICAgICAgICAgICAgYnJlYWs7Cj4gICAgICAgICB9Cj4KPiAtICAgICAgIC8qKgo+IC0g
-ICAgICAgICogaHRvdGFsX3RpbWUgPSBodG90YWwgKiBieXRlX3Blcl9waXhlbCAvIG51bV9sYW5l
-cwo+IC0gICAgICAgICogb3ZlcmhlYWRfdGltZSA9IGxweCArIGhzX3ByZXBhcmUgKyBoc196ZXJv
-ICsgaHNfdHJhaWwgKyBoc19leGl0Cj4gLSAgICAgICAgKiBtaXBpX3JhdGlvID0gKGh0b3RhbF90
-aW1lICsgb3ZlcmhlYWRfdGltZSkgLyBodG90YWxfdGltZQo+IC0gICAgICAgICogZGF0YV9yYXRl
-ID0gcGl4ZWxfY2xvY2sgKiBiaXRfcGVyX3BpeGVsICogbWlwaV9yYXRpbyAvIG51bV9sYW5lczsK
-PiAtICAgICAgICAqLwo+IC0gICAgICAgcGl4ZWxfY2xvY2sgPSBkc2ktPnZtLnBpeGVsY2xvY2s7
-Cj4gLSAgICAgICBodG90YWwgPSBkc2ktPnZtLmhhY3RpdmUgKyBkc2ktPnZtLmhiYWNrX3BvcmNo
-ICsgZHNpLT52bS5oZnJvbnRfcG9yY2ggKwo+IC0gICAgICAgICAgICAgICAgICAgICAgIGRzaS0+
-dm0uaHN5bmNfbGVuOwo+IC0gICAgICAgaHRvdGFsX2JpdHMgPSBodG90YWwgKiBiaXRfcGVyX3Bp
-eGVsOwo+IC0KPiAtICAgICAgIG92ZXJoZWFkX2N5Y2xlcyA9IFRfTFBYICsgVF9IU19QUkVQICsg
-VF9IU19aRVJPICsgVF9IU19UUkFJTCArCj4gLSAgICAgICAgICAgICAgICAgICAgICAgVF9IU19F
-WElUOwo+IC0gICAgICAgb3ZlcmhlYWRfYml0cyA9IG92ZXJoZWFkX2N5Y2xlcyAqIGRzaS0+bGFu
-ZXMgKiA4Owo+IC0gICAgICAgdG90YWxfYml0cyA9IGh0b3RhbF9iaXRzICsgb3ZlcmhlYWRfYml0
-czsKPiAtCj4gLSAgICAgICBkc2ktPmRhdGFfcmF0ZSA9IERJVl9ST1VORF9VUF9VTEwocGl4ZWxf
-Y2xvY2sgKiB0b3RhbF9iaXRzLAo+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgIGh0b3RhbCAqIGRzaS0+bGFuZXMpOwo+ICsgICAgICAgZHNpLT5kYXRhX3JhdGUgPSBk
-c2ktPnZtLnBpeGVsY2xvY2sgKiBiaXRfcGVyX3BpeGVsIC8gZHNpLT5sYW5lczsKPgo+ICAgICAg
-ICAgcmV0ID0gY2xrX3NldF9yYXRlKGRzaS0+aHNfY2xrLCBkc2ktPmRhdGFfcmF0ZSk7Cj4gICAg
-ICAgICBpZiAocmV0IDwgMCkgewo+IC0tCj4gMi4yMS4wCj4KPiBfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPiBk
-cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
-cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpLWRldmVs
+On Mon, Jun 3, 2019 at 4:01 PM Chuanjia Liu <Chuanjia.Liu@mediatek.com> wrote:
+>
+> On Fri, 2019-05-31 at 10:17 -0700, Evan Green wrote:
+> > On Fri, May 31, 2019 at 1:06 AM Chuanjia Liu <Chuanjia.Liu@mediatek.com> wrote:
+> > >
+> > > On Thu, 2019-05-30 at 10:12 -0700, Evan Green wrote:
+> > > > On Wed, May 15, 2019 at 1:05 AM Nicolas Boichat <drinkcat@chromium.org> wrote:
+> > > > >
+> > > > > On Wed, May 15, 2019 at 4:14 AM Stephen Boyd <swboyd@chromium.org> wrote:
+> > > > > >
+> > > > > > Quoting Nicolas Boichat (2019-05-13 18:37:58)
+> > > > > > > On Tue, May 14, 2019 at 6:29 AM Stephen Boyd <swboyd@chromium.org> wrote:
+> > > > > > > >
+> > > > > > > > Quoting Nicolas Boichat (2019-04-28 20:55:15)
+> > > > > > > > > During suspend/resume, mtk_eint_mask may be called while
+> > > > > > > > > wake_mask is active. For example, this happens if a wake-source
+> > > > > > > > > with an active interrupt handler wakes the system:
+> > > > > > > > > irq/pm.c:irq_pm_check_wakeup would disable the interrupt, so
+> > > > > > > > > that it can be handled later on in the resume flow.
+> > > > > > > > >
+> > > > > > > > > However, this may happen before mtk_eint_do_resume is called:
+> > > > > > > > > in this case, wake_mask is loaded, and cur_mask is restored
+> > > > > > > > > from an older copy, re-enabling the interrupt, and causing
+> > > > > > > > > an interrupt storm (especially for level interrupts).
+> > > > > > > > >
+> > > > > > > > > Instead, we just record mask/unmask changes in cur_mask. This
+> > > > > > > > > also avoids the need to read the current mask in eint_do_suspend,
+> > > > > > > > > and we can remove mtk_eint_chip_read_mask function.
+> > > > > > > > >
+> > > > > > > > > Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
+> > > > > > > >
+> > > > > > > > It looks an awful lot like you should just use IRQCHIP_MASK_ON_SUSPEND
+> > > > > > > > here. Isn't that what's happening? All non-wake irqs should be masked at
+> > > > > > > > the hardware level so they can't cause a wakeup during suspend and on
+> > > > > > > > resume they can be unmasked?
+> > > > > > >
+> > > > > > > No, this is for an line that has both wake and interrupt enabled. To
+> > > > > > > reword the commit message above:
+> > > > > >
+> > > > > > Is my understanding correct that there isn't a different "wake up"
+> > > > > > register that can be written to cause a GPIO to be configured to wake
+> > > > > > the system from suspend? The only way to do so is to leave the GPIO
+> > > > > > unmasked in the hardware by having EINT_EN[irq] = 1? And thus any
+> > > > > > interrupts that we don't want to wake us up during suspend should be
+> > > > > > masked in the hardware?
+> > > > >
+> > > > > Yes, that's my understanding as well.
+> > > > >
+> > > > > And then, what this driver does is to emulate the behaviour of a
+> > > > > controller that would actually have separate irq and wake enable
+> > > > > registers.
+> > > > >
+> > > > > > If that's true, the code here that's trying to keep track of enabled
+> > > > > > irqs and wakeup enabled irqs can be replaced with the irqchip flag so
+> > > > > > that wakeup irqs are not masked while non-wakeups are masked.
+> > > > >
+> > > > > Correct, but with the caveat that I don't see anything that definitely
+> > > > > requires an interrupt to be enabled to be a wake source. See below...
+> > > > >
+> > > > > >
+> > > > > > >  1. cur_mask[irq] = 1; wake_mask[irq] = 1; EINT_EN[irq] = 1 (interrupt
+> > > > > > > enabled at hardware level)
+> > > > > > >  2. System suspends, resumes due to that line (at this stage EINT_HW
+> > > > > > > == wake_mask)
+> > > > > > >  3. irq_pm_check_wakeup is called, and disables the interrupt =>
+> > > > > > > EINT_EN[irq] = 0, but we still have cur_mask[irq] = 1
+> > > > > > >  4. mtk_eint_do_resume is called, and restores EINT_EN = cur_mask, so
+> > > > > > > it reenables EINT_EN[irq] = 1 => interrupt storm.
+> > > > > > >
+> > > > > > > This patch fixes the issue in step 3. So that the interrupt can be
+> > > > > > > re-enabled properly later on, sometimes after mtk_eint_do_resume, when
+> > > > > > > the driver is ready to handle it.
+> > > > > >
+> > > > > > Right, we'd rather not see irqchip drivers working around the genirq
+> > > > > > layer to do these things like tracking cur_mask and wake_mask. That
+> > > > > > leads to subtle bugs and makes the driver maintain state across the
+> > > > > > irqchip callbacks and system suspend/resume.
+> > > > > >
+> > > > > > >
+> > > > > > > Also, IRQCHIP_MASK_ON_SUSPEND does not handle lines that are enabled
+> > > > > > > as a wake source, but without interrupt enabled (e.g. cros_ec driver
+> > > > > > > does that), which we do want to support.
+> > > > > >
+> > > > > > Hmm. I thought that even if the irq is disabled by a driver, that would
+> > > > > > be a lazy disable so it isn't really masked in the hardware. Then if an
+> > > > > > interrupt comes in during suspend on a wake configured irq line, the
+> > > > > > hardware will have left it unmasked because IRQCHIP_MASK_ON_SUSPEND in
+> > > > > > combination with lazy disable would mean that the line is left unmasked
+> > > > > > (ignoring whatever this mediatek driver is doing to mask and unmask in
+> > > > > > PM hooks).
+> > > > >
+> > > > > At the very least, that's not what happens with this system. The
+> > > > > interrupt is definitely not kept enabled in suspend, and the system
+> > > > > would not wake from an EC interrupt. (see also this series, BTW:
+> > > > > https://patchwork.kernel.org/cover/10921121/).
+> > > > >
+> > > > > > Just reading Documentation/power/suspend-and-interrupts.txt I'm led to
+> > > > > > believe that the cros_ec driver shouldn't call disable_irq() on the
+> > > > > > interrupt if it wants to wakeup from it:
+> > > > > >
+> > > > > > "Calling enable_irq_wake() causes suspend_device_irqs() to treat the
+> > > > > > given IRQ in a special way.  Namely, the IRQ remains enabled, by on the
+> > > > > > first interrupt it will be disabled, marked as pending and "suspended"
+> > > > > > so that it will be re-enabled by resume_device_irqs() during the
+> > > > > > subsequent system resume.  Also the PM core is notified about the event
+> > > > > > which causes the system suspend in progress to be aborted (that doesn't
+> > > > > > have to happen immediately, but at one of the points where the suspend
+> > > > > > thread looks for pending wakeup events)."
+> > > > >
+> > > > > I think this describes the behaviour when you keep both enabled.
+> > > > >
+> > > > > > I suppose the problem is an irq line disabled in hardware that has
+> > > > > > wakeup armed on it? Is this even valid? Shouldn't an irq be enabled for
+> > > > > > wakeup to work?
+> > > > >
+> > > > > I couldn't really find a definite answer, but there are a bunch of
+> > > > > examples of other drivers in the kernel:
+> > > > >  - drivers/extcon/extcon-usb-gpio.c:usb_extcon_suspend
+> > > > >  - drivers/hid/i2c-hid/i2c-hid.c:i2c_hid_suspend
+> > > > >  - drivers/mfd/max77843.c:max77843_suspend
+> > > > > (not exhaustive, this is quite hard to grep for...)
+> > > > >
+> > > > > > We could immediately unmask those lines in the hardware when the
+> > > > > > set_wake() callback is called. That way the genirq layer can use the
+> > > > > > driver to do what it wants with the hardware and the driver can make
+> > > > > > sure that set_wake() will always cause the wakeup interrupt to be
+> > > > > > delivered to genirq even when software has disabled it.
+> > > > > >
+> > > > > > But I think that there might be a problem with how genirq understands
+> > > > > > the masked state of a line when the wakeup implementation conflates
+> > > > > > masked state with wakeup armed state. Consider this call-flow:
+> > > > > >
+> > > > > >         irq masked in hardware, IRQD_IRQ_MASKED is set
+> > > > > >         enable_irq_wake()
+> > > > > >           unmask_irq in hardware
+> > > > > >         IRQD_WAKEUP_ARMED is set
+> > > > > >         <suspend and wakeup from irq>
+> > > > > >         handle_level_irq()
+> > > > > >           mask_ack_irq()
+> > > > > >             mask_irq()
+> > > > > >               if (irqd_irq_masked()) -> returns true and skips masking!
+> > > > > >             if (desc->irq_data.chip->irq_ack)
+> > > > > >               ...
+> > > > > >           irq_may_run()
+> > > > > >             irq_pm_check_wakeup()
+> > > > > >               irq_disable()
+> > > > > >                 mask_irq() -> does nothing again
+> > > > > >
+> > > > > > In the above flow, we never mask the irq because we thought it was
+> > > > > > already masked when it was disabled, but the irqchip implementation
+> > > > > > unmasked it to make wakeup work. Maybe we should always mask the irq if
+> > > > > > wakeup is armed and we're trying to call mask_irq()? Looks hacky.
+> > > Maybe we can implement irqchip's mask_ack_irq  in mediatek driver to
+> > > always mask the irq. Then flow will always call it without judgment
+> > > IRQD_IRQ_MASKED.
+> > >
+> > > diff --git a/drivers/pinctrl/mediatek/mtk-eint.c
+> > > b/drivers/pinctrl/mediatek/mtk-
+> > > index f464f8c..9f1aae2 100644
+> > > --- a/drivers/pinctrl/mediatek/mtk-eint.c
+> > > +++ b/drivers/pinctrl/mediatek/mtk-eint.c
+> > > @@ -272,12 +272,19 @@ static void mtk_eint_irq_release_resources(struct
+> > > irq_data
+> > >         gpiochip_unlock_as_irq(gpio_c, gpio_n);
+> > >  }
+> > >
+> > > +static void mtk_eint_mask_ack(struct irq_data *d)
+> > > +{
+> > > +       mtk_eint_mask(d);
+> > > +       mtk_eint_ack(d);
+> > > +}
+> > > +
+> > >  static struct irq_chip mtk_eint_irq_chip = {
+> > >         .name = "mt-eint",
+> > >         .irq_disable = mtk_eint_mask,
+> > >         .irq_mask = mtk_eint_mask,
+> > >         .irq_unmask = mtk_eint_unmask,
+> > >         .irq_ack = mtk_eint_ack,
+> > > +       .irq_mask_ack = mtk_eint_mask_ack,
+> > >         .irq_set_type = mtk_eint_set_type,
+> > >         .irq_set_wake = mtk_eint_irq_set_wake,
+> > >         .irq_request_resources = mtk_eint_irq_request_resources,
+> > >
+> > > This seems like a small change.
+> > > thanks.
+> >
+> > Does this work? My understanding is that Linux thinks the irq is
+> > _already_ masked, so it short-circuits in the generic IRQ code and
+> > doesn't call mask again.
+> > -Evan
+>
+> Yes, you are right.
+>
+> The underlying problem is really that the hardware IRQ enabled state is
+> out of sync with what linux thinks.In resume flow,Linux thinks the irq
+> is _already_masked, so it short-circuits in the generic IRQ code and
+> doesn't call mask again.So in step 3 will have a interrupt storm.
+>
+> But we implement irqchip's mask_ack_irq so that mask_ack_irq() calls
+> desc->irq_data.chip->irq_mask_ack instead of mask_irq() that needs to
+> judge IRQD_IRQ_MASKED. This will correctly set cur_mask[irq] = 0 to
+> sync with kernel state.
+
+Oh, I see. I guess that would work as mask_ack_irq does not check for
+current masked status before calling irq_chip->irq_mask_ack... But
+that's only if irq_chip->irq_mask_ack is defined, else it just calls
+mask_irq which does that check.
+
+But if we follow bf22ff45bed ("genirq: Avoid unnecessary low level irq
+function calls"), this is actually a bug and we should add that same
+check to mask_ack_irq (and since pinctrl-rockchip.c does not implement
+irq_mask_ack, it's understandable why the author missed that).
+
+So I'm not sure if this is the right change either...
+
+> Also, this patch can solve the issue of [1/2] in this patchset[1] which
+> also is the interrupt mask cannot be set correctly due to hardware irq
+> state not sync kernel.
+>
+> [1] https://patchwork.kernel.org/patch/10921143/
+>
+>
