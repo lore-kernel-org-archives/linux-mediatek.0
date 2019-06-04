@@ -1,47 +1,34 @@
-From: Felipe Balbi <felipe.balbi@linux.intel.com>
-Subject: Re: [PATCH v4] usb: create usb_debug_root for gadget only
-Date: Tue, 04 Jun 2019 10:47:55 +0300
-Message-ID: <87k1e123mc.fsf@linux.intel.com>
-References: <1559633647-29040-1-git-send-email-chunfeng.yun@mediatek.com> <20190604073706.GA25045@kroah.com>
+From: Alexandre Courbot <acourbot@chromium.org>
+Subject: Re: [RFCv1 07/12] media: mtk-vcodec: abstract firmware interface
+Date: Tue, 4 Jun 2019 16:53:47 +0900
+Message-ID: <CAPBb6MUTG3Pe6pU=gD0m0N3mOOHGyEp5Je58s3ahH_83a4i1rg@mail.gmail.com>
+References: <20190528055635.12109-1-acourbot@chromium.org> <20190528055635.12109-8-acourbot@chromium.org>
+ <b4320740-a016-4a0e-b9ae-e042fd305b12@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190604073706.GA25045@kroah.com>
+In-Reply-To: <b4320740-a016-4a0e-b9ae-e042fd305b12@xs4all.nl>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Hans Verkuil <hverkuil@xs4all.nl>
+Cc: Yunfei Dong <yunfei.dong@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Linux Media Mailing List <linux-media@vger.kernel.org>, linux-mediatek@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-
-Hi,
-
-Greg Kroah-Hartman <gregkh@linuxfoundation.org> writes:
->> +struct dentry *usb_debugfs_init(void)
->> +{
->> +	if (!usb_debug_root)
->> +		usb_debug_root = debugfs_create_dir("usb", NULL);
->> +
->> +	atomic_inc(&usb_debug_root_refcnt);
->> +
->> +	return usb_debug_root;
->> +}
->> +EXPORT_SYMBOL_GPL(usb_debugfs_init);
->> +
->> +void usb_debugfs_cleanup(void)
->> +{
->> +	if (atomic_dec_and_test(&usb_debug_root_refcnt)) {
->> +		debugfs_remove_recursive(usb_debug_root);
->> +		usb_debug_root = NULL;
->> +	}
->> +}
->> +EXPORT_SYMBOL_GPL(usb_debugfs_cleanup);
+On Tue, May 28, 2019 at 6:16 PM Hans Verkuil <hverkuil@xs4all.nl> wrote:
 >
-> Only remove the debugfs subdir if the usbcore module is removed.  Create
-> the debugfs subdir when the usbcore module is loaded.  No need for any
-> reference counting of any sort at all.  No need to overthink this :)
+> On 5/28/19 7:56 AM, Alexandre Courbot wrote:
+> > From: Yunfei Dong <yunfei.dong@mediatek.com>
+> >
+> > MT8183's codec firwmare is run by a different remote processor from
+> > MT8173. While the firmware interface is basically the same, the way to
+> > invoke it differs. Abstract all firmware calls under a layer that will
+> > allow us to handle both firmware types transparently.
+> >
+> > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> > Co-developed-by: Alexandre Courbot <acourbot@chromium.org>
+> > Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
+> > [acourbot: refactor, cleanup and split]
+>
+> High-level question: is the mt8183 firmware different from the MT8173?
+> And if so, is or will that firmware be part of linux-firmware?
 
-There is a slight need to overthink. He wants to use the same directory
-for gadget-only builds too :-)
-
--- 
-balbi
+Yes, the firmware is different, and AFAICT it will be posted to linux-firmware.
