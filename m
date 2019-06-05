@@ -1,230 +1,131 @@
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Subject: Re: [PATCH 3/5] media: mtk-vcodec: remove unneeded proxy functions
-Date: Wed, 5 Jun 2019 14:03:26 +0200
-Message-ID: <c86d2409-b3f0-b20e-f371-50338f7199d8@xs4all.nl>
-References: <20190604093737.172599-1-acourbot@chromium.org>
- <20190604093737.172599-4-acourbot@chromium.org>
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH v2] USB: move usb debugfs directory creation to the usb
+ common core
+Date: Wed, 5 Jun 2019 14:40:11 +0200
+Message-ID: <20190605124011.GB17558@kroah.com>
+References: <20190605092816.GA23758@kroah.com>
+ <1559732515.8487.106.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190604093737.172599-4-acourbot@chromium.org>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <1559732515.8487.106.camel@mhfsdcap03>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Alexandre Courbot <acourbot@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Felipe Balbi <felipe.balbi@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 6/4/19 11:37 AM, Alexandre Courbot wrote:
-> We were getting the codec interface through a proxy function that does
-> not bring anything compared to just accessing the interface definition
-> directly, so just do that. Also make the decoder interfaces const.
+On Wed, Jun 05, 2019 at 07:01:55PM +0800, Chunfeng Yun wrote:
+> Hi Greg,
+> On Wed, 2019-06-05 at 11:28 +0200, Greg Kroah-Hartman wrote:
+> > The USB gadget subsystem wants to use the USB debugfs root directory, so
+> > move it to the common "core" USB code so that it is properly initialized
+> > and removed as needed.
+> > 
+> > In order to properly do this, we need to load the common code before the
+> > usb core code, when everything is linked into the kernel, so reorder the
+> > link order of the code.
+> > 
+> > Also as the usb common code has the possibility of the led trigger logic
+> > to be merged into it, handle the build option properly by only having
+> > one module init/exit function and have the common code initialize the
+> > led trigger if needed.
+> > 
+> > Reported-by: From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > Cc: Felipe Balbi <felipe.balbi@linux.intel.com>
+> > Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> > ---
+> > 
+> > Chunfeng, can you test this version to verify it works for you when
+> > building the code into the kernel?
+> > 
+> > v2: handle led common code link error reported by kbuild
+> >     handle subsys_initcall issue pointed out by Chunfeng
+> > 
+> >  drivers/usb/Makefile        |  3 +--
+> >  drivers/usb/common/common.c | 21 +++++++++++++++++++++
+> >  drivers/usb/common/common.h | 14 ++++++++++++++
+> >  drivers/usb/common/led.c    |  9 +++------
+> >  drivers/usb/core/usb.c      | 10 ++++------
+> >  5 files changed, 43 insertions(+), 14 deletions(-)
+> >  create mode 100644 drivers/usb/common/common.h
+> > 
+> > diff --git a/drivers/usb/Makefile b/drivers/usb/Makefile
+> > index 7d1b8c82b208..ecc2de1ffaae 100644
+> > --- a/drivers/usb/Makefile
+> > +++ b/drivers/usb/Makefile
+> > @@ -5,6 +5,7 @@
+> >  
+> >  # Object files in subdirectories
+> >  
+> > +obj-$(CONFIG_USB_COMMON)	+= common/
+> >  obj-$(CONFIG_USB)		+= core/
+> >  obj-$(CONFIG_USB_SUPPORT)	+= phy/
+> >  
+> > @@ -60,8 +61,6 @@ obj-$(CONFIG_USB_CHIPIDEA)	+= chipidea/
+> >  obj-$(CONFIG_USB_RENESAS_USBHS)	+= renesas_usbhs/
+> >  obj-$(CONFIG_USB_GADGET)	+= gadget/
+> >  
+> > -obj-$(CONFIG_USB_COMMON)	+= common/
+> > -
+> >  obj-$(CONFIG_USBIP_CORE)	+= usbip/
+> >  
+> >  obj-$(CONFIG_TYPEC)		+= typec/
+> > diff --git a/drivers/usb/common/common.c b/drivers/usb/common/common.c
+> > index 18f5dcf58b0d..84a4423aaddf 100644
+> > --- a/drivers/usb/common/common.c
+> > +++ b/drivers/usb/common/common.c
+> > @@ -15,6 +15,8 @@
+> >  #include <linux/usb/of.h>
+> >  #include <linux/usb/otg.h>
+> >  #include <linux/of_platform.h>
+> > +#include <linux/debugfs.h>
+> > +#include "common.h"
+> >  
+> >  static const char *const ep_type_names[] = {
+> >  	[USB_ENDPOINT_XFER_CONTROL] = "ctrl",
+> > @@ -291,4 +293,23 @@ struct device *usb_of_get_companion_dev(struct device *dev)
+> >  EXPORT_SYMBOL_GPL(usb_of_get_companion_dev);
+> >  #endif
+> >  
+> > +struct dentry *usb_debug_root;
+> > +EXPORT_SYMBOL_GPL(usb_debug_root);
+> > +
+> > +static int usb_common_init(void)
+> > +{
+> > +	usb_debug_root = debugfs_create_dir("usb", NULL);
+> > +	ledtrig_usb_init();
+> > +	return 0;
+> > +}
+> > +
+> > +static void usb_common_exit(void)
+> > +{
+> > +	ledtrig_usb_exit();
+> > +	debugfs_remove_recursive(usb_debug_root);
+> > +}
+> > +
+> When enable CONFIG_LED_TRIGGER, there is a warning
 > 
-> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
-> ---
->  .../media/platform/mtk-vcodec/vdec/vdec_h264_if.c    |  9 +--------
->  drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c |  9 +--------
->  drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c |  9 +--------
->  drivers/media/platform/mtk-vcodec/vdec_drv_if.c      | 12 ++++++------
->  .../media/platform/mtk-vcodec/venc/venc_h264_if.c    |  9 +--------
->  drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c |  9 +--------
->  drivers/media/platform/mtk-vcodec/venc_drv_if.c      |  8 ++++----
->  7 files changed, 15 insertions(+), 50 deletions(-)
+>  MODPOST vmlinux.o
+> WARNING: vmlinux.o(.text+0x68e300): Section mismatch in reference from
+> the function usb_common_init() to the
+> function .init.text:ledtrig_usb_init()
+> The function usb_common_init() references
+> the function __init ledtrig_usb_init().
+> This is often because usb_common_init lacks a __init
+> annotation or the annotation of ledtrig_usb_init is wrong.
 > 
-> diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-> index 0c0660d2560b..85afdd6ab093 100644
-> --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-> @@ -481,16 +481,9 @@ static int vdec_h264_get_param(void *h_vdec, enum vdec_get_param_type type,
->  	return 0;
->  }
->  
-> -static struct vdec_common_if vdec_h264_if = {
-> +const struct vdec_common_if vdec_h264_if = {
->  	.init		= vdec_h264_init,
->  	.decode		= vdec_h264_decode,
->  	.get_param	= vdec_h264_get_param,
->  	.deinit		= vdec_h264_deinit,
->  };
-> -
-> -struct vdec_common_if *get_h264_dec_comm_if(void);
-> -
-> -struct vdec_common_if *get_h264_dec_comm_if(void)
-> -{
-> -	return &vdec_h264_if;
-> -}
-> diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
-> index 1e3763881e0d..a8ca762eac76 100644
-> --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
-> @@ -605,16 +605,9 @@ static void vdec_vp8_deinit(void *h_vdec)
->  	kfree(inst);
->  }
->  
-> -static struct vdec_common_if vdec_vp8_if = {
-> +const struct vdec_common_if vdec_vp8_if = {
->  	.init		= vdec_vp8_init,
->  	.decode		= vdec_vp8_decode,
->  	.get_param	= vdec_vp8_get_param,
->  	.deinit		= vdec_vp8_deinit,
->  };
-> -
-> -struct vdec_common_if *get_vp8_dec_comm_if(void);
-> -
-> -struct vdec_common_if *get_vp8_dec_comm_if(void)
-> -{
-> -	return &vdec_vp8_if;
-> -}
-> diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-> index 589b2fc91da2..1f99febdfbbe 100644
-> --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-> @@ -994,16 +994,9 @@ static int vdec_vp9_get_param(void *h_vdec, enum vdec_get_param_type type,
->  	return ret;
->  }
->  
-> -static struct vdec_common_if vdec_vp9_if = {
-> +const struct vdec_common_if vdec_vp9_if = {
->  	.init		= vdec_vp9_init,
->  	.decode		= vdec_vp9_decode,
->  	.get_param	= vdec_vp9_get_param,
->  	.deinit		= vdec_vp9_deinit,
->  };
-> -
-> -struct vdec_common_if *get_vp9_dec_comm_if(void);
-> -
-> -struct vdec_common_if *get_vp9_dec_comm_if(void)
-> -{
-> -	return &vdec_vp9_if;
-> -}
-> diff --git a/drivers/media/platform/mtk-vcodec/vdec_drv_if.c b/drivers/media/platform/mtk-vcodec/vdec_drv_if.c
-> index 5d8d76d55005..aa614eea3cc5 100644
-> --- a/drivers/media/platform/mtk-vcodec/vdec_drv_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/vdec_drv_if.c
-> @@ -10,9 +10,9 @@
->  #include "mtk_vcodec_dec_pm.h"
->  #include "mtk_vpu.h"
->  
-> -const struct vdec_common_if *get_h264_dec_comm_if(void);
-> -const struct vdec_common_if *get_vp8_dec_comm_if(void);
-> -const struct vdec_common_if *get_vp9_dec_comm_if(void);
-> +extern const struct vdec_common_if vdec_h264_if;
-> +extern const struct vdec_common_if vdec_vp8_if;
-> +extern const struct vdec_common_if vdec_vp9_if;
->  
->  int vdec_if_init(struct mtk_vcodec_ctx *ctx, unsigned int fourcc)
->  {
-> @@ -20,13 +20,13 @@ int vdec_if_init(struct mtk_vcodec_ctx *ctx, unsigned int fourcc)
->  
->  	switch (fourcc) {
->  	case V4L2_PIX_FMT_H264:
-> -		ctx->dec_if = get_h264_dec_comm_if();
-> +		ctx->dec_if = &vdec_h264_if;
->  		break;
->  	case V4L2_PIX_FMT_VP8:
-> -		ctx->dec_if = get_vp8_dec_comm_if();
-> +		ctx->dec_if = &vdec_vp8_if;
->  		break;
->  	case V4L2_PIX_FMT_VP9:
-> -		ctx->dec_if = get_vp9_dec_comm_if();
-> +		ctx->dec_if = &vdec_vp9_if;
->  		break;
->  	default:
->  		return -EINVAL;
-> diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-> index bfe61d5dc1cb..4e1d933395cd 100644
-> --- a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-> @@ -649,16 +649,9 @@ static int h264_enc_deinit(void *handle)
->  	return ret;
->  }
->  
-> -static const struct venc_common_if venc_h264_if = {
-> +const struct venc_common_if venc_h264_if = {
->  	.init = h264_enc_init,
->  	.encode = h264_enc_encode,
->  	.set_param = h264_enc_set_param,
->  	.deinit = h264_enc_deinit,
->  };
-> -
-> -const struct venc_common_if *get_h264_enc_comm_if(void);
-> -
-> -const struct venc_common_if *get_h264_enc_comm_if(void)
-> -{
-> -	return &venc_h264_if;
-> -}
-> diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-> index af23367cf1dd..2d1372ab6486 100644
-> --- a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-> @@ -455,16 +455,9 @@ static int vp8_enc_deinit(void *handle)
->  	return ret;
->  }
->  
-> -static const struct venc_common_if venc_vp8_if = {
-> +const struct venc_common_if venc_vp8_if = {
->  	.init = vp8_enc_init,
->  	.encode = vp8_enc_encode,
->  	.set_param = vp8_enc_set_param,
->  	.deinit = vp8_enc_deinit,
->  };
-> -
-> -const struct venc_common_if *get_vp8_enc_comm_if(void);
-> -
-> -const struct venc_common_if *get_vp8_enc_comm_if(void)
-> -{
-> -	return &venc_vp8_if;
-> -}
-> diff --git a/drivers/media/platform/mtk-vcodec/venc_drv_if.c b/drivers/media/platform/mtk-vcodec/venc_drv_if.c
-> index 318af1b4b6e7..cf5bfa296d20 100644
-> --- a/drivers/media/platform/mtk-vcodec/venc_drv_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/venc_drv_if.c
-> @@ -11,8 +11,8 @@
->  #include "mtk_vcodec_enc_pm.h"
->  #include "mtk_vpu.h"
->  
-> -const struct venc_common_if *get_h264_enc_comm_if(void);
-> -const struct venc_common_if *get_vp8_enc_comm_if(void);
-> +extern const struct venc_common_if venc_h264_if;
-> +extern const struct venc_common_if venc_vp8_if;
-
-This should be moved to a header. checkpatch gives me:
-
-Applying: media: mtk-vcodec: remove unneeded proxy functions
-WARNING: externs should be avoided in .c files
-#79: FILE: drivers/media/platform/mtk-vcodec/vdec_drv_if.c:14:
-+extern const struct vdec_common_if vdec_vp8_if;
-
-WARNING: externs should be avoided in .c files
-#80: FILE: drivers/media/platform/mtk-vcodec/vdec_drv_if.c:15:
-+extern const struct vdec_common_if vdec_vp9_if;
-
-WARNING: externs should be avoided in .c files
-#156: FILE: drivers/media/platform/mtk-vcodec/venc_drv_if.c:15:
-+extern const struct venc_common_if venc_vp8_if;
-
-And I agree with checkpatch here.
-
-I'll drop this patch from the series, but I'll take the others.
-
-Regards,
-
-	Hans
-
->  
->  int venc_if_init(struct mtk_vcodec_ctx *ctx, unsigned int fourcc)
->  {
-> @@ -20,10 +20,10 @@ int venc_if_init(struct mtk_vcodec_ctx *ctx, unsigned int fourcc)
->  
->  	switch (fourcc) {
->  	case V4L2_PIX_FMT_VP8:
-> -		ctx->enc_if = get_vp8_enc_comm_if();
-> +		ctx->enc_if = &venc_vp8_if;
->  		break;
->  	case V4L2_PIX_FMT_H264:
-> -		ctx->enc_if = get_h264_enc_comm_if();
-> +		ctx->enc_if = &venc_h264_if;
->  		break;
->  	default:
->  		return -EINVAL;
+> WARNING: vmlinux.o(.text+0x68e318): Section mismatch in reference from
+> the function usb_common_exit() to the
+> function .exit.text:ledtrig_usb_exit()
+> The function usb_common_exit() references a function in an exit section.
+> Often the function ledtrig_usb_exit() has valid usage outside the exit
+> section
+> and the fix is to remove the __exit annotation of ledtrig_usb_exit.
 > 
+> seems need add __init and __exit for usb_common_init/exit
+
+Yes, you are right, I'll go add those markings to those functions, good
+catch.
+
+greg k-h
