@@ -1,218 +1,69 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH v2] USB: move usb debugfs directory creation to the usb
- common core
-Date: Wed, 5 Jun 2019 19:01:55 +0800
-Message-ID: <1559732515.8487.106.camel@mhfsdcap03>
-References: <20190605092816.GA23758@kroah.com>
+From: <yongqiang.niu@mediatek.com>
+Subject: [PATCH v3, 00/27] add drm support for MT8183
+Date: Wed, 5 Jun 2019 19:42:39 +0800
+Message-ID: <1559734986-7379-1-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190605092816.GA23758@kroah.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: devicetree@vger.kernel.org, Felipe Balbi <felipe.balbi@linux.intel.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Mark Rutland <mark.rutland@arm.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Yongqiang Niu <yongqiang.niu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Greg,
-On Wed, 2019-06-05 at 11:28 +0200, Greg Kroah-Hartman wrote:
-> The USB gadget subsystem wants to use the USB debugfs root directory, so
-> move it to the common "core" USB code so that it is properly initialized
-> and removed as needed.
-> 
-> In order to properly do this, we need to load the common code before the
-> usb core code, when everything is linked into the kernel, so reorder the
-> link order of the code.
-> 
-> Also as the usb common code has the possibility of the led trigger logic
-> to be merged into it, handle the build option properly by only having
-> one module init/exit function and have the common code initialize the
-> led trigger if needed.
-> 
-> Reported-by: From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> Cc: Felipe Balbi <felipe.balbi@linux.intel.com>
-> Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> ---
-> 
-> Chunfeng, can you test this version to verify it works for you when
-> building the code into the kernel?
-> 
-> v2: handle led common code link error reported by kbuild
->     handle subsys_initcall issue pointed out by Chunfeng
-> 
->  drivers/usb/Makefile        |  3 +--
->  drivers/usb/common/common.c | 21 +++++++++++++++++++++
->  drivers/usb/common/common.h | 14 ++++++++++++++
->  drivers/usb/common/led.c    |  9 +++------
->  drivers/usb/core/usb.c      | 10 ++++------
->  5 files changed, 43 insertions(+), 14 deletions(-)
->  create mode 100644 drivers/usb/common/common.h
-> 
-> diff --git a/drivers/usb/Makefile b/drivers/usb/Makefile
-> index 7d1b8c82b208..ecc2de1ffaae 100644
-> --- a/drivers/usb/Makefile
-> +++ b/drivers/usb/Makefile
-> @@ -5,6 +5,7 @@
->  
->  # Object files in subdirectories
->  
-> +obj-$(CONFIG_USB_COMMON)	+= common/
->  obj-$(CONFIG_USB)		+= core/
->  obj-$(CONFIG_USB_SUPPORT)	+= phy/
->  
-> @@ -60,8 +61,6 @@ obj-$(CONFIG_USB_CHIPIDEA)	+= chipidea/
->  obj-$(CONFIG_USB_RENESAS_USBHS)	+= renesas_usbhs/
->  obj-$(CONFIG_USB_GADGET)	+= gadget/
->  
-> -obj-$(CONFIG_USB_COMMON)	+= common/
-> -
->  obj-$(CONFIG_USBIP_CORE)	+= usbip/
->  
->  obj-$(CONFIG_TYPEC)		+= typec/
-> diff --git a/drivers/usb/common/common.c b/drivers/usb/common/common.c
-> index 18f5dcf58b0d..84a4423aaddf 100644
-> --- a/drivers/usb/common/common.c
-> +++ b/drivers/usb/common/common.c
-> @@ -15,6 +15,8 @@
->  #include <linux/usb/of.h>
->  #include <linux/usb/otg.h>
->  #include <linux/of_platform.h>
-> +#include <linux/debugfs.h>
-> +#include "common.h"
->  
->  static const char *const ep_type_names[] = {
->  	[USB_ENDPOINT_XFER_CONTROL] = "ctrl",
-> @@ -291,4 +293,23 @@ struct device *usb_of_get_companion_dev(struct device *dev)
->  EXPORT_SYMBOL_GPL(usb_of_get_companion_dev);
->  #endif
->  
-> +struct dentry *usb_debug_root;
-> +EXPORT_SYMBOL_GPL(usb_debug_root);
-> +
-> +static int usb_common_init(void)
-> +{
-> +	usb_debug_root = debugfs_create_dir("usb", NULL);
-> +	ledtrig_usb_init();
-> +	return 0;
-> +}
-> +
-> +static void usb_common_exit(void)
-> +{
-> +	ledtrig_usb_exit();
-> +	debugfs_remove_recursive(usb_debug_root);
-> +}
-> +
-When enable CONFIG_LED_TRIGGER, there is a warning
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 
- MODPOST vmlinux.o
-WARNING: vmlinux.o(.text+0x68e300): Section mismatch in reference from
-the function usb_common_init() to the
-function .init.text:ledtrig_usb_init()
-The function usb_common_init() references
-the function __init ledtrig_usb_init().
-This is often because usb_common_init lacks a __init
-annotation or the annotation of ledtrig_usb_init is wrong.
+This series are based on 5.2-rc1 and provid 27 patch
+to support mediatek SOC MT8183
 
-WARNING: vmlinux.o(.text+0x68e318): Section mismatch in reference from
-the function usb_common_exit() to the
-function .exit.text:ledtrig_usb_exit()
-The function usb_common_exit() references a function in an exit section.
-Often the function ledtrig_usb_exit() has valid usage outside the exit
-section
-and the fix is to remove the __exit annotation of ledtrig_usb_exit.
+Change since v2
+- fix reviewed issue in v2
+- add mutex node into dts file
 
-seems need add __init and __exit for usb_common_init/exit
+Yongqiang Niu (27):
+  dt-bindings: mediatek: add binding for mt8183 display
+  dt-bindings: mediatek: add ovl_2l description for mt8183 display
+  dt-bindings: mediatek: add ccorr description for mt8183 display
+  dt-bindings: mediatek: add dither description for mt8183 display
+  arm64: dts: add display nodes for mt8183
+  drm/mediatek: add mutex mod into ddp private data
+  drm/mediatek: add mutex mod register offset into ddp private data
+  drm/mediatek: add mutex sof into ddp private data
+  drm/mediatek: add mutex sof register offset into ddp private data
+  drm/mediatek: split DISP_REG_CONFIG_DSI_SEL setting into another use
+    case
+  drm/mediatek: add mmsys private data for ddp path config
+  drm/mediatek: move rdma sout from mtk_ddp_mout_en into
+    mtk_ddp_sout_sel
+  drm/mediatek: add ddp component CCORR
+  drm/mediatek: add commponent OVL_2L0
+  drm/mediatek: add component OVL_2L1
+  drm/mediatek: add component DITHER
+  drm/mediatek: add gmc_bits for ovl private data
+  drm/medaitek: add layer_nr for ovl private data
+  drm/mediatek: add function to background color input select for
+    ovl/ovl_2l direct link
+  drm/mediatek: add background color input select function for
+    ovl/ovl_2l
+  drm/mediatek: add ovl0/ovl_2l0 usecase
+  drm/mediatek: distinguish ovl and ovl_2l by layer_nr
+  drm/mediatek: add connection from ovl0 to ovl_2l0
+  drm/mediatek: add connection from RDMA0 to COLOR0
+  drm/mediatek: add connection from RDMA1 to DSI0
+  drm/mediatek: add clock property check before get it
+  drm/mediatek: add support for mediatek SOC MT8183
 
-> +subsys_initcall(usb_common_init);
-> +module_exit(usb_common_exit);
-> +
->  MODULE_LICENSE("GPL");
-> diff --git a/drivers/usb/common/common.h b/drivers/usb/common/common.h
-> new file mode 100644
-> index 000000000000..424a91316a4b
-> --- /dev/null
-> +++ b/drivers/usb/common/common.h
-> @@ -0,0 +1,14 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +
-> +#ifndef __LINUX_USB_COMMON_H
-> +#define __LINUX_USB_COMMON_H
-> +
-> +#if defined(CONFIG_USB_LED_TRIG)
-> +void ledtrig_usb_init(void);
-> +void ledtrig_usb_exit(void);
-> +#else
-> +static inline void ledtrig_usb_init(void) { }
-> +static inline void ledtrig_usb_exit(void) { }
-> +#endif
-> +
-> +#endif	/* __LINUX_USB_COMMON_H */
-> diff --git a/drivers/usb/common/led.c b/drivers/usb/common/led.c
-> index 7bd81166b77d..0865dd44a80a 100644
-> --- a/drivers/usb/common/led.c
-> +++ b/drivers/usb/common/led.c
-> @@ -10,6 +10,7 @@
->  #include <linux/init.h>
->  #include <linux/leds.h>
->  #include <linux/usb.h>
-> +#include "common.h"
->  
->  #define BLINK_DELAY 30
->  
-> @@ -36,18 +37,14 @@ void usb_led_activity(enum usb_led_event ev)
->  EXPORT_SYMBOL_GPL(usb_led_activity);
->  
-> 
-> -static int __init ledtrig_usb_init(void)
-> +void __init ledtrig_usb_init(void)
->  {
->  	led_trigger_register_simple("usb-gadget", &ledtrig_usb_gadget);
->  	led_trigger_register_simple("usb-host", &ledtrig_usb_host);
-> -	return 0;
->  }
->  
-> -static void __exit ledtrig_usb_exit(void)
-> +void __exit ledtrig_usb_exit(void)
->  {
->  	led_trigger_unregister_simple(ledtrig_usb_gadget);
->  	led_trigger_unregister_simple(ledtrig_usb_host);
->  }
-> -
-> -module_init(ledtrig_usb_init);
-> -module_exit(ledtrig_usb_exit);
-> diff --git a/drivers/usb/core/usb.c b/drivers/usb/core/usb.c
-> index 7fcb9f782931..5a0df527a8ca 100644
-> --- a/drivers/usb/core/usb.c
-> +++ b/drivers/usb/core/usb.c
-> @@ -1185,19 +1185,17 @@ static struct notifier_block usb_bus_nb = {
->  	.notifier_call = usb_bus_notify,
->  };
->  
-> -struct dentry *usb_debug_root;
-> -EXPORT_SYMBOL_GPL(usb_debug_root);
-> +static struct dentry *usb_devices_root;
->  
->  static void usb_debugfs_init(void)
->  {
-> -	usb_debug_root = debugfs_create_dir("usb", NULL);
-> -	debugfs_create_file("devices", 0444, usb_debug_root, NULL,
-> -			    &usbfs_devices_fops);
-> +	usb_devices_root = debugfs_create_file("devices", 0444, usb_debug_root,
-> +					       NULL, &usbfs_devices_fops);
->  }
->  
->  static void usb_debugfs_cleanup(void)
->  {
-> -	debugfs_remove_recursive(usb_debug_root);
-> +	debugfs_remove(usb_devices_root);
->  }
->  
->  /*
+ .../bindings/display/mediatek/mediatek,disp.txt    |  37 +-
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi           | 114 ++++++
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c            |  80 +++-
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c           |  12 +
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c            |  42 +-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.c             | 429 ++++++++++++++++-----
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.h             |   6 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c        |  68 ++++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h        |  23 ++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c             |  52 +++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h             |   4 +
+ 11 files changed, 745 insertions(+), 122 deletions(-)
+
+-- 
+1.8.1.1.dirty
