@@ -1,149 +1,230 @@
-From: <yongqiang.niu@mediatek.com>
-Subject: [PATCH v3, 06/27] drm/mediatek: add mutex mod into ddp private data
-Date: Wed, 5 Jun 2019 19:42:45 +0800
-Message-ID: <1559734986-7379-7-git-send-email-yongqiang.niu@mediatek.com>
-References: <1559734986-7379-1-git-send-email-yongqiang.niu@mediatek.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Subject: Re: [PATCH 3/5] media: mtk-vcodec: remove unneeded proxy functions
+Date: Wed, 5 Jun 2019 14:03:26 +0200
+Message-ID: <c86d2409-b3f0-b20e-f371-50338f7199d8@xs4all.nl>
+References: <20190604093737.172599-1-acourbot@chromium.org>
+ <20190604093737.172599-4-acourbot@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1559734986-7379-1-git-send-email-yongqiang.niu@mediatek.com>
+In-Reply-To: <20190604093737.172599-4-acourbot@chromium.org>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Mark Rutland <mark.rutland@arm.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Yongqiang Niu <yongqiang.niu@mediatek.com>
+To: Alexandre Courbot <acourbot@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Yunfei Dong <yunfei.dong@mediatek.com>
+Cc: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+On 6/4/19 11:37 AM, Alexandre Courbot wrote:
+> We were getting the codec interface through a proxy function that does
+> not bring anything compared to just accessing the interface definition
+> directly, so just do that. Also make the decoder interfaces const.
+> 
+> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
+> ---
+>  .../media/platform/mtk-vcodec/vdec/vdec_h264_if.c    |  9 +--------
+>  drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c |  9 +--------
+>  drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c |  9 +--------
+>  drivers/media/platform/mtk-vcodec/vdec_drv_if.c      | 12 ++++++------
+>  .../media/platform/mtk-vcodec/venc/venc_h264_if.c    |  9 +--------
+>  drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c |  9 +--------
+>  drivers/media/platform/mtk-vcodec/venc_drv_if.c      |  8 ++++----
+>  7 files changed, 15 insertions(+), 50 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
+> index 0c0660d2560b..85afdd6ab093 100644
+> --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
+> +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
+> @@ -481,16 +481,9 @@ static int vdec_h264_get_param(void *h_vdec, enum vdec_get_param_type type,
+>  	return 0;
+>  }
+>  
+> -static struct vdec_common_if vdec_h264_if = {
+> +const struct vdec_common_if vdec_h264_if = {
+>  	.init		= vdec_h264_init,
+>  	.decode		= vdec_h264_decode,
+>  	.get_param	= vdec_h264_get_param,
+>  	.deinit		= vdec_h264_deinit,
+>  };
+> -
+> -struct vdec_common_if *get_h264_dec_comm_if(void);
+> -
+> -struct vdec_common_if *get_h264_dec_comm_if(void)
+> -{
+> -	return &vdec_h264_if;
+> -}
+> diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
+> index 1e3763881e0d..a8ca762eac76 100644
+> --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
+> +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
+> @@ -605,16 +605,9 @@ static void vdec_vp8_deinit(void *h_vdec)
+>  	kfree(inst);
+>  }
+>  
+> -static struct vdec_common_if vdec_vp8_if = {
+> +const struct vdec_common_if vdec_vp8_if = {
+>  	.init		= vdec_vp8_init,
+>  	.decode		= vdec_vp8_decode,
+>  	.get_param	= vdec_vp8_get_param,
+>  	.deinit		= vdec_vp8_deinit,
+>  };
+> -
+> -struct vdec_common_if *get_vp8_dec_comm_if(void);
+> -
+> -struct vdec_common_if *get_vp8_dec_comm_if(void)
+> -{
+> -	return &vdec_vp8_if;
+> -}
+> diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
+> index 589b2fc91da2..1f99febdfbbe 100644
+> --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
+> +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
+> @@ -994,16 +994,9 @@ static int vdec_vp9_get_param(void *h_vdec, enum vdec_get_param_type type,
+>  	return ret;
+>  }
+>  
+> -static struct vdec_common_if vdec_vp9_if = {
+> +const struct vdec_common_if vdec_vp9_if = {
+>  	.init		= vdec_vp9_init,
+>  	.decode		= vdec_vp9_decode,
+>  	.get_param	= vdec_vp9_get_param,
+>  	.deinit		= vdec_vp9_deinit,
+>  };
+> -
+> -struct vdec_common_if *get_vp9_dec_comm_if(void);
+> -
+> -struct vdec_common_if *get_vp9_dec_comm_if(void)
+> -{
+> -	return &vdec_vp9_if;
+> -}
+> diff --git a/drivers/media/platform/mtk-vcodec/vdec_drv_if.c b/drivers/media/platform/mtk-vcodec/vdec_drv_if.c
+> index 5d8d76d55005..aa614eea3cc5 100644
+> --- a/drivers/media/platform/mtk-vcodec/vdec_drv_if.c
+> +++ b/drivers/media/platform/mtk-vcodec/vdec_drv_if.c
+> @@ -10,9 +10,9 @@
+>  #include "mtk_vcodec_dec_pm.h"
+>  #include "mtk_vpu.h"
+>  
+> -const struct vdec_common_if *get_h264_dec_comm_if(void);
+> -const struct vdec_common_if *get_vp8_dec_comm_if(void);
+> -const struct vdec_common_if *get_vp9_dec_comm_if(void);
+> +extern const struct vdec_common_if vdec_h264_if;
+> +extern const struct vdec_common_if vdec_vp8_if;
+> +extern const struct vdec_common_if vdec_vp9_if;
+>  
+>  int vdec_if_init(struct mtk_vcodec_ctx *ctx, unsigned int fourcc)
+>  {
+> @@ -20,13 +20,13 @@ int vdec_if_init(struct mtk_vcodec_ctx *ctx, unsigned int fourcc)
+>  
+>  	switch (fourcc) {
+>  	case V4L2_PIX_FMT_H264:
+> -		ctx->dec_if = get_h264_dec_comm_if();
+> +		ctx->dec_if = &vdec_h264_if;
+>  		break;
+>  	case V4L2_PIX_FMT_VP8:
+> -		ctx->dec_if = get_vp8_dec_comm_if();
+> +		ctx->dec_if = &vdec_vp8_if;
+>  		break;
+>  	case V4L2_PIX_FMT_VP9:
+> -		ctx->dec_if = get_vp9_dec_comm_if();
+> +		ctx->dec_if = &vdec_vp9_if;
+>  		break;
+>  	default:
+>  		return -EINVAL;
+> diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
+> index bfe61d5dc1cb..4e1d933395cd 100644
+> --- a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
+> +++ b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
+> @@ -649,16 +649,9 @@ static int h264_enc_deinit(void *handle)
+>  	return ret;
+>  }
+>  
+> -static const struct venc_common_if venc_h264_if = {
+> +const struct venc_common_if venc_h264_if = {
+>  	.init = h264_enc_init,
+>  	.encode = h264_enc_encode,
+>  	.set_param = h264_enc_set_param,
+>  	.deinit = h264_enc_deinit,
+>  };
+> -
+> -const struct venc_common_if *get_h264_enc_comm_if(void);
+> -
+> -const struct venc_common_if *get_h264_enc_comm_if(void)
+> -{
+> -	return &venc_h264_if;
+> -}
+> diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
+> index af23367cf1dd..2d1372ab6486 100644
+> --- a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
+> +++ b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
+> @@ -455,16 +455,9 @@ static int vp8_enc_deinit(void *handle)
+>  	return ret;
+>  }
+>  
+> -static const struct venc_common_if venc_vp8_if = {
+> +const struct venc_common_if venc_vp8_if = {
+>  	.init = vp8_enc_init,
+>  	.encode = vp8_enc_encode,
+>  	.set_param = vp8_enc_set_param,
+>  	.deinit = vp8_enc_deinit,
+>  };
+> -
+> -const struct venc_common_if *get_vp8_enc_comm_if(void);
+> -
+> -const struct venc_common_if *get_vp8_enc_comm_if(void)
+> -{
+> -	return &venc_vp8_if;
+> -}
+> diff --git a/drivers/media/platform/mtk-vcodec/venc_drv_if.c b/drivers/media/platform/mtk-vcodec/venc_drv_if.c
+> index 318af1b4b6e7..cf5bfa296d20 100644
+> --- a/drivers/media/platform/mtk-vcodec/venc_drv_if.c
+> +++ b/drivers/media/platform/mtk-vcodec/venc_drv_if.c
+> @@ -11,8 +11,8 @@
+>  #include "mtk_vcodec_enc_pm.h"
+>  #include "mtk_vpu.h"
+>  
+> -const struct venc_common_if *get_h264_enc_comm_if(void);
+> -const struct venc_common_if *get_vp8_enc_comm_if(void);
+> +extern const struct venc_common_if venc_h264_if;
+> +extern const struct venc_common_if venc_vp8_if;
 
-except mutex mod, mutex mod reg,mutex sof reg,
-and mutex sof id will be ddp private data
+This should be moved to a header. checkpatch gives me:
 
-Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_ddp.c | 53 +++++++++++++++++++++++-----------
- 1 file changed, 36 insertions(+), 17 deletions(-)
+Applying: media: mtk-vcodec: remove unneeded proxy functions
+WARNING: externs should be avoided in .c files
+#79: FILE: drivers/media/platform/mtk-vcodec/vdec_drv_if.c:14:
++extern const struct vdec_common_if vdec_vp8_if;
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-index 579ce28..ae94d44 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-@@ -41,12 +41,12 @@
- #define DISP_REG_CONFIG_DSI_SEL			0x050
- #define DISP_REG_CONFIG_DPI_SEL			0x064
- 
--#define DISP_REG_MUTEX_EN(n)	(0x20 + 0x20 * (n))
--#define DISP_REG_MUTEX(n)	(0x24 + 0x20 * (n))
--#define DISP_REG_MUTEX_RST(n)	(0x28 + 0x20 * (n))
--#define DISP_REG_MUTEX_MOD(n)	(0x2c + 0x20 * (n))
--#define DISP_REG_MUTEX_SOF(n)	(0x30 + 0x20 * (n))
--#define DISP_REG_MUTEX_MOD2(n)	(0x34 + 0x20 * (n))
-+#define DISP_REG_MUTEX_EN(n)			(0x20 + 0x20 * (n))
-+#define DISP_REG_MUTEX(n)			(0x24 + 0x20 * (n))
-+#define DISP_REG_MUTEX_RST(n)			(0x28 + 0x20 * (n))
-+#define DISP_REG_MUTEX_MOD(n)			(0x2c + 0x20 * (n))
-+#define DISP_REG_MUTEX_SOF(n)			(0x30 + 0x20 * (n))
-+#define DISP_REG_MUTEX_MOD2(n)			(0x34 + 0x20 * (n))
- 
- #define INT_MUTEX				BIT(1)
- 
-@@ -147,12 +147,16 @@ struct mtk_disp_mutex {
- 	bool claimed;
- };
- 
-+struct mtk_ddp_data {
-+	const unsigned int *mutex_mod;
-+};
-+
- struct mtk_ddp {
- 	struct device			*dev;
- 	struct clk			*clk;
- 	void __iomem			*regs;
- 	struct mtk_disp_mutex		mutex[10];
--	const unsigned int		*mutex_mod;
-+	const struct mtk_ddp_data	*data;
- };
- 
- static const unsigned int mt2701_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-@@ -202,6 +206,18 @@ struct mtk_ddp {
- 	[DDP_COMPONENT_WDMA1] = MT8173_MUTEX_MOD_DISP_WDMA1,
- };
- 
-+static const struct mtk_ddp_data mt2701_ddp_driver_data = {
-+	.mutex_mod = mt2701_mutex_mod,
-+};
-+
-+static const struct mtk_ddp_data mt2712_ddp_driver_data = {
-+	.mutex_mod = mt2712_mutex_mod,
-+};
-+
-+static const struct mtk_ddp_data mt8173_ddp_driver_data = {
-+	.mutex_mod = mt8173_mutex_mod,
-+};
-+
- static unsigned int mtk_ddp_mout_en(enum mtk_ddp_comp_id cur,
- 				    enum mtk_ddp_comp_id next,
- 				    unsigned int *addr)
-@@ -464,15 +480,15 @@ void mtk_disp_mutex_add_comp(struct mtk_disp_mutex *mutex,
- 		reg = MUTEX_SOF_DPI1;
- 		break;
- 	default:
--		if (ddp->mutex_mod[id] < 32) {
-+		if (ddp->data->mutex_mod[id] < 32) {
- 			offset = DISP_REG_MUTEX_MOD(mutex->id);
- 			reg = readl_relaxed(ddp->regs + offset);
--			reg |= 1 << ddp->mutex_mod[id];
-+			reg |= 1 << ddp->data->mutex_mod[id];
- 			writel_relaxed(reg, ddp->regs + offset);
- 		} else {
- 			offset = DISP_REG_MUTEX_MOD2(mutex->id);
- 			reg = readl_relaxed(ddp->regs + offset);
--			reg |= 1 << (ddp->mutex_mod[id] - 32);
-+			reg |= 1 << (ddp->data->mutex_mod[id] - 32);
- 			writel_relaxed(reg, ddp->regs + offset);
- 		}
- 		return;
-@@ -502,15 +518,15 @@ void mtk_disp_mutex_remove_comp(struct mtk_disp_mutex *mutex,
- 			       ddp->regs + DISP_REG_MUTEX_SOF(mutex->id));
- 		break;
- 	default:
--		if (ddp->mutex_mod[id] < 32) {
-+		if (ddp->data->mutex_mod[id] < 32) {
- 			offset = DISP_REG_MUTEX_MOD(mutex->id);
- 			reg = readl_relaxed(ddp->regs + offset);
--			reg &= ~(1 << ddp->mutex_mod[id]);
-+			reg &= ~(1 << ddp->data->mutex_mod[id]);
- 			writel_relaxed(reg, ddp->regs + offset);
- 		} else {
- 			offset = DISP_REG_MUTEX_MOD2(mutex->id);
- 			reg = readl_relaxed(ddp->regs + offset);
--			reg &= ~(1 << (ddp->mutex_mod[id] - 32));
-+			reg &= ~(1 << (ddp->data->mutex_mod[id] - 32));
- 			writel_relaxed(reg, ddp->regs + offset);
- 		}
- 		break;
-@@ -585,7 +601,7 @@ static int mtk_ddp_probe(struct platform_device *pdev)
- 		return PTR_ERR(ddp->regs);
- 	}
- 
--	ddp->mutex_mod = of_device_get_match_data(dev);
-+	ddp->data = of_device_get_match_data(dev);
- 
- 	platform_set_drvdata(pdev, ddp);
- 
-@@ -598,9 +614,12 @@ static int mtk_ddp_remove(struct platform_device *pdev)
- }
- 
- static const struct of_device_id ddp_driver_dt_match[] = {
--	{ .compatible = "mediatek,mt2701-disp-mutex", .data = mt2701_mutex_mod},
--	{ .compatible = "mediatek,mt2712-disp-mutex", .data = mt2712_mutex_mod},
--	{ .compatible = "mediatek,mt8173-disp-mutex", .data = mt8173_mutex_mod},
-+	{ .compatible = "mediatek,mt2701-disp-mutex",
-+	  .data = &mt2701_ddp_driver_data},
-+	{ .compatible = "mediatek,mt2712-disp-mutex",
-+	  .data = &mt2712_ddp_driver_data},
-+	{ .compatible = "mediatek,mt8173-disp-mutex",
-+	  .data = &mt8173_ddp_driver_data},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, ddp_driver_dt_match);
--- 
-1.8.1.1.dirty
+WARNING: externs should be avoided in .c files
+#80: FILE: drivers/media/platform/mtk-vcodec/vdec_drv_if.c:15:
++extern const struct vdec_common_if vdec_vp9_if;
+
+WARNING: externs should be avoided in .c files
+#156: FILE: drivers/media/platform/mtk-vcodec/venc_drv_if.c:15:
++extern const struct venc_common_if venc_vp8_if;
+
+And I agree with checkpatch here.
+
+I'll drop this patch from the series, but I'll take the others.
+
+Regards,
+
+	Hans
+
+>  
+>  int venc_if_init(struct mtk_vcodec_ctx *ctx, unsigned int fourcc)
+>  {
+> @@ -20,10 +20,10 @@ int venc_if_init(struct mtk_vcodec_ctx *ctx, unsigned int fourcc)
+>  
+>  	switch (fourcc) {
+>  	case V4L2_PIX_FMT_VP8:
+> -		ctx->enc_if = get_vp8_enc_comm_if();
+> +		ctx->enc_if = &venc_vp8_if;
+>  		break;
+>  	case V4L2_PIX_FMT_H264:
+> -		ctx->enc_if = get_h264_enc_comm_if();
+> +		ctx->enc_if = &venc_h264_if;
+>  		break;
+>  	default:
+>  		return -EINVAL;
+> 
