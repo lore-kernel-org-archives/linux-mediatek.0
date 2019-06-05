@@ -1,142 +1,53 @@
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 Subject: Re: [PATCH] USB: move usb debugfs directory creation to the usb
  common core
-Date: Wed, 5 Jun 2019 15:50:31 +0800
-Message-ID: <1559721031.8487.99.camel@mhfsdcap03>
+Date: Wed, 5 Jun 2019 16:37:08 +0800
+Message-ID: <1559723828.8487.103.camel@mhfsdcap03>
 References: <20190604093258.GB30054@kroah.com>
-         <20190604115919.GA24346@kroah.com>
+         <87tvd5illh.fsf@linux.intel.com> <20190604124349.GA10203@kroah.com>
+         <871s08ebjn.fsf@linux.intel.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190604115919.GA24346@kroah.com>
+In-Reply-To: <871s08ebjn.fsf@linux.intel.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Felipe Balbi <felipe.balbi@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Felipe Balbi <felipe.balbi@linux.intel.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-06-04 at 13:59 +0200, Greg Kroah-Hartman wrote:
-> On Tue, Jun 04, 2019 at 11:32:58AM +0200, Greg Kroah-Hartman wrote:
-> > The USB gadget subsystem wants to use the USB debugfs root directory, so
-> > move it to the common "core" USB code so that it is properly initialized
-> > and removed as needed.
-> > 
-> > Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> > 
-> > ---
-> > 
-> > This should be the "correct" version of this, Chunfeng, can you test
-> > this to verify it works for you?
-> > 
-> > 
-> > diff --git a/drivers/usb/common/common.c b/drivers/usb/common/common.c
-> > index 18f5dcf58b0d..3b5e4263ffef 100644
-> > --- a/drivers/usb/common/common.c
-> > +++ b/drivers/usb/common/common.c
-> > @@ -15,6 +15,7 @@
-> >  #include <linux/usb/of.h>
-> >  #include <linux/usb/otg.h>
-> >  #include <linux/of_platform.h>
-> > +#include <linux/debugfs.h>
-> >  
-> >  static const char *const ep_type_names[] = {
-> >  	[USB_ENDPOINT_XFER_CONTROL] = "ctrl",
-> > @@ -291,4 +292,21 @@ struct device *usb_of_get_companion_dev(struct device *dev)
-> >  EXPORT_SYMBOL_GPL(usb_of_get_companion_dev);
-> >  #endif
-> >  
-> > +struct dentry *usb_debug_root;
-> > +EXPORT_SYMBOL_GPL(usb_debug_root);
-> > +
-> > +static int usb_common_init(void)
-> > +{
-> > +	usb_debug_root = debugfs_create_dir("usb", NULL);
-> > +	return 0;
-> > +}
-> > +
-> > +static void usb_common_exit(void)
-> > +{
-> > +	debugfs_remove_recursive(usb_debug_root);
-> > +}
-> > +
-> > +module_init(usb_common_init);
-I tested this patch.
-
-Here use module_init() indeed have a race as Felipe said before.
-usbcore uses subsys_initcall(), and have a higher priority than
-module_init(), so when usbcore tries to create "devices" file,
-usb_debug_root is not created.
-
-after I replace it by postcore_initcall() (debugfs uses
-core_initcall()), test two cases:
-
-1. buildin usbcore/udc-core
-
-    "usb" directory is created, and usb/devices file is also created by
-usbcore
-
-2. build both usbcore and gadget as ko
-
-    usbcore.ko, udc-core.ko and usb-common.ko are created. 
-
-   2.1 
-       insmod usb-common.ko   // "usb" directory is created
-       insmod usb-core.ko   // usb/devices file is created
-
-   2.2
-       rmmod usb-common.ko  // failed, usb_common is in use by usb-core
-
-   2.3 
-       rmmod usb-core.ko   // usb/devices file is destroyed
-       rmmod usb-common.ko  // usb directory is destroyed
-
-   2.4 
-       insmod usb-common.ko   // "usb" directory is created
-       insmod udc-core.ko
-
-   2.5
-       rmmod usb-common.ko  // failed, usb_common is in use by udc-core
-
-   2.6 
-       rmmod udc-core.ko
-       rmmod usb-common.ko  // usb directory is destroyed
-
-they are all in line with expectations
-
-
-> > +module_exit(usb_common_exit);
-> > +
-> >  MODULE_LICENSE("GPL");
-> > diff --git a/drivers/usb/core/usb.c b/drivers/usb/core/usb.c
-> > index 7fcb9f782931..f3d6b1ab80cb 100644
-> > --- a/drivers/usb/core/usb.c
-> > +++ b/drivers/usb/core/usb.c
-> > @@ -1185,19 +1185,17 @@ static struct notifier_block usb_bus_nb = {
-> >  	.notifier_call = usb_bus_notify,
-> >  };
-> >  
-> > -struct dentry *usb_debug_root;
-> > -EXPORT_SYMBOL_GPL(usb_debug_root);
-> > +static struct dentry *usb_devices_root;
-> >  
-> >  static void usb_debugfs_init(void)
-> >  {
-> > -	usb_debug_root = debugfs_create_dir("usb", NULL);
-> > -	debugfs_create_file("devices", 0444, usb_debug_root, NULL,
-> > -			    &usbfs_devices_fops);
-> > +	usb_devices_root = debugfs_create_file("devices", 0444, usb_debug_root,
-> > +					       NULL, &usbfs_devices_fops);
-> >  }
-> >  
-> >  static void usb_debugfs_cleanup(void)
-> >  {
-> > -	debugfs_remove_recursive(usb_debug_root);
-> > +	debugfs_remove_recursive(usb_devices_root);
+On Wed, 2019-06-05 at 10:28 +0300, Felipe Balbi wrote:
+> Hi,
 > 
-> That should just be debugfs_remove();
+> Greg Kroah-Hartman <gregkh@linuxfoundation.org> writes:
+> >> Greg Kroah-Hartman <gregkh@linuxfoundation.org> writes:
+> >> > diff --git a/drivers/usb/core/usb.c b/drivers/usb/core/usb.c
+> >> > index 7fcb9f782931..f3d6b1ab80cb 100644
+> >> > --- a/drivers/usb/core/usb.c
+> >> > +++ b/drivers/usb/core/usb.c
+> >> > @@ -1185,19 +1185,17 @@ static struct notifier_block usb_bus_nb = {
+> >> >  	.notifier_call = usb_bus_notify,
+> >> >  };
+> >> >  
+> >> > -struct dentry *usb_debug_root;
+> >> > -EXPORT_SYMBOL_GPL(usb_debug_root);
+> >> > +static struct dentry *usb_devices_root;
+> >> >  
+> >> >  static void usb_debugfs_init(void)
+> >> >  {
+> >> > -	usb_debug_root = debugfs_create_dir("usb", NULL);
+> >> > -	debugfs_create_file("devices", 0444, usb_debug_root, NULL,
+> >> > -			    &usbfs_devices_fops);
+> >> > +	usb_devices_root = debugfs_create_file("devices", 0444, usb_debug_root,
+> >> 
+> >> don't we have a race now? Can usbcore ever probe before usb common?
+> >
+> > How can that happen if usb_debug_root is in usb common?  The module
+> > loader will not let that happen.  Or it shouldn't :)
 > 
-> I'll fix it up after someone tests this :)
+> argh, indeed. The very fact that usbcore tries to resolve usb_debug_root
+> already forces a dependency :-p
+When build as module, usbcore depend on usb-common, but when buildin,
+usbcore init before usb-common (use module_init)
+
 > 
-> thanks,
-> 
-> greg k-h
