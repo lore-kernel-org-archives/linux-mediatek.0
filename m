@@ -1,14 +1,15 @@
-From: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
+From: Peter Zijlstra <peterz-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
 Subject: Re: [PATCH] locking/lockdep: Remove unnecessary DEBUG_LOCKS_WARN_ON()
-Date: Wed, 5 Jun 2019 13:46:33 +0100
-Message-ID: <20190605124633.GM15030@fuggles.cambridge.arm.com>
+Date: Wed, 5 Jun 2019 15:35:50 +0200
+Message-ID: <20190605133550.GZ3402@hirez.programming.kicks-ass.net>
 References: <1559217575-30298-1-git-send-email-kobe-cp.wu@mediatek.com>
+ <20190605124633.GM15030@fuggles.cambridge.arm.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1559217575-30298-1-git-send-email-kobe-cp.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+In-Reply-To: <20190605124633.GM15030-UDVVEH7NWB15pKCnmE3YQBJ8xKzm50AiAL8bYrjMMd8@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -18,37 +19,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kobe Wu <kobe-cp.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Peter Zijlstra <peterz-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Eason Lin <eason-yh.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ingo Molnar <mingo-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+To: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
+Cc: Eason Lin <eason-yh.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ingo Molnar <mingo-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Kobe Wu <kobe-cp.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, May 30, 2019 at 07:59:35PM +0800, Kobe Wu wrote:
-> DEBUG_LOCKS_WARN_ON() will turn off debug_locks and 
-> makes print_unlock_imbalance_bug() return directly.
+On Wed, Jun 05, 2019 at 01:46:33PM +0100, Will Deacon wrote:
+> On Thu, May 30, 2019 at 07:59:35PM +0800, Kobe Wu wrote:
+> > DEBUG_LOCKS_WARN_ON() will turn off debug_locks and 
+> > makes print_unlock_imbalance_bug() return directly.
+> > 
+> > Remove a redundant whitespace.
+> > 
+> > Signed-off-by: Kobe Wu <kobe-cp.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  kernel/locking/lockdep.c |    4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/kernel/locking/lockdep.c b/kernel/locking/lockdep.c
+> > index d06190f..37c0a5e 100644
+> > --- a/kernel/locking/lockdep.c
+> > +++ b/kernel/locking/lockdep.c
+> > @@ -4049,8 +4049,8 @@ static int __lock_downgrade(struct lockdep_map *lock, unsigned long ip)
+> >  	 * So we're all set to release this lock.. wait what lock? We don't
+> >  	 * own any locks, you've been drinking again?
+> >  	 */
+> > -	if (DEBUG_LOCKS_WARN_ON(depth <= 0))
+> > -		 return print_unlock_imbalance_bug(curr, lock, ip);
+> > +	if (depth <= 0)
+> > +		return print_unlock_imbalance_bug(curr, lock, ip);
 > 
-> Remove a redundant whitespace.
+> Hmm, feels more like we should keep the DEBUG_LOCKS_WARN_ON but just
+> return 0 when it fires.
 > 
-> Signed-off-by: Kobe Wu <kobe-cp.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  kernel/locking/lockdep.c |    4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/kernel/locking/lockdep.c b/kernel/locking/lockdep.c
-> index d06190f..37c0a5e 100644
-> --- a/kernel/locking/lockdep.c
-> +++ b/kernel/locking/lockdep.c
-> @@ -4049,8 +4049,8 @@ static int __lock_downgrade(struct lockdep_map *lock, unsigned long ip)
->  	 * So we're all set to release this lock.. wait what lock? We don't
->  	 * own any locks, you've been drinking again?
->  	 */
-> -	if (DEBUG_LOCKS_WARN_ON(depth <= 0))
-> -		 return print_unlock_imbalance_bug(curr, lock, ip);
-> +	if (depth <= 0)
-> +		return print_unlock_imbalance_bug(curr, lock, ip);
+> Peter?
 
-Hmm, feels more like we should keep the DEBUG_LOCKS_WARN_ON but just
-return 0 when it fires.
-
-Peter?
-
-Will
+Nah, we should definitely print something when we try and release a lock
+while not holding any. I think I'll take this one as is.
