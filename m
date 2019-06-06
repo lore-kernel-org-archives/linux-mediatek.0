@@ -1,97 +1,41 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v3, 08/27] drm/mediatek: add mutex sof into ddp private
- data
-Date: Thu, 6 Jun 2019 14:12:28 +0800
-Message-ID: <1559801548.20098.8.camel@mtksdaap41>
-References: <1559734986-7379-1-git-send-email-yongqiang.niu@mediatek.com>
- <1559734986-7379-9-git-send-email-yongqiang.niu@mediatek.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Subject: Re: [PATCH v6 09/10] usb: roles: add USB Type-B GPIO connector driver
+Date: Thu, 6 Jun 2019 09:31:37 +0300
+Message-ID: <CAHp75VeWu+8H2=PRNud_MAoD9zozb2Ugh9b=9TCtYmGLVyCTpQ@mail.gmail.com>
+References: <1559115828-19146-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1559115828-19146-10-git-send-email-chunfeng.yun@mediatek.com>
+ <CAHp75VcbZwd0e6r38C2x7HLEHLr4oR7TjwdDXnDxRPRs3anwgA@mail.gmail.com> <1559789630.8487.111.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1559734986-7379-9-git-send-email-yongqiang.niu@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: yongqiang.niu@mediatek.com
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1559789630.8487.111.camel@mhfsdcap03>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Min Guo <min.guo@mediatek.com>, devicetree <devicetree@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, USB <linux-usb@vger.kernel.org>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Biju Das <biju.das@bp.renesas.com>, Linus Walleij <linus.walleij@linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFlvbmdxaWFuZzoKCk9uIFdlZCwgMjAxOS0wNi0wNSBhdCAxOTo0MiArMDgwMCwgeW9uZ3Fp
-YW5nLm5pdUBtZWRpYXRlay5jb20gd3JvdGU6Cj4gRnJvbTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3Fp
-YW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gCj4gbXV0ZXggc29mIHdpbGwgYmUgZGRwIHByaXZhdGUg
-ZGF0YQo+IAo+IFNpZ25lZC1vZmYtYnk6IFlvbmdxaWFuZyBOaXUgPHlvbmdxaWFuZy5uaXVAbWVk
-aWF0ZWsuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAu
-YyB8IDQ0ICsrKysrKysrKysrKysrKysrKysrKysrKysrKy0tLS0tLS0KPiAgMSBmaWxlIGNoYW5n
-ZWQsIDM2IGluc2VydGlvbnMoKyksIDggZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jIGIvZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19kcm1fZGRwLmMKPiBpbmRleCA4YmRlMmNmLi5lMWE1MTBmIDEwMDY0NAo+IC0t
-LSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jCj4gKysrIGIvZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMKPiBAQCAtMTQ5LDggKzE0OSwyMCBAQCBz
-dHJ1Y3QgbXRrX2Rpc3BfbXV0ZXggewo+ICAJYm9vbCBjbGFpbWVkOwo+ICB9Owo+ICAKPiArZW51
-bSBtdGtfZGRwX211dGV4X3NvZl9pZCB7Cj4gKwlERFBfTVVURVhfU09GX1NJTkdMRV9NT0RFLAo+
-ICsJRERQX01VVEVYX1NPRl9EU0kwLAo+ICsJRERQX01VVEVYX1NPRl9EU0kxLAo+ICsJRERQX01V
-VEVYX1NPRl9EUEkwLAo+ICsJRERQX01VVEVYX1NPRl9EUEkxLAo+ICsJRERQX01VVEVYX1NPRl9E
-U0kyLAo+ICsJRERQX01VVEVYX1NPRl9EU0kzLAo+ICsJRERQX01VVEVYX1NPRl9NQVgsCgpERFBf
-TVVURVhfU09GX01BWCBjYW4gYmUgcmVtb3ZlZC4KClJlZ2FyZHMsCkNLCgo+ICt9Owo+ICsKPiAg
-c3RydWN0IG10a19kZHBfZGF0YSB7Cj4gIAljb25zdCB1bnNpZ25lZCBpbnQgKm11dGV4X21vZDsK
-PiArCWNvbnN0IHVuc2lnbmVkIGludCAqbXV0ZXhfc29mOwo+ICAJY29uc3QgdW5zaWduZWQgaW50
-IG11dGV4X21vZF9yZWc7Cj4gIH07Cj4gIAo+IEBAIC0yMDksMTggKzIyMSwzMSBAQCBzdHJ1Y3Qg
-bXRrX2RkcCB7Cj4gIAlbRERQX0NPTVBPTkVOVF9XRE1BMV0gPSBNVDgxNzNfTVVURVhfTU9EX0RJ
-U1BfV0RNQTEsCj4gIH07Cj4gIAo+ICtzdGF0aWMgY29uc3QgdW5zaWduZWQgaW50IG10MjcxMl9t
-dXRleF9zb2ZbRERQX01VVEVYX1NPRl9NQVhdID0gewo+ICsJW0REUF9NVVRFWF9TT0ZfU0lOR0xF
-X01PREVdID0gTVVURVhfU09GX1NJTkdMRV9NT0RFLAo+ICsJW0REUF9NVVRFWF9TT0ZfRFNJMF0g
-PSBNVVRFWF9TT0ZfRFNJMCwKPiArCVtERFBfTVVURVhfU09GX0RTSTFdID0gTVVURVhfU09GX0RT
-STEsCj4gKwlbRERQX01VVEVYX1NPRl9EUEkwXSA9IE1VVEVYX1NPRl9EUEkwLAo+ICsJW0REUF9N
-VVRFWF9TT0ZfRFBJMV0gPSBNVVRFWF9TT0ZfRFBJMSwKPiArCVtERFBfTVVURVhfU09GX0RTSTJd
-ID0gTVVURVhfU09GX0RTSTIsCj4gKwlbRERQX01VVEVYX1NPRl9EU0kzXSA9IE1VVEVYX1NPRl9E
-U0kzLAo+ICt9Owo+ICsKPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfZGRwX2RhdGEgbXQyNzAx
-X2RkcF9kcml2ZXJfZGF0YSA9IHsKPiAgCS5tdXRleF9tb2QgPSBtdDI3MDFfbXV0ZXhfbW9kLAo+
-ICsJLm11dGV4X3NvZiA9IG10MjcxMl9tdXRleF9zb2YsCj4gIAkubXV0ZXhfbW9kX3JlZyA9IE1U
-MjcwMV9ESVNQX01VVEVYMF9NT0QwLAo+ICB9Owo+ICAKPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBt
-dGtfZGRwX2RhdGEgbXQyNzEyX2RkcF9kcml2ZXJfZGF0YSA9IHsKPiAgCS5tdXRleF9tb2QgPSBt
-dDI3MTJfbXV0ZXhfbW9kLAo+ICsJLm11dGV4X3NvZiA9IG10MjcxMl9tdXRleF9zb2YsCj4gIAku
-bXV0ZXhfbW9kX3JlZyA9IE1UMjcwMV9ESVNQX01VVEVYMF9NT0QwLAo+ICB9Owo+ICAKPiAgc3Rh
-dGljIGNvbnN0IHN0cnVjdCBtdGtfZGRwX2RhdGEgbXQ4MTczX2RkcF9kcml2ZXJfZGF0YSA9IHsK
-PiAgCS5tdXRleF9tb2QgPSBtdDgxNzNfbXV0ZXhfbW9kLAo+ICsJLm11dGV4X3NvZiA9IG10Mjcx
-Ml9tdXRleF9zb2YsCj4gIAkubXV0ZXhfbW9kX3JlZyA9IE1UMjcwMV9ESVNQX01VVEVYMF9NT0Qw
-LAo+ICB9Owo+ICAKPiBAQCAtNDYyLDI4ICs0ODcsMjkgQEAgdm9pZCBtdGtfZGlzcF9tdXRleF9h
-ZGRfY29tcChzdHJ1Y3QgbXRrX2Rpc3BfbXV0ZXggKm11dGV4LAo+ICAJc3RydWN0IG10a19kZHAg
-KmRkcCA9IGNvbnRhaW5lcl9vZihtdXRleCwgc3RydWN0IG10a19kZHAsCj4gIAkJCQkJICAgbXV0
-ZXhbbXV0ZXgtPmlkXSk7Cj4gIAl1bnNpZ25lZCBpbnQgcmVnOwo+ICsJdW5zaWduZWQgaW50IHNv
-Zl9pZDsKPiAgCXVuc2lnbmVkIGludCBvZmZzZXQ7Cj4gIAo+ICAJV0FSTl9PTigmZGRwLT5tdXRl
-eFttdXRleC0+aWRdICE9IG11dGV4KTsKPiAgCj4gIAlzd2l0Y2ggKGlkKSB7Cj4gIAljYXNlIERE
-UF9DT01QT05FTlRfRFNJMDoKPiAtCQlyZWcgPSBNVVRFWF9TT0ZfRFNJMDsKPiArCQlzb2ZfaWQg
-PSBERFBfTVVURVhfU09GX0RTSTA7Cj4gIAkJYnJlYWs7Cj4gIAljYXNlIEREUF9DT01QT05FTlRf
-RFNJMToKPiAtCQlyZWcgPSBNVVRFWF9TT0ZfRFNJMDsKPiArCQlzb2ZfaWQgPSBERFBfTVVURVhf
-U09GX0RTSTA7Cj4gIAkJYnJlYWs7Cj4gIAljYXNlIEREUF9DT01QT05FTlRfRFNJMjoKPiAtCQly
-ZWcgPSBNVVRFWF9TT0ZfRFNJMjsKPiArCQlzb2ZfaWQgPSBERFBfTVVURVhfU09GX0RTSTI7Cj4g
-IAkJYnJlYWs7Cj4gIAljYXNlIEREUF9DT01QT05FTlRfRFNJMzoKPiAtCQlyZWcgPSBNVVRFWF9T
-T0ZfRFNJMzsKPiArCQlzb2ZfaWQgPSBERFBfTVVURVhfU09GX0RTSTM7Cj4gIAkJYnJlYWs7Cj4g
-IAljYXNlIEREUF9DT01QT05FTlRfRFBJMDoKPiAtCQlyZWcgPSBNVVRFWF9TT0ZfRFBJMDsKPiAr
-CQlzb2ZfaWQgPSBERFBfTVVURVhfU09GX0RQSTA7Cj4gIAkJYnJlYWs7Cj4gIAljYXNlIEREUF9D
-T01QT05FTlRfRFBJMToKPiAtCQlyZWcgPSBNVVRFWF9TT0ZfRFBJMTsKPiArCQlzb2ZfaWQgPSBE
-RFBfTVVURVhfU09GX0RQSTE7Cj4gIAkJYnJlYWs7Cj4gIAlkZWZhdWx0Ogo+ICAJCWlmIChkZHAt
-PmRhdGEtPm11dGV4X21vZFtpZF0gPCAzMikgewo+IEBAIC01MDEsNyArNTI3LDggQEAgdm9pZCBt
-dGtfZGlzcF9tdXRleF9hZGRfY29tcChzdHJ1Y3QgbXRrX2Rpc3BfbXV0ZXggKm11dGV4LAo+ICAJ
-CXJldHVybjsKPiAgCX0KPiAgCj4gLQl3cml0ZWxfcmVsYXhlZChyZWcsIGRkcC0+cmVncyArIERJ
-U1BfUkVHX01VVEVYX1NPRihtdXRleC0+aWQpKTsKPiArCXdyaXRlbF9yZWxheGVkKGRkcC0+ZGF0
-YS0+bXV0ZXhfc29mW3NvZl9pZF0sCj4gKwkJICAgICAgIGRkcC0+cmVncyArIERJU1BfUkVHX01V
-VEVYX1NPRihtdXRleC0+aWQpKTsKPiAgfQo+ICAKPiAgdm9pZCBtdGtfZGlzcF9tdXRleF9yZW1v
-dmVfY29tcChzdHJ1Y3QgbXRrX2Rpc3BfbXV0ZXggKm11dGV4LAo+IEBAIC01MjIsNyArNTQ5LDgg
-QEAgdm9pZCBtdGtfZGlzcF9tdXRleF9yZW1vdmVfY29tcChzdHJ1Y3QgbXRrX2Rpc3BfbXV0ZXgg
-Km11dGV4LAo+ICAJY2FzZSBERFBfQ09NUE9ORU5UX0RQSTA6Cj4gIAljYXNlIEREUF9DT01QT05F
-TlRfRFBJMToKPiAgCQl3cml0ZWxfcmVsYXhlZChNVVRFWF9TT0ZfU0lOR0xFX01PREUsCj4gLQkJ
-CSAgICAgICBkZHAtPnJlZ3MgKyBESVNQX1JFR19NVVRFWF9TT0YobXV0ZXgtPmlkKSk7Cj4gKwkJ
-CSAgICAgICBkZHAtPnJlZ3MgKwo+ICsJCQkgICAgICAgRElTUF9SRUdfTVVURVhfU09GKG11dGV4
-LT5pZCkpOwo+ICAJCWJyZWFrOwo+ICAJZGVmYXVsdDoKPiAgCQlpZiAoZGRwLT5kYXRhLT5tdXRl
-eF9tb2RbaWRdIDwgMzIpIHsKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
-a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
-cmktZGV2ZWw=
+On Thu, Jun 6, 2019 at 5:53 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
+>
+> On Wed, 2019-06-05 at 11:45 +0300, Andy Shevchenko wrote:
+> > On Wed, May 29, 2019 at 10:44 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
+> > >
+> > > Due to the requirement of usb-connector.txt binding, the old way
+> > > using extcon to support USB Dual-Role switch is now deprecated
+> > > when use Type-B connector.
+> > > This patch introduces a driver of Type-B connector which typically
+> > > uses an input GPIO to detect USB ID pin, and try to replace the
+> > > function provided by extcon-usb-gpio driver
+> >
+> > > +static SIMPLE_DEV_PM_OPS(usb_conn_pm_ops,
+> > > +                        usb_conn_suspend, usb_conn_resume);
+> > > +
+> > > +#define DEV_PMS_OPS (IS_ENABLED(CONFIG_PM_SLEEP) ? &usb_conn_pm_ops : NULL)
+> >
+> > Why this macro is needed?
+> Want to set .pm as NULL when CONFIG_PM_SLEEP is not enabled.
+
+Doesn't SIMPLE_DEV_PM_OPS do this for you?
+
+-- 
+With Best Regards,
+Andy Shevchenko
