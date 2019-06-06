@@ -1,29 +1,51 @@
-From: Sebastian Gottschall <s.gottschall-9LViYcISHtuk6R/r8kmGfQ@public.gmane.org>
+From: Sebastian Gottschall <s.gottschall@newmedia-net.de>
 Subject: Re: [PATCH v3 1/2] mt76: mt7615: enable support for mesh
-Date: Thu, 6 Jun 2019 12:11:09 +0200
-Message-ID: <ade7ef01-8b06-ec7d-4caf-e581f4033819@newmedia-net.de>
+Date: Thu, 6 Jun 2019 12:14:10 +0200
+Message-ID: <a0a6f631-2eb1-87cc-5653-338c6126690c@newmedia-net.de>
 References: <a1ff446dfc06e2443552e7ec2d754099aacce7df.1559541944.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <a1ff446dfc06e2443552e7ec2d754099aacce7df.1559541944.git.ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Cc: Roy Luo <royluo-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, YF Luo <yf.luo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yiwei Chung <yiwei.chung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Chih-Min Chen <chih-min.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <a1ff446dfc06e2443552e7ec2d754099aacce7df.1559541944.git.ryder.lee@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
+Cc: Roy Luo <royluo@google.com>, YF Luo <yf.luo@mediatek.com>, Yiwei Chung <yiwei.chung@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Chih-Min Chen <chih-min.Chen@mediatek.com>, linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-i tested your patch against a qca 9984 chipset using SAE and without 
-encryption. both did not work. the devices are connecting, but no data 
-connection is possible
+in addition you should take care about this problem which is raised up 
+if SAE is used. since AES-CMAC required tid to be non zero
 
-
-Sebastian
+WARNING: CPU: 2 PID: 15324 at 
+/home/seg/DEV/mt7621/src/router/private/compat-wireless-2017-09-03/net/mac80211/key.c:1096 
+mt76_wcid_key_setup+0x58/0x9c [mt76]
+Modules linked in: shortcut_fe gcm ghash_generic ctr gf128mul mt7615e 
+mt76 mac80211 compat
+CPU: 2 PID: 15324 Comm: wpa_supplicant Tainted: G        W 4.14.123 #106
+Stack : 00000000 87c2d000 00000000 8007d8b4 80480000 80482b9c 80610000 
+805a4390
+         8057e2b4 854fb99c 87ed045c 805e4767 80578288 00000001 854fb940 
+805e9f78
+         00000000 00000000 80640000 00000000 81147bb8 00000584 00000007 
+00000000
+         00000000 80650000 80650000 20202020 80000000 00000000 80610000 
+872b9fe0
+         872a2b14 00000448 00000000 87c2d000 00000010 8022d660 00000008 
+80640008
+         ...
+Call Trace:
+[<800153e0>] show_stack+0x58/0x100
+[<8042e83c>] dump_stack+0x9c/0xe0
+[<800349f0>] __warn+0xe4/0x144
+[<8003468c>] warn_slowpath_null+0x1c/0x30
+[<872b9fe0>] mt76_wcid_key_setup+0x58/0x9c [mt76]
+[<87611690>] mt7615_eeprom_init+0x7b4/0xe9c [mt7615e]
+---[ end trace e24aeb4b542e0dea ]---
 
 Am 03.06.2019 um 08:08 schrieb Ryder Lee:
 > Enable NL80211_IFTYPE_MESH_POINT and update its path.
 >
-> Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 > ---
 > Changes since v3 - fix a wrong expression
 > Changes since v2 - remove unused definitions
