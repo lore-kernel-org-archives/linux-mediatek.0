@@ -1,41 +1,51 @@
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Subject: Re: [PATCH v6 09/10] usb: roles: add USB Type-B GPIO connector driver
-Date: Thu, 6 Jun 2019 09:31:37 +0300
-Message-ID: <CAHp75VeWu+8H2=PRNud_MAoD9zozb2Ugh9b=9TCtYmGLVyCTpQ@mail.gmail.com>
-References: <1559115828-19146-1-git-send-email-chunfeng.yun@mediatek.com>
- <1559115828-19146-10-git-send-email-chunfeng.yun@mediatek.com>
- <CAHp75VcbZwd0e6r38C2x7HLEHLr4oR7TjwdDXnDxRPRs3anwgA@mail.gmail.com> <1559789630.8487.111.camel@mhfsdcap03>
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH v3] USB: move usb debugfs directory creation to the usb
+ common core
+Date: Thu, 6 Jun 2019 08:58:22 +0200
+Message-ID: <20190606065822.GA29436@kroah.com>
+References: <20190605092816.GA23758@kroah.com>
+ <20190605124440.GD17558@kroah.com>
+ <1559788368.8487.109.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1559789630.8487.111.camel@mhfsdcap03>
+Content-Disposition: inline
+In-Reply-To: <1559788368.8487.109.camel@mhfsdcap03>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Min Guo <min.guo@mediatek.com>, devicetree <devicetree@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, USB <linux-usb@vger.kernel.org>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Biju Das <biju.das@bp.renesas.com>, Linus Walleij <linus.walleij@linaro.org>
+Cc: Felipe Balbi <felipe.balbi@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jun 6, 2019 at 5:53 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
->
-> On Wed, 2019-06-05 at 11:45 +0300, Andy Shevchenko wrote:
-> > On Wed, May 29, 2019 at 10:44 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
-> > >
-> > > Due to the requirement of usb-connector.txt binding, the old way
-> > > using extcon to support USB Dual-Role switch is now deprecated
-> > > when use Type-B connector.
-> > > This patch introduces a driver of Type-B connector which typically
-> > > uses an input GPIO to detect USB ID pin, and try to replace the
-> > > function provided by extcon-usb-gpio driver
-> >
-> > > +static SIMPLE_DEV_PM_OPS(usb_conn_pm_ops,
-> > > +                        usb_conn_suspend, usb_conn_resume);
-> > > +
-> > > +#define DEV_PMS_OPS (IS_ENABLED(CONFIG_PM_SLEEP) ? &usb_conn_pm_ops : NULL)
-> >
-> > Why this macro is needed?
-> Want to set .pm as NULL when CONFIG_PM_SLEEP is not enabled.
+On Thu, Jun 06, 2019 at 10:32:48AM +0800, Chunfeng Yun wrote:
+> On Wed, 2019-06-05 at 14:44 +0200, Greg Kroah-Hartman wrote:
+> > The USB gadget subsystem wants to use the USB debugfs root directory, so
+> > move it to the common "core" USB code so that it is properly initialized
+> > and removed as needed.
+> > 
+> > In order to properly do this, we need to load the common code before the
+> > usb core code, when everything is linked into the kernel, so reorder the
+> > link order of the code.
+> > 
+> > Also as the usb common code has the possibility of the led trigger logic
+> > to be merged into it, handle the build option properly by only having
+> > one module init/exit function and have the common code initialize the
+> > led trigger if needed.
+> > 
+> > Reported-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > Cc: Felipe Balbi <felipe.balbi@linux.intel.com>
+> > Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> > ---
+> > Chunfeng, can you try testing this again?
+> 
+> Tested-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> 
+> Thank you, Greg, Felipe
 
-Doesn't SIMPLE_DEV_PM_OPS do this for you?
+Thanks for the review, and all of the different iterations for this.
+For something so "simple" it sure took us all a number of tries :)
 
--- 
-With Best Regards,
-Andy Shevchenko
+I'll go queue it up now so that your future work can rely on it.
+
+thanks,
+
+greg k-h
