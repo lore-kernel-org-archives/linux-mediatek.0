@@ -1,51 +1,106 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: [PATCH v3 1/2] mt76: mt7615: enable support for mesh
-Date: Thu, 6 Jun 2019 23:18:22 +0800
-Message-ID: <1559834302.3339.1.camel@mtkswgap22>
-References: <a1ff446dfc06e2443552e7ec2d754099aacce7df.1559541944.git.ryder.lee@mediatek.com>
-         <a0a6f631-2eb1-87cc-5653-338c6126690c@newmedia-net.de>
+From: Jonathan Cameron <jonathan.cameron@huawei.com>
+Subject: Re: [PATCH 3/4] iio: adc: mediatek: SET_LATE_SYSTEM_SLEEP_PM_OPS
+ support
+Date: Thu, 6 Jun 2019 16:46:00 +0100
+Message-ID: <20190606164600.000060b3@huawei.com>
+References: <1557994247-16739-1-git-send-email-chun-hung.wu@mediatek.com>
+        <1557994247-16739-4-git-send-email-chun-hung.wu@mediatek.com>
+        <20190518113527.5210b0bf@archlinux>
+        <1558332205.11080.6.camel@mtkswgap22>
+        <7838dcae-8a69-0297-718b-a061b14a456d@gmail.com>
+        <1559041196.12867.3.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <a0a6f631-2eb1-87cc-5653-338c6126690c@newmedia-net.de>
+In-Reply-To: <1559041196.12867.3.camel@mtkswgap22>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sebastian Gottschall <s.gottschall@newmedia-net.de>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Roy Luo <royluo@google.com>, YF Luo <yf.luo@mediatek.com>, Yiwei Chung <yiwei.chung@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Chih-Min Chen <chih-min.Chen@mediatek.com>, linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>, Lars-Peter Clausen <lars@metafoo.de>, Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-iio@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com, peter.wang@mediatek.com, kuohong.wang@mediatek.com, jg_poxu@mediatek.com, stanley.chu@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2019-06-06 at 12:14 +0200, Sebastian Gottschall wrote:
-> in addition you should take care about this problem which is raised up 
-> if SAE is used. since AES-CMAC required tid to be non zero
+On Tue, 28 May 2019 18:59:56 +0800
+Chun-Hung Wu <chun-hung.wu@mediatek.com> wrote:
+
+> Hi Matthias:
 > 
-> WARNING: CPU: 2 PID: 15324 at 
-> /home/seg/DEV/mt7621/src/router/private/compat-wireless-2017-09-03/net/mac80211/key.c:1096 
-> mt76_wcid_key_setup+0x58/0x9c [mt76]
-> Modules linked in: shortcut_fe gcm ghash_generic ctr gf128mul mt7615e 
-> mt76 mac80211 compat
-> CPU: 2 PID: 15324 Comm: wpa_supplicant Tainted: G        W 4.14.123 #106
-> Stack : 00000000 87c2d000 00000000 8007d8b4 80480000 80482b9c 80610000 
-> 805a4390
->          8057e2b4 854fb99c 87ed045c 805e4767 80578288 00000001 854fb940 
-> 805e9f78
->          00000000 00000000 80640000 00000000 81147bb8 00000584 00000007 
-> 00000000
->          00000000 80650000 80650000 20202020 80000000 00000000 80610000 
-> 872b9fe0
->          872a2b14 00000448 00000000 87c2d000 00000010 8022d660 00000008 
-> 80640008
->          ...
-> Call Trace:
-> [<800153e0>] show_stack+0x58/0x100
-> [<8042e83c>] dump_stack+0x9c/0xe0
-> [<800349f0>] __warn+0xe4/0x144
-> [<8003468c>] warn_slowpath_null+0x1c/0x30
-> [<872b9fe0>] mt76_wcid_key_setup+0x58/0x9c [mt76]
-> [<87611690>] mt7615_eeprom_init+0x7b4/0xe9c [mt7615e]
-> ---[ end trace e24aeb4b542e0dea ]---
+>   Thanks for your suggestion, I think device_links is a good way to
+> make dependency of module's suspend/resume order.
+> 
+> Hi Jonathan:
+> 
+>   Is it ok to keep using late_suspend and early_resume, or do you think
+> it's better to use device_links?
+I think device links would be preferable as the reasoning becomes explicit.
+As I understand them they are also a less fragile solution.
 
-This is fixed by Lorenzo's patch -
-https://patchwork.kernel.org/patch/10976191/
+Thanks,
 
-Thanks.
-Ryder
+Jonathan
+
+> 
+> Thanks,
+> Chun-Hung
+> On Wed, 2019-05-22 at 18:28 +0200, Matthias Brugger wrote:
+> > 
+> > On 20/05/2019 08:03, Chun-Hung Wu wrote:  
+> > > Hi Jonathan:
+> > > 
+> > >   Thanks for the prompt reply,
+> > > 
+> > > On Sat, 2019-05-18 at 11:35 +0100, Jonathan Cameron wrote:  
+> > >> On Thu, 16 May 2019 16:10:46 +0800
+> > >> Chun-Hung Wu <chun-hung.wu@mediatek.com> wrote:
+> > >>  
+> > >>>   Move suspend/resume to late_suspend and
+> > >>> early_resume to gurantee users can use auxadc  
+> > >> guarantee
+> > >>  
+> > > will fix it in next version.  
+> > >>> driver at suspend/resume stage.  
+> > >> No problem with the patch content, but we need a reason why they may
+> > >> want to do so?  
+> > > Our thermal drivers uses auxadc at suspend/resume stage.
+> > > In order to avoid auxadc suspended prior to thermal driver,
+> > > we move auxadc to late_suspend and early_resume.
+> > >   
+> > 
+> > That sounds like a user of device_links [1] to me.
+> > 
+> > [1] https://www.kernel.org/doc/html/latest/driver-api/device_link.html
+> >   
+> > > Thanks,
+> > > Chun-Hung  
+> > >>
+> > >> Thanks,
+> > >>
+> > >> Jonathan  
+> > >>>
+> > >>> Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+> > >>> ---
+> > >>>  drivers/iio/adc/mt6577_auxadc.c | 7 ++++---
+> > >>>  1 file changed, 4 insertions(+), 3 deletions(-)
+> > >>>
+> > >>> diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
+> > >>> index e1bdcc0..58d7cb2 100644
+> > >>> --- a/drivers/iio/adc/mt6577_auxadc.c
+> > >>> +++ b/drivers/iio/adc/mt6577_auxadc.c
+> > >>> @@ -326,9 +326,10 @@ static int mt6577_auxadc_remove(struct platform_device *pdev)
+> > >>>  	return 0;
+> > >>>  }
+> > >>>  
+> > >>> -static SIMPLE_DEV_PM_OPS(mt6577_auxadc_pm_ops,
+> > >>> -			 mt6577_auxadc_suspend,
+> > >>> -			 mt6577_auxadc_resume);
+> > >>> +static const struct dev_pm_ops mt6577_auxadc_pm_ops = {
+> > >>> +	SET_LATE_SYSTEM_SLEEP_PM_OPS(mt6577_auxadc_suspend,
+> > >>> +				     mt6577_auxadc_resume)
+> > >>> +};
+> > >>>  
+> > >>>  static const struct of_device_id mt6577_auxadc_of_match[] = {
+> > >>>  	{ .compatible = "mediatek,mt2701-auxadc", .data = &mt8173_compat},  
+> > >>  
+> > > 
+> > >   
+> 
+> 
