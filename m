@@ -1,38 +1,89 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH v6 09/10] usb: roles: add USB Type-B GPIO connector
- driver
-Date: Thu, 6 Jun 2019 10:53:51 +0800
-Message-ID: <1559789630.8487.111.camel@mhfsdcap03>
-References: <1559115828-19146-1-git-send-email-chunfeng.yun@mediatek.com>
-         <1559115828-19146-10-git-send-email-chunfeng.yun@mediatek.com>
-         <CAHp75VcbZwd0e6r38C2x7HLEHLr4oR7TjwdDXnDxRPRs3anwgA@mail.gmail.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v3, 01/27] dt-bindings: mediatek: add binding for mt8183
+ display
+Date: Thu, 6 Jun 2019 11:47:09 +0800
+Message-ID: <1559792829.20098.4.camel@mtksdaap41>
+References: <1559734986-7379-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1559734986-7379-2-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAHp75VcbZwd0e6r38C2x7HLEHLr4oR7TjwdDXnDxRPRs3anwgA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Min Guo <min.guo@mediatek.com>, devicetree <devicetree@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, USB <linux-usb@vger.kernel.org>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Biju Das <biju.das@bp.renesas.com>, Linus Walleij <linus.walleij@linaro.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1559734986-7379-2-git-send-email-yongqiang.niu@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: yongqiang.niu@mediatek.com
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2019-06-05 at 11:45 +0300, Andy Shevchenko wrote:
-> On Wed, May 29, 2019 at 10:44 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
-> >
-> > Due to the requirement of usb-connector.txt binding, the old way
-> > using extcon to support USB Dual-Role switch is now deprecated
-> > when use Type-B connector.
-> > This patch introduces a driver of Type-B connector which typically
-> > uses an input GPIO to detect USB ID pin, and try to replace the
-> > function provided by extcon-usb-gpio driver
-> 
-> > +static SIMPLE_DEV_PM_OPS(usb_conn_pm_ops,
-> > +                        usb_conn_suspend, usb_conn_resume);
-> > +
-> > +#define DEV_PMS_OPS (IS_ENABLED(CONFIG_PM_SLEEP) ? &usb_conn_pm_ops : NULL)
-> 
-> Why this macro is needed?
-Want to set .pm as NULL when CONFIG_PM_SLEEP is not enabled.
-
-Thanks
-> 
+SGksIFlvbmdxaWFuZzoKCk9uIFdlZCwgMjAxOS0wNi0wNSBhdCAxOTo0MiArMDgwMCwgeW9uZ3Fp
+YW5nLm5pdUBtZWRpYXRlay5jb20gd3JvdGU6Cj4gRnJvbTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3Fp
+YW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gCj4gVXBkYXRlIGRldmljZSB0cmVlIGJpbmRpbmcgZG9j
+dW1lbnRpb24gZm9yIHRoZSBkaXNwbGF5IHN1YnN5c3RlbSBmb3IKPiBNZWRpYXRlayBNVDgxODMg
+U09Dcwo+IAo+IFNpZ25lZC1vZmYtYnk6IFlvbmdxaWFuZyBOaXUgPHlvbmdxaWFuZy5uaXVAbWVk
+aWF0ZWsuY29tPgo+IC0tLQo+ICAuLi4vYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRl
+ayxkaXNwLnR4dCAgICB8IDM0ICsrKysrKysrKysrKystLS0tLS0tLS0KPiAgMSBmaWxlIGNoYW5n
+ZWQsIDIwIGluc2VydGlvbnMoKyksIDE0IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9E
+b2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRl
+ayxkaXNwLnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21l
+ZGlhdGVrL21lZGlhdGVrLGRpc3AudHh0Cj4gaW5kZXggODQ2OWRlNS4uNzA3NzBmZSAxMDA2NDQK
+PiAtLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRl
+ay9tZWRpYXRlayxkaXNwLnR4dAo+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
+aW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRpc3AudHh0Cj4gQEAgLTI3LDIwICsyNywy
+MCBAQCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9t
+ZWRpYXRlayxkcGkudHh0Lgo+ICAKPiAgUmVxdWlyZWQgcHJvcGVydGllcyAoYWxsIGZ1bmN0aW9u
+IGJsb2Nrcyk6Cj4gIC0gY29tcGF0aWJsZTogIm1lZGlhdGVrLDxjaGlwPi1kaXNwLTxmdW5jdGlv
+bj4iLCBvbmUgb2YKPiAtCSJtZWRpYXRlayw8Y2hpcD4tZGlzcC1vdmwiICAgLSBvdmVybGF5ICg0
+IGxheWVycywgYmxlbmRpbmcsIGNzYykKPiAtCSJtZWRpYXRlayw8Y2hpcD4tZGlzcC1yZG1hIiAg
+LSByZWFkIERNQSAvIGxpbmUgYnVmZmVyCj4gLQkibWVkaWF0ZWssPGNoaXA+LWRpc3Atd2RtYSIg
+IC0gd3JpdGUgRE1BCj4gLQkibWVkaWF0ZWssPGNoaXA+LWRpc3AtY29sb3IiIC0gY29sb3IgcHJv
+Y2Vzc29yCj4gLQkibWVkaWF0ZWssPGNoaXA+LWRpc3AtYWFsIiAgIC0gYWRhcHRpdmUgYW1iaWVu
+dCBsaWdodCBjb250cm9sbGVyCj4gLQkibWVkaWF0ZWssPGNoaXA+LWRpc3AtZ2FtbWEiIC0gZ2Ft
+bWEgY29ycmVjdGlvbgo+IC0JIm1lZGlhdGVrLDxjaGlwPi1kaXNwLW1lcmdlIiAtIG1lcmdlIHN0
+cmVhbXMgZnJvbSB0d28gUkRNQSBzb3VyY2VzCj4gLQkibWVkaWF0ZWssPGNoaXA+LWRpc3Atc3Bs
+aXQiIC0gc3BsaXQgc3RyZWFtIHRvIHR3byBlbmNvZGVycwo+IC0JIm1lZGlhdGVrLDxjaGlwPi1k
+aXNwLXVmb2UiICAtIGRhdGEgY29tcHJlc3Npb24gZW5naW5lCj4gLQkibWVkaWF0ZWssPGNoaXA+
+LWRzaSIgICAgICAgIC0gRFNJIGNvbnRyb2xsZXIsIHNlZSBtZWRpYXRlayxkc2kudHh0Cj4gLQki
+bWVkaWF0ZWssPGNoaXA+LWRwaSIgICAgICAgIC0gRFBJIGNvbnRyb2xsZXIsIHNlZSBtZWRpYXRl
+ayxkcGkudHh0Cj4gLQkibWVkaWF0ZWssPGNoaXA+LWRpc3AtbXV0ZXgiIC0gZGlzcGxheSBtdXRl
+eAo+IC0JIm1lZGlhdGVrLDxjaGlwPi1kaXNwLW9kIiAgICAtIG92ZXJkcml2ZQo+IC0gIHRoZSBz
+dXBwb3J0ZWQgY2hpcHMgYXJlIG10MjcwMSwgbXQyNzEyIGFuZCBtdDgxNzMuCj4gKwkibWVkaWF0
+ZWssPGNoaXA+LWRpc3Atb3ZsIiAgIAkJLSBvdmVybGF5ICg0IGxheWVycywgYmxlbmRpbmcsIGNz
+YykKPiArCSJtZWRpYXRlayw8Y2hpcD4tZGlzcC1yZG1hIiAgCQktIHJlYWQgRE1BIC8gbGluZSBi
+dWZmZXIKPiArCSJtZWRpYXRlayw8Y2hpcD4tZGlzcC13ZG1hIiAgCQktIHdyaXRlIERNQQo+ICsJ
+Im1lZGlhdGVrLDxjaGlwPi1kaXNwLWNvbG9yIiAJCS0gY29sb3IgcHJvY2Vzc29yCj4gKwkibWVk
+aWF0ZWssPGNoaXA+LWRpc3AtYWFsIiAgIAkJLSBhZGFwdGl2ZSBhbWJpZW50IGxpZ2h0IGNvbnRy
+b2xsZXIKPiArCSJtZWRpYXRlayw8Y2hpcD4tZGlzcC1nYW1tYSIgCQktIGdhbW1hIGNvcnJlY3Rp
+b24KPiArCSJtZWRpYXRlayw8Y2hpcD4tZGlzcC1tZXJnZSIgCQktIG1lcmdlIHN0cmVhbXMgZnJv
+bSB0d28gUkRNQSBzb3VyY2VzCj4gKwkibWVkaWF0ZWssPGNoaXA+LWRpc3Atc3BsaXQiIAkJLSBz
+cGxpdCBzdHJlYW0gdG8gdHdvIGVuY29kZXJzCj4gKwkibWVkaWF0ZWssPGNoaXA+LWRpc3AtdWZv
+ZSIgIAkJLSBkYXRhIGNvbXByZXNzaW9uIGVuZ2luZQo+ICsJIm1lZGlhdGVrLDxjaGlwPi1kc2ki
+ICAgICAgICAJCS0gRFNJIGNvbnRyb2xsZXIsIHNlZSBtZWRpYXRlayxkc2kudHh0Cj4gKwkibWVk
+aWF0ZWssPGNoaXA+LWRwaSIgICAgICAgIAkJLSBEUEkgY29udHJvbGxlciwgc2VlIG1lZGlhdGVr
+LGRwaS50eHQKPiArCSJtZWRpYXRlayw8Y2hpcD4tZGlzcC1tdXRleCIgCQktIGRpc3BsYXkgbXV0
+ZXgKPiArCSJtZWRpYXRlayw8Y2hpcD4tZGlzcC1vZCIgICAgCQktIG92ZXJkcml2ZQoKSSB0aGlu
+ayB5b3UgYWRkICd0YWInIGJlY2F1c2Ugb2YgImFkZCBvdmxfMmwgZGVzY3JpcHRpb24gZm9yIG10
+ODE4MwpkaXNwbGF5IiBub3QgImFkZCBiaW5kaW5nIGZvciBtdDgxODMgZGlzcGxheSIsIHNvIG1v
+dmUgdGhlICd0YWInIHRvIHRoZQpyZWxhdGVkIHBhdGNoLgoKPiArICB0aGUgc3VwcG9ydGVkIGNo
+aXBzIGFyZSBtdDI3MDEsIG10MjcxMiwgbXQ4MTczIGFuZCBtdDgxODMuCj4gIC0gcmVnOiBQaHlz
+aWNhbCBiYXNlIGFkZHJlc3MgYW5kIGxlbmd0aCBvZiB0aGUgZnVuY3Rpb24gYmxvY2sgcmVnaXN0
+ZXIgc3BhY2UKPiAgLSBpbnRlcnJ1cHRzOiBUaGUgaW50ZXJydXB0IHNpZ25hbCBmcm9tIHRoZSBm
+dW5jdGlvbiBibG9jayAocmVxdWlyZWQsIGV4Y2VwdCBmb3IKPiAgICBtZXJnZSBhbmQgc3BsaXQg
+ZnVuY3Rpb24gYmxvY2tzKS4KPiBAQCAtNzEsNiArNzEsMTIgQEAgbW1zeXM6IGNsb2NrLWNvbnRy
+b2xsZXJAMTQwMDAwMDAgewo+ICAJI2Nsb2NrLWNlbGxzID0gPDE+Owo+ICB9Owo+ICAKPiArZGlz
+cGxheV9jb21wb25lbnRzOiBkaXNwc3lzQDE0MDAwMDAwIHsKPiArCQljb21wYXRpYmxlID0gIm1l
+ZGlhdGVrLG10ODE4My1kaXNwbGF5IjsKCldoZXJlIGRvIHlvdSBkZWZpbmUgIm1lZGlhdGVrLG10
+ODE4My1kaXNwbGF5Ij8KClJlZ2FyZHMsCkNLCgo+ICsJCXJlZyA9IDwwIDB4MTQwMDAwMDAgMCAw
+eDEwMDA+Owo+ICsJCXBvd2VyLWRvbWFpbnMgPSA8JnNjcHN5cyBNVDgxODNfUE9XRVJfRE9NQUlO
+X0RJU1A+Owo+ICt9Owo+ICsKPiAgb3ZsMDogb3ZsQDE0MDBjMDAwIHsKPiAgCWNvbXBhdGlibGUg
+PSAibWVkaWF0ZWssbXQ4MTczLWRpc3Atb3ZsIjsKPiAgCXJlZyA9IDwwIDB4MTQwMGMwMDAgMCAw
+eDEwMDA+OwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
+dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
