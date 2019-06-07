@@ -1,112 +1,202 @@
-From: Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: [PATCH v1] clk: mediatek: mt8183: Register 13MHz clock earlier for clocksource
-Date: Fri, 7 Jun 2019 11:11:52 +0800
-Message-ID: <1559877112-21064-1-git-send-email-weiyi.lu@mediatek.com>
+From: Sebastian Gottschall <s.gottschall@newmedia-net.de>
+Subject: Re: [PATCH v3 1/2] mt76: mt7615: enable support for mesh
+Date: Fri, 7 Jun 2019 08:03:08 +0200
+Message-ID: <a09e5c36-e610-e5eb-51c1-f1f634ee8591@newmedia-net.de>
+References: <a1ff446dfc06e2443552e7ec2d754099aacce7df.1559541944.git.ryder.lee@mediatek.com>
+ <ade7ef01-8b06-ec7d-4caf-e581f4033819@newmedia-net.de>
+ <CAJ0CqmVBogQrqf4Gckr5gQ6tCrdZG=p60ZiC+-WW-yxt93+40Q@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAJ0CqmVBogQrqf4Gckr5gQ6tCrdZG=p60ZiC+-WW-yxt93+40Q@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>, Dehui Sun <dehui.sun@mediatek.com>
+To: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Felix Fietkau <nbd@nbd.name>, Roy Luo <royluo@google.com>, YF Luo <yf.luo@mediatek.com>, Yiwei Chung <yiwei.chung@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Chih-Min Chen <chih-min.Chen@mediatek.com>, linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek@lists.infradead.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-The 13MHz clock should be registered before clocksource driver is
-initialized. Use CLK_OF_DECLARE_DRIVER() to guarantee.
 
-Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
----
- drivers/clk/mediatek/clk-mt8183.c | 49 ++++++++++++++++++++++++++++++---------
- 1 file changed, 38 insertions(+), 11 deletions(-)
+Am 06.06.2019 um 18:19 schrieb Lorenzo Bianconi:
+>> i tested your patch against a qca 9984 chipset using SAE and without
+>> encryption. both did not work. the devices are connecting, but no data
+>> connection is possible
+> Hi Sebastian,
+>
+> I tested Ryder's patch using mt76x2 as mesh peer and it works fine for me.
+> Could you please provide some more info?
 
-diff --git a/drivers/clk/mediatek/clk-mt8183.c b/drivers/clk/mediatek/clk-mt8183.c
-index 9d86510..a8f50bc 100644
---- a/drivers/clk/mediatek/clk-mt8183.c
-+++ b/drivers/clk/mediatek/clk-mt8183.c
-@@ -25,9 +25,11 @@
- 	FIXED_CLK(CLK_TOP_UNIVP_192M, "univpll_192m", "univpll", 192000000),
- };
- 
-+static const struct mtk_fixed_factor top_early_divs[] = {
-+	FACTOR(CLK_TOP_CLK13M, "clk13m", "clk26m", 1, 2),
-+};
-+
- static const struct mtk_fixed_factor top_divs[] = {
--	FACTOR(CLK_TOP_CLK13M, "clk13m", "clk26m", 1,
--		2),
- 	FACTOR(CLK_TOP_F26M_CK_D2, "csw_f26m_ck_d2", "clk26m", 1,
- 		2),
- 	FACTOR(CLK_TOP_SYSPLL_CK, "syspll_ck", "mainpll", 1,
-@@ -1167,37 +1169,62 @@ static int clk_mt8183_apmixed_probe(struct platform_device *pdev)
- 	return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
- }
- 
-+static struct clk_onecell_data *top_clk_data;
-+
-+static void clk_mt8183_top_init_early(struct device_node *node)
-+{
-+	int i;
-+
-+	if (!top_clk_data) {
-+		top_clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
-+
-+		for (i = 0; i < CLK_TOP_NR_CLK; i++)
-+			top_clk_data->clks[i] = ERR_PTR(-EPROBE_DEFER);
-+	}
-+
-+	mtk_clk_register_factors(top_early_divs, ARRAY_SIZE(top_early_divs),
-+			top_clk_data);
-+
-+	of_clk_add_provider(node, of_clk_src_onecell_get, top_clk_data);
-+}
-+
-+CLK_OF_DECLARE_DRIVER(mt8183_topckgen, "mediatek,mt8183-topckgen",
-+			clk_mt8183_top_init_early);
-+
- static int clk_mt8183_top_probe(struct platform_device *pdev)
- {
- 	struct resource *res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	void __iomem *base;
--	struct clk_onecell_data *clk_data;
- 	struct device_node *node = pdev->dev.of_node;
- 
- 	base = devm_ioremap_resource(&pdev->dev, res);
- 	if (IS_ERR(base))
- 		return PTR_ERR(base);
- 
--	clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
-+	if (!top_clk_data)
-+		top_clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
- 
- 	mtk_clk_register_fixed_clks(top_fixed_clks, ARRAY_SIZE(top_fixed_clks),
--		clk_data);
-+		top_clk_data);
-+
-+	mtk_clk_register_factors(top_early_divs, ARRAY_SIZE(top_early_divs),
-+		top_clk_data);
- 
--	mtk_clk_register_factors(top_divs, ARRAY_SIZE(top_divs), clk_data);
-+	mtk_clk_register_factors(top_divs, ARRAY_SIZE(top_divs), top_clk_data);
- 
- 	mtk_clk_register_muxes(top_muxes, ARRAY_SIZE(top_muxes),
--		node, &mt8183_clk_lock, clk_data);
-+		node, &mt8183_clk_lock, top_clk_data);
- 
- 	mtk_clk_register_composites(top_aud_muxes, ARRAY_SIZE(top_aud_muxes),
--		base, &mt8183_clk_lock, clk_data);
-+		base, &mt8183_clk_lock, top_clk_data);
- 
- 	mtk_clk_register_composites(top_aud_divs, ARRAY_SIZE(top_aud_divs),
--		base, &mt8183_clk_lock, clk_data);
-+		base, &mt8183_clk_lock, top_clk_data);
- 
- 	mtk_clk_register_gates(node, top_clks, ARRAY_SIZE(top_clks),
--		clk_data);
-+		top_clk_data);
- 
--	return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
-+	return of_clk_add_provider(node, of_clk_src_onecell_get, top_clk_data);
- }
- 
- static int clk_mt8183_infra_probe(struct platform_device *pdev)
--- 
-1.8.1.1.dirty
+the peer was a QCA9984 chipset running ath10k. the following wpa 
+supplicant config was used
+and encryption clearly cannot work since mt76_wcid_key_setup does 
+trigger a bug  since ieeee_get_key_rx_seq does not accept tid as 
+argument != 0 for aes_cmac (which is used for sae)
+consider the same setup works with ath5k, 9k and 10k perfect with no 
+issues. in my test setup i also connected now 3 devices. 2 9984 and 1 
+mt7615 to ensure that all is working. the qca 9984 devices can ping each 
+other, only the mt7615 does not work. the setups are all identical 
+(except for ips)
+
+fast_reauth=1
+eapol_version=1
+sae_groups=19 20 21
+network={
+         disable_ht40=1
+         ssid="mt7615-24"
+         mode=5
+         frequency=2452
+         htmode=HT20
+         scan_ssid=1
+         key_mgmt=SAE
+         ieee80211w=2
+         noscan=1
+         pairwise=CCMP
+         group=CCMP
+         proto=RSN
+         sae_password="12345678"
+}
+
+and the bug again
+
+WARNING: CPU: 2 PID: 22086 at 
+/home/seg/DEV/mt7621/src/router/private/compat-wireless-2017-09-03/net/mac80211/key.c:1096 
+mt76_wcid_key_setup+0x58/0x9c [mt76]
+Modules linked in: shortcut_fe gcm ghash_generic ctr gf128mul mt7615e 
+mt76 mac80211 compat
+CPU: 2 PID: 22086 Comm: wpa_supplicant Tainted: G        W 4.14.123 #106
+Stack : 00000000 87c2d000 00000000 8007d8b4 80480000 80482b9c 80610000 
+805a4390
+         8057e2b4 87c4b99c 870a59dc 805e4767 80578288 00000001 87c4b940 
+805e9f78
+         00000000 00000000 80640000 00000000 81147bb8 000006ce 00000007 
+00000000
+         00000000 80650000 80650000 20202020 80000000 00000000 80610000 
+872b9fe0
+         872a2b14 00000448 00000000 87c2d000 00000010 8022d660 00000008 
+80640008
+         ...
+Call Trace:
+[<800153e0>] show_stack+0x58/0x100
+[<8042e83c>] dump_stack+0x9c/0xe0
+[<800349f0>] __warn+0xe4/0x144
+[<8003468c>] warn_slowpath_null+0x1c/0x30
+[<872b9fe0>] mt76_wcid_key_setup+0x58/0x9c [mt76]
+[<87611690>] mt7615_eeprom_init+0x7b4/0xe9c [mt7615e]
+---[ end trace e24aeb4b542e0df9 ]---
+
+
+>
+> Regards,
+> Lorenzo
+>
+>>
+>> Sebastian
+>>
+>> Am 03.06.2019 um 08:08 schrieb Ryder Lee:
+>>> Enable NL80211_IFTYPE_MESH_POINT and update its path.
+>>>
+>>> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+>>> ---
+>>> Changes since v3 - fix a wrong expression
+>>> Changes since v2 - remove unused definitions
+>>> ---
+>>>    drivers/net/wireless/mediatek/mt76/mt7615/init.c | 6 ++++++
+>>>    drivers/net/wireless/mediatek/mt76/mt7615/main.c | 1 +
+>>>    drivers/net/wireless/mediatek/mt76/mt7615/mcu.c  | 4 +++-
+>>>    drivers/net/wireless/mediatek/mt76/mt7615/mcu.h  | 6 ------
+>>>    4 files changed, 10 insertions(+), 7 deletions(-)
+>>>
+>>> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+>>> index 59f604f3161f..f860af6a42da 100644
+>>> --- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+>>> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+>>> @@ -133,6 +133,9 @@ static const struct ieee80211_iface_limit if_limits[] = {
+>>>        {
+>>>                .max = MT7615_MAX_INTERFACES,
+>>>                .types = BIT(NL80211_IFTYPE_AP) |
+>>> +#ifdef CONFIG_MAC80211_MESH
+>>> +                      BIT(NL80211_IFTYPE_MESH_POINT) |
+>>> +#endif
+>>>                         BIT(NL80211_IFTYPE_STATION)
+>>>        }
+>>>    };
+>>> @@ -195,6 +198,9 @@ int mt7615_register_device(struct mt7615_dev *dev)
+>>>        dev->mt76.antenna_mask = 0xf;
+>>>
+>>>        wiphy->interface_modes = BIT(NL80211_IFTYPE_STATION) |
+>>> +#ifdef CONFIG_MAC80211_MESH
+>>> +                              BIT(NL80211_IFTYPE_MESH_POINT) |
+>>> +#endif
+>>>                                 BIT(NL80211_IFTYPE_AP);
+>>>
+>>>        ret = mt76_register_device(&dev->mt76, true, mt7615_rates,
+>>> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+>>> index b0bb7cc12385..585e67fa2728 100644
+>>> --- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+>>> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+>>> @@ -37,6 +37,7 @@ static int get_omac_idx(enum nl80211_iftype type, u32 mask)
+>>>
+>>>        switch (type) {
+>>>        case NL80211_IFTYPE_AP:
+>>> +     case NL80211_IFTYPE_MESH_POINT:
+>>>                /* ap use hw bssid 0 and ext bssid */
+>>>                if (~mask & BIT(HW_BSSID_0))
+>>>                        return HW_BSSID_0;
+>>> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+>>> index 43f70195244c..e82297048449 100644
+>>> --- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+>>> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+>>> @@ -754,6 +754,7 @@ int mt7615_mcu_set_bss_info(struct mt7615_dev *dev,
+>>>
+>>>        switch (vif->type) {
+>>>        case NL80211_IFTYPE_AP:
+>>> +     case NL80211_IFTYPE_MESH_POINT:
+>>>                tx_wlan_idx = mvif->sta.wcid.idx;
+>>>                conn_type = CONNECTION_INFRA_AP;
+>>>                break;
+>>> @@ -968,7 +969,7 @@ int mt7615_mcu_add_wtbl(struct mt7615_dev *dev, struct ieee80211_vif *vif,
+>>>                .rx_wtbl = {
+>>>                        .tag = cpu_to_le16(WTBL_RX),
+>>>                        .len = cpu_to_le16(sizeof(struct wtbl_rx)),
+>>> -                     .rca1 = vif->type != NL80211_IFTYPE_AP,
+>>> +                     .rca1 = vif->type == NL80211_IFTYPE_STATION,
+>>>                        .rca2 = 1,
+>>>                        .rv = 1,
+>>>                },
+>>> @@ -1042,6 +1043,7 @@ static void sta_rec_convert_vif_type(enum nl80211_iftype type, u32 *conn_type)
+>>>    {
+>>>        switch (type) {
+>>>        case NL80211_IFTYPE_AP:
+>>> +     case NL80211_IFTYPE_MESH_POINT:
+>>>                if (conn_type)
+>>>                        *conn_type = CONNECTION_INFRA_STA;
+>>>                break;
+>>> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
+>>> index e96efb13fa4d..0915cb735699 100644
+>>> --- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
+>>> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
+>>> @@ -105,25 +105,19 @@ enum {
+>>>    #define STA_TYPE_STA                BIT(0)
+>>>    #define STA_TYPE_AP         BIT(1)
+>>>    #define STA_TYPE_ADHOC              BIT(2)
+>>> -#define STA_TYPE_TDLS                BIT(3)
+>>>    #define STA_TYPE_WDS                BIT(4)
+>>>    #define STA_TYPE_BC         BIT(5)
+>>>
+>>>    #define NETWORK_INFRA               BIT(16)
+>>>    #define NETWORK_P2P         BIT(17)
+>>>    #define NETWORK_IBSS                BIT(18)
+>>> -#define NETWORK_MESH         BIT(19)
+>>> -#define NETWORK_BOW          BIT(20)
+>>>    #define NETWORK_WDS         BIT(21)
+>>>
+>>>    #define CONNECTION_INFRA_STA        (STA_TYPE_STA | NETWORK_INFRA)
+>>>    #define CONNECTION_INFRA_AP (STA_TYPE_AP | NETWORK_INFRA)
+>>>    #define CONNECTION_P2P_GC   (STA_TYPE_STA | NETWORK_P2P)
+>>>    #define CONNECTION_P2P_GO   (STA_TYPE_AP | NETWORK_P2P)
+>>> -#define CONNECTION_MESH_STA  (STA_TYPE_STA | NETWORK_MESH)
+>>> -#define CONNECTION_MESH_AP   (STA_TYPE_AP | NETWORK_MESH)
+>>>    #define CONNECTION_IBSS_ADHOC       (STA_TYPE_ADHOC | NETWORK_IBSS)
+>>> -#define CONNECTION_TDLS              (STA_TYPE_STA | NETWORK_INFRA | STA_TYPE_TDLS)
+>>>    #define CONNECTION_WDS              (STA_TYPE_WDS | NETWORK_WDS)
+>>>    #define CONNECTION_INFRA_BC (STA_TYPE_BC | NETWORK_INFRA)
+>>>
