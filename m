@@ -1,202 +1,167 @@
-From: Sebastian Gottschall <s.gottschall@newmedia-net.de>
-Subject: Re: [PATCH v3 1/2] mt76: mt7615: enable support for mesh
-Date: Fri, 7 Jun 2019 08:03:08 +0200
-Message-ID: <a09e5c36-e610-e5eb-51c1-f1f634ee8591@newmedia-net.de>
-References: <a1ff446dfc06e2443552e7ec2d754099aacce7df.1559541944.git.ryder.lee@mediatek.com>
- <ade7ef01-8b06-ec7d-4caf-e581f4033819@newmedia-net.de>
- <CAJ0CqmVBogQrqf4Gckr5gQ6tCrdZG=p60ZiC+-WW-yxt93+40Q@mail.gmail.com>
+From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+Subject: Re: [PATCH v6 06/10] device connection: Add
+ fwnode_connection_find_match()
+Date: Fri, 7 Jun 2019 13:30:26 +0300
+Message-ID: <20190607103026.GE10298@kuha.fi.intel.com>
+References: <1559115828-19146-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1559115828-19146-7-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/mixed; boundary="bg08WKrSYDhXBjb5"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAJ0CqmVBogQrqf4Gckr5gQ6tCrdZG=p60ZiC+-WW-yxt93+40Q@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <1559115828-19146-7-git-send-email-chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, Felix Fietkau <nbd@nbd.name>, Roy Luo <royluo@google.com>, YF Luo <yf.luo@mediatek.com>, Yiwei Chung <yiwei.chung@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Chih-Min Chen <chih-min.Chen@mediatek.com>, linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek@lists.infradead.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Biju Das <biju.das@bp.renesas.com>, Linus Walleij <linus.walleij@linaro.org>, Yu Chen <chenyu56@huawei.com>
 List-Id: linux-mediatek@lists.infradead.org
 
 
-Am 06.06.2019 um 18:19 schrieb Lorenzo Bianconi:
->> i tested your patch against a qca 9984 chipset using SAE and without
->> encryption. both did not work. the devices are connecting, but no data
->> connection is possible
-> Hi Sebastian,
->
-> I tested Ryder's patch using mt76x2 as mesh peer and it works fine for me.
-> Could you please provide some more info?
+--bg08WKrSYDhXBjb5
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-the peer was a QCA9984 chipset running ath10k. the following wpa 
-supplicant config was used
-and encryption clearly cannot work since mt76_wcid_key_setup does 
-trigger a bug  since ieeee_get_key_rx_seq does not accept tid as 
-argument != 0 for aes_cmac (which is used for sae)
-consider the same setup works with ath5k, 9k and 10k perfect with no 
-issues. in my test setup i also connected now 3 devices. 2 9984 and 1 
-mt7615 to ensure that all is working. the qca 9984 devices can ping each 
-other, only the mt7615 does not work. the setups are all identical 
-(except for ips)
+Hi,
 
-fast_reauth=1
-eapol_version=1
-sae_groups=19 20 21
-network={
-         disable_ht40=1
-         ssid="mt7615-24"
-         mode=5
-         frequency=2452
-         htmode=HT20
-         scan_ssid=1
-         key_mgmt=SAE
-         ieee80211w=2
-         noscan=1
-         pairwise=CCMP
-         group=CCMP
-         proto=RSN
-         sae_password="12345678"
-}
+On Wed, May 29, 2019 at 03:43:44PM +0800, Chunfeng Yun wrote:
+> From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+> 
+> The fwnode_connection_find_match() function is exactly the
+> same as device_connection_find_match(), except it takes
+> struct fwnode_handle as parameter instead of struct device.
+> That allows locating device connections before the device
+> entries have been created.
+> 
+> Signed-off-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
 
-and the bug again
+This one is also missing your SoB.
 
-WARNING: CPU: 2 PID: 22086 at 
-/home/seg/DEV/mt7621/src/router/private/compat-wireless-2017-09-03/net/mac80211/key.c:1096 
-mt76_wcid_key_setup+0x58/0x9c [mt76]
-Modules linked in: shortcut_fe gcm ghash_generic ctr gf128mul mt7615e 
-mt76 mac80211 compat
-CPU: 2 PID: 22086 Comm: wpa_supplicant Tainted: G        W 4.14.123 #106
-Stack : 00000000 87c2d000 00000000 8007d8b4 80480000 80482b9c 80610000 
-805a4390
-         8057e2b4 87c4b99c 870a59dc 805e4767 80578288 00000001 87c4b940 
-805e9f78
-         00000000 00000000 80640000 00000000 81147bb8 000006ce 00000007 
-00000000
-         00000000 80650000 80650000 20202020 80000000 00000000 80610000 
-872b9fe0
-         872a2b14 00000448 00000000 87c2d000 00000010 8022d660 00000008 
-80640008
-         ...
-Call Trace:
-[<800153e0>] show_stack+0x58/0x100
-[<8042e83c>] dump_stack+0x9c/0xe0
-[<800349f0>] __warn+0xe4/0x144
-[<8003468c>] warn_slowpath_null+0x1c/0x30
-[<872b9fe0>] mt76_wcid_key_setup+0x58/0x9c [mt76]
-[<87611690>] mt7615_eeprom_init+0x7b4/0xe9c [mt7615e]
----[ end trace e24aeb4b542e0df9 ]---
+There are now some other changes to the devcon API in Rafael's tree
+[1] that will conflict with this one. I'm attaching a modified version
+of the patch that is rebased on top of today's linux-next. If you use
+it, you should make a note (probable in the cover letter) that the
+series now depends on Rafael's tree.
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git/log/?h=linux-next
 
 
->
-> Regards,
-> Lorenzo
->
->>
->> Sebastian
->>
->> Am 03.06.2019 um 08:08 schrieb Ryder Lee:
->>> Enable NL80211_IFTYPE_MESH_POINT and update its path.
->>>
->>> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
->>> ---
->>> Changes since v3 - fix a wrong expression
->>> Changes since v2 - remove unused definitions
->>> ---
->>>    drivers/net/wireless/mediatek/mt76/mt7615/init.c | 6 ++++++
->>>    drivers/net/wireless/mediatek/mt76/mt7615/main.c | 1 +
->>>    drivers/net/wireless/mediatek/mt76/mt7615/mcu.c  | 4 +++-
->>>    drivers/net/wireless/mediatek/mt76/mt7615/mcu.h  | 6 ------
->>>    4 files changed, 10 insertions(+), 7 deletions(-)
->>>
->>> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
->>> index 59f604f3161f..f860af6a42da 100644
->>> --- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
->>> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
->>> @@ -133,6 +133,9 @@ static const struct ieee80211_iface_limit if_limits[] = {
->>>        {
->>>                .max = MT7615_MAX_INTERFACES,
->>>                .types = BIT(NL80211_IFTYPE_AP) |
->>> +#ifdef CONFIG_MAC80211_MESH
->>> +                      BIT(NL80211_IFTYPE_MESH_POINT) |
->>> +#endif
->>>                         BIT(NL80211_IFTYPE_STATION)
->>>        }
->>>    };
->>> @@ -195,6 +198,9 @@ int mt7615_register_device(struct mt7615_dev *dev)
->>>        dev->mt76.antenna_mask = 0xf;
->>>
->>>        wiphy->interface_modes = BIT(NL80211_IFTYPE_STATION) |
->>> +#ifdef CONFIG_MAC80211_MESH
->>> +                              BIT(NL80211_IFTYPE_MESH_POINT) |
->>> +#endif
->>>                                 BIT(NL80211_IFTYPE_AP);
->>>
->>>        ret = mt76_register_device(&dev->mt76, true, mt7615_rates,
->>> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
->>> index b0bb7cc12385..585e67fa2728 100644
->>> --- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
->>> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
->>> @@ -37,6 +37,7 @@ static int get_omac_idx(enum nl80211_iftype type, u32 mask)
->>>
->>>        switch (type) {
->>>        case NL80211_IFTYPE_AP:
->>> +     case NL80211_IFTYPE_MESH_POINT:
->>>                /* ap use hw bssid 0 and ext bssid */
->>>                if (~mask & BIT(HW_BSSID_0))
->>>                        return HW_BSSID_0;
->>> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
->>> index 43f70195244c..e82297048449 100644
->>> --- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
->>> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
->>> @@ -754,6 +754,7 @@ int mt7615_mcu_set_bss_info(struct mt7615_dev *dev,
->>>
->>>        switch (vif->type) {
->>>        case NL80211_IFTYPE_AP:
->>> +     case NL80211_IFTYPE_MESH_POINT:
->>>                tx_wlan_idx = mvif->sta.wcid.idx;
->>>                conn_type = CONNECTION_INFRA_AP;
->>>                break;
->>> @@ -968,7 +969,7 @@ int mt7615_mcu_add_wtbl(struct mt7615_dev *dev, struct ieee80211_vif *vif,
->>>                .rx_wtbl = {
->>>                        .tag = cpu_to_le16(WTBL_RX),
->>>                        .len = cpu_to_le16(sizeof(struct wtbl_rx)),
->>> -                     .rca1 = vif->type != NL80211_IFTYPE_AP,
->>> +                     .rca1 = vif->type == NL80211_IFTYPE_STATION,
->>>                        .rca2 = 1,
->>>                        .rv = 1,
->>>                },
->>> @@ -1042,6 +1043,7 @@ static void sta_rec_convert_vif_type(enum nl80211_iftype type, u32 *conn_type)
->>>    {
->>>        switch (type) {
->>>        case NL80211_IFTYPE_AP:
->>> +     case NL80211_IFTYPE_MESH_POINT:
->>>                if (conn_type)
->>>                        *conn_type = CONNECTION_INFRA_STA;
->>>                break;
->>> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
->>> index e96efb13fa4d..0915cb735699 100644
->>> --- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
->>> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
->>> @@ -105,25 +105,19 @@ enum {
->>>    #define STA_TYPE_STA                BIT(0)
->>>    #define STA_TYPE_AP         BIT(1)
->>>    #define STA_TYPE_ADHOC              BIT(2)
->>> -#define STA_TYPE_TDLS                BIT(3)
->>>    #define STA_TYPE_WDS                BIT(4)
->>>    #define STA_TYPE_BC         BIT(5)
->>>
->>>    #define NETWORK_INFRA               BIT(16)
->>>    #define NETWORK_P2P         BIT(17)
->>>    #define NETWORK_IBSS                BIT(18)
->>> -#define NETWORK_MESH         BIT(19)
->>> -#define NETWORK_BOW          BIT(20)
->>>    #define NETWORK_WDS         BIT(21)
->>>
->>>    #define CONNECTION_INFRA_STA        (STA_TYPE_STA | NETWORK_INFRA)
->>>    #define CONNECTION_INFRA_AP (STA_TYPE_AP | NETWORK_INFRA)
->>>    #define CONNECTION_P2P_GC   (STA_TYPE_STA | NETWORK_P2P)
->>>    #define CONNECTION_P2P_GO   (STA_TYPE_AP | NETWORK_P2P)
->>> -#define CONNECTION_MESH_STA  (STA_TYPE_STA | NETWORK_MESH)
->>> -#define CONNECTION_MESH_AP   (STA_TYPE_AP | NETWORK_MESH)
->>>    #define CONNECTION_IBSS_ADHOC       (STA_TYPE_ADHOC | NETWORK_IBSS)
->>> -#define CONNECTION_TDLS              (STA_TYPE_STA | NETWORK_INFRA | STA_TYPE_TDLS)
->>>    #define CONNECTION_WDS              (STA_TYPE_WDS | NETWORK_WDS)
->>>    #define CONNECTION_INFRA_BC (STA_TYPE_BC | NETWORK_INFRA)
->>>
+thanks,
+
+-- 
+heikki
+
+--bg08WKrSYDhXBjb5
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: attachment; filename="0001-device-connection-Add-fwnode_connection_find_match.patch"
+
+>From ea4ebbfd00e6ddc7bb7ad32e2f921bfc67f2ff8f Mon Sep 17 00:00:00 2001
+From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+Date: Wed, 22 May 2019 17:06:54 +0300
+Subject: [PATCH] device connection: Add fwnode_connection_find_match()
+
+The fwnode_connection_find_match() function is exactly the
+same as device_connection_find_match(), except it takes
+struct fwnode_handle as parameter instead of struct device.
+That allows locating device connections before the device
+entries have been created.
+
+Signed-off-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+---
+ drivers/base/devcon.c  | 43 ++++++++++++++++++++++++++++++------------
+ include/linux/device.h | 10 +++++++---
+ 2 files changed, 38 insertions(+), 15 deletions(-)
+
+diff --git a/drivers/base/devcon.c b/drivers/base/devcon.c
+index f7035fc12b92..5bf9537bd738 100644
+--- a/drivers/base/devcon.c
++++ b/drivers/base/devcon.c
+@@ -12,9 +12,6 @@
+ static DEFINE_MUTEX(devcon_lock);
+ static LIST_HEAD(devcon_list);
+ 
+-typedef void *(*devcon_match_fn_t)(struct device_connection *con, int ep,
+-				   void *data);
+-
+ static void *
+ fwnode_graph_devcon_match(struct fwnode_handle *fwnode, const char *con_id,
+ 			  void *data, devcon_match_fn_t match)
+@@ -60,6 +57,34 @@ fwnode_devcon_match(struct fwnode_handle *fwnode, const char *con_id,
+ 	return NULL;
+ }
+ 
++/**
++ * fwnode_connection_find_match - Find connection from a device node
++ * @fwnode: Device node with the connection
++ * @con_id: Identifier for the connection
++ * @data: Data for the match function
++ * @match: Function to check and convert the connection description
++ *
++ * Find a connection with unique identifier @con_id between @fwnode and another
++ * device node. @match will be used to convert the connection description to
++ * data the caller is expecting to be returned.
++ */
++void *fwnode_connection_find_match(struct fwnode_handle *fwnode,
++				   const char *con_id, void *data,
++				   devcon_match_fn_t match)
++{
++	void *ret;
++
++	if (!fwnode || !match)
++		return NULL;
++
++	ret = fwnode_graph_devcon_match(fwnode, con_id, data, match);
++	if (ret)
++		return ret;
++
++	return fwnode_devcon_match(fwnode, con_id, data, match);
++}
++EXPORT_SYMBOL_GPL(fwnode_connection_find_match);
++
+ /**
+  * device_connection_find_match - Find physical connection to a device
+  * @dev: Device with the connection
+@@ -83,15 +108,9 @@ void *device_connection_find_match(struct device *dev, const char *con_id,
+ 	if (!match)
+ 		return NULL;
+ 
+-	if (fwnode) {
+-		ret = fwnode_graph_devcon_match(fwnode, con_id, data, match);
+-		if (ret)
+-			return ret;
+-
+-		ret = fwnode_devcon_match(fwnode, con_id, data, match);
+-		if (ret)
+-			return ret;
+-	}
++	ret = fwnode_connection_find_match(fwnode, con_id, data, match);
++	if (ret)
++		return ret;
+ 
+ 	mutex_lock(&devcon_lock);
+ 
+diff --git a/include/linux/device.h b/include/linux/device.h
+index e0649f6adf2e..fd06d75da206 100644
+--- a/include/linux/device.h
++++ b/include/linux/device.h
+@@ -773,10 +773,14 @@ struct device_connection {
+ 	struct list_head	list;
+ };
+ 
++typedef void *(*devcon_match_fn_t)(struct device_connection *con, int ep,
++				   void *data);
++
++void *fwnode_connection_find_match(struct fwnode_handle *fwnode,
++				   const char *con_id, void *data,
++				   devcon_match_fn_t match);
+ void *device_connection_find_match(struct device *dev, const char *con_id,
+-				void *data,
+-				void *(*match)(struct device_connection *con,
+-					       int ep, void *data));
++				   void *data, devcon_match_fn_t match);
+ 
+ struct device *device_connection_find(struct device *dev, const char *con_id);
+ 
+-- 
+2.20.1
+
+
+--bg08WKrSYDhXBjb5--
