@@ -1,72 +1,52 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH v1] clk: mediatek: mt8183: Register 13MHz clock earlier for clocksource
-Date: Fri, 07 Jun 2019 10:59:21 -0700
-Message-ID: <20190607175922.6D5F5208C0@mail.kernel.org>
-References: <1559877112-21064-1-git-send-email-weiyi.lu@mediatek.com>
+From: Jitao Shi <jitao.shi@mediatek.com>
+Subject: [1/2] dt-bindngs: display: panel: Add BOE tv101wum-nl6 panel bindings
+Date: Sat, 8 Jun 2019 15:02:29 +0800
+Message-ID: <20190608070230.55381-1-jitao.shi@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <1559877112-21064-1-git-send-email-weiyi.lu@mediatek.com>
-Sender: stable-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh@kernel.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>, Dehui Sun <dehui.sun@mediatek.com>
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: stonea168@163.com, dri-devel@lists.freedesktop.org, Andy Yan <andy.yan@rock-chips.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa.cheng@mediatek.com, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Sean Paul <seanpaul@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting Weiyi Lu (2019-06-06 20:11:52)
-> diff --git a/drivers/clk/mediatek/clk-mt8183.c b/drivers/clk/mediatek/clk=
--mt8183.c
-> index 9d86510..a8f50bc 100644
-> --- a/drivers/clk/mediatek/clk-mt8183.c
-> +++ b/drivers/clk/mediatek/clk-mt8183.c
-> @@ -1167,37 +1169,62 @@ static int clk_mt8183_apmixed_probe(struct platfo=
-rm_device *pdev)
->         return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data=
-);
->  }
-> =20
-> +static struct clk_onecell_data *top_clk_data;
-> +
-> +static void clk_mt8183_top_init_early(struct device_node *node)
-> +{
-> +       int i;
-> +
-> +       if (!top_clk_data) {
-
-Is this function ever called more than once? I believe the answer is no
-so this check should be removed.
-
-> +               top_clk_data =3D mtk_alloc_clk_data(CLK_TOP_NR_CLK);
-> +
-> +               for (i =3D 0; i < CLK_TOP_NR_CLK; i++)
-> +                       top_clk_data->clks[i] =3D ERR_PTR(-EPROBE_DEFER);
-> +       }
-> +
-> +       mtk_clk_register_factors(top_early_divs, ARRAY_SIZE(top_early_div=
-s),
-> +                       top_clk_data);
-> +
-> +       of_clk_add_provider(node, of_clk_src_onecell_get, top_clk_data);
-> +}
-> +
-> +CLK_OF_DECLARE_DRIVER(mt8183_topckgen, "mediatek,mt8183-topckgen",
-> +                       clk_mt8183_top_init_early);
-> +
->  static int clk_mt8183_top_probe(struct platform_device *pdev)
->  {
->         struct resource *res =3D platform_get_resource(pdev, IORESOURCE_M=
-EM, 0);
->         void __iomem *base;
-> -       struct clk_onecell_data *clk_data;
->         struct device_node *node =3D pdev->dev.of_node;
-> =20
->         base =3D devm_ioremap_resource(&pdev->dev, res);
->         if (IS_ERR(base))
->                 return PTR_ERR(base);
-> =20
-> -       clk_data =3D mtk_alloc_clk_data(CLK_TOP_NR_CLK);
-> +       if (!top_clk_data)
-> +               top_clk_data =3D mtk_alloc_clk_data(CLK_TOP_NR_CLK);
-
-And then this can be removed because top_clk_data must be allocated at
-this point.
+QWRkIGRvY3VtZW50YXRpb24gZm9yIGJvZSB0djEwMXd1bS1uMTYgcGFuZWwuCgpTaWduZWQtb2Zm
+LWJ5OiBKaXRhbyBTaGkgPGppdGFvLnNoaUBtZWRpYXRlay5jb20+Ci0tLQogLi4uL2Rpc3BsYXkv
+cGFuZWwvYm9lLHR2MTAxd3VtLW5sNi50eHQgICAgICAgIHwgMzQgKysrKysrKysrKysrKysrKysr
+KwogMSBmaWxlIGNoYW5nZWQsIDM0IGluc2VydGlvbnMoKykKIGNyZWF0ZSBtb2RlIDEwMDY0NCBE
+b2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9wYW5lbC9ib2UsdHYxMDF3
+dW0tbmw2LnR4dAoKZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
+cy9kaXNwbGF5L3BhbmVsL2JvZSx0djEwMXd1bS1ubDYudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZp
+Y2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcGFuZWwvYm9lLHR2MTAxd3VtLW5sNi50eHQKbmV3IGZp
+bGUgbW9kZSAxMDA2NDQKaW5kZXggMDAwMDAwMDAwMDAwLi4yYTg0NzM1ZDc0MmQKLS0tIC9kZXYv
+bnVsbAorKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9wYW5l
+bC9ib2UsdHYxMDF3dW0tbmw2LnR4dApAQCAtMCwwICsxLDM0IEBACitCb2UgQ29ycG9yYXRpb24g
+MTAuMSIgV1VYR0EgVEZUIExDRCBwYW5lbAorCitSZXF1aXJlZCBwcm9wZXJ0aWVzOgorLSBjb21w
+YXRpYmxlOiBzaG91bGQgYmUgImJvZSx0djEwMXd1bSIKKy0gcmVnOiB0aGUgdmlydHVhbCBjaGFu
+bmVsIG51bWJlciBvZiBhIERTSSBwZXJpcGhlcmFsCistIGVuYWJsZS1ncGlvczogYSBHUElPIHNw
+ZWMgZm9yIHRoZSBlbmFibGUgcGluCistIHBwMTgwMC1zdXBwbHk6IGNvcmUgdm9sdGFnZSBzdXBw
+bHkKKy0gYXZkZC1zdXBwbHk6IAorLSBhdmVlLXN1cHBseTogCistIGJhY2tsaWdodDogcGhhbmRs
+ZSBvZiB0aGUgYmFja2xpZ2h0IGRldmljZSBhdHRhY2hlZCB0byB0aGUgcGFuZWwKKworVGhlIGRl
+dmljZSBub2RlIGNhbiBjb250YWluIG9uZSAncG9ydCcgY2hpbGQgbm9kZSB3aXRoIG9uZSBjaGls
+ZAorJ2VuZHBvaW50JyBub2RlLCBhY2NvcmRpbmcgdG8gdGhlIGJpbmRpbmdzIGRlZmluZWQgaW4K
+K21lZGlhL3ZpZGVvLWludGVyZmFjZXMudHh0LiBUaGlzIG5vZGUgc2hvdWxkIGRlc2NyaWJlIHBh
+bmVsJ3MgdmlkZW8gYnVzLgorCitFeGFtcGxlOgorJmRzaSB7CisJLi4uCisJcGFuZWxAMCB7CisJ
+CWNvbXBhdGlibGUgPSAiYm9lLHR2MTAxd3VtLW5sNiI7CisJCXJlZyA9IDwwPjsKKwkJZW5hYmxl
+LWdwaW9zID0gPCZwaW8gNDUgMD47CisJCWF2ZGQtc3VwcGx5ID0gPCZwcHZhcm5fbGNkPjsKKwkJ
+YXZlZS1zdXBwbHkgPSA8JnBwdmFycF9sY2Q+OworCQlwcDE4MDAtc3VwcGx5ID0gPCZwcDE4MDBf
+bGNkPjsKKwkJYmFja2xpZ2h0ID0gPCZiYWNrbGlnaHRfbGNkMD47CisJCXN0YXR1cyA9ICJva2F5
+IjsKKwkJcG9ydCB7CisJCQlwYW5lbF9pbjogZW5kcG9pbnQgeworCQkJCXJlbW90ZS1lbmRwb2lu
+dCA9IDwmZHNpX291dD47CisJCQl9OworCQl9OworCX07Cit9OwpcIE5vIG5ld2xpbmUgYXQgZW5k
+IG9mIGZpbGUKLS0gCjIuMjEuMAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
+ZHJpLWRldmVs
