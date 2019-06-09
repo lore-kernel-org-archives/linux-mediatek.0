@@ -1,52 +1,93 @@
-From: Jitao Shi <jitao.shi@mediatek.com>
-Subject: [1/2] dt-bindings: display: panel: add AUO kd101n80-45na panel
- bindings
-Date: Sat, 8 Jun 2019 19:23:41 +0800
-Message-ID: <20190608112342.64416-1-jitao.shi@mediatek.com>
+From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] mt76: mt7615: add support for per-chain signal strength reporting
+Date: Sun, 9 Jun 2019 17:09:09 +0800
+Message-ID: <3912a2863e858f3623ced61737836e42c7b19149.1560071167.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: stonea168@163.com, dri-devel@lists.freedesktop.org, Andy Yan <andy.yan@rock-chips.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa.cheng@mediatek.com, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Sean Paul <seanpaul@chromium.org>
+Content-Type: text/plain
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Cc: Roy Luo <royluo-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, YF Luo <yf.luo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yiwei Chung <yiwei.chung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Chih-Min Chen <chih-min.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-QWRkIGRvY3VtZW50YXRpb24gZm9yIGF1byBrZDEwMW44MC00NW5hIHBhbmVsLgoKU2lnbmVkLW9m
-Zi1ieTogSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPgotLS0KIC4uLi9kaXNwbGF5
-L3BhbmVsL2F1byxrZDEwMW44MC00NW5hLnR4dCAgICAgICB8IDM0ICsrKysrKysrKysrKysrKysr
-KysKIDEgZmlsZSBjaGFuZ2VkLCAzNCBpbnNlcnRpb25zKCspCiBjcmVhdGUgbW9kZSAxMDA2NDQg
-RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcGFuZWwvYXVvLGtkMTAx
-bjgwLTQ1bmEudHh0CgpkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRp
-bmdzL2Rpc3BsYXkvcGFuZWwvYXVvLGtkMTAxbjgwLTQ1bmEudHh0IGIvRG9jdW1lbnRhdGlvbi9k
-ZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcGFuZWwvYXVvLGtkMTAxbjgwLTQ1bmEudHh0Cm5l
-dyBmaWxlIG1vZGUgMTAwNjQ0CmluZGV4IDAwMDAwMDAwMDAwMC4uNzcxNWNmNzAzNDMxCi0tLSAv
-ZGV2L251bGwKKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkv
-cGFuZWwvYXVvLGtkMTAxbjgwLTQ1bmEudHh0CkBAIC0wLDAgKzEsMzQgQEAKK0FVTyBDb3Jwb3Jh
-dGlvbiAxMC4xIiBXVVhHQSBURlQgTENEIHBhbmVsCisKK1JlcXVpcmVkIHByb3BlcnRpZXM6Cist
-IGNvbXBhdGlibGU6IHNob3VsZCBiZSAiYXVvLGtkMTAxbjgwLTQ1bmEiCistIHJlZzogdGhlIHZp
-cnR1YWwgY2hhbm5lbCBudW1iZXIgb2YgYSBEU0kgcGVyaXBoZXJhbAorLSBlbmFibGUtZ3Bpb3M6
-IGEgR1BJTyBzcGVjIGZvciB0aGUgZW5hYmxlIHBpbgorLSBwcDE4MDAtc3VwcGx5OiBjb3JlIHZv
-bHRhZ2Ugc3VwcGx5CistIGF2ZGQtc3VwcGx5OiAKKy0gYXZlZS1zdXBwbHk6IAorLSBiYWNrbGln
-aHQ6IHBoYW5kbGUgb2YgdGhlIGJhY2tsaWdodCBkZXZpY2UgYXR0YWNoZWQgdG8gdGhlIHBhbmVs
-CisKK1RoZSBkZXZpY2Ugbm9kZSBjYW4gY29udGFpbiBvbmUgJ3BvcnQnIGNoaWxkIG5vZGUgd2l0
-aCBvbmUgY2hpbGQKKydlbmRwb2ludCcgbm9kZSwgYWNjb3JkaW5nIHRvIHRoZSBiaW5kaW5ncyBk
-ZWZpbmVkIGluCittZWRpYS92aWRlby1pbnRlcmZhY2VzLnR4dC4gVGhpcyBub2RlIHNob3VsZCBk
-ZXNjcmliZSBwYW5lbCdzIHZpZGVvIGJ1cy4KKworRXhhbXBsZToKKyZkc2kgeworCS4uLgorCXBh
-bmVsQDAgeworCQljb21wYXRpYmxlID0gImF1byxrZDEwMW44MC00NW5hIjsKKwkJcmVnID0gPDA+
-OworCQllbmFibGUtZ3Bpb3MgPSA8JnBpbyA0NSAwPjsKKwkJYXZkZC1zdXBwbHkgPSA8JnBwdmFy
-bl9sY2Q+OworCQlhdmVlLXN1cHBseSA9IDwmcHB2YXJwX2xjZD47CisJCXBwMTgwMC1zdXBwbHkg
-PSA8JnBwMTgwMF9sY2Q+OworCQliYWNrbGlnaHQgPSA8JmJhY2tsaWdodF9sY2QwPjsKKwkJc3Rh
-dHVzID0gIm9rYXkiOworCQlwb3J0IHsKKwkJCXBhbmVsX2luOiBlbmRwb2ludCB7CisJCQkJcmVt
-b3RlLWVuZHBvaW50ID0gPCZkc2lfb3V0PjsKKwkJCX07CisJCX07CisJfTsKK307Ci0tIAoyLjIx
-LjAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
-ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
-L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+Fill in RX status->chain_signal to avoid empty value.
+
+Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ .../net/wireless/mediatek/mt76/mt7615/mac.c   | 30 ++++++++++++++++++-
+ .../net/wireless/mediatek/mt76/mt7615/mac.h   |  5 ++++
+ 2 files changed, 34 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+index b60d42b5923d..9ee83ea11b8c
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+@@ -13,6 +13,11 @@
+ #include "../dma.h"
+ #include "mac.h"
+ 
++static inline s8 to_rssi(u32 field, u32 rxv)
++{
++	return (FIELD_GET(field, rxv) - 220) / 2;
++}
++
+ static struct mt76_wcid *mt7615_rx_get_wcid(struct mt7615_dev *dev,
+ 					    u8 idx, bool unicast)
+ {
+@@ -120,6 +125,7 @@ int mt7615_mac_fill_rx(struct mt7615_dev *dev, struct sk_buff *skb)
+ 	if (rxd0 & MT_RXD0_NORMAL_GROUP_3) {
+ 		u32 rxdg0 = le32_to_cpu(rxd[0]);
+ 		u32 rxdg1 = le32_to_cpu(rxd[1]);
++		u32 rxdg3 = le32_to_cpu(rxd[3]);
+ 		u8 stbc = FIELD_GET(MT_RXV1_HT_STBC, rxdg0);
+ 		bool cck = false;
+ 
+@@ -169,7 +175,29 @@ int mt7615_mac_fill_rx(struct mt7615_dev *dev, struct sk_buff *skb)
+ 
+ 		status->enc_flags |= RX_ENC_FLAG_STBC_MASK * stbc;
+ 
+-		/* TODO: RSSI */
++		status->chains = dev->mt76.antenna_mask;
++		status->chain_signal[0] = to_rssi(MT_RXV4_RCPI0, rxdg3);
++		status->signal = status->chain_signal[0];
++
++		switch (status->chains) {
++		case 0x3:
++			status->chain_signal[1] = to_rssi(MT_RXV4_RCPI1, rxdg3);
++			status->signal = max(status->signal,
++					     status->chain_signal[1]);
++			break;
++		case 0x7:
++			status->chain_signal[2] = to_rssi(MT_RXV4_RCPI2, rxdg3);
++			status->signal = max(status->signal,
++					     status->chain_signal[2]);
++			break;
++		case 0xf:
++			status->chain_signal[3] = to_rssi(MT_RXV4_RCPI3, rxdg3);
++			status->signal = max(status->signal,
++					     status->chain_signal[3]);
++			break;
++		default:
++			break;
++		}
+ 		rxd += 6;
+ 		if ((u8 *)rxd - skb->data >= skb->len)
+ 			return -EINVAL;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.h b/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
+index 18ad4b8a3807..b00ce8db58e9
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
+@@ -98,6 +98,11 @@ enum rx_pkt_type {
+ #define MT_RXV2_GROUP_ID		GENMASK(26, 21)
+ #define MT_RXV2_LENGTH			GENMASK(20, 0)
+ 
++#define MT_RXV4_RCPI3			GENMASK(31, 24)
++#define MT_RXV4_RCPI2			GENMASK(23, 16)
++#define MT_RXV4_RCPI1			GENMASK(15, 8)
++#define MT_RXV4_RCPI0			GENMASK(7, 0)
++
+ enum tx_header_format {
+ 	MT_HDR_FORMAT_802_3,
+ 	MT_HDR_FORMAT_CMD,
+-- 
+2.18.0
