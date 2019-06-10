@@ -1,36 +1,86 @@
-From: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [RFC v1] clk: core: support clocks that need to be enabled
- during re-parent
-Date: Mon, 10 Jun 2019 07:54:15 +0200
-Message-ID: <20190610055415.GC13825@kroah.com>
-References: <1560138293-4163-1-git-send-email-weiyi.lu@mediatek.com>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: Re: [PATCH] mt76: mt7615: add support for per-chain signal strength
+ reporting
+Date: Mon, 10 Jun 2019 15:12:09 +0800
+Message-ID: <1560150729.14203.11.camel@mtkswgap22>
+References: <3912a2863e858f3623ced61737836e42c7b19149.1560071167.git.ryder.lee@mediatek.com>
+         <d6cfd2e9-4b2b-36ac-6cae-a34f74204801@newmedia-net.de>
+         <1560132590.28258.5.camel@mtkswgap22> <1560140541.5606.12.camel@mtkswgap22>
+         <64662021-8e5a-91b5-9afb-3c9005564d19@newmedia-net.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1560138293-4163-1-git-send-email-weiyi.lu@mediatek.com>
+In-Reply-To: <64662021-8e5a-91b5-9afb-3c9005564d19@newmedia-net.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Weiyi Lu <weiyi.lu@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>, James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org, Biao Huang <biao.huang@mediatek.com>
+To: Sebastian Gottschall <s.gottschall@newmedia-net.de>
+Cc: Sean Wang <sean.wang@mediatek.com>, Chih-Min Chen <chih-min.Chen@mediatek.com>, YF Luo <yf.luo@mediatek.com>, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, Yiwei Chung <yiwei.chung@mediatek.com>, linux-mediatek@lists.infradead.org, Roy Luo <royluo@google.com>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Felix Fietkau <nbd@nbd.name>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jun 10, 2019 at 11:44:53AM +0800, Weiyi Lu wrote:
-> When using property assigned-clock-parents to assign parent clocks,
-> core clocks might still be disabled during re-parent.
-> Add flag 'CLK_OPS_CORE_ENABLE' for those clocks must be enabled
-> during re-parent.
+On Mon, 2019-06-10 at 06:47 +0200, Sebastian Gottschall wrote:
+> okay. curious is, that my variant works with sane results too.
+> i will test your variant and check the results
 > 
-> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> ---
->  drivers/clk/clk.c            | 9 +++++++++
->  include/linux/clk-provider.h | 1 +
->  2 files changed, 10 insertions(+)
+> Sebastian
 
-<formletter>
+Please don't top post as it's hard to track the thread.
 
-This is not the correct way to submit patches for inclusion in the
-stable kernel tree.  Please read:
-    https://www.kernel.org/doc/html/latest/process/stable-kernel-rules.html
-for how to do this properly.
+More specifically, IBRSSI is obtained from packet's L-STF portion and
+MTK HW PD (packet detection) will take it as a reference. (with
+variation more or less)
 
-</formletter>
+As for RCPI which is calculated from packet's data portion. The other
+MTK chipsets may use IBRSSI as their baseband couldn't report RCPI.
+
+Ryder
+
+> Am 10.06.2019 um 06:22 schrieb Ryder Lee:
+> > On Mon, 2019-06-10 at 10:09 +0800, Ryder Lee wrote:
+> >> On Sun, 2019-06-09 at 16:44 +0200, Sebastian Gottschall wrote:
+> >>> according to my findings
+> >>>
+> >>> MT_RXV4_RCPI1 is part of rx descriptor 4 and not 3
+> >>> so it must be rxdg4 = rxd[4] etc.
+> >> RXV start from 1 in the code.
+> >>
+> >> That is: RXV1 <-> rxdg0, RXV2 <-> rxdg1 ...so RXV4 <-> rxdg3
+> >>
+> >>> however rxdg3 contains MT_RXV3_IB_RSSIRX which can be used for signal calculation.
+> >>> i already wrote a similar code for this driver which i sended to felix a long time ago.
+> >>> my variant looks like
+> >>>                   status->signal = (FIELD_GET(MT_RXV3_IB_RSSIRX, rxdg3) - 220) / 2;
+> >>>                   status->chain_signal[0] = (FIELD_GET(MT_RXV4_RCPI0, rxdg4) - 220) / 2;
+> >>>                   status->chain_signal[1] = (FIELD_GET(MT_RXV4_RCPI1, rxdg4) - 220) / 2;
+> >>>                   status->chain_signal[2] = (FIELD_GET(MT_RXV4_RCPI2, rxdg4) - 220) / 2;
+> >>>                   status->chain_signal[3] = (FIELD_GET(MT_RXV4_RCPI3, rxdg4) - 220) / 2;
+> > mt7615 actually doesn't use in-band RSSI for signal calculation, but it
+> > occurs to me that i should modify the code to compare per-chain's
+> > signal. Something like this:
+> >
+> > 		status->chain_signal[0] = to_rssi(MT_RXV4_RCPI0, rxdg3);
+> > 		status->chain_signal[1] = to_rssi(MT_RXV4_RCPI1, rxdg3);
+> > 		status->chain_signal[2] = to_rssi(MT_RXV4_RCPI2, rxdg3);
+> > 		status->chain_signal[3] = to_rssi(MT_RXV4_RCPI3, rxdg3);
+> > 		status->signal = status->chain_signal[0];
+> >
+> > 		switch (status->chains) {
+> > 		case 0xf:
+> > 			status->signal = max(status->signal,
+> > 					     status->chain_signal[3]);
+> > 		case 0x7:
+> > 			status->signal = max(status->signal,
+> > 					     status->chain_signal[2]);
+> > 		case 0x3:
+> > 			status->signal = max(status->signal,
+> > 					     status->chain_signal[1]);
+> > 			break;
+> > 		default:
+> > 			break;
+> > 		}
+> >
+> >
+> > I could send a v2 or you can take care of that.
+> >
+> > Ryder
+> >
+> >
