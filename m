@@ -1,699 +1,179 @@
-From: Dmitry Vyukov <dvyukov@google.com>
-Subject: Re: [PATCH v2] kasan: add memory corruption identification for
- software tag-based mode
-Date: Mon, 10 Jun 2019 13:46:57 +0200
-Message-ID: <CACT4Y+aetKEM9UkfSoVf8EaDNTD40mEF0xyaRiuw=DPEaGpTkQ@mail.gmail.com>
-References: <1559651172-28989-1-git-send-email-walter-zh.wu@mediatek.com>
- <CACT4Y+Y9_85YB8CCwmKerDWc45Z00hMd6Pc-STEbr0cmYSqnoA@mail.gmail.com> <1560151690.20384.3.camel@mtksdccf07>
+From: Yong Wu <yong.wu@mediatek.com>
+Subject: [PATCH v7 00/21] MT8183 IOMMU SUPPORT
+Date: Mon, 10 Jun 2019 20:17:39 +0800
+Message-ID: <1560169080-27134-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1560151690.20384.3.camel@mtksdccf07>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Walter Wu <walter-zh.wu@mediatek.com>
-Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Matthias Brugger <matthias.bgg@gmail.com>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Arnd Bergmann <arnd@arndb.de>, Vasily Gorbik <gor@linux.ibm.com>, Andrey Konovalov <andreyknvl@google.com>, "Jason A. Donenfeld" <Jason@zx2c4.com>, =?UTF-8?B?TWlsZXMgQ2hlbiAo6Zmz5rCR5qi6KQ==?= <Miles.Chen@mediatek.com>, kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>, Linux-MM <linux-mm@kvack.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@li>
+To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, Will Deacon <will.deacon@arm.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, yingjoe.chen@mediatek.com, yong.wu@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, Matthias Kaehlcke <mka@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jun 10, 2019 at 9:28 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
->
-> On Fri, 2019-06-07 at 21:18 +0800, Dmitry Vyukov wrote:
-> > > diff --git a/include/linux/kasan.h b/include/linux/kasan.h
-> > > index b40ea104dd36..be0667225b58 100644
-> > > --- a/include/linux/kasan.h
-> > > +++ b/include/linux/kasan.h
-> > > @@ -164,7 +164,11 @@ void kasan_cache_shutdown(struct kmem_cache *cache);
-> > >
-> > >  #else /* CONFIG_KASAN_GENERIC */
-> > >
-> > > +#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
-> > > +void kasan_cache_shrink(struct kmem_cache *cache);
-> > > +#else
-> >
-> > Please restructure the code so that we don't duplicate this function
-> > name 3 times in this header.
-> >
-> We have fixed it, Thank you for your reminder.
->
->
-> > >  static inline void kasan_cache_shrink(struct kmem_cache *cache) {}
-> > > +#endif
-> > >  static inline void kasan_cache_shutdown(struct kmem_cache *cache) {}
-> > >
-> > >  #endif /* CONFIG_KASAN_GENERIC */
-> > > diff --git a/lib/Kconfig.kasan b/lib/Kconfig.kasan
-> > > index 9950b660e62d..17a4952c5eee 100644
-> > > --- a/lib/Kconfig.kasan
-> > > +++ b/lib/Kconfig.kasan
-> > > @@ -134,6 +134,15 @@ config KASAN_S390_4_LEVEL_PAGING
-> > >           to 3TB of RAM with KASan enabled). This options allows to force
-> > >           4-level paging instead.
-> > >
-> > > +config KASAN_SW_TAGS_IDENTIFY
-> > > +       bool "Enable memory corruption idenitfication"
-> >
-> > s/idenitfication/identification/
-> >
-> I should replace my glasses.
->
->
-> > > +       depends on KASAN_SW_TAGS
-> > > +       help
-> > > +         Now tag-based KASAN bug report always shows invalid-access error, This
-> > > +         options can identify it whether it is use-after-free or out-of-bound.
-> > > +         This will make it easier for programmers to see the memory corruption
-> > > +         problem.
-> >
-> > This description looks like a change description, i.e. it describes
-> > the current behavior and how it changes. I think code comments should
-> > not have such, they should describe the current state of the things.
-> > It should also mention the trade-off, otherwise it raises reasonable
-> > questions like "why it's not enabled by default?" and "why do I ever
-> > want to not enable it?".
-> > I would do something like:
-> >
-> > This option enables best-effort identification of bug type
-> > (use-after-free or out-of-bounds)
-> > at the cost of increased memory consumption for object quarantine.
-> >
-> I totally agree with your comments. Would you think we should try to add the cost?
-> It may be that it consumes about 1/128th of available memory at full quarantine usage rate.
+This patchset mainly adds support for mt8183 IOMMU and SMI.
 
-Hi,
+mt8183 has only one M4U like mt8173 and is also MTK IOMMU gen2 which
+uses ARM Short-Descriptor translation table format.
 
-I don't understand the question. We should not add costs if not
-necessary. Or you mean why we should add _docs_ regarding the cost? Or
-what?
+The mt8183 M4U-SMI HW diagram is as below:
 
-> > > +
-> > >  config TEST_KASAN
-> > >         tristate "Module for testing KASAN for bug detection"
-> > >         depends on m && KASAN
-> > > diff --git a/mm/kasan/Makefile b/mm/kasan/Makefile
-> > > index 5d1065efbd47..d8540e5070cb 100644
-> > > --- a/mm/kasan/Makefile
-> > > +++ b/mm/kasan/Makefile
-> > > @@ -19,3 +19,4 @@ CFLAGS_tags.o := $(call cc-option, -fno-conserve-stack -fno-stack-protector)
-> > >  obj-$(CONFIG_KASAN) := common.o init.o report.o
-> > >  obj-$(CONFIG_KASAN_GENERIC) += generic.o generic_report.o quarantine.o
-> > >  obj-$(CONFIG_KASAN_SW_TAGS) += tags.o tags_report.o
-> > > +obj-$(CONFIG_KASAN_SW_TAGS_IDENTIFY) += quarantine.o
-> > > diff --git a/mm/kasan/common.c b/mm/kasan/common.c
-> > > index 80bbe62b16cd..e309fbbee831 100644
-> > > --- a/mm/kasan/common.c
-> > > +++ b/mm/kasan/common.c
-> > > @@ -81,7 +81,7 @@ static inline depot_stack_handle_t save_stack(gfp_t flags)
-> > >         return depot_save_stack(&trace, flags);
-> > >  }
-> > >
-> > > -static inline void set_track(struct kasan_track *track, gfp_t flags)
-> > > +void set_track(struct kasan_track *track, gfp_t flags)
-> >
-> > If you make it non-static, it should get kasan_ prefix. The name is too generic.
-> >
-> Ok, We will add it into next version.
->
->
-> >
-> > >  {
-> > >         track->pid = current->pid;
-> > >         track->stack = save_stack(flags);
-> > > @@ -457,7 +457,7 @@ static bool __kasan_slab_free(struct kmem_cache *cache, void *object,
-> > >                 return false;
-> > >
-> > >         set_track(&get_alloc_info(cache, object)->free_track, GFP_NOWAIT);
-> > > -       quarantine_put(get_free_info(cache, object), cache);
-> > > +       quarantine_put(get_free_info(cache, tagged_object), cache);
-> > >
-> > >         return IS_ENABLED(CONFIG_KASAN_GENERIC);
-> > >  }
-> > > diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
-> > > index 3e0c11f7d7a1..1be04abe2e0d 100644
-> > > --- a/mm/kasan/kasan.h
-> > > +++ b/mm/kasan/kasan.h
-> > > @@ -98,6 +98,12 @@ struct kasan_alloc_meta {
-> > >  struct qlist_node {
-> > >         struct qlist_node *next;
-> > >  };
-> > > +struct qlist_object {
-> > > +       unsigned long addr;
-> > > +       unsigned int size;
-> > > +       struct kasan_track free_track;
-> > > +       struct qlist_node qnode;
-> > > +};
-> > >  struct kasan_free_meta {
-> > >         /* This field is used while the object is in the quarantine.
-> > >          * Otherwise it might be used for the allocator freelist.
-> > > @@ -133,11 +139,12 @@ void kasan_report(unsigned long addr, size_t size,
-> > >                 bool is_write, unsigned long ip);
-> > >  void kasan_report_invalid_free(void *object, unsigned long ip);
-> > >
-> > > -#if defined(CONFIG_KASAN_GENERIC) && \
-> > > -       (defined(CONFIG_SLAB) || defined(CONFIG_SLUB))
-> > > +#if (defined(CONFIG_KASAN_GENERIC) || defined(CONFIG_KASAN_SW_TAGS_IDENTIFY)) \
-> > > +       && (defined(CONFIG_SLAB) || defined(CONFIG_SLUB))
-> > >  void quarantine_put(struct kasan_free_meta *info, struct kmem_cache *cache);
-> > >  void quarantine_reduce(void);
-> > >  void quarantine_remove_cache(struct kmem_cache *cache);
-> > > +void set_track(struct kasan_track *track, gfp_t flags);
-> > >  #else
-> > >  static inline void quarantine_put(struct kasan_free_meta *info,
-> > >                                 struct kmem_cache *cache) { }
-> > > @@ -151,6 +158,31 @@ void print_tags(u8 addr_tag, const void *addr);
-> > >
-> > >  u8 random_tag(void);
-> > >
-> > > +#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
-> > > +bool quarantine_find_object(void *object,
-> > > +               struct kasan_track *free_track);
-> > > +
-> > > +struct qlist_object *qobject_create(struct kasan_free_meta *info,
-> > > +               struct kmem_cache *cache);
-> > > +
-> > > +void qobject_free(struct qlist_node *qlink, struct kmem_cache *cache);
-> > > +#else
-> > > +static inline bool quarantine_find_object(void *object,
-> > > +               struct kasan_track *free_track)
-> > > +{
-> > > +       return false;
-> > > +}
-> > > +
-> > > +static inline struct qlist_object *qobject_create(struct kasan_free_meta *info,
-> > > +               struct kmem_cache *cache)
-> > > +{
-> > > +       return NULL;
-> > > +}
-> > > +
-> > > +static inline void qobject_free(struct qlist_node *qlink,
-> > > +               struct kmem_cache *cache) {}
-> > > +#endif
-> > > +
-> > >  #else
-> > >
-> > >  static inline void print_tags(u8 addr_tag, const void *addr) { }
-> > > @@ -160,6 +192,20 @@ static inline u8 random_tag(void)
-> > >         return 0;
-> > >  }
-> > >
-> > > +static inline bool quarantine_find_object(void *object,
-> >
-> >
-> > Please restructure the code so that we don't duplicate this function
-> > name 3 times in this header.
-> >
-> We have fixed it.
->
->
-> > > +               struct kasan_track *free_track)
-> > > +{
-> > > +       return false;
-> > > +}
-> > > +
-> > > +static inline struct qlist_object *qobject_create(struct kasan_free_meta *info,
-> > > +               struct kmem_cache *cache)
-> > > +{
-> > > +       return NULL;
-> > > +}
-> > > +
-> > > +static inline void qobject_free(struct qlist_node *qlink,
-> > > +               struct kmem_cache *cache) {}
-> > >  #endif
-> > >
-> > >  #ifndef arch_kasan_set_tag
-> > > diff --git a/mm/kasan/quarantine.c b/mm/kasan/quarantine.c
-> > > index 978bc4a3eb51..43b009659d80 100644
-> > > --- a/mm/kasan/quarantine.c
-> > > +++ b/mm/kasan/quarantine.c
-> > > @@ -61,12 +61,16 @@ static void qlist_init(struct qlist_head *q)
-> > >  static void qlist_put(struct qlist_head *q, struct qlist_node *qlink,
-> > >                 size_t size)
-> > >  {
-> > > -       if (unlikely(qlist_empty(q)))
-> > > +       struct qlist_node *prev_qlink = q->head;
-> > > +
-> > > +       if (unlikely(qlist_empty(q))) {
-> > >                 q->head = qlink;
-> > > -       else
-> > > -               q->tail->next = qlink;
-> > > -       q->tail = qlink;
-> > > -       qlink->next = NULL;
-> > > +               q->tail = qlink;
-> > > +               qlink->next = NULL;
-> > > +       } else {
-> > > +               q->head = qlink;
-> > > +               qlink->next = prev_qlink;
-> > > +       }
-> > >         q->bytes += size;
-> > >  }
-> > >
-> > > @@ -121,7 +125,11 @@ static unsigned long quarantine_batch_size;
-> > >   * Quarantine doesn't support memory shrinker with SLAB allocator, so we keep
-> > >   * the ratio low to avoid OOM.
-> > >   */
-> > > +#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
-> > > +#define QUARANTINE_FRACTION 128
-> >
-> > Explain in a comment why we use lower value for sw tags mode.
-> >
-> The comment is below.
-> "Tag-based KASAN only stores freed object information rather than the
-> object itself. The quarantine in tag-based KASAN only needs less usage
-> to achieve the same effect as generic KASAN. So We reduce the
-> QUARANTINE_FRACTION value to slim the quarantine"
->
->
-> > > +#else
-> > >  #define QUARANTINE_FRACTION 32
-> > > +#endif
-> > >
-> > >  static struct kmem_cache *qlink_to_cache(struct qlist_node *qlink)
-> > >  {
-> > > @@ -139,16 +147,24 @@ static void *qlink_to_object(struct qlist_node *qlink, struct kmem_cache *cache)
-> > >
-> > >  static void qlink_free(struct qlist_node *qlink, struct kmem_cache *cache)
-> > >  {
-> > > -       void *object = qlink_to_object(qlink, cache);
-> > >         unsigned long flags;
-> > > +       struct kmem_cache *obj_cache;
-> > > +       void *object;
-> > >
-> > > -       if (IS_ENABLED(CONFIG_SLAB))
-> > > -               local_irq_save(flags);
-> > > +       if (IS_ENABLED(CONFIG_KASAN_SW_TAGS_IDENTIFY)) {
-> > > +               qobject_free(qlink, cache);
-> > > +       } else {
-> > > +               obj_cache = cache ? cache :     qlink_to_cache(qlink);
-> > > +               object = qlink_to_object(qlink, obj_cache);
-> > >
-> > > -       ___cache_free(cache, object, _THIS_IP_);
-> > > +               if (IS_ENABLED(CONFIG_SLAB))
-> > > +                       local_irq_save(flags);
-> > >
-> > > -       if (IS_ENABLED(CONFIG_SLAB))
-> > > -               local_irq_restore(flags);
-> > > +               ___cache_free(obj_cache, object, _THIS_IP_);
-> > > +
-> > > +               if (IS_ENABLED(CONFIG_SLAB))
-> > > +                       local_irq_restore(flags);
-> > > +       }
-> > >  }
-> > >
-> > >  static void qlist_free_all(struct qlist_head *q, struct kmem_cache *cache)
-> > > @@ -160,11 +176,9 @@ static void qlist_free_all(struct qlist_head *q, struct kmem_cache *cache)
-> > >
-> > >         qlink = q->head;
-> > >         while (qlink) {
-> > > -               struct kmem_cache *obj_cache =
-> > > -                       cache ? cache : qlink_to_cache(qlink);
-> > >                 struct qlist_node *next = qlink->next;
-> > >
-> > > -               qlink_free(qlink, obj_cache);
-> > > +               qlink_free(qlink, cache);
-> > >                 qlink = next;
-> > >         }
-> > >         qlist_init(q);
-> > > @@ -175,6 +189,8 @@ void quarantine_put(struct kasan_free_meta *info, struct kmem_cache *cache)
-> > >         unsigned long flags;
-> > >         struct qlist_head *q;
-> > >         struct qlist_head temp = QLIST_INIT;
-> > > +       struct kmem_cache *qobject_cache;
-> > > +       struct qlist_object *free_obj_info;
-> > >
-> > >         /*
-> > >          * Note: irq must be disabled until after we move the batch to the
-> > > @@ -187,7 +203,19 @@ void quarantine_put(struct kasan_free_meta *info, struct kmem_cache *cache)
-> > >         local_irq_save(flags);
-> > >
-> > >         q = this_cpu_ptr(&cpu_quarantine);
-> > > -       qlist_put(q, &info->quarantine_link, cache->size);
-> > > +       if (IS_ENABLED(CONFIG_KASAN_SW_TAGS_IDENTIFY)) {
-> > > +               free_obj_info = qobject_create(info, cache);
-> > > +               if (!free_obj_info) {
-> > > +                       local_irq_restore(flags);
-> > > +                       return;
-> > > +               }
-> > > +
-> > > +               qobject_cache = qlink_to_cache(&free_obj_info->qnode);
-> > > +               qlist_put(q, &free_obj_info->qnode, qobject_cache->size);
-> >
-> > We could use sizeof(*free_obj_info), which looks simpler. Any reason
-> > to do another hop through the cache?
-> >
-> We originally thought we should store the whole slab usage(including metadata)
-> instead of qobject size.
-> If we use sizeof(*free_obj_info), then below calculation is incorrect.
-> total quarantine size = (totalram_pages() << PAGE_SHIFT) / QUARANTINE_FRACTION
-> - QUARANTINE_PERCPU_SIZE*num_online_cpus()
+                          EMI
+                           |
+                          M4U
+                           |
+                       ----------
+                       |        |
+                   gals0-rx   gals1-rx
+                       |        |
+                       |        |
+                   gals0-tx   gals1-tx
+                       |        |
+                      ------------
+                       SMI Common
+                      ------------
+                           |
+  +-----+-----+--------+-----+-----+-------+-------+
+  |     |     |        |     |     |       |       |
+  |     |  gals-rx  gals-rx  |   gals-rx gals-rx gals-rx
+  |     |     |        |     |     |       |       |
+  |     |     |        |     |     |       |       |
+  |     |  gals-tx  gals-tx  |   gals-tx gals-tx gals-tx
+  |     |     |        |     |     |       |       |
+larb0 larb1  IPU0    IPU1  larb4  larb5  larb6    CCU
+disp  vdec   img     cam    venc   img    cam
 
-So this is total size which is more precise. I see.
+All the connections are HW fixed, SW can NOT adjust it.
 
+Compared with mt8173, we add a GALS(Global Async Local Sync) module
+between SMI-common and M4U, and additional GALS between larb2/3/5/6
+and SMI-common. GALS can help synchronize for the modules in different
+clock frequency, it can be seen as a "asynchronous fifo".
 
-> > > +       } else {
-> > > +               qlist_put(q, &info->quarantine_link, cache->size);
-> > > +       }
-> > > +
-> > >         if (unlikely(q->bytes > QUARANTINE_PERCPU_SIZE)) {
-> > >                 qlist_move_all(q, &temp);
-> > >
-> > > @@ -220,7 +248,6 @@ void quarantine_reduce(void)
-> > >         if (likely(READ_ONCE(quarantine_size) <=
-> > >                    READ_ONCE(quarantine_max_size)))
-> > >                 return;
-> > > -
-> > >         /*
-> > >          * srcu critical section ensures that quarantine_remove_cache()
-> > >          * will not miss objects belonging to the cache while they are in our
-> > > @@ -327,3 +354,90 @@ void quarantine_remove_cache(struct kmem_cache *cache)
-> > >
-> > >         synchronize_srcu(&remove_cache_srcu);
-> > >  }
-> > > +
-> > > +#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
-> > > +static noinline bool qlist_find_object(struct qlist_head *from, void *arg)
-> > > +{
-> > > +       struct qlist_node *curr;
-> > > +       struct qlist_object *curr_obj;
-> > > +       struct qlist_object *target = (struct qlist_object *)arg;
-> > > +
-> > > +       if (unlikely(qlist_empty(from)))
-> > > +               return false;
-> > > +
-> > > +       curr = from->head;
-> > > +       while (curr) {
-> > > +               struct qlist_node *next = curr->next;
-> > > +
-> > > +               curr_obj = container_of(curr, struct qlist_object, qnode);
-> > > +               if (unlikely((target->addr >= curr_obj->addr) &&
-> > > +                       (target->addr < (curr_obj->addr + curr_obj->size)))) {
-> > > +                       target->free_track = curr_obj->free_track;
-> > > +                       return true;
-> > > +               }
-> > > +
-> > > +               curr = next;
-> > > +       }
-> > > +       return false;
-> > > +}
-> > > +
-> > > +static noinline int per_cpu_find_object(void *arg)
-> > > +{
-> > > +       struct qlist_head *q;
-> > > +
-> > > +       q = this_cpu_ptr(&cpu_quarantine);
-> > > +       return qlist_find_object(q, arg);
-> > > +}
-> > > +
-> > > +struct cpumask cpu_allowed_mask __read_mostly;
-> > > +
-> > > +bool quarantine_find_object(void *addr, struct kasan_track *free_track)
-> > > +{
-> > > +       unsigned long flags;
-> > > +       bool find = false;
-> > > +       int cpu, i;
-> > > +       struct qlist_object target;
-> > > +
-> > > +       target.addr = (unsigned long)addr;
-> > > +
-> > > +       cpumask_copy(&cpu_allowed_mask, cpu_online_mask);
-> > > +       for_each_cpu(cpu, &cpu_allowed_mask) {
-> > > +               find = smp_call_on_cpu(cpu, per_cpu_find_object,
-> > > +                               (void *)&target, true);
-> > > +               if (find) {
-> > > +                       if (free_track)
-> > > +                               *free_track = target.free_track;
-> > > +                       return true;
-> > > +               }
-> > > +       }
-> > > +
-> > > +       raw_spin_lock_irqsave(&quarantine_lock, flags);
-> > > +       for (i = quarantine_tail; i >= 0; i--) {
-> > > +               if (qlist_empty(&global_quarantine[i]))
-> > > +                       continue;
-> > > +               find = qlist_find_object(&global_quarantine[i],
-> > > +                               (void *)&target);
-> > > +               if (find) {
-> > > +                       if (free_track)
-> > > +                               *free_track = target.free_track;
-> > > +                       raw_spin_unlock_irqrestore(&quarantine_lock, flags);
-> > > +                       return true;
-> > > +               }
-> > > +       }
-> > > +       for (i = QUARANTINE_BATCHES-1; i > quarantine_tail; i--) {
-> >
-> > Find a way to calculate the right index using a single loop, rather
-> > that copy-paste the whole loop body to do a small adjustment to index.
-> >
-> single loop:
->
->     for (i = quarantine_tail, j = 1; i != quarantine_tail || j != 2;
-> i--) {
+GALS can only help transfer the command/data while it doesn't have
+the configuring register, thus it has the special "smi" clock and it
+doesn't have the "apb" clock. From the diagram above, we add "gals0"
+and "gals1" clocks for smi-common and add a "gals" clock for smi-larb.
 
-I would find the classic loop form easier to follow and then compute
-the actual index as necessary.
-Something along the following lines:
+>From the diagram above, IPU0/IPU1(Image Processor Unit) and CCU(Camera
+Control Unit) is connected with smi-common directly, we can take them
+as "larb2", "larb3" and "larb7", and their register spaces are
+different with the normal larb.
 
-for (i = 0; i < QUARANTINE_BATCHES; i++) {
-    idx = quarantine_tail - i;
-    if (idx < 0)
-        idx += QUARANTINE_BATCHES;
-    ...
+This is the general purpose of each patch in this patchset:
+the patch 1..13 add the iommu/smi support for mt8183;
+the patch 14..16 add mmu1 support;
+the last patches contain some minor changes:
+   -patch 17 cleanup some smi codes(delete need_larbid).
+   -patch 18 fix a issue(fix vld_pa_rng).
+   -patch 19/20 improve the 4GB mode.
+   -patch 21 switch to SPDX license.
+The dtsi was sent at [1].
 
->         if (i < 0) {
->             i = QUARANTINE_BATCHES;
->             j = 2;
->             continue;
->         }
->         if (qlist_empty(&global_quarantine[i]))
->             continue;
->         find = qlist_find_object(&global_quarantine[i],
->                 (void *)&target);
->         if (find) {
->             if (free_track)
->                 *free_track = target.free_track;
->             raw_spin_unlock_irqrestore(&quarantine_lock, flags);
->             return true;
->         }
->     }
->
->
-> > > +               if (qlist_empty(&global_quarantine[i]))
-> > > +                       continue;
-> > > +               find = qlist_find_object(&global_quarantine[i],
-> > > +                               (void *)&target);
-> > > +               if (find) {
-> > > +                       if (free_track)
-> > > +                               *free_track = target.free_track;
-> > > +                       raw_spin_unlock_irqrestore(&quarantine_lock, flags);
-> > > +                       return true;
-> > > +               }
-> > > +       }
-> > > +       raw_spin_unlock_irqrestore(&quarantine_lock, flags);
-> > > +
-> > > +       return false;
-> > > +}
-> > > +#endif
-> > > diff --git a/mm/kasan/report.c b/mm/kasan/report.c
-> > > index ca9418fe9232..3cbc24cd3d43 100644
-> > > --- a/mm/kasan/report.c
-> > > +++ b/mm/kasan/report.c
-> > > @@ -150,18 +150,27 @@ static void describe_object_addr(struct kmem_cache *cache, void *object,
-> > >  }
-> > >
-> > >  static void describe_object(struct kmem_cache *cache, void *object,
-> > > -                               const void *addr)
-> > > +                               const void *tagged_addr)
-> > >  {
-> > > +       void *untagged_addr = reset_tag(tagged_addr);
-> > >         struct kasan_alloc_meta *alloc_info = get_alloc_info(cache, object);
-> > > +       struct kasan_track free_track;
-> > >
-> > >         if (cache->flags & SLAB_KASAN) {
-> > > -               print_track(&alloc_info->alloc_track, "Allocated");
-> > > -               pr_err("\n");
-> > > -               print_track(&alloc_info->free_track, "Freed");
-> > > -               pr_err("\n");
-> > > +               if (IS_ENABLED(CONFIG_KASAN_SW_TAGS_IDENTIFY) &&
-> > > +                       quarantine_find_object((void *)tagged_addr,
-> > > +                               &free_track)) {
-> > > +                       print_track(&free_track, "Freed");
-> > > +                       pr_err("\n");
-> > > +               } else {
-> > > +                       print_track(&alloc_info->alloc_track, "Allocated");
-> > > +                       pr_err("\n");
-> > > +                       print_track(&alloc_info->free_track, "Freed");
-> > > +                       pr_err("\n");
-> > > +               }
-> > >         }
-> > >
-> > > -       describe_object_addr(cache, object, addr);
-> > > +       describe_object_addr(cache, object, untagged_addr);
-> > >  }
-> > >
-> > >  static inline bool kernel_or_module_addr(const void *addr)
-> > > @@ -180,23 +189,25 @@ static inline bool init_task_stack_addr(const void *addr)
-> > >                         sizeof(init_thread_union.stack));
-> > >  }
-> > >
-> > > -static void print_address_description(void *addr)
-> > > +static void print_address_description(void *tagged_addr)
-> > >  {
-> > > -       struct page *page = addr_to_page(addr);
-> > > +       void *untagged_addr = reset_tag(tagged_addr);
-> > > +       struct page *page = addr_to_page(untagged_addr);
-> > >
-> > >         dump_stack();
-> > >         pr_err("\n");
-> > >
-> > >         if (page && PageSlab(page)) {
-> > >                 struct kmem_cache *cache = page->slab_cache;
-> > > -               void *object = nearest_obj(cache, page, addr);
-> > > +               void *object = nearest_obj(cache, page, untagged_addr);
-> > >
-> > > -               describe_object(cache, object, addr);
-> > > +               describe_object(cache, object, tagged_addr);
-> > >         }
-> > >
-> > > -       if (kernel_or_module_addr(addr) && !init_task_stack_addr(addr)) {
-> > > +       if (kernel_or_module_addr(untagged_addr) &&
-> > > +                       !init_task_stack_addr(untagged_addr)) {
-> > >                 pr_err("The buggy address belongs to the variable:\n");
-> > > -               pr_err(" %pS\n", addr);
-> > > +               pr_err(" %pS\n", untagged_addr);
-> > >         }
-> > >
-> > >         if (page) {
-> > > @@ -314,7 +325,7 @@ void kasan_report(unsigned long addr, size_t size,
-> > >         pr_err("\n");
-> > >
-> > >         if (addr_has_shadow(untagged_addr)) {
-> > > -               print_address_description(untagged_addr);
-> > > +               print_address_description(tagged_addr);
-> > >                 pr_err("\n");
-> > >                 print_shadow_for_address(info.first_bad_addr);
-> > >         } else {
-> > > diff --git a/mm/kasan/tags.c b/mm/kasan/tags.c
-> > > index 63fca3172659..7804b48f760e 100644
-> > > --- a/mm/kasan/tags.c
-> > > +++ b/mm/kasan/tags.c
-> > > @@ -124,6 +124,53 @@ void check_memory_region(unsigned long addr, size_t size, bool write,
-> > >         }
-> > >  }
-> > >
-> > > +#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
-> > > +void kasan_cache_shrink(struct kmem_cache *cache)
-> > > +{
-> > > +       quarantine_remove_cache(cache);
-> >
-> > This does not look to be necessary. There are no objects from that
-> > cache in the quarantine in general. Let's not over-complicate this.
-> >
-> Ok, we will remove it.
->
-> >
-> >
-> > > +}
-> > > +
-> > > +struct qlist_object *qobject_create(struct kasan_free_meta *info,
-> > > +                                               struct kmem_cache *cache)
-> > > +{
-> > > +       struct qlist_object *qobject_info;
-> > > +       void *object;
-> > > +
-> > > +       object = ((void *)info) - cache->kasan_info.free_meta_offset;
-> > > +       qobject_info = kmalloc(sizeof(struct qlist_object), GFP_NOWAIT);
-> > > +       if (!qobject_info)
-> > > +               return NULL;
-> > > +       qobject_info->addr = (unsigned long) object;
-> > > +       qobject_info->size = cache->object_size;
-> > > +       set_track(&qobject_info->free_track, GFP_NOWAIT);
-> > > +
-> > > +       return qobject_info;
-> > > +}
-> > > +
-> > > +static struct kmem_cache *qobject_to_cache(struct qlist_object *qobject)
-> > > +{
-> > > +       return virt_to_head_page(qobject)->slab_cache;
-> >
-> > This looks identical to the existing qlink_to_cache, please use the
-> > existing function.
-> >
-> > > +}
-> > > +
-> > > +void qobject_free(struct qlist_node *qlink, struct kmem_cache *cache)
-> > > +{
-> > > +       struct qlist_object *qobject = container_of(qlink,
-> > > +                       struct qlist_object, qnode);
-> > > +       unsigned long flags;
-> > > +
-> > > +       struct kmem_cache *qobject_cache =
-> > > +                       cache ? cache : qobject_to_cache(qobject);
-> >
-> > I don't understand this part.
-> > Will caller ever pass us the right cache? Or cache is always NULL? If
-> > it's always NULL, why do we accept it at all?
-> 2 call flow at v2.
-> a). kmalloc() -> quarantine_reduce() -> qlist_free_all(&to_free, NULL)
-> -> qlink_free(qlink, NULL) -> qobject_free(qlink, NULL)
-> b). kmem_cache_shrink() -> kasan_cache_shrink(cache) ->
-> quarantine_remove_cache() -> qlist_free_all(&to_free, cache); ->
-> qlink_free(qlink, cache) -> qobject_free(qlink, cache)
->
-> It passes the NULL parameter at flow a.
-> It passes the cache of slab at flow b.
->
-> We always need calculate the slab cache to If we remove flow b.
+[1] https://lore.kernel.org/patchwork/patch/1054099/
 
-Good. Let's do it. The simpler, the better.
+Change notes:
+v7:
+   1) rebase on v5.2-rc1.
+   2) Add fixed tags in patch 20.
+   3) Remove shutdown patch. I will send it independently if necessary.
 
-> > We also allocate qobjects with kmalloc always, so we must use kfree,
-> > why do we even mess with caches?
-> >
-> We call ___cache_free() to free the qobject instead of kfree(), because
-> it should be out of quarantine.
+v6: https://lists.linuxfoundation.org/pipermail/iommu/2019-February/033685.html
+    1) rebase on v5.0-rc1.
+    2) About the register name (VLD_PA_RNG), Keep consistent in the patches.
+    3) In the 4GB mode, Always add MTK_4GB_quirk.
+    4) Reword some commit message helped from Evan. like common->smi_ao_base is
+       completely different from common->base; STANDARD_AXI_MODE reg is completely
+       different from CTRL_MISC; commit in the shutdown patch.
+    5) Add 2 new patches again:
+       iommu/mediatek: Rename enable_4GB to dram_is_4gb
+       iommu/mediatek: Fix iova_to_phys PA start for 4GB mode
 
-I see. Probably this mismatch worth a comment.
+v5: https://lists.linuxfoundation.org/pipermail/iommu/2019-January/032387.html
+    1) Remove this patch "iommu/mediatek: Constify iommu_ops" from here as it
+       was applied for v5.0.
+    2) Again, add 3 preparing patches. Move two property into the plat_data.
+       iommu/mediatek: Move vld_pa_rng into plat_data
+       iommu/mediatek: Move reset_axi into plat_data
+       iommu/mediatek: Refine protect memory definition
+    3) Add shutdown callback for mtk_iommu_v1 in patch[19/20].
 
-> > > +
-> > > +       if (IS_ENABLED(CONFIG_SLAB))
-> > > +               local_irq_save(flags);
-> > > +
-> > > +       ___cache_free(qobject_cache, (void *)qobject, _THIS_IP_);
-> > > +
-> > > +       if (IS_ENABLED(CONFIG_SLAB))
-> > > +               local_irq_restore(flags);
-> > > +}
-> > > +#endif
-> > > +
-> > >  #define DEFINE_HWASAN_LOAD_STORE(size)                                 \
-> > >         void __hwasan_load##size##_noabort(unsigned long addr)          \
-> > >         {                                                               \
-> > > diff --git a/mm/kasan/tags_report.c b/mm/kasan/tags_report.c
-> > > index 8eaf5f722271..63b0b1f381ff 100644
-> > > --- a/mm/kasan/tags_report.c
-> > > +++ b/mm/kasan/tags_report.c
-> > > @@ -36,7 +36,13 @@
-> > >
-> > >  const char *get_bug_type(struct kasan_access_info *info)
-> > >  {
-> > > -       return "invalid-access";
-> > > +       if (IS_ENABLED(CONFIG_KASAN_SW_TAGS_IDENTIFY)) {
-> > > +               if (quarantine_find_object((void *)info->access_addr, NULL))
-> > > +                       return "use-after-free";
-> > > +               else
-> > > +                       return "out-of-bounds";
-> > > +       } else
-> > > +               return "invalid-access";
-> > >  }
-> > >
-> > >  void *find_first_bad_addr(void *addr, size_t size)
-> > > diff --git a/mm/slub.c b/mm/slub.c
-> > > index 1b08fbcb7e61..751429d02846 100644
-> > > --- a/mm/slub.c
-> > > +++ b/mm/slub.c
-> > > @@ -3004,7 +3004,7 @@ static __always_inline void slab_free(struct kmem_cache *s, struct page *page,
-> > >                 do_slab_free(s, page, head, tail, cnt, addr);
-> > >  }
-> > >
-> > > -#ifdef CONFIG_KASAN_GENERIC
-> > > +#if defined(CONFIG_KASAN_GENERIC) || defined(CONFIG_KASAN_SW_TAGS_IDENTIFY)
-> > >  void ___cache_free(struct kmem_cache *cache, void *x, unsigned long addr)
-> > >  {
-> > >         do_slab_free(cache, virt_to_head_page(x), x, NULL, 1, addr);
+v4: http://lists.infradead.org/pipermail/linux-mediatek/2018-December/016205.html
+    1) Add 3 preparing patches. Seperate some minor meaningful code into
+       a new patch according to Matthias's suggestion.
+       memory: mtk-smi: Add gals support         
+       iommu/mediatek: Add larb-id remapped support 
+       iommu/mediatek: Add bclk can be supported optionally       
+    2) rebase on "iommu/mediatek: Make it explicitly non-modular"
+       which was applied.
+       https://lore.kernel.org/patchwork/patch/1020125/
+    3) add some comment about "mediatek,larb-id" in the commit message of
+       the patch "mtk-smi: Get rid of need_larbid".
+    4) Fix bus_sel value.
+
+v3: https://lists.linuxfoundation.org/pipermail/iommu/2018-November/031121.html
+    1) rebase on v4.20-rc1.
+    2) In the dt-binding, add a minor string "mt7623" which also use gen1
+       since Matthias added it in v4.20.
+    3) About v7s:
+       a) for paddr_to_pte, change the param from "arm_v7s_io_pgtable" to
+          "arm_pgtable_cfg", according to Robin suggestion.
+       b) Don't use CONFIG_PHYS_ADDR_T_64BIT.
+       c) add a little comment(pgtable address still don't over 4GB) in the
+          commit message of the patch "Extend MediaTek 4GB Mode".
+    4) add "iommu/mediatek: Constify iommu_ops" into this patchset. this may
+       be helpful for review and merge.
+       https://lists.linuxfoundation.org/pipermail/iommu/2018-October/030637.html
+
+v2: https://lists.linuxfoundation.org/pipermail/iommu/2018-September/030164.html
+    1) Fix typo in the commit message of dt-binding.
+    2) Change larb2/larb3 to the special larbs.
+    3) Refactor the larb-id remapped array(larbid_remapped), then we
+    don't need add the new function(mtk_iommu_get_larbid).
+    4) Add a new patch for v7s two helpers(paddr_to_iopte and
+    iopte_to_paddr).
+    5) Change some comment for MTK 4GB mode.
+
+v1: base on v4.19-rc1.
+http://lists.infradead.org/pipermail/linux-mediatek/2018-September/014881.html
+
+Yong Wu (21):
+  dt-bindings: mediatek: Add binding for mt8183 IOMMU and SMI
+  iommu/mediatek: Use a struct as the platform data
+  memory: mtk-smi: Use a general config_port interface
+  memory: mtk-smi: Use a struct for the platform data for smi-common
+  iommu/io-pgtable-arm-v7s: Add paddr_to_iopte and iopte_to_paddr
+    helpers
+  iommu/io-pgtable-arm-v7s: Extend MediaTek 4GB Mode
+  iommu/mediatek: Add bclk can be supported optionally
+  iommu/mediatek: Add larb-id remapped support
+  iommu/mediatek: Refine protect memory definition
+  iommu/mediatek: Move reset_axi into plat_data
+  iommu/mediatek: Move vld_pa_rng into plat_data
+  memory: mtk-smi: Add gals support
+  iommu/mediatek: Add mt8183 IOMMU support
+  iommu/mediatek: Add mmu1 support
+  memory: mtk-smi: Invoke pm runtime_callback to enable clocks
+  memory: mtk-smi: Add bus_sel for mt8183
+  memory: mtk-smi: Get rid of need_larbid
+  iommu/mediatek: Fix VLD_PA_RNG register backup when suspend
+  iommu/mediatek: Rename enable_4GB to dram_is_4gb
+  iommu/mediatek: Fix iova_to_phys PA start for 4GB mode
+  iommu/mediatek: Switch to SPDX license identifier
+
+ .../devicetree/bindings/iommu/mediatek,iommu.txt   |  30 ++-
+ .../memory-controllers/mediatek,smi-common.txt     |  12 +-
+ .../memory-controllers/mediatek,smi-larb.txt       |   4 +
+ drivers/iommu/io-pgtable-arm-v7s.c                 |  72 ++++--
+ drivers/iommu/mtk_iommu.c                          | 166 ++++++++-----
+ drivers/iommu/mtk_iommu.h                          |  27 ++-
+ drivers/iommu/mtk_iommu_v1.c                       |  12 +-
+ drivers/memory/mtk-smi.c                           | 270 ++++++++++++++-------
+ include/dt-bindings/memory/mt2701-larb-port.h      |  10 +-
+ include/dt-bindings/memory/mt8173-larb-port.h      |  10 +-
+ include/dt-bindings/memory/mt8183-larb-port.h      | 130 ++++++++++
+ include/soc/mediatek/smi.h                         |  11 +-
+ 12 files changed, 530 insertions(+), 224 deletions(-)
+ create mode 100644 include/dt-bindings/memory/mt8183-larb-port.h
+
+-- 
+1.9.1 
