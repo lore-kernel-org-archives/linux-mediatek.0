@@ -1,81 +1,196 @@
 From: Sebastian Gottschall <s.gottschall-9LViYcISHtuk6R/r8kmGfQ@public.gmane.org>
-Subject: Re: [PATCH] mt76: mt7615: add support for per-chain signal strength
- reporting
-Date: Mon, 10 Jun 2019 06:47:39 +0200
-Message-ID: <64662021-8e5a-91b5-9afb-3c9005564d19@newmedia-net.de>
-References: <3912a2863e858f3623ced61737836e42c7b19149.1560071167.git.ryder.lee@mediatek.com>
- <d6cfd2e9-4b2b-36ac-6cae-a34f74204801@newmedia-net.de>
- <1560132590.28258.5.camel@mtkswgap22> <1560140541.5606.12.camel@mtkswgap22>
+Subject: possible fix for broken cmac crypto support
+Date: Mon, 10 Jun 2019 07:11:15 +0200
+Message-ID: <e6b4bd01-58d3-6616-6d06-620ca7cdc19c@newmedia-net.de>
+References: <a1ff446dfc06e2443552e7ec2d754099aacce7df.1559541944.git.ryder.lee@mediatek.com>
+ <ade7ef01-8b06-ec7d-4caf-e581f4033819@newmedia-net.de>
+ <CAJ0CqmVBogQrqf4Gckr5gQ6tCrdZG=p60ZiC+-WW-yxt93+40Q@mail.gmail.com>
+ <0eea6d21-1de2-abc3-93f4-70ed04dac3df@newmedia-net.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1560140541.5606.12.camel@mtkswgap22>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Chih-Min Chen <chih-min.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YF Luo <yf.luo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Yiwei Chung <yiwei.chung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roy Luo <royluo-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <0eea6d21-1de2-abc3-93f4-70ed04dac3df-9LViYcISHtuk6R/r8kmGfQ@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Cc: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Roy Luo <royluo-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, YF Luo <yf.luo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yiwei Chung <yiwei.chung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Chih-Min Chen <chih-min.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-okay. curious is, that my variant works with sane results too.
-i will test your variant and check the results
+this is no real patch for this mailing list since i havent cloned yet a 
+git tree. take it as a hint
+this fixes the BUG WARN if SAE encryption is used (mandatory for mesh / 
+802.11s crypto)
+that will not fix that mesh is not working (likelly just with other 
+vendors), but it will fix crypto at least
 
 Sebastian
 
-Am 10.06.2019 um 06:22 schrieb Ryder Lee:
-> On Mon, 2019-06-10 at 10:09 +0800, Ryder Lee wrote:
->> On Sun, 2019-06-09 at 16:44 +0200, Sebastian Gottschall wrote:
->>> according to my findings
+Index: main.c
+===================================================================
+--- main.c      (revision 4584)
++++ main.c      (revision 4585)
+@@ -180,6 +180,20 @@ static int mt7615_set_key(struct ieee80211_hw *hw,
+             !(key->flags & IEEE80211_KEY_FLAG_PAIRWISE))
+                 return -EOPNOTSUPP;
+
++       switch (key->cipher) {
++       case WLAN_CIPHER_SUITE_WEP40:
++       case WLAN_CIPHER_SUITE_WEP104:
++       case WLAN_CIPHER_SUITE_TKIP:
++       case WLAN_CIPHER_SUITE_CCMP:
++       case WLAN_CIPHER_SUITE_CCMP_256:
++       case WLAN_CIPHER_SUITE_GCMP:
++       case WLAN_CIPHER_SUITE_GCMP_256:
++       case WLAN_CIPHER_SUITE_SMS4:
++               break;
++       default:
++               return -EOPNOTSUPP;
++       }
++
+         if (cmd == SET_KEY) {
+                 key->hw_key_idx = wcid->idx;
+                 wcid->hw_key_idx = idx;
+
+Am 09.06.2019 um 16:36 schrieb Sebastian Gottschall:
+> by the way. this big fat kernel warning exists in all operation modes 
+> unless anything else but aes-128 ccmp is used. since the chipset is 
+> capable of doing gcmp etc. as well
+> it would be nice if this issue can be fixed. otherwise encryption 
+> support can be defined as "broken" for mt7615
+>
+> Am 06.06.2019 um 18:19 schrieb Lorenzo Bianconi:
+>>> i tested your patch against a qca 9984 chipset using SAE and without
+>>> encryption. both did not work. the devices are connecting, but no data
+>>> connection is possible
+>> Hi Sebastian,
+>>
+>> I tested Ryder's patch using mt76x2 as mesh peer and it works fine 
+>> for me.
+>> Could you please provide some more info?
+>>
+>> Regards,
+>> Lorenzo
+>>
 >>>
->>> MT_RXV4_RCPI1 is part of rx descriptor 4 and not 3
->>> so it must be rxdg4 = rxd[4] etc.
->> RXV start from 1 in the code.
->>
->> That is: RXV1 <-> rxdg0, RXV2 <-> rxdg1 ...so RXV4 <-> rxdg3
->>
->>> however rxdg3 contains MT_RXV3_IB_RSSIRX which can be used for signal calculation.
->>> i already wrote a similar code for this driver which i sended to felix a long time ago.
->>> my variant looks like
->>>                   status->signal = (FIELD_GET(MT_RXV3_IB_RSSIRX, rxdg3) - 220) / 2;
->>>                   status->chain_signal[0] = (FIELD_GET(MT_RXV4_RCPI0, rxdg4) - 220) / 2;
->>>                   status->chain_signal[1] = (FIELD_GET(MT_RXV4_RCPI1, rxdg4) - 220) / 2;
->>>                   status->chain_signal[2] = (FIELD_GET(MT_RXV4_RCPI2, rxdg4) - 220) / 2;
->>>                   status->chain_signal[3] = (FIELD_GET(MT_RXV4_RCPI3, rxdg4) - 220) / 2;
-> mt7615 actually doesn't use in-band RSSI for signal calculation, but it
-> occurs to me that i should modify the code to compare per-chain's
-> signal. Something like this:
->
-> 		status->chain_signal[0] = to_rssi(MT_RXV4_RCPI0, rxdg3);
-> 		status->chain_signal[1] = to_rssi(MT_RXV4_RCPI1, rxdg3);
-> 		status->chain_signal[2] = to_rssi(MT_RXV4_RCPI2, rxdg3);
-> 		status->chain_signal[3] = to_rssi(MT_RXV4_RCPI3, rxdg3);
-> 		status->signal = status->chain_signal[0];
->
-> 		switch (status->chains) {
-> 		case 0xf:
-> 			status->signal = max(status->signal,
-> 					     status->chain_signal[3]);
-> 		case 0x7:
-> 			status->signal = max(status->signal,
-> 					     status->chain_signal[2]);
-> 		case 0x3:
-> 			status->signal = max(status->signal,
-> 					     status->chain_signal[1]);
-> 			break;
-> 		default:
-> 			break;
-> 		}
->
->
-> I could send a v2 or you can take care of that.
->
-> Ryder
->
+>>> Sebastian
+>>>
+>>> Am 03.06.2019 um 08:08 schrieb Ryder Lee:
+>>>> Enable NL80211_IFTYPE_MESH_POINT and update its path.
+>>>>
+>>>> Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>>> ---
+>>>> Changes since v3 - fix a wrong expression
+>>>> Changes since v2 - remove unused definitions
+>>>> ---
+>>>>    drivers/net/wireless/mediatek/mt76/mt7615/init.c | 6 ++++++
+>>>>    drivers/net/wireless/mediatek/mt76/mt7615/main.c | 1 +
+>>>>    drivers/net/wireless/mediatek/mt76/mt7615/mcu.c  | 4 +++-
+>>>>    drivers/net/wireless/mediatek/mt76/mt7615/mcu.h  | 6 ------
+>>>>    4 files changed, 10 insertions(+), 7 deletions(-)
+>>>>
+>>>> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c 
+>>>> b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+>>>> index 59f604f3161f..f860af6a42da 100644
+>>>> --- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+>>>> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+>>>> @@ -133,6 +133,9 @@ static const struct ieee80211_iface_limit 
+>>>> if_limits[] = {
+>>>>        {
+>>>>                .max = MT7615_MAX_INTERFACES,
+>>>>                .types = BIT(NL80211_IFTYPE_AP) |
+>>>> +#ifdef CONFIG_MAC80211_MESH
+>>>> +                      BIT(NL80211_IFTYPE_MESH_POINT) |
+>>>> +#endif
+>>>>                         BIT(NL80211_IFTYPE_STATION)
+>>>>        }
+>>>>    };
+>>>> @@ -195,6 +198,9 @@ int mt7615_register_device(struct mt7615_dev *dev)
+>>>>        dev->mt76.antenna_mask = 0xf;
+>>>>
+>>>>        wiphy->interface_modes = BIT(NL80211_IFTYPE_STATION) |
+>>>> +#ifdef CONFIG_MAC80211_MESH
+>>>> + BIT(NL80211_IFTYPE_MESH_POINT) |
+>>>> +#endif
+>>>>                                 BIT(NL80211_IFTYPE_AP);
+>>>>
+>>>>        ret = mt76_register_device(&dev->mt76, true, mt7615_rates,
+>>>> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c 
+>>>> b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+>>>> index b0bb7cc12385..585e67fa2728 100644
+>>>> --- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+>>>> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+>>>> @@ -37,6 +37,7 @@ static int get_omac_idx(enum nl80211_iftype type, 
+>>>> u32 mask)
+>>>>
+>>>>        switch (type) {
+>>>>        case NL80211_IFTYPE_AP:
+>>>> +     case NL80211_IFTYPE_MESH_POINT:
+>>>>                /* ap use hw bssid 0 and ext bssid */
+>>>>                if (~mask & BIT(HW_BSSID_0))
+>>>>                        return HW_BSSID_0;
+>>>> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c 
+>>>> b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+>>>> index 43f70195244c..e82297048449 100644
+>>>> --- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+>>>> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+>>>> @@ -754,6 +754,7 @@ int mt7615_mcu_set_bss_info(struct mt7615_dev 
+>>>> *dev,
+>>>>
+>>>>        switch (vif->type) {
+>>>>        case NL80211_IFTYPE_AP:
+>>>> +     case NL80211_IFTYPE_MESH_POINT:
+>>>>                tx_wlan_idx = mvif->sta.wcid.idx;
+>>>>                conn_type = CONNECTION_INFRA_AP;
+>>>>                break;
+>>>> @@ -968,7 +969,7 @@ int mt7615_mcu_add_wtbl(struct mt7615_dev *dev, 
+>>>> struct ieee80211_vif *vif,
+>>>>                .rx_wtbl = {
+>>>>                        .tag = cpu_to_le16(WTBL_RX),
+>>>>                        .len = cpu_to_le16(sizeof(struct wtbl_rx)),
+>>>> -                     .rca1 = vif->type != NL80211_IFTYPE_AP,
+>>>> +                     .rca1 = vif->type == NL80211_IFTYPE_STATION,
+>>>>                        .rca2 = 1,
+>>>>                        .rv = 1,
+>>>>                },
+>>>> @@ -1042,6 +1043,7 @@ static void sta_rec_convert_vif_type(enum 
+>>>> nl80211_iftype type, u32 *conn_type)
+>>>>    {
+>>>>        switch (type) {
+>>>>        case NL80211_IFTYPE_AP:
+>>>> +     case NL80211_IFTYPE_MESH_POINT:
+>>>>                if (conn_type)
+>>>>                        *conn_type = CONNECTION_INFRA_STA;
+>>>>                break;
+>>>> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h 
+>>>> b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
+>>>> index e96efb13fa4d..0915cb735699 100644
+>>>> --- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
+>>>> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
+>>>> @@ -105,25 +105,19 @@ enum {
+>>>>    #define STA_TYPE_STA                BIT(0)
+>>>>    #define STA_TYPE_AP         BIT(1)
+>>>>    #define STA_TYPE_ADHOC              BIT(2)
+>>>> -#define STA_TYPE_TDLS                BIT(3)
+>>>>    #define STA_TYPE_WDS                BIT(4)
+>>>>    #define STA_TYPE_BC         BIT(5)
+>>>>
+>>>>    #define NETWORK_INFRA               BIT(16)
+>>>>    #define NETWORK_P2P         BIT(17)
+>>>>    #define NETWORK_IBSS                BIT(18)
+>>>> -#define NETWORK_MESH         BIT(19)
+>>>> -#define NETWORK_BOW          BIT(20)
+>>>>    #define NETWORK_WDS         BIT(21)
+>>>>
+>>>>    #define CONNECTION_INFRA_STA        (STA_TYPE_STA | NETWORK_INFRA)
+>>>>    #define CONNECTION_INFRA_AP (STA_TYPE_AP | NETWORK_INFRA)
+>>>>    #define CONNECTION_P2P_GC   (STA_TYPE_STA | NETWORK_P2P)
+>>>>    #define CONNECTION_P2P_GO   (STA_TYPE_AP | NETWORK_P2P)
+>>>> -#define CONNECTION_MESH_STA  (STA_TYPE_STA | NETWORK_MESH)
+>>>> -#define CONNECTION_MESH_AP   (STA_TYPE_AP | NETWORK_MESH)
+>>>>    #define CONNECTION_IBSS_ADHOC       (STA_TYPE_ADHOC | NETWORK_IBSS)
+>>>> -#define CONNECTION_TDLS              (STA_TYPE_STA | NETWORK_INFRA 
+>>>> | STA_TYPE_TDLS)
+>>>>    #define CONNECTION_WDS              (STA_TYPE_WDS | NETWORK_WDS)
+>>>>    #define CONNECTION_INFRA_BC (STA_TYPE_BC | NETWORK_INFRA)
+>>>>
 >
