@@ -1,71 +1,75 @@
-From: Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: [RFC v1] clk: core: support clocks that need to be enabled during re-parent
-Date: Mon, 10 Jun 2019 11:44:53 +0800
-Message-ID: <1560138293-4163-1-git-send-email-weiyi.lu@mediatek.com>
+From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH] mt76: mt7615: add support for per-chain signal strength
+ reporting
+Date: Mon, 10 Jun 2019 12:22:21 +0800
+Message-ID: <1560140541.5606.12.camel@mtkswgap22>
+References: <3912a2863e858f3623ced61737836e42c7b19149.1560071167.git.ryder.lee@mediatek.com>
+ <d6cfd2e9-4b2b-36ac-6cae-a34f74204801@newmedia-net.de>
+ <1560132590.28258.5.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>, Biao Huang <biao.huang@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1560132590.28258.5.camel@mtkswgap22>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Sebastian Gottschall <s.gottschall-9LViYcISHtuk6R/r8kmGfQ@public.gmane.org>
+Cc: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Chih-Min Chen <chih-min.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YF Luo <yf.luo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Yiwei Chung <yiwei.chung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roy Luo <royluo-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-When using property assigned-clock-parents to assign parent clocks,
-core clocks might still be disabled during re-parent.
-Add flag 'CLK_OPS_CORE_ENABLE' for those clocks must be enabled
-during re-parent.
+On Mon, 2019-06-10 at 10:09 +0800, Ryder Lee wrote:
+> On Sun, 2019-06-09 at 16:44 +0200, Sebastian Gottschall wrote:
+> > according to my findings
+> > 
+> > MT_RXV4_RCPI1 is part of rx descriptor 4 and not 3
+> > so it must be rxdg4 = rxd[4] etc.
+> 
+> RXV start from 1 in the code.
+> 
+> That is: RXV1 <-> rxdg0, RXV2 <-> rxdg1 ...so RXV4 <-> rxdg3
+> 
+> > however rxdg3 contains MT_RXV3_IB_RSSIRX which can be used for signal calculation.
+> > i already wrote a similar code for this driver which i sended to felix a long time ago.
+> > my variant looks like
+> >                  status->signal = (FIELD_GET(MT_RXV3_IB_RSSIRX, rxdg3) - 220) / 2;
+> >                  status->chain_signal[0] = (FIELD_GET(MT_RXV4_RCPI0, rxdg4) - 220) / 2;
+> >                  status->chain_signal[1] = (FIELD_GET(MT_RXV4_RCPI1, rxdg4) - 220) / 2;
+> >                  status->chain_signal[2] = (FIELD_GET(MT_RXV4_RCPI2, rxdg4) - 220) / 2;
+> >                  status->chain_signal[3] = (FIELD_GET(MT_RXV4_RCPI3, rxdg4) - 220) / 2;
 
-Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
----
- drivers/clk/clk.c            | 9 +++++++++
- include/linux/clk-provider.h | 1 +
- 2 files changed, 10 insertions(+)
+mt7615 actually doesn't use in-band RSSI for signal calculation, but it
+occurs to me that i should modify the code to compare per-chain's
+signal. Something like this:
 
-diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
-index 443711f..b2e6fe3 100644
---- a/drivers/clk/clk.c
-+++ b/drivers/clk/clk.c
-@@ -1717,6 +1717,10 @@ static struct clk_core *__clk_set_parent_before(struct clk_core *core,
- 		clk_core_prepare_enable(parent);
- 	}
- 
-+	/* enable core if CLK_OPS_CORE_ENABLE is set */
-+	if (core->flags & CLK_OPS_CORE_ENABLE)
-+		clk_core_prepare_enable(core);
-+
- 	/* migrate prepare count if > 0 */
- 	if (core->prepare_count) {
- 		clk_core_prepare_enable(parent);
-@@ -1744,6 +1748,10 @@ static void __clk_set_parent_after(struct clk_core *core,
- 		clk_core_disable_unprepare(old_parent);
- 	}
- 
-+	/* re-balance ref counting if CLK_OPS_CORE_ENABLE is set */
-+	if (core->flags & CLK_OPS_CORE_ENABLE)
-+		clk_core_disable_unprepare(core);
-+
- 	/* re-balance ref counting if CLK_OPS_PARENT_ENABLE is set */
- 	if (core->flags & CLK_OPS_PARENT_ENABLE) {
- 		clk_core_disable_unprepare(parent);
-@@ -2973,6 +2981,7 @@ static int clk_dump_show(struct seq_file *s, void *data)
- 	ENTRY(CLK_IS_CRITICAL),
- 	ENTRY(CLK_OPS_PARENT_ENABLE),
- 	ENTRY(CLK_DUTY_CYCLE_PARENT),
-+	ENTRY(CLK_OPS_CORE_ENABLE),
- #undef ENTRY
- };
- 
-diff --git a/include/linux/clk-provider.h b/include/linux/clk-provider.h
-index bb6118f..39a1fed 100644
---- a/include/linux/clk-provider.h
-+++ b/include/linux/clk-provider.h
-@@ -34,6 +34,7 @@
- #define CLK_OPS_PARENT_ENABLE	BIT(12)
- /* duty cycle call may be forwarded to the parent clock */
- #define CLK_DUTY_CYCLE_PARENT	BIT(13)
-+#define CLK_OPS_CORE_ENABLE	BIT(14)	/* core need enable during re-parent */
- 
- struct clk;
- struct clk_hw;
--- 
-1.8.1.1.dirty
+		status->chain_signal[0] = to_rssi(MT_RXV4_RCPI0, rxdg3);
+		status->chain_signal[1] = to_rssi(MT_RXV4_RCPI1, rxdg3);
+		status->chain_signal[2] = to_rssi(MT_RXV4_RCPI2, rxdg3);
+		status->chain_signal[3] = to_rssi(MT_RXV4_RCPI3, rxdg3);
+		status->signal = status->chain_signal[0];
+
+		switch (status->chains) {
+		case 0xf:
+			status->signal = max(status->signal,
+					     status->chain_signal[3]);
+		case 0x7:
+			status->signal = max(status->signal,
+					     status->chain_signal[2]);
+		case 0x3:
+			status->signal = max(status->signal,
+					     status->chain_signal[1]);
+			break;
+		default:
+			break;
+		}
+
+
+I could send a v2 or you can take care of that.
+
+Ryder
