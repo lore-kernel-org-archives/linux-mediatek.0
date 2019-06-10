@@ -1,55 +1,71 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH v4 01/14] dt-bindings: Add binding for MT2712 MIPI-CSI2
-Date: Mon, 10 Jun 2019 12:32:06 +0900
-Message-ID: <CAHD77H=vuPi2Rj4Mw-CQ2=UYX7YnS8w8FpUk0QTVxNUVLWKbJg@mail.gmail.com>
-References: <1559643115-15124-1-git-send-email-stu.hsieh@mediatek.com>
- <1559643115-15124-2-git-send-email-stu.hsieh@mediatek.com>
- <1560134057.28527.5.camel@mtksdaap41>
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+Subject: [RFC v1] clk: core: support clocks that need to be enabled during re-parent
+Date: Mon, 10 Jun 2019 11:44:53 +0800
+Message-ID: <1560138293-4163-1-git-send-email-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1560134057.28527.5.camel@mtksdaap41>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: CK Hu <ck.hu@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Stu Hsieh <stu.hsieh@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
- Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>, Linux Media Mailing List <linux-media@vger.kernel.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>, Biao Huang <biao.huang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi CK, Stu,
+When using property assigned-clock-parents to assign parent clocks,
+core clocks might still be disabled during re-parent.
+Add flag 'CLK_OPS_CORE_ENABLE' for those clocks must be enabled
+during re-parent.
 
-On Mon, Jun 10, 2019 at 11:34 AM CK Hu <ck.hu@mediatek.com> wrote:
->
-> Hi, Stu:
->
-> "mediatek,mt2712-mipicsi" and "mediatek,mt2712-mipicsi-common" have many
-> common part with "mediatek,mt8183-seninf", and I've a discussion in [1],
-> so I would like these two to be merged together.
->
-> [1] https://patchwork.kernel.org/patch/10979131/
->
+Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+---
+ drivers/clk/clk.c            | 9 +++++++++
+ include/linux/clk-provider.h | 1 +
+ 2 files changed, 10 insertions(+)
 
-Thanks CK for spotting this.
-
-I also noticed that the driver in fact handles two hardware blocks at
-the same time - SenInf and CamSV. Unless the architecture is very
-different from MT8183, I'd suggest splitting it.
-
-On a general note, the MT8183 SenInf driver has received several
-rounds of review comments already, but I couldn't find any comments
-posted for this one.
-
-Given the two aspects above and also based on my quick look at code
-added by this series, I'd recommend adding MT2712 support on top of
-the MT8183 series.
-
-Best regards,
-Tomasz
+diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
+index 443711f..b2e6fe3 100644
+--- a/drivers/clk/clk.c
++++ b/drivers/clk/clk.c
+@@ -1717,6 +1717,10 @@ static struct clk_core *__clk_set_parent_before(struct clk_core *core,
+ 		clk_core_prepare_enable(parent);
+ 	}
+ 
++	/* enable core if CLK_OPS_CORE_ENABLE is set */
++	if (core->flags & CLK_OPS_CORE_ENABLE)
++		clk_core_prepare_enable(core);
++
+ 	/* migrate prepare count if > 0 */
+ 	if (core->prepare_count) {
+ 		clk_core_prepare_enable(parent);
+@@ -1744,6 +1748,10 @@ static void __clk_set_parent_after(struct clk_core *core,
+ 		clk_core_disable_unprepare(old_parent);
+ 	}
+ 
++	/* re-balance ref counting if CLK_OPS_CORE_ENABLE is set */
++	if (core->flags & CLK_OPS_CORE_ENABLE)
++		clk_core_disable_unprepare(core);
++
+ 	/* re-balance ref counting if CLK_OPS_PARENT_ENABLE is set */
+ 	if (core->flags & CLK_OPS_PARENT_ENABLE) {
+ 		clk_core_disable_unprepare(parent);
+@@ -2973,6 +2981,7 @@ static int clk_dump_show(struct seq_file *s, void *data)
+ 	ENTRY(CLK_IS_CRITICAL),
+ 	ENTRY(CLK_OPS_PARENT_ENABLE),
+ 	ENTRY(CLK_DUTY_CYCLE_PARENT),
++	ENTRY(CLK_OPS_CORE_ENABLE),
+ #undef ENTRY
+ };
+ 
+diff --git a/include/linux/clk-provider.h b/include/linux/clk-provider.h
+index bb6118f..39a1fed 100644
+--- a/include/linux/clk-provider.h
++++ b/include/linux/clk-provider.h
+@@ -34,6 +34,7 @@
+ #define CLK_OPS_PARENT_ENABLE	BIT(12)
+ /* duty cycle call may be forwarded to the parent clock */
+ #define CLK_DUTY_CYCLE_PARENT	BIT(13)
++#define CLK_OPS_CORE_ENABLE	BIT(14)	/* core need enable during re-parent */
+ 
+ struct clk;
+ struct clk_hw;
+-- 
+1.8.1.1.dirty
