@@ -1,163 +1,100 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [RFC PATCH V3 3/4] dt-bindings: mt8183: Add sensor interface
- dt-bindings
-Date: Mon, 10 Jun 2019 10:23:37 +0800
-Message-ID: <1560133417.15622.14.camel@mtksdaap41>
-References: <1559815233-24796-1-git-send-email-louis.kuo@mediatek.com>
- <1559815233-24796-4-git-send-email-louis.kuo@mediatek.com>
+Subject: Re: [PATCH v4 01/14] dt-bindings: Add binding for MT2712 MIPI-CSI2
+Date: Mon, 10 Jun 2019 10:34:17 +0800
+Message-ID: <1560134057.28527.5.camel@mtksdaap41>
+References: <1559643115-15124-1-git-send-email-stu.hsieh@mediatek.com>
+         <1559643115-15124-2-git-send-email-stu.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1559815233-24796-4-git-send-email-louis.kuo@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Louis Kuo <louis.kuo@mediatek.com>
-Cc: devicetree@vger.kernel.org, Sean.Cheng@mediatek.com, laurent.pinchart+renesas@ideasonboard.com, Rynn.Wu@mediatek.com, christie.yu@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, Jerry-ch.Chen@mediatek.com, tfiga@chromium.org, keiichiw@chromium.org, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, hans.verkuil@cisco.com, zwisler@chromium.org, frederic.chen@mediatek.com, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1559643115-15124-2-git-send-email-stu.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Stu Hsieh <stu.hsieh@mediatek.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Louis:
+Hi, Stu:
 
-It looks like that "mediatek,mt8183-seninf" has many common part with
-"mediatek,mt2712-mipicsi" [1] and "mediatek,mt2712-mipicsi-common" [2].
+"mediatek,mt2712-mipicsi" and "mediatek,mt2712-mipicsi-common" have many
+common part with "mediatek,mt8183-seninf", and I've a discussion in [1],
+so I would like these two to be merged together.
 
-The evidence comes from each driver.
-
-The register definition of mipi_rx phy is
-
-"mediatek,mt2712-mipicsi"
-
-+#define MIPI_RX_ANA00_CSI				0x00
-+#define MIPI_RX_ANA04_CSI				0x04
-+#define MIPI_RX_ANA08_CSI				0x08
-+#define MIPI_RX_ANA0C_CSI				0x0c
-+#define MIPI_RX_ANA10_CSI				0x10
-+#define MIPI_RX_ANA20_CSI				0x20
-+#define MIPI_RX_ANA24_CSI				0x24
-
-"mediatek,mt8183-seninf"
-
-+#define MIPI_RX_ANA00_CSI0A           0x0000
-+#define MIPI_RX_ANA04_CSI0A           0x0004
-+#define MIPI_RX_ANA08_CSI0A           0x0008
-+#define MIPI_RX_ANA0C_CSI0A           0x000C
-+#define MIPI_RX_ANA10_CSI0A           0x0010
-+#define MIPI_RX_ANA20_CSI0A           0x0020
-+#define MIPI_RX_ANA24_CSI0A           0x0024
-
-The register definition of sensor interface top is
-
-"mediatek,mt2712-mipicsi-common"
-
-+#define SENINF_TOP_CTRL					0x00
-+#define SENINF_TOP_CMODEL_PAR				0x04
-+#define SENINF_TOP_MUX					0x08
-+
-+#define SENINF_MUX_CTRL					0x00
-
-"mediatek,mt8183-seninf"
-
-+#define SENINF_TOP_CTRL                        0x0000
-+#define SENINF_TOP_CMODEL_PAR                  0x0004
-+#define SENINF_TOP_MUX_CTRL                    0x0008
-+#define rsv_000C                               0x000C
-+#define SENINF_TOP_CAM_MUX_CTRL                0x0010
-
-The register definition of csi is
-
-"mediatek,mt2712-mipicsi"
-
-+#define SENINF_NCSI2_CTL				0xA0
-+#define SENINF_NCSI2_LNRD_TIMING			0xA8
-+#define SENINF_NCSI2_INT_EN				0xB0
-+#define SENINF_NCSI2_INT_STATUS				0xB4
-+#define SENINF_NCSI2_DBG_SEL				0xB8
-+#define SENINF_NCSI2_HSRX_DBG				0xD8
-+#define SENINF_NCSI2_DI					0xDC
-+#define SENINF_NCSI2_DI_CTRL				0xE4
-
-"mediatek,mt8183-seninf"
-
-+#define SENINF1_CSI2_CTL                       0x0A00
-+#define SENINF1_CSI2_LNRD_TIMING               0x0A08
-+#define SENINF1_CSI2_INT_EN                    0x0A10
-+#define SENINF1_CSI2_INT_STATUS                0x0A14
-+#define SENINF1_CSI2_DGB_SEL                   0x0A18
-+#define SENINF1_CSI2_HSRX_DBG                  0x0A38
-+#define SENINF1_CSI2_DI                        0x0A3C
-+#define SENINF1_CSI2_DI_CTRL                   0x0A44
-
-Because they have many common part, the common part should be merged and
-keep the different part for each SoC. Here is an example for common part
-and different part.
-
-Mtk_hdmi_phy (Common part)
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c?h=v5.2-rc4
-Mtk_hdmi_phy (MT2701 part)
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c?h=v5.2-rc4
-Mtk_hdmi_phy (MT8173 part)
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c?h=v5.2-rc4
-
-So the first step is to common the binding document. Maybe you should
-discuss with Stu to achieve this target.
-
-[1] https://patchwork.kernel.org/patch/10974567/
-[2] https://patchwork.kernel.org/patch/10974559/
+[1] https://patchwork.kernel.org/patch/10979131/
 
 Regards,
 CK
 
-On Thu, 2019-06-06 at 18:00 +0800, Louis Kuo wrote:
-> This patch adds the DT binding documentation for the sensor interface
-> module in Mediatek SoCs.
+On Tue, 2019-06-04 at 18:11 +0800, Stu Hsieh wrote:
+> Add MIPI-CSI2 dt-binding for Mediatek MT2712 SoC
 > 
-> Signed-off-by: Louis Kuo <louis.kuo@mediatek.com>
+> Signed-off-by: Stu Hsieh <stu.hsieh@mediatek.com>
 > ---
->  .../devicetree/bindings/media/mediatek-seninf.txt  | 31 ++++++++++++++++++++++
->  1 file changed, 31 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek-seninf.txt
+>  .../bindings/media/mediatek-mipicsi.txt       | 58 +++++++++++++++++++
+>  1 file changed, 58 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek-mipicsi.txt
 > 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek-seninf.txt b/Documentation/devicetree/bindings/media/mediatek-seninf.txt
+> diff --git a/Documentation/devicetree/bindings/media/mediatek-mipicsi.txt b/Documentation/devicetree/bindings/media/mediatek-mipicsi.txt
 > new file mode 100644
-> index 0000000..979063a
+> index 000000000000..e30b6a468129
 > --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/mediatek-seninf.txt
-> @@ -0,0 +1,31 @@
-> +* Mediatek seninf MIPI-CSI2 host driver
+> +++ b/Documentation/devicetree/bindings/media/mediatek-mipicsi.txt
+> @@ -0,0 +1,58 @@
+> +* Mediatek MIPI-CSI2 receiver
 > +
-> +Seninf MIPI-CSI2 host driver is a HW camera interface controller. It support a widely adopted,
-> +simple, high-speed protocol primarily intended for point-to-point image and video
-> +transmission between cameras and host devices.
+> +Mediatek MIPI-CSI2 receiver is the MIPI Signal capture hardware present in Mediatek SoCs
 > +
 > +Required properties:
-> +  - compatible: "mediatek,mt8183-seninf"
-> +  - reg: Must contain an entry for each entry in reg-names.
-> +  - reg-names: Must include the following entries:
-> +    "base_reg": seninf registers base
-> +    "rx_reg": Rx analog registers base
-> +  - interrupts: interrupt number to the cpu.
-> +  - clocks : clock name from clock manager
-> +  - clock-names: must be CLK_CAM_SENINF and CLK_TOP_MUX_SENINF.
-> +    It is the clocks of seninf
+> +- compatible: should be "mediatek,mt2712-mipicsi"
+> +- reg : physical base address of the mipicsi receiver registers and length of
+> +  memory mapped region.
+> +- power-domains: a phandle to the power domain, see
+> +  Documentation/devicetree/bindings/power/power_domain.txt for details.
+> +- mediatek,larb: must contain the local arbiters in the current Socs, see
+> +  Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
+> +  for details.
+> +- iommus: should point to the respective IOMMU block with master port as
+> +  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+> +  for details.
+> +- mediatek,seninf_mux_camsv: seninf_mux_camsv the data go through of the mipicsi port
+> +  any mipicsi port can contain max four seninf_mux_camsv
+> +  The Total seninf_mux_camsv is six for mt2712
+> +- mediatek,mipicsiid: the id of the mipicsi port, there are two port for mt2712
+> +- mediatek,mipicsi: the common component of the two mipicsi port
+> +- mediatek,mipicsi_max_vc: the number of virtual channel which subdev used
+> +- mediatek,serdes_link_reg: the register of subdev to get the link status
 > +
 > +Example:
-> +	seninf: seninf@1a040000 {
-> +		compatible = "mediatek,mt8183-seninf";
-> +		reg = <0 0x1a040000 0 0x8000>,
-> +		      <0 0x11C80000 0 0x6000>;
-> +		reg-names = "base_reg", "rx_reg";
-> +		interrupts = <GIC_SPI 251 IRQ_TYPE_LEVEL_LOW>;
-> +		power-domains = <&scpsys MT8183_POWER_DOMAIN_CAM>;
-> +		clocks =
-> +				<&camsys CLK_CAM_SENINF>, <&topckgen CLK_TOP_MUX_SENINF>;
-> +		clock-names =
-> +			"CLK_CAM_SENINF", "CLK_TOP_MUX_SENINF";
-> +	}
+> +	mipicsi0: mipicsi@10217000 {
+> +		compatible = "mediatek,mt2712-mipicsi";
+> +		mediatek,mipicsi = <&mipicsi>;
+> +		iommus = <&iommu0 M4U_PORT_CAM_DMA0>,
+> +			 <&iommu0 M4U_PORT_CAM_DMA1>;
+> +		mediatek,larb = <&larb2>;
+> +		power-domains = <&scpsys MT2712_POWER_DOMAIN_ISP>;
 > +
+> +		mediatek,seninf_mux_camsv = <&seninf1_mux_camsv0
+> +					     &seninf2_mux_camsv1
+> +					     &seninf3_mux_camsv2
+> +					     &seninf4_mux_camsv3>;
+> +		reg = <0 0x10217000 0 0x60>,
+> +		      <0 0x15002100 0 0x4>,
+> +		      <0 0x15002300 0 0x100>;
+> +		mediatek,mipicsiid = <0>;
+> +		mediatek,mipicsi_max_vc = <4>;
+> +		mediatek,serdes_link_reg = <0x49>;
+> +	};
+> +
+> +	mipicsi1: mipicsi@10218000 {
+> +		compatible = "mediatek,mt2712-mipicsi";
+> +		mediatek,mipicsi = <&mipicsi>;
+> +		iommus = <&iommu0 M4U_PORT_CAM_DMA2>;
+> +		mediatek,larb = <&larb2>;
+> +		power-domains = <&scpsys MT2712_POWER_DOMAIN_ISP>;
+> +		mediatek,seninf_mux_camsv = <&seninf5_mux_camsv4
+> +					     &seninf6_mux_camsv5>;
+> +		reg = <0 0x10218000 0 0x60>,
+> +		      <0 0x15002500 0 0x4>,
+> +		      <0 0x15002700 0 0x100>;
+> +		mediatek,mipicsiid = <1>;
+> +	};
