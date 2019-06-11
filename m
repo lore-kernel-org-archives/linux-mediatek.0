@@ -1,129 +1,108 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH v7 06/10] device connection: Add fwnode_connection_find_match()
-Date: Tue, 11 Jun 2019 16:44:36 +0800
-Message-ID: <1560242680-23844-7-git-send-email-chunfeng.yun@mediatek.com>
-References: <1560242680-23844-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Dmitry Vyukov <dvyukov@google.com>
+Subject: Re: [PATCH v2] kasan: add memory corruption identification for
+ software tag-based mode
+Date: Tue, 11 Jun 2019 10:47:27 +0200
+Message-ID: <CACT4Y+YNG0OGT+mCEms+=SYWA=9R3MmBzr8e3QsNNdQvHNt9Fg@mail.gmail.com>
+References: <1559651172-28989-1-git-send-email-walter-zh.wu@mediatek.com>
+ <CACT4Y+Y9_85YB8CCwmKerDWc45Z00hMd6Pc-STEbr0cmYSqnoA@mail.gmail.com>
+ <1560151690.20384.3.camel@mtksdccf07> <CACT4Y+aetKEM9UkfSoVf8EaDNTD40mEF0xyaRiuw=DPEaGpTkQ@mail.gmail.com>
+ <1560236742.4832.34.camel@mtksdccf07>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1560242680-23844-1-git-send-email-chunfeng.yun@mediatek.com>
+In-Reply-To: <1560236742.4832.34.camel@mtksdccf07>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heikki Krogerus <heikki.krogerus@linux.intel.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Biju Das <biju.das@bp.renesas.com>, Linus Walleij <linus.walleij@linaro.org>, Yu Chen <chenyu56@huawei.com>, Nagarjuna Kristam <nkristam@nvidia.com>, Felipe Balbi <felipe.balbi@linux.intel.com>
+To: Walter Wu <walter-zh.wu@mediatek.com>
+Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Matthias Brugger <matthias.bgg@gmail.com>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Arnd Bergmann <arnd@arndb.de>, Vasily Gorbik <gor@linux.ibm.com>, Andrey Konovalov <andreyknvl@google.com>, "Jason A. Donenfeld" <Jason@zx2c4.com>, =?UTF-8?B?TWlsZXMgQ2hlbiAo6Zmz5rCR5qi6KQ==?= <Miles.Chen@mediatek.com>, kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>, Linux-MM <linux-mm@kvack.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@li>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+On Tue, Jun 11, 2019 at 9:05 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
+>
+> On Mon, 2019-06-10 at 13:46 +0200, Dmitry Vyukov wrote:
+> > On Mon, Jun 10, 2019 at 9:28 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
+> > >
+> > > On Fri, 2019-06-07 at 21:18 +0800, Dmitry Vyukov wrote:
+> > > > > diff --git a/include/linux/kasan.h b/include/linux/kasan.h
+> > > > > index b40ea104dd36..be0667225b58 100644
+> > > > > --- a/include/linux/kasan.h
+> > > > > +++ b/include/linux/kasan.h
+> > > > > @@ -164,7 +164,11 @@ void kasan_cache_shutdown(struct kmem_cache *cache);
+> > > > >
+> > > > >  #else /* CONFIG_KASAN_GENERIC */
+> > > > >
+> > > > > +#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
+> > > > > +void kasan_cache_shrink(struct kmem_cache *cache);
+> > > > > +#else
+> > > >
+> > > > Please restructure the code so that we don't duplicate this function
+> > > > name 3 times in this header.
+> > > >
+> > > We have fixed it, Thank you for your reminder.
+> > >
+> > >
+> > > > >  static inline void kasan_cache_shrink(struct kmem_cache *cache) {}
+> > > > > +#endif
+> > > > >  static inline void kasan_cache_shutdown(struct kmem_cache *cache) {}
+> > > > >
+> > > > >  #endif /* CONFIG_KASAN_GENERIC */
+> > > > > diff --git a/lib/Kconfig.kasan b/lib/Kconfig.kasan
+> > > > > index 9950b660e62d..17a4952c5eee 100644
+> > > > > --- a/lib/Kconfig.kasan
+> > > > > +++ b/lib/Kconfig.kasan
+> > > > > @@ -134,6 +134,15 @@ config KASAN_S390_4_LEVEL_PAGING
+> > > > >           to 3TB of RAM with KASan enabled). This options allows to force
+> > > > >           4-level paging instead.
+> > > > >
+> > > > > +config KASAN_SW_TAGS_IDENTIFY
+> > > > > +       bool "Enable memory corruption idenitfication"
+> > > >
+> > > > s/idenitfication/identification/
+> > > >
+> > > I should replace my glasses.
+> > >
+> > >
+> > > > > +       depends on KASAN_SW_TAGS
+> > > > > +       help
+> > > > > +         Now tag-based KASAN bug report always shows invalid-access error, This
+> > > > > +         options can identify it whether it is use-after-free or out-of-bound.
+> > > > > +         This will make it easier for programmers to see the memory corruption
+> > > > > +         problem.
+> > > >
+> > > > This description looks like a change description, i.e. it describes
+> > > > the current behavior and how it changes. I think code comments should
+> > > > not have such, they should describe the current state of the things.
+> > > > It should also mention the trade-off, otherwise it raises reasonable
+> > > > questions like "why it's not enabled by default?" and "why do I ever
+> > > > want to not enable it?".
+> > > > I would do something like:
+> > > >
+> > > > This option enables best-effort identification of bug type
+> > > > (use-after-free or out-of-bounds)
+> > > > at the cost of increased memory consumption for object quarantine.
+> > > >
+> > > I totally agree with your comments. Would you think we should try to add the cost?
+> > > It may be that it consumes about 1/128th of available memory at full quarantine usage rate.
+> >
+> > Hi,
+> >
+> > I don't understand the question. We should not add costs if not
+> > necessary. Or you mean why we should add _docs_ regarding the cost? Or
+> > what?
+> >
+> I mean the description of option. Should it add the description for
+> memory costs. I see KASAN_SW_TAGS and KASAN_GENERIC options to show the
+> memory costs. So We originally think it is possible to add the
+> description, if users want to enable it, maybe they want to know its
+> memory costs.
+>
+> If you think it is not necessary, we will not add it.
 
-The fwnode_connection_find_match() function is exactly the
-same as device_connection_find_match(), except it takes
-struct fwnode_handle as parameter instead of struct device.
-That allows locating device connections before the device
-entries have been created.
+Full description of memory costs for normal KASAN mode and
+KASAN_SW_TAGS should probably go into
+Documentation/dev-tools/kasan.rst rather then into config description
+because it may be too lengthy.
 
-Signed-off-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-v7:
-  rebased on Rafael's tree [1] (after rc4), provided by Heikki
-
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git/log/?h=linux-next
-
-v6:
-  new patch
----
- drivers/base/devcon.c  | 43 ++++++++++++++++++++++++++++++------------
- include/linux/device.h | 10 +++++++---
- 2 files changed, 38 insertions(+), 15 deletions(-)
-
-diff --git a/drivers/base/devcon.c b/drivers/base/devcon.c
-index f7035fc12b92..5bf9537bd738 100644
---- a/drivers/base/devcon.c
-+++ b/drivers/base/devcon.c
-@@ -12,9 +12,6 @@
- static DEFINE_MUTEX(devcon_lock);
- static LIST_HEAD(devcon_list);
- 
--typedef void *(*devcon_match_fn_t)(struct device_connection *con, int ep,
--				   void *data);
--
- static void *
- fwnode_graph_devcon_match(struct fwnode_handle *fwnode, const char *con_id,
- 			  void *data, devcon_match_fn_t match)
-@@ -60,6 +57,34 @@ fwnode_devcon_match(struct fwnode_handle *fwnode, const char *con_id,
- 	return NULL;
- }
- 
-+/**
-+ * fwnode_connection_find_match - Find connection from a device node
-+ * @fwnode: Device node with the connection
-+ * @con_id: Identifier for the connection
-+ * @data: Data for the match function
-+ * @match: Function to check and convert the connection description
-+ *
-+ * Find a connection with unique identifier @con_id between @fwnode and another
-+ * device node. @match will be used to convert the connection description to
-+ * data the caller is expecting to be returned.
-+ */
-+void *fwnode_connection_find_match(struct fwnode_handle *fwnode,
-+				   const char *con_id, void *data,
-+				   devcon_match_fn_t match)
-+{
-+	void *ret;
-+
-+	if (!fwnode || !match)
-+		return NULL;
-+
-+	ret = fwnode_graph_devcon_match(fwnode, con_id, data, match);
-+	if (ret)
-+		return ret;
-+
-+	return fwnode_devcon_match(fwnode, con_id, data, match);
-+}
-+EXPORT_SYMBOL_GPL(fwnode_connection_find_match);
-+
- /**
-  * device_connection_find_match - Find physical connection to a device
-  * @dev: Device with the connection
-@@ -83,15 +108,9 @@ void *device_connection_find_match(struct device *dev, const char *con_id,
- 	if (!match)
- 		return NULL;
- 
--	if (fwnode) {
--		ret = fwnode_graph_devcon_match(fwnode, con_id, data, match);
--		if (ret)
--			return ret;
--
--		ret = fwnode_devcon_match(fwnode, con_id, data, match);
--		if (ret)
--			return ret;
--	}
-+	ret = fwnode_connection_find_match(fwnode, con_id, data, match);
-+	if (ret)
-+		return ret;
- 
- 	mutex_lock(&devcon_lock);
- 
-diff --git a/include/linux/device.h b/include/linux/device.h
-index 5489a759e1c5..3d3081387937 100644
---- a/include/linux/device.h
-+++ b/include/linux/device.h
-@@ -772,10 +772,14 @@ struct device_connection {
- 	struct list_head	list;
- };
- 
-+typedef void *(*devcon_match_fn_t)(struct device_connection *con, int ep,
-+				   void *data);
-+
-+void *fwnode_connection_find_match(struct fwnode_handle *fwnode,
-+				   const char *con_id, void *data,
-+				   devcon_match_fn_t match);
- void *device_connection_find_match(struct device *dev, const char *con_id,
--				void *data,
--				void *(*match)(struct device_connection *con,
--					       int ep, void *data));
-+				   void *data, devcon_match_fn_t match);
- 
- struct device *device_connection_find(struct device *dev, const char *con_id);
- 
--- 
-2.21.0
+I mentioned memory costs for this config because otherwise it's
+unclear why would one ever want to _not_ enable this option. If it
+would only have positive effects, then it should be enabled all the
+time and should not be a config option at all.
