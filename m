@@ -1,57 +1,56 @@
-From: Derek Basehore <dbasehore@chromium.org>
-Subject: [PATCH 2/5] dt-bindings: display/panel: Expand rotation
- documentation
-Date: Mon, 10 Jun 2019 17:22:53 -0700
-Message-ID: <20190611002256.186969-3-dbasehore@chromium.org>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH 5/5] drm/mtk: add panel orientation property
+Date: Tue, 11 Jun 2019 09:42:17 +0800
+Message-ID: <1560217337.15546.1.camel@mtksdaap41>
 References: <20190611002256.186969-1-dbasehore@chromium.org>
+         <20190611002256.186969-6-dbasehore@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <intel-gfx-bounces@lists.freedesktop.org>
-In-Reply-To: <20190611002256.186969-1-dbasehore@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
-List-Post: <mailto:intel-gfx@lists.freedesktop.org>
-List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: intel-gfx-bounces@lists.freedesktop.org
-Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
-To: linux-kernel@vger.kernel.org
-Cc: Derek Basehore <dbasehore@chromium.org>, p.zabel@pengutronix.de, maxime.ripard@bootlin.com, sam@ravnborg.org, intel-gfx@lists.freedesktop.org, airlied@linux.ie, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, ck.hu@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190611002256.186969-6-dbasehore@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Derek Basehore <dbasehore@chromium.org>
+Cc: linux-kernel@vger.kernel.org, maarten.lankhorst@linux.intel.com, maxime.ripard@bootlin.com, sean@poorly.run, airlied@linux.ie, daniel@ffwll.ch, thierry.reding@gmail.com, sam@ravnborg.org, jani.nikula@linux.intel.com, joonas.lahtinen@linux.intel.com, rodrigo.vivi@intel.com, p.zabel@pengutronix.de, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-VGhpcyBhZGRzIHRvIHRoZSByb3RhdGlvbiBkb2N1bWVudGF0aW9uIHRvIGV4cGxhaW4gaG93IGRy
-aXZlcnMgc2hvdWxkCnVzZSB0aGUgcHJvcGVydHkgYW5kIGdpdmVzIGFuIGV4YW1wbGUgb2YgdGhl
-IHByb3BlcnR5IGluIGEgZGV2aWNldHJlZQpub2RlLgoKU2lnbmVkLW9mZi1ieTogRGVyZWsgQmFz
-ZWhvcmUgPGRiYXNlaG9yZUBjaHJvbWl1bS5vcmc+Ci0tLQogLi4uL2JpbmRpbmdzL2Rpc3BsYXkv
-cGFuZWwvcGFuZWwudHh0ICAgICAgICAgIHwgMzIgKysrKysrKysrKysrKysrKysrKwogMSBmaWxl
-IGNoYW5nZWQsIDMyIGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2Rl
-dmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9wYW5lbC9wYW5lbC50eHQgYi9Eb2N1bWVudGF0aW9u
-L2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9wYW5lbC9wYW5lbC50eHQKaW5kZXggZTJlNjg2
-Nzg1MmI4Li5mMzVkNjJkOTMzZmMgMTAwNjQ0Ci0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJl
-ZS9iaW5kaW5ncy9kaXNwbGF5L3BhbmVsL3BhbmVsLnR4dAorKysgYi9Eb2N1bWVudGF0aW9uL2Rl
-dmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9wYW5lbC9wYW5lbC50eHQKQEAgLTIsMyArMiwzNSBA
-QCBDb21tb24gZGlzcGxheSBwcm9wZXJ0aWVzCiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCiAK
-IC0gcm90YXRpb246CURpc3BsYXkgcm90YXRpb24gaW4gZGVncmVlcyBjb3VudGVyIGNsb2Nrd2lz
-ZSAoMCw5MCwxODAsMjcwKQorCitQcm9wZXJ0eSByZWFkIGZyb20gdGhlIGRldmljZSB0cmVlIHVz
-aW5nIG9mIG9mX2RybV9nZXRfcGFuZWxfb3JpZW50YXRpb24KKworVGhlIHBhbmVsIGRyaXZlciBt
-YXkgYXBwbHkgdGhlIHJvdGF0aW9uIGF0IHRoZSBUQ09OIGxldmVsLCB3aGljaCB3aWxsCittYWtl
-IHRoZSBwYW5lbCBsb29rIGxpa2UgaXQgaXNuJ3Qgcm90YXRlZCB0byB0aGUga2VybmVsIGFuZCBh
-bnkgb3RoZXIKK3NvZnR3YXJlLgorCitJZiBub3QsIGEgcGFuZWwgb3JpZW50YXRpb24gcHJvcGVy
-dHkgc2hvdWxkIGJlIGFkZGVkIHRocm91Z2ggdGhlIFNvQwordmVuZG9yIERSTSBjb2RlIHVzaW5n
-IHRoZSBkcm1fY29ubmVjdG9yX2luaXRfcGFuZWxfb3JpZW50YXRpb25fcHJvcGVydHkKK2Z1bmN0
-aW9uLgorCitFeGFtcGxlOgorCXBhbmVsOiBwYW5lbEAwIHsKKwkJY29tcGF0aWJsZSA9ICJib2Us
-aGltYXg4Mjc5ZDhwIjsKKwkJcmVnID0gPDA+OworCQllbmFibGUtZ3Bpb3MgPSA8JnBpbyA0NSAw
-PjsKKwkJcHAzMy1ncGlvcyA9IDwmcGlvIDM1IDA+OworCQlwcDE4LWdwaW9zID0gPCZwaW8gMzYg
-MD47CisJCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCIsICJzdGF0ZV8zMzAwbXYiLCAic3RhdGVf
-MTgwMG12IjsKKwkJcGluY3RybC0wID0gPCZwYW5lbF9waW5zX2RlZmF1bHQ+OworCQlwaW5jdHJs
-LTEgPSA8JnBhbmVsX3BpbnNfMzMwMG12PjsKKwkJcGluY3RybC0yID0gPCZwYW5lbF9waW5zXzE4
-MDBtdj47CisJCWJhY2tsaWdodCA9IDwmYmFja2xpZ2h0X2xjZDA+OworCQlyb3RhdGlvbiA9IDwx
-ODA+OworCQlzdGF0dXMgPSAib2theSI7CisKKwkJcG9ydCB7CisJCQlwYW5lbF9pbjogZW5kcG9p
-bnQgeworCQkJCXJlbW90ZS1lbmRwb2ludCA9IDwmZHNpX291dD47CisJCQl9OworCQl9OworCX07
-Ci0tIAoyLjIyLjAucmMyLjM4My5nZjRmYmJmMzBjMi1nb29nCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC1nZnggbWFpbGluZyBsaXN0CkludGVs
-LWdmeEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9pbnRlbC1nZng=
+Hi, Derek:
+
+On Mon, 2019-06-10 at 17:22 -0700, Derek Basehore wrote:
+> This inits the panel orientation property for the mediatek dsi driver
+> if the panel orientation (connector.display_info.panel_orientation) is
+> not DRM_MODE_PANEL_ORIENTATION_UNKNOWN.
+> 
+
+Looks good to me,
+
+Acked-by: CK Hu <ck.hu@mediatek.com>
+
+> Signed-off-by: Derek Basehore <dbasehore@chromium.org>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dsi.c | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> index 4a0b9150a7bb..08ffdc7526dd 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -782,10 +782,18 @@ static int mtk_dsi_create_connector(struct drm_device *drm, struct mtk_dsi *dsi)
+>  			DRM_ERROR("Failed to attach panel to drm\n");
+>  			goto err_connector_cleanup;
+>  		}
+> +
+> +		ret = drm_connector_init_panel_orientation_property(&dsi->conn);
+> +		if (ret) {
+> +			DRM_ERROR("Failed to init panel orientation\n");
+> +			goto err_panel_detach;
+> +		}
+>  	}
+>  
+>  	return 0;
+>  
+> +err_panel_detach:
+> +	drm_panel_detach(dsi->panel);
+>  err_connector_cleanup:
+>  	drm_connector_cleanup(&dsi->conn);
+>  	return ret;
