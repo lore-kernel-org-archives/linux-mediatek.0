@@ -1,94 +1,71 @@
-From: "dbasehore ." <dbasehore@chromium.org>
-Subject: Re: [PATCH 2/5] dt-bindings: display/panel: Expand
- rotation documentation
-Date: Tue, 11 Jun 2019 15:01:48 -0700
-Message-ID: <CAGAzgsoWGqf0JQPNyRFnv2xZTMxje6idce7Dy5FZzuxj30mQyw@mail.gmail.com>
-References: <20190611040350.90064-1-dbasehore@chromium.org>
- <20190611040350.90064-3-dbasehore@chromium.org>
- <CAL_JsqLM1CikZ8+NPjLk2CEW-z9vPynZpVG20x0jsa7hVq0LvA@mail.gmail.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [1/2] dt-bindngs: display: panel: Add BOE tv101wum-nl6 panel
+ bindings
+Date: Tue, 11 Jun 2019 16:40:41 -0600
+Message-ID: <20190611224041.GA407@bogus>
+References: <20190608070230.55381-1-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <intel-gfx-bounces@lists.freedesktop.org>
-In-Reply-To: <CAL_JsqLM1CikZ8+NPjLk2CEW-z9vPynZpVG20x0jsa7hVq0LvA@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
-List-Post: <mailto:intel-gfx@lists.freedesktop.org>
-List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: intel-gfx-bounces@lists.freedesktop.org
-Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Intel Graphics <intel-gfx@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Maxime Ripard <maxime.ripard@bootlin.com>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel <dri-devel@lists.freedesktop.org>, CK Hu <ck.hu@mediatek.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Sam Ravnborg <sam@ravnborg.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20190608070230.55381-1-jitao.shi@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jitao Shi <jitao.shi@mediatek.com>
+Cc: Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, stonea168@163.com, dri-devel@lists.freedesktop.org, Andy Yan <andy.yan@rock-chips.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa.cheng@mediatek.com, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Sascha
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVHVlLCBKdW4gMTEsIDIwMTkgYXQgODoyNSBBTSBSb2IgSGVycmluZyA8cm9iaCtkdEBrZXJu
-ZWwub3JnPiB3cm90ZToKPgo+IE9uIE1vbiwgSnVuIDEwLCAyMDE5IGF0IDEwOjAzIFBNIERlcmVr
-IEJhc2Vob3JlIDxkYmFzZWhvcmVAY2hyb21pdW0ub3JnPiB3cm90ZToKPiA+Cj4gPiBUaGlzIGFk
-ZHMgdG8gdGhlIHJvdGF0aW9uIGRvY3VtZW50YXRpb24gdG8gZXhwbGFpbiBob3cgZHJpdmVycyBz
-aG91bGQKPiA+IHVzZSB0aGUgcHJvcGVydHkgYW5kIGdpdmVzIGFuIGV4YW1wbGUgb2YgdGhlIHBy
-b3BlcnR5IGluIGEgZGV2aWNldHJlZQo+ID4gbm9kZS4KPiA+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBE
-ZXJlayBCYXNlaG9yZSA8ZGJhc2Vob3JlQGNocm9taXVtLm9yZz4KPiA+IC0tLQo+ID4gIC4uLi9i
-aW5kaW5ncy9kaXNwbGF5L3BhbmVsL3BhbmVsLnR4dCAgICAgICAgICB8IDMyICsrKysrKysrKysr
-KysrKysrKysKPiA+ICAxIGZpbGUgY2hhbmdlZCwgMzIgaW5zZXJ0aW9ucygrKQo+ID4KPiA+IGRp
-ZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9wYW5l
-bC9wYW5lbC50eHQgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9w
-YW5lbC9wYW5lbC50eHQKPiA+IGluZGV4IGUyZTY4Njc4NTJiOC4uZjM1ZDYyZDkzM2ZjIDEwMDY0
-NAo+ID4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcGFu
-ZWwvcGFuZWwudHh0Cj4gPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mv
-ZGlzcGxheS9wYW5lbC9wYW5lbC50eHQKPiA+IEBAIC0yLDMgKzIsMzUgQEAgQ29tbW9uIGRpc3Bs
-YXkgcHJvcGVydGllcwo+ID4gIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiA+Cj4gPiAgLSBy
-b3RhdGlvbjogICAgRGlzcGxheSByb3RhdGlvbiBpbiBkZWdyZWVzIGNvdW50ZXIgY2xvY2t3aXNl
-ICgwLDkwLDE4MCwyNzApCj4gPiArCj4gPiArUHJvcGVydHkgcmVhZCBmcm9tIHRoZSBkZXZpY2Ug
-dHJlZSB1c2luZyBvZiBvZl9kcm1fZ2V0X3BhbmVsX29yaWVudGF0aW9uCj4KPiBEb24ndCBwdXQg
-a2VybmVsIHNwZWNpZmljcyBpbnRvIGJpbmRpbmdzLgoKV2lsbCByZW1vdmUgdGhhdC4gSSdsbCBj
-bGVhbiB1cCB0aGUgZG9jdW1lbnRhdGlvbiB0byBpbmRpY2F0ZSB0aGF0CnRoaXMgYmluZGluZyBj
-cmVhdGVzIGEgcGFuZWwgb3JpZW50YXRpb24gcHJvcGVydHkgdW5sZXNzIHRoZSByb3RhdGlvbgpp
-cyBoYW5kbGVkIGluIHRoZSBUaW1pbmcgQ29udHJvbGxlciBvbiB0aGUgcGFuZWwgaWYgdGhhdCBz
-b3VuZHMgZmluZS4KCj4KPiA+ICsKPiA+ICtUaGUgcGFuZWwgZHJpdmVyIG1heSBhcHBseSB0aGUg
-cm90YXRpb24gYXQgdGhlIFRDT04gbGV2ZWwsIHdoaWNoIHdpbGwKPgo+IFdoYXQncyBUQ09OPyBT
-b21ldGhpbmcgTWVkaWF0ZWsgc3BlY2lmaWMgSUlSQy4KClRoZSBUQ09OIGlzIHRoZSBUaW1pbmcg
-Y29udHJvbGxlciwgd2hpY2ggaXMgb24gdGhlIHBhbmVsLiBFdmVyeSBwYW5lbApoYXMgb25lLiBJ
-J2xsIGFkZCB0byB0aGUgZG9jIHRoYXQgdGhlIFRDT04gaXMgaW4gdGhlIHBhbmVsLCBldGMuCgo+
-Cj4gPiArbWFrZSB0aGUgcGFuZWwgbG9vayBsaWtlIGl0IGlzbid0IHJvdGF0ZWQgdG8gdGhlIGtl
-cm5lbCBhbmQgYW55IG90aGVyCj4gPiArc29mdHdhcmUuCj4gPiArCj4gPiArSWYgbm90LCBhIHBh
-bmVsIG9yaWVudGF0aW9uIHByb3BlcnR5IHNob3VsZCBiZSBhZGRlZCB0aHJvdWdoIHRoZSBTb0MK
-PiA+ICt2ZW5kb3IgRFJNIGNvZGUgdXNpbmcgdGhlIGRybV9jb25uZWN0b3JfaW5pdF9wYW5lbF9v
-cmllbnRhdGlvbl9wcm9wZXJ0eQo+ID4gK2Z1bmN0aW9uLgo+Cj4gVGhlICdyb3RhdGlvbicgcHJv
-cGVydHkgc2hvdWxkIGJlIGRlZmluZWQgcHVyZWx5IGJhc2VkIG9uIGhvdyB0aGUKPiBwYW5lbCBp
-cyBtb3VudGVkIHJlbGF0aXZlIHRvIGEgZGV2aWNlJ3Mgb3JpZW50YXRpb24uIElmIHRoZSBkaXNw
-bGF5Cj4gcGlwZWxpbmUgaGFzIHNvbWUgYWJpbGl0eSB0byBoYW5kbGUgcm90YXRpb24sIHRoYXQn
-cyBhIGZlYXR1cmUgb2YgdGhlCj4gZGlzcGxheSBwaXBlbGluZSBhbmQgbm90IHRoZSBwYW5lbC4K
-ClRoaXMgaXMgaG93IHRoZSBwYW5lbCBvcmllbnRhdGlvbiBwcm9wZXJ0eSBpcyBhbHJlYWR5IGhh
-bmRsZWQgaW4gdGhlCmtlcm5lbC4gU2VlIGRyaXZlcnMvZ3B1L2RybS9pOTE1L3Zsdl9kc2kuYyBm
-b3IgbW9yZSBkZXRhaWxzLgoKPgo+ID4gKwo+ID4gK0V4YW1wbGU6Cj4KPiBUaGlzIGZpbGUgaXMg
-YSBjb2xsZWN0aW9uIG9mIGNvbW1vbiBwcm9wZXJ0aWVzLiBJdCBzaG91bGRuJ3QgaGF2ZSBhbgo+
-IGV4YW1wbGUgZXNwZWNpYWxseSBhcyB0aGlzIGV4YW1wbGUgaXMgbW9zdGx5IG5vbi1jb21tb24g
-cHJvcGVydGllcy4KCkp1c3QgY29waWVkIG9uZSBvZiBvdXIgRFRTIGVudHJpZXMgdGhhdCB1c2Vz
-IHRoZSBwcm9wZXJ0eS4gSSdsbCByZW1vdmUKZXZlcnl0aGluZyB1bmRlciBjb21wYXRpYmxlIGV4
-Y2VwdCBmb3Igcm90YXRpb24gYW5kIHN0YXR1cy4KCj4KPiA+ICsgICAgICAgcGFuZWw6IHBhbmVs
-QDAgewo+ID4gKyAgICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAiYm9lLGhpbWF4ODI3OWQ4cCI7
-Cj4gPiArICAgICAgICAgICAgICAgcmVnID0gPDA+Owo+ID4gKyAgICAgICAgICAgICAgIGVuYWJs
-ZS1ncGlvcyA9IDwmcGlvIDQ1IDA+Owo+Cj4gPiArICAgICAgICAgICAgICAgcHAzMy1ncGlvcyA9
-IDwmcGlvIDM1IDA+Owo+ID4gKyAgICAgICAgICAgICAgIHBwMTgtZ3Bpb3MgPSA8JnBpbyAzNiAw
-PjsKPgo+IEJUVywgYXJlIHRoZXNlIHVwc3RyZWFtIGJlY2F1c2UgdGhleSBsb29rIGxpa2UgR1BJ
-TyBjb250cm9sbGVkCj4gc3VwcGxpZXMgd2hpY2ggd2UgbW9kZWwgd2l0aCBncGlvLXJlZ3VsYXRv
-ciBiaW5kaW5nIHR5cGljYWxseS4KClRoZSBib2UsaGltYXg4Mjc5IGRyaXZlciB3YXMgc2VudCB1
-cHN0cmVhbSwgYnV0IGl0IGRvZXNuJ3QgYXBwZWFyIHRvCmJlIG1lcmdlZC4gSSdsbCBsb29rIGlu
-dG8gaXQgb24gdGhhdCB0aHJlYWQuCgo+Cj4gPiArICAgICAgICAgICAgICAgcGluY3RybC1uYW1l
-cyA9ICJkZWZhdWx0IiwgInN0YXRlXzMzMDBtdiIsICJzdGF0ZV8xODAwbXYiOwo+ID4gKyAgICAg
-ICAgICAgICAgIHBpbmN0cmwtMCA9IDwmcGFuZWxfcGluc19kZWZhdWx0PjsKPiA+ICsgICAgICAg
-ICAgICAgICBwaW5jdHJsLTEgPSA8JnBhbmVsX3BpbnNfMzMwMG12PjsKPiA+ICsgICAgICAgICAg
-ICAgICBwaW5jdHJsLTIgPSA8JnBhbmVsX3BpbnNfMTgwMG12PjsKPiA+ICsgICAgICAgICAgICAg
-ICBiYWNrbGlnaHQgPSA8JmJhY2tsaWdodF9sY2QwPjsKPiA+ICsgICAgICAgICAgICAgICByb3Rh
-dGlvbiA9IDwxODA+Owo+ID4gKyAgICAgICAgICAgICAgIHN0YXR1cyA9ICJva2F5IjsKPiA+ICsK
-PiA+ICsgICAgICAgICAgICAgICBwb3J0IHsKPiA+ICsgICAgICAgICAgICAgICAgICAgICAgIHBh
-bmVsX2luOiBlbmRwb2ludCB7Cj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJl
-bW90ZS1lbmRwb2ludCA9IDwmZHNpX291dD47Cj4gPiArICAgICAgICAgICAgICAgICAgICAgICB9
-Owo+ID4gKyAgICAgICAgICAgICAgIH07Cj4gPiArICAgICAgIH07Cj4gPiAtLQo+ID4gMi4yMi4w
-LnJjMi4zODMuZ2Y0ZmJiZjMwYzItZ29vZwo+ID4KX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KSW50ZWwtZ2Z4IG1haWxpbmcgbGlzdApJbnRlbC1nZnhAbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
-bGlzdGluZm8vaW50ZWwtZ2Z4
+On Sat, Jun 08, 2019 at 03:02:29PM +0800, Jitao Shi wrote:
+> Add documentation for boe tv101wum-n16 panel.
+
+Typo in the subject and checkpatch complains about trailing whitespace.
+
+> 
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> ---
+>  .../display/panel/boe,tv101wum-nl6.txt        | 34 +++++++++++++++++++
+>  1 file changed, 34 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/panel/boe,tv101wum-nl6.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/display/panel/boe,tv101wum-nl6.txt b/Documentation/devicetree/bindings/display/panel/boe,tv101wum-nl6.txt
+> new file mode 100644
+> index 000000000000..2a84735d742d
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/panel/boe,tv101wum-nl6.txt
+> @@ -0,0 +1,34 @@
+> +Boe Corporation 10.1" WUXGA TFT LCD panel
+> +
+> +Required properties:
+> +- compatible: should be "boe,tv101wum"
+> +- reg: the virtual channel number of a DSI peripheral
+> +- enable-gpios: a GPIO spec for the enable pin
+> +- pp1800-supply: core voltage supply
+> +- avdd-supply: 
+> +- avee-supply: 
+> +- backlight: phandle of the backlight device attached to the panel
+> +
+> +The device node can contain one 'port' child node with one child
+> +'endpoint' node, according to the bindings defined in
+> +media/video-interfaces.txt. This node should describe panel's video bus.
+> +
+> +Example:
+> +&dsi {
+> +	...
+> +	panel@0 {
+> +		compatible = "boe,tv101wum-nl6";
+> +		reg = <0>;
+> +		enable-gpios = <&pio 45 0>;
+> +		avdd-supply = <&ppvarn_lcd>;
+> +		avee-supply = <&ppvarp_lcd>;
+> +		pp1800-supply = <&pp1800_lcd>;
+> +		backlight = <&backlight_lcd0>;
+> +		status = "okay";
+> +		port {
+> +			panel_in: endpoint {
+> +				remote-endpoint = <&dsi_out>;
+> +			};
+> +		};
+> +	};
+> +};
+> \ No newline at end of file
+
+Fix this.
