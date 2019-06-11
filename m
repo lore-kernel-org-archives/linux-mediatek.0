@@ -1,197 +1,119 @@
-From: Qii Wang <qii.wang@mediatek.com>
-Subject: [PATCH 2/2] i2c: mediatek: Add i2c AC timing adjust support
-Date: Tue, 11 Jun 2019 16:11:55 +0800
-Message-ID: <1560240715-22595-3-git-send-email-qii.wang@mediatek.com>
-References: <1560240715-22595-1-git-send-email-qii.wang@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH v7 00/10] add USB Type-B GPIO connector driver
+Date: Tue, 11 Jun 2019 16:44:30 +0800
+Message-ID: <1560242680-23844-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1560240715-22595-1-git-send-email-qii.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: wsa@the-dreams.de
-Cc: linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, leilk.liu@mediatek.com, qii.wang@mediatek.com, matthias.bgg@gmail.com, robh+dt@kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heikki Krogerus <heikki.krogerus@linux.intel.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Biju Das <biju.das@bp.renesas.com>, Linus Walleij <linus.walleij@linaro.org>, Yu Chen <chenyu56@huawei.com>, Nagarjuna Kristam <nkristam@nvidia.com>, Felipe Balbi <felipe.balbi@linux.intel.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds some I2C timing registers to meet I2C spec, it
-configures these registers according to information passed via DT.
+Because the USB Connector is introduced and the requirement of
+usb-connector.txt binding, the old way using extcon to support
+USB Dual-Role switch is now deprecated, meanwhile there is no
+available common driver when use Type-B connector, typically
+using an input GPIO to detect USB ID pin.
+This patch series introduce a Type-B GPIO connector driver and try
+to replace the function provided by extcon-usb-gpio driver.
 
-Signed-off-by: Qii Wang <qii.wang@mediatek.com>
----
- drivers/i2c/busses/i2c-mt65xx.c |   94 ++++++++++++++++++++++++++++++++++-----
- 1 file changed, 82 insertions(+), 12 deletions(-)
+v7 changes:
+  1. [5/10]: add signed-off-by Chunfeng
+  2. [6/10]: add signed-off-by Chunfeng
+  3. [6/10]: depends on linux-next of Rafael's tree [1]
+  4. [7/10]: add signed-off-by Chunfeng and tested-by Biju
+  5. [9/10]: add tested-by Nagarjuna, and remove DEV_PMS_OPS suggested by Andy
 
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index 745b0d0..f4bf753 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -134,6 +134,12 @@ enum I2C_REGS_OFFSET {
- 	OFFSET_TRANSFER_LEN_AUX,
- 	OFFSET_CLOCK_DIV,
- 	OFFSET_LTIMING,
-+	OFFSET_SCL_HIGH_LOW_RATIO,
-+	OFFSET_HS_SCL_HIGH_LOW_RATIO,
-+	OFFSET_SCL_MIS_COMP_POINT,
-+	OFFSET_STA_STO_AC_TIMING,
-+	OFFSET_HS_STA_STO_AC_TIMING,
-+	OFFSET_SDA_TIMING,
- };
- 
- static const u16 mt_i2c_regs_v1[] = {
-@@ -161,6 +167,12 @@ enum I2C_REGS_OFFSET {
- 	[OFFSET_DEBUGCTRL] = 0x68,
- 	[OFFSET_TRANSFER_LEN_AUX] = 0x6c,
- 	[OFFSET_CLOCK_DIV] = 0x70,
-+	[OFFSET_SCL_HIGH_LOW_RATIO] = 0x74,
-+	[OFFSET_HS_SCL_HIGH_LOW_RATIO] = 0x78,
-+	[OFFSET_SCL_MIS_COMP_POINT] = 0x7C,
-+	[OFFSET_STA_STO_AC_TIMING] = 0x80,
-+	[OFFSET_HS_STA_STO_AC_TIMING] = 0x84,
-+	[OFFSET_SDA_TIMING] = 0x88,
- };
- 
- static const u16 mt_i2c_regs_v2[] = {
-@@ -179,9 +191,11 @@ enum I2C_REGS_OFFSET {
- 	[OFFSET_HS] = 0x30,
- 	[OFFSET_IO_CONFIG] = 0x34,
- 	[OFFSET_FIFO_ADDR_CLR] = 0x38,
-+	[OFFSET_SDA_TIMING] = 0x3c,
- 	[OFFSET_TRANSFER_LEN_AUX] = 0x44,
- 	[OFFSET_CLOCK_DIV] = 0x48,
- 	[OFFSET_SOFTRESET] = 0x50,
-+	[OFFSET_SCL_MIS_COMP_POINT] = 0x90,
- 	[OFFSET_DEBUGSTAT] = 0xe0,
- 	[OFFSET_DEBUGCTRL] = 0xe8,
- 	[OFFSET_FIFO_STAT] = 0xf4,
-@@ -202,6 +216,17 @@ struct mtk_i2c_compatible {
- 	unsigned char ltiming_adjust: 1;
- };
- 
-+struct mtk_i2c_ac_timing {
-+	u16 ext;
-+	u16 inter_clk_div;
-+	u16 scl_hl_ratio;
-+	u16 hs_scl_hl_ratio;
-+	u16 scl_mis_comp;
-+	u16 sta_stop;
-+	u16 hs_sta_stop;
-+	u16 sda_timing;
-+};
-+
- struct mtk_i2c {
- 	struct i2c_adapter adap;	/* i2c host adapter */
- 	struct device *dev;
-@@ -226,6 +251,7 @@ struct mtk_i2c {
- 	u16 ltiming_reg;
- 	unsigned char auto_restart;
- 	bool ignore_restart_irq;
-+	struct mtk_i2c_ac_timing ac_timing;
- 	const struct mtk_i2c_compatible *dev_comp;
- };
- 
-@@ -403,13 +429,40 @@ static void mtk_i2c_init_hw(struct mtk_i2c *i2c)
- 	if (i2c->dev_comp->dcm)
- 		mtk_i2c_writew(i2c, I2C_DCM_DISABLE, OFFSET_DCM_EN);
- 
--	if (i2c->dev_comp->timing_adjust)
--		mtk_i2c_writew(i2c, I2C_DEFAULT_CLK_DIV - 1, OFFSET_CLOCK_DIV);
--
- 	mtk_i2c_writew(i2c, i2c->timing_reg, OFFSET_TIMING);
- 	mtk_i2c_writew(i2c, i2c->high_speed_reg, OFFSET_HS);
--	if (i2c->dev_comp->ltiming_adjust)
--		mtk_i2c_writew(i2c, i2c->ltiming_reg, OFFSET_LTIMING);
-+
-+	if (i2c->dev_comp->timing_adjust) {
-+		mtk_i2c_writew(i2c, i2c->ac_timing.ext, OFFSET_EXT_CONF);
-+		mtk_i2c_writew(i2c, i2c->ac_timing.inter_clk_div - 1,
-+			       OFFSET_CLOCK_DIV);
-+		mtk_i2c_writew(i2c, i2c->ac_timing.scl_mis_comp,
-+			       OFFSET_SCL_MIS_COMP_POINT);
-+		mtk_i2c_writew(i2c, i2c->ac_timing.sda_timing,
-+			       OFFSET_SDA_TIMING);
-+
-+		if (i2c->dev_comp->ltiming_adjust) {
-+			mtk_i2c_writew(i2c, i2c->timing_reg -
-+				       i2c->ac_timing.scl_hl_ratio,
-+				       OFFSET_TIMING);
-+			mtk_i2c_writew(i2c, i2c->high_speed_reg -
-+				       ((i2c->ac_timing.hs_scl_hl_ratio) << 8),
-+				       OFFSET_HS);
-+			mtk_i2c_writew(i2c, i2c->ltiming_reg +
-+				       ((i2c->ac_timing.hs_scl_hl_ratio) << 9) +
-+				       i2c->ac_timing.scl_hl_ratio,
-+				       OFFSET_LTIMING);
-+		} else {
-+			mtk_i2c_writew(i2c, i2c->ac_timing.scl_hl_ratio,
-+				       OFFSET_SCL_HIGH_LOW_RATIO);
-+			mtk_i2c_writew(i2c, i2c->ac_timing.hs_scl_hl_ratio,
-+				       OFFSET_HS_SCL_HIGH_LOW_RATIO);
-+			mtk_i2c_writew(i2c, i2c->ac_timing.sta_stop,
-+				       OFFSET_STA_STO_AC_TIMING);
-+			mtk_i2c_writew(i2c, i2c->ac_timing.hs_sta_stop,
-+				       OFFSET_HS_STA_STO_AC_TIMING);
-+		}
-+	}
- 
- 	/* If use i2c pin from PMIC mt6397 side, need set PATH_DIR first */
- 	if (i2c->have_pmic)
-@@ -592,12 +645,6 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
- 
- 	mtk_i2c_writew(i2c, control_reg, OFFSET_CONTROL);
- 
--	/* set start condition */
--	if (i2c->speed_hz <= I2C_DEFAULT_SPEED)
--		mtk_i2c_writew(i2c, I2C_ST_START_CON, OFFSET_EXT_CONF);
--	else
--		mtk_i2c_writew(i2c, I2C_FS_START_CON, OFFSET_EXT_CONF);
--
- 	addr_reg = i2c_8bit_addr_from_msg(msgs);
- 	mtk_i2c_writew(i2c, addr_reg, OFFSET_SLAVE_ADDR);
- 
-@@ -889,6 +936,7 @@ static u32 mtk_i2c_functionality(struct i2c_adapter *adap)
- static int mtk_i2c_parse_dt(struct device_node *np, struct mtk_i2c *i2c)
- {
- 	int ret;
-+	u16 ac_timing[8] = {0};
- 
- 	ret = of_property_read_u32(np, "clock-frequency", &i2c->speed_hz);
- 	if (ret < 0)
-@@ -901,6 +949,28 @@ static int mtk_i2c_parse_dt(struct device_node *np, struct mtk_i2c *i2c)
- 	if (i2c->clk_src_div == 0)
- 		return -EINVAL;
- 
-+	if (i2c->dev_comp->timing_adjust) {
-+		ret = of_property_read_u16_array(np, "ac-timing", ac_timing,
-+						 ARRAY_SIZE(ac_timing));
-+		if (ret < 0) {
-+			if (i2c->speed_hz <= I2C_DEFAULT_SPEED)
-+				i2c->ac_timing.ext = I2C_ST_START_CON;
-+			else
-+				i2c->ac_timing.ext = I2C_FS_START_CON;
-+
-+			i2c->ac_timing.inter_clk_div = I2C_DEFAULT_CLK_DIV;
-+		} else {
-+			i2c->ac_timing.ext = ac_timing[0];
-+			i2c->ac_timing.inter_clk_div = ac_timing[1];
-+			i2c->ac_timing.scl_hl_ratio = ac_timing[2];
-+			i2c->ac_timing.hs_scl_hl_ratio = ac_timing[3];
-+			i2c->ac_timing.scl_mis_comp = ac_timing[4];
-+			i2c->ac_timing.sta_stop = ac_timing[5];
-+			i2c->ac_timing.hs_sta_stop = ac_timing[6];
-+			i2c->ac_timing.sda_timing = ac_timing[7];
-+		}
-+	}
-+
- 	i2c->have_pmic = of_property_read_bool(np, "mediatek,have-pmic");
- 	i2c->use_push_pull =
- 		of_property_read_bool(np, "mediatek,use-push-pull");
-@@ -951,7 +1021,7 @@ static int mtk_i2c_probe(struct platform_device *pdev)
- 		return -EINVAL;
- 
- 	if (i2c->dev_comp->timing_adjust)
--		i2c->clk_src_div *= I2C_DEFAULT_CLK_DIV;
-+		i2c->clk_src_div *= i2c->ac_timing.inter_clk_div;
- 
- 	if (i2c->have_pmic && !i2c->dev_comp->pmic_i2c)
- 		return -EINVAL;
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git/log/?h=linux-next
+
+v6 changes:
+  1. merge [1] and [2] into this series
+  2. don't use graph anymore to find usb-role-switch
+  3. abandon [3] and introduce three patches (6, 7, 8 in this series)
+     to rebuild APIs getting usb-role-switch
+
+  [1]: [v3] dt-binding: usb: add usb-role-switch property
+       https://patchwork.kernel.org/patch/10934835/
+  [2]: [v6,08/13] usb: roles: Introduce stubs for the exiting functions in role.h
+       https://patchwork.kernel.org/patch/10909971/
+
+  [3]: [PATCH v5 4/6] usb: roles: add API to get usb_role_switch by node
+
+v5 changes:
+  1. remove linux/of.h and put usb_role_switch when error happens,
+     suggested by Biju
+  2. treat Type-B connector as USB controller's child, but not as
+     a virtual device, suggested by Rob
+  3. provide and use generic property "usb-role-switch", see [1],
+     suggested by Rob
+
+  Note: this series still depends on [2]
+
+  [1]: [v3] dt-binding: usb: add usb-role-switch property
+       https://patchwork.kernel.org/patch/10934835/
+  [2]: [v6,08/13] usb: roles: Introduce stubs for the exiting functions in role.h
+       https://patchwork.kernel.org/patch/10909971/
+
+v4 changes:
+  1. use switch_fwnode_match() to find fwnode suggested by Heikki
+  2. assign fwnode member of usb_role_switch struct suggested by Heikki
+  3. make [4/6] depend on [2]
+  3. remove linux/gpio.h suggested by Linus
+  4. put node when error happens
+
+  [4/6] usb: roles: add API to get usb_role_switch by node
+  [2] [v6,08/13] usb: roles: Introduce stubs for the exiting functions in role.h
+    https://patchwork.kernel.org/patch/10909971/
+
+v3 changes:
+  1. add GPIO direction, and use fixed-regulator for GPIO controlled
+    VBUS regulator suggested by Rob;
+  2. rebuild fwnode_usb_role_switch_get() suggested by Andy and Heikki
+  3. treat the type-B connector as a virtual device;
+  4. change file name of driver again
+  5. select USB_ROLE_SWITCH in mtu3/Kconfig suggested by Heikki
+  6. rename ssusb_mode_manual_switch() to ssusb_mode_switch()
+
+v2 changes:
+ 1. make binding clear, and add a extra compatible suggested by Hans
+
+Chunfeng Yun (7):
+  dt-binding: usb: add usb-role-switch property
+  dt-bindings: connector: add optional properties for Type-B
+  dt-bindings: usb: add binding for Type-B GPIO connector driver
+  dt-bindings: usb: mtu3: add properties about USB Role Switch
+  usb: roles: get usb-role-switch from parent
+  usb: roles: add USB Type-B GPIO connector driver
+  usb: mtu3: register a USB Role Switch for dual role mode
+
+Heikki Krogerus (2):
+  device connection: Add fwnode_connection_find_match()
+  usb: roles: Add fwnode_usb_role_switch_get() function
+
+Yu Chen (1):
+  usb: roles: Introduce stubs for the exiting functions in role.h.
+
+ .../bindings/connector/usb-connector.txt      |  14 +
+ .../devicetree/bindings/usb/generic.txt       |   4 +
+ .../devicetree/bindings/usb/mediatek,mtu3.txt |  10 +
+ .../bindings/usb/typeb-conn-gpio.txt          |  31 ++
+ drivers/base/devcon.c                         |  43 ++-
+ drivers/usb/mtu3/Kconfig                      |   1 +
+ drivers/usb/mtu3/mtu3.h                       |   5 +
+ drivers/usb/mtu3/mtu3_debugfs.c               |   4 +-
+ drivers/usb/mtu3/mtu3_dr.c                    |  48 ++-
+ drivers/usb/mtu3/mtu3_dr.h                    |   6 +-
+ drivers/usb/mtu3/mtu3_plat.c                  |   3 +-
+ drivers/usb/roles/Kconfig                     |  11 +
+ drivers/usb/roles/Makefile                    |   1 +
+ drivers/usb/roles/class.c                     |  41 ++-
+ drivers/usb/roles/typeb-conn-gpio.c           | 284 ++++++++++++++++++
+ include/linux/device.h                        |  10 +-
+ include/linux/usb/role.h                      |  37 +++
+ 17 files changed, 529 insertions(+), 24 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/usb/typeb-conn-gpio.txt
+ create mode 100644 drivers/usb/roles/typeb-conn-gpio.c
+
 -- 
-1.7.9.5
+2.21.0
