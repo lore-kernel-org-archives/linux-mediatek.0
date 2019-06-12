@@ -1,91 +1,90 @@
-From: Avri Altman <Avri.Altman@wdc.com>
-Subject: RE: [PATCH v1] scsi: ufs: Avoid runtime suspend possibly being
- blocked forever
-Date: Wed, 12 Jun 2019 11:10:49 +0000
-Message-ID: <SN6PR04MB492546256F8F8635E7EE60C2FCEC0@SN6PR04MB4925.namprd04.prod.outlook.com>
-References: <1560325326-1598-1-git-send-email-stanley.chu@mediatek.com>
+From: Hans de Goede <hdegoede@redhat.com>
+Subject: Re: [PATCH 4/5] drm/connector: Split out orientation quirk detection
+Date: Wed, 12 Jun 2019 14:33:05 +0200
+Message-ID: <fe774952-6fd5-b4ec-56c9-32fd30546313@redhat.com>
+References: <20190611040350.90064-1-dbasehore@chromium.org>
+ <20190611040350.90064-5-dbasehore@chromium.org> <87zhmoy270.fsf@intel.com>
+ <01636500-0be5-acf8-5f93-a57383bf4b20@redhat.com>
+ <CAGAzgsoxpsft-vmVOuKSAbLJqR-EZvcceLpMeWkz6ikJEKGJHg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <1560325326-1598-1-git-send-email-stanley.chu@mediatek.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAGAzgsoxpsft-vmVOuKSAbLJqR-EZvcceLpMeWkz6ikJEKGJHg@mail.gmail.com>
 Content-Language: en-US
-Sender: stable-owner@vger.kernel.org
-To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com" <martin.petersen@oracle.com>, "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>, "pedrom.sousa@synopsys.com" <pedrom.sousa@synopsys.com>
-Cc: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "evgreen@chromium.org" <evgreen@chromium.org>, "beanhuo@micron.com" <beanhuo@micron.com>, "marc.w.gonzalez@free.fr" <marc.w.gonzalez@free.fr>, "ygardi@codeaurora.org" <ygardi@codeaurora.org>, "subhashj@codeaurora.org" <subhashj@codeaurora.org>, "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>, "peter.wang@mediatek.com" <peter.wang@mediatek.com>, "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>, "andy.teng@mediatek.com" <andy.teng@mediatek.com>, "stable@vger.kernel.org" <stable@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: "dbasehore ." <dbasehore@chromium.org>
+Cc: Jani Nikula <jani.nikula@linux.intel.com>, linux-kernel <linux-kernel@vger.kernel.org>, Thierry Reding <thierry.reding@gmail.com>, Sam Ravnborg <sam@ravnborg.org>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel <dri-devel@lists.freedesktop.org>, devicetree@vger.kernel.org, Intel Graphics <intel-gfx@lists.freedesktop.org>
 List-Id: linux-mediatek@lists.infradead.org
 
 Hi,
 
->=20
-> UFS runtime suspend can be triggered after pm_runtime_enable()
-> is invoked in ufshcd_pltfrm_init(). However if the first runtime
-> suspend is triggered before binding ufs_hba structure to ufs
-> device structure via platform_set_drvdata(), then UFS runtime
-> suspend will be no longer triggered in the future because its
-> dev->power.runtime_error was set in the first triggering and does
-> not have any chance to be cleared.
->=20
-> To be more clear, dev->power.runtime_error is set if hba is NULL
-> in ufshcd_runtime_suspend() which returns -EINVAL to rpm_callback()
-> where dev->power.runtime_error is set as -EINVAL. In this case, any
-> future rpm_suspend() for UFS device fails because
-> rpm_check_suspend_allowed() fails due to non-zero
-> dev->power.runtime_error.
->=20
-> To resolve this issue, make sure the first UFS runtime suspend
-> get valid "hba" in ufshcd_runtime_suspend(): Enable UFS runtime PM
-> only after hba is successfully bound to UFS device structure.
->=20
-> Fixes: e3ce73d (scsi: ufs: fix bugs related to null pointer access and ar=
-ray size)
-This code was inserted before platform_set_drvdata  in
-6269473 [SCSI] ufs: Add runtime PM support for UFS host controller driver.
-Why do you point to e3ce73d?
+On 12-06-19 02:16, dbasehore . wrote:
+> On Tue, Jun 11, 2019 at 1:54 AM Hans de Goede <hdegoede@redhat.com> wrote:
+>>
+>> Hi,
+>>
+>> On 11-06-19 10:08, Jani Nikula wrote:
+>>> On Mon, 10 Jun 2019, Derek Basehore <dbasehore@chromium.org> wrote:
+>>>> This removes the orientation quirk detection from the code to add
+>>>> an orientation property to a panel. This is used only for legacy x86
+>>>> systems, yet we'd like to start using this on devicetree systems where
+>>>> quirk detection like this is not needed.
+>>>
+>>> Not needed, but no harm done either, right?
+>>>
+>>> I guess I'll defer judgement on this to Hans and Ville (Cc'd).
+>>
+>> Hmm, I'm not big fan of this change. It adds code duplication and as
+>> other models with the same issue using a different driver or panel-type
+>> show up we will get more code duplication.
+>>
+>> Also I'm not convinced that devicetree based platforms will not need
+>> this. The whole devicetree as an ABI thing, which means that all
+>> devicetree bindings need to be set in stone before things are merged
+>> into the mainline, is done solely so that we can get vendors to ship
+>> hardware with the dtb files included in the firmware.
+> 
+> We've posted fixes to the devicetree well after the initial merge into
+> mainline before, so I don't see what you mean about the bindings being
+> set in stone.
 
-Thanks,
-Avri
+That was just me repeating the official party line about devicetree.
 
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> ---
->  drivers/scsi/ufs/ufshcd-pltfrm.c | 11 ++++-------
->  1 file changed, 4 insertions(+), 7 deletions(-)
->=20
-> diff --git a/drivers/scsi/ufs/ufshcd-pltfrm.c b/drivers/scsi/ufs/ufshcd-p=
-ltfrm.c
-> index 8a74ec30c3d2..d7d521b394c3 100644
-> --- a/drivers/scsi/ufs/ufshcd-pltfrm.c
-> +++ b/drivers/scsi/ufs/ufshcd-pltfrm.c
-> @@ -430,24 +430,21 @@ int ufshcd_pltfrm_init(struct platform_device
-> *pdev,
->  		goto dealloc_host;
->  	}
->=20
-> -	pm_runtime_set_active(&pdev->dev);
-> -	pm_runtime_enable(&pdev->dev);
-> -
->  	ufshcd_init_lanes_per_dir(hba);
->=20
->  	err =3D ufshcd_init(hba, mmio_base, irq);
->  	if (err) {
->  		dev_err(dev, "Initialization failed\n");
-> -		goto out_disable_rpm;
-> +		goto dealloc_host;
->  	}
->=20
->  	platform_set_drvdata(pdev, hba);
->=20
-> +	pm_runtime_set_active(&pdev->dev);
-> +	pm_runtime_enable(&pdev->dev);
-> +
->  	return 0;
->=20
-> -out_disable_rpm:
-> -	pm_runtime_disable(&pdev->dev);
-> -	pm_runtime_set_suspended(&pdev->dev);
->  dealloc_host:
->  	ufshcd_dealloc_host(hba);
->  out:
-> --
-> 2.18.0
+> I also don't really see the point. The devicetree is in
+> the kernel. If there's some setting in the devicetree that we want to
+> change, it's effectively the same to make the change in the devicetree
+> versus some quirk setting. The only difference seems to be that making
+> the change in the devicetree is cleaner.
+
+I agree with you that devicetree in practice is easy to update after
+shipping. But at least whenever I tried to get new bindings reviewed
+I was always told that I was not allowed to count on that.
+
+>> I'm 100% sure that there is e.g. ARM hardware out there which uses
+>> non upright mounted LCD panels (I used to have a few Allwinner
+>> tablets which did this). And given my experience with the quality
+>> of firmware bundled tables like ACPI tables I'm quite sure that
+>> if we ever move to firmware included dtb files that we will need
+>> quirks for those too.
+> 
+> Is there a timeline to start using firmware bundled tables?
+
+Nope, as I said "if we ever move to ...".
+
+> Since the
+> quirk code only uses DMI, it will need to be changed anyways for
+> firmware bundled devicetree files anyways.
+> 
+> We could consolidate the duplicated code into another function that
+> calls drm_get_panel_orientation_quirks too. The only reason it's like
+> it is is because I initially only had the call to
+> drm_get_panel_orientation_quirk once in the code.
+
+Yes if you can add a new helper for the current callers, then
+I'm fine with dropping the quirk handling from
+drm_connector_init_panel_orientation_property()
+
+Regards,
+
+Hans
