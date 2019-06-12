@@ -1,93 +1,95 @@
-From: "dbasehore ." <dbasehore@chromium.org>
-Subject: Re: [PATCH 3/5] drm/panel: Add attach/detach callbacks
-Date: Tue, 11 Jun 2019 17:25:47 -0700
-Message-ID: <CAGAzgsr2sh5B1xi_ztQPN0xoQsZd26DDXwWT_qqJ68XeKReJ_Q@mail.gmail.com>
-References: <20190611040350.90064-1-dbasehore@chromium.org>
- <20190611040350.90064-4-dbasehore@chromium.org>
- <20190611085722.GX21222@phenom.ffwll.local>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH v2] mt76: mt7615: add support for per-chain signal strength reporting
+Date: Wed, 12 Jun 2019 11:12:32 +0800
+Message-ID: <22e5caff3581dc92fd6fec2f25966d86b7276bba.1560220443.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <intel-gfx-bounces@lists.freedesktop.org>
-In-Reply-To: <20190611085722.GX21222@phenom.ffwll.local>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
-List-Post: <mailto:intel-gfx@lists.freedesktop.org>
-List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: intel-gfx-bounces@lists.freedesktop.org
-Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
-To: Derek Basehore <dbasehore@chromium.org>, linux-kernel <linux-kernel@vger.kernel.org>, Thierry Reding <thierry.reding@gmail.com>, Sam Ravnborg <sam@ravnborg.org>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>, Jani Nikula <jani.nikula@linux.intel.com>, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel <dri-devel@lists.freedesktop.org>, devicetree@vger.kernel.org, Intel Graphics <intel-gfx@lists.freedesktop.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>moderated
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
+Cc: Roy Luo <royluo@google.com>, YF Luo <yf.luo@mediatek.com>, Yiwei Chung <yiwei.chung@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVHVlLCBKdW4gMTEsIDIwMTkgYXQgMTo1NyBBTSBEYW5pZWwgVmV0dGVyIDxkYW5pZWxAZmZ3
-bGwuY2g+IHdyb3RlOgo+Cj4gT24gTW9uLCBKdW4gMTAsIDIwMTkgYXQgMDk6MDM6NDhQTSAtMDcw
-MCwgRGVyZWsgQmFzZWhvcmUgd3JvdGU6Cj4gPiBUaGlzIGFkZHMgdGhlIGF0dGFjaC9kZXRhY2gg
-Y2FsbGJhY2tzLiBUaGVzZSBhcmUgZm9yIHNldHRpbmcgdXAKPiA+IGludGVybmFsIHN0YXRlIGZv
-ciB0aGUgY29ubmVjdG9yL3BhbmVsIHBhaXIgdGhhdCBjYW4ndCBiZSBkb25lIGF0Cj4gPiBwcm9i
-ZSAoc2luY2UgdGhlIGNvbm5lY3RvciBkb2Vzbid0IGV4aXN0KSBhbmQgd2hpY2ggZG9uJ3QgbmVl
-ZCB0byBiZQo+ID4gcmVwZWF0ZWRseSBkb25lIGZvciBldmVyeSBnZXQvbW9kZXMsIHByZXBhcmUs
-IG9yIGVuYWJsZSBjYWxsYmFjay4KPiA+IFZhbHVlcyBzdWNoIGFzIHRoZSBwYW5lbCBvcmllbnRh
-dGlvbiwgYW5kIGRpc3BsYXkgc2l6ZSBjYW4gYmUgZmlsbGVkCj4gPiBpbiBmb3IgdGhlIGNvbm5l
-Y3Rvci4KPiA+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBEZXJlayBCYXNlaG9yZSA8ZGJhc2Vob3JlQGNo
-cm9taXVtLm9yZz4KPiA+IC0tLQo+ID4gIGRyaXZlcnMvZ3B1L2RybS9kcm1fcGFuZWwuYyB8IDE0
-ICsrKysrKysrKysrKysrCj4gPiAgaW5jbHVkZS9kcm0vZHJtX3BhbmVsLmggICAgIHwgIDQgKysr
-Kwo+ID4gIDIgZmlsZXMgY2hhbmdlZCwgMTggaW5zZXJ0aW9ucygrKQo+ID4KPiA+IGRpZmYgLS1n
-aXQgYS9kcml2ZXJzL2dwdS9kcm0vZHJtX3BhbmVsLmMgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX3Bh
-bmVsLmMKPiA+IGluZGV4IDNiNjg5Y2U0YTUxYS4uNzJmNjc2NzhkOWQ1IDEwMDY0NAo+ID4gLS0t
-IGEvZHJpdmVycy9ncHUvZHJtL2RybV9wYW5lbC5jCj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0v
-ZHJtX3BhbmVsLmMKPiA+IEBAIC0xMDQsMTIgKzEwNCwyMyBAQCBFWFBPUlRfU1lNQk9MKGRybV9w
-YW5lbF9yZW1vdmUpOwo+ID4gICAqLwo+ID4gIGludCBkcm1fcGFuZWxfYXR0YWNoKHN0cnVjdCBk
-cm1fcGFuZWwgKnBhbmVsLCBzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yKQo+ID4gIHsK
-PiA+ICsgICAgIGludCByZXQ7Cj4gPiArCj4gPiAgICAgICBpZiAocGFuZWwtPmNvbm5lY3RvcikK
-PiA+ICAgICAgICAgICAgICAgcmV0dXJuIC1FQlVTWTsKPiA+Cj4gPiAgICAgICBwYW5lbC0+Y29u
-bmVjdG9yID0gY29ubmVjdG9yOwo+ID4gICAgICAgcGFuZWwtPmRybSA9IGNvbm5lY3Rvci0+ZGV2
-Owo+ID4KPiA+ICsgICAgIGlmIChwYW5lbC0+ZnVuY3MtPmF0dGFjaCkgewo+ID4gKyAgICAgICAg
-ICAgICByZXQgPSBwYW5lbC0+ZnVuY3MtPmF0dGFjaChwYW5lbCk7Cj4gPiArICAgICAgICAgICAg
-IGlmIChyZXQgPCAwKSB7Cj4gPiArICAgICAgICAgICAgICAgICAgICAgcGFuZWwtPmNvbm5lY3Rv
-ciA9IE5VTEw7Cj4gPiArICAgICAgICAgICAgICAgICAgICAgcGFuZWwtPmRybSA9IE5VTEw7Cj4g
-PiArICAgICAgICAgICAgICAgICAgICAgcmV0dXJuIHJldDsKPiA+ICsgICAgICAgICAgICAgfQo+
-ID4gKyAgICAgfQo+Cj4gV2h5IGNhbid0IHdlIGp1c3QgaW1wbGVtZW50IHRoaXMgaW4gdGhlIGRy
-bSBoZWxwZXJzIGZvciBldmVyeW9uZSwgYnkgZS5nLgo+IHN0b3JpbmcgYSBkdCBub2RlIGluIGRy
-bV9wYW5lbD8gRmVlbHMgYSBiaXQgb3ZlcmtpbGwgdG8gaGF2ZSB0aGVzZSBuZXcKPiBob29rcyBo
-ZXJlLgo+Cj4gQWxzbywgbXkgdW5kZXJzdGFuZGluZyBpcyB0aGF0IHRoaXMgZHQgc3R1ZmYgaXMg
-c3VwcG9zZWQgdG8gYmUKPiBzdGFuZGFyZGl6ZWQsIHNvIHRoaXMgc2hvdWxkIHdvcmsuCgpTbyBk
-byB5b3Ugd2FudCBhbGwgb2YgdGhpcyBpbmZvcm1hdGlvbiBhZGRlZCB0byB0aGUgZHJtX3BhbmVs
-IHN0cnVjdD8KSWYgd2UgZG8gdGhhdCwgd2UgZG9uJ3QgbmVjZXNzYXJpbHkgZXZlbiBuZWVkIHRo
-ZSBkcm0gaGVscGVyIGZ1bmN0aW9uLgpXZSBjb3VsZCBqdXN0IGNvcHkgdGhlIHZhbHVlcyBvdmVy
-IGhlcmUgaW4gdGhlIGRybV9wYW5lbF9hdHRhY2gKZnVuY3Rpb24gKGFuZCBjbGVhciB0aGVtIGlu
-IGRybV9wYW5lbF9kZXRhY2gpLgoKPiAtRGFuaWVsCj4KPiA+ICsKPiA+ICAgICAgIHJldHVybiAw
-Owo+ID4gIH0KPiA+ICBFWFBPUlRfU1lNQk9MKGRybV9wYW5lbF9hdHRhY2gpOwo+ID4gQEAgLTEy
-OCw2ICsxMzksOSBAQCBFWFBPUlRfU1lNQk9MKGRybV9wYW5lbF9hdHRhY2gpOwo+ID4gICAqLwo+
-ID4gIGludCBkcm1fcGFuZWxfZGV0YWNoKHN0cnVjdCBkcm1fcGFuZWwgKnBhbmVsKQo+ID4gIHsK
-PiA+ICsgICAgIGlmIChwYW5lbC0+ZnVuY3MtPmRldGFjaCkKPiA+ICsgICAgICAgICAgICAgcGFu
-ZWwtPmZ1bmNzLT5kZXRhY2gocGFuZWwpOwo+ID4gKwo+ID4gICAgICAgcGFuZWwtPmNvbm5lY3Rv
-ciA9IE5VTEw7Cj4gPiAgICAgICBwYW5lbC0+ZHJtID0gTlVMTDsKPiA+Cj4gPiBkaWZmIC0tZ2l0
-IGEvaW5jbHVkZS9kcm0vZHJtX3BhbmVsLmggYi9pbmNsdWRlL2RybS9kcm1fcGFuZWwuaAo+ID4g
-aW5kZXggMTM2MzFiMmVmYmFhLi5lMTM2ZTNhM2M5OTYgMTAwNjQ0Cj4gPiAtLS0gYS9pbmNsdWRl
-L2RybS9kcm1fcGFuZWwuaAo+ID4gKysrIGIvaW5jbHVkZS9kcm0vZHJtX3BhbmVsLmgKPiA+IEBA
-IC0zNyw2ICszNyw4IEBAIHN0cnVjdCBkaXNwbGF5X3RpbWluZzsKPiA+ICAgKiBzdHJ1Y3QgZHJt
-X3BhbmVsX2Z1bmNzIC0gcGVyZm9ybSBvcGVyYXRpb25zIG9uIGEgZ2l2ZW4gcGFuZWwKPiA+ICAg
-KiBAZGlzYWJsZTogZGlzYWJsZSBwYW5lbCAodHVybiBvZmYgYmFjayBsaWdodCwgZXRjLikKPiA+
-ICAgKiBAdW5wcmVwYXJlOiB0dXJuIG9mZiBwYW5lbAo+ID4gKyAqIEBkZXRhY2g6IGRldGFjaCBw
-YW5lbC0+Y29ubmVjdG9yIChjbGVhciBpbnRlcm5hbCBzdGF0ZSwgZXRjLikKPiA+ICsgKiBAYXR0
-YWNoOiBhdHRhY2ggcGFuZWwtPmNvbm5lY3RvciAodXBkYXRlIGludGVybmFsIHN0YXRlLCBldGMu
-KQo+ID4gICAqIEBwcmVwYXJlOiB0dXJuIG9uIHBhbmVsIGFuZCBwZXJmb3JtIHNldCB1cAo+ID4g
-ICAqIEBlbmFibGU6IGVuYWJsZSBwYW5lbCAodHVybiBvbiBiYWNrIGxpZ2h0LCBldGMuKQo+ID4g
-ICAqIEBnZXRfbW9kZXM6IGFkZCBtb2RlcyB0byB0aGUgY29ubmVjdG9yIHRoYXQgdGhlIHBhbmVs
-IGlzIGF0dGFjaGVkIHRvIGFuZAo+ID4gQEAgLTcwLDYgKzcyLDggQEAgc3RydWN0IGRpc3BsYXlf
-dGltaW5nOwo+ID4gIHN0cnVjdCBkcm1fcGFuZWxfZnVuY3Mgewo+ID4gICAgICAgaW50ICgqZGlz
-YWJsZSkoc3RydWN0IGRybV9wYW5lbCAqcGFuZWwpOwo+ID4gICAgICAgaW50ICgqdW5wcmVwYXJl
-KShzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbCk7Cj4gPiArICAgICB2b2lkICgqZGV0YWNoKShzdHJ1
-Y3QgZHJtX3BhbmVsICpwYW5lbCk7Cj4gPiArICAgICBpbnQgKCphdHRhY2gpKHN0cnVjdCBkcm1f
-cGFuZWwgKnBhbmVsKTsKPiA+ICAgICAgIGludCAoKnByZXBhcmUpKHN0cnVjdCBkcm1fcGFuZWwg
-KnBhbmVsKTsKPiA+ICAgICAgIGludCAoKmVuYWJsZSkoc3RydWN0IGRybV9wYW5lbCAqcGFuZWwp
-Owo+ID4gICAgICAgaW50ICgqZ2V0X21vZGVzKShzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbCk7Cj4g
-PiAtLQo+ID4gMi4yMi4wLnJjMi4zODMuZ2Y0ZmJiZjMwYzItZ29vZwo+ID4KPgo+IC0tCj4gRGFu
-aWVsIFZldHRlcgo+IFNvZnR3YXJlIEVuZ2luZWVyLCBJbnRlbCBDb3Jwb3JhdGlvbgo+IGh0dHA6
-Ly9ibG9nLmZmd2xsLmNoCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCkludGVsLWdmeCBtYWlsaW5nIGxpc3QKSW50ZWwtZ2Z4QGxpc3RzLmZyZWVkZXNrdG9w
-Lm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVs
-LWdmeA==
+Fill in RX status->chain_signal to avoid empty value.
+
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+Changes since v2 - correct calculation sequence
+---
+ .../net/wireless/mediatek/mt76/mt7615/mac.c   | 30 ++++++++++++++++++-
+ .../net/wireless/mediatek/mt76/mt7615/mac.h   |  5 ++++
+ 2 files changed, 34 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+index b60d42b5923d..2f49a99e77b1 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+@@ -13,6 +13,11 @@
+ #include "../dma.h"
+ #include "mac.h"
+ 
++static inline s8 to_rssi(u32 field, u32 rxv)
++{
++	return (FIELD_GET(field, rxv) - 220) / 2;
++}
++
+ static struct mt76_wcid *mt7615_rx_get_wcid(struct mt7615_dev *dev,
+ 					    u8 idx, bool unicast)
+ {
+@@ -120,6 +125,7 @@ int mt7615_mac_fill_rx(struct mt7615_dev *dev, struct sk_buff *skb)
+ 	if (rxd0 & MT_RXD0_NORMAL_GROUP_3) {
+ 		u32 rxdg0 = le32_to_cpu(rxd[0]);
+ 		u32 rxdg1 = le32_to_cpu(rxd[1]);
++		u32 rxdg3 = le32_to_cpu(rxd[3]);
+ 		u8 stbc = FIELD_GET(MT_RXV1_HT_STBC, rxdg0);
+ 		bool cck = false;
+ 
+@@ -169,7 +175,29 @@ int mt7615_mac_fill_rx(struct mt7615_dev *dev, struct sk_buff *skb)
+ 
+ 		status->enc_flags |= RX_ENC_FLAG_STBC_MASK * stbc;
+ 
+-		/* TODO: RSSI */
++		status->chains = dev->mt76.antenna_mask;
++		status->chain_signal[0] = to_rssi(MT_RXV4_RCPI0, rxdg3);
++		status->chain_signal[1] = to_rssi(MT_RXV4_RCPI1, rxdg3);
++		status->chain_signal[2] = to_rssi(MT_RXV4_RCPI2, rxdg3);
++		status->chain_signal[3] = to_rssi(MT_RXV4_RCPI3, rxdg3);
++		status->signal = status->chain_signal[0];
++
++		switch (status->chains) {
++		case 0xf:
++			status->signal = max(status->signal,
++					     status->chain_signal[3]);
++			/* fall through */
++		case 0x7:
++			status->signal = max(status->signal,
++					     status->chain_signal[2]);
++			/* fall through */
++		case 0x3:
++			status->signal = max(status->signal,
++					     status->chain_signal[1]);
++			break;
++		default:
++			break;
++		}
+ 		rxd += 6;
+ 		if ((u8 *)rxd - skb->data >= skb->len)
+ 			return -EINVAL;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.h b/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
+index 18ad4b8a3807..b00ce8db58e9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
+@@ -98,6 +98,11 @@ enum rx_pkt_type {
+ #define MT_RXV2_GROUP_ID		GENMASK(26, 21)
+ #define MT_RXV2_LENGTH			GENMASK(20, 0)
+ 
++#define MT_RXV4_RCPI3			GENMASK(31, 24)
++#define MT_RXV4_RCPI2			GENMASK(23, 16)
++#define MT_RXV4_RCPI1			GENMASK(15, 8)
++#define MT_RXV4_RCPI0			GENMASK(7, 0)
++
+ enum tx_header_format {
+ 	MT_HDR_FORMAT_802_3,
+ 	MT_HDR_FORMAT_CMD,
+-- 
+2.18.0
