@@ -1,73 +1,64 @@
-From: Stanley Chu <stanley.chu@mediatek.com>
-Subject: [PATCH v2] scsi: ufs: Avoid runtime suspend possibly being blocked forever
-Date: Wed, 12 Jun 2019 23:19:05 +0800
-Message-ID: <1560352745-24681-1-git-send-email-stanley.chu@mediatek.com>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [GIT,PULL] mediatek drm fixes for 5.2
+Date: Wed, 12 Jun 2019 18:25:38 +0200
+Message-ID: <20190612162538.GA8035@phenom.ffwll.local>
+References: <1560325868.3259.6.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <stable-owner@vger.kernel.org>
-Sender: stable-owner@vger.kernel.org
-To: linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com, pedrom.sousa@synopsys.com
-Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com, evgreen@chromium.org, beanhuo@micron.com, marc.w.gonzalez@free.fr, ygardi@codeaurora.org, subhashj@codeaurora.org, sthumma@codeaurora.org, kuohong.wang@mediatek.com, peter.wang@mediatek.com, chun-hung.wu@mediatek.com, andy.teng@mediatek.com, Stanley Chu <stanley.chu@mediatek.com>, stable@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1560325868.3259.6.camel@mtksdaap41>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: CK Hu <ck.hu@mediatek.com>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Yongqiang Niu <yongqiang.niu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Daniel Vetter <daniel.vetter@intel.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-UFS runtime suspend can be triggered after pm_runtime_enable()
-is invoked in ufshcd_pltfrm_init(). However if the first runtime
-suspend is triggered before binding ufs_hba structure to ufs
-device structure via platform_set_drvdata(), then UFS runtime
-suspend will be no longer triggered in the future because its
-dev->power.runtime_error was set in the first triggering and does
-not have any chance to be cleared.
-
-To be more clear, dev->power.runtime_error is set if hba is NULL
-in ufshcd_runtime_suspend() which returns -EINVAL to rpm_callback()
-where dev->power.runtime_error is set as -EINVAL. In this case, any
-future rpm_suspend() for UFS device fails because
-rpm_check_suspend_allowed() fails due to non-zero
-dev->power.runtime_error.
-
-To resolve this issue, make sure the first UFS runtime suspend
-get valid "hba" in ufshcd_runtime_suspend(): Enable UFS runtime PM
-only after hba is successfully bound to UFS device structure.
-
-Fixes: 62694735ca95 ([SCSI] ufs: Add runtime PM support for UFS host controller driver)
-Cc: stable@vger.kernel.org
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
----
- drivers/scsi/ufs/ufshcd-pltfrm.c | 11 ++++-------
- 1 file changed, 4 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/scsi/ufs/ufshcd-pltfrm.c b/drivers/scsi/ufs/ufshcd-pltfrm.c
-index 8a74ec30c3d2..d7d521b394c3 100644
---- a/drivers/scsi/ufs/ufshcd-pltfrm.c
-+++ b/drivers/scsi/ufs/ufshcd-pltfrm.c
-@@ -430,24 +430,21 @@ int ufshcd_pltfrm_init(struct platform_device *pdev,
- 		goto dealloc_host;
- 	}
- 
--	pm_runtime_set_active(&pdev->dev);
--	pm_runtime_enable(&pdev->dev);
--
- 	ufshcd_init_lanes_per_dir(hba);
- 
- 	err = ufshcd_init(hba, mmio_base, irq);
- 	if (err) {
- 		dev_err(dev, "Initialization failed\n");
--		goto out_disable_rpm;
-+		goto dealloc_host;
- 	}
- 
- 	platform_set_drvdata(pdev, hba);
- 
-+	pm_runtime_set_active(&pdev->dev);
-+	pm_runtime_enable(&pdev->dev);
-+
- 	return 0;
- 
--out_disable_rpm:
--	pm_runtime_disable(&pdev->dev);
--	pm_runtime_set_suspended(&pdev->dev);
- dealloc_host:
- 	ufshcd_dealloc_host(hba);
- out:
--- 
-2.18.0
+T24gV2VkLCBKdW4gMTIsIDIwMTkgYXQgMDM6NTE6MDhQTSArMDgwMCwgQ0sgSHUgd3JvdGU6Cj4g
+SGkgRGF2ZSwgRGFuaWVsOgo+IAo+IFRoaXMgaW5jbHVkZSB1bmJpbmQgZXJyb3IgZml4LCBjbG9j
+ayBjb250cm9sIGZsb3cgcmVmaW5lbWVudCwgYW5kIFBSSU1FCj4gbW1hcCB3aXRoIHBhZ2Ugb2Zm
+c2V0Lgo+IAo+IFJlZ2FyZHMsCj4gQ0sKPiAKPiBUaGUgZm9sbG93aW5nIGNoYW5nZXMgc2luY2Ug
+Y29tbWl0Cj4gYTE4ODMzOWNhNWEzOTZhY2M1ODhlNTg1MWVkN2UxOWY2NmIwZWJkOToKPiAKPiAg
+IExpbnV4IDUuMi1yYzEgKDIwMTktMDUtMTkgMTU6NDc6MDkgLTA3MDApCj4gCj4gYXJlIGF2YWls
+YWJsZSBpbiB0aGUgR2l0IHJlcG9zaXRvcnkgYXQ6Cj4gCj4gICBodHRwczovL2dpdGh1Yi5jb20v
+Y2todS1tZWRpYXRlay9saW51eC5naXQtdGFncy5naXQKPiBtZWRpYXRlay1kcm0tZml4ZXMtNS4y
+CgpGb3IgbmV4dCB0aW1lIGFyb3VuZCwgcGxlYXNlIG1ha2UgdGhpcyBhIHNpZ25lZCBhbm5vdGF0
+ZWQgdGFnLiBhbm5vdGF0ZWQKYmVjYXVzZSB0aGVuIGl0J3MgbGVzcyB0eXBpbmcgZm9yIG1lLCBh
+bmQgc2lnbmVkIGJlY2F1c2UgaXQncyBvbiBhIHNlcnZlcgp3ZSBkb24ndCBuZWNlc3NhcmlseSB0
+cnVzdC4KCj4gCj4gZm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRvIDI0NThkOWQ2ZDk0YmU5
+ODJiOTE3ZTkzYzYxYTg5YjQ0MjZmMzJlMzE6Cj4gCj4gICBkcm0vbWVkaWF0ZWs6IGNhbGwgbXRr
+X2RzaV9zdG9wKCkgYWZ0ZXIgbXRrX2RybV9jcnRjX2F0b21pY19kaXNhYmxlKCkKPiAoMjAxOS0w
+Ni0wNCAwOTo1NDo0MiArMDgwMCkKPiAKPiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4gSHNpbi1ZaSBXYW5nICg1KToKPiAg
+ICAgICBkcm0vbWVkaWF0ZWs6IGZpeCB1bmJpbmQgZnVuY3Rpb25zCj4gICAgICAgZHJtL21lZGlh
+dGVrOiB1bmJpbmQgY29tcG9uZW50cyBpbiBtdGtfZHJtX3VuYmluZCgpCj4gICAgICAgZHJtL21l
+ZGlhdGVrOiBjYWxsIGRybV9hdG9taWNfaGVscGVyX3NodXRkb3duKCkgd2hlbiB1bmJpbmRpbmcK
+PiBkcml2ZXIKPiAgICAgICBkcm0vbWVkaWF0ZWs6IGNsZWFyIG51bV9waXBlcyB3aGVuIHVuYmlu
+ZCBkcml2ZXIKPiAgICAgICBkcm0vbWVkaWF0ZWs6IGNhbGwgbXRrX2RzaV9zdG9wKCkgYWZ0ZXIK
+PiBtdGtfZHJtX2NydGNfYXRvbWljX2Rpc2FibGUoKQo+IAo+IFlvbmdxaWFuZyBOaXUgKDIpOgo+
+ICAgICAgIGRybS9tZWRpYXRlazogYWRqdXN0IGRkcCBjbG9jayBjb250cm9sIGZsb3cKPiAgICAg
+ICBkcm0vbWVkaWF0ZWs6IHJlc3BlY3QgcGFnZSBvZmZzZXQgZm9yIFBSSU1FIG1tYXAgY2FsbHMK
+CllvdSBtaWdodCB3YW50IHRvIGxvb2sgaW50byBhbGwgdGhlIHJlY2VudGx5IGFkZGVkIGhlbHBl
+cnMgZm9yIG1tYXAsIEkKZG9uJ3QgdGhpbmsgbXRrIGRvZXMgYW55dGhpbmcgc3BlY2lhbCBoZXJl
+LgoKCj4gCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYyB8IDMwCj4g
+KysrKysrLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
+ay9tdGtfZHJtX2Rydi5jICB8ICA4ICsrKy0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
+ay9tdGtfZHJtX2dlbS5jICB8ICA3ICsrKysrKy0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19kc2kuYyAgICAgIHwgMTIgKysrKysrKysrKystCj4gIDQgZmlsZXMgY2hhbmdlZCwgMjYg
+aW5zZXJ0aW9ucygrKSwgMzEgZGVsZXRpb25zKC0pCgpQdWxsZWQsIHRoYW5rcy4KLURhbmllbAoK
+PiAKPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IGRy
+aS1kZXZlbCBtYWlsaW5nIGxpc3QKPiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4g
+aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Ci0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJlIEVuZ2luZWVyLCBJbnRlbCBDb3Jwb3JhdGlvbgpo
+dHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
+a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
+cmktZGV2ZWw=
