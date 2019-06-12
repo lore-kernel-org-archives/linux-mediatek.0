@@ -1,90 +1,44 @@
-From: Hans de Goede <hdegoede@redhat.com>
-Subject: Re: [PATCH 4/5] drm/connector: Split out orientation quirk detection
-Date: Wed, 12 Jun 2019 14:33:05 +0200
-Message-ID: <fe774952-6fd5-b4ec-56c9-32fd30546313@redhat.com>
-References: <20190611040350.90064-1-dbasehore@chromium.org>
- <20190611040350.90064-5-dbasehore@chromium.org> <87zhmoy270.fsf@intel.com>
- <01636500-0be5-acf8-5f93-a57383bf4b20@redhat.com>
- <CAGAzgsoxpsft-vmVOuKSAbLJqR-EZvcceLpMeWkz6ikJEKGJHg@mail.gmail.com>
+From: Kobe-CP Wu <Kobe-CP.Wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH] locking/lockdep: Fix UBSAN warnings
+Date: Wed, 12 Jun 2019 20:35:41 +0800
+Message-ID: <1560342941.16581.2.camel@mtkswgap22>
+References: <1560318544-27635-1-git-send-email-kobe-cp.wu@mediatek.com>
+ <20190612073425.GD3436@hirez.programming.kicks-ass.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAGAzgsoxpsft-vmVOuKSAbLJqR-EZvcceLpMeWkz6ikJEKGJHg@mail.gmail.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: "dbasehore ." <dbasehore@chromium.org>
-Cc: Jani Nikula <jani.nikula@linux.intel.com>, linux-kernel <linux-kernel@vger.kernel.org>, Thierry Reding <thierry.reding@gmail.com>, Sam Ravnborg <sam@ravnborg.org>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel <dri-devel@lists.freedesktop.org>, devicetree@vger.kernel.org, Intel Graphics <intel-gfx@lists.freedesktop.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190612073425.GD3436-Nxj+rRp3nVydTX5a5knrm8zTDFooKrT+cvkQGrU6aU0@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Peter Zijlstra <peterz-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Ingo Molnar <mingo-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Eason Lin <eason-yh.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
-
-On 12-06-19 02:16, dbasehore . wrote:
-> On Tue, Jun 11, 2019 at 1:54 AM Hans de Goede <hdegoede@redhat.com> wrote:
->>
->> Hi,
->>
->> On 11-06-19 10:08, Jani Nikula wrote:
->>> On Mon, 10 Jun 2019, Derek Basehore <dbasehore@chromium.org> wrote:
->>>> This removes the orientation quirk detection from the code to add
->>>> an orientation property to a panel. This is used only for legacy x86
->>>> systems, yet we'd like to start using this on devicetree systems where
->>>> quirk detection like this is not needed.
->>>
->>> Not needed, but no harm done either, right?
->>>
->>> I guess I'll defer judgement on this to Hans and Ville (Cc'd).
->>
->> Hmm, I'm not big fan of this change. It adds code duplication and as
->> other models with the same issue using a different driver or panel-type
->> show up we will get more code duplication.
->>
->> Also I'm not convinced that devicetree based platforms will not need
->> this. The whole devicetree as an ABI thing, which means that all
->> devicetree bindings need to be set in stone before things are merged
->> into the mainline, is done solely so that we can get vendors to ship
->> hardware with the dtb files included in the firmware.
+On Wed, 2019-06-12 at 09:34 +0200, Peter Zijlstra wrote:
+> On Wed, Jun 12, 2019 at 01:49:04PM +0800, Kobe Wu wrote:
+> > Fix complaints from UBSAN about signed integer overflow.
+> > 
+> > ========================================================================
+> > UBSAN: Undefined behaviour in kernel/locking/lockdep.c:2998:3
+> > signed integer overflow:
 > 
-> We've posted fixes to the devicetree well after the initial merge into
-> mainline before, so I don't see what you mean about the bindings being
-> set in stone.
+> I don't mind the patch, but this is an UBSAN bug and cannot therefore be
+> a reason.
 
-That was just me repeating the official party line about devicetree.
+I think the description could be amended as follows.
+There is unnecessary to mention the UBSAN bug.
 
-> I also don't really see the point. The devicetree is in
-> the kernel. If there's some setting in the devicetree that we want to
-> change, it's effectively the same to make the change in the devicetree
-> versus some quirk setting. The only difference seems to be that making
-> the change in the devicetree is cleaner.
+locking/lockdep: add size of counters for lockdep statistics
 
-I agree with you that devicetree in practice is easy to update after
-shipping. But at least whenever I tried to get new bindings reviewed
-I was always told that I was not allowed to count on that.
-
->> I'm 100% sure that there is e.g. ARM hardware out there which uses
->> non upright mounted LCD panels (I used to have a few Allwinner
->> tablets which did this). And given my experience with the quality
->> of firmware bundled tables like ACPI tables I'm quite sure that
->> if we ever move to firmware included dtb files that we will need
->> quirks for those too.
-> 
-> Is there a timeline to start using firmware bundled tables?
-
-Nope, as I said "if we ever move to ...".
-
-> Since the
-> quirk code only uses DMI, it will need to be changed anyways for
-> firmware bundled devicetree files anyways.
-> 
-> We could consolidate the duplicated code into another function that
-> calls drm_get_panel_orientation_quirks too. The only reason it's like
-> it is is because I initially only had the call to
-> drm_get_panel_orientation_quirk once in the code.
-
-Yes if you can add a new helper for the current callers, then
-I'm fine with dropping the quirk handling from
-drm_connector_init_panel_orientation_property()
-
-Regards,
-
-Hans
+When system has been running for a long time, signed integer counters 
+are not enough for some lockdep statistics. Using unsigned long counters
+can satisfy the requirement. Besides, most of lockdep statistics are 
+unsigned. It is better to use unsigned int instead of int.
