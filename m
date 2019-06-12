@@ -1,102 +1,112 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH] mtu3: fix setup packet response for HNP and SRP request
-Date: Wed, 12 Jun 2019 16:46:45 +0800
-Message-ID: <1560329205.3255.17.camel@mhfsdcap03>
-References: <1560320892-30551-1-git-send-email-macpaul.lin@mediatek.com>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: [PATCH v8 08/12] soc: mediatek: cmdq: change the type of input parameter
+Date: Wed, 12 Jun 2019 16:53:45 +0800
+Message-ID: <20190612085349.21243-9-bibby.hsieh@mediatek.com>
+References: <20190612085349.21243-1-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1560320892-30551-1-git-send-email-macpaul.lin@mediatek.com>
+In-Reply-To: <20190612085349.21243-1-bibby.hsieh@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Macpaul Lin <macpaul.lin@mediatek.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com
+To: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, CK HU <ck.hu@mediatek.com>
+Cc: Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.chen@mediatek.com, Bibby Hsieh <bibby.hsieh@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Macpaul,
+According to the cmdq hardware design, the subsys is u8,
+the offset is u16 and the event id is u16.
+This patch changes the type of subsys, offset and event id
+to the correct type.
 
-On Wed, 2019-06-12 at 14:28 +0800, Macpaul Lin wrote:
-> 1. Add OTG_HNP_REQD and OTG_SRP_REQD definitions in ch9.h.
-> 2. When OTG_HNP_REQD and OTG_SRP_REQD has been received,
-> usb hardware must not enter TEST mode but need to response setup packet.
-> 3. Add otg_srp_reqd and otg_hnp_reqd in struct ssusb_mtk for futher
-> implementation.
-> 
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> ---
->  drivers/usb/mtu3/mtu3.h            |  4 ++++
->  drivers/usb/mtu3/mtu3_gadget_ep0.c | 13 +++++++++++++
->  include/uapi/linux/usb/ch9.h       |  5 +++++
->  3 files changed, 22 insertions(+)
-The driver currently doesn't support HNP/SRP, so there will be something
-wrong when connected with PET to run compliance test, and I prefer not
-to support it, because it's rarely used in normal case, thanks
+Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+---
+ drivers/soc/mediatek/mtk-cmdq-helper.c | 10 +++++-----
+ include/linux/soc/mediatek/mtk-cmdq.h  | 10 +++++-----
+ 2 files changed, 10 insertions(+), 10 deletions(-)
 
-> 
-> diff --git a/drivers/usb/mtu3/mtu3.h b/drivers/usb/mtu3/mtu3.h
-> index 76ecf12fdf62..bb8a31bc6e4d 100644
-> --- a/drivers/usb/mtu3/mtu3.h
-> +++ b/drivers/usb/mtu3/mtu3.h
-> @@ -226,6 +226,8 @@ struct otg_switch_mtk {
->   * @dma_clk: dma_bus_ck clock for AXI bus etc
->   * @dr_mode: works in which mode:
->   *		host only, device only or dual-role mode
-> + * @otg_srp_reqd: used for SRP request handling.
-> + * @otg_hnp_reqd: used for HNP request handling.
->   * @u2_ports: number of usb2.0 host ports
->   * @u3_ports: number of usb3.0 host ports
->   * @u3p_dis_msk: mask of disabling usb3 ports, for example, bit0==1 to
-> @@ -252,6 +254,8 @@ struct ssusb_mtk {
->  	/* otg */
->  	struct otg_switch_mtk otg_switch;
->  	enum usb_dr_mode dr_mode;
-> +	bool otg_srp_reqd;
-> +	bool otg_hnp_reqd;
->  	bool is_host;
->  	int u2_ports;
->  	int u3_ports;
-> diff --git a/drivers/usb/mtu3/mtu3_gadget_ep0.c b/drivers/usb/mtu3/mtu3_gadget_ep0.c
-> index 4da216c99726..1247c43a63e6 100644
-> --- a/drivers/usb/mtu3/mtu3_gadget_ep0.c
-> +++ b/drivers/usb/mtu3/mtu3_gadget_ep0.c
-> @@ -285,11 +285,24 @@ static int handle_test_mode(struct mtu3 *mtu, struct usb_ctrlrequest *setup)
->  		dev_dbg(mtu->dev, "TEST_PACKET\n");
->  		mtu->test_mode_nr = TEST_PACKET_MODE;
->  		break;
-> +	case OTG_SRP_REQD:
-> +		dev_dbg(mtu->dev, "OTG_SRP_REQD\n");
-> +		mtu->ssusb->otg_srp_reqd = 1;
-> +		break;
-> +	case OTG_HNP_REQD:
-> +		dev_dbg(mtu->dev, "OTG_HNP_REQD\n");
-> +		mtu->ssusb->otg_hnp_reqd = 1;
-> +		break;
->  	default:
->  		handled = -EINVAL;
->  		goto out;
->  	}
->  
-> +	if (mtu->ssusb->otg_srp_reqd || mtu->ssusb->otg_hnp_reqd) {
-> +		mtu->ep0_state = MU3D_EP0_STATE_SETUP;
-> +		goto out;
-> +	}
-> +
->  	mtu->test_mode = true;
->  
->  	/* no TX completion interrupt, and need restart platform after test */
-> diff --git a/include/uapi/linux/usb/ch9.h b/include/uapi/linux/usb/ch9.h
-> index d5a5caec8fbc..545918c83fd1 100644
-> --- a/include/uapi/linux/usb/ch9.h
-> +++ b/include/uapi/linux/usb/ch9.h
-> @@ -143,6 +143,11 @@
->  #define	TEST_SE0_NAK	3
->  #define	TEST_PACKET	4
->  #define	TEST_FORCE_EN	5
-> +/*
-> + * OTG HNP and SRP REQD
-> + */
-> +#define	OTG_SRP_REQD	6
-> +#define	OTG_HNP_REQD	7
->  
->  /* Status Type */
->  #define USB_STATUS_TYPE_STANDARD	0
+diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+index 082b8978651e..7aa0517ff2f3 100644
+--- a/drivers/soc/mediatek/mtk-cmdq-helper.c
++++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+@@ -136,7 +136,7 @@ static int cmdq_pkt_append_command(struct cmdq_pkt *pkt, enum cmdq_code code,
+ 	return 0;
+ }
+ 
+-int cmdq_pkt_write(struct cmdq_pkt *pkt, u32 subsys, u32 offset, u32 value)
++int cmdq_pkt_write(struct cmdq_pkt *pkt, u8 subsys, u16 offset, u32 value)
+ {
+ 	u32 arg_a = (offset & CMDQ_ARG_A_WRITE_MASK) |
+ 		    (subsys << CMDQ_SUBSYS_SHIFT);
+@@ -145,8 +145,8 @@ int cmdq_pkt_write(struct cmdq_pkt *pkt, u32 subsys, u32 offset, u32 value)
+ }
+ EXPORT_SYMBOL(cmdq_pkt_write);
+ 
+-int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u32 subsys,
+-			u32 offset, u32 value, u32 mask)
++int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u8 subsys,
++			u16 offset, u32 value, u32 mask)
+ {
+ 	u32 offset_mask = offset;
+ 	int err = 0;
+@@ -161,7 +161,7 @@ int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u32 subsys,
+ }
+ EXPORT_SYMBOL(cmdq_pkt_write_mask);
+ 
+-int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u32 event)
++int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event)
+ {
+ 	u32 arg_b;
+ 
+@@ -181,7 +181,7 @@ int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u32 event)
+ }
+ EXPORT_SYMBOL(cmdq_pkt_wfe);
+ 
+-int cmdq_pkt_clear_event(struct cmdq_pkt *pkt, u32 event)
++int cmdq_pkt_clear_event(struct cmdq_pkt *pkt, u16 event)
+ {
+ 	if (event >= CMDQ_MAX_EVENT)
+ 		return -EINVAL;
+diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
+index 39d813dde4b4..9618debb9ceb 100644
+--- a/include/linux/soc/mediatek/mtk-cmdq.h
++++ b/include/linux/soc/mediatek/mtk-cmdq.h
+@@ -66,7 +66,7 @@ void cmdq_pkt_destroy(struct cmdq_pkt *pkt);
+  *
+  * Return: 0 for success; else the error code is returned
+  */
+-int cmdq_pkt_write(struct cmdq_pkt *pkt, u32 subsys, u32 offset, u32 value);
++int cmdq_pkt_write(struct cmdq_pkt *pkt, u8 subsys, u16 offset, u32 value);
+ 
+ /**
+  * cmdq_pkt_write_mask() - append write command with mask to the CMDQ packet
+@@ -78,8 +78,8 @@ int cmdq_pkt_write(struct cmdq_pkt *pkt, u32 subsys, u32 offset, u32 value);
+  *
+  * Return: 0 for success; else the error code is returned
+  */
+-int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u32 subsys,
+-			u32 offset, u32 value, u32 mask);
++int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u8 subsys,
++			u16 offset, u32 value, u32 mask);
+ 
+ /**
+  * cmdq_pkt_wfe() - append wait for event command to the CMDQ packet
+@@ -88,7 +88,7 @@ int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u32 subsys,
+  *
+  * Return: 0 for success; else the error code is returned
+  */
+-int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u32 event);
++int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event);
+ 
+ /**
+  * cmdq_pkt_clear_event() - append clear event command to the CMDQ packet
+@@ -97,7 +97,7 @@ int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u32 event);
+  *
+  * Return: 0 for success; else the error code is returned
+  */
+-int cmdq_pkt_clear_event(struct cmdq_pkt *pkt, u32 event);
++int cmdq_pkt_clear_event(struct cmdq_pkt *pkt, u16 event);
+ 
+ /**
+  * cmdq_pkt_flush_async() - trigger CMDQ to asynchronously execute the CMDQ
+-- 
+2.18.0
