@@ -1,33 +1,73 @@
-From: Peter Zijlstra <peterz-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
-Subject: Re: [PATCH] locking/lockdep: Fix UBSAN warnings
-Date: Wed, 12 Jun 2019 09:34:25 +0200
-Message-ID: <20190612073425.GD3436@hirez.programming.kicks-ass.net>
-References: <1560318544-27635-1-git-send-email-kobe-cp.wu@mediatek.com>
+From: Stanley Chu <stanley.chu@mediatek.com>
+Subject: [PATCH v1] scsi: ufs: Avoid runtime suspend possibly being blocked forever
+Date: Wed, 12 Jun 2019 15:42:06 +0800
+Message-ID: <1560325326-1598-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1560318544-27635-1-git-send-email-kobe-cp.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kobe Wu <kobe-cp.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Ingo Molnar <mingo-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Eason Lin <eason-yh.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain
+Return-path: <stable-owner@vger.kernel.org>
+Sender: stable-owner@vger.kernel.org
+To: linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com, pedrom.sousa@synopsys.com
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com, evgreen@chromium.org, beanhuo@micron.com, marc.w.gonzalez@free.fr, ygardi@codeaurora.org, subhashj@codeaurora.org, kuohong.wang@mediatek.com, peter.wang@mediatek.com, chun-hung.wu@mediatek.com, andy.teng@mediatek.com, Stanley Chu <stanley.chu@mediatek.com>, stable@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jun 12, 2019 at 01:49:04PM +0800, Kobe Wu wrote:
-> Fix complaints from UBSAN about signed integer overflow.
-> 
-> ========================================================================
-> UBSAN: Undefined behaviour in kernel/locking/lockdep.c:2998:3
-> signed integer overflow:
+UFS runtime suspend can be triggered after pm_runtime_enable()
+is invoked in ufshcd_pltfrm_init(). However if the first runtime
+suspend is triggered before binding ufs_hba structure to ufs
+device structure via platform_set_drvdata(), then UFS runtime
+suspend will be no longer triggered in the future because its
+dev->power.runtime_error was set in the first triggering and does
+not have any chance to be cleared.
 
-I don't mind the patch, but this is an UBSAN bug and cannot therefore be
-a reason.
+To be more clear, dev->power.runtime_error is set if hba is NULL
+in ufshcd_runtime_suspend() which returns -EINVAL to rpm_callback()
+where dev->power.runtime_error is set as -EINVAL. In this case, any
+future rpm_suspend() for UFS device fails because
+rpm_check_suspend_allowed() fails due to non-zero
+dev->power.runtime_error.
+
+To resolve this issue, make sure the first UFS runtime suspend
+get valid "hba" in ufshcd_runtime_suspend(): Enable UFS runtime PM
+only after hba is successfully bound to UFS device structure.
+
+Fixes: e3ce73d (scsi: ufs: fix bugs related to null pointer access and array size)
+Cc: stable@vger.kernel.org
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+---
+ drivers/scsi/ufs/ufshcd-pltfrm.c | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/scsi/ufs/ufshcd-pltfrm.c b/drivers/scsi/ufs/ufshcd-pltfrm.c
+index 8a74ec30c3d2..d7d521b394c3 100644
+--- a/drivers/scsi/ufs/ufshcd-pltfrm.c
++++ b/drivers/scsi/ufs/ufshcd-pltfrm.c
+@@ -430,24 +430,21 @@ int ufshcd_pltfrm_init(struct platform_device *pdev,
+ 		goto dealloc_host;
+ 	}
+ 
+-	pm_runtime_set_active(&pdev->dev);
+-	pm_runtime_enable(&pdev->dev);
+-
+ 	ufshcd_init_lanes_per_dir(hba);
+ 
+ 	err = ufshcd_init(hba, mmio_base, irq);
+ 	if (err) {
+ 		dev_err(dev, "Initialization failed\n");
+-		goto out_disable_rpm;
++		goto dealloc_host;
+ 	}
+ 
+ 	platform_set_drvdata(pdev, hba);
+ 
++	pm_runtime_set_active(&pdev->dev);
++	pm_runtime_enable(&pdev->dev);
++
+ 	return 0;
+ 
+-out_disable_rpm:
+-	pm_runtime_disable(&pdev->dev);
+-	pm_runtime_set_suspended(&pdev->dev);
+ dealloc_host:
+ 	ufshcd_dealloc_host(hba);
+ out:
+-- 
+2.18.0
