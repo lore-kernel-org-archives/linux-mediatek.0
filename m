@@ -1,73 +1,48 @@
-From: Stanley Chu <stanley.chu@mediatek.com>
-Subject: [PATCH v1] scsi: ufs: Avoid runtime suspend possibly being blocked forever
-Date: Wed, 12 Jun 2019 15:42:06 +0800
-Message-ID: <1560325326-1598-1-git-send-email-stanley.chu@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: [GIT,PULL] mediatek drm fixes for 5.2
+Date: Wed, 12 Jun 2019 15:51:08 +0800
+Message-ID: <1560325868.3259.6.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <stable-owner@vger.kernel.org>
-Sender: stable-owner@vger.kernel.org
-To: linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com, pedrom.sousa@synopsys.com
-Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com, evgreen@chromium.org, beanhuo@micron.com, marc.w.gonzalez@free.fr, ygardi@codeaurora.org, subhashj@codeaurora.org, kuohong.wang@mediatek.com, peter.wang@mediatek.com, chun-hung.wu@mediatek.com, andy.teng@mediatek.com, Stanley Chu <stanley.chu@mediatek.com>, stable@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Dave Airlie <airlied@gmail.com>, Daniel Vetter <daniel.vetter@intel.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Cc: Yongqiang Niu <yongqiang.niu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-UFS runtime suspend can be triggered after pm_runtime_enable()
-is invoked in ufshcd_pltfrm_init(). However if the first runtime
-suspend is triggered before binding ufs_hba structure to ufs
-device structure via platform_set_drvdata(), then UFS runtime
-suspend will be no longer triggered in the future because its
-dev->power.runtime_error was set in the first triggering and does
-not have any chance to be cleared.
-
-To be more clear, dev->power.runtime_error is set if hba is NULL
-in ufshcd_runtime_suspend() which returns -EINVAL to rpm_callback()
-where dev->power.runtime_error is set as -EINVAL. In this case, any
-future rpm_suspend() for UFS device fails because
-rpm_check_suspend_allowed() fails due to non-zero
-dev->power.runtime_error.
-
-To resolve this issue, make sure the first UFS runtime suspend
-get valid "hba" in ufshcd_runtime_suspend(): Enable UFS runtime PM
-only after hba is successfully bound to UFS device structure.
-
-Fixes: e3ce73d (scsi: ufs: fix bugs related to null pointer access and array size)
-Cc: stable@vger.kernel.org
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
----
- drivers/scsi/ufs/ufshcd-pltfrm.c | 11 ++++-------
- 1 file changed, 4 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/scsi/ufs/ufshcd-pltfrm.c b/drivers/scsi/ufs/ufshcd-pltfrm.c
-index 8a74ec30c3d2..d7d521b394c3 100644
---- a/drivers/scsi/ufs/ufshcd-pltfrm.c
-+++ b/drivers/scsi/ufs/ufshcd-pltfrm.c
-@@ -430,24 +430,21 @@ int ufshcd_pltfrm_init(struct platform_device *pdev,
- 		goto dealloc_host;
- 	}
- 
--	pm_runtime_set_active(&pdev->dev);
--	pm_runtime_enable(&pdev->dev);
--
- 	ufshcd_init_lanes_per_dir(hba);
- 
- 	err = ufshcd_init(hba, mmio_base, irq);
- 	if (err) {
- 		dev_err(dev, "Initialization failed\n");
--		goto out_disable_rpm;
-+		goto dealloc_host;
- 	}
- 
- 	platform_set_drvdata(pdev, hba);
- 
-+	pm_runtime_set_active(&pdev->dev);
-+	pm_runtime_enable(&pdev->dev);
-+
- 	return 0;
- 
--out_disable_rpm:
--	pm_runtime_disable(&pdev->dev);
--	pm_runtime_set_suspended(&pdev->dev);
- dealloc_host:
- 	ufshcd_dealloc_host(hba);
- out:
--- 
-2.18.0
+SGkgRGF2ZSwgRGFuaWVsOgoKVGhpcyBpbmNsdWRlIHVuYmluZCBlcnJvciBmaXgsIGNsb2NrIGNv
+bnRyb2wgZmxvdyByZWZpbmVtZW50LCBhbmQgUFJJTUUKbW1hcCB3aXRoIHBhZ2Ugb2Zmc2V0LgoK
+UmVnYXJkcywKQ0sKClRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21taXQKYTE4ODMzOWNh
+NWEzOTZhY2M1ODhlNTg1MWVkN2UxOWY2NmIwZWJkOToKCiAgTGludXggNS4yLXJjMSAoMjAxOS0w
+NS0xOSAxNTo0NzowOSAtMDcwMCkKCmFyZSBhdmFpbGFibGUgaW4gdGhlIEdpdCByZXBvc2l0b3J5
+IGF0OgoKICBodHRwczovL2dpdGh1Yi5jb20vY2todS1tZWRpYXRlay9saW51eC5naXQtdGFncy5n
+aXQKbWVkaWF0ZWstZHJtLWZpeGVzLTUuMgoKZm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRv
+IDI0NThkOWQ2ZDk0YmU5ODJiOTE3ZTkzYzYxYTg5YjQ0MjZmMzJlMzE6CgogIGRybS9tZWRpYXRl
+azogY2FsbCBtdGtfZHNpX3N0b3AoKSBhZnRlciBtdGtfZHJtX2NydGNfYXRvbWljX2Rpc2FibGUo
+KQooMjAxOS0wNi0wNCAwOTo1NDo0MiArMDgwMCkKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KSHNpbi1ZaSBXYW5nICg1KToK
+ICAgICAgZHJtL21lZGlhdGVrOiBmaXggdW5iaW5kIGZ1bmN0aW9ucwogICAgICBkcm0vbWVkaWF0
+ZWs6IHVuYmluZCBjb21wb25lbnRzIGluIG10a19kcm1fdW5iaW5kKCkKICAgICAgZHJtL21lZGlh
+dGVrOiBjYWxsIGRybV9hdG9taWNfaGVscGVyX3NodXRkb3duKCkgd2hlbiB1bmJpbmRpbmcKZHJp
+dmVyCiAgICAgIGRybS9tZWRpYXRlazogY2xlYXIgbnVtX3BpcGVzIHdoZW4gdW5iaW5kIGRyaXZl
+cgogICAgICBkcm0vbWVkaWF0ZWs6IGNhbGwgbXRrX2RzaV9zdG9wKCkgYWZ0ZXIKbXRrX2RybV9j
+cnRjX2F0b21pY19kaXNhYmxlKCkKCllvbmdxaWFuZyBOaXUgKDIpOgogICAgICBkcm0vbWVkaWF0
+ZWs6IGFkanVzdCBkZHAgY2xvY2sgY29udHJvbCBmbG93CiAgICAgIGRybS9tZWRpYXRlazogcmVz
+cGVjdCBwYWdlIG9mZnNldCBmb3IgUFJJTUUgbW1hcCBjYWxscwoKIGRyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZHJtX2NydGMuYyB8IDMwCisrKysrKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMgIHwgIDggKysrLS0tLS0K
+IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2dlbS5jICB8ICA3ICsrKysrKy0KIGRy
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgICAgICB8IDEyICsrKysrKysrKysrLQog
+NCBmaWxlcyBjaGFuZ2VkLCAyNiBpbnNlcnRpb25zKCspLCAzMSBkZWxldGlvbnMoLSkKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWls
+aW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
+ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
