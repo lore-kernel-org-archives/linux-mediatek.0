@@ -1,91 +1,91 @@
-From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v8 00/12] support gce on mt8183 platform
-Date: Wed, 12 Jun 2019 16:53:37 +0800
-Message-ID: <20190612085349.21243-1-bibby.hsieh@mediatek.com>
+From: Avri Altman <Avri.Altman@wdc.com>
+Subject: RE: [PATCH v1] scsi: ufs: Avoid runtime suspend possibly being
+ blocked forever
+Date: Wed, 12 Jun 2019 11:10:49 +0000
+Message-ID: <SN6PR04MB492546256F8F8635E7EE60C2FCEC0@SN6PR04MB4925.namprd04.prod.outlook.com>
+References: <1560325326-1598-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, CK HU <ck.hu@mediatek.com>
-Cc: Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.chen@mediatek.com, Bibby Hsieh <bibby.hsieh@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <1560325326-1598-1-git-send-email-stanley.chu@mediatek.com>
+Content-Language: en-US
+Sender: stable-owner@vger.kernel.org
+To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com" <martin.petersen@oracle.com>, "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>, "pedrom.sousa@synopsys.com" <pedrom.sousa@synopsys.com>
+Cc: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "evgreen@chromium.org" <evgreen@chromium.org>, "beanhuo@micron.com" <beanhuo@micron.com>, "marc.w.gonzalez@free.fr" <marc.w.gonzalez@free.fr>, "ygardi@codeaurora.org" <ygardi@codeaurora.org>, "subhashj@codeaurora.org" <subhashj@codeaurora.org>, "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>, "peter.wang@mediatek.com" <peter.wang@mediatek.com>, "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>, "andy.teng@mediatek.com" <andy.teng@mediatek.com>, "stable@vger.kernel.org" <stable@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Changes since v7:
- - remove the memory allocation out of cmdq_dev_get_client_reg()
- - rebase onto 5.2-rc1
+Hi,
 
-Changes since v6:
- - remove cmdq_dev_get_event function and gce event property
- - separate some changes to indepentent patch
- - change the binding document related to gce-client-reg property
+>=20
+> UFS runtime suspend can be triggered after pm_runtime_enable()
+> is invoked in ufshcd_pltfrm_init(). However if the first runtime
+> suspend is triggered before binding ufs_hba structure to ufs
+> device structure via platform_set_drvdata(), then UFS runtime
+> suspend will be no longer triggered in the future because its
+> dev->power.runtime_error was set in the first triggering and does
+> not have any chance to be cleared.
+>=20
+> To be more clear, dev->power.runtime_error is set if hba is NULL
+> in ufshcd_runtime_suspend() which returns -EINVAL to rpm_callback()
+> where dev->power.runtime_error is set as -EINVAL. In this case, any
+> future rpm_suspend() for UFS device fails because
+> rpm_check_suspend_allowed() fails due to non-zero
+> dev->power.runtime_error.
+>=20
+> To resolve this issue, make sure the first UFS runtime suspend
+> get valid "hba" in ufshcd_runtime_suspend(): Enable UFS runtime PM
+> only after hba is successfully bound to UFS device structure.
+>=20
+> Fixes: e3ce73d (scsi: ufs: fix bugs related to null pointer access and ar=
+ray size)
+This code was inserted before platform_set_drvdata  in
+6269473 [SCSI] ufs: Add runtime PM support for UFS host controller driver.
+Why do you point to e3ce73d?
 
-Changes since v5:
- - fix typo
- - remove gce-event-name form the dt-binding
- - add reasons in commit message
+Thanks,
+Avri
 
-Changes since v4:
- - refine the architecture of the packet encoder function
- - refine the gce enevt property
- - change the patch's title
-
-Changes since v3:
- - fix a typo in dt-binding and dtsi
- - cast the return value to right format
-
-Changes since v2:
- - according to CK's review comment, change the property name and
-   refine the parameter
- - change the patch's title
- - remove unused property from dt-binding and dts
-
-Changes since v1:
- - add prefix "cmdq" in the commit subject
- - add dt-binding document for get event and subsys function
- - add fix up tag in fixup patch
- - fix up some coding style (alignment)
-
-MTK will support gce function on mt8183 platform.
-  dt-binding: gce: add gce header file for mt8183
-  mailbox: mediatek: cmdq: support mt8183 gce function
-  arm64: dts: add gce node for mt8183
-
-Besides above patches, we refine gce driver on those patches.
-  soc: mediatek: cmdq: reorder the parameter
-  soc: mediatek: cmdq: change the type of input parameter
-  mailbox: mediatek: cmdq: move the CMDQ_IRQ_MASK into cmdq driver data
-  soc: mediatek: cmdq: clear the event in cmdq initial flow
-
-In order to enhance the convenience of gce usage, we add new helper functions and refine the method of instruction combining.
-  dt-binding: gce: remove thread-num property
-  dt-binding: gce: add binding for gce client reg property
-  soc: mediatek: cmdq: define the instruction struct
-  soc: mediatek: cmdq: add polling function
-  soc: mediatek: cmdq: add cmdq_dev_get_client_reg function
-
-Bibby Hsieh (12):
-  dt-binding: gce: remove thread-num property
-  dt-binding: gce: add gce header file for mt8183
-  dt-binding: gce: add binding for gce client reg property
-  mailbox: mediatek: cmdq: move the CMDQ_IRQ_MASK into cmdq driver data
-  mailbox: mediatek: cmdq: support mt8183 gce function
-  soc: mediatek: cmdq: clear the event in cmdq initial flow
-  soc: mediatek: cmdq: reorder the parameter
-  soc: mediatek: cmdq: change the type of input parameter
-  soc: mediatek: cmdq: define the instruction struct
-  soc: mediatek: cmdq: add polling function
-  soc: mediatek: cmdq: add cmdq_dev_get_client_reg function
-  arm64: dts: add gce node for mt8183
-
- .../devicetree/bindings/mailbox/mtk-gce.txt   |  25 ++-
- arch/arm64/boot/dts/mediatek/mt8183.dtsi      |  11 ++
- drivers/mailbox/mtk-cmdq-mailbox.c            |  18 +-
- drivers/soc/mediatek/mtk-cmdq-helper.c        | 165 ++++++++++++----
- include/dt-bindings/gce/mt8183-gce.h          | 177 ++++++++++++++++++
- include/linux/mailbox/mtk-cmdq-mailbox.h      |   5 +
- include/linux/soc/mediatek/mtk-cmdq.h         |  52 ++++-
- 7 files changed, 392 insertions(+), 61 deletions(-)
- create mode 100644 include/dt-bindings/gce/mt8183-gce.h
-
--- 
-2.18.0
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+> ---
+>  drivers/scsi/ufs/ufshcd-pltfrm.c | 11 ++++-------
+>  1 file changed, 4 insertions(+), 7 deletions(-)
+>=20
+> diff --git a/drivers/scsi/ufs/ufshcd-pltfrm.c b/drivers/scsi/ufs/ufshcd-p=
+ltfrm.c
+> index 8a74ec30c3d2..d7d521b394c3 100644
+> --- a/drivers/scsi/ufs/ufshcd-pltfrm.c
+> +++ b/drivers/scsi/ufs/ufshcd-pltfrm.c
+> @@ -430,24 +430,21 @@ int ufshcd_pltfrm_init(struct platform_device
+> *pdev,
+>  		goto dealloc_host;
+>  	}
+>=20
+> -	pm_runtime_set_active(&pdev->dev);
+> -	pm_runtime_enable(&pdev->dev);
+> -
+>  	ufshcd_init_lanes_per_dir(hba);
+>=20
+>  	err =3D ufshcd_init(hba, mmio_base, irq);
+>  	if (err) {
+>  		dev_err(dev, "Initialization failed\n");
+> -		goto out_disable_rpm;
+> +		goto dealloc_host;
+>  	}
+>=20
+>  	platform_set_drvdata(pdev, hba);
+>=20
+> +	pm_runtime_set_active(&pdev->dev);
+> +	pm_runtime_enable(&pdev->dev);
+> +
+>  	return 0;
+>=20
+> -out_disable_rpm:
+> -	pm_runtime_disable(&pdev->dev);
+> -	pm_runtime_set_suspended(&pdev->dev);
+>  dealloc_host:
+>  	ufshcd_dealloc_host(hba);
+>  out:
+> --
+> 2.18.0
