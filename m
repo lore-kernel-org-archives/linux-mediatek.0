@@ -1,44 +1,62 @@
-From: Kobe-CP Wu <Kobe-CP.Wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] locking/lockdep: Fix UBSAN warnings
-Date: Wed, 12 Jun 2019 20:35:41 +0800
-Message-ID: <1560342941.16581.2.camel@mtkswgap22>
-References: <1560318544-27635-1-git-send-email-kobe-cp.wu@mediatek.com>
- <20190612073425.GD3436@hirez.programming.kicks-ass.net>
+From: Stanley Chu <stanley.chu@mediatek.com>
+Subject: RE: [PATCH v1] scsi: ufs: Avoid runtime suspend possibly being
+ blocked forever
+Date: Wed, 12 Jun 2019 22:03:24 +0800
+Message-ID: <1560348204.19782.6.camel@mtkswgap22>
+References: <1560325326-1598-1-git-send-email-stanley.chu@mediatek.com>
+         <SN6PR04MB492546256F8F8635E7EE60C2FCEC0@SN6PR04MB4925.namprd04.prod.outlook.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190612073425.GD3436-Nxj+rRp3nVydTX5a5knrm8zTDFooKrT+cvkQGrU6aU0@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Peter Zijlstra <peterz-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Ingo Molnar <mingo-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Eason Lin <eason-yh.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <SN6PR04MB492546256F8F8635E7EE60C2FCEC0@SN6PR04MB4925.namprd04.prod.outlook.com>
+Sender: stable-owner@vger.kernel.org
+To: Avri Altman <Avri.Altman@wdc.com>
+Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com" <martin.petersen@oracle.com>, "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>, "pedrom.sousa@synopsys.com" <pedrom.sousa@synopsys.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "evgreen@chromium.org" <evgreen@chromium.org>, "beanhuo@micron.com" <beanhuo@micron.com>, "marc.w.gonzalez@free.fr" <marc.w.gonzalez@free.fr>, "ygardi@codeaurora.org" <ygardi@codeaurora.org>, "subhashj@codeaurora.org" <subhashj@codeaurora.org>, "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>, "peter.wang@mediatek.com" <peter.wang@m>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2019-06-12 at 09:34 +0200, Peter Zijlstra wrote:
-> On Wed, Jun 12, 2019 at 01:49:04PM +0800, Kobe Wu wrote:
-> > Fix complaints from UBSAN about signed integer overflow.
-> > 
-> > ========================================================================
-> > UBSAN: Undefined behaviour in kernel/locking/lockdep.c:2998:3
-> > signed integer overflow:
+Hi Avri,
+
+On Wed, 2019-06-12 at 11:10 +0000, Avri Altman wrote:
+> Hi,
 > 
-> I don't mind the patch, but this is an UBSAN bug and cannot therefore be
-> a reason.
+> > 
+> > UFS runtime suspend can be triggered after pm_runtime_enable()
+> > is invoked in ufshcd_pltfrm_init(). However if the first runtime
+> > suspend is triggered before binding ufs_hba structure to ufs
+> > device structure via platform_set_drvdata(), then UFS runtime
+> > suspend will be no longer triggered in the future because its
+> > dev->power.runtime_error was set in the first triggering and does
+> > not have any chance to be cleared.
+> > 
+> > To be more clear, dev->power.runtime_error is set if hba is NULL
+> > in ufshcd_runtime_suspend() which returns -EINVAL to rpm_callback()
+> > where dev->power.runtime_error is set as -EINVAL. In this case, any
+> > future rpm_suspend() for UFS device fails because
+> > rpm_check_suspend_allowed() fails due to non-zero
+> > dev->power.runtime_error.
+> > 
+> > To resolve this issue, make sure the first UFS runtime suspend
+> > get valid "hba" in ufshcd_runtime_suspend(): Enable UFS runtime PM
+> > only after hba is successfully bound to UFS device structure.
+> > 
+> > Fixes: e3ce73d (scsi: ufs: fix bugs related to null pointer access and array size)
+> This code was inserted before platform_set_drvdata  in
+> 6269473 [SCSI] ufs: Add runtime PM support for UFS host controller driver.
+> Why do you point to e3ce73d?
 
-I think the description could be amended as follows.
-There is unnecessary to mention the UBSAN bug.
+e3ce73d (scsi: ufs: fix bugs related to null pointer access and array
+size) changed the returned value from 0 to -EINVAL in case of NULL "hba"
+in ufshcd_runtime_suspend().
 
-locking/lockdep: add size of counters for lockdep statistics
+But you are right, above patch may do the right thing, and the real root
+cause is the incorrect timing of pm_runtime_enable().
 
-When system has been running for a long time, signed integer counters 
-are not enough for some lockdep statistics. Using unsigned long counters
-can satisfy the requirement. Besides, most of lockdep statistics are 
-unsigned. It is better to use unsigned int instead of int.
+I will fix commit message in next version.
+
+> 
+> Thanks,
+> Avri
+
+Thanks.
+Stanley
