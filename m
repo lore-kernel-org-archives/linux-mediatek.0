@@ -1,47 +1,80 @@
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v2 1/2] mt76: mt7615: fix incorrect settings in mesh mode
-Date: Thu, 13 Jun 2019 15:13:30 +0800
-Message-ID: <3065a01998dfa04a5d2d680e820a17cb5c110d0f.1560330906.git.ryder.lee@mediatek.com>
-References: <ec6ccb9ad8e083bbc960c84adcb3164a4e190c7c.1560338170.git.ryder.lee@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v3, 09/27] drm/mediatek: add mutex sof register offset
+ into ddp private data
+Date: Thu, 13 Jun 2019 15:45:02 +0800
+Message-ID: <1560411902.27582.0.camel@mtksdaap41>
+References: <1559734986-7379-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1559734986-7379-10-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <ec6ccb9ad8e083bbc960c84adcb3164a4e190c7c.1560338170.git.ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Cc: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YF Luo <yf.luo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yiwei Chung <yiwei.chung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roy Luo <royluo-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1559734986-7379-10-git-send-email-yongqiang.niu@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: yongqiang.niu@mediatek.com
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Fix wrong settings that will drop packets due to hardware's RX table
-searching flow.
-
-Fixes: f072c7ba2150 ("mt76: mt7615: enable support for mesh")
-Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/net/wireless/mediatek/mt76/mt7615/mcu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-index 76431d00a8ac..e82086eb8aa4 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-@@ -970,7 +970,7 @@ int mt7615_mcu_add_wtbl(struct mt7615_dev *dev, struct ieee80211_vif *vif,
- 		.rx_wtbl = {
- 			.tag = cpu_to_le16(WTBL_RX),
- 			.len = cpu_to_le16(sizeof(struct wtbl_rx)),
--			.rca1 = vif->type == NL80211_IFTYPE_STATION,
-+			.rca1 = vif->type != NL80211_IFTYPE_AP,
- 			.rca2 = 1,
- 			.rv = 1,
- 		},
--- 
-2.18.0
+SGksIFlvbmdxaWFuZzoKCk9uIFdlZCwgMjAxOS0wNi0wNSBhdCAxOTo0MiArMDgwMCwgeW9uZ3Fp
+YW5nLm5pdUBtZWRpYXRlay5jb20gd3JvdGU6Cj4gRnJvbTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3Fp
+YW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gCj4gbXV0ZXggc29mIHJlZ2lzdGVyIG9mZnNldCB3aWxs
+IGJlIHByaXZhdGUgZGF0YSBvZiBkZHAKPiAKPiBTaWduZWQtb2ZmLWJ5OiBZb25ncWlhbmcgTml1
+IDx5b25ncWlhbmcubml1QG1lZGlhdGVrLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19kcm1fZGRwLmMgfCAxMyArKysrKysrKysrLS0tCj4gIDEgZmlsZSBjaGFuZ2Vk
+LCAxMCBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZHJtX2RkcC5jCj4gaW5kZXggZTFhNTEwZi4uNzE3NjA5ZCAxMDA2NDQKPiAtLS0g
+YS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYwo+ICsrKyBiL2RyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jCj4gQEAgLTQyLDEyICs0MiwxMyBAQAo+ICAj
+ZGVmaW5lIERJU1BfUkVHX0NPTkZJR19EUElfU0VMCQkJMHgwNjQKPiAgCj4gICNkZWZpbmUgTVQy
+NzAxX0RJU1BfTVVURVgwX01PRDAJCQkweDJjCj4gKyNkZWZpbmUgTVQyNzAxX0RJU1BfTVVURVgw
+X1NPRjAJCQkweDJjCgoweDMwPwoKUmVnYXJkcywKQ0sKCj4gIAo+ICAjZGVmaW5lIERJU1BfUkVH
+X01VVEVYX0VOKG4pCQkJKDB4MjAgKyAweDIwICogKG4pKQo+ICAjZGVmaW5lIERJU1BfUkVHX01V
+VEVYKG4pCQkJKDB4MjQgKyAweDIwICogKG4pKQo+ICAjZGVmaW5lIERJU1BfUkVHX01VVEVYX1JT
+VChuKQkJCSgweDI4ICsgMHgyMCAqIChuKSkKPiAgI2RlZmluZSBESVNQX1JFR19NVVRFWF9NT0Qo
+bXV0ZXhfbW9kX3JlZywgbikJKG11dGV4X21vZF9yZWcgKyAweDIwICogKG4pKQo+IC0jZGVmaW5l
+IERJU1BfUkVHX01VVEVYX1NPRihuKQkJCSgweDMwICsgMHgyMCAqIChuKSkKPiArI2RlZmluZSBE
+SVNQX1JFR19NVVRFWF9TT0YobXV0ZXhfc29mX3JlZywgbikJKG11dGV4X3NvZl9yZWcgKyAweDIw
+ICogKG4pKQo+ICAjZGVmaW5lIERJU1BfUkVHX01VVEVYX01PRDIobikJCQkoMHgzNCArIDB4MjAg
+KiAobikpCj4gIAo+ICAjZGVmaW5lIElOVF9NVVRFWAkJCQlCSVQoMSkKPiBAQCAtMTY0LDYgKzE2
+NSw3IEBAIHN0cnVjdCBtdGtfZGRwX2RhdGEgewo+ICAJY29uc3QgdW5zaWduZWQgaW50ICptdXRl
+eF9tb2Q7Cj4gIAljb25zdCB1bnNpZ25lZCBpbnQgKm11dGV4X3NvZjsKPiAgCWNvbnN0IHVuc2ln
+bmVkIGludCBtdXRleF9tb2RfcmVnOwo+ICsJY29uc3QgdW5zaWduZWQgaW50IG11dGV4X3NvZl9y
+ZWc7Cj4gIH07Cj4gIAo+ICBzdHJ1Y3QgbXRrX2RkcCB7Cj4gQEAgLTIzNSwxOCArMjM3LDIxIEBA
+IHN0cnVjdCBtdGtfZGRwIHsKPiAgCS5tdXRleF9tb2QgPSBtdDI3MDFfbXV0ZXhfbW9kLAo+ICAJ
+Lm11dGV4X3NvZiA9IG10MjcxMl9tdXRleF9zb2YsCj4gIAkubXV0ZXhfbW9kX3JlZyA9IE1UMjcw
+MV9ESVNQX01VVEVYMF9NT0QwLAo+ICsJLm11dGV4X3NvZl9yZWcgPSBNVDI3MDFfRElTUF9NVVRF
+WDBfU09GMCwKPiAgfTsKPiAgCj4gIHN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX2RkcF9kYXRhIG10
+MjcxMl9kZHBfZHJpdmVyX2RhdGEgPSB7Cj4gIAkubXV0ZXhfbW9kID0gbXQyNzEyX211dGV4X21v
+ZCwKPiAgCS5tdXRleF9zb2YgPSBtdDI3MTJfbXV0ZXhfc29mLAo+ICAJLm11dGV4X21vZF9yZWcg
+PSBNVDI3MDFfRElTUF9NVVRFWDBfTU9EMCwKPiArCS5tdXRleF9zb2ZfcmVnID0gTVQyNzAxX0RJ
+U1BfTVVURVgwX1NPRjAsCj4gIH07Cj4gIAo+ICBzdGF0aWMgY29uc3Qgc3RydWN0IG10a19kZHBf
+ZGF0YSBtdDgxNzNfZGRwX2RyaXZlcl9kYXRhID0gewo+ICAJLm11dGV4X21vZCA9IG10ODE3M19t
+dXRleF9tb2QsCj4gIAkubXV0ZXhfc29mID0gbXQyNzEyX211dGV4X3NvZiwKPiAgCS5tdXRleF9t
+b2RfcmVnID0gTVQyNzAxX0RJU1BfTVVURVgwX01PRDAsCj4gKwkubXV0ZXhfc29mX3JlZyA9IE1U
+MjcwMV9ESVNQX01VVEVYMF9TT0YwLAo+ICB9Owo+ICAKPiAgc3RhdGljIHVuc2lnbmVkIGludCBt
+dGtfZGRwX21vdXRfZW4oZW51bSBtdGtfZGRwX2NvbXBfaWQgY3VyLAo+IEBAIC01MjgsNyArNTMz
+LDggQEAgdm9pZCBtdGtfZGlzcF9tdXRleF9hZGRfY29tcChzdHJ1Y3QgbXRrX2Rpc3BfbXV0ZXgg
+Km11dGV4LAo+ICAJfQo+ICAKPiAgCXdyaXRlbF9yZWxheGVkKGRkcC0+ZGF0YS0+bXV0ZXhfc29m
+W3NvZl9pZF0sCj4gLQkJICAgICAgIGRkcC0+cmVncyArIERJU1BfUkVHX01VVEVYX1NPRihtdXRl
+eC0+aWQpKTsKPiArCQkgICAgICAgZGRwLT5yZWdzICsKPiArCQkgICAgICAgRElTUF9SRUdfTVVU
+RVhfU09GKGRkcC0+ZGF0YS0+bXV0ZXhfc29mX3JlZywgbXV0ZXgtPmlkKSk7Cj4gIH0KPiAgCj4g
+IHZvaWQgbXRrX2Rpc3BfbXV0ZXhfcmVtb3ZlX2NvbXAoc3RydWN0IG10a19kaXNwX211dGV4ICpt
+dXRleCwKPiBAQCAtNTUwLDcgKzU1Niw4IEBAIHZvaWQgbXRrX2Rpc3BfbXV0ZXhfcmVtb3ZlX2Nv
+bXAoc3RydWN0IG10a19kaXNwX211dGV4ICptdXRleCwKPiAgCWNhc2UgRERQX0NPTVBPTkVOVF9E
+UEkxOgo+ICAJCXdyaXRlbF9yZWxheGVkKE1VVEVYX1NPRl9TSU5HTEVfTU9ERSwKPiAgCQkJICAg
+ICAgIGRkcC0+cmVncyArCj4gLQkJCSAgICAgICBESVNQX1JFR19NVVRFWF9TT0YobXV0ZXgtPmlk
+KSk7Cj4gKwkJCSAgICAgICBESVNQX1JFR19NVVRFWF9TT0YoZGRwLT5kYXRhLT5tdXRleF9zb2Zf
+cmVnLAo+ICsJCQkJCQkgIG11dGV4LT5pZCkpOwo+ICAJCWJyZWFrOwo+ICAJZGVmYXVsdDoKPiAg
+CQlpZiAoZGRwLT5kYXRhLT5tdXRleF9tb2RbaWRdIDwgMzIpIHsKCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
+aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
