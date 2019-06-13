@@ -1,14 +1,12 @@
 From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v2 2/2] mt76: mt7615: update peer's bssid when state
- transition occurs
-Date: Thu, 13 Jun 2019 15:13:31 +0800
-Message-ID: <75f5e467c6e7fc4187572977a8e1f5d4238d6354.1560330906.git.ryder.lee@mediatek.com>
-References: <3065a01998dfa04a5d2d680e820a17cb5c110d0f.1560330906.git.ryder.lee@mediatek.com>
+Subject: [PATCH v3] mt76: mt7615: add support for per-chain signal strength
+ reporting
+Date: Thu, 13 Jun 2019 15:13:29 +0800
+Message-ID: <ec6ccb9ad8e083bbc960c84adcb3164a4e190c7c.1560338170.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <3065a01998dfa04a5d2d680e820a17cb5c110d0f.1560330906.git.ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -22,73 +20,79 @@ To: Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Lorenzo Bianconi <lorenzo.
 Cc: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YF Luo <yf.luo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yiwei Chung <yiwei.chung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roy Luo <royluo-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This makes sure that the driver update peer's bssid when state
-transition occurs.
+Fill in RX status->chain_signal to avoid empty value.
 
 Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
-Changes since v2 - remove unnecessary changes
+Changes since v3 - use hweight8 instead.
+Changes since v2 - correct calculation sequence.
 ---
- .../net/wireless/mediatek/mt76/mt7615/main.c  |  5 ++--
- .../net/wireless/mediatek/mt76/mt7615/mcu.c   | 27 ++++++++++---------
- 2 files changed, 16 insertions(+), 16 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7615/mac.c   | 22 ++++++++++++++++++-
+ .../net/wireless/mediatek/mt76/mt7615/mac.h   |  5 +++++
+ 2 files changed, 26 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-index d21407ddda31..e0824392c019 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-@@ -283,9 +283,8 @@ static void mt7615_bss_info_changed(struct ieee80211_hw *hw,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+index b60d42b5923d..1eb0e9c9970c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+@@ -13,6 +13,11 @@
+ #include "../dma.h"
+ #include "mac.h"
  
- 	mutex_lock(&dev->mt76.mutex);
- 
--	/* TODO: sta mode connect/disconnect
--	 * BSS_CHANGED_ASSOC | BSS_CHANGED_BSSID
--	 */
-+	if (changed & BSS_CHANGED_ASSOC)
-+		mt7615_mcu_set_bss_info(dev, vif, info->assoc);
- 
- 	/* TODO: update beacon content
- 	 * BSS_CHANGED_BEACON
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-index e82086eb8aa4..52d89f3533bf 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-@@ -759,22 +759,23 @@ int mt7615_mcu_set_bss_info(struct mt7615_dev *dev,
- 		conn_type = CONNECTION_INFRA_AP;
- 		break;
- 	case NL80211_IFTYPE_STATION: {
--		struct ieee80211_sta *sta;
--		struct mt7615_sta *msta;
--
--		rcu_read_lock();
--
--		sta = ieee80211_find_sta(vif, vif->bss_conf.bssid);
--		if (!sta) {
-+		/* TODO: enable BSS_INFO_UAPSD & BSS_INFO_PM */
-+		if (en) {
-+			struct ieee80211_sta *sta;
-+			struct mt7615_sta *msta;
++static inline s8 to_rssi(u32 field, u32 rxv)
++{
++	return (FIELD_GET(field, rxv) - 220) / 2;
++}
 +
-+			rcu_read_lock();
-+			sta = ieee80211_find_sta(vif, vif->bss_conf.bssid);
-+			if (!sta) {
-+				rcu_read_unlock();
-+				return -EINVAL;
-+			}
+ static struct mt76_wcid *mt7615_rx_get_wcid(struct mt7615_dev *dev,
+ 					    u8 idx, bool unicast)
+ {
+@@ -120,6 +125,7 @@ int mt7615_mac_fill_rx(struct mt7615_dev *dev, struct sk_buff *skb)
+ 	if (rxd0 & MT_RXD0_NORMAL_GROUP_3) {
+ 		u32 rxdg0 = le32_to_cpu(rxd[0]);
+ 		u32 rxdg1 = le32_to_cpu(rxd[1]);
++		u32 rxdg3 = le32_to_cpu(rxd[3]);
+ 		u8 stbc = FIELD_GET(MT_RXV1_HT_STBC, rxdg0);
+ 		bool cck = false;
+ 
+@@ -169,7 +175,21 @@ int mt7615_mac_fill_rx(struct mt7615_dev *dev, struct sk_buff *skb)
+ 
+ 		status->enc_flags |= RX_ENC_FLAG_STBC_MASK * stbc;
+ 
+-		/* TODO: RSSI */
++		status->chains = dev->mt76.antenna_mask;
++		status->chain_signal[0] = to_rssi(MT_RXV4_RCPI0, rxdg3);
++		status->chain_signal[1] = to_rssi(MT_RXV4_RCPI1, rxdg3);
++		status->chain_signal[2] = to_rssi(MT_RXV4_RCPI2, rxdg3);
++		status->chain_signal[3] = to_rssi(MT_RXV4_RCPI3, rxdg3);
++		status->signal = status->chain_signal[0];
 +
-+			msta = (struct mt7615_sta *)sta->drv_priv;
-+			tx_wlan_idx = msta->wcid.idx;
- 			rcu_read_unlock();
--			return -EINVAL;
- 		}
--
--		msta = (struct mt7615_sta *)sta->drv_priv;
--		tx_wlan_idx = msta->wcid.idx;
- 		conn_type = CONNECTION_INFRA_STA;
--
--		rcu_read_unlock();
- 		break;
- 	}
- 	default:
++		for (i = 1; i < hweight8(dev->mt76.antenna_mask); i++) {
++			if (!(status->chains & BIT(i)))
++				continue;
++
++			status->signal = max(status->signal,
++					     status->chain_signal[i]);
++		}
++
+ 		rxd += 6;
+ 		if ((u8 *)rxd - skb->data >= skb->len)
+ 			return -EINVAL;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.h b/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
+index 18ad4b8a3807..b00ce8db58e9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
+@@ -98,6 +98,11 @@ enum rx_pkt_type {
+ #define MT_RXV2_GROUP_ID		GENMASK(26, 21)
+ #define MT_RXV2_LENGTH			GENMASK(20, 0)
+ 
++#define MT_RXV4_RCPI3			GENMASK(31, 24)
++#define MT_RXV4_RCPI2			GENMASK(23, 16)
++#define MT_RXV4_RCPI1			GENMASK(15, 8)
++#define MT_RXV4_RCPI0			GENMASK(7, 0)
++
+ enum tx_header_format {
+ 	MT_HDR_FORMAT_802_3,
+ 	MT_HDR_FORMAT_CMD,
 -- 
 2.18.0
