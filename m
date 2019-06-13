@@ -1,57 +1,91 @@
-From: Sam Ravnborg <sam@ravnborg.org>
-Subject: Re: [PATCH 1/5] drm/panel: Add helper for reading DT
- rotation
-Date: Wed, 12 Jun 2019 23:20:54 +0200
-Message-ID: <20190612212054.GB13155@ravnborg.org>
-References: <20190611040350.90064-1-dbasehore@chromium.org>
- <20190611040350.90064-2-dbasehore@chromium.org>
+From: Qii Wang <qii.wang@mediatek.com>
+Subject: Re: [PATCH 2/2] i3c: master: Add driver for MediaTek IP
+Date: Thu, 13 Jun 2019 10:29:21 +0800
+Message-ID: <1560392961.12217.7.camel@mhfsdcap03>
+References: <1559533863-10292-1-git-send-email-qii.wang@mediatek.com>
+ <1559533863-10292-3-git-send-email-qii.wang@mediatek.com>
+ <20190604095858.38ed9a28@collabora.com>
+ <1559651200.5871.2.camel@mhfsdcap03> <1560255922.12217.3.camel@mhfsdcap03>
+ <20190611142849.43f6d1e4@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <intel-gfx-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20190611040350.90064-2-dbasehore@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
-List-Post: <mailto:intel-gfx@lists.freedesktop.org>
-List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: intel-gfx-bounces@lists.freedesktop.org
-Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
-To: Derek Basehore <dbasehore@chromium.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org, Maxime Ripard <maxime.ripard@bootlin.com>, Rob Herring <robh+dt@kernel.org>, dri-devel@lists.freedesktop.org, CK Hu <ck.hu@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190611142849.43f6d1e4@collabora.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Boris Brezillon <boris.brezillon@collabora.com>
+Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com, bbrezillon@kernel.org, leilk.liu@mediatek.com, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, liguo.zhang@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com, linux-i3c@lists.infradead.org, xinping.qian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgRGVyZWsuCgpPbiBNb24sIEp1biAxMCwgMjAxOSBhdCAwOTowMzo0NlBNIC0wNzAwLCBEZXJl
-ayBCYXNlaG9yZSB3cm90ZToKPiBUaGlzIGFkZHMgYSBoZWxwZXIgZnVuY3Rpb24gZm9yIHJlYWRp
-bmcgdGhlIHJvdGF0aW9uIChwYW5lbAo+IG9yaWVudGF0aW9uKSBmcm9tIHRoZSBkZXZpY2UgdHJl
-ZS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBEZXJlayBCYXNlaG9yZSA8ZGJhc2Vob3JlQGNocm9taXVt
-Lm9yZz4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL2RybV9wYW5lbC5jIHwgNDEgKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+ICBpbmNsdWRlL2RybS9kcm1fcGFuZWwuaCAg
-ICAgfCAgNyArKysrKysrCj4gIDIgZmlsZXMgY2hhbmdlZCwgNDggaW5zZXJ0aW9ucygrKQo+IAo+
-IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vZHJtX3BhbmVsLmMgYi9kcml2ZXJzL2dwdS9k
-cm0vZHJtX3BhbmVsLmMKPiBpbmRleCBkYmQ1Yjg3M2U4ZjIuLjNiNjg5Y2U0YTUxYSAxMDA2NDQK
-PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vZHJtX3BhbmVsLmMKPiArKysgYi9kcml2ZXJzL2dwdS9k
-cm0vZHJtX3BhbmVsLmMKPiBAQCAtMTcyLDYgKzE3Miw0NyBAQCBzdHJ1Y3QgZHJtX3BhbmVsICpv
-Zl9kcm1fZmluZF9wYW5lbChjb25zdCBzdHJ1Y3QgZGV2aWNlX25vZGUgKm5wKQo+ICAJcmV0dXJu
-IEVSUl9QVFIoLUVQUk9CRV9ERUZFUik7Cj4gIH0KPiAgRVhQT1JUX1NZTUJPTChvZl9kcm1fZmlu
-ZF9wYW5lbCk7Cj4gKwo+ICsvKioKPiArICogb2ZfZHJtX2dldF9wYW5lbF9vcmllbnRhdGlvbiAt
-IGxvb2sgdXAgdGhlIHJvdGF0aW9uIG9mIHRoZSBwYW5lbCB1c2luZyBhCj4gKyAqIGRldmljZSB0
-cmVlIG5vZGUKPiArICogQG5wOiBkZXZpY2UgdHJlZSBub2RlIG9mIHRoZSBwYW5lbAo+ICsgKiBA
-b3JpZW50YXRpb246IG9yaWVudGF0aW9uIGVudW0gdG8gYmUgZmlsbGVkIGluCj4gKyAqCj4gKyAq
-IExvb2tzIHVwIHRoZSByb3RhdGlvbiBvZiBhIHBhbmVsIGluIHRoZSBkZXZpY2UgdHJlZS4gVGhl
-IHJvdGF0aW9uIGluIHRoZQo+ICsgKiBkZXZpY2UgdHJlZSBpcyBjb3VudGVyIGNsb2Nrd2lzZS4K
-PiArICoKPiArICogUmV0dXJuOiAwIHdoZW4gYSB2YWxpZCByb3RhdGlvbiB2YWx1ZSAoMCwgOTAs
-IDE4MCwgb3IgMjcwKSBpcyByZWFkIG9yIHRoZQo+ICsgKiByb3RhdGlvbiBwcm9wZXJ0eSBkb2Vz
-bid0IGV4aXN0LiAtRUVSUk9SIG90aGVyd2lzZS4KPiArICovCj4gK2ludCBvZl9kcm1fZ2V0X3Bh
-bmVsX29yaWVudGF0aW9uKGNvbnN0IHN0cnVjdCBkZXZpY2Vfbm9kZSAqbnAsIGludCAqb3JpZW50
-YXRpb24pCj4gK3sKPiArCWludCByb3RhdGlvbiwgcmV0Owo+ICsKPiArCXJldCA9IG9mX3Byb3Bl
-cnR5X3JlYWRfdTMyKG5wLCAicm90YXRpb24iLCAmcm90YXRpb24pOwoKSSBqdXN0IG5vdGljZWQg
-dGhhdCBldmVyeXdoZXJlIHRoaXMgY29kZSB0YWxrcyBhYm91dCBvcmllbnRhdGlvbiwKYnV0IHRo
-ZSBwcm9wZXJ0eSB0aGF0IGl0IHJlYWRzIGFyZSByb3RhdGlvbi4KVG8gbXkgYmVzdCB1bmRlcnN0
-YW5kaW5nIHRoZXNlIGFyZSBub3QgdGhlIHNhbWUuCgoJU2FtCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLWdmeCBtYWlsaW5nIGxpc3QKSW50ZWwt
-Z2Z4QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2ludGVsLWdmeA==
+On Tue, 2019-06-11 at 14:28 +0200, Boris Brezillon wrote:
+> On Tue, 11 Jun 2019 20:25:22 +0800
+> Qii Wang <qii.wang@mediatek.com> wrote:
+> 
+> > On Tue, 2019-06-04 at 20:26 +0800, Qii Wang wrote:
+> > > On Tue, 2019-06-04 at 09:58 +0200, Boris Brezillon wrote:  
+> > > > On Mon, 3 Jun 2019 11:51:03 +0800
+> > > > Qii Wang <qii.wang@mediatek.com> wrote:
+> > > > 
+> > > >   
+> > > > > +static int mtk_i3c_master_probe(struct platform_device *pdev)
+> > > > > +{
+> > > > > +	struct device *dev = &pdev->dev;
+> > > > > +	struct mtk_i3c_master *master;
+> > > > > +	struct resource *res;
+> > > > > +	int ret, irqnr;
+> > > > > +
+> > > > > +	master = devm_kzalloc(dev, sizeof(*master), GFP_KERNEL);
+> > > > > +	if (!master)
+> > > > > +		return -ENOMEM;
+> > > > > +
+> > > > > +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "main");
+> > > > > +	master->regs = devm_ioremap_resource(dev, res);
+> > > > > +	if (IS_ERR(master->regs))
+> > > > > +		return PTR_ERR(master->regs);
+> > > > > +
+> > > > > +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "dma");
+> > > > > +	master->dma_regs = devm_ioremap_resource(dev, res);
+> > > > > +	if (IS_ERR(master->dma_regs))
+> > > > > +		return PTR_ERR(master->dma_regs);
+> > > > > +
+> > > > > +	irqnr = platform_get_irq(pdev, 0);
+> > > > > +	if (irqnr < 0)
+> > > > > +		return irqnr;
+> > > > > +
+> > > > > +	ret = devm_request_irq(dev, irqnr, mtk_i3c_master_irq,
+> > > > > +			       IRQF_TRIGGER_NONE, DRV_NAME, master);
+> > > > > +	if (ret < 0) {
+> > > > > +		dev_err(dev, "Request I3C IRQ %d fail\n", irqnr);
+> > > > > +		return ret;
+> > > > > +	}
+> > > > > +
+> > > > > +	ret = of_property_read_u32(pdev->dev.of_node, "clock-div",
+> > > > > +				   &master->clk_src_div);  
+> > > > 
+> > > > You say in one comment that this clock divider is fixed in HW but might
+> > > > change on a per-SoC basis. If that's the case, you should get rid of
+> > > > this clock-div prop and attach the divider to the compatible (using an
+> > > > mtk_i3c_master_variant struct that contains a divider field).
+> > > >   
+> > > 
+> > > ok, I will attach the divider to the compatible.
+> > >   
+> > I have rechecked your comment, maybe I have misunderstood what you mean.
+> > "clock-div" changes according to i2c source clock, different project may
+> > change i2c source clock, The previous dt-binding may be misleading, I
+> > will modify it.
+> 
+> Is it fixed or configurable? Maybe it should be modeled as a clk
+> driver. What's for sure is that we shouldn't have this divider defined
+> in the DT.
+
+ok, I have let the clk driver handle it, and remove it in DT and i3c
+driver. Thanks!
