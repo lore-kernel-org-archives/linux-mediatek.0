@@ -1,85 +1,53 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [GIT,PULL] mediatek drm fixes for 5.2
-Date: Thu, 13 Jun 2019 10:27:04 +0200
-Message-ID: <20190613082704.GI23020@phenom.ffwll.local>
-References: <1560325868.3259.6.camel@mtksdaap41>
- <20190612162538.GA8035@phenom.ffwll.local>
- <1560407478.7597.5.camel@mtksdaap41>
+From: Andrey Ryabinin <aryabinin@virtuozzo.com>
+Subject: Re: [PATCH v3] kasan: add memory corruption identification for
+ software tag-based mode
+Date: Thu, 13 Jun 2019 15:27:09 +0300
+Message-ID: <da7591c9-660d-d380-d59e-6d70b39eaa6b@virtuozzo.com>
+References: <20190613081357.1360-1-walter-zh.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1560407478.7597.5.camel@mtksdaap41>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: CK Hu <ck.hu@mediatek.com>
-Cc: Yongqiang Niu <yongqiang.niu@mediatek.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Hsin-Yi Wang <hsinyi@chromium.org>, Daniel Vetter <daniel.vetter@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190613081357.1360-1-walter-zh.wu@mediatek.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Walter Wu <walter-zh.wu@mediatek.com>, Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Matthias Brugger <matthias.bgg@gmail.com>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Arnd Bergmann <arnd@arndb.de>, Vasily Gorbik <gor@linux.ibm.com>, Andrey Konovalov <andreyknvl@google.com>, "Jason A . Donenfeld" <Jason@zx2c4.com>, Miles Chen <miles.chen@mediatek.com>
+Cc: wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org, kasan-dev@googlegroups.com, linux-mm@kvack.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVGh1LCBKdW4gMTMsIDIwMTkgYXQgMDI6MzE6MThQTSArMDgwMCwgQ0sgSHUgd3JvdGU6Cj4g
-SGksIERhbmllbDoKPiAKPiBPbiBXZWQsIDIwMTktMDYtMTIgYXQgMTg6MjUgKzAyMDAsIERhbmll
-bCBWZXR0ZXIgd3JvdGU6Cj4gPiBPbiBXZWQsIEp1biAxMiwgMjAxOSBhdCAwMzo1MTowOFBNICsw
-ODAwLCBDSyBIdSB3cm90ZToKPiA+ID4gSGkgRGF2ZSwgRGFuaWVsOgo+ID4gPiAKPiA+ID4gVGhp
-cyBpbmNsdWRlIHVuYmluZCBlcnJvciBmaXgsIGNsb2NrIGNvbnRyb2wgZmxvdyByZWZpbmVtZW50
-LCBhbmQgUFJJTUUKPiA+ID4gbW1hcCB3aXRoIHBhZ2Ugb2Zmc2V0Lgo+ID4gPiAKPiA+ID4gUmVn
-YXJkcywKPiA+ID4gQ0sKPiA+ID4gCj4gPiA+IFRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBj
-b21taXQKPiA+ID4gYTE4ODMzOWNhNWEzOTZhY2M1ODhlNTg1MWVkN2UxOWY2NmIwZWJkOToKPiA+
-ID4gCj4gPiA+ICAgTGludXggNS4yLXJjMSAoMjAxOS0wNS0xOSAxNTo0NzowOSAtMDcwMCkKPiA+
-ID4gCj4gPiA+IGFyZSBhdmFpbGFibGUgaW4gdGhlIEdpdCByZXBvc2l0b3J5IGF0Ogo+ID4gPiAK
-PiA+ID4gICBodHRwczovL2dpdGh1Yi5jb20vY2todS1tZWRpYXRlay9saW51eC5naXQtdGFncy5n
-aXQKPiA+ID4gbWVkaWF0ZWstZHJtLWZpeGVzLTUuMgo+ID4gCj4gPiBGb3IgbmV4dCB0aW1lIGFy
-b3VuZCwgcGxlYXNlIG1ha2UgdGhpcyBhIHNpZ25lZCBhbm5vdGF0ZWQgdGFnLiBhbm5vdGF0ZWQK
-PiA+IGJlY2F1c2UgdGhlbiBpdCdzIGxlc3MgdHlwaW5nIGZvciBtZSwgYW5kIHNpZ25lZCBiZWNh
-dXNlIGl0J3Mgb24gYSBzZXJ2ZXIKPiA+IHdlIGRvbid0IG5lY2Vzc2FyaWx5IHRydXN0Lgo+IAo+
-IE9LLCBJJ2QgbWFrZSBhIHNpZ25lZCBhbm5vdGF0ZWQgdGFnIGluIG5leHQgdGltZS4KPiAKPiA+
-IAo+ID4gPiAKPiA+ID4gZm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRvIDI0NThkOWQ2ZDk0
-YmU5ODJiOTE3ZTkzYzYxYTg5YjQ0MjZmMzJlMzE6Cj4gPiA+IAo+ID4gPiAgIGRybS9tZWRpYXRl
-azogY2FsbCBtdGtfZHNpX3N0b3AoKSBhZnRlciBtdGtfZHJtX2NydGNfYXRvbWljX2Rpc2FibGUo
-KQo+ID4gPiAoMjAxOS0wNi0wNCAwOTo1NDo0MiArMDgwMCkKPiA+ID4gCj4gPiA+IC0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0K
-PiA+ID4gSHNpbi1ZaSBXYW5nICg1KToKPiA+ID4gICAgICAgZHJtL21lZGlhdGVrOiBmaXggdW5i
-aW5kIGZ1bmN0aW9ucwo+ID4gPiAgICAgICBkcm0vbWVkaWF0ZWs6IHVuYmluZCBjb21wb25lbnRz
-IGluIG10a19kcm1fdW5iaW5kKCkKPiA+ID4gICAgICAgZHJtL21lZGlhdGVrOiBjYWxsIGRybV9h
-dG9taWNfaGVscGVyX3NodXRkb3duKCkgd2hlbiB1bmJpbmRpbmcKPiA+ID4gZHJpdmVyCj4gPiA+
-ICAgICAgIGRybS9tZWRpYXRlazogY2xlYXIgbnVtX3BpcGVzIHdoZW4gdW5iaW5kIGRyaXZlcgo+
-ID4gPiAgICAgICBkcm0vbWVkaWF0ZWs6IGNhbGwgbXRrX2RzaV9zdG9wKCkgYWZ0ZXIKPiA+ID4g
-bXRrX2RybV9jcnRjX2F0b21pY19kaXNhYmxlKCkKPiA+ID4gCj4gPiA+IFlvbmdxaWFuZyBOaXUg
-KDIpOgo+ID4gPiAgICAgICBkcm0vbWVkaWF0ZWs6IGFkanVzdCBkZHAgY2xvY2sgY29udHJvbCBm
-bG93Cj4gPiA+ICAgICAgIGRybS9tZWRpYXRlazogcmVzcGVjdCBwYWdlIG9mZnNldCBmb3IgUFJJ
-TUUgbW1hcCBjYWxscwo+ID4gCj4gPiBZb3UgbWlnaHQgd2FudCB0byBsb29rIGludG8gYWxsIHRo
-ZSByZWNlbnRseSBhZGRlZCBoZWxwZXJzIGZvciBtbWFwLCBJCj4gPiBkb24ndCB0aGluayBtdGsg
-ZG9lcyBhbnl0aGluZyBzcGVjaWFsIGhlcmUuCj4gCj4gSWYgeW91IG1lYW4gdXNpbmcgZHJtX2dl
-bV9wcmltZV9tbWFwIGFzIHRoZSBpbXBsZW1lbnRhdGlvbiBvZgo+IGRybV9kcml2ZXItPmdlbV9w
-cmltZV9tbWFwLCBJIHRoaW5rIHdlIGhhdmUgZGlzY3Vzc2VkIGluIFsxXSB0aGF0Cj4gbWVkaWF0
-ZWsgZHJtIHN0aWxsIG5lZWQgaXRzIG93biBpbXBsZW1lbnRhdGlvbi4KPiAKPiBbMV0gaHR0cHM6
-Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC8xMDY1NzAwNy8KClllYWggZm9yIHJldXNpbmcg
-dGhlIG92ZXJhbGwgaGVscGVycyB0aGF0J3MgY2xlYXIsIGJ1dApkcm1fZ2VtX3ByaW1lX2dlbV9t
-bWFwIHNob3VsZCB3b3JrIGZvciBhbnkgZ2VtIGJhc2VkIGRyaXZlci4gSXQgZG9lc24ndApyZXF1
-aXJlIHlvdSB0byB1c2Ugc3BlY2lmaWMgaGVscGVycyBhdCBhbGwuCgpJJ20gd29uZGVyaW5nIGFi
-b3V0IHRoaXMgc2luY2UgSSdtIGxvb2tpbmcgcmlnaHQgbm93IGludG8gdGhpcyBhcmVhLCBhbmQK
-aXQgbG9va3MgbGlrZSB3ZSBjb3VsZCBqdXN0IG1ha2UgZHJtX2dlbV9wcmltZV9tbWFwIHRoZSBk
-ZWZhdWx0IGFuZCByaXAKb3V0IGFsbCB0aGUgY3VzdG9tIGRyaXZlciBpbXBsZW1lbnRhdGlvbnMu
-Ci1EYW5pZWwKCj4gCj4gUmVnYXJkcywKPiBDSwo+IAo+ID4gCj4gPiAKPiA+ID4gCj4gPiA+ICBk
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMgfCAzMAo+ID4gPiArKysrKyst
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHJtX2Rydi5jICB8ICA4ICsrKy0tLS0tCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RybV9nZW0uYyAgfCAgNyArKysrKystCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2RzaS5jICAgICAgfCAxMiArKysrKysrKysrKy0KPiA+ID4gIDQgZmlsZXMgY2hh
-bmdlZCwgMjYgaW5zZXJ0aW9ucygrKSwgMzEgZGVsZXRpb25zKC0pCj4gPiAKPiA+IFB1bGxlZCwg
-dGhhbmtzLgo+ID4gLURhbmllbAo+ID4gCj4gPiA+IAo+ID4gPiBfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+ID4gPiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0
-Cj4gPiA+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiA+ID4gaHR0cHM6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwKPiA+IAo+IAo+IAoK
-LS0gCkRhbmllbCBWZXR0ZXIKU29mdHdhcmUgRW5naW5lZXIsIEludGVsIENvcnBvcmF0aW9uCmh0
-dHA6Ly9ibG9nLmZmd2xsLmNoCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
-dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
-aS1kZXZlbA==
+
+
+On 6/13/19 11:13 AM, Walter Wu wrote:
+> This patch adds memory corruption identification at bug report for
+> software tag-based mode, the report show whether it is "use-after-free"
+> or "out-of-bound" error instead of "invalid-access" error.This will make
+> it easier for programmers to see the memory corruption problem.
+> 
+> Now we extend the quarantine to support both generic and tag-based kasan.
+> For tag-based kasan, the quarantine stores only freed object information
+> to check if an object is freed recently. When tag-based kasan reports an
+> error, we can check if the tagged addr is in the quarantine and make a
+> good guess if the object is more like "use-after-free" or "out-of-bound".
+> 
+
+
+We already have all the information and don't need the quarantine to make such guess.
+Basically if shadow of the first byte of object has the same tag as tag in pointer than it's out-of-bounds,
+otherwise it's use-after-free.
+
+In pseudo-code it's something like this:
+
+u8 object_tag = *(u8 *)kasan_mem_to_shadow(nearest_object(cacche, page, access_addr));
+
+if (access_addr_tag == object_tag && object_tag != KASAN_TAG_INVALID)
+	// out-of-bounds
+else
+	// use-after-free
