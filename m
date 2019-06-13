@@ -1,90 +1,71 @@
-From: Pi-Hsun Shih <pihsun@chromium.org>
-Subject: [PATCH v11 5/5] arm64: dts: mt8183: add scp node
-Date: Thu, 13 Jun 2019 12:06:52 +0800
-Message-ID: <20190613040708.97488-6-pihsun@chromium.org>
-References: <20190613040708.97488-1-pihsun@chromium.org>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [GIT,PULL] mediatek drm fixes for 5.2
+Date: Thu, 13 Jun 2019 14:31:18 +0800
+Message-ID: <1560407478.7597.5.camel@mtksdaap41>
+References: <1560325868.3259.6.camel@mtksdaap41>
+ <20190612162538.GA8035@phenom.ffwll.local>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190613040708.97488-1-pihsun@chromium.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-Cc: Mark Rutland <mark.rutland@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Erin Lo <erin.lo@mediatek.com>, open list <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Pi-Hsun Shih <pihsun@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190612162538.GA8035@phenom.ffwll.local>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Vetter <daniel@ffwll.ch>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Yongqiang Niu <yongqiang.niu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Daniel Vetter <daniel.vetter@intel.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Eddie Huang <eddie.huang@mediatek.com>
-
-Add scp node to mt8183 and mt8183-evb
-
-Signed-off-by: Erin Lo <erin.lo@mediatek.com>
-Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
-Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
----
-Changes from v10:
- - No change.
-
-Changes from v9:
- - Remove extra reserve-memory-vpu_share node.
-
-Changes from v8:
- - New patch.
----
- arch/arm64/boot/dts/mediatek/mt8183-evb.dts | 11 +++++++++++
- arch/arm64/boot/dts/mediatek/mt8183.dtsi    | 12 ++++++++++++
- 2 files changed, 23 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-index d8e555cbb5d3..e46e34ce3159 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-@@ -24,6 +24,17 @@
- 	chosen {
- 		stdout-path = "serial0:921600n8";
- 	};
-+
-+	reserved-memory {
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+		scp_mem_reserved: scp_mem_region {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x50000000 0 0x2900000>;
-+			no-map;
-+		};
-+	};
- };
- 
- &auxadc {
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index c2749c4631bc..133146b52904 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -254,6 +254,18 @@
- 			clock-names = "spi", "wrap";
- 		};
- 
-+		scp: scp@10500000 {
-+			compatible = "mediatek,mt8183-scp";
-+			reg = <0 0x10500000 0 0x80000>,
-+			      <0 0x105c0000 0 0x5000>;
-+			reg-names = "sram", "cfg";
-+			interrupts = <GIC_SPI 174 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&infracfg CLK_INFRA_SCPSYS>;
-+			clock-names = "main";
-+			memory-region = <&scp_mem_reserved>;
-+			status = "disabled";
-+		};
-+
- 		auxadc: auxadc@11001000 {
- 			compatible = "mediatek,mt8183-auxadc",
- 				     "mediatek,mt8173-auxadc";
--- 
-2.22.0.rc2.383.gf4fbbf30c2-goog
+SGksIERhbmllbDoKCk9uIFdlZCwgMjAxOS0wNi0xMiBhdCAxODoyNSArMDIwMCwgRGFuaWVsIFZl
+dHRlciB3cm90ZToKPiBPbiBXZWQsIEp1biAxMiwgMjAxOSBhdCAwMzo1MTowOFBNICswODAwLCBD
+SyBIdSB3cm90ZToKPiA+IEhpIERhdmUsIERhbmllbDoKPiA+IAo+ID4gVGhpcyBpbmNsdWRlIHVu
+YmluZCBlcnJvciBmaXgsIGNsb2NrIGNvbnRyb2wgZmxvdyByZWZpbmVtZW50LCBhbmQgUFJJTUUK
+PiA+IG1tYXAgd2l0aCBwYWdlIG9mZnNldC4KPiA+IAo+ID4gUmVnYXJkcywKPiA+IENLCj4gPiAK
+PiA+IFRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21taXQKPiA+IGExODgzMzljYTVhMzk2
+YWNjNTg4ZTU4NTFlZDdlMTlmNjZiMGViZDk6Cj4gPiAKPiA+ICAgTGludXggNS4yLXJjMSAoMjAx
+OS0wNS0xOSAxNTo0NzowOSAtMDcwMCkKPiA+IAo+ID4gYXJlIGF2YWlsYWJsZSBpbiB0aGUgR2l0
+IHJlcG9zaXRvcnkgYXQ6Cj4gPiAKPiA+ICAgaHR0cHM6Ly9naXRodWIuY29tL2NraHUtbWVkaWF0
+ZWsvbGludXguZ2l0LXRhZ3MuZ2l0Cj4gPiBtZWRpYXRlay1kcm0tZml4ZXMtNS4yCj4gCj4gRm9y
+IG5leHQgdGltZSBhcm91bmQsIHBsZWFzZSBtYWtlIHRoaXMgYSBzaWduZWQgYW5ub3RhdGVkIHRh
+Zy4gYW5ub3RhdGVkCj4gYmVjYXVzZSB0aGVuIGl0J3MgbGVzcyB0eXBpbmcgZm9yIG1lLCBhbmQg
+c2lnbmVkIGJlY2F1c2UgaXQncyBvbiBhIHNlcnZlcgo+IHdlIGRvbid0IG5lY2Vzc2FyaWx5IHRy
+dXN0LgoKT0ssIEknZCBtYWtlIGEgc2lnbmVkIGFubm90YXRlZCB0YWcgaW4gbmV4dCB0aW1lLgoK
+PiAKPiA+IAo+ID4gZm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRvIDI0NThkOWQ2ZDk0YmU5
+ODJiOTE3ZTkzYzYxYTg5YjQ0MjZmMzJlMzE6Cj4gPiAKPiA+ICAgZHJtL21lZGlhdGVrOiBjYWxs
+IG10a19kc2lfc3RvcCgpIGFmdGVyIG10a19kcm1fY3J0Y19hdG9taWNfZGlzYWJsZSgpCj4gPiAo
+MjAxOS0wNi0wNCAwOTo1NDo0MiArMDgwMCkKPiA+IAo+ID4gLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo+ID4gSHNpbi1ZaSBX
+YW5nICg1KToKPiA+ICAgICAgIGRybS9tZWRpYXRlazogZml4IHVuYmluZCBmdW5jdGlvbnMKPiA+
+ICAgICAgIGRybS9tZWRpYXRlazogdW5iaW5kIGNvbXBvbmVudHMgaW4gbXRrX2RybV91bmJpbmQo
+KQo+ID4gICAgICAgZHJtL21lZGlhdGVrOiBjYWxsIGRybV9hdG9taWNfaGVscGVyX3NodXRkb3du
+KCkgd2hlbiB1bmJpbmRpbmcKPiA+IGRyaXZlcgo+ID4gICAgICAgZHJtL21lZGlhdGVrOiBjbGVh
+ciBudW1fcGlwZXMgd2hlbiB1bmJpbmQgZHJpdmVyCj4gPiAgICAgICBkcm0vbWVkaWF0ZWs6IGNh
+bGwgbXRrX2RzaV9zdG9wKCkgYWZ0ZXIKPiA+IG10a19kcm1fY3J0Y19hdG9taWNfZGlzYWJsZSgp
+Cj4gPiAKPiA+IFlvbmdxaWFuZyBOaXUgKDIpOgo+ID4gICAgICAgZHJtL21lZGlhdGVrOiBhZGp1
+c3QgZGRwIGNsb2NrIGNvbnRyb2wgZmxvdwo+ID4gICAgICAgZHJtL21lZGlhdGVrOiByZXNwZWN0
+IHBhZ2Ugb2Zmc2V0IGZvciBQUklNRSBtbWFwIGNhbGxzCj4gCj4gWW91IG1pZ2h0IHdhbnQgdG8g
+bG9vayBpbnRvIGFsbCB0aGUgcmVjZW50bHkgYWRkZWQgaGVscGVycyBmb3IgbW1hcCwgSQo+IGRv
+bid0IHRoaW5rIG10ayBkb2VzIGFueXRoaW5nIHNwZWNpYWwgaGVyZS4KCklmIHlvdSBtZWFuIHVz
+aW5nIGRybV9nZW1fcHJpbWVfbW1hcCBhcyB0aGUgaW1wbGVtZW50YXRpb24gb2YKZHJtX2RyaXZl
+ci0+Z2VtX3ByaW1lX21tYXAsIEkgdGhpbmsgd2UgaGF2ZSBkaXNjdXNzZWQgaW4gWzFdIHRoYXQK
+bWVkaWF0ZWsgZHJtIHN0aWxsIG5lZWQgaXRzIG93biBpbXBsZW1lbnRhdGlvbi4KClsxXSBodHRw
+czovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzEwNjU3MDA3LwoKUmVnYXJkcywKQ0sKCj4g
+Cj4gCj4gPiAKPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMgfCAz
+MAo+ID4gKysrKysrLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4gPiAgZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19kcm1fZHJ2LmMgIHwgIDggKysrLS0tLS0KPiA+ICBkcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uYyAgfCAgNyArKysrKystCj4gPiAgZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19kc2kuYyAgICAgIHwgMTIgKysrKysrKysrKystCj4gPiAgNCBmaWxl
+cyBjaGFuZ2VkLCAyNiBpbnNlcnRpb25zKCspLCAzMSBkZWxldGlvbnMoLSkKPiAKPiBQdWxsZWQs
+IHRoYW5rcy4KPiAtRGFuaWVsCj4gCj4gPiAKPiA+IF9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCj4gPiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4gPiBkcmkt
+ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo+IAoKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
+dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
