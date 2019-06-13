@@ -1,71 +1,94 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [GIT,PULL] mediatek drm fixes for 5.2
-Date: Thu, 13 Jun 2019 14:31:18 +0800
-Message-ID: <1560407478.7597.5.camel@mtksdaap41>
-References: <1560325868.3259.6.camel@mtksdaap41>
- <20190612162538.GA8035@phenom.ffwll.local>
+From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 2/2] mt76: mt7615: update peer's bssid when state
+ transition occurs
+Date: Thu, 13 Jun 2019 15:13:31 +0800
+Message-ID: <75f5e467c6e7fc4187572977a8e1f5d4238d6354.1560330906.git.ryder.lee@mediatek.com>
+References: <3065a01998dfa04a5d2d680e820a17cb5c110d0f.1560330906.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190612162538.GA8035@phenom.ffwll.local>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Yongqiang Niu <yongqiang.niu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Daniel Vetter <daniel.vetter@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <3065a01998dfa04a5d2d680e820a17cb5c110d0f.1560330906.git.ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Cc: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YF Luo <yf.luo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yiwei Chung <yiwei.chung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roy Luo <royluo-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIERhbmllbDoKCk9uIFdlZCwgMjAxOS0wNi0xMiBhdCAxODoyNSArMDIwMCwgRGFuaWVsIFZl
-dHRlciB3cm90ZToKPiBPbiBXZWQsIEp1biAxMiwgMjAxOSBhdCAwMzo1MTowOFBNICswODAwLCBD
-SyBIdSB3cm90ZToKPiA+IEhpIERhdmUsIERhbmllbDoKPiA+IAo+ID4gVGhpcyBpbmNsdWRlIHVu
-YmluZCBlcnJvciBmaXgsIGNsb2NrIGNvbnRyb2wgZmxvdyByZWZpbmVtZW50LCBhbmQgUFJJTUUK
-PiA+IG1tYXAgd2l0aCBwYWdlIG9mZnNldC4KPiA+IAo+ID4gUmVnYXJkcywKPiA+IENLCj4gPiAK
-PiA+IFRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21taXQKPiA+IGExODgzMzljYTVhMzk2
-YWNjNTg4ZTU4NTFlZDdlMTlmNjZiMGViZDk6Cj4gPiAKPiA+ICAgTGludXggNS4yLXJjMSAoMjAx
-OS0wNS0xOSAxNTo0NzowOSAtMDcwMCkKPiA+IAo+ID4gYXJlIGF2YWlsYWJsZSBpbiB0aGUgR2l0
-IHJlcG9zaXRvcnkgYXQ6Cj4gPiAKPiA+ICAgaHR0cHM6Ly9naXRodWIuY29tL2NraHUtbWVkaWF0
-ZWsvbGludXguZ2l0LXRhZ3MuZ2l0Cj4gPiBtZWRpYXRlay1kcm0tZml4ZXMtNS4yCj4gCj4gRm9y
-IG5leHQgdGltZSBhcm91bmQsIHBsZWFzZSBtYWtlIHRoaXMgYSBzaWduZWQgYW5ub3RhdGVkIHRh
-Zy4gYW5ub3RhdGVkCj4gYmVjYXVzZSB0aGVuIGl0J3MgbGVzcyB0eXBpbmcgZm9yIG1lLCBhbmQg
-c2lnbmVkIGJlY2F1c2UgaXQncyBvbiBhIHNlcnZlcgo+IHdlIGRvbid0IG5lY2Vzc2FyaWx5IHRy
-dXN0LgoKT0ssIEknZCBtYWtlIGEgc2lnbmVkIGFubm90YXRlZCB0YWcgaW4gbmV4dCB0aW1lLgoK
-PiAKPiA+IAo+ID4gZm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRvIDI0NThkOWQ2ZDk0YmU5
-ODJiOTE3ZTkzYzYxYTg5YjQ0MjZmMzJlMzE6Cj4gPiAKPiA+ICAgZHJtL21lZGlhdGVrOiBjYWxs
-IG10a19kc2lfc3RvcCgpIGFmdGVyIG10a19kcm1fY3J0Y19hdG9taWNfZGlzYWJsZSgpCj4gPiAo
-MjAxOS0wNi0wNCAwOTo1NDo0MiArMDgwMCkKPiA+IAo+ID4gLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo+ID4gSHNpbi1ZaSBX
-YW5nICg1KToKPiA+ICAgICAgIGRybS9tZWRpYXRlazogZml4IHVuYmluZCBmdW5jdGlvbnMKPiA+
-ICAgICAgIGRybS9tZWRpYXRlazogdW5iaW5kIGNvbXBvbmVudHMgaW4gbXRrX2RybV91bmJpbmQo
-KQo+ID4gICAgICAgZHJtL21lZGlhdGVrOiBjYWxsIGRybV9hdG9taWNfaGVscGVyX3NodXRkb3du
-KCkgd2hlbiB1bmJpbmRpbmcKPiA+IGRyaXZlcgo+ID4gICAgICAgZHJtL21lZGlhdGVrOiBjbGVh
-ciBudW1fcGlwZXMgd2hlbiB1bmJpbmQgZHJpdmVyCj4gPiAgICAgICBkcm0vbWVkaWF0ZWs6IGNh
-bGwgbXRrX2RzaV9zdG9wKCkgYWZ0ZXIKPiA+IG10a19kcm1fY3J0Y19hdG9taWNfZGlzYWJsZSgp
-Cj4gPiAKPiA+IFlvbmdxaWFuZyBOaXUgKDIpOgo+ID4gICAgICAgZHJtL21lZGlhdGVrOiBhZGp1
-c3QgZGRwIGNsb2NrIGNvbnRyb2wgZmxvdwo+ID4gICAgICAgZHJtL21lZGlhdGVrOiByZXNwZWN0
-IHBhZ2Ugb2Zmc2V0IGZvciBQUklNRSBtbWFwIGNhbGxzCj4gCj4gWW91IG1pZ2h0IHdhbnQgdG8g
-bG9vayBpbnRvIGFsbCB0aGUgcmVjZW50bHkgYWRkZWQgaGVscGVycyBmb3IgbW1hcCwgSQo+IGRv
-bid0IHRoaW5rIG10ayBkb2VzIGFueXRoaW5nIHNwZWNpYWwgaGVyZS4KCklmIHlvdSBtZWFuIHVz
-aW5nIGRybV9nZW1fcHJpbWVfbW1hcCBhcyB0aGUgaW1wbGVtZW50YXRpb24gb2YKZHJtX2RyaXZl
-ci0+Z2VtX3ByaW1lX21tYXAsIEkgdGhpbmsgd2UgaGF2ZSBkaXNjdXNzZWQgaW4gWzFdIHRoYXQK
-bWVkaWF0ZWsgZHJtIHN0aWxsIG5lZWQgaXRzIG93biBpbXBsZW1lbnRhdGlvbi4KClsxXSBodHRw
-czovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzEwNjU3MDA3LwoKUmVnYXJkcywKQ0sKCj4g
-Cj4gCj4gPiAKPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMgfCAz
-MAo+ID4gKysrKysrLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4gPiAgZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19kcm1fZHJ2LmMgIHwgIDggKysrLS0tLS0KPiA+ICBkcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uYyAgfCAgNyArKysrKystCj4gPiAgZHJpdmVycy9ncHUv
-ZHJtL21lZGlhdGVrL210a19kc2kuYyAgICAgIHwgMTIgKysrKysrKysrKystCj4gPiAgNCBmaWxl
-cyBjaGFuZ2VkLCAyNiBpbnNlcnRpb25zKCspLCAzMSBkZWxldGlvbnMoLSkKPiAKPiBQdWxsZWQs
-IHRoYW5rcy4KPiAtRGFuaWVsCj4gCj4gPiAKPiA+IF9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCj4gPiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4gPiBkcmkt
-ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo+IAoKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+This makes sure that the driver update peer's bssid when state
+transition occurs.
+
+Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+Changes since v2 - remove unnecessary changes
+---
+ .../net/wireless/mediatek/mt76/mt7615/main.c  |  5 ++--
+ .../net/wireless/mediatek/mt76/mt7615/mcu.c   | 27 ++++++++++---------
+ 2 files changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+index d21407ddda31..e0824392c019 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+@@ -283,9 +283,8 @@ static void mt7615_bss_info_changed(struct ieee80211_hw *hw,
+ 
+ 	mutex_lock(&dev->mt76.mutex);
+ 
+-	/* TODO: sta mode connect/disconnect
+-	 * BSS_CHANGED_ASSOC | BSS_CHANGED_BSSID
+-	 */
++	if (changed & BSS_CHANGED_ASSOC)
++		mt7615_mcu_set_bss_info(dev, vif, info->assoc);
+ 
+ 	/* TODO: update beacon content
+ 	 * BSS_CHANGED_BEACON
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+index e82086eb8aa4..52d89f3533bf 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+@@ -759,22 +759,23 @@ int mt7615_mcu_set_bss_info(struct mt7615_dev *dev,
+ 		conn_type = CONNECTION_INFRA_AP;
+ 		break;
+ 	case NL80211_IFTYPE_STATION: {
+-		struct ieee80211_sta *sta;
+-		struct mt7615_sta *msta;
+-
+-		rcu_read_lock();
+-
+-		sta = ieee80211_find_sta(vif, vif->bss_conf.bssid);
+-		if (!sta) {
++		/* TODO: enable BSS_INFO_UAPSD & BSS_INFO_PM */
++		if (en) {
++			struct ieee80211_sta *sta;
++			struct mt7615_sta *msta;
++
++			rcu_read_lock();
++			sta = ieee80211_find_sta(vif, vif->bss_conf.bssid);
++			if (!sta) {
++				rcu_read_unlock();
++				return -EINVAL;
++			}
++
++			msta = (struct mt7615_sta *)sta->drv_priv;
++			tx_wlan_idx = msta->wcid.idx;
+ 			rcu_read_unlock();
+-			return -EINVAL;
+ 		}
+-
+-		msta = (struct mt7615_sta *)sta->drv_priv;
+-		tx_wlan_idx = msta->wcid.idx;
+ 		conn_type = CONNECTION_INFRA_STA;
+-
+-		rcu_read_unlock();
+ 		break;
+ 	}
+ 	default:
+-- 
+2.18.0
