@@ -1,37 +1,91 @@
-From: Joe Perches <joe@perches.com>
-Subject: Re: [PATCH v2] media: mtk-vcodec: remove unneeded proxy functions
-Date: Fri, 14 Jun 2019 02:11:51 -0700
-Message-ID: <9fd990d12ea1488592c5a590046f001a187b9c3f.camel@perches.com>
-References: <20190614075640.106709-1-acourbot@chromium.org>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH 1/2] mmc: mediatek: fix SDIO IRQ interrupt handle flow
+Date: Fri, 14 Jun 2019 11:46:52 +0200
+Message-ID: <CAPDyKFrXU4bpKeB7Aa15j2nHqUCn-bk+YKn9_vkznmi+PS8H7A@mail.gmail.com>
+References: <1560489970-30467-1-git-send-email-jjian.zhou@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190614075640.106709-1-acourbot@chromium.org>
+In-Reply-To: <1560489970-30467-1-git-send-email-jjian.zhou@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Alexandre Courbot <acourbot@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Yunfei Dong <yunfei.dong@mediatek.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Jjian Zhou <jjian.zhou@mediatek.com>
+Cc: Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Yong Mao <yong.mao@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2019-06-14 at 16:56 +0900, Alexandre Courbot wrote:
-> We were getting the codec interface through a proxy function that does
-> not bring anything compared to just accessing the interface definition
-> directly, so just do that. Also make the decoder interfaces const.
-[]
-> diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-[]
-> @@ -485,16 +485,9 @@ static int vdec_h264_get_param(void *h_vdec, enum vdec_get_param_type type,
->  	return 0;
+On Fri, 14 Jun 2019 at 07:26, Jjian Zhou <jjian.zhou@mediatek.com> wrote:
+>
+> From: jjian zhou <jjian.zhou@mediatek.com>
+>
+> SDIO IRQ is triggered by low level. It need disable SDIO IRQ
+> detected function. Otherwise the interrupt register can't be cleared.
+> It will process the interrupt more.
+>
+> Signed-off-by: Jjian Zhou <jjian.zhou@mediatek.com>
+> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+> Signed-off-by: Yong Mao <yong.mao@mediatek.com>
+> ---
+>  drivers/mmc/host/mtk-sd.c | 13 +++++++------
+>  1 file changed, 7 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index c518cc2..29992ae 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -1389,10 +1389,12 @@ static void __msdc_enable_sdio_irq(struct mmc_host *mmc, int enb)
+>         struct msdc_host *host = mmc_priv(mmc);
+>
+>         spin_lock_irqsave(&host->lock, flags);
+> -       if (enb)
+> +       if (enb) {
+>                 sdr_set_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
+> -       else
+> +               sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
+> +       } else {
+>                 sdr_clr_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
+
+Rather than clearing SDC_CFG_SDIOIDE in the irq handler, you need to
+do it here. As otherwise when the mmc core calls
+host->ops->enable_sdio_irq() to disable the SDIO IRQ, it may stay
+enabled.
+
+> +       }
+>         spin_unlock_irqrestore(&host->lock, flags);
 >  }
->  
-> -static struct vdec_common_if vdec_h264_if = {
-> +const struct vdec_common_if vdec_h264_if = {
+>
+> @@ -1422,6 +1424,8 @@ static irqreturn_t msdc_irq(int irq, void *dev_id)
+>                 spin_lock_irqsave(&host->lock, flags);
+>                 events = readl(host->base + MSDC_INT);
+>                 event_mask = readl(host->base + MSDC_INTEN);
+> +               if ((events & event_mask) & MSDC_INT_SDIOIRQ)
+> +                       sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
 
-probably better to fixup whatever chains prevent
-this (if any) from being static const
+As stated above, I suggest you move this into __msdc_enable_sdio_irq()
+and thus call that function from here instead. Well, that doesn't work
+as is, because of the spin lock, so you rather need to make a
+sub-function of __msdc_enable_sdio_irq, that don't take/releases the
+lock.
 
->  	.init		= vdec_h264_init,
->  	.decode		= vdec_h264_decode,
->  	.get_param	= vdec_h264_get_param,
->  	.deinit		= vdec_h264_deinit,
->  };
+I hope that was clear. If not, I can post a patch to show you what I mean.
+
+
+>                 /* clear interrupts */
+>                 writel(events & event_mask, host->base + MSDC_INT);
+>
+> @@ -1572,10 +1576,7 @@ static void msdc_init_hw(struct msdc_host *host)
+>         sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIO);
+>
+>         /* Config SDIO device detect interrupt function */
+> -       if (host->mmc->caps & MMC_CAP_SDIO_IRQ)
+> -               sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
+> -       else
+> -               sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
+> +       sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
+>
+>         /* Configure to default data timeout */
+>         sdr_set_field(host->base + SDC_CFG, SDC_CFG_DTOC, 3);
+> --
+> 1.9.1
+>
+
+Kind regards
+Uffe
