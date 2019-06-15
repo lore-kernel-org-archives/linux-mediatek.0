@@ -1,86 +1,47 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v7 07/21] iommu/mediatek: Add bclk can be supported
- optionally
-Date: Sat, 15 Jun 2019 21:18:14 +0200
-Message-ID: <13f42053-cdc3-bef9-54f0-633880c41043@gmail.com>
-References: <1560169080-27134-1-git-send-email-yong.wu@mediatek.com>
- <1560169080-27134-8-git-send-email-yong.wu@mediatek.com>
+From: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2] scsi: ufs: Avoid runtime suspend possibly being
+ blocked forever
+Date: Sat, 15 Jun 2019 22:16:07 +0000
+Message-ID: <20190615221608.7C52C2184D@mail.kernel.org>
+References: <1560352745-24681-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1560169080-27134-8-git-send-email-yong.wu@mediatek.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>
-Cc: Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, Will Deacon <will.deacon@arm.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, yingjoe.chen@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, Matthias Kaehlcke <mka@chromium.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1560352745-24681-1-git-send-email-stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi,
+
+[This is an automated email]
+
+This commit has been processed because it contains a "Fixes:" tag,
+fixing commit: 62694735ca95 [SCSI] ufs: Add runtime PM support for UFS host controller driver.
+
+The bot has tested the following trees: v5.1.9, v4.19.50, v4.14.125, v4.9.181, v4.4.181.
+
+v5.1.9: Build OK!
+v4.19.50: Build OK!
+v4.14.125: Build OK!
+v4.9.181: Build OK!
+v4.4.181: Failed to apply! Possible dependencies:
+    54b879b76ea2 ("scsi: ufs-qcom: add number of lanes per direction")
+    bad9764cfaaa ("scsi: ufs: fix spelling mistake in error message")
 
 
-On 10/06/2019 14:17, Yong Wu wrote:
-> In some SoCs, M4U doesn't have its "bclk", it will use the EMI
-> clock instead which has always been enabled when entering kernel.
-> 
-> Currently mt2712 and mt8173 have this bclk while mt8183 doesn't.
-> 
-> This also is a preparing patch for mt8183.
-> 
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> Reviewed-by: Evan Green <evgreen@chromium.org>
+How should we proceed with this patch?
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
-> ---
->  drivers/iommu/mtk_iommu.c | 10 +++++++---
->  drivers/iommu/mtk_iommu.h |  3 +++
->  2 files changed, 10 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index aff5004..264dda4 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -611,9 +611,11 @@ static int mtk_iommu_probe(struct platform_device *pdev)
->  	if (data->irq < 0)
->  		return data->irq;
->  
-> -	data->bclk = devm_clk_get(dev, "bclk");
-> -	if (IS_ERR(data->bclk))
-> -		return PTR_ERR(data->bclk);
-> +	if (data->plat_data->has_bclk) {
-> +		data->bclk = devm_clk_get(dev, "bclk");
-> +		if (IS_ERR(data->bclk))
-> +			return PTR_ERR(data->bclk);
-> +	}
->  
->  	larb_nr = of_count_phandle_with_args(dev->of_node,
->  					     "mediatek,larbs", NULL);
-> @@ -741,11 +743,13 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
->  static const struct mtk_iommu_plat_data mt2712_data = {
->  	.m4u_plat     = M4U_MT2712,
->  	.has_4gb_mode = true,
-> +	.has_bclk     = true,
->  };
->  
->  static const struct mtk_iommu_plat_data mt8173_data = {
->  	.m4u_plat     = M4U_MT8173,
->  	.has_4gb_mode = true,
-> +	.has_bclk     = true,
->  };
->  
->  static const struct of_device_id mtk_iommu_of_ids[] = {
-> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-> index d7a001a..63e235e 100644
-> --- a/drivers/iommu/mtk_iommu.h
-> +++ b/drivers/iommu/mtk_iommu.h
-> @@ -43,6 +43,9 @@ enum mtk_iommu_plat {
->  struct mtk_iommu_plat_data {
->  	enum mtk_iommu_plat m4u_plat;
->  	bool                has_4gb_mode;
-> +
-> +	/* HW will use the EMI clock if there isn't the "bclk". */
-> +	bool                has_bclk;
->  };
->  
->  struct mtk_iommu_domain;
-> 
+--
+Thanks,
+Sasha
