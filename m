@@ -1,59 +1,86 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v3] dt-bindings: arm: Convert MediaTek board/soc bindings
- to json-schema
-Date: Sat, 15 Jun 2019 12:17:57 +0200
-Message-ID: <8e4fcd7c-c698-7fe0-fce6-7f153112d16e@gmail.com>
-References: <20190517154202.24594-1-robh@kernel.org>
- <20190613224921.GA9199@bogus>
+Subject: Re: [PATCH v7 07/21] iommu/mediatek: Add bclk can be supported
+ optionally
+Date: Sat, 15 Jun 2019 21:18:14 +0200
+Message-ID: <13f42053-cdc3-bef9-54f0-633880c41043@gmail.com>
+References: <1560169080-27134-1-git-send-email-yong.wu@mediatek.com>
+ <1560169080-27134-8-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190613224921.GA9199@bogus>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1560169080-27134-8-git-send-email-yong.wu@mediatek.com>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh@kernel.org>, arm@kernel.org
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Sender: linux-kernel-owner@vger.kernel.org
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, Will Deacon <will.deacon@arm.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, yingjoe.chen@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, Matthias Kaehlcke <mka@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 14/06/2019 00:49, Rob Herring wrote:
-> On Fri, May 17, 2019 at 10:42:02AM -0500, Rob Herring wrote:
->> Convert MediaTek SoC bindings to DT schema format using json-schema.
->>
->> Cc: Mark Rutland <mark.rutland@arm.com>
->> Cc: Matthias Brugger <matthias.bgg@gmail.com>
->> Cc: devicetree@vger.kernel.org
->> Cc: linux-arm-kernel@lists.infradead.org
->> Cc: linux-mediatek@lists.infradead.org
->> Signed-off-by: Rob Herring <robh@kernel.org>
->> ---
->> v3:
->>  - Rebase to Linus' master
->>
->>  .../devicetree/bindings/arm/mediatek.txt      | 89 ------------------
->>  .../devicetree/bindings/arm/mediatek.yaml     | 91 +++++++++++++++++++
->>  2 files changed, 91 insertions(+), 89 deletions(-)
->>  delete mode 100644 Documentation/devicetree/bindings/arm/mediatek.txt
->>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek.yaml
+On 10/06/2019 14:17, Yong Wu wrote:
+> In some SoCs, M4U doesn't have its "bclk", it will use the EMI
+> clock instead which has always been enabled when entering kernel.
 > 
-> Ping. Three versions of this and no comments... Is Mediatek a dead 
-> platform?
+> Currently mt2712 and mt8173 have this bclk while mt8183 doesn't.
 > 
+> This also is a preparing patch for mt8183.
+> 
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> Reviewed-by: Evan Green <evgreen@chromium.org>
 
-No just a too busy maintainer. Somehow I remembered that you mentioned you won't
-rebase it, so I put it on my long list of todos.
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Pushed now to v5.2-next/dts64
-
-Thanks a lot!
-Matthias
+> ---
+>  drivers/iommu/mtk_iommu.c | 10 +++++++---
+>  drivers/iommu/mtk_iommu.h |  3 +++
+>  2 files changed, 10 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index aff5004..264dda4 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -611,9 +611,11 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>  	if (data->irq < 0)
+>  		return data->irq;
+>  
+> -	data->bclk = devm_clk_get(dev, "bclk");
+> -	if (IS_ERR(data->bclk))
+> -		return PTR_ERR(data->bclk);
+> +	if (data->plat_data->has_bclk) {
+> +		data->bclk = devm_clk_get(dev, "bclk");
+> +		if (IS_ERR(data->bclk))
+> +			return PTR_ERR(data->bclk);
+> +	}
+>  
+>  	larb_nr = of_count_phandle_with_args(dev->of_node,
+>  					     "mediatek,larbs", NULL);
+> @@ -741,11 +743,13 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
+>  static const struct mtk_iommu_plat_data mt2712_data = {
+>  	.m4u_plat     = M4U_MT2712,
+>  	.has_4gb_mode = true,
+> +	.has_bclk     = true,
+>  };
+>  
+>  static const struct mtk_iommu_plat_data mt8173_data = {
+>  	.m4u_plat     = M4U_MT8173,
+>  	.has_4gb_mode = true,
+> +	.has_bclk     = true,
+>  };
+>  
+>  static const struct of_device_id mtk_iommu_of_ids[] = {
+> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+> index d7a001a..63e235e 100644
+> --- a/drivers/iommu/mtk_iommu.h
+> +++ b/drivers/iommu/mtk_iommu.h
+> @@ -43,6 +43,9 @@ enum mtk_iommu_plat {
+>  struct mtk_iommu_plat_data {
+>  	enum mtk_iommu_plat m4u_plat;
+>  	bool                has_4gb_mode;
+> +
+> +	/* HW will use the EMI clock if there isn't the "bclk". */
+> +	bool                has_bclk;
+>  };
+>  
+>  struct mtk_iommu_domain;
+> 
