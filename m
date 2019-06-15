@@ -1,135 +1,59 @@
-From: "dbasehore ." <dbasehore@chromium.org>
-Subject: Re: [PATCH 1/5] drm/panel: Add helper for reading DT rotation
-Date: Fri, 14 Jun 2019 17:44:24 -0700
-Message-ID: <CAGAzgsqv8qYM-+_4bPLHtyiaox2jFLMMka8n1Wnk-q5LVPKqDg@mail.gmail.com>
-References: <20190611040350.90064-1-dbasehore@chromium.org>
- <20190611040350.90064-2-dbasehore@chromium.org> <20190612211807.GA13155@ravnborg.org>
- <CAGAzgsqgbr5rWpyWB1H_66=kxBRb7kw4wE7h34TJfE7eJ1mSQQ@mail.gmail.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v3] dt-bindings: arm: Convert MediaTek board/soc bindings
+ to json-schema
+Date: Sat, 15 Jun 2019 12:17:57 +0200
+Message-ID: <8e4fcd7c-c698-7fe0-fce6-7f153112d16e@gmail.com>
+References: <20190517154202.24594-1-robh@kernel.org>
+ <20190613224921.GA9199@bogus>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAGAzgsqgbr5rWpyWB1H_66=kxBRb7kw4wE7h34TJfE7eJ1mSQQ@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sam Ravnborg <sam@ravnborg.org>
-Cc: linux-kernel <linux-kernel@vger.kernel.org>, Thierry Reding <thierry.reding@gmail.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>, Jani Nikula <jani.nikula@linux.intel.com>, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel <dri-devel@lists.freedesktop.org>, devicetree@vger.kernel.org, Intel Graphics <intel-gfx@lists.freedesktop.org>, moderated list:ARM/FREESCALE IMX
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190613224921.GA9199@bogus>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Rob Herring <robh@kernel.org>, arm@kernel.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jun 14, 2019 at 5:43 PM dbasehore . <dbasehore@chromium.org> wrote:
->
-> On Wed, Jun 12, 2019 at 2:18 PM Sam Ravnborg <sam@ravnborg.org> wrote:
-> >
-> > Hi Derek.
-> >
-> > On Mon, Jun 10, 2019 at 09:03:46PM -0700, Derek Basehore wrote:
-> > > This adds a helper function for reading the rotation (panel
-> > > orientation) from the device tree.
-> > >
-> > > Signed-off-by: Derek Basehore <dbasehore@chromium.org>
-> > > ---
-> > >  drivers/gpu/drm/drm_panel.c | 41 +++++++++++++++++++++++++++++++++++++
-> > >  include/drm/drm_panel.h     |  7 +++++++
-> > >  2 files changed, 48 insertions(+)
-> > >
-> > > diff --git a/drivers/gpu/drm/drm_panel.c b/drivers/gpu/drm/drm_panel.c
-> > > index dbd5b873e8f2..3b689ce4a51a 100644
-> > > --- a/drivers/gpu/drm/drm_panel.c
-> > > +++ b/drivers/gpu/drm/drm_panel.c
-> > > @@ -172,6 +172,47 @@ struct drm_panel *of_drm_find_panel(const struct device_node *np)
-> > >       return ERR_PTR(-EPROBE_DEFER);
-> > >  }
-> > >  EXPORT_SYMBOL(of_drm_find_panel);
-> > > +
-> > > +/**
-> > > + * of_drm_get_panel_orientation - look up the rotation of the panel using a
-> > > + * device tree node
-> > > + * @np: device tree node of the panel
-> > > + * @orientation: orientation enum to be filled in
-> > The comment says "enum" but the type used is an int.
-> > Why not use enum drm_panel_orientation?
-> >
->
-> The binding is just an int value, but I can change it to the enum.
 
-Oops, I see what happened here. The way I wrote it should actually use the enum
 
->
-> > > + *
-> > > + * Looks up the rotation of a panel in the device tree. The rotation in the
-> > > + * device tree is counter clockwise.
-> > > + *
-> > > + * Return: 0 when a valid rotation value (0, 90, 180, or 270) is read or the
-> > > + * rotation property doesn't exist. -EERROR otherwise.
-> > > + */
-> > Initially I read -EEROOR as a specific error code.
-> > But I gues the semantic is to say that a negative error code is returned
-> > if something was wrong.
-> > As we do not use the "-EERROR" syntax anywhere else in drm, please
-> > reword like we do in other places.
-> >
-> >
-> > Also - it is worth to mention that the rotation returned is
-> > DRM_MODE_PANEL_ORIENTATION_UNKNOWN if the property is not specified.
-> > I wonder if this is correct, as no property could also been
-> > interpretated as DRM_MODE_PANEL_ORIENTATION_NORMAL.
-> > And in most cases the roation property is optional, so one could
-> > assume that no property equals 0 degree.
-> >
-> >
-> >         Sam
-> >
-> > > +int of_drm_get_panel_orientation(const struct device_node *np, int *orientation)
-> > > +{
-> > > +     int rotation, ret;
-> > > +
-> > > +     ret = of_property_read_u32(np, "rotation", &rotation);
-> > > +     if (ret == -EINVAL) {
-> > > +             /* Don't return an error if there's no rotation property. */
-> > > +             *orientation = DRM_MODE_PANEL_ORIENTATION_UNKNOWN;
-> > > +             return 0;
-> > > +     }
-> > > +
-> > > +     if (ret < 0)
-> > > +             return ret;
-> > > +
-> > > +     if (rotation == 0)
-> > > +             *orientation = DRM_MODE_PANEL_ORIENTATION_NORMAL;
-> > > +     else if (rotation == 90)
-> > > +             *orientation = DRM_MODE_PANEL_ORIENTATION_RIGHT_UP;
-> > > +     else if (rotation == 180)
-> > > +             *orientation = DRM_MODE_PANEL_ORIENTATION_BOTTOM_UP;
-> > > +     else if (rotation == 270)
-> > > +             *orientation = DRM_MODE_PANEL_ORIENTATION_LEFT_UP;
-> > > +     else
-> > > +             return -EINVAL;
-> > > +
-> > > +     return 0;
-> > > +}
-> > > +EXPORT_SYMBOL(of_drm_get_panel_orientation);
-> > >  #endif
-> > >
-> > >  MODULE_AUTHOR("Thierry Reding <treding@nvidia.com>");
-> > > diff --git a/include/drm/drm_panel.h b/include/drm/drm_panel.h
-> > > index 8c738c0e6e9f..13631b2efbaa 100644
-> > > --- a/include/drm/drm_panel.h
-> > > +++ b/include/drm/drm_panel.h
-> > > @@ -197,11 +197,18 @@ int drm_panel_detach(struct drm_panel *panel);
-> > >
-> > >  #if defined(CONFIG_OF) && defined(CONFIG_DRM_PANEL)
-> > >  struct drm_panel *of_drm_find_panel(const struct device_node *np);
-> > > +int of_drm_get_panel_orientation(const struct device_node *np,
-> > > +                              int *orientation);
-> > >  #else
-> > >  static inline struct drm_panel *of_drm_find_panel(const struct device_node *np)
-> > >  {
-> > >       return ERR_PTR(-ENODEV);
-> > >  }
-> > > +int of_drm_get_panel_orientation(const struct device_node *np,
-> > > +                              int *orientation)
-> > > +{
-> > > +     return -ENODEV;
-> > > +}
-> > >  #endif
-> > >
-> > >  #endif
-> > > --
-> > > 2.22.0.rc2.383.gf4fbbf30c2-goog
+On 14/06/2019 00:49, Rob Herring wrote:
+> On Fri, May 17, 2019 at 10:42:02AM -0500, Rob Herring wrote:
+>> Convert MediaTek SoC bindings to DT schema format using json-schema.
+>>
+>> Cc: Mark Rutland <mark.rutland@arm.com>
+>> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+>> Cc: devicetree@vger.kernel.org
+>> Cc: linux-arm-kernel@lists.infradead.org
+>> Cc: linux-mediatek@lists.infradead.org
+>> Signed-off-by: Rob Herring <robh@kernel.org>
+>> ---
+>> v3:
+>>  - Rebase to Linus' master
+>>
+>>  .../devicetree/bindings/arm/mediatek.txt      | 89 ------------------
+>>  .../devicetree/bindings/arm/mediatek.yaml     | 91 +++++++++++++++++++
+>>  2 files changed, 91 insertions(+), 89 deletions(-)
+>>  delete mode 100644 Documentation/devicetree/bindings/arm/mediatek.txt
+>>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek.yaml
+> 
+> Ping. Three versions of this and no comments... Is Mediatek a dead 
+> platform?
+> 
+
+No just a too busy maintainer. Somehow I remembered that you mentioned you won't
+rebase it, so I put it on my long list of todos.
+
+Pushed now to v5.2-next/dts64
+
+Thanks a lot!
+Matthias
