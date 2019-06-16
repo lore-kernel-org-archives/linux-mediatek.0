@@ -1,14 +1,11 @@
-From: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2] scsi: ufs: Avoid runtime suspend possibly being
- blocked forever
-Date: Sat, 15 Jun 2019 22:16:07 +0000
-Message-ID: <20190615221608.7C52C2184D@mail.kernel.org>
-References: <1560352745-24681-1-git-send-email-stanley.chu@mediatek.com>
+From: =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>
+Subject: [PATCH net-next 0/2] net: mediatek: Add MT7621 TRGMII mode support
+Date: Sun, 16 Jun 2019 20:20:08 +0200
+Message-ID: <20190616182010.18778-1-opensource@vdorst.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1560352745-24681-1-git-send-email-stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -18,30 +15,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "David S . Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Vivien Didelot <vivien.didelot-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mips-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
-
-[This is an automated email]
-
-This commit has been processed because it contains a "Fixes:" tag,
-fixing commit: 62694735ca95 [SCSI] ufs: Add runtime PM support for UFS host controller driver.
-
-The bot has tested the following trees: v5.1.9, v4.19.50, v4.14.125, v4.9.181, v4.4.181.
-
-v5.1.9: Build OK!
-v4.19.50: Build OK!
-v4.14.125: Build OK!
-v4.9.181: Build OK!
-v4.4.181: Failed to apply! Possible dependencies:
-    54b879b76ea2 ("scsi: ufs-qcom: add number of lanes per direction")
-    bad9764cfaaa ("scsi: ufs: fix spelling mistake in error message")
-
-
-How should we proceed with this patch?
-
---
-Thanks,
-Sasha
+TGlrZSBtYW55IG90aGVyIG1lZGlhdGVrIFNPQ3MsIHRoZSBNVDc2MjEgU09DIGFuZCB0aGUgaW50
+ZXJuYWwgTVQ3NTMwIHN3aXRjaCBib3RoCnN1cHBvcnRzIFRSR01JSSBtb2RlLiBNVDc2MjEgVFJH
+TUlJIHNwZWVkIGlzIDEyMDBNQml0LgoKUmVuw6kgdmFuIERvcnN0ICgyKToKICBuZXQ6IGV0aGVy
+bmV0OiBtZWRpYXRlazogQWRkIE1UNzYyMSBUUkdNSUkgbW9kZSBzdXBwb3J0CiAgbmV0OiBkc2E6
+IG10NzUzMDogQWRkIE1UNzYyMSBUUkdNSUkgbW9kZSBzdXBwb3J0CgogZHJpdmVycy9uZXQvZHNh
+L210NzUzMC5jICAgICAgICAgICAgICAgICAgICB8IDE1ICsrKysrKy0tCiBkcml2ZXJzL25ldC9l
+dGhlcm5ldC9tZWRpYXRlay9tdGtfZXRoX3NvYy5jIHwgMzggKysrKysrKysrKysrKysrKysrLS0t
+CiBkcml2ZXJzL25ldC9ldGhlcm5ldC9tZWRpYXRlay9tdGtfZXRoX3NvYy5oIHwgMTEgKysrKysr
+CiAzIGZpbGVzIGNoYW5nZWQsIDU4IGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pCgotLSAK
+Mi4yMC4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1t
+ZWRpYXRlawo=
