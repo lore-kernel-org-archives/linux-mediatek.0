@@ -1,109 +1,148 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH 44/59] drm/mediatek: Use
- drm_atomic_helper_wait_for_fences
-Date: Mon, 17 Jun 2019 13:19:31 +0800
-Message-ID: <1560748771.16762.0.camel@mtksdaap41>
-References: <20190614203615.12639-1-daniel.vetter@ffwll.ch>
- <20190614203615.12639-45-daniel.vetter@ffwll.ch>
+From: jjian zhou <jjian.zhou@mediatek.com>
+Subject: Re: [PATCH 1/2] mmc: mediatek: fix SDIO IRQ interrupt handle flow
+Date: Mon, 17 Jun 2019 13:57:00 +0800
+Message-ID: <1560751020.3103.25.camel@mhfsdcap03>
+References: <1560489970-30467-1-git-send-email-jjian.zhou@mediatek.com>
+         <CAPDyKFrXU4bpKeB7Aa15j2nHqUCn-bk+YKn9_vkznmi+PS8H7A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <intel-gfx-bounces@lists.freedesktop.org>
-In-Reply-To: <20190614203615.12639-45-daniel.vetter@ffwll.ch>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
-List-Post: <mailto:intel-gfx@lists.freedesktop.org>
-List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: intel-gfx-bounces@lists.freedesktop.org
-Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel.vetter@ffwll.ch>
-Cc: Intel Graphics Development <intel-gfx@lists.freedesktop.org>, DRI Development <dri-devel@lists.freedesktop.org>, linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@intel.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAPDyKFrXU4bpKeB7Aa15j2nHqUCn-bk+YKn9_vkznmi+PS8H7A@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Chaotian Jing =?UTF-8?Q?=28=E4=BA=95=E6=9C=9D=E5=A4=A9=29?= <Chaotian.Jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Yong Mao =?UTF-8?Q?=28=E6=AF=9B=E5=8B=87=29?= <yong.mao@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIERhbmllbDoKCk9uIEZyaSwgMjAxOS0wNi0xNCBhdCAyMjozNiArMDIwMCwgRGFuaWVsIFZl
-dHRlciB3cm90ZToKPiBJZiB3ZSB1c2UgdGhlIGdlbSBmYiBoZWxwZXIgYXMgdGhlIHByZXBhcmVf
-ZmIgaG9vaywgcGx1cyB0aGUKPiBkcm1fcHJpbWUuYyBpbXBvcnQgaGVscGVycyBub3cgYXV0b21h
-dGljYWxseSBzZXR0aW5nIG9iai0+cmVzdiwgd2UgY2FuCj4gdXNlIHRoZSBzaGFyZWQgaGVscGVy
-cyB0byB3YWl0IGZvciBmZW5jZXMgaW5zdGVhZCBvZiByb2xsaW5nIG91ciBvd24uCj4gTm90ZSB0
-aGF0IHRoaXMgcmVsaWVzIG9uIG10ayBzZXR0aW5nIGRybV9mYi0+b2JqLCB3aGljaCBpcyBhbHJl
-YWR5Cj4gZG9uZSBpbiBtdGtfZHJtX2ZyYW1lYnVmZmVyX2luaXQoKS4KClJldmlld2VkLWJ5OiBD
-SyBIdSA8Y2suaHVAbWVkaWF0ZWsuY29tPgoKPiAKPiBBc2lkZTogUHJvYmFibHkgY2FuIHVzZSB0
-aGUgZGVmYXVsdCBjb21taXRfdGFpbCB3aXRoIHRoaXMgYWdhaW4sIGJ1dCBJCj4gZGlkbid0IGNo
-ZWNrIGZvciB0aGF0Lgo+IAo+IFNpZ25lZC1vZmYtYnk6IERhbmllbCBWZXR0ZXIgPGRhbmllbC52
-ZXR0ZXJAaW50ZWwuY29tPgo+IENjOiBDSyBIdSA8Y2suaHVAbWVkaWF0ZWsuY29tPgo+IENjOiBQ
-aGlsaXBwIFphYmVsIDxwLnphYmVsQHBlbmd1dHJvbml4LmRlPgo+IENjOiBNYXR0aGlhcyBCcnVn
-Z2VyIDxtYXR0aGlhcy5iZ2dAZ21haWwuY29tPgo+IENjOiBsaW51eC1hcm0ta2VybmVsQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKPiBDYzogbGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwo+
-IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyAgIHwgMTIgKy0t
-LS0tLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9mYi5jICAgIHwgMjgg
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
-ZHJtX2ZiLmggICAgfCAgMSAtCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX3Bs
-YW5lLmMgfCAgMiArKwo+ICA0IGZpbGVzIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKSwgNDAgZGVs
-ZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
-ZHJtX2Rydi5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMKPiBpbmRl
-eCBkZDhkYWI1NjI1MDAuLjJkNWNhZjUzMjQzMSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfZHJtX2Rydi5jCj4gQEAgLTM4LDIyICszOCwxMiBAQCBzdGF0aWMgdm9pZCBtdGtfYXRv
-bWljX3NjaGVkdWxlKHN0cnVjdCBtdGtfZHJtX3ByaXZhdGUgKnByaXZhdGUsCj4gIAlzY2hlZHVs
-ZV93b3JrKCZwcml2YXRlLT5jb21taXQud29yayk7Cj4gIH0KPiAgCj4gLXN0YXRpYyB2b2lkIG10
-a19hdG9taWNfd2FpdF9mb3JfZmVuY2VzKHN0cnVjdCBkcm1fYXRvbWljX3N0YXRlICpzdGF0ZSkK
-PiAtewo+IC0Jc3RydWN0IGRybV9wbGFuZSAqcGxhbmU7Cj4gLQlzdHJ1Y3QgZHJtX3BsYW5lX3N0
-YXRlICpuZXdfcGxhbmVfc3RhdGU7Cj4gLQlpbnQgaTsKPiAtCj4gLQlmb3JfZWFjaF9uZXdfcGxh
-bmVfaW5fc3RhdGUoc3RhdGUsIHBsYW5lLCBuZXdfcGxhbmVfc3RhdGUsIGkpCj4gLQkJbXRrX2Zi
-X3dhaXQobmV3X3BsYW5lX3N0YXRlLT5mYik7Cj4gLX0KPiAtCj4gIHN0YXRpYyB2b2lkIG10a19h
-dG9taWNfY29tcGxldGUoc3RydWN0IG10a19kcm1fcHJpdmF0ZSAqcHJpdmF0ZSwKPiAgCQkJCXN0
-cnVjdCBkcm1fYXRvbWljX3N0YXRlICpzdGF0ZSkKPiAgewo+ICAJc3RydWN0IGRybV9kZXZpY2Ug
-KmRybSA9IHByaXZhdGUtPmRybTsKPiAgCj4gLQltdGtfYXRvbWljX3dhaXRfZm9yX2ZlbmNlcyhz
-dGF0ZSk7Cj4gKwlkcm1fYXRvbWljX2hlbHBlcl93YWl0X2Zvcl9mZW5jZXMoZHJtLCBzdGF0ZSwg
-ZmFsc2UpOwo+ICAKPiAgCS8qCj4gIAkgKiBNZWRpYXRlayBkcm0gc3VwcG9ydHMgcnVudGltZSBQ
-TSwgc28gcGxhbmUgcmVnaXN0ZXJzIGNhbm5vdCBiZQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
-dS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9mYi5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19kcm1fZmIuYwo+IGluZGV4IDRjM2FkN2RlMmQzYi4uMzk2YmE0OTc5ODZkIDEwMDY0NAo+IC0t
-LSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2ZiLmMKPiArKysgYi9kcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9mYi5jCj4gQEAgLTQ5LDM0ICs0OSw2IEBAIHN0YXRp
-YyBzdHJ1Y3QgZHJtX2ZyYW1lYnVmZmVyICptdGtfZHJtX2ZyYW1lYnVmZmVyX2luaXQoc3RydWN0
-IGRybV9kZXZpY2UgKmRldiwKPiAgCXJldHVybiBmYjsKPiAgfQo+ICAKPiAtLyoKPiAtICogV2Fp
-dCBmb3IgYW55IGV4Y2x1c2l2ZSBmZW5jZSBpbiBmYidzIGdlbSBvYmplY3QncyByZXNlcnZhdGlv
-biBvYmplY3QuCj4gLSAqCj4gLSAqIFJldHVybnMgLUVSRVNUQVJUU1lTIGlmIGludGVycnVwdGVk
-LCBlbHNlIDAuCj4gLSAqLwo+IC1pbnQgbXRrX2ZiX3dhaXQoc3RydWN0IGRybV9mcmFtZWJ1ZmZl
-ciAqZmIpCj4gLXsKPiAtCXN0cnVjdCBkcm1fZ2VtX29iamVjdCAqZ2VtOwo+IC0Jc3RydWN0IHJl
-c2VydmF0aW9uX29iamVjdCAqcmVzdjsKPiAtCWxvbmcgcmV0Owo+IC0KPiAtCWlmICghZmIpCj4g
-LQkJcmV0dXJuIDA7Cj4gLQo+IC0JZ2VtID0gZmItPm9ialswXTsKPiAtCWlmICghZ2VtIHx8ICFn
-ZW0tPmRtYV9idWYgfHwgIWdlbS0+ZG1hX2J1Zi0+cmVzdikKPiAtCQlyZXR1cm4gMDsKPiAtCj4g
-LQlyZXN2ID0gZ2VtLT5kbWFfYnVmLT5yZXN2Owo+IC0JcmV0ID0gcmVzZXJ2YXRpb25fb2JqZWN0
-X3dhaXRfdGltZW91dF9yY3UocmVzdiwgZmFsc2UsIHRydWUsCj4gLQkJCQkJCSAgTUFYX1NDSEVE
-VUxFX1RJTUVPVVQpOwo+IC0JLyogTUFYX1NDSEVEVUxFX1RJTUVPVVQgb24gc3VjY2VzcywgLUVS
-RVNUQVJUU1lTIGlmIGludGVycnVwdGVkICovCj4gLQlpZiAoV0FSTl9PTihyZXQgPCAwKSkKPiAt
-CQlyZXR1cm4gcmV0Owo+IC0KPiAtCXJldHVybiAwOwo+IC19Cj4gLQo+ICBzdHJ1Y3QgZHJtX2Zy
-YW1lYnVmZmVyICptdGtfZHJtX21vZGVfZmJfY3JlYXRlKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYs
-Cj4gIAkJCQkJICAgICAgIHN0cnVjdCBkcm1fZmlsZSAqZmlsZSwKPiAgCQkJCQkgICAgICAgY29u
-c3Qgc3RydWN0IGRybV9tb2RlX2ZiX2NtZDIgKmNtZCkKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19kcm1fZmIuaCBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHJtX2ZiLmgKPiBpbmRleCA2YjgwYzI4ZTMzY2YuLmViNjRkMjYwMDFjNiAxMDA2NDQKPiAt
-LS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9mYi5oCj4gKysrIGIvZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZmIuaAo+IEBAIC02LDcgKzYsNiBAQAo+ICAjaWZu
-ZGVmIE1US19EUk1fRkJfSAo+ICAjZGVmaW5lIE1US19EUk1fRkJfSAo+ICAKPiAtaW50IG10a19m
-Yl93YWl0KHN0cnVjdCBkcm1fZnJhbWVidWZmZXIgKmZiKTsKPiAgc3RydWN0IGRybV9mcmFtZWJ1
-ZmZlciAqbXRrX2RybV9tb2RlX2ZiX2NyZWF0ZShzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+ICAJ
-CQkJCSAgICAgICBzdHJ1Y3QgZHJtX2ZpbGUgKmZpbGUsCj4gIAkJCQkJICAgICAgIGNvbnN0IHN0
-cnVjdCBkcm1fbW9kZV9mYl9jbWQyICpjbWQpOwo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RybV9wbGFuZS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19kcm1fcGxhbmUuYwo+IGluZGV4IGYyZWY4M2FlZDZmOS4uNDJjYzk4MjNlYWFhIDEwMDY0NAo+
-IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX3BsYW5lLmMKPiArKysgYi9k
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9wbGFuZS5jCj4gQEAgLTgsNiArOCw3IEBA
-Cj4gICNpbmNsdWRlIDxkcm0vZHJtX2F0b21pYy5oPgo+ICAjaW5jbHVkZSA8ZHJtL2RybV9hdG9t
-aWNfaGVscGVyLmg+Cj4gICNpbmNsdWRlIDxkcm0vZHJtX3BsYW5lX2hlbHBlci5oPgo+ICsjaW5j
-bHVkZSA8ZHJtL2RybV9nZW1fZnJhbWVidWZmZXJfaGVscGVyLmg+Cj4gIAo+ICAjaW5jbHVkZSAi
-bXRrX2RybV9jcnRjLmgiCj4gICNpbmNsdWRlICJtdGtfZHJtX2RkcF9jb21wLmgiCj4gQEAgLTE0
-Niw2ICsxNDcsNyBAQCBzdGF0aWMgdm9pZCBtdGtfcGxhbmVfYXRvbWljX2Rpc2FibGUoc3RydWN0
-IGRybV9wbGFuZSAqcGxhbmUsCj4gIH0KPiAgCj4gIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX3Bs
-YW5lX2hlbHBlcl9mdW5jcyBtdGtfcGxhbmVfaGVscGVyX2Z1bmNzID0gewo+ICsJLnByZXBhcmVf
-ZmIgPSBkcm1fZ2VtX2ZiX3ByZXBhcmVfZmIsCj4gIAkuYXRvbWljX2NoZWNrID0gbXRrX3BsYW5l
-X2F0b21pY19jaGVjaywKPiAgCS5hdG9taWNfdXBkYXRlID0gbXRrX3BsYW5lX2F0b21pY191cGRh
-dGUsCj4gIAkuYXRvbWljX2Rpc2FibGUgPSBtdGtfcGxhbmVfYXRvbWljX2Rpc2FibGUsCgoKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtZ2Z4IG1h
-aWxpbmcgbGlzdApJbnRlbC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ2Z4
+On Fri, 2019-06-14 at 17:46 +0800, Ulf Hansson wrote:
+> On Fri, 14 Jun 2019 at 07:26, Jjian Zhou <jjian.zhou@mediatek.com> wrote:
+> >
+> > From: jjian zhou <jjian.zhou@mediatek.com>
+> >
+> > SDIO IRQ is triggered by low level. It need disable SDIO IRQ
+> > detected function. Otherwise the interrupt register can't be cleared.
+> > It will process the interrupt more.
+> >
+> > Signed-off-by: Jjian Zhou <jjian.zhou@mediatek.com>
+> > Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+> > Signed-off-by: Yong Mao <yong.mao@mediatek.com>
+> > ---
+> >  drivers/mmc/host/mtk-sd.c | 13 +++++++------
+> >  1 file changed, 7 insertions(+), 6 deletions(-)
+> >
+> > diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> > index c518cc2..29992ae 100644
+> > --- a/drivers/mmc/host/mtk-sd.c
+> > +++ b/drivers/mmc/host/mtk-sd.c
+> > @@ -1389,10 +1389,12 @@ static void __msdc_enable_sdio_irq(struct mmc_host *mmc, int enb)
+> >         struct msdc_host *host = mmc_priv(mmc);
+> >
+> >         spin_lock_irqsave(&host->lock, flags);
+> > -       if (enb)
+> > +       if (enb) {
+> >                 sdr_set_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
+> > -       else
+> > +               sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
+> > +       } else {
+> >                 sdr_clr_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
+> 
+> Rather than clearing SDC_CFG_SDIOIDE in the irq handler, you need to
+> do it here. As otherwise when the mmc core calls
+> host->ops->enable_sdio_irq() to disable the SDIO IRQ, it may stay
+> enabled.
+> 
+
+Thank you for your review.
+
+I remove the spin lock in "__msdc_enable_sdio_irq" and add 
+spin lock in "msdc_enable_sdio_irq". The modification of
+"__msdc_enable_sdio_irq" and "msdc_enable_sdio_irq" is as following.
+
+static void __msdc_enable_sdio_irq(struct msdc_host *host, int enb)
+{
+	if (enb) {
+		sdr_set_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
+		sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
+	} else {
+		sdr_clr_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
+		sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
+	}
+}
+
+static void msdc_enable_sdio_irq(struct mmc_host *mmc, int enb)
+{
+	unsigned long flags;
+	struct msdc_host *host = mmc_priv(mmc);
+	spin_lock_irqsave(&host->lock, flags);;
+	__msdc_enable_sdio_irq(host, enb);
+	spin_unlock_irqrestore(&host->lock, flags);
+
+	if (enb)
+		pm_runtime_get_noresume(host->dev);
+	else
+		pm_runtime_get_noidle(host->dev);
+}
+
+> > +       }
+> >         spin_unlock_irqrestore(&host->lock, flags);
+> >  }
+> >
+> > @@ -1422,6 +1424,8 @@ static irqreturn_t msdc_irq(int irq, void *dev_id)
+> >                 spin_lock_irqsave(&host->lock, flags);
+> >                 events = readl(host->base + MSDC_INT);
+> >                 event_mask = readl(host->base + MSDC_INTEN);
+> > +               if ((events & event_mask) & MSDC_INT_SDIOIRQ)
+> > +                       sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
+> 
+> As stated above, I suggest you move this into __msdc_enable_sdio_irq()
+> and thus call that function from here instead. Well, that doesn't work
+> as is, because of the spin lock, so you rather need to make a
+> sub-function of __msdc_enable_sdio_irq, that don't take/releases the
+> lock.
+> 
+> I hope that was clear. If not, I can post a patch to show you what I mean.
+> 
+
+I also modify this part handler in msdc_irq.
+
+	spin_lock_irqsave(&host->lock, flags);
+	events = readl(host->base + MSDC_INT);
+	event_mask = readl(host->base + MSDC_INTEN);
+	if ((events & event_mask) & MSDC_INT_SDIOIRQ)
+		__msdc_enable_sdio_irq(host, 0);
+	/* clear interrupts */
+	writel(events & event_mask, host->base + MSDC_INT);
+
+	mrq = host->mrq;
+	cmd = host->cmd;
+	data = host->data;
+	spin_unlock_irqrestore(&host->lock, flags);
+
+	if ((events & event_mask) & MSDC_INT_SDIOIRQ)
+		sdio_signal_irq(host->mmc);
+
+I also will add spin lock in the "msdc_ack_sdio_irq".
+
+Looking forward to your suggestions.
+> 
+> >                 /* clear interrupts */
+> >                 writel(events & event_mask, host->base + MSDC_INT);
+> >
+> > @@ -1572,10 +1576,7 @@ static void msdc_init_hw(struct msdc_host *host)
+> >         sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIO);
+> >
+> >         /* Config SDIO device detect interrupt function */
+> > -       if (host->mmc->caps & MMC_CAP_SDIO_IRQ)
+> > -               sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
+> > -       else
+> > -               sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
+> > +       sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
+> >
+> >         /* Configure to default data timeout */
+> >         sdr_set_field(host->base + SDC_CFG, SDC_CFG_DTOC, 3);
+> > --
+> > 1.9.1
+> >
+> 
+> Kind regards
+> Uffe
