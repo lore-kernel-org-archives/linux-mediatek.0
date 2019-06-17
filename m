@@ -1,125 +1,105 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH V2 1/2] mmc: mediatek: fix SDIO IRQ interrupt handle flow
-Date: Mon, 17 Jun 2019 13:35:10 +0200
-Message-ID: <CAPDyKFo5zpoRFMG6U_Y2uMk0qCyypW-Ui1Kha5t9_Rher4CDkw@mail.gmail.com>
-References: <1560769448-23070-1-git-send-email-jjian.zhou@mediatek.com>
+From: Dmitry Vyukov <dvyukov@google.com>
+Subject: Re: [PATCH v3] kasan: add memory corruption identification for
+ software tag-based mode
+Date: Mon, 17 Jun 2019 13:57:57 +0200
+Message-ID: <CACT4Y+Y3uS59rXf92ByQuFK_G4v0H8NNnCY1tCbr4V+PaZF3ag@mail.gmail.com>
+References: <20190613081357.1360-1-walter-zh.wu@mediatek.com>
+ <da7591c9-660d-d380-d59e-6d70b39eaa6b@virtuozzo.com> <1560447999.15814.15.camel@mtksdccf07>
+ <1560479520.15814.34.camel@mtksdccf07> <1560744017.15814.49.camel@mtksdccf07>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1560769448-23070-1-git-send-email-jjian.zhou@mediatek.com>
+In-Reply-To: <1560744017.15814.49.camel@mtksdccf07>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jjian Zhou <jjian.zhou@mediatek.com>
-Cc: Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Yong Mao <yong.mao@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>
+To: Walter Wu <walter-zh.wu@mediatek.com>
+Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Matthias Brugger <matthias.bgg@gmail.com>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Arnd Bergmann <arnd@arndb.de>, Vasily Gorbik <gor@linux.ibm.com>, Andrey Konovalov <andreyknvl@google.com>, "Jason A . Donenfeld" <Jason@zx2c4.com>, Miles Chen <miles.chen@mediatek.com>, kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>, Linux-MM <linux-mm@kvack.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream <wsd_upstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 17 Jun 2019 at 13:04, Jjian Zhou <jjian.zhou@mediatek.com> wrote:
+On Mon, Jun 17, 2019 at 6:00 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
 >
-> From: jjian zhou <jjian.zhou@mediatek.com>
+> On Fri, 2019-06-14 at 10:32 +0800, Walter Wu wrote:
+> > On Fri, 2019-06-14 at 01:46 +0800, Walter Wu wrote:
+> > > On Thu, 2019-06-13 at 15:27 +0300, Andrey Ryabinin wrote:
+> > > >
+> > > > On 6/13/19 11:13 AM, Walter Wu wrote:
+> > > > > This patch adds memory corruption identification at bug report for
+> > > > > software tag-based mode, the report show whether it is "use-after-free"
+> > > > > or "out-of-bound" error instead of "invalid-access" error.This will make
+> > > > > it easier for programmers to see the memory corruption problem.
+> > > > >
+> > > > > Now we extend the quarantine to support both generic and tag-based kasan.
+> > > > > For tag-based kasan, the quarantine stores only freed object information
+> > > > > to check if an object is freed recently. When tag-based kasan reports an
+> > > > > error, we can check if the tagged addr is in the quarantine and make a
+> > > > > good guess if the object is more like "use-after-free" or "out-of-bound".
+> > > > >
+> > > >
+> > > >
+> > > > We already have all the information and don't need the quarantine to make such guess.
+> > > > Basically if shadow of the first byte of object has the same tag as tag in pointer than it's out-of-bounds,
+> > > > otherwise it's use-after-free.
+> > > >
+> > > > In pseudo-code it's something like this:
+> > > >
+> > > > u8 object_tag = *(u8 *)kasan_mem_to_shadow(nearest_object(cacche, page, access_addr));
+> > > >
+> > > > if (access_addr_tag == object_tag && object_tag != KASAN_TAG_INVALID)
+> > > >   // out-of-bounds
+> > > > else
+> > > >   // use-after-free
+> > >
+> > > Thanks your explanation.
+> > > I see, we can use it to decide corruption type.
+> > > But some use-after-free issues, it may not have accurate free-backtrace.
+> > > Unfortunately in that situation, free-backtrace is the most important.
+> > > please see below example
+> > >
+> > > In generic KASAN, it gets accurate free-backrace(ptr1).
+> > > In tag-based KASAN, it gets wrong free-backtrace(ptr2). It will make
+> > > programmer misjudge, so they may not believe tag-based KASAN.
+> > > So We provide this patch, we hope tag-based KASAN bug report is the same
+> > > accurate with generic KASAN.
+> > >
+> > > ---
+> > >     ptr1 = kmalloc(size, GFP_KERNEL);
+> > >     ptr1_free(ptr1);
+> > >
+> > >     ptr2 = kmalloc(size, GFP_KERNEL);
+> > >     ptr2_free(ptr2);
+> > >
+> > >     ptr1[size] = 'x';  //corruption here
+> > >
+> > >
+> > > static noinline void ptr1_free(char* ptr)
+> > > {
+> > >     kfree(ptr);
+> > > }
+> > > static noinline void ptr2_free(char* ptr)
+> > > {
+> > >     kfree(ptr);
+> > > }
+> > > ---
+> > >
+> > We think of another question about deciding by that shadow of the first
+> > byte.
+> > In tag-based KASAN, it is immediately released after calling kfree(), so
+> > the slub is easy to be used by another pointer, then it will change
+> > shadow memory to the tag of new pointer, it will not be the
+> > KASAN_TAG_INVALID, so there are many false negative cases, especially in
+> > small size allocation.
+> >
+> > Our patch is to solve those problems. so please consider it, thanks.
+> >
+> Hi, Andrey and Dmitry,
 >
-> SDIO IRQ is triggered by low level. It need disable SDIO IRQ
-> detected function. Otherwise the interrupt register can't be cleared.
-> It will process the interrupt more.
+> I am sorry to bother you.
+> Would you tell me what you think about this patch?
+> We want to use tag-based KASAN, so we hope its bug report is clear and
+> correct as generic KASAN.
 >
-> Signed-off-by: Jjian Zhou <jjian.zhou@mediatek.com>
-> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
-> Signed-off-by: Yong Mao <yong.mao@mediatek.com>
+> Thanks your review.
+> Walter
 
-Applied for fixes and by adding a fixes/stable tag, thanks!
+Hi Walter,
 
-Kind regards
-Uffe
-
-
-> ---
->  drivers/mmc/host/mtk-sd.c | 37 ++++++++++++++++++++-----------------
->  1 file changed, 20 insertions(+), 17 deletions(-)
->
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index c518cc2..fa7d420 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -1383,24 +1383,25 @@ static void msdc_request_timeout(struct work_struct *work)
->         }
->  }
->
-> -static void __msdc_enable_sdio_irq(struct mmc_host *mmc, int enb)
-> +static void __msdc_enable_sdio_irq(struct msdc_host *host, int enb)
->  {
-> -       unsigned long flags;
-> -       struct msdc_host *host = mmc_priv(mmc);
-> -
-> -       spin_lock_irqsave(&host->lock, flags);
-> -       if (enb)
-> +       if (enb) {
->                 sdr_set_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
-> -       else
-> +               sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
-> +       } else {
->                 sdr_clr_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
-> -       spin_unlock_irqrestore(&host->lock, flags);
-> +               sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
-> +       }
->  }
->
->  static void msdc_enable_sdio_irq(struct mmc_host *mmc, int enb)
->  {
-> +       unsigned long flags;
->         struct msdc_host *host = mmc_priv(mmc);
->
-> -       __msdc_enable_sdio_irq(mmc, enb);
-> +       spin_lock_irqsave(&host->lock, flags);
-> +       __msdc_enable_sdio_irq(host, enb);
-> +       spin_unlock_irqrestore(&host->lock, flags);
->
->         if (enb)
->                 pm_runtime_get_noresume(host->dev);
-> @@ -1422,6 +1423,8 @@ static irqreturn_t msdc_irq(int irq, void *dev_id)
->                 spin_lock_irqsave(&host->lock, flags);
->                 events = readl(host->base + MSDC_INT);
->                 event_mask = readl(host->base + MSDC_INTEN);
-> +               if ((events & event_mask) & MSDC_INT_SDIOIRQ)
-> +                       __msdc_enable_sdio_irq(host, 0);
->                 /* clear interrupts */
->                 writel(events & event_mask, host->base + MSDC_INT);
->
-> @@ -1430,10 +1433,8 @@ static irqreturn_t msdc_irq(int irq, void *dev_id)
->                 data = host->data;
->                 spin_unlock_irqrestore(&host->lock, flags);
->
-> -               if ((events & event_mask) & MSDC_INT_SDIOIRQ) {
-> -                       __msdc_enable_sdio_irq(host->mmc, 0);
-> +               if ((events & event_mask) & MSDC_INT_SDIOIRQ)
->                         sdio_signal_irq(host->mmc);
-> -               }
->
->                 if ((events & event_mask) & MSDC_INT_CDSC) {
->                         if (host->internal_cd)
-> @@ -1572,10 +1573,7 @@ static void msdc_init_hw(struct msdc_host *host)
->         sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIO);
->
->         /* Config SDIO device detect interrupt function */
-> -       if (host->mmc->caps & MMC_CAP_SDIO_IRQ)
-> -               sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
-> -       else
-> -               sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
-> +       sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
->
->         /* Configure to default data timeout */
->         sdr_set_field(host->base + SDC_CFG, SDC_CFG_DTOC, 3);
-> @@ -2103,7 +2101,12 @@ static void msdc_hw_reset(struct mmc_host *mmc)
->
->  static void msdc_ack_sdio_irq(struct mmc_host *mmc)
->  {
-> -       __msdc_enable_sdio_irq(mmc, 1);
-> +       unsigned long flags;
-> +       struct msdc_host *host = mmc_priv(mmc);
-> +
-> +       spin_lock_irqsave(&host->lock, flags);
-> +       __msdc_enable_sdio_irq(host, 1);
-> +       spin_unlock_irqrestore(&host->lock, flags);
->  }
->
->  static int msdc_get_cd(struct mmc_host *mmc)
-> --
-> 1.9.1
->
+I will probably be busy till the next week. Sorry for delays.
