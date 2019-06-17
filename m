@@ -1,15 +1,15 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v7 18/21] iommu/mediatek: Fix VLD_PA_RNG register backup
- when suspend
-Date: Mon, 17 Jun 2019 18:30:27 +0200
-Message-ID: <d8fd11c7-899d-27a3-7467-de351307c6a1@gmail.com>
+Subject: Re: [PATCH v7 21/21] iommu/mediatek: Switch to SPDX license
+ identifier
+Date: Mon, 17 Jun 2019 18:33:45 +0200
+Message-ID: <9bf9e47f-b709-b2ce-b795-ff5e345a67d5@gmail.com>
 References: <1560169080-27134-1-git-send-email-yong.wu@mediatek.com>
- <1560169080-27134-19-git-send-email-yong.wu@mediatek.com>
+ <1560169080-27134-22-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1560169080-27134-19-git-send-email-yong.wu@mediatek.com>
+In-Reply-To: <1560169080-27134-22-git-send-email-yong.wu@mediatek.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
 To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>
@@ -18,52 +18,175 @@ List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 10/06/2019 14:17, Yong Wu wrote:
-> The register VLD_PA_RNG(0x118) was forgot to backup while adding 4GB
-> mode support for mt2712. this patch add it.
+On 10/06/2019 14:18, Yong Wu wrote:
+> Switch to SPDX license identifier for MediaTek iommu/smi and their
+> header files.
 > 
-> Fixes: 30e2fccf9512 ("iommu/mediatek: Enlarge the validate PA range
-> for 4GB mode")
 > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
 > Reviewed-by: Evan Green <evgreen@chromium.org>
 
 Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
 > ---
->  drivers/iommu/mtk_iommu.c | 2 ++
->  drivers/iommu/mtk_iommu.h | 1 +
->  2 files changed, 3 insertions(+)
+>  drivers/iommu/mtk_iommu.c                     | 10 +---------
+>  drivers/iommu/mtk_iommu.h                     | 10 +---------
+>  drivers/iommu/mtk_iommu_v1.c                  | 10 +---------
+>  drivers/memory/mtk-smi.c                      | 10 +---------
+>  include/dt-bindings/memory/mt2701-larb-port.h | 10 +---------
+>  include/dt-bindings/memory/mt8173-larb-port.h | 10 +---------
+>  include/soc/mediatek/smi.h                    | 10 +---------
+>  7 files changed, 7 insertions(+), 63 deletions(-)
 > 
 > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 6053b8b..86158d8 100644
+> index 34f2e40..6fe3369 100644
 > --- a/drivers/iommu/mtk_iommu.c
 > +++ b/drivers/iommu/mtk_iommu.c
-> @@ -719,6 +719,7 @@ static int __maybe_unused mtk_iommu_suspend(struct device *dev)
->  	reg->int_control0 = readl_relaxed(base + REG_MMU_INT_CONTROL0);
->  	reg->int_main_control = readl_relaxed(base + REG_MMU_INT_MAIN_CONTROL);
->  	reg->ivrp_paddr = readl_relaxed(base + REG_MMU_IVRP_PADDR);
-> +	reg->vld_pa_rng = readl_relaxed(base + REG_MMU_VLD_PA_RNG);
->  	clk_disable_unprepare(data->bclk);
->  	return 0;
->  }
-> @@ -743,6 +744,7 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
->  	writel_relaxed(reg->int_control0, base + REG_MMU_INT_CONTROL0);
->  	writel_relaxed(reg->int_main_control, base + REG_MMU_INT_MAIN_CONTROL);
->  	writel_relaxed(reg->ivrp_paddr, base + REG_MMU_IVRP_PADDR);
-> +	writel_relaxed(reg->vld_pa_rng, base + REG_MMU_VLD_PA_RNG);
->  	if (m4u_dom)
->  		writel(m4u_dom->cfg.arm_v7s_cfg.ttbr[0] & MMU_PT_ADDR_MASK,
->  		       base + REG_MMU_PT_BASE_ADDR);
+> @@ -1,15 +1,7 @@
+> +// SPDX-License-Identifier: GPL-2.0
+>  /*
+>   * Copyright (c) 2015-2016 MediaTek Inc.
+>   * Author: Yong Wu <yong.wu@mediatek.com>
+> - *
+> - * This program is free software; you can redistribute it and/or modify
+> - * it under the terms of the GNU General Public License version 2 as
+> - * published by the Free Software Foundation.
+> - *
+> - * This program is distributed in the hope that it will be useful,
+> - * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> - * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> - * GNU General Public License for more details.
+>   */
+>  #include <linux/memblock.h>
+>  #include <linux/bug.h>
 > diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-> index c0b5c65..753266b 100644
+> index e8114b2..b24cfd3 100644
 > --- a/drivers/iommu/mtk_iommu.h
 > +++ b/drivers/iommu/mtk_iommu.h
-> @@ -32,6 +32,7 @@ struct mtk_iommu_suspend_reg {
->  	u32				int_control0;
->  	u32				int_main_control;
->  	u32				ivrp_paddr;
-> +	u32				vld_pa_rng;
->  };
+> @@ -1,15 +1,7 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+>  /*
+>   * Copyright (c) 2015-2016 MediaTek Inc.
+>   * Author: Honghui Zhang <honghui.zhang@mediatek.com>
+> - *
+> - * This program is free software; you can redistribute it and/or modify
+> - * it under the terms of the GNU General Public License version 2 as
+> - * published by the Free Software Foundation.
+> - *
+> - * This program is distributed in the hope that it will be useful,
+> - * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> - * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> - * GNU General Public License for more details.
+>   */
 >  
->  enum mtk_iommu_plat {
+>  #ifndef _MTK_IOMMU_H_
+> diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+> index 73308ad..0b0908c 100644
+> --- a/drivers/iommu/mtk_iommu_v1.c
+> +++ b/drivers/iommu/mtk_iommu_v1.c
+> @@ -1,3 +1,4 @@
+> +// SPDX-License-Identifier: GPL-2.0
+>  /*
+>   * IOMMU API for MTK architected m4u v1 implementations
+>   *
+> @@ -5,15 +6,6 @@
+>   * Author: Honghui Zhang <honghui.zhang@mediatek.com>
+>   *
+>   * Based on driver/iommu/mtk_iommu.c
+> - *
+> - * This program is free software; you can redistribute it and/or modify
+> - * it under the terms of the GNU General Public License version 2 as
+> - * published by the Free Software Foundation.
+> - *
+> - * This program is distributed in the hope that it will be useful,
+> - * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> - * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> - * GNU General Public License for more details.
+>   */
+>  #include <linux/memblock.h>
+>  #include <linux/bug.h>
+> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+> index 10e6493..9688341 100644
+> --- a/drivers/memory/mtk-smi.c
+> +++ b/drivers/memory/mtk-smi.c
+> @@ -1,15 +1,7 @@
+> +// SPDX-License-Identifier: GPL-2.0
+>  /*
+>   * Copyright (c) 2015-2016 MediaTek Inc.
+>   * Author: Yong Wu <yong.wu@mediatek.com>
+> - *
+> - * This program is free software; you can redistribute it and/or modify
+> - * it under the terms of the GNU General Public License version 2 as
+> - * published by the Free Software Foundation.
+> - *
+> - * This program is distributed in the hope that it will be useful,
+> - * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> - * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> - * GNU General Public License for more details.
+>   */
+>  #include <linux/clk.h>
+>  #include <linux/component.h>
+> diff --git a/include/dt-bindings/memory/mt2701-larb-port.h b/include/dt-bindings/memory/mt2701-larb-port.h
+> index 6764d74..c511f0f 100644
+> --- a/include/dt-bindings/memory/mt2701-larb-port.h
+> +++ b/include/dt-bindings/memory/mt2701-larb-port.h
+> @@ -1,15 +1,7 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+>  /*
+>   * Copyright (c) 2015 MediaTek Inc.
+>   * Author: Honghui Zhang <honghui.zhang@mediatek.com>
+> - *
+> - * This program is free software; you can redistribute it and/or modify
+> - * it under the terms of the GNU General Public License version 2 as
+> - * published by the Free Software Foundation.
+> - *
+> - * This program is distributed in the hope that it will be useful,
+> - * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> - * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> - * GNU General Public License for more details.
+>   */
+>  
+>  #ifndef _MT2701_LARB_PORT_H_
+> diff --git a/include/dt-bindings/memory/mt8173-larb-port.h b/include/dt-bindings/memory/mt8173-larb-port.h
+> index 111b4b0..a62bfeb 100644
+> --- a/include/dt-bindings/memory/mt8173-larb-port.h
+> +++ b/include/dt-bindings/memory/mt8173-larb-port.h
+> @@ -1,15 +1,7 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+>  /*
+>   * Copyright (c) 2015-2016 MediaTek Inc.
+>   * Author: Yong Wu <yong.wu@mediatek.com>
+> - *
+> - * This program is free software; you can redistribute it and/or modify
+> - * it under the terms of the GNU General Public License version 2 as
+> - * published by the Free Software Foundation.
+> - *
+> - * This program is distributed in the hope that it will be useful,
+> - * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> - * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> - * GNU General Public License for more details.
+>   */
+>  #ifndef __DTS_IOMMU_PORT_MT8173_H
+>  #define __DTS_IOMMU_PORT_MT8173_H
+> diff --git a/include/soc/mediatek/smi.h b/include/soc/mediatek/smi.h
+> index a65324d..7a8d870 100644
+> --- a/include/soc/mediatek/smi.h
+> +++ b/include/soc/mediatek/smi.h
+> @@ -1,15 +1,7 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+>  /*
+>   * Copyright (c) 2015-2016 MediaTek Inc.
+>   * Author: Yong Wu <yong.wu@mediatek.com>
+> - *
+> - * This program is free software; you can redistribute it and/or modify
+> - * it under the terms of the GNU General Public License version 2 as
+> - * published by the Free Software Foundation.
+> - *
+> - * This program is distributed in the hope that it will be useful,
+> - * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> - * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> - * GNU General Public License for more details.
+>   */
+>  #ifndef MTK_IOMMU_SMI_H
+>  #define MTK_IOMMU_SMI_H
 > 
