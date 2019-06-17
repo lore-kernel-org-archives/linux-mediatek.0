@@ -1,53 +1,107 @@
-From: =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>
-Subject: [PATCH net-next 2/2] net: dsa: mt7530: Add MT7621 TRGMII mode support
-Date: Sun, 16 Jun 2019 20:20:10 +0200
-Message-ID: <20190616182010.18778-3-opensource@vdorst.com>
-References: <20190616182010.18778-1-opensource@vdorst.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v8 11/12] soc: mediatek: cmdq: add
+ cmdq_dev_get_client_reg function
+Date: Mon, 17 Jun 2019 09:14:44 +0800
+Message-ID: <1560734084.11128.2.camel@mtksdaap41>
+References: <20190612085349.21243-1-bibby.hsieh@mediatek.com>
+         <20190612085349.21243-12-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190616182010.18778-1-opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "David S . Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Vivien Didelot <vivien.didelot-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mips-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190612085349.21243-12-bibby.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.chen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-TVQ3NjIxIGludGVybmFsIE1UNzUzMCBzd2l0Y2ggYWxzbyBzdXBwb3J0cyBUUkdNSUkgbW9kZS4K
-VFJHTUlJIHNwZWVkIGlzIDEyMDBNQml0LgoKU2lnbmVkLW9mZi1ieTogUmVuw6kgdmFuIERvcnN0
-IDxvcGVuc291cmNlQHZkb3JzdC5jb20+Ci0tLQogZHJpdmVycy9uZXQvZHNhL210NzUzMC5jIHwg
-MTUgKysrKysrKysrKysrKy0tCiAxIGZpbGUgY2hhbmdlZCwgMTMgaW5zZXJ0aW9ucygrKSwgMiBk
-ZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9kc2EvbXQ3NTMwLmMgYi9kcml2
-ZXJzL25ldC9kc2EvbXQ3NTMwLmMKaW5kZXggYzdkMzUyZGE1NDQ4Li44OGRlNGU4ODA0MTcgMTAw
-NjQ0Ci0tLSBhL2RyaXZlcnMvbmV0L2RzYS9tdDc1MzAuYworKysgYi9kcml2ZXJzL25ldC9kc2Ev
-bXQ3NTMwLmMKQEAgLTQzNSwxMSArNDM1LDIwIEBAIG10NzUzMF9wYWRfY2xrX3NldHVwKHN0cnVj
-dCBkc2Ffc3dpdGNoICpkcywgaW50IG1vZGUpCiAJCXRyZ2ludCA9IDA7CiAJCW5jcG8xID0gMHgw
-YzgwOwogCQlzc2NfZGVsdGEgPSAweDg3OworCisJCS8qIFBvcnQgNiBkZWxheSBzZXR0aW5ncyBS
-R01JSSBjZW50cmFsIGFsaWduICovCisJCW10NzUzMF9ybXcocHJpdiwgTVQ3NTMwX1RSR01JSV9U
-WENUUkwsIEJJVCgzMCkgfCBCSVQoMjgpLCAwKTsKKwkJbXQ3NTMwX3dyaXRlKHByaXYsIE1UNzUz
-MF9UUkdNSUlfVENLX0NUUkwsIDB4MDg1NSk7CiAJCWJyZWFrOwogCWNhc2UgUEhZX0lOVEVSRkFD
-RV9NT0RFX1RSR01JSToKIAkJdHJnaW50ID0gMTsKLQkJbmNwbzEgPSAweDE0MDA7CisJCS8qIFBM
-TCBmcmVxdWVuY3k6IE1UNzYyMSAxNTBNSHosIG90aGVyIDE2Mi41TUh6ICovCisJCW5jcG8xID0g
-KHByaXYtPmlkID09IElEX01UNzYyMSA/IDB4MDc4MCA6IDB4MTQwMCk7CiAJCXNzY19kZWx0YSA9
-IDB4NTc7CisKKwkJLyogUG9ydCA2IGRlbGF5IHNldHRpbmdzIFRSR01JSSBjZW50cmFsIGFsaWdu
-ICovCisJCW10NzUzMF9ybXcocHJpdiwgTVQ3NTMwX1RSR01JSV9UWENUUkwsIDAsIEJJVCgzMCkp
-OworCQltdDc1MzBfd3JpdGUocHJpdiwgTVQ3NTMwX1RSR01JSV9UQ0tfQ1RSTCwgMHgwMDU1KTsK
-IAkJYnJlYWs7CiAJZGVmYXVsdDoKIAkJZGV2X2Vycihwcml2LT5kZXYsICJ4TUlJIG1vZGUgJWQg
-bm90IHN1cHBvcnRlZFxuIiwgbW9kZSk7CkBAIC01MDcsNyArNTE2LDkgQEAgbXQ3NTMwX3BhZF9j
-bGtfc2V0dXAoc3RydWN0IGRzYV9zd2l0Y2ggKmRzLCBpbnQgbW9kZSkKIAkJCW10NzUzMF9ybXco
-cHJpdiwgTVQ3NTMwX1RSR01JSV9SRChpKSwKIAkJCQkgICBSRF9UQVBfTUFTSywgUkRfVEFQKDE2
-KSk7CiAJZWxzZQotCQltdDc2MjNfdHJnbWlpX3NldChwcml2LCBHU1dfSU5URl9NT0RFLCBJTlRG
-X01PREVfVFJHTUlJKTsKKwkJaWYgKHByaXYtPmlkICE9IElEX01UNzYyMSkKKwkJCW10NzYyM190
-cmdtaWlfc2V0KHByaXYsIEdTV19JTlRGX01PREUsCisJCQkJCSAgSU5URl9NT0RFX1RSR01JSSk7
-CiAKIAlyZXR1cm4gMDsKIH0KLS0gCjIuMjAuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1t
-ZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+Hi, Bibby:
+
+On Wed, 2019-06-12 at 16:53 +0800, Bibby Hsieh wrote:
+> GCE cannot know the register base address, this function
+> can help cmdq client to get the cmdq_client_reg structure.
+> 
+> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+> ---
+>  drivers/soc/mediatek/mtk-cmdq-helper.c | 24 ++++++++++++++++++++++++
+>  include/linux/soc/mediatek/mtk-cmdq.h  | 20 ++++++++++++++++++++
+>  2 files changed, 44 insertions(+)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> index 70ad4d806fac..fac4d33fd520 100644
+> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
+> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> @@ -27,6 +27,30 @@ struct cmdq_instruction {
+>  	u8 op;
+>  };
+>  
+> +int cmdq_dev_get_client_reg(struct device *dev,
+> +			    struct cmdq_client_reg *client_reg, int idx)
+> +{
+> +	struct of_phandle_args spec;
+> +
+> +	if (!client_reg)
+> +		return -EINVAL;
+> +
+> +	if (of_parse_phandle_with_args(dev->of_node, "mediatek,gce-client-reg",
+> +				       "#subsys-cells", idx, &spec)) {
+> +		dev_err(dev, "can't parse gce-client-reg property (%d)", idx);
+> +
+> +		return -EINVAL;
+
+of_parse_phandle_with_args() may return -ENOENT, why do you change it to
+-EINVAL?
+
+Regards,
+CK
+
+> +	}
+> +
+> +	client_reg->subsys = spec.args[0];
+> +	client_reg->offset = spec.args[1];
+> +	client_reg->size = spec.args[2];
+> +	of_node_put(spec.np);
+> +
+> +	return 0;
+> +}
+> +EXPORT_SYMBOL(cmdq_dev_get_client_reg);
+> +
+>  static void cmdq_client_timeout(struct timer_list *t)
+>  {
+>  	struct cmdq_client *client = from_timer(client, t, timer);
+> diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
+> index a345870a6d10..2e2a2274c231 100644
+> --- a/include/linux/soc/mediatek/mtk-cmdq.h
+> +++ b/include/linux/soc/mediatek/mtk-cmdq.h
+> @@ -15,6 +15,12 @@
+>  
+>  struct cmdq_pkt;
+>  
+> +struct cmdq_client_reg {
+> +	u8 subsys;
+> +	u16 offset;
+> +	u16 size;
+> +};
+> +
+>  struct cmdq_client {
+>  	spinlock_t lock;
+>  	u32 pkt_cnt;
+> @@ -142,4 +148,18 @@ int cmdq_pkt_flush_async(struct cmdq_pkt *pkt, cmdq_async_flush_cb cb,
+>   */
+>  int cmdq_pkt_flush(struct cmdq_pkt *pkt);
+>  
+> +/**
+> + * cmdq_dev_get_client_reg() - parse cmdq client reg from the device node of CMDQ client
+> + * @dev:	device of CMDQ mailbox clienti
+> + * @client_reg: CMDQ client reg pointer
+> + * @idx:	the index of desired reg
+> + *
+> + * Return: 0 for success; else the error code is returned
+> + *
+> + * Help CMDQ client pasing the cmdq client reg
+> + * from the device node of CMDQ client.
+> + */
+> +int cmdq_dev_get_client_reg(struct device *dev,
+> +			    struct cmdq_client_reg *client_reg, int idx);
+> +
+>  #endif	/* __MTK_CMDQ_H__ */
