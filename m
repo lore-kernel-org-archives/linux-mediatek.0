@@ -1,192 +1,89 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v7 21/21] iommu/mediatek: Switch to SPDX license
- identifier
-Date: Mon, 17 Jun 2019 18:33:45 +0200
-Message-ID: <9bf9e47f-b709-b2ce-b795-ff5e345a67d5@gmail.com>
-References: <1560169080-27134-1-git-send-email-yong.wu@mediatek.com>
- <1560169080-27134-22-git-send-email-yong.wu@mediatek.com>
+From: =?utf-8?b?UmVuw6k=?= van Dorst <opensource@vdorst.com>
+Subject: Re: [PATCH net-next 0/2] net: mediatek: Add MT7621 TRGMII mode
+ support
+Date: Mon, 17 Jun 2019 21:33:12 +0000
+Message-ID: <20190617213312.Horde.fcb9-g80Zzfd-IMC8EQy50h@www.vdorst.com>
+References: <20190616182010.18778-1-opensource@vdorst.com>
+ <20190617140223.GC25211@lunn.ch>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1560169080-27134-22-git-send-email-yong.wu@mediatek.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>
-Cc: Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, Will Deacon <will.deacon@arm.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, yingjoe.chen@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, Matthias Kaehlcke <mka@chromium.org>
+Content-Type: text/plain; charset=utf-8; format=flowed; DelSp=Yes
+Content-Transfer-Encoding: 8bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20190617140223.GC25211@lunn.ch>
+Content-Disposition: inline
+Sender: netdev-owner@vger.kernel.org
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Sean Wang <sean.wang@mediatek.com>, Florian Fainelli <f.fainelli@gmail.com>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, Vivien Didelot <vivien.didelot@gmail.com>, netdev@vger.kernel.org, john@phrozen.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Quoting Andrew Lunn <andrew@lunn.ch>:
+
+> On Sun, Jun 16, 2019 at 08:20:08PM +0200, René van Dorst wrote:
+>> Like many other mediatek SOCs, the MT7621 SOC and the internal  
+>> MT7530 switch both
+>> supports TRGMII mode. MT7621 TRGMII speed is 1200MBit.
+>
+> Hi René
+>
+
+Hi Andrew,
+
+> Is TRGMII used only between the SoC and the Switch? Or does external
+> ports of the switch also support 1200Mbit/s? If external ports support
+> this, what does ethtool show for Speed?
+
+Only the first GMAC of the SOC and port 6 of the switch supports this mode.
+The switch can be internal in the SOC but also a separate chip.
+
+PHYLINK and ethertool reports the link as 1Gbit.
+The link is fixed-link with speed = 1000.
+
+dmesg output with unposted PHYLINK patches:
+[    5.236763] mt7530 mdio-bus:1f: configuring for fixed/trgmii link mode
+[    5.249813] mt7530 mdio-bus:1f: phylink_mac_config:  
+mode=fixed/trgmii/1Gbps/Full adv=00,00000000,00000220 pause=12 link=1  
+an=1
+[    6.389435] mtk_soc_eth 1e100000.ethernet eth0: phylink_mac_config:  
+mode=fixed/trgmii/1Gbps/Full adv=00,00000000,00000220 pause=12 link=1  
+an=1
+
+# ethtool eth0
+Settings for eth0:
+          Supported ports: [ MII ]
+          Supported link modes:   1000baseT/Full
+          Supported pause frame use: No
+          Supports auto-negotiation: No
+          Supported FEC modes: Not reported
+          Advertised link modes:  1000baseT/Full
+          Advertised pause frame use: No
+          Advertised auto-negotiation: No
+          Advertised FEC modes: Not reported
+          Speed: 1000Mb/s
+          Duplex: Full
+          Port: MII
+          PHYAD: 0
+          Transceiver: internal
+          Auto-negotiation: on
+          Current message level: 0x000000ff (255)
+                                 drv probe link timer ifdown ifup rx_err tx_err
+          Link detected: yes
 
 
-On 10/06/2019 14:18, Yong Wu wrote:
-> Switch to SPDX license identifier for MediaTek iommu/smi and their
-> header files.
-> 
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> Reviewed-by: Rob Herring <robh@kernel.org>
-> Reviewed-by: Evan Green <evgreen@chromium.org>
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+I already have report from a MT7623 user that this patch gives issues.
 
-> ---
->  drivers/iommu/mtk_iommu.c                     | 10 +---------
->  drivers/iommu/mtk_iommu.h                     | 10 +---------
->  drivers/iommu/mtk_iommu_v1.c                  | 10 +---------
->  drivers/memory/mtk-smi.c                      | 10 +---------
->  include/dt-bindings/memory/mt2701-larb-port.h | 10 +---------
->  include/dt-bindings/memory/mt8173-larb-port.h | 10 +---------
->  include/soc/mediatek/smi.h                    | 10 +---------
->  7 files changed, 7 insertions(+), 63 deletions(-)
-> 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 34f2e40..6fe3369 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -1,15 +1,7 @@
-> +// SPDX-License-Identifier: GPL-2.0
->  /*
->   * Copyright (c) 2015-2016 MediaTek Inc.
->   * Author: Yong Wu <yong.wu@mediatek.com>
-> - *
-> - * This program is free software; you can redistribute it and/or modify
-> - * it under the terms of the GNU General Public License version 2 as
-> - * published by the Free Software Foundation.
-> - *
-> - * This program is distributed in the hope that it will be useful,
-> - * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> - * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> - * GNU General Public License for more details.
->   */
->  #include <linux/memblock.h>
->  #include <linux/bug.h>
-> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-> index e8114b2..b24cfd3 100644
-> --- a/drivers/iommu/mtk_iommu.h
-> +++ b/drivers/iommu/mtk_iommu.h
-> @@ -1,15 +1,7 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
->  /*
->   * Copyright (c) 2015-2016 MediaTek Inc.
->   * Author: Honghui Zhang <honghui.zhang@mediatek.com>
-> - *
-> - * This program is free software; you can redistribute it and/or modify
-> - * it under the terms of the GNU General Public License version 2 as
-> - * published by the Free Software Foundation.
-> - *
-> - * This program is distributed in the hope that it will be useful,
-> - * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> - * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> - * GNU General Public License for more details.
->   */
->  
->  #ifndef _MTK_IOMMU_H_
-> diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-> index 73308ad..0b0908c 100644
-> --- a/drivers/iommu/mtk_iommu_v1.c
-> +++ b/drivers/iommu/mtk_iommu_v1.c
-> @@ -1,3 +1,4 @@
-> +// SPDX-License-Identifier: GPL-2.0
->  /*
->   * IOMMU API for MTK architected m4u v1 implementations
->   *
-> @@ -5,15 +6,6 @@
->   * Author: Honghui Zhang <honghui.zhang@mediatek.com>
->   *
->   * Based on driver/iommu/mtk_iommu.c
-> - *
-> - * This program is free software; you can redistribute it and/or modify
-> - * it under the terms of the GNU General Public License version 2 as
-> - * published by the Free Software Foundation.
-> - *
-> - * This program is distributed in the hope that it will be useful,
-> - * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> - * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> - * GNU General Public License for more details.
->   */
->  #include <linux/memblock.h>
->  #include <linux/bug.h>
-> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-> index 10e6493..9688341 100644
-> --- a/drivers/memory/mtk-smi.c
-> +++ b/drivers/memory/mtk-smi.c
-> @@ -1,15 +1,7 @@
-> +// SPDX-License-Identifier: GPL-2.0
->  /*
->   * Copyright (c) 2015-2016 MediaTek Inc.
->   * Author: Yong Wu <yong.wu@mediatek.com>
-> - *
-> - * This program is free software; you can redistribute it and/or modify
-> - * it under the terms of the GNU General Public License version 2 as
-> - * published by the Free Software Foundation.
-> - *
-> - * This program is distributed in the hope that it will be useful,
-> - * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> - * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> - * GNU General Public License for more details.
->   */
->  #include <linux/clk.h>
->  #include <linux/component.h>
-> diff --git a/include/dt-bindings/memory/mt2701-larb-port.h b/include/dt-bindings/memory/mt2701-larb-port.h
-> index 6764d74..c511f0f 100644
-> --- a/include/dt-bindings/memory/mt2701-larb-port.h
-> +++ b/include/dt-bindings/memory/mt2701-larb-port.h
-> @@ -1,15 +1,7 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
->  /*
->   * Copyright (c) 2015 MediaTek Inc.
->   * Author: Honghui Zhang <honghui.zhang@mediatek.com>
-> - *
-> - * This program is free software; you can redistribute it and/or modify
-> - * it under the terms of the GNU General Public License version 2 as
-> - * published by the Free Software Foundation.
-> - *
-> - * This program is distributed in the hope that it will be useful,
-> - * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> - * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> - * GNU General Public License for more details.
->   */
->  
->  #ifndef _MT2701_LARB_PORT_H_
-> diff --git a/include/dt-bindings/memory/mt8173-larb-port.h b/include/dt-bindings/memory/mt8173-larb-port.h
-> index 111b4b0..a62bfeb 100644
-> --- a/include/dt-bindings/memory/mt8173-larb-port.h
-> +++ b/include/dt-bindings/memory/mt8173-larb-port.h
-> @@ -1,15 +1,7 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
->  /*
->   * Copyright (c) 2015-2016 MediaTek Inc.
->   * Author: Yong Wu <yong.wu@mediatek.com>
-> - *
-> - * This program is free software; you can redistribute it and/or modify
-> - * it under the terms of the GNU General Public License version 2 as
-> - * published by the Free Software Foundation.
-> - *
-> - * This program is distributed in the hope that it will be useful,
-> - * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> - * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> - * GNU General Public License for more details.
->   */
->  #ifndef __DTS_IOMMU_PORT_MT8173_H
->  #define __DTS_IOMMU_PORT_MT8173_H
-> diff --git a/include/soc/mediatek/smi.h b/include/soc/mediatek/smi.h
-> index a65324d..7a8d870 100644
-> --- a/include/soc/mediatek/smi.h
-> +++ b/include/soc/mediatek/smi.h
-> @@ -1,15 +1,7 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
->  /*
->   * Copyright (c) 2015-2016 MediaTek Inc.
->   * Author: Yong Wu <yong.wu@mediatek.com>
-> - *
-> - * This program is free software; you can redistribute it and/or modify
-> - * it under the terms of the GNU General Public License version 2 as
-> - * published by the Free Software Foundation.
-> - *
-> - * This program is distributed in the hope that it will be useful,
-> - * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> - * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> - * GNU General Public License for more details.
->   */
->  #ifndef MTK_IOMMU_SMI_H
->  #define MTK_IOMMU_SMI_H
-> 
+I send v2 of the patch if I fixed that issue.
+
+Also I think it is better to add a XTAL frequency check.
+The PLL values are only valid with a 40MHz crystal.
+
+Any other comments for v2?
+
+Greats,
+
+René
+
+
+>
+>      Thanks
+> 	Andrew
