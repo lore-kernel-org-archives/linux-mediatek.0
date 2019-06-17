@@ -1,64 +1,156 @@
-From: tip-bot for Kobe Wu <tipbot@zytor.com>
-Subject: [tip:locking/core] locking/lockdep: Remove unnecessary
- DEBUG_LOCKS_WARN_ON()
-Date: Mon, 17 Jun 2019 07:18:00 -0700
-Message-ID: <tip-dd471efe345bf6f9e1206f6c629ca3e80eb43523@git.kernel.org>
-References: <1559217575-30298-1-git-send-email-kobe-cp.wu@mediatek.com>
-Reply-To: peterz@infradead.org, linux-mediatek@lists.infradead.org,
-          will.deacon@arm.com, linux-kernel@vger.kernel.org,
-          eason-yh.lin@mediatek.com, kobe-cp.wu@mediatek.com,
-          wsd_upstream@mediatek.com, tglx@linutronix.de, hpa@zytor.com,
-          torvalds@linux-foundation.org, mingo@kernel.org
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v7 12/21] memory: mtk-smi: Add gals support
+Date: Mon, 17 Jun 2019 17:43:49 +0200
+Message-ID: <c01770c8-d110-f454-528b-0fce96c0d2c1@gmail.com>
+References: <1560169080-27134-1-git-send-email-yong.wu@mediatek.com>
+ <1560169080-27134-13-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1559217575-30298-1-git-send-email-kobe-cp.wu@mediatek.com>
-Content-Disposition: inline
+In-Reply-To: <1560169080-27134-13-git-send-email-yong.wu@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-tip-commits@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org, will.deacon@arm.com, hpa@zytor.com, tglx@linutronix.de, kobe-cp.wu@mediatek.com, eason-yh.lin@mediatek.com, mingo@kernel.org, torvalds@linux-foundation.org, peterz@infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, Will Deacon <will.deacon@arm.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, yingjoe.chen@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, Matthias Kaehlcke <mka@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Commit-ID:  dd471efe345bf6f9e1206f6c629ca3e80eb43523
-Gitweb:     https://git.kernel.org/tip/dd471efe345bf6f9e1206f6c629ca3e80eb43523
-Author:     Kobe Wu <kobe-cp.wu@mediatek.com>
-AuthorDate: Thu, 30 May 2019 19:59:35 +0800
-Committer:  Ingo Molnar <mingo@kernel.org>
-CommitDate: Mon, 17 Jun 2019 12:09:37 +0200
 
-locking/lockdep: Remove unnecessary DEBUG_LOCKS_WARN_ON()
 
-DEBUG_LOCKS_WARN_ON() will turn off debug_locks and
-makes print_unlock_imbalance_bug() return directly.
+On 10/06/2019 14:17, Yong Wu wrote:
+> In some SoCs like mt8183, SMI add GALS(Global Async Local Sync) module
+> which can help synchronize for the modules in different clock frequency.
+> It can be seen as a "asynchronous fifo". This is a example diagram:
+> 
+>             M4U
+>              |
+>          ----------
+>          |        |
+>      gals0-rx   gals1-rx
+>          |        |
+>          |        |
+>      gals0-tx   gals1-tx
+>          |        |
+>         ------------
+>          SMI Common
+>         ------------
+>              |
+>   +-----+--------+-----+- ...
+>   |     |        |     |
+>   |  gals-rx  gals-rx  |
+>   |     |        |     |
+>   |     |        |     |
+>   |  gals-tx  gals-tx  |
+>   |     |        |     |
+> larb1 larb2   larb3  larb4
+> 
+> GALS only help transfer the command/data while it doesn't have the
+> configuring register, thus it has the special "smi" clock and doesn't
+> have the "apb" clock. From the diagram above, we add "gals0" and
+> "gals1" clocks for smi-common and add a "gals" clock for smi-larb.
+> 
+> This patch adds gals clock supporting in the SMI. Note that some larbs
+> may still don't have the "gals" clock like larb1 and larb4 above.
+> 
+> This is also a preparing patch for mt8183 which has GALS.
+> 
+> CC: Matthias Brugger <matthias.bgg@gmail.com>
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> Reviewed-by: Evan Green <evgreen@chromium.org>
 
-Remove a redundant whitespace.
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Signed-off-by: Kobe Wu <kobe-cp.wu@mediatek.com>
-Signed-off-by: Peter Zijlstra (Intel) <peterz@infradead.org>
-Cc: <linux-mediatek@lists.infradead.org>
-Cc: <wsd_upstream@mediatek.com>
-Cc: Eason Lin <eason-yh.lin@mediatek.com>
-Cc: Linus Torvalds <torvalds@linux-foundation.org>
-Cc: Peter Zijlstra <peterz@infradead.org>
-Cc: Thomas Gleixner <tglx@linutronix.de>
-Cc: Will Deacon <will.deacon@arm.com>
-Link: https://lkml.kernel.org/r/1559217575-30298-1-git-send-email-kobe-cp.wu@mediatek.com
-Signed-off-by: Ingo Molnar <mingo@kernel.org>
----
- kernel/locking/lockdep.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/kernel/locking/lockdep.c b/kernel/locking/lockdep.c
-index 48a840adb281..5e368f485330 100644
---- a/kernel/locking/lockdep.c
-+++ b/kernel/locking/lockdep.c
-@@ -4160,7 +4160,7 @@ __lock_release(struct lockdep_map *lock, unsigned long ip)
- 	 * So we're all set to release this lock.. wait what lock? We don't
- 	 * own any locks, you've been drinking again?
- 	 */
--	if (DEBUG_LOCKS_WARN_ON(depth <= 0)) {
-+	if (depth <= 0) {
- 		print_unlock_imbalance_bug(curr, lock, ip);
- 		return 0;
- 	}
+> ---
+>  drivers/memory/mtk-smi.c | 36 ++++++++++++++++++++++++++++++++++++
+>  1 file changed, 36 insertions(+)
+> 
+> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+> index 8a2f968..91634d7 100644
+> --- a/drivers/memory/mtk-smi.c
+> +++ b/drivers/memory/mtk-smi.c
+> @@ -56,6 +56,7 @@ enum mtk_smi_gen {
+>  
+>  struct mtk_smi_common_plat {
+>  	enum mtk_smi_gen gen;
+> +	bool             has_gals;
+>  };
+>  
+>  struct mtk_smi_larb_gen {
+> @@ -63,11 +64,13 @@ struct mtk_smi_larb_gen {
+>  	int port_in_larb[MTK_LARB_NR_MAX + 1];
+>  	void (*config_port)(struct device *);
+>  	unsigned int larb_direct_to_common_mask;
+> +	bool             has_gals;
+>  };
+>  
+>  struct mtk_smi {
+>  	struct device			*dev;
+>  	struct clk			*clk_apb, *clk_smi;
+> +	struct clk			*clk_gals0, *clk_gals1;
+>  	struct clk			*clk_async; /*only needed by mt2701*/
+>  	void __iomem			*smi_ao_base;
+>  
+> @@ -99,8 +102,20 @@ static int mtk_smi_enable(const struct mtk_smi *smi)
+>  	if (ret)
+>  		goto err_disable_apb;
+>  
+> +	ret = clk_prepare_enable(smi->clk_gals0);
+> +	if (ret)
+> +		goto err_disable_smi;
+> +
+> +	ret = clk_prepare_enable(smi->clk_gals1);
+> +	if (ret)
+> +		goto err_disable_gals0;
+> +
+>  	return 0;
+>  
+> +err_disable_gals0:
+> +	clk_disable_unprepare(smi->clk_gals0);
+> +err_disable_smi:
+> +	clk_disable_unprepare(smi->clk_smi);
+>  err_disable_apb:
+>  	clk_disable_unprepare(smi->clk_apb);
+>  err_put_pm:
+> @@ -110,6 +125,8 @@ static int mtk_smi_enable(const struct mtk_smi *smi)
+>  
+>  static void mtk_smi_disable(const struct mtk_smi *smi)
+>  {
+> +	clk_disable_unprepare(smi->clk_gals1);
+> +	clk_disable_unprepare(smi->clk_gals0);
+>  	clk_disable_unprepare(smi->clk_smi);
+>  	clk_disable_unprepare(smi->clk_apb);
+>  	pm_runtime_put_sync(smi->dev);
+> @@ -310,6 +327,15 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
+>  	larb->smi.clk_smi = devm_clk_get(dev, "smi");
+>  	if (IS_ERR(larb->smi.clk_smi))
+>  		return PTR_ERR(larb->smi.clk_smi);
+> +
+> +	if (larb->larb_gen->has_gals) {
+> +		/* The larbs may still haven't gals even if the SoC support.*/
+> +		larb->smi.clk_gals0 = devm_clk_get(dev, "gals");
+> +		if (PTR_ERR(larb->smi.clk_gals0) == -ENOENT)
+> +			larb->smi.clk_gals0 = NULL;
+> +		else if (IS_ERR(larb->smi.clk_gals0))
+> +			return PTR_ERR(larb->smi.clk_gals0);
+> +	}
+>  	larb->smi.dev = dev;
+>  
+>  	if (larb->larb_gen->need_larbid) {
+> @@ -402,6 +428,16 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
+>  	if (IS_ERR(common->clk_smi))
+>  		return PTR_ERR(common->clk_smi);
+>  
+> +	if (common->plat->has_gals) {
+> +		common->clk_gals0 = devm_clk_get(dev, "gals0");
+> +		if (IS_ERR(common->clk_gals0))
+> +			return PTR_ERR(common->clk_gals0);
+> +
+> +		common->clk_gals1 = devm_clk_get(dev, "gals1");
+> +		if (IS_ERR(common->clk_gals1))
+> +			return PTR_ERR(common->clk_gals1);
+> +	}
+> +
+>  	/*
+>  	 * for mtk smi gen 1, we need to get the ao(always on) base to config
+>  	 * m4u port, and we need to enable the aync clock for transform the smi
+> 
