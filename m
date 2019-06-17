@@ -1,67 +1,113 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v7 11/21] iommu/mediatek: Move vld_pa_rng into plat_data
-Date: Mon, 17 Jun 2019 12:27:46 +0200
-Message-ID: <6f2d77af-a965-add5-2a3f-fd55f574d912@gmail.com>
-References: <1560169080-27134-1-git-send-email-yong.wu@mediatek.com>
- <1560169080-27134-12-git-send-email-yong.wu@mediatek.com>
+From: Jjian Zhou <jjian.zhou@mediatek.com>
+Subject: [PATCH V2 1/2] mmc: mediatek: fix SDIO IRQ interrupt handle flow
+Date: Mon, 17 Jun 2019 19:04:07 +0800
+Message-ID: <1560769448-23070-1-git-send-email-jjian.zhou@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1560169080-27134-12-git-send-email-yong.wu@mediatek.com>
-Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>
-Cc: Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, Will Deacon <will.deacon@arm.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, yingjoe.chen@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, Matthias Kaehlcke <mka@chromium.org>
+To: ulf.hansson@linaro.org, chaotian.jing@mediatek.com, matthias.bgg@gmail.com, linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: yong.mao@mediatek.com, srv_heupstream@mediatek.com, jjian zhou <jjian.zhou@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+From: jjian zhou <jjian.zhou@mediatek.com>
 
+SDIO IRQ is triggered by low level. It need disable SDIO IRQ
+detected function. Otherwise the interrupt register can't be cleared.
+It will process the interrupt more.
 
-On 10/06/2019 14:17, Yong Wu wrote:
-> Both mt8173 and mt8183 don't have this vld_pa_rng(valid physical address
-> range) register while mt2712 have. Move it into the plat_data.
-> 
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> Reviewed-by: Evan Green <evgreen@chromium.org>
+Signed-off-by: Jjian Zhou <jjian.zhou@mediatek.com>
+Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+Signed-off-by: Yong Mao <yong.mao@mediatek.com>
+---
+ drivers/mmc/host/mtk-sd.c | 37 ++++++++++++++++++++-----------------
+ 1 file changed, 20 insertions(+), 17 deletions(-)
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index c518cc2..fa7d420 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -1383,24 +1383,25 @@ static void msdc_request_timeout(struct work_struct *work)
+ 	}
+ }
 
-> ---
->  drivers/iommu/mtk_iommu.c | 3 ++-
->  drivers/iommu/mtk_iommu.h | 1 +
->  2 files changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 8ac7034..a535dcd 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -547,7 +547,7 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
->  			 upper_32_bits(data->protect_base);
->  	writel_relaxed(regval, data->base + REG_MMU_IVRP_PADDR);
->  
-> -	if (data->enable_4GB && data->plat_data->m4u_plat != M4U_MT8173) {
-> +	if (data->enable_4GB && data->plat_data->has_vld_pa_rng) {
->  		/*
->  		 * If 4GB mode is enabled, the validate PA range is from
->  		 * 0x1_0000_0000 to 0x1_ffff_ffff. here record bit[32:30].
-> @@ -744,6 +744,7 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
->  	.m4u_plat     = M4U_MT2712,
->  	.has_4gb_mode = true,
->  	.has_bclk     = true,
-> +	.has_vld_pa_rng   = true,
->  	.larbid_remap = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
->  };
->  
-> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-> index 55d73c1..e5c9dde 100644
-> --- a/drivers/iommu/mtk_iommu.h
-> +++ b/drivers/iommu/mtk_iommu.h
-> @@ -47,6 +47,7 @@ struct mtk_iommu_plat_data {
->  	/* HW will use the EMI clock if there isn't the "bclk". */
->  	bool                has_bclk;
->  	bool                reset_axi;
-> +	bool                has_vld_pa_rng;
->  	unsigned char       larbid_remap[MTK_LARB_NR_MAX];
->  };
->  
-> 
+-static void __msdc_enable_sdio_irq(struct mmc_host *mmc, int enb)
++static void __msdc_enable_sdio_irq(struct msdc_host *host, int enb)
+ {
+-	unsigned long flags;
+-	struct msdc_host *host = mmc_priv(mmc);
+-
+-	spin_lock_irqsave(&host->lock, flags);
+-	if (enb)
++	if (enb) {
+ 		sdr_set_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
+-	else
++		sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
++	} else {
+ 		sdr_clr_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
+-	spin_unlock_irqrestore(&host->lock, flags);
++		sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
++	}
+ }
+
+ static void msdc_enable_sdio_irq(struct mmc_host *mmc, int enb)
+ {
++	unsigned long flags;
+ 	struct msdc_host *host = mmc_priv(mmc);
+
+-	__msdc_enable_sdio_irq(mmc, enb);
++	spin_lock_irqsave(&host->lock, flags);
++	__msdc_enable_sdio_irq(host, enb);
++	spin_unlock_irqrestore(&host->lock, flags);
+
+ 	if (enb)
+ 		pm_runtime_get_noresume(host->dev);
+@@ -1422,6 +1423,8 @@ static irqreturn_t msdc_irq(int irq, void *dev_id)
+ 		spin_lock_irqsave(&host->lock, flags);
+ 		events = readl(host->base + MSDC_INT);
+ 		event_mask = readl(host->base + MSDC_INTEN);
++		if ((events & event_mask) & MSDC_INT_SDIOIRQ)
++			__msdc_enable_sdio_irq(host, 0);
+ 		/* clear interrupts */
+ 		writel(events & event_mask, host->base + MSDC_INT);
+
+@@ -1430,10 +1433,8 @@ static irqreturn_t msdc_irq(int irq, void *dev_id)
+ 		data = host->data;
+ 		spin_unlock_irqrestore(&host->lock, flags);
+
+-		if ((events & event_mask) & MSDC_INT_SDIOIRQ) {
+-			__msdc_enable_sdio_irq(host->mmc, 0);
++		if ((events & event_mask) & MSDC_INT_SDIOIRQ)
+ 			sdio_signal_irq(host->mmc);
+-		}
+
+ 		if ((events & event_mask) & MSDC_INT_CDSC) {
+ 			if (host->internal_cd)
+@@ -1572,10 +1573,7 @@ static void msdc_init_hw(struct msdc_host *host)
+ 	sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIO);
+
+ 	/* Config SDIO device detect interrupt function */
+-	if (host->mmc->caps & MMC_CAP_SDIO_IRQ)
+-		sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
+-	else
+-		sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
++	sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
+
+ 	/* Configure to default data timeout */
+ 	sdr_set_field(host->base + SDC_CFG, SDC_CFG_DTOC, 3);
+@@ -2103,7 +2101,12 @@ static void msdc_hw_reset(struct mmc_host *mmc)
+
+ static void msdc_ack_sdio_irq(struct mmc_host *mmc)
+ {
+-	__msdc_enable_sdio_irq(mmc, 1);
++	unsigned long flags;
++	struct msdc_host *host = mmc_priv(mmc);
++
++	spin_lock_irqsave(&host->lock, flags);
++	__msdc_enable_sdio_irq(host, 1);
++	spin_unlock_irqrestore(&host->lock, flags);
+ }
+
+ static int msdc_get_cd(struct mmc_host *mmc)
+--
+1.9.1
