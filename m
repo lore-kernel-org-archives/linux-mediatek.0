@@ -1,134 +1,97 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH 1/2] mmc: mediatek: fix SDIO IRQ interrupt handle flow
-Date: Mon, 17 Jun 2019 09:47:07 +0200
-Message-ID: <CAPDyKFqs2ngPfR_SM2MEssFVDDw=S7G_Oy7V7x-bP9_aFm5XDQ@mail.gmail.com>
-References: <1560489970-30467-1-git-send-email-jjian.zhou@mediatek.com>
- <CAPDyKFrXU4bpKeB7Aa15j2nHqUCn-bk+YKn9_vkznmi+PS8H7A@mail.gmail.com> <1560751020.3103.25.camel@mhfsdcap03>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v7 08/21] iommu/mediatek: Add larb-id remapped support
+Date: Mon, 17 Jun 2019 11:25:07 +0200
+Message-ID: <3dec887b-06b5-1aeb-8bd8-924999addd53@gmail.com>
+References: <1560169080-27134-1-git-send-email-yong.wu@mediatek.com>
+ <1560169080-27134-9-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1560751020.3103.25.camel@mhfsdcap03>
+In-Reply-To: <1560169080-27134-9-git-send-email-yong.wu@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: jjian zhou <jjian.zhou@mediatek.com>
-Cc: =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?= <Chaotian.Jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, =?UTF-8?B?WW9uZyBNYW8gKOavm+WLhyk=?= <yong.mao@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, Will Deacon <will.deacon@arm.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, yingjoe.chen@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, Matthias Kaehlcke <mka@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 17 Jun 2019 at 07:57, jjian zhou <jjian.zhou@mediatek.com> wrote:
->
-> On Fri, 2019-06-14 at 17:46 +0800, Ulf Hansson wrote:
-> > On Fri, 14 Jun 2019 at 07:26, Jjian Zhou <jjian.zhou@mediatek.com> wrote:
-> > >
-> > > From: jjian zhou <jjian.zhou@mediatek.com>
-> > >
-> > > SDIO IRQ is triggered by low level. It need disable SDIO IRQ
-> > > detected function. Otherwise the interrupt register can't be cleared.
-> > > It will process the interrupt more.
-> > >
-> > > Signed-off-by: Jjian Zhou <jjian.zhou@mediatek.com>
-> > > Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
-> > > Signed-off-by: Yong Mao <yong.mao@mediatek.com>
-> > > ---
-> > >  drivers/mmc/host/mtk-sd.c | 13 +++++++------
-> > >  1 file changed, 7 insertions(+), 6 deletions(-)
-> > >
-> > > diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> > > index c518cc2..29992ae 100644
-> > > --- a/drivers/mmc/host/mtk-sd.c
-> > > +++ b/drivers/mmc/host/mtk-sd.c
-> > > @@ -1389,10 +1389,12 @@ static void __msdc_enable_sdio_irq(struct mmc_host *mmc, int enb)
-> > >         struct msdc_host *host = mmc_priv(mmc);
-> > >
-> > >         spin_lock_irqsave(&host->lock, flags);
-> > > -       if (enb)
-> > > +       if (enb) {
-> > >                 sdr_set_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
-> > > -       else
-> > > +               sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
-> > > +       } else {
-> > >                 sdr_clr_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
-> >
-> > Rather than clearing SDC_CFG_SDIOIDE in the irq handler, you need to
-> > do it here. As otherwise when the mmc core calls
-> > host->ops->enable_sdio_irq() to disable the SDIO IRQ, it may stay
-> > enabled.
-> >
->
-> Thank you for your review.
->
-> I remove the spin lock in "__msdc_enable_sdio_irq" and add
-> spin lock in "msdc_enable_sdio_irq". The modification of
-> "__msdc_enable_sdio_irq" and "msdc_enable_sdio_irq" is as following.
->
-> static void __msdc_enable_sdio_irq(struct msdc_host *host, int enb)
-> {
->         if (enb) {
->                 sdr_set_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
->                 sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
->         } else {
->                 sdr_clr_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
->                 sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
->         }
-> }
->
-> static void msdc_enable_sdio_irq(struct mmc_host *mmc, int enb)
-> {
->         unsigned long flags;
->         struct msdc_host *host = mmc_priv(mmc);
->         spin_lock_irqsave(&host->lock, flags);;
->         __msdc_enable_sdio_irq(host, enb);
->         spin_unlock_irqrestore(&host->lock, flags);
->
->         if (enb)
->                 pm_runtime_get_noresume(host->dev);
->         else
->                 pm_runtime_get_noidle(host->dev);
-> }
->
-> > > +       }
-> > >         spin_unlock_irqrestore(&host->lock, flags);
-> > >  }
-> > >
-> > > @@ -1422,6 +1424,8 @@ static irqreturn_t msdc_irq(int irq, void *dev_id)
-> > >                 spin_lock_irqsave(&host->lock, flags);
-> > >                 events = readl(host->base + MSDC_INT);
-> > >                 event_mask = readl(host->base + MSDC_INTEN);
-> > > +               if ((events & event_mask) & MSDC_INT_SDIOIRQ)
-> > > +                       sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
-> >
-> > As stated above, I suggest you move this into __msdc_enable_sdio_irq()
-> > and thus call that function from here instead. Well, that doesn't work
-> > as is, because of the spin lock, so you rather need to make a
-> > sub-function of __msdc_enable_sdio_irq, that don't take/releases the
-> > lock.
-> >
-> > I hope that was clear. If not, I can post a patch to show you what I mean.
-> >
->
-> I also modify this part handler in msdc_irq.
->
->         spin_lock_irqsave(&host->lock, flags);
->         events = readl(host->base + MSDC_INT);
->         event_mask = readl(host->base + MSDC_INTEN);
->         if ((events & event_mask) & MSDC_INT_SDIOIRQ)
->                 __msdc_enable_sdio_irq(host, 0);
->         /* clear interrupts */
->         writel(events & event_mask, host->base + MSDC_INT);
->
->         mrq = host->mrq;
->         cmd = host->cmd;
->         data = host->data;
->         spin_unlock_irqrestore(&host->lock, flags);
->
->         if ((events & event_mask) & MSDC_INT_SDIOIRQ)
->                 sdio_signal_irq(host->mmc);
->
-> I also will add spin lock in the "msdc_ack_sdio_irq".
->
-> Looking forward to your suggestions.
 
-Seems reasonable, please post a new version, then I will review again.
 
-[...]
+On 10/06/2019 14:17, Yong Wu wrote:
+> The larb-id may be remapped in the smi-common, this means the
+> larb-id reported in the mtk_iommu_isr isn't the real larb-id,
+> 
+> Take mt8183 as a example:
+>                        M4U
+>                         |
+> ---------------------------------------------
+> |               SMI common                  |
+> -0-----7-----5-----6-----1-----2------3-----4- <- Id remapped
+>  |     |     |     |     |     |      |     |
+> larb0 larb1 IPU0  IPU1 larb4 larb5  larb6  CCU
+> disp  vdec  img   cam   venc  img    cam
+> As above, larb0 connects with the id 0 in smi-common.
+>           larb1 connects with the id 7 in smi-common.
+>           ...
+> If the larb-id reported in the isr is 7, actually it's larb1(vdec).
+> In order to output the right larb-id in the isr, we add a larb-id
+> remapping relationship in this patch.
+> 
+> If there is no this larb-id remapping in some SoCs, use the linear
+> mapping array instead.
+> 
+> This also is a preparing patch for mt8183.
+> 
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
+> Reviewed-by: Evan Green <evgreen@chromium.org>
 
-Kind regards
-Uffe
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
+> ---
+>  drivers/iommu/mtk_iommu.c | 4 ++++
+>  drivers/iommu/mtk_iommu.h | 2 ++
+>  2 files changed, 6 insertions(+)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index 264dda4..ad838b9 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -220,6 +220,8 @@ static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
+>  	fault_larb = F_MMU0_INT_ID_LARB_ID(regval);
+>  	fault_port = F_MMU0_INT_ID_PORT_ID(regval);
+>  
+> +	fault_larb = data->plat_data->larbid_remap[fault_larb];
+> +
+>  	if (report_iommu_fault(&dom->domain, data->dev, fault_iova,
+>  			       write ? IOMMU_FAULT_WRITE : IOMMU_FAULT_READ)) {
+>  		dev_err_ratelimited(
+> @@ -744,12 +746,14 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
+>  	.m4u_plat     = M4U_MT2712,
+>  	.has_4gb_mode = true,
+>  	.has_bclk     = true,
+> +	.larbid_remap = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
+>  };
+>  
+>  static const struct mtk_iommu_plat_data mt8173_data = {
+>  	.m4u_plat     = M4U_MT8173,
+>  	.has_4gb_mode = true,
+>  	.has_bclk     = true,
+> +	.larbid_remap = {0, 1, 2, 3, 4, 5}, /* Linear mapping. */
+>  };
+>  
+>  static const struct of_device_id mtk_iommu_of_ids[] = {
+> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+> index 63e235e..61fd5d6 100644
+> --- a/drivers/iommu/mtk_iommu.h
+> +++ b/drivers/iommu/mtk_iommu.h
+> @@ -46,6 +46,8 @@ struct mtk_iommu_plat_data {
+>  
+>  	/* HW will use the EMI clock if there isn't the "bclk". */
+>  	bool                has_bclk;
+> +
+> +	unsigned char       larbid_remap[MTK_LARB_NR_MAX];
+>  };
+>  
+>  struct mtk_iommu_domain;
+> 
