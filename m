@@ -1,7 +1,7 @@
 From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Subject: Re: [PATCH v2, 1/3] dt-bindings: soc: Add MT8183 emi dt-bindings
-Date: Tue, 18 Jun 2019 23:23:12 +0200
-Message-ID: <2e9ad859-4f98-ea40-47f7-dd27a2e8ad1a@gmail.com>
+Date: Tue, 18 Jun 2019 23:32:15 +0200
+Message-ID: <668e6ccb-709b-a93a-7113-a22362048972@gmail.com>
 References: <1558670066-22484-1-git-send-email-xixi.chen@mediatek.com>
  <1558670066-22484-2-git-send-email-xixi.chen@mediatek.com>
 Mime-Version: 1.0
@@ -42,22 +42,29 @@ On 24/05/2019 05:54, Xi Chen wrote:
 > @@ -0,0 +1,19 @@
 > +EMI (External Memory Interface)
 > +
-
-Please describe a bit more what the EMI interface does.
-
 > +Required properties:
 > +- compatible : must be one of :
 > +	"mediatek,mt8183-emi"
 > +- reg : the register and size of the EMI block.
+
+Please name the registers explicitly.
+
 > +- interrupts : includes MPU, CGM, ELM.
 > +
 > +Example:
 > +	emi@10219000 {
 > +	compatible = "mediatek,mt8183-emi";
+
+Please do the indention right.
+
 > +	reg = <0 0x10219000 0 0x1000>, /* CEN EMI */
 > +		  <0 0x10226000 0 0x1000>, /* EMI MPU */
 > +		  <0 0x1022d000 0 0x1000>, /* CHA EMI */
 > +		  <0 0x10235000 0 0x1000>; /* CHB EMI */
+
+This looks quite spread out over the IO space. Is this really one HW block or
+did you add various blocks into one driver?
+
 > +	interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_LOW>, /* MPU */
 > +			 <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>, /* CGM */
 > +			 <GIC_SPI 155 IRQ_TYPE_LEVEL_HIGH>; /* ELM */
