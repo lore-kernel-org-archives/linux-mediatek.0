@@ -1,90 +1,84 @@
-From: Hsin-Yi Wang <hsinyi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v2, 3/3] mt8183: emi: add bandwidth driver support
-Date: Tue, 18 Jun 2019 17:40:10 +0800
-Message-ID: <CAJMQK-gTh-Zm8ct-DMsjee7H8GJKWxJ2BWW=YKXeinmAiW98gQ@mail.gmail.com>
-References: <1558670066-22484-1-git-send-email-xixi.chen@mediatek.com>
- <1558670066-22484-4-git-send-email-xixi.chen@mediatek.com>
+From: =?utf-8?b?UmVuw6k=?= van Dorst <opensource@vdorst.com>
+Subject: Re: [PATCH net-next 0/2] net: mediatek: Add MT7621 TRGMII mode
+ support
+Date: Tue, 18 Jun 2019 11:46:53 +0000
+Message-ID: <20190618114653.Horde._ZDbcd1ZKyg5vfM1JnmQJZb@www.vdorst.com>
+References: <20190616182010.18778-1-opensource@vdorst.com>
+ <20190617140223.GC25211@lunn.ch>
+ <20190617213312.Horde.fcb9-g80Zzfd-IMC8EQy50h@www.vdorst.com>
+ <20190617214428.GO17551@lunn.ch>
+ <20190617232004.Horde.mAVymZdeb9Jjf29W2PeOggU@www.vdorst.com>
+ <20190618015309.GA18088@lunn.ch>
+ <7f2fc770-1787-72f8-b91d-e2b12e74d39e@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1558670066-22484-4-git-send-email-xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed; DelSp=Yes
+Content-Transfer-Encoding: 8bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <7f2fc770-1787-72f8-b91d-e2b12e74d39e@gmail.com>
+Content-Disposition: inline
+Sender: netdev-owner@vger.kernel.org
+To: Florian Fainelli <f.fainelli@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Sean Wang <sean.wang@mediatek.com>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, Vivien Didelot <vivien.didelot@gmail.com>, netdev@vger.kernel.org, john@phrozen.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, May 24, 2019 at 3:54 AM Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+Quoting Florian Fainelli <f.fainelli@gmail.com>:
 
-> +struct mtk_emi {
-> +       struct device *dev;
-> +       void __iomem *cen_emi_base;
-> +       void __iomem *chn_emi_base[MAX_CH];
-> +       void __iomem *emi_mpu_base;
-> +
-> +       struct timer_list emi_bw_timer;
-> +       struct timeval old_tv;
-> +
-> +       unsigned long long emi_bw_array[EMI_BW_ARRAY_SIZE];
-> +       int emi_bw_cur_idx;
-> +};
-> +
-> +static unsigned long long emi_get_max_bw_in_last_array(struct device *dev,
-> +       unsigned long long arr[], unsigned int size)
-> +{
-> +       unsigned int i = 0;
-> +       unsigned long long max = arr[0];
-> +
-> +       while (i < size) {
-> +               if (arr[i] > max)
-> +                       max = arr[i];
-> +               ++i;
-> +       }
-> +       return max;
-> +}
-Would it better that if we store max element in mtk_emi struct{}, so
-that we don't need to scan entire array everytime to find max? Though
-array size only 67.
-This max element can be update in emi_update_bw_array().
+Hi Andrew and Florian,
 
-> +unsigned long long mtk_emi_get_max_bw(struct device *dev)
-> +{
-> +       struct mtk_emi *emi;
-> +
-> +       if (!dev)
-> +               return 0;
-> +
-> +       emi = dev_get_drvdata(dev);
-> +       return emi_get_max_bw_in_last_array(dev,
-> +               emi->emi_bw_array, ARRAY_SIZE(emi->emi_bw_array));
-> +}
-> +EXPORT_SYMBOL(mtk_emi_get_max_bw);
-> +
-> +static void emi_update_bw_array(struct device *dev, unsigned int val)
-> +{
-> +       struct mtk_emi *emi = dev_get_drvdata(dev);
-> +
-> +       if (emi->emi_bw_cur_idx == emi->EMI_BW_ARRAY_SIZE) {
-> +               /* remove the first array element */
-> +               memmove(emi->emi_bw_array, emi->emi_bw_array + 1,
-> +                       sizeof(unsigned long long) * (emi->EMI_BW_ARRAY_SIZE - 1));
-> +               emi->emi_bw_array[emi->EMI_BW_ARRAY_SIZE - 1] = val;
-> +       } else
-> +               emi->emi_bw_array[emi->emi_bw_cur_idx++] = val;
-> +}
-> +
-Is the order of the emi_bw_array important?
-If not, update latest element don't need to be at the end, so we don't
-need O(n) shift everytime when inserting new element.
-If the order is important, we can also do insert in O(1), by adding a
-pointer that points to the oldest element in array. When insert a new
-element, replace oldest element with latest one and move the pointer
-one space backward.
+> On 6/17/2019 6:53 PM, Andrew Lunn wrote:
+>>> By adding some extra speed states in the code it seems to work.
+>>>
+>>> +               if (state->speed == 1200)
+>>> +                       mcr |= PMCR_FORCE_SPEED_1000;
+>>
+>> Hi René
+>>
+>> Is TRGMII always 1.2G? Or can you set it to 1000 or 1200?
+
+In case of the MT7621 SOC yes, according to the SDKs the MT7623 has 2 options
+2GBit and 2.6Gbit. The current mt7530 driver only set TRGMII speed at 2Gbit.
+
+>> This PMCR_FORCE_SPEED_1000 feels wrong.
+>
+> It is not uncommon to have to "force" 1G to get a higher speed, there is
+> something similar with B53 switches configuring the CPU ports at 2GB/sec
+> (proprietary too and not standardized either).
+
+On the SOC MAC side it is basicly only a MAC clock change.
+MAC control registers still need to be set forced 1G.
+
+>
+>>
+>>>> We could consider adding 1200BaseT/Full?
+>>>
+>>> I don't have any opinion about this.
+>>> It is great that it shows nicely in ethtool but I think supporting more
+>>> speeds in phy_speed_to_str() is enough.
+>>>
+>>> Also you may want to add other SOCs trgmii ranges too:
+>>> - 1200BaseT/Full for mt7621 only
+>>> - 2000BaseT/Full for mt7623 and mt7683
+>>> - 2600BaseT/Full for mt7623 only
+>>
+>> Are these standardised in any way? Or MTK proprietary?  Also, is the T
+>> in BaseT correct? These speeds work over copper cables? Or should we
+>> be talking about 1200BaseKX?
+>
+> Looks like this is MTK proprietary:
+>
+> http://lists.infradead.org/pipermail/linux-mediatek/2016-September/007083.html
+> https://patchwork.kernel.org/patch/9341129/
+> --
+> Florian
+
+MTK proprietary, But I think it is equal too the RGMII but with a  
+faster clock.
+
+But do we need a "xxxxBaseT/Full" at all for these fixed-link cases?
+If I am correct a "xxxxBaseT/Full" is only needed to automatically select the
+best option. But with fixed-link we force it so extra "xxxxBaseT/Full" is not
+needed.
+
+Greats,
+
+René
