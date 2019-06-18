@@ -1,14 +1,14 @@
 From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2, 1/3] dt-bindings: soc: Add MT8183 emi dt-bindings
-Date: Tue, 18 Jun 2019 23:32:15 +0200
-Message-ID: <668e6ccb-709b-a93a-7113-a22362048972@gmail.com>
+Subject: Re: [PATCH v2, 2/3] arm64: dts: mt8183: add emi node
+Date: Tue, 18 Jun 2019 23:32:43 +0200
+Message-ID: <768b95c9-b0d4-844e-906d-0d8d3bb4fe65@gmail.com>
 References: <1558670066-22484-1-git-send-email-xixi.chen@mediatek.com>
- <1558670066-22484-2-git-send-email-xixi.chen@mediatek.com>
+ <1558670066-22484-3-git-send-email-xixi.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1558670066-22484-2-git-send-email-xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+In-Reply-To: <1558670066-22484-3-git-send-email-xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
@@ -26,47 +26,36 @@ List-Id: linux-mediatek@lists.infradead.org
 
 
 On 24/05/2019 05:54, Xi Chen wrote:
-> Add emi dt-bindings of MT8183 in binding document.
+> Add emi dts node.
 > 
 > Signed-off-by: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > ---
->  .../bindings/memory-controllers/mediatek,emi.txt      | 19 +++++++++++++++++++
->  1 file changed, 19 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt b/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
-> new file mode 100644
-> index 0000000..a19e3b3
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
-> @@ -0,0 +1,19 @@
-> +EMI (External Memory Interface)
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index 75c4881..2a176e9 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -269,6 +269,17 @@
+>  			clock-names = "spi", "wrap";
+>  		};
+>  
+> +		emi@10219000 {
+> +			compatible = "mediatek,mt8183-emi";
+> +			reg = <0 0x10219000 0 0x1000>, /* CEN EMI */
+> +				  <0 0x10226000 0 0x1000>, /* EMI MPU */
+> +				  <0 0x1022d000 0 0x1000>, /* CHA EMI */
+> +			      <0 0x10235000 0 0x1000>; /* CHB EMI */
+> +			interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_LOW>, /* MPU */
+> +						 <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>, /* CGM */
+> +						 <GIC_SPI 155 IRQ_TYPE_LEVEL_HIGH>; /* ELM */
+
+indentation seems borken here.
+
+> +		};
 > +
-> +Required properties:
-> +- compatible : must be one of :
-> +	"mediatek,mt8183-emi"
-> +- reg : the register and size of the EMI block.
-
-Please name the registers explicitly.
-
-> +- interrupts : includes MPU, CGM, ELM.
-> +
-> +Example:
-> +	emi@10219000 {
-> +	compatible = "mediatek,mt8183-emi";
-
-Please do the indention right.
-
-> +	reg = <0 0x10219000 0 0x1000>, /* CEN EMI */
-> +		  <0 0x10226000 0 0x1000>, /* EMI MPU */
-> +		  <0 0x1022d000 0 0x1000>, /* CHA EMI */
-> +		  <0 0x10235000 0 0x1000>; /* CHB EMI */
-
-This looks quite spread out over the IO space. Is this really one HW block or
-did you add various blocks into one driver?
-
-> +	interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_LOW>, /* MPU */
-> +			 <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>, /* CGM */
-> +			 <GIC_SPI 155 IRQ_TYPE_LEVEL_HIGH>; /* ELM */
-> +};
+>  		uart0: serial@11002000 {
+>  			compatible = "mediatek,mt8183-uart",
+>  				     "mediatek,mt6577-uart";
 > 
