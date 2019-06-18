@@ -1,54 +1,90 @@
-From: =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>
-Subject: Re: [RFC PATCH v4 1/1] mtd: rawnand: mtk: Re-license MTK NAND driver
- as Dual MIT/GPL
-Date: Tue, 18 Jun 2019 11:36:56 +0200
-Message-ID: <75974a2066425e5852d0295b22d2b259@milecki.pl>
-References: <20190507092020.1917-1-xiaolei.li@mediatek.com>
- <20190507092020.1917-2-xiaolei.li@mediatek.com>
- <CAK8P3a3d-2U=hpb0P0+W-eZ0cviwKVwy6dWvHbhBCgF4CJUWKA@mail.gmail.com>
- <5052ea548ce89c1a588236d00319960b@milecki.pl>
- <1558685891.18315.33.camel@mhfsdcap03>
+From: Hsin-Yi Wang <hsinyi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2, 3/3] mt8183: emi: add bandwidth driver support
+Date: Tue, 18 Jun 2019 17:40:10 +0800
+Message-ID: <CAJMQK-gTh-Zm8ct-DMsjee7H8GJKWxJ2BWW=YKXeinmAiW98gQ@mail.gmail.com>
+References: <1558670066-22484-1-git-send-email-xixi.chen@mediatek.com>
+ <1558670066-22484-4-git-send-email-xixi.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
-In-Reply-To: <1558685891.18315.33.camel@mhfsdcap03>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
-List-Post: <mailto:linux-mtd@lists.infradead.org>
-List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
-Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
-To: xiaolei li <xiaolei.li@mediatek.com>
-Cc: Daniel Thompson <daniel.thompson@linaro.org>, Ryder Lee <ryder.lee@mediatek.com>, srv_heupstream@mediatek.com, Arnd Bergmann <arnd@arndb.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, Richard Weinberger <richard@nod.at>, Miquel Raynal <miquel.raynal@bootlin.com>, "Gustavo A. R. Silva" <gustavo@embeddedor.com>, jorge.ramirez-ortiz@linaro.org, yingjoe.chen@mediatek.com, boris.brezillon@collabora.com, linux-mtd <linux-mtd@lists.infradead.org>, Wei Yongjun <weiyongjun1@huawei.com>, yellowriver2010@hotmail.com, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, rogercc.lin@mediatek.com, Dan Carpenter <dan.carpenter@oracle.com>, peterpandong@micron.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1558670066-22484-4-git-send-email-xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gMjAxOS0wNS0yNCAxMDoxOCwgeGlhb2xlaSBsaSB3cm90ZToKPiBPbiBGcmksIDIwMTktMDUt
-MjQgYXQgMDk6NTUgKzAyMDAsIFJhZmHFgiBNacWCZWNraSB3cm90ZToKPj4gT24gMjAxOS0wNS0y
-NCAwOTo1MiwgQXJuZCBCZXJnbWFubiB3cm90ZToKPj4gPiBPbiBUdWUsIE1heSA3LCAyMDE5IGF0
-IDExOjIwIEFNIFhpYW9sZWkgTGkgPHhpYW9sZWkubGlAbWVkaWF0ZWsuY29tPgo+PiA+IHdyb3Rl
-Ogo+PiA+Pgo+PiA+PiBJdCBpcyB3YW50ZWQgdG8gdXNlIE1USyBOQU5EIGRyaXZlciB3aXRoIEdQ
-TC0yLjAgb3IgTUlUIGxpY2Vuc2UuCj4+ID4+IEJ1dCBub3cgaXQgaXMgb25seSBsaWNlbnNlZCBh
-cyBHUEwtMi4wLgo+PiA+PiBTbyByZS1saWNlbnNlIGl0IGFzIGR1YWwgTUlUL0dQTCBhbmQgcmVw
-bGFjZSBsaWNlbnNlIHRleHQgd2l0aAo+PiA+PiBTUERYIHRhZy4KPj4gPj4KPj4gPj4gU2lnbmVk
-LW9mZi1ieTogWGlhb2xlaSBMaSA8eGlhb2xlaS5saUBtZWRpYXRlay5jb20+Cj4+ID4+IEFja2Vk
-LWJ5OiBKb3JnZSBSYW1pcmV6LU9ydGl6IDxqb3JnZS5yYW1pcmV6LW9ydGl6QGxpbmFyby5vcmc+
-Cj4+ID4+IEFja2VkLWJ5OiBSeWRlciBMZWUgPHJ5ZGVyLmxlZUBtZWRpYXRlay5jb20+Cj4+ID4+
-IEFja2VkLWJ5OiBSYWZhxYIgTWnFgmVja2kgPHJhZmFsQG1pbGVja2kucGw+Cj4+ID4+IEFja2Vk
-LWJ5OiBNaXF1ZWwgUmF5bmFsIDxtaXF1ZWwucmF5bmFsQGJvb3RsaW4uY29tPgo+PiA+PiBBY2tl
-ZC1ieTogQm9yaXMgQnJlemlsbG9uIDxib3Jpcy5icmV6aWxsb25AY29sbGFib3JhLmNvbT4KPj4g
-Pj4gQWNrZWQtYnk6IFJvZ2VyQ0MgTGluIDxyb2dlcmNjLmxpbkBtZWRpYXRlay5jb20+Cj4+ID4K
-Pj4gPiBBY2tlZC1ieTogQXJuZCBCZXJnbWFubiA8YXJuZEBhcm5kYi5kZT4KPj4gPgo+PiA+IFNv
-cnJ5IGZvciBtaXNzaW5nIHRoaXMgZWFybGllci4KPj4gCj4+IFRoYW5rIHlvdSEKPj4gCj4+IFhp
-YW9sZWk6IHBsZWFzZSByZXNlbmQgdGhpcyBwYXRjaCB3aXRob3V0IFJGQyBpbiBhIHN1YmplY3Qu
-IEkgYmVsaWV2ZSAKPj4gaXQKPj4gY2FuIGJlIGFwcGxpZWQvcHVzaGVkIG5vdy4KPiAKPiBUaGFu
-a3MgdmVyeSBtdWNoIGZvciB5b3VyIHJlc3BvbnNlIQo+IEkgd2lsbCBzZW5kIGEgZm9ybWFsIHBh
-dGNoIHNvb24uCgpIaSBYaWFvbGVpLCB3aGF0J3MgdGhlIHN0YXR1cyBvZiB0aGlzPwoKSXQgdG9v
-ayBzb21lIGVmZm9ydCB0byBzb3J0IHRoYXQgbGljZW5zaW5nIG91dCwgSSBiZWxpZXZlIGhhbmRs
-aW5nIHRoaXMKc29vbmVyIHRoYW4gbGF0ZXIgaXMgaGlnaGx5IHJlY29tbWVuZGVkLgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4IE1U
-RCBkaXNjdXNzaW9uIG1haWxpbmcgbGlzdApodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2xpbnV4LW10ZC8K
+On Fri, May 24, 2019 at 3:54 AM Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+
+> +struct mtk_emi {
+> +       struct device *dev;
+> +       void __iomem *cen_emi_base;
+> +       void __iomem *chn_emi_base[MAX_CH];
+> +       void __iomem *emi_mpu_base;
+> +
+> +       struct timer_list emi_bw_timer;
+> +       struct timeval old_tv;
+> +
+> +       unsigned long long emi_bw_array[EMI_BW_ARRAY_SIZE];
+> +       int emi_bw_cur_idx;
+> +};
+> +
+> +static unsigned long long emi_get_max_bw_in_last_array(struct device *dev,
+> +       unsigned long long arr[], unsigned int size)
+> +{
+> +       unsigned int i = 0;
+> +       unsigned long long max = arr[0];
+> +
+> +       while (i < size) {
+> +               if (arr[i] > max)
+> +                       max = arr[i];
+> +               ++i;
+> +       }
+> +       return max;
+> +}
+Would it better that if we store max element in mtk_emi struct{}, so
+that we don't need to scan entire array everytime to find max? Though
+array size only 67.
+This max element can be update in emi_update_bw_array().
+
+> +unsigned long long mtk_emi_get_max_bw(struct device *dev)
+> +{
+> +       struct mtk_emi *emi;
+> +
+> +       if (!dev)
+> +               return 0;
+> +
+> +       emi = dev_get_drvdata(dev);
+> +       return emi_get_max_bw_in_last_array(dev,
+> +               emi->emi_bw_array, ARRAY_SIZE(emi->emi_bw_array));
+> +}
+> +EXPORT_SYMBOL(mtk_emi_get_max_bw);
+> +
+> +static void emi_update_bw_array(struct device *dev, unsigned int val)
+> +{
+> +       struct mtk_emi *emi = dev_get_drvdata(dev);
+> +
+> +       if (emi->emi_bw_cur_idx == emi->EMI_BW_ARRAY_SIZE) {
+> +               /* remove the first array element */
+> +               memmove(emi->emi_bw_array, emi->emi_bw_array + 1,
+> +                       sizeof(unsigned long long) * (emi->EMI_BW_ARRAY_SIZE - 1));
+> +               emi->emi_bw_array[emi->EMI_BW_ARRAY_SIZE - 1] = val;
+> +       } else
+> +               emi->emi_bw_array[emi->emi_bw_cur_idx++] = val;
+> +}
+> +
+Is the order of the emi_bw_array important?
+If not, update latest element don't need to be at the end, so we don't
+need O(n) shift everytime when inserting new element.
+If the order is important, we can also do insert in O(1), by adding a
+pointer that points to the oldest element in array. When insert a new
+element, replace oldest element with latest one and move the pointer
+one space backward.
