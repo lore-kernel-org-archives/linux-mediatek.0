@@ -1,151 +1,161 @@
-From: Yong Wu <yong.wu@mediatek.com>
-Subject: Re: [PATCH v2 08/12] drm/mediatek: Get rid of mtk_smi_larb_get/put
-Date: Tue, 18 Jun 2019 20:14:24 +0800
-Message-ID: <1560860064.9531.0.camel@mhfsdcap03>
-References: <1560171313-28299-1-git-send-email-yong.wu@mediatek.com>
-         <1560171313-28299-9-git-send-email-yong.wu@mediatek.com>
-         <1560839719.3736.0.camel@mtksdaap41>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v7 17/21] memory: mtk-smi: Get rid of need_larbid
+Date: Tue, 18 Jun 2019 15:45:27 +0200
+Message-ID: <1af7b67a-b73a-efb9-e1f8-5701f05a4af0@gmail.com>
+References: <1560169080-27134-1-git-send-email-yong.wu@mediatek.com>
+ <1560169080-27134-18-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1560839719.3736.0.camel@mtksdaap41>
+In-Reply-To: <1560169080-27134-18-git-send-email-yong.wu@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Evan Green <evgreen@chromium.org>, Robin Murphy <robin.murphy@arm.com>, Tomasz Figa <tfiga@google.com>, Will Deacon <will.deacon@arm.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, yingjoe.chen@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, Philipp Zabel <p.zabel@pengutronix.de>
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, Will Deacon <will.deacon@arm.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, yingjoe.chen@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, Matthias Kaehlcke <mka@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-06-18 at 14:35 +0800, CK Hu wrote:
-> Hi, Yong:
-> 
-> On Mon, 2019-06-10 at 20:55 +0800, Yong Wu wrote:
-> > MediaTek IOMMU has already added the device_link between the consumer
-> > and smi-larb device. If the drm device call the pm_runtime_get_sync,
-> > the smi-larb's pm_runtime_get_sync also be called automatically.
-> > 
-> > CC: CK Hu <ck.hu@mediatek.com>
-> > CC: Philipp Zabel <p.zabel@pengutronix.de>
-> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > Reviewed-by: Evan Green <evgreen@chromium.org>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 11 -----------
-> >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 26 --------------------------
-> >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  1 -
-> >  3 files changed, 38 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > index acad088..3a21a48 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > @@ -18,7 +18,6 @@
-> >  #include <drm/drm_probe_helper.h>
-> >  #include <linux/clk.h>
-> >  #include <linux/pm_runtime.h>
-> > -#include <soc/mediatek/smi.h>
-> >  
-> >  #include "mtk_drm_drv.h"
-> >  #include "mtk_drm_crtc.h"
-> > @@ -371,20 +370,12 @@ static void mtk_drm_crtc_atomic_enable(struct drm_crtc *crtc,
-> >  				       struct drm_crtc_state *old_state)
-> >  {
-> >  	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
-> > -	struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
-> >  	int ret;
-> >  
-> >  	DRM_DEBUG_DRIVER("%s %d\n", __func__, crtc->base.id);
-> >  
-> > -	ret = mtk_smi_larb_get(comp->larb_dev);
-> > -	if (ret) {
-> > -		DRM_ERROR("Failed to get larb: %d\n", ret);
-> > -		return;
-> > -	}
-> > -
-> >  	ret = mtk_crtc_ddp_hw_init(mtk_crtc);
-> >  	if (ret) {
-> > -		mtk_smi_larb_put(comp->larb_dev);
-> >  		return;
-> >  	}
-> 
-> Remove {}.
 
-Thanks. I will fix in next version.
 
+On 10/06/2019 14:17, Yong Wu wrote:
+> The "mediatek,larb-id" has already been parsed in MTK IOMMU driver.
+> It's no need to parse it again in SMI driver. Only clean some codes.
+> This patch is fit for all the current mt2701, mt2712, mt7623, mt8173
+> and mt8183.
 > 
-> Regards,
-> CK
+> After this patch, the "mediatek,larb-id" only be needed for mt2712
+> which have 2 M4Us. In the other SoCs, we can get the larb-id from M4U
+> in which the larbs in the "mediatek,larbs" always are ordered.
 > 
-> >  
-> > @@ -396,7 +387,6 @@ static void mtk_drm_crtc_atomic_disable(struct drm_crtc *crtc,
-> >  					struct drm_crtc_state *old_state)
-> >  {
-> >  	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
-> > -	struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
-> >  	int i;
-> >  
-> >  	DRM_DEBUG_DRIVER("%s %d\n", __func__, crtc->base.id);
-> > @@ -419,7 +409,6 @@ static void mtk_drm_crtc_atomic_disable(struct drm_crtc *crtc,
-> >  
-> >  	drm_crtc_vblank_off(crtc);
-> >  	mtk_crtc_ddp_hw_fini(mtk_crtc);
-> > -	mtk_smi_larb_put(comp->larb_dev);
-> >  
-> >  	mtk_crtc->enabled = false;
-> >  }
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> > index 54ca794..ede15c9 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> > @@ -265,8 +265,6 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *node,
-> >  		      const struct mtk_ddp_comp_funcs *funcs)
-> >  {
-> >  	enum mtk_ddp_comp_type type;
-> > -	struct device_node *larb_node;
-> > -	struct platform_device *larb_pdev;
-> >  
-> >  	if (comp_id < 0 || comp_id >= DDP_COMPONENT_ID_MAX)
-> >  		return -EINVAL;
-> > @@ -296,30 +294,6 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *node,
-> >  	if (IS_ERR(comp->clk))
-> >  		return PTR_ERR(comp->clk);
-> >  
-> > -	/* Only DMA capable components need the LARB property */
-> > -	comp->larb_dev = NULL;
-> > -	if (type != MTK_DISP_OVL &&
-> > -	    type != MTK_DISP_RDMA &&
-> > -	    type != MTK_DISP_WDMA)
-> > -		return 0;
-> > -
-> > -	larb_node = of_parse_phandle(node, "mediatek,larb", 0);
-> > -	if (!larb_node) {
-> > -		dev_err(dev,
-> > -			"Missing mediadek,larb phandle in %pOF node\n", node);
-> > -		return -EINVAL;
-> > -	}
-> > -
-> > -	larb_pdev = of_find_device_by_node(larb_node);
-> > -	if (!larb_pdev) {
-> > -		dev_warn(dev, "Waiting for larb device %pOF\n", larb_node);
-> > -		of_node_put(larb_node);
-> > -		return -EPROBE_DEFER;
-> > -	}
-> > -	of_node_put(larb_node);
-> > -
-> > -	comp->larb_dev = &larb_pdev->dev;
-> > -
-> >  	return 0;
-> >  }
-> >  
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> > index 8399229..b8dc17e 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> > @@ -91,7 +91,6 @@ struct mtk_ddp_comp {
-> >  	struct clk *clk;
-> >  	void __iomem *regs;
-> >  	int irq;
-> > -	struct device *larb_dev;
-> >  	enum mtk_ddp_comp_id id;
-> >  	const struct mtk_ddp_comp_funcs *funcs;
-> >  };
+> Correspondingly, the larb_nr in the "struct mtk_smi_iommu" could also
+> be deleted.
 > 
+
+I think we can get rid of struct mtk_smi_iommu and just add the
+struct mtk_smi_larb_iommu larb_imu[MTK_LARB_NR_MAX] directly to mtk_iommu_data,
+passing just that array to the components bind function.
+
+Never the less this patch looks fine:
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
+> CC: Matthias Brugger <matthias.bgg@gmail.com>
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> Reviewed-by: Evan Green <evgreen@chromium.org>
+> ---
+>  drivers/iommu/mtk_iommu.c    |  1 -
+>  drivers/iommu/mtk_iommu_v1.c |  2 --
+>  drivers/memory/mtk-smi.c     | 26 ++------------------------
+>  include/soc/mediatek/smi.h   |  1 -
+>  4 files changed, 2 insertions(+), 28 deletions(-)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index ec4ce74..6053b8b 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -634,7 +634,6 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>  					     "mediatek,larbs", NULL);
+>  	if (larb_nr < 0)
+>  		return larb_nr;
+> -	data->smi_imu.larb_nr = larb_nr;
+>  
+>  	for (i = 0; i < larb_nr; i++) {
+>  		struct device_node *larbnode;
+> diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+> index 52b01e3..73308ad 100644
+> --- a/drivers/iommu/mtk_iommu_v1.c
+> +++ b/drivers/iommu/mtk_iommu_v1.c
+> @@ -624,8 +624,6 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>  		larb_nr++;
+>  	}
+>  
+> -	data->smi_imu.larb_nr = larb_nr;
+> -
+>  	platform_set_drvdata(pdev, data);
+>  
+>  	ret = mtk_iommu_hw_init(data);
+> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+> index 08cf40d..10e6493 100644
+> --- a/drivers/memory/mtk-smi.c
+> +++ b/drivers/memory/mtk-smi.c
+> @@ -67,7 +67,6 @@ struct mtk_smi_common_plat {
+>  };
+>  
+>  struct mtk_smi_larb_gen {
+> -	bool need_larbid;
+>  	int port_in_larb[MTK_LARB_NR_MAX + 1];
+>  	void (*config_port)(struct device *);
+>  	unsigned int larb_direct_to_common_mask;
+> @@ -153,18 +152,9 @@ void mtk_smi_larb_put(struct device *larbdev)
+>  	struct mtk_smi_iommu *smi_iommu = data;
+>  	unsigned int         i;
+>  
+> -	if (larb->larb_gen->need_larbid) {
+> -		larb->mmu = &smi_iommu->larb_imu[larb->larbid].mmu;
+> -		return 0;
+> -	}
+> -
+> -	/*
+> -	 * If there is no larbid property, Loop to find the corresponding
+> -	 * iommu information.
+> -	 */
+> -	for (i = 0; i < smi_iommu->larb_nr; i++) {
+> +	for (i = 0; i < MTK_LARB_NR_MAX; i++) {
+>  		if (dev == smi_iommu->larb_imu[i].dev) {
+> -			/* The 'mmu' may be updated in iommu-attach/detach. */
+> +			larb->larbid = i;
+>  			larb->mmu = &smi_iommu->larb_imu[i].mmu;
+>  			return 0;
+>  		}
+> @@ -243,7 +233,6 @@ static void mtk_smi_larb_config_port_gen1(struct device *dev)
+>  };
+>  
+>  static const struct mtk_smi_larb_gen mtk_smi_larb_mt2701 = {
+> -	.need_larbid = true,
+>  	.port_in_larb = {
+>  		LARB0_PORT_OFFSET, LARB1_PORT_OFFSET,
+>  		LARB2_PORT_OFFSET, LARB3_PORT_OFFSET
+> @@ -252,7 +241,6 @@ static void mtk_smi_larb_config_port_gen1(struct device *dev)
+>  };
+>  
+>  static const struct mtk_smi_larb_gen mtk_smi_larb_mt2712 = {
+> -	.need_larbid = true,
+>  	.config_port                = mtk_smi_larb_config_port_gen2_general,
+>  	.larb_direct_to_common_mask = BIT(8) | BIT(9),      /* bdpsys */
+>  };
+> @@ -291,7 +279,6 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
+>  	struct device *dev = &pdev->dev;
+>  	struct device_node *smi_node;
+>  	struct platform_device *smi_pdev;
+> -	int err;
+>  
+>  	larb = devm_kzalloc(dev, sizeof(*larb), GFP_KERNEL);
+>  	if (!larb)
+> @@ -321,15 +308,6 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
+>  	}
+>  	larb->smi.dev = dev;
+>  
+> -	if (larb->larb_gen->need_larbid) {
+> -		err = of_property_read_u32(dev->of_node, "mediatek,larb-id",
+> -					   &larb->larbid);
+> -		if (err) {
+> -			dev_err(dev, "missing larbid property\n");
+> -			return err;
+> -		}
+> -	}
+> -
+>  	smi_node = of_parse_phandle(dev->of_node, "mediatek,smi", 0);
+>  	if (!smi_node)
+>  		return -EINVAL;
+> diff --git a/include/soc/mediatek/smi.h b/include/soc/mediatek/smi.h
+> index 5201e90..a65324d 100644
+> --- a/include/soc/mediatek/smi.h
+> +++ b/include/soc/mediatek/smi.h
+> @@ -29,7 +29,6 @@ struct mtk_smi_larb_iommu {
+>  };
+>  
+>  struct mtk_smi_iommu {
+> -	unsigned int larb_nr;
+>  	struct mtk_smi_larb_iommu larb_imu[MTK_LARB_NR_MAX];
+>  };
+>  
 > 
