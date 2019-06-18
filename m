@@ -1,161 +1,120 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v7 17/21] memory: mtk-smi: Get rid of need_larbid
-Date: Tue, 18 Jun 2019 15:45:27 +0200
-Message-ID: <1af7b67a-b73a-efb9-e1f8-5701f05a4af0@gmail.com>
+From: Tomasz Figa <tfiga@google.com>
+Subject: Re: [PATCH v7 14/21] iommu/mediatek: Add mmu1 support
+Date: Tue, 18 Jun 2019 23:05:39 +0900
+Message-ID: <CAAFQd5B8MiMA_OCUJ5HRmC5SA2772HF-rBGK0aZcKoWscOzOog@mail.gmail.com>
 References: <1560169080-27134-1-git-send-email-yong.wu@mediatek.com>
- <1560169080-27134-18-git-send-email-yong.wu@mediatek.com>
+ <1560169080-27134-15-git-send-email-yong.wu@mediatek.com>
+ <CAAFQd5A5GUn1Zq1xF2_2V0MReNPd5bra2F=nquvodSAZUua5AQ@mail.gmail.com>
+ <1560859743.8082.23.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1560169080-27134-18-git-send-email-yong.wu@mediatek.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>
-Cc: Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, Will Deacon <will.deacon@arm.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, yingjoe.chen@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, Matthias Kaehlcke <mka@chromium.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1560859743.8082.23.camel@mhfsdcap03>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream <srv_heupstream@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Evan Green <evgreen@chromium.org>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
+ Joerg Roedel <joro@8bytes.org>, " <iommu@lists.linux-foundation.org>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, =?UTF-8?B?WWluZ2pvZSBDaGVuICjpmbPoi7HmtLIp?= <yingjoe.chen@mediatek.com>, anan.sun@mediatek.com, Robin Murphy <robin.murphy@arm.com>, Matthias Kaehlcke <mka@chromium.org>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
+ Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@li>
 List-Id: linux-mediatek@lists.infradead.org
 
+On Tue, Jun 18, 2019 at 9:09 PM Yong Wu <yong.wu@mediatek.com> wrote:
+>
+> On Tue, 2019-06-18 at 15:19 +0900, Tomasz Figa wrote:
+> > On Mon, Jun 10, 2019 at 9:21 PM Yong Wu <yong.wu@mediatek.com> wrote:
+> > >
+> > > Normally the M4U HW connect EMI with smi. the diagram is like below:
+> > >               EMI
+> > >                |
+> > >               M4U
+> > >                |
+> > >             smi-common
+> > >                |
+> > >        -----------------
+> > >        |    |    |     |    ...
+> > >     larb0 larb1  larb2 larb3
+> > >
+> > > Actually there are 2 mmu cells in the M4U HW, like this diagram:
+> > >
+> > >               EMI
+> > >            ---------
+> > >             |     |
+> > >            mmu0  mmu1     <- M4U
+> > >             |     |
+> > >            ---------
+> > >                |
+> > >             smi-common
+> > >                |
+> > >        -----------------
+> > >        |    |    |     |    ...
+> > >     larb0 larb1  larb2 larb3
+> > >
+> > > This patch add support for mmu1. In order to get better performance,
+> > > we could adjust some larbs go to mmu1 while the others still go to
+> > > mmu0. This is controlled by a SMI COMMON register SMI_BUS_SEL(0x220).
+> > >
+> > > mt2712, mt8173 and mt8183 M4U HW all have 2 mmu cells. the default
+> > > value of that register is 0 which means all the larbs go to mmu0
+> > > defaultly.
+> > >
+> > > This is a preparing patch for adjusting SMI_BUS_SEL for mt8183.
+> > >
+> > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > > Reviewed-by: Evan Green <evgreen@chromium.org>
+> > > ---
+> > >  drivers/iommu/mtk_iommu.c | 46 +++++++++++++++++++++++++++++-----------------
+> > >  1 file changed, 29 insertions(+), 17 deletions(-)
+> > >
+> > > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> > > index 3a14301..ec4ce74 100644
+> > > --- a/drivers/iommu/mtk_iommu.c
+> > > +++ b/drivers/iommu/mtk_iommu.c
+> > > @@ -72,26 +72,32 @@
+> > >  #define F_INT_CLR_BIT                          BIT(12)
+> > >
+> > >  #define REG_MMU_INT_MAIN_CONTROL               0x124
+> > > -#define F_INT_TRANSLATION_FAULT                        BIT(0)
+> > > -#define F_INT_MAIN_MULTI_HIT_FAULT             BIT(1)
+> > > -#define F_INT_INVALID_PA_FAULT                 BIT(2)
+> > > -#define F_INT_ENTRY_REPLACEMENT_FAULT          BIT(3)
+> > > -#define F_INT_TLB_MISS_FAULT                   BIT(4)
+> > > -#define F_INT_MISS_TRANSACTION_FIFO_FAULT      BIT(5)
+> > > -#define F_INT_PRETETCH_TRANSATION_FIFO_FAULT   BIT(6)
+> > > +                                               /* mmu0 | mmu1 */
+> > > +#define F_INT_TRANSLATION_FAULT                        (BIT(0) | BIT(7))
+> > > +#define F_INT_MAIN_MULTI_HIT_FAULT             (BIT(1) | BIT(8))
+> > > +#define F_INT_INVALID_PA_FAULT                 (BIT(2) | BIT(9))
+> > > +#define F_INT_ENTRY_REPLACEMENT_FAULT          (BIT(3) | BIT(10))
+> > > +#define F_INT_TLB_MISS_FAULT                   (BIT(4) | BIT(11))
+> > > +#define F_INT_MISS_TRANSACTION_FIFO_FAULT      (BIT(5) | BIT(12))
+> > > +#define F_INT_PRETETCH_TRANSATION_FIFO_FAULT   (BIT(6) | BIT(13))
+> >
+> > If there are two IOMMUs, shouldn't we have two driver instances handle
+> > them, instead of making the driver combine them two internally?
+>
+> Actually it means only one IOMMU(M4U) HW here. Each a M4U HW has two
+> small iommu cells which have independent MTLB. As the diagram above, M4U
+> contain mmu0 and mmu1.
+>
+> MT8173 and MT8183 have only one M4U HW while MT2712 have 2 M4U HWs(two
+> driver instances).
+>
+> >
+> > And, what is even more important from security point of view actually,
+> > have two separate page tables (aka IOMMU groups) for them?
+>
+> Each a IOMMU(M4U) have its own pagetable, thus, mt8183 have only one
+> pagetable while mt2712 have two.
 
+I see, thanks for clarifying.
 
-On 10/06/2019 14:17, Yong Wu wrote:
-> The "mediatek,larb-id" has already been parsed in MTK IOMMU driver.
-> It's no need to parse it again in SMI driver. Only clean some codes.
-> This patch is fit for all the current mt2701, mt2712, mt7623, mt8173
-> and mt8183.
-> 
-> After this patch, the "mediatek,larb-id" only be needed for mt2712
-> which have 2 M4Us. In the other SoCs, we can get the larb-id from M4U
-> in which the larbs in the "mediatek,larbs" always are ordered.
-> 
-> Correspondingly, the larb_nr in the "struct mtk_smi_iommu" could also
-> be deleted.
-> 
-
-I think we can get rid of struct mtk_smi_iommu and just add the
-struct mtk_smi_larb_iommu larb_imu[MTK_LARB_NR_MAX] directly to mtk_iommu_data,
-passing just that array to the components bind function.
-
-Never the less this patch looks fine:
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
-> CC: Matthias Brugger <matthias.bgg@gmail.com>
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> Reviewed-by: Evan Green <evgreen@chromium.org>
-> ---
->  drivers/iommu/mtk_iommu.c    |  1 -
->  drivers/iommu/mtk_iommu_v1.c |  2 --
->  drivers/memory/mtk-smi.c     | 26 ++------------------------
->  include/soc/mediatek/smi.h   |  1 -
->  4 files changed, 2 insertions(+), 28 deletions(-)
-> 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index ec4ce74..6053b8b 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -634,7 +634,6 @@ static int mtk_iommu_probe(struct platform_device *pdev)
->  					     "mediatek,larbs", NULL);
->  	if (larb_nr < 0)
->  		return larb_nr;
-> -	data->smi_imu.larb_nr = larb_nr;
->  
->  	for (i = 0; i < larb_nr; i++) {
->  		struct device_node *larbnode;
-> diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-> index 52b01e3..73308ad 100644
-> --- a/drivers/iommu/mtk_iommu_v1.c
-> +++ b/drivers/iommu/mtk_iommu_v1.c
-> @@ -624,8 +624,6 @@ static int mtk_iommu_probe(struct platform_device *pdev)
->  		larb_nr++;
->  	}
->  
-> -	data->smi_imu.larb_nr = larb_nr;
-> -
->  	platform_set_drvdata(pdev, data);
->  
->  	ret = mtk_iommu_hw_init(data);
-> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-> index 08cf40d..10e6493 100644
-> --- a/drivers/memory/mtk-smi.c
-> +++ b/drivers/memory/mtk-smi.c
-> @@ -67,7 +67,6 @@ struct mtk_smi_common_plat {
->  };
->  
->  struct mtk_smi_larb_gen {
-> -	bool need_larbid;
->  	int port_in_larb[MTK_LARB_NR_MAX + 1];
->  	void (*config_port)(struct device *);
->  	unsigned int larb_direct_to_common_mask;
-> @@ -153,18 +152,9 @@ void mtk_smi_larb_put(struct device *larbdev)
->  	struct mtk_smi_iommu *smi_iommu = data;
->  	unsigned int         i;
->  
-> -	if (larb->larb_gen->need_larbid) {
-> -		larb->mmu = &smi_iommu->larb_imu[larb->larbid].mmu;
-> -		return 0;
-> -	}
-> -
-> -	/*
-> -	 * If there is no larbid property, Loop to find the corresponding
-> -	 * iommu information.
-> -	 */
-> -	for (i = 0; i < smi_iommu->larb_nr; i++) {
-> +	for (i = 0; i < MTK_LARB_NR_MAX; i++) {
->  		if (dev == smi_iommu->larb_imu[i].dev) {
-> -			/* The 'mmu' may be updated in iommu-attach/detach. */
-> +			larb->larbid = i;
->  			larb->mmu = &smi_iommu->larb_imu[i].mmu;
->  			return 0;
->  		}
-> @@ -243,7 +233,6 @@ static void mtk_smi_larb_config_port_gen1(struct device *dev)
->  };
->  
->  static const struct mtk_smi_larb_gen mtk_smi_larb_mt2701 = {
-> -	.need_larbid = true,
->  	.port_in_larb = {
->  		LARB0_PORT_OFFSET, LARB1_PORT_OFFSET,
->  		LARB2_PORT_OFFSET, LARB3_PORT_OFFSET
-> @@ -252,7 +241,6 @@ static void mtk_smi_larb_config_port_gen1(struct device *dev)
->  };
->  
->  static const struct mtk_smi_larb_gen mtk_smi_larb_mt2712 = {
-> -	.need_larbid = true,
->  	.config_port                = mtk_smi_larb_config_port_gen2_general,
->  	.larb_direct_to_common_mask = BIT(8) | BIT(9),      /* bdpsys */
->  };
-> @@ -291,7 +279,6 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
->  	struct device *dev = &pdev->dev;
->  	struct device_node *smi_node;
->  	struct platform_device *smi_pdev;
-> -	int err;
->  
->  	larb = devm_kzalloc(dev, sizeof(*larb), GFP_KERNEL);
->  	if (!larb)
-> @@ -321,15 +308,6 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
->  	}
->  	larb->smi.dev = dev;
->  
-> -	if (larb->larb_gen->need_larbid) {
-> -		err = of_property_read_u32(dev->of_node, "mediatek,larb-id",
-> -					   &larb->larbid);
-> -		if (err) {
-> -			dev_err(dev, "missing larbid property\n");
-> -			return err;
-> -		}
-> -	}
-> -
->  	smi_node = of_parse_phandle(dev->of_node, "mediatek,smi", 0);
->  	if (!smi_node)
->  		return -EINVAL;
-> diff --git a/include/soc/mediatek/smi.h b/include/soc/mediatek/smi.h
-> index 5201e90..a65324d 100644
-> --- a/include/soc/mediatek/smi.h
-> +++ b/include/soc/mediatek/smi.h
-> @@ -29,7 +29,6 @@ struct mtk_smi_larb_iommu {
->  };
->  
->  struct mtk_smi_iommu {
-> -	unsigned int larb_nr;
->  	struct mtk_smi_larb_iommu larb_imu[MTK_LARB_NR_MAX];
->  };
->  
-> 
+Best regards,
+Tomasz
