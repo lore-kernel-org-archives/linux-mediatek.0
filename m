@@ -1,14 +1,15 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v7 19/21] iommu/mediatek: Rename enable_4GB to dram_is_4gb
-Date: Tue, 18 Jun 2019 18:06:47 +0200
-Message-ID: <9bf13c22-0c73-2950-2204-23d577976b03@gmail.com>
+Subject: Re: [PATCH v7 20/21] iommu/mediatek: Fix iova_to_phys PA start for
+ 4GB mode
+Date: Tue, 18 Jun 2019 18:35:54 +0200
+Message-ID: <db9b3b2f-3206-01bf-f0f9-67251e5ff756@gmail.com>
 References: <1560169080-27134-1-git-send-email-yong.wu@mediatek.com>
- <1560169080-27134-20-git-send-email-yong.wu@mediatek.com>
+ <1560169080-27134-21-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1560169080-27134-20-git-send-email-yong.wu@mediatek.com>
+In-Reply-To: <1560169080-27134-21-git-send-email-yong.wu@mediatek.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
 To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>
@@ -18,77 +19,86 @@ List-Id: linux-mediatek@lists.infradead.org
 
 
 On 10/06/2019 14:17, Yong Wu wrote:
-> This patch only rename the variable name from enable_4GB to
-> dram_is_4gb for readable.
+> In the 4GB mode, the physical address is remapped,
+> 
+> Here is the detailed remap relationship.
+> CPU PA         ->    HW PA
+> 0x4000_0000          0x1_4000_0000 (Add bit32)
+> 0x8000_0000          0x1_8000_0000 ...
+> 0xc000_0000          0x1_c000_0000 ...
+> 0x1_0000_0000        0x1_0000_0000 (No change)
+> 
+> Thus, we always add bit32 for PA when entering mtk_iommu_map.
+> But in the iova_to_phys, the CPU don't need this bit32 if the
+> PA is from 0x1_4000_0000 to 0x1_ffff_ffff.
+> This patch discards the bit32 in this iova_to_phys in the 4GB mode.
+> 
+> Fixes: 30e2fccf9512 ("iommu/mediatek: Enlarge the validate PA range
+> for 4GB mode")
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+>  drivers/iommu/mtk_iommu.c | 18 ++++++++++++++++++
+>  1 file changed, 18 insertions(+)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index 67cab2d..34f2e40 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -119,6 +119,19 @@ struct mtk_iommu_domain {
+>  
+>  static const struct iommu_ops mtk_iommu_ops;
+>  
+> +/*
+> + * In M4U 4GB mode, the physical address is remapped as below:
+> + *  CPU PA         ->   M4U HW PA
+> + *  0x4000_0000         0x1_4000_0000 (Add bit32)
+> + *  0x8000_0000         0x1_8000_0000 ...
+> + *  0xc000_0000         0x1_c000_0000 ...
+> + *  0x1_0000_0000       0x1_0000_0000 (No change)
+> + *
+> + * Thus, We always add BIT32 in the iommu_map and disable BIT32 if PA is >=
+> + * 0x1_4000_0000 in the iova_to_phys.
+> + */
+> +#define MTK_IOMMU_4GB_MODE_PA_140000000     0x140000000UL
+> +
+>  static LIST_HEAD(m4ulist);	/* List all the M4U HWs */
+>  
+>  #define for_each_m4u(data)	list_for_each_entry(data, &m4ulist, list)
+> @@ -415,6 +428,7 @@ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
+>  					  dma_addr_t iova)
+>  {
+>  	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+> +	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
+>  	unsigned long flags;
+>  	phys_addr_t pa;
+>  
+> @@ -422,6 +436,10 @@ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
+>  	pa = dom->iop->iova_to_phys(dom->iop, iova);
+>  	spin_unlock_irqrestore(&dom->pgtlock, flags);
+>  
+> +	if (data->plat_data->has_4gb_mode && data->dram_is_4gb &&
+> +	    pa >= MTK_IOMMU_4GB_MODE_PA_140000000)
+> +		pa &= ~BIT_ULL(32);
+> +
 
->From my understanding this is true when available RAM > 4GB so I think the name
-should be something like dram_bigger_4gb otherwise it may create confusion again.
-
-Also from my point of view this patch should be done before
+Hm, I wonder if we could fix this as first patch in the series, especially before:
 "[PATCH 06/21] iommu/io-pgtable-arm-v7s: Extend MediaTek 4GB Mode"
+
+This would make it easier for the stable maintainer to cherry-pick the fix.
+Without 100% understanding the code, it seems suspicious to me, that you first
+move the setting of the bit32 and bit33 into v7s and later explicitly clean the
+bits here.
+
+So my take on this is, that patch 6/21 introduced the regression you are trying
+to fix here. As said that is speculation as I don't understand the code in its
+whole.
+
+Any clarification would be useful.
 
 Regards,
 Matthias
 
-> 
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> Reviewed-by: Evan Green <evgreen@chromium.org>
-> ---
->  drivers/iommu/mtk_iommu.c | 10 +++++-----
->  drivers/iommu/mtk_iommu.h |  2 +-
->  2 files changed, 6 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 86158d8..67cab2d 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -382,7 +382,7 @@ static int mtk_iommu_map(struct iommu_domain *domain, unsigned long iova,
->  	int ret;
+>  	return pa;
+>  }
 >  
->  	/* The "4GB mode" M4U physically can not use the lower remap of Dram. */
-> -	if (data->plat_data->has_4gb_mode && data->enable_4GB)
-> +	if (data->plat_data->has_4gb_mode && data->dram_is_4gb)
->  		paddr |= BIT_ULL(32);
->  
->  	spin_lock_irqsave(&dom->pgtlock, flags);
-> @@ -554,13 +554,13 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
->  	writel_relaxed(regval, data->base + REG_MMU_INT_MAIN_CONTROL);
->  
->  	if (data->plat_data->m4u_plat == M4U_MT8173)
-> -		regval = (data->protect_base >> 1) | (data->enable_4GB << 31);
-> +		regval = (data->protect_base >> 1) | (data->dram_is_4gb << 31);
->  	else
->  		regval = lower_32_bits(data->protect_base) |
->  			 upper_32_bits(data->protect_base);
->  	writel_relaxed(regval, data->base + REG_MMU_IVRP_PADDR);
->  
-> -	if (data->enable_4GB && data->plat_data->has_vld_pa_rng) {
-> +	if (data->dram_is_4gb && data->plat_data->has_vld_pa_rng) {
->  		/*
->  		 * If 4GB mode is enabled, the validate PA range is from
->  		 * 0x1_0000_0000 to 0x1_ffff_ffff. here record bit[32:30].
-> @@ -611,8 +611,8 @@ static int mtk_iommu_probe(struct platform_device *pdev)
->  		return -ENOMEM;
->  	data->protect_base = ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN);
->  
-> -	/* Whether the current dram is over 4GB */
-> -	data->enable_4GB = !!(max_pfn > (BIT_ULL(32) >> PAGE_SHIFT));
-> +	/* Whether the current dram is 4GB. */
-> +	data->dram_is_4gb = !!(max_pfn > (BIT_ULL(32) >> PAGE_SHIFT));
->  
->  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
->  	data->base = devm_ioremap_resource(dev, res);
-> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-> index 753266b..e8114b2 100644
-> --- a/drivers/iommu/mtk_iommu.h
-> +++ b/drivers/iommu/mtk_iommu.h
-> @@ -65,7 +65,7 @@ struct mtk_iommu_data {
->  	struct mtk_iommu_domain		*m4u_dom;
->  	struct iommu_group		*m4u_group;
->  	struct mtk_smi_iommu		smi_imu;      /* SMI larb iommu info */
-> -	bool                            enable_4GB;
-> +	bool                            dram_is_4gb;
->  	bool				tlb_flush_active;
->  
->  	struct iommu_device		iommu;
 > 
