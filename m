@@ -1,15 +1,15 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2, 2/3] arm64: dts: mt8183: add emi node
-Date: Tue, 18 Jun 2019 23:32:43 +0200
-Message-ID: <768b95c9-b0d4-844e-906d-0d8d3bb4fe65@gmail.com>
-References: <1558670066-22484-1-git-send-email-xixi.chen@mediatek.com>
- <1558670066-22484-3-git-send-email-xixi.chen@mediatek.com>
+From: "Martin K. Petersen" <martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH v2] scsi: ufs: Avoid runtime suspend possibly being
+ blocked forever
+Date: Tue, 18 Jun 2019 22:51:10 -0400
+Message-ID: <yq18stywan5.fsf@oracle.com>
+References: <1560352745-24681-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1558670066-22484-3-git-send-email-xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Content-Language: en-US
+In-Reply-To: <1560352745-24681-1-git-send-email-stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+ (Stanley Chu's message of "Wed, 12 Jun 2019 23:19:05 +0800")
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -19,43 +19,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+To: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: sthumma-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org, marc.w.gonzalez-GANU6spQydw@public.gmane.org, subhashj-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, evgreen-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, avri.altman-Sjgp3cTcYWE@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, ygardi-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, andy.teng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, beanhuo-AL4WhLSQfzjQT0dZR+AlfA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
+Stanley,
 
-On 24/05/2019 05:54, Xi Chen wrote:
-> Add emi dts node.
-> 
-> Signed-off-by: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 11 +++++++++++
->  1 file changed, 11 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index 75c4881..2a176e9 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -269,6 +269,17 @@
->  			clock-names = "spi", "wrap";
->  		};
->  
-> +		emi@10219000 {
-> +			compatible = "mediatek,mt8183-emi";
-> +			reg = <0 0x10219000 0 0x1000>, /* CEN EMI */
-> +				  <0 0x10226000 0 0x1000>, /* EMI MPU */
-> +				  <0 0x1022d000 0 0x1000>, /* CHA EMI */
-> +			      <0 0x10235000 0 0x1000>; /* CHB EMI */
-> +			interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_LOW>, /* MPU */
-> +						 <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>, /* CGM */
-> +						 <GIC_SPI 155 IRQ_TYPE_LEVEL_HIGH>; /* ELM */
+> UFS runtime suspend can be triggered after pm_runtime_enable()
+> is invoked in ufshcd_pltfrm_init(). However if the first runtime
+> suspend is triggered before binding ufs_hba structure to ufs
+> device structure via platform_set_drvdata(), then UFS runtime
+> suspend will be no longer triggered in the future because its
+> dev->power.runtime_error was set in the first triggering and does
+> not have any chance to be cleared.
 
-indentation seems borken here.
+Applied to 5.2/scsi-fixes. Thanks!
 
-> +		};
-> +
->  		uart0: serial@11002000 {
->  			compatible = "mediatek,mt8183-uart",
->  				     "mediatek,mt6577-uart";
-> 
+-- 
+Martin K. Petersen	Oracle Linux Engineering
