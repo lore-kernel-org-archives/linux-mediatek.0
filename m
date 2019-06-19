@@ -1,19 +1,16 @@
-From: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [RFC PATCH v4 1/1] mtd: rawnand: mtk: Re-license MTK NAND
- driver as Dual MIT/GPL
-Date: Wed, 19 Jun 2019 17:32:40 +0800
-Message-ID: <1560936760.19057.1.camel@mhfsdcap03>
-References: <20190507092020.1917-1-xiaolei.li@mediatek.com>
- <20190507092020.1917-2-xiaolei.li@mediatek.com>
- <CAK8P3a3d-2U=hpb0P0+W-eZ0cviwKVwy6dWvHbhBCgF4CJUWKA@mail.gmail.com>
- <5052ea548ce89c1a588236d00319960b@milecki.pl>
- <1558685891.18315.33.camel@mhfsdcap03>
- <75974a2066425e5852d0295b22d2b259@milecki.pl>
+From: Weiyi Lu <weiyi.lu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v5 09/14] soc: mediatek: Add basic_clk_name to
+ scp_power_data
+Date: Wed, 19 Jun 2019 17:36:11 +0800
+Message-ID: <1560936971.2158.17.camel@mtksdaap41>
+References: <20190319080140.24055-1-weiyi.lu@mediatek.com>
+ <20190319080140.24055-10-weiyi.lu@mediatek.com>
+ <CANMq1KDf6aCK4+VX070f1pB6knPT5M0kxbW_RJ0K7PtAvKWkLQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <75974a2066425e5852d0295b22d2b259-g1n6cQUeyibVItvQsEIGlw@public.gmane.org>
+In-Reply-To: <CANMq1KDf6aCK4+VX070f1pB6knPT5M0kxbW_RJ0K7PtAvKWkLQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -23,38 +20,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <rafal-g1n6cQUeyibVItvQsEIGlw@public.gmane.org>
-Cc: Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, "Gustavo A. R. Silva" <gustavo-L1vi/lXTdts+Va1GwOuvDg@public.gmane.org>, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-mtd <linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, yellowriver2010-PkbjNfxxIARBDgjK7y7TUQ@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, peterpandong-AL4WhLSQfzjQT0dZR+AlfA@public.gmane.org
+To: Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, lkml <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Fan Chen <fan.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm Mailing List <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgUmFmYWwsCgpPbiBUdWUsIDIwMTktMDYtMTggYXQgMTE6MzYgKzAyMDAsIFJhZmHFgiBNacWC
-ZWNraSB3cm90ZToKPiBPbiAyMDE5LTA1LTI0IDEwOjE4LCB4aWFvbGVpIGxpIHdyb3RlOgo+ID4g
-T24gRnJpLCAyMDE5LTA1LTI0IGF0IDA5OjU1ICswMjAwLCBSYWZhxYIgTWnFgmVja2kgd3JvdGU6
-Cj4gPj4gT24gMjAxOS0wNS0yNCAwOTo1MiwgQXJuZCBCZXJnbWFubiB3cm90ZToKPiA+PiA+IE9u
-IFR1ZSwgTWF5IDcsIDIwMTkgYXQgMTE6MjAgQU0gWGlhb2xlaSBMaSA8eGlhb2xlaS5saUBtZWRp
-YXRlay5jb20+Cj4gPj4gPiB3cm90ZToKPiA+PiA+Pgo+ID4+ID4+IEl0IGlzIHdhbnRlZCB0byB1
-c2UgTVRLIE5BTkQgZHJpdmVyIHdpdGggR1BMLTIuMCBvciBNSVQgbGljZW5zZS4KPiA+PiA+PiBC
-dXQgbm93IGl0IGlzIG9ubHkgbGljZW5zZWQgYXMgR1BMLTIuMC4KPiA+PiA+PiBTbyByZS1saWNl
-bnNlIGl0IGFzIGR1YWwgTUlUL0dQTCBhbmQgcmVwbGFjZSBsaWNlbnNlIHRleHQgd2l0aAo+ID4+
-ID4+IFNQRFggdGFnLgo+ID4+ID4+Cj4gPj4gPj4gU2lnbmVkLW9mZi1ieTogWGlhb2xlaSBMaSA8
-eGlhb2xlaS5saUBtZWRpYXRlay5jb20+Cj4gPj4gPj4gQWNrZWQtYnk6IEpvcmdlIFJhbWlyZXot
-T3J0aXogPGpvcmdlLnJhbWlyZXotb3J0aXpAbGluYXJvLm9yZz4KPiA+PiA+PiBBY2tlZC1ieTog
-UnlkZXIgTGVlIDxyeWRlci5sZWVAbWVkaWF0ZWsuY29tPgo+ID4+ID4+IEFja2VkLWJ5OiBSYWZh
-xYIgTWnFgmVja2kgPHJhZmFsQG1pbGVja2kucGw+Cj4gPj4gPj4gQWNrZWQtYnk6IE1pcXVlbCBS
-YXluYWwgPG1pcXVlbC5yYXluYWxAYm9vdGxpbi5jb20+Cj4gPj4gPj4gQWNrZWQtYnk6IEJvcmlz
-IEJyZXppbGxvbiA8Ym9yaXMuYnJlemlsbG9uQGNvbGxhYm9yYS5jb20+Cj4gPj4gPj4gQWNrZWQt
-Ynk6IFJvZ2VyQ0MgTGluIDxyb2dlcmNjLmxpbkBtZWRpYXRlay5jb20+Cj4gPj4gPgo+ID4+ID4g
-QWNrZWQtYnk6IEFybmQgQmVyZ21hbm4gPGFybmRAYXJuZGIuZGU+Cj4gPj4gPgo+ID4+ID4gU29y
-cnkgZm9yIG1pc3NpbmcgdGhpcyBlYXJsaWVyLgo+ID4+IAo+ID4+IFRoYW5rIHlvdSEKPiA+PiAK
-PiA+PiBYaWFvbGVpOiBwbGVhc2UgcmVzZW5kIHRoaXMgcGF0Y2ggd2l0aG91dCBSRkMgaW4gYSBz
-dWJqZWN0LiBJIGJlbGlldmUgCj4gPj4gaXQKPiA+PiBjYW4gYmUgYXBwbGllZC9wdXNoZWQgbm93
-Lgo+ID4gCj4gPiBUaGFua3MgdmVyeSBtdWNoIGZvciB5b3VyIHJlc3BvbnNlIQo+ID4gSSB3aWxs
-IHNlbmQgYSBmb3JtYWwgcGF0Y2ggc29vbi4KPiAKPiBIaSBYaWFvbGVpLCB3aGF0J3MgdGhlIHN0
-YXR1cyBvZiB0aGlzPwo+IAo+IEl0IHRvb2sgc29tZSBlZmZvcnQgdG8gc29ydCB0aGF0IGxpY2Vu
-c2luZyBvdXQsIEkgYmVsaWV2ZSBoYW5kbGluZyB0aGlzCj4gc29vbmVyIHRoYW4gbGF0ZXIgaXMg
-aGlnaGx5IHJlY29tbWVuZGVkLgoKVGhhbmtzIGZvciB5b3VyIGF0dGVudGlvbi4KSSBzZW50IHRo
-ZSBmb3JtYWwgcGF0Y2ggYWJvdXQgdHdvIHdlZWtzIGFnby4gU28sIHlvdSBkaWRuJ3QgcmVjZWl2
-ZSBpdCwKcmlnaHQgPwoKVGhhbmtzLApYaWFvbGVpCgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4
-LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+On Thu, 2019-03-21 at 14:02 +0800, Nicolas Boichat wrote:
+> On Tue, Mar 19, 2019 at 4:02 PM Weiyi Lu <weiyi.lu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> >
+> > Try to stop extending the clk_id or clk_names if there are
+> > more and more new BASIC clocks. To get its own clocks by the
+> > basic_clk_name of each power domain.
+> >
+> > Signed-off-by: Weiyi Lu <weiyi.lu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  drivers/soc/mediatek/mtk-scpsys.c | 27 +++++++++++++++++++--------
+> >  1 file changed, 19 insertions(+), 8 deletions(-)
+> >
+> > diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+> > index 6bf846cb1893..c6360de4e41e 100644
+> > --- a/drivers/soc/mediatek/mtk-scpsys.c
+> > +++ b/drivers/soc/mediatek/mtk-scpsys.c
+> > @@ -118,6 +118,8 @@ static const char * const clk_names[] = {
+> >   * @bus_prot_mask: The mask for single step bus protection.
+> >   * @clk_id: The basic clock needs to be enabled before enabling certain
+> >   *          power domains.
+> > + * @basic_clk_name: provide the same purpose with field "clk_id"
+> > + *                  by declaring basic clock prefix name rather than clk_id.
+> >   * @caps: The flag for active wake-up action.
+> >   */
+> >  struct scp_domain_data {
+> > @@ -128,6 +130,7 @@ struct scp_domain_data {
+> >         u32 sram_pdn_ack_bits;
+> >         u32 bus_prot_mask;
+> >         enum clk_id clk_id[MAX_CLKS];
+> > +       const char *basic_clk_name[MAX_CLKS];
+> 
+> Either call them basic_clk_id/basic_clk_name, or clk_id/clk_name.
+> 
+
+OK.
+
+> >         u8 caps;
+> >  };
+> >
+> > @@ -499,16 +502,24 @@ static struct scp *init_scp(struct platform_device *pdev,
+> >
+> >                 scpd->data = data;
+> >
+> > -               for (j = 0; j < MAX_CLKS && data->clk_id[j]; j++) {
+> > -                       struct clk *c = clk[data->clk_id[j]];
+> > +               if (data->clk_id[0]) {
+> 
+> Since it's either clk_id or basic_clk_name, I wonder if it'd be good
+> to add a WARN_ON here, e.g.
+> 
+> WARN_ON(data->basic_clk_name[0]);
+> 
+
+Thanks for the advise. I'll add it.
+
+> > +                       for (j = 0; j < MAX_CLKS && data->clk_id[j]; j++) {
+> > +                               struct clk *c = clk[data->clk_id[j]];
+> >
+> > -                       if (IS_ERR(c)) {
+> > -                               dev_err(&pdev->dev, "%s: clk unavailable\n",
+> > -                                       data->name);
+> > -                               return ERR_CAST(c);
+> > -                       }
+> > +                               if (IS_ERR(c)) {
+> > +                                       dev_err(&pdev->dev,
+> > +                                               "%s: clk unavailable\n",
+> > +                                               data->name);
+> > +                                       return ERR_CAST(c);
+> > +                               }
+> >
+> > -                       scpd->clk[j] = c;
+> > +                               scpd->clk[j] = c;
+> > +                       }
+> > +               } else if (data->basic_clk_name[0]) {
+> > +                       for (j = 0; j < MAX_CLKS &&
+> > +                                       data->basic_clk_name[j]; j++)
+> > +                               scpd->clk[j] = devm_clk_get(&pdev->dev,
+> > +                                               data->basic_clk_name[j]);
+> >                 }
+> >
+> >                 genpd->name = data->name;
+> > --
+> > 2.18.0
+> >
