@@ -1,15 +1,12 @@
-From: "Martin K. Petersen" <martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH v2] scsi: ufs: Avoid runtime suspend possibly being
- blocked forever
-Date: Tue, 18 Jun 2019 22:51:10 -0400
-Message-ID: <yq18stywan5.fsf@oracle.com>
-References: <1560352745-24681-1-git-send-email-stanley.chu@mediatek.com>
+From: Claire Chang <tientzu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: [PATCH v2] dt-bindings: serial: add documentation for Rx in-band
+ wakeup support
+Date: Wed, 19 Jun 2019 16:41:10 +0800
+Message-ID: <20190619084110.136713-1-tientzu@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1560352745-24681-1-git-send-email-stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
- (Stanley Chu's message of "Wed, 12 Jun 2019 23:19:05 +0800")
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -19,22 +16,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: sthumma-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org, marc.w.gonzalez-GANU6spQydw@public.gmane.org, subhashj-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, evgreen-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, avri.altman-Sjgp3cTcYWE@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, ygardi-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, andy.teng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, beanhuo-AL4WhLSQfzjQT0dZR+AlfA@public.gmane.org
+To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, changqi.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Claire Chang <tientzu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+To support Rx in-band wakeup, one must create an interrupt specifier with
+edge sensitivity on Rx pin and an addtional pinctrl to reconfigure Rx pin
+to normal GPIO in sleep state. Driver will switch to sleep mode pinctrl and
+enable irq wake before suspend and restore to default settings when
+resuming.
 
-Stanley,
+Signed-off-by: Claire Chang <tientzu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+---
+changes in v2:
+just document 'interrupts' instead of 'interrupts-extended'
 
-> UFS runtime suspend can be triggered after pm_runtime_enable()
-> is invoked in ufshcd_pltfrm_init(). However if the first runtime
-> suspend is triggered before binding ufs_hba structure to ufs
-> device structure via platform_set_drvdata(), then UFS runtime
-> suspend will be no longer triggered in the future because its
-> dev->power.runtime_error was set in the first triggering and does
-> not have any chance to be cleared.
+ .../devicetree/bindings/serial/mtk-uart.txt         | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
 
-Applied to 5.2/scsi-fixes. Thanks!
-
+diff --git a/Documentation/devicetree/bindings/serial/mtk-uart.txt b/Documentation/devicetree/bindings/serial/mtk-uart.txt
+index bcfb13194f16..36b760c25ee3 100644
+--- a/Documentation/devicetree/bindings/serial/mtk-uart.txt
++++ b/Documentation/devicetree/bindings/serial/mtk-uart.txt
+@@ -21,7 +21,12 @@ Required properties:
+ 
+ - reg: The base address of the UART register bank.
+ 
+-- interrupts: A single interrupt specifier.
++- interrupts:
++  index 0: an interrupt specifier for the UART controller itself
++  index 1: optional, an interrupt specifier with edge sensitivity on Rx pin to
++           support Rx in-band wake up. If one would like to use this feature,
++           one must create an addtional pinctrl to reconfigure Rx pin to normal
++           GPIO before suspend.
+ 
+ - clocks : Must contain an entry for each entry in clock-names.
+   See ../clocks/clock-bindings.txt for details.
+@@ -37,7 +42,11 @@ Example:
+ 	uart0: serial@11006000 {
+ 		compatible = "mediatek,mt6589-uart", "mediatek,mt6577-uart";
+ 		reg = <0x11006000 0x400>;
+-		interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_LOW>;
++		interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 52 IRQ_TYPE_EDGE_FALLING>;
+ 		clocks = <&uart_clk>, <&bus_clk>;
+ 		clock-names = "baud", "bus";
++		pinctrl-names = "default", "sleep";
++		pinctrl-0 = <&uart_pin>;
++		pinctrl-1 = <&uart_pin_sleep>;
+ 	};
 -- 
-Martin K. Petersen	Oracle Linux Engineering
+2.22.0.410.gd8fdbe21b5-goog
