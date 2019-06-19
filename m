@@ -1,69 +1,75 @@
-From: Claire Chang <tientzu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v2] dt-bindings: serial: add documentation for Rx in-band
- wakeup support
-Date: Wed, 19 Jun 2019 16:41:10 +0800
-Message-ID: <20190619084110.136713-1-tientzu@chromium.org>
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+Subject: Re: [PATCH v5 04/14] soc: mediatek: Refactor polling timeout and
+ documentation
+Date: Wed, 19 Jun 2019 17:11:56 +0800
+Message-ID: <1560935516.2158.2.camel@mtksdaap41>
+References: <20190319080140.24055-1-weiyi.lu@mediatek.com>
+         <20190319080140.24055-5-weiyi.lu@mediatek.com>
+         <CANMq1KCLQaFg3bOrHnXzbjU9KM5Ny2rRX9bP4xg17jOYirxxig@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, changqi.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Claire Chang <tientzu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CANMq1KCLQaFg3bOrHnXzbjU9KM5Ny2rRX9bP4xg17jOYirxxig@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Nicolas Boichat <drinkcat@chromium.org>
+Cc: Rob Herring <robh@kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>, lkml <linux-kernel@vger.kernel.org>, Fan Chen <fan.chen@mediatek.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-To support Rx in-band wakeup, one must create an interrupt specifier with
-edge sensitivity on Rx pin and an addtional pinctrl to reconfigure Rx pin
-to normal GPIO in sleep state. Driver will switch to sleep mode pinctrl and
-enable irq wake before suspend and restore to default settings when
-resuming.
-
-Signed-off-by: Claire Chang <tientzu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
----
-changes in v2:
-just document 'interrupts' instead of 'interrupts-extended'
-
- .../devicetree/bindings/serial/mtk-uart.txt         | 13 +++++++++++--
- 1 file changed, 11 insertions(+), 2 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/serial/mtk-uart.txt b/Documentation/devicetree/bindings/serial/mtk-uart.txt
-index bcfb13194f16..36b760c25ee3 100644
---- a/Documentation/devicetree/bindings/serial/mtk-uart.txt
-+++ b/Documentation/devicetree/bindings/serial/mtk-uart.txt
-@@ -21,7 +21,12 @@ Required properties:
- 
- - reg: The base address of the UART register bank.
- 
--- interrupts: A single interrupt specifier.
-+- interrupts:
-+  index 0: an interrupt specifier for the UART controller itself
-+  index 1: optional, an interrupt specifier with edge sensitivity on Rx pin to
-+           support Rx in-band wake up. If one would like to use this feature,
-+           one must create an addtional pinctrl to reconfigure Rx pin to normal
-+           GPIO before suspend.
- 
- - clocks : Must contain an entry for each entry in clock-names.
-   See ../clocks/clock-bindings.txt for details.
-@@ -37,7 +42,11 @@ Example:
- 	uart0: serial@11006000 {
- 		compatible = "mediatek,mt6589-uart", "mediatek,mt6577-uart";
- 		reg = <0x11006000 0x400>;
--		interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_LOW>;
-+		interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 52 IRQ_TYPE_EDGE_FALLING>;
- 		clocks = <&uart_clk>, <&bus_clk>;
- 		clock-names = "baud", "bus";
-+		pinctrl-names = "default", "sleep";
-+		pinctrl-0 = <&uart_pin>;
-+		pinctrl-1 = <&uart_pin_sleep>;
- 	};
--- 
-2.22.0.410.gd8fdbe21b5-goog
+On Tue, 2019-03-19 at 19:45 +0800, Nicolas Boichat wrote:
+> On Tue, Mar 19, 2019 at 4:02 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
+> >
+> > Use USEC_PER_SEC to indicate the polling timeout directly.
+> > And add documentation of scp_domain_data.
+> >
+> > Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> > ---
+> >  drivers/soc/mediatek/mtk-scpsys.c | 14 +++++++++++++-
+> >  1 file changed, 13 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+> > index 9f52f501178b..2855111b221a 100644
+> > --- a/drivers/soc/mediatek/mtk-scpsys.c
+> > +++ b/drivers/soc/mediatek/mtk-scpsys.c
+> > @@ -21,7 +21,7 @@
+> >  #include <dt-bindings/power/mt8173-power.h>
+> >
+> >  #define MTK_POLL_DELAY_US   10
+> > -#define MTK_POLL_TIMEOUT    (jiffies_to_usecs(HZ))
+> > +#define MTK_POLL_TIMEOUT    USEC_PER_SEC
+> >
+> >  #define MTK_SCPD_ACTIVE_WAKEUP         BIT(0)
+> >  #define MTK_SCPD_FWAIT_SRAM            BIT(1)
+> > @@ -108,6 +108,18 @@ static const char * const clk_names[] = {
+> >
+> >  #define MAX_CLKS       3
+> >
+> > +/**
+> > + * struct scp_domain_data - scp domain data for power on/off flow
+> > + * @name: The domain name.
+> > + * @sta_mask: The mask for power on/off status bit.
+> > + * @ctl_offs: The offset for main power control register.
+> > + * @sram_pdn_bits: The mask for sram power control bits.
+> > + * @sram_pdn_ack_bits: The mask for sram power control acked bits.
+> > + * @bus_prot_mask: The mask for single step bus protection.
+> > + * @clk_id: The basic clock needs to be enabled before enabling certain
+> > + *          power domains.
+> 
+> I assume these are the clock*s* that *this* scp_domain requires?
+> 
+> So maybe just: "The basic clocks required by this power domain." ?
+> 
+Thanks for revision. I'll update in next version.
+> > + * @caps: The flag for active wake-up action.
+> > + */
+> >  struct scp_domain_data {
+> >         const char *name;
+> >         u32 sta_mask;
+> > --
+> > 2.18.0
+> >
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
