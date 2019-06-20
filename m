@@ -1,101 +1,81 @@
 From: Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: [PATCH v6 08/14] soc: mediatek: Refactor bus protection control
-Date: Thu, 20 Jun 2019 10:38:00 +0800
-Message-ID: <1560998286-9189-9-git-send-email-weiyi.lu@mediatek.com>
+Subject: [PATCH v6 09/14] soc: mediatek: Add basic_clk_id to scp_power_data
+Date: Thu, 20 Jun 2019 10:38:01 +0800
+Message-ID: <1560998286-9189-10-git-send-email-weiyi.lu@mediatek.com>
 References: <1560998286-9189-1-git-send-email-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1560998286-9189-1-git-send-email-weiyi.lu@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Sender: linux-kernel-owner@vger.kernel.org
 To: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>, linux-mediatek@lists.infradead.org, Yong Wu <yong.wu@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Weiyi Lu <weiyi.lu@mediatek.com>, Yong Wu <yong.wu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Put bus protection enable and disable control in separate functions.
+Try to stop extending the clk_id or clk_names if there are
+more and more new BASIC clocks. To get its own clocks by the
+basic_clk_id of each power domain.
 
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-scpsys.c | 44 ++++++++++++++++++++++++++-------------
- 1 file changed, 30 insertions(+), 14 deletions(-)
+ drivers/soc/mediatek/mtk-scpsys.c | 29 +++++++++++++++++++++--------
+ 1 file changed, 21 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index 58627ab..178198b 100644
+index 178198b..4a0752e 100644
 --- a/drivers/soc/mediatek/mtk-scpsys.c
 +++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -274,6 +274,30 @@ static int scpsys_sram_disable(struct scp_domain *scpd, void __iomem *ctl_addr)
- 			MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
- }
+@@ -117,6 +117,8 @@ enum clk_id {
+  * @sram_pdn_ack_bits: The mask for sram power control acked bits.
+  * @bus_prot_mask: The mask for single step bus protection.
+  * @clk_id: The basic clocks required by this power domain.
++ * @basic_clk_id: provide the same purpose with field "clk_id"
++ *                by declaring basic clock prefix name rather than clk_id.
+  * @caps: The flag for active wake-up action.
+  */
+ struct scp_domain_data {
+@@ -127,6 +129,7 @@ struct scp_domain_data {
+ 	u32 sram_pdn_ack_bits;
+ 	u32 bus_prot_mask;
+ 	enum clk_id clk_id[MAX_CLKS];
++	const char *basic_clk_id[MAX_CLKS];
+ 	u8 caps;
+ };
  
-+static int scpsys_bus_protect_enable(struct scp_domain *scpd)
-+{
-+	struct scp *scp = scpd->scp;
-+
-+	if (!scpd->data->bus_prot_mask)
-+		return 0;
-+
-+	return mtk_infracfg_set_bus_protection(scp->infracfg,
-+			scpd->data->bus_prot_mask,
-+			scp->bus_prot_reg_update);
-+}
-+
-+static int scpsys_bus_protect_disable(struct scp_domain *scpd)
-+{
-+	struct scp *scp = scpd->scp;
-+
-+	if (!scpd->data->bus_prot_mask)
-+		return 0;
-+
-+	return mtk_infracfg_clear_bus_protection(scp->infracfg,
-+			scpd->data->bus_prot_mask,
-+			scp->bus_prot_reg_update);
-+}
-+
- static int scpsys_power_on(struct generic_pm_domain *genpd)
- {
- 	struct scp_domain *scpd = container_of(genpd, struct scp_domain, genpd);
-@@ -316,13 +340,9 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 	if (ret < 0)
- 		goto err_pwr_ack;
+@@ -490,16 +493,26 @@ static struct scp *init_scp(struct platform_device *pdev,
  
--	if (scpd->data->bus_prot_mask) {
--		ret = mtk_infracfg_clear_bus_protection(scp->infracfg,
--				scpd->data->bus_prot_mask,
--				scp->bus_prot_reg_update);
--		if (ret)
--			goto err_pwr_ack;
--	}
-+	ret = scpsys_bus_protect_disable(scpd);
-+	if (ret < 0)
-+		goto err_pwr_ack;
+ 		scpd->data = data;
  
- 	return 0;
+-		for (j = 0; j < MAX_CLKS && data->clk_id[j]; j++) {
+-			struct clk *c = clk[data->clk_id[j]];
++		if (data->clk_id[0]) {
++			WARN_ON(data->basic_clk_id[0]);
  
-@@ -344,13 +364,9 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- 	u32 val;
- 	int ret, tmp;
+-			if (IS_ERR(c)) {
+-				dev_err(&pdev->dev, "%s: clk unavailable\n",
+-					data->name);
+-				return ERR_CAST(c);
+-			}
++			for (j = 0; j < MAX_CLKS && data->clk_id[j]; j++) {
++				struct clk *c = clk[data->clk_id[j]];
++
++				if (IS_ERR(c)) {
++					dev_err(&pdev->dev,
++						"%s: clk unavailable\n",
++						data->name);
++					return ERR_CAST(c);
++				}
  
--	if (scpd->data->bus_prot_mask) {
--		ret = mtk_infracfg_set_bus_protection(scp->infracfg,
--				scpd->data->bus_prot_mask,
--				scp->bus_prot_reg_update);
--		if (ret)
--			goto out;
--	}
-+	ret = scpsys_bus_protect_enable(scpd);
-+	if (ret < 0)
-+		goto out;
+-			scpd->clk[j] = c;
++				scpd->clk[j] = c;
++			}
++		} else if (data->basic_clk_id[0]) {
++			for (j = 0; j < MAX_CLKS &&
++					data->basic_clk_id[j]; j++)
++				scpd->clk[j] = devm_clk_get(&pdev->dev,
++						data->basic_clk_id[j]);
+ 		}
  
- 	ret = scpsys_sram_disable(scpd, ctl_addr);
- 	if (ret < 0)
+ 		genpd->name = data->name;
 -- 
 1.8.1.1.dirty
