@@ -1,100 +1,43 @@
-From: Frank Wunderlich <frank-w-SipyoOjXbOMoAHOVJHB0wA@public.gmane.org>
-Subject: Re: [PATCH v2 net-next 2/2] net: dsa: mt7530: Add MT7621 TRGMII mode
- support
-Date: Thu, 20 Jun 2019 19:32:19 +0200
-Message-ID: <E48021B2-3B82-4630-A9D1-290479988806@public-files.de>
-References: <20190620122155.32078-1-opensource@vdorst.com>
- <20190620122155.32078-3-opensource@vdorst.com>
-Reply-To: frank-w-SipyoOjXbOMoAHOVJHB0wA@public.gmane.org
+From: Sylvain Lemieux <slemieux.tyco@gmail.com>
+Subject: Re: [PATCH] watchdog: convert remaining drivers to use SPDX license identifier
+Date: Thu, 20 Jun 2019 15:16:53 -0400
+Message-ID: <CA+rxa6qJJjFWmMOHL-mpJZ5e5YAan-7887bQPwC8KEfCmQaW+A@mail.gmail.com>
+References: <1561048126-27578-1-git-send-email-linux@roeck-us.net> <20190620170736.GA10902@anatevka>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190620122155.32078-3-opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?ISO-8859-1?Q?Ren=E9_van_Dorst?= <opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, andrew-g2DYL2Zd6BY@public.gmane.org, vivien.didelot-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mips-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190620170736.GA10902@anatevka>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jerry.Hoemann@hpe.com
+Cc: Guenter Roeck <linux@roeck-us.net>, Wim Van Sebroeck <wim@linux-watchdog.org>, William Breathitt Gray <vilhelm.gray@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, Matthias Brugger <matthias.bgg@gmail.com>, Wan ZongShun <mcuos.com@gmail.com>, Andy Gross <agross@kernel.org>, David Brown <david.brown@linaro.org>, linux-watchdog@vger.kernel.org, linux-kernel@vger.kernel.org, "moderated list:ARM PORT" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, linux-arm-msm@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-VGVzdGVkIG9uIEJhbmFuYXBpIFIyIChtdDc2MjMpIHdpdGggNS4yLXJjNSArIG5ldC1uZXh0CgpU
-ZXN0ZWQtYnk6IEZyYW5rIFd1bmRlcmxpY2ggPGZyYW5rLXdAcHVibGljLWZpbGVzLmRlPgoKQW0g
-MjAuIEp1bmkgMjAxOSAxNDoyMTo1NSBNRVNaIHNjaHJpZWIgIlJlbsOpIHZhbiBEb3JzdCIgPG9w
-ZW5zb3VyY2VAdmRvcnN0LmNvbT46Cj5UaGlzIHBhdGNoIGFkZCBzdXBwb3J0IFRSR01JSSBtb2Rl
-IGZvciBNVDc2MjEgaW50ZXJuYWwgTVQ3NTMwIHN3aXRjaC4KPk1UNzYyMSBUUkdNSUkgaGFzIG9u
-bHkgb25lIGZpeCBzcGVlZCBtb2RlIG9mIDEyMDBNQml0Lgo+Cj5BbHNvIGFkZGluZyBzdXBwb3J0
-IGZvciBtdDc1MzAgMjVNSHogYW5kIDQwTUh6IGNyeXN0YWwgY2xvY2tzb3VyY2UuCj5WYWx1ZXMg
-YXJlIGJhc2VkIG9uIEJhbmFuYSBQaSBSMiBic3AgWzFdLgo+Cj5Eb24ndCBjaGFuZ2UgTVQ3NjIz
-IHJlZ2lzdGVycyBvbiBhIE1UNzYyMSBkZXZpY2UuCj4KPlsxXQo+aHR0cHM6Ly9naXRodWIuY29t
-L0JQSS1TSU5PVk9JUC9CUEktUjItYnNwL2Jsb2IvbWFzdGVyL2xpbnV4LW10L2RyaXZlcnMvbmV0
-L2V0aGVybmV0L21lZGlhdGVrL2dzd19tdDc2MjMuYyNMNzY5Cj4KPlNpZ25lZC1vZmYtYnk6IFJl
-bsOpIHZhbiBEb3JzdCA8b3BlbnNvdXJjZUB2ZG9yc3QuY29tPgo+LS0tCj4gZHJpdmVycy9uZXQv
-ZHNhL210NzUzMC5jIHwgNDYgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKy0tLS0tLS0t
-LQo+IGRyaXZlcnMvbmV0L2RzYS9tdDc1MzAuaCB8ICA0ICsrKysKPiAyIGZpbGVzIGNoYW5nZWQs
-IDQwIGluc2VydGlvbnMoKyksIDEwIGRlbGV0aW9ucygtKQo+Cj5kaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9uZXQvZHNhL210NzUzMC5jIGIvZHJpdmVycy9uZXQvZHNhL210NzUzMC5jCj5pbmRleCBjN2Qz
-NTJkYTU0NDguLjMxODFlOTU1ODZkNiAxMDA2NDQKPi0tLSBhL2RyaXZlcnMvbmV0L2RzYS9tdDc1
-MzAuYwo+KysrIGIvZHJpdmVycy9uZXQvZHNhL210NzUzMC5jCj5AQCAtNDI4LDI0ICs0MjgsNDgg
-QEAgc3RhdGljIGludAo+IG10NzUzMF9wYWRfY2xrX3NldHVwKHN0cnVjdCBkc2Ffc3dpdGNoICpk
-cywgaW50IG1vZGUpCj4gewo+IAlzdHJ1Y3QgbXQ3NTMwX3ByaXYgKnByaXYgPSBkcy0+cHJpdjsK
-Pi0JdTMyIG5jcG8xLCBzc2NfZGVsdGEsIHRyZ2ludCwgaTsKPisJdTMyIG5jcG8xLCBzc2NfZGVs
-dGEsIHRyZ2ludCwgaSwgeHRhbDsKPisKPisJeHRhbCA9IG10NzUzMF9yZWFkKHByaXYsIE1UNzUz
-MF9NSFdUUkFQKSAmIEhXVFJBUF9YVEFMX01BU0s7Cj4rCj4rCWlmICh4dGFsID09IEhXVFJBUF9Y
-VEFMXzIwTUhaKSB7Cj4rCQlkZXZfZXJyKHByaXYtPmRldiwKPisJCQkiJXM6IE1UNzUzMCB3aXRo
-IGEgMjBNSHogWFRBTCBpcyBub3Qgc3VwcG9ydGVkIVxuIiwKPisJCQlfX2Z1bmNfXyk7Cj4rCQly
-ZXR1cm4gLUVJTlZBTDsKPisJfQo+IAo+IAlzd2l0Y2ggKG1vZGUpIHsKPiAJY2FzZSBQSFlfSU5U
-RVJGQUNFX01PREVfUkdNSUk6Cj4gCQl0cmdpbnQgPSAwOwo+KwkJLyogUExMIGZyZXF1ZW5jeTog
-MTI1TUh6ICovCj4gCQluY3BvMSA9IDB4MGM4MDsKPi0JCXNzY19kZWx0YSA9IDB4ODc7Cj4gCQli
-cmVhazsKPiAJY2FzZSBQSFlfSU5URVJGQUNFX01PREVfVFJHTUlJOgo+IAkJdHJnaW50ID0gMTsK
-Pi0JCW5jcG8xID0gMHgxNDAwOwo+LQkJc3NjX2RlbHRhID0gMHg1NzsKPisJCWlmIChwcml2LT5p
-ZCA9PSBJRF9NVDc2MjEpIHsKPisJCQkvKiBQTEwgZnJlcXVlbmN5OiAxNTBNSHo6IDEuMkdCaXQg
-Ki8KPisJCQlpZiAoeHRhbCA9PSBIV1RSQVBfWFRBTF80ME1IWikKPisJCQkJbmNwbzEgPSAweDA3
-ODA7Cj4rCQkJaWYgKHh0YWwgPT0gSFdUUkFQX1hUQUxfMjVNSFopCj4rCQkJCW5jcG8xID0gMHgw
-YTAwOwo+KwkJfSBlbHNlIHsgLyogUExMIGZyZXF1ZW5jeTogMjUwTUh6OiAyLjBHYml0ICovCj4r
-CQkJaWYgKHh0YWwgPT0gSFdUUkFQX1hUQUxfNDBNSFopCj4rCQkJCW5jcG8xID0gMHgwYzgwOwo+
-KwkJCWlmICh4dGFsID09IEhXVFJBUF9YVEFMXzI1TUhaKQo+KwkJCQluY3BvMSA9IDB4MTQwMDsK
-PisJCX0KPiAJCWJyZWFrOwo+IAlkZWZhdWx0Ogo+IAkJZGV2X2Vycihwcml2LT5kZXYsICJ4TUlJ
-IG1vZGUgJWQgbm90IHN1cHBvcnRlZFxuIiwgbW9kZSk7Cj4gCQlyZXR1cm4gLUVJTlZBTDsKPiAJ
-fQo+IAo+KwlpZiAoeHRhbCA9PSBIV1RSQVBfWFRBTF8yNU1IWikKPisJCXNzY19kZWx0YSA9IDB4
-NTc7Cj4rCWVsc2UKPisJCXNzY19kZWx0YSA9IDB4ODc7Cj4rCj4gCW10NzUzMF9ybXcocHJpdiwg
-TVQ3NTMwX1A2RUNSLCBQNl9JTlRGX01PREVfTUFTSywKPiAJCSAgIFA2X0lOVEZfTU9ERSh0cmdp
-bnQpKTsKPiAKPkBAIC01MDcsNyArNTMxLDkgQEAgbXQ3NTMwX3BhZF9jbGtfc2V0dXAoc3RydWN0
-IGRzYV9zd2l0Y2ggKmRzLCBpbnQKPm1vZGUpCj4gCQkJbXQ3NTMwX3Jtdyhwcml2LCBNVDc1MzBf
-VFJHTUlJX1JEKGkpLAo+IAkJCQkgICBSRF9UQVBfTUFTSywgUkRfVEFQKDE2KSk7Cj4gCWVsc2UK
-Pi0JCW10NzYyM190cmdtaWlfc2V0KHByaXYsIEdTV19JTlRGX01PREUsIElOVEZfTU9ERV9UUkdN
-SUkpOwo+KwkJaWYgKHByaXYtPmlkICE9IElEX01UNzYyMSkKPisJCQltdDc2MjNfdHJnbWlpX3Nl
-dChwcml2LCBHU1dfSU5URl9NT0RFLAo+KwkJCQkJICBJTlRGX01PREVfVFJHTUlJKTsKPiAKPiAJ
-cmV0dXJuIDA7Cj4gfQo+QEAgLTYxMywxMyArNjM5LDEzIEBAIHN0YXRpYyB2b2lkIG10NzUzMF9h
-ZGp1c3RfbGluayhzdHJ1Y3QgZHNhX3N3aXRjaAo+KmRzLCBpbnQgcG9ydCwKPiAJc3RydWN0IG10
-NzUzMF9wcml2ICpwcml2ID0gZHMtPnByaXY7Cj4gCj4gCWlmIChwaHlfaXNfcHNldWRvX2ZpeGVk
-X2xpbmsocGh5ZGV2KSkgewo+LQkJaWYgKHByaXYtPmlkID09IElEX01UNzUzMCkgewo+LQkJCWRl
-dl9kYmcocHJpdi0+ZGV2LCAicGh5LW1vZGUgZm9yIG1hc3RlciBkZXZpY2UgPSAleFxuIiwKPi0J
-CQkJcGh5ZGV2LT5pbnRlcmZhY2UpOwo+KwkJZGV2X2RiZyhwcml2LT5kZXYsICJwaHktbW9kZSBm
-b3IgbWFzdGVyIGRldmljZSA9ICV4XG4iLAo+KwkJCXBoeWRldi0+aW50ZXJmYWNlKTsKPiAKPi0J
-CQkvKiBTZXR1cCBUWCBjaXJjdWl0IGluY2x1aW5nIHJlbGV2YW50IFBBRCBhbmQgZHJpdmluZyAq
-Lwo+LQkJCW10NzUzMF9wYWRfY2xrX3NldHVwKGRzLCBwaHlkZXYtPmludGVyZmFjZSk7Cj4rCQkv
-KiBTZXR1cCBUWCBjaXJjdWl0IGluY2x1aW5nIHJlbGV2YW50IFBBRCBhbmQgZHJpdmluZyAqLwo+
-KwkJbXQ3NTMwX3BhZF9jbGtfc2V0dXAoZHMsIHBoeWRldi0+aW50ZXJmYWNlKTsKPiAKPisJCWlm
-IChwcml2LT5pZCA9PSBJRF9NVDc1MzApIHsKPiAJCQkvKiBTZXR1cCBSWCBjaXJjdWl0LCByZWxl
-dmFudCBQQUQgYW5kIGRyaXZpbmcgb24gdGhlCj4gCQkJICogaG9zdCB3aGljaCBtdXN0IGJlIHBs
-YWNlZCBhZnRlciB0aGUgc2V0dXAgb24gdGhlCj4gCQkJICogZGV2aWNlIHNpZGUgaXMgYWxsIGZp
-bmlzaGVkLgo+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2RzYS9tdDc1MzAuaCBiL2RyaXZlcnMv
-bmV0L2RzYS9tdDc1MzAuaAo+aW5kZXggNDMzMTQyOTk2OWZhLi5iZmFjOTBmNDgxMDIgMTAwNjQ0
-Cj4tLS0gYS9kcml2ZXJzL25ldC9kc2EvbXQ3NTMwLmgKPisrKyBiL2RyaXZlcnMvbmV0L2RzYS9t
-dDc1MzAuaAo+QEAgLTI0NCw2ICsyNDQsMTAgQEAgZW51bSBtdDc1MzBfdmxhbl9wb3J0X2F0dHIg
-ewo+IAo+IC8qIFJlZ2lzdGVyIGZvciBodyB0cmFwIHN0YXR1cyAqLwo+ICNkZWZpbmUgTVQ3NTMw
-X0hXVFJBUAkJCTB4NzgwMAo+KyNkZWZpbmUgIEhXVFJBUF9YVEFMX01BU0sJCShCSVQoMTApIHwg
-QklUKDkpKQo+KyNkZWZpbmUgIEhXVFJBUF9YVEFMXzI1TUhaCQkoQklUKDEwKSB8IEJJVCg5KSkK
-PisjZGVmaW5lICBIV1RSQVBfWFRBTF80ME1IWgkJKEJJVCgxMCkpCj4rI2RlZmluZSAgSFdUUkFQ
-X1hUQUxfMjBNSFoJCShCSVQoOSkpCj4gCj4gLyogUmVnaXN0ZXIgZm9yIGh3IHRyYXAgbW9kaWZp
-Y2F0aW9uICovCj4gI2RlZmluZSBNVDc1MzBfTUhXVFJBUAkJCTB4NzgwNAoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
-ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+On Thu, Jun 20, 2019 at 1:07 PM Jerry Hoemann <jerry.hoemann@hpe.com> wrote:
+>
+> On Thu, Jun 20, 2019 at 09:28:46AM -0700, Guenter Roeck wrote:
+> > This gets rid of the unnecessary license boilerplate, and avoids
+> > having to deal with individual patches one by one.
+> >
+> > No functional changes.
+> >
+> > Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> > ---
+> > Note: Several drivers include a paragraph such as
+> >
+> > "Neither <name> nor <company> admit liability nor
+> >  provide warranty for any of this software. This material is
+> >  provided "AS-IS" and at no charge."
+> >
+> > Presumably this is covered by the GPL license. However, since I am not
+> > an attorney, I am not sure, and I opted for leaving such paragraphs in
+> > place.
+> >
+[...]
+> >  drivers/watchdog/pnx4008_wdt.c         |  5 +----
+[...]
+> >  51 files changed, 54 insertions(+), 336 deletions(-)
+> >
+[...]
+For pnx4008_wdt.c:
+
+Acked-by: Sylvain Lemieux <slemieux.tyco@gmail.com>
