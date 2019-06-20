@@ -1,895 +1,363 @@
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Subject: Re: [PATCH RFC 1/2] PM / devfreq: Generic CPU frequency to device
- frequency mapping governor
-Date: Thu, 20 Jun 2019 17:43:06 +0800
-Message-ID: <CAJMQK-hSDEHfiVVQkSM84JWX0NQScUk72SWKJcwWz-MS08qeeQ@mail.gmail.com>
-References: <20190618041433.245629-1-hsinyi@chromium.org> <CGME20190618041513epcas5p1bc626114804cb68bbf857f0a826c7599@epcas5p1.samsung.com>
- <20190618041433.245629-2-hsinyi@chromium.org> <958b27ff-6e64-b4e2-44e6-bc342e3606bc@samsung.com>
- <CAJMQK-jELbhCUb5LYOnGMsBHjhZHnXMYQYDxWyEmriJf8OSpSQ@mail.gmail.com> <04bbd518efef8296e450e984e6afdba2@codeaurora.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v7 16/21] memory: mtk-smi: Add bus_sel for mt8183
+Date: Thu, 20 Jun 2019 13:38:07 +0200
+Message-ID: <effb4fff-da83-708f-ca10-50f2645c91c6@gmail.com>
+References: <1560169080-27134-1-git-send-email-yong.wu@mediatek.com>
+ <1560169080-27134-17-git-send-email-yong.wu@mediatek.com>
+ <CANdKZ0d873PJ2u=Hn_aUJBu3dDiNyueVwBv94-VXHGLJBvAbGg@mail.gmail.com>
+ <eee15db0-e43f-de9b-28a0-93bdd04836d7@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <04bbd518efef8296e450e984e6afdba2@codeaurora.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sibi Sankar <sibis@codeaurora.org>
-Cc: Chanwoo Choi <cw00.choi@samsung.com>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, Saravana Kannan <skannan@codeaurora.org>, MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, lkml <linux-kernel@vger.kernel.org>, "Andrew-sh . Cheng" <andrew-sh.cheng@mediatek.com>, linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <eee15db0-e43f-de9b-28a0-93bdd04836d7@gmail.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Pi-Hsun Shih <pihsun@chromium.org>, Yong Wu <yong.wu@mediatek.com>
+Cc: youlin.pei@mediatek.com, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, open list <linux-kernel@vger.kernel.org>, Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com, anan.sun@mediatek.com, Robin Murphy <robin.murphy@arm.com>, Matthias Kaehlcke <mka@chromium.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Thanks!
+CCing Sascha
 
-On Thu, Jun 20, 2019 at 5:41 PM Sibi Sankar <sibis@codeaurora.org> wrote:
->
-> Hey Hsin-Yi, Chanwoo
->
-> On 2019-06-20 15:02, Hsin-Yi Wang wrote:
-> > Hi Chanwoo Choi, Saravana Kannan and Sibi Sankar,
-> >
-> > I've also tested Sibi Sankar's patch[1] locally with mt8183-cci, and
-> > it works fine too!
-> > It'd be great if Sibi Sankar or anyone who is familiar with the
-> > original design can finish this implementation. But if no one has time
-> > to do that, I think I can also help on address the comments. Thanks!
->
-> Now that we have a user :) I am happy
-> to repost the patch with the comments
-> addressed.
->
-> https://lkml.org/lkml/2019/6/14/4
-> Also with ^^ patch and few more in the
-> series the dt parsing of required-opps
-> should get further simplified.
->
-> >
-> >
-> > [1]
-> > [RFC,2/9] OPP: Export a number of helpers to prevent code duplication
-> > - https://patchwork.kernel.org/patch/10875199/
-> > [RFC,3/9] PM / devfreq: Add cpu based scaling support to
-> > passive_governor
-> > - https://patchwork.kernel.org/patch/10875195/
-> >
-> > Hsin-Yi
-> >
-> > On Thu, Jun 20, 2019 at 2:56 PM Chanwoo Choi <cw00.choi@samsung.com>
-> > wrote:
-> >>
-> >> + Sibi Sankar
-> >>
-> >> Hi, Hsin-Yi Wang, Saravana Kannan and Sibi Sankar
-> >>
-> >> I summarized the history of the related patch about this title.
-> >>
-> >> Firstly,
-> >> As I knew, Saravana sent the patch[1] which contains
-> >> 'governor_cpufreq_map.c' last year. According to the Myungoo's
-> >> comment,
-> >>
-> >> Secondly,
-> >> Sibi Sankar modified the 'governor_passive.c'[2] in order to support
-> >> the mapping between cpu frequency and device frequency.
-> >> Unfortunately, Sibi Sankar stopped the development about this
-> >> because he had found the other method to get his purpose as I knew.
-> >>
-> >> Thirdly,
-> >> Hsin-Yi Wang send the original patch of Saravana without modification.
-> >>
-> >>
-> >> Sincerely, I think that the mapping between cpu frequency and device
-> >> frequency is necessary. And I prefer the Sibi's approach which
-> >> implements
-> >> stuff to the existing 'passive' governor.
-> >>
-> >> We need to discuss about how to implement them by whom.
-> >>
-> >>
-> >> [1] [v3,1/2] PM / devfreq: Generic CPU frequency to device frequency
-> >> mapping governor
-> >> - https://patchwork.kernel.org/patch/10553171/
-> >>
-> >> [2]
-> >> [PATCH RFC 0/9] Add CPU based scaling support to Passive governor
-> >> -
-> >> https://lore.kernel.org/lkml/08c3cff8c39e3d82e044db93e992da72@codeauro=
-ra.org/T/
-> >> [PATCH RFC 3/9] PM / devfreq: Add cpu based scaling support to
-> >> passive_governor
-> >> -
-> >> https://lore.kernel.org/lkml/08c3cff8c39e3d82e044db93e992da72@codeauro=
-ra.org/T/#m1cafb7baf687d2a680d39c85d3ec7d1b590b68fc
-> >>
-> >>
-> >> Best Regards,
-> >> Chanwoo Choi
-> >>
-> >> On 19. 6. 18. =EC=98=A4=ED=9B=84 1:14, Hsin-Yi Wang wrote:
-> >> > From: Saravana Kannan <skannan@codeaurora.org>
-> >> >
-> >> > From: Saravana Kannan <skannan@codeaurora.org>
-> >> >
-> >> > Many CPU architectures have caches that can scale independent of the=
- CPUs.
-> >> > Frequency scaling of the caches is necessary to make sure the cache =
-is not
-> >> > a performance bottleneck that leads to poor performance and power. T=
-he same
-> >> > idea applies for RAM/DDR.
-> >> >
-> >> > To achieve this, this patch adds a generic devfreq governor that tak=
-es the
-> >> > current frequency of each CPU frequency domain and then adjusts the
-> >> > frequency of the cache (or any devfreq device) based on the frequenc=
-y of
-> >> > the CPUs. It listens to CPU frequency transition notifiers to keep i=
-tself
-> >> > up to date on the current CPU frequency.
-> >> >
-> >> > To decide the frequency of the device, the governor does one of the
-> >> > following:
-> >> >
-> >> > * Uses a CPU frequency to device frequency mapping table
-> >> >   - Either one mapping table used for all CPU freq policies (typical=
-ly used
-> >> >     for system with homogeneous cores/clusters that have the same OP=
-Ps).
-> >> >   - One mapping table per CPU freq policy (typically used for ASMP s=
-ystems
-> >> >     with heterogeneous CPUs with different OPPs)
-> >> >
-> >> > OR
-> >> >
-> >> > * Scales the device frequency in proportion to the CPU frequency. So=
-, if
-> >> >   the CPUs are running at their max frequency, the device runs at it=
-s max
-> >> >   frequency.  If the CPUs are running at their min frequency, the de=
-vice
-> >> >   runs at its min frequency. And interpolated for frequencies in bet=
-ween.
-> >> >
-> >> > Signed-off-by: Saravana Kannan <skannan@codeaurora.org>
-> >> > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> >> > ---
-> >> >  .../bindings/devfreq/devfreq-cpufreq-map.txt  |  53 ++
-> >> >  drivers/devfreq/Kconfig                       |   8 +
-> >> >  drivers/devfreq/Makefile                      |   1 +
-> >> >  drivers/devfreq/governor_cpufreq_map.c        | 583 +++++++++++++++=
-+++
-> >> >  4 files changed, 645 insertions(+)
-> >> >  create mode 100644 Documentation/devicetree/bindings/devfreq/devfre=
-q-cpufreq-map.txt
-> >> >  create mode 100644 drivers/devfreq/governor_cpufreq_map.c
-> >> >
-> >> > diff --git a/Documentation/devicetree/bindings/devfreq/devfreq-cpufr=
-eq-map.txt b/Documentation/devicetree/bindings/devfreq/devfreq-cpufreq-map.=
-txt
-> >> > new file mode 100644
-> >> > index 000000000000..982a30bcfc86
-> >> > --- /dev/null
-> >> > +++ b/Documentation/devicetree/bindings/devfreq/devfreq-cpufreq-map.=
-txt
-> >> > @@ -0,0 +1,53 @@
-> >> > +Devfreq CPUfreq governor
-> >> > +
-> >> > +devfreq-cpufreq-map is a parent device that contains one or more ch=
-ild devices.
-> >> > +Each child device provides CPU frequency to device frequency mappin=
-g for a
-> >> > +specific device. Examples of devices that could use this are: DDR, =
-cache and
-> >> > +CCI.
-> >> > +
-> >> > +Parent device name shall be "devfreq-cpufreq-map".
-> >> > +
-> >> > +Required child device properties:
-> >> > +- cpu-to-dev-map, or cpu-to-dev-map-<X>:
-> >> > +                     A list of tuples where each tuple consists of =
-a
-> >> > +                     CPU frequency (KHz) and the corresponding devi=
-ce
-> >> > +                     frequency. CPU frequencies not listed in the t=
-able
-> >> > +                     will use the device frequency that corresponds=
- to the
-> >> > +                     next rounded up CPU frequency.
-> >> > +                     Use "cpu-to-dev-map" if all CPUs in the system=
- should
-> >> > +                     share same mapping.
-> >> > +                     Use cpu-to-dev-map-<cpuid> to describe differe=
-nt
-> >> > +                     mappings for different CPUs. The property shou=
-ld be
-> >> > +                     listed only for the first CPU if multiple CPUs=
- are
-> >> > +                     synchronous.
-> >> > +- target-dev:                Phandle to device that this mapping ap=
-plies to.
-> >> > +
-> >> > +Example:
-> >> > +     devfreq-cpufreq-map {
-> >> > +             cpubw-cpufreq {
-> >> > +                     target-dev =3D <&cpubw>;
-> >> > +                     cpu-to-dev-map =3D
-> >> > +                             <  300000  1144000 >,
-> >> > +                             <  422400  2288000 >,
-> >> > +                             <  652800  3051000 >,
-> >> > +                             <  883200  5996000 >,
-> >> > +                             < 1190400  8056000 >,
-> >> > +                             < 1497600 10101000 >,
-> >> > +                             < 1728000 12145000 >,
-> >> > +                             < 2649600 16250000 >;
-> >> > +             };
-> >> > +
-> >> > +             cache-cpufreq {
-> >> > +                     target-dev =3D <&cache>;
-> >> > +                     cpu-to-dev-map =3D
-> >> > +                             <  300000  300000 >,
-> >> > +                             <  422400  422400 >,
-> >> > +                             <  652800  499200 >,
-> >> > +                             <  883200  576000 >,
-> >> > +                             <  960000  960000 >,
-> >> > +                             < 1497600 1036800 >,
-> >> > +                             < 1574400 1574400 >,
-> >> > +                             < 1728000 1651200 >,
-> >> > +                             < 2649600 1728000 >;
-> >> > +             };
-> >> > +     };
-> >> > diff --git a/drivers/devfreq/Kconfig b/drivers/devfreq/Kconfig
-> >> > index 0c8204d6b78a..0303f5a400b6 100644
-> >> > --- a/drivers/devfreq/Kconfig
-> >> > +++ b/drivers/devfreq/Kconfig
-> >> > @@ -74,6 +74,14 @@ config DEVFREQ_GOV_PASSIVE
-> >> >         through sysfs entries. The passive governor recommends that
-> >> >         devfreq device uses the OPP table to get the frequency/volta=
-ge.
-> >> >
-> >> > +config DEVFREQ_GOV_CPUFREQ_MAP
-> >> > +     tristate "CPUfreq Map"
-> >> > +     depends on CPU_FREQ
-> >> > +     help
-> >> > +       Chooses frequency based on the online CPUs' current frequenc=
-y and a
-> >> > +       CPU frequency to device frequency mapping table(s). This gov=
-ernor
-> >> > +       can be useful for controlling devices such as DDR, cache, CC=
-I, etc.
-> >> > +
-> >> >  comment "DEVFREQ Drivers"
-> >> >
-> >> >  config ARM_EXYNOS_BUS_DEVFREQ
-> >> > diff --git a/drivers/devfreq/Makefile b/drivers/devfreq/Makefile
-> >> > index 817dde779f16..81141e2c784f 100644
-> >> > --- a/drivers/devfreq/Makefile
-> >> > +++ b/drivers/devfreq/Makefile
-> >> > @@ -6,6 +6,7 @@ obj-$(CONFIG_DEVFREQ_GOV_PERFORMANCE) +=3D governor_=
-performance.o
-> >> >  obj-$(CONFIG_DEVFREQ_GOV_POWERSAVE)  +=3D governor_powersave.o
-> >> >  obj-$(CONFIG_DEVFREQ_GOV_USERSPACE)  +=3D governor_userspace.o
-> >> >  obj-$(CONFIG_DEVFREQ_GOV_PASSIVE)    +=3D governor_passive.o
-> >> > +obj-$(CONFIG_DEVFREQ_GOV_CPUFREQ_MAP)        +=3D governor_cpufreq_=
-map.o
-> >> >
-> >> >  # DEVFREQ Drivers
-> >> >  obj-$(CONFIG_ARM_EXYNOS_BUS_DEVFREQ) +=3D exynos-bus.o
-> >> > diff --git a/drivers/devfreq/governor_cpufreq_map.c b/drivers/devfre=
-q/governor_cpufreq_map.c
-> >> > new file mode 100644
-> >> > index 000000000000..084a3ffb8f54
-> >> > --- /dev/null
-> >> > +++ b/drivers/devfreq/governor_cpufreq_map.c
-> >> > @@ -0,0 +1,583 @@
-> >> > +// SPDX-License-Identifier: GPL-2.0
-> >> > +/*
-> >> > + * Copyright (c) 2014-2015, 2018, The Linux Foundation. All rights =
-reserved.
-> >> > + */
-> >> > +
-> >> > +#define pr_fmt(fmt) "dev-cpufreq-map: " fmt
-> >> > +
-> >> > +#include <linux/devfreq.h>
-> >> > +#include <linux/cpu.h>
-> >> > +#include <linux/cpufreq.h>
-> >> > +#include <linux/cpumask.h>
-> >> > +#include <linux/slab.h>
-> >> > +#include <linux/platform_device.h>
-> >> > +#include <linux/of.h>
-> >> > +#include <linux/module.h>
-> >> > +#include "governor.h"
-> >> > +
-> >> > +struct cpu_state {
-> >> > +     unsigned int freq;
-> >> > +     unsigned int min_freq;
-> >> > +     unsigned int max_freq;
-> >> > +     unsigned int first_cpu;
-> >> > +};
-> >> > +static struct cpu_state *state[NR_CPUS];
-> >> > +static int cpufreq_cnt;
-> >> > +
-> >> > +struct freq_map {
-> >> > +     unsigned int cpu_khz;
-> >> > +     unsigned int target_freq;
-> >> > +};
-> >> > +
-> >> > +struct devfreq_node {
-> >> > +     struct devfreq *df;
-> >> > +     void *orig_data;
-> >> > +     struct device *dev;
-> >> > +     struct device_node *of_node;
-> >> > +     struct list_head list;
-> >> > +     struct freq_map **map;
-> >> > +     struct freq_map *common_map;
-> >> > +};
-> >> > +static LIST_HEAD(devfreq_list);
-> >> > +static DEFINE_MUTEX(state_lock);
-> >> > +static DEFINE_MUTEX(cpufreq_reg_lock);
-> >> > +
-> >> > +static void update_all_devfreqs(void)
-> >> > +{
-> >> > +     struct devfreq_node *node;
-> >> > +
-> >> > +     list_for_each_entry(node, &devfreq_list, list) {
-> >> > +             struct devfreq *df =3D node->df;
-> >> > +
-> >> > +             if (!node->df)
-> >> > +                     continue;
-> >> > +             mutex_lock(&df->lock);
-> >> > +             update_devfreq(df);
-> >> > +             mutex_unlock(&df->lock);
-> >> > +
-> >> > +     }
-> >> > +}
-> >> > +
-> >> > +static struct devfreq_node *find_devfreq_node(struct device *dev)
-> >> > +{
-> >> > +     struct devfreq_node *node;
-> >> > +
-> >> > +     list_for_each_entry(node, &devfreq_list, list)
-> >> > +             if (node->dev =3D=3D dev || node->of_node =3D=3D dev->=
-of_node)
-> >> > +                     return node;
-> >> > +
-> >> > +     return NULL;
-> >> > +}
-> >> > +
-> >> > +/* =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D cpu=
-freq part =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D */
-> >> > +static struct cpu_state *add_policy(struct cpufreq_policy *policy)
-> >> > +{
-> >> > +     struct cpu_state *new_state;
-> >> > +     unsigned int cpu, first_cpu;
-> >> > +
-> >> > +     new_state =3D kzalloc(sizeof(struct cpu_state), GFP_KERNEL);
-> >> > +     if (!new_state)
-> >> > +             return NULL;
-> >> > +
-> >> > +     first_cpu =3D cpumask_first(policy->related_cpus);
-> >> > +     new_state->first_cpu =3D first_cpu;
-> >> > +     new_state->freq =3D policy->cur;
-> >> > +     new_state->min_freq =3D policy->cpuinfo.min_freq;
-> >> > +     new_state->max_freq =3D policy->cpuinfo.max_freq;
-> >> > +
-> >> > +     for_each_cpu(cpu, policy->related_cpus)
-> >> > +             state[cpu] =3D new_state;
-> >> > +
-> >> > +     return new_state;
-> >> > +}
-> >> > +
-> >> > +static int cpufreq_trans_notifier(struct notifier_block *nb,
-> >> > +             unsigned long event, void *data)
-> >> > +{
-> >> > +     struct cpufreq_freqs *freq =3D data;
-> >> > +     struct cpu_state *s;
-> >> > +     struct cpufreq_policy *policy =3D NULL;
-> >> > +
-> >> > +     if (event !=3D CPUFREQ_POSTCHANGE)
-> >> > +             return 0;
-> >> > +
-> >> > +     mutex_lock(&state_lock);
-> >> > +
-> >> > +     s =3D state[freq->cpu];
-> >> > +     if (!s) {
-> >> > +             policy =3D cpufreq_cpu_get(freq->cpu);
-> >> > +             if (policy) {
-> >> > +                     s =3D add_policy(policy);
-> >> > +                     cpufreq_cpu_put(policy);
-> >> > +             }
-> >> > +     }
-> >> > +     if (!s)
-> >> > +             goto out;
-> >> > +
-> >> > +     if (s->freq !=3D freq->new || policy) {
-> >> > +             s->freq =3D freq->new;
-> >> > +             update_all_devfreqs();
-> >> > +     }
-> >> > +
-> >> > +out:
-> >> > +     mutex_unlock(&state_lock);
-> >> > +     return 0;
-> >> > +}
-> >> > +
-> >> > +static struct notifier_block cpufreq_trans_nb =3D {
-> >> > +     .notifier_call =3D cpufreq_trans_notifier
-> >> > +};
-> >> > +
-> >> > +static int register_cpufreq(void)
-> >> > +{
-> >> > +     int ret =3D 0;
-> >> > +     unsigned int cpu;
-> >> > +     struct cpufreq_policy *policy;
-> >> > +
-> >> > +     mutex_lock(&cpufreq_reg_lock);
-> >> > +
-> >> > +     if (cpufreq_cnt)
-> >> > +             goto cnt_not_zero;
-> >> > +
-> >> > +     get_online_cpus();
-> >> > +     ret =3D cpufreq_register_notifier(&cpufreq_trans_nb,
-> >> > +                             CPUFREQ_TRANSITION_NOTIFIER);
-> >> > +     if (ret)
-> >> > +             goto out;
-> >> > +
-> >> > +     for_each_online_cpu(cpu) {
-> >> > +             policy =3D cpufreq_cpu_get(cpu);
-> >> > +             if (policy) {
-> >> > +                     add_policy(policy);
-> >> > +                     cpufreq_cpu_put(policy);
-> >> > +             }
-> >> > +     }
-> >> > +out:
-> >> > +     put_online_cpus();
-> >> > +cnt_not_zero:
-> >> > +     if (!ret)
-> >> > +             cpufreq_cnt++;
-> >> > +     mutex_unlock(&cpufreq_reg_lock);
-> >> > +     return ret;
-> >> > +}
-> >> > +
-> >> > +static int unregister_cpufreq(void)
-> >> > +{
-> >> > +     int ret =3D 0;
-> >> > +     int cpu;
-> >> > +
-> >> > +     mutex_lock(&cpufreq_reg_lock);
-> >> > +
-> >> > +     if (cpufreq_cnt > 1)
-> >> > +             goto out;
-> >> > +
-> >> > +     cpufreq_unregister_notifier(&cpufreq_trans_nb,
-> >> > +                             CPUFREQ_TRANSITION_NOTIFIER);
-> >> > +
-> >> > +     for (cpu =3D ARRAY_SIZE(state) - 1; cpu >=3D 0; cpu--) {
-> >> > +             if (!state[cpu])
-> >> > +                     continue;
-> >> > +             if (state[cpu]->first_cpu =3D=3D cpu)
-> >> > +                     kfree(state[cpu]);
-> >> > +             state[cpu] =3D NULL;
-> >> > +     }
-> >> > +
-> >> > +out:
-> >> > +     cpufreq_cnt--;
-> >> > +     mutex_unlock(&cpufreq_reg_lock);
-> >> > +     return ret;
-> >> > +}
-> >> > +
-> >> > +/* =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D dev=
-freq part =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D */
-> >> > +
-> >> > +static unsigned int interpolate_freq(struct devfreq *df, unsigned i=
-nt cpu)
-> >> > +{
-> >> > +     unsigned long *freq_table =3D df->profile->freq_table;
-> >> > +     unsigned int cpu_min =3D state[cpu]->min_freq;
-> >> > +     unsigned int cpu_max =3D state[cpu]->max_freq;
-> >> > +     unsigned int cpu_freq =3D state[cpu]->freq;
-> >> > +     unsigned int dev_min, dev_max, cpu_percent;
-> >> > +
-> >> > +     if (freq_table) {
-> >> > +             dev_min =3D freq_table[0];
-> >> > +             dev_max =3D freq_table[df->profile->max_state - 1];
-> >> > +     } else {
-> >> > +             if (df->max_freq <=3D df->min_freq)
-> >> > +                     return 0;
-> >> > +             dev_min =3D df->min_freq;
-> >> > +             dev_max =3D df->max_freq;
-> >> > +     }
-> >> > +
-> >> > +     cpu_percent =3D ((cpu_freq - cpu_min) * 100) / (cpu_max - cpu_=
-min);
-> >> > +     return dev_min + mult_frac(dev_max - dev_min, cpu_percent, 100=
-);
-> >> > +}
-> >> > +
-> >> > +static unsigned int cpu_to_dev_freq(struct devfreq *df, unsigned in=
-t cpu)
-> >> > +{
-> >> > +     struct freq_map *map =3D NULL;
-> >> > +     unsigned int cpu_khz =3D 0, freq;
-> >> > +     struct devfreq_node *n =3D df->data;
-> >> > +
-> >> > +     if (!state[cpu] || state[cpu]->first_cpu !=3D cpu) {
-> >> > +             freq =3D 0;
-> >> > +             goto out;
-> >> > +     }
-> >> > +
-> >> > +     if (n->common_map)
-> >> > +             map =3D n->common_map;
-> >> > +     else if (n->map)
-> >> > +             map =3D n->map[cpu];
-> >> > +
-> >> > +     cpu_khz =3D state[cpu]->freq;
-> >> > +
-> >> > +     if (!map) {
-> >> > +             freq =3D interpolate_freq(df, cpu);
-> >> > +             goto out;
-> >> > +     }
-> >> > +
-> >> > +     while (map->cpu_khz && map->cpu_khz < cpu_khz)
-> >> > +             map++;
-> >> > +     if (!map->cpu_khz)
-> >> > +             map--;
-> >> > +     freq =3D map->target_freq;
-> >> > +
-> >> > +out:
-> >> > +     dev_dbg(df->dev.parent, "CPU%u: %d -> dev: %u\n", cpu, cpu_khz=
-, freq);
-> >> > +     return freq;
-> >> > +}
-> >> > +
-> >> > +static int devfreq_cpufreq_get_freq(struct devfreq *df,
-> >> > +                                     unsigned long *freq)
-> >> > +{
-> >> > +     unsigned int cpu, tgt_freq =3D 0;
-> >> > +     struct devfreq_node *node;
-> >> > +
-> >> > +     node =3D df->data;
-> >> > +     if (!node) {
-> >> > +             pr_err("Unable to find devfreq node!\n");
-> >> > +             return -ENODEV;
-> >> > +     }
-> >> > +
-> >> > +     for_each_possible_cpu(cpu)
-> >> > +             tgt_freq =3D max(tgt_freq, cpu_to_dev_freq(df, cpu));
-> >> > +
-> >> > +     *freq =3D tgt_freq;
-> >> > +     return 0;
-> >> > +}
-> >> > +
-> >> > +static unsigned int show_table(char *buf, unsigned int len,
-> >> > +                             struct freq_map *map)
-> >> > +{
-> >> > +     unsigned int cnt =3D 0;
-> >> > +
-> >> > +     cnt +=3D snprintf(buf + cnt, len - cnt, "CPU freq\tDevice freq=
-\n");
-> >> > +
-> >> > +     while (map->cpu_khz && cnt < len) {
-> >> > +             cnt +=3D snprintf(buf + cnt, len - cnt, "%8u\t%11u\n",
-> >> > +                             map->cpu_khz, map->target_freq);
-> >> > +             map++;
-> >> > +     }
-> >> > +     if (cnt < len)
-> >> > +             cnt +=3D snprintf(buf + cnt, len - cnt, "\n");
-> >> > +
-> >> > +     return cnt;
-> >> > +}
-> >> > +
-> >> > +static ssize_t freq_map_show(struct device *dev, struct device_attr=
-ibute *attr,
-> >> > +                     char *buf)
-> >> > +{
-> >> > +     struct devfreq *df =3D to_devfreq(dev);
-> >> > +     struct devfreq_node *n =3D df->data;
-> >> > +     struct freq_map *map;
-> >> > +     unsigned int cnt =3D 0, cpu;
-> >> > +
-> >> > +     mutex_lock(&state_lock);
-> >> > +     if (n->common_map) {
-> >> > +             map =3D n->common_map;
-> >> > +             cnt +=3D snprintf(buf + cnt, PAGE_SIZE - cnt,
-> >> > +                             "Common table for all CPUs:\n");
-> >> > +             cnt +=3D show_table(buf + cnt, PAGE_SIZE - cnt, map);
-> >> > +     } else if (n->map) {
-> >> > +             for_each_possible_cpu(cpu) {
-> >> > +                     map =3D n->map[cpu];
-> >> > +                     if (!map)
-> >> > +                             continue;
-> >> > +                     cnt +=3D snprintf(buf + cnt, PAGE_SIZE - cnt,
-> >> > +                                     "CPU %u:\n", cpu);
-> >> > +                     if (cnt >=3D PAGE_SIZE)
-> >> > +                             break;
-> >> > +                     cnt +=3D show_table(buf + cnt, PAGE_SIZE - cnt=
-, map);
-> >> > +                     if (cnt >=3D PAGE_SIZE)
-> >> > +                             break;
-> >> > +             }
-> >> > +     } else {
-> >> > +             cnt +=3D snprintf(buf + cnt, PAGE_SIZE - cnt,
-> >> > +                             "Device freq interpolated based on CPU=
- freq\n");
-> >> > +     }
-> >> > +     mutex_unlock(&state_lock);
-> >> > +
-> >> > +     return cnt;
-> >> > +}
-> >> > +
-> >> > +static DEVICE_ATTR_RO(freq_map);
-> >> > +static struct attribute *dev_attr[] =3D {
-> >> > +     &dev_attr_freq_map.attr,
-> >> > +     NULL,
-> >> > +};
-> >> > +
-> >> > +static struct attribute_group dev_attr_group =3D {
-> >> > +     .name =3D "cpufreq-map",
-> >> > +     .attrs =3D dev_attr,
-> >> > +};
-> >> > +
-> >> > +static int devfreq_cpufreq_gov_start(struct devfreq *devfreq)
-> >> > +{
-> >> > +     int ret =3D 0;
-> >> > +     struct devfreq_node *node;
-> >> > +     bool alloc =3D false;
-> >> > +
-> >> > +     ret =3D register_cpufreq();
-> >> > +     if (ret)
-> >> > +             return ret;
-> >> > +
-> >> > +     ret =3D sysfs_create_group(&devfreq->dev.kobj, &dev_attr_group=
-);
-> >> > +     if (ret) {
-> >> > +             unregister_cpufreq();
-> >> > +             return ret;
-> >> > +     }
-> >> > +
-> >> > +     mutex_lock(&state_lock);
-> >> > +
-> >> > +     node =3D find_devfreq_node(devfreq->dev.parent);
-> >> > +     if (node =3D=3D NULL) {
-> >> > +             node =3D kzalloc(sizeof(struct devfreq_node), GFP_KERN=
-EL);
-> >> > +             if (!node) {
-> >> > +                     ret =3D -ENOMEM;
-> >> > +                     goto alloc_fail;
-> >> > +             }
-> >> > +             alloc =3D true;
-> >> > +             node->dev =3D devfreq->dev.parent;
-> >> > +             list_add_tail(&node->list, &devfreq_list);
-> >> > +     }
-> >> > +     node->df =3D devfreq;
-> >> > +     node->orig_data =3D devfreq->data;
-> >> > +     devfreq->data =3D node;
-> >> > +
-> >> > +     mutex_lock(&devfreq->lock);
-> >> > +     ret =3D update_devfreq(devfreq);
-> >> > +     mutex_unlock(&devfreq->lock);
-> >> > +     if (ret) {
-> >> > +             pr_err("Freq update failed!\n");
-> >> > +             goto update_fail;
-> >> > +     }
-> >> > +
-> >> > +     mutex_unlock(&state_lock);
-> >> > +     return 0;
-> >> > +
-> >> > +update_fail:
-> >> > +     devfreq->data =3D node->orig_data;
-> >> > +     if (alloc) {
-> >> > +             list_del(&node->list);
-> >> > +             kfree(node);
-> >> > +     }
-> >> > +alloc_fail:
-> >> > +     mutex_unlock(&state_lock);
-> >> > +     sysfs_remove_group(&devfreq->dev.kobj, &dev_attr_group);
-> >> > +     unregister_cpufreq();
-> >> > +     return ret;
-> >> > +}
-> >> > +
-> >> > +static void devfreq_cpufreq_gov_stop(struct devfreq *devfreq)
-> >> > +{
-> >> > +     struct devfreq_node *node =3D devfreq->data;
-> >> > +
-> >> > +     mutex_lock(&state_lock);
-> >> > +     devfreq->data =3D node->orig_data;
-> >> > +     if (node->map || node->common_map) {
-> >> > +             node->df =3D NULL;
-> >> > +     } else {
-> >> > +             list_del(&node->list);
-> >> > +             kfree(node);
-> >> > +     }
-> >> > +     mutex_unlock(&state_lock);
-> >> > +
-> >> > +     sysfs_remove_group(&devfreq->dev.kobj, &dev_attr_group);
-> >> > +     unregister_cpufreq();
-> >> > +}
-> >> > +
-> >> > +static int devfreq_cpufreq_ev_handler(struct devfreq *devfreq,
-> >> > +                                     unsigned int event, void *data=
-)
-> >> > +{
-> >> > +     int ret;
-> >> > +
-> >> > +     switch (event) {
-> >> > +     case DEVFREQ_GOV_START:
-> >> > +
-> >> > +             ret =3D devfreq_cpufreq_gov_start(devfreq);
-> >> > +             if (ret) {
-> >> > +                     pr_err("Governor start failed!\n");
-> >> > +                     return ret;
-> >> > +             }
-> >> > +             pr_debug("Enabled CPUfreq-map governor\n");
-> >> > +             break;
-> >> > +
-> >> > +     case DEVFREQ_GOV_STOP:
-> >> > +
-> >> > +             devfreq_cpufreq_gov_stop(devfreq);
-> >> > +             pr_debug("Disabled dev CPUfreq-map governor\n");
-> >> > +             break;
-> >> > +     }
-> >> > +
-> >> > +     return 0;
-> >> > +}
-> >> > +
-> >> > +static struct devfreq_governor devfreq_cpufreq =3D {
-> >> > +     .name =3D "cpufreq-map",
-> >> > +     .get_target_freq =3D devfreq_cpufreq_get_freq,
-> >> > +     .event_handler =3D devfreq_cpufreq_ev_handler,
-> >> > +};
-> >> > +
-> >> > +#define NUM_COLS     2
-> >> > +static struct freq_map *read_tbl(struct device_node *of_node, char =
-*prop_name)
-> >> > +{
-> >> > +     int len, nf, i, j;
-> >> > +     u32 data;
-> >> > +     struct freq_map *tbl;
-> >> > +
-> >> > +     if (!of_find_property(of_node, prop_name, &len))
-> >> > +             return NULL;
-> >> > +     len /=3D sizeof(data);
-> >> > +
-> >> > +     if (len % NUM_COLS || len =3D=3D 0)
-> >> > +             return NULL;
-> >> > +     nf =3D len / NUM_COLS;
-> >> > +
-> >> > +     tbl =3D kzalloc((nf + 1) * sizeof(*tbl), GFP_KERNEL);
-> >> > +     if (!tbl)
-> >> > +             return NULL;
-> >> > +
-> >> > +     for (i =3D 0, j =3D 0; i < nf; i++, j +=3D 2) {
-> >> > +             of_property_read_u32_index(of_node, prop_name, j, &dat=
-a);
-> >> > +             tbl[i].cpu_khz =3D data;
-> >> > +
-> >> > +             of_property_read_u32_index(of_node, prop_name, j + 1, =
-&data);
-> >> > +             tbl[i].target_freq =3D data;
-> >> > +     }
-> >> > +     tbl[i].cpu_khz =3D 0;
-> >> > +
-> >> > +     return tbl;
-> >> > +}
-> >> > +
-> >> > +#define PROP_TARGET "target-dev"
-> >> > +#define PROP_TABLE "cpu-to-dev-map"
-> >> > +static int add_table_from_of(struct device_node *of_node)
-> >> > +{
-> >> > +     struct device_node *target_of_node;
-> >> > +     struct devfreq_node *node;
-> >> > +     struct freq_map *common_tbl;
-> >> > +     struct freq_map **tbl_list =3D NULL;
-> >> > +     static char prop_name[] =3D PROP_TABLE "-999999";
-> >> > +     int cpu, ret, cnt =3D 0, prop_sz =3D ARRAY_SIZE(prop_name);
-> >> > +
-> >> > +     target_of_node =3D of_parse_phandle(of_node, PROP_TARGET, 0);
-> >> > +     if (!target_of_node)
-> >> > +             return -EINVAL;
-> >> > +
-> >> > +     node =3D kzalloc(sizeof(struct devfreq_node), GFP_KERNEL);
-> >> > +     if (!node)
-> >> > +             return -ENOMEM;
-> >> > +
-> >> > +     common_tbl =3D read_tbl(of_node, PROP_TABLE);
-> >> > +     if (!common_tbl) {
-> >> > +             tbl_list =3D kzalloc(sizeof(*tbl_list) * NR_CPUS, GFP_=
-KERNEL);
-> >> > +             if (!tbl_list) {
-> >> > +                     ret =3D -ENOMEM;
-> >> > +                     goto err_list;
-> >> > +             }
-> >> > +
-> >> > +             for_each_possible_cpu(cpu) {
-> >> > +                     ret =3D snprintf(prop_name, prop_sz, "%s-%d",
-> >> > +                                     PROP_TABLE, cpu);
-> >> > +                     if (ret >=3D prop_sz) {
-> >> > +                             pr_warn("More CPUs than I can handle!\=
-n");
-> >> > +                             pr_warn("Skipping rest of the tables!\=
-n");
-> >> > +                             break;
-> >> > +                     }
-> >> > +                     tbl_list[cpu] =3D read_tbl(of_node, prop_name)=
-;
-> >> > +                     if (tbl_list[cpu])
-> >> > +                             cnt++;
-> >> > +             }
-> >> > +     }
-> >> > +     if (!common_tbl && !cnt) {
-> >> > +             ret =3D -EINVAL;
-> >> > +             goto err_tbl;
-> >> > +     }
-> >> > +
-> >> > +     mutex_lock(&state_lock);
-> >> > +     node->of_node =3D target_of_node;
-> >> > +     node->map =3D tbl_list;
-> >> > +     node->common_map =3D common_tbl;
-> >> > +     list_add_tail(&node->list, &devfreq_list);
-> >> > +     mutex_unlock(&state_lock);
-> >> > +
-> >> > +     return 0;
-> >> > +err_tbl:
-> >> > +     kfree(tbl_list);
-> >> > +err_list:
-> >> > +     kfree(node);
-> >> > +     return ret;
-> >> > +}
-> >> > +
-> >> > +static int __init devfreq_cpufreq_init(void)
-> >> > +{
-> >> > +     int ret;
-> >> > +     struct device_node *of_par, *of_child;
-> >> > +
-> >> > +     of_par =3D of_find_node_by_name(NULL, "devfreq-cpufreq-map");
-> >> > +     if (of_par) {
-> >> > +             for_each_child_of_node(of_par, of_child) {
-> >> > +                     ret =3D add_table_from_of(of_child);
-> >> > +                     if (ret)
-> >> > +                             pr_err("Parsing %s failed!\n", of_chil=
-d->name);
-> >> > +                     else
-> >> > +                             pr_debug("Parsed %s.\n", of_child->nam=
-e);
-> >> > +             }
-> >> > +             of_node_put(of_par);
-> >> > +     } else {
-> >> > +             pr_info("No tables parsed from DT.\n");
-> >> > +     }
-> >> > +
-> >> > +     ret =3D devfreq_add_governor(&devfreq_cpufreq);
-> >> > +     if (ret) {
-> >> > +             pr_err("cpufreq-map governor add failed!\n");
-> >> > +             return ret;
-> >> > +     }
-> >> > +
-> >> > +     return 0;
-> >> > +}
-> >> > +subsys_initcall(devfreq_cpufreq_init);
-> >> > +
-> >> > +static void __exit devfreq_cpufreq_exit(void)
-> >> > +{
-> >> > +     int ret, cpu;
-> >> > +     struct devfreq_node *node, *tmp;
-> >> > +
-> >> > +     ret =3D devfreq_remove_governor(&devfreq_cpufreq);
-> >> > +     if (ret)
-> >> > +             pr_err("cpufreq-map governor remove failed!\n");
-> >> > +
-> >> > +     mutex_lock(&state_lock);
-> >> > +     list_for_each_entry_safe(node, tmp, &devfreq_list, list) {
-> >> > +             kfree(node->common_map);
-> >> > +             for_each_possible_cpu(cpu)
-> >> > +                     kfree(node->map[cpu]);
-> >> > +             kfree(node->map);
-> >> > +             list_del(&node->list);
-> >> > +             kfree(node);
-> >> > +     }
-> >> > +     mutex_unlock(&state_lock);
-> >> > +}
-> >> > +module_exit(devfreq_cpufreq_exit);
-> >> > +
-> >> > +MODULE_DESCRIPTION("devfreq gov that sets dev freq based on current=
- CPU freq");
-> >> > +MODULE_LICENSE("GPL v2");
-> >> >
->
-> --
-> -- Sibi Sankar --
-> Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-> a Linux Foundation Collaborative Project.
+On 20/06/2019 11:35, Matthias Brugger wrote:
+> 
+> 
+> On 13/06/2019 10:14, Pi-Hsun Shih wrote:
+>> Hi,
+>> When I tested this patch series (Based on linux 5.2.0-rc2, and with
+>> various other patch series about MT8183) with lockdep enabled, and I'm
+>> seeing the following lockdep warning on boot.
+>>
+>> By bisecting the commits, the first commit that introduce this warning
+>> is this patch. The warning also doesn't appear if
+>> https://lore.kernel.org/patchwork/patch/1086582/ and
+>> https://lore.kernel.org/patchwork/patch/1086583/ are not applied.
+>>
+>> Do anyone have idea on why this is happening, or any suggestion on
+>> which part I should be digging into to figure this out? Thanks.
+>>
+>> [    4.664194] ======================================================
+>> [    4.670368] WARNING: possible circular locking dependency detected
+>> [    4.676545] 5.2.0-rc2-next-20190528-44527-g6c94b6475c04 #20 Tainted: G S
+>> [    4.684539] ------------------------------------------------------
+>> [    4.690714] kworker/4:1/51 is trying to acquire lock:
+>> [    4.695760] (____ptrval____) (regulator_list_mutex){+.+.},
+>> at:regulator_lock_dependent+0xdc/0x6c4
+>> [    4.704732]
+>> [    4.704732] but task is already holding lock:
+>> [    4.710556] (____ptrval____) (&genpd->mlock/1){+.+.},
+>> at:genpd_lock_nested_mtx+0x24/0x30
+>> [    4.718740]
+>> [    4.718740] which lock already depends on the new lock.
+>> [    4.718740]
+>> [    4.726908]
+>> [    4.726908] the existing dependency chain (in reverse order) is:
+>> [    4.734382]
+>> [    4.734382] -> #4 (&genpd->mlock/1){+.+.}:
+>> [    4.739963]        __mutex_lock_common+0x1a0/0x1fe8
+>> [    4.744836]        mutex_lock_nested+0x40/0x50
+>> [    4.749275]        genpd_lock_nested_mtx+0x24/0x30
+>> [    4.754063]        genpd_add_subdomain+0x150/0x524
+>> [    4.758850]        pm_genpd_add_subdomain+0x3c/0x5c
+>> [    4.763723]        scpsys_probe+0x520/0xe78
+>> [    4.767902]        platform_drv_probe+0xf4/0x134
+>> [    4.772517]        really_probe+0x214/0x4dc
+>> [    4.776696]        driver_probe_device+0xcc/0x1d4
+>> [    4.781396]        __device_attach_driver+0x10c/0x180
+>> [    4.786442]        bus_for_each_drv+0x124/0x184
+>> [    4.790968]        __device_attach+0x1c0/0x2d8
+>> [    4.795407]        device_initial_probe+0x20/0x2c
+>> [    4.800106]        bus_probe_device+0x80/0x16c
+>> [    4.804546]        deferred_probe_work_func+0x120/0x168
+>> [    4.809767]        process_one_work+0x858/0x1208
+>> [    4.814379]        worker_thread+0x9ec/0xcb8
+>> [    4.818644]        kthread+0x2b8/0x2d0
+>> [    4.822391]        ret_from_fork+0x10/0x18
+>> [    4.826480]
+>> [    4.826480] -> #3 (&genpd->mlock){+.+.}:
+>> [    4.831880]        __mutex_lock_common+0x1a0/0x1fe8
+>> [    4.836752]        mutex_lock_nested+0x40/0x50
+>> [    4.841190]        genpd_lock_mtx+0x20/0x2c
+>> [    4.845369]        genpd_runtime_resume+0x140/0x434
+>> [    4.850241]        __rpm_callback+0xb0/0x1e4
+>> [    4.854506]        rpm_callback+0x54/0x1a8
+>> [    4.858597]        rpm_resume+0xc6c/0x10c4
+>> [    4.862689]        __pm_runtime_resume+0xb4/0x124
+>> [    4.867387]        device_link_add+0x598/0x8d0
+> 
+> For this looks as if you have also patch
+> [PATCH v2 04/12] memory: mtk-smi: Add device-link between smi-larb and smi-common
+> from series
+> [PATCH v2 00/12] Clean up "mediatek,larb" after adding device_link
+> applied.
+> 
+
+My guess is, that we run into this, because we call genpd_runtime_resume before
+we have finished the subdomain registration in scpsys_probe.
+That implies that you also have the scpsys series for mt8183 added to your tree.
+
+Anyway it looks to me as if we have to add the subdomains before we call
+of_genpd_add_provider_onecell().
+
+Regards,
+Matthias
+
+> Regards,
+> Matthias
+> 
+>> [    4.871829]        mtk_smi_larb_probe+0x2b0/0x340
+>> [    4.876528]        platform_drv_probe+0xf4/0x134
+>> [    4.881141]        really_probe+0x214/0x4dc
+>> [    4.885320]        driver_probe_device+0xcc/0x1d4
+>> [    4.890020]        __device_attach_driver+0x10c/0x180
+>> [    4.895066]        bus_for_each_drv+0x124/0x184
+>> [    4.899591]        __device_attach+0x1c0/0x2d8
+>> [    4.904031]        device_initial_probe+0x20/0x2c
+>> [    4.908730]        bus_probe_device+0x80/0x16c
+>> [    4.913169]        deferred_probe_work_func+0x120/0x168
+>> [    4.918387]        process_one_work+0x858/0x1208
+>> [    4.923000]        worker_thread+0x9ec/0xcb8
+>> [    4.927264]        kthread+0x2b8/0x2d0
+>> [    4.931009]        ret_from_fork+0x10/0x18
+>> [    4.935098]
+>> [    4.935098] -> #2 (dpm_list_mtx){+.+.}:
+>> [    4.940412]        __mutex_lock_common+0x1a0/0x1fe8
+>> [    4.945284]        mutex_lock_nested+0x40/0x50
+>> [    4.949722]        device_pm_lock+0x1c/0x24
+>> [    4.953900]        device_link_add+0x98/0x8d0
+>> [    4.958252]        _regulator_get+0x3f0/0x504
+>> [    4.962606]        _devm_regulator_get+0x58/0xb8
+>> [    4.967218]        devm_regulator_get+0x28/0x34
+>> [    4.971746]        pwm_backlight_probe+0x61c/0x1b90
+>> [    4.976617]        platform_drv_probe+0xf4/0x134
+>> [    4.981230]        really_probe+0x214/0x4dc
+>> [    4.985409]        driver_probe_device+0xcc/0x1d4
+>> [    4.990108]        device_driver_attach+0xe4/0x104
+>> [    4.994894]        __driver_attach+0x134/0x14c
+>> [    4.999333]        bus_for_each_dev+0x120/0x180
+>> [    5.003859]        driver_attach+0x48/0x54
+>> [    5.007950]        bus_add_driver+0x2ac/0x44c
+>> [    5.012303]        driver_register+0x160/0x288
+>> [    5.016742]        __platform_driver_register+0xcc/0xdc
+>> [    5.021964]        pwm_backlight_driver_init+0x1c/0x24
+>> [    5.027097]        do_one_initcall+0x38c/0x994
+>> [    5.031536]        do_initcall_level+0x3a4/0x4b8
+>> [    5.036148]        do_basic_setup+0x84/0xa0
+>> [    5.036153]        kernel_init_freeable+0x23c/0x324
+>> [    5.036158]        kernel_init+0x14/0x110
+>> [    5.036164]        ret_from_fork+0x10/0x18
+>> [    5.036166]
+>> [    5.036166] -> #1 (device_links_lock){+.+.}:
+>> [    5.065905]        __mutex_lock_common+0x1a0/0x1fe8
+>> [    5.070777]        mutex_lock_nested+0x40/0x50
+>> [    5.075215]        device_link_remove+0x40/0xe0
+>> [    5.079740]        _regulator_put+0x104/0x2d8
+>> [    5.084093]        regulator_put+0x30/0x44
+>> [    5.088184]        devm_regulator_release+0x38/0x44
+>> [    5.093056]        release_nodes+0x604/0x670
+>> [    5.097320]        devres_release_all+0x70/0x8c
+>> [    5.101846]        really_probe+0x270/0x4dc
+>> [    5.106024]        driver_probe_device+0xcc/0x1d4
+>> [    5.110724]        device_driver_attach+0xe4/0x104
+>> [    5.115510]        __driver_attach+0x134/0x14c
+>> [    5.119949]        bus_for_each_dev+0x120/0x180
+>> [    5.124474]        driver_attach+0x48/0x54
+>> [    5.128566]        bus_add_driver+0x2ac/0x44c
+>> [    5.132919]        driver_register+0x160/0x288
+>> [    5.137357]        __platform_driver_register+0xcc/0xdc
+>> [    5.142576]        pwm_backlight_driver_init+0x1c/0x24
+>> [    5.147708]        do_one_initcall+0x38c/0x994
+>> [    5.152146]        do_initcall_level+0x3a4/0x4b8
+>> [    5.156758]        do_basic_setup+0x84/0xa0
+>> [    5.160936]        kernel_init_freeable+0x23c/0x324
+>> [    5.165807]        kernel_init+0x14/0x110
+>> [    5.169813]        ret_from_fork+0x10/0x18
+>> [    5.173901]
+>> [    5.173901] -> #0 (regulator_list_mutex){+.+.}:
+>> [    5.179910]        lock_acquire+0x350/0x4d4
+>> [    5.184088]        __mutex_lock_common+0x1a0/0x1fe8
+>> [    5.184095]        mutex_lock_nested+0x40/0x50
+>> [    5.197475]        regulator_lock_dependent+0xdc/0x6c4
+>> [    5.197482]        regulator_disable+0xa0/0x138
+>> [    5.197487]        scpsys_power_off+0x38c/0x4bc
+>> [    5.197495]        genpd_power_off+0x3d8/0x6a0
+>> [    5.209399]        genpd_power_off+0x530/0x6a0
+>> [    5.209406]        genpd_power_off_work_fn+0x74/0xc0
+>> [    5.209411]        process_one_work+0x858/0x1208
+>> [    5.209419]        worker_thread+0x9ec/0xcb8
+>> [    5.219067]        kthread+0x2b8/0x2d0
+>> [    5.219073]        ret_from_fork+0x10/0x18
+>> [    5.219077]
+>> [    5.219077] other info that might help us debug this:
+>> [    5.219077]
+>> [    5.219080] Chain exists of:
+>> [    5.219080]   regulator_list_mutex --> &genpd->mlock --> &genpd->mlock/1
+>> [    5.219080]
+>> [    5.228039]  Possible unsafe locking scenario:
+>> [    5.228039]
+>> [    5.228042]        CPU0                    CPU1
+>> [    5.228046]        ----                    ----
+>> [    5.228048]   lock(&genpd->mlock/1);
+>> [    5.228058]                                lock(&genpd->mlock);
+>> [    5.311647]                                lock(&genpd->mlock/1);
+>> [    5.317736]   lock(regulator_list_mutex);
+>> [    5.321742]
+>> [    5.321742]  *** DEADLOCK ***
+>> [    5.321742]
+>> [    5.327655] 4 locks held by kworker/4:1/51:
+>> [    5.331831]  #0: (____ptrval____) ((wq_completion)pm){+.+.},
+>> at:process_one_work+0x57c/0x1208
+>> [    5.340444]  #1: (____ptrval____)
+>> ((work_completion)(&genpd->power_off_work)){+.+.},
+>> at:process_one_work+0x5b8/0x1208
+>> [    5.351139]  #2: (____ptrval____) (&genpd->mlock){+.+.},
+>> at:genpd_lock_mtx+0x20/0x2c
+>> [    5.358970]  #3: (____ptrval____) (&genpd->mlock/1){+.+.},
+>> at:genpd_lock_nested_mtx+0x24/0x30
+>> [    5.367584]
+>> [    5.367584] stack backtrace:
+>> [    5.371939] CPU: 4 PID: 51 Comm: kworker/4:1 Tainted: G S
+>>  5.2.0-rc2-next-20190528-44527-g6c94b6475c04 #20
+>> [    5.382809] Workqueue: pm genpd_power_off_work_fn
+>> [    5.382816] Call trace:
+>> [    5.382822]  dump_backtrace+0x0/0x2c0
+>> [    5.382830]  show_stack+0x20/0x2c
+>> [    5.409174]  dump_stack+0x10c/0x17c
+>> [    5.412659]  print_circular_bug+0x42c/0x4d0
+>> [    5.416838]  __lock_acquire+0x4c88/0x5484
+>> [    5.420843]  lock_acquire+0x350/0x4d4
+>> [    5.424500]  __mutex_lock_common+0x1a0/0x1fe8
+>> [    5.428851]  mutex_lock_nested+0x40/0x50
+>> [    5.432770]  regulator_lock_dependent+0xdc/0x6c4
+>> [    5.437383]  regulator_disable+0xa0/0x138
+>> [    5.441389]  scpsys_power_off+0x38c/0x4bc
+>> [    5.445393]  genpd_power_off+0x3d8/0x6a0
+>> [    5.449310]  genpd_power_off+0x530/0x6a0
+>> [    5.453229]  genpd_power_off_work_fn+0x74/0xc0
+>> [    5.457667]  process_one_work+0x858/0x1208
+>> [    5.461758]  worker_thread+0x9ec/0xcb8
+>> [    5.465503]  kthread+0x2b8/0x2d0
+>> [    5.468727]  ret_from_fork+0x10/0x18
+>>
+>> On Mon, Jun 10, 2019 at 8:21 PM Yong Wu <yong.wu@mediatek.com> wrote:
+>>> ...
+>>
+>>
+>> On Mon, Jun 10, 2019 at 8:21 PM Yong Wu <yong.wu@mediatek.com> wrote:
+>>
+>>> There are 2 mmu cells in a M4U HW. we could adjust some larbs entering
+>>> mmu0 or mmu1 to balance the bandwidth via the smi-common register
+>>> SMI_BUS_SEL(0x220)(Each larb occupy 2 bits).
+>>>
+>>> In mt8183, For better performance, we switch larb1/2/5/7 to enter
+>>> mmu1 while the others still keep enter mmu0.
+>>>
+>>> In mt8173 and mt2712, we don't get the performance issue,
+>>> Keep its default value(0x0), that means all the larbs enter mmu0.
+>>>
+>>> Note: smi gen1(mt2701/mt7623) don't have this bus_sel.
+>>>
+>>> And, the base of smi-common is completely different with smi_ao_base
+>>> of gen1, thus I add new variable for that.
+>>>
+>>> CC: Matthias Brugger <matthias.bgg@gmail.com>
+>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+>>> Reviewed-by: Evan Green <evgreen@chromium.org>
+>>> ---
+>>>  drivers/memory/mtk-smi.c | 22 ++++++++++++++++++++--
+>>>  1 file changed, 20 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+>>> index 9790801..08cf40d 100644
+>>> --- a/drivers/memory/mtk-smi.c
+>>> +++ b/drivers/memory/mtk-smi.c
+>>> @@ -49,6 +49,12 @@
+>>>  #define SMI_LARB_NONSEC_CON(id)        (0x380 + ((id) * 4))
+>>>  #define F_MMU_EN               BIT(0)
+>>>
+>>> +/* SMI COMMON */
+>>> +#define SMI_BUS_SEL                    0x220
+>>> +#define SMI_BUS_LARB_SHIFT(larbid)     ((larbid) << 1)
+>>> +/* All are MMU0 defaultly. Only specialize mmu1 here. */
+>>> +#define F_MMU1_LARB(larbid)            (0x1 << SMI_BUS_LARB_SHIFT(larbid))
+>>> +
+>>>  enum mtk_smi_gen {
+>>>         MTK_SMI_GEN1,
+>>>         MTK_SMI_GEN2
+>>> @@ -57,6 +63,7 @@ enum mtk_smi_gen {
+>>>  struct mtk_smi_common_plat {
+>>>         enum mtk_smi_gen gen;
+>>>         bool             has_gals;
+>>> +       u32              bus_sel; /* Balance some larbs to enter mmu0 or
+>>> mmu1 */
+>>>  };
+>>>
+>>>  struct mtk_smi_larb_gen {
+>>> @@ -72,8 +79,8 @@ struct mtk_smi {
+>>>         struct clk                      *clk_apb, *clk_smi;
+>>>         struct clk                      *clk_gals0, *clk_gals1;
+>>>         struct clk                      *clk_async; /*only needed by
+>>> mt2701*/
+>>> -       void __iomem                    *smi_ao_base;
+>>> -
+>>> +       void __iomem                    *smi_ao_base; /* only for gen1 */
+>>> +       void __iomem                    *base;        /* only for gen2 */
+>>>         const struct mtk_smi_common_plat *plat;
+>>>  };
+>>>
+>>> @@ -410,6 +417,8 @@ static int __maybe_unused mtk_smi_larb_suspend(struct
+>>> device *dev)
+>>>  static const struct mtk_smi_common_plat mtk_smi_common_mt8183 = {
+>>>         .gen      = MTK_SMI_GEN2,
+>>>         .has_gals = true,
+>>> +       .bus_sel  = F_MMU1_LARB(1) | F_MMU1_LARB(2) | F_MMU1_LARB(5) |
+>>> +                   F_MMU1_LARB(7),
+>>>  };
+>>>
+>>>  static const struct of_device_id mtk_smi_common_of_ids[] = {
+>>> @@ -482,6 +491,11 @@ static int mtk_smi_common_probe(struct
+>>> platform_device *pdev)
+>>>                 ret = clk_prepare_enable(common->clk_async);
+>>>                 if (ret)
+>>>                         return ret;
+>>> +       } else {
+>>> +               res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>>> +               common->base = devm_ioremap_resource(dev, res);
+>>> +               if (IS_ERR(common->base))
+>>> +                       return PTR_ERR(common->base);
+>>>         }
+>>>         pm_runtime_enable(dev);
+>>>         platform_set_drvdata(pdev, common);
+>>> @@ -497,6 +511,7 @@ static int mtk_smi_common_remove(struct
+>>> platform_device *pdev)
+>>>  static int __maybe_unused mtk_smi_common_resume(struct device *dev)
+>>>  {
+>>>         struct mtk_smi *common = dev_get_drvdata(dev);
+>>> +       u32 bus_sel = common->plat->bus_sel;
+>>>         int ret;
+>>>
+>>>         ret = mtk_smi_clk_enable(common);
+>>> @@ -504,6 +519,9 @@ static int __maybe_unused mtk_smi_common_resume(struct
+>>> device *dev)
+>>>                 dev_err(common->dev, "Failed to enable clock(%d).\n", ret);
+>>>                 return ret;
+>>>         }
+>>> +
+>>> +       if (common->plat->gen == MTK_SMI_GEN2 && bus_sel)
+>>> +               writel(bus_sel, common->base + SMI_BUS_SEL);
+>>>         return 0;
+>>>  }
+>>>
+>>> --
+>>> 1.9.1
+>>>
+>>>
+>>
