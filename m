@@ -1,94 +1,55 @@
-From: <xiaolei.li@mediatek.com>
-Subject: [PATCH] mtd: rawnand: mtk: Re-license MTK NAND driver as Dual MIT/GPL
-Date: Thu, 20 Jun 2019 09:58:12 +0800
-Message-ID: <20190620015812.16519-1-xiaolei.li@mediatek.com>
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+Subject: [PATCH v6 04/14] soc: mediatek: Refactor polling timeout and documentation
+Date: Thu, 20 Jun 2019 10:37:56 +0800
+Message-ID: <1560998286-9189-5-git-send-email-weiyi.lu@mediatek.com>
+References: <1560998286-9189-1-git-send-email-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
-List-Post: <mailto:linux-mtd@lists.infradead.org>
-List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
-Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
-To: miquel.raynal@bootlin.com, richard@nod.at
-Cc: ryder.lee@mediatek.com, arnd@arndb.de, srv_heupstream@mediatek.com, yellowriver2010@hotmail.com, yamada.masahiro@socionext.com, boris.brezillon@collabora.com, linux-mediatek@lists.infradead.org, jorge.ramirez-ortiz@linaro.org, rafal@milecki.pl, linux-mtd@lists.infradead.org, xiaolei.li@mediatek.com, dan.carpenter@oracle.com
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1560998286-9189-1-git-send-email-weiyi.lu@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Weiyi Lu <weiyi.lu@mediatek.com>, Yong Wu <yong.wu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-RnJvbTogWGlhb2xlaSBMaSA8eGlhb2xlaS5saUBtZWRpYXRlay5jb20+CgpJdCBpcyB3YW50ZWQg
-dG8gdXNlIE1USyBOQU5EIGRyaXZlciB3aXRoIEdQTC0yLjAgb3IgTUlUIGxpY2Vuc2UuCkJ1dCBu
-b3cgaXQgaXMgb25seSBsaWNlbnNlZCBhcyBHUEwtMi4wLgpTbyByZS1saWNlbnNlIGl0IGFzIGR1
-YWwgTUlUL0dQTCBhbmQgcmVwbGFjZSBsaWNlbnNlIHRleHQgd2l0aApTUERYIHRhZy4KClNpZ25l
-ZC1vZmYtYnk6IFhpYW9sZWkgTGkgPHhpYW9sZWkubGlAbWVkaWF0ZWsuY29tPgpBY2tlZC1ieTog
-Sm9yZ2UgUmFtaXJlei1PcnRpeiA8am9yZ2UucmFtaXJlei1vcnRpekBsaW5hcm8ub3JnPgpBY2tl
-ZC1ieTogUnlkZXIgTGVlIDxyeWRlci5sZWVAbWVkaWF0ZWsuY29tPgpBY2tlZC1ieTogUmFmYcWC
-IE1pxYJlY2tpIDxyYWZhbEBtaWxlY2tpLnBsPgpBY2tlZC1ieTogTWlxdWVsIFJheW5hbCA8bWlx
-dWVsLnJheW5hbEBib290bGluLmNvbT4KQWNrZWQtYnk6IEJvcmlzIEJyZXppbGxvbiA8Ym9yaXMu
-YnJlemlsbG9uQGNvbGxhYm9yYS5jb20+CkFja2VkLWJ5OiBXZW4gWWFuZyA8eWVsbG93cml2ZXIy
-MDEwQGhvdG1haWwuY29tPgpBY2tlZC1ieTogRGFuIENhcnBlbnRlciA8ZGFuLmNhcnBlbnRlckBv
-cmFjbGUuY29tPgpBY2tlZC1ieTogQXJuZCBCZXJnbWFubiA8YXJuZEBhcm5kYi5kZT4KQWNrZWQt
-Ynk6IE1hc2FoaXJvIFlhbWFkYSA8eWFtYWRhLm1hc2FoaXJvQHNvY2lvbmV4dC5jb20+Ci0tLQog
-ZHJpdmVycy9tdGQvbmFuZC9yYXcvbXRrX2VjYy5jICB8IDEyICsrLS0tLS0tLS0tLQogZHJpdmVy
-cy9tdGQvbmFuZC9yYXcvbXRrX2VjYy5oICB8ICA0ICstLS0KIGRyaXZlcnMvbXRkL25hbmQvcmF3
-L210a19uYW5kLmMgfCAxMiArKy0tLS0tLS0tLS0KIDMgZmlsZXMgY2hhbmdlZCwgNSBpbnNlcnRp
-b25zKCspLCAyMyBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL210ZC9uYW5kL3Jh
-dy9tdGtfZWNjLmMgYi9kcml2ZXJzL210ZC9uYW5kL3Jhdy9tdGtfZWNjLmMKaW5kZXggMDViMGMx
-OWQ3MmQ5Li43NDU5NWI2NDRiN2MgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvbXRkL25hbmQvcmF3L210
-a19lY2MuYworKysgYi9kcml2ZXJzL210ZC9uYW5kL3Jhdy9tdGtfZWNjLmMKQEAgLTEsMTcgKzEs
-OSBAQAorLy8gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjAgT1IgTUlUCiAvKgogICog
-TVRLIEVDQyBjb250cm9sbGVyIGRyaXZlci4KICAqIENvcHlyaWdodCAoQykgMjAxNiAgTWVkaWFU
-ZWsgSW5jLgogICogQXV0aG9yczoJWGlhb2xlaSBMaQkJPHhpYW9sZWkubGlAbWVkaWF0ZWsuY29t
-PgogICoJCUpvcmdlIFJhbWlyZXotT3J0aXoJPGpvcmdlLnJhbWlyZXotb3J0aXpAbGluYXJvLm9y
-Zz4KLSAqCi0gKiBUaGlzIHByb2dyYW0gaXMgZnJlZSBzb2Z0d2FyZTsgeW91IGNhbiByZWRpc3Ry
-aWJ1dGUgaXQgYW5kL29yIG1vZGlmeQotICogaXQgdW5kZXIgdGhlIHRlcm1zIG9mIHRoZSBHTlUg
-R2VuZXJhbCBQdWJsaWMgTGljZW5zZSB2ZXJzaW9uIDIgYXMKLSAqIHB1Ymxpc2hlZCBieSB0aGUg
-RnJlZSBTb2Z0d2FyZSBGb3VuZGF0aW9uLgotICoKLSAqIFRoaXMgcHJvZ3JhbSBpcyBkaXN0cmli
-dXRlZCBpbiB0aGUgaG9wZSB0aGF0IGl0IHdpbGwgYmUgdXNlZnVsLAotICogYnV0IFdJVEhPVVQg
-QU5ZIFdBUlJBTlRZOyB3aXRob3V0IGV2ZW4gdGhlIGltcGxpZWQgd2FycmFudHkgb2YKLSAqIE1F
-UkNIQU5UQUJJTElUWSBvciBGSVRORVNTIEZPUiBBIFBBUlRJQ1VMQVIgUFVSUE9TRS4gIFNlZSB0
-aGUKLSAqIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlIGZvciBtb3JlIGRldGFpbHMuCiAgKi8K
-IAogI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgpAQCAtNjA0LDQgKzU5Niw0IEBA
-IG1vZHVsZV9wbGF0Zm9ybV9kcml2ZXIobXRrX2VjY19kcml2ZXIpOwogCiBNT0RVTEVfQVVUSE9S
-KCJYaWFvbGVpIExpIDx4aWFvbGVpLmxpQG1lZGlhdGVrLmNvbT4iKTsKIE1PRFVMRV9ERVNDUklQ
-VElPTigiTVRLIE5hbmQgRUNDIERyaXZlciIpOwotTU9EVUxFX0xJQ0VOU0UoIkdQTCIpOworTU9E
-VUxFX0xJQ0VOU0UoIkR1YWwgTUlUL0dQTCIpOwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9tdGQvbmFu
-ZC9yYXcvbXRrX2VjYy5oIGIvZHJpdmVycy9tdGQvbmFuZC9yYXcvbXRrX2VjYy5oCmluZGV4IGE0
-NTVkZjA4MDk1Mi4uMGU0OGMzNmU2Y2EwIDEwMDY0NAotLS0gYS9kcml2ZXJzL210ZC9uYW5kL3Jh
-dy9tdGtfZWNjLmgKKysrIGIvZHJpdmVycy9tdGQvbmFuZC9yYXcvbXRrX2VjYy5oCkBAIC0xLDEy
-ICsxLDEwIEBACisvKiBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BMLTIuMCBPUiBNSVQgKi8K
-IC8qCiAgKiBNVEsgU0RHMSBFQ0MgY29udHJvbGxlcgogICoKICAqIENvcHlyaWdodCAoYykgMjAx
-NiBNZWRpYXRlawogICogQXV0aG9yczoJWGlhb2xlaSBMaQkJPHhpYW9sZWkubGlAbWVkaWF0ZWsu
-Y29tPgogICoJCUpvcmdlIFJhbWlyZXotT3J0aXoJPGpvcmdlLnJhbWlyZXotb3J0aXpAbGluYXJv
-Lm9yZz4KLSAqIFRoaXMgcHJvZ3JhbSBpcyBmcmVlIHNvZnR3YXJlOyB5b3UgY2FuIHJlZGlzdHJp
-YnV0ZSBpdCBhbmQvb3IgbW9kaWZ5IGl0Ci0gKiB1bmRlciB0aGUgdGVybXMgb2YgdGhlIEdOVSBH
-ZW5lcmFsIFB1YmxpYyBMaWNlbnNlIHZlcnNpb24gMiBhcyBwdWJsaXNoZWQKLSAqIGJ5IHRoZSBG
-cmVlIFNvZnR3YXJlIEZvdW5kYXRpb24uCiAgKi8KIAogI2lmbmRlZiBfX0RSSVZFUlNfTVREX05B
-TkRfTVRLX0VDQ19IX18KZGlmZiAtLWdpdCBhL2RyaXZlcnMvbXRkL25hbmQvcmF3L210a19uYW5k
-LmMgYi9kcml2ZXJzL210ZC9uYW5kL3Jhdy9tdGtfbmFuZC5jCmluZGV4IDYxN2Y5NjU2YTA0NS4u
-MzczZDQ3ZDFiYTRjIDEwMDY0NAotLS0gYS9kcml2ZXJzL210ZC9uYW5kL3Jhdy9tdGtfbmFuZC5j
-CisrKyBiL2RyaXZlcnMvbXRkL25hbmQvcmF3L210a19uYW5kLmMKQEAgLTEsMTcgKzEsOSBAQAor
-Ly8gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjAgT1IgTUlUCiAvKgogICogTVRLIE5B
-TkQgRmxhc2ggY29udHJvbGxlciBkcml2ZXIuCiAgKiBDb3B5cmlnaHQgKEMpIDIwMTYgTWVkaWFU
-ZWsgSW5jLgogICogQXV0aG9yczoJWGlhb2xlaSBMaQkJPHhpYW9sZWkubGlAbWVkaWF0ZWsuY29t
-PgogICoJCUpvcmdlIFJhbWlyZXotT3J0aXoJPGpvcmdlLnJhbWlyZXotb3J0aXpAbGluYXJvLm9y
-Zz4KLSAqCi0gKiBUaGlzIHByb2dyYW0gaXMgZnJlZSBzb2Z0d2FyZTsgeW91IGNhbiByZWRpc3Ry
-aWJ1dGUgaXQgYW5kL29yIG1vZGlmeQotICogaXQgdW5kZXIgdGhlIHRlcm1zIG9mIHRoZSBHTlUg
-R2VuZXJhbCBQdWJsaWMgTGljZW5zZSB2ZXJzaW9uIDIgYXMKLSAqIHB1Ymxpc2hlZCBieSB0aGUg
-RnJlZSBTb2Z0d2FyZSBGb3VuZGF0aW9uLgotICoKLSAqIFRoaXMgcHJvZ3JhbSBpcyBkaXN0cmli
-dXRlZCBpbiB0aGUgaG9wZSB0aGF0IGl0IHdpbGwgYmUgdXNlZnVsLAotICogYnV0IFdJVEhPVVQg
-QU5ZIFdBUlJBTlRZOyB3aXRob3V0IGV2ZW4gdGhlIGltcGxpZWQgd2FycmFudHkgb2YKLSAqIE1F
-UkNIQU5UQUJJTElUWSBvciBGSVRORVNTIEZPUiBBIFBBUlRJQ1VMQVIgUFVSUE9TRS4gIFNlZSB0
-aGUKLSAqIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlIGZvciBtb3JlIGRldGFpbHMuCiAgKi8K
-IAogI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgpAQCAtMTY1Myw2ICsxNjQ1LDYg
-QEAgc3RhdGljIHN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIgbXRrX25mY19kcml2ZXIgPSB7CiAKIG1v
-ZHVsZV9wbGF0Zm9ybV9kcml2ZXIobXRrX25mY19kcml2ZXIpOwogCi1NT0RVTEVfTElDRU5TRSgi
-R1BMIik7CitNT0RVTEVfTElDRU5TRSgiRHVhbCBNSVQvR1BMIik7CiBNT0RVTEVfQVVUSE9SKCJY
-aWFvbGVpIExpIDx4aWFvbGVpLmxpQG1lZGlhdGVrLmNvbT4iKTsKIE1PRFVMRV9ERVNDUklQVElP
-TigiTVRLIE5hbmQgRmxhc2ggQ29udHJvbGxlciBEcml2ZXIiKTsKLS0gCjIuMTguMAoKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eCBN
-VEQgZGlzY3Vzc2lvbiBtYWlsaW5nIGxpc3QKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1tdGQvCg==
+Use USEC_PER_SEC to indicate the polling timeout directly.
+And add documentation of scp_domain_data.
+
+Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+---
+ drivers/soc/mediatek/mtk-scpsys.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+index 9f52f50..f775b1b 100644
+--- a/drivers/soc/mediatek/mtk-scpsys.c
++++ b/drivers/soc/mediatek/mtk-scpsys.c
+@@ -21,7 +21,7 @@
+ #include <dt-bindings/power/mt8173-power.h>
+ 
+ #define MTK_POLL_DELAY_US   10
+-#define MTK_POLL_TIMEOUT    (jiffies_to_usecs(HZ))
++#define MTK_POLL_TIMEOUT    USEC_PER_SEC
+ 
+ #define MTK_SCPD_ACTIVE_WAKEUP		BIT(0)
+ #define MTK_SCPD_FWAIT_SRAM		BIT(1)
+@@ -108,6 +108,17 @@ enum clk_id {
+ 
+ #define MAX_CLKS	3
+ 
++/**
++ * struct scp_domain_data - scp domain data for power on/off flow
++ * @name: The domain name.
++ * @sta_mask: The mask for power on/off status bit.
++ * @ctl_offs: The offset for main power control register.
++ * @sram_pdn_bits: The mask for sram power control bits.
++ * @sram_pdn_ack_bits: The mask for sram power control acked bits.
++ * @bus_prot_mask: The mask for single step bus protection.
++ * @clk_id: The basic clocks required by this power domain.
++ * @caps: The flag for active wake-up action.
++ */
+ struct scp_domain_data {
+ 	const char *name;
+ 	u32 sta_mask;
+-- 
+1.8.1.1.dirty
