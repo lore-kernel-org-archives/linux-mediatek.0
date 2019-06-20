@@ -1,106 +1,62 @@
 From: Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: [PATCH v6 02/14] dt-bindings: soc: Add MT8183 power dt-bindings
-Date: Thu, 20 Jun 2019 10:37:54 +0800
-Message-ID: <1560998286-9189-3-git-send-email-weiyi.lu@mediatek.com>
-References: <1560998286-9189-1-git-send-email-weiyi.lu@mediatek.com>
+Subject: [PATCH v6 00/14] Mediatek MT8183 scpsys support
+Date: Thu, 20 Jun 2019 10:37:52 +0800
+Message-ID: <1560998286-9189-1-git-send-email-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1560998286-9189-1-git-send-email-weiyi.lu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>
 Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Weiyi Lu <weiyi.lu@mediatek.com>, Yong Wu <yong.wu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add power dt-bindings of MT8183 and introduces "BASIC" and
-"SUBSYS" clock types in binding document.
-The "BASIC" type is compatible to the original power control with
-clock name [a-z]+[0-9]*, e.g. mm, vpu1.
-The "SUBSYS" type is used for bus protection control with clock
-name [a-z]+-[0-9]+, e.g. isp-0, cam-1.
+This series is based on v5.2-rc1 with MT8183 dts v11 patch[1] and
+MT8183 SMI dt-binding v7 patch[2].
 
-Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
----
- .../devicetree/bindings/soc/mediatek/scpsys.txt    | 14 ++++++++++++
- include/dt-bindings/power/mt8183-power.h           | 26 ++++++++++++++++++++++
- 2 files changed, 40 insertions(+)
+[1] https://patchwork.kernel.org/patch/10962375/
+[2] https://patchwork.kernel.org/patch/10984743/
+
+changes since v5:
+- fix documentation in [PATCH 04/14]
+- remove useless variable checking and reuse API of clock control in [PATCH 06/14]
+- coding style fix of bus protection control in [PATCH 08/14]
+- fix naming of new added data in [PATCH 09/14]
+- small refactor of multiple step bus protection control in [PATCH 10/14]
+
+changes since v4:
+- add property to mt8183 smi-common
+- seperate refactor patches and new add function
+- add power controller device node
+
+--
+
+Weiyi Lu (14):
+  dt-bindings: mediatek: Add property to mt8183 smi-common
+  dt-bindings: soc: Add MT8183 power dt-bindings
+  soc: mediatek: Switch to SPDX license identifier
+  soc: mediatek: Refactor polling timeout and documentation
+  soc: mediatek: Refactor regulator control
+  soc: mediatek: Refactor clock control
+  soc: mediatek: Refactor sram control
+  soc: mediatek: Refactor bus protection control
+  soc: mediatek: Add basic_clk_id to scp_power_data
+  soc: mediatek: Add multiple step bus protection control
+  soc: mediatek: Add subsys clock control for bus protection
+  soc: mediatek: Add extra sram control
+  soc: mediatek: Add MT8183 scpsys support
+  arm64: dts: Add power controller device node of MT8183
+
+ .../memory-controllers/mediatek,smi-common.txt     |   2 +-
+ .../devicetree/bindings/soc/mediatek/scpsys.txt    |  14 +
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi           |  62 +++
+ drivers/soc/mediatek/Makefile                      |   2 +-
+ drivers/soc/mediatek/mtk-scpsys-ext.c              |  99 ++++
+ drivers/soc/mediatek/mtk-scpsys.c                  | 591 ++++++++++++++++++---
+ include/dt-bindings/power/mt8183-power.h           |  26 +
+ include/linux/soc/mediatek/scpsys-ext.h            |  39 ++
+ 8 files changed, 745 insertions(+), 90 deletions(-)
+ create mode 100644 drivers/soc/mediatek/mtk-scpsys-ext.c
  create mode 100644 include/dt-bindings/power/mt8183-power.h
+ create mode 100644 include/linux/soc/mediatek/scpsys-ext.h
 
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-index 876693a..00eab7e 100644
---- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-+++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-@@ -14,6 +14,7 @@ power/power_domain.txt. It provides the power domains defined in
- - include/dt-bindings/power/mt2701-power.h
- - include/dt-bindings/power/mt2712-power.h
- - include/dt-bindings/power/mt7622-power.h
-+- include/dt-bindings/power/mt8183-power.h
- 
- Required properties:
- - compatible: Should be one of:
-@@ -25,18 +26,31 @@ Required properties:
- 	- "mediatek,mt7623a-scpsys": For MT7623A SoC
- 	- "mediatek,mt7629-scpsys", "mediatek,mt7622-scpsys": For MT7629 SoC
- 	- "mediatek,mt8173-scpsys"
-+	- "mediatek,mt8183-scpsys"
- - #power-domain-cells: Must be 1
- - reg: Address range of the SCPSYS unit
- - infracfg: must contain a phandle to the infracfg controller
- - clock, clock-names: clocks according to the common clock binding.
-                       These are clocks which hardware needs to be
-                       enabled before enabling certain power domains.
-+                      The new clock type "BASIC" belongs to the type above.
-+                      As to the new clock type "SUBSYS" needs to be
-+                      enabled before releasing bus protection.
- 	Required clocks for MT2701 or MT7623: "mm", "mfg", "ethif"
- 	Required clocks for MT2712: "mm", "mfg", "venc", "jpgdec", "audio", "vdec"
- 	Required clocks for MT6797: "mm", "mfg", "vdec"
- 	Required clocks for MT7622 or MT7629: "hif_sel"
- 	Required clocks for MT7623A: "ethif"
- 	Required clocks for MT8173: "mm", "mfg", "venc", "venc_lt"
-+	Required clocks for MT8183: BASIC: "audio", "mfg", "mm", "cam", "isp",
-+					   "vpu", "vpu1", "vpu2", "vpu3"
-+				    SUBSYS: "mm-0", "mm-1", "mm-2", "mm-3",
-+					    "mm-4", "mm-5", "mm-6", "mm-7",
-+					    "mm-8", "mm-9", "isp-0", "isp-1",
-+					    "cam-0", "cam-1", "cam-2", "cam-3",
-+					    "cam-4", "cam-5", "cam-6", "vpu-0",
-+					    "vpu-1", "vpu-2", "vpu-3", "vpu-4",
-+					    "vpu-5"
- 
- Optional properties:
- - vdec-supply: Power supply for the vdec power domain
-diff --git a/include/dt-bindings/power/mt8183-power.h b/include/dt-bindings/power/mt8183-power.h
-new file mode 100644
-index 0000000..5c0c8c7
---- /dev/null
-+++ b/include/dt-bindings/power/mt8183-power.h
-@@ -0,0 +1,26 @@
-+/* SPDX-License-Identifier: GPL-2.0
-+ *
-+ * Copyright (c) 2018 MediaTek Inc.
-+ * Author: Weiyi Lu <weiyi.lu@mediatek.com>
-+ */
-+
-+#ifndef _DT_BINDINGS_POWER_MT8183_POWER_H
-+#define _DT_BINDINGS_POWER_MT8183_POWER_H
-+
-+#define MT8183_POWER_DOMAIN_AUDIO	0
-+#define MT8183_POWER_DOMAIN_CONN	1
-+#define MT8183_POWER_DOMAIN_MFG_ASYNC	2
-+#define MT8183_POWER_DOMAIN_MFG		3
-+#define MT8183_POWER_DOMAIN_MFG_CORE0	4
-+#define MT8183_POWER_DOMAIN_MFG_CORE1	5
-+#define MT8183_POWER_DOMAIN_MFG_2D	6
-+#define MT8183_POWER_DOMAIN_DISP	7
-+#define MT8183_POWER_DOMAIN_CAM		8
-+#define MT8183_POWER_DOMAIN_ISP		9
-+#define MT8183_POWER_DOMAIN_VDEC	10
-+#define MT8183_POWER_DOMAIN_VENC	11
-+#define MT8183_POWER_DOMAIN_VPU_TOP	12
-+#define MT8183_POWER_DOMAIN_VPU_CORE0	13
-+#define MT8183_POWER_DOMAIN_VPU_CORE1	14
-+
-+#endif /* _DT_BINDINGS_POWER_MT8183_POWER_H */
--- 
-1.8.1.1.dirty
+--
