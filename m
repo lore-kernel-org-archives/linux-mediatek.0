@@ -1,7 +1,7 @@
 From: Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: [PATCH v6 06/14] soc: mediatek: Refactor clock control
-Date: Thu, 20 Jun 2019 10:37:58 +0800
-Message-ID: <1560998286-9189-7-git-send-email-weiyi.lu@mediatek.com>
+Subject: [PATCH v6 03/14] soc: mediatek: Switch to SPDX license identifier
+Date: Thu, 20 Jun 2019 10:37:55 +0800
+Message-ID: <1560998286-9189-4-git-send-email-weiyi.lu@mediatek.com>
 References: <1560998286-9189-1-git-send-email-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -12,101 +12,34 @@ To: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmai
 Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Weiyi Lu <weiyi.lu@mediatek.com>, Yong Wu <yong.wu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Put clock enable and disable control in separate function.
-
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-scpsys.c | 45 ++++++++++++++++++++++++---------------
- 1 file changed, 28 insertions(+), 17 deletions(-)
+ drivers/soc/mediatek/mtk-scpsys.c | 16 ++++------------
+ 1 file changed, 4 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index 1a6a4ab..5b73e4e 100644
+index 5b24bb4..9f52f50 100644
 --- a/drivers/soc/mediatek/mtk-scpsys.c
 +++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -207,6 +207,29 @@ static int scpsys_regulator_disable(struct scp_domain *scpd)
- 	return regulator_disable(scpd->supply);
- }
- 
-+static void scpsys_clk_disable(struct clk *clk[], int max_num)
-+{
-+	int i;
+@@ -1,15 +1,7 @@
+-/*
+- * Copyright (c) 2015 Pengutronix, Sascha Hauer <kernel@pengutronix.de>
+- *
+- * This program is free software; you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License version 2 as
+- * published by the Free Software Foundation.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- */
++// SPDX-License-Identifier: GPL-2.0
++//
++// Copyright (c) 2015 Pengutronix, Sascha Hauer <kernel@pengutronix.de>
 +
-+	for (i = max_num - 1; i >= 0; i--)
-+		clk_disable_unprepare(clk[i]);
-+}
-+
-+static int scpsys_clk_enable(struct clk *clk[], int max_num)
-+{
-+	int i, ret = 0;
-+
-+	for (i = 0; i < max_num && clk[i]; i++) {
-+		ret = clk_prepare_enable(clk[i]);
-+		if (ret) {
-+			scpsys_clk_disable(clk, i);
-+			break;
-+		}
-+	}
-+
-+	return ret;
-+}
-+
- static int scpsys_power_on(struct generic_pm_domain *genpd)
- {
- 	struct scp_domain *scpd = container_of(genpd, struct scp_domain, genpd);
-@@ -215,21 +238,14 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 	u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
- 	u32 val;
- 	int ret, tmp;
--	int i;
- 
- 	ret = scpsys_regulator_enable(scpd);
- 	if (ret < 0)
- 		return ret;
- 
--	for (i = 0; i < MAX_CLKS && scpd->clk[i]; i++) {
--		ret = clk_prepare_enable(scpd->clk[i]);
--		if (ret) {
--			for (--i; i >= 0; i--)
--				clk_disable_unprepare(scpd->clk[i]);
--
--			goto err_clk;
--		}
--	}
-+	ret = scpsys_clk_enable(scpd->clk, MAX_CLKS);
-+	if (ret)
-+		goto err_clk;
- 
- 	val = readl(ctl_addr);
- 	val |= PWR_ON_BIT;
-@@ -282,10 +298,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 	return 0;
- 
- err_pwr_ack:
--	for (i = MAX_CLKS - 1; i >= 0; i--) {
--		if (scpd->clk[i])
--			clk_disable_unprepare(scpd->clk[i]);
--	}
-+	scpsys_clk_disable(scpd->clk, MAX_CLKS);
- err_clk:
- 	scpsys_regulator_disable(scpd);
- 
-@@ -302,7 +315,6 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- 	u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
- 	u32 val;
- 	int ret, tmp;
--	int i;
- 
- 	if (scpd->data->bus_prot_mask) {
- 		ret = mtk_infracfg_set_bus_protection(scp->infracfg,
-@@ -343,8 +355,7 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- 	if (ret < 0)
- 		goto out;
- 
--	for (i = 0; i < MAX_CLKS && scpd->clk[i]; i++)
--		clk_disable_unprepare(scpd->clk[i]);
-+	scpsys_clk_disable(scpd->clk, MAX_CLKS);
- 
- 	ret = scpsys_regulator_disable(scpd);
- 	if (ret < 0)
+ #include <linux/clk.h>
+ #include <linux/init.h>
+ #include <linux/io.h>
 -- 
 1.8.1.1.dirty
