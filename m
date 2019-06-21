@@ -1,127 +1,86 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] arm64: dts: mt8183: Enable CPU idle-states
-Date: Fri, 21 Jun 2019 18:14:11 +0200
-Message-ID: <b6ea04f4-76aa-10c3-759f-aefb45e492de@gmail.com>
-References: <1559118303-31875-1-git-send-email-jamesjj.liao@mediatek.com>
+From: Masahiro Yamada <yamada.masahiro@socionext.com>
+Subject: [PATCH] kbuild: compile-test global headers to ensure they are
+ self-contained
+Date: Sat, 22 Jun 2019 01:39:31 +0900
+Message-ID: <20190621163931.19397-1-yamada.masahiro@socionext.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1559118303-31875-1-git-send-email-jamesjj.liao@mediatek.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: James Liao <jamesjj.liao@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-kbuild@vger.kernel.org
+Cc: Michal Marek <michal.lkml@markovi.net>, linux-kernel@vger.kernel.org, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Make as many headers self-contained as possible so that they can be
+included without relying on a specific include order.
 
+This commit compiles only a few headers, but it is a good start point.
 
-On 29/05/2019 10:25, James Liao wrote:
-> Enable mcdi-cpu and mcdi-cluster on MT8183 CPUs.
-> 
-> Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
+Signed-off-by: Masahiro Yamada <yamada.masahiro@socionext.com>
+---
 
-Would you mind to rebase and resend?
+ Makefile         |  1 +
+ include/Makefile | 31 +++++++++++++++++++++++++++++++
+ 2 files changed, 32 insertions(+)
+ create mode 100644 include/Makefile
 
-Regards,
-Matthias
-
-> ---
-> This patch bases on v5.1-rc1 and [1], adds idle-states for MT8183 CPUs.
-> 
-> [1] https://patchwork.kernel.org/patch/10962375/
-> 
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 30 ++++++++++++++++++++++++++++++
->  1 file changed, 30 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index 08274bf..ef4b054 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -56,6 +56,7 @@
->  			compatible = "arm,cortex-a53";
->  			reg = <0x000>;
->  			enable-method = "psci";
-> +			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
->  		};
->  
->  		cpu1: cpu@1 {
-> @@ -63,6 +64,7 @@
->  			compatible = "arm,cortex-a53";
->  			reg = <0x001>;
->  			enable-method = "psci";
-> +			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
->  		};
->  
->  		cpu2: cpu@2 {
-> @@ -70,6 +72,7 @@
->  			compatible = "arm,cortex-a53";
->  			reg = <0x002>;
->  			enable-method = "psci";
-> +			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
->  		};
->  
->  		cpu3: cpu@3 {
-> @@ -77,6 +80,7 @@
->  			compatible = "arm,cortex-a53";
->  			reg = <0x003>;
->  			enable-method = "psci";
-> +			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
->  		};
->  
->  		cpu4: cpu@100 {
-> @@ -84,6 +88,7 @@
->  			compatible = "arm,cortex-a73";
->  			reg = <0x100>;
->  			enable-method = "psci";
-> +			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
->  		};
->  
->  		cpu5: cpu@101 {
-> @@ -91,6 +96,7 @@
->  			compatible = "arm,cortex-a73";
->  			reg = <0x101>;
->  			enable-method = "psci";
-> +			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
->  		};
->  
->  		cpu6: cpu@102 {
-> @@ -98,6 +104,7 @@
->  			compatible = "arm,cortex-a73";
->  			reg = <0x102>;
->  			enable-method = "psci";
-> +			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
->  		};
->  
->  		cpu7: cpu@103 {
-> @@ -105,6 +112,29 @@
->  			compatible = "arm,cortex-a73";
->  			reg = <0x103>;
->  			enable-method = "psci";
-> +			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
-> +		};
-> +
-> +		idle-states {
-> +			entry-method = "arm,psci";
-> +
-> +			MCDI_CPU: mcdi-cpu {
-> +				compatible = "arm,idle-state";
-> +				local-timer-stop;
-> +				arm,psci-suspend-param = <0x00010001>;
-> +				entry-latency-us = <200>;
-> +				exit-latency-us = <200>;
-> +				min-residency-us = <800>;
-> +			};
-> +
-> +			MCDI_CLUSTER: mcdi-cluster {
-> +				compatible = "arm,idle-state";
-> +				local-timer-stop;
-> +				arm,psci-suspend-param = <0x01010001>;
-> +				entry-latency-us = <250>;
-> +				exit-latency-us = <400>;
-> +				min-residency-us = <1300>;
-> +			};
->  		};
->  	};
->  
-> 
+diff --git a/Makefile b/Makefile
+index c23f5e8381ad..82c1722dd9e9 100644
+--- a/Makefile
++++ b/Makefile
+@@ -610,6 +610,7 @@ drivers-y	:= drivers/ sound/
+ drivers-$(CONFIG_SAMPLES) += samples/
+ net-y		:= net/
+ libs-y		:= lib/
++libs-$(CONFIG_HEADER_TEST) += include/
+ core-y		:= usr/
+ virt-y		:= virt/
+ endif # KBUILD_EXTMOD
+diff --git a/include/Makefile b/include/Makefile
+new file mode 100644
+index 000000000000..68a76ac732c3
+--- /dev/null
++++ b/include/Makefile
+@@ -0,0 +1,31 @@
++# SPDX-License-Identifier: GPL-2.0-only
++
++# extend the test coverage when existing errors are fixed
++
++header-test += linux/w*.h
++header-test += linux/x*.h
++header-test += linux/y*.h
++header-test += ras/*.h
++header-test += soc/at91/*.h
++header-test += soc/bcm2835/*.h
++header-test += soc/mediatek/*.h
++header-test += soc/sa1100/*.h
++
++all-headers = $(patsubst $(srctree)/include/%,%,\
++	    $(wildcard $(addprefix $(srctree)/include/, $(header-test))))
++
++# Do not include directly
++no-header-test += linux/compiler-clang.h
++no-header-test += linux/compiler-gcc.h
++no-header-test += linux/patchkey.h
++no-header-test += linux/rwlock_api_smp.h
++no-header-test += linux/spinlock_types_up.h
++no-header-test += linux/spinlock_up.h
++no-header-test += linux/wimax/debug.h
++no-header-test += rdma/uverbs_named_ioctl.h
++
++# Conditionally included
++no-header-test += linux/byteorder/big_endian.h
++no-header-test += linux/byteorder/little_endian.h
++
++header-test-y = $(filter-out $(no-header-test), $(all-headers))
+-- 
+2.17.1
