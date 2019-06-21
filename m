@@ -1,109 +1,127 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v11 0/6] Add basic node support for Mediatek MT8183 SoC
-Date: Fri, 21 Jun 2019 17:53:25 +0200
-Message-ID: <8efbf3b7-0e11-b378-e582-769b2f869a00@gmail.com>
-References: <1558947887-31084-1-git-send-email-erin.lo@mediatek.com>
+Subject: Re: [PATCH] arm64: dts: mt8183: Enable CPU idle-states
+Date: Fri, 21 Jun 2019 18:14:11 +0200
+Message-ID: <b6ea04f4-76aa-10c3-759f-aefb45e492de@gmail.com>
+References: <1559118303-31875-1-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1558947887-31084-1-git-send-email-erin.lo@mediatek.com>
+In-Reply-To: <1559118303-31875-1-git-send-email-jamesjj.liao@mediatek.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Erin Lo <erin.lo@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
-Cc: devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, mars.cheng@mediatek.com, eddie.huang@mediatek.com
+To: James Liao <jamesjj.liao@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 27/05/2019 11:04, Erin Lo wrote:
-> MT8183 is a SoC based on 64bit ARMv8 architecture.
-> It contains 4 CA53 and 4 CA73 cores.
-> MT8183 share many HW IP with MT65xx series.
-> This patchset was tested on MT8183 evaluation board and use correct clock to shell.
+On 29/05/2019 10:25, James Liao wrote:
+> Enable mcdi-cpu and mcdi-cluster on MT8183 CPUs.
 > 
-> Based on v5.2-rc1
-> 
+> Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
 
-Pushed all to v5.2-next/dts64
-
-Please send patches to update the bindings of auxadc and efuse. They use the
-fallback right now, but we should make sure to have the binding in sync.
+Would you mind to rebase and resend?
 
 Regards,
 Matthias
 
-> Change in v11:
-> New add spi node, efuse node, pinctrl node, auxadc node, and capacity-dmips-mhz field
+> ---
+> This patch bases on v5.1-rc1 and [1], adds idle-states for MT8183 CPUs.
 > 
-> Change in v10:
-> Add the L2 cache node to prevent warning on unable to detect cache
-> hierarchy.
+> [1] https://patchwork.kernel.org/patch/10962375/
 > 
-> Change in v9:
-> Remove pio node since binding is not documented yet
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 30 ++++++++++++++++++++++++++++++
+>  1 file changed, 30 insertions(+)
 > 
-> Change in v8:
-> 1. Fix interrupt-parent of pio node
-> 2. Remove pinfunc.h and spi node patches
-> 
-> Change in v7:
-> 1. Place all the MMIO peripherals under one or more simple-bus nodes
-> 2. Make the pinfunc.h and spi node into seperate patch
-> 3. Modify SPIs pamerater from 4 back to 3
->    and remove patch "support 4 interrupt parameters for sysirq"
-> 4. Rename intpol-controller to interrupt-controller
-> 5. Rename pinctrl@1000b000 to pinctrl@10005000
-> 
-> Change in v6:
-> 1. Remove power and iommu nodes
-> 2. Fix dtb build warning
-> 3. Fix pinctrl binding doc
-> 4. Fix '_' in node names
-> 
-> Change in v5:
-> 1. Collect all device tree nodes to the last patch
-> 2. Add PMU
-> 3. Add Signed-off-by
-> 4. Remove clock driver code and binding doc
-> 5. Add pinctrl, iommu, spi, and pwrap nodes
-> 
-> Change in v4:
-> 1. Correct syntax error in dtsi
-> 2. Add MT8183 clock support
-> 
-> Change in v3:
-> 1. Fill out GICC, GICH, GICV regions
-> 2. Update Copyright to 2018
-> 
-> Change in v2:
-> 1. Split dt-bindings into different patches
-> 2. Correct bindings for supported SoCs (mtk-uart.txt)
-> 
-> Ben Ho (1):
->   arm64: dts: Add Mediatek SoC MT8183 and evaluation board dts and
->     Makefile
-> 
-> Erin Lo (1):
->   arm64: dts: mt8183: add spi node
-> 
-> Hsin-Yi, Wang (1):
->   arm64: dts: mt8183: add capacity-dmips-mhz
-> 
-> Michael Mei (1):
->   arm64: dts: mt8183: add efuse and Mediatek Chip id node to read
-> 
-> Zhiyong Tao (2):
->   arm64: dts: mt8183: add pinctrl device node
->   arm64: dts: mt8183: Add auxadc device node
-> 
->  arch/arm64/boot/dts/mediatek/Makefile       |   1 +
->  arch/arm64/boot/dts/mediatek/mt8183-evb.dts | 140 ++++++
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi    | 447 ++++++++++++++++++++
->  3 files changed, 588 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-evb.dts
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> 
-> --
-> 1.8.1.1.dirty
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index 08274bf..ef4b054 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -56,6 +56,7 @@
+>  			compatible = "arm,cortex-a53";
+>  			reg = <0x000>;
+>  			enable-method = "psci";
+> +			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
+>  		};
+>  
+>  		cpu1: cpu@1 {
+> @@ -63,6 +64,7 @@
+>  			compatible = "arm,cortex-a53";
+>  			reg = <0x001>;
+>  			enable-method = "psci";
+> +			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
+>  		};
+>  
+>  		cpu2: cpu@2 {
+> @@ -70,6 +72,7 @@
+>  			compatible = "arm,cortex-a53";
+>  			reg = <0x002>;
+>  			enable-method = "psci";
+> +			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
+>  		};
+>  
+>  		cpu3: cpu@3 {
+> @@ -77,6 +80,7 @@
+>  			compatible = "arm,cortex-a53";
+>  			reg = <0x003>;
+>  			enable-method = "psci";
+> +			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
+>  		};
+>  
+>  		cpu4: cpu@100 {
+> @@ -84,6 +88,7 @@
+>  			compatible = "arm,cortex-a73";
+>  			reg = <0x100>;
+>  			enable-method = "psci";
+> +			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
+>  		};
+>  
+>  		cpu5: cpu@101 {
+> @@ -91,6 +96,7 @@
+>  			compatible = "arm,cortex-a73";
+>  			reg = <0x101>;
+>  			enable-method = "psci";
+> +			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
+>  		};
+>  
+>  		cpu6: cpu@102 {
+> @@ -98,6 +104,7 @@
+>  			compatible = "arm,cortex-a73";
+>  			reg = <0x102>;
+>  			enable-method = "psci";
+> +			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
+>  		};
+>  
+>  		cpu7: cpu@103 {
+> @@ -105,6 +112,29 @@
+>  			compatible = "arm,cortex-a73";
+>  			reg = <0x103>;
+>  			enable-method = "psci";
+> +			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER>;
+> +		};
+> +
+> +		idle-states {
+> +			entry-method = "arm,psci";
+> +
+> +			MCDI_CPU: mcdi-cpu {
+> +				compatible = "arm,idle-state";
+> +				local-timer-stop;
+> +				arm,psci-suspend-param = <0x00010001>;
+> +				entry-latency-us = <200>;
+> +				exit-latency-us = <200>;
+> +				min-residency-us = <800>;
+> +			};
+> +
+> +			MCDI_CLUSTER: mcdi-cluster {
+> +				compatible = "arm,idle-state";
+> +				local-timer-stop;
+> +				arm,psci-suspend-param = <0x01010001>;
+> +				entry-latency-us = <250>;
+> +				exit-latency-us = <400>;
+> +				min-residency-us = <1300>;
+> +			};
+>  		};
+>  	};
+>  
 > 
