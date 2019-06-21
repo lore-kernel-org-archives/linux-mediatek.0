@@ -1,62 +1,103 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] watchdog: convert remaining drivers to use SPDX license
- identifier
-Date: Fri, 21 Jun 2019 14:04:40 +0200
-Message-ID: <09965bd4-d95c-b415-5ef1-25b799e6022b@gmail.com>
-References: <1561048126-27578-1-git-send-email-linux@roeck-us.net>
+Subject: Re: [PATCH] mtd: rawnand: mtk: Re-license MTK NAND driver as Dual
+ MIT/GPL
+Date: Fri, 21 Jun 2019 14:05:56 +0200
+Message-ID: <79100fff-17e7-5d21-89ce-77f2a4693e83@gmail.com>
+References: <20190620015812.16519-1-xiaolei.li@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1561048126-27578-1-git-send-email-linux@roeck-us.net>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
+In-Reply-To: <20190620015812.16519-1-xiaolei.li@mediatek.com>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Guenter Roeck <linux@roeck-us.net>, Wim Van Sebroeck <wim@linux-watchdog.org>
-Cc: William Breathitt Gray <vilhelm.gray@gmail.com>, Jerry Hoemann <jerry.hoemann@hpe.com>, Vladimir Zapolskiy <vz@mleia.com>, Wan ZongShun <mcuos.com@gmail.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Andy Gross <agross@kernel.org>, David Brown <david.brown@linaro.org>, linux-watchdog@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
+List-Post: <mailto:linux-mtd@lists.infradead.org>
+List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
+Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
+To: xiaolei.li@mediatek.com, miquel.raynal@bootlin.com, richard@nod.at
+Cc: ryder.lee@mediatek.com, arnd@arndb.de, srv_heupstream@mediatek.com, yellowriver2010@hotmail.com, yamada.masahiro@socionext.com, boris.brezillon@collabora.com, linux-mediatek@lists.infradead.org, linux-mtd@lists.infradead.org, rafal@milecki.pl, jorge.ramirez-ortiz@linaro.org, dan.carpenter@oracle.com
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 20/06/2019 18:28, Guenter Roeck wrote:
-> This gets rid of the unnecessary license boilerplate, and avoids
-> having to deal with individual patches one by one.
-> 
-> No functional changes.
-> 
-> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> ---
-> Note: Several drivers include a paragraph such as
-> 
-> "Neither <name> nor <company> admit liability nor
->  provide warranty for any of this software. This material is
->  provided "AS-IS" and at no charge."
-> 
-> Presumably this is covered by the GPL license. However, since I am not
-> an attorney, I am not sure, and I opted for leaving such paragraphs in
-> place.
-> 
->  drivers/watchdog/acquirewdt.c          |  6 +-----
->  drivers/watchdog/advantechwdt.c        |  6 +-----
->  drivers/watchdog/ath79_wdt.c           |  6 +-----
->  drivers/watchdog/davinci_wdt.c         |  6 ++----
->  drivers/watchdog/ebc-c384_wdt.c        |  9 ---------
->  drivers/watchdog/eurotechwdt.c         |  6 +-----
->  drivers/watchdog/ftwdt010_wdt.c        |  5 +----
->  drivers/watchdog/hpwdt.c               |  6 +-----
->  drivers/watchdog/iTCO_vendor_support.c |  7 +------
->  drivers/watchdog/iTCO_wdt.c            |  6 +-----
->  drivers/watchdog/ib700wdt.c            |  6 +-----
->  drivers/watchdog/ie6xx_wdt.c           | 17 +----------------
->  drivers/watchdog/imgpdc_wdt.c          |  5 +----
->  drivers/watchdog/intel_scu_watchdog.c  | 19 +------------------
->  drivers/watchdog/intel_scu_watchdog.h  | 17 +----------------
->  drivers/watchdog/iop_wdt.c             | 14 +-------------
->  drivers/watchdog/kempld_wdt.c          | 10 +---------
->  drivers/watchdog/ks8695_wdt.c          |  5 +----
->  drivers/watchdog/lantiq_wdt.c          |  5 +----
->  drivers/watchdog/lpc18xx_wdt.c         |  5 +----
->  drivers/watchdog/max77620_wdt.c        |  5 +----
->  drivers/watchdog/mt7621_wdt.c          |  5 +----
-
-for mt7621_wdt.c
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+CgpPbiAyMC8wNi8yMDE5IDAzOjU4LCB4aWFvbGVpLmxpQG1lZGlhdGVrLmNvbSB3cm90ZToKPiBG
+cm9tOiBYaWFvbGVpIExpIDx4aWFvbGVpLmxpQG1lZGlhdGVrLmNvbT4KPiAKPiBJdCBpcyB3YW50
+ZWQgdG8gdXNlIE1USyBOQU5EIGRyaXZlciB3aXRoIEdQTC0yLjAgb3IgTUlUIGxpY2Vuc2UuCj4g
+QnV0IG5vdyBpdCBpcyBvbmx5IGxpY2Vuc2VkIGFzIEdQTC0yLjAuCj4gU28gcmUtbGljZW5zZSBp
+dCBhcyBkdWFsIE1JVC9HUEwgYW5kIHJlcGxhY2UgbGljZW5zZSB0ZXh0IHdpdGgKPiBTUERYIHRh
+Zy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBYaWFvbGVpIExpIDx4aWFvbGVpLmxpQG1lZGlhdGVrLmNv
+bT4KPiBBY2tlZC1ieTogSm9yZ2UgUmFtaXJlei1PcnRpeiA8am9yZ2UucmFtaXJlei1vcnRpekBs
+aW5hcm8ub3JnPgo+IEFja2VkLWJ5OiBSeWRlciBMZWUgPHJ5ZGVyLmxlZUBtZWRpYXRlay5jb20+
+Cj4gQWNrZWQtYnk6IFJhZmHFgiBNacWCZWNraSA8cmFmYWxAbWlsZWNraS5wbD4KPiBBY2tlZC1i
+eTogTWlxdWVsIFJheW5hbCA8bWlxdWVsLnJheW5hbEBib290bGluLmNvbT4KPiBBY2tlZC1ieTog
+Qm9yaXMgQnJlemlsbG9uIDxib3Jpcy5icmV6aWxsb25AY29sbGFib3JhLmNvbT4KPiBBY2tlZC1i
+eTogV2VuIFlhbmcgPHllbGxvd3JpdmVyMjAxMEBob3RtYWlsLmNvbT4KPiBBY2tlZC1ieTogRGFu
+IENhcnBlbnRlciA8ZGFuLmNhcnBlbnRlckBvcmFjbGUuY29tPgo+IEFja2VkLWJ5OiBBcm5kIEJl
+cmdtYW5uIDxhcm5kQGFybmRiLmRlPgo+IEFja2VkLWJ5OiBNYXNhaGlybyBZYW1hZGEgPHlhbWFk
+YS5tYXNhaGlyb0Bzb2Npb25leHQuY29tPgoKUmV2aWV3ZWQtYnk6IE1hdHRoaWFzIEJydWdnZXIg
+PG1hdHRoaWFzLmJnZ0BnbWFpbC5jb20+Cgo+IC0tLQo+ICBkcml2ZXJzL210ZC9uYW5kL3Jhdy9t
+dGtfZWNjLmMgIHwgMTIgKystLS0tLS0tLS0tCj4gIGRyaXZlcnMvbXRkL25hbmQvcmF3L210a19l
+Y2MuaCAgfCAgNCArLS0tCj4gIGRyaXZlcnMvbXRkL25hbmQvcmF3L210a19uYW5kLmMgfCAxMiAr
+Ky0tLS0tLS0tLS0KPiAgMyBmaWxlcyBjaGFuZ2VkLCA1IGluc2VydGlvbnMoKyksIDIzIGRlbGV0
+aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL210ZC9uYW5kL3Jhdy9tdGtfZWNjLmMg
+Yi9kcml2ZXJzL210ZC9uYW5kL3Jhdy9tdGtfZWNjLmMKPiBpbmRleCAwNWIwYzE5ZDcyZDkuLjc0
+NTk1YjY0NGI3YyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL210ZC9uYW5kL3Jhdy9tdGtfZWNjLmMK
+PiArKysgYi9kcml2ZXJzL210ZC9uYW5kL3Jhdy9tdGtfZWNjLmMKPiBAQCAtMSwxNyArMSw5IEBA
+Cj4gKy8vIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wIE9SIE1JVAo+ICAvKgo+ICAg
+KiBNVEsgRUNDIGNvbnRyb2xsZXIgZHJpdmVyLgo+ICAgKiBDb3B5cmlnaHQgKEMpIDIwMTYgIE1l
+ZGlhVGVrIEluYy4KPiAgICogQXV0aG9yczoJWGlhb2xlaSBMaQkJPHhpYW9sZWkubGlAbWVkaWF0
+ZWsuY29tPgo+ICAgKgkJSm9yZ2UgUmFtaXJlei1PcnRpegk8am9yZ2UucmFtaXJlei1vcnRpekBs
+aW5hcm8ub3JnPgo+IC0gKgo+IC0gKiBUaGlzIHByb2dyYW0gaXMgZnJlZSBzb2Z0d2FyZTsgeW91
+IGNhbiByZWRpc3RyaWJ1dGUgaXQgYW5kL29yIG1vZGlmeQo+IC0gKiBpdCB1bmRlciB0aGUgdGVy
+bXMgb2YgdGhlIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlIHZlcnNpb24gMiBhcwo+IC0gKiBw
+dWJsaXNoZWQgYnkgdGhlIEZyZWUgU29mdHdhcmUgRm91bmRhdGlvbi4KPiAtICoKPiAtICogVGhp
+cyBwcm9ncmFtIGlzIGRpc3RyaWJ1dGVkIGluIHRoZSBob3BlIHRoYXQgaXQgd2lsbCBiZSB1c2Vm
+dWwsCj4gLSAqIGJ1dCBXSVRIT1VUIEFOWSBXQVJSQU5UWTsgd2l0aG91dCBldmVuIHRoZSBpbXBs
+aWVkIHdhcnJhbnR5IG9mCj4gLSAqIE1FUkNIQU5UQUJJTElUWSBvciBGSVRORVNTIEZPUiBBIFBB
+UlRJQ1VMQVIgUFVSUE9TRS4gIFNlZSB0aGUKPiAtICogR05VIEdlbmVyYWwgUHVibGljIExpY2Vu
+c2UgZm9yIG1vcmUgZGV0YWlscy4KPiAgICovCj4gIAo+ICAjaW5jbHVkZSA8bGludXgvcGxhdGZv
+cm1fZGV2aWNlLmg+Cj4gQEAgLTYwNCw0ICs1OTYsNCBAQCBtb2R1bGVfcGxhdGZvcm1fZHJpdmVy
+KG10a19lY2NfZHJpdmVyKTsKPiAgCj4gIE1PRFVMRV9BVVRIT1IoIlhpYW9sZWkgTGkgPHhpYW9s
+ZWkubGlAbWVkaWF0ZWsuY29tPiIpOwo+ICBNT0RVTEVfREVTQ1JJUFRJT04oIk1USyBOYW5kIEVD
+QyBEcml2ZXIiKTsKPiAtTU9EVUxFX0xJQ0VOU0UoIkdQTCIpOwo+ICtNT0RVTEVfTElDRU5TRSgi
+RHVhbCBNSVQvR1BMIik7Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbXRkL25hbmQvcmF3L210a19l
+Y2MuaCBiL2RyaXZlcnMvbXRkL25hbmQvcmF3L210a19lY2MuaAo+IGluZGV4IGE0NTVkZjA4MDk1
+Mi4uMGU0OGMzNmU2Y2EwIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbXRkL25hbmQvcmF3L210a19l
+Y2MuaAo+ICsrKyBiL2RyaXZlcnMvbXRkL25hbmQvcmF3L210a19lY2MuaAo+IEBAIC0xLDEyICsx
+LDEwIEBACj4gKy8qIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wIE9SIE1JVCAqLwo+
+ICAvKgo+ICAgKiBNVEsgU0RHMSBFQ0MgY29udHJvbGxlcgo+ICAgKgo+ICAgKiBDb3B5cmlnaHQg
+KGMpIDIwMTYgTWVkaWF0ZWsKPiAgICogQXV0aG9yczoJWGlhb2xlaSBMaQkJPHhpYW9sZWkubGlA
+bWVkaWF0ZWsuY29tPgo+ICAgKgkJSm9yZ2UgUmFtaXJlei1PcnRpegk8am9yZ2UucmFtaXJlei1v
+cnRpekBsaW5hcm8ub3JnPgo+IC0gKiBUaGlzIHByb2dyYW0gaXMgZnJlZSBzb2Z0d2FyZTsgeW91
+IGNhbiByZWRpc3RyaWJ1dGUgaXQgYW5kL29yIG1vZGlmeSBpdAo+IC0gKiB1bmRlciB0aGUgdGVy
+bXMgb2YgdGhlIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlIHZlcnNpb24gMiBhcyBwdWJsaXNo
+ZWQKPiAtICogYnkgdGhlIEZyZWUgU29mdHdhcmUgRm91bmRhdGlvbi4KPiAgICovCj4gIAo+ICAj
+aWZuZGVmIF9fRFJJVkVSU19NVERfTkFORF9NVEtfRUNDX0hfXwo+IGRpZmYgLS1naXQgYS9kcml2
+ZXJzL210ZC9uYW5kL3Jhdy9tdGtfbmFuZC5jIGIvZHJpdmVycy9tdGQvbmFuZC9yYXcvbXRrX25h
+bmQuYwo+IGluZGV4IDYxN2Y5NjU2YTA0NS4uMzczZDQ3ZDFiYTRjIDEwMDY0NAo+IC0tLSBhL2Ry
+aXZlcnMvbXRkL25hbmQvcmF3L210a19uYW5kLmMKPiArKysgYi9kcml2ZXJzL210ZC9uYW5kL3Jh
+dy9tdGtfbmFuZC5jCj4gQEAgLTEsMTcgKzEsOSBAQAo+ICsvLyBTUERYLUxpY2Vuc2UtSWRlbnRp
+ZmllcjogR1BMLTIuMCBPUiBNSVQKPiAgLyoKPiAgICogTVRLIE5BTkQgRmxhc2ggY29udHJvbGxl
+ciBkcml2ZXIuCj4gICAqIENvcHlyaWdodCAoQykgMjAxNiBNZWRpYVRlayBJbmMuCj4gICAqIEF1
+dGhvcnM6CVhpYW9sZWkgTGkJCTx4aWFvbGVpLmxpQG1lZGlhdGVrLmNvbT4KPiAgICoJCUpvcmdl
+IFJhbWlyZXotT3J0aXoJPGpvcmdlLnJhbWlyZXotb3J0aXpAbGluYXJvLm9yZz4KPiAtICoKPiAt
+ICogVGhpcyBwcm9ncmFtIGlzIGZyZWUgc29mdHdhcmU7IHlvdSBjYW4gcmVkaXN0cmlidXRlIGl0
+IGFuZC9vciBtb2RpZnkKPiAtICogaXQgdW5kZXIgdGhlIHRlcm1zIG9mIHRoZSBHTlUgR2VuZXJh
+bCBQdWJsaWMgTGljZW5zZSB2ZXJzaW9uIDIgYXMKPiAtICogcHVibGlzaGVkIGJ5IHRoZSBGcmVl
+IFNvZnR3YXJlIEZvdW5kYXRpb24uCj4gLSAqCj4gLSAqIFRoaXMgcHJvZ3JhbSBpcyBkaXN0cmli
+dXRlZCBpbiB0aGUgaG9wZSB0aGF0IGl0IHdpbGwgYmUgdXNlZnVsLAo+IC0gKiBidXQgV0lUSE9V
+VCBBTlkgV0FSUkFOVFk7IHdpdGhvdXQgZXZlbiB0aGUgaW1wbGllZCB3YXJyYW50eSBvZgo+IC0g
+KiBNRVJDSEFOVEFCSUxJVFkgb3IgRklUTkVTUyBGT1IgQSBQQVJUSUNVTEFSIFBVUlBPU0UuICBT
+ZWUgdGhlCj4gLSAqIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlIGZvciBtb3JlIGRldGFpbHMu
+Cj4gICAqLwo+ICAKPiAgI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgo+IEBAIC0x
+NjUzLDYgKzE2NDUsNiBAQCBzdGF0aWMgc3RydWN0IHBsYXRmb3JtX2RyaXZlciBtdGtfbmZjX2Ry
+aXZlciA9IHsKPiAgCj4gIG1vZHVsZV9wbGF0Zm9ybV9kcml2ZXIobXRrX25mY19kcml2ZXIpOwo+
+ICAKPiAtTU9EVUxFX0xJQ0VOU0UoIkdQTCIpOwo+ICtNT0RVTEVfTElDRU5TRSgiRHVhbCBNSVQv
+R1BMIik7Cj4gIE1PRFVMRV9BVVRIT1IoIlhpYW9sZWkgTGkgPHhpYW9sZWkubGlAbWVkaWF0ZWsu
+Y29tPiIpOwo+ICBNT0RVTEVfREVTQ1JJUFRJT04oIk1USyBOYW5kIEZsYXNoIENvbnRyb2xsZXIg
+RHJpdmVyIik7Cj4gCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXggTVREIGRpc2N1c3Npb24gbWFpbGluZyBsaXN0Cmh0dHA6Ly9saXN0
+cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbXRkLwo=
