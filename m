@@ -1,118 +1,204 @@
-From: Roger Lu <roger.lu@mediatek.com>
-Subject: [PATCH v3 1/2] dt-bindings: soc: add mtk svs dt-bindings
-Date: Fri, 21 Jun 2019 16:43:47 +0800
-Message-ID: <20190621084348.16834-2-roger.lu@mediatek.com>
-References: <20190621084348.16834-1-roger.lu@mediatek.com>
+From: biao huang <biao.huang@mediatek.com>
+Subject: Re: [v7, PATCH] net: stmmac: add support for hash table size
+ 128/256 in dwmac4
+Date: Fri, 21 Jun 2019 17:15:11 +0800
+Message-ID: <1561108511.7458.0.camel@mhfsdcap03>
+References: <1559208626-3218-1-git-send-email-biao.huang@mediatek.com>
+         <1559208626-3218-2-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190621084348.16834-1-roger.lu@mediatek.com>
+In-Reply-To: <1559208626-3218-2-git-send-email-biao.huang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Kevin Hilman <khilman@kernel.org>, Rob Herring <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@google.com>, Stephen Boyd <sboyd@kernel.org>
-Cc: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Nishanth Menon <nm@ti.com>, Roger Lu <roger.lu@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org
+To: "davem@davemloft.net" <davem@davemloft.net>, Jose Abreu <joabreu@synopsys.com>
+Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "linux-stm32@st-md-mailman.stormreply.com" <linux-stm32@st-md-mailman.stormreply.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, YT Shen =?UTF-8?Q?=28=E6=B2=88=E5=B2=B3=E9=9C=86=29?= <Yt.Shen@mediatek.com>, Jianguo Zhang =?UTF-8?Q?=28=E5=BC=A0=E5=BB=BA=E5=9B=BD=29?= <Jianguo.Zhang@mediatek.com>, "boon.leong.ong@intel.com" <boon.leong.ong@intel.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Document the binding for enabling mtk svs on MediaTek SoC.
+Dear David, Jose,
 
-Signed-off-by: Roger Lu <roger.lu@mediatek.com>
----
- .../devicetree/bindings/power/mtk-svs.txt     | 88 +++++++++++++++++++
- 1 file changed, 88 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/power/mtk-svs.txt
+	any comments about this patch?
 
-diff --git a/Documentation/devicetree/bindings/power/mtk-svs.txt b/Documentation/devicetree/bindings/power/mtk-svs.txt
-new file mode 100644
-index 000000000000..6a71992ef162
---- /dev/null
-+++ b/Documentation/devicetree/bindings/power/mtk-svs.txt
-@@ -0,0 +1,88 @@
-+* Mediatek Smart Voltage Scaling (MTK SVS)
-+
-+This describes the device tree binding for the MTK SVS controller (bank)
-+which helps provide the optimized CPU/GPU/CCI voltages. This device also
-+needs thermal data to calculate thermal slope for accurately compensate
-+the voltages when temperature change.
-+
-+Required properties:
-+- compatible:
-+  - "mediatek,mt8183-svs" : For MT8183 family of SoCs
-+- reg: Address range of the MTK SVS controller.
-+- interrupts: IRQ for the MTK SVS controller.
-+- clocks, clock-names: Clocks needed for the svs controller. required
-+                       clocks are:
-+		       "main_clk": Main clock needed for register access
-+- nvmem-cells: Phandle to the calibration data provided by a nvmem device.
-+- nvmem-cell-names: Should be "svs-calibration-data" and "calibration-data"
-+
-+Subnodes:
-+- svs_cpu_little: SVS bank device node of little CPU
-+  compatible: "mediatek,mt8183-svs-cpu-little"
-+  operating-points-v2: OPP table hooked by SVS little CPU bank.
-+		       SVS will optimze this OPP table voltage part.
-+  vcpu-little-supply: PMIC buck of little CPU
-+- svs_cpu_big: SVS bank device node of big CPU
-+  compatible: "mediatek,mt8183-svs-cpu-big"
-+  operating-points-v2: OPP table hooked by SVS big CPU bank.
-+		       SVS will optimze this OPP table voltage part.
-+  vcpu-big-supply: PMIC buck of big CPU
-+- svs_cci: SVS bank device node of CCI
-+  compatible: "mediatek,mt8183-svs-cci"
-+  operating-points-v2: OPP table hooked by SVS CCI bank.
-+		       SVS will optimze this OPP table voltage part.
-+  vcci-supply: PMIC buck of CCI
-+- svs_gpu: SVS bank device node of GPU
-+  compatible: "mediatek,mt8183-svs-gpu"
-+  operating-points-v2: OPP table hooked by SVS GPU bank.
-+		       SVS will optimze this OPP table voltage part.
-+  vgpu-spply: PMIC buck of GPU
-+
-+Example:
-+
-+	svs: svs@1100b000 {
-+		compatible = "mediatek,mt8183-svs";
-+		reg = <0 0x1100b000 0 0x1000>;
-+		interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW 0>;
-+		clocks = <&infracfg CLK_INFRA_THERM>;
-+		clock-names = "main_clk";
-+		nvmem-cells = <&svs_calibration>, <&thermal_calibration>;
-+		nvmem-cell-names = "svs-calibration-data", "calibration-data";
-+
-+		svs_cpu_little: svs_cpu_little {
-+			compatible = "mediatek,mt8183-svs-cpu-little";
-+			operating-points-v2 = <&cluster0_opp>;
-+		};
-+
-+		svs_cpu_big: svs_cpu_big {
-+			compatible = "mediatek,mt8183-svs-cpu-big";
-+			operating-points-v2 = <&cluster1_opp>;
-+		};
-+
-+		svs_cci: svs_cci {
-+			compatible = "mediatek,mt8183-svs-cci";
-+			operating-points-v2 = <&cci_opp>;
-+		};
-+
-+		svs_gpu: svs_gpu {
-+			compatible = "mediatek,mt8183-svs-gpu";
-+			power-domains = <&scpsys MT8183_POWER_DOMAIN_MFG_2D>;
-+			operating-points-v2 = <&gpu_opp_table>;
-+		};
-+	};
-+
-+	&svs_cpu_little {
-+		vcpu-little-supply = <&mt6358_vproc12_reg>;
-+	};
-+
-+	&svs_cpu_big {
-+		vcpu-big-supply = <&mt6358_vproc11_reg>;
-+	};
-+
-+	&svs_cci {
-+		vcci-supply = <&mt6358_vproc12_reg>;
-+	};
-+
-+	&svs_gpu {
-+		vgpu-spply = <&mt6358_vgpu_reg>;
-+	};
--- 
-2.18.0
+Thanks
+Biao
+
+On Thu, 2019-05-30 at 17:30 +0800, Biao Huang wrote:
+> 1. get hash table size in hw feature reigster, and add support
+> for taller hash table(128/256) in dwmac4.
+> 2. only clear GMAC_PACKET_FILTER bits used in this function,
+> to avoid side effect to functions of other bits.
+> 
+> stmmac selftests output log with flow control on:
+> 	ethtool -t eth0
+> 	The test result is PASS
+> 	The test extra info:
+> 	 1. MAC Loopback                 0
+> 	 2. PHY Loopback                 -95
+> 	 3. MMC Counters                 0
+> 	 4. EEE                          -95
+> 	 5. Hash Filter MC               0
+> 	 6. Perfect Filter UC            0
+> 	 7. MC Filter                    0
+> 	 8. UC Filter                    0
+> 	 9. Flow Control                 0
+> 
+> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> ---
+>  drivers/net/ethernet/stmicro/stmmac/common.h      |    7 +--
+>  drivers/net/ethernet/stmicro/stmmac/dwmac4.h      |    4 +-
+>  drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c |   49 ++++++++++++---------
+>  drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c  |    1 +
+>  drivers/net/ethernet/stmicro/stmmac/stmmac_main.c |    6 +++
+>  5 files changed, 42 insertions(+), 25 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/common.h b/drivers/net/ethernet/stmicro/stmmac/common.h
+> index 1961fe9..26bbcd8 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/common.h
+> +++ b/drivers/net/ethernet/stmicro/stmmac/common.h
+> @@ -335,6 +335,7 @@ struct dma_features {
+>  	/* 802.3az - Energy-Efficient Ethernet (EEE) */
+>  	unsigned int eee;
+>  	unsigned int av;
+> +	unsigned int hash_tb_sz;
+>  	unsigned int tsoen;
+>  	/* TX and RX csum */
+>  	unsigned int tx_coe;
+> @@ -428,9 +429,9 @@ struct mac_device_info {
+>  	struct mii_regs mii;	/* MII register Addresses */
+>  	struct mac_link link;
+>  	void __iomem *pcsr;     /* vpointer to device CSRs */
+> -	int multicast_filter_bins;
+> -	int unicast_filter_entries;
+> -	int mcast_bits_log2;
+> +	unsigned int multicast_filter_bins;
+> +	unsigned int unicast_filter_entries;
+> +	unsigned int mcast_bits_log2;
+>  	unsigned int rx_csum;
+>  	unsigned int pcs;
+>  	unsigned int pmt;
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4.h b/drivers/net/ethernet/stmicro/stmmac/dwmac4.h
+> index 01c1089..b68785f7 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac4.h
+> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4.h
+> @@ -18,8 +18,7 @@
+>  /*  MAC registers */
+>  #define GMAC_CONFIG			0x00000000
+>  #define GMAC_PACKET_FILTER		0x00000008
+> -#define GMAC_HASH_TAB_0_31		0x00000010
+> -#define GMAC_HASH_TAB_32_63		0x00000014
+> +#define GMAC_HASH_TAB(x)		(0x10 + (x) * 4)
+>  #define GMAC_RX_FLOW_CTRL		0x00000090
+>  #define GMAC_QX_TX_FLOW_CTRL(x)		(0x70 + x * 4)
+>  #define GMAC_TXQ_PRTY_MAP0		0x98
+> @@ -184,6 +183,7 @@ enum power_event {
+>  #define GMAC_HW_FEAT_MIISEL		BIT(0)
+>  
+>  /* MAC HW features1 bitmap */
+> +#define GMAC_HW_HASH_TB_SZ		GENMASK(25, 24)
+>  #define GMAC_HW_FEAT_AVSEL		BIT(20)
+>  #define GMAC_HW_TSOEN			BIT(18)
+>  #define GMAC_HW_TXFIFOSIZE		GENMASK(10, 6)
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
+> index 5e98da4..4183607 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
+> @@ -403,41 +403,50 @@ static void dwmac4_set_filter(struct mac_device_info *hw,
+>  			      struct net_device *dev)
+>  {
+>  	void __iomem *ioaddr = (void __iomem *)dev->base_addr;
+> -	unsigned int value = 0;
+> +	int numhashregs = (hw->multicast_filter_bins >> 5);
+> +	int mcbitslog2 = hw->mcast_bits_log2;
+> +	unsigned int value;
+> +	int i;
+>  
+> +	value = readl(ioaddr + GMAC_PACKET_FILTER);
+> +	value &= ~GMAC_PACKET_FILTER_HMC;
+> +	value &= ~GMAC_PACKET_FILTER_HPF;
+> +	value &= ~GMAC_PACKET_FILTER_PCF;
+> +	value &= ~GMAC_PACKET_FILTER_PM;
+> +	value &= ~GMAC_PACKET_FILTER_PR;
+>  	if (dev->flags & IFF_PROMISC) {
+>  		value = GMAC_PACKET_FILTER_PR | GMAC_PACKET_FILTER_PCF;
+>  	} else if ((dev->flags & IFF_ALLMULTI) ||
+> -			(netdev_mc_count(dev) > HASH_TABLE_SIZE)) {
+> +		   (netdev_mc_count(dev) > hw->multicast_filter_bins)) {
+>  		/* Pass all multi */
+> -		value = GMAC_PACKET_FILTER_PM;
+> -		/* Set the 64 bits of the HASH tab. To be updated if taller
+> -		 * hash table is used
+> -		 */
+> -		writel(0xffffffff, ioaddr + GMAC_HASH_TAB_0_31);
+> -		writel(0xffffffff, ioaddr + GMAC_HASH_TAB_32_63);
+> +		value |= GMAC_PACKET_FILTER_PM;
+> +		/* Set all the bits of the HASH tab */
+> +		for (i = 0; i < numhashregs; i++)
+> +			writel(0xffffffff, ioaddr + GMAC_HASH_TAB(i));
+>  	} else if (!netdev_mc_empty(dev)) {
+> -		u32 mc_filter[2];
+>  		struct netdev_hw_addr *ha;
+> +		u32 mc_filter[8];
+>  
+>  		/* Hash filter for multicast */
+> -		value = GMAC_PACKET_FILTER_HMC;
+> +		value |= GMAC_PACKET_FILTER_HMC;
+>  
+>  		memset(mc_filter, 0, sizeof(mc_filter));
+>  		netdev_for_each_mc_addr(ha, dev) {
+> -			/* The upper 6 bits of the calculated CRC are used to
+> -			 * index the content of the Hash Table Reg 0 and 1.
+> +			/* The upper n bits of the calculated CRC are used to
+> +			 * index the contents of the hash table. The number of
+> +			 * bits used depends on the hardware configuration
+> +			 * selected at core configuration time.
+>  			 */
+> -			int bit_nr =
+> -				(bitrev32(~crc32_le(~0, ha->addr, 6)) >> 26);
+> -			/* The most significant bit determines the register
+> -			 * to use while the other 5 bits determines the bit
+> -			 * within the selected register
+> +			int bit_nr = bitrev32(~crc32_le(~0, ha->addr,
+> +					ETH_ALEN)) >> (32 - mcbitslog2);
+> +			/* The most significant bit determines the register to
+> +			 * use (H/L) while the other 5 bits determine the bit
+> +			 * within the register.
+>  			 */
+> -			mc_filter[bit_nr >> 5] |= (1 << (bit_nr & 0x1F));
+> +			mc_filter[bit_nr >> 5] |= (1 << (bit_nr & 0x1f));
+>  		}
+> -		writel(mc_filter[0], ioaddr + GMAC_HASH_TAB_0_31);
+> -		writel(mc_filter[1], ioaddr + GMAC_HASH_TAB_32_63);
+> +		for (i = 0; i < numhashregs; i++)
+> +			writel(mc_filter[i], ioaddr + GMAC_HASH_TAB(i));
+>  	}
+>  
+>  	value |= GMAC_PACKET_FILTER_HPF;
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c b/drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c
+> index edb6053..59afb53 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c
+> @@ -354,6 +354,7 @@ static void dwmac4_get_hw_feature(void __iomem *ioaddr,
+>  
+>  	/* MAC HW feature1 */
+>  	hw_cap = readl(ioaddr + GMAC_HW_FEATURE1);
+> +	dma_cap->hash_tb_sz = (hw_cap & GMAC_HW_HASH_TB_SZ) >> 24;
+>  	dma_cap->av = (hw_cap & GMAC_HW_FEAT_AVSEL) >> 20;
+>  	dma_cap->tsoen = (hw_cap & GMAC_HW_TSOEN) >> 18;
+>  	/* RX and TX FIFO sizes are encoded as log2(n / 128). Undo that by
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+> index 8fcbf22..f7aac15 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+> @@ -4166,6 +4166,12 @@ static int stmmac_hw_init(struct stmmac_priv *priv)
+>  		priv->plat->enh_desc = priv->dma_cap.enh_desc;
+>  		priv->plat->pmt = priv->dma_cap.pmt_remote_wake_up;
+>  		priv->hw->pmt = priv->plat->pmt;
+> +		if (priv->dma_cap.hash_tb_sz) {
+> +			priv->hw->multicast_filter_bins =
+> +					(BIT(priv->dma_cap.hash_tb_sz) << 5);
+> +			priv->hw->mcast_bits_log2 =
+> +					ilog2(priv->hw->multicast_filter_bins);
+> +		}
+>  
+>  		/* TXCOE doesn't work in thresh DMA mode */
+>  		if (priv->plat->force_thresh_dma_mode)
