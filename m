@@ -1,169 +1,98 @@
-From: Pi-Hsun Shih <pihsun@chromium.org>
-Subject: Re: [PATCH v7 16/21] memory: mtk-smi: Add bus_sel for mt8183
-Date: Fri, 21 Jun 2019 11:57:01 +0800
-Message-ID: <CANdKZ0cr=SMtQOTVduKZBOtw5E6ZOpShf3q2McDX=rFWbfB03A@mail.gmail.com>
-References: <1560169080-27134-1-git-send-email-yong.wu@mediatek.com>
- <1560169080-27134-17-git-send-email-yong.wu@mediatek.com> <CANdKZ0d873PJ2u=Hn_aUJBu3dDiNyueVwBv94-VXHGLJBvAbGg@mail.gmail.com>
- <eee15db0-e43f-de9b-28a0-93bdd04836d7@gmail.com> <effb4fff-da83-708f-ca10-50f2645c91c6@gmail.com>
+From: Sean Wang <sean.wang@kernel.org>
+Subject: Re: [PATCH 2/2] pinctrl: mediatek: Update cur_mask in mask/mask ops
+Date: Thu, 20 Jun 2019 21:20:22 -0700
+Message-ID: <CAGp9LzqyRQ0knQ8+NanTAC0VVqBudAFPuCQJiyymmabaT1Hyfw@mail.gmail.com>
+References: <20190429035515.73611-1-drinkcat@chromium.org> <20190429035515.73611-3-drinkcat@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <effb4fff-da83-708f-ca10-50f2645c91c6@gmail.com>
+In-Reply-To: <20190429035515.73611-3-drinkcat@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>, Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, Will Deacon <will.deacon@arm.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, srv_heupstream@mediatek.com, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, iommu@lists.linux-foundation.org, =?UTF-8?B?WWluZ2pvZSBDaGVuICjpmbPoi7HmtLIp?= <yingjoe.chen@mediatek.com>, =?UTF-8?B?WW91bGluIFBlaSAo6KO05Y+L5p6XKQ==?= <youlin.pei@mediatek.com>, Nicolas
+To: Nicolas Boichat <drinkcat@chromium.org>
+Cc: "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, lkml <linux-kernel@vger.kernel.org>, Chuanjia Liu <Chuanjia.Liu@mediatek.com>, Evan Green <evgreen@chromium.org>, Stephen Boyd <swboyd@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jun 20, 2019 at 7:38 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
->
-> CCing Sascha
->
-> On 20/06/2019 11:35, Matthias Brugger wrote:
-> >
-> >
-> > On 13/06/2019 10:14, Pi-Hsun Shih wrote:
-> >> Hi,
-> >> When I tested this patch series (Based on linux 5.2.0-rc2, and with
-> >> various other patch series about MT8183) with lockdep enabled, and I'm
-> >> seeing the following lockdep warning on boot.
-> >>
-> >> By bisecting the commits, the first commit that introduce this warning
-> >> is this patch. The warning also doesn't appear if
-> >> https://lore.kernel.org/patchwork/patch/1086582/ and
-> >> https://lore.kernel.org/patchwork/patch/1086583/ are not applied.
-> >>
-> >> Do anyone have idea on why this is happening, or any suggestion on
-> >> which part I should be digging into to figure this out? Thanks.
-> >>
-> >> [    4.664194] ======================================================
-> >> [    4.670368] WARNING: possible circular locking dependency detected
-> >> [    4.676545] 5.2.0-rc2-next-20190528-44527-g6c94b6475c04 #20 Tainted: G S
-> >> [    4.684539] ------------------------------------------------------
-> >> [    4.690714] kworker/4:1/51 is trying to acquire lock:
-> >> [    4.695760] (____ptrval____) (regulator_list_mutex){+.+.},
-> >> at:regulator_lock_dependent+0xdc/0x6c4
-> >> [    4.704732]
-> >> [    4.704732] but task is already holding lock:
-> >> [    4.710556] (____ptrval____) (&genpd->mlock/1){+.+.},
-> >> at:genpd_lock_nested_mtx+0x24/0x30
-> >> [    4.718740]
-> >> [    4.718740] which lock already depends on the new lock.
-> >> [    4.718740]
-> >> [    4.726908]
-> >> [    4.726908] the existing dependency chain (in reverse order) is:
-> >> [    4.734382]
-> >> [    4.734382] -> #4 (&genpd->mlock/1){+.+.}:
-> >> [    4.739963]        __mutex_lock_common+0x1a0/0x1fe8
-> >> [    4.744836]        mutex_lock_nested+0x40/0x50
-> >> [    4.749275]        genpd_lock_nested_mtx+0x24/0x30
-> >> [    4.754063]        genpd_add_subdomain+0x150/0x524
-> >> [    4.758850]        pm_genpd_add_subdomain+0x3c/0x5c
-> >> [    4.763723]        scpsys_probe+0x520/0xe78
-> >> [    4.767902]        platform_drv_probe+0xf4/0x134
-> >> [    4.772517]        really_probe+0x214/0x4dc
-> >> [    4.776696]        driver_probe_device+0xcc/0x1d4
-> >> [    4.781396]        __device_attach_driver+0x10c/0x180
-> >> [    4.786442]        bus_for_each_drv+0x124/0x184
-> >> [    4.790968]        __device_attach+0x1c0/0x2d8
-> >> [    4.795407]        device_initial_probe+0x20/0x2c
-> >> [    4.800106]        bus_probe_device+0x80/0x16c
-> >> [    4.804546]        deferred_probe_work_func+0x120/0x168
-> >> [    4.809767]        process_one_work+0x858/0x1208
-> >> [    4.814379]        worker_thread+0x9ec/0xcb8
-> >> [    4.818644]        kthread+0x2b8/0x2d0
-> >> [    4.822391]        ret_from_fork+0x10/0x18
-> >> [    4.826480]
-> >> [    4.826480] -> #3 (&genpd->mlock){+.+.}:
-> >> [    4.831880]        __mutex_lock_common+0x1a0/0x1fe8
-> >> [    4.836752]        mutex_lock_nested+0x40/0x50
-> >> [    4.841190]        genpd_lock_mtx+0x20/0x2c
-> >> [    4.845369]        genpd_runtime_resume+0x140/0x434
-> >> [    4.850241]        __rpm_callback+0xb0/0x1e4
-> >> [    4.854506]        rpm_callback+0x54/0x1a8
-> >> [    4.858597]        rpm_resume+0xc6c/0x10c4
-> >> [    4.862689]        __pm_runtime_resume+0xb4/0x124
-> >> [    4.867387]        device_link_add+0x598/0x8d0
-> >
-> > For this looks as if you have also patch
-> > [PATCH v2 04/12] memory: mtk-smi: Add device-link between smi-larb and smi-common
-> > from series
-> > [PATCH v2 00/12] Clean up "mediatek,larb" after adding device_link
-> > applied.
-> >
->
-> My guess is, that we run into this, because we call genpd_runtime_resume before
-> we have finished the subdomain registration in scpsys_probe.
-> That implies that you also have the scpsys series for mt8183 added to your tree.
->
-> Anyway it looks to me as if we have to add the subdomains before we call
-> of_genpd_add_provider_onecell().
->
-> Regards,
-> Matthias
+Hi, Nicolas
 
-Yes I do have scpsys series for mt8183 added in my tree. (I have about
-125 patches from list on top of 531b0a360899 "Add linux-next specific
-files for 20190528" to make the board boot)
-However the exact same warning still exists after I changed the order
-of of_genpd_add_provider_onecell and pm_genpd_add_subdomain, patch as
-follow:
-(Patch is based on commit f4788d37bc84 "Add linux-next specific files
-for 20190614")
-
-diff --git a/drivers/soc/mediatek/mtk-scpsys.c
-b/drivers/soc/mediatek/mtk-scpsys.c
-index 503222d0d0da..0cd9bdd4004e 100644
---- a/drivers/soc/mediatek/mtk-scpsys.c
-+++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -440,8 +440,7 @@ static struct scp *init_scp(struct platform_device *pdev,
- static void mtk_register_power_domains(struct platform_device *pdev,
-  struct scp *scp, int num)
- {
-- struct genpd_onecell_data *pd_data;
-- int i, ret;
-+ int i;
-
-  for (i = 0; i < num; i++) {
-  struct scp_domain *scpd = &scp->domains[i];
-@@ -457,18 +456,6 @@ static void mtk_register_power_domains(struct
-platform_device *pdev,
-
-  pm_genpd_init(genpd, NULL, false);
-  }
--
-- /*
-- * We are not allowed to fail here since there is no way to unregister
-- * a power domain. Once registered above we have to keep the domains
-- * valid.
-- */
--
-- pd_data = &scp->pd_data;
--
-- ret = of_genpd_add_provider_onecell(pdev->dev.of_node, pd_data);
-- if (ret)
-- dev_err(&pdev->dev, "Failed to add OF provider: %d\n", ret);
- }
-
- /*
-@@ -1053,6 +1040,16 @@ static int scpsys_probe(struct platform_device *pdev)
-  ret);
-  }
-
-+ /*
-+ * We are not allowed to fail here since there is no way to unregister
-+ * a power domain. Once registered above we have to keep the domains
-+ * valid.
-+ */
-+
-+ ret = of_genpd_add_provider_onecell(pdev->dev.of_node, pd_data);
-+ if (ret)
-+ dev_err(&pdev->dev, "Failed to add OF provider: %d\n", ret);
-+
-  return 0;
- }
-
+On Sun, Apr 28, 2019 at 8:55 PM Nicolas Boichat <drinkcat@chromium.org> wrote:
 >
+> During suspend/resume, mtk_eint_mask may be called while
+> wake_mask is active. For example, this happens if a wake-source
+> with an active interrupt handler wakes the system:
+> irq/pm.c:irq_pm_check_wakeup would disable the interrupt, so
+> that it can be handled later on in the resume flow.
 >
-> > Regards,
-> > Matthias
-> >
+> However, this may happen before mtk_eint_do_resume is called:
+> in this case, wake_mask is loaded, and cur_mask is restored
+> from an older copy, re-enabling the interrupt, and causing
+> an interrupt storm (especially for level interrupts).
+>
+> Instead, we just record mask/unmask changes in cur_mask. This
+> also avoids the need to read the current mask in eint_do_suspend,
+> and we can remove mtk_eint_chip_read_mask function.
+>
+
+The change is worth rewording the commit message you added above as an instance
+and adding Fixes tag as a fixup to mean you're fixing the existing
+problem in the driver.
+
+And then Acked-by: Sean Wang <sean.wang@kernel.org>
+
+> Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
+> ---
+>  drivers/pinctrl/mediatek/mtk-eint.c | 18 ++++--------------
+>  1 file changed, 4 insertions(+), 14 deletions(-)
+>
+> diff --git a/drivers/pinctrl/mediatek/mtk-eint.c b/drivers/pinctrl/mediatek/mtk-eint.c
+> index 737385e86beb807..7e526bcf5e0b55c 100644
+> --- a/drivers/pinctrl/mediatek/mtk-eint.c
+> +++ b/drivers/pinctrl/mediatek/mtk-eint.c
+> @@ -113,6 +113,8 @@ static void mtk_eint_mask(struct irq_data *d)
+>         void __iomem *reg = mtk_eint_get_offset(eint, d->hwirq,
+>                                                 eint->regs->mask_set);
+>
+> +       eint->cur_mask[d->hwirq >> 5] &= ~mask;
+> +
+>         writel(mask, reg);
+>  }
+>
+> @@ -123,6 +125,8 @@ static void mtk_eint_unmask(struct irq_data *d)
+>         void __iomem *reg = mtk_eint_get_offset(eint, d->hwirq,
+>                                                 eint->regs->mask_clr);
+>
+> +       eint->cur_mask[d->hwirq >> 5] |= mask;
+> +
+>         writel(mask, reg);
+>
+>         if (eint->dual_edge[d->hwirq])
+> @@ -217,19 +221,6 @@ static void mtk_eint_chip_write_mask(const struct mtk_eint *eint,
+>         }
+>  }
+>
+> -static void mtk_eint_chip_read_mask(const struct mtk_eint *eint,
+> -                                   void __iomem *base, u32 *buf)
+> -{
+> -       int port;
+> -       void __iomem *reg;
+> -
+> -       for (port = 0; port < eint->hw->ports; port++) {
+> -               reg = base + eint->regs->mask + (port << 2);
+> -               buf[port] = ~readl_relaxed(reg);
+> -               /* Mask is 0 when irq is enabled, and 1 when disabled. */
+> -       }
+> -}
+> -
+>  static int mtk_eint_irq_request_resources(struct irq_data *d)
+>  {
+>         struct mtk_eint *eint = irq_data_get_irq_chip_data(d);
+> @@ -384,7 +375,6 @@ static void mtk_eint_irq_handler(struct irq_desc *desc)
+>
+>  int mtk_eint_do_suspend(struct mtk_eint *eint)
+>  {
+> -       mtk_eint_chip_read_mask(eint, eint->base, eint->cur_mask);
+>         mtk_eint_chip_write_mask(eint, eint->base, eint->wake_mask);
+>
+>         return 0;
+> --
+> 2.21.0.593.g511ec345e18-goog
+>
