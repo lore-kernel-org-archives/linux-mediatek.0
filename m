@@ -1,204 +1,114 @@
-From: biao huang <biao.huang@mediatek.com>
-Subject: Re: [v7, PATCH] net: stmmac: add support for hash table size
- 128/256 in dwmac4
-Date: Fri, 21 Jun 2019 17:15:11 +0800
-Message-ID: <1561108511.7458.0.camel@mhfsdcap03>
-References: <1559208626-3218-1-git-send-email-biao.huang@mediatek.com>
-         <1559208626-3218-2-git-send-email-biao.huang@mediatek.com>
+From: Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [PATCH 3/5] drm/panel: Add attach/detach callbacks
+Date: Fri, 21 Jun 2019 11:19:28 +0200
+Message-ID: <20190621091928.GA11839@ulmo>
+References: <20190611040350.90064-1-dbasehore@chromium.org>
+ <20190611040350.90064-4-dbasehore@chromium.org>
+ <20190611085722.GX21222@phenom.ffwll.local>
+ <CAGAzgsr2sh5B1xi_ztQPN0xoQsZd26DDXwWT_qqJ68XeKReJ_Q@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="cWoXeonUoKmBZSoM"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1559208626-3218-2-git-send-email-biao.huang@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <CAGAzgsr2sh5B1xi_ztQPN0xoQsZd26DDXwWT_qqJ68XeKReJ_Q@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: "davem@davemloft.net" <davem@davemloft.net>, Jose Abreu <joabreu@synopsys.com>
-Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "linux-stm32@st-md-mailman.stormreply.com" <linux-stm32@st-md-mailman.stormreply.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, YT Shen =?UTF-8?Q?=28=E6=B2=88=E5=B2=B3=E9=9C=86=29?= <Yt.Shen@mediatek.com>, Jianguo Zhang =?UTF-8?Q?=28=E5=BC=A0=E5=BB=BA=E5=9B=BD=29?= <Jianguo.Zhang@mediatek.com>, "boon.leong.ong@intel.com" <boon.leong.ong@intel.com>
+To: "dbasehore ." <dbasehore@chromium.org>
+Cc: linux-kernel <linux-kernel@vger.kernel.org>, Sam Ravnborg <sam@ravnborg.org>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>, Jani Nikula <jani.nikula@linux.intel.com>, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel <dri-devel@lists.freedesktop.org>, devicetree@vger.kernel.org, Intel Graphics <intel-gfx@lists.freedesktop.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel>
 List-Id: linux-mediatek@lists.infradead.org
 
-Dear David, Jose,
 
-	any comments about this patch?
+--cWoXeonUoKmBZSoM
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Thanks
-Biao
+On Tue, Jun 11, 2019 at 05:25:47PM -0700, dbasehore . wrote:
+> On Tue, Jun 11, 2019 at 1:57 AM Daniel Vetter <daniel@ffwll.ch> wrote:
+> >
+> > On Mon, Jun 10, 2019 at 09:03:48PM -0700, Derek Basehore wrote:
+> > > This adds the attach/detach callbacks. These are for setting up
+> > > internal state for the connector/panel pair that can't be done at
+> > > probe (since the connector doesn't exist) and which don't need to be
+> > > repeatedly done for every get/modes, prepare, or enable callback.
+> > > Values such as the panel orientation, and display size can be filled
+> > > in for the connector.
+> > >
+> > > Signed-off-by: Derek Basehore <dbasehore@chromium.org>
+> > > ---
+> > >  drivers/gpu/drm/drm_panel.c | 14 ++++++++++++++
+> > >  include/drm/drm_panel.h     |  4 ++++
+> > >  2 files changed, 18 insertions(+)
+> > >
+> > > diff --git a/drivers/gpu/drm/drm_panel.c b/drivers/gpu/drm/drm_panel.c
+> > > index 3b689ce4a51a..72f67678d9d5 100644
+> > > --- a/drivers/gpu/drm/drm_panel.c
+> > > +++ b/drivers/gpu/drm/drm_panel.c
+> > > @@ -104,12 +104,23 @@ EXPORT_SYMBOL(drm_panel_remove);
+> > >   */
+> > >  int drm_panel_attach(struct drm_panel *panel, struct drm_connector *=
+connector)
+> > >  {
+> > > +     int ret;
+> > > +
+> > >       if (panel->connector)
+> > >               return -EBUSY;
+> > >
+> > >       panel->connector =3D connector;
+> > >       panel->drm =3D connector->dev;
+> > >
+> > > +     if (panel->funcs->attach) {
+> > > +             ret =3D panel->funcs->attach(panel);
+> > > +             if (ret < 0) {
+> > > +                     panel->connector =3D NULL;
+> > > +                     panel->drm =3D NULL;
+> > > +                     return ret;
+> > > +             }
+> > > +     }
+> >
+> > Why can't we just implement this in the drm helpers for everyone, by e.=
+g.
+> > storing a dt node in drm_panel? Feels a bit overkill to have these new
+> > hooks here.
+> >
+> > Also, my understanding is that this dt stuff is supposed to be
+> > standardized, so this should work.
+>=20
+> So do you want all of this information added to the drm_panel struct?
+> If we do that, we don't necessarily even need the drm helper function.
+> We could just copy the values over here in the drm_panel_attach
+> function (and clear them in drm_panel_detach).
 
-On Thu, 2019-05-30 at 17:30 +0800, Biao Huang wrote:
-> 1. get hash table size in hw feature reigster, and add support
-> for taller hash table(128/256) in dwmac4.
-> 2. only clear GMAC_PACKET_FILTER bits used in this function,
-> to avoid side effect to functions of other bits.
-> 
-> stmmac selftests output log with flow control on:
-> 	ethtool -t eth0
-> 	The test result is PASS
-> 	The test extra info:
-> 	 1. MAC Loopback                 0
-> 	 2. PHY Loopback                 -95
-> 	 3. MMC Counters                 0
-> 	 4. EEE                          -95
-> 	 5. Hash Filter MC               0
-> 	 6. Perfect Filter UC            0
-> 	 7. MC Filter                    0
-> 	 8. UC Filter                    0
-> 	 9. Flow Control                 0
-> 
-> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
-> ---
->  drivers/net/ethernet/stmicro/stmmac/common.h      |    7 +--
->  drivers/net/ethernet/stmicro/stmmac/dwmac4.h      |    4 +-
->  drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c |   49 ++++++++++++---------
->  drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c  |    1 +
->  drivers/net/ethernet/stmicro/stmmac/stmmac_main.c |    6 +++
->  5 files changed, 42 insertions(+), 25 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/common.h b/drivers/net/ethernet/stmicro/stmmac/common.h
-> index 1961fe9..26bbcd8 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/common.h
-> +++ b/drivers/net/ethernet/stmicro/stmmac/common.h
-> @@ -335,6 +335,7 @@ struct dma_features {
->  	/* 802.3az - Energy-Efficient Ethernet (EEE) */
->  	unsigned int eee;
->  	unsigned int av;
-> +	unsigned int hash_tb_sz;
->  	unsigned int tsoen;
->  	/* TX and RX csum */
->  	unsigned int tx_coe;
-> @@ -428,9 +429,9 @@ struct mac_device_info {
->  	struct mii_regs mii;	/* MII register Addresses */
->  	struct mac_link link;
->  	void __iomem *pcsr;     /* vpointer to device CSRs */
-> -	int multicast_filter_bins;
-> -	int unicast_filter_entries;
-> -	int mcast_bits_log2;
-> +	unsigned int multicast_filter_bins;
-> +	unsigned int unicast_filter_entries;
-> +	unsigned int mcast_bits_log2;
->  	unsigned int rx_csum;
->  	unsigned int pcs;
->  	unsigned int pmt;
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4.h b/drivers/net/ethernet/stmicro/stmmac/dwmac4.h
-> index 01c1089..b68785f7 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac4.h
-> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4.h
-> @@ -18,8 +18,7 @@
->  /*  MAC registers */
->  #define GMAC_CONFIG			0x00000000
->  #define GMAC_PACKET_FILTER		0x00000008
-> -#define GMAC_HASH_TAB_0_31		0x00000010
-> -#define GMAC_HASH_TAB_32_63		0x00000014
-> +#define GMAC_HASH_TAB(x)		(0x10 + (x) * 4)
->  #define GMAC_RX_FLOW_CTRL		0x00000090
->  #define GMAC_QX_TX_FLOW_CTRL(x)		(0x70 + x * 4)
->  #define GMAC_TXQ_PRTY_MAP0		0x98
-> @@ -184,6 +183,7 @@ enum power_event {
->  #define GMAC_HW_FEAT_MIISEL		BIT(0)
->  
->  /* MAC HW features1 bitmap */
-> +#define GMAC_HW_HASH_TB_SZ		GENMASK(25, 24)
->  #define GMAC_HW_FEAT_AVSEL		BIT(20)
->  #define GMAC_HW_TSOEN			BIT(18)
->  #define GMAC_HW_TXFIFOSIZE		GENMASK(10, 6)
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
-> index 5e98da4..4183607 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
-> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
-> @@ -403,41 +403,50 @@ static void dwmac4_set_filter(struct mac_device_info *hw,
->  			      struct net_device *dev)
->  {
->  	void __iomem *ioaddr = (void __iomem *)dev->base_addr;
-> -	unsigned int value = 0;
-> +	int numhashregs = (hw->multicast_filter_bins >> 5);
-> +	int mcbitslog2 = hw->mcast_bits_log2;
-> +	unsigned int value;
-> +	int i;
->  
-> +	value = readl(ioaddr + GMAC_PACKET_FILTER);
-> +	value &= ~GMAC_PACKET_FILTER_HMC;
-> +	value &= ~GMAC_PACKET_FILTER_HPF;
-> +	value &= ~GMAC_PACKET_FILTER_PCF;
-> +	value &= ~GMAC_PACKET_FILTER_PM;
-> +	value &= ~GMAC_PACKET_FILTER_PR;
->  	if (dev->flags & IFF_PROMISC) {
->  		value = GMAC_PACKET_FILTER_PR | GMAC_PACKET_FILTER_PCF;
->  	} else if ((dev->flags & IFF_ALLMULTI) ||
-> -			(netdev_mc_count(dev) > HASH_TABLE_SIZE)) {
-> +		   (netdev_mc_count(dev) > hw->multicast_filter_bins)) {
->  		/* Pass all multi */
-> -		value = GMAC_PACKET_FILTER_PM;
-> -		/* Set the 64 bits of the HASH tab. To be updated if taller
-> -		 * hash table is used
-> -		 */
-> -		writel(0xffffffff, ioaddr + GMAC_HASH_TAB_0_31);
-> -		writel(0xffffffff, ioaddr + GMAC_HASH_TAB_32_63);
-> +		value |= GMAC_PACKET_FILTER_PM;
-> +		/* Set all the bits of the HASH tab */
-> +		for (i = 0; i < numhashregs; i++)
-> +			writel(0xffffffff, ioaddr + GMAC_HASH_TAB(i));
->  	} else if (!netdev_mc_empty(dev)) {
-> -		u32 mc_filter[2];
->  		struct netdev_hw_addr *ha;
-> +		u32 mc_filter[8];
->  
->  		/* Hash filter for multicast */
-> -		value = GMAC_PACKET_FILTER_HMC;
-> +		value |= GMAC_PACKET_FILTER_HMC;
->  
->  		memset(mc_filter, 0, sizeof(mc_filter));
->  		netdev_for_each_mc_addr(ha, dev) {
-> -			/* The upper 6 bits of the calculated CRC are used to
-> -			 * index the content of the Hash Table Reg 0 and 1.
-> +			/* The upper n bits of the calculated CRC are used to
-> +			 * index the contents of the hash table. The number of
-> +			 * bits used depends on the hardware configuration
-> +			 * selected at core configuration time.
->  			 */
-> -			int bit_nr =
-> -				(bitrev32(~crc32_le(~0, ha->addr, 6)) >> 26);
-> -			/* The most significant bit determines the register
-> -			 * to use while the other 5 bits determines the bit
-> -			 * within the selected register
-> +			int bit_nr = bitrev32(~crc32_le(~0, ha->addr,
-> +					ETH_ALEN)) >> (32 - mcbitslog2);
-> +			/* The most significant bit determines the register to
-> +			 * use (H/L) while the other 5 bits determine the bit
-> +			 * within the register.
->  			 */
-> -			mc_filter[bit_nr >> 5] |= (1 << (bit_nr & 0x1F));
-> +			mc_filter[bit_nr >> 5] |= (1 << (bit_nr & 0x1f));
->  		}
-> -		writel(mc_filter[0], ioaddr + GMAC_HASH_TAB_0_31);
-> -		writel(mc_filter[1], ioaddr + GMAC_HASH_TAB_32_63);
-> +		for (i = 0; i < numhashregs; i++)
-> +			writel(mc_filter[i], ioaddr + GMAC_HASH_TAB(i));
->  	}
->  
->  	value |= GMAC_PACKET_FILTER_HPF;
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c b/drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c
-> index edb6053..59afb53 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c
-> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4_dma.c
-> @@ -354,6 +354,7 @@ static void dwmac4_get_hw_feature(void __iomem *ioaddr,
->  
->  	/* MAC HW feature1 */
->  	hw_cap = readl(ioaddr + GMAC_HW_FEATURE1);
-> +	dma_cap->hash_tb_sz = (hw_cap & GMAC_HW_HASH_TB_SZ) >> 24;
->  	dma_cap->av = (hw_cap & GMAC_HW_FEAT_AVSEL) >> 20;
->  	dma_cap->tsoen = (hw_cap & GMAC_HW_TSOEN) >> 18;
->  	/* RX and TX FIFO sizes are encoded as log2(n / 128). Undo that by
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-> index 8fcbf22..f7aac15 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-> +++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-> @@ -4166,6 +4166,12 @@ static int stmmac_hw_init(struct stmmac_priv *priv)
->  		priv->plat->enh_desc = priv->dma_cap.enh_desc;
->  		priv->plat->pmt = priv->dma_cap.pmt_remote_wake_up;
->  		priv->hw->pmt = priv->plat->pmt;
-> +		if (priv->dma_cap.hash_tb_sz) {
-> +			priv->hw->multicast_filter_bins =
-> +					(BIT(priv->dma_cap.hash_tb_sz) << 5);
-> +			priv->hw->mcast_bits_log2 =
-> +					ilog2(priv->hw->multicast_filter_bins);
-> +		}
->  
->  		/* TXCOE doesn't work in thresh DMA mode */
->  		if (priv->plat->force_thresh_dma_mode)
+Yeah, I think we should have all this extra information in the struct
+drm_panel. However, I think we need to more carefully split things such
+that the DT parsing happens at panel probe time. That way we can catch
+errors in DT, or missing entries/resources when we can still do
+something about it.
+
+If we start parsing DT and encounter failures, it's going to be very
+confusing if that's at panel attach time where code will usually just
+assume that everything is already validated and can't fail anymore.
+
+Thierry
+
+--cWoXeonUoKmBZSoM
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl0MoR0ACgkQ3SOs138+
+s6HqSA/+K8hfGyhC4XmLpKlVudKyrd41RyGRD7AunVOl6aE/CaukHevacdCPSUtk
+d/jaIe1fC3ImLE/uIZQDQBsBL3JzwrJHo0RVxijTJ7P9X1jrMR1ynK5sOWW0dPxR
+Sd87iKVNNu0Rl8CxAYzucxHrr2Up2W6uT02H0Lbxk+idIWKixRrPbUAVCMpFHTyr
+MbaVLkRd1sOEqLzetlU7HoUCx3wKgWdQgeRllgTDYgGutEQWnizljTrTglT0IAeQ
+U2LAykWBhhM4LBxYoEcdfOnosYQpKrg9suaNHNXknN+KEB5lnt/UbWCi5poLg1P4
+vyXMGFN8GwXXRNEKP0hYKGlLTzM19i3g9FRXAzeKv1hxmYhdG6S3dnzX22TG75No
+g0mUT2aFCEImAtMtQaCsucDHAnU/+YfmTekla4NxZo2UdOh0GYyKTaZ8OKsaETu+
+Hb+l76/ebe16vU+nJUYzKF5i/T+UlplLKLLGF8ivNBDSbWDD4l5Gh+hec2akFAVd
+U/CvEE85FyPaUIM9rTztStgICDwaxJNk62apvYouCkIIHOR3QVlgkxvk6DM6O5/c
+AjfC0dJqHvnx1HYiD0Sz65SeWArm/ujA1tcNZAFKLtPN2P5CHo6b2P2C1DfclkCw
+HBVMLmjbClz3caQjKmTvXk9YSnSSZBejdPW6zptywAik+UBj2r0=
+=ph6O
+-----END PGP SIGNATURE-----
+
+--cWoXeonUoKmBZSoM--
