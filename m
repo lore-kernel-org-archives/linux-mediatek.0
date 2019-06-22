@@ -1,128 +1,43 @@
-From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 05/12] media: mtk-jpeg: Get rid of mtk_smi_larb_get/put
-Date: Sat, 22 Jun 2019 10:42:35 +0800
-Message-ID: <1561171355.4850.7.camel@mhfsdcap03>
-References: <1560171313-28299-1-git-send-email-yong.wu@mediatek.com>
-	<1560171313-28299-6-git-send-email-yong.wu@mediatek.com>
-	<6539751d-1751-f309-1c51-b3f9576c1b99@gmail.com>
+From: Derek Basehore <dbasehore@chromium.org>
+Subject: [PATCH v3 0/4] Panel rotation patches
+Date: Fri, 21 Jun 2019 20:41:01 -0700
+Message-ID: <20190622034105.188454-1-dbasehore@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <6539751d-1751-f309-1c51-b3f9576c1b99-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Evan Green <evgreen-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, anan.sun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <intel-gfx-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
+List-Post: <mailto:intel-gfx@lists.freedesktop.org>
+List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: intel-gfx-bounces@lists.freedesktop.org
+Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
+To: linux-kernel@vger.kernel.org
+Cc: Derek Basehore <dbasehore@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, Maxime Ripard <maxime.ripard@bootlin.com>, Sam Ravnborg <sam@ravnborg.org>, intel-gfx@lists.freedesktop.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, CK Hu <ck.hu@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2019-06-20 at 17:20 +0200, Matthias Brugger wrote:
-> 
-> On 10/06/2019 14:55, Yong Wu wrote:
-> > MediaTek IOMMU has already added device_link between the consumer
-> > and smi-larb device. If the jpg device call the pm_runtime_get_sync,
-> > the smi-larb's pm_runtime_get_sync also be called automatically.
-> 
-> Please help me out find this relation. I seem to miss something basic, because I
-> can't find any between the jpeg IP and the iommu.
-
-JPEG also is a multimedia consumer. It also access memory via IOMMU. All
-the current SoC have the JPG smi ports. 
-
-grep -r JPG include/dt-bindings/memory/mt*
-
-> 
-> Regards,
-> Matthias
-> 
-> > 
-> > CC: Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > Reviewed-by: Evan Green <evgreen-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> > ---
-> >  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 22 ----------------------
-> >  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h |  2 --
-> >  2 files changed, 24 deletions(-)
-> > 
-> > diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-> > index f761e4d..2f37538 100644
-> > --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-> > +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-> > @@ -29,7 +29,6 @@
-> >  #include <media/v4l2-ioctl.h>
-> >  #include <media/videobuf2-core.h>
-> >  #include <media/videobuf2-dma-contig.h>
-> > -#include <soc/mediatek/smi.h>
-> >  
-> >  #include "mtk_jpeg_hw.h"
-> >  #include "mtk_jpeg_core.h"
-> > @@ -901,11 +900,6 @@ static int mtk_jpeg_queue_init(void *priv, struct vb2_queue *src_vq,
-> >  
-> >  static void mtk_jpeg_clk_on(struct mtk_jpeg_dev *jpeg)
-> >  {
-> > -	int ret;
-> > -
-> > -	ret = mtk_smi_larb_get(jpeg->larb);
-> > -	if (ret)
-> > -		dev_err(jpeg->dev, "mtk_smi_larb_get larbvdec fail %d\n", ret);
-> >  	clk_prepare_enable(jpeg->clk_jdec_smi);
-> >  	clk_prepare_enable(jpeg->clk_jdec);
-> >  }
-> > @@ -914,7 +908,6 @@ static void mtk_jpeg_clk_off(struct mtk_jpeg_dev *jpeg)
-> >  {
-> >  	clk_disable_unprepare(jpeg->clk_jdec);
-> >  	clk_disable_unprepare(jpeg->clk_jdec_smi);
-> > -	mtk_smi_larb_put(jpeg->larb);
-> >  }
-> >  
-> >  static irqreturn_t mtk_jpeg_dec_irq(int irq, void *priv)
-> > @@ -1059,21 +1052,6 @@ static int mtk_jpeg_release(struct file *file)
-> >  
-> >  static int mtk_jpeg_clk_init(struct mtk_jpeg_dev *jpeg)
-> >  {
-> > -	struct device_node *node;
-> > -	struct platform_device *pdev;
-> > -
-> > -	node = of_parse_phandle(jpeg->dev->of_node, "mediatek,larb", 0);
-> > -	if (!node)
-> > -		return -EINVAL;
-> > -	pdev = of_find_device_by_node(node);
-> > -	if (WARN_ON(!pdev)) {
-> > -		of_node_put(node);
-> > -		return -EINVAL;
-> > -	}
-> > -	of_node_put(node);
-> > -
-> > -	jpeg->larb = &pdev->dev;
-> > -
-> >  	jpeg->clk_jdec = devm_clk_get(jpeg->dev, "jpgdec");
-> >  	if (IS_ERR(jpeg->clk_jdec))
-> >  		return PTR_ERR(jpeg->clk_jdec);
-> > diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-> > index 1a6cdfd..e35fb79 100644
-> > --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-> > +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-> > @@ -55,7 +55,6 @@ enum mtk_jpeg_ctx_state {
-> >   * @dec_reg_base:	JPEG registers mapping
-> >   * @clk_jdec:		JPEG hw working clock
-> >   * @clk_jdec_smi:	JPEG SMI bus clock
-> > - * @larb:		SMI device
-> >   */
-> >  struct mtk_jpeg_dev {
-> >  	struct mutex		lock;
-> > @@ -69,7 +68,6 @@ struct mtk_jpeg_dev {
-> >  	void __iomem		*dec_reg_base;
-> >  	struct clk		*clk_jdec;
-> >  	struct clk		*clk_jdec_smi;
-> > -	struct device		*larb;
-> >  };
-> >  
-> >  /**
-> > 
+VGhpcyBhZGRzIHRoZSBwbHVtYmluZyBmb3IgcmVhZGluZyBwYW5lbCByb3RhdGlvbiBmcm9tIHRo
+ZSBkZXZpY2V0cmVlCmFuZCBzZXRzIHVwIGFkZGluZyBhIHBhbmVsIHByb3BlcnR5IGZvciB0aGUg
+cGFuZWwgb3JpZW50YXRpb24gb24KTWVkaWF0ZWsgU29DcyB3aGVuIGEgcm90YXRpb24gaXMgcHJl
+c2VudC4KCnYzIGNoYW5nZXM6Ci1jaGFuZ2VkIGZyb20gYXR0YWNoL2RldGFjaCBjYWxsYmFja3Mg
+dG8gZGlyZWN0bHkgc2V0dGluZyBmaXhlZCBwYW5lbAogdmFsdWVzIGluIGRybV9wYW5lbF9hdHRh
+Y2gKLXJlbW92ZWQgdXBkYXRlIHRvIERvY3VtZW50YXRpb24KLWFkZGVkIHNlcGFyYXRlIGZ1bmN0
+aW9uIGZvciBxdWlya2VkIHBhbmVsIG9yaWVudGF0aW9uIHByb3BlcnR5IGluaXQKCnYyIGNoYW5n
+ZXM6CmZpeGVkIGJ1aWxkIGVycm9ycyBpbiBpOTE1CgpEZXJlayBCYXNlaG9yZSAoNCk6CiAgZHJt
+L3BhbmVsOiBBZGQgaGVscGVyIGZvciByZWFkaW5nIERUIHJvdGF0aW9uCiAgZHJtL3BhbmVsOiBz
+ZXQgZGlzcGxheSBpbmZvIGluIHBhbmVsIGF0dGFjaAogIGRybS9jb25uZWN0b3I6IFNwbGl0IG91
+dCBvcmllbnRhdGlvbiBxdWlyayBkZXRlY3Rpb24KICBkcm0vbXRrOiBhZGQgcGFuZWwgb3JpZW50
+YXRpb24gcHJvcGVydHkKCiBkcml2ZXJzL2dwdS9kcm0vZHJtX2Nvbm5lY3Rvci5jICAgIHwgNDUg
+KysrKysrKysrKysrKystLS0tLQogZHJpdmVycy9ncHUvZHJtL2RybV9wYW5lbC5jICAgICAgICB8
+IDcwICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKwogZHJpdmVycy9ncHUvZHJtL2k5MTUv
+aW50ZWxfZHAuYyAgICB8ICA0ICstCiBkcml2ZXJzL2dwdS9kcm0vaTkxNS92bHZfZHNpLmMgICAg
+IHwgIDUgKy0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jIHwgIDggKysrKwog
+aW5jbHVkZS9kcm0vZHJtX2Nvbm5lY3Rvci5oICAgICAgICB8ICAyICsKIGluY2x1ZGUvZHJtL2Ry
+bV9wYW5lbC5oICAgICAgICAgICAgfCAyMSArKysrKysrKysKIDcgZmlsZXMgY2hhbmdlZCwgMTM4
+IGluc2VydGlvbnMoKyksIDE3IGRlbGV0aW9ucygtKQoKLS0gCjIuMjIuMC40MTAuZ2Q4ZmRiZTIx
+YjUtZ29vZwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+SW50ZWwtZ2Z4IG1haWxpbmcgbGlzdApJbnRlbC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0
+dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ2Z4
