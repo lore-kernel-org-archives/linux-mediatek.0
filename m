@@ -1,71 +1,58 @@
-From: Sam Ravnborg <sam@ravnborg.org>
-Subject: Re: [PATCH] kbuild: compile-test global headers to ensure they are
- self-contained
-Date: Sat, 22 Jun 2019 15:06:36 +0200
-Message-ID: <20190622130635.GA24262@ravnborg.org>
-References: <20190621163931.19397-1-yamada.masahiro@socionext.com>
- <20190621175134.GB16409@ravnborg.org>
- <CAK7LNATz1iuG0Moab60gMSbVU8PJAmrLn27K8HK_1zQ0qeh26w@mail.gmail.com>
+From: William Breathitt Gray <vilhelm.gray@gmail.com>
+Subject: Re: [PATCH] watchdog: convert remaining drivers to use SPDX license
+ identifier
+Date: Sun, 23 Jun 2019 08:58:03 +0900
+Message-ID: <20190622235803.GA3286@icarus>
+References: <1561048126-27578-1-git-send-email-linux@roeck-us.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <CAK7LNATz1iuG0Moab60gMSbVU8PJAmrLn27K8HK_1zQ0qeh26w@mail.gmail.com>
+In-Reply-To: <1561048126-27578-1-git-send-email-linux@roeck-us.net>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Masahiro Yamada <yamada.masahiro@socionext.com>
-Cc: Linux Kbuild mailing list <linux-kbuild@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Michal Marek <michal.lkml@markovi.net>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+To: Guenter Roeck <linux@roeck-us.net>
+Cc: Wim Van Sebroeck <wim@linux-watchdog.org>, Jerry Hoemann <jerry.hoemann@hpe.com>, Vladimir Zapolskiy <vz@mleia.com>, Matthias Brugger <matthias.bgg@gmail.com>, Wan ZongShun <mcuos.com@gmail.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Andy Gross <agross@kernel.org>, David Brown <david.brown@linaro.org>, linux-watchdog@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Masahiro
-
-> At first, I tried to split Makefile per directory,
-> and add header-test-y one by one.
+On Thu, Jun 20, 2019 at 09:28:46AM -0700, Guenter Roeck wrote:
+> This gets rid of the unnecessary license boilerplate, and avoids
+> having to deal with individual patches one by one.
 > 
-> I think you expect they look like this:
+> No functional changes.
 > 
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> ---
+> Note: Several drivers include a paragraph such as
 > 
-> include/Makefile:
+> "Neither <name> nor <company> admit liability nor
+>  provide warranty for any of this software. This material is
+>  provided "AS-IS" and at no charge."
 > 
-> subdir-y += drm
-> subdir-y += linux
-> subdir-y += media
+> Presumably this is covered by the GPL license. However, since I am not
+> an attorney, I am not sure, and I opted for leaving such paragraphs in
+> place.
+[...]
+>  drivers/watchdog/ebc-c384_wdt.c        |  9 ---------
+[...]
+> diff --git a/drivers/watchdog/ebc-c384_wdt.c b/drivers/watchdog/ebc-c384_wdt.c
+> index c176f59fea28..8ef4b0df3855 100644
+> --- a/drivers/watchdog/ebc-c384_wdt.c
+> +++ b/drivers/watchdog/ebc-c384_wdt.c
+> @@ -2,15 +2,6 @@
+>  /*
+>   * Watchdog timer driver for the WinSystems EBC-C384
+>   * Copyright (C) 2016 William Breathitt Gray
+> - *
+> - * This program is free software; you can redistribute it and/or modify
+> - * it under the terms of the GNU General Public License, version 2, as
+> - * published by the Free Software Foundation.
+> - *
+> - * This program is distributed in the hope that it will be useful, but
+> - * WITHOUT ANY WARRANTY; without even the implied warranty of
+> - * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+> - * General Public License for more details.
+>   */
+>  #include <linux/device.h>
+>  #include <linux/dmi.h>
 
-So far we agree.
-
-> include/drm/Makefile:
-> 
-> header-test-y += drm_cache.h
-> header-test-y += drm_file.h
-> header-test-y += drm_util.h
-> ...
-On this level it would be better to do:
-header-test-y += $(call find_all_header_files)
-
-# drm files that are not self-contained
-header-test-n += drm_legacy.h
-
-Likewise for all subdirs below include/
-and include/linux should maybe be split up a little too.
-Maybe include/uapi/ would need to be slipt a little.
-
-Then we have a manageable number of Makefiles.
-New header files are automatically checked and
-we have a list of files to fix.
-If for example drm/ have too much failures to a start
-then we can add that directory to the higler level Makefile later.
-
-The above is more or less what you already started,
-but the difference is that we have it pushed down one or two
-directories.
-
-The header-test-n logic could be moved to the generic part,
-and a helper could be made to find all header files.
-Then the Makefiles would be more or less trival, with all the
-Kbuild magic hidden away.
-
-> In my analysis, 70% of headers are already conf-contained.
-> After some fixups, 95% of headers can become self-contained.
-
-Sounds good. And we do not want 100%, but close...
-
-	Sam
+Acked-by: William Breathitt Gray <vilhelm.gray@gmail.com>
