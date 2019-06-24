@@ -1,92 +1,128 @@
-From: Jitao Shi <jitao.shi@mediatek.com>
-Subject: [v2 2/2] drm/panel: support for auo,kd101n80-45na wuxga dsi video mode panel
-Date: Mon, 24 Jun 2019 16:00:01 +0800
-Message-ID: <20190624080001.67222-3-jitao.shi@mediatek.com>
-References: <20190624080001.67222-1-jitao.shi@mediatek.com>
+From: Kobe Wu <kobe-cp.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] locking/lockdep: Save and display stack trace of held locks
+Date: Mon, 24 Jun 2019 16:00:59 +0800
+Message-ID: <1561363259-14705-1-git-send-email-kobe-cp.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190624080001.67222-1-jitao.shi@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Jitao Shi <jitao.shi@mediatek.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, cawa.cheng@mediatek.com, bibby.hsieh@mediatek.com, ck.hu@mediate
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Peter Zijlstra <peterz-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Ingo Molnar <mingo-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
+Cc: Eason Lin <eason-yh.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Kobe Wu <kobe-cp.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Auo,kd101n80-45na's connector is same as boe,tv101wum-nl6.
-The most codes can be reuse.
-So auo,kd101n80-45na and boe,tv101wum-nl6 use one driver file.
-Add the different parts in driver data.
+Save the stack trace of held locks when lock_acquire() is invoked
+and display the stack trace when lockdep_print_held_locks() is
+invoked. The runtime stack trace of held locks are helpful in
+analyzing code flow and lockdep's warning.
 
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+Save stack trace of each held lock will increase runtime overhead
+and memory consumption. The operation will be activated under
+CONFIG_LOCKDEP_TRACE_HELD_LOCK. So the impact will only occur
+when CONFIG_LOCKDEP_TRACE_HELD_LOCK=y.
+
+Signed-off-by: Kobe Wu <kobe-cp.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- .../gpu/drm/panel/panel-boe-tv101wum-nl6.c    | 40 +++++++++++++++++++
- 1 file changed, 40 insertions(+)
+ include/linux/lockdep.h  |   13 +++++++++++++
+ kernel/locking/lockdep.c |   22 ++++++++++++++++++++++
+ lib/Kconfig.debug        |   13 +++++++++++++
+ 3 files changed, 48 insertions(+)
 
-diff --git a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
-index 6e06c8506623..d1ee43cfcbe2 100644
---- a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
-+++ b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
-@@ -372,6 +372,15 @@ static const struct panel_init_cmd boe_init_cmd[] = {
- 	{},
+diff --git a/include/linux/lockdep.h b/include/linux/lockdep.h
+index 6e2377e..4e8d027 100644
+--- a/include/linux/lockdep.h
++++ b/include/linux/lockdep.h
+@@ -224,6 +224,10 @@ struct lock_chain {
+  */
+ #define MAX_LOCKDEP_KEYS		((1UL << MAX_LOCKDEP_KEYS_BITS) - 1)
+ 
++#ifdef CONFIG_LOCKDEP_TRACE_HELD_LOCK
++#define MAX_HELD_LOCK_ENTRIES 32
++#endif
++
+ struct held_lock {
+ 	/*
+ 	 * One-way hash of the dependency chain up to this point. We
+@@ -269,6 +273,15 @@ struct held_lock {
+ 	unsigned int hardirqs_off:1;
+ 	unsigned int references:12;					/* 32 bits */
+ 	unsigned int pin_count;
++
++#ifdef CONFIG_LOCKDEP_TRACE_HELD_LOCK
++	/*
++	 * When trying to acquire a lock, the stack trace will be saved
++	 * in the entries.
++	 */
++	unsigned int nr_entries;
++	unsigned long entries[MAX_HELD_LOCK_ENTRIES];
++#endif
  };
  
-+static const struct panel_init_cmd auo_init_cmd[] = {
-+	_INIT_DELAY_CMD(24),
-+	_INIT_DCS_CMD(0x11),
-+	_INIT_DELAY_CMD(120),
-+	_INIT_DCS_CMD(0x29),
-+	_INIT_DELAY_CMD(120),
-+	{},
-+};
-+
- static inline struct boe_panel *to_boe_panel(struct drm_panel *panel)
- {
- 	return container_of(panel, struct boe_panel, base);
-@@ -572,6 +581,34 @@ static const struct panel_desc boe_tv101wum_nl6_desc = {
- 	.init_cmds = boe_init_cmd,
- };
+ /*
+diff --git a/kernel/locking/lockdep.c b/kernel/locking/lockdep.c
+index d06190f..ad7cecf 100644
+--- a/kernel/locking/lockdep.c
++++ b/kernel/locking/lockdep.c
+@@ -457,6 +457,28 @@ static int save_trace(struct lock_trace *trace)
+ 	return 1;
+ }
  
-+static const struct drm_display_mode auo_default_mode = {
-+	.clock = 157000,
-+	.hdisplay = 1200,
-+	.hsync_start = 1200 + 80,
-+	.hsync_end = 1200 + 80 + 24,
-+	.htotal = 1200 + 80 + 24 + 36,
-+	.vdisplay = 1920,
-+	.vsync_start = 1920 + 16,
-+	.vsync_end = 1920 + 16 + 4,
-+	.vtotal = 1920 + 16 + 4 + 16,
-+	.vrefresh = 60,
-+	.type = DRM_MODE_TYPE_DRIVER | DRM_MODE_TYPE_PREFERRED,
-+};
++/* Stack-trace: record stack backtrace when trying to acquire a lock. */
++#ifdef CONFIG_LOCKDEP_TRACE_HELD_LOCK
++static void save_held_lock_trace(struct held_lock *hlock)
++{
++	hlock->nr_entries =
++		stack_trace_save(hlock->entries, MAX_HELD_LOCK_ENTRIES, 2);
++}
 +
-+static const struct panel_desc auo_kd101n80_45na_desc = {
-+	.modes = &auo_default_mode,
-+	.bpc = 8,
-+	.size = {
-+		.width = 216,
-+		.height = 135,
-+	},
-+	.lanes = 4,
-+	.format = MIPI_DSI_FMT_RGB888,
-+	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_SYNC_PULSE |
-+		      MIPI_DSI_MODE_LPM,
-+	.init_cmds = auo_init_cmd,
-+};
++static void print_held_lock_trace(struct held_lock *hlock)
++{
++	stack_trace_print(hlock->entries, hlock->nr_entries, 6);
++}
++#else
++static void save_held_lock_trace(struct held_lock *hlock)
++{
++}
 +
- static int boe_panel_get_modes(struct drm_panel *panel)
- {
- 	struct boe_panel *boe = to_boe_panel(panel);
-@@ -695,6 +732,9 @@ static const struct of_device_id boe_of_match[] = {
- 	{ .compatible = "boe,tv101wum-nl6",
- 	  .data = &boe_tv101wum_nl6_desc
- 	},
-+	{ .compatible = "auo,kd101n80-45na",
-+	  .data = &auo_kd101n80_45na_desc
-+	},
- 	{ /* sentinel */ }
- };
- MODULE_DEVICE_TABLE(of, boe_of_match);
++static void print_held_lock_trace(struct held_lock *hlock)
++{
++}
++#endif
++
+ unsigned int nr_hardirq_chains;
+ unsigned int nr_softirq_chains;
+ unsigned int nr_process_chains;
+diff --git a/lib/Kconfig.debug b/lib/Kconfig.debug
+index eae4395..7082843 100644
+--- a/lib/Kconfig.debug
++++ b/lib/Kconfig.debug
+@@ -1285,6 +1285,19 @@ config WW_MUTEX_SELFTEST
+ 	  Say M if you want these self tests to build as a module.
+ 	  Say N if you are unsure.
+ 
++config LOCKDEP_TRACE_HELD_LOCK
++	bool "Lock information: save and display stack trace of held locks"
++	depends on PROVE_LOCKING
++	default n
++	help
++	  This feature will save the stack trace when trying to acquire a lock
++	  and display the stack trace when a lockdep warning is reported. This
++	  might be helpful in analyzing lockdep's warnings.
++
++	  Enable this will increase runtime overhead and memory consumption.
++
++	  If unsure, say N.
++
+ endmenu # lock debugging
+ 
+ config TRACE_IRQFLAGS
 -- 
-2.21.0
+1.7.9.5
