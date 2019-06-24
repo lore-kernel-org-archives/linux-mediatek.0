@@ -1,7 +1,7 @@
 From: =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>
-Subject: [PATCH RFC net-next 5/5] net: dsa: mt7530: Add mediatek,ephy-handle to isolate external phy
-Date: Mon, 24 Jun 2019 16:52:51 +0200
-Message-ID: <20190624145251.4849-6-opensource@vdorst.com>
+Subject: [PATCH RFC net-next 4/5] dt-bindings: net: dsa: mt7530: Add mediatek,ephy-handle to isolate ext. phy
+Date: Mon, 24 Jun 2019 16:52:50 +0200
+Message-ID: <20190624145251.4849-5-opensource@vdorst.com>
 References: <20190624145251.4849-1-opensource@vdorst.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -13,95 +13,154 @@ To: sean.wang@mediatek.com, f.fainelli@gmail.com, linux@armlinux.org.uk, davem@d
 Cc: frank-w@public-files.de, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On some platforms the external phy can only interface with the port 5 of
-the switch because the xMII TX and RX lines are swapped. But it still can
-be useful to use the internal phy of the switch to act as a WAN port which
-connectes to the 2nd GMAC. This gives the SOC a double the bandwidth
-between LAN and WAN. Because LAN and WAN don't share the same interface
-anymore.
+On some platforum the external phy can only interface to the port 5 of the
+switch because the RGMII TX and RX lines are swapped. But it still can be
+useful to use the internal phy of the switch to act as a WAN port which
+connectes to the 2nd GMAC. This gives WAN port dedicated bandwidth to
+the SOC. This increases the LAN and WAN routing.
 
-By adding an optional property mediatek,ephy-handle, the external phy
-is put in isolation mode when internal phy is linked with 2nd GMAC via
+By adding the optional property mediatek,ephy-handle, the external phy
+is put in isolation mode when internal phy is connected to 2nd GMAC via
 phy-handle property.
 
 Signed-off-by: René van Dorst <opensource@vdorst.com>
 ---
- drivers/net/dsa/mt7530.c | 28 ++++++++++++++++++++++++++++
- drivers/net/dsa/mt7530.h |  2 ++
- 2 files changed, 30 insertions(+)
+ .../devicetree/bindings/net/dsa/mt7530.txt    | 116 +++++++++++++++++-
+ 1 file changed, 115 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 838a921ca83e..25b0f35df75b 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -633,6 +633,26 @@ mt7530_get_sset_count(struct dsa_switch *ds, int port, int sset)
- 	return ARRAY_SIZE(mt7530_mib);
- }
+diff --git a/Documentation/devicetree/bindings/net/dsa/mt7530.txt b/Documentation/devicetree/bindings/net/dsa/mt7530.txt
+index f3486780f2c2..1e79fba5a774 100644
+--- a/Documentation/devicetree/bindings/net/dsa/mt7530.txt
++++ b/Documentation/devicetree/bindings/net/dsa/mt7530.txt
+@@ -60,10 +60,20 @@ Depending on how the external PHY is wired:
+ 2. swapped: RGMII TX, RX are swapped; external phy interface with the switch as
+    a ethernet port. But can't interface to the 2nd GMAC.
  
-+static int mt7530_isolate_ephy(struct dsa_switch *ds,
-+			       struct device_node *ephy_node)
-+{
-+	struct phy_device *phydev = of_phy_find_device(ephy_node);
-+	int ret;
++Optional property:
 +
-+	if (!phydev)
-+		return 0;
++- mediatek,ephy-handle: Phandle of the external phy. In case you want to use
++			P0/4 as WAN port and have an external phy attached.
++			With this property the external phy is put in isolation
++			and powerdown mode in mode 2.
 +
-+	ret = phy_modify(phydev, MII_BMCR, 0, (BMCR_ISOLATE | BMCR_PDOWN));
-+	if (ret)
-+		dev_err(ds->dev, "Failed to put phy %s in isolation mode!\n",
-+			ephy_node->full_name);
-+	else
-+		dev_info(ds->dev, "Phy %s in isolation mode!\n",
-+			 ephy_node->full_name);
-+
-+	return ret;
-+}
-+
- static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
- {
- 	struct mt7530_priv *priv = ds->priv;
-@@ -655,6 +675,10 @@ static void mt7530_setup_port5(struct dsa_switch *ds, phy_interface_t interface)
- 		/* MT7530_P5_MODE_GPHY_P4: 2nd GMAC -> P5 -> P4 */
- 		val &= ~MHWTRAP_P5_MAC_SEL & ~MHWTRAP_P5_DIS;
+ Based on the DT the port 5 mode is configured.
  
-+		/* Isolate the external phy */
-+		if (priv->ephy_node)
-+			if (mt7530_isolate_ephy(ds, priv->ephy_node) < 0)
-+				goto unlock_exit;
- 		/* Setup the MAC by default for the cpu port */
- 		mt7530_write(priv, MT7530_PMCR_P(5), 0x56300);
- 		break;
-@@ -1330,6 +1354,10 @@ mt7530_setup(struct dsa_switch *ds)
- 			mt7530_port_disable(ds, i);
- 	}
- 
-+	/* Get external phy phandle */
-+	priv->ephy_node = of_parse_phandle(priv->dev->of_node,
-+					   "mediatek,ephy-handle", 0);
+ Driver tries to lookup the phy-handle of the 2nd GMAC of the master device.
+-When phy-handle matches PHY of port 0 or 4 then port 5 set-up as mode 2.
++When phy-handle matches PHY of port 0 or 4 then port 5 set-up as mode 2 and when
++propertly "mediatek,ephy-handle" is valid it puts the externel phy in isolation
++mode.
 +
- 	/* Setup port 5 */
- 	priv->p5_mode = P5_MODE_DISABLED;
- 	interface = PHY_INTERFACE_MODE_NA;
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index f2a84ef48548..eb079e81a8e8 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -459,6 +459,7 @@ static const char *p5_modes(unsigned int p5_mode)
-  * @reg_mutex:		The lock for protecting among process accessing
-  *			registers
-  * @p5_mode:		PORT 5 mode status
-+ * @ephy_node:		External phy of_node.
-  */
- struct mt7530_priv {
- 	struct device		*dev;
-@@ -472,6 +473,7 @@ struct mt7530_priv {
- 	unsigned int		id;
- 	bool			mcm;
- 	unsigned int		p5_mode;
-+	struct device_node	*ephy_node;
- 
- 	struct mt7530_port	ports[MT7530_NUM_PORTS];
- 	/* protect among processes for registers access*/
+ phy-mode must be set, see also example 2 below!
+  * mt7621: phy-mode = "rgmii-txid";
+  * mt7623: phy-mode = "rgmii";
+@@ -309,3 +319,107 @@ Example 3: MT7621: Port 5 is connected to external PHY: Port 5 -> external PHY.
+ 		};
+ 	};
+ };
++
++Example 4: MT7621: Port 4 is WAN port: 2nd GMAC -> P5 -> PHY P4
++		   with an external phy.
++
++&eth {
++	status = "okay";
++
++	gmac0: mac@0 {
++		compatible = "mediatek,eth-mac";
++		reg = <0>;
++		phy-mode = "rgmii";
++
++		fixed-link {
++			speed = <1000>;
++			full-duplex;
++			pause;
++		};
++	};
++
++	gmac1: mac@1 {
++		compatible = "mediatek,eth-mac";
++		reg = <1>;
++		phy-mode = "rgmii-txid";
++		phy-handle = <&phy4>;
++	};
++
++	mdio: mdio-bus {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		/* Internal phy 4 */
++		phy4: ethernet-phy@4 {
++			reg = <4>;
++		};
++
++		/* external phy addr 0x07 */
++		ephy5: ethernet-phy@7 {
++			reg = <7>;
++		};
++
++		mt7530: switch@1f {
++			compatible = "mediatek,mt7621";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			reg = <0x1f>;
++			pinctrl-names = "default";
++			mediatek,mcm;
++
++			/* Put this external phy in power-down and isolation
++			 * when port 5 is used in PHY P0/P4 or DSA mode. Because
++			 * external phy and port 5 share same bus to 2nd GMAC.
++			 */
++			mediatek,ephy-handle = <&ephy5>;
++
++			resets = <&rstctrl 2>;
++			reset-names = "mcm";
++
++			ports {
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				port@0 {
++					reg = <0>;
++					label = "lan0";
++				};
++
++				port@1 {
++					reg = <1>;
++					label = "lan1";
++				};
++
++				port@2 {
++					reg = <2>;
++					label = "lan2";
++				};
++
++				port@3 {
++					reg = <3>;
++					label = "lan3";
++				};
++
++/* Commented out. Port 4 is handled by 2nd GMAC.
++				port@4 {
++					reg = <4>;
++					label = "lan4";
++				};
++*/
++
++				cpu_port0: port@6 {
++					reg = <6>;
++					label = "cpu";
++					ethernet = <&gmac0>;
++					phy-mode = "rgmii";
++
++					fixed-link {
++						speed = <1000>;
++						full-duplex;
++						pause;
++					};
++				};
++			};
++		};
++	};
++};
 -- 
 2.20.1
