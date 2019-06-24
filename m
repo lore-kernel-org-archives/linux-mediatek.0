@@ -1,33 +1,171 @@
-From: Christoph Hellwig <hch-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
-Subject: Re: [PATCH v4 0/5] iommu/amd: Convert the AMD iommu driver to the
- dma-iommu api
-Date: Sun, 23 Jun 2019 23:19:45 -0700
-Message-ID: <20190624061945.GA4912@infradead.org>
-References: <20190613223901.9523-1-murphyt7@tcd.ie>
+From: Neal Liu <neal.liu@mediatek.com>
+Subject: [PATCH v4 3/3] hwrng: add mtk-sec-rng driver
+Date: Mon, 24 Jun 2019 15:24:12 +0800
+Message-ID: <1561361052-13072-4-git-send-email-neal.liu@mediatek.com>
+References: <1561361052-13072-1-git-send-email-neal.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20190613223901.9523-1-murphyt7-/Zw1syy4LHg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Tom Murphy <murphyt7-/Zw1syy4LHg@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, virtualization-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-s390-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jean-Philippe Brucker <jean-philippe.brucker-5wv7dgnIgG8@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Andy Gross <agross-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Gerald Schaefer <gerald.schaefer-tA70FqPdS9bQT0dZR+AlfA@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1561361052-13072-1-git-send-email-neal.liu@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matt Mackall <mpm@selenic.com>, Herbert Xu <herbert@gondor.apana.org.au>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>
+Cc: Neal Liu <neal.liu@mediatek.com>, Crystal Guo <Crystal.Guo@mediatek.com>, linux-crypto@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Tom,
+For MediaTek SoCs on ARMv8 with TrustZone enabled, peripherals like
+entropy sources is not accessible from normal world (linux) and
+rather accessible from secure world (ATF/TEE) only. This driver aims
+to provide a generic interface to ATF rng service.
 
-next time please cc Jerg as the AMD IOMMU maintainer.
+Signed-off-by: Neal Liu <neal.liu@mediatek.com>
+---
+ drivers/char/hw_random/Kconfig       |   16 ++++++
+ drivers/char/hw_random/Makefile      |    1 +
+ drivers/char/hw_random/mtk-sec-rng.c |   97 ++++++++++++++++++++++++++++++++++
+ 3 files changed, 114 insertions(+)
+ create mode 100644 drivers/char/hw_random/mtk-sec-rng.c
 
-Joerg, any chance you could review this?  Toms patches to convert the
-AMD and Intel IOMMU drivers to the dma-iommu code are going to make my
-life in DMA land significantly easier, so I have a vested interest
-in this series moving forward :)
+diff --git a/drivers/char/hw_random/Kconfig b/drivers/char/hw_random/Kconfig
+index 25a7d8f..6c82a3b 100644
+--- a/drivers/char/hw_random/Kconfig
++++ b/drivers/char/hw_random/Kconfig
+@@ -398,6 +398,22 @@ config HW_RANDOM_MTK
+ 
+ 	  If unsure, say Y.
+ 
++config HW_RANDOM_MTK_SEC
++	tristate "MediaTek Security Random Number Generator support"
++	depends on HW_RANDOM
++	depends on ARCH_MEDIATEK || COMPILE_TEST
++	default HW_RANDOM
++	help
++	  This driver provides kernel-side support for the Random Number
++	  Generator hardware found on MediaTek SoCs. The difference with
++	  mtk-rng is the Random Number Generator hardware is secure
++	  access only.
++
++	  To compile this driver as a module, choose M here. the
++	  module will be called mtk-sec-rng.
++
++	  If unsure, say Y.
++
+ config HW_RANDOM_S390
+ 	tristate "S390 True Random Number Generator support"
+ 	depends on S390
+diff --git a/drivers/char/hw_random/Makefile b/drivers/char/hw_random/Makefile
+index 7c9ef4a..0ae4993 100644
+--- a/drivers/char/hw_random/Makefile
++++ b/drivers/char/hw_random/Makefile
+@@ -36,6 +36,7 @@ obj-$(CONFIG_HW_RANDOM_PIC32) += pic32-rng.o
+ obj-$(CONFIG_HW_RANDOM_MESON) += meson-rng.o
+ obj-$(CONFIG_HW_RANDOM_CAVIUM) += cavium-rng.o cavium-rng-vf.o
+ obj-$(CONFIG_HW_RANDOM_MTK)	+= mtk-rng.o
++obj-$(CONFIG_HW_RANDOM_MTK_SEC) += mtk-sec-rng.o
+ obj-$(CONFIG_HW_RANDOM_S390) += s390-trng.o
+ obj-$(CONFIG_HW_RANDOM_KEYSTONE) += ks-sa-rng.o
+ obj-$(CONFIG_HW_RANDOM_OPTEE) += optee-rng.o
+diff --git a/drivers/char/hw_random/mtk-sec-rng.c b/drivers/char/hw_random/mtk-sec-rng.c
+new file mode 100644
+index 0000000..ecd2e29
+--- /dev/null
++++ b/drivers/char/hw_random/mtk-sec-rng.c
+@@ -0,0 +1,97 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (C) 2019 MediaTek Inc.
++ */
++
++#include <linux/arm-smccc.h>
++#include <linux/hw_random.h>
++#include <linux/module.h>
++#include <linux/of.h>
++#include <linux/platform_device.h>
++#include <linux/soc/mediatek/mtk_sip_svc.h>
++
++#define MT67XX_RNG_MAGIC	0x74726e67
++#define SMC_RET_NUM		4
++#define MTK_SEC_RND_SIZE	(sizeof(u32) * SMC_RET_NUM)
++
++struct mtk_sec_rng_priv {
++	struct hwrng rng;
++};
++
++static void mtk_sec_get_rnd(uint32_t *val)
++{
++	struct arm_smccc_res res;
++
++	arm_smccc_smc(MTK_SIP_KERNEL_GET_RND,
++		      MT67XX_RNG_MAGIC, 0, 0, 0, 0, 0, 0, &res);
++
++	val[0] = res.a0;
++	val[1] = res.a1;
++	val[2] = res.a2;
++	val[3] = res.a3;
++}
++
++static int mtk_sec_rng_read(struct hwrng *rng, void *buf, size_t max, bool wait)
++{
++	u32 val[4] = {0};
++	int retval = 0;
++	int i;
++
++	while (max >= MTK_SEC_RND_SIZE) {
++		mtk_sec_get_rnd(val);
++
++		for (i = 0; i < SMC_RET_NUM; i++) {
++			*(u32 *)buf = val[i];
++			buf += sizeof(u32);
++		}
++
++		retval += MTK_SEC_RND_SIZE;
++		max -= MTK_SEC_RND_SIZE;
++	}
++
++	return retval;
++}
++
++static int mtk_sec_rng_probe(struct platform_device *pdev)
++{
++	struct mtk_sec_rng_priv *priv;
++	int ret;
++
++	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
++	if (!priv)
++		return -ENOMEM;
++
++	priv->rng.name = pdev->name;
++	priv->rng.read = mtk_sec_rng_read;
++	priv->rng.priv = (unsigned long)&pdev->dev;
++	priv->rng.quality = 900;
++
++	ret = devm_hwrng_register(&pdev->dev, &priv->rng);
++	if (ret) {
++		dev_err(&pdev->dev, "failed to register rng device: %d\n", ret);
++		return ret;
++	}
++
++	return 0;
++}
++
++static const struct of_device_id mtk_sec_rng_match[] = {
++	{ .compatible = "mediatek,mtk-sec-rng", },
++	{}
++};
++MODULE_DEVICE_TABLE(of, mtk_sec_rng_match);
++
++static struct platform_driver mtk_sec_rng_driver = {
++	.probe = mtk_sec_rng_probe,
++	.driver = {
++		.name = KBUILD_MODNAME,
++		.owner = THIS_MODULE,
++		.of_match_table = mtk_sec_rng_match,
++	},
++};
++
++module_platform_driver(mtk_sec_rng_driver);
++
++MODULE_DESCRIPTION("MediaTek Security Random Number Generator Driver");
++MODULE_AUTHOR("Neal Liu <neal.liu@mediatek.com>");
++MODULE_LICENSE("GPL");
+-- 
+1.7.9.5
