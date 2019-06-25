@@ -1,81 +1,375 @@
-From: Nicolas Boichat <drinkcat@chromium.org>
-Subject: Re: [v2 2/2] drm/panel: support for auo, kd101n80-45na wuxga dsi
- video mode panel
-Date: Tue, 25 Jun 2019 08:42:57 +0800
-Message-ID: <CANMq1KDixwQN13o84Jp6E6tyfTQSZjiZSMzaNFZ02LEVPx0Z8g@mail.gmail.com>
-References: <20190624080001.67222-1-jitao.shi@mediatek.com>
- <20190624080001.67222-3-jitao.shi@mediatek.com>
+From: Daniel Santos <daniel.santos@pobox.com>
+Subject: Re: [PATCH RFC net-next 1/5] net: dsa: mt7530: Convert to PHYLINK API
+Date: Mon, 24 Jun 2019 19:58:57 -0500
+Message-ID: <13c67cb7-b33e-f2b1-9d1e-d2882e0ff076@pobox.com>
+References: <20190624145251.4849-1-opensource@vdorst.com>
+ <20190624145251.4849-2-opensource@vdorst.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190624080001.67222-3-jitao.shi@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jitao Shi <jitao.shi@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, stonea168@163.com, dri-devel@lists.freedesktop.org, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa cheng <cawa.cheng@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Thierry Reding <treding@nvidia.com>, Sean Paul <seanpaul@chromium.org>, linux-pwm@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Russell King <rmk+kernel@arm.linux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream <srv_heupstream@mediatek.com>, lk
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20190624145251.4849-2-opensource@vdorst.com>
+Content-Language: en-US
+Sender: netdev-owner@vger.kernel.org
+To: =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>, sean.wang@mediatek.com, f.fainelli@gmail.com, linux@armlinux.org.uk, davem@davemloft.net, matthias.bgg@gmail.com, andrew@lunn.ch, vivien.didelot@gmail.com
+Cc: frank-w@public-files.de, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gTW9uLCBKdW4gMjQsIDIwMTkgYXQgNDowMCBQTSBKaXRhbyBTaGkgPGppdGFvLnNoaUBtZWRp
-YXRlay5jb20+IHdyb3RlOgo+Cj4gQXVvLGtkMTAxbjgwLTQ1bmEncyBjb25uZWN0b3IgaXMgc2Ft
-ZSBhcyBib2UsdHYxMDF3dW0tbmw2Lgo+IFRoZSBtb3N0IGNvZGVzIGNhbiBiZSByZXVzZS4KPiBT
-byBhdW8sa2QxMDFuODAtNDVuYSBhbmQgYm9lLHR2MTAxd3VtLW5sNiB1c2Ugb25lIGRyaXZlciBm
-aWxlLgo+IEFkZCB0aGUgZGlmZmVyZW50IHBhcnRzIGluIGRyaXZlciBkYXRhLgo+Cj4gU2lnbmVk
-LW9mZi1ieTogSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPgo+IC0tLQo+ICAuLi4v
-Z3B1L2RybS9wYW5lbC9wYW5lbC1ib2UtdHYxMDF3dW0tbmw2LmMgICAgfCA0MCArKysrKysrKysr
-KysrKysrKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCA0MCBpbnNlcnRpb25zKCspCj4KPiBkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLWJvZS10djEwMXd1bS1ubDYuYyBiL2Ry
-aXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1ib2UtdHYxMDF3dW0tbmw2LmMKPiBpbmRleCA2ZTA2
-Yzg1MDY2MjMuLmQxZWU0M2NmY2JlMiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcGFu
-ZWwvcGFuZWwtYm9lLXR2MTAxd3VtLW5sNi5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3BhbmVs
-L3BhbmVsLWJvZS10djEwMXd1bS1ubDYuYwo+IEBAIC0zNzIsNiArMzcyLDE1IEBAIHN0YXRpYyBj
-b25zdCBzdHJ1Y3QgcGFuZWxfaW5pdF9jbWQgYm9lX2luaXRfY21kW10gPSB7Cj4gICAgICAgICB7
-fSwKPiAgfTsKPgo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IHBhbmVsX2luaXRfY21kIGF1b19pbml0
-X2NtZFtdID0gewo+ICsgICAgICAgX0lOSVRfREVMQVlfQ01EKDI0KSwKPiArICAgICAgIF9JTklU
-X0RDU19DTUQoMHgxMSksCj4gKyAgICAgICBfSU5JVF9ERUxBWV9DTUQoMTIwKSwKPiArICAgICAg
-IF9JTklUX0RDU19DTUQoMHgyOSksCj4gKyAgICAgICBfSU5JVF9ERUxBWV9DTUQoMTIwKSwKPiAr
-ICAgICAgIHt9LAo+ICt9Owo+ICsKPiAgc3RhdGljIGlubGluZSBzdHJ1Y3QgYm9lX3BhbmVsICp0
-b19ib2VfcGFuZWwoc3RydWN0IGRybV9wYW5lbCAqcGFuZWwpCj4gIHsKPiAgICAgICAgIHJldHVy
-biBjb250YWluZXJfb2YocGFuZWwsIHN0cnVjdCBib2VfcGFuZWwsIGJhc2UpOwo+IEBAIC01NzIs
-NiArNTgxLDM0IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgcGFuZWxfZGVzYyBib2VfdHYxMDF3dW1f
-bmw2X2Rlc2MgPSB7Cj4gICAgICAgICAuaW5pdF9jbWRzID0gYm9lX2luaXRfY21kLAo+ICB9Owo+
-Cj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSBhdW9fZGVmYXVsdF9tb2Rl
-ID0gewo+ICsgICAgICAgLmNsb2NrID0gMTU3MDAwLAo+ICsgICAgICAgLmhkaXNwbGF5ID0gMTIw
-MCwKPiArICAgICAgIC5oc3luY19zdGFydCA9IDEyMDAgKyA4MCwKPiArICAgICAgIC5oc3luY19l
-bmQgPSAxMjAwICsgODAgKyAyNCwKPiArICAgICAgIC5odG90YWwgPSAxMjAwICsgODAgKyAyNCAr
-IDM2LAo+ICsgICAgICAgLnZkaXNwbGF5ID0gMTkyMCwKPiArICAgICAgIC52c3luY19zdGFydCA9
-IDE5MjAgKyAxNiwKPiArICAgICAgIC52c3luY19lbmQgPSAxOTIwICsgMTYgKyA0LAo+ICsgICAg
-ICAgLnZ0b3RhbCA9IDE5MjAgKyAxNiArIDQgKyAxNiwKPiArICAgICAgIC52cmVmcmVzaCA9IDYw
-LAo+ICsgICAgICAgLnR5cGUgPSBEUk1fTU9ERV9UWVBFX0RSSVZFUiB8IERSTV9NT0RFX1RZUEVf
-UFJFRkVSUkVELAo+ICt9Owo+ICsKPiArc3RhdGljIGNvbnN0IHN0cnVjdCBwYW5lbF9kZXNjIGF1
-b19rZDEwMW44MF80NW5hX2Rlc2MgPSB7Cj4gKyAgICAgICAubW9kZXMgPSAmYXVvX2RlZmF1bHRf
-bW9kZSwKPiArICAgICAgIC5icGMgPSA4LAo+ICsgICAgICAgLnNpemUgPSB7Cj4gKyAgICAgICAg
-ICAgICAgIC53aWR0aCA9IDIxNiwKPiArICAgICAgICAgICAgICAgLmhlaWdodCA9IDEzNSwKClNh
-bWUgaXNzdWUgYXMgdGhlIEJPRSBwYW5lbDoKVGhpcyBpcyB3cm9uZywgYXMgdGhpcyBpcyBhIHBv
-cnRyYWl0IHBhbmVsLCBzaG91bGQgYmU6IHdpZHRoPTEzNSwgaGVpZ2h0PTIxNi4KCj4gKyAgICAg
-ICB9LAo+ICsgICAgICAgLmxhbmVzID0gNCwKPiArICAgICAgIC5mb3JtYXQgPSBNSVBJX0RTSV9G
-TVRfUkdCODg4LAo+ICsgICAgICAgLm1vZGVfZmxhZ3MgPSBNSVBJX0RTSV9NT0RFX1ZJREVPIHwg
-TUlQSV9EU0lfTU9ERV9WSURFT19TWU5DX1BVTFNFIHwKPiArICAgICAgICAgICAgICAgICAgICAg
-TUlQSV9EU0lfTU9ERV9MUE0sCj4gKyAgICAgICAuaW5pdF9jbWRzID0gYXVvX2luaXRfY21kLAo+
-ICt9Owo+ICsKPiAgc3RhdGljIGludCBib2VfcGFuZWxfZ2V0X21vZGVzKHN0cnVjdCBkcm1fcGFu
-ZWwgKnBhbmVsKQo+ICB7Cj4gICAgICAgICBzdHJ1Y3QgYm9lX3BhbmVsICpib2UgPSB0b19ib2Vf
-cGFuZWwocGFuZWwpOwo+IEBAIC02OTUsNiArNzMyLDkgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBv
-Zl9kZXZpY2VfaWQgYm9lX29mX21hdGNoW10gPSB7Cj4gICAgICAgICB7IC5jb21wYXRpYmxlID0g
-ImJvZSx0djEwMXd1bS1ubDYiLAo+ICAgICAgICAgICAuZGF0YSA9ICZib2VfdHYxMDF3dW1fbmw2
-X2Rlc2MKPiAgICAgICAgIH0sCj4gKyAgICAgICB7IC5jb21wYXRpYmxlID0gImF1byxrZDEwMW44
-MC00NW5hIiwKPiArICAgICAgICAgLmRhdGEgPSAmYXVvX2tkMTAxbjgwXzQ1bmFfZGVzYwo+ICsg
-ICAgICAgfSwKPiAgICAgICAgIHsgLyogc2VudGluZWwgKi8gfQo+ICB9Owo+ICBNT0RVTEVfREVW
-SUNFX1RBQkxFKG9mLCBib2Vfb2ZfbWF0Y2gpOwo+IC0tCj4gMi4yMS4wCj4KPiBfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IGRyaS1kZXZlbCBtYWlsaW5n
-IGxpc3QKPiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gaHR0cHM6Ly9saXN0cy5m
-cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
-cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+
+
+On 6/24/19 9:52 AM, Ren=C3=A9 van Dorst wrote:
+> Convert mt7530 to PHYLINK API
+>
+> Signed-off-by: Ren=C3=A9 van Dorst <opensource@vdorst.com>
+> ---
+>  drivers/net/dsa/mt7530.c | 237 +++++++++++++++++++++++++++++----------
+>  drivers/net/dsa/mt7530.h |   9 ++
+>  2 files changed, 187 insertions(+), 59 deletions(-)
+>
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index 3181e95586d6..9c5e4dd00826 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -13,7 +13,7 @@
+>  #include <linux/of_mdio.h>
+>  #include <linux/of_net.h>
+>  #include <linux/of_platform.h>
+> -#include <linux/phy.h>
+> +#include <linux/phylink.h>
+>  #include <linux/regmap.h>
+>  #include <linux/regulator/consumer.h>
+>  #include <linux/reset.h>
+> @@ -633,63 +633,6 @@ mt7530_get_sset_count(struct dsa_switch *ds, int p=
+ort, int sset)
+>  	return ARRAY_SIZE(mt7530_mib);
+>  }
+> =20
+> -static void mt7530_adjust_link(struct dsa_switch *ds, int port,
+> -			       struct phy_device *phydev)
+> -{
+> -	struct mt7530_priv *priv =3D ds->priv;
+> -
+> -	if (phy_is_pseudo_fixed_link(phydev)) {
+> -		dev_dbg(priv->dev, "phy-mode for master device =3D %x\n",
+> -			phydev->interface);
+> -
+> -		/* Setup TX circuit incluing relevant PAD and driving */
+> -		mt7530_pad_clk_setup(ds, phydev->interface);
+> -
+> -		if (priv->id =3D=3D ID_MT7530) {
+> -			/* Setup RX circuit, relevant PAD and driving on the
+> -			 * host which must be placed after the setup on the
+> -			 * device side is all finished.
+> -			 */
+> -			mt7623_pad_clk_setup(ds);
+> -		}
+> -	} else {
+> -		u16 lcl_adv =3D 0, rmt_adv =3D 0;
+> -		u8 flowctrl;
+> -		u32 mcr =3D PMCR_USERP_LINK | PMCR_FORCE_MODE;
+> -
+> -		switch (phydev->speed) {
+> -		case SPEED_1000:
+> -			mcr |=3D PMCR_FORCE_SPEED_1000;
+> -			break;
+> -		case SPEED_100:
+> -			mcr |=3D PMCR_FORCE_SPEED_100;
+> -			break;
+> -		}
+> -
+> -		if (phydev->link)
+> -			mcr |=3D PMCR_FORCE_LNK;
+> -
+> -		if (phydev->duplex) {
+> -			mcr |=3D PMCR_FORCE_FDX;
+> -
+> -			if (phydev->pause)
+> -				rmt_adv =3D LPA_PAUSE_CAP;
+> -			if (phydev->asym_pause)
+> -				rmt_adv |=3D LPA_PAUSE_ASYM;
+> -
+> -			lcl_adv =3D linkmode_adv_to_lcl_adv_t(
+> -				phydev->advertising);
+> -			flowctrl =3D mii_resolve_flowctrl_fdx(lcl_adv, rmt_adv);
+> -
+> -			if (flowctrl & FLOW_CTRL_TX)
+> -				mcr |=3D PMCR_TX_FC_EN;
+> -			if (flowctrl & FLOW_CTRL_RX)
+> -				mcr |=3D PMCR_RX_FC_EN;
+> -		}
+> -		mt7530_write(priv, MT7530_PMCR_P(port), mcr);
+> -	}
+> -}
+> -
+>  static int
+>  mt7530_cpu_port_enable(struct mt7530_priv *priv,
+>  		       int port)
+> @@ -1323,6 +1266,178 @@ mt7530_setup(struct dsa_switch *ds)
+>  	return 0;
+>  }
+> =20
+> +static void mt7530_phylink_mac_config(struct dsa_switch *ds, int port,
+> +				      unsigned int mode,
+> +				      const struct phylink_link_state *state)
+> +{
+> +	struct mt7530_priv *priv =3D ds->priv;
+> +	u32 mcr =3D PMCR_IFG_XMIT(1) | PMCR_MAC_MODE | PMCR_BACKOFF_EN |
+> +		  PMCR_BACKPR_EN | PMCR_TX_EN | PMCR_RX_EN;
+> +
+> +	switch (port) {
+> +	case 0: /* Internal phy */
+> +	case 1:
+> +	case 2:
+> +	case 3:
+> +	case 4:
+> +		if (state->interface !=3D PHY_INTERFACE_MODE_GMII)
+> +			goto unsupported;
+> +		break;
+> +	/* case 5: Port 5 is not supported! */
+> +	case 6: /* 1st cpu port */
+> +		if (state->interface !=3D PHY_INTERFACE_MODE_RGMII &&
+> +		    state->interface !=3D PHY_INTERFACE_MODE_TRGMII)
+> +			goto unsupported;
+> +
+> +		/* Setup TX circuit incluing relevant PAD and driving */
+> +		mt7530_pad_clk_setup(ds, state->interface);
+> +
+> +		if (priv->id =3D=3D ID_MT7530) {
+> +			/* Setup RX circuit, relevant PAD and driving on the
+> +			 * host which must be placed after the setup on the
+> +			 * device side is all finished.
+> +			 */
+> +			mt7623_pad_clk_setup(ds);
+> +		}
+> +		break;
+> +	default:
+> +		dev_err(ds->dev, "%s: unsupported port: %i\n", __func__, port);
+> +		return;
+> +	}
+> +
+> +	if (!state->an_enabled || mode =3D=3D MLO_AN_FIXED) {
+> +		mcr |=3D PMCR_FORCE_MODE;
+> +
+> +		if (state->speed =3D=3D SPEED_1000)
+> +			mcr |=3D PMCR_FORCE_SPEED_1000;
+> +		if (state->speed =3D=3D SPEED_100)
+> +			mcr |=3D PMCR_FORCE_SPEED_100;
+
+I would suggest using the defines
+
+#define PMCR_FORCE_SPEED	0x0000000c /* or PMCR_FORCE_SPEED_MASK */
+#define PMCR_FORCE_SPEED_10	0x00000000
+#define PMCR_FORCE_SPEED_100	0x00000004
+#define PMCR_FORCE_SPEED_1000	0x00000008
+
+and a switch statement such as
+
+	switch (state->speed) {
+	case SPEED_10:
+		mcr |=3D PMCR_FORCE_SPEED_10;
+		break;
+	case SPEED_100:
+		mcr |=3D PMCR_FORCE_SPEED_100;
+		break;
+	case SPEED_1000:
+		mcr |=3D PMCR_FORCE_SPEED_1000;
+		break;
+	}
+
+This will compile the same (i.e, the mcr |=3D 0 will optimize away, etc.)=
+,
+while alleviating the need to intimately know the hardware in order to
+easily understand what the code is doing at a glance.=C2=A0 It's also bet=
+ter
+form as we're treating the two bits as a composite value, rather than
+two separate bits.
+
+
+> +		if (state->duplex =3D=3D DUPLEX_FULL)
+> +			mcr |=3D PMCR_FORCE_FDX;
+> +		if (state->link || mode =3D=3D MLO_AN_FIXED)
+> +			mcr |=3D PMCR_FORCE_LNK;
+> +		if (state->pause || phylink_test(state->advertising, Pause))
+> +			mcr |=3D PMCR_TX_FC_EN | PMCR_RX_FC_EN;
+> +		if (state->pause & MLO_PAUSE_TX)
+> +			mcr |=3D PMCR_TX_FC_EN;
+> +		if (state->pause & MLO_PAUSE_RX)
+> +			mcr |=3D PMCR_RX_FC_EN;
+> +	}
+> +
+> +	mt7530_write(priv, MT7530_PMCR_P(port), mcr);
+> +
+> +	return;
+> +
+> +unsupported:
+> +	dev_err(ds->dev, "%s: P%d: Unsupported phy_interface mode: %d (%s)\n"=
+,
+> +		__func__, port, state->interface, phy_modes(state->interface));
+> +}
+> +
+> +static void mt7530_phylink_mac_link_down(struct dsa_switch *ds, int po=
+rt,
+> +					 unsigned int mode,
+> +					 phy_interface_t interface)
+> +{
+> +	/* Do nothing */
+> +}
+> +
+> +static void mt7530_phylink_mac_link_up(struct dsa_switch *ds, int port=
+,
+> +				       unsigned int mode,
+> +				       phy_interface_t interface,
+> +				       struct phy_device *phydev)
+> +{
+> +	/* Do nothing */
+> +}
+> +
+> +static void mt7530_phylink_validate(struct dsa_switch *ds, int port,
+> +				    unsigned long *supported,
+> +				    struct phylink_link_state *state)
+> +{
+> +	__ETHTOOL_DECLARE_LINK_MODE_MASK(mask) =3D { 0, };
+> +
+> +	switch (port) {
+> +	case 0: /* Internal phy */
+> +	case 1:
+> +	case 2:
+> +	case 3:
+> +	case 4:
+> +		if (state->interface !=3D PHY_INTERFACE_MODE_NA &&
+> +		    state->interface !=3D PHY_INTERFACE_MODE_GMII)
+> +			goto unsupported;
+> +		break;
+> +	/* case 5: Port 5 not supported! */
+> +	case 6: /* 1st cpu port */
+> +		if (state->interface !=3D PHY_INTERFACE_MODE_RGMII &&
+> +		    state->interface !=3D PHY_INTERFACE_MODE_TRGMII)
+> +			goto unsupported;
+> +		break;
+> +	default:
+> +		linkmode_zero(supported);
+> +		dev_err(ds->dev, "%s: unsupported port: %i\n", __func__, port);
+> +		return;
+> +	}
+> +
+> +	phylink_set(mask, Autoneg);
+> +	phylink_set(mask, Pause);
+> +	phylink_set(mask, Asym_Pause);
+> +	phylink_set(mask, MII);
+> +
+> +	phylink_set(mask, 10baseT_Half);
+> +	phylink_set(mask, 10baseT_Full);
+> +	phylink_set(mask, 100baseT_Half);
+> +	phylink_set(mask, 100baseT_Full);
+> +	phylink_set(mask, 1000baseT_Full);
+> +	phylink_set(mask, 1000baseT_Half);
+> +
+> +	linkmode_and(supported, supported, mask);
+> +	linkmode_and(state->advertising, state->advertising, mask);
+> +	return;
+> +
+> +unsupported:
+> +	linkmode_zero(supported);
+> +	dev_err(ds->dev, "%s: unsupported interface mode: [0x%x] %s\n",
+> +		__func__, state->interface, phy_modes(state->interface));
+> +}
+> +
+> +static int
+> +mt7530_phylink_mac_link_state(struct dsa_switch *ds, int port,
+> +			      struct phylink_link_state *state)
+> +{
+> +	struct mt7530_priv *priv =3D ds->priv;
+> +	u32 pmsr;
+> +
+> +	if (port < 0 || port >=3D MT7530_NUM_PORTS)
+> +		return -EINVAL;
+> +
+> +	pmsr =3D mt7530_read(priv, MT7530_PMSR_P(port));
+> +
+> +	state->link =3D (pmsr & PMSR_LINK);
+> +	state->an_complete =3D state->link;
+> +	state->duplex =3D (pmsr & PMSR_DPX) >> 1;
+> +
+> +	switch (pmsr & (PMSR_SPEED_1000 | PMSR_SPEED_100)) {
+> +	case 0:
+> +		state->speed =3D SPEED_10;
+> +		break;
+> +	case PMSR_SPEED_100:
+> +		state->speed =3D SPEED_100;
+> +		break;
+> +	case PMSR_SPEED_1000:
+> +		state->speed =3D SPEED_1000;
+> +		break;
+> +	default:
+> +		state->speed =3D SPEED_UNKNOWN;
+> +		break;
+> +	}
+> +
+
+Same as above: add PMSR_SPEED_10, and and with PMSR_SPEED (or
+PMSR_SPEED_MASK if you prefer).
+
+> +	state->pause =3D 0;
+> +	if (pmsr & PMSR_RX_FC)
+> +		state->pause |=3D MLO_PAUSE_RX;
+> +	if (pmsr & PMSR_TX_FC)
+> +		state->pause |=3D MLO_PAUSE_TX;
+> +
+> +	return 1;
+> +}
+> +
+>  static const struct dsa_switch_ops mt7530_switch_ops =3D {
+>  	.get_tag_protocol	=3D mtk_get_tag_protocol,
+>  	.setup			=3D mt7530_setup,
+> @@ -1331,7 +1446,6 @@ static const struct dsa_switch_ops mt7530_switch_=
+ops =3D {
+>  	.phy_write		=3D mt7530_phy_write,
+>  	.get_ethtool_stats	=3D mt7530_get_ethtool_stats,
+>  	.get_sset_count		=3D mt7530_get_sset_count,
+> -	.adjust_link		=3D mt7530_adjust_link,
+>  	.port_enable		=3D mt7530_port_enable,
+>  	.port_disable		=3D mt7530_port_disable,
+>  	.port_stp_state_set	=3D mt7530_stp_state_set,
+> @@ -1344,6 +1458,11 @@ static const struct dsa_switch_ops mt7530_switch=
+_ops =3D {
+>  	.port_vlan_prepare	=3D mt7530_port_vlan_prepare,
+>  	.port_vlan_add		=3D mt7530_port_vlan_add,
+>  	.port_vlan_del		=3D mt7530_port_vlan_del,
+> +	.phylink_validate	=3D mt7530_phylink_validate,
+> +	.phylink_mac_link_state =3D mt7530_phylink_mac_link_state,
+> +	.phylink_mac_config	=3D mt7530_phylink_mac_config,
+> +	.phylink_mac_link_down	=3D mt7530_phylink_mac_link_down,
+> +	.phylink_mac_link_up	=3D mt7530_phylink_mac_link_up,
+>  };
+> =20
+>  static const struct of_device_id mt7530_of_match[] =3D {
+> diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+> index bfac90f48102..41d9a132ac70 100644
+> --- a/drivers/net/dsa/mt7530.h
+> +++ b/drivers/net/dsa/mt7530.h
+> @@ -198,6 +198,7 @@ enum mt7530_vlan_port_attr {
+>  #define  PMCR_FORCE_SPEED_100		BIT(2)
+>  #define  PMCR_FORCE_FDX			BIT(1)
+>  #define  PMCR_FORCE_LNK			BIT(0)
+> +#define  PMCR_FORCE_LNK_DOWN		PMCR_FORCE_MODE
+>  #define  PMCR_COMMON_LINK		(PMCR_IFG_XMIT(1) | PMCR_MAC_MODE | \
+>  					 PMCR_BACKOFF_EN | PMCR_BACKPR_EN | \
+>  					 PMCR_TX_EN | PMCR_RX_EN | \
+> @@ -218,6 +219,14 @@ enum mt7530_vlan_port_attr {
+>  					 PMCR_TX_FC_EN | PMCR_RX_FC_EN)
+> =20
+>  #define MT7530_PMSR_P(x)		(0x3008 + (x) * 0x100)
+> +#define  PMSR_EEE1G			BIT(7)
+> +#define  PMSR_EEE100M			BIT(6)
+> +#define  PMSR_RX_FC			BIT(5)
+> +#define  PMSR_TX_FC			BIT(4)
+> +#define  PMSR_SPEED_1000		BIT(3)
+> +#define  PMSR_SPEED_100			BIT(2)
+> +#define  PMSR_DPX			BIT(1)
+> +#define  PMSR_LINK			BIT(0)
+> =20
+>  /* Register for MIB */
+>  #define MT7530_PORT_MIB_COUNTER(x)	(0x4000 + (x) * 0x100)
+
+Cheers,
+Daniel
