@@ -1,375 +1,162 @@
-From: Daniel Santos <daniel.santos@pobox.com>
-Subject: Re: [PATCH RFC net-next 1/5] net: dsa: mt7530: Convert to PHYLINK API
-Date: Mon, 24 Jun 2019 19:58:57 -0500
-Message-ID: <13c67cb7-b33e-f2b1-9d1e-d2882e0ff076@pobox.com>
-References: <20190624145251.4849-1-opensource@vdorst.com>
- <20190624145251.4849-2-opensource@vdorst.com>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [RFC PATCH V1 6/6] platform: mtk-isp: Add Mediatek FD driver
+Date: Tue, 25 Jun 2019 12:39:40 +0900
+Message-ID: <CAAFQd5BWbtPtNG29ULF==jCGOes=ob-NFcnOX8_DH=GhZRZGrA@mail.gmail.com>
+References: <20190423104505.38778-1-Jerry-Ch.chen@mediatek.com>
+ <20190423104505.38778-7-Jerry-Ch.chen@mediatek.com>
+ <20190606104347.GA107267@chromium.org>
+ <1561386122.15267.223.camel@mtksdccf07>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20190624145251.4849-2-opensource@vdorst.com>
-Content-Language: en-US
-Sender: netdev-owner@vger.kernel.org
-To: =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>, sean.wang@mediatek.com, f.fainelli@gmail.com, linux@armlinux.org.uk, davem@davemloft.net, matthias.bgg@gmail.com, andrew@lunn.ch, vivien.didelot@gmail.com
-Cc: frank-w@public-files.de, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1561386122.15267.223.camel@mtksdccf07>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Jerry-ch Chen <Jerry-ch.Chen@mediatek.com>
+Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, =?UTF-8?B?U2VhbiBDaGVuZyAo6YSt5piH5byYKQ==?= <Sean.Cheng@mediatek.com>, =?UTF-8?B?RnJlZGVyaWMgQ2hlbiAo6Zmz5L+K5YWDKQ==?= <Frederic.Chen@mediatek.com>, =?UTF-8?B?UnlubiBXdSAo5ZCz6IKy5oGpKQ==?= <Rynn.Wu@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>, "hans.verkuil@cisco.com" <hans.verkuil@cisco.com>, =?UTF-8?B?SG9sbWVzIENoaW91ICjpgrHmjLop?= <holmes.chiou@mediatek.com>, "suleiman@chromium.org" <suleiman@chromium.org>, "shik@chromium.org" <shik@chromium.org>, =?UTF-8?B?SnVuZ28gTGluICjmnpfmmI7kv4op?= <jungo.lin@mediatek.com>, =?UTF-8?B?U2ogSHVhbmcgKOm7g+S/oeeSiyk=?= <sj.huang@mediatek.com>, "yuzhao@chromium.org" <yuzhao@chromium.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "zwisler@chromium.org" <zwisler@chromium.org>, po-yang.huang@mediatek.com, matthias.bgg@gmail.co
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Jerry,
 
-
-On 6/24/19 9:52 AM, Ren=C3=A9 van Dorst wrote:
-> Convert mt7530 to PHYLINK API
+On Mon, Jun 24, 2019 at 11:22 PM Jerry-ch Chen
+<Jerry-ch.Chen@mediatek.com> wrote:
 >
-> Signed-off-by: Ren=C3=A9 van Dorst <opensource@vdorst.com>
-> ---
->  drivers/net/dsa/mt7530.c | 237 +++++++++++++++++++++++++++++----------
->  drivers/net/dsa/mt7530.h |   9 ++
->  2 files changed, 187 insertions(+), 59 deletions(-)
+> Hi Tomasz,
 >
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index 3181e95586d6..9c5e4dd00826 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -13,7 +13,7 @@
->  #include <linux/of_mdio.h>
->  #include <linux/of_net.h>
->  #include <linux/of_platform.h>
-> -#include <linux/phy.h>
-> +#include <linux/phylink.h>
->  #include <linux/regmap.h>
->  #include <linux/regulator/consumer.h>
->  #include <linux/reset.h>
-> @@ -633,63 +633,6 @@ mt7530_get_sset_count(struct dsa_switch *ds, int p=
-ort, int sset)
->  	return ARRAY_SIZE(mt7530_mib);
->  }
-> =20
-> -static void mt7530_adjust_link(struct dsa_switch *ds, int port,
-> -			       struct phy_device *phydev)
-> -{
-> -	struct mt7530_priv *priv =3D ds->priv;
-> -
-> -	if (phy_is_pseudo_fixed_link(phydev)) {
-> -		dev_dbg(priv->dev, "phy-mode for master device =3D %x\n",
-> -			phydev->interface);
-> -
-> -		/* Setup TX circuit incluing relevant PAD and driving */
-> -		mt7530_pad_clk_setup(ds, phydev->interface);
-> -
-> -		if (priv->id =3D=3D ID_MT7530) {
-> -			/* Setup RX circuit, relevant PAD and driving on the
-> -			 * host which must be placed after the setup on the
-> -			 * device side is all finished.
-> -			 */
-> -			mt7623_pad_clk_setup(ds);
-> -		}
-> -	} else {
-> -		u16 lcl_adv =3D 0, rmt_adv =3D 0;
-> -		u8 flowctrl;
-> -		u32 mcr =3D PMCR_USERP_LINK | PMCR_FORCE_MODE;
-> -
-> -		switch (phydev->speed) {
-> -		case SPEED_1000:
-> -			mcr |=3D PMCR_FORCE_SPEED_1000;
-> -			break;
-> -		case SPEED_100:
-> -			mcr |=3D PMCR_FORCE_SPEED_100;
-> -			break;
-> -		}
-> -
-> -		if (phydev->link)
-> -			mcr |=3D PMCR_FORCE_LNK;
-> -
-> -		if (phydev->duplex) {
-> -			mcr |=3D PMCR_FORCE_FDX;
-> -
-> -			if (phydev->pause)
-> -				rmt_adv =3D LPA_PAUSE_CAP;
-> -			if (phydev->asym_pause)
-> -				rmt_adv |=3D LPA_PAUSE_ASYM;
-> -
-> -			lcl_adv =3D linkmode_adv_to_lcl_adv_t(
-> -				phydev->advertising);
-> -			flowctrl =3D mii_resolve_flowctrl_fdx(lcl_adv, rmt_adv);
-> -
-> -			if (flowctrl & FLOW_CTRL_TX)
-> -				mcr |=3D PMCR_TX_FC_EN;
-> -			if (flowctrl & FLOW_CTRL_RX)
-> -				mcr |=3D PMCR_RX_FC_EN;
-> -		}
-> -		mt7530_write(priv, MT7530_PMCR_P(port), mcr);
-> -	}
-> -}
-> -
->  static int
->  mt7530_cpu_port_enable(struct mt7530_priv *priv,
->  		       int port)
-> @@ -1323,6 +1266,178 @@ mt7530_setup(struct dsa_switch *ds)
->  	return 0;
->  }
-> =20
-> +static void mt7530_phylink_mac_config(struct dsa_switch *ds, int port,
-> +				      unsigned int mode,
-> +				      const struct phylink_link_state *state)
-> +{
-> +	struct mt7530_priv *priv =3D ds->priv;
-> +	u32 mcr =3D PMCR_IFG_XMIT(1) | PMCR_MAC_MODE | PMCR_BACKOFF_EN |
-> +		  PMCR_BACKPR_EN | PMCR_TX_EN | PMCR_RX_EN;
-> +
-> +	switch (port) {
-> +	case 0: /* Internal phy */
-> +	case 1:
-> +	case 2:
-> +	case 3:
-> +	case 4:
-> +		if (state->interface !=3D PHY_INTERFACE_MODE_GMII)
-> +			goto unsupported;
-> +		break;
-> +	/* case 5: Port 5 is not supported! */
-> +	case 6: /* 1st cpu port */
-> +		if (state->interface !=3D PHY_INTERFACE_MODE_RGMII &&
-> +		    state->interface !=3D PHY_INTERFACE_MODE_TRGMII)
-> +			goto unsupported;
-> +
-> +		/* Setup TX circuit incluing relevant PAD and driving */
-> +		mt7530_pad_clk_setup(ds, state->interface);
-> +
-> +		if (priv->id =3D=3D ID_MT7530) {
-> +			/* Setup RX circuit, relevant PAD and driving on the
-> +			 * host which must be placed after the setup on the
-> +			 * device side is all finished.
-> +			 */
-> +			mt7623_pad_clk_setup(ds);
-> +		}
-> +		break;
-> +	default:
-> +		dev_err(ds->dev, "%s: unsupported port: %i\n", __func__, port);
-> +		return;
-> +	}
-> +
-> +	if (!state->an_enabled || mode =3D=3D MLO_AN_FIXED) {
-> +		mcr |=3D PMCR_FORCE_MODE;
-> +
-> +		if (state->speed =3D=3D SPEED_1000)
-> +			mcr |=3D PMCR_FORCE_SPEED_1000;
-> +		if (state->speed =3D=3D SPEED_100)
-> +			mcr |=3D PMCR_FORCE_SPEED_100;
+> On Thu, 2019-06-06 at 18:43 +0800, Tomasz Figa wrote:
+> > Hi Jerry,
+> >
+> > On Tue, Apr 23, 2019 at 06:45:05PM +0800, Jerry-ch Chen wrote:
+> > > From: Jerry-ch Chen <jerry-ch.chen@mediatek.com>
+> > >
+> > > This patch adds the driver of Face Detection (FD) unit in
+> > > Mediatek camera system, providing face detection function.
+> > >
+> > > The mtk-isp directory will contain drivers for multiple IP
+> > > blocks found in Mediatek ISP system. It will include ISP Pass 1
+> > > driver (CAM), sensor interface driver, DIP driver and face
+> > > detection driver.
+> > >
+> >
+> > Thanks for the patch.
+> >
+> > First of all a general comment about the design:
+> >
+> > My understanding is that this is a relatively straightforward
+> > memory-to-memory device that reads a video frame and detects faces on it.
+> > Such devices should be implemented as normal V4L2 memory-to-memory devices,
+> > with contexts (instances; pipes) represented by v4l2_fh.
+> >
+> > Also, please replace the META_OUTPUT queue with proper V4L2 controls, as I
+> > don't think there is anything that we couldn't model using controls here.
+> >
+> > The end result should be a V4L2 m2m driver (using the m2m helpers), where
+> > you get a new context (instance; pipe) whenever you open the video node,
+> > similar to codecs, video processors (like MTK MDP) and so on.
+> >
+> > Also please see my comments inline.
+> >
+> I appreciate your comments,
+> sorry for sending the previous two unfinished mail...
+>
+> FD driver will be implemented as a normal V4L2 m2m driver which has an
+> IMAGE_OUTPUT queue and a META_CAPTURE queue(face result).
+>
+> We will use the following properties.
+> /* Is a video mem-to-mem device that supports multiplanar formats */
+> #define V4L2_CAP_VIDEO_M2M_MPLANE    0x00004000
+>
+> The original META_OUTPUT queue contains the following structure will be
+> replaced by V4L2 controls,
+>
+> /* FD_SCALE_NUM is 15. */
+> struct fd_user_param {
+>         uint8_t rip_feature;
+>         uint8_t gfd_skip;
+>         uint8_t dynamic_change_model;
+>         uint8_t scale_num_from_user;
+>         uint16_t source_img_width[FD_SCALE_NUM];
+>         uint16_t source_img_height[FD_SCALE_NUM];
+> } __packed; //share with co-processor
+>
+> However, we found that testM2MFormats() in the V4L2 compliance test will
+> assume the capture queue has the same format as output queue has,
+> therefore, FD driver's capture queue wouldn't be able to use META format
+> or the v4l2 test will be failed.
+>
+> reference: v4l2-compliance/v4l2-test-formats.cpp
+> // m2m devices are special in that the format is often per-filehandle.
+> // But colorspace information should be passed from output to capture,
+> // so test that.
+>         if (node->is_m2m)
+>                 return testM2MFormats(node);
+>
+> May we ask for your suggestions about this part?
+>
 
-I would suggest using the defines
+Ah, I didn't mean mem-to-mem device specifically as per
+V4L2_CAP_VIDEO_M2M_MPLANE, because that one implies the regular
+VIDEO_OUTPUT -> VIDEO_CAPTURE processing indeed. We should expose just
+VIDEO_OUTPUT_MPLANE and META_CAPTURE in the capabilities, but all the
+rest would still behave like a mem-to-mem device, i.e. v4l2_fh for
+contexts/instances, v4l2_m2m helpers and so on.
 
-#define PMCR_FORCE_SPEED	0x0000000c /* or PMCR_FORCE_SPEED_MASK */
-#define PMCR_FORCE_SPEED_10	0x00000000
-#define PMCR_FORCE_SPEED_100	0x00000004
-#define PMCR_FORCE_SPEED_1000	0x00000008
+[snip]
 
-and a switch statement such as
+> > > +
+> > > +   return 0;
+> > > +}
+> > > +
+> > > +static int mtk_fd_suspend(struct device *dev)
+> > > +{
+> > > +   struct mtk_fd_dev *fd_dev;
+> > > +   int ret;
+> > > +
+> > > +   if (pm_runtime_suspended(dev))
+> > > +           return 0;
+> > > +
+> > > +   fd_dev = dev_get_drvdata(dev);
+> > > +
+> > > +   if (atomic_read(&fd_dev->fd_hw.fd_user_cnt) > 0) {
+> > > +           ret = pm_runtime_put_sync(fd_dev->fd_hw.larb_dev);
+> > > +           clk_disable_unprepare(fd_dev->fd_hw.fd_clk);
+> > > +           return ret;
+> > > +   }
+> >
+> > This isn't going to work, because the hardware may be still processing a
+> > frame at this point. You need a way to ensure that the hardware goes idle
+> > here first and then in resume, you need to make the hardware continue when
+> > it left before suspend.
+> >
+> For this part, I would like to do as following:
+> when suspend, it should set the driver power state as idle or suspended
+> to stop further enqueue jobs, should be judged in mtk_fd_hw_job_exec()
+> or somewhere, then wait for the unfinished job return or timeout, and
+> finally close the clock.
+> When resume, we set the driver power state as resumed and let the new
+> jobs to be enqueued.
+>
+> Or another way is to create a wait queue or work queue to store the jobs
+> from user. When suspend, we change the driver status to restrict the new
+> jobs joining to work queue and close the clock. When resume, driver
+> continue execute the jobs from the work queue.
+>
 
-	switch (state->speed) {
-	case SPEED_10:
-		mcr |=3D PMCR_FORCE_SPEED_10;
-		break;
-	case SPEED_100:
-		mcr |=3D PMCR_FORCE_SPEED_100;
-		break;
-	case SPEED_1000:
-		mcr |=3D PMCR_FORCE_SPEED_1000;
-		break;
-	}
+I wouldn't introduce a workqueue only for handling suspend/resume. If
+we end up in a need to use a workqueue for some other purposes too,
+then a freezable workqueue could work for blocking further requests
+during suspend indeed. If we don't need a workqueue for anything else,
+then a simple boolean flag set and wait for last job to finish in
+suspend and flag reset and call to schedule a next job in resume
+should be good enough.
 
-This will compile the same (i.e, the mcr |=3D 0 will optimize away, etc.)=
-,
-while alleviating the need to intimately know the hardware in order to
-easily understand what the code is doing at a glance.=C2=A0 It's also bet=
-ter
-form as we're treating the two bits as a composite value, rather than
-two separate bits.
-
-
-> +		if (state->duplex =3D=3D DUPLEX_FULL)
-> +			mcr |=3D PMCR_FORCE_FDX;
-> +		if (state->link || mode =3D=3D MLO_AN_FIXED)
-> +			mcr |=3D PMCR_FORCE_LNK;
-> +		if (state->pause || phylink_test(state->advertising, Pause))
-> +			mcr |=3D PMCR_TX_FC_EN | PMCR_RX_FC_EN;
-> +		if (state->pause & MLO_PAUSE_TX)
-> +			mcr |=3D PMCR_TX_FC_EN;
-> +		if (state->pause & MLO_PAUSE_RX)
-> +			mcr |=3D PMCR_RX_FC_EN;
-> +	}
-> +
-> +	mt7530_write(priv, MT7530_PMCR_P(port), mcr);
-> +
-> +	return;
-> +
-> +unsupported:
-> +	dev_err(ds->dev, "%s: P%d: Unsupported phy_interface mode: %d (%s)\n"=
-,
-> +		__func__, port, state->interface, phy_modes(state->interface));
-> +}
-> +
-> +static void mt7530_phylink_mac_link_down(struct dsa_switch *ds, int po=
-rt,
-> +					 unsigned int mode,
-> +					 phy_interface_t interface)
-> +{
-> +	/* Do nothing */
-> +}
-> +
-> +static void mt7530_phylink_mac_link_up(struct dsa_switch *ds, int port=
-,
-> +				       unsigned int mode,
-> +				       phy_interface_t interface,
-> +				       struct phy_device *phydev)
-> +{
-> +	/* Do nothing */
-> +}
-> +
-> +static void mt7530_phylink_validate(struct dsa_switch *ds, int port,
-> +				    unsigned long *supported,
-> +				    struct phylink_link_state *state)
-> +{
-> +	__ETHTOOL_DECLARE_LINK_MODE_MASK(mask) =3D { 0, };
-> +
-> +	switch (port) {
-> +	case 0: /* Internal phy */
-> +	case 1:
-> +	case 2:
-> +	case 3:
-> +	case 4:
-> +		if (state->interface !=3D PHY_INTERFACE_MODE_NA &&
-> +		    state->interface !=3D PHY_INTERFACE_MODE_GMII)
-> +			goto unsupported;
-> +		break;
-> +	/* case 5: Port 5 not supported! */
-> +	case 6: /* 1st cpu port */
-> +		if (state->interface !=3D PHY_INTERFACE_MODE_RGMII &&
-> +		    state->interface !=3D PHY_INTERFACE_MODE_TRGMII)
-> +			goto unsupported;
-> +		break;
-> +	default:
-> +		linkmode_zero(supported);
-> +		dev_err(ds->dev, "%s: unsupported port: %i\n", __func__, port);
-> +		return;
-> +	}
-> +
-> +	phylink_set(mask, Autoneg);
-> +	phylink_set(mask, Pause);
-> +	phylink_set(mask, Asym_Pause);
-> +	phylink_set(mask, MII);
-> +
-> +	phylink_set(mask, 10baseT_Half);
-> +	phylink_set(mask, 10baseT_Full);
-> +	phylink_set(mask, 100baseT_Half);
-> +	phylink_set(mask, 100baseT_Full);
-> +	phylink_set(mask, 1000baseT_Full);
-> +	phylink_set(mask, 1000baseT_Half);
-> +
-> +	linkmode_and(supported, supported, mask);
-> +	linkmode_and(state->advertising, state->advertising, mask);
-> +	return;
-> +
-> +unsupported:
-> +	linkmode_zero(supported);
-> +	dev_err(ds->dev, "%s: unsupported interface mode: [0x%x] %s\n",
-> +		__func__, state->interface, phy_modes(state->interface));
-> +}
-> +
-> +static int
-> +mt7530_phylink_mac_link_state(struct dsa_switch *ds, int port,
-> +			      struct phylink_link_state *state)
-> +{
-> +	struct mt7530_priv *priv =3D ds->priv;
-> +	u32 pmsr;
-> +
-> +	if (port < 0 || port >=3D MT7530_NUM_PORTS)
-> +		return -EINVAL;
-> +
-> +	pmsr =3D mt7530_read(priv, MT7530_PMSR_P(port));
-> +
-> +	state->link =3D (pmsr & PMSR_LINK);
-> +	state->an_complete =3D state->link;
-> +	state->duplex =3D (pmsr & PMSR_DPX) >> 1;
-> +
-> +	switch (pmsr & (PMSR_SPEED_1000 | PMSR_SPEED_100)) {
-> +	case 0:
-> +		state->speed =3D SPEED_10;
-> +		break;
-> +	case PMSR_SPEED_100:
-> +		state->speed =3D SPEED_100;
-> +		break;
-> +	case PMSR_SPEED_1000:
-> +		state->speed =3D SPEED_1000;
-> +		break;
-> +	default:
-> +		state->speed =3D SPEED_UNKNOWN;
-> +		break;
-> +	}
-> +
-
-Same as above: add PMSR_SPEED_10, and and with PMSR_SPEED (or
-PMSR_SPEED_MASK if you prefer).
-
-> +	state->pause =3D 0;
-> +	if (pmsr & PMSR_RX_FC)
-> +		state->pause |=3D MLO_PAUSE_RX;
-> +	if (pmsr & PMSR_TX_FC)
-> +		state->pause |=3D MLO_PAUSE_TX;
-> +
-> +	return 1;
-> +}
-> +
->  static const struct dsa_switch_ops mt7530_switch_ops =3D {
->  	.get_tag_protocol	=3D mtk_get_tag_protocol,
->  	.setup			=3D mt7530_setup,
-> @@ -1331,7 +1446,6 @@ static const struct dsa_switch_ops mt7530_switch_=
-ops =3D {
->  	.phy_write		=3D mt7530_phy_write,
->  	.get_ethtool_stats	=3D mt7530_get_ethtool_stats,
->  	.get_sset_count		=3D mt7530_get_sset_count,
-> -	.adjust_link		=3D mt7530_adjust_link,
->  	.port_enable		=3D mt7530_port_enable,
->  	.port_disable		=3D mt7530_port_disable,
->  	.port_stp_state_set	=3D mt7530_stp_state_set,
-> @@ -1344,6 +1458,11 @@ static const struct dsa_switch_ops mt7530_switch=
-_ops =3D {
->  	.port_vlan_prepare	=3D mt7530_port_vlan_prepare,
->  	.port_vlan_add		=3D mt7530_port_vlan_add,
->  	.port_vlan_del		=3D mt7530_port_vlan_del,
-> +	.phylink_validate	=3D mt7530_phylink_validate,
-> +	.phylink_mac_link_state =3D mt7530_phylink_mac_link_state,
-> +	.phylink_mac_config	=3D mt7530_phylink_mac_config,
-> +	.phylink_mac_link_down	=3D mt7530_phylink_mac_link_down,
-> +	.phylink_mac_link_up	=3D mt7530_phylink_mac_link_up,
->  };
-> =20
->  static const struct of_device_id mt7530_of_match[] =3D {
-> diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-> index bfac90f48102..41d9a132ac70 100644
-> --- a/drivers/net/dsa/mt7530.h
-> +++ b/drivers/net/dsa/mt7530.h
-> @@ -198,6 +198,7 @@ enum mt7530_vlan_port_attr {
->  #define  PMCR_FORCE_SPEED_100		BIT(2)
->  #define  PMCR_FORCE_FDX			BIT(1)
->  #define  PMCR_FORCE_LNK			BIT(0)
-> +#define  PMCR_FORCE_LNK_DOWN		PMCR_FORCE_MODE
->  #define  PMCR_COMMON_LINK		(PMCR_IFG_XMIT(1) | PMCR_MAC_MODE | \
->  					 PMCR_BACKOFF_EN | PMCR_BACKPR_EN | \
->  					 PMCR_TX_EN | PMCR_RX_EN | \
-> @@ -218,6 +219,14 @@ enum mt7530_vlan_port_attr {
->  					 PMCR_TX_FC_EN | PMCR_RX_FC_EN)
-> =20
->  #define MT7530_PMSR_P(x)		(0x3008 + (x) * 0x100)
-> +#define  PMSR_EEE1G			BIT(7)
-> +#define  PMSR_EEE100M			BIT(6)
-> +#define  PMSR_RX_FC			BIT(5)
-> +#define  PMSR_TX_FC			BIT(4)
-> +#define  PMSR_SPEED_1000		BIT(3)
-> +#define  PMSR_SPEED_100			BIT(2)
-> +#define  PMSR_DPX			BIT(1)
-> +#define  PMSR_LINK			BIT(0)
-> =20
->  /* Register for MIB */
->  #define MT7530_PORT_MIB_COUNTER(x)	(0x4000 + (x) * 0x100)
-
-Cheers,
-Daniel
+Best regards,
+Tomasz
