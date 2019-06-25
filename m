@@ -1,59 +1,195 @@
-From: Andreas Gruenbacher <agruenba@redhat.com>
-Subject: Re: [RFC][PATCH] wake_up_var() memory ordering
-Date: Tue, 25 Jun 2019 14:12:22 +0200
-Message-ID: <CAHc6FU6zUCdQZ1AfN2KYcPYVKc5bwvc0bD7=-KZpFXws+F9QZQ@mail.gmail.com>
-References: <20190624165012.GH3436@hirez.programming.kicks-ass.net>
- <CAHc6FU7j5iW7WQoxN_OSfvK4zxv_MxTWJpiNsqFW8TEDMX1rjw@mail.gmail.com>
- <20190625103430.GW3402@hirez.programming.kicks-ass.net>
+From: Frederic Chen <frederic.chen@mediatek.com>
+Subject: Re: [RFC PATCH V1 6/6] platform: mtk-isp: Add Mediatek DIP driver
+Date: Tue, 25 Jun 2019 20:16:18 +0800
+Message-ID: <1561464978.23799.37.camel@mtksdccf07>
+References: <20190417104511.21514-1-frederic.chen@mediatek.com>
+ <20190417104511.21514-7-frederic.chen@mediatek.com>
+ <20190509094846.GA65444@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <intel-gfx-bounces@lists.freedesktop.org>
-In-Reply-To: <20190625103430.GW3402@hirez.programming.kicks-ass.net>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
-List-Post: <mailto:intel-gfx@lists.freedesktop.org>
-List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: intel-gfx-bounces@lists.freedesktop.org
-Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
-To: Peter Zijlstra <peterz@infradead.org>
-Cc: Martin Brandenburg <martin@omnibond.com>, linux-cachefs@redhat.com, Mike Snitzer <snitzer@redhat.com>, linux-aio@kvack.org, David Airlie <airlied@linux.ie>, samba-technical <samba-technical@lists.samba.org>, Will Deacon <will.deacon@arm.com>, dri-devel@lists.freedesktop.org, David Howells <dhowells@redhat.com>, Chris Mason <clm@fb.com>, dm-devel@redhat.com, keyrings@vger.kernel.org, Ingo Molnar <mingo@redhat.com>, linux-afs@lists.infradead.org, Alasdair Kergon <agk@redhat.com>, Mike Marshall <hubcap@omnibond.com>, linux-cifs@vger.kernel.org, rds-devel@oss.oracle.com, linux-rdma@vger.kernel.org, James Morris <jmorris@namei.org>, cluster-devel <cluster-devel@redhat.com>, Antti Palosaari <crope@iki.fi>, Matthias Brugger <matthias.bgg@gmail.com>, Paul McKenney <paulmck@linux.vnet.ibm.com>, intel-gfx@lists.freedesktop.org, devel@lists.orangefs.org, "Serge E. Hallyn" <serge@ha>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190509094846.GA65444@google.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: shik@chromium.org, devicetree@vger.kernel.org, Sean.Cheng@mediatek.com, laurent.pinchart+renesas@ideasonboard.com, Rynn.Wu@mediatek.com, christie.yu@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, suleiman@chromium.org, Jerry-ch.Chen@mediatek.com, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, hans.verkuil@cisco.com, zwisler@chromium.org, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVHVlLCAyNSBKdW4gMjAxOSBhdCAxMjozNiwgUGV0ZXIgWmlqbHN0cmEgPHBldGVyekBpbmZy
-YWRlYWQub3JnPiB3cm90ZToKPiBPbiBUdWUsIEp1biAyNSwgMjAxOSBhdCAxMToxOTozNUFNICsw
-MjAwLCBBbmRyZWFzIEdydWVuYmFjaGVyIHdyb3RlOgo+ID4gPiBkaWZmIC0tZ2l0IGEvZnMvZ2Zz
-Mi9nbG9wcy5jIGIvZnMvZ2ZzMi9nbG9wcy5jCj4gPiA+IGluZGV4IGNmNGM3NjcwMDViMS4uNjY2
-NjI5ZWE1ZGE3IDEwMDY0NAo+ID4gPiAtLS0gYS9mcy9nZnMyL2dsb3BzLmMKPiA+ID4gKysrIGIv
-ZnMvZ2ZzMi9nbG9wcy5jCj4gPiA+IEBAIC0yMjcsNiArMjI3LDcgQEAgc3RhdGljIHZvaWQgZ2Zz
-Ml9jbGVhcl9nbG9wX3BlbmRpbmcoc3RydWN0IGdmczJfaW5vZGUgKmlwKQo+ID4gPiAgICAgICAg
-ICAgICAgICAgcmV0dXJuOwo+ID4gPgo+ID4gPiAgICAgICAgIGNsZWFyX2JpdF91bmxvY2soR0lG
-X0dMT1BfUEVORElORywgJmlwLT5pX2ZsYWdzKTsKPiA+ID4gKyAgICAgICBzbXBfbWJfX2FmdGVy
-X2F0b21pYygpOwo+ID4gPiAgICAgICAgIHdha2VfdXBfYml0KCZpcC0+aV9mbGFncywgR0lGX0dM
-T1BfUEVORElORyk7Cj4gPgo+ID4gVGhpcyBzaG91bGQgYmVjb21lIGNsZWFyX2FuZF93YWtlX3Vw
-X2JpdCBhcyB3ZWxsLCByaWdodD8gVGhlcmUgYXJlCj4gPiBzZXZlcmFsIG1vcmUgaW5zdGFuY2Vz
-IG9mIHRoZSBzYW1lIHBhdHRlcm4uCj4KPiBPbmx5IGlmIHdlIGRvIGFzIERhdmlkIHN1Z2dlc3Rl
-ZCBhbmQgbWFrZSBjbGVhbl9hbmRfd2FrZV91cF9iaXQoKQo+IHByb3ZpZGUgdGhlIFJFTEVBU0Ug
-YmFycmllci4KCihJdCdzIGNsZWFyX2FuZF93YWtlX3VwX2JpdCwgbm90IGNsZWFuX2FuZF93YWtl
-X3VwX2JpdC4pCgo+IFRoYXQgaXMsIGN1cnJlbnRseSBjbGVhcl9hbmRfd2FrZV91cF9iaXQoKSBp
-cwo+Cj4gICAgICAgICBjbGVhcl9iaXQoKQo+ICAgICAgICAgc21wX21iX19hZnRlcl9hdG9taWMo
-KTsKPiAgICAgICAgIHdha2VfdXBfYml0KCk7Cj4KPiBCdXQgdGhlIGFib3ZlIGlzOgo+Cj4gICAg
-ICAgICBjbGVhcl9iaXRfdW5sb2NrKCk7Cj4gICAgICAgICBzbXBfbWJfX2FmdGVyX2F0b21pYygp
-Owo+ICAgICAgICAgd2FrZV91cF9iaXQoKQo+Cj4gdGhlIGRpZmZlcmVuY2UgaXMgdGhhdCBfdW5s
-b2NrKCkgdXNlcyBSRUxFQVNFIHNlbWFudGljcywgd2hlcmUKPiBjbGVhcl9iaXQoKSBkb2VzIG5v
-dC4KPgo+IFRoZSBkaWZmZXJlbmNlIGlzIGlsbHVzdHJhdGVkIHdpdGggc29tZXRoaW5nIGxpa2U6
-Cj4KPiAgICAgICAgIGNvbmQgPSB0cnVlOwo+ICAgICAgICAgY2xlYXJfYml0KCkKPiAgICAgICAg
-IHNtcF9tYl9fYWZ0ZXJfYXRvbWljKCk7Cj4gICAgICAgICB3YWtlX3VwX2JpdCgpOwo+Cj4gSW4g
-dGhpcyBjYXNlLCBhIHJlbW90ZSBDUFUgY2FuIGZpcnN0IG9ic2VydmUgdGhlIGNsZWFyX2JpdCgp
-IGFuZCB0aGVuCj4gdGhlICdjb25kID0gdHJ1ZScgc3RvcmUuIFdoZW4gd2UgdXNlIGNsZWFyX2Jp
-dF91bmxvY2soKSB0aGlzIGlzIG5vdAo+IHBvc3NpYmxlLCBiZWNhdXNlIHRoZSBSRUxFQVNFIGJh
-cnJpZXIgZW5zdXJlcyB0aGF0IGV2ZXJ5dGhpbmcgYmVmb3JlLAo+IHN0YXlzIGJlZm9yZS4KCk5v
-dyBJJ20gY29uZnVzZWQgYmVjYXVzZSBjbGVhcl9hbmRfd2FrZV91cF9iaXQoKSBpbiBtYWlubGlu
-ZSBkb2VzIHVzZQpjbGVhcl9iaXRfdW5sb2NrKCksIHNvIGl0J3MgdGhlIGV4YWN0IG9wcG9zaXRl
-IG9mIHdoYXQgeW91IGp1c3Qgc2FpZC4KClRoYW5rcywKQW5kcmVhcwpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC1nZnggbWFpbGluZyBsaXN0Cklu
-dGVsLWdmeEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1nZng=
+Dear Tomasz,
+
+Would you comment on the following points in further? Thank you for the
+review.
+
+On Thu, 2019-05-09 at 18:48 +0900, Tomasz Figa wrote:
+> Hi Frederic,
+> 
+
+[snip]
+
+> > +int mtk_dip_pipe_job_start(struct mtk_dip_pipe *dip_pipe,
+> > +                          struct mtk_dip_pipe_job_info *pipe_job_info)
+> > +{
+> > +       struct platform_device *pdev = dip_pipe->dip_dev->pdev;
+> > +       int ret;
+> > +       int out_img_buf_idx;
+> > +       struct img_ipi_frameparam dip_param;
+> > +       struct mtk_dip_dev_buffer *dev_buf_in;
+> > +       struct mtk_dip_dev_buffer *dev_buf_out;
+> > +       struct mtk_dip_dev_buffer *dev_buf_tuning;
+> > +
+> > +       if (!pipe_job_info) {
+> > +               dev_err(&pdev->dev,
+> > +                       "pipe_job_info(%p) in start can't be NULL\n",
+> > +                       pipe_job_info);
+> > +               return -EINVAL;
+> > +       }
+> 
+> This should be impossible to happen.
+> 
+> > +
+> > +       /* We need RAW and at least MDP0 or MDP 1 buffer */
+> > +       if (!pipe_job_info->buf_map[MTK_DIP_VIDEO_NODE_ID_RAW_OUT] ||
+> > +           (!pipe_job_info->buf_map[MTK_DIP_VIDEO_NODE_ID_MDP0_CAPTURE] &&
+> > +                !pipe_job_info->buf_map[MTK_DIP_VIDEO_NODE_ID_MDP1_CAPTURE])){
+> > +               struct mtk_dip_dev_buffer **map = pipe_job_info->buf_map;
+> > +
+> > +               dev_dbg(&pdev->dev,
+> > +                       "can't trigger job: raw(%p), mdp0(%p), mdp1(%p)\n",
+> > +                       map[MTK_DIP_VIDEO_NODE_ID_RAW_OUT],
+> > +                       map[MTK_DIP_VIDEO_NODE_ID_MDP0_CAPTURE],
+> > +                       map[MTK_DIP_VIDEO_NODE_ID_MDP1_CAPTURE]);
+> > +               return -EINVAL;
+> 
+> This must be validated at the time of request_validate. We can't fail at
+> this stage anymore.
+
+After the modification about checking the required buffers in
+req_validate(), we got failed in the following testRequests()
+of V4L2 compliance test. The V4L2 compliance test case doesn't know
+which buffers of the video devices are required and expects that the
+MEDIA_REQUEST_IOC_QUEUE succeed when the request has any valid buffer.
+
+For example, when the request has MDP 0 buffer only, the DIP's
+req_validate() should return an error since it also need a buffer
+from RAW video device, but it make compliance test get failed.
+
+May I still check the required buffers in req_validate() in the next
+patch? I will add some note to explain that the compliance test failed
+item is related to the limitation?
+
+=======================================================
+int testRequests(struct node *node, bool test_streaming)
+// ......
+if (i)
+	fail_on_test(!buf.qbuf(node));
+buf.s_flags(buf.g_flags() | V4L2_BUF_FLAG_REQUEST_FD);
+buf.s_request_fd(buf_req_fds[i]);
+buf.s_field(V4L2_FIELD_ANY);
+fail_on_test(buf.qbuf(node));
+if (v4l_type_is_video(buf.g_type()) && v4l_type_is_output(buf.g_type()))
+	fail_on_test(buf.g_field() == V4L2_FIELD_ANY);
+fail_on_test(buf.querybuf(node, i));
+
+// ......
+
+// LINE 1807 in v4l2-test-buffers.cpp, we will got the  failed here.
+// Since we need one RAW and one MDP0 buffer at least.
+// v4l2-test-buffers.cpp(1807): doioctl_fd(buf_req_fds[i],
+// MEDIA_REQUEST_IOC_QUEUE, 0)
+//	test Requests: FAIL
+fail_on_test(doioctl_fd(buf_req_fds[i], MEDIA_REQUEST_IOC_QUEUE, 0));
+=======================================================
+
+> > +
+> > +static int mtk_dip_vb2_queue_setup(struct vb2_queue *vq,
+> > +                                  unsigned int *num_buffers,
+> > +                                  unsigned int *num_planes,
+> > +                                  unsigned int sizes[],
+> > +                                  struct device *alloc_devs[])
+> > +{
+> > +       struct mtk_dip_pipe *dip_pipe = vb2_get_drv_priv(vq);
+> > +       struct mtk_dip_video_device *node =
+> > +               mtk_dip_vbq_to_node(vq);
+> > +       struct device *dev = &dip_pipe->dip_dev->pdev->dev;
+> > +       struct device *buf_alloc_ctx;
+> > +
+
+[snip]
+
+> > +
+> > +       if (vq->type == V4L2_BUF_TYPE_META_CAPTURE ||
+> > +           vq->type == V4L2_BUF_TYPE_META_OUTPUT)
+> > +               size = fmt->fmt.meta.buffersize;
+> > +       else
+> > +               size = fmt->fmt.pix_mp.plane_fmt[0].sizeimage;
+> > +
+> > +       if (*num_planes) {
+> > +               if (sizes[0] < size) {
+> > +                       dev_dbg(dev, "%s:%s:%s: size error(user:%d, max:%d)\n",
+> > +                               __func__, dip_pipe->desc->name,
+> > +                               node->desc->name, sizes[0], size);
+> > +                       return -EINVAL;
+> > +               }
+> 
+> I don't think this is an error. This is for handling VIDIOC_CREATE_BUFS,
+> which can allocate for any arbitrary format.
+> 
+> Whether the size of the buffer is big enough for current format should be
+> checked in .buf_prepare callback.
+
+When executing V4L2 compliance test, we need to check this image size to
+pass the following q.create_bufs() test (LINE:709,
+v4l2-test-buffers.cpp).
+
+========================================================
+node->g_fmt(fmt, q.g_type());
+//.... 
+fmt.s_height(fmt.g_height() / 2);
+for (unsigned p = 0; p < fmt.g_num_planes(); p++)
+	fmt.s_sizeimage(fmt.g_sizeimage(p) / 2, p);
+
+// LINE 709 in v4l2-test-buffers.cpp
+// It seems that the driver needs to return EINVAL when the buffer 
+//size is smaller than the sizeimage required
+	fail_on_test(q.create_bufs(node, 1, &fmt) != EINVAL);
+========================================================
+
+The kernel document has some similar description on VIDIOC_CREATE_BUFS. 
+
+https://www.kernel.org/doc/html/latest/media/uapi/v4l/vidioc-create-bufs.html
+
+=======================================================
+Usually if the format.pix.sizeimage field is less than the minimum
+required for the given format, then an error will be returned since
+drivers will typically not allow this.
+=======================================================
+
+Should we check the image size of each plane here so that we can pass
+the test?
+
+> 
+> > +       } else {
+> > +               *num_planes = 1;
+> > +               sizes[0] = size;
+> > +       }
+> > +
+> > +       dev_dbg(dev, "%s:%s:%s: n_planes(%d), n_bufs(%d), size(%d)\n",
+> > +               __func__, dip_pipe->desc->name,
+> > +               node->desc->name, *num_planes, *num_buffers, sizes[0]);
+> > +
+> > +       return 0;
+> > +}
+> > +
+
+
+Sincerely,
+
+Frederic Chen
