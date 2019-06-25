@@ -1,82 +1,44 @@
-From: Daniel Santos <daniel.santos@pobox.com>
+From: Andrew Lunn <andrew@lunn.ch>
 Subject: Re: [PATCH RFC net-next 1/5] net: dsa: mt7530: Convert to PHYLINK API
-Date: Tue, 25 Jun 2019 13:37:30 -0500
-Message-ID: <1ad9f9a5-8f39-40bd-94bb-6b700f30c4ba@pobox.com>
+Date: Tue, 25 Jun 2019 21:02:46 +0200
+Message-ID: <20190625190246.GA27733@lunn.ch>
 References: <20190624145251.4849-1-opensource@vdorst.com>
  <20190624145251.4849-2-opensource@vdorst.com>
  <20190624153950.hdsuhrvfd77heyor@shell.armlinux.org.uk>
  <20190625113158.Horde.pCaJOVUsgyhYLd5Diz5EZKI@www.vdorst.com>
  <20190625121030.m5w7wi3rpezhfgyo@shell.armlinux.org.uk>
+ <1ad9f9a5-8f39-40bd-94bb-6b700f30c4ba@pobox.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
 Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20190625121030.m5w7wi3rpezhfgyo@shell.armlinux.org.uk>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <1ad9f9a5-8f39-40bd-94bb-6b700f30c4ba@pobox.com>
 Sender: netdev-owner@vger.kernel.org
-To: Russell King - ARM Linux admin <linux@armlinux.org.uk>, =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>
-Cc: sean.wang@mediatek.com, f.fainelli@gmail.com, davem@davemloft.net, matthias.bgg@gmail.com, andrew@lunn.ch, vivien.didelot@gmail.com, frank-w@public-files.de, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org
+To: Daniel Santos <daniel.santos@pobox.com>
+Cc: Russell King - ARM Linux admin <linux@armlinux.org.uk>, =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>, sean.wang@mediatek.com, f.fainelli@gmail.com, davem@davemloft.net, matthias.bgg@gmail.com, vivien.didelot@gmail.com, frank-w@public-files.de, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello,
+> But will there still be a mechanism to ignore link partner's advertising
+> and force these parameters?
 
-Although I'm new to the entire Ethernet / *MII subsystem and I haven't
-touched DSA yet, I've recently had to add some of this functionality to
-the older OpenWRT drivers for swconfig control over the ports.=C2=A0 Ren=C3=
-=A9, do
-you have an actual datasheet or programming guide for the mt7530?=C2=A0 I
-only have one for the mt7620.
+>From man 1 ethtool:
 
+       -a --show-pause
+              Queries the specified Ethernet device for pause parameter information.
 
-On 6/25/19 7:10 AM, Russell King - ARM Linux admin wrote:
-> mac_link_*().
->
->>>> +            if (state->pause || phylink_test(state->advertising, Pa=
-use))
->>>> +                    mcr |=3D PMCR_TX_FC_EN | PMCR_RX_FC_EN;
->>>> +            if (state->pause & MLO_PAUSE_TX)
->>>> +                    mcr |=3D PMCR_TX_FC_EN;
->>>> +            if (state->pause & MLO_PAUSE_RX)
->>>> +                    mcr |=3D PMCR_RX_FC_EN;
->>> This is clearly wrong - if any bit in state->pause is set, then we
->>> end up with both PMCR_TX_FC_EN | PMCR_RX_FC_EN set.  If we have Pause
->>> Pause set in the advertising mask, then both are set.  This doesn't
->>> seem right - are these bits setting the advertisement, or are they
->>> telling the MAC to use flow control?
->> Last one, tell the MAC to use flow control.
-> So the first if() statement is incorrect, and should be removed
-> entirely.  You only want to enable the MAC to use flow control as a
-> result of the negotiation results.
+       -A --pause
+              Changes the pause parameters of the specified Ethernet device.
 
-Ren=C3=A9,
-iiuc, this is what's documented in table 28B-3 of the 802.3 spec on page
-598.=C2=A0 pdf of section 2 here:
-http://www.ismlab.usf.edu/dcom/Ch3_802.3-2005_section2.pdf
+           autoneg on|off
+                  Specifies whether pause autonegotiation should be enabled.
 
->> On the current driver both bits are set in a forced-link situation.
->>
->> If we always forces the MAC mode I think I always set these bits and d=
-on't
->> anything with the Pause modes? Is that the right way to do it?
-> So what happens if your link partner (e.g. switch) does not support
-> flow control?  What if your link partner floods such frames to all
-> ports?  You end up transmitting flow control frames, which could be
-> sent to all stations on the network... seems not a good idea.
->
-> Implementing stuff properly and not taking short-cuts is always a
-> good idea for inter-operability.
+           rx on|off
+                  Specifies whether RX pause should be enabled.
 
-But will there still be a mechanism to ignore link partner's advertising
-and force these parameters?=C2=A0 I've run into what appears to be quirks=
- on
-two separate NICs or their drivers, a tp-link tg-3468 (r8169) and an
-Aquantia AQC107 802.3bz (atlantic) where these link partners aren't
-auto-negotiating correctly after I switch the mt7530 out of
-auto-negotiation mode.=C2=A0 Of course, it could be a mistake I've made (=
-and
-should thus be discussed elsewhere), but iirc, I had to force enable
-flow control and then also disable auto-negotiation on the link partner
-and force the mode I wanted.
+           tx on|off
+                  Specifies whether TX pause should be enabled.
 
-Cheers,
-Daniel
+You need to check the driver to see if it actually implements this
+ethtool call, but that is how it should be configured.
+
+	Andrew
