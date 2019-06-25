@@ -1,72 +1,436 @@
-From: Peter Zijlstra <peterz-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
-Subject: Re: [RFC][PATCH] wake_up_var() memory ordering
-Date: Tue, 25 Jun 2019 12:34:30 +0200
-Message-ID: <20190625103430.GW3402@hirez.programming.kicks-ass.net>
-References: <20190624165012.GH3436@hirez.programming.kicks-ass.net>
- <CAHc6FU7j5iW7WQoxN_OSfvK4zxv_MxTWJpiNsqFW8TEDMX1rjw@mail.gmail.com>
+From: =?utf-8?b?UmVuw6k=?= van Dorst <opensource@vdorst.com>
+Subject: Re: [PATCH RFC net-next 1/5] net: dsa: mt7530: Convert to PHYLINK
+ API
+Date: Tue, 25 Jun 2019 11:31:58 +0000
+Message-ID: <20190625113158.Horde.pCaJOVUsgyhYLd5Diz5EZKI@www.vdorst.com>
+References: <20190624145251.4849-1-opensource@vdorst.com>
+ <20190624145251.4849-2-opensource@vdorst.com>
+ <20190624153950.hdsuhrvfd77heyor@shell.armlinux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed; DelSp=Yes
+Content-Transfer-Encoding: 8bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20190624153950.hdsuhrvfd77heyor@shell.armlinux.org.uk>
 Content-Disposition: inline
-In-Reply-To: <CAHc6FU7j5iW7WQoxN_OSfvK4zxv_MxTWJpiNsqFW8TEDMX1rjw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Andreas Gruenbacher <agruenba-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Cc: Martin Brandenburg <martin-gqc3UtWaqJ5Wk0Htik3J/w@public.gmane.org>, linux-cachefs-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, Mike Snitzer <snitzer-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-aio-Bw31MaZKKs3YtjvyW6yDsg@public.gmane.org, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, samba-technical <samba-technical-w/Ol4Ecudpl8XjKLYN78aQ@public.gmane.org>, Joonas Lahtinen <joonas.lahtinen-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, David Howells <dhowells-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Chris Mason <clm-b10kYP2dOMg@public.gmane.org>, dm-devel-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, keyrings-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ingo Molnar <mingo-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-afs-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Alasdair Kergon <agk-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Mike Marshall <hubcap-gqc3UtWaqJ5Wk0Htik3J/w@public.gmane.org>, linux-cifs-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, rds-devel-N0ozoZBvEnrZJqsBc5GL+g@public.gmane.org, linux-rdma-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, James Morris <jmorris-gx6/JNMH7DfYtjvyW6yDsg@public.gmane.org>, cluster-devel <cluster-devel-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Antti Palosaari <crope-X3B1VOXEql0@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Paul McKenney <paulmck-23VcF4HTsmIX0ybBhKVfKdBPR1lH4CV8@public.gmane.org>, intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.orgd
+Sender: netdev-owner@vger.kernel.org
+To: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+Cc: sean.wang@mediatek.com, f.fainelli@gmail.com, davem@davemloft.net, matthias.bgg@gmail.com, andrew@lunn.ch, vivien.didelot@gmail.com, frank-w@public-files.de, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Jun 25, 2019 at 11:19:35AM +0200, Andreas Gruenbacher wrote:
-> > diff --git a/fs/gfs2/glops.c b/fs/gfs2/glops.c
-> > index cf4c767005b1..666629ea5da7 100644
-> > --- a/fs/gfs2/glops.c
-> > +++ b/fs/gfs2/glops.c
-> > @@ -227,6 +227,7 @@ static void gfs2_clear_glop_pending(struct gfs2_inode *ip)
-> >                 return;
-> >
-> >         clear_bit_unlock(GIF_GLOP_PENDING, &ip->i_flags);
-> > +       smp_mb__after_atomic();
-> >         wake_up_bit(&ip->i_flags, GIF_GLOP_PENDING);
-> 
-> This should become clear_and_wake_up_bit as well, right? There are
-> several more instances of the same pattern.
+Quoting Russell King - ARM Linux admin <linux@armlinux.org.uk>:
 
-Only if we do as David suggested and make clean_and_wake_up_bit()
-provide the RELEASE barrier.
+Hi Russel,
 
-That is, currently clear_and_wake_up_bit() is
+Thanks for your review, see also my comments and questions below.
 
-	clear_bit()
-	smp_mb__after_atomic();
-	wake_up_bit();
+> Hi,
+>
+> On Mon, Jun 24, 2019 at 04:52:47PM +0200, René van Dorst wrote:
+>> Convert mt7530 to PHYLINK API
+>>
+>> Signed-off-by: René van Dorst <opensource@vdorst.com>
+>> ---
+>>  drivers/net/dsa/mt7530.c | 237 +++++++++++++++++++++++++++++----------
+>>  drivers/net/dsa/mt7530.h |   9 ++
+>>  2 files changed, 187 insertions(+), 59 deletions(-)
+>>
+>> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+>> index 3181e95586d6..9c5e4dd00826 100644
+>> --- a/drivers/net/dsa/mt7530.c
+>> +++ b/drivers/net/dsa/mt7530.c
+>> @@ -13,7 +13,7 @@
+>>  #include <linux/of_mdio.h>
+>>  #include <linux/of_net.h>
+>>  #include <linux/of_platform.h>
+>> -#include <linux/phy.h>
+>> +#include <linux/phylink.h>
+>>  #include <linux/regmap.h>
+>>  #include <linux/regulator/consumer.h>
+>>  #include <linux/reset.h>
+>> @@ -633,63 +633,6 @@ mt7530_get_sset_count(struct dsa_switch *ds,
+>> int port, int sset)
+>>      return ARRAY_SIZE(mt7530_mib);
+>>  }
+>>
+>> -static void mt7530_adjust_link(struct dsa_switch *ds, int port,
+>> -                           struct phy_device *phydev)
+>> -{
+>> -    struct mt7530_priv *priv = ds->priv;
+>> -
+>> -    if (phy_is_pseudo_fixed_link(phydev)) {
+>> -            dev_dbg(priv->dev, "phy-mode for master device = %x\n",
+>> -                    phydev->interface);
+>> -
+>> -            /* Setup TX circuit incluing relevant PAD and driving */
+>> -            mt7530_pad_clk_setup(ds, phydev->interface);
+>> -
+>> -            if (priv->id == ID_MT7530) {
+>> -                    /* Setup RX circuit, relevant PAD and driving on the
+>> -                     * host which must be placed after the setup on the
+>> -                     * device side is all finished.
+>> -                     */
+>> -                    mt7623_pad_clk_setup(ds);
+>> -            }
+>> -    } else {
+>> -            u16 lcl_adv = 0, rmt_adv = 0;
+>> -            u8 flowctrl;
+>> -            u32 mcr = PMCR_USERP_LINK | PMCR_FORCE_MODE;
+>> -
+>> -            switch (phydev->speed) {
+>> -            case SPEED_1000:
+>> -                    mcr |= PMCR_FORCE_SPEED_1000;
+>> -                    break;
+>> -            case SPEED_100:
+>> -                    mcr |= PMCR_FORCE_SPEED_100;
+>> -                    break;
+>> -            }
+>> -
+>> -            if (phydev->link)
+>> -                    mcr |= PMCR_FORCE_LNK;
+>> -
+>> -            if (phydev->duplex) {
+>> -                    mcr |= PMCR_FORCE_FDX;
+>> -
+>> -                    if (phydev->pause)
+>> -                            rmt_adv = LPA_PAUSE_CAP;
+>> -                    if (phydev->asym_pause)
+>> -                            rmt_adv |= LPA_PAUSE_ASYM;
+>> -
+>> -                    lcl_adv = linkmode_adv_to_lcl_adv_t(
+>> -                            phydev->advertising);
+>> -                    flowctrl = mii_resolve_flowctrl_fdx(lcl_adv, rmt_adv);
+>> -
+>> -                    if (flowctrl & FLOW_CTRL_TX)
+>> -                            mcr |= PMCR_TX_FC_EN;
+>> -                    if (flowctrl & FLOW_CTRL_RX)
+>> -                            mcr |= PMCR_RX_FC_EN;
+>> -            }
+>> -            mt7530_write(priv, MT7530_PMCR_P(port), mcr);
+>> -    }
+>> -}
+>> -
+>>  static int
+>>  mt7530_cpu_port_enable(struct mt7530_priv *priv,
+>>                     int port)
+>> @@ -1323,6 +1266,178 @@ mt7530_setup(struct dsa_switch *ds)
+>>      return 0;
+>>  }
+>>
+>> +static void mt7530_phylink_mac_config(struct dsa_switch *ds, int port,
+>> +                                  unsigned int mode,
+>> +                                  const struct phylink_link_state *state)
+>> +{
+>> +    struct mt7530_priv *priv = ds->priv;
+>> +    u32 mcr = PMCR_IFG_XMIT(1) | PMCR_MAC_MODE | PMCR_BACKOFF_EN |
+>> +              PMCR_BACKPR_EN | PMCR_TX_EN | PMCR_RX_EN;
+>> +
+>> +    switch (port) {
+>> +    case 0: /* Internal phy */
+>> +    case 1:
+>> +    case 2:
+>> +    case 3:
+>> +    case 4:
+>> +            if (state->interface != PHY_INTERFACE_MODE_GMII)
+>> +                    goto unsupported;
+>> +            break;
+>> +    /* case 5: Port 5 is not supported! */
+>> +    case 6: /* 1st cpu port */
+>> +            if (state->interface != PHY_INTERFACE_MODE_RGMII &&
+>> +                state->interface != PHY_INTERFACE_MODE_TRGMII)
+>> +                    goto unsupported;
+>> +
+>> +            /* Setup TX circuit incluing relevant PAD and driving */
+>> +            mt7530_pad_clk_setup(ds, state->interface);
+>> +
+>> +            if (priv->id == ID_MT7530) {
+>> +                    /* Setup RX circuit, relevant PAD and driving on the
+>> +                     * host which must be placed after the setup on the
+>> +                     * device side is all finished.
+>> +                     */
+>> +                    mt7623_pad_clk_setup(ds);
+>> +            }
+>> +            break;
+>> +    default:
+>> +            dev_err(ds->dev, "%s: unsupported port: %i\n", __func__, port);
+>> +            return;
+>> +    }
+>> +
+>> +    if (!state->an_enabled || mode == MLO_AN_FIXED) {
+>> +            mcr |= PMCR_FORCE_MODE;
+>> +
+>> +            if (state->speed == SPEED_1000)
+>> +                    mcr |= PMCR_FORCE_SPEED_1000;
+>> +            if (state->speed == SPEED_100)
+>> +                    mcr |= PMCR_FORCE_SPEED_100;
+>> +            if (state->duplex == DUPLEX_FULL)
+>> +                    mcr |= PMCR_FORCE_FDX;
+>> +            if (state->link || mode == MLO_AN_FIXED)
+>> +                    mcr |= PMCR_FORCE_LNK;
+>
+> This should be removed - state->link is not for use in mac_config.
+> Even in fixed mode, the link can be brought up/down by means of a
+> gpio, and this should be dealt with via the mac_link_* functions.
 
-But the above is:
+Maybe I understand it wrong, but is it the intention that in
+phylink_mac_config with modes MLO_AN_FIXED and MLO_AN_PHY the MAC is always
+forces into a certain speed/mode/interface. So it never auto-negotiate because
+phylink select the best configuration for you?
 
-	clear_bit_unlock();
-	smp_mb__after_atomic();
-	wake_up_bit()
+Also the PMCR_FORCE_LNK is only set in phylink_link_up() or can I do it here
+and do nothing phylink_link_up()?
 
-the difference is that _unlock() uses RELEASE semantics, where
-clear_bit() does not.
 
-The difference is illustrated with something like:
+Other question:
+Where does the MAC enable/disable TX and RX fits best? port_{enable,disable}?
+Or only mac_config() and port_disable?
 
-	cond = true;
-	clear_bit()
-	smp_mb__after_atomic();
-	wake_up_bit();
+>
+>> +            if (state->pause || phylink_test(state->advertising, Pause))
+>> +                    mcr |= PMCR_TX_FC_EN | PMCR_RX_FC_EN;
+>> +            if (state->pause & MLO_PAUSE_TX)
+>> +                    mcr |= PMCR_TX_FC_EN;
+>> +            if (state->pause & MLO_PAUSE_RX)
+>> +                    mcr |= PMCR_RX_FC_EN;
+>
+> This is clearly wrong - if any bit in state->pause is set, then we
+> end up with both PMCR_TX_FC_EN | PMCR_RX_FC_EN set.  If we have Pause
+> Pause set in the advertising mask, then both are set.  This doesn't
+> seem right - are these bits setting the advertisement, or are they
+> telling the MAC to use flow control?
 
-In this case, a remote CPU can first observe the clear_bit() and then
-the 'cond = true' store. When we use clear_bit_unlock() this is not
-possible, because the RELEASE barrier ensures that everything before,
-stays before.
+Last one, tell the MAC to use flow control.
 
-> >  }
-> >
+Qoute of the datasheet:
+If you want to disable TX and RX flow control disable bit 4 and 5
+
+MAC Control Register:
+BIT(4): Force TX FC:
+0: Disabled
+1: Let the MAC transmit a pause frame when operating in full-duplex
+    mode with low internal free memory page count.
+BIT(5): Force RX FC:
+0: Disabled
+1: Let the MA accept a pause frame when operating in full-duplex
+    mode.
+
+
+On the current driver both bits are set in a forced-link situation.
+
+If we always forces the MAC mode I think I always set these bits and don't
+anything with the Pause modes? Is that the right way to do it?
+
+>
+>> +    }
+>> +
+>> +    mt7530_write(priv, MT7530_PMCR_P(port), mcr);
+>> +
+>> +    return;
+>> +
+>> +unsupported:
+>> +    dev_err(ds->dev, "%s: P%d: Unsupported phy_interface mode: %d (%s)\n",
+>> +            __func__, port, state->interface, phy_modes(state->interface));
+>> +}
+>> +
+>> +static void mt7530_phylink_mac_link_down(struct dsa_switch *ds, int port,
+>> +                                     unsigned int mode,
+>> +                                     phy_interface_t interface)
+>> +{
+>> +    /* Do nothing */
+>> +}
+>> +
+>> +static void mt7530_phylink_mac_link_up(struct dsa_switch *ds, int port,
+>> +                                   unsigned int mode,
+>> +                                   phy_interface_t interface,
+>> +                                   struct phy_device *phydev)
+>> +{
+>> +    /* Do nothing */
+>> +}
+>
+> These two are where you should be forcing the link up or down if
+> required (basically, inband modes should let the link come up/down
+> irrespective of these functions, otherwise it should be forced.)
+>
+
+OK
+
+>> +
+>> +static void mt7530_phylink_validate(struct dsa_switch *ds, int port,
+>> +                                unsigned long *supported,
+>> +                                struct phylink_link_state *state)
+>> +{
+>> +    __ETHTOOL_DECLARE_LINK_MODE_MASK(mask) = { 0, };
+>> +
+>> +    switch (port) {
+>> +    case 0: /* Internal phy */
+>> +    case 1:
+>> +    case 2:
+>> +    case 3:
+>> +    case 4:
+>> +            if (state->interface != PHY_INTERFACE_MODE_NA &&
+>> +                state->interface != PHY_INTERFACE_MODE_GMII)
+>> +                    goto unsupported;
+>> +            break;
+>> +    /* case 5: Port 5 not supported! */
+>> +    case 6: /* 1st cpu port */
+>> +            if (state->interface != PHY_INTERFACE_MODE_RGMII &&
+>> +                state->interface != PHY_INTERFACE_MODE_TRGMII)
+>
+> PHY_INTERFACE_MODE_NA ?
+
+You mean PHY_INTERFACE_MODE_NA is missing?
+PHY_INTERFACE_MODE_TRGMII is a valid mode for this port.
+
+>
+>> +                    goto unsupported;
+>> +            break;
+>> +    default:
+>> +            linkmode_zero(supported);
+>> +            dev_err(ds->dev, "%s: unsupported port: %i\n", __func__, port);
+>> +            return;
+>> +    }
+>> +
+>> +    phylink_set(mask, Autoneg);
+>> +    phylink_set(mask, Pause);
+>> +    phylink_set(mask, Asym_Pause);
+>> +    phylink_set(mask, MII);
+>> +
+>> +    phylink_set(mask, 10baseT_Half);
+>> +    phylink_set(mask, 10baseT_Full);
+>> +    phylink_set(mask, 100baseT_Half);
+>> +    phylink_set(mask, 100baseT_Full);
+>> +    phylink_set(mask, 1000baseT_Full);
+>> +    phylink_set(mask, 1000baseT_Half);
+>
+> You seem to be missing phylink_set_port_modes() here.
+
+OK
+
+>
+>> +
+>> +    linkmode_and(supported, supported, mask);
+>> +    linkmode_and(state->advertising, state->advertising, mask);
+>> +    return;
+>> +
+>> +unsupported:
+>> +    linkmode_zero(supported);
+>> +    dev_err(ds->dev, "%s: unsupported interface mode: [0x%x] %s\n",
+>> +            __func__, state->interface, phy_modes(state->interface));
+>
+> Not a good idea to print this at error level; sometimes we just probe
+> for support.
+>
+> Eg, think about a SFP cage, and a SFP is plugged in that uses a PHY
+> interface mode that the MAC can't support - we detect that by the
+> validation failing, and printing a more meaningful message in phylink
+> itself.
+
+OK, It will be removed.
+
+>
+>> +}
+>> +
+>> +static int
+>> +mt7530_phylink_mac_link_state(struct dsa_switch *ds, int port,
+>> +                          struct phylink_link_state *state)
+>> +{
+>> +    struct mt7530_priv *priv = ds->priv;
+>> +    u32 pmsr;
+>> +
+>> +    if (port < 0 || port >= MT7530_NUM_PORTS)
+>> +            return -EINVAL;
+>> +
+>> +    pmsr = mt7530_read(priv, MT7530_PMSR_P(port));
+>> +
+>> +    state->link = (pmsr & PMSR_LINK);
+>> +    state->an_complete = state->link;
+>> +    state->duplex = (pmsr & PMSR_DPX) >> 1;
+>> +
+>> +    switch (pmsr & (PMSR_SPEED_1000 | PMSR_SPEED_100)) {
+>> +    case 0:
+>> +            state->speed = SPEED_10;
+>> +            break;
+>> +    case PMSR_SPEED_100:
+>> +            state->speed = SPEED_100;
+>> +            break;
+>> +    case PMSR_SPEED_1000:
+>> +            state->speed = SPEED_1000;
+>> +            break;
+>> +    default:
+>> +            state->speed = SPEED_UNKNOWN;
+>> +            break;
+>> +    }
+>> +
+>> +    state->pause = 0;
+>> +    if (pmsr & PMSR_RX_FC)
+>> +            state->pause |= MLO_PAUSE_RX;
+>> +    if (pmsr & PMSR_TX_FC)
+>> +            state->pause |= MLO_PAUSE_TX;
+>> +
+>> +    return 1;
+>> +}
+>> +
+>>  static const struct dsa_switch_ops mt7530_switch_ops = {
+>>      .get_tag_protocol       = mtk_get_tag_protocol,
+>>      .setup                  = mt7530_setup,
+>> @@ -1331,7 +1446,6 @@ static const struct dsa_switch_ops
+>> mt7530_switch_ops = {
+>>      .phy_write              = mt7530_phy_write,
+>>      .get_ethtool_stats      = mt7530_get_ethtool_stats,
+>>      .get_sset_count         = mt7530_get_sset_count,
+>> -    .adjust_link            = mt7530_adjust_link,
+>>      .port_enable            = mt7530_port_enable,
+>>      .port_disable           = mt7530_port_disable,
+>>      .port_stp_state_set     = mt7530_stp_state_set,
+>> @@ -1344,6 +1458,11 @@ static const struct dsa_switch_ops
+>> mt7530_switch_ops = {
+>>      .port_vlan_prepare      = mt7530_port_vlan_prepare,
+>>      .port_vlan_add          = mt7530_port_vlan_add,
+>>      .port_vlan_del          = mt7530_port_vlan_del,
+>> +    .phylink_validate       = mt7530_phylink_validate,
+>> +    .phylink_mac_link_state = mt7530_phylink_mac_link_state,
+>> +    .phylink_mac_config     = mt7530_phylink_mac_config,
+>> +    .phylink_mac_link_down  = mt7530_phylink_mac_link_down,
+>> +    .phylink_mac_link_up    = mt7530_phylink_mac_link_up,
+>>  };
+>>
+>>  static const struct of_device_id mt7530_of_match[] = {
+>> diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+>> index bfac90f48102..41d9a132ac70 100644
+>> --- a/drivers/net/dsa/mt7530.h
+>> +++ b/drivers/net/dsa/mt7530.h
+>> @@ -198,6 +198,7 @@ enum mt7530_vlan_port_attr {
+>>  #define  PMCR_FORCE_SPEED_100               BIT(2)
+>>  #define  PMCR_FORCE_FDX                     BIT(1)
+>>  #define  PMCR_FORCE_LNK                     BIT(0)
+>> +#define  PMCR_FORCE_LNK_DOWN                PMCR_FORCE_MODE
+>>  #define  PMCR_COMMON_LINK           (PMCR_IFG_XMIT(1) | PMCR_MAC_MODE | \
+>>                                       PMCR_BACKOFF_EN | PMCR_BACKPR_EN | \
+>>                                       PMCR_TX_EN | PMCR_RX_EN | \
+>> @@ -218,6 +219,14 @@ enum mt7530_vlan_port_attr {
+>>                                       PMCR_TX_FC_EN | PMCR_RX_FC_EN)
+>>
+>>  #define MT7530_PMSR_P(x)            (0x3008 + (x) * 0x100)
+>> +#define  PMSR_EEE1G                 BIT(7)
+>> +#define  PMSR_EEE100M                       BIT(6)
+>> +#define  PMSR_RX_FC                 BIT(5)
+>> +#define  PMSR_TX_FC                 BIT(4)
+>> +#define  PMSR_SPEED_1000            BIT(3)
+>> +#define  PMSR_SPEED_100                     BIT(2)
+>> +#define  PMSR_DPX                   BIT(1)
+>> +#define  PMSR_LINK                  BIT(0)
+>>
+>>  /* Register for MIB */
+>>  #define MT7530_PORT_MIB_COUNTER(x)  (0x4000 + (x) * 0x100)
+>> --
+>> 2.20.1
+>>
+>>
+>
+> --
+> RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+> FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
+> According to speedtest.net: 11.9Mbps down 500kbps up
+
+Greats,
+
+René
