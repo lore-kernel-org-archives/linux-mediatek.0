@@ -1,55 +1,62 @@
-From: Florian Fainelli <f.fainelli@gmail.com>
-Subject: Re: [PATCH RFC net-next 4/5] dt-bindings: net: dsa: mt7530: Add
- mediatek,ephy-handle to isolate ext. phy
-Date: Tue, 25 Jun 2019 12:16:35 -0700
-Message-ID: <1bcedae6-305d-5019-a7a1-e11ee9e99a7b@gmail.com>
+From: Daniel Santos <daniel.santos@pobox.com>
+Subject: Re: [PATCH RFC net-next 1/5] net: dsa: mt7530: Convert to PHYLINK API
+Date: Tue, 25 Jun 2019 14:27:55 -0500
+Message-ID: <4fc51dc4-0eec-30d7-86d1-3404819cf6fe@pobox.com>
 References: <20190624145251.4849-1-opensource@vdorst.com>
- <20190624145251.4849-5-opensource@vdorst.com>
- <e6175753-eb99-63e5-767e-f82becbf8d1a@gmail.com>
- <20190625093042.Horde._8BNPFSzW6B9-CI8P6akHTh@www.vdorst.com>
+ <20190624145251.4849-2-opensource@vdorst.com>
+ <20190624153950.hdsuhrvfd77heyor@shell.armlinux.org.uk>
+ <20190625113158.Horde.pCaJOVUsgyhYLd5Diz5EZKI@www.vdorst.com>
+ <20190625121030.m5w7wi3rpezhfgyo@shell.armlinux.org.uk>
+ <1ad9f9a5-8f39-40bd-94bb-6b700f30c4ba@pobox.com>
+ <20190625190246.GA27733@lunn.ch>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: quoted-printable
 Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20190625093042.Horde._8BNPFSzW6B9-CI8P6akHTh@www.vdorst.com>
+In-Reply-To: <20190625190246.GA27733@lunn.ch>
 Content-Language: en-US
 Sender: netdev-owner@vger.kernel.org
-To: =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>
-Cc: sean.wang@mediatek.com, linux@armlinux.org.uk, davem@davemloft.net, matthias.bgg@gmail.com, andrew@lunn.ch, vivien.didelot@gmail.com, frank-w@public-files.de, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Russell King - ARM Linux admin <linux@armlinux.org.uk>, =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>, sean.wang@mediatek.com, f.fainelli@gmail.com, davem@davemloft.net, matthias.bgg@gmail.com, vivien.didelot@gmail.com, frank-w@public-files.de, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 6/25/19 2:30 AM, René van Dorst wrote:
-> Quoting Florian Fainelli <f.fainelli@gmail.com>:
-> 
-> Hi Florian
-> 
->> On 6/24/19 7:52 AM, René van Dorst wrote:
->>> On some platforum the external phy can only interface to the port 5
->>> of the
->>> switch because the RGMII TX and RX lines are swapped. But it still
->>> can be
->>> useful to use the internal phy of the switch to act as a WAN port which
->>> connectes to the 2nd GMAC. This gives WAN port dedicated bandwidth to
->>> the SOC. This increases the LAN and WAN routing.
->>>
->>> By adding the optional property mediatek,ephy-handle, the external phy
->>> is put in isolation mode when internal phy is connected to 2nd GMAC via
->>> phy-handle property.
->>
->> Most platforms we have seen so far implement this logic with a mdio-mux,
->> can you see if that is possible here? stmmac has plenty of examples like
->> those.
-> 
-> May I don't understand it correctly, but all the devices are on the same
-> MDIO
-> bus.
-> I tried to make a ASCII diagram to make it a bit more clear.
+On 6/25/19 2:02 PM, Andrew Lunn wrote:
+>> But will there still be a mechanism to ignore link partner's advertisi=
+ng
+>> and force these parameters?
+> >From man 1 ethtool:
+>
+>        -a --show-pause
+>               Queries the specified Ethernet device for pause parameter=
+ information.
+>
+>        -A --pause
+>               Changes the pause parameters of the specified Ethernet de=
+vice.
+>
+>            autoneg on|off
+>                   Specifies whether pause autonegotiation should be ena=
+bled.
+>
+>            rx on|off
+>                   Specifies whether RX pause should be enabled.
+>
+>            tx on|off
+>                   Specifies whether TX pause should be enabled.
+>
+> You need to check the driver to see if it actually implements this
+> ethtool call, but that is how it should be configured.
+>
+> 	Andrew
+>
+Thank you Andrew,
 
-Based on your diagram and your explanation, then I do not really see a
-need for that property you can scan all of the switch port's properties
-and determined which configuration is applied and perform the PHY
-isolation as necessary. It looks like you are using this property as a
-way to simplify your configuration logic, that is not quite what Device
-Tree is meant for.
--- 
-Florian
+So in this context, my question is the difference between "enabling" and
+"forcing".=C2=A0 Here's that register for the mt7620 (which has an mt7530=
+ on
+its die): https://imgur.com/a/pTk0668=C2=A0 I believe this is also what R=
+en=C3=A9
+is seeking clarity on?
+
+Thanks,
+Daniel
