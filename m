@@ -1,17 +1,12 @@
-From: Peter Zijlstra <peterz-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
-Subject: Re: [RFC][PATCH] wake_up_var() memory ordering
-Date: Tue, 25 Jun 2019 15:27:36 +0200
-Message-ID: <20190625132736.GZ3419@hirez.programming.kicks-ass.net>
-References: <20190624165012.GH3436@hirez.programming.kicks-ass.net>
- <CAHc6FU7j5iW7WQoxN_OSfvK4zxv_MxTWJpiNsqFW8TEDMX1rjw@mail.gmail.com>
- <20190625103430.GW3402@hirez.programming.kicks-ass.net>
- <CAHc6FU6zUCdQZ1AfN2KYcPYVKc5bwvc0bD7=-KZpFXws+F9QZQ@mail.gmail.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [GIT PULL] arm64: dts: mediatek: updates for v5.2-next
+Date: Tue, 25 Jun 2019 15:35:27 +0200
+Message-ID: <aa4de43a-0871-dfb0-0ad1-46f11b254a67@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <CAHc6FU6zUCdQZ1AfN2KYcPYVKc5bwvc0bD7=-KZpFXws+F9QZQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -21,27 +16,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Andreas Gruenbacher <agruenba-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Cc: Martin Brandenburg <martin-gqc3UtWaqJ5Wk0Htik3J/w@public.gmane.org>, linux-cachefs-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, Mike Snitzer <snitzer-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-aio-Bw31MaZKKs3YtjvyW6yDsg@public.gmane.org, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, samba-technical <samba-technical-w/Ol4Ecudpl8XjKLYN78aQ@public.gmane.org>, Joonas Lahtinen <joonas.lahtinen-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, David Howells <dhowells-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Chris Mason <clm-b10kYP2dOMg@public.gmane.org>, dm-devel-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, keyrings-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ingo Molnar <mingo-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-afs-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Alasdair Kergon <agk-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Mike Marshall <hubcap-gqc3UtWaqJ5Wk0Htik3J/w@public.gmane.org>, linux-cifs-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, rds-devel-N0ozoZBvEnrZJqsBc5GL+g@public.gmane.org, linux-rdma-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, James Morris <jmorris-gx6/JNMH7DfYtjvyW6yDsg@public.gmane.org>, cluster-devel <cluster-devel-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Antti Palosaari <crope-X3B1VOXEql0@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Paul McKenney <paulmck-23VcF4HTsmIX0ybBhKVfKdBPR1lH4CV8@public.gmane.org>, intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.orgd
+To: arm-soc <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ben Ho <Ben.Ho-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, hsinyi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, michael.mei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Jun 25, 2019 at 02:12:22PM +0200, Andreas Gruenbacher wrote:
+Hi Arnd and Olof,
 
-> > Only if we do as David suggested and make clean_and_wake_up_bit()
-> > provide the RELEASE barrier.
-> 
-> (It's clear_and_wake_up_bit, not clean_and_wake_up_bit.)
+This time we have only some DTS patches for MediaTek. Mostly it is about the new
+SoC mt8183. Several drivers where added already but the device tree was still
+missing.
 
-Yes, typing hard.
+Please have a look and pull :)
 
-> > That is, currently clear_and_wake_up_bit() is
-> >
-> >         clear_bit()
-> >         smp_mb__after_atomic();
-> >         wake_up_bit();
-> >
+Regards,
+Matthias
 
-> Now I'm confused because clear_and_wake_up_bit() in mainline does use
-> clear_bit_unlock(), so it's the exact opposite of what you just said.
+---
+The following changes since commit a188339ca5a396acc588e5851ed7e19f66b0ebd9:
 
-Argh; clearly I couldn't read. And then yes, you're right.
+  Linux 5.2-rc1 (2019-05-19 15:47:09 -0700)
+
+are available in the Git repository at:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
+tags/v5.2-next-dts64
+
+for you to fetch changes up to de1033881e936382d67ae47073a7092554729d74:
+
+  arm64: dts: mt8183: add efuse and Mediatek Chip id node to read (2019-06-21
+17:50:12 +0200)
+
+----------------------------------------------------------------
+- convert arm boads to json-schema
+
+mt8183:
+- add base SoC and evaluation board
+- add cpacity-dmips-mhz
+- add pinctrl, auxadc, spi, and efuse nodes
+
+----------------------------------------------------------------
+Ben Ho (1):
+      arm64: dts: Add Mediatek SoC MT8183 and evaluation board dts and Makefile
+
+Erin Lo (1):
+      arm64: dts: mt8183: add spi node
+
+Hsin-Yi, Wang (1):
+      arm64: dts: mt8183: add capacity-dmips-mhz
+
+Michael Mei (1):
+      arm64: dts: mt8183: add efuse and Mediatek Chip id node to read
+
+Rob Herring (1):
+      dt-bindings: arm: Convert MediaTek board/soc bindings to json-schema
+
+Zhiyong Tao (2):
+      arm64: dts: mt8183: add pinctrl device node
+      arm64: dts: mt8183: Add auxadc device node
+
+ Documentation/devicetree/bindings/arm/mediatek.txt |  89 ----
+ .../devicetree/bindings/arm/mediatek.yaml          |  91 +++++
+ arch/arm64/boot/dts/mediatek/Makefile              |   1 +
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts        | 140 +++++++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi           | 447 +++++++++++++++++++++
+ 5 files changed, 679 insertions(+), 89 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/arm/mediatek.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek.yaml
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183.dtsi
