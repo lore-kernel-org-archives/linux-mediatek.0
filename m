@@ -1,85 +1,113 @@
-From: Russell King - ARM Linux admin <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>
-Subject: Re: [PATCH RFC net-next 1/5] net: dsa: mt7530: Convert to PHYLINK API
-Date: Tue, 25 Jun 2019 22:53:29 +0100
-Message-ID: <20190625215329.5ubixxiwprnubwmv@shell.armlinux.org.uk>
-References: <20190624145251.4849-1-opensource@vdorst.com>
- <20190624145251.4849-2-opensource@vdorst.com>
- <20190624153950.hdsuhrvfd77heyor@shell.armlinux.org.uk>
- <6f80325d-4b42-6174-e050-48626f7a3662@gmail.com>
+From: "dbasehore ." <dbasehore@chromium.org>
+Subject: Re: [PATCH v3 1/4] drm/panel: Add helper for reading DT
+ rotation
+Date: Tue, 25 Jun 2019 15:12:51 -0700
+Message-ID: <CAGAzgspnknoX_6zP4__tjQonxg53jjJj-xP=yrQydA2FhMG2JA@mail.gmail.com>
+References: <20190622034105.188454-1-dbasehore@chromium.org>
+ <20190622034105.188454-2-dbasehore@chromium.org>
+ <20190624203632.GA12316@ravnborg.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <6f80325d-4b42-6174-e050-48626f7a3662-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Vladimir Oltean <olteanv-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: andrew-g2DYL2Zd6BY@public.gmane.org, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, frank-w-SipyoOjXbOMoAHOVJHB0wA@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mips-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, vivien.didelot-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <intel-gfx-bounces@lists.freedesktop.org>
+In-Reply-To: <20190624203632.GA12316@ravnborg.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
+List-Post: <mailto:intel-gfx@lists.freedesktop.org>
+List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: intel-gfx-bounces@lists.freedesktop.org
+Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
+To: Sam Ravnborg <sam@ravnborg.org>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, Maxime Ripard <maxime.ripard@bootlin.com>, Intel Graphics <intel-gfx@lists.freedesktop.org>, linux-kernel <linux-kernel@vger.kernel.org>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel <dri-devel@lists.freedesktop.org>, CK Hu <ck.hu@mediatek.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Jun 25, 2019 at 11:24:01PM +0300, Vladimir Oltean wrote:
-> Hi Russell,
-> 
-> On 6/24/19 6:39 PM, Russell King - ARM Linux admin wrote:
-> > This should be removed - state->link is not for use in mac_config.
-> > Even in fixed mode, the link can be brought up/down by means of a
-> > gpio, and this should be dealt with via the mac_link_* functions.
-> > 
-> 
-> What do you mean exactly that state->link is not for use, is that true in
-> general?
-
-Yes.  mac_config() should not touch it; it is not always in a defined
-state.  For example, if you set modes via ethtool (the
-ethtool_ksettings_set API) then state->link will probably contain
-zero irrespective of the true link state.
-
-It exists in this structure because it was convenient to just use one
-structure to store all the link information in various parts of the
-code, and when requesting the negotiated in-band MAC configuration.
-
-I've come to the conclusion that that decision was a mistake, based
-on patches such as the above mistakenly thinking that everything in
-the state structure is fair game.  I've since updated the docs to
-explicitly spell it out, but I'm also looking at the feasibility of
-changing the mac_config() interface entirely - splitting it into two
-(mac_config_fixed() and mac_config_inband()) and passing only the
-appropriate parameters to each.
-
-However, having looked at that, I think such a change will make some
-MAC drivers quite a bit more complicated - having all the config
-steps in one method appears to make the configuration of MAC drivers
-easier (eg, mvneta, mvpp2.)
-
-> In drivers/net/dsa/sja1105/sja1105_main.c, if I remove the "if
-> (!state->link)" guard, I see PHYLINK calls with a SPEED_UNKNOWN argument for
-> ports that are BR_STATE_DISABLED. Is that normal?
-
-This looks like another driver which has been converted to phylink
-without my review; I certainly wasn't aware of it.  It gets a few
-things wrong, such as:
-
-1) not checking state->interface in the validate callback - so it
-   is basically saying that it can support any PHY interface mode
-   that the kernel happens to support.
-
-2) if phylink is configured to use in-band, then state->speed is
-   undefined; this driver will fail.  (If folk don't want to support
-   that, we ought to have a way to tell phylink to reject anything
-   that attempts to set it to in-band mode!)
-
-3) it doesn't implement phylink_mac_link_state DSA ops, so it doesn't
-   support SGMII or 802.3z phy interface modes (see 1).
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
-According to speedtest.net: 11.9Mbps down 500kbps up
+T24gTW9uLCBKdW4gMjQsIDIwMTkgYXQgMTozNiBQTSBTYW0gUmF2bmJvcmcgPHNhbUByYXZuYm9y
+Zy5vcmc+IHdyb3RlOgo+Cj4gSGkgRGVyZWsuCj4KPiBPbiBGcmksIEp1biAyMSwgMjAxOSBhdCAw
+ODo0MTowMlBNIC0wNzAwLCBEZXJlayBCYXNlaG9yZSB3cm90ZToKPiA+IFRoaXMgYWRkcyBhIGhl
+bHBlciBmdW5jdGlvbiBmb3IgcmVhZGluZyB0aGUgcm90YXRpb24gKHBhbmVsCj4gPiBvcmllbnRh
+dGlvbikgZnJvbSB0aGUgZGV2aWNlIHRyZWUuCj4gPgo+ID4gU2lnbmVkLW9mZi1ieTogRGVyZWsg
+QmFzZWhvcmUgPGRiYXNlaG9yZUBjaHJvbWl1bS5vcmc+Cj4gPiAtLS0KPiA+ICBkcml2ZXJzL2dw
+dS9kcm0vZHJtX3BhbmVsLmMgfCA0MiArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
+KysrCj4gPiAgaW5jbHVkZS9kcm0vZHJtX3BhbmVsLmggICAgIHwgIDcgKysrKysrKwo+ID4gIDIg
+ZmlsZXMgY2hhbmdlZCwgNDkgaW5zZXJ0aW9ucygrKQo+ID4KPiA+IGRpZmYgLS1naXQgYS9kcml2
+ZXJzL2dwdS9kcm0vZHJtX3BhbmVsLmMgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX3BhbmVsLmMKPiA+
+IGluZGV4IGRiZDViODczZThmMi4uNTA3MDk5YWY0YjU3IDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVy
+cy9ncHUvZHJtL2RybV9wYW5lbC5jCj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX3BhbmVs
+LmMKPiA+IEBAIC0xNzIsNiArMTcyLDQ4IEBAIHN0cnVjdCBkcm1fcGFuZWwgKm9mX2RybV9maW5k
+X3BhbmVsKGNvbnN0IHN0cnVjdCBkZXZpY2Vfbm9kZSAqbnApCj4gPiAgICAgICByZXR1cm4gRVJS
+X1BUUigtRVBST0JFX0RFRkVSKTsKPiA+ICB9Cj4gPiAgRVhQT1JUX1NZTUJPTChvZl9kcm1fZmlu
+ZF9wYW5lbCk7Cj4gPiArCj4gPiArLyoqCj4gPiArICogb2ZfZHJtX2dldF9wYW5lbF9vcmllbnRh
+dGlvbiAtIGxvb2sgdXAgdGhlIHJvdGF0aW9uIG9mIHRoZSBwYW5lbCB1c2luZyBhCj4gPiArICog
+ZGV2aWNlIHRyZWUgbm9kZQo+ID4gKyAqIEBucDogZGV2aWNlIHRyZWUgbm9kZSBvZiB0aGUgcGFu
+ZWwKPiA+ICsgKiBAb3JpZW50YXRpb246IG9yaWVudGF0aW9uIGVudW0gdG8gYmUgZmlsbGVkIGlu
+Cj4gPiArICoKPiA+ICsgKiBMb29rcyB1cCB0aGUgcm90YXRpb24gb2YgYSBwYW5lbCBpbiB0aGUg
+ZGV2aWNlIHRyZWUuIFRoZSByb3RhdGlvbiBpbiB0aGUKPiA+ICsgKiBkZXZpY2UgdHJlZSBpcyBj
+b3VudGVyIGNsb2Nrd2lzZS4KPiA+ICsgKgo+ID4gKyAqIFJldHVybjogMCB3aGVuIGEgdmFsaWQg
+cm90YXRpb24gdmFsdWUgKDAsIDkwLCAxODAsIG9yIDI3MCkgaXMgcmVhZCBvciB0aGUKPiA+ICsg
+KiByb3RhdGlvbiBwcm9wZXJ0eSBkb2Vzbid0IGV4aXN0LiAtRUVSUk9SIG90aGVyd2lzZS4KPiA+
+ICsgKi8KPiBUaGlzIGZ1bmN0aW9uIHNob3VsZCBiZXR0ZXIgc3BlbGwgb3V0IHdoeSBpdCB0YWxr
+cyBhYm91dCByb3RhdGlvbiB2ZXJzdXMKPiBvcmllbnRhdGlvbi4KPgo+IEl0IGhhcHBlbnMgdGhh
+dCBvcmllbnRhdGlvbiwgZHVlIHRvIGJhZCBkZXNpZ24gY2hvaWNlcyBpcyBuYW1lZCByb3RhdGlv
+bgo+IGluIERULgo+IEJ1dCB0aGVuIHRoaXMgZnVuY3Rpb24gaXMgYWxsIGFib3V0IG9yaWVudGF0
+aW9uLCB0aGF0IGp1c3QgaGFwcGVucyB0byBiZQo+IG5hbWVkIHJvdGF0aW9uIGluIERULgo+IEFu
+ZCB0aGUgY29tbWVudHMgYXNzb2NpYXRlZCB0byB0aGUgZnVuY3Rpb24gc2hvdWxkIHJlZmxlY3Qg
+dGhpcy4KPgo+IHNvbWV0aGluZyBsaWtlOgo+IC8qKgo+ICAqIG9mX2RybV9nZXRfcGFuZWxfb3Jp
+ZW50YXRpb24gLSBsb29rIHVwIHRoZSBvcmllbnRhdGlvbiBvZiB0aGUgcGFuZWwgdXNpbmcgYQo+
+ICAqIGRldmljZSB0cmVlIG5vZGUKPiAgKiBAbnA6IGRldmljZSB0cmVlIG5vZGUgb2YgdGhlIHBh
+bmVsCj4gICogQG9yaWVudGF0aW9uOiBvcmllbnRhdGlvbiBlbnVtIHRvIGJlIGZpbGxlZCBpbgo+
+ICAqCj4gICogTG9va3MgdXAgdGhlIHJvdGF0aW9uIHByb3BlcnR5IG9mIGEgcGFuZWwgaW4gdGhl
+IGRldmljZSB0cmVlLgo+ICAqIFRoZSBvcmllbnRhdGlvbiBvZiB0aGUgcGFuZWwgaXMgZXhwcmVz
+c2VkIGFzIGEgcHJvcGVydHkgbmFtZWQKPiAgKiAicm90YXRpb24iIGluIHRoZSBkZXZpY2UgdHJl
+ZS4KPiAgKiBUaGUgcm90YXRpb24gaW4gdGhlIGRldmljZSB0cmVlIGlzIGNvdW50ZXIgY2xvY2t3
+aXNlLgo+ICAqCj4gICogUmV0dXJuOiAwIHdoZW4gYSB2YWxpZCBvcmllbnRhdGlvbiB2YWx1ZSAo
+MCwgOTAsIDE4MCwgb3IgMjcwKSBpcyByZWFkIG9yIHRoZQo+ICAqIHJvdGF0aW9uIHByb3BlcnR5
+IGRvZXNuJ3QgZXhpc3QuIC1FRVJST1Igb3RoZXJ3aXNlLgo+ICAqLwoKSSdsbCBjbGVhciB0aGlz
+IHVwIGluIHRoZSBuZXh0IHBhdGNoIHNldC4KCj4KPiBUaGlzIHdvdWxkIGF0IGxlYXN0IHJlbW92
+ZSBzb21lIG9mIG15IGNvbmZ1c2l1b24uCj4gQW5kIHRoZW4gbWF5YmUgYWRkIGEgYml0IG1vcmUg
+ZXhwbGFuYXRpb24gdG8gdGhlIGJpbmRpbmcgcHJvcGVydHkKPiBkZXNjcmlwdGlvbiB0b28uCgpU
+cmllZCB0aGlzLCB5ZXQgSSBnb3QgdG9sZCBvZmYgZm9yIGFkZGluZyBrZXJuZWwgZGV0YWlscyB0
+byB0aGUgRFQKZG9jdW1lbnRhdGlvbiAod2hpY2ggaXMgZnJvd25lZCB1cG9uKS4KCj4KPiAgICAg
+ICAgIFNhbQo+Cj4KPgo+Cj4KPgo+Cj4KPgo+Cj4KPgo+ID4gK2ludCBvZl9kcm1fZ2V0X3BhbmVs
+X29yaWVudGF0aW9uKGNvbnN0IHN0cnVjdCBkZXZpY2Vfbm9kZSAqbnAsCj4gPiArICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgZW51bSBkcm1fcGFuZWxfb3JpZW50YXRpb24gKm9yaWVudGF0
+aW9uKQo+ID4gK3sKPiA+ICsgICAgIGludCByb3RhdGlvbiwgcmV0Owo+ID4gKwo+ID4gKyAgICAg
+cmV0ID0gb2ZfcHJvcGVydHlfcmVhZF91MzIobnAsICJyb3RhdGlvbiIsICZyb3RhdGlvbik7Cj4g
+PiArICAgICBpZiAocmV0ID09IC1FSU5WQUwpIHsKPiA+ICsgICAgICAgICAgICAgLyogRG9uJ3Qg
+cmV0dXJuIGFuIGVycm9yIGlmIHRoZXJlJ3Mgbm8gcm90YXRpb24gcHJvcGVydHkuICovCj4gPiAr
+ICAgICAgICAgICAgICpvcmllbnRhdGlvbiA9IERSTV9NT0RFX1BBTkVMX09SSUVOVEFUSU9OX1VO
+S05PV047Cj4gPiArICAgICAgICAgICAgIHJldHVybiAwOwo+ID4gKyAgICAgfQo+ID4gKwo+ID4g
+KyAgICAgaWYgKHJldCA8IDApCj4gPiArICAgICAgICAgICAgIHJldHVybiByZXQ7Cj4gPiArCj4g
+PiArICAgICBpZiAocm90YXRpb24gPT0gMCkKPiA+ICsgICAgICAgICAgICAgKm9yaWVudGF0aW9u
+ID0gRFJNX01PREVfUEFORUxfT1JJRU5UQVRJT05fTk9STUFMOwo+ID4gKyAgICAgZWxzZSBpZiAo
+cm90YXRpb24gPT0gOTApCj4gPiArICAgICAgICAgICAgICpvcmllbnRhdGlvbiA9IERSTV9NT0RF
+X1BBTkVMX09SSUVOVEFUSU9OX1JJR0hUX1VQOwo+ID4gKyAgICAgZWxzZSBpZiAocm90YXRpb24g
+PT0gMTgwKQo+ID4gKyAgICAgICAgICAgICAqb3JpZW50YXRpb24gPSBEUk1fTU9ERV9QQU5FTF9P
+UklFTlRBVElPTl9CT1RUT01fVVA7Cj4gPiArICAgICBlbHNlIGlmIChyb3RhdGlvbiA9PSAyNzAp
+Cj4gPiArICAgICAgICAgICAgICpvcmllbnRhdGlvbiA9IERSTV9NT0RFX1BBTkVMX09SSUVOVEFU
+SU9OX0xFRlRfVVA7Cj4gPiArICAgICBlbHNlCj4gPiArICAgICAgICAgICAgIHJldHVybiAtRUlO
+VkFMOwo+ID4gKwo+ID4gKyAgICAgcmV0dXJuIDA7Cj4gPiArfQo+ID4gK0VYUE9SVF9TWU1CT0wo
+b2ZfZHJtX2dldF9wYW5lbF9vcmllbnRhdGlvbik7Cj4gPiAgI2VuZGlmCj4gPgo+ID4gIE1PRFVM
+RV9BVVRIT1IoIlRoaWVycnkgUmVkaW5nIDx0cmVkaW5nQG52aWRpYS5jb20+Iik7Cj4gPiBkaWZm
+IC0tZ2l0IGEvaW5jbHVkZS9kcm0vZHJtX3BhbmVsLmggYi9pbmNsdWRlL2RybS9kcm1fcGFuZWwu
+aAo+ID4gaW5kZXggOGM3MzhjMGU2ZTlmLi4zNTY0OTUyZjFhNGYgMTAwNjQ0Cj4gPiAtLS0gYS9p
+bmNsdWRlL2RybS9kcm1fcGFuZWwuaAo+ID4gKysrIGIvaW5jbHVkZS9kcm0vZHJtX3BhbmVsLmgK
+PiA+IEBAIC0xOTcsMTEgKzE5NywxOCBAQCBpbnQgZHJtX3BhbmVsX2RldGFjaChzdHJ1Y3QgZHJt
+X3BhbmVsICpwYW5lbCk7Cj4gPgo+ID4gICNpZiBkZWZpbmVkKENPTkZJR19PRikgJiYgZGVmaW5l
+ZChDT05GSUdfRFJNX1BBTkVMKQo+ID4gIHN0cnVjdCBkcm1fcGFuZWwgKm9mX2RybV9maW5kX3Bh
+bmVsKGNvbnN0IHN0cnVjdCBkZXZpY2Vfbm9kZSAqbnApOwo+ID4gK2ludCBvZl9kcm1fZ2V0X3Bh
+bmVsX29yaWVudGF0aW9uKGNvbnN0IHN0cnVjdCBkZXZpY2Vfbm9kZSAqbnAsCj4gPiArICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgZW51bSBkcm1fcGFuZWxfb3JpZW50YXRpb24gKm9yaWVu
+dGF0aW9uKTsKPiA+ICAjZWxzZQo+ID4gIHN0YXRpYyBpbmxpbmUgc3RydWN0IGRybV9wYW5lbCAq
+b2ZfZHJtX2ZpbmRfcGFuZWwoY29uc3Qgc3RydWN0IGRldmljZV9ub2RlICpucCkKPiA+ICB7Cj4g
+PiAgICAgICByZXR1cm4gRVJSX1BUUigtRU5PREVWKTsKPiA+ICB9Cj4gPiAraW50IG9mX2RybV9n
+ZXRfcGFuZWxfb3JpZW50YXRpb24oY29uc3Qgc3RydWN0IGRldmljZV9ub2RlICpucCwKPiA+ICsg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBlbnVtIGRybV9wYW5lbF9vcmllbnRhdGlvbiAq
+b3JpZW50YXRpb24pCj4gPiArewo+ID4gKyAgICAgcmV0dXJuIC1FTk9ERVY7Cj4gPiArfQo+ID4g
+ICNlbmRpZgo+ID4KPiA+ICAjZW5kaWYKPiA+IC0tCj4gPiAyLjIyLjAuNDEwLmdkOGZkYmUyMWI1
+LWdvb2cKClRoYW5rcyBmb3IgdGhlIHJldmlldwpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpJbnRlbC1nZnggbWFpbGluZyBsaXN0CkludGVsLWdmeEBsaXN0
+cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9pbnRlbC1nZng=
