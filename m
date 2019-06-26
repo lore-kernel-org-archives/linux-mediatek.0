@@ -1,108 +1,104 @@
-From: Sam Ravnborg <sam@ravnborg.org>
-Subject: Re: [v3 4/4] drm/panel: support for auo, kd101n80-45na wuxga dsi
- video mode panel
-Date: Wed, 26 Jun 2019 09:26:28 +0200
-Message-ID: <20190626072628.GC14541@ravnborg.org>
-References: <20190626025400.109567-1-jitao.shi@mediatek.com>
- <20190626025400.109567-5-jitao.shi@mediatek.com>
+From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+Subject: Re: [PATCH RFC net-next 1/5] net: dsa: mt7530: Convert to PHYLINK API
+Date: Wed, 26 Jun 2019 08:41:59 +0100
+Message-ID: <20190626074158.odyrgzie7sv4ovtn@shell.armlinux.org.uk>
+References: <20190624145251.4849-1-opensource@vdorst.com>
+ <20190624145251.4849-2-opensource@vdorst.com>
+ <20190624153950.hdsuhrvfd77heyor@shell.armlinux.org.uk>
+ <6f80325d-4b42-6174-e050-48626f7a3662@gmail.com>
+ <20190625215329.5ubixxiwprnubwmv@shell.armlinux.org.uk>
+ <CA+h21hqK0VMtHpZ6eka9ESuMhsFTw2mx+c0GYmxq4_G_YmiVpg@mail.gmail.com>
+ <20190625225759.zztqgnwtk4v7milp@shell.armlinux.org.uk>
+ <CA+h21hq_w8-96ehKYxcziSq1TjOjoKduZ+pB3umBfjODaKWd+A@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <netdev-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20190626025400.109567-5-jitao.shi@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jitao Shi <jitao.shi@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, stonea168@163.com, dri-devel@lists.freedesktop.org, Andy Yan <andy.yan@rock-chips.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa.cheng@mediatek.com, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream@mediatek.com, linux-kernel@vge
+In-Reply-To: <CA+h21hq_w8-96ehKYxcziSq1TjOjoKduZ+pB3umBfjODaKWd+A@mail.gmail.com>
+Sender: netdev-owner@vger.kernel.org
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>, sean.wang@mediatek.com, Florian Fainelli <f.fainelli@gmail.com>, "David S. Miller" <davem@davemloft.net>, matthias.bgg@gmail.com, Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>, frank-w@public-files.de, netdev <netdev@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jun 26, 2019 at 10:54:00AM +0800, Jitao Shi wrote:
-> Auo,kd101n80-45na's connector is same as boe,tv101wum-nl6.
-> The most codes can be reuse.
-> So auo,kd101n80-45na and boe,tv101wum-nl6 use one driver file.
-> Add the different parts in driver data.
-
-Very nice consolidation.
-Have you considered another filename that better tell this is a driver
-for different types of displays?
-
-And the Kconfig text needs some adjustment to tell this driver now
-supports an extra type of display.
-
-	Sam
+On Wed, Jun 26, 2019 at 02:10:27AM +0300, Vladimir Oltean wrote:
+> On Wed, 26 Jun 2019 at 01:58, Russell King - ARM Linux admin
+> <linux@armlinux.org.uk> wrote:
+> >
+> > On Wed, Jun 26, 2019 at 01:14:59AM +0300, Vladimir Oltean wrote:
+> > > On Wed, 26 Jun 2019 at 00:53, Russell King - ARM Linux admin
+> > > <linux@armlinux.org.uk> wrote:
+> > > >
+> > > > On Tue, Jun 25, 2019 at 11:24:01PM +0300, Vladimir Oltean wrote:
+> > > > > Hi Russell,
+> > > > >
+> > > > > On 6/24/19 6:39 PM, Russell King - ARM Linux admin wrote:
+> > > > > > This should be removed - state->link is not for use in mac_config.
+> > > > > > Even in fixed mode, the link can be brought up/down by means of a
+> > > > > > gpio, and this should be dealt with via the mac_link_* functions.
+> > > > > >
+> > > > >
+> > > > > What do you mean exactly that state->link is not for use, is that true in
+> > > > > general?
+> > > >
+> > > > Yes.  mac_config() should not touch it; it is not always in a defined
+> > > > state.  For example, if you set modes via ethtool (the
+> > > > ethtool_ksettings_set API) then state->link will probably contain
+> > > > zero irrespective of the true link state.
+> > > >
+> > >
+> > > Experimentally, state->link is zero at the same time as state->speed
+> > > is -1, so just ignoring !state->link made sense. This is not in-band
+> > > AN. What is your suggestion? Should I proceed to try and configure the
+> > > MAC for SPEED_UNKNOWN?
+> >
+> > What would you have done with a PHY when the link is down, what speed
+> > would you have configured in the phylib adjust_link callback?  phylib
+> > also sets SPEED_UNKNOWN/DUPLEX_UNKNOWN when the link is down.
+> >
 > 
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> ---
->  .../gpu/drm/panel/panel-boe-tv101wum-nl6.c    | 39 +++++++++++++++++++
->  1 file changed, 39 insertions(+)
+> With phylib, I'd make the driver ignore the speed and do nothing.
+> With phylink, I'd make the core not call mac_config.
+> But what happened is I saw phylink call mac_config anyway, said
+> 'weird' and proceeded to ignore it as I would have for phylib.
+> I'm just not understanding your position - it seems like you're
+> implying there's a bug in phylink and the function call with
+> MLO_AN_FIXED, state->link=0 and state->speed=-1 should not have taken
+> place, which is what I wanted to confirm.
+
+It is not a bug.  It is a request to configure the MAC, and what it's
+saying is "we don't know what speed and/or duplex".
+
+Take for instance when the network adapter is brought up initially.
+The link is most likely down, but we should configure the initial MAC
+operating parameters (such as the PHY interface).  Phylink makes a
+mac_config() call with the speed and duplex set to UNKNOWN.
+
+Using your theory, we shouldn't be making that call.  In which case,
+MAC drivers aren't going to initially configure their interface
+settings.
+
+_That_ would be a bug.
+
+> > It's unlikely that it would switch between SGMII and USXGMII
+> > dynamically, as USXGMII supports speeds from 10G down to 10M.
+> >
+> > Where interface mode switching tends to be used is with modes such
+> > as 10GBASE-R, which doesn't support anything except 10G.  In order
+> > for the PHY to operate at slower speeds, it has a few options:
+> >
+> > 1) perform rate adaption.
+> > 2) dynamically switch interface type to an interface type that
+> >    supports the desired speed.
+> > 3) just not support slower speeds.
+> >
 > 
-> diff --git a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
-> index 30d1f53dcbaf..6ff49f900cd2 100644
-> --- a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
-> +++ b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
-> @@ -372,6 +372,15 @@ static const struct panel_init_cmd boe_init_cmd[] = {
->  	{},
->  };
->  
-> +static const struct panel_init_cmd auo_init_cmd[] = {
-> +	_INIT_DELAY_CMD(24),
-> +	_INIT_DCS_CMD(0x11),
-> +	_INIT_DELAY_CMD(120),
-> +	_INIT_DCS_CMD(0x29),
-> +	_INIT_DELAY_CMD(120),
-> +	{},
-> +};
-> +
->  static inline struct boe_panel *to_boe_panel(struct drm_panel *panel)
->  {
->  	return container_of(panel, struct boe_panel, base);
-> @@ -571,6 +580,33 @@ static const struct panel_desc boe_tv101wum_nl6_desc = {
->  	.init_cmds = boe_init_cmd,
->  };
->  
-> +static const struct drm_display_mode auo_default_mode = {
-> +	.clock = 157000,
-> +	.hdisplay = 1200,
-> +	.hsync_start = 1200 + 80,
-> +	.hsync_end = 1200 + 80 + 24,
-> +	.htotal = 1200 + 80 + 24 + 36,
-> +	.vdisplay = 1920,
-> +	.vsync_start = 1920 + 16,
-> +	.vsync_end = 1920 + 16 + 4,
-> +	.vtotal = 1920 + 16 + 4 + 16,
-> +	.vrefresh = 60,
-> +};
-> +
-> +static const struct panel_desc auo_kd101n80_45na_desc = {
-> +	.modes = &auo_default_mode,
-> +	.bpc = 8,
-> +	.size = {
-> +		.width = 135,
-> +		.height = 216,
-> +	},
-> +	.lanes = 4,
-> +	.format = MIPI_DSI_FMT_RGB888,
-> +	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_SYNC_PULSE |
-> +		      MIPI_DSI_MODE_LPM,
-> +	.init_cmds = auo_init_cmd,
-> +};
-> +
->  static int boe_panel_get_modes(struct drm_panel *panel)
->  {
->  	struct boe_panel *boe = to_boe_panel(panel);
-> @@ -694,6 +730,9 @@ static const struct of_device_id boe_of_match[] = {
->  	{ .compatible = "boe,tv101wum-nl6",
->  	  .data = &boe_tv101wum_nl6_desc
->  	},
-> +	{ .compatible = "auo,kd101n80-45na",
-> +	  .data = &auo_kd101n80_45na_desc
-> +	},
->  	{ /* sentinel */ }
->  };
->  MODULE_DEVICE_TABLE(of, boe_of_match);
-> -- 
-> 2.21.0
-> 
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+> So am I reading this correctly - it kind of makes sense for gigabit
+> MAC drivers to not check for the MII interface changing protocol?
+
+Again, that's incorrect in the general case.  Gigabit includes SGMII
+and 802.3z PHY protocols which need to be switched between for SFPs.
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
+According to speedtest.net: 11.9Mbps down 500kbps up
