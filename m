@@ -1,74 +1,48 @@
-From: Andrew Lunn <andrew@lunn.ch>
-Subject: Re: [PATCH RFC net-next 1/5] net: dsa: mt7530: Convert to PHYLINK API
-Date: Wed, 26 Jun 2019 03:52:50 +0200
-Message-ID: <20190626015250.GH17872@lunn.ch>
-References: <20190624145251.4849-1-opensource@vdorst.com>
- <20190624145251.4849-2-opensource@vdorst.com>
- <20190624153950.hdsuhrvfd77heyor@shell.armlinux.org.uk>
- <6f80325d-4b42-6174-e050-48626f7a3662@gmail.com>
- <20190625215329.5ubixxiwprnubwmv@shell.armlinux.org.uk>
- <CA+h21hqK0VMtHpZ6eka9ESuMhsFTw2mx+c0GYmxq4_G_YmiVpg@mail.gmail.com>
- <20190625225759.zztqgnwtk4v7milp@shell.armlinux.org.uk>
- <CA+h21hq_w8-96ehKYxcziSq1TjOjoKduZ+pB3umBfjODaKWd+A@mail.gmail.com>
- <CA+h21hrsosGVQczMWy1+WfyNGZCpeMFerUwvWb-z+TTjrSOP1Q@mail.gmail.com>
+From: Jitao Shi <jitao.shi@mediatek.com>
+Subject: [v3 0/4] Add drivers for auo, kd101n80-45na and boe,
+ tv101wum-nl6 panels
+Date: Wed, 26 Jun 2019 10:53:56 +0800
+Message-ID: <20190626025400.109567-1-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <netdev-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CA+h21hrsosGVQczMWy1+WfyNGZCpeMFerUwvWb-z+TTjrSOP1Q@mail.gmail.com>
-Sender: netdev-owner@vger.kernel.org
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Russell King - ARM Linux admin <linux@armlinux.org.uk>, =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>, sean.wang@mediatek.com, Florian Fainelli <f.fainelli@gmail.com>, "David S. Miller" <davem@davemloft.net>, matthias.bgg@gmail.com, Vivien Didelot <vivien.didelot@gmail.com>, frank-w@public-files.de, netdev <netdev@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark
+ Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: stonea168@163.com, dri-devel@lists.freedesktop.org, Andy Yan <andy.yan@rock-chips.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa.cheng@mediatek.com, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Sean Paul <seanpaul@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jun 26, 2019 at 02:13:25AM +0300, Vladimir Oltean wrote:
-> On Wed, 26 Jun 2019 at 02:10, Vladimir Oltean <olteanv@gmail.com> wrote:
-> >
-> > On Wed, 26 Jun 2019 at 01:58, Russell King - ARM Linux admin
-> > <linux@armlinux.org.uk> wrote:
-> > >
-> > > On Wed, Jun 26, 2019 at 01:14:59AM +0300, Vladimir Oltean wrote:
-> > > > On Wed, 26 Jun 2019 at 00:53, Russell King - ARM Linux admin
-> > > > <linux@armlinux.org.uk> wrote:
-> > > > >
-> > > > > On Tue, Jun 25, 2019 at 11:24:01PM +0300, Vladimir Oltean wrote:
-> > > > > > Hi Russell,
-> > > > > >
-> > > > > > On 6/24/19 6:39 PM, Russell King - ARM Linux admin wrote:
-> > > > > > > This should be removed - state->link is not for use in mac_config.
-> > > > > > > Even in fixed mode, the link can be brought up/down by means of a
-> > > > > > > gpio, and this should be dealt with via the mac_link_* functions.
-> > > > > > >
-> > > > > >
-> > > > > > What do you mean exactly that state->link is not for use, is that true in
-> > > > > > general?
-> > > > >
-> > > > > Yes.  mac_config() should not touch it; it is not always in a defined
-> > > > > state.  For example, if you set modes via ethtool (the
-> > > > > ethtool_ksettings_set API) then state->link will probably contain
-> > > > > zero irrespective of the true link state.
-> > > > >
-> > > >
-> > > > Experimentally, state->link is zero at the same time as state->speed
-> > > > is -1, so just ignoring !state->link made sense. This is not in-band
-> > > > AN. What is your suggestion? Should I proceed to try and configure the
-> > > > MAC for SPEED_UNKNOWN?
-> > >
-> > > What would you have done with a PHY when the link is down, what speed
-> > > would you have configured in the phylib adjust_link callback?  phylib
-> > > also sets SPEED_UNKNOWN/DUPLEX_UNKNOWN when the link is down.
-> > >
-> >
-> > With phylib, I'd make the driver ignore the speed and do nothing.
-> > With phylink, I'd make the core not call mac_config.
-> > But what happened is I saw phylink call mac_config anyway, said
-> > 'weird' and proceeded to ignore it as I would have for phylib.
-> > I'm just not understanding your position - it seems like you're
-> > implying there's a bug in phylink and the function call with
-> > MLO_AN_FIXED, state->link=0 and state->speed=-1 should not have taken
-> 
-> I meant MLO_AN_PHY, sorry.
-
-The MAC could go into a low power mode.
-
-    Andrew
+Q2hhbmdlcyBzaW5jZSB2MjoKIC0gY29ycmVjdCB0aGUgcGFuZWwgc2l6ZQogLSByZW1vdmUgYmxh
+bmsgbGluZSBpbiBLY29uZmlnCiAtIG1vdmUgYXVvLGtkMTAxbjgwLTQ1bmEgcGFuZWwgZHJpdmVy
+IGluIHRoaXMgc2VyaWVzLgoKQ2hhbmdlcyBzaW5jZSB2MToKCiAtIHVwZGF0ZSB0eXBvIG5sNiAt
+PiBuMTYuCiAtIHVwZGF0ZSBuZXcgcGFuZWwgY29uZmlnIGFuZCBtYWtlZmlsZSBhcmUgYWRkZWQg
+aW4gYWxwaGFiZXRpY2FsbHkgb3JkZXIuCiAtIGFkZCB0aGUgcGFuZWwgbW9kZSBhbmQgcGFuZWwg
+aW5mbyBpbiBkcml2ZXIgZGF0YS4KIC0gbWVyZ2UgYXVvLGtkMTAxbjgwLTQ1YSBhbmQgYm9lLHR2
+MTAxd3VtLW5sNiBpbiBvbmUgZHJpdmVyCgpKaXRhbyBTaGkgKDQpOgogIGR0LWJpbmRuZ3M6IGRp
+c3BsYXk6IHBhbmVsOiBBZGQgQk9FIHR2MTAxd3VtLW4xNiBwYW5lbCBiaW5kaW5ncwogIGRybS9w
+YW5lbDogc3VwcG9ydCBmb3IgQk9FIHR2MTAxd3VtLW5sNiB3dXhnYSBkc2kgdmlkZW8gbW9kZSBw
+YW5lbAogIGR0LWJpbmRpbmdzOiBkaXNwbGF5OiBwYW5lbDogYWRkIGF1byBrZDEwMW44MC00NW5h
+IHBhbmVsIGJpbmRpbmdzCiAgZHJtL3BhbmVsOiBzdXBwb3J0IGZvciBhdW8sa2QxMDFuODAtNDVu
+YSB3dXhnYSBkc2kgdmlkZW8gbW9kZSBwYW5lbAoKIC4uLi9kaXNwbGF5L3BhbmVsL2F1byxrZDEw
+MW44MC00NW5hLnR4dCAgICAgICB8ICAzNCArCiAuLi4vZGlzcGxheS9wYW5lbC9ib2UsdHYxMDF3
+dW0tbmw2LnR4dCAgICAgICAgfCAgMzQgKwogZHJpdmVycy9ncHUvZHJtL3BhbmVsL0tjb25maWcg
+ICAgICAgICAgICAgICAgIHwgICA5ICsKIGRyaXZlcnMvZ3B1L2RybS9wYW5lbC9NYWtlZmlsZSAg
+ICAgICAgICAgICAgICB8ICAgMSArCiAuLi4vZ3B1L2RybS9wYW5lbC9wYW5lbC1ib2UtdHYxMDF3
+dW0tbmw2LmMgICAgfCA3NTMgKysrKysrKysrKysrKysrKysrCiA1IGZpbGVzIGNoYW5nZWQsIDgz
+MSBpbnNlcnRpb25zKCspCiBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0
+cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcGFuZWwvYXVvLGtkMTAxbjgwLTQ1bmEudHh0CiBjcmVhdGUg
+bW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcGFu
+ZWwvYm9lLHR2MTAxd3VtLW5sNi50eHQKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9k
+cm0vcGFuZWwvcGFuZWwtYm9lLXR2MTAxd3VtLW5sNi5jCgotLSAKMi4yMS4wCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
+aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
+a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
