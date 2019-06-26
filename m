@@ -1,31 +1,74 @@
-From: Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: Re: [PATCH v2] clk: mediatek: mt8183: Register 13MHz clock earlier
- for clocksource
-Date: Wed, 26 Jun 2019 09:28:47 +0800
-Message-ID: <1561512527.24282.13.camel@mtksdaap41>
-References: <1560132969-1960-1-git-send-email-weiyi.lu@mediatek.com>
-         <20190625221512.B691620883@mail.kernel.org>
+From: Andrew Lunn <andrew@lunn.ch>
+Subject: Re: [PATCH RFC net-next 1/5] net: dsa: mt7530: Convert to PHYLINK API
+Date: Wed, 26 Jun 2019 03:52:50 +0200
+Message-ID: <20190626015250.GH17872@lunn.ch>
+References: <20190624145251.4849-1-opensource@vdorst.com>
+ <20190624145251.4849-2-opensource@vdorst.com>
+ <20190624153950.hdsuhrvfd77heyor@shell.armlinux.org.uk>
+ <6f80325d-4b42-6174-e050-48626f7a3662@gmail.com>
+ <20190625215329.5ubixxiwprnubwmv@shell.armlinux.org.uk>
+ <CA+h21hqK0VMtHpZ6eka9ESuMhsFTw2mx+c0GYmxq4_G_YmiVpg@mail.gmail.com>
+ <20190625225759.zztqgnwtk4v7milp@shell.armlinux.org.uk>
+ <CA+h21hq_w8-96ehKYxcziSq1TjOjoKduZ+pB3umBfjODaKWd+A@mail.gmail.com>
+ <CA+h21hrsosGVQczMWy1+WfyNGZCpeMFerUwvWb-z+TTjrSOP1Q@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190625221512.B691620883@mail.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh@kernel.org>, James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org, Dehui Sun <dehui.sun@mediatek.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <netdev-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CA+h21hrsosGVQczMWy1+WfyNGZCpeMFerUwvWb-z+TTjrSOP1Q@mail.gmail.com>
+Sender: netdev-owner@vger.kernel.org
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Russell King - ARM Linux admin <linux@armlinux.org.uk>, =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>, sean.wang@mediatek.com, Florian Fainelli <f.fainelli@gmail.com>, "David S. Miller" <davem@davemloft.net>, matthias.bgg@gmail.com, Vivien Didelot <vivien.didelot@gmail.com>, frank-w@public-files.de, netdev <netdev@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-06-25 at 15:15 -0700, Stephen Boyd wrote:
-> Quoting Weiyi Lu (2019-06-09 19:16:09)
-> > The 13MHz clock should be registered before clocksource driver is
-> > initialized. Use CLK_OF_DECLARE_DRIVER() to guarantee.
-> > 
-> > Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+On Wed, Jun 26, 2019 at 02:13:25AM +0300, Vladimir Oltean wrote:
+> On Wed, 26 Jun 2019 at 02:10, Vladimir Oltean <olteanv@gmail.com> wrote:
+> >
+> > On Wed, 26 Jun 2019 at 01:58, Russell King - ARM Linux admin
+> > <linux@armlinux.org.uk> wrote:
+> > >
+> > > On Wed, Jun 26, 2019 at 01:14:59AM +0300, Vladimir Oltean wrote:
+> > > > On Wed, 26 Jun 2019 at 00:53, Russell King - ARM Linux admin
+> > > > <linux@armlinux.org.uk> wrote:
+> > > > >
+> > > > > On Tue, Jun 25, 2019 at 11:24:01PM +0300, Vladimir Oltean wrote:
+> > > > > > Hi Russell,
+> > > > > >
+> > > > > > On 6/24/19 6:39 PM, Russell King - ARM Linux admin wrote:
+> > > > > > > This should be removed - state->link is not for use in mac_config.
+> > > > > > > Even in fixed mode, the link can be brought up/down by means of a
+> > > > > > > gpio, and this should be dealt with via the mac_link_* functions.
+> > > > > > >
+> > > > > >
+> > > > > > What do you mean exactly that state->link is not for use, is that true in
+> > > > > > general?
+> > > > >
+> > > > > Yes.  mac_config() should not touch it; it is not always in a defined
+> > > > > state.  For example, if you set modes via ethtool (the
+> > > > > ethtool_ksettings_set API) then state->link will probably contain
+> > > > > zero irrespective of the true link state.
+> > > > >
+> > > >
+> > > > Experimentally, state->link is zero at the same time as state->speed
+> > > > is -1, so just ignoring !state->link made sense. This is not in-band
+> > > > AN. What is your suggestion? Should I proceed to try and configure the
+> > > > MAC for SPEED_UNKNOWN?
+> > >
+> > > What would you have done with a PHY when the link is down, what speed
+> > > would you have configured in the phylib adjust_link callback?  phylib
+> > > also sets SPEED_UNKNOWN/DUPLEX_UNKNOWN when the link is down.
+> > >
+> >
+> > With phylib, I'd make the driver ignore the speed and do nothing.
+> > With phylink, I'd make the core not call mac_config.
+> > But what happened is I saw phylink call mac_config anyway, said
+> > 'weird' and proceeded to ignore it as I would have for phylib.
+> > I'm just not understanding your position - it seems like you're
+> > implying there's a bug in phylink and the function call with
+> > MLO_AN_FIXED, state->link=0 and state->speed=-1 should not have taken
 > 
-> Do you have a Fixes: tag in mind? Otherwise, the patch looks OK to me.
+> I meant MLO_AN_PHY, sorry.
 
-Yes, Fixes: acddfc2c261b ("clk: mediatek: Add MT8183 clock support")
-but I forgot to have it in the commit message. Thanks for reminding.
-I'll update a V3 patch with Fixes tag. Many thanks. 
+The MAC could go into a low power mode.
 
-> 
+    Andrew
