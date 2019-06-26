@@ -1,88 +1,83 @@
-From: Sakari Ailus <sakari.ailus@iki.fi>
-Subject: Re: [PATCH 1/3] media: i2c: ov02a10: Add ov02a10 camera sensor driver
-Date: Wed, 26 Jun 2019 12:58:26 +0300
-Message-ID: <20190626095826.3w4lj4vmfnfgxv53@valkosipuli.retiisi.org.uk>
-References: <20190523102204.24112-1-dongchun.zhu@mediatek.com>
- <20190523102204.24112-2-dongchun.zhu@mediatek.com>
- <20190531170307.tv652oech6vh4rye@valkosipuli.retiisi.org.uk>
- <1560262189.9392.42.camel@mhfsdcap03>
+From: Wolfram Sang <wsa@the-dreams.de>
+Subject: Re: [PATCH 1/2] dt-bindings: i2c: Add MediaTek i2c AC timing binding
+Date: Wed, 26 Jun 2019 15:39:41 +0200
+Message-ID: <20190626133941.GL801@ninjato>
+References: <1560240715-22595-1-git-send-email-qii.wang@mediatek.com>
+ <1560240715-22595-2-git-send-email-qii.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Type: multipart/signed; micalg=pgp-sha512;
+        protocol="application/pgp-signature"; boundary="VBq/nvTu32OVLBUP"
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1560262189.9392.42.camel@mhfsdcap03>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Dongchun Zhu <dongchun.zhu@mediatek.com>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, menghui.lin@mediatek.com, tfiga@google.com, shengnan.wang@mediatek.com, louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+In-Reply-To: <1560240715-22595-2-git-send-email-qii.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Qii Wang <qii.wang@mediatek.com>
+Cc: linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, leilk.liu@mediatek.com, matthias.bgg@gmail.com, robh+dt@kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Dongchun,
 
-On Tue, Jun 11, 2019 at 10:09:49PM +0800, Dongchun Zhu wrote:
-...
-> > > +		return -EINVAL;
-> > > +
-> > > +	fse->code = MEDIA_BUS_FMT_SBGGR10_1X10;
-> > 
-> > Instead you need check the caller set this. The frame sizes could be
-> > different for different media bus formats.
-> > 
-> 
-> For one sensor mode, there should be one Bayer sequence.
-> In next version, this para could be changed when mirror/flip enabled.
-> 
+--VBq/nvTu32OVLBUP
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-You should change the check based on the configuration.
+Hi,
 
-...
+On Tue, Jun 11, 2019 at 04:11:54PM +0800, Qii Wang wrote:
+> Add i2c AC timing binding to binding file. It can give the AC
+> timing parameters to meet I2C specification at different speed.
+>=20
+> Signed-off-by: Qii Wang <qii.wang@mediatek.com>
 
-> > > +#ifdef CONFIG_VIDEO_V4L2_SUBDEV_API
-> > > +static int ov02a10_open(struct v4l2_subdev *sd, struct v4l2_subdev_fh *fh)
-> > > +{
-> > > +	struct ov02a10 *ov02a10 = to_ov02a10(sd);
-> > > +	struct v4l2_mbus_framefmt *try_fmt;
-> > > +
-> > > +	mutex_lock(&ov02a10->mutex);
-> > > +
-> > > +	try_fmt = v4l2_subdev_get_try_format(sd, fh->pad, 0);
-> > > +	/* Initialize try_fmt */
-> > > +	ov02a10_fill_fmt(&supported_modes[0], try_fmt);
-> > 
-> > If this is all you need, you should implement the init_cfg pad op.
-> > 
-> 
-> It seems that other sensors (for instance, OV8856, OV13858 etc.)
-> initialize try_fmt in the same way.
+I think this is a too specific 1:1 mapping of your register set into DT
+world. We already have these generic parameters:
 
-Yes; these drivers should be changed as well.
+- clock-frequency
+        frequency of bus clock in Hz.
 
-...
+- i2c-scl-falling-time-ns
+        Number of nanoseconds the SCL signal takes to fall; t(f) in the I2C
+        specification.
 
-> > > +					  ov02a10_test_pattern_val[ctrl->val]);
-> > > +		break;
-> > > +	case V4L2_CID_HFLIP:
-> > > +		if (ov02a10->streaming)
-> > > +			return -EBUSY;
-> > 
-> > You could instead use v4l2_ctrl_grab() (or the unlocked variant) when
-> > streaming starts. Same below.
-> > 
-> 
-> It seems that other sensors (for instance, OV2680 etc.)
-> call V4L2_CID_HFLIP/V4L2_CID_VFLIP in the same way.
+- i2c-scl-internal-delay-ns
+        Number of nanoseconds the IP core additionally needs to setup SCL.
 
-That's ok.
+- i2c-scl-rising-time-ns
+        Number of nanoseconds the SCL signal takes to rise; t(r) in the I2C
+        specification.
 
--- 
+- i2c-sda-falling-time-ns
+        Number of nanoseconds the SDA signal takes to fall; t(f) in the I2C
+        specification.
+
+(check Documentation/devicetree/bindings/i2c/i2c.txt)
+
+Can't you use those to derive your values from that? Which ones are you mis=
+sing
+if not?
+
 Regards,
 
-Sakari Ailus
+   Wolfram
+
+--VBq/nvTu32OVLBUP
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl0TdZ0ACgkQFA3kzBSg
+KbYdwg//dQgqHhmthL0M3JNNdA09iWqGwQ9bMoPtMtoM/+hklFt9CRstWC+xJM/Z
+R0urToI6NYfU6uUHLyk/Rm+qLRpxjdm49flzF/e0MbEEwW1xXifpbQJOK5Dcwb1w
+qRI46Nb8IjHa3+P6az+WgHlKg/1xURj5oPnVgbl/vNsxXbdubtpYUlOm10WROnNE
+vx+ge9+OzERZ2KhNkOWbvx3szlBE5KF183VZVfXYvYnR4X0Uz8LJt1H90o9ointF
+5dXC/UzCOBOkyp5lL4KqbDTcoSeaTEWkAnt3tKnyXig+vgK1O/aeOdAENd4m2xsh
+1kfdlwXrACKg5zUN5jUPF4KF9r0+YI2GJZHgyxqmzuWabRd9F1o+rXvKwintgJ0L
+Ffb9SOLW7fqDVJKBCOkFOglJZUOWxeU6TfsQWYwNhYorI0HcJ+EcQR4195ZyhtD3
+zEEpeh6Qpxk+maQyvO9NzBd7+HLLEUqHQZWTsOctYucIyLbpolJ2Iq6V9LasLiwO
+U5N29cEdhN/YLXC+aAzBu9iJlPc2C+blG99j80l3D/uDY42G0cHXkThzgDSSTEmx
+lIz41aICZKF/3RHgbSz7yEKH5ulFOvd8qFz5Yn2nQQEHKzm/sN1XU0o3VgWIEnbN
+byFUoWjaiu3xM0xFmKf5WtZ0qpRM0y5VIUO27JwSkBREDVJ7QV4=
+=h1Pk
+-----END PGP SIGNATURE-----
+
+--VBq/nvTu32OVLBUP--
