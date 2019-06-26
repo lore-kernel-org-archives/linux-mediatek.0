@@ -1,83 +1,96 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH 1/2] dt-bindings: i2c: Add MediaTek i2c AC timing binding
-Date: Wed, 26 Jun 2019 15:39:41 +0200
-Message-ID: <20190626133941.GL801@ninjato>
-References: <1560240715-22595-1-git-send-email-qii.wang@mediatek.com>
- <1560240715-22595-2-git-send-email-qii.wang@mediatek.com>
+From: Boris Brezillon <boris.brezillon@collabora.com>
+Subject: Re: [PATCH v2 1/2] dt-bindings: i3c: Document MediaTek I3C master
+ bindings
+Date: Wed, 26 Jun 2019 18:23:39 +0200
+Message-ID: <20190626182339.0c6301a2@collabora.com>
+References: <1561527388-4829-1-git-send-email-qii.wang@mediatek.com>
+        <1561527388-4829-2-git-send-email-qii.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="VBq/nvTu32OVLBUP"
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1560240715-22595-2-git-send-email-qii.wang@mediatek.com>
+In-Reply-To: <1561527388-4829-2-git-send-email-qii.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Qii Wang <qii.wang@mediatek.com>
-Cc: linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, leilk.liu@mediatek.com, matthias.bgg@gmail.com, robh+dt@kernel.org
+Cc: bbrezillon@kernel.org, matthias.bgg@gmail.com, linux-i3c@lists.infradead.org, gregkh@linuxfoundation.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, leilk.liu@mediatek.com, liguo.zhang@mediatek.com, xinping.qian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
+On Wed, 26 Jun 2019 13:36:27 +0800
+Qii Wang <qii.wang@mediatek.com> wrote:
 
---VBq/nvTu32OVLBUP
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-On Tue, Jun 11, 2019 at 04:11:54PM +0800, Qii Wang wrote:
-> Add i2c AC timing binding to binding file. It can give the AC
-> timing parameters to meet I2C specification at different speed.
->=20
+> Document MediaTek I3C master DT bindings.
+> 
 > Signed-off-by: Qii Wang <qii.wang@mediatek.com>
+> ---
+>  .../devicetree/bindings/i3c/mtk,i3c-master.txt     |   47 ++++++++++++++++++++
+>  1 file changed, 47 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt b/Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt
+> new file mode 100644
+> index 0000000..3fd4f17
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt
+> @@ -0,0 +1,47 @@
+> +Bindings for MediaTek I3C master block
+> +=====================================
+> +
+> +Required properties:
+> +--------------------
+> +- compatible: shall be "mediatek,i3c-master"
+> +- reg: physical base address of the controller and apdma base, length of
+> +  memory mapped region.
+> +- reg-names: should be "main" for controller and "dma" for apdma.
+> +- interrupts: interrupt number to the cpu.
 
-I think this is a too specific 1:1 mapping of your register set into DT
-world. We already have these generic parameters:
+Depending on the interrupt controller, each interrupt cell might
+contain more than just the interrupt number.
 
-- clock-frequency
-        frequency of bus clock in Hz.
+> +- clocks: clock name from clock manager.
 
-- i2c-scl-falling-time-ns
-        Number of nanoseconds the SCL signal takes to fall; t(f) in the I2C
-        specification.
+This property does not contain clock names but clk references.
 
-- i2c-scl-internal-delay-ns
-        Number of nanoseconds the IP core additionally needs to setup SCL.
+> +- clock-names: must include "main" and "dma".
+> +
+> +Mandatory properties defined by the generic binding (see
+> +Documentation/devicetree/bindings/i3c/i3c.txt for more details):
+> +
+> +- #address-cells: shall be set to 3
+> +- #size-cells: shall be set to 0
+> +
+> +Optional properties defined by the generic binding (see
+> +Documentation/devicetree/bindings/i3c/i3c.txt for more details):
+> +
+> +- i2c-scl-hz
+> +- i3c-scl-hz
+> +
+> +I3C device connected on the bus follow the generic description (see
+> +Documentation/devicetree/bindings/i3c/i3c.txt for more details).
+> +
+> +Example:
+> +
+> +	i3c0: i3c@1100d000 {
+> +		compatible = "mediatek,i3c-master";
+> +		reg = <0x1100d000 0x100>,
+> +		      <0x11000300 0x80>;
+> +		reg-names = "main", "dma";
+> +		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_LOW>;
+> +		clocks = <&i3c0_ck>, <&ap_dma_ck>;
+> +		clock-names = "main", "dma";
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +		i2c-scl-hz = <100000>;
+> +
+> +		nunchuk: nunchuk@52 {
+> +			compatible = "nintendo,nunchuk";
+> +			reg = <0x52 0x80000010 0>;
 
-- i2c-scl-rising-time-ns
-        Number of nanoseconds the SCL signal takes to rise; t(r) in the I2C
-        specification.
+reg is wrong here, should be
 
-- i2c-sda-falling-time-ns
-        Number of nanoseconds the SDA signal takes to fall; t(f) in the I2C
-        specification.
+			reg = <0x52 0x0 0x10>;
 
-(check Documentation/devicetree/bindings/i2c/i2c.txt)
+While at it, can you send a patch to fix the example in the cadence
+binding doc?
 
-Can't you use those to derive your values from that? Which ones are you mis=
-sing
-if not?
-
-Regards,
-
-   Wolfram
-
---VBq/nvTu32OVLBUP
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl0TdZ0ACgkQFA3kzBSg
-KbYdwg//dQgqHhmthL0M3JNNdA09iWqGwQ9bMoPtMtoM/+hklFt9CRstWC+xJM/Z
-R0urToI6NYfU6uUHLyk/Rm+qLRpxjdm49flzF/e0MbEEwW1xXifpbQJOK5Dcwb1w
-qRI46Nb8IjHa3+P6az+WgHlKg/1xURj5oPnVgbl/vNsxXbdubtpYUlOm10WROnNE
-vx+ge9+OzERZ2KhNkOWbvx3szlBE5KF183VZVfXYvYnR4X0Uz8LJt1H90o9ointF
-5dXC/UzCOBOkyp5lL4KqbDTcoSeaTEWkAnt3tKnyXig+vgK1O/aeOdAENd4m2xsh
-1kfdlwXrACKg5zUN5jUPF4KF9r0+YI2GJZHgyxqmzuWabRd9F1o+rXvKwintgJ0L
-Ffb9SOLW7fqDVJKBCOkFOglJZUOWxeU6TfsQWYwNhYorI0HcJ+EcQR4195ZyhtD3
-zEEpeh6Qpxk+maQyvO9NzBd7+HLLEUqHQZWTsOctYucIyLbpolJ2Iq6V9LasLiwO
-U5N29cEdhN/YLXC+aAzBu9iJlPc2C+blG99j80l3D/uDY42G0cHXkThzgDSSTEmx
-lIz41aICZKF/3RHgbSz7yEKH5ulFOvd8qFz5Yn2nQQEHKzm/sN1XU0o3VgWIEnbN
-byFUoWjaiu3xM0xFmKf5WtZ0qpRM0y5VIUO27JwSkBREDVJ7QV4=
-=h1Pk
------END PGP SIGNATURE-----
-
---VBq/nvTu32OVLBUP--
+> +		};
+> +	};
