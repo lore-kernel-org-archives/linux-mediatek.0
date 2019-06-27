@@ -1,60 +1,125 @@
-From: Masahiro Yamada <yamada.masahiro@socionext.com>
-Subject: Re: [PATCH v2 0/4] Compile-test UAPI and kernel headers
-Date: Fri, 28 Jun 2019 01:42:00 +0900
-Message-ID: <CAK7LNAS=Uhyq9AitSqRR2aKOg18aae8Ce9FXTufgJq3KNhmsUg@mail.gmail.com>
-References: <20190627014617.600-1-yamada.masahiro@socionext.com> <87y31np89f.fsf@intel.com>
+From: Daniel Santos <daniel.santos@pobox.com>
+Subject: Re: [PATCH RFC net-next 1/5] net: dsa: mt7530: Convert to PHYLINK API
+Date: Thu, 27 Jun 2019 14:09:18 -0500
+Message-ID: <e469daa1-3e28-db9c-e29a-7f68cc676fda@pobox.com>
+References: <20190624145251.4849-1-opensource@vdorst.com>
+ <20190624145251.4849-2-opensource@vdorst.com>
+ <20190624153950.hdsuhrvfd77heyor@shell.armlinux.org.uk>
+ <20190625113158.Horde.pCaJOVUsgyhYLd5Diz5EZKI@www.vdorst.com>
+ <20190625121030.m5w7wi3rpezhfgyo@shell.armlinux.org.uk>
+ <1ad9f9a5-8f39-40bd-94bb-6b700f30c4ba@pobox.com>
+ <20190625190246.GA27733@lunn.ch>
+ <4fc51dc4-0eec-30d7-86d1-3404819cf6fe@pobox.com>
+ <20190625204148.GB27733@lunn.ch>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <87y31np89f.fsf@intel.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jani Nikula <jani.nikula@linux.intel.com>
-Cc: Linux Kbuild mailing list <linux-kbuild@vger.kernel.org>, Sam Ravnborg <sam@ravnborg.org>, Tony Luck <tony.luck@intel.com>, "open list:DOCUMENTATION" <linux-doc@vger.kernel.org>, John Fastabend <john.fastabend@gmail.com>, Jonathan Corbet <corbet@lwn.net>, Jakub Kicinski <jakub.kicinski@netronome.com>, linux-riscv@lists.infradead.org, Daniel Borkmann <daniel@iogearbox.net>, xdp-newbies@vger.kernel.org, Anton Vorontsov <anton@enomsg.org>, Palmer Dabbelt <palmer@sifive.com>, Matthias Brugger <matthias.bgg@gmail.com>, Song Liu <songliubraving@fb.com>, Yonghong Song <yhs@fb.com>, Michal Marek <michal.lkml@markovi.net>, Jesper Dangaard Brouer <hawk@kernel.org>, Martin KaFai Lau <kafai@fb.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@list>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20190625204148.GB27733@lunn.ch>
+Content-Language: en-US
+Sender: netdev-owner@vger.kernel.org
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Russell King - ARM Linux admin <linux@armlinux.org.uk>, =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>, sean.wang@mediatek.com, f.fainelli@gmail.com, davem@davemloft.net, matthias.bgg@gmail.com, vivien.didelot@gmail.com, frank-w@public-files.de, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jun 27, 2019 at 8:36 PM Jani Nikula <jani.nikula@linux.intel.com> wrote:
+
+
+On 6/25/19 3:41 PM, Andrew Lunn wrote:
+> On Tue, Jun 25, 2019 at 02:27:55PM -0500, Daniel Santos wrote:
+>> On 6/25/19 2:02 PM, Andrew Lunn wrote:
+>>>> But will there still be a mechanism to ignore link partner's adverti=
+sing
+>>>> and force these parameters?
+>>> >From man 1 ethtool:
+>>>
+>>>        -a --show-pause
+>>>               Queries the specified Ethernet device for pause paramet=
+er information.
+>>>
+>>>        -A --pause
+>>>               Changes the pause parameters of the specified Ethernet =
+device.
+>>>
+>>>            autoneg on|off
+>>>                   Specifies whether pause autonegotiation should be e=
+nabled.
+>>>
+>>>            rx on|off
+>>>                   Specifies whether RX pause should be enabled.
+>>>
+>>>            tx on|off
+>>>                   Specifies whether TX pause should be enabled.
+>>>
+>>> You need to check the driver to see if it actually implements this
+>>> ethtool call, but that is how it should be configured.
+>>>
+>>> 	Andrew
+>>>
+>> Thank you Andrew,
+>>
+>> So in this context, my question is the difference between "enabling" a=
+nd
+>> "forcing".=C2=A0 Here's that register for the mt7620 (which has an mt7=
+530 on
+>> its die): https://imgur.com/a/pTk0668=C2=A0 I believe this is also wha=
+t Ren=C3=A9
+>> is seeking clarity on?
+> Lets start with normal operation. If the MAC supports pause or asym
+> pause, it calls phy_support_sym_pause() or phy_support_asym_pause().
+> phylib will then configure the PHY to advertise pause as appropriate.
+> Once auto-neg has completed, the results of the negotiation are set in
+> phydev. So phdev->pause and phydev->asym_pause. The MAC callback is
+> then used to tell the MAC about the autoneg results. The MAC should be
+> programmed using the values in phdev->pause and phydev->asym_pause.
 >
-> On Thu, 27 Jun 2019, Masahiro Yamada <yamada.masahiro@socionext.com> wrote:
-> > 1/4: reworked v2.
-> >
-> > 2/4: fix a flaw I noticed when I was working on this series
-> >
-> > 3/4: maybe useful for 4/4 and in some other places
-> >
-> > 4/4: v2. compile as many headers as possible.
-> >
-> >
-> > Changes in v2:
-> >  - Add CONFIG_CPU_{BIG,LITTLE}_ENDIAN guard to avoid build error
-> >  - Use 'header-test-' instead of 'no-header-test'
-> >  - Avoid weird 'find' warning when cleaning
-> >   - New patch
-> >   - New patch
-> >   - Add everything to test coverage, and exclude broken ones
-> >   - Rename 'Makefile' to 'Kbuild'
-> >   - Add CONFIG_KERNEL_HEADER_TEST option
-> >
-> > Masahiro Yamada (4):
-> >   kbuild: compile-test UAPI headers to ensure they are self-contained
-> >   kbuild: do not create wrappers for header-test-y
-> >   kbuild: support header-test-pattern-y
-> >   kbuild: compile-test kernel headers to ensure they are self-contained
+> For ethtool, the MAC driver needs to implement .get_pauseparam and
+> .set_pauseparam. The set_pauseparam needs to validate the settings,
+> using phy_validate_pause(). If valid, phy_set_asym_pause() is used to
+> tell the PHY about the new configuration. This will trigger a new
+> auto-neg if auto-neg is enabled, and the results will be passed back
+> in the usual way. If auto-neg is disabled, or pause auto-neg is
+> disabled, the MAC should configure pause directly based on the
+> settings passed.
 >
-> [responding here because I didn't receive the actual patch]
+> Looking at the data sheet page, you want FORCE_MODE_Pn set. You never
+> want the MAC directly talking to the PHY. Bad things will happen.
+
+So what exactly do you mean by the MAC directly talking to the PHY?=C2=A0=
+ Do
+you mean setting speed, duplex, etc. via the MAC registers instead of
+via MDIO to the MII registers of the PHY?
+
+> Then use FORCE_RX_FC_Pn and FORCE_TX_Pn to reflect phydev->pause and
+> phydev->asym_pause.
 >
-> This looks like it's doing what it's supposed to, but I ran into a bunch
-> of build fails with CONFIG_OF=n. Sent a fix to one [1], but stopped at
-> the next. Looks like you'll have to exclude more. And I'm pretty sure
-> we'll uncover more configurations where this will fail.
+> The same idea applies when using phylink.
+>
+>     Andrew
 
-Thanks for testing.
+You're help is greatly appreciated here.=C2=A0 Admittedly, I'm also tryin=
+g to
+get this working in the now deprecated swconfig for a 3.18 kernel that's
+in production.=C2=A0 In my code, I had just set the appropriate bits in b=
+oth
+the MAC and mii registers -- did I just shoot myself in the foot or only
+toe or two? :)=C2=A0 I should probably start a separate thread for this.=C2=
+=A0
+(And probably attempt to wrestle an mt7530 programmer's guide out of
+MediaTek!)
 
-I did more compile-tests, and excluded more headers in v3.
+Thanks,
+Daniel
 
-Thanks.
+PS: I found a rather humorous quote from the mt7621 datasheet regarding
+the MAC registers (at 0x3000 for port 0, 0x3100 for port 1, etc.):
 
+    2.4 Link Status
 
+    You can find MAC control register put at 0x3500 for MAC 5, and
+    0x3600 for MAC 6. You can change
+    MAC ability at this register. We would suggest don=E2=80=99t use the
+    register 0x3000 to 0x3400. It may not
+    work.
 
--- 
-Best Regards
-Masahiro Yamada
+I'm not sure if this only applies to something in between the mt7621 and
+it's internal mt7530 or not.
