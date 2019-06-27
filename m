@@ -1,57 +1,51 @@
-From: Masahiro Yamada <yamada.masahiro@socionext.com>
-Subject: [PATCH v2 0/4] Compile-test UAPI and kernel headers
-Date: Thu, 27 Jun 2019 10:46:13 +0900
-Message-ID: <20190627014617.600-1-yamada.masahiro@socionext.com>
+From: Jitao Shi <jitao.shi@mediatek.com>
+Subject: [v5 0/3] Support mipitx for mt8183
+Date: Thu, 27 Jun 2019 10:58:58 +0800
+Message-ID: <20190627025901.28418-1-jitao.shi@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kbuild@vger.kernel.org
-Cc: Sam Ravnborg <sam@ravnborg.org>, Masahiro Yamada <yamada.masahiro@socionext.com>, Tony Luck <tony.luck@intel.com>, linux-doc@vger.kernel.org, John Fastabend <john.fastabend@gmail.com>, Jonathan Corbet <corbet@lwn.net>, Jakub Kicinski <jakub.kicinski@netronome.com>, linux-riscv@lists.infradead.org, Daniel Borkmann <daniel@iogearbox.net>, xdp-newbies@vger.kernel.org, Anton Vorontsov <anton@enomsg.org>, Palmer Dabbelt <palmer@sifive.com>, Matthias Brugger <matthias.bgg@gmail.com>, Song Liu <songliubraving@fb.com>, Yonghong Song <yhs@fb.com>, Michal Marek <michal.lkml@markovi.net>, Jesper Dangaard Brouer <hawk@kernel.org>, Martin KaFai Lau <kafai@fb.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Albert Ou <aou@eecs.berkel>
+To: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Jitao Shi <jitao.shi@mediatek.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, cawa.cheng@mediatek.com, bibby.hsieh@mediatek.com, ck.hu@mediate
 List-Id: linux-mediatek@lists.infradead.org
 
+Change since v4:
+ - fine tune the mipi_tx->ref_clk and mipi_tx->pll sequence
+   1. Prepare mipi_tx->ref_clk
+   2. Prepare mipi_tx->pll
+   3. Enable mipi_tx->ref_clk
+   4. Enable mipi_tx->pll
 
-1/4: reworked v2.
+Changes since v3:
+ - turn off PLL before setting PLL parameters.
 
-2/4: fix a flaw I noticed when I was working on this series
+Changes since v2:
+ - update Acked-by: Rob Herring <robh@kernel.org>
+ - update mt8183 max bit rate support
 
-3/4: maybe useful for 4/4 and in some other places
+Changes since v1:
+ - update dt-bindings document for mt8183 mipitx.
+ - remove mtk_mipitx_clk_get_ops and assign clk_ops in probe.
+ - fix the lincence
+ - remove txdiv1 from mtk_mipi_tx_pll_prepare
 
-4/4: v2. compile as many headers as possible.
+Jitao Shi (3):
+  dt-bindings: display: mediatek: update dsi supported chips
+  drm/mediatek: separate mipi_tx to different file
+  drm/mediatek: add mipi_tx driver for mt8183
 
-
-Changes in v2:
- - Add CONFIG_CPU_{BIG,LITTLE}_ENDIAN guard to avoid build error
- - Use 'header-test-' instead of 'no-header-test'
- - Avoid weird 'find' warning when cleaning
-  - New patch
-  - New patch
-  - Add everything to test coverage, and exclude broken ones
-  - Rename 'Makefile' to 'Kbuild'
-  - Add CONFIG_KERNEL_HEADER_TEST option
-
-Masahiro Yamada (4):
-  kbuild: compile-test UAPI headers to ensure they are self-contained
-  kbuild: do not create wrappers for header-test-y
-  kbuild: support header-test-pattern-y
-  kbuild: compile-test kernel headers to ensure they are self-contained
-
- .gitignore                         |    1 -
- Documentation/dontdiff             |    1 -
- Documentation/kbuild/makefiles.txt |   13 +-
- Makefile                           |    4 +-
- include/Kbuild                     | 1134 ++++++++++++++++++++++++++++
- init/Kconfig                       |   22 +
- scripts/Makefile.build             |   10 +-
- scripts/Makefile.lib               |   12 +-
- scripts/cc-system-headers.sh       |    8 +
- usr/.gitignore                     |    1 -
- usr/Makefile                       |    2 +
- usr/include/.gitignore             |    3 +
- usr/include/Makefile               |  133 ++++
- 13 files changed, 1331 insertions(+), 13 deletions(-)
- create mode 100644 include/Kbuild
- create mode 100755 scripts/cc-system-headers.sh
- create mode 100644 usr/include/.gitignore
- create mode 100644 usr/include/Makefile
+ .../display/mediatek/mediatek,dsi.txt         |   4 +-
+ drivers/gpu/drm/mediatek/Makefile             |   2 +
+ drivers/gpu/drm/mediatek/mtk_mipi_tx.c        | 345 ++----------------
+ drivers/gpu/drm/mediatek/mtk_mipi_tx.h        |  50 +++
+ drivers/gpu/drm/mediatek/mtk_mt8173_mipi_tx.c | 289 +++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c | 181 +++++++++
+ 6 files changed, 550 insertions(+), 321 deletions(-)
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_mipi_tx.h
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_mt8173_mipi_tx.c
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c
 
 -- 
-2.17.1
+2.21.0
