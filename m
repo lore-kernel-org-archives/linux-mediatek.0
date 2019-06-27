@@ -1,54 +1,82 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH v2] pinctrl: mediatek: Update cur_mask in mask/mask ops
-Date: Thu, 27 Jun 2019 12:23:49 +0100
-Message-ID: <CACRpkdaK1A2eS5_5Fg40hTV3bwRNvRmqfWidVMpNkxFkzVEVmw@mail.gmail.com>
-References: <20190626035445.236406-1-drinkcat@chromium.org>
+From: Jani Nikula <jani.nikula@linux.intel.com>
+Subject: Re: [PATCH v2 0/4] Compile-test UAPI and kernel headers
+Date: Thu, 27 Jun 2019 14:39:24 +0300
+Message-ID: <87y31np89f.fsf@intel.com>
+References: <20190627014617.600-1-yamada.masahiro@socionext.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190626035445.236406-1-drinkcat@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Nicolas Boichat <drinkcat@chromium.org>
-Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Chuanjia Liu <Chuanjia.Liu@mediatek.com>, Evan Green <evgreen@chromium.org>, Stephen Boyd <swboyd@chromium.org>
+Content-Type: text/plain
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20190627014617.600-1-yamada.masahiro@socionext.com>
+Sender: netdev-owner@vger.kernel.org
+To: linux-kbuild@vger.kernel.org
+Cc: Sam Ravnborg <sam@ravnborg.org>, Masahiro Yamada <yamada.masahiro@socionext.com>, Tony Luck <tony.luck@intel.com>, linux-doc@vger.kernel.org, John Fastabend <john.fastabend@gmail.com>, Jonathan Corbet <corbet@lwn.net>, Jakub Kicinski <jakub.kicinski@netronome.com>, linux-riscv@lists.infradead.org, Daniel Borkmann <daniel@iogearbox.net>, xdp-newbies@vger.kernel.org, Anton Vorontsov <anton@enomsg.org>, Palmer Dabbelt <palmer@sifive.com>, Matthias Brugger <matthias.bgg@gmail.com>, Song Liu <songliubraving@fb.com>, Yonghong Song <yhs@fb.com>, Michal Marek <michal.lkml@markovi.net>, Jesper Dangaard Brouer <hawk@kernel.org>, Martin KaFai Lau <kafai@fb.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Albert Ou <aou@eecs.berkel>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jun 26, 2019 at 4:54 AM Nicolas Boichat <drinkcat@chromium.org> wrote:
+On Thu, 27 Jun 2019, Masahiro Yamada <yamada.masahiro@socionext.com> wrote:
+> 1/4: reworked v2.
+>
+> 2/4: fix a flaw I noticed when I was working on this series
+>
+> 3/4: maybe useful for 4/4 and in some other places
+>
+> 4/4: v2. compile as many headers as possible.
+>
+>
+> Changes in v2:
+>  - Add CONFIG_CPU_{BIG,LITTLE}_ENDIAN guard to avoid build error
+>  - Use 'header-test-' instead of 'no-header-test'
+>  - Avoid weird 'find' warning when cleaning
+>   - New patch
+>   - New patch
+>   - Add everything to test coverage, and exclude broken ones
+>   - Rename 'Makefile' to 'Kbuild'
+>   - Add CONFIG_KERNEL_HEADER_TEST option
+>
+> Masahiro Yamada (4):
+>   kbuild: compile-test UAPI headers to ensure they are self-contained
+>   kbuild: do not create wrappers for header-test-y
+>   kbuild: support header-test-pattern-y
+>   kbuild: compile-test kernel headers to ensure they are self-contained
 
-> During suspend/resume, mtk_eint_mask may be called while
-> wake_mask is active. For example, this happens if a wake-source
-> with an active interrupt handler wakes the system:
-> irq/pm.c:irq_pm_check_wakeup would disable the interrupt, so
-> that it can be handled later on in the resume flow.
->
-> However, this may happen before mtk_eint_do_resume is called:
-> in this case, wake_mask is loaded, and cur_mask is restored
-> from an older copy, re-enabling the interrupt, and causing
-> an interrupt storm (especially for level interrupts).
->
-> Step by step, for a line that has both wake and interrupt enabled:
->  1. cur_mask[irq] = 1; wake_mask[irq] = 1; EINT_EN[irq] = 1 (interrupt
->     enabled at hardware level)
->  2. System suspends, resumes due to that line (at this stage EINT_EN
->     == wake_mask)
->  3. irq_pm_check_wakeup is called, and disables the interrupt =>
->     EINT_EN[irq] = 0, but we still have cur_mask[irq] = 1
->  4. mtk_eint_do_resume is called, and restores EINT_EN = cur_mask, so
->     it reenables EINT_EN[irq] = 1 => interrupt storm as the driver
->     is not yet ready to handle the interrupt.
->
-> This patch fixes the issue in step 3, by recording all mask/unmask
-> changes in cur_mask. This also avoids the need to read the current
-> mask in eint_do_suspend, and we can remove mtk_eint_chip_read_mask
-> function.
->
-> The interrupt will be re-enabled properly later on, sometimes after
-> mtk_eint_do_resume, when the driver is ready to handle it.
->
-> Fixes: 58a5e1b64b ("pinctrl: mediatek: Implement wake handler and suspend resume")
-> Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
-> Acked-by: Sean Wang <sean.wang@kernel.org>
+[responding here because I didn't receive the actual patch]
 
-Patch applied after extending the has for Fixes: to 12 digits.
+This looks like it's doing what it's supposed to, but I ran into a bunch
+of build fails with CONFIG_OF=n. Sent a fix to one [1], but stopped at
+the next. Looks like you'll have to exclude more. And I'm pretty sure
+we'll uncover more configurations where this will fail.
 
-Yours,
-Linus Walleij
+But I do applaud the goal, and I'm committed to making all include/drm
+headers self-contained. I wouldn't block this based on the issues, it's
+pretty much the only way to expose them and get them fixed/excluded, and
+it's behind a config knob after all.
+
+With the caveat that I didn't finish the build, but OTOH tested the
+rainy day scenario and had the patch find issues it's meant to find:
+
+Tested-by: Jani Nikula <jani.nikula@intel.com>
+
+
+[1] http://patchwork.freedesktop.org/patch/msgid/20190627110103.7539-1-jani.nikula@intel.com
+
+>
+>  .gitignore                         |    1 -
+>  Documentation/dontdiff             |    1 -
+>  Documentation/kbuild/makefiles.txt |   13 +-
+>  Makefile                           |    4 +-
+>  include/Kbuild                     | 1134 ++++++++++++++++++++++++++++
+>  init/Kconfig                       |   22 +
+>  scripts/Makefile.build             |   10 +-
+>  scripts/Makefile.lib               |   12 +-
+>  scripts/cc-system-headers.sh       |    8 +
+>  usr/.gitignore                     |    1 -
+>  usr/Makefile                       |    2 +
+>  usr/include/.gitignore             |    3 +
+>  usr/include/Makefile               |  133 ++++
+>  13 files changed, 1331 insertions(+), 13 deletions(-)
+>  create mode 100644 include/Kbuild
+>  create mode 100755 scripts/cc-system-headers.sh
+>  create mode 100644 usr/include/.gitignore
+>  create mode 100644 usr/include/Makefile
+
+-- 
+Jani Nikula, Intel Open Source Graphics Center
