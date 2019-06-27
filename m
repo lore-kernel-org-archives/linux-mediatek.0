@@ -1,111 +1,109 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v9 11/12] soc: mediatek: cmdq: add
- cmdq_dev_get_client_reg function
-Date: Thu, 27 Jun 2019 14:37:12 +0800
-Message-ID: <1561617432.17285.4.camel@mtksdaap41>
-References: <20190627061958.9488-1-bibby.hsieh@mediatek.com>
-         <20190627061958.9488-12-bibby.hsieh@mediatek.com>
+From: Qii Wang <qii.wang@mediatek.com>
+Subject: Re: [PATCH v2 1/2] dt-bindings: i3c: Document MediaTek I3C master
+ bindings
+Date: Thu, 27 Jun 2019 15:25:27 +0800
+Message-ID: <1561620327.12217.27.camel@mhfsdcap03>
+References: <1561527388-4829-1-git-send-email-qii.wang@mediatek.com>
+         <1561527388-4829-2-git-send-email-qii.wang@mediatek.com>
+         <20190626182339.0c6301a2@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190627061958.9488-12-bibby.hsieh@mediatek.com>
+In-Reply-To: <20190626182339.0c6301a2@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.chen@mediatek.com
+To: Boris Brezillon <boris.brezillon@collabora.com>
+Cc: bbrezillon@kernel.org, matthias.bgg@gmail.com, linux-i3c@lists.infradead.org, gregkh@linuxfoundation.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, leilk.liu@mediatek.com, liguo.zhang@mediatek.com, xinping.qian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Bibby:
-
-On Thu, 2019-06-27 at 14:19 +0800, Bibby Hsieh wrote:
-> GCE cannot know the register base address, this function
-> can help cmdq client to get the cmdq_client_reg structure.
+On Wed, 2019-06-26 at 18:23 +0200, Boris Brezillon wrote:
+> On Wed, 26 Jun 2019 13:36:27 +0800
+> Qii Wang <qii.wang@mediatek.com> wrote:
 > 
-> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-> ---
->  drivers/soc/mediatek/mtk-cmdq-helper.c | 24 ++++++++++++++++++++++++
->  include/linux/soc/mediatek/mtk-cmdq.h  | 21 +++++++++++++++++++++
->  2 files changed, 45 insertions(+)
+> > Document MediaTek I3C master DT bindings.
+> > 
+> > Signed-off-by: Qii Wang <qii.wang@mediatek.com>
+> > ---
+> >  .../devicetree/bindings/i3c/mtk,i3c-master.txt     |   47 ++++++++++++++++++++
+> >  1 file changed, 47 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt
+> > 
+> > diff --git a/Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt b/Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt
+> > new file mode 100644
+> > index 0000000..3fd4f17
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt
+> > @@ -0,0 +1,47 @@
+> > +Bindings for MediaTek I3C master block
+> > +=====================================
+> > +
+> > +Required properties:
+> > +--------------------
+> > +- compatible: shall be "mediatek,i3c-master"
+> > +- reg: physical base address of the controller and apdma base, length of
+> > +  memory mapped region.
+> > +- reg-names: should be "main" for controller and "dma" for apdma.
+> > +- interrupts: interrupt number to the cpu.
 > 
-> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> index 70ad4d806fac..ceb1b569891f 100644
-> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> @@ -27,6 +27,30 @@ struct cmdq_instruction {
->  	u8 op;
->  };
->  
-> +int cmdq_dev_get_client_reg(struct device *dev,
-> +			    struct cmdq_client_reg *client_reg, int idx)
-> +{
-> +	struct of_phandle_args spec;
-> +
-> +	if (!client_reg)
-> +		return -ENOENT;
-> +
-> +	if (of_parse_phandle_with_args(dev->of_node, "mediatek,gce-client-reg",
-> +				       "#subsys-cells", idx, &spec)) {
-> +		dev_err(dev, "can't parse gce-client-reg property (%d)", idx);
-> +
-> +		return -ENOENT;
+> Depending on the interrupt controller, each interrupt cell might
+> contain more than just the interrupt number.
+> 
 
-Maybe my expression is not so clear. of_parse_phandle_with_args() may
-return -ENOENT, but it also may return -EINVAL. My point is why do you
-change the return value of of_parse_phandle_with_args(). What the error
-you get from of_parse_phandle_with_args(), you could also return it to
-the caller of cmdq_dev_get_client_reg().
+ok, I will modify it as "the interrupt line connected to this I3C
+master"
 
-Regards,
-CK
+> > +- clocks: clock name from clock manager.
+> 
+> This property does not contain clock names but clk references.
+> 
 
-> +	}
-> +
-> +	client_reg->subsys = spec.args[0];
-> +	client_reg->offset = spec.args[1];
-> +	client_reg->size = spec.args[2];
-> +	of_node_put(spec.np);
-> +
-> +	return 0;
-> +}
-> +EXPORT_SYMBOL(cmdq_dev_get_client_reg);
-> +
->  static void cmdq_client_timeout(struct timer_list *t)
->  {
->  	struct cmdq_client *client = from_timer(client, t, timer);
-> diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-> index a345870a6d10..be402c4c740e 100644
-> --- a/include/linux/soc/mediatek/mtk-cmdq.h
-> +++ b/include/linux/soc/mediatek/mtk-cmdq.h
-> @@ -15,6 +15,12 @@
->  
->  struct cmdq_pkt;
->  
-> +struct cmdq_client_reg {
-> +	u8 subsys;
-> +	u16 offset;
-> +	u16 size;
-> +};
-> +
->  struct cmdq_client {
->  	spinlock_t lock;
->  	u32 pkt_cnt;
-> @@ -142,4 +148,19 @@ int cmdq_pkt_flush_async(struct cmdq_pkt *pkt, cmdq_async_flush_cb cb,
->   */
->  int cmdq_pkt_flush(struct cmdq_pkt *pkt);
->  
-> +/**
-> + * cmdq_dev_get_client_reg() - parse cmdq client reg from the device
-> + *			       node of CMDQ client
-> + * @dev:	device of CMDQ mailbox clienti
-> + * @client_reg: CMDQ client reg pointer
-> + * @idx:	the index of desired reg
-> + *
-> + * Return: 0 for success; else the error code is returned
-> + *
-> + * Help CMDQ client pasing the cmdq client reg
-> + * from the device node of CMDQ client.
-> + */
-> +int cmdq_dev_get_client_reg(struct device *dev,
-> +			    struct cmdq_client_reg *client_reg, int idx);
-> +
->  #endif	/* __MTK_CMDQ_H__ */
+ok, I will modify it as "shall reference the i3c and apdma clocks"
+
+> > +- clock-names: must include "main" and "dma".
+> > +
+> > +Mandatory properties defined by the generic binding (see
+> > +Documentation/devicetree/bindings/i3c/i3c.txt for more details):
+> > +
+> > +- #address-cells: shall be set to 3
+> > +- #size-cells: shall be set to 0
+> > +
+> > +Optional properties defined by the generic binding (see
+> > +Documentation/devicetree/bindings/i3c/i3c.txt for more details):
+> > +
+> > +- i2c-scl-hz
+> > +- i3c-scl-hz
+> > +
+> > +I3C device connected on the bus follow the generic description (see
+> > +Documentation/devicetree/bindings/i3c/i3c.txt for more details).
+> > +
+> > +Example:
+> > +
+> > +	i3c0: i3c@1100d000 {
+> > +		compatible = "mediatek,i3c-master";
+> > +		reg = <0x1100d000 0x100>,
+> > +		      <0x11000300 0x80>;
+> > +		reg-names = "main", "dma";
+> > +		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_LOW>;
+> > +		clocks = <&i3c0_ck>, <&ap_dma_ck>;
+> > +		clock-names = "main", "dma";
+> > +		#address-cells = <1>;
+> > +		#size-cells = <0>;
+> > +		i2c-scl-hz = <100000>;
+> > +
+> > +		nunchuk: nunchuk@52 {
+> > +			compatible = "nintendo,nunchuk";
+> > +			reg = <0x52 0x80000010 0>;
+> 
+> reg is wrong here, should be
+> 
+> 			reg = <0x52 0x0 0x10>;
+> 
+> While at it, can you send a patch to fix the example in the cadence
+> binding doc?
+> 
+
+ok, I will do it. Thanks for your review.
+
+> > +		};
+> > +	};
+> 
