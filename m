@@ -1,7 +1,7 @@
 From: Daniel Santos <daniel-MaoJIqpQpGE@public.gmane.org>
 Subject: mt7620/1, mt7530: Where are these MAC and MII registers documented?
-Date: Fri, 28 Jun 2019 16:55:40 -0500
-Message-ID: <d40eafc3-b2c6-d4b6-cfe0-9e94092bfc03@gsat.us>
+Date: Fri, 28 Jun 2019 17:08:45 -0500
+Message-ID: <969a5fe6-2fa6-e8f0-a66e-d4aabbe937cd@gsat.us>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
@@ -109,7 +109,7 @@ c3ctPmVwaHlfYmFzZSArIDQsIDE2LCAweDEzMTMpOwoJCXByX2luZm8oImdzdzogc2V0dGluZyBw
 b3J0NCB0byBlcGh5IG1vZGVcbiIpOwoJfSBlbHNlIGlmICghbWRpb19tb2RlKSB7CgkJdTMyIHZh
 bCA9IHJ0X3N5c2NfcjMyKFNZU0NfUkVHX0NGRzEpOwoKCQl2YWwgJj0gfigzIDw8IDE0KTsKCQly
 dF9zeXNjX3czMih2YWwsIFNZU0NfUkVHX0NGRzEpOwoJCXByX2luZm8oImdzdzogc2V0dGluZyBw
-b3J0NCB0byBnbWFjIG1vZGVcbiIpOwoJfQp9CgoKVGhhbmtzLApEYW5pZWwKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxp
-bmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+b3J0NCB0byBnbWFjIG1vZGVcbiIpOwoJfQp9CgoKVGhhbmtzLApEYW5pZWwKCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWls
+aW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
