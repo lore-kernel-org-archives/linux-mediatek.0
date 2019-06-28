@@ -1,79 +1,110 @@
-From: Daniel Santos <daniel.santos@pobox.com>
-Subject: Re: [PATCH RFC net-next 1/5] net: dsa: mt7530: Convert to PHYLINK API
-Date: Fri, 28 Jun 2019 02:16:45 -0500
-Message-ID: <56d8024e-1e02-7ff7-abf2-261ec9cbabf7@pobox.com>
-References: <20190624145251.4849-1-opensource@vdorst.com>
- <20190624145251.4849-2-opensource@vdorst.com>
- <20190624153950.hdsuhrvfd77heyor@shell.armlinux.org.uk>
- <20190625113158.Horde.pCaJOVUsgyhYLd5Diz5EZKI@www.vdorst.com>
- <20190625121030.m5w7wi3rpezhfgyo@shell.armlinux.org.uk>
- <1ad9f9a5-8f39-40bd-94bb-6b700f30c4ba@pobox.com>
- <20190625190246.GA27733@lunn.ch>
- <4fc51dc4-0eec-30d7-86d1-3404819cf6fe@pobox.com>
- <20190625204148.GB27733@lunn.ch>
- <e469daa1-3e28-db9c-e29a-7f68cc676fda@pobox.com>
- <20190627192806.GQ27733@lunn.ch>
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+Subject: [PATCH v3] clk: mediatek: mt8183: Register 13MHz clock earlier for clocksource
+Date: Fri, 28 Jun 2019 15:22:34 +0800
+Message-ID: <1561706554-27770-1-git-send-email-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20190627192806.GQ27733@lunn.ch>
-Content-Language: en-US
-Sender: netdev-owner@vger.kernel.org
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>, sean.wang@mediatek.com, f.fainelli@gmail.com, davem@davemloft.net, matthias.bgg@gmail.com, vivien.didelot@gmail.com, frank-w@public-files.de, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org
+Content-Type: text/plain
+Return-path: <stable-owner@vger.kernel.org>
+Sender: stable-owner@vger.kernel.org
+To: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, stable@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>, Dehui Sun <dehui.sun@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello Andrew,
+The 13MHz clock should be registered before clocksource driver is
+initialized. Use CLK_OF_DECLARE_DRIVER() to guarantee.
 
-On 6/27/19 2:28 PM, Andrew Lunn wrote:
->>> Looking at the data sheet page, you want FORCE_MODE_Pn set. You never
->>> want the MAC directly talking to the PHY. Bad things will happen.
->> So what exactly do you mean by the MAC directly talking to the PHY?=C2=
-=A0 Do
->> you mean setting speed, duplex, etc. via the MAC registers instead of
->> via MDIO to the MII registers of the PHY?
-> The data sheet implies the MAC hardware performs reads on the PHY to
-> get the status, and then uses that to configure the MAC. This is often
-> called PHY polling. The MAC hardware however has no idea what the PHY
-> driver is doing. The MAC does not take the PHY mutex. So the PHY
-> driver might be doing something at the same time the MAC hardware
-> polls the PHY, and it gets odd results. Some PHYs have multiple pages,
-> and for example reading the temperature sensor means swapping
-> pages. If the MAC hardware was to poll while the sensor is being read,
-> it would not get the link status, it would read some random
-> temperature register.
->
-> So you want the PHY driver to read the results of auto-neg and it then
-> tell the MAC the results, so the MAC can be configured correctly.
+Fixes: acddfc2c261b ("clk: mediatek: Add MT8183 clock support")
+Cc: <stable@vger.kernel.org>
+Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+---
+ drivers/clk/mediatek/clk-mt8183.c | 46 +++++++++++++++++++++++++++++----------
+ 1 file changed, 34 insertions(+), 12 deletions(-)
 
-Thank you, this is very helpful!=C2=A0 I finally understand why these
-settings are in two different places. :)=C2=A0 Unfortunately this driver =
-(in
-OpenWRT) does a lot of "magic" during init to registers that I don't
-have documentation for, but I see where auto-polling can be disabled now.
-
->>> Then use FORCE_RX_FC_Pn and FORCE_TX_Pn to reflect phydev->pause and
->>> phydev->asym_pause.
->>>
->>> The same idea applies when using phylink.
->>>
->>>     Andrew
->> You're help is greatly appreciated here.=C2=A0 Admittedly, I'm also tr=
-ying to
->> get this working in the now deprecated swconfig for a 3.18 kernel that=
-'s
->> in production.
-> I'm not very familiar with swconfig. Is there software driving the
-> PHY? If not, it is then safe for the MAC hardware to poll the PHY.
->
->      Andrew
-
-swconfig is an netlink-based interface the OpenWRT team developed for
-configuring switches before DSA was converted into a vendor-neutral
-interface.=C2=A0 Now that DSA does what swconfig was designed for it has =
-been
-deprecated, although (to my knowledge) we don't yet have DSA for all
-devices that OpenWRT supports.
-
-Daniel
+diff --git a/drivers/clk/mediatek/clk-mt8183.c b/drivers/clk/mediatek/clk-mt8183.c
+index 9d86510..bc01611 100644
+--- a/drivers/clk/mediatek/clk-mt8183.c
++++ b/drivers/clk/mediatek/clk-mt8183.c
+@@ -25,9 +25,11 @@
+ 	FIXED_CLK(CLK_TOP_UNIVP_192M, "univpll_192m", "univpll", 192000000),
+ };
+ 
++static const struct mtk_fixed_factor top_early_divs[] = {
++	FACTOR(CLK_TOP_CLK13M, "clk13m", "clk26m", 1, 2),
++};
++
+ static const struct mtk_fixed_factor top_divs[] = {
+-	FACTOR(CLK_TOP_CLK13M, "clk13m", "clk26m", 1,
+-		2),
+ 	FACTOR(CLK_TOP_F26M_CK_D2, "csw_f26m_ck_d2", "clk26m", 1,
+ 		2),
+ 	FACTOR(CLK_TOP_SYSPLL_CK, "syspll_ck", "mainpll", 1,
+@@ -1167,37 +1169,57 @@ static int clk_mt8183_apmixed_probe(struct platform_device *pdev)
+ 	return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+ }
+ 
++static struct clk_onecell_data *top_clk_data;
++
++static void clk_mt8183_top_init_early(struct device_node *node)
++{
++	int i;
++
++	top_clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
++
++	for (i = 0; i < CLK_TOP_NR_CLK; i++)
++		top_clk_data->clks[i] = ERR_PTR(-EPROBE_DEFER);
++
++	mtk_clk_register_factors(top_early_divs, ARRAY_SIZE(top_early_divs),
++			top_clk_data);
++
++	of_clk_add_provider(node, of_clk_src_onecell_get, top_clk_data);
++}
++
++CLK_OF_DECLARE_DRIVER(mt8183_topckgen, "mediatek,mt8183-topckgen",
++			clk_mt8183_top_init_early);
++
+ static int clk_mt8183_top_probe(struct platform_device *pdev)
+ {
+ 	struct resource *res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	void __iomem *base;
+-	struct clk_onecell_data *clk_data;
+ 	struct device_node *node = pdev->dev.of_node;
+ 
+ 	base = devm_ioremap_resource(&pdev->dev, res);
+ 	if (IS_ERR(base))
+ 		return PTR_ERR(base);
+ 
+-	clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
+-
+ 	mtk_clk_register_fixed_clks(top_fixed_clks, ARRAY_SIZE(top_fixed_clks),
+-		clk_data);
++		top_clk_data);
++
++	mtk_clk_register_factors(top_early_divs, ARRAY_SIZE(top_early_divs),
++		top_clk_data);
+ 
+-	mtk_clk_register_factors(top_divs, ARRAY_SIZE(top_divs), clk_data);
++	mtk_clk_register_factors(top_divs, ARRAY_SIZE(top_divs), top_clk_data);
+ 
+ 	mtk_clk_register_muxes(top_muxes, ARRAY_SIZE(top_muxes),
+-		node, &mt8183_clk_lock, clk_data);
++		node, &mt8183_clk_lock, top_clk_data);
+ 
+ 	mtk_clk_register_composites(top_aud_muxes, ARRAY_SIZE(top_aud_muxes),
+-		base, &mt8183_clk_lock, clk_data);
++		base, &mt8183_clk_lock, top_clk_data);
+ 
+ 	mtk_clk_register_composites(top_aud_divs, ARRAY_SIZE(top_aud_divs),
+-		base, &mt8183_clk_lock, clk_data);
++		base, &mt8183_clk_lock, top_clk_data);
+ 
+ 	mtk_clk_register_gates(node, top_clks, ARRAY_SIZE(top_clks),
+-		clk_data);
++		top_clk_data);
+ 
+-	return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
++	return of_clk_add_provider(node, of_clk_src_onecell_get, top_clk_data);
+ }
+ 
+ static int clk_mt8183_infra_probe(struct platform_device *pdev)
+-- 
+1.8.1.1.dirty
