@@ -1,73 +1,77 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [v5 2/3] drm/mediatek: separate mipi_tx to different file
-Date: Fri, 28 Jun 2019 10:02:51 +0800
-Message-ID: <1561687371.29330.11.camel@mtksdaap41>
-References: <20190627025901.28418-1-jitao.shi@mediatek.com>
- <20190627025901.28418-3-jitao.shi@mediatek.com>
+From: Masahiro Yamada <yamada.masahiro@socionext.com>
+Subject: Re: [PATCH v3 0/4] Compile-test UAPI and kernel headers
+Date: Fri, 28 Jun 2019 13:57:12 +0900
+Message-ID: <CAK7LNARj+A1JDnUmA_ZFC5Shsy7Tg37LtXS27H7ZTgDbp5BO2w@mail.gmail.com>
+References: <20190627163903.28398-1-yamada.masahiro@socionext.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190627025901.28418-3-jitao.shi@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jitao Shi <jitao.shi@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, stonea168@163.com, dri-devel@lists.freedesktop.org, yingjoe.chen@mediatek.com, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa.cheng@mediatek.com, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, linux-pwm@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, Matthias Brugger <matthias.bgg@gmail.com>, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Sean Paul <seanpaul@chromium.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190627163903.28398-1-yamada.masahiro@socionext.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Linux Kbuild mailing list <linux-kbuild@vger.kernel.org>
+Cc: Song Liu <songliubraving@fb.com>, Jakub Kicinski <jakub.kicinski@netronome.com>, "open list:DOCUMENTATION" <linux-doc@vger.kernel.org>, Palmer Dabbelt <palmer@sifive.com>, Alexei Starovoitov <ast@kernel.org>, linux-riscv@lists.infradead.org, Sam Ravnborg <sam@ravnborg.org>, Kees Cook <keescook@chromium.org>, xdp-newbies@vger.kernel.org, Daniel Borkmann <daniel@iogearbox.net>, Jonathan Corbet <corbet@lwn.net>, Anton Vorontsov <anton@enomsg.org>, John Fastabend <john.fastabend@gmail.com>, Yonghong Song <yhs@fb.com>, Albert Ou <aou@eecs.berkeley.edu>, Jesper Dangaard Brouer <hawk@kernel.org>, Jani Nikula <jani.nikula@intel.com>, Michal Marek <michal.lkml@markovi.net>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matth
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIEppdGFvOgoKT24gVGh1LCAyMDE5LTA2LTI3IGF0IDEwOjU5ICswODAwLCBKaXRhbyBTaGkg
-d3JvdGU6Cj4gRGlmZmVyZW50IElDIGhhcyBkaWZmZXJlbnQgbWlwaV90eCBzZXR0aW5nIG9mIGRz
-aS4KPiBUaGlzIHBhdGNoIHNlcGFyYXRlcyB0aGUgbWlwaV90eCBoYXJkd2FyZSByZWxhdGUgcGFy
-dCBmb3IgbXQ4MTczLgo+IAo+IFNpZ25lZC1vZmYtYnk6IEppdGFvIFNoaSA8aml0YW8uc2hpQG1l
-ZGlhdGVrLmNvbT4KPiBSZXZpZXdlZC1ieTogQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4KPiAt
-LS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL01ha2VmaWxlICAgICAgICAgICAgIHwgICAx
-ICsKPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19taXBpX3R4LmMgICAgICAgIHwgMzQz
-ICsrLS0tLS0tLS0tLS0tLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX21pcGlf
-dHguaCAgICAgICAgfCAgNDkgKysrCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4
-MTczX21pcGlfdHguYyB8IDI4OSArKysrKysrKysrKysrKysKPiAgNCBmaWxlcyBjaGFuZ2VkLCAz
-NjMgaW5zZXJ0aW9ucygrKSwgMzE5IGRlbGV0aW9ucygtKQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQg
-ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19taXBpX3R4LmgKPiAgY3JlYXRlIG1vZGUgMTAw
-NjQ0IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX21pcGlfdHguYwo+IAoKW3Nu
-aXBdCgo+IEBAIC0zOTEsMTAgKzEwMSw4IEBAIHN0YXRpYyBpbnQgbXRrX21pcGlfdHhfcHJvYmUo
-c3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgCXN0cnVjdCBkZXZpY2UgKmRldiA9ICZw
-ZGV2LT5kZXY7Cj4gIAlzdHJ1Y3QgbXRrX21pcGlfdHggKm1pcGlfdHg7Cj4gIAlzdHJ1Y3QgcmVz
-b3VyY2UgKm1lbTsKPiAtCXN0cnVjdCBjbGsgKnJlZl9jbGs7Cj4gIAljb25zdCBjaGFyICpyZWZf
-Y2xrX25hbWU7Cj4gIAlzdHJ1Y3QgY2xrX2luaXRfZGF0YSBjbGtfaW5pdCA9IHsKPiAtCQkub3Bz
-ID0gJm10a19taXBpX3R4X3BsbF9vcHMsCj4gIAkJLm51bV9wYXJlbnRzID0gMSwKPiAgCQkucGFy
-ZW50X25hbWVzID0gKGNvbnN0IGNoYXIgKiBjb25zdCAqKSZyZWZfY2xrX25hbWUsCj4gIAkJLmZs
-YWdzID0gQ0xLX1NFVF9SQVRFX0dBVEUsCj4gQEAgLTQwOCw2ICsxMTYsNyBAQCBzdGF0aWMgaW50
-IG10a19taXBpX3R4X3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAkJcmV0
-dXJuIC1FTk9NRU07Cj4gIAo+ICAJbWlwaV90eC0+ZHJpdmVyX2RhdGEgPSBvZl9kZXZpY2VfZ2V0
-X21hdGNoX2RhdGEoZGV2KTsKPiArCj4gIAltZW0gPSBwbGF0Zm9ybV9nZXRfcmVzb3VyY2UocGRl
-diwgSU9SRVNPVVJDRV9NRU0sIDApOwo+ICAJbWlwaV90eC0+cmVncyA9IGRldm1faW9yZW1hcF9y
-ZXNvdXJjZShkZXYsIG1lbSk7Cj4gIAlpZiAoSVNfRVJSKG1pcGlfdHgtPnJlZ3MpKSB7Cj4gQEAg
-LTQxNiwxMyArMTI1LDE0IEBAIHN0YXRpYyBpbnQgbXRrX21pcGlfdHhfcHJvYmUoc3RydWN0IHBs
-YXRmb3JtX2RldmljZSAqcGRldikKPiAgCQlyZXR1cm4gcmV0Owo+ICAJfQo+ICAKPiAtCXJlZl9j
-bGsgPSBkZXZtX2Nsa19nZXQoZGV2LCBOVUxMKTsKPiAtCWlmIChJU19FUlIocmVmX2NsaykpIHsK
-PiAtCQlyZXQgPSBQVFJfRVJSKHJlZl9jbGspOwo+ICsJbWlwaV90eC0+cmVmX2NsayA9IGRldm1f
-Y2xrX2dldChkZXYsIE5VTEwpOwoKSSB0aGluayB5b3UgbmVlZCBub3QgdG8ga2VlcCByZWZfY2xr
-IGluIGRyaXZlciBwcml2YXRlIGRhdGEgYmVjYXVzZSB5b3UKd291bGQgbm90IHVzZSBpdCBhbnkg
-bW9yZS4KClJlZ2FyZHMsCkNLCgo+ICsJaWYgKElTX0VSUihtaXBpX3R4LT5yZWZfY2xrKSkgewo+
-ICsJCXJldCA9IFBUUl9FUlIobWlwaV90eC0+cmVmX2Nsayk7Cj4gIAkJZGV2X2VycihkZXYsICJG
-YWlsZWQgdG8gZ2V0IHJlZmVyZW5jZSBjbG9jazogJWRcbiIsIHJldCk7Cj4gIAkJcmV0dXJuIHJl
-dDsKPiAgCX0KPiAtCXJlZl9jbGtfbmFtZSA9IF9fY2xrX2dldF9uYW1lKHJlZl9jbGspOwo+ICsK
-PiArCXJlZl9jbGtfbmFtZSA9IF9fY2xrX2dldF9uYW1lKG1pcGlfdHgtPnJlZl9jbGspOwo+ICAK
-PiAgCXJldCA9IG9mX3Byb3BlcnR5X3JlYWRfc3RyaW5nKGRldi0+b2Zfbm9kZSwgImNsb2NrLW91
-dHB1dC1uYW1lcyIsCj4gIAkJCQkgICAgICAmY2xrX2luaXQubmFtZSk7Cj4gQEAgLTQzMSw2ICsx
-NDEsOCBAQCBzdGF0aWMgaW50IG10a19taXBpX3R4X3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZp
-Y2UgKnBkZXYpCj4gIAkJcmV0dXJuIHJldDsKPiAgCX0KPiAgCj4gKwljbGtfaW5pdC5vcHMgPSBt
-aXBpX3R4LT5kcml2ZXJfZGF0YS0+bWlwaV90eF9jbGtfb3BzOwo+ICsKPiAgCW1pcGlfdHgtPnBs
-bF9ody5pbml0ID0gJmNsa19pbml0Owo+ICAJbWlwaV90eC0+cGxsID0gZGV2bV9jbGtfcmVnaXN0
-ZXIoZGV2LCAmbWlwaV90eC0+cGxsX2h3KTsKPiAgCWlmIChJU19FUlIobWlwaV90eC0+cGxsKSkg
-ewo+IEBAIC00NjUsMjAgKzE3NywxMiBAQCBzdGF0aWMgaW50IG10a19taXBpX3R4X3JlbW92ZShz
-dHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ICAJcmV0dXJuIDA7Cj4gIH0KPiAgCgoKCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
-bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
+On Fri, Jun 28, 2019 at 1:41 AM Masahiro Yamada
+<yamada.masahiro@socionext.com> wrote:
+>
+> 1/4: Compile-test exported headers (reworked in v2)
+>
+> 2/4: fix a flaw I noticed when I was working on this series.
+>      Avoid generating intermediate wrappers.
+>
+> 3/4: maybe useful for 4/4 and in some other places.
+>      Add header-test-pattern-y syntax.
+>
+> 4/4: Compile-test kernel-space headers in include/.
+>      v2: compile as many headers as possible.
+>      v3: exclude more headers causing build errors
+
+
+I push this series to
+ git://git.kernel.org/pub/scm/linux/kernel/git/masahiroy/linux-kbuild.git
+ header-test-v3
+for somebody who wants to test it.
+
+
+
+>
+> Masahiro Yamada (4):
+>   kbuild: compile-test UAPI headers to ensure they are self-contained
+>   kbuild: do not create wrappers for header-test-y
+>   kbuild: support header-test-pattern-y
+>   kbuild: compile-test kernel headers to ensure they are self-contained
+>
+>  .gitignore                         |    1 -
+>  Documentation/dontdiff             |    1 -
+>  Documentation/kbuild/makefiles.txt |   13 +-
+>  Makefile                           |    4 +-
+>  include/Kbuild                     | 1250 ++++++++++++++++++++++++++++
+>  init/Kconfig                       |   22 +
+>  scripts/Makefile.build             |   10 +-
+>  scripts/Makefile.lib               |   13 +-
+>  scripts/cc-system-headers.sh       |    8 +
+>  usr/.gitignore                     |    1 -
+>  usr/Makefile                       |    2 +
+>  usr/include/.gitignore             |    3 +
+>  usr/include/Makefile               |  134 +++
+>  13 files changed, 1449 insertions(+), 13 deletions(-)
+>  create mode 100644 include/Kbuild
+>  create mode 100755 scripts/cc-system-headers.sh
+>  create mode 100644 usr/include/.gitignore
+>  create mode 100644 usr/include/Makefile
+>
+> --
+> 2.17.1
+>
+>
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+
+
+
+--
+Best Regards
+Masahiro Yamada
