@@ -1,44 +1,37 @@
-From: =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>
-Subject: [PATCH] net: ethernet: mediatek: Allow non TRGMII mode with MT7621 DDR2 devices
-Date: Sat, 29 Jun 2019 14:24:51 +0200
-Message-ID: <20190629122451.19578-1-opensource@vdorst.com>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: Re: [PATCH v1] arm: dts: mediatek: add basic support for MT7629 SoC
+Date: Sat, 29 Jun 2019 23:58:16 +0800
+Message-ID: <1561823896.29227.0.camel@mtkswgap22>
+References: <a8ca0018ac8a4c5f61a7a1efc9dc5dccd768628b.1552449524.git.ryder.lee@mediatek.com>
+         <7hy31lp9q5.fsf@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Return-path: <netdev-owner@vger.kernel.org>
-Sender: netdev-owner@vger.kernel.org
-To: sean.wang@mediatek.com, f.fainelli@gmail.com, linux@armlinux.org.uk, davem@davemloft.net, matthias.bgg@gmail.com, andrew@lunn.ch, vivien.didelot@gmail.com
-Cc: frank-w@public-files.de, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <7hy31lp9q5.fsf@baylibre.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kevin Hilman <khilman@baylibre.com>
+Cc: ryder.lee@kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Weijie Gao <weijie.gao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Steven Liu <steven.liu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-No reason to error out on a MT7621 device with DDR2 memory when non
-TRGMII mode is selected.
-Only MT7621 DDR2 clock setup is not supported for TRGMII mode.
-But non TRGMII mode doesn't need any special clock setup.
+On Fri, 2019-06-28 at 16:32 -0700, Kevin Hilman wrote:
+> <ryder.lee@kernel.org> writes:
+> 
+> > From: Ryder Lee <ryder.lee@mediatek.com>
+> >
+> > This adds basic support for MT7629 reference board.
+> >
+> > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> 
+> Just noticing this is not upstream yet.
+> 
+> I did a basic boot test to ramdisk on the mt7629-rfb board donated for
+> kernelCI (thanks MediaTek!) and it boots just fine.
+> 
+> Tested-by: Kevin Hilman <khilman@baylibre.com>
+> 
+> Kevin
 
-Signed-off-by: René van Dorst <opensource@vdorst.com>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+Thanks. I'll post v3 with some fixups soon.
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 066712f2e985..b20b3a5a1ebb 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -139,9 +139,12 @@ static int mt7621_gmac0_rgmii_adjust(struct mtk_eth *eth,
- {
- 	u32 val;
- 
--	/* Check DDR memory type. Currently DDR2 is not supported. */
-+	/* Check DDR memory type.
-+	 * Currently TRGMII mode with DDR2 memory is not supported.
-+	 */
- 	regmap_read(eth->ethsys, ETHSYS_SYSCFG, &val);
--	if (val & SYSCFG_DRAM_TYPE_DDR2) {
-+	if (interface == PHY_INTERFACE_MODE_TRGMII &&
-+	    val & SYSCFG_DRAM_TYPE_DDR2) {
- 		dev_err(eth->dev,
- 			"TRGMII mode with DDR2 memory is not supported!\n");
- 		return -EOPNOTSUPP;
--- 
-2.20.1
+Ryder
