@@ -1,7 +1,7 @@
 From: =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>
-Subject: [PATCH] net: ethernet: mediatek: Fix overlapping capability bits.
-Date: Sat, 29 Jun 2019 14:24:19 +0200
-Message-ID: <20190629122419.19026-1-opensource@vdorst.com>
+Subject: [PATCH] net: ethernet: mediatek: Allow non TRGMII mode with MT7621 DDR2 devices
+Date: Sat, 29 Jun 2019 14:24:51 +0200
+Message-ID: <20190629122451.19578-1-opensource@vdorst.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -11,33 +11,34 @@ To: sean.wang@mediatek.com, f.fainelli@gmail.com, linux@armlinux.org.uk, davem@d
 Cc: frank-w@public-files.de, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Both MTK_TRGMII_MT7621_CLK and MTK_PATH_BIT are defined as bit 10.
+No reason to error out on a MT7621 device with DDR2 memory when non
+TRGMII mode is selected.
+Only MT7621 DDR2 clock setup is not supported for TRGMII mode.
+But non TRGMII mode doesn't need any special clock setup.
 
-This causes issues on non-MT7621 devices which has the
-MTK_PATH_BIT(MTK_ETH_PATH_GMAC1_RGMII) capability set.
-The wrong TRGMII setup code is executed.
-
-Moving the MTK_PATH_BIT to bit 11 fixes the issue.
-
-Fixes: 8efaa653a8a5 ("net: ethernet: mediatek: Add MT7621 TRGMII mode
-support")
 Signed-off-by: René van Dorst <opensource@vdorst.com>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 876ce6798709..2cb8a915731c 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -626,7 +626,7 @@ enum mtk_eth_path {
- #define MTK_TRGMII_MT7621_CLK		BIT(10)
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 066712f2e985..b20b3a5a1ebb 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -139,9 +139,12 @@ static int mt7621_gmac0_rgmii_adjust(struct mtk_eth *eth,
+ {
+ 	u32 val;
  
- /* Supported path present on SoCs */
--#define MTK_PATH_BIT(x)         BIT((x) + 10)
-+#define MTK_PATH_BIT(x)         BIT((x) + 11)
- 
- #define MTK_GMAC1_RGMII \
- 	(MTK_PATH_BIT(MTK_ETH_PATH_GMAC1_RGMII) | MTK_RGMII)
+-	/* Check DDR memory type. Currently DDR2 is not supported. */
++	/* Check DDR memory type.
++	 * Currently TRGMII mode with DDR2 memory is not supported.
++	 */
+ 	regmap_read(eth->ethsys, ETHSYS_SYSCFG, &val);
+-	if (val & SYSCFG_DRAM_TYPE_DDR2) {
++	if (interface == PHY_INTERFACE_MODE_TRGMII &&
++	    val & SYSCFG_DRAM_TYPE_DDR2) {
+ 		dev_err(eth->dev,
+ 			"TRGMII mode with DDR2 memory is not supported!\n");
+ 		return -EOPNOTSUPP;
 -- 
 2.20.1
