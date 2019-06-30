@@ -1,50 +1,351 @@
 From: Sam Ravnborg <sam@ravnborg.org>
-Subject: [PATCH v1 24/33] drm/i2c/sil164: drop use of drmP.h
-Date: Sun, 30 Jun 2019 08:19:13 +0200
-Message-ID: <20190630061922.7254-25-sam@ravnborg.org>
+Subject: [PATCH v1 29/33] drm/mediatek: drop use of drmP.h
+Date: Sun, 30 Jun 2019 08:19:18 +0200
+Message-ID: <20190630061922.7254-30-sam@ravnborg.org>
 References: <20190630061922.7254-1-sam@ravnborg.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 In-Reply-To: <20190630061922.7254-1-sam@ravnborg.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: dri-devel@lists.freedesktop.org
-Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, Liviu Dudau <liviu.dudau@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, Alex Deucher <alexander.deucher@amd.com>, linux-mediatek@lists.infradead.org, Sam Ravnborg <sam@ravnborg.org>, linux-arm-kernel@lists.infradead.org
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>, Sam Ravnborg <sam@ravnborg.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-RHJvcCB1c2Ugb2YgdGhlIGRlcHJlY2F0ZWQgZHJtUC5oIGhlYWRlciBmaWxlLgpGaXggZmFsbG91
-dC4KClNpZ25lZC1vZmYtYnk6IFNhbSBSYXZuYm9yZyA8c2FtQHJhdm5ib3JnLm9yZz4KQ2M6IERh
-dmlkIEFpcmxpZSA8YWlybGllZEBsaW51eC5pZT4KQ2M6IERhbmllbCBWZXR0ZXIgPGRhbmllbEBm
-ZndsbC5jaD4KQ2M6IEFsZXggRGV1Y2hlciA8YWxleGFuZGVyLmRldWNoZXJAYW1kLmNvbT4KQ2M6
-IExpdml1IER1ZGF1IDxsaXZpdS5kdWRhdUBhcm0uY29tPgpDYzogUm9kcmlnbyBWaXZpIDxyb2Ry
-aWdvLnZpdmlAaW50ZWwuY29tPgpDYzogQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4KQ2M6IE1h
-dHRoaWFzIEJydWdnZXIgPG1hdHRoaWFzLmJnZ0BnbWFpbC5jb20+CkNjOiBTYW0gUmF2bmJvcmcg
-PHNhbUByYXZuYm9yZy5vcmc+CkNjOiBOZWlsIEFybXN0cm9uZyA8bmFybXN0cm9uZ0BiYXlsaWJy
-ZS5jb20+CkNjOiBIYXJyeSBXZW50bGFuZCA8aGFycnkud2VudGxhbmRAYW1kLmNvbT4KQ2M6IGxp
-bnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpDYzogbGludXgtbWVkaWF0ZWtAbGlz
-dHMuaW5mcmFkZWFkLm9yZwotLS0KVGhlIGxpc3Qgb2YgY2M6IHdhcyB0b28gbGFyZ2UgdG8gYWRk
-IGFsbCByZWNpcGllbnRzIHRvIHRoZSBjb3ZlciBsZXR0ZXIuClBsZWFzZSBmaW5kIGNvdmVyIGxl
-dHRlciBoZXJlOgpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9hcmNoaXZlcy9kcmktZGV2
-ZWwvMjAxOS1KdW5lL3RocmVhZC5odG1sClNlYXJjaCBmb3IgImRybTogZHJvcCB1c2Ugb2YgZHJt
-cC5oIGluIGRybS1taXNjIgoKICAgICAgICBTYW0KCiBkcml2ZXJzL2dwdS9kcm0vaTJjL3NpbDE2
-NF9kcnYuYyB8IDMgKystCiAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCAxIGRlbGV0
-aW9uKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2kyYy9zaWwxNjRfZHJ2LmMgYi9k
-cml2ZXJzL2dwdS9kcm0vaTJjL3NpbDE2NF9kcnYuYwppbmRleCA4NzhiYThkMDZjZTIuLjhiY2Yw
-ZDE5OTE0NSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2kyYy9zaWwxNjRfZHJ2LmMKKysr
-IGIvZHJpdmVycy9ncHUvZHJtL2kyYy9zaWwxNjRfZHJ2LmMKQEAgLTI2LDggKzI2LDkgQEAKIAog
-I2luY2x1ZGUgPGxpbnV4L21vZHVsZS5oPgogCi0jaW5jbHVkZSA8ZHJtL2RybVAuaD4KKyNpbmNs
-dWRlIDxkcm0vZHJtX2Rydi5oPgogI2luY2x1ZGUgPGRybS9kcm1fZW5jb2Rlcl9zbGF2ZS5oPgor
-I2luY2x1ZGUgPGRybS9kcm1fcHJpbnQuaD4KICNpbmNsdWRlIDxkcm0vZHJtX3Byb2JlX2hlbHBl
-ci5oPgogI2luY2x1ZGUgPGRybS9pMmMvc2lsMTY0Lmg+CiAKLS0gCjIuMjAuMQoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
-bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+Drop use of the deprecated drmP.h header file.
+
+While touching the include files divide them up in blocks
+in the typical order:
+
+\#include <linux/*>
+
+\#include <video/*>
+
+\#include <drm/*>
+
+\#include ""
+
+And sort the includes in the blocks
+Add the necessary includes to fix build after removal of drmP.h
+
+Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
+Cc: CK Hu <ck.hu@mediatek.com>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: David Airlie <airlied@linux.ie>
+Cc: Daniel Vetter <daniel@ffwll.ch>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+---
+The list of cc: was too large to add all recipients to the cover letter.
+Please find cover letter here:
+https://lists.freedesktop.org/archives/dri-devel/2019-June/thread.html
+Search for "drm: drop use of drmp.h in drm-misc"
+
+        Sam
+
+ drivers/gpu/drm/mediatek/mtk_disp_color.c   |  2 +-
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c     |  2 +-
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |  2 +-
+ drivers/gpu/drm/mediatek/mtk_dpi.c          | 18 ++++++++++--------
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 10 ++++++----
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  2 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c      | 16 ++++++++++------
+ drivers/gpu/drm/mediatek/mtk_drm_fb.c       |  7 ++++---
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c      |  6 ++++--
+ drivers/gpu/drm/mediatek/mtk_drm_plane.c    |  2 +-
+ drivers/gpu/drm/mediatek/mtk_dsi.c          | 14 ++++++++------
+ drivers/gpu/drm/mediatek/mtk_hdmi.c         | 14 +++++++++-----
+ 12 files changed, 56 insertions(+), 39 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_color.c b/drivers/gpu/drm/mediatek/mtk_disp_color.c
+index f33d98b356d6..59de2a46aa49 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_color.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_color.c
+@@ -3,9 +3,9 @@
+  * Copyright (c) 2017 MediaTek Inc.
+  */
+ 
+-#include <drm/drmP.h>
+ #include <linux/clk.h>
+ #include <linux/component.h>
++#include <linux/module.h>
+ #include <linux/of_device.h>
+ #include <linux/of_irq.h>
+ #include <linux/platform_device.h>
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index c4f07c28c74f..21851756c579 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -3,9 +3,9 @@
+  * Copyright (c) 2015 MediaTek Inc.
+  */
+ 
+-#include <drm/drmP.h>
+ #include <linux/clk.h>
+ #include <linux/component.h>
++#include <linux/module.h>
+ #include <linux/of_device.h>
+ #include <linux/of_irq.h>
+ #include <linux/platform_device.h>
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+index 9a6f0a29e43c..405afef31407 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+@@ -3,9 +3,9 @@
+  * Copyright (c) 2015 MediaTek Inc.
+  */
+ 
+-#include <drm/drmP.h>
+ #include <linux/clk.h>
+ #include <linux/component.h>
++#include <linux/module.h>
+ #include <linux/of_device.h>
+ #include <linux/of_irq.h>
+ #include <linux/platform_device.h>
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index bacd989cc9aa..be6d95c5ff25 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -3,21 +3,23 @@
+  * Copyright (c) 2014 MediaTek Inc.
+  * Author: Jie Qiu <jie.qiu@mediatek.com>
+  */
+-#include <drm/drmP.h>
+-#include <drm/drm_crtc.h>
+-#include <drm/drm_atomic_helper.h>
+-#include <drm/drm_of.h>
+-#include <linux/kernel.h>
++
++#include <linux/clk.h>
+ #include <linux/component.h>
+-#include <linux/platform_device.h>
++#include <linux/interrupt.h>
++#include <linux/kernel.h>
+ #include <linux/of.h>
+ #include <linux/of_device.h>
+ #include <linux/of_graph.h>
+-#include <linux/interrupt.h>
++#include <linux/platform_device.h>
+ #include <linux/types.h>
+-#include <linux/clk.h>
++
+ #include <video/videomode.h>
+ 
++#include <drm/drm_atomic_helper.h>
++#include <drm/drm_crtc.h>
++#include <drm/drm_of.h>
++
+ #include "mtk_dpi_regs.h"
+ #include "mtk_drm_ddp_comp.h"
+ 
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index a9007210dda1..34a731755791 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -3,14 +3,16 @@
+  * Copyright (c) 2015 MediaTek Inc.
+  */
+ 
++#include <linux/clk.h>
++#include <linux/pm_runtime.h>
++
+ #include <asm/barrier.h>
+-#include <drm/drmP.h>
++#include <soc/mediatek/smi.h>
++
+ #include <drm/drm_atomic_helper.h>
+ #include <drm/drm_plane_helper.h>
+ #include <drm/drm_probe_helper.h>
+-#include <linux/clk.h>
+-#include <linux/pm_runtime.h>
+-#include <soc/mediatek/smi.h>
++#include <drm/drm_vblank.h>
+ 
+ #include "mtk_drm_drv.h"
+ #include "mtk_drm_crtc.h"
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index b38963f1f2ec..efa85973e46b 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -12,7 +12,7 @@
+ #include <linux/of_irq.h>
+ #include <linux/of_platform.h>
+ #include <linux/platform_device.h>
+-#include <drm/drmP.h>
++
+ #include "mtk_drm_drv.h"
+ #include "mtk_drm_plane.h"
+ #include "mtk_drm_ddp_comp.h"
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 2d5caf532431..2ee809a6f3dc 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -4,22 +4,26 @@
+  * Author: YT SHEN <yt.shen@mediatek.com>
+  */
+ 
+-#include <drm/drmP.h>
++#include <linux/component.h>
++#include <linux/iommu.h>
++#include <linux/module.h>
++#include <linux/of_address.h>
++#include <linux/of_platform.h>
++#include <linux/pm_runtime.h>
++
+ #include <drm/drm_atomic.h>
+ #include <drm/drm_atomic_helper.h>
++#include <drm/drm_drv.h>
+ #include <drm/drm_fb_helper.h>
+ #include <drm/drm_gem.h>
+ #include <drm/drm_gem_cma_helper.h>
+ #include <drm/drm_of.h>
+ #include <drm/drm_probe_helper.h>
+-#include <linux/component.h>
+-#include <linux/iommu.h>
+-#include <linux/of_address.h>
+-#include <linux/of_platform.h>
+-#include <linux/pm_runtime.h>
++#include <drm/drm_vblank.h>
+ 
+ #include "mtk_drm_crtc.h"
+ #include "mtk_drm_ddp.h"
++#include "mtk_drm_ddp.h"
+ #include "mtk_drm_ddp_comp.h"
+ #include "mtk_drm_drv.h"
+ #include "mtk_drm_fb.h"
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_fb.c b/drivers/gpu/drm/mediatek/mtk_drm_fb.c
+index 396ba497986d..ae40b080ae47 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_fb.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_fb.c
+@@ -3,13 +3,14 @@
+  * Copyright (c) 2015 MediaTek Inc.
+  */
+ 
+-#include <drm/drmP.h>
++#include <linux/dma-buf.h>
++#include <linux/reservation.h>
++
+ #include <drm/drm_modeset_helper.h>
+ #include <drm/drm_fb_helper.h>
++#include <drm/drm_fourcc.h>
+ #include <drm/drm_gem.h>
+ #include <drm/drm_gem_framebuffer_helper.h>
+-#include <linux/dma-buf.h>
+-#include <linux/reservation.h>
+ 
+ #include "mtk_drm_drv.h"
+ #include "mtk_drm_fb.h"
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+index 0d69698f8173..9434f88c6341 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+@@ -3,10 +3,12 @@
+  * Copyright (c) 2015 MediaTek Inc.
+  */
+ 
+-#include <drm/drmP.h>
+-#include <drm/drm_gem.h>
+ #include <linux/dma-buf.h>
+ 
++#include <drm/drm_device.h>
++#include <drm/drm_gem.h>
++#include <drm/drm_prime.h>
++
+ #include "mtk_drm_drv.h"
+ #include "mtk_drm_gem.h"
+ 
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+index 42cc9823eaaa..584a9ecadce6 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+@@ -4,9 +4,9 @@
+  * Author: CK Hu <ck.hu@mediatek.com>
+  */
+ 
+-#include <drm/drmP.h>
+ #include <drm/drm_atomic.h>
+ #include <drm/drm_atomic_helper.h>
++#include <drm/drm_fourcc.h>
+ #include <drm/drm_plane_helper.h>
+ #include <drm/drm_gem_framebuffer_helper.h>
+ 
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index b91c4616644a..224afb666881 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -3,12 +3,6 @@
+  * Copyright (c) 2015 MediaTek Inc.
+  */
+ 
+-#include <drm/drmP.h>
+-#include <drm/drm_atomic_helper.h>
+-#include <drm/drm_mipi_dsi.h>
+-#include <drm/drm_panel.h>
+-#include <drm/drm_of.h>
+-#include <drm/drm_probe_helper.h>
+ #include <linux/clk.h>
+ #include <linux/component.h>
+ #include <linux/iopoll.h>
+@@ -17,9 +11,17 @@
+ #include <linux/of_platform.h>
+ #include <linux/phy/phy.h>
+ #include <linux/platform_device.h>
++
+ #include <video/mipi_display.h>
+ #include <video/videomode.h>
+ 
++#include <drm/drm_atomic_helper.h>
++#include <drm/drm_mipi_dsi.h>
++#include <drm/drm_of.h>
++#include <drm/drm_panel.h>
++#include <drm/drm_print.h>
++#include <drm/drm_probe_helper.h>
++
+ #include "mtk_drm_ddp_comp.h"
+ 
+ #define DSI_START		0x00
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+index 5d6a9f094df5..ce91b61364eb 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+@@ -3,11 +3,7 @@
+  * Copyright (c) 2014 MediaTek Inc.
+  * Author: Jie Qiu <jie.qiu@mediatek.com>
+  */
+-#include <drm/drmP.h>
+-#include <drm/drm_atomic_helper.h>
+-#include <drm/drm_crtc.h>
+-#include <drm/drm_probe_helper.h>
+-#include <drm/drm_edid.h>
++
+ #include <linux/arm-smccc.h>
+ #include <linux/clk.h>
+ #include <linux/delay.h>
+@@ -23,7 +19,15 @@
+ #include <linux/phy/phy.h>
+ #include <linux/platform_device.h>
+ #include <linux/regmap.h>
++
+ #include <sound/hdmi-codec.h>
++
++#include <drm/drm_atomic_helper.h>
++#include <drm/drm_crtc.h>
++#include <drm/drm_edid.h>
++#include <drm/drm_print.h>
++#include <drm/drm_probe_helper.h>
++
+ #include "mtk_cec.h"
+ #include "mtk_hdmi.h"
+ #include "mtk_hdmi_regs.h"
+-- 
+2.20.1
