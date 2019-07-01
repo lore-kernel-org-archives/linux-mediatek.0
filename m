@@ -1,33 +1,105 @@
-From: Joerg Roedel <joro@8bytes.org>
-Subject: Re: [PATCH v4 0/5] iommu/amd: Convert the AMD iommu driver to the
- dma-iommu api
-Date: Mon, 1 Jul 2019 14:19:14 +0200
-Message-ID: <20190701121914.GD8166@8bytes.org>
-References: <20190613223901.9523-1-murphyt7@tcd.ie>
- <20190624061945.GA4912@infradead.org>
+From: =?utf-8?b?UmVuw6k=?= van Dorst <opensource@vdorst.com>
+Subject: Re: [PATCH] net: ethernet: mediatek: Fix overlapping capability
+ bits.
+Date: Mon, 01 Jul 2019 12:44:47 +0000
+Message-ID: <20190701124447.Horde.RNUh-fSQf6XMauvPaGIYpKj@www.vdorst.com>
+References: <20190629122419.19026-1-opensource@vdorst.com>
+ <CA+FuTSdr8HCRJTE8pEVxsga3N-xx-fEAxzKAAyPFWH6doVRHbQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset=utf-8; format=flowed; DelSp=Yes
+Content-Transfer-Encoding: 8bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <CA+FuTSdr8HCRJTE8pEVxsga3N-xx-fEAxzKAAyPFWH6doVRHbQ@mail.gmail.com>
 Content-Disposition: inline
-In-Reply-To: <20190624061945.GA4912@infradead.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Christoph Hellwig <hch@infradead.org>
-Cc: Tom Murphy <murphyt7@tcd.ie>, iommu@lists.linux-foundation.org, Heiko Stuebner <heiko@sntech.de>, Will Deacon <will.deacon@arm.com>, virtualization@lists.linux-foundation.org, David Brown <david.brown@linaro.org>, Thierry Reding <thierry.reding@gmail.com>, linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org, Jean-Philippe Brucker <jean-philippe.brucker@arm.com>, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Robin Murphy <robin.mur>
+Sender: netdev-owner@vger.kernel.org
+To: Willem de Bruijn <willemdebruijn.kernel@gmail.com>
+Cc: sean.wang@mediatek.com, f.fainelli@gmail.com, linux@armlinux.org.uk, David Miller <davem@davemloft.net>, matthias.bgg@gmail.com, andrew@lunn.ch, vivien.didelot@gmail.com, frank-w@public-files.de, Network Development <netdev@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
-	
-On Sun, Jun 23, 2019 at 11:19:45PM -0700, Christoph Hellwig wrote:
-> Joerg, any chance you could review this?  Toms patches to convert the
-> AMD and Intel IOMMU drivers to the dma-iommu code are going to make my
-> life in DMA land significantly easier, so I have a vested interest
-> in this series moving forward :)
+Quoting Willem de Bruijn <willemdebruijn.kernel@gmail.com>:
 
-I really appreciate Toms work on this. Tom, please rebase and resubmit
-this series after the next merge window and I will do more performance
-testing on it. If all goes well I and no other issues show up I can
-apply it for v5.4.
+> On Sat, Jun 29, 2019 at 8:24 AM René van Dorst <opensource@vdorst.com> wrote:
+>>
+>> Both MTK_TRGMII_MT7621_CLK and MTK_PATH_BIT are defined as bit 10.
+>>
+>> This causes issues on non-MT7621 devices which has the
+>> MTK_PATH_BIT(MTK_ETH_PATH_GMAC1_RGMII) capability set.
+>> The wrong TRGMII setup code is executed.
+>>
+>> Moving the MTK_PATH_BIT to bit 11 fixes the issue.
+>>
+>> Fixes: 8efaa653a8a5 ("net: ethernet: mediatek: Add MT7621 TRGMII mode
+>> support")
+>> Signed-off-by: René van Dorst <opensource@vdorst.com>
+>
+> This targets net? Please mark networking patches [PATCH net] or [PATCH
+> net-next].
 
-Regards,
+Hi Willem,
 
-	Joerg
+Thanks for you input.
+
+This patch was for net-next.
+
+>
+>> ---
+>>  drivers/net/ethernet/mediatek/mtk_eth_soc.h | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h  
+>> b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+>> index 876ce6798709..2cb8a915731c 100644
+>> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+>> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+>> @@ -626,7 +626,7 @@ enum mtk_eth_path {
+>>  #define MTK_TRGMII_MT7621_CLK          BIT(10)
+>>
+>>  /* Supported path present on SoCs */
+>> -#define MTK_PATH_BIT(x)         BIT((x) + 10)
+>>
+>> +#define MTK_PATH_BIT(x)         BIT((x) + 11)
+>>
+>
+> To avoid this happening again, perhaps make the reserved range more explicit?
+>
+> For instance
+>
+> #define MTK_FIXED_BIT_LAST 10
+> #define MTK_TRGMII_MT7621_CLK  BIT(MTK_FIXED_BIT_LAST)
+>
+> #define MTK_PATH_BIT_FIRST  (MTK_FIXED_BIT_LAST + 1)
+> #define MTK_PATH_BIT_LAST (MTK_FIXED_BIT_LAST + 7)
+> #define MTK_MUX_BIT_FIRST (MTK_PATH_BIT_LAST + 1)
+>
+> Though I imagine there are cleaner approaches. Perhaps define all
+> fields as enum instead of just mtk_eth_mux and mtk_eth_path. Then
+> there can be no accidental collision.
+
+You mean in a similar way as done in the ethtool.h [0]?
+
+Use a enum to define the unique bits.
+
+enum mtk_bits {
+	MTK_RGMII_BIT = 0,
+	MTK_SGMII_BIT,
+	MTK_TRGMII_BIT,
+	AND SO ON ....
+};
+
+Also move the mtk_eth_mux and mtk_eth_path in to this enum.
+
+Then use defines to convert bits to values.
+
+#define MTK_RGMII  BIT(MTK_RGMII_BIT)
+#define MTK_TRGMII BIT(MTK_TRGMII_BIT)
+
+Replace the MTK_PATH_BIT and MTK_PATH_BIT macro with BIT()
+
+Is this what you had in mind?
+
+Greats,
+
+René
+
+[0]:  
+https://elixir.bootlin.com/linux/latest/source/include/uapi/linux/ethtool.h#L1402
