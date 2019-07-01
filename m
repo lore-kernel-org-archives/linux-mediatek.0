@@ -1,123 +1,86 @@
-From: Walter Wu <walter-zh.wu@mediatek.com>
-Subject: Re: [PATCH v3] kasan: add memory corruption identification for
- software tag-based mode
-Date: Mon, 1 Jul 2019 17:56:35 +0800
-Message-ID: <1561974995.18866.1.camel@mtksdccf07>
-References: <20190613081357.1360-1-walter-zh.wu@mediatek.com>
-         <da7591c9-660d-d380-d59e-6d70b39eaa6b@virtuozzo.com>
-         <1560447999.15814.15.camel@mtksdccf07>
-         <1560479520.15814.34.camel@mtksdccf07>
-         <1560744017.15814.49.camel@mtksdccf07>
-         <CACT4Y+Y3uS59rXf92ByQuFK_G4v0H8NNnCY1tCbr4V+PaZF3ag@mail.gmail.com>
-         <1560774735.15814.54.camel@mtksdccf07>
+From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 4/6] mt76: mt7615: unlock dfs bands
+Date: Mon, 1 Jul 2019 17:57:01 +0800
+Message-ID: <1561975021.3950.9.camel@mtkswgap22>
+References: <cover.1561804422.git.lorenzo@kernel.org>
+         <33184e0b78983fe7c79fa70c5fbb21042aafa4f5.1561804422.git.lorenzo@kernel.org>
+         <87muhzs9qv.fsf@purkki.adurom.net>
+         <CAJ0CqmU6TLhFa4ZJxWHBzvpx+5g5E4-WkSPECx47F9d3T=5YjQ@mail.gmail.com>
+         <87tvc69odh.fsf@kamboji.qca.qualcomm.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1560774735.15814.54.camel@mtksdccf07>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Dmitry Vyukov <dvyukov@google.com>
-Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Matthias Brugger <matthias.bgg@gmail.com>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Arnd Bergmann <arnd@arndb.de>, Vasily Gorbik <gor@linux.ibm.com>, Andrey Konovalov <andreyknvl@google.com>, "Jason A . Donenfeld" <Jason@zx2c4.com>, Miles Chen <miles.chen@mediatek.com>, kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>, Linux-MM <linux-mm@kvack.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream <wsd_upstream@mediatek.com>
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <87tvc69odh.fsf-HodKDYzPHsUD5k0oWYwrnHL1okKdlPRT@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Cc: Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Lorenzo Bianconi <lorenzo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Roy Luo <royluo-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, YF Luo <yf.luo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2019-06-17 at 20:32 +0800, Walter Wu wrote:
-> On Mon, 2019-06-17 at 13:57 +0200, Dmitry Vyukov wrote:
-> > On Mon, Jun 17, 2019 at 6:00 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
-> > >
-> > > On Fri, 2019-06-14 at 10:32 +0800, Walter Wu wrote:
-> > > > On Fri, 2019-06-14 at 01:46 +0800, Walter Wu wrote:
-> > > > > On Thu, 2019-06-13 at 15:27 +0300, Andrey Ryabinin wrote:
-> > > > > >
-> > > > > > On 6/13/19 11:13 AM, Walter Wu wrote:
-> > > > > > > This patch adds memory corruption identification at bug report for
-> > > > > > > software tag-based mode, the report show whether it is "use-after-free"
-> > > > > > > or "out-of-bound" error instead of "invalid-access" error.This will make
-> > > > > > > it easier for programmers to see the memory corruption problem.
-> > > > > > >
-> > > > > > > Now we extend the quarantine to support both generic and tag-based kasan.
-> > > > > > > For tag-based kasan, the quarantine stores only freed object information
-> > > > > > > to check if an object is freed recently. When tag-based kasan reports an
-> > > > > > > error, we can check if the tagged addr is in the quarantine and make a
-> > > > > > > good guess if the object is more like "use-after-free" or "out-of-bound".
-> > > > > > >
-> > > > > >
-> > > > > >
-> > > > > > We already have all the information and don't need the quarantine to make such guess.
-> > > > > > Basically if shadow of the first byte of object has the same tag as tag in pointer than it's out-of-bounds,
-> > > > > > otherwise it's use-after-free.
-> > > > > >
-> > > > > > In pseudo-code it's something like this:
-> > > > > >
-> > > > > > u8 object_tag = *(u8 *)kasan_mem_to_shadow(nearest_object(cacche, page, access_addr));
-> > > > > >
-> > > > > > if (access_addr_tag == object_tag && object_tag != KASAN_TAG_INVALID)
-> > > > > >   // out-of-bounds
-> > > > > > else
-> > > > > >   // use-after-free
-> > > > >
-> > > > > Thanks your explanation.
-> > > > > I see, we can use it to decide corruption type.
-> > > > > But some use-after-free issues, it may not have accurate free-backtrace.
-> > > > > Unfortunately in that situation, free-backtrace is the most important.
-> > > > > please see below example
-> > > > >
-> > > > > In generic KASAN, it gets accurate free-backrace(ptr1).
-> > > > > In tag-based KASAN, it gets wrong free-backtrace(ptr2). It will make
-> > > > > programmer misjudge, so they may not believe tag-based KASAN.
-> > > > > So We provide this patch, we hope tag-based KASAN bug report is the same
-> > > > > accurate with generic KASAN.
-> > > > >
-> > > > > ---
-> > > > >     ptr1 = kmalloc(size, GFP_KERNEL);
-> > > > >     ptr1_free(ptr1);
-> > > > >
-> > > > >     ptr2 = kmalloc(size, GFP_KERNEL);
-> > > > >     ptr2_free(ptr2);
-> > > > >
-> > > > >     ptr1[size] = 'x';  //corruption here
-> > > > >
-> > > > >
-> > > > > static noinline void ptr1_free(char* ptr)
-> > > > > {
-> > > > >     kfree(ptr);
-> > > > > }
-> > > > > static noinline void ptr2_free(char* ptr)
-> > > > > {
-> > > > >     kfree(ptr);
-> > > > > }
-> > > > > ---
-> > > > >
-> > > > We think of another question about deciding by that shadow of the first
-> > > > byte.
-> > > > In tag-based KASAN, it is immediately released after calling kfree(), so
-> > > > the slub is easy to be used by another pointer, then it will change
-> > > > shadow memory to the tag of new pointer, it will not be the
-> > > > KASAN_TAG_INVALID, so there are many false negative cases, especially in
-> > > > small size allocation.
-> > > >
-> > > > Our patch is to solve those problems. so please consider it, thanks.
-> > > >
-> > > Hi, Andrey and Dmitry,
-> > >
-> > > I am sorry to bother you.
-> > > Would you tell me what you think about this patch?
-> > > We want to use tag-based KASAN, so we hope its bug report is clear and
-> > > correct as generic KASAN.
-> > >
-> > > Thanks your review.
-> > > Walter
-> > 
-> > Hi Walter,
-> > 
-> > I will probably be busy till the next week. Sorry for delays.
+On Mon, 2019-07-01 at 10:59 +0300, Kalle Valo wrote:
+> Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org> writes:
 > 
-> It's ok. Thanks your kindly help.
-> I hope I can contribute to tag-based KASAN. It is a very important tool
-> for us.
+> >>
+> >> Lorenzo Bianconi <lorenzo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> writes:
+> >>
+> >> > Unlock dfs channels since now mt7615 driver supports radar detection
+> >> >
+> >> > Signed-off-by: Lorenzo Bianconi <lorenzo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> >> > ---
+> >> >  drivers/net/wireless/mediatek/mt76/mt7615/init.c | 6 ++++++
+> >> >  1 file changed, 6 insertions(+)
+> >> >
+> >> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+> >> > index 5dc4cced5789..6d336d82cafe 100644
+> >> > --- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+> >> > +++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+> >> > @@ -152,6 +152,12 @@ static const struct ieee80211_iface_combination if_comb[] = {
+> >> >               .max_interfaces = 4,
+> >> >               .num_different_channels = 1,
+> >> >               .beacon_int_infra_match = true,
+> >> > +             .radar_detect_widths = BIT(NL80211_CHAN_WIDTH_20_NOHT) |
+> >> > +                                    BIT(NL80211_CHAN_WIDTH_20) |
+> >> > +                                    BIT(NL80211_CHAN_WIDTH_40) |
+> >> > +                                    BIT(NL80211_CHAN_WIDTH_80) |
+> >> > +                                    BIT(NL80211_CHAN_WIDTH_160) |
+> >> > +                                    BIT(NL80211_CHAN_WIDTH_80P80),
+> >>
+> >> Isn't it questionable to enable these without any testing on real
+> >> hardware? Getting DFS to work correctly is hard so I'm very suspicious
+> >> about this.
+> >>
+> >> --
+> >> Kalle Valo
+> >
+> > Hi Kalle,
+> >
+> > unfortunately at the moment I am not able to run any tests with a real
+> > signal generator so I just ported the code from vendor sdk.
+> > I am pretty confident it works since the radar pattern detection is
+> > done in fw/hw so I guess it has been already tested in the vendor sdk
+> 
+> DFS is really tricky to get it working right, so I'm not easily
+> convinced :)
+> 
+> > but we can postpone this patch and apply just the rest of the series
+> > until we have some test results.
+> 
+> Yeah, I think it would be best to drop this patch so that DFS is not
+> enabled by default and apply this patch only after positive test
+> results.
+> 
 
-Hi, Dmitry,
+That's why I suggested Lorenzo to add this one - "[6/6] mt76: mt7615:
+add radar pattern test knob to debugfs"
 
-Would you have free time to discuss this patch together?
-Thanks.
+We can feed radar pattern through debugfs to test if a pattern is
+detected as radar pattern or not and verify the fw radar detection
+algorithm.
 
-Walter
+In this format:
+RadarPulsePattern="3680128-2-245;3683878-2-245;3687628-2-245;3691378-2-245;3695128-2-245;3698878-2-245;3702628-2-245;3706378-2-245;3710128-2-245;3713878-2-245"
+
+As for testing it on 'real hardware' I need to take some other time to
+borrow equipment.
+
+Ryder
