@@ -1,119 +1,60 @@
-From: Willem de Bruijn <willemdebruijn.kernel@gmail.com>
-Subject: Re: [PATCH] net: ethernet: mediatek: Fix overlapping capability bits.
-Date: Mon, 1 Jul 2019 08:57:29 -0400
-Message-ID: <CAF=yD-+6FqkWOhGk0vXKA5q5EEx8WEhXCfqq7SnJ3MqA=JB2qA@mail.gmail.com>
-References: <20190629122419.19026-1-opensource@vdorst.com> <CA+FuTSdr8HCRJTE8pEVxsga3N-xx-fEAxzKAAyPFWH6doVRHbQ@mail.gmail.com>
- <20190701124447.Horde.RNUh-fSQf6XMauvPaGIYpKj@www.vdorst.com>
+From: Andrzej Pietrasiewicz <andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH v3 01/22] drm: Include ddc adapter pointer
+ in struct drm_connector
+Date: Mon, 1 Jul 2019 15:27:40 +0200
+Message-ID: <cf1984e4-50af-302d-ef67-9ad530118c29@collabora.com>
+References: <3fb19371-db7d-f9dc-31a7-1ccd126f6784@collabora.com>
+ <cover.1561735433.git.andrzej.p@collabora.com>
+ <d6381c020ea1c848a7044d830bdb0ec9663d1619.1561735433.git.andrzej.p@collabora.com>
+ <9b03d145-ec50-927c-55a8-dff1cd51d655@suse.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20190701124447.Horde.RNUh-fSQf6XMauvPaGIYpKj@www.vdorst.com>
-Sender: netdev-owner@vger.kernel.org
-To: =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>
-Cc: sean.wang@mediatek.com, Florian Fainelli <f.fainelli@gmail.com>, linux@armlinux.org.uk, David Miller <davem@davemloft.net>, matthias.bgg@gmail.com, andrew@lunn.ch, vivien.didelot@gmail.com, frank-w@public-files.de, Network Development <netdev@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+In-Reply-To: <9b03d145-ec50-927c-55a8-dff1cd51d655-l3A5Bk7waGM@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/freedreno>
+List-Post: <mailto:freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+List-Help: <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
+Errors-To: freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Sender: "Freedreno" <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+To: Thomas Zimmermann <tzimmermann-l3A5Bk7waGM@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Cc: "Y.C. Chen" <yc_chen-SAlXDmAnmOAqDJ6do+/SaQ@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sam Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Benjamin Gaignard <benjamin.gaignard-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, "David (ChunMing) Zhou" <David1.Zhou-5C7GfCeVMHo@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Vincent Abriou <vincent.abriou-qxv4g6HH51o@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>David
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jul 1, 2019 at 8:44 AM Ren=C3=A9 van Dorst <opensource@vdorst.com> =
-wrote:
->
-> Quoting Willem de Bruijn <willemdebruijn.kernel@gmail.com>:
->
-> > On Sat, Jun 29, 2019 at 8:24 AM Ren=C3=A9 van Dorst <opensource@vdorst.=
-com> wrote:
-> >>
-> >> Both MTK_TRGMII_MT7621_CLK and MTK_PATH_BIT are defined as bit 10.
-> >>
-> >> This causes issues on non-MT7621 devices which has the
-> >> MTK_PATH_BIT(MTK_ETH_PATH_GMAC1_RGMII) capability set.
-> >> The wrong TRGMII setup code is executed.
-> >>
-> >> Moving the MTK_PATH_BIT to bit 11 fixes the issue.
-> >>
-> >> Fixes: 8efaa653a8a5 ("net: ethernet: mediatek: Add MT7621 TRGMII mode
-> >> support")
-> >> Signed-off-by: Ren=C3=A9 van Dorst <opensource@vdorst.com>
-> >
-> > This targets net? Please mark networking patches [PATCH net] or [PATCH
-> > net-next].
->
-> Hi Willem,
->
-> Thanks for you input.
->
-> This patch was for net-next.
->
-> >
-> >> ---
-> >>  drivers/net/ethernet/mediatek/mtk_eth_soc.h | 2 +-
-> >>  1 file changed, 1 insertion(+), 1 deletion(-)
-> >>
-> >> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> >> b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> >> index 876ce6798709..2cb8a915731c 100644
-> >> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> >> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> >> @@ -626,7 +626,7 @@ enum mtk_eth_path {
-> >>  #define MTK_TRGMII_MT7621_CLK          BIT(10)
-> >>
-> >>  /* Supported path present on SoCs */
-> >> -#define MTK_PATH_BIT(x)         BIT((x) + 10)
-> >>
-> >> +#define MTK_PATH_BIT(x)         BIT((x) + 11)
-> >>
-> >
-> > To avoid this happening again, perhaps make the reserved range more exp=
-licit?
-> >
-> > For instance
-> >
-> > #define MTK_FIXED_BIT_LAST 10
-> > #define MTK_TRGMII_MT7621_CLK  BIT(MTK_FIXED_BIT_LAST)
-> >
-> > #define MTK_PATH_BIT_FIRST  (MTK_FIXED_BIT_LAST + 1)
-> > #define MTK_PATH_BIT_LAST (MTK_FIXED_BIT_LAST + 7)
-> > #define MTK_MUX_BIT_FIRST (MTK_PATH_BIT_LAST + 1)
-> >
-> > Though I imagine there are cleaner approaches. Perhaps define all
-> > fields as enum instead of just mtk_eth_mux and mtk_eth_path. Then
-> > there can be no accidental collision.
->
-> You mean in a similar way as done in the ethtool.h [0]?
->
-> Use a enum to define the unique bits.
->
-> enum mtk_bits {
->         MTK_RGMII_BIT =3D 0,
->         MTK_SGMII_BIT,
->         MTK_TRGMII_BIT,
->         AND SO ON ....
-> };
->
-> Also move the mtk_eth_mux and mtk_eth_path in to this enum.
-
-That's the key part: they are all part of the same namespace and these
-enums are not used anywhere else, so a single enum will avoid
-accidentally namespace collisions.
-
-> Then use defines to convert bits to values.
->
-> #define MTK_RGMII  BIT(MTK_RGMII_BIT)
-> #define MTK_TRGMII BIT(MTK_TRGMII_BIT)
->
-> Replace the MTK_PATH_BIT and MTK_PATH_BIT macro with BIT()
->
-> Is this what you had in mind?
-
-Great find. Exactly, but I did not find such a clear example.
-
->
-> Greats,
->
-> Ren=C3=A9
->
-> [0]:
-> https://elixir.bootlin.com/linux/latest/source/include/uapi/linux/ethtool=
-.h#L1402
->
->
->
+SGkgVGhvbWFzLAoKVGhhbmsgeW91IGZvciB5b3VyIGNvbW1lbnRzLiBQbGVhc2Ugc2VlIGlubGlu
+ZS4KClcgZG5pdSAzMC4wNi4yMDE5IG/CoDEwOjEyLCBUaG9tYXMgWmltbWVybWFubiBwaXN6ZToK
+PiBIaQo+IAo+IEkgbGlrZSB0aGUgaWRlYSwgYnV0IHdvdWxkIHByZWZlciBhIG1vcmUgc3RydWN0
+dXJlZCBhcHByb2FjaC4KPiAKPiBTZXR0aW5nIGNvbm5lY3Rvci0+ZGRjIGJlZm9yZSBjYWxsaW5n
+IGRybV9zeXNmc19jb25uZWN0b3JfYWRkKCkgc2VlbXMKPiBlcnJvciBwcm9uZS4gVGhlIGRlcGVu
+ZGVuY3kgaXMgbm90IHJlYWxseSBjbGVhciBmcm9tIHRoZSBjb2RlIG9yIGludGVyZmFjZXMuCj4g
+Cj4gVGhlIG90aGVyIHRoaW5nIGlzIHRoYXQgZHJpdmVycyBJIG1vc3RseSB3b3JrIG9uLCBhc3Qg
+YW5kIG1nYWcyMDAsIGhhdmUKPiBjb2RlIGxpa2UgdGhpczoKPiAKPiAgICBzdHJ1Y3QgYXN0X2ky
+Y19jaGFuIHsKPiAJc3RydWN0IGkyY19hZGFwdGVyIGFkYXB0ZXI7Cj4gCXN0cnVjdCBkcm1fZGV2
+aWNlICpkZXY7Cj4gCXN0cnVjdCBpMmNfYWxnb19iaXRfZGF0YSBiaXQ7Cj4gICAgfTsKPiAKPiAg
+ICBzdHJ1Y3QgYXN0X2Nvbm5lY3RvciB7Cj4gCXN0cnVjdCBkcm1fY29ubmVjdG9yIGJhc2U7Cj4g
+CXN0cnVjdCBhc3RfaTJjX2NoYW4gKmkyYzsKPiAgICB9Owo+IAo+IEl0IGFscmVhZHkgZW5jb2Rl
+cyB0aGUgY29ubmVjdGlvbiBiZXR3ZWVuIGNvbm5lY3RvciBhbmQgZGRjIGFkYXB0ZXIuCj4gCj4g
+SSBzdWdnZXN0IHRvIGludHJvZHVjZSBzdHJ1Y3QgZHJtX2kyY19hZGFwdGVyCj4gCj4gICAgc3Ry
+dWN0IGRybV9pMmNfYWRhcHRlciB7Cj4gCXN0cnVjdCBpMmNfYWRhcHRlciBiYXNlOwo+IAlzdHJ1
+Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yOwo+ICAgIH07Cj4gCj4gYW5kIGNvbnZlcnQgZHJp
+dmVycyBvdmVyIHRvIGl0LiBBc3Qgd291bGQgbG9vayBsaWtlIHRoaXM6Cj4gCj4gICAgc3RydWN0
+IGFzdF9pMmNfY2hhbiB7Cj4gCXN0cnVjdCBkcm1faTJjX2FkYXB0ZXIgYWRhcHRlcjsKPiAJc3Ry
+dWN0IGkyY19hbGdvX2JpdF9kYXRhIGJpdDsKPiAgICB9Owo+IAoKVGhlcmUgYXJlIGZldyBmbGF2
+b3JzIG9mIHRoZXNlIGRyaXZlcnMuIEluIHNvbWUgb2YgdGhlbQp0aGUgaTJjX2FkYXB0ZXIgZm9y
+IGRkYyBpcyBhbGxvY2F0ZWQgYW5kIGluaXRpYWxpemVkIGJ5CnRoZSBkcml2ZXIsIHdoaWNoIG11
+c3QgcHJvdmlkZSBhIHBsYWNlIGluIG1lbW9yeSB0byBob2xkCnRoZSBhZGFwdGVyLiBhc3QgaXMg
+YW4gZXhhbXBsZSBvZiB0aGlzIGFwcHJvYWNoLgoKQnV0IHRoZXJlIGFyZSBvdGhlcnMsIHN1Y2gg
+YXMgZm9yIGV4YW1wbGUgZXh5bm9zX2hkbWkuYy4KSXQgZ2V0cyBpdHMgZGRjIGFkYXB0ZXIgd2l0
+aCBvZl9maW5kX2kyY19hZGFwdGVyX2J5X25vZGUoKQphbmQgbWVyZWx5IHN0b3JlcyBhIHBvaW50
+ZXIgdG8gaXQsIHdoaWxlIG5vdCBtYW5hZ2luZyB0aGUKbWVtb3J5IG5lZWRlZCB0byBob2xkIHRo
+ZSBpMmNfYWRhcHRlci4KCkRvIHlvdSBoYXZlIGFueSBpZGVhIGhvdyB0byBhY2NvbW1vZGF0ZSB0
+aGVzZSB2YXJpb3VzCmZsYXZvcnMgb2YgZHJpdmVycyBpbiB0aGUgc2NoZW1lIHlvdSBwcm9wb3Nl
+PwoKQW5kcnplagoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkZyZWVkcmVubyBtYWlsaW5nIGxpc3QKRnJlZWRyZW5vQGxpc3RzLmZyZWVkZXNrdG9wLm9y
+ZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ZyZWVkcmVu
+bw==
