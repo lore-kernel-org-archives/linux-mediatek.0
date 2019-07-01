@@ -1,22 +1,16 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v5 08/12] dt-bindings: mediatek: Change the binding for
- mmsys clocks
-Date: Mon, 1 Jul 2019 11:55:18 +0800
-Message-ID: <1561953318.25914.9.camel@mtksdaap41>
-References: <20181116125449.23581-1-matthias.bgg@kernel.org>
- <20181116125449.23581-9-matthias.bgg@kernel.org>
- <20181116231522.GA18006@bogus>
- <2a23e407-4cd4-2e2b-97a5-4e2bb96846e0@gmail.com>
- <CAL_JsqKJQwfDJbpmwW+oCxiDkSp5+6mG-uoURmCQVEMP_jFOEg@mail.gmail.com>
- <154281878765.88331.10581984256202566195@swboyd.mtv.corp.google.com>
- <458178ac-c0fc-9671-7fc8-ed2d6f61424c@suse.com>
- <154356023767.88331.18401188808548429052@swboyd.mtv.corp.google.com>
- <a229bfc7-683f-5b0d-7b71-54f934de6214@suse.com>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [RFC,v3 5/9] media: platform: Add Mediatek ISP P1 V4L2 control
+Date: Mon, 1 Jul 2019 14:50:53 +0900
+Message-ID: <20190701055053.GA137710@chromium.org>
+References: <jungo.lin@mediatek.com>
+ <20190611035344.29814-1-jungo.lin@mediatek.com>
+ <20190611035344.29814-6-jungo.lin@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <a229bfc7-683f-5b0d-7b71-54f934de6214@suse.com>
+Content-Disposition: inline
+In-Reply-To: <20190611035344.29814-6-jungo.lin@mediatek.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -26,110 +20,196 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Matthias Brugger <mbrugger@suse.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Sean Wang <Sean.Wang@mediatek.com>, "moderated list:ARM/FREESCALE IMX /
- MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, Rob Herring <robh@kernel.org>, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Sean Wang <sean.wang@kernel.org>, Stephen Boyd <sboyd@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, Chen-Yu Tsai <wens@csie.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Randy Dunlap <rdunlap@infradead.org>, Philipp Zabel <p.zabel@pengutronix.de>, "matthias.bgg@kernel.org" <matthias.bgg@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-clk <linux-clk@vger.kernel.org>, Ulrich
+To: Jungo Lin <jungo.lin@mediatek.com>
+Cc: devicetree@vger.kernel.org, sean.cheng@mediatek.com, frederic.chen@mediatek.com, rynn.wu@mediatek.com, srv_heupstream@mediatek.com, robh@kernel.org, ryan.yu@mediatek.com, frankie.chiu@mediatek.com, hverkuil@xs4all.nl, ddavenport@chromium.org, sj.huang@mediatek.com, linux-mediatek@lists.infradead.org, laurent.pinchart@ideasonboard.com, matthias.bgg@gmail.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Matthias:
+Hi Jungo,
 
-On Fri, 2018-11-30 at 16:59 +0800, Matthias Brugger wrote:
+On Tue, Jun 11, 2019 at 11:53:40AM +0800, Jungo Lin wrote:
+> Reserved Mediatek ISP P1 V4L2 control number with 16.
+> Moreover, add two V4L2 controls for ISP P1 user space
+> usage.
 > 
-> On 30/11/2018 07:43, Stephen Boyd wrote:
-> > Quoting Matthias Brugger (2018-11-21 09:09:52)
-> >>
-> >>
-> >> On 21/11/2018 17:46, Stephen Boyd wrote:
-> >>> Quoting Rob Herring (2018-11-19 11:15:16)
-> >>>> On Sun, Nov 18, 2018 at 11:12 AM Matthias Brugger
-> >>>> <matthias.bgg@gmail.com> wrote:
-> >>>>> On 11/17/18 12:15 AM, Rob Herring wrote:
-> >>>>>> On Fri, Nov 16, 2018 at 01:54:45PM +0100, matthias.bgg@kernel.org wrote:
-> >>>>>>> -    #clock-cells = <1>;
-> >>>>>>> +
-> >>>>>>> +    mmsys_clk: clock-controller@14000000 {
-> >>>>>>> +            compatible = "mediatek,mt2712-mmsys-clk";
-> >>>>>>> +            #clock-cells = <1>;
-> >>>>>>
-> >>>>>> This goes against the general direction of not defining separate nodes
-> >>>>>> for providers with no resources.
-> >>>>>>
-> >>>>>> Why do you need this and what does it buy if you have to continue to
-> >>>>>> support the existing chips?
-> >>>>>>
-> >>>>>
-> >>>>> It would show explicitly that the mmsys block is used to probe two
-> >>>>> drivers, one for the gpu and one for the clocks. Otherwise that is
-> >>>>> hidden in the drm driver code. I think it is cleaner to describe that in
-> >>>>> the device tree.
-> >>>>
-> >>>> No, that's maybe cleaner for the driver implementation in the Linux
-> >>>> kernel. What about other OS's or when Linux drivers and subsystems
-> >>>> needs change? Cleaner for DT is design bindings that reflect the h/w.
-> >>>> Hardware is sometimes just messy.
-> >>>>
-> >>>
-> >>> I agree. I fail to see what this patch series is doing besides changing
-> >>> driver probe and device creation methods and making a backwards
-> >>> incompatible change to DT. Is there any other benefit here?
-> >>>
-> >>
-> >> You are referring whole series?
-> >> Citing the cover letter:
-> >> "MMSYS in Mediatek SoCs has some registers to control clock gates (which is
-> >> used in the clk driver) and some registers to set the routing and enable
-> >> the differnet (sic!) blocks of the display subsystem.
-> >>
-> >> Up to now both drivers, clock and drm are probed with the same device tree
-> >> compatible. But only the first driver get probed, which in effect breaks
-> >> graphics on mt8173 and mt2701.
-> > 
-> > Ouch!
-> > 
-> 
-> Yes :)
-> 
-> >>
-> >> This patch uses a platform device registration in the DRM driver, which
-> >> will trigger the probe of the corresponding clock driver. It was tested on the
-> >> bananapi-r2 and the Acer R13 Chromebook."
-> > 
-> > Alright, please don't add nodes in DT just to make device drivers probe.
-> > Instead, register clks from the drm driver or create a child platform
-> > device for the clk bits purely in the drm driver and have that probe the
-> > associated clk driver from there.
-> > 
-> 
-> I'll make the other SoCs probe via a child platform device from the drm driver,
-> as already done in 2/12 and 3/12.
+> 1. V4L2_CID_MTK_GET_BIN_INFO
+> - Provide the image output width & height in case
+> camera binning mode is enabled.
 
-This series have been pending for half an year, would you keep going on
-this series? If you're busy, I could complete this series, but I need to
-know what you have plan to do.
-
-I guess that 1/12 ~ 5/12 is for MT2701/MT8173 and that patches meet this
-discussion. 6/12 ~ 12/12 is for MT2712/MT6797 but that patches does not
-meet this discussion. So the unfinished work is to make MT2712/MT6797 to
-align MT2701/MT8173, is this right?
-
-Regards,
-CK
+Could you explain with a bit more details what these binned width and height
+would mean? How would they relate to the video CAPTURE node width and height?
+Isn't this something that should be rather exposed as an appropriate
+selection rectangle, instead of custom controls?
 
 > 
-> Regards,
-> Matthias
-> 
-> >>
-> >> DT is broken right now, because two drivers rely on the same node, which gets
-> >> consumed just once. The new DT introduced does not break anything because it is
-> >> only used for boards that: "[..] are not available to the general public
-> >> (mt2712e) or only have the mmsys clock driver part implemented (mt6797)."
-> > 
-> > Ok, so backwards compatibility is irrelevant then. Sounds fine to me.
-> > 
-> > 
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> 2. V4L2_CID_MTK_RAW_PATH
+> - Export the path control of the main stream to user space.
+> One is pure raw and the other is processing raw.
+> The default value is 0 which outputs the pure raw bayer image
+> from sesnor, without image processing in ISP HW.
+
+Is it just effectively a full processing bypass? The driver seems to only
+update the related configuration when the streaming starts. Can it be
+controlled per-frame?
+
+Generally this sounds more like something that should be modelled using the
+media topology, similar to the example below.
+
+/----------------\   /-------------------\   /--------------\
+|                |---|                   |   |              |
+| Capture Subdev |   | Processing Subdev |-o-| CAPTURE node |
+|                |-\ |                   | | |              |
+\----------------/ | \-------------------/ | \--------------/
+                   |                       |
+                   \-----------------------/
+
+Then the userspace can select whether it wants the image from the capture
+interface directly or procesed by the ISP by configuring the media links
+appropriately.
+
+The current limitation of this model is that it can't be easily configured
+per-frame, as media configurations are not included in the requests yet.
+
+[snip]
+
+> +static int handle_ctrl_get_bin_info(struct v4l2_ctrl *ctrl, int is_width)
+> +{
+> +	struct mtk_cam_dev *cam_dev = ctrl->priv;
+> +	struct v4l2_format *fmt;
+> +
+> +	fmt = &cam_dev->vdev_nodes[MTK_CAM_P1_MAIN_STREAM_OUT].vdev_fmt;
+> +
+> +	dev_dbg(&cam_dev->pdev->dev, "Get bin info w*h:%d*%d is_width:%d",
+> +		fmt->fmt.pix_mp.width, fmt->fmt.pix_mp.height, is_width);
+> +
+> +	if (is_width)
+> +		ctrl->val = fmt->fmt.pix_mp.width;
+> +	else
+> +		ctrl->val = fmt->fmt.pix_mp.height;
+
+This seems to contradict to what the comment in the header says, because it just
+always returns the video node format and doesn't seem to care about whether
+binning is enabled or not.
+
+> +
+> +	return 0;
+> +}
+> +
+> +static int handle_ctrl_get_process_raw(struct v4l2_ctrl *ctrl)
+> +{
+> +	struct mtk_cam_dev *cam_dev = ctrl->priv;
+> +	struct isp_p1_device *p1_dev = get_p1_device(&cam_dev->pdev->dev);
+> +
+> +	ctrl->val = (p1_dev->isp_ctx.isp_raw_path == ISP_PROCESS_RAW_PATH);
+> +
+> +	dev_dbg(&cam_dev->pdev->dev, "Get process raw:%d", ctrl->val);
+> +
+> +	return 0;
+> +}
+> +
+> +static int handle_ctrl_set_process_raw(struct v4l2_ctrl *ctrl)
+> +{
+> +	struct mtk_cam_dev *cam_dev = ctrl->priv;
+> +	struct isp_p1_device *p1_dev = get_p1_device(&cam_dev->pdev->dev);
+> +
+> +	p1_dev->isp_ctx.isp_raw_path = (ctrl->val) ?
+> +		ISP_PROCESS_RAW_PATH : ISP_PURE_RAW_PATH;
+> +	dev_dbg(&cam_dev->pdev->dev, "Set process raw:%d", ctrl->val);
+> +	return 0;
+> +}
+> +
+> +static int mtk_cam_dev_g_ctrl(struct v4l2_ctrl *ctrl)
+
+This is g_volatile_ctrl not, g_ctrl.
+
+> +{
+> +	switch (ctrl->id) {
+> +	case V4L2_CID_MTK_PROCESSING_RAW:
+> +		handle_ctrl_get_process_raw(ctrl);
+> +		break;
+
+No need to provide getters for non-volatile controls. The
+framework manages them.
+
+> +	case V4L2_CID_MTK_GET_BIN_WIDTH:
+> +		handle_ctrl_get_bin_info(ctrl, 1);
+> +		break;
+> +	case V4L2_CID_MTK_GET_BIN_HEIGTH:
+> +		handle_ctrl_get_bin_info(ctrl, 0);
+
+It's trivial to get the value, so there isn't much benefit in having a
+function to do so, especially if one needs something like a is_width
+argument that further complicates the code.
+
+> +		break;
+> +	default:
+> +		return -EINVAL;
+> +	}
+> +	return 0;
+> +}
+> +
+> +static int mtk_cam_dev_s_ctrl(struct v4l2_ctrl *ctrl)
+> +{
+> +	switch (ctrl->id) {
+> +	case V4L2_CID_MTK_PROCESSING_RAW:
+> +		return handle_ctrl_set_process_raw(ctrl);
+
+Same as above. The operation is too trivial to deserve a function.
+
+> +	default:
+> +		return -EINVAL;
+> +	}
+> +}
+> +
+> +static const struct v4l2_ctrl_ops mtk_cam_dev_ctrl_ops = {
+> +	.g_volatile_ctrl = mtk_cam_dev_g_ctrl,
+> +	.s_ctrl = mtk_cam_dev_s_ctrl,
+> +};
+> +
+> +struct v4l2_ctrl_config mtk_cam_controls[] = {
+> +	{
+> +	.ops = &mtk_cam_dev_ctrl_ops,
+> +	.id = V4L2_CID_MTK_PROCESSING_RAW,
+> +	.name = "MTK CAM PROCESSING RAW",
+> +	.type = V4L2_CTRL_TYPE_BOOLEAN,
+> +	.min = 0,
+> +	.max = 1,
+> +	.step = 1,
+> +	.def = 1,
+> +	},
+> +	{
+> +	.ops = &mtk_cam_dev_ctrl_ops,
+> +	.id = V4L2_CID_MTK_GET_BIN_WIDTH,
+> +	.name = "MTK CAM GET BIN WIDTH",
+> +	.type = V4L2_CTRL_TYPE_INTEGER,
+> +	.min = IMG_MIN_WIDTH,
+> +	.max = IMG_MAX_WIDTH,
+> +	.step = 1,
+> +	.def = IMG_MAX_WIDTH,
+> +	.flags = V4L2_CTRL_FLAG_READ_ONLY | V4L2_CTRL_FLAG_VOLATILE,
+> +	},
+> +	{
+> +	.ops = &mtk_cam_dev_ctrl_ops,
+> +	.id = V4L2_CID_MTK_GET_BIN_HEIGTH,
+> +	.name = "MTK CAM GET BIN HEIGHT",
+> +	.type = V4L2_CTRL_TYPE_INTEGER,
+> +	.min = IMG_MIN_HEIGHT,
+> +	.max = IMG_MAX_HEIGHT,
+> +	.step = 1,
+> +	.def = IMG_MAX_HEIGHT,
+> +	.flags = V4L2_CTRL_FLAG_READ_ONLY | V4L2_CTRL_FLAG_VOLATILE,
+> +	},
+> +};
+> +
+> +int mtk_cam_ctrl_init(struct mtk_cam_dev *cam_dev,
+> +		      struct v4l2_ctrl_handler *hdl)
+> +{
+> +	unsigned int i;
+> +
+> +	/* Initialized HW controls, allow V4L2_CID_MTK_CAM_MAX ctrls */
+> +	v4l2_ctrl_handler_init(hdl, V4L2_CID_MTK_CAM_MAX);
+> +	if (hdl->error) {
+
+This should be checked at the end, after all the controls are added.
+
+Best regards,
+Tomasz
