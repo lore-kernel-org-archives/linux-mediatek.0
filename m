@@ -1,79 +1,83 @@
-From: Thomas Zimmermann <tzimmermann-l3A5Bk7waGM@public.gmane.org>
-Subject: Re: [PATCH v3 01/22] drm: Include ddc adapter pointer
- in struct drm_connector
-Date: Mon, 1 Jul 2019 16:41:09 +0200
-Message-ID: <9e65f3c0-941d-d04c-5745-6b3a2965b990@suse.de>
-References: <3fb19371-db7d-f9dc-31a7-1ccd126f6784@collabora.com>
- <cover.1561735433.git.andrzej.p@collabora.com>
- <d6381c020ea1c848a7044d830bdb0ec9663d1619.1561735433.git.andrzej.p@collabora.com>
- <9b03d145-ec50-927c-55a8-dff1cd51d655@suse.de>
- <cf1984e4-50af-302d-ef67-9ad530118c29@collabora.com>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: Re: [PATCH v10 03/12] dt-binding: gce: add binding for gce client
+ reg property
+Date: Tue, 2 Jul 2019 11:14:32 +0800
+Message-ID: <1562037272.17533.4.camel@mtksdaap41>
+References: <20190701074842.15401-1-bibby.hsieh@mediatek.com>
+         <20190701074842.15401-4-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-In-Reply-To: <cf1984e4-50af-302d-ef67-9ad530118c29-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/freedreno>,
- <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/freedreno>
-List-Post: <mailto:freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-List-Help: <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/freedreno>,
- <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
-Errors-To: freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Sender: "Freedreno" <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-To: Andrzej Pietrasiewicz <andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Cc: "Y.C. Chen" <yc_chen-SAlXDmAnmOAqDJ6do+/SaQ@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sam Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Benjamin Gaignard <benjamin.gaignard-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, "David (ChunMing) Zhou" <David1.Zhou-5C7GfCeVMHo@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Vincent Abriou <vincent.abriou-qxv4g6HH51o@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>David
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190701074842.15401-4-bibby.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, CK HU <ck.hu@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.chen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkKCkFtIDAxLjA3LjE5IHVtIDE1OjI3IHNjaHJpZWIgQW5kcnplaiBQaWV0cmFzaWV3aWN6Ogo+
-IEhpIFRob21hcywKPiAKPiBUaGFuayB5b3UgZm9yIHlvdXIgY29tbWVudHMuIFBsZWFzZSBzZWUg
-aW5saW5lLgo+IAo+IFcgZG5pdSAzMC4wNi4yMDE5IG/CoDEwOjEyLCBUaG9tYXMgWmltbWVybWFu
-biBwaXN6ZToKPj4gSGkKPj4KPj4gSSBsaWtlIHRoZSBpZGVhLCBidXQgd291bGQgcHJlZmVyIGEg
-bW9yZSBzdHJ1Y3R1cmVkIGFwcHJvYWNoLgo+Pgo+PiBTZXR0aW5nIGNvbm5lY3Rvci0+ZGRjIGJl
-Zm9yZSBjYWxsaW5nIGRybV9zeXNmc19jb25uZWN0b3JfYWRkKCkgc2VlbXMKPj4gZXJyb3IgcHJv
-bmUuIFRoZSBkZXBlbmRlbmN5IGlzIG5vdCByZWFsbHkgY2xlYXIgZnJvbSB0aGUgY29kZSBvcgo+
-PiBpbnRlcmZhY2VzLgo+Pgo+PiBUaGUgb3RoZXIgdGhpbmcgaXMgdGhhdCBkcml2ZXJzIEkgbW9z
-dGx5IHdvcmsgb24sIGFzdCBhbmQgbWdhZzIwMCwgaGF2ZQo+PiBjb2RlIGxpa2UgdGhpczoKPj4K
-Pj4gwqDCoCBzdHJ1Y3QgYXN0X2kyY19jaGFuIHsKPj4gwqDCoMKgwqBzdHJ1Y3QgaTJjX2FkYXB0
-ZXIgYWRhcHRlcjsKPj4gwqDCoMKgwqBzdHJ1Y3QgZHJtX2RldmljZSAqZGV2Owo+PiDCoMKgwqDC
-oHN0cnVjdCBpMmNfYWxnb19iaXRfZGF0YSBiaXQ7Cj4+IMKgwqAgfTsKPj4KPj4gwqDCoCBzdHJ1
-Y3QgYXN0X2Nvbm5lY3RvciB7Cj4+IMKgwqDCoMKgc3RydWN0IGRybV9jb25uZWN0b3IgYmFzZTsK
-Pj4gwqDCoMKgwqBzdHJ1Y3QgYXN0X2kyY19jaGFuICppMmM7Cj4+IMKgwqAgfTsKPj4KPj4gSXQg
-YWxyZWFkeSBlbmNvZGVzIHRoZSBjb25uZWN0aW9uIGJldHdlZW4gY29ubmVjdG9yIGFuZCBkZGMg
-YWRhcHRlci4KPj4KPj4gSSBzdWdnZXN0IHRvIGludHJvZHVjZSBzdHJ1Y3QgZHJtX2kyY19hZGFw
-dGVyCj4+Cj4+IMKgwqAgc3RydWN0IGRybV9pMmNfYWRhcHRlciB7Cj4+IMKgwqDCoMKgc3RydWN0
-IGkyY19hZGFwdGVyIGJhc2U7Cj4+IMKgwqDCoMKgc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5l
-Y3RvcjsKPj4gwqDCoCB9Owo+Pgo+PiBhbmQgY29udmVydCBkcml2ZXJzIG92ZXIgdG8gaXQuIEFz
-dCB3b3VsZCBsb29rIGxpa2UgdGhpczoKPj4KPj4gwqDCoCBzdHJ1Y3QgYXN0X2kyY19jaGFuIHsK
-Pj4gwqDCoMKgwqBzdHJ1Y3QgZHJtX2kyY19hZGFwdGVyIGFkYXB0ZXI7Cj4+IMKgwqDCoMKgc3Ry
-dWN0IGkyY19hbGdvX2JpdF9kYXRhIGJpdDsKPj4gwqDCoCB9Owo+Pgo+IAo+IFRoZXJlIGFyZSBm
-ZXcgZmxhdm9ycyBvZiB0aGVzZSBkcml2ZXJzLiBJbiBzb21lIG9mIHRoZW0KPiB0aGUgaTJjX2Fk
-YXB0ZXIgZm9yIGRkYyBpcyBhbGxvY2F0ZWQgYW5kIGluaXRpYWxpemVkIGJ5Cj4gdGhlIGRyaXZl
-ciwgd2hpY2ggbXVzdCBwcm92aWRlIGEgcGxhY2UgaW4gbWVtb3J5IHRvIGhvbGQKPiB0aGUgYWRh
-cHRlci4gYXN0IGlzIGFuIGV4YW1wbGUgb2YgdGhpcyBhcHByb2FjaC4KPiAKPiBCdXQgdGhlcmUg
-YXJlIG90aGVycywgc3VjaCBhcyBmb3IgZXhhbXBsZSBleHlub3NfaGRtaS5jLgo+IEl0IGdldHMg
-aXRzIGRkYyBhZGFwdGVyIHdpdGggb2ZfZmluZF9pMmNfYWRhcHRlcl9ieV9ub2RlKCkKPiBhbmQg
-bWVyZWx5IHN0b3JlcyBhIHBvaW50ZXIgdG8gaXQsIHdoaWxlIG5vdCBtYW5hZ2luZyB0aGUKPiBt
-ZW1vcnkgbmVlZGVkIHRvIGhvbGQgdGhlIGkyY19hZGFwdGVyLgoKSSBzZWUuCgo+IERvIHlvdSBo
-YXZlIGFueSBpZGVhIGhvdyB0byBhY2NvbW1vZGF0ZSB0aGVzZSB2YXJpb3VzCj4gZmxhdm9ycyBv
-ZiBkcml2ZXJzIGluIHRoZSBzY2hlbWUgeW91IHByb3Bvc2U/CgpTb21ldGhpbmcgbGlrZQoKICBz
-dHJ1Y3QgZHJtX2kyY19hZGFwdGVyIHsKCXN0cnVjdCBpMmNfYWRhcHRlciAqYWRhcHRlcjsKCXN0
-cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3I7CiAgfTsKCndpdGggYWRhcHRlciBlaXRoZXIg
-YmVpbmcgYWxsb2NhdGVkIGR5bmFtaWNhbGx5IG9yIGFjcXVpcmVkIHZpYQpvZl9maW5kX2kyY19h
-ZGFwdGVyX2J5X25vZGUoKTsgd2l0aCBzZXBhcmF0ZSBpbml0IGFuZCBmaW5pc2ggZnVuY3Rpb25z
-CmZvciBlYWNoIHZhcmlhbnQuIEJ1dCBpdCBsb29rcyBsaWtlIG92ZXItYWJzdHJhY3Rpb24gdG8g
-bWUuIFdpdGhvdXQKcHJvdG90eXBpbmcgdGhlIGlkZWEsIEkgY2Fubm90IHNheSBpZiBpdCdzIHdv
-cnRoIHRoZSBlZmZvcnQuCgpGb3Igc29tZXRoaW5nIG1vcmUgc2ltcGxlLCBtYXliZSBqdXN0IGhh
-dmUgYSBmdW5jdGlvbiB0byBhdHRhY2ggYW4gaTJjCmFkYXB0ZXIgdG8gYSBjb25uZWN0b3I6Cgog
-IGRybV9jb25uZWN0b3JfYXR0YWNoX2kyY19hZGFwdGVyKGNvbm5lY3RvciwgaTJjX2FkYXB0ZXIp
-Cgp3aGljaCBzZXRzIHRoZSBjb25uZWN0b3IncyBkZGMgcG9pbnRlciBhbmQgY3JlYXRlcyB0aGUg
-c3lzZnMgZW50cnkgaWYKdGhlIGNvbm5lY3RvcidzIGVudHJ5IGlzIGFscmVhZHkgcHJlc2VudC4K
-CkJlc3QgcmVnYXJkcwpUaG9tYXMKCj4gQW5kcnplago+IAo+IAoKLS0gClRob21hcyBaaW1tZXJt
-YW5uCkdyYXBoaWNzIERyaXZlciBEZXZlbG9wZXIKU1VTRSBMaW51eCBHbWJILCBNYXhmZWxkc3Ry
-YXNzZSA1LCA5MDQwOSBOdWVybmJlcmcsIEdlcm1hbnkKR0Y6IEZlbGl4IEltZW5kw7ZyZmZlciwg
-TWFyeSBIaWdnaW5zLCBTcmkgUmFzaWFoCkhSQiAyMTI4NCAoQUcgTsO8cm5iZXJnKQpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpGcmVlZHJlbm8gbWFpbGlu
-ZyBsaXN0CkZyZWVkcmVub0BsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
-ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9mcmVlZHJlbm8=
+Hi, Rob,
+
+Sorry to bother you, could you please review this patch when you are
+available? Thanks.
+
+On Mon, 2019-07-01 at 15:48 +0800, Bibby Hsieh wrote:
+> cmdq driver provide a function that get the relationship
+> of sub system number from device node for client.
+> add specification for #subsys-cells, mediatek,gce-client-reg.
+> 
+> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+> ---
+>  .../devicetree/bindings/mailbox/mtk-gce.txt    | 18 ++++++++++++++----
+>  1 file changed, 14 insertions(+), 4 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+> index 1f7f8f2a3f49..d48282d6b02d 100644
+> --- a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+> +++ b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+> @@ -21,12 +21,21 @@ Required properties:
+>  	priority: Priority of GCE thread.
+>  	atomic_exec: GCE processing continuous packets of commands in atomic
+>  		way.
+> +- #subsys-cells: Should be 3.
+> +	<&phandle subsys_number start_offset size>
+> +	phandle: Label name of a gce node.
+> +	subsys_number: specify the sub-system id which is corresponding
+> +		       to the register address.
+> +	start_offset: the start offset of register address that GCE can access.
+> +	size: the total size of register address that GCE can access.
+>  
+>  Required properties for a client device:
+>  - mboxes: Client use mailbox to communicate with GCE, it should have this
+>    property and list of phandle, mailbox specifiers.
+> -- mediatek,gce-subsys: u32, specify the sub-system id which is corresponding
+> -  to the register address.
+> +Optional properties for a client device:
+> +- mediatek,gce-client-reg: Specify the sub-system id which is corresponding
+> +  to the register address, it should have this property and list of phandle,
+> +  sub-system specifiers.
+>  
+>  Some vaules of properties are defined in 'dt-bindings/gce/mt8173-gce.h'
+>  or 'dt-binding/gce/mt8183-gce.h'. Such as sub-system ids, thread priority, event ids.
+> @@ -40,6 +49,7 @@ Example:
+>  		clocks = <&infracfg CLK_INFRA_GCE>;
+>  		clock-names = "gce";
+>  		#mbox-cells = <3>;
+> +		#subsys-cells = <3>;
+>  	};
+>  
+>  Example for a client device:
+> @@ -48,9 +58,9 @@ Example for a client device:
+>  		compatible = "mediatek,mt8173-mmsys";
+>  		mboxes = <&gce 0 CMDQ_THR_PRIO_LOWEST 1>,
+>  			 <&gce 1 CMDQ_THR_PRIO_LOWEST 1>;
+> -		mediatek,gce-subsys = <SUBSYS_1400XXXX>;
+>  		mutex-event-eof = <CMDQ_EVENT_MUTEX0_STREAM_EOF
+>  				CMDQ_EVENT_MUTEX1_STREAM_EOF>;
+> -
+> +		mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000 0x1000>,
+> +					  <&gce SUBSYS_1401XXXX 0x2000 0x100>;
+>  		...
+>  	};
+
+-- 
+Bibby
