@@ -1,7 +1,7 @@
 From: Yingjoe Chen <yingjoe.chen@mediatek.com>
 Subject: Re: [PATCH] checkpatch: avoid default n
-Date: Wed, 3 Jul 2019 16:58:25 +0800
-Message-ID: <1562144305.3550.0.camel@mtksdaap41>
+Date: Wed, 3 Jul 2019 17:03:44 +0800
+Message-ID: <1562144624.3550.1.camel@mtksdaap41>
 References: <20190703083031.2950-1-miles.chen@mediatek.com>
          <be8a97c15249ff8a613910db5792c5bcdc75333c.camel@perches.com>
 Mime-Version: 1.0
@@ -38,6 +38,9 @@ On Wed, 2019-07-03 at 01:42 -0700, Joe Perches wrote:
 > arch/alpha/Kconfig-     default y if ALPHA_QEMU
 > arch/alpha/Kconfig:     default n if ALPHA_EV5 || ALPHA_EV56 || (ALPHA_EV4 && !ALPHA_LCA)
 > arch/alpha/Kconfig:     default n if !ALPHA_SRM && !ALPHA_GENERIC
+
+Hi,
+
 
 I've sent similar patch in 2016, my version won't complain about these.
 
