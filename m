@@ -1,47 +1,54 @@
-From: Miles Chen <miles.chen@mediatek.com>
-Subject: Re: [PATCH] checkpatch: avoid default n
-Date: Wed, 3 Jul 2019 19:22:30 +0800
-Message-ID: <1562152950.25531.4.camel@mtkswgap22>
-References: <20190703083031.2950-1-miles.chen@mediatek.com>
-         <be8a97c15249ff8a613910db5792c5bcdc75333c.camel@perches.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: Aw: Re: [PATCH 3/3] add driver and MAINTAINERS for poweroff
+Date: Wed, 3 Jul 2019 13:54:41 +0200
+Message-ID: <61f579d7-f415-481f-6f34-1534f0805dc1@gmail.com>
+References: <20190702094045.3652-1-frank-w@public-files.de>
+ <20190702094045.3652-4-frank-w@public-files.de>
+ <c1358da0-60a4-49dd-71a8-77e90178c9c9@gmail.com>
+ <trinity-ca99ab22-eda4-42dd-b6eb-8e4bb5c99165-1562143878858@3c-app-gmx-bs07>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <be8a97c15249ff8a613910db5792c5bcdc75333c.camel@perches.com>
+In-Reply-To: <trinity-ca99ab22-eda4-42dd-b6eb-8e4bb5c99165-1562143878858@3c-app-gmx-bs07>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Joe Perches <joe@perches.com>
-Cc: Andy Whitcroft <apw@canonical.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Josef Friedl <josef.friedl@speed.at>, Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2019-07-03 at 01:42 -0700, Joe Perches wrote:
-> On Wed, 2019-07-03 at 16:30 +0800, Miles Chen wrote:
-> > This change reports a warning when "default n" is used.
-> > 
-> > I have seen several "remove default n" patches, so I think
-> > it might be helpful to add this test in checkpatch.
-> > 
-> > tested:
-> > WARNING: 'default n' is the default value, no need to write it explicitly.
-> > +       default n
-> 
-> I don't think this is reasonable as there are
-> several uses like:
-> 
-> 		default y
-> 		default n if <foo>
-> 
-> For instance:
-> 
-> arch/alpha/Kconfig-config ALPHA_WTINT
-> arch/alpha/Kconfig-     bool "Use WTINT" if ALPHA_SRM || ALPHA_GENERIC
-> arch/alpha/Kconfig-     default y if ALPHA_QEMU
-> arch/alpha/Kconfig:     default n if ALPHA_EV5 || ALPHA_EV56 || (ALPHA_EV4 && !ALPHA_LCA)
-> arch/alpha/Kconfig:     default n if !ALPHA_SRM && !ALPHA_GENERIC
-> 
-> 
-Thanks for your comment, perhaps we can just deal with the "default n$"
-case?
 
-like:
-+         $line =~ /^\+\s*\bdefault n$/) {
+
+On 03/07/2019 10:51, Frank Wunderlich wrote:
+> Hi Mathias
+> 
+> thank you for first look on this. Patchseries is originally from Josef Friedl i got some time ago for getting poweroff working on bananapi r2. There it works and maybe on another devices too.
+> 
+> drivers/rtc/rtc-mt6397.c and drivers/rtc/rtc-mt7622.c look very differently on a diff (you've commented in part 1/3)
+> 
+> maybe code is compatible but i have not the knowledge to compare this...maybe sean (sorry, that i missed you) or ryder can say a word about the compatibility.
+> 
+
+My fault, I didn't got that right. So you are just improving the code of the RTC
+driver. Which is great, but as already said, do this in a separate patch. :)
+
+Regards,
+Matthias
+
+>> Fix the commit message. MAINTAINERS get normally send a independent patch.
+>> Split patches between RTC and PWRC.
+>> If not a new patch it should be stated in the commit message at least.
+> 
+> i will try to split this
+> 
+>>> + * Author: Tianping.Fang <tianping.fang@mediatek.com>
+>>> + *        Sean Wang <sean.wang@mediatek.com>
+>>
+>> You are the author of this file, aren't you?
+> 
+> no, afaik these is code taken from rtc-mt6397.c and put in a separate header-file to use it in multiple c-files.
+> 
+> sidenote on encoding/word-wrap. i use only "git sendemail" which afaik calls sendmail (no other mta like thunderbird or similar) on ubuntu 18.4....curently have no idea how to fix this...have searched before, but not yet found anything. if you have an idea please give me a hint.
+> 
+> regards Frank
+> 
