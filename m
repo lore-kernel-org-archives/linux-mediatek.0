@@ -1,83 +1,48 @@
-From: Joe Perches <joe@perches.com>
-Subject: Re: [PATCH] checkpatch: avoid default n
-Date: Wed, 03 Jul 2019 08:37:55 -0700
-Message-ID: <c8d5cc6171d2cff131e8600ac57e2eb441812617.camel@perches.com>
-References: <20190703083031.2950-1-miles.chen@mediatek.com>
-         <be8a97c15249ff8a613910db5792c5bcdc75333c.camel@perches.com>
-         <1562144624.3550.1.camel@mtksdaap41>
+From: Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH] Staging: mt7621-dma: mtk-hsdma: fix a coding style issue
+Date: Wed, 3 Jul 2019 18:32:32 +0200
+Message-ID: <20190703163232.GA29325@kroah.com>
+References: <20190702080632.27470-1-fatihaltinpinar@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1562144624.3550.1.camel@mtksdaap41>
+Content-Disposition: inline
+In-Reply-To: <20190702080632.27470-1-fatihaltinpinar@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Cc: Miles Chen <miles.chen@mediatek.com>, Andy Whitcroft <apw@canonical.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com
+To: fatihaltinpinar@gmail.com
+Cc: matthias.bgg@gmail.com, devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2019-07-03 at 17:03 +0800, Yingjoe Chen wrote:
-> On Wed, 2019-07-03 at 01:42 -0700, Joe Perches wrote:
-> > On Wed, 2019-07-03 at 16:30 +0800, Miles Chen wrote:
-> > > This change reports a warning when "default n" is used.
-> > > 
-> > > I have seen several "remove default n" patches, so I think
-> > > it might be helpful to add this test in checkpatch.
-> > > 
-> > > tested:
-> > > WARNING: 'default n' is the default value, no need to write it explicitly.
-> > > +       default n
-> > 
-> > I don't think this is reasonable as there are
-> > several uses like:
-> > 
-> > 		default y
-> > 		default n if <foo>
-> > 
-> > For instance:
-> > 
-> > arch/alpha/Kconfig-config ALPHA_WTINT
-> > arch/alpha/Kconfig-     bool "Use WTINT" if ALPHA_SRM || ALPHA_GENERIC
-> > arch/alpha/Kconfig-     default y if ALPHA_QEMU
-> > arch/alpha/Kconfig:     default n if ALPHA_EV5 || ALPHA_EV56 || (ALPHA_EV4 && !ALPHA_LCA)
-> > arch/alpha/Kconfig:     default n if !ALPHA_SRM && !ALPHA_GENERIC
+On Tue, Jul 02, 2019 at 11:06:32AM +0300, fatihaltinpinar@gmail.com wrote:
+> From: Fatih ALTINPINAR <fatihaltinpinar@gmail.com>
 > 
-> Hi,
+> Fixed a coding style issue. Removed curly brackets of an one
+> line if statement.
 > 
+> Signed-off-by: Fatih ALTINPINAR <fatihaltinpinar@gmail.com>
+> ---
+>  drivers/staging/mt7621-dma/mtk-hsdma.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 > 
-> I've sent similar patch in 2016, my version won't complain about these.
-> 
-> https://lkml.org/lkml/2016/4/22/580
+> diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
+> index 0fbb9932d6bb..a58725dd2611 100644
+> --- a/drivers/staging/mt7621-dma/mtk-hsdma.c
+> +++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
+> @@ -664,9 +664,8 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
+>  		return -EINVAL;
+>  
+>  	hsdma = devm_kzalloc(&pdev->dev, sizeof(*hsdma), GFP_KERNEL);
+> -	if (!hsdma) {
+> +	if (!hsdma)
+>  		return -EINVAL;
+> -	}
+>  
+>  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>  	base = devm_ioremap_resource(&pdev->dev, res);
 
-Hi again.
+This change is already in my tree, always be sure to work against the
+proper kernel tree for doing new development.
 
-https://lore.kernel.org/lkml/1461259011.1918.23.camel@perches.com/
+thanks,
 
-I would prefer a generic solution that also handles the
-quoted use.
-
-$ git grep -P 'default\s*\"[ynm]"' -- '*/Kconfig*'
-arch/mips/Kconfig:      default "y"
-arch/mips/Kconfig:      default "y"
-arch/mips/Kconfig:      default "y"
-arch/mips/Kconfig:      default "y"
-arch/mips/cavium-octeon/Kconfig:        default "n"
-arch/mips/cavium-octeon/Kconfig:        default "y"
-arch/mips/cavium-octeon/Kconfig:        default "y"
-arch/mips/cavium-octeon/Kconfig:        default "y"
-arch/mips/cavium-octeon/Kconfig:        default "y"
-arch/mips/cavium-octeon/Kconfig:        default "y"
-arch/mips/cavium-octeon/Kconfig:        default "y"
-arch/powerpc/Kconfig:   default "y" if PPC_POWERNV
-arch/powerpc/Kconfig:   default "y" if PPC_POWERNV
-arch/powerpc/Kconfig:   default "n"
-drivers/auxdisplay/Kconfig:     default "n"
-drivers/crypto/Kconfig: default "m"
-drivers/rapidio/devices/Kconfig:        default "n"
-
-or maybe 2 separate patches.
-
-And the "default y" case and probably the
-"default \!?EXPERT" is or should be generally
-discouraged.  Especially for drivers.
-
-https://lore.kernel.org/lkml/CAHk-=wiZ24JuVehJ5sEC0UG1Gk2nvB363wO02RRsR1oEht6R9Q@mail.gmail.com/
+greg k-h
