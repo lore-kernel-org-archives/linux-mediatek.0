@@ -1,7 +1,7 @@
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+From: Miles Chen <miles.chen@mediatek.com>
 Subject: Re: [PATCH] checkpatch: avoid default n
-Date: Wed, 3 Jul 2019 17:03:44 +0800
-Message-ID: <1562144624.3550.1.camel@mtksdaap41>
+Date: Wed, 3 Jul 2019 19:22:30 +0800
+Message-ID: <1562152950.25531.4.camel@mtkswgap22>
 References: <20190703083031.2950-1-miles.chen@mediatek.com>
          <be8a97c15249ff8a613910db5792c5bcdc75333c.camel@perches.com>
 Mime-Version: 1.0
@@ -11,7 +11,7 @@ Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <be8a97c15249ff8a613910db5792c5bcdc75333c.camel@perches.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Joe Perches <joe@perches.com>
-Cc: Miles Chen <miles.chen@mediatek.com>, Andy Whitcroft <apw@canonical.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com
+Cc: Andy Whitcroft <apw@canonical.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
 On Wed, 2019-07-03 at 01:42 -0700, Joe Perches wrote:
@@ -38,12 +38,10 @@ On Wed, 2019-07-03 at 01:42 -0700, Joe Perches wrote:
 > arch/alpha/Kconfig-     default y if ALPHA_QEMU
 > arch/alpha/Kconfig:     default n if ALPHA_EV5 || ALPHA_EV56 || (ALPHA_EV4 && !ALPHA_LCA)
 > arch/alpha/Kconfig:     default n if !ALPHA_SRM && !ALPHA_GENERIC
+> 
+> 
+Thanks for your comment, perhaps we can just deal with the "default n$"
+case?
 
-Hi,
-
-
-I've sent similar patch in 2016, my version won't complain about these.
-
-https://lkml.org/lkml/2016/4/22/580
-
-Joe.C
+like:
++         $line =~ /^\+\s*\bdefault n$/) {
