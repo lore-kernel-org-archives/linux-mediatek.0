@@ -1,26 +1,112 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 5/7] power: reset: add driver for mt6323 poweroff
-Date: Thu, 4 Jul 2019 11:15:47 +0200
-Message-ID: <d162c95d-773e-f364-0e06-07f67c5b0cbc@gmail.com>
-References: <20190703164822.17924-1-frank-w@public-files.de>
- <20190703164822.17924-6-frank-w@public-files.de>
+From: Miles Chen <miles.chen@mediatek.com>
+Subject: [PATCH v2] checkpatch: add several Kconfig default value tests
+Date: Thu, 4 Jul 2019 17:40:24 +0800
+Message-ID: <20190704094024.16162-1-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190703164822.17924-6-frank-w@public-files.de>
-Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Frank Wunderlich <frank-w@public-files.de>, Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Sean Wang <sean.wang@mediatek.com>, Sebastian Reichel <sre@kernel.org>, Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-rtc@vger.kernel.org, Eddie Huang <eddie.huang@mediatek.com>, Thomas Gleixner <tglx@linutronix.de>, Richard Fontana <rfontana@redhat.com>, Allison Randal <allison@lohutok.net>, "David S . Miller" <davem@davemloft.net>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Greg
-Cc: Josef Friedl <josef.friedl@speed.at>
+To: Andy Whitcroft <apw@canonical.com>, Joe Perches <joe@perches.com>
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Miles Chen <miles.chen@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+This change adds 3 Kconfig default value tests:
 
+1. discourage default n cases:
+e.g.,
+default n
 
-On 03/07/2019 18:48, Frank Wunderlich wrote:
-> From: Josef Friedl <josef.friedl@speed.at>
-> 
-> Suggested-by: Frank Wunderlich <frank-w@public-files.de>
-> Signed-off-by: Josef Friedl <josef.friedl@speed.at>
+2. discourage default "[ynm]" cases:
+e.g.,
+arch/powerpc/Kconfig:   default "y" if PPC_POWERNV
+arch/powerpc/Kconfig:   default "y" if PPC_POWERNV
+arch/powerpc/Kconfig:   default "n"
+drivers/auxdisplay/Kconfig:     default "n"
+drivers/crypto/Kconfig: default "m"
+drivers/rapidio/devices/Kconfig:        default "n"
 
-Why is there a Signed-off-by from Josef for this patch but not for the others?
+3. discourage default \!?EXPERT cases:
+e.g.,
+drivers/hid/Kconfig:    default !EXPERT
+
+tested cases:
+default m
+default n if ALPHA_EV5 || ALPHA_EV56 || (ALPHA_EV4 && !ALPHA_LCA)
+default y if ALPHA_QEMU
+default n if PPC_POWERNV
+default n
+default EXPERT
+default !EXPERT
+default "m"
+default "n"
+default "y" if EXPERT
+default "y" if PPC_POWERNV
+
+test result:
+WARNING: 'default n' is the default value, no need to write it explicitly.
++       default n
+
+WARNING: Avoid default turn on kernel configs by default !?EXPERT
++       default EXPERT
+
+WARNING: Avoid default turn on kernel configs by default !?EXPERT
++       default !EXPERT
+
+WARNING: Use default [ynm] instead of default "[ynm]"
++       default "m"
+
+WARNING: Use default [ynm] instead of default "[ynm]"
++       default "n"
+
+WARNING: Use default [ynm] instead of default "[ynm]"
++       default "y" if EXPERT
+
+WARNING: Use default [ynm] instead of default "[ynm]"
++       default "y" if PPC_POWERNV
+
+Change since v1:
+discourage default n$
+discourage default "[ynm]"
+discourage default \!?EXPERT
+
+Cc: Joe Perches <joe@perches.com>
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+---
+ scripts/checkpatch.pl | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+
+diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+index 342c7c781ba5..c1de50202a18 100755
+--- a/scripts/checkpatch.pl
++++ b/scripts/checkpatch.pl
+@@ -3005,6 +3005,27 @@ sub process {
+ 			     "Use of boolean is deprecated, please use bool instead.\n" . $herecurr);
+ 		}
+ 
++# discourage redundant 'default n'
++		if ($realfile =~ /Kconfig/ &&
++		    $line =~ /^\+\s*default n$/) {
++			WARN("DEFAULT_VALUE_STYLE",
++			     "'default n' is the default value, no need to write it explicitly.\n" . $herecurr);
++		}
++
++# discourage quote: use default [ynm], not default "[ynm]"
++		if ($realfile =~ /Kconfig/ &&
++		    $rawline =~ /^\+\s*default\s*"[ynm]"/) {
++			WARN("DEFAULT_VALUE_STYLE",
++			     "Use default [ynm] instead of default \"[ynm]\"\n" . $herecurr);
++		}
++
++# discourage default \!?EXPERT
++		if ($realfile =~ /Kconfig/ &&
++		    $line =~ /^\+\s*default \!?EXPERT/) {
++			WARN("DEFAULT_VALUE_STYLE",
++			     "Avoid default turn on kernel configs by default !?EXPERT\n" . $herecurr);
++		}
++
+ 		if (($realfile =~ /Makefile.*/ || $realfile =~ /Kbuild.*/) &&
+ 		    ($line =~ /\+(EXTRA_[A-Z]+FLAGS).*/)) {
+ 			my $flag = $1;
+-- 
+2.18.0
