@@ -1,142 +1,43 @@
-From: Alexandre Belloni <alexandre.belloni@bootlin.com>
-Subject: Re: [PATCH v2 1/7] docs: dt-bindings: add poweroff
-Date: Thu, 4 Jul 2019 20:54:48 +0200
-Message-ID: <20190704185448.GI3692@piout.net>
-References: <20190703164822.17924-1-frank-w@public-files.de>
- <20190703164822.17924-2-frank-w@public-files.de>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH net-next v2] net: ethernet: mediatek: Fix overlapping
+ capability bits.
+Date: Thu, 04 Jul 2019 12:38:00 -0700 (PDT)
+Message-ID: <20190704.123800.788232773059713763.davem@davemloft.net>
+References: <20190703184203.20137-1-opensource@vdorst.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190703164822.17924-2-frank-w@public-files.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Sebastian Reichel <sre@kernel.org>, Alessandro Zummo <a.zummo@towertech.it>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-rtc@vger.kernel.org, Eddie Huang <eddie.huang@mediatek.com>, Thomas Gleixner <tglx@linutronix.de>, Richard Fontana <rfontana@redhat.com>, Allison Randal <allison@lohutok.net>, "David S . Miller" <davem@davemloft.net>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring <robh@kernel>
+Content-Type: Text/Plain; charset=utf-8
+Content-Transfer-Encoding: base64
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20190703184203.20137-1-opensource@vdorst.com>
+Sender: netdev-owner@vger.kernel.org
+To: opensource@vdorst.com
+Cc: sean.wang@mediatek.com, f.fainelli@gmail.com, linux@armlinux.org.uk, matthias.bgg@gmail.com, andrew@lunn.ch, vivien.didelot@gmail.com, frank-w@public-files.de, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Please use a better subject line.
-
-On 03/07/2019 18:48:16+0200, Frank Wunderlich wrote:
-> From: Josef Friedl <josef.friedl@speed.at>
-> 
-> add documentation for pmic, rtc and power/reset devicetree bindings
-> 
-> Suggested-by: Frank Wunderlich <frank-w@public-files.de>
-> Signed-off-by: Josef Friedl <josef.friedl@speed.at>
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
->  .../devicetree/bindings/mfd/mt6397.txt        | 10 ++++++-
->  .../bindings/power/reset/mt6323-poweroff.txt  | 20 +++++++++++++
->  .../devicetree/bindings/rtc/rtc-mt6397.txt    | 29 +++++++++++++++++++
-
-This file is unrelated to the patch, it should be separated.
-
->  3 files changed, 58 insertions(+), 1 deletion(-)
->  create mode 100644 Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt
->  create mode 100644 Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
-> index 0ebd08af777d..44acb9827716 100644
-> --- a/Documentation/devicetree/bindings/mfd/mt6397.txt
-> +++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
-> @@ -8,6 +8,7 @@ MT6397/MT6323 is a multifunction device with the following sub modules:
->  - Clock
->  - LED
->  - Keys
-> +- Power controller
-> 
->  It is interfaced to host controller using SPI interface by a proprietary hardware
->  called PMIC wrapper or pwrap. MT6397/MT6323 MFD is a child device of pwrap.
-> @@ -22,8 +23,10 @@ compatible: "mediatek,mt6397" or "mediatek,mt6323"
->  Optional subnodes:
-> 
->  - rtc
-> -	Required properties:
-> +	Required properties: Should be one of follows
-> +		- compatible: "mediatek,mt6323-rtc"
->  		- compatible: "mediatek,mt6397-rtc"
-> +	For details, see Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
->  - regulators
->  	Required properties:
->  		- compatible: "mediatek,mt6397-regulator"
-> @@ -46,6 +49,11 @@ Optional subnodes:
->  		- compatible: "mediatek,mt6397-keys" or "mediatek,mt6323-keys"
->  	see Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
-> 
-> +- power-controller
-> +	Required properties:
-> +		- compatible: "mediatek,mt6323-pwrc"
-> +	For details, see Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt
-> +
->  Example:
->  	pwrap: pwrap@1000f000 {
->  		compatible = "mediatek,mt8135-pwrap";
-> diff --git a/Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt b/Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt
-> new file mode 100644
-> index 000000000000..933f0c48e887
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt
-> @@ -0,0 +1,20 @@
-> +Device Tree Bindings for Power Controller on MediaTek PMIC
-> +
-> +The power controller which could be found on PMIC is responsible for externally
-> +powering off or on the remote MediaTek SoC through the circuit BBPU.
-> +
-> +Required properties:
-> +- compatible: Should be one of follows
-> +       "mediatek,mt6323-pwrc": for MT6323 PMIC
-> +
-> +Example:
-> +
-> +       pmic {
-> +               compatible = "mediatek,mt6323";
-> +
-> +               ...
-> +
-> +               power-controller {
-> +                       compatible = "mediatek,mt6323-pwrc";
-> +               };
-> +       }
-> diff --git a/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt b/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
-> new file mode 100644
-> index 000000000000..ebd1cf80dcc8
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
-> @@ -0,0 +1,29 @@
-> +Device-Tree bindings for MediaTek PMIC based RTC
-> +
-> +MediaTek PMIC based RTC is an independent function of MediaTek PMIC that works
-> +as a type of multi-function device (MFD). The RTC can be configured and set up
-> +with PMIC wrapper bus which is a common resource shared with the other
-> +functions found on the same PMIC.
-> +
-> +For MediaTek PMIC MFD bindings, see:
-> +Documentation/devicetree/bindings/mfd/mt6397.txt
-> +
-> +For MediaTek PMIC wrapper bus bindings, see:
-> +Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-> +
-> +Required properties:
-> +- compatible: Should be one of follows
-> +       "mediatek,mt6323-rtc": for MT6323 PMIC
-> +       "mediatek,mt6397-rtc": for MT6397 PMIC
-> +
-> +Example:
-> +
-> +       pmic {
-> +               compatible = "mediatek,mt6323";
-> +
-> +               ...
-> +
-> +               rtc {
-> +                       compatible = "mediatek,mt6323-rtc";
-> +               };
-> +       };
-> --
-> 2.17.1
-> 
-
--- 
-Alexandre Belloni, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+RnJvbTogUmVuw6kgdmFuIERvcnN0IDxvcGVuc291cmNlQHZkb3JzdC5jb20+DQpEYXRlOiBXZWQs
+ICAzIEp1bCAyMDE5IDIwOjQyOjA0ICswMjAwDQoNCj4gQm90aCBNVEtfVFJHTUlJX01UNzYyMV9D
+TEsgYW5kIE1US19QQVRIX0JJVCBhcmUgZGVmaW5lZCBhcyBiaXQgMTAuDQo+IA0KPiBUaGlzIGNh
+biBjYXVzZXMgaXNzdWVzIG9uIG5vbi1NVDc2MjEgZGV2aWNlcyB3aGljaCBoYXMgdGhlDQo+IE1U
+S19QQVRIX0JJVChNVEtfRVRIX1BBVEhfR01BQzFfUkdNSUkpIGFuZCBNVEtfVFJHTUlJIGNhcGFi
+aWxpdHkgc2V0Lg0KPiBUaGUgd3JvbmcgVFJHTUlJIHNldHVwIGNvZGUgY2FuIGJlIGV4ZWN1dGVk
+LiBUaGUgY3VycmVudCB3cm9uZ2x5IGV4ZWN1dGVkDQo+IGNvZGUgZG9lc27igJl0IGRvIGFueSBo
+YXJtIG9uIE1UNzYyMyBhbmQgdGhlIFRSR01JSSBzZXR1cCBmb3IgdGhlIE1UNzYyMw0KPiBTT0Mg
+c2lkZSBpcyBkb25lIGluIE1UNzUzMCBkcml2ZXIgU28gaXQgd2FzbuKAmXQgbm90aWNlZCBpbiB0
+aGUgdGVzdC4NCj4gDQo+IE1vdmUgYWxsIGNhcGFiaWxpdHkgYml0cyBpbiBvbmUgZW51bSBzbyB0
+aGF0IHRoZXkgYXJlIGFsbCB1bmlxdWUgYW5kIGVhc3kNCj4gdG8gZXhwYW5kIGluIHRoZSBmdXR1
+cmUuDQo+IA0KPiBCZWNhdXNlIG10a19ldGhfcGF0aCBlbnVtIGlzIG1lcmdlZCBpbiB0byBta3Rf
+ZXRoX2NhcGFiaWxpdGllcywgdGhlDQo+IHZhcmlhYmxlIHBhdGggdmFsdWUgaXMgbm8gbG9uZ2Vy
+IGJldHdlZW4gMCB0byBudW1iZXIgb2YgcGF0aHMsDQo+IG10a19ldGhfcGF0aF9uYW1lIGNhbuKA
+mXQgYmUgdXNlZCBhbnltb3JlIGluIHRoaXMgZm9ybS4gQ29udmVydCB0aGUNCj4gbXRrX2V0aF9w
+YXRoX25hbWUgYXJyYXkgdG8gYSBmdW5jdGlvbiB0byBsb29rdXAgdGhlIHBhdGhuYW1lLg0KPiAN
+Cj4gVGhlIG9sZCBjb2RlIHdhbGtlZCB0aHJ1IHRoZSBtdGtfZXRoX3BhdGggZW51bSwgd2hpY2gg
+aXMgYWxzbyBtZXJnZWQNCj4gd2l0aCBta3RfZXRoX2NhcGFiaWxpdGllcy4gRXhwYW5kIGFycmF5
+IG10a19ldGhfbXV4YyBzbyBpdCBjYW4gc3RvcmUgdGhlDQo+IG5hbWUgYW5kIGNhcGFiaWxpdHkg
+Yml0IG9mIHRoZSBtdXguIENvbnZlcnQgdGhlIGNvZGUgc28gaXQgY2FuIHdhbGsgdGhydQ0KPiB0
+aGUgbXRrX2V0aF9tdXhjIGFycmF5Lg0KPiANCj4gRml4ZXM6IDhlZmFhNjUzYThhNSAoIm5ldDog
+ZXRoZXJuZXQ6IG1lZGlhdGVrOiBBZGQgTVQ3NjIxIFRSR01JSSBtb2RlDQo+IHN1cHBvcnQiKQ0K
+DQpQbGVhc2UgaW4gdGhlIGZ1dHVyZSBkbyBub3Qgc3BsaXQgRml4ZXM6IHRhZ3Mgb250byBtdXRs
+aXBsZSBsaW5lcywgaXQNCm11c3QgYmUgb25lIGNvbnRpZ3VvdXMgbGluZSBubyBtYXR0ZXIgaG93
+IGxvbmcuICBJIGZpeGVkIGl0IHVwIHRoaXMNCnRpbWUuDQoNCj4gU2lnbmVkLW9mZi1ieTogUmVu
+w6kgdmFuIERvcnN0IDxvcGVuc291cmNlQHZkb3JzdC5jb20+DQoNCkFwcGxpZWQsIHRoYW5rIHlv
+dS4NCg==
