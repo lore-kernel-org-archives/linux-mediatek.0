@@ -1,220 +1,142 @@
-From: Joe Perches <joe@perches.com>
-Subject: Re: [PATCH v2] checkpatch: add several Kconfig default value tests
-Date: Thu, 04 Jul 2019 11:49:30 -0700
-Message-ID: <53b2351f14f246b57871226f7cf45b9800e264a8.camel@perches.com>
-References: <20190704094024.16162-1-miles.chen@mediatek.com>
+From: Alexandre Belloni <alexandre.belloni@bootlin.com>
+Subject: Re: [PATCH v2 1/7] docs: dt-bindings: add poweroff
+Date: Thu, 4 Jul 2019 20:54:48 +0200
+Message-ID: <20190704185448.GI3692@piout.net>
+References: <20190703164822.17924-1-frank-w@public-files.de>
+ <20190703164822.17924-2-frank-w@public-files.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190704094024.16162-1-miles.chen@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <20190703164822.17924-2-frank-w@public-files.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Miles Chen <miles.chen@mediatek.com>, Andy Whitcroft <apw@canonical.com>
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Yingjoe Chen <yingjoe.chen@mediatek.com>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Sebastian Reichel <sre@kernel.org>, Alessandro Zummo <a.zummo@towertech.it>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-rtc@vger.kernel.org, Eddie Huang <eddie.huang@mediatek.com>, Thomas Gleixner <tglx@linutronix.de>, Richard Fontana <rfontana@redhat.com>, Allison Randal <allison@lohutok.net>, "David S . Miller" <davem@davemloft.net>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring <robh@kernel>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2019-07-04 at 17:40 +0800, Miles Chen wrote:
-> This change adds 3 Kconfig default value tests:
-[]
-> diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
-[]
-> @@ -3005,6 +3005,27 @@ sub process {
->  			     "Use of boolean is deprecated, please use bool instead.\n" . $herecurr);
->  		}
->  
-> +# discourage redundant 'default n'
-> +		if ($realfile =~ /Kconfig/ &&
-> +		    $line =~ /^\+\s*default n$/) {
-> +			WARN("DEFAULT_VALUE_STYLE",
-> +			     "'default n' is the default value, no need to write it explicitly.\n" . $herecurr);
-> +		}
-> +
-> +# discourage quote: use default [ynm], not default "[ynm]"
-> +		if ($realfile =~ /Kconfig/ &&
-> +		    $rawline =~ /^\+\s*default\s*"[ynm]"/) {
-> +			WARN("DEFAULT_VALUE_STYLE",
-> +			     "Use default [ynm] instead of default \"[ynm]\"\n" . $herecurr);
-> +		}
-> +
-> +# discourage default \!?EXPERT
-> +		if ($realfile =~ /Kconfig/ &&
-> +		    $line =~ /^\+\s*default \!?EXPERT/) {
-> +			WARN("DEFAULT_VALUE_STYLE",
-> +			     "Avoid default turn on kernel configs by default !?EXPERT\n" . $herecurr);
-> +		}
-> +
+Please use a better subject line.
 
-I'd prefer to create a block for all the Kconfig file tests and
-avoid multiply determining if the filename includes Kconfig so
-the script runs a bit faster.
+On 03/07/2019 18:48:16+0200, Frank Wunderlich wrote:
+> From: Josef Friedl <josef.friedl@speed.at>
+> 
+> add documentation for pmic, rtc and power/reset devicetree bindings
+> 
+> Suggested-by: Frank Wunderlich <frank-w@public-files.de>
+> Signed-off-by: Josef Friedl <josef.friedl@speed.at>
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+>  .../devicetree/bindings/mfd/mt6397.txt        | 10 ++++++-
+>  .../bindings/power/reset/mt6323-poweroff.txt  | 20 +++++++++++++
+>  .../devicetree/bindings/rtc/rtc-mt6397.txt    | 29 +++++++++++++++++++
 
-Also some trivial changes to the added tests with added --fix
-capability.  Something like:
----
- scripts/checkpatch.pl | 139 ++++++++++++++++++++++++++++++--------------------
- 1 file changed, 85 insertions(+), 54 deletions(-)
+This file is unrelated to the patch, it should be separated.
 
-diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
-index 6cb99ec62000..4780149a8d30 100755
---- a/scripts/checkpatch.pl
-+++ b/scripts/checkpatch.pl
-@@ -2934,60 +2934,98 @@ sub process {
- 				      "Do not include the paragraph about writing to the Free Software Foundation's mailing address from the sample GPL notice. The FSF has changed addresses in the past, and may do so again. Linux already includes a copy of the GPL.\n" . $herevet)
- 		}
- 
--# check for Kconfig help text having a real description
--# Only applies when adding the entry originally, after that we do not have
--# sufficient context to determine whether it is indeed long enough.
--		if ($realfile =~ /Kconfig/ &&
--		    # 'choice' is usually the last thing on the line (though
--		    # Kconfig supports named choices), so use a word boundary
--		    # (\b) rather than a whitespace character (\s)
--		    $line =~ /^\+\s*(?:config|menuconfig|choice)\b/) {
--			my $length = 0;
--			my $cnt = $realcnt;
--			my $ln = $linenr + 1;
--			my $f;
--			my $is_start = 0;
--			my $is_end = 0;
--			for (; $cnt > 0 && defined $lines[$ln - 1]; $ln++) {
--				$f = $lines[$ln - 1];
--				$cnt-- if ($lines[$ln - 1] !~ /^-/);
--				$is_end = $lines[$ln - 1] =~ /^\+/;
--
--				next if ($f =~ /^-/);
--				last if (!$file && $f =~ /^\@\@/);
--
--				if ($lines[$ln - 1] =~ /^\+\s*(?:bool|tristate|prompt)\s*["']/) {
--					$is_start = 1;
--				} elsif ($lines[$ln - 1] =~ /^\+\s*(?:help|---help---)\s*$/) {
--					if ($lines[$ln - 1] =~ "---help---") {
--						WARN("CONFIG_DESCRIPTION",
--						     "prefer 'help' over '---help---' for new help texts\n" . $herecurr);
-+# Kconfig tests
-+		if ($realfile =~ /Kconfig/) {
-+			# check for Kconfig help text having a real description
-+			# Only applies when adding the entry originally, after
-+			# that we do not have sufficient context to determine
-+			# whether it is indeed long enough.
-+			# 'choice' is usually the last thing on the line (though
-+			# Kconfig supports named choices), so use a word
-+			# boundary (\b) rather than a whitespace character (\s)
-+			if ($line =~ /^\+\s*(?:config|menuconfig|choice)\b/) {
-+				my $length = 0;
-+				my $cnt = $realcnt;
-+				my $ln = $linenr + 1;
-+				my $f;
-+				my $is_start = 0;
-+				my $is_end = 0;
-+				for (; $cnt > 0 && defined $lines[$ln - 1]; $ln++) {
-+					$f = $lines[$ln - 1];
-+					$cnt-- if ($lines[$ln - 1] !~ /^-/);
-+					$is_end = $lines[$ln - 1] =~ /^\+/;
-+
-+					next if ($f =~ /^-/);
-+					last if (!$file && $f =~ /^\@\@/);
-+
-+					if ($lines[$ln - 1] =~ /^\+\s*(?:bool|tristate|prompt)\s*["']/) {
-+						$is_start = 1;
-+					} elsif ($lines[$ln - 1] =~ /^\+\s*(?:help|---help---)\s*$/) {
-+						if ($lines[$ln - 1] =~ "---help---") {
-+							WARN("CONFIG_DESCRIPTION",
-+							     "prefer 'help' over '---help---' for new help texts\n" . $herecurr);
-+						}
-+						$length = -1;
-+					}
-+
-+					$f =~ s/^.//;
-+					$f =~ s/#.*//;
-+					$f =~ s/^\s+//;
-+					next if ($f =~ /^$/);
-+
-+					# This only checks context lines in the patch
-+					# and so hopefully shouldn't trigger false
-+					# positives, even though some of these are
-+					# common words in help texts
-+					if ($f =~ /^\s*(?:config|menuconfig|choice|endchoice|
-+							   if|endif|menu|endmenu|source)\b/x) {
-+						$is_end = 1;
-+						last;
- 					}
--					$length = -1;
-+					$length++;
-+				}
-+				if ($is_start && $is_end && $length < $min_conf_desc_length) {
-+					WARN("CONFIG_DESCRIPTION",
-+					     "please write a paragraph that describes the config symbol fully\n" . $herecurr);
- 				}
-+				#print "is_start<$is_start> is_end<$is_end> length<$length>\n";
-+			}
- 
--				$f =~ s/^.//;
--				$f =~ s/#.*//;
--				$f =~ s/^\s+//;
--				next if ($f =~ /^$/);
--
--				# This only checks context lines in the patch
--				# and so hopefully shouldn't trigger false
--				# positives, even though some of these are
--				# common words in help texts
--				if ($f =~ /^\s*(?:config|menuconfig|choice|endchoice|
--						  if|endif|menu|endmenu|source)\b/x) {
--					$is_end = 1;
--					last;
-+# discourage the use of boolean for type definition attributes
-+			if ($line =~ /^\+\s*\bboolean\b/) {
-+				if (WARN("CONFIG_TYPE_BOOLEAN",
-+					 "Use of boolean is deprecated, please use bool instead\n" . $herecurr) &&
-+				    $fix) {
-+					$fixed[$fixlinenr] =~ s/\bboolean\b/bool/;
-+				}
-+			}
-+
-+# Kconfig: discourage redundant 'default n'
-+			if ($line =~ /^\+\s*default\s+n$/) {
-+				if (WARN("CONFIG_DEFAULT_VALUE_STYLE",
-+					 "'default n' is the default value, no need to write it explicitly\n" . $herecurr) &&
-+				    $fix) {
-+					fix_delete_line($fixlinenr, $rawline);
- 				}
--				$length++;
- 			}
--			if ($is_start && $is_end && $length < $min_conf_desc_length) {
--				WARN("CONFIG_DESCRIPTION",
--				     "please write a paragraph that describes the config symbol fully\n" . $herecurr);
-+
-+# Kconfig: discourage quoted defaults: use default [ynm], not default "[ynm]"
-+			if ($rawline =~ /^\+\s*default\s+"([ynm])"/) {
-+				if (WARN("CONFIG_DEFAULT_VALUE_STYLE",
-+					 "Use 'default $1' not 'default \"$1\"'\n" . $herecurr) &&
-+				    $fix) {
-+					$fixed[$fixlinenr] =~ s/\b(default\s+)"(.)"/$1$2/;
-+				}
-+			}
-+
-+# Kconfig: discourage using default EXPERT or !EXPERT
-+			if ($line =~ /^\+\s*default\s+\!?\s*EXPERT\b/) {
-+				WARN("CONFIG_DEFAULT_VALUE_STYLE",
-+				     "Avoid using default EXPERT\n" . $herecurr);
- 			}
--			#print "is_start<$is_start> is_end<$is_end> length<$length>\n";
- 		}
-+# End of Kconfig tests
-+
- 
- # check for MAINTAINERS entries that don't have the right form
- 		if ($realfile =~ /^MAINTAINERS$/ &&
-@@ -3000,13 +3038,6 @@ sub process {
- 			}
- 		}
- 
--# discourage the use of boolean for type definition attributes of Kconfig options
--		if ($realfile =~ /Kconfig/ &&
--		    $line =~ /^\+\s*\bboolean\b/) {
--			WARN("CONFIG_TYPE_BOOLEAN",
--			     "Use of boolean is deprecated, please use bool instead.\n" . $herecurr);
--		}
--
- 		if (($realfile =~ /Makefile.*/ || $realfile =~ /Kbuild.*/) &&
- 		    ($line =~ /\+(EXTRA_[A-Z]+FLAGS).*/)) {
- 			my $flag = $1;
+>  3 files changed, 58 insertions(+), 1 deletion(-)
+>  create mode 100644 Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt
+>  create mode 100644 Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
+> index 0ebd08af777d..44acb9827716 100644
+> --- a/Documentation/devicetree/bindings/mfd/mt6397.txt
+> +++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
+> @@ -8,6 +8,7 @@ MT6397/MT6323 is a multifunction device with the following sub modules:
+>  - Clock
+>  - LED
+>  - Keys
+> +- Power controller
+> 
+>  It is interfaced to host controller using SPI interface by a proprietary hardware
+>  called PMIC wrapper or pwrap. MT6397/MT6323 MFD is a child device of pwrap.
+> @@ -22,8 +23,10 @@ compatible: "mediatek,mt6397" or "mediatek,mt6323"
+>  Optional subnodes:
+> 
+>  - rtc
+> -	Required properties:
+> +	Required properties: Should be one of follows
+> +		- compatible: "mediatek,mt6323-rtc"
+>  		- compatible: "mediatek,mt6397-rtc"
+> +	For details, see Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
+>  - regulators
+>  	Required properties:
+>  		- compatible: "mediatek,mt6397-regulator"
+> @@ -46,6 +49,11 @@ Optional subnodes:
+>  		- compatible: "mediatek,mt6397-keys" or "mediatek,mt6323-keys"
+>  	see Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
+> 
+> +- power-controller
+> +	Required properties:
+> +		- compatible: "mediatek,mt6323-pwrc"
+> +	For details, see Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt
+> +
+>  Example:
+>  	pwrap: pwrap@1000f000 {
+>  		compatible = "mediatek,mt8135-pwrap";
+> diff --git a/Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt b/Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt
+> new file mode 100644
+> index 000000000000..933f0c48e887
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt
+> @@ -0,0 +1,20 @@
+> +Device Tree Bindings for Power Controller on MediaTek PMIC
+> +
+> +The power controller which could be found on PMIC is responsible for externally
+> +powering off or on the remote MediaTek SoC through the circuit BBPU.
+> +
+> +Required properties:
+> +- compatible: Should be one of follows
+> +       "mediatek,mt6323-pwrc": for MT6323 PMIC
+> +
+> +Example:
+> +
+> +       pmic {
+> +               compatible = "mediatek,mt6323";
+> +
+> +               ...
+> +
+> +               power-controller {
+> +                       compatible = "mediatek,mt6323-pwrc";
+> +               };
+> +       }
+> diff --git a/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt b/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
+> new file mode 100644
+> index 000000000000..ebd1cf80dcc8
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
+> @@ -0,0 +1,29 @@
+> +Device-Tree bindings for MediaTek PMIC based RTC
+> +
+> +MediaTek PMIC based RTC is an independent function of MediaTek PMIC that works
+> +as a type of multi-function device (MFD). The RTC can be configured and set up
+> +with PMIC wrapper bus which is a common resource shared with the other
+> +functions found on the same PMIC.
+> +
+> +For MediaTek PMIC MFD bindings, see:
+> +Documentation/devicetree/bindings/mfd/mt6397.txt
+> +
+> +For MediaTek PMIC wrapper bus bindings, see:
+> +Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
+> +
+> +Required properties:
+> +- compatible: Should be one of follows
+> +       "mediatek,mt6323-rtc": for MT6323 PMIC
+> +       "mediatek,mt6397-rtc": for MT6397 PMIC
+> +
+> +Example:
+> +
+> +       pmic {
+> +               compatible = "mediatek,mt6323";
+> +
+> +               ...
+> +
+> +               rtc {
+> +                       compatible = "mediatek,mt6323-rtc";
+> +               };
+> +       };
+> --
+> 2.17.1
+> 
+
+-- 
+Alexandre Belloni, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
