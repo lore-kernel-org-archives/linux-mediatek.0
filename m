@@ -1,151 +1,190 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v5 08/12] dt-bindings: mediatek: Change the binding for
- mmsys clocks
-Date: Thu, 4 Jul 2019 11:08:46 +0200
-Message-ID: <84d1c444-d6cb-9537-1bf5-b4e736443239@gmail.com>
-References: <20181116125449.23581-1-matthias.bgg@kernel.org>
- <20181116125449.23581-9-matthias.bgg@kernel.org>
- <20181116231522.GA18006@bogus>
- <2a23e407-4cd4-2e2b-97a5-4e2bb96846e0@gmail.com>
- <CAL_JsqKJQwfDJbpmwW+oCxiDkSp5+6mG-uoURmCQVEMP_jFOEg@mail.gmail.com>
- <154281878765.88331.10581984256202566195@swboyd.mtv.corp.google.com>
- <458178ac-c0fc-9671-7fc8-ed2d6f61424c@suse.com>
- <154356023767.88331.18401188808548429052@swboyd.mtv.corp.google.com>
- <a229bfc7-683f-5b0d-7b71-54f934de6214@suse.com>
- <1561953318.25914.9.camel@mtksdaap41>
+Subject: Re: [PATCH v2 2/7] rtc: mt6397: move some common definitions into
+ rtc.h
+Date: Thu, 4 Jul 2019 11:11:03 +0200
+Message-ID: <62a4c4ce-7ab3-2f9d-a85e-be92340724a9@gmail.com>
+References: <20190703164822.17924-1-frank-w@public-files.de>
+ <20190703164822.17924-3-frank-w@public-files.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1561953318.25914.9.camel@mtksdaap41>
+In-Reply-To: <20190703164822.17924-3-frank-w@public-files.de>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>, Matthias Brugger <mbrugger@suse.com>
-Cc: Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Sean Wang <sean.wang@kernel.org>, David Airlie <airlied@linux.ie>, Michael Turquette <mturquette@baylibre.com>, Sean Wang <Sean.Wang@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Ulrich Hecht <ulrich.hecht+renesas@gmail.com>, Chen-Yu Tsai <wens@csie.org>, Randy Dunlap <rdunlap@infradead.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Philipp Zabel <p.zabel@pengutronix.de>, "matthias.bgg@kernel.org" <matthias.bgg@kernel.org>"linux-mediatek@lists.infradead.org" <linux->
+To: Frank Wunderlich <frank-w@public-files.de>, Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Sean Wang <sean.wang@mediatek.com>, Sebastian Reichel <sre@kernel.org>, Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-rtc@vger.kernel.org, Eddie Huang <eddie.huang@mediatek.com>, Thomas Gleixner <tglx@linutronix.de>, Richard Fontana <rfontana@redhat.com>, Allison Randal <allison@lohutok.net>, "David S . Miller" <davem@davemloft.net>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Greg
+Cc: Josef Friedl <josef.friedl@speed.at>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi CK-Hu,
 
-On 01/07/2019 05:55, CK Hu wrote:
-> Hi, Matthias:
-> 
-> On Fri, 2018-11-30 at 16:59 +0800, Matthias Brugger wrote:
->>
->> On 30/11/2018 07:43, Stephen Boyd wrote:
->>> Quoting Matthias Brugger (2018-11-21 09:09:52)
->>>>
->>>>
->>>> On 21/11/2018 17:46, Stephen Boyd wrote:
->>>>> Quoting Rob Herring (2018-11-19 11:15:16)
->>>>>> On Sun, Nov 18, 2018 at 11:12 AM Matthias Brugger
->>>>>> <matthias.bgg@gmail.com> wrote:
->>>>>>> On 11/17/18 12:15 AM, Rob Herring wrote:
->>>>>>>> On Fri, Nov 16, 2018 at 01:54:45PM +0100, matthias.bgg@kernel.org wrote:
->>>>>>>>> -    #clock-cells = <1>;
->>>>>>>>> +
->>>>>>>>> +    mmsys_clk: clock-controller@14000000 {
->>>>>>>>> +            compatible = "mediatek,mt2712-mmsys-clk";
->>>>>>>>> +            #clock-cells = <1>;
->>>>>>>>
->>>>>>>> This goes against the general direction of not defining separate nodes
->>>>>>>> for providers with no resources.
->>>>>>>>
->>>>>>>> Why do you need this and what does it buy if you have to continue to
->>>>>>>> support the existing chips?
->>>>>>>>
->>>>>>>
->>>>>>> It would show explicitly that the mmsys block is used to probe two
->>>>>>> drivers, one for the gpu and one for the clocks. Otherwise that is
->>>>>>> hidden in the drm driver code. I think it is cleaner to describe that in
->>>>>>> the device tree.
->>>>>>
->>>>>> No, that's maybe cleaner for the driver implementation in the Linux
->>>>>> kernel. What about other OS's or when Linux drivers and subsystems
->>>>>> needs change? Cleaner for DT is design bindings that reflect the h/w.
->>>>>> Hardware is sometimes just messy.
->>>>>>
->>>>>
->>>>> I agree. I fail to see what this patch series is doing besides changing
->>>>> driver probe and device creation methods and making a backwards
->>>>> incompatible change to DT. Is there any other benefit here?
->>>>>
->>>>
->>>> You are referring whole series?
->>>> Citing the cover letter:
->>>> "MMSYS in Mediatek SoCs has some registers to control clock gates (which is
->>>> used in the clk driver) and some registers to set the routing and enable
->>>> the differnet (sic!) blocks of the display subsystem.
->>>>
->>>> Up to now both drivers, clock and drm are probed with the same device tree
->>>> compatible. But only the first driver get probed, which in effect breaks
->>>> graphics on mt8173 and mt2701.
->>>
->>> Ouch!
->>>
->>
->> Yes :)
->>
->>>>
->>>> This patch uses a platform device registration in the DRM driver, which
->>>> will trigger the probe of the corresponding clock driver. It was tested on the
->>>> bananapi-r2 and the Acer R13 Chromebook."
->>>
->>> Alright, please don't add nodes in DT just to make device drivers probe.
->>> Instead, register clks from the drm driver or create a child platform
->>> device for the clk bits purely in the drm driver and have that probe the
->>> associated clk driver from there.
->>>
->>
->> I'll make the other SoCs probe via a child platform device from the drm driver,
->> as already done in 2/12 and 3/12.
-> 
-> This series have been pending for half an year, would you keep going on
-> this series? If you're busy, I could complete this series, but I need to
-> know what you have plan to do.
-> 
 
-You are right, it took far too long for me to respond with a new version of the
-series. The problem I face is, that I use my mt8173 based chromebook for
-testing. It needs some downstream patches and broke somewhere between my last
-email and a few month ago. I wasn't able to get serial console to work, which
-made things even more complicated. Anyway, long story short, I got sidetracked
-with other stuff and didn't send a new version.
+On 03/07/2019 18:48, Frank Wunderlich wrote:
+> From: Josef Friedl <josef.friedl@speed.at>
+>
 
-If you have time to work on this, I'd happy to see things being pushed forward
-by you :)
+Still missing commit message. Describe here why you need to do that.
 
-> I guess that 1/12 ~ 5/12 is for MT2701/MT8173 and that patches meet this
-> discussion. 6/12 ~ 12/12 is for MT2712/MT6797 but that patches does not
-> meet this discussion. So the unfinished work is to make MT2712/MT6797 to
-> align MT2701/MT8173, is this right?
 
-After re-reading the emails I think the missing part is, to probe the clocks
-from the DRM driver instead of adding a new devicetree binding for them.
+> Suggested-by: Frank Wunderlich <frank-w@public-files.de>
+> Signed-off-by: Josef Friedl <josef.friedl@speed.at>
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> =2D--
+
+Please check your email setting as discussed offline. Otherwise your patches
+won't get accepted.
 
 Regards,
 Matthias
 
+>  drivers/rtc/rtc-mt6397.c       | 55 +-------------------------
+>  include/linux/mfd/mt6397/rtc.h | 71 ++++++++++++++++++++++++++++++++++
+>  2 files changed, 72 insertions(+), 54 deletions(-)
+>  create mode 100644 include/linux/mfd/mt6397/rtc.h
 > 
-> Regards,
-> CK
+> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+> index b46ed4dc7015..c08ee5edf865 100644
+> =2D-- a/drivers/rtc/rtc-mt6397.c
+> +++ b/drivers/rtc/rtc-mt6397.c
+> @@ -9,60 +9,7 @@
+>  #include <linux/module.h>
+>  #include <linux/regmap.h>
+>  #include <linux/rtc.h>
+> -#include <linux/irqdomain.h>
+> -#include <linux/platform_device.h>
+> -#include <linux/of_address.h>
+> -#include <linux/of_irq.h>
+> -#include <linux/io.h>
+> -#include <linux/mfd/mt6397/core.h>
+> -
+> -#define RTC_BBPU		0x0000
+> -#define RTC_BBPU_CBUSY		BIT(6)
+> -
+> -#define RTC_WRTGR		0x003c
+> -
+> -#define RTC_IRQ_STA		0x0002
+> -#define RTC_IRQ_STA_AL		BIT(0)
+> -#define RTC_IRQ_STA_LP		BIT(3)
+> -
+> -#define RTC_IRQ_EN		0x0004
+> -#define RTC_IRQ_EN_AL		BIT(0)
+> -#define RTC_IRQ_EN_ONESHOT	BIT(2)
+> -#define RTC_IRQ_EN_LP		BIT(3)
+> -#define RTC_IRQ_EN_ONESHOT_AL	(RTC_IRQ_EN_ONESHOT | RTC_IRQ_EN_AL)
+> -
+> -#define RTC_AL_MASK		0x0008
+> -#define RTC_AL_MASK_DOW		BIT(4)
+> -
+> -#define RTC_TC_SEC		0x000a
+> -/* Min, Hour, Dom... register offset to RTC_TC_SEC */
+> -#define RTC_OFFSET_SEC		0
+> -#define RTC_OFFSET_MIN		1
+> -#define RTC_OFFSET_HOUR		2
+> -#define RTC_OFFSET_DOM		3
+> -#define RTC_OFFSET_DOW		4
+> -#define RTC_OFFSET_MTH		5
+> -#define RTC_OFFSET_YEAR		6
+> -#define RTC_OFFSET_COUNT	7
+> -
+> -#define RTC_AL_SEC		0x0018
+> -
+> -#define RTC_PDN2		0x002e
+> -#define RTC_PDN2_PWRON_ALARM	BIT(4)
+> -
+> -#define RTC_MIN_YEAR		1968
+> -#define RTC_BASE_YEAR		1900
+> -#define RTC_NUM_YEARS		128
+> -#define RTC_MIN_YEAR_OFFSET	(RTC_MIN_YEAR - RTC_BASE_YEAR)
+> -
+> -struct mt6397_rtc {
+> -	struct device		*dev;
+> -	struct rtc_device	*rtc_dev;
+> -	struct mutex		lock;
+> -	struct regmap		*regmap;
+> -	int			irq;
+> -	u32			addr_base;
+> -};
+> +#include <linux/mfd/mt6397/rtc.h>
 > 
->>
->> Regards,
->> Matthias
->>
->>>>
->>>> DT is broken right now, because two drivers rely on the same node, which gets
->>>> consumed just once. The new DT introduced does not break anything because it is
->>>> only used for boards that: "[..] are not available to the general public
->>>> (mt2712e) or only have the mmsys clock driver part implemented (mt6797)."
->>>
->>> Ok, so backwards compatibility is irrelevant then. Sounds fine to me.
->>>
->>>
->>
->> _______________________________________________
->> Linux-mediatek mailing list
->> Linux-mediatek@lists.infradead.org
->> http://lists.infradead.org/mailman/listinfo/linux-mediatek
-> 
+>  static int mtk_rtc_write_trigger(struct mt6397_rtc *rtc)
+>  {
+> diff --git a/include/linux/mfd/mt6397/rtc.h b/include/linux/mfd/mt6397/rtc=
+> .h
+> new file mode 100644
+> index 000000000000..b702c29e8c74
+> =2D-- /dev/null
+> +++ b/include/linux/mfd/mt6397/rtc.h
+> @@ -0,0 +1,71 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * Copyright (C) 2014-2018 MediaTek Inc.
+> + *
+> + * Author: Tianping.Fang <tianping.fang@mediatek.com>
+> + *        Sean Wang <sean.wang@mediatek.com>
+> + */
+> +
+> +#ifndef _LINUX_MFD_MT6397_RTC_H_
+> +#define _LINUX_MFD_MT6397_RTC_H_
+> +
+> +#include <linux/jiffies.h>
+> +#include <linux/mutex.h>
+> +#include <linux/regmap.h>
+> +#include <linux/rtc.h>
+> +
+> +#define RTC_BBPU               0x0000
+> +#define RTC_BBPU_CBUSY         BIT(6)
+> +#define RTC_BBPU_KEY            (0x43 << 8)
+> +
+> +#define RTC_WRTGR              0x003c
+> +
+> +#define RTC_IRQ_STA            0x0002
+> +#define RTC_IRQ_STA_AL         BIT(0)
+> +#define RTC_IRQ_STA_LP         BIT(3)
+> +
+> +#define RTC_IRQ_EN             0x0004
+> +#define RTC_IRQ_EN_AL          BIT(0)
+> +#define RTC_IRQ_EN_ONESHOT     BIT(2)
+> +#define RTC_IRQ_EN_LP          BIT(3)
+> +#define RTC_IRQ_EN_ONESHOT_AL  (RTC_IRQ_EN_ONESHOT | RTC_IRQ_EN_AL)
+> +
+> +#define RTC_AL_MASK            0x0008
+> +#define RTC_AL_MASK_DOW                BIT(4)
+> +
+> +#define RTC_TC_SEC             0x000a
+> +/* Min, Hour, Dom... register offset to RTC_TC_SEC */
+> +#define RTC_OFFSET_SEC         0
+> +#define RTC_OFFSET_MIN         1
+> +#define RTC_OFFSET_HOUR                2
+> +#define RTC_OFFSET_DOM         3
+> +#define RTC_OFFSET_DOW         4
+> +#define RTC_OFFSET_MTH         5
+> +#define RTC_OFFSET_YEAR                6
+> +#define RTC_OFFSET_COUNT       7
+> +
+> +#define RTC_AL_SEC             0x0018
+> +
+> +#define RTC_PDN2               0x002e
+> +#define RTC_PDN2_PWRON_ALARM   BIT(4)
+> +
+> +#define RTC_MIN_YEAR           1968
+> +#define RTC_BASE_YEAR          1900
+> +#define RTC_NUM_YEARS          128
+> +#define RTC_MIN_YEAR_OFFSET    (RTC_MIN_YEAR - RTC_BASE_YEAR)
+> +
+> +#define MTK_RTC_POLL_DELAY_US  10
+> +#define MTK_RTC_POLL_TIMEOUT   (jiffies_to_usecs(HZ))
+> +
+> +struct mt6397_rtc {
+> +	struct device           *dev;
+> +	struct rtc_device       *rtc_dev;
+> +
+> +	/* Protect register access from multiple tasks */
+> +	struct mutex            lock;
+> +	struct regmap           *regmap;
+> +	int                     irq;
+> +	u32                     addr_base;
+> +};
+> +
+> +#endif /* _LINUX_MFD_MT6397_RTC_H_ */
+> =2D-
+> 2.17.1
 > 
