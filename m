@@ -1,43 +1,95 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH net-next v2] net: ethernet: mediatek: Fix overlapping
- capability bits.
-Date: Thu, 04 Jul 2019 12:38:00 -0700 (PDT)
-Message-ID: <20190704.123800.788232773059713763.davem@davemloft.net>
-References: <20190703184203.20137-1-opensource@vdorst.com>
+From: Alexandre Belloni <alexandre.belloni@bootlin.com>
+Subject: Re: [PATCH v2 3/7] rtc: mt6397: improvements of rtc driver
+Date: Thu, 4 Jul 2019 22:43:36 +0200
+Message-ID: <20190704204336.GJ3692@piout.net>
+References: <20190703164822.17924-1-frank-w@public-files.de>
+ <20190703164822.17924-4-frank-w@public-files.de>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=utf-8
-Content-Transfer-Encoding: base64
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20190703184203.20137-1-opensource@vdorst.com>
-Sender: netdev-owner@vger.kernel.org
-To: opensource@vdorst.com
-Cc: sean.wang@mediatek.com, f.fainelli@gmail.com, linux@armlinux.org.uk, matthias.bgg@gmail.com, andrew@lunn.ch, vivien.didelot@gmail.com, frank-w@public-files.de, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20190703164822.17924-4-frank-w@public-files.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Sebastian Reichel <sre@kernel.org>, Alessandro Zummo <a.zummo@towertech.it>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-rtc@vger.kernel.org, Eddie Huang <eddie.huang@mediatek.com>, Thomas Gleixner <tglx@linutronix.de>, Richard Fontana <rfontana@redhat.com>, Allison Randal <allison@lohutok.net>, "David S . Miller" <davem@davemloft.net>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring <robh@kernel>
 List-Id: linux-mediatek@lists.infradead.org
 
-RnJvbTogUmVuw6kgdmFuIERvcnN0IDxvcGVuc291cmNlQHZkb3JzdC5jb20+DQpEYXRlOiBXZWQs
-ICAzIEp1bCAyMDE5IDIwOjQyOjA0ICswMjAwDQoNCj4gQm90aCBNVEtfVFJHTUlJX01UNzYyMV9D
-TEsgYW5kIE1US19QQVRIX0JJVCBhcmUgZGVmaW5lZCBhcyBiaXQgMTAuDQo+IA0KPiBUaGlzIGNh
-biBjYXVzZXMgaXNzdWVzIG9uIG5vbi1NVDc2MjEgZGV2aWNlcyB3aGljaCBoYXMgdGhlDQo+IE1U
-S19QQVRIX0JJVChNVEtfRVRIX1BBVEhfR01BQzFfUkdNSUkpIGFuZCBNVEtfVFJHTUlJIGNhcGFi
-aWxpdHkgc2V0Lg0KPiBUaGUgd3JvbmcgVFJHTUlJIHNldHVwIGNvZGUgY2FuIGJlIGV4ZWN1dGVk
-LiBUaGUgY3VycmVudCB3cm9uZ2x5IGV4ZWN1dGVkDQo+IGNvZGUgZG9lc27igJl0IGRvIGFueSBo
-YXJtIG9uIE1UNzYyMyBhbmQgdGhlIFRSR01JSSBzZXR1cCBmb3IgdGhlIE1UNzYyMw0KPiBTT0Mg
-c2lkZSBpcyBkb25lIGluIE1UNzUzMCBkcml2ZXIgU28gaXQgd2FzbuKAmXQgbm90aWNlZCBpbiB0
-aGUgdGVzdC4NCj4gDQo+IE1vdmUgYWxsIGNhcGFiaWxpdHkgYml0cyBpbiBvbmUgZW51bSBzbyB0
-aGF0IHRoZXkgYXJlIGFsbCB1bmlxdWUgYW5kIGVhc3kNCj4gdG8gZXhwYW5kIGluIHRoZSBmdXR1
-cmUuDQo+IA0KPiBCZWNhdXNlIG10a19ldGhfcGF0aCBlbnVtIGlzIG1lcmdlZCBpbiB0byBta3Rf
-ZXRoX2NhcGFiaWxpdGllcywgdGhlDQo+IHZhcmlhYmxlIHBhdGggdmFsdWUgaXMgbm8gbG9uZ2Vy
-IGJldHdlZW4gMCB0byBudW1iZXIgb2YgcGF0aHMsDQo+IG10a19ldGhfcGF0aF9uYW1lIGNhbuKA
-mXQgYmUgdXNlZCBhbnltb3JlIGluIHRoaXMgZm9ybS4gQ29udmVydCB0aGUNCj4gbXRrX2V0aF9w
-YXRoX25hbWUgYXJyYXkgdG8gYSBmdW5jdGlvbiB0byBsb29rdXAgdGhlIHBhdGhuYW1lLg0KPiAN
-Cj4gVGhlIG9sZCBjb2RlIHdhbGtlZCB0aHJ1IHRoZSBtdGtfZXRoX3BhdGggZW51bSwgd2hpY2gg
-aXMgYWxzbyBtZXJnZWQNCj4gd2l0aCBta3RfZXRoX2NhcGFiaWxpdGllcy4gRXhwYW5kIGFycmF5
-IG10a19ldGhfbXV4YyBzbyBpdCBjYW4gc3RvcmUgdGhlDQo+IG5hbWUgYW5kIGNhcGFiaWxpdHkg
-Yml0IG9mIHRoZSBtdXguIENvbnZlcnQgdGhlIGNvZGUgc28gaXQgY2FuIHdhbGsgdGhydQ0KPiB0
-aGUgbXRrX2V0aF9tdXhjIGFycmF5Lg0KPiANCj4gRml4ZXM6IDhlZmFhNjUzYThhNSAoIm5ldDog
-ZXRoZXJuZXQ6IG1lZGlhdGVrOiBBZGQgTVQ3NjIxIFRSR01JSSBtb2RlDQo+IHN1cHBvcnQiKQ0K
-DQpQbGVhc2UgaW4gdGhlIGZ1dHVyZSBkbyBub3Qgc3BsaXQgRml4ZXM6IHRhZ3Mgb250byBtdXRs
-aXBsZSBsaW5lcywgaXQNCm11c3QgYmUgb25lIGNvbnRpZ3VvdXMgbGluZSBubyBtYXR0ZXIgaG93
-IGxvbmcuICBJIGZpeGVkIGl0IHVwIHRoaXMNCnRpbWUuDQoNCj4gU2lnbmVkLW9mZi1ieTogUmVu
-w6kgdmFuIERvcnN0IDxvcGVuc291cmNlQHZkb3JzdC5jb20+DQoNCkFwcGxpZWQsIHRoYW5rIHlv
-dS4NCg==
+On 03/07/2019 18:48:18+0200, Frank Wunderlich wrote:
+> @@ -271,14 +268,11 @@ static int mtk_rtc_probe(struct platform_device *pdev)
+> 
+>  	platform_set_drvdata(pdev, rtc);
+> 
+> -	rtc->rtc_dev = devm_rtc_allocate_device(rtc->dev);
+> -	if (IS_ERR(rtc->rtc_dev))
+> -		return PTR_ERR(rtc->rtc_dev);
+> +	ret = devm_request_threaded_irq(&pdev->dev, rtc->irq, NULL,
+> +					mtk_rtc_irq_handler_thread,
+> +					IRQF_ONESHOT | IRQF_TRIGGER_HIGH,
+> +					"mt6397-rtc", rtc);
+> 
+
+This change may lead to a crash and the allocation was intentionally
+placed before the irq request.
+
+> -	ret = request_threaded_irq(rtc->irq, NULL,
+> -				   mtk_rtc_irq_handler_thread,
+> -				   IRQF_ONESHOT | IRQF_TRIGGER_HIGH,
+> -				   "mt6397-rtc", rtc);
+>  	if (ret) {
+>  		dev_err(&pdev->dev, "Failed to request alarm IRQ: %d: %d\n",
+>  			rtc->irq, ret);
+> @@ -287,6 +281,10 @@ static int mtk_rtc_probe(struct platform_device *pdev)
+> 
+>  	device_init_wakeup(&pdev->dev, 1);
+> 
+> +	rtc->rtc_dev = devm_rtc_allocate_device(&pdev->dev);
+> +	if (IS_ERR(rtc->rtc_dev))
+> +		return PTR_ERR(rtc->rtc_dev);
+> +
+>  	rtc->rtc_dev->ops = &mtk_rtc_ops;
+> 
+>  	ret = rtc_register_device(rtc->rtc_dev);
+> @@ -302,15 +300,6 @@ static int mtk_rtc_probe(struct platform_device *pdev)
+>  	return ret;
+>  }
+> 
+> -static int mtk_rtc_remove(struct platform_device *pdev)
+> -{
+> -	struct mt6397_rtc *rtc = platform_get_drvdata(pdev);
+> -
+> -	free_irq(rtc->irq, rtc);
+> -
+> -	return 0;
+> -}
+> -
+>  #ifdef CONFIG_PM_SLEEP
+>  static int mt6397_rtc_suspend(struct device *dev)
+>  {
+> @@ -337,6 +326,7 @@ static SIMPLE_DEV_PM_OPS(mt6397_pm_ops, mt6397_rtc_suspend,
+>  			mt6397_rtc_resume);
+> 
+>  static const struct of_device_id mt6397_rtc_of_match[] = {
+> +	{ .compatible = "mediatek,mt6323-rtc", },
+
+Unrelated change, this is not an improvement and must be accompanied by
+a documentation change.
+
+>  	{ .compatible = "mediatek,mt6397-rtc", },
+>  	{ }
+>  };
+> @@ -349,7 +339,6 @@ static struct platform_driver mtk_rtc_driver = {
+>  		.pm = &mt6397_pm_ops,
+>  	},
+>  	.probe	= mtk_rtc_probe,
+> -	.remove = mtk_rtc_remove,
+>  };
+> 
+>  module_platform_driver(mtk_rtc_driver);
+> --
+> 2.17.1
+> 
+
+-- 
+Alexandre Belloni, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
