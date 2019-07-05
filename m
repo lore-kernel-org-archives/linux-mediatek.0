@@ -1,95 +1,57 @@
-From: Alexandre Belloni <alexandre.belloni@bootlin.com>
-Subject: Re: [PATCH v2 3/7] rtc: mt6397: improvements of rtc driver
-Date: Thu, 4 Jul 2019 22:43:36 +0200
-Message-ID: <20190704204336.GJ3692@piout.net>
-References: <20190703164822.17924-1-frank-w@public-files.de>
- <20190703164822.17924-4-frank-w@public-files.de>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v5 08/12] dt-bindings: mediatek: Change the binding for
+ mmsys clocks
+Date: Fri, 5 Jul 2019 09:35:30 +0800
+Message-ID: <1562290530.10428.6.camel@mtksdaap41>
+References: <20181116125449.23581-1-matthias.bgg@kernel.org>
+         <20181116125449.23581-9-matthias.bgg@kernel.org>
+         <20181116231522.GA18006@bogus>
+         <2a23e407-4cd4-2e2b-97a5-4e2bb96846e0@gmail.com>
+         <CAL_JsqKJQwfDJbpmwW+oCxiDkSp5+6mG-uoURmCQVEMP_jFOEg@mail.gmail.com>
+         <154281878765.88331.10581984256202566195@swboyd.mtv.corp.google.com>
+         <458178ac-c0fc-9671-7fc8-ed2d6f61424c@suse.com>
+         <154356023767.88331.18401188808548429052@swboyd.mtv.corp.google.com>
+         <a229bfc7-683f-5b0d-7b71-54f934de6214@suse.com>
+         <1561953318.25914.9.camel@mtksdaap41>
+         <84d1c444-d6cb-9537-1bf5-b4e736443239@gmail.com>
+         <100944512.353257.1562254420397@webmail.strato.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190703164822.17924-4-frank-w@public-files.de>
+In-Reply-To: <100944512.353257.1562254420397@webmail.strato.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Sebastian Reichel <sre@kernel.org>, Alessandro Zummo <a.zummo@towertech.it>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-rtc@vger.kernel.org, Eddie Huang <eddie.huang@mediatek.com>, Thomas Gleixner <tglx@linutronix.de>, Richard Fontana <rfontana@redhat.com>, Allison Randal <allison@lohutok.net>, "David S . Miller" <davem@davemloft.net>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring <robh@kernel>
+To: Ulrich Hecht <uli@fpond.eu>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Matthias Brugger <mbrugger@suse.com>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh@kernel.org>, Sean Wang <Sean.Wang@mediatek.com>, devicetree@vger.kernel.org, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Sean Wang <sean.wang@kernel.org>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, dri-devel <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, Chen-Yu Tsai <wens@csie.org>, linux-mediatek@lists.infradead.org, Randy Dunlap <rdunlap@infradead.org>, Philipp Zabel <p.zabel@pengutronix.de>, matthias.bgg@kernel.org, Ulrich Hecht <ulrich.hecht+renesas@gmail.com>, linux-clk <linux-clk@vger.kernel.org>, moderated list
 List-Id: linux-mediatek@lists.infradead.org
 
-On 03/07/2019 18:48:18+0200, Frank Wunderlich wrote:
-> @@ -271,14 +268,11 @@ static int mtk_rtc_probe(struct platform_device *pdev)
-> 
->  	platform_set_drvdata(pdev, rtc);
-> 
-> -	rtc->rtc_dev = devm_rtc_allocate_device(rtc->dev);
-> -	if (IS_ERR(rtc->rtc_dev))
-> -		return PTR_ERR(rtc->rtc_dev);
-> +	ret = devm_request_threaded_irq(&pdev->dev, rtc->irq, NULL,
-> +					mtk_rtc_irq_handler_thread,
-> +					IRQF_ONESHOT | IRQF_TRIGGER_HIGH,
-> +					"mt6397-rtc", rtc);
-> 
+Hi, Uli:
 
-This change may lead to a crash and the allocation was intentionally
-placed before the irq request.
+On Thu, 2019-07-04 at 17:33 +0200, Ulrich Hecht wrote:
+> > On July 4, 2019 at 11:08 AM Matthias Brugger <matthias.bgg@gmail.com> wrote:
+> > You are right, it took far too long for me to respond with a new version of the
+> > series. The problem I face is, that I use my mt8173 based chromebook for
+> > testing. It needs some downstream patches and broke somewhere between my last
+> > email and a few month ago.
+> 
+> If that Chromebook is an Acer R13 and you need a working kernel, you may want to have a look at https://github.com/uli/kernel/tree/elm-working-5.2 .
 
-> -	ret = request_threaded_irq(rtc->irq, NULL,
-> -				   mtk_rtc_irq_handler_thread,
-> -				   IRQF_ONESHOT | IRQF_TRIGGER_HIGH,
-> -				   "mt6397-rtc", rtc);
->  	if (ret) {
->  		dev_err(&pdev->dev, "Failed to request alarm IRQ: %d: %d\n",
->  			rtc->irq, ret);
-> @@ -287,6 +281,10 @@ static int mtk_rtc_probe(struct platform_device *pdev)
-> 
->  	device_init_wakeup(&pdev->dev, 1);
-> 
-> +	rtc->rtc_dev = devm_rtc_allocate_device(&pdev->dev);
-> +	if (IS_ERR(rtc->rtc_dev))
-> +		return PTR_ERR(rtc->rtc_dev);
-> +
->  	rtc->rtc_dev->ops = &mtk_rtc_ops;
-> 
->  	ret = rtc_register_device(rtc->rtc_dev);
-> @@ -302,15 +300,6 @@ static int mtk_rtc_probe(struct platform_device *pdev)
->  	return ret;
->  }
-> 
-> -static int mtk_rtc_remove(struct platform_device *pdev)
-> -{
-> -	struct mt6397_rtc *rtc = platform_get_drvdata(pdev);
-> -
-> -	free_irq(rtc->irq, rtc);
-> -
-> -	return 0;
-> -}
-> -
->  #ifdef CONFIG_PM_SLEEP
->  static int mt6397_rtc_suspend(struct device *dev)
->  {
-> @@ -337,6 +326,7 @@ static SIMPLE_DEV_PM_OPS(mt6397_pm_ops, mt6397_rtc_suspend,
->  			mt6397_rtc_resume);
-> 
->  static const struct of_device_id mt6397_rtc_of_match[] = {
-> +	{ .compatible = "mediatek,mt6323-rtc", },
+Thanks for your sample code, and your implementation is different than
+Matthias' version. In your version, mmsys is a single device which has
+clock function and display function, the clock function is placed in
+clock driver folder and display function is placed in drm driver folder.
+In Matthias' version, clock function is a sub device of mmsys. I've no
+idea of which one is better. I would get more information to make better
+decision.
 
-Unrelated change, this is not an improvement and must be accompanied by
-a documentation change.
+Regards,
+CK
 
->  	{ .compatible = "mediatek,mt6397-rtc", },
->  	{ }
->  };
-> @@ -349,7 +339,6 @@ static struct platform_driver mtk_rtc_driver = {
->  		.pm = &mt6397_pm_ops,
->  	},
->  	.probe	= mtk_rtc_probe,
-> -	.remove = mtk_rtc_remove,
->  };
 > 
->  module_platform_driver(mtk_rtc_driver);
-> --
-> 2.17.1
+> CU
+> Uli
 > 
-
--- 
-Alexandre Belloni, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
