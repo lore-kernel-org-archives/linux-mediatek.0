@@ -1,153 +1,39 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [RFC,
- v3 9/9] media: platform: Add Mediatek ISP P1 shared memory device
-Date: Fri, 5 Jul 2019 13:22:28 +0900
-Message-ID: <CAAFQd5BaTQ-Q7gsE0X+d4_81OZq9WHaCYkmALt7_4A1JFo=_8g@mail.gmail.com>
-References: <jungo.lin@mediatek.com>
- <20190611035344.29814-1-jungo.lin@mediatek.com>
- <20190611035344.29814-10-jungo.lin@mediatek.com>
- <20190701072532.GB137710@chromium.org>
- <1562297618.1212.46.camel@mtksdccf07>
+From: Andrzej Pietrasiewicz <andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH v3 00/22] Associate ddc adapters with
+ connectors
+Date: Fri, 5 Jul 2019 10:38:27 +0200
+Message-ID: <44f98134-bc8a-133a-b702-589f007b175e@collabora.com>
+References: <3fb19371-db7d-f9dc-31a7-1ccd126f6784@collabora.com>
+ <cover.1561735433.git.andrzej.p@collabora.com>
+ <20190628161137.GH4779@pendragon.ideasonboard.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1562297618.1212.46.camel@mtksdccf07>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Jungo Lin <jungo.lin@mediatek.com>
-Cc: devicetree@vger.kernel.org, =?UTF-8?B?U2VhbiBDaGVuZyAo6YSt5piH5byYKQ==?= <sean.cheng@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, =?UTF-8?B?UnlubiBXdSAo5ZCz6IKy5oGpKQ==?= <rynn.wu@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>, Rob Herring <robh@kernel.org>, =?UTF-8?B?UnlhbiBZdSAo5L2Z5a2f5L+uKQ==?= <ryan.yu@mediatek.com>, =?UTF-8?B?RnJhbmtpZSBDaGl1ICjpgrHmloflh7Ep?= <frankie.chiu@mediatek.com>, Hans Verkuil <hverkuil@xs4all.nl>, Matthias Brugger <matthias.bgg@gmail.com>, Sj Huang <sj.huang@mediatek.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, ddavenport@chromium.org, =?UTF-8?B?RnJlZGVyaWMgQ2hlbiAo6Zmz5L+K5YWDKQ==?= <frederic.chen@mediatek.com>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
- Joerg Roedel <joro@8bytes.org>, " <linux-arm>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+In-Reply-To: <20190628161137.GH4779-N3hz7ZxfLydczECFQUw77jytWr6r+dGw0E9HWUfgJXw@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/freedreno>
+List-Post: <mailto:freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+List-Help: <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
+Errors-To: freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Sender: "Freedreno" <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+To: Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
+Cc: "Y.C. Chen" <yc_chen-SAlXDmAnmOAqDJ6do+/SaQ@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sam Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Gerd Hoffmann <kraxel-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Benjamin Gaignard <benjamin.gaignard-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, "David (ChunMing) Zhou" <David1.Zhou-5C7GfCeVMHo@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Vincent Abriou <vincent.abriou-qxv4g6HH51o@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Jungo,
-
-On Fri, Jul 5, 2019 at 12:33 PM Jungo Lin <jungo.lin@mediatek.com> wrote:
->
-> Hi Tomasz,
->
-> On Mon, 2019-07-01 at 16:25 +0900, Tomasz Figa wrote:
-> > Hi Jungo,
-> >
-> > On Tue, Jun 11, 2019 at 11:53:44AM +0800, Jungo Lin wrote:
-> > > The purpose of this child device is to provide shared
-> > > memory management for exchanging tuning data between co-processor
-> > > and the Pass 1 unit of the camera ISP system, including cache
-> > > buffer handling.
-> > >
-> >
-> > Looks like we haven't really progressed on getting this replaced with
-> > something that doesn't require so much custom code. Let me propose something
-> > better then.
-> >
-> > We already have a reserved memory mode in DT. If it has a compatible string
-> > of "shared-dma-pool", it would be registered in the coherent DMA framework
-> > [1]. That would make it available for consumer devices to look-up.
-> >
-> > Now if we add a "memory-region" property to the SCP device node and point it
-> > to our reserved memory node, the SCP driver could look it up and hook to the
-> > DMA mapping API using of_reserved_mem_device_init_by_idx[2].
-> >
-> > That basically makes any dma_alloc_*(), dma_map_*(), etc. calls on the SCP
-> > struct device use the coherent DMA ops, which operate on the assigned memory
-> > pool. With that, the P1 driver could just directly use those calls to
-> > manage the memory, without any custom code.
-> >
-> > There is an example how this setup works in the s5p-mfc driver[3], but it
-> > needs to be noted that it creates child nodes, because it can have more than
-> > 1 DMA port, which may need its own memory pool. In our case, we wouldn't
-> > need child nodes and could just use the SCP device directly.
-> >
-> > [1] https://elixir.bootlin.com/linux/v5.2-rc7/source/kernel/dma/coherent.c#L345
-> > [2] https://elixir.bootlin.com/linux/v5.2-rc7/source/drivers/of/of_reserved_mem.c#L312
-> > [3] https://elixir.bootlin.com/linux/v5.2-rc7/source/drivers/media/platform/s5p-mfc/s5p_mfc.c#L1075
-> >
-> > Let me also post some specific comments below, in case we end up still
-> > needing any of the code.
-> >
->
-> Thanks your suggestions.
->
-> After applying your suggestion in SCP device driver, we could remove
-> mtk_cam-smem.h/c. Currently, we use dma_alloc_coherent with SCP device
-> to get SCP address. We could touch the buffer with this SCP address in
-> SCP processor.
->
-> After that, we use dma_map_page_attrs with P1 device which supports
-> IOMMU domain to get IOVA address. For this address, we will assign
-> it to our ISP HW device to proceed.
->
-> Below is the snippet for ISP P1 compose buffer initialization.
->
->         ptr = dma_alloc_coherent(p1_dev->cam_dev.smem_dev,
->                                  MAX_COMPOSER_SIZE, &addr, GFP_KERNEL);
->         if (!ptr) {
->                 dev_err(dev, "failed to allocate compose memory\n");
->                 return -ENOMEM;
->         }
->         isp_ctx->scp_mem_pa = addr;
-
-addr contains a DMA address, not a physical address. Could we call it
-scp_mem_dma instead?
-
->         dev_dbg(dev, "scp addr:%pad\n", &addr);
->
->         /* get iova address */
->         addr = dma_map_page_attrs(dev, phys_to_page(addr), 0,
-
-addr is a DMA address, so phys_to_page() can't be called on it. The
-simplest thing here would be to use dma_map_single() with ptr as the
-CPU address expected.
-
->                                   MAX_COMPOSER_SIZE, DMA_BIDIRECTIONAL,
->                                   DMA_ATTR_SKIP_CPU_SYNC);
->         if (dma_mapping_error(dev, addr)) {
->                 isp_ctx->scp_mem_pa = 0;
-
-We also need to free the allocated memory.
-
->                 dev_err(dev, "Failed to map scp iova\n");
->                 return -ENOMEM;
->         }
->         isp_ctx->scp_mem_iova = addr;
->
-> Moreover, we have another meta input buffer usage.
-> For this kind of buffer, it will be allocated by V4L2 framework
-> with dma_alloc_coherent with SCP device. In order to get IOVA,
-> we will add dma_map_page_attrs in vb2_ops' buf_init function.
-> In buf_cleanup function, we will call dma_unmap_page_attrs function.
-
-As per above, we don't have access to the struct page we want to map.
-We probably want to get the CPU VA using vb2_plane_vaddr() and call
-dma_map_single() instead.
-
->
-> Based on these current implementation, do you think it is correct?
-> If we got any wrong, please let us know.
->
-> Btw, we also DMA_ATTR_NO_KERNEL_MAPPING DMA attribte to
-> avoid dma_sync_sg_for_device. Othewise, it will hit the KE.
-> Maybe we could not get the correct sg_table.
-> Do you think it is a bug and need to fix?
-
-I think DMA_ATTR_NO_KERNEL_MAPPING is good to have for all the buffers
-that don't need to be accessed from the kernel anyway, to avoid
-unnecessary kernel mapping operations. However, for coherent memory
-pool, it doesn't change anything, because the memory always has a
-kernel mapping. We also need the kernel virtual address for
-dma_map_single(). Also the flag doesn't eliminate the need to do the
-sync, e.g. if the userspace accesses the buffer.
-
-Could you give me more information about the failure you're seeing?
-Where is the dma_sync_sg_for_device() called from? Where do you get
-the sgtable from?
-
-Best regards,
-Tomasz
+VyBkbml1IDI4LjA2LjIwMTkgb8KgMTg6MTEsIExhdXJlbnQgUGluY2hhcnQgcGlzemU6Cj4gSGkg
+QW5kcnplaiwKPiAKPiBKdXN0IEZZSSwgSSBoYXZlIGEgcGF0Y2ggc2VyaWVzIHRoYXQgcmV3b3Jr
+cyBob3cgYnJpZGdlcyBhbmQgY29ubmVjdG9ycwo+IGFyZSBoYW5kbGVkLCBhbmQgaXQgd2lsbCBo
+ZWF2aWx5IGNvbmZsaWN0IHdpdGggdGhpcy4gVGhlIHB1cnBvc2Ugb2YgdGhlCj4gdHdvIHNlcmll
+cyBpc24ndCB0aGUgc2FtZSwgc28gYm90aCBtYWtlIHNlbnNlLiBJIHdpbGwgcG9zdCB0aGUgcGF0
+Y2hlcwo+IHRoaXMgd2Vla2VuZCwgYW5kIHdpbGwgdGhlbiByZXZpZXcgdGhpcyBzZXJpZXMgaW4g
+dGhhdCBjb250ZXh0Lgo+IEhvcGVmdWxseSB3ZSdsbCBnZXQgdGhlIGJlc3Qgb2YgYm90aCB3b3Js
+ZHMgOi0pCgpIaSBMYXVyZW50LAoKRGlkIHlvdSBoYXZlIGEgY2hhbmNlIHRvIHJldmlldyBteSBw
+YXRjaCBzZXJpZXM/CgpBbmRyemVqCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpGcmVlZHJlbm8gbWFpbGluZyBsaXN0CkZyZWVkcmVub0BsaXN0cy5mcmVl
+ZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9mcmVlZHJlbm8=
