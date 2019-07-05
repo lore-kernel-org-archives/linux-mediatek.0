@@ -1,122 +1,118 @@
-From: Dmitry Vyukov <dvyukov@google.com>
-Subject: Re: [PATCH v3] kasan: add memory corruption identification for
- software tag-based mode
-Date: Fri, 5 Jul 2019 15:34:49 +0200
-Message-ID: <CACT4Y+aMXTBE0uVkeZz+MuPx3X1nESSBncgkScWvAkciAxP1RA@mail.gmail.com>
-References: <20190613081357.1360-1-walter-zh.wu@mediatek.com>
- <da7591c9-660d-d380-d59e-6d70b39eaa6b@virtuozzo.com> <1560447999.15814.15.camel@mtksdccf07>
- <1560479520.15814.34.camel@mtksdccf07> <1560744017.15814.49.camel@mtksdccf07>
- <CACT4Y+Y3uS59rXf92ByQuFK_G4v0H8NNnCY1tCbr4V+PaZF3ag@mail.gmail.com>
- <1560774735.15814.54.camel@mtksdccf07> <1561974995.18866.1.camel@mtksdccf07>
+From: Jungo Lin <jungo.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [RFC,v3 9/9] media: platform: Add Mediatek ISP P1 shared memory
+ device
+Date: Fri, 5 Jul 2019 15:59:39 +0800
+Message-ID: <1562313579.1212.73.camel@mtksdccf07>
+References: <jungo.lin@mediatek.com>
+ <20190611035344.29814-1-jungo.lin@mediatek.com>
+ <20190611035344.29814-10-jungo.lin@mediatek.com>
+ <20190701072532.GB137710@chromium.org>
+ <1562297618.1212.46.camel@mtksdccf07>
+ <CAAFQd5BaTQ-Q7gsE0X+d4_81OZq9WHaCYkmALt7_4A1JFo=_8g@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1561974995.18866.1.camel@mtksdccf07>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Walter Wu <walter-zh.wu@mediatek.com>
-Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Matthias Brugger <matthias.bgg@gmail.com>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Arnd Bergmann <arnd@arndb.de>, Vasily Gorbik <gor@linux.ibm.com>, Andrey Konovalov <andreyknvl@google.com>, "Jason A . Donenfeld" <Jason@zx2c4.com>, Miles Chen <miles.chen@mediatek.com>, kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>, Linux-MM <linux-mm@kvack.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream <wsd_upstream@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAAFQd5BaTQ-Q7gsE0X+d4_81OZq9WHaCYkmALt7_4A1JFo=_8g-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean Cheng =?UTF-8?Q?=28=E9=84=AD=E6=98=87=E5=BC=98=29?= <sean.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Rynn Wu =?UTF-8?Q?=28=E5=90=B3=E8=82=B2=E6=81=A9=29?= <rynn.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ryan Yu =?UTF-8?Q?=28=E4=BD=99=E5=AD=9F=E4=BF=AE=29?= <ryan.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Frankie Chiu =?UTF-8?Q?=28=E9=82=B1=E6=96=87=E5=87=B1=29?= <frankie.chiu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sj Huang <sj.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated
+ list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, ddavenport-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Frederic Chen =?UTF-8?Q?=28=E9=99=B3=E4=BF=8A=E5=85=83=29?= <frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS <iommu-cunTk1MwBs//PtFMR13I2A@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jul 1, 2019 at 11:56 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
-> > > > > > > > This patch adds memory corruption identification at bug report for
-> > > > > > > > software tag-based mode, the report show whether it is "use-after-free"
-> > > > > > > > or "out-of-bound" error instead of "invalid-access" error.This will make
-> > > > > > > > it easier for programmers to see the memory corruption problem.
-> > > > > > > >
-> > > > > > > > Now we extend the quarantine to support both generic and tag-based kasan.
-> > > > > > > > For tag-based kasan, the quarantine stores only freed object information
-> > > > > > > > to check if an object is freed recently. When tag-based kasan reports an
-> > > > > > > > error, we can check if the tagged addr is in the quarantine and make a
-> > > > > > > > good guess if the object is more like "use-after-free" or "out-of-bound".
-> > > > > > > >
-> > > > > > >
-> > > > > > >
-> > > > > > > We already have all the information and don't need the quarantine to make such guess.
-> > > > > > > Basically if shadow of the first byte of object has the same tag as tag in pointer than it's out-of-bounds,
-> > > > > > > otherwise it's use-after-free.
-> > > > > > >
-> > > > > > > In pseudo-code it's something like this:
-> > > > > > >
-> > > > > > > u8 object_tag = *(u8 *)kasan_mem_to_shadow(nearest_object(cacche, page, access_addr));
-> > > > > > >
-> > > > > > > if (access_addr_tag == object_tag && object_tag != KASAN_TAG_INVALID)
-> > > > > > >   // out-of-bounds
-> > > > > > > else
-> > > > > > >   // use-after-free
-> > > > > >
-> > > > > > Thanks your explanation.
-> > > > > > I see, we can use it to decide corruption type.
-> > > > > > But some use-after-free issues, it may not have accurate free-backtrace.
-> > > > > > Unfortunately in that situation, free-backtrace is the most important.
-> > > > > > please see below example
-> > > > > >
-> > > > > > In generic KASAN, it gets accurate free-backrace(ptr1).
-> > > > > > In tag-based KASAN, it gets wrong free-backtrace(ptr2). It will make
-> > > > > > programmer misjudge, so they may not believe tag-based KASAN.
-> > > > > > So We provide this patch, we hope tag-based KASAN bug report is the same
-> > > > > > accurate with generic KASAN.
-> > > > > >
-> > > > > > ---
-> > > > > >     ptr1 = kmalloc(size, GFP_KERNEL);
-> > > > > >     ptr1_free(ptr1);
-> > > > > >
-> > > > > >     ptr2 = kmalloc(size, GFP_KERNEL);
-> > > > > >     ptr2_free(ptr2);
-> > > > > >
-> > > > > >     ptr1[size] = 'x';  //corruption here
-> > > > > >
-> > > > > >
-> > > > > > static noinline void ptr1_free(char* ptr)
-> > > > > > {
-> > > > > >     kfree(ptr);
-> > > > > > }
-> > > > > > static noinline void ptr2_free(char* ptr)
-> > > > > > {
-> > > > > >     kfree(ptr);
-> > > > > > }
-> > > > > > ---
-> > > > > >
-> > > > > We think of another question about deciding by that shadow of the first
-> > > > > byte.
-> > > > > In tag-based KASAN, it is immediately released after calling kfree(), so
-> > > > > the slub is easy to be used by another pointer, then it will change
-> > > > > shadow memory to the tag of new pointer, it will not be the
-> > > > > KASAN_TAG_INVALID, so there are many false negative cases, especially in
-> > > > > small size allocation.
-> > > > >
-> > > > > Our patch is to solve those problems. so please consider it, thanks.
-> > > > >
-> > > > Hi, Andrey and Dmitry,
-> > > >
-> > > > I am sorry to bother you.
-> > > > Would you tell me what you think about this patch?
-> > > > We want to use tag-based KASAN, so we hope its bug report is clear and
-> > > > correct as generic KASAN.
-> > > >
-> > > > Thanks your review.
-> > > > Walter
-> > >
-> > > Hi Walter,
-> > >
-> > > I will probably be busy till the next week. Sorry for delays.
+Hi Tomasz:
+
+On Fri, 2019-07-05 at 13:22 +0900, Tomasz Figa wrote:
+> Hi Jungo,
+> 
+> On Fri, Jul 5, 2019 at 12:33 PM Jungo Lin <jungo.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
 > >
-> > It's ok. Thanks your kindly help.
-> > I hope I can contribute to tag-based KASAN. It is a very important tool
-> > for us.
->
-> Hi, Dmitry,
->
-> Would you have free time to discuss this patch together?
-> Thanks.
+> > Hi Tomasz,
 
-Sorry for delays. I am overwhelm by some urgent work. I afraid to
-promise any dates because the next week I am on a conference, then
-again a backlog and an intern starting...
+[snip]
 
-Andrey, do you still have concerns re this patch? This change allows
-to print the free stack.
-We also have a quarantine for hwasan in user-space. Though it works a
-bit differently then the normal asan quarantine. We keep a per-thread
-fixed-size ring-buffer of recent allocations:
-https://github.com/llvm-mirror/compiler-rt/blob/master/lib/hwasan/hwasan_report.cpp#L274-L284
-and scan these ring buffers during reports.
+> > After applying your suggestion in SCP device driver, we could remove
+> > mtk_cam-smem.h/c. Currently, we use dma_alloc_coherent with SCP device
+> > to get SCP address. We could touch the buffer with this SCP address in
+> > SCP processor.
+> >
+> > After that, we use dma_map_page_attrs with P1 device which supports
+> > IOMMU domain to get IOVA address. For this address, we will assign
+> > it to our ISP HW device to proceed.
+> >
+> > Below is the snippet for ISP P1 compose buffer initialization.
+> >
+> >         ptr = dma_alloc_coherent(p1_dev->cam_dev.smem_dev,
+> >                                  MAX_COMPOSER_SIZE, &addr, GFP_KERNEL);
+> >         if (!ptr) {
+> >                 dev_err(dev, "failed to allocate compose memory\n");
+> >                 return -ENOMEM;
+> >         }
+> >         isp_ctx->scp_mem_pa = addr;
+> 
+> addr contains a DMA address, not a physical address. Could we call it
+> scp_mem_dma instead?
+> 
+> >         dev_dbg(dev, "scp addr:%pad\n", &addr);
+> >
+> >         /* get iova address */
+> >         addr = dma_map_page_attrs(dev, phys_to_page(addr), 0,
+> 
+> addr is a DMA address, so phys_to_page() can't be called on it. The
+> simplest thing here would be to use dma_map_single() with ptr as the
+> CPU address expected.
+> 
+
+We have changed to use ma_map_single() with ptr, but encounter IOMMU
+error. From the debug log of iommu_dma_map_page[3], we got
+0x0000000054800000 instead of expected address: 0x0000000050800000[2].
+There is a address offset(0x4000000). If we change to use
+dma_map_page_attrs with phys_to_page(addr), the address is correct as we
+expected[2]. Do you have any suggestion on this issue? Do we miss
+something?
+
+[1]
+[    1.344786] __dma_alloc_from_coherent: 0x800000 PAGE_SHIFT:12
+device_base:0x0000000050000000 dma:0x0000000050800000
+virt_base:ffffff8014000000 va:ffffff8014800000
+
+[    1.346890] mtk-cam 1a000000.camisp: scp addr:0x0000000050800000
+va:ffffff8014800000
+
+[    1.347864] iommu_dma_map_page:0x0000000054800000 offset:0
+[    1.348562] mtk-cam 1a000000.camisp: iova addr:0x00000000fde00000
+
+[2]
+[    1.346738] __dma_alloc_from_coherent: 0x800000 PAGE_SHIFT:12
+device_base:0x0000000050000000 dma:0x0000000050800000
+virt_base:ffffff8014000000 va:ffffff8014800000
+[    1.348841] mtk-cam 1a000000.camisp: scp addr:0x0000000050800000
+va:ffffff8014800000
+[    1.349816] iommu_dma_map_page:0x0000000050800000 offset:0
+[    1.350514] mtk-cam 1a000000.camisp: iova addr:0x00000000fde00000
+
+
+[3]
+dma_addr_t iommu_dma_map_page(struct device *dev, struct page *page,
+		unsigned long offset, size_t size, int prot)
+{
+	phys_addr_t phys = page_to_phys(page);
+	pr_err("iommu_dma_map_page:%pa offset:%lu\n", &phys, offset);
+
+	return __iommu_dma_map(dev, page_to_phys(page) + offset, size, prot,
+			iommu_get_dma_domain(dev));
+}
+
+[snip]
+
+Best regards,
+
+Jungo
