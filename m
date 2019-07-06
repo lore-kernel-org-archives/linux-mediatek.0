@@ -1,90 +1,57 @@
-From: Marcel Holtmann <marcel@holtmann.org>
-Subject: Re: [PATCH v7 0/2] Bluetooth: btusb: Add protocol support for
- MediaTek USB devices
-Date: Sat, 6 Jul 2019 21:45:31 +0200
-Message-ID: <CB48D0A4-0564-42A6-847F-08E64AAF4842@holtmann.org>
-References: <1559433769-23749-1-git-send-email-sean.wang@mediatek.com>
-Mime-Version: 1.0 (Mac OS X Mail 12.4 \(3445.104.11\))
-Content-Type: text/plain;
-        charset=us-ascii
-Content-Transfer-Encoding: 8BIT
+From: Alexandre Belloni <alexandre.belloni@bootlin.com>
+Subject: Re: Re: Re: [PATCH v2 3/7] rtc: mt6397: improvements of rtc driver
+Date: Sat, 6 Jul 2019 22:04:20 +0200
+Message-ID: <20190706200420.GE12409@piout.net>
+References: <20190703164822.17924-1-frank-w@public-files.de>
+ <20190703164822.17924-4-frank-w@public-files.de>
+ <20190704204336.GJ3692@piout.net>
+ <trinity-7b1977bd-252b-4482-b708-cf704a9d3da1-1562340946396@3c-app-gmx-bs68>
+ <20190705212448.GB12409@piout.net>
+ <trinity-a4e5f99f-00bc-4e90-9a48-64dbc6ba9c08-1562429720701@3c-app-gmx-bs42>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1559433769-23749-1-git-send-email-sean.wang@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <trinity-a4e5f99f-00bc-4e90-9a48-64dbc6ba9c08-1562429720701@3c-app-gmx-bs42>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: Johan Hedberg <johan.hedberg@gmail.com>, linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Sebastian Reichel <sre@kernel.org>, Alessandro Zummo <a.zummo@towertech.it>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-rtc@vger.kernel.org, Eddie Huang <eddie.huang@mediatek.com>, Thomas Gleixner <tglx@linutronix.de>, Richard Fontana <rfontana@redhat.com>, Allison Randal <allison@lohutok.net>, "David S . Miller" <davem@davemloft.net>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring <robh@kernel>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Sean,
+On 06/07/2019 18:15:20+0200, Frank Wunderlich wrote:
+> > Gesendet: Freitag, 05. Juli 2019 um 23:24 Uhr
+> > Von: "Alexandre Belloni" <alexandre.belloni@bootlin.com>
+> 
+> > Let's say the RTC has been used to start your platform, then the irq
+> > handler will be called as soon as the irq is requested, leading to a
+> > null pointer dereference.
+> 
+> i cannot test this with my platform, but i have changed it in my repo
+> 
+> https://github.com/frank-w/BPI-R2-4.14/commits/5.2-poweroff-mainline
+> 
+> > Yes and IIRC, I did comment that the rtc change also had to be separated
+> > from 1/7.
+> 
+> also this is put in separate commit, can you take a look before i post v3?
+> 
+> > Also, I really doubt this new compatible is necessary at all as you
+> > could simply directly use mediatek,mt6397-rtc.
+> 
+> imho this can confuse because the wrong chip-name is used in dts
+> 
 
-> v7:
-> * rebase to latest code base.
-> 
-> v6:
-> * fix drivers/bluetooth/btusb.c:2683:2-3: Unneeded semicolon based reported by [1]
-> * update power-on sequence with adding neccesary tci sleep comand to set up
->  low-power environmnet and a delay to wait the device to be stable.
-> * sort variables declarations in reverse xmas order.
-> 
-> [1]
-> http://lists.infradead.org/pipermail/linux-mediatek/2019-January/017017.html
-> 
-> v5:
-> * rebase to latest code base.
-> * change the subject prefix.
-> * change the place the firmware located at.
-> 
-> v4:
-> * use new BTUSB_TX_WAIT_VND_EVT instead of BTMTKUSB_TX_WAIT_VND_EVT
->  to avoid definition conflict and to fix bulk data transfer fails.
-> * use the bluetooth-next as the base
-> 
-> v3:
-> add fixes and enhancements based on [1]
-> * reuse flags and evt_skb btusb already had
-> * add ctrl_anchor and the corresponding handling
-> * apply mtk specific recv function
-> * add more comments explaining wmt ctrl urbs behavior.
-> 
-> [1]
-> http://lists.infradead.org/pipermail/linux-mediatek/2018-August/014724.html
-> 
-> v2:
-> 
-> add fixes and enhancements based on [1]
-> * include /sys/kernel/debug/usb/devices portion in the commit message.
-> * turn default into n for config BT_HCIBTUSB_MTK in Kconfig
-> * only add MediaTek support to btusb.c
-> * drop cmd_sync callback usage
-> * use __hci_cmd_send to send WMT commands
-> * add wait event handling similar to what is being done in btmtkuart.c
-> * submit a control IN URB similar to interrupt IN URB on demand for the WMT
->  commands during setup 
-> * add cosmetic changes
-> 
-> [1]
-> http://lists.infradead.org/pipermail/linux-mediatek/2018-August/014650.html
-> http://lists.infradead.org/pipermail/linux-mediatek/2018-August/014656.html
-> 
-> v1:
-> 
-> This adds the support of enabling MT7668U and MT7663U Bluetooth
-> function running on the top of btusb driver. The patch also adds
-> a newly created file mtkbt.c able to be reused independently from
-> the transport type such as UART, USB and SDIO.
-> 
-> Sean Wang (2):
->  Bluetooth: btusb: Add protocol support for MediaTek MT7668U USB
->    devices
->  Bluetooth: btusb: Add protocol support for MediaTek MT7663U USB
->    devices
-> 
-> drivers/bluetooth/Kconfig |  11 +
-> drivers/bluetooth/btusb.c | 581 ++++++++++++++++++++++++++++++++++++++
-> 2 files changed, 592 insertions(+)
+This is not true, we do that all the time and the immediate benefit of
+using the mt6397 compatible is that then there is no need to
+synchronize between subsystems. If you want to be absolutely
+conservative, you could use
 
-both patches have been applied to bluetooth-next tree.
+compatible = "mediatek,mt6323-rtc", "mediatek,mt6397-rtc";
 
-Regards
+in your DT.
 
-Marcel
+
+-- 
+Alexandre Belloni, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
