@@ -1,49 +1,58 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] [media] media: mtk-mdp: fix reference count on old device
- tree
-Date: Mon, 8 Jul 2019 11:06:43 +0200
-Message-ID: <e4d178ae-f43e-21d0-b0ab-78cc2ac71e7e@gmail.com>
-References: <20190621113250.4946-1-matthias.bgg@gmail.com>
+From: <dongchun.zhu@mediatek.com>
+Subject: [PATCH 0/2] media: add support for DW9768 VCM driver
+Date: Mon, 8 Jul 2019 18:06:39 +0800
+Message-ID: <20190708100641.2702-1-dongchun.zhu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190621113250.4946-1-matthias.bgg@gmail.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: minghsiu.tsai@mediatek.com, houlong.wei@mediatek.com, andrew-ct.chen@mediatek.com, mchehab@kernel.org, djkurtz@chromium.org, Hans Verkuil <hans.verkuil@cisco.com>Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, stable@vger.kernel.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: mchehab@kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, matthias.bgg@gmail.com, sakari.ailus@linux.intel.com, tfiga@chromium.org, bingbu.cao@intel.com
+Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com, shengnan.wang@mediatek.com, sj.huang@mediatek.com, linux-mediatek@lists.infradead.org, dongchun.zhu@mediatek.com, louis.kuo@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
+From: Dongchun Zhu <dongchun.zhu@mediatek.com>
 
+Hello,
 
-On 21/06/2019 13:32, Matthias Brugger wrote:
-> of_get_next_child() increments the reference count of the returning
-> device_node. Decrement it in the check if we are using the old or the
-> new DTB.
-> 
-> Fixes: ba1f1f70c2c0 ("[media] media: mtk-mdp: Fix mdp device tree")
-> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+Add a v4l2 sub-device driver for Dongwoon's DW9768 lens voice coil.
+This is a voice coil module using the i2c bus to control the focus position.
 
-Any comments on that?
+The DW9768 can control the position with 10 bits value and
+consists of two 8 bit registers show as below:
+register 0x04(DW9768_REG_POSITION):
+    +---+---+---+---+---+---+---+---+
+    |D07|D06|D05|D04|D03|D02|D01|D00|
+    +---+---+---+---+---+---+---+---+
+register 0x03:
+    +---+---+---+---+---+---+---+---+
+    |---|---|---|---|---|---|D09|D08|
+    +---+---+---+---+---+---+---+---+
 
-> ---
->  drivers/media/platform/mtk-mdp/mtk_mdp_core.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
-> index bbb24fb95b95..bafe53c5d54a 100644
-> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
-> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
-> @@ -118,7 +118,9 @@ static int mtk_mdp_probe(struct platform_device *pdev)
->  	mutex_init(&mdp->vpulock);
->  
->  	/* Old dts had the components as child nodes */
-> -	if (of_get_next_child(dev->of_node, NULL)) {
-> +	parent = of_get_next_child(dev->of_node, NULL);
-> +	if (parent) {
-> +		of_node_put(parent);
->  		parent = dev->of_node;
->  		dev_warn(dev, "device tree is out of date\n");
->  	} else {
-> 
+This driver support :
+ - set DW9768 to standby mode once suspend and turn it back to active if resume
+ - set the position via V4L2_CID_FOCUS_ABSOLUTE ctrl
+
+Dongchun Zhu (2):
+  media: i2c: dw9768: Add DT support and MAINTAINERS entry
+  media: i2c: dw9768: Add DW9768 VCM driver
+
+ .../bindings/media/i2c/dongwoon,dw9768.txt         |   9 +
+ MAINTAINERS                                        |   8 +
+ drivers/media/i2c/Kconfig                          |  10 +
+ drivers/media/i2c/Makefile                         |   1 +
+ drivers/media/i2c/dw9768.c                         | 458 +++++++++++++++++++++
+ 5 files changed, 486 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.txt
+ create mode 100644 drivers/media/i2c/dw9768.c
+
+-- 
+2.9.2
