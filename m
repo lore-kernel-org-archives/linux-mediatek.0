@@ -1,135 +1,126 @@
-From: Andrey Ryabinin <aryabinin@virtuozzo.com>
-Subject: Re: [PATCH v3] kasan: add memory corruption identification for
- software tag-based mode
-Date: Mon, 8 Jul 2019 19:33:41 +0300
-Message-ID: <ebc99ee1-716b-0b18-66ab-4e93de02ce50@virtuozzo.com>
-References: <20190613081357.1360-1-walter-zh.wu@mediatek.com>
- <da7591c9-660d-d380-d59e-6d70b39eaa6b@virtuozzo.com>
- <1560447999.15814.15.camel@mtksdccf07> <1560479520.15814.34.camel@mtksdccf07>
- <1560744017.15814.49.camel@mtksdccf07>
- <CACT4Y+Y3uS59rXf92ByQuFK_G4v0H8NNnCY1tCbr4V+PaZF3ag@mail.gmail.com>
- <1560774735.15814.54.camel@mtksdccf07> <1561974995.18866.1.camel@mtksdccf07>
- <CACT4Y+aMXTBE0uVkeZz+MuPx3X1nESSBncgkScWvAkciAxP1RA@mail.gmail.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v6 1/6] dt-bindings: usb: musb: Add support for MediaTek
+ musb controller
+Date: Mon, 8 Jul 2019 16:30:35 -0600
+Message-ID: <20190708223035.GA7005@bogus>
+References: <1559648359-6569-1-git-send-email-min.guo@mediatek.com>
+ <1559648359-6569-2-git-send-email-min.guo@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CACT4Y+aMXTBE0uVkeZz+MuPx3X1nESSBncgkScWvAkciAxP1RA@mail.gmail.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <1559648359-6569-2-git-send-email-min.guo@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Dmitry Vyukov <dvyukov@google.com>, Walter Wu <walter-zh.wu@mediatek.com>
-Cc: Alexander Potapenko <glider@google.com>, Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Matthias Brugger <matthias.bgg@gmail.com>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Arnd Bergmann <arnd@arndb.de>, Vasily Gorbik <gor@linux.ibm.com>, Andrey Konovalov <andreyknvl@google.com>, "Jason A . Donenfeld" <Jason@zx2c4.com>, Miles Chen <miles.chen@mediatek.com>, kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>, Linux-MM <linux-mm@kvack.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream <wsd_upstream@mediatek.com>
+To: min.guo@mediatek.com
+Cc: Bin Liu <b-liu@ti.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, chunfeng.yun@mediatek.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, tony@atomide.com, hdegoede@redhat.com
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 7/5/19 4:34 PM, Dmitry Vyukov wrote:
-> On Mon, Jul 1, 2019 at 11:56 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
->>>>>>>>> This patch adds memory corruption identification at bug report for
->>>>>>>>> software tag-based mode, the report show whether it is "use-after-free"
->>>>>>>>> or "out-of-bound" error instead of "invalid-access" error.This will make
->>>>>>>>> it easier for programmers to see the memory corruption problem.
->>>>>>>>>
->>>>>>>>> Now we extend the quarantine to support both generic and tag-based kasan.
->>>>>>>>> For tag-based kasan, the quarantine stores only freed object information
->>>>>>>>> to check if an object is freed recently. When tag-based kasan reports an
->>>>>>>>> error, we can check if the tagged addr is in the quarantine and make a
->>>>>>>>> good guess if the object is more like "use-after-free" or "out-of-bound".
->>>>>>>>>
->>>>>>>>
->>>>>>>>
->>>>>>>> We already have all the information and don't need the quarantine to make such guess.
->>>>>>>> Basically if shadow of the first byte of object has the same tag as tag in pointer than it's out-of-bounds,
->>>>>>>> otherwise it's use-after-free.
->>>>>>>>
->>>>>>>> In pseudo-code it's something like this:
->>>>>>>>
->>>>>>>> u8 object_tag = *(u8 *)kasan_mem_to_shadow(nearest_object(cacche, page, access_addr));
->>>>>>>>
->>>>>>>> if (access_addr_tag == object_tag && object_tag != KASAN_TAG_INVALID)
->>>>>>>>   // out-of-bounds
->>>>>>>> else
->>>>>>>>   // use-after-free
->>>>>>>
->>>>>>> Thanks your explanation.
->>>>>>> I see, we can use it to decide corruption type.
->>>>>>> But some use-after-free issues, it may not have accurate free-backtrace.
->>>>>>> Unfortunately in that situation, free-backtrace is the most important.
->>>>>>> please see below example
->>>>>>>
->>>>>>> In generic KASAN, it gets accurate free-backrace(ptr1).
->>>>>>> In tag-based KASAN, it gets wrong free-backtrace(ptr2). It will make
->>>>>>> programmer misjudge, so they may not believe tag-based KASAN.
->>>>>>> So We provide this patch, we hope tag-based KASAN bug report is the same
->>>>>>> accurate with generic KASAN.
->>>>>>>
->>>>>>> ---
->>>>>>>     ptr1 = kmalloc(size, GFP_KERNEL);
->>>>>>>     ptr1_free(ptr1);
->>>>>>>
->>>>>>>     ptr2 = kmalloc(size, GFP_KERNEL);
->>>>>>>     ptr2_free(ptr2);
->>>>>>>
->>>>>>>     ptr1[size] = 'x';  //corruption here
->>>>>>>
->>>>>>>
->>>>>>> static noinline void ptr1_free(char* ptr)
->>>>>>> {
->>>>>>>     kfree(ptr);
->>>>>>> }
->>>>>>> static noinline void ptr2_free(char* ptr)
->>>>>>> {
->>>>>>>     kfree(ptr);
->>>>>>> }
->>>>>>> ---
->>>>>>>
->>>>>> We think of another question about deciding by that shadow of the first
->>>>>> byte.
->>>>>> In tag-based KASAN, it is immediately released after calling kfree(), so
->>>>>> the slub is easy to be used by another pointer, then it will change
->>>>>> shadow memory to the tag of new pointer, it will not be the
->>>>>> KASAN_TAG_INVALID, so there are many false negative cases, especially in
->>>>>> small size allocation.
->>>>>>
->>>>>> Our patch is to solve those problems. so please consider it, thanks.
->>>>>>
->>>>> Hi, Andrey and Dmitry,
->>>>>
->>>>> I am sorry to bother you.
->>>>> Would you tell me what you think about this patch?
->>>>> We want to use tag-based KASAN, so we hope its bug report is clear and
->>>>> correct as generic KASAN.
->>>>>
->>>>> Thanks your review.
->>>>> Walter
->>>>
->>>> Hi Walter,
->>>>
->>>> I will probably be busy till the next week. Sorry for delays.
->>>
->>> It's ok. Thanks your kindly help.
->>> I hope I can contribute to tag-based KASAN. It is a very important tool
->>> for us.
->>
->> Hi, Dmitry,
->>
->> Would you have free time to discuss this patch together?
->> Thanks.
+On Tue, Jun 04, 2019 at 07:39:14PM +0800, min.guo@mediatek.com wrote:
+> From: Min Guo <min.guo@mediatek.com>
 > 
-> Sorry for delays. I am overwhelm by some urgent work. I afraid to
-> promise any dates because the next week I am on a conference, then
-> again a backlog and an intern starting...
+> This adds support for MediaTek musb controller in
+> host, peripheral and otg mode.
 > 
-> Andrey, do you still have concerns re this patch? This change allows
-> to print the free stack.
+> Signed-off-by: Min Guo <min.guo@mediatek.com>
+> ---
+> changes in v6:
+> 1. Modify usb connector child node
+> 
+> changes in v5:
+> suggested by Rob:
+> 1. Modify compatible as 
+> - compatible : should be one of:
+>                "mediatek,mt-2701"
 
-I 'm not sure that quarantine is a best way to do that. Quarantine is made to delay freeing, but we don't that here.
-If we want to remember more free stacks wouldn't be easier simply to remember more stacks in object itself?
-Same for previously used tags for better use-after-free identification.
+No, should be: mediatek,mt2701-musb
 
-> We also have a quarantine for hwasan in user-space. Though it works a
-> bit differently then the normal asan quarantine. We keep a per-thread
-> fixed-size ring-buffer of recent allocations:
-> https://github.com/llvm-mirror/compiler-rt/blob/master/lib/hwasan/hwasan_report.cpp#L274-L284
-> and scan these ring buffers during reports.
+>                ...
+>                followed by "mediatek,mtk-musb"
+> 2. Add usb connector child node
+> 
+> changes in v4:
+> suggested by Sergei:
+> 1. String alignment
+> 
+> changes in v3:
+> 1. no changes
+> 
+> changes in v2:
+> suggested by Bin:
+> 1. Modify DRC to DRD
+> suggested by Rob:
+> 2. Drop the "<soc-model>-musb" in compatible
+> 3. Remove phy-names
+> 4. Add space after comma in clock-names
+> ---
+>  .../devicetree/bindings/usb/mediatek,musb.txt      | 55 ++++++++++++++++++++++
+>  1 file changed, 55 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/usb/mediatek,musb.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/usb/mediatek,musb.txt b/Documentation/devicetree/bindings/usb/mediatek,musb.txt
+> new file mode 100644
+> index 0000000..7434299
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/usb/mediatek,musb.txt
+> @@ -0,0 +1,55 @@
+> +MediaTek musb DRD/OTG controller
+> +-------------------------------------------
+> +
+> +Required properties:
+> + - compatible      : should be one of:
+> +                     "mediatek,mt-2701"
+> +                     ...
+> +                     followed by "mediatek,mtk-musb"
+> + - reg             : specifies physical base address and size of
+> +                     the registers
+> + - interrupts      : interrupt used by musb controller
+> + - interrupt-names : must be "mc"
+> + - phys            : PHY specifier for the OTG phy
+> + - dr_mode         : should be one of "host", "peripheral" or "otg",
+> +                     refer to usb/generic.txt
+> + - clocks          : a list of phandle + clock-specifier pairs, one for
+> +                     each entry in clock-names
+> + - clock-names     : must contain "main", "mcu", "univpll"
+> +                     for clocks of controller
+> +
+> +Optional properties:
+> + - power-domains   : a phandle to USB power domain node to control USB's
+> +                     MTCMOS
+> +
+> +Required child nodes:
+> + usb connector node as defined in bindings/connector/usb-connector.txt
+> +Optional properties:
+> + - id-gpios        : input GPIO for USB ID pin.
+> + - vbus-gpios      : input GPIO for USB VBUS pin.
+> + - vbus-supply     : reference to the VBUS regulator, needed when supports
+> +                     dual-role mode
+> +
+> +Example:
+> +
+> +usb2: usb@11200000 {
+> +	compatible = "mediatek,mt2701-musb",
+> +		     "mediatek,mtk-musb";
+> +	reg = <0 0x11200000 0 0x1000>;
+> +	interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_LOW>;
+> +	interrupt-names = "mc";
+> +	phys = <&u2port2 PHY_TYPE_USB2>;
+> +	dr_mode = "otg";
+> +	clocks = <&pericfg CLK_PERI_USB0>,
+> +		 <&pericfg CLK_PERI_USB0_MCU>,
+> +		 <&pericfg CLK_PERI_USB_SLV>;
+> +	clock-names = "main","mcu","univpll";
+> +	power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
+> +	connector{
+> +		compatible = "linux,typeb-conn-gpio", "usb-b-connector";
+
+linux,typeb-conn-gpio is not an accepted compatible string.
+
+> +		label = "micro-USB";
+> +		type = "micro";
+> +		id-gpios = <&pio 44 GPIO_ACTIVE_HIGH>;
+> +		vbus-supply = <&usb_vbus>;
+> +	};
+> +};
+> -- 
+> 1.9.1
 > 
