@@ -1,46 +1,130 @@
-From: Xia Jiang <xia.jiang@mediatek.com>
-Subject: [PATCH 5/5] arm: dts: add jpeg enc device tree node
-Date: Tue, 9 Jul 2019 11:21:03 +0800
-Message-ID: <20190709032103.10291-6-xia.jiang@mediatek.com>
-References: <20190709032103.10291-1-xia.jiang@mediatek.com>
+From: Pi-Hsun Shih <pihsun@chromium.org>
+Subject: [PATCH v13 0/5] Add support for mt8183 SCP.
+Date: Tue,  9 Jul 2019 15:25:24 +0800
+Message-ID: <20190709072547.217957-1-pihsun@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190709032103.10291-1-xia.jiang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rick Chang <rick.chang@mediatek.com>
-Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Marek Szyprowski <m.szyprowski@samsung.com>, Tomasz Figa <tfiga@chromium.org>, srv_heupstream@mediatek.com, Xia Jiang <xia.jiang@mediatek.com>
+Cc: Pi-Hsun Shih <pihsun@chromium.org>, "open list:OPEN FIRMWARE AND FLATTENED
+        DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Erin Lo <erin.lo@mediatek.com>, "moderated list:ARM/Mediatek SoC
+        support" <linux-arm-kernel@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC
+        support" <linux-mediatek@lists.infradead.org>, "open list:REMOTE PROCESSOR
+        REMOTEPROC SUBSYSTEM" <linux-remoteproc@vger.kernel.org>, Nicolas Boichat <drinkcat@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-add jpeg enc device tree node
+Add support for controlling and communicating with mt8183's system
+control processor (SCP), using the remoteproc & rpmsg framework.
+And also add a cros_ec driver for CrOS EC host command over rpmsg.
 
-Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
----
- arch/arm/boot/dts/mt2701.dtsi | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+The overall structure of the series is:
+* remoteproc/mtk_scp.c: Control the start / stop of SCP (Patch 2, 3).
+* remoteproc/mtk_scp_ipi.c: Communicates to SCP using inter-processor
+  interrupt (IPI) and shared memory (Patch 2, 3).
+* rpmsg/mtk_rpmsg.c: Wrapper to wrap the IPI communication into a rpmsg
+  device. Supports name service for SCP firmware to
+  announce channels (Patch 4).
+* add scp dts node to mt8183 platform (Patch 5).
 
-diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-index 51e1305c6471..560f27fd9d9e 100644
---- a/arch/arm/boot/dts/mt2701.dtsi
-+++ b/arch/arm/boot/dts/mt2701.dtsi
-@@ -569,6 +569,18 @@
- 			 <&iommu MT2701_M4U_PORT_JPGDEC_BSDMA>;
- 	};
- 
-+	jpegenc: jpegenc@1500a000 {
-+		compatible = "mediatek,mt2701-jpgenc", "mediatek,mtk-jpgenc";
-+		reg = <0 0x1500a000 0 0x1000>;
-+		interrupts = <GIC_SPI 141 IRQ_TYPE_LEVEL_LOW>;
-+		clocks =  <&imgsys CLK_IMG_VENC>;
-+		clock-names = "jpgenc";
-+		power-domains = <&scpsys MT2701_POWER_DOMAIN_ISP>;
-+		mediatek,larb = <&larb2>;
-+		iommus = <&iommu MT2701_M4U_PORT_JPGENC_RDMA>,
-+			<&iommu MT2701_M4U_PORT_JPGENC_BSDMA>;
-+	};
-+
- 	vdecsys: syscon@16000000 {
- 		compatible = "mediatek,mt2701-vdecsys", "syscon";
- 		reg = <0 0x16000000 0 0x1000>;
+Changes from v12:
+ - Initialize cache before firmware load, to avoid problem while loading
+   large firmware.
+ - Disable watchdog before stopping SCP, to avoid extra warning message.
+ - Fix new warnings by checkpatch.
+
+Changes from v11:
+ - Fixed a bug that mtk_rpmsg_endpoint is not properly cleaned up if
+   rproc_boot fails.
+ - Add missing documentation in comment.
+
+Changes from v10:
+ - Drop applied cros_ec_rpmsg patches.
+ - Add clock reset before loading SCP firmware.
+ - Fix some type mismatch warnings when printing debug messages.
+
+Changes from v9:
+ - Remove reserve-memory-vpu_share node.
+ - Remove change to cros_ec_commands.h (That is already in
+   https://lore.kernel.org/lkml/20190518063949.GY4319@dell/T/)
+
+Changes from v8:
+ - Rebased onto https://patchwork.kernel.org/cover/10962385/.
+ - Drop merged cros_ec_rpmsg patch, and add scp dts node patch.
+ - Add more reserved memory region.
+
+Changes from v7:
+ - Rebase onto https://lore.kernel.org/patchwork/patch/1059196/.
+ - Fix clock enable/disable timing for SCP driver.
+ - Add more SCP IPI ID.
+
+Changes from v6:
+ - Decouple mtk_rpmsg from mtk_scp.
+ - Change data of EC response to be aligned to 4 bytes.
+
+Changes from v5:
+ - Add device tree binding document for cros_ec_rpmsg.
+ - Better document in comments for cros_ec_rpmsg.
+ - Remove dependency on CONFIG_ in binding tree document.
+
+Changes from v4:
+ - Merge patch 6 (Load ELF firmware) into patch 2, so the driver loads
+   ELF firmware by default, and no longer accept plain binary.
+ - rpmsg_device listed in device tree (as a child of the SCP node) would
+   have it's device tree node mapped to the rpmsg_device, so the rpmsg
+   driver can use the properties on device tree.
+
+Changes from v3:
+ - Make writing to SCP SRAM aligned.
+ - Add a new patch (Patch 6) to load ELF instead of bin firmware.
+ - Add host event support for EC driver.
+ - Fix some bugs found in testing (missing spin_lock_init,
+   rproc_subdev_unprepare to rproc_subdev_stop).
+ - Fix some coding style issue found by checkpatch.pl.
+
+Changes from v2:
+ - Fold patch 3 into patch 2 in v2.
+ - Move IPI id around to support cross-testing for old and new firmware.
+ - Finish more TODO items.
+
+Changes from v1:
+ - Extract functions and rename variables in mtk_scp.c.
+ - Do cleanup properly in mtk_rpmsg.c, which also removes the problem of
+   short-lived work items.
+ - Code format fix based on feedback for cros_ec_rpmsg.c.
+ - Extract feature detection for SCP into separate patch (Patch 6).
+
+Eddie Huang (1):
+  arm64: dts: mt8183: add scp node
+
+Erin Lo (3):
+  dt-bindings: Add a binding for Mediatek SCP
+  remoteproc/mediatek: add SCP support for mt8183
+  remoteproc: mt8183: add reserved memory manager API
+
+Pi-Hsun Shih (1):
+  rpmsg: add rpmsg support for mt8183 SCP.
+
+ .../bindings/remoteproc/mtk,scp.txt           |  36 +
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts   |  11 +
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi      |  12 +
+ drivers/remoteproc/Kconfig                    |  10 +
+ drivers/remoteproc/Makefile                   |   1 +
+ drivers/remoteproc/mtk_common.h               |  82 +++
+ drivers/remoteproc/mtk_scp.c                  | 689 ++++++++++++++++++
+ drivers/remoteproc/mtk_scp_ipi.c              | 163 +++++
+ drivers/rpmsg/Kconfig                         |   9 +
+ drivers/rpmsg/Makefile                        |   1 +
+ drivers/rpmsg/mtk_rpmsg.c                     | 414 +++++++++++
+ include/linux/platform_data/mtk_scp.h         | 167 +++++
+ include/linux/rpmsg/mtk_rpmsg.h               |  38 +
+ 13 files changed, 1633 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
+ create mode 100644 drivers/remoteproc/mtk_common.h
+ create mode 100644 drivers/remoteproc/mtk_scp.c
+ create mode 100644 drivers/remoteproc/mtk_scp_ipi.c
+ create mode 100644 drivers/rpmsg/mtk_rpmsg.c
+ create mode 100644 include/linux/platform_data/mtk_scp.h
+ create mode 100644 include/linux/rpmsg/mtk_rpmsg.h
+
 -- 
-2.18.0
+2.22.0.410.gd8fdbe21b5-goog
