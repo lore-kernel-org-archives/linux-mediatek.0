@@ -1,59 +1,135 @@
-From: Jerry-ch Chen <Jerry-Ch.chen@mediatek.com>
-Subject: [RFC PATCH V2 2/4] dts: arm64: mt8183: Add FD nodes
-Date: Tue, 9 Jul 2019 16:41:10 +0800
-Message-ID: <1562661672-22439-3-git-send-email-Jerry-Ch.chen@mediatek.com>
-References: <1562661672-22439-1-git-send-email-Jerry-Ch.chen@mediatek.com>
+From: Min Guo <min.guo@mediatek.com>
+Subject: Re: [PATCH v6 1/6] dt-bindings: usb: musb: Add support for MediaTek
+ musb controller
+Date: Tue, 9 Jul 2019 17:10:42 +0800
+Message-ID: <1562663442.17100.8.camel@mhfsdcap03>
+References: <1559648359-6569-1-git-send-email-min.guo@mediatek.com>
+         <1559648359-6569-2-git-send-email-min.guo@mediatek.com>
+         <20190708223035.GA7005@bogus>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1562661672-22439-1-git-send-email-Jerry-Ch.chen@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: hans.verkuil@cisco.com, laurent.pinchart+renesas@ideasonboard.com, tfiga@chromium.org, matthias.bgg@gmail.com, mchehab@kernel.org
-Cc: shik@chromium.org, devicetree@vger.kernel.org, Sean.Cheng@mediatek.com, Rynn.Wu@mediatek.com, srv_heupstream@mediatek.com, po-yang.huang@mediatek.com, suleiman@chromium.org, Jerry-ch Chen <jerry-ch.chen@mediatek.com>, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, linux-mediatek@lists.infradead.org, zwisler@chromium.org, christie.yu@mediatek.com, frederic.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190708223035.GA7005@bogus>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh@kernel.org>
+Cc: Bin Liu <b-liu@ti.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, chunfeng.yun@mediatek.com, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, tony@atomide.com, hdegoede@redhat.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Jerry-ch Chen <jerry-ch.chen@mediatek.com>
+Hi Rob,
+On Mon, 2019-07-08 at 16:30 -0600, Rob Herring wrote:
+> On Tue, Jun 04, 2019 at 07:39:14PM +0800, min.guo@mediatek.com wrote:
+> > From: Min Guo <min.guo@mediatek.com>
+> > 
+> > This adds support for MediaTek musb controller in
+> > host, peripheral and otg mode.
+> > 
+> > Signed-off-by: Min Guo <min.guo@mediatek.com>
+> > ---
+> > changes in v6:
+> > 1. Modify usb connector child node
+> > 
+> > changes in v5:
+> > suggested by Rob:
+> > 1. Modify compatible as 
+> > - compatible : should be one of:
+> >                "mediatek,mt-2701"
+> 
+> No, should be: mediatek,mt2701-musb
+OK.
 
-This patch adds nodes for Face Detection (FD) unit. FD is embedded
-in Mediatek SoCs and works with the co-processor to perform face
-detection on the input data and image and output detected face result.
+> >                ...
+> >                followed by "mediatek,mtk-musb"
+> > 2. Add usb connector child node
+> > 
+> > changes in v4:
+> > suggested by Sergei:
+> > 1. String alignment
+> > 
+> > changes in v3:
+> > 1. no changes
+> > 
+> > changes in v2:
+> > suggested by Bin:
+> > 1. Modify DRC to DRD
+> > suggested by Rob:
+> > 2. Drop the "<soc-model>-musb" in compatible
+> > 3. Remove phy-names
+> > 4. Add space after comma in clock-names
+> > ---
+> >  .../devicetree/bindings/usb/mediatek,musb.txt      | 55 ++++++++++++++++++++++
+> >  1 file changed, 55 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/usb/mediatek,musb.txt
+> > 
+> > diff --git a/Documentation/devicetree/bindings/usb/mediatek,musb.txt b/Documentation/devicetree/bindings/usb/mediatek,musb.txt
+> > new file mode 100644
+> > index 0000000..7434299
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/usb/mediatek,musb.txt
+> > @@ -0,0 +1,55 @@
+> > +MediaTek musb DRD/OTG controller
+> > +-------------------------------------------
+> > +
+> > +Required properties:
+> > + - compatible      : should be one of:
+> > +                     "mediatek,mt-2701"
+> > +                     ...
+> > +                     followed by "mediatek,mtk-musb"
+> > + - reg             : specifies physical base address and size of
+> > +                     the registers
+> > + - interrupts      : interrupt used by musb controller
+> > + - interrupt-names : must be "mc"
+> > + - phys            : PHY specifier for the OTG phy
+> > + - dr_mode         : should be one of "host", "peripheral" or "otg",
+> > +                     refer to usb/generic.txt
+> > + - clocks          : a list of phandle + clock-specifier pairs, one for
+> > +                     each entry in clock-names
+> > + - clock-names     : must contain "main", "mcu", "univpll"
+> > +                     for clocks of controller
+> > +
+> > +Optional properties:
+> > + - power-domains   : a phandle to USB power domain node to control USB's
+> > +                     MTCMOS
+> > +
+> > +Required child nodes:
+> > + usb connector node as defined in bindings/connector/usb-connector.txt
+> > +Optional properties:
+> > + - id-gpios        : input GPIO for USB ID pin.
+> > + - vbus-gpios      : input GPIO for USB VBUS pin.
+> > + - vbus-supply     : reference to the VBUS regulator, needed when supports
+> > +                     dual-role mode
+> > +
+> > +Example:
+> > +
+> > +usb2: usb@11200000 {
+> > +	compatible = "mediatek,mt2701-musb",
+> > +		     "mediatek,mtk-musb";
+> > +	reg = <0 0x11200000 0 0x1000>;
+> > +	interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_LOW>;
+> > +	interrupt-names = "mc";
+> > +	phys = <&u2port2 PHY_TYPE_USB2>;
+> > +	dr_mode = "otg";
+> > +	clocks = <&pericfg CLK_PERI_USB0>,
+> > +		 <&pericfg CLK_PERI_USB0_MCU>,
+> > +		 <&pericfg CLK_PERI_USB_SLV>;
+> > +	clock-names = "main","mcu","univpll";
+> > +	power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
+> > +	connector{
+> > +		compatible = "linux,typeb-conn-gpio", "usb-b-connector";
+> 
+> linux,typeb-conn-gpio is not an accepted compatible string.
+The compatible depends on connector driver, currently under review.
+https://patchwork.kernel.org/patch/10986245
 
-Signed-off-by: Jerry-ch Chen <jerry-ch.chen@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+> > +		label = "micro-USB";
+> > +		type = "micro";
+> > +		id-gpios = <&pio 44 GPIO_ACTIVE_HIGH>;
+> > +		vbus-supply = <&usb_vbus>;
+> > +	};
+> > +};
+> > -- 
+> > 1.9.1
+> > 
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index c3a516e..7c234a0 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -432,6 +432,18 @@
- 			#clock-cells = <1>;
- 		};
- 
-+		fd: fd@1502b000 {
-+			compatible = "mediatek,mt8183-fd";
-+			mediatek,scp = <&scp>;
-+			iommus = <&iommu M4U_PORT_CAM_FDVT_RP>,
-+				 <&iommu M4U_PORT_CAM_FDVT_WR>,
-+				 <&iommu M4U_PORT_CAM_FDVT_RB>;
-+			reg = <0 0x1502b000 0 0x1000>;
-+			interrupts = <GIC_SPI 269 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&imgsys CLK_IMG_FDVT>;
-+			clock-names = "FD_CLK_IMG_FD";
-+		};
-+
- 		vdecsys: syscon@16000000 {
- 			compatible = "mediatek,mt8183-vdecsys", "syscon";
- 			reg = <0 0x16000000 0 0x1000>;
--- 
-1.9.1
+Regards,
+Min.
