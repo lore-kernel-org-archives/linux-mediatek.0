@@ -1,42 +1,24 @@
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Subject: Re: [PATCH 0/5]Add support for mt2701 JPEG ENC support
-Date: Tue, 9 Jul 2019 15:46:07 +0200
-Message-ID: <79316488-30fd-7ff3-7598-d29f85f663ab@xs4all.nl>
-References: <20190709032103.10291-1-xia.jiang@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 1/5] dt-bindings: usb: mtu3: fix typo of DMA clock name
+Date: Tue, 9 Jul 2019 08:20:40 -0600
+Message-ID: <20190709142040.GA10200@bogus>
+References: <5e06482a0be15476c7b5825f155accf98275afa8.1560246390.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190709032103.10291-1-xia.jiang@mediatek.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <5e06482a0be15476c7b5825f155accf98275afa8.1560246390.git.chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Xia Jiang <xia.jiang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rick Chang <rick.chang@mediatek.com>
-Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Marek Szyprowski <m.szyprowski@samsung.com>, Tomasz Figa <tfiga@chromium.org>, srv_heupstream@mediatek.com
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mathias Nyman <mathias.nyman@intel.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Jumin Li <jumin.li@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 7/9/19 5:20 AM, Xia Jiang wrote:
-> This patchset add support for mt2701 JPEG ENC support.
+On Wed, 12 Jun 2019 13:55:17 +0800, Chunfeng Yun wrote:
+> Fix typo of dma_ck
 > 
-> This is the compliance test result for jpeg dec and enc.
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/usb/mediatek,mtu3.txt | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> The JPEG dec log:
-> ------------------------------------------------------------
-> v4l2-compliance -d /dev/video0
-> v4l2-compliance SHA: 08fed4d0edb1492b91d9d1054c36fed95c372eaa, 32 bits
 
-Hmm, the SHA indicates that you are using an old v4l2-compliance version.
-Please get the latest code from the v4l-utils git repo.
-
-<snip>
-
-> Buffer ioctls:
->                 fail: v4l2-test-buffers.cpp(713): q.create_bufs(node, 1, &fmt) != EINVAL
-
-This should be fixed: this test tries to create a buffer of half the minimum
-size, and the driver doesn't check that it is too small.
-
-Ditto for the encoder.
-
-Regards,
-
-	Hans
+Reviewed-by: Rob Herring <robh@kernel.org>
