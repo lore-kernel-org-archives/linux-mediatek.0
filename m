@@ -1,26 +1,37 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v1 1/2] dt-bindings: mediatek: update bindings for MT8183
- systimer
-Date: Mon, 8 Jul 2019 20:33:22 -0600
-Message-ID: <20190709023322.GA5141@bogus>
-References: <1560252534-11412-1-git-send-email-dehui.sun@mediatek.com>
- <1560252534-11412-2-git-send-email-dehui.sun@mediatek.com>
+From: Biao Huang <biao.huang@mediatek.com>
+Subject: [PATCH 1/2 net-next] net: stmmac: dwmac4: mac address array boudary violation issue
+Date: Tue, 9 Jul 2019 10:36:22 +0800
+Message-ID: <20190709023623.8358-2-biao.huang@mediatek.com>
+References: <20190709023623.8358-1-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1560252534-11412-2-git-send-email-dehui.sun@mediatek.com>
+In-Reply-To: <20190709023623.8358-1-biao.huang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, erin.lo@mediatek.com, weiyi.lu@mediatek.com, dehui.sun@mediatek.com
+To: davem@davemloft.net, Jose Abreu <joabreu@synopsys.com>, andrew@lunn.ch
+Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, biao.huang@mediatek.com, jianguo.zhang@mediatek.com, boon.leong.ong@intel.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 11 Jun 2019 19:28:53 +0800, Dehui Sun wrote:
-> This commit adds mt8183 compatible node in mtk-timer binding document.
-> 
-> Signed-off-by: Dehui Sun <dehui.sun@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt | 1 +
->  1 file changed, 1 insertion(+)
-> 
+The mac address array size is GMAC_MAX_PERFECT_ADDRESSES,
+so the 'reg' should be less than it, or will affect other registers.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+---
+ drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
+index 8d9f6cda4012..776077ec1a23 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac4_core.c
+@@ -454,7 +454,7 @@ static void dwmac4_set_filter(struct mac_device_info *hw,
+ 			reg++;
+ 		}
+ 
+-		while (reg <= GMAC_MAX_PERFECT_ADDRESSES) {
++		while (reg < GMAC_MAX_PERFECT_ADDRESSES) {
+ 			writel(0, ioaddr + GMAC_ADDR_HIGH(reg));
+ 			writel(0, ioaddr + GMAC_ADDR_LOW(reg));
+ 			reg++;
+-- 
+2.18.0
