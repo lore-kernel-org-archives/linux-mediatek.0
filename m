@@ -1,52 +1,43 @@
-From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-Subject: [PATCH] sound: soc: codecs: mt6358: change return type of
- mt6358_codec_init_reg
-Date: Tue, 9 Jul 2019 23:55:43 +0530
-Message-ID: <20190709182543.GA6611@hari-Inspiron-1545>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2] dt-bindings: serial: add documentation for Rx in-band
+ wakeup support
+Date: Tue, 9 Jul 2019 14:04:13 -0600
+Message-ID: <20190709200413.GA31193@bogus>
+References: <20190619084110.136713-1-tientzu@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-Sender: linux-kernel-owner@vger.kernel.org
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@google.com>, Shunli Wang <shunli.wang@mediatek.com>, Hariprasad Kelam <hariprasad.kelam@gmail.com>, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20190619084110.136713-1-tientzu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, changqi.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Claire Chang <tientzu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-As mt6358_codec_init_reg function always returns 0 , change return type
-from int to void.
+On Wed, 19 Jun 2019 16:41:10 +0800, Claire Chang wrote:
+> To support Rx in-band wakeup, one must create an interrupt specifier with
+> edge sensitivity on Rx pin and an addtional pinctrl to reconfigure Rx pin
+> to normal GPIO in sleep state. Driver will switch to sleep mode pinctrl and
+> enable irq wake before suspend and restore to default settings when
+> resuming.
+> 
+> Signed-off-by: Claire Chang <tientzu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> ---
+> changes in v2:
+> just document 'interrupts' instead of 'interrupts-extended'
+> 
+>  .../devicetree/bindings/serial/mtk-uart.txt         | 13 +++++++++++--
+>  1 file changed, 11 insertions(+), 2 deletions(-)
+> 
 
-fixes below issue reported by coccicheck
-sound/soc/codecs/mt6358.c:2260:5-8: Unneeded variable: "ret". Return "0"
-on line 2289
+Applied, thanks.
 
-Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
----
- sound/soc/codecs/mt6358.c | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
-
-diff --git a/sound/soc/codecs/mt6358.c b/sound/soc/codecs/mt6358.c
-index 50b3fc5..c17250a 100644
---- a/sound/soc/codecs/mt6358.c
-+++ b/sound/soc/codecs/mt6358.c
-@@ -2255,10 +2255,8 @@ static struct snd_soc_dai_driver mt6358_dai_driver[] = {
- 	},
- };
- 
--static int mt6358_codec_init_reg(struct mt6358_priv *priv)
-+static void mt6358_codec_init_reg(struct mt6358_priv *priv)
- {
--	int ret = 0;
--
- 	/* Disable HeadphoneL/HeadphoneR short circuit protection */
- 	regmap_update_bits(priv->regmap, MT6358_AUDDEC_ANA_CON0,
- 			   RG_AUDHPLSCDISABLE_VAUDP15_MASK_SFT,
-@@ -2285,8 +2283,6 @@ static int mt6358_codec_init_reg(struct mt6358_priv *priv)
- 	/* set gpio */
- 	playback_gpio_reset(priv);
- 	capture_gpio_reset(priv);
--
--	return ret;
- }
- 
- static int mt6358_codec_probe(struct snd_soc_component *cmpnt)
--- 
-2.7.4
+Rob
