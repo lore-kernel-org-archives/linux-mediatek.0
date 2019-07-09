@@ -1,135 +1,52 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v3 1/2] dt-bindings: soc: add mtk svs dt-bindings
-Date: Tue, 9 Jul 2019 15:47:11 -0600
-Message-ID: <20190709214711.GA9818@bogus>
-References: <20190621084348.16834-1-roger.lu@mediatek.com>
- <20190621084348.16834-2-roger.lu@mediatek.com>
+From: Derek Basehore <dbasehore@chromium.org>
+Subject: [PATCH v6 0/4] Panel rotation patches
+Date: Tue,  9 Jul 2019 15:58:36 -0700
+Message-ID: <20190709225840.144038-1-dbasehore@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190621084348.16834-2-roger.lu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Roger Lu <roger.lu@mediatek.com>
-Cc: Kevin Hilman <khilman@kernel.org>, Nicolas Boichat <drinkcat@google.com>, Stephen Boyd <sboyd@kernel.org>, Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Nishanth Menon <nm@ti.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Thierry Reding <thierry.reding@gmail.com>, Sam Ravnborg <sam@ravnborg.org>, Jani Nikula <jani.nikula@linux.intel.com>, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Derek Basehore <dbasehore@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jun 21, 2019 at 04:43:47PM +0800, Roger Lu wrote:
-> Document the binding for enabling mtk svs on MediaTek SoC.
-> 
-> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
-> ---
->  .../devicetree/bindings/power/mtk-svs.txt     | 88 +++++++++++++++++++
->  1 file changed, 88 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/power/mtk-svs.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/power/mtk-svs.txt b/Documentation/devicetree/bindings/power/mtk-svs.txt
-> new file mode 100644
-> index 000000000000..6a71992ef162
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/power/mtk-svs.txt
-> @@ -0,0 +1,88 @@
-> +* Mediatek Smart Voltage Scaling (MTK SVS)
-> +
-> +This describes the device tree binding for the MTK SVS controller (bank)
-> +which helps provide the optimized CPU/GPU/CCI voltages. This device also
-> +needs thermal data to calculate thermal slope for accurately compensate
-> +the voltages when temperature change.
-> +
-> +Required properties:
-> +- compatible:
-> +  - "mediatek,mt8183-svs" : For MT8183 family of SoCs
-> +- reg: Address range of the MTK SVS controller.
-> +- interrupts: IRQ for the MTK SVS controller.
-> +- clocks, clock-names: Clocks needed for the svs controller. required
-> +                       clocks are:
-> +		       "main_clk": Main clock needed for register access
+This adds the plumbing for reading panel rotation from the devicetree
+and sets up adding a panel property for the panel orientation on
+Mediatek SoCs when a rotation is present.
 
-'_clk' is redundant and can be dropped.
+v6 changes:
+-added enum declaration to drm_panel.h header
 
-> +- nvmem-cells: Phandle to the calibration data provided by a nvmem device.
-> +- nvmem-cell-names: Should be "svs-calibration-data" and "calibration-data"
-> +
-> +Subnodes:
-> +- svs_cpu_little: SVS bank device node of little CPU
-> +  compatible: "mediatek,mt8183-svs-cpu-little"
-> +  operating-points-v2: OPP table hooked by SVS little CPU bank.
-> +		       SVS will optimze this OPP table voltage part.
-> +  vcpu-little-supply: PMIC buck of little CPU
-> +- svs_cpu_big: SVS bank device node of big CPU
-> +  compatible: "mediatek,mt8183-svs-cpu-big"
-> +  operating-points-v2: OPP table hooked by SVS big CPU bank.
-> +		       SVS will optimze this OPP table voltage part.
-> +  vcpu-big-supply: PMIC buck of big CPU
-> +- svs_cci: SVS bank device node of CCI
-> +  compatible: "mediatek,mt8183-svs-cci"
-> +  operating-points-v2: OPP table hooked by SVS CCI bank.
-> +		       SVS will optimze this OPP table voltage part.
-> +  vcci-supply: PMIC buck of CCI
-> +- svs_gpu: SVS bank device node of GPU
-> +  compatible: "mediatek,mt8183-svs-gpu"
-> +  operating-points-v2: OPP table hooked by SVS GPU bank.
-> +		       SVS will optimze this OPP table voltage part.
-> +  vgpu-spply: PMIC buck of GPU
+v5 changes:
+-rebased
 
-typo
+v4 changes:
+-fixed some changes made to the i915 driver
+-clarified comments on of orientation helper
 
-> +
-> +Example:
-> +
-> +	svs: svs@1100b000 {
-> +		compatible = "mediatek,mt8183-svs";
-> +		reg = <0 0x1100b000 0 0x1000>;
-> +		interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW 0>;
-> +		clocks = <&infracfg CLK_INFRA_THERM>;
-> +		clock-names = "main_clk";
-> +		nvmem-cells = <&svs_calibration>, <&thermal_calibration>;
-> +		nvmem-cell-names = "svs-calibration-data", "calibration-data";
-> +
-> +		svs_cpu_little: svs_cpu_little {
-> +			compatible = "mediatek,mt8183-svs-cpu-little";
-> +			operating-points-v2 = <&cluster0_opp>;
-> +		};
-> +
-> +		svs_cpu_big: svs_cpu_big {
-> +			compatible = "mediatek,mt8183-svs-cpu-big";
-> +			operating-points-v2 = <&cluster1_opp>;
-> +		};
-> +
-> +		svs_cci: svs_cci {
-> +			compatible = "mediatek,mt8183-svs-cci";
-> +			operating-points-v2 = <&cci_opp>;
-> +		};
-> +
-> +		svs_gpu: svs_gpu {
-> +			compatible = "mediatek,mt8183-svs-gpu";
-> +			power-domains = <&scpsys MT8183_POWER_DOMAIN_MFG_2D>;
-> +			operating-points-v2 = <&gpu_opp_table>;
-> +		};
+v3 changes:
+-changed from attach/detach callbacks to directly setting fixed panel
+ values in drm_panel_attach
+-removed update to Documentation
+-added separate function for quirked panel orientation property init
 
-This all looks like redundant data which can be found in the cpu, gpu, 
-etc. nodes. Can't you parse those nodes to get the information?
+v2 changes:
+fixed build errors in i915
 
-> +	};
-> +
-> +	&svs_cpu_little {
-> +		vcpu-little-supply = <&mt6358_vproc12_reg>;
+Derek Basehore (4):
+  drm/panel: Add helper for reading DT rotation
+  drm/panel: set display info in panel attach
+  drm/connector: Split out orientation quirk detection
+  drm/mtk: add panel orientation property
 
-Don't split examples like this. Just should one flat example.
+ drivers/gpu/drm/drm_connector.c    | 45 ++++++++++++++-----
+ drivers/gpu/drm/drm_panel.c        | 70 ++++++++++++++++++++++++++++++
+ drivers/gpu/drm/i915/intel_dp.c    |  4 +-
+ drivers/gpu/drm/i915/vlv_dsi.c     |  5 +--
+ drivers/gpu/drm/mediatek/mtk_dsi.c |  8 ++++
+ include/drm/drm_connector.h        |  2 +
+ include/drm/drm_panel.h            | 21 +++++++++
+ 7 files changed, 138 insertions(+), 17 deletions(-)
 
-> +	};
-> +
-> +	&svs_cpu_big {
-> +		vcpu-big-supply = <&mt6358_vproc11_reg>;
-> +	};
-> +
-> +	&svs_cci {
-> +		vcci-supply = <&mt6358_vproc12_reg>;
-> +	};
-> +
-> +	&svs_gpu {
-> +		vgpu-spply = <&mt6358_vgpu_reg>;
-> +	};
-> -- 
-> 2.18.0
-> 
+-- 
+2.22.0.410.gd8fdbe21b5-goog
