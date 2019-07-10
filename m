@@ -1,28 +1,48 @@
-From: Tzung-Bi Shih <tzungbi@google.com>
-Subject: Re: [PATCH] sound: soc: codecs: mt6358: change return type of mt6358_codec_init_reg
-Date: Wed, 10 Jul 2019 13:24:45 +0800
-Message-ID: <CA+Px+wVMn-wZ_aoAV2OMEg4zE7aoYG__my2EJM_PP5ghaXjoFw@mail.gmail.com>
-References: <20190709182543.GA6611@hari-Inspiron-1545>
+From: Wei Yongjun <weiyongjun1@huawei.com>
+Subject: [PATCH -next] Bluetooth: btusb: Fix error return code in
+ btusb_mtk_setup_firmware()
+Date: Wed, 10 Jul 2019 06:12:22 +0000
+Message-ID: <20190710061222.141247-1-weiyongjun1@huawei.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190709182543.GA6611@hari-Inspiron-1545>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, Shunli Wang <shunli.wang@mediatek.com>, ALSA development <alsa-devel@alsa-project.org>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sean
+ Wang <sean.wang@mediatek.com>
+Cc: linux-bluetooth@vger.kernel.org, kernel-janitors@vger.kernel.org, linux-mediatek@lists.infradead.org, Wei Yongjun <weiyongjun1@huawei.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jul 10, 2019 at 2:25 AM Hariprasad Kelam
-<hariprasad.kelam@gmail.com> wrote:
->
-> As mt6358_codec_init_reg function always returns 0 , change return type
-> from int to void.
->
-> fixes below issue reported by coccicheck
-> sound/soc/codecs/mt6358.c:2260:5-8: Unneeded variable: "ret". Return "0"
-> on line 2289
->
-> Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-Acked-by: Tzung-Bi Shih <tzungbi@google.com>
+Fix to return error code -EINVAL from the error handling
+case instead of 0, as done elsewhere in this function.
 
-Thanks for cleaning this up.
+Fixes: a1c49c434e15 ("Bluetooth: btusb: Add protocol support for MediaTek MT7668U USB devices")
+Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
+---
+ drivers/bluetooth/btusb.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 3876fee6ad13..5cf0734eb31b 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -2762,8 +2762,10 @@ static int btusb_mtk_setup_firmware(struct hci_dev *hdev, const char *fwname)
+ 	fw_size = fw->size;
+ 
+ 	/* The size of patch header is 30 bytes, should be skip */
+-	if (fw_size < 30)
++	if (fw_size < 30) {
++		err = -EINVAL;
+ 		goto err_release_fw;
++	}
+ 
+ 	fw_size -= 30;
+ 	fw_ptr += 30;
