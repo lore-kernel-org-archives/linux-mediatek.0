@@ -1,53 +1,48 @@
 From: Joe Perches <joe@perches.com>
-Subject: [PATCH 00/12] treewide: Fix GENMASK misuses
-Date: Tue,  9 Jul 2019 22:04:13 -0700
-Message-ID: <cover.1562734889.git.joe@perches.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Andrew Morton <akpm@linux-foundation.org>, Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>, Andrew Jeffery <andrew@aj.id.au>, openbmc@lists.ozlabs.org, linux-kernel@vger.kernel.org, linux-aspeed@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-wireless@vger.kernel.org, linux-media@vger.kernel.org
-Cc: linux-iio@vger.kernel.org, devel@driverdev.osuosl.org, alsa-devel@alsa-project.org, linux-mmc@vger.kernel.org, dri-devel@lists.freedesktop.org
+Subject: [PATCH 07/12] net: ethernet: mediatek: Fix misuses of GENMASK macro
+Date: Tue,  9 Jul 2019 22:04:20 -0700
+Message-ID: <1961dd832a1363b6dfdbac6cb0b1c71fa838d258.1562734889.git.joe@perches.com>
+References: <cover.1562734889.git.joe@perches.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cover.1562734889.git.joe@perches.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Andrew Morton <akpm@linux-foundation.org>, Felix Fietkau <nbd@openwrt.org>, John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Nelson Chang <nelson.chang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: "David S. Miller" <davem@davemloft.net>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-VGhlc2UgR0VOTUFTSyB1c2VzIGFyZSBpbnZlcnRlZCBhcmd1bWVudCBvcmRlciBhbmQgdGhlCmFj
-dHVhbCBtYXNrcyBwcm9kdWNlZCBhcmUgaW5jb3JyZWN0LiAgRml4IHRoZW0uCgpBZGQgY2hlY2tw
-YXRjaCB0ZXN0cyB0byBoZWxwIGF2b2lkIG1vcmUgbWlzdXNlcyB0b28uCgpKb2UgUGVyY2hlcyAo
-MTIpOgogIGNoZWNrcGF0Y2g6IEFkZCBHRU5NQVNLIHRlc3RzCiAgY2xvY2tzb3VyY2UvZHJpdmVy
-cy9ucGNtOiBGaXggbWlzdXNlIG9mIEdFTk1BU0sgbWFjcm8KICBkcm06IGFzcGVlZF9nZng6IEZp
-eCBtaXN1c2Ugb2YgR0VOTUFTSyBtYWNybwogIGlpbzogYWRjOiBtYXg5NjExOiBGaXggbWlzdXNl
-IG9mIEdFTk1BU0sgbWFjcm8KICBpcnFjaGlwL2dpYy12My1pdHM6IEZpeCBtaXN1c2Ugb2YgR0VO
-TUFTSyBtYWNybwogIG1tYzogbWVzb24tbXgtc2RpbzogRml4IG1pc3VzZSBvZiBHRU5NQVNLIG1h
-Y3JvCiAgbmV0OiBldGhlcm5ldDogbWVkaWF0ZWs6IEZpeCBtaXN1c2VzIG9mIEdFTk1BU0sgbWFj
-cm8KICBuZXQ6IHN0bW1hYzogRml4IG1pc3VzZXMgb2YgR0VOTUFTSyBtYWNybwogIHJ0dzg4OiBG
-aXggbWlzdXNlIG9mIEdFTk1BU0sgbWFjcm8KICBwaHk6IGFtbG9naWM6IEcxMkE6IEZpeCBtaXN1
-c2Ugb2YgR0VOTUFTSyBtYWNybwogIHN0YWdpbmc6IG1lZGlhOiBjZWRydXM6IEZpeCBtaXN1c2Ug
-b2YgR0VOTUFTSyBtYWNybwogIEFTb0M6IHdjZDkzMzU6IEZpeCBtaXN1c2Ugb2YgR0VOTUFTSyBt
-YWNybwoKIGRyaXZlcnMvY2xvY2tzb3VyY2UvdGltZXItbnBjbTd4eC5jICAgICAgICAgICAgICAg
-fCAgMiArLQogZHJpdmVycy9ncHUvZHJtL2FzcGVlZC9hc3BlZWRfZ2Z4LmggICAgICAgICAgICAg
-ICB8ICAyICstCiBkcml2ZXJzL2lpby9hZGMvbWF4OTYxMS5jICAgICAgICAgICAgICAgICAgICAg
-ICAgIHwgIDIgKy0KIGRyaXZlcnMvaXJxY2hpcC9pcnEtZ2ljLXYzLWl0cy5jICAgICAgICAgICAg
-ICAgICAgfCAgMiArLQogZHJpdmVycy9tbWMvaG9zdC9tZXNvbi1teC1zZGlvLmMgICAgICAgICAg
-ICAgICAgICB8ICAyICstCiBkcml2ZXJzL25ldC9ldGhlcm5ldC9tZWRpYXRlay9tdGtfZXRoX3Nv
-Yy5oICAgICAgIHwgIDIgKy0KIGRyaXZlcnMvbmV0L2V0aGVybmV0L21lZGlhdGVrL210a19zZ21p
-aS5jICAgICAgICAgfCAgMiArLQogZHJpdmVycy9uZXQvZXRoZXJuZXQvc3RtaWNyby9zdG1tYWMv
-ZGVzY3MuaCAgICAgICB8ICAyICstCiBkcml2ZXJzL25ldC9ldGhlcm5ldC9zdG1pY3JvL3N0bW1h
-Yy9kd21hYy1zdW44aS5jIHwgIDQgKystLQogZHJpdmVycy9uZXQvd2lyZWxlc3MvcmVhbHRlay9y
-dHc4OC9ydHc4ODIyYi5jICAgICB8ICAyICstCiBkcml2ZXJzL3BoeS9hbWxvZ2ljL3BoeS1tZXNv
-bi1nMTJhLXVzYjIuYyAgICAgICAgIHwgIDIgKy0KIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9zdW54
-aS9jZWRydXMvY2VkcnVzX3JlZ3MuaCAgfCAgMiArLQogc2NyaXB0cy9jaGVja3BhdGNoLnBsICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICB8IDE1ICsrKysrKysrKysrKysrKwogc291bmQvc29j
-L2NvZGVjcy93Y2QtY2xzaC12Mi5jICAgICAgICAgICAgICAgICAgICB8ICAyICstCiAxNCBmaWxl
-cyBjaGFuZ2VkLCAyOSBpbnNlcnRpb25zKCspLCAxNCBkZWxldGlvbnMoLSkKCi0tIAoyLjE1LjAK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZl
-bCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xp
-c3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+Arguments are supposed to be ordered high then low.
+
+Signed-off-by: Joe Perches <joe@perches.com>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 2 +-
+ drivers/net/ethernet/mediatek/mtk_sgmii.c   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 876ce6798709..221012ecb845 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -712,7 +712,7 @@ struct mtk_soc_data {
+ #define MTK_MAX_DEVS			2
+ 
+ #define MTK_SGMII_PHYSPEED_AN          BIT(31)
+-#define MTK_SGMII_PHYSPEED_MASK        GENMASK(0, 2)
++#define MTK_SGMII_PHYSPEED_MASK        GENMASK(2, 0)
+ #define MTK_SGMII_PHYSPEED_1000        BIT(0)
+ #define MTK_SGMII_PHYSPEED_2500        BIT(1)
+ #define MTK_HAS_FLAGS(flags, _x)       (((flags) & (_x)) == (_x))
+diff --git a/drivers/net/ethernet/mediatek/mtk_sgmii.c b/drivers/net/ethernet/mediatek/mtk_sgmii.c
+index 136f90ce5a65..ff509d42d818 100644
+--- a/drivers/net/ethernet/mediatek/mtk_sgmii.c
++++ b/drivers/net/ethernet/mediatek/mtk_sgmii.c
+@@ -82,7 +82,7 @@ int mtk_sgmii_setup_mode_force(struct mtk_sgmii *ss, int id)
+ 		return -EINVAL;
+ 
+ 	regmap_read(ss->regmap[id], ss->ana_rgc3, &val);
+-	val &= ~GENMASK(2, 3);
++	val &= ~GENMASK(3, 2);
+ 	mode = ss->flags[id] & MTK_SGMII_PHYSPEED_MASK;
+ 	val |= (mode == MTK_SGMII_PHYSPEED_1000) ? 0 : BIT(2);
+ 	regmap_write(ss->regmap[id], ss->ana_rgc3, val);
+-- 
+2.15.0
