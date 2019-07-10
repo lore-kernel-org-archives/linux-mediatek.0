@@ -1,48 +1,117 @@
-From: Joe Perches <joe@perches.com>
-Subject: [PATCH 07/12] net: ethernet: mediatek: Fix misuses of GENMASK macro
-Date: Tue,  9 Jul 2019 22:04:20 -0700
-Message-ID: <1961dd832a1363b6dfdbac6cb0b1c71fa838d258.1562734889.git.joe@perches.com>
-References: <cover.1562734889.git.joe@perches.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1562734889.git.joe@perches.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andrew Morton <akpm@linux-foundation.org>, Felix Fietkau <nbd@openwrt.org>, John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Nelson Chang <nelson.chang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: "David S. Miller" <davem@davemloft.net>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Stanley Chu <stanley.chu@mediatek.com>
+Subject: [PATCH v2 2/4] scsi: ufs: Add fatal and auto-hibern8 error history
+Date: Wed, 10 Jul 2019 13:20:15 +0800
+Message-ID: <1562736017-29461-3-git-send-email-stanley.chu@mediatek.com>
+References: <1562736017-29461-1-git-send-email-stanley.chu@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1562736017-29461-1-git-send-email-stanley.chu@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com, pedrom.sousa@synopsys.com
+Cc: sthumma@codeaurora.org, marc.w.gonzalez@free.fr, andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, peter.wang@mediatek.com, evgreen@chromium.org, subhashj@codeaurora.org, linux-mediatek@lists.infradead.org, ygardi@codeaurora.org, matthias.bgg@gmail.com, Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Arguments are supposed to be ordered high then low.
+Provide more information of fatal errros and auto-hibern8 errors
+to improve debugging by extending extend existed UFS error history
+framework.
 
-Signed-off-by: Joe Perches <joe@perches.com>
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+Reviewed-by: Avri Altman <avri.altman@wdc.com>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.h | 2 +-
- drivers/net/ethernet/mediatek/mtk_sgmii.c   | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ drivers/scsi/ufs/ufshcd.c | 11 ++++++++++-
+ drivers/scsi/ufs/ufshcd.h | 10 +++++++++-
+ 2 files changed, 19 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 876ce6798709..221012ecb845 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -712,7 +712,7 @@ struct mtk_soc_data {
- #define MTK_MAX_DEVS			2
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index eb062aba0d21..b8b874311509 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -429,6 +429,9 @@ static void ufshcd_print_host_regs(struct ufs_hba *hba)
+ 	ufshcd_print_err_hist(hba, &hba->ufs_stats.nl_err, "nl_err");
+ 	ufshcd_print_err_hist(hba, &hba->ufs_stats.tl_err, "tl_err");
+ 	ufshcd_print_err_hist(hba, &hba->ufs_stats.dme_err, "dme_err");
++	ufshcd_print_err_hist(hba, &hba->ufs_stats.fatal_err, "fatal_err");
++	ufshcd_print_err_hist(hba, &hba->ufs_stats.auto_hibern8_err,
++			      "auto_hibern8_err");
  
- #define MTK_SGMII_PHYSPEED_AN          BIT(31)
--#define MTK_SGMII_PHYSPEED_MASK        GENMASK(0, 2)
-+#define MTK_SGMII_PHYSPEED_MASK        GENMASK(2, 0)
- #define MTK_SGMII_PHYSPEED_1000        BIT(0)
- #define MTK_SGMII_PHYSPEED_2500        BIT(1)
- #define MTK_HAS_FLAGS(flags, _x)       (((flags) & (_x)) == (_x))
-diff --git a/drivers/net/ethernet/mediatek/mtk_sgmii.c b/drivers/net/ethernet/mediatek/mtk_sgmii.c
-index 136f90ce5a65..ff509d42d818 100644
---- a/drivers/net/ethernet/mediatek/mtk_sgmii.c
-+++ b/drivers/net/ethernet/mediatek/mtk_sgmii.c
-@@ -82,7 +82,7 @@ int mtk_sgmii_setup_mode_force(struct mtk_sgmii *ss, int id)
- 		return -EINVAL;
+ 	ufshcd_print_clk_freqs(hba);
  
- 	regmap_read(ss->regmap[id], ss->ana_rgc3, &val);
--	val &= ~GENMASK(2, 3);
-+	val &= ~GENMASK(3, 2);
- 	mode = ss->flags[id] & MTK_SGMII_PHYSPEED_MASK;
- 	val |= (mode == MTK_SGMII_PHYSPEED_1000) ? 0 : BIT(2);
- 	regmap_write(ss->regmap[id], ss->ana_rgc3, val);
+@@ -5440,8 +5443,10 @@ static void ufshcd_check_errors(struct ufs_hba *hba)
+ {
+ 	bool queue_eh_work = false;
+ 
+-	if (hba->errors & INT_FATAL_ERRORS)
++	if (hba->errors & INT_FATAL_ERRORS) {
++		ufshcd_update_reg_hist(&hba->ufs_stats.fatal_err, hba->errors);
+ 		queue_eh_work = true;
++	}
+ 
+ 	if (hba->errors & UIC_ERROR) {
+ 		hba->uic_error = 0;
+@@ -5456,6 +5461,8 @@ static void ufshcd_check_errors(struct ufs_hba *hba)
+ 			__func__, (hba->errors & UIC_HIBERNATE_ENTER) ?
+ 			"Enter" : "Exit",
+ 			hba->errors, ufshcd_get_upmcrs(hba));
++		ufshcd_update_reg_hist(&hba->ufs_stats.auto_hibern8_err,
++				       hba->errors);
+ 		queue_eh_work = true;
+ 	}
+ 
+@@ -6693,6 +6700,8 @@ static void ufshcd_clear_dbg_ufs_stats(struct ufs_hba *hba)
+ 	memset(&hba->ufs_stats.nl_err, 0, err_reg_hist_size);
+ 	memset(&hba->ufs_stats.tl_err, 0, err_reg_hist_size);
+ 	memset(&hba->ufs_stats.dme_err, 0, err_reg_hist_size);
++	memset(&hba->ufs_stats.fatal_err, 0, err_reg_hist_size);
++	memset(&hba->ufs_stats.auto_hibern8_err, 0, err_reg_hist_size);
+ 
+ 	hba->req_abort_count = 0;
+ }
+diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
+index dcc61f857c38..c6ec5c749ceb 100644
+--- a/drivers/scsi/ufs/ufshcd.h
++++ b/drivers/scsi/ufs/ufshcd.h
+@@ -414,7 +414,7 @@ struct ufs_init_prefetch {
+ 
+ #define UFS_ERR_REG_HIST_LENGTH 8
+ /**
+- * struct ufs_err_reg_hist - keeps history of uic errors
++ * struct ufs_err_reg_hist - keeps history of errors
+  * @pos: index to indicate cyclic buffer position
+  * @reg: cyclic buffer for registers value
+  * @tstamp: cyclic buffer for time stamp
+@@ -436,15 +436,23 @@ struct ufs_err_reg_hist {
+  * @nl_err: tracks nl-uic errors
+  * @tl_err: tracks tl-uic errors
+  * @dme_err: tracks dme errors
++ * @fatal_err: tracks fatal errors
++ * @auto_hibern8_err: tracks auto-hibernate errors
+  */
+ struct ufs_stats {
+ 	u32 hibern8_exit_cnt;
+ 	ktime_t last_hibern8_exit_tstamp;
++
++	/* uic specific errors */
+ 	struct ufs_err_reg_hist pa_err;
+ 	struct ufs_err_reg_hist dl_err;
+ 	struct ufs_err_reg_hist nl_err;
+ 	struct ufs_err_reg_hist tl_err;
+ 	struct ufs_err_reg_hist dme_err;
++
++	/* fatal errors */
++	struct ufs_err_reg_hist fatal_err;
++	struct ufs_err_reg_hist auto_hibern8_err;
+ };
+ 
+ /**
 -- 
-2.15.0
+2.18.0
