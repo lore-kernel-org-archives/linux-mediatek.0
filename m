@@ -1,59 +1,57 @@
-From: Joe Perches <joe@perches.com>
-Subject: Re: [PATCH 00/12] treewide: Fix GENMASK misuses
-Date: Wed, 10 Jul 2019 08:45:53 -0700
-Message-ID: <b9c3b83c9be50286062ae8cefd5d38e2baa0fb22.camel@perches.com>
-References: <cover.1562734889.git.joe@perches.com>
-         <5fa1fa6998332642c49e2d5209193ffe2713f333.camel@sipsolutions.net>
-         <20190710094337.wf2lftxzfjq2etro@shell.armlinux.org.uk>
+From: Sam Ravnborg <sam@ravnborg.org>
+Subject: Re: [PATCH v7 0/4] Panel rotation patches
+Date: Wed, 10 Jul 2019 17:49:16 +0200
+Message-ID: <20190710154916.GA13810@ravnborg.org>
+References: <20190710021659.177950-1-dbasehore@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20190710094337.wf2lftxzfjq2etro@shell.armlinux.org.uk>
-Sender: netdev-owner@vger.kernel.org
-To: Russell King - ARM Linux admin <linux@armlinux.org.uk>, Johannes Berg <johannes@sipsolutions.net>
-Cc: Andrew Morton <akpm@linux-foundation.org>, Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>, Andrew Jeffery <andrew@aj.id.au>, openbmc@lists.ozlabs.org, linux-kernel@vger.kernel.org, linux-aspeed@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-wireless@vger.kernel.org, linux-media@vger.kernel.org, linux-iio@vger.kernel.org, devel@driverdev.osuosl.org, alsa-devel@alsa-project.org, linux-mmc@vger.kernel.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20190710021659.177950-1-dbasehore@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Derek Basehore <dbasehore@chromium.org>
+Cc: linux-kernel@vger.kernel.org, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Thierry Reding <thierry.reding@gmail.com>, Jani Nikula <jani.nikula@linux.intel.com>, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2019-07-10 at 10:43 +0100, Russell King - ARM Linux admin wrote:
-> On Wed, Jul 10, 2019 at 11:17:31AM +0200, Johannes Berg wrote:
-> > On Tue, 2019-07-09 at 22:04 -0700, Joe Perches wrote:
-> > > These GENMASK uses are inverted argument order and the
-> > > actual masks produced are incorrect.  Fix them.
-> > > 
-> > > Add checkpatch tests to help avoid more misuses too.
-> > > 
-> > > Joe Perches (12):
-> > >   checkpatch: Add GENMASK tests
-> > 
-> > IMHO this doesn't make a lot of sense as a checkpatch test - just throw
-> > in a BUILD_BUG_ON()?
+Hi Derek.
 
-I tried that.
-
-It'd can't be done as it's used in declarations
-and included in asm files and it uses the UL()
-macro.
-
-I also tried just making it do the right thing
-whatever the argument order.
-
-Oh well.
-
-> My personal take on this is that GENMASK() is really not useful, it's
-> just pure obfuscation and leads to exactly these kinds of mistakes.
+On Tue, Jul 09, 2019 at 07:16:55PM -0700, Derek Basehore wrote:
+> This adds the plumbing for reading panel rotation from the devicetree
+> and sets up adding a panel property for the panel orientation on
+> Mediatek SoCs when a rotation is present.
 > 
-> Yes, I fully understand the argument that you can just specify the
-> start and end bits, and it _in theory_ makes the code more readable.
+> v7 changes:
+> -forgot to add static inline
 > 
-> However, the problem is when writing code.  GENMASK(a, b).  Is a the
-> starting bit or ending bit?  Is b the number of bits?  It's confusing
-> and causes mistakes resulting in incorrect code.  A BUILD_BUG_ON()
-> can catch some of the cases, but not all of them.
+> v6 changes:
+> -added enum declaration to drm_panel.h header
+> 
+> v5 changes:
+> -rebased
+> 
+> v4 changes:
+> -fixed some changes made to the i915 driver
+> -clarified comments on of orientation helper
+> 
+> v3 changes:
+> -changed from attach/detach callbacks to directly setting fixed panel
+>  values in drm_panel_attach
+> -removed update to Documentation
+> -added separate function for quirked panel orientation property init
+> 
+> v2 changes:
+> fixed build errors in i915
+> 
+> Derek Basehore (4):
+>   drm/panel: Add helper for reading DT rotation
+>   drm/panel: set display info in panel attach
+>   drm/connector: Split out orientation quirk detection
+>   drm/mtk: add panel orientation property
 
-It's a horrid little macro and I agree with Russell.
+First two patches are:
+Reviewed-by: Sam Ravnborg <sam@ravnborg.org>
 
-I also think if it existed at all it should have been
-GENMASK(low, high) not GENMASK(high, low).
+Last two patches are:
+Acked-by: Sam Ravnborg <sam@ravnborg.org>
 
-I
+	Sam
