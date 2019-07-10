@@ -1,99 +1,65 @@
-From: Stanley Chu <stanley.chu@mediatek.com>
-Subject: RE: [PATCH v2 4/4] scsi: ufs: Add history of fatal events
-Date: Wed, 10 Jul 2019 17:28:56 +0800
-Message-ID: <1562750936.7235.3.camel@mtkswgap22>
-References: <1562736017-29461-1-git-send-email-stanley.chu@mediatek.com>
- <1562736017-29461-5-git-send-email-stanley.chu@mediatek.com>
- <SN6PR04MB4925D29D16757A57B25DE369FCF00@SN6PR04MB4925.namprd04.prod.outlook.com>
+From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+Subject: Re: [PATCH 00/12] treewide: Fix GENMASK misuses
+Date: Wed, 10 Jul 2019 10:43:37 +0100
+Message-ID: <20190710094337.wf2lftxzfjq2etro@shell.armlinux.org.uk>
+References: <cover.1562734889.git.joe@perches.com>
+ <5fa1fa6998332642c49e2d5209193ffe2713f333.camel@sipsolutions.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <SN6PR04MB4925D29D16757A57B25DE369FCF00@SN6PR04MB4925.namprd04.prod.outlook.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Avri Altman <Avri.Altman@wdc.com>
-Cc: "sthumma@codeaurora.org" <sthumma@codeaurora.org>, "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com" <martin.petersen@oracle.com>, "marc.w.gonzalez@free.fr" <marc.w.gonzalez@free.fr>, "andy.teng@mediatek.com" <andy.teng@mediatek.com>, "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>, "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>, "peter.wang@mediatek.com" <peter.wang@mediatek.com>, "evgreen@chromium.org" <evgreen@chromium.org>, "subhashj@codeaurora.org" <subhashj@codeaurora.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "ygardi@codeaurora.org" <ygardi@codeaurora.org>, "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "pedrom.sousa@synopsys.com" <pedrom.sousa@synopsys.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <5fa1fa6998332642c49e2d5209193ffe2713f333.camel@sipsolutions.net>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Johannes Berg <johannes@sipsolutions.net>
+Cc: devel@driverdev.osuosl.org, linux-mmc@vger.kernel.org, alsa-devel@alsa-project.org, Benjamin Fair <benjaminfair@google.com>, linux-aspeed@lists.ozlabs.org, Andrew Jeffery <andrew@aj.id.au>, Patrick Venture <venture@google.com>, openbmc@lists.ozlabs.org, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, linux-iio@vger.kernel.org, Nancy Yuen <yuenn@google.com>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, netdev@vger.kernel.org, Joe Perches <joe@perches.com>, linux-amlogic@lists.infradead.org, Andrew Morton <akpm@linux-foundation.org>, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Avri,
-
-On Wed, 2019-07-10 at 08:04 +0000, Avri Altman wrote:
-> Hi Stanley,
-> 
-> > +					       (u32)ret);
-> >  			goto out;
-> > +		}
-> >  	} while (ret && retries--);
-> > 
-> >  	if (ret)
-> Here also link startup fails...
-
-Thanks! Will track this place as well in next version.
-
-> >   * ufshcd_update_uic_error - check and set fatal UIC error flags.
-> >   * @hba: per-adapter instance
-> > @@ -6043,6 +6056,7 @@ static int ufshcd_abort(struct scsi_cmnd *cmd)
-> >  	 */
-> >  	scsi_print_command(hba->lrb[tag].cmd);
-> >  	if (!hba->req_abort_count) {
-> > +		ufshcd_update_reg_hist(&hba->ufs_stats.task_abort_err,
-> > 0);
-> Here you are collecting abort events statistics, not abort errors.
-> If this is what you meant, then it's not task_abort_err, but task_abort.
-> And if indeed you are tracking task aborts, maybe add lun resets as well?
-
-Good suggestion! I would add history of lun reset and host reset as well
-in next version.
-
-> > diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-> > index c6ec5c749ceb..f9f109da7f18 100644
-> > --- a/drivers/scsi/ufs/ufshcd.h
-> > +++ b/drivers/scsi/ufs/ufshcd.h
-> > @@ -438,6 +438,10 @@ struct ufs_err_reg_hist {
-> >   * @dme_err: tracks dme errors
-> >   * @fatal_err: tracks fatal errors
-> >   * @auto_hibern8_err: tracks auto-hibernate errors
-> > + * @tsk_abort_err: tracks task abort events
-> > + * @linkup_err: tracks link-startup fail events
-> > + * @suspend_err: tracks suspend fail events
-> > + * @resume_err: tracks resume fail events
-> >   */
-> >  struct ufs_stats {
-> >  	u32 hibern8_exit_cnt;
-> > @@ -453,6 +457,12 @@ struct ufs_stats {
-> >  	/* fatal errors */
-> >  	struct ufs_err_reg_hist fatal_err;
-> >  	struct ufs_err_reg_hist auto_hibern8_err;
-> > +
-> > +	/* fatal events */
-> Maybe move here fatal_err as well?
-
-OK! these could be classified as fatal errors as well.
-Will fix them in next version.
-
-> 
-> > +	struct ufs_err_reg_hist task_abort_err;
-> > +	struct ufs_err_reg_hist link_startup_err;
-> > +	struct ufs_err_reg_hist suspend_err;
-> > +	struct ufs_err_reg_hist resume_err;
-> >  };
-> > 
-> >  /**
-> > --
-> > 2.18.0
-> 
-> 
-> Thanks,
-> Avri
-> 
-
-Thanks,
-Stanley
+T24gV2VkLCBKdWwgMTAsIDIwMTkgYXQgMTE6MTc6MzFBTSArMDIwMCwgSm9oYW5uZXMgQmVyZyB3
+cm90ZToKPiBPbiBUdWUsIDIwMTktMDctMDkgYXQgMjI6MDQgLTA3MDAsIEpvZSBQZXJjaGVzIHdy
+b3RlOgo+ID4gVGhlc2UgR0VOTUFTSyB1c2VzIGFyZSBpbnZlcnRlZCBhcmd1bWVudCBvcmRlciBh
+bmQgdGhlCj4gPiBhY3R1YWwgbWFza3MgcHJvZHVjZWQgYXJlIGluY29ycmVjdC4gIEZpeCB0aGVt
+Lgo+ID4gCj4gPiBBZGQgY2hlY2twYXRjaCB0ZXN0cyB0byBoZWxwIGF2b2lkIG1vcmUgbWlzdXNl
+cyB0b28uCj4gPiAKPiA+IEpvZSBQZXJjaGVzICgxMik6Cj4gPiAgIGNoZWNrcGF0Y2g6IEFkZCBH
+RU5NQVNLIHRlc3RzCj4gCj4gSU1ITyB0aGlzIGRvZXNuJ3QgbWFrZSBhIGxvdCBvZiBzZW5zZSBh
+cyBhIGNoZWNrcGF0Y2ggdGVzdCAtIGp1c3QgdGhyb3cKPiBpbiBhIEJVSUxEX0JVR19PTigpPwoK
+TXkgcGVyc29uYWwgdGFrZSBvbiB0aGlzIGlzIHRoYXQgR0VOTUFTSygpIGlzIHJlYWxseSBub3Qg
+dXNlZnVsLCBpdCdzCmp1c3QgcHVyZSBvYmZ1c2NhdGlvbiBhbmQgbGVhZHMgdG8gZXhhY3RseSB0
+aGVzZSBraW5kcyBvZiBtaXN0YWtlcy4KClllcywgSSBmdWxseSB1bmRlcnN0YW5kIHRoZSBhcmd1
+bWVudCB0aGF0IHlvdSBjYW4ganVzdCBzcGVjaWZ5IHRoZQpzdGFydCBhbmQgZW5kIGJpdHMsIGFu
+ZCBpdCBfaW4gdGhlb3J5XyBtYWtlcyB0aGUgY29kZSBtb3JlIHJlYWRhYmxlLgoKSG93ZXZlciwg
+dGhlIHByb2JsZW0gaXMgd2hlbiB3cml0aW5nIGNvZGUuICBHRU5NQVNLKGEsIGIpLiAgSXMgYSB0
+aGUKc3RhcnRpbmcgYml0IG9yIGVuZGluZyBiaXQ/ICBJcyBiIHRoZSBudW1iZXIgb2YgYml0cz8g
+IEl0J3MgY29uZnVzaW5nCmFuZCBjYXVzZXMgbWlzdGFrZXMgcmVzdWx0aW5nIGluIGluY29ycmVj
+dCBjb2RlLiAgQSBCVUlMRF9CVUdfT04oKQpjYW4gY2F0Y2ggc29tZSBvZiB0aGUgY2FzZXMsIGJ1
+dCBub3QgYWxsIG9mIHRoZW0uCgpGb3IgZXhhbXBsZToKCglHRU5NQVNLKDYsIDIpCgp3b3VsZCBz
+YXRpc2lmeSB0aGUgcmVxdWlyZW1lbnQgdGhhdCBhID4gYiwgc28gYSBCVUlMRF9CVUdfT04oKSB3
+aWxsCm5vdCB0cmlnZ2VyLCBidXQgd2FzIHRoZSBhdXRob3IgbWVhbmluZyAweDNjIG9yIDB4YzA/
+CgpQZXJzb25hbGx5LCBJJ3ZlIGRlY2lkZWQgSSBhbSBfbm90XyBnb2luZyB0byB1c2UgR0VOTUFT
+SygpIGluIG15IGNvZGUKYmVjYXVzZSBJIHN0cnVnZ2xlIHRvIGdldCB0aGUgbWFjcm8gYXJndW1l
+bnRzIGNvcnJlY3QgLSBJJ20gX211Y2hfCmhhcHBpZXIsIGFuZCBpdCBpcyB3YXkgbW9yZSByZWxp
+YWJsZSBmb3IgbWUgdG8gd3JpdGUgdGhlIG1hc2sgaW4gaGV4Cm5vdGF0aW9uLgoKSSB0aGluayB0
+aGlzIGlzIHdoZXJlIHVzZSBvZiBhIHRlcm5hcnkgb3BlcmF0b3Igd291bGQgY29tZSBpbiB1c2Uu
+ICBUaGUKbm9ybWFsIHdheSBvZiB3cml0aW5nIGEgbnVtYmVyIG9mIGJpdHMgdGVuZHMgdG8gYmUg
+ImE6YiIsIHNvIGlmIEdFTk1BU0sKdG9vayBzb21ldGhpbmcgbGlrZSBHRU5NQVNLKDY6MiksIHRo
+ZW4gSSdkIGhhdmUgbGVzcyBpc3N1ZSB3aXRoIGl0LApiZWNhdXNlIGl0J3MgYXJndW1lbnQgaXMg
+dGhlbiBpbiBhIGZhbWlsaWFyIG5vdGF0aW9uLgoKWWVzLCBJJ20gc3VyZSB0aGF0IHNvbWVvbmUg
+d2lsbCBwb2ludCBvdXQgdGhhdCB0aGUgR0VOTUFTSyBhcmd1bWVudHMKYXJlIGp1c3QgaW4gdGhl
+IHNhbWUgb3JkZXIsIGJ1dCB0aGF0IGRvZXNuJ3QgcHJldmVudCBfbWVfIGZyZXF1ZW50bHkKZ2V0
+dGluZyBpdCB3cm9uZyAtIGFuZCB0aGF0J3MgdGhlIHBvaW50LiAgVGhlIG1hY3JvIHNlZW1zIHRv
+IG1lIHRvCmNhdXNlIG1vcmUgcHJvYmxlbXMgdGhhbiBpdCBzb2x2ZXMuCgotLSAKUk1LJ3MgUGF0
+Y2ggc3lzdGVtOiBodHRwczovL3d3dy5hcm1saW51eC5vcmcudWsvZGV2ZWxvcGVyL3BhdGNoZXMv
+CkZUVEMgYnJvYWRiYW5kIGZvciAwLjhtaWxlIGxpbmUgaW4gc3VidXJiaWE6IHN5bmMgYXQgMTIu
+MU1icHMgZG93biA2MjJrYnBzIHVwCkFjY29yZGluZyB0byBzcGVlZHRlc3QubmV0OiAxMS45TWJw
+cyBkb3duIDUwMGticHMgdXAKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
+LWRldmVs
