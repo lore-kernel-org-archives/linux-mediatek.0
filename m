@@ -1,51 +1,76 @@
-From: <miles.chen@mediatek.com>
-Subject: [PATCH] kernel/dma: export dma_alloc_from_contiguous to modules
-Date: Thu, 11 Jul 2019 13:33:43 +0800
-Message-ID: <20190711053343.28873-1-miles.chen@mediatek.com>
+From: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2, 1/3] dt-bindings: soc: Add MT8183 emi dt-bindings
+Date: Thu, 11 Jul 2019 14:37:13 +0800
+Message-ID: <1562827033.22938.0.camel@mhfsdcap03>
+References: <1558670066-22484-1-git-send-email-xixi.chen@mediatek.com>
+ <1558670066-22484-2-git-send-email-xixi.chen@mediatek.com>
+ <668e6ccb-709b-a93a-7113-a22362048972@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Christoph Hellwig <hch@lst.de>, Marek Szyprowski <m.szyprowski@samsung.com>, Robin Murphy <robin.murphy@arm.com>
-Cc: linux-kernel@vger.kernel.org, iommu@lists.linux-foundation.org, wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, Miles Chen <miles.chen@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <668e6ccb-709b-a93a-7113-a22362048972-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Miles Chen <miles.chen@mediatek.com>
 
-This change exports dma_alloc_from_contiguous and
-dma_release_from_contiguous to modules.
-
-Currently, we can add a reserve a memory node in dts files, make
-it a CMA memory by setting compatible = "shared-dma-pool",
-and setup the dev->cma_area by using of_reserved_mem_device_init_by_idx().
-
-Export dma_alloc_from_contiguous and dma_release_from_contiguous, so we
-can allocate/free from/to dev->cma_area in kernel modules.
-
-Signed-off-by: Miles Chen <miles.chen@mediatek.com>
----
- kernel/dma/contiguous.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/kernel/dma/contiguous.c b/kernel/dma/contiguous.c
-index b2a87905846d..d5920bdedc77 100644
---- a/kernel/dma/contiguous.c
-+++ b/kernel/dma/contiguous.c
-@@ -197,6 +197,7 @@ struct page *dma_alloc_from_contiguous(struct device *dev, size_t count,
- 
- 	return cma_alloc(dev_get_cma_area(dev), count, align, no_warn);
- }
-+EXPORT_SYMBOL_GPL(dma_alloc_from_contiguous);
- 
- /**
-  * dma_release_from_contiguous() - release allocated pages
-@@ -213,6 +214,7 @@ bool dma_release_from_contiguous(struct device *dev, struct page *pages,
- {
- 	return cma_release(dev_get_cma_area(dev), pages, count);
- }
-+EXPORT_SYMBOL_GPL(dma_release_from_contiguous);
- 
- /*
-  * Support for reserved memory regions defined in device tree
--- 
-2.18.0
+On Tue, 2019-06-18 at 23:32 +0200, Matthias Brugger wrote:
+> 
+> On 24/05/2019 05:54, Xi Chen wrote:
+> > Add emi dt-bindings of MT8183 in binding document.
+> > 
+> > Signed-off-by: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  .../bindings/memory-controllers/mediatek,emi.txt      | 19 +++++++++++++++++++
+> >  1 file changed, 19 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
+> > 
+> > diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt b/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
+> > new file mode 100644
+> > index 0000000..a19e3b3
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,emi.txt
+> > @@ -0,0 +1,19 @@
+> > +EMI (External Memory Interface)
+> > +
+> > +Required properties:
+> > +- compatible : must be one of :
+> > +	"mediatek,mt8183-emi"
+> > +- reg : the register and size of the EMI block.
+> 
+> Please name the registers explicitly.
+	the "reg" is emi reg base.
+> 
+> > +- interrupts : includes MPU, CGM, ELM.
+> > +
+> > +Example:
+> > +	emi@10219000 {
+> > +	compatible = "mediatek,mt8183-emi";
+> 
+> Please do the indention right.
+	Yes, I do the indention right.
+> 
+> > +	reg = <0 0x10219000 0 0x1000>, /* CEN EMI */
+> > +		  <0 0x10226000 0 0x1000>, /* EMI MPU */
+> > +		  <0 0x1022d000 0 0x1000>, /* CHA EMI */
+> > +		  <0 0x10235000 0 0x1000>; /* CHB EMI */
+> 
+> This looks quite spread out over the IO space. Is this really one HW block or
+> did you add various blocks into one driver?
+	Yes, you are right. I removed the unused reg addr and interrupts.
+> 
+> > +	interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_LOW>, /* MPU */
+> > +			 <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>, /* CGM */
+> > +			 <GIC_SPI 155 IRQ_TYPE_LEVEL_HIGH>; /* ELM */
+> > +};
+> > 
