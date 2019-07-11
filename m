@@ -1,67 +1,49 @@
-From: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2, 2/3] arm64: dts: mt8183: add emi node
-Date: Thu, 11 Jul 2019 14:38:07 +0800
-Message-ID: <1562827087.22938.1.camel@mhfsdcap03>
-References: <1558670066-22484-1-git-send-email-xixi.chen@mediatek.com>
- <1558670066-22484-3-git-send-email-xixi.chen@mediatek.com>
- <768b95c9-b0d4-844e-906d-0d8d3bb4fe65@gmail.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v7 4/4] drm/mtk: add panel orientation property
+Date: Thu, 11 Jul 2019 14:41:58 +0800
+Message-ID: <1562827318.5818.0.camel@mtksdaap41>
+References: <20190710021659.177950-1-dbasehore@chromium.org>
+ <20190710021659.177950-5-dbasehore@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <768b95c9-b0d4-844e-906d-0d8d3bb4fe65-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190710021659.177950-5-dbasehore@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Derek Basehore <dbasehore@chromium.org>
+Cc: Maxime Ripard <maxime.ripard@bootlin.com>, Sam Ravnborg <sam@ravnborg.org>, intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org, David Airlie <airlied@linux.ie>, Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Rodrigo Vivi <rodrigo.vivi@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-06-18 at 23:32 +0200, Matthias Brugger wrote:
-> 
-> On 24/05/2019 05:54, Xi Chen wrote:
-> > Add emi dts node.
-> > 
-> > Signed-off-by: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 11 +++++++++++
-> >  1 file changed, 11 insertions(+)
-> > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > index 75c4881..2a176e9 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > @@ -269,6 +269,17 @@
-> >  			clock-names = "spi", "wrap";
-> >  		};
-> >  
-> > +		emi@10219000 {
-> > +			compatible = "mediatek,mt8183-emi";
-> > +			reg = <0 0x10219000 0 0x1000>, /* CEN EMI */
-> > +				  <0 0x10226000 0 0x1000>, /* EMI MPU */
-> > +				  <0 0x1022d000 0 0x1000>, /* CHA EMI */
-> > +			      <0 0x10235000 0 0x1000>; /* CHB EMI */
-> > +			interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_LOW>, /* MPU */
-> > +						 <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>, /* CGM */
-> > +						 <GIC_SPI 155 IRQ_TYPE_LEVEL_HIGH>; /* ELM */
-> 
-> indentation seems borken here.
-	sorry, broken some blanks.
-> 
-> > +		};
-> > +
-> >  		uart0: serial@11002000 {
-> >  			compatible = "mediatek,mt8183-uart",
-> >  				     "mediatek,mt6577-uart";
-> > 
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIERlcmVrOgoKT24gVHVlLCAyMDE5LTA3LTA5IGF0IDE5OjE2IC0wNzAwLCBEZXJlayBCYXNl
+aG9yZSB3cm90ZToKPiBUaGlzIGluaXRzIHRoZSBwYW5lbCBvcmllbnRhdGlvbiBwcm9wZXJ0eSBm
+b3IgdGhlIG1lZGlhdGVrIGRzaSBkcml2ZXIKPiBpZiB0aGUgcGFuZWwgb3JpZW50YXRpb24gKGNv
+bm5lY3Rvci5kaXNwbGF5X2luZm8ucGFuZWxfb3JpZW50YXRpb24pIGlzCj4gbm90IERSTV9NT0RF
+X1BBTkVMX09SSUVOVEFUSU9OX1VOS05PV04uCj4gCgpSZXZpZXdlZC1ieTogQ0sgSHUgPGNrLmh1
+QG1lZGlhdGVrLmNvbT4KCj4gU2lnbmVkLW9mZi1ieTogRGVyZWsgQmFzZWhvcmUgPGRiYXNlaG9y
+ZUBjaHJvbWl1bS5vcmc+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNp
+LmMgfCA4ICsrKysrKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKykKPiAKPiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyBiL2RyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiBpbmRleCBiOTFjNDYxNjY0NGEuLjI5MjA0NThh
+ZTJmYiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4g
+KysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYwo+IEBAIC03OTAsMTAgKzc5
+MCwxOCBAQCBzdGF0aWMgaW50IG10a19kc2lfY3JlYXRlX2Nvbm5lY3RvcihzdHJ1Y3QgZHJtX2Rl
+dmljZSAqZHJtLCBzdHJ1Y3QgbXRrX2RzaSAqZHNpKQo+ICAJCQlEUk1fRVJST1IoIkZhaWxlZCB0
+byBhdHRhY2ggcGFuZWwgdG8gZHJtXG4iKTsKPiAgCQkJZ290byBlcnJfY29ubmVjdG9yX2NsZWFu
+dXA7Cj4gIAkJfQo+ICsKPiArCQlyZXQgPSBkcm1fY29ubmVjdG9yX2luaXRfcGFuZWxfb3JpZW50
+YXRpb25fcHJvcGVydHkoJmRzaS0+Y29ubik7Cj4gKwkJaWYgKHJldCkgewo+ICsJCQlEUk1fRVJS
+T1IoIkZhaWxlZCB0byBpbml0IHBhbmVsIG9yaWVudGF0aW9uXG4iKTsKPiArCQkJZ290byBlcnJf
+cGFuZWxfZGV0YWNoOwo+ICsJCX0KPiAgCX0KPiAgCj4gIAlyZXR1cm4gMDsKPiAgCj4gK2Vycl9w
+YW5lbF9kZXRhY2g6Cj4gKwlkcm1fcGFuZWxfZGV0YWNoKGRzaS0+cGFuZWwpOwo+ICBlcnJfY29u
+bmVjdG9yX2NsZWFudXA6Cj4gIAlkcm1fY29ubmVjdG9yX2NsZWFudXAoJmRzaS0+Y29ubik7Cj4g
+IAlyZXR1cm4gcmV0OwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9w
+Lm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1k
+ZXZlbA==
