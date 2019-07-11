@@ -1,108 +1,175 @@
-From: Will Deacon <will@kernel.org>
-Subject: Re: [PATCH v8 07/21] iommu/io-pgtable-arm-v7s: Extend MediaTek 4GB
- Mode
-Date: Thu, 11 Jul 2019 13:31:29 +0100
-Message-ID: <20190711123129.da4rg35b54u4svfw@willie-the-truck>
-References: <1561774167-24141-1-git-send-email-yong.wu@mediatek.com>
- <1561774167-24141-8-git-send-email-yong.wu@mediatek.com>
- <20190710143649.w5dplhzdpi3bxp7e@willie-the-truck>
- <1562846036.31342.10.camel@mhfsdcap03>
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Subject: Re: [PATCH v4 16/23] drm/mgag200: Provide ddc symlink in connector
+ sysfs directory
+Date: Thu, 11 Jul 2019 19:26:21 +0200
+Message-ID: <3a2bb4ef-0fd7-3076-e6c2-39f2a3454727@suse.de>
+References: <cover.1562843413.git.andrzej.p@collabora.com>
+ <d32a6b1f0a3b79f1fbc8d0894080908526f6e61e.1562843413.git.andrzej.p@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1562846036.31342.10.camel@mhfsdcap03>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>, Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, Will Deacon <will.deacon@arm.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, yingjoe.chen@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, Matthias Kaehlcke <mka@chromium.org>, chao.hao@mediatek.com, cui.zhang@mediatek.com
+Content-Type: multipart/mixed; boundary="===============1296044343=="
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <d32a6b1f0a3b79f1fbc8d0894080908526f6e61e.1562843413.git.andrzej.p@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>, dri-devel@lists.freedesktop.org
+Cc: Sam Ravnborg <sam@ravnborg.org>, Neil Armstrong <narmstrong@baylibre.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Douglas Anderson <dianders@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, kernel@collabora.com, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, Vincent Abriou <vincent.abriou@st.com>, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, David Airlie <airlied@linux.ie>, Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>, NXP Linux Team <linux-imx@nxp.com>, Dave Airlie <airlied@redhat.com>, intel-gfx@lists.freedesktop.org, linux-tegra@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>, linux-arm-msm@vger.kernel.org, Alexios Zavras <alexios.zavras@intel.com>, Mamta Shukla <mamtashukla555@gmail.com>, linux-mediatek@lists.infradead.org, Jyr
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jul 11, 2019 at 07:53:56PM +0800, Yong Wu wrote:
-> On Wed, 2019-07-10 at 15:36 +0100, Will Deacon wrote:
-> > On Sat, Jun 29, 2019 at 10:09:13AM +0800, Yong Wu wrote:
-> > > MediaTek extend the arm v7s descriptor to support the dram over 4GB.
-> > > 
-> > > In the mt2712 and mt8173, it's called "4GB mode", the physical address
-> > > is from 0x4000_0000 to 0x1_3fff_ffff, but from EMI point of view, it
-> > > is remapped to high address from 0x1_0000_0000 to 0x1_ffff_ffff, the
-> > > bit32 is always enabled. thus, in the M4U, we always enable the bit9
-> > > for all PTEs which means to enable bit32 of physical address.
-> > > 
-> > > but in mt8183, M4U support the dram from 0x4000_0000 to 0x3_ffff_ffff
-> > > which isn't remaped. We extend the PTEs: the bit9 represent bit32 of
-> > > PA and the bit4 represent bit33 of PA. Meanwhile the iova still is
-> > > 32bits.
-> > 
-> > What happens if bit4 is set in the pte for mt2712 or mt8173? Perhaps the
-> 
-> bit4 is ignored in mt2712 and mt8173(No effect).
-> 
-> > io-pgtable backend should be allowing oas > 32 when
-> > IO_PGTABLE_QUIRK_ARM_MTK_4GB is set, and then enforcing that itself.
-> 
-> About oas, It looks the oas doesn't work in current the v7s. 
-> 
-> How about I add a new simple preparing patch like this(copy from
-> io-pgtable-arm.c)?
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============1296044343==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="M6nYUrh3oEarMl1892EPEAAzHEDzD10R3"
 
-This looks like the right sort of idea. Basically, I was thinking that you
-can use the oas in conjunction with the quirk to specify whether or not
-your two magic bits should be set. You could also then cap the oas using
-the size of phys_addr_t to deal with my other comment.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--M6nYUrh3oEarMl1892EPEAAzHEDzD10R3
+Content-Type: multipart/mixed; boundary="8S0vaGiu1cLt80DL4dXMNOlmLb3f1te4c";
+ protected-headers="v1"
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
+ dri-devel@lists.freedesktop.org
+Cc: kernel@collabora.com, Alex Deucher <alexander.deucher@amd.com>,
+ =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
+ "David (ChunMing) Zhou" <David1.Zhou@amd.com>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ Dave Airlie <airlied@redhat.com>, Andrzej Hajda <a.hajda@samsung.com>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>,
+ Inki Dae <inki.dae@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>,
+ Seung-Woo Kim <sw0312.kim@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>, Kukjin Kim <kgene@kernel.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ CK Hu <ck.hu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Clark <robdclark@gmail.com>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
+ Benjamin Gaignard <benjamin.gaignard@linaro.org>,
+ Vincent Abriou <vincent.abriou@st.com>, Chen-Yu Tsai <wens@csie.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Jyri Sarha <jsarha@ti.com>,
+ Tomi Valkeinen <tomi.valkeinen@ti.com>, Eric Anholt <eric@anholt.net>,
+ Sam Ravnborg <sam@ravnborg.org>, Huang Rui <ray.huang@amd.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, "Y.C. Chen" <yc_chen@aspeedtech.com>,
+ Neil Armstrong <narmstrong@baylibre.com>,
+ Douglas Anderson <dianders@chromium.org>, Jonas Karlman <jonas@kwiboo.se>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala@linux.intel.com>,
+ Chris Wilson <chris@chris-wilson.co.uk>,
+ Ramalingam C <ramalingam.c@intel.com>,
+ Shashank Sharma <shashank.sharma@intel.com>,
+ Alexios Zavras <alexios.zavras@intel.com>,
+ Todor Tomov <todor.tomov@linaro.org>, Mamta Shukla
+ <mamtashukla555@gmail.com>, amd-gfx@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ linux-tegra@vger.kernel.org
+Message-ID: <3a2bb4ef-0fd7-3076-e6c2-39f2a3454727@suse.de>
+Subject: Re: [PATCH v4 16/23] drm/mgag200: Provide ddc symlink in connector
+ sysfs directory
+References: <cover.1562843413.git.andrzej.p@collabora.com>
+ <d32a6b1f0a3b79f1fbc8d0894080908526f6e61e.1562843413.git.andrzej.p@collabora.com>
+In-Reply-To: <d32a6b1f0a3b79f1fbc8d0894080908526f6e61e.1562843413.git.andrzej.p@collabora.com>
 
-Finally, I was hoping you could drop the |= BIT_ULL(32) and the &=
-~BIT_ULL(32) bits of the mtk driver if the pgtable code now accepts higher
-addresses. Did that not work out?
-> 
-> ==========================================
-> --- a/drivers/iommu/io-pgtable-arm-v7s.c
-> +++ b/drivers/iommu/io-pgtable-arm-v7s.c
-> @@ -495,7 +495,8 @@ static int arm_v7s_map(struct io_pgtable_ops *ops,
-> unsigned long iova,
->         if (!(prot & (IOMMU_READ | IOMMU_WRITE)))
->                 return 0;
-> 
-> -       if (WARN_ON(upper_32_bits(iova) || upper_32_bits(paddr)))
-> +       if (WARN_ON(iova >= (1ULL << data->iop.cfg.ias) ||
-> +                   paddr >= (1ULL << data->iop.cfg.oas)))
->                 return -ERANGE;
-> 
-> ===============================================
-> 
-> Then, change the oas in MTK 4GB mode, like this:
-> 
-> ================================================
-> --- a/drivers/iommu/io-pgtable-arm-v7s.c
-> +++ b/drivers/iommu/io-pgtable-arm-v7s.c
-> @@ -721,7 +721,9 @@ static struct io_pgtable
-> *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
->  {
->         struct arm_v7s_io_pgtable *data;
-> 
-> -       if (cfg->ias > ARM_V7S_ADDR_BITS || cfg->oas >
-> ARM_V7S_ADDR_BITS)
-> +       if (cfg->ias > ARM_V7S_ADDR_BITS ||
-> +           (cfg->oas > ARM_V7S_ADDR_BITS &&
-> +            !(cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_4GB)))
+--8S0vaGiu1cLt80DL4dXMNOlmLb3f1te4c
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-This should probably still be capped at 34 bits.
+Acked-by: Thomas Zimmermann <tzimmermann@suse.de>
 
-> > > +	paddr = pte & mask;
-> > > +	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_4GB) {
-> > > +		if (pte & ARM_V7S_ATTR_MTK_PA_BIT32)
-> > > +			paddr |= BIT_ULL(32);
-> > > +		if (pte & ARM_V7S_ATTR_MTK_PA_BIT33)
-> > > +			paddr |= BIT_ULL(33);
-> > > +	}
-> > > +	return paddr;
-> > 
-> > I think this relies on CONFIG_PHYS_ADDR_T_64BIT, which isn't always set on
-> > 32-bit ARM.
-> 
-> This was discussed at [1]. Robin commented that this is not needed and
-> build won't complain about this.
+Am 11.07.19 um 13:26 schrieb Andrzej Pietrasiewicz:
+> Use the ddc pointer provided by the generic connector.
+>=20
+> Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+> ---
+>  drivers/gpu/drm/mgag200/mgag200_mode.c | 9 +++++----
+>  1 file changed, 5 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/mgag200/mgag200_mode.c b/drivers/gpu/drm/m=
+gag200/mgag200_mode.c
+> index a25054015e8c..8fb9444b2142 100644
+> --- a/drivers/gpu/drm/mgag200/mgag200_mode.c
+> +++ b/drivers/gpu/drm/mgag200/mgag200_mode.c
+> @@ -1703,6 +1703,11 @@ static struct drm_connector *mga_vga_init(struct=
+ drm_device *dev)
+>  		return NULL;
+> =20
+>  	connector =3D &mga_connector->base;
+> +	mga_connector->i2c =3D mgag200_i2c_create(dev);
+> +	if (!mga_connector->i2c)
+> +		DRM_ERROR("failed to add ddc bus\n");
+> +
+> +	connector->ddc =3D &mga_connector->i2c->adapter;
+> =20
+>  	drm_connector_init(dev, connector,
+>  			   &mga_vga_connector_funcs, DRM_MODE_CONNECTOR_VGA);
+> @@ -1711,10 +1716,6 @@ static struct drm_connector *mga_vga_init(struct=
+ drm_device *dev)
+> =20
+>  	drm_connector_register(connector);
+> =20
+> -	mga_connector->i2c =3D mgag200_i2c_create(dev);
+> -	if (!mga_connector->i2c)
+> -		DRM_ERROR("failed to add ddc bus\n");
+> -
+>  	return connector;
+>  }
+> =20
+>=20
 
-It's not so much the build I was worried about, but more that we'd silently
-be doing the wrong thing and I think we can fix that as I mentioned above.
+--=20
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Linux GmbH, Maxfeldstrasse 5, 90409 Nuernberg, Germany
+GF: Felix Imend=C3=B6rffer, Mary Higgins, Sri Rasiah
+HRB 21284 (AG N=C3=BCrnberg)
 
-Will
+
+--8S0vaGiu1cLt80DL4dXMNOlmLb3f1te4c--
+
+--M6nYUrh3oEarMl1892EPEAAzHEDzD10R3
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEchf7rIzpz2NEoWjlaA3BHVMLeiMFAl0ncUEACgkQaA3BHVML
+eiNDOQf/V82uMwvnLRj0DGrIvbmWkTJ1+JLlhJzekDs6PjWJPTJ9EkobcJ9GuWFV
+hE90Tt8U2u+MkrmeLbHiyVWYUAcWnb5F9ldlRKD+IXaeXnQoxMCuBLIbR/uVz6Mz
+BDUv4l0n+guDhbQZYfPhoQ3NcFnCRBshnxKq9R5F8zALotio+X7ZYvMSV+jxJhST
+6xA7pyIn6qIKcqO/1Ytunpon3rxf2xlJwWLdLhA8mKho3A2JhVmZk38zAWSBZ4FJ
+Q9ja+BhaxP1SO1iA63QqCrrGwoZVUXTdEWAB64Yw4DQyJ+cdDtIZfJDh68uYTbs+
+ggIdNPQBzpJeQHD/WpKXSKA56aYG3w==
+=ciQB
+-----END PGP SIGNATURE-----
+
+--M6nYUrh3oEarMl1892EPEAAzHEDzD10R3--
+
+--===============1296044343==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+
+--===============1296044343==--
