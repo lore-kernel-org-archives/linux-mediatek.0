@@ -1,55 +1,65 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH 3/5] dt-bindings: usb: mtk-xhci: add an optional xhci_ck
- clock
-Date: Fri, 12 Jul 2019 09:53:54 +0800
-Message-ID: <1562896434.32589.26.camel@mhfsdcap03>
-References: <5e06482a0be15476c7b5825f155accf98275afa8.1560246390.git.chunfeng.yun@mediatek.com>
-         <9b6ad8dee142d73b56d653ecb7475c4ed28e5eb8.1560246390.git.chunfeng.yun@mediatek.com>
-         <20190709142235.GA11951@bogus>
+From: Stanley Chu <stanley.chu@mediatek.com>
+Subject: [PATCH v1 1/2] scsi: ufs: Make new function for clearing outstanding
+ task bits
+Date: Fri, 12 Jul 2019 12:44:15 +0800
+Message-ID: <1562906656-27154-2-git-send-email-stanley.chu@mediatek.com>
+References: <1562906656-27154-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190709142235.GA11951@bogus>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mathias Nyman <mathias.nyman@intel.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Jumin Li <jumin.li@mediatek.com>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1562906656-27154-1-git-send-email-stanley.chu@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com, pedrom.sousa@synopsys.com
+Cc: marc.w.gonzalez@free.fr, andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, evgreen@chromium.org, linux-mediatek@lists.infradead.org, peter.wang@mediatek.com, matthias.bgg@gmail.com, Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-07-09 at 08:22 -0600, Rob Herring wrote:
-> On Wed, Jun 12, 2019 at 01:55:19PM +0800, Chunfeng Yun wrote:
-> > Add a new optional clock xhci_ck
-> > 
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > ---
-> >  Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt | 3 ++-
-> >  1 file changed, 2 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt
-> > index 266c2d917a28..91c0704b586b 100644
-> > --- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt
-> > +++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.txt
-> > @@ -29,6 +29,7 @@ Required properties:
-> >  	"sys_ck": controller clock used by normal mode,
-> >  	the following ones are optional:
-> >  	"ref_ck": reference clock used by low power mode etc,
-> > +	"xhci_ck": controller clock,
-> >  	"mcu_ck": mcu_bus clock for register access,
-> >  	"dma_ck": dma_bus clock for data transfer by DMA
-> 
-> A new clock should go at the end to stay backwards compatible.
-Ok, will fix it, thanks
-> 
-> >  
-> > @@ -100,7 +101,7 @@ Required properties:
-> >   - clocks : a list of phandle + clock-specifier pairs, one for each
-> >  	entry in clock-names
-> >   - clock-names : must contain "sys_ck", and the following ones are optional:
-> > -	"ref_ck", "mcu_ck" and "dma_ck"
-> > +	"ref_ck", "xhci_ck", "mcu_ck" and "dma_ck"
-> >  
-> >  Optional properties:
-> >   - vbus-supply : reference to the VBUS regulator;
-> > -- 
-> > 2.21.0
-> > 
+Make a new function "ufshcd_outstanding_task_clear()" used to
+clear bits in hba->outstanding_tasks for future wider usage.
+
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+---
+ drivers/scsi/ufs/ufshcd.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 8f0426a36b0b..a667dbb547f2 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -723,6 +723,17 @@ static inline void ufshcd_outstanding_req_clear(struct ufs_hba *hba, int tag)
+ 	__clear_bit(tag, &hba->outstanding_reqs);
+ }
+ 
++/**
++ * ufshcd_outstanding_task_clear - Clear a bit in outstanding task field
++ * @hba: per adapter instance
++ * @tag: position of the bit to be cleared
++ */
++static inline void ufshcd_outstanding_task_clear(struct ufs_hba *hba, int tag)
++{
++	__clear_bit(tag, &hba->outstanding_tasks);
++	dev_info(hba->dev, "clear outstanding_tasks: %d\n", tag);
++}
++
+ /**
+  * ufshcd_get_lists_status - Check UCRDY, UTRLRDY and UTMRLRDY
+  * @reg: Register value of host controller status
+@@ -5679,7 +5690,7 @@ static int __ufshcd_issue_tm_cmd(struct ufs_hba *hba,
+ 		ufshcd_add_tm_upiu_trace(hba, task_tag, "tm_complete");
+ 
+ 		spin_lock_irqsave(hba->host->host_lock, flags);
+-		__clear_bit(free_slot, &hba->outstanding_tasks);
++		ufshcd_outstanding_task_clear(hba, free_slot);
+ 		spin_unlock_irqrestore(hba->host->host_lock, flags);
+ 
+ 	}
+-- 
+2.18.0
