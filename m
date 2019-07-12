@@ -1,15 +1,14 @@
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Subject: Re: [PATCH] input: keyboard: mtk-pmic-keys: Add of_node_put() before
- return
-Date: Thu, 11 Jul 2019 23:50:17 -0700
-Message-ID: <20190712065017.GF150689@dtor-ws>
-References: <20190709180019.14339-1-nishkadg.linux@gmail.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [RFC PATCH V2 1/4] dt-bindings: mt8183: Added FD dt-bindings
+Date: Fri, 12 Jul 2019 15:16:54 +0800
+Message-ID: <1562915814.27825.2.camel@mtksdaap41>
+References: <1562661672-22439-1-git-send-email-Jerry-Ch.chen@mediatek.com>
+ <1562661672-22439-2-git-send-email-Jerry-Ch.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <20190709180019.14339-1-nishkadg.linux@gmail.com>
+In-Reply-To: <1562661672-22439-2-git-send-email-Jerry-Ch.chen@mediatek.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -19,64 +18,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Nishka Dasgupta <nishkadg.linux@gmail.com>
-Cc: matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org
+To: Jerry-ch Chen <Jerry-Ch.chen@mediatek.com>
+Cc: devicetree@vger.kernel.org, Sean.Cheng@mediatek.com, laurent.pinchart+renesas@ideasonboard.com, Rynn.Wu@mediatek.com, christie.yu@mediatek.com, srv_heupstream@mediatek.com, po-yang.huang@mediatek.com, suleiman@chromium.org, sj.huang@mediatek.com, tfiga@chromium.org, jungo.lin@mediatek.com, shik@chromium.org, yuzhao@chromium.org, hans.verkuil@cisco.com, zwisler@chromium.org, frederic.chen@mediatek.com, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Jul 09, 2019 at 11:30:19PM +0530, Nishka Dasgupta wrote:
-> Each iteration of for_each_child_of_node puts the previous
-> node, but in the case of a return from the middle of the loop, there is
-> no put, thus causing a memory leak. Hence add an of_node_put before the
-> return in three places.
-> Issue found with Coccinelle.
+Hi, Jerry:
+
+On Tue, 2019-07-09 at 16:41 +0800, Jerry-ch Chen wrote:
+> From: Jerry-ch Chen <jerry-ch.chen@mediatek.com>
 > 
-> Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
-
-Applied, thank you.
-
+> This patch adds DT binding documentation for the Face Detection (FD)
+> unit of the Mediatek's mt8183 SoC.
+> 
+> Signed-off-by: Jerry-ch Chen <jerry-ch.chen@mediatek.com>
 > ---
->  drivers/input/keyboard/mtk-pmic-keys.c | 9 +++++++--
->  1 file changed, 7 insertions(+), 2 deletions(-)
+>  .../bindings/media/mediatek,mt8183-fd.txt          | 33 ++++++++++++++++++++++
+>  1 file changed, 33 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8183-fd.txt
 > 
-> diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
-> index 746ff06eaf8d..62391d6c7da6 100644
-> --- a/drivers/input/keyboard/mtk-pmic-keys.c
-> +++ b/drivers/input/keyboard/mtk-pmic-keys.c
-> @@ -277,8 +277,10 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
->  		keys->keys[index].regs = &mtk_pmic_regs->keys_regs[index];
->  
->  		keys->keys[index].irq = platform_get_irq(pdev, index);
-> -		if (keys->keys[index].irq < 0)
-> +		if (keys->keys[index].irq < 0) {
-> +			of_node_put(child);
->  			return keys->keys[index].irq;
-> +		}
->  
->  		error = of_property_read_u32(child,
->  			"linux,keycodes", &keys->keys[index].keycode);
-> @@ -286,6 +288,7 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
->  			dev_err(keys->dev,
->  				"failed to read key:%d linux,keycode property: %d\n",
->  				index, error);
-> +			of_node_put(child);
->  			return error;
->  		}
->  
-> @@ -293,8 +296,10 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
->  			keys->keys[index].wakeup = true;
->  
->  		error = mtk_pmic_key_setup(keys, &keys->keys[index]);
-> -		if (error)
-> +		if (error) {
-> +			of_node_put(child);
->  			return error;
-> +		}
->  
->  		index++;
->  	}
-> -- 
-> 2.19.1
-> 
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8183-fd.txt b/Documentation/devicetree/bindings/media/mediatek,mt8183-fd.txt
+> new file mode 100644
+> index 0000000..0837223
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/mediatek,mt8183-fd.txt
+> @@ -0,0 +1,33 @@
+> +* Mediatek Face Detection Unit (FD)
+> +
+> +Face Detection (FD) unit is a typical memory-to-memory HW device.
+> +It provides hardware accelerated face detection function, and it
+> +is able to detect different poses of faces. FD will writre result
+> +of detected face into memory as output.
+> +
+> +Required properties:
+> +- compatible: "mediatek,mt8183-fd"
+> +- mediatek,scp : the node of system control processor (SCP), see
+> +  Documentation/devicetree/bindings/remoteproc/mtk,scp.txt for details.
+> +- iommus: should point to the 3 entries:  M4U_PORT_CAM_FDVT_RP,
+> +  M4U_PORT_CAM_FDVT_WR and M4U_PORT_CAM_FDVT_RB.  (Please see
+> +  Documentation/devicetree/bindings/iommu/mediatek,iommu.txt for details.)
+> +- reg: Physical base address and length of the register space.
+> +- interrupts: interrupt number to the cpu.
+> +- clocks : must contain the FDVT clock, see
+> +  Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
+> +- clock-names: must be "fd".
+> +
+> +Example:
+> +	fd: fd@1502b000 {
+> +		compatible = "mediatek,mt8183-fd";
+> +		mediatek,scp = <&scp>;
+> +		iommus = <&iommu M4U_PORT_CAM_FDVT_RP>,
+> +			 <&iommu M4U_PORT_CAM_FDVT_WR>,
+> +			 <&iommu M4U_PORT_CAM_FDVT_RB>;
+> +		reg = <0 0x1502b000 0 0x1000>;
+> +		interrupts = <GIC_SPI 269 IRQ_TYPE_LEVEL_LOW>;
+> +		clocks = <&imgsys CLK_IMG_FDVT>;
+> +		clock-names = "fd";
 
--- 
-Dmitry
+This device has no power-domain?
+
+Regards,
+CK
+
+> +	};
+> +
