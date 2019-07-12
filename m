@@ -1,44 +1,110 @@
-From: Benjamin Gaignard <benjamin.gaignard-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v4 15/23] drm: sti: Provide ddc symlink in
- hdmi connector sysfs directory
-Date: Fri, 12 Jul 2019 09:42:44 +0200
-Message-ID: <CA+M3ks63WY4umDR_1apjLj4kDf8jpm-CLsC-XO7dY=LbY--p-w@mail.gmail.com>
-References: <cover.1562843413.git.andrzej.p@collabora.com>
- <86afdc0bca6939901870176dcf55f279f7b10a08.1562843413.git.andrzej.p@collabora.com>
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+Subject: [PATCH v6 0/8] Add basic SoC support for mt6765
+Date: Fri, 12 Jul 2019 17:43:36 +0800
+Message-ID: <1562924653-10056-1-git-send-email-macpaul.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-In-Reply-To: <86afdc0bca6939901870176dcf55f279f7b10a08.1562843413.git.andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/freedreno>,
- <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/freedreno>
-List-Post: <mailto:freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-List-Help: <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/freedreno>,
- <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
-Errors-To: freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Sender: "Freedreno" <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-To: Andrzej Pietrasiewicz <andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: "Y.C. Chen" <yc_chen-SAlXDmAnmOAqDJ6do+/SaQ@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sam Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Ramalingam C <ramalingam.c-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Joonas Lahtinen <joonas.lahtinen-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, ML dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, "David (ChunMing) Zhou" <David1.Zhou-5C7GfCeVMHo@public.gmane.org>, "moderated list:ARM/S5P EXYNOS AR..." <linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Marc Zyngier <marc.zyngier@arm.com>, Ryder Lee <ryder.lee@mediatek.com>, Stephen Boyd <sboyd@kernel.org>, Sean Wang <sean.wang@mediatek.com>, Mars Cheng <mars.cheng@mediatek.com>, Owen Chen <owen.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: wsd_upstream@mediatek.com, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, devicetree@vger.kernel.org, linux-serial@vger.kernel.org, linux-clk@vger.kernel.org, Macpaul Lin <macpaul.lin@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-TGUgamV1LiAxMSBqdWlsLiAyMDE5IMOgIDEzOjMwLCBBbmRyemVqIFBpZXRyYXNpZXdpY3oKPGFu
-ZHJ6ZWoucEBjb2xsYWJvcmEuY29tPiBhIMOpY3JpdCA6Cj4KPiBVc2UgdGhlIGRkYyBwb2ludGVy
-IHByb3ZpZGVkIGJ5IHRoZSBnZW5lcmljIGNvbm5lY3Rvci4KPgo+IFNpZ25lZC1vZmYtYnk6IEFu
-ZHJ6ZWogUGlldHJhc2lld2ljeiA8YW5kcnplai5wQGNvbGxhYm9yYS5jb20+CgpSZXZpZXdlZC1i
-eTogQmVuamFtaW4gR2FpZ25hcmQgPGJlbmphbWluLmdhaWduYXJkQGxpbmFyby5vcmc+Cgo+IC0t
-LQo+ICBkcml2ZXJzL2dwdS9kcm0vc3RpL3N0aV9oZG1pLmMgfCAxICsKPiAgMSBmaWxlIGNoYW5n
-ZWQsIDEgaW5zZXJ0aW9uKCspCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3N0aS9z
-dGlfaGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL3N0aS9zdGlfaGRtaS5jCj4gaW5kZXggZjAzZDYx
-N2VkYzRjLi45MGY4ZGI2M2MwOTUgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3N0aS9z
-dGlfaGRtaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3N0aS9zdGlfaGRtaS5jCj4gQEAgLTEy
-NzksNiArMTI3OSw3IEBAIHN0YXRpYyBpbnQgc3RpX2hkbWlfYmluZChzdHJ1Y3QgZGV2aWNlICpk
-ZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3Rlciwgdm9pZCAqZGF0YSkKPiAgICAgICAgIGRybV9icmlk
-Z2VfYXR0YWNoKGVuY29kZXIsIGJyaWRnZSwgTlVMTCk7Cj4KPiAgICAgICAgIGNvbm5lY3Rvci0+
-ZW5jb2RlciA9IGVuY29kZXI7Cj4gKyAgICAgICBkcm1fY29ubmVjdG9yLT5kZGMgPSBoZG1pLT5k
-ZGNfYWRhcHQ7Cj4KPiAgICAgICAgIGRybV9jb25uZWN0b3IgPSAoc3RydWN0IGRybV9jb25uZWN0
-b3IgKiljb25uZWN0b3I7Cj4KPiAtLQo+IDIuMTcuMQo+Cl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkZyZWVkcmVubyBtYWlsaW5nIGxpc3QKRnJlZWRyZW5v
-QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2ZyZWVkcmVubw==
+This patch adds basic SoC support for Mediatek's new 8-core SoC,
+MT6765, which is mainly for smartphone application.
+
+Changes in V6:
+1. Adapt V5's patchset to latest kernel tree.
+   Origin V5 patchset.
+   https://lore.kernel.org/patchwork/cover/963612/
+2. Due to clk's common code has been submit by other platform,
+   this patch set will have dependencies with the following patchsets
+   as the following orders.
+   2.a. [v8,00/21] MT8183 IOMMU SUPPORT
+        https://patchwork.kernel.org/cover/11023585/
+   2.b. [v11,0/6] Add basic node support for Mediatek MT8183 SoC
+        https://patchwork.kernel.org/cover/10962385/
+   2.c. [v6,00/14] Mediatek MT8183 scpsys support
+        https://patchwork.kernel.org/cover/11005751/
+3. Correct power related patches into dt-binding patches.
+4. Re-order V5's 4/11, 6/11, and 7/11 due clk common code change
+   and make dependencies in order.
+5. Update some commit message in clk related patches.
+
+Changes in V5:
+1. add clk support
+
+Changes in V4:
+1. add gic's settings in reg properties
+2. remove some patches about dt-bindings since GKH already took them
+
+Changes in V3:
+1. split dt-binding document patchs
+2. fix mt6765.dtsi warnings with W=12
+3. remove uncessary PPI affinity for timer
+4. add gicc base for gic dt node
+
+Changes in V2:
+1. fix clk properties in uart dts node
+2. fix typo in submit title
+3. add simple-bus in mt6765.dtsi
+4. use correct SPDX license format
+
+Mars Cheng (6):
+  dt-bindings: clock: mediatek: document clk bindings for Mediatek
+    MT6765 SoC
+  dt-bindings: mediatek: Add smi dts binding for Mediatek MT6765 SoC
+  dt-bindings: mediatek: add MT6765 power dt-bindings
+  clk: mediatek: add mt6765 clock IDs
+  soc: mediatek: add MT6765 scpsys and subdomain support
+  arm64: dts: mediatek: add mt6765 support
+
+Owen Chen (2):
+  clk: mediatek: Add MT6765 clock support
+  arm64: defconfig: add CONFIG_COMMON_CLK_MT6765_XXX clocks
+
+ .../arm/mediatek/mediatek,apmixedsys.txt      |   1 +
+ .../bindings/arm/mediatek/mediatek,audsys.txt |   1 +
+ .../bindings/arm/mediatek/mediatek,camsys.txt |   1 +
+ .../bindings/arm/mediatek/mediatek,imgsys.txt |   1 +
+ .../arm/mediatek/mediatek,infracfg.txt        |   1 +
+ .../bindings/arm/mediatek/mediatek,mipi0a.txt |  28 +
+ .../bindings/arm/mediatek/mediatek,mmsys.txt  |   1 +
+ .../arm/mediatek/mediatek,pericfg.txt         |   1 +
+ .../arm/mediatek/mediatek,topckgen.txt        |   1 +
+ .../arm/mediatek/mediatek,vcodecsys.txt       |  27 +
+ .../mediatek,smi-common.txt                   |   1 +
+ .../bindings/soc/mediatek/scpsys.txt          |   6 +
+ arch/arm64/boot/dts/mediatek/Makefile         |   1 +
+ arch/arm64/boot/dts/mediatek/mt6765-evb.dts   |  33 +
+ arch/arm64/boot/dts/mediatek/mt6765.dtsi      | 253 +++++
+ arch/arm64/configs/defconfig                  |   6 +
+ drivers/clk/mediatek/Kconfig                  |  86 ++
+ drivers/clk/mediatek/Makefile                 |   7 +
+ drivers/clk/mediatek/clk-mt6765-audio.c       | 109 ++
+ drivers/clk/mediatek/clk-mt6765-cam.c         |  83 ++
+ drivers/clk/mediatek/clk-mt6765-img.c         |  79 ++
+ drivers/clk/mediatek/clk-mt6765-mipi0a.c      |  77 ++
+ drivers/clk/mediatek/clk-mt6765-mm.c          | 105 ++
+ drivers/clk/mediatek/clk-mt6765-vcodec.c      |  79 ++
+ drivers/clk/mediatek/clk-mt6765.c             | 961 ++++++++++++++++++
+ drivers/soc/mediatek/mtk-scpsys.c             | 130 +++
+ include/dt-bindings/clock/mt6765-clk.h        | 313 ++++++
+ include/dt-bindings/power/mt6765-power.h      |  14 +
+ 28 files changed, 2406 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mipi0a.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vcodecsys.txt
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6765-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6765.dtsi
+ create mode 100644 drivers/clk/mediatek/clk-mt6765-audio.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6765-cam.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6765-img.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6765-mipi0a.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6765-mm.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6765-vcodec.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6765.c
+ create mode 100644 include/dt-bindings/clock/mt6765-clk.h
+ create mode 100644 include/dt-bindings/power/mt6765-power.h
+
+-- 
+2.18.0
