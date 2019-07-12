@@ -1,12 +1,13 @@
 From: Sean Young <sean-hENCXIMQXOg@public.gmane.org>
-Subject: [PATCH 1/3] media: mtk-cir: only allow protocols that have software
- decoders
-Date: Fri, 12 Jul 2019 23:46:58 +0100
-Message-ID: <20190712224700.11285-1-sean@mess.org>
+Subject: [PATCH 2/3] media: rc: remove unused #define RC_PROTO_BIT_ALL
+Date: Fri, 12 Jul 2019 23:46:59 +0100
+Message-ID: <20190712224700.11285-2-sean@mess.org>
+References: <20190712224700.11285-1-sean@mess.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190712224700.11285-1-sean-hENCXIMQXOg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -20,28 +21,40 @@ To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Frank Wunderlich <frank-w-SipyoOjXbOMoAHOVJHB0wA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-RC_PROTO_BIT_ALL includes protocols like unknown and other that do not
-have IR decoders by definition. If these protocols are set in the
-allowed_protocols, they will show in the protocols sysfs file but cannot
-be enabled.
+This lists all the protocols that the kernel knows about, however there
+are no users.
 
 Signed-off-by: Sean Young <sean-hENCXIMQXOg@public.gmane.org>
 ---
- drivers/media/rc/mtk-cir.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/media/rc-map.h | 16 ----------------
+ 1 file changed, 16 deletions(-)
 
-diff --git a/drivers/media/rc/mtk-cir.c b/drivers/media/rc/mtk-cir.c
-index 46101efe017b..9dc467ebae24 100644
---- a/drivers/media/rc/mtk-cir.c
-+++ b/drivers/media/rc/mtk-cir.c
-@@ -342,7 +342,7 @@ static int mtk_ir_probe(struct platform_device *pdev)
- 	ir->rc->map_name = map_name ?: RC_MAP_EMPTY;
- 	ir->rc->dev.parent = dev;
- 	ir->rc->driver_name = MTK_IR_DEV;
--	ir->rc->allowed_protocols = RC_PROTO_BIT_ALL;
-+	ir->rc->allowed_protocols = RC_PROTO_BIT_ALL_IR_DECODER;
- 	ir->rc->rx_resolution = MTK_IR_SAMPLE;
- 	ir->rc->timeout = MTK_MAX_SAMPLES * (MTK_IR_SAMPLE + 1);
+diff --git a/include/media/rc-map.h b/include/media/rc-map.h
+index bebd3c4c6338..3a7f8728f6ec 100644
+--- a/include/media/rc-map.h
++++ b/include/media/rc-map.h
+@@ -38,22 +38,6 @@
+ #define RC_PROTO_BIT_RCMM32		BIT_ULL(RC_PROTO_RCMM32)
+ #define RC_PROTO_BIT_XBOX_DVD		BIT_ULL(RC_PROTO_XBOX_DVD)
  
+-#define RC_PROTO_BIT_ALL \
+-			(RC_PROTO_BIT_UNKNOWN | RC_PROTO_BIT_OTHER | \
+-			 RC_PROTO_BIT_RC5 | RC_PROTO_BIT_RC5X_20 | \
+-			 RC_PROTO_BIT_RC5_SZ | RC_PROTO_BIT_JVC | \
+-			 RC_PROTO_BIT_SONY12 | RC_PROTO_BIT_SONY15 | \
+-			 RC_PROTO_BIT_SONY20 | RC_PROTO_BIT_NEC | \
+-			 RC_PROTO_BIT_NECX | RC_PROTO_BIT_NEC32 | \
+-			 RC_PROTO_BIT_SANYO | \
+-			 RC_PROTO_BIT_MCIR2_KBD | RC_PROTO_BIT_MCIR2_MSE | \
+-			 RC_PROTO_BIT_RC6_0 | RC_PROTO_BIT_RC6_6A_20 | \
+-			 RC_PROTO_BIT_RC6_6A_24 | RC_PROTO_BIT_RC6_6A_32 | \
+-			 RC_PROTO_BIT_RC6_MCE | RC_PROTO_BIT_SHARP | \
+-			 RC_PROTO_BIT_XMP | RC_PROTO_BIT_CEC | \
+-			 RC_PROTO_BIT_IMON | RC_PROTO_BIT_RCMM12 | \
+-			 RC_PROTO_BIT_RCMM24 | RC_PROTO_BIT_RCMM32 | \
+-			 RC_PROTO_BIT_XBOX_DVD)
+ /* All rc protocols for which we have decoders */
+ #define RC_PROTO_BIT_ALL_IR_DECODER \
+ 			(RC_PROTO_BIT_RC5 | RC_PROTO_BIT_RC5X_20 | \
 -- 
 2.21.0
