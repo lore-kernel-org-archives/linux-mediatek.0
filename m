@@ -1,77 +1,101 @@
-From: Sean Wang <sean.wang-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 3/3] media: mtk-cir: lower de-glitch counter for rc-mm
- protocol
-Date: Sun, 14 Jul 2019 00:00:50 -0700
-Message-ID: <CAGp9Lzq+RcizFgP4LJMxaH3K6Jcbk8jit8bv+3M2fwqwwV4NvA@mail.gmail.com>
-References: <20190712224700.11285-1-sean@mess.org>
- <20190712224700.11285-3-sean@mess.org>
+From: Walter Wu <walter-zh.wu@mediatek.com>
+Subject: Re: [PATCH v3] kasan: add memory corruption identification for
+ software tag-based mode
+Date: Mon, 15 Jul 2019 11:06:41 +0800
+Message-ID: <1563160001.4793.4.camel@mtksdccf07>
+References: <20190613081357.1360-1-walter-zh.wu@mediatek.com>
+         <da7591c9-660d-d380-d59e-6d70b39eaa6b@virtuozzo.com>
+         <1560447999.15814.15.camel@mtksdccf07>
+         <1560479520.15814.34.camel@mtksdccf07>
+         <1560744017.15814.49.camel@mtksdccf07>
+         <CACT4Y+Y3uS59rXf92ByQuFK_G4v0H8NNnCY1tCbr4V+PaZF3ag@mail.gmail.com>
+         <1560774735.15814.54.camel@mtksdccf07>
+         <1561974995.18866.1.camel@mtksdccf07>
+         <CACT4Y+aMXTBE0uVkeZz+MuPx3X1nESSBncgkScWvAkciAxP1RA@mail.gmail.com>
+         <ebc99ee1-716b-0b18-66ab-4e93de02ce50@virtuozzo.com>
+         <1562640832.9077.32.camel@mtksdccf07>
+         <d9fd1d5b-9516-b9b9-0670-a1885e79f278@virtuozzo.com>
+         <1562839579.5846.12.camel@mtksdccf07>
+         <37897fb7-88c1-859a-dfcc-0a5e89a642e0@virtuozzo.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190712224700.11285-3-sean-hENCXIMQXOg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sean Young <sean-hENCXIMQXOg@public.gmane.org>
-Cc: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Frank Wunderlich <frank-w-SipyoOjXbOMoAHOVJHB0wA@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <37897fb7-88c1-859a-dfcc-0a5e89a642e0@virtuozzo.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Andrey Ryabinin <aryabinin@virtuozzo.com>
+Cc: Dmitry Vyukov <dvyukov@google.com>, Alexander Potapenko <glider@google.com>, Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Matthias Brugger <matthias.bgg@gmail.com>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Arnd Bergmann <arnd@arndb.de>, Vasily Gorbik <gor@linux.ibm.com>, Andrey Konovalov <andreyknvl@google.com>, "Jason A . Donenfeld" <Jason@zx2c4.com>, Miles Chen <miles.chen@mediatek.com>, kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>, Linux-MM <linux-mm@kvack.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream <wsd_upstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jul 12, 2019 at 3:47 PM Sean Young <sean-hENCXIMQXOg@public.gmane.org> wrote:
->
-> The rc-mm protocol can't be decoded by the mtk-cir since the de-glitch
-> filter removes pulses/spaces shorter than 294 microseconds.
->
-> Tested on a BananaPi R2.
+On Fri, 2019-07-12 at 13:52 +0300, Andrey Ryabinin wrote:
+> 
+> On 7/11/19 1:06 PM, Walter Wu wrote:
+> > On Wed, 2019-07-10 at 21:24 +0300, Andrey Ryabinin wrote:
+> >>
+> >> On 7/9/19 5:53 AM, Walter Wu wrote:
+> >>> On Mon, 2019-07-08 at 19:33 +0300, Andrey Ryabinin wrote:
+> >>>>
+> >>>> On 7/5/19 4:34 PM, Dmitry Vyukov wrote:
+> >>>>> On Mon, Jul 1, 2019 at 11:56 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
+> >>
+> >>>>>
+> >>>>> Sorry for delays. I am overwhelm by some urgent work. I afraid to
+> >>>>> promise any dates because the next week I am on a conference, then
+> >>>>> again a backlog and an intern starting...
+> >>>>>
+> >>>>> Andrey, do you still have concerns re this patch? This change allows
+> >>>>> to print the free stack.
+> >>>>
+> >>>> I 'm not sure that quarantine is a best way to do that. Quarantine is made to delay freeing, but we don't that here.
+> >>>> If we want to remember more free stacks wouldn't be easier simply to remember more stacks in object itself?
+> >>>> Same for previously used tags for better use-after-free identification.
+> >>>>
+> >>>
+> >>> Hi Andrey,
+> >>>
+> >>> We ever tried to use object itself to determine use-after-free
+> >>> identification, but tag-based KASAN immediately released the pointer
+> >>> after call kfree(), the original object will be used by another
+> >>> pointer, if we use object itself to determine use-after-free issue, then
+> >>> it has many false negative cases. so we create a lite quarantine(ring
+> >>> buffers) to record recent free stacks in order to avoid those false
+> >>> negative situations.
+> >>
+> >> I'm telling that *more* than one free stack and also tags per object can be stored.
+> >> If object reused we would still have information about n-last usages of the object.
+> >> It seems like much easier and more efficient solution than patch you proposing.
+> >>
+> > To make the object reused, we must ensure that no other pointers uses it
+> > after kfree() release the pointer.
+> > Scenario:
+> > 1). The object reused information is valid when no another pointer uses
+> > it.
+> > 2). The object reused information is invalid when another pointer uses
+> > it.
+> > Do you mean that the object reused is scenario 1) ?
+> > If yes, maybe we can change the calling quarantine_put() location. It
+> > will be fully use that quarantine, but at scenario 2) it looks like to
+> > need this patch.
+> > If no, maybe i miss your meaning, would you tell me how to use invalid
+> > object information? or?
+> > 
+> 
+> 
+> KASAN keeps information about object with the object, right after payload in the kasan_alloc_meta struct.
+> This information is always valid as long as slab page allocated. Currently it keeps only one last free stacktrace.
+> It could be extended to record more free stacktraces and also record previously used tags which will allow you
+> to identify use-after-free and extract right free stacktrace.
 
-Thanks for grabbing the board and do the test voluntarily.
+Thanks for your explanation.
 
->
-> Signed-off-by: Sean Young <sean-hENCXIMQXOg@public.gmane.org>
+For extend slub object, if one record is 9B (sizeof(u8)+ sizeof(struct
+kasan_track)) and add five records into slub object, every slub object
+may add 45B usage after the system runs longer. 
+Slub object number is easy more than 1,000,000(maybe it may be more
+bigger), then the extending object memory usage should be 45MB, and
+unfortunately it is no limit. The memory usage is more bigger than our
+patch.
 
-Acked-by: Sean Wang <sean.wang-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-
-> ---
->  drivers/media/rc/mtk-cir.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
->
-> diff --git a/drivers/media/rc/mtk-cir.c b/drivers/media/rc/mtk-cir.c
-> index 9dc467ebae24..8027181de985 100644
-> --- a/drivers/media/rc/mtk-cir.c
-> +++ b/drivers/media/rc/mtk-cir.c
-> @@ -35,6 +35,11 @@
->  /* Fields containing pulse width data */
->  #define MTK_WIDTH_MASK           (GENMASK(7, 0))
->
-> +/* IR threshold */
-> +#define MTK_IRTHD               0x14
-> +#define MTK_DG_CNT_MASK                 (GENMASK(12, 8))
-> +#define MTK_DG_CNT(x)           ((x) << 8)
-> +
->  /* Bit to enable interrupt */
->  #define MTK_IRINT_EN             BIT(0)
->
-> @@ -400,6 +405,9 @@ static int mtk_ir_probe(struct platform_device *pdev)
->         mtk_w32_mask(ir, val, ir->data->fields[MTK_HW_PERIOD].mask,
->                      ir->data->fields[MTK_HW_PERIOD].reg);
->
-> +       /* Set de-glitch counter */
-> +       mtk_w32_mask(ir, MTK_DG_CNT(1), MTK_DG_CNT_MASK, MTK_IRTHD);
-> +
->         /* Enable IR and PWM */
->         val = mtk_r32(ir, MTK_CONFIG_HIGH_REG);
->         val |= MTK_OK_COUNT(ir->data->ok_count) |  MTK_PWM_EN | MTK_IR_EN;
-> --
-> 2.21.0
->
->
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+We hope tag-based KASAN advantage is smaller memory usage. If it’s
+possible, we should spend less memory in order to identify
+use-after-free. Would you accept our patch after fine tune it?
