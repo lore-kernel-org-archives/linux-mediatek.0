@@ -1,358 +1,253 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v6 7/8] arm64: dts: mediatek: add mt6765 support
-Date: Mon, 15 Jul 2019 16:29:49 +0800
-Message-ID: <1563179389.31375.2.camel@mtksdaap41>
-References: <1562924653-10056-1-git-send-email-macpaul.lin@mediatek.com>
-         <1562924653-10056-8-git-send-email-macpaul.lin@mediatek.com>
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+Subject: Re: [PATCH v6 14/14] arm64: dts: Add power controller device node
+ of MT8183
+Date: Mon, 15 Jul 2019 17:07:17 +0800
+Message-ID: <1563181637.6212.1.camel@mtksdaap41>
+References: <1560998286-9189-1-git-send-email-weiyi.lu@mediatek.com>
+         <1560998286-9189-15-git-send-email-weiyi.lu@mediatek.com>
+         <1561971461.12937.8.camel@mtksdaap41> <1563178045.17756.5.camel@mtksdaap41>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1562924653-10056-8-git-send-email-macpaul.lin@mediatek.com>
+In-Reply-To: <1563178045.17756.5.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Macpaul Lin <macpaul.lin@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Marc Zyngier <marc.zyngier@arm.com>, Ryder Lee <ryder.lee@mediatek.com>, Stephen Boyd <sboyd@kernel.org>, Sean Wang <sean.wang@mediatek.com>, Mars Cheng <mars.cheng@mediatek.com>, Owen Chen <owen.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, CC Hwang <cc.hwang@mediatek.com>, wsd_upstream@mediatek.com, Loda Chou <loda.chou@mediatek.com>, linux-serial@vger.kernel.org, linux-clk@vger.kernel.org
+To: CK Hu <ck.hu@mediatek.com>
+Cc: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, James Liao <jamesjj.liao@mediatek.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>, linux-mediatek@lists.infradead.org, Yong Wu <yong.wu@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Macpaul:
-
-On Fri, 2019-07-12 at 17:43 +0800, Macpaul Lin wrote:
-> From: Mars Cheng <mars.cheng@mediatek.com>
+On Mon, 2019-07-15 at 16:07 +0800, CK Hu wrote:
+> Hi, Weiyi:
 > 
-> Add basic chip support for Mediatek 6765, include
-> uart node with correct uart clocks, pwrap device
+> On Mon, 2019-07-01 at 16:57 +0800, CK Hu wrote:
+> > Hi, Weiyi:
+> > 
+> > On Thu, 2019-06-20 at 10:38 +0800, Weiyi Lu wrote:
+> > > Add power controller node and smi-common node for MT8183
+> > > In scpsys node, it contains clocks and regmapping of
+> > > infracfg and smi-common for bus protection.
+> > > 
+> > > Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> > > ---
+> > >  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 62 ++++++++++++++++++++++++++++++++
+> > >  1 file changed, 62 insertions(+)
+> > > 
+> > > diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > > index 08274bf..75c4881 100644
+> > > --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > > +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > > @@ -8,6 +8,7 @@
+> > >  #include <dt-bindings/clock/mt8183-clk.h>
+> > >  #include <dt-bindings/interrupt-controller/arm-gic.h>
+> > >  #include <dt-bindings/interrupt-controller/irq.h>
+> > > +#include <dt-bindings/power/mt8183-power.h>
+> > >  
+> > >  / {
+> > >  	compatible = "mediatek,mt8183";
+> > > @@ -196,6 +197,62 @@
+> > >  			#clock-cells = <1>;
+> > >  		};
+> > >  
+> > > +		scpsys: syscon@10006000 {
+> > > +			compatible = "mediatek,mt8183-scpsys", "syscon";
+> > > +			#power-domain-cells = <1>;
+> > > +			reg = <0 0x10006000 0 0x1000>;
+> > > +			clocks = <&topckgen CLK_TOP_MUX_AUD_INTBUS>,
+> > > +				 <&infracfg CLK_INFRA_AUDIO>,
+> > > +				 <&infracfg CLK_INFRA_AUDIO_26M_BCLK>,
+> > > +				 <&topckgen CLK_TOP_MUX_MFG>,
+> > > +				 <&topckgen CLK_TOP_MUX_MM>,
+> > > +				 <&topckgen CLK_TOP_MUX_CAM>,
+> > > +				 <&topckgen CLK_TOP_MUX_IMG>,
+> > > +				 <&topckgen CLK_TOP_MUX_IPU_IF>,
+> > > +				 <&topckgen CLK_TOP_MUX_DSP>,
+> > > +				 <&topckgen CLK_TOP_MUX_DSP1>,
+> > > +				 <&topckgen CLK_TOP_MUX_DSP2>,
+> > > +				 <&mmsys CLK_MM_SMI_COMMON>,
+> > > +				 <&mmsys CLK_MM_SMI_LARB0>,
+> > > +				 <&mmsys CLK_MM_SMI_LARB1>,
+> > > +				 <&mmsys CLK_MM_GALS_COMM0>,
+> > > +				 <&mmsys CLK_MM_GALS_COMM1>,
+> > > +				 <&mmsys CLK_MM_GALS_CCU2MM>,
+> > > +				 <&mmsys CLK_MM_GALS_IPU12MM>,
+> > > +				 <&mmsys CLK_MM_GALS_IMG2MM>,
+> > > +				 <&mmsys CLK_MM_GALS_CAM2MM>,
+> > > +				 <&mmsys CLK_MM_GALS_IPU2MM>,
 > 
-> Add clock controller nodes, include topckgen, infracfg,
-> apmixedsys and subsystem.
+> I've removed all mmsys clock in scpsys node and display still works, so
+> I think these subsys clock could be removed from scpsys node. It's
+> reasonable that subsys clock is controlled by subsys device or the
+> device use it. In MT2712 [1], the scpsys does not control subsys clock
+> and it works, so I think you should remove subsys clock in scpsys device
+> node.
 > 
-> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
-> Signed-off-by: Owen Chen <owen.chen@mediatek.com>
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> Acked-by: Marc Zyngier <marc.zyngier@arm.com>
-> ---
->  arch/arm64/boot/dts/mediatek/Makefile       |   1 +
->  arch/arm64/boot/dts/mediatek/mt6765-evb.dts |  33 +++
->  arch/arm64/boot/dts/mediatek/mt6765.dtsi    | 253 ++++++++++++++++++++
->  3 files changed, 287 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt6765-evb.dts
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt6765.dtsi
+> [1]
+> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/mediatek/mt2712e.dtsi?h=v5.2
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> index 458bbc422a94..22bdf1a99a62 100644
-> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -1,6 +1,7 @@
->  # SPDX-License-Identifier: GPL-2.0
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt2712-evb.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6755-evb.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt6765-evb.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-evb.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6765-evb.dts b/arch/arm64/boot/dts/mediatek/mt6765-evb.dts
-> new file mode 100644
-> index 000000000000..36dddff2b7f8
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt6765-evb.dts
-> @@ -0,0 +1,33 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * dts file for Mediatek MT6765
-> + *
-> + * (C) Copyright 2018. Mediatek, Inc.
-> + *
-> + * Mars Cheng <mars.cheng@mediatek.com>
-> + */
-> +
-> +/dts-v1/;
-> +#include "mt6765.dtsi"
-> +
-> +/ {
-> +	model = "MediaTek MT6765 EVB";
-> +	compatible = "mediatek,mt6765-evb", "mediatek,mt6765";
-> +
-> +	aliases {
-> +		serial0 = &uart0;
-> +	};
-> +
-> +	memory@40000000 {
-> +		device_type = "memory";
-> +		reg = <0 0x40000000 0 0x1e800000>;
-> +	};
-> +
-> +	chosen {
-> +		stdout-path = "serial0:921600n8";
-> +	};
-> +};
-> +
-> +&uart0 {
-> +	status = "okay";
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6765.dtsi b/arch/arm64/boot/dts/mediatek/mt6765.dtsi
-> new file mode 100644
-> index 000000000000..2662470fe607
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt6765.dtsi
-> @@ -0,0 +1,253 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * dts file for Mediatek MT6765
-> + *
-> + * (C) Copyright 2018. Mediatek, Inc.
-> + *
-> + * Mars Cheng <mars.cheng@mediatek.com>
-> + */
-> +
-> +#include <dt-bindings/interrupt-controller/irq.h>
-> +#include <dt-bindings/interrupt-controller/arm-gic.h>
-> +#include <dt-bindings/clock/mt6765-clk.h>
-> +
-> +/ {
-> +	compatible = "mediatek,mt6765";
-> +	interrupt-parent = <&sysirq>;
-> +	#address-cells = <2>;
-> +	#size-cells = <2>;
-> +
-> +	psci {
-> +		compatible = "arm,psci-0.2";
-> +		method = "smc";
-> +	};
-> +
-> +	cpus {
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +
-> +		cpu@0 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			enable-method = "psci";
-> +			reg = <0x000>;
-> +		};
-> +
-> +		cpu@1 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			enable-method = "psci";
-> +			reg = <0x001>;
-> +		};
-> +
-> +		cpu@2 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			enable-method = "psci";
-> +			reg = <0x002>;
-> +		};
-> +
-> +		cpu@3 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			enable-method = "psci";
-> +			reg = <0x003>;
-> +		};
-> +
-> +		cpu@100 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			enable-method = "psci";
-> +			reg = <0x100>;
-> +		};
-> +
-> +		cpu@101 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			enable-method = "psci";
-> +			reg = <0x101>;
-> +		};
-> +
-> +		cpu@102 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			enable-method = "psci";
-> +			reg = <0x102>;
-> +		};
-> +
-> +		cpu@103 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			enable-method = "psci";
-> +			reg = <0x103>;
-> +		};
-> +	};
-> +
-> +	clocks {
-> +		clk26m: clk26m {
-> +			compatible = "fixed-clock";
-> +			#clock-cells = <0>;
-> +			clock-frequency = <26000000>;
-> +		};
-> +
-> +		clk32k: clk32k {
-> +			compatible = "fixed-clock";
-> +			#clock-cells = <0>;
-> +			clock-frequency = <32000>;
-> +		};
-> +	};
-> +
-> +	timer {
-> +		compatible = "arm,armv8-timer";
-> +		interrupt-parent = <&gic>;
-> +		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>;
-> +	};
-> +
-> +	soc {
-> +		#address-cells = <2>;
-> +		#size-cells = <2>;
-> +		compatible = "simple-bus";
-> +		ranges;
-> +
-> +		gic: interrupt-controller@c000000 {
-> +			compatible = "arm,gic-v3";
-> +			#interrupt-cells = <3>;
-> +			#address-cells = <2>;
-> +			#size-cells = <2>;
-> +			interrupt-parent = <&gic>;
-> +			interrupt-controller;
-> +			reg = <0 0x0c000000 0 0x40000>,  /* GICD */
-> +			      <0 0x0c100000 0 0x200000>, /* GICR */
-> +			      <0 0x0c400000 0 0x2000>,   /* GICC */
-> +			      <0 0x0c410000 0 0x2000>,   /* GICH */
-> +			      <0 0x0c420000 0 0x20000>;  /* GICV */
-> +			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
-> +		};
-> +
-> +		topckgen: syscon@10000000 {
-> +			compatible = "mediatek,mt6765-topckgen", "syscon";
-> +			reg = <0 0x10000000 0 0x1000>;
-> +			#clock-cells = <1>;
-> +		};
-> +
-> +		infracfg: syscon@10001000 {
-> +			compatible = "mediatek,mt6765-infracfg", "syscon";
-> +			reg = <0 0x10001000 0 0x1000>;
-> +			interrupts = <GIC_SPI 147 IRQ_TYPE_EDGE_RISING>;
-> +			#clock-cells = <1>;
-> +		};
-> +
-> +		pericfg: pericfg@10003000 {
-> +			compatible = "mediatek,mt6765-pericfg", "syscon";
-> +			reg = <0 0x10003000 0 0x1000>;
-> +		};
-> +
-> +		scpsys: scpsys@10006000 {
-> +			compatible = "mediatek,mt6765-scpsys";
-> +			reg =	<0 0x10006000 0 0x1000>; /* spm */
-> +			#power-domain-cells = <1>;
-> +			clocks = <&topckgen CLK_TOP_MFG_SEL>,
-> +				 <&topckgen CLK_TOP_MM_SEL>,
-> +				 <&mmsys_config CLK_MM_SMI_COMMON>,
-> +				 <&mmsys_config CLK_MM_SMI_COMM0>,
-> +				 <&mmsys_config CLK_MM_SMI_COMM1>,
-> +				 <&mmsys_config CLK_MM_SMI_LARB0>,
+> Regards,
+> CK
+> 
 
-I think you should remove subsys clock in scpsys device node. I've
-discussed in [1].
+Hello CK,
 
-[1] https://patchwork.kernel.org/patch/11005731/
+Sorry, I can't agree with you at all.
+I thought you just created an environment where the MM (DISP) power
+domain could not be turned on and off properly.
+If you delete those mmsys clocks listed, bus protection will not work.
+These clocks are used for bus protection that I mentioned in patch [2].
+I guess you are now trying to solve the problem that mmsys blocks are
+used for probing two drivers. One for the display and another for the
+clock. Right?
+In the previous test you mentioned, you have affected the registration
+of mmsys clock first. This is why you saw the boot failure. I think boot
+failure is the real problem I should avoid if mmsys clock cannot probe.
 
-Regards,
-CK
+[2] https://patchwork.kernel.org/patch/11005747/
 
-> +				 <&imgsys CLK_IMG_LARB2>,
-> +				 <&mmsys_config CLK_MM_SMI_IMG>,
-> +				 <&camsys CLK_CAM_LARB3>,
-> +				 <&camsys CLK_CAM_DFP_VAD>,
-> +				 <&camsys CLK_CAM>,
-> +				 <&camsys CLK_CAM_CCU>,
-> +				 <&mmsys_config CLK_MM_SMI_CAM>;
-> +			clock-names = "mfg", "mm",
-> +				      "mm-0", "mm-1", "mm-2", "mm-3",
-> +				      "isp-0", "isp-1", "cam-0", "cam-1",
-> +				      "cam-2", "cam-3", "cam-4";
-> +			infracfg = <&infracfg>;
-> +			smi_comm = <&smi_common>;
-> +		};
-> +
-> +		apmixed: syscon@1000c000 {
-> +			compatible = "mediatek,mt6765-apmixedsys", "syscon";
-> +			reg = <0 0x1000c000 0 0x1000>;
-> +			#clock-cells = <1>;
-> +		};
-> +
-> +		sysirq: interrupt-controller@10200a80 {
-> +			compatible = "mediatek,mt6765-sysirq",
-> +				     "mediatek,mt6577-sysirq";
-> +			interrupt-controller;
-> +			#interrupt-cells = <3>;
-> +			interrupt-parent = <&gic>;
-> +			reg = <0 0x10200a80 0 0x50>;
-> +		};
-> +
-> +		uart0: serial@11002000 {
-> +			compatible = "mediatek,mt6765-uart",
-> +				     "mediatek,mt6577-uart";
-> +			reg = <0 0x11002000 0 0x400>;
-> +			interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>;
-> +			clocks = <&infracfg CLK_IFR_UART0>,
-> +				 <&infracfg CLK_IFR_AP_DMA>;
-> +			clock-names = "baud", "bus";
-> +			status = "disabled";
-> +		};
-> +
-> +		uart1: serial@11003000 {
-> +			compatible = "mediatek,mt6765-uart",
-> +				     "mediatek,mt6577-uart";
-> +			reg = <0 0x11003000 0 0x400>;
-> +			interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_LOW>;
-> +			clocks = <&infracfg CLK_IFR_UART1>,
-> +				 <&infracfg CLK_IFR_AP_DMA>;
-> +			clock-names = "baud", "bus";
-> +			status = "disabled";
-> +		};
-> +
-> +		audio: syscon@11220000 {
-> +			compatible = "mediatek,mt6765-audsys", "syscon";
-> +			reg = <0 0x11220000 0 0x1000>;
-> +			#clock-cells = <1>;
-> +		};
-> +
-> +		mipi_rx_ana_csi0a: syscon@11c10000 {
-> +			compatible = "mediatek,mt6765-mipi0a",
-> +				     "syscon";
-> +			reg = <0 0x11c10000 0 0x1000>;
-> +			#clock-cells = <1>;
-> +		};
-> +
-> +		mmsys_config: syscon@14000000 {
-> +			compatible = "mediatek,mt6765-mmsys", "syscon";
-> +			reg = <0 0x14000000 0 0x1000>;
-> +			interrupts = <GIC_SPI 227 IRQ_TYPE_LEVEL_LOW>;
-> +			#clock-cells = <1>;
-> +		};
-> +
-> +		smi_common: smi_common@14002000 {
-> +			compatible = "mediatek,mt6765-smi-common", "syscon";
-> +			reg = <0 0x14002000 0 0x1000>;
-> +		};
-> +
-> +		imgsys: syscon@15020000 {
-> +			compatible = "mediatek,mt6765-imgsys", "syscon";
-> +			reg = <0 0x15020000 0 0x1000>;
-> +			#clock-cells = <1>;
-> +		};
-> +
-> +		venc_gcon: syscon@17000000 {
-> +			compatible = "mediatek,mt6765-vcodecsys", "syscon";
-> +			reg = <0 0x17000000 0 0x10000>;
-> +			#clock-cells = <1>;
-> +		};
-> +
-> +		camsys: syscon@1a000000  {
-> +			compatible = "mediatek,mt6765-camsys", "syscon";
-> +			reg = <0 0x1a000000 0 0x1000>;
-> +			#clock-cells = <1>;
-> +		};
-> +	}; /* end of soc */
-> +};
+> 
+> > 
+> > Up to now, MT8183 mmsys has the same resource with another device node:
+> > 
+> > 		mmsys: syscon@14000000 {
+> > 			compatible = "mediatek,mt8183-mmsys", "syscon";
+> > 			reg = <0 0x14000000 0 0x1000>;
+> > 			#clock-cells = <1>;
+> > 		};
+> > 
+> > 		display_components: dispsys@14000000 {
+> > 			compatible = "mediatek,mt8183-display";
+> > 			reg = <0 0x14000000 0 0x1000>;
+> > 			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
+> > 		};
+> > 
+> > I think this two node should be merge into one node, so I've try to
+> > merge them:
+> > 
+> > 		mmsys: syscon@14000000 {
+> > 			compatible = "mediatek,mt8183-mmsys", "syscon";
+> > 			reg = <0 0x14000000 0 0x1000>;
+> > 			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
+> > 			#clock-cells = <1>;
+> > 		};
+> > 
+> > But I got a kernel panic when boot,
+> > 
+> > [    3.458523] Unable to handle kernel paging request at virtual address
+> > fffffffffffffdfb
+> > [    3.466999] Mem abort info:
+> > [    3.470116]   ESR = 0x96000005
+> > [    3.473268]   Exception class = DABT (current EL), IL = 32 bits
+> > [    3.479375]   SET = 0, FnV = 0
+> > [    3.482530]   EA = 0, S1PTW = 0
+> > [    3.485785] Data abort info:
+> > [    3.488831]   ISV = 0, ISS = 0x00000005
+> > [    3.493067]   CM = 0, WnR = 0
+> > [    3.496229] swapper pgtable: 4k pages, 39-bit VAs, pgdp =
+> > 000000004f8fa26d
+> > [    3.503214] [fffffffffffffdfb] pgd=0000000000000000,
+> > pud=0000000000000000
+> > [    3.510408] Internal error: Oops: 96000005 [#1] PREEMPT SMP
+> > [    3.515974] Modules linked in:
+> > [    3.519023] Process kworker/0:3 (pid: 106, stack limit =
+> > 0x00000000281d0651)
+> > [    3.526066] CPU: 0 PID: 106 Comm: kworker/0:3 Tainted: G        W
+> > 4.19.43 #208
+> > [    3.533974] Hardware name: MediaTek kukui rev1 board (DT)
+> > [    3.539374] Workqueue: events deferred_probe_work_func
+> > [    3.544507] pstate: 20000005 (nzCv daif -PAN -UAO)
+> > [    3.549294] pc : clk_prepare+0x18/0x40
+> > [    3.553038] lr : scpsys_clk_enable+0x40/0xb4
+> > [    3.557299] sp : ffffff800855b9e0
+> > [    3.560606] x29: ffffff800855b9f0 x28: ffffff93e1e5f594
+> > [    3.565911] x27: 000000000000000f x26: ffffff93e1e5e9b8
+> > [    3.571217] x25: 000000003b9aca00 x24: ffffff800858530c
+> > [    3.576522] x23: ffffffffffffffff x22: fffffffffffffdfb
+> > [    3.581827] x21: 000000000000000a x20: ffffffccb89aafc8
+> > [    3.587132] x19: fffffffffffffdfb x18: 00005a5c77082016
+> > [    3.592438] x17: 0000000000000400 x16: 0000000000000001
+> > [    3.597743] x15: 0000000000000009 x14: ffffff93e271c908
+> > [    3.603048] x13: 0000000000000b22 x12: 0000000000000008
+> > [    3.608353] x11: 0000000001d063de x10: 0000000000000008
+> > [    3.613659] x9 : 00000000ffffffed x8 : 0000000000000000
+> > [    3.618964] x7 : 736d6c2dff7224fe x6 : 0000008000000000
+> > [    3.624269] x5 : 0000000000000000 x4 : 0000000080000000
+> > [    3.629575] x3 : 002f6d6e74000000 x2 : 0000000000000000
+> > [    3.634880] x1 : 000000000000000a x0 : fffffffffffffdfb
+> > [    3.640185] Call trace:
+> > [    3.642625]  clk_prepare+0x18/0x40
+> > [    3.646019]  scpsys_clk_enable+0x40/0xb4
+> > [    3.649935]  scpsys_power_on+0x13c/0x304
+> > [    3.653850]  scpsys_probe+0xe0/0x5fc
+> > [    3.657419]  platform_drv_probe+0x80/0xb0
+> > [    3.661420]  really_probe+0x114/0x28c
+> > [    3.665075]  driver_probe_device+0x64/0xfc
+> > [    3.669164]  __device_attach_driver+0xb8/0xd0
+> > [    3.673513]  bus_for_each_drv+0x88/0xd0
+> > [    3.677341]  __device_attach+0xac/0x130
+> > [    3.681169]  device_initial_probe+0x20/0x2c
+> > [    3.685344]  bus_probe_device+0x34/0x90
+> > [    3.689172]  deferred_probe_work_func+0x74/0xac
+> > [    3.693698]  process_one_work+0x210/0x420
+> > [    3.697700]  worker_thread+0x278/0x3e4
+> > [    3.701443]  kthread+0x11c/0x12c
+> > [    3.704665]  ret_from_fork+0x10/0x18
+> > 
+> > I'm not really understand what happen, but scpsys and mmsys point to
+> > each other in MT8183. Why these two node point to each other in MT8183?
+> > If this is really hardware limitation, we need to solve this in driver.
+> > If this is not a hardware limitation, I would like to re-organize device
+> > tree to prevent this problem.
+> > 
+> > Regards,
+> > CK
+> > 
+> > 
+> > > +				 <&imgsys CLK_IMG_LARB5>,
+> > > +				 <&imgsys CLK_IMG_LARB2>,
+> > > +				 <&camsys CLK_CAM_LARB6>,
+> > > +				 <&camsys CLK_CAM_LARB3>,
+> > > +				 <&camsys CLK_CAM_SENINF>,
+> > > +				 <&camsys CLK_CAM_CAMSV0>,
+> > > +				 <&camsys CLK_CAM_CAMSV1>,
+> > > +				 <&camsys CLK_CAM_CAMSV2>,
+> > > +				 <&camsys CLK_CAM_CCU>,
+> > > +				 <&ipu_conn CLK_IPU_CONN_IPU>,
+> > > +				 <&ipu_conn CLK_IPU_CONN_AHB>,
+> > > +				 <&ipu_conn CLK_IPU_CONN_AXI>,
+> > > +				 <&ipu_conn CLK_IPU_CONN_ISP>,
+> > > +				 <&ipu_conn CLK_IPU_CONN_CAM_ADL>,
+> > > +				 <&ipu_conn CLK_IPU_CONN_IMG_ADL>;
+> > > +			clock-names = "audio", "audio1", "audio2",
+> > > +				      "mfg", "mm", "cam",
+> > > +				      "isp", "vpu", "vpu1",
+> > > +				      "vpu2", "vpu3", "mm-0",
+> > > +				      "mm-1", "mm-2", "mm-3",
+> > > +				      "mm-4", "mm-5", "mm-6",
+> > > +				      "mm-7", "mm-8", "mm-9",
+> > > +				      "isp-0", "isp-1", "cam-0",
+> > > +				      "cam-1", "cam-2", "cam-3",
+> > > +				      "cam-4", "cam-5", "cam-6",
+> > > +				      "vpu-0", "vpu-1", "vpu-2",
+> > > +				      "vpu-3", "vpu-4", "vpu-5";
+> > > +			infracfg = <&infracfg>;
+> > > +			smi_comm = <&smi_common>;
+> > > +		};
+> > > +
+> > >  		apmixedsys: syscon@1000c000 {
+> > >  			compatible = "mediatek,mt8183-apmixedsys", "syscon";
+> > >  			reg = <0 0x1000c000 0 0x1000>;
+> > > @@ -260,6 +317,11 @@
+> > >  			#clock-cells = <1>;
+> > >  		};
+> > >  
+> > > +		smi_common: smi@14019000 {
+> > > +			compatible = "mediatek,mt8183-smi-common", "syscon";
+> > > +			reg = <0 0x14019000 0 0x1000>;
+> > > +		};
+> > > +
+> > >  		imgsys: syscon@15020000 {
+> > >  			compatible = "mediatek,mt8183-imgsys", "syscon";
+> > >  			reg = <0 0x15020000 0 0x1000>;
+> > 
+> 
+> 
