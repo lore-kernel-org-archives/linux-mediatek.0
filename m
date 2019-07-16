@@ -1,128 +1,48 @@
 From: Ryan Case <ryandcase@chromium.org>
-Subject: Re: [PATCH v4, 23/33] drm/mediatek: add ovl0/ovl_2l0 usecase
-Date: Tue, 16 Jul 2019 16:13:26 -0700
-Message-ID: <CACjz--=Wn4BH_EwEm0DD-vUxB796wUy5Z3MLiOSeiOZXa92r_w@mail.gmail.com>
-References: <1562625253-29254-1-git-send-email-yongqiang.niu@mediatek.com> <1562625253-29254-24-git-send-email-yongqiang.niu@mediatek.com>
+Subject: Re: [PATCH v4, 06/33] dt-bindings: mediatek: add mutex description
+ for mt8183 display
+Date: Tue, 16 Jul 2019 16:59:23 -0700
+Message-ID: <CACjz--k0wVpxWTBXQeUHqm50RgvaCNkNb3DO+KviCOtq-e9gTQ@mail.gmail.com>
+References: <1562625253-29254-1-git-send-email-yongqiang.niu@mediatek.com> <1562625253-29254-7-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1562625253-29254-24-git-send-email-yongqiang.niu@mediatek.com>
+In-Reply-To: <1562625253-29254-7-git-send-email-yongqiang.niu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: yongqiang.niu@mediatek.com
 Cc: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Mark Rutland <mark.rutland@arm.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jul 8, 2019 at 3:35 PM <yongqiang.niu@mediatek.com> wrote:
+On Mon, Jul 8, 2019 at 3:37 PM <yongqiang.niu@mediatek.com> wrote:
 >
 > From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 >
-> This patch add ovl0/ovl_2l0 usecase
-> in ovl->ovl_2l0 direct link usecase:
-> 1. the crtc support layer number will 4+2
-> 2. ovl_2l0 background color input select ovl0 when crtc init
-> and disable it when crtc finish
-> 3. config ovl_2l0 layer, if crtc config layer number is
-> bigger than ovl0 support layers(max is 4)
+> This patch add mutex description for mt8183 display
 >
 > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
 > ---
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 38 +++++++++++++++++++++++++++++++--
->  1 file changed, 36 insertions(+), 2 deletions(-)
+>  Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt | 1 +
+>  1 file changed, 1 insertion(+)
 >
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> index 5eac376..9ee9ce2 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> @@ -282,6 +282,15 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
->
->         for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
->                 struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[i];
-> +               enum mtk_ddp_comp_id prev;
-> +
-> +               if (i > 0)
-> +                       prev = mtk_crtc->ddp_comp[i - 1]->id;
-> +               else
-> +                       prev = DDP_COMPONENT_ID_MAX;
-> +
-> +               if (prev == DDP_COMPONENT_OVL0)
-> +                       mtk_ddp_comp_bgclr_in_on(comp);
->
->                 mtk_ddp_comp_config(comp, width, height, vrefresh, bpc);
->                 mtk_ddp_comp_start(comp);
-> @@ -291,9 +300,18 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
->         for (i = 0; i < mtk_crtc->layer_nr; i++) {
->                 struct drm_plane *plane = &mtk_crtc->planes[i];
->                 struct mtk_plane_state *plane_state;
-> +               struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
-> +               unsigned int comp_layer_nr = mtk_ddp_comp_layer_nr(comp);
-> +               unsigned int local_layer;
->
->                 plane_state = to_mtk_plane_state(plane->state);
-> -               mtk_ddp_comp_layer_config(mtk_crtc->ddp_comp[0], i,
-> +
-> +               if (i >= comp_layer_nr) {
-> +                       comp = mtk_crtc->ddp_comp[1];
-> +                       local_layer = i - comp_layer_nr;
-> +               } else
-> +                       local_layer = i;
-> +               mtk_ddp_comp_layer_config(comp , local_layer,
->                                           plane_state);
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+> index bb9274a..4a22d49 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+> @@ -53,6 +53,7 @@ Required properties (all function blocks):
+>    For most function blocks this is just a single clock input. Only the DSI and
+>    DPI controller nodes have multiple clock inputs. These are documented in
+>    mediatek,dsi.txt and mediatek,dpi.txt, respectively.
+> +  for MT8183 mutex, this hardware is always free run, has no clocks control
 
-There is an extra space after comp.
+This should have capitalization, punctuation, and drop the trailing space.
 
-This whole loop is essentially identical to the one found in
-mtk_crtc_ddp_config below. It would be nice to either move that loop
-to a dedicated function called from both spots or allow
-mtk_crtc_ddp_config to be called from here.
+It also reads a little strangely. You may want something like "An
+exception is that the mt8183 mutex is always free running with no
+clocks property."
 
->         }
 >
-> @@ -319,6 +337,7 @@ static void mtk_crtc_ddp_hw_fini(struct mtk_drm_crtc *mtk_crtc)
->                                            mtk_crtc->ddp_comp[i]->id);
->         mtk_disp_mutex_disable(mtk_crtc->mutex);
->         for (i = 0; i < mtk_crtc->ddp_comp_nr - 1; i++) {
-> +               mtk_ddp_comp_bgclr_in_off(mtk_crtc->ddp_comp[i]);
->                 mtk_ddp_remove_comp_from_path(mtk_crtc->config_regs,
->                                               mtk_crtc->mmsys_reg_data,
->                                               mtk_crtc->ddp_comp[i]->id,
-> @@ -339,6 +358,8 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
->         struct mtk_crtc_state *state = to_mtk_crtc_state(mtk_crtc->base.state);
->         struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
->         unsigned int i;
-> +       unsigned int comp_layer_nr = mtk_ddp_comp_layer_nr(comp);
-> +       unsigned int local_layer;
->
->         /*
->          * TODO: instead of updating the registers here, we should prepare
-> @@ -361,7 +382,14 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
->                         plane_state = to_mtk_plane_state(plane->state);
->
->                         if (plane_state->pending.config) {
-> -                               mtk_ddp_comp_layer_config(comp, i, plane_state);
-> +                               if (i >= comp_layer_nr) {
-> +                                       comp = mtk_crtc->ddp_comp[1];
-> +                                       local_layer = i - comp_layer_nr;
-> +                               } else
-> +                                       local_layer = i;
-> +
-> +                               mtk_ddp_comp_layer_config(comp, local_layer,
-> +                                                         plane_state);
->                                 plane_state->pending.config = false;
->                         }
->                 }
-> @@ -592,6 +620,12 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
->         }
->
->         mtk_crtc->layer_nr = mtk_ddp_comp_layer_nr(mtk_crtc->ddp_comp[0]);
-> +       if (mtk_crtc->ddp_comp_nr > 1) {
-> +               struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[1];
-> +
-> +               if (comp->funcs->bgclr_in_on)
-> +                       mtk_crtc->layer_nr += mtk_ddp_comp_layer_nr(comp);
-> +       }
->         mtk_crtc->planes = devm_kcalloc(dev, mtk_crtc->layer_nr,
->                                         sizeof(struct drm_plane),
->                                         GFP_KERNEL);
+>  Required properties (DMA function blocks):
+>  - compatible: Should be one of
 > --
 > 1.8.1.1.dirty
 >
