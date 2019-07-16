@@ -1,213 +1,128 @@
-From: Alex Deucher <alexdeucher@gmail.com>
-Subject: Re: [PATCH v2 19/19] drm/mediatek: drop use of drmP.h
-Date: Tue, 16 Jul 2019 10:02:53 -0400
-Message-ID: <CADnq5_NL0v941Pg0+=ova-6N4jm1nmFzj9To5oQBRSqeYbzLWA@mail.gmail.com>
-References: <20190716064220.18157-1-sam@ravnborg.org>
- <20190716064220.18157-20-sam@ravnborg.org>
+From: Ryan Case <ryandcase@chromium.org>
+Subject: Re: [PATCH v4, 23/33] drm/mediatek: add ovl0/ovl_2l0 usecase
+Date: Tue, 16 Jul 2019 16:13:26 -0700
+Message-ID: <CACjz--=Wn4BH_EwEm0DD-vUxB796wUy5Z3MLiOSeiOZXa92r_w@mail.gmail.com>
+References: <1562625253-29254-1-git-send-email-yongqiang.niu@mediatek.com> <1562625253-29254-24-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190716064220.18157-20-sam@ravnborg.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sam Ravnborg <sam@ravnborg.org>
-Cc: David Airlie <airlied@linux.ie>, Maling list - DRI developers <dri-devel@lists.freedesktop.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Emil Velikov <emil.velikov@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1562625253-29254-24-git-send-email-yongqiang.niu@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: yongqiang.niu@mediatek.com
+Cc: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Mark Rutland <mark.rutland@arm.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVHVlLCBKdWwgMTYsIDIwMTkgYXQgMjo0NSBBTSBTYW0gUmF2bmJvcmcgPHNhbUByYXZuYm9y
-Zy5vcmc+IHdyb3RlOgo+Cj4gRHJvcCB1c2Ugb2YgdGhlIGRlcHJlY2F0ZWQgZHJtUC5oIGhlYWRl
-ciBmaWxlLgo+Cj4gV2hpbGUgdG91Y2hpbmcgdGhlIGluY2x1ZGUgZmlsZXMgZGl2aWRlIHRoZW0g
-dXAgaW4gYmxvY2tzCj4gaW4gdGhlIHR5cGljYWwgb3JkZXI6Cj4KPiBcI2luY2x1ZGUgPGxpbnV4
-Lyo+Cj4KPiBcI2luY2x1ZGUgPHZpZGVvLyo+Cj4KPiBcI2luY2x1ZGUgPGRybS8qPgo+Cj4gXCNp
-bmNsdWRlICIiCj4KPiBBbmQgc29ydCB0aGUgaW5jbHVkZXMgaW4gdGhlIGJsb2Nrcwo+IEFkZCB0
-aGUgbmVjZXNzYXJ5IGluY2x1ZGVzIHRvIGZpeCBidWlsZCBhZnRlciByZW1vdmFsIG9mIGRybVAu
-aAo+Cj4gU2lnbmVkLW9mZi1ieTogU2FtIFJhdm5ib3JnIDxzYW1AcmF2bmJvcmcub3JnPgo+IEFj
-a2VkLWJ5OiBFbWlsIFZlbGlrb3YgPGVtaWwudmVsaWtvdkBjb2xsYWJvcmEuY29tPgo+IENjOiBD
-SyBIdSA8Y2suaHVAbWVkaWF0ZWsuY29tPgo+IENjOiBQaGlsaXBwIFphYmVsIDxwLnphYmVsQHBl
-bmd1dHJvbml4LmRlPgo+IENjOiBEYXZpZCBBaXJsaWUgPGFpcmxpZWRAbGludXguaWU+Cj4gQ2M6
-IERhbmllbCBWZXR0ZXIgPGRhbmllbEBmZndsbC5jaD4KPiBDYzogTWF0dGhpYXMgQnJ1Z2dlciA8
-bWF0dGhpYXMuYmdnQGdtYWlsLmNvbT4KPiBDYzogbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZy
-YWRlYWQub3JnCj4gQ2M6IGxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKCgpSZXZp
-ZXdlZC1ieTogQWxleCBEZXVjaGVyIDxhbGV4YW5kZXIuZGV1Y2hlckBhbWQuY29tPgoKPiAtLS0K
-PiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX2NvbG9yLmMgICB8ICAyICstCj4g
-IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9vdmwuYyAgICAgfCAgMiArLQo+ICBk
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5jICAgIHwgIDIgKy0KPiAgZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYyAgICAgICAgICB8IDE4ICsrKysrKysrKyst
-LS0tLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMgICAgIHwg
-MTAgKysrKysrLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29t
-cC5jIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMgICAg
-ICB8IDE2ICsrKysrKysrKystLS0tLS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
-cm1fZmIuYyAgICAgICB8ICA3ICsrKystLS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19kcm1fZ2VtLmMgICAgICB8ICA2ICsrKystLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2RybV9wbGFuZS5jICAgIHwgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19kc2kuYyAgICAgICAgICB8IDE0ICsrKysrKysrLS0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfaGRtaS5jICAgICAgICAgfCAxNCArKysrKysrKystLS0tLQo+ICAxMiBmaWxl
-cyBjaGFuZ2VkLCA1NiBpbnNlcnRpb25zKCspLCAzOSBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1n
-aXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfY29sb3IuYyBiL2RyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9jb2xvci5jCj4gaW5kZXggZjMzZDk4YjM1NmQ2Li41
-OWRlMmE0NmFhNDkgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
-aXNwX2NvbG9yLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfY29s
-b3IuYwo+IEBAIC0zLDkgKzMsOSBAQAo+ICAgKiBDb3B5cmlnaHQgKGMpIDIwMTcgTWVkaWFUZWsg
-SW5jLgo+ICAgKi8KPgo+IC0jaW5jbHVkZSA8ZHJtL2RybVAuaD4KPiAgI2luY2x1ZGUgPGxpbnV4
-L2Nsay5oPgo+ICAjaW5jbHVkZSA8bGludXgvY29tcG9uZW50Lmg+Cj4gKyNpbmNsdWRlIDxsaW51
-eC9tb2R1bGUuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L29mX2RldmljZS5oPgo+ICAjaW5jbHVkZSA8
-bGludXgvb2ZfaXJxLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPiBk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bC5jIGIvZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bC5jCj4gaW5kZXggYzRmMDdjMjhjNzRm
-Li4yMTg1MTc1NmM1NzkgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19kaXNwX292bC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292
-bC5jCj4gQEAgLTMsOSArMyw5IEBACj4gICAqIENvcHlyaWdodCAoYykgMjAxNSBNZWRpYVRlayBJ
-bmMuCj4gICAqLwo+Cj4gLSNpbmNsdWRlIDxkcm0vZHJtUC5oPgo+ICAjaW5jbHVkZSA8bGludXgv
-Y2xrLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9jb21wb25lbnQuaD4KPiArI2luY2x1ZGUgPGxpbnV4
-L21vZHVsZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvb2ZfZGV2aWNlLmg+Cj4gICNpbmNsdWRlIDxs
-aW51eC9vZl9pcnEuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgo+IGRp
-ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5jIGIvZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYwo+IGluZGV4IDlhNmYwYTI5ZTQz
-Yy4uNDA1YWZlZjMxNDA3IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZGlzcF9yZG1hLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bf
-cmRtYS5jCj4gQEAgLTMsOSArMyw5IEBACj4gICAqIENvcHlyaWdodCAoYykgMjAxNSBNZWRpYVRl
-ayBJbmMuCj4gICAqLwo+Cj4gLSNpbmNsdWRlIDxkcm0vZHJtUC5oPgo+ICAjaW5jbHVkZSA8bGlu
-dXgvY2xrLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9jb21wb25lbnQuaD4KPiArI2luY2x1ZGUgPGxp
-bnV4L21vZHVsZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvb2ZfZGV2aWNlLmg+Cj4gICNpbmNsdWRl
-IDxsaW51eC9vZl9pcnEuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgo+
-IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jIGIvZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYwo+IGluZGV4IGJhY2Q5ODljYzlhYS4uYmU2ZDk1
-YzVmZjI1IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBpLmMK
-PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jCj4gQEAgLTMsMjEgKzMs
-MjMgQEAKPiAgICogQ29weXJpZ2h0IChjKSAyMDE0IE1lZGlhVGVrIEluYy4KPiAgICogQXV0aG9y
-OiBKaWUgUWl1IDxqaWUucWl1QG1lZGlhdGVrLmNvbT4KPiAgICovCj4gLSNpbmNsdWRlIDxkcm0v
-ZHJtUC5oPgo+IC0jaW5jbHVkZSA8ZHJtL2RybV9jcnRjLmg+Cj4gLSNpbmNsdWRlIDxkcm0vZHJt
-X2F0b21pY19oZWxwZXIuaD4KPiAtI2luY2x1ZGUgPGRybS9kcm1fb2YuaD4KPiAtI2luY2x1ZGUg
-PGxpbnV4L2tlcm5lbC5oPgo+ICsKPiArI2luY2x1ZGUgPGxpbnV4L2Nsay5oPgo+ICAjaW5jbHVk
-ZSA8bGludXgvY29tcG9uZW50Lmg+Cj4gLSNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2Uu
-aD4KPiArI2luY2x1ZGUgPGxpbnV4L2ludGVycnVwdC5oPgo+ICsjaW5jbHVkZSA8bGludXgva2Vy
-bmVsLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9vZi5oPgo+ICAjaW5jbHVkZSA8bGludXgvb2ZfZGV2
-aWNlLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9vZl9ncmFwaC5oPgo+IC0jaW5jbHVkZSA8bGludXgv
-aW50ZXJydXB0Lmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPiAgI2lu
-Y2x1ZGUgPGxpbnV4L3R5cGVzLmg+Cj4gLSNpbmNsdWRlIDxsaW51eC9jbGsuaD4KPiArCj4gICNp
-bmNsdWRlIDx2aWRlby92aWRlb21vZGUuaD4KPgo+ICsjaW5jbHVkZSA8ZHJtL2RybV9hdG9taWNf
-aGVscGVyLmg+Cj4gKyNpbmNsdWRlIDxkcm0vZHJtX2NydGMuaD4KPiArI2luY2x1ZGUgPGRybS9k
-cm1fb2YuaD4KPiArCj4gICNpbmNsdWRlICJtdGtfZHBpX3JlZ3MuaCIKPiAgI2luY2x1ZGUgIm10
-a19kcm1fZGRwX2NvbXAuaCIKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RybV9jcnRjLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRj
-LmMKPiBpbmRleCBhOTAwNzIxMGRkYTEuLjM0YTczMTc1NTc5MSAxMDA2NDQKPiAtLS0gYS9kcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMKPiArKysgYi9kcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMKPiBAQCAtMywxNCArMywxNiBAQAo+ICAgKiBDb3B5
-cmlnaHQgKGMpIDIwMTUgTWVkaWFUZWsgSW5jLgo+ICAgKi8KPgo+ICsjaW5jbHVkZSA8bGludXgv
-Y2xrLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9wbV9ydW50aW1lLmg+Cj4gKwo+ICAjaW5jbHVkZSA8
-YXNtL2JhcnJpZXIuaD4KPiAtI2luY2x1ZGUgPGRybS9kcm1QLmg+Cj4gKyNpbmNsdWRlIDxzb2Mv
-bWVkaWF0ZWsvc21pLmg+Cj4gKwo+ICAjaW5jbHVkZSA8ZHJtL2RybV9hdG9taWNfaGVscGVyLmg+
-Cj4gICNpbmNsdWRlIDxkcm0vZHJtX3BsYW5lX2hlbHBlci5oPgo+ICAjaW5jbHVkZSA8ZHJtL2Ry
-bV9wcm9iZV9oZWxwZXIuaD4KPiAtI2luY2x1ZGUgPGxpbnV4L2Nsay5oPgo+IC0jaW5jbHVkZSA8
-bGludXgvcG1fcnVudGltZS5oPgo+IC0jaW5jbHVkZSA8c29jL21lZGlhdGVrL3NtaS5oPgo+ICsj
-aW5jbHVkZSA8ZHJtL2RybV92YmxhbmsuaD4KPgo+ICAjaW5jbHVkZSAibXRrX2RybV9kcnYuaCIK
-PiAgI2luY2x1ZGUgIm10a19kcm1fY3J0Yy5oIgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19kcm1fZGRwX2NvbXAuYwo+IGluZGV4IGIzODk2M2YxZjJlYy4uZWZhODU5NzNlNDZiIDEw
-MDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMK
-PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jCj4gQEAg
-LTEyLDcgKzEyLDcgQEAKPiAgI2luY2x1ZGUgPGxpbnV4L29mX2lycS5oPgo+ICAjaW5jbHVkZSA8
-bGludXgvb2ZfcGxhdGZvcm0uaD4KPiAgI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5o
-Pgo+IC0jaW5jbHVkZSA8ZHJtL2RybVAuaD4KPiArCj4gICNpbmNsdWRlICJtdGtfZHJtX2Rydi5o
-Igo+ICAjaW5jbHVkZSAibXRrX2RybV9wbGFuZS5oIgo+ICAjaW5jbHVkZSAibXRrX2RybV9kZHBf
-Y29tcC5oIgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9k
-cnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gaW5kZXggMmQ1
-Y2FmNTMyNDMxLi4yZWU4MDlhNmYzZGMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19kcm1fZHJ2LmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2RybV9kcnYuYwo+IEBAIC00LDIyICs0LDI2IEBACj4gICAqIEF1dGhvcjogWVQgU0hFTiA8eXQu
-c2hlbkBtZWRpYXRlay5jb20+Cj4gICAqLwo+Cj4gLSNpbmNsdWRlIDxkcm0vZHJtUC5oPgo+ICsj
-aW5jbHVkZSA8bGludXgvY29tcG9uZW50Lmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9pb21tdS5oPgo+
-ICsjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9vZl9hZGRyZXNz
-Lmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9vZl9wbGF0Zm9ybS5oPgo+ICsjaW5jbHVkZSA8bGludXgv
-cG1fcnVudGltZS5oPgo+ICsKPiAgI2luY2x1ZGUgPGRybS9kcm1fYXRvbWljLmg+Cj4gICNpbmNs
-dWRlIDxkcm0vZHJtX2F0b21pY19oZWxwZXIuaD4KPiArI2luY2x1ZGUgPGRybS9kcm1fZHJ2Lmg+
-Cj4gICNpbmNsdWRlIDxkcm0vZHJtX2ZiX2hlbHBlci5oPgo+ICAjaW5jbHVkZSA8ZHJtL2RybV9n
-ZW0uaD4KPiAgI2luY2x1ZGUgPGRybS9kcm1fZ2VtX2NtYV9oZWxwZXIuaD4KPiAgI2luY2x1ZGUg
-PGRybS9kcm1fb2YuaD4KPiAgI2luY2x1ZGUgPGRybS9kcm1fcHJvYmVfaGVscGVyLmg+Cj4gLSNp
-bmNsdWRlIDxsaW51eC9jb21wb25lbnQuaD4KPiAtI2luY2x1ZGUgPGxpbnV4L2lvbW11Lmg+Cj4g
-LSNpbmNsdWRlIDxsaW51eC9vZl9hZGRyZXNzLmg+Cj4gLSNpbmNsdWRlIDxsaW51eC9vZl9wbGF0
-Zm9ybS5oPgo+IC0jaW5jbHVkZSA8bGludXgvcG1fcnVudGltZS5oPgo+ICsjaW5jbHVkZSA8ZHJt
-L2RybV92YmxhbmsuaD4KPgo+ICAjaW5jbHVkZSAibXRrX2RybV9jcnRjLmgiCj4gICNpbmNsdWRl
-ICJtdGtfZHJtX2RkcC5oIgo+ICsjaW5jbHVkZSAibXRrX2RybV9kZHAuaCIKPiAgI2luY2x1ZGUg
-Im10a19kcm1fZGRwX2NvbXAuaCIKPiAgI2luY2x1ZGUgIm10a19kcm1fZHJ2LmgiCj4gICNpbmNs
-dWRlICJtdGtfZHJtX2ZiLmgiCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfZHJtX2ZiLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9mYi5jCj4g
-aW5kZXggMzk2YmE0OTc5ODZkLi5hZTQwYjA4MGFlNDcgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19kcm1fZmIuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRp
-YXRlay9tdGtfZHJtX2ZiLmMKPiBAQCAtMywxMyArMywxNCBAQAo+ICAgKiBDb3B5cmlnaHQgKGMp
-IDIwMTUgTWVkaWFUZWsgSW5jLgo+ICAgKi8KPgo+IC0jaW5jbHVkZSA8ZHJtL2RybVAuaD4KPiAr
-I2luY2x1ZGUgPGxpbnV4L2RtYS1idWYuaD4KPiArI2luY2x1ZGUgPGxpbnV4L3Jlc2VydmF0aW9u
-Lmg+Cj4gKwo+ICAjaW5jbHVkZSA8ZHJtL2RybV9tb2Rlc2V0X2hlbHBlci5oPgo+ICAjaW5jbHVk
-ZSA8ZHJtL2RybV9mYl9oZWxwZXIuaD4KPiArI2luY2x1ZGUgPGRybS9kcm1fZm91cmNjLmg+Cj4g
-ICNpbmNsdWRlIDxkcm0vZHJtX2dlbS5oPgo+ICAjaW5jbHVkZSA8ZHJtL2RybV9nZW1fZnJhbWVi
-dWZmZXJfaGVscGVyLmg+Cj4gLSNpbmNsdWRlIDxsaW51eC9kbWEtYnVmLmg+Cj4gLSNpbmNsdWRl
-IDxsaW51eC9yZXNlcnZhdGlvbi5oPgo+Cj4gICNpbmNsdWRlICJtdGtfZHJtX2Rydi5oIgo+ICAj
-aW5jbHVkZSAibXRrX2RybV9mYi5oIgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2RybV9nZW0uYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2dl
-bS5jCj4gaW5kZXggMGQ2OTY5OGY4MTczLi45NDM0Zjg4YzYzNDEgMTAwNjQ0Cj4gLS0tIGEvZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZ2VtLmMKPiArKysgYi9kcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uYwo+IEBAIC0zLDEwICszLDEyIEBACj4gICAqIENvcHly
-aWdodCAoYykgMjAxNSBNZWRpYVRlayBJbmMuCj4gICAqLwo+Cj4gLSNpbmNsdWRlIDxkcm0vZHJt
-UC5oPgo+IC0jaW5jbHVkZSA8ZHJtL2RybV9nZW0uaD4KPiAgI2luY2x1ZGUgPGxpbnV4L2RtYS1i
-dWYuaD4KPgo+ICsjaW5jbHVkZSA8ZHJtL2RybV9kZXZpY2UuaD4KPiArI2luY2x1ZGUgPGRybS9k
-cm1fZ2VtLmg+Cj4gKyNpbmNsdWRlIDxkcm0vZHJtX3ByaW1lLmg+Cj4gKwo+ICAjaW5jbHVkZSAi
-bXRrX2RybV9kcnYuaCIKPiAgI2luY2x1ZGUgIm10a19kcm1fZ2VtLmgiCj4KPiBkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fcGxhbmUuYyBiL2RyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9tdGtfZHJtX3BsYW5lLmMKPiBpbmRleCA0MmNjOTgyM2VhYWEuLjU4NGE5
-ZWNhZGNlNiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9w
-bGFuZS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fcGxhbmUuYwo+
-IEBAIC00LDkgKzQsOSBAQAo+ICAgKiBBdXRob3I6IENLIEh1IDxjay5odUBtZWRpYXRlay5jb20+
-Cj4gICAqLwo+Cj4gLSNpbmNsdWRlIDxkcm0vZHJtUC5oPgo+ICAjaW5jbHVkZSA8ZHJtL2RybV9h
-dG9taWMuaD4KPiAgI2luY2x1ZGUgPGRybS9kcm1fYXRvbWljX2hlbHBlci5oPgo+ICsjaW5jbHVk
-ZSA8ZHJtL2RybV9mb3VyY2MuaD4KPiAgI2luY2x1ZGUgPGRybS9kcm1fcGxhbmVfaGVscGVyLmg+
-Cj4gICNpbmNsdWRlIDxkcm0vZHJtX2dlbV9mcmFtZWJ1ZmZlcl9oZWxwZXIuaD4KPgo+IGRpZmYg
-LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jIGIvZHJpdmVycy9ncHUv
-ZHJtL21lZGlhdGVrL210a19kc2kuYwo+IGluZGV4IGI5MWM0NjE2NjQ0YS4uMjI0YWZiNjY2ODgx
-IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiArKysg
-Yi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gQEAgLTMsMTIgKzMsNiBAQAo+
-ICAgKiBDb3B5cmlnaHQgKGMpIDIwMTUgTWVkaWFUZWsgSW5jLgo+ICAgKi8KPgo+IC0jaW5jbHVk
-ZSA8ZHJtL2RybVAuaD4KPiAtI2luY2x1ZGUgPGRybS9kcm1fYXRvbWljX2hlbHBlci5oPgo+IC0j
-aW5jbHVkZSA8ZHJtL2RybV9taXBpX2RzaS5oPgo+IC0jaW5jbHVkZSA8ZHJtL2RybV9wYW5lbC5o
-Pgo+IC0jaW5jbHVkZSA8ZHJtL2RybV9vZi5oPgo+IC0jaW5jbHVkZSA8ZHJtL2RybV9wcm9iZV9o
-ZWxwZXIuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L2Nsay5oPgo+ICAjaW5jbHVkZSA8bGludXgvY29t
-cG9uZW50Lmg+Cj4gICNpbmNsdWRlIDxsaW51eC9pb3BvbGwuaD4KPiBAQCAtMTcsOSArMTEsMTcg
-QEAKPiAgI2luY2x1ZGUgPGxpbnV4L29mX3BsYXRmb3JtLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9w
-aHkvcGh5Lmg+Cj4gICNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPiArCj4gICNp
-bmNsdWRlIDx2aWRlby9taXBpX2Rpc3BsYXkuaD4KPiAgI2luY2x1ZGUgPHZpZGVvL3ZpZGVvbW9k
-ZS5oPgo+Cj4gKyNpbmNsdWRlIDxkcm0vZHJtX2F0b21pY19oZWxwZXIuaD4KPiArI2luY2x1ZGUg
-PGRybS9kcm1fbWlwaV9kc2kuaD4KPiArI2luY2x1ZGUgPGRybS9kcm1fb2YuaD4KPiArI2luY2x1
-ZGUgPGRybS9kcm1fcGFuZWwuaD4KPiArI2luY2x1ZGUgPGRybS9kcm1fcHJpbnQuaD4KPiArI2lu
-Y2x1ZGUgPGRybS9kcm1fcHJvYmVfaGVscGVyLmg+Cj4gKwo+ICAjaW5jbHVkZSAibXRrX2RybV9k
-ZHBfY29tcC5oIgo+Cj4gICNkZWZpbmUgRFNJX1NUQVJUICAgICAgICAgICAgICAweDAwCj4gZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jIGIvZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMKPiBpbmRleCA1ZDZhOWYwOTRkZjUuLmNlOTFiNjEz
-NjRlYiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYwo+
-ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCj4gQEAgLTMsMTEgKzMs
-NyBAQAo+ICAgKiBDb3B5cmlnaHQgKGMpIDIwMTQgTWVkaWFUZWsgSW5jLgo+ICAgKiBBdXRob3I6
-IEppZSBRaXUgPGppZS5xaXVAbWVkaWF0ZWsuY29tPgo+ICAgKi8KPiAtI2luY2x1ZGUgPGRybS9k
-cm1QLmg+Cj4gLSNpbmNsdWRlIDxkcm0vZHJtX2F0b21pY19oZWxwZXIuaD4KPiAtI2luY2x1ZGUg
-PGRybS9kcm1fY3J0Yy5oPgo+IC0jaW5jbHVkZSA8ZHJtL2RybV9wcm9iZV9oZWxwZXIuaD4KPiAt
-I2luY2x1ZGUgPGRybS9kcm1fZWRpZC5oPgo+ICsKPiAgI2luY2x1ZGUgPGxpbnV4L2FybS1zbWNj
-Yy5oPgo+ICAjaW5jbHVkZSA8bGludXgvY2xrLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9kZWxheS5o
-Pgo+IEBAIC0yMyw3ICsxOSwxNSBAQAo+ICAjaW5jbHVkZSA8bGludXgvcGh5L3BoeS5oPgo+ICAj
-aW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9yZWdt
-YXAuaD4KPiArCj4gICNpbmNsdWRlIDxzb3VuZC9oZG1pLWNvZGVjLmg+Cj4gKwo+ICsjaW5jbHVk
-ZSA8ZHJtL2RybV9hdG9taWNfaGVscGVyLmg+Cj4gKyNpbmNsdWRlIDxkcm0vZHJtX2NydGMuaD4K
-PiArI2luY2x1ZGUgPGRybS9kcm1fZWRpZC5oPgo+ICsjaW5jbHVkZSA8ZHJtL2RybV9wcmludC5o
-Pgo+ICsjaW5jbHVkZSA8ZHJtL2RybV9wcm9iZV9oZWxwZXIuaD4KPiArCj4gICNpbmNsdWRlICJt
-dGtfY2VjLmgiCj4gICNpbmNsdWRlICJtdGtfaGRtaS5oIgo+ICAjaW5jbHVkZSAibXRrX2hkbWlf
-cmVncy5oIgo+IC0tCj4gMi4yMC4xCj4KPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwo+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPiBkcmktZGV2ZWxAbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnCj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9kcmktZGV2ZWwKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
-ZHJpLWRldmVs
+On Mon, Jul 8, 2019 at 3:35 PM <yongqiang.niu@mediatek.com> wrote:
+>
+> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+>
+> This patch add ovl0/ovl_2l0 usecase
+> in ovl->ovl_2l0 direct link usecase:
+> 1. the crtc support layer number will 4+2
+> 2. ovl_2l0 background color input select ovl0 when crtc init
+> and disable it when crtc finish
+> 3. config ovl_2l0 layer, if crtc config layer number is
+> bigger than ovl0 support layers(max is 4)
+>
+> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 38 +++++++++++++++++++++++++++++++--
+>  1 file changed, 36 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> index 5eac376..9ee9ce2 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> @@ -282,6 +282,15 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
+>
+>         for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
+>                 struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[i];
+> +               enum mtk_ddp_comp_id prev;
+> +
+> +               if (i > 0)
+> +                       prev = mtk_crtc->ddp_comp[i - 1]->id;
+> +               else
+> +                       prev = DDP_COMPONENT_ID_MAX;
+> +
+> +               if (prev == DDP_COMPONENT_OVL0)
+> +                       mtk_ddp_comp_bgclr_in_on(comp);
+>
+>                 mtk_ddp_comp_config(comp, width, height, vrefresh, bpc);
+>                 mtk_ddp_comp_start(comp);
+> @@ -291,9 +300,18 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
+>         for (i = 0; i < mtk_crtc->layer_nr; i++) {
+>                 struct drm_plane *plane = &mtk_crtc->planes[i];
+>                 struct mtk_plane_state *plane_state;
+> +               struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
+> +               unsigned int comp_layer_nr = mtk_ddp_comp_layer_nr(comp);
+> +               unsigned int local_layer;
+>
+>                 plane_state = to_mtk_plane_state(plane->state);
+> -               mtk_ddp_comp_layer_config(mtk_crtc->ddp_comp[0], i,
+> +
+> +               if (i >= comp_layer_nr) {
+> +                       comp = mtk_crtc->ddp_comp[1];
+> +                       local_layer = i - comp_layer_nr;
+> +               } else
+> +                       local_layer = i;
+> +               mtk_ddp_comp_layer_config(comp , local_layer,
+>                                           plane_state);
+
+There is an extra space after comp.
+
+This whole loop is essentially identical to the one found in
+mtk_crtc_ddp_config below. It would be nice to either move that loop
+to a dedicated function called from both spots or allow
+mtk_crtc_ddp_config to be called from here.
+
+>         }
+>
+> @@ -319,6 +337,7 @@ static void mtk_crtc_ddp_hw_fini(struct mtk_drm_crtc *mtk_crtc)
+>                                            mtk_crtc->ddp_comp[i]->id);
+>         mtk_disp_mutex_disable(mtk_crtc->mutex);
+>         for (i = 0; i < mtk_crtc->ddp_comp_nr - 1; i++) {
+> +               mtk_ddp_comp_bgclr_in_off(mtk_crtc->ddp_comp[i]);
+>                 mtk_ddp_remove_comp_from_path(mtk_crtc->config_regs,
+>                                               mtk_crtc->mmsys_reg_data,
+>                                               mtk_crtc->ddp_comp[i]->id,
+> @@ -339,6 +358,8 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
+>         struct mtk_crtc_state *state = to_mtk_crtc_state(mtk_crtc->base.state);
+>         struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
+>         unsigned int i;
+> +       unsigned int comp_layer_nr = mtk_ddp_comp_layer_nr(comp);
+> +       unsigned int local_layer;
+>
+>         /*
+>          * TODO: instead of updating the registers here, we should prepare
+> @@ -361,7 +382,14 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
+>                         plane_state = to_mtk_plane_state(plane->state);
+>
+>                         if (plane_state->pending.config) {
+> -                               mtk_ddp_comp_layer_config(comp, i, plane_state);
+> +                               if (i >= comp_layer_nr) {
+> +                                       comp = mtk_crtc->ddp_comp[1];
+> +                                       local_layer = i - comp_layer_nr;
+> +                               } else
+> +                                       local_layer = i;
+> +
+> +                               mtk_ddp_comp_layer_config(comp, local_layer,
+> +                                                         plane_state);
+>                                 plane_state->pending.config = false;
+>                         }
+>                 }
+> @@ -592,6 +620,12 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+>         }
+>
+>         mtk_crtc->layer_nr = mtk_ddp_comp_layer_nr(mtk_crtc->ddp_comp[0]);
+> +       if (mtk_crtc->ddp_comp_nr > 1) {
+> +               struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[1];
+> +
+> +               if (comp->funcs->bgclr_in_on)
+> +                       mtk_crtc->layer_nr += mtk_ddp_comp_layer_nr(comp);
+> +       }
+>         mtk_crtc->planes = devm_kcalloc(dev, mtk_crtc->layer_nr,
+>                                         sizeof(struct drm_plane),
+>                                         GFP_KERNEL);
+> --
+> 1.8.1.1.dirty
+>
