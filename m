@@ -1,136 +1,53 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v4, 23/33] drm/mediatek: add ovl0/ovl_2l0 usecase
-Date: Wed, 17 Jul 2019 14:47:44 +0800
-Message-ID: <1563346064.29169.24.camel@mtksdaap41>
+Subject: Re: [PATCH v4, 24/33] drm/mediatek: distinguish ovl and ovl_2l by
+ layer_nr
+Date: Wed, 17 Jul 2019 14:55:01 +0800
+Message-ID: <1563346501.29169.25.camel@mtksdaap41>
 References: <1562625253-29254-1-git-send-email-yongqiang.niu@mediatek.com>
- <1562625253-29254-24-git-send-email-yongqiang.niu@mediatek.com>
+ <1562625253-29254-25-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1562625253-29254-24-git-send-email-yongqiang.niu@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1562625253-29254-25-git-send-email-yongqiang.niu@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: yongqiang.niu@mediatek.com
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Yongqiang:
-
-On Tue, 2019-07-09 at 06:34 +0800, yongqiang.niu@mediatek.com wrote:
-> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> 
-> This patch add ovl0/ovl_2l0 usecase
-> in ovl->ovl_2l0 direct link usecase:
-> 1. the crtc support layer number will 4+2
-> 2. ovl_2l0 background color input select ovl0 when crtc init
-> and disable it when crtc finish
-> 3. config ovl_2l0 layer, if crtc config layer number is
-> bigger than ovl0 support layers(max is 4)
-> 
-> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 38 +++++++++++++++++++++++++++++++--
->  1 file changed, 36 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> index 5eac376..9ee9ce2 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> @@ -282,6 +282,15 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
->  
->  	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
->  		struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[i];
-> +		enum mtk_ddp_comp_id prev;
-> +
-> +		if (i > 0)
-> +			prev = mtk_crtc->ddp_comp[i - 1]->id;
-> +		else
-> +			prev = DDP_COMPONENT_ID_MAX;
-> +
-> +		if (prev == DDP_COMPONENT_OVL0)
-> +			mtk_ddp_comp_bgclr_in_on(comp);
-
-I does not like to use a specific component id to check, that is not
-general. For now, you could simply call mtk_ddp_comp_bgclr_in_on(comp);
-for all component because only ovl_2l has implemented it.
-
-Regards,
-CK
-
->  
->  		mtk_ddp_comp_config(comp, width, height, vrefresh, bpc);
->  		mtk_ddp_comp_start(comp);
-> @@ -291,9 +300,18 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
->  	for (i = 0; i < mtk_crtc->layer_nr; i++) {
->  		struct drm_plane *plane = &mtk_crtc->planes[i];
->  		struct mtk_plane_state *plane_state;
-> +		struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
-> +		unsigned int comp_layer_nr = mtk_ddp_comp_layer_nr(comp);
-> +		unsigned int local_layer;
->  
->  		plane_state = to_mtk_plane_state(plane->state);
-> -		mtk_ddp_comp_layer_config(mtk_crtc->ddp_comp[0], i,
-> +
-> +		if (i >= comp_layer_nr) {
-> +			comp = mtk_crtc->ddp_comp[1];
-> +			local_layer = i - comp_layer_nr;
-> +		} else
-> +			local_layer = i;
-> +		mtk_ddp_comp_layer_config(comp , local_layer,
->  					  plane_state);
->  	}
->  
-> @@ -319,6 +337,7 @@ static void mtk_crtc_ddp_hw_fini(struct mtk_drm_crtc *mtk_crtc)
->  					   mtk_crtc->ddp_comp[i]->id);
->  	mtk_disp_mutex_disable(mtk_crtc->mutex);
->  	for (i = 0; i < mtk_crtc->ddp_comp_nr - 1; i++) {
-> +		mtk_ddp_comp_bgclr_in_off(mtk_crtc->ddp_comp[i]);
->  		mtk_ddp_remove_comp_from_path(mtk_crtc->config_regs,
->  					      mtk_crtc->mmsys_reg_data,
->  					      mtk_crtc->ddp_comp[i]->id,
-> @@ -339,6 +358,8 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
->  	struct mtk_crtc_state *state = to_mtk_crtc_state(mtk_crtc->base.state);
->  	struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
->  	unsigned int i;
-> +	unsigned int comp_layer_nr = mtk_ddp_comp_layer_nr(comp);
-> +	unsigned int local_layer;
->  
->  	/*
->  	 * TODO: instead of updating the registers here, we should prepare
-> @@ -361,7 +382,14 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
->  			plane_state = to_mtk_plane_state(plane->state);
->  
->  			if (plane_state->pending.config) {
-> -				mtk_ddp_comp_layer_config(comp, i, plane_state);
-> +				if (i >= comp_layer_nr) {
-> +					comp = mtk_crtc->ddp_comp[1];
-> +					local_layer = i - comp_layer_nr;
-> +				} else
-> +					local_layer = i;
-> +
-> +				mtk_ddp_comp_layer_config(comp, local_layer,
-> +							  plane_state);
->  				plane_state->pending.config = false;
->  			}
->  		}
-> @@ -592,6 +620,12 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
->  	}
->  
->  	mtk_crtc->layer_nr = mtk_ddp_comp_layer_nr(mtk_crtc->ddp_comp[0]);
-> +	if (mtk_crtc->ddp_comp_nr > 1) {
-> +		struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[1];
-> +
-> +		if (comp->funcs->bgclr_in_on)
-> +			mtk_crtc->layer_nr += mtk_ddp_comp_layer_nr(comp);
-> +	}
->  	mtk_crtc->planes = devm_kcalloc(dev, mtk_crtc->layer_nr,
->  					sizeof(struct drm_plane),
->  					GFP_KERNEL);
+SGksIFlvbmdxaWFuZzoKCk9uIFR1ZSwgMjAxOS0wNy0wOSBhdCAwNjozNCArMDgwMCwgeW9uZ3Fp
+YW5nLm5pdUBtZWRpYXRlay5jb20gd3JvdGU6Cj4gRnJvbTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3Fp
+YW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gCj4gZGlzdGluZ3Vpc2ggb3ZsIGFuZCBvdmxfMmwgYnkg
+bGF5ZXJfbnIgd2hlbiBnZXQgY29tcAo+IGlkCj4gCgpSZXZpZXdlZC1ieTogQ0sgSHUgPGNrLmh1
+QG1lZGlhdGVrLmNvbT4KCj4gU2lnbmVkLW9mZi1ieTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3FpYW5n
+Lm5pdUBtZWRpYXRlay5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+ZGlzcF9vdmwuYyB8IDkgKysrKysrLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCA2IGluc2VydGlvbnMo
+KyksIDMgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZGlzcF9vdmwuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9v
+dmwuYwo+IGluZGV4IDhjYTQ5NjUuLjdlOTk4MjcgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19kaXNwX292bC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlh
+dGVrL210a19kaXNwX292bC5jCj4gQEAgLTMyNiw3ICszMjYsMTIgQEAgc3RhdGljIGludCBtdGtf
+ZGlzcF9vdmxfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgCWlmIChpcnEg
+PCAwKQo+ICAJCXJldHVybiBpcnE7Cj4gIAo+IC0JY29tcF9pZCA9IG10a19kZHBfY29tcF9nZXRf
+aWQoZGV2LT5vZl9ub2RlLCBNVEtfRElTUF9PVkwpOwo+ICsJcHJpdi0+ZGF0YSA9IG9mX2Rldmlj
+ZV9nZXRfbWF0Y2hfZGF0YShkZXYpOwo+ICsKPiArCWNvbXBfaWQgPSBtdGtfZGRwX2NvbXBfZ2V0
+X2lkKGRldi0+b2Zfbm9kZSwKPiArCQkJCSAgICAgIHByaXYtPmRhdGEtPmxheWVyX25yID09IDQg
+Pwo+ICsJCQkJICAgICAgTVRLX0RJU1BfT1ZMIDoKPiArCQkJCSAgICAgIE1US19ESVNQX09WTF8y
+TCk7Cj4gIAlpZiAoY29tcF9pZCA8IDApIHsKPiAgCQlkZXZfZXJyKGRldiwgIkZhaWxlZCB0byBp
+ZGVudGlmeSBieSBhbGlhczogJWRcbiIsIGNvbXBfaWQpOwo+ICAJCXJldHVybiBjb21wX2lkOwo+
+IEBAIC0zMzksOCArMzQ0LDYgQEAgc3RhdGljIGludCBtdGtfZGlzcF9vdmxfcHJvYmUoc3RydWN0
+IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgCQlyZXR1cm4gcmV0Owo+ICAJfQo+ICAKPiAtCXBy
+aXYtPmRhdGEgPSBvZl9kZXZpY2VfZ2V0X21hdGNoX2RhdGEoZGV2KTsKPiAtCj4gIAlwbGF0Zm9y
+bV9zZXRfZHJ2ZGF0YShwZGV2LCBwcml2KTsKPiAgCj4gIAlyZXQgPSBkZXZtX3JlcXVlc3RfaXJx
+KGRldiwgaXJxLCBtdGtfZGlzcF9vdmxfaXJxX2hhbmRsZXIsCgoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
+ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
