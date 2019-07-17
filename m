@@ -1,58 +1,83 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH 1/2] dt-bindings: i2c: Add MediaTek i2c AC timing binding
-Date: Wed, 17 Jul 2019 15:29:23 +0200
-Message-ID: <20190717132923.GC1458@kunai>
-References: <1560240715-22595-1-git-send-email-qii.wang@mediatek.com>
- <1560240715-22595-2-git-send-email-qii.wang@mediatek.com>
- <20190626133941.GL801@ninjato>
- <1563368121.16970.7.camel@mhfsdcap03>
+From: Will Deacon <will@kernel.org>
+Subject: Re: [PATCH v8 07/21] iommu/io-pgtable-arm-v7s: Extend MediaTek 4GB
+ Mode
+Date: Wed, 17 Jul 2019 15:23:40 +0100
+Message-ID: <20190717142339.wltamw6wktwixqqn@willie-the-truck>
+References: <1561774167-24141-1-git-send-email-yong.wu@mediatek.com>
+ <1561774167-24141-8-git-send-email-yong.wu@mediatek.com>
+ <20190710143649.w5dplhzdpi3bxp7e@willie-the-truck>
+ <1562846036.31342.10.camel@mhfsdcap03>
+ <20190711123129.da4rg35b54u4svfw@willie-the-truck>
+ <1563079280.31342.22.camel@mhfsdcap03>
+ <20190715095156.xczfkbm6zpjueq32@willie-the-truck>
+ <1563367459.31342.34.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="GZVR6ND4mMseVXL/"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1563368121.16970.7.camel@mhfsdcap03>
+In-Reply-To: <1563367459.31342.34.camel@mhfsdcap03>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Qii Wang <qii.wang@mediatek.com>
-Cc: linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, leilk.liu@mediatek.com, matthias.bgg@gmail.com, robh+dt@kernel.org
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>, cui.zhang@mediatek.com, srv_heupstream@mediatek.com, chao.hao@mediatek.com, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, anan.sun@mediatek.com, Robin Murphy <robin.murphy@arm.com>, Matthias Kaehlcke <mka@chromium.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+On Wed, Jul 17, 2019 at 08:44:19PM +0800, Yong Wu wrote:
+> On Mon, 2019-07-15 at 10:51 +0100, Will Deacon wrote:
+> > On Sun, Jul 14, 2019 at 12:41:20PM +0800, Yong Wu wrote:
+> > > @@ -742,7 +763,9 @@ static struct io_pgtable
+> > > *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
+> > >  {
+> > >  	struct arm_v7s_io_pgtable *data;
+> > >  
+> > > -	if (cfg->ias > ARM_V7S_ADDR_BITS || cfg->oas > ARM_V7S_ADDR_BITS)
+> > > +	if (cfg->ias > ARM_V7S_ADDR_BITS ||
+> > > +	    (cfg->oas > ARM_V7S_ADDR_BITS &&
+> > > +	     !(cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_EXT)))
+> > >  		return NULL;
+> > 
+> > I think you can rework this to do something like:
+> > 
+> > 	if (cfg->ias > ARM_V7S_ADDR_BITS)
+> > 		return NULL;
+> > 
+> > 	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_EXT) {
+> > 		if (!IS_ENABLED(CONFIG_PHYS_ADDR_T_64BIT))
+> > 			cfg->oas = min(cfg->oas, ARM_V7S_ADDR_BITS);
+> > 		else if (cfg->oas > 34)
+> > 			return NULL;
+> > 	} else if (cfg->oas > ARM_V7S_ADDR_BITS) {
+> > 		return NULL;
+> > 	}
+> > 
+> > so that we clamp the oas when phys_addr_t is 32-bit for you. That should
+> > allow you to remove lots of the checking from iopte_to_paddr() too if you
+> > check against oas in the map() function.
+> > 
+> > Does that make sense?
+> 
+> Of course I'm ok for this. I'm only afraid that this function has
+> already 3 checking "if (x) return NULL", Here we add a new one and so
+> many lines... Maybe the user should guarantee the right value of oas.
+> How about move it into mtk_iommu.c?
+> 
+> About the checking of iopte_to_paddr, I can not remove them. I know it
+> may be a bit special and not readable. Hmm, I guess I should use a MACRO
+> instead of the hard code 33 for the special 4GB mode case.
 
---GZVR6ND4mMseVXL/
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Why can't you just do something like:
 
+	if (!(cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_EXT))
+		return paddr;
 
-> > Can't you use those to derive your values from that? Which ones are you=
- missing
-> > if not?
->=20
-> I have take a little time to develop a new patch which based on your
-> suggestions, and it tested OK. Thanks for your suggestions, I will
-> update the patch after I test it fully.
+	if (pte & ARM_V7S_ATTR_MTK_PA_BIT33)
+		paddr |= BIT_ULL(33);
 
-Great news, thanks!
+	if (pte & ARM_V&S_ATTR_MTK_PA_BIT32)
+		paddr |= BIT_ULL(32);
 
+	return paddr;
 
---GZVR6ND4mMseVXL/
-Content-Type: application/pgp-signature; name="signature.asc"
+The diff I sent previously sanitises the oas at init time, and then you
+can just enforce it in map().
 
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl0vIrMACgkQFA3kzBSg
-KbZc3A/+MaKqaXoxfLhF7cf/4W3pivQuZ1XwN1uUj0ywybWz2dxrakkTsTS5kCSF
-D2GRUcGvTLGKod/BaV/wIfdFVeyYPGoh38C2LSEcc2zTWl3CO+CyiJ35rAUvVhKe
-DoxAxfkR4LSUpzTJUi26asAWZggVjEBZkWQQxhyJma8txPhAtuOg2Dp9J6w8oZtO
-Ufj5c1FbF8r3q82ah5dmHqs924Q6WHUhBQXQf3eGNRJgqY/np4XHB5TZkOVj1uCW
-qQhUIx4xBooJa1cSXGr7kA6nSay+zIX++F5R9hbxkGSCFcGZXei0owslreNQsyDf
-rHMEc9JoZ5wXIMVjzPoxRwWrxDVIGdqfkqrmSDBjmYq4CDOAWvBZUIjgsy1E9d9R
-YPX5zj3Fvinui4/dxqADBLuAoinkw3NAYg14KCAzIzXbOLwetnGXxoIaiLE2v8PT
-qaTbtnIIhG9n/gaSQIQ3lDwTsa6dxv7FS3++6h+RFhAQ8XsaNKvYTgvmVrV4jKvs
-Rr3Kg+m/MdEiWHceoa6tPM96kiWlQAQLq1yN1B06DMoFBkr4S7pjOe6LCYFG7AfP
-Cu8nEykpDz6DT6KVwjefQpH14gTGH4TSjvpuXQLfjKB5k5sfi+NIif3+v3tJUBoE
-8KH9/iRcWMwVKm36gyugDLIa4xfsb5fj0v2Lk1ZL4dvw75Z2JiU=
-=K/nF
------END PGP SIGNATURE-----
-
---GZVR6ND4mMseVXL/--
+Will
