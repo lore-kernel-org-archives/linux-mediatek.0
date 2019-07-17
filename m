@@ -1,60 +1,99 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v4, 21/33] drm/mediatek: add function to background
- color input select for ovl/ovl_2l direct link
-Date: Wed, 17 Jul 2019 13:53:48 +0800
-Message-ID: <1563342828.29169.18.camel@mtksdaap41>
+Subject: Re: [PATCH v4, 22/33] drm/mediatek: add background color input
+ select function for ovl/ovl_2l
+Date: Wed, 17 Jul 2019 13:58:29 +0800
+Message-ID: <1563343109.29169.19.camel@mtksdaap41>
 References: <1562625253-29254-1-git-send-email-yongqiang.niu@mediatek.com>
- <1562625253-29254-22-git-send-email-yongqiang.niu@mediatek.com>
+         <1562625253-29254-23-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1562625253-29254-22-git-send-email-yongqiang.niu@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1562625253-29254-23-git-send-email-yongqiang.niu@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: yongqiang.niu@mediatek.com
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Mark Rutland <mark.rutland@arm.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFlvbmdxaWFuZzoKCk9uIFR1ZSwgMjAxOS0wNy0wOSBhdCAwNjozNCArMDgwMCwgeW9uZ3Fp
-YW5nLm5pdUBtZWRpYXRlay5jb20gd3JvdGU6Cj4gRnJvbTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3Fp
-YW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gCj4gVGhpcyBwYXRjaCBhZGQgZnVuY3Rpb24gdG8gYmFj
-a2dyb3VuZCBjb2xvciBpbnB1dCBzZWxlY3QgZm9yIG92bC9vdmxfMmwgZGlyZWN0IGxpbmsKPiBm
-b3Igb3ZsL292bF8ybCBkaXJlY3QgbGluayB1c2VjYXNlLCB3ZSBuZWVkIHNldCBiYWNrZ3JvdW5k
-IGNvbG9yCj4gaW5wdXQgc2VsZWN0IGZvciB0aGVzZSBoYXJkd2FyZS4KPiB0aGlzIGlzIHByZXBh
-cmF0aW9uIHBhdGNoIGZvciBvdmwvb3ZsXzJsIHVzZWNhc2UKPiAKClJldmlld2VkLWJ5OiBDSyBI
-dSA8Y2suaHVAbWVkaWF0ZWsuY29tPgoKPiBTaWduZWQtb2ZmLWJ5OiBZb25ncWlhbmcgTml1IDx5
-b25ncWlhbmcubml1QG1lZGlhdGVrLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlh
-dGVrL210a19kcm1fZGRwX2NvbXAuaCB8IDE0ICsrKysrKysrKysrKysrCj4gIDEgZmlsZSBjaGFu
-Z2VkLCAxNCBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmggYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2RybV9kZHBfY29tcC5oCj4gaW5kZXggYTBlYThjOS4uZWM2ZjMyOWEgMTAwNjQ0Cj4gLS0tIGEv
-ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaAo+ICsrKyBiL2RyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmgKPiBAQCAtOTIsNiArOTIsOCBA
-QCBzdHJ1Y3QgbXRrX2RkcF9jb21wX2Z1bmNzIHsKPiAgCQkJICAgICBzdHJ1Y3QgbXRrX3BsYW5l
-X3N0YXRlICpzdGF0ZSk7Cj4gIAl2b2lkICgqZ2FtbWFfc2V0KShzdHJ1Y3QgbXRrX2RkcF9jb21w
-ICpjb21wLAo+ICAJCQkgIHN0cnVjdCBkcm1fY3J0Y19zdGF0ZSAqc3RhdGUpOwo+ICsJdm9pZCAo
-KmJnY2xyX2luX29uKShzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wKTsKPiArCXZvaWQgKCpiZ2Ns
-cl9pbl9vZmYpKHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXApOwo+ICB9Owo+ICAKPiAgc3RydWN0
-IG10a19kZHBfY29tcCB7Cj4gQEAgLTE3Miw2ICsxNzQsMTggQEAgc3RhdGljIGlubGluZSB2b2lk
-IG10a19kZHBfZ2FtbWFfc2V0KHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXAsCj4gIAkJY29tcC0+
-ZnVuY3MtPmdhbW1hX3NldChjb21wLCBzdGF0ZSk7Cj4gIH0KPiAgCj4gK3N0YXRpYyBpbmxpbmUg
-dm9pZCBtdGtfZGRwX2NvbXBfYmdjbHJfaW5fb24oc3RydWN0IG10a19kZHBfY29tcCAqY29tcCkK
-PiArewo+ICsJaWYgKGNvbXAtPmZ1bmNzICYmIGNvbXAtPmZ1bmNzLT5iZ2Nscl9pbl9vbikKPiAr
-CQljb21wLT5mdW5jcy0+YmdjbHJfaW5fb24oY29tcCk7Cj4gK30KPiArCj4gK3N0YXRpYyBpbmxp
-bmUgdm9pZCBtdGtfZGRwX2NvbXBfYmdjbHJfaW5fb2ZmKHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNv
-bXApCj4gK3sKPiArCWlmIChjb21wLT5mdW5jcyAmJiBjb21wLT5mdW5jcy0+YmdjbHJfaW5fb2Zm
-KQo+ICsJCWNvbXAtPmZ1bmNzLT5iZ2Nscl9pbl9vZmYoY29tcCk7Cj4gK30KPiArCj4gIGludCBt
-dGtfZGRwX2NvbXBfZ2V0X2lkKHN0cnVjdCBkZXZpY2Vfbm9kZSAqbm9kZSwKPiAgCQkJZW51bSBt
-dGtfZGRwX2NvbXBfdHlwZSBjb21wX3R5cGUpOwo+ICBpbnQgbXRrX2RkcF9jb21wX2luaXQoc3Ry
-dWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlX25vZGUgKmNvbXBfbm9kZSwKCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
-ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
-ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
+Hi, Yongqiang:
+
+On Tue, 2019-07-09 at 06:34 +0800, yongqiang.niu@mediatek.com wrote:
+> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> 
+> This patch add background color input select function for ovl/ovl_2l
+> 
+> ovl include 4 DRAM layer and 1 background color layer
+> ovl_2l include 4 DRAM layer and 1 background color layer
+> DRAM layer frame buffer data from render hardware, GPU for example.
+> backgournd color layer is embed in ovl/ovl_2l, we can only set
+> it color, but not support DRAM frame buffer.
+> 
+> for ovl0->ovl0_2l direct link usecase,
+> we need set ovl0_2l background color intput select from ovl0
+> if render send DRAM buffer layer number <=4, all these layer read
+> by ovl.
+> layer0 is at the bottom of all layers.
+> layer3 is at the top of all layers.
+> if render send DRAM buffer layer numbfer >=4 && <=6
+> ovl0 read layer0~3
+> ovl0_2l read layer4~5
+> layer5 is at the top ot all these layers.
+> 
+> the decision of how to setting ovl0/ovl0_2l read these layer data
+> is controlled in mtk crtc, which will be another patch
+> 
+
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+
+> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 22 ++++++++++++++++++++++
+>  1 file changed, 22 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> index a0ab760..8ca4965 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> @@ -27,6 +27,8 @@
+>  #define DISP_REG_OVL_EN				0x000c
+>  #define DISP_REG_OVL_RST			0x0014
+>  #define DISP_REG_OVL_ROI_SIZE			0x0020
+> +#define DISP_REG_OVL_DATAPATH_CON		0x0024
+> +#define OVL_BGCLR_SEL_IN				BIT(2)
+>  #define DISP_REG_OVL_ROI_BGCLR			0x0028
+>  #define DISP_REG_OVL_SRC_CON			0x002c
+>  #define DISP_REG_OVL_CON(n)			(0x0030 + 0x20 * (n))
+> @@ -245,6 +247,24 @@ static void mtk_ovl_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
+>  		mtk_ovl_layer_on(comp, idx);
+>  }
+>  
+> +static void mtk_ovl_bgclr_in_on(struct mtk_ddp_comp *comp)
+> +{
+> +	unsigned int reg;
+> +
+> +	reg = readl(comp->regs + DISP_REG_OVL_DATAPATH_CON);
+> +	reg = reg | OVL_BGCLR_SEL_IN;
+> +	writel(reg, comp->regs + DISP_REG_OVL_DATAPATH_CON);
+> +}
+> +
+> +static void mtk_ovl_bgclr_in_off(struct mtk_ddp_comp *comp)
+> +{
+> +	unsigned int reg;
+> +
+> +	reg = readl(comp->regs + DISP_REG_OVL_DATAPATH_CON);
+> +	reg = reg & ~OVL_BGCLR_SEL_IN;
+> +	writel(reg, comp->regs + DISP_REG_OVL_DATAPATH_CON);
+> +}
+> +
+>  static const struct mtk_ddp_comp_funcs mtk_disp_ovl_funcs = {
+>  	.config = mtk_ovl_config,
+>  	.start = mtk_ovl_start,
+> @@ -255,6 +275,8 @@ static void mtk_ovl_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
+>  	.layer_on = mtk_ovl_layer_on,
+>  	.layer_off = mtk_ovl_layer_off,
+>  	.layer_config = mtk_ovl_layer_config,
+> +	.bgclr_in_on = mtk_ovl_bgclr_in_on,
+> +	.bgclr_in_off = mtk_ovl_bgclr_in_off,
+>  };
+>  
+>  static int mtk_disp_ovl_bind(struct device *dev, struct device *master,
