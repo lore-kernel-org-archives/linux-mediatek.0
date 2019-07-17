@@ -1,48 +1,60 @@
-From: Ryan Case <ryandcase@chromium.org>
-Subject: Re: [PATCH v4, 06/33] dt-bindings: mediatek: add mutex description
- for mt8183 display
-Date: Tue, 16 Jul 2019 16:59:23 -0700
-Message-ID: <CACjz--k0wVpxWTBXQeUHqm50RgvaCNkNb3DO+KviCOtq-e9gTQ@mail.gmail.com>
-References: <1562625253-29254-1-git-send-email-yongqiang.niu@mediatek.com> <1562625253-29254-7-git-send-email-yongqiang.niu@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v4, 01/33] dt-bindings: mediatek: add binding for mt8183
+ display
+Date: Wed, 17 Jul 2019 11:22:58 +0800
+Message-ID: <1563333778.29169.5.camel@mtksdaap41>
+References: <1562625253-29254-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1562625253-29254-2-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1562625253-29254-7-git-send-email-yongqiang.niu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1562625253-29254-2-git-send-email-yongqiang.niu@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: yongqiang.niu@mediatek.com
-Cc: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Mark Rutland <mark.rutland@arm.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jul 8, 2019 at 3:37 PM <yongqiang.niu@mediatek.com> wrote:
->
-> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
->
-> This patch add mutex description for mt8183 display
->
-> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-> index bb9274a..4a22d49 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-> @@ -53,6 +53,7 @@ Required properties (all function blocks):
->    For most function blocks this is just a single clock input. Only the DSI and
->    DPI controller nodes have multiple clock inputs. These are documented in
->    mediatek,dsi.txt and mediatek,dpi.txt, respectively.
-> +  for MT8183 mutex, this hardware is always free run, has no clocks control
-
-This should have capitalization, punctuation, and drop the trailing space.
-
-It also reads a little strangely. You may want something like "An
-exception is that the mt8183 mutex is always free running with no
-clocks property."
-
->
->  Required properties (DMA function blocks):
->  - compatible: Should be one of
-> --
-> 1.8.1.1.dirty
->
+SGksIFlvbmdxaWFuZzoKCk9uIFR1ZSwgMjAxOS0wNy0wOSBhdCAwNjozMyArMDgwMCwgeW9uZ3Fp
+YW5nLm5pdUBtZWRpYXRlay5jb20gd3JvdGU6Cj4gRnJvbTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3Fp
+YW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gCj4gVXBkYXRlIGRldmljZSB0cmVlIGJpbmRpbmcgZG9j
+dW1lbnRpb24gZm9yIHRoZSBkaXNwbGF5IHN1YnN5c3RlbSBmb3IKPiBNZWRpYXRlayBNVDgxODMg
+U09Dcwo+IAo+IFNpZ25lZC1vZmYtYnk6IFlvbmdxaWFuZyBOaXUgPHlvbmdxaWFuZy5uaXVAbWVk
+aWF0ZWsuY29tPgo+IC0tLQo+ICAuLi4vYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRl
+ayxkaXNwbGF5LnR4dCAgfCAyMSArKysrKysrKysrKysrKysrKysrKysKPiAgMSBmaWxlIGNoYW5n
+ZWQsIDIxIGluc2VydGlvbnMoKykKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24v
+ZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRpc3BsYXkudHh0
+Cj4gCj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNw
+bGF5L21lZGlhdGVrL21lZGlhdGVrLGRpc3BsYXkudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0
+cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlzcGxheS50eHQKPiBuZXcg
+ZmlsZSBtb2RlIDEwMDY0NAo+IGluZGV4IDAwMDAwMDAuLjk1MWQyYTgKPiAtLS0gL2Rldi9udWxs
+Cj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0
+ZWsvbWVkaWF0ZWssZGlzcGxheS50eHQKPiBAQCAtMCwwICsxLDIxIEBACj4gK01lZGlhdGVrIERp
+c3BsYXkgRGV2aWNlCj4gKz09PT09PT09PT09PT09PT09PT09PT09PT09PT0KPiArCj4gK1RoZSBN
+ZWRpYXRlayBEaXNwbGF5IERldmljZSBwcm92aWRlcyBwb3dlciBjb250cm9sIHRvIHRoZSBzeXN0
+ZW0uCj4gKwo+ICtSZXF1aXJlZCBQcm9wZXJ0aWVzOgo+ICsKPiArLSBjb21wYXRpYmxlOiBTaG91
+bGQgYmUgb25lIG9mOgo+ICsJLSAibWVkaWF0ZWssbXQ4MTgzLWRpc3BsYXkiCgpJIHRoaW5rIHRo
+aXMgaXMgIm1lZGlhdGVrLG10ODE4My1tbXN5cyIuIEluIFsxXSwgTWF0dGhpYXMgaGFzIGFncmVl
+ZAp0aGF0IHdlIGNvdWxkIGtlZXAgd29yayBvbiBoaXMgcGF0Y2gsIHNvIHlvdSBzaG91bGQgYXBw
+bHkgaGlzIHBhdGNoIGFuZApyZW1vdmUgdGhpcyBwYXRjaC4gSW4gWzJdLCBJJ3ZlIGZvdW5kIHRo
+YXQgTVQ4MTgzIHNjcHN5cyBoYXMgc29tZQpwcm9ibGVtIHdpdGggTWF0dGhpYXMnIHBhdGNoLCBz
+byBwbGVhc2UgYWxzbyBmaXggdGhpcyBwcm9ibGVtLgoKWzFdIGh0dHBzOi8vcGF0Y2h3b3JrLmtl
+cm5lbC5vcmcvcGF0Y2gvMTA2ODYzMjcvClsyXSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3Jn
+L3BhdGNoLzExMDA1NzMxLwoKUmVnYXJkcywKQ0sKCj4gKwo+ICtUaGUgRGlzcGxheSBEZXZpY2Ug
+cG93ZXIgbmFtZSBhcmUgZGVmaW5lZCBpbgo+ICtpbmNsdWRlXGR0LWJpbmRpbmdzXHBvd2VyXG10
+Ki1wb3dlci5oCj4gKwo+ICsKPiArRXhhbXBsZToKPiArCj4gK2Rpc3BsYXlfY29tcG9uZW50czog
+ZGlzcHN5c0AxNDAwMDAwMCB7Cj4gKwljb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE4My1kaXNw
+bGF5IjsKPiArCXJlZyA9IDwwIDB4MTQwMDAwMDAgMCAweDEwMDA+Owo+ICsJcG93ZXItZG9tYWlu
+cyA9IDwmc2Nwc3lzIE1UODE4M19QT1dFUl9ET01BSU5fRElTUD47Cj4gK307Cj4gXCBObyBuZXds
+aW5lIGF0IGVuZCBvZiBmaWxlCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
+ZHJpLWRldmVs
