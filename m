@@ -1,72 +1,111 @@
-From: Changqi Hu <changqi.hu@mediatek.com>
-Subject: [PATCH v2] serial: 8250-mtk: modify mtk uart power and clock management
-Date: Thu, 18 Jul 2019 20:58:36 +0800
-Message-ID: <1563454716-8355-1-git-send-email-changqi.hu@mediatek.com>
+From: Andrey Ryabinin <aryabinin@virtuozzo.com>
+Subject: Re: [PATCH v3] kasan: add memory corruption identification for
+ software tag-based mode
+Date: Thu, 18 Jul 2019 19:11:21 +0300
+Message-ID: <9ab1871a-2605-ab34-3fd3-4b44a0e17ab7@virtuozzo.com>
+References: <20190613081357.1360-1-walter-zh.wu@mediatek.com>
+ <da7591c9-660d-d380-d59e-6d70b39eaa6b@virtuozzo.com>
+ <1560447999.15814.15.camel@mtksdccf07> <1560479520.15814.34.camel@mtksdccf07>
+ <1560744017.15814.49.camel@mtksdccf07>
+ <CACT4Y+Y3uS59rXf92ByQuFK_G4v0H8NNnCY1tCbr4V+PaZF3ag@mail.gmail.com>
+ <1560774735.15814.54.camel@mtksdccf07> <1561974995.18866.1.camel@mtksdccf07>
+ <CACT4Y+aMXTBE0uVkeZz+MuPx3X1nESSBncgkScWvAkciAxP1RA@mail.gmail.com>
+ <ebc99ee1-716b-0b18-66ab-4e93de02ce50@virtuozzo.com>
+ <1562640832.9077.32.camel@mtksdccf07>
+ <d9fd1d5b-9516-b9b9-0670-a1885e79f278@virtuozzo.com>
+ <1562839579.5846.12.camel@mtksdccf07>
+ <37897fb7-88c1-859a-dfcc-0a5e89a642e0@virtuozzo.com>
+ <1563160001.4793.4.camel@mtksdccf07>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1563160001.4793.4.camel@mtksdccf07>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Changqi Hu <changqi.hu@mediatek.com>, Peter Shih <pihsun@chromium.org>, "Gustavo A. R. Silva" <gustavo@embeddedor.com>, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>
+To: Walter Wu <walter-zh.wu@mediatek.com>
+Cc: Dmitry Vyukov <dvyukov@google.com>, Alexander Potapenko <glider@google.com>, Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Matthias Brugger <matthias.bgg@gmail.com>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Arnd Bergmann <arnd@arndb.de>, Vasily Gorbik <gor@linux.ibm.com>, Andrey Konovalov <andreyknvl@google.com>, "Jason A . Donenfeld" <Jason@zx2c4.com>, Miles Chen <miles.chen@mediatek.com>, kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>, Linux-MM <linux-mm@kvack.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream <wsd_upstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-modify mtk uart runtime interface, enable uart clock before register.
 
-Signed-off-by: Changqi Hu <changqi.hu@mediatek.com>
----
- drivers/tty/serial/8250/8250_mtk.c | 21 ++++++++-------------
- 1 file changed, 8 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-index b0113d1..a07c8ae 100644
---- a/drivers/tty/serial/8250/8250_mtk.c
-+++ b/drivers/tty/serial/8250/8250_mtk.c
-@@ -389,7 +389,7 @@ static int __maybe_unused mtk8250_runtime_suspend(struct device *dev)
- 	struct mtk8250_data *data = dev_get_drvdata(dev);
- 	struct uart_8250_port *up = serial8250_get_port(data->line);
- 
--	/*wait until UART in idle status*/
-+	/* wait until UART in idle status */
- 	while
- 		(serial_in(up, MTK_UART_DEBUG0));
- 
-@@ -426,23 +426,15 @@ static int __maybe_unused mtk8250_runtime_resume(struct device *dev)
- static void
- mtk8250_do_pm(struct uart_port *port, unsigned int state, unsigned int old)
- {
--	struct uart_8250_port *up = up_to_u8250p(port);
--
--	if (!state) {
--		if (!(up->capabilities & UART_CAP_RPM))
--			mtk8250_runtime_resume(port->dev);
--		else
-+	if (!state)
-+		if (!mtk8250_runtime_resume(port->dev))
- 			pm_runtime_get_sync(port->dev);
--	}
- 
- 	serial8250_do_pm(port, state, old);
- 
--	if (state) {
--		if (!(up->capabilities & UART_CAP_RPM))
-+	if (state)
-+		if (!pm_runtime_put_sync_suspend(port->dev))
- 			mtk8250_runtime_suspend(port->dev);
--		else
--			pm_runtime_put_sync_suspend(port->dev);
--	}
- }
- 
- #ifdef CONFIG_SERIAL_8250_DMA
-@@ -554,6 +546,9 @@ static int mtk8250_probe(struct platform_device *pdev)
- 	platform_set_drvdata(pdev, data);
- 
- 	pm_runtime_enable(&pdev->dev);
-+	err = mtk8250_runtime_resume(&pdev->dev);
-+	if (err)
-+		return err;
- 
- 	data->line = serial8250_register_8250_port(&uart);
- 	if (data->line < 0)
--- 
-1.8.1.1.dirty
+On 7/15/19 6:06 AM, Walter Wu wrote:
+> On Fri, 2019-07-12 at 13:52 +0300, Andrey Ryabinin wrote:
+>>
+>> On 7/11/19 1:06 PM, Walter Wu wrote:
+>>> On Wed, 2019-07-10 at 21:24 +0300, Andrey Ryabinin wrote:
+>>>>
+>>>> On 7/9/19 5:53 AM, Walter Wu wrote:
+>>>>> On Mon, 2019-07-08 at 19:33 +0300, Andrey Ryabinin wrote:
+>>>>>>
+>>>>>> On 7/5/19 4:34 PM, Dmitry Vyukov wrote:
+>>>>>>> On Mon, Jul 1, 2019 at 11:56 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
+>>>>
+>>>>>>>
+>>>>>>> Sorry for delays. I am overwhelm by some urgent work. I afraid to
+>>>>>>> promise any dates because the next week I am on a conference, then
+>>>>>>> again a backlog and an intern starting...
+>>>>>>>
+>>>>>>> Andrey, do you still have concerns re this patch? This change allows
+>>>>>>> to print the free stack.
+>>>>>>
+>>>>>> I 'm not sure that quarantine is a best way to do that. Quarantine is made to delay freeing, but we don't that here.
+>>>>>> If we want to remember more free stacks wouldn't be easier simply to remember more stacks in object itself?
+>>>>>> Same for previously used tags for better use-after-free identification.
+>>>>>>
+>>>>>
+>>>>> Hi Andrey,
+>>>>>
+>>>>> We ever tried to use object itself to determine use-after-free
+>>>>> identification, but tag-based KASAN immediately released the pointer
+>>>>> after call kfree(), the original object will be used by another
+>>>>> pointer, if we use object itself to determine use-after-free issue, then
+>>>>> it has many false negative cases. so we create a lite quarantine(ring
+>>>>> buffers) to record recent free stacks in order to avoid those false
+>>>>> negative situations.
+>>>>
+>>>> I'm telling that *more* than one free stack and also tags per object can be stored.
+>>>> If object reused we would still have information about n-last usages of the object.
+>>>> It seems like much easier and more efficient solution than patch you proposing.
+>>>>
+>>> To make the object reused, we must ensure that no other pointers uses it
+>>> after kfree() release the pointer.
+>>> Scenario:
+>>> 1). The object reused information is valid when no another pointer uses
+>>> it.
+>>> 2). The object reused information is invalid when another pointer uses
+>>> it.
+>>> Do you mean that the object reused is scenario 1) ?
+>>> If yes, maybe we can change the calling quarantine_put() location. It
+>>> will be fully use that quarantine, but at scenario 2) it looks like to
+>>> need this patch.
+>>> If no, maybe i miss your meaning, would you tell me how to use invalid
+>>> object information? or?
+>>>
+>>
+>>
+>> KASAN keeps information about object with the object, right after payload in the kasan_alloc_meta struct.
+>> This information is always valid as long as slab page allocated. Currently it keeps only one last free stacktrace.
+>> It could be extended to record more free stacktraces and also record previously used tags which will allow you
+>> to identify use-after-free and extract right free stacktrace.
+> 
+> Thanks for your explanation.
+> 
+> For extend slub object, if one record is 9B (sizeof(u8)+ sizeof(struct
+> kasan_track)) and add five records into slub object, every slub object
+> may add 45B usage after the system runs longer. 
+> Slub object number is easy more than 1,000,000(maybe it may be more
+> bigger), then the extending object memory usage should be 45MB, and
+> unfortunately it is no limit. The memory usage is more bigger than our
+> patch.
+
+No, it's not necessarily more.
+And there are other aspects to consider such as performance, how simple reliable the code is.
+
+> 
+> We hope tag-based KASAN advantage is smaller memory usage. If it’s
+> possible, we should spend less memory in order to identify
+> use-after-free. Would you accept our patch after fine tune it?
+
+Sure, if you manage to fix issues and demonstrate that performance penalty of your
+patch is close to zero.
