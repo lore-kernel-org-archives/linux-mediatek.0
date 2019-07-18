@@ -1,56 +1,72 @@
-From: Stanley Chu <stanley.chu@mediatek.com>
-Subject: [PATCH v1] ubifs: support page statistics in vmstat
-Date: Thu, 18 Jul 2019 20:03:57 +0800
-Message-ID: <1563451437-15725-1-git-send-email-stanley.chu@mediatek.com>
+From: Changqi Hu <changqi.hu@mediatek.com>
+Subject: [PATCH v2] serial: 8250-mtk: modify mtk uart power and clock management
+Date: Thu, 18 Jul 2019 20:58:36 +0800
+Message-ID: <1563454716-8355-1-git-send-email-changqi.hu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-mtd@lists.infradead.org, richard@nod.at, dedekind1@gmail.com, adrian.hunter@intel.com, matthias.bgg@gmail.com
-Cc: linger.lee@mediatek.com, chienwei.chang@mediatek.com, kuohong.wang@mediatek.com, linux-mediatek@lists.infradead.org, Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Changqi Hu <changqi.hu@mediatek.com>, Peter Shih <pihsun@chromium.org>, "Gustavo A. R. Silva" <gustavo@embeddedor.com>, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Currently PGPGIN and PGPGOUT statistics in vmstat is only
-hooked in submit_bio() for block device I/O path.
+modify mtk uart runtime interface, enable uart clock before register.
 
-This patch adds this feature for ubifs as well.
-
-Change-Id: I8505bd2a7aa9eadc6abcd68b7d8b870752e71339
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+Signed-off-by: Changqi Hu <changqi.hu@mediatek.com>
 ---
- fs/ubifs/file.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/tty/serial/8250/8250_mtk.c | 21 ++++++++-------------
+ 1 file changed, 8 insertions(+), 13 deletions(-)
 
-diff --git a/fs/ubifs/file.c b/fs/ubifs/file.c
-index 512e7d9c60cd..ffe7ce77f389 100644
---- a/fs/ubifs/file.c
-+++ b/fs/ubifs/file.c
-@@ -902,6 +902,8 @@ static int ubifs_bulk_read(struct page *page)
+diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+index b0113d1..a07c8ae 100644
+--- a/drivers/tty/serial/8250/8250_mtk.c
++++ b/drivers/tty/serial/8250/8250_mtk.c
+@@ -389,7 +389,7 @@ static int __maybe_unused mtk8250_runtime_suspend(struct device *dev)
+ 	struct mtk8250_data *data = dev_get_drvdata(dev);
+ 	struct uart_8250_port *up = serial8250_get_port(data->line);
  
- static int ubifs_readpage(struct file *file, struct page *page)
+-	/*wait until UART in idle status*/
++	/* wait until UART in idle status */
+ 	while
+ 		(serial_in(up, MTK_UART_DEBUG0));
+ 
+@@ -426,23 +426,15 @@ static int __maybe_unused mtk8250_runtime_resume(struct device *dev)
+ static void
+ mtk8250_do_pm(struct uart_port *port, unsigned int state, unsigned int old)
  {
-+	count_vm_events(PGPGIN, PAGE_CACHE_SIZE >> 9);
-+
- 	if (ubifs_bulk_read(page))
- 		return 0;
- 	do_readpage(page);
-@@ -1032,6 +1034,8 @@ static int ubifs_writepage(struct page *page, struct writeback_control *wbc)
- 		goto out_unlock;
- 	}
+-	struct uart_8250_port *up = up_to_u8250p(port);
+-
+-	if (!state) {
+-		if (!(up->capabilities & UART_CAP_RPM))
+-			mtk8250_runtime_resume(port->dev);
+-		else
++	if (!state)
++		if (!mtk8250_runtime_resume(port->dev))
+ 			pm_runtime_get_sync(port->dev);
+-	}
  
-+	count_vm_events(PGPGOUT, PAGE_CACHE_SIZE >> 9);
-+
- 	spin_lock(&ui->ui_lock);
- 	synced_i_size = ui->synced_i_size;
- 	spin_unlock(&ui->ui_lock);
+ 	serial8250_do_pm(port, state, old);
+ 
+-	if (state) {
+-		if (!(up->capabilities & UART_CAP_RPM))
++	if (state)
++		if (!pm_runtime_put_sync_suspend(port->dev))
+ 			mtk8250_runtime_suspend(port->dev);
+-		else
+-			pm_runtime_put_sync_suspend(port->dev);
+-	}
+ }
+ 
+ #ifdef CONFIG_SERIAL_8250_DMA
+@@ -554,6 +546,9 @@ static int mtk8250_probe(struct platform_device *pdev)
+ 	platform_set_drvdata(pdev, data);
+ 
+ 	pm_runtime_enable(&pdev->dev);
++	err = mtk8250_runtime_resume(&pdev->dev);
++	if (err)
++		return err;
+ 
+ 	data->line = serial8250_register_8250_port(&uart);
+ 	if (data->line < 0)
 -- 
-2.18.0
+1.8.1.1.dirty
