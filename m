@@ -1,47 +1,79 @@
 From: Sean Paul <sean@poorly.run>
-Subject: Re: [PATCH v1 04/11] drm/ati_pcigart: drop dependency on
- drm_os_linux.h
-Date: Thu, 18 Jul 2019 14:30:50 -0400
-Message-ID: <20190718183050.GA104440@art_vandelay>
+Subject: Re: [PATCH v1 11/11] drm: drop uapi dependency from drm_file.h
+Date: Thu, 18 Jul 2019 14:40:09 -0400
+Message-ID: <20190718184009.GB104440@art_vandelay>
 References: <20190718161507.2047-1-sam@ravnborg.org>
- <20190718161507.2047-5-sam@ravnborg.org>
- <20190718174905.GG31819@art_vandelay>
- <20190718181135.GA5612@ravnborg.org>
+ <20190718161507.2047-12-sam@ravnborg.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <20190718181135.GA5612@ravnborg.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190718161507.2047-12-sam@ravnborg.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: Sam Ravnborg <sam@ravnborg.org>
-Cc: David Airlie <airlied@linux.ie>, Liviu Dudau <Liviu.Dudau@arm.com>, dri-devel@lists.freedesktop.org, Maxime Ripard <maxime.ripard@bootlin.com>, Thierry Reding <treding@nvidia.com>, Jani Nikula <jani.nikula@intel.com>, Intel Graphics Development <intel-gfx@lists.freedesktop.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org, Boris Brezillon <bbrezillon@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>
+Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Liviu Dudau <Liviu.Dudau@arm.com>, dri-devel@lists.freedesktop.org, Chris Wilson <chris@chris-wilson.co.uk>, Eric Anholt <eric@anholt.net>, Rob Herring <robh@kernel.org>, Stefan Agner <stefan@agner.ch>, Maxime Ripard <maxime.ripard@bootlin.com>, CK Hu <ck.hu@mediatek.com>, Thierry Reding <treding@nvidia.com>, Daniel Vetter <daniel@ffwll.ch>, Chunming Zhou <david1.zhou@amd.com>, Jani Nikula <jani.nikula@intel.com>, Intel Graphics Development <intel-gfx@lists.freedesktop.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, linux-mediatek@lists.infradead.org, Lionel Landwerlin <lionel.g.landwerlin@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org, Boris Brezillon <bbrezillon@kernel.org>, Thomas Zimmermann <tzimmermann@suse.d>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVGh1LCBKdWwgMTgsIDIwMTkgYXQgMDg6MTE6MzVQTSArMDIwMCwgU2FtIFJhdm5ib3JnIHdy
-b3RlOgo+IEhpIFNlYW4uCj4gPiAKPiA+IEFueSBwbGFucyBmb3IgdGhlIG90aGVyIHVzZXJzIG9m
-IERSTV9XUklURTxOPigpPyBJdCBzZWVtcyBsaWtlIGl0J2QgYmUgdHJpdmlhbAo+ID4gdG8gZml4
-IGl0IHVwIGZvciB2aWEgYW5kIG1nYS4gSSBkb24ndCByZWFsbHkgaGF2ZSBhbnkgYmFja2dyb3Vu
-ZCBvbgo+ID4gZHJtX29zX2xpbnV4LmgsIGJ1dCBpdCBkb2Vzbid0IHNlZW0gbGlrZSBpdCdkIGJl
-IHRoYXQgbXVjaCBtb3JlIGVmZm9ydCB0byBqdXN0Cj4gPiByZW1vdmUgdGhlIHdob2xlIHRoaW5n
-Lgo+IAo+IER1cmluZyB0aGUgZHJtUC5oIHJlbW92YWwgSSBhbHNvIHRvb2sgY2FyZSBvZiBkcm1f
-b3NfbGludXguaCwKPiBzbyB3aGVuIHRoZSBwYXRjaGVzIGxhbmQgdGhlbiB0aGVyZSB3aWxsIGJl
-IG5vIHVzZXJzIGxlZnQuCj4gSSBsb29rIGZvcndhcmQgdG8gZGVsZXRlIHRoYXQgZmlsZS4KPiAK
-PiBGb3IgdmlhIEkgb25seSBqdXN0IHBvc3RlZCB0aGUgcGF0Y2hlcyB0b2RheS4KPiBGb3IgbWdh
-IHRoZXkgYWxyZWFkeSBsYW5kZWQgaW4gZHJtLW1pc2MtbmV4dC4KPiAKCkF3ZXNvbWUhIEkgdGhp
-bmsgSSB3YXMgbG9va2luZyBhdCBkcm0tbmV4dCBpbnN0ZWFkIG9mIC1taXNjLW5leHQsIHNvIGhh
-cHB5IHRvCmhlYXIgdGhlIGZ1dHVyZSBpcyBicmlnaHQgOikKClJldmlld2VkLWJ5OiBTZWFuIFBh
-dWwgPHNlYW5AcG9vcmx5LnJ1bj4KCgo+IEkgZXhwZWN0IHRoYXQgd2UgYWZ0ZXIgbmV4dCBtZXJn
-ZSB3aW5kb3cgY2FuIGRlbGV0ZQo+IGJvdGggZHJtX29zX2xpbnV4LmggYW5kIGRybVAuaC4KPiAK
-PiAJU2FtCgotLSAKU2VhbiBQYXVsLCBTb2Z0d2FyZSBFbmdpbmVlciwgR29vZ2xlIC8gQ2hyb21p
-dW0gT1MKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
-LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
-Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+On Thu, Jul 18, 2019 at 06:15:07PM +0200, Sam Ravnborg wrote:
+> drm_file used drm_magic_t from uapi/drm/drm.h.
+> This is a simple unsigned int.
+> Just opencode it as such to break the dependency from this header file
+> to uapi.
+> 
+> Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
+
+Passes my build tests, thanks for the clean-ups!
+
+Reviewed-by: Sean Paul <sean@poorly.run>
+
+> Suggested-by: Daniel Vetter <daniel.vetter@ffwll.ch>
+> Cc: Sean Paul <seanpaul@chromium.org>
+> Cc: Liviu Dudau <Liviu.Dudau@arm.com>
+> Cc: Chris Wilson <chris@chris-wilson.co.uk>
+> Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+> Cc: Maxime Ripard <maxime.ripard@bootlin.com>
+> Cc: David Airlie <airlied@linux.ie>
+> Cc: Daniel Vetter <daniel@ffwll.ch>
+> Cc: Jani Nikula <jani.nikula@intel.com>
+> Cc: Eric Anholt <eric@anholt.net>
+> ---
+>  include/drm/drm_file.h | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/include/drm/drm_file.h b/include/drm/drm_file.h
+> index 67af60bb527a..046cd1bf91eb 100644
+> --- a/include/drm/drm_file.h
+> +++ b/include/drm/drm_file.h
+> @@ -34,8 +34,6 @@
+>  #include <linux/completion.h>
+>  #include <linux/idr.h>
+>  
+> -#include <uapi/drm/drm.h>
+> -
+>  #include <drm/drm_prime.h>
+>  
+>  struct dma_fence;
+> @@ -227,7 +225,7 @@ struct drm_file {
+>  	struct pid *pid;
+>  
+>  	/** @magic: Authentication magic, see @authenticated. */
+> -	drm_magic_t magic;
+> +	unsigned int magic;
+>  
+>  	/**
+>  	 * @lhead:
+> -- 
+> 2.20.1
+> 
+
+-- 
+Sean Paul, Software Engineer, Google / Chromium OS
