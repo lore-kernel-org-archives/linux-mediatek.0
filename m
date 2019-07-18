@@ -1,52 +1,45 @@
 From: Sam Ravnborg <sam@ravnborg.org>
-Subject: [PATCH v1 02/11] drm: drop uapi dependency from drm_print.h
-Date: Thu, 18 Jul 2019 18:14:58 +0200
-Message-ID: <20190718161507.2047-3-sam@ravnborg.org>
+Subject: [PATCH v1 03/11] drm: drop uapi dependency from
+ drm_vblank.h
+Date: Thu, 18 Jul 2019 18:14:59 +0200
+Message-ID: <20190718161507.2047-4-sam@ravnborg.org>
 References: <20190718161507.2047-1-sam@ravnborg.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Return-path: <intel-gfx-bounces@lists.freedesktop.org>
 In-Reply-To: <20190718161507.2047-1-sam@ravnborg.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
+List-Post: <mailto:intel-gfx@lists.freedesktop.org>
+List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: intel-gfx-bounces@lists.freedesktop.org
+Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
 To: dri-devel@lists.freedesktop.org, Intel Graphics Development <intel-gfx@lists.freedesktop.org>
-Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Liviu Dudau <Liviu.Dudau@arm.com>, Sam Ravnborg <sam@ravnborg.org>, Maxime Ripard <maxime.ripard@bootlin.com>, Thierry Reding <treding@nvidia.com>, Jani Nikula <jani.nikula@intel.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org, Boris Brezillon <bbrezillon@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Sean Paul <seanpaul@chromium.org>, =?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>
+Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Sam Ravnborg <sam@ravnborg.org>, Rob Herring <robh@kernel.org>, Maxime Ripard <maxime.ripard@bootlin.com>, CK Hu <ck.hu@mediatek.com>, Thierry Reding <treding@nvidia.com>, Chunming Zhou <david1.zhou@amd.com>, Jani Nikula <jani.nikula@intel.com>, linux-mediatek@lists.infradead.org, Stefan Agner <stefan@agner.ch>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Boris Brezillon <bbrezillon@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, =?UTF-8?q?Noralf=20Tr=C3=B8nnes?= <noralf@tronnes.org>, Philipp Zabel <p.zabel@pengutronix.de>, =?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-ZHJtX3ByaW50LmggdXNlZCBEUk1fTkFNRSAtIHRodXMgYWRkaW5nIGEgZGVwZW5kZW5jeSBmcm9t
-CmluY2x1ZGUvZHJtL2RybV9wcmludC5oID0+IHVhcGkvZHJtL2RybS5oCgpIYXJkY29kZSB0aGUg
-bmFtZSAiZHJtIiB0byBicmVhayB0aGlzIGRlcGVuZGVuY3kuClRoZSBpZGVhIGlzIHRoYXQgdGhl
-cmUgc2hhbGwgYmUgYSBtaW5pbWFsIGRlcGVuZGVuY3kKYmV0d2VlbiBpbmNsdWRlL2RybS8qIGFu
-ZCB1YXBpLyoKClNpZ25lZC1vZmYtYnk6IFNhbSBSYXZuYm9yZyA8c2FtQHJhdm5ib3JnLm9yZz4K
-U3VnZ2VzdGVkLWJ5OiBEYW5pZWwgVmV0dGVyIDxkYW5pZWxAZmZ3bGwuY2g+ClJldmlld2VkLWJ5
-OiBEYW5pZWwgVmV0dGVyIDxkYW5pZWwudmV0dGVyQGZmd2xsLmNoPgpDYzogTWFhcnRlbiBMYW5r
-aG9yc3QgPG1hYXJ0ZW4ubGFua2hvcnN0QGxpbnV4LmludGVsLmNvbT4KQ2M6IE1heGltZSBSaXBh
-cmQgPG1heGltZS5yaXBhcmRAYm9vdGxpbi5jb20+CkNjOiBTZWFuIFBhdWwgPHNlYW5AcG9vcmx5
-LnJ1bj4KQ2M6IERhdmlkIEFpcmxpZSA8YWlybGllZEBsaW51eC5pZT4KQ2M6IFJvYiBDbGFyayA8
-cm9iZGNsYXJrQGdtYWlsLmNvbT4KQ2M6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3Jn
-PgpDYzogQ2hyaXMgV2lsc29uIDxjaHJpc0BjaHJpcy13aWxzb24uY28udWs+CkNjOiBEYW5pZWwg
-VmV0dGVyIDxkYW5pZWxAZmZ3bGwuY2g+Ci0tLQogaW5jbHVkZS9kcm0vZHJtX3ByaW50LmggfCA0
-ICstLS0KIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMyBkZWxldGlvbnMoLSkKCmRp
-ZmYgLS1naXQgYS9pbmNsdWRlL2RybS9kcm1fcHJpbnQuaCBiL2luY2x1ZGUvZHJtL2RybV9wcmlu
-dC5oCmluZGV4IGE1ZDZmMmYzZTQzMC4uNzYwZDFiZDBlYWYxIDEwMDY0NAotLS0gYS9pbmNsdWRl
-L2RybS9kcm1fcHJpbnQuaAorKysgYi9pbmNsdWRlL2RybS9kcm1fcHJpbnQuaApAQCAtMzIsOCAr
-MzIsNiBAQAogI2luY2x1ZGUgPGxpbnV4L2RldmljZS5oPgogI2luY2x1ZGUgPGxpbnV4L2RlYnVn
-ZnMuaD4KIAotI2luY2x1ZGUgPGRybS9kcm0uaD4KLQogLyoqCiAgKiBET0M6IHByaW50CiAgKgpA
-QCAtMjg3LDcgKzI4NSw3IEBAIHZvaWQgZHJtX2Vycihjb25zdCBjaGFyICpmb3JtYXQsIC4uLik7
-CiAvKiBNYWNyb3MgdG8gbWFrZSBwcmludGsgZWFzaWVyICovCiAKICNkZWZpbmUgX0RSTV9QUklO
-VEsob25jZSwgbGV2ZWwsIGZtdCwgLi4uKQkJCQlcCi0JcHJpbnRrIyNvbmNlKEtFUk5fIyNsZXZl
-bCAiWyIgRFJNX05BTUUgIl0gIiBmbXQsICMjX19WQV9BUkdTX18pCisJcHJpbnRrIyNvbmNlKEtF
-Uk5fIyNsZXZlbCAiW2RybV0gIiBmbXQsICMjX19WQV9BUkdTX18pCiAKICNkZWZpbmUgRFJNX0lO
-Rk8oZm10LCAuLi4pCQkJCQkJXAogCV9EUk1fUFJJTlRLKCwgSU5GTywgZm10LCAjI19fVkFfQVJH
-U19fKQotLSAKMi4yMC4xCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
-cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
-ZGV2ZWw=
+ZHJtX3ZibGFuay5oIGluY2x1ZGVkIHVhcGkvZHJtL2RybS5oLgpJdCB0dXJucyBvdXQgdGhpcyBp
+bmNsdWRlIHdhcyBub3QgcmVxdWlyZWQgLSBkZWxldGUgaXQuCgpOb3RlOiB1YXBpL2RybS9kcm0u
+aCBpcyBpbmNsdWRlZCBpbmRpcmVjdCB2aWEgZHJtX2ZpbGUuaCwKYnV0IHRoZXJlIGFyZSBubyBk
+ZXBlbmRlbmNpZXMgaW4gZHJtX3ZibGFuay5oIHNvIHRoZSByZW1vdmFsCmlzIGxlZ2l0LgoKU2ln
+bmVkLW9mZi1ieTogU2FtIFJhdm5ib3JnIDxzYW1AcmF2bmJvcmcub3JnPgpSZXZpZXdlZC1ieTog
+RGFuaWVsIFZldHRlciA8ZGFuaWVsLnZldHRlckBmZndsbC5jaD4KQ2M6IE1hYXJ0ZW4gTGFua2hv
+cnN0IDxtYWFydGVuLmxhbmtob3JzdEBsaW51eC5pbnRlbC5jb20+CkNjOiBNYXhpbWUgUmlwYXJk
+IDxtYXhpbWUucmlwYXJkQGJvb3RsaW4uY29tPgpDYzogU2VhbiBQYXVsIDxzZWFuQHBvb3JseS5y
+dW4+CkNjOiBEYXZpZCBBaXJsaWUgPGFpcmxpZWRAbGludXguaWU+CkNjOiBEYW5pZWwgVmV0dGVy
+IDxkYW5pZWxAZmZ3bGwuY2g+CkNjOiBTdGVmYW4gQWduZXIgPHN0ZWZhbkBhZ25lci5jaD4KQ2M6
+IFRoaWVycnkgUmVkaW5nIDx0cmVkaW5nQG52aWRpYS5jb20+Ci0tLQogaW5jbHVkZS9kcm0vZHJt
+X3ZibGFuay5oIHwgMSAtCiAxIGZpbGUgY2hhbmdlZCwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdp
+dCBhL2luY2x1ZGUvZHJtL2RybV92YmxhbmsuaCBiL2luY2x1ZGUvZHJtL2RybV92YmxhbmsuaApp
+bmRleCBlNTI4YmIyZjY1OWQuLjlmZTRiYThiYzYyMiAxMDA2NDQKLS0tIGEvaW5jbHVkZS9kcm0v
+ZHJtX3ZibGFuay5oCisrKyBiL2luY2x1ZGUvZHJtL2RybV92YmxhbmsuaApAQCAtMzAsNyArMzAs
+NiBAQAogCiAjaW5jbHVkZSA8ZHJtL2RybV9maWxlLmg+CiAjaW5jbHVkZSA8ZHJtL2RybV9tb2Rl
+cy5oPgotI2luY2x1ZGUgPHVhcGkvZHJtL2RybS5oPgogCiBzdHJ1Y3QgZHJtX2RldmljZTsKIHN0
+cnVjdCBkcm1fY3J0YzsKLS0gCjIuMjAuMQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KSW50ZWwtZ2Z4IG1haWxpbmcgbGlzdApJbnRlbC1nZnhAbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
+dGluZm8vaW50ZWwtZ2Z4
