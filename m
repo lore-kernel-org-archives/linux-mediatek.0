@@ -1,133 +1,84 @@
-From: Zhiyong Tao <zhiyong.tao@mediatek.com>
-Subject: [PATCH v1 2/2] auxadc: mediatek: support efuse calibration in auxadc driver
-Date: Thu, 18 Jul 2019 16:01:19 +0800
-Message-ID: <20190718080119.30707-3-zhiyong.tao@mediatek.com>
-References: <20190718080119.30707-1-zhiyong.tao@mediatek.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [RFC PATCH] regulator: core: Move device_link_remove out from
+ regulator_list_mutex
+Date: Thu, 18 Jul 2019 12:45:12 +0100
+Message-ID: <20190718114512.GA5761@sirena.org.uk>
+References: <1563432146-28097-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: multipart/signed; micalg=pgp-sha512;
+        protocol="application/pgp-signature"; boundary="qDbXVdCdHGoSgWSk"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190718080119.30707-1-zhiyong.tao@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1563432146-28097-1-git-send-email-yong.wu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net
-Cc: srv_heupstream@mediatek.com, hui.liu@mediatek.com, jg_poxu@mediatek.com, sj.huang@mediatek.com, yingjoe.chen@mediatek.com, sean.wang@mediatek.com, erin.lo@mediatek.com, eddie.huang@mediatek.com, matthias.bgg@gmail.com, s.hauer@pengutronix.de, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-iio@vger.kernel.org, linux-mediatek@lists.infradead.org, Zhiyong Tao <zhiyong.tao@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, Robin Murphy <robin.murphy@arm.com>, Will Deacon <will@kernel.org>, Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, chao.hao@mediatek.com, cui.zhang@mediatek.com, ming-fan.chen@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, Matthias Kaehlcke <mka@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch support efuse calibration in auxadc driver
 
-Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
-Signed-off-by: jg_poxu <jg_poxu@mediatek.com>
----
- drivers/iio/adc/mt6577_auxadc.c | 71 +++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 71 insertions(+)
+--qDbXVdCdHGoSgWSk
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
-index 95d76abb64ec..e30d9736b1a5 100644
---- a/drivers/iio/adc/mt6577_auxadc.c
-+++ b/drivers/iio/adc/mt6577_auxadc.c
-@@ -17,12 +17,14 @@
- #include <linux/err.h>
- #include <linux/kernel.h>
- #include <linux/module.h>
-+#include <linux/nvmem-consumer.h>
- #include <linux/of.h>
- #include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/iopoll.h>
- #include <linux/io.h>
- #include <linux/iio/iio.h>
-+#include <linux/slab.h>
- 
- /* Register definitions */
- #define MT6577_AUXADC_CON0                    0x00
-@@ -42,6 +44,13 @@
- #define MT6577_AUXADC_POWER_READY_MS          1
- #define MT6577_AUXADC_SAMPLE_READY_US         25
- 
-+#define ADC_GE_A_SHIFT      10
-+#define ADC_GE_A_MASK       (0x3ff << ADC_GE_A_SHIFT)
-+#define ADC_OE_A_SHIFT      0
-+#define ADC_OE_A_MASK       (0x3ff << ADC_OE_A_SHIFT)
-+#define ADC_CALI_EN_A_SHIFT 20
-+#define ADC_CALI_EN_A_MASK  (0x1 << ADC_CALI_EN_A_SHIFT)
-+
- struct mt6577_auxadc_device {
- 	void __iomem *reg_base;
- 	struct clk *adc_clk;
-@@ -74,6 +83,64 @@ static const struct iio_chan_spec mt6577_auxadc_iio_channels[] = {
- 	MT6577_AUXADC_CHANNEL(15),
- };
- 
-+s32 cali_oe;
-+s32 cali_ge;
-+struct adc_cali_info {
-+	u32 cali_ge_a;
-+	u32 cali_oe_a;
-+	u32 gain;
-+};
-+static struct adc_cali_info adc_cali;
-+
-+static int mt6577_auxadc_update_cali(struct device *dev)
-+{
-+	struct nvmem_cell *cell;
-+	u32 *buf;
-+	size_t len;
-+	int ret = 0;
-+
-+	cali_oe = 0;
-+	cali_ge = 0;
-+
-+	cell = nvmem_cell_get(dev, "calibration-data");
-+	if (IS_ERR(cell)) {
-+		if (PTR_ERR(cell) == -EPROBE_DEFER)
-+			return PTR_ERR(cell);
-+		return 0;
-+	}
-+
-+	buf = (u32 *)nvmem_cell_read(cell, &len);
-+
-+	nvmem_cell_put(cell);
-+
-+	if (IS_ERR(buf))
-+		return PTR_ERR(buf);
-+
-+	if (len < sizeof(u32)) {
-+		dev_warn(dev, "invalid calibration data\n");
-+		ret = -EINVAL;
-+		goto out;
-+	}
-+
-+	if (((buf[0] & ADC_CALI_EN_A_MASK) >> ADC_CALI_EN_A_SHIFT) != 0) {
-+		adc_cali.cali_oe_a =
-+			(buf[0] & ADC_OE_A_MASK) >> ADC_OE_A_SHIFT;
-+		adc_cali.cali_ge_a =
-+			((buf[0] & ADC_GE_A_MASK) >> ADC_GE_A_SHIFT);
-+
-+		cali_ge = adc_cali.cali_ge_a - 512;
-+		cali_oe = adc_cali.cali_oe_a - 512;
-+		adc_cali.gain = 1 + cali_ge;
-+	}  else {
-+		dev_info(dev, "Device not calibrated, using default calibration values\n");
-+	}
-+
-+out:
-+	kfree(buf);
-+
-+	return ret;
-+}
-+
- static inline void mt6577_auxadc_mod_reg(void __iomem *reg,
- 					 u32 or_mask, u32 and_mask)
- {
-@@ -274,6 +341,10 @@ static int mt6577_auxadc_probe(struct platform_device *pdev)
- 		goto err_power_off;
- 	}
- 
-+	ret = mt6577_auxadc_update_cali(&pdev->dev);
-+	if (ret)
-+		return ret;
-+
- 	return 0;
- 
- err_power_off:
--- 
-2.12.5
+On Thu, Jul 18, 2019 at 02:42:26PM +0800, Yong Wu wrote:
+> The MediaTek SMI adding device_link patch looks reveal a deadlock
+> issue reported in [1], This patch is to fix this deadlock issue.
+
+Can you please describe in words what this issue is and how the patch
+addresses it?
+
+> This is the detailed log:
+>=20
+> [    4.664194] =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> [    4.670368] WARNING: possible circular locking dependency detected
+> [    4.676545] 5.2.0-rc2-next-20190528-44527-g6c94b6475c04 #20 Tainted: G=
+ S
+> [    4.684539] ------------------------------------------------------
+
+Please think hard before including complete backtraces in upstream
+reports, they are very large and contain almost no useful information
+relative to their size so often obscure the relevant content in your
+message. If part of the backtrace is usefully illustrative then it's
+usually better to pull out the relevant sections.
+
+> index 955a0a1..3db9350 100644
+> --- a/drivers/regulator/core.c
+> +++ b/drivers/regulator/core.c
+> @@ -2048,7 +2048,9 @@ static void _regulator_put(struct regulator *regula=
+tor)
+>  	debugfs_remove_recursive(regulator->debugfs);
+> =20
+>  	if (regulator->dev) {
+> +		mutex_unlock(&regulator_list_mutex);
+>  		device_link_remove(regulator->dev, &rdev->dev);
+> +		mutex_lock(&regulator_list_mutex);
+> =20
+>  		/* remove any sysfs entries */
+>  		sysfs_remove_link(&rdev->dev.kobj, regulator->supply_name);
+> --=20
+> 1.9.1
+>=20
+
+Just randomly dropping and reacquiring the lock in the middle of a
+series of operations sounds potentially racy...  What happens if the
+list gets changed while the lock is dropped?
+
+--qDbXVdCdHGoSgWSk
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl0wW8UACgkQJNaLcl1U
+h9Duwgf8DrFA6rkNbZWAOQolUO3ScHl7ZIFDMYs/c8IslX851jEG59mVl69AFFdx
+OOzfKw4BgDoYJX0pIoCnYGkEyTZgI3m1zWOmb3ceu8UPwxDa2fOeXaXvfRT0C9IP
+J4sQe88/NyzcipB6TwzYri4MnDI/dC5cmnHGuiOLWRzLtu9JKLdkyqoHynMk8gy8
+RbFiatFKpVgxXz1RCVKulsJ/bZuHAUoa827QErIIzH00XVUSeolXp0k1HOZmbtJe
+xrUkA+hvKhCw+cJaft/ifJWyO9+AorM7CGBJvJtSYuqjUp4rB5+Bl4T/8IHVNgtX
+rl74RJhGjAjgSzIE+HlBKIiOD1DL8A==
+=hW06
+-----END PGP SIGNATURE-----
+
+--qDbXVdCdHGoSgWSk--
