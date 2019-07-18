@@ -1,111 +1,57 @@
-From: Andrey Ryabinin <aryabinin@virtuozzo.com>
-Subject: Re: [PATCH v3] kasan: add memory corruption identification for
- software tag-based mode
-Date: Thu, 18 Jul 2019 19:11:21 +0300
-Message-ID: <9ab1871a-2605-ab34-3fd3-4b44a0e17ab7@virtuozzo.com>
-References: <20190613081357.1360-1-walter-zh.wu@mediatek.com>
- <da7591c9-660d-d380-d59e-6d70b39eaa6b@virtuozzo.com>
- <1560447999.15814.15.camel@mtksdccf07> <1560479520.15814.34.camel@mtksdccf07>
- <1560744017.15814.49.camel@mtksdccf07>
- <CACT4Y+Y3uS59rXf92ByQuFK_G4v0H8NNnCY1tCbr4V+PaZF3ag@mail.gmail.com>
- <1560774735.15814.54.camel@mtksdccf07> <1561974995.18866.1.camel@mtksdccf07>
- <CACT4Y+aMXTBE0uVkeZz+MuPx3X1nESSBncgkScWvAkciAxP1RA@mail.gmail.com>
- <ebc99ee1-716b-0b18-66ab-4e93de02ce50@virtuozzo.com>
- <1562640832.9077.32.camel@mtksdccf07>
- <d9fd1d5b-9516-b9b9-0670-a1885e79f278@virtuozzo.com>
- <1562839579.5846.12.camel@mtksdccf07>
- <37897fb7-88c1-859a-dfcc-0a5e89a642e0@virtuozzo.com>
- <1563160001.4793.4.camel@mtksdccf07>
+From: Sam Ravnborg <sam@ravnborg.org>
+Subject: [PATCH v1 0/11] drm: header maintenance
+Date: Thu, 18 Jul 2019 18:14:56 +0200
+Message-ID: <20190718161507.2047-1-sam@ravnborg.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1563160001.4793.4.camel@mtksdccf07>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Walter Wu <walter-zh.wu@mediatek.com>
-Cc: Dmitry Vyukov <dvyukov@google.com>, Alexander Potapenko <glider@google.com>, Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Matthias Brugger <matthias.bgg@gmail.com>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Arnd Bergmann <arnd@arndb.de>, Vasily Gorbik <gor@linux.ibm.com>, Andrey Konovalov <andreyknvl@google.com>, "Jason A . Donenfeld" <Jason@zx2c4.com>, Miles Chen <miles.chen@mediatek.com>, kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>, Linux-MM <linux-mm@kvack.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream <wsd_upstream@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org, Intel Graphics Development <intel-gfx@lists.freedesktop.org>
+Cc: David Airlie <airlied@linux.ie>, Liviu Dudau <Liviu.Dudau@arm.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Thierry Reding <treding@nvidia.com>, Jani Nikula <jani.nikula@intel.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org, Boris Brezillon <bbrezillon@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, =?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 7/15/19 6:06 AM, Walter Wu wrote:
-> On Fri, 2019-07-12 at 13:52 +0300, Andrey Ryabinin wrote:
->>
->> On 7/11/19 1:06 PM, Walter Wu wrote:
->>> On Wed, 2019-07-10 at 21:24 +0300, Andrey Ryabinin wrote:
->>>>
->>>> On 7/9/19 5:53 AM, Walter Wu wrote:
->>>>> On Mon, 2019-07-08 at 19:33 +0300, Andrey Ryabinin wrote:
->>>>>>
->>>>>> On 7/5/19 4:34 PM, Dmitry Vyukov wrote:
->>>>>>> On Mon, Jul 1, 2019 at 11:56 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
->>>>
->>>>>>>
->>>>>>> Sorry for delays. I am overwhelm by some urgent work. I afraid to
->>>>>>> promise any dates because the next week I am on a conference, then
->>>>>>> again a backlog and an intern starting...
->>>>>>>
->>>>>>> Andrey, do you still have concerns re this patch? This change allows
->>>>>>> to print the free stack.
->>>>>>
->>>>>> I 'm not sure that quarantine is a best way to do that. Quarantine is made to delay freeing, but we don't that here.
->>>>>> If we want to remember more free stacks wouldn't be easier simply to remember more stacks in object itself?
->>>>>> Same for previously used tags for better use-after-free identification.
->>>>>>
->>>>>
->>>>> Hi Andrey,
->>>>>
->>>>> We ever tried to use object itself to determine use-after-free
->>>>> identification, but tag-based KASAN immediately released the pointer
->>>>> after call kfree(), the original object will be used by another
->>>>> pointer, if we use object itself to determine use-after-free issue, then
->>>>> it has many false negative cases. so we create a lite quarantine(ring
->>>>> buffers) to record recent free stacks in order to avoid those false
->>>>> negative situations.
->>>>
->>>> I'm telling that *more* than one free stack and also tags per object can be stored.
->>>> If object reused we would still have information about n-last usages of the object.
->>>> It seems like much easier and more efficient solution than patch you proposing.
->>>>
->>> To make the object reused, we must ensure that no other pointers uses it
->>> after kfree() release the pointer.
->>> Scenario:
->>> 1). The object reused information is valid when no another pointer uses
->>> it.
->>> 2). The object reused information is invalid when another pointer uses
->>> it.
->>> Do you mean that the object reused is scenario 1) ?
->>> If yes, maybe we can change the calling quarantine_put() location. It
->>> will be fully use that quarantine, but at scenario 2) it looks like to
->>> need this patch.
->>> If no, maybe i miss your meaning, would you tell me how to use invalid
->>> object information? or?
->>>
->>
->>
->> KASAN keeps information about object with the object, right after payload in the kasan_alloc_meta struct.
->> This information is always valid as long as slab page allocated. Currently it keeps only one last free stacktrace.
->> It could be extended to record more free stacktraces and also record previously used tags which will allow you
->> to identify use-after-free and extract right free stacktrace.
-> 
-> Thanks for your explanation.
-> 
-> For extend slub object, if one record is 9B (sizeof(u8)+ sizeof(struct
-> kasan_track)) and add five records into slub object, every slub object
-> may add 45B usage after the system runs longer. 
-> Slub object number is easy more than 1,000,000(maybe it may be more
-> bigger), then the extending object memory usage should be 45MB, and
-> unfortunately it is no limit. The memory usage is more bigger than our
-> patch.
-
-No, it's not necessarily more.
-And there are other aspects to consider such as performance, how simple reliable the code is.
-
-> 
-> We hope tag-based KASAN advantage is smaller memory usage. If it’s
-> possible, we should spend less memory in order to identify
-> use-after-free. Would you accept our patch after fine tune it?
-
-Sure, if you manage to fix issues and demonstrate that performance penalty of your
-patch is close to zero.
+Rmlyc3QgcGF0Y2ggZnJvbSBKYW5pIGZpeGVzIHNvIGRybV9wcmludC5oIGlzIHNlbGYtY29udGFp
+bmVkLgpOZXh0IHR3byBwYXRjaGVzIGFyZSB0cml2aWFsIHJlbW92YWwgb2YgdWFwaSBkZXBlbmRl
+bmNpZXMuCgphdGlfcGNpZ2FydCBpcyBmaXhlZCB0byBkcm9wIHVzZSBvZiBkcm1fb3NfbGludXgu
+aAoKZHJtX3ZibGFuayBpcyBsaWtld2lzZSBmaXhlZCB0byBkcm9wIHVzZSBvZiBkcm1fb3NfbGlu
+dXguaApUaGlzIHdhcyBhIG5vbi10cml2aWFsIGNvbnZlcnNpb24sICpyZXZpZXcgcmVxdWVzdGVk
+ISoKClRoZSByZW1haW5pbmcgcGF0Y2hlcyBhcmUgcHJlcGFyYXRpb24gZm9yIGFuZCByZW1vdmFs
+IG9mCnVhcGkvZHJtL2RybWggZnJvbSBkcm1fZmlsZS5oLgpUaGVyZSB3ZXJlIGEgZmV3IGZpbGVz
+IHdoZXJlIHdlIGhhZCB0byBwdXNoIGluY2x1ZGUKb2YgZHJtL2RybS5oIG91dCB0byB0byBoYXZl
+IGEgY2xlYW4gYnVpbGQuCgpDSyBIdSAtIHBsZWFzZSBsZXQgbWUgYXBwbHkgdGhlIG1lZGlhdGVr
+IHBhdGNoIHRvCmRybS1taXNjLW5leHQsIGFzIGl0IGlzIHJlcXVpcmVkIGZvciB0aGUgZmluYWwg
+cGF0Y2guCk9yIHB1c2ggaXQgdG8gZHJtLW1pc2MtbmV4dCB5b3Vyc2VsZi4KCglTYW0KCkphbmkg
+TmlrdWxhICgxKToKICAgICAgZHJtL3BhbmVsOiBtYWtlIGRybV9wYW5lbC5oIHNlbGYtY29udGFp
+bmVkCgpTYW0gUmF2bmJvcmcgKDEwKToKICAgICAgZHJtOiBkcm9wIHVhcGkgZGVwZW5kZW5jeSBm
+cm9tIGRybV9wcmludC5oCiAgICAgIGRybTogZHJvcCB1YXBpIGRlcGVuZGVuY3kgZnJvbSBkcm1f
+dmJsYW5rLmgKICAgICAgZHJtL2F0aV9wY2lnYXJ0OiBkcm9wIGRlcGVuZGVuY3kgb24gZHJtX29z
+X2xpbnV4LmgKICAgICAgZHJtL3ZibGFuazogZHJvcCB1c2Ugb2YgRFJNX1dBSVRfT04oKQogICAg
+ICBkcm06IGRpcmVjdCBpbmNsdWRlIG9mIGRybS5oIGluIGRybV9nZW0uYwogICAgICBkcm06IGRp
+cmVjdCBpbmNsdWRlIG9mIGRybS5oIGluIGRybV9nZW1fc2htZW1faGVscGVyLmMKICAgICAgZHJt
+OiBkaXJlY3QgaW5jbHVkZSBvZiBkcm0uaCBpbiBkcm1fcHJpbWUuYwogICAgICBkcm06IGRpcmVj
+dCBpbmNsdWRlIG9mIGRybS5oIGluIGRybV9zeW5jb2JqLmMKICAgICAgZHJtL21lZGlhdGVrOiBk
+aXJlY3QgaW5jbHVkZSBvZiBkcm0uaCBpbiBtdGtfZHJtX2dlbS5jCiAgICAgIGRybTogZHJvcCB1
+YXBpIGRlcGVuZGVuY3kgZnJvbSBkcm1fZmlsZS5oCgogZHJpdmVycy9ncHUvZHJtL2F0aV9wY2ln
+YXJ0LmMgICAgICAgICAgfCAxMCArKysrKystLS0tCiBkcml2ZXJzL2dwdS9kcm0vZHJtX2dlbS5j
+ICAgICAgICAgICAgICB8ICAxICsKIGRyaXZlcnMvZ3B1L2RybS9kcm1fZ2VtX3NobWVtX2hlbHBl
+ci5jIHwgIDEgKwogZHJpdmVycy9ncHUvZHJtL2RybV9wcmltZS5jICAgICAgICAgICAgfCAgMSAr
+CiBkcml2ZXJzL2dwdS9kcm0vZHJtX3N5bmNvYmouYyAgICAgICAgICB8ICAxICsKIGRyaXZlcnMv
+Z3B1L2RybS9kcm1fdmJsYW5rLmMgICAgICAgICAgIHwgMjkgKysrKysrKysrKysrKysrKysrKyst
+LS0tLS0tLS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2dlbS5jIHwgIDEgKwog
+aW5jbHVkZS9kcm0vZHJtX2ZpbGUuaCAgICAgICAgICAgICAgICAgfCAgNCArLS0tCiBpbmNsdWRl
+L2RybS9kcm1fcGFuZWwuaCAgICAgICAgICAgICAgICB8ICAxICsKIGluY2x1ZGUvZHJtL2RybV9w
+cmludC5oICAgICAgICAgICAgICAgIHwgIDQgKy0tLQogaW5jbHVkZS9kcm0vZHJtX3ZibGFuay5o
+ICAgICAgICAgICAgICAgfCAgMSAtCiAxMSBmaWxlcyBjaGFuZ2VkLCAzNCBpbnNlcnRpb25zKCsp
+LCAyMCBkZWxldGlvbnMoLSkKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
+a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
+cmktZGV2ZWw=
