@@ -1,48 +1,80 @@
-From: Sam Ravnborg <sam@ravnborg.org>
-Subject: [PATCH v1 11/11] drm: drop uapi dependency from drm_file.h
-Date: Thu, 18 Jul 2019 18:15:07 +0200
-Message-ID: <20190718161507.2047-12-sam@ravnborg.org>
+From: Chris Wilson <chris@chris-wilson.co.uk>
+Subject: Re: [PATCH v1 02/11] drm: drop uapi dependency from drm_print.h
+Date: Thu, 18 Jul 2019 17:46:40 +0100
+Message-ID: <156346840026.24728.936589728458336617@skylake-alporthouse-com>
 References: <20190718161507.2047-1-sam@ravnborg.org>
+ <20190718161507.2047-3-sam@ravnborg.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190718161507.2047-1-sam@ravnborg.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org, Intel Graphics Development <intel-gfx@lists.freedesktop.org>
-Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Liviu Dudau <Liviu.Dudau@arm.com>, Sam Ravnborg <sam@ravnborg.org>, Maxime Ripard <maxime.ripard@bootlin.com>, Thierry Reding <treding@nvidia.com>, Jani Nikula <jani.nikula@intel.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org, Boris Brezillon <bbrezillon@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Sean Paul <seanpaul@chromium.org>, =?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190718161507.2047-3-sam@ravnborg.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Intel Graphics Development <intel-gfx@lists.freedesktop.org>, dri-devel@lists.freedesktop.org
+Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Liviu Dudau <Liviu.Dudau@arm.com>, Lionel Landwerlin <lionel.g.landwerlin@intel.com>, Eric Anholt <eric@anholt.net>, Sam Ravnborg <sam@ravnborg.org>, Rob Herring <robh@kernel.org>, Maxime Ripard <maxime.ripard@bootlin.com>, CK Hu <ck.hu@mediatek.com>, Thierry Reding <treding@nvidia.com>, Daniel Vetter <daniel@ffwll.ch>, Chunming Zhou <david1.zhou@amd.com>, Jani Nikula <jani.nikula@intel.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, linux-mediatek@lists.infradead.org, Stefan Agner <stefan@agner.ch>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org, Boris Brezillon <bbrezillon@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Rob Clark <robdclark@gmail.com>, =?utf-8?q?Noralf_Tr=C3=B8nnes?= <noralf@tronnes.org>, Philipp
 List-Id: linux-mediatek@lists.infradead.org
 
-ZHJtX2ZpbGUgdXNlZCBkcm1fbWFnaWNfdCBmcm9tIHVhcGkvZHJtL2RybS5oLgpUaGlzIGlzIGEg
-c2ltcGxlIHVuc2lnbmVkIGludC4KSnVzdCBvcGVuY29kZSBpdCBhcyBzdWNoIHRvIGJyZWFrIHRo
-ZSBkZXBlbmRlbmN5IGZyb20gdGhpcyBoZWFkZXIgZmlsZQp0byB1YXBpLgoKU2lnbmVkLW9mZi1i
-eTogU2FtIFJhdm5ib3JnIDxzYW1AcmF2bmJvcmcub3JnPgpTdWdnZXN0ZWQtYnk6IERhbmllbCBW
-ZXR0ZXIgPGRhbmllbC52ZXR0ZXJAZmZ3bGwuY2g+CkNjOiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNo
-cm9taXVtLm9yZz4KQ2M6IExpdml1IER1ZGF1IDxMaXZpdS5EdWRhdUBhcm0uY29tPgpDYzogQ2hy
-aXMgV2lsc29uIDxjaHJpc0BjaHJpcy13aWxzb24uY28udWs+CkNjOiBNYWFydGVuIExhbmtob3Jz
-dCA8bWFhcnRlbi5sYW5raG9yc3RAbGludXguaW50ZWwuY29tPgpDYzogTWF4aW1lIFJpcGFyZCA8
-bWF4aW1lLnJpcGFyZEBib290bGluLmNvbT4KQ2M6IERhdmlkIEFpcmxpZSA8YWlybGllZEBsaW51
-eC5pZT4KQ2M6IERhbmllbCBWZXR0ZXIgPGRhbmllbEBmZndsbC5jaD4KQ2M6IEphbmkgTmlrdWxh
-IDxqYW5pLm5pa3VsYUBpbnRlbC5jb20+CkNjOiBFcmljIEFuaG9sdCA8ZXJpY0BhbmhvbHQubmV0
-PgotLS0KIGluY2x1ZGUvZHJtL2RybV9maWxlLmggfCA0ICstLS0KIDEgZmlsZSBjaGFuZ2VkLCAx
-IGluc2VydGlvbigrKSwgMyBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9pbmNsdWRlL2RybS9k
-cm1fZmlsZS5oIGIvaW5jbHVkZS9kcm0vZHJtX2ZpbGUuaAppbmRleCA2N2FmNjBiYjUyN2EuLjA0
-NmNkMWJmOTFlYiAxMDA2NDQKLS0tIGEvaW5jbHVkZS9kcm0vZHJtX2ZpbGUuaAorKysgYi9pbmNs
-dWRlL2RybS9kcm1fZmlsZS5oCkBAIC0zNCw4ICszNCw2IEBACiAjaW5jbHVkZSA8bGludXgvY29t
-cGxldGlvbi5oPgogI2luY2x1ZGUgPGxpbnV4L2lkci5oPgogCi0jaW5jbHVkZSA8dWFwaS9kcm0v
-ZHJtLmg+Ci0KICNpbmNsdWRlIDxkcm0vZHJtX3ByaW1lLmg+CiAKIHN0cnVjdCBkbWFfZmVuY2U7
-CkBAIC0yMjcsNyArMjI1LDcgQEAgc3RydWN0IGRybV9maWxlIHsKIAlzdHJ1Y3QgcGlkICpwaWQ7
-CiAKIAkvKiogQG1hZ2ljOiBBdXRoZW50aWNhdGlvbiBtYWdpYywgc2VlIEBhdXRoZW50aWNhdGVk
-LiAqLwotCWRybV9tYWdpY190IG1hZ2ljOworCXVuc2lnbmVkIGludCBtYWdpYzsKIAogCS8qKgog
-CSAqIEBsaGVhZDoKLS0gCjIuMjAuMQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
-Zm8vZHJpLWRldmVs
+Quoting Sam Ravnborg (2019-07-18 17:14:58)
+> drm_print.h used DRM_NAME - thus adding a dependency from
+> include/drm/drm_print.h => uapi/drm/drm.h
+> 
+> Hardcode the name "drm" to break this dependency.
+> The idea is that there shall be a minimal dependency
+> between include/drm/* and uapi/*
+> 
+> Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
+> Suggested-by: Daniel Vetter <daniel@ffwll.ch>
+> Reviewed-by: Daniel Vetter <daniel.vetter@ffwll.ch>
+> Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+> Cc: Maxime Ripard <maxime.ripard@bootlin.com>
+> Cc: Sean Paul <sean@poorly.run>
+> Cc: David Airlie <airlied@linux.ie>
+> Cc: Rob Clark <robdclark@gmail.com>
+> Cc: Sean Paul <seanpaul@chromium.org>
+> Cc: Chris Wilson <chris@chris-wilson.co.uk>
+> Cc: Daniel Vetter <daniel@ffwll.ch>
+> ---
+>  include/drm/drm_print.h | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/include/drm/drm_print.h b/include/drm/drm_print.h
+> index a5d6f2f3e430..760d1bd0eaf1 100644
+> --- a/include/drm/drm_print.h
+> +++ b/include/drm/drm_print.h
+> @@ -32,8 +32,6 @@
+>  #include <linux/device.h>
+>  #include <linux/debugfs.h>
+>  
+> -#include <drm/drm.h>
+> -
+>  /**
+>   * DOC: print
+>   *
+> @@ -287,7 +285,7 @@ void drm_err(const char *format, ...);
+>  /* Macros to make printk easier */
+>  
+>  #define _DRM_PRINTK(once, level, fmt, ...)                             \
+> -       printk##once(KERN_##level "[" DRM_NAME "] " fmt, ##__VA_ARGS__)
+> +       printk##once(KERN_##level "[drm] " fmt, ##__VA_ARGS__)
+
+I guess I'm th only one who
+
+#undef DRM_NAME
+#define DRM_NAME i915
+
+just so that I didn't have inane logs?
+
+One might suggest that instead of hardcoding it, follow the pr_fmt()
+pattern and only add "[drm]" for the drm core.
+
+Even then it so useless (which drm driver is this message for???) that I
+want to remove them all :(
+-Chris
