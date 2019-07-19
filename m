@@ -1,54 +1,159 @@
-From: Sam Ravnborg <sam@ravnborg.org>
-Subject: Re: [PATCH v1 11/11] drm: drop uapi dependency from drm_file.h
-Date: Fri, 19 Jul 2019 13:08:00 +0200
-Message-ID: <20190719110800.GA3247@ravnborg.org>
-References: <20190718161507.2047-1-sam@ravnborg.org>
- <20190718161507.2047-12-sam@ravnborg.org>
- <57ad927c-4b7f-d6e2-edda-720386190054@amd.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v3] serial: 8250-mtk: modify mtk uart power and clock
+ management
+Date: Fri, 19 Jul 2019 13:16:33 +0200
+Message-ID: <b2958b94-8938-3f6b-a636-012c5657f25d@gmail.com>
+References: <1563505182-2408-1-git-send-email-changqi.hu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <57ad927c-4b7f-d6e2-edda-720386190054@amd.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: "Koenig, Christian" <Christian.Koenig@amd.com>
-Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Liviu Dudau <Liviu.Dudau@arm.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Maxime Ripard <maxime.ripard@bootlin.com>, Thierry Reding <treding@nvidia.com>, Jani Nikula <jani.nikula@intel.com>, Intel Graphics Development <intel-gfx@lists.freedesktop.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <sean@poorly.run>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Boris Brezillon <bbrezillon@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Sean Paul <seanpaul@chromium.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1563505182-2408-1-git-send-email-changqi.hu@mediatek.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Changqi Hu <changqi.hu@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>
+Cc: Peter Shih <pihsun@chromium.org>, "Gustavo A. R. Silva" <gustavo@embeddedor.com>, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgQ2hyaXN0aWFuLgoKVGhhbmtzIGZvciB5b3VyIGNvbW1lbnRzIGFuZCB2ZXJ5IHZhbGlkIHF1
-ZXN0aW9uLgoKT24gRnJpLCBKdWwgMTksIDIwMTkgYXQgMDY6NTY6NDdBTSArMDAwMCwgS29lbmln
-LCBDaHJpc3RpYW4gd3JvdGU6Cj4gQW0gMTguMDcuMTkgdW0gMTg6MTUgc2NocmllYiBTYW0gUmF2
-bmJvcmc6Cj4gPiBkcm1fZmlsZSB1c2VkIGRybV9tYWdpY190IGZyb20gdWFwaS9kcm0vZHJtLmgu
-Cj4gPiBUaGlzIGlzIGEgc2ltcGxlIHVuc2lnbmVkIGludC4KPiA+IEp1c3Qgb3BlbmNvZGUgaXQg
-YXMgc3VjaCB0byBicmVhayB0aGUgZGVwZW5kZW5jeSBmcm9tIHRoaXMgaGVhZGVyIGZpbGUKPiA+
-IHRvIHVhcGkuCj4gCj4gTWhtLCB3aHkgZG8geW91IHdhbnQgdG8gcmVtb3ZlIFVBUEkgZGVwZW5k
-ZW5jeSBoZXJlIGluIHRoZSBmaXJzdCBwbGFjZT8KClRoZSBpZGVhIGlzIHRvIG1ha2UgaW5jbHVk
-ZS9kcm0vKiBpbmRlcGVuZGVudCBvZiB1YXBpL2RybS8qIHNvIHRoZQpoZWFkZXIgZmlsZXMgYXJl
-IGxlc3MgdGFuZ2xlZCB1cCB0aHVzIGVhc2llciB0byByZWFkIGFuZCBjb21wcmVoZW5kLgoKLmMg
-ZmlsZXMgdGhhdCByZXF1aXJlcyB1YXBpIGNhbiB0aGVuIGluY2x1ZGUgdGhlIHVhcGkgaGVhZGVy
-cy4KCkZvciBub3cgbXkgZm9jdXMgd2FzIHNvbGVseSBvbiB1YXBpL2RybS9kcm0uaCAtIHNvIEkg
-ZHVubm8gaWYgdGhpcwppcyBhbiBhY2hpZXZhYmxlIGdvYWwgZm9yIGluY2x1ZGUvZHJtLyouCgpG
-b3IgdWFwaS9kcm0vKiBoZWFkZXJzIHRoaW5ncyBhcmUgbW9yZSBjbGVhci4gVGhleSBzaGFsbCBi
-ZQppbmRlcGVuZGVudCBvZiBpbmNsdWRlL2RybS8qIGFzIHRoZXkgYXJlIGV4cG9ydGVkLgoKPiBJ
-IG1lYW4gdGhlIHR5cGUgY2FuJ3QgY2hhbmdlIGJlY2F1c2UgaXQgaXMgVUFQSSwgYnV0IGl0IGlz
-IHJhdGhlciBiYWQgCj4gZm9yIGEgZG9jdW1lbnRhdGlvbiBwb2ludCBvZiB2aWV3LgoKRm9yIGEg
-d2lkZWx5IHVzZWQgdHlwZSBJIHdvdWxkIGFncmVlLgpGb3Igc3RydWN0IGF1dGgsIHRoYXQgaXMg
-b255IHVzZWQgaW4gZHJtX2F1dGguYyB0aGVuIHRoZSBkb2N1bWVudGF0aW9uCmltcGFjdCBpcyBt
-aW5vci4gQnV0IHlvdXIgcG9pbnQgaXMgaW5kZWVkIHZhbGlkLgooc3RydWN0IGF1dGggaGFzIG9u
-ZSBmaWVsZCBvZiB0eXBlIG1hZ2ljX3QpLgoKSSB3aWxsIGF3YWl0IGZ1cnRoZXIgZmVlZGJhY2sg
-YmVmb3JlIHdlIGRlY2lkZSB0byBhcHBseSB0aGlzIHBhdGNoIG9yCm5vdC4KVGhlIHBhdGNoZXMg
-dGhhdCBwdXNoZXMgaW5jbHVkZSBvZiBkcm0vZHJtLmggdG8gdGhlIHJlc3BlY3RpdmUgLmMKZmls
-ZXMgYXJlIGxlZ2l0IGFzIHdlIGRyb3AgdGhlIGRlcGVuZGVuY3kgb24gYW4gaW5kaXJlY3RseSBp
-bmNsdWRlZApoZWFkZXIgZmlsZS4gSSB3aWxsIHByb2Nlc3MgdGhlc2UgcGF0Y2hlcy4KCglTYW0K
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+
+
+On 19/07/2019 04:59, Changqi Hu wrote:
+> modify mtk uart runtime interface, add uart clock use count.
+> merge patch v1 and patch v2 together.
+> 
+
+Please try to explain better why we need this.
+
+> Signed-off-by: Changqi Hu <changqi.hu@mediatek.com>
+> ---
+
+Changelog from one version to another (like that you merged v1 and v2) should go
+here, as we don't want that to be part of the commit message once the patch is
+applied.
+
+Regards,
+Matthias
+
+>  drivers/tty/serial/8250/8250_mtk.c | 50 ++++++++++++++++++++++++--------------
+>  1 file changed, 32 insertions(+), 18 deletions(-)
+> 
+> diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+> index f470ded..a07c8ae 100644
+> --- a/drivers/tty/serial/8250/8250_mtk.c
+> +++ b/drivers/tty/serial/8250/8250_mtk.c
+> @@ -31,6 +31,7 @@
+>  #define MTK_UART_RXTRI_AD	0x14	/* RX Trigger address */
+>  #define MTK_UART_FRACDIV_L	0x15	/* Fractional divider LSB address */
+>  #define MTK_UART_FRACDIV_M	0x16	/* Fractional divider MSB address */
+> +#define MTK_UART_DEBUG0	0x18
+>  #define MTK_UART_IER_XOFFI	0x20	/* Enable XOFF character interrupt */
+>  #define MTK_UART_IER_RTSI	0x40	/* Enable RTS Modem status interrupt */
+>  #define MTK_UART_IER_CTSI	0x80	/* Enable CTS Modem status interrupt */
+> @@ -386,9 +387,18 @@ static void mtk8250_set_flow_ctrl(struct uart_8250_port *up, int mode)
+>  static int __maybe_unused mtk8250_runtime_suspend(struct device *dev)
+>  {
+>  	struct mtk8250_data *data = dev_get_drvdata(dev);
+> +	struct uart_8250_port *up = serial8250_get_port(data->line);
+>  
+> -	clk_disable_unprepare(data->uart_clk);
+> -	clk_disable_unprepare(data->bus_clk);
+> +	/* wait until UART in idle status */
+> +	while
+> +		(serial_in(up, MTK_UART_DEBUG0));
+> +
+> +	if (data->clk_count == 0U) {
+> +		dev_dbg(dev, "%s clock count is 0\n", __func__);
+> +	} else {
+> +		clk_disable_unprepare(data->bus_clk);
+> +		data->clk_count--;
+> +	}
+>  
+>  	return 0;
+>  }
+> @@ -398,16 +408,16 @@ static int __maybe_unused mtk8250_runtime_resume(struct device *dev)
+>  	struct mtk8250_data *data = dev_get_drvdata(dev);
+>  	int err;
+>  
+> -	err = clk_prepare_enable(data->uart_clk);
+> -	if (err) {
+> -		dev_warn(dev, "Can't enable clock\n");
+> -		return err;
+> -	}
+> -
+> -	err = clk_prepare_enable(data->bus_clk);
+> -	if (err) {
+> -		dev_warn(dev, "Can't enable bus clock\n");
+> -		return err;
+> +	if (data->clk_count > 0U) {
+> +		dev_dbg(dev, "%s clock count is %d\n", __func__,
+> +			data->clk_count);
+> +	} else {
+> +		err = clk_prepare_enable(data->bus_clk);
+> +		if (err) {
+> +			dev_warn(dev, "Can't enable bus clock\n");
+> +			return err;
+> +		}
+> +		data->clk_count++;
+>  	}
+>  
+>  	return 0;
+> @@ -417,12 +427,14 @@ static int __maybe_unused mtk8250_runtime_resume(struct device *dev)
+>  mtk8250_do_pm(struct uart_port *port, unsigned int state, unsigned int old)
+>  {
+>  	if (!state)
+> -		pm_runtime_get_sync(port->dev);
+> +		if (!mtk8250_runtime_resume(port->dev))
+> +			pm_runtime_get_sync(port->dev);
+>  
+>  	serial8250_do_pm(port, state, old);
+>  
+>  	if (state)
+> -		pm_runtime_put_sync_suspend(port->dev);
+> +		if (!pm_runtime_put_sync_suspend(port->dev))
+> +			mtk8250_runtime_suspend(port->dev);
+>  }
+>  
+>  #ifdef CONFIG_SERIAL_8250_DMA
+> @@ -499,6 +511,8 @@ static int mtk8250_probe(struct platform_device *pdev)
+>  	if (!data)
+>  		return -ENOMEM;
+>  
+> +	data->clk_count = 0;
+> +
+>  	if (pdev->dev.of_node) {
+>  		err = mtk8250_probe_of(pdev, &uart.port, data);
+>  		if (err)
+> @@ -531,6 +545,7 @@ static int mtk8250_probe(struct platform_device *pdev)
+>  
+>  	platform_set_drvdata(pdev, data);
+>  
+> +	pm_runtime_enable(&pdev->dev);
+>  	err = mtk8250_runtime_resume(&pdev->dev);
+>  	if (err)
+>  		return err;
+> @@ -539,9 +554,6 @@ static int mtk8250_probe(struct platform_device *pdev)
+>  	if (data->line < 0)
+>  		return data->line;
+>  
+> -	pm_runtime_set_active(&pdev->dev);
+> -	pm_runtime_enable(&pdev->dev);
+> -
+>  	return 0;
+>  }
+>  
+> @@ -552,11 +564,13 @@ static int mtk8250_remove(struct platform_device *pdev)
+>  	pm_runtime_get_sync(&pdev->dev);
+>  
+>  	serial8250_unregister_port(data->line);
+> -	mtk8250_runtime_suspend(&pdev->dev);
+>  
+>  	pm_runtime_disable(&pdev->dev);
+>  	pm_runtime_put_noidle(&pdev->dev);
+>  
+> +	if (!pm_runtime_status_suspended(&pdev->dev))
+> +		mtk8250_runtime_suspend(&pdev->dev);
+> +
+>  	return 0;
+>  }
+>  
+> 
