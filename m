@@ -1,69 +1,105 @@
-From: "Koenig, Christian" <Christian.Koenig@amd.com>
-Subject: Re: [PATCH v1 02/11] drm: drop uapi dependency from drm_print.h
-Date: Fri, 19 Jul 2019 06:54:25 +0000
-Message-ID: <460bf1e1-a38b-5f79-26e5-93764067f4e1@amd.com>
-References: <20190718161507.2047-1-sam@ravnborg.org>
- <20190718161507.2047-3-sam@ravnborg.org>
- <156346840026.24728.936589728458336617@skylake-alporthouse-com>
+From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 2/3] mt76: mt7615: add 4 WMM sets support
+Date: Fri, 19 Jul 2019 14:55:35 +0800
+Message-ID: <1dc3cbc32729be40d0e1f2ef831377f2cddf3df3.1563518381.git.ryder.lee@mediatek.com>
+References: <50d28c9b0f9e7d6b277d36fc93f55142d7535259.1563518381.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <156346840026.24728.936589728458336617@skylake-alporthouse-com>
-Content-Language: en-US
-Content-ID: <0F13428D29D0644B8089D84916AB9841@namprd12.prod.outlook.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Chris Wilson <chris@chris-wilson.co.uk>, Intel Graphics Development <intel-gfx@lists.freedesktop.org>, Sam Ravnborg <sam@ravnborg.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>
-Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Liviu Dudau <Liviu.Dudau@arm.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Thierry Reding <treding@nvidia.com>, Thomas Zimmermann <tzimmermann@suse.de>, Jani Nikula <jani.nikula@intel.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <sean@poorly.run>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Boris Brezillon <bbrezillon@kernel.org>, Sean Paul <seanpaul@chromium.org>
+Content-Type: text/plain
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <50d28c9b0f9e7d6b277d36fc93f55142d7535259.1563518381.git.ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Cc: Roy Luo <royluo-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, YF Luo <yf.luo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yiwei Chung <yiwei.chung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-QW0gMTguMDcuMTkgdW0gMTg6NDYgc2NocmllYiBDaHJpcyBXaWxzb246DQo+IFF1b3RpbmcgU2Ft
-IFJhdm5ib3JnICgyMDE5LTA3LTE4IDE3OjE0OjU4KQ0KPj4gZHJtX3ByaW50LmggdXNlZCBEUk1f
-TkFNRSAtIHRodXMgYWRkaW5nIGEgZGVwZW5kZW5jeSBmcm9tDQo+PiBpbmNsdWRlL2RybS9kcm1f
-cHJpbnQuaCA9PiB1YXBpL2RybS9kcm0uaA0KPj4NCj4+IEhhcmRjb2RlIHRoZSBuYW1lICJkcm0i
-IHRvIGJyZWFrIHRoaXMgZGVwZW5kZW5jeS4NCj4+IFRoZSBpZGVhIGlzIHRoYXQgdGhlcmUgc2hh
-bGwgYmUgYSBtaW5pbWFsIGRlcGVuZGVuY3kNCj4+IGJldHdlZW4gaW5jbHVkZS9kcm0vKiBhbmQg
-dWFwaS8qDQo+Pg0KPj4gU2lnbmVkLW9mZi1ieTogU2FtIFJhdm5ib3JnIDxzYW1AcmF2bmJvcmcu
-b3JnPg0KPj4gU3VnZ2VzdGVkLWJ5OiBEYW5pZWwgVmV0dGVyIDxkYW5pZWxAZmZ3bGwuY2g+DQo+
-PiBSZXZpZXdlZC1ieTogRGFuaWVsIFZldHRlciA8ZGFuaWVsLnZldHRlckBmZndsbC5jaD4NCj4+
-IENjOiBNYWFydGVuIExhbmtob3JzdCA8bWFhcnRlbi5sYW5raG9yc3RAbGludXguaW50ZWwuY29t
-Pg0KPj4gQ2M6IE1heGltZSBSaXBhcmQgPG1heGltZS5yaXBhcmRAYm9vdGxpbi5jb20+DQo+PiBD
-YzogU2VhbiBQYXVsIDxzZWFuQHBvb3JseS5ydW4+DQo+PiBDYzogRGF2aWQgQWlybGllIDxhaXJs
-aWVkQGxpbnV4LmllPg0KPj4gQ2M6IFJvYiBDbGFyayA8cm9iZGNsYXJrQGdtYWlsLmNvbT4NCj4+
-IENjOiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4NCj4+IENjOiBDaHJpcyBXaWxz
-b24gPGNocmlzQGNocmlzLXdpbHNvbi5jby51az4NCj4+IENjOiBEYW5pZWwgVmV0dGVyIDxkYW5p
-ZWxAZmZ3bGwuY2g+DQo+PiAtLS0NCj4+ICAgaW5jbHVkZS9kcm0vZHJtX3ByaW50LmggfCA0ICst
-LS0NCj4+ICAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAzIGRlbGV0aW9ucygtKQ0K
-Pj4NCj4+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2RybS9kcm1fcHJpbnQuaCBiL2luY2x1ZGUvZHJt
-L2RybV9wcmludC5oDQo+PiBpbmRleCBhNWQ2ZjJmM2U0MzAuLjc2MGQxYmQwZWFmMSAxMDA2NDQN
-Cj4+IC0tLSBhL2luY2x1ZGUvZHJtL2RybV9wcmludC5oDQo+PiArKysgYi9pbmNsdWRlL2RybS9k
-cm1fcHJpbnQuaA0KPj4gQEAgLTMyLDggKzMyLDYgQEANCj4+ICAgI2luY2x1ZGUgPGxpbnV4L2Rl
-dmljZS5oPg0KPj4gICAjaW5jbHVkZSA8bGludXgvZGVidWdmcy5oPg0KPj4gICANCj4+IC0jaW5j
-bHVkZSA8ZHJtL2RybS5oPg0KPj4gLQ0KPj4gICAvKioNCj4+ICAgICogRE9DOiBwcmludA0KPj4g
-ICAgKg0KPj4gQEAgLTI4Nyw3ICsyODUsNyBAQCB2b2lkIGRybV9lcnIoY29uc3QgY2hhciAqZm9y
-bWF0LCAuLi4pOw0KPj4gICAvKiBNYWNyb3MgdG8gbWFrZSBwcmludGsgZWFzaWVyICovDQo+PiAg
-IA0KPj4gICAjZGVmaW5lIF9EUk1fUFJJTlRLKG9uY2UsIGxldmVsLCBmbXQsIC4uLikgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIFwNCj4+IC0gICAgICAgcHJpbnRrIyNvbmNlKEtFUk5fIyNs
-ZXZlbCAiWyIgRFJNX05BTUUgIl0gIiBmbXQsICMjX19WQV9BUkdTX18pDQo+PiArICAgICAgIHBy
-aW50ayMjb25jZShLRVJOXyMjbGV2ZWwgIltkcm1dICIgZm10LCAjI19fVkFfQVJHU19fKQ0KPiBJ
-IGd1ZXNzIEknbSB0aCBvbmx5IG9uZSB3aG8NCj4NCj4gI3VuZGVmIERSTV9OQU1FDQo+ICNkZWZp
-bmUgRFJNX05BTUUgaTkxNQ0KPg0KPiBqdXN0IHNvIHRoYXQgSSBkaWRuJ3QgaGF2ZSBpbmFuZSBs
-b2dzPw0KPg0KPiBPbmUgbWlnaHQgc3VnZ2VzdCB0aGF0IGluc3RlYWQgb2YgaGFyZGNvZGluZyBp
-dCwgZm9sbG93IHRoZSBwcl9mbXQoKQ0KPiBwYXR0ZXJuIGFuZCBvbmx5IGFkZCAiW2RybV0iIGZv
-ciB0aGUgZHJtIGNvcmUuDQo+DQo+IEV2ZW4gdGhlbiBpdCBzbyB1c2VsZXNzICh3aGljaCBkcm0g
-ZHJpdmVyIGlzIHRoaXMgbWVzc2FnZSBmb3I/Pz8pIHRoYXQgSQ0KPiB3YW50IHRvIHJlbW92ZSB0
-aGVtIGFsbCA6KA0KDQpZZWFoLCBhZ3JlZS4gSSBtZWFuIGl0IGlzIG5pY2UgaWYgdGhlIGNvcmUg
-ZHJtIGZ1bmN0aW9ucyB1c2UgYSBwcmVmaXggDQpmb3IgZGVidWcgb3V0cHV0Lg0KDQpCdXQgSSBh
-Y3R1YWxseSBkb24ndCBzZWUgdGhlIHBvaW50IGZvciBpbmRpdmlkdWFsIGRyaXZlcnMuDQoNCkNo
-cmlzdGlhbi4NCg0KPiAtQ2hyaXMNCg0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
-Zm8vZHJpLWRldmVs
+MT7615 hardware supoorts 4 WMM sets, so this patch adds them accordingly.
+Also remove incorrect queue mapping in .conf_tx
+
+Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt7615/mac.c  |  5 +++--
+ drivers/net/wireless/mediatek/mt76/mt7615/main.c | 16 ++++++----------
+ .../net/wireless/mediatek/mt76/mt7615/mt7615.h   |  1 +
+ 3 files changed, 10 insertions(+), 12 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+index 8f9a2bb68ded..d85b3904f33a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+@@ -314,7 +314,7 @@ int mt7615_mac_write_txwi(struct mt7615_dev *dev, __le32 *txwi,
+ 	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
+ 	struct ieee80211_vif *vif = info->control.vif;
+ 	int tx_count = 8;
+-	u8 fc_type, fc_stype, p_fmt, q_idx, omac_idx = 0;
++	u8 fc_type, fc_stype, p_fmt, q_idx, omac_idx = 0, wmm_idx = 0;
+ 	__le16 fc = hdr->frame_control;
+ 	u16 seqno = 0;
+ 	u32 val;
+@@ -323,6 +323,7 @@ int mt7615_mac_write_txwi(struct mt7615_dev *dev, __le32 *txwi,
+ 		struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
+ 
+ 		omac_idx = mvif->omac_idx;
++		wmm_idx = mvif->wmm_idx;
+ 	}
+ 
+ 	if (sta) {
+@@ -335,7 +336,7 @@ int mt7615_mac_write_txwi(struct mt7615_dev *dev, __le32 *txwi,
+ 	fc_stype = (le16_to_cpu(fc) & IEEE80211_FCTL_STYPE) >> 4;
+ 
+ 	if (ieee80211_is_data(fc) || ieee80211_is_bufferable_mmpdu(fc)) {
+-		q_idx = skb_get_queue_mapping(skb);
++		q_idx = skb_get_queue_mapping(skb) + wmm_idx * MT7615_MAX_WMM_SETS;
+ 		p_fmt = MT_TX_TYPE_CT;
+ 	} else if (ieee80211_is_beacon(fc)) {
+ 		q_idx = MT_LMAC_BCN0;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+index 2c702b31d55f..ea48dcdb65c0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+@@ -85,9 +85,9 @@ static int mt7615_add_interface(struct ieee80211_hw *hw,
+ 	}
+ 	mvif->omac_idx = idx;
+ 
+-	/* TODO: DBDC support. Use band 0 and wmm 0 for now */
++	/* TODO: DBDC support. Use band 0 for now */
+ 	mvif->band_idx = 0;
+-	mvif->wmm_idx = 0;
++	mvif->wmm_idx = mvif->idx % MT7615_MAX_WMM_SETS;
+ 
+ 	ret = mt7615_mcu_set_dev_info(dev, vif, 1);
+ 	if (ret)
+@@ -241,16 +241,12 @@ static int
+ mt7615_conf_tx(struct ieee80211_hw *hw, struct ieee80211_vif *vif, u16 queue,
+ 	       const struct ieee80211_tx_queue_params *params)
+ {
++	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
+ 	struct mt7615_dev *dev = hw->priv;
+-	static const u8 wmm_queue_map[] = {
+-		[IEEE80211_AC_BK] = 0,
+-		[IEEE80211_AC_BE] = 1,
+-		[IEEE80211_AC_VI] = 2,
+-		[IEEE80211_AC_VO] = 3,
+-	};
+ 
+-	/* TODO: hw wmm_set 1~3 */
+-	return mt7615_mcu_set_wmm(dev, wmm_queue_map[queue], params);
++	queue += mvif->wmm_idx * MT7615_MAX_WMM_SETS;
++
++	return mt7615_mcu_set_wmm(dev, queue, params);
+ }
+ 
+ static void mt7615_configure_filter(struct ieee80211_hw *hw,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+index 2f43101343c3..f3f1738a01e7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+@@ -10,6 +10,7 @@
+ #include "regs.h"
+ 
+ #define MT7615_MAX_INTERFACES		4
++#define MT7615_MAX_WMM_SETS		4
+ #define MT7615_WTBL_SIZE		128
+ #define MT7615_WTBL_RESERVED		(MT7615_WTBL_SIZE - 1)
+ #define MT7615_WTBL_STA			(MT7615_WTBL_RESERVED - \
+-- 
+2.18.0
