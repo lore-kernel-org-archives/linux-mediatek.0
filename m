@@ -1,73 +1,57 @@
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 3/3] mt76: mt7615: add cwmin/cwmax initial values
-Date: Fri, 19 Jul 2019 14:55:36 +0800
-Message-ID: <c83e14787bc86f8f8062e0aa44e03ef80c3fd38a.1563518381.git.ryder.lee@mediatek.com>
-References: <50d28c9b0f9e7d6b277d36fc93f55142d7535259.1563518381.git.ryder.lee@mediatek.com>
+From: "Koenig, Christian" <Christian.Koenig@amd.com>
+Subject: Re: [PATCH v1 11/11] drm: drop uapi dependency from drm_file.h
+Date: Fri, 19 Jul 2019 06:56:47 +0000
+Message-ID: <57ad927c-4b7f-d6e2-edda-720386190054@amd.com>
+References: <20190718161507.2047-1-sam@ravnborg.org>
+ <20190718161507.2047-12-sam@ravnborg.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <50d28c9b0f9e7d6b277d36fc93f55142d7535259.1563518381.git.ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Cc: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YF Luo <yf.luo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yiwei Chung <yiwei.chung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roy Luo <royluo-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190718161507.2047-12-sam@ravnborg.org>
+Content-Language: en-US
+Content-ID: <FB76C18FB64AFB478EFAFE7250E3D9A2@namprd12.prod.outlook.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sam Ravnborg <sam@ravnborg.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Intel Graphics Development <intel-gfx@lists.freedesktop.org>
+Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Liviu Dudau <Liviu.Dudau@arm.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Thierry Reding <treding@nvidia.com>, Jani Nikula <jani.nikula@intel.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <sean@poorly.run>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Boris Brezillon <bbrezillon@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Sean Paul <seanpaul@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add initial values in mt7615_mcu_set_wmm() to cleanup setup flow.
-
-Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/net/wireless/mediatek/mt76/mt7615/mcu.c | 17 ++++++-----------
- 1 file changed, 6 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-index 5fd162be3654..154c09428b69 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-@@ -622,10 +622,7 @@ int mt7615_mcu_set_rts_thresh(struct mt7615_dev *dev, u32 val)
- int mt7615_mcu_set_wmm(struct mt7615_dev *dev, u8 queue,
- 		       const struct ieee80211_tx_queue_params *params)
- {
--#define WMM_AIFS_SET	BIT(0)
--#define WMM_CW_MIN_SET	BIT(1)
--#define WMM_CW_MAX_SET	BIT(2)
--#define WMM_TXOP_SET	BIT(3)
-+#define WMM_PARAM_SET	GENMASK(3, 0)
- 	struct req_data {
- 		u8 number;
- 		u8 rsv[3];
-@@ -638,19 +635,17 @@ int mt7615_mcu_set_wmm(struct mt7615_dev *dev, u8 queue,
- 	} __packed req = {
- 		.number = 1,
- 		.queue = queue,
--		.valid = WMM_AIFS_SET | WMM_TXOP_SET,
-+		.valid = WMM_PARAM_SET,
- 		.aifs = params->aifs,
-+		.cw_min = BIT(5) - 1,
-+		.cw_max = cpu_to_le16(BIT(10) - 1),
- 		.txop = cpu_to_le16(params->txop),
- 	};
- 
--	if (params->cw_min) {
--		req.valid |= WMM_CW_MIN_SET;
-+	if (params->cw_min)
- 		req.cw_min = params->cw_min;
--	}
--	if (params->cw_max) {
--		req.valid |= WMM_CW_MAX_SET;
-+	if (params->cw_max)
- 		req.cw_max = cpu_to_le16(params->cw_max);
--	}
- 
- 	return __mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD_EDCA_UPDATE,
- 				   &req, sizeof(req), true);
--- 
-2.18.0
+QW0gMTguMDcuMTkgdW0gMTg6MTUgc2NocmllYiBTYW0gUmF2bmJvcmc6DQo+IGRybV9maWxlIHVz
+ZWQgZHJtX21hZ2ljX3QgZnJvbSB1YXBpL2RybS9kcm0uaC4NCj4gVGhpcyBpcyBhIHNpbXBsZSB1
+bnNpZ25lZCBpbnQuDQo+IEp1c3Qgb3BlbmNvZGUgaXQgYXMgc3VjaCB0byBicmVhayB0aGUgZGVw
+ZW5kZW5jeSBmcm9tIHRoaXMgaGVhZGVyIGZpbGUNCj4gdG8gdWFwaS4NCg0KTWhtLCB3aHkgZG8g
+eW91IHdhbnQgdG8gcmVtb3ZlIFVBUEkgZGVwZW5kZW5jeSBoZXJlIGluIHRoZSBmaXJzdCBwbGFj
+ZT8NCg0KSSBtZWFuIHRoZSB0eXBlIGNhbid0IGNoYW5nZSBiZWNhdXNlIGl0IGlzIFVBUEksIGJ1
+dCBpdCBpcyByYXRoZXIgYmFkIA0KZm9yIGEgZG9jdW1lbnRhdGlvbiBwb2ludCBvZiB2aWV3Lg0K
+DQpDaHJpc3RpYW4uDQoNCj4NCj4gU2lnbmVkLW9mZi1ieTogU2FtIFJhdm5ib3JnIDxzYW1AcmF2
+bmJvcmcub3JnPg0KPiBTdWdnZXN0ZWQtYnk6IERhbmllbCBWZXR0ZXIgPGRhbmllbC52ZXR0ZXJA
+ZmZ3bGwuY2g+DQo+IENjOiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4NCj4gQ2M6
+IExpdml1IER1ZGF1IDxMaXZpdS5EdWRhdUBhcm0uY29tPg0KPiBDYzogQ2hyaXMgV2lsc29uIDxj
+aHJpc0BjaHJpcy13aWxzb24uY28udWs+DQo+IENjOiBNYWFydGVuIExhbmtob3JzdCA8bWFhcnRl
+bi5sYW5raG9yc3RAbGludXguaW50ZWwuY29tPg0KPiBDYzogTWF4aW1lIFJpcGFyZCA8bWF4aW1l
+LnJpcGFyZEBib290bGluLmNvbT4NCj4gQ2M6IERhdmlkIEFpcmxpZSA8YWlybGllZEBsaW51eC5p
+ZT4NCj4gQ2M6IERhbmllbCBWZXR0ZXIgPGRhbmllbEBmZndsbC5jaD4NCj4gQ2M6IEphbmkgTmlr
+dWxhIDxqYW5pLm5pa3VsYUBpbnRlbC5jb20+DQo+IENjOiBFcmljIEFuaG9sdCA8ZXJpY0Bhbmhv
+bHQubmV0Pg0KPiAtLS0NCj4gICBpbmNsdWRlL2RybS9kcm1fZmlsZS5oIHwgNCArLS0tDQo+ICAg
+MSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAzIGRlbGV0aW9ucygtKQ0KPg0KPiBkaWZm
+IC0tZ2l0IGEvaW5jbHVkZS9kcm0vZHJtX2ZpbGUuaCBiL2luY2x1ZGUvZHJtL2RybV9maWxlLmgN
+Cj4gaW5kZXggNjdhZjYwYmI1MjdhLi4wNDZjZDFiZjkxZWIgMTAwNjQ0DQo+IC0tLSBhL2luY2x1
+ZGUvZHJtL2RybV9maWxlLmgNCj4gKysrIGIvaW5jbHVkZS9kcm0vZHJtX2ZpbGUuaA0KPiBAQCAt
+MzQsOCArMzQsNiBAQA0KPiAgICNpbmNsdWRlIDxsaW51eC9jb21wbGV0aW9uLmg+DQo+ICAgI2lu
+Y2x1ZGUgPGxpbnV4L2lkci5oPg0KPiAgIA0KPiAtI2luY2x1ZGUgPHVhcGkvZHJtL2RybS5oPg0K
+PiAtDQo+ICAgI2luY2x1ZGUgPGRybS9kcm1fcHJpbWUuaD4NCj4gICANCj4gICBzdHJ1Y3QgZG1h
+X2ZlbmNlOw0KPiBAQCAtMjI3LDcgKzIyNSw3IEBAIHN0cnVjdCBkcm1fZmlsZSB7DQo+ICAgCXN0
+cnVjdCBwaWQgKnBpZDsNCj4gICANCj4gICAJLyoqIEBtYWdpYzogQXV0aGVudGljYXRpb24gbWFn
+aWMsIHNlZSBAYXV0aGVudGljYXRlZC4gKi8NCj4gLQlkcm1fbWFnaWNfdCBtYWdpYzsNCj4gKwl1
+bnNpZ25lZCBpbnQgbWFnaWM7DQo+ICAgDQo+ICAgCS8qKg0KPiAgIAkgKiBAbGhlYWQ6DQoNCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBt
+YWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3Rz
+LmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
