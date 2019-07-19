@@ -1,15 +1,13 @@
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 2/3] mt76: mt7615: add 4 WMM sets support
-Date: Fri, 19 Jul 2019 15:27:14 +0800
-Message-ID: <1563521234.8090.4.camel@mtkswgap22>
-References: <50d28c9b0f9e7d6b277d36fc93f55142d7535259.1563518381.git.ryder.lee@mediatek.com>
- <1dc3cbc32729be40d0e1f2ef831377f2cddf3df3.1563518381.git.ryder.lee@mediatek.com>
- <CA+zupgwyz2hdVRmnGr+4vzeEfvTfxYkLmu6jD_jFNjrPAdbvCQ@mail.gmail.com>
+From: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v3] checkpatch: add several Kconfig default value tests
+Date: Fri, 19 Jul 2019 15:36:50 +0800
+Message-ID: <1563521810.8881.3.camel@mtkswgap22>
+References: <20190705031626.13859-1-miles.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CA+zupgwyz2hdVRmnGr+4vzeEfvTfxYkLmu6jD_jFNjrPAdbvCQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <20190705031626.13859-1-miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -19,92 +17,259 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Roy Luo <royluo-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Cc: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YF Luo <yf.luo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Yiwei Chung <yiwei.chung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
+To: Andy Whitcroft <apw-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>
+Cc: Joe Perches <joe-6d6DIl74uiNBDgjK7y7TUQ@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2019-07-19 at 15:05 +0800, Roy Luo wrote:
-> 
-> 
-> 
-> On Fri, Jul 19, 2019 at 2:55 PM Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> wrote:
-> 
->         MT7615 hardware supoorts 4 WMM sets, so this patch adds them
->         accordingly.
->         Also remove incorrect queue mapping in .conf_tx
->         
->         Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->         ---
->          drivers/net/wireless/mediatek/mt76/mt7615/mac.c  |  5 +++--
->          drivers/net/wireless/mediatek/mt76/mt7615/main.c | 16
->         ++++++----------
->          .../net/wireless/mediatek/mt76/mt7615/mt7615.h   |  1 +
->          3 files changed, 10 insertions(+), 12 deletions(-)
->         
->         diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
->         b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
->         index 8f9a2bb68ded..d85b3904f33a 100644
->         --- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
->         +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
->         @@ -314,7 +314,7 @@ int mt7615_mac_write_txwi(struct
->         mt7615_dev *dev, __le32 *txwi,
->                 struct ieee80211_hdr *hdr = (struct ieee80211_hdr
->         *)skb->data;
->                 struct ieee80211_vif *vif = info->control.vif;
->                 int tx_count = 8;
->         -       u8 fc_type, fc_stype, p_fmt, q_idx, omac_idx = 0;
->         +       u8 fc_type, fc_stype, p_fmt, q_idx, omac_idx = 0,
->         wmm_idx = 0;
->                 __le16 fc = hdr->frame_control;
->                 u16 seqno = 0;
->                 u32 val;
->         @@ -323,6 +323,7 @@ int mt7615_mac_write_txwi(struct
->         mt7615_dev *dev, __le32 *txwi,
->                         struct mt7615_vif *mvif = (struct mt7615_vif
->         *)vif->drv_priv;
->         
->                         omac_idx = mvif->omac_idx;
->         +               wmm_idx = mvif->wmm_idx;
->                 }
->         
->                 if (sta) {
->         @@ -335,7 +336,7 @@ int mt7615_mac_write_txwi(struct
->         mt7615_dev *dev, __le32 *txwi,
->                 fc_stype = (le16_to_cpu(fc) & IEEE80211_FCTL_STYPE) >>
->         4;
->         
->                 if (ieee80211_is_data(fc) ||
->         ieee80211_is_bufferable_mmpdu(fc)) {
->         -               q_idx = skb_get_queue_mapping(skb);
->         +               q_idx = skb_get_queue_mapping(skb) + wmm_idx *
->         MT7615_MAX_WMM_SETS;
->                         p_fmt = MT_TX_TYPE_CT;
->                 } else if (ieee80211_is_beacon(fc)) {
->                         q_idx = MT_LMAC_BCN0;
->         diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
->         b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
->         index 2c702b31d55f..ea48dcdb65c0 100644
->         --- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
->         +++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
->         @@ -85,9 +85,9 @@ static int mt7615_add_interface(struct
->         ieee80211_hw *hw,
->                 }
->                 mvif->omac_idx = idx;
->         
->         -       /* TODO: DBDC support. Use band 0 and wmm 0 for now */
->         +       /* TODO: DBDC support. Use band 0 for now */
->                 mvif->band_idx = 0;
->         -       mvif->wmm_idx = 0;
->         +       mvif->wmm_idx = mvif->idx % MT7615_MAX_WMM_SETS;
->         
-> 
-> 
-> IIUC, vifs with the same wmm_idx will share the same WMM HW, thus the
-> same WMM parameter.
-> Shouldn't we assign wmm_idx based on that?
+On Fri, 2019-07-05 at 11:16 +0800, Miles Chen wrote:
+> This change adds 3 Kconfig default value tests.
 
-I think that's what I did here. vif0 <-> wmm0, vif1 <->wmm1 ...
+Hi Joe,
 
+I was wondering if this patch looks good to you?
+
+Miles
 > 
+> 1. discourage default n cases:
+> e.g.,
+> default n
 > 
+> 2. discourage default "[ynm]" cases:
+> e.g.,
+> arch/powerpc/Kconfig:   default "y" if PPC_POWERNV
+> arch/powerpc/Kconfig:   default "y" if PPC_POWERNV
+> arch/powerpc/Kconfig:   default "n"
+> drivers/auxdisplay/Kconfig:     default "n"
+> drivers/crypto/Kconfig: default "m"
+> drivers/rapidio/devices/Kconfig:        default "n"
+> 
+> 3. discourage default EXPERT or default !EXPERT cases:
+> e.g.,
+> drivers/hid/Kconfig:    default !EXPERT
+> 
+> tested cases:
+> default m
+> default n if ALPHA_EV5 || ALPHA_EV56 || (ALPHA_EV4 && !ALPHA_LCA)
+> default y if ALPHA_QEMU
+> default n if PPC_POWERNV
+> default n
+> default EXPERT
+> default !EXPERT
+> default "m"
+> default "n"
+> default "y" if EXPERT
+> default "y" if PPC_POWERNV
+> 
+> test result:
+> WARNING: 'default n' is the default value, no need to write it explicitly
+> +       default n
+> 
+> WARNING: Avoid using default EXPERT
+> +       default EXPERT
+> 
+> WARNING: Avoid using default EXPERT
+> +       default !EXPERT
+> 
+> WARNING: Use 'default m' not 'default "m"'
+> +       default "m"
+> 
+> WARNING: Use 'default n' not 'default "n"'
+> +       default "n"
+> 
+> WARNING: Use 'default y' not 'default "y"'
+> +       default "y" if EXPERT
+> 
+> WARNING: Use 'default y' not 'default "y"'
+> +       default "y" if PPC_POWERNV
+> 
+> test --fix capability:
+> default n => delete line
+> default "m" => default m
+> default "n" => default n
+> default "y" if EXPERT => default y if EXPERT
+> default "y" if PPC_POWERNV => default y if PPC_POWERNV
+> default !EXPERT => no change
+> default EXPERT => no change
+> 
+> Change since v1:
+> discourage default n$
+> discourage default "[ynm]"
+> discourage default \!?EXPERT
+> 
+> Change since v2:
+> (Joe has provided the whole patch and I just post it)
+> test Kconfig in a single block
+> print precise message such as 'default "m"', not 'default "[ynm]"'
+> provide --fix capability
+> 
+> Cc: Joe Perches <joe-6d6DIl74uiNBDgjK7y7TUQ@public.gmane.org>
+> Cc: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  scripts/checkpatch.pl | 139 ++++++++++++++++++++++++++----------------
+>  1 file changed, 85 insertions(+), 54 deletions(-)
+> 
+> diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+> index 342c7c781ba5..94799f23339c 100755
+> --- a/scripts/checkpatch.pl
+> +++ b/scripts/checkpatch.pl
+> @@ -2932,60 +2932,98 @@ sub process {
+>  				      "Do not include the paragraph about writing to the Free Software Foundation's mailing address from the sample GPL notice. The FSF has changed addresses in the past, and may do so again. Linux already includes a copy of the GPL.\n" . $herevet)
+>  		}
+>  
+> -# check for Kconfig help text having a real description
+> -# Only applies when adding the entry originally, after that we do not have
+> -# sufficient context to determine whether it is indeed long enough.
+> -		if ($realfile =~ /Kconfig/ &&
+> -		    # 'choice' is usually the last thing on the line (though
+> -		    # Kconfig supports named choices), so use a word boundary
+> -		    # (\b) rather than a whitespace character (\s)
+> -		    $line =~ /^\+\s*(?:config|menuconfig|choice)\b/) {
+> -			my $length = 0;
+> -			my $cnt = $realcnt;
+> -			my $ln = $linenr + 1;
+> -			my $f;
+> -			my $is_start = 0;
+> -			my $is_end = 0;
+> -			for (; $cnt > 0 && defined $lines[$ln - 1]; $ln++) {
+> -				$f = $lines[$ln - 1];
+> -				$cnt-- if ($lines[$ln - 1] !~ /^-/);
+> -				$is_end = $lines[$ln - 1] =~ /^\+/;
+> -
+> -				next if ($f =~ /^-/);
+> -				last if (!$file && $f =~ /^\@\@/);
+> -
+> -				if ($lines[$ln - 1] =~ /^\+\s*(?:bool|tristate|prompt)\s*["']/) {
+> -					$is_start = 1;
+> -				} elsif ($lines[$ln - 1] =~ /^\+\s*(?:help|---help---)\s*$/) {
+> -					if ($lines[$ln - 1] =~ "---help---") {
+> -						WARN("CONFIG_DESCRIPTION",
+> -						     "prefer 'help' over '---help---' for new help texts\n" . $herecurr);
+> +# Kconfig tests
+> +		if ($realfile =~ /Kconfig/) {
+> +			# check for Kconfig help text having a real description
+> +			# Only applies when adding the entry originally, after
+> +			# that we do not have sufficient context to determine
+> +			# whether it is indeed long enough.
+> +			# 'choice' is usually the last thing on the line (though
+> +			# Kconfig supports named choices), so use a word
+> +			# boundary (\b) rather than a whitespace character (\s)
+> +			if ($line =~ /^\+\s*(?:config|menuconfig|choice)\b/) {
+> +				my $length = 0;
+> +				my $cnt = $realcnt;
+> +				my $ln = $linenr + 1;
+> +				my $f;
+> +				my $is_start = 0;
+> +				my $is_end = 0;
+> +				for (; $cnt > 0 && defined $lines[$ln - 1]; $ln++) {
+> +					$f = $lines[$ln - 1];
+> +					$cnt-- if ($lines[$ln - 1] !~ /^-/);
+> +					$is_end = $lines[$ln - 1] =~ /^\+/;
+> +
+> +					next if ($f =~ /^-/);
+> +					last if (!$file && $f =~ /^\@\@/);
+> +
+> +					if ($lines[$ln - 1] =~ /^\+\s*(?:bool|tristate|prompt)\s*["']/) {
+> +						$is_start = 1;
+> +					} elsif ($lines[$ln - 1] =~ /^\+\s*(?:help|---help---)\s*$/) {
+> +						if ($lines[$ln - 1] =~ "---help---") {
+> +							WARN("CONFIG_DESCRIPTION",
+> +							     "prefer 'help' over '---help---' for new help texts\n" . $herecurr);
+> +						}
+> +						$length = -1;
+> +					}
+> +
+> +					$f =~ s/^.//;
+> +					$f =~ s/#.*//;
+> +					$f =~ s/^\s+//;
+> +					next if ($f =~ /^$/);
+> +
+> +					# This only checks context lines in the patch
+> +					# and so hopefully shouldn't trigger false
+> +					# positives, even though some of these are
+> +					# common words in help texts
+> +					if ($f =~ /^\s*(?:config|menuconfig|choice|endchoice|
+> +							   if|endif|menu|endmenu|source)\b/x) {
+> +						$is_end = 1;
+> +						last;
+>  					}
+> -					$length = -1;
+> +					$length++;
+> +				}
+> +				if ($is_start && $is_end && $length < $min_conf_desc_length) {
+> +					WARN("CONFIG_DESCRIPTION",
+> +					     "please write a paragraph that describes the config symbol fully\n" . $herecurr);
+>  				}
+> +				#print "is_start<$is_start> is_end<$is_end> length<$length>\n";
+> +			}
+>  
+> -				$f =~ s/^.//;
+> -				$f =~ s/#.*//;
+> -				$f =~ s/^\s+//;
+> -				next if ($f =~ /^$/);
+> -
+> -				# This only checks context lines in the patch
+> -				# and so hopefully shouldn't trigger false
+> -				# positives, even though some of these are
+> -				# common words in help texts
+> -				if ($f =~ /^\s*(?:config|menuconfig|choice|endchoice|
+> -						  if|endif|menu|endmenu|source)\b/x) {
+> -					$is_end = 1;
+> -					last;
+> +# discourage the use of boolean for type definition attributes
+> +			if ($line =~ /^\+\s*\bboolean\b/) {
+> +				if (WARN("CONFIG_TYPE_BOOLEAN",
+> +					 "Use of boolean is deprecated, please use bool instead\n" . $herecurr) &&
+> +				    $fix) {
+> +					$fixed[$fixlinenr] =~ s/\bboolean\b/bool/;
+> +				}
+> +			}
+> +
+> +# Kconfig: discourage redundant 'default n'
+> +			if ($line =~ /^\+\s*default\s+n$/) {
+> +				if (WARN("CONFIG_DEFAULT_VALUE_STYLE",
+> +					 "'default n' is the default value, no need to write it explicitly\n" . $herecurr) &&
+> +				    $fix) {
+> +					fix_delete_line($fixlinenr, $rawline);
+>  				}
+> -				$length++;
+>  			}
+> -			if ($is_start && $is_end && $length < $min_conf_desc_length) {
+> -				WARN("CONFIG_DESCRIPTION",
+> -				     "please write a paragraph that describes the config symbol fully\n" . $herecurr);
+> +
+> +# Kconfig: discourage quoted defaults: use default [ynm], not default "[ynm]"
+> +			if ($rawline =~ /^\+\s*default\s+"([ynm])"/) {
+> +				if (WARN("CONFIG_DEFAULT_VALUE_STYLE",
+> +					 "Use 'default $1' not 'default \"$1\"'\n" . $herecurr) &&
+> +				    $fix) {
+> +					$fixed[$fixlinenr] =~ s/\b(default\s+)"(.)"/$1$2/;
+> +				}
+> +			}
+> +
+> +# Kconfig: discourage using default EXPERT or !EXPERT
+> +			if ($line =~ /^\+\s*default\s+\!?\s*EXPERT\b/) {
+> +				WARN("CONFIG_DEFAULT_VALUE_STYLE",
+> +				     "Avoid using default EXPERT\n" . $herecurr);
+>  			}
+> -			#print "is_start<$is_start> is_end<$is_end> length<$length>\n";
+>  		}
+> +# End of Kconfig tests
+> +
+>  
+>  # check for MAINTAINERS entries that don't have the right form
+>  		if ($realfile =~ /^MAINTAINERS$/ &&
+> @@ -2998,13 +3036,6 @@ sub process {
+>  			}
+>  		}
+>  
+> -# discourage the use of boolean for type definition attributes of Kconfig options
+> -		if ($realfile =~ /Kconfig/ &&
+> -		    $line =~ /^\+\s*\bboolean\b/) {
+> -			WARN("CONFIG_TYPE_BOOLEAN",
+> -			     "Use of boolean is deprecated, please use bool instead.\n" . $herecurr);
+> -		}
+> -
+>  		if (($realfile =~ /Makefile.*/ || $realfile =~ /Kbuild.*/) &&
+>  		    ($line =~ /\+(EXTRA_[A-Z]+FLAGS).*/)) {
+>  			my $flag = $1;
