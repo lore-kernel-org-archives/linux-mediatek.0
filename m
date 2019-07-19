@@ -1,159 +1,74 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v3] serial: 8250-mtk: modify mtk uart power and clock
- management
-Date: Fri, 19 Jul 2019 13:16:33 +0200
-Message-ID: <b2958b94-8938-3f6b-a636-012c5657f25d@gmail.com>
-References: <1563505182-2408-1-git-send-email-changqi.hu@mediatek.com>
+From: Sam Ravnborg <sam@ravnborg.org>
+Subject: Re: [PATCH v1 0/11] drm: header maintenance
+Date: Fri, 19 Jul 2019 23:26:51 +0200
+Message-ID: <20190719212651.GA25918@ravnborg.org>
+References: <20190718161507.2047-1-sam@ravnborg.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1563505182-2408-1-git-send-email-changqi.hu@mediatek.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Changqi Hu <changqi.hu@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>
-Cc: Peter Shih <pihsun@chromium.org>, "Gustavo A. R. Silva" <gustavo@embeddedor.com>, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <20190718161507.2047-1-sam@ravnborg.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org, Intel Graphics Development <intel-gfx@lists.freedesktop.org>
+Cc: Jani Nikula <jani.nikula@intel.com>, Boris Brezillon <bbrezillon@kernel.org>, David Airlie <airlied@linux.ie>, Liviu Dudau <Liviu.Dudau@arm.com>, Maxime Ripard <maxime.ripard@bootlin.com>, linux-mediatek@lists.infradead.org, Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <treding@nvidia.com>, Sean Paul <sean@poorly.run>, Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 19/07/2019 04:59, Changqi Hu wrote:
-> modify mtk uart runtime interface, add uart clock use count.
-> merge patch v1 and patch v2 together.
-> 
-
-Please try to explain better why we need this.
-
-> Signed-off-by: Changqi Hu <changqi.hu@mediatek.com>
-> ---
-
-Changelog from one version to another (like that you merged v1 and v2) should go
-here, as we don't want that to be part of the commit message once the patch is
-applied.
-
-Regards,
-Matthias
-
->  drivers/tty/serial/8250/8250_mtk.c | 50 ++++++++++++++++++++++++--------------
->  1 file changed, 32 insertions(+), 18 deletions(-)
-> 
-> diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-> index f470ded..a07c8ae 100644
-> --- a/drivers/tty/serial/8250/8250_mtk.c
-> +++ b/drivers/tty/serial/8250/8250_mtk.c
-> @@ -31,6 +31,7 @@
->  #define MTK_UART_RXTRI_AD	0x14	/* RX Trigger address */
->  #define MTK_UART_FRACDIV_L	0x15	/* Fractional divider LSB address */
->  #define MTK_UART_FRACDIV_M	0x16	/* Fractional divider MSB address */
-> +#define MTK_UART_DEBUG0	0x18
->  #define MTK_UART_IER_XOFFI	0x20	/* Enable XOFF character interrupt */
->  #define MTK_UART_IER_RTSI	0x40	/* Enable RTS Modem status interrupt */
->  #define MTK_UART_IER_CTSI	0x80	/* Enable CTS Modem status interrupt */
-> @@ -386,9 +387,18 @@ static void mtk8250_set_flow_ctrl(struct uart_8250_port *up, int mode)
->  static int __maybe_unused mtk8250_runtime_suspend(struct device *dev)
->  {
->  	struct mtk8250_data *data = dev_get_drvdata(dev);
-> +	struct uart_8250_port *up = serial8250_get_port(data->line);
->  
-> -	clk_disable_unprepare(data->uart_clk);
-> -	clk_disable_unprepare(data->bus_clk);
-> +	/* wait until UART in idle status */
-> +	while
-> +		(serial_in(up, MTK_UART_DEBUG0));
-> +
-> +	if (data->clk_count == 0U) {
-> +		dev_dbg(dev, "%s clock count is 0\n", __func__);
-> +	} else {
-> +		clk_disable_unprepare(data->bus_clk);
-> +		data->clk_count--;
-> +	}
->  
->  	return 0;
->  }
-> @@ -398,16 +408,16 @@ static int __maybe_unused mtk8250_runtime_resume(struct device *dev)
->  	struct mtk8250_data *data = dev_get_drvdata(dev);
->  	int err;
->  
-> -	err = clk_prepare_enable(data->uart_clk);
-> -	if (err) {
-> -		dev_warn(dev, "Can't enable clock\n");
-> -		return err;
-> -	}
-> -
-> -	err = clk_prepare_enable(data->bus_clk);
-> -	if (err) {
-> -		dev_warn(dev, "Can't enable bus clock\n");
-> -		return err;
-> +	if (data->clk_count > 0U) {
-> +		dev_dbg(dev, "%s clock count is %d\n", __func__,
-> +			data->clk_count);
-> +	} else {
-> +		err = clk_prepare_enable(data->bus_clk);
-> +		if (err) {
-> +			dev_warn(dev, "Can't enable bus clock\n");
-> +			return err;
-> +		}
-> +		data->clk_count++;
->  	}
->  
->  	return 0;
-> @@ -417,12 +427,14 @@ static int __maybe_unused mtk8250_runtime_resume(struct device *dev)
->  mtk8250_do_pm(struct uart_port *port, unsigned int state, unsigned int old)
->  {
->  	if (!state)
-> -		pm_runtime_get_sync(port->dev);
-> +		if (!mtk8250_runtime_resume(port->dev))
-> +			pm_runtime_get_sync(port->dev);
->  
->  	serial8250_do_pm(port, state, old);
->  
->  	if (state)
-> -		pm_runtime_put_sync_suspend(port->dev);
-> +		if (!pm_runtime_put_sync_suspend(port->dev))
-> +			mtk8250_runtime_suspend(port->dev);
->  }
->  
->  #ifdef CONFIG_SERIAL_8250_DMA
-> @@ -499,6 +511,8 @@ static int mtk8250_probe(struct platform_device *pdev)
->  	if (!data)
->  		return -ENOMEM;
->  
-> +	data->clk_count = 0;
-> +
->  	if (pdev->dev.of_node) {
->  		err = mtk8250_probe_of(pdev, &uart.port, data);
->  		if (err)
-> @@ -531,6 +545,7 @@ static int mtk8250_probe(struct platform_device *pdev)
->  
->  	platform_set_drvdata(pdev, data);
->  
-> +	pm_runtime_enable(&pdev->dev);
->  	err = mtk8250_runtime_resume(&pdev->dev);
->  	if (err)
->  		return err;
-> @@ -539,9 +554,6 @@ static int mtk8250_probe(struct platform_device *pdev)
->  	if (data->line < 0)
->  		return data->line;
->  
-> -	pm_runtime_set_active(&pdev->dev);
-> -	pm_runtime_enable(&pdev->dev);
-> -
->  	return 0;
->  }
->  
-> @@ -552,11 +564,13 @@ static int mtk8250_remove(struct platform_device *pdev)
->  	pm_runtime_get_sync(&pdev->dev);
->  
->  	serial8250_unregister_port(data->line);
-> -	mtk8250_runtime_suspend(&pdev->dev);
->  
->  	pm_runtime_disable(&pdev->dev);
->  	pm_runtime_put_noidle(&pdev->dev);
->  
-> +	if (!pm_runtime_status_suspended(&pdev->dev))
-> +		mtk8250_runtime_suspend(&pdev->dev);
-> +
->  	return 0;
->  }
->  
-> 
+T24gVGh1LCBKdWwgMTgsIDIwMTkgYXQgMDY6MTQ6NTZQTSArMDIwMCwgU2FtIFJhdm5ib3JnIHdy
+b3RlOgo+IEZpcnN0IHBhdGNoIGZyb20gSmFuaSBmaXhlcyBzbyBkcm1fcHJpbnQuaCBpcyBzZWxm
+LWNvbnRhaW5lZC4KPiBOZXh0IHR3byBwYXRjaGVzIGFyZSB0cml2aWFsIHJlbW92YWwgb2YgdWFw
+aSBkZXBlbmRlbmNpZXMuCj4gCj4gYXRpX3BjaWdhcnQgaXMgZml4ZWQgdG8gZHJvcCB1c2Ugb2Yg
+ZHJtX29zX2xpbnV4LmgKPiAKPiBkcm1fdmJsYW5rIGlzIGxpa2V3aXNlIGZpeGVkIHRvIGRyb3Ag
+dXNlIG9mIGRybV9vc19saW51eC5oCj4gVGhpcyB3YXMgYSBub24tdHJpdmlhbCBjb252ZXJzaW9u
+LCAqcmV2aWV3IHJlcXVlc3RlZCEqCj4gCj4gVGhlIHJlbWFpbmluZyBwYXRjaGVzIGFyZSBwcmVw
+YXJhdGlvbiBmb3IgYW5kIHJlbW92YWwgb2YKPiB1YXBpL2RybS9kcm1oIGZyb20gZHJtX2ZpbGUu
+aC4KPiBUaGVyZSB3ZXJlIGEgZmV3IGZpbGVzIHdoZXJlIHdlIGhhZCB0byBwdXNoIGluY2x1ZGUK
+PiBvZiBkcm0vZHJtLmggb3V0IHRvIHRvIGhhdmUgYSBjbGVhbiBidWlsZC4KPiAKPiBDSyBIdSAt
+IHBsZWFzZSBsZXQgbWUgYXBwbHkgdGhlIG1lZGlhdGVrIHBhdGNoIHRvCj4gZHJtLW1pc2MtbmV4
+dCwgYXMgaXQgaXMgcmVxdWlyZWQgZm9yIHRoZSBmaW5hbCBwYXRjaC4KPiBPciBwdXNoIGl0IHRv
+IGRybS1taXNjLW5leHQgeW91cnNlbGYuCj4gCj4gCVNhbQo+IAo+IEphbmkgTmlrdWxhICgxKToK
+PiAgICAgICBkcm0vcGFuZWw6IG1ha2UgZHJtX3BhbmVsLmggc2VsZi1jb250YWluZWQKPiAKPiBT
+YW0gUmF2bmJvcmcgKDEwKToKPiAgICAgICBkcm06IGRyb3AgdWFwaSBkZXBlbmRlbmN5IGZyb20g
+ZHJtX3ByaW50LmgKPiAgICAgICBkcm06IGRyb3AgdWFwaSBkZXBlbmRlbmN5IGZyb20gZHJtX3Zi
+bGFuay5oCj4gICAgICAgZHJtL2F0aV9wY2lnYXJ0OiBkcm9wIGRlcGVuZGVuY3kgb24gZHJtX29z
+X2xpbnV4LmgKPiAgICAgICBkcm0vdmJsYW5rOiBkcm9wIHVzZSBvZiBEUk1fV0FJVF9PTigpCj4g
+ICAgICAgZHJtOiBkaXJlY3QgaW5jbHVkZSBvZiBkcm0uaCBpbiBkcm1fZ2VtLmMKPiAgICAgICBk
+cm06IGRpcmVjdCBpbmNsdWRlIG9mIGRybS5oIGluIGRybV9nZW1fc2htZW1faGVscGVyLmMKPiAg
+ICAgICBkcm06IGRpcmVjdCBpbmNsdWRlIG9mIGRybS5oIGluIGRybV9wcmltZS5jCj4gICAgICAg
+ZHJtOiBkaXJlY3QgaW5jbHVkZSBvZiBkcm0uaCBpbiBkcm1fc3luY29iai5jCj4gICAgICAgZHJt
+L21lZGlhdGVrOiBkaXJlY3QgaW5jbHVkZSBvZiBkcm0uaCBpbiBtdGtfZHJtX2dlbS5jCj4gICAg
+ICAgZHJtOiBkcm9wIHVhcGkgZGVwZW5kZW5jeSBmcm9tIGRybV9maWxlLmgKCkFkZGVkIHJlbGV2
+YW50IGFja3MgYW5kIHB1c2hlZCBmb2xsb3dpbmcgcGF0Y2hlcyB0byBkcm0tbWlzYy1uZXh0Ogog
+ICAgICAgZHJtL3BhbmVsOiBtYWtlIGRybV9wYW5lbC5oIHNlbGYtY29udGFpbmVkCiAgICAgICBk
+cm06IGRyb3AgdWFwaSBkZXBlbmRlbmN5IGZyb20gZHJtX3ZibGFuay5oCiAgICAgICBkcm0vYXRp
+X3BjaWdhcnQ6IGRyb3AgZGVwZW5kZW5jeSBvbiBkcm1fb3NfbGludXguaAogICAgICAgZHJtOiBk
+aXJlY3QgaW5jbHVkZSBvZiBkcm0uaCBpbiBkcm1fZ2VtLmMKICAgICAgIGRybTogZGlyZWN0IGlu
+Y2x1ZGUgb2YgZHJtLmggaW4gZHJtX2dlbV9zaG1lbV9oZWxwZXIuYwogICAgICAgZHJtOiBkaXJl
+Y3QgaW5jbHVkZSBvZiBkcm0uaCBpbiBkcm1fcHJpbWUuYwogICAgICAgZHJtOiBkaXJlY3QgaW5j
+bHVkZSBvZiBkcm0uaCBpbiBkcm1fc3luY29iai5jCiAgICAgICBkcm0vbWVkaWF0ZWs6IGRpcmVj
+dCBpbmNsdWRlIG9mIGRybS5oIGluIG10a19kcm1fZ2VtLmMKCkZvbGxvd2luZyBwYXRjaGVzIHdh
+cyBkcm9wcGVkOgogICAgICAgZHJtOiBkcm9wIHVhcGkgZGVwZW5kZW5jeSBmcm9tIGRybV9wcmlu
+dC5oCiAgICAgICAtIFRoZXJlIHdhcyBub3QgYSBjbGVhciBjb25zZW5zdXMgd2hhdCB0byBkbyBo
+ZXJlLCBhbmQgdGhlIHBhdGNoCgkgYnJva2Ugb25lIHdheSB0byB1c2UgdGhlIERSTV8oUFJJTlQp
+IG1hY3Jvcy4KICAgICAgIC0gSSBkaWQgbm90IGhhdmUgdGhlIHRpbWUvZW5lZ3kgdG8gc3RhcnQg
+YSBsb2dnaW5nIGRlYmF0ZS4KICAgICAgICAgVGhlcmUgaXMgdG9vIG11Y2ggdGhhdCBjb3VsZCBi
+ZSBkb25lIGFuZCBpdCBpcyBub3QgdGhlIHJpZ2h0CgkgdGltZSBmb3IgbWUgdG8gbG9vayBpbnRv
+IHRoZSBwb3NzaWJpbGl0aWVzLgoKICAgICAgIGRybTogZHJvcCB1YXBpIGRlcGVuZGVuY3kgZnJv
+bSBkcm1fZmlsZS5oCiAgICAgICAtIFRoZXJlIHdlcmUgcmVsZXZhbnQgcHVzaCBiYWNrIGZyb20g
+bG9vc2luZyB0aGUgaW5mb3JtYXRpb24KICAgICAgICAgdGhhdCBhIHVhcGkgdHlwZSB3YXMgdXNl
+ZCB0byByZXByZXNlbnQgJ21hZ2ljJwoKRm9sbG93aW5nIHBhdGNoIGlzIHdvcmtlZCBvbjoKICAg
+ICAgIGRybS92Ymxhbms6IGRyb3AgdXNlIG9mIERSTV9XQUlUX09OKCkKICAgICAgIC0gR290IGV4
+Y2VsbGVudCBmZWVkYmFjayBmcm9tIE1pY2hlbCBEw6RuemVyIGFuZCBEYW5pZWwgVmV0dGVyLgog
+ICAgICAgLSBBbiB1cGRhdGVkIHZlcnNpb24gd2lsbCBiZSBwb3N0ZWQgd2hlbiBJIGhhdmUgdGVz
+dGVkIGl0CgkgYXQgbXkgbG9jYWwgc2V0dXAKCglTYW0KX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
+YW4vbGlzdGluZm8vZHJpLWRldmVs
