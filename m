@@ -1,210 +1,49 @@
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 2/5] mt76: mt7603: fix some checkpatch warnings
-Date: Mon, 22 Jul 2019 13:31:12 +0800
-Message-ID: <0c8b217c817d7f4029b60276736c3111bc01665c.1563772403.git.ryder.lee@mediatek.com>
-References: <cover.1563772403.git.ryder.lee@mediatek.com>
+From: Avri Altman <Avri.Altman@wdc.com>
+Subject: RE: [PATCH v1 0/2] scsi: ufs: Fix broken hba->outstanding_tasks
+Date: Mon, 22 Jul 2019 06:10:25 +0000
+Message-ID: <SN6PR04MB49256F66F259185F3876CCABFCC40@SN6PR04MB4925.namprd04.prod.outlook.com>
+References: <1562906656-27154-1-git-send-email-stanley.chu@mediatek.com>
+ <SN6PR04MB4925208835D4760249E82DB7FCC50@SN6PR04MB4925.namprd04.prod.outlook.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <cover.1563772403.git.ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Cc: Roy Luo <royluo-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, YF Luo <yf.luo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yiwei Chung <yiwei.chung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com" <martin.petersen@oracle.com>, "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>, "pedrom.sousa@synopsys.com" <pedrom.sousa@synopsys.com>
+Cc: "marc.w.gonzalez@free.fr" <marc.w.gonzalez@free.fr>, "andy.teng@mediatek.com" <andy.teng@mediatek.com>, "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>, "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>, "evgreen@chromium.org" <evgreen@chromium.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "peter.wang@mediatek.com" <peter.wang@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "beanhuo@micron.com" <beanhuo@micron.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-This fixes the following checkpatch.pl warning:
-WARNING: Improper SPDX comment style
-CHECK: No space is necessary after a cast
-
-Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/net/wireless/mediatek/mt76/mt7603/beacon.c  | 2 +-
- drivers/net/wireless/mediatek/mt76/mt7603/core.c    | 2 +-
- drivers/net/wireless/mediatek/mt76/mt7603/debugfs.c | 2 +-
- drivers/net/wireless/mediatek/mt76/mt7603/dma.c     | 7 ++++---
- drivers/net/wireless/mediatek/mt76/mt7603/eeprom.c  | 2 +-
- drivers/net/wireless/mediatek/mt76/mt7603/init.c    | 3 +--
- drivers/net/wireless/mediatek/mt76/mt7603/mac.c     | 6 +++---
- drivers/net/wireless/mediatek/mt76/mt7603/main.c    | 7 ++++---
- drivers/net/wireless/mediatek/mt76/mt7603/mcu.c     | 2 +-
- drivers/net/wireless/mediatek/mt76/mt7603/pci.c     | 2 +-
- drivers/net/wireless/mediatek/mt76/mt7603/soc.c     | 2 +-
- 11 files changed, 19 insertions(+), 18 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/beacon.c b/drivers/net/wireless/mediatek/mt76/mt7603/beacon.c
-index 58e68fbdbf75..7a41cdf1c4ae 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/beacon.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/beacon.c
-@@ -1,4 +1,4 @@
--/* SPDX-License-Identifier: ISC */
-+// SPDX-License-Identifier: ISC
- 
- #include "mt7603.h"
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/core.c b/drivers/net/wireless/mediatek/mt76/mt7603/core.c
-index e7ee58e3379c..e5af4f3389cc 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/core.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/core.c
-@@ -1,4 +1,4 @@
--/* SPDX-License-Identifier: ISC */
-+// SPDX-License-Identifier: ISC
- 
- #include "mt7603.h"
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7603/debugfs.c
-index a1bc3103cbe9..5942fe76c6e9 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/debugfs.c
-@@ -1,4 +1,4 @@
--/* SPDX-License-Identifier: ISC */
-+// SPDX-License-Identifier: ISC
- 
- #include "mt7603.h"
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/dma.c b/drivers/net/wireless/mediatek/mt76/mt7603/dma.c
-index 58dc511f93c5..79dc3b97dfe8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/dma.c
-@@ -1,4 +1,4 @@
--/* SPDX-License-Identifier: ISC */
-+// SPDX-License-Identifier: ISC
- 
- #include "mt7603.h"
- #include "mac.h"
-@@ -63,7 +63,7 @@ mt7603_rx_loopback_skb(struct mt7603_dev *dev, struct sk_buff *skb)
- 	txd[0] = cpu_to_le32(val);
- 
- 	sta = container_of(priv, struct ieee80211_sta, drv_priv);
--	hdr = (struct ieee80211_hdr *) &skb->data[MT_TXD_SIZE];
-+	hdr = (struct ieee80211_hdr *)&skb->data[MT_TXD_SIZE];
- 	tid = *ieee80211_get_qos_ctl(hdr) & IEEE80211_QOS_CTL_TID_MASK;
- 	ieee80211_sta_set_buffered(sta, tid, true);
- 
-@@ -181,7 +181,8 @@ int mt7603_dma_init(struct mt7603_dev *dev)
- 	init_waitqueue_head(&dev->mt76.mmio.mcu.wait);
- 	skb_queue_head_init(&dev->mt76.mmio.mcu.res_q);
- 
--	tasklet_init(&dev->mt76.tx_tasklet, mt7603_tx_tasklet, (unsigned long)dev);
-+	tasklet_init(&dev->mt76.tx_tasklet, mt7603_tx_tasklet,
-+		     (unsigned long)dev);
- 
- 	mt76_clear(dev, MT_WPDMA_GLO_CFG,
- 		   MT_WPDMA_GLO_CFG_TX_DMA_EN |
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7603/eeprom.c
-index 8c120e4461b0..2b6a4d8a8dc7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/eeprom.c
-@@ -1,4 +1,4 @@
--/* SPDX-License-Identifier: ISC */
-+// SPDX-License-Identifier: ISC
- 
- #include "mt7603.h"
- #include "eeprom.h"
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/init.c b/drivers/net/wireless/mediatek/mt76/mt7603/init.c
-index 568e57e1d69c..ad2ccdbe7258 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/init.c
-@@ -1,4 +1,4 @@
--/* SPDX-License-Identifier: ISC */
-+// SPDX-License-Identifier: ISC
- 
- #include <linux/etherdevice.h>
- #include "mt7603.h"
-@@ -506,7 +506,6 @@ mt7603_init_txpower(struct mt7603_dev *dev,
- 	}
- }
- 
--
- int mt7603_register_device(struct mt7603_dev *dev)
- {
- 	struct mt76_bus_ops *bus_ops;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
-index 81fb4276e742..a532676a1175 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
-@@ -1,4 +1,4 @@
--/* SPDX-License-Identifier: ISC */
-+// SPDX-License-Identifier: ISC
- 
- #include <linux/etherdevice.h>
- #include <linux/timekeeping.h>
-@@ -644,7 +644,6 @@ void mt7603_wtbl_set_rates(struct mt7603_dev *dev, struct mt7603_sta *sta,
- 
- 			rates[i].idx--;
- 		}
--
- 	}
- 
- 	w9 &= MT_WTBL2_W9_SHORT_GI_20 | MT_WTBL2_W9_SHORT_GI_40 |
-@@ -1017,8 +1016,9 @@ mt7603_fill_txs(struct mt7603_dev *dev, struct mt7603_sta *sta,
- 			sta->rate_probe = false;
- 		}
- 		spin_unlock_bh(&dev->mt76.lock);
--	} else
-+	} else {
- 		info->status.rates[0] = rs->rates[first_idx / 2];
-+	}
- 	info->status.rates[0].count = 0;
- 
- 	for (i = 0, idx = first_idx; count && idx <= last_idx; idx++) {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/main.c b/drivers/net/wireless/mediatek/mt76/mt7603/main.c
-index d70f42dac923..34dd05a36de9 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/main.c
-@@ -1,4 +1,4 @@
--/* SPDX-License-Identifier: ISC */
-+// SPDX-License-Identifier: ISC
- 
- #include <linux/etherdevice.h>
- #include <linux/platform_device.h>
-@@ -399,7 +399,7 @@ mt7603_ps_set_more_data(struct sk_buff *skb)
- {
- 	struct ieee80211_hdr *hdr;
- 
--	hdr = (struct ieee80211_hdr *) &skb->data[MT_TXD_SIZE];
-+	hdr = (struct ieee80211_hdr *)&skb->data[MT_TXD_SIZE];
- 	hdr->frame_control |= cpu_to_le16(IEEE80211_FCTL_MOREDATA);
- }
- 
-@@ -647,7 +647,8 @@ mt7603_set_coverage_class(struct ieee80211_hw *hw, s16 coverage_class)
- 	mt7603_mac_set_timing(dev);
- }
- 
--static void mt7603_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
-+static void mt7603_tx(struct ieee80211_hw *hw,
-+		      struct ieee80211_tx_control *control,
- 		      struct sk_buff *skb)
- {
- 	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7603/mcu.c
-index 343ddc5543c2..02b2bd60d04d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/mcu.c
-@@ -1,4 +1,4 @@
--/* SPDX-License-Identifier: ISC */
-+// SPDX-License-Identifier: ISC
- 
- #include <linux/firmware.h>
- #include "mt7603.h"
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/pci.c b/drivers/net/wireless/mediatek/mt76/mt7603/pci.c
-index 4acdbf5d8968..2f2f337e2201 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/pci.c
-@@ -1,4 +1,4 @@
--/* SPDX-License-Identifier: ISC */
-+// SPDX-License-Identifier: ISC
- 
- #include <linux/kernel.h>
- #include <linux/module.h>
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/soc.c b/drivers/net/wireless/mediatek/mt76/mt7603/soc.c
-index b920be1f5718..b7138485844a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/soc.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/soc.c
-@@ -1,4 +1,4 @@
--/* SPDX-License-Identifier: ISC */
-+// SPDX-License-Identifier: ISC
- 
- #include <linux/kernel.h>
- #include <linux/module.h>
--- 
-2.18.0
+PiANCj4gPg0KPiA+IEhpLA0KPiA+DQo+ID4gPg0KPiA+ID4gQ3VycmVudGx5IGJpdHMgaW4gaGJh
+LT5vdXRzdGFuZGluZ190YXNrcyBhcmUgY2xlYXJlZCBvbmx5IGFmdGVyIHRoZWlyDQo+ID4gPiBj
+b3JyZXNwb25kaW5nIHRhc2sgbWFuYWdlbWVudCBjb21tYW5kcyBhcmUgc3VjY2Vzc2Z1bGx5IGRv
+bmUgYnkNCj4gPiA+IF9fdWZzaGNkX2lzc3VlX3RtX2NtZCgpLg0KPiA+ID4NCj4gPiA+IElmIHRp
+bWVvdXQgaGFwcGVucyBpbiBhIHRhc2sgbWFuYWdlbWVudCBjb21tYW5kLCBpdHMgY29ycmVzcG9u
+ZGluZw0KPiA+ID4gYml0IGluIGhiYS0+b3V0c3RhbmRpbmdfdGFza3Mgd2lsbCBub3QgYmUgY2xl
+YXJlZCB1bnRpbCBuZXh0IHRhc2sNCj4gPiA+IG1hbmFnZW1lbnQgY29tbWFuZCB3aXRoIHRoZSBz
+YW1lIHRhZyB1c2VkIHN1Y2Nlc3NmdWxseSBmaW5pc2hlcy7igKcNCj4gPiB1ZnNoY2RfY2xlYXJf
+dG1fY21kIGlzIGFsc28gY2FsbGVkIGFzIHBhcnQgb2YgdWZzaGNkX2Vycl9oYW5kbGVyLg0KPiA+
+IERvZXMgdGhpcyBjaGFuZ2Ugc29tZXRoaW5nIGluIHlvdXIgYXNzdW1wdGlvbnM/DQo+IEFuZCBC
+VFcgdGhlcmUgaXMgYSBzcGVjaWZpYyBfX2NsZWFyX2JpdCBpbiBfX3Vmc2hjZF9pc3N1ZV90bV9j
+bWQoKSBpbiBjYXNlDQo+IG9mIGEgVE8uDQoNCkdhdmUgaXQgYW5vdGhlciBsb29rIC0gDQpJZiBp
+bmRlZWQgdGhpcyBiaXQgaXNuJ3QgY2xlYXJlZCBhcyBwYXJ0IG9mIHRoZSBlcnJvciBmbG93IHRo
+YXQgdGhlIHRpbWVvdXQgdHJpZ2dlcnMsDQpJIHRoaW5rIHlvdSBzaG91bGQgcmVsYXRlIHRvIHVm
+c2hjZF9jbGVhcl90bV9jbWQgc3BlY2lmaWNhbGx5IGluIHlvdXIgY29tbWl0IGxvZyAtIA0KQmVj
+YXVzZSB0aGlzIGlzIHRoZSBvYnZpb3VzIHBsYWNlIHdoZXJlIHRoZSBiaXQgY2xlYW51cCBzaG91
+bGQgdGFrZSBwbGFjZS4NCg0KQWxzbyB0aGUgZml4IHNob3VsZCBiZSBtdWNoIG1vcmUgaW50dWl0
+aXZlIElNTyAtIA0KVG9kYXkgd2UgZG8gX19jbGVhcl9iaXQoKSBvbiBzdWNjZXNzLCB1ZnNoY2Rf
+Y2xlYXJfdG1fY21kKCkgb24gZXJyb3IsDQpBbmQgYWxzbyB1ZnNoY2RfcHV0X3RtX3Nsb3QoKSBl
+aXRoZXIgd2F5Pw0KDQpNYXliZSB5b3UgY2FuIGNob29zZSBhIHNpbmdsZSBwbGFjZSB0byBjbGVh
+ciBpdCwgd2l0aG91dCBhbnkgYWRkaXRpb25hbCBjb2RlPw0KDQpUaGFua3MsDQpBdnJpDQpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2Vy
+bmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVs
+Cg==
