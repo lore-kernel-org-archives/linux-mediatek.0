@@ -1,87 +1,53 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "sound: soc: codecs: mt6358: change return type of mt6358_codec_init_reg" to the asoc tree
-Date: Mon, 22 Jul 2019 13:22:08 +0100 (BST)
-Message-ID: <20190722122208.845DB2740463@ypsilon.sirena.org.uk>
-References: <20190709182543.GA6611@hari-Inspiron-1545>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v4 2/3] dt-bindings: rng: add bindings for MediaTek ARMv8
+ SoCs
+Date: Mon, 22 Jul 2019 11:13:20 -0600
+Message-ID: <20190722171320.GA9806@bogus>
+References: <1561361052-13072-1-git-send-email-neal.liu@mediatek.com>
+ <1561361052-13072-3-git-send-email-neal.liu@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190709182543.GA6611@hari-Inspiron-1545>
+Content-Disposition: inline
+In-Reply-To: <1561361052-13072-3-git-send-email-neal.liu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-Cc: alsa-devel@alsa-project.org, Jaroslav Kysela <perex@perex.cz>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Shunli Wang <shunli.wang@mediatek.com>, Takashi Iwai <tiwai@suse.com>, Tzung-Bi Shih <tzungbi@google.com>
+To: Neal Liu <neal.liu@mediatek.com>
+Cc: Matt Mackall <mpm@selenic.com>, Herbert Xu <herbert@gondor.apana.org.au>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>, Crystal Guo <Crystal.Guo@mediatek.com>, linux-crypto@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
+On Mon, Jun 24, 2019 at 03:24:11PM +0800, Neal Liu wrote:
+> Document the binding used by the MediaTek ARMv8 SoCs random
+> number generator with TrustZone enabled.
+> 
+> Signed-off-by: Neal Liu <neal.liu@mediatek.com>
+> ---
+>  .../devicetree/bindings/rng/mtk-sec-rng.txt        |   10 ++++++++++
+>  1 file changed, 10 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/rng/mtk-sec-rng.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/rng/mtk-sec-rng.txt b/Documentation/devicetree/bindings/rng/mtk-sec-rng.txt
+> new file mode 100644
+> index 0000000..c04ce15
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/rng/mtk-sec-rng.txt
+> @@ -0,0 +1,10 @@
+> +MediaTek random number generator with TrustZone enabled
+> +
+> +Required properties:
+> +- compatible : Should be "mediatek,mtk-sec-rng"
 
-   sound: soc: codecs: mt6358: change return type of mt6358_codec_init_reg
+What's the interface to access this? 
 
-has been applied to the asoc tree at
+A node with a 'compatible' and nothing else is a sign of something that 
+a parent device should instantiate and doesn't need to be in DT. IOW, 
+what do complete bindings for firmware functions look like?
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-5.4
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
->From 1d3dd532883be6167da5df6117efd6d4e8790456 Mon Sep 17 00:00:00 2001
-From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-Date: Tue, 9 Jul 2019 23:55:43 +0530
-Subject: [PATCH] sound: soc: codecs: mt6358: change return type of
- mt6358_codec_init_reg
-
-As mt6358_codec_init_reg function always returns 0 , change return type
-from int to void.
-
-fixes below issue reported by coccicheck
-sound/soc/codecs/mt6358.c:2260:5-8: Unneeded variable: "ret". Return "0"
-on line 2289
-
-Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
-Acked-by: Tzung-Bi Shih <tzungbi@google.com>
-Link: https://lore.kernel.org/r/20190709182543.GA6611@hari-Inspiron-1545
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- sound/soc/codecs/mt6358.c | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
-
-diff --git a/sound/soc/codecs/mt6358.c b/sound/soc/codecs/mt6358.c
-index 50b3fc5457ea..c17250aab2d0 100644
---- a/sound/soc/codecs/mt6358.c
-+++ b/sound/soc/codecs/mt6358.c
-@@ -2255,10 +2255,8 @@ static struct snd_soc_dai_driver mt6358_dai_driver[] = {
- 	},
- };
- 
--static int mt6358_codec_init_reg(struct mt6358_priv *priv)
-+static void mt6358_codec_init_reg(struct mt6358_priv *priv)
- {
--	int ret = 0;
--
- 	/* Disable HeadphoneL/HeadphoneR short circuit protection */
- 	regmap_update_bits(priv->regmap, MT6358_AUDDEC_ANA_CON0,
- 			   RG_AUDHPLSCDISABLE_VAUDP15_MASK_SFT,
-@@ -2285,8 +2283,6 @@ static int mt6358_codec_init_reg(struct mt6358_priv *priv)
- 	/* set gpio */
- 	playback_gpio_reset(priv);
- 	capture_gpio_reset(priv);
--
--	return ret;
- }
- 
- static int mt6358_codec_probe(struct snd_soc_component *cmpnt)
--- 
-2.20.1
+> +
+> +Example:
+> +
+> +hwrng: hwrng {
+> +	compatible = "mediatek,mtk-sec-rng";
+> +}
+> -- 
+> 1.7.9.5
+> 
