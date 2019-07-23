@@ -1,54 +1,87 @@
-From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Subject: Re: [PATCH v4 14/23] drm/tilcdc: Provide ddc symlink in connector
- sysfs directory
-Date: Tue, 23 Jul 2019 14:44:50 +0200
-Message-ID: <3ad60be5-49cf-4017-4b74-53a2d6272deb@collabora.com>
-References: <cover.1562843413.git.andrzej.p@collabora.com>
- <d1d415022c598fb7acd033f0f322dd67250adaa9.1562843413.git.andrzej.p@collabora.com>
- <20190723090532.GA787@ravnborg.org>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v4 2/3] dt-bindings: rng: add bindings for MediaTek ARMv8 SoCs
+Date: Tue, 23 Jul 2019 08:35:47 -0600
+Message-ID: <CAL_Jsq+SRhd=-5O2G_CMfJX9Z188kvA05MQOXaU1J8iExwUixQ@mail.gmail.com>
+References: <1561361052-13072-1-git-send-email-neal.liu@mediatek.com>
+ <1561361052-13072-3-git-send-email-neal.liu@mediatek.com> <20190722171320.GA9806@bogus>
+ <1563848465.31451.4.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190723090532.GA787@ravnborg.org>
-Content-Language: en-US
+In-Reply-To: <1563848465.31451.4.camel@mtkswgap22>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sam Ravnborg <sam@ravnborg.org>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, Maxime Ripard <maxime.ripard@bootlin.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Shawn Guo <shawnguo@kernel.org>, kernel@collabora.com, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, Sean Paul <sean@poorly.run>, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, David Airlie <airlied@linux.ie>, Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>, NXP Linux Team <linux-imx@nxp.com>, Dave Airlie <airlied@redhat.com>, Thomas Zimmermann <tzimmermann@suse.de>, Jonas Karlman <jonas@kwiboo.se>, linux-ar
+To: Neal Liu <neal.liu@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Herbert Xu <herbert@gondor.apana.org.au>, wsd_upstream <wsd_upstream@mediatek.com>, Sean Wang <sean.wang@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, =?UTF-8?B?Q3J5c3RhbCBHdW8gKOmDreaZtik=?= <Crystal.Guo@mediatek.com>, "linux-crypto@vger.kernel.org" <linux-crypto@vger.kernel.org>, Matt Mackall <mpm@selenic.com>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Sam,
+On Mon, Jul 22, 2019 at 8:21 PM Neal Liu <neal.liu@mediatek.com> wrote:
+>
 
-W dniu 23.07.2019 o 11:05, Sam Ravnborg pisze:
-> Hi Andrzej
-> 
-> On Thu, Jul 11, 2019 at 01:26:41PM +0200, Andrzej Pietrasiewicz wrote:
->> Use the ddc pointer provided by the generic connector.
->>
->> Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
->> ---
->>   drivers/gpu/drm/tilcdc/tilcdc_tfp410.c | 1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/drivers/gpu/drm/tilcdc/tilcdc_tfp410.c b/drivers/gpu/drm/tilcdc/tilcdc_tfp410.c
->> index 62d014c20988..c373edb95666 100644
->> --- a/drivers/gpu/drm/tilcdc/tilcdc_tfp410.c
->> +++ b/drivers/gpu/drm/tilcdc/tilcdc_tfp410.c
->> @@ -219,6 +219,7 @@ static struct drm_connector *tfp410_connector_create(struct drm_device *dev,
->>   	tfp410_connector->mod = mod;
->>   
->>   	connector = &tfp410_connector->base;
->> +	connector->ddc = mod->i2c;
->>   
->>   	drm_connector_init(dev, connector, &tfp410_connector_funcs,
->>   			DRM_MODE_CONNECTOR_DVID);
-> 
-> When reading this code, it looks strange that we set connector->ddc
-> *before* the call to init the connector.
-> One could risk that drm_connector_init() used memset(..) to clear all
-> fields or so, and it would break this order.
+Please don't top post to lists.
 
-I verified the code of drm_connector_init() and cannot find any memset()
-invocations there. What is your actual concern?
+> Dear Rob,
+>         You can check my driver for detail:
+>         http://patchwork.kernel.org/patch/11012475/ or patchset 3/3
 
-Andrzej
+I could, or you could just answer my question.
+
+>
+>         This driver is registered as hardware random number generator, and
+> combines with rng-core.
+>         We want to add one rng hw based on the dts. Is this proper or do you
+> have other suggestion to meet this requirement?
+
+It depends. There doesn't appear to be any resource configuration, so
+why does it need to be in DT. DT is not the only way instantiate
+drivers.
+
+Rob
+
+>
+>         Thanks
+>
+>
+> On Tue, 2019-07-23 at 01:13 +0800, Rob Herring wrote:
+> > On Mon, Jun 24, 2019 at 03:24:11PM +0800, Neal Liu wrote:
+> > > Document the binding used by the MediaTek ARMv8 SoCs random
+> > > number generator with TrustZone enabled.
+> > >
+> > > Signed-off-by: Neal Liu <neal.liu@mediatek.com>
+> > > ---
+> > >  .../devicetree/bindings/rng/mtk-sec-rng.txt        |   10 ++++++++++
+> > >  1 file changed, 10 insertions(+)
+> > >  create mode 100644 Documentation/devicetree/bindings/rng/mtk-sec-rng.txt
+> > >
+> > > diff --git a/Documentation/devicetree/bindings/rng/mtk-sec-rng.txt b/Documentation/devicetree/bindings/rng/mtk-sec-rng.txt
+> > > new file mode 100644
+> > > index 0000000..c04ce15
+> > > --- /dev/null
+> > > +++ b/Documentation/devicetree/bindings/rng/mtk-sec-rng.txt
+> > > @@ -0,0 +1,10 @@
+> > > +MediaTek random number generator with TrustZone enabled
+> > > +
+> > > +Required properties:
+> > > +- compatible : Should be "mediatek,mtk-sec-rng"
+> >
+> > What's the interface to access this?
+> >
+> > A node with a 'compatible' and nothing else is a sign of something that
+> > a parent device should instantiate and doesn't need to be in DT. IOW,
+> > what do complete bindings for firmware functions look like?
+> >
+> > > +
+> > > +Example:
+> > > +
+> > > +hwrng: hwrng {
+> > > +   compatible = "mediatek,mtk-sec-rng";
+> > > +}
+> > > --
+> > > 1.7.9.5
+> > >
+> >
+> > _______________________________________________
+> > Linux-mediatek mailing list
+> > Linux-mediatek@lists.infradead.org
+> > http://lists.infradead.org/mailman/listinfo/linux-mediatek
+>
+>
