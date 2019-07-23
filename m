@@ -1,140 +1,33 @@
-From: Alexandre Courbot <acourbot@chromium.org>
-Subject: [PATCH] drm/mediatek: make imported PRIME buffers contiguous
-Date: Tue, 23 Jul 2019 14:34:21 +0900
-Message-ID: <20190723053421.179679-1-acourbot@chromium.org>
+From: Shawn Guo <shawnguo@kernel.org>
+Subject: Re: [PATCH v4 12/23] drm: zte: Provide ddc symlink in hdmi connector
+ sysfs directory
+Date: Tue, 23 Jul 2019 13:58:08 +0800
+Message-ID: <20190723055807.GQ3738@dragon>
+References: <cover.1562843413.git.andrzej.p@collabora.com>
+ <4a9fb80b4dc328b420ca5d94ebc2810ab86f788c.1562843413.git.andrzej.p@collabora.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Tomasz Figa <tfiga@chromium.org>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@chromium.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <4a9fb80b4dc328b420ca5d94ebc2810ab86f788c.1562843413.git.andrzej.p@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+Cc: Sam Ravnborg <sam@ravnborg.org>, Neil Armstrong <narmstrong@baylibre.com>, Maxime Ripard <maxime.ripard@bootlin.com>, dri-devel@lists.freedesktop.org, Douglas Anderson <dianders@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, kernel@collabora.com, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, Vincent Abriou <vincent.abriou@st.com>, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, David Airlie <airlied@linux.ie>, Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>, NXP Linux Team <linux-imx@nxp.com>, Dave Airlie <airlied@redhat.com>, intel-gfx@lists.freedesktop.org, freedreno@lists.freedesktop.org, linux-tegra@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>, linux-arm-msm@vger.kernel.org, Mamta Shukla <mamtashukla555@gmail.com>, linux-mediatek@li
 List-Id: linux-mediatek@lists.infradead.org
 
-This driver requires imported PRIME buffers to appear contiguously in
-its IO address space. Make sure this is the case by setting the maximum
-DMA segment size to a better value than the default 64K on the DMA
-device, and use said DMA device when importing PRIME buffers.
-
-Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
----
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 47 ++++++++++++++++++++++++--
- drivers/gpu/drm/mediatek/mtk_drm_drv.h |  2 ++
- 2 files changed, 46 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 95fdbd0fbcac..4ad4770fab13 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -213,6 +213,7 @@ static int mtk_drm_kms_init(struct drm_device *drm)
- 	struct mtk_drm_private *private = drm->dev_private;
- 	struct platform_device *pdev;
- 	struct device_node *np;
-+	struct device *dma_dev;
- 	int ret;
- 
- 	if (!iommu_present(&platform_bus_type))
-@@ -275,7 +276,27 @@ static int mtk_drm_kms_init(struct drm_device *drm)
- 		goto err_component_unbind;
- 	}
- 
--	private->dma_dev = &pdev->dev;
-+	dma_dev = &pdev->dev;
-+	private->dma_dev = dma_dev;
-+
-+	/*
-+	 * Configure the DMA segment size to make sure we get contiguous IOVA
-+	 * when importing PRIME buffers.
-+	 */
-+	if (!dma_dev->dma_parms) {
-+		private->dma_parms_allocated = true;
-+		dma_dev->dma_parms =
-+			devm_kzalloc(drm->dev, sizeof(*dma_dev->dma_parms),
-+				     GFP_KERNEL);
-+	}
-+	if (!dma_dev->dma_parms)
-+		goto err_component_unbind;
-+
-+	ret = dma_set_max_seg_size(dma_dev, (unsigned int)DMA_BIT_MASK(32));
-+	if (ret) {
-+		dev_err(dma_dev, "Failed to set DMA segment size\n");
-+		goto err_unset_dma_parms;
-+	}
- 
- 	/*
- 	 * We don't use the drm_irq_install() helpers provided by the DRM
-@@ -285,13 +306,16 @@ static int mtk_drm_kms_init(struct drm_device *drm)
- 	drm->irq_enabled = true;
- 	ret = drm_vblank_init(drm, MAX_CRTC);
- 	if (ret < 0)
--		goto err_component_unbind;
-+		goto err_unset_dma_parms;
- 
- 	drm_kms_helper_poll_init(drm);
- 	drm_mode_config_reset(drm);
- 
- 	return 0;
- 
-+err_unset_dma_parms:
-+	if (private->dma_parms_allocated)
-+		dma_dev->dma_parms = NULL;
- err_component_unbind:
- 	component_unbind_all(drm->dev, drm);
- err_config_cleanup:
-@@ -302,9 +326,14 @@ static int mtk_drm_kms_init(struct drm_device *drm)
- 
- static void mtk_drm_kms_deinit(struct drm_device *drm)
- {
-+	struct mtk_drm_private *private = drm->dev_private;
-+
- 	drm_kms_helper_poll_fini(drm);
- 	drm_atomic_helper_shutdown(drm);
- 
-+	if (private->dma_parms_allocated)
-+		private->dma_dev->dma_parms = NULL;
-+
- 	component_unbind_all(drm->dev, drm);
- 	drm_mode_config_cleanup(drm);
- }
-@@ -320,6 +349,18 @@ static const struct file_operations mtk_drm_fops = {
- 	.compat_ioctl = drm_compat_ioctl,
- };
- 
-+/*
-+ * We need to override this because the device used to import the memory is
-+ * not dev->dev, as drm_gem_prime_import() expects.
-+ */
-+struct drm_gem_object *mtk_drm_gem_prime_import(struct drm_device *dev,
-+						struct dma_buf *dma_buf)
-+{
-+	struct mtk_drm_private *private = dev->dev_private;
-+
-+	return drm_gem_prime_import_dev(dev, dma_buf, private->dma_dev);
-+}
-+
- static struct drm_driver mtk_drm_driver = {
- 	.driver_features = DRIVER_MODESET | DRIVER_GEM | DRIVER_PRIME |
- 			   DRIVER_ATOMIC,
-@@ -331,7 +372,7 @@ static struct drm_driver mtk_drm_driver = {
- 	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
- 	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
- 	.gem_prime_export = drm_gem_prime_export,
--	.gem_prime_import = drm_gem_prime_import,
-+	.gem_prime_import = mtk_drm_gem_prime_import,
- 	.gem_prime_get_sg_table = mtk_gem_prime_get_sg_table,
- 	.gem_prime_import_sg_table = mtk_gem_prime_import_sg_table,
- 	.gem_prime_mmap = mtk_drm_gem_mmap_buf,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-index 598ff3e70446..e03fea12ff59 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-@@ -51,6 +51,8 @@ struct mtk_drm_private {
- 	} commit;
- 
- 	struct drm_atomic_state *suspend_state;
-+
-+	bool dma_parms_allocated;
- };
- 
- extern struct platform_driver mtk_ddp_driver;
--- 
-2.22.0.657.g960e92d24f-goog
+T24gVGh1LCBKdWwgMTEsIDIwMTkgYXQgMDE6MjY6MzlQTSArMDIwMCwgQW5kcnplaiBQaWV0cmFz
+aWV3aWN6IHdyb3RlOgo+IFVzZSB0aGUgZGRjIHBvaW50ZXIgcHJvdmlkZWQgYnkgdGhlIGdlbmVy
+aWMgY29ubmVjdG9yLgo+IAo+IFNpZ25lZC1vZmYtYnk6IEFuZHJ6ZWogUGlldHJhc2lld2ljeiA8
+YW5kcnplai5wQGNvbGxhYm9yYS5jb20+CgpBY2tlZC1ieTogU2hhd24gR3VvIDxzaGF3bmd1b0Br
+ZXJuZWwub3JnPgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
+aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
