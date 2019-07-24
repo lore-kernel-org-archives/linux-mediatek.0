@@ -1,41 +1,36 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: [PATCH] mt76: switch to SPDX tag instead of verbose boilerplate
- text
-Date: Wed, 24 Jul 2019 11:15:46 +0800
-Message-ID: <1563938146.8010.4.camel@mtkswgap22>
-References: <6f6d5cf551a0b0d0dd1b902aca2c5417b7f98da7.1563864007.git.ryder.lee@mediatek.com>
-         <CA+zupgyq9VZkstdOOX4E_G9KWVN2WB+u0XnLiFAbxGws6Mt4qA@mail.gmail.com>
+From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 0/5] fix many checkpatch.pl warnings
+Date: Wed, 24 Jul 2019 11:22:42 +0800
+Message-ID: <1563938562.9134.1.camel@mtkswgap22>
+References: <cover.1563772403.git.ryder.lee@mediatek.com>
+         <8736ixrvhb.fsf@purkki.adurom.net>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CA+zupgyq9VZkstdOOX4E_G9KWVN2WB+u0XnLiFAbxGws6Mt4qA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Roy Luo <royluo@google.com>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, YF Luo <yf.luo@mediatek.com>, Yiwei Chung <yiwei.chung@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <8736ixrvhb.fsf-5ukZ45wKbUHoml4zekdYB16hYfS7NtTn@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Cc: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YF Luo <yf.luo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Yiwei Chung <yiwei.chung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roy Luo <royluo-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2019-07-24 at 11:03 +0800, Roy Luo wrote:
-> Hi Ryder,
+On Tue, 2019-07-23 at 11:44 +0300, Kalle Valo wrote:
+> Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> writes:
 > 
-> Please follow the convention, some of your header files use //.
+> > This gathers many subsets to fix checkpatch.pl warnings.
 > 
-> C source: // SPDX-License-Identifier: <SPDX License Expression>
-> C header: /* SPDX-License-Identifier: <SPDX License Expression> */
+> Thanks, this is much better now.
 > 
-> Regards,
-> Cheng-Hao (Roy) Luo
+> > I still keep some warnings there due to readability.
+> > (The most of them are - networking block comments or 80 characters limit)
+> 
+> I do the same in ath10k. BTW, here's my simple script which I use to
+> filter unwanted checkpatch warnings etc:
+> 
+> https://github.com/qca/qca-swiss-army-knife/blob/master/tools/scripts/ath10k/ath10k-check
+> 
 
-I also found that - copy paste mistake.
+It's really useful!
 
-And I will fold this one into 'fix many checkpatch.pl warnings' series
-then send v1.
-
+Thanks
 Ryder
-
-> On Tue, Jul 23, 2019 at 2:45 PM Ryder Lee <ryder.lee@mediatek.com> wrote:
-> >
-> > Add SPDX identifiers to all remaining files in mt76/
-> >
-> > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> > ---
