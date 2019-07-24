@@ -1,53 +1,86 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v4, 05/33] dt-bindings: mediatek: add RDMA1 description
- for mt8183 display
-Date: Wed, 24 Jul 2019 14:16:35 -0600
-Message-ID: <20190724201635.GA18345@bogus>
-References: <1562625253-29254-1-git-send-email-yongqiang.niu@mediatek.com>
- <1562625253-29254-6-git-send-email-yongqiang.niu@mediatek.com>
+Subject: Re: [PATCH v3 1/2] dt-bindings: i3c: Document MediaTek I3C master
+ bindings
+Date: Wed, 24 Jul 2019 14:21:19 -0600
+Message-ID: <20190724202119.GA26566@bogus>
+References: <1562677762-24067-1-git-send-email-qii.wang@mediatek.com>
+ <1562677762-24067-2-git-send-email-qii.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1562625253-29254-6-git-send-email-yongqiang.niu@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: yongqiang.niu@mediatek.com
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <1562677762-24067-2-git-send-email-qii.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Qii Wang <qii.wang@mediatek.com>
+Cc: bbrezillon@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, linux-i3c@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, leilk.liu@mediatek.com, liguo.zhang@mediatek.com, xinping.qian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVHVlLCBKdWwgMDksIDIwMTkgYXQgMDY6MzM6NDVBTSArMDgwMCwgeW9uZ3FpYW5nLm5pdUBt
-ZWRpYXRlay5jb20gd3JvdGU6Cj4gRnJvbTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3FpYW5nLm5pdUBt
-ZWRpYXRlay5jb20+Cj4gCj4gVGhpcyBwYXRjaCBhZGQgUkRNQTEgZGVzY3JpcHRpb24gZm9yIG10
-ODE4MyBkaXNwbGF5Cj4gCj4gU2lnbmVkLW9mZi1ieTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3FpYW5n
-Lm5pdUBtZWRpYXRlay5jb20+Cj4gLS0tCj4gIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
-aW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRpc3AudHh0IHwgMSArCj4gIDEgZmlsZSBj
-aGFuZ2VkLCAxIGluc2VydGlvbigrKQo+IAo+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2Rl
-dmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxkaXNwLnR4dCBiL0Rv
-Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVr
-LGRpc3AudHh0Cj4gaW5kZXggYWZkM2M5MC4uYmI5Mjc0YSAxMDA2NDQKPiAtLS0gYS9Eb2N1bWVu
-dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxkaXNw
-LnR4dAo+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21l
-ZGlhdGVrL21lZGlhdGVrLGRpc3AudHh0Cj4gQEAgLTMwLDYgKzMwLDcgQEAgUmVxdWlyZWQgcHJv
-cGVydGllcyAoYWxsIGZ1bmN0aW9uIGJsb2Nrcyk6Cj4gIAkibWVkaWF0ZWssPGNoaXA+LWRpc3At
-b3ZsIiAgIAkJLSBvdmVybGF5ICg0IGxheWVycywgYmxlbmRpbmcsIGNzYykKPiAgCSJtZWRpYXRl
-ayw8Y2hpcD4tZGlzcC1vdmwtMmwiICAgICAgICAgICAtIG92ZXJsYXkgKDIgbGF5ZXJzLCBibGVu
-ZGluZywgY3NjKQo+ICAJIm1lZGlhdGVrLDxjaGlwPi1kaXNwLXJkbWEiICAJCS0gcmVhZCBETUEg
-LyBsaW5lIGJ1ZmZlcgo+ICsJIm1lZGlhdGVrLDxjaGlwPi1kaXNwLXJkbWExIiAgICAgICAgICAg
-IC0gZnVuY3Rpb24gaXMgc2FtZSB3aXRoIFJETUEsIGZpZm8gc2l6ZSBpcyBkaWZmZXJlbnQKClRo
-aXMgY2FuJ3QgYmUgZGV0ZXJtaW5lZCBieSB3aGljaCBjaGlwIGl0IGlzPyBJT1csIGEgY2hpcCBt
-YXkgaGF2ZSBib3RoIApyZG1hIGFuZCByZG1hMT8KCj4gIAkibWVkaWF0ZWssPGNoaXA+LWRpc3At
-d2RtYSIgIAkJLSB3cml0ZSBETUEKPiAgCSJtZWRpYXRlayw8Y2hpcD4tZGlzcC1jY29yciIgICAg
-ICAgICAgICAtIGNvbG9yIGNvcnJlY3Rpb24KPiAgCSJtZWRpYXRlayw8Y2hpcD4tZGlzcC1jb2xv
-ciIgCQktIGNvbG9yIHByb2Nlc3Nvcgo+IC0tIAo+IDEuOC4xLjEuZGlydHkKPiAKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
-bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+On Tue, Jul 09, 2019 at 09:09:21PM +0800, Qii Wang wrote:
+> Document MediaTek I3C master DT bindings.
+> 
+> Signed-off-by: Qii Wang <qii.wang@mediatek.com>
+> ---
+>  .../devicetree/bindings/i3c/mtk,i3c-master.txt     |   48 ++++++++++++++++++++
+>  1 file changed, 48 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt b/Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt
+> new file mode 100644
+> index 0000000..d32eda6
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt
+> @@ -0,0 +1,48 @@
+> +Bindings for MediaTek I3C master block
+> +=====================================
+> +
+> +Required properties:
+> +--------------------
+> +- compatible: shall be "mediatek,i3c-master"
+
+Needs to be SoC specific.
+
+> +- reg: physical base address of the controller and apdma base, length of
+> +  memory mapped region.
+> +- reg-names: shall be "main" for master controller and "dma" for apdma.
+> +- interrupts: the interrupt line connected to this I3C master.
+> +- clocks: shall reference the i3c and apdma clocks.
+> +- clock-names: shall include "main" and "dma".
+> +
+> +Mandatory properties defined by the generic binding (see
+> +Documentation/devicetree/bindings/i3c/i3c.txt for more details):
+> +
+> +- #address-cells: shall be set to 3
+> +- #size-cells: shall be set to 0
+> +
+> +Optional properties defined by the generic binding (see
+> +Documentation/devicetree/bindings/i3c/i3c.txt for more details):
+> +
+> +- i2c-scl-hz
+> +- i3c-scl-hz
+> +
+> +I3C device connected on the bus follow the generic description (see
+> +Documentation/devicetree/bindings/i3c/i3c.txt for more details).
+> +
+> +Example:
+> +
+> +	i3c0: i3c@1100d000 {
+> +		compatible = "mediatek,i3c-master";
+> +		reg = <0x1100d000 0x1000>,
+> +		      <0x11000300 0x80>;
+> +		reg-names = "main", "dma";
+> +		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_LOW>;
+> +		clocks = <&infracfg CLK_INFRA_I3C0>,
+> +			 <&infracfg CLK_INFRA_AP_DMA>;
+> +		clock-names = "main", "dma";
+> +		#address-cells = <3>;
+> +		#size-cells = <0>;
+> +		i2c-scl-hz = <100000>;
+> +
+> +		nunchuk: nunchuk@52 {
+> +			compatible = "nintendo,nunchuk";
+> +			reg = <0x52 0x0 0x10>;
+> +		};
+> +	};
+> -- 
+> 1.7.9.5
+> 
