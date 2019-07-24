@@ -1,13 +1,13 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH] drm/mediatek: make imported PRIME buffers contiguous
-Date: Wed, 24 Jul 2019 13:49:27 +0800
-Message-ID: <1563947367.1070.7.camel@mtksdaap41>
-References: <20190723053421.179679-1-acourbot@chromium.org>
+From: Stanley Chu <stanley.chu@mediatek.com>
+Subject: [PATCH v2 3/3] scsi: ufs: fix broken hba->outstanding_tasks
+Date: Wed, 24 Jul 2019 13:50:18 +0800
+Message-ID: <1563947418-16394-4-git-send-email-stanley.chu@mediatek.com>
+References: <1563947418-16394-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190723053421.179679-1-acourbot@chromium.org>
+In-Reply-To: <1563947418-16394-1-git-send-email-stanley.chu@mediatek.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -17,146 +17,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Alexandre Courbot <acourbot@chromium.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+To: linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com, pedrom.sousa@synopsys.com
+Cc: marc.w.gonzalez@free.fr, andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, evgreen@chromium.org, linux-mediatek@lists.infradead.org, peter.wang@mediatek.com, matthias.bgg@gmail.com, Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Alexandre:
+Currently bits in hba->outstanding_tasks are cleared only after their
+corresponding task management commands are successfully done by
+__ufshcd_issue_tm_cmd().
 
-On Tue, 2019-07-23 at 14:34 +0900, Alexandre Courbot wrote:
-> This driver requires imported PRIME buffers to appear contiguously in
-> its IO address space. Make sure this is the case by setting the maximum
-> DMA segment size to a better value than the default 64K on the DMA
-> device, and use said DMA device when importing PRIME buffers.
-> 
-> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 47 ++++++++++++++++++++++++--
->  drivers/gpu/drm/mediatek/mtk_drm_drv.h |  2 ++
->  2 files changed, 46 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index 95fdbd0fbcac..4ad4770fab13 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -213,6 +213,7 @@ static int mtk_drm_kms_init(struct drm_device *drm)
->  	struct mtk_drm_private *private = drm->dev_private;
->  	struct platform_device *pdev;
->  	struct device_node *np;
-> +	struct device *dma_dev;
->  	int ret;
->  
->  	if (!iommu_present(&platform_bus_type))
-> @@ -275,7 +276,27 @@ static int mtk_drm_kms_init(struct drm_device *drm)
->  		goto err_component_unbind;
->  	}
->  
-> -	private->dma_dev = &pdev->dev;
-> +	dma_dev = &pdev->dev;
-> +	private->dma_dev = dma_dev;
-> +
-> +	/*
-> +	 * Configure the DMA segment size to make sure we get contiguous IOVA
-> +	 * when importing PRIME buffers.
-> +	 */
-> +	if (!dma_dev->dma_parms) {
-> +		private->dma_parms_allocated = true;
-> +		dma_dev->dma_parms =
-> +			devm_kzalloc(drm->dev, sizeof(*dma_dev->dma_parms),
-> +				     GFP_KERNEL);
-> +	}
-> +	if (!dma_dev->dma_parms)
-> +		goto err_component_unbind;
+If timeout happens in a task management command, its corresponding
+bit in hba->outstanding_tasks will not be cleared until next task
+management command with the same tag used successfully finishes.
 
-return with ret = 0?
+This is wrong and can lead to some issues, like power issue.
+For example, ufshcd_release() and ufshcd_gate_work() will do nothing
+if hba->outstanding_tasks is not zero even if both UFS host and devices
+are actually idle.
 
-> +
-> +	ret = dma_set_max_seg_size(dma_dev, (unsigned int)DMA_BIT_MASK(32));
-> +	if (ret) {
-> +		dev_err(dma_dev, "Failed to set DMA segment size\n");
-> +		goto err_unset_dma_parms;
-> +	}
->  
->  	/*
->  	 * We don't use the drm_irq_install() helpers provided by the DRM
-> @@ -285,13 +306,16 @@ static int mtk_drm_kms_init(struct drm_device *drm)
->  	drm->irq_enabled = true;
->  	ret = drm_vblank_init(drm, MAX_CRTC);
->  	if (ret < 0)
-> -		goto err_component_unbind;
-> +		goto err_unset_dma_parms;
->  
->  	drm_kms_helper_poll_init(drm);
->  	drm_mode_config_reset(drm);
->  
->  	return 0;
->  
-> +err_unset_dma_parms:
-> +	if (private->dma_parms_allocated)
-> +		dma_dev->dma_parms = NULL;
->  err_component_unbind:
->  	component_unbind_all(drm->dev, drm);
->  err_config_cleanup:
-> @@ -302,9 +326,14 @@ static int mtk_drm_kms_init(struct drm_device *drm)
->  
->  static void mtk_drm_kms_deinit(struct drm_device *drm)
->  {
-> +	struct mtk_drm_private *private = drm->dev_private;
-> +
->  	drm_kms_helper_poll_fini(drm);
->  	drm_atomic_helper_shutdown(drm);
->  
-> +	if (private->dma_parms_allocated)
-> +		private->dma_dev->dma_parms = NULL;
-> +
->  	component_unbind_all(drm->dev, drm);
->  	drm_mode_config_cleanup(drm);
->  }
-> @@ -320,6 +349,18 @@ static const struct file_operations mtk_drm_fops = {
->  	.compat_ioctl = drm_compat_ioctl,
->  };
->  
-> +/*
-> + * We need to override this because the device used to import the memory is
-> + * not dev->dev, as drm_gem_prime_import() expects.
-> + */
-> +struct drm_gem_object *mtk_drm_gem_prime_import(struct drm_device *dev,
-> +						struct dma_buf *dma_buf)
-> +{
-> +	struct mtk_drm_private *private = dev->dev_private;
-> +
-> +	return drm_gem_prime_import_dev(dev, dma_buf, private->dma_dev);
-> +}
-> +
+Referring to error handling flow of hba->outstanding_reqs, all timed-out
+bits will be cleared by
+ufshcd_reset_and_restore() => ufshcd_transfer_req_compl()
+after reset is done. Therefore similar handling for hba->outstanding_tasks
+could be applied, for example, by
+ufshcd_reset_and_restore() => ufshcd_tmc_handler().
 
-I think this part should be an independent patch which fixup
-119f5173628aa ("drm/mediatek: Add DRM Driver for Mediatek SoC MT8173.")
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+---
+ drivers/scsi/ufs/ufshcd.c | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
 
-Regards,
-CK
-
->  static struct drm_driver mtk_drm_driver = {
->  	.driver_features = DRIVER_MODESET | DRIVER_GEM | DRIVER_PRIME |
->  			   DRIVER_ATOMIC,
-> @@ -331,7 +372,7 @@ static struct drm_driver mtk_drm_driver = {
->  	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
->  	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
->  	.gem_prime_export = drm_gem_prime_export,
-> -	.gem_prime_import = drm_gem_prime_import,
-> +	.gem_prime_import = mtk_drm_gem_prime_import,
->  	.gem_prime_get_sg_table = mtk_gem_prime_get_sg_table,
->  	.gem_prime_import_sg_table = mtk_gem_prime_import_sg_table,
->  	.gem_prime_mmap = mtk_drm_gem_mmap_buf,
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-> index 598ff3e70446..e03fea12ff59 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-> @@ -51,6 +51,8 @@ struct mtk_drm_private {
->  	} commit;
->  
->  	struct drm_atomic_state *suspend_state;
-> +
-> +	bool dma_parms_allocated;
->  };
->  
->  extern struct platform_driver mtk_ddp_driver;
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 114c15ed75f7..3cb942ef64e2 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -5535,11 +5535,25 @@ static void ufshcd_tm_cmd_compl(struct ufs_hba *hba, int tag)
+  */
+ static void ufshcd_tmc_handler(struct ufs_hba *hba)
+ {
+-	u32 tm_doorbell;
++	u32 tm_doorbell, tag;
+ 
+ 	tm_doorbell = ufshcd_readl(hba, REG_UTP_TASK_REQ_DOOR_BELL);
+ 	hba->tm_condition = tm_doorbell ^ hba->outstanding_tasks;
++
++	/*
++	 * resource of timed-out tasks shall be cleaned.
++	 * No effect for normal tasks.
++	 */
++	for_each_set_bit(tag, &hba->tm_condition, hba->nutmrs)
++		ufshcd_tm_cmd_compl(hba, tag);
++
+ 	wake_up(&hba->tm_wq);
++
++	/*
++	 * If a timed-out task is cleaned done above,
++	 * free tag is available now for waiters.
++	 */
++	wake_up(&hba->tm_tag_wq);
+ }
+ 
+ /**
+-- 
+2.18.0
