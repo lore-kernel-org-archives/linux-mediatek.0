@@ -1,83 +1,169 @@
-From: Avri Altman <Avri.Altman-Sjgp3cTcYWE@public.gmane.org>
-Subject: RE: [PATCH v1 0/2] scsi: ufs: Fix broken hba->outstanding_tasks
-Date: Wed, 24 Jul 2019 07:09:55 +0000
-Message-ID: <MN2PR04MB6991E37D76FEFA1A203B1BB8FCC60@MN2PR04MB6991.namprd04.prod.outlook.com>
-References: <1562906656-27154-1-git-send-email-stanley.chu@mediatek.com>
- <SN6PR04MB4925208835D4760249E82DB7FCC50@SN6PR04MB4925.namprd04.prod.outlook.com>
- <SN6PR04MB49256F66F259185F3876CCABFCC40@SN6PR04MB4925.namprd04.prod.outlook.com>
- <1563944904.7235.8.camel@mtkswgap22>
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Subject: Re: [PATCH v4 14/23] drm/tilcdc: Provide ddc symlink in connector
+ sysfs directory
+Date: Wed, 24 Jul 2019 10:01:05 +0200
+Message-ID: <acfd895d-ab59-0190-e25c-1827bd8d214b@suse.de>
+References: <cover.1562843413.git.andrzej.p@collabora.com>
+ <d1d415022c598fb7acd033f0f322dd67250adaa9.1562843413.git.andrzej.p@collabora.com>
+ <20190723090532.GA787@ravnborg.org>
+ <3ad60be5-49cf-4017-4b74-53a2d6272deb@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1563944904.7235.8.camel@mtkswgap22>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: "linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org" <martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, "marc.w.gonzalez-GANU6spQydw@public.gmane.org" <marc.w.gonzalez-GANU6spQydw@public.gmane.org>, "andy.teng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <andy.teng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "evgreen-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <evgreen-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org" <alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org" <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "beanhuo-AL4WhLSQfzjQT0dZR+AlfA@public.gmane.org" <beanhuo-AL4WhLSQfzjQT0dZR+AlfA@public.gmane.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="3hEKoYM3ihXgipFwLohglgI6I6K0PHVBV"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <3ad60be5-49cf-4017-4b74-53a2d6272deb@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>, Sam Ravnborg <sam@ravnborg.org>
+Cc: Neil Armstrong <narmstrong@baylibre.com>, Maxime Ripard <maxime.ripard@bootlin.com>, dri-devel@lists.freedesktop.org, Douglas Anderson <dianders@chromium.org>, linux-tegra@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, kernel@collabora.com, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, Vincent Abriou <vincent.abriou@st.com>, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, David Airlie <airlied@linux.ie>, Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>, NXP Linux Team <linux-imx@nxp.com>, Dave Airlie <airlied@redhat.com>, freedreno@lists.freedesktop.org, Pengutronix Kernel Team <kernel@pengutronix.de>, Jonas
 List-Id: linux-mediatek@lists.infradead.org
 
-U3RhbmxleSwNCg0KPiANCj4gSGkgQXZyaSwNCj4gDQo+IE9uIE1vbiwgMjAxOS0wNy0yMiBhdCAw
-NjoxMCArMDAwMCwgQXZyaSBBbHRtYW4gd3JvdGU6DQo+ID4gPg0KPiA+ID4gPg0KPiA+ID4gPiBI
-aSwNCj4gPiA+ID4NCj4gPiA+ID4gPg0KPiA+ID4gPiA+IEN1cnJlbnRseSBiaXRzIGluIGhiYS0+
-b3V0c3RhbmRpbmdfdGFza3MgYXJlIGNsZWFyZWQgb25seSBhZnRlciB0aGVpcg0KPiA+ID4gPiA+
-IGNvcnJlc3BvbmRpbmcgdGFzayBtYW5hZ2VtZW50IGNvbW1hbmRzIGFyZSBzdWNjZXNzZnVsbHkg
-ZG9uZQ0KPiBieQ0KPiA+ID4gPiA+IF9fdWZzaGNkX2lzc3VlX3RtX2NtZCgpLg0KPiA+ID4gPiA+
-DQo+ID4gPiA+ID4gSWYgdGltZW91dCBoYXBwZW5zIGluIGEgdGFzayBtYW5hZ2VtZW50IGNvbW1h
-bmQsIGl0cw0KPiBjb3JyZXNwb25kaW5nDQo+ID4gPiA+ID4gYml0IGluIGhiYS0+b3V0c3RhbmRp
-bmdfdGFza3Mgd2lsbCBub3QgYmUgY2xlYXJlZCB1bnRpbCBuZXh0IHRhc2sNCj4gPiA+ID4gPiBt
-YW5hZ2VtZW50IGNvbW1hbmQgd2l0aCB0aGUgc2FtZSB0YWcgdXNlZCBzdWNjZXNzZnVsbHkNCj4g
-ZmluaXNoZXMu4oCnDQo+ID4gPiA+IHVmc2hjZF9jbGVhcl90bV9jbWQgaXMgYWxzbyBjYWxsZWQg
-YXMgcGFydCBvZiB1ZnNoY2RfZXJyX2hhbmRsZXIuDQo+ID4gPiA+IERvZXMgdGhpcyBjaGFuZ2Ug
-c29tZXRoaW5nIGluIHlvdXIgYXNzdW1wdGlvbnM/DQo+ID4gPiBBbmQgQlRXIHRoZXJlIGlzIGEg
-c3BlY2lmaWMgX19jbGVhcl9iaXQgaW4gX191ZnNoY2RfaXNzdWVfdG1fY21kKCkgaW4NCj4gY2Fz
-ZQ0KPiA+ID4gb2YgYSBUTy4NCj4gPg0KPiA+IEdhdmUgaXQgYW5vdGhlciBsb29rIC0NCj4gPiBJ
-ZiBpbmRlZWQgdGhpcyBiaXQgaXNuJ3QgY2xlYXJlZCBhcyBwYXJ0IG9mIHRoZSBlcnJvciBmbG93
-IHRoYXQgdGhlIHRpbWVvdXQNCj4gdHJpZ2dlcnMsDQo+ID4gSSB0aGluayB5b3Ugc2hvdWxkIHJl
-bGF0ZSB0byB1ZnNoY2RfY2xlYXJfdG1fY21kIHNwZWNpZmljYWxseSBpbiB5b3VyDQo+IGNvbW1p
-dCBsb2cgLQ0KPiA+IEJlY2F1c2UgdGhpcyBpcyB0aGUgb2J2aW91cyBwbGFjZSB3aGVyZSB0aGUg
-Yml0IGNsZWFudXAgc2hvdWxkIHRha2UNCj4gcGxhY2UuDQo+ID4NCj4gPiBBbHNvIHRoZSBmaXgg
-c2hvdWxkIGJlIG11Y2ggbW9yZSBpbnR1aXRpdmUgSU1PIC0NCj4gPiBUb2RheSB3ZSBkbyBfX2Ns
-ZWFyX2JpdCgpIG9uIHN1Y2Nlc3MsIHVmc2hjZF9jbGVhcl90bV9jbWQoKSBvbiBlcnJvciwNCj4g
-PiBBbmQgYWxzbyB1ZnNoY2RfcHV0X3RtX3Nsb3QoKSBlaXRoZXIgd2F5Pw0KPiA+DQo+ID4gTWF5
-YmUgeW91IGNhbiBjaG9vc2UgYSBzaW5nbGUgcGxhY2UgdG8gY2xlYXIgaXQsIHdpdGhvdXQgYW55
-IGFkZGl0aW9uYWwNCj4gY29kZT8NCj4gDQo+IHVmc2hjZF9jbGVhcl90bV9jbWQoKSBpcyBzaW1p
-bGFyIHRvIHVmc2hjZF9jbGVhcl9jbWQoKSB3aGljaCB0cmllcyB0bw0KPiB3cml0ZSB0aW1lZC1v
-dXQgYml0IGluICJjbGVhciByZWdpc3RlciIuIFRoZXkgZG8gbm90IGNsZWFuIGJpdHMgaW4gYm90
-aA0KPiBvdXRzdGFuZGluZyBtYXNrcy4NCj4gDQo+IEFub3RoZXIgcmVhc29uIHRvIG5vdCB0byBk
-byBvdXRzdGFuZGluZyBiaXRzIGNsZWFudXAgaW4NCj4gdWZzaGNkX2NsZWFyX3RtX2NtZCgpIGlz
-OiBpZiBob3N0IGlzIHVuYWJsZSB0byBjbGVhciBUTSBjb21tYW5kIGJ5DQo+IHNldHRpbmcgImNs
-ZWFyIHJlZ2lzdGVyIiwgdGhlIFRNIGNvbW1hbmQgbWF5IGJlIHN0aWxsICJvdXRzdGFuZGluZyIg
-aW4NCj4gdGhlIGRldmljZS4gSW4gdGhpcyBjYXNlLCBpdCBtYXkgYmUgYmV0dGVyIHRvIGRvIGNs
-ZWFudXAgYWZ0ZXIgcmVzZXQgaXMNCj4gZG9uZS4gQ2xlYW51cCBpbmNsdWRlcyBiaXRzIGluIGhi
-YS0+b3V0c3RhbmRpbmdfdGFza3MgYW5kDQo+IGhiYS0+dG1fc2xvdHNfaW5fdXNlIHdoaWNoIGlz
-IHBvc3NpYmx5IGNsZWFuZWQgdG9vIGVhcmx5IGJ5DQo+IHVmc2hjZF9wdXRfdG1fc2xvdCgpIGlm
-IGNvbW1hbmQgaXMgdGltZWQtb3V0IG5vdy4NCj4gDQo+IFJlZmVycmluZyB0byBlcnJvciBoYW5k
-bGluZyBmbG93IG9mIGhiYS0+b3V0c3RhbmRpbmdfcmVxcywgYWxsIHRpbWVkLW91dA0KPiBiaXRz
-IHdpbGwgYmUgY2xlYW5lZCBieSB1ZnNoY2RfcmVzZXRfYW5kX3Jlc3RvcmUoKSA9Pg0KPiB1ZnNo
-Y2RfdHJhbnNmZXJfcmVxX2NvbXBsKCkgYWZ0ZXIgcmVzZXQgaXMgZG9uZS4gU2ltaWxhciBoYW5k
-bGluZyBmb3INCj4gaGJhLT5vdXRzdGFuZGluZ190YXNrcyBjb3VsZCBiZSBhcHBsaWVkLCBpLmUu
-LCBkbyBjbGVhbnVwIGJ5DQo+IHVmc2hjZF9yZXNldF9hbmRfcmVzdG9yZSgpID0+IHVmc2hjZF90
-bWNfaGFuZGxlcigpLg0KRmFpciBlbm91Z2guICBUaGFuayB5b3UgZm9yIHRoZSBkZXRhaWxlZCBl
-eHBsYW5hdGlvbi4NCg0KPiANCj4gVGhlIG5leHQgdGhpbmcgaXMgd2hhdCB5b3Ugc3VnZ2VzdGVk
-OiBIb3cgdG8gbWFrZSB0aGUgZml4IG1vcmUNCj4gaW50dWl0aXZlLiBQYXRjaHNldCB2MiB3aWxs
-IGJlIHVwbG9hZGVkIGZvciByZXZpZXc6IEl0IHRyaWVzIHRvDQo+ICJyZS1mYWN0b3IiIGNsZWFu
-dXAgam9icyBmaXJzdCwgYW5kIHRoZW4gYWRkIGZpeGVkIGZsb3cgdG8gbWFrZSB0aGUNCj4gd2hv
-bGUgcGF0Y2ggbW9yZSByZWFkYWJsZS4NCj4gDQo+IE9uZSBtb3JlIHRoaW5nLCBhYm92ZSBkZXNj
-cmlwdGlvbiBhbmQgZmxvdyBpcyBkb25lIHRocm91Z2ggVUZTSENEIFNDU0kNCj4gZXJyb3IgaGFu
-ZGxpbmcgcm91dGluZXMgcmVnaXN0ZXJlZCB3aXRoIFNDU0kgTWlkbGF5ZXIuIEZvciBUTSBjb21t
-YW5kDQo+IHRpbWVvdXQgaGFwcGVuaW5nIGluIGJzZyBwYXRoIHdpdGhvdXQgZXJyb3IgaGFuZGxp
-bmcgdHJpZ2dlcmVkIGJ5IFNDU0kNCj4gbGF5ZXIsIHdlIG1heSBuZWVkIHRvIGNvbnNpZGVyIHRv
-IGhhbmRsZSB0aG9zZSB0YXNrcyBpbiBmdXR1cmUgcGF0Y2hlcy4NClBsZWFzZSBkby4NCg0KVGhh
-bmtzLA0KQXZyaQ0KDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LW1lZGlhdGVrCg==
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--3hEKoYM3ihXgipFwLohglgI6I6K0PHVBV
+Content-Type: multipart/mixed; boundary="KIKXUXCjxjc3xDRil2vLGI4WFDOmJ9a2q";
+ protected-headers="v1"
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
+ Sam Ravnborg <sam@ravnborg.org>
+Cc: Neil Armstrong <narmstrong@baylibre.com>,
+ Maxime Ripard <maxime.ripard@bootlin.com>, dri-devel@lists.freedesktop.org,
+ Douglas Anderson <dianders@chromium.org>, linux-tegra@vger.kernel.org,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, kernel@collabora.com,
+ linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Vincent Abriou <vincent.abriou@st.com>, Krzysztof Kozlowski
+ <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ David Airlie <airlied@linux.ie>, Chen-Yu Tsai <wens@csie.org>,
+ Kukjin Kim <kgene@kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
+ Dave Airlie <airlied@redhat.com>, freedreno@lists.freedesktop.org,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Jonas Karlman <jonas@kwiboo.se>, linux-arm-msm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, Jyri Sarha <jsarha@ti.com>,
+ Alexios Zavras <alexios.zavras@intel.com>,
+ Mamta Shukla <mamtashukla555@gmail.com>, linux-mediatek@lists.infradead.org,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>, Sean Paul <sean@poorly.run>,
+ linux-arm-kernel@lists.infradead.org,
+ Jernej Skrabec <jernej.skrabec@siol.net>, amd-gfx@lists.freedesktop.org,
+ Tomi Valkeinen <tomi.valkeinen@ti.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Seung-Woo Kim <sw0312.kim@samsung.com>, linux-kernel@vger.kernel.org,
+ Todor Tomov <todor.tomov@linaro.org>,
+ Kyungmin Park <kyungmin.park@samsung.com>, Huang Rui <ray.huang@amd.com>,
+ Alex Deucher <alexander.deucher@amd.com>, Shawn Guo <shawnguo@kernel.org>,
+ =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
+ Gerd Hoffmann <kraxel@redhat.com>
+Message-ID: <acfd895d-ab59-0190-e25c-1827bd8d214b@suse.de>
+Subject: Re: [PATCH v4 14/23] drm/tilcdc: Provide ddc symlink in connector
+ sysfs directory
+References: <cover.1562843413.git.andrzej.p@collabora.com>
+ <d1d415022c598fb7acd033f0f322dd67250adaa9.1562843413.git.andrzej.p@collabora.com>
+ <20190723090532.GA787@ravnborg.org>
+ <3ad60be5-49cf-4017-4b74-53a2d6272deb@collabora.com>
+In-Reply-To: <3ad60be5-49cf-4017-4b74-53a2d6272deb@collabora.com>
+
+--KIKXUXCjxjc3xDRil2vLGI4WFDOmJ9a2q
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+
+Hi
+
+Am 23.07.19 um 14:44 schrieb Andrzej Pietrasiewicz:
+> Hi Sam,
+>=20
+> W dniu 23.07.2019 o=C2=A011:05, Sam Ravnborg pisze:
+>> Hi Andrzej
+>>
+>> On Thu, Jul 11, 2019 at 01:26:41PM +0200, Andrzej Pietrasiewicz wrote:=
+
+>>> Use the ddc pointer provided by the generic connector.
+>>>
+>>> Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+>>> ---
+>>> =C2=A0 drivers/gpu/drm/tilcdc/tilcdc_tfp410.c | 1 +
+>>> =C2=A0 1 file changed, 1 insertion(+)
+>>>
+>>> diff --git a/drivers/gpu/drm/tilcdc/tilcdc_tfp410.c
+>>> b/drivers/gpu/drm/tilcdc/tilcdc_tfp410.c
+>>> index 62d014c20988..c373edb95666 100644
+>>> --- a/drivers/gpu/drm/tilcdc/tilcdc_tfp410.c
+>>> +++ b/drivers/gpu/drm/tilcdc/tilcdc_tfp410.c
+>>> @@ -219,6 +219,7 @@ static struct drm_connector
+>>> *tfp410_connector_create(struct drm_device *dev,
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 tfp410_connector->mod =3D mod;
+>>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 connector =3D &tfp410_connector=
+->base;
+>>> +=C2=A0=C2=A0=C2=A0 connector->ddc =3D mod->i2c;
+>>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 drm_connector_init(dev, connect=
+or, &tfp410_connector_funcs,
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 DRM_MODE_CONNECTOR_DVID);
+>>
+>> When reading this code, it looks strange that we set connector->ddc
+>> *before* the call to init the connector.
+>> One could risk that drm_connector_init() used memset(..) to clear all
+>> fields or so, and it would break this order.
+>=20
+> I verified the code of drm_connector_init() and cannot find any memset(=
+)
+> invocations there. What is your actual concern?
+
+I think this echoes my concern about the implicit order of operation. It
+seems too easy to get this wrong. If you don't want to add an additional
+interface for setting the ddc field, why not add a dedicated initializer
+function that sets the ddc field? Something like this.
+
+int drm_connector_init_with_ddc(connector, funcs, ..., ddc)
+{
+	ret =3D drm_connector_init(connector, funcs, ...);
+	if (ret)
+		return ret;
+
+	if (!ddc)
+		return 0;
+
+	connector->ddc =3D ddc;
+	/* set up sysfs */
+
+	return 0;
+}
+
+Best regards
+Thomas
+
+> Andrzej
+> _______________________________________________
+> dri-devel mailing list
+> dri-devel@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+
+--=20
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Linux GmbH, Maxfeldstrasse 5, 90409 Nuernberg, Germany
+GF: Felix Imend=C3=B6rffer, Mary Higgins, Sri Rasiah
+HRB 21284 (AG N=C3=BCrnberg)
+
+
+--KIKXUXCjxjc3xDRil2vLGI4WFDOmJ9a2q--
+
+--3hEKoYM3ihXgipFwLohglgI6I6K0PHVBV
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEchf7rIzpz2NEoWjlaA3BHVMLeiMFAl04EEEACgkQaA3BHVML
+eiNRWAf8CYxCmH/26EWFNpq9GZQjDMvAU5wdcW44Lnp0dMtgf/nqPvbEtkPYWt1D
+lMAlcSy9rrFFtW3E2HFwK5V9QbW9LvxdRaA7gK0ypMrYgmO5QECHQGMCaRxb/DpK
+02ZW59khdYpqNbLfjZ3toTs6BiHuBS2OF5tHq4SbvHwdva4pzOQtwQ90TVrNcOp+
+8kSGLB/0+CcOvKhgjd1uyw1w5lE/cILPT4sfXYlutlSRsHTCA7FwXHwhoqMyfYK4
+xlDAr72YN6/Lt9gLuKqWSFX9O9vvSpMMjp6nnzFwCguc+Nz53L4ra49cJ8qPP6dY
+wBV/ccooRzGp27r8ENmXR8wKLfTP8g==
+=ol/N
+-----END PGP SIGNATURE-----
+
+--3hEKoYM3ihXgipFwLohglgI6I6K0PHVBV--
