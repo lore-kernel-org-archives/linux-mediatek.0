@@ -1,32 +1,32 @@
-From: Navid Emamdoost <navid.emamdoost@gmail.com>
-Subject: [PATCH] mt76_init_sband_2g: null check the allocation
-Date: Tue, 23 Jul 2019 17:19:54 -0500
-Message-ID: <20190723221954.9233-1-navid.emamdoost@gmail.com>
+From: YueHaibing <yuehaibing@huawei.com>
+Subject: [PATCH -next] drm/mediatek: Remove duplicated include from mtk_drm_drv.c
+Date: Wed, 24 Jul 2019 01:33:48 +0000
+Message-ID: <20190724013348.153144-1-yuehaibing@huawei.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: emamd001@umn.edu, kjlu@umn.edu, smccaman@umn.edu, secalert@redhat.com, Navid Emamdoost <navid.emamdoost@gmail.com>, Jakub Kicinski <kubakici@wp.pl>, Kalle Valo <kvalo@codeaurora.org>, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: YueHaibing <yuehaibing@huawei.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-devm_kzalloc may fail and return NULL. So the null check is needed.
+Remove duplicated include.
 
-Signed-off-by: Navid Emamdoost <navid.emamdoost@gmail.com>
+Signed-off-by: YueHaibing <yuehaibing@huawei.com>
 ---
- drivers/net/wireless/mediatek/mt7601u/init.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt7601u/init.c b/drivers/net/wireless/mediatek/mt7601u/init.c
-index 9bfac9f1d47f..cada48800928 100644
---- a/drivers/net/wireless/mediatek/mt7601u/init.c
-+++ b/drivers/net/wireless/mediatek/mt7601u/init.c
-@@ -557,6 +557,9 @@ mt76_init_sband_2g(struct mt7601u_dev *dev)
- {
- 	dev->sband_2g = devm_kzalloc(dev->dev, sizeof(*dev->sband_2g),
- 				     GFP_KERNEL);
-+	if (!dev->sband_2g)
-+		return -ENOMEM;
-+
- 	dev->hw->wiphy->bands[NL80211_BAND_2GHZ] = dev->sband_2g;
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 2ee809a6f3dc..e3b64a266dcf 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -23,7 +23,6 @@
  
- 	WARN_ON(dev->ee->reg.start - 1 + dev->ee->reg.num >
--- 
-2.17.1
+ #include "mtk_drm_crtc.h"
+ #include "mtk_drm_ddp.h"
+-#include "mtk_drm_ddp.h"
+ #include "mtk_drm_ddp_comp.h"
+ #include "mtk_drm_drv.h"
+ #include "mtk_drm_fb.h"
