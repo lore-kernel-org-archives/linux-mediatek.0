@@ -1,80 +1,30 @@
-From: Stanley Chu <stanley.chu@mediatek.com>
-Subject: RE: [PATCH v1 0/2] scsi: ufs: Fix broken hba->outstanding_tasks
-Date: Wed, 24 Jul 2019 13:08:24 +0800
-Message-ID: <1563944904.7235.8.camel@mtkswgap22>
-References: <1562906656-27154-1-git-send-email-stanley.chu@mediatek.com>
- <SN6PR04MB4925208835D4760249E82DB7FCC50@SN6PR04MB4925.namprd04.prod.outlook.com>
- <SN6PR04MB49256F66F259185F3876CCABFCC40@SN6PR04MB4925.namprd04.prod.outlook.com>
+From: Kalle Valo <kvalo@codeaurora.org>
+Subject: Re: [PATCH] mt76_init_sband_2g: null check the allocation
+Date: Wed, 24 Jul 2019 08:39:46 +0300
+Message-ID: <87d0i00z4t.fsf@kamboji.qca.qualcomm.com>
+References: <20190723221954.9233-1-navid.emamdoost@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <SN6PR04MB49256F66F259185F3876CCABFCC40@SN6PR04MB4925.namprd04.prod.outlook.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Avri Altman <Avri.Altman@wdc.com>
-Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com" <martin.petersen@oracle.com>, "marc.w.gonzalez@free.fr" <marc.w.gonzalez@free.fr>, "andy.teng@mediatek.com" <andy.teng@mediatek.com>, "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>, "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>, "evgreen@chromium.org" <evgreen@chromium.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "peter.wang@mediatek.com" <peter.wang@mediatek.com>, "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "pedrom.sousa@synopsys.com" <pedrom.sousa@synopsys.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "beanhuo@micron.com" <beanhuo@micron.com>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190723221954.9233-1-navid.emamdoost@gmail.com> (Navid
+        Emamdoost's message of "Tue, 23 Jul 2019 17:19:54 -0500")
+Sender: linux-kernel-owner@vger.kernel.org
+To: Navid Emamdoost <navid.emamdoost@gmail.com>
+Cc: emamd001@umn.edu, kjlu@umn.edu, smccaman@umn.edu, secalert@redhat.com, Jakub Kicinski <kubakici@wp.pl>, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgQXZyaSwKCk9uIE1vbiwgMjAxOS0wNy0yMiBhdCAwNjoxMCArMDAwMCwgQXZyaSBBbHRtYW4g
-d3JvdGU6Cj4gPiAKPiA+ID4KPiA+ID4gSGksCj4gPiA+Cj4gPiA+ID4KPiA+ID4gPiBDdXJyZW50
-bHkgYml0cyBpbiBoYmEtPm91dHN0YW5kaW5nX3Rhc2tzIGFyZSBjbGVhcmVkIG9ubHkgYWZ0ZXIg
-dGhlaXIKPiA+ID4gPiBjb3JyZXNwb25kaW5nIHRhc2sgbWFuYWdlbWVudCBjb21tYW5kcyBhcmUg
-c3VjY2Vzc2Z1bGx5IGRvbmUgYnkKPiA+ID4gPiBfX3Vmc2hjZF9pc3N1ZV90bV9jbWQoKS4KPiA+
-ID4gPgo+ID4gPiA+IElmIHRpbWVvdXQgaGFwcGVucyBpbiBhIHRhc2sgbWFuYWdlbWVudCBjb21t
-YW5kLCBpdHMgY29ycmVzcG9uZGluZwo+ID4gPiA+IGJpdCBpbiBoYmEtPm91dHN0YW5kaW5nX3Rh
-c2tzIHdpbGwgbm90IGJlIGNsZWFyZWQgdW50aWwgbmV4dCB0YXNrCj4gPiA+ID4gbWFuYWdlbWVu
-dCBjb21tYW5kIHdpdGggdGhlIHNhbWUgdGFnIHVzZWQgc3VjY2Vzc2Z1bGx5IGZpbmlzaGVzLuKA
-pwo+ID4gPiB1ZnNoY2RfY2xlYXJfdG1fY21kIGlzIGFsc28gY2FsbGVkIGFzIHBhcnQgb2YgdWZz
-aGNkX2Vycl9oYW5kbGVyLgo+ID4gPiBEb2VzIHRoaXMgY2hhbmdlIHNvbWV0aGluZyBpbiB5b3Vy
-IGFzc3VtcHRpb25zPwo+ID4gQW5kIEJUVyB0aGVyZSBpcyBhIHNwZWNpZmljIF9fY2xlYXJfYml0
-IGluIF9fdWZzaGNkX2lzc3VlX3RtX2NtZCgpIGluIGNhc2UKPiA+IG9mIGEgVE8uCj4gCj4gR2F2
-ZSBpdCBhbm90aGVyIGxvb2sgLSAKPiBJZiBpbmRlZWQgdGhpcyBiaXQgaXNuJ3QgY2xlYXJlZCBh
-cyBwYXJ0IG9mIHRoZSBlcnJvciBmbG93IHRoYXQgdGhlIHRpbWVvdXQgdHJpZ2dlcnMsCj4gSSB0
-aGluayB5b3Ugc2hvdWxkIHJlbGF0ZSB0byB1ZnNoY2RfY2xlYXJfdG1fY21kIHNwZWNpZmljYWxs
-eSBpbiB5b3VyIGNvbW1pdCBsb2cgLSAKPiBCZWNhdXNlIHRoaXMgaXMgdGhlIG9idmlvdXMgcGxh
-Y2Ugd2hlcmUgdGhlIGJpdCBjbGVhbnVwIHNob3VsZCB0YWtlIHBsYWNlLgo+IAo+IEFsc28gdGhl
-IGZpeCBzaG91bGQgYmUgbXVjaCBtb3JlIGludHVpdGl2ZSBJTU8gLSAKPiBUb2RheSB3ZSBkbyBf
-X2NsZWFyX2JpdCgpIG9uIHN1Y2Nlc3MsIHVmc2hjZF9jbGVhcl90bV9jbWQoKSBvbiBlcnJvciwK
-PiBBbmQgYWxzbyB1ZnNoY2RfcHV0X3RtX3Nsb3QoKSBlaXRoZXIgd2F5Pwo+IAo+IE1heWJlIHlv
-dSBjYW4gY2hvb3NlIGEgc2luZ2xlIHBsYWNlIHRvIGNsZWFyIGl0LCB3aXRob3V0IGFueSBhZGRp
-dGlvbmFsIGNvZGU/Cgp1ZnNoY2RfY2xlYXJfdG1fY21kKCkgaXMgc2ltaWxhciB0byB1ZnNoY2Rf
-Y2xlYXJfY21kKCkgd2hpY2ggdHJpZXMgdG8Kd3JpdGUgdGltZWQtb3V0IGJpdCBpbiAiY2xlYXIg
-cmVnaXN0ZXIiLiBUaGV5IGRvIG5vdCBjbGVhbiBiaXRzIGluIGJvdGgKb3V0c3RhbmRpbmcgbWFz
-a3MuCgpBbm90aGVyIHJlYXNvbiB0byBub3QgdG8gZG8gb3V0c3RhbmRpbmcgYml0cyBjbGVhbnVw
-IGluCnVmc2hjZF9jbGVhcl90bV9jbWQoKSBpczogaWYgaG9zdCBpcyB1bmFibGUgdG8gY2xlYXIg
-VE0gY29tbWFuZCBieQpzZXR0aW5nICJjbGVhciByZWdpc3RlciIsIHRoZSBUTSBjb21tYW5kIG1h
-eSBiZSBzdGlsbCAib3V0c3RhbmRpbmciIGluCnRoZSBkZXZpY2UuIEluIHRoaXMgY2FzZSwgaXQg
-bWF5IGJlIGJldHRlciB0byBkbyBjbGVhbnVwIGFmdGVyIHJlc2V0IGlzCmRvbmUuIENsZWFudXAg
-aW5jbHVkZXMgYml0cyBpbiBoYmEtPm91dHN0YW5kaW5nX3Rhc2tzIGFuZApoYmEtPnRtX3Nsb3Rz
-X2luX3VzZSB3aGljaCBpcyBwb3NzaWJseSBjbGVhbmVkIHRvbyBlYXJseSBieQp1ZnNoY2RfcHV0
-X3RtX3Nsb3QoKSBpZiBjb21tYW5kIGlzIHRpbWVkLW91dCBub3cuCgpSZWZlcnJpbmcgdG8gZXJy
-b3IgaGFuZGxpbmcgZmxvdyBvZiBoYmEtPm91dHN0YW5kaW5nX3JlcXMsIGFsbCB0aW1lZC1vdXQK
-Yml0cyB3aWxsIGJlIGNsZWFuZWQgYnkgdWZzaGNkX3Jlc2V0X2FuZF9yZXN0b3JlKCkgPT4KdWZz
-aGNkX3RyYW5zZmVyX3JlcV9jb21wbCgpIGFmdGVyIHJlc2V0IGlzIGRvbmUuIFNpbWlsYXIgaGFu
-ZGxpbmcgZm9yCmhiYS0+b3V0c3RhbmRpbmdfdGFza3MgY291bGQgYmUgYXBwbGllZCwgaS5lLiwg
-ZG8gY2xlYW51cCBieQp1ZnNoY2RfcmVzZXRfYW5kX3Jlc3RvcmUoKSA9PiB1ZnNoY2RfdG1jX2hh
-bmRsZXIoKS4KClRoZSBuZXh0IHRoaW5nIGlzIHdoYXQgeW91IHN1Z2dlc3RlZDogSG93IHRvIG1h
-a2UgdGhlIGZpeCBtb3JlCmludHVpdGl2ZS4gUGF0Y2hzZXQgdjIgd2lsbCBiZSB1cGxvYWRlZCBm
-b3IgcmV2aWV3OiBJdCB0cmllcyB0bwoicmUtZmFjdG9yIiBjbGVhbnVwIGpvYnMgZmlyc3QsIGFu
-ZCB0aGVuIGFkZCBmaXhlZCBmbG93IHRvIG1ha2UgdGhlCndob2xlIHBhdGNoIG1vcmUgcmVhZGFi
-bGUuCgpPbmUgbW9yZSB0aGluZywgYWJvdmUgZGVzY3JpcHRpb24gYW5kIGZsb3cgaXMgZG9uZSB0
-aHJvdWdoIFVGU0hDRCBTQ1NJCmVycm9yIGhhbmRsaW5nIHJvdXRpbmVzIHJlZ2lzdGVyZWQgd2l0
-aCBTQ1NJIE1pZGxheWVyLiBGb3IgVE0gY29tbWFuZAp0aW1lb3V0IGhhcHBlbmluZyBpbiBic2cg
-cGF0aCB3aXRob3V0IGVycm9yIGhhbmRsaW5nIHRyaWdnZXJlZCBieSBTQ1NJCmxheWVyLCB3ZSBt
-YXkgbmVlZCB0byBjb25zaWRlciB0byBoYW5kbGUgdGhvc2UgdGFza3MgaW4gZnV0dXJlIHBhdGNo
-ZXMuCgo+IAo+IFRoYW5rcywKPiBBdnJpCgpUaGFua3MsClN0YW5sZXkKCj4gX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBMaW51eC1tZWRpYXRlayBtYWls
-aW5nIGxpc3QKPiBMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawoKCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2Vy
-bmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVs
-Cg==
+Navid Emamdoost <navid.emamdoost@gmail.com> writes:
+
+> devm_kzalloc may fail and return NULL. So the null check is needed.
+>
+> Signed-off-by: Navid Emamdoost <navid.emamdoost@gmail.com>
+> ---
+>  drivers/net/wireless/mediatek/mt7601u/init.c | 3 +++
+>  1 file changed, 3 insertions(+)
+
+The prefix in the title should be "mt7601u:".
+
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches#commit_title_is_wrong
+
+-- 
+Kalle Valo
