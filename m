@@ -1,69 +1,41 @@
-From: <ryder.lee@kernel.org>
-Subject: [PATCH 1/2] arm: dts: mt7623: add Mali-450 device node
-Date: Wed, 24 Jul 2019 17:00:59 +0800
-Message-ID: <af7b5a2e00eb3a4b6262807c378e43afd5f74779.1563867856.git.ryder.lee@mediatek.com>
+From: Joe Perches <joe@perches.com>
+Subject: Re: [PATCH v1 5/6] mt76: fix some checkpatch warnings
+Date: Wed, 24 Jul 2019 04:03:46 -0700
+Message-ID: <54692f19e845a74650c1d24cbe7b79c5dad7b061.camel@perches.com>
+References: <cover.1563944758.git.ryder.lee@mediatek.com>
+         <0afa87cc70b34ee17d6c2247dfc8dac92c36852f.1563944758.git.ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <0afa87cc70b34ee17d6c2247dfc8dac92c36852f.1563944758.git.ryder.lee@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
-Cc: Weijie Gao <weijie.gao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>
+To: Ryder Lee <ryder.lee@mediatek.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
+Cc: Roy Luo <royluo@google.com>, YF Luo <yf.luo@mediatek.com>, Yiwei Chung <yiwei.chung@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Ryder Lee <ryder.lee@mediatek.com>
+On Wed, 2019-07-24 at 16:58 +0800, Ryder Lee wrote:
+> This fixes the following checkpatch warnings:
+[]
+> diff --git a/drivers/net/wireless/mediatek/mt76/agg-rx.c b/drivers/net/wireless/mediatek/mt76/agg-rx.c
+[]
+> @@ -74,15 +75,14 @@ mt76_rx_aggr_check_release(struct mt76_rx_tid *tid, struct sk_buff_head *frames)
+>  	for (idx = (tid->head + 1) % tid->size;
+>  	     idx != start && nframes;
+>  	     idx = (idx + 1) % tid->size) {
+> -
+>  		skb = tid->reorder_buf[idx];
+>  		if (!skb)
+>  			continue;
+>  
+>  		nframes--;
+> -		status = (struct mt76_rx_status *) skb->cb;
+> +		status = (struct mt76_rx_status *)skb->cb;
+>  		if (!time_after(jiffies, status->reorder_time +
+> -					 REORDER_TIMEOUT))
+> +				REORDER_TIMEOUT))
 
-Add a node for Mali-450.
+trivia/bikeshedding:  perhaps better slightly differently:
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
-kmscube as well as X11 EGL tests work fine (use Lima driver).
----
- arch/arm/boot/dts/mt7623.dtsi | 25 +++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
-
-diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-index a79f0b6c3429..6a9c5afb9a36 100644
---- a/arch/arm/boot/dts/mt7623.dtsi
-+++ b/arch/arm/boot/dts/mt7623.dtsi
-@@ -3,6 +3,7 @@
-  * Copyright (c) 2017-2018 MediaTek Inc.
-  * Author: John Crispin <john@phrozen.org>
-  *	   Sean Wang <sean.wang@mediatek.com>
-+ *	   Ryder Lee <ryder.lee@mediatek.com>
-  *
-  */
- 
-@@ -733,6 +734,30 @@
- 		#reset-cells = <1>;
- 	};
- 
-+	mali: gpu@13040000 {
-+		compatible = "mediatek,mt7623-mali", "arm,mali-450";
-+		reg = <0 0x13040000 0 0x30000>;
-+		interrupts = <GIC_SPI 170 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 171 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 172 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 173 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 174 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 175 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 176 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 177 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 178 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 179 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 180 IRQ_TYPE_LEVEL_LOW>;
-+		interrupt-names = "gp", "gpmmu", "pp0", "ppmmu0", "pp1",
-+				  "ppmmu1", "pp2", "ppmmu2", "pp3", "ppmmu3",
-+				  "pp";
-+		clocks = <&topckgen CLK_TOP_MMPLL>,
-+			 <&g3dsys CLK_G3DSYS_CORE>;
-+		clock-names = "bus", "core";
-+		power-domains = <&scpsys MT2701_POWER_DOMAIN_MFG>;
-+		resets = <&g3dsys MT2701_G3DSYS_CORE_RST>;
-+	};
-+
- 	mmsys: syscon@14000000 {
- 		compatible = "mediatek,mt7623-mmsys",
- 			     "mediatek,mt2701-mmsys",
--- 
-2.18.0
+ 		if (!time_after(jiffies,
+				status->reorder_time + REORDER_TIMEOUT))
