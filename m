@@ -1,60 +1,43 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v4, 05/33] dt-bindings: mediatek: add RDMA1 description
- for mt8183 display
-Date: Thu, 25 Jul 2019 11:20:19 +0800
-Message-ID: <1564024819.2621.4.camel@mtksdaap41>
-References: <1562625253-29254-1-git-send-email-yongqiang.niu@mediatek.com>
- <1562625253-29254-6-git-send-email-yongqiang.niu@mediatek.com>
- <20190724201635.GA18345@bogus>
+From: Avri Altman <Avri.Altman@wdc.com>
+Subject: RE: [PATCH v2 0/3] scsi: ufs: fix broken hba->outstanding_tasks
+Date: Thu, 25 Jul 2019 07:54:44 +0000
+Message-ID: <MN2PR04MB69914824302B84E144137869FCC10@MN2PR04MB6991.namprd04.prod.outlook.com>
+References: <1563947418-16394-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190724201635.GA18345@bogus>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Rob Herring <robh@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, yongqiang.niu@mediatek.com, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1563947418-16394-1-git-send-email-stanley.chu@mediatek.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com" <martin.petersen@oracle.com>, "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>, "pedrom.sousa@synopsys.com" <pedrom.sousa@synopsys.com>
+Cc: "marc.w.gonzalez@free.fr" <marc.w.gonzalez@free.fr>, "andy.teng@mediatek.com" <andy.teng@mediatek.com>, "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>, "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>, "evgreen@chromium.org" <evgreen@chromium.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "peter.wang@mediatek.com" <peter.wang@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "beanhuo@micron.com" <beanhuo@micron.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFJvYjoKCk9uIFdlZCwgMjAxOS0wNy0yNCBhdCAxNDoxNiAtMDYwMCwgUm9iIEhlcnJpbmcg
-d3JvdGU6Cj4gT24gVHVlLCBKdWwgMDksIDIwMTkgYXQgMDY6MzM6NDVBTSArMDgwMCwgeW9uZ3Fp
-YW5nLm5pdUBtZWRpYXRlay5jb20gd3JvdGU6Cj4gPiBGcm9tOiBZb25ncWlhbmcgTml1IDx5b25n
-cWlhbmcubml1QG1lZGlhdGVrLmNvbT4KPiA+IAo+ID4gVGhpcyBwYXRjaCBhZGQgUkRNQTEgZGVz
-Y3JpcHRpb24gZm9yIG10ODE4MyBkaXNwbGF5Cj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IFlvbmdx
-aWFuZyBOaXUgPHlvbmdxaWFuZy5uaXVAbWVkaWF0ZWsuY29tPgo+ID4gLS0tCj4gPiAgRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlz
-cC50eHQgfCAxICsKPiA+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKykKPiA+IAo+ID4g
-ZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21l
-ZGlhdGVrL21lZGlhdGVrLGRpc3AudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRp
-bmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlzcC50eHQKPiA+IGluZGV4IGFmZDNjOTAu
-LmJiOTI3NGEgMTAwNjQ0Cj4gPiAtLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
-Z3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxkaXNwLnR4dAo+ID4gKysrIGIvRG9jdW1lbnRh
-dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlzcC50
-eHQKPiA+IEBAIC0zMCw2ICszMCw3IEBAIFJlcXVpcmVkIHByb3BlcnRpZXMgKGFsbCBmdW5jdGlv
-biBibG9ja3MpOgo+ID4gIAkibWVkaWF0ZWssPGNoaXA+LWRpc3Atb3ZsIiAgIAkJLSBvdmVybGF5
-ICg0IGxheWVycywgYmxlbmRpbmcsIGNzYykKPiA+ICAJIm1lZGlhdGVrLDxjaGlwPi1kaXNwLW92
-bC0ybCIgICAgICAgICAgIC0gb3ZlcmxheSAoMiBsYXllcnMsIGJsZW5kaW5nLCBjc2MpCj4gPiAg
-CSJtZWRpYXRlayw8Y2hpcD4tZGlzcC1yZG1hIiAgCQktIHJlYWQgRE1BIC8gbGluZSBidWZmZXIK
-PiA+ICsJIm1lZGlhdGVrLDxjaGlwPi1kaXNwLXJkbWExIiAgICAgICAgICAgIC0gZnVuY3Rpb24g
-aXMgc2FtZSB3aXRoIFJETUEsIGZpZm8gc2l6ZSBpcyBkaWZmZXJlbnQKPiAKPiBUaGlzIGNhbid0
-IGJlIGRldGVybWluZWQgYnkgd2hpY2ggY2hpcCBpdCBpcz8gSU9XLCBhIGNoaXAgbWF5IGhhdmUg
-Ym90aCAKPiByZG1hIGFuZCByZG1hMT8KCkluIE1UODE4MywgdGhlcmUgYXJlIHR3byBkaWZmZXJl
-bnQgcmRtYS4gVGhlIGRpZmZlcmVuY2UgaXMgdGhlIGZpZm8gc2l6ZQppbiBlYWNoIG9uZS4gSSd2
-ZSBhIHF1ZXN0aW9uOiBpcyBpdCBiZXR0ZXIgdG8gaGF2ZSB0d28gY29tcGF0aWJsZSBzdHJpbmcK
-Zm9yIGVhY2ggb25lLCBvciBqdXN0IG9uZSBjb21wYXRpYmxlIHN0cmluZyBmb3IgYm90aCBidXQg
-d2l0aCBhIHByb3BlcnR5CnRvIHNldCBmaWZvIHNpemU/CgpSZWdhcmRzLApDSwoKPiAKPiA+ICAJ
-Im1lZGlhdGVrLDxjaGlwPi1kaXNwLXdkbWEiICAJCS0gd3JpdGUgRE1BCj4gPiAgCSJtZWRpYXRl
-ayw8Y2hpcD4tZGlzcC1jY29yciIgICAgICAgICAgICAtIGNvbG9yIGNvcnJlY3Rpb24KPiA+ICAJ
-Im1lZGlhdGVrLDxjaGlwPi1kaXNwLWNvbG9yIiAJCS0gY29sb3IgcHJvY2Vzc29yCj4gPiAtLSAK
-PiA+IDEuOC4xLjEuZGlydHkKPiA+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZy
-ZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2RyaS1kZXZlbA==
+Stanly,
+
+> 
+> Currently bits in hba->outstanding_tasks are cleared only after their
+> corresponding task management commands are successfully done by
+> __ufshcd_issue_tm_cmd().
+> 
+> If timeout happens in a task management command, its corresponding
+> bit in hba->outstanding_tasks will not be cleared until next task
+> management command with the same tag used successfully finishes.
+I'm sorry - I still don't understand why you just can't release the tag either way,
+Just like we do in device management queries tags,
+Instead of adding all this unnecessary code.
+
+I will not object to your series -
+just step down and let other people review you patches.
+
+Thanks,
+Avri
