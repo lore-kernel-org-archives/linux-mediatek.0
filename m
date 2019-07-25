@@ -1,116 +1,52 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH v4,2/2] clk: reset: Modify reset-controller driver
-Date: Thu, 25 Jul 2019 14:11:04 -0700
-Message-ID: <20190725211105.0FD50218EA@mail.kernel.org>
-References: <20190725082002.17400-1-yong.liang@mediatek.com>
- <20190725082002.17400-2-yong.liang@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v4, 05/33] dt-bindings: mediatek: add RDMA1 description
+ for mt8183 display
+Date: Thu, 25 Jul 2019 16:23:54 -0600
+Message-ID: <CAL_JsqL439PCnG3B75uqCXb3-OfH2uK6qtU7XpUb-cEnPWRkkQ@mail.gmail.com>
+References: <1562625253-29254-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1562625253-29254-6-git-send-email-yongqiang.niu@mediatek.com>
+ <20190724201635.GA18345@bogus> <1564024819.2621.4.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190725082002.17400-2-yong.liang@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: chunhui.dai@mediatek.com, drinkcat@chromium.org, eddie.huang@mediatek.com, erin.lo@mediatek.com, jamesjj.liao@mediatek.com, jasu@njomotys.info, mark.rutland@arm.com, matthias.bgg@gmail.com, mturquette@baylibre.com, owen.chen@mediatek.com, robh+dt@kernel.org, weiyi.lu@mediatek.com
-Cc: "yong.liang" <yong.liang@mediatek.com>, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1564024819.2621.4.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: CK Hu <ck.hu@mediatek.com>
+Cc: yongqiang.niu@mediatek.com, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Mark Rutland <mark.rutland@arm.com>, dri-devel <dri-devel@lists.freedesktop.org>, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting Yong Liang (2019-07-25 01:20:02)
-> From: "yong.liang" <yong.liang@mediatek.com>
-> 
-> Set reset signal by a register and clear reset signal by
-> another register for 8183.
-> 
-> Signed-off-by: yong.liang <yong.liang@mediatek.com>
-> ---
-> 
-> Base on https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git branch clk-next and https://patchwork.kernel.org/patch/10856987/
+On Wed, Jul 24, 2019 at 9:20 PM CK Hu <ck.hu@mediatek.com> wrote:
+>
+> Hi, Rob:
+>
+> On Wed, 2019-07-24 at 14:16 -0600, Rob Herring wrote:
+> > On Tue, Jul 09, 2019 at 06:33:45AM +0800, yongqiang.niu@mediatek.com wrote:
+> > > From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> > >
+> > > This patch add RDMA1 description for mt8183 display
+> > >
+> > > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> > > ---
+> > >  Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt | 1 +
+> > >  1 file changed, 1 insertion(+)
+> > >
+> > > diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+> > > index afd3c90..bb9274a 100644
+> > > --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+> > > +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+> > > @@ -30,6 +30,7 @@ Required properties (all function blocks):
+> > >     "mediatek,<chip>-disp-ovl"              - overlay (4 layers, blending, csc)
+> > >     "mediatek,<chip>-disp-ovl-2l"           - overlay (2 layers, blending, csc)
+> > >     "mediatek,<chip>-disp-rdma"             - read DMA / line buffer
+> > > +   "mediatek,<chip>-disp-rdma1"            - function is same with RDMA, fifo size is different
+> >
+> > This can't be determined by which chip it is? IOW, a chip may have both
+> > rdma and rdma1?
+>
+> In MT8183, there are two different rdma. The difference is the fifo size
+> in each one. I've a question: is it better to have two compatible string
+> for each one, or just one compatible string for both but with a property
+> to set fifo size?
 
-Use --base= in git format-patch instead.
-
-> diff --git a/drivers/clk/mediatek/clk-mt8183.c b/drivers/clk/mediatek/clk-mt8183.c
-> index 9d8651033ae9..f695eb7eb5a1 100644
-> --- a/drivers/clk/mediatek/clk-mt8183.c
-> +++ b/drivers/clk/mediatek/clk-mt8183.c
-> @@ -1204,13 +1204,24 @@ static int clk_mt8183_infra_probe(struct platform_device *pdev)
->  {
->         struct clk_onecell_data *clk_data;
->         struct device_node *node = pdev->dev.of_node;
-> +       int r;
->  
->         clk_data = mtk_alloc_clk_data(CLK_INFRA_NR_CLK);
->  
->         mtk_clk_register_gates(node, infra_clks, ARRAY_SIZE(infra_clks),
->                 clk_data);
->  
-> -       return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
-> +       r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
-> +       if (r) {
-> +               dev_err(&pdev->dev,
-> +                       "%s(): could not register clock provider: %d\n"
-> +                       ,__func__, r);
-> +               return r;
-> +       }
-> +
-> +       mtk_register_reset_controller_set_clr(node, 4, 0x120);
-
-What is this line doing? Maybe add a comment so we understand what 0x120
-is.
-
-> +
-> +       return r;
->  }
->  
->  static int clk_mt8183_mcu_probe(struct platform_device *pdev)
-> diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
-> index d3551d5efef2..fccc8fcb6a20 100644
-> --- a/drivers/clk/mediatek/reset.c
-> +++ b/drivers/clk/mediatek/reset.c
-> @@ -95,3 +131,18 @@ void mtk_register_reset_controller(struct device_node *np,
->                 return;
->         }
->  }
-> +
-> +void mtk_register_reset_controller(struct device_node *np,
-> +       unsigned int num_regs, int regofs)
-> +{
-> +       mtk_register_reset_controller_common(np, num_regs, regofs,
-> +               &mtk_reset_ops);
-> +}
-> +
-> +void mtk_register_reset_controller_set_clr(struct device_node *np,
-> +       unsigned int num_regs, int regofs)
-> +{
-> +       mtk_register_reset_controller_common(np, num_regs, regofs,
-> +               &mtk_reset_ops_set_clr);
-> +}
-> +
-
-If this is an extra newline at the end of the file, please remove it.
-
-> diff --git a/include/dt-bindings/reset-controller/mt8183-resets.h b/include/dt-bindings/reset-controller/mt8183-resets.h
-> new file mode 100644
-> index 000000000000..81136c932f75
-> --- /dev/null
-> +++ b/include/dt-bindings/reset-controller/mt8183-resets.h
-> @@ -0,0 +1,88 @@
-> +/*
-> + * Copyright (c) 2017 MediaTek Inc.
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-> + * See  http://www.gnu.org/licenses/gpl-2.0.html for more details.
-
-Please use SPDX tags instead of this boilerplate.
+If that's the only diff, then a property for fifo size is fine. We
+just don't want to be adding a new property for each new difference.
