@@ -1,18 +1,11 @@
-From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [RFC,
- v3 8/9] media: platform: Add Mediatek ISP P1 SCP communication
-Date: Thu, 25 Jul 2019 19:56:28 +0900
-Message-ID: <CAAFQd5BT7M425AbFicYuX+wr-twgS_cxQ937+Rgxo6Y2fA6_gA@mail.gmail.com>
-References: <jungo.lin@mediatek.com>
- <20190611035344.29814-1-jungo.lin@mediatek.com>
- <20190611035344.29814-9-jungo.lin@mediatek.com>
- <20190710095827.GC181405@chromium.org>
- <1563675513.1212.444.camel@mtksdccf07>
+From: <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [RFC PATCH] mm: memcontrol: fix use after free in mem_cgroup_iter()
+Date: Thu, 25 Jul 2019 22:27:03 +0800
+Message-ID: <20190725142703.27276-1-miles.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1563675513.1212.444.camel@mtksdccf07>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -22,115 +15,211 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jungo Lin <jungo.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, =?UTF-8?B?U2VhbiBDaGVuZyAo6YSt5piH5byYKQ==?= <sean.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?RnJlZGVyaWMgQ2hlbiAo6Zmz5L+K5YWDKQ==?= <frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?UnlubiBXdSAo5ZCz6IKy5oGpKQ==?= <rynn.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, =?UTF-8?B?UnlhbiBZdSAo5L2Z5a2f5L+uKQ==?= <ryan.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?RnJhbmtpZSBDaGl1ICjpgrHmloflh7Ep?= <frankie.chiu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, ddavenport-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Sj Huang <sj.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>,
- Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, " <linux-ar>
+To: Johannes Weiner <hannes-druUgvl0LCNAfugRpC6u6w@public.gmane.org>, Michal Hocko <mhocko-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Vladimir Davydov <vdavydov.dev-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mm-Bw31MaZKKs3YtjvyW6yDsg@public.gmane.org, Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, cgroups-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Jungo,
+From: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-On Sun, Jul 21, 2019 at 11:18 AM Jungo Lin <jungo.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-[snip]
-> > > +           wake_up_interruptible(&isp_ctx->composer_tx_thread.wq);
-> > > +           isp_ctx->composer_tx_thread.thread = NULL;
-> > > +   }
-> > > +
-> > > +   if (isp_ctx->composer_deinit_thread.thread) {
-> > > +           wake_up(&isp_ctx->composer_deinit_thread.wq);
-> > > +           isp_ctx->composer_deinit_thread.thread = NULL;
-> > > +   }
-> > > +   mutex_unlock(&isp_ctx->lock);
-> > > +
-> > > +   pm_runtime_put_sync(&p1_dev->pdev->dev);
-> >
-> > No need to use the sync variant.
-> >
->
-> We don't get this point. If we will call pm_runtime_get_sync in
-> mtk_isp_hw_init function, will we need to call
-> pm_runtime_put_sync_autosuspend in mtk_isp_hw_release in next patch?
-> As we know, we should call runtime pm functions in pair.
->
+This RFC patch is sent to report an use after free in mem_cgroup_iter()
+after merging commit: be2657752e9e "mm: memcg: fix use after free in
+mem_cgroup_iter()".
 
-My point is that pm_runtime_put_sync() is only needed if one wants the
-runtime count to be decremented after the function returns. Normally
-there is no need to do so and one would call pm_runtime_put(), or if
-autosuspend is used, pm_runtime_put_autosuspend() (note there is no
-"sync" in the name).
+I work with android kernel tree (4.9 & 4.14), and the commit:
+be2657752e9e "mm: memcg: fix use after free in mem_cgroup_iter()" has
+been merged to the trees. However, I can still observe use after free
+issues addressed in the commit be2657752e9e.
+(on low-end devices, a few times this month)
 
-[snip]
-> > +static void isp_composer_handler(void *data, unsigned int len, void *priv)
-> > > +{
-> > > +   struct mtk_isp_p1_ctx *isp_ctx = (struct mtk_isp_p1_ctx *)priv;
-> > > +   struct isp_p1_device *p1_dev = p1_ctx_to_dev(isp_ctx);
-> > > +   struct device *dev = &p1_dev->pdev->dev;
-> > > +   struct mtk_isp_scp_p1_cmd *ipi_msg;
-> > > +
-> > > +   ipi_msg = (struct mtk_isp_scp_p1_cmd *)data;
-> >
-> > Should we check that len == sizeof(*ipi_msg)? (Or at least >=, if data could
-> > contain some extra bytes at the end.)
-> >
->
-> The len parameter is the actual sending bytes from SCP to kernel.
-> In the runtime, it is only 6 bytes for isp_ack_info command
-> However, sizeof(*ipi_msg) is large due to struct mtk_isp_scp_p1_cmd is
-> union structure.
->
+backtrace:
+	css_tryget <- crash here
+	mem_cgroup_iter
+	shrink_node
+	shrink_zones
+	do_try_to_free_pages
+	try_to_free_pages
+	__perform_reclaim
+	__alloc_pages_direct_reclaim
+	__alloc_pages_slowpath
+	__alloc_pages_nodemask
 
-That said we still should check if len is enough to cover the data
-we're accessing below.
+To debug, I poisoned mem_cgroup before freeing it:
 
-> > > +
-> > > +   if (ipi_msg->cmd_id != ISP_CMD_ACK)
-> > > +           return;
-> > > +
-> > > +   if (ipi_msg->ack_info.cmd_id == ISP_CMD_FRAME_ACK) {
-> > > +           dev_dbg(dev, "ack frame_num:%d",
-> > > +                   ipi_msg->ack_info.frame_seq_no);
-> > > +           atomic_set(&isp_ctx->composed_frame_id,
-> > > +                      ipi_msg->ack_info.frame_seq_no);
-> >
-> > I suppose we are expecting here that ipi_msg->ack_info.frame_seq_no would be
-> > just isp_ctx->composed_frame_id + 1, right? If not, we probably dropped some
-> > frames and we should handle that somehow.
-> >
->
-> No, we use isp_ctx->composed_frame_id to save which frame sequence
-> number are composed done in SCP. In new design, we will move this from
-> isp_ctx to p1_dev.
+static void __mem_cgroup_free(struct mem_cgroup *memcg)
+	for_each_node(node)
+	free_mem_cgroup_per_node_info(memcg, node);
+	free_percpu(memcg->stat);
++       /* poison memcg before freeing it */
++       memset(memcg, 0x78, sizeof(struct mem_cgroup));
+	kfree(memcg);
+}
 
-But we compose the frames in order, don't we? Wouldn't every composed
-frame would be just previous frame ID + 1?
+The coredump shows the position=0xdbbc2a00 is freed.
 
-[snip]
-> > > +void isp_composer_hw_init(struct device *dev)
-> > > +{
-> > > +   struct mtk_isp_scp_p1_cmd composer_tx_cmd;
-> > > +   struct isp_p1_device *p1_dev = get_p1_device(dev);
-> > > +   struct mtk_isp_p1_ctx *isp_ctx = &p1_dev->isp_ctx;
-> > > +
-> > > +   memset(&composer_tx_cmd, 0, sizeof(composer_tx_cmd));
-> > > +   composer_tx_cmd.cmd_id = ISP_CMD_INIT;
-> > > +   composer_tx_cmd.frameparam.hw_module = isp_ctx->isp_hw_module;
-> > > +   composer_tx_cmd.frameparam.cq_addr.iova = isp_ctx->scp_mem_iova;
-> > > +   composer_tx_cmd.frameparam.cq_addr.scp_addr = isp_ctx->scp_mem_pa;
-> >
-> > Should we also specify the size of the buffer? Otherwise we could end up
-> > with some undetectable overruns.
-> >
->
-> The size of SCP composer's memory is fixed to 0x200000.
-> Is it necessary to specify the size of this buffer?
->
-> #define MTK_ISP_COMPOSER_MEM_SIZE 0x200000
->
-> ptr = dma_alloc_coherent(p1_dev->cam_dev.smem_dev,
->                         MTK_ISP_COMPOSER_MEM_SIZE, &addr, GFP_KERNEL);
->
+(gdb) p/x ((struct mem_cgroup_per_node *)0xe5009e00)->iter[8]
+$13 = {position = 0xdbbc2a00, generation = 0x2efd}
 
-Okay, but please add a comment saying that this is an implicit
-requirement of the firmware.
+0xdbbc2a00:     0xdbbc2e00      0x00000000      0xdbbc2800      0x00000100
+0xdbbc2a10:     0x00000200      0x78787878      0x00026218      0x00000000
+0xdbbc2a20:     0xdcad6000      0x00000001      0x78787800      0x00000000
+0xdbbc2a30:     0x78780000      0x00000000      0x0068fb84      0x78787878
+0xdbbc2a40:     0x78787878      0x78787878      0x78787878      0xe3fa5cc0
+0xdbbc2a50:     0x78787878      0x78787878      0x00000000      0x00000000
+0xdbbc2a60:     0x00000000      0x00000000      0x00000000      0x00000000
+0xdbbc2a70:     0x00000000      0x00000000      0x00000000      0x00000000
+0xdbbc2a80:     0x00000000      0x00000000      0x00000000      0x00000000
+0xdbbc2a90:     0x00000001      0x00000000      0x00000000      0x00100000
+0xdbbc2aa0:     0x00000001      0xdbbc2ac8      0x00000000      0x00000000
+0xdbbc2ab0:     0x00000000      0x00000000      0x00000000      0x00000000
+0xdbbc2ac0:     0x00000000      0x00000000      0xe5b02618      0x00001000
+0xdbbc2ad0:     0x00000000      0x78787878      0x78787878      0x78787878
+0xdbbc2ae0:     0x78787878      0x78787878      0x78787878      0x78787878
+0xdbbc2af0:     0x78787878      0x78787878      0x78787878      0x78787878
+0xdbbc2b00:     0x78787878      0x78787878      0x78787878      0x78787878
+0xdbbc2b10:     0x78787878      0x78787878      0x78787878      0x78787878
+0xdbbc2b20:     0x78787878      0x78787878      0x78787878      0x78787878
+0xdbbc2b30:     0x78787878      0x78787878      0x78787878      0x78787878
+0xdbbc2b40:     0x78787878      0x78787878      0x78787878      0x78787878
+0xdbbc2b50:     0x78787878      0x78787878      0x78787878      0x78787878
+0xdbbc2b60:     0x78787878      0x78787878      0x78787878      0x78787878
+0xdbbc2b70:     0x78787878      0x78787878      0x78787878      0x78787878
+0xdbbc2b80:     0x78787878      0x78787878      0x00000000      0x78787878
+0xdbbc2b90:     0x78787878      0x78787878      0x78787878      0x78787878
+0xdbbc2ba0:     0x78787878      0x78787878      0x78787878      0x78787878
 
-Best regards,
-Tomasz
+In the reclaim path, try_to_free_pages() does not setup
+sc.target_mem_cgroup and sc is passed to do_try_to_free_pages(), ...,
+shrink_node().
+
+In mem_cgroup_iter(), root is set to root_mem_cgroup because
+sc->target_mem_cgroup is NULL.
+It is possible to assign a memcg to root_mem_cgroup.nodeinfo.iter in
+mem_cgroup_iter().
+
+	try_to_free_pages
+		struct scan_control sc = {...}, target_mem_cgroup is 0x0;
+	do_try_to_free_pages
+	shrink_zones
+	shrink_node
+		 mem_cgroup *root = sc->target_mem_cgroup;
+		 memcg = mem_cgroup_iter(root, NULL, &reclaim);
+	mem_cgroup_iter()
+		if (!root)
+			root = root_mem_cgroup;
+		...
+
+		css = css_next_descendant_pre(css, &root->css);
+		memcg = mem_cgroup_from_css(css);
+		cmpxchg(&iter->position, pos, memcg);
+
+My device uses memcg non-hierarchical mode.
+When we release a memcg: invalidate_reclaim_iterators() reaches only
+dead_memcg and its parents. If non-hierarchical mode is used,
+invalidate_reclaim_iterators() never reaches root_mem_cgroup.
+
+static void invalidate_reclaim_iterators(struct mem_cgroup *dead_memcg)
+{
+	struct mem_cgroup *memcg = dead_memcg;
+
+	for (; memcg; memcg = parent_mem_cgroup(memcg)
+	...
+}
+
+So the use after free scenario looks like:
+
+CPU1						CPU2
+
+try_to_free_pages
+do_try_to_free_pages
+shrink_zones
+shrink_node
+mem_cgroup_iter()
+    if (!root)
+    	root = root_mem_cgroup;
+    ...
+    css = css_next_descendant_pre(css, &root->css);
+    memcg = mem_cgroup_from_css(css);
+    cmpxchg(&iter->position, pos, memcg);
+
+					invalidate_reclaim_iterators(memcg);
+					...
+					__mem_cgroup_free()
+						kfree(memcg);
+
+try_to_free_pages
+do_try_to_free_pages
+shrink_zones
+shrink_node
+mem_cgroup_iter()
+    if (!root)
+    	root = root_mem_cgroup;
+    ...
+    mz = mem_cgroup_nodeinfo(root, reclaim->pgdat->node_id);
+    iter = &mz->iter[reclaim->priority];
+    pos = READ_ONCE(iter->position);
+    css_tryget(&pos->css) <- use after free
+
+To avoid this, we should also invalidate root_mem_cgroup.nodeinfo.iter in
+invalidate_reclaim_iterators().
+
+Signed-off-by: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ mm/memcontrol.c | 33 +++++++++++++++++++++++----------
+ 1 file changed, 23 insertions(+), 10 deletions(-)
+
+diff --git a/mm/memcontrol.c b/mm/memcontrol.c
+index cdbb7a84cb6e..578b02982c9a 100644
+--- a/mm/memcontrol.c
++++ b/mm/memcontrol.c
+@@ -1130,26 +1130,39 @@ void mem_cgroup_iter_break(struct mem_cgroup *root,
+ 		css_put(&prev->css);
+ }
+ 
+-static void invalidate_reclaim_iterators(struct mem_cgroup *dead_memcg)
++static void __invalidate_reclaim_iterators(struct mem_cgroup *from,
++					struct mem_cgroup *dead_memcg)
+ {
+-	struct mem_cgroup *memcg = dead_memcg;
+ 	struct mem_cgroup_reclaim_iter *iter;
+ 	struct mem_cgroup_per_node *mz;
+ 	int nid;
+ 	int i;
+ 
+-	for (; memcg; memcg = parent_mem_cgroup(memcg)) {
+-		for_each_node(nid) {
+-			mz = mem_cgroup_nodeinfo(memcg, nid);
+-			for (i = 0; i <= DEF_PRIORITY; i++) {
+-				iter = &mz->iter[i];
+-				cmpxchg(&iter->position,
+-					dead_memcg, NULL);
+-			}
++	for_each_node(nid) {
++		mz = mem_cgroup_nodeinfo(from, nid);
++		for (i = 0; i <= DEF_PRIORITY; i++) {
++			iter = &mz->iter[i];
++			cmpxchg(&iter->position,
++				dead_memcg, NULL);
+ 		}
+ 	}
+ }
+ 
++static void invalidate_reclaim_iterators(struct mem_cgroup *dead_memcg)
++{
++	struct mem_cgroup *memcg = dead_memcg;
++	int invalid_root = 0;
++
++	for (; memcg; memcg = parent_mem_cgroup(memcg)) {
++		__invalidate_reclaim_iterators(memcg, dead_memcg);
++		if (memcg == root_mem_cgroup)
++			invalid_root = 1;
++	}
++
++	if (!invalid_root)
++		__invalidate_reclaim_iterators(root_mem_cgroup, dead_memcg);
++}
++
+ /**
+  * mem_cgroup_scan_tasks - iterate over tasks of a memory cgroup hierarchy
+  * @memcg: hierarchy root
+-- 
+2.18.0
