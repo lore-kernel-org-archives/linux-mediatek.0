@@ -1,68 +1,234 @@
-From: <gtk_ruiwang@mediatek.com>
-Subject: media: mtk-vcodec: Handle H264 error bitstreams
-Date: Fri, 26 Jul 2019 16:54:33 +0800
-Message-ID: <20190726085433.15612-1-gtk_ruiwang@mediatek.com>
+From: Miles Chen <miles.chen@mediatek.com>
+Subject: Re: [PATCH v2] mm: memcontrol: fix use after free in
+ mem_cgroup_iter()
+Date: Fri, 26 Jul 2019 18:20:23 +0800
+Message-ID: <1564136423.15330.4.camel@mtkswgap22>
+References: <20190726021247.16162-1-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190726021247.16162-1-miles.chen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>, Tomasz Figa <tfiga@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>
-Cc: Longfei Wang <longfei.wang@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, gtk_ruiwang <gtk_ruiwang@mediatek.com>
+To: Johannes Weiner <hannes@cmpxchg.org>
+Cc: Michal Hocko <mhocko@kernel.org>, Vladimir Davydov <vdavydov.dev@gmail.com>, cgroups@vger.kernel.org, linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: gtk_ruiwang <gtk_ruiwang@mediatek.com>
+Hi Johannes,
 
-Error h264 bitstreams which picture info are out range of
-decoder hardware specification, and no nal start code at the
-beginning of the buffer, stop decoding and exit.
+I post patch v2 with proper comment you mentioned.
+(I am not sure if I can copy your acked-by to patch v2 directly)
 
-Signed-off-by: gtk_ruiwang <gtk_ruiwang@mediatek.com>
----
- .../platform/mtk-vcodec/vdec/vdec_h264_if.c      | 16 ++++++++++++++--
- 1 file changed, 14 insertions(+), 2 deletions(-)
+Miles
 
-diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-index c5f8f1fca44c..49aa85a9bb5a 100644
---- a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-+++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-@@ -29,6 +29,9 @@
- #define H264_MAX_FB_NUM				17
- #define HDR_PARSING_BUF_SZ			1024
- 
-+#define DEC_ERR_RET(ret)			((ret) >> 16)
-+#define H264_ERR_NOT_VALID			3
-+
- /**
-  * struct h264_fb - h264 decode frame buffer information
-  * @vdec_fb_va  : virtual address of struct vdec_fb
-@@ -357,8 +360,11 @@ static int vdec_h264_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 	buf = (unsigned char *)bs->va;
- 	buf_sz = bs->size;
- 	nal_start_idx = find_start_code(buf, buf_sz);
--	if (nal_start_idx < 0)
-+	if (nal_start_idx < 0) {
-+		mtk_vcodec_err(inst, "invalid nal start code");
-+		err = -EIO;
- 		goto err_free_fb_out;
-+	}
- 
- 	nal_start = buf[nal_start_idx];
- 	nal_type = NAL_TYPE(buf[nal_start_idx]);
-@@ -382,8 +388,14 @@ static int vdec_h264_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 	data[0] = buf_sz;
- 	data[1] = nal_start;
- 	err = vpu_dec_start(vpu, data, 2);
--	if (err)
-+	if (err) {
-+		if (err > 0 && (DEC_ERR_RET(err) == H264_ERR_NOT_VALID)) {
-+			mtk_vcodec_err(inst, "- error bitstream - err = %d -",
-+				       err);
-+			err = -EIO;
-+		}
- 		goto err_free_fb_out;
-+	}
- 
- 	*res_chg = inst->vsi->dec.resolution_changed;
- 	if (*res_chg) {
--- 
-2.18.0
+On Fri, 2019-07-26 at 10:12 +0800, Miles Chen wrote:
+> This patch is sent to report an use after free in mem_cgroup_iter()
+> after merging commit: be2657752e9e "mm: memcg: fix use after free in
+> mem_cgroup_iter()".
+> 
+> I work with android kernel tree (4.9 & 4.14), and the commit:
+> be2657752e9e "mm: memcg: fix use after free in mem_cgroup_iter()" has
+> been merged to the trees. However, I can still observe use after free
+> issues addressed in the commit be2657752e9e.
+> (on low-end devices, a few times this month)
+> 
+> backtrace:
+> 	css_tryget <- crash here
+> 	mem_cgroup_iter
+> 	shrink_node
+> 	shrink_zones
+> 	do_try_to_free_pages
+> 	try_to_free_pages
+> 	__perform_reclaim
+> 	__alloc_pages_direct_reclaim
+> 	__alloc_pages_slowpath
+> 	__alloc_pages_nodemask
+> 
+> To debug, I poisoned mem_cgroup before freeing it:
+> 
+> static void __mem_cgroup_free(struct mem_cgroup *memcg)
+> 	for_each_node(node)
+> 	free_mem_cgroup_per_node_info(memcg, node);
+> 	free_percpu(memcg->stat);
+> +       /* poison memcg before freeing it */
+> +       memset(memcg, 0x78, sizeof(struct mem_cgroup));
+> 	kfree(memcg);
+> }
+> 
+> The coredump shows the position=0xdbbc2a00 is freed.
+> 
+> (gdb) p/x ((struct mem_cgroup_per_node *)0xe5009e00)->iter[8]
+> $13 = {position = 0xdbbc2a00, generation = 0x2efd}
+> 
+> 0xdbbc2a00:     0xdbbc2e00      0x00000000      0xdbbc2800      0x00000100
+> 0xdbbc2a10:     0x00000200      0x78787878      0x00026218      0x00000000
+> 0xdbbc2a20:     0xdcad6000      0x00000001      0x78787800      0x00000000
+> 0xdbbc2a30:     0x78780000      0x00000000      0x0068fb84      0x78787878
+> 0xdbbc2a40:     0x78787878      0x78787878      0x78787878      0xe3fa5cc0
+> 0xdbbc2a50:     0x78787878      0x78787878      0x00000000      0x00000000
+> 0xdbbc2a60:     0x00000000      0x00000000      0x00000000      0x00000000
+> 0xdbbc2a70:     0x00000000      0x00000000      0x00000000      0x00000000
+> 0xdbbc2a80:     0x00000000      0x00000000      0x00000000      0x00000000
+> 0xdbbc2a90:     0x00000001      0x00000000      0x00000000      0x00100000
+> 0xdbbc2aa0:     0x00000001      0xdbbc2ac8      0x00000000      0x00000000
+> 0xdbbc2ab0:     0x00000000      0x00000000      0x00000000      0x00000000
+> 0xdbbc2ac0:     0x00000000      0x00000000      0xe5b02618      0x00001000
+> 0xdbbc2ad0:     0x00000000      0x78787878      0x78787878      0x78787878
+> 0xdbbc2ae0:     0x78787878      0x78787878      0x78787878      0x78787878
+> 0xdbbc2af0:     0x78787878      0x78787878      0x78787878      0x78787878
+> 0xdbbc2b00:     0x78787878      0x78787878      0x78787878      0x78787878
+> 0xdbbc2b10:     0x78787878      0x78787878      0x78787878      0x78787878
+> 0xdbbc2b20:     0x78787878      0x78787878      0x78787878      0x78787878
+> 0xdbbc2b30:     0x78787878      0x78787878      0x78787878      0x78787878
+> 0xdbbc2b40:     0x78787878      0x78787878      0x78787878      0x78787878
+> 0xdbbc2b50:     0x78787878      0x78787878      0x78787878      0x78787878
+> 0xdbbc2b60:     0x78787878      0x78787878      0x78787878      0x78787878
+> 0xdbbc2b70:     0x78787878      0x78787878      0x78787878      0x78787878
+> 0xdbbc2b80:     0x78787878      0x78787878      0x00000000      0x78787878
+> 0xdbbc2b90:     0x78787878      0x78787878      0x78787878      0x78787878
+> 0xdbbc2ba0:     0x78787878      0x78787878      0x78787878      0x78787878
+> 
+> In the reclaim path, try_to_free_pages() does not setup
+> sc.target_mem_cgroup and sc is passed to do_try_to_free_pages(), ...,
+> shrink_node().
+> 
+> In mem_cgroup_iter(), root is set to root_mem_cgroup because
+> sc->target_mem_cgroup is NULL.
+> It is possible to assign a memcg to root_mem_cgroup.nodeinfo.iter in
+> mem_cgroup_iter().
+> 
+> 	try_to_free_pages
+> 		struct scan_control sc = {...}, target_mem_cgroup is 0x0;
+> 	do_try_to_free_pages
+> 	shrink_zones
+> 	shrink_node
+> 		 mem_cgroup *root = sc->target_mem_cgroup;
+> 		 memcg = mem_cgroup_iter(root, NULL, &reclaim);
+> 	mem_cgroup_iter()
+> 		if (!root)
+> 			root = root_mem_cgroup;
+> 		...
+> 
+> 		css = css_next_descendant_pre(css, &root->css);
+> 		memcg = mem_cgroup_from_css(css);
+> 		cmpxchg(&iter->position, pos, memcg);
+> 
+> My device uses memcg non-hierarchical mode.
+> When we release a memcg: invalidate_reclaim_iterators() reaches only
+> dead_memcg and its parents. If non-hierarchical mode is used,
+> invalidate_reclaim_iterators() never reaches root_mem_cgroup.
+> 
+> static void invalidate_reclaim_iterators(struct mem_cgroup *dead_memcg)
+> {
+> 	struct mem_cgroup *memcg = dead_memcg;
+> 
+> 	for (; memcg; memcg = parent_mem_cgroup(memcg)
+> 	...
+> }
+> 
+> So the use after free scenario looks like:
+> 
+> CPU1						CPU2
+> 
+> try_to_free_pages
+> do_try_to_free_pages
+> shrink_zones
+> shrink_node
+> mem_cgroup_iter()
+>     if (!root)
+>     	root = root_mem_cgroup;
+>     ...
+>     css = css_next_descendant_pre(css, &root->css);
+>     memcg = mem_cgroup_from_css(css);
+>     cmpxchg(&iter->position, pos, memcg);
+> 
+> 					invalidate_reclaim_iterators(memcg);
+> 					...
+> 					__mem_cgroup_free()
+> 						kfree(memcg);
+> 
+> try_to_free_pages
+> do_try_to_free_pages
+> shrink_zones
+> shrink_node
+> mem_cgroup_iter()
+>     if (!root)
+>     	root = root_mem_cgroup;
+>     ...
+>     mz = mem_cgroup_nodeinfo(root, reclaim->pgdat->node_id);
+>     iter = &mz->iter[reclaim->priority];
+>     pos = READ_ONCE(iter->position);
+>     css_tryget(&pos->css) <- use after free
+> 
+> To avoid this, we should also invalidate root_mem_cgroup.nodeinfo.iter in
+> invalidate_reclaim_iterators().
+> 
+> Change since v1:
+> Add a comment to explain why we need to handle root_mem_cgroup separately.
+> Rename invalid_root to invalidate_root.
+> 
+> Cc: Johannes Weiner <hannes@cmpxchg.org>
+> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+> ---
+>  mm/memcontrol.c | 38 ++++++++++++++++++++++++++++----------
+>  1 file changed, 28 insertions(+), 10 deletions(-)
+> 
+> diff --git a/mm/memcontrol.c b/mm/memcontrol.c
+> index cdbb7a84cb6e..09f2191f113b 100644
+> --- a/mm/memcontrol.c
+> +++ b/mm/memcontrol.c
+> @@ -1130,26 +1130,44 @@ void mem_cgroup_iter_break(struct mem_cgroup *root,
+>  		css_put(&prev->css);
+>  }
+>  
+> -static void invalidate_reclaim_iterators(struct mem_cgroup *dead_memcg)
+> +static void __invalidate_reclaim_iterators(struct mem_cgroup *from,
+> +					struct mem_cgroup *dead_memcg)
+>  {
+> -	struct mem_cgroup *memcg = dead_memcg;
+>  	struct mem_cgroup_reclaim_iter *iter;
+>  	struct mem_cgroup_per_node *mz;
+>  	int nid;
+>  	int i;
+>  
+> -	for (; memcg; memcg = parent_mem_cgroup(memcg)) {
+> -		for_each_node(nid) {
+> -			mz = mem_cgroup_nodeinfo(memcg, nid);
+> -			for (i = 0; i <= DEF_PRIORITY; i++) {
+> -				iter = &mz->iter[i];
+> -				cmpxchg(&iter->position,
+> -					dead_memcg, NULL);
+> -			}
+> +	for_each_node(nid) {
+> +		mz = mem_cgroup_nodeinfo(from, nid);
+> +		for (i = 0; i <= DEF_PRIORITY; i++) {
+> +			iter = &mz->iter[i];
+> +			cmpxchg(&iter->position,
+> +				dead_memcg, NULL);
+>  		}
+>  	}
+>  }
+>  
+> +/*
+> + * When cgruop1 non-hierarchy mode is used, parent_mem_cgroup() does
+> + * not walk all the way up to the cgroup root (root_mem_cgroup). So
+> + * we have to handle dead_memcg from cgroup root separately.
+> + */
+> +static void invalidate_reclaim_iterators(struct mem_cgroup *dead_memcg)
+> +{
+> +	struct mem_cgroup *memcg = dead_memcg;
+> +	int invalidate_root = 0;
+> +
+> +	for (; memcg; memcg = parent_mem_cgroup(memcg)) {
+> +		__invalidate_reclaim_iterators(memcg, dead_memcg);
+> +		if (memcg == root_mem_cgroup)
+> +			invalidate_root = 1;
+> +	}
+> +
+> +	if (!invalidate_root)
+> +		__invalidate_reclaim_iterators(root_mem_cgroup, dead_memcg);
+> +}
+> +
+>  /**
+>   * mem_cgroup_scan_tasks - iterate over tasks of a memory cgroup hierarchy
+>   * @memcg: hierarchy root
