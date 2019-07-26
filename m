@@ -1,37 +1,66 @@
-From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
-Subject: Re: [PATCH net-next 3/3] dt-bindings: net: ethernet: Update mt7622
- docs and dts to reflect the new phylink API
-Date: Fri, 26 Jul 2019 14:19:05 +0100
-Message-ID: <20190726131905.GP1330@shell.armlinux.org.uk>
-References: <20190724192411.20639-1-opensource@vdorst.com>
- <20190725193123.GA32542@lunn.ch>
- <20190726071956.Horde.s4rfuzovwXB-d3LnV0PLRc8@www.vdorst.com>
- <20190726131604.GA18223@lunn.ch>
+From: Walter Wu <walter-zh.wu@mediatek.com>
+Subject: Re: [PATCH v3] kasan: add memory corruption identification for
+ software tag-based mode
+Date: Fri, 26 Jul 2019 21:19:24 +0800
+Message-ID: <1564147164.515.10.camel@mtksdccf07>
+References: <20190613081357.1360-1-walter-zh.wu@mediatek.com>
+         <da7591c9-660d-d380-d59e-6d70b39eaa6b@virtuozzo.com>
+         <1560447999.15814.15.camel@mtksdccf07>
+         <1560479520.15814.34.camel@mtksdccf07>
+         <1560744017.15814.49.camel@mtksdccf07>
+         <CACT4Y+Y3uS59rXf92ByQuFK_G4v0H8NNnCY1tCbr4V+PaZF3ag@mail.gmail.com>
+         <1560774735.15814.54.camel@mtksdccf07>
+         <1561974995.18866.1.camel@mtksdccf07>
+         <CACT4Y+aMXTBE0uVkeZz+MuPx3X1nESSBncgkScWvAkciAxP1RA@mail.gmail.com>
+         <ebc99ee1-716b-0b18-66ab-4e93de02ce50@virtuozzo.com>
+         <1562640832.9077.32.camel@mtksdccf07>
+         <d9fd1d5b-9516-b9b9-0670-a1885e79f278@virtuozzo.com>
+         <1562839579.5846.12.camel@mtksdccf07>
+         <37897fb7-88c1-859a-dfcc-0a5e89a642e0@virtuozzo.com>
+         <1563160001.4793.4.camel@mtksdccf07>
+         <9ab1871a-2605-ab34-3fd3-4b44a0e17ab7@virtuozzo.com>
+         <1563789162.31223.3.camel@mtksdccf07>
+         <e62da62a-2a63-3a1c-faeb-9c5561a5170c@virtuozzo.com>
+         <1564144097.515.3.camel@mtksdccf07>
+         <71df2bd5-7bc8-2c82-ee31-3f68c3b6296d@virtuozzo.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <netdev-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190726131604.GA18223@lunn.ch>
-Sender: netdev-owner@vger.kernel.org
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>, netdev@vger.kernel.org, frank-w@public-files.de, sean.wang@mediatek.com, f.fainelli@gmail.com, davem@davemloft.net, matthias.bgg@gmail.com, vivien.didelot@gmail.com, john@phrozen.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, robh+dt@kernel.org, devicetree@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <71df2bd5-7bc8-2c82-ee31-3f68c3b6296d@virtuozzo.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Andrey Ryabinin <aryabinin@virtuozzo.com>
+Cc: Dmitry Vyukov <dvyukov@google.com>, Alexander Potapenko <glider@google.com>, Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Matthias Brugger <matthias.bgg@gmail.com>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Arnd Bergmann <arnd@arndb.de>, Vasily Gorbik <gor@linux.ibm.com>, Andrey Konovalov <andreyknvl@google.com>, "Jason A . Donenfeld" <Jason@zx2c4.com>, Miles Chen <miles.chen@mediatek.com>, kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>, Linux-MM <linux-mm@kvack.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream <wsd_upstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jul 26, 2019 at 03:16:04PM +0200, Andrew Lunn wrote:
-> Are you sure it is using SGMII and not 2500BaseX? Can you get access
-> to the signalling word? SGMII is supposed to indicate to the MAC what
-> speed it is using, via inband signalling. So there should not be any
-> need for a fixed-link. 2500BaseX however does not have such
-> signalling, so there would need to be a fixed link.
+On Fri, 2019-07-26 at 15:52 +0300, Andrey Ryabinin wrote:
 > 
-> Maybe we should really consider what phy-mode = "sgmii"; means. Should
-> this include the overclocked 2.5G speed, or should we add a 2500sgmii
-> link mode?
+> On 7/26/19 3:28 PM, Walter Wu wrote:
+> > On Fri, 2019-07-26 at 15:00 +0300, Andrey Ryabinin wrote:
+> >>
+> >
+> >>>
+> >>>
+> >>> I remember that there are already the lists which you concern. Maybe we
+> >>> can try to solve those problems one by one.
+> >>>
+> >>> 1. deadlock issue? cause by kmalloc() after kfree()?
+> >>
+> >> smp_call_on_cpu()
+> > 
+> >>> 2. decrease allocation fail, to modify GFP_NOWAIT flag to GFP_KERNEL?
+> >>
+> >> No, this is not gonna work. Ideally we shouldn't have any allocations there.
+> >> It's not reliable and it hurts performance.
+> >>
+> > I dont know this meaning, we need create a qobject and put into
+> > quarantine, so may need to call kmem_cache_alloc(), would you agree this
+> > action?
+> > 
+> 
+> How is this any different from what you have now?
 
-Note that Documentation/networking/phy.rst now contains definitions
-for SGMII, 1000BASE-X and 2500BASE-X.
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
-According to speedtest.net: 11.9Mbps down 500kbps up
+I originally thought you already agreed the free-list(tag-based
+quarantine) after fix those issue. If no allocation there, i think maybe
+only move generic quarantine into tag-based kasan, but its memory
+consumption is more bigger our patch. what do you think?
