@@ -1,103 +1,68 @@
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Subject: [PATCH] i2c: mediatek: disable zero-length transfers for mt8183
-Date: Fri, 26 Jul 2019 16:53:06 +0800
-Message-ID: <20190726085305.163306-1-hsinyi@chromium.org>
+From: <gtk_ruiwang@mediatek.com>
+Subject: media: mtk-vcodec: Handle H264 error bitstreams
+Date: Fri, 26 Jul 2019 16:54:33 +0800
+Message-ID: <20190726085433.15612-1-gtk_ruiwang@mediatek.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-arm-kernel@lists.infradead.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Wolfram Sang <wsa@the-dreams.de>, Qii Wang <qii.wang@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>, Thomas Gleixner <tglx@linutronix.de>, Jun Gao <jun.gao@mediatek.com>, Alexandru M Stan <amstan@chromium.org>, linux-i2c@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Hans Verkuil <hverkuil@xs4all.nl>, Tomasz Figa <tfiga@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>
+Cc: Longfei Wang <longfei.wang@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, gtk_ruiwang <gtk_ruiwang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-When doing i2cdetect quick write mode, we would get transfer
-error ENOMEM, and i2cdetect shows there's no device at the address.
-Quoting from mt8183 datasheet, the number of transfers to be
-transferred in one transaction should be set to bigger than 1,
-so we should forbid zero-length transfer and update functionality.
+From: gtk_ruiwang <gtk_ruiwang@mediatek.com>
 
-Incorrect return:
-localhost ~ # i2cdetect -q -y 0
-     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
-00:          -- -- -- -- -- -- -- -- -- -- -- -- --
-10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-70: -- -- -- -- -- -- -- --
+Error h264 bitstreams which picture info are out range of
+decoder hardware specification, and no nal start code at the
+beginning of the buffer, stop decoding and exit.
 
-After this patch:
-localhost ~ #  i2cdetect -q -y 0
-Error: Can't use SMBus Quick Write command on this bus
-
-localhost ~ #  i2cdetect -y 0
-Warning: Can't use SMBus Quick Write command, will skip some addresses
-     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
-00:
-10:
-20:
-30: -- -- -- -- -- -- -- --
-40:
-50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-60:
-70:
-
-Reported-by: Alexandru M Stan <amstan@chromium.org>
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Signed-off-by: gtk_ruiwang <gtk_ruiwang@mediatek.com>
 ---
-Previous patch and discussion:
-http://patchwork.ozlabs.org/patch/1042684/
----
- drivers/i2c/busses/i2c-mt65xx.c | 13 +++++++++++--
- 1 file changed, 11 insertions(+), 2 deletions(-)
+ .../platform/mtk-vcodec/vdec/vdec_h264_if.c      | 16 ++++++++++++++--
+ 1 file changed, 14 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index 252edb433fdf..2842ca4b8c3b 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -234,6 +234,10 @@ static const struct i2c_adapter_quirks mt7622_i2c_quirks = {
- 	.max_num_msgs = 255,
- };
+diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
+index c5f8f1fca44c..49aa85a9bb5a 100644
+--- a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
++++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
+@@ -29,6 +29,9 @@
+ #define H264_MAX_FB_NUM				17
+ #define HDR_PARSING_BUF_SZ			1024
  
-+static const struct i2c_adapter_quirks mt8183_i2c_quirks = {
-+	.flags = I2C_AQ_NO_ZERO_LEN,
-+};
++#define DEC_ERR_RET(ret)			((ret) >> 16)
++#define H264_ERR_NOT_VALID			3
 +
- static const struct mtk_i2c_compatible mt2712_compat = {
- 	.regs = mt_i2c_regs_v1,
- 	.pmic_i2c = 0,
-@@ -298,6 +302,7 @@ static const struct mtk_i2c_compatible mt8173_compat = {
- };
+ /**
+  * struct h264_fb - h264 decode frame buffer information
+  * @vdec_fb_va  : virtual address of struct vdec_fb
+@@ -357,8 +360,11 @@ static int vdec_h264_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+ 	buf = (unsigned char *)bs->va;
+ 	buf_sz = bs->size;
+ 	nal_start_idx = find_start_code(buf, buf_sz);
+-	if (nal_start_idx < 0)
++	if (nal_start_idx < 0) {
++		mtk_vcodec_err(inst, "invalid nal start code");
++		err = -EIO;
+ 		goto err_free_fb_out;
++	}
  
- static const struct mtk_i2c_compatible mt8183_compat = {
-+	.quirks = &mt8183_i2c_quirks,
- 	.regs = mt_i2c_regs_v2,
- 	.pmic_i2c = 0,
- 	.dcm = 0,
-@@ -870,7 +875,11 @@ static irqreturn_t mtk_i2c_irq(int irqno, void *dev_id)
+ 	nal_start = buf[nal_start_idx];
+ 	nal_type = NAL_TYPE(buf[nal_start_idx]);
+@@ -382,8 +388,14 @@ static int vdec_h264_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+ 	data[0] = buf_sz;
+ 	data[1] = nal_start;
+ 	err = vpu_dec_start(vpu, data, 2);
+-	if (err)
++	if (err) {
++		if (err > 0 && (DEC_ERR_RET(err) == H264_ERR_NOT_VALID)) {
++			mtk_vcodec_err(inst, "- error bitstream - err = %d -",
++				       err);
++			err = -EIO;
++		}
+ 		goto err_free_fb_out;
++	}
  
- static u32 mtk_i2c_functionality(struct i2c_adapter *adap)
- {
--	return I2C_FUNC_I2C | I2C_FUNC_SMBUS_EMUL;
-+	if (adap->quirks->flags & I2C_AQ_NO_ZERO_LEN)
-+		return I2C_FUNC_I2C |
-+			(I2C_FUNC_SMBUS_EMUL & ~I2C_FUNC_SMBUS_QUICK);
-+	else
-+		return I2C_FUNC_I2C | I2C_FUNC_SMBUS_EMUL;
- }
- 
- static const struct i2c_algorithm mtk_i2c_algorithm = {
-@@ -933,8 +942,8 @@ static int mtk_i2c_probe(struct platform_device *pdev)
- 	i2c->dev = &pdev->dev;
- 	i2c->adap.dev.parent = &pdev->dev;
- 	i2c->adap.owner = THIS_MODULE;
--	i2c->adap.algo = &mtk_i2c_algorithm;
- 	i2c->adap.quirks = i2c->dev_comp->quirks;
-+	i2c->adap.algo = &mtk_i2c_algorithm;
- 	i2c->adap.timeout = 2 * HZ;
- 	i2c->adap.retries = 1;
- 
+ 	*res_chg = inst->vsi->dec.resolution_changed;
+ 	if (*res_chg) {
 -- 
-2.20.1
+2.18.0
