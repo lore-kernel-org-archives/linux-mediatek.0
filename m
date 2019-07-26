@@ -1,66 +1,119 @@
-From: Walter Wu <walter-zh.wu@mediatek.com>
-Subject: Re: [PATCH v3] kasan: add memory corruption identification for
- software tag-based mode
-Date: Fri, 26 Jul 2019 21:19:24 +0800
-Message-ID: <1564147164.515.10.camel@mtksdccf07>
-References: <20190613081357.1360-1-walter-zh.wu@mediatek.com>
-         <da7591c9-660d-d380-d59e-6d70b39eaa6b@virtuozzo.com>
-         <1560447999.15814.15.camel@mtksdccf07>
-         <1560479520.15814.34.camel@mtksdccf07>
-         <1560744017.15814.49.camel@mtksdccf07>
-         <CACT4Y+Y3uS59rXf92ByQuFK_G4v0H8NNnCY1tCbr4V+PaZF3ag@mail.gmail.com>
-         <1560774735.15814.54.camel@mtksdccf07>
-         <1561974995.18866.1.camel@mtksdccf07>
-         <CACT4Y+aMXTBE0uVkeZz+MuPx3X1nESSBncgkScWvAkciAxP1RA@mail.gmail.com>
-         <ebc99ee1-716b-0b18-66ab-4e93de02ce50@virtuozzo.com>
-         <1562640832.9077.32.camel@mtksdccf07>
-         <d9fd1d5b-9516-b9b9-0670-a1885e79f278@virtuozzo.com>
-         <1562839579.5846.12.camel@mtksdccf07>
-         <37897fb7-88c1-859a-dfcc-0a5e89a642e0@virtuozzo.com>
-         <1563160001.4793.4.camel@mtksdccf07>
-         <9ab1871a-2605-ab34-3fd3-4b44a0e17ab7@virtuozzo.com>
-         <1563789162.31223.3.camel@mtksdccf07>
-         <e62da62a-2a63-3a1c-faeb-9c5561a5170c@virtuozzo.com>
-         <1564144097.515.3.camel@mtksdccf07>
-         <71df2bd5-7bc8-2c82-ee31-3f68c3b6296d@virtuozzo.com>
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [RFC,
+	v3 9/9] media: platform: Add Mediatek ISP P1 shared memory device
+Date: Fri, 26 Jul 2019 23:04:42 +0900
+Message-ID: <CAAFQd5BE1hAgYG-0OY_SEOcz2g4WLeCxP=6G=5xhLb++vewspw@mail.gmail.com>
+References: <jungo.lin@mediatek.com>
+	<20190611035344.29814-1-jungo.lin@mediatek.com>
+	<20190611035344.29814-10-jungo.lin@mediatek.com>
+	<20190701072532.GB137710@chromium.org>
+	<1562297618.1212.46.camel@mtksdccf07>
+	<CAAFQd5BaTQ-Q7gsE0X+d4_81OZq9WHaCYkmALt7_4A1JFo=_8g@mail.gmail.com>
+	<1562313579.1212.73.camel@mtksdccf07>
+	<CAAFQd5AaNFpMGCVJREY85n8UetEwd99TOka8-ECoLzMbMkos_g@mail.gmail.com>
+	<1563870117.1212.455.camel@mtksdccf07>
+	<CAAFQd5Bh80N+cMhz=eyHUGJLaE5uuypOawQvHrTgGSMDvmcpLA@mail.gmail.com>
+	<20190726074116.GA19745@infradead.org>
+	<CAAFQd5CXwRm-3jD+rfNNDNLH=gT_i0QYSAG3XBo3SJnPTY56_w@mail.gmail.com>
+	<4460bc91-352a-7f3a-cbed-1b95e743ca8c@arm.com>
+	<1564142386.1212.621.camel@mtksdccf07>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <71df2bd5-7bc8-2c82-ee31-3f68c3b6296d@virtuozzo.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andrey Ryabinin <aryabinin@virtuozzo.com>
-Cc: Dmitry Vyukov <dvyukov@google.com>, Alexander Potapenko <glider@google.com>, Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Matthias Brugger <matthias.bgg@gmail.com>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Arnd Bergmann <arnd@arndb.de>, Vasily Gorbik <gor@linux.ibm.com>, Andrey Konovalov <andreyknvl@google.com>, "Jason A . Donenfeld" <Jason@zx2c4.com>, Miles Chen <miles.chen@mediatek.com>, kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>, Linux-MM <linux-mm@kvack.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream <wsd_upstream@mediatek.com>
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <1564142386.1212.621.camel@mtksdccf07>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Jungo Lin <jungo.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, =?UTF-8?B?U2VhbiBDaGVuZyAo6YSt5piH5byYKQ==?= <sean.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?RnJlZGVyaWMgQ2hlbiAo6Zmz5L+K5YWDKQ==?= <frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?UnlubiBXdSAo5ZCz6IKy5oGpKQ==?= <rynn.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, =?UTF-8?B?UnlhbiBZdSAo5L2Z5a2f5L+uKQ==?= <ryan.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?RnJhbmtpZSBDaGl1ICjpgrHmloflh7Ep?= <frankie.chiu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sj Huang <sj.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, ddavenport-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS <iommu@lists
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2019-07-26 at 15:52 +0300, Andrey Ryabinin wrote:
-> 
-> On 7/26/19 3:28 PM, Walter Wu wrote:
-> > On Fri, 2019-07-26 at 15:00 +0300, Andrey Ryabinin wrote:
-> >>
+On Fri, Jul 26, 2019 at 8:59 PM Jungo Lin <jungo.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+>
+> Hi Robin:
+>
+> On Fri, 2019-07-26 at 12:04 +0100, Robin Murphy wrote:
+> > On 26/07/2019 08:42, Tomasz Figa wrote:
+> > > On Fri, Jul 26, 2019 at 4:41 PM Christoph Hellwig <hch-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org> wrote:
+> > >>
+> > >> On Fri, Jul 26, 2019 at 02:15:14PM +0900, Tomasz Figa wrote:
+> > >>> Could you try dma_get_sgtable() with the SCP struct device and then
+> > >>> dma_map_sg() with the P1 struct device?
+> > >>
+> > >> Please don't do that.  dma_get_sgtable is a pretty broken API (see
+> > >> the common near the arm implementation) and we should not add more
+> > >> users of it.  If you want a piece of memory that can be mapped to
+> > >> multiple devices allocate it using alloc_pages and then just map
+> > >> it to each device.
+> > >
+> > > Thanks for taking a look at this thread.
+> > >
+> > > Unfortunately that wouldn't work. We have a specific reserved memory
+> > > pool that is the only memory area accessible to one of the devices.
+> > > Any idea how to handle this?
 > >
-> >>>
-> >>>
-> >>> I remember that there are already the lists which you concern. Maybe we
-> >>> can try to solve those problems one by one.
-> >>>
-> >>> 1. deadlock issue? cause by kmalloc() after kfree()?
-> >>
-> >> smp_call_on_cpu()
-> > 
-> >>> 2. decrease allocation fail, to modify GFP_NOWAIT flag to GFP_KERNEL?
-> >>
-> >> No, this is not gonna work. Ideally we shouldn't have any allocations there.
-> >> It's not reliable and it hurts performance.
-> >>
-> > I dont know this meaning, we need create a qobject and put into
-> > quarantine, so may need to call kmem_cache_alloc(), would you agree this
-> > action?
-> > 
-> 
-> How is this any different from what you have now?
+> > If it's reserved in the sense of being outside struct-page-backed
+> > "kernel memory", then provided you have a consistent CPU physical
+> > address it might be reasonable for other devices to access it via
+> > dma_map_resource().
+> >
+> > Robin.
+>
+> Thank you for your suggestion.
+>
+> After revising to use dma_map_resource(), it is worked. Below is the
+> current implementation. Pleas kindly help us to check if there is any
+> misunderstanding.
+>
+> #define MTK_ISP_COMPOSER_MEM_SIZE               0x200000
+>
+>         /*
+>          * Allocate coherent reserved memory for SCP firmware usage.
+>          * The size of SCP composer's memory is fixed to 0x200000
+>          * for the requirement of firmware.
+>          */
+>         ptr = dma_alloc_coherent(p1_dev->cam_dev.smem_dev,
+>                                  MTK_ISP_COMPOSER_MEM_SIZE, &addr, GFP_KERNEL);
+>         if (!ptr) {
+>                 dev_err(dev, "failed to allocate compose memory\n");
+>                 return -ENOMEM;
+>         }
+>         p1_dev->composer_scp_addr = addr;
+>         p1_dev->composer_virt_addr = ptr;
+>         dev_dbg(dev, "scp addr:%pad va:%pK\n", &addr, ptr);
+>
+>         /*
+>          * This reserved memory is also be used by ISP P1 HW.
+>          * Need to get iova address for ISP P1 DMA.
+>          */
+>         addr = dma_map_resource(dev, addr, MTK_ISP_COMPOSER_MEM_SIZE,
+>                                 DMA_BIDIRECTIONAL, DMA_ATTR_SKIP_CPU_SYNC);
 
-I originally thought you already agreed the free-list(tag-based
-quarantine) after fix those issue. If no allocation there, i think maybe
-only move generic quarantine into tag-based kasan, but its memory
-consumption is more bigger our patch. what do you think?
+This is still incorrect, because addr is a DMA address, but the second
+argument to dma_map_resource() is a physical address.
+
+>         if (dma_mapping_error(dev, addr)) {
+>                 dev_err(dev, "Failed to map scp iova\n");
+>                 ret = -ENOMEM;
+>                 goto fail_free_mem;
+>         }
+>         p1_dev->composer_iova = addr;
+>         dev_info(dev, "scp iova addr:%pad\n", &addr);
+>
+> Moreover, appropriate Tomasz & Christoph's help on this issue.
+
+Robin, the memory is specified using the reserved-memory DT binding
+and managed by the coherent DMA pool framework. We can allocate from
+it using dma_alloc_coherent(), which gives us a DMA address, not CPU
+physial address (although in practice on this platform they are equal
+numerically).
+
+Best regards,
+Tomasz
