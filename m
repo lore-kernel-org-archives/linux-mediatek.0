@@ -1,24 +1,19 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [RFC,
- v3 9/9] media: platform: Add Mediatek ISP P1 shared memory device
-Date: Fri, 26 Jul 2019 16:42:36 +0900
-Message-ID: <CAAFQd5CXwRm-3jD+rfNNDNLH=gT_i0QYSAG3XBo3SJnPTY56_w@mail.gmail.com>
+From: Jungo Lin <jungo.lin@mediatek.com>
+Subject: Re: [RFC,v3 8/9] media: platform: Add Mediatek ISP P1 SCP
+ communication
+Date: Fri, 26 Jul 2019 16:07:17 +0800
+Message-ID: <1564128437.1212.615.camel@mtksdccf07>
 References: <jungo.lin@mediatek.com>
  <20190611035344.29814-1-jungo.lin@mediatek.com>
- <20190611035344.29814-10-jungo.lin@mediatek.com>
- <20190701072532.GB137710@chromium.org>
- <1562297618.1212.46.camel@mtksdccf07>
- <CAAFQd5BaTQ-Q7gsE0X+d4_81OZq9WHaCYkmALt7_4A1JFo=_8g@mail.gmail.com>
- <1562313579.1212.73.camel@mtksdccf07>
- <CAAFQd5AaNFpMGCVJREY85n8UetEwd99TOka8-ECoLzMbMkos_g@mail.gmail.com>
- <1563870117.1212.455.camel@mtksdccf07>
- <CAAFQd5Bh80N+cMhz=eyHUGJLaE5uuypOawQvHrTgGSMDvmcpLA@mail.gmail.com>
- <20190726074116.GA19745@infradead.org>
+ <20190611035344.29814-9-jungo.lin@mediatek.com>
+ <20190710095827.GC181405@chromium.org>
+ <1563675513.1212.444.camel@mtksdccf07>
+ <CAAFQd5BT7M425AbFicYuX+wr-twgS_cxQ937+Rgxo6Y2fA6_gA@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190726074116.GA19745@infradead.org>
+In-Reply-To: <CAAFQd5BT7M425AbFicYuX+wr-twgS_cxQ937+Rgxo6Y2fA6_gA@mail.gmail.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -28,27 +23,156 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Christoph Hellwig <hch@infradead.org>
-Cc: devicetree@vger.kernel.org, =?UTF-8?B?U2VhbiBDaGVuZyAo6YSt5piH5byYKQ==?= <sean.cheng@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, =?UTF-8?B?UnlubiBXdSAo5ZCz6IKy5oGpKQ==?= <rynn.wu@mediatek.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, Rob Herring <robh@kernel.org>, =?UTF-8?B?UnlhbiBZdSAo5L2Z5a2f5L+uKQ==?= <ryan.yu@mediatek.com>, =?UTF-8?B?RnJhbmtpZSBDaGl1ICjpgrHmloflh7Ep?= <frankie.chiu@mediatek.com>, Hans Verkuil <hverkuil@xs4all.nl>, Jungo Lin <jungo.lin@mediatek.com>, Sj Huang <sj.huang@mediatek.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, ddavenport@chromium.org, =?UTF-8?B?RnJlZGVyaWMgQ2hlbiAo6Zmz5L+K5YWDKQ==?= <frederic.chen@mediatek.com>, list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.o
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: devicetree@vger.kernel.org, Sean Cheng =?UTF-8?Q?=28=E9=84=AD=E6=98=87=E5=BC=98=29?= <sean.cheng@mediatek.com>, Frederic Chen =?UTF-8?Q?=28=E9=99=B3=E4=BF=8A=E5=85=83=29?= <frederic.chen@mediatek.com>, Rynn Wu =?UTF-8?Q?=28=E5=90=B3=E8=82=B2=E6=81=A9=29?= <rynn.wu@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>, Rob Herring <robh@kernel.org>, Ryan Yu =?UTF-8?Q?=28=E4=BD=99=E5=AD=9F=E4=BF=AE=29?= <ryan.yu@mediatek.com>, Frankie Chiu =?UTF-8?Q?=28=E9=82=B1=E6=96=87=E5=87=B1=29?= <frankie.chiu@mediatek.com>, Hans Verkuil <hverkuil@xs4all.nl>, ddavenport@chromium.org, Sj Huang <sj.huang@mediatek.com>, "moderated
+ list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, list@263.net:IOMMU DRIVERS <iommu@lists.li
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jul 26, 2019 at 4:41 PM Christoph Hellwig <hch@infradead.org> wrote:
->
-> On Fri, Jul 26, 2019 at 02:15:14PM +0900, Tomasz Figa wrote:
-> > Could you try dma_get_sgtable() with the SCP struct device and then
-> > dma_map_sg() with the P1 struct device?
->
-> Please don't do that.  dma_get_sgtable is a pretty broken API (see
-> the common near the arm implementation) and we should not add more
-> users of it.  If you want a piece of memory that can be mapped to
-> multiple devices allocate it using alloc_pages and then just map
-> it to each device.
+Hi, Tomasz:
 
-Thanks for taking a look at this thread.
+On Thu, 2019-07-25 at 19:56 +0900, Tomasz Figa wrote:
+> Hi Jungo,
+> 
+> On Sun, Jul 21, 2019 at 11:18 AM Jungo Lin <jungo.lin@mediatek.com> wrote:
+> [snip]
+> > > > +           wake_up_interruptible(&isp_ctx->composer_tx_thread.wq);
+> > > > +           isp_ctx->composer_tx_thread.thread = NULL;
+> > > > +   }
+> > > > +
+> > > > +   if (isp_ctx->composer_deinit_thread.thread) {
+> > > > +           wake_up(&isp_ctx->composer_deinit_thread.wq);
+> > > > +           isp_ctx->composer_deinit_thread.thread = NULL;
+> > > > +   }
+> > > > +   mutex_unlock(&isp_ctx->lock);
+> > > > +
+> > > > +   pm_runtime_put_sync(&p1_dev->pdev->dev);
+> > >
+> > > No need to use the sync variant.
+> > >
+> >
+> > We don't get this point. If we will call pm_runtime_get_sync in
+> > mtk_isp_hw_init function, will we need to call
+> > pm_runtime_put_sync_autosuspend in mtk_isp_hw_release in next patch?
+> > As we know, we should call runtime pm functions in pair.
+> >
+> 
+> My point is that pm_runtime_put_sync() is only needed if one wants the
+> runtime count to be decremented after the function returns. Normally
+> there is no need to do so and one would call pm_runtime_put(), or if
+> autosuspend is used, pm_runtime_put_autosuspend() (note there is no
+> "sync" in the name).
+> 
+> [snip]
 
-Unfortunately that wouldn't work. We have a specific reserved memory
-pool that is the only memory area accessible to one of the devices.
-Any idea how to handle this?
+Ok, got your point.
+We will change to use pm_runtime_put_autosuspend() which has ASYNC flag.
+
+> > > +static void isp_composer_handler(void *data, unsigned int len, void *priv)
+> > > > +{
+> > > > +   struct mtk_isp_p1_ctx *isp_ctx = (struct mtk_isp_p1_ctx *)priv;
+> > > > +   struct isp_p1_device *p1_dev = p1_ctx_to_dev(isp_ctx);
+> > > > +   struct device *dev = &p1_dev->pdev->dev;
+> > > > +   struct mtk_isp_scp_p1_cmd *ipi_msg;
+> > > > +
+> > > > +   ipi_msg = (struct mtk_isp_scp_p1_cmd *)data;
+> > >
+> > > Should we check that len == sizeof(*ipi_msg)? (Or at least >=, if data could
+> > > contain some extra bytes at the end.)
+> > >
+> >
+> > The len parameter is the actual sending bytes from SCP to kernel.
+> > In the runtime, it is only 6 bytes for isp_ack_info command
+> > However, sizeof(*ipi_msg) is large due to struct mtk_isp_scp_p1_cmd is
+> > union structure.
+> >
+> 
+> That said we still should check if len is enough to cover the data
+> we're accessing below.
+> 
+
+Ok, we will add the len checking before accessing the data.
+
+> > > > +
+> > > > +   if (ipi_msg->cmd_id != ISP_CMD_ACK)
+> > > > +           return;
+> > > > +
+> > > > +   if (ipi_msg->ack_info.cmd_id == ISP_CMD_FRAME_ACK) {
+> > > > +           dev_dbg(dev, "ack frame_num:%d",
+> > > > +                   ipi_msg->ack_info.frame_seq_no);
+> > > > +           atomic_set(&isp_ctx->composed_frame_id,
+> > > > +                      ipi_msg->ack_info.frame_seq_no);
+> > >
+> > > I suppose we are expecting here that ipi_msg->ack_info.frame_seq_no would be
+> > > just isp_ctx->composed_frame_id + 1, right? If not, we probably dropped some
+> > > frames and we should handle that somehow.
+> > >
+> >
+> > No, we use isp_ctx->composed_frame_id to save which frame sequence
+> > number are composed done in SCP. In new design, we will move this from
+> > isp_ctx to p1_dev.
+> 
+> But we compose the frames in order, don't we? Wouldn't every composed
+> frame would be just previous frame ID + 1?
+> 
+> [snip]
+
+Yes, we compose the frames in order.
+At the same time, we already increased "frame ID + 1" in
+mtk_isp_req_enqueue() for each new request before sending to SCP for
+composing. After receiving the ACK from SCP, we think the frame ID is
+composed done and save by isp_ctx->composed_frame_id(v3).
+
+[RFC v3]
+void mtk_isp_req_enqueue(struct device *dev, struct media_request *req)
+{
+	...
+	frameparams.frame_seq_no = isp_ctx->frame_seq_no++;
+
+[RFC v4]
+void mtk_isp_req_enqueue(struct mtk_cam_dev *cam,
+			 struct mtk_cam_dev_request *req)
+{
+	struct mtk_isp_p1_device *p1_dev = dev_get_drvdata(cam->dev);
+
+	/* Accumulated frame sequence number */
+	req->frame_params.frame_seq_no = ++p1_dev->enqueue_frame_seq_no;
+
+ 
+
+> > > > +void isp_composer_hw_init(struct device *dev)
+> > > > +{
+> > > > +   struct mtk_isp_scp_p1_cmd composer_tx_cmd;
+> > > > +   struct isp_p1_device *p1_dev = get_p1_device(dev);
+> > > > +   struct mtk_isp_p1_ctx *isp_ctx = &p1_dev->isp_ctx;
+> > > > +
+> > > > +   memset(&composer_tx_cmd, 0, sizeof(composer_tx_cmd));
+> > > > +   composer_tx_cmd.cmd_id = ISP_CMD_INIT;
+> > > > +   composer_tx_cmd.frameparam.hw_module = isp_ctx->isp_hw_module;
+> > > > +   composer_tx_cmd.frameparam.cq_addr.iova = isp_ctx->scp_mem_iova;
+> > > > +   composer_tx_cmd.frameparam.cq_addr.scp_addr = isp_ctx->scp_mem_pa;
+> > >
+> > > Should we also specify the size of the buffer? Otherwise we could end up
+> > > with some undetectable overruns.
+> > >
+> >
+> > The size of SCP composer's memory is fixed to 0x200000.
+> > Is it necessary to specify the size of this buffer?
+> >
+> > #define MTK_ISP_COMPOSER_MEM_SIZE 0x200000
+> >
+> > ptr = dma_alloc_coherent(p1_dev->cam_dev.smem_dev,
+> >                         MTK_ISP_COMPOSER_MEM_SIZE, &addr, GFP_KERNEL);
+> >
+> 
+> Okay, but please add a comment saying that this is an implicit
+> requirement of the firmware.
+> 
+> Best regards,
+> Tomasz
+
+Ok, we will add comments.
 
 Best regards,
-Tomasz
+
+
+Jungo
