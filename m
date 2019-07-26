@@ -1,234 +1,61 @@
-From: Miles Chen <miles.chen@mediatek.com>
-Subject: Re: [PATCH v2] mm: memcontrol: fix use after free in
- mem_cgroup_iter()
-Date: Fri, 26 Jul 2019 18:20:23 +0800
-Message-ID: <1564136423.15330.4.camel@mtkswgap22>
-References: <20190726021247.16162-1-miles.chen@mediatek.com>
+From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [RFC, v3 9/9] media: platform: Add Mediatek ISP P1 shared memory
+	device
+Date: Fri, 26 Jul 2019 12:04:23 +0100
+Message-ID: <4460bc91-352a-7f3a-cbed-1b95e743ca8c@arm.com>
+References: <jungo.lin@mediatek.com>
+	<20190611035344.29814-1-jungo.lin@mediatek.com>
+	<20190611035344.29814-10-jungo.lin@mediatek.com>
+	<20190701072532.GB137710@chromium.org>
+	<1562297618.1212.46.camel@mtksdccf07>
+	<CAAFQd5BaTQ-Q7gsE0X+d4_81OZq9WHaCYkmALt7_4A1JFo=_8g@mail.gmail.com>
+	<1562313579.1212.73.camel@mtksdccf07>
+	<CAAFQd5AaNFpMGCVJREY85n8UetEwd99TOka8-ECoLzMbMkos_g@mail.gmail.com>
+	<1563870117.1212.455.camel@mtksdccf07>
+	<CAAFQd5Bh80N+cMhz=eyHUGJLaE5uuypOawQvHrTgGSMDvmcpLA@mail.gmail.com>
+	<20190726074116.GA19745@infradead.org>
+	<CAAFQd5CXwRm-3jD+rfNNDNLH=gT_i0QYSAG3XBo3SJnPTY56_w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190726021247.16162-1-miles.chen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Johannes Weiner <hannes@cmpxchg.org>
-Cc: Michal Hocko <mhocko@kernel.org>, Vladimir Davydov <vdavydov.dev@gmail.com>, cgroups@vger.kernel.org, linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <CAAFQd5CXwRm-3jD+rfNNDNLH=gT_i0QYSAG3XBo3SJnPTY56_w-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Language: en-GB
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Christoph Hellwig <hch-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, =?UTF-8?B?U2VhbiBDaGVuZyAo6YSt5piH5byYKQ==?= <sean.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?RnJlZGVyaWMgQ2hlbiAo6Zmz5L+K5YWDKQ==?= <frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?UnlubiBXdSAo5ZCz6IKy5oGpKQ==?= <rynn.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, =?UTF-8?B?UnlhbiBZdSAo5L2Z5a2f5L+uKQ==?= <ryan.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?B?RnJhbmtpZSBDaGl1ICjpgrHmloflh7Ep?= <frankie.chiu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, Jungo Lin <jungo.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sj Huang <sj.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, ddavenport-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>linu
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Johannes,
+On 26/07/2019 08:42, Tomasz Figa wrote:
+> On Fri, Jul 26, 2019 at 4:41 PM Christoph Hellwig <hch-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org> wrote:
+>>
+>> On Fri, Jul 26, 2019 at 02:15:14PM +0900, Tomasz Figa wrote:
+>>> Could you try dma_get_sgtable() with the SCP struct device and then
+>>> dma_map_sg() with the P1 struct device?
+>>
+>> Please don't do that.  dma_get_sgtable is a pretty broken API (see
+>> the common near the arm implementation) and we should not add more
+>> users of it.  If you want a piece of memory that can be mapped to
+>> multiple devices allocate it using alloc_pages and then just map
+>> it to each device.
+> 
+> Thanks for taking a look at this thread.
+> 
+> Unfortunately that wouldn't work. We have a specific reserved memory
+> pool that is the only memory area accessible to one of the devices.
+> Any idea how to handle this?
 
-I post patch v2 with proper comment you mentioned.
-(I am not sure if I can copy your acked-by to patch v2 directly)
+If it's reserved in the sense of being outside struct-page-backed 
+"kernel memory", then provided you have a consistent CPU physical 
+address it might be reasonable for other devices to access it via 
+dma_map_resource().
 
-Miles
-
-On Fri, 2019-07-26 at 10:12 +0800, Miles Chen wrote:
-> This patch is sent to report an use after free in mem_cgroup_iter()
-> after merging commit: be2657752e9e "mm: memcg: fix use after free in
-> mem_cgroup_iter()".
-> 
-> I work with android kernel tree (4.9 & 4.14), and the commit:
-> be2657752e9e "mm: memcg: fix use after free in mem_cgroup_iter()" has
-> been merged to the trees. However, I can still observe use after free
-> issues addressed in the commit be2657752e9e.
-> (on low-end devices, a few times this month)
-> 
-> backtrace:
-> 	css_tryget <- crash here
-> 	mem_cgroup_iter
-> 	shrink_node
-> 	shrink_zones
-> 	do_try_to_free_pages
-> 	try_to_free_pages
-> 	__perform_reclaim
-> 	__alloc_pages_direct_reclaim
-> 	__alloc_pages_slowpath
-> 	__alloc_pages_nodemask
-> 
-> To debug, I poisoned mem_cgroup before freeing it:
-> 
-> static void __mem_cgroup_free(struct mem_cgroup *memcg)
-> 	for_each_node(node)
-> 	free_mem_cgroup_per_node_info(memcg, node);
-> 	free_percpu(memcg->stat);
-> +       /* poison memcg before freeing it */
-> +       memset(memcg, 0x78, sizeof(struct mem_cgroup));
-> 	kfree(memcg);
-> }
-> 
-> The coredump shows the position=0xdbbc2a00 is freed.
-> 
-> (gdb) p/x ((struct mem_cgroup_per_node *)0xe5009e00)->iter[8]
-> $13 = {position = 0xdbbc2a00, generation = 0x2efd}
-> 
-> 0xdbbc2a00:     0xdbbc2e00      0x00000000      0xdbbc2800      0x00000100
-> 0xdbbc2a10:     0x00000200      0x78787878      0x00026218      0x00000000
-> 0xdbbc2a20:     0xdcad6000      0x00000001      0x78787800      0x00000000
-> 0xdbbc2a30:     0x78780000      0x00000000      0x0068fb84      0x78787878
-> 0xdbbc2a40:     0x78787878      0x78787878      0x78787878      0xe3fa5cc0
-> 0xdbbc2a50:     0x78787878      0x78787878      0x00000000      0x00000000
-> 0xdbbc2a60:     0x00000000      0x00000000      0x00000000      0x00000000
-> 0xdbbc2a70:     0x00000000      0x00000000      0x00000000      0x00000000
-> 0xdbbc2a80:     0x00000000      0x00000000      0x00000000      0x00000000
-> 0xdbbc2a90:     0x00000001      0x00000000      0x00000000      0x00100000
-> 0xdbbc2aa0:     0x00000001      0xdbbc2ac8      0x00000000      0x00000000
-> 0xdbbc2ab0:     0x00000000      0x00000000      0x00000000      0x00000000
-> 0xdbbc2ac0:     0x00000000      0x00000000      0xe5b02618      0x00001000
-> 0xdbbc2ad0:     0x00000000      0x78787878      0x78787878      0x78787878
-> 0xdbbc2ae0:     0x78787878      0x78787878      0x78787878      0x78787878
-> 0xdbbc2af0:     0x78787878      0x78787878      0x78787878      0x78787878
-> 0xdbbc2b00:     0x78787878      0x78787878      0x78787878      0x78787878
-> 0xdbbc2b10:     0x78787878      0x78787878      0x78787878      0x78787878
-> 0xdbbc2b20:     0x78787878      0x78787878      0x78787878      0x78787878
-> 0xdbbc2b30:     0x78787878      0x78787878      0x78787878      0x78787878
-> 0xdbbc2b40:     0x78787878      0x78787878      0x78787878      0x78787878
-> 0xdbbc2b50:     0x78787878      0x78787878      0x78787878      0x78787878
-> 0xdbbc2b60:     0x78787878      0x78787878      0x78787878      0x78787878
-> 0xdbbc2b70:     0x78787878      0x78787878      0x78787878      0x78787878
-> 0xdbbc2b80:     0x78787878      0x78787878      0x00000000      0x78787878
-> 0xdbbc2b90:     0x78787878      0x78787878      0x78787878      0x78787878
-> 0xdbbc2ba0:     0x78787878      0x78787878      0x78787878      0x78787878
-> 
-> In the reclaim path, try_to_free_pages() does not setup
-> sc.target_mem_cgroup and sc is passed to do_try_to_free_pages(), ...,
-> shrink_node().
-> 
-> In mem_cgroup_iter(), root is set to root_mem_cgroup because
-> sc->target_mem_cgroup is NULL.
-> It is possible to assign a memcg to root_mem_cgroup.nodeinfo.iter in
-> mem_cgroup_iter().
-> 
-> 	try_to_free_pages
-> 		struct scan_control sc = {...}, target_mem_cgroup is 0x0;
-> 	do_try_to_free_pages
-> 	shrink_zones
-> 	shrink_node
-> 		 mem_cgroup *root = sc->target_mem_cgroup;
-> 		 memcg = mem_cgroup_iter(root, NULL, &reclaim);
-> 	mem_cgroup_iter()
-> 		if (!root)
-> 			root = root_mem_cgroup;
-> 		...
-> 
-> 		css = css_next_descendant_pre(css, &root->css);
-> 		memcg = mem_cgroup_from_css(css);
-> 		cmpxchg(&iter->position, pos, memcg);
-> 
-> My device uses memcg non-hierarchical mode.
-> When we release a memcg: invalidate_reclaim_iterators() reaches only
-> dead_memcg and its parents. If non-hierarchical mode is used,
-> invalidate_reclaim_iterators() never reaches root_mem_cgroup.
-> 
-> static void invalidate_reclaim_iterators(struct mem_cgroup *dead_memcg)
-> {
-> 	struct mem_cgroup *memcg = dead_memcg;
-> 
-> 	for (; memcg; memcg = parent_mem_cgroup(memcg)
-> 	...
-> }
-> 
-> So the use after free scenario looks like:
-> 
-> CPU1						CPU2
-> 
-> try_to_free_pages
-> do_try_to_free_pages
-> shrink_zones
-> shrink_node
-> mem_cgroup_iter()
->     if (!root)
->     	root = root_mem_cgroup;
->     ...
->     css = css_next_descendant_pre(css, &root->css);
->     memcg = mem_cgroup_from_css(css);
->     cmpxchg(&iter->position, pos, memcg);
-> 
-> 					invalidate_reclaim_iterators(memcg);
-> 					...
-> 					__mem_cgroup_free()
-> 						kfree(memcg);
-> 
-> try_to_free_pages
-> do_try_to_free_pages
-> shrink_zones
-> shrink_node
-> mem_cgroup_iter()
->     if (!root)
->     	root = root_mem_cgroup;
->     ...
->     mz = mem_cgroup_nodeinfo(root, reclaim->pgdat->node_id);
->     iter = &mz->iter[reclaim->priority];
->     pos = READ_ONCE(iter->position);
->     css_tryget(&pos->css) <- use after free
-> 
-> To avoid this, we should also invalidate root_mem_cgroup.nodeinfo.iter in
-> invalidate_reclaim_iterators().
-> 
-> Change since v1:
-> Add a comment to explain why we need to handle root_mem_cgroup separately.
-> Rename invalid_root to invalidate_root.
-> 
-> Cc: Johannes Weiner <hannes@cmpxchg.org>
-> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
-> ---
->  mm/memcontrol.c | 38 ++++++++++++++++++++++++++++----------
->  1 file changed, 28 insertions(+), 10 deletions(-)
-> 
-> diff --git a/mm/memcontrol.c b/mm/memcontrol.c
-> index cdbb7a84cb6e..09f2191f113b 100644
-> --- a/mm/memcontrol.c
-> +++ b/mm/memcontrol.c
-> @@ -1130,26 +1130,44 @@ void mem_cgroup_iter_break(struct mem_cgroup *root,
->  		css_put(&prev->css);
->  }
->  
-> -static void invalidate_reclaim_iterators(struct mem_cgroup *dead_memcg)
-> +static void __invalidate_reclaim_iterators(struct mem_cgroup *from,
-> +					struct mem_cgroup *dead_memcg)
->  {
-> -	struct mem_cgroup *memcg = dead_memcg;
->  	struct mem_cgroup_reclaim_iter *iter;
->  	struct mem_cgroup_per_node *mz;
->  	int nid;
->  	int i;
->  
-> -	for (; memcg; memcg = parent_mem_cgroup(memcg)) {
-> -		for_each_node(nid) {
-> -			mz = mem_cgroup_nodeinfo(memcg, nid);
-> -			for (i = 0; i <= DEF_PRIORITY; i++) {
-> -				iter = &mz->iter[i];
-> -				cmpxchg(&iter->position,
-> -					dead_memcg, NULL);
-> -			}
-> +	for_each_node(nid) {
-> +		mz = mem_cgroup_nodeinfo(from, nid);
-> +		for (i = 0; i <= DEF_PRIORITY; i++) {
-> +			iter = &mz->iter[i];
-> +			cmpxchg(&iter->position,
-> +				dead_memcg, NULL);
->  		}
->  	}
->  }
->  
-> +/*
-> + * When cgruop1 non-hierarchy mode is used, parent_mem_cgroup() does
-> + * not walk all the way up to the cgroup root (root_mem_cgroup). So
-> + * we have to handle dead_memcg from cgroup root separately.
-> + */
-> +static void invalidate_reclaim_iterators(struct mem_cgroup *dead_memcg)
-> +{
-> +	struct mem_cgroup *memcg = dead_memcg;
-> +	int invalidate_root = 0;
-> +
-> +	for (; memcg; memcg = parent_mem_cgroup(memcg)) {
-> +		__invalidate_reclaim_iterators(memcg, dead_memcg);
-> +		if (memcg == root_mem_cgroup)
-> +			invalidate_root = 1;
-> +	}
-> +
-> +	if (!invalidate_root)
-> +		__invalidate_reclaim_iterators(root_mem_cgroup, dead_memcg);
-> +}
-> +
->  /**
->   * mem_cgroup_scan_tasks - iterate over tasks of a memory cgroup hierarchy
->   * @memcg: hierarchy root
+Robin.
