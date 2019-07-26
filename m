@@ -1,163 +1,124 @@
-From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
-Subject: Re: [PATCH net-next 3/3] dt-bindings: net: ethernet: Update mt7622
- docs and dts to reflect the new phylink API
-Date: Fri, 26 Jul 2019 17:23:22 +0100
-Message-ID: <20190726162321.GQ1330@shell.armlinux.org.uk>
-References: <20190724192411.20639-1-opensource@vdorst.com>
- <20190725193123.GA32542@lunn.ch>
- <20190726071956.Horde.s4rfuzovwXB-d3LnV0PLRc8@www.vdorst.com>
- <20190726131604.GA18223@lunn.ch>
- <20190726151622.Horde.1AA717IbQrC7_YJcSBe4M-0@www.vdorst.com>
+From: Andrzej Pietrasiewicz <andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v6 00/24] Associate ddc adapters with connectors
+Date: Fri, 26 Jul 2019 19:22:54 +0200
+Message-ID: <cover.1564161140.git.andrzej.p@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-Return-path: <netdev-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190726151622.Horde.1AA717IbQrC7_YJcSBe4M-0@www.vdorst.com>
-Sender: netdev-owner@vger.kernel.org
-To: =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, netdev@vger.kernel.org, frank-w@public-files.de, sean.wang@mediatek.com, f.fainelli@gmail.com, davem@davemloft.net, matthias.bgg@gmail.com, vivien.didelot@gmail.com, john@phrozen.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, robh+dt@kernel.org, devicetree@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/freedreno>
+List-Post: <mailto:freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+List-Help: <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
+Errors-To: freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Sender: "Freedreno" <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+To: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Cc: "Y.C. Chen" <yc_chen-SAlXDmAnmOAqDJ6do+/SaQ@public.gmane.org>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sam Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Ramalingam C <ramalingam.c-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Joonas Lahtinen <joonas.lahtinen-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Benjamin Gaignard <benjamin.gaignard-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?q?Ville=20Syrj=C3=A4l=C3=A4?= <ville.syrjala-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, "David (ChunMing) Zhou" <David1.Zhou-5C7GfCeVMHo@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, Vincent Abriou <vincent.abriou-qxv4g6HH51o@public.gmane.org>, Rob
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jul 26, 2019 at 03:16:22PM +0000, René van Dorst wrote:
-> Quoting Andrew Lunn <andrew@lunn.ch>:
-> > On Fri, Jul 26, 2019 at 07:19:56AM +0000, René van Dorst wrote:
-> > > Quoting Andrew Lunn <andrew@lunn.ch>:
-> > > 
-> > > >>+	gmac0: mac@0 {
-> > > >>+		compatible = "mediatek,eth-mac";
-> > > >>+		reg = <0>;
-> > > >>+		phy-mode = "sgmii";
-> > > >>+
-> > > >>+		fixed-link {
-> > > >>+			speed = <2500>;
-> > > >>+			full-duplex;
-> > > >>+			pause;
-> > > >>+		};
-> > > >>+	};
-> > > >
-> > > >Hi René
-> > > >
-> > > 
-> > > Hi Andrew,
-> > > 
-> > > >SGMII and fixed-link is rather odd. Why do you need this combination?
-> > > 
-> > > BananaPi R64 has a RTL8367S 5+2-port switch, switch interfaces with the SOC
-> > > by a
-> > > (H)SGMII and/or RGMII interface. SGMII is mainly used for the LAN ports and
-> > > RGMII for the WAN port.
-> > > 
-> > > I mimic the SDK software which puts SGMII interface in 2.5GBit fixed-link
-> > > mode.
-> > > The RTL8367S switch code also put switch mac in forge 2.5GBit mode.
-> > > 
-> > > So this is the reason why I put a fixed-link mode here.
-> > 
-> > Are you sure it is using SGMII and not 2500BaseX? Can you get access
-> > to the signalling word? SGMII is supposed to indicate to the MAC what
-> > speed it is using, via inband signalling. So there should not be any
-> > need for a fixed-link. 2500BaseX however does not have such
-> > signalling, so there would need to be a fixed link.
-> 
-> I am not sure.
-> 
-> I just converted the current mainline code to support phylink and mimic the
-> DTS
-> of the SDK. But the SDK seems to be incorrect.
-> 
-> Realtek[0] calls these modes:
-> * SGMII (1.25GHz) Interface
-> * High SGMII (3.125GHz) Interface
-> Also the datasheet that I have doesn't talk about base-x modes.
-
-So this is RTL8367S-CG, which is a switch.  It's entirely possible that
-it really does support what it says it does.
-
-> But MT7622 Reference manual[1] page 1960 says:
->  The core leverages the 1000Base-X PCS and Auto-Negotiation from IEEE 802.3
->  specification (clause 36/37). This IP can support up to 3.125G baud for
-> 2.5Gbps
->  (proprietary 2500Base-X) data rate of MAC by overclocking.
-> 
-> So I think it phy-mode should be 2500Base-X in this case.
-
-Right, so this suggests that it only supports 1000BASE-X and 2500BASE-X
-via the normal method of "over-clocking" 1000BASE-X.
-
-1000BASE-X and SGMII are compatible _if_ and only if you ignore the
-contents of the 16-bit control word which is used for auto-negotiation
-in the case of 1000BASE-X, or for communicating the negotiation results
-in the case of SGMII.  Apart from that 16-bit control word, and the
-semantics of it, at the data link level the two are the same.
-
-> SGMII part is a bit hard for me to support, I don't have the hardware,
-> MediaTek datasheets are mostly incomplete and also I am a not familiar with
-> it.
-> 
-> But I think I know what I have to change.
-> Based on your explanation above.
-> 
-> I think this more correct implementation:
-> 
-> * 1000base-x and 2500base-x always force the link.
-
-I think the above is why you have to force the link: a link consisting
-of one end configured for SGMII and the other end configured for
-1000BASE-X is not a good idea at the best of times, but if you ignore
-the 16-bit control word and force it, it will work.
-
-What this means is that you _should_ be forcing it in DT to be a
-fixed link, and not trying to do auto-neg.
-
-> * SGMII is always inband but I need in phylink_mac_link_status() to readout
->   "PCS_SPEED_ABILITY Clause 45 3.5" register to see the inband status?
->   Or is it just the GMAC PSMR register? For me it is a bit confusing.
->   SGMII block has a register to set the link speed and etc. But tests on the
->   bananapi R64 board shows that I also need to set the GMAC register else it
->   didn't work. Also it is not easy to debug if you don't have the board.
-
-phylink_mac_link_status() is expected to read the results of SGMII
-or 1000BASE-X negotiation at the MAC side of the link.  To see why,
-consider a fiber link:
-
-MAC-PCS --- SFP ----- fiber ----- SFP --- MAC-PCS
-
-The fiber is passive, the SFP merely converts between light and
-electrical signals - there's nothing apart from the MAC's own PCS
-that can report what the negotiation state of the link is.  So,
-you need to read from whatever bit of hardware on the MAC side
-which will report that - basically, the results of the 1000BASE-X
-negotiation.
-
-phylink currently expects results from the PCS to be automatically
-propagated to the MAC through hardware, since that's what happens
-on Marvell setups - however, that can be changed if there are
-setups which need manual propagation.
-
-If we do need to do that, I'd suggest we rename
-phylink_mac_link_status() to be phylink_macpcs_link_status() to
-clarify which bit of hardware it's supposed to be reading from.
-
-> 
-> > Maybe we should really consider what phy-mode = "sgmii"; means. Should
-> > this include the overclocked 2.5G speed, or should we add a 2500sgmii
-> > link mode?
-> 
-> No.
-
-I'm really not in favour of "sgmii" being used to also describe the
-over-clocked SGMII variants.  It's a different protocol - many data
-sheets (e.g. for PHYs that support it) explicitly state that the
-speed bits in the SGMII 16-bit control word are not valid, and
-over-clocked vs normal SGMII can not be auto-negotiated.  Both ends
-must be running at the same speed in order to successfully transfer
-even the 16-bit control word that dictates the link speed.
-
-So, SGMII at 3.125Gbps is really a different interface mode from
-SGMII at 1.25Gbps.
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
-According to speedtest.net: 11.9Mbps down 500kbps up
+SXQgaXMgZGlmZmljdWx0IGZvciBhIHVzZXIgdG8ga25vdyB3aGljaCBvZiB0aGUgaTJjIGFkYXB0
+ZXJzIGlzIGZvciB3aGljaApkcm0gY29ubmVjdG9yLiBUaGlzIHNlcmllcyBhZGRyZXNzZXMgdGhp
+cyBwcm9ibGVtLgoKVGhlIGlkZWEgaXMgdG8gaGF2ZSBhIHN5bWJvbGljIGxpbmsgaW4gY29ubmVj
+dG9yJ3Mgc3lzZnMgZGlyZWN0b3J5LCBlLmcuOgoKbHMgLWwgL3N5cy9jbGFzcy9kcm0vY2FyZDAt
+SERNSS1BLTEvZGRjCmxyd3hyd3hyd3ggMSByb290IHJvb3QgMCBKdW4gMjQgMTA6NDIgL3N5cy9j
+bGFzcy9kcm0vY2FyZDAtSERNSS1BLTEvZGRjIFwKCS0+IC4uLy4uLy4uLy4uL3NvYy8xMzg4MDAw
+MC5pMmMvaTJjLTIKClRoZSB1c2VyIHRoZW4ga25vd3MgdGhhdCB0aGVpciBjYXJkMC1IRE1JLUEt
+MSB1c2VzIGkyYy0yIGFuZCBjYW4gZS5nLiBydW4KZGRjdXRpbDoKCmRkY3V0aWwgLWIgMiBnZXR2
+Y3AgMHgxMApWQ1AgY29kZSAweDEwIChCcmlnaHRuZXNzKTogY3VycmVudCB2YWx1ZSA9ICAgIDkw
+LCBtYXggdmFsdWUgPSAgIDEwMAoKVGhlIGZpcnN0IHBhdGNoIGluIHRoZSBzZXJpZXMgYWRkcyBz
+dHJ1Y3QgaTJjX2FkYXB0ZXIgcG9pbnRlciB0byBzdHJ1Y3QKZHJtX2Nvbm5lY3Rvci4gSWYgdGhl
+IGZpZWxkIGlzIHVzZWQgYnkgYSBwYXJ0aWN1bGFyIGRyaXZlciwgdGhlbiBhbgphcHByb3ByaWF0
+ZSBzeW1ib2xpYyBsaW5rIGlzIGNyZWF0ZWQgYnkgdGhlIGdlbmVyaWMgY29kZSwgd2hpY2ggaXMg
+YWxzbyBhZGRlZApieSB0aGlzIHBhdGNoLgoKUGF0Y2ggMiBhZGRzIGEgbmV3IHZhcmlhbnQgb2Yg
+ZHJtX2Nvbm5lY3Rvcl9pbml0KCksIHNlZSB0aGUgY2hhbmdlbG9nCmJlbG93LgoKUGF0Y2hlcyAz
+Li4yNCBhcmUgZXhhbXBsZXMgb2YgaG93IHRvIGNvbnZlcnQgYSBkcml2ZXIgdG8gdGhpcyBuZXcg
+c2NoZW1lLgoKdjEuLnYyOgoKLSB1c2VkIGZpeGVkIG5hbWUgImRkYyIgZm9yIHRoZSBzeW1ib2xp
+YyBsaW5rIGluIG9yZGVyIHRvIG1ha2UgaXQgZWFzeSBmb3IKdXNlcnNwYWNlIHRvIGZpbmQgdGhl
+IGkyYyBhZGFwdGVyCgp2Mi4udjM6CgotIGNvbnZlcnRlZCBhcyBtYW55IGRyaXZlcnMgYXMgcG9z
+c2libGUuCgp2My4udjQ6CgotIGFkZGVkIFJldmlld2VkLWJ5IGZvciBwYXRjaCAwMS8yMwotIG1v
+dmVkICJkZGMiIGZpZWxkIGFzc2lnbm1lbnQgdG8gYmVmb3JlIGRybV9jb25uZWN0b3JfaW5pdCgp
+IGlzIGNhbGxlZAppbiBtc20sIHZjNCwgc3RpLCBtZ2FnMjAwLCBhc3QsIGFtZGdwdSwgcmFkZW9u
+Ci0gc2ltcGxpZmllZCB0aGUgY29kZSBpbiBhbWRncHUgYW5kIHJhZGVvbiBhdCB0aGUgZXhwZW5z
+ZSBvZiBzb21lIGxpbmVzCmV4Y2VlZGluZyA4MCBjaGFyYWN0ZXJzIGFzIHBlciBBbGV4IERldWNo
+ZXIncyBzdWdnZXN0aW9uCi0gYWRkZWQgaTkxNQoKdjQuLnY1OgoKLSBjaGFuZ2VkICJpbmNsdWRl
+IDxsaW51eC9pMmMuaD4iIHRvICJzdHJ1Y3QgaTJjX2FkYXB0ZXI7IgppbiBkcm1fY29ubmVjdG9y
+LmgsIGNvbnNlcXVlbnRseSwgYWRkZWQgImluY2x1ZGUgPGxpbnV4L2kyYy5oPiIKaW4gZHJtX3N5
+c2ZzLmMuCi0gYWRkZWQgImRybV9jb25uZWN0b3JfaW5pdF93aXRoX2RkYygpIiB2YXJpYW50IHRv
+IGVuc3VyZSB0aGF0IHRoZSBkZGMKZmllbGQgb2YgZHJtX2Nvbm5lY3RvciBpcyBwcmVzZXJ2ZWQg
+YWNjcm9zcyBpdHMgaW52b2NhdGlvbgotIGFjY29yZGluZ2x5IGNoYW5nZWQgaW52b2NhdGlvbnMg
+b2YgZHJtX2Nvbm5lY3Rvcl9pbml0KCkgaW4gdGhlCnRvdWNoZWQgZHJpdmVycyB0byB1c2UgdGhl
+IG5ldyB2YXJpYW50Cgp2NS4udjY6CgotIGltcHJvdmVkIHN1YmplY3QgbGluZSBvZiBwYXRjaCAx
+Ci0gYWRkZWQga2VybmVsLWRvYyBmb3IgZHJtX2Nvbm5lY3Rvcl9pbml0X3dpdGhfZGRjKCkKLSBp
+bXByb3ZlZCBrZXJuZWwtZG9jIGZvciB0aGUgZGRjIGZpZWxkIG9mIHN0cnVjdCBkcm1fY29ubmVj
+dG9yCi0gYWRkZWQgUmV2aWV3ZWQtYnkgaW4gcGF0Y2hlcyAxNyBhbmQgMTgKLSBhZGRlZCBBY2tl
+ZC1ieSBpbiBwYXRjaCAyCi0gbWFkZSB0aGUgb3duZXJzaGlwIG9mIGRkYyBpMmNfYWRhcHRlciBl
+eHBsaWNpdCBpbiBhbGwgcGF0Y2hlcywKdGhpcyBtYWRlIHRoZSBhZmZlY3RlZCBwYXRjaGVzIG11
+Y2ggc2ltcGxlcgoKQEJlbmphbWluCkBTaGF3bgoKVGhlcmUgd2VyZSB5b3VyIEFja2VkLWJ5IG9y
+IFJldmlld2VkLWJ5IGZvciBzb21lIHBhdGNoZXMgaW4gdjQsIGJ1dCBub3cKdGhhdCB0aGUgcGF0
+Y2hlcyB1c2UgdGhlIG5ld2x5IGFkZGVkIGZ1bmN0aW9uIEknbSBub3Qgc3VyZSBJIGNhbiBzdGls
+bAppbmNsdWRlIHRob3NlIHRhZ3Mgd2l0aG91dCB5b3UgYWN0dWFsbHkgY29uZmlybWluZy4gQ2Fu
+IEk/IE9yIGNhbiB5b3UKcGxlYXNlIHJlLXJldmlldz8gCgpUT0RPOiBub3V2ZWF1LCBnbWE1MDAs
+IG9tYXBkcm0sIHBhbmVsLXNpbXBsZSAtIGlmIGFwcGxpY2FibGUuCk90aGVyIGRyaXZlcnMgYXJl
+IGVpdGhlciBhbHJlYWR5IGNvbnZlcnRlZCBvciBkb24ndCBtZW50aW9uIG5laXRoZXIKImRkYyIg
+bm9yICJpMmNfYWRhcHRlciIuCgpBbmRyemVqIFBpZXRyYXNpZXdpY3ogKDI0KToKICBkcm06IEFk
+ZCBkZGMgbGluayBpbiBzeXNmcyBjcmVhdGVkIGJ5IGRybV9jb25uZWN0b3IKICBkcm06IEFkZCBk
+cm1fY29ubmVjdG9yX2luaXQoKSB2YXJpYW50IHdpdGggZGRjCiAgZHJtL2V4eW5vczogUHJvdmlk
+ZSBkZGMgc3ltbGluayBpbiBjb25uZWN0b3IncyBzeXNmcwogIGRybTogcm9ja2NoaXA6IFByb3Zp
+ZGUgZGRjIHN5bWxpbmsgaW4gcmszMDY2X2hkbWkgc3lzZnMgZGlyZWN0b3J5CiAgZHJtOiByb2Nr
+Y2hpcDogUHJvdmlkZSBkZGMgc3ltbGluayBpbiBpbm5vX2hkbWkgc3lzZnMgZGlyZWN0b3J5CiAg
+ZHJtL21zbS9oZG1pOiBQcm92aWRlIGRkYyBzeW1saW5rIGluIGhkbWkgY29ubmVjdG9yIHN5c2Zz
+IGRpcmVjdG9yeQogIGRybS9zdW40aTogaGRtaTogUHJvdmlkZSBkZGMgc3ltbGluayBpbiBzdW40
+aSBoZG1pIGNvbm5lY3RvciBzeXNmcwogICAgZGlyZWN0b3J5CiAgZHJtL21lZGlhdGVrOiBQcm92
+aWRlIGRkYyBzeW1saW5rIGluIGhkbWkgY29ubmVjdG9yIHN5c2ZzIGRpcmVjdG9yeQogIGRybS90
+ZWdyYTogUHJvdmlkZSBkZGMgc3ltbGluayBpbiBvdXRwdXQgY29ubmVjdG9yIHN5c2ZzIGRpcmVj
+dG9yeQogIGRybS9pbXg6IGlteC1sZGI6IFByb3ZpZGUgZGRjIHN5bWxpbmsgaW4gY29ubmVjdG9y
+J3Mgc3lzZnMKICBkcm0vaW14OiBpbXgtdHZlOiBQcm92aWRlIGRkYyBzeW1saW5rIGluIGNvbm5l
+Y3RvcidzIHN5c2ZzCiAgZHJtL3ZjNDogUHJvdmlkZSBkZGMgc3ltbGluayBpbiBjb25uZWN0b3Ig
+c3lzZnMgZGlyZWN0b3J5CiAgZHJtOiB6dGU6IFByb3ZpZGUgZGRjIHN5bWxpbmsgaW4gaGRtaSBj
+b25uZWN0b3Igc3lzZnMgZGlyZWN0b3J5CiAgZHJtOiB6dGU6IFByb3ZpZGUgZGRjIHN5bWxpbmsg
+aW4gdmdhIGNvbm5lY3RvciBzeXNmcyBkaXJlY3RvcnkKICBkcm0vdGlsY2RjOiBQcm92aWRlIGRk
+YyBzeW1saW5rIGluIGNvbm5lY3RvciBzeXNmcyBkaXJlY3RvcnkKICBkcm06IHN0aTogUHJvdmlk
+ZSBkZGMgc3ltbGluayBpbiBoZG1pIGNvbm5lY3RvciBzeXNmcyBkaXJlY3RvcnkKICBkcm0vbWdh
+ZzIwMDogUHJvdmlkZSBkZGMgc3ltbGluayBpbiBjb25uZWN0b3Igc3lzZnMgZGlyZWN0b3J5CiAg
+ZHJtL2FzdDogUHJvdmlkZSBkZGMgc3ltbGluayBpbiBjb25uZWN0b3Igc3lzZnMgZGlyZWN0b3J5
+CiAgZHJtL2JyaWRnZTogZHVtYi12Z2EtZGFjOiBQcm92aWRlIGRkYyBzeW1saW5rIGluIGNvbm5l
+Y3RvciBzeXNmcwogICAgZGlyZWN0b3J5CiAgZHJtL2JyaWRnZTogZHctaGRtaTogUHJvdmlkZSBk
+ZGMgc3ltbGluayBpbiBjb25uZWN0b3Igc3lzZnMgZGlyZWN0b3J5CiAgZHJtL2JyaWRnZTogdGkt
+dGZwNDEwOiBQcm92aWRlIGRkYyBzeW1saW5rIGluIGNvbm5lY3RvciBzeXNmcwogICAgZGlyZWN0
+b3J5CiAgZHJtL2FtZGdwdTogUHJvdmlkZSBkZGMgc3ltbGluayBpbiBjb25uZWN0b3Igc3lzZnMg
+ZGlyZWN0b3J5CiAgZHJtL3JhZGVvbjogUHJvdmlkZSBkZGMgc3ltbGluayBpbiBjb25uZWN0b3Ig
+c3lzZnMgZGlyZWN0b3J5CiAgZHJtL2k5MTU6IFByb3ZpZGUgZGRjIHN5bWxpbmsgaW4gaGRtaSBj
+b25uZWN0b3Igc3lzZnMgZGlyZWN0b3J5CgogLi4uL2dwdS9kcm0vYW1kL2FtZGdwdS9hbWRncHVf
+Y29ubmVjdG9ycy5jICAgIHwgIDk2ICsrKysrKysrLS0tLQogZHJpdmVycy9ncHUvZHJtL2FzdC9h
+c3RfbW9kZS5jICAgICAgICAgICAgICAgIHwgIDEzICstCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdl
+L2R1bWItdmdhLWRhYy5jICAgICAgICAgfCAgIDYgKy0KIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uv
+c3lub3BzeXMvZHctaGRtaS5jICAgICB8ICAgNiArLQogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS90
+aS10ZnA0MTAuYyAgICAgICAgICAgIHwgICA2ICstCiBkcml2ZXJzL2dwdS9kcm0vZHJtX2Nvbm5l
+Y3Rvci5jICAgICAgICAgICAgICAgfCAgMzUgKysrKysKIGRyaXZlcnMvZ3B1L2RybS9kcm1fc3lz
+ZnMuYyAgICAgICAgICAgICAgICAgICB8ICAgOCArCiBkcml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4
+eW5vc19oZG1pLmMgICAgICAgICAgfCAgIDYgKy0KIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2Rpc3Bs
+YXkvaW50ZWxfaGRtaS5jICAgICB8ICAxMiArLQogZHJpdmVycy9ncHUvZHJtL2lteC9pbXgtbGRi
+LmMgICAgICAgICAgICAgICAgIHwgICA3ICstCiBkcml2ZXJzL2dwdS9kcm0vaW14L2lteC10dmUu
+YyAgICAgICAgICAgICAgICAgfCAgIDYgKy0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+aGRtaS5jICAgICAgICAgICB8ICAgNyArLQogZHJpdmVycy9ncHUvZHJtL21nYWcyMDAvbWdhZzIw
+MF9tb2RlLmMgICAgICAgIHwgIDEzICstCiBkcml2ZXJzL2dwdS9kcm0vbXNtL2hkbWkvaGRtaV9j
+b25uZWN0b3IuYyAgICAgfCAgIDYgKy0KIGRyaXZlcnMvZ3B1L2RybS9yYWRlb24vcmFkZW9uX2Nv
+bm5lY3RvcnMuYyAgICB8IDE0MiArKysrKysrKysrKysrLS0tLS0KIGRyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9pbm5vX2hkbWkuYyAgICAgICAgICB8ICAgNiArLQogZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL3JrMzA2Nl9oZG1pLmMgICAgICAgIHwgICA3ICstCiBkcml2ZXJzL2dwdS9kcm0vc3Rp
+L3N0aV9oZG1pLmMgICAgICAgICAgICAgICAgfCAgIDYgKy0KIGRyaXZlcnMvZ3B1L2RybS9zdW40
+aS9zdW40aV9oZG1pX2VuYy5jICAgICAgICB8ICAgNyArLQogZHJpdmVycy9ncHUvZHJtL3RlZ3Jh
+L2hkbWkuYyAgICAgICAgICAgICAgICAgIHwgICA3ICstCiBkcml2ZXJzL2dwdS9kcm0vdGVncmEv
+c29yLmMgICAgICAgICAgICAgICAgICAgfCAgIDcgKy0KIGRyaXZlcnMvZ3B1L2RybS90aWxjZGMv
+dGlsY2RjX3RmcDQxMC5jICAgICAgICB8ICAgNiArLQogZHJpdmVycy9ncHUvZHJtL3ZjNC92YzRf
+aGRtaS5jICAgICAgICAgICAgICAgIHwgIDEyICstCiBkcml2ZXJzL2dwdS9kcm0venRlL3p4X2hk
+bWkuYyAgICAgICAgICAgICAgICAgfCAgIDYgKy0KIGRyaXZlcnMvZ3B1L2RybS96dGUvenhfdmdh
+LmMgICAgICAgICAgICAgICAgICB8ICAgNiArLQogaW5jbHVkZS9kcm0vZHJtX2Nvbm5lY3Rvci5o
+ICAgICAgICAgICAgICAgICAgIHwgIDE4ICsrKwogMjYgZmlsZXMgY2hhbmdlZCwgMzM2IGluc2Vy
+dGlvbnMoKyksIDEyMSBkZWxldGlvbnMoLSkKCi0tIAoyLjE3LjEKCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkZyZWVkcmVubyBtYWlsaW5nIGxpc3QKRnJl
+ZWRyZW5vQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2ZyZWVkcmVubw==
