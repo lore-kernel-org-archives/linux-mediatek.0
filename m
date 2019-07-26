@@ -1,119 +1,114 @@
-From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [RFC,
-	v3 9/9] media: platform: Add Mediatek ISP P1 shared memory device
-Date: Fri, 26 Jul 2019 23:04:42 +0900
-Message-ID: <CAAFQd5BE1hAgYG-0OY_SEOcz2g4WLeCxP=6G=5xhLb++vewspw@mail.gmail.com>
-References: <jungo.lin@mediatek.com>
-	<20190611035344.29814-1-jungo.lin@mediatek.com>
-	<20190611035344.29814-10-jungo.lin@mediatek.com>
-	<20190701072532.GB137710@chromium.org>
-	<1562297618.1212.46.camel@mtksdccf07>
-	<CAAFQd5BaTQ-Q7gsE0X+d4_81OZq9WHaCYkmALt7_4A1JFo=_8g@mail.gmail.com>
-	<1562313579.1212.73.camel@mtksdccf07>
-	<CAAFQd5AaNFpMGCVJREY85n8UetEwd99TOka8-ECoLzMbMkos_g@mail.gmail.com>
-	<1563870117.1212.455.camel@mtksdccf07>
-	<CAAFQd5Bh80N+cMhz=eyHUGJLaE5uuypOawQvHrTgGSMDvmcpLA@mail.gmail.com>
-	<20190726074116.GA19745@infradead.org>
-	<CAAFQd5CXwRm-3jD+rfNNDNLH=gT_i0QYSAG3XBo3SJnPTY56_w@mail.gmail.com>
-	<4460bc91-352a-7f3a-cbed-1b95e743ca8c@arm.com>
-	<1564142386.1212.621.camel@mtksdccf07>
+From: =?utf-8?b?UmVuw6k=?= van Dorst <opensource@vdorst.com>
+Subject: Re: [PATCH net-next 3/3] dt-bindings: net: ethernet: Update mt7622
+ docs and dts to reflect the new phylink API
+Date: Fri, 26 Jul 2019 15:16:22 +0000
+Message-ID: <20190726151622.Horde.1AA717IbQrC7_YJcSBe4M-0@www.vdorst.com>
+References: <20190724192411.20639-1-opensource@vdorst.com>
+ <20190725193123.GA32542@lunn.ch>
+ <20190726071956.Horde.s4rfuzovwXB-d3LnV0PLRc8@www.vdorst.com>
+ <20190726131604.GA18223@lunn.ch>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <1564142386.1212.621.camel@mtksdccf07>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Jungo Lin <jungo.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, =?UTF-8?B?U2VhbiBDaGVuZyAo6YSt5piH5byYKQ==?= <sean.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?RnJlZGVyaWMgQ2hlbiAo6Zmz5L+K5YWDKQ==?= <frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?UnlubiBXdSAo5ZCz6IKy5oGpKQ==?= <rynn.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, =?UTF-8?B?UnlhbiBZdSAo5L2Z5a2f5L+uKQ==?= <ryan.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?RnJhbmtpZSBDaGl1ICjpgrHmloflh7Ep?= <frankie.chiu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sj Huang <sj.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, ddavenport-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS <iommu@lists
+Content-Type: text/plain; charset=utf-8; format=flowed; DelSp=Yes
+Content-Transfer-Encoding: 8bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20190726131604.GA18223@lunn.ch>
+Content-Disposition: inline
+Sender: netdev-owner@vger.kernel.org
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: netdev@vger.kernel.org, frank-w@public-files.de, sean.wang@mediatek.com, f.fainelli@gmail.com, linux@armlinux.org.uk, davem@davemloft.net, matthias.bgg@gmail.com, vivien.didelot@gmail.com, john@phrozen.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, robh+dt@kernel.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jul 26, 2019 at 8:59 PM Jungo Lin <jungo.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
->
-> Hi Robin:
->
-> On Fri, 2019-07-26 at 12:04 +0100, Robin Murphy wrote:
-> > On 26/07/2019 08:42, Tomasz Figa wrote:
-> > > On Fri, Jul 26, 2019 at 4:41 PM Christoph Hellwig <hch-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org> wrote:
-> > >>
-> > >> On Fri, Jul 26, 2019 at 02:15:14PM +0900, Tomasz Figa wrote:
-> > >>> Could you try dma_get_sgtable() with the SCP struct device and then
-> > >>> dma_map_sg() with the P1 struct device?
-> > >>
-> > >> Please don't do that.  dma_get_sgtable is a pretty broken API (see
-> > >> the common near the arm implementation) and we should not add more
-> > >> users of it.  If you want a piece of memory that can be mapped to
-> > >> multiple devices allocate it using alloc_pages and then just map
-> > >> it to each device.
-> > >
-> > > Thanks for taking a look at this thread.
-> > >
-> > > Unfortunately that wouldn't work. We have a specific reserved memory
-> > > pool that is the only memory area accessible to one of the devices.
-> > > Any idea how to handle this?
-> >
-> > If it's reserved in the sense of being outside struct-page-backed
-> > "kernel memory", then provided you have a consistent CPU physical
-> > address it might be reasonable for other devices to access it via
-> > dma_map_resource().
-> >
-> > Robin.
->
-> Thank you for your suggestion.
->
-> After revising to use dma_map_resource(), it is worked. Below is the
-> current implementation. Pleas kindly help us to check if there is any
-> misunderstanding.
->
-> #define MTK_ISP_COMPOSER_MEM_SIZE               0x200000
->
->         /*
->          * Allocate coherent reserved memory for SCP firmware usage.
->          * The size of SCP composer's memory is fixed to 0x200000
->          * for the requirement of firmware.
->          */
->         ptr = dma_alloc_coherent(p1_dev->cam_dev.smem_dev,
->                                  MTK_ISP_COMPOSER_MEM_SIZE, &addr, GFP_KERNEL);
->         if (!ptr) {
->                 dev_err(dev, "failed to allocate compose memory\n");
->                 return -ENOMEM;
->         }
->         p1_dev->composer_scp_addr = addr;
->         p1_dev->composer_virt_addr = ptr;
->         dev_dbg(dev, "scp addr:%pad va:%pK\n", &addr, ptr);
->
->         /*
->          * This reserved memory is also be used by ISP P1 HW.
->          * Need to get iova address for ISP P1 DMA.
->          */
->         addr = dma_map_resource(dev, addr, MTK_ISP_COMPOSER_MEM_SIZE,
->                                 DMA_BIDIRECTIONAL, DMA_ATTR_SKIP_CPU_SYNC);
+Quoting Andrew Lunn <andrew@lunn.ch>:
 
-This is still incorrect, because addr is a DMA address, but the second
-argument to dma_map_resource() is a physical address.
-
->         if (dma_mapping_error(dev, addr)) {
->                 dev_err(dev, "Failed to map scp iova\n");
->                 ret = -ENOMEM;
->                 goto fail_free_mem;
->         }
->         p1_dev->composer_iova = addr;
->         dev_info(dev, "scp iova addr:%pad\n", &addr);
+> On Fri, Jul 26, 2019 at 07:19:56AM +0000, René van Dorst wrote:
+>> Quoting Andrew Lunn <andrew@lunn.ch>:
+>>
+>> >>+	gmac0: mac@0 {
+>> >>+		compatible = "mediatek,eth-mac";
+>> >>+		reg = <0>;
+>> >>+		phy-mode = "sgmii";
+>> >>+
+>> >>+		fixed-link {
+>> >>+			speed = <2500>;
+>> >>+			full-duplex;
+>> >>+			pause;
+>> >>+		};
+>> >>+	};
+>> >
+>> >Hi René
+>> >
+>>
+>> Hi Andrew,
+>>
+>> >SGMII and fixed-link is rather odd. Why do you need this combination?
+>>
+>> BananaPi R64 has a RTL8367S 5+2-port switch, switch interfaces with the SOC
+>> by a
+>> (H)SGMII and/or RGMII interface. SGMII is mainly used for the LAN ports and
+>> RGMII for the WAN port.
+>>
+>> I mimic the SDK software which puts SGMII interface in 2.5GBit fixed-link
+>> mode.
+>> The RTL8367S switch code also put switch mac in forge 2.5GBit mode.
+>>
+>> So this is the reason why I put a fixed-link mode here.
 >
-> Moreover, appropriate Tomasz & Christoph's help on this issue.
+> Are you sure it is using SGMII and not 2500BaseX? Can you get access
+> to the signalling word? SGMII is supposed to indicate to the MAC what
+> speed it is using, via inband signalling. So there should not be any
+> need for a fixed-link. 2500BaseX however does not have such
+> signalling, so there would need to be a fixed link.
 
-Robin, the memory is specified using the reserved-memory DT binding
-and managed by the coherent DMA pool framework. We can allocate from
-it using dma_alloc_coherent(), which gives us a DMA address, not CPU
-physial address (although in practice on this platform they are equal
-numerically).
+I am not sure.
 
-Best regards,
-Tomasz
+I just converted the current mainline code to support phylink and  
+mimic the DTS
+of the SDK. But the SDK seems to be incorrect.
+
+Realtek[0] calls these modes:
+* SGMII (1.25GHz) Interface
+* High SGMII (3.125GHz) Interface
+Also the datasheet that I have doesn't talk about base-x modes.
+
+But MT7622 Reference manual[1] page 1960 says:
+  The core leverages the 1000Base-X PCS and Auto-Negotiation from IEEE 802.3
+  specification (clause 36/37). This IP can support up to 3.125G baud  
+for 2.5Gbps
+  (proprietary 2500Base-X) data rate of MAC by overclocking.
+
+So I think it phy-mode should be 2500Base-X in this case.
+
+SGMII part is a bit hard for me to support, I don't have the hardware,
+MediaTek datasheets are mostly incomplete and also I am a not familiar  
+with it.
+
+But I think I know what I have to change.
+Based on your explanation above.
+
+I think this more correct implementation:
+
+* 1000base-x and 2500base-x always force the link.
+* SGMII is always inband but I need in phylink_mac_link_status() to readout
+   "PCS_SPEED_ABILITY Clause 45 3.5" register to see the inband status?
+   Or is it just the GMAC PSMR register? For me it is a bit confusing.
+   SGMII block has a register to set the link speed and etc. But tests on the
+   bananapi R64 board shows that I also need to set the GMAC register else it
+   didn't work. Also it is not easy to debug if you don't have the board.
+
+> Maybe we should really consider what phy-mode = "sgmii"; means. Should
+> this include the overclocked 2.5G speed, or should we add a 2500sgmii
+> link mode?
+
+No.
+
+>
+>      Andrew
+
+Greats,
+
+René
+
+[0]:  
+https://www.realtek.com/en/products/communications-network-ics/item/rtl8367s-cg
+[1]:  
+https://drive.google.com/file/d/1cW8KQmmVpwDGmBd48KNQes9CRn7FEgBb/view?usp=sharing
