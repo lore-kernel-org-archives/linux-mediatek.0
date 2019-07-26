@@ -1,46 +1,64 @@
-From: Alex Deucher <alexdeucher-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v6 22/24] drm/amdgpu: Provide ddc symlink in connector
- sysfs directory
-Date: Fri, 26 Jul 2019 16:00:59 -0400
-Message-ID: <CADnq5_PJj8_dtq0aJWECcRJ0_uC-XpG6Z6p9Gj3fV_fTLGwZBA@mail.gmail.com>
-References: <cover.1564161140.git.andrzej.p@collabora.com>
- <7fee0fa0d0f77af6595d283d5f3ae5d551475821.1564161140.git.andrzej.p@collabora.com>
- <CADnq5_O1B59Q+68fJgtf_bn_=WQ9yrVPq-V5tL1VQ3+vzgf1Zw@mail.gmail.com>
- <038809c7-e664-e365-a778-03bc11299193@collabora.com>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH net-next 1/3] net: ethernet: mediatek: Add basic
+ PHYLINK support
+Date: Fri, 26 Jul 2019 14:02:45 -0700 (PDT)
+Message-ID: <20190726.140245.129199617321965171.davem@davemloft.net>
+References: <20190724192340.18978-1-opensource@vdorst.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-In-Reply-To: <038809c7-e664-e365-a778-03bc11299193-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/amd-gfx>,
- <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/amd-gfx>
-List-Post: <mailto:amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-List-Help: <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/amd-gfx>,
- <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
-Errors-To: amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Sender: "amd-gfx" <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-To: Andrzej Pietrasiewicz <andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Maling list - DRI developers <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Sam Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean Paul <sean-p7yTbzM4H96eqtR555YLDQ@public.gmane.org>, Allison Randal <allison-wcfNWazeolPR7s880joybQ@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, NXP Linux Team <linux-imx-3arQi8VN3Tc@public.gmane.org>, Dave Airlie <airlied-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, "Wentland, Harry" <Harry.Wentland-5C7GfCeVMHo@public.gmane.org>, Thomas Zimmermann <tzimmermann-l3A5Bk7waGM@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, linux-arm-msm <linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Intel
+Content-Type: Text/Plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8BIT
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20190724192340.18978-1-opensource@vdorst.com>
+Sender: netdev-owner@vger.kernel.org
+To: opensource@vdorst.com
+Cc: netdev@vger.kernel.org, frank-w@public-files.de, sean.wang@mediatek.com, f.fainelli@gmail.com, linux@armlinux.org.uk, matthias.bgg@gmail.com, andrew@lunn.ch, vivien.didelot@gmail.com, john@phrozen.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, robh+dt@kernel.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gRnJpLCBKdWwgMjYsIDIwMTkgYXQgMzo0MiBQTSBBbmRyemVqIFBpZXRyYXNpZXdpY3oKPGFu
-ZHJ6ZWoucEBjb2xsYWJvcmEuY29tPiB3cm90ZToKPgo+IEhpIEFsZXgsCj4KPgo+IFcgZG5pdSAy
-Ni4wNy4yMDE5IG8gMjE6MjgsIEFsZXggRGV1Y2hlciBwaXN6ZToKPiA+IE9uIEZyaSwgSnVsIDI2
-LCAyMDE5IGF0IDE6MjggUE0gQW5kcnplaiBQaWV0cmFzaWV3aWN6Cj4gPiA8YW5kcnplai5wQGNv
-bGxhYm9yYS5jb20+IHdyb3RlOgo+ID4+Cj4gPj4gVXNlIHRoZSBkZGMgcG9pbnRlciBwcm92aWRl
-ZCBieSB0aGUgZ2VuZXJpYyBjb25uZWN0b3IuCj4gPj4KPiA+PiBTaWduZWQtb2ZmLWJ5OiBBbmRy
-emVqIFBpZXRyYXNpZXdpY3ogPGFuZHJ6ZWoucEBjb2xsYWJvcmEuY29tPgo+ID4KPiA+IE5vdGUg
-dGhhdCB0aGlzIG9ubHkgY292ZXJzIHRoZSBsZWdhY3kgZGlzcGxheSBjb2RlLiAgVGhlIG5ldyBE
-Qwo+ID4gZGlzcGxheSBjb2RlIGFsc28gbmVlZHMgdG8gYmUgY29udmVydGVkLiAgU2VlOgo+ID4g
-ZHJpdmVycy9ncHUvZHJtL2FtZC9kaXNwbGF5L2FtZGdwdV9kbS9hbWRncHVfZG0uYwo+ID4gZHJp
-dmVycy9ncHUvZHJtL2FtZC9kaXNwbGF5L2FtZGdwdV9kbS9hbWRncHVfZG1fbXN0X3R5cGVzLmMK
-Pgo+IEluIGFtZGdwdV9kbV9jb25uZWN0b3JfaW5pdCgpIHRoZSBkZGMgaXMgJmkyYy0+YmFzZSwg
-aXMgaXQ/CgpZZXMuCgo+Cj4gQnV0IGl0IGlzIG5vdCBjbGVhciB0byBtZSBob3cgY2FuIEkgZmlu
-ZCBkZGMgcG9pbnRlciBpbgo+IGRtX2RwX2FkZF9tc3RfY29ubmVjdG9yKCk/CgorIEhhcnJ5IGFu
-ZCBOaWNrLgoKaG1tbSwgbm90IHN1cmUgYWJvdXQgTVNULiAgTWF5YmUganVzdCBza2lwIHRoZW0g
-Zm9yIG5vdy4KCkFsZXgKCj4KPiBBbmRyemVqCj4KX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KYW1kLWdmeCBtYWlsaW5nIGxpc3QKYW1kLWdmeEBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9hbWQtZ2Z4
+From: René van Dorst <opensource@vdorst.com>
+Date: Wed, 24 Jul 2019 21:23:40 +0200
+
+> @@ -186,165 +187,219 @@ static void mtk_gmac0_rgmii_adjust(struct mtk_eth *eth, int speed)
+>  	mtk_w32(eth, val, TRGMII_TCK_CTRL);
+>  }
+>  
+> -static void mtk_phy_link_adjust(struct net_device *dev)
+> +static void mtk_mac_config(struct phylink_config *config, unsigned int mode,
+> +			   const struct phylink_link_state *state)
+>  {
+> -	struct mtk_mac *mac = netdev_priv(dev);
+> -	u16 lcl_adv = 0, rmt_adv = 0;
+> -	u8 flowctrl;
+> -	u32 mcr = MAC_MCR_MAX_RX_1536 | MAC_MCR_IPG_CFG |
+> -		  MAC_MCR_FORCE_MODE | MAC_MCR_TX_EN |
+> -		  MAC_MCR_RX_EN | MAC_MCR_BACKOFF_EN |
+> -		  MAC_MCR_BACKPR_EN;
+> +	struct mtk_mac *mac = container_of(config, struct mtk_mac,
+> +					   phylink_config);
+> +	struct mtk_eth *eth = mac->hw;
+>  
+> -	if (unlikely(test_bit(MTK_RESETTING, &mac->hw->state)))
+> -		return;
+> +	u32 ge_mode = 0, val, mcr_cur, mcr_new;
+
+Please elminiate the empty line in the middle of the local variabel
+declarations and adhere to reverse christmas tree ordering.
+> @@ -1798,6 +1853,13 @@ static int mtk_open(struct net_device *dev)
+>  {
+>  	struct mtk_mac *mac = netdev_priv(dev);
+>  	struct mtk_eth *eth = mac->hw;
+> +	int err = phylink_of_phy_connect(mac->phylink, mac->of_node, 0);
+
+Reverse christmas tree please.
+
+> @@ -2375,9 +2407,10 @@ static const struct net_device_ops mtk_netdev_ops = {
+>  
+>  static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
+>  {
+> +	struct phylink *phylink;
+>  	struct mtk_mac *mac;
+>  	const __be32 *_id = of_get_property(np, "reg", NULL);
+> -	int id, err;
+> +	int phy_mode, id, err;
+
+While you are here please fix up the reverse christmas tree ordering, and
+definitely don't make it worse :)
