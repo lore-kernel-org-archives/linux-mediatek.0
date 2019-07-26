@@ -1,191 +1,56 @@
-From: Michal Hocko <mhocko@kernel.org>
-Subject: Re: [PATCH v2] mm: memcontrol: fix use after free in
- mem_cgroup_iter()
-Date: Fri, 26 Jul 2019 14:55:33 +0200
-Message-ID: <20190726125533.GO6142@dhcp22.suse.cz>
-References: <20190726021247.16162-1-miles.chen@mediatek.com>
- <20190726124933.GN6142@dhcp22.suse.cz>
+From: Sam Ravnborg <sam@ravnborg.org>
+Subject: Re: [PATCH v7 2/4] drm/panel: set display info in panel
+ attach
+Date: Fri, 26 Jul 2019 15:15:06 +0200
+Message-ID: <20190726131506.GB17801@ravnborg.org>
+References: <20190710021659.177950-1-dbasehore@chromium.org>
+ <20190710021659.177950-3-dbasehore@chromium.org>
+ <20190723091945.GD787@ravnborg.org>
+ <CAGAzgsonxAcOLxPSoP6Swab+AFPxWaxmC_tg87J=6Nes_awACg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <intel-gfx-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-In-Reply-To: <20190726124933.GN6142@dhcp22.suse.cz>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Miles Chen <miles.chen@mediatek.com>
-Cc: Johannes Weiner <hannes@cmpxchg.org>, Vladimir Davydov <vdavydov.dev@gmail.com>, cgroups@vger.kernel.org, linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+In-Reply-To: <CAGAzgsonxAcOLxPSoP6Swab+AFPxWaxmC_tg87J=6Nes_awACg@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
+List-Post: <mailto:intel-gfx@lists.freedesktop.org>
+List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: intel-gfx-bounces@lists.freedesktop.org
+Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
+To: "dbasehore ." <dbasehore@chromium.org>
+Cc: Maxime Ripard <maxime.ripard@bootlin.com>, Intel Graphics <intel-gfx@lists.freedesktop.org>, linux-kernel <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri 26-07-19 14:49:33, Michal Hocko wrote:
-> On Fri 26-07-19 10:12:47, Miles Chen wrote:
-> > This patch is sent to report an use after free in mem_cgroup_iter()
-> > after merging commit: be2657752e9e "mm: memcg: fix use after free in
-> > mem_cgroup_iter()".
-> > 
-> > I work with android kernel tree (4.9 & 4.14), and the commit:
-> > be2657752e9e "mm: memcg: fix use after free in mem_cgroup_iter()" has
-> > been merged to the trees. However, I can still observe use after free
-> > issues addressed in the commit be2657752e9e.
-> > (on low-end devices, a few times this month)
-> > 
-> > backtrace:
-> > 	css_tryget <- crash here
-> > 	mem_cgroup_iter
-> > 	shrink_node
-> > 	shrink_zones
-> > 	do_try_to_free_pages
-> > 	try_to_free_pages
-> > 	__perform_reclaim
-> > 	__alloc_pages_direct_reclaim
-> > 	__alloc_pages_slowpath
-> > 	__alloc_pages_nodemask
-> > 
-> > To debug, I poisoned mem_cgroup before freeing it:
-> > 
-> > static void __mem_cgroup_free(struct mem_cgroup *memcg)
-> > 	for_each_node(node)
-> > 	free_mem_cgroup_per_node_info(memcg, node);
-> > 	free_percpu(memcg->stat);
-> > +       /* poison memcg before freeing it */
-> > +       memset(memcg, 0x78, sizeof(struct mem_cgroup));
-> > 	kfree(memcg);
-> > }
-> > 
-> > The coredump shows the position=0xdbbc2a00 is freed.
-> > 
-> > (gdb) p/x ((struct mem_cgroup_per_node *)0xe5009e00)->iter[8]
-> > $13 = {position = 0xdbbc2a00, generation = 0x2efd}
-> > 
-> > 0xdbbc2a00:     0xdbbc2e00      0x00000000      0xdbbc2800      0x00000100
-> > 0xdbbc2a10:     0x00000200      0x78787878      0x00026218      0x00000000
-> > 0xdbbc2a20:     0xdcad6000      0x00000001      0x78787800      0x00000000
-> > 0xdbbc2a30:     0x78780000      0x00000000      0x0068fb84      0x78787878
-> > 0xdbbc2a40:     0x78787878      0x78787878      0x78787878      0xe3fa5cc0
-> > 0xdbbc2a50:     0x78787878      0x78787878      0x00000000      0x00000000
-> > 0xdbbc2a60:     0x00000000      0x00000000      0x00000000      0x00000000
-> > 0xdbbc2a70:     0x00000000      0x00000000      0x00000000      0x00000000
-> > 0xdbbc2a80:     0x00000000      0x00000000      0x00000000      0x00000000
-> > 0xdbbc2a90:     0x00000001      0x00000000      0x00000000      0x00100000
-> > 0xdbbc2aa0:     0x00000001      0xdbbc2ac8      0x00000000      0x00000000
-> > 0xdbbc2ab0:     0x00000000      0x00000000      0x00000000      0x00000000
-> > 0xdbbc2ac0:     0x00000000      0x00000000      0xe5b02618      0x00001000
-> > 0xdbbc2ad0:     0x00000000      0x78787878      0x78787878      0x78787878
-> > 0xdbbc2ae0:     0x78787878      0x78787878      0x78787878      0x78787878
-> > 0xdbbc2af0:     0x78787878      0x78787878      0x78787878      0x78787878
-> > 0xdbbc2b00:     0x78787878      0x78787878      0x78787878      0x78787878
-> > 0xdbbc2b10:     0x78787878      0x78787878      0x78787878      0x78787878
-> > 0xdbbc2b20:     0x78787878      0x78787878      0x78787878      0x78787878
-> > 0xdbbc2b30:     0x78787878      0x78787878      0x78787878      0x78787878
-> > 0xdbbc2b40:     0x78787878      0x78787878      0x78787878      0x78787878
-> > 0xdbbc2b50:     0x78787878      0x78787878      0x78787878      0x78787878
-> > 0xdbbc2b60:     0x78787878      0x78787878      0x78787878      0x78787878
-> > 0xdbbc2b70:     0x78787878      0x78787878      0x78787878      0x78787878
-> > 0xdbbc2b80:     0x78787878      0x78787878      0x00000000      0x78787878
-> > 0xdbbc2b90:     0x78787878      0x78787878      0x78787878      0x78787878
-> > 0xdbbc2ba0:     0x78787878      0x78787878      0x78787878      0x78787878
-> > 
-> > In the reclaim path, try_to_free_pages() does not setup
-> > sc.target_mem_cgroup and sc is passed to do_try_to_free_pages(), ...,
-> > shrink_node().
-> > 
-> > In mem_cgroup_iter(), root is set to root_mem_cgroup because
-> > sc->target_mem_cgroup is NULL.
-> > It is possible to assign a memcg to root_mem_cgroup.nodeinfo.iter in
-> > mem_cgroup_iter().
-> > 
-> > 	try_to_free_pages
-> > 		struct scan_control sc = {...}, target_mem_cgroup is 0x0;
-> > 	do_try_to_free_pages
-> > 	shrink_zones
-> > 	shrink_node
-> > 		 mem_cgroup *root = sc->target_mem_cgroup;
-> > 		 memcg = mem_cgroup_iter(root, NULL, &reclaim);
-> > 	mem_cgroup_iter()
-> > 		if (!root)
-> > 			root = root_mem_cgroup;
-> > 		...
-> > 
-> > 		css = css_next_descendant_pre(css, &root->css);
-> > 		memcg = mem_cgroup_from_css(css);
-> > 		cmpxchg(&iter->position, pos, memcg);
-> > 
-> > My device uses memcg non-hierarchical mode.
-> > When we release a memcg: invalidate_reclaim_iterators() reaches only
-> > dead_memcg and its parents. If non-hierarchical mode is used,
-> > invalidate_reclaim_iterators() never reaches root_mem_cgroup.
-> > 
-> > static void invalidate_reclaim_iterators(struct mem_cgroup *dead_memcg)
-> > {
-> > 	struct mem_cgroup *memcg = dead_memcg;
-> > 
-> > 	for (; memcg; memcg = parent_mem_cgroup(memcg)
-> > 	...
-> > }
-> > 
-> > So the use after free scenario looks like:
-> > 
-> > CPU1						CPU2
-> > 
-> > try_to_free_pages
-> > do_try_to_free_pages
-> > shrink_zones
-> > shrink_node
-> > mem_cgroup_iter()
-> >     if (!root)
-> >     	root = root_mem_cgroup;
-> >     ...
-> >     css = css_next_descendant_pre(css, &root->css);
-> >     memcg = mem_cgroup_from_css(css);
-> >     cmpxchg(&iter->position, pos, memcg);
-> > 
-> > 					invalidate_reclaim_iterators(memcg);
-> > 					...
-> > 					__mem_cgroup_free()
-> > 						kfree(memcg);
-> > 
-> > try_to_free_pages
-> > do_try_to_free_pages
-> > shrink_zones
-> > shrink_node
-> > mem_cgroup_iter()
-> >     if (!root)
-> >     	root = root_mem_cgroup;
-> >     ...
-> >     mz = mem_cgroup_nodeinfo(root, reclaim->pgdat->node_id);
-> >     iter = &mz->iter[reclaim->priority];
-> >     pos = READ_ONCE(iter->position);
-> >     css_tryget(&pos->css) <- use after free
-> 
-> Thanks for the write up. This is really useful.
-> 
-> > To avoid this, we should also invalidate root_mem_cgroup.nodeinfo.iter in
-> > invalidate_reclaim_iterators().
-> 
-> I am sorry, I didn't get to comment an earlier version but I am
-> wondering whether it makes more sense to do and explicit invalidation.
-> 
-> [...]
-> > +static void invalidate_reclaim_iterators(struct mem_cgroup *dead_memcg)
-> > +{
-> > +	struct mem_cgroup *memcg = dead_memcg;
-> > +	int invalidate_root = 0;
-> > +
-> > +	for (; memcg; memcg = parent_mem_cgroup(memcg))
-> > +		__invalidate_reclaim_iterators(memcg, dead_memcg);
-> 
-> 	/* here goes your comment */
-> 	if (!dead_memcg->use_hierarchy)
-> 		__invalidate_reclaim_iterators(root_mem_cgroup,	dead_memcg);
-> > +
-> > +}
-> 
-> Other than that the patch looks good to me.
-> 
-> Acked-by: Michal Hocko <mhocko@suse.com>
-
-Btw. I believe we want to push this to stable trees as well. I think it
-goes all the way down to 5ac8fb31ad2e ("mm: memcontrol: convert reclaim
-iterator to simple css refcounting"). Unless I am missing something a
-Fixes: tag would be really helpful.
--- 
-Michal Hocko
-SUSE Labs
+SGkgRGVyZWsuCgpPbiBXZWQsIEp1bCAyNCwgMjAxOSBhdCAwMzoxNToxOVBNIC0wNzAwLCBkYmFz
+ZWhvcmUgLiB3cm90ZToKPiBIaSBTYW0sIHRoYW5rcyBmb3IgcG9pbnRpbmcgb3V0IHRoZSBwb3Rl
+bnRpYWwgY29uZmxpY3QuCj4gCj4gT24gVHVlLCBKdWwgMjMsIDIwMTkgYXQgMjoxOSBBTSBTYW0g
+UmF2bmJvcmcgPHNhbUByYXZuYm9yZy5vcmc+IHdyb3RlOgo+ID4KPiA+IEhpIERlcmVrLgo+ID4K
+PiA+IE9uIFR1ZSwgSnVsIDA5LCAyMDE5IGF0IDA3OjE2OjU3UE0gLTA3MDAsIERlcmVrIEJhc2Vo
+b3JlIHdyb3RlOgo+ID4gPiBEZXZpY2V0cmVlIHN5c3RlbXMgY2FuIHNldCBwYW5lbCBvcmllbnRh
+dGlvbiB2aWEgYSBwYW5lbCBiaW5kaW5nLCBidXQKPiA+ID4gdGhlcmUncyBubyB3YXksIGFzIGlz
+LCB0byBwcm9wYWdhdGUgdGhpcyBzZXR0aW5nIHRvIHRoZSBjb25uZWN0b3IsCj4gPiA+IHdoZXJl
+IHRoZSBwcm9wZXJ0eSBuZWVkIHRvIGJlIGFkZGVkLgo+ID4gPiBUbyBhZGRyZXNzIHRoaXMsIHRo
+aXMgcGF0Y2ggc2V0cyBvcmllbnRhdGlvbiwgYXMgd2VsbCBhcyBvdGhlciBmaXhlZAo+ID4gPiB2
+YWx1ZXMgZm9yIHRoZSBwYW5lbCwgaW4gdGhlIGRybV9wYW5lbF9hdHRhY2ggZnVuY3Rpb24uIFRo
+ZXNlIHZhbHVlcwo+ID4gPiBhcmUgc3RvcmVkIGZyb20gcHJvYmUgaW4gdGhlIGRybV9wYW5lbCBz
+dHJ1Y3QuCj4gPgo+ID4gVGhpcyBhcHByb2NoIHNlZW1zIHRvIGNvbmZsaWN0IHdpdGggd29yayBk
+b25lIGJ5IExhdXJlbnQgd2hlcmUgdGhlCj4gPiBvd25lcnNoaXAvY3JlYXRpb24gb2YgdGhlIGNv
+bm5lY3RvciB3aWxsIGJlIG1vdmVkIHRvIHRoZSBkaXNwbGF5IGNvbnRyb2xsZXIuCj4gPgo+ID4g
+SWYgSSB1bmRlcnN0YW5kIGl0IGNvcnJlY3QgdGhlbiB0aGVyZSBzaG91bGQgbm90IGJlIGEgMTox
+IHJlbGF0aW9uCj4gPiBiZXR3ZWVuIGEgcGFuZWwgYW5kIGEgY29ubmVjdG9yIGFueW1vcmUuCj4g
+Cj4gCj4gQ2FuIHlvdSBwb2ludCBtZSB0byB0aGlzIHdvcms/ClBsZWFzZSB0YWtlIGEgbG9vayBh
+dCB0aGUgc2VyaWVzIHdpdGggc3ViamVjdDoKIltQQVRDSCAwMC82MF0gZHJtL29tYXA6IFJlcGxh
+Y2UgY3VzdG9tIGRpc3BsYXkgZHJpdmVycyB3aXRoIGRybV9icmlkZ2UKYW5kIGRybV9wYW5lbCIK
+TGluazogaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9jb3Zlci8xMTAzNDE3NS8KCkxhdXJl
+bnQgaGFzIGRvbmUgYSBncmVhdCBqb2IgZXhwbGFpbmluZyB0aGUgYmFja2dyb3VuZCwKSWYgeW91
+IGxvb2sgaW50byB0aGUgcGF0Y2hlZCB5b3Ugd2lsbCBzZWUgdGhlIGlkZWEgaXMgdGhhdCBhIGRy
+bV9wYW5lbApubyBsb25nZXIgZ2V0IGF0dGFjaGVkIHRvIGEgZHJtX2NvbnRyb2xsZXIgLSBpdCB3
+aWxsIGJlIGFuIGFyZ3VtZW50IHRvCmdldF9tb2RlcygpLgoKCVNhbQpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC1nZnggbWFpbGluZyBsaXN0Cklu
+dGVsLWdmeEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1nZng=
