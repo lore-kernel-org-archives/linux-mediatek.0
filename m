@@ -1,48 +1,103 @@
-From: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v4 2/3] arm64: dts: mt8183: add emi node
-Date: Fri, 26 Jul 2019 16:23:51 +0800
-Message-ID: <1564129432-15214-3-git-send-email-xixi.chen@mediatek.com>
-References: <1564129432-15214-1-git-send-email-xixi.chen@mediatek.com>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Subject: [PATCH] i2c: mediatek: disable zero-length transfers for mt8183
+Date: Fri, 26 Jul 2019 16:53:06 +0800
+Message-ID: <20190726085305.163306-1-hsinyi@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1564129432-15214-1-git-send-email-xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-arm-kernel@lists.infradead.org
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Wolfram Sang <wsa@the-dreams.de>, Qii Wang <qii.wang@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>, Thomas Gleixner <tglx@linutronix.de>, Jun Gao <jun.gao@mediatek.com>, Alexandru M Stan <amstan@chromium.org>, linux-i2c@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add emi dts node.
+When doing i2cdetect quick write mode, we would get transfer
+error ENOMEM, and i2cdetect shows there's no device at the address.
+Quoting from mt8183 datasheet, the number of transfers to be
+transferred in one transaction should be set to bigger than 1,
+so we should forbid zero-length transfer and update functionality.
 
-Signed-off-by: Xi Chen <xixi.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Incorrect return:
+localhost ~ # i2cdetect -q -y 0
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:          -- -- -- -- -- -- -- -- -- -- -- -- --
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+70: -- -- -- -- -- -- -- --
+
+After this patch:
+localhost ~ #  i2cdetect -q -y 0
+Error: Can't use SMBus Quick Write command on this bus
+
+localhost ~ #  i2cdetect -y 0
+Warning: Can't use SMBus Quick Write command, will skip some addresses
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:
+10:
+20:
+30: -- -- -- -- -- -- -- --
+40:
+50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+60:
+70:
+
+Reported-by: Alexandru M Stan <amstan@chromium.org>
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 ---
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 5 +++++
- 1 file changed, 5 insertions(+)
+Previous patch and discussion:
+http://patchwork.ozlabs.org/patch/1042684/
+---
+ drivers/i2c/busses/i2c-mt65xx.c | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 75c4881..cb6fd18 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -269,6 +269,11 @@
- 			clock-names = "spi", "wrap";
- 		};
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index 252edb433fdf..2842ca4b8c3b 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -234,6 +234,10 @@ static const struct i2c_adapter_quirks mt7622_i2c_quirks = {
+ 	.max_num_msgs = 255,
+ };
  
-+		emi@10219000 {
-+			compatible = "mediatek,mt8183-emi";
-+			reg = <0 0x10219000 0 0x1000>; /* CEN EMI */
-+		};
++static const struct i2c_adapter_quirks mt8183_i2c_quirks = {
++	.flags = I2C_AQ_NO_ZERO_LEN,
++};
 +
- 		uart0: serial@11002000 {
- 			compatible = "mediatek,mt8183-uart",
- 				     "mediatek,mt6577-uart";
+ static const struct mtk_i2c_compatible mt2712_compat = {
+ 	.regs = mt_i2c_regs_v1,
+ 	.pmic_i2c = 0,
+@@ -298,6 +302,7 @@ static const struct mtk_i2c_compatible mt8173_compat = {
+ };
+ 
+ static const struct mtk_i2c_compatible mt8183_compat = {
++	.quirks = &mt8183_i2c_quirks,
+ 	.regs = mt_i2c_regs_v2,
+ 	.pmic_i2c = 0,
+ 	.dcm = 0,
+@@ -870,7 +875,11 @@ static irqreturn_t mtk_i2c_irq(int irqno, void *dev_id)
+ 
+ static u32 mtk_i2c_functionality(struct i2c_adapter *adap)
+ {
+-	return I2C_FUNC_I2C | I2C_FUNC_SMBUS_EMUL;
++	if (adap->quirks->flags & I2C_AQ_NO_ZERO_LEN)
++		return I2C_FUNC_I2C |
++			(I2C_FUNC_SMBUS_EMUL & ~I2C_FUNC_SMBUS_QUICK);
++	else
++		return I2C_FUNC_I2C | I2C_FUNC_SMBUS_EMUL;
+ }
+ 
+ static const struct i2c_algorithm mtk_i2c_algorithm = {
+@@ -933,8 +942,8 @@ static int mtk_i2c_probe(struct platform_device *pdev)
+ 	i2c->dev = &pdev->dev;
+ 	i2c->adap.dev.parent = &pdev->dev;
+ 	i2c->adap.owner = THIS_MODULE;
+-	i2c->adap.algo = &mtk_i2c_algorithm;
+ 	i2c->adap.quirks = i2c->dev_comp->quirks;
++	i2c->adap.algo = &mtk_i2c_algorithm;
+ 	i2c->adap.timeout = 2 * HZ;
+ 	i2c->adap.retries = 1;
+ 
 -- 
-1.9.1
+2.20.1
