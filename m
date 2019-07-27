@@ -1,102 +1,226 @@
-From: Qii Wang <qii.wang@mediatek.com>
-Subject: Re: [PATCH v3 1/2] dt-bindings: i3c: Document MediaTek I3C master
- bindings
-Date: Sat, 27 Jul 2019 09:23:33 +0800
-Message-ID: <1564190613.24702.11.camel@mhfsdcap03>
-References: <1562677762-24067-1-git-send-email-qii.wang@mediatek.com>
- <1562677762-24067-2-git-send-email-qii.wang@mediatek.com>
- <20190724202119.GA26566@bogus>
+From: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2] mm: memcontrol: fix use after free in mem_cgroup_iter()
+Date: Sat, 27 Jul 2019 14:00:10 +0800
+Message-ID: <1564207210.19817.9.camel@mtkswgap22>
+References: <20190726021247.16162-1-miles.chen@mediatek.com>
+ <20190726124933.GN6142@dhcp22.suse.cz>
+ <20190726125533.GO6142@dhcp22.suse.cz>
+ <1564184878.19817.5.camel@mtkswgap22>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190724202119.GA26566@bogus>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh@kernel.org>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, bbrezillon@kernel.org, leilk.liu@mediatek.com, linux-kernel@vger.kernel.org, liguo.zhang@mediatek.com, linux-mediatek@lists.infradead.org, xinping.qian@mediatek.com, matthias.bgg@gmail.com, linux-i3c@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1564184878.19817.5.camel@mtkswgap22>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Michal Hocko <mhocko-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mm-Bw31MaZKKs3YtjvyW6yDsg@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Vladimir Davydov <vdavydov.dev-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Johannes Weiner <hannes-druUgvl0LCNAfugRpC6u6w@public.gmane.org>, cgroups-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2019-07-24 at 14:21 -0600, Rob Herring wrote:
-> On Tue, Jul 09, 2019 at 09:09:21PM +0800, Qii Wang wrote:
-> > Document MediaTek I3C master DT bindings.
-> > 
-> > Signed-off-by: Qii Wang <qii.wang@mediatek.com>
-> > ---
-> >  .../devicetree/bindings/i3c/mtk,i3c-master.txt     |   48 ++++++++++++++++++++
-> >  1 file changed, 48 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt
-> > 
-> > diff --git a/Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt b/Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt
-> > new file mode 100644
-> > index 0000000..d32eda6
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt
-> > @@ -0,0 +1,48 @@
-> > +Bindings for MediaTek I3C master block
-> > +=====================================
-> > +
-> > +Required properties:
-> > +--------------------
-> > +- compatible: shall be "mediatek,i3c-master"
+On Sat, 2019-07-27 at 07:47 +0800, Miles Chen wrote:
+> On Fri, 2019-07-26 at 14:55 +0200, Michal Hocko wrote:
+> > On Fri 26-07-19 14:49:33, Michal Hocko wrote:
+> > > On Fri 26-07-19 10:12:47, Miles Chen wrote:
+> > > > This patch is sent to report an use after free in mem_cgroup_iter()
+> > > > after merging commit: be2657752e9e "mm: memcg: fix use after free in
+> > > > mem_cgroup_iter()".
+> > > > 
+> > > > I work with android kernel tree (4.9 & 4.14), and the commit:
+> > > > be2657752e9e "mm: memcg: fix use after free in mem_cgroup_iter()" has
+> > > > been merged to the trees. However, I can still observe use after free
+> > > > issues addressed in the commit be2657752e9e.
+> > > > (on low-end devices, a few times this month)
+> > > > 
+> > > > backtrace:
+> > > > 	css_tryget <- crash here
+> > > > 	mem_cgroup_iter
+> > > > 	shrink_node
+> > > > 	shrink_zones
+> > > > 	do_try_to_free_pages
+> > > > 	try_to_free_pages
+> > > > 	__perform_reclaim
+> > > > 	__alloc_pages_direct_reclaim
+> > > > 	__alloc_pages_slowpath
+> > > > 	__alloc_pages_nodemask
+> > > > 
+> > > > To debug, I poisoned mem_cgroup before freeing it:
+> > > > 
+> > > > static void __mem_cgroup_free(struct mem_cgroup *memcg)
+> > > > 	for_each_node(node)
+> > > > 	free_mem_cgroup_per_node_info(memcg, node);
+> > > > 	free_percpu(memcg->stat);
+> > > > +       /* poison memcg before freeing it */
+> > > > +       memset(memcg, 0x78, sizeof(struct mem_cgroup));
+> > > > 	kfree(memcg);
+> > > > }
+> > > > 
+> > > > The coredump shows the position=0xdbbc2a00 is freed.
+> > > > 
+> > > > (gdb) p/x ((struct mem_cgroup_per_node *)0xe5009e00)->iter[8]
+> > > > $13 = {position = 0xdbbc2a00, generation = 0x2efd}
+> > > > 
+> > > > 0xdbbc2a00:     0xdbbc2e00      0x00000000      0xdbbc2800      0x00000100
+> > > > 0xdbbc2a10:     0x00000200      0x78787878      0x00026218      0x00000000
+> > > > 0xdbbc2a20:     0xdcad6000      0x00000001      0x78787800      0x00000000
+> > > > 0xdbbc2a30:     0x78780000      0x00000000      0x0068fb84      0x78787878
+> > > > 0xdbbc2a40:     0x78787878      0x78787878      0x78787878      0xe3fa5cc0
+> > > > 0xdbbc2a50:     0x78787878      0x78787878      0x00000000      0x00000000
+> > > > 0xdbbc2a60:     0x00000000      0x00000000      0x00000000      0x00000000
+> > > > 0xdbbc2a70:     0x00000000      0x00000000      0x00000000      0x00000000
+> > > > 0xdbbc2a80:     0x00000000      0x00000000      0x00000000      0x00000000
+> > > > 0xdbbc2a90:     0x00000001      0x00000000      0x00000000      0x00100000
+> > > > 0xdbbc2aa0:     0x00000001      0xdbbc2ac8      0x00000000      0x00000000
+> > > > 0xdbbc2ab0:     0x00000000      0x00000000      0x00000000      0x00000000
+> > > > 0xdbbc2ac0:     0x00000000      0x00000000      0xe5b02618      0x00001000
+> > > > 0xdbbc2ad0:     0x00000000      0x78787878      0x78787878      0x78787878
+> > > > 0xdbbc2ae0:     0x78787878      0x78787878      0x78787878      0x78787878
+> > > > 0xdbbc2af0:     0x78787878      0x78787878      0x78787878      0x78787878
+> > > > 0xdbbc2b00:     0x78787878      0x78787878      0x78787878      0x78787878
+> > > > 0xdbbc2b10:     0x78787878      0x78787878      0x78787878      0x78787878
+> > > > 0xdbbc2b20:     0x78787878      0x78787878      0x78787878      0x78787878
+> > > > 0xdbbc2b30:     0x78787878      0x78787878      0x78787878      0x78787878
+> > > > 0xdbbc2b40:     0x78787878      0x78787878      0x78787878      0x78787878
+> > > > 0xdbbc2b50:     0x78787878      0x78787878      0x78787878      0x78787878
+> > > > 0xdbbc2b60:     0x78787878      0x78787878      0x78787878      0x78787878
+> > > > 0xdbbc2b70:     0x78787878      0x78787878      0x78787878      0x78787878
+> > > > 0xdbbc2b80:     0x78787878      0x78787878      0x00000000      0x78787878
+> > > > 0xdbbc2b90:     0x78787878      0x78787878      0x78787878      0x78787878
+> > > > 0xdbbc2ba0:     0x78787878      0x78787878      0x78787878      0x78787878
+> > > > 
+> > > > In the reclaim path, try_to_free_pages() does not setup
+> > > > sc.target_mem_cgroup and sc is passed to do_try_to_free_pages(), ...,
+> > > > shrink_node().
+> > > > 
+> > > > In mem_cgroup_iter(), root is set to root_mem_cgroup because
+> > > > sc->target_mem_cgroup is NULL.
+> > > > It is possible to assign a memcg to root_mem_cgroup.nodeinfo.iter in
+> > > > mem_cgroup_iter().
+> > > > 
+> > > > 	try_to_free_pages
+> > > > 		struct scan_control sc = {...}, target_mem_cgroup is 0x0;
+> > > > 	do_try_to_free_pages
+> > > > 	shrink_zones
+> > > > 	shrink_node
+> > > > 		 mem_cgroup *root = sc->target_mem_cgroup;
+> > > > 		 memcg = mem_cgroup_iter(root, NULL, &reclaim);
+> > > > 	mem_cgroup_iter()
+> > > > 		if (!root)
+> > > > 			root = root_mem_cgroup;
+> > > > 		...
+> > > > 
+> > > > 		css = css_next_descendant_pre(css, &root->css);
+> > > > 		memcg = mem_cgroup_from_css(css);
+> > > > 		cmpxchg(&iter->position, pos, memcg);
+> > > > 
+> > > > My device uses memcg non-hierarchical mode.
+> > > > When we release a memcg: invalidate_reclaim_iterators() reaches only
+> > > > dead_memcg and its parents. If non-hierarchical mode is used,
+> > > > invalidate_reclaim_iterators() never reaches root_mem_cgroup.
+> > > > 
+> > > > static void invalidate_reclaim_iterators(struct mem_cgroup *dead_memcg)
+> > > > {
+> > > > 	struct mem_cgroup *memcg = dead_memcg;
+> > > > 
+> > > > 	for (; memcg; memcg = parent_mem_cgroup(memcg)
+> > > > 	...
+> > > > }
+> > > > 
+> > > > So the use after free scenario looks like:
+> > > > 
+> > > > CPU1						CPU2
+> > > > 
+> > > > try_to_free_pages
+> > > > do_try_to_free_pages
+> > > > shrink_zones
+> > > > shrink_node
+> > > > mem_cgroup_iter()
+> > > >     if (!root)
+> > > >     	root = root_mem_cgroup;
+> > > >     ...
+> > > >     css = css_next_descendant_pre(css, &root->css);
+> > > >     memcg = mem_cgroup_from_css(css);
+> > > >     cmpxchg(&iter->position, pos, memcg);
+> > > > 
+> > > > 					invalidate_reclaim_iterators(memcg);
+> > > > 					...
+> > > > 					__mem_cgroup_free()
+> > > > 						kfree(memcg);
+> > > > 
+> > > > try_to_free_pages
+> > > > do_try_to_free_pages
+> > > > shrink_zones
+> > > > shrink_node
+> > > > mem_cgroup_iter()
+> > > >     if (!root)
+> > > >     	root = root_mem_cgroup;
+> > > >     ...
+> > > >     mz = mem_cgroup_nodeinfo(root, reclaim->pgdat->node_id);
+> > > >     iter = &mz->iter[reclaim->priority];
+> > > >     pos = READ_ONCE(iter->position);
+> > > >     css_tryget(&pos->css) <- use after free
+> > > 
+> > > Thanks for the write up. This is really useful.
+> > > 
+> > > > To avoid this, we should also invalidate root_mem_cgroup.nodeinfo.iter in
+> > > > invalidate_reclaim_iterators().
+> > > 
+> > > I am sorry, I didn't get to comment an earlier version but I am
+> > > wondering whether it makes more sense to do and explicit invalidation.
+> > > 
 > 
-> Needs to be SoC specific.
+> I think we should keep the original v2 version, the reason is the 
+> !use_hierarchy does not imply we can reach root_mem_cgroup:
+
+Sorry I want to correct myself:
+
+(dead_memcg->use_hierarchy == true) does not guarantee that we can
+reach root_mem_cgroup by parent_mem_cgroup(dead_memcg)
+
+> cd /sys/fs/cgroup/memory/0
+> mkdir 1
+> cd /sys/fs/cgroup/memory/0/1
+> echo 1 > memory.use_hierarchy // only 1 and its children has
+> use_hierarchy set
+> mkdir 2
 > 
-
-We hope that the SOCs will use the same driver and try to avoid big
-changes. If there are inevitable changes in the future, then we will
-modify the compatible to be SoC specific. cdns,i3c-master.txt is not SoC
-specific either.
-
-> > +- reg: physical base address of the controller and apdma base, length of
-> > +  memory mapped region.
-> > +- reg-names: shall be "main" for master controller and "dma" for apdma.
-> > +- interrupts: the interrupt line connected to this I3C master.
-> > +- clocks: shall reference the i3c and apdma clocks.
-> > +- clock-names: shall include "main" and "dma".
-> > +
-> > +Mandatory properties defined by the generic binding (see
-> > +Documentation/devicetree/bindings/i3c/i3c.txt for more details):
-> > +
-> > +- #address-cells: shall be set to 3
-> > +- #size-cells: shall be set to 0
-> > +
-> > +Optional properties defined by the generic binding (see
-> > +Documentation/devicetree/bindings/i3c/i3c.txt for more details):
-> > +
-> > +- i2c-scl-hz
-> > +- i3c-scl-hz
-> > +
-> > +I3C device connected on the bus follow the generic description (see
-> > +Documentation/devicetree/bindings/i3c/i3c.txt for more details).
-> > +
-> > +Example:
-> > +
-> > +	i3c0: i3c@1100d000 {
-> > +		compatible = "mediatek,i3c-master";
-> > +		reg = <0x1100d000 0x1000>,
-> > +		      <0x11000300 0x80>;
-> > +		reg-names = "main", "dma";
-> > +		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_LOW>;
-> > +		clocks = <&infracfg CLK_INFRA_I3C0>,
-> > +			 <&infracfg CLK_INFRA_AP_DMA>;
-> > +		clock-names = "main", "dma";
-> > +		#address-cells = <3>;
-> > +		#size-cells = <0>;
-> > +		i2c-scl-hz = <100000>;
-> > +
-> > +		nunchuk: nunchuk@52 {
-> > +			compatible = "nintendo,nunchuk";
-> > +			reg = <0x52 0x0 0x10>;
-> > +		};
-> > +	};
-> > -- 
-> > 1.7.9.5
+> rmdir 2 // parent_mem_cgroup(2) goes up to 1
+> 
+> > > [...]
+> > > > +static void invalidate_reclaim_iterators(struct mem_cgroup *dead_memcg)
+> > > > +{
+> > > > +	struct mem_cgroup *memcg = dead_memcg;
+> > > > +	int invalidate_root = 0;
+> > > > +
+> > > > +	for (; memcg; memcg = parent_mem_cgroup(memcg))
+> > > > +		__invalidate_reclaim_iterators(memcg, dead_memcg);
+> > > 
+> > > 	/* here goes your comment */
+> > > 	if (!dead_memcg->use_hierarchy)
+> > > 		__invalidate_reclaim_iterators(root_mem_cgroup,	dead_memcg);
+> > > > +
+> > > > +}
+> > > 
+> > > Other than that the patch looks good to me.
+> > > 
+> > > Acked-by: Michal Hocko <mhocko-IBi9RG/b67k@public.gmane.org>
 > > 
+> > Btw. I believe we want to push this to stable trees as well. I think it
+> > goes all the way down to 5ac8fb31ad2e ("mm: memcontrol: convert reclaim
+> > iterator to simple css refcounting"). Unless I am missing something a
+> > Fixes: tag would be really helpful.
+> 
+> No problem. I'll add the fix tag to patch v3.
+> Fixes: 5ac8fb31ad2e ("mm: memcontrol: convert reclaim iterator to simple
+> css refcounting")
+> 
+> 
+> Miles
+> 
+> 
