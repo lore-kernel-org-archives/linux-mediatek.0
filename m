@@ -1,105 +1,35 @@
-From: Boris Brezillon <boris.brezillon@collabora.com>
-Subject: Re: [PATCH v3 1/2] dt-bindings: i3c: Document MediaTek I3C master
- bindings
-Date: Sat, 27 Jul 2019 11:18:59 +0200
-Message-ID: <20190727111859.315994c3@collabora.com>
-References: <1562677762-24067-1-git-send-email-qii.wang@mediatek.com>
-        <1562677762-24067-2-git-send-email-qii.wang@mediatek.com>
-        <20190724202119.GA26566@bogus>
-        <1564190613.24702.11.camel@mhfsdcap03>
+From: Maxime Ripard <mripard@kernel.org>
+Subject: Re: [PATCH v6 07/24] drm/sun4i: hdmi: Provide ddc symlink in sun4i
+ hdmi connector sysfs directory
+Date: Sat, 27 Jul 2019 12:37:56 +0200
+Message-ID: <20190727103756.mow2d6mzhameue6h@flea.home>
+References: <cover.1564161140.git.andrzej.p@collabora.com>
+ <b5a8881b226a9af7d31eb6a57d7fe0fccdcb3a47.1564161140.git.andrzej.p@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1564190613.24702.11.camel@mhfsdcap03>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Qii Wang <qii.wang@mediatek.com>
-Cc: Rob Herring <robh@kernel.org>, bbrezillon@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, linux-i3c@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, leilk.liu@mediatek.com, liguo.zhang@mediatek.com, xinping.qian@mediatek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <b5a8881b226a9af7d31eb6a57d7fe0fccdcb3a47.1564161140.git.andrzej.p@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+Cc: Sam Ravnborg <sam@ravnborg.org>, Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Douglas Anderson <dianders@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, kernel@collabora.com, linux-samsung-soc@vger.kernel.org, Vincent Abriou <vincent.abriou@st.com>, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>, NXP Linux Team <linux-imx@nxp.com>, Dave Airlie <airlied@redhat.com>, intel-gfx@lists.freedesktop.org, freedreno@lists.freedesktop.org, linux-tegra@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>, linux-arm-msm@vger.kernel.org, Mamta Shukla <mamtashukla555@gmail.com>, linux-mediatek@lists.infradead.org, Jyri Sarha <jsarha@ti.co>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, 27 Jul 2019 09:23:33 +0800
-Qii Wang <qii.wang@mediatek.com> wrote:
-
-> On Wed, 2019-07-24 at 14:21 -0600, Rob Herring wrote:
-> > On Tue, Jul 09, 2019 at 09:09:21PM +0800, Qii Wang wrote:  
-> > > Document MediaTek I3C master DT bindings.
-> > > 
-> > > Signed-off-by: Qii Wang <qii.wang@mediatek.com>
-> > > ---
-> > >  .../devicetree/bindings/i3c/mtk,i3c-master.txt     |   48 ++++++++++++++++++++
-> > >  1 file changed, 48 insertions(+)
-> > >  create mode 100644 Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt
-> > > 
-> > > diff --git a/Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt b/Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt
-> > > new file mode 100644
-> > > index 0000000..d32eda6
-> > > --- /dev/null
-> > > +++ b/Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt
-> > > @@ -0,0 +1,48 @@
-> > > +Bindings for MediaTek I3C master block
-> > > +=====================================
-> > > +
-> > > +Required properties:
-> > > +--------------------
-> > > +- compatible: shall be "mediatek,i3c-master"  
-> > 
-> > Needs to be SoC specific.
-> >   
-> 
-> We hope that the SOCs will use the same driver and try to avoid big
-> changes. If there are inevitable changes in the future, then we will
-> modify the compatible to be SoC specific. cdns,i3c-master.txt is not SoC
-> specific either.
-
-The cadence case is a bit different I think. When the driver was
-developed there was no SoC integrating this IP. I guess Mediatek knows
-already which SoC(s) will embed the I3C master block.
-
-> 
-> > > +- reg: physical base address of the controller and apdma base, length of
-> > > +  memory mapped region.
-> > > +- reg-names: shall be "main" for master controller and "dma" for apdma.
-> > > +- interrupts: the interrupt line connected to this I3C master.
-> > > +- clocks: shall reference the i3c and apdma clocks.
-> > > +- clock-names: shall include "main" and "dma".
-> > > +
-> > > +Mandatory properties defined by the generic binding (see
-> > > +Documentation/devicetree/bindings/i3c/i3c.txt for more details):
-> > > +
-> > > +- #address-cells: shall be set to 3
-> > > +- #size-cells: shall be set to 0
-> > > +
-> > > +Optional properties defined by the generic binding (see
-> > > +Documentation/devicetree/bindings/i3c/i3c.txt for more details):
-> > > +
-> > > +- i2c-scl-hz
-> > > +- i3c-scl-hz
-> > > +
-> > > +I3C device connected on the bus follow the generic description (see
-> > > +Documentation/devicetree/bindings/i3c/i3c.txt for more details).
-> > > +
-> > > +Example:
-> > > +
-> > > +	i3c0: i3c@1100d000 {
-> > > +		compatible = "mediatek,i3c-master";
-> > > +		reg = <0x1100d000 0x1000>,
-> > > +		      <0x11000300 0x80>;
-> > > +		reg-names = "main", "dma";
-> > > +		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_LOW>;
-> > > +		clocks = <&infracfg CLK_INFRA_I3C0>,
-> > > +			 <&infracfg CLK_INFRA_AP_DMA>;
-> > > +		clock-names = "main", "dma";
-> > > +		#address-cells = <3>;
-> > > +		#size-cells = <0>;
-> > > +		i2c-scl-hz = <100000>;
-> > > +
-> > > +		nunchuk: nunchuk@52 {
-> > > +			compatible = "nintendo,nunchuk";
-> > > +			reg = <0x52 0x0 0x10>;
-> > > +		};
-> > > +	};
-> > > -- 
-> > > 1.7.9.5
-> > >   
-> 
-> 
+T24gRnJpLCBKdWwgMjYsIDIwMTkgYXQgMDc6MjM6MDFQTSArMDIwMCwgQW5kcnplaiBQaWV0cmFz
+aWV3aWN6IHdyb3RlOgo+IFVzZSB0aGUgZGRjIHBvaW50ZXIgcHJvdmlkZWQgYnkgdGhlIGdlbmVy
+aWMgY29ubmVjdG9yLgo+Cj4gU2lnbmVkLW9mZi1ieTogQW5kcnplaiBQaWV0cmFzaWV3aWN6IDxh
+bmRyemVqLnBAY29sbGFib3JhLmNvbT4KCkFja2VkLWJ5OiBNYXhpbWUgUmlwYXJkIDxtYXhpbWUu
+cmlwYXJkQGJvb3RsaW4uY29tPgoKTWF4aW1lCgotLQpNYXhpbWUgUmlwYXJkLCBCb290bGluCkVt
+YmVkZGVkIExpbnV4IGFuZCBLZXJuZWwgZW5naW5lZXJpbmcKaHR0cHM6Ly9ib290bGluLmNvbQpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
+bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
