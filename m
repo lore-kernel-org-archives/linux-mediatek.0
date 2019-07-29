@@ -1,79 +1,36 @@
-From: Jani Nikula <jani.nikula@linux.intel.com>
-Subject: Re: [PATCH v5 02/24] drm: Add drm_connector_init()
- variant with ddc
-Date: Mon, 29 Jul 2019 11:42:43 +0300
-Message-ID: <875znlp6yk.fsf@intel.com>
-References: <cover.1563960855.git.andrzej.p@collabora.com>
- <53f5ded2971235e5b63c9a3ed4ed8bccf10c78f2.1563960855.git.andrzej.p@collabora.com>
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: Re: [PATCH 6/8] PM / OPP: Support adjusting OPP voltages at runtime
+Date: Mon, 29 Jul 2019 14:50:13 +0530
+Message-ID: <20190729092013.5sz2mdqicrit5nta@vireshk-i7>
+References: <1557997725-12178-1-git-send-email-andrew-sh.cheng@mediatek.com>
+ <1557997725-12178-7-git-send-email-andrew-sh.cheng@mediatek.com>
+ <20190520044704.unftq6q5vy73z5bo@vireshk-i7>
+ <1564371555.18434.11.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <intel-gfx-bounces@lists.freedesktop.org>
-In-Reply-To: <53f5ded2971235e5b63c9a3ed4ed8bccf10c78f2.1563960855.git.andrzej.p@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
-List-Post: <mailto:intel-gfx@lists.freedesktop.org>
-List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: intel-gfx-bounces@lists.freedesktop.org
-Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
-To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>, dri-devel@lists.freedesktop.org
-Cc: "Y.C. Chen" <yc_chen@aspeedtech.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Sam Ravnborg <sam@ravnborg.org>, Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, Douglas Anderson <dianders@chromium.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, kernel@collabora.com, Fabio Estevam <festevam@gmail.com>, "David
- (ChunMing) Zhou" <David1.Zhou@amd.com>, linux-samsung-soc@vger.kernel.org, Joonyoung Shim <jy0922.shim@samsung.com>, linux-rockchip@lists.infradead.org, Vincent Abriou <vincent.abriou@st.com>, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>, NXP Linux Team <linux-imx@nxp.com>, CK Hu <ck.hu@mediatek.co>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1564371555.18434.11.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Roger Lu <roger.lu@mediatek.com>
+Cc: Stephen Boyd <sboyd@codeaurora.org>, Andrew-sh Cheng =?utf-8?B?KOmEreW8j+WLsyk=?= <andrew-sh.cheng@mediatek.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>"linux-kernel@vger.kernel.org" <linux>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gV2VkLCAyNCBKdWwgMjAxOSwgQW5kcnplaiBQaWV0cmFzaWV3aWN6IDxhbmRyemVqLnBAY29s
-bGFib3JhLmNvbT4gd3JvdGU6Cj4gQWxsb3cgcGFzc2luZyBkZGMgYWRhcHRlciBwb2ludGVyIHRv
-IHRoZSBpbml0IGZ1bmN0aW9uLiBFdmVuIGlmCj4gZHJtX2Nvbm5lY3Rvcl9pbml0KCkgc29tZXRp
-bWUgaW4gdGhlIGZ1dHVyZSBkZWNpZGVzIHRvIGUuZy4gbWVtc2V0KCkgYWxsCj4gY29ubmVjdG9y
-IGZpZWxkcyB0byB6ZXJvcywgdGhlIG5ld2x5IGFkZGVkIGZ1bmN0aW9uIGVuc3VyZXMgdGhhdCBh
-dCBpdHMKPiBjb21wbGV0aW9uIHRoZSBkZGMgbWVtYmVyIG9mIGNvbm5lY3RvciBpcyBjb3JyZWN0
-bHkgc2V0Lgo+Cj4gU2lnbmVkLW9mZi1ieTogQW5kcnplaiBQaWV0cmFzaWV3aWN6IDxhbmRyemVq
-LnBAY29sbGFib3JhLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL2RybV9jb25uZWN0b3Iu
-YyB8IDE5ICsrKysrKysrKysrKysrKysrKysKPiAgaW5jbHVkZS9kcm0vZHJtX2Nvbm5lY3Rvci5o
-ICAgICB8ICA1ICsrKysrCj4gIDIgZmlsZXMgY2hhbmdlZCwgMjQgaW5zZXJ0aW9ucygrKQo+Cj4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fY29ubmVjdG9yLmMgYi9kcml2ZXJzL2dw
-dS9kcm0vZHJtX2Nvbm5lY3Rvci5jCj4gaW5kZXggMDY4ZDRiMDVmMWJlLi4wNmZiZmM0NGZiNDgg
-MTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2RybV9jb25uZWN0b3IuYwo+ICsrKyBiL2Ry
-aXZlcnMvZ3B1L2RybS9kcm1fY29ubmVjdG9yLmMKPiBAQCAtMjk2LDYgKzI5NiwyNSBAQCBpbnQg
-ZHJtX2Nvbm5lY3Rvcl9pbml0KHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsCj4gIH0KPiAgRVhQT1JU
-X1NZTUJPTChkcm1fY29ubmVjdG9yX2luaXQpOwo+ICAKPiAraW50IGRybV9jb25uZWN0b3JfaW5p
-dF93aXRoX2RkYyhzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+ICsJCQkJc3RydWN0IGRybV9jb25u
-ZWN0b3IgKmNvbm5lY3RvciwKPiArCQkJCWNvbnN0IHN0cnVjdCBkcm1fY29ubmVjdG9yX2Z1bmNz
-ICpmdW5jcywKPiArCQkJCWludCBjb25uZWN0b3JfdHlwZSwKPiArCQkJCXN0cnVjdCBpMmNfYWRh
-cHRlciAqZGRjKQoKUGxheWluZyB0aGUgZGV2aWwncyBhZHZvY2F0ZSBoZXJlIGEgYml0LiBXaGF0
-IGlmIHlvdSBlbmQgdXAgYWRkaW5nCmFub3RoZXIgdGhpbmcgeW91IG5lZWQgdG8gaW5pdGlhbGl6
-ZSBsaWtlIHRoaXM/IEFyZSB5b3UgZ29pbmcgdG8gbmVlZAp0aHJlZSBtb3JlIGZ1bmN0aW9ucyB0
-byBhY2NvdW50IGZvciB0aGUgY29tYmluYXRpb25zPyBJbml0IHdpdGggZGRjLAp3aXRoIGZvbywg
-d2l0aCBkZGMgYW5kIGZvbz8gU28gSSBnZW5lcmFsbHkgZnJvd24gdXBvbiBpbnRlcmZhY2VzIGxp
-a2UKdGhpcy4KCklmIGV2ZXJ5b25lIHRoaW5rcyB0aGlzIGlzIHRoZSB3YXkgdG8gZ28sIEknbSBu
-b3QgZ29pbmcgdG8gc3RhbmQgaW4gdGhlCndheSwgYnV0IHBlcnNvbmFsbHkgSSdkIHJhdGhlciBz
-d2l0Y2ggb3ZlciBhbGwgb2YgaTkxNSB0byBhIG5ldyB2ZXJzaW9uCm9mIGRybV9jb25uZWN0b3Jf
-aW5pdCgpIHRoYXQganVzdCB0YWtlcyBhbm90aGVyIHBhcmFtZXRlci4KCkJSLApKYW5pLgoKCj4g
-K3sKPiArCWludCByZXQ7Cj4gKwo+ICsJcmV0ID0gZHJtX2Nvbm5lY3Rvcl9pbml0KGRldiwgY29u
-bmVjdG9yLCBmdW5jcywgY29ubmVjdG9yX3R5cGUpOwo+ICsJaWYgKHJldCkKPiArCQlyZXR1cm4g
-cmV0Owo+ICsKPiArCS8qIHByb3ZpZGUgZGRjIHN5bWxpbmsgaW4gc3lzZnMgKi8KPiArCWNvbm5l
-Y3Rvci0+ZGRjID0gZGRjOwo+ICsKPiArCXJldHVybiByZXQ7Cj4gK30KPiArRVhQT1JUX1NZTUJP
-TChkcm1fY29ubmVjdG9yX2luaXRfd2l0aF9kZGMpOwo+ICsKPiAgLyoqCj4gICAqIGRybV9jb25u
-ZWN0b3JfYXR0YWNoX2VkaWRfcHJvcGVydHkgLSBhdHRhY2ggZWRpZCBwcm9wZXJ0eS4KPiAgICog
-QGNvbm5lY3RvcjogdGhlIGNvbm5lY3Rvcgo+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2RybS9kcm1f
-Y29ubmVjdG9yLmggYi9pbmNsdWRlL2RybS9kcm1fY29ubmVjdG9yLmgKPiBpbmRleCAzM2E2ZmZm
-ODVmZGIuLjkzN2ZkYTljMTM3NCAxMDA2NDQKPiAtLS0gYS9pbmNsdWRlL2RybS9kcm1fY29ubmVj
-dG9yLmgKPiArKysgYi9pbmNsdWRlL2RybS9kcm1fY29ubmVjdG9yLmgKPiBAQCAtMTQxMCw2ICsx
-NDEwLDExIEBAIGludCBkcm1fY29ubmVjdG9yX2luaXQoc3RydWN0IGRybV9kZXZpY2UgKmRldiwK
-PiAgCQkgICAgICAgc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvciwKPiAgCQkgICAgICAg
-Y29uc3Qgc3RydWN0IGRybV9jb25uZWN0b3JfZnVuY3MgKmZ1bmNzLAo+ICAJCSAgICAgICBpbnQg
-Y29ubmVjdG9yX3R5cGUpOwo+ICtpbnQgZHJtX2Nvbm5lY3Rvcl9pbml0X3dpdGhfZGRjKHN0cnVj
-dCBkcm1fZGV2aWNlICpkZXYsCj4gKwkJCQlzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9y
-LAo+ICsJCQkJY29uc3Qgc3RydWN0IGRybV9jb25uZWN0b3JfZnVuY3MgKmZ1bmNzLAo+ICsJCQkJ
-aW50IGNvbm5lY3Rvcl90eXBlLAo+ICsJCQkJc3RydWN0IGkyY19hZGFwdGVyICpkZGMpOwo+ICB2
-b2lkIGRybV9jb25uZWN0b3JfYXR0YWNoX2VkaWRfcHJvcGVydHkoc3RydWN0IGRybV9jb25uZWN0
-b3IgKmNvbm5lY3Rvcik7Cj4gIGludCBkcm1fY29ubmVjdG9yX3JlZ2lzdGVyKHN0cnVjdCBkcm1f
-Y29ubmVjdG9yICpjb25uZWN0b3IpOwo+ICB2b2lkIGRybV9jb25uZWN0b3JfdW5yZWdpc3Rlcihz
-dHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yKTsKCi0tIApKYW5pIE5pa3VsYSwgSW50ZWwg
-T3BlbiBTb3VyY2UgR3JhcGhpY3MgQ2VudGVyCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkludGVsLWdmeCBtYWlsaW5nIGxpc3QKSW50ZWwtZ2Z4QGxpc3Rz
-LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2ludGVsLWdmeA==
+On 29-07-19, 11:39, Roger Lu wrote:
+> Dear Stephen Boyd,
+> 
+> This patch is derived from [1]. Please kindly shares the suggestion to
+> us. Thanks very much.
+> 
+> [1]: https://lore.kernel.org/patchwork/patch/599279/
+> 
+> Dear Viresh,
+> 
+> I followed _opp_set_availability() coding style to refine
+> dev_pm_opp_adjust_voltage() from this patch. Is this refinement suitable
+> for OPP core? Thanks a lot.
+
+Looks okay from a quick look.
+
+-- 
+viresh
