@@ -1,106 +1,102 @@
-From: Jani Nikula <jani.nikula@intel.com>
-Subject: Re: [PATCH v1 02/11] drm: drop uapi dependency from drm_print.h
-Date: Mon, 29 Jul 2019 15:45:35 +0300
-Message-ID: <87tvb5nh5c.fsf@intel.com>
-References: <20190718161507.2047-1-sam@ravnborg.org>
- <20190718161507.2047-3-sam@ravnborg.org>
- <156346840026.24728.936589728458336617@skylake-alporthouse-com>
- <460bf1e1-a38b-5f79-26e5-93764067f4e1@amd.com>
+From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+Subject: Re: [PATCH v8 08/11] usb: roles: get usb-role-switch from parent
+Date: Mon, 29 Jul 2019 17:25:00 +0300
+Message-ID: <20190729142500.GE28600@kuha.fi.intel.com>
+References: <1563958245-6321-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1563958245-6321-9-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <460bf1e1-a38b-5f79-26e5-93764067f4e1@amd.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: "Koenig, Christian" <Christian.Koenig@amd.com>, Chris Wilson <chris@chris-wilson.co.uk>, Intel Graphics Development <intel-gfx@lists.freedesktop.org>, Sam Ravnborg <sam@ravnborg.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>
-Cc: Boris Brezillon <bbrezillon@kernel.org>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Liviu Dudau <Liviu.Dudau@arm.com>, Maxime Ripard <maxime.ripard@bootlin.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <seanpaul@chromium.org>, Thierry Reding <treding@nvidia.com>, Sean Paul <sean@poorly.run>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1563958245-6321-9-git-send-email-chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Biju Das <biju.das@bp.renesas.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Linus Walleij <linus.walleij@linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 19 Jul 2019, "Koenig, Christian" <Christian.Koenig@amd.com> wrote:
-> Am 18.07.19 um 18:46 schrieb Chris Wilson:
->> Quoting Sam Ravnborg (2019-07-18 17:14:58)
->>> drm_print.h used DRM_NAME - thus adding a dependency from
->>> include/drm/drm_print.h => uapi/drm/drm.h
->>>
->>> Hardcode the name "drm" to break this dependency.
->>> The idea is that there shall be a minimal dependency
->>> between include/drm/* and uapi/*
->>>
->>> Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
->>> Suggested-by: Daniel Vetter <daniel@ffwll.ch>
->>> Reviewed-by: Daniel Vetter <daniel.vetter@ffwll.ch>
->>> Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
->>> Cc: Maxime Ripard <maxime.ripard@bootlin.com>
->>> Cc: Sean Paul <sean@poorly.run>
->>> Cc: David Airlie <airlied@linux.ie>
->>> Cc: Rob Clark <robdclark@gmail.com>
->>> Cc: Sean Paul <seanpaul@chromium.org>
->>> Cc: Chris Wilson <chris@chris-wilson.co.uk>
->>> Cc: Daniel Vetter <daniel@ffwll.ch>
->>> ---
->>>   include/drm/drm_print.h | 4 +---
->>>   1 file changed, 1 insertion(+), 3 deletions(-)
->>>
->>> diff --git a/include/drm/drm_print.h b/include/drm/drm_print.h
->>> index a5d6f2f3e430..760d1bd0eaf1 100644
->>> --- a/include/drm/drm_print.h
->>> +++ b/include/drm/drm_print.h
->>> @@ -32,8 +32,6 @@
->>>   #include <linux/device.h>
->>>   #include <linux/debugfs.h>
->>>   
->>> -#include <drm/drm.h>
->>> -
->>>   /**
->>>    * DOC: print
->>>    *
->>> @@ -287,7 +285,7 @@ void drm_err(const char *format, ...);
->>>   /* Macros to make printk easier */
->>>   
->>>   #define _DRM_PRINTK(once, level, fmt, ...)                             \
->>> -       printk##once(KERN_##level "[" DRM_NAME "] " fmt, ##__VA_ARGS__)
->>> +       printk##once(KERN_##level "[drm] " fmt, ##__VA_ARGS__)
->> I guess I'm th only one who
->>
->> #undef DRM_NAME
->> #define DRM_NAME i915
->>
->> just so that I didn't have inane logs?
->>
->> One might suggest that instead of hardcoding it, follow the pr_fmt()
->> pattern and only add "[drm]" for the drm core.
->>
->> Even then it so useless (which drm driver is this message for???) that I
->> want to remove them all :(
->
-> Yeah, agree. I mean it is nice if the core drm functions use a prefix 
-> for debug output.
->
-> But I actually don't see the point for individual drivers.
+On Wed, Jul 24, 2019 at 04:50:42PM +0800, Chunfeng Yun wrote:
+> when the USB host controller is the parent of the connector,
+> usually type-B, sometimes don't need the graph, so we should
+> check whether it's parent registers usb-role-switch or not
+> firstly, and get it if exists.
+> 
+> Signed-off-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
 
-We should all migrate to the versions with device...
+I don't think I actually wrote the patch. I may have proposed the code
+for you, but I never prepared a patch out out that. Please drop the
+above Signed-off-by line if that is the case. I case I really did
+write the patch, then you are missing the "From: Heikki..." first
+line, but I really don't remember preparing the patch.
 
-BR,
-Jani.
+If the idea came from me, you can use for example the suggested-by
+tag: "Suggested-by: Heikki Krogerus <heikki.krogerus...".
 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+> v8: no changes
+> v7:
+>   add signed-off-by Chunfeng
+> 
+> v6:
+>   new patch
+> ---
+>  drivers/usb/roles/class.c | 25 +++++++++++++++++++++----
+>  1 file changed, 21 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/usb/roles/class.c b/drivers/usb/roles/class.c
+> index 5b637aaf311f..87439a84c983 100644
+> --- a/drivers/usb/roles/class.c
+> +++ b/drivers/usb/roles/class.c
+> @@ -114,6 +114,19 @@ static void *usb_role_switch_match(struct device_connection *con, int ep,
+>  	return dev ? to_role_switch(dev) : ERR_PTR(-EPROBE_DEFER);
+>  }
+>  
+> +static struct usb_role_switch *
+> +usb_role_switch_is_parent(struct fwnode_handle *fwnode)
+> +{
+> +	struct fwnode_handle *parent = fwnode_get_parent(fwnode);
+> +	struct device *dev;
+> +
+> +	if (!parent || !fwnode_property_present(parent, "usb-role-switch"))
+> +		return NULL;
+> +
+> +	dev = class_find_device(role_class, NULL, parent, switch_fwnode_match);
+> +	return dev ? to_role_switch(dev) : ERR_PTR(-EPROBE_DEFER);
+> +}
+> +
+>  /**
+>   * usb_role_switch_get - Find USB role switch linked with the caller
+>   * @dev: The caller device
+> @@ -125,8 +138,10 @@ struct usb_role_switch *usb_role_switch_get(struct device *dev)
+>  {
+>  	struct usb_role_switch *sw;
+>  
+> -	sw = device_connection_find_match(dev, "usb-role-switch", NULL,
+> -					  usb_role_switch_match);
+> +	sw = usb_role_switch_is_parent(dev_fwnode(dev));
+> +	if (!sw)
+> +		sw = device_connection_find_match(dev, "usb-role-switch", NULL,
+> +						  usb_role_switch_match);
+>  
+>  	if (!IS_ERR_OR_NULL(sw))
+>  		WARN_ON(!try_module_get(sw->dev.parent->driver->owner));
+> @@ -146,8 +161,10 @@ struct usb_role_switch *fwnode_usb_role_switch_get(struct fwnode_handle *fwnode)
+>  {
+>  	struct usb_role_switch *sw;
+>  
+> -	sw = fwnode_connection_find_match(fwnode, "usb-role-switch", NULL,
+> -					  usb_role_switch_match);
+> +	sw = usb_role_switch_is_parent(fwnode);
+> +	if (!sw)
+> +		sw = fwnode_connection_find_match(fwnode, "usb-role-switch",
+> +						  NULL, usb_role_switch_match);
+>  	if (!IS_ERR_OR_NULL(sw))
+>  		WARN_ON(!try_module_get(sw->dev.parent->driver->owner));
+>  
+> -- 
+> 2.21.0
 
->
-> Christian.
->
->> -Chris
->
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+thanks,
 
 -- 
-Jani Nikula, Intel Open Source Graphics Center
+heikki
