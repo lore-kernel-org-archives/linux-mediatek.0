@@ -1,121 +1,242 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: Re: [v2,2/2] PCI: mediatek: Add controller support for MT7629
-Date: Mon, 29 Jul 2019 16:33:41 +0100
-Message-ID: <20190729153341.GA23266@e121166-lin.cambridge.arm.com>
-References: <20190628073425.25165-1-jianjun.wang@mediatek.com>
- <20190628073425.25165-3-jianjun.wang@mediatek.com>
- <1564385918.17211.6.camel@mhfsdcap03>
+From: Johannes Weiner <hannes@cmpxchg.org>
+Subject: Re: [PATCH v2] mm: memcontrol: fix use after free in
+ mem_cgroup_iter()
+Date: Mon, 29 Jul 2019 12:06:46 -0400
+Message-ID: <20190729160646.GD21958@cmpxchg.org>
+References: <20190726021247.16162-1-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1564385918.17211.6.camel@mhfsdcap03>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Jianjun Wang <jianjun.wang@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, linux-pci@vger.kernel.org, youlin.pei@mediatek.com, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20190726021247.16162-1-miles.chen@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Miles Chen <miles.chen@mediatek.com>
+Cc: Michal Hocko <mhocko@kernel.org>, Vladimir Davydov <vdavydov.dev@gmail.com>, cgroups@vger.kernel.org, linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jul 29, 2019 at 03:38:38PM +0800, Jianjun Wang wrote:
-> On Fri, 2019-06-28 at 15:34 +0800, Jianjun Wang wrote:
-> > MT7629 is an ARM platform SoC which has the same PCIe IP with MT7622.
-> > 
-> > The HW default value of its Device ID is invalid, fix its Device ID to
-> > match the hardware implementation.
-> > 
-> > Acked-by: Ryder Lee <ryder.lee@mediatek.com>
-> > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-> > ---
-> >  drivers/pci/controller/pcie-mediatek.c | 18 ++++++++++++++++++
-> >  include/linux/pci_ids.h                |  1 +
-> >  2 files changed, 19 insertions(+)
-> > 
-> > diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> > index 80601e1b939e..e5e6740b635d 100644
-> > --- a/drivers/pci/controller/pcie-mediatek.c
-> > +++ b/drivers/pci/controller/pcie-mediatek.c
-> > @@ -73,6 +73,7 @@
-> >  #define PCIE_MSI_VECTOR		0x0c0
-> >  
-> >  #define PCIE_CONF_VEND_ID	0x100
-> > +#define PCIE_CONF_DEVICE_ID	0x102
-> >  #define PCIE_CONF_CLASS_ID	0x106
-> >  
-> >  #define PCIE_INT_MASK		0x420
-> > @@ -141,12 +142,16 @@ struct mtk_pcie_port;
-> >  /**
-> >   * struct mtk_pcie_soc - differentiate between host generations
-> >   * @need_fix_class_id: whether this host's class ID needed to be fixed or not
-> > + * @need_fix_device_id: whether this host's Device ID needed to be fixed or not
-> > + * @device_id: Device ID which this host need to be fixed
-> >   * @ops: pointer to configuration access functions
-> >   * @startup: pointer to controller setting functions
-> >   * @setup_irq: pointer to initialize IRQ functions
-> >   */
-> >  struct mtk_pcie_soc {
-> >  	bool need_fix_class_id;
-> > +	bool need_fix_device_id;
-> > +	unsigned int device_id;
-> >  	struct pci_ops *ops;
-> >  	int (*startup)(struct mtk_pcie_port *port);
-> >  	int (*setup_irq)(struct mtk_pcie_port *port, struct device_node *node);
-> > @@ -696,6 +701,9 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
-> >  		writew(val, port->base + PCIE_CONF_CLASS_ID);
-> >  	}
-> >  
-> > +	if (soc->need_fix_device_id)
-> > +		writew(soc->device_id, port->base + PCIE_CONF_DEVICE_ID);
-> > +
-> >  	/* 100ms timeout value should be enough for Gen1/2 training */
-> >  	err = readl_poll_timeout(port->base + PCIE_LINK_STATUS_V2, val,
-> >  				 !!(val & PCIE_PORT_LINKUP_V2), 20,
-> > @@ -1216,11 +1224,21 @@ static const struct mtk_pcie_soc mtk_pcie_soc_mt7622 = {
-> >  	.setup_irq = mtk_pcie_setup_irq,
-> >  };
-> >  
-> > +static const struct mtk_pcie_soc mtk_pcie_soc_mt7629 = {
-> > +	.need_fix_class_id = true,
-> > +	.need_fix_device_id = true,
-> > +	.device_id = PCI_DEVICE_ID_MEDIATEK_7629,
-> > +	.ops = &mtk_pcie_ops_v2,
-> > +	.startup = mtk_pcie_startup_port_v2,
-> > +	.setup_irq = mtk_pcie_setup_irq,
-> > +};
-> > +
-> >  static const struct of_device_id mtk_pcie_ids[] = {
-> >  	{ .compatible = "mediatek,mt2701-pcie", .data = &mtk_pcie_soc_v1 },
-> >  	{ .compatible = "mediatek,mt7623-pcie", .data = &mtk_pcie_soc_v1 },
-> >  	{ .compatible = "mediatek,mt2712-pcie", .data = &mtk_pcie_soc_mt2712 },
-> >  	{ .compatible = "mediatek,mt7622-pcie", .data = &mtk_pcie_soc_mt7622 },
-> > +	{ .compatible = "mediatek,mt7629-pcie", .data = &mtk_pcie_soc_mt7629 },
-> >  	{},
-> >  };
-> >  
-> > diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
-> > index 70e86148cb1e..aa32962759b2 100644
-> > --- a/include/linux/pci_ids.h
-> > +++ b/include/linux/pci_ids.h
-> > @@ -2131,6 +2131,7 @@
-> >  #define PCI_VENDOR_ID_MYRICOM		0x14c1
-> >  
-> >  #define PCI_VENDOR_ID_MEDIATEK		0x14c3
-> > +#define PCI_DEVICE_ID_MEDIATEK_7629	0x7629
-> >  
-> >  #define PCI_VENDOR_ID_TITAN		0x14D2
-> >  #define PCI_DEVICE_ID_TITAN_010L	0x8001
+On Fri, Jul 26, 2019 at 10:12:47AM +0800, Miles Chen wrote:
+> This patch is sent to report an use after free in mem_cgroup_iter()
+> after merging commit: be2657752e9e "mm: memcg: fix use after free in
+> mem_cgroup_iter()".
 > 
-> Hi Bjorn & Lorenzo,
+> I work with android kernel tree (4.9 & 4.14), and the commit:
+> be2657752e9e "mm: memcg: fix use after free in mem_cgroup_iter()" has
+> been merged to the trees. However, I can still observe use after free
+> issues addressed in the commit be2657752e9e.
+> (on low-end devices, a few times this month)
 > 
-> Is this patch ok or is there anything I need to fixed?
+> backtrace:
+> 	css_tryget <- crash here
+> 	mem_cgroup_iter
+> 	shrink_node
+> 	shrink_zones
+> 	do_try_to_free_pages
+> 	try_to_free_pages
+> 	__perform_reclaim
+> 	__alloc_pages_direct_reclaim
+> 	__alloc_pages_slowpath
+> 	__alloc_pages_nodemask
+> 
+> To debug, I poisoned mem_cgroup before freeing it:
+> 
+> static void __mem_cgroup_free(struct mem_cgroup *memcg)
+> 	for_each_node(node)
+> 	free_mem_cgroup_per_node_info(memcg, node);
+> 	free_percpu(memcg->stat);
+> +       /* poison memcg before freeing it */
+> +       memset(memcg, 0x78, sizeof(struct mem_cgroup));
+> 	kfree(memcg);
+> }
+> 
+> The coredump shows the position=0xdbbc2a00 is freed.
+> 
+> (gdb) p/x ((struct mem_cgroup_per_node *)0xe5009e00)->iter[8]
+> $13 = {position = 0xdbbc2a00, generation = 0x2efd}
+> 
+> 0xdbbc2a00:     0xdbbc2e00      0x00000000      0xdbbc2800      0x00000100
+> 0xdbbc2a10:     0x00000200      0x78787878      0x00026218      0x00000000
+> 0xdbbc2a20:     0xdcad6000      0x00000001      0x78787800      0x00000000
+> 0xdbbc2a30:     0x78780000      0x00000000      0x0068fb84      0x78787878
+> 0xdbbc2a40:     0x78787878      0x78787878      0x78787878      0xe3fa5cc0
+> 0xdbbc2a50:     0x78787878      0x78787878      0x00000000      0x00000000
+> 0xdbbc2a60:     0x00000000      0x00000000      0x00000000      0x00000000
+> 0xdbbc2a70:     0x00000000      0x00000000      0x00000000      0x00000000
+> 0xdbbc2a80:     0x00000000      0x00000000      0x00000000      0x00000000
+> 0xdbbc2a90:     0x00000001      0x00000000      0x00000000      0x00100000
+> 0xdbbc2aa0:     0x00000001      0xdbbc2ac8      0x00000000      0x00000000
+> 0xdbbc2ab0:     0x00000000      0x00000000      0x00000000      0x00000000
+> 0xdbbc2ac0:     0x00000000      0x00000000      0xe5b02618      0x00001000
+> 0xdbbc2ad0:     0x00000000      0x78787878      0x78787878      0x78787878
+> 0xdbbc2ae0:     0x78787878      0x78787878      0x78787878      0x78787878
+> 0xdbbc2af0:     0x78787878      0x78787878      0x78787878      0x78787878
+> 0xdbbc2b00:     0x78787878      0x78787878      0x78787878      0x78787878
+> 0xdbbc2b10:     0x78787878      0x78787878      0x78787878      0x78787878
+> 0xdbbc2b20:     0x78787878      0x78787878      0x78787878      0x78787878
+> 0xdbbc2b30:     0x78787878      0x78787878      0x78787878      0x78787878
+> 0xdbbc2b40:     0x78787878      0x78787878      0x78787878      0x78787878
+> 0xdbbc2b50:     0x78787878      0x78787878      0x78787878      0x78787878
+> 0xdbbc2b60:     0x78787878      0x78787878      0x78787878      0x78787878
+> 0xdbbc2b70:     0x78787878      0x78787878      0x78787878      0x78787878
+> 0xdbbc2b80:     0x78787878      0x78787878      0x00000000      0x78787878
+> 0xdbbc2b90:     0x78787878      0x78787878      0x78787878      0x78787878
+> 0xdbbc2ba0:     0x78787878      0x78787878      0x78787878      0x78787878
+> 
+> In the reclaim path, try_to_free_pages() does not setup
+> sc.target_mem_cgroup and sc is passed to do_try_to_free_pages(), ...,
+> shrink_node().
+> 
+> In mem_cgroup_iter(), root is set to root_mem_cgroup because
+> sc->target_mem_cgroup is NULL.
+> It is possible to assign a memcg to root_mem_cgroup.nodeinfo.iter in
+> mem_cgroup_iter().
+> 
+> 	try_to_free_pages
+> 		struct scan_control sc = {...}, target_mem_cgroup is 0x0;
+> 	do_try_to_free_pages
+> 	shrink_zones
+> 	shrink_node
+> 		 mem_cgroup *root = sc->target_mem_cgroup;
+> 		 memcg = mem_cgroup_iter(root, NULL, &reclaim);
+> 	mem_cgroup_iter()
+> 		if (!root)
+> 			root = root_mem_cgroup;
+> 		...
+> 
+> 		css = css_next_descendant_pre(css, &root->css);
+> 		memcg = mem_cgroup_from_css(css);
+> 		cmpxchg(&iter->position, pos, memcg);
+> 
+> My device uses memcg non-hierarchical mode.
+> When we release a memcg: invalidate_reclaim_iterators() reaches only
+> dead_memcg and its parents. If non-hierarchical mode is used,
+> invalidate_reclaim_iterators() never reaches root_mem_cgroup.
+> 
+> static void invalidate_reclaim_iterators(struct mem_cgroup *dead_memcg)
+> {
+> 	struct mem_cgroup *memcg = dead_memcg;
+> 
+> 	for (; memcg; memcg = parent_mem_cgroup(memcg)
+> 	...
+> }
+> 
+> So the use after free scenario looks like:
+> 
+> CPU1						CPU2
+> 
+> try_to_free_pages
+> do_try_to_free_pages
+> shrink_zones
+> shrink_node
+> mem_cgroup_iter()
+>     if (!root)
+>     	root = root_mem_cgroup;
+>     ...
+>     css = css_next_descendant_pre(css, &root->css);
+>     memcg = mem_cgroup_from_css(css);
+>     cmpxchg(&iter->position, pos, memcg);
+> 
+> 					invalidate_reclaim_iterators(memcg);
+> 					...
+> 					__mem_cgroup_free()
+> 						kfree(memcg);
+> 
+> try_to_free_pages
+> do_try_to_free_pages
+> shrink_zones
+> shrink_node
+> mem_cgroup_iter()
+>     if (!root)
+>     	root = root_mem_cgroup;
+>     ...
+>     mz = mem_cgroup_nodeinfo(root, reclaim->pgdat->node_id);
+>     iter = &mz->iter[reclaim->priority];
+>     pos = READ_ONCE(iter->position);
+>     css_tryget(&pos->css) <- use after free
+> 
+> To avoid this, we should also invalidate root_mem_cgroup.nodeinfo.iter in
+> invalidate_reclaim_iterators().
+> 
+> Change since v1:
+> Add a comment to explain why we need to handle root_mem_cgroup separately.
+> Rename invalid_root to invalidate_root.
+> 
+> Cc: Johannes Weiner <hannes@cmpxchg.org>
+> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+> ---
+>  mm/memcontrol.c | 38 ++++++++++++++++++++++++++++----------
+>  1 file changed, 28 insertions(+), 10 deletions(-)
+> 
+> diff --git a/mm/memcontrol.c b/mm/memcontrol.c
+> index cdbb7a84cb6e..09f2191f113b 100644
+> --- a/mm/memcontrol.c
+> +++ b/mm/memcontrol.c
+> @@ -1130,26 +1130,44 @@ void mem_cgroup_iter_break(struct mem_cgroup *root,
+>  		css_put(&prev->css);
+>  }
+>  
+> -static void invalidate_reclaim_iterators(struct mem_cgroup *dead_memcg)
+> +static void __invalidate_reclaim_iterators(struct mem_cgroup *from,
+> +					struct mem_cgroup *dead_memcg)
+>  {
+> -	struct mem_cgroup *memcg = dead_memcg;
+>  	struct mem_cgroup_reclaim_iter *iter;
+>  	struct mem_cgroup_per_node *mz;
+>  	int nid;
+>  	int i;
+>  
+> -	for (; memcg; memcg = parent_mem_cgroup(memcg)) {
+> -		for_each_node(nid) {
+> -			mz = mem_cgroup_nodeinfo(memcg, nid);
+> -			for (i = 0; i <= DEF_PRIORITY; i++) {
+> -				iter = &mz->iter[i];
+> -				cmpxchg(&iter->position,
+> -					dead_memcg, NULL);
+> -			}
+> +	for_each_node(nid) {
+> +		mz = mem_cgroup_nodeinfo(from, nid);
+> +		for (i = 0; i <= DEF_PRIORITY; i++) {
+> +			iter = &mz->iter[i];
+> +			cmpxchg(&iter->position,
+> +				dead_memcg, NULL);
+>  		}
+>  	}
+>  }
+>  
+> +/*
+> + * When cgruop1 non-hierarchy mode is used, parent_mem_cgroup() does
+> + * not walk all the way up to the cgroup root (root_mem_cgroup). So
+> + * we have to handle dead_memcg from cgroup root separately.
+> + */
+> +static void invalidate_reclaim_iterators(struct mem_cgroup *dead_memcg)
+> +{
+> +	struct mem_cgroup *memcg = dead_memcg;
+> +	int invalidate_root = 0;
+> +
+> +	for (; memcg; memcg = parent_mem_cgroup(memcg)) {
+> +		__invalidate_reclaim_iterators(memcg, dead_memcg);
+> +		if (memcg == root_mem_cgroup)
+> +			invalidate_root = 1;
+> +	}
+> +
+> +	if (!invalidate_root)
+> +		__invalidate_reclaim_iterators(root_mem_cgroup, dead_memcg);
 
-We are getting to it shortly, thanks for your patience.
+"invalidate_root" suggests we still have to invalidate the root, but
+the variable works the opposite way. How about dropping it altogether
+and moving the comment directly to where the decision is made:
 
-Lorenzo
+	struct mem_cgroup *memcg = dead_memcg;
+
+	do {
+		__invalidate_reclaim_iterators(memcg, dead_memcg);
+		last = memcg;
+	} while ((memcg = parent_mem_cgroup(memcg)));
+
+	/*
+	 * When cgruop1 non-hierarchy mode is used,
+	 * parent_mem_cgroup() does not walk all the way up to the
+	 * cgroup root (root_mem_cgroup). So we have to handle
+	 * dead_memcg from cgroup root separately.
+	 */
+	if (last != root_mem_cgroup)
+		__invalidate_reclaim_iterators(root_mem_cgroup, dead_memcg);
