@@ -1,87 +1,58 @@
-From: Frank Wunderlich <frank-w@public-files.de>
-Subject: [PATCH v3 07/10] mfd: mt6323: add mt6323 rtc+pwrc
-Date: Mon, 29 Jul 2019 19:41:51 +0200
-Message-ID: <20190729174154.4335-8-frank-w@public-files.de>
-References: <20190729174154.4335-1-frank-w@public-files.de>
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190729174154.4335-1-frank-w@public-files.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Allison Randal <allison@lohutok.net>, "David S. Miller" <davem@davemloft.net>, devicetree@vger.kernel.org, Eddie Huang <eddie.huang@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jonathan Cameron <Jonathan.Cameron@huawei.com>, Kate Stewart <kstewart@linuxfoundation.org>, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-rtc@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, Richard Fontana <rfontana@r>
-Cc: Josef Friedl <josef.friedl@speed.at>, Frank Wunderlich <frank-w@public-files.de>
+From: Sam Ravnborg <sam@ravnborg.org>
+Subject: Re: [PATCH v1 02/11] drm: drop uapi dependency from drm_print.h
+Date: Mon, 29 Jul 2019 19:50:11 +0200
+Message-ID: <20190729175011.GA1753@ravnborg.org>
+References: <20190718161507.2047-1-sam@ravnborg.org>
+ <20190718161507.2047-3-sam@ravnborg.org>
+ <156346840026.24728.936589728458336617@skylake-alporthouse-com>
+ <460bf1e1-a38b-5f79-26e5-93764067f4e1@amd.com>
+ <87tvb5nh5c.fsf@intel.com> <20190729143555.GA16927@ravnborg.org>
+ <67c2807f-582c-49a9-5699-a8baab3d3a0f@amd.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <67c2807f-582c-49a9-5699-a8baab3d3a0f@amd.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: "Koenig, Christian" <Christian.Koenig@amd.com>
+Cc: Maxime Ripard <maxime.ripard@bootlin.com>, Boris Brezillon <bbrezillon@kernel.org>, Jani Nikula <jani.nikula@intel.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Intel Graphics Development <intel-gfx@lists.freedesktop.org>, Liviu Dudau <Liviu.Dudau@arm.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <seanpaul@chromium.org>, Thierry Reding <treding@nvidia.com>, Sean Paul <sean@poorly.run>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Josef Friedl <josef.friedl@speed.at>
-
-add entry for rtc and power-controller to mt6323
-
-changes since v2: only splitting, second part of v2 part 4
-
-Signed-off-by: Josef Friedl <josef.friedl@speed.at>
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-=2D--
- drivers/mfd/mt6397-core.c | 25 +++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
-
-diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-index 5f7070267c9a..a4abce00f156 100644
-=2D-- a/drivers/mfd/mt6397-core.c
-+++ b/drivers/mfd/mt6397-core.c
-@@ -16,13 +16,24 @@
- #include <linux/mfd/mt6397/registers.h>
- #include <linux/mfd/mt6323/registers.h>
-
-+#define MT6323_RTC_BASE		0x8000
-+#define MT6323_RTC_SIZE		0x40
-+
- #define MT6397_RTC_BASE		0xe000
- #define MT6397_RTC_SIZE		0x3e
-
-+#define MT6323_PWRC_BASE	0x8000
-+#define MT6323_PWRC_SIZE	0x40
-+
- #define MT6323_CID_CODE		0x23
- #define MT6391_CID_CODE		0x91
- #define MT6397_CID_CODE		0x97
-
-+static const struct resource mt6323_rtc_resources[] =3D {
-+	DEFINE_RES_MEM(MT6323_RTC_BASE, MT6323_RTC_SIZE),
-+	DEFINE_RES_IRQ(MT6323_IRQ_STATUS_RTC),
-+};
-+
- static const struct resource mt6397_rtc_resources[] =3D {
- 	DEFINE_RES_MEM(MT6397_RTC_BASE, MT6397_RTC_SIZE),
- 	DEFINE_RES_IRQ(MT6397_IRQ_RTC),
-@@ -38,8 +49,17 @@ static const struct resource mt6397_keys_resources[] =
-=3D {
- 	DEFINE_RES_IRQ(MT6397_IRQ_HOMEKEY),
- };
-
-+static const struct resource mt6323_pwrc_resources[] =3D {
-+	DEFINE_RES_MEM(MT6323_PWRC_BASE, MT6323_PWRC_SIZE),
-+};
-+
- static const struct mfd_cell mt6323_devs[] =3D {
- 	{
-+		.name =3D "mt6323-rtc",
-+		.num_resources =3D ARRAY_SIZE(mt6323_rtc_resources),
-+		.resources =3D mt6323_rtc_resources,
-+		.of_compatible =3D "mediatek,mt6323-rtc",
-+	}, {
- 		.name =3D "mt6323-regulator",
- 		.of_compatible =3D "mediatek,mt6323-regulator"
- 	}, {
-@@ -50,6 +70,11 @@ static const struct mfd_cell mt6323_devs[] =3D {
- 		.num_resources =3D ARRAY_SIZE(mt6323_keys_resources),
- 		.resources =3D mt6323_keys_resources,
- 		.of_compatible =3D "mediatek,mt6323-keys"
-+	}, {
-+		.name =3D "mt6323-pwrc",
-+		.num_resources =3D ARRAY_SIZE(mt6323_pwrc_resources),
-+		.resources =3D mt6323_pwrc_resources,
-+		.of_compatible =3D "mediatek,mt6323-pwrc"
- 	},
- };
-
-=2D-
-2.17.1
+SGkgQ2hyaXN0aWFuLgoKT24gTW9uLCBKdWwgMjksIDIwMTkgYXQgMDM6Mjg6MTVQTSArMDAwMCwg
+S29lbmlnLCBDaHJpc3RpYW4gd3JvdGU6Cj4gQW0gMjkuMDcuMTkgdW0gMTY6MzUgc2NocmllYiBT
+YW0gUmF2bmJvcmc6Cj4gPj4+PiBFdmVuIHRoZW4gaXQgc28gdXNlbGVzcyAod2hpY2ggZHJtIGRy
+aXZlciBpcyB0aGlzIG1lc3NhZ2UgZm9yPz8/KSB0aGF0IEkKPiA+Pj4+IHdhbnQgdG8gcmVtb3Zl
+IHRoZW0gYWxsIDooCj4gPj4+IFllYWgsIGFncmVlLiBJIG1lYW4gaXQgaXMgbmljZSBpZiB0aGUg
+Y29yZSBkcm0gZnVuY3Rpb25zIHVzZSBhIHByZWZpeAo+ID4+PiBmb3IgZGVidWcgb3V0cHV0Lgo+
+ID4+Pgo+ID4+PiBCdXQgSSBhY3R1YWxseSBkb24ndCBzZWUgdGhlIHBvaW50IGZvciBpbmRpdmlk
+dWFsIGRyaXZlcnMuCj4gPj4gV2Ugc2hvdWxkIGFsbCBtaWdyYXRlIHRvIHRoZSB2ZXJzaW9ucyB3
+aXRoIGRldmljZS4uLgo+ID4gSnVzdCB0byBkbyBhbiB4a2RjLmNvbS85MjcgSSBoYXZlIGNvbnNp
+ZGVyZWQ6Cj4gPgo+ID4gZHJtX2Vycihjb25zdCBzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLCAuLi4p
+Cj4gPiBkcm1faW5mbyhjb25zdCBzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLCAuLi4pCj4gPgo+ID4g
+ZHJtX2ttc19lcnIoY29uc3Qgc3RydWN0IGRybV9kZXZpY2UgKmRybSwgLi4uKQo+ID4gZHJtX2tt
+c19pbmZvKGNvbnN0IHN0cnVjdCBkcm1fZGV2aWNlICpkcm0sIC4uLikpCj4gCj4gV2h5IG5vdCBn
+ZXQgY29tcGxldGVseSByaWQgb2YgdGhvc2UgYW5kIGp1c3QgdXNlIGRldl9lcnIsIGRldl93YXJu
+LCAKPiBwcl9lcnIsIHByX3dhcm4gZXRjPwo+IAo+IEkgbWVhbiBpcyBpdCB1c2VmdWwgdG8gaGF2
+ZSB0aGlzIGV4dHJhIHByaW50aW5nIHN1YnN5c3RlbSBpbiBEUk0gd2hpbGUgCj4gdGhlIHN0YW5k
+YXJkIExpbnV4IG9uZSBhY3R1YWxseSBkb2VzIGEgYmV0dGVyIGpvYj8KVGhlIGFkZGVkIGZ1bmN0
+aW9uYWxpdHkgb2YgZHJtX3h4eF9lcnIgd291bGQgYmUgdG8ga2VlcCB0aGUgY3VycmVudApkcm0u
+ZGVidWc9MHgxZiBmaWx0ZXJpbmcgb24gdGhlIGNvbW1hbmQtbGluZS4KSSBkbyBub3QgdGhpbmsg
+d2UgY2FuIGRvIHRoaXMgd2l0aCB0aGUgc3RhbmRhcmQgbG9nZ2luZy4KCkFuZCB0aGVuIHdlIGNh
+biBwcmVmaXggZXZlcnkgbG9nZ2luZyB3aXRoIGRyaXZlciBuYW1lIGFuZCBkZXZpY2UgbmFtZS4K
+ClRoZSBpZGVhIGlzIHRvIG1ha2UgYSB0aGluIGxheWVyIG9uIHRvcCBvZiB0aGUgZXhpc3Rpbmcg
+cHJfeHh4KCkgZnVuY3Rpb25zLgpTbyBub3QgYSBmdWxsIHN1YnN5c3RlbSwgb25seSBhIHdyYXBw
+ZXIgb24gdG9wIG9mIHdoYXQgd2UgYWxyZWFkeSBoYXZlLgoKQW55d2F5LCBpZGxlIHRhbGsgb25s
+eS4gV2UgbmVlZCBwYXRjaGVzIGFuZCBzYW1wbGUgb3V0cHV0IGlmIHdlIHNob3VsZApkaXNjdXNz
+IG1vcmUuCgoJU2FtCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
+cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
+ZWw=
