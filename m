@@ -1,48 +1,166 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [PATCH v6 10/24] drm/imx: imx-ldb: Provide ddc symlink in
- connector's sysfs
-Date: Mon, 29 Jul 2019 11:20:57 +0200
-Message-ID: <1564392057.7633.2.camel@pengutronix.de>
-References: <cover.1564161140.git.andrzej.p@collabora.com>
- <bcfe39a0333df951a7d160b3a946c2c32e7eac7f.1564161140.git.andrzej.p@collabora.com>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [RFC,v3 6/9] media: platform: Add Mediatek ISP P1 V4L2 functions
+Date: Mon, 29 Jul 2019 19:04:02 +0900
+Message-ID: <CAAFQd5D4Roc05H1NnXSp=W+L1RN7LEPHY0EA0mRhpHAcZ3wvMg@mail.gmail.com>
+References: <jungo.lin@mediatek.com>
+ <20190611035344.29814-1-jungo.lin@mediatek.com>
+ <20190611035344.29814-7-jungo.lin@mediatek.com>
+ <20190710095429.GA181405@chromium.org>
+ <1563424741.1212.212.camel@mtksdccf07>
+ <CAAFQd5CXeQv74RtqDxYYLVEpsnFbsm0m-kUBDpY_AFmCBO0PyA@mail.gmail.com>
+ <1563942689.1212.494.camel@mtksdccf07>
+ <CAAFQd5A8zW9s8cewmHnr9HFmrkxDnEqjrTiwLF2m8sKp0619hA@mail.gmail.com>
+ <1564363089.1212.636.camel@mtksdccf07>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <bcfe39a0333df951a7d160b3a946c2c32e7eac7f.1564161140.git.andrzej.p@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>, dri-devel@lists.freedesktop.org
-Cc: Sam Ravnborg <sam@ravnborg.org>, Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, Douglas Anderson <dianders@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Armijn Hemel <armijn@tjaldur.nl>, kernel@collabora.com, linux-samsung-soc@vger.kernel.org, Jyri Sarha <jsarha@ti.com>, Vincent Abriou <vincent.abriou@st.com>, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>, NXP Linux Team <linux-imx@nxp.com>, Dave Airlie <airlied@redhat.com>, intel-gfx@lists.freedesktop.org, freedreno@lists.freedesktop.org, linux-tegra@vger.kernel.org, Pengutronix Kernel Team <kernel@pengutronix.de>, Jonas Karlman <jonas@kwiboo.se>, linux-arm-msm@vger.kernel.org, Mamta Shukla <mamtashuk>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1564363089.1212.636.camel@mtksdccf07>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Jungo Lin <jungo.lin@mediatek.com>
+Cc: devicetree@vger.kernel.org, =?UTF-8?B?U2VhbiBDaGVuZyAo6YSt5piH5byYKQ==?= <sean.cheng@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, =?UTF-8?B?UnlubiBXdSAo5ZCz6IKy5oGpKQ==?= <rynn.wu@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>, Rob Herring <robh@kernel.org>, =?UTF-8?B?UnlhbiBZdSAo5L2Z5a2f5L+uKQ==?= <ryan.yu@mediatek.com>, =?UTF-8?B?RnJhbmtpZSBDaGl1ICjpgrHmloflh7Ep?= <frankie.chiu@mediatek.com>, Hans Verkuil <hverkuil@xs4all.nl>, Matthias Brugger <matthias.bgg@gmail.com>, Sj Huang <sj.huang@mediatek.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, ddavenport@chromium.org, =?UTF-8?B?RnJlZGVyaWMgQ2hlbiAo6Zmz5L+K5YWDKQ==?= <frederic.chen@mediatek.com>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
+ Joerg Roedel <joro@8bytes.org>, " <linux-arm>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gRnJpLCAyMDE5LTA3LTI2IGF0IDE5OjIzICswMjAwLCBBbmRyemVqIFBpZXRyYXNpZXdpY3og
-d3JvdGU6Cj4gVXNlIHRoZSBkZGMgcG9pbnRlciBwcm92aWRlZCBieSB0aGUgZ2VuZXJpYyBjb25u
-ZWN0b3IuCj4gCj4gU2lnbmVkLW9mZi1ieTogQW5kcnplaiBQaWV0cmFzaWV3aWN6IDxhbmRyemVq
-LnBAY29sbGFib3JhLmNvbT4KCkFja2VkLWJ5OiBQaGlsaXBwIFphYmVsIDxwLnphYmVsQHBlbmd1
-dHJvbml4LmRlPgoKVGhhbmtzIQoKcmVnYXJkcwpQaGlsaXBwCgo+IC0tLQo+ICBkcml2ZXJzL2dw
-dS9kcm0vaW14L2lteC1sZGIuYyB8IDcgKysrKy0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgNCBpbnNl
-cnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
-cm0vaW14L2lteC1sZGIuYyBiL2RyaXZlcnMvZ3B1L2RybS9pbXgvaW14LWxkYi5jCj4gaW5kZXgg
-ZGU2MmE0Y2Q0ODI3Li5kYjQ2MWI2YTI1N2YgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJt
-L2lteC9pbXgtbGRiLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vaW14L2lteC1sZGIuYwo+IEBA
-IC00NjIsOSArNDYyLDEwIEBAIHN0YXRpYyBpbnQgaW14X2xkYl9yZWdpc3RlcihzdHJ1Y3QgZHJt
-X2RldmljZSAqZHJtLAo+ICAJCSAqLwo+ICAJCWRybV9jb25uZWN0b3JfaGVscGVyX2FkZCgmaW14
-X2xkYl9jaC0+Y29ubmVjdG9yLAo+ICAJCQkJJmlteF9sZGJfY29ubmVjdG9yX2hlbHBlcl9mdW5j
-cyk7Cj4gLQkJZHJtX2Nvbm5lY3Rvcl9pbml0KGRybSwgJmlteF9sZGJfY2gtPmNvbm5lY3RvciwK
-PiAtCQkJCSZpbXhfbGRiX2Nvbm5lY3Rvcl9mdW5jcywKPiAtCQkJCURSTV9NT0RFX0NPTk5FQ1RP
-Ul9MVkRTKTsKPiArCQlkcm1fY29ubmVjdG9yX2luaXRfd2l0aF9kZGMoZHJtLCAmaW14X2xkYl9j
-aC0+Y29ubmVjdG9yLAo+ICsJCQkJCSAgICAmaW14X2xkYl9jb25uZWN0b3JfZnVuY3MsCj4gKwkJ
-CQkJICAgIERSTV9NT0RFX0NPTk5FQ1RPUl9MVkRTLAo+ICsJCQkJCSAgICBpbXhfbGRiX2NoLT5k
-ZGMpOwo+ICAJCWRybV9jb25uZWN0b3JfYXR0YWNoX2VuY29kZXIoJmlteF9sZGJfY2gtPmNvbm5l
-Y3RvciwgZW5jb2Rlcik7Cj4gIAl9Cj4gIApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9kcmktZGV2ZWw=
+On Mon, Jul 29, 2019 at 10:18 AM Jungo Lin <jungo.lin@mediatek.com> wrote:
+> On Fri, 2019-07-26 at 14:49 +0900, Tomasz Figa wrote:
+> > On Wed, Jul 24, 2019 at 1:31 PM Jungo Lin <jungo.lin@mediatek.com> wrote:
+> > > On Tue, 2019-07-23 at 19:21 +0900, Tomasz Figa wrote:
+> > > > On Thu, Jul 18, 2019 at 1:39 PM Jungo Lin <jungo.lin@mediatek.com> wrote:
+> > > > > On Wed, 2019-07-10 at 18:54 +0900, Tomasz Figa wrote:
+> > > > > > On Tue, Jun 11, 2019 at 11:53:41AM +0800, Jungo Lin wrote:
+[snip]
+> > >                 dev_dbg(cam->dev, "jobs are full\n");
+> > >                 spin_unlock_irqrestore(&cam->pending_job_lock, flags);
+> > >                 return;
+> > >         }
+> > >         list_for_each_entry_safe(req, req_prev, &cam->pending_job_list, list) {
+> >
+> > Could we instead check the counter here and break if it's >=
+> > MTK_ISP_MAX_RUNNING_JOBS?
+> > Then we could increment it here too to simplify the code.
+> >
+>
+> Thanks for your advice.
+> We simplified this function as below:
+>
+> void mtk_cam_dev_req_try_queue(struct mtk_cam_dev *cam)
+> {
+>         struct mtk_cam_dev_request *req, *req_prev;
+>         unsigned long flags;
+>
+>         if (!cam->streaming) {
+>                 dev_dbg(cam->dev, "stream is off\n");
+>                 return;
+>         }
+>
+>         spin_lock_irq(&cam->pending_job_lock);
+>         spin_lock_irqsave(&cam->running_job_lock, flags);
+
+Having the inner call spin_lock_irqsave() doesn't really do anything
+useful, because the outer spin_lock_irq() disables the IRQs and flags
+would always have the IRQ disabled state. Please use irqsave for the
+outer call.
+
+[snip]
+> > > > > > > +
+> > > > > > > +static struct v4l2_subdev *
+> > > > > > > +mtk_cam_cio_get_active_sensor(struct mtk_cam_dev *cam_dev)
+> > > > > > > +{
+> > > > > > > +   struct media_device *mdev = cam_dev->seninf->entity.graph_obj.mdev;
+> > > > > > > +   struct media_entity *entity;
+> > > > > > > +   struct device *dev = &cam_dev->pdev->dev;
+> > > > > > > +   struct v4l2_subdev *sensor;
+> > > > > >
+> > > > > > This variable would be unitialized if there is no streaming sensor. Was
+> > > > > > there no compiler warning generated for this?
+> > > > > >
+> > > > >
+> > > > > No, there is no compiler warning.
+> > > > > But, we will assign sensor to NULL to avoid unnecessary compiler warning
+> > > > > with different compiler options.
+> > > > >
+> > > >
+> > > > Thanks. It would be useful if you could check why the compiler you're
+> > > > using doesn't show a warning here. We might be missing other
+> > > > uninitialized variables.
+> > > >
+> > >
+> > > We will feedback to your project team to check the possible reason about
+> > > compiler warning issue.
+> > >
+> >
+> > Do you mean that it was the Clang toolchain used on Chromium OS (e.g.
+> > emerge chromeos-kernel-4_19)?
+>
+> > [snip]
+>
+> Yes, I checked this comment in the Chromium OS build environment.
+> But, I think I have made the mistake here. I need to check the build
+> status in the Mediatek's kernel upstream environment. I will pay
+> attention in next path set upstream.
+>
+
+Thanks a lot. I will recheck this in the Chromium OS toolchain too.
+
+> > > > > > > +
+> > > > > > > +   dev_dbg(dev, "%s: node:%d fd:%d idx:%d\n",
+> > > > > > > +           __func__,
+> > > > > > > +           node->id,
+> > > > > > > +           buf->vbb.request_fd,
+> > > > > > > +           buf->vbb.vb2_buf.index);
+> > > > > > > +
+> > > > > > > +   /* For request buffers en-queue, handled in mtk_cam_req_try_queue */
+> > > > > > > +   if (vb->vb2_queue->uses_requests)
+> > > > > > > +           return;
+> > > > > >
+> > > > > > I'd suggest removing non-request support from this driver. Even if we end up
+> > > > > > with a need to provide compatibility for non-request mode, then it should be
+> > > > > > built on top of the requests mode, so that the driver itself doesn't have to
+> > > > > > deal with two modes.
+> > > > > >
+> > > > >
+> > > > > The purpose of non-request function in this driver is needed by
+> > > > > our camera middle-ware design. It needs 3A statistics buffers before
+> > > > > image buffers en-queue. So we need to en-queue 3A statistics with
+> > > > > non-request mode in this driver. After MW got the 3A statistics data, it
+> > > > > will en-queue the images, tuning buffer and other meta buffers with
+> > > > > request mode. Based on this requirement, do you have any suggestion?
+> > > > > For upstream driver, should we only consider request mode?
+> > > > >
+> > > >
+> > > > Where does that requirement come from? Why the timing of queuing of
+> > > > the buffers to the driver is important?
+> > > >
+> > > > [snip]
+> > >
+> > > Basically, this requirement comes from our internal camera
+> > > middle-ware/3A hal in user space. Since this is not generic requirement,
+> > > we will follow your original suggestion to keep the request mode only
+> > > and remove other non-request design in other files. For upstream driver,
+> > > it should support request mode only.
+> > >
+> >
+> > Note that Chromium OS will use the "upstream driver" and we don't want
+> > to diverge, so please make the userspace also use only requests. I
+> > don't see a reason why there would be any need to submit any buffers
+> > outside of a request.
+> >
+> > [snip]
+>
+> Ok, I have raised your concern to our colleagues and let him to discuss
+> with you in another communication channel.
+>
+
+Thanks!
+
+Best regards,
+Tomasz
