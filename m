@@ -1,102 +1,54 @@
-From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-Subject: Re: [PATCH v8 08/11] usb: roles: get usb-role-switch from parent
-Date: Mon, 29 Jul 2019 17:25:00 +0300
-Message-ID: <20190729142500.GE28600@kuha.fi.intel.com>
-References: <1563958245-6321-1-git-send-email-chunfeng.yun@mediatek.com>
- <1563958245-6321-9-git-send-email-chunfeng.yun@mediatek.com>
+From: Sam Ravnborg <sam@ravnborg.org>
+Subject: Re: [PATCH v1 02/11] drm: drop uapi dependency from
+ drm_print.h
+Date: Mon, 29 Jul 2019 16:35:55 +0200
+Message-ID: <20190729143555.GA16927@ravnborg.org>
+References: <20190718161507.2047-1-sam@ravnborg.org>
+ <20190718161507.2047-3-sam@ravnborg.org>
+ <156346840026.24728.936589728458336617@skylake-alporthouse-com>
+ <460bf1e1-a38b-5f79-26e5-93764067f4e1@amd.com>
+ <87tvb5nh5c.fsf@intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <intel-gfx-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-In-Reply-To: <1563958245-6321-9-git-send-email-chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Biju Das <biju.das@bp.renesas.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Linus Walleij <linus.walleij@linaro.org>
+In-Reply-To: <87tvb5nh5c.fsf@intel.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
+List-Post: <mailto:intel-gfx@lists.freedesktop.org>
+List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: intel-gfx-bounces@lists.freedesktop.org
+Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
+To: Jani Nikula <jani.nikula@intel.com>
+Cc: Boris Brezillon <bbrezillon@kernel.org>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Intel Graphics Development <intel-gfx@lists.freedesktop.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Maxime Ripard <maxime.ripard@bootlin.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <seanpaul@chromium.org>, Thierry Reding <treding@nvidia.com>, "Koenig,
+ Christian" <Christian.Koenig@amd.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jul 24, 2019 at 04:50:42PM +0800, Chunfeng Yun wrote:
-> when the USB host controller is the parent of the connector,
-> usually type-B, sometimes don't need the graph, so we should
-> check whether it's parent registers usb-role-switch or not
-> firstly, and get it if exists.
-> 
-> Signed-off-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-
-I don't think I actually wrote the patch. I may have proposed the code
-for you, but I never prepared a patch out out that. Please drop the
-above Signed-off-by line if that is the case. I case I really did
-write the patch, then you are missing the "From: Heikki..." first
-line, but I really don't remember preparing the patch.
-
-If the idea came from me, you can use for example the suggested-by
-tag: "Suggested-by: Heikki Krogerus <heikki.krogerus...".
-
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
-> v8: no changes
-> v7:
->   add signed-off-by Chunfeng
-> 
-> v6:
->   new patch
-> ---
->  drivers/usb/roles/class.c | 25 +++++++++++++++++++++----
->  1 file changed, 21 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/usb/roles/class.c b/drivers/usb/roles/class.c
-> index 5b637aaf311f..87439a84c983 100644
-> --- a/drivers/usb/roles/class.c
-> +++ b/drivers/usb/roles/class.c
-> @@ -114,6 +114,19 @@ static void *usb_role_switch_match(struct device_connection *con, int ep,
->  	return dev ? to_role_switch(dev) : ERR_PTR(-EPROBE_DEFER);
->  }
->  
-> +static struct usb_role_switch *
-> +usb_role_switch_is_parent(struct fwnode_handle *fwnode)
-> +{
-> +	struct fwnode_handle *parent = fwnode_get_parent(fwnode);
-> +	struct device *dev;
-> +
-> +	if (!parent || !fwnode_property_present(parent, "usb-role-switch"))
-> +		return NULL;
-> +
-> +	dev = class_find_device(role_class, NULL, parent, switch_fwnode_match);
-> +	return dev ? to_role_switch(dev) : ERR_PTR(-EPROBE_DEFER);
-> +}
-> +
->  /**
->   * usb_role_switch_get - Find USB role switch linked with the caller
->   * @dev: The caller device
-> @@ -125,8 +138,10 @@ struct usb_role_switch *usb_role_switch_get(struct device *dev)
->  {
->  	struct usb_role_switch *sw;
->  
-> -	sw = device_connection_find_match(dev, "usb-role-switch", NULL,
-> -					  usb_role_switch_match);
-> +	sw = usb_role_switch_is_parent(dev_fwnode(dev));
-> +	if (!sw)
-> +		sw = device_connection_find_match(dev, "usb-role-switch", NULL,
-> +						  usb_role_switch_match);
->  
->  	if (!IS_ERR_OR_NULL(sw))
->  		WARN_ON(!try_module_get(sw->dev.parent->driver->owner));
-> @@ -146,8 +161,10 @@ struct usb_role_switch *fwnode_usb_role_switch_get(struct fwnode_handle *fwnode)
->  {
->  	struct usb_role_switch *sw;
->  
-> -	sw = fwnode_connection_find_match(fwnode, "usb-role-switch", NULL,
-> -					  usb_role_switch_match);
-> +	sw = usb_role_switch_is_parent(fwnode);
-> +	if (!sw)
-> +		sw = fwnode_connection_find_match(fwnode, "usb-role-switch",
-> +						  NULL, usb_role_switch_match);
->  	if (!IS_ERR_OR_NULL(sw))
->  		WARN_ON(!try_module_get(sw->dev.parent->driver->owner));
->  
-> -- 
-> 2.21.0
-
-thanks,
-
--- 
-heikki
+PiA+Pgo+ID4+IEV2ZW4gdGhlbiBpdCBzbyB1c2VsZXNzICh3aGljaCBkcm0gZHJpdmVyIGlzIHRo
+aXMgbWVzc2FnZSBmb3I/Pz8pIHRoYXQgSQo+ID4+IHdhbnQgdG8gcmVtb3ZlIHRoZW0gYWxsIDoo
+Cj4gPgo+ID4gWWVhaCwgYWdyZWUuIEkgbWVhbiBpdCBpcyBuaWNlIGlmIHRoZSBjb3JlIGRybSBm
+dW5jdGlvbnMgdXNlIGEgcHJlZml4IAo+ID4gZm9yIGRlYnVnIG91dHB1dC4KPiA+Cj4gPiBCdXQg
+SSBhY3R1YWxseSBkb24ndCBzZWUgdGhlIHBvaW50IGZvciBpbmRpdmlkdWFsIGRyaXZlcnMuCj4g
+Cj4gV2Ugc2hvdWxkIGFsbCBtaWdyYXRlIHRvIHRoZSB2ZXJzaW9ucyB3aXRoIGRldmljZS4uLgoK
+SnVzdCB0byBkbyBhbiB4a2RjLmNvbS85MjcgSSBoYXZlIGNvbnNpZGVyZWQ6Cgpkcm1fZXJyKGNv
+bnN0IHN0cnVjdCBkcm1fZGV2aWNlICpkcm0sIC4uLikKZHJtX2luZm8oY29uc3Qgc3RydWN0IGRy
+bV9kZXZpY2UgKmRybSwgLi4uKQoKZHJtX2ttc19lcnIoY29uc3Qgc3RydWN0IGRybV9kZXZpY2Ug
+KmRybSwgLi4uKQpkcm1fa21zX2luZm8oY29uc3Qgc3RydWN0IGRybV9kZXZpY2UgKmRybSwgLi4u
+KSkKCkFuZCBzbyBvbiBmb3IgdmJsLCBwcmltc2UuIGxlYXNlLCBzdGF0ZSBldGMuCgpUaGVuIHdl
+IGNvdWxkIGZpc2ggb3V0IHJlbGV2YW50IGluZm8gZnJvbSB0aGUgZHJtIGRldmljZSBhbmQgcHJl
+c2VudAp0aGlzIG5pY2VseS4KCkZvciB0aGUgY2FzZXMgd2hlcmUgbm8gZHJtX2RldmljZSBpcyBh
+dmFpbGFibGUgdGhlIGZhbGxiYWNrIGlzOgpkcm1fZGV2X2Vycihjb25zdCBzdHJ1Y3QgZHJtX2Rl
+dmljZSAqZHJtLCAuLi4pCmRybV9kZXZfaW5mbyhjb25zdCBzdHJ1Y3QgZHJtX2RldmljZSAqZHJt
+LCAuLi4pKQoKV2UgY291bGQgbW9kaWZ5IHRoZSBleGlzdGluZyBVUFBFUkNBU0UgbWFjcm9zIHRv
+IGJlIHBsYWNlaG9sZGVycyBmb3IKdGhlIG1vcmUgcmVhZGVyIGZyaWVuZGx5IGxvd2VyIGNhc2Vz
+IHZhcmlhbnRzIGFuZCBiYXNlIGl0IGFsbCBvbiB0aGUKZXN0YWJsaXNoZWQgaW5mcmFzdHJ1Y3R1
+cmUuCgpCdXQgdGhpcyBpcyBqdXN0IGlkbGUgdGhpbmtpbmcsIGFzIG9ubHkgYSBzZXJpb3VzIHBh
+dGNoIHdvdWxkIHN0aXIgdGhlCnJlbGV2YW50IGRpc2N1c3Npb25zLgoKRm9yIG5vdyB0aGlzIGlz
+IGZhciBmcm9tIHRoZSB0b3Agb2YgbXkgVE9ETyBsaXN0LgoKCglTYW0KX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtZ2Z4IG1haWxpbmcgbGlzdApJ
+bnRlbC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ2Z4
