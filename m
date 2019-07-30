@@ -1,193 +1,250 @@
-From: Jungo Lin <jungo.lin@mediatek.com>
-Subject: Re: [RFC,v3 6/9] media: platform: Add Mediatek ISP P1 V4L2 functions
-Date: Tue, 30 Jul 2019 09:44:49 +0800
-Message-ID: <1564451089.1212.649.camel@mtksdccf07>
-References: <jungo.lin@mediatek.com>
- <20190611035344.29814-1-jungo.lin@mediatek.com>
- <20190611035344.29814-7-jungo.lin@mediatek.com>
- <20190710095429.GA181405@chromium.org>
- <1563424741.1212.212.camel@mtksdccf07>
- <CAAFQd5CXeQv74RtqDxYYLVEpsnFbsm0m-kUBDpY_AFmCBO0PyA@mail.gmail.com>
- <1563942689.1212.494.camel@mtksdccf07>
- <CAAFQd5A8zW9s8cewmHnr9HFmrkxDnEqjrTiwLF2m8sKp0619hA@mail.gmail.com>
- <1564363089.1212.636.camel@mtksdccf07>
- <CAAFQd5D4Roc05H1NnXSp=W+L1RN7LEPHY0EA0mRhpHAcZ3wvMg@mail.gmail.com>
+From: Miles Chen <miles.chen@mediatek.com>
+Subject: Re: [PATCH v2] mm: memcontrol: fix use after free in
+ mem_cgroup_iter()
+Date: Tue, 30 Jul 2019 09:48:26 +0800
+Message-ID: <1564451306.18363.2.camel@mtkswgap22>
+References: <20190726021247.16162-1-miles.chen@mediatek.com>
+         <20190729160646.GD21958@cmpxchg.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAAFQd5D4Roc05H1NnXSp=W+L1RN7LEPHY0EA0mRhpHAcZ3wvMg@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: devicetree@vger.kernel.org, Sean Cheng =?UTF-8?Q?=28=E9=84=AD=E6=98=87=E5=BC=98=29?= <sean.cheng@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Rynn Wu =?UTF-8?Q?=28=E5=90=B3=E8=82=B2=E6=81=A9=29?= <rynn.wu@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>, Rob Herring <robh@kernel.org>, Ryan Yu =?UTF-8?Q?=28=E4=BD=99=E5=AD=9F=E4=BF=AE=29?= <ryan.yu@mediatek.com>, Frankie Chiu =?UTF-8?Q?=28=E9=82=B1=E6=96=87=E5=87=B1=29?= <frankie.chiu@mediatek.com>, Hans Verkuil <hverkuil@xs4all.nl>, Matthias Brugger <matthias.bgg@gmail.com>, Sj Huang <sj.huang@mediatek.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, ddavenport@chromium.org, Frederic Chen =?UTF-8?Q?=28=E9=99=B3=E4=BF=8A=E5=85=83=29?= <frederic.chen@mediatek.com>, list@263.net:IOMMU DRIVERS <iommu@lists.linu
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190729160646.GD21958@cmpxchg.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Johannes Weiner <hannes@cmpxchg.org>
+Cc: Michal Hocko <mhocko@kernel.org>, Vladimir Davydov <vdavydov.dev@gmail.com>, cgroups@vger.kernel.org, linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2019-07-29 at 19:04 +0900, Tomasz Figa wrote:
-> On Mon, Jul 29, 2019 at 10:18 AM Jungo Lin <jungo.lin@mediatek.com> wrote:
-> > On Fri, 2019-07-26 at 14:49 +0900, Tomasz Figa wrote:
-> > > On Wed, Jul 24, 2019 at 1:31 PM Jungo Lin <jungo.lin@mediatek.com> wrote:
-> > > > On Tue, 2019-07-23 at 19:21 +0900, Tomasz Figa wrote:
-> > > > > On Thu, Jul 18, 2019 at 1:39 PM Jungo Lin <jungo.lin@mediatek.com> wrote:
-> > > > > > On Wed, 2019-07-10 at 18:54 +0900, Tomasz Figa wrote:
-> > > > > > > On Tue, Jun 11, 2019 at 11:53:41AM +0800, Jungo Lin wrote:
-> [snip]
-> > > >                 dev_dbg(cam->dev, "jobs are full\n");
-> > > >                 spin_unlock_irqrestore(&cam->pending_job_lock, flags);
-> > > >                 return;
-> > > >         }
-> > > >         list_for_each_entry_safe(req, req_prev, &cam->pending_job_list, list) {
-> > >
-> > > Could we instead check the counter here and break if it's >=
-> > > MTK_ISP_MAX_RUNNING_JOBS?
-> > > Then we could increment it here too to simplify the code.
-> > >
-> >
-> > Thanks for your advice.
-> > We simplified this function as below:
-> >
-> > void mtk_cam_dev_req_try_queue(struct mtk_cam_dev *cam)
+On Mon, 2019-07-29 at 12:06 -0400, Johannes Weiner wrote:
+> On Fri, Jul 26, 2019 at 10:12:47AM +0800, Miles Chen wrote:
+> > This patch is sent to report an use after free in mem_cgroup_iter()
+> > after merging commit: be2657752e9e "mm: memcg: fix use after free in
+> > mem_cgroup_iter()".
+> > 
+> > I work with android kernel tree (4.9 & 4.14), and the commit:
+> > be2657752e9e "mm: memcg: fix use after free in mem_cgroup_iter()" has
+> > been merged to the trees. However, I can still observe use after free
+> > issues addressed in the commit be2657752e9e.
+> > (on low-end devices, a few times this month)
+> > 
+> > backtrace:
+> > 	css_tryget <- crash here
+> > 	mem_cgroup_iter
+> > 	shrink_node
+> > 	shrink_zones
+> > 	do_try_to_free_pages
+> > 	try_to_free_pages
+> > 	__perform_reclaim
+> > 	__alloc_pages_direct_reclaim
+> > 	__alloc_pages_slowpath
+> > 	__alloc_pages_nodemask
+> > 
+> > To debug, I poisoned mem_cgroup before freeing it:
+> > 
+> > static void __mem_cgroup_free(struct mem_cgroup *memcg)
+> > 	for_each_node(node)
+> > 	free_mem_cgroup_per_node_info(memcg, node);
+> > 	free_percpu(memcg->stat);
+> > +       /* poison memcg before freeing it */
+> > +       memset(memcg, 0x78, sizeof(struct mem_cgroup));
+> > 	kfree(memcg);
+> > }
+> > 
+> > The coredump shows the position=0xdbbc2a00 is freed.
+> > 
+> > (gdb) p/x ((struct mem_cgroup_per_node *)0xe5009e00)->iter[8]
+> > $13 = {position = 0xdbbc2a00, generation = 0x2efd}
+> > 
+> > 0xdbbc2a00:     0xdbbc2e00      0x00000000      0xdbbc2800      0x00000100
+> > 0xdbbc2a10:     0x00000200      0x78787878      0x00026218      0x00000000
+> > 0xdbbc2a20:     0xdcad6000      0x00000001      0x78787800      0x00000000
+> > 0xdbbc2a30:     0x78780000      0x00000000      0x0068fb84      0x78787878
+> > 0xdbbc2a40:     0x78787878      0x78787878      0x78787878      0xe3fa5cc0
+> > 0xdbbc2a50:     0x78787878      0x78787878      0x00000000      0x00000000
+> > 0xdbbc2a60:     0x00000000      0x00000000      0x00000000      0x00000000
+> > 0xdbbc2a70:     0x00000000      0x00000000      0x00000000      0x00000000
+> > 0xdbbc2a80:     0x00000000      0x00000000      0x00000000      0x00000000
+> > 0xdbbc2a90:     0x00000001      0x00000000      0x00000000      0x00100000
+> > 0xdbbc2aa0:     0x00000001      0xdbbc2ac8      0x00000000      0x00000000
+> > 0xdbbc2ab0:     0x00000000      0x00000000      0x00000000      0x00000000
+> > 0xdbbc2ac0:     0x00000000      0x00000000      0xe5b02618      0x00001000
+> > 0xdbbc2ad0:     0x00000000      0x78787878      0x78787878      0x78787878
+> > 0xdbbc2ae0:     0x78787878      0x78787878      0x78787878      0x78787878
+> > 0xdbbc2af0:     0x78787878      0x78787878      0x78787878      0x78787878
+> > 0xdbbc2b00:     0x78787878      0x78787878      0x78787878      0x78787878
+> > 0xdbbc2b10:     0x78787878      0x78787878      0x78787878      0x78787878
+> > 0xdbbc2b20:     0x78787878      0x78787878      0x78787878      0x78787878
+> > 0xdbbc2b30:     0x78787878      0x78787878      0x78787878      0x78787878
+> > 0xdbbc2b40:     0x78787878      0x78787878      0x78787878      0x78787878
+> > 0xdbbc2b50:     0x78787878      0x78787878      0x78787878      0x78787878
+> > 0xdbbc2b60:     0x78787878      0x78787878      0x78787878      0x78787878
+> > 0xdbbc2b70:     0x78787878      0x78787878      0x78787878      0x78787878
+> > 0xdbbc2b80:     0x78787878      0x78787878      0x00000000      0x78787878
+> > 0xdbbc2b90:     0x78787878      0x78787878      0x78787878      0x78787878
+> > 0xdbbc2ba0:     0x78787878      0x78787878      0x78787878      0x78787878
+> > 
+> > In the reclaim path, try_to_free_pages() does not setup
+> > sc.target_mem_cgroup and sc is passed to do_try_to_free_pages(), ...,
+> > shrink_node().
+> > 
+> > In mem_cgroup_iter(), root is set to root_mem_cgroup because
+> > sc->target_mem_cgroup is NULL.
+> > It is possible to assign a memcg to root_mem_cgroup.nodeinfo.iter in
+> > mem_cgroup_iter().
+> > 
+> > 	try_to_free_pages
+> > 		struct scan_control sc = {...}, target_mem_cgroup is 0x0;
+> > 	do_try_to_free_pages
+> > 	shrink_zones
+> > 	shrink_node
+> > 		 mem_cgroup *root = sc->target_mem_cgroup;
+> > 		 memcg = mem_cgroup_iter(root, NULL, &reclaim);
+> > 	mem_cgroup_iter()
+> > 		if (!root)
+> > 			root = root_mem_cgroup;
+> > 		...
+> > 
+> > 		css = css_next_descendant_pre(css, &root->css);
+> > 		memcg = mem_cgroup_from_css(css);
+> > 		cmpxchg(&iter->position, pos, memcg);
+> > 
+> > My device uses memcg non-hierarchical mode.
+> > When we release a memcg: invalidate_reclaim_iterators() reaches only
+> > dead_memcg and its parents. If non-hierarchical mode is used,
+> > invalidate_reclaim_iterators() never reaches root_mem_cgroup.
+> > 
+> > static void invalidate_reclaim_iterators(struct mem_cgroup *dead_memcg)
 > > {
-> >         struct mtk_cam_dev_request *req, *req_prev;
-> >         unsigned long flags;
-> >
-> >         if (!cam->streaming) {
-> >                 dev_dbg(cam->dev, "stream is off\n");
-> >                 return;
-> >         }
-> >
-> >         spin_lock_irq(&cam->pending_job_lock);
-> >         spin_lock_irqsave(&cam->running_job_lock, flags);
+> > 	struct mem_cgroup *memcg = dead_memcg;
+> > 
+> > 	for (; memcg; memcg = parent_mem_cgroup(memcg)
+> > 	...
+> > }
+> > 
+> > So the use after free scenario looks like:
+> > 
+> > CPU1						CPU2
+> > 
+> > try_to_free_pages
+> > do_try_to_free_pages
+> > shrink_zones
+> > shrink_node
+> > mem_cgroup_iter()
+> >     if (!root)
+> >     	root = root_mem_cgroup;
+> >     ...
+> >     css = css_next_descendant_pre(css, &root->css);
+> >     memcg = mem_cgroup_from_css(css);
+> >     cmpxchg(&iter->position, pos, memcg);
+> > 
+> > 					invalidate_reclaim_iterators(memcg);
+> > 					...
+> > 					__mem_cgroup_free()
+> > 						kfree(memcg);
+> > 
+> > try_to_free_pages
+> > do_try_to_free_pages
+> > shrink_zones
+> > shrink_node
+> > mem_cgroup_iter()
+> >     if (!root)
+> >     	root = root_mem_cgroup;
+> >     ...
+> >     mz = mem_cgroup_nodeinfo(root, reclaim->pgdat->node_id);
+> >     iter = &mz->iter[reclaim->priority];
+> >     pos = READ_ONCE(iter->position);
+> >     css_tryget(&pos->css) <- use after free
+> > 
+> > To avoid this, we should also invalidate root_mem_cgroup.nodeinfo.iter in
+> > invalidate_reclaim_iterators().
+> > 
+> > Change since v1:
+> > Add a comment to explain why we need to handle root_mem_cgroup separately.
+> > Rename invalid_root to invalidate_root.
+> > 
+> > Cc: Johannes Weiner <hannes@cmpxchg.org>
+> > Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+> > ---
+> >  mm/memcontrol.c | 38 ++++++++++++++++++++++++++++----------
+> >  1 file changed, 28 insertions(+), 10 deletions(-)
+> > 
+> > diff --git a/mm/memcontrol.c b/mm/memcontrol.c
+> > index cdbb7a84cb6e..09f2191f113b 100644
+> > --- a/mm/memcontrol.c
+> > +++ b/mm/memcontrol.c
+> > @@ -1130,26 +1130,44 @@ void mem_cgroup_iter_break(struct mem_cgroup *root,
+> >  		css_put(&prev->css);
+> >  }
+> >  
+> > -static void invalidate_reclaim_iterators(struct mem_cgroup *dead_memcg)
+> > +static void __invalidate_reclaim_iterators(struct mem_cgroup *from,
+> > +					struct mem_cgroup *dead_memcg)
+> >  {
+> > -	struct mem_cgroup *memcg = dead_memcg;
+> >  	struct mem_cgroup_reclaim_iter *iter;
+> >  	struct mem_cgroup_per_node *mz;
+> >  	int nid;
+> >  	int i;
+> >  
+> > -	for (; memcg; memcg = parent_mem_cgroup(memcg)) {
+> > -		for_each_node(nid) {
+> > -			mz = mem_cgroup_nodeinfo(memcg, nid);
+> > -			for (i = 0; i <= DEF_PRIORITY; i++) {
+> > -				iter = &mz->iter[i];
+> > -				cmpxchg(&iter->position,
+> > -					dead_memcg, NULL);
+> > -			}
+> > +	for_each_node(nid) {
+> > +		mz = mem_cgroup_nodeinfo(from, nid);
+> > +		for (i = 0; i <= DEF_PRIORITY; i++) {
+> > +			iter = &mz->iter[i];
+> > +			cmpxchg(&iter->position,
+> > +				dead_memcg, NULL);
+> >  		}
+> >  	}
+> >  }
+> >  
+> > +/*
+> > + * When cgruop1 non-hierarchy mode is used, parent_mem_cgroup() does
+> > + * not walk all the way up to the cgroup root (root_mem_cgroup). So
+> > + * we have to handle dead_memcg from cgroup root separately.
+> > + */
+> > +static void invalidate_reclaim_iterators(struct mem_cgroup *dead_memcg)
+> > +{
+> > +	struct mem_cgroup *memcg = dead_memcg;
+> > +	int invalidate_root = 0;
+> > +
+> > +	for (; memcg; memcg = parent_mem_cgroup(memcg)) {
+> > +		__invalidate_reclaim_iterators(memcg, dead_memcg);
+> > +		if (memcg == root_mem_cgroup)
+> > +			invalidate_root = 1;
+> > +	}
+> > +
+> > +	if (!invalidate_root)
+> > +		__invalidate_reclaim_iterators(root_mem_cgroup, dead_memcg);
 > 
-> Having the inner call spin_lock_irqsave() doesn't really do anything
-> useful, because the outer spin_lock_irq() disables the IRQs and flags
-> would always have the IRQ disabled state. Please use irqsave for the
-> outer call.
+> "invalidate_root" suggests we still have to invalidate the root, but
+> the variable works the opposite way. How about dropping it altogether
+> and moving the comment directly to where the decision is made:
 > 
-> [snip]
-
-Thanks for your comment.
-This is a bug which triggers one kernel warning about wrong ISR state as
-you said. We have fixed it.
-
-> > > > > > > > +
-> > > > > > > > +static struct v4l2_subdev *
-> > > > > > > > +mtk_cam_cio_get_active_sensor(struct mtk_cam_dev *cam_dev)
-> > > > > > > > +{
-> > > > > > > > +   struct media_device *mdev = cam_dev->seninf->entity.graph_obj.mdev;
-> > > > > > > > +   struct media_entity *entity;
-> > > > > > > > +   struct device *dev = &cam_dev->pdev->dev;
-> > > > > > > > +   struct v4l2_subdev *sensor;
-> > > > > > >
-> > > > > > > This variable would be unitialized if there is no streaming sensor. Was
-> > > > > > > there no compiler warning generated for this?
-> > > > > > >
-> > > > > >
-> > > > > > No, there is no compiler warning.
-> > > > > > But, we will assign sensor to NULL to avoid unnecessary compiler warning
-> > > > > > with different compiler options.
-> > > > > >
-> > > > >
-> > > > > Thanks. It would be useful if you could check why the compiler you're
-> > > > > using doesn't show a warning here. We might be missing other
-> > > > > uninitialized variables.
-> > > > >
-> > > >
-> > > > We will feedback to your project team to check the possible reason about
-> > > > compiler warning issue.
-> > > >
-> > >
-> > > Do you mean that it was the Clang toolchain used on Chromium OS (e.g.
-> > > emerge chromeos-kernel-4_19)?
-> >
-> > > [snip]
-> >
-> > Yes, I checked this comment in the Chromium OS build environment.
-> > But, I think I have made the mistake here. I need to check the build
-> > status in the Mediatek's kernel upstream environment. I will pay
-> > attention in next path set upstream.
-> >
+> 	struct mem_cgroup *memcg = dead_memcg;
 > 
-> Thanks a lot. I will recheck this in the Chromium OS toolchain too.
+> 	do {
+> 		__invalidate_reclaim_iterators(memcg, dead_memcg);
+> 		last = memcg;
+> 	} while ((memcg = parent_mem_cgroup(memcg)));
 > 
+> 	/*
+> 	 * When cgruop1 non-hierarchy mode is used,
+> 	 * parent_mem_cgroup() does not walk all the way up to the
+> 	 * cgroup root (root_mem_cgroup). So we have to handle
+> 	 * dead_memcg from cgroup root separately.
+> 	 */
+> 	if (last != root_mem_cgroup)
+> 		__invalidate_reclaim_iterators(root_mem_cgroup, dead_memcg);
 
-For these complier warnings, we have fixed them in Mediatek upstream
-environment[1]. In this build environment, we could observe some
-comelier warnings which are not generated by Chromium OS toolchain.
-
-[1]
-toolchain/aarch64/usr/bin/aarch64-poky-linux
-
-> > > > > > > > +
-> > > > > > > > +   dev_dbg(dev, "%s: node:%d fd:%d idx:%d\n",
-> > > > > > > > +           __func__,
-> > > > > > > > +           node->id,
-> > > > > > > > +           buf->vbb.request_fd,
-> > > > > > > > +           buf->vbb.vb2_buf.index);
-> > > > > > > > +
-> > > > > > > > +   /* For request buffers en-queue, handled in mtk_cam_req_try_queue */
-> > > > > > > > +   if (vb->vb2_queue->uses_requests)
-> > > > > > > > +           return;
-> > > > > > >
-> > > > > > > I'd suggest removing non-request support from this driver. Even if we end up
-> > > > > > > with a need to provide compatibility for non-request mode, then it should be
-> > > > > > > built on top of the requests mode, so that the driver itself doesn't have to
-> > > > > > > deal with two modes.
-> > > > > > >
-> > > > > >
-> > > > > > The purpose of non-request function in this driver is needed by
-> > > > > > our camera middle-ware design. It needs 3A statistics buffers before
-> > > > > > image buffers en-queue. So we need to en-queue 3A statistics with
-> > > > > > non-request mode in this driver. After MW got the 3A statistics data, it
-> > > > > > will en-queue the images, tuning buffer and other meta buffers with
-> > > > > > request mode. Based on this requirement, do you have any suggestion?
-> > > > > > For upstream driver, should we only consider request mode?
-> > > > > >
-> > > > >
-> > > > > Where does that requirement come from? Why the timing of queuing of
-> > > > > the buffers to the driver is important?
-> > > > >
-> > > > > [snip]
-> > > >
-> > > > Basically, this requirement comes from our internal camera
-> > > > middle-ware/3A hal in user space. Since this is not generic requirement,
-> > > > we will follow your original suggestion to keep the request mode only
-> > > > and remove other non-request design in other files. For upstream driver,
-> > > > it should support request mode only.
-> > > >
-> > >
-> > > Note that Chromium OS will use the "upstream driver" and we don't want
-> > > to diverge, so please make the userspace also use only requests. I
-> > > don't see a reason why there would be any need to submit any buffers
-> > > outside of a request.
-> > >
-> > > [snip]
-> >
-> > Ok, I have raised your concern to our colleagues and let him to discuss
-> > with you in another communication channel.
-> >
-> 
-> Thanks!
-> 
-> Best regards,
-> Tomasz
-
-Our colleague is preparing material to explain the our 3A/MW design. If
-he is ready, he will discuss this with you.
-
-In the original plan, we will deliver P1 v4 patch set tomorrow (31th
-Jul.). But, there are some comments waiting for other experts' input.
-Do you suggest it is better to resolve all comments before v4 patch set
-submitting or continue to discuss these comments on v4?
-
-Thanks,
+Thanks for the suggestion, the code is easier to read this way.
+I'll submit patch v4 with this and the fixed tags.
 
 
-Jungo
+Miles
