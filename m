@@ -1,74 +1,110 @@
-From: Frank Wunderlich <frank-w@public-files.de>
-Subject: [PATCH v3 10/10] arm: dts: mt6323: add keys, power-controller,
- rtc and codec
-Date: Mon, 29 Jul 2019 20:24:21 +0200
-Message-ID: <20190729182421.7192-1-frank-w@public-files.de>
+From: Qii Wang <qii.wang@mediatek.com>
+Subject: Re: [PATCH v3 1/2] dt-bindings: i3c: Document MediaTek I3C master
+ bindings
+Date: Tue, 30 Jul 2019 09:34:13 +0800
+Message-ID: <1564450453.24702.14.camel@mhfsdcap03>
+References: <1562677762-24067-1-git-send-email-qii.wang@mediatek.com>
+         <1562677762-24067-2-git-send-email-qii.wang@mediatek.com>
+         <20190724202119.GA26566@bogus> <1564190613.24702.11.camel@mhfsdcap03>
+         <20190727111859.315994c3@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Allison Randal <allison@lohutok.net>, "David S. Miller" <davem@davemloft.net>, devicetree@vger.kernel.org, Eddie Huang <eddie.huang@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jonathan Cameron <Jonathan.Cameron@huawei.com>, Kate Stewart <kstewart@linuxfoundation.org>, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-rtc@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, Richard Fontana <rfontana@redhat.com>, Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, Sebastian Reichel <sre>
-Cc: Josef Friedl <josef.friedl@speed.at>, Frank Wunderlich <frank-w@public-files.de>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190727111859.315994c3@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Boris Brezillon <boris.brezillon@collabora.com>
+Cc: Rob Herring <robh@kernel.org>, bbrezillon@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, linux-i3c@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, leilk.liu@mediatek.com, liguo.zhang@mediatek.com, xinping.qian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Josef Friedl <josef.friedl@speed.at>
+On Sat, 2019-07-27 at 11:18 +0200, Boris Brezillon wrote:
+> On Sat, 27 Jul 2019 09:23:33 +0800
+> Qii Wang <qii.wang@mediatek.com> wrote:
+> 
+> > On Wed, 2019-07-24 at 14:21 -0600, Rob Herring wrote:
+> > > On Tue, Jul 09, 2019 at 09:09:21PM +0800, Qii Wang wrote:  
+> > > > Document MediaTek I3C master DT bindings.
+> > > > 
+> > > > Signed-off-by: Qii Wang <qii.wang@mediatek.com>
+> > > > ---
+> > > >  .../devicetree/bindings/i3c/mtk,i3c-master.txt     |   48 ++++++++++++++++++++
+> > > >  1 file changed, 48 insertions(+)
+> > > >  create mode 100644 Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt
+> > > > 
+> > > > diff --git a/Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt b/Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt
+> > > > new file mode 100644
+> > > > index 0000000..d32eda6
+> > > > --- /dev/null
+> > > > +++ b/Documentation/devicetree/bindings/i3c/mtk,i3c-master.txt
+> > > > @@ -0,0 +1,48 @@
+> > > > +Bindings for MediaTek I3C master block
+> > > > +=====================================
+> > > > +
+> > > > +Required properties:
+> > > > +--------------------
+> > > > +- compatible: shall be "mediatek,i3c-master"  
+> > > 
+> > > Needs to be SoC specific.
+> > >   
+> > 
+> > We hope that the SOCs will use the same driver and try to avoid big
+> > changes. If there are inevitable changes in the future, then we will
+> > modify the compatible to be SoC specific. cdns,i3c-master.txt is not SoC
+> > specific either.
+> 
+> The cadence case is a bit different I think. When the driver was
+> developed there was no SoC integrating this IP. I guess Mediatek knows
+> already which SoC(s) will embed the I3C master block.
+> 
 
-support poweroff and power-related keys on bpi-r2
+ok, I will modify it as "mediatek,mt8183-i3c".
 
-changes since v2: none (=v2 part 7)
-
-Suggested-by: Frank Wunderlich <frank-w@public-files.de>
-Signed-off-by: Josef Friedl <josef.friedl@speed.at>
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
----
- arch/arm/boot/dts/mt6323.dtsi | 27 +++++++++++++++++++++++++++
- 1 file changed, 27 insertions(+)
-
-diff --git a/arch/arm/boot/dts/mt6323.dtsi b/arch/arm/boot/dts/mt6323.dtsi
-index ba397407c1dd..7fda40ab5fe8 100644
---- a/arch/arm/boot/dts/mt6323.dtsi
-+++ b/arch/arm/boot/dts/mt6323.dtsi
-@@ -238,5 +238,32 @@
- 				regulator-enable-ramp-delay = <216>;
- 			};
- 		};
-+
-+		mt6323keys: mt6323keys {
-+			compatible = "mediatek,mt6323-keys";
-+			mediatek,long-press-mode = <1>;
-+			power-off-time-sec = <0>;
-+
-+			power {
-+				linux,keycodes = <116>;
-+				wakeup-source;
-+			};
-+
-+			home {
-+				linux,keycodes = <114>;
-+			};
-+		};
-+
-+		codec: mt6397codec {
-+			compatible = "mediatek,mt6397-codec";
-+		};
-+
-+		power-controller {
-+			compatible = "mediatek,mt6323-pwrc";
-+		};
-+
-+		rtc {
-+			compatible = "mediatek,mt6323-rtc";
-+		};
- 	};
- };
--- 
-2.17.1
+> > 
+> > > > +- reg: physical base address of the controller and apdma base, length of
+> > > > +  memory mapped region.
+> > > > +- reg-names: shall be "main" for master controller and "dma" for apdma.
+> > > > +- interrupts: the interrupt line connected to this I3C master.
+> > > > +- clocks: shall reference the i3c and apdma clocks.
+> > > > +- clock-names: shall include "main" and "dma".
+> > > > +
+> > > > +Mandatory properties defined by the generic binding (see
+> > > > +Documentation/devicetree/bindings/i3c/i3c.txt for more details):
+> > > > +
+> > > > +- #address-cells: shall be set to 3
+> > > > +- #size-cells: shall be set to 0
+> > > > +
+> > > > +Optional properties defined by the generic binding (see
+> > > > +Documentation/devicetree/bindings/i3c/i3c.txt for more details):
+> > > > +
+> > > > +- i2c-scl-hz
+> > > > +- i3c-scl-hz
+> > > > +
+> > > > +I3C device connected on the bus follow the generic description (see
+> > > > +Documentation/devicetree/bindings/i3c/i3c.txt for more details).
+> > > > +
+> > > > +Example:
+> > > > +
+> > > > +	i3c0: i3c@1100d000 {
+> > > > +		compatible = "mediatek,i3c-master";
+> > > > +		reg = <0x1100d000 0x1000>,
+> > > > +		      <0x11000300 0x80>;
+> > > > +		reg-names = "main", "dma";
+> > > > +		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_LOW>;
+> > > > +		clocks = <&infracfg CLK_INFRA_I3C0>,
+> > > > +			 <&infracfg CLK_INFRA_AP_DMA>;
+> > > > +		clock-names = "main", "dma";
+> > > > +		#address-cells = <3>;
+> > > > +		#size-cells = <0>;
+> > > > +		i2c-scl-hz = <100000>;
+> > > > +
+> > > > +		nunchuk: nunchuk@52 {
+> > > > +			compatible = "nintendo,nunchuk";
+> > > > +			reg = <0x52 0x0 0x10>;
+> > > > +		};
+> > > > +	};
+> > > > -- 
+> > > > 1.7.9.5
+> > > >   
+> > 
+> > 
+> 
