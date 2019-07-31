@@ -1,76 +1,148 @@
-From: Andrey Ryabinin <aryabinin@virtuozzo.com>
-Subject: Re: [PATCH v3] kasan: add memory corruption identification for
- software tag-based mode
-Date: Wed, 31 Jul 2019 20:04:59 +0300
-Message-ID: <f29ee964-cf12-1b5d-e570-1d5baa49a580@virtuozzo.com>
-References: <20190613081357.1360-1-walter-zh.wu@mediatek.com>
- <da7591c9-660d-d380-d59e-6d70b39eaa6b@virtuozzo.com>
- <1560447999.15814.15.camel@mtksdccf07> <1560479520.15814.34.camel@mtksdccf07>
- <1560744017.15814.49.camel@mtksdccf07>
- <CACT4Y+Y3uS59rXf92ByQuFK_G4v0H8NNnCY1tCbr4V+PaZF3ag@mail.gmail.com>
- <1560774735.15814.54.camel@mtksdccf07> <1561974995.18866.1.camel@mtksdccf07>
- <CACT4Y+aMXTBE0uVkeZz+MuPx3X1nESSBncgkScWvAkciAxP1RA@mail.gmail.com>
- <ebc99ee1-716b-0b18-66ab-4e93de02ce50@virtuozzo.com>
- <1562640832.9077.32.camel@mtksdccf07>
- <d9fd1d5b-9516-b9b9-0670-a1885e79f278@virtuozzo.com>
- <1562839579.5846.12.camel@mtksdccf07>
- <37897fb7-88c1-859a-dfcc-0a5e89a642e0@virtuozzo.com>
- <1563160001.4793.4.camel@mtksdccf07>
- <9ab1871a-2605-ab34-3fd3-4b44a0e17ab7@virtuozzo.com>
- <1563789162.31223.3.camel@mtksdccf07>
- <e62da62a-2a63-3a1c-faeb-9c5561a5170c@virtuozzo.com>
- <1564144097.515.3.camel@mtksdccf07>
- <71df2bd5-7bc8-2c82-ee31-3f68c3b6296d@virtuozzo.com>
- <1564147164.515.10.camel@mtksdccf07>
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH v4 14/23] drm/tilcdc: Provide ddc symlink in connector
+ sysfs directory
+Date: Wed, 31 Jul 2019 16:39:13 -0300
+Message-ID: <869dd8b894883715378ba681c7dd26934284bdff.camel@collabora.com>
+References: <cover.1562843413.git.andrzej.p@collabora.com>
+ <d1d415022c598fb7acd033f0f322dd67250adaa9.1562843413.git.andrzej.p@collabora.com>
+ <20190723090532.GA787@ravnborg.org>
+ <3ad60be5-49cf-4017-4b74-53a2d6272deb@collabora.com>
+ <acfd895d-ab59-0190-e25c-1827bd8d214b@suse.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1564147164.515.10.camel@mtksdccf07>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Walter Wu <walter-zh.wu@mediatek.com>
-Cc: Dmitry Vyukov <dvyukov@google.com>, Alexander Potapenko <glider@google.com>, Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Matthias Brugger <matthias.bgg@gmail.com>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Arnd Bergmann <arnd@arndb.de>, Vasily Gorbik <gor@linux.ibm.com>, Andrey Konovalov <andreyknvl@google.com>, "Jason A . Donenfeld" <Jason@zx2c4.com>, Miles Chen <miles.chen@mediatek.com>, kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>, Linux-MM <linux-mm@kvack.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream <wsd_upstream@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+In-Reply-To: <acfd895d-ab59-0190-e25c-1827bd8d214b-l3A5Bk7waGM@public.gmane.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/amd-gfx>,
+ <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/amd-gfx>
+List-Post: <mailto:amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+List-Help: <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/amd-gfx>,
+ <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
+Errors-To: amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Sender: "amd-gfx" <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+To: Thomas Zimmermann <tzimmermann-l3A5Bk7waGM@public.gmane.org>, Andrzej Pietrasiewicz <andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Sam Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>
+Cc: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Vincent Abriou <vincent.abriou-qxv4g6HH51o@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, NXP Linux Team <linux-imx-3arQi8VN3Tc@public.gmane.org>, Dave Airlie <airlied-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, Alexios Zavras <alexios.zavras-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Mamta Shukla <mamtas>
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 7/26/19 4:19 PM, Walter Wu wrote:
-> On Fri, 2019-07-26 at 15:52 +0300, Andrey Ryabinin wrote:
->>
->> On 7/26/19 3:28 PM, Walter Wu wrote:
->>> On Fri, 2019-07-26 at 15:00 +0300, Andrey Ryabinin wrote:
->>>>
->>>
->>>>>
->>>>>
->>>>> I remember that there are already the lists which you concern. Maybe we
->>>>> can try to solve those problems one by one.
->>>>>
->>>>> 1. deadlock issue? cause by kmalloc() after kfree()?
->>>>
->>>> smp_call_on_cpu()
->>>
->>>>> 2. decrease allocation fail, to modify GFP_NOWAIT flag to GFP_KERNEL?
->>>>
->>>> No, this is not gonna work. Ideally we shouldn't have any allocations there.
->>>> It's not reliable and it hurts performance.
->>>>
->>> I dont know this meaning, we need create a qobject and put into
->>> quarantine, so may need to call kmem_cache_alloc(), would you agree this
->>> action?
->>>
->>
->> How is this any different from what you have now?
-> 
-> I originally thought you already agreed the free-list(tag-based
-> quarantine) after fix those issue. If no allocation there,
-
-If no allocation there, than it must be somewhere else.
-We known exactly the amount of memory we need, so it's possible to preallocate it in advance.
-
-
-> i think maybe
-> only move generic quarantine into tag-based kasan, but its memory
-> consumption is more bigger our patch. what do you think?
-> 
+SGksCgpJJ20gZ2xhZCB0byBzZWUgdGhpcyB3b3JrIG1vdmluZyBmb3J3YXJkIQoKT24gV2VkLCAy
+MDE5LTA3LTI0IGF0IDEwOjAxICswMjAwLCBUaG9tYXMgWmltbWVybWFubiB3cm90ZToKPiBIaQo+
+IAo+IEFtIDIzLjA3LjE5IHVtIDE0OjQ0IHNjaHJpZWIgQW5kcnplaiBQaWV0cmFzaWV3aWN6Ogo+
+ID4gSGkgU2FtLAo+ID4gCj4gPiBXIGRuaXUgMjMuMDcuMjAxOSBvIDExOjA1LCBTYW0gUmF2bmJv
+cmcgcGlzemU6Cj4gPiA+IEhpIEFuZHJ6ZWoKPiA+ID4gCj4gPiA+IE9uIFRodSwgSnVsIDExLCAy
+MDE5IGF0IDAxOjI2OjQxUE0gKzAyMDAsIEFuZHJ6ZWogUGlldHJhc2lld2ljeiB3cm90ZToKPiA+
+ID4gPiBVc2UgdGhlIGRkYyBwb2ludGVyIHByb3ZpZGVkIGJ5IHRoZSBnZW5lcmljIGNvbm5lY3Rv
+ci4KPiA+ID4gPiAKPiA+ID4gPiBTaWduZWQtb2ZmLWJ5OiBBbmRyemVqIFBpZXRyYXNpZXdpY3og
+PGFuZHJ6ZWoucEBjb2xsYWJvcmEuY29tPgo+ID4gPiA+IC0tLQo+ID4gPiA+ICAgZHJpdmVycy9n
+cHUvZHJtL3RpbGNkYy90aWxjZGNfdGZwNDEwLmMgfCAxICsKPiA+ID4gPiAgIDEgZmlsZSBjaGFu
+Z2VkLCAxIGluc2VydGlvbigrKQo+ID4gPiA+IAo+ID4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJz
+L2dwdS9kcm0vdGlsY2RjL3RpbGNkY190ZnA0MTAuYwo+ID4gPiA+IGIvZHJpdmVycy9ncHUvZHJt
+L3RpbGNkYy90aWxjZGNfdGZwNDEwLmMKPiA+ID4gPiBpbmRleCA2MmQwMTRjMjA5ODguLmMzNzNl
+ZGI5NTY2NiAxMDA2NDQKPiA+ID4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vdGlsY2RjL3RpbGNk
+Y190ZnA0MTAuYwo+ID4gPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS90aWxjZGMvdGlsY2RjX3Rm
+cDQxMC5jCj4gPiA+ID4gQEAgLTIxOSw2ICsyMTksNyBAQCBzdGF0aWMgc3RydWN0IGRybV9jb25u
+ZWN0b3IKPiA+ID4gPiAqdGZwNDEwX2Nvbm5lY3Rvcl9jcmVhdGUoc3RydWN0IGRybV9kZXZpY2Ug
+KmRldiwKPiA+ID4gPiAgICAgICB0ZnA0MTBfY29ubmVjdG9yLT5tb2QgPSBtb2Q7Cj4gPiA+ID4g
+ICAgICAgICBjb25uZWN0b3IgPSAmdGZwNDEwX2Nvbm5lY3Rvci0+YmFzZTsKPiA+ID4gPiArICAg
+IGNvbm5lY3Rvci0+ZGRjID0gbW9kLT5pMmM7Cj4gPiA+ID4gICAgICAgICBkcm1fY29ubmVjdG9y
+X2luaXQoZGV2LCBjb25uZWN0b3IsICZ0ZnA0MTBfY29ubmVjdG9yX2Z1bmNzLAo+ID4gPiA+ICAg
+ICAgICAgICAgICAgRFJNX01PREVfQ09OTkVDVE9SX0RWSUQpOwo+ID4gPiAKPiA+ID4gV2hlbiBy
+ZWFkaW5nIHRoaXMgY29kZSwgaXQgbG9va3Mgc3RyYW5nZSB0aGF0IHdlIHNldCBjb25uZWN0b3It
+PmRkYwo+ID4gPiAqYmVmb3JlKiB0aGUgY2FsbCB0byBpbml0IHRoZSBjb25uZWN0b3IuCj4gPiA+
+IE9uZSBjb3VsZCByaXNrIHRoYXQgZHJtX2Nvbm5lY3Rvcl9pbml0KCkgdXNlZCBtZW1zZXQoLi4p
+IHRvIGNsZWFyIGFsbAo+ID4gPiBmaWVsZHMgb3Igc28sIGFuZCBpdCB3b3VsZCBicmVhayB0aGlz
+IG9yZGVyLgo+ID4gCj4gPiBJIHZlcmlmaWVkIHRoZSBjb2RlIG9mIGRybV9jb25uZWN0b3JfaW5p
+dCgpIGFuZCBjYW5ub3QgZmluZCBhbnkgbWVtc2V0KCkKPiA+IGludm9jYXRpb25zIHRoZXJlLiBX
+aGF0IGlzIHlvdXIgYWN0dWFsIGNvbmNlcm4/Cj4gCj4gSSB0aGluayB0aGlzIGVjaG9lcyBteSBj
+b25jZXJuIGFib3V0IHRoZSBpbXBsaWNpdCBvcmRlciBvZiBvcGVyYXRpb24uIEl0Cj4gc2VlbXMg
+dG9vIGVhc3kgdG8gZ2V0IHRoaXMgd3JvbmcuIElmIHlvdSBkb24ndCB3YW50IHRvIGFkZCBhbiBh
+ZGRpdGlvbmFsCj4gaW50ZXJmYWNlIGZvciBzZXR0aW5nIHRoZSBkZGMgZmllbGQsIHdoeSBub3Qg
+YWRkIGEgZGVkaWNhdGVkIGluaXRpYWxpemVyCj4gZnVuY3Rpb24gdGhhdCBzZXRzIHRoZSBkZGMg
+ZmllbGQ/IFNvbWV0aGluZyBsaWtlIHRoaXMuCj4gCj4gaW50IGRybV9jb25uZWN0b3JfaW5pdF93
+aXRoX2RkYyhjb25uZWN0b3IsIGZ1bmNzLCAuLi4sIGRkYykKPiB7Cj4gCXJldCA9IGRybV9jb25u
+ZWN0b3JfaW5pdChjb25uZWN0b3IsIGZ1bmNzLCAuLi4pOwo+IAlpZiAocmV0KQo+IAkJcmV0dXJu
+IHJldDsKPiAKPiAJaWYgKCFkZGMpCj4gCQlyZXR1cm4gMDsKPiAKPiAJY29ubmVjdG9yLT5kZGMg
+PSBkZGM7Cj4gCS8qIHNldCB1cCBzeXNmcyAqLwo+IAoKSSBrbm93IHRoaXMgY29tbWVudCBjb21l
+cyBsYXRlIHRvIHRoZSBwYXJ0eSwgYnV0IEknbSBhIHNsaWdodGx5CnN1cHJpc2VkIHRvIHNlZSB0
+aGUgYWJvdmUgaW5zdGVhZCBvZiBpbXBsZW1lbnRpbmcgZHJtX2Nvbm5lY3Rvcl9pbml0CmluIHRl
+cm1zIG9mIGRybV9jb25uZWN0b3JfaW5pdF93aXRoX2RkYywgYXMgd2UgdHlwaWNhbGx5IGRvLgoK
+TmFtZWx5LCBzb21ldGhpbmcgYWxvbmcgdGhlc2UgbGluZXMgKGNvZGUgbWlnaHQgbm90IGV2ZW4g
+YnVpbGQhKToKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tODwtLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2RybV9j
+b25uZWN0b3IuYyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fY29ubmVjdG9yLmMKaW5kZXggZDQ5ZTE5
+ZjNkZTNhLi5kYmQwOTU5MzMxNzUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fY29u
+bmVjdG9yLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2RybV9jb25uZWN0b3IuYwpAQCAtMTc5LDEx
+ICsxNzksMTIgQEAgdm9pZCBkcm1fY29ubmVjdG9yX2ZyZWVfd29ya19mbihzdHJ1Y3Qgd29ya19z
+dHJ1Y3QgKndvcmspCiB9CiAKIC8qKgotICogZHJtX2Nvbm5lY3Rvcl9pbml0IC0gSW5pdCBhIHBy
+ZWFsbG9jYXRlZCBjb25uZWN0b3IKKyAqIGRybV9jb25uZWN0b3JfaW5pdF93aXRoX2RkYyAtIElu
+aXQgYSBwcmVhbGxvY2F0ZWQgY29ubmVjdG9yCiAgKiBAZGV2OiBEUk0gZGV2aWNlCiAgKiBAY29u
+bmVjdG9yOiB0aGUgY29ubmVjdG9yIHRvIGluaXQKICAqIEBmdW5jczogY2FsbGJhY2tzIGZvciB0
+aGlzIGNvbm5lY3RvcgogICogQGNvbm5lY3Rvcl90eXBlOiB1c2VyIHZpc2libGUgdHlwZSBvZiB0
+aGUgY29ubmVjdG9yCisgKiBAZGRjOiBwb2ludGVyIHRvIHRoZSBhc3NvY2lhdGVkIGRkYyBhZGFw
+dGVyIChvcHRpb25hbCkKICAqCiAgKiBJbml0aWFsaXNlcyBhIHByZWFsbG9jYXRlZCBjb25uZWN0
+b3IuIENvbm5lY3RvcnMgc2hvdWxkIGJlCiAgKiBzdWJjbGFzc2VkIGFzIHBhcnQgb2YgZHJpdmVy
+IGNvbm5lY3RvciBvYmplY3RzLgpAQCAtMTkxLDEwICsxOTIsMTEgQEAgdm9pZCBkcm1fY29ubmVj
+dG9yX2ZyZWVfd29ya19mbihzdHJ1Y3Qgd29ya19zdHJ1Y3QgKndvcmspCiAgKiBSZXR1cm5zOgog
+ICogWmVybyBvbiBzdWNjZXNzLCBlcnJvciBjb2RlIG9uIGZhaWx1cmUuCiAgKi8KLWludCBkcm1f
+Y29ubmVjdG9yX2luaXQoc3RydWN0IGRybV9kZXZpY2UgKmRldiwKLQkJICAgICAgIHN0cnVjdCBk
+cm1fY29ubmVjdG9yICpjb25uZWN0b3IsCi0JCSAgICAgICBjb25zdCBzdHJ1Y3QgZHJtX2Nvbm5l
+Y3Rvcl9mdW5jcyAqZnVuY3MsCi0JCSAgICAgICBpbnQgY29ubmVjdG9yX3R5cGUpCitpbnQgZHJt
+X2Nvbm5lY3Rvcl9pbml0X3dpdGhfZGRjKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsCisJCQkJc3Ry
+dWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvciwKKwkJCQljb25zdCBzdHJ1Y3QgZHJtX2Nvbm5l
+Y3Rvcl9mdW5jcyAqZnVuY3MsCisJCQkJaW50IGNvbm5lY3Rvcl90eXBlLAorCQkJCXN0cnVjdCBp
+MmNfYWRhcHRlciAqZGRjKQogewogCXN0cnVjdCBkcm1fbW9kZV9jb25maWcgKmNvbmZpZyA9ICZk
+ZXYtPm1vZGVfY29uZmlnOwogCWludCByZXQ7CkBAIC0yMTUsNiArMjE3LDkgQEAgaW50IGRybV9j
+b25uZWN0b3JfaW5pdChzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAogCWNvbm5lY3Rvci0+ZGV2ID0g
+ZGV2OwogCWNvbm5lY3Rvci0+ZnVuY3MgPSBmdW5jczsKIAorCS8qIHByb3ZpZGUgZGRjIHN5bWxp
+bmsgaW4gc3lzZnMgKi8KKwljb25uZWN0b3ItPmRkYyA9IGRkYzsKKwogCS8qIGNvbm5lY3RvciBp
+bmRleCBpcyB1c2VkIHdpdGggMzJiaXQgYml0bWFza3MgKi8KIAlyZXQgPSBpZGFfc2ltcGxlX2dl
+dCgmY29uZmlnLT5jb25uZWN0b3JfaWRhLCAwLCAzMiwgR0ZQX0tFUk5FTCk7CiAJaWYgKHJldCA8
+IDApIHsKQEAgLTI5NSw0MSArMzAwLDYgQEAgaW50IGRybV9jb25uZWN0b3JfaW5pdChzdHJ1Y3Qg
+ZHJtX2RldmljZSAqZGV2LAogCiAJcmV0dXJuIHJldDsKIH0KLUVYUE9SVF9TWU1CT0woZHJtX2Nv
+bm5lY3Rvcl9pbml0KTsKLQotLyoqCi0gKiBkcm1fY29ubmVjdG9yX2luaXRfd2l0aF9kZGMgLSBJ
+bml0IGEgcHJlYWxsb2NhdGVkIGNvbm5lY3RvcgotICogQGRldjogRFJNIGRldmljZQotICogQGNv
+bm5lY3RvcjogdGhlIGNvbm5lY3RvciB0byBpbml0Ci0gKiBAZnVuY3M6IGNhbGxiYWNrcyBmb3Ig
+dGhpcyBjb25uZWN0b3IKLSAqIEBjb25uZWN0b3JfdHlwZTogdXNlciB2aXNpYmxlIHR5cGUgb2Yg
+dGhlIGNvbm5lY3RvcgotICogQGRkYzogcG9pbnRlciB0byB0aGUgYXNzb2NpYXRlZCBkZGMgYWRh
+cHRlcgotICoKLSAqIEluaXRpYWxpc2VzIGEgcHJlYWxsb2NhdGVkIGNvbm5lY3Rvci4gQ29ubmVj
+dG9ycyBzaG91bGQgYmUKLSAqIHN1YmNsYXNzZWQgYXMgcGFydCBvZiBkcml2ZXIgY29ubmVjdG9y
+IG9iamVjdHMuCi0gKgotICogRW5zdXJlcyB0aGF0IHRoZSBkZGMgZmllbGQgb2YgdGhlIGNvbm5l
+Y3RvciBpcyBjb3JyZWN0bHkgc2V0LgotICoKLSAqIFJldHVybnM6Ci0gKiBaZXJvIG9uIHN1Y2Nl
+c3MsIGVycm9yIGNvZGUgb24gZmFpbHVyZS4KLSAqLwotaW50IGRybV9jb25uZWN0b3JfaW5pdF93
+aXRoX2RkYyhzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAotCQkJCXN0cnVjdCBkcm1fY29ubmVjdG9y
+ICpjb25uZWN0b3IsCi0JCQkJY29uc3Qgc3RydWN0IGRybV9jb25uZWN0b3JfZnVuY3MgKmZ1bmNz
+LAotCQkJCWludCBjb25uZWN0b3JfdHlwZSwKLQkJCQlzdHJ1Y3QgaTJjX2FkYXB0ZXIgKmRkYykK
+LXsKLQlpbnQgcmV0OwotCi0JcmV0ID0gZHJtX2Nvbm5lY3Rvcl9pbml0KGRldiwgY29ubmVjdG9y
+LCBmdW5jcywgY29ubmVjdG9yX3R5cGUpOwotCWlmIChyZXQpCi0JCXJldHVybiByZXQ7Ci0KLQkv
+KiBwcm92aWRlIGRkYyBzeW1saW5rIGluIHN5c2ZzICovCi0JY29ubmVjdG9yLT5kZGMgPSBkZGM7
+Ci0KLQlyZXR1cm4gcmV0OwotfQogRVhQT1JUX1NZTUJPTChkcm1fY29ubmVjdG9yX2luaXRfd2l0
+aF9kZGMpOwogCiAvKioKZGlmZiAtLWdpdCBhL2luY2x1ZGUvZHJtL2RybV9jb25uZWN0b3IuaCBi
+L2luY2x1ZGUvZHJtL2RybV9jb25uZWN0b3IuaAppbmRleCBmYzVkMDg0MzgzMzMuLjE4ODRhYmY2
+MWE4NiAxMDA2NDQKLS0tIGEvaW5jbHVkZS9kcm0vZHJtX2Nvbm5lY3Rvci5oCisrKyBiL2luY2x1
+ZGUvZHJtL2RybV9jb25uZWN0b3IuaApAQCAtMTQwOCwxMCArMTQwOCw2IEBAIHN0cnVjdCBkcm1f
+Y29ubmVjdG9yIHsKIAogI2RlZmluZSBvYmpfdG9fY29ubmVjdG9yKHgpIGNvbnRhaW5lcl9vZih4
+LCBzdHJ1Y3QgZHJtX2Nvbm5lY3RvciwgYmFzZSkKIAotaW50IGRybV9jb25uZWN0b3JfaW5pdChz
+dHJ1Y3QgZHJtX2RldmljZSAqZGV2LAotCQkgICAgICAgc3RydWN0IGRybV9jb25uZWN0b3IgKmNv
+bm5lY3RvciwKLQkJICAgICAgIGNvbnN0IHN0cnVjdCBkcm1fY29ubmVjdG9yX2Z1bmNzICpmdW5j
+cywKLQkJICAgICAgIGludCBjb25uZWN0b3JfdHlwZSk7CiBpbnQgZHJtX2Nvbm5lY3Rvcl9pbml0
+X3dpdGhfZGRjKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsCiAJCQkJc3RydWN0IGRybV9jb25uZWN0
+b3IgKmNvbm5lY3RvciwKIAkJCQljb25zdCBzdHJ1Y3QgZHJtX2Nvbm5lY3Rvcl9mdW5jcyAqZnVu
+Y3MsCkBAIC0xNDI1LDYgKzE0MjEsMTYgQEAgaW50IGRybV9jb25uZWN0b3JfYXR0YWNoX2VuY29k
+ZXIoc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvciwKIAogdm9pZCBkcm1fY29ubmVjdG9y
+X2NsZWFudXAoc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3Rvcik7CiAKK3N0YXRpYyBpbmxp
+bmUgaW50Citkcm1fY29ubmVjdG9yX2luaXQoc3RydWN0IGRybV9kZXZpY2UgKmRldiwKKwkJICAg
+c3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvciwKKwkJICAgY29uc3Qgc3RydWN0IGRybV9j
+b25uZWN0b3JfZnVuY3MgKmZ1bmNzLAorCQkgICBpbnQgY29ubmVjdG9yX3R5cGUpOworeworCXJl
+dHVybiBkcm1fY29ubmVjdG9yX2luaXRfd2l0aF9kZGMoZGV2LCBjb25uZWN0b3IsIGZ1bmNzLAor
+CQkJCQkgICBjb25uZWN0b3JfdHlwZSwgTlVMTCk7Cit9CisKIHN0YXRpYyBpbmxpbmUgdW5zaWdu
+ZWQgaW50IGRybV9jb25uZWN0b3JfaW5kZXgoY29uc3Qgc3RydWN0IGRybV9jb25uZWN0b3IgKmNv
+bm5lY3RvcikKIHsKIAlyZXR1cm4gY29ubmVjdG9yLT5pbmRleDsKLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0+OC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCgpUaGlz
+IG1pZ2h0IGJlIHNlZW4gYXMgYmlrZXNoZWQgYnV0IGl0IHNlZW1zIHRoZXJlJ3MgdmFsdWUga2Vl
+cGluZyBhbGwgdGhlIGluaXQKY29kZSBpbiB0aGUgc2FtZSBwbGFjZSwgYXMgb3Bwb3NlZCB0byBz
+Y2F0dGVyZWQuCgpVbmxlc3MgdGhlcmUgYXJlIHJlYXNvbnMgZm9yIHRoZSBjdXJyZW50IGNvZGUs
+IHRoYXQgSSdtIG1pc3Npbmc/CgpUaGFua3MsCkV6ZXF1aWVsCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwphbWQtZ2Z4IG1haWxpbmcgbGlzdAphbWQtZ2Z4
+QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2FtZC1nZng=
