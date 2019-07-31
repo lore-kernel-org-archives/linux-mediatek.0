@@ -1,268 +1,70 @@
-From: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v3] checkpatch: add several Kconfig default value tests
-Date: Wed, 31 Jul 2019 23:13:09 +0800
-Message-ID: <20190731151309.1167-1-miles.chen@mediatek.com>
+From: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Subject: Re: Review required [Was: Associate ddc adapters with connectors]
+Date: Wed, 31 Jul 2019 17:32:32 +0200
+Message-ID: <65481afa-1104-4ee9-e53d-f2732a10d4b9@baylibre.com>
+References: <cover.1564161140.git.andrzej.p@collabora.com>
+ <20190726183520.GA22572@ravnborg.org> <20190726185538.GD14981@ravnborg.org>
+ <6560f93c-a48f-2a8c-afeb-d5e8e200480d@baylibre.com>
+ <20190731104007.GA23138@ravnborg.org>
+ <959cf323-c6b9-895b-592c-81c52aacae6e@collabora.com>
+ <ce68a0df-1719-7b53-b0ed-89caa9afc4a0@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Andy Whitcroft <apw-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>, Joe Perches <joe-6d6DIl74uiNBDgjK7y7TUQ@public.gmane.org>
-Cc: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+In-Reply-To: <ce68a0df-1719-7b53-b0ed-89caa9afc4a0-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/amd-gfx>,
+ <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/amd-gfx>
+List-Post: <mailto:amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+List-Help: <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/amd-gfx>,
+ <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
+Errors-To: amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Sender: "amd-gfx" <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+To: Andrzej Pietrasiewicz <andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Sam Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>
+Cc: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Vincent Abriou <vincent.abriou-qxv4g6HH51o@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, NXP Linux Team <linux-imx-3arQi8VN3Tc@public.gmane.org>, Dave Airlie <airlied-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Pengutronix Kernel Team <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, Mamta Shukla <mamtashukla555-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWMP3drIcvDWNA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This change adds 3 Kconfig default value tests.
-Repost patch v3 (Follow Joe's suggestion in v2)
-
-1. discourage default n cases:
-e.g.,
-default n
-
-2. discourage default "[ynm]" cases:
-e.g.,
-arch/powerpc/Kconfig:   default "y" if PPC_POWERNV
-arch/powerpc/Kconfig:   default "y" if PPC_POWERNV
-arch/powerpc/Kconfig:   default "n"
-drivers/auxdisplay/Kconfig:     default "n"
-drivers/crypto/Kconfig: default "m"
-drivers/rapidio/devices/Kconfig:        default "n"
-
-3. discourage default EXPERT or default !EXPERT cases:
-e.g.,
-drivers/hid/Kconfig:    default !EXPERT
-
-tested cases:
-default m
-default n if ALPHA_EV5 || ALPHA_EV56 || (ALPHA_EV4 && !ALPHA_LCA)
-default y if ALPHA_QEMU
-default n if PPC_POWERNV
-default n
-default EXPERT
-default !EXPERT
-default "m"
-default "n"
-default "y" if EXPERT
-default "y" if PPC_POWERNV
-
-test result:
-WARNING: 'default n' is the default value, no need to write it explicitly
-+       default n
-
-WARNING: Avoid using default EXPERT
-+       default EXPERT
-
-WARNING: Avoid using default EXPERT
-+       default !EXPERT
-
-WARNING: Use 'default m' not 'default "m"'
-+       default "m"
-
-WARNING: Use 'default n' not 'default "n"'
-+       default "n"
-
-WARNING: Use 'default y' not 'default "y"'
-+       default "y" if EXPERT
-
-WARNING: Use 'default y' not 'default "y"'
-+       default "y" if PPC_POWERNV
-
-test --fix capability:
-default n => delete line
-default "m" => default m
-default "n" => default n
-default "y" if EXPERT => default y if EXPERT
-default "y" if PPC_POWERNV => default y if PPC_POWERNV
-default !EXPERT => no change
-default EXPERT => no change
-
-Change since v1:
-discourage default n$
-discourage default "[ynm]"
-discourage default \!?EXPERT
-
-Change since v2:
-test Kconfig in a single block
-print precise message such as 'default "m"', not 'default "[ynm]"'
-provide --fix capability
-
-Cc: Joe Perches <joe-6d6DIl74uiNBDgjK7y7TUQ@public.gmane.org>
-Cc: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- scripts/checkpatch.pl | 139 ++++++++++++++++++++++++++----------------
- 1 file changed, 85 insertions(+), 54 deletions(-)
-
-diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
-index 93a7edfe0f05..b080eea68cf6 100755
---- a/scripts/checkpatch.pl
-+++ b/scripts/checkpatch.pl
-@@ -2932,60 +2932,98 @@ sub process {
- 				      "Do not include the paragraph about writing to the Free Software Foundation's mailing address from the sample GPL notice. The FSF has changed addresses in the past, and may do so again. Linux already includes a copy of the GPL.\n" . $herevet)
- 		}
- 
--# check for Kconfig help text having a real description
--# Only applies when adding the entry originally, after that we do not have
--# sufficient context to determine whether it is indeed long enough.
--		if ($realfile =~ /Kconfig/ &&
--		    # 'choice' is usually the last thing on the line (though
--		    # Kconfig supports named choices), so use a word boundary
--		    # (\b) rather than a whitespace character (\s)
--		    $line =~ /^\+\s*(?:config|menuconfig|choice)\b/) {
--			my $length = 0;
--			my $cnt = $realcnt;
--			my $ln = $linenr + 1;
--			my $f;
--			my $is_start = 0;
--			my $is_end = 0;
--			for (; $cnt > 0 && defined $lines[$ln - 1]; $ln++) {
--				$f = $lines[$ln - 1];
--				$cnt-- if ($lines[$ln - 1] !~ /^-/);
--				$is_end = $lines[$ln - 1] =~ /^\+/;
--
--				next if ($f =~ /^-/);
--				last if (!$file && $f =~ /^\@\@/);
--
--				if ($lines[$ln - 1] =~ /^\+\s*(?:bool|tristate|prompt)\s*["']/) {
--					$is_start = 1;
--				} elsif ($lines[$ln - 1] =~ /^\+\s*(?:help|---help---)\s*$/) {
--					if ($lines[$ln - 1] =~ "---help---") {
--						WARN("CONFIG_DESCRIPTION",
--						     "prefer 'help' over '---help---' for new help texts\n" . $herecurr);
-+# Kconfig tests
-+		if ($realfile =~ /Kconfig/) {
-+			# check for Kconfig help text having a real description
-+			# Only applies when adding the entry originally, after
-+			# that we do not have sufficient context to determine
-+			# whether it is indeed long enough.
-+			# 'choice' is usually the last thing on the line (though
-+			# Kconfig supports named choices), so use a word
-+			# boundary (\b) rather than a whitespace character (\s)
-+			if ($line =~ /^\+\s*(?:config|menuconfig|choice)\b/) {
-+				my $length = 0;
-+				my $cnt = $realcnt;
-+				my $ln = $linenr + 1;
-+				my $f;
-+				my $is_start = 0;
-+				my $is_end = 0;
-+				for (; $cnt > 0 && defined $lines[$ln - 1]; $ln++) {
-+					$f = $lines[$ln - 1];
-+					$cnt-- if ($lines[$ln - 1] !~ /^-/);
-+					$is_end = $lines[$ln - 1] =~ /^\+/;
-+
-+					next if ($f =~ /^-/);
-+					last if (!$file && $f =~ /^\@\@/);
-+
-+					if ($lines[$ln - 1] =~ /^\+\s*(?:bool|tristate|prompt)\s*["']/) {
-+						$is_start = 1;
-+					} elsif ($lines[$ln - 1] =~ /^\+\s*(?:help|---help---)\s*$/) {
-+						if ($lines[$ln - 1] =~ "---help---") {
-+							WARN("CONFIG_DESCRIPTION",
-+							     "prefer 'help' over '---help---' for new help texts\n" . $herecurr);
-+						}
-+						$length = -1;
-+					}
-+
-+					$f =~ s/^.//;
-+					$f =~ s/#.*//;
-+					$f =~ s/^\s+//;
-+					next if ($f =~ /^$/);
-+
-+					# This only checks context lines in the patch
-+					# and so hopefully shouldn't trigger false
-+					# positives, even though some of these are
-+					# common words in help texts
-+					if ($f =~ /^\s*(?:config|menuconfig|choice|endchoice|
-+							   if|endif|menu|endmenu|source)\b/x) {
-+						$is_end = 1;
-+						last;
- 					}
--					$length = -1;
-+					$length++;
-+				}
-+				if ($is_start && $is_end && $length < $min_conf_desc_length) {
-+					WARN("CONFIG_DESCRIPTION",
-+					     "please write a paragraph that describes the config symbol fully\n" . $herecurr);
- 				}
-+				#print "is_start<$is_start> is_end<$is_end> length<$length>\n";
-+			}
- 
--				$f =~ s/^.//;
--				$f =~ s/#.*//;
--				$f =~ s/^\s+//;
--				next if ($f =~ /^$/);
--
--				# This only checks context lines in the patch
--				# and so hopefully shouldn't trigger false
--				# positives, even though some of these are
--				# common words in help texts
--				if ($f =~ /^\s*(?:config|menuconfig|choice|endchoice|
--						  if|endif|menu|endmenu|source)\b/x) {
--					$is_end = 1;
--					last;
-+# discourage the use of boolean for type definition attributes
-+			if ($line =~ /^\+\s*\bboolean\b/) {
-+				if (WARN("CONFIG_TYPE_BOOLEAN",
-+					 "Use of boolean is deprecated, please use bool instead\n" . $herecurr) &&
-+				    $fix) {
-+					$fixed[$fixlinenr] =~ s/\bboolean\b/bool/;
-+				}
-+			}
-+
-+# Kconfig: discourage redundant 'default n'
-+			if ($line =~ /^\+\s*default\s+n$/) {
-+				if (WARN("CONFIG_DEFAULT_VALUE_STYLE",
-+					 "'default n' is the default value, no need to write it explicitly\n" . $herecurr) &&
-+				    $fix) {
-+					fix_delete_line($fixlinenr, $rawline);
- 				}
--				$length++;
- 			}
--			if ($is_start && $is_end && $length < $min_conf_desc_length) {
--				WARN("CONFIG_DESCRIPTION",
--				     "please write a paragraph that describes the config symbol fully\n" . $herecurr);
-+
-+# Kconfig: discourage quoted defaults: use default [ynm], not default "[ynm]"
-+			if ($rawline =~ /^\+\s*default\s+"([ynm])"/) {
-+				if (WARN("CONFIG_DEFAULT_VALUE_STYLE",
-+					 "Use 'default $1' not 'default \"$1\"'\n" . $herecurr) &&
-+				    $fix) {
-+					$fixed[$fixlinenr] =~ s/\b(default\s+)"(.)"/$1$2/;
-+				}
-+			}
-+
-+# Kconfig: discourage using default EXPERT or !EXPERT
-+			if ($line =~ /^\+\s*default\s+\!?\s*EXPERT\b/) {
-+				WARN("CONFIG_DEFAULT_VALUE_STYLE",
-+				     "Avoid using default EXPERT\n" . $herecurr);
- 			}
--			#print "is_start<$is_start> is_end<$is_end> length<$length>\n";
- 		}
-+# End of Kconfig tests
-+
- 
- # check for MAINTAINERS entries that don't have the right form
- 		if ($realfile =~ /^MAINTAINERS$/ &&
-@@ -2998,13 +3036,6 @@ sub process {
- 			}
- 		}
- 
--# discourage the use of boolean for type definition attributes of Kconfig options
--		if ($realfile =~ /Kconfig/ &&
--		    $line =~ /^\+\s*\bboolean\b/) {
--			WARN("CONFIG_TYPE_BOOLEAN",
--			     "Use of boolean is deprecated, please use bool instead.\n" . $herecurr);
--		}
--
- 		if (($realfile =~ /Makefile.*/ || $realfile =~ /Kbuild.*/) &&
- 		    ($line =~ /\+(EXTRA_[A-Z]+FLAGS).*/)) {
- 			my $flag = $1;
--- 
-2.18.0
+SGkgQW5kcnplaiwKCk9uIDMxLzA3LzIwMTkgMTY6MjIsIE5laWwgQXJtc3Ryb25nIHdyb3RlOgo+
+IE9uIDMxLzA3LzIwMTkgMTU6MTAsIEFuZHJ6ZWogUGlldHJhc2lld2ljeiB3cm90ZToKPj4gVyBk
+bml1IDMxLjA3LjIwMTkgb8KgMTI6NDAsIFNhbSBSYXZuYm9yZyBwaXN6ZToKPj4+IEhpIE5laWwu
+Cj4+Pgo+Pj4gT24gV2VkLCBKdWwgMzEsIDIwMTkgYXQgMTA6MDA6MTRBTSArMDIwMCwgTmVpbCBB
+cm1zdHJvbmcgd3JvdGU6Cj4+Pj4gSGkgU2FtLAo+Pj4+Cj4+Pj4gT24gMjYvMDcvMjAxOSAyMDo1
+NSwgU2FtIFJhdm5ib3JnIHdyb3RlOgo+Pj4+PiBIaSBhbGwuCj4+Pj4+Cj4+Pj4+IEFuZHJ6ZWog
+aGF2ZSBkb25lIGEgZ29vZCBqb2IgZm9sbG93aW5nIHVwIG9uIGZlZWRiYWNrIGFuZCB0aGlzIHNl
+cmllcyBpcwo+Pj4+PiBub3cgcmVhZHkuCj4+Pj4+Cj4+Pj4+IFdlIG5lZWQgYWNrIG9uIHRoZSBw
+YXRjaGVzIHRvdWNoaW5nIHRoZSBpbmRpdmlkdWFsIGRyaXZlcnMgYmVmb3JlIHdlIGNhbgo+Pj4+
+PiBwcm9jZWVkLgo+Pj4+PiBQbGVhc2UgY2hlY2sgeW91ciBkcml2ZXJzIGFuZCBnZXQgYmFjay4K
+Pj4+Pgo+Pj4+IEkgY2FuIGFwcGx5IGFsbCBjb3JlIGFuZCBtYWludGFpbmVyLWFja2VkIHBhdGNo
+ZXMgZm9yIG5vdyA6Cj4+Pj4gMSwgMiwgNywgMTAsIDExLCAxNiwgMTcsIDE4LCAxOSwgMjAsIDIx
+LCAyMiwgMjMKPj4+Pgo+Pj4+IGFuZCBBbmRyemVqIGNhbiByZXNlbmQgbm90IGFwcGxpZWQgcGF0
+Y2hlcyB3aXRoIFlvdXJzIGFuZCBFbWlsJ3MgUmV2aWV3ZWQtYnksCj4+Pj4gc28gd2UgY2FuIHdh
+aXQgYSBmZXcgbW9yZSBkYXlzIHRvIGFwcGx5IHRoZW0uCj4+Pgo+Pj4gU291bmRzIGxpa2UgYSBn
+b29kIHBsYW4uCj4+PiBUaGFua3MgZm9yIHRoYWtpbmcgY2FyZSBvZiB0aGlzLgo+Pgo+PiBXaGVu
+IGlzIGl0IGdvb2QgdGltZSB0byByZXNlbmQgcGF0Y2hlcyAzLCA0LCA1LCA2LCA4LCA5LCAxMiwg
+MTMsIDE0LCAxNSwgMjQgYXMgYQo+PiBuZXcgc2VyaWVzPwo+IAo+IEknbGwgcGluZyB5b3Ugd2hl
+biBldmVyeXRoaW5nIGlzIGFwcGxpZWQsIGJ1aWxkLXRlc3RlZCBhbmQgcHVzaGVkIG9uIGRybS1t
+aXNjLW5leHQKCkkgcHVzaGVkIDEsIDIsIDcsIDEwLCAxMSwgMTYsIDE3LCAxOCwgMTksIDIwLCAy
+MSwgMjIsIDIzIDoKYmVkN2EyMTgyZGU2IGRybS9yYWRlb246IFByb3ZpZGUgZGRjIHN5bWxpbmsg
+aW4gY29ubmVjdG9yIHN5c2ZzIGRpcmVjdG9yeQo1YjUwZmEyYjM1YTQgZHJtL2FtZGdwdTogUHJv
+dmlkZSBkZGMgc3ltbGluayBpbiBjb25uZWN0b3Igc3lzZnMgZGlyZWN0b3J5CmNmYjQ0NDU1Mjky
+NiBkcm0vYnJpZGdlOiB0aS10ZnA0MTA6IFByb3ZpZGUgZGRjIHN5bWxpbmsgaW4gY29ubmVjdG9y
+IHN5c2ZzIGRpcmVjdG9yeQo5ZWJjNGQyMTQwYWQgZHJtL2JyaWRnZTogZHctaGRtaTogUHJvdmlk
+ZSBkZGMgc3ltbGluayBpbiBjb25uZWN0b3Igc3lzZnMgZGlyZWN0b3J5CmE0ZjkwODdlODVkZSBk
+cm0vYnJpZGdlOiBkdW1iLXZnYS1kYWM6IFByb3ZpZGUgZGRjIHN5bWxpbmsgaW4gY29ubmVjdG9y
+IHN5c2ZzIGRpcmVjdG9yeQozNTBmZDU1NGVlNDQgZHJtL2FzdDogUHJvdmlkZSBkZGMgc3ltbGlu
+ayBpbiBjb25uZWN0b3Igc3lzZnMgZGlyZWN0b3J5Cjk1NzJhZTE3NmExMCBkcm0vbWdhZzIwMDog
+UHJvdmlkZSBkZGMgc3ltbGluayBpbiBjb25uZWN0b3Igc3lzZnMgZGlyZWN0b3J5CjcwNThlNzY2
+ODJkNyBkcm06IHN0aTogUHJvdmlkZSBkZGMgc3ltbGluayBpbiBoZG1pIGNvbm5lY3RvciBzeXNm
+cyBkaXJlY3RvcnkKMmFlN2ViMzcyZWQ0IGRybS9pbXg6IGlteC10dmU6IFByb3ZpZGUgZGRjIHN5
+bWxpbmsgaW4gY29ubmVjdG9yJ3Mgc3lzZnMKYmUwZWMzNTk0MGJjIGRybS9pbXg6IGlteC1sZGI6
+IFByb3ZpZGUgZGRjIHN5bWxpbmsgaW4gY29ubmVjdG9yJ3Mgc3lzZnMKMWU4ZjE3ODU1ZmY4IGRy
+bS9zdW40aTogaGRtaTogUHJvdmlkZSBkZGMgc3ltbGluayBpbiBzdW40aSBoZG1pIGNvbm5lY3Rv
+ciBzeXNmcyBkaXJlY3RvcnkKMTAwMTYzZGY0MjAzIGRybTogQWRkIGRybV9jb25uZWN0b3JfaW5p
+dCgpIHZhcmlhbnQgd2l0aCBkZGMKZTFhMjljNmM1OTU1IGRybTogQWRkIGRkYyBsaW5rIGluIHN5
+c2ZzIGNyZWF0ZWQgYnkgZHJtX2Nvbm5lY3RvcgoKTmVpbAoKPiAKPiBOZWlsCj4gCj4+Cj4+IEFu
+ZHJ6ZWoKPiAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CmFtZC1nZnggbWFpbGluZyBsaXN0CmFtZC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vYW1kLWdmeA==
