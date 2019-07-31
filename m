@@ -1,37 +1,71 @@
-From: Sam Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v4 19/23] drm/bridge: dw-hdmi: Provide ddc symlink in
- connector sysfs directory
-Date: Tue, 30 Jul 2019 19:30:07 +0200
-Message-ID: <20190730173007.GA28537@ravnborg.org>
-References: <cover.1562843413.git.andrzej.p@collabora.com>
- <ec88a18feffa37eceb947bb83a6f9f51fb575566.1562843413.git.andrzej.p@collabora.com>
- <449b11e6-2386-4e5b-26f7-eb6046911f24@baylibre.com>
+From: <gtk_ruiwang@mediatek.com>
+Subject: [v2] media: mtk-vcodec: Handle H264 error bitstreams
+Date: Wed, 31 Jul 2019 12:29:39 +0800
+Message-ID: <20190731042939.5339-1-gtk_ruiwang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <449b11e6-2386-4e5b-26f7-eb6046911f24-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/amd-gfx>,
- <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/amd-gfx>
-List-Post: <mailto:amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-List-Help: <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/amd-gfx>,
- <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
-Errors-To: amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Sender: "amd-gfx" <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-To: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-Cc: "Y.C. Chen" <yc_chen-SAlXDmAnmOAqDJ6do+/SaQ@public.gmane.org>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Ramalingam C <ramalingam.c-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Joonas Lahtinen <joonas.lahtinen-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Benjamin Gaignard <benjamin.gaignard-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, "David (ChunMing) Zhou" <David1.Zhou-5C7GfCeVMHo@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Vincent Abriou <vincent.abriou-qxv4g6HH51o@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hans Verkuil <hverkuil@xs4all.nl>, Tomasz Figa <tfiga@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>
+Cc: Longfei Wang <longfei.wang@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Rui Wang <gtk_ruiwang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgTmVpbC4KCj4gPiBTaWduZWQtb2ZmLWJ5OiBBbmRyemVqIFBpZXRyYXNpZXdpY3ogPGFuZHJ6
-ZWoucEBjb2xsYWJvcmEuY29tPgo+ID4gLS0tCj4gPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9z
-eW5vcHN5cy9kdy1oZG1pLmMgfCA0MCArKysrKysrKysrKy0tLS0tLS0tLS0tLQo+ID4gIDEgZmls
-ZSBjaGFuZ2VkLCAyMCBpbnNlcnRpb25zKCspLCAyMCBkZWxldGlvbnMoLSkKPiA+IAouLi4KPiAK
-PiBSZXZpZXdlZC1ieTogTmVpbCBBcm1zdHJvbmcgPG5hcm1zdHJvbmdAYmF5bGlicmUuY29tPgoK
-VGhlcmUgaXMgbm93IGEgbXVjaCBzaW1wbGVyIHY2IG9mIHRoaXMgcGF0Y2guCkNhcmUgdG8gdGFr
-ZSBhIGxvb2sgYW5kIGFjay9yLWI/CgoJU2FtCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCmFtZC1nZnggbWFpbGluZyBsaXN0CmFtZC1nZnhAbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
-Zm8vYW1kLWdmeA==
+From: Rui Wang <gtk_ruiwang@mediatek.com>
+
+Error h264 bitstreams which picture info are out range of
+decoder hardware specification, and no nal start code at the
+beginning of the buffer, stop decoding and exit.
+
+Signed-off-by: Rui Wang <gtk_ruiwang@mediatek.com>
+---
+Change note:
+Updata commint message with Mauro's comment: use real name on SOB and From.
+---
+ .../platform/mtk-vcodec/vdec/vdec_h264_if.c      | 16 ++++++++++++++--
+ 1 file changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
+index c5f8f1fca44c..49aa85a9bb5a 100644
+--- a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
++++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
+@@ -29,6 +29,9 @@
+ #define H264_MAX_FB_NUM				17
+ #define HDR_PARSING_BUF_SZ			1024
+ 
++#define DEC_ERR_RET(ret)			((ret) >> 16)
++#define H264_ERR_NOT_VALID			3
++
+ /**
+  * struct h264_fb - h264 decode frame buffer information
+  * @vdec_fb_va  : virtual address of struct vdec_fb
+@@ -357,8 +360,11 @@ static int vdec_h264_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+ 	buf = (unsigned char *)bs->va;
+ 	buf_sz = bs->size;
+ 	nal_start_idx = find_start_code(buf, buf_sz);
+-	if (nal_start_idx < 0)
++	if (nal_start_idx < 0) {
++		mtk_vcodec_err(inst, "invalid nal start code");
++		err = -EIO;
+ 		goto err_free_fb_out;
++	}
+ 
+ 	nal_start = buf[nal_start_idx];
+ 	nal_type = NAL_TYPE(buf[nal_start_idx]);
+@@ -382,8 +388,14 @@ static int vdec_h264_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+ 	data[0] = buf_sz;
+ 	data[1] = nal_start;
+ 	err = vpu_dec_start(vpu, data, 2);
+-	if (err)
++	if (err) {
++		if (err > 0 && (DEC_ERR_RET(err) == H264_ERR_NOT_VALID)) {
++			mtk_vcodec_err(inst, "- error bitstream - err = %d -",
++				       err);
++			err = -EIO;
++		}
+ 		goto err_free_fb_out;
++	}
+ 
+ 	*res_chg = inst->vsi->dec.resolution_changed;
+ 	if (*res_chg) {
+-- 
+2.18.0
