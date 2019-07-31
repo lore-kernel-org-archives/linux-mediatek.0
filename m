@@ -1,43 +1,80 @@
-From: Sam Ravnborg <sam@ravnborg.org>
-Subject: Re: Review required [Was: Associate ddc adapters with connectors]
-Date: Wed, 31 Jul 2019 12:40:07 +0200
-Message-ID: <20190731104007.GA23138@ravnborg.org>
-References: <cover.1564161140.git.andrzej.p@collabora.com>
- <20190726183520.GA22572@ravnborg.org>
- <20190726185538.GD14981@ravnborg.org>
- <6560f93c-a48f-2a8c-afeb-d5e8e200480d@baylibre.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: stm32: sai: use devm_platform_ioremap_resource() to simplify code" to the asoc tree
+Date: Wed, 31 Jul 2019 12:29:42 +0100 (BST)
+Message-ID: <20190731112942.8BDF32742C99@ypsilon.sirena.org.uk>
+References: <20190727150738.54764-16-yuehaibing@huawei.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <6560f93c-a48f-2a8c-afeb-d5e8e200480d@baylibre.com>
+In-Reply-To: <20190727150738.54764-16-yuehaibing@huawei.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Neil Armstrong <narmstrong@baylibre.com>
-Cc: Andrzej Pietrasiewicz <andrzej.p@collabora.com>, David Airlie <airlied@linux.ie>, Liviu Dudau <liviu.dudau@arm.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Shawn Guo <shawnguo@kernel.org>, kernel@collabora.com, linux-samsung-soc@vger.kernel.org, Sean Paul <sean@poorly.run>, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>, NXP Linux Team <linux-imx@nxp.com>, Dave Airlie <airlied@redhat.com>, Thomas Zimmermann <tzimmermann@suse.de>, Jonas Karlman <jonas@kwiboo.se>, linux-arm
+To: YueHaibing <yuehaibing@huawei.com>
+Cc: alexandre.torgue@st.com, alsa-devel@alsa-project.org, arnaud.pouliquen@st.com, baohua@kernel.org, bcm-kernel-feedback-list@broadcom.com, broonie@kernel.org, daniel@zonque.org, eric@anholt.net, festevam@gmail.com, f.fainelli@gmail.com, gregkh@linuxfoundation.org, haojian.zhuang@gmail.com, Hulk Robot <hulkci@huawei.com>, jbrunet@baylibre.com, jcmvbkbc@gmail.com, jonathanh@nvidia.com, kernel@pengutronix.de, khilman@baylibre.com, lgirdwood@gmail.com, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-imx@nxp.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linuxppc-dev@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, linux-xtensa@linux-xtensa.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Neil.
+The patch
 
-On Wed, Jul 31, 2019 at 10:00:14AM +0200, Neil Armstrong wrote:
-> Hi Sam,
-> 
-> On 26/07/2019 20:55, Sam Ravnborg wrote:
-> > Hi all.
-> > 
-> > Andrzej have done a good job following up on feedback and this series is
-> > now ready.
-> > 
-> > We need ack on the patches touching the individual drivers before we can
-> > proceed.
-> > Please check your drivers and get back.
-> 
-> I can apply all core and maintainer-acked patches for now :
-> 1, 2, 7, 10, 11, 16, 17, 18, 19, 20, 21, 22, 23
-> 
-> and Andrzej can resend not applied patches with Yours and Emil's Reviewed-by,
-> so we can wait a few more days to apply them.
+   ASoC: stm32: sai: use devm_platform_ioremap_resource() to simplify code
 
-Sounds like a good plan.
-Thanks for thaking care of this.
+has been applied to the asoc tree at
 
-	Sam
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-5.4
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+>From 1c63223cda84fb10643938e4e4eb02110f8ae9a2 Mon Sep 17 00:00:00 2001
+From: YueHaibing <yuehaibing@huawei.com>
+Date: Sat, 27 Jul 2019 23:07:19 +0800
+Subject: [PATCH] ASoC: stm32: sai: use devm_platform_ioremap_resource() to
+ simplify code
+
+Use devm_platform_ioremap_resource() to simplify the code a bit.
+This is detected by coccinelle.
+
+Reported-by: Hulk Robot <hulkci@huawei.com>
+Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+Link: https://lore.kernel.org/r/20190727150738.54764-16-yuehaibing@huawei.com
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ sound/soc/stm/stm32_sai.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/sound/soc/stm/stm32_sai.c b/sound/soc/stm/stm32_sai.c
+index 63f68e663676..1ac5103cea78 100644
+--- a/sound/soc/stm/stm32_sai.c
++++ b/sound/soc/stm/stm32_sai.c
+@@ -152,7 +152,6 @@ static int stm32_sai_probe(struct platform_device *pdev)
+ {
+ 	struct stm32_sai_data *sai;
+ 	struct reset_control *rst;
+-	struct resource *res;
+ 	const struct of_device_id *of_id;
+ 	u32 val;
+ 	int ret;
+@@ -161,8 +160,7 @@ static int stm32_sai_probe(struct platform_device *pdev)
+ 	if (!sai)
+ 		return -ENOMEM;
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	sai->base = devm_ioremap_resource(&pdev->dev, res);
++	sai->base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(sai->base))
+ 		return PTR_ERR(sai->base);
+ 
+-- 
+2.20.1
