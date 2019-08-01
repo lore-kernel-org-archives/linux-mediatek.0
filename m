@@ -1,51 +1,45 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [PATCH 07/13] drm/mediatek: Provide ddc symlink in hdmi
- connector sysfs directory
-Date: Thu, 01 Aug 2019 11:06:48 +0200
-Message-ID: <1564650408.7439.11.camel@pengutronix.de>
-References: <65481afa-1104-4ee9-e53d-f2732a10d4b9@baylibre.com>
- <cover.1564591626.git.andrzej.p@collabora.com>
- <db323a3cdfd643cef65d796e959c16a14f105920.1564591626.git.andrzej.p@collabora.com>
+From: Ran Bi <ran.bi@mediatek.com>
+Subject: [PATCH v2 1/4] bindings: rtc: add bindings for MT2712 RTC
+Date: Thu, 1 Aug 2019 19:01:19 +0800
+Message-ID: <20190801110122.26834-2-ran.bi@mediatek.com>
+References: <20190801110122.26834-1-ran.bi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <db323a3cdfd643cef65d796e959c16a14f105920.1564591626.git.andrzej.p@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>, dri-devel@lists.freedesktop.org
-Cc: David Airlie <airlied@linux.ie>, Bhawanpreet Lakha <Bhawanpreet.Lakha@amd.com>, Thierry Reding <thierry.reding@gmail.com>, Mamta Shukla <mamtashukla555@gmail.com>, kernel@collabora.com, Anthony Koo <Anthony.Koo@amd.com>, Emil Velikov <emil.velikov@collabora.com>, linux-samsung-soc@vger.kernel.org, Tomi Valkeinen <tomi.valkeinen@ti.com>, David Francis <David.Francis@amd.com>, Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org, Leo Li <sunpeng.li@amd.com>, linux-kernel@vger.kernel.org, intel-gfx@lists.freedesktop.org, Alexios Zavras <alexios.zavras@intel.com>, linux-mediatek@lists.infradead.org, Jyri Sarha <jsarha@ti.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, Matthias
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190801110122.26834-1-ran.bi@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Alexandre Belloni <alexandre.belloni@bootlin.com>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Alessandro Zummo <a.zummo@towertech.it>, Mark Rutland <mark.rutland@arm.com>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, "David S . Miller" <davem@davemloft.net>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jonathan Cameron <Jonathan.Cameron@huawei.com>, Linus Walleij <linus.walleij@linaro.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, YT Shen <yt.shen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Flora Fu <flora.fu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Ran Bi <ran.bi@media>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gV2VkLCAyMDE5LTA3LTMxIGF0IDE4OjU4ICswMjAwLCBBbmRyemVqIFBpZXRyYXNpZXdpY3og
-d3JvdGU6Cj4gVXNlIHRoZSBkZGMgcG9pbnRlciBwcm92aWRlZCBieSB0aGUgZ2VuZXJpYyBjb25u
-ZWN0b3IuCj4gCj4gU2lnbmVkLW9mZi1ieTogQW5kcnplaiBQaWV0cmFzaWV3aWN6IDxhbmRyemVq
-LnBAY29sbGFib3JhLmNvbT4KPiBBY2tlZC1ieTogU2FtIFJhdm5ib3JnIDxzYW1AcmF2bmJvcmcu
-b3JnPgo+IFJldmlld2VkLWJ5OiBFbWlsIFZlbGlrb3YgPGVtaWwudmVsaWtvdkBjb2xsYWJvcmEu
-Y29tPgoKUmV2aWV3ZWQtYnk6IFBoaWxpcHAgWmFiZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+
-CgpyZWdhcmRzClBoaWxpcHAKCj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
-aGRtaS5jIHwgNyArKysrLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKyksIDMg
-ZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfaGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMKPiBpbmRleCBj
-ZTkxYjYxMzY0ZWIuLmY0MTk3NjViN2NjMCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2hkbWkuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
-aGRtaS5jCj4gQEAgLTEyOTksOSArMTI5OSwxMCBAQCBzdGF0aWMgaW50IG10a19oZG1pX2JyaWRn
-ZV9hdHRhY2goc3RydWN0IGRybV9icmlkZ2UgKmJyaWRnZSkKPiAgCXN0cnVjdCBtdGtfaGRtaSAq
-aGRtaSA9IGhkbWlfY3R4X2Zyb21fYnJpZGdlKGJyaWRnZSk7Cj4gIAlpbnQgcmV0Owo+ICAKPiAt
-CXJldCA9IGRybV9jb25uZWN0b3JfaW5pdChicmlkZ2UtPmVuY29kZXItPmRldiwgJmhkbWktPmNv
-bm4sCj4gLQkJCQkgJm10a19oZG1pX2Nvbm5lY3Rvcl9mdW5jcywKPiAtCQkJCSBEUk1fTU9ERV9D
-T05ORUNUT1JfSERNSUEpOwo+ICsJcmV0ID0gZHJtX2Nvbm5lY3Rvcl9pbml0X3dpdGhfZGRjKGJy
-aWRnZS0+ZW5jb2Rlci0+ZGV2LCAmaGRtaS0+Y29ubiwKPiArCQkJCQkgICZtdGtfaGRtaV9jb25u
-ZWN0b3JfZnVuY3MsCj4gKwkJCQkJICBEUk1fTU9ERV9DT05ORUNUT1JfSERNSUEsCj4gKwkJCQkJ
-ICBoZG1pLT5kZGNfYWRwdCk7Cj4gIAlpZiAocmV0KSB7Cj4gIAkJZGV2X2VycihoZG1pLT5kZXYs
-ICJGYWlsZWQgdG8gaW5pdGlhbGl6ZSBjb25uZWN0b3I6ICVkXG4iLCByZXQpOwo+ICAJCXJldHVy
-biByZXQ7Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
-aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
-czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+Document the binding for MT2712 RTC implemented by rtc-mt2712.
+
+Signed-off-by: Ran Bi <ran.bi@mediatek.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+---
+ .../devicetree/bindings/rtc/rtc-mt2712.txt         | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/rtc/rtc-mt2712.txt
+
+diff --git a/Documentation/devicetree/bindings/rtc/rtc-mt2712.txt b/Documentation/devicetree/bindings/rtc/rtc-mt2712.txt
+new file mode 100644
+index 000000000000..c33d87e5e753
+--- /dev/null
++++ b/Documentation/devicetree/bindings/rtc/rtc-mt2712.txt
+@@ -0,0 +1,14 @@
++Device-Tree bindings for MediaTek SoC based RTC
++
++Required properties:
++- compatible	    : Should be "mediatek,mt2712-rtc" : for MT2712 SoC
++- reg 		    : Specifies base physical address and size of the registers;
++- interrupts	    : Should contain the interrupt for RTC alarm;
++
++Example:
++
++rtc: rtc@10011000 {
++	compatible = "mediatek,mt2712-rtc";
++	reg = <0 0x10011000 0 0x1000>;
++	interrupts = <GIC_SPI 239 IRQ_TYPE_LEVEL_LOW>;
++};
+-- 
+2.21.0
