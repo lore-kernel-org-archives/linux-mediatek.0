@@ -1,72 +1,27 @@
-From: Sam Ravnborg <sam@ravnborg.org>
-Subject: Re: [PATCH v1 02/11] drm: drop uapi dependency from
- drm_print.h
-Date: Fri, 2 Aug 2019 17:28:55 +0200
-Message-ID: <20190802152855.GA5626@ravnborg.org>
-References: <20190718161507.2047-1-sam@ravnborg.org>
- <20190718161507.2047-3-sam@ravnborg.org>
- <156346840026.24728.936589728458336617@skylake-alporthouse-com>
- <460bf1e1-a38b-5f79-26e5-93764067f4e1@amd.com>
- <87tvb5nh5c.fsf@intel.com> <20190729143555.GA16927@ravnborg.org>
- <67c2807f-582c-49a9-5699-a8baab3d3a0f@amd.com>
- <20190729175011.GA1753@ravnborg.org> <87o917lluk.fsf@intel.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH -next 09/12] crypto: rockchip - use devm_platform_ioremap_resource() to simplify code
+Date: Fri, 02 Aug 2019 18:09:56 +0200
+Message-ID: <2422935.Q2t5okTyEj@phil>
+References: <20190802132809.8116-1-yuehaibing@huawei.com> <20190802132809.8116-10-yuehaibing@huawei.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <intel-gfx-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <87o917lluk.fsf@intel.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
-List-Post: <mailto:intel-gfx@lists.freedesktop.org>
-List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: intel-gfx-bounces@lists.freedesktop.org
-Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
-To: Jani Nikula <jani.nikula@intel.com>
-Cc: Boris Brezillon <bbrezillon@kernel.org>, Maxime Ripard <maxime.ripard@bootlin.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Intel Graphics Development <intel-gfx@lists.freedesktop.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <seanpaul@chromium.org>, Thierry Reding <treding@nvidia.com>, "Koenig,
- Christian" <Christian.Koenig@amd.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190802132809.8116-10-yuehaibing@huawei.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: YueHaibing <yuehaibing@huawei.com>
+Cc: herbert@gondor.apana.org.au, lars.persson@axis.com, jesper.nilsson@axis.com, davem@davemloft.net, thomas.lendacky@amd.com, gary.hook@amd.com, krzk@kernel.org, kgene@kernel.org, antoine.tenart@bootlin.com, matthias.bgg@gmail.com, jamie@jamieiles.com, agross@kernel.org, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, clabbe.montjoie@gmail.com, mripard@kernel.org, wens@csie.org, linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, linux-arm-kernel@axis.com, linux-samsung-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgSmFuaS4KCj4gPj4gSSBtZWFuIGlzIGl0IHVzZWZ1bCB0byBoYXZlIHRoaXMgZXh0cmEgcHJp
-bnRpbmcgc3Vic3lzdGVtIGluIERSTSB3aGlsZSAKPiA+PiB0aGUgc3RhbmRhcmQgTGludXggb25l
-IGFjdHVhbGx5IGRvZXMgYSBiZXR0ZXIgam9iPwo+ID4gVGhlIGFkZGVkIGZ1bmN0aW9uYWxpdHkg
-b2YgZHJtX3h4eF9lcnIgd291bGQgYmUgdG8ga2VlcCB0aGUgY3VycmVudAo+ID4gZHJtLmRlYnVn
-PTB4MWYgZmlsdGVyaW5nIG9uIHRoZSBjb21tYW5kLWxpbmUuCj4gPiBJIGRvIG5vdCB0aGluayB3
-ZSBjYW4gZG8gdGhpcyB3aXRoIHRoZSBzdGFuZGFyZCBsb2dnaW5nLgo+IAo+IENvcnJlY3QuIEkn
-ZCBsb3ZlIHRoZSBiZW5lZml0cyBvZiBkeW5hbWljIGRlYnVnLCBidXQgdGhlcmUncyBubyBzdXBw
-b3J0Cj4gZm9yIHRoZSBraW5kIG9mIG1lc3NhZ2UgY2F0ZWdvcmllcyB0aGF0IHdlIGRvIHdpdGgg
-ZHJtLmRlYnVnLgo+IAo+IEkndmUgY29udGVtcGxhdGVkIHN3aXRjaGluZyBpOTE1IG92ZXIgdG8g
-dXNpbmcgdGhlIHZhcmlhbnRzIHdoZXJlIHlvdQo+IHBhc3MgdGhlIGRldmljZSwgYnV0IEkgcmVh
-bGx5IHJlYWxseSBkb24ndCBsaWtlIHRoZSBpZGVhIG9mOgo+IAo+IC0gCURSTV9ERUJVR19LTVMo
-ImhlbGxvXG4iKTsKPiArIAlEUk1fREVWX0RFQlVHX0tNUyhpOTE1LT5kcm0uZGV2LCAiaGVsbG9c
-biIpOwo+IAo+IFdoZXJlIGk5MTUgaXMgb3VyIHByaXZhdGUgd3JhcHBlciBmb3IgZHJtX2Rldmlj
-ZS4gSSB0aGluayBpdCdzIGp1c3QgdG9vCj4gbXVjaCB1Z2x5IHVwcGVyY2FzZSBib2lsZXJwbGF0
-ZSwgYW5kIGEgbGFyZ2UgcG9ydGlvbiBvZiB0aGUgZGVidWdzIHdvdWxkCj4gaGF2ZSB0byBzcGFu
-IGF0IGxlYXN0IGFuIGV4dHJhIGxpbmUgYWZ0ZXIgdGhhdC4KPiAKPiBJJ2QgYWxzbyB2ZXJ5IG11
-Y2ggcHJlZmVyIHBhc3NpbmcganVzdCBzdHJ1Y3QgKmRybV9kZXZpY2UgaW5zdGVhZCBvZgo+IHN0
-cnVjdCAqZGV2aWNlLiBJbiB0aGF0LCBJIHRoaW5rIHRoZSBuZWVkcyBvZiB0aGUgZmV3IGhhdmUg
-cHJldmFpbGVkCj4gb3ZlciB0aGUgbmVlZHMgb2YgdGhlIG1hbnkuIEknZCBkZWZpbml0ZWx5IHBy
-ZWZlciBkcm1fZXJyKGNvbnN0IHN0cnVjdAo+IGRybV9kZXZpY2UgKmRybSwgLi4uKSBhbmQgZnJp
-ZW5kcyBvdmVyIHRoZSBjdXJyZW50IG9uZXMuCgpUaGlzIGlzIGZyb20gbXkgbm90ZXM6CgoiCmRy
-bV9lcnIoY29uc3Qgc3RydWN0IGRybV9kZXZpY2UgKmRybSwgLi4uKQpkcm1faW5mbyhjb25zdCBz
-dHJ1Y3QgZHJtX2RldmljZSAqZHJtLCAuLi4pCgpkcm1fa21zX2Vycihjb25zdCBzdHJ1Y3QgZHJt
-X2RldmljZSAqZHJtLCAuLi4pCmRybV9rbXNfaW5mbyhjb25zdCBzdHJ1Y3QgZHJtX2RldmljZSAq
-ZHJtLCAuLi4pKQoKZXRjLgoKVGhlbiB3ZSBjb3VsZCBmaXNoIG91dCByZWxldmFudCBpbmZvIGZy
-b20gdGhlIGRybSBkZXZpY2UgYW5kIHByZXNlbnQKdGhpcyBuaWNlbHkuCgpGb3IgdGhlIGNhc2Vz
-IHdoZXJlIG5vIGRybV9kZXZpY2UgaXMgYXZhaWxhYmxlIHRoZSBmYWxsYmFjayBpczoKZHJtX2Rl
-dl9lcnIoY29uc3Qgc3RydWN0IGRybV9kZXZpY2UgKmRybSwgLi4uKQpkcm1fZGV2X2luZm8oY29u
-c3Qgc3RydWN0IGRybV9kZXZpY2UgKmRybSwgLi4uKSkKCldlIGNvdWxkIG1vZGlmeSB0aGUgZXhp
-c3RpbmcgVVBQRVJDQVNFIG1hY3JvcyB0byBiZSBwbGFjZWhvbGRlcnMgZm9yCnRoZSBtb3JlIHJl
-YWRlciBmcmllbmRseSBsb3dlciBjYXNlcyB2YXJpYW50cy4KIgoKU28gd2Ugc2VlbXMgdG8gYmUg
-YWxpZ25lZCBoZXJlLgpJbiBvdGhlciB3b3JkcyAtIGlmIHlvdSB0aHJvdyB0aW1lIGFmdGVyIHRo
-aXMgdGhlbiB0cnkgdG8gYWRkCnRoZSBuZXcgbG9nZ2luZyB2YXJpYW50cyB0byBkcm1fcHJpbnQu
-aCBmb3IgdGhlIGJlbmVmaXQgb2YgYWxsLgpUaGUgd2UgY2FuIG1heWJlIGxhdGVyIGRvIHNvbWUg
-bWFzcyBjb252ZXJzaW9uIGlmIHdlIHdhbnQgdG8gZ2V0IHJpZApvZiBzb21lIG9mIHRoZSBvbGRl
-ciBsb2dnaW5nIHN5c3RlbXMuCgpJIGhhdmUgbm90IHlldCBmb3VuZCB0aW1lL2VuZXJneSB0byB0
-aHJvdyBhZnRlciB0aGlzIG15c2VsZi4KCglTYW0KX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KSW50ZWwtZ2Z4IG1haWxpbmcgbGlzdApJbnRlbC1nZnhAbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
-bGlzdGluZm8vaW50ZWwtZ2Z4
+Am Freitag, 2. August 2019, 15:28:06 CEST schrieb YueHaibing:
+> Use devm_platform_ioremap_resource() to simplify the code a bit.
+> This is detected by coccinelle.
+> 
+> Reported-by: Hulk Robot <hulkci@huawei.com>
+> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+
+looks like nice and simple improvement
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+
+Thanks
+Heiko
