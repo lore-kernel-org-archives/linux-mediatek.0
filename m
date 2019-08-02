@@ -1,57 +1,81 @@
-From: YueHaibing <yuehaibing@huawei.com>
-Subject: [PATCH -next 05/12] crypto: inside-secure - use
- devm_platform_ioremap_resource() to simplify code
-Date: Fri, 2 Aug 2019 21:28:02 +0800
-Message-ID: <20190802132809.8116-6-yuehaibing@huawei.com>
-References: <20190802132809.8116-1-yuehaibing@huawei.com>
+From: Jani Nikula <jani.nikula@intel.com>
+Subject: Re: [PATCH v1 02/11] drm: drop uapi dependency from
+ drm_print.h
+Date: Fri, 02 Aug 2019 16:48:19 +0300
+Message-ID: <87o917lluk.fsf@intel.com>
+References: <20190718161507.2047-1-sam@ravnborg.org>
+ <20190718161507.2047-3-sam@ravnborg.org>
+ <156346840026.24728.936589728458336617@skylake-alporthouse-com>
+ <460bf1e1-a38b-5f79-26e5-93764067f4e1@amd.com> <87tvb5nh5c.fsf@intel.com>
+ <20190729143555.GA16927@ravnborg.org>
+ <67c2807f-582c-49a9-5699-a8baab3d3a0f@amd.com>
+ <20190729175011.GA1753@ravnborg.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190802132809.8116-1-yuehaibing@huawei.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: herbert@gondor.apana.org.au, lars.persson@axis.com, jesper.nilsson@axis.com, davem@davemloft.net, thomas.lendacky@amd.com, gary.hook@amd.com, krzk@kernel.org, kgene@kernel.org, antoine.tenart@bootlin.com, matthias.bgg@gmail.com, jamie@jamieiles.com, agross@kernel.org, heiko@sntech.de, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, clabbe.montjoie@gmail.com, mripard@kernel.org, wens@csie.org
-Cc: linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, YueHaibing <yuehaibing@huawei.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@axis.com, linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-crypto@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <intel-gfx-bounces@lists.freedesktop.org>
+In-Reply-To: <20190729175011.GA1753@ravnborg.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
+List-Post: <mailto:intel-gfx@lists.freedesktop.org>
+List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: intel-gfx-bounces@lists.freedesktop.org
+Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
+To: Sam Ravnborg <sam@ravnborg.org>, "Koenig,
+ Christian" <Christian.Koenig@amd.com>
+Cc: Boris Brezillon <bbrezillon@kernel.org>, Maxime Ripard <maxime.ripard@bootlin.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Intel Graphics Development <intel-gfx@lists.freedesktop.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <seanpaul@chromium.org>, Thierry Reding <treding@nvidia.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Use devm_platform_ioremap_resource() to simplify the code a bit.
-This is detected by coccinelle.
-
-Reported-by: Hulk Robot <hulkci@huawei.com>
-Signed-off-by: YueHaibing <yuehaibing@huawei.com>
----
- drivers/crypto/inside-secure/safexcel.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
-
-diff --git a/drivers/crypto/inside-secure/safexcel.c b/drivers/crypto/inside-secure/safexcel.c
-index d1f60fd..822744d 100644
---- a/drivers/crypto/inside-secure/safexcel.c
-+++ b/drivers/crypto/inside-secure/safexcel.c
-@@ -999,7 +999,6 @@ static void safexcel_init_register_offsets(struct safexcel_crypto_priv *priv)
- static int safexcel_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
--	struct resource *res;
- 	struct safexcel_crypto_priv *priv;
- 	int i, ret;
- 
-@@ -1015,8 +1014,7 @@ static int safexcel_probe(struct platform_device *pdev)
- 
- 	safexcel_init_register_offsets(priv);
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	priv->base = devm_ioremap_resource(dev, res);
-+	priv->base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(priv->base)) {
- 		dev_err(dev, "failed to get resource\n");
- 		return PTR_ERR(priv->base);
--- 
-2.7.4
+T24gTW9uLCAyOSBKdWwgMjAxOSwgU2FtIFJhdm5ib3JnIDxzYW1AcmF2bmJvcmcub3JnPiB3cm90
+ZToKPiBIaSBDaHJpc3RpYW4uCj4KPiBPbiBNb24sIEp1bCAyOSwgMjAxOSBhdCAwMzoyODoxNVBN
+ICswMDAwLCBLb2VuaWcsIENocmlzdGlhbiB3cm90ZToKPj4gQW0gMjkuMDcuMTkgdW0gMTY6MzUg
+c2NocmllYiBTYW0gUmF2bmJvcmc6Cj4+ID4+Pj4gRXZlbiB0aGVuIGl0IHNvIHVzZWxlc3MgKHdo
+aWNoIGRybSBkcml2ZXIgaXMgdGhpcyBtZXNzYWdlIGZvcj8/PykgdGhhdCBJCj4+ID4+Pj4gd2Fu
+dCB0byByZW1vdmUgdGhlbSBhbGwgOigKPj4gPj4+IFllYWgsIGFncmVlLiBJIG1lYW4gaXQgaXMg
+bmljZSBpZiB0aGUgY29yZSBkcm0gZnVuY3Rpb25zIHVzZSBhIHByZWZpeAo+PiA+Pj4gZm9yIGRl
+YnVnIG91dHB1dC4KPj4gPj4+Cj4+ID4+PiBCdXQgSSBhY3R1YWxseSBkb24ndCBzZWUgdGhlIHBv
+aW50IGZvciBpbmRpdmlkdWFsIGRyaXZlcnMuCj4+ID4+IFdlIHNob3VsZCBhbGwgbWlncmF0ZSB0
+byB0aGUgdmVyc2lvbnMgd2l0aCBkZXZpY2UuLi4KPj4gPiBKdXN0IHRvIGRvIGFuIHhrZGMuY29t
+LzkyNyBJIGhhdmUgY29uc2lkZXJlZDoKPj4gPgo+PiA+IGRybV9lcnIoY29uc3Qgc3RydWN0IGRy
+bV9kZXZpY2UgKmRybSwgLi4uKQo+PiA+IGRybV9pbmZvKGNvbnN0IHN0cnVjdCBkcm1fZGV2aWNl
+ICpkcm0sIC4uLikKPj4gPgo+PiA+IGRybV9rbXNfZXJyKGNvbnN0IHN0cnVjdCBkcm1fZGV2aWNl
+ICpkcm0sIC4uLikKPj4gPiBkcm1fa21zX2luZm8oY29uc3Qgc3RydWN0IGRybV9kZXZpY2UgKmRy
+bSwgLi4uKSkKPj4gCj4+IFdoeSBub3QgZ2V0IGNvbXBsZXRlbHkgcmlkIG9mIHRob3NlIGFuZCBq
+dXN0IHVzZSBkZXZfZXJyLCBkZXZfd2FybiwgCj4+IHByX2VyciwgcHJfd2FybiBldGM/Cj4+IAo+
+PiBJIG1lYW4gaXMgaXQgdXNlZnVsIHRvIGhhdmUgdGhpcyBleHRyYSBwcmludGluZyBzdWJzeXN0
+ZW0gaW4gRFJNIHdoaWxlIAo+PiB0aGUgc3RhbmRhcmQgTGludXggb25lIGFjdHVhbGx5IGRvZXMg
+YSBiZXR0ZXIgam9iPwo+IFRoZSBhZGRlZCBmdW5jdGlvbmFsaXR5IG9mIGRybV94eHhfZXJyIHdv
+dWxkIGJlIHRvIGtlZXAgdGhlIGN1cnJlbnQKPiBkcm0uZGVidWc9MHgxZiBmaWx0ZXJpbmcgb24g
+dGhlIGNvbW1hbmQtbGluZS4KPiBJIGRvIG5vdCB0aGluayB3ZSBjYW4gZG8gdGhpcyB3aXRoIHRo
+ZSBzdGFuZGFyZCBsb2dnaW5nLgoKQ29ycmVjdC4gSSdkIGxvdmUgdGhlIGJlbmVmaXRzIG9mIGR5
+bmFtaWMgZGVidWcsIGJ1dCB0aGVyZSdzIG5vIHN1cHBvcnQKZm9yIHRoZSBraW5kIG9mIG1lc3Nh
+Z2UgY2F0ZWdvcmllcyB0aGF0IHdlIGRvIHdpdGggZHJtLmRlYnVnLgoKSSd2ZSBjb250ZW1wbGF0
+ZWQgc3dpdGNoaW5nIGk5MTUgb3ZlciB0byB1c2luZyB0aGUgdmFyaWFudHMgd2hlcmUgeW91CnBh
+c3MgdGhlIGRldmljZSwgYnV0IEkgcmVhbGx5IHJlYWxseSBkb24ndCBsaWtlIHRoZSBpZGVhIG9m
+OgoKLSAJRFJNX0RFQlVHX0tNUygiaGVsbG9cbiIpOworIAlEUk1fREVWX0RFQlVHX0tNUyhpOTE1
+LT5kcm0uZGV2LCAiaGVsbG9cbiIpOwoKV2hlcmUgaTkxNSBpcyBvdXIgcHJpdmF0ZSB3cmFwcGVy
+IGZvciBkcm1fZGV2aWNlLiBJIHRoaW5rIGl0J3MganVzdCB0b28KbXVjaCB1Z2x5IHVwcGVyY2Fz
+ZSBib2lsZXJwbGF0ZSwgYW5kIGEgbGFyZ2UgcG9ydGlvbiBvZiB0aGUgZGVidWdzIHdvdWxkCmhh
+dmUgdG8gc3BhbiBhdCBsZWFzdCBhbiBleHRyYSBsaW5lIGFmdGVyIHRoYXQuCgpJJ2QgYWxzbyB2
+ZXJ5IG11Y2ggcHJlZmVyIHBhc3NpbmcganVzdCBzdHJ1Y3QgKmRybV9kZXZpY2UgaW5zdGVhZCBv
+ZgpzdHJ1Y3QgKmRldmljZS4gSW4gdGhhdCwgSSB0aGluayB0aGUgbmVlZHMgb2YgdGhlIGZldyBo
+YXZlIHByZXZhaWxlZApvdmVyIHRoZSBuZWVkcyBvZiB0aGUgbWFueS4gSSdkIGRlZmluaXRlbHkg
+cHJlZmVyIGRybV9lcnIoY29uc3Qgc3RydWN0CmRybV9kZXZpY2UgKmRybSwgLi4uKSBhbmQgZnJp
+ZW5kcyBvdmVyIHRoZSBjdXJyZW50IG9uZXMuCgpGcmFua2x5LCBJJ3ZlIGFjdHVhbGx5IGVuZGVk
+IHVwIHRoaW5raW5nIGFib3V0IGFkZGluZyBvdXIgb3duLCBzaG9ydAppOTE1IHdyYXBwZXJzIGZv
+ciBvdXIgbmVlZHMuIDooCgpCUiwKSmFuaS4KCgo+Cj4gQW5kIHRoZW4gd2UgY2FuIHByZWZpeCBl
+dmVyeSBsb2dnaW5nIHdpdGggZHJpdmVyIG5hbWUgYW5kIGRldmljZSBuYW1lLgo+Cj4gVGhlIGlk
+ZWEgaXMgdG8gbWFrZSBhIHRoaW4gbGF5ZXIgb24gdG9wIG9mIHRoZSBleGlzdGluZyBwcl94eHgo
+KSBmdW5jdGlvbnMuCj4gU28gbm90IGEgZnVsbCBzdWJzeXN0ZW0sIG9ubHkgYSB3cmFwcGVyIG9u
+IHRvcCBvZiB3aGF0IHdlIGFscmVhZHkgaGF2ZS4KPgo+IEFueXdheSwgaWRsZSB0YWxrIG9ubHku
+IFdlIG5lZWQgcGF0Y2hlcyBhbmQgc2FtcGxlIG91dHB1dCBpZiB3ZSBzaG91bGQKPiBkaXNjdXNz
+IG1vcmUuCj4KPiAJU2FtCj4KPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwo+IEludGVsLWdmeCBtYWlsaW5nIGxpc3QKPiBJbnRlbC1nZnhAbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnCj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9pbnRlbC1nZngKCi0tIApKYW5pIE5pa3VsYSwgSW50ZWwgT3BlbiBTb3VyY2UgR3JhcGhp
+Y3MgQ2VudGVyCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CkludGVsLWdmeCBtYWlsaW5nIGxpc3QKSW50ZWwtZ2Z4QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
+dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWdmeA==
