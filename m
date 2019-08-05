@@ -1,31 +1,39 @@
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: Re: [PATCH -next 03/12] crypto: exynos - use devm_platform_ioremap_resource()
- to simplify code
-Date: Mon, 5 Aug 2019 11:18:17 +0200
-Message-ID: <CAJKOXPfvMLehLn+iNOGDEFvsWc93eShUx0=8fn9JWiBOc7wpFw@mail.gmail.com>
-References: <20190802132809.8116-1-yuehaibing@huawei.com> <20190802132809.8116-4-yuehaibing@huawei.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH v8 00/11] add USB GPIO based connection detection driver
+Date: Mon, 5 Aug 2019 12:06:56 +0200
+Message-ID: <CACRpkdaBT24JPH_VsKtgp6fjWtVuqM50rXkDVYKmLHgR5hdJzA@mail.gmail.com>
+References: <1563958245-6321-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190802132809.8116-4-yuehaibing@huawei.com>
+In-Reply-To: <1563958245-6321-1-git-send-email-chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: YueHaibing <yuehaibing@huawei.com>
-Cc: herbert@gondor.apana.org.au, lars.persson@axis.com, jesper.nilsson@axis.com, davem@davemloft.net, thomas.lendacky@amd.com, gary.hook@amd.com, kgene@kernel.org, antoine.tenart@bootlin.com, matthias.bgg@gmail.com, jamie@jamieiles.com, agross@kernel.org, heiko@sntech.de, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, clabbe.montjoie@gmail.com, mripard@kernel.org, wens@csie.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-crypto@vger.kernel.org, linux-arm-kernel@axis.com, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Biju Das <biju.das@bp.renesas.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-usb <linux-usb@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, moderated list:ARM/Mediatek So
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2 Aug 2019 at 15:31, YueHaibing <yuehaibing@huawei.com> wrote:
->
-> Use devm_platform_ioremap_resource() to simplify the code a bit.
-> This is detected by coccinelle.
->
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
-> ---
->  drivers/crypto/exynos-rng.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
->
+On Wed, Jul 24, 2019 at 10:51 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
 
-Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org>
+> Because the USB Connector is introduced and the requirement of
+> usb-connector.txt binding, the old way using extcon to support
+> USB Dual-Role switch is now deprecated, meanwhile there is no
+> available common driver when use Type-B connector, typically
+> using an input GPIO to detect USB ID pin.
 
-Best regards,
-Krzysztof
+However while this was going on,
+drivers/extcon/extcon-fsa9480.c was merged and that detects
+not only GPIO on the USB port but multiplexed usecases such
+as UART over the USB micro PHY (and no that UART is not
+a USB UART, but an actual RX/TX over D-/D+).
+
+That driver also measure a whole slew of funny resistance
+values on the ID pin, that is how it does its job.
+
+But for just "hey I'm plugged in" we can surely keep this
+ID on GPIO detection in the USB subsystem.
+
+I just get a bit insecure about how we should ideally
+handle these "funny-PHY's".
+
+Yours,
+Linus Walleij
