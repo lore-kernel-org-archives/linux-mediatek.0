@@ -1,120 +1,53 @@
-From: Alexandre Belloni <alexandre.belloni@bootlin.com>
-Subject: Re: [PATCH v4 09/10] rtc: mt6397: fix alarm register overwrite
-Date: Mon, 5 Aug 2019 09:24:36 +0200
-Message-ID: <20190805072436.GC3600@piout.net>
-References: <1564982518-32163-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1564982518-32163-10-git-send-email-hsin-hsiung.wang@mediatek.com>
+From: Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>
+Subject: Re: [PATCH 12/13] drm/tilcdc: Provide ddc symlink in
+ connector sysfs directory
+Date: Mon, 5 Aug 2019 11:32:30 +0300
+Message-ID: <b5e03011-e4b2-10da-a1ee-6164c380621e@ti.com>
+References: <cover.1564591626.git.andrzej.p@collabora.com>
+ <b8faad34102a91698b55dfc1ce02b1a90fda5e44.1564591626.git.andrzej.p@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1564982518-32163-10-git-send-email-hsin-hsiung.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Liam Girdwood <lgirdwood@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Thomas Gleixner <tglx@linutronix.de>, Richard Fontana <rfontana@redhat.com>, Kate Stewart <kstewart@linuxfoundation.org>, Allison Randal <allison@lohutok.net>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rtc@vger.kernel.org, srv_heupstream@mediatek.com, Ran Bi <ran.bi@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+In-Reply-To: <b8faad34102a91698b55dfc1ce02b1a90fda5e44.1564591626.git.andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/freedreno>
+List-Post: <mailto:freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+List-Help: <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
+Errors-To: freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Sender: "Freedreno" <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+To: Andrzej Pietrasiewicz <andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sam Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Ramalingam C <ramalingam.c-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Joonas Lahtinen <joonas.lahtinen-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Chris Wilson <chris-Y6uKTt2uX1cEflXRtASbqLVCufUGDwFn@public.gmane.org>, Bhawanpreet Lakha <Bhawanpreet.Lakha-5C7GfCeVMHo@public.gmane.org>, Eric Anholt <eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mamta Shukla <mamtashukla555-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Anthony Koo <Anthony.Koo-5C7GfCeVMHo@public.gmane.org>, =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, "David
+ (ChunMing) Zhou" <David1.Zhou-5C7GfCeVMHo@public.gmane.org>, Mario Kleiner <mario.kleiner.de-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Tomi Valkeinen <tomi.valkeinen-l0cyMroinI0@public.gmane.org>, David Francis <David.Francis-5C7GfCeVMHo@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>Jonathan Hunter <j>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 05/08/2019 13:21:57+0800, Hsin-Hsiung Wang wrote:
-> From: Ran Bi <ran.bi@mediatek.com>
-> 
-> Alarm registers high byte was reserved for other functions.
-> This add mask in alarm registers operation functions.
-> This also fix error condition in interrupt handler.
-> 
-> Fixes: fc2979118f3f ("rtc: mediatek: Add MT6397 RTC driver")
-> 
-> Signed-off-by: Ran Bi <ran.bi@mediatek.com>
-Acked-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
-
-> ---
->  drivers/rtc/rtc-mt6397.c | 47 +++++++++++++++++++++++++++++++++--------------
->  1 file changed, 33 insertions(+), 14 deletions(-)
-> 
-> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
-> index b46ed4d..828def7 100644
-> --- a/drivers/rtc/rtc-mt6397.c
-> +++ b/drivers/rtc/rtc-mt6397.c
-> @@ -47,6 +47,14 @@
->  
->  #define RTC_AL_SEC		0x0018
->  
-> +#define RTC_AL_SEC_MASK		0x003f
-> +#define RTC_AL_MIN_MASK		0x003f
-> +#define RTC_AL_HOU_MASK		0x001f
-> +#define RTC_AL_DOM_MASK		0x001f
-> +#define RTC_AL_DOW_MASK		0x0007
-> +#define RTC_AL_MTH_MASK		0x000f
-> +#define RTC_AL_YEA_MASK		0x007f
-> +
->  #define RTC_PDN2		0x002e
->  #define RTC_PDN2_PWRON_ALARM	BIT(4)
->  
-> @@ -103,7 +111,7 @@ static irqreturn_t mtk_rtc_irq_handler_thread(int irq, void *data)
->  		irqen = irqsta & ~RTC_IRQ_EN_AL;
->  		mutex_lock(&rtc->lock);
->  		if (regmap_write(rtc->regmap, rtc->addr_base + RTC_IRQ_EN,
-> -				 irqen) < 0)
-> +				 irqen) == 0)
->  			mtk_rtc_write_trigger(rtc);
->  		mutex_unlock(&rtc->lock);
->  
-> @@ -225,12 +233,12 @@ static int mtk_rtc_read_alarm(struct device *dev, struct rtc_wkalrm *alm)
->  	alm->pending = !!(pdn2 & RTC_PDN2_PWRON_ALARM);
->  	mutex_unlock(&rtc->lock);
->  
-> -	tm->tm_sec = data[RTC_OFFSET_SEC];
-> -	tm->tm_min = data[RTC_OFFSET_MIN];
-> -	tm->tm_hour = data[RTC_OFFSET_HOUR];
-> -	tm->tm_mday = data[RTC_OFFSET_DOM];
-> -	tm->tm_mon = data[RTC_OFFSET_MTH];
-> -	tm->tm_year = data[RTC_OFFSET_YEAR];
-> +	tm->tm_sec = data[RTC_OFFSET_SEC] & RTC_AL_SEC_MASK;
-> +	tm->tm_min = data[RTC_OFFSET_MIN] & RTC_AL_MIN_MASK;
-> +	tm->tm_hour = data[RTC_OFFSET_HOUR] & RTC_AL_HOU_MASK;
-> +	tm->tm_mday = data[RTC_OFFSET_DOM] & RTC_AL_DOM_MASK;
-> +	tm->tm_mon = data[RTC_OFFSET_MTH] & RTC_AL_MTH_MASK;
-> +	tm->tm_year = data[RTC_OFFSET_YEAR] & RTC_AL_YEA_MASK;
->  
->  	tm->tm_year += RTC_MIN_YEAR_OFFSET;
->  	tm->tm_mon--;
-> @@ -251,14 +259,25 @@ static int mtk_rtc_set_alarm(struct device *dev, struct rtc_wkalrm *alm)
->  	tm->tm_year -= RTC_MIN_YEAR_OFFSET;
->  	tm->tm_mon++;
->  
-> -	data[RTC_OFFSET_SEC] = tm->tm_sec;
-> -	data[RTC_OFFSET_MIN] = tm->tm_min;
-> -	data[RTC_OFFSET_HOUR] = tm->tm_hour;
-> -	data[RTC_OFFSET_DOM] = tm->tm_mday;
-> -	data[RTC_OFFSET_MTH] = tm->tm_mon;
-> -	data[RTC_OFFSET_YEAR] = tm->tm_year;
-> -
->  	mutex_lock(&rtc->lock);
-> +	ret = regmap_bulk_read(rtc->regmap, rtc->addr_base + RTC_AL_SEC,
-> +			       data, RTC_OFFSET_COUNT);
-> +	if (ret < 0)
-> +		goto exit;
-> +
-> +	data[RTC_OFFSET_SEC] = ((data[RTC_OFFSET_SEC] & ~(RTC_AL_SEC_MASK)) |
-> +				(tm->tm_sec & RTC_AL_SEC_MASK));
-> +	data[RTC_OFFSET_MIN] = ((data[RTC_OFFSET_MIN] & ~(RTC_AL_MIN_MASK)) |
-> +				(tm->tm_min & RTC_AL_MIN_MASK));
-> +	data[RTC_OFFSET_HOUR] = ((data[RTC_OFFSET_HOUR] & ~(RTC_AL_HOU_MASK)) |
-> +				(tm->tm_hour & RTC_AL_HOU_MASK));
-> +	data[RTC_OFFSET_DOM] = ((data[RTC_OFFSET_DOM] & ~(RTC_AL_DOM_MASK)) |
-> +				(tm->tm_mday & RTC_AL_DOM_MASK));
-> +	data[RTC_OFFSET_MTH] = ((data[RTC_OFFSET_MTH] & ~(RTC_AL_MTH_MASK)) |
-> +				(tm->tm_mon & RTC_AL_MTH_MASK));
-> +	data[RTC_OFFSET_YEAR] = ((data[RTC_OFFSET_YEAR] & ~(RTC_AL_YEA_MASK)) |
-> +				(tm->tm_year & RTC_AL_YEA_MASK));
-> +
->  	if (alm->enabled) {
->  		ret = regmap_bulk_write(rtc->regmap,
->  					rtc->addr_base + RTC_AL_SEC,
-> -- 
-> 2.6.4
-> 
-
--- 
-Alexandre Belloni, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+T24gMzEvMDcvMjAxOSAxOTo1OCwgQW5kcnplaiBQaWV0cmFzaWV3aWN6IHdyb3RlOgo+IFVzZSB0
+aGUgZGRjIHBvaW50ZXIgcHJvdmlkZWQgYnkgdGhlIGdlbmVyaWMgY29ubmVjdG9yLgo+IAo+IFNp
+Z25lZC1vZmYtYnk6IEFuZHJ6ZWogUGlldHJhc2lld2ljeiA8YW5kcnplai5wQGNvbGxhYm9yYS5j
+b20+Cj4gQWNrZWQtYnk6IFNhbSBSYXZuYm9yZyA8c2FtQHJhdm5ib3JnLm9yZz4KPiBSZXZpZXdl
+ZC1ieTogRW1pbCBWZWxpa292IDxlbWlsLnZlbGlrb3ZAY29sbGFib3JhLmNvbT4KCkFja2VkLWJ5
+OiBKeXJpIFNhcmhhIDxqc2FyaGFAdGkuY29tPgoKPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL3Rp
+bGNkYy90aWxjZGNfdGZwNDEwLmMgfCA2ICsrKystLQo+ICAxIGZpbGUgY2hhbmdlZCwgNCBpbnNl
+cnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
+cm0vdGlsY2RjL3RpbGNkY190ZnA0MTAuYyBiL2RyaXZlcnMvZ3B1L2RybS90aWxjZGMvdGlsY2Rj
+X3RmcDQxMC5jCj4gaW5kZXggYzZlNGU1MmYzMmJjLi5kNTE3NzZkZDdhMDMgMTAwNjQ0Cj4gLS0t
+IGEvZHJpdmVycy9ncHUvZHJtL3RpbGNkYy90aWxjZGNfdGZwNDEwLmMKPiArKysgYi9kcml2ZXJz
+L2dwdS9kcm0vdGlsY2RjL3RpbGNkY190ZnA0MTAuYwo+IEBAIC0yMjIsOCArMjIyLDEwIEBAIHN0
+YXRpYyBzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqdGZwNDEwX2Nvbm5lY3Rvcl9jcmVhdGUoc3RydWN0
+IGRybV9kZXZpY2UgKmRldiwKPiAgCj4gIAljb25uZWN0b3IgPSAmdGZwNDEwX2Nvbm5lY3Rvci0+
+YmFzZTsKPiAgCj4gLQlkcm1fY29ubmVjdG9yX2luaXQoZGV2LCBjb25uZWN0b3IsICZ0ZnA0MTBf
+Y29ubmVjdG9yX2Z1bmNzLAo+IC0JCQlEUk1fTU9ERV9DT05ORUNUT1JfRFZJRCk7Cj4gKwlkcm1f
+Y29ubmVjdG9yX2luaXRfd2l0aF9kZGMoZGV2LCBjb25uZWN0b3IsCj4gKwkJCQkgICAgJnRmcDQx
+MF9jb25uZWN0b3JfZnVuY3MsCj4gKwkJCQkgICAgRFJNX01PREVfQ09OTkVDVE9SX0RWSUQsCj4g
+KwkJCQkgICAgbW9kLT5pMmMpOwo+ICAJZHJtX2Nvbm5lY3Rvcl9oZWxwZXJfYWRkKGNvbm5lY3Rv
+ciwgJnRmcDQxMF9jb25uZWN0b3JfaGVscGVyX2Z1bmNzKTsKPiAgCj4gIAljb25uZWN0b3ItPnBv
+bGxlZCA9IERSTV9DT05ORUNUT1JfUE9MTF9DT05ORUNUIHwKPiAKCgotLSAKVGV4YXMgSW5zdHJ1
+bWVudHMgRmlubGFuZCBPeSwgUG9ya2thbGFua2F0dSAyMiwgMDAxODAgSGVsc2lua2kuClktdHVu
+bnVzL0J1c2luZXNzIElEOiAwNjE1NTIxLTQuIEtvdGlwYWlra2EvRG9taWNpbGU6IEhlbHNpbmtp
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkZyZWVkcmVu
+byBtYWlsaW5nIGxpc3QKRnJlZWRyZW5vQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xp
+c3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ZyZWVkcmVubw==
