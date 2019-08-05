@@ -1,118 +1,80 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v4 07/10] regulator: mt6358: Add support for MT6358
- regulator
-Date: Mon, 5 Aug 2019 14:10:30 +0100
-Message-ID: <20190805131030.GE6432@sirena.org.uk>
-References: <1564982518-32163-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1564982518-32163-8-git-send-email-hsin-hsiung.wang@mediatek.com>
+From: Alexandre Belloni <alexandre.belloni@bootlin.com>
+Subject: Re: [PATCH v3 02/10] dt-bindings: add missing mt6397 rtc
+Date: Mon, 5 Aug 2019 15:47:53 +0200
+Message-ID: <20190805134753.GF3600@piout.net>
+References: <20190729174154.4335-1-frank-w@public-files.de>
+ <20190729174154.4335-3-frank-w@public-files.de>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============9031348581794275148=="
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1564982518-32163-8-git-send-email-hsin-hsiung.wang@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, Richard Fontana <rfontana@redhat.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Allison Randal <allison@lohutok.net>, linux-rtc@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, Eddie Huang <eddie.huang@mediatek.com>, Lee Jones <lee.jones@linaro.org>, Kate Stewart <kstewart@linuxfoundation.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20190729174154.4335-3-frank-w@public-files.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Alessandro Zummo <a.zummo@towertech.it>, Allison Randal <allison@lohutok.net>, "David S. Miller" <davem@davemloft.net>, devicetree@vger.kernel.org, Eddie Huang <eddie.huang@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jonathan Cameron <Jonathan.Cameron@huawei.com>, Kate Stewart <kstewart@linuxfoundation.org>, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-rtc@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, Richard Fontana <rfontana@redhat.com>, Rob Herring <robh+dt@kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+On 29/07/2019 19:41:46+0200, Frank Wunderlich wrote:
+> From: Josef Friedl <josef.friedl@speed.at>
+> 
+> add missing devicetree-binding document for mt6397 rtc
+> in later patch driver is extended with mt6323 chip
+> 
+> changes since v2: splitted rtc-mt6397.txt from first patch
 
---===============9031348581794275148==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="xJK8B5Wah2CMJs8h"
-Content-Disposition: inline
+This line should be after the --- marker.
+> 
+> Suggested-By: Alexandre Belloni <alexandre.belloni@bootlin.com>
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 
+Your SoB should appear last.
 
---xJK8B5Wah2CMJs8h
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Mon, Aug 05, 2019 at 01:21:55PM +0800, Hsin-Hsiung Wang wrote:
-
-> +static const u32 vmch_voltages[] = {
-> +	2900000, 3000000, 3300000,
-> +};
-
-> +static const u32 vemc_voltages[] = {
-> +	2900000, 3000000, 3300000,
-> +};
-
-Several of these tables appear to be identical.
-
-> +static inline unsigned int mt6358_map_mode(unsigned int mode)
-> +{
-> +	return mode == MT6358_BUCK_MODE_AUTO ?
-> +		REGULATOR_MODE_NORMAL : REGULATOR_MODE_FAST;
-> +}
-
-There is no need for this to be an inline and please write normal
-conditional statements to improve legibility.  There's other examples in
-the driver.
-
-> +static int mt6358_get_buck_voltage_sel(struct regulator_dev *rdev)
-> +{
-> +	int ret, regval;
-> +	struct mt6358_regulator_info *info = rdev_get_drvdata(rdev);
+> Signed-off-by: Josef Friedl <josef.friedl@speed.at>
+> ---
+>  .../devicetree/bindings/rtc/rtc-mt6397.txt    | 29 +++++++++++++++++++
+>  1 file changed, 29 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt b/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
+> new file mode 100644
+> index 000000000000..ebd1cf80dcc8
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
+> @@ -0,0 +1,29 @@
+> +Device-Tree bindings for MediaTek PMIC based RTC
 > +
-> +	ret = regmap_read(rdev->regmap, info->da_vsel_reg, &regval);
-> +	if (ret != 0) {
-> +		dev_info(&rdev->dev,
-> +			 "Failed to get mt6358 Buck %s vsel reg: %d\n",
-> +			 info->desc.name, ret);
-
-dev_err() for errors here and throughout the driver.
-
-> +		return ret;
-> +	}
+> +MediaTek PMIC based RTC is an independent function of MediaTek PMIC that works
+> +as a type of multi-function device (MFD). The RTC can be configured and set up
+> +with PMIC wrapper bus which is a common resource shared with the other
+> +functions found on the same PMIC.
 > +
-> +	ret = (regval >> info->da_vsel_shift) & info->da_vsel_mask;
+> +For MediaTek PMIC MFD bindings, see:
+> +Documentation/devicetree/bindings/mfd/mt6397.txt
 > +
-> +	return ret;
-> +}
-
-This looks like a standard get_voltage_sel_regmap()?
-
-> +err_mode:
-> +	if (ret != 0)
-> +		return ret;
+> +For MediaTek PMIC wrapper bus bindings, see:
+> +Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
 > +
-> +	return 0;
+> +Required properties:
+> +- compatible: Should be one of follows
+> +       "mediatek,mt6323-rtc": for MT6323 PMIC
+> +       "mediatek,mt6397-rtc": for MT6397 PMIC
+> +
+> +Example:
+> +
+> +       pmic {
+> +               compatible = "mediatek,mt6323";
+> +
+> +               ...
+> +
+> +               rtc {
+> +                       compatible = "mediatek,mt6323-rtc";
+> +               };
+> +       };
+> --
+> 2.17.1
+> 
 
-Or just return ret unconditionally?
-
---xJK8B5Wah2CMJs8h
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl1IKsYACgkQJNaLcl1U
-h9AMIggAg397SgwCnQsqUm0bErtFXMF3frCb8lQZCc/BOEjOShATbn9igZbM6ZTU
-QxQabCCpti0hAUqGHB6ye8q+OlI13w8ShOMg6+VJxOhec2ihBGLtkbhJguoZtfVI
-v+cqPZf3DxmDs1QCqMQTHdKK47Zjf2GN7XMEubNifpcWlkAHTcrQ8NGTC+8vGcCj
-5Ss9eBuRyAO0c5Z08Nsxh70MhK6FnHzwXDzlaOPDXbQWfxouTBvNLHN2LtGeNLDO
-St8mmX2B4jwvOLjItqqhsATzbH+DwoBGSOUtRNFbwIh+/UeZfwpwQJJk5U0FsgwC
-4K6rYZLMhm8RQGlTWwS3xPlqirZbvg==
-=1DeU
------END PGP SIGNATURE-----
-
---xJK8B5Wah2CMJs8h--
-
-
---===============9031348581794275148==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-linux-arm-kernel mailing list
-linux-arm-kernel@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-
---===============9031348581794275148==--
+-- 
+Alexandre Belloni, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
