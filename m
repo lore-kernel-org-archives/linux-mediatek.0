@@ -1,15 +1,23 @@
 From: Kalle Valo <kvalo@codeaurora.org>
 Subject: Re: [PATCH] mt7601u: null check the allocation
-Date: Tue,  6 Aug 2019 12:35:49 +0000 (UTC)
-Message-ID: <20190806123549.EA78E6090E@smtp.codeaurora.org>
+Date: Tue,  6 Aug 2019 12:35:48 +0000 (UTC)
+Message-ID: <20190806123549.7C9BD609CD@smtp.codeaurora.org>
 References: <20190724141736.29994-1-navid.emamdoost@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 In-Reply-To: <20190724141736.29994-1-navid.emamdoost@gmail.com>
-Sender: netdev-owner@vger.kernel.org
-Cc: emamd001@umn.edu, kjlu@umn.edu, smccaman@umn.edu, secalert@redhat.com, Navid Emamdoost <navid.emamdoost@gmail.com>, Jakub Kicinski <kubakici@wp.pl>, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Cc: secalert@redhat.com, Jakub Kicinski <kubakici@wp.pl>, linux-wireless@vger.kernel.org, kjlu@umn.edu, linux-kernel@vger.kernel.org, emamd001@umn.edu, linux-mediatek@lists.infradead.org, smccaman@umn.edu, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Navid Emamdoost <navid.emamdoost@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
 Navid Emamdoost <navid.emamdoost@gmail.com> wrote:
