@@ -1,55 +1,35 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH v8 00/11] add USB GPIO based connection detection driver
-Date: Tue, 6 Aug 2019 15:48:30 +0800
-Message-ID: <1565077710.23705.21.camel@mhfsdcap03>
-References: <1563958245-6321-1-git-send-email-chunfeng.yun@mediatek.com>
-         <CACRpkdaBT24JPH_VsKtgp6fjWtVuqM50rXkDVYKmLHgR5hdJzA@mail.gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 05/13] drm: rockchip: Provide ddc symlink in inno_hdmi
+ sysfs directory
+Date: Tue, 06 Aug 2019 10:36:13 +0200
+Message-ID: <5678760.RHkh9mv3Rf@phil>
+References: <65481afa-1104-4ee9-e53d-f2732a10d4b9@baylibre.com>
+ <cover.1564591626.git.andrzej.p@collabora.com>
+ <52272b8ebf403361ff96e04bf14f5a7389116f73.1564591626.git.andrzej.p@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CACRpkdaBT24JPH_VsKtgp6fjWtVuqM50rXkDVYKmLHgR5hdJzA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Biju Das <biju.das@bp.renesas.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-usb <linux-usb@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, moderated list:ARM/Mediate
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <52272b8ebf403361ff96e04bf14f5a7389116f73.1564591626.git.andrzej.p@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>, amd-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org, Sean Paul <sean@poorly.run>
+Cc: linux-samsung-soc@vger.kernel.org, linux-tegra@vger.kernel.org, linux-rockchip@lists.infradead.org, Leo Li <sunpeng.li@amd.com>, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, freedreno@lists.freedesktop.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-mediatek@lists.infradead.org, Alex Deucher <alexander.deucher@amd.com>, kernel@collabora.com, Christian =?ISO-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2019-08-05 at 12:06 +0200, Linus Walleij wrote:
-> On Wed, Jul 24, 2019 at 10:51 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
-> 
-> > Because the USB Connector is introduced and the requirement of
-> > usb-connector.txt binding, the old way using extcon to support
-> > USB Dual-Role switch is now deprecated, meanwhile there is no
-> > available common driver when use Type-B connector, typically
-> > using an input GPIO to detect USB ID pin.
-> 
-> However while this was going on,
-> drivers/extcon/extcon-fsa9480.c was merged and that detects
-> not only GPIO on the USB port but multiplexed usecases such
-> as UART over the USB micro PHY (and no that UART is not
-> a USB UART, but an actual RX/TX over D-/D+).
-> 
-> That driver also measure a whole slew of funny resistance
-> values on the ID pin, that is how it does its job.
-I look into the spec of fsa9480, it indeed detect many USB accessories.
-But this driver is used for simplest cases that only uses micro
-receptacle with id-pin/vbus-pin
-
-> 
-> But for just "hey I'm plugged in" we can surely keep this
-> ID on GPIO detection in the USB subsystem.
-Sorry, you mean provide a common API? could you please describe more
-clearer about your suggestion?
-
-
-Introducing a single driver using usb_role_switch will help to keep
-transparent for USB controller driver, no matter it uses type-c or micro
-
-Thanks a lot
-> 
-> I just get a bit insecure about how we should ideally
-> handle these "funny-PHY's".
-
-> 
-> Yours,
-> Linus Walleij
+QW0gTWl0dHdvY2gsIDMxLiBKdWxpIDIwMTksIDE4OjU4OjE0IENFU1Qgc2NocmllYiBBbmRyemVq
+IFBpZXRyYXNpZXdpY3o6Cj4gVXNlIHRoZSBkZGMgcG9pbnRlciBwcm92aWRlZCBieSB0aGUgZ2Vu
+ZXJpYyBjb25uZWN0b3IuCj4gCj4gU2lnbmVkLW9mZi1ieTogQW5kcnplaiBQaWV0cmFzaWV3aWN6
+IDxhbmRyemVqLnBAY29sbGFib3JhLmNvbT4KPiBBY2tlZC1ieTogU2FtIFJhdm5ib3JnIDxzYW1A
+cmF2bmJvcmcub3JnPgo+IFJldmlld2VkLWJ5OiBFbWlsIFZlbGlrb3YgPGVtaWwudmVsaWtvdkBj
+b2xsYWJvcmEuY29tPgoKQWNrZWQtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+
+CgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
+ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
+Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
