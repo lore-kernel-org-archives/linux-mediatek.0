@@ -1,92 +1,55 @@
-From: Hsin-hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Subject: Re: [PATCH v4 07/10] regulator: mt6358: Add support for MT6358
- regulator
-Date: Tue, 6 Aug 2019 15:28:47 +0800
-Message-ID: <1565076527.23984.5.camel@mtksdaap41>
-References: <1564982518-32163-1-git-send-email-hsin-hsiung.wang@mediatek.com>
-         <1564982518-32163-8-git-send-email-hsin-hsiung.wang@mediatek.com>
-         <20190805131030.GE6432@sirena.org.uk>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH v8 00/11] add USB GPIO based connection detection driver
+Date: Tue, 6 Aug 2019 15:48:30 +0800
+Message-ID: <1565077710.23705.21.camel@mhfsdcap03>
+References: <1563958245-6321-1-git-send-email-chunfeng.yun@mediatek.com>
+         <CACRpkdaBT24JPH_VsKtgp6fjWtVuqM50rXkDVYKmLHgR5hdJzA@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190805131030.GE6432@sirena.org.uk>
+In-Reply-To: <CACRpkdaBT24JPH_VsKtgp6fjWtVuqM50rXkDVYKmLHgR5hdJzA@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, Richard Fontana <rfontana@redhat.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Allison Randal <allison@lohutok.net>, linux-rtc@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, Eddie Huang <eddie.huang@mediatek.com>, Lee Jones <lee.jones@linaro.org>, Kate Stewart <kstewart@linuxfoundation.org>, linux-arm-kernel@lists.infradead.org
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Biju Das <biju.das@bp.renesas.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-usb <linux-usb@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, moderated list:ARM/Mediate
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Mark,
+On Mon, 2019-08-05 at 12:06 +0200, Linus Walleij wrote:
+> On Wed, Jul 24, 2019 at 10:51 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
+> 
+> > Because the USB Connector is introduced and the requirement of
+> > usb-connector.txt binding, the old way using extcon to support
+> > USB Dual-Role switch is now deprecated, meanwhile there is no
+> > available common driver when use Type-B connector, typically
+> > using an input GPIO to detect USB ID pin.
+> 
+> However while this was going on,
+> drivers/extcon/extcon-fsa9480.c was merged and that detects
+> not only GPIO on the USB port but multiplexed usecases such
+> as UART over the USB micro PHY (and no that UART is not
+> a USB UART, but an actual RX/TX over D-/D+).
+> 
+> That driver also measure a whole slew of funny resistance
+> values on the ID pin, that is how it does its job.
+I look into the spec of fsa9480, it indeed detect many USB accessories.
+But this driver is used for simplest cases that only uses micro
+receptacle with id-pin/vbus-pin
 
-On Mon, 2019-08-05 at 14:10 +0100, Mark Brown wrote:
-> On Mon, Aug 05, 2019 at 01:21:55PM +0800, Hsin-Hsiung Wang wrote:
 > 
-> > +static const u32 vmch_voltages[] = {
-> > +	2900000, 3000000, 3300000,
-> > +};
-> 
-> > +static const u32 vemc_voltages[] = {
-> > +	2900000, 3000000, 3300000,
-> > +};
-> 
-> Several of these tables appear to be identical.
-> 
-I will use the same voltage table in the next patch.
+> But for just "hey I'm plugged in" we can surely keep this
+> ID on GPIO detection in the USB subsystem.
+Sorry, you mean provide a common API? could you please describe more
+clearer about your suggestion?
 
-> > +static inline unsigned int mt6358_map_mode(unsigned int mode)
-> > +{
-> > +	return mode == MT6358_BUCK_MODE_AUTO ?
-> > +		REGULATOR_MODE_NORMAL : REGULATOR_MODE_FAST;
-> > +}
-> 
-> There is no need for this to be an inline and please write normal
-> conditional statements to improve legibility.  There's other examples in
-> the driver.
-> 
-will fix it in the next patch.
 
-> > +static int mt6358_get_buck_voltage_sel(struct regulator_dev *rdev)
-> > +{
-> > +	int ret, regval;
-> > +	struct mt6358_regulator_info *info = rdev_get_drvdata(rdev);
-> > +
-> > +	ret = regmap_read(rdev->regmap, info->da_vsel_reg, &regval);
-> > +	if (ret != 0) {
-> > +		dev_info(&rdev->dev,
-> > +			 "Failed to get mt6358 Buck %s vsel reg: %d\n",
-> > +			 info->desc.name, ret);
-> 
-> dev_err() for errors here and throughout the driver.
-> 
-will fix it in the next patch.
+Introducing a single driver using usb_role_switch will help to keep
+transparent for USB controller driver, no matter it uses type-c or micro
 
-> > +		return ret;
-> > +	}
-> > +
-> > +	ret = (regval >> info->da_vsel_shift) & info->da_vsel_mask;
-> > +
-> > +	return ret;
-> > +}
+Thanks a lot
 > 
-> This looks like a standard get_voltage_sel_regmap()?
-> 
-MT6358 has buck voltage status registers to show the actual output
-voltage and the registers are different from the voltage setting
-registers.
-We want to get the actual voltage output, so we use the da_vsel status
-registers here.
+> I just get a bit insecure about how we should ideally
+> handle these "funny-PHY's".
 
-> > +err_mode:
-> > +	if (ret != 0)
-> > +		return ret;
-> > +
-> > +	return 0;
 > 
-> Or just return ret unconditionally?
-will modify it to return ret unconditionally in the next patch.
-
-Thanks a lot.
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> Yours,
+> Linus Walleij
