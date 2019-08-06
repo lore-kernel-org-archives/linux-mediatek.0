@@ -1,92 +1,29 @@
-From: Mark Rutland <mark.rutland@arm.com>
-Subject: Re: [PATCH] arm64: mm: print hexadecimal EC value in
- mem_abort_decode()
-Date: Tue, 6 Aug 2019 13:34:50 +0100
-Message-ID: <20190806123450.GE475@lakrids.cambridge.arm.com>
-References: <20190806112948.4357-1-miles.chen@mediatek.com>
+From: Kalle Valo <kvalo@codeaurora.org>
+Subject: Re: [PATCH] mt7601u: null check the allocation
+Date: Tue,  6 Aug 2019 12:35:49 +0000 (UTC)
+Message-ID: <20190806123549.EA78E6090E@smtp.codeaurora.org>
+References: <20190724141736.29994-1-navid.emamdoost@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190806112948.4357-1-miles.chen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Miles Chen <miles.chen@mediatek.com>
-Cc: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Anshuman Khandual <anshuman.khandual@arm.com>, James Morse <james.morse@arm.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20190724141736.29994-1-navid.emamdoost@gmail.com>
+Sender: netdev-owner@vger.kernel.org
+Cc: emamd001@umn.edu, kjlu@umn.edu, smccaman@umn.edu, secalert@redhat.com, Navid Emamdoost <navid.emamdoost@gmail.com>, Jakub Kicinski <kubakici@wp.pl>, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Aug 06, 2019 at 07:29:48PM +0800, Miles Chen wrote:
-> This change prints the hexadecimal EC value in mem_abort_decode(),
-> which makes it easier to lookup the corresponding EC in
-> the ARM Architecture Reference Manual.
-> 
-> The commit 1f9b8936f36f ("arm64: Decode information from ESR upon mem
-> faults") prints useful information when memory abort occurs. It would
-> be easier to lookup "0x25" instead of "DABT" in the document. Then we
-> can check the corresponding ISS.
-> 
-> For example:
-> Current	info	  	Document
-> 		  	EC	Exception class
-> "CP15 MCR/MRC"		0x3	"MCR or MRC access to CP15a..."
-> "ASIMD"			0x7	"Access to SIMD or floating-point..."
-> "DABT (current EL)" 	0x25	"Data Abort taken without..."
-> ...
-> 
-> Before:
-> Unable to handle kernel paging request at virtual address 000000000000c000
-> Mem abort info:
->   ESR = 0x96000046
->   Exception class = DABT (current EL), IL = 32 bits
->   SET = 0, FnV = 0
->   EA = 0, S1PTW = 0
-> Data abort info:
->   ISV = 0, ISS = 0x00000046
->   CM = 0, WnR = 1
-> 
-> After:
-> Unable to handle kernel paging request at virtual address 000000000000c000
-> Mem abort info:
->   ESR = 0x96000046
->   EC = 0x25, Exception class = DABT (current EL), IL = 32 bits
->   SET = 0, FnV = 0
->   EA = 0, S1PTW = 0
-> Data abort info:
->   ISV = 0, ISS = 0x00000046
->   CM = 0, WnR = 1
-> 
-> Cc: Mark Rutland <Mark.rutland@arm.com>
-> Cc: Anshuman Khandual <anshuman.khandual@arm.com>
-> Cc: James Morse <james.morse@arm.com>
-> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
-> ---
->  arch/arm64/mm/fault.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arch/arm64/mm/fault.c b/arch/arm64/mm/fault.c
-> index cfd65b63f36f..afb6041e25e6 100644
-> --- a/arch/arm64/mm/fault.c
-> +++ b/arch/arm64/mm/fault.c
-> @@ -86,8 +86,8 @@ static void mem_abort_decode(unsigned int esr)
->  	pr_alert("Mem abort info:\n");
->  
->  	pr_alert("  ESR = 0x%08x\n", esr);
-> -	pr_alert("  Exception class = %s, IL = %u bits\n",
-> -		 esr_get_class_string(esr),
-> +	pr_alert("  EC = 0x%lx, Exception class = %s, IL = %u bits\n",
-> +		 ESR_ELx_EC(esr), esr_get_class_string(esr),
+Navid Emamdoost <navid.emamdoost@gmail.com> wrote:
 
-Could we make this:
+> devm_kzalloc may fail and return NULL. So the null check is needed.
+> 
+> Signed-off-by: Navid Emamdoost <navid.emamdoost@gmail.com>
+> Acked-by: Jakub Kicinski <kubakici@wp.pl>
 
-	pr_alert("  EC = 0x%02lx: %s, IL = %u bits\n",
-		 ESR_ELx_EC(esr), esr_get_class_string(esr));
+Patch applied to wireless-drivers-next.git, thanks.
 
-We don't need to spell out "Exception Class" if we say "EC", and we
-should print the EC hex value with a consistent width as we do for the
-ISS.
+b95c732234fa mt7601u: null check the allocation
 
-With that:
+-- 
+https://patchwork.kernel.org/patch/11057013/
 
-Acked-by: Mark Rutland <mark.rutland@arm.com>
-
-Thanks,
-Mark.
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
