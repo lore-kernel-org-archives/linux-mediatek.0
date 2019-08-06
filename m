@@ -1,34 +1,76 @@
-From: Fabien Parent <fparent@baylibre.com>
-Subject: [PATCH] cpufreq: mediatek-cpufreq: Add compatible for MT8516
-Date: Tue,  6 Aug 2019 11:50:29 +0200
-Message-ID: <20190806095029.4758-1-fparent@baylibre.com>
+From: Miles Chen <miles.chen@mediatek.com>
+Subject: [PATCH] arm64: mm: print hexadecimal EC value in mem_abort_decode()
+Date: Tue, 6 Aug 2019 19:29:48 +0800
+Message-ID: <20190806112948.4357-1-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: rjw@rjwysocki.net, viresh.kumar@linaro.org, matthias.bgg@gmail.com
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Fabien Parent <fparent@baylibre.com>
+To: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Miles Chen <miles.chen@mediatek.com>, Mark Rutland <Mark.rutland@arm.com>, Anshuman Khandual <anshuman.khandual@arm.com>, James Morse <james.morse@arm.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add the compatible for MT8516 in order to take advantage of the
-MediaTek CPUFreq driver for Mediatek's MT8516 SoC.
+This change prints the hexadecimal EC value in mem_abort_decode(),
+which makes it easier to lookup the corresponding EC in
+the ARM Architecture Reference Manual.
 
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
+The commit 1f9b8936f36f ("arm64: Decode information from ESR upon mem
+faults") prints useful information when memory abort occurs. It would
+be easier to lookup "0x25" instead of "DABT" in the document. Then we
+can check the corresponding ISS.
+
+For example:
+Current	info	  	Document
+		  	EC	Exception class
+"CP15 MCR/MRC"		0x3	"MCR or MRC access to CP15a..."
+"ASIMD"			0x7	"Access to SIMD or floating-point..."
+"DABT (current EL)" 	0x25	"Data Abort taken without..."
+...
+
+Before:
+Unable to handle kernel paging request at virtual address 000000000000c000
+Mem abort info:
+  ESR = 0x96000046
+  Exception class = DABT (current EL), IL = 32 bits
+  SET = 0, FnV = 0
+  EA = 0, S1PTW = 0
+Data abort info:
+  ISV = 0, ISS = 0x00000046
+  CM = 0, WnR = 1
+
+After:
+Unable to handle kernel paging request at virtual address 000000000000c000
+Mem abort info:
+  ESR = 0x96000046
+  EC = 0x25, Exception class = DABT (current EL), IL = 32 bits
+  SET = 0, FnV = 0
+  EA = 0, S1PTW = 0
+Data abort info:
+  ISV = 0, ISS = 0x00000046
+  CM = 0, WnR = 1
+
+Cc: Mark Rutland <Mark.rutland@arm.com>
+Cc: Anshuman Khandual <anshuman.khandual@arm.com>
+Cc: James Morse <james.morse@arm.com>
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
 ---
- drivers/cpufreq/mediatek-cpufreq.c | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm64/mm/fault.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index f14f3a85f2f7..10bc06f5dd45 100644
---- a/drivers/cpufreq/mediatek-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -535,6 +535,7 @@ static const struct of_device_id mtk_cpufreq_machines[] __initconst = {
- 	{ .compatible = "mediatek,mt817x", },
- 	{ .compatible = "mediatek,mt8173", },
- 	{ .compatible = "mediatek,mt8176", },
-+	{ .compatible = "mediatek,mt8516", },
+diff --git a/arch/arm64/mm/fault.c b/arch/arm64/mm/fault.c
+index cfd65b63f36f..afb6041e25e6 100644
+--- a/arch/arm64/mm/fault.c
++++ b/arch/arm64/mm/fault.c
+@@ -86,8 +86,8 @@ static void mem_abort_decode(unsigned int esr)
+ 	pr_alert("Mem abort info:\n");
  
- 	{ }
- };
+ 	pr_alert("  ESR = 0x%08x\n", esr);
+-	pr_alert("  Exception class = %s, IL = %u bits\n",
+-		 esr_get_class_string(esr),
++	pr_alert("  EC = 0x%lx, Exception class = %s, IL = %u bits\n",
++		 ESR_ELx_EC(esr), esr_get_class_string(esr),
+ 		 (esr & ESR_ELx_IL) ? 32 : 16);
+ 	pr_alert("  SET = %lu, FnV = %lu\n",
+ 		 (esr & ESR_ELx_SET_MASK) >> ESR_ELx_SET_SHIFT,
 -- 
-2.23.0.rc1
+2.18.0
