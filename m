@@ -1,37 +1,38 @@
-From: Kalle Valo <kvalo@codeaurora.org>
-Subject: Re: [PATCH] mt7601u: null check the allocation
-Date: Tue,  6 Aug 2019 12:35:48 +0000 (UTC)
-Message-ID: <20190806123549.7C9BD609CD@smtp.codeaurora.org>
-References: <20190724141736.29994-1-navid.emamdoost@gmail.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH v8 00/11] add USB GPIO based connection detection driver
+Date: Tue, 6 Aug 2019 15:26:50 +0200
+Message-ID: <CACRpkdZ8LjG22QCA0tB+vMi7fPJNBiX-sL1+t0yZqcfRjMJF7Q@mail.gmail.com>
+References: <1563958245-6321-1-git-send-email-chunfeng.yun@mediatek.com>
+ <CACRpkdaBT24JPH_VsKtgp6fjWtVuqM50rXkDVYKmLHgR5hdJzA@mail.gmail.com> <1565077710.23705.21.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190724141736.29994-1-navid.emamdoost@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-Cc: secalert@redhat.com, Jakub Kicinski <kubakici@wp.pl>, linux-wireless@vger.kernel.org, kjlu@umn.edu, linux-kernel@vger.kernel.org, emamd001@umn.edu, linux-mediatek@lists.infradead.org, smccaman@umn.edu, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Navid Emamdoost <navid.emamdoost@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1565077710.23705.21.camel@mhfsdcap03>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Biju Das <biju.das@bp.renesas.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-usb <linux-usb@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, moderated list:ARM/Mediatek So
 List-Id: linux-mediatek@lists.infradead.org
 
-Navid Emamdoost <navid.emamdoost@gmail.com> wrote:
+On Tue, Aug 6, 2019 at 9:48 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
+> On Mon, 2019-08-05 at 12:06 +0200, Linus Walleij wrote:
+> > On Wed, Jul 24, 2019 at 10:51 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
 
-> devm_kzalloc may fail and return NULL. So the null check is needed.
-> 
-> Signed-off-by: Navid Emamdoost <navid.emamdoost@gmail.com>
-> Acked-by: Jakub Kicinski <kubakici@wp.pl>
+> > But for just "hey I'm plugged in" we can surely keep this
+> > ID on GPIO detection in the USB subsystem.
+>
+> Sorry, you mean provide a common API? could you please describe more
+> clearer about your suggestion?
 
-Patch applied to wireless-drivers-next.git, thanks.
+Sorry I am not suggesting anything, this code is fine.
 
-b95c732234fa mt7601u: null check the allocation
+But:
 
--- 
-https://patchwork.kernel.org/patch/11057013/
+> > I just get a bit insecure about how we should ideally
+> > handle these "funny-PHY's".
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+I am more thinking about which subsystem these things really
+belong in. But let's keep it like this for the simple GPIO case.
+Acked-by: Linus Walleij <linus.walleij@linaro.org>
+
+Yours,
+Linus Walleij
