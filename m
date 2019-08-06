@@ -1,76 +1,52 @@
-From: Miles Chen <miles.chen@mediatek.com>
-Subject: [PATCH] arm64: mm: print hexadecimal EC value in mem_abort_decode()
-Date: Tue, 6 Aug 2019 19:29:48 +0800
-Message-ID: <20190806112948.4357-1-miles.chen@mediatek.com>
+From: Ran Bi <ran.bi@mediatek.com>
+Subject: Re: [PATCH v4 10/10] rtc: Add support for the MediaTek MT6358 RTC
+Date: Tue, 6 Aug 2019 19:41:32 +0800
+Message-ID: <1565091692.24748.3.camel@mhfsdcap03>
+References: <1564982518-32163-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+         <1564982518-32163-11-git-send-email-hsin-hsiung.wang@mediatek.com>
+         <20190805072338.GB3600@piout.net>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190805072338.GB3600@piout.net>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Miles Chen <miles.chen@mediatek.com>, Mark Rutland <Mark.rutland@arm.com>, Anshuman Khandual <anshuman.khandual@arm.com>, James Morse <james.morse@arm.com>
+To: Alexandre Belloni <alexandre.belloni@bootlin.com>
+Cc: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Liam Girdwood <lgirdwood@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Thomas Gleixner <tglx@linutronix.de>, Richard Fontana <rfontana@redhat.com>, Kate Stewart <kstewart@linuxfoundation.org>, Allison Randal <allison@lohutok.net>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rtc@vger.kernel.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-This change prints the hexadecimal EC value in mem_abort_decode(),
-which makes it easier to lookup the corresponding EC in
-the ARM Architecture Reference Manual.
+Hi Belloni,
 
-The commit 1f9b8936f36f ("arm64: Decode information from ESR upon mem
-faults") prints useful information when memory abort occurs. It would
-be easier to lookup "0x25" instead of "DABT" in the document. Then we
-can check the corresponding ISS.
+On Mon, 2019-08-05 at 09:23 +0200, Alexandre Belloni wrote:
+> Hi,
+> 
+> The subject should be:
+> 
+> "rtc: mt6397: Add support for the MediaTek MT6358 RTC"
 
-For example:
-Current	info	  	Document
-		  	EC	Exception class
-"CP15 MCR/MRC"		0x3	"MCR or MRC access to CP15a..."
-"ASIMD"			0x7	"Access to SIMD or floating-point..."
-"DABT (current EL)" 	0x25	"Data Abort taken without..."
-...
+Will be changed at next patch.
 
-Before:
-Unable to handle kernel paging request at virtual address 000000000000c000
-Mem abort info:
-  ESR = 0x96000046
-  Exception class = DABT (current EL), IL = 32 bits
-  SET = 0, FnV = 0
-  EA = 0, S1PTW = 0
-Data abort info:
-  ISV = 0, ISS = 0x00000046
-  CM = 0, WnR = 1
+> > +struct mtk_rtc_compatible {
+> 
+> I would name that struct mtk_rtc_data
+> 
+> > +	u32			wrtgr_addr;
+> 
+> and this member should be wrtgr_offset or simply wrtgr.
+> 
 
-After:
-Unable to handle kernel paging request at virtual address 000000000000c000
-Mem abort info:
-  ESR = 0x96000046
-  EC = 0x25, Exception class = DABT (current EL), IL = 32 bits
-  SET = 0, FnV = 0
-  EA = 0, S1PTW = 0
-Data abort info:
-  ISV = 0, ISS = 0x00000046
-  CM = 0, WnR = 1
+Will be changed at next patch.
 
-Cc: Mark Rutland <Mark.rutland@arm.com>
-Cc: Anshuman Khandual <anshuman.khandual@arm.com>
-Cc: James Morse <james.morse@arm.com>
-Signed-off-by: Miles Chen <miles.chen@mediatek.com>
----
- arch/arm64/mm/fault.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+> >  
+> > +	of_id = of_match_device(mt6397_rtc_of_match, &pdev->dev);
+> > +	if (!of_id) {
+> > +		dev_err(&pdev->dev, "Failed to probe of_node\n");
+> > +		return -EINVAL;
+> 
+> This will never happen because probe would not be called if there is no
+> match. You could also use of_device_get_match_data to avoid having to
+> move the of_device_id table.
+> 
 
-diff --git a/arch/arm64/mm/fault.c b/arch/arm64/mm/fault.c
-index cfd65b63f36f..afb6041e25e6 100644
---- a/arch/arm64/mm/fault.c
-+++ b/arch/arm64/mm/fault.c
-@@ -86,8 +86,8 @@ static void mem_abort_decode(unsigned int esr)
- 	pr_alert("Mem abort info:\n");
- 
- 	pr_alert("  ESR = 0x%08x\n", esr);
--	pr_alert("  Exception class = %s, IL = %u bits\n",
--		 esr_get_class_string(esr),
-+	pr_alert("  EC = 0x%lx, Exception class = %s, IL = %u bits\n",
-+		 ESR_ELx_EC(esr), esr_get_class_string(esr),
- 		 (esr & ESR_ELx_IL) ? 32 : 16);
- 	pr_alert("  SET = %lu, FnV = %lu\n",
- 		 (esr & ESR_ELx_SET_MASK) >> ESR_ELx_SET_SHIFT,
--- 
-2.18.0
+Will use of_device_get_match_data() function instead of
+of_match_device() function.
