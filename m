@@ -1,152 +1,63 @@
-From: <miles.chen@mediatek.com>
-Subject: [RFC PATCH] mm: slub: print kernel addresses when CONFIG_SLUB_DEBUG=y
-Date: Thu, 8 Aug 2019 22:28:43 +0800
-Message-ID: <20190808142843.32151-1-miles.chen@mediatek.com>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH v5,2/2] clk: reset: Modify reset-controller driver
+Date: Thu, 08 Aug 2019 08:18:23 -0700
+Message-ID: <20190808151824.97D9E218B6@mail.kernel.org>
+References: <20190726070135.14347-1-yong.liang@mediatek.com>
+ <20190726070135.14347-2-yong.liang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Andrew Morton <akpm@linux-foundation.org>
-Cc: linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Miles Chen <miles.chen@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190726070135.14347-2-yong.liang@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: chunhui.dai@mediatek.com, drinkcat@chromium.org, eddie.huang@mediatek.com, erin.lo@mediatek.com, jamesjj.liao@mediatek.com, jasu@njomotys.info, mark.rutland@arm.com, matthias.bgg@gmail.com, mturquette@baylibre.com, owen.chen@mediatek.com, robh+dt@kernel.org, weiyi.lu@mediatek.com
+Cc: "yong.liang" <yong.liang@mediatek.com>, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Miles Chen <miles.chen@mediatek.com>
+Quoting Yong Liang (2019-07-26 00:01:35)
+> From: "yong.liang" <yong.liang@mediatek.com>
+> 
+> Set reset signal by a register and
+> clear reset signal by another register for 8183.
+> 
+> Signed-off-by: yong.liang <yong.liang@mediatek.com>
+> ---
 
-This RFC patch is sent to discuss the printing address with %p issue.
+Applied to clk-next with this squashed in
 
-Since commit ad67b74d2469d9b8 ("printk: hash addresses printed with %p"),
-%p gives obfuscated addresses now. When CONFIG_SLUB_DEBUG=y, it is still
-useful to get real virtual addresses.
-
-Possible approaches are:
-1. stop printing kernel addresses
-2. print kernel addresses with %pK,
-3. print kernel addresses with %px.
-4. do nothing
-
-This patch takes %px approach and shows the output here.
-(%px will causes checkpatch warnings, let us ignore the warning here to
-have the discussion). Also, use DUMP_PREFIX_OFFSET instead of
-DUMP_PREFIX_ADDRESS.
-
-Before this patch:
-
-INFO: Slab 0x(____ptrval____) objects=25 used=10 fp=0x(____ptrval____)
-INFO: Object 0x(____ptrval____) @offset=1408 fp=0x(____ptrval____)
-Redzone (____ptrval____): bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone (____ptrval____): bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone (____ptrval____): bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone (____ptrval____): bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone (____ptrval____): bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone (____ptrval____): bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone (____ptrval____): bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone (____ptrval____): bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Object (____ptrval____): 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object (____ptrval____): 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object (____ptrval____): 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object (____ptrval____): 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object (____ptrval____): 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object (____ptrval____): 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object (____ptrval____): 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object (____ptrval____): 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b a5
-Redzone (____ptrval____): bb bb bb bb bb bb bb bb
-Padding (____ptrval____): 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
-Padding (____ptrval____): 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
-Padding (____ptrval____): 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
-Padding (____ptrval____): 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
-...
-FIX kmalloc-128: Object at 0x(____ptrval____) not freed
-
-After this patch:
-
-INFO: Slab 0xffffffbf00f57000 objects=25 used=23 fp=0xffffffc03d5c3500
-INFO: Object 0xffffffc03d5c3500 @offset=13568 fp=0xffffffc03d5c0800
-Redzone 00000000: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone 00000010: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone 00000020: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone 00000030: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone 00000040: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone 00000050: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone 00000060: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone 00000070: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Object 00000000: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object 00000010: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object 00000020: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object 00000030: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object 00000040: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object 00000050: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object 00000060: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object 00000070: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b a5
-Redzone 00000000: bb bb bb bb bb bb bb bb
-Padding 00000000: 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
-Padding 00000010: 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
-Padding 00000020: 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
-Padding 00000030: 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
-...
-FIX kmalloc-128: Object at 0xffffffc03d5c3500 not freed
-
-Signed-off-by: Miles Chen <miles.chen@mediatek.com>
----
- mm/slub.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/mm/slub.c b/mm/slub.c
-index 8834563cdb4b..bc1fb8e81557 100644
---- a/mm/slub.c
-+++ b/mm/slub.c
-@@ -528,7 +528,7 @@ static void print_section(char *level, char *text, u8 *addr,
- 			  unsigned int length)
- {
- 	metadata_access_enable();
--	print_hex_dump(level, text, DUMP_PREFIX_ADDRESS, 16, 1, addr,
-+	print_hex_dump(level, text, DUMP_PREFIX_OFFSET, 16, 1, addr,
- 			length, 1);
- 	metadata_access_disable();
- }
-@@ -611,7 +611,7 @@ static void print_tracking(struct kmem_cache *s, void *object)
- 
- static void print_page_info(struct page *page)
- {
--	pr_err("INFO: Slab 0x%p objects=%u used=%u fp=0x%p flags=0x%04lx\n",
-+	pr_err("INFO: Slab 0x%px objects=%u used=%u fp=0x%px flags=0x%04lx\n",
- 	       page, page->objects, page->inuse, page->freelist, page->flags);
- 
- }
-@@ -653,7 +653,7 @@ static void print_trailer(struct kmem_cache *s, struct page *page, u8 *p)
- 
- 	print_page_info(page);
- 
--	pr_err("INFO: Object 0x%p @offset=%tu fp=0x%p\n\n",
-+	pr_err("INFO: Object 0x%px @offset=%tu fp=0x%px\n\n",
- 	       p, p - addr, get_freepointer(s, p));
- 
- 	if (s->flags & SLAB_RED_ZONE)
-@@ -991,7 +991,7 @@ static void trace(struct kmem_cache *s, struct page *page, void *object,
- 								int alloc)
- {
- 	if (s->flags & SLAB_TRACE) {
--		pr_info("TRACE %s %s 0x%p inuse=%d fp=0x%p\n",
-+		pr_info("TRACE %s %s 0x%px inuse=%d fp=0x%p\n",
- 			s->name,
- 			alloc ? "alloc" : "free",
- 			object, page->inuse,
-@@ -1212,7 +1212,7 @@ static noinline int free_debug_processing(
- 	slab_unlock(page);
- 	spin_unlock_irqrestore(&n->list_lock, flags);
- 	if (!ret)
--		slab_fix(s, "Object at 0x%p not freed", object);
-+		slab_fix(s, "Object at 0x%px not freed", object);
- 	return ret;
- }
- 
-@@ -3693,7 +3693,7 @@ static void list_slab_objects(struct kmem_cache *s, struct page *page,
- 	for_each_object(p, s, addr, page->objects) {
- 
- 		if (!test_bit(slab_index(p, s, addr), map)) {
--			pr_err("INFO: Object 0x%p @offset=%tu\n", p, p - addr);
-+			pr_err("INFO: Object 0x%px @offset=%tu\n", p, p - addr);
- 			print_tracking(s, p);
- 		}
+diff --git a/drivers/clk/mediatek/clk-mt8183.c b/drivers/clk/mediatek/clk-mt8183.c
+index 3f1428ed619b..94bbadc0d259 100644
+--- a/drivers/clk/mediatek/clk-mt8183.c
++++ b/drivers/clk/mediatek/clk-mt8183.c
+@@ -1198,8 +1198,8 @@ static int clk_mt8183_infra_probe(struct platform_device *pdev)
+ 	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+ 	if (r) {
+ 		dev_err(&pdev->dev,
+-			"%s(): could not register clock provider: %d\n"
+-			,__func__, r);
++			"%s(): could not register clock provider: %d\n",
++			__func__, r);
+ 		return r;
  	}
--- 
-2.18.0
+ 
+diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
+index 17df8f8b57ea..cb939c071b0c 100644
+--- a/drivers/clk/mediatek/reset.c
++++ b/drivers/clk/mediatek/reset.c
+@@ -90,7 +90,7 @@ static const struct reset_control_ops mtk_reset_ops_set_clr = {
+ 	.reset = mtk_reset_set_clr,
+ };
+ 
+-void mtk_register_reset_controller_common(struct device_node *np,
++static void mtk_register_reset_controller_common(struct device_node *np,
+ 			unsigned int num_regs, int regofs,
+ 			const struct reset_control_ops *reset_ops)
+ {
