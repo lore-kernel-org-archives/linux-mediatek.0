@@ -1,14 +1,15 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH v5,2/2] clk: reset: Modify reset-controller driver
-Date: Thu, 08 Aug 2019 08:18:23 -0700
-Message-ID: <20190808151824.97D9E218B6@mail.kernel.org>
-References: <20190726070135.14347-1-yong.liang@mediatek.com>
- <20190726070135.14347-2-yong.liang@mediatek.com>
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+Subject: Re: [V1, 1/2] media: dt-bindings: media: i2c: Add bindings for ov8856
+Date: Thu, 8 Aug 2019 19:54:16 +0300
+Message-ID: <20190808165416.GA1845@kekkonen.localdomain>
+References: <20190808092215.5608-1-dongchun.zhu@mediatek.com>
+ <20190808092215.5608-2-dongchun.zhu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190726070135.14347-2-yong.liang@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <20190808092215.5608-2-dongchun.zhu@mediatek.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -18,46 +19,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: chunhui.dai@mediatek.com, drinkcat@chromium.org, eddie.huang@mediatek.com, erin.lo@mediatek.com, jamesjj.liao@mediatek.com, jasu@njomotys.info, mark.rutland@arm.com, matthias.bgg@gmail.com, mturquette@baylibre.com, owen.chen@mediatek.com, robh+dt@kernel.org, weiyi.lu@mediatek.com
-Cc: "yong.liang" <yong.liang@mediatek.com>, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: dongchun.zhu@mediatek.com
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, drinkcat@chromium.org, srv_heupstream@mediatek.com, shengnan.wang@mediatek.com, Ben Kao <ben.kao@intel.com>, tfiga@chromium.org, louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting Yong Liang (2019-07-26 00:01:35)
-> From: "yong.liang" <yong.liang@mediatek.com>
+Hi Dongchun,
+
+(Cc'ing Ben, too.)
+
+On Thu, Aug 08, 2019 at 05:22:14PM +0800, dongchun.zhu@mediatek.com wrote:
+> From: Dongchun Zhu <dongchun.zhu@mediatek.com>
 > 
-> Set reset signal by a register and
-> clear reset signal by another register for 8183.
+> Add device tree binding documentation for the ov8856 camera sensor.
 > 
-> Signed-off-by: yong.liang <yong.liang@mediatek.com>
+> Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
 > ---
+>  .../devicetree/bindings/media/i2c/ov8856.txt       | 41 ++++++++++++++++++++++
+>  MAINTAINERS                                        |  1 +
+>  2 files changed, 42 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/i2c/ov8856.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/media/i2c/ov8856.txt b/Documentation/devicetree/bindings/media/i2c/ov8856.txt
+> new file mode 100644
+> index 0000000..96b10e0
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/i2c/ov8856.txt
+> @@ -0,0 +1,41 @@
+> +* Omnivision OV8856 MIPI CSI-2 sensor
+> +
+> +Required Properties:
+> +- compatible: shall be "ovti,ov8856"
+> +- clocks: reference to the xvclk input clock
+> +- clock-names: shall be "xvclk"
 
-Applied to clk-next with this squashed in
+Could you add "clock-frequency" property here, please, and specify the
+upper and lower limits?
 
-diff --git a/drivers/clk/mediatek/clk-mt8183.c b/drivers/clk/mediatek/clk-mt8183.c
-index 3f1428ed619b..94bbadc0d259 100644
---- a/drivers/clk/mediatek/clk-mt8183.c
-+++ b/drivers/clk/mediatek/clk-mt8183.c
-@@ -1198,8 +1198,8 @@ static int clk_mt8183_infra_probe(struct platform_device *pdev)
- 	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
- 	if (r) {
- 		dev_err(&pdev->dev,
--			"%s(): could not register clock provider: %d\n"
--			,__func__, r);
-+			"%s(): could not register clock provider: %d\n",
-+			__func__, r);
- 		return r;
- 	}
- 
-diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
-index 17df8f8b57ea..cb939c071b0c 100644
---- a/drivers/clk/mediatek/reset.c
-+++ b/drivers/clk/mediatek/reset.c
-@@ -90,7 +90,7 @@ static const struct reset_control_ops mtk_reset_ops_set_clr = {
- 	.reset = mtk_reset_set_clr,
- };
- 
--void mtk_register_reset_controller_common(struct device_node *np,
-+static void mtk_register_reset_controller_common(struct device_node *np,
- 			unsigned int num_regs, int regofs,
- 			const struct reset_control_ops *reset_ops)
- {
+> +- avdd-supply: Analog voltage supply, 2.8 volts
+> +- dovdd-supply: Digital I/O voltage supply, 1.8 volts
+> +- dvdd-supply: Digital core voltage supply, 1.2 volts
+> +- reset-gpios: Low active reset gpio
+> +
+> +The device node shall contain one 'port' child node with an
+> +'endpoint' subnode for its digital output video port,
+> +in accordance with the video interface bindings defined in
+> +Documentation/devicetree/bindings/media/video-interfaces.txt.
+> +The endpoint optional property 'data-lanes' shall be "<0 1 3 4>".
+
+If you don't support lane reordering, then monotonically incrementing lane
+numbers from 1 onwards are recommended.
+
+Please also make the property mandatory.
+
+> +
+> +Example:
+> +&i2c7 {
+> +	ov8856: camera-sensor@10 {
+> +		compatible = "ovti,ov8856";
+> +		reg = <0x10>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&clk_24m_cam>;
+> +
+> +		clocks = <&cru SCLK_TESTCLKOUT1>;
+> +		clock-names = "xvclk";
+> +
+> +		avdd-supply = <&mt6358_vcama2_reg>;
+> +		dvdd-supply = <&mt6358_vcamd_reg>;
+> +		dovdd-supply = <&mt6358_vcamio_reg>;
+> +		reset-gpios = <&gpio2 3 GPIO_ACTIVE_LOW>;
+> +
+> +		port {
+> +			wcam_out: endpoint {
+> +				remote-endpoint = <&mipi_in_wcam>;
+> +				data-lanes = <0 1 3 4>;
+> +			};
+> +		};
+> +	};
+> +};
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 783569e..7746c6b 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -11889,6 +11889,7 @@ L:	linux-media@vger.kernel.org
+>  T:	git git://linuxtv.org/media_tree.git
+>  S:	Maintained
+>  F:	drivers/media/i2c/ov8856.c
+> +F:	Documentation/devicetree/bindings/media/i2c/ov8856.txt
+>  
+>  OMNIVISION OV9650 SENSOR DRIVER
+>  M:	Sakari Ailus <sakari.ailus@linux.intel.com>
+
+-- 
+Regards,
+
+Sakari Ailus
+sakari.ailus@linux.intel.com
