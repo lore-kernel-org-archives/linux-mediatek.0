@@ -1,116 +1,159 @@
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-Subject: Re: [V1, 1/2] media: dt-bindings: media: i2c: Add bindings for ov8856
-Date: Thu, 8 Aug 2019 19:54:16 +0300
-Message-ID: <20190808165416.GA1845@kekkonen.localdomain>
-References: <20190808092215.5608-1-dongchun.zhu@mediatek.com>
- <20190808092215.5608-2-dongchun.zhu@mediatek.com>
+From: <miles.chen@mediatek.com>
+Subject: [RFC PATCH v2] mm: slub: print kernel addresses in slub debug messages
+Date: Fri, 9 Aug 2019 09:08:37 +0800
+Message-ID: <20190809010837.24166-1-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <20190808092215.5608-2-dongchun.zhu@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: dongchun.zhu@mediatek.com
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, drinkcat@chromium.org, srv_heupstream@mediatek.com, shengnan.wang@mediatek.com, Ben Kao <ben.kao@intel.com>, tfiga@chromium.org, louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Andrew Morton <akpm@linux-foundation.org>
+Cc: linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Miles Chen <miles.chen@mediatek.com>, "Tobin C . Harding" <me@tobin.cc>, Kees Cook <keescook@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Dongchun,
+From: Miles Chen <miles.chen@mediatek.com>
 
-(Cc'ing Ben, too.)
+This RFC patch is sent to discuss the printing address with %p issue.
 
-On Thu, Aug 08, 2019 at 05:22:14PM +0800, dongchun.zhu@mediatek.com wrote:
-> From: Dongchun Zhu <dongchun.zhu@mediatek.com>
-> 
-> Add device tree binding documentation for the ov8856 camera sensor.
-> 
-> Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
-> ---
->  .../devicetree/bindings/media/i2c/ov8856.txt       | 41 ++++++++++++++++++++++
->  MAINTAINERS                                        |  1 +
->  2 files changed, 42 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/i2c/ov8856.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/media/i2c/ov8856.txt b/Documentation/devicetree/bindings/media/i2c/ov8856.txt
-> new file mode 100644
-> index 0000000..96b10e0
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/i2c/ov8856.txt
-> @@ -0,0 +1,41 @@
-> +* Omnivision OV8856 MIPI CSI-2 sensor
-> +
-> +Required Properties:
-> +- compatible: shall be "ovti,ov8856"
-> +- clocks: reference to the xvclk input clock
-> +- clock-names: shall be "xvclk"
+Since commit ad67b74d2469d9b8 ("printk: hash addresses printed with %p"),
+%p gives obfuscated addresses now. When CONFIG_SLUB_DEBUG=y, it is still
+useful to get real virtual addresses.
 
-Could you add "clock-frequency" property here, please, and specify the
-upper and lower limits?
+Possible approaches are:
+1. stop printing kernel addresses
+2. print with %pK,
+3. print with %px.
+4. do nothing
 
-> +- avdd-supply: Analog voltage supply, 2.8 volts
-> +- dovdd-supply: Digital I/O voltage supply, 1.8 volts
-> +- dvdd-supply: Digital core voltage supply, 1.2 volts
-> +- reset-gpios: Low active reset gpio
-> +
-> +The device node shall contain one 'port' child node with an
-> +'endpoint' subnode for its digital output video port,
-> +in accordance with the video interface bindings defined in
-> +Documentation/devicetree/bindings/media/video-interfaces.txt.
-> +The endpoint optional property 'data-lanes' shall be "<0 1 3 4>".
+This patch takes %px approach and shows the output here.
+(%px will causes checkpatch warnings, let us ignore the warning here to
+have the discussion). Also, use DUMP_PREFIX_OFFSET instead of
+DUMP_PREFIX_ADDRESS.
 
-If you don't support lane reordering, then monotonically incrementing lane
-numbers from 1 onwards are recommended.
+Before this patch:
 
-Please also make the property mandatory.
+INFO: Slab 0x(____ptrval____) objects=25 used=10 fp=0x(____ptrval____)
+INFO: Object 0x(____ptrval____) @offset=1408 fp=0x(____ptrval____)
+Redzone (____ptrval____): bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
+Redzone (____ptrval____): bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
+Redzone (____ptrval____): bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
+Redzone (____ptrval____): bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
+Redzone (____ptrval____): bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
+Redzone (____ptrval____): bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
+Redzone (____ptrval____): bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
+Redzone (____ptrval____): bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
+Object (____ptrval____): 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+Object (____ptrval____): 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+Object (____ptrval____): 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+Object (____ptrval____): 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+Object (____ptrval____): 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+Object (____ptrval____): 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+Object (____ptrval____): 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+Object (____ptrval____): 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b a5
+Redzone (____ptrval____): bb bb bb bb bb bb bb bb
+Padding (____ptrval____): 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+Padding (____ptrval____): 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+Padding (____ptrval____): 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+Padding (____ptrval____): 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+...
+FIX kmalloc-128: Object at 0x(____ptrval____) not freed
 
-> +
-> +Example:
-> +&i2c7 {
-> +	ov8856: camera-sensor@10 {
-> +		compatible = "ovti,ov8856";
-> +		reg = <0x10>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&clk_24m_cam>;
-> +
-> +		clocks = <&cru SCLK_TESTCLKOUT1>;
-> +		clock-names = "xvclk";
-> +
-> +		avdd-supply = <&mt6358_vcama2_reg>;
-> +		dvdd-supply = <&mt6358_vcamd_reg>;
-> +		dovdd-supply = <&mt6358_vcamio_reg>;
-> +		reset-gpios = <&gpio2 3 GPIO_ACTIVE_LOW>;
-> +
-> +		port {
-> +			wcam_out: endpoint {
-> +				remote-endpoint = <&mipi_in_wcam>;
-> +				data-lanes = <0 1 3 4>;
-> +			};
-> +		};
-> +	};
-> +};
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 783569e..7746c6b 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -11889,6 +11889,7 @@ L:	linux-media@vger.kernel.org
->  T:	git git://linuxtv.org/media_tree.git
->  S:	Maintained
->  F:	drivers/media/i2c/ov8856.c
-> +F:	Documentation/devicetree/bindings/media/i2c/ov8856.txt
->  
->  OMNIVISION OV9650 SENSOR DRIVER
->  M:	Sakari Ailus <sakari.ailus@linux.intel.com>
+After this patch:
 
+INFO: Slab 0xffffffbf00f57000 objects=25 used=23 fp=0xffffffc03d5c3500
+INFO: Object 0xffffffc03d5c3500 @offset=13568 fp=0xffffffc03d5c0800
+Redzone 00000000: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
+Redzone 00000010: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
+Redzone 00000020: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
+Redzone 00000030: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
+Redzone 00000040: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
+Redzone 00000050: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
+Redzone 00000060: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
+Redzone 00000070: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
+Object 00000000: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+Object 00000010: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+Object 00000020: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+Object 00000030: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+Object 00000040: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+Object 00000050: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+Object 00000060: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+Object 00000070: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b a5
+Redzone 00000000: bb bb bb bb bb bb bb bb
+Padding 00000000: 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+Padding 00000010: 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+Padding 00000020: 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+Padding 00000030: 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+...
+FIX kmalloc-128: Object at 0xffffffc03d5c3500 not freed
+
+Cc: Christoph Lameter <cl@linux.com>
+Cc: Pekka Enberg <penberg@kernel.org>
+Cc: David Rientjes <rientjes@google.com>
+Cc: Joonsoo Kim <iamjoonsoo.kim@lge.com>
+Cc: Andrew Morton <akpm@linux-foundation.org>
+Cc: Tobin C. Harding <me@tobin.cc>
+Cc: Kees Cook <keescook@chromium.org>
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+---
+ mm/slub.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/mm/slub.c b/mm/slub.c
+index 8834563cdb4b..bc1fb8e81557 100644
+--- a/mm/slub.c
++++ b/mm/slub.c
+@@ -528,7 +528,7 @@ static void print_section(char *level, char *text, u8 *addr,
+ 			  unsigned int length)
+ {
+ 	metadata_access_enable();
+-	print_hex_dump(level, text, DUMP_PREFIX_ADDRESS, 16, 1, addr,
++	print_hex_dump(level, text, DUMP_PREFIX_OFFSET, 16, 1, addr,
+ 			length, 1);
+ 	metadata_access_disable();
+ }
+@@ -611,7 +611,7 @@ static void print_tracking(struct kmem_cache *s, void *object)
+ 
+ static void print_page_info(struct page *page)
+ {
+-	pr_err("INFO: Slab 0x%p objects=%u used=%u fp=0x%p flags=0x%04lx\n",
++	pr_err("INFO: Slab 0x%px objects=%u used=%u fp=0x%px flags=0x%04lx\n",
+ 	       page, page->objects, page->inuse, page->freelist, page->flags);
+ 
+ }
+@@ -653,7 +653,7 @@ static void print_trailer(struct kmem_cache *s, struct page *page, u8 *p)
+ 
+ 	print_page_info(page);
+ 
+-	pr_err("INFO: Object 0x%p @offset=%tu fp=0x%p\n\n",
++	pr_err("INFO: Object 0x%px @offset=%tu fp=0x%px\n\n",
+ 	       p, p - addr, get_freepointer(s, p));
+ 
+ 	if (s->flags & SLAB_RED_ZONE)
+@@ -991,7 +991,7 @@ static void trace(struct kmem_cache *s, struct page *page, void *object,
+ 								int alloc)
+ {
+ 	if (s->flags & SLAB_TRACE) {
+-		pr_info("TRACE %s %s 0x%p inuse=%d fp=0x%p\n",
++		pr_info("TRACE %s %s 0x%px inuse=%d fp=0x%p\n",
+ 			s->name,
+ 			alloc ? "alloc" : "free",
+ 			object, page->inuse,
+@@ -1212,7 +1212,7 @@ static noinline int free_debug_processing(
+ 	slab_unlock(page);
+ 	spin_unlock_irqrestore(&n->list_lock, flags);
+ 	if (!ret)
+-		slab_fix(s, "Object at 0x%p not freed", object);
++		slab_fix(s, "Object at 0x%px not freed", object);
+ 	return ret;
+ }
+ 
+@@ -3693,7 +3693,7 @@ static void list_slab_objects(struct kmem_cache *s, struct page *page,
+ 	for_each_object(p, s, addr, page->objects) {
+ 
+ 		if (!test_bit(slab_index(p, s, addr), map)) {
+-			pr_err("INFO: Object 0x%p @offset=%tu\n", p, p - addr);
++			pr_err("INFO: Object 0x%px @offset=%tu\n", p, p - addr);
+ 			print_tracking(s, p);
+ 		}
+ 	}
 -- 
-Regards,
-
-Sakari Ailus
-sakari.ailus@linux.intel.com
+2.18.0
