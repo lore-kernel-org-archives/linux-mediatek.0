@@ -1,145 +1,241 @@
-From: Yong Wu <yong.wu@mediatek.com>
-Subject: [PATCH v9 21/21] iommu/mediatek: Clean up struct mtk_smi_iommu
-Date: Sat, 10 Aug 2019 15:58:21 +0800
-Message-ID: <1565423901-17008-22-git-send-email-yong.wu@mediatek.com>
-References: <1565423901-17008-1-git-send-email-yong.wu@mediatek.com>
+From: houlong wei <houlong.wei@mediatek.com>
+Subject: Re: [PATCH v11 09/12] soc: mediatek: cmdq: define the instruction
+ struct
+Date: Sun, 11 Aug 2019 00:12:00 +0800
+Message-ID: <1565453520.19079.17.camel@mhfsdcap03>
+References: <20190729070106.9332-1-bibby.hsieh@mediatek.com>
+         <20190729070106.9332-10-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1565423901-17008-1-git-send-email-yong.wu@mediatek.com>
+In-Reply-To: <20190729070106.9332-10-bibby.hsieh@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Will Deacon <will@kernel.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, yong.wu@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, Matthias Kaehlcke <mka@chromium.org>, cui.zhang@mediatek.com, chao.hao@mediatek.com, ming-fan.chen@mediatek.com
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, CK Hu =?UTF-8?Q?=28=E8=83=A1=E4=BF=8A=E5=85=89=29?= <ck.hu@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, YT
 List-Id: linux-mediatek@lists.infradead.org
 
-Remove the "struct mtk_smi_iommu" to simplify the code since it has only
-one item in it right now.
+Hi Bibby, I have inline comment in function cmdq_pkt_write_mask().
 
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
----
- drivers/iommu/mtk_iommu.c    | 4 ++--
- drivers/iommu/mtk_iommu.h    | 6 +++---
- drivers/iommu/mtk_iommu_v1.c | 4 ++--
- drivers/memory/mtk-smi.c     | 6 +++---
- include/soc/mediatek/smi.h   | 4 ----
- 5 files changed, 10 insertions(+), 14 deletions(-)
+On Mon, 2019-07-29 at 15:01 +0800, Bibby Hsieh wrote:
+> Define an instruction structure for gce driver to append command.
+> This structure can make the client's code more readability.
+> 
+> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+> ---
+>  drivers/soc/mediatek/mtk-cmdq-helper.c   | 103 +++++++++++++++--------
+>  include/linux/mailbox/mtk-cmdq-mailbox.h |   2 +
+>  2 files changed, 72 insertions(+), 33 deletions(-)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> index 7aa0517ff2f3..0886c4967ca4 100644
+> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
+> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> @@ -9,12 +9,24 @@
+>  #include <linux/mailbox_controller.h>
+>  #include <linux/soc/mediatek/mtk-cmdq.h>
+>  
+> -#define CMDQ_ARG_A_WRITE_MASK	0xffff
+>  #define CMDQ_WRITE_ENABLE_MASK	BIT(0)
+>  #define CMDQ_EOC_IRQ_EN		BIT(0)
+>  #define CMDQ_EOC_CMD		((u64)((CMDQ_CODE_EOC << CMDQ_OP_CODE_SHIFT)) \
+>  				<< 32 | CMDQ_EOC_IRQ_EN)
+>  
+> +struct cmdq_instruction {
+> +	union {
+> +		u32 value;
+> +		u32 mask;
+> +	};
+> +	union {
+> +		u16 offset;
+> +		u16 event;
+> +	};
+> +	u8 subsys;
+> +	u8 op;
+> +};
+> +
+>  static void cmdq_client_timeout(struct timer_list *t)
+>  {
+>  	struct cmdq_client *client = from_timer(client, t, timer);
+> @@ -110,10 +122,8 @@ void cmdq_pkt_destroy(struct cmdq_pkt *pkt)
+>  }
+>  EXPORT_SYMBOL(cmdq_pkt_destroy);
+>  
+> -static int cmdq_pkt_append_command(struct cmdq_pkt *pkt, enum cmdq_code code,
+> -				   u32 arg_a, u32 arg_b)
+> +static struct cmdq_instruction *cmdq_pkt_append_command(struct cmdq_pkt *pkt)
+>  {
+> -	u64 *cmd_ptr;
+>  
+>  	if (unlikely(pkt->cmd_buf_size + CMDQ_INST_SIZE > pkt->buf_size)) {
+>  		/*
+> @@ -127,81 +137,108 @@ static int cmdq_pkt_append_command(struct cmdq_pkt *pkt, enum cmdq_code code,
+>  		pkt->cmd_buf_size += CMDQ_INST_SIZE;
+>  		WARN_ONCE(1, "%s: buffer size %u is too small !\n",
+>  			__func__, (u32)pkt->buf_size);
+> -		return -ENOMEM;
+> +		return NULL;
+>  	}
+> -	cmd_ptr = pkt->va_base + pkt->cmd_buf_size;
+> -	(*cmd_ptr) = (u64)((code << CMDQ_OP_CODE_SHIFT) | arg_a) << 32 | arg_b;
+> +
+>  	pkt->cmd_buf_size += CMDQ_INST_SIZE;
+>  
+> -	return 0;
+> +	return pkt->va_base + pkt->cmd_buf_size - CMDQ_INST_SIZE;
+>  }
+>  
+>  int cmdq_pkt_write(struct cmdq_pkt *pkt, u8 subsys, u16 offset, u32 value)
+>  {
+> -	u32 arg_a = (offset & CMDQ_ARG_A_WRITE_MASK) |
+> -		    (subsys << CMDQ_SUBSYS_SHIFT);
+> +	struct cmdq_instruction *inst;
+> +
+> +	inst = cmdq_pkt_append_command(pkt);
+> +	if (!inst)
+> +		return -ENOMEM;
+> +
+> +	inst->op = CMDQ_CODE_WRITE;
+> +	inst->value = value;
+> +	inst->offset = offset;
+> +	inst->subsys = subsys;
+>  
+> -	return cmdq_pkt_append_command(pkt, CMDQ_CODE_WRITE, arg_a, value);
+> +	return 0;
+>  }
+>  EXPORT_SYMBOL(cmdq_pkt_write);
+>  
+>  int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u8 subsys,
+>  			u16 offset, u32 value, u32 mask)
+>  {
+> +	struct cmdq_instruction *inst;
+>  	u32 offset_mask = offset;
+> -	int err = 0;
+>  
+>  	if (mask != 0xffffffff) {
+> -		err = cmdq_pkt_append_command(pkt, CMDQ_CODE_MASK, 0, ~mask);
+> +		inst = cmdq_pkt_append_command(pkt);
+> +		if (!inst)
+> +			return -ENOMEM;
+> +
+> +		inst->op = CMDQ_CODE_MASK;
+> +		inst->mask = ~mask;
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 274761c..d5b9454 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -254,7 +254,7 @@ static void mtk_iommu_config(struct mtk_iommu_data *data,
- 	for (i = 0; i < fwspec->num_ids; ++i) {
- 		larbid = MTK_M4U_TO_LARB(fwspec->ids[i]);
- 		portid = MTK_M4U_TO_PORT(fwspec->ids[i]);
--		larb_mmu = &data->smi_imu.larb_imu[larbid];
-+		larb_mmu = &data->larb_imu[larbid];
- 
- 		dev_dbg(dev, "%s iommu port: %d\n",
- 			enable ? "enable" : "disable", portid);
-@@ -653,7 +653,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 			of_node_put(larbnode);
- 			return -EPROBE_DEFER;
- 		}
--		data->smi_imu.larb_imu[id].dev = &plarbdev->dev;
-+		data->larb_imu[id].dev = &plarbdev->dev;
- 
- 		component_match_add_release(dev, &match, release_of,
- 					    compare_of, larbnode);
-diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-index 56b579c..fc0f16e 100644
---- a/drivers/iommu/mtk_iommu.h
-+++ b/drivers/iommu/mtk_iommu.h
-@@ -56,7 +56,6 @@ struct mtk_iommu_data {
- 	struct mtk_iommu_suspend_reg	reg;
- 	struct mtk_iommu_domain		*m4u_dom;
- 	struct iommu_group		*m4u_group;
--	struct mtk_smi_iommu		smi_imu;      /* SMI larb iommu info */
- 	bool                            enable_4GB;
- 	bool				tlb_flush_active;
- 
-@@ -64,6 +63,7 @@ struct mtk_iommu_data {
- 	const struct mtk_iommu_plat_data *plat_data;
- 
- 	struct list_head		list;
-+	struct mtk_smi_larb_iommu	larb_imu[MTK_LARB_NR_MAX];
- };
- 
- static inline int compare_of(struct device *dev, void *data)
-@@ -80,14 +80,14 @@ static inline int mtk_iommu_bind(struct device *dev)
- {
- 	struct mtk_iommu_data *data = dev_get_drvdata(dev);
- 
--	return component_bind_all(dev, &data->smi_imu);
-+	return component_bind_all(dev, &data->larb_imu);
- }
- 
- static inline void mtk_iommu_unbind(struct device *dev)
- {
- 	struct mtk_iommu_data *data = dev_get_drvdata(dev);
- 
--	component_unbind_all(dev, &data->smi_imu);
-+	component_unbind_all(dev, &data->larb_imu);
- }
- 
- #endif
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index 3922358..860926c 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -206,7 +206,7 @@ static void mtk_iommu_config(struct mtk_iommu_data *data,
- 	for (i = 0; i < fwspec->num_ids; ++i) {
- 		larbid = mt2701_m4u_to_larb(fwspec->ids[i]);
- 		portid = mt2701_m4u_to_port(fwspec->ids[i]);
--		larb_mmu = &data->smi_imu.larb_imu[larbid];
-+		larb_mmu = &data->larb_imu[larbid];
- 
- 		dev_dbg(dev, "%s iommu port: %d\n",
- 			enable ? "enable" : "disable", portid);
-@@ -610,7 +610,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 			}
- 		}
- 
--		data->smi_imu.larb_imu[larb_nr].dev = &plarbdev->dev;
-+		data->larb_imu[larb_nr].dev = &plarbdev->dev;
- 		component_match_add_release(dev, &match, release_of,
- 					    compare_of, larb_spec.np);
- 		larb_nr++;
-diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index d6dc62f..439d7d8 100644
---- a/drivers/memory/mtk-smi.c
-+++ b/drivers/memory/mtk-smi.c
-@@ -143,13 +143,13 @@ void mtk_smi_larb_put(struct device *larbdev)
- mtk_smi_larb_bind(struct device *dev, struct device *master, void *data)
- {
- 	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
--	struct mtk_smi_iommu *smi_iommu = data;
-+	struct mtk_smi_larb_iommu *larb_mmu = data;
- 	unsigned int         i;
- 
- 	for (i = 0; i < MTK_LARB_NR_MAX; i++) {
--		if (dev == smi_iommu->larb_imu[i].dev) {
-+		if (dev == larb_mmu[i].dev) {
- 			larb->larbid = i;
--			larb->mmu = &smi_iommu->larb_imu[i].mmu;
-+			larb->mmu = &larb_mmu[i].mmu;
- 			return 0;
- 		}
- 	}
-diff --git a/include/soc/mediatek/smi.h b/include/soc/mediatek/smi.h
-index 6f0b00c..5a34b87 100644
---- a/include/soc/mediatek/smi.h
-+++ b/include/soc/mediatek/smi.h
-@@ -20,10 +20,6 @@ struct mtk_smi_larb_iommu {
- 	unsigned int   mmu;
- };
- 
--struct mtk_smi_iommu {
--	struct mtk_smi_larb_iommu larb_imu[MTK_LARB_NR_MAX];
--};
--
- /*
-  * mtk_smi_larb_get: Enable the power domain and clocks for this local arbiter.
-  *                   It also initialize some basic setting(like iommu).
--- 
-1.9.1
+
+There were some discussion about how to reduce cmdq buffer allocation
+times reuse a cmdq packet.Please refer to the below links.
+https://patchwork.kernel.org/patch/10193349/
+https://patchwork.kernel.org/patch/10491161/
+
+If we reuse a cmdq packet, we get the cmdq instruction buffer which may
+contains previous data. To generate correct instructions, we may need
+consider how to clear the previous data.
+1.Set all members of a cmdq_instruction instance.
+  e.g. Add two lines of code below for this case.
+	inst->offset = 0;
+	inst->subsys = 0;
+2. Before reuse a packet, do memset() for the command buffer.
+
+How do you think about it?
+
+>  		offset_mask |= CMDQ_WRITE_ENABLE_MASK;
+>  	}
+> -	err |= cmdq_pkt_write(pkt, value, subsys, offset_mask);
+>  
+> -	return err;
+> +	return cmdq_pkt_write(pkt, subsys, offset_mask, value);
+>  }
+>  EXPORT_SYMBOL(cmdq_pkt_write_mask);
+>  
+>  int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event)
+>  {
+> -	u32 arg_b;
+> +	struct cmdq_instruction *inst;
+>  
+>  	if (event >= CMDQ_MAX_EVENT)
+>  		return -EINVAL;
+>  
+> -	/*
+> -	 * WFE arg_b
+> -	 * bit 0-11: wait value
+> -	 * bit 15: 1 - wait, 0 - no wait
+> -	 * bit 16-27: update value
+> -	 * bit 31: 1 - update, 0 - no update
+> -	 */
+> -	arg_b = CMDQ_WFE_UPDATE | CMDQ_WFE_WAIT | CMDQ_WFE_WAIT_VALUE;
+> +	inst = cmdq_pkt_append_command(pkt);
+> +	if (!inst)
+> +		return -ENOMEM;
+> +
+> +	inst->op = CMDQ_CODE_WFE;
+> +	inst->value = CMDQ_WFE_OPTION;
+> +	inst->event = event;
+>  
+> -	return cmdq_pkt_append_command(pkt, CMDQ_CODE_WFE, event, arg_b);
+> +	return 0;
+>  }
+>  EXPORT_SYMBOL(cmdq_pkt_wfe);
+>  
+>  int cmdq_pkt_clear_event(struct cmdq_pkt *pkt, u16 event)
+>  {
+> +	struct cmdq_instruction *inst;
+> +
+>  	if (event >= CMDQ_MAX_EVENT)
+>  		return -EINVAL;
+>  
+> -	return cmdq_pkt_append_command(pkt, CMDQ_CODE_WFE, event,
+> -				       CMDQ_WFE_UPDATE);
+> +	inst = cmdq_pkt_append_command(pkt);
+> +	if (!inst)
+> +		return -ENOMEM;
+> +
+> +	inst->op = CMDQ_CODE_WFE;
+> +	inst->value = CMDQ_WFE_UPDATE;
+> +	inst->event = event;
+> +
+> +	return 0;
+>  }
+>  EXPORT_SYMBOL(cmdq_pkt_clear_event);
+>  
+>  static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
+>  {
+> -	int err;
+> +	struct cmdq_instruction *inst;
+> +
+> +	inst = cmdq_pkt_append_command(pkt);
+> +	if (!inst)
+> +		return -ENOMEM;
+>  
+> -	/* insert EOC and generate IRQ for each command iteration */
+> -	err = cmdq_pkt_append_command(pkt, CMDQ_CODE_EOC, 0, CMDQ_EOC_IRQ_EN);
+> +	inst->op = CMDQ_CODE_EOC;
+> +	inst->value = CMDQ_EOC_IRQ_EN;
+>  
+> -	/* JUMP to end */
+> -	err |= cmdq_pkt_append_command(pkt, CMDQ_CODE_JUMP, 0, CMDQ_JUMP_PASS);
+> +	inst = cmdq_pkt_append_command(pkt);
+> +	if (!inst)
+> +		return -ENOMEM;
+> +
+> +	inst->op = CMDQ_CODE_JUMP;
+> +	inst->value = CMDQ_JUMP_PASS;
+>  
+> -	return err;
+> +	return 0;
+>  }
+>  
+>  static void cmdq_pkt_flush_async_cb(struct cmdq_cb_data data)
+> diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
+> index 911475da7a53..c8adedefaf42 100644
+> --- a/include/linux/mailbox/mtk-cmdq-mailbox.h
+> +++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
+> @@ -19,6 +19,8 @@
+>  #define CMDQ_WFE_UPDATE			BIT(31)
+>  #define CMDQ_WFE_WAIT			BIT(15)
+>  #define CMDQ_WFE_WAIT_VALUE		0x1
+> +#define CMDQ_WFE_OPTION			(CMDQ_WFE_UPDATE | CMDQ_WFE_WAIT | \
+> +					CMDQ_WFE_WAIT_VALUE)
+>  /** cmdq event maximum */
+>  #define CMDQ_MAX_EVENT			0x3ff
+>  
