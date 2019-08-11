@@ -1,78 +1,49 @@
-From: houlong wei <houlong.wei@mediatek.com>
-Subject: Re: [PATCH v11 09/12] soc: mediatek: cmdq: define the instruction
- struct
-Date: Sun, 11 Aug 2019 00:38:01 +0800
-Message-ID: <1565455081.19079.36.camel@mhfsdcap03>
-References: <20190729070106.9332-1-bibby.hsieh@mediatek.com>
- <20190729070106.9332-10-bibby.hsieh@mediatek.com>
- <1565453520.19079.17.camel@mhfsdcap03>
+From: Jitao Shi <jitao.shi@mediatek.com>
+Subject: [PATCH v4 0/4] Add drivers for auo, kd101n80-45na and boe,
+ tv101wum-nl6 panels
+Date: Sun, 11 Aug 2019 17:09:57 +0800
+Message-ID: <20190811091001.49555-1-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1565453520.19079.17.camel@mhfsdcap03>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Bibby Hsieh =?UTF-8?Q?=28=E8=AC=9D=E6=BF=9F=E9=81=A0=29?= <Bibby.Hsieh@mediatek.com>
-Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, srv_heupstream <srv_heupstream@mediatek.com>, Daoyuan Huang =?UTF-8?Q?=28=E9=BB=83=E9=81=93=E5=8E=9F=29?= <Daoyuan.Huang@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Jassi Brar <jassisinghbrar@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, houlong.wei@mediatek.com, YT Shen =?UTF-8?Q?=28=E6=B2=88=E5=B2=B3=E9=9C=86=29?= <Yt.Shen@mediatek.com>, CK Hu =?UTF-8?Q?=28=E8=83=A1=E4=BF=8A=E5=85=89=29?= <ck.hu@mediatek.com>, Rob Herring <robh+dt@kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Ginny Chen =?UTF-8?Q?=28=E9=99=B3=E6=B2=BB=E5=82=91=29?= <ginny.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>Matthias Brugger <m>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: stonea168@163.com, dri-devel@lists.freedesktop.org, Andy Yan <andy.yan@rock-chips.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa.cheng@mediatek.com, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Sean Paul <seanpaul@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, 2019-08-11 at 00:12 +0800, houlong wei wrote:
-> Hi Bibby, I have inline comment in function cmdq_pkt_write_mask().
-> 
-> On Mon, 2019-07-29 at 15:01 +0800, Bibby Hsieh wrote:
-> > Define an instruction structure for gce driver to append command.
-> > This structure can make the client's code more readability.
-> > 
-> > Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-> > Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> > ---
-> >  drivers/soc/mediatek/mtk-cmdq-helper.c   | 103 +++++++++++++++--------
-> >  include/linux/mailbox/mtk-cmdq-mailbox.h |   2 +
-> >  2 files changed, 72 insertions(+), 33 deletions(-)
-> > 
-> > diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> > index 7aa0517ff2f3..0886c4967ca4 100644
-> > --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-> > +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> > @@ -9,12 +9,24 @@
-> >  #include <linux/mailbox_controller.h>
-> >  #include <linux/soc/mediatek/mtk-cmdq.h>
-[...]
-> >  
-> >  int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u8 subsys,
-> >  			u16 offset, u32 value, u32 mask)
-> >  {
-> > +	struct cmdq_instruction *inst;
-> >  	u32 offset_mask = offset;
-> > -	int err = 0;
-> >  
-> >  	if (mask != 0xffffffff) {
-> > -		err = cmdq_pkt_append_command(pkt, CMDQ_CODE_MASK, 0, ~mask);
-> > +		inst = cmdq_pkt_append_command(pkt);
-> > +		if (!inst)
-> > +			return -ENOMEM;
-> > +
-> > +		inst->op = CMDQ_CODE_MASK;
-> > +		inst->mask = ~mask;
-
-> >  		offset_mask |= CMDQ_WRITE_ENABLE_MASK;
-> >  	}
-> > -	err |= cmdq_pkt_write(pkt, value, subsys, offset_mask);
-> >  
-> > -	return err;
-> > +	return cmdq_pkt_write(pkt, subsys, offset_mask, value);
-
-We need add a type conversion here, (u8)offset_mask, for your new
-function type. Er... it's better to remove local variable 'offset_mask'
-and replace it with 'offset'.
-
-> >  }
-[...]
+Q2hhbmdlcyBzaW5jZSB2MzoKIC0gcmVtb3ZlIGNoZWNrIGVuYWJsZV9ncGlvLgogLSBmaW5lIHR1
+bmUgdGhlIGF1byxrZDEwMW44MC00NW5hIHBhbmVsJ3MgcG93ZXIgb24gdGltaW5nLgoKQ2hhbmdl
+cyBzaW5jZSB2MjoKIC0gY29ycmVjdCB0aGUgcGFuZWwgc2l6ZQogLSByZW1vdmUgYmxhbmsgbGlu
+ZSBpbiBLY29uZmlnCiAtIG1vdmUgYXVvLGtkMTAxbjgwLTQ1bmEgcGFuZWwgZHJpdmVyIGluIHRo
+aXMgc2VyaWVzLgoKQ2hhbmdlcyBzaW5jZSB2MToKCiAtIHVwZGF0ZSB0eXBvIG5sNiAtPiBuMTYu
+CiAtIHVwZGF0ZSBuZXcgcGFuZWwgY29uZmlnIGFuZCBtYWtlZmlsZSBhcmUgYWRkZWQgaW4gYWxw
+aGFiZXRpY2FsbHkgb3JkZXIuCiAtIGFkZCB0aGUgcGFuZWwgbW9kZSBhbmQgcGFuZWwgaW5mbyBp
+biBkcml2ZXIgZGF0YS4KIC0gbWVyZ2UgYXVvLGtkMTAxbjgwLTQ1YSBhbmQgYm9lLHR2MTAxd3Vt
+LW5sNiBpbiBvbmUgZHJpdmVyCgpKaXRhbyBTaGkgKDQpOgogIGR0LWJpbmRpbmdzOiBkaXNwbGF5
+OiBwYW5lbDogQWRkIEJPRSB0djEwMXd1bS1uMTYgcGFuZWwgYmluZGluZ3MKICBkcm0vcGFuZWw6
+IHN1cHBvcnQgZm9yIEJPRSB0djEwMXd1bS1ubDYgd3V4Z2EgZHNpIHZpZGVvIG1vZGUgcGFuZWwK
+ICBkdC1iaW5kaW5nczogZGlzcGxheTogcGFuZWw6IGFkZCBhdW8ga2QxMDFuODAtNDVuYSBwYW5l
+bCBiaW5kaW5ncwogIGRybS9wYW5lbDogc3VwcG9ydCBmb3IgYXVvLGtkMTAxbjgwLTQ1bmEgd3V4
+Z2EgZHNpIHZpZGVvIG1vZGUgcGFuZWwKCiAuLi4vZGlzcGxheS9wYW5lbC9hdW8sa2QxMDFuODAt
+NDVuYS50eHQgICAgICAgfCAgMzQgKwogLi4uL2Rpc3BsYXkvcGFuZWwvYm9lLHR2MTAxd3VtLW5s
+Ni50eHQgICAgICAgIHwgIDM0ICsKIGRyaXZlcnMvZ3B1L2RybS9wYW5lbC9LY29uZmlnICAgICAg
+ICAgICAgICAgICB8ICAgOSArCiBkcml2ZXJzL2dwdS9kcm0vcGFuZWwvTWFrZWZpbGUgICAgICAg
+ICAgICAgICAgfCAgIDEgKwogLi4uL2dwdS9kcm0vcGFuZWwvcGFuZWwtYm9lLXR2MTAxd3VtLW5s
+Ni5jICAgIHwgNzYxICsrKysrKysrKysrKysrKysrKwogNSBmaWxlcyBjaGFuZ2VkLCA4MzkgaW5z
+ZXJ0aW9ucygrKQogY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
+aW5kaW5ncy9kaXNwbGF5L3BhbmVsL2F1byxrZDEwMW44MC00NW5hLnR4dAogY3JlYXRlIG1vZGUg
+MTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3BhbmVsL2Jv
+ZSx0djEwMXd1bS1ubDYudHh0CiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL3Bh
+bmVsL3BhbmVsLWJvZS10djEwMXd1bS1ubDYuYwoKLS0gCjIuMjEuMAoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
+cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
