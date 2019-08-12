@@ -1,30 +1,32 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v5 1/4] dt-bindings: display: mediatek: update dpi
-  supported chips
-Date: Mon, 12 Aug 2019 15:51:03 -0600
-Message-ID: <20190812215103.GB5954@bogus>
-References: <20190807060257.57007-1-jitao.shi@mediatek.com>
- <20190807060257.57007-2-jitao.shi@mediatek.com>
+Subject: Re: [PATCH wn 3/4] dt-bindings: display: panel: add auo
+ kd101n80-45na panel bindings
+Date: Mon, 12 Aug 2019 16:15:12 -0600
+Message-ID: <20190812221512.GA24378@bogus>
+References: <20190811091001.49555-1-jitao.shi@mediatek.com>
+ <20190811091001.49555-4-jitao.shi@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20190807060257.57007-2-jitao.shi@mediatek.com>
+In-Reply-To: <20190811091001.49555-4-jitao.shi@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jitao Shi <jitao.shi@mediatek.com>
-Cc: Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
+Cc: Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Jitao Shi <jitao.shi@mediatek.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.i
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Aug 07, 2019 at 02:02:54PM +0800, Jitao Shi wrote:
-> Add decriptions about supported chips, including MT2701 & MT8173 &
-> mt8183
+On Sun, 11 Aug 2019 17:10:00 +0800, Jitao Shi wrote:
+> Add documentation for auo kd101n80-45na panel.
 > 
 > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> Reviewed-by: Sam Ravnborg <sam@ravnborg.org>
 > ---
->  .../bindings/display/mediatek/mediatek,dpi.txt        | 11 +++++++++++
->  1 file changed, 11 insertions(+)
+>  .../display/panel/auo,kd101n80-45na.txt       | 34 +++++++++++++++++++
+>  1 file changed, 34 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/panel/auo,kd101n80-45na.txt
+> 
 
-And run a current get_maintainers.pl. Your DT maintainer list is out of 
-date by years.
+Please add Acked-by/Reviewed-by tags when posting new versions. However,
+there's no need to repost patches *only* to add the tags. The upstream
+maintainer will do that for acks received on the version they apply.
 
-Rob
+If a tag was not added on purpose, please state why and what changed.
