@@ -1,32 +1,75 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH wn 3/4] dt-bindings: display: panel: add auo
- kd101n80-45na panel bindings
-Date: Mon, 12 Aug 2019 16:15:12 -0600
-Message-ID: <20190812221512.GA24378@bogus>
-References: <20190811091001.49555-1-jitao.shi@mediatek.com>
- <20190811091001.49555-4-jitao.shi@mediatek.com>
+Subject: Re: [PATCH 1/5] media: dt-bindings: Add JPEG ENC device tree node
+ document
+Date: Mon, 12 Aug 2019 16:59:52 -0600
+Message-ID: <20190812225952.GA31298@bogus>
+References: <20190717093034.22826-1-xia.jiang@mediatek.com>
+ <20190717093034.22826-2-xia.jiang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20190811091001.49555-4-jitao.shi@mediatek.com>
+In-Reply-To: <20190717093034.22826-2-xia.jiang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Jitao Shi <jitao.shi@mediatek.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.i
+To: Xia Jiang <xia.jiang@mediatek.com>
+Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Matthias Brugger <matthias.bgg@gmail.com>, Rick Chang <rick.chang@mediatek.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Marek Szyprowski <m.szyprowski@samsung.com>, Tomasz Figa <tfiga@chromium.org>, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, 11 Aug 2019 17:10:00 +0800, Jitao Shi wrote:
-> Add documentation for auo kd101n80-45na panel.
+On Wed, Jul 17, 2019 at 05:30:30PM +0800, Xia Jiang wrote:
+> add JPEG ENC device tree node document
 > 
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> Reviewed-by: Sam Ravnborg <sam@ravnborg.org>
+> Change-Id: I9f0a8aec7eced20c88acbc88d6ff179763f91246
+
+Run checkpatch.pl. (Remove this)
+
+> Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
 > ---
->  .../display/panel/auo,kd101n80-45na.txt       | 34 +++++++++++++++++++
->  1 file changed, 34 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/panel/auo,kd101n80-45na.txt
+>  .../bindings/media/mediatek-jpeg-encoder.txt  | 33 +++++++++++++++++++
+>  1 file changed, 33 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.txt
 > 
+> diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.txt b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.txt
+> new file mode 100644
+> index 000000000000..1231fedb70bc
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.txt
+> @@ -0,0 +1,33 @@
+> +* MediaTek JPEG Encoder
+> +
+> +MediaTek JPEG Encoder is the JPEG encode hardware present in MediaTek SoCs
+> +
+> +Required properties:
+> +- compatible : must be "mediatek,mtk-jpgenc"
 
-Please add Acked-by/Reviewed-by tags when posting new versions. However,
-there's no need to repost patches *only* to add the tags. The upstream
-maintainer will do that for acks received on the version they apply.
+Needs an SoC specific compatible.
 
-If a tag was not added on purpose, please state why and what changed.
+> +- reg : physical base address of the JPEG encoder registers and length of
+> +  memory mapped region.
+> +- interrupts : interrupt number to the interrupt controller.
+> +- clocks: device clocks, see
+> +  Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
+> +- clock-names: must contain "jpgenc". It is the clock of JPEG encoder.
+> +- power-domains: a phandle to the power domain, see
+> +  Documentation/devicetree/bindings/power/power_domain.txt for details.
+> +- mediatek,larb: must contain the local arbiters in the current SoCs, see
+> +  Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
+> +  for details.
+> +- iommus: should point to the respective IOMMU block with master port as
+> +  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+> +  for details.
+> +
+> +Example:
+> +	jpegenc: jpegenc@1500a000 {
+> +		compatible = "mediatek,mtk-jpgenc";
+> +		reg = <0 0x1500a000 0 0x1000>;
+> +		interrupts = <GIC_SPI 141 IRQ_TYPE_LEVEL_LOW>;
+> +		clocks =  <&imgsys CLK_IMG_VENC>;
+> +		clock-names = "jpgenc";
+> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_ISP>;
+> +		mediatek,larb = <&larb2>;
+> +		iommus = <&iommu MT2701_M4U_PORT_JPGENC_RDMA>,
+> +			<&iommu MT2701_M4U_PORT_JPGENC_BSDMA>;
+> +	};
+> -- 
+> 2.18.0
+> 
