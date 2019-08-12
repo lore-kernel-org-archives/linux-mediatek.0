@@ -1,46 +1,30 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: Re: [PATCH v3 01/10] dt-bindings: add powercontroller
-Date: Mon, 12 Aug 2019 12:25:07 +0100
-Message-ID: <20190812112507.GR26727@dell>
+From: "Frank Wunderlich" <frank-w@public-files.de>
+Subject: Aw: Re: [PATCH v3 06/10] mfd: mt6323: some improvements of
+ mt6397-core
+Date: Mon, 12 Aug 2019 13:25:16 +0200
+Message-ID: <trinity-0fa641df-f7bb-4627-a9ab-aac3cabc90ba-1565609115974@3c-app-gmx-bs80>
 References: <20190729174154.4335-1-frank-w@public-files.de>
- <20190729174154.4335-2-frank-w@public-files.de>
- <20190812102035.GH26727@dell>
- <trinity-a6c06411-16d3-40ab-a4fb-3494131c8ed6-1565608221532@3c-app-gmx-bs80>
+ <20190729174154.4335-7-frank-w@public-files.de>
+ <20190812102209.GI26727@dell>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <trinity-a6c06411-16d3-40ab-a4fb-3494131c8ed6-1565608221532@3c-app-gmx-bs80>
+In-Reply-To: <20190812102209.GI26727@dell>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Allison Randal <allison@lohutok.net>, "David S. Miller" <davem@davemloft.net>, devicetree@vger.kernel.org, Eddie Huang <eddie.huang@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jonathan Cameron <Jonathan.Cameron@huawei.com>, Kate Stewart <kstewart@linuxfoundation.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-rtc@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, Richard Fontana <rfontana@redhat.com>, Rob Herring <robh+dt@k>
+To: Lee Jones <lee.jones@linaro.org>
+Cc: Kate Stewart <kstewart@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, linux-kernel@vger.kernel.org, Richard Fontana <rfontana@redhat.com>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, linux-rtc@vger.kernel.org, Allison Randal <allison@lohutok.net>, Nicolas Ferre <nicolas.ferre@microchip.com>, devicetree@vger.kernel.org, linux-pm@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, "Tianping . Fang" <tianping.fang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Jonathan Cameron <Jonathan.Cameron@huawei.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, Eddie Huang <eddie.huang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 12 Aug 2019, Frank Wunderlich wrote:
+> Gesendet: Montag, 12. August 2019 um 12:22 Uhr
+> Von: "Lee Jones" <lee.jones@linaro.org>
 
-> > Gesendet: Montag, 12. August 2019 um 12:20 Uhr
-> > Von: "Lee Jones" <lee.jones@linaro.org>
-> 
-> > > --- a/Documentation/devicetree/bindings/mfd/mt6397.txt
-> ...
-> > > +	For details, see Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
-> >
-> > Please use relative paths.
-> >
-> > E.g: ../bindings/rtc/rtc-mt6397.txt
-> 
-> Hi,
-> 
-> as we are in Documentation/devicetree/bindings/mfd/ it should be
-> ../../bindings/..., right? or ../rtc/rtc-mt6397.txt ?
+> > - * Copyright (c) 2014 MediaTek Inc.
+> > + * Copyright (c) 2014-2018 MediaTek Inc.
+>
+> This is out of date.  Please update it.
 
-It was an example (hence the "E.g.").
+maybe i should drop change of this line completely (else it needs to be ad=
+justed every year)
 
-You will need to adapt it depending on where the file ends up.
-
--- 
-Lee Jones [李琼斯]
-Linaro Services Technical Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
+regards Frank
