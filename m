@@ -1,37 +1,35 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH v4 03/10] mfd: mt6397: modify suspend/resume behavior
-Date: Mon, 12 Aug 2019 12:00:10 +0100
-Message-ID: <20190812110010.GQ26727@dell>
-References: <1564982518-32163-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1564982518-32163-4-git-send-email-hsin-hsiung.wang@mediatek.com>
+From: "Frank Wunderlich" <frank-w@public-files.de>
+Subject: Aw: Re: [PATCH v3 01/10] dt-bindings: add powercontroller
+Date: Mon, 12 Aug 2019 13:10:21 +0200
+Message-ID: <trinity-a6c06411-16d3-40ab-a4fb-3494131c8ed6-1565608221532@3c-app-gmx-bs80>
+References: <20190729174154.4335-1-frank-w@public-files.de>
+ <20190729174154.4335-2-frank-w@public-files.de>
+ <20190812102035.GH26727@dell>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1564982518-32163-4-git-send-email-hsin-hsiung.wang@mediatek.com>
+In-Reply-To: <20190812102035.GH26727@dell>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Liam Girdwood <lgirdwood@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Thomas Gleixner <tglx@linutronix.de>, Richard Fontana <rfontana@redhat.com>, Kate Stewart <kstewart@linuxfoundation.org>, Allison Randal <allison@lohutok.net>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rtc@vger.kernel.org, srv_heupstream@mediatek.com
+To: Lee Jones <lee.jones@linaro.org>
+Cc: Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Allison Randal <allison@lohutok.net>, "David S. Miller" <davem@davemloft.net>, devicetree@vger.kernel.org, Eddie Huang <eddie.huang@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jonathan Cameron <Jonathan.Cameron@huawei.com>, Kate Stewart <kstewart@linuxfoundation.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-rtc@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, Richard Fontana <rfontana@redhat.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 05 Aug 2019, Hsin-Hsiung Wang wrote:
+> Gesendet: Montag, 12. August 2019 um 12:20 Uhr
+> Von: "Lee Jones" <lee.jones@linaro.org>
 
-> Some pmics don't need backup interrupt settings, so we change to use
-> pm notifier for the pmics which are necessary to store settings.
-> 
-> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> ---
->  drivers/mfd/mt6397-core.c       | 89 +++++++++++++++++------------------------
->  drivers/mfd/mt6397-irq.c        | 33 +++++++++++++++
->  include/linux/mfd/mt6397/core.h |  3 ++
->  3 files changed, 73 insertions(+), 52 deletions(-)
+> > --- a/Documentation/devicetree/bindings/mfd/mt6397.txt
+...
+> > +	For details, see Documentation/devicetree/bindings/rtc/rtc-mt6397.tx=
+t
+>
+> Please use relative paths.
+>
+> E.g: ../bindings/rtc/rtc-mt6397.txt
 
-For my own reference:
-  Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
+Hi,
 
--- 
-Lee Jones [李琼斯]
-Linaro Services Technical Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
+as we are in Documentation/devicetree/bindings/mfd/ it should be ../../bin=
+dings/..., right? or ../rtc/rtc-mt6397.txt ?
+
+regards Frank
