@@ -1,48 +1,52 @@
-From: Alexandre Belloni <alexandre.belloni@bootlin.com>
-Subject: Re: [PATCH v5 03/10] rtc: mt6397: move some common definitions into
- rtc.h
-Date: Mon, 12 Aug 2019 17:38:56 +0200
-Message-ID: <20190812153856.GR3600@piout.net>
-References: <20190812121511.4169-1-frank-w@public-files.de>
- <20190812121511.4169-4-frank-w@public-files.de>
- <20190812151128.GV26727@dell>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v5 1/4] dt-bindings: display: mediatek: update dpi
+  supported chips
+Date: Mon, 12 Aug 2019 15:49:33 -0600
+Message-ID: <20190812214933.GA5954@bogus>
+References: <20190807060257.57007-1-jitao.shi@mediatek.com>
+ <20190807060257.57007-2-jitao.shi@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20190812151128.GV26727@dell>
+In-Reply-To: <20190807060257.57007-2-jitao.shi@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Lee Jones <lee.jones@linaro.org>
-Cc: Frank Wunderlich <frank-w@public-files.de>, Alessandro Zummo <a.zummo@towertech.it>, Allison Randal <allison@lohutok.net>, "David S. Miller" <davem@davemloft.net>, devicetree@vger.kernel.org, Eddie Huang <eddie.huang@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jonathan Cameron <Jonathan.Cameron@huawei.com>, Kate Stewart <kstewart@linuxfoundation.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-rtc@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, Richard Fontana <rfontana@redhat.com>, Rob Herring <robh+dt@kernel.o>
+To: Jitao Shi <jitao.shi@mediatek.com>
+Cc: Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-pwm@vger.kernel.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On 12/08/2019 16:11:29+0100, Lee Jones wrote:
-> On Mon, 12 Aug 2019, Frank Wunderlich wrote:
+On Wed, Aug 07, 2019 at 02:02:54PM +0800, Jitao Shi wrote:
+> Add decriptions about supported chips, including MT2701 & MT8173 &
+> mt8183
 > 
-> > From: Josef Friedl <josef.friedl@speed.at>
-> > 
-> > move code to separate header-file to reuse definitions later
-> > in poweroff-driver (drivers/power/reset/mt6323-poweroff.c)
-> > 
-> > Suggested-by: Frank Wunderlich <frank-w@public-files.de>
-> > Signed-off-by: Josef Friedl <josef.friedl@speed.at>
-> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> > ---
-> > changes since v4: none
-> > changes since v3: none
-> > changes since v2: add missing commit-message
-> > ---
-> >  drivers/rtc/rtc-mt6397.c       | 55 +-------------------------
-> >  include/linux/mfd/mt6397/rtc.h | 71 ++++++++++++++++++++++++++++++++++
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> ---
+>  .../bindings/display/mediatek/mediatek,dpi.txt        | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
 > 
-> include/linux/rtc/mt6397.h?
-> 
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
+> index b6a7e7397b8b..cd6a1469c8b7 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
+> @@ -7,6 +7,7 @@ output bus.
+>  
+>  Required properties:
+>  - compatible: "mediatek,<chip>-dpi"
+> +  the supported chips are mt2701 , mt8173 and mt8183.
+>  - reg: Physical base address and length of the controller's registers
+>  - interrupts: The interrupt signal from the function block.
+>  - clocks: device clocks
+> @@ -16,6 +17,11 @@ Required properties:
+>    Documentation/devicetree/bindings/graph.txt. This port should be connected
+>    to the input port of an attached HDMI or LVDS encoder chip.
+>  
+> +Optional properties:
+> +- dpi_pin_mode_swap: Swap the pin mode between dpi mode and gpio mode.
+> +- pinctrl-names: Contain "gpiomode" and "dpimode".
+> +- dpi_dual_edge: Control the RGB 24bit data on 12 pins or 24 pins.
 
-It's just a bunch of registers and bit definitions so it may as well
-stay close to include/linux/mfd/mt6397/registers.h
+Nothing about this in the commit msg...
 
+The dpi* properties need vendor prefixes and use '-' rather than '_'.
 
--- 
-Alexandre Belloni, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+Rob
