@@ -1,44 +1,70 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: Re: Re: [PATCH v3 01/10] dt-bindings: add powercontroller
-Date: Mon, 12 Aug 2019 12:51:48 +0100
-Message-ID: <20190812115148.GT26727@dell>
-References: <20190729174154.4335-1-frank-w@public-files.de>
- <20190729174154.4335-2-frank-w@public-files.de>
- <20190812102035.GH26727@dell>
- <trinity-a6c06411-16d3-40ab-a4fb-3494131c8ed6-1565608221532@3c-app-gmx-bs80>
- <20190812112507.GR26727@dell>
- <trinity-738d59ed-ecac-4025-a729-0888eaea1f95-1565609875829@3c-app-gmx-bs80>
+From: Frank Wunderlich <frank-w@public-files.de>
+Subject: [PATCH v5 00/10] implement poweroff for mt6323 / bpi-r2
+Date: Mon, 12 Aug 2019 14:15:01 +0200
+Message-ID: <20190812121511.4169-1-frank-w@public-files.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <trinity-738d59ed-ecac-4025-a729-0888eaea1f95-1565609875829@3c-app-gmx-bs80>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Allison Randal <allison@lohutok.net>, "David S. Miller" <davem@davemloft.net>, devicetree@vger.kernel.org, Eddie Huang <eddie.huang@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jonathan Cameron <Jonathan.Cameron@huawei.com>, Kate Stewart <kstewart@linuxfoundation.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-rtc@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, Richard Fontana <rfontana@redhat.com>, Rob Herring <robh+dt@k>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Allison Randal <allison@lohutok.net>, "David S. Miller" <davem@davemloft.net>, devicetree@vger.kernel.org, Eddie Huang <eddie.huang@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jonathan Cameron <Jonathan.Cameron@huawei.com>, Kate Stewart <kstewart@linuxfoundation.org>, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-rtc@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, Richard Fontana <rfontana@redhat.com>, Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, Sebastian Reichel <sre>
+Cc: Frank Wunderlich <frank-w@public-files.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 12 Aug 2019, Frank Wunderlich wrote:
-
-> > Gesendet: Montag, 12. August 2019 um 13:25 Uhr
-> > Von: "Lee Jones" <lee.jones@linaro.org>
-> > It was an example (hence the "E.g.").
-> >
-> > You will need to adapt it depending on where the file ends up.
-> 
-> i saw the e.g., but i wanted to know relative to which directory ;) your example mentions that it should contain the dt-bindings-folder and i think it should be relative to current file...
-> 
-> have applied your suggestions to my tree
-> 
-> https://github.com/frank-w/BPI-R2-4.14/commits/5.3-poweroff
-> 
-> please take a short look if i don't miss anything
-
-Just resubmit them.  Doing off-list reviews is a slippery slope.
-
--- 
-Lee Jones [李琼斯]
-Linaro Services Technical Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
+bWFpbmxpbmUtZHJpdmVyIGRvZXMgbm90IHN1cHBvcnQgbXQ2MzIzCgp0aGlzIHNlcmllcyBtYWtl
+cyBzb21lIGNsZWFudXAgdG8gbXQ2Mzk3LXJ0Yy1kcml2ZXIsIGFkZHMgbXQ2MzIzIGFuZAppbXBs
+ZW1lbnQgcG93ZXItY29udHJvbGxlciBvbiBpdC4KCnRlc3RlZCBvbiBiYW5hbmFwaS1yMgoKT3Jp
+Z2luYWwgUGF0Y2ggZnJvbSBKb3NlZiBGcmllZGwKCmNoYW5nZXMgc2luY2UgdjQ6CgktIHJlbGF0
+aXZlIHBhdGggaW4gcGFydCAxKzIKCS0gZHJvcCBjaGFuZ2Ugb2YgY29weXJpZ2h0LXllYXIgaW4g
+cGFydCA1CmNoYW5nZXMgc2luY2UgdjM6CgktIG1vdmVkIFNPQiBpbiAyLzEwIGFuZCA5LzEwCgkt
+IG1vdmVkIHBhcnQgNSB0byA2IHRvIGJlIG5lYXIgZHJpdmVyLWNoYW5nZQoJLSBjaGFuZ2VoaXN0
+b3J5IG9mIHBhdGNoZXMgYmVsb3cgLS0tCgpjaGFuZ2VzIHNpbmNlIHYyOgoJLSBTcGxpdHRlZCBz
+b21lIHBhcnRzIGFuZCByZWJhc2VkIG9uIDUuMy1yYzI6CgoJdjIuMSBkdC1iaW5kaW5nczogYWRk
+IHBvd2VyY29udHJvbGxlciDigJMgdHJ5IHRvIG1ha2UgYmV0dGVyIHN1YmplY3QKCXYyLjIgc2Vw
+YXJhdGUgcnRjLW10NjM5Ny50eHQgKHN1Z2dlc3RlZCBieSBBbGV4YW5kcmUgQmVsbG9uaSkKCSAg
+ICAgYWRkIG1pc3NpbmcgY29tbWl0LW1lc3NhZ2UgKHN1Z2dlc3RlZCBieSBNYXR0aGlhcyBCcnVn
+Z2VyKQoJdjIuMyBmaXggYWxsb2MgYWZ0ZXIgSVJRIChzdWdnZXN0ZWQgYnkgQWxleGFuZHJlIEJl
+bGxvbmkpCgkgICAgIG5ldyBjb21wYXRpYmxlIChzcGxpdHRpbmcgc3VnZ2VzdGVkIGJ5IEFsZXhh
+bmRyZSBCZWxsb25pKQoJICAgICBuZWVkZWQgZHVlIHRvIGRpZmZlcmVudCBydGMtYmFzZS9zaXpl
+IHNlZSAjNwoJdjIuNCBzaW1wbGlmaWNhdGlvbnMgKERlZmluZS1yZXMtbWFjcm9zKQoJICAgICBh
+ZGQgbXQ2MzIzIHJ0Yytwd3JjCgl2Mi41IGFkZCBwb3dlcm9mZi1kcml2ZXIgKG5vIGNoYW5nZSkK
+CXYyLjYgTUFJTlRBSU5FUlMgKG5vIGNoYW5nZSkKCXYyLjcgRFRTLUNoYW5nZXMgKG5vIGNoYW5n
+ZSkKCgpKb3NlZiBGcmllZGwgKDEwKToKICBkdC1iaW5kaW5nczogYWRkIHBvd2VyY29udHJvbGxl
+cgogIGR0LWJpbmRpbmdzOiBhZGQgbWlzc2luZyBtdDYzOTcgcnRjCiAgcnRjOiBtdDYzOTc6IG1v
+dmUgc29tZSBjb21tb24gZGVmaW5pdGlvbnMgaW50byBydGMuaAogIHJ0YzogbXQ2Mzk3OiBpbXBy
+b3ZlbWVudHMgb2YgcnRjIGRyaXZlcgogIG1mZDogbXQ2MzIzOiBzb21lIGltcHJvdmVtZW50cyBv
+ZiBtdDYzOTctY29yZQogIHJ0YzogbXQ2Mzk3OiBhZGQgY29tcGF0aWJsZSBmb3IgbXQ2MzIzCiAg
+bWZkOiBtdDYzMjM6IGFkZCBtdDYzMjMgcnRjK3B3cmMKICBwb3dlcjogcmVzZXQ6IGFkZCBkcml2
+ZXIgZm9yIG10NjMyMyBwb3dlcm9mZgogIE1BSU5UQUlORVJTOiBhZGQgTWVkaWF0ZWsgc2h1dGRv
+d24gZHJpdmVycwogIGFybTogZHRzOiBtdDYzMjM6IGFkZCBrZXlzLCBwb3dlci1jb250cm9sbGVy
+LCBydGMgYW5kIGNvZGVjCgogLi4uL2RldmljZXRyZWUvYmluZGluZ3MvbWZkL210NjM5Ny50eHQg
+ICAgICAgIHwgIDIwICsrKy0KIC4uLi9iaW5kaW5ncy9wb3dlci9yZXNldC9tdDYzMjMtcG93ZXJv
+ZmYudHh0ICB8ICAyMCArKysrCiAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9ydGMvcnRjLW10NjM5
+Ny50eHQgICAgfCAgMjkgKysrKysKIE1BSU5UQUlORVJTICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICB8ICAgNyArKwogYXJjaC9hcm0vYm9vdC9kdHMvbXQ2MzIzLmR0c2kgICAgICAg
+ICAgICAgICAgIHwgIDI3ICsrKysrCiBkcml2ZXJzL21mZC9tdDYzOTctY29yZS5jICAgICAgICAg
+ICAgICAgICAgICAgfCAgMzggKysrKystLQogZHJpdmVycy9wb3dlci9yZXNldC9LY29uZmlnICAg
+ICAgICAgICAgICAgICAgIHwgIDEwICsrCiBkcml2ZXJzL3Bvd2VyL3Jlc2V0L01ha2VmaWxlICAg
+ICAgICAgICAgICAgICAgfCAgIDEgKwogZHJpdmVycy9wb3dlci9yZXNldC9tdDYzMjMtcG93ZXJv
+ZmYuYyAgICAgICAgIHwgIDk3ICsrKysrKysrKysrKysrKysKIGRyaXZlcnMvcnRjL3J0Yy1tdDYz
+OTcuYyAgICAgICAgICAgICAgICAgICAgICB8IDEwNyArKysrLS0tLS0tLS0tLS0tLS0KIGluY2x1
+ZGUvbGludXgvbWZkL210NjM5Ny9jb3JlLmggICAgICAgICAgICAgICB8ICAgMiArCiBpbmNsdWRl
+L2xpbnV4L21mZC9tdDYzOTcvcnRjLmggICAgICAgICAgICAgICAgfCAgNzEgKysrKysrKysrKysr
+CiAxMiBmaWxlcyBjaGFuZ2VkLCAzMjcgaW5zZXJ0aW9ucygrKSwgMTAyIGRlbGV0aW9ucygtKQog
+Y3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9wb3dl
+ci9yZXNldC9tdDYzMjMtcG93ZXJvZmYudHh0CiBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRh
+dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3J0Yy9ydGMtbXQ2Mzk3LnR4dAogY3JlYXRlIG1vZGUg
+MTAwNjQ0IGRyaXZlcnMvcG93ZXIvcmVzZXQvbXQ2MzIzLXBvd2Vyb2ZmLmMKIGNyZWF0ZSBtb2Rl
+IDEwMDY0NCBpbmNsdWRlL2xpbnV4L21mZC9tdDYzOTcvcnRjLmgKCi0tIAoyLjE3LjEKCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2Vy
+bmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVs
+Cg==
