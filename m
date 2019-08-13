@@ -1,75 +1,54 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/5] media: dt-bindings: Add JPEG ENC device tree node
- document
-Date: Mon, 12 Aug 2019 16:59:52 -0600
-Message-ID: <20190812225952.GA31298@bogus>
-References: <20190717093034.22826-1-xia.jiang@mediatek.com>
- <20190717093034.22826-2-xia.jiang@mediatek.com>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: Re: [PATCH v5 03/10] rtc: mt6397: move some common definitions into
+ rtc.h
+Date: Tue, 13 Aug 2019 08:20:18 +0100
+Message-ID: <20190813072018.GZ26727@dell>
+References: <20190812121511.4169-1-frank-w@public-files.de>
+ <20190812121511.4169-4-frank-w@public-files.de>
+ <20190812151128.GV26727@dell>
+ <20190812153856.GR3600@piout.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20190717093034.22826-2-xia.jiang@mediatek.com>
+In-Reply-To: <20190812153856.GR3600@piout.net>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Xia Jiang <xia.jiang@mediatek.com>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Matthias Brugger <matthias.bgg@gmail.com>, Rick Chang <rick.chang@mediatek.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Marek Szyprowski <m.szyprowski@samsung.com>, Tomasz Figa <tfiga@chromium.org>, srv_heupstream@mediatek.com
+To: Alexandre Belloni <alexandre.belloni@bootlin.com>
+Cc: Frank Wunderlich <frank-w@public-files.de>, Alessandro Zummo <a.zummo@towertech.it>, Allison Randal <allison@lohutok.net>, "David S. Miller" <davem@davemloft.net>, devicetree@vger.kernel.org, Eddie Huang <eddie.huang@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jonathan Cameron <Jonathan.Cameron@huawei.com>, Kate Stewart <kstewart@linuxfoundation.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-rtc@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, Richard Fontana <rfontana@redhat.com>, Rob Herring <robh+dt@kernel.o>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jul 17, 2019 at 05:30:30PM +0800, Xia Jiang wrote:
-> add JPEG ENC device tree node document
+On Mon, 12 Aug 2019, Alexandre Belloni wrote:
+
+> On 12/08/2019 16:11:29+0100, Lee Jones wrote:
+> > On Mon, 12 Aug 2019, Frank Wunderlich wrote:
+> > 
+> > > From: Josef Friedl <josef.friedl@speed.at>
+> > > 
+> > > move code to separate header-file to reuse definitions later
+> > > in poweroff-driver (drivers/power/reset/mt6323-poweroff.c)
+> > > 
+> > > Suggested-by: Frank Wunderlich <frank-w@public-files.de>
+> > > Signed-off-by: Josef Friedl <josef.friedl@speed.at>
+> > > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> > > ---
+> > > changes since v4: none
+> > > changes since v3: none
+> > > changes since v2: add missing commit-message
+> > > ---
+> > >  drivers/rtc/rtc-mt6397.c       | 55 +-------------------------
+> > >  include/linux/mfd/mt6397/rtc.h | 71 ++++++++++++++++++++++++++++++++++
+> > 
+> > include/linux/rtc/mt6397.h?
+> > 
 > 
-> Change-Id: I9f0a8aec7eced20c88acbc88d6ff179763f91246
+> It's just a bunch of registers and bit definitions so it may as well
+> stay close to include/linux/mfd/mt6397/registers.h
 
-Run checkpatch.pl. (Remove this)
+Sure.  It was a weak preference.
 
-> Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
-> ---
->  .../bindings/media/mediatek-jpeg-encoder.txt  | 33 +++++++++++++++++++
->  1 file changed, 33 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.txt b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.txt
-> new file mode 100644
-> index 000000000000..1231fedb70bc
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.txt
-> @@ -0,0 +1,33 @@
-> +* MediaTek JPEG Encoder
-> +
-> +MediaTek JPEG Encoder is the JPEG encode hardware present in MediaTek SoCs
-> +
-> +Required properties:
-> +- compatible : must be "mediatek,mtk-jpgenc"
-
-Needs an SoC specific compatible.
-
-> +- reg : physical base address of the JPEG encoder registers and length of
-> +  memory mapped region.
-> +- interrupts : interrupt number to the interrupt controller.
-> +- clocks: device clocks, see
-> +  Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
-> +- clock-names: must contain "jpgenc". It is the clock of JPEG encoder.
-> +- power-domains: a phandle to the power domain, see
-> +  Documentation/devicetree/bindings/power/power_domain.txt for details.
-> +- mediatek,larb: must contain the local arbiters in the current SoCs, see
-> +  Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
-> +  for details.
-> +- iommus: should point to the respective IOMMU block with master port as
-> +  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
-> +  for details.
-> +
-> +Example:
-> +	jpegenc: jpegenc@1500a000 {
-> +		compatible = "mediatek,mtk-jpgenc";
-> +		reg = <0 0x1500a000 0 0x1000>;
-> +		interrupts = <GIC_SPI 141 IRQ_TYPE_LEVEL_LOW>;
-> +		clocks =  <&imgsys CLK_IMG_VENC>;
-> +		clock-names = "jpgenc";
-> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_ISP>;
-> +		mediatek,larb = <&larb2>;
-> +		iommus = <&iommu MT2701_M4U_PORT_JPGENC_RDMA>,
-> +			<&iommu MT2701_M4U_PORT_JPGENC_BSDMA>;
-> +	};
-> -- 
-> 2.18.0
-> 
+-- 
+Lee Jones [李琼斯]
+Linaro Services Technical Lead
+Linaro.org │ Open source software for ARM SoCs
+Follow Linaro: Facebook | Twitter | Blog
