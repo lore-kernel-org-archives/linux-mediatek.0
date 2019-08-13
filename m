@@ -1,32 +1,44 @@
-From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-Subject: Re: [PATCH next v9 07/11] usb: roles: Add
- fwnode_usb_role_switch_get() function
-Date: Tue, 13 Aug 2019 16:01:10 +0300
-Message-ID: <20190813130110.GE4691@kuha.fi.intel.com>
-References: <1565695634-9711-1-git-send-email-chunfeng.yun@mediatek.com>
- <1565695634-9711-8-git-send-email-chunfeng.yun@mediatek.com>
+From: Christoph Hellwig <hch@infradead.org>
+Subject: Re: [PATCH v4 0/5] iommu/amd: Convert the AMD iommu driver to the
+ dma-iommu api
+Date: Tue, 13 Aug 2019 06:07:11 -0700
+Message-ID: <20190813130711.GA30468@infradead.org>
+References: <20190613223901.9523-1-murphyt7@tcd.ie>
+ <20190624061945.GA4912@infradead.org>
+ <20190810071952.GA25550@infradead.org>
+ <CALQxJuvxBc3MH3_B_fZ3FvURHOM3F3dvvZ6x=GtALUAvyu7Qxw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <1565695634-9711-8-git-send-email-chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Biju Das <biju.das@bp.renesas.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Linus Walleij <linus.walleij@linaro.org>, Nagarjuna Kristam <nkristam@nvidia.com>
+In-Reply-To: <CALQxJuvxBc3MH3_B_fZ3FvURHOM3F3dvvZ6x=GtALUAvyu7Qxw@mail.gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Tom Murphy <murphyt7@tcd.ie>
+Cc: Heiko Stuebner <heiko@sntech.de>, Will Deacon <will.deacon@arm.com>, virtualization@lists.linux-foundation.org, David Brown <david.brown@linaro.org>, Thierry Reding <thierry.reding@gmail.com>, linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org, Jean-Philippe Brucker <jean-philippe.brucker@arm.com>, Joerg Roedel <joro@8bytes.org>, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, Christoph Hellwig <hch@infradead.org>, linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Robin Murphy <robin.murphy@arm.com>, linux-kernel@vger.kernel.org, iommu@lists.linux-foundation.org, Kukjin Kim <kgene@kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Aug 13, 2019 at 07:27:10PM +0800, Chunfeng Yun wrote:
-> From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+On Tue, Aug 13, 2019 at 08:09:26PM +0800, Tom Murphy wrote:
+> Hi Christoph,
 > 
-> The fwnode_usb_role_switch_get() function is exactly the
-> same as usb_role_switch_get(), except that it takes struct
-> fwnode_handle as parameter instead of struct device.
+> I quit my job and am having a great time traveling South East Asia.
+
+Enjoy!  I just returned from my vacation.
+
+> I definitely don't want this work to go to waste and I hope to repost it
+> later this week but I can't guarantee it.
 > 
-> Suggested-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+> Let me know if you need this urgently.
 
-Why is my SoB replaced with Suggested-by tag in this patch?
-
-thanks,
-
--- 
-heikki
+It isn't in any strict sense urgent.  I just have various DMA API plans
+that I'd rather just implement in dma-direct and dma-iommu rather than
+also in two additional commonly used iommu drivers.  So on the one had
+the sooner the better, on the other hand no real urgency.
