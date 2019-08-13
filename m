@@ -1,147 +1,163 @@
-From: Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH v5 01/10] dt-bindings: add powercontroller
-Date: Tue, 13 Aug 2019 09:25:47 -0600
-Message-ID: <CAL_Jsq+fW=x8MoL3GMj6+ZKC3fd6F6+8Rtx=j5R9vEuL9UHCuQ@mail.gmail.com>
-References: <20190812121511.4169-1-frank-w@public-files.de>
- <20190812121511.4169-2-frank-w@public-files.de>
+From: Sean Wang <sean.wang@kernel.org>
+Subject: Re: [PATCH v1 1/5] pinctrl: mediatek: Check gpio pin number and use
+ binary search in mtk_hw_pin_field_lookup()
+Date: Tue, 13 Aug 2019 15:54:26 -0700
+Message-ID: <CAGp9Lzq7SnZBO4QEkycszZ29D7FVn_WUvi3uGX5s8Wzqn2a3CQ@mail.gmail.com>
+References: <1565686400-5711-1-git-send-email-light.hsieh@mediatek.com> <1565686400-5711-2-git-send-email-light.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190812121511.4169-2-frank-w@public-files.de>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Kate Stewart <kstewart@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Richard Fontana <rfontana@redhat.com>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Lee Jones <lee.jones@linaro.org>, "open list:REAL TIME CLOCK (RTC) SUBSYSTEM" <linux-rtc@vger.kernel.org>, Allison Randal <allison@lohutok.net>, devicetree@vger.kernel.org, "open list:THERMAL" <linux-pm@vger.kernel.org>, Sean Wang <sean.wang@mediatek.com>, "Tianping . Fang" <tianping.fang@mediatek.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Jonathan Cameron <Jonathan.Cameron@huawei.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, Eddie Huang <eddie.huang@mediatek.com>, moderated list:ARM/FREESCALE IMX / M
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1565686400-5711-2-git-send-email-light.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Light Hsieh <light.hsieh@mediatek.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, lkml <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Aug 12, 2019 at 6:24 AM Frank Wunderlich
-<frank-w@public-files.de> wrote:
+On Tue, Aug 13, 2019 at 1:53 AM Light Hsieh <light.hsieh@mediatek.com> wrote:
 >
-> From: Josef Friedl <josef.friedl@speed.at>
+> From: Light Hsieh <light.hsieh@mediatek.com>
 >
-> add mt6323-rtc and mt6323-pwrc to mt6397 mfd DT bindings
-> an example is shown in mt6323-poweroff.txt
-
-How does this get to v5 with such a terrible subject? At least give
-some indication this is for some Mediatek chip.
-
-The recipient list needs some work too. Don't Cc git committers that
-get_maintainers.pl lists.
-
+> 1. Check if gpio pin number is in valid range to prevent from get invalid
+>    pointer 'desc' in the following code:
+>         desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
 >
-> Suggested-by: Frank Wunderlich <frank-w@public-files.de>
-> Signed-off-by: Josef Friedl <josef.friedl@speed.at>
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
+> 2. Use binary search in mtk_hw_pin_field_lookup()
+>    Modify mtk_hw_pin_field_lookup() to use binary search for accelerating
+>    search.
+>
+> Change-Id: I22b4644ec216b90dd9dd5e223cc41d43761701b0
+
+remove all of Change-Id in all the patches in the series
+
 > ---
-> changes since v4: use relative path
-> changes since v3: none
-> changes since v2: separated rtc-mt6397.txt to part 2
-> ---
->  .../devicetree/bindings/mfd/mt6397.txt        | 20 +++++++++++++------
->  .../bindings/power/reset/mt6323-poweroff.txt  | 20 +++++++++++++++++++
->  2 files changed, 34 insertions(+), 6 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt
+>  drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 24 +++++++++++++++++++-----
+>  drivers/pinctrl/mediatek/pinctrl-paris.c         | 19 +++++++++++++++++++
+>  2 files changed, 38 insertions(+), 5 deletions(-)
 >
-> diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
-> index 0ebd08af777d..063f5fe1cace 100644
-> --- a/Documentation/devicetree/bindings/mfd/mt6397.txt
-> +++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
-> @@ -8,11 +8,12 @@ MT6397/MT6323 is a multifunction device with the following sub modules:
->  - Clock
->  - LED
->  - Keys
-> +- Power controller
->
->  It is interfaced to host controller using SPI interface by a proprietary hardware
->  called PMIC wrapper or pwrap. MT6397/MT6323 MFD is a child device of pwrap.
->  See the following for pwarp node definitions:
-> -Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-> +../../bindings/soc/mediatek/pwrap.txt
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> index 20e1c89..4687f63 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> @@ -68,7 +68,7 @@ static int mtk_hw_pin_field_lookup(struct mtk_pinctrl *hw,
+>  {
+>         const struct mtk_pin_field_calc *c, *e;
+>         const struct mtk_pin_reg_calc *rc;
+> -       u32 bits;
+> +       u32 bits, start = 0, end, found = 0, check;
 
-Unrelated change to what the subject says. Clean-ups and new things in
-separate patches please.
+variable found should be bool type, and the declaration should be
+listed in reverse Xmas tree order
 
 >
->  This document describes the binding for MFD device and its sub module.
+>         if (hw->soc->reg_cal && hw->soc->reg_cal[field].range) {
+>                 rc = &hw->soc->reg_cal[field];
+> @@ -79,21 +79,32 @@ static int mtk_hw_pin_field_lookup(struct mtk_pinctrl *hw,
+>                 return -ENOTSUPP;
+>         }
 >
-> @@ -22,14 +23,16 @@ compatible: "mediatek,mt6397" or "mediatek,mt6323"
->  Optional subnodes:
+> +       end = rc->nranges - 1;
+>         c = rc->range;
+>         e = c + rc->nranges;
 >
->  - rtc
-> -       Required properties:
-> +       Required properties: Should be one of follows
-> +               - compatible: "mediatek,mt6323-rtc"
+> -       while (c < e) {
+> -               if (desc->number >= c->s_pin && desc->number <= c->e_pin)
+> +       while (start <= end) {
+> +               check = (start + end) >> 1;
+> +               if (desc->number >= rc->range[check].s_pin
+> +                && desc->number <= rc->range[check].e_pin) {
+> +                       found = 1;
 
-How is this related to 'powercontroller'?
+found = true;
 
->                 - compatible: "mediatek,mt6397-rtc"
-> +       For details, see ../../bindings/rtc/rtc-mt6397.txt
->  - regulators
->         Required properties:
->                 - compatible: "mediatek,mt6397-regulator"
-> -       see Documentation/devicetree/bindings/regulator/mt6397-regulator.txt
-> +       see ../../bindings/regulator/mt6397-regulator.txt
->                 - compatible: "mediatek,mt6323-regulator"
-> -       see Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
-> +       see ../../bindings/regulator/mt6323-regulator.txt
->  - codec
->         Required properties:
->                 - compatible: "mediatek,mt6397-codec"
-> @@ -39,12 +42,17 @@ Optional subnodes:
->  - led
->         Required properties:
->                 - compatible: "mediatek,mt6323-led"
-> -       see Documentation/devicetree/bindings/leds/leds-mt6323.txt
-> +       see ../../bindings/leds/leds-mt6323.txt
+>                         break;
+> -               c++;
+> +               } else if (start == end)
+> +                       break;
+> +               else if (desc->number < rc->range[check].s_pin)
+> +                       end = check - 1;
+> +               else
+> +                       start = check + 1;
+>         }
 >
->  - keys
->         Required properties:
->                 - compatible: "mediatek,mt6397-keys" or "mediatek,mt6323-keys"
-> -       see Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
-> +       see ../../bindings/input/mtk-pmic-keys.txt
-> +
-> +- power-controller
-> +       Required properties:
-> +               - compatible: "mediatek,mt6323-pwrc"
-> +       For details, see ../../bindings/power/reset/mt6323-poweroff.txt
+> -       if (c >= e) {
+> +       if (!found) {
+>                 dev_dbg(hw->dev, "Not support field %d for pin = %d (%s)\n",
+>                         field, desc->number, desc->name);
+>                 return -ENOTSUPP;
+>         }
 >
->  Example:
->         pwrap: pwrap@1000f000 {
-> diff --git a/Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt b/Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt
-> new file mode 100644
-> index 000000000000..933f0c48e887
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt
-> @@ -0,0 +1,20 @@
-> +Device Tree Bindings for Power Controller on MediaTek PMIC
+> +       c = rc->range + check;
 > +
-> +The power controller which could be found on PMIC is responsible for externally
-> +powering off or on the remote MediaTek SoC through the circuit BBPU.
+>         if (c->i_base > hw->nbase - 1) {
+>                 dev_err(hw->dev,
+>                         "Invalid base for field %d for pin = %d (%s)\n",
+> @@ -182,6 +193,9 @@ int mtk_hw_set_value(struct mtk_pinctrl *hw, const struct mtk_pin_desc *desc,
+>         if (err)
+>                 return err;
+>
+> +       if (value < 0 || value > pf.mask)
+> +               return -EINVAL;
 > +
-> +Required properties:
-> +- compatible: Should be one of follows
-> +       "mediatek,mt6323-pwrc": for MT6323 PMIC
+>         if (!pf.next)
+>                 mtk_rmw(hw, pf.index, pf.offset, pf.mask << pf.bitpos,
+>                         (value & pf.mask) << pf.bitpos);
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> index 923264d..28b4951 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> @@ -693,6 +693,9 @@ static int mtk_gpio_get_direction(struct gpio_chip *chip, unsigned int gpio)
+>         const struct mtk_pin_desc *desc;
+>         int value, err;
+>
+> +       if (gpio > hw->soc->npins)
+> +               return -EINVAL;
 > +
-> +Example:
+>         desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
+>
+>         err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DIR, &value);
+> @@ -708,6 +711,9 @@ static int mtk_gpio_get(struct gpio_chip *chip, unsigned int gpio)
+>         const struct mtk_pin_desc *desc;
+>         int value, err;
+>
+> +       if (gpio > hw->soc->npins)
+> +               return -EINVAL;
 > +
-> +       pmic {
-> +               compatible = "mediatek,mt6323";
+>         desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
+>
+>         err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DI, &value);
+> @@ -722,6 +728,9 @@ static void mtk_gpio_set(struct gpio_chip *chip, unsigned int gpio, int value)
+>         struct mtk_pinctrl *hw = gpiochip_get_data(chip);
+>         const struct mtk_pin_desc *desc;
+>
+> +       if (gpio > hw->soc->npins)
+> +               return;
 > +
-> +               ...
+>         desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
+>
+>         mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_DO, !!value);
+> @@ -729,12 +738,22 @@ static void mtk_gpio_set(struct gpio_chip *chip, unsigned int gpio, int value)
+>
+>  static int mtk_gpio_direction_input(struct gpio_chip *chip, unsigned int gpio)
+>  {
+> +       struct mtk_pinctrl *hw = gpiochip_get_data(chip);
 > +
-> +               power-controller {
-> +                       compatible = "mediatek,mt6323-pwrc";
-> +               };
-> +       }
+> +       if (gpio > hw->soc->npins)
+> +               return -EINVAL;
+> +
+>         return pinctrl_gpio_direction_input(chip->base + gpio);
+>  }
+>
+>  static int mtk_gpio_direction_output(struct gpio_chip *chip, unsigned int gpio,
+>                                      int value)
+>  {
+> +       struct mtk_pinctrl *hw = gpiochip_get_data(chip);
+> +
+> +       if (gpio > hw->soc->npins)
+> +               return -EINVAL;
+> +
+>         mtk_gpio_set(chip, gpio, value);
+>
+>         return pinctrl_gpio_direction_output(chip->base + gpio);
 > --
-> 2.17.1
+> 1.8.1.1.dirty
 >
