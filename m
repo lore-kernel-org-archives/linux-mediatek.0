@@ -1,13 +1,16 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH next v9 01/11] dt-binding: usb: add usb-role-switch property
-Date: Tue, 13 Aug 2019 19:27:04 +0800
-Message-ID: <1565695634-9711-2-git-send-email-chunfeng.yun@mediatek.com>
-References: <1565695634-9711-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+Subject: Re: [V1, 1/2] media: dt-bindings: media: i2c: Add bindings for ov8856
+Date: Tue, 13 Aug 2019 14:55:54 +0300
+Message-ID: <20190813115554.GA6133@paasikivi.fi.intel.com>
+References: <20190808092215.5608-1-dongchun.zhu@mediatek.com>
+ <20190808092215.5608-2-dongchun.zhu@mediatek.com>
+ <20190808165416.GA1845@kekkonen.localdomain>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1565695634-9711-1-git-send-email-chunfeng.yun@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <20190808165416.GA1845@kekkonen.localdomain>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -17,66 +20,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Biju Das <biju.das@bp.renesas.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Hans de Goede <hdegoede@redhat.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Badhri Jagan Sridharan <badhri@google.com>, Linus Walleij <linus.walleij@linaro.org>, linux-usb@vger.kernel.org, Yu Chen <chenyu56@huawei.com>, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, linux-mediatek@lists.infradead.org, Min Guo <min.guo@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Nagarjuna Kristam <nkristam@nvidia.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, linux-arm-kernel@lists.infradead.org, Li Jun <jun.li@nxp.com>
+To: dongchun.zhu@mediatek.com
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, drinkcat@chromium.org, srv_heupstream@mediatek.com, shengnan.wang@mediatek.com, Ben Kao <ben.kao@intel.com>, tfiga@chromium.org, louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add a property usb-role-switch to tell the driver that use
-USB Role Switch framework to handle the role switch,
-it's useful when the driver has already supported other ways,
-such as extcon framework etc.
+On Thu, Aug 08, 2019 at 07:54:16PM +0300, Sakari Ailus wrote:
+> Hi Dongchun,
+> 
+> (Cc'ing Ben, too.)
+> 
+> On Thu, Aug 08, 2019 at 05:22:14PM +0800, dongchun.zhu@mediatek.com wrote:
+> > From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > 
+> > Add device tree binding documentation for the ov8856 camera sensor.
+> > 
+> > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > ---
+> >  .../devicetree/bindings/media/i2c/ov8856.txt       | 41 ++++++++++++++++++++++
+> >  MAINTAINERS                                        |  1 +
+> >  2 files changed, 42 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/media/i2c/ov8856.txt
+> > 
+> > diff --git a/Documentation/devicetree/bindings/media/i2c/ov8856.txt b/Documentation/devicetree/bindings/media/i2c/ov8856.txt
+> > new file mode 100644
+> > index 0000000..96b10e0
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/media/i2c/ov8856.txt
+> > @@ -0,0 +1,41 @@
+> > +* Omnivision OV8856 MIPI CSI-2 sensor
+> > +
+> > +Required Properties:
+> > +- compatible: shall be "ovti,ov8856"
+> > +- clocks: reference to the xvclk input clock
+> > +- clock-names: shall be "xvclk"
+> 
+> Could you add "clock-frequency" property here, please, and specify the
+> upper and lower limits?
 
-Cc: Biju Das <biju.das@bp.renesas.com>
-Cc: Yu Chen <chenyu56@huawei.com>
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
-Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
----
-v7~v9: no changes
+Can you also add the link-frequencies property, please?
 
-v6:
-    1. merge into this series patch
-    2. add Reviewed-by
-
-(no v4, v5)
-
-v3:
-    add property type, modify description suggested by Heikki
-
-v2:
-    describe it in terms of h/w functionality suggested by Rob
-
-v1:
-    the property is discussed in:
-    [v2,2/7] dt-bindings: usb: renesas_usb3: add usb-role-switch property
-    https://patchwork.kernel.org/patch/10852497/
-
-    Mediatek and Hisilicon also try to use it:
-    [v4,3/6] dt-bindings: usb: mtu3: add properties about USB Role Switch
-    https://patchwork.kernel.org/patch/10918385/
-    [v4,6/6] usb: mtu3: register a USB Role Switch for dual role mode
-    https://patchwork.kernel.org/patch/10918367/
-
-    [v6,10/13] usb: dwc3: Registering a role switch in the DRD code
-    https://patchwork.kernel.org/patch/10909981/
----
- Documentation/devicetree/bindings/usb/generic.txt | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/usb/generic.txt b/Documentation/devicetree/bindings/usb/generic.txt
-index 0a74ab8dfdc2..cf5a1ad456e6 100644
---- a/Documentation/devicetree/bindings/usb/generic.txt
-+++ b/Documentation/devicetree/bindings/usb/generic.txt
-@@ -30,6 +30,10 @@ Optional properties:
- 			optional for OTG device.
-  - adp-disable: tells OTG controllers we want to disable OTG ADP, ADP is
- 			optional for OTG device.
-+ - usb-role-switch: boolean, indicates that the device is capable of assigning
-+			the USB data role (USB host or USB device) for a given
-+			USB connector, such as Type-C, Type-B(micro).
-+			see connector/usb-connector.txt.
- 
- This is an attribute to a USB controller such as:
- 
 -- 
-2.22.0
+Sakari Ailus
+sakari.ailus@linux.intel.com
