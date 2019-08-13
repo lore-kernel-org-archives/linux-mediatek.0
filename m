@@ -1,64 +1,143 @@
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Subject: Re: [PATCH v6 19/24] drm/bridge: dumb-vga-dac: Provide
- ddc symlink in connector sysfs directory
-Date: Tue, 13 Aug 2019 11:33:32 +0200
-Message-ID: <CAMuHMdXyGtogEfyFP1RnG2kM504WZ=nzfN_3z6rk4wJZqHaJQw@mail.gmail.com>
-References: <cover.1564161140.git.andrzej.p@collabora.com>
- <ebb75e71b8b7c8d65d54a947a03fd21b8969fb3a.1564161140.git.andrzej.p@collabora.com>
- <20190808034208.GA31284@roeck-us.net>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH next v9 00/11] add USB GPIO based connection detection driver
+Date: Tue, 13 Aug 2019 19:27:03 +0800
+Message-ID: <1565695634-9711-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <intel-gfx-bounces@lists.freedesktop.org>
-In-Reply-To: <20190808034208.GA31284@roeck-us.net>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
-List-Post: <mailto:intel-gfx@lists.freedesktop.org>
-List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: intel-gfx-bounces@lists.freedesktop.org
-Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
-To: Guenter Roeck <linux@roeck-us.net>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, DRI Development <dri-devel@lists.freedesktop.org>, Douglas Anderson <dianders@chromium.org>, linux-tegra <linux-tegra@vger.kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, kernel@collabora.com, Sam Ravnborg <sam@ravnborg.org>, linux-samsung-soc@vger.kernel.org, Vincent Abriou <vincent.abriou@st.com>, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>, NXP Linux Team <linux-imx@nxp.com>, Dave Airlie <airlied@redhat.com>, freedreno@lists.freedesktop.org, Pengutronix Kernel Team <kernel@pengutronix.de>, Jonas Karlman <jonas@kwiboo.se>, linux-arm-msm@vger.kernel.org, Intel Graphics Development <intel-gfx@lists.freedesktop.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Biju Das <biju.das@bp.renesas.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Linus Walleij <linus.walleij@linaro.org>, Nagarjuna Kristam <nkristam@nvidia.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgR8O8bnRlciwKCk9uIFRodSwgQXVnIDgsIDIwMTkgYXQgNTo0MiBBTSBHdWVudGVyIFJvZWNr
-IDxsaW51eEByb2Vjay11cy5uZXQ+IHdyb3RlOgo+IE9uIEZyaSwgSnVsIDI2LCAyMDE5IGF0IDA3
-OjIzOjEzUE0gKzAyMDAsIEFuZHJ6ZWogUGlldHJhc2lld2ljeiB3cm90ZToKPiA+IFVzZSB0aGUg
-ZGRjIHBvaW50ZXIgcHJvdmlkZWQgYnkgdGhlIGdlbmVyaWMgY29ubmVjdG9yLgo+ID4KPiA+IFNp
-Z25lZC1vZmYtYnk6IEFuZHJ6ZWogUGlldHJhc2lld2ljeiA8YW5kcnplai5wQGNvbGxhYm9yYS5j
-b20+Cj4gPiBSZXZpZXdlZC1ieTogTmVpbCBBcm1zdHJvbmcgPG5hcm1zdHJvbmdAYmF5bGlicmUu
-Y29tPgo+Cj4gVGhpcyBwYXRjaCByZXN1bHRzIGluIGEgY3Jhc2ggd2hlbiBydW5uaW5nIHFlbXU6
-dmVyc2F0aWxlcGIuCj4KPiBVbmFibGUgdG8gaGFuZGxlIGtlcm5lbCBOVUxMIHBvaW50ZXIgZGVy
-ZWZlcmVuY2UgYXQgdmlydHVhbCBhZGRyZXNzIDAwMDAwMGM1Cj4gcGdkID0gKHB0cnZhbCkKPiBb
-MDAwMDAwYzVdICpwZ2Q9MDAwMDAwMDAKPiBJbnRlcm5hbCBlcnJvcjogT29wczogNSBbIzFdIEFS
-TQo+IE1vZHVsZXMgbGlua2VkIGluOgo+IENQVTogMCBQSUQ6IDEgQ29tbTogc3dhcHBlciBOb3Qg
-dGFpbnRlZCA1LjMuMC1yYzErICMxCj4gSGFyZHdhcmUgbmFtZTogQVJNLVZlcnNhdGlsZSAoRGV2
-aWNlIFRyZWUgU3VwcG9ydCkKPiBQQyBpcyBhdCBzeXNmc19kb19jcmVhdGVfbGlua19zZCsweDM4
-LzB4ZDgKPiBMUiBpcyBhdCBzeXNmc19kb19jcmVhdGVfbGlua19zZCsweDM4LzB4ZDgKCj4gWzxj
-MDFhYzk0Yz5dIChzeXNmc19kb19jcmVhdGVfbGlua19zZCkgZnJvbSBbPGMwNGM3ZmMwPl0gKGRy
-bV9jb25uZWN0b3JfcmVnaXN0ZXIucGFydC4xKzB4NDAvMHhhMCkKPiBbPGMwNGM3ZmMwPl0gKGRy
-bV9jb25uZWN0b3JfcmVnaXN0ZXIucGFydC4xKSBmcm9tIFs8YzA0Yzg3ZTA+XSAoZHJtX2Nvbm5l
-Y3Rvcl9yZWdpc3Rlcl9hbGwrMHg5MC8weGI4KQo+IFs8YzA0Yzg3ZTA+XSAoZHJtX2Nvbm5lY3Rv
-cl9yZWdpc3Rlcl9hbGwpIGZyb20gWzxjMDRjZWZjYz5dIChkcm1fbW9kZXNldF9yZWdpc3Rlcl9h
-bGwrMHg0NC8weDZjKQo+IFs8YzA0Y2VmY2M+XSAoZHJtX21vZGVzZXRfcmVnaXN0ZXJfYWxsKSBm
-cm9tIFs8YzA0YjRlYmM+XSAoZHJtX2Rldl9yZWdpc3RlcisweDE1Yy8weDFjMCkKPiBbPGMwNGI0
-ZWJjPl0gKGRybV9kZXZfcmVnaXN0ZXIpIGZyb20gWzxjMDRkZjJmOD5dIChwbDExMV9hbWJhX3By
-b2JlKzB4MmUwLzB4NGFjKQo+IFs8YzA0ZGYyZjg+XSAocGwxMTFfYW1iYV9wcm9iZSkgZnJvbSBb
-PGMwNDVlOGQ4Pl0gKGFtYmFfcHJvYmUrMHg5Yy8weDExOCkKClNlZWluZyB0aGUgc2FtZSB0aGlu
-ZyBvbiBTYWx2YXRvci1YUywgZHVlIHRvIHZnYS0+ZGRjIGJlaW5nIC1FTk9ERVYuCgo+ICMgZmly
-c3QgYmFkIGNvbW1pdDogW2E0ZjkwODdlODVkZTE0MWU0ZTZkMjFhYzJjNTgzYWUwOTZjYzlhYmFd
-IGRybS9icmlkZ2U6IGR1bWItdmdhLWRhYzogUHJvdmlkZSBkZGMgc3ltbGluayBpbiBjb25uZWN0
-b3Igc3lzZnMgZGlyZWN0b3J5CgpGaXggc2VudApodHRwczovL2xvcmUua2VybmVsLm9yZy9sa21s
-LzIwMTkwODEzMDkzMDQ2LjQ5NzYtMS1nZWVydCtyZW5lc2FzQGdsaWRlci5iZS8KCkdye29ldGpl
-LGVldGluZ31zLAoKICAgICAgICAgICAgICAgICAgICAgICAgR2VlcnQKCi0tIApHZWVydCBVeXR0
-ZXJob2V2ZW4gLS0gVGhlcmUncyBsb3RzIG9mIExpbnV4IGJleW9uZCBpYTMyIC0tIGdlZXJ0QGxp
-bnV4LW02OGsub3JnCgpJbiBwZXJzb25hbCBjb252ZXJzYXRpb25zIHdpdGggdGVjaG5pY2FsIHBl
-b3BsZSwgSSBjYWxsIG15c2VsZiBhIGhhY2tlci4gQnV0CndoZW4gSSdtIHRhbGtpbmcgdG8gam91
-cm5hbGlzdHMgSSBqdXN0IHNheSAicHJvZ3JhbW1lciIgb3Igc29tZXRoaW5nIGxpa2UgdGhhdC4K
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtLSBMaW51cyBUb3J2YWxkcwpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC1nZnggbWFpbGlu
-ZyBsaXN0CkludGVsLWdmeEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
-ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1nZng=
+Because the USB Connector is introduced and the requirement of
+usb-connector.txt binding, the old way using extcon to support
+USB Dual-Role switch is now deprecated, meanwhile there is no
+available common driver when use Type-B connector, typically
+using an input GPIO to detect USB ID pin.
+This patch series introduce a USB GPIO based connection detection
+driver and try to replace the function provided by extcon-usb-gpio
+driver.
+
+v9 changes:
+  1. replace signed-off-by by suggested-by Heikki
+  2. add reviewed-by Linus
+  3. use class_find_device_by_fwnode() introduced by series [1]
+
+[1]:
+ https://lore.kernel.org/patchwork/patch/1103630/
+ [v3,1/7] drivers: Introduce device lookup variants by name
+
+ they are already in:
+ https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git/log/drivers/base/core.c?h=driver-core-next
+
+v8 changes:
+  1. rename the driver's name suggested by Heikki
+  2. move the driver from usb/roles/ into usb/common/ suggested by Heikki
+  3. introduce Kconfig for usb common core to add the new driver
+  4. modify binding of the driver 
+  5. rename the subject title
+
+v7 changes:
+  1. [5/10]: add signed-off-by Chunfeng
+  2. [6/10]: add signed-off-by Chunfeng
+  3. [6/10]: depends on linux-next of Rafael's tree [1]
+  4. [7/10]: add signed-off-by Chunfeng and tested-by Biju
+  5. [9/10]: add tested-by Nagarjuna, and remove DEV_PMS_OPS suggested by Andy
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git/log/?h=linux-next
+
+v6 changes:
+  1. merge [1] and [2] into this series
+  2. don't use graph anymore to find usb-role-switch
+  3. abandon [3] and introduce three patches (6, 7, 8 in this series)
+     to rebuild APIs getting usb-role-switch
+
+  [1]: [v3] dt-binding: usb: add usb-role-switch property
+       https://patchwork.kernel.org/patch/10934835/
+  [2]: [v6,08/13] usb: roles: Introduce stubs for the exiting functions in role.h
+       https://patchwork.kernel.org/patch/10909971/
+
+  [3]: [PATCH v5 4/6] usb: roles: add API to get usb_role_switch by node
+
+v5 changes:
+  1. remove linux/of.h and put usb_role_switch when error happens,
+     suggested by Biju
+  2. treat Type-B connector as USB controller's child, but not as
+     a virtual device, suggested by Rob
+  3. provide and use generic property "usb-role-switch", see [1],
+     suggested by Rob
+
+  Note: this series still depends on [2]
+
+  [1]: [v3] dt-binding: usb: add usb-role-switch property
+       https://patchwork.kernel.org/patch/10934835/
+  [2]: [v6,08/13] usb: roles: Introduce stubs for the exiting functions in role.h
+       https://patchwork.kernel.org/patch/10909971/
+
+v4 changes:
+  1. use switch_fwnode_match() to find fwnode suggested by Heikki
+  2. assign fwnode member of usb_role_switch struct suggested by Heikki
+  3. make [4/6] depend on [2]
+  3. remove linux/gpio.h suggested by Linus
+  4. put node when error happens
+
+  [4/6] usb: roles: add API to get usb_role_switch by node
+  [2] [v6,08/13] usb: roles: Introduce stubs for the exiting functions in role.h
+    https://patchwork.kernel.org/patch/10909971/
+
+v3 changes:
+  1. add GPIO direction, and use fixed-regulator for GPIO controlled
+    VBUS regulator suggested by Rob;
+  2. rebuild fwnode_usb_role_switch_get() suggested by Andy and Heikki
+  3. treat the type-B connector as a virtual device;
+  4. change file name of driver again
+  5. select USB_ROLE_SWITCH in mtu3/Kconfig suggested by Heikki
+  6. rename ssusb_mode_manual_switch() to ssusb_mode_switch()
+
+v2 changes:
+ 1. make binding clear, and add a extra compatible suggested by Hans
+
+Chunfeng Yun (8):
+  dt-binding: usb: add usb-role-switch property
+  dt-bindings: connector: add optional properties for Type-B
+  dt-bindings: usb: add binding for USB GPIO based connection detection
+    driver
+  dt-bindings: usb: mtu3: add properties about USB Role Switch
+  usb: roles: get usb-role-switch from parent
+  usb: common: create Kconfig file
+  usb: common: add USB GPIO based connection detection driver
+  usb: mtu3: register a USB Role Switch for dual role mode
+
+Heikki Krogerus (2):
+  device connection: Add fwnode_connection_find_match()
+  usb: roles: Add fwnode_usb_role_switch_get() function
+
+Yu Chen (1):
+  usb: roles: Introduce stubs for the exiting functions in role.h
+
+ .../bindings/connector/usb-connector.txt      |  14 +
+ .../devicetree/bindings/usb/generic.txt       |   4 +
+ .../devicetree/bindings/usb/mediatek,mtu3.txt |  10 +
+ .../devicetree/bindings/usb/usb-conn-gpio.txt |  31 ++
+ drivers/base/devcon.c                         |  43 ++-
+ drivers/usb/Kconfig                           |  35 +--
+ drivers/usb/common/Kconfig                    |  51 ++++
+ drivers/usb/common/Makefile                   |   1 +
+ drivers/usb/common/usb-conn-gpio.c            | 284 ++++++++++++++++++
+ drivers/usb/mtu3/Kconfig                      |   1 +
+ drivers/usb/mtu3/mtu3.h                       |   5 +
+ drivers/usb/mtu3/mtu3_debugfs.c               |   4 +-
+ drivers/usb/mtu3/mtu3_dr.c                    |  48 ++-
+ drivers/usb/mtu3/mtu3_dr.h                    |   6 +-
+ drivers/usb/mtu3/mtu3_plat.c                  |   3 +-
+ drivers/usb/roles/class.c                     |  41 ++-
+ include/linux/device.h                        |  10 +-
+ include/linux/usb/role.h                      |  37 +++
+ 18 files changed, 570 insertions(+), 58 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/usb/usb-conn-gpio.txt
+ create mode 100644 drivers/usb/common/Kconfig
+ create mode 100644 drivers/usb/common/usb-conn-gpio.c
+
+-- 
+2.22.0
