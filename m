@@ -1,65 +1,130 @@
-From: =?utf-8?b?UmVuw6k=?= van Dorst <opensource@vdorst.com>
-Subject: Re: [PATCH] net: ethernet: mediatek: Add MT7628/88 SoC support
-Date: Wed, 14 Aug 2019 13:08:56 +0000
-Message-ID: <20190814130856.Horde.wzHL8_VRawJ8NIIk--BD18e@www.vdorst.com>
-References: <20190717125345.Horde.JcDE_nBChPFDDjEgIRfPSl3@www.vdorst.com>
- <a92d7207-80b2-e88d-d869-64c9758ef1da@denx.de>
- <20190814092621.Horde.epvj8zK96-aCiV70YB5Q7II@www.vdorst.com>
- <3ff9a0fc-f5ff-3798-4409-ed5b900e0b05@denx.de>
+From: Will Deacon <will@kernel.org>
+Subject: Re: [PATCH v9 08/21] iommu/io-pgtable-arm-v7s: Extend MediaTek 4GB
+ Mode
+Date: Wed, 14 Aug 2019 15:41:00 +0100
+Message-ID: <20190814144059.ruyc45yoqkwpbuga@willie-the-truck>
+References: <1565423901-17008-1-git-send-email-yong.wu@mediatek.com>
+ <1565423901-17008-9-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed; DelSp=Yes
-Content-Transfer-Encoding: 8bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <3ff9a0fc-f5ff-3798-4409-ed5b900e0b05@denx.de>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-Sender: netdev-owner@vger.kernel.org
-To: Stefan Roese <sr@denx.de>
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>, John Crispin <john@phrozen.org>, Daniel Golle <daniel@makrotopia.org>
+In-Reply-To: <1565423901-17008-9-git-send-email-yong.wu@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>, Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, Matthias Kaehlcke <mka@chromium.org>, cui.zhang@mediatek.com, chao.hao@mediatek.com, ming-fan.chen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Stefan,
+Hi Yong Wu,
 
-Quoting Stefan Roese <sr@denx.de>:
+Sorry, but I'm still deeply confused by this patch.
 
-> Hi Rene,
->
-> On 14.08.19 11:26, René van Dorst wrote:
+On Sat, Aug 10, 2019 at 03:58:08PM +0800, Yong Wu wrote:
+> MediaTek extend the arm v7s descriptor to support the dram over 4GB.
+> 
+> In the mt2712 and mt8173, it's called "4GB mode", the physical address
+> is from 0x4000_0000 to 0x1_3fff_ffff, but from EMI point of view, it
+> is remapped to high address from 0x1_0000_0000 to 0x1_ffff_ffff, the
+> bit32 is always enabled. thus, in the M4U, we always enable the bit9
+> for all PTEs which means to enable bit32 of physical address. Here is
+> the detailed remap relationship in the "4GB mode":
+> CPU PA         ->    HW PA
+> 0x4000_0000          0x1_4000_0000 (Add bit32)
+> 0x8000_0000          0x1_8000_0000 ...
+> 0xc000_0000          0x1_c000_0000 ...
+> 0x1_0000_0000        0x1_0000_0000 (No change)
 
-<snip>
+So in this example, there are no PAs below 0x4000_0000 yet you later
+add code to deal with that:
 
->> Great, Thanks for addressing this issue.
->>
->> I hope we can collaborate to also support mt76x8 in my PHYLINK  
->> patches [0][1].
->> I am close to posting V2 of the patches but I am currently waiting on some
->> fiber modules to test the changes better.
->
-> I do have a "hackish" DSA driver for the integrated switch (ESW) in my
-> tree. If time permits, I'll work on upstreaming this one as well. And
-> yes, hopefully we can collaborate on your PHYLINK work too.
+> +	/* Workaround for MTK 4GB Mode: Add BIT32 only when PA < 0x4000_0000.*/
+> +	if (cfg->oas == ARM_V7S_MTK_4GB_OAS && paddr < 0x40000000UL)
+> +		paddr |= BIT_ULL(32);
 
-It is not only the switch driver but also the Mediatek ethernet driver that is
-converted to PHYLINK. So we have a conflict in each others work.
+Why? Mainline currently doesn't do anything like this for the "4gb mode"
+support as far as I can tell. In fact, we currently unconditionally set
+bit 32 in the physical address returned by iova_to_phys() which wouldn't
+match your CPU PAs listed above, so I'm confused about how this is supposed
+to work.
 
-I don't no what the right way is to go but I was thinking about 2 options
+The way I would like this quirk to work is that the io-pgtable code
+basically sets bit 9 in the pte when bit 32 is set in the physical address,
+and sets bit 4 in the pte when bit 33 is set in the physical address. It
+would then do the opposite when converting a pte to a physical address.
 
-1. Lets say your work goes in first. I rebase my patches on your changes.
-    We collaborate to create an extra PHYLINK patch ontop of my work  
-for your SOC.
-2. My patches goes in first and you adapt your patches to that.
+That way, your driver can call the page table code directly with the high
+addresses and we don't have to do any manual offsetting or range checking
+in the page table code.
 
-What do you think?
+Please can you explain to me why the diff below doesn't work on top of
+this series? I'm happy to chat on IRC if you think it would be easier,
+because I have a horrible feeling that we've been talking past each other
+and I'd like to see this support merged for 5.4.
 
-I have latest changes here [0].
+Will
 
-Also my modules did arrive so I can test my changes.
+--->8
 
-> Thanks,
-> Stefan
-
-Greats,
-
-René
-
-[0]  
-https://github.com/vDorst/linux-1/commits/net-next-phylink-upstream-mediatek
+diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
+index ab12ef5f8b03..d8d84617c822 100644
+--- a/drivers/iommu/io-pgtable-arm-v7s.c
++++ b/drivers/iommu/io-pgtable-arm-v7s.c
+@@ -184,7 +184,7 @@ static arm_v7s_iopte paddr_to_iopte(phys_addr_t paddr, int lvl,
+ 	arm_v7s_iopte pte = paddr & ARM_V7S_LVL_MASK(lvl);
+ 
+ 	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_EXT) {
+-		if ((paddr & BIT_ULL(32)) || cfg->oas == ARM_V7S_MTK_4GB_OAS)
++		if (paddr & BIT_ULL(32))
+ 			pte |= ARM_V7S_ATTR_MTK_PA_BIT32;
+ 		if (paddr & BIT_ULL(33))
+ 			pte |= ARM_V7S_ATTR_MTK_PA_BIT33;
+@@ -206,17 +206,14 @@ static phys_addr_t iopte_to_paddr(arm_v7s_iopte pte, int lvl,
+ 		mask = ARM_V7S_LVL_MASK(lvl);
+ 
+ 	paddr = pte & mask;
+-	if (cfg->oas == 32 || !(cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_EXT))
+-		return paddr;
+ 
+-	if (pte & ARM_V7S_ATTR_MTK_PA_BIT33)
+-		paddr |= BIT_ULL(33);
++	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_EXT) {
++		if (pte & ARM_V7S_ATTR_MTK_PA_BIT32)
++			paddr |= BIT_ULL(32);
++		if (pte & ARM_V7S_ATTR_MTK_PA_BIT33)
++			paddr |= BIT_ULL(33);
++	}
+ 
+-	/* Workaround for MTK 4GB Mode: Add BIT32 only when PA < 0x4000_0000.*/
+-	if (cfg->oas == ARM_V7S_MTK_4GB_OAS && paddr < 0x40000000UL)
+-		paddr |= BIT_ULL(32);
+-	else if (pte & ARM_V7S_ATTR_MTK_PA_BIT32)
+-		paddr |= BIT_ULL(32);
+ 	return paddr;
+ }
+ 
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index d5b9454352fd..3ae54dedede0 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -286,7 +286,7 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom)
+ 	if (!IS_ENABLED(CONFIG_PHYS_ADDR_T_64BIT))
+ 		dom->cfg.oas = 32;
+ 	else if (data->enable_4GB)
+-		dom->cfg.oas = ARM_V7S_MTK_4GB_OAS;
++		dom->cfg.oas = 33;
+ 	else
+ 		dom->cfg.oas = 34;
+ 
+diff --git a/include/linux/io-pgtable.h b/include/linux/io-pgtable.h
+index 27337395bd42..a2a52c349fe4 100644
+--- a/include/linux/io-pgtable.h
++++ b/include/linux/io-pgtable.h
+@@ -113,8 +113,6 @@ struct io_pgtable_cfg {
+ 	};
+ };
+ 
+-#define ARM_V7S_MTK_4GB_OAS			33
+-
+ /**
+  * struct io_pgtable_ops - Page table manipulation API for IOMMU drivers.
+  *
