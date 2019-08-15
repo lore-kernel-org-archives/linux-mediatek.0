@@ -1,87 +1,74 @@
-From: Yong Wu <yong.wu@mediatek.com>
-Subject: Re: [PATCH v9 08/21] iommu/io-pgtable-arm-v7s: Extend MediaTek 4GB
- Mode
-Date: Thu, 15 Aug 2019 18:18:38 +0800
-Message-ID: <1565864318.14278.4.camel@mhfsdcap03>
-References: <1565423901-17008-1-git-send-email-yong.wu@mediatek.com>
-         <1565423901-17008-9-git-send-email-yong.wu@mediatek.com>
-         <20190814144059.ruyc45yoqkwpbuga@willie-the-truck>
-         <1565858869.12818.51.camel@mhfsdcap03>
-         <20190815095123.rzgtpklvhtjlqir4@willie-the-truck>
+From: Tom Murphy <murphyt7-/Zw1syy4LHg@public.gmane.org>
+Subject: [PATCH V5 0/5] iommu/amd: Convert the AMD iommu driver to the
+	dma-iommu api
+Date: Thu, 15 Aug 2019 12:09:38 +0100
+Message-ID: <20190815110944.3579-1-murphyt7@tcd.ie>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190815095123.rzgtpklvhtjlqir4@willie-the-truck>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Will Deacon <will@kernel.org>
-Cc: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>, Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, Matthias Kaehlcke <mka@chromium.org>, cui.zhang@mediatek.com, chao.hao@mediatek.com, ming-fan.chen@mediatek.com
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, virtualization-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Will Deacon <will-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jean-Philippe Brucker <jean-philippe-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Andy Gross <agross-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Gerald Schaefer <gerald.schaefer-tA70FqPdS9bQT0dZR+AlfA@public.gmane.org>, linux-s390-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tom Murphy <murphyt7-/Zw1syy4LHg@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2019-08-15 at 10:51 +0100, Will Deacon wrote:
-> On Thu, Aug 15, 2019 at 04:47:49PM +0800, Yong Wu wrote:
-> > On Wed, 2019-08-14 at 15:41 +0100, Will Deacon wrote:
-> > > On Sat, Aug 10, 2019 at 03:58:08PM +0800, Yong Wu wrote:
-> > > > MediaTek extend the arm v7s descriptor to support the dram over 4GB.
-> > > > 
-> > > > In the mt2712 and mt8173, it's called "4GB mode", the physical address
-> > > > is from 0x4000_0000 to 0x1_3fff_ffff, but from EMI point of view, it
-> > > > is remapped to high address from 0x1_0000_0000 to 0x1_ffff_ffff, the
-> > > > bit32 is always enabled. thus, in the M4U, we always enable the bit9
-> > > > for all PTEs which means to enable bit32 of physical address. Here is
-> > > > the detailed remap relationship in the "4GB mode":
-> > > > CPU PA         ->    HW PA
-> > > > 0x4000_0000          0x1_4000_0000 (Add bit32)
-> > > > 0x8000_0000          0x1_8000_0000 ...
-> > > > 0xc000_0000          0x1_c000_0000 ...
-> > > > 0x1_0000_0000        0x1_0000_0000 (No change)
-> > > 
-> > > So in this example, there are no PAs below 0x4000_0000 yet you later
-> > > add code to deal with that:
-> > > 
-> > > > +	/* Workaround for MTK 4GB Mode: Add BIT32 only when PA < 0x4000_0000.*/
-> > > > +	if (cfg->oas == ARM_V7S_MTK_4GB_OAS && paddr < 0x40000000UL)
-> > > > +		paddr |= BIT_ULL(32);
-> > > 
-> > > Why? Mainline currently doesn't do anything like this for the "4gb mode"
-> > > support as far as I can tell. In fact, we currently unconditionally set
-> > > bit 32 in the physical address returned by iova_to_phys() which wouldn't
-> > > match your CPU PAs listed above, so I'm confused about how this is supposed
-> > > to work.
-> > 
-> > Actually current mainline have a bug for this. So I tried to use another
-> > special patch[1] for it in v8.
-> 
-> If you're fixing a bug in mainline, I'd prefer to see that as a separate
-> patch.
-> 
-> > But the issue is not critical since MediaTek multimedia consumer(v4l2
-> > and drm) don't call iommu_iova_to_phys currently.
-> > 
-> > > 
-> > > The way I would like this quirk to work is that the io-pgtable code
-> > > basically sets bit 9 in the pte when bit 32 is set in the physical address,
-> > > and sets bit 4 in the pte when bit 33 is set in the physical address. It
-> > > would then do the opposite when converting a pte to a physical address.
-> > > 
-> > > That way, your driver can call the page table code directly with the high
-> > > addresses and we don't have to do any manual offsetting or range checking
-> > > in the page table code.
-> > 
-> > In this case, the mt8183 can work successfully while the "4gb
-> > mode"(mt8173/mt2712) can not.
-> > 
-> > In the "4gb mode", As the remap relationship above, we should always add
-> > bit32 in pte as we did in [2]. and need add bit32 in the
-> > "iova_to_phys"(Not always add.). That means the "4gb mode" has a special
-> > flow:
-> > a. Always add bit32 in paddr_to_iopte.
-> > b. Add bit32 only when PA < 0x40000000 in iopte_to_paddr.
-> 
-> I think this is probably at the heart of my misunderstanding. What is so
-> special about PAs (is this HW PA or CPU PA?) below 0x40000000? Is this RAM
-> or something else?
+Convert the AMD iommu driver to the dma-iommu api. Remove the iova
+handling and reserve region code from the AMD iommu driver.
 
-SRAM and HW register that IOMMU can not access.
+Change-log:
+V5:
+-Rebase on top of linux-next
+V4:
+-Rebase on top of linux-next
+-Split the removing of the unnecessary locking in the amd iommu driver into a seperate patch
+-refactor the "iommu/dma-iommu: Handle deferred devices" patch and address comments
+v3:
+-rename dma_limit to dma_mask
+-exit handle_deferred_device early if (!is_kdump_kernel())
+-remove pointless calls to handle_deferred_device
+v2:
+-Rebase on top of this series:
+ http://git.infradead.org/users/hch/misc.git/shortlog/refs/heads/dma-iommu-ops.3
+-Add a gfp_t parameter to the iommu_ops::map function.
+-Made use of the reserve region code inside the dma-iommu api
 
-(sorry, My mailbox has something wrong.)
+Tom Murphy (5):
+  iommu/amd: Remove unnecessary locking from AMD iommu driver
+  iommu: Add gfp parameter to iommu_ops::map
+  iommu/dma-iommu: Handle deferred devices
+  iommu/dma-iommu: Use the dev->coherent_dma_mask
+  iommu/amd: Convert AMD iommu driver to the dma-iommu api
+
+ drivers/iommu/Kconfig           |   1 +
+ drivers/iommu/amd_iommu.c       | 690 ++++----------------------------
+ drivers/iommu/amd_iommu_types.h |   1 -
+ drivers/iommu/arm-smmu-v3.c     |   2 +-
+ drivers/iommu/arm-smmu.c        |   2 +-
+ drivers/iommu/dma-iommu.c       |  43 +-
+ drivers/iommu/exynos-iommu.c    |   2 +-
+ drivers/iommu/intel-iommu.c     |   2 +-
+ drivers/iommu/iommu.c           |  43 +-
+ drivers/iommu/ipmmu-vmsa.c      |   2 +-
+ drivers/iommu/msm_iommu.c       |   2 +-
+ drivers/iommu/mtk_iommu.c       |   2 +-
+ drivers/iommu/mtk_iommu_v1.c    |   2 +-
+ drivers/iommu/omap-iommu.c      |   2 +-
+ drivers/iommu/qcom_iommu.c      |   2 +-
+ drivers/iommu/rockchip-iommu.c  |   2 +-
+ drivers/iommu/s390-iommu.c      |   2 +-
+ drivers/iommu/tegra-gart.c      |   2 +-
+ drivers/iommu/tegra-smmu.c      |   2 +-
+ drivers/iommu/virtio-iommu.c    |   2 +-
+ include/linux/iommu.h           |  21 +-
+ 21 files changed, 178 insertions(+), 651 deletions(-)
+
+-- 
+2.20.1
