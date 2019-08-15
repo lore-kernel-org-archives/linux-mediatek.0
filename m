@@ -1,48 +1,83 @@
-From: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v6 5/8] clk: mediatek: Add MT6765 clock support
-Date: Thu, 15 Aug 2019 15:44:53 +0200
-Message-ID: <20190815134453.GB3372@kroah.com>
-References: <1562924653-10056-1-git-send-email-macpaul.lin@mediatek.com>
- <1562924653-10056-6-git-send-email-macpaul.lin@mediatek.com>
- <20190815002721.A71C72083B@mail.kernel.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: mediatek: mt8183-mt6358-ts3a227-max98357: remove unused variables" to the asoc tree
+Date: Thu, 15 Aug 2019 18:14:25 +0100 (BST)
+Message-ID: <20190815171425.8EDFE2742BD6@ypsilon.sirena.org.uk>
+References: <20190813144122.67676-1-yuehaibing@huawei.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190815002721.A71C72083B@mail.kernel.org>
+In-Reply-To: <20190813144122.67676-1-yuehaibing@huawei.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@kernel.org>
-Cc: Macpaul Lin <macpaul.lin@mediatek.com>, Marc Zyngier <marc.zyngier@arm.com>, Mars Cheng <mars.cheng@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Owen Chen <owen.chen@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, devicetree@vger.kernel.org, linux-serial@vger.kernel.org, linux-clk@vger.kernel.org
+To: YueHaibing <yuehaibing@huawei.com>
+Cc: alsa-devel@alsa-project.org, broonie@kernel.org, Hulk Robot <hulkci@huawei.com>, lgirdwood@gmail.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.orgMark Brown <broonie@kernel.org>, matthias.bgg@gmail.com, perex@perex.c, tiwai@suse.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Aug 14, 2019 at 05:27:20PM -0700, Stephen Boyd wrote:
-> Quoting Macpaul Lin (2019-07-12 02:43:41)
-> > diff --git a/drivers/clk/mediatek/clk-mt6765-audio.c b/drivers/clk/mediatek/clk-mt6765-audio.c
-> > new file mode 100644
-> > index 000000000000..41f19343dfb9
-> > --- /dev/null
-> > +++ b/drivers/clk/mediatek/clk-mt6765-audio.c
-> > @@ -0,0 +1,109 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> > +/*
-> > + * Copyright (c) 2018 MediaTek Inc.
-> > + * Author: Owen Chen <owen.chen@mediatek.com>
-> > + *
-> > + * This program is free software; you can redistribute it and/or modify
-> > + * it under the terms of the GNU General Public License version 2 as
-> > + * published by the Free Software Foundation.
-> > + *
-> > + * This program is distributed in the hope that it will be useful,
-> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> > + * GNU General Public License for more details.
-> 
-> Please use SPDX tags.
+The patch
 
-To be specific, _only_ the SPDX tag.  There is an SPDX tag on this file,
-and the others, it's just that the license text is no longer needed with
-that.
+   ASoC: mediatek: mt8183-mt6358-ts3a227-max98357: remove unused variables
 
-thanks,
+has been applied to the asoc tree at
 
-greg k-h
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-5.4
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+>From d59170b42610c7cbc6e96431ca8357a8bdbf592b Mon Sep 17 00:00:00 2001
+From: YueHaibing <yuehaibing@huawei.com>
+Date: Tue, 13 Aug 2019 22:41:22 +0800
+Subject: [PATCH] ASoC: mediatek: mt8183-mt6358-ts3a227-max98357: remove unused
+ variables
+
+sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c:50:1: warning:
+ mt8183_mt6358_ts3a227_max98357_dapm_widgets defined but not used [-Wunused-const-variable=]
+sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c:55:1: warning:
+ mt8183_mt6358_ts3a227_max98357_dapm_routes defined but not used [-Wunused-const-variable=]
+
+They are never used, so can be removed.
+
+Reported-by: Hulk Robot <hulkci@huawei.com>
+Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+Link: https://lore.kernel.org/r/20190813144122.67676-1-yuehaibing@huawei.com
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ .../mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c   | 10 ----------
+ 1 file changed, 10 deletions(-)
+
+diff --git a/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c b/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
+index 53f54078f78c..272766c1b859 100644
+--- a/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
++++ b/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
+@@ -46,16 +46,6 @@ static int mt8183_i2s_hw_params_fixup(struct snd_soc_pcm_runtime *rtd,
+ 	return 0;
+ }
+ 
+-static const struct snd_soc_dapm_widget
+-mt8183_mt6358_ts3a227_max98357_dapm_widgets[] = {
+-	SND_SOC_DAPM_OUTPUT("IT6505_8CH"),
+-};
+-
+-static const struct snd_soc_dapm_route
+-mt8183_mt6358_ts3a227_max98357_dapm_routes[] = {
+-	{"IT6505_8CH", NULL, "TDM"},
+-};
+-
+ static int
+ mt8183_mt6358_ts3a227_max98357_bt_sco_startup(
+ 	struct snd_pcm_substream *substream)
+-- 
+2.20.1
