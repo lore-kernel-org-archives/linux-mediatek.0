@@ -1,91 +1,87 @@
-From: Will Deacon <will@kernel.org>
+From: Yong Wu <yong.wu@mediatek.com>
 Subject: Re: [PATCH v9 08/21] iommu/io-pgtable-arm-v7s: Extend MediaTek 4GB
  Mode
-Date: Thu, 15 Aug 2019 11:04:44 +0100
-Message-ID: <20190815100443.5oobqjivyosurwzn@willie-the-truck>
+Date: Thu, 15 Aug 2019 18:18:38 +0800
+Message-ID: <1565864318.14278.4.camel@mhfsdcap03>
 References: <1565423901-17008-1-git-send-email-yong.wu@mediatek.com>
- <1565423901-17008-9-git-send-email-yong.wu@mediatek.com>
- <20190814144059.ruyc45yoqkwpbuga@willie-the-truck>
- <1565858869.12818.51.camel@mhfsdcap03>
- <20190815095123.rzgtpklvhtjlqir4@willie-the-truck>
- <1565863410.12818.56.camel@mhfsdcap03>
+         <1565423901-17008-9-git-send-email-yong.wu@mediatek.com>
+         <20190814144059.ruyc45yoqkwpbuga@willie-the-truck>
+         <1565858869.12818.51.camel@mhfsdcap03>
+         <20190815095123.rzgtpklvhtjlqir4@willie-the-truck>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1565863410.12818.56.camel@mhfsdcap03>
+In-Reply-To: <20190815095123.rzgtpklvhtjlqir4@willie-the-truck>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Yong Wu <yong.wu@mediatek.com>
+To: Will Deacon <will@kernel.org>
 Cc: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>, Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, Matthias Kaehlcke <mka@chromium.org>, cui.zhang@mediatek.com, chao.hao@mediatek.com, ming-fan.chen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Aug 15, 2019 at 06:03:30PM +0800, Yong Wu wrote:
-> On Thu, 2019-08-15 at 10:51 +0100, Will Deacon wrote:
-> > On Thu, Aug 15, 2019 at 04:47:49PM +0800, Yong Wu wrote:
-> > > On Wed, 2019-08-14 at 15:41 +0100, Will Deacon wrote:
-> > > > On Sat, Aug 10, 2019 at 03:58:08PM +0800, Yong Wu wrote:
-> > > > > MediaTek extend the arm v7s descriptor to support the dram over 4GB.
-> > > > > 
-> > > > > In the mt2712 and mt8173, it's called "4GB mode", the physical address
-> > > > > is from 0x4000_0000 to 0x1_3fff_ffff, but from EMI point of view, it
-> > > > > is remapped to high address from 0x1_0000_0000 to 0x1_ffff_ffff, the
-> > > > > bit32 is always enabled. thus, in the M4U, we always enable the bit9
-> > > > > for all PTEs which means to enable bit32 of physical address. Here is
-> > > > > the detailed remap relationship in the "4GB mode":
-> > > > > CPU PA         ->    HW PA
-> > > > > 0x4000_0000          0x1_4000_0000 (Add bit32)
-> > > > > 0x8000_0000          0x1_8000_0000 ...
-> > > > > 0xc000_0000          0x1_c000_0000 ...
-> > > > > 0x1_0000_0000        0x1_0000_0000 (No change)
+On Thu, 2019-08-15 at 10:51 +0100, Will Deacon wrote:
+> On Thu, Aug 15, 2019 at 04:47:49PM +0800, Yong Wu wrote:
+> > On Wed, 2019-08-14 at 15:41 +0100, Will Deacon wrote:
+> > > On Sat, Aug 10, 2019 at 03:58:08PM +0800, Yong Wu wrote:
+> > > > MediaTek extend the arm v7s descriptor to support the dram over 4GB.
 > > > > 
-> > > > So in this example, there are no PAs below 0x4000_0000 yet you later
-> > > > add code to deal with that:
-> > > > 
-> > > > > +	/* Workaround for MTK 4GB Mode: Add BIT32 only when PA < 0x4000_0000.*/
-> > > > > +	if (cfg->oas == ARM_V7S_MTK_4GB_OAS && paddr < 0x40000000UL)
-> > > > > +		paddr |= BIT_ULL(32);
-> > > > 
-> > > > Why? Mainline currently doesn't do anything like this for the "4gb mode"
-> > > > support as far as I can tell. In fact, we currently unconditionally set
-> > > > bit 32 in the physical address returned by iova_to_phys() which wouldn't
-> > > > match your CPU PAs listed above, so I'm confused about how this is supposed
-> > > > to work.
+> > > > In the mt2712 and mt8173, it's called "4GB mode", the physical address
+> > > > is from 0x4000_0000 to 0x1_3fff_ffff, but from EMI point of view, it
+> > > > is remapped to high address from 0x1_0000_0000 to 0x1_ffff_ffff, the
+> > > > bit32 is always enabled. thus, in the M4U, we always enable the bit9
+> > > > for all PTEs which means to enable bit32 of physical address. Here is
+> > > > the detailed remap relationship in the "4GB mode":
+> > > > CPU PA         ->    HW PA
+> > > > 0x4000_0000          0x1_4000_0000 (Add bit32)
+> > > > 0x8000_0000          0x1_8000_0000 ...
+> > > > 0xc000_0000          0x1_c000_0000 ...
+> > > > 0x1_0000_0000        0x1_0000_0000 (No change)
 > > > 
-> > > Actually current mainline have a bug for this. So I tried to use another
-> > > special patch[1] for it in v8.
+> > > So in this example, there are no PAs below 0x4000_0000 yet you later
+> > > add code to deal with that:
+> > > 
+> > > > +	/* Workaround for MTK 4GB Mode: Add BIT32 only when PA < 0x4000_0000.*/
+> > > > +	if (cfg->oas == ARM_V7S_MTK_4GB_OAS && paddr < 0x40000000UL)
+> > > > +		paddr |= BIT_ULL(32);
+> > > 
+> > > Why? Mainline currently doesn't do anything like this for the "4gb mode"
+> > > support as far as I can tell. In fact, we currently unconditionally set
+> > > bit 32 in the physical address returned by iova_to_phys() which wouldn't
+> > > match your CPU PAs listed above, so I'm confused about how this is supposed
+> > > to work.
 > > 
-> > If you're fixing a bug in mainline, I'd prefer to see that as a separate
-> > patch.
-> > 
-> > > But the issue is not critical since MediaTek multimedia consumer(v4l2
-> > > and drm) don't call iommu_iova_to_phys currently.
-> > > 
-> > > > 
-> > > > The way I would like this quirk to work is that the io-pgtable code
-> > > > basically sets bit 9 in the pte when bit 32 is set in the physical address,
-> > > > and sets bit 4 in the pte when bit 33 is set in the physical address. It
-> > > > would then do the opposite when converting a pte to a physical address.
-> > > > 
-> > > > That way, your driver can call the page table code directly with the high
-> > > > addresses and we don't have to do any manual offsetting or range checking
-> > > > in the page table code.
-> > > 
-> > > In this case, the mt8183 can work successfully while the "4gb
-> > > mode"(mt8173/mt2712) can not.
-> > > 
-> > > In the "4gb mode", As the remap relationship above, we should always add
-> > > bit32 in pte as we did in [2]. and need add bit32 in the
-> > > "iova_to_phys"(Not always add.). That means the "4gb mode" has a special
-> > > flow:
-> > > a. Always add bit32 in paddr_to_iopte.
-> > > b. Add bit32 only when PA < 0x40000000 in iopte_to_paddr.
-> > 
-> > I think this is probably at the heart of my misunderstanding. What is so
-> > special about PAs (is this HW PA or CPU PA?) below 0x40000000? Is this RAM
-> > or something else?
+> > Actually current mainline have a bug for this. So I tried to use another
+> > special patch[1] for it in v8.
 > 
-> SRAM and the HW registers.
+> If you're fixing a bug in mainline, I'd prefer to see that as a separate
+> patch.
+> 
+> > But the issue is not critical since MediaTek multimedia consumer(v4l2
+> > and drm) don't call iommu_iova_to_phys currently.
+> > 
+> > > 
+> > > The way I would like this quirk to work is that the io-pgtable code
+> > > basically sets bit 9 in the pte when bit 32 is set in the physical address,
+> > > and sets bit 4 in the pte when bit 33 is set in the physical address. It
+> > > would then do the opposite when converting a pte to a physical address.
+> > > 
+> > > That way, your driver can call the page table code directly with the high
+> > > addresses and we don't have to do any manual offsetting or range checking
+> > > in the page table code.
+> > 
+> > In this case, the mt8183 can work successfully while the "4gb
+> > mode"(mt8173/mt2712) can not.
+> > 
+> > In the "4gb mode", As the remap relationship above, we should always add
+> > bit32 in pte as we did in [2]. and need add bit32 in the
+> > "iova_to_phys"(Not always add.). That means the "4gb mode" has a special
+> > flow:
+> > a. Always add bit32 in paddr_to_iopte.
+> > b. Add bit32 only when PA < 0x40000000 in iopte_to_paddr.
+> 
+> I think this is probably at the heart of my misunderstanding. What is so
+> special about PAs (is this HW PA or CPU PA?) below 0x40000000? Is this RAM
+> or something else?
 
-Do we actually need to be able to map those in the IOMMU?
+SRAM and HW register that IOMMU can not access.
 
-Will
+(sorry, My mailbox has something wrong.)
