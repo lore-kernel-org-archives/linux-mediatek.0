@@ -1,72 +1,48 @@
 From: Stefan Roese <sr@denx.de>
-Subject: [PATCH net-next 3/4 v3] net: ethernet: mediatek: Rename NEXT_RX_DESP_IDX to NEXT_DESP_IDX
-Date: Fri, 16 Aug 2019 15:23:24 +0200
-Message-ID: <20190816132325.28426-3-sr@denx.de>
-References: <20190816132325.28426-1-sr@denx.de>
+Subject: [PATCH net-next 1/4 v3] dt-bindings: net: mediatek: Add support for MediaTek MT7628/88 SoC
+Date: Fri, 16 Aug 2019 15:23:22 +0200
+Message-ID: <20190816132325.28426-1-sr@denx.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20190816132325.28426-1-sr@denx.de>
 Sender: netdev-owner@vger.kernel.org
 To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org
-Cc: =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>, Daniel Golle <daniel@makrotopia.org>, Sean Wang <sean.wang@mediatek.com>, John Crispin <john@phrozen.org>
+Cc: =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>, Daniel Golle <daniel@makrotopia.org>, Sean Wang <sean.wang@mediatek.com>, John Crispin <john@phrozen.org>, devicetree@vger.kernel.org, Rob Herring <robh@kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Rename the NEXT_RX_DESP_IDX macro to NEXT_DESP_IDX, so that it better
-can be used for TX ops as well. This will be used in the upcoming
-MT7628/88 support (same functionality for RX and TX in this macro).
+Add compatible for the ethernet IP core on MT7628/88 SoCs. Its
+compatible with the older Ralink Rt5350F SoC. And OpenWrt already
+uses this compatible string for the MT76x8.
 
 Signed-off-by: Stefan Roese <sr@denx.de>
 Cc: René van Dorst <opensource@vdorst.com>
 Cc: Daniel Golle <daniel@makrotopia.org>
 Cc: Sean Wang <sean.wang@mediatek.com>
 Cc: John Crispin <john@phrozen.org>
+Cc: devicetree@vger.kernel.org
+Cc: Rob Herring <robh@kernel.org>
 ---
 v3:
 - No change
 
 v2:
-- New patch
+- New patch - bindings description moved to separate patch
 
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 4 ++--
- drivers/net/ethernet/mediatek/mtk_eth_soc.h | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ Documentation/devicetree/bindings/net/mediatek-net.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index bee2cdca66e7..d9978174b96a 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -903,7 +903,7 @@ static struct mtk_rx_ring *mtk_get_rx_ring(struct mtk_eth *eth)
- 
- 	for (i = 0; i < MTK_MAX_RX_RING_NUM; i++) {
- 		ring = &eth->rx_ring[i];
--		idx = NEXT_RX_DESP_IDX(ring->calc_idx, ring->dma_size);
-+		idx = NEXT_DESP_IDX(ring->calc_idx, ring->dma_size);
- 		if (ring->dma[idx].rxd2 & RX_DMA_DONE) {
- 			ring->calc_idx_update = true;
- 			return ring;
-@@ -952,7 +952,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 		if (unlikely(!ring))
- 			goto rx_done;
- 
--		idx = NEXT_RX_DESP_IDX(ring->calc_idx, ring->dma_size);
-+		idx = NEXT_DESP_IDX(ring->calc_idx, ring->dma_size);
- 		rxd = &ring->dma[idx];
- 		data = ring->data[idx];
- 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 088e2bc621f7..556644f28eae 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -39,7 +39,7 @@
- 				 NETIF_F_SG | NETIF_F_TSO | \
- 				 NETIF_F_TSO6 | \
- 				 NETIF_F_IPV6_CSUM)
--#define NEXT_RX_DESP_IDX(X, Y)	(((X) + 1) & ((Y) - 1))
-+#define NEXT_DESP_IDX(X, Y)	(((X) + 1) & ((Y) - 1))
- 
- #define MTK_MAX_RX_RING_NUM	4
- #define MTK_HW_LRO_DMA_SIZE	8
+diff --git a/Documentation/devicetree/bindings/net/mediatek-net.txt b/Documentation/devicetree/bindings/net/mediatek-net.txt
+index 770ff98d4524..72d03e07cf7c 100644
+--- a/Documentation/devicetree/bindings/net/mediatek-net.txt
++++ b/Documentation/devicetree/bindings/net/mediatek-net.txt
+@@ -12,6 +12,7 @@ Required properties:
+ 		"mediatek,mt7623-eth", "mediatek,mt2701-eth": for MT7623 SoC
+ 		"mediatek,mt7622-eth": for MT7622 SoC
+ 		"mediatek,mt7629-eth": for MT7629 SoC
++		"ralink,rt5350-eth": for Ralink Rt5350F and MT7628/88 SoC
+ - reg: Address and length of the register set for the device
+ - interrupts: Should contain the three frame engines interrupts in numeric
+ 	order. These are fe_int0, fe_int1 and fe_int2.
 -- 
 2.22.1
