@@ -1,86 +1,50 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Applied "ASoC: mediatek: mt6358: add delay after dmic clock on" to
- the asoc tree
-Date: Thu, 15 Aug 2019 18:14:25 +0100 (BST)
-Message-ID: <20190815171425.51A822742BC7@ypsilon.sirena.org.uk>
-References: <1564980997-11359-1-git-send-email-jiaxin.yu@mediatek.com>
+From: Sam Shih <sam.shih@mediatek.com>
+Subject: [PATCH v3 0/10] Add mt7629 and fix mt7628 pwm
+Date: Fri, 16 Aug 2019 15:21:18 +0800
+Message-ID: <1565940088-845-1-git-send-email-sam.shih@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1564980997-11359-1-git-send-email-jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, tzungbi-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eason.yen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <thierry.reding@gmail.com>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, John Crispin <john@phrozen.org>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, sam shih <sam.shih@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
+From: sam shih <sam.shih@mediatek.com>
 
-   ASoC: mediatek: mt6358: add delay after dmic clock on
+Changes since v2:
+- use num-pwms instead of mediatek,num-pwms.
+- rename the member from num_pwms to fallback_num_pwms to make it 
+  more obvious that it doesn't represent the actually used value.
+- add a dev_warn and a expressive comment to help other developers 
+  to not start adding num_pwms in the compatible_data.
 
-has been applied to the asoc tree at
+Changes since v1:
+- add some checks for backwards compatibility.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-5.4
+Sam Shih (3):
+  pwm: mediatek: add new property and fix mt7628 pwm
+  dt-bindings: pwm: update bindings for MT7628 SoC
+  arm: dts: mediatek: add mt7629 pwm support
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
+ .../devicetree/bindings/pwm/pwm-mediatek.txt      |  3 +++
+ arch/arm/boot/dts/mt7629.dtsi                     | 14 ++++++++++++++
+ drivers/pwm/pwm-mediatek.c                        | 15 ++++++++++++++-
+ 3 files changed, 31 insertions(+), 1 deletion(-)
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+Ryder Lee (7):
+  pwm: mediatek: add a property "num-pwms"
+  pwm: mediatek: allocate the clks array dynamically
+  pwm: mediatek: use pwm_mediatek as common prefix
+  dt-bindings: pwm: add a property "num-pwms"
+  arm64: dts: mt7622: add a property "num-pwms" for PWM node
+  arm: dts: mt7623: add a property "num-pwms" for PWM node
+  dt-bindings: pwm: update bindings for MT7629 SoC
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
->From ccb1fa21ef58a2ac15519bb878470762e967e8b3 Mon Sep 17 00:00:00 2001
-From: Jiaxin Yu <jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Date: Mon, 5 Aug 2019 12:56:37 +0800
-Subject: [PATCH] ASoC: mediatek: mt6358: add delay after dmic clock on
-
-Most dmics produce a high level when they receive clock. The difference
-between power-on and memory record time is about 10ms, but the dmic
-needs 50ms to output normal data.
-
-This commit add 100ms delay after SoC output clock so that we can cut
-off the pop noise at the beginning.
-
-Signed-off-by: Jiaxin Yu <jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Link: https://lore.kernel.org/r/1564980997-11359-1-git-send-email-jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
-Signed-off-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
----
- sound/soc/codecs/mt6358.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/sound/soc/codecs/mt6358.c b/sound/soc/codecs/mt6358.c
-index c17250aab2d0..bb737fd678cc 100644
---- a/sound/soc/codecs/mt6358.c
-+++ b/sound/soc/codecs/mt6358.c
-@@ -1730,6 +1730,10 @@ static int mt6358_dmic_enable(struct mt6358_priv *priv)
- 
- 	/* UL turn on */
- 	regmap_write(priv->regmap, MT6358_AFE_UL_SRC_CON0_L, 0x0003);
-+
-+	/* Prevent pop noise form dmic hw */
-+	msleep(100);
-+
- 	return 0;
- }
- 
+ .../devicetree/bindings/pwm/pwm-mediatek.txt  |   8 +-
+ arch/arm/boot/dts/mt7623.dtsi                 |   1 +
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi      |   1 +
+ drivers/pwm/pwm-mediatek.c                    | 226 +++++++++---------
+ 4 files changed, 126 insertions(+), 110 deletions(-)
 -- 
-2.20.1
+2.17.1
