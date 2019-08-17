@@ -1,81 +1,138 @@
-From: Hillf Danton <hdanton@sina.com>
-Subject: Re: [PATCH V5 3/5] iommu/dma-iommu: Handle deferred devices
-Date: Sat, 17 Aug 2019 11:39:14 +0800
-Message-ID: <20190817033914.4812-1-hdanton@sina.com>
-References: <20190815110944.3579-1-murphyt7@tcd.ie>
+From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+Subject: Re: [RFC,V2,1/2] media: dt-bindings: media: i2c: Add bindings for
+ OV02A10
+Date: Sat, 17 Aug 2019 11:53:05 +0800
+Message-ID: <1566013985.21623.9.camel@mhfsdcap03>
+References: <20190704084651.3105-1-dongchun.zhu@mediatek.com>
+ <20190704084651.3105-2-dongchun.zhu@mediatek.com>
+ <20190723074153.GA4606@paasikivi.fi.intel.com>
+ <ef65288c523f405396991bd6d757bba0@mtkmbs02n1.mediatek.inc>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <virtualization-bounces@lists.linux-foundation.org>
-In-Reply-To: <20190815110944.3579-1-murphyt7@tcd.ie>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/virtualization>,
-	<mailto:virtualization-request@lists.linux-foundation.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/virtualization/>
-List-Post: <mailto:virtualization@lists.linux-foundation.org>
-List-Help: <mailto:virtualization-request@lists.linux-foundation.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/virtualization>,
-	<mailto:virtualization-request@lists.linux-foundation.org?subject=subscribe>
-Sender: virtualization-bounces@lists.linux-foundation.org
-Errors-To: virtualization-bounces@lists.linux-foundation.org
-To: Tom Murphy <murphyt7@tcd.ie>
-Cc: Heiko Stuebner <heiko@sntech.de>, virtualization@lists.linux-foundation.org, linux-tegra@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>, Will Deacon <will@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Jean-Philippe Brucker <jean-philippe@linaro.org>, linux-samsung-soc@vger.kernel.org, Joerg Roedel <joro@8bytes.org>, iommu@lists.linux-foundation.org, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, linux-s390@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, David Woodhouse <dwmw2@infradead.org>, linux-kernel@vger.kernel.org, Rob Clark <robdclark@gmail.com>, Kukjin Kim <kgene@kernel.org>Ro
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <ef65288c523f405396991bd6d757bba0@mtkmbs02n1.mediatek.inc>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: sakari.ailus@iki.fi
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, drinkcat@chromium.org, srv_heupstream@mediatek.com, menghui.lin@mediatek.com, tfiga@google.com, shengnan.wang@mediatek.com, louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
-On Thu, 15 Aug 2019 12:09:41 +0100 Tom Murphy wrote:
-> 
-> Handle devices which defer their attach to the iommu in the dma-iommu api
-> 
-> Signed-off-by: Tom Murphy <murphyt7@tcd.ie>
-> ---
->  drivers/iommu/dma-iommu.c | 27 ++++++++++++++++++++++++++-
->  1 file changed, 26 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
-> index 2712fbc68b28..906b7fa14d3c 100644
-> --- a/drivers/iommu/dma-iommu.c
-> +++ b/drivers/iommu/dma-iommu.c
-> @@ -22,6 +22,7 @@
->  #include <linux/pci.h>
->  #include <linux/scatterlist.h>
->  #include <linux/vmalloc.h>
-> +#include <linux/crash_dump.h>
->  
->  struct iommu_dma_msi_page {
->  	struct list_head	list;
-> @@ -351,6 +352,21 @@ static int iommu_dma_init_domain(struct iommu_domain *domain, dma_addr_t base,
->  	return iova_reserve_iommu_regions(dev, domain);
->  }
->  
-> +static int handle_deferred_device(struct device *dev,
-> +	struct iommu_domain *domain)
-> +{
-> +	const struct iommu_ops *ops = domain->ops;
-> +
-> +	if (!is_kdump_kernel())
-> +		return 0;
-> +
-> +	if (unlikely(ops->is_attach_deferred &&
-> +		ops->is_attach_deferred(domain, dev)))
-> +		return iommu_attach_device(domain, dev);
-> +
-> +	return 0;
-> +}
-> +
->  /**
->   * dma_info_to_prot - Translate DMA API directions and attributes to IOMMU API
->   *                    page flags.
-> @@ -463,6 +479,9 @@ static dma_addr_t __iommu_dma_map(struct device *dev, phys_addr_t phys,
->  	size_t iova_off = iova_offset(iovad, phys);
->  	dma_addr_t iova;
->  
-> +	if (unlikely(handle_deferred_device(dev, domain)))
-> +		return DMA_MAPPING_ERROR;
-> +
->  	size = iova_align(iovad, size + iova_off);
->  
->  	iova = iommu_dma_alloc_iova(domain, size, dma_get_mask(dev), dev);
+Hi Sakari,
 
-iommu_map_atomic() is applied to __iommu_dma_map() in 2/5.
-Is it an atomic context currently given the mutex_lock() in
-iommu_attach_device()?
+On Tue, 2019-07-23 at 10:41 +0300, Sakari Ailus wrote:
+> 
+> Hi Dongchun,
+> 
+> On Thu, Jul 04, 2019 at 04:46:50PM +0800, dongchun.zhu@mediatek.com wrote:
+> > From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> >
+> > Add device tree binding documentation for the OV02A10 camera sensor.
+> >
+> > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > ---
+> >  .../devicetree/bindings/media/i2c/ov02a10.txt      | 43 ++++++++++++++++++++++
+> >  MAINTAINERS                                        |  7 ++++
+> >  2 files changed, 50 insertions(+)
+> >  create mode 100644
+> > Documentation/devicetree/bindings/media/i2c/ov02a10.txt
+> >
+> > diff --git a/Documentation/devicetree/bindings/media/i2c/ov02a10.txt
+> > b/Documentation/devicetree/bindings/media/i2c/ov02a10.txt
+> > new file mode 100644
+> > index 0000000..d40aa87
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/media/i2c/ov02a10.txt
+> > @@ -0,0 +1,43 @@
+> > +* Omnivision OV02A10 MIPI CSI-2 sensor
+> > +
+> > +Required Properties:
+> > +- compatible: shall be "ovti,ov02a10"
+> > +- clocks: reference to the xvclk input clock
+> > +- clock-names: shall be "xvclk"
+> > +- avdd-supply: Analog voltage supply, 2.8 volts
+> > +- dovdd-supply: Digital I/O voltage supply, 1.8 volts
+> > +- dvdd-supply: Digital core voltage supply, 1.8 volts
+> > +- reset-gpios: Low active reset gpio
+> > +
+> > +The device node shall contain one 'port' child node with an
+> > +'endpoint' subnode for its digital output video port, in accordance
+> > +with the video interface bindings defined in
+> > +Documentation/devicetree/bindings/media/video-interfaces.txt.
+> > +The endpoint optional property 'data-lanes' shall be "<1>".
+> 
+> How many lanes does the module (or the sensor) have?
+> 
+
+>From sensor datasheet, OV02A10 supports 1-lane MIPI interface.
+
+> > +
+> > +Example:
+> > +&i2c4 {
+> > +ov02a10: camera-sensor@3d {
+> > +compatible = "ovti,ov02a10";
+> > +reg = <0x3d>;
+> > +pinctrl-names = "default";
+> > +pinctrl-0 = <&camera_pins_cam1_mclk_on>;
+> > +
+> > +clocks = <&topckgen CLK_TOP_MUX_CAMTG2>,
+> > +<&topckgen CLK_TOP_UNIVP_192M_D8>;
+> > +clock-names = "xvclk", "freq_mux";
+> > +
+> > +avdd-supply = <&mt6358_vcama1_reg>;
+> > +dvdd-supply = <&mt6358_vcn18_reg>;
+> > +dovdd-supply = <&mt6358_vcamio_reg>;
+> > +pwdn-gpios = <&pio 107 1>;
+> > +reset-gpios = <&pio 109 1>;
+> > +
+> > +port {
+> > +   ov02a10_core: endpoint {
+> > +       remote-endpoint = <&ov02a10_0>;
+> 
+> Indentation is still wrong. :-(
+> 
+
+Fixed in next release.
+
+> > +   data-lanes = <1>;
+> > +};
+> > +};
+> > +};
+> > +};
+> > diff --git a/MAINTAINERS b/MAINTAINERS index 5cfbea4..62b81ff 100644
+> > --- a/MAINTAINERS
+> > +++ b/MAINTAINERS
+> > @@ -11571,6 +11571,13 @@ T:git git://linuxtv.org/media_tree.git
+> >  S:Maintained
+> >  F:drivers/media/i2c/ov13858.c
+> >
+> > +OMNIVISION OV02A10 SENSOR DRIVER
+> > +M:Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > +L:linux-media@vger.kernel.org
+> > +T:git git://linuxtv.org/media_tree.git
+> > +S:Maintained
+> > +F:Documentation/devicetree/bindings/media/i2c/ov02a10.txt
+> > +
+> >  OMNIVISION OV2680 SENSOR DRIVER
+> >  M:Rui Miguel Silva <rmfrfs@gmail.com>
+> >  L:linux-media@vger.kernel.org
+> 
+> --
+> Kind regards,
+> 
+> Sakari Ailus
+> sakari.ailus@linux.intel.com
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> *********************MEDIATEK Confidential/Internal Use*********************
