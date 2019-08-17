@@ -1,17 +1,17 @@
 From: Dongchun Zhu <dongchun.zhu@mediatek.com>
 Subject: Re: [RFC,V2,1/2] media: dt-bindings: media: i2c: Add bindings for
  OV02A10
-Date: Sat, 17 Aug 2019 11:53:05 +0800
-Message-ID: <1566013985.21623.9.camel@mhfsdcap03>
+Date: Sat, 17 Aug 2019 13:03:39 +0800
+Message-ID: <1566018219.21623.18.camel@mhfsdcap03>
 References: <20190704084651.3105-1-dongchun.zhu@mediatek.com>
  <20190704084651.3105-2-dongchun.zhu@mediatek.com>
- <20190723074153.GA4606@paasikivi.fi.intel.com>
- <ef65288c523f405396991bd6d757bba0@mtkmbs02n1.mediatek.inc>
+ <20190722234924.GA22604@bogus>
+ <5d5d644af9334609bb7c3ff745b2e754@mtkmbs02n1.mediatek.inc>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <ef65288c523f405396991bd6d757bba0@mtkmbs02n1.mediatek.inc>
+In-Reply-To: <5d5d644af9334609bb7c3ff745b2e754@mtkmbs02n1.mediatek.inc>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -21,16 +21,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: sakari.ailus@iki.fi
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, drinkcat@chromium.org, srv_heupstream@mediatek.com, menghui.lin@mediatek.com, tfiga@google.com, shengnan.wang@mediatek.com, louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, drinkcat@chromium.org, srv_heupstream@mediatek.com, menghui.lin@mediatek.com, Sakari Ailus <sakari.ailus@iki.fi>, tfiga@google.com, shengnan.wang@mediatek.com, louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
-Hi Sakari,
+Hi Rob,
 
-On Tue, 2019-07-23 at 10:41 +0300, Sakari Ailus wrote:
-> 
-> Hi Dongchun,
+On Mon, 2019-07-22 at 18:49 -0500, Rob Herring wrote:
 > 
 > On Thu, Jul 04, 2019 at 04:46:50PM +0800, dongchun.zhu@mediatek.com wrote:
 > > From: Dongchun Zhu <dongchun.zhu@mediatek.com>
@@ -68,12 +65,6 @@ On Tue, 2019-07-23 at 10:41 +0300, Sakari Ailus wrote:
 > > +with the video interface bindings defined in
 > > +Documentation/devicetree/bindings/media/video-interfaces.txt.
 > > +The endpoint optional property 'data-lanes' shall be "<1>".
-> 
-> How many lanes does the module (or the sensor) have?
-> 
-
->From sensor datasheet, OV02A10 supports 1-lane MIPI interface.
-
 > > +
 > > +Example:
 > > +&i2c4 {
@@ -91,17 +82,17 @@ On Tue, 2019-07-23 at 10:41 +0300, Sakari Ailus wrote:
 > > +dvdd-supply = <&mt6358_vcn18_reg>;
 > > +dovdd-supply = <&mt6358_vcamio_reg>;
 > > +pwdn-gpios = <&pio 107 1>;
+> 
+> Not documented. If you need this, use 'powerdown-gpios' instead.
+> 
+
+Fixed in next release.
+
 > > +reset-gpios = <&pio 109 1>;
 > > +
 > > +port {
 > > +   ov02a10_core: endpoint {
 > > +       remote-endpoint = <&ov02a10_0>;
-> 
-> Indentation is still wrong. :-(
-> 
-
-Fixed in next release.
-
 > > +   data-lanes = <1>;
 > > +};
 > > +};
@@ -124,12 +115,9 @@ Fixed in next release.
 > >  OMNIVISION OV2680 SENSOR DRIVER
 > >  M:Rui Miguel Silva <rmfrfs@gmail.com>
 > >  L:linux-media@vger.kernel.org
-> 
-> --
-> Kind regards,
-> 
-> Sakari Ailus
-> sakari.ailus@linux.intel.com
+> > --
+> > 2.9.2
+> >
 > 
 > _______________________________________________
 > Linux-mediatek mailing list
