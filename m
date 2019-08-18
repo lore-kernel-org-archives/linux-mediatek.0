@@ -1,26 +1,26 @@
-From: Frank Wunderlich <frank-w@public-files.de>
-Subject: Re: [PATCH v6 00/13] implement poweroff for mt6323 / bpi-r2
-Date: Sun, 18 Aug 2019 16:30:01 +0200
-Message-ID: <B8BBF532-0642-4BB6-818B-4376E1E70431@public-files.de>
-References: <20190818135611.7776-1-frank-w@public-files.de>
-Reply-To: frank-w@public-files.de
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH net-next 1/4 v3] dt-bindings: net: mediatek: Add
+ support for MediaTek MT7628/88 SoC
+Date: Sun, 18 Aug 2019 14:16:05 -0700 (PDT)
+Message-ID: <20190818.141605.39249439314908619.davem@davemloft.net>
+References: <20190816132325.28426-1-sr@denx.de>
 Mime-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190818135611.7776-1-frank-w@public-files.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-mediatek@lists.infradead.org
-Cc: linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, Sean Wang <sean.wang@mediatek.com>, "linux-arm-kernel @ lists . infradead . org Alessandro Zummo" <a.zummo@towertech.it>, linux-pm@vger.kernel.org, Josef Friedl <josef.friedl@speed.at>, linux-kernel@vger.kernel.org, Tianping Fang <tianping.fang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Sebastian Reichel <sre@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Eddie Huang <eddie.huang@mediatek.com>, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20190816132325.28426-1-sr@denx.de>
+Sender: netdev-owner@vger.kernel.org
+To: sr@denx.de
+Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, opensource@vdorst.com, daniel@makrotopia.org, sean.wang@mediatek.com, john@phrozen.org, devicetree@vger.kernel.org, robh@kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Arg, missed a comma between
+From: Stefan Roese <sr@denx.de>
+Date: Fri, 16 Aug 2019 15:23:22 +0200
 
-linux-arm-kernel@lists=2Einfradead=2Eorg
- and
-Alessandro Zummo
+> Add compatible for the ethernet IP core on MT7628/88 SoCs. Its
+> compatible with the older Ralink Rt5350F SoC. And OpenWrt already
+> uses this compatible string for the MT76x8.
+> 
+> Signed-off-by: Stefan Roese <sr@denx.de>
 
-Will send the series to linux-arm-kernel later
-
-Sorry for that
+Applied.
