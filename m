@@ -1,58 +1,80 @@
-From: Andrey Konovalov <andreyknvl@google.com>
+From: Andrey Ryabinin <aryabinin@virtuozzo.com>
 Subject: Re: [PATCH] arm64: kasan: fix phys_to_virt() false positive on
  tag-based kasan
-Date: Mon, 19 Aug 2019 16:05:22 +0200
-Message-ID: <CAAeHK+w7cTGN8SgWQs0bPjPOrizqfUoMnJWTvUkCqv17Qt=3oQ@mail.gmail.com>
+Date: Mon, 19 Aug 2019 17:06:33 +0300
+Message-ID: <8df7ec20-2fd2-8076-9a34-ac4c9785e91a@virtuozzo.com>
 References: <20190819114420.2535-1-walter-zh.wu@mediatek.com>
- <20190819125625.bu3nbrldg7te5kwc@willie-the-truck> <20190819132347.GB9927@lakrids.cambridge.arm.com>
+ <20190819125625.bu3nbrldg7te5kwc@willie-the-truck>
+ <20190819132347.GB9927@lakrids.cambridge.arm.com>
  <20190819133441.ejomv6cprdcz7hh6@willie-the-truck>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20190819133441.ejomv6cprdcz7hh6@willie-the-truck>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Will Deacon <will@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Walter Wu <walter-zh.wu@mediatek.com>, Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, wsd_upstream@mediatek.com, LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>, linux-mediatek@lists.infradead.org, Linux ARM <linux-arm-kernel@lists.infradead.org>
+To: Will Deacon <will@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+Cc: Walter Wu <walter-zh.wu@mediatek.com>, Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Andrey Konovalov <andreyknvl@google.com>, wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org, kasan-dev@googlegroups.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Aug 19, 2019 at 3:34 PM Will Deacon <will@kernel.org> wrote:
->
+
+
+On 8/19/19 4:34 PM, Will Deacon wrote:
 > On Mon, Aug 19, 2019 at 02:23:48PM +0100, Mark Rutland wrote:
-> > On Mon, Aug 19, 2019 at 01:56:26PM +0100, Will Deacon wrote:
-> > > On Mon, Aug 19, 2019 at 07:44:20PM +0800, Walter Wu wrote:
-> > > > __arm_v7s_unmap() call iopte_deref() to translate pyh_to_virt address,
-> > > > but it will modify pointer tag into 0xff, so there is a false positive.
-> > > >
-> > > > When enable tag-based kasan, phys_to_virt() function need to rewrite
-> > > > its original pointer tag in order to avoid kasan report an incorrect
-> > > > memory corruption.
-> > >
-> > > Hmm. Which tree did you see this on? We've recently queued a load of fixes
-> > > in this area, but I /thought/ they were only needed after the support for
-> > > 52-bit virtual addressing in the kernel.
-> >
-> > I'm seeing similar issues in the virtio blk code (splat below), atop of
-> > the arm64 for-next/core branch. I think this is a latent issue, and
-> > people are only just starting to test with KASAN_SW_TAGS.
-> >
-> > It looks like the virtio blk code will round-trip a SLUB-allocated pointer from
-> > virt->page->virt, losing the per-object tag in the process.
-> >
-> > Our page_to_virt() seems to get a per-page tag, but this only makes
-> > sense if you're dealing with the page allocator, rather than something
-> > like SLUB which carves a page into smaller objects giving each object a
-> > distinct tag.
-> >
-> > Any round-trip of a pointer from SLUB is going to lose the per-object
-> > tag.
->
+>> On Mon, Aug 19, 2019 at 01:56:26PM +0100, Will Deacon wrote:
+>>> On Mon, Aug 19, 2019 at 07:44:20PM +0800, Walter Wu wrote:
+>>>> __arm_v7s_unmap() call iopte_deref() to translate pyh_to_virt address,
+>>>> but it will modify pointer tag into 0xff, so there is a false positive.
+>>>>
+>>>> When enable tag-based kasan, phys_to_virt() function need to rewrite
+>>>> its original pointer tag in order to avoid kasan report an incorrect
+>>>> memory corruption.
+>>>
+>>> Hmm. Which tree did you see this on? We've recently queued a load of fixes
+>>> in this area, but I /thought/ they were only needed after the support for
+>>> 52-bit virtual addressing in the kernel.
+>>
+>> I'm seeing similar issues in the virtio blk code (splat below), atop of
+>> the arm64 for-next/core branch. I think this is a latent issue, and
+>> people are only just starting to test with KASAN_SW_TAGS.
+>>
+>> It looks like the virtio blk code will round-trip a SLUB-allocated pointer from
+>> virt->page->virt, losing the per-object tag in the process.
+>>
+>> Our page_to_virt() seems to get a per-page tag, but this only makes
+>> sense if you're dealing with the page allocator, rather than something
+>> like SLUB which carves a page into smaller objects giving each object a
+>> distinct tag.
+>>
+>> Any round-trip of a pointer from SLUB is going to lose the per-object
+>> tag.
+> 
 > Urgh, I wonder how this is supposed to work?
->
-> If we end up having to check the KASAN shadow for *_to_virt(), then why
-> do we need to store anything in the page flags at all? Andrey?
+> 
 
-As per 2813b9c0 ("kasan, mm, arm64: tag non slab memory allocated via
-pagealloc") we should only save a non-0xff tag in page flags for non
-slab pages.
+We supposed to ignore pointers with 0xff tags. We do ignore them when memory access checked,
+but not in kfree() path.
+This untested patch should fix the issue:
 
-Could you share your .config so I can reproduce this?
+
+
+---
+ mm/kasan/common.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mm/kasan/common.c b/mm/kasan/common.c
+index 895dc5e2b3d5..0a81cc328049 100644
+--- a/mm/kasan/common.c
++++ b/mm/kasan/common.c
+@@ -407,7 +407,7 @@ static inline bool shadow_invalid(u8 tag, s8 shadow_byte)
+ 		return shadow_byte < 0 ||
+ 			shadow_byte >= KASAN_SHADOW_SCALE_SIZE;
+ 	else
+-		return tag != (u8)shadow_byte;
++		return (tag != KASAN_TAG_KERNEL) && (tag != (u8)shadow_byte);
+ }
+ 
+ static bool __kasan_slab_free(struct kmem_cache *cache, void *object,
+-- 
+2.21.0
