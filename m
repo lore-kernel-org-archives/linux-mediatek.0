@@ -1,99 +1,310 @@
-From: Walter Wu <walter-zh.wu@mediatek.com>
-Subject: [PATCH] arm64: kasan: fix phys_to_virt() false positive on tag-based kasan
-Date: Mon, 19 Aug 2019 19:44:20 +0800
-Message-ID: <20190819114420.2535-1-walter-zh.wu@mediatek.com>
+From: Marc Zyngier <maz@kernel.org>
+Subject: Re: [PATCH v2 11/11] arm64: dts: add dts nodes for MT6779
+Date: Mon, 19 Aug 2019 13:07:00 +0100
+Message-ID: <c533371d-efcd-59dc-0172-3f5775221302@kernel.org>
+References: <1566206502-4347-1-git-send-email-mars.cheng@mediatek.com>
+ <1566206502-4347-12-git-send-email-mars.cheng@mediatek.com>
+ <adec38bf-735b-9131-2b9d-1e427d47f88d@kernel.org>
+ <1566214950.17081.3.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1566214950.17081.3.camel@mtkswgap22>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Andrey Konovalov <andreyknvl@google.com>
-Cc: kasan-dev@googlegroups.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Walter Wu <walter-zh.wu@mediatek.com>
+To: Mars Cheng <mars.cheng@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, Stephen Boyd <sboyd@kernel.org>, Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, devicetree@vger.kernel.org, CC Hwang <cc.hwang@mediatek.com>, wsd_upstream@mediatek.com, Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, mtk01761 <wendell.lin@mediatek.com>, linux-clk@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-__arm_v7s_unmap() call iopte_deref() to translate pyh_to_virt address,
-but it will modify pointer tag into 0xff, so there is a false positive.
+Hi Mars,
 
-When enable tag-based kasan, phys_to_virt() function need to rewrite
-its original pointer tag in order to avoid kasan report an incorrect
-memory corruption.
+On 19/08/2019 12:42, Mars Cheng wrote:
+> Hi Marc
+> 
+> On Mon, 2019-08-19 at 10:40 +0100, Marc Zyngier wrote:
+>> On 19/08/2019 10:21, Mars Cheng wrote:
+>>> this adds initial MT6779 dts settings fo board support,
+>>> including cpu, gic, timer, ccf, pinctrl, uart...etc.
+>>>
+>>> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+>>> ---
+>>>  arch/arm64/boot/dts/mediatek/Makefile        |    1 +
+>>>  arch/arm64/boot/dts/mediatek/mt6779-evb.dtsi |   31 ++++
+>>>  arch/arm64/boot/dts/mediatek/mt6779.dts      |  229 ++++++++++++++++++++++++++
+>>>  3 files changed, 261 insertions(+)
+>>>  create mode 100644 arch/arm64/boot/dts/mediatek/mt6779-evb.dtsi
+>>>  create mode 100644 arch/arm64/boot/dts/mediatek/mt6779.dts
+>>>
+>>> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+>>> index 458bbc4..53f1c61 100644
+>>> --- a/arch/arm64/boot/dts/mediatek/Makefile
+>>> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+>>> @@ -1,6 +1,7 @@
+>>>  # SPDX-License-Identifier: GPL-2.0
+>>>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt2712-evb.dtb
+>>>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6755-evb.dtb
+>>> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt6779-evb.dtb
+>>>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-evb.dtb
+>>>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
+>>>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
+>>> diff --git a/arch/arm64/boot/dts/mediatek/mt6779-evb.dtsi b/arch/arm64/boot/dts/mediatek/mt6779-evb.dtsi
+>>> new file mode 100644
+>>> index 0000000..164f5cb
+>>> --- /dev/null
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt6779-evb.dtsi
+>>> @@ -0,0 +1,31 @@
+>>> +// SPDX-License-Identifier: GPL-2.0+
+>>> +/*
+>>> + * Copyright (c) 2019 MediaTek Inc.
+>>> + * Author: Mars.C <mars.cheng@mediatek.com>
+>>> + *
+>>> + */
+>>> +
+>>> +/dts-v1/;
+>>> +#include "mt6779.dtsi"
+>>> +
+>>> +/ {
+>>> +	model = "MediaTek MT6779 EVB";
+>>> +	compatible = "mediatek,mt6779-evb", "mediatek,mt6779";
+>>> +
+>>> +	aliases {
+>>> +		serial0 = &uart0;
+>>> +	};
+>>> +
+>>> +	memory@40000000 {
+>>> +		device_type = "memory";
+>>> +		reg = <0 0x40000000 0 0x1e800000>;
+>>> +	};
+>>> +
+>>> +	chosen {
+>>> +		stdout-path = "serial0:921600n8";
+>>> +	};
+>>> +};
+>>> +
+>>> +&uart0 {
+>>> +	status = "okay";
+>>> +};
+>>> diff --git a/arch/arm64/boot/dts/mediatek/mt6779.dts b/arch/arm64/boot/dts/mediatek/mt6779.dts
+>>> new file mode 100644
+>>> index 0000000..daa25b7
+>>> --- /dev/null
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt6779.dts
+>>> @@ -0,0 +1,229 @@
+>>> +// SPDX-License-Identifier: GPL-2.0+
+>>> +/*
+>>> + * Copyright (c) 2019 MediaTek Inc.
+>>> + * Author: Mars.C <mars.cheng@mediatek.com>
+>>> + *
+>>> + */
+>>> +
+>>> +#include <dt-bindings/clock/mt6779-clk.h>
+>>> +#include <dt-bindings/interrupt-controller/irq.h>
+>>> +#include <dt-bindings/interrupt-controller/arm-gic.h>
+>>> +
+>>> +/ {
+>>> +	compatible = "mediatek,mt6779";
+>>> +	interrupt-parent = <&sysirq>;
+>>> +	#address-cells = <2>;
+>>> +	#size-cells = <2>;
+>>> +
+>>> +	psci {
+>>> +		compatible = "arm,psci-0.2";
+>>> +		method = "smc";
+>>> +	};
+>>> +
+>>> +	cpus {
+>>> +		#address-cells = <1>;
+>>> +		#size-cells = <0>;
+>>> +
+>>> +		cpu0: cpu@0 {
+>>> +			device_type = "cpu";
+>>> +			compatible = "arm,cortex-a55";
+>>> +			enable-method = "psci";
+>>> +			reg = <0x000>;
+>>> +		};
+>>> +
+>>> +		cpu1: cpu@1 {
+>>> +			device_type = "cpu";
+>>> +			compatible = "arm,cortex-a55";
+>>> +			enable-method = "psci";
+>>> +			reg = <0x100>;
+>>> +		};
+>>> +
+>>> +		cpu2: cpu@2 {
+>>> +			device_type = "cpu";
+>>> +			compatible = "arm,cortex-a55";
+>>> +			enable-method = "psci";
+>>> +			reg = <0x200>;
+>>> +		};
+>>> +
+>>> +		cpu3: cpu@3 {
+>>> +			device_type = "cpu";
+>>> +			compatible = "arm,cortex-a55";
+>>> +			enable-method = "psci";
+>>> +			reg = <0x300>;
+>>> +		};
+>>> +
+>>> +		cpu4: cpu@4 {
+>>> +			device_type = "cpu";
+>>> +			compatible = "arm,cortex-a55";
+>>> +			enable-method = "psci";
+>>> +			reg = <0x400>;
+>>> +		};
+>>> +
+>>> +		cpu5: cpu@5 {
+>>> +			device_type = "cpu";
+>>> +			compatible = "arm,cortex-a55";
+>>> +			enable-method = "psci";
+>>> +			reg = <0x500>;
+>>> +		};
+>>> +
+>>> +		cpu6: cpu@6 {
+>>> +			device_type = "cpu";
+>>> +			compatible = "arm,cortex-a75";
+>>> +			enable-method = "psci";
+>>> +			reg = <0x600>;
+>>> +		};
+>>> +
+>>> +		cpu7: cpu@7 {
+>>> +			device_type = "cpu";
+>>> +			compatible = "arm,cortex-a75";
+>>> +			enable-method = "psci";
+>>> +			reg = <0x700>;
+>>> +		};
+>>> +	};
+>>> +
+>>> +	clk26m: oscillator@0 {
+>>> +		compatible = "fixed-clock";
+>>> +		#clock-cells = <0>;
+>>> +		clock-frequency = <26000000>;
+>>> +		clock-output-names = "clk26m";
+>>> +	};
+>>> +
+>>> +	clk32k: oscillator@1 {
+>>> +		compatible = "fixed-clock";
+>>> +		#clock-cells = <0>;
+>>> +		clock-frequency = <32768>;
+>>> +		clock-output-names = "clk32k";
+>>> +	};
+>>> +
+>>> +	uart_clk: dummy26m {
+>>> +		compatible = "fixed-clock";
+>>> +		clock-frequency = <26000000>;
+>>> +		#clock-cells = <0>;
+>>> +	};
+>>> +
+>>> +	timer {
+>>> +		compatible = "arm,armv8-timer";
+>>> +		interrupt-parent = <&gic>;
+>>> +		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW>,
+>>> +			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW>,
+>>> +			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW>,
+>>> +			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>;
+>>> +	};
+>>> +
+>>> +	soc {
+>>> +		#address-cells = <2>;
+>>> +		#size-cells = <2>;
+>>> +		compatible = "simple-bus";
+>>> +		ranges;
+>>> +
+>>> +		gic: interrupt-controller@0c000000 {
+>>> +			compatible = "arm,gic-v3";
+>>> +			#interrupt-cells = <3>;
+>>
+>> You also haven't described the CPU PMUs. Depending on how they are wired
+>> (SPIs or PPIs), you may have to change the interrupt-cells property to
+>> include a cell for the PPI partitioning.
+>>
+> 
+> pmu nodes would be:
+> 
+>         pmu {
+>                 compatible = "arm,armv8-pmuv3";
+>                 interrupt-parent = <&gic>;
+>                 interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW>;
+>         };
+> 
+>         dsu-pmu-0 {
+>                 compatible = "arm,dsu-pmu";
+>                 interrupts = <GIC_SPI 18 IRQ_TYPE_LEVEL_HIGH>;
+>                 cpus = <&cpu0>, <&cpu1>, <&cpu2>, <&cpu3>,
+>                         <&cpu4>, <&cpu5>, <&cpu6>, <&cpu7>;
+>         };
+> 
+> so I think interrupt-cells could be <3>, will add pmu nodes in v3.
 
-BUG: KASAN: double-free or invalid-free in __arm_v7s_unmap+0x720/0xda4
-Pointer tag: [ff], memory tag: [c1]
+No, that's wrong, at least for the CPU pmu node.
 
-Call trace:
- dump_backtrace+0x0/0x1d4
- show_stack+0x14/0x1c
- dump_stack+0xe8/0x140
- print_address_description+0x80/0x2f0
- kasan_report_invalid_free+0x58/0x74
- __kasan_slab_free+0x1e4/0x220
- kasan_slab_free+0xc/0x18
- kmem_cache_free+0xfc/0x884
- __arm_v7s_unmap+0x720/0xda4
- __arm_v7s_map+0xc8/0x774
- arm_v7s_map+0x80/0x158
- mtk_iommu_map+0xb4/0xe0
- iommu_map+0x154/0x450
- iommu_map_sg+0xe4/0x150
- iommu_dma_map_sg+0x214/0x4ec
- __iommu_map_sg_attrs+0xf0/0x110
- ion_map_dma_buf+0xe8/0x114
- dma_buf_map_attachment+0x4c/0x80
- disp_sync_prepare_buf+0x378/0x820
- _ioctl_prepare_buffer+0x130/0x870
- mtk_disp_mgr_ioctl+0x5c4/0xab0
- do_vfs_ioctl+0x8e0/0x15a4
- __arm64_sys_ioctl+0x8c/0xb4
- el0_svc_common+0xe4/0x1e0
- el0_svc_handler+0x30/0x3c
- el0_svc+0x8/0xc
+First, you need two of them (one for the A55s, one for the A75s).
+Then you need to partition the corresponding PPI so that they can be
+described as separate affinity sets.
+Finally, this implies that #interrupt-cells goes up to 4, and all the
+interrupts directly routed to the GIC must be updated.
 
-Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
----
- arch/arm64/include/asm/kasan.h  |  1 -
- arch/arm64/include/asm/memory.h | 10 ++++++++++
- 2 files changed, 10 insertions(+), 1 deletion(-)
+You should have something like this:
 
-diff --git a/arch/arm64/include/asm/kasan.h b/arch/arm64/include/asm/kasan.h
-index b52aacd2c526..59894cafad60 100644
---- a/arch/arm64/include/asm/kasan.h
-+++ b/arch/arm64/include/asm/kasan.h
-@@ -5,7 +5,6 @@
- #ifndef __ASSEMBLY__
- 
- #include <linux/linkage.h>
--#include <asm/memory.h>
- #include <asm/pgtable-types.h>
- 
- #define arch_kasan_set_tag(addr, tag)	__tag_set(addr, tag)
-diff --git a/arch/arm64/include/asm/memory.h b/arch/arm64/include/asm/memory.h
-index 8ffcf5a512bb..75af5ba9ff22 100644
---- a/arch/arm64/include/asm/memory.h
-+++ b/arch/arm64/include/asm/memory.h
-@@ -171,6 +171,7 @@
- 
- #include <linux/bitops.h>
- #include <linux/mmdebug.h>
-+#include <asm/kasan.h>
- 
- extern s64			memstart_addr;
- /* PHYS_OFFSET - the physical address of the start of memory. */
-@@ -282,7 +283,16 @@ static inline phys_addr_t virt_to_phys(const volatile void *x)
- #define phys_to_virt phys_to_virt
- static inline void *phys_to_virt(phys_addr_t x)
- {
-+#ifdef CONFIG_KASAN_SW_TAGS
-+	unsigned long addr = __phys_to_virt(x);
-+	u8 *tag = (void *)(addr >> KASAN_SHADOW_SCALE_SHIFT)
-+				+ KASAN_SHADOW_OFFSET;
-+
-+	addr = __tag_set(addr, *tag);
-+	return (void *)addr;
-+#else
- 	return (void *)(__phys_to_virt(x));
-+#endif
- }
- 
- /*
+	&gic {
+		ppi-partitions {
+			cluster0: interrupt-partition-0 {
+				affinity = <&cpu0 &cpu1 &cpu2
+                                            &cpu3 &cpu4 &cpu5>;
+			};
+
+			cluster1: interrupt-partition-1 {
+				affinity = <&cpu6 &cpu7>;
+			};
+	};
+
+	pmu_a55 {
+		compatible = "arm,cortex-a55-pmu", "arm,armv8-pmuv3";
+		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW &cluster0>;
+	};
+
+	pmu_a75 {
+		compatible = "arm,cortex-a75-pmu", "arm,armv8-pmuv3";
+		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW &cluster1>;
+	};
+
+Please see the rk3399 usage of the binding, as it is the canonical example.
+
+> 
+>>
+>>> +			#address-cells = <2>;
+>>> +			#size-cells = <2>;
+>>> +			#redistributor-regions = <1>;
+>>
+>> This is the default, so this can be omitted.
+>>
+> 
+> Got it, will remove it in v3.
+> 
+>>> +			interrupt-parent = <&gic>;
+>>> +			interrupt-controller;
+>>> +			reg = <0 0x0c000000 0 0x40000>,  /* GICD */
+>>> +			      <0 0x0c040000 0 0x200000>, /* GICR */
+>>> +			      <0 0x0c400000 0 0x2000>,   /* GICC */
+>>> +			      <0 0x0c410000 0 0x1000>,   /* GICH */
+>>> +			      <0 0x0c420000 0 0x2000>;   /* GICV */
+>>
+>> Where do the last 3 ranges come from? Neither Cortex-A55 nor A75 have
+>> the memory-mapped CPU interface. It looks like a copy/paste from another
+>> SoC...
+>>
+> 
+> My bad, should remove the last 3 interfaces. will do in v3.
+> 
+>>> +			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
+>>> +		};
+>>
+>> And no ITS?
+>>
+> 
+> No, we don't have ITS support in HW.
+
+That's pretty sad.
+
+	M.
 -- 
-2.18.0
+Jazz is not dead, it just smells funny...
