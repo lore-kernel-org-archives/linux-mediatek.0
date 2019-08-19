@@ -1,11 +1,19 @@
-From: <dongchun.zhu@mediatek.com>
-Subject: [V3, 0/2] media: Add support for OV02A10 sensor
-Date: Mon, 19 Aug 2019 11:43:29 +0800
-Message-ID: <20190819034331.13098-1-dongchun.zhu@mediatek.com>
+From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+Subject: Re: [RFC,V2,1/2] media: dt-bindings: media: i2c: Add bindings for
+ OV02A10
+Date: Mon, 19 Aug 2019 13:39:30 +0800
+Message-ID: <1566193170.21623.46.camel@mhfsdcap03>
+References: <20190704084651.3105-1-dongchun.zhu@mediatek.com>
+ <20190704084651.3105-2-dongchun.zhu@mediatek.com>
+ <20190723074153.GA4606@paasikivi.fi.intel.com>
+ <ef65288c523f405396991bd6d757bba0@mtkmbs02n1.mediatek.inc>
+ <1566013985.21623.9.camel@mhfsdcap03>
+ <20190817213207.GC3504@valkosipuli.retiisi.org.uk>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190817213207.GC3504@valkosipuli.retiisi.org.uk>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -15,48 +23,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: mchehab@kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, sakari.ailus@linux.intel.com, drinkcat@chromium.org, tfiga@chromium.org, matthias.bgg@gmail.com, bingbu.cao@intel.com
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com, shengnan.wang@mediatek.com, sj.huang@mediatek.com, linux-mediatek@lists.infradead.org, dongchun.zhu@mediatek.com, louis.kuo@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+To: Sakari Ailus <sakari.ailus@iki.fi>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, drinkcat@chromium.org, srv_heupstream@mediatek.com, tfiga@google.com, shengnan.wang@mediatek.com, louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+Hi Sakari,
 
-Hello,
-
-This patch adds driver and bindings for Omnivision's OV02A10 2 megapixel CMOS 1/5" sensor,
-which has a single MIPI lane interface and output format of 10-bit Raw.
-
-The driver is implemented wth V4L2 framework.
-1. Async registered as a V4L2 I2C sub-device.
-2. A media entity that can provide several source pads and sink pads to link with other device like Seninf, ISP one after another
-   to create a default overall camera topology, image frame or meta-data from sensor can flow through particular path to output
-   preview or capture image or 3A info.
-
-Changes of v3 are mainly addressing comments from Rob, Sakari, Bingbu.
- - Fix coding style errors in dt-bindings
- - Use macro flag to describle basic line 1224 when updating v-blanking
- - Remove unnecessary debug log in driver
-
-Mainly changes of v2 are addressing the comments from Nicolas, Bingbu, Sakari, Rob,
-including,
- - Put dt binding before driver in series
- - Add MAINTAINERS entries
- - Squash the MAINTAINERS entry and Kconfig to driver patch
- - Add rotation support for driver
- - Fix other reviewed issues in v1
-
-Dongchun Zhu (2):
-  media: dt-bindings: media: i2c: Add bindings for OV02A10
-  media: i2c: Add Omnivision OV02A10 camera sensor driver
-
- .../devicetree/bindings/media/i2c/ov02a10.txt      |   54 ++
- MAINTAINERS                                        |    8 +
- drivers/media/i2c/Kconfig                          |   11 +
- drivers/media/i2c/Makefile                         |    1 +
- drivers/media/i2c/ov02a10.c                        | 1018 ++++++++++++++++++++
- 5 files changed, 1092 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/i2c/ov02a10.txt
- create mode 100644 drivers/media/i2c/ov02a10.c
-
--- 
-2.9.2
+On Sun, 2019-08-18 at 00:32 +0300, Sakari Ailus wrote:
+> Hi Dongchun,
+> 
+> On Sat, Aug 17, 2019 at 11:53:05AM +0800, Dongchun Zhu wrote:
+> ...
+> > > > +
+> > > > +The device node shall contain one 'port' child node with an
+> > > > +'endpoint' subnode for its digital output video port, in accordance
+> > > > +with the video interface bindings defined in
+> > > > +Documentation/devicetree/bindings/media/video-interfaces.txt.
+> > > > +The endpoint optional property 'data-lanes' shall be "<1>".
+> > > 
+> > > How many lanes does the module (or the sensor) have?
+> > > 
+> > 
+> > From sensor datasheet, OV02A10 supports 1-lane MIPI interface.
+> 
+> If only one lane is supported, the property should be omitted: there's
+> nothing that the driver needs to know here.
+> 
+Thanks for the suggestion.
+But sorry that I didn't read this message this morning, so this issue
+still remains unsettled in v3.
+https://patchwork.kernel.org/patch/11100219/
+I would fix this point in v4.
