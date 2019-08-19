@@ -1,68 +1,58 @@
-From: Stanley Chu <stanley.chu@mediatek.com>
-Subject: [PATCH v3] scsi: ufs: fix broken hba->outstanding_tasks
-Date: Mon, 19 Aug 2019 21:43:28 +0800
-Message-ID: <1566222208-19890-1-git-send-email-stanley.chu@mediatek.com>
+From: Andrey Konovalov <andreyknvl@google.com>
+Subject: Re: [PATCH] arm64: kasan: fix phys_to_virt() false positive on
+ tag-based kasan
+Date: Mon, 19 Aug 2019 16:05:22 +0200
+Message-ID: <CAAeHK+w7cTGN8SgWQs0bPjPOrizqfUoMnJWTvUkCqv17Qt=3oQ@mail.gmail.com>
+References: <20190819114420.2535-1-walter-zh.wu@mediatek.com>
+ <20190819125625.bu3nbrldg7te5kwc@willie-the-truck> <20190819132347.GB9927@lakrids.cambridge.arm.com>
+ <20190819133441.ejomv6cprdcz7hh6@willie-the-truck>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com, pedrom.sousa@synopsys.com
-Cc: marc.w.gonzalez@free.fr, andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, evgreen@chromium.org, linux-mediatek@lists.infradead.org, peter.wang@mediatek.com, matthias.bgg@gmail.com, Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190819133441.ejomv6cprdcz7hh6@willie-the-truck>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Will Deacon <will@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Walter Wu <walter-zh.wu@mediatek.com>, Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, wsd_upstream@mediatek.com, LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>, linux-mediatek@lists.infradead.org, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Currently bits in hba->outstanding_tasks are cleared only after their
-corresponding task management commands are successfully done by
-__ufshcd_issue_tm_cmd().
+On Mon, Aug 19, 2019 at 3:34 PM Will Deacon <will@kernel.org> wrote:
+>
+> On Mon, Aug 19, 2019 at 02:23:48PM +0100, Mark Rutland wrote:
+> > On Mon, Aug 19, 2019 at 01:56:26PM +0100, Will Deacon wrote:
+> > > On Mon, Aug 19, 2019 at 07:44:20PM +0800, Walter Wu wrote:
+> > > > __arm_v7s_unmap() call iopte_deref() to translate pyh_to_virt address,
+> > > > but it will modify pointer tag into 0xff, so there is a false positive.
+> > > >
+> > > > When enable tag-based kasan, phys_to_virt() function need to rewrite
+> > > > its original pointer tag in order to avoid kasan report an incorrect
+> > > > memory corruption.
+> > >
+> > > Hmm. Which tree did you see this on? We've recently queued a load of fixes
+> > > in this area, but I /thought/ they were only needed after the support for
+> > > 52-bit virtual addressing in the kernel.
+> >
+> > I'm seeing similar issues in the virtio blk code (splat below), atop of
+> > the arm64 for-next/core branch. I think this is a latent issue, and
+> > people are only just starting to test with KASAN_SW_TAGS.
+> >
+> > It looks like the virtio blk code will round-trip a SLUB-allocated pointer from
+> > virt->page->virt, losing the per-object tag in the process.
+> >
+> > Our page_to_virt() seems to get a per-page tag, but this only makes
+> > sense if you're dealing with the page allocator, rather than something
+> > like SLUB which carves a page into smaller objects giving each object a
+> > distinct tag.
+> >
+> > Any round-trip of a pointer from SLUB is going to lose the per-object
+> > tag.
+>
+> Urgh, I wonder how this is supposed to work?
+>
+> If we end up having to check the KASAN shadow for *_to_virt(), then why
+> do we need to store anything in the page flags at all? Andrey?
 
-If timeout happens in a task management command, its corresponding
-bit in hba->outstanding_tasks will not be cleared until next task
-management command with the same tag used successfully finishes.
+As per 2813b9c0 ("kasan, mm, arm64: tag non slab memory allocated via
+pagealloc") we should only save a non-0xff tag in page flags for non
+slab pages.
 
-This is wrong and can lead to some issues, like power issue.
-For example, ufshcd_release() and ufshcd_gate_work() will do nothing
-if hba->outstanding_tasks is not zero even if both UFS host and devices
-are actually idle.
-
-Solution is referried from error handling of device commands: bits in
-hba->outstanding_tasks shall be cleared regardless of their execution
-results.
-
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
----
- drivers/scsi/ufs/ufshcd.c | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 3804a704e565..30b752c61b97 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -5676,13 +5676,12 @@ static int __ufshcd_issue_tm_cmd(struct ufs_hba *hba,
- 		memcpy(treq, hba->utmrdl_base_addr + free_slot, sizeof(*treq));
- 
- 		ufshcd_add_tm_upiu_trace(hba, task_tag, "tm_complete");
--
--		spin_lock_irqsave(hba->host->host_lock, flags);
--		__clear_bit(free_slot, &hba->outstanding_tasks);
--		spin_unlock_irqrestore(hba->host->host_lock, flags);
--
- 	}
- 
-+	spin_lock_irqsave(hba->host->host_lock, flags);
-+	__clear_bit(free_slot, &hba->outstanding_tasks);
-+	spin_unlock_irqrestore(hba->host->host_lock, flags);
-+
- 	clear_bit(free_slot, &hba->tm_condition);
- 	ufshcd_put_tm_slot(hba, free_slot);
- 	wake_up(&hba->tm_tag_wq);
--- 
-2.18.0
+Could you share your .config so I can reproduce this?
