@@ -1,56 +1,68 @@
-From: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: RE: [PATCH v2 0/3] scsi: ufs: fix broken hba->outstanding_tasks
-Date: Mon, 19 Aug 2019 21:38:26 +0800
-Message-ID: <1566221906.15377.3.camel@mtkswgap22>
-References: <1563947418-16394-1-git-send-email-stanley.chu@mediatek.com>
- <MN2PR04MB69914824302B84E144137869FCC10@MN2PR04MB6991.namprd04.prod.outlook.com>
- <1564044737.7235.9.camel@mtkswgap22>
+From: Stanley Chu <stanley.chu@mediatek.com>
+Subject: [PATCH v3] scsi: ufs: fix broken hba->outstanding_tasks
+Date: Mon, 19 Aug 2019 21:43:28 +0800
+Message-ID: <1566222208-19890-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1564044737.7235.9.camel@mtkswgap22>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Avri Altman <Avri.Altman-Sjgp3cTcYWE@public.gmane.org>
-Cc: "linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org" <martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, "marc.w.gonzalez-GANU6spQydw@public.gmane.org" <marc.w.gonzalez-GANU6spQydw@public.gmane.org>, "andy.teng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <andy.teng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "evgreen-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <evgreen-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org" <alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org" <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "beanhuo-AL4WhLSQfzjQT0dZR+AlfA@public.gmane.org" <beanhuo-AL4WhLSQfzjQT0dZR+AlfA@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com, pedrom.sousa@synopsys.com
+Cc: marc.w.gonzalez@free.fr, andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, evgreen@chromium.org, linux-mediatek@lists.infradead.org, peter.wang@mediatek.com, matthias.bgg@gmail.com, Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Avri,
+Currently bits in hba->outstanding_tasks are cleared only after their
+corresponding task management commands are successfully done by
+__ufshcd_issue_tm_cmd().
 
-On Thu, 2019-07-25 at 16:52 +0800, Stanley Chu wrote:
-> Hi Avri,
-> 
-> On Thu, 2019-07-25 at 07:54 +0000, Avri Altman wrote:
-> > Stanly,
-> > 
-> > > 
-> > > Currently bits in hba->outstanding_tasks are cleared only after their
-> > > corresponding task management commands are successfully done by
-> > > __ufshcd_issue_tm_cmd().
-> > > 
-> > > If timeout happens in a task management command, its corresponding
-> > > bit in hba->outstanding_tasks will not be cleared until next task
-> > > management command with the same tag used successfully finishes.
-> > I'm sorry - I still don't understand why you just can't release the tag either way,
-> > Just like we do in device management queries tags,
-> > Instead of adding all this unnecessary code.
-> > 
-> > I will not object to your series -
-> > just step down and let other people review you patches.
+If timeout happens in a task management command, its corresponding
+bit in hba->outstanding_tasks will not be cleared until next task
+management command with the same tag used successfully finishes.
 
-Sorry for late response due to these busy days.
+This is wrong and can lead to some issues, like power issue.
+For example, ufshcd_release() and ufshcd_gate_work() will do nothing
+if hba->outstanding_tasks is not zero even if both UFS host and devices
+are actually idle.
 
-I just got your point and agreed with you: previous proposal may be too
-tricky. Simple always wins. So I will provide a short solution in next
-version.
+Solution is referried from error handling of device commands: bits in
+hba->outstanding_tasks shall be cleared regardless of their execution
+results.
 
-Many thanks!
-Stanley
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+---
+ drivers/scsi/ufs/ufshcd.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 3804a704e565..30b752c61b97 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -5676,13 +5676,12 @@ static int __ufshcd_issue_tm_cmd(struct ufs_hba *hba,
+ 		memcpy(treq, hba->utmrdl_base_addr + free_slot, sizeof(*treq));
+ 
+ 		ufshcd_add_tm_upiu_trace(hba, task_tag, "tm_complete");
+-
+-		spin_lock_irqsave(hba->host->host_lock, flags);
+-		__clear_bit(free_slot, &hba->outstanding_tasks);
+-		spin_unlock_irqrestore(hba->host->host_lock, flags);
+-
+ 	}
+ 
++	spin_lock_irqsave(hba->host->host_lock, flags);
++	__clear_bit(free_slot, &hba->outstanding_tasks);
++	spin_unlock_irqrestore(hba->host->host_lock, flags);
++
+ 	clear_bit(free_slot, &hba->tm_condition);
+ 	ufshcd_put_tm_slot(hba, free_slot);
+ 	wake_up(&hba->tm_tag_wq);
+-- 
+2.18.0
