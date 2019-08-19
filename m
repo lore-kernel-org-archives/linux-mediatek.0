@@ -1,14 +1,14 @@
 From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: Re: [v4, 1/8] cpufreq: mediatek: change to regulator_get_optional
-Date: Mon, 19 Aug 2019 15:21:56 +0530
-Message-ID: <20190819095156.m3iltf5ni3pprrt7@vireshk-i7>
+Subject: Re: [v4, 3/8] cpufreq: mediatek: Add support for mt8183
+Date: Mon, 19 Aug 2019 15:29:21 +0530
+Message-ID: <20190819095921.sk2pltuylfaxklnx@vireshk-i7>
 References: <1565703113-31479-1-git-send-email-andrew-sh.cheng@mediatek.com>
- <1565703113-31479-2-git-send-email-andrew-sh.cheng@mediatek.com>
+ <1565703113-31479-4-git-send-email-andrew-sh.cheng@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1565703113-31479-2-git-send-email-andrew-sh.cheng@mediatek.com>
+In-Reply-To: <1565703113-31479-4-git-send-email-andrew-sh.cheng@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
 Cc: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, fan.chen@mediatek.com
@@ -17,28 +17,38 @@ List-Id: linux-mediatek@lists.infradead.org
 On 13-08-19, 21:31, Andrew-sh.Cheng wrote:
 > From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
 > 
-> For new mediatek chip mt8183,
-> cci and little cluster share the same buck,
-> so need to modify the attribute of regulator from exclusive to optional
+> Add compatible string for mediatek mt8183
 > 
 > Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
 > ---
->  drivers/cpufreq/mediatek-cpufreq.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/cpufreq/cpufreq-dt-platdev.c | 1 +
+>  drivers/cpufreq/mediatek-cpufreq.c   | 1 +
+>  2 files changed, 2 insertions(+)
 > 
+> diff --git a/drivers/cpufreq/cpufreq-dt-platdev.c b/drivers/cpufreq/cpufreq-dt-platdev.c
+> index 03dc4244ab00..0f7e837a264e 100644
+> --- a/drivers/cpufreq/cpufreq-dt-platdev.c
+> +++ b/drivers/cpufreq/cpufreq-dt-platdev.c
+> @@ -117,6 +117,7 @@ static const struct of_device_id blacklist[] __initconst = {
+>  	{ .compatible = "mediatek,mt817x", },
+>  	{ .compatible = "mediatek,mt8173", },
+>  	{ .compatible = "mediatek,mt8176", },
+> +	{ .compatible = "mediatek,mt8183", },
+>  
+>  	{ .compatible = "nvidia,tegra124", },
+>  	{ .compatible = "nvidia,tegra210", },
 > diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-> index f14f3a85f2f7..a370577ffc73 100644
+> index acd9539e95de..4dce41b18369 100644
 > --- a/drivers/cpufreq/mediatek-cpufreq.c
 > +++ b/drivers/cpufreq/mediatek-cpufreq.c
-> @@ -338,7 +338,7 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
->  		goto out_free_resources;
->  	}
->  
-> -	proc_reg = regulator_get_exclusive(cpu_dev, "proc");
-> +	proc_reg = regulator_get_optional(cpu_dev, "proc");
->  	if (IS_ERR(proc_reg)) {
->  		if (PTR_ERR(proc_reg) == -EPROBE_DEFER)
->  			pr_warn("proc regulator for cpu%d not ready, retry.\n",
+> @@ -546,6 +546,7 @@ static const struct of_device_id mtk_cpufreq_machines[] __initconst = {
+>  	{ .compatible = "mediatek,mt817x", },
+>  	{ .compatible = "mediatek,mt8173", },
+>  	{ .compatible = "mediatek,mt8176", },
+> +	{ .compatible = "mediatek,mt8183", },
+
+Had to fix rebase conflict manually for this. Please always rebase on latest
+linux-next.
 
 Applied. Thanks.
 
