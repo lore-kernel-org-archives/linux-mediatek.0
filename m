@@ -1,53 +1,56 @@
-From: Will Deacon <will@kernel.org>
-Subject: Re: [PATCH] arm64: kasan: fix phys_to_virt() false positive on
- tag-based kasan
-Date: Mon, 19 Aug 2019 14:34:42 +0100
-Message-ID: <20190819133441.ejomv6cprdcz7hh6@willie-the-truck>
-References: <20190819114420.2535-1-walter-zh.wu@mediatek.com>
- <20190819125625.bu3nbrldg7te5kwc@willie-the-truck>
- <20190819132347.GB9927@lakrids.cambridge.arm.com>
+From: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: RE: [PATCH v2 0/3] scsi: ufs: fix broken hba->outstanding_tasks
+Date: Mon, 19 Aug 2019 21:38:26 +0800
+Message-ID: <1566221906.15377.3.camel@mtkswgap22>
+References: <1563947418-16394-1-git-send-email-stanley.chu@mediatek.com>
+ <MN2PR04MB69914824302B84E144137869FCC10@MN2PR04MB6991.namprd04.prod.outlook.com>
+ <1564044737.7235.9.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190819132347.GB9927@lakrids.cambridge.arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Rutland <mark.rutland@arm.com>
-Cc: Walter Wu <walter-zh.wu@mediatek.com>, Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Andrey Konovalov <andreyknvl@google.com>, wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org, kasan-dev@googlegroups.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1564044737.7235.9.camel@mtkswgap22>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Avri Altman <Avri.Altman-Sjgp3cTcYWE@public.gmane.org>
+Cc: "linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org" <martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, "marc.w.gonzalez-GANU6spQydw@public.gmane.org" <marc.w.gonzalez-GANU6spQydw@public.gmane.org>, "andy.teng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <andy.teng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "evgreen-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <evgreen-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org" <alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org" <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "beanhuo-AL4WhLSQfzjQT0dZR+AlfA@public.gmane.org" <beanhuo-AL4WhLSQfzjQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Aug 19, 2019 at 02:23:48PM +0100, Mark Rutland wrote:
-> On Mon, Aug 19, 2019 at 01:56:26PM +0100, Will Deacon wrote:
-> > On Mon, Aug 19, 2019 at 07:44:20PM +0800, Walter Wu wrote:
-> > > __arm_v7s_unmap() call iopte_deref() to translate pyh_to_virt address,
-> > > but it will modify pointer tag into 0xff, so there is a false positive.
-> > > 
-> > > When enable tag-based kasan, phys_to_virt() function need to rewrite
-> > > its original pointer tag in order to avoid kasan report an incorrect
-> > > memory corruption.
+Hi Avri,
+
+On Thu, 2019-07-25 at 16:52 +0800, Stanley Chu wrote:
+> Hi Avri,
+> 
+> On Thu, 2019-07-25 at 07:54 +0000, Avri Altman wrote:
+> > Stanly,
 > > 
-> > Hmm. Which tree did you see this on? We've recently queued a load of fixes
-> > in this area, but I /thought/ they were only needed after the support for
-> > 52-bit virtual addressing in the kernel.
-> 
-> I'm seeing similar issues in the virtio blk code (splat below), atop of
-> the arm64 for-next/core branch. I think this is a latent issue, and
-> people are only just starting to test with KASAN_SW_TAGS.
-> 
-> It looks like the virtio blk code will round-trip a SLUB-allocated pointer from
-> virt->page->virt, losing the per-object tag in the process.
-> 
-> Our page_to_virt() seems to get a per-page tag, but this only makes
-> sense if you're dealing with the page allocator, rather than something
-> like SLUB which carves a page into smaller objects giving each object a
-> distinct tag.
-> 
-> Any round-trip of a pointer from SLUB is going to lose the per-object
-> tag.
+> > > 
+> > > Currently bits in hba->outstanding_tasks are cleared only after their
+> > > corresponding task management commands are successfully done by
+> > > __ufshcd_issue_tm_cmd().
+> > > 
+> > > If timeout happens in a task management command, its corresponding
+> > > bit in hba->outstanding_tasks will not be cleared until next task
+> > > management command with the same tag used successfully finishes.
+> > I'm sorry - I still don't understand why you just can't release the tag either way,
+> > Just like we do in device management queries tags,
+> > Instead of adding all this unnecessary code.
+> > 
+> > I will not object to your series -
+> > just step down and let other people review you patches.
 
-Urgh, I wonder how this is supposed to work?
+Sorry for late response due to these busy days.
 
-If we end up having to check the KASAN shadow for *_to_virt(), then why
-do we need to store anything in the page flags at all? Andrey?
+I just got your point and agreed with you: previous proposal may be too
+tricky. Simple always wins. So I will provide a short solution in next
+version.
 
-Will
+Many thanks!
+Stanley
