@@ -1,66 +1,147 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: Re: [v4, 6/8] PM / OPP: Support adjusting OPP voltages at runtime
-Date: Mon, 19 Aug 2019 16:48:36 +0530
-Message-ID: <20190819111836.5cu245xre6ky6xav@vireshk-i7>
-References: <1565703113-31479-1-git-send-email-andrew-sh.cheng@mediatek.com>
- <1565703113-31479-7-git-send-email-andrew-sh.cheng@mediatek.com>
+From: Will Deacon <will@kernel.org>
+Subject: Re: [PATCH v9 08/21] iommu/io-pgtable-arm-v7s: Extend MediaTek 4GB
+ Mode
+Date: Mon, 19 Aug 2019 12:24:38 +0100
+Message-ID: <20190819112438.fr233h5dgjkqb36r@willie-the-truck>
+References: <1565423901-17008-1-git-send-email-yong.wu@mediatek.com>
+ <1565423901-17008-9-git-send-email-yong.wu@mediatek.com>
+ <20190814144059.ruyc45yoqkwpbuga@willie-the-truck>
+ <1565858869.12818.51.camel@mhfsdcap03>
+ <20190815095123.rzgtpklvhtjlqir4@willie-the-truck>
+ <1565864318.14278.4.camel@mhfsdcap03>
+ <20190815115021.7pbv5s2qbgsuitvh@willie-the-truck>
+ <1565940140.20346.21.camel@mhfsdcap03>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1565703113-31479-7-git-send-email-andrew-sh.cheng@mediatek.com>
+In-Reply-To: <1565940140.20346.21.camel@mhfsdcap03>
 Sender: linux-kernel-owner@vger.kernel.org
-To: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
-Cc: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, fan.chen@mediatek.com, Stephen Boyd <sboyd@codeaurora.org>, Roger Lu <roger.lu@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>, Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, Matthias Kaehlcke <mka@chromium.org>, cui.zhang@mediatek.com, chao.hao@mediatek.com, ming-fan.chen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On 13-08-19, 21:31, Andrew-sh.Cheng wrote:
-> From: Stephen Boyd <sboyd@codeaurora.org>
+On Fri, Aug 16, 2019 at 03:22:20PM +0800, Yong Wu wrote:
+> On Thu, 2019-08-15 at 12:50 +0100, Will Deacon wrote:
+> > Ok, I think speaking to Robin helped me a bit with this...
+> > 
+> > On Thu, Aug 15, 2019 at 06:18:38PM +0800, Yong Wu wrote:
+> > > On Thu, 2019-08-15 at 10:51 +0100, Will Deacon wrote:
+> > > > On Thu, Aug 15, 2019 at 04:47:49PM +0800, Yong Wu wrote:
+> > > > > On Wed, 2019-08-14 at 15:41 +0100, Will Deacon wrote:
+> > > > > > On Sat, Aug 10, 2019 at 03:58:08PM +0800, Yong Wu wrote:
+> > > > > > > MediaTek extend the arm v7s descriptor to support the dram over 4GB.
+> > > > > > > 
+> > > > > > > In the mt2712 and mt8173, it's called "4GB mode", the physical address
+> > > > > > > is from 0x4000_0000 to 0x1_3fff_ffff, but from EMI point of view, it
+> > > > > > > is remapped to high address from 0x1_0000_0000 to 0x1_ffff_ffff, the
+> > > > > > > bit32 is always enabled. thus, in the M4U, we always enable the bit9
+> > > > > > > for all PTEs which means to enable bit32 of physical address. Here is
+> > > > > > > the detailed remap relationship in the "4GB mode":
+> > > > > > > CPU PA         ->    HW PA
+> > > > > > > 0x4000_0000          0x1_4000_0000 (Add bit32)
+> > > > > > > 0x8000_0000          0x1_8000_0000 ...
+> > > > > > > 0xc000_0000          0x1_c000_0000 ...
+> > > > > > > 0x1_0000_0000        0x1_0000_0000 (No change)
+> > 
+> > [...]
+> > 
+> > > > > > The way I would like this quirk to work is that the io-pgtable code
+> > > > > > basically sets bit 9 in the pte when bit 32 is set in the physical address,
+> > > > > > and sets bit 4 in the pte when bit 33 is set in the physical address. It
+> > > > > > would then do the opposite when converting a pte to a physical address.
+> > > > > > 
+> > > > > > That way, your driver can call the page table code directly with the high
+> > > > > > addresses and we don't have to do any manual offsetting or range checking
+> > > > > > in the page table code.
+> > > > > 
+> > > > > In this case, the mt8183 can work successfully while the "4gb
+> > > > > mode"(mt8173/mt2712) can not.
+> > > > > 
+> > > > > In the "4gb mode", As the remap relationship above, we should always add
+> > > > > bit32 in pte as we did in [2]. and need add bit32 in the
+> > > > > "iova_to_phys"(Not always add.). That means the "4gb mode" has a special
+> > > > > flow:
+> > > > > a. Always add bit32 in paddr_to_iopte.
+> > > > > b. Add bit32 only when PA < 0x40000000 in iopte_to_paddr.
+> > > > 
+> > > > I think this is probably at the heart of my misunderstanding. What is so
+> > > > special about PAs (is this HW PA or CPU PA?) below 0x40000000? Is this RAM
+> > > > or something else?
+> > > 
+> > > SRAM and HW register that IOMMU can not access.
+> > 
+> > Ok, so redrawing your table from above, I think we can say something like:
+> > 
+> > 
+> > CPU Physical address
+> > ====================
+> > 
+> > 0G	1G	2G	3G	4G	5G
+> > |---A---|---B---|---C---|---D---|---E---|
+> > +--I/O--+------------Memory-------------+
+> > 
+> > 
+> > IOMMU output physical address
+> > =============================
+> > 
+> > 				4G	5G	6G	7G	8G
+> > 				|---E---|---B---|---C---|---D---|
+> > 				+------------Memory-------------+
+> > 
+> > 
+> > Do you agree? 
 > 
-> On some SoCs the Adaptive Voltage Scaling (AVS) technique is
-> employed to optimize the operating voltage of a device. At a
-> given frequency, the hardware monitors dynamic factors and either
-> makes a suggestion for how much to adjust a voltage for the
-> current frequency, or it automatically adjusts the voltage
-> without software intervention. Add an API to the OPP library for
-> the former case, so that AVS type devices can update the voltages
-> for an OPP when the hardware determines the voltage should
-> change. The assumption is that drivers like CPUfreq or devfreq
-> will register for the OPP notifiers and adjust the voltage
-> according to suggestions that AVS makes.
-> 
-> This patch is devired from [1] submitted by Stephen.
-> [1] https://lore.kernel.org/patchwork/patch/599279/
-> 
-> Signed-off-by: Stephen Boyd <sboyd@codeaurora.org>
-> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
-> ---
->  drivers/opp/core.c     | 63 ++++++++++++++++++++++++++++++++++++++++++++++++++
->  include/linux/pm_opp.h | 11 +++++++++
->  2 files changed, 74 insertions(+)
-> 
-> diff --git a/drivers/opp/core.c b/drivers/opp/core.c
-> index c094d5d20fd7..407a07f29b12 100644
-> --- a/drivers/opp/core.c
-> +++ b/drivers/opp/core.c
-> @@ -2054,6 +2054,69 @@ static int _opp_set_availability(struct device *dev, unsigned long freq,
->  }
->  
->  /**
-> + * dev_pm_opp_adjust_voltage() - helper to change the voltage of an OPP
-> + * @dev:		device for which we do this operation
-> + * @freq:		OPP frequency to adjust voltage of
-> + * @u_volt:		new OPP voltage
-> + *
-> + * Return: -EINVAL for bad pointers, -ENOMEM if no memory available for the
-> + * copy operation, returns 0 if no modifcation was done OR modification was
-> + * successful.
-> + */
-> +int dev_pm_opp_adjust_voltage(struct device *dev, unsigned long freq,
-> +			      unsigned long u_volt)
+> Quite right.
 
-Can you please update this to take a triplet instead ? That is what we are
-storing in OPP core now a days.
+Woohoo! So I finally got something right about this :) I'd be up for
+including the diagrams above either in the commit message or in the IOMMU
+driver code, along with a comment saying that region 'A' cannot be mapped
+by the IOMMU and that the page-table walker uses CPU physical addresses.
 
--- 
-viresh
+> > If so, what happens to region 'A' (the I/O region) in the
+> > IOMMU output physical address space. Is it accessible?
+> 
+> No. IOMMU can not access region 'A' above.
+
+Got it. Thanks.
+
+> > Anyway, I think it's the job of the driver to convert between the two
+> > address spaces, so that:
+> > 
+> >   - On ->map(), bit 32 of the CPU physical address is set before calling
+> >     into the iopgtable code
+> > 
+> >   - The result from ->iova_to_phys() should be the result from the
+> >     iopgtable code, but with the top bit cleared for addresses over
+> >     5G.
+> > 
+> > This assumes that:
+> > 
+> >   1. We're ok setting bit 9 in the ptes mapping region 'E'.
+> >   2. The IOMMU page-table walker uses CPU physical addresses
+> > 
+> > Are those true?
+> 
+> Yes. Then this patch would be close to the one[1] I sent in v8.
+> 
+> Do I need to split this patch into 2 ones?:
+
+Up to you. If you want to fix the current mainline behaviour of always
+setting bit 4, then that should be a separate patch at the start of the
+series which can be backported to stable. Is there a reason this doesn't go
+wrong in practice?
+
+> a).the pagetable code that support 34bit PA when MTK quirk is enabled.
+> It only has the symmetric code handle BIT32/BIT33. Besides, I will add
+> CONFIG_PHYS_ADDR_T_64BIT in the iopte_to_addr as commented before.
+
+Hmm. I would prefer that the iopgtable code:
+
+	* Range checks the paddr against the oas in ->map()
+	* Refuses to accept an oas > 32 in ->alloc()
+
+Then it's up to you whether you just want to pass an oas of 34 from the
+IOMMU driver.
+
+Will
