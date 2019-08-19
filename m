@@ -1,38 +1,50 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH net-next 4/4 v3] net: ethernet: mediatek: Add MT7628/88
- SoC support
-Date: Sun, 18 Aug 2019 14:17:26 -0700 (PDT)
-Message-ID: <20190818.141726.699941540105787008.davem@davemloft.net>
-References: <20190816132325.28426-1-sr@denx.de>
-        <20190816132325.28426-4-sr@denx.de>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH] gpu: drm: mediatek: mtk_drm_drv.c: Add of_node_put()
+ before goto
+Date: Mon, 19 Aug 2019 09:30:31 +0800
+Message-ID: <1566178231.7536.1.camel@mtksdaap41>
+References: <20190706133021.3308-1-nishkadg.linux@gmail.com>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20190816132325.28426-4-sr@denx.de>
-Sender: netdev-owner@vger.kernel.org
-To: sr@denx.de
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, opensource@vdorst.com, daniel@makrotopia.org, sean.wang@mediatek.com, john@phrozen.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190706133021.3308-1-nishkadg.linux@gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Nishka Dasgupta <nishkadg.linux@gmail.com>
+Cc: airlie@linux.ie, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Stefan Roese <sr@denx.de>
-Date: Fri, 16 Aug 2019 15:23:25 +0200
-
-> This patch adds support for the MediaTek MT7628/88 SoCs to the common
-> MediaTek ethernet driver. Some minor changes are needed for this and
-> a bigger change, as the MT7628 does not support QDMA (only PDMA).
-> 
-> Signed-off-by: Stefan Roese <sr@denx.de>
-
-Applied.
-
-Please submit your patch series properly next time, which means including
-a "[PATCH 0/N]" introductory posting which explains what the patch series
-is doing, how it is doing it, and why it is doing it that way.
-
-It not only provides a proper organizational object for your patch series,
-it also makes less work for me because I can just reply to that single email
-when I apply your series instead of having to reply to every single one
-in the set.
-
-Thanks.
+SGksIE5pc2hrYToKCk9uIFNhdCwgMjAxOS0wNy0wNiBhdCAxOTowMCArMDUzMCwgTmlzaGthIERh
+c2d1cHRhIHdyb3RlOgo+IEVhY2ggaXRlcmF0aW9uIG9mIGZvcl9lYWNoX2NoaWxkX29mX25vZGUg
+cHV0cyB0aGUgcHJldmlvdXMKPiBub2RlLCBidXQgaW4gdGhlIGNhc2Ugb2YgYSBnb3RvIGZyb20g
+dGhlIG1pZGRsZSBvZiB0aGUgbG9vcCwgdGhlcmUgaXMKPiBubyBwdXQsIHRodXMgY2F1c2luZyBh
+IG1lbW9yeSBsZWFrLiBIZW5jZSBhZGQgYW4gb2Zfbm9kZV9wdXQgYmVmb3JlIHRoZQo+IGdvdG8g
+aW4gdHdvIHBsYWNlcy4KPiBJc3N1ZSBmb3VuZCB3aXRoIENvY2NpbmVsbGUuCgpBcHBsaWVkIHRv
+IG1lZGlhdGVrLWRybS1maXhlcy01LjMgWzFdLCB0aGFua3MuCgpbMV0KaHR0cHM6Ly9naXRodWIu
+Y29tL2NraHUtbWVkaWF0ZWsvbGludXguZ2l0LXRhZ3MvdHJlZS9tZWRpYXRlay1kcm0tZml4ZXMt
+NS4zCgpSZWdhcmRzLApDSwoKPiAKPiBTaWduZWQtb2ZmLWJ5OiBOaXNoa2EgRGFzZ3VwdGEgPG5p
+c2hrYWRnLmxpbnV4QGdtYWlsLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19kcm1fZHJ2LmMgfCA1ICsrKystCj4gIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlvbnMo
+KyksIDEgZGVsZXRpb24oLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlh
+dGVrL210a19kcm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYu
+Ywo+IGluZGV4IDk1ZmRiZDBmYmNhYy4uMmRmZmJjOGM2ZDczIDEwMDY0NAo+IC0tLSBhL2RyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19kcm1fZHJ2LmMKPiBAQCAtNTI0LDEyICs1MjQsMTUgQEAgc3RhdGljIGlu
+dCBtdGtfZHJtX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAkJCWNvbXAg
+PSBkZXZtX2t6YWxsb2MoZGV2LCBzaXplb2YoKmNvbXApLCBHRlBfS0VSTkVMKTsKPiAgCQkJaWYg
+KCFjb21wKSB7Cj4gIAkJCQlyZXQgPSAtRU5PTUVNOwo+ICsJCQkJb2Zfbm9kZV9wdXQobm9kZSk7
+Cj4gIAkJCQlnb3RvIGVycl9ub2RlOwo+ICAJCQl9Cj4gIAo+ICAJCQlyZXQgPSBtdGtfZGRwX2Nv
+bXBfaW5pdChkZXYsIG5vZGUsIGNvbXAsIGNvbXBfaWQsIE5VTEwpOwo+IC0JCQlpZiAocmV0KQo+
+ICsJCQlpZiAocmV0KSB7Cj4gKwkJCQlvZl9ub2RlX3B1dChub2RlKTsKPiAgCQkJCWdvdG8gZXJy
+X25vZGU7Cj4gKwkJCX0KPiAgCj4gIAkJCXByaXZhdGUtPmRkcF9jb21wW2NvbXBfaWRdID0gY29t
+cDsKPiAgCQl9CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
