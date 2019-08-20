@@ -1,18 +1,29 @@
-From: houlong wei <houlong.wei@mediatek.com>
-Subject: Re: [RESEND, PATCH v13 11/12] soc: mediatek: cmdq: add
- cmdq_dev_get_client_reg function
-Date: Tue, 20 Aug 2019 17:40:58 +0800
-Message-ID: <1566294058.24117.16.camel@mhfsdcap03>
-References: <20190820084932.22282-1-bibby.hsieh@mediatek.com>
-         <20190820084932.22282-12-bibby.hsieh@mediatek.com>
+From: Christoph Hellwig <hch@infradead.org>
+Subject: Re: [PATCH V5 1/5] iommu/amd: Remove unnecessary locking from AMD
+ iommu driver
+Date: Tue, 20 Aug 2019 02:41:43 -0700
+Message-ID: <20190820094143.GA24154@infradead.org>
+References: <20190815110944.3579-1-murphyt7@tcd.ie>
+ <20190815110944.3579-2-murphyt7@tcd.ie>
 Mime-Version: 1.0
-Content-Type: text/plain
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190820084932.22282-12-bibby.hsieh@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <20190815110944.3579-2-murphyt7@tcd.ie>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, CK Hu =?UTF-8?Q?=28=E8=83=A1=E4=BF=8A=E5=85=89=29?= <ck.hu@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, YT
+To: Tom Murphy <murphyt7@tcd.ie>
+Cc: iommu@lists.linux-foundation.org, Heiko Stuebner <heiko@sntech.de>, virtualization@lists.linux-foundation.org, linux-tegra@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>, Will Deacon <will@kernel.org>, Jean-Philippe Brucker <jean-philippe@linaro.org>, linux-samsung-soc@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, linux-s390@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, David Woodhouse <dwmw2@infradead.org>, linux-kernel@vger.kernel.org, Kukjin Kim <kgene@kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Reviewed-by: Houlong Wei <houlong.wei@mediatek.com>
+On Thu, Aug 15, 2019 at 12:09:39PM +0100, Tom Murphy wrote:
+> We can remove the mutex lock from amd_iommu_map and amd_iommu_unmap.
+> iommu_map doesn’t lock while mapping and so no two calls should touch
+> the same iova range. The AMD driver already handles the page table page
+> allocations without locks so we can safely remove the locks.
+
+I've been looking over the code and trying to understand how the
+synchronization works.  I gues we the cmpxchg64 in free_clear_pte
+is the important point here?  I have to admit I don't fully understand
+the concurrency issues here, but neither do I understand what the
+mutex you removed might have helped to start with.
