@@ -1,189 +1,145 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: Re: [v4, 7/8] cpufreq: mediatek: add opp notification for SVS support
-Date: Tue, 20 Aug 2019 09:09:27 +0530
-Message-ID: <20190820033927.72muldasu4xd6wb7@vireshk-i7>
-References: <1565703113-31479-1-git-send-email-andrew-sh.cheng@mediatek.com>
- <1565703113-31479-8-git-send-email-andrew-sh.cheng@mediatek.com>
+From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=
+        <u.kleine-koenig@pengutronix.de>
+Subject: Re: [PATCH v4 1/10] pwm: mediatek: add a property "num-pwms"
+Date: Tue, 20 Aug 2019 07:32:30 +0200
+Message-ID: <20190820053230.veu5qseftw45laka@pengutronix.de>
+References: <1566265225-27452-1-git-send-email-sam.shih@mediatek.com>
+ <1566265225-27452-2-git-send-email-sam.shih@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1565703113-31479-8-git-send-email-andrew-sh.cheng@mediatek.com>
+In-Reply-To: <1566265225-27452-2-git-send-email-sam.shih@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
-Cc: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, fan.chen@mediatek.com
+To: Sam Shih <sam.shih@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, John Crispin <john@phrozen.org>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 13-08-19, 21:31, Andrew-sh.Cheng wrote:
-> From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
+Hello,
+
+On Tue, Aug 20, 2019 at 09:40:16AM +0800, Sam Shih wrote:
+> From: Ryder Lee <ryder.lee@mediatek.com>
 > 
-> cpufreq should listen opp notification and do proper actions
-> when receiving disable and voltage adjustment events,
-> which are triggered when SVS is enabled.
+> This adds a property "num-pwms" to avoid having an endless
+> list of compatibles with no differences for the same driver.
 > 
-> Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
 > ---
->  drivers/cpufreq/mediatek-cpufreq.c | 78 ++++++++++++++++++++++++++++++++++++++
->  1 file changed, 78 insertions(+)
+> Used:
+> https://patchwork.kernel.org/project/linux-mediatek/list/?series=68207
 > 
-> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-> index 4dce41b18369..9820c8003507 100644
-> --- a/drivers/cpufreq/mediatek-cpufreq.c
-> +++ b/drivers/cpufreq/mediatek-cpufreq.c
-> @@ -42,6 +42,10 @@ struct mtk_cpu_dvfs_info {
->  	struct list_head list_head;
->  	int intermediate_voltage;
->  	bool need_voltage_tracking;
-> +	struct mutex lock; /* avoid notify and policy race condition */
-> +	struct notifier_block opp_nb;
-> +	int opp_cpu;
-> +	unsigned long opp_freq;
+> Changes since v4:
+> Follow reviewer's comments:
+> Move the changes of droping the check for of_device_get_match_data
+> returning non-NULL to next patch
+> ---
+>  drivers/pwm/pwm-mediatek.c | 30 +++++++++++++++++++++---------
+>  1 file changed, 21 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
+> index eb6674ce995f..287fda3674ce 100644
+> --- a/drivers/pwm/pwm-mediatek.c
+> +++ b/drivers/pwm/pwm-mediatek.c
+> @@ -55,7 +55,7 @@ static const char * const mtk_pwm_clk_name[MTK_CLK_MAX] = {
 >  };
 >  
->  static LIST_HEAD(dvfs_info_list);
-> @@ -231,6 +235,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
->  	vproc = dev_pm_opp_get_voltage(opp);
->  	dev_pm_opp_put(opp);
+>  struct mtk_pwm_platform_data {
+> -	unsigned int num_pwms;
+> +	unsigned int fallback_npwms;
+>  	bool pwm45_fixup;
+>  	bool has_clks;
+>  };
+> @@ -226,10 +226,10 @@ static const struct pwm_ops mtk_pwm_ops = {
 >  
-> +	mutex_lock(&info->lock);
->  	/*
->  	 * If the new voltage or the intermediate voltage is higher than the
->  	 * current voltage, scale up voltage first.
-> @@ -242,6 +247,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
->  			pr_err("cpu%d: failed to scale up voltage!\n",
->  			       policy->cpu);
->  			mtk_cpufreq_set_voltage(info, old_vproc);
-> +			mutex_unlock(&info->lock);
->  			return ret;
->  		}
->  	}
-> @@ -253,6 +259,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
->  		       policy->cpu);
->  		mtk_cpufreq_set_voltage(info, old_vproc);
->  		WARN_ON(1);
-> +		mutex_unlock(&info->lock);
->  		return ret;
->  	}
+>  static int mtk_pwm_probe(struct platform_device *pdev)
+>  {
+> -	const struct mtk_pwm_platform_data *data;
+> +	struct device_node *np = pdev->dev.of_node;
+>  	struct mtk_pwm_chip *pc;
+>  	struct resource *res;
+> -	unsigned int i;
+> +	unsigned int i, npwms;
+>  	int ret;
 >  
-> @@ -263,6 +270,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
->  		       policy->cpu);
->  		clk_set_parent(cpu_clk, armpll);
->  		mtk_cpufreq_set_voltage(info, old_vproc);
-> +		mutex_unlock(&info->lock);
->  		return ret;
->  	}
+>  	pc = devm_kzalloc(&pdev->dev, sizeof(*pc), GFP_KERNEL);
+> @@ -246,7 +246,19 @@ static int mtk_pwm_probe(struct platform_device *pdev)
+>  	if (IS_ERR(pc->regs))
+>  		return PTR_ERR(pc->regs);
 >  
-> @@ -273,6 +281,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
->  		       policy->cpu);
->  		mtk_cpufreq_set_voltage(info, inter_vproc);
->  		WARN_ON(1);
-> +		mutex_unlock(&info->lock);
->  		return ret;
->  	}
->  
-> @@ -288,15 +297,74 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
->  			clk_set_parent(cpu_clk, info->inter_clk);
->  			clk_set_rate(armpll, old_freq_hz);
->  			clk_set_parent(cpu_clk, armpll);
-> +			mutex_unlock(&info->lock);
->  			return ret;
->  		}
->  	}
->  
-> +	info->opp_freq = freq_hz;
-> +	mutex_unlock(&info->lock);
+> -	for (i = 0; i < data->num_pwms + 2 && pc->soc->has_clks; i++) {
+> +	ret = of_property_read_u32(np, "num-pwms", &npwms);
+> +	if (ret < 0) {
+> +		/* It's deprecated, we should specify num_pwms via DT now. */
+> +		if (pc->soc->fallback_npwms) {
+> +			npwms = pc->soc->fallback_npwms;
+> +			dev_warn(&pdev->dev, "DT is outdated, please update it\n");
+> +		} else {
+> +			dev_err(&pdev->dev, "failed to get number of PWMs\n");
+> +			return ret;
+> +		}
+> +	}
+
+I'd suggest to add here:
+
+	if (npwms > ARRAY_SIZE(mtk_pwm_clk_name) + 2)
+		npwms = ARRAY_SIZE(mtk_pwm_clk_name) + 2;
+
+to ensure to not use mtk_pwm_clk_name[10].
+
+Best regards
+Uwe
+
 > +
->  	return 0;
+> +	for (i = 0; i < npwms + 2 && pc->soc->has_clks; i++) {
+>  		pc->clks[i] = devm_clk_get(&pdev->dev, mtk_pwm_clk_name[i]);
+>  		if (IS_ERR(pc->clks[i])) {
+>  			dev_err(&pdev->dev, "clock: %s fail: %ld\n",
+> @@ -260,7 +272,7 @@ static int mtk_pwm_probe(struct platform_device *pdev)
+>  	pc->chip.dev = &pdev->dev;
+>  	pc->chip.ops = &mtk_pwm_ops;
+>  	pc->chip.base = -1;
+> -	pc->chip.npwm = data->num_pwms;
+> +	pc->chip.npwm = npwms;
+>  
+>  	ret = pwmchip_add(&pc->chip);
+>  	if (ret < 0) {
+> @@ -279,25 +291,25 @@ static int mtk_pwm_remove(struct platform_device *pdev)
 >  }
 >  
->  #define DYNAMIC_POWER "dynamic-power-coefficient"
+>  static const struct mtk_pwm_platform_data mt2712_pwm_data = {
+> -	.num_pwms = 8,
+> +	.fallback_npwms = 8,
+>  	.pwm45_fixup = false,
+>  	.has_clks = true,
+>  };
 >  
-> +static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
-> +				    unsigned long event, void *data)
-> +{
-> +	struct dev_pm_opp *opp = data;
-> +	struct dev_pm_opp *opp_item;
-> +	struct mtk_cpu_dvfs_info *info =
-> +		container_of(nb, struct mtk_cpu_dvfs_info, opp_nb);
-> +	unsigned long freq, volt;
-> +	struct cpufreq_policy *policy;
-> +	int ret = 0;
-> +
-> +	if (event == OPP_EVENT_ADJUST_VOLTAGE) {
-> +		freq = dev_pm_opp_get_freq(opp);
-> +
-> +		mutex_lock(&info->lock);
-> +		if (info->opp_freq == freq) {
-> +			volt = dev_pm_opp_get_voltage(opp);
-> +			ret = mtk_cpufreq_set_voltage(info, volt);
-> +			if (ret)
-> +				dev_err(info->cpu_dev, "failed to scale voltage: %d\n",
-> +					ret);
-> +		}
-> +		mutex_unlock(&info->lock);
-> +	} else if (event == OPP_EVENT_DISABLE) {
-
-Does this ever get called for your platform ? Why are you using opp disable ?
-Maybe we can avoid it completely.
-
-> +		freq = info->opp_freq;
-> +		opp_item = dev_pm_opp_find_freq_ceil(info->cpu_dev, &freq);
-> +		if (!IS_ERR(opp_item))
-> +			dev_pm_opp_put(opp_item);
-> +		else
-> +			freq = 0;
-> +
-> +		/* case of current opp is disabled */
-> +		if (freq == 0 || freq != info->opp_freq) {
-> +			// find an enable opp item
-> +			freq = 1;
-> +			opp_item = dev_pm_opp_find_freq_ceil(info->cpu_dev,
-> +							     &freq);
-> +			if (!IS_ERR(opp_item)) {
-> +				dev_pm_opp_put(opp_item);
-> +				policy = cpufreq_cpu_get(info->opp_cpu);
-> +				if (policy) {
-> +					cpufreq_driver_target(policy,
-> +						freq / 1000,
-> +						CPUFREQ_RELATION_L);
-> +					cpufreq_cpu_put(policy);
-> +				}
-> +			} else
-> +				pr_err("%s: all opp items are disabled\n",
-> +				       __func__);
-> +		}
-> +	}
-> +
-> +	return notifier_from_errno(ret);
-> +}
-> +
->  static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
->  {
->  	struct device *cpu_dev;
-> @@ -383,11 +451,21 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
->  	info->intermediate_voltage = dev_pm_opp_get_voltage(opp);
->  	dev_pm_opp_put(opp);
+>  static const struct mtk_pwm_platform_data mt7622_pwm_data = {
+> -	.num_pwms = 6,
+> +	.fallback_npwms = 6,
+>  	.pwm45_fixup = false,
+>  	.has_clks = true,
+>  };
 >  
-> +	info->opp_cpu = cpu;
-> +	info->opp_nb.notifier_call = mtk_cpufreq_opp_notifier;
-> +	ret = dev_pm_opp_register_notifier(cpu_dev, &info->opp_nb);
-> +	if (ret) {
-> +		pr_warn("cannot register opp notification\n");
-> +		goto out_free_opp_table;
-> +	}
-> +
-> +	mutex_init(&info->lock);
->  	info->cpu_dev = cpu_dev;
->  	info->proc_reg = proc_reg;
->  	info->sram_reg = IS_ERR(sram_reg) ? NULL : sram_reg;
->  	info->cpu_clk = cpu_clk;
->  	info->inter_clk = inter_clk;
-> +	info->opp_freq = clk_get_rate(cpu_clk);
+>  static const struct mtk_pwm_platform_data mt7623_pwm_data = {
+> -	.num_pwms = 5,
+> +	.fallback_npwms = 5,
+>  	.pwm45_fixup = true,
+>  	.has_clks = true,
+>  };
 >  
->  	/*
->  	 * If SRAM regulator is present, software "voltage tracking" is needed
+>  static const struct mtk_pwm_platform_data mt7628_pwm_data = {
+> -	.num_pwms = 4,
+> +	.fallback_npwms = 4,
+>  	.pwm45_fixup = true,
+>  	.has_clks = false,
+>  };
 > -- 
-> 2.12.5
+> 2.17.1
+> 
+> 
 
 -- 
-viresh
+Pengutronix e.K.                           | Uwe Kleine-König            |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
