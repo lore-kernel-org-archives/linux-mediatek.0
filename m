@@ -1,45 +1,36 @@
-From: Avri Altman <Avri.Altman@wdc.com>
-Subject: RE: [PATCH v3] scsi: ufs: fix broken hba->outstanding_tasks
-Date: Tue, 20 Aug 2019 06:59:20 +0000
-Message-ID: <MN2PR04MB6991207C24518D8878CBAB5AFCAB0@MN2PR04MB6991.namprd04.prod.outlook.com>
-References: <1566222208-19890-1-git-send-email-stanley.chu@mediatek.com>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: [PATCH v13 05/12] mailbox: mediatek: cmdq: support mt8183 gce function
+Date: Tue, 20 Aug 2019 16:36:28 +0800
+Message-ID: <20190820083635.5404-6-bibby.hsieh@mediatek.com>
+References: <20190820083635.5404-1-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1566222208-19890-1-git-send-email-stanley.chu@mediatek.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com" <martin.petersen@oracle.com>, "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>, "pedrom.sousa@synopsys.com" <pedrom.sousa@synopsys.com>
-Cc: "marc.w.gonzalez@free.fr" <marc.w.gonzalez@free.fr>, "andy.teng@mediatek.com" <andy.teng@mediatek.com>, "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>, "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>, "evgreen@chromium.org" <evgreen@chromium.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "peter.wang@mediatek.com" <peter.wang@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "beanhuo@micron.com" <beanhuo@micron.com>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190820083635.5404-1-bibby.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, CK HU <ck.hu@mediatek.com>
+Cc: Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.chen@mediatek.com, Bibby Hsieh <bibby.hsieh@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-> 
-> Currently bits in hba->outstanding_tasks are cleared only after their
-> corresponding task management commands are successfully done by
-> __ufshcd_issue_tm_cmd().
-> 
-> If timeout happens in a task management command, its corresponding
-> bit in hba->outstanding_tasks will not be cleared until next task
-> management command with the same tag used successfully finishes.
-> 
-> This is wrong and can lead to some issues, like power issue.
-> For example, ufshcd_release() and ufshcd_gate_work() will do nothing
-> if hba->outstanding_tasks is not zero even if both UFS host and devices
-> are actually idle.
-> 
-> Solution is referried from error handling of device commands: bits in
-> hba->outstanding_tasks shall be cleared regardless of their execution
-> results.
-> 
-> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
-Reviewed-by: Avri Altman <avri.altman@wdc.com>
+add mt8183 compatible name for supporting gce function
+
+Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+---
+ drivers/mailbox/mtk-cmdq-mailbox.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index 8fddd26288e8..69daaadc3a5f 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -539,6 +539,7 @@ static const struct dev_pm_ops cmdq_pm_ops = {
+ 
+ static const struct of_device_id cmdq_of_ids[] = {
+ 	{.compatible = "mediatek,mt8173-gce", .data = (void *)16},
++	{.compatible = "mediatek,mt8183-gce", .data = (void *)24},
+ 	{}
+ };
+ 
+-- 
+2.18.0
