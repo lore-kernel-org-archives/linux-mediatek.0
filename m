@@ -1,145 +1,58 @@
-From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=
-        <u.kleine-koenig@pengutronix.de>
-Subject: Re: [PATCH v4 1/10] pwm: mediatek: add a property "num-pwms"
-Date: Tue, 20 Aug 2019 07:32:30 +0200
-Message-ID: <20190820053230.veu5qseftw45laka@pengutronix.de>
-References: <1566265225-27452-1-git-send-email-sam.shih@mediatek.com>
- <1566265225-27452-2-git-send-email-sam.shih@mediatek.com>
+From: Walter Wu <walter-zh.wu@mediatek.com>
+Subject: Re: [PATCH v4] kasan: add memory corruption identification for
+ software tag-based mode
+Date: Tue, 20 Aug 2019 13:37:58 +0800
+Message-ID: <1566279478.9993.21.camel@mtksdccf07>
+References: <20190806054340.16305-1-walter-zh.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1566265225-27452-2-git-send-email-sam.shih@mediatek.com>
+In-Reply-To: <20190806054340.16305-1-walter-zh.wu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sam Shih <sam.shih@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, John Crispin <john@phrozen.org>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: Andrey Ryabinin <aryabinin@virtuozzo.com>
+Cc: Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Arnd Bergmann <arnd@arndb.de>, Thomas Gleixner <tglx@linutronix.de>, Vasily Gorbik <gor@linux.ibm.com>, Andrey Konovalov <andreyknvl@google.com>, Miles Chen <miles.chen@mediatek.com>, linux-kernel@vger.kernel.org, kasan-dev@googlegroups.com, linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello,
-
-On Tue, Aug 20, 2019 at 09:40:16AM +0800, Sam Shih wrote:
-> From: Ryder Lee <ryder.lee@mediatek.com>
+On Tue, 2019-08-06 at 13:43 +0800, Walter Wu wrote:
+> This patch adds memory corruption identification at bug report for
+> software tag-based mode, the report show whether it is "use-after-free"
+> or "out-of-bound" error instead of "invalid-access" error. This will make
+> it easier for programmers to see the memory corruption problem.
 > 
-> This adds a property "num-pwms" to avoid having an endless
-> list of compatibles with no differences for the same driver.
+> We extend the slab to store five old free pointer tag and free backtrace,
+> we can check if the tagged address is in the slab record and make a
+> good guess if the object is more like "use-after-free" or "out-of-bound".
+> therefore every slab memory corruption can be identified whether it's
+> "use-after-free" or "out-of-bound".
 > 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
-> ---
-> Used:
-> https://patchwork.kernel.org/project/linux-mediatek/list/?series=68207
+> ====== Changes
+> Change since v1:
+> - add feature option CONFIG_KASAN_SW_TAGS_IDENTIFY.
+> - change QUARANTINE_FRACTION to reduce quarantine size.
+> - change the qlist order in order to find the newest object in quarantine
+> - reduce the number of calling kmalloc() from 2 to 1 time.
+> - remove global variable to use argument to pass it.
+> - correct the amount of qobject cache->size into the byes of qlist_head.
+> - only use kasan_cache_shrink() to shink memory.
 > 
-> Changes since v4:
-> Follow reviewer's comments:
-> Move the changes of droping the check for of_device_get_match_data
-> returning non-NULL to next patch
-> ---
->  drivers/pwm/pwm-mediatek.c | 30 +++++++++++++++++++++---------
->  1 file changed, 21 insertions(+), 9 deletions(-)
+> Change since v2:
+> - remove the shinking memory function kasan_cache_shrink()
+> - modify the description of the CONFIG_KASAN_SW_TAGS_IDENTIFY
+> - optimize the quarantine_find_object() and qobject_free()
+> - fix the duplicating function name 3 times in the header.
+> - modify the function name set_track() to kasan_set_track()
 > 
-> diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-> index eb6674ce995f..287fda3674ce 100644
-> --- a/drivers/pwm/pwm-mediatek.c
-> +++ b/drivers/pwm/pwm-mediatek.c
-> @@ -55,7 +55,7 @@ static const char * const mtk_pwm_clk_name[MTK_CLK_MAX] = {
->  };
->  
->  struct mtk_pwm_platform_data {
-> -	unsigned int num_pwms;
-> +	unsigned int fallback_npwms;
->  	bool pwm45_fixup;
->  	bool has_clks;
->  };
-> @@ -226,10 +226,10 @@ static const struct pwm_ops mtk_pwm_ops = {
->  
->  static int mtk_pwm_probe(struct platform_device *pdev)
->  {
-> -	const struct mtk_pwm_platform_data *data;
-> +	struct device_node *np = pdev->dev.of_node;
->  	struct mtk_pwm_chip *pc;
->  	struct resource *res;
-> -	unsigned int i;
-> +	unsigned int i, npwms;
->  	int ret;
->  
->  	pc = devm_kzalloc(&pdev->dev, sizeof(*pc), GFP_KERNEL);
-> @@ -246,7 +246,19 @@ static int mtk_pwm_probe(struct platform_device *pdev)
->  	if (IS_ERR(pc->regs))
->  		return PTR_ERR(pc->regs);
->  
-> -	for (i = 0; i < data->num_pwms + 2 && pc->soc->has_clks; i++) {
-> +	ret = of_property_read_u32(np, "num-pwms", &npwms);
-> +	if (ret < 0) {
-> +		/* It's deprecated, we should specify num_pwms via DT now. */
-> +		if (pc->soc->fallback_npwms) {
-> +			npwms = pc->soc->fallback_npwms;
-> +			dev_warn(&pdev->dev, "DT is outdated, please update it\n");
-> +		} else {
-> +			dev_err(&pdev->dev, "failed to get number of PWMs\n");
-> +			return ret;
-> +		}
-> +	}
+> Change since v3:
+> - change tag-based quarantine to extend slab to identify memory corruption
 
-I'd suggest to add here:
+Hi,Andrey,
 
-	if (npwms > ARRAY_SIZE(mtk_pwm_clk_name) + 2)
-		npwms = ARRAY_SIZE(mtk_pwm_clk_name) + 2;
+Would you review the patch,please?
+This patch is to pre-allocate slub record(tag and free backtrace) during
+create slub object. When kernel has memory corruption, it will print
+correct corruption type and free backtrace.
 
-to ensure to not use mtk_pwm_clk_name[10].
+Thanks.
 
-Best regards
-Uwe
-
-> +
-> +	for (i = 0; i < npwms + 2 && pc->soc->has_clks; i++) {
->  		pc->clks[i] = devm_clk_get(&pdev->dev, mtk_pwm_clk_name[i]);
->  		if (IS_ERR(pc->clks[i])) {
->  			dev_err(&pdev->dev, "clock: %s fail: %ld\n",
-> @@ -260,7 +272,7 @@ static int mtk_pwm_probe(struct platform_device *pdev)
->  	pc->chip.dev = &pdev->dev;
->  	pc->chip.ops = &mtk_pwm_ops;
->  	pc->chip.base = -1;
-> -	pc->chip.npwm = data->num_pwms;
-> +	pc->chip.npwm = npwms;
->  
->  	ret = pwmchip_add(&pc->chip);
->  	if (ret < 0) {
-> @@ -279,25 +291,25 @@ static int mtk_pwm_remove(struct platform_device *pdev)
->  }
->  
->  static const struct mtk_pwm_platform_data mt2712_pwm_data = {
-> -	.num_pwms = 8,
-> +	.fallback_npwms = 8,
->  	.pwm45_fixup = false,
->  	.has_clks = true,
->  };
->  
->  static const struct mtk_pwm_platform_data mt7622_pwm_data = {
-> -	.num_pwms = 6,
-> +	.fallback_npwms = 6,
->  	.pwm45_fixup = false,
->  	.has_clks = true,
->  };
->  
->  static const struct mtk_pwm_platform_data mt7623_pwm_data = {
-> -	.num_pwms = 5,
-> +	.fallback_npwms = 5,
->  	.pwm45_fixup = true,
->  	.has_clks = true,
->  };
->  
->  static const struct mtk_pwm_platform_data mt7628_pwm_data = {
-> -	.num_pwms = 4,
-> +	.fallback_npwms = 4,
->  	.pwm45_fixup = true,
->  	.has_clks = false,
->  };
-> -- 
-> 2.17.1
-> 
-> 
-
--- 
-Pengutronix e.K.                           | Uwe Kleine-König            |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Walter
