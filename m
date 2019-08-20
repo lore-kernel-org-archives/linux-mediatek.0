@@ -1,83 +1,43 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH V5 4/5] iommu/dma-iommu: Use the dev->coherent_dma_mask
-Date: Mon, 19 Aug 2019 19:39:23 +0100
-Message-ID: <d3c8d4ce-8ffb-bf69-a8f3-d64108f5987a@arm.com>
-References: <20190815110944.3579-1-murphyt7@tcd.ie>
- <20190815110944.3579-5-murphyt7@tcd.ie>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: [GIT PULL] mediatek drm fixes for 5.3
+Date: Tue, 20 Aug 2019 09:24:30 +0800
+Message-ID: <1566264270.30493.4.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190815110944.3579-5-murphyt7@tcd.ie>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tom Murphy <murphyt7@tcd.ie>, iommu@lists.linux-foundation.org
-Cc: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Andy Gross <agross@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Jean-Philippe Brucker <jean-philippe@linaro.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.o
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Dave Airlie <airlied@gmail.com>, Daniel Vetter <daniel.vetter@intel.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Cc: Nishka Dasgupta <nishkadg.linux@gmail.com>, Alexandre Courbot <acourbot@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 15/08/2019 12:09, Tom Murphy wrote:
-> Use the dev->coherent_dma_mask when allocating in the dma-iommu ops api.
-
-Oops... I suppose technically that's my latent bug, but since we've all 
-missed it so far, I doubt arm64 systems ever see any devices which 
-actually have different masks.
-
-Reviewed-by: Robin Murphy <robin.murphy@arm.com>
-
-> Signed-off-by: Tom Murphy <murphyt7@tcd.ie>
-> ---
->   drivers/iommu/dma-iommu.c | 12 +++++++-----
->   1 file changed, 7 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
-> index 906b7fa14d3c..b9a3ab02434b 100644
-> --- a/drivers/iommu/dma-iommu.c
-> +++ b/drivers/iommu/dma-iommu.c
-> @@ -471,7 +471,7 @@ static void __iommu_dma_unmap(struct device *dev, dma_addr_t dma_addr,
->   }
->   
->   static dma_addr_t __iommu_dma_map(struct device *dev, phys_addr_t phys,
-> -		size_t size, int prot)
-> +		size_t size, int prot, dma_addr_t dma_mask)
->   {
->   	struct iommu_domain *domain = iommu_get_dma_domain(dev);
->   	struct iommu_dma_cookie *cookie = domain->iova_cookie;
-> @@ -484,7 +484,7 @@ static dma_addr_t __iommu_dma_map(struct device *dev, phys_addr_t phys,
->   
->   	size = iova_align(iovad, size + iova_off);
->   
-> -	iova = iommu_dma_alloc_iova(domain, size, dma_get_mask(dev), dev);
-> +	iova = iommu_dma_alloc_iova(domain, size, dma_mask, dev);
->   	if (!iova)
->   		return DMA_MAPPING_ERROR;
->   
-> @@ -735,7 +735,7 @@ static dma_addr_t iommu_dma_map_page(struct device *dev, struct page *page,
->   	int prot = dma_info_to_prot(dir, coherent, attrs);
->   	dma_addr_t dma_handle;
->   
-> -	dma_handle = __iommu_dma_map(dev, phys, size, prot);
-> +	dma_handle = __iommu_dma_map(dev, phys, size, prot, dma_get_mask(dev));
->   	if (!coherent && !(attrs & DMA_ATTR_SKIP_CPU_SYNC) &&
->   	    dma_handle != DMA_MAPPING_ERROR)
->   		arch_sync_dma_for_device(dev, phys, size, dir);
-> @@ -938,7 +938,8 @@ static dma_addr_t iommu_dma_map_resource(struct device *dev, phys_addr_t phys,
->   		size_t size, enum dma_data_direction dir, unsigned long attrs)
->   {
->   	return __iommu_dma_map(dev, phys, size,
-> -			dma_info_to_prot(dir, false, attrs) | IOMMU_MMIO);
-> +			dma_info_to_prot(dir, false, attrs) | IOMMU_MMIO,
-> +			dma_get_mask(dev));
->   }
->   
->   static void iommu_dma_unmap_resource(struct device *dev, dma_addr_t handle,
-> @@ -1041,7 +1042,8 @@ static void *iommu_dma_alloc(struct device *dev, size_t size,
->   	if (!cpu_addr)
->   		return NULL;
->   
-> -	*handle = __iommu_dma_map(dev, page_to_phys(page), size, ioprot);
-> +	*handle = __iommu_dma_map(dev, page_to_phys(page), size, ioprot,
-> +			dev->coherent_dma_mask);
->   	if (*handle == DMA_MAPPING_ERROR) {
->   		__iommu_dma_free(dev, size, cpu_addr);
->   		return NULL;
-> 
+SGkgRGF2ZSwgRGFuaWVsOgoKVGhpcyBpbmNsdWRlIFBSSU1FIGJ1ZmZlciBhbmQgb2Zfbm9kZSBm
+aXhlcy4KClJlZ2FyZHMsCkNLCgpUaGUgZm9sbG93aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0CjVm
+OWU4MzJjMTM3MDc1MDQ1ZDE1Y2Q2ODk5YWIwNTA1Y2ZiMmNhNGI6CgogIExpbnVzIDUuMy1yYzEg
+KDIwMTktMDctMjEgMTQ6MDU6MzggLTA3MDApCgphcmUgYXZhaWxhYmxlIGluIHRoZSBHaXQgcmVw
+b3NpdG9yeSBhdDoKCiAgaHR0cHM6Ly9naXRodWIuY29tL2NraHUtbWVkaWF0ZWsvbGludXguZ2l0
+LXRhZ3MKdGFncy9tZWRpYXRlay1kcm0tZml4ZXMtNS4zCgpmb3IgeW91IHRvIGZldGNoIGNoYW5n
+ZXMgdXAgdG8gMTY1ZDQyYzAxMmJlNjk5MDBmMGUyZjg1NDU2MjZjYjllN2Q0YTgzMjoKCiAgZHJt
+L21lZGlhdGVrOiBtdGtfZHJtX2Rydi5jOiBBZGQgb2Zfbm9kZV9wdXQoKSBiZWZvcmUgZ290byAo
+MjAxOS0wOC0xOQowNzowOToyOSArMDgwMCkKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KTWVkaWF0ZWsgZHJtIGZpeGVzIGZv
+ciBMaW51eCA1LjMKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0KQWxleGFuZHJlIENvdXJib3QgKDIpOgogICAgICBkcm0vbWVk
+aWF0ZWs6IHVzZSBjb3JyZWN0IGRldmljZSB0byBpbXBvcnQgUFJJTUUgYnVmZmVycwogICAgICBk
+cm0vbWVkaWF0ZWs6IHNldCBETUEgbWF4IHNlZ21lbnQgc2l6ZQoKTmlzaGthIERhc2d1cHRhICgx
+KToKICAgICAgZHJtL21lZGlhdGVrOiBtdGtfZHJtX2Rydi5jOiBBZGQgb2Zfbm9kZV9wdXQoKSBi
+ZWZvcmUgZ290bwoKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jIHwgNTQK
+KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKy0tLQogZHJpdmVycy9ncHUvZHJtL21lZGlh
+dGVrL210a19kcm1fZHJ2LmggfCAgMiArKwogMiBmaWxlcyBjaGFuZ2VkLCA1MiBpbnNlcnRpb25z
+KCspLCA0IGRlbGV0aW9ucygtKQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVk
+ZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2RyaS1kZXZlbA==
