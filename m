@@ -1,27 +1,27 @@
-From: Rob Herring <robh@kernel.org>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 Subject: Re: [RFC,v4,1/4] media: dt-bindings: mt8183: Added camera ISP Pass 1
-Date: Wed, 21 Aug 2019 14:47:52 -0500
-Message-ID: <20190821194752.GA15270@bogus>
+Date: Wed, 21 Aug 2019 15:17:58 -0500
+Message-ID: <20190821201758.GB15270@bogus>
 References: <jungo.lin@mediatek.com>
  <20190807124803.29884-1-jungo.lin@mediatek.com>
  <20190807124803.29884-2-jungo.lin@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <20190807124803.29884-2-jungo.lin@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Jungo Lin <jungo.lin@mediatek.com>
-Cc: ryan.yu@mediatek.com, frankie.chiu@mediatek.com, laurent.pinchart@ideasonboard.com, Rynn.Wu@mediatek.com, suleiman@chromium.org, Jerry-ch.Chen@mediatek.com, frederic.chen@mediatek.com, linux-media@vger.kernel.org, devicetree@vger.kernel.org, hverkuil-cisco@xs4all.nl, shik@chromium.org, yuzhao@chromium.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, Sean.Cheng@mediatek.com, srv_heupstream@mediatek.com, sj.huang@mediatek.com, tfiga@chromium.org, zwisler@chromium.org, ddavenport@chromium.org
+In-Reply-To: <20190807124803.29884-2-jungo.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jungo Lin <jungo.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: ryan.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, frankie.chiu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, Rynn.Wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, suleiman-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Jerry-ch.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, hverkuil-cisco-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, shik-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, yuzhao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sean.Cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sj.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, zwisler-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, ddavenport-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
 On Wed, Aug 07, 2019 at 08:48:00PM +0800, Jungo Lin wrote:
@@ -30,7 +30,7 @@ On Wed, Aug 07, 2019 at 08:48:00PM +0800, Jungo Lin wrote:
 > data out from the sensor interface, applies ISP image effects
 > from tuning data and outputs the image data or statistics data to DRAM.
 > 
-> Signed-off-by: Jungo Lin <jungo.lin@mediatek.com>
+> Signed-off-by: Jungo Lin <jungo.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > ---
 >  .../bindings/media/mediatek,camisp.txt        | 73 +++++++++++++++++++
 >  1 file changed, 73 insertions(+)
@@ -86,10 +86,10 @@ On Wed, Aug 07, 2019 at 08:48:00PM +0800, Jungo Lin wrote:
 > +SoC specific DT entry:
 > +
 > +		camisp: camisp@1a000000 {
+
+Also, you can remove 2 levels of indentation here.
+
 > +			compatible = "mediatek,mt8183-camisp", "syscon";
-
-syscon doesn't seem appropriate nor is it documented.
-
 > +			reg = <0 0x1a000000 0 0x1000>,
 > +					<0 0x1a003000 0 0x1000>,
 > +					<0 0x1a004000 0 0x2000>,
