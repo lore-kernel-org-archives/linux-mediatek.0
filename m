@@ -1,33 +1,26 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 04/11] pinctrl: mediatek: update pinmux defintions for
- mt6779
-Date: Wed, 21 Aug 2019 13:50:25 -0500
-Message-ID: <20190821185025.GA18525@bogus>
-References: <1564996320-10897-1-git-send-email-mars.cheng@mediatek.com>
- <1564996320-10897-5-git-send-email-mars.cheng@mediatek.com>
+Subject: Re: [PATCH 1/2] dt-bindings: pwm: pwm-mediatek: Add documentation
+ for MT8516
+Date: Wed, 21 Aug 2019 13:53:53 -0500
+Message-ID: <20190821185353.GA29669@bogus>
+References: <20190805125848.15751-1-fparent@baylibre.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1564996320-10897-5-git-send-email-mars.cheng@mediatek.com>
+In-Reply-To: <20190805125848.15751-1-fparent@baylibre.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mars Cheng <mars.cheng@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, Wendell Lin <wendell.lin@mediatek.com>, Ivan Tseng <ivan.tseng@mediatek.com>, Andy Teng <andy.teng@mediatek.com>
+Cc: thierry.reding@gmail.com, robh+dt@kernel.org, matthias.bgg@gmail.com, mark.rutland@arm.com, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Fabien Parent <fparent@baylibre.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Aug 05, 2019 at 05:11:53PM +0800, Mars Cheng wrote:
-> Add devicetree bindings for Mediatek mt6779 SoC Pin Controller.
-
-checkpatch.pl reports typo in subject.
-
-Otherwise,
+On Mon,  5 Aug 2019 14:58:47 +0200, Fabien Parent wrote:
+> Add the device-tree documentation for the PWM IP on the MediaTek
+> MT8516 SoCs.
+> 
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> ---
+>  Documentation/devicetree/bindings/pwm/pwm-mediatek.txt | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
 Reviewed-by: Rob Herring <robh@kernel.org>
-
-> 
-> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
-> Signed-off-by: Andy Teng <andy.teng@mediatek.com>
-> ---
->  include/dt-bindings/pinctrl/mt6779-pinfunc.h | 1242 ++++++++++++++++++++++++++
->  1 file changed, 1242 insertions(+)
->  create mode 100644 include/dt-bindings/pinctrl/mt6779-pinfunc.h
