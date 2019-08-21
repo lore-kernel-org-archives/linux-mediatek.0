@@ -1,145 +1,95 @@
-From: Yong Wu <yong.wu@mediatek.com>
-Subject: [PATCH v10 23/23] iommu/mediatek: Clean up struct mtk_smi_iommu
-Date: Wed, 21 Aug 2019 21:53:26 +0800
-Message-ID: <1566395606-7975-24-git-send-email-yong.wu@mediatek.com>
-References: <1566395606-7975-1-git-send-email-yong.wu@mediatek.com>
+From: Matthias Maennich <maennich-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH v3 00/11] Symbol Namespaces
+Date: Wed, 21 Aug 2019 15:03:41 +0100
+Message-ID: <20190821140341.GA126314@google.com>
+References: <20190813121733.52480-1-maennich@google.com>
+ <20190821114955.12788-1-maennich@google.com>
+ <20190821131140.GC2349@hirez.programming.kicks-ass.net>
+ <20190821133846.GC4890@kroah.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1566395606-7975-1-git-send-email-yong.wu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Will Deacon <will@kernel.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, yong.wu@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, Matthias Kaehlcke <mka@chromium.org>, cui.zhang@mediatek.com, chao.hao@mediatek.com, ming-fan.chen@mediatek.com
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20190821133846.GC4890-U8xfFu+wG4EAvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Greg KH <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Cc: kstewart-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, oneukum-IBi9RG/b67k@public.gmane.org, linux-aspeed-uLR06cmDAlY/bJ5BZ2RsiQ@public.gmane.org, Peter Zijlstra <peterz-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Toru Komatsu <k0ma-h7Lmzv2voGl4Eiagz67IpQ@public.gmane.org>, Mauro Carvalho Chehab <mchehab+samsung-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Nicolas Ferre <nicolas.ferre-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>, David Howells <dhowells-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org, Will Deacon <will-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, patches-yzvPICuk2AA4QjBA90+/kJqQE7yCjDx5@public.gmane.org, Michael Ellerman <mpe-Gsx/Oe8HsFggBc27wqDAHg@public.gmane.org>, hpa-YMNOUZJC4hwAvxtiuMwx3w@public.gmane.org, joel-QYYGw3jwrUn5owFQY34kdNi2O/JbrIOy@public.gmane.org, bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org, cocci-/FJkirnvOdkvYVN+rsErww@public.gmane.org, linux-arch-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Benjamin Fair <benjaminfair-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Nancy Yuen <yuenn-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, openbmc-uLR06cmDAlY/bJ5BZ2RsiQ@public.gmane.org, x86-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, lucas.de.marchi-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, usb-storage-ijkIwGHArpdIPJnuZ7Njw4oP9KaGy4wf@public.gmane.org, mingo-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, geert-Td1EMuHUCqxL1ZNQvxDV9g@public.gmane.org, NX
 List-Id: linux-mediatek@lists.infradead.org
 
-Remove the "struct mtk_smi_iommu" to simplify the code since it has only
-one item in it right now.
+On Wed, 21 Aug, 06:38, Greg Kroah-Hartman wrote:
+>On Wed, Aug 21, 2019 at 03:11:40PM +0200, Peter Zijlstra wrote:
+>> On Wed, Aug 21, 2019 at 12:49:15PM +0100, Matthias Maennich wrote:
+>> > As of Linux 5.3-rc5, there are 31205 [1] exported symbols in the kernel.
+>> > That is a growth of roughly 1000 symbols since 4.17 (30206 [2]).  There
+>> > seems to be some consensus amongst kernel devs that the export surface
+>> > is too large, and hard to reason about.
+>> >
+>> > Generally, these symbols fall in one of these categories:
+>> > 1) Symbols actually meant for drivers
+>> > 2) Symbols that are only exported because functionality is split over
+>> >    multiple modules, yet they really shouldn't be used by modules outside
+>> >    of their own subsystem
+>> > 3) Symbols really only meant for in-tree use
+>> >
+>> > When module developers try to upstream their code, it regularly turns
+>> > out that they are using exported symbols that they really shouldn't be
+>> > using. This problem is even bigger for drivers that are currently
+>> > out-of-tree, which may be using many symbols that they shouldn't be
+>> > using, and that break when those symbols are removed or modified.
+>> >
+>> > This patch allows subsystem maintainers to partition their exported
+>> > symbols into separate namespaces, and module authors to import such
+>> > namespaces only when needed.
+>> >
+>> > This allows subsystem maintainers to more easily limit availability of
+>> > these namespaced symbols to other parts of the kernel. It can also be
+>> > used to partition the set of exported symbols for documentation
+>> > purposes; for example, a set of symbols that is really only used for
+>> > debugging could be in a "SUBSYSTEM_DEBUG" namespace.
+>>
+>> I'm missing how one can prohibit these random out of tree modules from
+>> doing MODULE_IMPORT_NS().
+>
+>Nothing, but then they are explicitly being "bad" :)
+>
 
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
----
- drivers/iommu/mtk_iommu.c    | 4 ++--
- drivers/iommu/mtk_iommu.h    | 6 +++---
- drivers/iommu/mtk_iommu_v1.c | 4 ++--
- drivers/memory/mtk-smi.c     | 6 +++---
- include/soc/mediatek/smi.h   | 4 ----
- 5 files changed, 10 insertions(+), 14 deletions(-)
+As a side effect of this implementation (namespace imports via modinfo
+tags), imports are very visible for (out-of-tree) modules, e.g.
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index cc81de2..400066d 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -278,7 +278,7 @@ static void mtk_iommu_config(struct mtk_iommu_data *data,
- 	for (i = 0; i < fwspec->num_ids; ++i) {
- 		larbid = MTK_M4U_TO_LARB(fwspec->ids[i]);
- 		portid = MTK_M4U_TO_PORT(fwspec->ids[i]);
--		larb_mmu = &data->smi_imu.larb_imu[larbid];
-+		larb_mmu = &data->larb_imu[larbid];
- 
- 		dev_dbg(dev, "%s iommu port: %d\n",
- 			enable ? "enable" : "disable", portid);
-@@ -680,7 +680,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 			of_node_put(larbnode);
- 			return -EPROBE_DEFER;
- 		}
--		data->smi_imu.larb_imu[id].dev = &plarbdev->dev;
-+		data->larb_imu[id].dev = &plarbdev->dev;
- 
- 		component_match_add_release(dev, &match, release_of,
- 					    compare_of, larbnode);
-diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-index 56b579c..fc0f16e 100644
---- a/drivers/iommu/mtk_iommu.h
-+++ b/drivers/iommu/mtk_iommu.h
-@@ -56,7 +56,6 @@ struct mtk_iommu_data {
- 	struct mtk_iommu_suspend_reg	reg;
- 	struct mtk_iommu_domain		*m4u_dom;
- 	struct iommu_group		*m4u_group;
--	struct mtk_smi_iommu		smi_imu;      /* SMI larb iommu info */
- 	bool                            enable_4GB;
- 	bool				tlb_flush_active;
- 
-@@ -64,6 +63,7 @@ struct mtk_iommu_data {
- 	const struct mtk_iommu_plat_data *plat_data;
- 
- 	struct list_head		list;
-+	struct mtk_smi_larb_iommu	larb_imu[MTK_LARB_NR_MAX];
- };
- 
- static inline int compare_of(struct device *dev, void *data)
-@@ -80,14 +80,14 @@ static inline int mtk_iommu_bind(struct device *dev)
- {
- 	struct mtk_iommu_data *data = dev_get_drvdata(dev);
- 
--	return component_bind_all(dev, &data->smi_imu);
-+	return component_bind_all(dev, &data->larb_imu);
- }
- 
- static inline void mtk_iommu_unbind(struct device *dev)
- {
- 	struct mtk_iommu_data *data = dev_get_drvdata(dev);
- 
--	component_unbind_all(dev, &data->smi_imu);
-+	component_unbind_all(dev, &data->larb_imu);
- }
- 
- #endif
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index 3922358..860926c 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -206,7 +206,7 @@ static void mtk_iommu_config(struct mtk_iommu_data *data,
- 	for (i = 0; i < fwspec->num_ids; ++i) {
- 		larbid = mt2701_m4u_to_larb(fwspec->ids[i]);
- 		portid = mt2701_m4u_to_port(fwspec->ids[i]);
--		larb_mmu = &data->smi_imu.larb_imu[larbid];
-+		larb_mmu = &data->larb_imu[larbid];
- 
- 		dev_dbg(dev, "%s iommu port: %d\n",
- 			enable ? "enable" : "disable", portid);
-@@ -610,7 +610,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 			}
- 		}
- 
--		data->smi_imu.larb_imu[larb_nr].dev = &plarbdev->dev;
-+		data->larb_imu[larb_nr].dev = &plarbdev->dev;
- 		component_match_add_release(dev, &match, release_of,
- 					    compare_of, larb_spec.np);
- 		larb_nr++;
-diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index d6dc62f..439d7d8 100644
---- a/drivers/memory/mtk-smi.c
-+++ b/drivers/memory/mtk-smi.c
-@@ -143,13 +143,13 @@ void mtk_smi_larb_put(struct device *larbdev)
- mtk_smi_larb_bind(struct device *dev, struct device *master, void *data)
- {
- 	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
--	struct mtk_smi_iommu *smi_iommu = data;
-+	struct mtk_smi_larb_iommu *larb_mmu = data;
- 	unsigned int         i;
- 
- 	for (i = 0; i < MTK_LARB_NR_MAX; i++) {
--		if (dev == smi_iommu->larb_imu[i].dev) {
-+		if (dev == larb_mmu[i].dev) {
- 			larb->larbid = i;
--			larb->mmu = &smi_iommu->larb_imu[i].mmu;
-+			larb->mmu = &larb_mmu[i].mmu;
- 			return 0;
- 		}
- 	}
-diff --git a/include/soc/mediatek/smi.h b/include/soc/mediatek/smi.h
-index 6f0b00c..5a34b87 100644
---- a/include/soc/mediatek/smi.h
-+++ b/include/soc/mediatek/smi.h
-@@ -20,10 +20,6 @@ struct mtk_smi_larb_iommu {
- 	unsigned int   mmu;
- };
- 
--struct mtk_smi_iommu {
--	struct mtk_smi_larb_iommu larb_imu[MTK_LARB_NR_MAX];
--};
--
- /*
-  * mtk_smi_larb_get: Enable the power domain and clocks for this local arbiter.
-  *                   It also initialize some basic setting(like iommu).
--- 
-1.9.1
+$ modinfo drivers/usb/storage/ums-usbat.ko
+  filename:       drivers/usb/storage/ums-usbat.ko
+  import_ns:      USB_STORAGE
+  license:        GPL
+  author:         ...
+  ...
+
+>> That is; suppose I stick all the preempt_notifier symbols in a KVM
+>> namespace, how do I enforce no out-of-tree modules ever do
+>> MODULE_IMPORT_NS(KVM) and gain access?
+>>
+
+That is actually a feature worth following up: Restricting the
+namespaces that can be imported by modules. I am afraid it is not part
+of this series, but should not be too hard once agreed how such a list
+will be defined.
+
+>> (the above would basically break virtualbox, which I knows uses preempt
+>> notifiers too, but I don't give a rats arse about that)
+>
+>It's a huge red flag for anyone reviewing the code that this module is
+>doing something it probably really should not be doing at all.  It will
+>make reviewing code easier, this isn't there to try to "prevent bad
+>actors" at all, sorry.
+>
+
+Cheers,
+Matthias
