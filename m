@@ -1,102 +1,65 @@
-From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
-Subject: Re: [PATCH net-next v2 1/3] net: ethernet: mediatek: Add basic
- PHYLINK support
-Date: Thu, 22 Aug 2019 15:27:40 +0100
-Message-ID: <20190822142739.GS13294@shell.armlinux.org.uk>
-References: <20190821144336.9259-1-opensource@vdorst.com>
- <20190821144336.9259-2-opensource@vdorst.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 1/2] Include mt8183-reset.h and add reset-cells in
+ infracfg in dtsi file.
+Date: Thu, 22 Aug 2019 16:33:25 +0200
+Message-ID: <24e4a0a9-065e-410d-7c3f-403ec859ae07@gmail.com>
+References: <20190725080957.17333-1-yong.liang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-Return-path: <netdev-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190821144336.9259-2-opensource@vdorst.com>
-Sender: netdev-owner@vger.kernel.org
-To: =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>
-Cc: John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Nelson Chang <nelson.chang@mediatek.com>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, Frank Wunderlich <frank-w@public-files.de>, netdev@vger.kernel.org, linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org, Stefan Roese <sr@denx.de>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190725080957.17333-1-yong.liang@mediatek.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Yong Liang <yong.liang@mediatek.com>, mturquette@baylibre.com, sboyd@kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, drinkcat@chromium.org, weiyi.lu@mediatek.com, jamesjj.liao@mediatek.com, jasu@njomotys.info, owen.chen@mediatek.com, chunhui.dai@mediatek.com, erin.lo@mediatek.com, eddie.huang@mediatek.com
+Cc: linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Aug 21, 2019 at 04:43:34PM +0200, René van Dorst wrote:
-> +static void mtk_mac_link_down(struct phylink_config *config, unsigned int mode,
-> +			      phy_interface_t interface)
-> +{
-> +	struct mtk_mac *mac = container_of(config, struct mtk_mac,
-> +					   phylink_config);
+
+
+On 25/07/2019 10:09, Yong Liang wrote:
+> From: "yong.liang" <yong.liang@mediatek.com>
+> 
+
+Missing commit message.
+Subject could be shorter, something like:
+arm64: dts: add reset-cells for infracfg
+
+> Change-Id: I46e0aca76a206ac86ee0477d9dbd67e1e924b118
+
+Please delete Change-Id it's not meaning full for upstream work.
+
+> Signed-off-by: yong.liang <yong.liang@mediatek.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index 08274bfcebd8..2589e9461c6e 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -8,6 +8,7 @@
+>  #include <dt-bindings/clock/mt8183-clk.h>
+>  #include <dt-bindings/interrupt-controller/arm-gic.h>
+>  #include <dt-bindings/interrupt-controller/irq.h>
+> +#include <dt-bindings/reset-controller/mt8183-resets.h>
 >  
-> -	return 0;
-> +	mtk_w32(mac->hw, MAC_MCR_FORCE_LINK_DOWN, MTK_MAC_MCR(mac->id));
->  }
-
-You set the MAC_MCR_FORCE_MODE bit here...
-
-> +static void mtk_mac_link_up(struct phylink_config *config, unsigned int mode,
-> +			    phy_interface_t interface,
-> +			    struct phy_device *phy)
->  {
-> +	struct mtk_mac *mac = container_of(config, struct mtk_mac,
-> +					   phylink_config);
-> +	u32 mcr = mtk_r32(mac->hw, MTK_MAC_MCR(mac->id));
+>  / {
+>  	compatible = "mediatek,mt8183";
+> @@ -194,6 +195,7 @@
+>  			compatible = "mediatek,mt8183-infracfg", "syscon";
+>  			reg = <0 0x10001000 0 0x1000>;
+>  			#clock-cells = <1>;
+> +			#reset-cells = <1>;
+>  		};
 >  
-> +	mcr |= MAC_MCR_TX_EN | MAC_MCR_RX_EN;
-> +	mtk_w32(mac->hw, mcr, MTK_MAC_MCR(mac->id));
-> +}
-
-Looking at this, a link_down() followed by a link_up() would result in
-this register containing MAC_MCR_FORCE_MODE | MAC_MCR_TX_EN |
-MAC_MCR_RX_EN ?  Is that actually correct?  (MAC_MCR_FORCE_LINK isn't
-set, so it looks to me like it still forces the link down.)
-
-Note that link up/down forcing should not be done for in-band AN.
-
-> +static void mtk_validate(struct phylink_config *config,
-> +			 unsigned long *supported,
-> +			 struct phylink_link_state *state)
-> +{
-> +	struct mtk_mac *mac = container_of(config, struct mtk_mac,
-> +					   phylink_config);
-> +	__ETHTOOL_DECLARE_LINK_MODE_MASK(mask) = { 0, };
->  
-> +	if (state->interface != PHY_INTERFACE_MODE_NA &&
-> +	    state->interface != PHY_INTERFACE_MODE_MII &&
-> +	    state->interface != PHY_INTERFACE_MODE_GMII &&
-> +	    !(MTK_HAS_CAPS(mac->hw->soc->caps, MTK_RGMII) &&
-> +	      phy_interface_mode_is_rgmii(state->interface)) &&
-> +	    !(MTK_HAS_CAPS(mac->hw->soc->caps, MTK_TRGMII) &&
-> +	      !mac->id && state->interface == PHY_INTERFACE_MODE_TRGMII)) {
-> +		linkmode_zero(supported);
-> +		return;
->  	}
->  
-> +	phylink_set_port_modes(mask);
-> +	phylink_set(mask, Autoneg);
->  
-> +	if (state->interface == PHY_INTERFACE_MODE_TRGMII) {
-> +		phylink_set(mask, 1000baseT_Full);
-> +	} else {
-> +		phylink_set(mask, 10baseT_Half);
-> +		phylink_set(mask, 10baseT_Full);
-> +		phylink_set(mask, 100baseT_Half);
-> +		phylink_set(mask, 100baseT_Full);
-> +
-> +		if (state->interface != PHY_INTERFACE_MODE_MII) {
-> +			phylink_set(mask, 1000baseT_Half);
-> +			phylink_set(mask, 1000baseT_Full);
-> +			phylink_set(mask, 1000baseX_Full);
-> +		}
-> +	}
->  
-> +	phylink_set(mask, Pause);
-> +	phylink_set(mask, Asym_Pause);
->  
-> +	linkmode_and(supported, supported, mask);
-> +	linkmode_and(state->advertising, state->advertising, mask);
->  }
-
-This looks fine.
-
-Thanks.
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
-According to speedtest.net: 11.9Mbps down 500kbps up
+>  		apmixedsys: syscon@1000c000 {
+> 
