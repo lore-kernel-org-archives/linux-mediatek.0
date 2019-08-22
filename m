@@ -1,93 +1,83 @@
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Subject: [PATCH v2] i2c: mediatek: disable zero-length transfers for mt8183
-Date: Thu, 22 Aug 2019 17:45:17 +0800
-Message-ID: <20190822094516.55130-1-hsinyi@chromium.org>
+From: Will Deacon <will@kernel.org>
+Subject: Re: [PATCH v10 09/23] iommu/io-pgtable-arm-v7s: Extend to support
+ PA[33:32] for MediaTek
+Date: Thu, 22 Aug 2019 11:08:13 +0100
+Message-ID: <20190822100812.ketlgxxu64cy2bsk@willie-the-truck>
+References: <1566395606-7975-1-git-send-email-yong.wu@mediatek.com>
+ <1566395606-7975-10-git-send-email-yong.wu@mediatek.com>
+ <20190821152448.qmoqjh5zznfpdi6n@willie-the-truck>
+ <1566464186.11621.7.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1566464186.11621.7.camel@mhfsdcap03>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Wolfram Sang <wsa@the-dreams.de>, Yingjoe Chen <yingjoe.chen@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Qii Wang <qii.wang@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Jun Gao <jun.gao@mediatek.com>, Thomas Gleixner <tglx@linutronix.de>, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Alexandru M Stan <amstan@chromium.org>
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: youlin.pei@mediatek.com, devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>, cui.zhang@mediatek.com, srv_heupstream@mediatek.com, chao.hao@mediatek.com, Joerg Roedel <joro@8bytes.org>, linux-kernel@vger.kernel.org, Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, ming-fan.chen@mediatek.com, anan.sun@mediatek.com, Robin Murphy <robin.murphy@arm.com>, Matthias Kaehlcke <mka@chromium.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-When doing i2cdetect quick write mode, we would get transfer
-error ENOMEM, and i2cdetect shows there's no device at the address.
-Quoting from mt8183 datasheet, the number of transfers to be
-transferred in one transaction should be set to bigger than 1,
-so we should forbid zero-length transfer and update functionality.
+On Thu, Aug 22, 2019 at 04:56:26PM +0800, Yong Wu wrote:
+> On Wed, 2019-08-21 at 16:24 +0100, Will Deacon wrote:
+> > On Wed, Aug 21, 2019 at 09:53:12PM +0800, Yong Wu wrote:
+> > > MediaTek extend the arm v7s descriptor to support up to 34 bits PA where
+> > > the bit32 and bit33 are encoded in the bit9 and bit4 of the PTE
+> > > respectively. Meanwhile the iova still is 32bits.
+> > > 
+> > > Regarding whether the pagetable address could be over 4GB, the mt8183
+> > > support it while the previous mt8173 don't, thus keep it as is.
+> > > 
+> > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > > ---
+> > >  drivers/iommu/io-pgtable-arm-v7s.c | 32 +++++++++++++++++++++++++-------
+> > >  include/linux/io-pgtable.h         |  7 +++----
+> > >  2 files changed, 28 insertions(+), 11 deletions(-)
+> > 
+> > [...]
+> > 
+> > > @@ -731,7 +747,9 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
+> > >  {
+> > >  	struct arm_v7s_io_pgtable *data;
+> > >  
+> > > -	if (cfg->ias > ARM_V7S_ADDR_BITS || cfg->oas > ARM_V7S_ADDR_BITS)
+> > > +	if (cfg->ias > ARM_V7S_ADDR_BITS ||
+> > > +	    (cfg->oas > ARM_V7S_ADDR_BITS &&
+> > > +	     !(cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_EXT)))
+> > 
+> > Please can you instead change arm_v7s_alloc_pgtable() so that it allows an
+> > ias of up to 34 when the IO_PGTABLE_QUIRK_ARM_MTK_EXT is set?
+> 
+> Here I only simply skip the oas checking for our case. then which way do
+> your prefer?  something like you commented before:?
+> 
+> 
+> 	if (cfg->ias > ARM_V7S_ADDR_BITS)
+> 		return NULL;
+> 
+> 	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_EXT) {
+> 		if (!IS_ENABLED(CONFIG_PHYS_ADDR_T_64BIT))
+> 			cfg->oas = min(cfg->oas, ARM_V7S_ADDR_BITS);
 
-Incorrect return:
-localhost ~ # i2cdetect -q -y 0
-     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
-00:          -- -- -- -- -- -- -- -- -- -- -- -- --
-10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-70: -- -- -- -- -- -- -- --
+Isn't this always 32 for your IOMMUs?
 
-After this patch:
-localhost ~ #  i2cdetect -q -y 0
-Error: Can't use SMBus Quick Write command on this bus
+> 		else if (cfg->oas > 34)
+> 			return NULL;
+> 	} else if (cfg->oas > ARM_V7S_ADDR_BITS) {
+> 		return NULL;
+> 	}
 
-localhost ~ #  i2cdetect -y 0
-Warning: Can't use SMBus Quick Write command, will skip some addresses
-     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
-00:
-10:
-20:
-30: -- -- -- -- -- -- -- --
-40:
-50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-60:
-70:
+How about:
 
-Reported-by: Alexandru M Stan <amstan@chromium.org>
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
----
-Change from v1:
-* restore the order of algo and quirks
----
- drivers/i2c/busses/i2c-mt65xx.c | 11 ++++++++++-
- 1 file changed, 10 insertions(+), 1 deletion(-)
+	unsigned int oas_max = ARM_V7S_ADDR_BITS;
 
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index 252edb433fdf..29eae1bf4f86 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -234,6 +234,10 @@ static const struct i2c_adapter_quirks mt7622_i2c_quirks = {
- 	.max_num_msgs = 255,
- };
- 
-+static const struct i2c_adapter_quirks mt8183_i2c_quirks = {
-+	.flags = I2C_AQ_NO_ZERO_LEN,
-+};
-+
- static const struct mtk_i2c_compatible mt2712_compat = {
- 	.regs = mt_i2c_regs_v1,
- 	.pmic_i2c = 0,
-@@ -298,6 +302,7 @@ static const struct mtk_i2c_compatible mt8173_compat = {
- };
- 
- static const struct mtk_i2c_compatible mt8183_compat = {
-+	.quirks = &mt8183_i2c_quirks,
- 	.regs = mt_i2c_regs_v2,
- 	.pmic_i2c = 0,
- 	.dcm = 0,
-@@ -870,7 +875,11 @@ static irqreturn_t mtk_i2c_irq(int irqno, void *dev_id)
- 
- static u32 mtk_i2c_functionality(struct i2c_adapter *adap)
- {
--	return I2C_FUNC_I2C | I2C_FUNC_SMBUS_EMUL;
-+	if (adap->quirks->flags & I2C_AQ_NO_ZERO_LEN)
-+		return I2C_FUNC_I2C |
-+			(I2C_FUNC_SMBUS_EMUL & ~I2C_FUNC_SMBUS_QUICK);
-+	else
-+		return I2C_FUNC_I2C | I2C_FUNC_SMBUS_EMUL;
- }
- 
- static const struct i2c_algorithm mtk_i2c_algorithm = {
--- 
-2.20.1
+	if (cfg->ias > ARM_V7S_ADDR_BITS)
+		return NULL;
+
+	if (IS_ENABLED(CONFIG_PHYS_ADDR_T_64BIT) &&
+	    cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_EXT)
+		oas_max = 34;
+
+	if (cfg->oas > oas_max)
+		return NULL;
+
+Will
