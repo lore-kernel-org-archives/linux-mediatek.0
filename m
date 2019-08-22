@@ -1,161 +1,153 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [v4, 6/8] PM / OPP: Support adjusting OPP voltages at runtime
-Date: Thu, 22 Aug 2019 15:51:44 +0200
-Message-ID: <be3242e4-cde2-d9bd-5eff-aa5c62c58dea@gmail.com>
-References: <1565703113-31479-1-git-send-email-andrew-sh.cheng@mediatek.com>
- <1565703113-31479-7-git-send-email-andrew-sh.cheng@mediatek.com>
+Subject: Re: [PATCH v10 23/23] iommu/mediatek: Clean up struct mtk_smi_iommu
+Date: Thu, 22 Aug 2019 16:07:11 +0200
+Message-ID: <81864691-62f3-4e9a-eca0-c68000328f33@gmail.com>
+References: <1566395606-7975-1-git-send-email-yong.wu@mediatek.com>
+ <1566395606-7975-24-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1565703113-31479-7-git-send-email-andrew-sh.cheng@mediatek.com>
+In-Reply-To: <1566395606-7975-24-git-send-email-yong.wu@mediatek.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>, Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>
-Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, fan.chen@mediatek.com, Stephen Boyd <sboyd@codeaurora.org>, Roger Lu <roger.lu@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Robin Murphy <robin.murphy@arm.com>, Will Deacon <will@kernel.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, Matthias Kaehlcke <mka@chromium.org>, cui.zhang@mediatek.com, chao.hao@mediatek.com, ming-fan.chen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 13/08/2019 15:31, Andrew-sh.Cheng wrote:
-> From: Stephen Boyd <sboyd@codeaurora.org>
+On 21/08/2019 15:53, Yong Wu wrote:
+> Remove the "struct mtk_smi_iommu" to simplify the code since it has only
+> one item in it right now.
 > 
-> On some SoCs the Adaptive Voltage Scaling (AVS) technique is
-> employed to optimize the operating voltage of a device. At a
-> given frequency, the hardware monitors dynamic factors and either
-> makes a suggestion for how much to adjust a voltage for the
-> current frequency, or it automatically adjusts the voltage
-> without software intervention. Add an API to the OPP library for
-> the former case, so that AVS type devices can update the voltages
-> for an OPP when the hardware determines the voltage should
-> change. The assumption is that drivers like CPUfreq or devfreq
-> will register for the OPP notifiers and adjust the voltage
-> according to suggestions that AVS makes.
-> 
-> This patch is devired from [1] submitted by Stephen.
-> [1] https://lore.kernel.org/patchwork/patch/599279/
-> 
-> Signed-off-by: Stephen Boyd <sboyd@codeaurora.org>
-> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 
-Nit: your signed-off-by tag is missing.
-
-Regards,
-Matthias
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
 > ---
->  drivers/opp/core.c     | 63 ++++++++++++++++++++++++++++++++++++++++++++++++++
->  include/linux/pm_opp.h | 11 +++++++++
->  2 files changed, 74 insertions(+)
+>  drivers/iommu/mtk_iommu.c    | 4 ++--
+>  drivers/iommu/mtk_iommu.h    | 6 +++---
+>  drivers/iommu/mtk_iommu_v1.c | 4 ++--
+>  drivers/memory/mtk-smi.c     | 6 +++---
+>  include/soc/mediatek/smi.h   | 4 ----
+>  5 files changed, 10 insertions(+), 14 deletions(-)
 > 
-> diff --git a/drivers/opp/core.c b/drivers/opp/core.c
-> index c094d5d20fd7..407a07f29b12 100644
-> --- a/drivers/opp/core.c
-> +++ b/drivers/opp/core.c
-> @@ -2054,6 +2054,69 @@ static int _opp_set_availability(struct device *dev, unsigned long freq,
->  }
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index cc81de2..400066d 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -278,7 +278,7 @@ static void mtk_iommu_config(struct mtk_iommu_data *data,
+>  	for (i = 0; i < fwspec->num_ids; ++i) {
+>  		larbid = MTK_M4U_TO_LARB(fwspec->ids[i]);
+>  		portid = MTK_M4U_TO_PORT(fwspec->ids[i]);
+> -		larb_mmu = &data->smi_imu.larb_imu[larbid];
+> +		larb_mmu = &data->larb_imu[larbid];
 >  
->  /**
-> + * dev_pm_opp_adjust_voltage() - helper to change the voltage of an OPP
-> + * @dev:		device for which we do this operation
-> + * @freq:		OPP frequency to adjust voltage of
-> + * @u_volt:		new OPP voltage
-> + *
-> + * Return: -EINVAL for bad pointers, -ENOMEM if no memory available for the
-> + * copy operation, returns 0 if no modifcation was done OR modification was
-> + * successful.
-> + */
-> +int dev_pm_opp_adjust_voltage(struct device *dev, unsigned long freq,
-> +			      unsigned long u_volt)
-> +{
-> +	struct opp_table *opp_table;
-> +	struct dev_pm_opp *tmp_opp, *opp = ERR_PTR(-ENODEV);
-> +	int r = 0;
-> +
-> +	/* Find the opp_table */
-> +	opp_table = _find_opp_table(dev);
-> +	if (IS_ERR(opp_table)) {
-> +		r = PTR_ERR(opp_table);
-> +		dev_warn(dev, "%s: Device OPP not found (%d)\n", __func__, r);
-> +		return r;
-> +	}
-> +
-> +	mutex_lock(&opp_table->lock);
-> +
-> +	/* Do we have the frequency? */
-> +	list_for_each_entry(tmp_opp, &opp_table->opp_list, node) {
-> +		if (tmp_opp->rate == freq) {
-> +			opp = tmp_opp;
-> +			break;
-> +		}
-> +	}
-> +
-> +	if (IS_ERR(opp)) {
-> +		r = PTR_ERR(opp);
-> +		goto adjust_unlock;
-> +	}
-> +
-> +	/* Is update really needed? */
-> +	if (opp->supplies->u_volt == u_volt)
-> +		goto adjust_unlock;
-> +
-> +	opp->supplies->u_volt = u_volt;
-> +
-> +	dev_pm_opp_get(opp);
-> +	mutex_unlock(&opp_table->lock);
-> +
-> +	/* Notify the voltage change of the OPP */
-> +	blocking_notifier_call_chain(&opp_table->head, OPP_EVENT_ADJUST_VOLTAGE,
-> +				     opp);
-> +
-> +	dev_pm_opp_put(opp);
-> +	goto adjust_put_table;
-> +
-> +adjust_unlock:
-> +	mutex_unlock(&opp_table->lock);
-> +adjust_put_table:
-> +	dev_pm_opp_put_opp_table(opp_table);
-> +	return r;
-> +}
-> +
-> +/**
->   * dev_pm_opp_enable() - Enable a specific OPP
->   * @dev:	device for which we do this operation
->   * @freq:	OPP frequency to enable
-> diff --git a/include/linux/pm_opp.h b/include/linux/pm_opp.h
-> index af5021f27cb7..86947d53e8c4 100644
-> --- a/include/linux/pm_opp.h
-> +++ b/include/linux/pm_opp.h
-> @@ -22,6 +22,7 @@ struct opp_table;
+>  		dev_dbg(dev, "%s iommu port: %d\n",
+>  			enable ? "enable" : "disable", portid);
+> @@ -680,7 +680,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>  			of_node_put(larbnode);
+>  			return -EPROBE_DEFER;
+>  		}
+> -		data->smi_imu.larb_imu[id].dev = &plarbdev->dev;
+> +		data->larb_imu[id].dev = &plarbdev->dev;
 >  
->  enum dev_pm_opp_event {
->  	OPP_EVENT_ADD, OPP_EVENT_REMOVE, OPP_EVENT_ENABLE, OPP_EVENT_DISABLE,
-> +	OPP_EVENT_ADJUST_VOLTAGE,
+>  		component_match_add_release(dev, &match, release_of,
+>  					    compare_of, larbnode);
+> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+> index 56b579c..fc0f16e 100644
+> --- a/drivers/iommu/mtk_iommu.h
+> +++ b/drivers/iommu/mtk_iommu.h
+> @@ -56,7 +56,6 @@ struct mtk_iommu_data {
+>  	struct mtk_iommu_suspend_reg	reg;
+>  	struct mtk_iommu_domain		*m4u_dom;
+>  	struct iommu_group		*m4u_group;
+> -	struct mtk_smi_iommu		smi_imu;      /* SMI larb iommu info */
+>  	bool                            enable_4GB;
+>  	bool				tlb_flush_active;
+>  
+> @@ -64,6 +63,7 @@ struct mtk_iommu_data {
+>  	const struct mtk_iommu_plat_data *plat_data;
+>  
+>  	struct list_head		list;
+> +	struct mtk_smi_larb_iommu	larb_imu[MTK_LARB_NR_MAX];
 >  };
 >  
->  /**
-> @@ -111,6 +112,9 @@ int dev_pm_opp_add(struct device *dev, unsigned long freq,
->  void dev_pm_opp_remove(struct device *dev, unsigned long freq);
->  void dev_pm_opp_remove_all_dynamic(struct device *dev);
->  
-> +int dev_pm_opp_adjust_voltage(struct device *dev, unsigned long freq,
-> +			      unsigned long u_volt);
-> +
->  int dev_pm_opp_enable(struct device *dev, unsigned long freq);
->  
->  int dev_pm_opp_disable(struct device *dev, unsigned long freq);
-> @@ -234,6 +238,13 @@ static inline void dev_pm_opp_remove_all_dynamic(struct device *dev)
+>  static inline int compare_of(struct device *dev, void *data)
+> @@ -80,14 +80,14 @@ static inline int mtk_iommu_bind(struct device *dev)
 >  {
+>  	struct mtk_iommu_data *data = dev_get_drvdata(dev);
+>  
+> -	return component_bind_all(dev, &data->smi_imu);
+> +	return component_bind_all(dev, &data->larb_imu);
 >  }
 >  
-> +static inline int
-> +dev_pm_opp_adjust_voltage(struct device *dev, unsigned long freq,
-> +			  unsigned long u_volt)
-> +{
-> +	return 0;
-> +}
-> +
->  static inline int dev_pm_opp_enable(struct device *dev, unsigned long freq)
+>  static inline void mtk_iommu_unbind(struct device *dev)
 >  {
->  	return 0;
+>  	struct mtk_iommu_data *data = dev_get_drvdata(dev);
+>  
+> -	component_unbind_all(dev, &data->smi_imu);
+> +	component_unbind_all(dev, &data->larb_imu);
+>  }
+>  
+>  #endif
+> diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+> index 3922358..860926c 100644
+> --- a/drivers/iommu/mtk_iommu_v1.c
+> +++ b/drivers/iommu/mtk_iommu_v1.c
+> @@ -206,7 +206,7 @@ static void mtk_iommu_config(struct mtk_iommu_data *data,
+>  	for (i = 0; i < fwspec->num_ids; ++i) {
+>  		larbid = mt2701_m4u_to_larb(fwspec->ids[i]);
+>  		portid = mt2701_m4u_to_port(fwspec->ids[i]);
+> -		larb_mmu = &data->smi_imu.larb_imu[larbid];
+> +		larb_mmu = &data->larb_imu[larbid];
+>  
+>  		dev_dbg(dev, "%s iommu port: %d\n",
+>  			enable ? "enable" : "disable", portid);
+> @@ -610,7 +610,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>  			}
+>  		}
+>  
+> -		data->smi_imu.larb_imu[larb_nr].dev = &plarbdev->dev;
+> +		data->larb_imu[larb_nr].dev = &plarbdev->dev;
+>  		component_match_add_release(dev, &match, release_of,
+>  					    compare_of, larb_spec.np);
+>  		larb_nr++;
+> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+> index d6dc62f..439d7d8 100644
+> --- a/drivers/memory/mtk-smi.c
+> +++ b/drivers/memory/mtk-smi.c
+> @@ -143,13 +143,13 @@ void mtk_smi_larb_put(struct device *larbdev)
+>  mtk_smi_larb_bind(struct device *dev, struct device *master, void *data)
+>  {
+>  	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
+> -	struct mtk_smi_iommu *smi_iommu = data;
+> +	struct mtk_smi_larb_iommu *larb_mmu = data;
+>  	unsigned int         i;
+>  
+>  	for (i = 0; i < MTK_LARB_NR_MAX; i++) {
+> -		if (dev == smi_iommu->larb_imu[i].dev) {
+> +		if (dev == larb_mmu[i].dev) {
+>  			larb->larbid = i;
+> -			larb->mmu = &smi_iommu->larb_imu[i].mmu;
+> +			larb->mmu = &larb_mmu[i].mmu;
+>  			return 0;
+>  		}
+>  	}
+> diff --git a/include/soc/mediatek/smi.h b/include/soc/mediatek/smi.h
+> index 6f0b00c..5a34b87 100644
+> --- a/include/soc/mediatek/smi.h
+> +++ b/include/soc/mediatek/smi.h
+> @@ -20,10 +20,6 @@ struct mtk_smi_larb_iommu {
+>  	unsigned int   mmu;
+>  };
+>  
+> -struct mtk_smi_iommu {
+> -	struct mtk_smi_larb_iommu larb_imu[MTK_LARB_NR_MAX];
+> -};
+> -
+>  /*
+>   * mtk_smi_larb_get: Enable the power domain and clocks for this local arbiter.
+>   *                   It also initialize some basic setting(like iommu).
 > 
