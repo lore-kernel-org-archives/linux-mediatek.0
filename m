@@ -1,42 +1,38 @@
-From: Andrew Lunn <andrew@lunn.ch>
-Subject: Re: [PATCH net-next v2 0/3] net: dsa: mt7530: Convert to PHYLINK and
- add support for port 5
-Date: Wed, 21 Aug 2019 23:05:28 +0200
-Message-ID: <20190821210528.GA29618@lunn.ch>
-References: <20190821144547.15113-1-opensource@vdorst.com>
+From: Mars Cheng <mars.cheng@mediatek.com>
+Subject: Re: [PATCH 04/11] pinctrl: mediatek: update pinmux defintions for
+ mt6779
+Date: Thu, 22 Aug 2019 08:43:37 +0800
+Message-ID: <1566434617.14794.0.camel@mtkswgap22>
+References: <1564996320-10897-1-git-send-email-mars.cheng@mediatek.com>
+         <1564996320-10897-5-git-send-email-mars.cheng@mediatek.com>
+         <20190821185025.GA18525@bogus>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <20190821144547.15113-1-opensource@vdorst.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>
-Cc: Florian Fainelli <f.fainelli@gmail.com>, Frank Wunderlich <frank-w@public-files.de>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-mips@vger.kernel.org, "David S . Miller" <davem@davemloft.net>, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, Vivien Didelot <vivien.didelot@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190821185025.GA18525@bogus>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, Wendell Lin <wendell.lin@mediatek.com>, Ivan Tseng <ivan.tseng@mediatek.com>, Andy Teng <andy.teng@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Aug 21, 2019 at 04:45:44PM +0200, Ren=E9 van Dorst wrote:
-> 1. net: dsa: mt7530: Convert to PHYLINK API
->    This patch converts mt7530 to PHYLINK API.
-> 2. dt-bindings: net: dsa: mt7530: Add support for port 5
-> 3. net: dsa: mt7530: Add support for port 5
->    These 2 patches adding support for port 5 of the switch.
-> =
+On Wed, 2019-08-21 at 13:50 -0500, Rob Herring wrote:
+> On Mon, Aug 05, 2019 at 05:11:53PM +0800, Mars Cheng wrote:
+> > Add devicetree bindings for Mediatek mt6779 SoC Pin Controller.
+> 
+> checkpatch.pl reports typo in subject.
+> 
+> Otherwise,
+> 
+> Reviewed-by: Rob Herring <robh@kernel.org>
+> 
 
-> v1->v2:
->  * Mostly phylink improvements after review.
+got it, will fix the typo in v3. Thanks for reviewing.
 
-Hi Ren=E9
-
-You are addressing comments mostly from Russell King. It would of been
-good to Cc: him on the patchset.
-
-Andrew
+> > 
+> > Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+> > Signed-off-by: Andy Teng <andy.teng@mediatek.com>
+> > ---
+> >  include/dt-bindings/pinctrl/mt6779-pinfunc.h | 1242 ++++++++++++++++++++++++++
+> >  1 file changed, 1242 insertions(+)
+> >  create mode 100644 include/dt-bindings/pinctrl/mt6779-pinfunc.h
