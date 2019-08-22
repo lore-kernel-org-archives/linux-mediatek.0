@@ -1,118 +1,57 @@
-From: =?utf-8?b?UmVuw6k=?= van Dorst <opensource@vdorst.com>
-Subject: Re: [PATCH net-next v2 2/3] net: ethernet: mediatek: Re-add support
- SGMII
-Date: Thu, 22 Aug 2019 19:50:33 +0000
-Message-ID: <20190822195033.Horde.hEW8FBGNfFrugQOCv0gaDfx@www.vdorst.com>
-References: <20190821144336.9259-1-opensource@vdorst.com>
- <20190821144336.9259-3-opensource@vdorst.com>
- <20190822144433.GT13294@shell.armlinux.org.uk>
+From: "Frank Wunderlich" <frank-w@public-files.de>
+Subject: Aw: Re: BUG: devm_regulator_get returns EPROBE_DEFER
+ (5.3-rc5..next-20190822) for bpi-r2/mt7623/mt7530
+Date: Thu, 22 Aug 2019 22:28:44 +0200
+Message-ID: <trinity-5d117f0d-9f34-4a2b-8a12-1cd34152c108-1566505724458@3c-app-gmx-bs43>
+References: <trinity-584a4b1c-18c9-43ae-8c1a-5057933ad905-1566501837738@3c-app-gmx-bs43>
+ <20190822193015.GK23391@sirena.co.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed; DelSp=Yes
-Content-Transfer-Encoding: 8bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20190822144433.GT13294@shell.armlinux.org.uk>
-Content-Disposition: inline
-Sender: netdev-owner@vger.kernel.org
-To: Russell King - ARM Linux admin <linux@armlinux.org.uk>
-Cc: John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Nelson Chang <nelson.chang@mediatek.com>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, Frank Wunderlich <frank-w@public-files.de>, netdev@vger.kernel.org, linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org, Stefan Roese <sr@denx.de>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190822193015.GK23391@sirena.co.uk>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, =?UTF-8?Q?=22Ren=C3=A9_van_Dorst=22?= <opensource@vdorst.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Russell,
+cfba5de9b99f drivers: Introduce device lookup variants by of_node
 
-Quoting Russell King - ARM Linux admin <linux@armlinux.org.uk>:
+this looks suspicios to me since the change is in the function which fails=
+:
 
-> On Wed, Aug 21, 2019 at 04:43:35PM +0200, René van Dorst wrote:
->> +	if (MTK_HAS_CAPS(mac->hw->soc->caps, MTK_SGMII)) {
->> +		if (state->interface != PHY_INTERFACE_MODE_2500BASEX) {
->>  			phylink_set(mask, 1000baseT_Full);
->>  			phylink_set(mask, 1000baseX_Full);
->> +		} else {
->> +			phylink_set(mask, 2500baseT_Full);
->> +			phylink_set(mask, 2500baseX_Full);
->> +		}
+struct regulator_dev *of_find_regulator_by_node(struct device_node *np)
+ {
+        struct device *dev;
+=20
+-       dev =3D class_find_device(&regulator_class, NULL, np, of_node_matc=
+h);
++       dev =3D class_find_device_by_of_node(&regulator_class, np);
+
+
+but i cannot revert this commit so i did it manually=2E=2E=2Ebut this does=
+ not seem to be the cause=2E=2E=2Estill error 517, also a change in core=2E=
+c is not the cause=2E=2E=2E
+
+how can i check instantiation at runtime?
+
+regards Frank
+
+
+> Gesendet: Donnerstag, 22=2E August 2019 um 21:30 Uhr
+> Von: "Mark Brown" <broonie@kernel=2Eorg>
+> An: "Frank Wunderlich" <frank-w@public-files=2Ede>
+> Cc: "Liam Girdwood" <lgirdwood@gmail=2Ecom>, linux-kernel@vger=2Ekernel=
+=2Eorg, linux-mediatek@lists=2Einfradead=2Eorg, "Ren=C3=A9 van Dorst" <open=
+source@vdorst=2Ecom>
+> Betreff: Re: BUG: devm_regulator_get returns EPROBE_DEFER (5=2E3-rc5=2E=
+=2Enext-20190822) for bpi-r2/mt7623/mt7530
 >
-> If you can dynamically switch between 1000BASE-X and 2500BASE-X, then
-> you need to have both set.  See mvneta.c:
+> On Thu, Aug 22, 2019 at 09:23:57PM +0200, Frank Wunderlich wrote:
+>=20
+> > seems of_find_regulator_by_node(node); is failing here, but i see the =
+dts-node (mt6323_vpa_reg: buck_vpa) in /sys/firmware/devicetree/=2E=2E=2E
+>=20
+> It's not looking for the node in the device tree, it's looking
+> for that regulator to instantiate at runtime=2E  Is that happening?
 >
->         if (pp->comphy || state->interface != PHY_INTERFACE_MODE_2500BASEX) {
->                 phylink_set(mask, 1000baseT_Full);
->                 phylink_set(mask, 1000baseX_Full);
->         }
->         if (pp->comphy || state->interface == PHY_INTERFACE_MODE_2500BASEX) {
->                 phylink_set(mask, 2500baseT_Full);
->                 phylink_set(mask, 2500baseX_Full);
->         }
->
-> What this is saying is, if we have a comphy (which is the serdes lane
-> facing component, where the data rate is setup) then we can support
-> both speeds (and so mask ends up with all four bits set.)  Otherwise,
-> we only support a single-speed (1000Gbps for non-2500BASE-X etc.)
->
->> +	} else {
->> +		if (state->interface == PHY_INTERFACE_MODE_TRGMII) {
->> +			phylink_set(mask, 1000baseT_Full);
->> +		} else {
->> +			phylink_set(mask, 10baseT_Half);
->> +			phylink_set(mask, 10baseT_Full);
->> +			phylink_set(mask, 100baseT_Half);
->> +			phylink_set(mask, 100baseT_Full);
->> +
->> +			if (state->interface != PHY_INTERFACE_MODE_MII) {
->> +				phylink_set(mask, 1000baseT_Half);
->> +				phylink_set(mask, 1000baseT_Full);
->> +				phylink_set(mask, 1000baseX_Full);
->> +			}
->
-> I'm also wondering about the "MTK_HAS_CAPS(mac->hw->soc->caps,
-> MTK_SGMII)" above.
-
-This totally wrong.
-MTK_HAS_CAPS(mac->hw->soc->caps, MTK_SGMII) tells me that the SOC has SGMII
-lane(s). Having a SGMII block doesn't mean that other functions aren't
-supported. I have to redo this!
-
-> (Here comes a reason why using SGMII to cover all single-lane serdes
-> modes causes confusion - unfortunately, some folk use SGMII to describe
-> all these modes.  So, I'm going to use the terminology "Cisco SGMII"
-> to mean exactly the SGMII format published by Cisco, "802.3 1000BASE-X"
-> to mean the original IEEE 802.3 format running at 1.25Gbps, and
-> "up-clocked 2500BASE-X" to mean the 3.125Gbps version of the 802.3
-> 1000BASE-X protocol.)
-
-Thanks for the explanation. In your previous review v1 you also explained it.
-I did change the forced modes for x-BaseX modes and auto negotiation for Cisco
-SGMII. But I seems to miss the link that I also have to improve this  
-validation
-part.
-
->
-> Isn't this set for Cisco SGMII as well as for 802.3 1000BASE-X and
-> the up-clocked 2500BASE-X modes?
->
-> If so, is there a reason why 10Mbps and 100Mbps speeds aren't
-> supported on Cisco SGMII links?
-
-I can only tell a bit about the mt7622 SOC, datasheet tells me that:
-
-The SGMII is the interface between 10/100/1000/2500 Mbps PHY and Ethernet MAC,
-the spec is raised by Cisco in 1999, which is aims for pin reduction compare
-with the GMII. It uses 2 differential data pair for TX and RX with clock
-embedded bit stream to convey frame data and port ability information.
-The core leverages the 1000Base-X PCS and Auto-Negotiation from IEEE 802.3
-specification (clause 36/37). This IP can support up to 3.125G baud  
-for 2.5Gbps
-(proprietary 2500Base-X) data rate of MAC by overclocking.
-
-Also features tells me: Support 10/100/1000/2500 Mbps in full duplex mode and
-10/100 Mbps in half duplex mode.
-
-I going make a new version.
-
-Greats,
-
-René
-
-> --
-> RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-> FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
-> According to speedtest.net: 11.9Mbps down 500kbps up
