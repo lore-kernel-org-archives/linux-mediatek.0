@@ -1,53 +1,80 @@
-From: Sean Wang <sean.wang@kernel.org>
-Subject: Re: [PATCH v2 07/11] pinctrl: mediatek: add mt6779 eint support
-Date: Thu, 22 Aug 2019 11:13:48 -0700
-Message-ID: <CAGp9Lzpsg2ZjP3Ydj+Fo88FXT_jrV=GnJ+vf4AsSNacwEEx=BA@mail.gmail.com>
-References: <1566206502-4347-1-git-send-email-mars.cheng@mediatek.com> <1566206502-4347-8-git-send-email-mars.cheng@mediatek.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 2/2] ASoC: mediatek: mt8183: fix tdm out issue
+Date: Thu, 22 Aug 2019 17:13:35 +0100
+Message-ID: <20190822161335.GA23391@sirena.co.uk>
+References: <1566478261-13464-1-git-send-email-jiaxin.yu@mediatek.com>
+ <1566478261-13464-3-git-send-email-jiaxin.yu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1566206502-4347-8-git-send-email-mars.cheng@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mars Cheng <mars.cheng@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, Marc Zyngier <marc.zyngier@arm.com>, Stephen Boyd <sboyd@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, lkml <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, mtk01761 <wendell.lin@mediatek.com>, linux-clk@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============1068978944860435447=="
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Resent-Message-ID: <20190822181847.GD23391@sirena.co.uk>
+Resent-To: Jiaxin Yu <jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org,
+ perex-/Fr2/VpizcU@public.gmane.org, tzungbi-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org,
+ linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eason.yen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org,
+ ck.hu-c+3QU6Y0cdFWk0Htik3J/w@public.gmane.org
+In-Reply-To: <1566478261-13464-3-git-send-email-jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jiaxin Yu <jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, ck.hu-c+3QU6Y0cdFWk0Htik3J/w@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, tzungbi-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eason.yen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Aug 19, 2019 at 2:22 AM Mars Cheng <mars.cheng@mediatek.com> wrote:
->
-> add driver setting to support mt6779 eint
->
-> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
 
-Acked-by: Sean Wang <sean.wang@kernel.org>
+--===============1068978944860435447==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="LQksG6bCIzRHxTLp"
+Content-Disposition: inline
 
-> ---
->  drivers/pinctrl/mediatek/pinctrl-mt6779.c |    8 ++++++++
->  1 file changed, 8 insertions(+)
->
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6779.c b/drivers/pinctrl/mediatek/pinctrl-mt6779.c
-> index 145bf22..49ff3cc 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mt6779.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mt6779.c
-> @@ -731,11 +731,19 @@
->         "iocfg_rt", "iocfg_lt", "iocfg_tl",
->  };
->
-> +static const struct mtk_eint_hw mt6779_eint_hw = {
-> +       .port_mask = 7,
-> +       .ports     = 6,
-> +       .ap_num    = 209,
-> +       .db_cnt    = 16,
-> +};
-> +
->  static const struct mtk_pin_soc mt6779_data = {
->         .reg_cal = mt6779_reg_cals,
->         .pins = mtk_pins_mt6779,
->         .npins = ARRAY_SIZE(mtk_pins_mt6779),
->         .ngrps = ARRAY_SIZE(mtk_pins_mt6779),
-> +       .eint_hw = &mt6779_eint_hw,
->         .gpio_m = 0,
->         .ies_present = true,
->         .base_names = mt6779_pinctrl_register_base_names,
-> --
-> 1.7.9.5
->
+
+--LQksG6bCIzRHxTLp
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Thu, Aug 22, 2019 at 08:51:01PM +0800, Jiaxin Yu wrote:
+> This patch fix two tdm out issues.
+> 1. TDM out support S16_LE/S24_LE/S32_LE formats .When output S32_LE, we
+>    need set hd_align so that memif can output MSB 24bits correctly.
+> 2. Fix TDM out hw_params as SNDRV_PCM_FORMAT_S32_LE.
+> 3. Fix TDM out data is valid on rising edge.
+
+These should really be split up into separate patches, each
+fixing a single issue.  Ideally the changelog should describe
+how the issue is fixed like that for 1 does.
+
+--LQksG6bCIzRHxTLp
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl1evy0ACgkQJNaLcl1U
+h9CZ3gf9E5RTE4sV5sm2rd7vBY7Z3ZWn19T1laGFpztTqI44AkYc8yA/L9dnts7b
+ERliT5kmt7nrnpBLnr76jxaEwHtegzBiEJwU099BRikGNHvrcL4kZLS7wkWluw++
+yPgkcGzZyNW+Nqa+AA27xzVbjoWJT3ZfDTQMmaF82/VPsPn/1fQ6fS0d4W0ugDiV
+GoEP+2UHDZLB9CSZP+l4KnqaEG+A4yJrDoauxX38aw8JpUrpduXEXpGd4t2TTYRN
+LFh4r985iErQR1K3IOCzzSpxf9eOa0WyvPdpmId3+MoWNVdcxRcKnMzj53fmBxgZ
+kD8P3Y919BFO6vCHunpaD0l+qS5Gfw==
+=URP9
+-----END PGP SIGNATURE-----
+
+--LQksG6bCIzRHxTLp--
+
+
+--===============1068978944860435447==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============1068978944860435447==--
