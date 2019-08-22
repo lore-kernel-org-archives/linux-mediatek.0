@@ -1,51 +1,161 @@
-From: Alexandre Belloni <alexandre.belloni@bootlin.com>
-Subject: Re: [PATCH v2 2/4] rtc: Add support for the MediaTek MT2712 RTC
-Date: Thu, 22 Aug 2019 15:36:49 +0200
-Message-ID: <20190822133649.GT27031@piout.net>
-References: <20190801110122.26834-1-ran.bi@mediatek.com>
- <20190801110122.26834-3-ran.bi@mediatek.com>
- <20190820201744.GZ3545@piout.net>
- <1566477254.12318.41.camel@mhfsdcap03>
- <20190822124628.GS27031@piout.net>
- <1566480361.12318.50.camel@mhfsdcap03>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [v4, 6/8] PM / OPP: Support adjusting OPP voltages at runtime
+Date: Thu, 22 Aug 2019 15:51:44 +0200
+Message-ID: <be3242e4-cde2-d9bd-5eff-aa5c62c58dea@gmail.com>
+References: <1565703113-31479-1-git-send-email-andrew-sh.cheng@mediatek.com>
+ <1565703113-31479-7-git-send-email-andrew-sh.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1566480361.12318.50.camel@mhfsdcap03>
+In-Reply-To: <1565703113-31479-7-git-send-email-andrew-sh.cheng@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ran Bi <ran.bi@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Alessandro Zummo <a.zummo@towertech.it>, Mark Rutland <mark.rutland@arm.com>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, "David S . Miller" <davem@davemloft.net>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jonathan Cameron <Jonathan.Cameron@huawei.com>, Linus Walleij <linus.walleij@linaro.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, YT Shen <yt.shen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Flora Fu <flora.fu@mediatek.com>
+To: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>, Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>
+Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, fan.chen@mediatek.com, Stephen Boyd <sboyd@codeaurora.org>, Roger Lu <roger.lu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 22/08/2019 21:26:01+0800, Ran Bi wrote:
-> On Thu, 2019-08-22 at 14:46 +0200, Alexandre Belloni wrote:
-> > On 22/08/2019 20:34:14+0800, Ran Bi wrote:
-> > > > > +	/* RTC need POWERKEY1/2 match, then goto normal work mode */
-> > > > > +	mt2712_writel(rtc, MT2712_POWERKEY1, MT2712_POWERKEY1_KEY);
-> > > > > +	mt2712_writel(rtc, MT2712_POWERKEY2, MT2712_POWERKEY2_KEY);
-> > > > 
-> > > > This should be written when setting the time after power was lost.
-> > > > 
-> > > 
-> > > I suppose we can move this into mt2712_rtc_read_time function's "if
-> > > (p1 != MT2712_POWERKEY1_KEY || p2 != MT2712_POWERKEY2_KEY)" condition
-> > > which will be added at next patch. We need additional flag to mark this
-> > > condition or another if condition in mt2712_rtc_set_time fucntion if we
-> > > put these code in mt2712_rtc_set_time function.
-> > > 
-> > 
-> > It is fine to test both in read_time and in set_time.
-> > 
+
+
+On 13/08/2019 15:31, Andrew-sh.Cheng wrote:
+> From: Stephen Boyd <sboyd@codeaurora.org>
 > 
-> Do you mean that we can test powerkey and then set powerkey both in
-> read_time and in set_time?
+> On some SoCs the Adaptive Voltage Scaling (AVS) technique is
+> employed to optimize the operating voltage of a device. At a
+> given frequency, the hardware monitors dynamic factors and either
+> makes a suggestion for how much to adjust a voltage for the
+> current frequency, or it automatically adjusts the voltage
+> without software intervention. Add an API to the OPP library for
+> the former case, so that AVS type devices can update the voltages
+> for an OPP when the hardware determines the voltage should
+> change. The assumption is that drivers like CPUfreq or devfreq
+> will register for the OPP notifiers and adjust the voltage
+> according to suggestions that AVS makes.
 > 
+> This patch is devired from [1] submitted by Stephen.
+> [1] https://lore.kernel.org/patchwork/patch/599279/
+> 
+> Signed-off-by: Stephen Boyd <sboyd@codeaurora.org>
+> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
 
-I mean that can test in read_time and test and set in set_time
+Nit: your signed-off-by tag is missing.
 
+Regards,
+Matthias
 
--- 
-Alexandre Belloni, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+> ---
+>  drivers/opp/core.c     | 63 ++++++++++++++++++++++++++++++++++++++++++++++++++
+>  include/linux/pm_opp.h | 11 +++++++++
+>  2 files changed, 74 insertions(+)
+> 
+> diff --git a/drivers/opp/core.c b/drivers/opp/core.c
+> index c094d5d20fd7..407a07f29b12 100644
+> --- a/drivers/opp/core.c
+> +++ b/drivers/opp/core.c
+> @@ -2054,6 +2054,69 @@ static int _opp_set_availability(struct device *dev, unsigned long freq,
+>  }
+>  
+>  /**
+> + * dev_pm_opp_adjust_voltage() - helper to change the voltage of an OPP
+> + * @dev:		device for which we do this operation
+> + * @freq:		OPP frequency to adjust voltage of
+> + * @u_volt:		new OPP voltage
+> + *
+> + * Return: -EINVAL for bad pointers, -ENOMEM if no memory available for the
+> + * copy operation, returns 0 if no modifcation was done OR modification was
+> + * successful.
+> + */
+> +int dev_pm_opp_adjust_voltage(struct device *dev, unsigned long freq,
+> +			      unsigned long u_volt)
+> +{
+> +	struct opp_table *opp_table;
+> +	struct dev_pm_opp *tmp_opp, *opp = ERR_PTR(-ENODEV);
+> +	int r = 0;
+> +
+> +	/* Find the opp_table */
+> +	opp_table = _find_opp_table(dev);
+> +	if (IS_ERR(opp_table)) {
+> +		r = PTR_ERR(opp_table);
+> +		dev_warn(dev, "%s: Device OPP not found (%d)\n", __func__, r);
+> +		return r;
+> +	}
+> +
+> +	mutex_lock(&opp_table->lock);
+> +
+> +	/* Do we have the frequency? */
+> +	list_for_each_entry(tmp_opp, &opp_table->opp_list, node) {
+> +		if (tmp_opp->rate == freq) {
+> +			opp = tmp_opp;
+> +			break;
+> +		}
+> +	}
+> +
+> +	if (IS_ERR(opp)) {
+> +		r = PTR_ERR(opp);
+> +		goto adjust_unlock;
+> +	}
+> +
+> +	/* Is update really needed? */
+> +	if (opp->supplies->u_volt == u_volt)
+> +		goto adjust_unlock;
+> +
+> +	opp->supplies->u_volt = u_volt;
+> +
+> +	dev_pm_opp_get(opp);
+> +	mutex_unlock(&opp_table->lock);
+> +
+> +	/* Notify the voltage change of the OPP */
+> +	blocking_notifier_call_chain(&opp_table->head, OPP_EVENT_ADJUST_VOLTAGE,
+> +				     opp);
+> +
+> +	dev_pm_opp_put(opp);
+> +	goto adjust_put_table;
+> +
+> +adjust_unlock:
+> +	mutex_unlock(&opp_table->lock);
+> +adjust_put_table:
+> +	dev_pm_opp_put_opp_table(opp_table);
+> +	return r;
+> +}
+> +
+> +/**
+>   * dev_pm_opp_enable() - Enable a specific OPP
+>   * @dev:	device for which we do this operation
+>   * @freq:	OPP frequency to enable
+> diff --git a/include/linux/pm_opp.h b/include/linux/pm_opp.h
+> index af5021f27cb7..86947d53e8c4 100644
+> --- a/include/linux/pm_opp.h
+> +++ b/include/linux/pm_opp.h
+> @@ -22,6 +22,7 @@ struct opp_table;
+>  
+>  enum dev_pm_opp_event {
+>  	OPP_EVENT_ADD, OPP_EVENT_REMOVE, OPP_EVENT_ENABLE, OPP_EVENT_DISABLE,
+> +	OPP_EVENT_ADJUST_VOLTAGE,
+>  };
+>  
+>  /**
+> @@ -111,6 +112,9 @@ int dev_pm_opp_add(struct device *dev, unsigned long freq,
+>  void dev_pm_opp_remove(struct device *dev, unsigned long freq);
+>  void dev_pm_opp_remove_all_dynamic(struct device *dev);
+>  
+> +int dev_pm_opp_adjust_voltage(struct device *dev, unsigned long freq,
+> +			      unsigned long u_volt);
+> +
+>  int dev_pm_opp_enable(struct device *dev, unsigned long freq);
+>  
+>  int dev_pm_opp_disable(struct device *dev, unsigned long freq);
+> @@ -234,6 +238,13 @@ static inline void dev_pm_opp_remove_all_dynamic(struct device *dev)
+>  {
+>  }
+>  
+> +static inline int
+> +dev_pm_opp_adjust_voltage(struct device *dev, unsigned long freq,
+> +			  unsigned long u_volt)
+> +{
+> +	return 0;
+> +}
+> +
+>  static inline int dev_pm_opp_enable(struct device *dev, unsigned long freq)
+>  {
+>  	return 0;
+> 
