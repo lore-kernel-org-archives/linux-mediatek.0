@@ -1,8 +1,8 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Subject: Re: [PATCH 1/2] Include mt8183-reset.h and add reset-cells in
  infracfg in dtsi file.
-Date: Thu, 22 Aug 2019 16:33:25 +0200
-Message-ID: <24e4a0a9-065e-410d-7c3f-403ec859ae07@gmail.com>
+Date: Thu, 22 Aug 2019 16:34:28 +0200
+Message-ID: <722d0ef0-976e-5241-a492-57dc56e3921e@gmail.com>
 References: <20190725080957.17333-1-yong.liang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -28,17 +28,12 @@ List-Id: linux-mediatek@lists.infradead.org
 On 25/07/2019 10:09, Yong Liang wrote:
 > From: "yong.liang" <yong.liang@mediatek.com>
 > 
-
-Missing commit message.
-Subject could be shorter, something like:
-arm64: dts: add reset-cells for infracfg
-
 > Change-Id: I46e0aca76a206ac86ee0477d9dbd67e1e924b118
-
-Please delete Change-Id it's not meaning full for upstream work.
-
 > Signed-off-by: yong.liang <yong.liang@mediatek.com>
 > ---
+
+Somehow I only have patch 1 of the series in my inbox.
+
 >  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 2 ++
 >  1 file changed, 2 insertions(+)
 > 
