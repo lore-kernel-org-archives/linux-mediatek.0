@@ -1,348 +1,376 @@
-From: Jiaxin Yu <jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 2/2] ASoC: mediatek: mt8183: fix tdm out issue
-Date: Thu, 22 Aug 2019 20:51:01 +0800
-Message-ID: <1566478261-13464-3-git-send-email-jiaxin.yu@mediatek.com>
-References: <1566478261-13464-1-git-send-email-jiaxin.yu@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH] arm64: dts: mt8183: add I2C nodes
+Date: Thu, 22 Aug 2019 15:21:10 +0200
+Message-ID: <055f05c3-e7c3-4f4d-ad5c-bfaea4f2a376@gmail.com>
+References: <1566477316-13245-1-git-send-email-qii.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1566478261-13464-1-git-send-email-jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, ck.hu-c+3QU6Y0cdFWk0Htik3J/w@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, tzungbi-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eason.yen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1566477316-13245-1-git-send-email-qii.wang@mediatek.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: qii.wang@mediatek.com, robh+dt@kernel.org
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, leilk.liu@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch fix two tdm out issues.
-1. TDM out support S16_LE/S24_LE/S32_LE formats .When output S32_LE, we
-   need set hd_align so that memif can output MSB 24bits correctly.
-2. Fix TDM out hw_params as SNDRV_PCM_FORMAT_S32_LE.
-3. Fix TDM out data is valid on rising edge.
 
-Signed-off-by: Jiaxin Yu <jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- sound/soc/mediatek/common/mtk-afe-fe-dai.c         |   3 +-
- sound/soc/mediatek/mt8183/mt8183-dai-tdm.c         | 177 +++++++++++++++++----
- .../mt8183/mt8183-mt6358-ts3a227-max98357.c        |   3 +
- sound/soc/mediatek/mt8183/mt8183-reg.h             |   8 +-
- 4 files changed, 152 insertions(+), 39 deletions(-)
 
-diff --git a/sound/soc/mediatek/common/mtk-afe-fe-dai.c b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
-index d165634..10ea4fd 100644
---- a/sound/soc/mediatek/common/mtk-afe-fe-dai.c
-+++ b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
-@@ -241,7 +241,7 @@ int mtk_afe_fe_prepare(struct snd_pcm_substream *substream,
- 	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
- 	struct mtk_base_afe_memif *memif = &afe->memif[rtd->cpu_dai->id];
- 	int hd_audio = 0;
--	int hd_align = 1;
-+	int hd_align = 0;
- 
- 	/* set hd mode */
- 	switch (substream->runtime->format) {
-@@ -254,7 +254,6 @@ int mtk_afe_fe_prepare(struct snd_pcm_substream *substream,
- 		break;
- 	case SNDRV_PCM_FORMAT_S24_LE:
- 		hd_audio = 1;
--		hd_align = 0;
- 		break;
- 	default:
- 		dev_err(afe->dev, "%s() error: unsupported format %d\n",
-diff --git a/sound/soc/mediatek/mt8183/mt8183-dai-tdm.c b/sound/soc/mediatek/mt8183/mt8183-dai-tdm.c
-index 8983d54a..0d69cf4 100644
---- a/sound/soc/mediatek/mt8183/mt8183-dai-tdm.c
-+++ b/sound/soc/mediatek/mt8183/mt8183-dai-tdm.c
-@@ -15,7 +15,9 @@
- struct mtk_afe_tdm_priv {
- 	int bck_id;
- 	int bck_rate;
--
-+	int tdm_out_mode;
-+	int bck_invert;
-+	int lck_invert;
- 	int mclk_id;
- 	int mclk_multiple; /* according to sample rate */
- 	int mclk_rate;
-@@ -23,6 +25,21 @@ struct mtk_afe_tdm_priv {
- };
- 
- enum {
-+	TDM_OUT_I2S = 0,
-+	TDM_OUT_TDM = 1,
-+};
-+
-+enum {
-+	TDM_BCK_NON_INV = 0,
-+	TDM_BCK_INV = 1,
-+};
-+
-+enum {
-+	TDM_LCK_NON_INV = 0,
-+	TDM_LCK_INV = 1,
-+};
-+
-+enum {
- 	TDM_WLEN_16_BIT = 1,
- 	TDM_WLEN_32_BIT = 2,
- };
-@@ -93,6 +110,25 @@ static unsigned int get_tdm_ch(unsigned int ch)
- 	}
- }
- 
-+static unsigned int get_tdm_ch_fixup(unsigned int channels)
-+{
-+	if (channels > 4)
-+		return 8;
-+	else if (channels > 2)
-+		return 4;
-+	else
-+		return 2;
-+}
-+
-+static unsigned int get_tdm_ch_per_sdata(unsigned int mode,
-+					 unsigned int channels)
-+{
-+	if (mode == TDM_OUT_TDM)
-+		return get_tdm_ch_fixup(channels);
-+	else
-+		return 2;
-+}
-+
- /* interconnection */
- enum {
- 	HDMI_CONN_CH0 = 0,
-@@ -433,8 +469,11 @@ static int mtk_dai_tdm_hw_params(struct snd_pcm_substream *substream,
- 	struct mt8183_afe_private *afe_priv = afe->platform_priv;
- 	int tdm_id = dai->id;
- 	struct mtk_afe_tdm_priv *tdm_priv = afe_priv->dai_priv[tdm_id];
-+	unsigned int tdm_out_mode = tdm_priv->tdm_out_mode;
- 	unsigned int rate = params_rate(params);
- 	unsigned int channels = params_channels(params);
-+	unsigned int out_channels_per_sdata =
-+		get_tdm_ch_per_sdata(tdm_out_mode, channels);
- 	snd_pcm_format_t format = params_format(params);
- 	unsigned int tdm_con = 0;
- 
-@@ -448,7 +487,7 @@ static int mtk_dai_tdm_hw_params(struct snd_pcm_substream *substream,
- 
- 	/* calculate bck */
- 	tdm_priv->bck_rate = rate *
--			     channels *
-+			     out_channels_per_sdata *
- 			     snd_pcm_format_physical_width(format);
- 
- 	if (tdm_priv->bck_rate > tdm_priv->mclk_rate)
-@@ -461,50 +500,72 @@ static int mtk_dai_tdm_hw_params(struct snd_pcm_substream *substream,
- 		 __func__,
- 		 tdm_id, rate, channels, format,
- 		 tdm_priv->mclk_rate, tdm_priv->bck_rate);
-+	dev_info(afe->dev, "%s(), out_channels_per_sdata = %d\n",
-+		 __func__, out_channels_per_sdata);
- 
- 	/* set tdm */
--	tdm_con = 1 << BCK_INVERSE_SFT;
--	tdm_con |= 1 << LRCK_INVERSE_SFT;
--	tdm_con |= 1 << DELAY_DATA_SFT;
-+	if (tdm_priv->bck_invert)
-+		regmap_update_bits(afe->regmap, AUDIO_TOP_CON3,
-+				   BCK_INVERSE_MASK_SFT,
-+				   0x1 << BCK_INVERSE_SFT);
-+
-+	if (tdm_priv->lck_invert)
-+		tdm_con |= 1 << LRCK_INVERSE_SFT;
-+
-+	if (tdm_priv->tdm_out_mode == TDM_OUT_I2S) {
-+		tdm_con |= 1 << DELAY_DATA_SFT;
-+		tdm_con |= get_tdm_lrck_width(format) << LRCK_TDM_WIDTH_SFT;
-+	} else if (tdm_priv->tdm_out_mode == TDM_OUT_TDM) {
-+		tdm_con |= 0 << DELAY_DATA_SFT;
-+		tdm_con |= 0 << LRCK_TDM_WIDTH_SFT;
-+	}
-+
- 	tdm_con |= 1 << LEFT_ALIGN_SFT;
- 	tdm_con |= get_tdm_wlen(format) << WLEN_SFT;
--	tdm_con |= get_tdm_ch(channels) << CHANNEL_NUM_SFT;
-+	tdm_con |= get_tdm_ch(out_channels_per_sdata) << CHANNEL_NUM_SFT;
- 	tdm_con |= get_tdm_channel_bck(format) << CHANNEL_BCK_CYCLES_SFT;
--	tdm_con |= get_tdm_lrck_width(format) << LRCK_TDM_WIDTH_SFT;
- 	regmap_write(afe->regmap, AFE_TDM_CON1, tdm_con);
- 
--	switch (channels) {
--	case 1:
--	case 2:
-+	if (out_channels_per_sdata == 2) {
-+		switch (channels) {
-+		case 1:
-+		case 2:
-+			tdm_con = TDM_CH_START_O30_O31 << ST_CH_PAIR_SOUT0_SFT;
-+			tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT1_SFT;
-+			tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT2_SFT;
-+			tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT3_SFT;
-+			break;
-+		case 3:
-+		case 4:
-+			tdm_con = TDM_CH_START_O30_O31 << ST_CH_PAIR_SOUT0_SFT;
-+			tdm_con |= TDM_CH_START_O32_O33 << ST_CH_PAIR_SOUT1_SFT;
-+			tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT2_SFT;
-+			tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT3_SFT;
-+			break;
-+		case 5:
-+		case 6:
-+			tdm_con = TDM_CH_START_O30_O31 << ST_CH_PAIR_SOUT0_SFT;
-+			tdm_con |= TDM_CH_START_O32_O33 << ST_CH_PAIR_SOUT1_SFT;
-+			tdm_con |= TDM_CH_START_O34_O35 << ST_CH_PAIR_SOUT2_SFT;
-+			tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT3_SFT;
-+			break;
-+		case 7:
-+		case 8:
-+			tdm_con = TDM_CH_START_O30_O31 << ST_CH_PAIR_SOUT0_SFT;
-+			tdm_con |= TDM_CH_START_O32_O33 << ST_CH_PAIR_SOUT1_SFT;
-+			tdm_con |= TDM_CH_START_O34_O35 << ST_CH_PAIR_SOUT2_SFT;
-+			tdm_con |= TDM_CH_START_O36_O37 << ST_CH_PAIR_SOUT3_SFT;
-+			break;
-+		default:
-+			tdm_con = 0;
-+		}
-+	} else {
- 		tdm_con = TDM_CH_START_O30_O31 << ST_CH_PAIR_SOUT0_SFT;
- 		tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT1_SFT;
- 		tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT2_SFT;
- 		tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT3_SFT;
--		break;
--	case 3:
--	case 4:
--		tdm_con = TDM_CH_START_O30_O31 << ST_CH_PAIR_SOUT0_SFT;
--		tdm_con |= TDM_CH_START_O32_O33 << ST_CH_PAIR_SOUT1_SFT;
--		tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT2_SFT;
--		tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT3_SFT;
--		break;
--	case 5:
--	case 6:
--		tdm_con = TDM_CH_START_O30_O31 << ST_CH_PAIR_SOUT0_SFT;
--		tdm_con |= TDM_CH_START_O32_O33 << ST_CH_PAIR_SOUT1_SFT;
--		tdm_con |= TDM_CH_START_O34_O35 << ST_CH_PAIR_SOUT2_SFT;
--		tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT3_SFT;
--		break;
--	case 7:
--	case 8:
--		tdm_con = TDM_CH_START_O30_O31 << ST_CH_PAIR_SOUT0_SFT;
--		tdm_con |= TDM_CH_START_O32_O33 << ST_CH_PAIR_SOUT1_SFT;
--		tdm_con |= TDM_CH_START_O34_O35 << ST_CH_PAIR_SOUT2_SFT;
--		tdm_con |= TDM_CH_START_O36_O37 << ST_CH_PAIR_SOUT3_SFT;
--		break;
--	default:
--		tdm_con = 0;
- 	}
-+
- 	regmap_write(afe->regmap, AFE_TDM_CON2, tdm_con);
- 
- 	regmap_update_bits(afe->regmap, AFE_HDMI_OUT_CON0,
-@@ -573,10 +634,58 @@ static int mtk_dai_tdm_set_sysclk(struct snd_soc_dai *dai,
- 	return mtk_dai_tdm_cal_mclk(afe, tdm_priv, freq);
- }
- 
-+static int mtk_dai_tdm_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
-+{
-+	struct mtk_base_afe *afe = dev_get_drvdata(dai->dev);
-+	struct mt8183_afe_private *afe_priv = afe->platform_priv;
-+	struct mtk_afe_tdm_priv *tdm_priv = afe_priv->dai_priv[dai->id];
-+
-+	if (!tdm_priv) {
-+		dev_warn(afe->dev, "%s(), tdm_priv == NULL", __func__);
-+		return -EINVAL;
-+	}
-+
-+	/* DAI mode*/
-+	switch (fmt & SND_SOC_DAIFMT_FORMAT_MASK) {
-+	case SND_SOC_DAIFMT_I2S:
-+		tdm_priv->tdm_out_mode = TDM_OUT_I2S;
-+		break;
-+	case SND_SOC_DAIFMT_DSP_A:
-+		tdm_priv->tdm_out_mode = TDM_OUT_TDM;
-+		break;
-+	default:
-+		tdm_priv->tdm_out_mode = TDM_OUT_I2S;
-+	}
-+
-+	/* DAI clock inversion*/
-+	switch (fmt & SND_SOC_DAIFMT_INV_MASK) {
-+	case SND_SOC_DAIFMT_NB_NF:
-+		tdm_priv->bck_invert = TDM_BCK_NON_INV;
-+		tdm_priv->lck_invert = TDM_LCK_NON_INV;
-+		break;
-+	case SND_SOC_DAIFMT_NB_IF:
-+		tdm_priv->bck_invert = TDM_BCK_NON_INV;
-+		tdm_priv->lck_invert = TDM_LCK_INV;
-+		break;
-+	case SND_SOC_DAIFMT_IB_NF:
-+		tdm_priv->bck_invert = TDM_BCK_INV;
-+		tdm_priv->lck_invert = TDM_LCK_NON_INV;
-+		break;
-+	case SND_SOC_DAIFMT_IB_IF:
-+	default:
-+		tdm_priv->bck_invert = TDM_BCK_INV;
-+		tdm_priv->lck_invert = TDM_LCK_INV;
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
- static const struct snd_soc_dai_ops mtk_dai_tdm_ops = {
- 	.hw_params = mtk_dai_tdm_hw_params,
- 	.trigger = mtk_dai_tdm_trigger,
- 	.set_sysclk = mtk_dai_tdm_set_sysclk,
-+	.set_fmt = mtk_dai_tdm_set_fmt,
- };
- 
- /* dai driver */
-diff --git a/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c b/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
-index fe8a746..0fed0fa 100644
---- a/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
-+++ b/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
-@@ -390,6 +390,9 @@ static void mt8183_mt6358_tdm_shutdown(struct snd_pcm_substream *substream)
- 	{
- 		.name = "TDM",
- 		.no_pcm = 1,
-+		.dai_fmt = SND_SOC_DAIFMT_I2S |
-+			   SND_SOC_DAIFMT_IB_IF |
-+			   SND_SOC_DAIFMT_CBM_CFM,
- 		.dpcm_playback = 1,
- 		.ignore_suspend = 1,
- 		.be_hw_params_fixup = mt8183_i2s_hw_params_fixup,
-diff --git a/sound/soc/mediatek/mt8183/mt8183-reg.h b/sound/soc/mediatek/mt8183/mt8183-reg.h
-index e0482f2..e544a09 100644
---- a/sound/soc/mediatek/mt8183/mt8183-reg.h
-+++ b/sound/soc/mediatek/mt8183/mt8183-reg.h
-@@ -413,6 +413,11 @@
- #define AFE_MAX_REGISTER AFE_GENERAL2_ASRC_2CH_CON13
- #define AFE_IRQ_STATUS_BITS 0x1fff
- 
-+/* AUDIO_TOP_CON3 */
-+#define BCK_INVERSE_SFT                              3
-+#define BCK_INVERSE_MASK                             0x1
-+#define BCK_INVERSE_MASK_SFT                         (0x1 << 3)
-+
- /* AFE_DAC_CON0 */
- #define AWB2_ON_SFT                                   29
- #define AWB2_ON_MASK                                  0x1
-@@ -1596,9 +1601,6 @@
- #define TDM_EN_SFT                                    0
- #define TDM_EN_MASK                                   0x1
- #define TDM_EN_MASK_SFT                               (0x1 << 0)
--#define BCK_INVERSE_SFT                               1
--#define BCK_INVERSE_MASK                              0x1
--#define BCK_INVERSE_MASK_SFT                          (0x1 << 1)
- #define LRCK_INVERSE_SFT                              2
- #define LRCK_INVERSE_MASK                             0x1
- #define LRCK_INVERSE_MASK_SFT                         (0x1 << 2)
--- 
-1.8.1.1.dirty
+On 22/08/2019 14:35, qii.wang@mediatek.com wrote:
+> From: Qii Wang <qii.wang@mediatek.com>
+> 
+> Add i2c nodes to mt8183 and mt8183-evb.
+> 
+> Signed-off-by: Qii Wang <qii.wang@mediatek.com>
+
+Applied, thanks
+
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8183-evb.dts |  96 ++++++++++++++
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi    | 189 ++++++++++++++++++++++++++++
+>  2 files changed, 285 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> index d8e555c..1fb195c 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> @@ -30,7 +30,103 @@
+>  	status = "okay";
+>  };
+>  
+> +&i2c0 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&i2c_pins_0>;
+> +	status = "okay";
+> +	clock-frequency = <100000>;
+> +};
+> +
+> +&i2c1 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&i2c_pins_1>;
+> +	status = "okay";
+> +	clock-frequency = <100000>;
+> +};
+> +
+> +&i2c2 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&i2c_pins_2>;
+> +	status = "okay";
+> +	clock-frequency = <100000>;
+> +};
+> +
+> +&i2c3 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&i2c_pins_3>;
+> +	status = "okay";
+> +	clock-frequency = <100000>;
+> +};
+> +
+> +&i2c4 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&i2c_pins_4>;
+> +	status = "okay";
+> +	clock-frequency = <1000000>;
+> +};
+> +
+> +&i2c5 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&i2c_pins_5>;
+> +	status = "okay";
+> +	clock-frequency = <1000000>;
+> +};
+> +
+>  &pio {
+> +	i2c_pins_0: i2c0{
+> +		pins_i2c{
+> +			pinmux = <PINMUX_GPIO82__FUNC_SDA0>,
+> +				 <PINMUX_GPIO83__FUNC_SCL0>;
+> +			mediatek,pull-up-adv = <3>;
+> +			mediatek,drive-strength-adv = <00>;
+> +		};
+> +	};
+> +
+> +	i2c_pins_1: i2c1{
+> +		pins_i2c{
+> +			pinmux = <PINMUX_GPIO81__FUNC_SDA1>,
+> +				 <PINMUX_GPIO84__FUNC_SCL1>;
+> +			mediatek,pull-up-adv = <3>;
+> +			mediatek,drive-strength-adv = <00>;
+> +		};
+> +	};
+> +
+> +	i2c_pins_2: i2c2{
+> +		pins_i2c{
+> +			pinmux = <PINMUX_GPIO103__FUNC_SCL2>,
+> +				 <PINMUX_GPIO104__FUNC_SDA2>;
+> +			mediatek,pull-up-adv = <3>;
+> +			mediatek,drive-strength-adv = <00>;
+> +		};
+> +	};
+> +
+> +	i2c_pins_3: i2c3{
+> +		pins_i2c{
+> +			pinmux = <PINMUX_GPIO50__FUNC_SCL3>,
+> +				 <PINMUX_GPIO51__FUNC_SDA3>;
+> +			mediatek,pull-up-adv = <3>;
+> +			mediatek,drive-strength-adv = <00>;
+> +		};
+> +	};
+> +
+> +	i2c_pins_4: i2c4{
+> +		pins_i2c{
+> +			pinmux = <PINMUX_GPIO105__FUNC_SCL4>,
+> +				 <PINMUX_GPIO106__FUNC_SDA4>;
+> +			mediatek,pull-up-adv = <3>;
+> +			mediatek,drive-strength-adv = <00>;
+> +		};
+> +	};
+> +
+> +	i2c_pins_5: i2c5{
+> +		pins_i2c{
+> +			pinmux = <PINMUX_GPIO48__FUNC_SCL5>,
+> +				 <PINMUX_GPIO49__FUNC_SDA5>;
+> +			mediatek,pull-up-adv = <3>;
+> +			mediatek,drive-strength-adv = <00>;
+> +		};
+> +	};
+> +
+>  	spi_pins_0: spi0{
+>  		pins_spi{
+>  			pinmux = <PINMUX_GPIO85__FUNC_SPI0_MI>,
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index c2749c4..ab71291 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -16,6 +16,21 @@
+>  	#address-cells = <2>;
+>  	#size-cells = <2>;
+>  
+> +	aliases {
+> +		i2c0 = &i2c0;
+> +		i2c1 = &i2c1;
+> +		i2c2 = &i2c2;
+> +		i2c3 = &i2c3;
+> +		i2c4 = &i2c4;
+> +		i2c5 = &i2c5;
+> +		i2c6 = &i2c6;
+> +		i2c7 = &i2c7;
+> +		i2c8 = &i2c8;
+> +		i2c9 = &i2c9;
+> +		i2c10 = &i2c10;
+> +		i2c11 = &i2c11;
+> +	};
+> +
+>  	cpus {
+>  		#address-cells = <1>;
+>  		#size-cells = <0>;
+> @@ -294,6 +309,64 @@
+>  			status = "disabled";
+>  		};
+>  
+> +		i2c6: i2c@11005000 {
+> +			compatible = "mediatek,mt8183-i2c";
+> +			reg = <0 0x11005000 0 0x1000>,
+> +			      <0 0x11000600 0 0x80>;
+> +			interrupts = <GIC_SPI 87 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&infracfg CLK_INFRA_I2C6>,
+> +				 <&infracfg CLK_INFRA_AP_DMA>;
+> +			clock-names = "main", "dma";
+> +			clock-div = <1>;
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +			status = "disabled";
+> +		};
+> +
+> +		i2c0: i2c@11007000 {
+> +			compatible = "mediatek,mt8183-i2c";
+> +			reg = <0 0x11007000 0 0x1000>,
+> +			      <0 0x11000080 0 0x80>;
+> +			interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&infracfg CLK_INFRA_I2C0>,
+> +				 <&infracfg CLK_INFRA_AP_DMA>;
+> +			clock-names = "main", "dma";
+> +			clock-div = <1>;
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +			status = "disabled";
+> +		};
+> +
+> +		i2c4: i2c@11008000 {
+> +			compatible = "mediatek,mt8183-i2c";
+> +			reg = <0 0x11008000 0 0x1000>,
+> +			      <0 0x11000100 0 0x80>;
+> +			interrupts = <GIC_SPI 82 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&infracfg CLK_INFRA_I2C1>,
+> +				 <&infracfg CLK_INFRA_AP_DMA>,
+> +				 <&infracfg CLK_INFRA_I2C1_ARBITER>;
+> +			clock-names = "main", "dma","arb";
+> +			clock-div = <1>;
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +			status = "disabled";
+> +		};
+> +
+> +		i2c2: i2c@11009000 {
+> +			compatible = "mediatek,mt8183-i2c";
+> +			reg = <0 0x11009000 0 0x1000>,
+> +			      <0 0x11000280 0 0x80>;
+> +			interrupts = <GIC_SPI 83 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&infracfg CLK_INFRA_I2C2>,
+> +				 <&infracfg CLK_INFRA_AP_DMA>,
+> +				 <&infracfg CLK_INFRA_I2C2_ARBITER>;
+> +			clock-names = "main", "dma", "arb";
+> +			clock-div = <1>;
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +			status = "disabled";
+> +		};
+> +
+>  		spi0: spi@1100a000 {
+>  			compatible = "mediatek,mt8183-spi";
+>  			#address-cells = <1>;
+> @@ -307,6 +380,20 @@
+>  			status = "disabled";
+>  		};
+>  
+> +		i2c3: i2c@1100f000 {
+> +			compatible = "mediatek,mt8183-i2c";
+> +			reg = <0 0x1100f000 0 0x1000>,
+> +			      <0 0x11000400 0 0x80>;
+> +			interrupts = <GIC_SPI 84 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&infracfg CLK_INFRA_I2C3>,
+> +				 <&infracfg CLK_INFRA_AP_DMA>;
+> +			clock-names = "main", "dma";
+> +			clock-div = <1>;
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +			status = "disabled";
+> +		};
+> +
+>  		spi1: spi@11010000 {
+>  			compatible = "mediatek,mt8183-spi";
+>  			#address-cells = <1>;
+> @@ -320,6 +407,20 @@
+>  			status = "disabled";
+>  		};
+>  
+> +		i2c1: i2c@11011000 {
+> +			compatible = "mediatek,mt8183-i2c";
+> +			reg = <0 0x11011000 0 0x1000>,
+> +			      <0 0x11000480 0 0x80>;
+> +			interrupts = <GIC_SPI 85 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&infracfg CLK_INFRA_I2C4>,
+> +				 <&infracfg CLK_INFRA_AP_DMA>;
+> +			clock-names = "main", "dma";
+> +			clock-div = <1>;
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +			status = "disabled";
+> +		};
+> +
+>  		spi2: spi@11012000 {
+>  			compatible = "mediatek,mt8183-spi";
+>  			#address-cells = <1>;
+> @@ -346,6 +447,66 @@
+>  			status = "disabled";
+>  		};
+>  
+> +		i2c9: i2c@11014000 {
+> +			compatible = "mediatek,mt8183-i2c";
+> +			reg = <0 0x11014000 0 0x1000>,
+> +			      <0 0x11000180 0 0x80>;
+> +			interrupts = <GIC_SPI 131 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&infracfg CLK_INFRA_I2C1_IMM>,
+> +				 <&infracfg CLK_INFRA_AP_DMA>,
+> +				 <&infracfg CLK_INFRA_I2C1_ARBITER>;
+> +			clock-names = "main", "dma", "arb";
+> +			clock-div = <1>;
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +			status = "disabled";
+> +		};
+> +
+> +		i2c10: i2c@11015000 {
+> +			compatible = "mediatek,mt8183-i2c";
+> +			reg = <0 0x11015000 0 0x1000>,
+> +			      <0 0x11000300 0 0x80>;
+> +			interrupts = <GIC_SPI 132 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&infracfg CLK_INFRA_I2C2_IMM>,
+> +				 <&infracfg CLK_INFRA_AP_DMA>,
+> +				 <&infracfg CLK_INFRA_I2C2_ARBITER>;
+> +			clock-names = "main", "dma", "arb";
+> +			clock-div = <1>;
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +			status = "disabled";
+> +		};
+> +
+> +		i2c5: i2c@11016000 {
+> +			compatible = "mediatek,mt8183-i2c";
+> +			reg = <0 0x11016000 0 0x1000>,
+> +			      <0 0x11000500 0 0x80>;
+> +			interrupts = <GIC_SPI 86 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&infracfg CLK_INFRA_I2C5>,
+> +				 <&infracfg CLK_INFRA_AP_DMA>,
+> +				 <&infracfg CLK_INFRA_I2C5_ARBITER>;
+> +			clock-names = "main", "dma", "arb";
+> +			clock-div = <1>;
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +			status = "disabled";
+> +		};
+> +
+> +		i2c11: i2c@11017000 {
+> +			compatible = "mediatek,mt8183-i2c";
+> +			reg = <0 0x11017000 0 0x1000>,
+> +			      <0 0x11000580 0 0x80>;
+> +			interrupts = <GIC_SPI 133 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&infracfg CLK_INFRA_I2C5_IMM>,
+> +				 <&infracfg CLK_INFRA_AP_DMA>,
+> +				 <&infracfg CLK_INFRA_I2C5_ARBITER>;
+> +			clock-names = "main", "dma", "arb";
+> +			clock-div = <1>;
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +			status = "disabled";
+> +		};
+> +
+>  		spi4: spi@11018000 {
+>  			compatible = "mediatek,mt8183-spi";
+>  			#address-cells = <1>;
+> @@ -372,6 +533,34 @@
+>  			status = "disabled";
+>  		};
+>  
+> +		i2c7: i2c@1101a000 {
+> +			compatible = "mediatek,mt8183-i2c";
+> +			reg = <0 0x1101a000 0 0x1000>,
+> +			      <0 0x11000680 0 0x80>;
+> +			interrupts = <GIC_SPI 88 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&infracfg CLK_INFRA_I2C7>,
+> +				 <&infracfg CLK_INFRA_AP_DMA>;
+> +			clock-names = "main", "dma";
+> +			clock-div = <1>;
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +			status = "disabled";
+> +		};
+> +
+> +		i2c8: i2c@1101b000 {
+> +			compatible = "mediatek,mt8183-i2c";
+> +			reg = <0 0x1101b000 0 0x1000>,
+> +			      <0 0x11000700 0 0x80>;
+> +			interrupts = <GIC_SPI 89 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&infracfg CLK_INFRA_I2C8>,
+> +				 <&infracfg CLK_INFRA_AP_DMA>;
+> +			clock-names = "main", "dma";
+> +			clock-div = <1>;
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +			status = "disabled";
+> +		};
+> +
+>  		audiosys: syscon@11220000 {
+>  			compatible = "mediatek,mt8183-audiosys", "syscon";
+>  			reg = <0 0x11220000 0 0x1000>;
+> 
