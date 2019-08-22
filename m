@@ -1,91 +1,81 @@
-From: YueHaibing <yuehaibing@huawei.com>
-Subject: [PATCH -next] ASoC: mediatek: mt2701: Fix -Wunused-const-variable warnings
-Date: Thu, 22 Aug 2019 22:37:47 +0800
-Message-ID: <20190822143747.20944-1-yuehaibing@huawei.com>
+From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+Subject: Re: [PATCH net-next v2 2/3] net: ethernet: mediatek: Re-add support
+ SGMII
+Date: Thu, 22 Aug 2019 15:44:33 +0100
+Message-ID: <20190822144433.GT13294@shell.armlinux.org.uk>
+References: <20190821144336.9259-1-opensource@vdorst.com>
+ <20190821144336.9259-3-opensource@vdorst.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: lgirdwood@gmail.com, broonie@kernel.org, perex@perex.cz, tiwai@suse.com, matthias.bgg@gmail.com, yuehaibing@huawei.com, pihsun@chromium.org, swboyd@chromium.org
-Cc: alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
+Return-path: <netdev-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20190821144336.9259-3-opensource@vdorst.com>
+Sender: netdev-owner@vger.kernel.org
+To: =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>
+Cc: John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Nelson Chang <nelson.chang@mediatek.com>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, Frank Wunderlich <frank-w@public-files.de>, netdev@vger.kernel.org, linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org, Stefan Roese <sr@denx.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-sound/soc/mediatek/mt2701/mt2701-afe-common.h:66:27: warning:
- mt2701_afe_backup_list defined but not used [-Wunused-const-variable=]
+On Wed, Aug 21, 2019 at 04:43:35PM +0200, René van Dorst wrote:
+> +	if (MTK_HAS_CAPS(mac->hw->soc->caps, MTK_SGMII)) {
+> +		if (state->interface != PHY_INTERFACE_MODE_2500BASEX) {
+>  			phylink_set(mask, 1000baseT_Full);
+>  			phylink_set(mask, 1000baseX_Full);
+> +		} else {
+> +			phylink_set(mask, 2500baseT_Full);
+> +			phylink_set(mask, 2500baseX_Full);
+> +		}
 
-mt2701_afe_backup_list is only used in mt2701-afe-pcm.c,
-so just move the definition over there.
+If you can dynamically switch between 1000BASE-X and 2500BASE-X, then
+you need to have both set.  See mvneta.c:
 
-Reported-by: Hulk Robot <hulkci@huawei.com>
-Signed-off-by: YueHaibing <yuehaibing@huawei.com>
----
- sound/soc/mediatek/mt2701/mt2701-afe-common.h | 21 ---------------------
- sound/soc/mediatek/mt2701/mt2701-afe-pcm.c    | 21 +++++++++++++++++++++
- 2 files changed, 21 insertions(+), 21 deletions(-)
+        if (pp->comphy || state->interface != PHY_INTERFACE_MODE_2500BASEX) {
+                phylink_set(mask, 1000baseT_Full);
+                phylink_set(mask, 1000baseX_Full);
+        }
+        if (pp->comphy || state->interface == PHY_INTERFACE_MODE_2500BASEX) {
+                phylink_set(mask, 2500baseT_Full);
+                phylink_set(mask, 2500baseX_Full);
+        }
 
-diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-common.h b/sound/soc/mediatek/mt2701/mt2701-afe-common.h
-index d44faba..32bef5e 100644
---- a/sound/soc/mediatek/mt2701/mt2701-afe-common.h
-+++ b/sound/soc/mediatek/mt2701/mt2701-afe-common.h
-@@ -63,27 +63,6 @@ enum audio_base_clock {
- 	MT2701_BASE_CLK_NUM,
- };
- 
--static const unsigned int mt2701_afe_backup_list[] = {
--	AUDIO_TOP_CON0,
--	AUDIO_TOP_CON4,
--	AUDIO_TOP_CON5,
--	ASYS_TOP_CON,
--	AFE_CONN0,
--	AFE_CONN1,
--	AFE_CONN2,
--	AFE_CONN3,
--	AFE_CONN15,
--	AFE_CONN16,
--	AFE_CONN17,
--	AFE_CONN18,
--	AFE_CONN19,
--	AFE_CONN20,
--	AFE_CONN21,
--	AFE_CONN22,
--	AFE_DAC_CON0,
--	AFE_MEMIF_PBUF_SIZE,
--};
--
- struct mt2701_i2s_data {
- 	int i2s_ctrl_reg;
- 	int i2s_asrc_fs_shift;
-diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-index d7f5def..76502ba 100644
---- a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-+++ b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-@@ -60,6 +60,27 @@ static const struct mt2701_afe_rate mt2701_afe_i2s_rates[] = {
- 	{ .rate = 352800, .regvalue = 24 },
- };
- 
-+static const unsigned int mt2701_afe_backup_list[] = {
-+	AUDIO_TOP_CON0,
-+	AUDIO_TOP_CON4,
-+	AUDIO_TOP_CON5,
-+	ASYS_TOP_CON,
-+	AFE_CONN0,
-+	AFE_CONN1,
-+	AFE_CONN2,
-+	AFE_CONN3,
-+	AFE_CONN15,
-+	AFE_CONN16,
-+	AFE_CONN17,
-+	AFE_CONN18,
-+	AFE_CONN19,
-+	AFE_CONN20,
-+	AFE_CONN21,
-+	AFE_CONN22,
-+	AFE_DAC_CON0,
-+	AFE_MEMIF_PBUF_SIZE,
-+};
-+
- static int mt2701_dai_num_to_i2s(struct mtk_base_afe *afe, int num)
- {
- 	struct mt2701_afe_private *afe_priv = afe->platform_priv;
+What this is saying is, if we have a comphy (which is the serdes lane
+facing component, where the data rate is setup) then we can support
+both speeds (and so mask ends up with all four bits set.)  Otherwise,
+we only support a single-speed (1000Gbps for non-2500BASE-X etc.)
+
+> +	} else {
+> +		if (state->interface == PHY_INTERFACE_MODE_TRGMII) {
+> +			phylink_set(mask, 1000baseT_Full);
+> +		} else {
+> +			phylink_set(mask, 10baseT_Half);
+> +			phylink_set(mask, 10baseT_Full);
+> +			phylink_set(mask, 100baseT_Half);
+> +			phylink_set(mask, 100baseT_Full);
+> +
+> +			if (state->interface != PHY_INTERFACE_MODE_MII) {
+> +				phylink_set(mask, 1000baseT_Half);
+> +				phylink_set(mask, 1000baseT_Full);
+> +				phylink_set(mask, 1000baseX_Full);
+> +			}
+
+I'm also wondering about the "MTK_HAS_CAPS(mac->hw->soc->caps,
+MTK_SGMII)" above.
+
+(Here comes a reason why using SGMII to cover all single-lane serdes
+modes causes confusion - unfortunately, some folk use SGMII to describe
+all these modes.  So, I'm going to use the terminology "Cisco SGMII"
+to mean exactly the SGMII format published by Cisco, "802.3 1000BASE-X"
+to mean the original IEEE 802.3 format running at 1.25Gbps, and
+"up-clocked 2500BASE-X" to mean the 3.125Gbps version of the 802.3
+1000BASE-X protocol.)
+
+Isn't this set for Cisco SGMII as well as for 802.3 1000BASE-X and
+the up-clocked 2500BASE-X modes?
+
+If so, is there a reason why 10Mbps and 100Mbps speeds aren't
+supported on Cisco SGMII links?
+
 -- 
-2.7.4
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
+According to speedtest.net: 11.9Mbps down 500kbps up
