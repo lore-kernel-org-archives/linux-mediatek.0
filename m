@@ -1,153 +1,102 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v10 23/23] iommu/mediatek: Clean up struct mtk_smi_iommu
-Date: Thu, 22 Aug 2019 16:07:11 +0200
-Message-ID: <81864691-62f3-4e9a-eca0-c68000328f33@gmail.com>
-References: <1566395606-7975-1-git-send-email-yong.wu@mediatek.com>
- <1566395606-7975-24-git-send-email-yong.wu@mediatek.com>
+From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+Subject: Re: [PATCH net-next v2 1/3] net: ethernet: mediatek: Add basic
+ PHYLINK support
+Date: Thu, 22 Aug 2019 15:27:40 +0100
+Message-ID: <20190822142739.GS13294@shell.armlinux.org.uk>
+References: <20190821144336.9259-1-opensource@vdorst.com>
+ <20190821144336.9259-2-opensource@vdorst.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1566395606-7975-24-git-send-email-yong.wu@mediatek.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Robin Murphy <robin.murphy@arm.com>, Will Deacon <will@kernel.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, Matthias Kaehlcke <mka@chromium.org>, cui.zhang@mediatek.com, chao.hao@mediatek.com, ming-fan.chen@mediatek.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
+Return-path: <netdev-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20190821144336.9259-2-opensource@vdorst.com>
+Sender: netdev-owner@vger.kernel.org
+To: =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>
+Cc: John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Nelson Chang <nelson.chang@mediatek.com>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, Frank Wunderlich <frank-w@public-files.de>, netdev@vger.kernel.org, linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org, Stefan Roese <sr@denx.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 21/08/2019 15:53, Yong Wu wrote:
-> Remove the "struct mtk_smi_iommu" to simplify the code since it has only
-> one item in it right now.
-> 
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
-> ---
->  drivers/iommu/mtk_iommu.c    | 4 ++--
->  drivers/iommu/mtk_iommu.h    | 6 +++---
->  drivers/iommu/mtk_iommu_v1.c | 4 ++--
->  drivers/memory/mtk-smi.c     | 6 +++---
->  include/soc/mediatek/smi.h   | 4 ----
->  5 files changed, 10 insertions(+), 14 deletions(-)
-> 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index cc81de2..400066d 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -278,7 +278,7 @@ static void mtk_iommu_config(struct mtk_iommu_data *data,
->  	for (i = 0; i < fwspec->num_ids; ++i) {
->  		larbid = MTK_M4U_TO_LARB(fwspec->ids[i]);
->  		portid = MTK_M4U_TO_PORT(fwspec->ids[i]);
-> -		larb_mmu = &data->smi_imu.larb_imu[larbid];
-> +		larb_mmu = &data->larb_imu[larbid];
+On Wed, Aug 21, 2019 at 04:43:34PM +0200, René van Dorst wrote:
+> +static void mtk_mac_link_down(struct phylink_config *config, unsigned int mode,
+> +			      phy_interface_t interface)
+> +{
+> +	struct mtk_mac *mac = container_of(config, struct mtk_mac,
+> +					   phylink_config);
 >  
->  		dev_dbg(dev, "%s iommu port: %d\n",
->  			enable ? "enable" : "disable", portid);
-> @@ -680,7 +680,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
->  			of_node_put(larbnode);
->  			return -EPROBE_DEFER;
->  		}
-> -		data->smi_imu.larb_imu[id].dev = &plarbdev->dev;
-> +		data->larb_imu[id].dev = &plarbdev->dev;
->  
->  		component_match_add_release(dev, &match, release_of,
->  					    compare_of, larbnode);
-> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-> index 56b579c..fc0f16e 100644
-> --- a/drivers/iommu/mtk_iommu.h
-> +++ b/drivers/iommu/mtk_iommu.h
-> @@ -56,7 +56,6 @@ struct mtk_iommu_data {
->  	struct mtk_iommu_suspend_reg	reg;
->  	struct mtk_iommu_domain		*m4u_dom;
->  	struct iommu_group		*m4u_group;
-> -	struct mtk_smi_iommu		smi_imu;      /* SMI larb iommu info */
->  	bool                            enable_4GB;
->  	bool				tlb_flush_active;
->  
-> @@ -64,6 +63,7 @@ struct mtk_iommu_data {
->  	const struct mtk_iommu_plat_data *plat_data;
->  
->  	struct list_head		list;
-> +	struct mtk_smi_larb_iommu	larb_imu[MTK_LARB_NR_MAX];
->  };
->  
->  static inline int compare_of(struct device *dev, void *data)
-> @@ -80,14 +80,14 @@ static inline int mtk_iommu_bind(struct device *dev)
->  {
->  	struct mtk_iommu_data *data = dev_get_drvdata(dev);
->  
-> -	return component_bind_all(dev, &data->smi_imu);
-> +	return component_bind_all(dev, &data->larb_imu);
+> -	return 0;
+> +	mtk_w32(mac->hw, MAC_MCR_FORCE_LINK_DOWN, MTK_MAC_MCR(mac->id));
 >  }
->  
->  static inline void mtk_iommu_unbind(struct device *dev)
+
+You set the MAC_MCR_FORCE_MODE bit here...
+
+> +static void mtk_mac_link_up(struct phylink_config *config, unsigned int mode,
+> +			    phy_interface_t interface,
+> +			    struct phy_device *phy)
 >  {
->  	struct mtk_iommu_data *data = dev_get_drvdata(dev);
+> +	struct mtk_mac *mac = container_of(config, struct mtk_mac,
+> +					   phylink_config);
+> +	u32 mcr = mtk_r32(mac->hw, MTK_MAC_MCR(mac->id));
 >  
-> -	component_unbind_all(dev, &data->smi_imu);
-> +	component_unbind_all(dev, &data->larb_imu);
->  }
+> +	mcr |= MAC_MCR_TX_EN | MAC_MCR_RX_EN;
+> +	mtk_w32(mac->hw, mcr, MTK_MAC_MCR(mac->id));
+> +}
+
+Looking at this, a link_down() followed by a link_up() would result in
+this register containing MAC_MCR_FORCE_MODE | MAC_MCR_TX_EN |
+MAC_MCR_RX_EN ?  Is that actually correct?  (MAC_MCR_FORCE_LINK isn't
+set, so it looks to me like it still forces the link down.)
+
+Note that link up/down forcing should not be done for in-band AN.
+
+> +static void mtk_validate(struct phylink_config *config,
+> +			 unsigned long *supported,
+> +			 struct phylink_link_state *state)
+> +{
+> +	struct mtk_mac *mac = container_of(config, struct mtk_mac,
+> +					   phylink_config);
+> +	__ETHTOOL_DECLARE_LINK_MODE_MASK(mask) = { 0, };
 >  
->  #endif
-> diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-> index 3922358..860926c 100644
-> --- a/drivers/iommu/mtk_iommu_v1.c
-> +++ b/drivers/iommu/mtk_iommu_v1.c
-> @@ -206,7 +206,7 @@ static void mtk_iommu_config(struct mtk_iommu_data *data,
->  	for (i = 0; i < fwspec->num_ids; ++i) {
->  		larbid = mt2701_m4u_to_larb(fwspec->ids[i]);
->  		portid = mt2701_m4u_to_port(fwspec->ids[i]);
-> -		larb_mmu = &data->smi_imu.larb_imu[larbid];
-> +		larb_mmu = &data->larb_imu[larbid];
->  
->  		dev_dbg(dev, "%s iommu port: %d\n",
->  			enable ? "enable" : "disable", portid);
-> @@ -610,7 +610,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
->  			}
->  		}
->  
-> -		data->smi_imu.larb_imu[larb_nr].dev = &plarbdev->dev;
-> +		data->larb_imu[larb_nr].dev = &plarbdev->dev;
->  		component_match_add_release(dev, &match, release_of,
->  					    compare_of, larb_spec.np);
->  		larb_nr++;
-> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-> index d6dc62f..439d7d8 100644
-> --- a/drivers/memory/mtk-smi.c
-> +++ b/drivers/memory/mtk-smi.c
-> @@ -143,13 +143,13 @@ void mtk_smi_larb_put(struct device *larbdev)
->  mtk_smi_larb_bind(struct device *dev, struct device *master, void *data)
->  {
->  	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
-> -	struct mtk_smi_iommu *smi_iommu = data;
-> +	struct mtk_smi_larb_iommu *larb_mmu = data;
->  	unsigned int         i;
->  
->  	for (i = 0; i < MTK_LARB_NR_MAX; i++) {
-> -		if (dev == smi_iommu->larb_imu[i].dev) {
-> +		if (dev == larb_mmu[i].dev) {
->  			larb->larbid = i;
-> -			larb->mmu = &smi_iommu->larb_imu[i].mmu;
-> +			larb->mmu = &larb_mmu[i].mmu;
->  			return 0;
->  		}
+> +	if (state->interface != PHY_INTERFACE_MODE_NA &&
+> +	    state->interface != PHY_INTERFACE_MODE_MII &&
+> +	    state->interface != PHY_INTERFACE_MODE_GMII &&
+> +	    !(MTK_HAS_CAPS(mac->hw->soc->caps, MTK_RGMII) &&
+> +	      phy_interface_mode_is_rgmii(state->interface)) &&
+> +	    !(MTK_HAS_CAPS(mac->hw->soc->caps, MTK_TRGMII) &&
+> +	      !mac->id && state->interface == PHY_INTERFACE_MODE_TRGMII)) {
+> +		linkmode_zero(supported);
+> +		return;
 >  	}
-> diff --git a/include/soc/mediatek/smi.h b/include/soc/mediatek/smi.h
-> index 6f0b00c..5a34b87 100644
-> --- a/include/soc/mediatek/smi.h
-> +++ b/include/soc/mediatek/smi.h
-> @@ -20,10 +20,6 @@ struct mtk_smi_larb_iommu {
->  	unsigned int   mmu;
->  };
 >  
-> -struct mtk_smi_iommu {
-> -	struct mtk_smi_larb_iommu larb_imu[MTK_LARB_NR_MAX];
-> -};
-> -
->  /*
->   * mtk_smi_larb_get: Enable the power domain and clocks for this local arbiter.
->   *                   It also initialize some basic setting(like iommu).
-> 
+> +	phylink_set_port_modes(mask);
+> +	phylink_set(mask, Autoneg);
+>  
+> +	if (state->interface == PHY_INTERFACE_MODE_TRGMII) {
+> +		phylink_set(mask, 1000baseT_Full);
+> +	} else {
+> +		phylink_set(mask, 10baseT_Half);
+> +		phylink_set(mask, 10baseT_Full);
+> +		phylink_set(mask, 100baseT_Half);
+> +		phylink_set(mask, 100baseT_Full);
+> +
+> +		if (state->interface != PHY_INTERFACE_MODE_MII) {
+> +			phylink_set(mask, 1000baseT_Half);
+> +			phylink_set(mask, 1000baseT_Full);
+> +			phylink_set(mask, 1000baseX_Full);
+> +		}
+> +	}
+>  
+> +	phylink_set(mask, Pause);
+> +	phylink_set(mask, Asym_Pause);
+>  
+> +	linkmode_and(supported, supported, mask);
+> +	linkmode_and(state->advertising, state->advertising, mask);
+>  }
+
+This looks fine.
+
+Thanks.
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
+According to speedtest.net: 11.9Mbps down 500kbps up
