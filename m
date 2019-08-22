@@ -1,45 +1,118 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: BUG: devm_regulator_get returns EPROBE_DEFER
- (5.3-rc5..next-20190822) for bpi-r2/mt7623/mt7530
-Date: Thu, 22 Aug 2019 20:30:15 +0100
-Message-ID: <20190822193015.GK23391@sirena.co.uk>
-References: <trinity-584a4b1c-18c9-43ae-8c1a-5057933ad905-1566501837738@3c-app-gmx-bs43>
+From: =?utf-8?b?UmVuw6k=?= van Dorst <opensource@vdorst.com>
+Subject: Re: [PATCH net-next v2 2/3] net: ethernet: mediatek: Re-add support
+ SGMII
+Date: Thu, 22 Aug 2019 19:50:33 +0000
+Message-ID: <20190822195033.Horde.hEW8FBGNfFrugQOCv0gaDfx@www.vdorst.com>
+References: <20190821144336.9259-1-opensource@vdorst.com>
+ <20190821144336.9259-3-opensource@vdorst.com>
+ <20190822144433.GT13294@shell.armlinux.org.uk>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="reI/iBAAp9kzkmX4"
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset=utf-8; format=flowed; DelSp=Yes
+Content-Transfer-Encoding: 8bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20190822144433.GT13294@shell.armlinux.org.uk>
 Content-Disposition: inline
-In-Reply-To: <trinity-584a4b1c-18c9-43ae-8c1a-5057933ad905-1566501837738@3c-app-gmx-bs43>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, =?iso-8859-1?Q?=22Ren=E9_van_Dorst=22?= <opensource@vdorst.com>
+Sender: netdev-owner@vger.kernel.org
+To: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+Cc: John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Nelson Chang <nelson.chang@mediatek.com>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, Frank Wunderlich <frank-w@public-files.de>, netdev@vger.kernel.org, linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org, Stefan Roese <sr@denx.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Russell,
 
---reI/iBAAp9kzkmX4
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Quoting Russell King - ARM Linux admin <linux@armlinux.org.uk>:
 
-On Thu, Aug 22, 2019 at 09:23:57PM +0200, Frank Wunderlich wrote:
+> On Wed, Aug 21, 2019 at 04:43:35PM +0200, René van Dorst wrote:
+>> +	if (MTK_HAS_CAPS(mac->hw->soc->caps, MTK_SGMII)) {
+>> +		if (state->interface != PHY_INTERFACE_MODE_2500BASEX) {
+>>  			phylink_set(mask, 1000baseT_Full);
+>>  			phylink_set(mask, 1000baseX_Full);
+>> +		} else {
+>> +			phylink_set(mask, 2500baseT_Full);
+>> +			phylink_set(mask, 2500baseX_Full);
+>> +		}
+>
+> If you can dynamically switch between 1000BASE-X and 2500BASE-X, then
+> you need to have both set.  See mvneta.c:
+>
+>         if (pp->comphy || state->interface != PHY_INTERFACE_MODE_2500BASEX) {
+>                 phylink_set(mask, 1000baseT_Full);
+>                 phylink_set(mask, 1000baseX_Full);
+>         }
+>         if (pp->comphy || state->interface == PHY_INTERFACE_MODE_2500BASEX) {
+>                 phylink_set(mask, 2500baseT_Full);
+>                 phylink_set(mask, 2500baseX_Full);
+>         }
+>
+> What this is saying is, if we have a comphy (which is the serdes lane
+> facing component, where the data rate is setup) then we can support
+> both speeds (and so mask ends up with all four bits set.)  Otherwise,
+> we only support a single-speed (1000Gbps for non-2500BASE-X etc.)
+>
+>> +	} else {
+>> +		if (state->interface == PHY_INTERFACE_MODE_TRGMII) {
+>> +			phylink_set(mask, 1000baseT_Full);
+>> +		} else {
+>> +			phylink_set(mask, 10baseT_Half);
+>> +			phylink_set(mask, 10baseT_Full);
+>> +			phylink_set(mask, 100baseT_Half);
+>> +			phylink_set(mask, 100baseT_Full);
+>> +
+>> +			if (state->interface != PHY_INTERFACE_MODE_MII) {
+>> +				phylink_set(mask, 1000baseT_Half);
+>> +				phylink_set(mask, 1000baseT_Full);
+>> +				phylink_set(mask, 1000baseX_Full);
+>> +			}
+>
+> I'm also wondering about the "MTK_HAS_CAPS(mac->hw->soc->caps,
+> MTK_SGMII)" above.
 
-> seems of_find_regulator_by_node(node); is failing here, but i see the dts-node (mt6323_vpa_reg: buck_vpa) in /sys/firmware/devicetree/...
+This totally wrong.
+MTK_HAS_CAPS(mac->hw->soc->caps, MTK_SGMII) tells me that the SOC has SGMII
+lane(s). Having a SGMII block doesn't mean that other functions aren't
+supported. I have to redo this!
 
-It's not looking for the node in the device tree, it's looking
-for that regulator to instantiate at runtime.  Is that happening?
+> (Here comes a reason why using SGMII to cover all single-lane serdes
+> modes causes confusion - unfortunately, some folk use SGMII to describe
+> all these modes.  So, I'm going to use the terminology "Cisco SGMII"
+> to mean exactly the SGMII format published by Cisco, "802.3 1000BASE-X"
+> to mean the original IEEE 802.3 format running at 1.25Gbps, and
+> "up-clocked 2500BASE-X" to mean the 3.125Gbps version of the 802.3
+> 1000BASE-X protocol.)
 
---reI/iBAAp9kzkmX4
-Content-Type: application/pgp-signature; name="signature.asc"
+Thanks for the explanation. In your previous review v1 you also explained it.
+I did change the forced modes for x-BaseX modes and auto negotiation for Cisco
+SGMII. But I seems to miss the link that I also have to improve this  
+validation
+part.
 
------BEGIN PGP SIGNATURE-----
+>
+> Isn't this set for Cisco SGMII as well as for 802.3 1000BASE-X and
+> the up-clocked 2500BASE-X modes?
+>
+> If so, is there a reason why 10Mbps and 100Mbps speeds aren't
+> supported on Cisco SGMII links?
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl1e7UYACgkQJNaLcl1U
-h9DIXAf/SwrWcS3GuI3wq6WJK9mC5ILC9tOznC/HRhk/xcYaCYjZJgBRt6jJf9k9
-HXrnvUX3Gr7b4jpE4PbpJM2KTFIzE5qTkQrb55slWJ6CAG6do+Pu2ZcO9tWRNou8
-XuyvN0kjtW1s3eEGuYeDBTdJT2EueBbZ13qDt00uRJExurcbxWOuQbJNQT2Jcdj5
-mYPyrrpIUJ1/3oZPV9WdrofTWx3YRpFrwiJ22kKnUA2NV90OIInFtfi3K6IXezWv
-Ko6w3yRH+Koz1nDvCvAYd6rkPzJATa9n5sLToX5yxNWfYY4C7lpCov3NM3IEbjEY
-7dtsFgvTH5X7V8Z4O2kcfDDmfaY71Q==
-=zy6Z
------END PGP SIGNATURE-----
+I can only tell a bit about the mt7622 SOC, datasheet tells me that:
 
---reI/iBAAp9kzkmX4--
+The SGMII is the interface between 10/100/1000/2500 Mbps PHY and Ethernet MAC,
+the spec is raised by Cisco in 1999, which is aims for pin reduction compare
+with the GMII. It uses 2 differential data pair for TX and RX with clock
+embedded bit stream to convey frame data and port ability information.
+The core leverages the 1000Base-X PCS and Auto-Negotiation from IEEE 802.3
+specification (clause 36/37). This IP can support up to 3.125G baud  
+for 2.5Gbps
+(proprietary 2500Base-X) data rate of MAC by overclocking.
+
+Also features tells me: Support 10/100/1000/2500 Mbps in full duplex mode and
+10/100 Mbps in half duplex mode.
+
+I going make a new version.
+
+Greats,
+
+René
+
+> --
+> RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+> FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
+> According to speedtest.net: 11.9Mbps down 500kbps up
