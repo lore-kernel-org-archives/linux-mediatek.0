@@ -1,75 +1,103 @@
-From: Walter Wu <walter-zh.wu@mediatek.com>
-Subject: Re: [PATCH v4] kasan: add memory corruption identification for
- software tag-based mode
-Date: Thu, 22 Aug 2019 09:22:02 +0800
-Message-ID: <1566436922.27117.0.camel@mtksdccf07>
-References: <20190806054340.16305-1-walter-zh.wu@mediatek.com>
- <1566279478.9993.21.camel@mtksdccf07>
- <3318f9d7-a760-3cc8-b700-f06108ae745f@virtuozzo.com>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Subject: [PATCH RESEND] i2c: mediatek: disable zero-length transfers for mt8183
+Date: Thu, 22 Aug 2019 13:57:37 +0800
+Message-ID: <20190822055737.142384-1-hsinyi@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <3318f9d7-a760-3cc8-b700-f06108ae745f@virtuozzo.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Andrey Ryabinin <aryabinin@virtuozzo.com>
-Cc: wsd_upstream@mediatek.com, Vasily Gorbik <gor@linux.ibm.com>, Arnd Bergmann <arnd@arndb.de>, linux-mm@kvack.org, Andrey Konovalov <andreyknvl@google.com>, linux-kernel@vger.kernel.org, kasan-dev@googlegroups.com, Martin Schwidefsky <schwidefsky@de.ibm.com>, Miles Chen <miles.chen@mediatek.com>, Alexander Potapenko <glider@google.com>, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Andrew Morton <akpm@linux-foundation.org>, Thomas Gleixner <tglx@linutronix.de>, Dmitry Vyukov <dvyukov@google.com>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Wolfram Sang <wsa@the-dreams.de>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Qii Wang <qii.wang@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Jun Gao <jun.gao@mediatek.com>, Thomas Gleixner <tglx@linutronix.de>, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Alexandru M Stan <amstan@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2019-08-21 at 20:52 +0300, Andrey Ryabinin wrote:
-> 
-> On 8/20/19 8:37 AM, Walter Wu wrote:
-> > On Tue, 2019-08-06 at 13:43 +0800, Walter Wu wrote:
-> >> This patch adds memory corruption identification at bug report for
-> >> software tag-based mode, the report show whether it is "use-after-free"
-> >> or "out-of-bound" error instead of "invalid-access" error. This will make
-> >> it easier for programmers to see the memory corruption problem.
-> >>
-> >> We extend the slab to store five old free pointer tag and free backtrace,
-> >> we can check if the tagged address is in the slab record and make a
-> >> good guess if the object is more like "use-after-free" or "out-of-bound".
-> >> therefore every slab memory corruption can be identified whether it's
-> >> "use-after-free" or "out-of-bound".
-> >>
-> >> ====== Changes
-> >> Change since v1:
-> >> - add feature option CONFIG_KASAN_SW_TAGS_IDENTIFY.
-> >> - change QUARANTINE_FRACTION to reduce quarantine size.
-> >> - change the qlist order in order to find the newest object in quarantine
-> >> - reduce the number of calling kmalloc() from 2 to 1 time.
-> >> - remove global variable to use argument to pass it.
-> >> - correct the amount of qobject cache->size into the byes of qlist_head.
-> >> - only use kasan_cache_shrink() to shink memory.
-> >>
-> >> Change since v2:
-> >> - remove the shinking memory function kasan_cache_shrink()
-> >> - modify the description of the CONFIG_KASAN_SW_TAGS_IDENTIFY
-> >> - optimize the quarantine_find_object() and qobject_free()
-> >> - fix the duplicating function name 3 times in the header.
-> >> - modify the function name set_track() to kasan_set_track()
-> >>
-> >> Change since v3:
-> >> - change tag-based quarantine to extend slab to identify memory corruption
-> > 
-> > Hi,Andrey,
-> > 
-> > Would you review the patch,please?
-> 
-> 
-> I didn't notice anything fundamentally wrong, but I find there are some
-> questionable implementation choices that makes code look weirder than necessary
-> and harder to understand. So I ended up with cleaning it up, see the diff bellow.
-> I'll send v5 with that diff folded.
-> 
+When doing i2cdetect quick write mode, we would get transfer
+error ENOMEM, and i2cdetect shows there's no device at the address.
+Quoting from mt8183 datasheet, the number of transfers to be
+transferred in one transaction should be set to bigger than 1,
+so we should forbid zero-length transfer and update functionality.
 
-Thanks your review and suggestion.
+Incorrect return:
+localhost ~ # i2cdetect -q -y 0
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:          -- -- -- -- -- -- -- -- -- -- -- -- --
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+70: -- -- -- -- -- -- -- --
 
-Walter
+After this patch:
+localhost ~ #  i2cdetect -q -y 0
+Error: Can't use SMBus Quick Write command on this bus
+
+localhost ~ #  i2cdetect -y 0
+Warning: Can't use SMBus Quick Write command, will skip some addresses
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:
+10:
+20:
+30: -- -- -- -- -- -- -- --
+40:
+50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+60:
+70:
+
+Reported-by: Alexandru M Stan <amstan@chromium.org>
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+---
+Previous patch and discussion:
+http://patchwork.ozlabs.org/patch/1042684/
+---
+ drivers/i2c/busses/i2c-mt65xx.c | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index 252edb433fdf..2842ca4b8c3b 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -234,6 +234,10 @@ static const struct i2c_adapter_quirks mt7622_i2c_quirks = {
+ 	.max_num_msgs = 255,
+ };
+ 
++static const struct i2c_adapter_quirks mt8183_i2c_quirks = {
++	.flags = I2C_AQ_NO_ZERO_LEN,
++};
++
+ static const struct mtk_i2c_compatible mt2712_compat = {
+ 	.regs = mt_i2c_regs_v1,
+ 	.pmic_i2c = 0,
+@@ -298,6 +302,7 @@ static const struct mtk_i2c_compatible mt8173_compat = {
+ };
+ 
+ static const struct mtk_i2c_compatible mt8183_compat = {
++	.quirks = &mt8183_i2c_quirks,
+ 	.regs = mt_i2c_regs_v2,
+ 	.pmic_i2c = 0,
+ 	.dcm = 0,
+@@ -870,7 +875,11 @@ static irqreturn_t mtk_i2c_irq(int irqno, void *dev_id)
+ 
+ static u32 mtk_i2c_functionality(struct i2c_adapter *adap)
+ {
+-	return I2C_FUNC_I2C | I2C_FUNC_SMBUS_EMUL;
++	if (adap->quirks->flags & I2C_AQ_NO_ZERO_LEN)
++		return I2C_FUNC_I2C |
++			(I2C_FUNC_SMBUS_EMUL & ~I2C_FUNC_SMBUS_QUICK);
++	else
++		return I2C_FUNC_I2C | I2C_FUNC_SMBUS_EMUL;
+ }
+ 
+ static const struct i2c_algorithm mtk_i2c_algorithm = {
+@@ -933,8 +942,8 @@ static int mtk_i2c_probe(struct platform_device *pdev)
+ 	i2c->dev = &pdev->dev;
+ 	i2c->adap.dev.parent = &pdev->dev;
+ 	i2c->adap.owner = THIS_MODULE;
+-	i2c->adap.algo = &mtk_i2c_algorithm;
+ 	i2c->adap.quirks = i2c->dev_comp->quirks;
++	i2c->adap.algo = &mtk_i2c_algorithm;
+ 	i2c->adap.timeout = 2 * HZ;
+ 	i2c->adap.retries = 1;
+ 
+-- 
+2.20.1
