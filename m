@@ -1,137 +1,55 @@
-From: Markus Elfring <Markus.Elfring@web.de>
-Subject: =?UTF-8?Q?=5bPATCH=5d_net/wireless=3a_Delete_unnecessary_checks_bef?=
- =?UTF-8?B?b3JlIHRoZSBtYWNybyBjYWxsIOKAnGRldl9rZnJlZV9za2LigJ0=?=
-Date: Thu, 22 Aug 2019 10:30:47 +0200
-Message-ID: <ea6c6fef-9868-196b-d914-23faf12d7f5c@web.de>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 2/2] pwm: pwm-mediatek: Add MT8516 SoC support
+Date: Thu, 22 Aug 2019 10:52:11 +0200
+Message-ID: <d9b1f0a3-bd10-9fe8-af9f-17dafd7a509c@gmail.com>
+References: <20190805125848.15751-1-fparent@baylibre.com>
+ <20190805125848.15751-2-fparent@baylibre.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190805125848.15751-2-fparent@baylibre.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, ath10k@lists.infradead.org, "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>, Kalle Valo <kvalo@codeaurora.org>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Roy Luo <royluo@google.com>, Ryder Lee <ryder.lee@mediatek.com>, Solomon Peachy <pizza@shaftnet.org>, Stanislaw Gruszka <sgruszka@redhat.com>
-Cc: LKML <linux-kernel@vger.kernel.org>, kernel-janitors@vger.kernel.org
+To: Fabien Parent <fparent@baylibre.com>, thierry.reding@gmail.com, robh+dt@kernel.org
+Cc: mark.rutland@arm.com, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Markus Elfring <elfring@users.sourceforge.net>
-Date: Thu, 22 Aug 2019 10:20:10 +0200
 
-The dev_kfree_skb() function performs also input parameter validation.
-Thus the test around the shown calls is not needed.
 
-This issue was detected by using the Coccinelle software.
+On 05/08/2019 14:58, Fabien Parent wrote:
+> Add the compatible and the platform data to support PWM on the MT8516
+> SoC.
+> 
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
 
-Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
-=2D--
- drivers/net/wireless/ath/ath10k/wmi.c               | 4 +---
- drivers/net/wireless/intel/iwlegacy/3945-mac.c      | 8 ++------
- drivers/net/wireless/intel/iwlegacy/common.c        | 8 ++------
- drivers/net/wireless/mediatek/mt76/mt76x02_beacon.c | 5 +----
- drivers/net/wireless/st/cw1200/scan.c               | 3 +--
- 5 files changed, 7 insertions(+), 21 deletions(-)
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-diff --git a/drivers/net/wireless/ath/ath10k/wmi.c b/drivers/net/wireless/=
-ath/ath10k/wmi.c
-index 4f707c6394bb..d384293429b4 100644
-=2D-- a/drivers/net/wireless/ath/ath10k/wmi.c
-+++ b/drivers/net/wireless/ath/ath10k/wmi.c
-@@ -9440,7 +9440,5 @@ void ath10k_wmi_detach(struct ath10k *ar)
- 	}
-
- 	cancel_work_sync(&ar->svc_rdy_work);
--
--	if (ar->svc_rdy_skb)
--		dev_kfree_skb(ar->svc_rdy_skb);
-+	dev_kfree_skb(ar->svc_rdy_skb);
- }
-diff --git a/drivers/net/wireless/intel/iwlegacy/3945-mac.c b/drivers/net/=
-wireless/intel/iwlegacy/3945-mac.c
-index b82da75a9ae3..4b3b166f6f2a 100644
-=2D-- a/drivers/net/wireless/intel/iwlegacy/3945-mac.c
-+++ b/drivers/net/wireless/intel/iwlegacy/3945-mac.c
-@@ -2302,9 +2302,7 @@ __il3945_down(struct il_priv *il)
- 	il3945_hw_txq_ctx_free(il);
- exit:
- 	memset(&il->card_alive, 0, sizeof(struct il_alive_resp));
--
--	if (il->beacon_skb)
--		dev_kfree_skb(il->beacon_skb);
-+	dev_kfree_skb(il->beacon_skb);
- 	il->beacon_skb =3D NULL;
-
- 	/* clear out any free frames */
-@@ -3847,9 +3845,7 @@ il3945_pci_remove(struct pci_dev *pdev)
- 	il_free_channel_map(il);
- 	il_free_geos(il);
- 	kfree(il->scan_cmd);
--	if (il->beacon_skb)
--		dev_kfree_skb(il->beacon_skb);
--
-+	dev_kfree_skb(il->beacon_skb);
- 	ieee80211_free_hw(il->hw);
- }
-
-diff --git a/drivers/net/wireless/intel/iwlegacy/common.c b/drivers/net/wi=
-reless/intel/iwlegacy/common.c
-index 73f7bbf742bc..4e7e64f46ea8 100644
-=2D-- a/drivers/net/wireless/intel/iwlegacy/common.c
-+++ b/drivers/net/wireless/intel/iwlegacy/common.c
-@@ -5182,8 +5182,7 @@ il_mac_reset_tsf(struct ieee80211_hw *hw, struct iee=
-e80211_vif *vif)
- 	memset(&il->current_ht_config, 0, sizeof(struct il_ht_config));
-
- 	/* new association get rid of ibss beacon skb */
--	if (il->beacon_skb)
--		dev_kfree_skb(il->beacon_skb);
-+	dev_kfree_skb(il->beacon_skb);
- 	il->beacon_skb =3D NULL;
- 	il->timestamp =3D 0;
-
-@@ -5302,10 +5301,7 @@ il_beacon_update(struct ieee80211_hw *hw, struct ie=
-ee80211_vif *vif)
- 	}
-
- 	spin_lock_irqsave(&il->lock, flags);
--
--	if (il->beacon_skb)
--		dev_kfree_skb(il->beacon_skb);
--
-+	dev_kfree_skb(il->beacon_skb);
- 	il->beacon_skb =3D skb;
-
- 	timestamp =3D ((struct ieee80211_mgmt *)skb->data)->u.beacon.timestamp;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_beacon.c b/drivers=
-/net/wireless/mediatek/mt76/mt76x02_beacon.c
-index d61c686e08de..d6487cd67cca 100644
-=2D-- a/drivers/net/wireless/mediatek/mt76/mt76x02_beacon.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_beacon.c
-@@ -88,10 +88,7 @@ int mt76x02_mac_set_beacon(struct mt76x02_dev *dev, u8 =
-vif_idx,
- 	for (i =3D 0; i < ARRAY_SIZE(dev->beacons); i++) {
- 		if (vif_idx =3D=3D i) {
- 			force_update =3D !!dev->beacons[i] ^ !!skb;
--
--			if (dev->beacons[i])
--				dev_kfree_skb(dev->beacons[i]);
--
-+			dev_kfree_skb(dev->beacons[i]);
- 			dev->beacons[i] =3D skb;
- 			__mt76x02_mac_set_beacon(dev, bcn_idx, skb);
- 		} else if (force_update && dev->beacons[i]) {
-diff --git a/drivers/net/wireless/st/cw1200/scan.c b/drivers/net/wireless/=
-st/cw1200/scan.c
-index c46b044b7f7b..988581cc134b 100644
-=2D-- a/drivers/net/wireless/st/cw1200/scan.c
-+++ b/drivers/net/wireless/st/cw1200/scan.c
-@@ -120,8 +120,7 @@ int cw1200_hw_scan(struct ieee80211_hw *hw,
- 		++priv->scan.n_ssids;
- 	}
-
--	if (frame.skb)
--		dev_kfree_skb(frame.skb);
-+	dev_kfree_skb(frame.skb);
- 	mutex_unlock(&priv->conf_mutex);
- 	queue_work(priv->workqueue, &priv->scan.work);
- 	return 0;
-=2D-
-2.23.0
+> ---
+>  drivers/pwm/pwm-mediatek.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
+> 
+> diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
+> index eb6674ce995f..6697e30811e7 100644
+> --- a/drivers/pwm/pwm-mediatek.c
+> +++ b/drivers/pwm/pwm-mediatek.c
+> @@ -302,11 +302,18 @@ static const struct mtk_pwm_platform_data mt7628_pwm_data = {
+>  	.has_clks = false,
+>  };
+>  
+> +static const struct mtk_pwm_platform_data mt8516_pwm_data = {
+> +	.num_pwms = 5,
+> +	.pwm45_fixup = false,
+> +	.has_clks = true,
+> +};
+> +
+>  static const struct of_device_id mtk_pwm_of_match[] = {
+>  	{ .compatible = "mediatek,mt2712-pwm", .data = &mt2712_pwm_data },
+>  	{ .compatible = "mediatek,mt7622-pwm", .data = &mt7622_pwm_data },
+>  	{ .compatible = "mediatek,mt7623-pwm", .data = &mt7623_pwm_data },
+>  	{ .compatible = "mediatek,mt7628-pwm", .data = &mt7628_pwm_data },
+> +	{ .compatible = "mediatek,mt8516-pwm", .data = &mt8516_pwm_data },
+>  	{ },
+>  };
+>  MODULE_DEVICE_TABLE(of, mtk_pwm_of_match);
+> 
