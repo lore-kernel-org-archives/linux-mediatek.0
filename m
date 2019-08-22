@@ -1,46 +1,40 @@
 From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Subject: Re: [PATCH v5 08/13] dt-bindings: pwm: update bindings for MT7628
- SoC
-Date: Thu, 22 Aug 2019 16:12:20 +0800
-Message-ID: <1566461540.16302.4.camel@mtksdaap41>
-References: <1566457123-20791-1-git-send-email-sam.shih@mediatek.com>
-         <1566457123-20791-9-git-send-email-sam.shih@mediatek.com>
+Subject: Re: [PATCH RESEND] i2c: mediatek: disable zero-length transfers for
+ mt8183
+Date: Thu, 22 Aug 2019 16:24:38 +0800
+Message-ID: <1566462278.26641.1.camel@mtksdaap41>
+References: <20190822055737.142384-1-hsinyi@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1566457123-20791-9-git-send-email-sam.shih@mediatek.com>
+In-Reply-To: <20190822055737.142384-1-hsinyi@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sam Shih <sam.shih@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, linux-pwm@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: Wolfram Sang <wsa@the-dreams.de>, linux-arm-kernel@lists.infradead.org, Nicolas Boichat <drinkcat@chromium.org>, Alexandru M Stan <amstan@chromium.org>, Jun Gao <jun.gao@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, Qii Wang <qii.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2019-08-22 at 14:58 +0800, Sam Shih wrote:
-> This updates bindings for MT7628 pwm controller.
-> 
-> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/pwm/pwm-mediatek.txt | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> index ea95b490a913..93980e3da261 100644
-> --- a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> +++ b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> @@ -21,6 +21,10 @@ Required properties:
->     See pinctrl/pinctrl-bindings.txt for details of the property values.
->   - num-pwms: the number of PWM channels.
-> +
-> + Optional properties:
-> + - clock-frequency: fix clock frequency, this is only used in MT7628 SoC
-> +                    for period calculation. This SoC has no complex clock tree.
+On Thu, 2019-08-22 at 13:57 +0800, Hsin-Yi Wang wrote:
+> When doing i2cdetect quick write mode, we would get transfer
+> error ENOMEM, and i2cdetect shows there's no device at the address.
+> Quoting from mt8183 datasheet, the number of transfers to be
+> transferred in one transaction should be set to bigger than 1,
+> so we should forbid zero-length transfer and update functionality.
 
-I'm sorry if this has been discussed before. 
 
-Would it be simpler if you just provide a fixed-clock as clock in device
-tree? This way you don't need this optional properties and don't need to
-special handle it in driver code. 
+<...>
 
-After all, the hw is still connected to a simple clock tree.
+> @@ -933,8 +942,8 @@ static int mtk_i2c_probe(struct platform_device *pdev)
+>  	i2c->dev = &pdev->dev;
+>  	i2c->adap.dev.parent = &pdev->dev;
+>  	i2c->adap.owner = THIS_MODULE;
+> -	i2c->adap.algo = &mtk_i2c_algorithm;
+>  	i2c->adap.quirks = i2c->dev_comp->quirks;
+> +	i2c->adap.algo = &mtk_i2c_algorithm;
+>  	i2c->adap.timeout = 2 * HZ;
+>  	i2c->adap.retries = 1;
+>  
+
+Why do you need to change this part?
 
 Joe.C
