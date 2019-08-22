@@ -1,39 +1,47 @@
-From: Mao Wenan <maowenan@huawei.com>
-Subject: [PATCH -next] net: mediatek: remove set but not used variable 'status'
-Date: Thu, 22 Aug 2019 14:30:26 +0800
-Message-ID: <20190822063026.70044-1-maowenan@huawei.com>
+From: Chaotian Jing <chaotian.jing@mediatek.com>
+Subject: [PATCH 1/2] mmc: mediatek: fix controller busy when plug out SD
+Date: Thu, 22 Aug 2019 14:47:40 +0800
+Message-ID: <20190822064741.11196-2-chaotian.jing@mediatek.com>
+References: <20190822064741.11196-1-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7BIT
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190822064741.11196-1-chaotian.jing@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: nbd@openwrt.org, john@phrozen.org, sean.wang@mediatek.com, nelson.chang@mediatek.com, davem@davemloft.net, matthias.bgg@gmail.com
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, Mao Wenan <maowenan@huawei.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Fixes gcc '-Wunused-but-set-variable' warning:
-drivers/net/ethernet/mediatek/mtk_eth_soc.c: In function mtk_handle_irq:
-drivers/net/ethernet/mediatek/mtk_eth_soc.c:1951:6: warning: variable status set but not used [-Wunused-but-set-variable]
+when plug out SD card, may get data CRC error, the MMC core will issue
+CMD13 to get card status, then CMD13 timeout(due to card plug out) will
+trigger CMD19 tuning, first CMD19 timeout has not call msdc_reset_hw()
+and cause the next CMD19 gets controller busy.
 
-It is not used since commit 296c9120752b ("net: ethernet: mediatek: Add MT7628/88 SoC support")
-Signed-off-by: Mao Wenan <maowenan@huawei.com>
+Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/mmc/host/mtk-sd.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 8ddbb8d..bb7d623 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -1948,9 +1948,7 @@ static irqreturn_t mtk_handle_irq_tx(int irq, void *_eth)
- static irqreturn_t mtk_handle_irq(int irq, void *_eth)
- {
- 	struct mtk_eth *eth = _eth;
--	u32 status;
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index 33f4b6387ef7..5cc422e5db69 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -1071,11 +1071,13 @@ static bool msdc_cmd_done(struct msdc_host *host, int events,
+ 	}
  
--	status = mtk_r32(eth, MTK_PDMA_INT_STATUS);
- 	if (mtk_r32(eth, MTK_PDMA_INT_MASK) & MTK_RX_DONE_INT) {
- 		if (mtk_r32(eth, MTK_PDMA_INT_STATUS) & MTK_RX_DONE_INT)
- 			mtk_handle_irq_rx(irq, _eth);
+ 	if (!sbc_error && !(events & MSDC_INT_CMDRDY)) {
+-		if (cmd->opcode != MMC_SEND_TUNING_BLOCK &&
+-		    cmd->opcode != MMC_SEND_TUNING_BLOCK_HS200)
++		if (events & MSDC_INT_CMDTMO ||
++		    (cmd->opcode != MMC_SEND_TUNING_BLOCK &&
++		     cmd->opcode != MMC_SEND_TUNING_BLOCK_HS200))
+ 			/*
+ 			 * should not clear fifo/interrupt as the tune data
+-			 * may have alreay come.
++			 * may have alreay come when cmd19/cmd21 gets response
++			 * CRC error.
+ 			 */
+ 			msdc_reset_hw(host);
+ 		if (events & MSDC_INT_RSPCRCERR) {
 -- 
-2.7.4
+2.18.0
