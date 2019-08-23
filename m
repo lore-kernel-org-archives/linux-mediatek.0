@@ -1,80 +1,30 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: Aw: Re: BUG: devm_regulator_get returns EPROBE_DEFER
- (5.3-rc5..next-20190822) for bpi-r2/mt7623/mt7530
-Date: Fri, 23 Aug 2019 11:04:24 +0100
-Message-ID: <20190823100424.GL23391@sirena.co.uk>
-References: <trinity-584a4b1c-18c9-43ae-8c1a-5057933ad905-1566501837738@3c-app-gmx-bs43>
- <20190822193015.GK23391@sirena.co.uk>
- <trinity-5d117f0d-9f34-4a2b-8a12-1cd34152c108-1566505724458@3c-app-gmx-bs43>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH next v10 03/11] dt-bindings: usb: add binding for USB GPIO
+ based connection detection driver
+Date: Fri, 23 Aug 2019 12:07:20 +0200
+Message-ID: <CACRpkdbr9PjFAvrq14DJmX1OSKYJxYFPaQZpVJaT_Q1_DUW=sw@mail.gmail.com>
+References: <1566547041-20804-1-git-send-email-chunfeng.yun@mediatek.com> <1566547041-20804-4-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="N8ia4yKhAKKETby7"
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <trinity-5d117f0d-9f34-4a2b-8a12-1cd34152c108-1566505724458@3c-app-gmx-bs43>
+In-Reply-To: <1566547041-20804-4-git-send-email-chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, =?iso-8859-1?Q?=22Ren=E9_van_Dorst=22?= <opensource@vdorst.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Biju Das <biju.das@bp.renesas.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-usb <linux-usb@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, moderated list:ARM/Mediatek So
 List-Id: linux-mediatek@lists.infradead.org
 
+On Fri, Aug 23, 2019 at 9:58 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
 
---N8ia4yKhAKKETby7
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> It's used to support dual role switch via GPIO when use Type-B
+> receptacle, typically the USB ID pin is connected to an input
+> GPIO, and also used to enable/disable device when the USB Vbus
+> pin is connected to an input GPIO.
+>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+> v9~v10 no changes
 
-On Thu, Aug 22, 2019 at 10:28:44PM +0200, Frank Wunderlich wrote:
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 
-Please don't top post, reply in line with needed context.  This allows
-readers to readily follow the flow of conversation and understand what
-you are talking about and also helps ensure that everything in the
-discussion is being addressed.
-
-> cfba5de9b99f drivers: Introduce device lookup variants by of_node
->=20
-> this looks suspicios to me since the change is in the function which fail=
-s:
-
-> struct regulator_dev *of_find_regulator_by_node(struct device_node *np)
->  {
->         struct device *dev;
-> =20
-> -       dev =3D class_find_device(&regulator_class, NULL, np, of_node_mat=
-ch);
-> +       dev =3D class_find_device_by_of_node(&regulator_class, np);
->=20
->=20
-> but i cannot revert this commit so i did it manually...but this does not =
-seem to be the cause...still error 517, also a change in core.c is not the =
-cause...
-
-Can you run a git bisect to try to identify the commit that
-caused things to fail?
-
-> how can i check instantiation at runtime?
-
-Look to see if there is a device driver bound to that device, or
-check if the parent regulator is visible in /sys/class/regulators. =20
-You'll also see a mesage printed out for each regulator as it
-instantiates in the boot logs, you can check there too.
-
-Please fix your mail client to word wrap within paragraphs at something
-substantially less than 80 columns.  Doing this makes your messages much
-easier to read and reply to.
-
---N8ia4yKhAKKETby7
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl1fuiUACgkQJNaLcl1U
-h9AmOwf/dossdohwbTU7gbRKWcbcwf5yhS50bvPY1dNR7W4KqmsYN4dgsqojcrYT
-M05UrO0aDBneDe6vBp5Sv0RQDShfVdQZq9LChbmTkSYExNwexrXptKmMMQsVLvnt
-B1vSsj4V7fhEeFzk1ra1Q7/GmXMsa8ilxKjnOgS13ygcSu7+P3BCCSIGTm8u4Bms
-Owhk71a4jdDukj5+vkSdK1byT7EFmchdaBF68HN1fh390pjj6qakJBnnOygnfoOu
-hj48bRiTFS0tj2rypVZKgzDexw8aAWtKmvlRGH0JL8kSOUCMblhsCT7yJ0o61im6
-hTmjxgATLGRh9JZIUOPxoafwWbiclQ==
-=hch8
------END PGP SIGNATURE-----
-
---N8ia4yKhAKKETby7--
+Yours,
+Linus Walleij
