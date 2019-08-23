@@ -1,69 +1,71 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [BUG] [PATCH v5 02/10] mfd: mt6397: extract irq related code from
- core driver
-Date: Fri, 23 Aug 2019 16:56:13 +0200
-Message-ID: <e8a918ab-3e7a-b487-db77-df28d56518ce@gmail.com>
-References: <1566531931-9772-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1566531931-9772-3-git-send-email-hsin-hsiung.wang@mediatek.com>
- <trinity-1f82bff1-535e-47cd-9a2f-8faccb56e356-1566562433314@3c-app-gmx-bs11>
+From: Frank Wunderlich <frank-w-SipyoOjXbOMoAHOVJHB0wA@public.gmane.org>
+Subject: Re: Aw: Re: Re: BUG: devm_regulator_get returns EPROBE_DEFER
+ (5.3-rc5..next-20190822) for bpi-r2/mt7623/mt7530
+Date: Fri, 23 Aug 2019 17:07:40 +0200
+Message-ID: <3545020D-0E15-4DD9-BAA4-D9D51DD32018@public-files.de>
+References: <trinity-584a4b1c-18c9-43ae-8c1a-5057933ad905-1566501837738@3c-app-gmx-bs43>
+ <20190822193015.GK23391@sirena.co.uk>
+ <trinity-5d117f0d-9f34-4a2b-8a12-1cd34152c108-1566505724458@3c-app-gmx-bs43>
+ <20190823100424.GL23391@sirena.co.uk>
+ <trinity-2f905f45-85d8-4343-8613-31dda5f7556f-1566561616610@3c-app-gmx-bs11>
+ <0fcdea56-c6fc-993d-1520-be40ff03df2d@gmail.com>
+Reply-To: frank-w-SipyoOjXbOMoAHOVJHB0wA@public.gmane.org
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <trinity-1f82bff1-535e-47cd-9a2f-8faccb56e356-1566562433314@3c-app-gmx-bs11>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Frank Wunderlich <frank-w@public-files.de>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Brown <broonie@kernel.org>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Mark Rutland <mark.rutland@arm.com>, Alessandro Zummo <a.zummo@towertech.it>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Kate Stewart <kstewart@linuxfoundation.org>, Sean Wang <sean.wang@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, Richard Fontana <rfontana@redhat.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, Eddie Huang <eddie.huang@mediatek.com>, linux-rtc@vger.kernel.org, =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <0fcdea56-c6fc-993d-1520-be40ff03df2d-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: =?ISO-8859-1?Q?Ren=E9_van_Dorst?= <opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Hsin-Hsiung Wang <hsin-hsiung.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi
 
+Am 23. August 2019 16:43:47 MESZ schrieb Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>:
+>On 23/08/2019 14:00, Frank Wunderlich wrote:
+>> in working version i only get this message in dmesg which
+>> looks like a device-binding:
+>> 
+>> mt6323-regulator mt6323-regulator: Chip ID = 0x2023
 
-On 23/08/2019 14:13, Frank Wunderlich wrote:
-> Hi,
-> 
-> this commit breaks mt6323 pmic on BananaPi-R2
-> 
-> https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/?id=a4872e80ce7d2a1844328176dbf279d0a2b89bdb
-> 
-> resulting in this message in dmesg:
-> 
-> mt6397 1000d000.pwrap:mt6323: unsupported chip: 0x0
-> and multiple
-> mtk-cpufreq mtk-cpufreq: failed to initialize dvfs info for cpu0
-> 
-> see discussion here:
-> http://lists.infradead.org/pipermail/linux-mediatek/2019-August/022505.html
-> 
-> after reverting this one the errors are gone, please provide a fix
+>> mt6397 1000d000.pwrap:mt6323: unsupported chip: 0x0
 
-are you sure that you provide the correct chip_id here? I saw 0x2023 (if I
-remember correctly), while this switch checks for 0x23, 0x91 and 0x97, so I'm
-not sure if the problem really lies here. I didn't dig into the code to find out
-how the chip_id is created.
+>These are commit IDs from linux-next. At least file from 20190822
+>should
+>pinpoint you to the correct commits.
+>
+>@frank: please don't use commit IDs from linux-next as the history
+>get's
+>rewritten every day and the IDs can change. Better search the tree to
+>which they
+>got applied and use the commit IDs from there (stating, of course,
+>which tree
+>you are looking at).
 
-Regards,
-Matthias
+Is there any easy way to get the right tree?
 
-> 
-> regards Frank
-> 
-> 
->> Gesendet: Freitag, 23. August 2019 um 05:45 Uhr
->> Von: "Hsin-Hsiung Wang" <hsin-hsiung.wang@mediatek.com>
->> Betreff: [PATCH v5 02/10] mfd: mt6397: extract irq related code from core driver
->>
->> In order to support different types of irq design, we decide to add
->> separate irq drivers for different design and keep mt6397 mfd core
->> simple and reusable to all generations of PMICs so far.
->>
->> Acked-for-mfd-by: Lee Jones <lee.jones@linaro.org>
->> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
->> ---
->>  drivers/mfd/Makefile            |   3 +-
->>  drivers/mfd/mt6397-core.c       | 146 --------------------------------
->>  drivers/mfd/mt6397-irq.c        | 181 ++++++++++++++++++++++++++++++++++++++++
->>  include/linux/mfd/mt6397/core.h |   9 ++
->>  4 files changed, 192 insertions(+), 147 deletions(-)
->>  create mode 100644 drivers/mfd/mt6397-irq.c
-> 
+Can you give me an example bases on this commit? I thought adding the commit-subject is enough to find it also in a dynamic tree
+
+>Looking at commit
+>a4872e80ce7d ("mfd: mt6397: Extract IRQ related code from core driver")
+>
+>you can see that it doesn't just move the code but also adds new logic
+>in
+>mt6397_irq_init(). :(
+
+I take a look at this function,thank you pointing to it
+
+>It seems your chip_id is not supported yet. So you will have to find
+>out which
+>one it is and add it to the switch.
+
+have posted it above ;) (0x2023)
