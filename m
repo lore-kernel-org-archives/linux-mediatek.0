@@ -1,110 +1,47 @@
-From: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Subject: [PATCH v5 09/10] rtc: mt6397: fix alarm register overwrite
-Date: Fri, 23 Aug 2019 11:45:30 +0800
-Message-ID: <1566531931-9772-10-git-send-email-hsin-hsiung.wang@mediatek.com>
-References: <1566531931-9772-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+From: Ran Bi <ran.bi@mediatek.com>
+Subject: Re: [PATCH v2 1/4] bindings: rtc: add bindings for MT2712 RTC
+Date: Fri, 23 Aug 2019 14:35:31 +0800
+Message-ID: <1566542131.12318.52.camel@mhfsdcap03>
+References: <20190801110122.26834-1-ran.bi@mediatek.com>
+         <20190801110122.26834-2-ran.bi@mediatek.com>
+         <84bd8752-f437-781f-9f08-cedfca6cc06a@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1566531931-9772-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+In-Reply-To: <84bd8752-f437-781f-9f08-cedfca6cc06a@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Liam Girdwood <lgirdwood@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, Kate Stewart <kstewart@linuxfoundation.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Thomas Gleixner <tglx@linutronix.de>, Richard Fontana <rfontana@redhat.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rtc@vger.kernel.org, srv_heupstream@mediatek.com, Ran Bi <ran.bi@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>, Rob Herring <robh+dt@kernel.org>, Alessandro Zummo <a.zummo@towertech.it>, Mark Rutland <mark.rutland@arm.com>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, "David S . Miller" <davem@davemloft.net>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jonathan Cameron <Jonathan.Cameron@huawei.com>, Linus Walleij <linus.walleij@linaro.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, YT Shen <yt.shen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Flor
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Ran Bi <ran.bi@mediatek.com>
 
-Alarm registers high byte was reserved for other functions.
-This add mask in alarm registers operation functions.
-This also fix error condition in interrupt handler.
+Hi,
 
-Fixes: fc2979118f3f ("rtc: mediatek: Add MT6397 RTC driver")
+> > +Required properties:
+> > +- compatible	    : Should be "mediatek,mt2712-rtc" : for MT2712 SoC
+> > +- reg 		    : Specifies base physical address and size of the registers;
+> > +- interrupts	    : Should contain the interrupt for RTC alarm;
+> 
+> No clocks for the RTC? What about CLK_TOP_RTC_SEL from the clk driver?
+> 
+> Regards,
+> Matthias
+> 
 
-Acked-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
-Signed-off-by: Ran Bi <ran.bi@mediatek.com>
----
- drivers/rtc/rtc-mt6397.c | 47 +++++++++++++++++++++++++++++++++--------------
- 1 file changed, 33 insertions(+), 14 deletions(-)
+I suppose that we don't need clock control for mt2712 RTC. RTC clock is directly
+come from 32K crystal and there is no control register to switch the clock. In mt2712,
+CLK_TOP_RTC_SEL is prepared for other module even it called CLK_TOP_RTC_SEL.
 
-diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
-index b46ed4d..828def7 100644
---- a/drivers/rtc/rtc-mt6397.c
-+++ b/drivers/rtc/rtc-mt6397.c
-@@ -47,6 +47,14 @@
- 
- #define RTC_AL_SEC		0x0018
- 
-+#define RTC_AL_SEC_MASK		0x003f
-+#define RTC_AL_MIN_MASK		0x003f
-+#define RTC_AL_HOU_MASK		0x001f
-+#define RTC_AL_DOM_MASK		0x001f
-+#define RTC_AL_DOW_MASK		0x0007
-+#define RTC_AL_MTH_MASK		0x000f
-+#define RTC_AL_YEA_MASK		0x007f
-+
- #define RTC_PDN2		0x002e
- #define RTC_PDN2_PWRON_ALARM	BIT(4)
- 
-@@ -103,7 +111,7 @@ static irqreturn_t mtk_rtc_irq_handler_thread(int irq, void *data)
- 		irqen = irqsta & ~RTC_IRQ_EN_AL;
- 		mutex_lock(&rtc->lock);
- 		if (regmap_write(rtc->regmap, rtc->addr_base + RTC_IRQ_EN,
--				 irqen) < 0)
-+				 irqen) == 0)
- 			mtk_rtc_write_trigger(rtc);
- 		mutex_unlock(&rtc->lock);
- 
-@@ -225,12 +233,12 @@ static int mtk_rtc_read_alarm(struct device *dev, struct rtc_wkalrm *alm)
- 	alm->pending = !!(pdn2 & RTC_PDN2_PWRON_ALARM);
- 	mutex_unlock(&rtc->lock);
- 
--	tm->tm_sec = data[RTC_OFFSET_SEC];
--	tm->tm_min = data[RTC_OFFSET_MIN];
--	tm->tm_hour = data[RTC_OFFSET_HOUR];
--	tm->tm_mday = data[RTC_OFFSET_DOM];
--	tm->tm_mon = data[RTC_OFFSET_MTH];
--	tm->tm_year = data[RTC_OFFSET_YEAR];
-+	tm->tm_sec = data[RTC_OFFSET_SEC] & RTC_AL_SEC_MASK;
-+	tm->tm_min = data[RTC_OFFSET_MIN] & RTC_AL_MIN_MASK;
-+	tm->tm_hour = data[RTC_OFFSET_HOUR] & RTC_AL_HOU_MASK;
-+	tm->tm_mday = data[RTC_OFFSET_DOM] & RTC_AL_DOM_MASK;
-+	tm->tm_mon = data[RTC_OFFSET_MTH] & RTC_AL_MTH_MASK;
-+	tm->tm_year = data[RTC_OFFSET_YEAR] & RTC_AL_YEA_MASK;
- 
- 	tm->tm_year += RTC_MIN_YEAR_OFFSET;
- 	tm->tm_mon--;
-@@ -251,14 +259,25 @@ static int mtk_rtc_set_alarm(struct device *dev, struct rtc_wkalrm *alm)
- 	tm->tm_year -= RTC_MIN_YEAR_OFFSET;
- 	tm->tm_mon++;
- 
--	data[RTC_OFFSET_SEC] = tm->tm_sec;
--	data[RTC_OFFSET_MIN] = tm->tm_min;
--	data[RTC_OFFSET_HOUR] = tm->tm_hour;
--	data[RTC_OFFSET_DOM] = tm->tm_mday;
--	data[RTC_OFFSET_MTH] = tm->tm_mon;
--	data[RTC_OFFSET_YEAR] = tm->tm_year;
--
- 	mutex_lock(&rtc->lock);
-+	ret = regmap_bulk_read(rtc->regmap, rtc->addr_base + RTC_AL_SEC,
-+			       data, RTC_OFFSET_COUNT);
-+	if (ret < 0)
-+		goto exit;
-+
-+	data[RTC_OFFSET_SEC] = ((data[RTC_OFFSET_SEC] & ~(RTC_AL_SEC_MASK)) |
-+				(tm->tm_sec & RTC_AL_SEC_MASK));
-+	data[RTC_OFFSET_MIN] = ((data[RTC_OFFSET_MIN] & ~(RTC_AL_MIN_MASK)) |
-+				(tm->tm_min & RTC_AL_MIN_MASK));
-+	data[RTC_OFFSET_HOUR] = ((data[RTC_OFFSET_HOUR] & ~(RTC_AL_HOU_MASK)) |
-+				(tm->tm_hour & RTC_AL_HOU_MASK));
-+	data[RTC_OFFSET_DOM] = ((data[RTC_OFFSET_DOM] & ~(RTC_AL_DOM_MASK)) |
-+				(tm->tm_mday & RTC_AL_DOM_MASK));
-+	data[RTC_OFFSET_MTH] = ((data[RTC_OFFSET_MTH] & ~(RTC_AL_MTH_MASK)) |
-+				(tm->tm_mon & RTC_AL_MTH_MASK));
-+	data[RTC_OFFSET_YEAR] = ((data[RTC_OFFSET_YEAR] & ~(RTC_AL_YEA_MASK)) |
-+				(tm->tm_year & RTC_AL_YEA_MASK));
-+
- 	if (alm->enabled) {
- 		ret = regmap_bulk_write(rtc->regmap,
- 					rtc->addr_base + RTC_AL_SEC,
--- 
-1.9.1
+Regards,
+Ran
+
+> > +
+> > +Example:
+> > +
+> > +rtc: rtc@10011000 {
+> > +	compatible = "mediatek,mt2712-rtc";
+> > +	reg = <0 0x10011000 0 0x1000>;
+> > +	interrupts = <GIC_SPI 239 IRQ_TYPE_LEVEL_LOW>;
+> > +};
+> > 
