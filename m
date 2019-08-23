@@ -1,84 +1,56 @@
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [RESEND PATCH v2 2/2] usb: xhci-mtk: add an optional xhci_ck clock
-Date: Fri, 23 Aug 2019 14:40:25 +0800
-Message-ID: <1566542425-20082-2-git-send-email-chunfeng.yun@mediatek.com>
-References: <1566542425-20082-1-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH 02/11] dt-bindings: phy-mtk-tphy: make the ref clock optional
+Date: Fri, 23 Aug 2019 15:00:09 +0800
+Message-ID: <a31d78484b64f853a16e7dcb16fae9fc0de45ebb.1566542696.git.chunfeng.yun@mediatek.com>
+References: <e99c0d7a55869a4425250c601b80a3331c9d0976.1566542696.git.chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1566542425-20082-1-git-send-email-chunfeng.yun@mediatek.com>
+In-Reply-To: <e99c0d7a55869a4425250c601b80a3331c9d0976.1566542696.git.chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring <robh+dt@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Some SoCs may have an optional clock xhci_ck (125M or 200M), it
-usually uses the same PLL as sys_ck, so support it.
+Make the ref clock optional, then we no need refer to a fixed-clock
+in DTS anymore when the clock of USB3 PHY comes from oscillator
+directly
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
-v2 no changes
----
- drivers/usb/host/xhci-mtk.c | 13 +++++++++++++
- drivers/usb/host/xhci-mtk.h |  1 +
- 2 files changed, 14 insertions(+)
+ .../devicetree/bindings/phy/phy-mtk-tphy.txt        | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-index 026fe18972d3..b18a6baef204 100644
---- a/drivers/usb/host/xhci-mtk.c
-+++ b/drivers/usb/host/xhci-mtk.c
-@@ -216,6 +216,10 @@ static int xhci_mtk_clks_get(struct xhci_hcd_mtk *mtk)
- 		return PTR_ERR(mtk->sys_clk);
- 	}
+diff --git a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+index d5b327f85fa2..1c18bf10b2fe 100644
+--- a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
++++ b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+@@ -34,12 +34,6 @@ Optional properties (controller (parent) node):
  
-+	mtk->xhci_clk = devm_clk_get_optional(dev, "xhci_ck");
-+	if (IS_ERR(mtk->xhci_clk))
-+		return PTR_ERR(mtk->xhci_clk);
-+
- 	mtk->ref_clk = devm_clk_get_optional(dev, "ref_ck");
- 	if (IS_ERR(mtk->ref_clk))
- 		return PTR_ERR(mtk->ref_clk);
-@@ -244,6 +248,12 @@ static int xhci_mtk_clks_enable(struct xhci_hcd_mtk *mtk)
- 		goto sys_clk_err;
- 	}
+ Required properties (port (child) node):
+ - reg		: address and length of the register set for the port.
+-- clocks	: a list of phandle + clock-specifier pairs, one for each
+-		  entry in clock-names
+-- clock-names	: must contain
+-		  "ref": 48M reference clock for HighSpeed analog phy; and 26M
+-			reference clock for SuperSpeed analog phy, sometimes is
+-			24M, 25M or 27M, depended on platform.
+ - #phy-cells	: should be 1 (See second example)
+ 		  cell after port phandle is phy type from:
+ 			- PHY_TYPE_USB2
+@@ -48,6 +42,13 @@ Required properties (port (child) node):
+ 			- PHY_TYPE_SATA
  
-+	ret = clk_prepare_enable(mtk->xhci_clk);
-+	if (ret) {
-+		dev_err(mtk->dev, "failed to enable xhci_clk\n");
-+		goto xhci_clk_err;
-+	}
+ Optional properties (PHY_TYPE_USB2 port (child) node):
++- clocks	: a list of phandle + clock-specifier pairs, one for each
++		  entry in clock-names
++- clock-names	: may contain
++		  "ref": 48M reference clock for HighSpeed anolog phy; and 26M
++			reference clock for SuperSpeed anolog phy, sometimes is
++			24M, 25M or 27M, depended on platform.
 +
- 	ret = clk_prepare_enable(mtk->mcu_clk);
- 	if (ret) {
- 		dev_err(mtk->dev, "failed to enable mcu_clk\n");
-@@ -261,6 +271,8 @@ static int xhci_mtk_clks_enable(struct xhci_hcd_mtk *mtk)
- dma_clk_err:
- 	clk_disable_unprepare(mtk->mcu_clk);
- mcu_clk_err:
-+	clk_disable_unprepare(mtk->xhci_clk);
-+xhci_clk_err:
- 	clk_disable_unprepare(mtk->sys_clk);
- sys_clk_err:
- 	clk_disable_unprepare(mtk->ref_clk);
-@@ -272,6 +284,7 @@ static void xhci_mtk_clks_disable(struct xhci_hcd_mtk *mtk)
- {
- 	clk_disable_unprepare(mtk->dma_clk);
- 	clk_disable_unprepare(mtk->mcu_clk);
-+	clk_disable_unprepare(mtk->xhci_clk);
- 	clk_disable_unprepare(mtk->sys_clk);
- 	clk_disable_unprepare(mtk->ref_clk);
- }
-diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
-index 8be8c5f7ff62..5ac458b7d2e0 100644
---- a/drivers/usb/host/xhci-mtk.h
-+++ b/drivers/usb/host/xhci-mtk.h
-@@ -139,6 +139,7 @@ struct xhci_hcd_mtk {
- 	struct regulator *vusb33;
- 	struct regulator *vbus;
- 	struct clk *sys_clk;	/* sys and mac clock */
-+	struct clk *xhci_clk;
- 	struct clk *ref_clk;
- 	struct clk *mcu_clk;
- 	struct clk *dma_clk;
+ - mediatek,eye-src	: u32, the value of slew rate calibrate
+ - mediatek,eye-vrt	: u32, the selection of VRT reference voltage
+ - mediatek,eye-term	: u32, the selection of HS_TX TERM reference voltage
 -- 
 2.23.0
