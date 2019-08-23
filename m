@@ -1,25 +1,25 @@
-From: Mathias Nyman <mathias.nyman@linux.intel.com>
-Subject: Re: [RESEND PATCH v2 2/2] usb: xhci-mtk: add an optional xhci_ck
- clock
-Date: Fri, 23 Aug 2019 11:28:50 +0300
-Message-ID: <e1e4d220-9540-2001-13aa-89ff8ce829f5@linux.intel.com>
-References: <1566542425-20082-1-git-send-email-chunfeng.yun@mediatek.com>
- <1566542425-20082-2-git-send-email-chunfeng.yun@mediatek.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH v2 03/11] dt-bindings: irq: mtk,sysirq: add support for mt6779
+Date: Fri, 23 Aug 2019 10:51:04 +0200
+Message-ID: <CACRpkdY4sVV5oyFa+a30dY2A9tsKpzTeuQ8ChmnXcm-5_eZkVA@mail.gmail.com>
+References: <1566206502-4347-1-git-send-email-mars.cheng@mediatek.com> <1566206502-4347-4-git-send-email-mars.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1566542425-20082-2-git-send-email-chunfeng.yun@mediatek.com>
-Content-Language: en-US
+In-Reply-To: <1566206502-4347-4-git-send-email-mars.cheng@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring <robh+dt@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+To: Mars Cheng <mars.cheng@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, Marc Zyngier <marc.zyngier@arm.com>, Stephen Boyd <sboyd@kernel.org>, Sean Wang <sean.wang@kernel.org>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, wsd_upstream@mediatek.com, mtk01761 <wendell.lin@mediatek.com>, linux-clk <linux-clk@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 23.8.2019 9.40, Chunfeng Yun wrote:
-> Some SoCs may have an optional clock xhci_ck (125M or 200M), it
-> usually uses the same PLL as sys_ck, so support it.
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+On Mon, Aug 19, 2019 at 11:22 AM Mars Cheng <mars.cheng@mediatek.com> wrote:
 
-Acked-by: Mathias Nyman <mathias.nyman@linux.intel.com>
+> Add binding documentation of mediatek,sysirq for mt6779 SoC.
+>
+> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+
+I'm relying on Sean to review this and ACK when he's pleased
+with the result.
+
+Yours,
+Linus Walleij
