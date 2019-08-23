@@ -1,91 +1,100 @@
-From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 09/11] phy: phy-mtk-tphy: remove unused u3phya_ref clock
-Date: Fri, 23 Aug 2019 15:00:16 +0800
-Message-ID: <e570f4d2e73da704e51a9c4da6e464988e0cc173.1566542697.git.chunfeng.yun@mediatek.com>
-References: <e99c0d7a55869a4425250c601b80a3331c9d0976.1566542696.git.chunfeng.yun@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [RESEND PATCH v2 2/2] usb: xhci-mtk: add an optional xhci_ck clock
+Date: Fri, 23 Aug 2019 09:43:42 +0200
+Message-ID: <e4aa560c-c524-8098-cd7f-3d1a6aa2082e@gmail.com>
+References: <1566542425-20082-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1566542425-20082-2-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <e99c0d7a55869a4425250c601b80a3331c9d0976.1566542696.git.chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1566542425-20082-2-git-send-email-chunfeng.yun@mediatek.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring <robh+dt@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The u3phya_ref clock is already moved into sub-node, and
-renamed as ref clock, no used anymore now, so remove it,
-this can avoid confusion when support new platforms
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/phy/mediatek/phy-mtk-tphy.c | 18 ------------------
- 1 file changed, 18 deletions(-)
 
-diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
-index 96c62e3a3300..c6424fd2a06d 100644
---- a/drivers/phy/mediatek/phy-mtk-tphy.c
-+++ b/drivers/phy/mediatek/phy-mtk-tphy.c
-@@ -312,8 +312,6 @@ struct mtk_phy_instance {
- struct mtk_tphy {
- 	struct device *dev;
- 	void __iomem *sif_base;	/* only shared sif */
--	/* deprecated, use @ref_clk instead in phy instance */
--	struct clk *u3phya_ref;	/* reference clock of usb3 anolog phy */
- 	const struct mtk_phy_pdata *pdata;
- 	struct mtk_phy_instance **phys;
- 	int nphys;
-@@ -921,12 +919,6 @@ static int mtk_phy_init(struct phy *phy)
- 	struct mtk_tphy *tphy = dev_get_drvdata(phy->dev.parent);
- 	int ret;
- 
--	ret = clk_prepare_enable(tphy->u3phya_ref);
--	if (ret) {
--		dev_err(tphy->dev, "failed to enable u3phya_ref\n");
--		return ret;
--	}
--
- 	ret = clk_prepare_enable(instance->ref_clk);
- 	if (ret) {
- 		dev_err(tphy->dev, "failed to enable ref_clk\n");
-@@ -992,7 +984,6 @@ static int mtk_phy_exit(struct phy *phy)
- 		u2_phy_instance_exit(tphy, instance);
- 
- 	clk_disable_unprepare(instance->ref_clk);
--	clk_disable_unprepare(tphy->u3phya_ref);
- 	return 0;
- }
- 
-@@ -1127,11 +1118,6 @@ static int mtk_tphy_probe(struct platform_device *pdev)
- 		}
- 	}
- 
--	/* it's deprecated, make it optional for backward compatibility */
--	tphy->u3phya_ref = devm_clk_get_optional(dev, "u3phya_ref");
--	if (IS_ERR(tphy->u3phya_ref))
--		return PTR_ERR(tphy->u3phya_ref);
--
- 	tphy->src_ref_clk = U3P_REF_CLK;
- 	tphy->src_coef = U3P_SLEW_RATE_COEF;
- 	/* update parameters of slew rate calibrate if exist */
-@@ -1178,10 +1164,6 @@ static int mtk_tphy_probe(struct platform_device *pdev)
- 		phy_set_drvdata(phy, instance);
- 		port++;
- 
--		/* if deprecated clock is provided, ignore instance's one */
--		if (tphy->u3phya_ref)
--			continue;
--
- 		instance->ref_clk = devm_clk_get_optional(&phy->dev, "ref");
- 		if (IS_ERR(instance->ref_clk)) {
- 			dev_err(dev, "failed to get ref_clk(id-%d)\n", port);
--- 
-2.23.0
+On 23/08/2019 08:40, Chunfeng Yun wrote:
+> Some SoCs may have an optional clock xhci_ck (125M or 200M), it
+> usually uses the same PLL as sys_ck, so support it.
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
+> ---
+> v2 no changes
+> ---
+>  drivers/usb/host/xhci-mtk.c | 13 +++++++++++++
+>  drivers/usb/host/xhci-mtk.h |  1 +
+>  2 files changed, 14 insertions(+)
+> 
+> diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+> index 026fe18972d3..b18a6baef204 100644
+> --- a/drivers/usb/host/xhci-mtk.c
+> +++ b/drivers/usb/host/xhci-mtk.c
+> @@ -216,6 +216,10 @@ static int xhci_mtk_clks_get(struct xhci_hcd_mtk *mtk)
+>  		return PTR_ERR(mtk->sys_clk);
+>  	}
+>  
+> +	mtk->xhci_clk = devm_clk_get_optional(dev, "xhci_ck");
+> +	if (IS_ERR(mtk->xhci_clk))
+> +		return PTR_ERR(mtk->xhci_clk);
+> +
+>  	mtk->ref_clk = devm_clk_get_optional(dev, "ref_ck");
+>  	if (IS_ERR(mtk->ref_clk))
+>  		return PTR_ERR(mtk->ref_clk);
+> @@ -244,6 +248,12 @@ static int xhci_mtk_clks_enable(struct xhci_hcd_mtk *mtk)
+>  		goto sys_clk_err;
+>  	}
+>  
+> +	ret = clk_prepare_enable(mtk->xhci_clk);
+> +	if (ret) {
+> +		dev_err(mtk->dev, "failed to enable xhci_clk\n");
+> +		goto xhci_clk_err;
+> +	}
+> +
+>  	ret = clk_prepare_enable(mtk->mcu_clk);
+>  	if (ret) {
+>  		dev_err(mtk->dev, "failed to enable mcu_clk\n");
+> @@ -261,6 +271,8 @@ static int xhci_mtk_clks_enable(struct xhci_hcd_mtk *mtk)
+>  dma_clk_err:
+>  	clk_disable_unprepare(mtk->mcu_clk);
+>  mcu_clk_err:
+> +	clk_disable_unprepare(mtk->xhci_clk);
+> +xhci_clk_err:
+>  	clk_disable_unprepare(mtk->sys_clk);
+>  sys_clk_err:
+>  	clk_disable_unprepare(mtk->ref_clk);
+> @@ -272,6 +284,7 @@ static void xhci_mtk_clks_disable(struct xhci_hcd_mtk *mtk)
+>  {
+>  	clk_disable_unprepare(mtk->dma_clk);
+>  	clk_disable_unprepare(mtk->mcu_clk);
+> +	clk_disable_unprepare(mtk->xhci_clk);
+>  	clk_disable_unprepare(mtk->sys_clk);
+>  	clk_disable_unprepare(mtk->ref_clk);
+>  }
+> diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
+> index 8be8c5f7ff62..5ac458b7d2e0 100644
+> --- a/drivers/usb/host/xhci-mtk.h
+> +++ b/drivers/usb/host/xhci-mtk.h
+> @@ -139,6 +139,7 @@ struct xhci_hcd_mtk {
+>  	struct regulator *vusb33;
+>  	struct regulator *vbus;
+>  	struct clk *sys_clk;	/* sys and mac clock */
+> +	struct clk *xhci_clk;
+>  	struct clk *ref_clk;
+>  	struct clk *mcu_clk;
+>  	struct clk *dma_clk;
+> 
