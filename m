@@ -1,115 +1,120 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [RESEND, PATCH v13 06/12] soc: mediatek: cmdq: clear the event in
- cmdq initial flow
-Date: Fri, 23 Aug 2019 13:43:54 +0200
-Message-ID: <a7c2acbc-cfcd-9109-7ee8-4735cd344da6@gmail.com>
-References: <20190820084932.22282-1-bibby.hsieh@mediatek.com>
- <20190820084932.22282-7-bibby.hsieh@mediatek.com>
- <29eb73c1-04f4-deec-3136-f22434e0e541@gmail.com>
+From: "Frank Wunderlich" <frank-w@public-files.de>
+Subject: Aw: Re:  Re: BUG: devm_regulator_get returns EPROBE_DEFER
+ (5.3-rc5..next-20190822) for bpi-r2/mt7623/mt7530
+Date: Fri, 23 Aug 2019 14:00:16 +0200
+Message-ID: <trinity-2f905f45-85d8-4343-8613-31dda5f7556f-1566561616610@3c-app-gmx-bs11>
+References: <trinity-584a4b1c-18c9-43ae-8c1a-5057933ad905-1566501837738@3c-app-gmx-bs43>
+ <20190822193015.GK23391@sirena.co.uk>
+ <trinity-5d117f0d-9f34-4a2b-8a12-1cd34152c108-1566505724458@3c-app-gmx-bs43>
+ <20190823100424.GL23391@sirena.co.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <29eb73c1-04f4-deec-3136-f22434e0e541@gmail.com>
-Content-Language: en-US
+In-Reply-To: <20190823100424.GL23391@sirena.co.uk>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>, Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>, CK HU <ck.hu@mediatek.com>
-Cc: Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, ginny.chen@mediatek.com
+To: Mark Brown <broonie@kernel.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, =?UTF-8?Q?=22Ren=C3=A9_van_Dorst=22?= <opensource@vdorst.com>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, Lee Jones <lee.jones@linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+> Gesendet: Freitag, 23. August 2019 um 12:04 Uhr
+> Von: "Mark Brown" <broonie@kernel.org>
 
+> Can you run a git bisect to try to identify the commit that
+> caused things to fail?
 
-On 23/08/2019 13:36, Matthias Brugger wrote:
-> 
-> 
-> On 20/08/2019 10:49, Bibby Hsieh wrote:
->> GCE hardware stored event information in own internal sysram,
->> if the initial value in those sysram is not zero value
->> it will cause a situation that gce can wait the event immediately
->> after client ask gce to wait event but not really trigger the
->> corresponding hardware.
->>
->> In order to make sure that the wait event function is
->> exactly correct, we need to clear the sysram value in
->> cmdq initial flow.
->>
->> Fixes: 623a6143a845 ("mailbox: mediatek: Add Mediatek CMDQ driver")
->>
->> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
->> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+i have not figured out, how to rebase linux-next on my current (working) c=
+odebase :) (failes on file untouched by me at Patch 3/7000+)
 
-I oversaw some things/nits.
+> Look to see if there is a device driver bound to that device, or
+> check if the parent regulator is visible in /sys/class/regulators.
+> You'll also see a mesage printed out for each regulator as it
+> instantiates in the boot logs, you can check there too.
 
-Patch subject should be:
-mailbox: mediatek: cmdq: clear the event in cmdq initial flow
+in working version i only get this message in dmesg which
+looks like a device-binding:
 
->> ---
->>  drivers/mailbox/mtk-cmdq-mailbox.c       | 5 +++++
->>  include/linux/mailbox/mtk-cmdq-mailbox.h | 2 ++
->>  include/linux/soc/mediatek/mtk-cmdq.h    | 3 ---
->>  3 files changed, 7 insertions(+), 3 deletions(-)
->>
->> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
->> index 69daaadc3a5f..9a6ce9f5a7db 100644
->> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
->> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
->> @@ -21,6 +21,7 @@
->>  #define CMDQ_NUM_CMD(t)			(t->cmd_buf_size / CMDQ_INST_SIZE)
->>  
->>  #define CMDQ_CURR_IRQ_STATUS		0x10
->> +#define CMDQ_SYNC_TOKEN_UPDATE		0x68
->>  #define CMDQ_THR_SLOT_CYCLES		0x30
->>  #define CMDQ_THR_BASE			0x100
->>  #define CMDQ_THR_SIZE			0x80
->> @@ -104,8 +105,12 @@ static void cmdq_thread_resume(struct cmdq_thread *thread)
->>  
->>  static void cmdq_init(struct cmdq *cmdq)
->>  {
->> +	int i;
->> +
->>  	WARN_ON(clk_enable(cmdq->clock) < 0);
->>  	writel(CMDQ_THR_ACTIVE_SLOT_CYCLES, cmdq->base + CMDQ_THR_SLOT_CYCLES);
->> +	for (i = 0; i <= CMDQ_MAX_EVENT; i++)
->> +		writel(i, cmdq->base + CMDQ_SYNC_TOKEN_UPDATE);
+mt6323-regulator mt6323-regulator: Chip ID =3D 0x2023
 
-I think CMDQ_SYNC_TOKEN_UPDATE is not a good name for the define.
-Any reason why we couldn't name it something like CMDQ_SYNC_TOKEN_RESET?
+this is my regulator: mt6323_vpa_reg
 
+defined in arch/arm/boot/dts/mt6323.dtsi
 
->>  	clk_disable(cmdq->clock);
->>  }
->>  
->> diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
->> index ccb73422c2fa..911475da7a53 100644
->> --- a/include/linux/mailbox/mtk-cmdq-mailbox.h
->> +++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
->> @@ -19,6 +19,8 @@
->>  #define CMDQ_WFE_UPDATE			BIT(31)
->>  #define CMDQ_WFE_WAIT			BIT(15)
->>  #define CMDQ_WFE_WAIT_VALUE		0x1
->> +/** cmdq event maximum */
+&pwrap {
+	pmic: mt6323 {
+	  mt6323regulator: mt6323regulator{
+		compatible =3D "mediatek,mt6323-regulator";
+		mt6323_vpa_reg: buck_vpa{
+			regulator-name =3D "vpa";
+			regulator-min-microvolt =3D < 500000>;
+			regulator-max-microvolt =3D <3650000>;
+		};
+	  };
+	};
+};
 
-While at it, add a new line before the comment.
+parent regulator is then
+mt6323regulator: mt6323regulator
 
-Regards,
-Matthias
+which is the one i see i dmesg.
 
->> +#define CMDQ_MAX_EVENT			0x3ff
->>  
->>  /*
->>   * CMDQ_CODE_MASK:
->> diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
->> index 54ade13a9b15..4e8899972db4 100644
->> --- a/include/linux/soc/mediatek/mtk-cmdq.h
->> +++ b/include/linux/soc/mediatek/mtk-cmdq.h
->> @@ -13,9 +13,6 @@
->>  
->>  #define CMDQ_NO_TIMEOUT		0xffffffffu
->>  
->> -/** cmdq event maximum */
->> -#define CMDQ_MAX_EVENT				0x3ff
->> -
->>  struct cmdq_pkt;
->>  
->>  struct cmdq_client {
->>
+in working version i see the regulator in sys-fs
+
+cat /sys/class/regulator/regulator.*/name | grep vpa
+vpa
+
+=2D------------------------------------------------------------------
+
+so, now to the non-working regulator:
+
+dmesg do not have such entry ;(
+
+regulators-list in /sys/class only containing the dummy and some fixed reg=
+ulators
+
+cat /sys/class/regulator/regulator.*/name
+regulator-dummy
+fixed-1.8V
+fixed-3.3V
+fixed-5V
+
+in arch/arm/boot/dts/mt*.dts and Makefile there is no change between
+working and non-working version.
+in drivers/regulators only the 2 files where i had reverted the
+changes manually without success.
+
+where can be the cause for no more binding main-regulator?
+
+are these strange messages related to this problem?
+
+mtk-cpufreq mtk-cpufreq: failed to initialize dvfs info for cpu0
+
+another strange line is this:
+
+mt6397 1000d000.pwrap:mt6323: unsupported chip: 0x0
+
+so the pwrap above regulator is affected too
+
+and here are many changes in 2 files...
+
+git diff --name-only non-working..working -- drivers/mfd/mt6397-*
+drivers/mfd/mt6397-core.c
+drivers/mfd/mt6397-irq.c
+
+which brings me to this 2 commits:
+
+a4872e80ce7d mfd: mt6397: Extract IRQ related code from core driver
+708cb5cc3fde mfd: mt6397: Rename macros to something more readable
+
+after reverting those 2 regulators are working again.
+Adding both Signed-off-People to CC to keep them informed that a fix is ne=
+eded
+
+> Please fix your mail client to word wrap within paragraphs at something
+> substantially less than 80 columns.  Doing this makes your messages much
+> easier to read and reply to.
+
+i currently write in webmailer, where i cannot set this setting,
+i try to add manual linebreak in long lines, ok?
+
+regards Frank
