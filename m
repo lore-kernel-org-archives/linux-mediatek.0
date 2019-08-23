@@ -1,7 +1,7 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [GIT PULL] arm: mediatek: dts32 updates for v5.4
-Date: Fri, 23 Aug 2019 18:40:40 +0200
-Message-ID: <e236f659-2851-21b8-1873-314cd72ed6be@gmail.com>
+Subject: [GIT PULL] arm64: mediatek: dts64 updates for v5.4
+Date: Fri, 23 Aug 2019 18:42:19 +0200
+Message-ID: <def8fb77-fce4-097d-7ae2-8c4670bc09c1@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -17,14 +17,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: arm-soc <arm@kernel.org>, soc@kernel.org
-Cc: Ryder Lee <ryder.lee@mediatek.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Mars Cheng <mars.cheng@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Arnd and Olof,
+Hi Olof and Arnd,
 
-please have a look on the following patch.
+Please take the following patches into account.
 
-Regards,
+Thanks!
 Matthias
 
 ---
@@ -35,24 +35,36 @@ The following changes since commit 5f9e832c137075045d15cd6899ab0505cfb2ca4b:
 are available in the Git repository at:
 
   https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
-tags/v5.3-next-dts32
+tags/v5.3-next-dts64
 
-for you to fetch changes up to cc212241df0b8975bb0e6d7f9028405a9c664e49:
+for you to fetch changes up to 7b07a7a4e169180c7da5078bdf5254515e69c152:
 
-  arm: dts: mediatek: add basic support for MT7629 SoC (2019-08-22 11:22:17 +0200)
-
-----------------------------------------------------------------
-add support for the mt7629 reference board
+  dt-bindings: irq: mtk, sysirq: add support for mt6779 (2019-08-23 17:50:07 +0200)
 
 ----------------------------------------------------------------
-Ryder Lee (1):
-      arm: dts: mediatek: add basic support for MT7629 SoC
+mt8183:
+- fix pwrap interrupt number
+- add i2c notes
 
- arch/arm/boot/dts/Makefile                |   1 +
- arch/arm/boot/dts/mt7629-rfb.dts          | 263 ++++++++++++++++
- arch/arm/boot/dts/mt7629.dtsi             | 481 ++++++++++++++++++++++++++++++
- include/dt-bindings/reset/mt7629-resets.h |  71 +++++
- 4 files changed, 816 insertions(+)
- create mode 100644 arch/arm/boot/dts/mt7629-rfb.dts
- create mode 100644 arch/arm/boot/dts/mt7629.dtsi
- create mode 100644 include/dt-bindings/reset/mt7629-resets.h
+dt-bindings:
+- add compatible for mt6779
+- add mt6779 uart and sysirq compatible
+
+----------------------------------------------------------------
+Hsin-Hsiung Wang (1):
+      arm64: dts: mt8183: fix pwrap gic number
+
+Mars Cheng (3):
+      dt-bindings: mediatek: add support for mt6779 reference board
+      dt-bindings: mtk-uart: add mt6779 uart bindings
+      dt-bindings: irq: mtk, sysirq: add support for mt6779
+
+Qii Wang (1):
+      arm64: dts: mt8183: add I2C nodes
+
+ .../devicetree/bindings/arm/mediatek.yaml          |   4 +
+ .../interrupt-controller/mediatek,sysirq.txt       |   1 +
+ .../devicetree/bindings/serial/mtk-uart.txt        |   1 +
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts        |  96 +++++++++++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi           | 191 ++++++++++++++++++++-
+ 5 files changed, 292 insertions(+), 1 deletion(-)
