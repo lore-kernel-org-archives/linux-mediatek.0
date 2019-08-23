@@ -1,45 +1,72 @@
-From: "Frank Wunderlich" <frank-w-SipyoOjXbOMoAHOVJHB0wA@public.gmane.org>
-Subject: Aw: Re: [BUG] [PATCH v5 02/10] mfd: mt6397: extract irq related
- code from core driver
-Date: Fri, 23 Aug 2019 19:16:20 +0200
-Message-ID: <trinity-a57f08bb-e30e-4e74-911c-c40e335d00da-1566580580817@3c-app-gmx-bs75>
-References: <1566531931-9772-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1566531931-9772-3-git-send-email-hsin-hsiung.wang@mediatek.com>
- <trinity-1f82bff1-535e-47cd-9a2f-8faccb56e356-1566562433314@3c-app-gmx-bs11>
- <e8a918ab-3e7a-b487-db77-df28d56518ce@gmail.com>
- <0A87F427-2D81-412A-9549-09A51A021799@public-files.de>
- <b5a21908-faee-17d1-ce26-99b941c0fa70@gmail.com>
+From: "Frank Wunderlich" <frank-w@public-files.de>
+Subject: Aw: [PATCH net-next v3 0/3] net: ethernet: mediatek: convert to
+ PHYLINK
+Date: Fri, 23 Aug 2019 19:56:53 +0200
+Message-ID: <trinity-df75d11a-c27f-4941-a880-b017ebabd3dc-1566583013438@3c-app-gmx-bs75>
+References: <20190823134516.27559-1-opensource@vdorst.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <b5a21908-faee-17d1-ce26-99b941c0fa70-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Alessandro Zummo <a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org>, Alexandre Belloni <alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Kate Stewart <kstewart-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Richard Fontana <rfontana-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, =?UTF-8?Q?=22Ren=C3=A9_van_Dorst=22?= <opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Hsin-Hsiung Wang <hsin-hsiung.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-rtc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20190823134516.27559-1-opensource@vdorst.com>
+Sender: netdev-owner@vger.kernel.org
+Cc: John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Nelson Chang <nelson.chang@mediatek.com>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, Russell King <linux@armlinux.org.uk>, Stefan Roese <sr@denx.de>, =?UTF-8?Q?=22Ren=C3=A9_van_Dorst=22?= <opensource@vdorst.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-> Gesendet: Freitag, 23. August 2019 um 17:42 Uhr
-> Von: "Matthias Brugger" <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+tested on bpi-r2 (mt7623/mt7530) and bpi-r64 (mt7622/rtl8367)
 
-> I suppose that's because 3/10 has code that should be in 2/10 and for some
-> reason 3/10 was not pushed for linux-next inclusion. Although it has the same
-> Acked-for-mfd-by tag.
+as reported to rene directly rx-path needs some rework because current rx-=
+speed
+on bpi-r2 is 865 Mbits/sec instead of ~940 Mbits/sec
+
+Tested-by: Frank Wunderlich <frank-w@public-files=2Ede>
+
+regards Frank
+
+
+> Gesendet: Freitag, 23=2E August 2019 um 15:45 Uhr
+> Von: "Ren=C3=A9 van Dorst" <opensource@vdorst=2Ecom>
+> An: "John Crispin" <john@phrozen=2Eorg>, "Sean Wang" <sean=2Ewang@mediat=
+ek=2Ecom>, "Nelson Chang" <nelson=2Echang@mediatek=2Ecom>, "David S =2E Mil=
+ler" <davem@davemloft=2Enet>, "Matthias Brugger" <matthias=2Ebgg@gmail=2Eco=
+m>
+> Cc: netdev@vger=2Ekernel=2Eorg, linux-arm-kernel@lists=2Einfradead=2Eorg=
+, linux-mediatek@lists=2Einfradead=2Eorg, linux-mips@vger=2Ekernel=2Eorg, "=
+Russell King" <linux@armlinux=2Eorg=2Euk>, "Frank Wunderlich" <frank-w@publ=
+ic-files=2Ede>, "Stefan Roese" <sr@denx=2Ede>, "Ren=C3=A9 van Dorst" <opens=
+ource@vdorst=2Ecom>
+> Betreff: [PATCH net-next v3 0/3] net: ethernet: mediatek: convert to PHY=
+LINK
 >
-> @Frank, can you test if adding 3/10 to your code base fixes the issue?
-
-adding part 3 [1] seems to fix the issue too
-
-[    4.960051] mt6323-regulator mt6323-regulator: Chip ID = 0x2023
-
-thanks
-
-[1] https://patchwork.kernel.org/patch/11110509/
+> These patches converts mediatek driver to PHYLINK API=2E
+>=20
+> v2->v3:
+> * Phylink improvements and clean-ups after review
+> v1->v2:
+> * Rebase for mt76x8 changes
+> * Phylink improvements and clean-ups after review
+> * SGMII port doesn't support 2=2E5Gbit in SGMII mode only in BASE-X mode=
+=2E
+>   Refactor the code=2E
+>=20
+> Ren=C3=A9 van Dorst (3):
+>   net: ethernet: mediatek: Add basic PHYLINK support
+>   net: ethernet: mediatek: Re-add support SGMII
+>   dt-bindings: net: ethernet: Update mt7622 docs and dts to reflect the
+>     new phylink API
+>=20
+>  =2E=2E=2E/arm/mediatek/mediatek,sgmiisys=2Etxt        |   2 -
+>  =2E=2E=2E/dts/mediatek/mt7622-bananapi-bpi-r64=2Edts  |  28 +-
+>  arch/arm64/boot/dts/mediatek/mt7622=2Edtsi      |   1 -
+>  drivers/net/ethernet/mediatek/Kconfig         |   2 +-
+>  drivers/net/ethernet/mediatek/mtk_eth_path=2Ec  |  75 +--
+>  drivers/net/ethernet/mediatek/mtk_eth_soc=2Ec   | 529 ++++++++++++-----=
+-
+>  drivers/net/ethernet/mediatek/mtk_eth_soc=2Eh   |  68 ++-
+>  drivers/net/ethernet/mediatek/mtk_sgmii=2Ec     |  65 ++-
+>  8 files changed, 477 insertions(+), 293 deletions(-)
+>=20
+> --=20
+> 2=2E20=2E1
+>=20
+>
