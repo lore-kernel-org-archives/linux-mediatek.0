@@ -1,70 +1,97 @@
-From: =?utf-8?b?UmVuw6k=?= van Dorst <opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>
-Subject: Re: Aw: [PATCH net-next v3 0/3] net: ethernet: mediatek: convert to
- PHYLINK
-Date: Sat, 24 Aug 2019 07:41:03 +0000
-Message-ID: <20190824074103.Horde.ytG2fquC9xJKq5TL79l6J0M@www.vdorst.com>
-References: <20190823134516.27559-1-opensource@vdorst.com>
- <trinity-df75d11a-c27f-4941-a880-b017ebabd3dc-1566583013438@3c-app-gmx-bs75>
+From: Tom Murphy <murphyt7@tcd.ie>
+Subject: Re: [PATCH V5 1/5] iommu/amd: Remove unnecessary locking from AMD
+ iommu driver
+Date: Sat, 24 Aug 2019 08:56:59 +0100
+Message-ID: <CALQxJussiGDzWFT1xhko6no5jZNOezWCFuJQUCr4XwH4NHri3Q@mail.gmail.com>
+References: <20190815110944.3579-1-murphyt7@tcd.ie> <20190815110944.3579-2-murphyt7@tcd.ie>
+ <20190820094143.GA24154@infradead.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"; DelSp="Yes"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <trinity-df75d11a-c27f-4941-a880-b017ebabd3dc-1566583013438@3c-app-gmx-bs75>
-Content-Disposition: inline
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Frank Wunderlich <frank-w-SipyoOjXbOMoAHOVJHB0wA@public.gmane.org>
-Cc: Nelson Chang <nelson.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mips-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Stefan Roese <sr-ynQEQJNshbs@public.gmane.org>, "David S . Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190820094143.GA24154@infradead.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Christoph Hellwig <hch@infradead.org>
+Cc: iommu@lists.linux-foundation.org, Heiko Stuebner <heiko@sntech.de>, virtualization@lists.linux-foundation.org, linux-tegra@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>, Will Deacon <will@kernel.org>, Jean-Philippe Brucker <jean-philippe@linaro.org>, linux-samsung-soc@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, linux-s390@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, David Woodhouse <dwmw2@infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgRnJhbmssCgpRdW90aW5nIEZyYW5rIFd1bmRlcmxpY2ggPGZyYW5rLXdAcHVibGljLWZpbGVz
-LmRlPjoKCj4gdGVzdGVkIG9uIGJwaS1yMiAobXQ3NjIzL210NzUzMCkgYW5kIGJwaS1yNjQgKG10
-NzYyMi9ydGw4MzY3KQo+CgpUaGFua3MgZm9yIHRlc3RpbmchCgo+IGFzIHJlcG9ydGVkIHRvIHJl
-bmUgZGlyZWN0bHkgcngtcGF0aCBuZWVkcyBzb21lIHJld29yayBiZWNhdXNlICAKPiBjdXJyZW50
-IHJ4LXNwZWVkCj4gb24gYnBpLXIyIGlzIDg2NSBNYml0cy9zZWMgaW5zdGVhZCBvZiB+OTQwIE1i
-aXRzL3NlYwoKSSBzdGlsbCB0aGluayBpdCBpcyBhIHJlc3VsdCBvZiB0aGUgZXh0cmEgY29kZSBp
-biB0aGUgcnggcGF0aCB3aGVuIG10NzZ4OAp3YXMgaW50cm9kdWNlZC4KCkdyZWF0cywKClJlbsOp
-Cgo+Cj4gVGVzdGVkLWJ5OiBGcmFuayBXdW5kZXJsaWNoIDxmcmFuay13QHB1YmxpYy1maWxlcy5k
-ZT4KPgo+IHJlZ2FyZHMgRnJhbmsKPgo+Cj4+IEdlc2VuZGV0OiBGcmVpdGFnLCAyMy4gQXVndXN0
-IDIwMTkgdW0gMTU6NDUgVWhyCj4+IFZvbjogIlJlbsOpIHZhbiBEb3JzdCIgPG9wZW5zb3VyY2VA
-dmRvcnN0LmNvbT4KPj4gQW46ICJKb2huIENyaXNwaW4iIDxqb2huQHBocm96ZW4ub3JnPiwgIlNl
-YW4gV2FuZyIgIAo+PiA8c2Vhbi53YW5nQG1lZGlhdGVrLmNvbT4sICJOZWxzb24gQ2hhbmciICAK
-Pj4gPG5lbHNvbi5jaGFuZ0BtZWRpYXRlay5jb20+LCAiRGF2aWQgUyAuIE1pbGxlciIgIAo+PiA8
-ZGF2ZW1AZGF2ZW1sb2Z0Lm5ldD4sICJNYXR0aGlhcyBCcnVnZ2VyIiA8bWF0dGhpYXMuYmdnQGdt
-YWlsLmNvbT4KPj4gQ2M6IG5ldGRldkB2Z2VyLmtlcm5lbC5vcmcsIGxpbnV4LWFybS1rZXJuZWxA
-bGlzdHMuaW5mcmFkZWFkLm9yZywgIAo+PiBsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQu
-b3JnLCBsaW51eC1taXBzQHZnZXIua2VybmVsLm9yZywgIAo+PiAiUnVzc2VsbCBLaW5nIiA8bGlu
-dXhAYXJtbGludXgub3JnLnVrPiwgIkZyYW5rIFd1bmRlcmxpY2giICAKPj4gPGZyYW5rLXdAcHVi
-bGljLWZpbGVzLmRlPiwgIlN0ZWZhbiBSb2VzZSIgPHNyQGRlbnguZGU+LCAiUmVuw6kgdmFuICAK
-Pj4gRG9yc3QiIDxvcGVuc291cmNlQHZkb3JzdC5jb20+Cj4+IEJldHJlZmY6IFtQQVRDSCBuZXQt
-bmV4dCB2MyAwLzNdIG5ldDogZXRoZXJuZXQ6IG1lZGlhdGVrOiBjb252ZXJ0IHRvIFBIWUxJTksK
-Pj4KPj4gVGhlc2UgcGF0Y2hlcyBjb252ZXJ0cyBtZWRpYXRlayBkcml2ZXIgdG8gUEhZTElOSyBB
-UEkuCj4+Cj4+IHYyLT52MzoKPj4gKiBQaHlsaW5rIGltcHJvdmVtZW50cyBhbmQgY2xlYW4tdXBz
-IGFmdGVyIHJldmlldwo+PiB2MS0+djI6Cj4+ICogUmViYXNlIGZvciBtdDc2eDggY2hhbmdlcwo+
-PiAqIFBoeWxpbmsgaW1wcm92ZW1lbnRzIGFuZCBjbGVhbi11cHMgYWZ0ZXIgcmV2aWV3Cj4+ICog
-U0dNSUkgcG9ydCBkb2Vzbid0IHN1cHBvcnQgMi41R2JpdCBpbiBTR01JSSBtb2RlIG9ubHkgaW4g
-QkFTRS1YIG1vZGUuCj4+ICAgUmVmYWN0b3IgdGhlIGNvZGUuCj4+Cj4+IFJlbsOpIHZhbiBEb3Jz
-dCAoMyk6Cj4+ICAgbmV0OiBldGhlcm5ldDogbWVkaWF0ZWs6IEFkZCBiYXNpYyBQSFlMSU5LIHN1
-cHBvcnQKPj4gICBuZXQ6IGV0aGVybmV0OiBtZWRpYXRlazogUmUtYWRkIHN1cHBvcnQgU0dNSUkK
-Pj4gICBkdC1iaW5kaW5nczogbmV0OiBldGhlcm5ldDogVXBkYXRlIG10NzYyMiBkb2NzIGFuZCBk
-dHMgdG8gcmVmbGVjdCB0aGUKPj4gICAgIG5ldyBwaHlsaW5rIEFQSQo+Pgo+PiAgLi4uL2FybS9t
-ZWRpYXRlay9tZWRpYXRlayxzZ21paXN5cy50eHQgICAgICAgIHwgICAyIC0KPj4gIC4uLi9kdHMv
-bWVkaWF0ZWsvbXQ3NjIyLWJhbmFuYXBpLWJwaS1yNjQuZHRzICB8ICAyOCArLQo+PiAgYXJjaC9h
-cm02NC9ib290L2R0cy9tZWRpYXRlay9tdDc2MjIuZHRzaSAgICAgIHwgICAxIC0KPj4gIGRyaXZl
-cnMvbmV0L2V0aGVybmV0L21lZGlhdGVrL0tjb25maWcgICAgICAgICB8ICAgMiArLQo+PiAgZHJp
-dmVycy9uZXQvZXRoZXJuZXQvbWVkaWF0ZWsvbXRrX2V0aF9wYXRoLmMgIHwgIDc1ICstLQo+PiAg
-ZHJpdmVycy9uZXQvZXRoZXJuZXQvbWVkaWF0ZWsvbXRrX2V0aF9zb2MuYyAgIHwgNTI5ICsrKysr
-KysrKysrKy0tLS0tLQo+PiAgZHJpdmVycy9uZXQvZXRoZXJuZXQvbWVkaWF0ZWsvbXRrX2V0aF9z
-b2MuaCAgIHwgIDY4ICsrLQo+PiAgZHJpdmVycy9uZXQvZXRoZXJuZXQvbWVkaWF0ZWsvbXRrX3Nn
-bWlpLmMgICAgIHwgIDY1ICsrLQo+PiAgOCBmaWxlcyBjaGFuZ2VkLCA0NzcgaW5zZXJ0aW9ucygr
-KSwgMjkzIGRlbGV0aW9ucygtKQo+Pgo+PiAtLQo+PiAyLjIwLjEKPj4KPj4KCgoKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1h
-aWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+>I have to admit I don't fully understand the concurrency issues here, but =
+neither do I understand what the mutex you removed might have helped to sta=
+rt with.
+
+Each range in the page tables is protected by the IO virtual address
+allocator. The iommu driver allocates an IOVA range using locks before
+it writes to a page table range. The IOVA allocator acts like a lock
+on a specific range of the page tables. So we can handle most of the
+concurrency issues in the IOVA allocator and avoid locking while
+writing to a range in the page tables.
+
+However because we have multiple levels of pages we might have to
+allocate a middle page (a PMD) which covers more than the IOVA range
+we have allocated.
+To solve this we could use locks:
+
+//pseudo code
+lock_page_table()
+if (we need to allocate middle pages) {
+ //allocate the page
+ //set the PMD value
+}
+unlock_page_table()
+
+but we can actually avoid having any locking by doing the following:
+
+//pseudo code
+if (we need to allocate middle pages) {
+ //allocate the page
+ //cmpxchg64 to set the PMD if it wasn't already set since we last checked
+ if (the PMD was set while since we last checked)
+   //free the page we just allocated
+}
+
+In this case we can end up doing a pointless page allocate and free
+but it's worth it to avoid using locks
+
+You can see this in the intel iommu code here:
+https://github.com/torvalds/linux/blob/9140d8bdd4c5a04abe181bb300378355d569=
+90a4/drivers/iommu/intel-iommu.c#L904
+
+>what the mutex you removed might have helped to start with.
+The mutex I removed is arguably completely useless.
+
+In the dma ops path we handle the IOVA allocations in the driver so we
+can be sure a certain range is protected by the IOVA allocator.
+
+Because the iommu ops path doesn't handle the IOVA allocations it
+seems reasonable to lock the page tables to avoid two writers writing
+to the same range at the same time. Without the lock it's complete
+chaos and all writers can be writing to the same range at the same
+time resulting in complete garbage.
+BUT the locking doesn't actually make any real difference. Even with
+locking we still have a race condition if two writers want to write to
+the same range at the same time, the race is just whoever gets the
+lock first, we still can't be sure what the result will be. So the
+result is still garbage, just slightly more usable garbage because at
+least the range is correct for one writer.
+It just makes no sense to ever have two writers writing to the same
+range and adding a lock doesn't fix that.
+Already the Intel iommu ops path doesn't use locks for it's page table
+so this isn't a new idea I'm just doing the same for the AMD iommu
+driver
+
+Does all that make sense?
+
+On Tue, 20 Aug 2019 at 10:41, Christoph Hellwig <hch@infradead.org> wrote:
+>
+> On Thu, Aug 15, 2019 at 12:09:39PM +0100, Tom Murphy wrote:
+> > We can remove the mutex lock from amd_iommu_map and amd_iommu_unmap.
+> > iommu_map doesn=E2=80=99t lock while mapping and so no two calls should=
+ touch
+> > the same iova range. The AMD driver already handles the page table page
+> > allocations without locks so we can safely remove the locks.
+>
+> I've been looking over the code and trying to understand how the
+> synchronization works.  I gues we the cmpxchg64 in free_clear_pte
+> is the important point here?  I have to admit I don't fully understand
+> the concurrency issues here, but neither do I understand what the
+> mutex you removed might have helped to start with.
