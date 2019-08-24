@@ -1,39 +1,59 @@
-From: Will Deacon <will-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v11 00/23] MT8183 IOMMU SUPPORT
-Date: Sat, 24 Aug 2019 12:57:28 +0100
-Message-ID: <20190824115728.hsdsp3ut5mywplaw@willie-the-truck>
-References: <1566615728-26388-1-git-send-email-yong.wu@mediatek.com>
+From: =?utf-8?b?UmVuw6k=?= van Dorst <opensource@vdorst.com>
+Subject: Re: [PATCH net-next v3 1/3] net: ethernet: mediatek: Add basic
+ PHYLINK support
+Date: Sat, 24 Aug 2019 12:33:48 +0000
+Message-ID: <20190824123348.Horde.LdDLM3_wpuexnof5e7L-q-2@www.vdorst.com>
+References: <20190823134516.27559-1-opensource@vdorst.com>
+ <20190823134516.27559-2-opensource@vdorst.com>
+ <20190824091106.GC13294@shell.armlinux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed; DelSp=Yes
+Content-Transfer-Encoding: 8bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20190824091106.GC13294@shell.armlinux.org.uk>
 Content-Disposition: inline
-In-Reply-To: <1566615728-26388-1-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, cui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Evan Green <evgreen-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, chao.hao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, ming-fan.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, anan.sun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Sender: netdev-owner@vger.kernel.org
+To: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+Cc: John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Nelson Chang <nelson.chang@mediatek.com>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, Frank Wunderlich <frank-w@public-files.de>, Stefan Roese <sr@denx.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, Aug 24, 2019 at 11:01:45AM +0800, Yong Wu wrote:
-> This patchset mainly adds support for mt8183 IOMMU and SMI.
+Hi Russell,
 
-Thanks for persevering with this, and sorry it took me so long to get
-to grips with the io-pgtable changes.
+Quoting Russell King - ARM Linux admin <linux@armlinux.org.uk>:
 
-Joerg -- this is good for you to pick up from my side now, but if you run
-into any fiddly conflicts with any of my other changes then I'm happy to
-resolve them on a separate branch for you to pull.
+> On Fri, Aug 23, 2019 at 03:45:14PM +0200, René van Dorst wrote:
+>> This convert the basics to PHYLINK API.
+>> SGMII support is not in this patch.
+>>
+>> Signed-off-by: René van Dorst <opensource@vdorst.com>
+>> --
+>> v2->v3:
+>> * Make link_down() similar as link_up() suggested by Russell King
+>
+> Yep, almost there, but...
+>
+>> +static void mtk_mac_link_down(struct phylink_config *config,  
+>> unsigned int mode,
+>> +			      phy_interface_t interface)
+>> +{
+>> +	struct mtk_mac *mac = container_of(config, struct mtk_mac,
+>> +					   phylink_config);
+>> +	u32 mcr = mtk_r32(mac->hw, MTK_MAC_MCR(mac->id));
+>>
+>> +	mcr &= (MAC_MCR_TX_EN | MAC_MCR_RX_EN);
+>
+> ... this clears all bits _except_ for the tx and rx enable (which will
+> remain set) - you probably wanted a ~ before the (.
 
-Just let me know.
+Yes that is what it should be.
+I only want to clear the TX_EN en RX_EN bits.
 
-Cheers,
+Greats,
 
-Will
+René
+
+>
+> --
+> RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+> FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
+> According to speedtest.net: 11.9Mbps down 500kbps up
