@@ -1,21 +1,25 @@
-From: Christoph Hellwig <hch@infradead.org>
-Subject: Re: [PATCH V5 1/5] iommu/amd: Remove unnecessary locking from AMD
- iommu driver
-Date: Sat, 24 Aug 2019 15:41:32 -0700
-Message-ID: <20190824224132.GA14806@infradead.org>
-References: <20190815110944.3579-1-murphyt7@tcd.ie>
- <20190815110944.3579-2-murphyt7@tcd.ie>
- <20190820094143.GA24154@infradead.org>
- <CALQxJussiGDzWFT1xhko6no5jZNOezWCFuJQUCr4XwH4NHri3Q@mail.gmail.com>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH net-next v2 3/3] net: dsa: mt7530: Add support for port
+ 5
+Date: Sat, 24 Aug 2019 16:19:12 -0700 (PDT)
+Message-ID: <20190824.161912.1377369658338940538.davem@davemloft.net>
+References: <20190821144547.15113-1-opensource@vdorst.com>
+        <20190821144547.15113-4-opensource@vdorst.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CALQxJussiGDzWFT1xhko6no5jZNOezWCFuJQUCr4XwH4NHri3Q@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tom Murphy <murphyt7@tcd.ie>
-Cc: Christoph Hellwig <hch@infradead.org>, iommu@lists.linux-foundation.org, Heiko Stuebner <heiko@sntech.de>, virtualization@lists.linux-foundation.org, linux-tegra@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>, Will Deacon <will@kernel.org>, Jean-Philippe Brucker <jean-philippe@linaro.org>, linux-samsung-soc@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, linux-s390@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, David Woodhouse <dwmw2@infradead.org>, Linux
+Content-Type: Text/Plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8BIT
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20190821144547.15113-4-opensource@vdorst.com>
+Sender: netdev-owner@vger.kernel.org
+To: opensource@vdorst.com
+Cc: sean.wang@mediatek.com, andrew@lunn.ch, vivien.didelot@gmail.com, f.fainelli@gmail.com, matthias.bgg@gmail.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, john@phrozen.org, linux-mips@vger.kernel.org, frank-w@public-files.de
 List-Id: linux-mediatek@lists.infradead.org
 
-Thank for the explanation Tom. It might make sense to add a condensed
-version of it to commit log for the next iteration.
+From: René van Dorst <opensource@vdorst.com>
+Date: Wed, 21 Aug 2019 16:45:47 +0200
+
+> +	dev_info(ds->dev, "Setup P5, HWTRAP=0x%x, intf_sel=%s, phy-mode=%s\n",
+> +		 val, p5_intf_modes(priv->p5_intf_sel), phy_modes(interface));
+
+This is debugging, at best.  Please make this a debugging message or
+remove it entirely.
