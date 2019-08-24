@@ -1,43 +1,46 @@
-From: Qii Wang <qii.wang@mediatek.com>
-Subject: Re: [PATCH v2] i2c: mediatek: disable zero-length transfers for mt8183
-Date: Sat, 24 Aug 2019 11:23:20 +0800
-Message-ID: <1566617000.19935.7.camel@mhfsdcap03>
-References: <20190822094516.55130-1-hsinyi@chromium.org>
- <1566547772.19935.2.camel@mhfsdcap03>
- <CAJMQK-gb+A9dwyMqMcA5yaaXak9no8_=urwK0XbLnNAEGyZ_hg@mail.gmail.com>
+From: Jiaxin Yu <jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 0/3] ASoC: mediatek: mt8183: fix mt8183-mt6358 tdm out
+ issues
+Date: Sat, 24 Aug 2019 12:37:22 +0800
+Message-ID: <1566621445-26989-1-git-send-email-jiaxin.yu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAJMQK-gb+A9dwyMqMcA5yaaXak9no8_=urwK0XbLnNAEGyZ_hg@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: Nicolas Boichat <drinkcat@chromium.org>, Alexandru M Stan <amstan@chromium.org>, Wolfram Sang <wsa@the-dreams.de>, Jun Gao <jun.gao@mediatek.com>, lkml <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Thomas Gleixner <tglx@linutronix.de>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, tzungbi-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eason.yen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2019-08-23 at 16:13 +0800, Hsin-Yi Wang wrote:
-> On Fri, Aug 23, 2019 at 4:09 PM Qii Wang <qii.wang@mediatek.com> wrote:
-> 
-> > >
-> > >  static u32 mtk_i2c_functionality(struct i2c_adapter *adap)
-> > >  {
-> > > -     return I2C_FUNC_I2C | I2C_FUNC_SMBUS_EMUL;
-> > > +     if (adap->quirks->flags & I2C_AQ_NO_ZERO_LEN)
-> > > +             return I2C_FUNC_I2C |
-> > > +                     (I2C_FUNC_SMBUS_EMUL & ~I2C_FUNC_SMBUS_QUICK);
-> > > +     else
-> > > +             return I2C_FUNC_I2C | I2C_FUNC_SMBUS_EMUL;
-> >
-> > It can be removed?
-> See previous discussion: https://patchwork.kernel.org/patch/10814391/#22484435
-> but not all SoC's quirks has I2C_AQ_NO_ZERO_LEN.
-ok, it looks good for me, thanks.
-Reviewed-by: Qii Wang <qii.wang@mediatek.com>
+
+v2: 
+	1. Base on branch asoc-next that merged branch 'asoc-5.4'.
+	2. Split the PATCH 2/2 that in v1 into three patches.
+
+v1: 
+	1. Base on branch asoc-next that merged branch 'asoc-5.3'.
+	2. Mark suggest the patch would be split up into separate patches,
+	   each fixing single issue.
+	3. PATCH 1/2 has been applied to the asoc tree 'asoc-5.4'.
+
+Jiaxin Yu (3):
+  ASoC: mediatek: mt8183: fix tdm out data align issue
+  ASoC: mediatek: mt8183: tdm hw support tdm out and 8ch i2s out
+  ASoC: mediatek: mt8183: fix tdm out data is valid on rising edge
+
+ sound/soc/mediatek/common/mtk-afe-fe-dai.c    |   3 +-
+ sound/soc/mediatek/mt8183/mt8183-dai-tdm.c    | 177 ++++++++++++++----
+ .../mt8183/mt8183-mt6358-ts3a227-max98357.c   |   3 +
+ sound/soc/mediatek/mt8183/mt8183-reg.h        |   8 +-
+ 4 files changed, 152 insertions(+), 39 deletions(-)
+
+-- 
+2.18.0
