@@ -1,57 +1,60 @@
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?=
-        <u.kleine-koenig@pengutronix.de>
-Subject: [PATCH v1 1/2] iommu: pass cell_count = -1 to of_for_each_phandle with cells_name
-Date: Sat, 24 Aug 2019 15:28:45 +0200
-Message-ID: <20190824132846.8589-1-u.kleine-koenig@pengutronix.de>
+From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+Subject: Re: [PATCH net-next v3 2/3] net: ethernet: mediatek: Re-add support
+ SGMII
+Date: Sat, 24 Aug 2019 14:32:25 +0100
+Message-ID: <20190824133225.GE13294@shell.armlinux.org.uk>
+References: <20190823134516.27559-1-opensource@vdorst.com>
+ <20190823134516.27559-3-opensource@vdorst.com>
+ <20190824092156.GD13294@shell.armlinux.org.uk>
+ <20190824131117.Horde.vSCF_CQ5jCMHcSTWkh7Woxm@www.vdorst.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>, Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, iommu@lists.linux-foundation.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de
+Return-path: <netdev-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20190824131117.Horde.vSCF_CQ5jCMHcSTWkh7Woxm@www.vdorst.com>
+Sender: netdev-owner@vger.kernel.org
+To: =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>
+Cc: John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Nelson Chang <nelson.chang@mediatek.com>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, Frank Wunderlich <frank-w@public-files.de>, Stefan Roese <sr@denx.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-Currently of_for_each_phandle ignores the cell_count parameter when a
-cells_name is given. I intend to change that and let the iterator fall
-back to a non-negative cell_count if the cells_name property is missing
-in the referenced node.
+Hi René,
 
-To not change how existing of_for_each_phandle's users iterate, fix them
-to pass cell_count = -1 when also cells_name is given which yields the
-expected behaviour with and without my change.
+On Sat, Aug 24, 2019 at 01:11:17PM +0000, René van Dorst wrote:
+> Hi Russell,
+> 
+> Mediatek calls it Turbo RGMII. It is a overclock version of RGMII mode.
+> It is used between first GMAC and port 6 of the mt7530 switch. Can be used
+> with
+> an internal and an external mt7530 switch.
+> 
+> TRGMII speed are:
+> * mt7621: 1200Mbit
+> * mt7623: 2000Mbit and 2600Mbit.
+> 
+> I think that TRGMII is only used in a fixed-link situation in combination
+> with a
+> mt7530 switch and running and maximum speed/full duplex. So reporting
+> 1000baseT_Full seems to me the right option.
 
-Signed-off-by: Uwe Kleine-KÃ¶nig <u.kleine-koenig@pengutronix.de>
----
- drivers/iommu/arm-smmu.c     | 2 +-
- drivers/iommu/mtk_iommu_v1.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+I think we can ignore this one for the purposes of merging this patch
+set, since this seems to be specific to this setup.  Neither 1000BaseT
+nor 1000BaseX fit very well, but we have to choose something.
 
-diff --git a/drivers/iommu/arm-smmu.c b/drivers/iommu/arm-smmu.c
-index 64977c131ee6..81b7734654b3 100644
---- a/drivers/iommu/arm-smmu.c
-+++ b/drivers/iommu/arm-smmu.c
-@@ -333,7 +333,7 @@ static int __find_legacy_master_phandle(struct device *dev, void *data)
- 	int err;
- 
- 	of_for_each_phandle(it, err, dev->of_node, "mmu-masters",
--			    "#stream-id-cells", 0)
-+			    "#stream-id-cells", -1)
- 		if (it->node == np) {
- 			*(void **)data = dev;
- 			return 1;
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index abeeac488372..68d1de70de0c 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -426,7 +426,7 @@ static int mtk_iommu_add_device(struct device *dev)
- 	int err;
- 
- 	of_for_each_phandle(&it, err, dev->of_node, "iommus",
--			"#iommu-cells", 0) {
-+			"#iommu-cells", -1) {
- 		int count = of_phandle_iterator_args(&it, iommu_spec.args,
- 					MAX_PHANDLE_ARGS);
- 		iommu_spec.np = of_node_get(it.node);
+> PHY_INTERFACE_MODE_GMII:
+> 	  10baseT_Half
+> 	  10baseT_Full
+> 	 100baseT_Half
+> 	 100baseT_Full
+> 	1000baseT_Half
+> 	1000baseT_Full
+
+I think GMII can be connected to a PHY that can convert to 1000BaseX, so
+should probably include that here too.
+
+Thanks.
+
 -- 
-2.20.1
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
+According to speedtest.net: 11.9Mbps down 500kbps up
