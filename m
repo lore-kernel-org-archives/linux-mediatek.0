@@ -1,20 +1,16 @@
-From: Frank Wunderlich <frank-w-SipyoOjXbOMoAHOVJHB0wA@public.gmane.org>
-Subject: Re: [BUG] [PATCH v5 02/10] mfd: mt6397: extract irq related code from
- core driver
-Date: Sat, 24 Aug 2019 09:04:36 +0200
-Message-ID: <725410A8-8B5B-472A-8904-57B912475783@public-files.de>
-References: <1566531931-9772-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1566531931-9772-3-git-send-email-hsin-hsiung.wang@mediatek.com>
- <trinity-1f82bff1-535e-47cd-9a2f-8faccb56e356-1566562433314@3c-app-gmx-bs11>
- <e8a918ab-3e7a-b487-db77-df28d56518ce@gmail.com>
- <0A87F427-2D81-412A-9549-09A51A021799@public-files.de>
- <b5a21908-faee-17d1-ce26-99b941c0fa70@gmail.com>
-Reply-To: frank-w-SipyoOjXbOMoAHOVJHB0wA@public.gmane.org
+From: =?utf-8?b?UmVuw6k=?= van Dorst <opensource-91nzXlUTePbQT0dZR+AlfA@public.gmane.org>
+Subject: Re: Aw: [PATCH net-next v3 0/3] net: ethernet: mediatek: convert to
+ PHYLINK
+Date: Sat, 24 Aug 2019 07:41:03 +0000
+Message-ID: <20190824074103.Horde.ytG2fquC9xJKq5TL79l6J0M@www.vdorst.com>
+References: <20190823134516.27559-1-opensource@vdorst.com>
+ <trinity-df75d11a-c27f-4941-a880-b017ebabd3dc-1566583013438@3c-app-gmx-bs75>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset="utf-8"; Format="flowed"; DelSp="Yes"
 Content-Transfer-Encoding: base64
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <b5a21908-faee-17d1-ce26-99b941c0fa70-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <trinity-df75d11a-c27f-4941-a880-b017ebabd3dc-1566583013438@3c-app-gmx-bs75>
+Content-Disposition: inline
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -24,16 +20,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Frank Wunderlich <frank-w-SipyoOjXbOMoAHOVJHB0wA@public.gmane.org>
+Cc: Nelson Chang <nelson.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mips-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Stefan Roese <sr-ynQEQJNshbs@public.gmane.org>, "David S . Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkKCldpZSBrb21tdCBlcyxkYXNzIGRlciBQYXRjaCBzbyBzY2huZWxsIGluIG5leHQgZ2Vrb21t
-ZW4gaXN0PyBJY2ggdmVyc3VjaGUgamEgc2VsYnN0IGRlbiBwb3dlcm9mZiByZWluIHp1IGJla29t
-bWVuLGFiZXIgaWNoIHZlcm11dGUgZGFzcyBzaWNoIGRpZSBiZWlkZW4gc2VyaWVuIGdlZ2Vuc2Vp
-dGlnIHN0w7ZyZW4uCgpGZWhsZW4gdm9uIGRlciBzZXJpZSBub2NoIG1laHIgcGF0Y2hlcyBvZGVy
-IGZsaWVndCBlciB2aWVsbGVpY2h0IHdpZWRlciByYXVzPwoKV2VubiBpY2ggZGFzIHdlaXMga2Fu
-biBpY2ggbWVpbmUgcG93ZXJvZmYtUGF0Y2hlcyBzY2hvbm1hbCBhdWYgbmV4dCBhbnBhc3NlbgoK
-R3J1w58gRnJhbmsKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1tZWRpYXRlawo=
+SGkgRnJhbmssCgpRdW90aW5nIEZyYW5rIFd1bmRlcmxpY2ggPGZyYW5rLXdAcHVibGljLWZpbGVz
+LmRlPjoKCj4gdGVzdGVkIG9uIGJwaS1yMiAobXQ3NjIzL210NzUzMCkgYW5kIGJwaS1yNjQgKG10
+NzYyMi9ydGw4MzY3KQo+CgpUaGFua3MgZm9yIHRlc3RpbmchCgo+IGFzIHJlcG9ydGVkIHRvIHJl
+bmUgZGlyZWN0bHkgcngtcGF0aCBuZWVkcyBzb21lIHJld29yayBiZWNhdXNlICAKPiBjdXJyZW50
+IHJ4LXNwZWVkCj4gb24gYnBpLXIyIGlzIDg2NSBNYml0cy9zZWMgaW5zdGVhZCBvZiB+OTQwIE1i
+aXRzL3NlYwoKSSBzdGlsbCB0aGluayBpdCBpcyBhIHJlc3VsdCBvZiB0aGUgZXh0cmEgY29kZSBp
+biB0aGUgcnggcGF0aCB3aGVuIG10NzZ4OAp3YXMgaW50cm9kdWNlZC4KCkdyZWF0cywKClJlbsOp
+Cgo+Cj4gVGVzdGVkLWJ5OiBGcmFuayBXdW5kZXJsaWNoIDxmcmFuay13QHB1YmxpYy1maWxlcy5k
+ZT4KPgo+IHJlZ2FyZHMgRnJhbmsKPgo+Cj4+IEdlc2VuZGV0OiBGcmVpdGFnLCAyMy4gQXVndXN0
+IDIwMTkgdW0gMTU6NDUgVWhyCj4+IFZvbjogIlJlbsOpIHZhbiBEb3JzdCIgPG9wZW5zb3VyY2VA
+dmRvcnN0LmNvbT4KPj4gQW46ICJKb2huIENyaXNwaW4iIDxqb2huQHBocm96ZW4ub3JnPiwgIlNl
+YW4gV2FuZyIgIAo+PiA8c2Vhbi53YW5nQG1lZGlhdGVrLmNvbT4sICJOZWxzb24gQ2hhbmciICAK
+Pj4gPG5lbHNvbi5jaGFuZ0BtZWRpYXRlay5jb20+LCAiRGF2aWQgUyAuIE1pbGxlciIgIAo+PiA8
+ZGF2ZW1AZGF2ZW1sb2Z0Lm5ldD4sICJNYXR0aGlhcyBCcnVnZ2VyIiA8bWF0dGhpYXMuYmdnQGdt
+YWlsLmNvbT4KPj4gQ2M6IG5ldGRldkB2Z2VyLmtlcm5lbC5vcmcsIGxpbnV4LWFybS1rZXJuZWxA
+bGlzdHMuaW5mcmFkZWFkLm9yZywgIAo+PiBsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQu
+b3JnLCBsaW51eC1taXBzQHZnZXIua2VybmVsLm9yZywgIAo+PiAiUnVzc2VsbCBLaW5nIiA8bGlu
+dXhAYXJtbGludXgub3JnLnVrPiwgIkZyYW5rIFd1bmRlcmxpY2giICAKPj4gPGZyYW5rLXdAcHVi
+bGljLWZpbGVzLmRlPiwgIlN0ZWZhbiBSb2VzZSIgPHNyQGRlbnguZGU+LCAiUmVuw6kgdmFuICAK
+Pj4gRG9yc3QiIDxvcGVuc291cmNlQHZkb3JzdC5jb20+Cj4+IEJldHJlZmY6IFtQQVRDSCBuZXQt
+bmV4dCB2MyAwLzNdIG5ldDogZXRoZXJuZXQ6IG1lZGlhdGVrOiBjb252ZXJ0IHRvIFBIWUxJTksK
+Pj4KPj4gVGhlc2UgcGF0Y2hlcyBjb252ZXJ0cyBtZWRpYXRlayBkcml2ZXIgdG8gUEhZTElOSyBB
+UEkuCj4+Cj4+IHYyLT52MzoKPj4gKiBQaHlsaW5rIGltcHJvdmVtZW50cyBhbmQgY2xlYW4tdXBz
+IGFmdGVyIHJldmlldwo+PiB2MS0+djI6Cj4+ICogUmViYXNlIGZvciBtdDc2eDggY2hhbmdlcwo+
+PiAqIFBoeWxpbmsgaW1wcm92ZW1lbnRzIGFuZCBjbGVhbi11cHMgYWZ0ZXIgcmV2aWV3Cj4+ICog
+U0dNSUkgcG9ydCBkb2Vzbid0IHN1cHBvcnQgMi41R2JpdCBpbiBTR01JSSBtb2RlIG9ubHkgaW4g
+QkFTRS1YIG1vZGUuCj4+ICAgUmVmYWN0b3IgdGhlIGNvZGUuCj4+Cj4+IFJlbsOpIHZhbiBEb3Jz
+dCAoMyk6Cj4+ICAgbmV0OiBldGhlcm5ldDogbWVkaWF0ZWs6IEFkZCBiYXNpYyBQSFlMSU5LIHN1
+cHBvcnQKPj4gICBuZXQ6IGV0aGVybmV0OiBtZWRpYXRlazogUmUtYWRkIHN1cHBvcnQgU0dNSUkK
+Pj4gICBkdC1iaW5kaW5nczogbmV0OiBldGhlcm5ldDogVXBkYXRlIG10NzYyMiBkb2NzIGFuZCBk
+dHMgdG8gcmVmbGVjdCB0aGUKPj4gICAgIG5ldyBwaHlsaW5rIEFQSQo+Pgo+PiAgLi4uL2FybS9t
+ZWRpYXRlay9tZWRpYXRlayxzZ21paXN5cy50eHQgICAgICAgIHwgICAyIC0KPj4gIC4uLi9kdHMv
+bWVkaWF0ZWsvbXQ3NjIyLWJhbmFuYXBpLWJwaS1yNjQuZHRzICB8ICAyOCArLQo+PiAgYXJjaC9h
+cm02NC9ib290L2R0cy9tZWRpYXRlay9tdDc2MjIuZHRzaSAgICAgIHwgICAxIC0KPj4gIGRyaXZl
+cnMvbmV0L2V0aGVybmV0L21lZGlhdGVrL0tjb25maWcgICAgICAgICB8ICAgMiArLQo+PiAgZHJp
+dmVycy9uZXQvZXRoZXJuZXQvbWVkaWF0ZWsvbXRrX2V0aF9wYXRoLmMgIHwgIDc1ICstLQo+PiAg
+ZHJpdmVycy9uZXQvZXRoZXJuZXQvbWVkaWF0ZWsvbXRrX2V0aF9zb2MuYyAgIHwgNTI5ICsrKysr
+KysrKysrKy0tLS0tLQo+PiAgZHJpdmVycy9uZXQvZXRoZXJuZXQvbWVkaWF0ZWsvbXRrX2V0aF9z
+b2MuaCAgIHwgIDY4ICsrLQo+PiAgZHJpdmVycy9uZXQvZXRoZXJuZXQvbWVkaWF0ZWsvbXRrX3Nn
+bWlpLmMgICAgIHwgIDY1ICsrLQo+PiAgOCBmaWxlcyBjaGFuZ2VkLCA0NzcgaW5zZXJ0aW9ucygr
+KSwgMjkzIGRlbGV0aW9ucygtKQo+Pgo+PiAtLQo+PiAyLjIwLjEKPj4KPj4KCgoKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1h
+aWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
+cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
