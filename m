@@ -1,71 +1,107 @@
-From: =?utf-8?b?UmVuw6k=?= van Dorst <opensource@vdorst.com>
-Subject: Re: [PATCH net-next v2 0/3] net: dsa: mt7530: Convert to PHYLINK
- and add support for port 5
-Date: Sun, 25 Aug 2019 13:15:35 +0000
-Message-ID: <20190825131535.Horde.K3HRnOFcIiu-aVdXmqwndlD@www.vdorst.com>
-References: <20190821144547.15113-1-opensource@vdorst.com>
- <20190824222935.GG13294@shell.armlinux.org.uk>
+From: =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>
+Subject: [PATCH net-next v4 3/3] dt-bindings: net: ethernet: Update mt7622 docs and dts to reflect the new phylink API
+Date: Sun, 25 Aug 2019 19:43:41 +0200
+Message-ID: <20190825174341.20750-4-opensource@vdorst.com>
+References: <20190825174341.20750-1-opensource@vdorst.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed; DelSp=Yes
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20190824222935.GG13294@shell.armlinux.org.uk>
-Content-Disposition: inline
+In-Reply-To: <20190825174341.20750-1-opensource@vdorst.com>
 Sender: netdev-owner@vger.kernel.org
-To: Russell King - ARM Linux admin <linux@armlinux.org.uk>
-Cc: Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, Frank Wunderlich <frank-w@public-files.de>, netdev@vger.kernel.org, linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, linux-arm-kernel@lists.infradead.org
+To: John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Nelson Chang <nelson.chang@mediatek.com>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, Russell King <linux@armlinux.org.uk>, Frank Wunderlich <frank-w@public-files.de>, Stefan Roese <sr@denx.de>, =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Russell,
+This patch the removes the recently added mediatek,physpeed property.
+Use the fixed-link property speed = <2500> to set the phy in 2.5Gbit.
+See mt7622-bananapi-bpi-r64.dts for a working example.
 
-Quoting Russell King - ARM Linux admin <linux@armlinux.org.uk>:
+Signed-off-by: René van Dorst <opensource@vdorst.com>
+--
+v3->v4:
+* no change
+v2->v3:
+* no change
+v1->v2:
+* SGMII port only support BASE-X at 2.5Gbit.
+---
+ .../arm/mediatek/mediatek,sgmiisys.txt        |  2 --
+ .../dts/mediatek/mt7622-bananapi-bpi-r64.dts  | 28 +++++++++++++------
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi      |  1 -
+ 3 files changed, 19 insertions(+), 12 deletions(-)
 
-> On Wed, Aug 21, 2019 at 04:45:44PM +0200, René van Dorst wrote:
->> 1. net: dsa: mt7530: Convert to PHYLINK API
->>    This patch converts mt7530 to PHYLINK API.
->> 2. dt-bindings: net: dsa: mt7530: Add support for port 5
->> 3. net: dsa: mt7530: Add support for port 5
->>    These 2 patches adding support for port 5 of the switch.
->>
->> v1->v2:
->>  * Mostly phylink improvements after review.
->> rfc -> v1:
->>  * Mostly phylink improvements after review.
->>  * Drop phy isolation patches. Adds no value for now.
->> René van Dorst (3):
->>   net: dsa: mt7530: Convert to PHYLINK API
->>   dt-bindings: net: dsa: mt7530: Add support for port 5
->>   net: dsa: mt7530: Add support for port 5
->>
->>  .../devicetree/bindings/net/dsa/mt7530.txt    | 218 ++++++++++
->>  drivers/net/dsa/mt7530.c                      | 371 +++++++++++++++---
->>  drivers/net/dsa/mt7530.h                      |  61 ++-
->>  3 files changed, 577 insertions(+), 73 deletions(-)
->
-> Having looked through this set of patches, I don't see anything
-> from the phylink point of view that concerns me.  So, for the
-> series from the phylink perspective:
->
-> Acked-by: Russell King <rmk+kernel@armlinux.org.uk>
-
-Thanks and thanks for reviewing.
-
-Greats,
-
-René
-
->
-> Thanks.
->
-> I did notice a dev_info() in patch 3 that you may like to consider
-> whether they should be printed at info level or debug level.  You
-> may keep my ack on the patch when fixing that.
->
-> I haven't considered whether the patch passes davem's style
-> requirements for networking code; what I spotted did look like
-> the declarations were upside-down christmas tree.
->
-> --
-> RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-> FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
-> According to speedtest.net: 11.9Mbps down 500kbps up
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
+index f5518f26a914..30cb645c0e54 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
+@@ -9,8 +9,6 @@ Required Properties:
+ 	- "mediatek,mt7622-sgmiisys", "syscon"
+ 	- "mediatek,mt7629-sgmiisys", "syscon"
+ - #clock-cells: Must be 1
+-- mediatek,physpeed: Should be one of "auto", "1000" or "2500" to match up
+-		     the capability of the target PHY.
+ 
+ The SGMIISYS controller uses the common clk binding from
+ Documentation/devicetree/bindings/clock/clock-bindings.txt
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+index 710c5c3d87d3..83e10591e0e5 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+@@ -115,24 +115,34 @@
+ };
+ 
+ &eth {
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&eth_pins>;
+ 	status = "okay";
++	gmac0: mac@0 {
++		compatible = "mediatek,eth-mac";
++		reg = <0>;
++		phy-mode = "2500base-x";
++
++		fixed-link {
++			speed = <2500>;
++			full-duplex;
++			pause;
++		};
++	};
+ 
+ 	gmac1: mac@1 {
+ 		compatible = "mediatek,eth-mac";
+ 		reg = <1>;
+-		phy-handle = <&phy5>;
++		phy-mode = "rgmii";
++
++		fixed-link {
++			speed = <1000>;
++			full-duplex;
++			pause;
++		};
+ 	};
+ 
+-	mdio-bus {
++	mdio: mdio-bus {
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+-
+-		phy5: ethernet-phy@5 {
+-			reg = <5>;
+-			phy-mode = "sgmii";
+-		};
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+index d1e13d340e26..dac51e98204c 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+@@ -931,6 +931,5 @@
+ 			     "syscon";
+ 		reg = <0 0x1b128000 0 0x3000>;
+ 		#clock-cells = <1>;
+-		mediatek,physpeed = "2500";
+ 	};
+ };
+-- 
+2.20.1
