@@ -1,69 +1,124 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v5 07/13] dt-bindings: pwm: add a property "num-pwms"
-Date: Tue, 27 Aug 2019 13:39:24 -0500
-Message-ID: <20190827183924.GA24178@bogus>
-References: <1566457123-20791-1-git-send-email-sam.shih@mediatek.com>
- <1566457123-20791-8-git-send-email-sam.shih@mediatek.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: Aw: Re:  Re: BUG: devm_regulator_get returns EPROBE_DEFER
+ (5.3-rc5..next-20190822) for bpi-r2/mt7623/mt7530
+Date: Tue, 27 Aug 2019 20:34:51 +0100
+Message-ID: <20190827193451.GN23391@sirena.co.uk>
+References: <trinity-584a4b1c-18c9-43ae-8c1a-5057933ad905-1566501837738@3c-app-gmx-bs43>
+ <20190822193015.GK23391@sirena.co.uk>
+ <trinity-5d117f0d-9f34-4a2b-8a12-1cd34152c108-1566505724458@3c-app-gmx-bs43>
+ <20190823100424.GL23391@sirena.co.uk>
+ <trinity-2f905f45-85d8-4343-8613-31dda5f7556f-1566561616610@3c-app-gmx-bs11>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+        protocol="application/pgp-signature"; boundary="rG+KBTClKkGekJUE"
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1566457123-20791-8-git-send-email-sam.shih@mediatek.com>
+In-Reply-To: <trinity-2f905f45-85d8-4343-8613-31dda5f7556f-1566561616610@3c-app-gmx-bs11>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sam Shih <sam.shih@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, John Crispin <john@phrozen.org>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, =?iso-8859-1?Q?=22Ren=E9_van_Dorst=22?= <opensource@vdorst.com>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, Lee Jones <lee.jones@linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Aug 22, 2019 at 02:58:37PM +0800, Sam Shih wrote:
-> From: Ryder Lee <ryder.lee@mediatek.com>
 
-The subject should indicate this is for Mediatek.
+--rG+KBTClKkGekJUE
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> 
-> This adds a property "num-pwms" in example so that we could
-> specify the number of PWM channels via device tree.
-> 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> Acked-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
-> ---
-> Changes since v5:
-> - Add an Acked-by tag
-> - This file is original v4 patch 5/10
-> (https://patchwork.kernel.org/patch/11102577/)
-> 
-> Change-Id: I429048afeffa96f3f14533910efe242f88776043
-> ---
->  Documentation/devicetree/bindings/pwm/pwm-mediatek.txt | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> index 991728cb46cb..ea95b490a913 100644
-> --- a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> +++ b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> @@ -14,12 +14,12 @@ Required properties:
->                  has no clocks
->     - "top": the top clock generator
->     - "main": clock used by the PWM core
-> -   - "pwm1-8": the eight per PWM clocks for mt2712
-> -   - "pwm1-6": the six per PWM clocks for mt7622
-> -   - "pwm1-5": the five per PWM clocks for mt7623
-> +   - "pwm1-N": the PWM clocks for each channel
-> +   where N starting from 1 to the maximum number of PWM channels
+On Fri, Aug 23, 2019 at 02:00:16PM +0200, Frank Wunderlich wrote:
+> > Gesendet: Freitag, 23. August 2019 um 12:04 Uhr
+> > Von: "Mark Brown" <broonie@kernel.org>
 
-Once converted to schema, you are going to be back to listing them out.
+> > Can you run a git bisect to try to identify the commit that
+> > caused things to fail?
+>=20
+> i have not figured out, how to rebase linux-next on my current (working) =
+codebase :) (failes on file untouched by me at Patch 3/7000+)
 
->   - pinctrl-names: Must contain a "default" entry.
->   - pinctrl-0: One property must exist for each entry in pinctrl-names.
->     See pinctrl/pinctrl-bindings.txt for details of the property values.
-> + - num-pwms: the number of PWM channels.
+git rebase --onto next/master <your base> is your best bet,
+though it depends how long you've left it how easy that's going
+to be.
 
-You can't add new required properties without breaking compatibility. 
+> > Look to see if there is a device driver bound to that device, or
+> > check if the parent regulator is visible in /sys/class/regulators.
+> > You'll also see a mesage printed out for each regulator as it
+> > instantiates in the boot logs, you can check there too.
 
-You already have to imply the number of channels from the compatible (or 
-number of clocks) and you have to keep doing so to maintain 
-compatibility, so why not just keep doing that for new chips?
+> in working version i only get this message in dmesg which
+> looks like a device-binding:
 
-Rob
+> mt6323-regulator mt6323-regulator: Chip ID =3D 0x2023
+
+You shuould see announcements of the individual regulators on the
+device from the regulator subsystem.
+
+> 		mt6323_vpa_reg: buck_vpa{
+> 			regulator-name =3D "vpa";
+> 			regulator-min-microvolt =3D < 500000>;
+
+In this case it'll say something about "vpa" if it registers this
+one (but if there's a parent that's having trouble then this
+won't register).
+
+> parent regulator is then
+> mt6323regulator: mt6323regulator
+
+No, a parent regulator - something providing a power supply to
+vpa.  Though I can't see anything in the kernel code that'd set
+one up and there's nothing in the DT...
+
+> where can be the cause for no more binding main-regulator?
+
+You should generally get an error message if it's the regulator
+subsystem.
+
+> are these strange messages related to this problem?
+
+> mtk-cpufreq mtk-cpufreq: failed to initialize dvfs info for cpu0
+
+That's a user of the regulator so it's probably just a symptom of
+the regulator not loading.
+
+> another strange line is this:
+
+> mt6397 1000d000.pwrap:mt6323: unsupported chip: 0x0
+
+This could well be it, if the MFD the device is on fails to load
+the regulator won't either since it will only load after the MFD
+does.  The MFD driver ensures that the drivers for all the
+functions on the chip share the chip effectively.
+
+> a4872e80ce7d mfd: mt6397: Extract IRQ related code from core driver
+> 708cb5cc3fde mfd: mt6397: Rename macros to something more readable
+
+> after reverting those 2 regulators are working again.
+> Adding both Signed-off-People to CC to keep them informed that a fix is n=
+eeded
+
+That sounds like the issue then.
+
+> > Please fix your mail client to word wrap within paragraphs at something
+> > substantially less than 80 columns.  Doing this makes your messages much
+> > easier to read and reply to.
+
+> i currently write in webmailer, where i cannot set this setting,
+> i try to add manual linebreak in long lines, ok?
+
+Sure, thanks for trying.
+
+--rG+KBTClKkGekJUE
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl1lhdoACgkQJNaLcl1U
+h9ChiQf/WidpZEEUZ3U+/NSD1T1c8ZlhHguqdDz5T5GvUHrnDHMsDhsZeZokMsiM
+BAG5JTig9S07exFlkrEQ1Qx6UQkKt9K3EUjtqrIP4xLyzIEHrNfeD1tCYDRBIo5T
+ec04VNu3CcISh4KkTvYj53Y9RTIFenkxqhn0kkvmZcyVVW8Z2+e5laMnOLaA7nxP
+feTmsEft7dnNub73WS++ZNQ6JDQuV00Xy/go5UI7Pn9WuMxBPEHU27vkjLDYiAJ1
+X2MVfbai9CUPdXR5pazYXhKSr6+Q9PuN0EjJgvQ/Ep2Hm+uarHDAg5UuAYYNdS8P
+3oZCwI+UeHR0bUDPzPa8Bp+BpK7gCA==
+=VMor
+-----END PGP SIGNATURE-----
+
+--rG+KBTClKkGekJUE--
