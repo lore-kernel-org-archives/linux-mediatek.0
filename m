@@ -1,89 +1,42 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Applied "ASoC: mediatek: mt8183: fix tdm out data align issue" to the
- asoc tree
-Date: Tue, 27 Aug 2019 20:57:44 +0100 (BST)
-Message-ID: <20190827195744.64E50D02CEA@fitzroy.sirena.org.uk>
-References: <1566622726-27113-1-git-send-email-jiaxin.yu@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH net-next v2 3/3] dt-bindings: net: ethernet: Update
+ mt7622 docs and dts to reflect the new phylink API
+Date: Tue, 27 Aug 2019 16:51:03 -0500
+Message-ID: <20190827215103.GA9401@bogus>
+References: <20190821144336.9259-1-opensource@vdorst.com>
+ <20190821144336.9259-4-opensource@vdorst.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1566622726-27113-1-git-send-email-jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, tzungbi-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eason.yen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
+Return-path: <netdev-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20190821144336.9259-4-opensource@vdorst.com>
+Sender: netdev-owner@vger.kernel.org
+To: =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>
+Cc: John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Nelson Chang <nelson.chang@mediatek.com>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, Frank Wunderlich <frank-w@public-files.de>, Stefan Roese <sr@denx.de>, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
+On Wed, Aug 21, 2019 at 04:43:36PM +0200, René van Dorst wrote:
+> This patch the removes the recently added mediatek,physpeed property.
+> Use the fixed-link property speed = <2500> to set the phy in 2.5Gbit.
+> See mt7622-bananapi-bpi-r64.dts for a working example.
+> 
+> Signed-off-by: René van Dorst <opensource@vdorst.com>
+> Cc: devicetree@vger.kernel.org
+> Cc: Rob Herring <robh@kernel.org>
+> --
+> v1->v2:
+> * SGMII port only support BASE-X at 2.5Gbit.
+> ---
+>  .../arm/mediatek/mediatek,sgmiisys.txt        |  2 --
 
-   ASoC: mediatek: mt8183: fix tdm out data align issue
+Bindings and dts files should be separate patches.
 
-has been applied to the asoc tree at
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-5.3
+>  .../dts/mediatek/mt7622-bananapi-bpi-r64.dts  | 28 +++++++++++++------
+>  arch/arm64/boot/dts/mediatek/mt7622.dtsi      |  1 -
+>  3 files changed, 19 insertions(+), 12 deletions(-)
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
+In any case,
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
->From d2ac1fe0342ce2b44621f60d053800e2d94f1d21 Mon Sep 17 00:00:00 2001
-From: Jiaxin Yu <jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Date: Sat, 24 Aug 2019 12:58:46 +0800
-Subject: [PATCH] ASoC: mediatek: mt8183: fix tdm out data align issue
-
-Mt8183 tdm out support S16_LE/S24_LE/S32_LE formats. When output S32_LE,
-we need set hd_align so that memif can output MSB 24bits. When output
-S24_LE, we need reset hd_align so that memif can output LSB 24bits.
-
-Signed-off-by: Jiaxin Yu <jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Link: https://lore.kernel.org/r/1566622726-27113-1-git-send-email-jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
-Signed-off-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
----
- sound/soc/mediatek/common/mtk-afe-fe-dai.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/sound/soc/mediatek/common/mtk-afe-fe-dai.c b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
-index d16563408465..10ea4fdbeb1e 100644
---- a/sound/soc/mediatek/common/mtk-afe-fe-dai.c
-+++ b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
-@@ -241,7 +241,7 @@ int mtk_afe_fe_prepare(struct snd_pcm_substream *substream,
- 	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
- 	struct mtk_base_afe_memif *memif = &afe->memif[rtd->cpu_dai->id];
- 	int hd_audio = 0;
--	int hd_align = 1;
-+	int hd_align = 0;
- 
- 	/* set hd mode */
- 	switch (substream->runtime->format) {
-@@ -254,7 +254,6 @@ int mtk_afe_fe_prepare(struct snd_pcm_substream *substream,
- 		break;
- 	case SNDRV_PCM_FORMAT_S24_LE:
- 		hd_audio = 1;
--		hd_align = 0;
- 		break;
- 	default:
- 		dev_err(afe->dev, "%s() error: unsupported format %d\n",
--- 
-2.20.1
+Acked-by: Rob Herring <robh@kernel.org>
