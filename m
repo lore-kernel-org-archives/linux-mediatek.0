@@ -1,105 +1,69 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH next v10 03/11] dt-bindings: usb: add binding for USB
- GPIO based connection detection driver
-Date: Tue, 27 Aug 2019 13:31:54 -0500
-Message-ID: <20190827183154.GA10374@bogus>
-References: <1566547041-20804-1-git-send-email-chunfeng.yun@mediatek.com>
- <1566547041-20804-4-git-send-email-chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH v5 07/13] dt-bindings: pwm: add a property "num-pwms"
+Date: Tue, 27 Aug 2019 13:39:24 -0500
+Message-ID: <20190827183924.GA24178@bogus>
+References: <1566457123-20791-1-git-send-email-sam.shih@mediatek.com>
+ <1566457123-20791-8-git-send-email-sam.shih@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1566547041-20804-4-git-send-email-chunfeng.yun@mediatek.com>
+In-Reply-To: <1566457123-20791-8-git-send-email-sam.shih@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Biju Das <biju.das@bp.renesas.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Li Jun <jun.li@nxp.com>, Badhri Jagan Sridharan <badhri@google.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Hans de Goede <hdegoede@redhat.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Min Guo <min.guo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Linus Walleij <linus.walleij@linaro.org>, Nagarjuna Kristam <nkristam@nvidia.com>
+To: Sam Shih <sam.shih@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, John Crispin <john@phrozen.org>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Aug 23, 2019 at 03:57:13PM +0800, Chunfeng Yun wrote:
-> It's used to support dual role switch via GPIO when use Type-B
-> receptacle, typically the USB ID pin is connected to an input
-> GPIO, and also used to enable/disable device when the USB Vbus
-> pin is connected to an input GPIO.
+On Thu, Aug 22, 2019 at 02:58:37PM +0800, Sam Shih wrote:
+> From: Ryder Lee <ryder.lee@mediatek.com>
+
+The subject should indicate this is for Mediatek.
+
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> This adds a property "num-pwms" in example so that we could
+> specify the number of PWM channels via device tree.
+> 
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> Acked-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
 > ---
-> v9~v10 no changes
+> Changes since v5:
+> - Add an Acked-by tag
+> - This file is original v4 patch 5/10
+> (https://patchwork.kernel.org/patch/11102577/)
 > 
-> v8 changes:
->  1. rename the title
->  2. change the compatible as "linux,usb-conn-gpio" instead of
->     "linux,typeb-conn-gpio"
-
-I don't think that is an improvement. How about 'gpio-usb-b-connector' 
-to be consistent.
-
-> 
-> v7 changes:
->  1. add description for device only mode
-> 
-> v6 changes:
->  1. remove status and port nodes in example
->  2. make vbus-supply as optional property
-> 
-> v5 changes:
->  1. treat type-B connector as child device of USB controller's, but not
->     as a separate virtual device, suggested by Rob
->  2. put connector's port node under connector node, suggested by Rob
-> 
-> v4 no changes
-> 
-> v3 changes:
->  1. treat type-B connector as a virtual device, but not child device of
->     USB controller's
-> 
-> v2 changes:
->   1. new patch to make binding clear suggested by Hans
+> Change-Id: I429048afeffa96f3f14533910efe242f88776043
 > ---
->  .../devicetree/bindings/usb/usb-conn-gpio.txt | 31 +++++++++++++++++++
->  1 file changed, 31 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/usb/usb-conn-gpio.txt
+>  Documentation/devicetree/bindings/pwm/pwm-mediatek.txt | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/usb/usb-conn-gpio.txt b/Documentation/devicetree/bindings/usb/usb-conn-gpio.txt
-> new file mode 100644
-> index 000000000000..d4d107fedc22
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/usb/usb-conn-gpio.txt
-> @@ -0,0 +1,31 @@
-> +USB GPIO Based Connection Detection
-> +
-> +This is typically used to switch dual role mode from the USB ID pin connected
-> +to an input GPIO, and also used to enable/disable device mode from the USB
-> +Vbus pin connected to an input GPIO.
-> +
-> +Required properties:
-> +- compatible : should include "linux,usb-conn-gpio" and "usb-b-connector".
-> +- id-gpios, vbus-gpios : input gpios, either one of them must be present,
-> +	and both can be present as well.
-> +	see connector/usb-connector.txt
-> +
-> +Optional properties:
-> +- vbus-supply : can be present if needed when supports dual role mode.
-> +	see connector/usb-connector.txt
-> +
-> +- Sub-nodes:
-> +	- port : can be present.
-> +		see graph.txt
-> +
-> +Example:
-> +
-> +&mtu3 {
-> +	connector {
-> +		compatible = "linux,usb-conn-gpio", "usb-b-connector";
-> +		label = "micro-USB";
+> diff --git a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+> index 991728cb46cb..ea95b490a913 100644
+> --- a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+> +++ b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+> @@ -14,12 +14,12 @@ Required properties:
+>                  has no clocks
+>     - "top": the top clock generator
+>     - "main": clock used by the PWM core
+> -   - "pwm1-8": the eight per PWM clocks for mt2712
+> -   - "pwm1-6": the six per PWM clocks for mt7622
+> -   - "pwm1-5": the five per PWM clocks for mt7623
+> +   - "pwm1-N": the PWM clocks for each channel
+> +   where N starting from 1 to the maximum number of PWM channels
 
-'label' is for a human identifying a particular connector when there are 
-multiple (of the same type). So not a great example here.
+Once converted to schema, you are going to be back to listing them out.
 
-> +		type = "micro";
-> +		id-gpios = <&pio 12 GPIO_ACTIVE_HIGH>;
-> +		vbus-supply = <&usb_p0_vbus>;
-> +	};
-> +};
-> -- 
-> 2.23.0
-> 
+>   - pinctrl-names: Must contain a "default" entry.
+>   - pinctrl-0: One property must exist for each entry in pinctrl-names.
+>     See pinctrl/pinctrl-bindings.txt for details of the property values.
+> + - num-pwms: the number of PWM channels.
+
+You can't add new required properties without breaking compatibility. 
+
+You already have to imply the number of channels from the compatible (or 
+number of clocks) and you have to keep doing so to maintain 
+compatibility, so why not just keep doing that for new chips?
+
+Rob
