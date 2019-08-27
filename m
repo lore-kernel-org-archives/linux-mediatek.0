@@ -1,44 +1,262 @@
-From: YueHaibing <yuehaibing@huawei.com>
-Subject: [PATCH] mt76: mt7603: use devm_platform_ioremap_resource() to simplify code
-Date: Tue, 27 Aug 2019 21:44:45 +0800
-Message-ID: <20190827134445.14696-1-yuehaibing@huawei.com>
+From: Miles Chen <miles.chen@mediatek.com>
+Subject: [RESEND PATCH v4] checkpatch: add several Kconfig default value tests
+Date: Tue, 27 Aug 2019 21:55:47 +0800
+Message-ID: <20190827135547.23131-1-miles.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: nbd@nbd.name, lorenzo.bianconi83@gmail.com, ryder.lee@mediatek.com, royluo@google.com, kvalo@codeaurora.org, davem@davemloft.net, matthias.bgg@gmail.com, swboyd@chromium.org, yuehaibing@huawei.com, weiyongjun1@huawei.com
-Cc: linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Andy Whitcroft <apw@canonical.com>, Joe Perches <joe@perches.com>
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Miles Chen <miles.chen@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Use devm_platform_ioremap_resource() to simplify the code a bit.
-This is detected by coccinelle.
+This change adds 3 Kconfig default value tests.
 
-Reported-by: Hulk Robot <hulkci@huawei.com>
-Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+1. Discourage default n cases:
+e.g.,
+default n
+
+2. Discourage default "[ynm]" cases:
+e.g.,
+arch/powerpc/Kconfig:   default "y" if PPC_POWERNV
+arch/powerpc/Kconfig:   default "y" if PPC_POWERNV
+arch/powerpc/Kconfig:   default "n"
+drivers/auxdisplay/Kconfig:     default "n"
+drivers/crypto/Kconfig: default "m"
+drivers/rapidio/devices/Kconfig:        default "n"
+
+3. Discourage default EXPERT or default !EXPERT cases:
+e.g.,
+drivers/hid/Kconfig:    default !EXPERT
+
+tested cases:
+default m
+default n if ALPHA_EV5 || ALPHA_EV56 || (ALPHA_EV4 && !ALPHA_LCA)
+default y if ALPHA_QEMU
+default n if PPC_POWERNV
+default n
+default EXPERT
+default !EXPERT
+default "m"
+default "n"
+default "y" if EXPERT
+default "y" if PPC_POWERNV
+
+test result:
+WARNING: 'default n' is the default value, no need to write it explicitly
++       default n
+
+WARNING: Avoid using default EXPERT
++       default EXPERT
+
+WARNING: Avoid using default EXPERT
++       default !EXPERT
+
+WARNING: Use 'default m' not 'default "m"'
++       default "m"
+
+WARNING: Use 'default n' not 'default "n"'
++       default "n"
+
+WARNING: Use 'default y' not 'default "y"'
++       default "y" if EXPERT
+
+WARNING: Use 'default y' not 'default "y"'
++       default "y" if PPC_POWERNV
+
+test --fix capability:
+default n => delete line
+default "m" => default m
+default "n" => default n
+default "y" if EXPERT => default y if EXPERT
+default "y" if PPC_POWERNV => default y if PPC_POWERNV
+default !EXPERT => no change
+default EXPERT => no change
+
+Change since v1:
+discourage default n$
+discourage default "[ynm]"
+discourage default \!?EXPERT
+
+Change since v2:
+(Joe has provided the whole patch and I just post it)
+test Kconfig in a single block
+print precise message such as 'default "m"', not 'default "[ynm]"'
+provide --fix capability
+
+Change since v3:
+resend patch, no change
+
+Cc: Joe Perches <joe@perches.com>
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7603/soc.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ scripts/checkpatch.pl | 139 ++++++++++++++++++++++++++----------------
+ 1 file changed, 85 insertions(+), 54 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/soc.c b/drivers/net/wireless/mediatek/mt76/mt7603/soc.c
-index c6c1ce6..c22715e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/soc.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/soc.c
-@@ -9,7 +9,6 @@
- static int
- mt76_wmac_probe(struct platform_device *pdev)
- {
--	struct resource *res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	struct mt7603_dev *dev;
- 	void __iomem *mem_base;
- 	struct mt76_dev *mdev;
-@@ -20,7 +19,7 @@ mt76_wmac_probe(struct platform_device *pdev)
- 	if (irq < 0)
- 		return irq;
+diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+index 93a7edfe0f05..b080eea68cf6 100755
+--- a/scripts/checkpatch.pl
++++ b/scripts/checkpatch.pl
+@@ -2932,60 +2932,98 @@ sub process {
+ 				      "Do not include the paragraph about writing to the Free Software Foundation's mailing address from the sample GPL notice. The FSF has changed addresses in the past, and may do so again. Linux already includes a copy of the GPL.\n" . $herevet)
+ 		}
  
--	mem_base = devm_ioremap_resource(&pdev->dev, res);
-+	mem_base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(mem_base)) {
- 		dev_err(&pdev->dev, "Failed to get memory resource\n");
- 		return PTR_ERR(mem_base);
+-# check for Kconfig help text having a real description
+-# Only applies when adding the entry originally, after that we do not have
+-# sufficient context to determine whether it is indeed long enough.
+-		if ($realfile =~ /Kconfig/ &&
+-		    # 'choice' is usually the last thing on the line (though
+-		    # Kconfig supports named choices), so use a word boundary
+-		    # (\b) rather than a whitespace character (\s)
+-		    $line =~ /^\+\s*(?:config|menuconfig|choice)\b/) {
+-			my $length = 0;
+-			my $cnt = $realcnt;
+-			my $ln = $linenr + 1;
+-			my $f;
+-			my $is_start = 0;
+-			my $is_end = 0;
+-			for (; $cnt > 0 && defined $lines[$ln - 1]; $ln++) {
+-				$f = $lines[$ln - 1];
+-				$cnt-- if ($lines[$ln - 1] !~ /^-/);
+-				$is_end = $lines[$ln - 1] =~ /^\+/;
+-
+-				next if ($f =~ /^-/);
+-				last if (!$file && $f =~ /^\@\@/);
+-
+-				if ($lines[$ln - 1] =~ /^\+\s*(?:bool|tristate|prompt)\s*["']/) {
+-					$is_start = 1;
+-				} elsif ($lines[$ln - 1] =~ /^\+\s*(?:help|---help---)\s*$/) {
+-					if ($lines[$ln - 1] =~ "---help---") {
+-						WARN("CONFIG_DESCRIPTION",
+-						     "prefer 'help' over '---help---' for new help texts\n" . $herecurr);
++# Kconfig tests
++		if ($realfile =~ /Kconfig/) {
++			# check for Kconfig help text having a real description
++			# Only applies when adding the entry originally, after
++			# that we do not have sufficient context to determine
++			# whether it is indeed long enough.
++			# 'choice' is usually the last thing on the line (though
++			# Kconfig supports named choices), so use a word
++			# boundary (\b) rather than a whitespace character (\s)
++			if ($line =~ /^\+\s*(?:config|menuconfig|choice)\b/) {
++				my $length = 0;
++				my $cnt = $realcnt;
++				my $ln = $linenr + 1;
++				my $f;
++				my $is_start = 0;
++				my $is_end = 0;
++				for (; $cnt > 0 && defined $lines[$ln - 1]; $ln++) {
++					$f = $lines[$ln - 1];
++					$cnt-- if ($lines[$ln - 1] !~ /^-/);
++					$is_end = $lines[$ln - 1] =~ /^\+/;
++
++					next if ($f =~ /^-/);
++					last if (!$file && $f =~ /^\@\@/);
++
++					if ($lines[$ln - 1] =~ /^\+\s*(?:bool|tristate|prompt)\s*["']/) {
++						$is_start = 1;
++					} elsif ($lines[$ln - 1] =~ /^\+\s*(?:help|---help---)\s*$/) {
++						if ($lines[$ln - 1] =~ "---help---") {
++							WARN("CONFIG_DESCRIPTION",
++							     "prefer 'help' over '---help---' for new help texts\n" . $herecurr);
++						}
++						$length = -1;
++					}
++
++					$f =~ s/^.//;
++					$f =~ s/#.*//;
++					$f =~ s/^\s+//;
++					next if ($f =~ /^$/);
++
++					# This only checks context lines in the patch
++					# and so hopefully shouldn't trigger false
++					# positives, even though some of these are
++					# common words in help texts
++					if ($f =~ /^\s*(?:config|menuconfig|choice|endchoice|
++							   if|endif|menu|endmenu|source)\b/x) {
++						$is_end = 1;
++						last;
+ 					}
+-					$length = -1;
++					$length++;
++				}
++				if ($is_start && $is_end && $length < $min_conf_desc_length) {
++					WARN("CONFIG_DESCRIPTION",
++					     "please write a paragraph that describes the config symbol fully\n" . $herecurr);
+ 				}
++				#print "is_start<$is_start> is_end<$is_end> length<$length>\n";
++			}
+ 
+-				$f =~ s/^.//;
+-				$f =~ s/#.*//;
+-				$f =~ s/^\s+//;
+-				next if ($f =~ /^$/);
+-
+-				# This only checks context lines in the patch
+-				# and so hopefully shouldn't trigger false
+-				# positives, even though some of these are
+-				# common words in help texts
+-				if ($f =~ /^\s*(?:config|menuconfig|choice|endchoice|
+-						  if|endif|menu|endmenu|source)\b/x) {
+-					$is_end = 1;
+-					last;
++# discourage the use of boolean for type definition attributes
++			if ($line =~ /^\+\s*\bboolean\b/) {
++				if (WARN("CONFIG_TYPE_BOOLEAN",
++					 "Use of boolean is deprecated, please use bool instead\n" . $herecurr) &&
++				    $fix) {
++					$fixed[$fixlinenr] =~ s/\bboolean\b/bool/;
++				}
++			}
++
++# Kconfig: discourage redundant 'default n'
++			if ($line =~ /^\+\s*default\s+n$/) {
++				if (WARN("CONFIG_DEFAULT_VALUE_STYLE",
++					 "'default n' is the default value, no need to write it explicitly\n" . $herecurr) &&
++				    $fix) {
++					fix_delete_line($fixlinenr, $rawline);
+ 				}
+-				$length++;
+ 			}
+-			if ($is_start && $is_end && $length < $min_conf_desc_length) {
+-				WARN("CONFIG_DESCRIPTION",
+-				     "please write a paragraph that describes the config symbol fully\n" . $herecurr);
++
++# Kconfig: discourage quoted defaults: use default [ynm], not default "[ynm]"
++			if ($rawline =~ /^\+\s*default\s+"([ynm])"/) {
++				if (WARN("CONFIG_DEFAULT_VALUE_STYLE",
++					 "Use 'default $1' not 'default \"$1\"'\n" . $herecurr) &&
++				    $fix) {
++					$fixed[$fixlinenr] =~ s/\b(default\s+)"(.)"/$1$2/;
++				}
++			}
++
++# Kconfig: discourage using default EXPERT or !EXPERT
++			if ($line =~ /^\+\s*default\s+\!?\s*EXPERT\b/) {
++				WARN("CONFIG_DEFAULT_VALUE_STYLE",
++				     "Avoid using default EXPERT\n" . $herecurr);
+ 			}
+-			#print "is_start<$is_start> is_end<$is_end> length<$length>\n";
+ 		}
++# End of Kconfig tests
++
+ 
+ # check for MAINTAINERS entries that don't have the right form
+ 		if ($realfile =~ /^MAINTAINERS$/ &&
+@@ -2998,13 +3036,6 @@ sub process {
+ 			}
+ 		}
+ 
+-# discourage the use of boolean for type definition attributes of Kconfig options
+-		if ($realfile =~ /Kconfig/ &&
+-		    $line =~ /^\+\s*\bboolean\b/) {
+-			WARN("CONFIG_TYPE_BOOLEAN",
+-			     "Use of boolean is deprecated, please use bool instead.\n" . $herecurr);
+-		}
+-
+ 		if (($realfile =~ /Makefile.*/ || $realfile =~ /Kbuild.*/) &&
+ 		    ($line =~ /\+(EXTRA_[A-Z]+FLAGS).*/)) {
+ 			my $flag = $1;
 -- 
-2.7.4
+2.18.0
