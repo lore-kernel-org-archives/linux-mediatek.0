@@ -1,28 +1,33 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH v2 -next] net: mediatek: remove set but not used
- variable 'status'
-Date: Tue, 27 Aug 2019 20:48:21 -0700 (PDT)
-Message-ID: <20190827.204821.340435873815704705.davem@davemloft.net>
-References: <20190824.142158.1506174328495468705.davem@davemloft.net>
-        <20190826013118.22720-1-maowenan@huawei.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH 1/2] dt-bindings: clock: mediatek: add pericfg for MT8183
+Date: Wed, 28 Aug 2019 13:55:54 +0800
+Message-ID: <1566971755-21217-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190826013118.22720-1-maowenan@huawei.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: maowenan@huawei.com
-Cc: nbd@openwrt.org, john@phrozen.org, sean.wang@mediatek.com, nelson.chang@mediatek.com, matthias.bgg@gmail.com, kernel-janitors@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Stephen Boyd <sboyd@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Michael Turquette <mturquette@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Weiyi Lu <weiyi.lu@mediatek.com>, Erin Lo <erin.lo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Mao Wenan <maowenan@huawei.com>
-Date: Mon, 26 Aug 2019 09:31:18 +0800
+This patch adds binding of pericfg for MT8183.
 
-> Fixes gcc '-Wunused-but-set-variable' warning:
-> drivers/net/ethernet/mediatek/mtk_eth_soc.c: In function mtk_handle_irq:
-> drivers/net/ethernet/mediatek/mtk_eth_soc.c:1951:6: warning: variable status set but not used [-Wunused-but-set-variable]
-> 
-> Fixes: 296c9120752b ("net: ethernet: mediatek: Add MT7628/88 SoC support")
-> Signed-off-by: Mao Wenan <maowenan@huawei.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ .../devicetree/bindings/arm/mediatek/mediatek,pericfg.txt        | 1 +
+ 1 file changed, 1 insertion(+)
 
-Applied to net-next.
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt
+index 4c7e478117a0..ecf027a9003a 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt
+@@ -14,6 +14,7 @@ Required Properties:
+ 	- "mediatek,mt7629-pericfg", "syscon"
+ 	- "mediatek,mt8135-pericfg", "syscon"
+ 	- "mediatek,mt8173-pericfg", "syscon"
++	- "mediatek,mt8183-pericfg", "syscon"
+ - #clock-cells: Must be 1
+ - #reset-cells: Must be 1
+ 
+-- 
+2.23.0
