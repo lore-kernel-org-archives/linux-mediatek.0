@@ -1,7 +1,7 @@
 From: Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: [PATCH v7 05/13] soc: mediatek: Refactor clock control
-Date: Wed, 28 Aug 2019 17:11:38 +0800
-Message-ID: <1566983506-26598-6-git-send-email-weiyi.lu@mediatek.com>
+Subject: [PATCH v7 10/13] soc: mediatek: Add subsys clock control for bus protection
+Date: Wed, 28 Aug 2019 17:11:43 +0800
+Message-ID: <1566983506-26598-11-git-send-email-weiyi.lu@mediatek.com>
 References: <1566983506-26598-1-git-send-email-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -12,101 +12,161 @@ To: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmai
 Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Weiyi Lu <weiyi.lu@mediatek.com>, Yong Wu <yong.wu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Put clock enable and disable control in separate function.
+Add subsys CG control flow before/after the bus protect control
+due to bus protection need SMI bus relative CGs enabled to feedback
+its ack.
 
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-scpsys.c | 45 ++++++++++++++++++++++++---------------
- 1 file changed, 28 insertions(+), 17 deletions(-)
+ drivers/soc/mediatek/mtk-scpsys.c | 72 +++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 70 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index aed540d..73e4a1a 100644
+index f25101f..33c4034 100644
 --- a/drivers/soc/mediatek/mtk-scpsys.c
 +++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -207,6 +207,29 @@ static int scpsys_regulator_disable(struct scp_domain *scpd)
- 	return regulator_disable(scpd->supply);
- }
+@@ -108,6 +108,7 @@ enum clk_id {
+ };
  
-+static void scpsys_clk_disable(struct clk *clk[], int max_num)
-+{
-+	int i;
-+
-+	for (i = max_num - 1; i >= 0; i--)
-+		clk_disable_unprepare(clk[i]);
-+}
-+
-+static int scpsys_clk_enable(struct clk *clk[], int max_num)
-+{
-+	int i, ret = 0;
-+
-+	for (i = 0; i < max_num && clk[i]; i++) {
-+		ret = clk_prepare_enable(clk[i]);
-+		if (ret) {
-+			scpsys_clk_disable(clk, i);
-+			break;
-+		}
-+	}
-+
-+	return ret;
-+}
-+
- static int scpsys_power_on(struct generic_pm_domain *genpd)
- {
- 	struct scp_domain *scpd = container_of(genpd, struct scp_domain, genpd);
-@@ -215,21 +238,14 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 	u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
- 	u32 val;
- 	int ret, tmp;
--	int i;
+ #define MAX_CLKS	3
++#define MAX_SUBSYS_CLKS 10
  
- 	ret = scpsys_regulator_enable(scpd);
+ /**
+  * struct scp_domain_data - scp domain data for power on/off flow
+@@ -120,6 +121,8 @@ enum clk_id {
+  * @clk_id: The basic clocks required by this power domain.
+  * @basic_clk_id: provide the same purpose with field "clk_id"
+  *                by declaring basic clock prefix name rather than clk_id.
++ * @subsys_clk_prefix: The prefix name of the clocks need to be enabled
++ *                     before releasing bus protection.
+  * @caps: The flag for active wake-up action.
+  * @bp_table: The mask table for multiple step bus protection.
+  */
+@@ -132,6 +135,7 @@ struct scp_domain_data {
+ 	u32 bus_prot_mask;
+ 	enum clk_id clk_id[MAX_CLKS];
+ 	const char *basic_clk_id[MAX_CLKS];
++	const char *subsys_clk_prefix;
+ 	u8 caps;
+ 	struct bus_prot bp_table[MAX_STEPS];
+ };
+@@ -142,6 +146,7 @@ struct scp_domain {
+ 	struct generic_pm_domain genpd;
+ 	struct scp *scp;
+ 	struct clk *clk[MAX_CLKS];
++	struct clk *subsys_clk[MAX_SUBSYS_CLKS];
+ 	const struct scp_domain_data *data;
+ 	struct regulator *supply;
+ };
+@@ -347,16 +352,22 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+ 	val |= PWR_RST_B_BIT;
+ 	writel(val, ctl_addr);
+ 
+-	ret = scpsys_sram_enable(scpd, ctl_addr);
++	ret = scpsys_clk_enable(scpd->subsys_clk, MAX_SUBSYS_CLKS);
  	if (ret < 0)
- 		return ret;
+ 		goto err_pwr_ack;
  
--	for (i = 0; i < MAX_CLKS && scpd->clk[i]; i++) {
--		ret = clk_prepare_enable(scpd->clk[i]);
--		if (ret) {
--			for (--i; i >= 0; i--)
--				clk_disable_unprepare(scpd->clk[i]);
--
--			goto err_clk;
--		}
--	}
-+	ret = scpsys_clk_enable(scpd->clk, MAX_CLKS);
-+	if (ret)
-+		goto err_clk;
++	ret = scpsys_sram_enable(scpd, ctl_addr);
++	if (ret < 0)
++		goto err_sram;
++
+ 	ret = scpsys_bus_protect_disable(scpd);
+ 	if (ret < 0)
+-		goto err_pwr_ack;
++		goto err_sram;
  
- 	val = readl(ctl_addr);
- 	val |= PWR_ON_BIT;
-@@ -282,10 +298,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
  	return 0;
  
++err_sram:
++	scpsys_clk_disable(scpd->subsys_clk, MAX_SUBSYS_CLKS);
  err_pwr_ack:
--	for (i = MAX_CLKS - 1; i >= 0; i--) {
--		if (scpd->clk[i])
--			clk_disable_unprepare(scpd->clk[i]);
--	}
-+	scpsys_clk_disable(scpd->clk, MAX_CLKS);
+ 	scpsys_clk_disable(scpd->clk, MAX_CLKS);
  err_clk:
- 	scpsys_regulator_disable(scpd);
- 
-@@ -302,7 +315,6 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- 	u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
- 	u32 val;
- 	int ret, tmp;
--	int i;
- 
- 	if (scpd->data->bus_prot_mask) {
- 		ret = mtk_infracfg_set_bus_protection(scp->infracfg,
-@@ -343,8 +355,7 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+@@ -383,6 +394,8 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
  	if (ret < 0)
  		goto out;
  
--	for (i = 0; i < MAX_CLKS && scpd->clk[i]; i++)
--		clk_disable_unprepare(scpd->clk[i]);
-+	scpsys_clk_disable(scpd->clk, MAX_CLKS);
++	scpsys_clk_disable(scpd->subsys_clk, MAX_SUBSYS_CLKS);
++
+ 	/* subsys power off */
+ 	val = readl(ctl_addr) | PWR_ISO_BIT;
+ 	writel(val, ctl_addr);
+@@ -419,6 +432,48 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+ 	return ret;
+ }
  
- 	ret = scpsys_regulator_disable(scpd);
- 	if (ret < 0)
++static int init_subsys_clks(struct platform_device *pdev,
++		const char *prefix, struct clk **clk)
++{
++	struct device_node *node = pdev->dev.of_node;
++	u32 prefix_len, sub_clk_cnt = 0;
++	struct property *prop;
++	const char *clk_name;
++
++	if (!node) {
++		dev_err(&pdev->dev, "Cannot find scpsys node: %ld\n",
++			PTR_ERR(node));
++		return PTR_ERR(node);
++	}
++
++	prefix_len = strlen(prefix);
++
++	of_property_for_each_string(node, "clock-names", prop, clk_name) {
++		if (!strncmp(clk_name, prefix, prefix_len) &&
++				(clk_name[prefix_len] == '-')) {
++			if (sub_clk_cnt >= MAX_SUBSYS_CLKS) {
++				dev_err(&pdev->dev,
++					"subsys clk out of range %d\n",
++					sub_clk_cnt);
++				return -ENOMEM;
++			}
++
++			clk[sub_clk_cnt] = devm_clk_get(&pdev->dev,
++						clk_name);
++
++			if (IS_ERR(clk)) {
++				dev_err(&pdev->dev,
++					"Subsys clk read fail %ld\n",
++					PTR_ERR(clk));
++				return PTR_ERR(clk);
++			}
++			sub_clk_cnt++;
++		}
++	}
++
++	return sub_clk_cnt;
++}
++
+ static void init_clks(struct platform_device *pdev, struct clk **clk)
+ {
+ 	int i;
+@@ -506,6 +561,7 @@ static struct scp *init_scp(struct platform_device *pdev,
+ 		struct scp_domain *scpd = &scp->domains[i];
+ 		struct generic_pm_domain *genpd = &scpd->genpd;
+ 		const struct scp_domain_data *data = &scp_domain_data[i];
++		int clk_cnt;
+ 
+ 		pd_data->domains[i] = genpd;
+ 		scpd->scp = scp;
+@@ -534,6 +590,18 @@ static struct scp *init_scp(struct platform_device *pdev,
+ 						data->basic_clk_id[j]);
+ 		}
+ 
++		if (data->subsys_clk_prefix) {
++			clk_cnt = init_subsys_clks(pdev,
++					data->subsys_clk_prefix,
++					scpd->subsys_clk);
++			if (clk_cnt < 0) {
++				dev_err(&pdev->dev,
++					"%s: subsys clk unavailable\n",
++					data->name);
++				return ERR_PTR(clk_cnt);
++			}
++		}
++
+ 		genpd->name = data->name;
+ 		genpd->power_off = scpsys_power_off;
+ 		genpd->power_on = scpsys_power_on;
 -- 
 1.8.1.1.dirty
