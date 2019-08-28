@@ -1,48 +1,75 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v5 07/10] regulator: mt6358: Add support for MT6358
- regulator
-Date: Wed, 28 Aug 2019 11:45:55 +0100
-Message-ID: <20190828104555.GE4298@sirena.co.uk>
-References: <1566531931-9772-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1566531931-9772-8-git-send-email-hsin-hsiung.wang@mediatek.com>
+From: Henry Chen <henryc.chen@mediatek.com>
+Subject: [PATCH V3 01/10] dt-bindings: soc: Add dvfsrc driver bindings
+Date: Wed, 28 Aug 2019 20:28:39 +0800
+Message-ID: <1566995328-15158-2-git-send-email-henryc.chen@mediatek.com>
+References: <1566995328-15158-1-git-send-email-henryc.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="PPYy/fEw/8QCHSq3"
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1566531931-9772-8-git-send-email-hsin-hsiung.wang@mediatek.com>
+In-Reply-To: <1566995328-15158-1-git-send-email-henryc.chen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Mark Rutland <mark.rutland@arm.com>, Liam Girdwood <lgirdwood@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Kate Stewart <kstewart@linuxfoundation.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Thomas Gleixner <tglx@linutronix.de>, Richard Fontana <rfontana@redhat.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rtc@vger.kernel.org, srv_heupstream@mediatek.com
+To: Georgi Djakov <georgi.djakov@linaro.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Viresh Kumar <vireshk@kernel.org>, Stephen Boyd <swboyd@chromium.org>, Ryan Case <ryandcase@chromium.org>
+Cc: Nicolas Boichat <drinkcat@google.com>, Fan Chen <fan.chen@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+Document the binding for enabling dvfsrc on MediaTek SoC.
 
---PPYy/fEw/8QCHSq3
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+---
+ .../devicetree/bindings/soc/mediatek/dvfsrc.txt    | 23 ++++++++++++++++++++++
+ include/dt-bindings/soc/mtk,dvfsrc.h               | 14 +++++++++++++
+ 2 files changed, 37 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt
+ create mode 100644 include/dt-bindings/soc/mtk,dvfsrc.h
 
-On Fri, Aug 23, 2019 at 11:45:28AM +0800, Hsin-Hsiung Wang wrote:
-> The MT6358 is a regulator found on boards based on MediaTek MT8183 and
-> probably other SoCs. It is a so called pmic and connects as a slave to
-> SoC using SPI, wrapped inside the pmic-wrapper.
-
-This looks good - since there was only one small issue with the example
-in the binding document I'll apply both patches, please send a followup
-fixing the binding document.
-
---PPYy/fEw/8QCHSq3
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl1mW2IACgkQJNaLcl1U
-h9BSkwf/dn5XU4gEVNtDS9XFnqmJE1/jcGPItKtO0MNfD3jrB/hUyBWMYoBhI+sU
-Vm45cGP+4DM/3BcJrj6qrmvgSmYZtpf6vn0RljmVuFlo5SOk4y4/HI8i+gdjcrER
-26tolRdFTgR3sbVDa2Wyzz6eCdz0UhoC69q4qQccEjgetw8GuXQHwGARR3NeXxVp
-4PCsUEKX5IxcOIKr2/1Y50W4HThACHgvoNAp/GK6zjSuyH17HKgZfSwh+p1sNZ4N
-a83mggDEu1rOgsiptGPtO/U+y2pNNnXNqX/+Xsnna6jkCkbM4hnGMLqvvMJlsGaC
-iVNyYaPdnO7o3Tqq6wzJbpXH6eKI+g==
-=VmT8
------END PGP SIGNATURE-----
-
---PPYy/fEw/8QCHSq3--
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt b/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt
+new file mode 100644
+index 0000000..7f43499
+--- /dev/null
++++ b/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt
+@@ -0,0 +1,23 @@
++MediaTek DVFSRC
++
++The Dynamic Voltage and Frequency Scaling Resource Collector (DVFSRC) is a
++HW module which is used to collect all the requests from both software and
++hardware and turn into the decision of minimum operating voltage and minimum
++DRAM frequency to fulfill those requests.
++
++Required Properties:
++- compatible: Should be one of the following
++	- "mediatek,mt8183-dvfsrc": For MT8183 SoC
++- reg: Address range of the DVFSRC unit
++- clock-names: Must include the following entries:
++	"dvfsrc": DVFSRC module clock
++- clocks: Must contain an entry for each entry in clock-names.
++
++Example:
++
++	dvfsrc@10012000 {
++		compatible = "mediatek,mt8183-dvfsrc";
++		reg = <0 0x10012000 0 0x1000>;
++		clocks = <&infracfg CLK_INFRA_DVFSRC>;
++		clock-names = "dvfsrc";
++	};
+diff --git a/include/dt-bindings/soc/mtk,dvfsrc.h b/include/dt-bindings/soc/mtk,dvfsrc.h
+new file mode 100644
+index 0000000..a522488
+--- /dev/null
++++ b/include/dt-bindings/soc/mtk,dvfsrc.h
+@@ -0,0 +1,14 @@
++/* SPDX-License-Identifier: GPL-2.0
++ *
++ * Copyright (c) 2018 MediaTek Inc.
++ */
++
++#ifndef _DT_BINDINGS_POWER_MTK_DVFSRC_H
++#define _DT_BINDINGS_POWER_MTK_DVFSRC_H
++
++#define MT8183_DVFSRC_LEVEL_1	1
++#define MT8183_DVFSRC_LEVEL_2	2
++#define MT8183_DVFSRC_LEVEL_3	3
++#define MT8183_DVFSRC_LEVEL_4	4
++
++#endif /* _DT_BINDINGS_POWER_MTK_DVFSRC_H */
+-- 
+1.9.1
