@@ -1,106 +1,120 @@
-From: Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: [PATCH v7 02/13] dt-bindings: soc: Add MT8183 power dt-bindings
-Date: Wed, 28 Aug 2019 17:11:35 +0800
-Message-ID: <1566983506-26598-3-git-send-email-weiyi.lu@mediatek.com>
-References: <1566983506-26598-1-git-send-email-weiyi.lu@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH net-next v4 3/3] dt-bindings: net: ethernet: Update mt7622
+ docs and dts to reflect the new phylink API
+Date: Wed, 28 Aug 2019 11:29:45 +0200
+Message-ID: <e45565b1-bb63-66af-16f6-5c7c1094dd67@gmail.com>
+References: <20190825174341.20750-1-opensource@vdorst.com>
+ <20190825174341.20750-4-opensource@vdorst.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1566983506-26598-1-git-send-email-weiyi.lu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Weiyi Lu <weiyi.lu@mediatek.com>, Yong Wu <yong.wu@mediatek.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20190825174341.20750-4-opensource@vdorst.com>
+Content-Language: en-US
+Sender: netdev-owner@vger.kernel.org
+To: =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>, John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Nelson Chang <nelson.chang@mediatek.com>, "David S . Miller" <davem@davemloft.net>
+Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, Russell King <linux@armlinux.org.uk>, Frank Wunderlich <frank-w@public-files.de>, Stefan Roese <sr@denx.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add power dt-bindings of MT8183 and introduces "BASIC" and
-"SUBSYS" clock types in binding document.
-The "BASIC" type is compatible to the original power control with
-clock name [a-z]+[0-9]*, e.g. mm, vpu1.
-The "SUBSYS" type is used for bus protection control with clock
-name [a-z]+-[0-9]+, e.g. isp-0, cam-1.
+Hi David,
 
-Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
----
- .../devicetree/bindings/soc/mediatek/scpsys.txt    | 14 ++++++++++++
- include/dt-bindings/power/mt8183-power.h           | 26 ++++++++++++++++++++++
- 2 files changed, 40 insertions(+)
- create mode 100644 include/dt-bindings/power/mt8183-power.h
+On 25/08/2019 19:43, René van Dorst wrote:
+> This patch the removes the recently added mediatek,physpeed property.
+> Use the fixed-link property speed = <2500> to set the phy in 2.5Gbit.
+> See mt7622-bananapi-bpi-r64.dts for a working example.
+> 
+> Signed-off-by: René van Dorst <opensource@vdorst.com>
+> --
+> v3->v4:
+> * no change
+> v2->v3:
+> * no change
+> v1->v2:
+> * SGMII port only support BASE-X at 2.5Gbit.
+> ---
+>  .../arm/mediatek/mediatek,sgmiisys.txt        |  2 --
+>  .../dts/mediatek/mt7622-bananapi-bpi-r64.dts  | 28 +++++++++++++------
+>  arch/arm64/boot/dts/mediatek/mt7622.dtsi      |  1 -
+>  3 files changed, 19 insertions(+), 12 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-index 876693a..00eab7e 100644
---- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-+++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-@@ -14,6 +14,7 @@ power/power_domain.txt. It provides the power domains defined in
- - include/dt-bindings/power/mt2701-power.h
- - include/dt-bindings/power/mt2712-power.h
- - include/dt-bindings/power/mt7622-power.h
-+- include/dt-bindings/power/mt8183-power.h
- 
- Required properties:
- - compatible: Should be one of:
-@@ -25,18 +26,31 @@ Required properties:
- 	- "mediatek,mt7623a-scpsys": For MT7623A SoC
- 	- "mediatek,mt7629-scpsys", "mediatek,mt7622-scpsys": For MT7629 SoC
- 	- "mediatek,mt8173-scpsys"
-+	- "mediatek,mt8183-scpsys"
- - #power-domain-cells: Must be 1
- - reg: Address range of the SCPSYS unit
- - infracfg: must contain a phandle to the infracfg controller
- - clock, clock-names: clocks according to the common clock binding.
-                       These are clocks which hardware needs to be
-                       enabled before enabling certain power domains.
-+                      The new clock type "BASIC" belongs to the type above.
-+                      As to the new clock type "SUBSYS" needs to be
-+                      enabled before releasing bus protection.
- 	Required clocks for MT2701 or MT7623: "mm", "mfg", "ethif"
- 	Required clocks for MT2712: "mm", "mfg", "venc", "jpgdec", "audio", "vdec"
- 	Required clocks for MT6797: "mm", "mfg", "vdec"
- 	Required clocks for MT7622 or MT7629: "hif_sel"
- 	Required clocks for MT7623A: "ethif"
- 	Required clocks for MT8173: "mm", "mfg", "venc", "venc_lt"
-+	Required clocks for MT8183: BASIC: "audio", "mfg", "mm", "cam", "isp",
-+					   "vpu", "vpu1", "vpu2", "vpu3"
-+				    SUBSYS: "mm-0", "mm-1", "mm-2", "mm-3",
-+					    "mm-4", "mm-5", "mm-6", "mm-7",
-+					    "mm-8", "mm-9", "isp-0", "isp-1",
-+					    "cam-0", "cam-1", "cam-2", "cam-3",
-+					    "cam-4", "cam-5", "cam-6", "vpu-0",
-+					    "vpu-1", "vpu-2", "vpu-3", "vpu-4",
-+					    "vpu-5"
- 
- Optional properties:
- - vdec-supply: Power supply for the vdec power domain
-diff --git a/include/dt-bindings/power/mt8183-power.h b/include/dt-bindings/power/mt8183-power.h
-new file mode 100644
-index 0000000..5c0c8c7
---- /dev/null
-+++ b/include/dt-bindings/power/mt8183-power.h
-@@ -0,0 +1,26 @@
-+/* SPDX-License-Identifier: GPL-2.0
-+ *
-+ * Copyright (c) 2018 MediaTek Inc.
-+ * Author: Weiyi Lu <weiyi.lu@mediatek.com>
-+ */
-+
-+#ifndef _DT_BINDINGS_POWER_MT8183_POWER_H
-+#define _DT_BINDINGS_POWER_MT8183_POWER_H
-+
-+#define MT8183_POWER_DOMAIN_AUDIO	0
-+#define MT8183_POWER_DOMAIN_CONN	1
-+#define MT8183_POWER_DOMAIN_MFG_ASYNC	2
-+#define MT8183_POWER_DOMAIN_MFG		3
-+#define MT8183_POWER_DOMAIN_MFG_CORE0	4
-+#define MT8183_POWER_DOMAIN_MFG_CORE1	5
-+#define MT8183_POWER_DOMAIN_MFG_2D	6
-+#define MT8183_POWER_DOMAIN_DISP	7
-+#define MT8183_POWER_DOMAIN_CAM		8
-+#define MT8183_POWER_DOMAIN_ISP		9
-+#define MT8183_POWER_DOMAIN_VDEC	10
-+#define MT8183_POWER_DOMAIN_VENC	11
-+#define MT8183_POWER_DOMAIN_VPU_TOP	12
-+#define MT8183_POWER_DOMAIN_VPU_CORE0	13
-+#define MT8183_POWER_DOMAIN_VPU_CORE1	14
-+
-+#endif /* _DT_BINDINGS_POWER_MT8183_POWER_H */
--- 
-1.8.1.1.dirty
+Thanks for taking this patch. For the next time, please make sure that dts[i]
+patches are independent from the binding description, as dts[i] should go
+through my tree. No problem for this round, just saying for the future.
+
+Regards,
+Matthias
+
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
+> index f5518f26a914..30cb645c0e54 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
+> @@ -9,8 +9,6 @@ Required Properties:
+>  	- "mediatek,mt7622-sgmiisys", "syscon"
+>  	- "mediatek,mt7629-sgmiisys", "syscon"
+>  - #clock-cells: Must be 1
+> -- mediatek,physpeed: Should be one of "auto", "1000" or "2500" to match up
+> -		     the capability of the target PHY.
+>  
+>  The SGMIISYS controller uses the common clk binding from
+>  Documentation/devicetree/bindings/clock/clock-bindings.txt
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+> index 710c5c3d87d3..83e10591e0e5 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+> @@ -115,24 +115,34 @@
+>  };
+>  
+>  &eth {
+> -	pinctrl-names = "default";
+> -	pinctrl-0 = <&eth_pins>;
+>  	status = "okay";
+> +	gmac0: mac@0 {
+> +		compatible = "mediatek,eth-mac";
+> +		reg = <0>;
+> +		phy-mode = "2500base-x";
+> +
+> +		fixed-link {
+> +			speed = <2500>;
+> +			full-duplex;
+> +			pause;
+> +		};
+> +	};
+>  
+>  	gmac1: mac@1 {
+>  		compatible = "mediatek,eth-mac";
+>  		reg = <1>;
+> -		phy-handle = <&phy5>;
+> +		phy-mode = "rgmii";
+> +
+> +		fixed-link {
+> +			speed = <1000>;
+> +			full-duplex;
+> +			pause;
+> +		};
+>  	};
+>  
+> -	mdio-bus {
+> +	mdio: mdio-bus {
+>  		#address-cells = <1>;
+>  		#size-cells = <0>;
+> -
+> -		phy5: ethernet-phy@5 {
+> -			reg = <5>;
+> -			phy-mode = "sgmii";
+> -		};
+>  	};
+>  };
+>  
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> index d1e13d340e26..dac51e98204c 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> @@ -931,6 +931,5 @@
+>  			     "syscon";
+>  		reg = <0 0x1b128000 0 0x3000>;
+>  		#clock-cells = <1>;
+> -		mediatek,physpeed = "2500";
+>  	};
+>  };
+> 
