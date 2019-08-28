@@ -1,49 +1,120 @@
-From: Yong Mao <yong.mao@mediatek.com>
-Subject: [PATCH v2] mmc: mediatek: enable SDIO IRQ low level trigger function
-Date: Wed, 28 Aug 2019 17:45:24 +0800
-Message-ID: <1566985524-22749-2-git-send-email-yong.mao@mediatek.com>
-References: <1566985524-22749-1-git-send-email-yong.mao@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v7 05/13] soc: mediatek: Refactor clock control
+Date: Wed, 28 Aug 2019 11:46:39 +0200
+Message-ID: <71bc2521-5005-0711-57ff-b32f3a150ee6@gmail.com>
+References: <1566983506-26598-1-git-send-email-weiyi.lu@mediatek.com>
+ <1566983506-26598-6-git-send-email-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1566985524-22749-1-git-send-email-yong.mao@mediatek.com>
+In-Reply-To: <1566983506-26598-6-git-send-email-weiyi.lu@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, yong mao <yong.mao@mediatek.com>
+To: Weiyi Lu <weiyi.lu@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh@kernel.org>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Yong Wu <yong.wu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: yong mao <yong.mao@mediatek.com>
 
-SDIO IRQ is not defaultly triggered by low level,
-but by falling edge. It needs to set related register
-to enable SDIO IRQ low level trigger function.
-Otherwise the SDIO IRQ may be lost in some specail condition.
 
-Signed-off-by: Yong Mao <yong.mao@mediatek.com>
-Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
----
- drivers/mmc/host/mtk-sd.c | 2 ++
- 1 file changed, 2 insertions(+)
+On 28/08/2019 11:11, Weiyi Lu wrote:
+> Put clock enable and disable control in separate function.
+> 
+> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 33f4b63..585f0c7 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -192,6 +192,7 @@
- #define SDC_STS_CMDBUSY         (0x1 << 1)	/* RW */
- #define SDC_STS_SWR_COMPL       (0x1 << 31)	/* RW */
- 
-+#define SDC_DAT1_IRQ_TRIGGER	(0x1 << 19)	/* RW */
- /* SDC_ADV_CFG0 mask */
- #define SDC_RX_ENHANCE_EN	(0x1 << 20)	/* RW */
- 
-@@ -1568,6 +1569,7 @@ static void msdc_init_hw(struct msdc_host *host)
- 
- 	/* Config SDIO device detect interrupt function */
- 	sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
-+	sdr_set_bits(host->base + SDC_ADV_CFG0, SDC_DAT1_IRQ_TRIGGER);
- 
- 	/* Configure to default data timeout */
- 	sdr_set_field(host->base + SDC_CFG, SDC_CFG_DTOC, 3);
--- 
-1.9.1
+Applied, thanks!
+
+> ---
+>  drivers/soc/mediatek/mtk-scpsys.c | 45 ++++++++++++++++++++++++---------------
+>  1 file changed, 28 insertions(+), 17 deletions(-)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+> index aed540d..73e4a1a 100644
+> --- a/drivers/soc/mediatek/mtk-scpsys.c
+> +++ b/drivers/soc/mediatek/mtk-scpsys.c
+> @@ -207,6 +207,29 @@ static int scpsys_regulator_disable(struct scp_domain *scpd)
+>  	return regulator_disable(scpd->supply);
+>  }
+>  
+> +static void scpsys_clk_disable(struct clk *clk[], int max_num)
+> +{
+> +	int i;
+> +
+> +	for (i = max_num - 1; i >= 0; i--)
+> +		clk_disable_unprepare(clk[i]);
+> +}
+> +
+> +static int scpsys_clk_enable(struct clk *clk[], int max_num)
+> +{
+> +	int i, ret = 0;
+> +
+> +	for (i = 0; i < max_num && clk[i]; i++) {
+> +		ret = clk_prepare_enable(clk[i]);
+> +		if (ret) {
+> +			scpsys_clk_disable(clk, i);
+> +			break;
+> +		}
+> +	}
+> +
+> +	return ret;
+> +}
+> +
+>  static int scpsys_power_on(struct generic_pm_domain *genpd)
+>  {
+>  	struct scp_domain *scpd = container_of(genpd, struct scp_domain, genpd);
+> @@ -215,21 +238,14 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+>  	u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
+>  	u32 val;
+>  	int ret, tmp;
+> -	int i;
+>  
+>  	ret = scpsys_regulator_enable(scpd);
+>  	if (ret < 0)
+>  		return ret;
+>  
+> -	for (i = 0; i < MAX_CLKS && scpd->clk[i]; i++) {
+> -		ret = clk_prepare_enable(scpd->clk[i]);
+> -		if (ret) {
+> -			for (--i; i >= 0; i--)
+> -				clk_disable_unprepare(scpd->clk[i]);
+> -
+> -			goto err_clk;
+> -		}
+> -	}
+> +	ret = scpsys_clk_enable(scpd->clk, MAX_CLKS);
+> +	if (ret)
+> +		goto err_clk;
+>  
+>  	val = readl(ctl_addr);
+>  	val |= PWR_ON_BIT;
+> @@ -282,10 +298,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+>  	return 0;
+>  
+>  err_pwr_ack:
+> -	for (i = MAX_CLKS - 1; i >= 0; i--) {
+> -		if (scpd->clk[i])
+> -			clk_disable_unprepare(scpd->clk[i]);
+> -	}
+> +	scpsys_clk_disable(scpd->clk, MAX_CLKS);
+>  err_clk:
+>  	scpsys_regulator_disable(scpd);
+>  
+> @@ -302,7 +315,6 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+>  	u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
+>  	u32 val;
+>  	int ret, tmp;
+> -	int i;
+>  
+>  	if (scpd->data->bus_prot_mask) {
+>  		ret = mtk_infracfg_set_bus_protection(scp->infracfg,
+> @@ -343,8 +355,7 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+>  	if (ret < 0)
+>  		goto out;
+>  
+> -	for (i = 0; i < MAX_CLKS && scpd->clk[i]; i++)
+> -		clk_disable_unprepare(scpd->clk[i]);
+> +	scpsys_clk_disable(scpd->clk, MAX_CLKS);
+>  
+>  	ret = scpsys_regulator_disable(scpd);
+>  	if (ret < 0)
+> 
