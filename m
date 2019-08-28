@@ -1,120 +1,305 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH net-next v4 3/3] dt-bindings: net: ethernet: Update mt7622
- docs and dts to reflect the new phylink API
-Date: Wed, 28 Aug 2019 11:29:45 +0200
-Message-ID: <e45565b1-bb63-66af-16f6-5c7c1094dd67@gmail.com>
-References: <20190825174341.20750-1-opensource@vdorst.com>
- <20190825174341.20750-4-opensource@vdorst.com>
+From: Zhang Rui <rui.zhang@intel.com>
+Subject: Re: [PATCH] thermal: mediatek: add suspend/resume callback
+Date: Wed, 28 Aug 2019 17:36:38 +0800
+Message-ID: <36f8f79c1353622bf0bb109296cd6229ac23e648.camel@intel.com>
+References: <1562058985-27538-1-git-send-email-michael.kao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20190825174341.20750-4-opensource@vdorst.com>
-Content-Language: en-US
-Sender: netdev-owner@vger.kernel.org
-To: =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>, John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Nelson Chang <nelson.chang@mediatek.com>, "David S . Miller" <davem@davemloft.net>
-Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, Russell King <linux@armlinux.org.uk>, Frank Wunderlich <frank-w@public-files.de>, Stefan Roese <sr@denx.de>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1562058985-27538-1-git-send-email-michael.kao@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: michael.kao@mediatek.com, Eduardo Valentin <edubezval@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, hsinyi@chromium.org
+Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Louis Yu <louis.yu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi David,
-
-On 25/08/2019 19:43, René van Dorst wrote:
-> This patch the removes the recently added mediatek,physpeed property.
-> Use the fixed-link property speed = <2500> to set the phy in 2.5Gbit.
-> See mt7622-bananapi-bpi-r64.dts for a working example.
+On Tue, 2019-07-02 at 17:16 +0800, michael.kao@mediatek.com wrote:
+> From: Louis Yu <louis.yu@mediatek.com>
 > 
-> Signed-off-by: René van Dorst <opensource@vdorst.com>
-> --
-> v3->v4:
-> * no change
-> v2->v3:
-> * no change
-> v1->v2:
-> * SGMII port only support BASE-X at 2.5Gbit.
+> Add suspend/resume callback to disable/enable Mediatek thermal sensor
+> respectively. Since thermal power domain is off in suspend, thermal
+> driver
+> needs re-initialization during resume.
+> 
+> Signed-off-by: Louis Yu <louis.yu@mediatek.com>
+> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
 > ---
->  .../arm/mediatek/mediatek,sgmiisys.txt        |  2 --
->  .../dts/mediatek/mt7622-bananapi-bpi-r64.dts  | 28 +++++++++++++------
->  arch/arm64/boot/dts/mediatek/mt7622.dtsi      |  1 -
->  3 files changed, 19 insertions(+), 12 deletions(-)
-
-Thanks for taking this patch. For the next time, please make sure that dts[i]
-patches are independent from the binding description, as dts[i] should go
-through my tree. No problem for this round, just saying for the future.
-
-Regards,
-Matthias
-
+> This patch series base on these patches [1][2][3].
 > 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
-> index f5518f26a914..30cb645c0e54 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
-> @@ -9,8 +9,6 @@ Required Properties:
->  	- "mediatek,mt7622-sgmiisys", "syscon"
->  	- "mediatek,mt7629-sgmiisys", "syscon"
->  - #clock-cells: Must be 1
-> -- mediatek,physpeed: Should be one of "auto", "1000" or "2500" to match up
-> -		     the capability of the target PHY.
->  
->  The SGMIISYS controller uses the common clk binding from
->  Documentation/devicetree/bindings/clock/clock-bindings.txt
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-> index 710c5c3d87d3..83e10591e0e5 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-> @@ -115,24 +115,34 @@
->  };
->  
->  &eth {
-> -	pinctrl-names = "default";
-> -	pinctrl-0 = <&eth_pins>;
->  	status = "okay";
-> +	gmac0: mac@0 {
-> +		compatible = "mediatek,eth-mac";
-> +		reg = <0>;
-> +		phy-mode = "2500base-x";
-> +
-> +		fixed-link {
-> +			speed = <2500>;
-> +			full-duplex;
-> +			pause;
-> +		};
-> +	};
->  
->  	gmac1: mac@1 {
->  		compatible = "mediatek,eth-mac";
->  		reg = <1>;
-> -		phy-handle = <&phy5>;
-> +		phy-mode = "rgmii";
-> +
-> +		fixed-link {
-> +			speed = <1000>;
-> +			full-duplex;
-> +			pause;
-> +		};
->  	};
->  
-> -	mdio-bus {
-> +	mdio: mdio-bus {
->  		#address-cells = <1>;
->  		#size-cells = <0>;
-> -
-> -		phy5: ethernet-phy@5 {
-> -			reg = <5>;
-> -			phy-mode = "sgmii";
-> -		};
->  	};
->  };
->  
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> index d1e13d340e26..dac51e98204c 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-> @@ -931,6 +931,5 @@
->  			     "syscon";
->  		reg = <0 0x1b128000 0 0x3000>;
->  		#clock-cells = <1>;
-> -		mediatek,physpeed = "2500";
->  	};
->  };
+> [1]thermal: mediatek: mt8183: fix bank number settings (
+> https://patchwork.kernel.org/patch/10938817/)
+> [2]thermal: mediatek: add another get_temp ops for thermal sensors (
+> https://patchwork.kernel.org/patch/10938829/)
+> [3]thermal: mediatek: use spinlock to protect PTPCORESEL (
+> https://patchwork.kernel.org/patch/10938841/)
 > 
+all these patches are not sent to linux-pm mailing list, thus they
+never got chance to get merged. please resend them to linux-pm.
+
+I don't know what the first part of the patch set do, so I'm wondering
+if there is any dependency?
+
+thanks,
+rui
+
+>  drivers/thermal/mtk_thermal.c | 134
+> +++++++++++++++++++++++++++++++++++++++---
+>  1 file changed, 125 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/thermal/mtk_thermal.c
+> b/drivers/thermal/mtk_thermal.c
+> index 3d01153..61d4114 100644
+> --- a/drivers/thermal/mtk_thermal.c
+> +++ b/drivers/thermal/mtk_thermal.c
+> @@ -30,6 +30,7 @@
+>  #include <linux/thermal.h>
+>  #include <linux/reset.h>
+>  #include <linux/types.h>
+> +#include <linux/iopoll.h>
+>  
+>  /* AUXADC Registers */
+>  #define AUXADC_CON1_SET_V	0x008
+> @@ -39,6 +40,8 @@
+>  
+>  #define APMIXED_SYS_TS_CON1	0x604
+>  
+> +#define APMIXED_SYS_TS_CON1_BUFFER_OFF	0x30
+> +
+>  /* Thermal Controller Registers */
+>  #define TEMP_MONCTL0		0x000
+>  #define TEMP_MONCTL1		0x004
+> @@ -46,6 +49,7 @@
+>  #define TEMP_MONIDET0		0x014
+>  #define TEMP_MONIDET1		0x018
+>  #define TEMP_MSRCTL0		0x038
+> +#define TEMP_MSRCTL1		0x03c
+>  #define TEMP_AHBPOLL		0x040
+>  #define TEMP_AHBTO		0x044
+>  #define TEMP_ADCPNP0		0x048
+> @@ -95,6 +99,9 @@
+>  #define TEMP_ADCVALIDMASK_VALID_HIGH		BIT(5)
+>  #define TEMP_ADCVALIDMASK_VALID_POS(bit)	(bit)
+>  
+> +#define TEMP_MSRCTL1_BUS_STA	(BIT(0) | BIT(7))
+> +#define TEMP_MSRCTL1_SENSING_POINTS_PAUSE	0x10E
+> +
+>  /* MT8173 thermal sensors */
+>  #define MT8173_TS1	0
+>  #define MT8173_TS2	1
+> @@ -266,6 +273,10 @@ struct mtk_thermal_data {
+>  struct mtk_thermal {
+>  	struct device *dev;
+>  	void __iomem *thermal_base;
+> +	void __iomem *apmixed_base;
+> +	void __iomem *auxadc_base;
+> +	u64 apmixed_phys_base;
+> +	u64 auxadc_phys_base;
+>  
+>  	struct clk *clk_peri_therm;
+>  	struct clk *clk_auxadc;
+> @@ -795,6 +806,42 @@ static void mtk_thermal_init_bank(struct
+> mtk_thermal *mt, int num,
+>  	mtk_thermal_put_bank(bank);
+>  }
+>  
+> +static int mtk_thermal_disable_sensing(struct mtk_thermal *mt, int
+> num)
+> +{
+> +	struct mtk_thermal_bank *bank = &mt->banks[num];
+> +	u32 val;
+> +	unsigned long timeout;
+> +	void __iomem *addr;
+> +	int ret = 0;
+> +
+> +	bank->id = num;
+> +	bank->mt = mt;
+> +
+> +	mtk_thermal_get_bank(bank);
+> +
+> +	val = readl(mt->thermal_base + TEMP_MSRCTL1);
+> +	/* pause periodic temperature measurement for sensing points */
+> +	writel(val | TEMP_MSRCTL1_SENSING_POINTS_PAUSE,
+> +	       mt->thermal_base + TEMP_MSRCTL1);
+> +
+> +	/* wait until temperature measurement bus idle */
+> +	timeout = jiffies + HZ;
+> +	addr = mt->thermal_base + TEMP_MSRCTL1;
+> +
+> +	ret = readl_poll_timeout(addr, val, (val &
+> TEMP_MSRCTL1_BUS_STA) == 0x0,
+> +				 0, timeout);
+> +	if (ret < 0)
+> +		goto out;
+> +
+> +	/* disable periodic temperature meausrement on sensing points
+> */
+> +	writel(0x0, mt->thermal_base + TEMP_MONCTL0);
+> +
+> +out:
+> +	mtk_thermal_put_bank(bank);
+> +
+> +	return ret;
+> +}
+> +
+>  static u64 of_get_phys_base(struct device_node *np)
+>  {
+>  	u64 size64;
+> @@ -917,7 +964,6 @@ static int mtk_thermal_probe(struct
+> platform_device *pdev)
+>  	struct device_node *auxadc, *apmixedsys, *np = pdev-
+> >dev.of_node;
+>  	struct mtk_thermal *mt;
+>  	struct resource *res;
+> -	u64 auxadc_phys_base, apmixed_phys_base;
+>  	struct thermal_zone_device *tzdev;
+>  	struct mtk_thermal_zone *tz;
+>  
+> @@ -954,11 +1000,11 @@ static int mtk_thermal_probe(struct
+> platform_device *pdev)
+>  		return -ENODEV;
+>  	}
+>  
+> -	auxadc_phys_base = of_get_phys_base(auxadc);
+> +	mt->auxadc_phys_base = of_get_phys_base(auxadc);
+>  
+>  	of_node_put(auxadc);
+>  
+> -	if (auxadc_phys_base == OF_BAD_ADDR) {
+> +	if (mt->auxadc_phys_base == OF_BAD_ADDR) {
+>  		dev_err(&pdev->dev, "Can't get auxadc phys address\n");
+>  		return -EINVAL;
+>  	}
+> @@ -969,11 +1015,12 @@ static int mtk_thermal_probe(struct
+> platform_device *pdev)
+>  		return -ENODEV;
+>  	}
+>  
+> -	apmixed_phys_base = of_get_phys_base(apmixedsys);
+> +	mt->apmixed_phys_base = of_get_phys_base(apmixedsys);
+> +	mt->apmixed_base = of_iomap(apmixedsys, 0);
+>  
+>  	of_node_put(apmixedsys);
+>  
+> -	if (apmixed_phys_base == OF_BAD_ADDR) {
+> +	if (mt->apmixed_phys_base == OF_BAD_ADDR) {
+>  		dev_err(&pdev->dev, "Can't get auxadc phys address\n");
+>  		return -EINVAL;
+>  	}
+> @@ -985,19 +1032,19 @@ static int mtk_thermal_probe(struct
+> platform_device *pdev)
+>  	ret = clk_prepare_enable(mt->clk_auxadc);
+>  	if (ret) {
+>  		dev_err(&pdev->dev, "Can't enable auxadc clk: %d\n",
+> ret);
+> -		return ret;
+> +		goto err_disable_clk_auxadc;
+>  	}
+>  
+>  	ret = clk_prepare_enable(mt->clk_peri_therm);
+>  	if (ret) {
+>  		dev_err(&pdev->dev, "Can't enable peri clk: %d\n",
+> ret);
+> -		goto err_disable_clk_auxadc;
+> +		goto err_disable_clk_peri_therm;
+>  	}
+>  
+>  	for (ctrl_id = 0; ctrl_id < mt->conf->num_controller ;
+> ctrl_id++)
+>  		for (i = 0; i < mt->conf->num_banks; i++)
+> -			mtk_thermal_init_bank(mt, i, apmixed_phys_base,
+> -					      auxadc_phys_base,
+> ctrl_id);
+> +			mtk_thermal_init_bank(mt, i, mt-
+> >apmixed_phys_base,
+> +					      mt->auxadc_phys_base,
+> ctrl_id);
+>  
+>  	platform_set_drvdata(pdev, mt);
+>  
+> @@ -1041,11 +1088,80 @@ static int mtk_thermal_remove(struct
+> platform_device *pdev)
+>  	return 0;
+>  }
+>  
+> +static int __maybe_unused mtk_thermal_suspend(struct device *dev)
+> +{
+> +	struct platform_device *pdev = to_platform_device(dev);
+> +	struct mtk_thermal *mt = platform_get_drvdata(pdev);
+> +	int i, ret;
+> +
+> +	for (i = 0; i < mt->conf->num_banks; i++) {
+> +		ret = mtk_thermal_disable_sensing(mt, i);
+> +		if (ret)
+> +			goto out;
+> +	}
+> +
+> +	/* disable buffer */
+> +	writel(readl(mt->apmixed_base + APMIXED_SYS_TS_CON1) |
+> +	       APMIXED_SYS_TS_CON1_BUFFER_OFF,
+> +	       mt->apmixed_base + APMIXED_SYS_TS_CON1);
+> +
+> +	clk_disable_unprepare(mt->clk_peri_therm);
+> +	clk_disable_unprepare(mt->clk_auxadc);
+> +
+> +	return 0;
+> +
+> +out:
+> +	dev_err(&pdev->dev, "Failed to wait until bus idle\n");
+> +
+> +	return ret;
+> +}
+> +
+> +static int __maybe_unused mtk_thermal_resume(struct device *dev)
+> +{
+> +	struct platform_device *pdev = to_platform_device(dev);
+> +	struct mtk_thermal *mt = platform_get_drvdata(pdev);
+> +	int i, ret, ctrl_id;
+> +
+> +	ret = device_reset(&pdev->dev);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = clk_prepare_enable(mt->clk_auxadc);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "Can't enable auxadc clk: %d\n",
+> ret);
+> +		goto err_disable_clk_auxadc;
+> +	}
+> +
+> +	ret = clk_prepare_enable(mt->clk_peri_therm);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "Can't enable peri clk: %d\n",
+> ret);
+> +		goto err_disable_clk_peri_therm;
+> +	}
+> +
+> +	for (ctrl_id = 0; ctrl_id < mt->conf->num_controller ;
+> ctrl_id++)
+> +		for (i = 0; i < mt->conf->num_banks; i++)
+> +			mtk_thermal_init_bank(mt, i, mt-
+> >apmixed_phys_base,
+> +					      mt->auxadc_phys_base,
+> ctrl_id);
+> +
+> +	return 0;
+> +
+> +err_disable_clk_peri_therm:
+> +	clk_disable_unprepare(mt->clk_peri_therm);
+> +err_disable_clk_auxadc:
+> +	clk_disable_unprepare(mt->clk_auxadc);
+> +
+> +	return ret;
+> +}
+> +
+> +static SIMPLE_DEV_PM_OPS(mtk_thermal_pm_ops,
+> +			 mtk_thermal_suspend, mtk_thermal_resume);
+> +
+>  static struct platform_driver mtk_thermal_driver = {
+>  	.probe = mtk_thermal_probe,
+>  	.remove = mtk_thermal_remove,
+>  	.driver = {
+>  		.name = "mtk-thermal",
+> +		.pm = &mtk_thermal_pm_ops,
+>  		.of_match_table = mtk_thermal_of_match,
+>  	},
+>  };
