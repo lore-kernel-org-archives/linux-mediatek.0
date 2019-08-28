@@ -1,102 +1,50 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v7 07/13] soc: mediatek: Refactor bus protection control
-Date: Wed, 28 Aug 2019 12:28:37 +0200
-Message-ID: <b7936307-fb0b-59e7-627f-98a13a22eb52@gmail.com>
-References: <1566983506-26598-1-git-send-email-weiyi.lu@mediatek.com>
- <1566983506-26598-8-git-send-email-weiyi.lu@mediatek.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v5 05/10] regulator: Add document for MT6358 regulator
+Date: Wed, 28 Aug 2019 11:44:03 +0100
+Message-ID: <20190828104403.GD4298@sirena.co.uk>
+References: <1566531931-9772-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <1566531931-9772-6-git-send-email-hsin-hsiung.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+        protocol="application/pgp-signature"; boundary="gE7i1rD7pdK0Ng3j"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1566983506-26598-8-git-send-email-weiyi.lu@mediatek.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <1566531931-9772-6-git-send-email-hsin-hsiung.wang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Weiyi Lu <weiyi.lu@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh@kernel.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Yong Wu <yong.wu@mediatek.com>
+To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+Cc: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Mark Rutland <mark.rutland@arm.com>, Liam Girdwood <lgirdwood@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Kate Stewart <kstewart@linuxfoundation.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Thomas Gleixner <tglx@linutronix.de>, Richard Fontana <rfontana@redhat.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rtc@vger.kernel.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
 
+--gE7i1rD7pdK0Ng3j
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On 28/08/2019 11:11, Weiyi Lu wrote:
-> Put bus protection enable and disable control in separate functions.
-> 
-> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+On Fri, Aug 23, 2019 at 11:45:26AM +0800, Hsin-Hsiung Wang wrote:
 
-Applied to v5.4-next/soc
+> +	pmic {
+> +		compatible =3D "mediatek,mt6358";
+> +
+> +		mt6358regulator: mt6358regulator {
+> +			compatible =3D "mediatek,mt6358-regulator";
 
-Thanks!
+This still lists the subnode compatible string which has been removed
+=66rom the binding.
 
-> ---
->  drivers/soc/mediatek/mtk-scpsys.c | 44 ++++++++++++++++++++++++++-------------
->  1 file changed, 30 insertions(+), 14 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-> index ad0f619..fb2b027 100644
-> --- a/drivers/soc/mediatek/mtk-scpsys.c
-> +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> @@ -274,6 +274,30 @@ static int scpsys_sram_disable(struct scp_domain *scpd, void __iomem *ctl_addr)
->  			MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
->  }
->  
-> +static int scpsys_bus_protect_enable(struct scp_domain *scpd)
-> +{
-> +	struct scp *scp = scpd->scp;
-> +
-> +	if (!scpd->data->bus_prot_mask)
-> +		return 0;
-> +
-> +	return mtk_infracfg_set_bus_protection(scp->infracfg,
-> +			scpd->data->bus_prot_mask,
-> +			scp->bus_prot_reg_update);
-> +}
-> +
-> +static int scpsys_bus_protect_disable(struct scp_domain *scpd)
-> +{
-> +	struct scp *scp = scpd->scp;
-> +
-> +	if (!scpd->data->bus_prot_mask)
-> +		return 0;
-> +
-> +	return mtk_infracfg_clear_bus_protection(scp->infracfg,
-> +			scpd->data->bus_prot_mask,
-> +			scp->bus_prot_reg_update);
-> +}
-> +
->  static int scpsys_power_on(struct generic_pm_domain *genpd)
->  {
->  	struct scp_domain *scpd = container_of(genpd, struct scp_domain, genpd);
-> @@ -316,13 +340,9 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
->  	if (ret < 0)
->  		goto err_pwr_ack;
->  
-> -	if (scpd->data->bus_prot_mask) {
-> -		ret = mtk_infracfg_clear_bus_protection(scp->infracfg,
-> -				scpd->data->bus_prot_mask,
-> -				scp->bus_prot_reg_update);
-> -		if (ret)
-> -			goto err_pwr_ack;
-> -	}
-> +	ret = scpsys_bus_protect_disable(scpd);
-> +	if (ret < 0)
-> +		goto err_pwr_ack;
->  
->  	return 0;
->  
-> @@ -344,13 +364,9 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
->  	u32 val;
->  	int ret, tmp;
->  
-> -	if (scpd->data->bus_prot_mask) {
-> -		ret = mtk_infracfg_set_bus_protection(scp->infracfg,
-> -				scpd->data->bus_prot_mask,
-> -				scp->bus_prot_reg_update);
-> -		if (ret)
-> -			goto out;
-> -	}
-> +	ret = scpsys_bus_protect_enable(scpd);
-> +	if (ret < 0)
-> +		goto out;
->  
->  	ret = scpsys_sram_disable(scpd, ctl_addr);
->  	if (ret < 0)
-> 
+--gE7i1rD7pdK0Ng3j
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl1mWvIACgkQJNaLcl1U
+h9DRhggAgRvC7U6BzuvYz9spXJ1dhssJoo4Cnc4KMXUuUQ6QoLUsAWOp6czaDVMi
+2RNmm2MTbOfyXQs/lYDyEmNCxNCevItzJzxx0F1ny9EQ43yUGc/eoV1EqQB4df/j
+SmqBQi1AbtM8eftJ/qtYfjGpuMgvch335oKN0YlpdsKgbT05CRlywkciokwd9D/N
++ZikuKYjDNep1358Y/axhdaeGBjwIC9YaUh9TYZ7oRE6U8H4hacfkSiCp76GYzn3
+Wta9GRiHSlYxkiUgqDT7C6sqwDNfeIq68hda/2FoveacCOU9brIy8BwRC53amB95
+adi4im7qPsNIUHUNKl7lgztsd8jrSw==
+=HBf8
+-----END PGP SIGNATURE-----
+
+--gE7i1rD7pdK0Ng3j--
