@@ -1,111 +1,83 @@
-From: Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: Re: [PATCH 2/2] clk: mediatek: add pericfg clocks for MT8183
-Date: Wed, 28 Aug 2019 14:55:33 +0800
-Message-ID: <1566975333.24969.2.camel@mtksdaap41>
-References: <1566971755-21217-1-git-send-email-chunfeng.yun@mediatek.com>
-         <1566971755-21217-2-git-send-email-chunfeng.yun@mediatek.com>
+From: John Crispin <john@phrozen.org>
+Subject: Re: [PATCH 5/5] crypto: mediatek: fix incorrect crypto key setting
+Date: Wed, 28 Aug 2019 09:03:58 +0200
+Message-ID: <f91ceaa6-edb3-1e70-1fdc-d0022fafd316@phrozen.org>
+References: <20190828063716.22689-1-vic.wu@mediatek.com>
+ <20190828063716.22689-5-vic.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1566971755-21217-2-git-send-email-chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Stephen Boyd <sboyd@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Michael Turquette <mturquette@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Erin Lo <erin.lo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190828063716.22689-5-vic.wu@mediatek.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Vic Wu <vic.wu@mediatek.com>, Herbert Xu <herbert@gondor.apana.org.au>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-crypto@vger.kernel.org, "David S . Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2019-08-28 at 13:55 +0800, Chunfeng Yun wrote:
-> Add pericfg clocks for MT8183, it's used when support USB
-> remote wakeup
-> 
-> Cc: Weiyi Lu <weiyi.lu@mediatek.com>
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+
+On 28/08/2019 08:37, Vic Wu wrote:
+> Record crypto key to context during setkey and set the key to
+> transform state buffer in encrypt/decrypt process.
+>
+> Signed-off-by: Vic Wu <vic.wu@mediatek.com>
+
+Thanks for the fix !
+
+Tested-by: John Crispin <john@phrozen.og>
+
 > ---
->  drivers/clk/mediatek/clk-mt8183.c      | 35 ++++++++++++++++++++++++++
->  include/dt-bindings/clock/mt8183-clk.h |  4 +++
->  2 files changed, 39 insertions(+)
-> 
-> diff --git a/drivers/clk/mediatek/clk-mt8183.c b/drivers/clk/mediatek/clk-mt8183.c
-> index 1aa5f4059251..b19221bad0c9 100644
-> --- a/drivers/clk/mediatek/clk-mt8183.c
-> +++ b/drivers/clk/mediatek/clk-mt8183.c
-> @@ -999,6 +999,25 @@ static const struct mtk_gate infra_clks[] = {
->  		"msdc50_0_sel", 24),
->  };
->  
-> +static const struct mtk_gate_regs peri_cg_regs = {
-> +	.set_ofs = 0x20c,
-> +	.clr_ofs = 0x20c,
-> +	.sta_ofs = 0x20c,
-> +};
-> +
-> +#define GATE_PERI(_id, _name, _parent, _shift) {	\
-> +	.id = _id,				\
-> +	.name = _name,				\
-> +	.parent_name = _parent,			\
-> +	.regs = &peri_cg_regs,			\
-> +	.shift = _shift,			\
-> +	.ops = &mtk_clk_gate_ops_no_setclr_inv,	\
-> +}
-
-Hi Chunfeng,
-
-I suggest
-
-#define GATE_PERI(_id, _name, _parent, _shift)		\
-	GATE_MTK(_id, _name, _parent, &peri_cg_regs, _shift,	\
-		&mtk_clk_gate_ops_no_setclr_inv)
-
-> +
-> +static const struct mtk_gate peri_clks[] = {
-> +	GATE_PERI(CLK_PERI_AXI, "periaxi", "axi_sel", 31),
-> +};
-> +
->  static const struct mtk_gate_regs apmixed_cg_regs = {
->  	.set_ofs = 0x20,
->  	.clr_ofs = 0x20,
-> @@ -1194,6 +1213,19 @@ static int clk_mt8183_infra_probe(struct platform_device *pdev)
->  	return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
->  }
->  
-> +static int clk_mt8183_peri_probe(struct platform_device *pdev)
-> +{
-> +	struct clk_onecell_data *clk_data;
-> +	struct device_node *node = pdev->dev.of_node;
-> +
-> +	clk_data = mtk_alloc_clk_data(CLK_PERI_NR_CLK);
-> +
-> +	mtk_clk_register_gates(node, peri_clks, ARRAY_SIZE(peri_clks),
-> +			       clk_data);
-> +
-> +	return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
-> +}
-> +
->  static int clk_mt8183_mcu_probe(struct platform_device *pdev)
->  {
->  	struct clk_onecell_data *clk_data;
-> @@ -1223,6 +1255,9 @@ static const struct of_device_id of_match_clk_mt8183[] = {
->  	}, {
->  		.compatible = "mediatek,mt8183-infracfg",
->  		.data = clk_mt8183_infra_probe,
-> +	}, {
-> +		.compatible = "mediatek,mt8183-pericfg",
-> +		.data = clk_mt8183_peri_probe,
->  	}, {
->  		.compatible = "mediatek,mt8183-mcucfg",
->  		.data = clk_mt8183_mcu_probe,
-> diff --git a/include/dt-bindings/clock/mt8183-clk.h b/include/dt-bindings/clock/mt8183-clk.h
-> index 0046506eb24c..a7b470b0ec8a 100644
-> --- a/include/dt-bindings/clock/mt8183-clk.h
-> +++ b/include/dt-bindings/clock/mt8183-clk.h
-> @@ -284,6 +284,10 @@
->  #define CLK_INFRA_FBIST2FPC		100
->  #define CLK_INFRA_NR_CLK		101
->  
-> +/* PERICFG */
-> +#define CLK_PERI_AXI			0
-> +#define CLK_PERI_NR_CLK			1
-> +
->  /* MFGCFG */
->  #define CLK_MFG_BG3D			0
->  #define CLK_MFG_NR_CLK			1
+>   drivers/crypto/mediatek/mtk-aes.c | 11 ++++++-----
+>   1 file changed, 6 insertions(+), 5 deletions(-)
+>
+> diff --git a/drivers/crypto/mediatek/mtk-aes.c b/drivers/crypto/mediatek/mtk-aes.c
+> index 9eeb8b8d..05f21dc8 100644
+> --- a/drivers/crypto/mediatek/mtk-aes.c
+> +++ b/drivers/crypto/mediatek/mtk-aes.c
+> @@ -107,6 +107,7 @@ struct mtk_aes_reqctx {
+>   struct mtk_aes_base_ctx {
+>   	struct mtk_cryp *cryp;
+>   	u32 keylen;
+> +	__le32 key[12];
+>   	__le32 keymode;
+>   
+>   	mtk_aes_fn start;
+> @@ -541,6 +542,8 @@ static int mtk_aes_handle_queue(struct mtk_cryp *cryp, u8 id,
+>   		backlog->complete(backlog, -EINPROGRESS);
+>   
+>   	ctx = crypto_tfm_ctx(areq->tfm);
+> +	/* Write key into state buffer */
+> +	memcpy(ctx->info.state, ctx->key, sizeof(ctx->key));
+>   
+>   	aes->areq = areq;
+>   	aes->ctx = ctx;
+> @@ -660,7 +663,7 @@ static int mtk_aes_setkey(struct crypto_ablkcipher *tfm,
+>   	}
+>   
+>   	ctx->keylen = SIZE_IN_WORDS(keylen);
+> -	mtk_aes_write_state_le(ctx->info.state, (const u32 *)key, keylen);
+> +	mtk_aes_write_state_le(ctx->key, (const u32 *)key, keylen);
+>   
+>   	return 0;
+>   }
+> @@ -1093,10 +1096,8 @@ static int mtk_aes_gcm_setkey(struct crypto_aead *aead, const u8 *key,
+>   	if (err)
+>   		goto out;
+>   
+> -	/* Write key into state buffer */
+> -	mtk_aes_write_state_le(ctx->info.state, (const u32 *)key, keylen);
+> -	/* Write key(H) into state buffer */
+> -	mtk_aes_write_state_be(ctx->info.state + ctx->keylen, data->hash,
+> +	mtk_aes_write_state_le(ctx->key, (const u32 *)key, keylen);
+> +	mtk_aes_write_state_be(ctx->key + ctx->keylen, data->hash,
+>   			       AES_BLOCK_SIZE);
+>   out:
+>   	kzfree(data);
