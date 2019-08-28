@@ -1,305 +1,117 @@
-From: Zhang Rui <rui.zhang@intel.com>
-Subject: Re: [PATCH] thermal: mediatek: add suspend/resume callback
-Date: Wed, 28 Aug 2019 17:36:38 +0800
-Message-ID: <36f8f79c1353622bf0bb109296cd6229ac23e648.camel@intel.com>
-References: <1562058985-27538-1-git-send-email-michael.kao@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v7 02/13] dt-bindings: soc: Add MT8183 power dt-bindings
+Date: Wed, 28 Aug 2019 11:39:55 +0200
+Message-ID: <48655b84-fd20-f417-529c-b81a7d64d63d@gmail.com>
+References: <1566983506-26598-1-git-send-email-weiyi.lu@mediatek.com>
+ <1566983506-26598-3-git-send-email-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1562058985-27538-1-git-send-email-michael.kao@mediatek.com>
+In-Reply-To: <1566983506-26598-3-git-send-email-weiyi.lu@mediatek.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: michael.kao@mediatek.com, Eduardo Valentin <edubezval@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, hsinyi@chromium.org
-Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Louis Yu <louis.yu@mediatek.com>
+To: Weiyi Lu <weiyi.lu@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh@kernel.org>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Yong Wu <yong.wu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-07-02 at 17:16 +0800, michael.kao@mediatek.com wrote:
-> From: Louis Yu <louis.yu@mediatek.com>
+
+
+On 28/08/2019 11:11, Weiyi Lu wrote:
+> Add power dt-bindings of MT8183 and introduces "BASIC" and
+> "SUBSYS" clock types in binding document.
+> The "BASIC" type is compatible to the original power control with
+> clock name [a-z]+[0-9]*, e.g. mm, vpu1.
+> The "SUBSYS" type is used for bus protection control with clock
+> name [a-z]+-[0-9]+, e.g. isp-0, cam-1.
 > 
-> Add suspend/resume callback to disable/enable Mediatek thermal sensor
-> respectively. Since thermal power domain is off in suspend, thermal
-> driver
-> needs re-initialization during resume.
-> 
-> Signed-off-by: Louis Yu <louis.yu@mediatek.com>
-> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 > ---
-> This patch series base on these patches [1][2][3].
+>  .../devicetree/bindings/soc/mediatek/scpsys.txt    | 14 ++++++++++++
+>  include/dt-bindings/power/mt8183-power.h           | 26 ++++++++++++++++++++++
+>  2 files changed, 40 insertions(+)
+>  create mode 100644 include/dt-bindings/power/mt8183-power.h
 > 
-> [1]thermal: mediatek: mt8183: fix bank number settings (
-> https://patchwork.kernel.org/patch/10938817/)
-> [2]thermal: mediatek: add another get_temp ops for thermal sensors (
-> https://patchwork.kernel.org/patch/10938829/)
-> [3]thermal: mediatek: use spinlock to protect PTPCORESEL (
-> https://patchwork.kernel.org/patch/10938841/)
+> diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+> index 876693a..00eab7e 100644
+> --- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+> +++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+> @@ -14,6 +14,7 @@ power/power_domain.txt. It provides the power domains defined in
+>  - include/dt-bindings/power/mt2701-power.h
+>  - include/dt-bindings/power/mt2712-power.h
+>  - include/dt-bindings/power/mt7622-power.h
+> +- include/dt-bindings/power/mt8183-power.h
+>  
+>  Required properties:
+>  - compatible: Should be one of:
+> @@ -25,18 +26,31 @@ Required properties:
+>  	- "mediatek,mt7623a-scpsys": For MT7623A SoC
+>  	- "mediatek,mt7629-scpsys", "mediatek,mt7622-scpsys": For MT7629 SoC
+>  	- "mediatek,mt8173-scpsys"
+> +	- "mediatek,mt8183-scpsys"
+>  - #power-domain-cells: Must be 1
+>  - reg: Address range of the SCPSYS unit
+>  - infracfg: must contain a phandle to the infracfg controller
+>  - clock, clock-names: clocks according to the common clock binding.
+>                        These are clocks which hardware needs to be
+>                        enabled before enabling certain power domains.
+> +                      The new clock type "BASIC" belongs to the type above.
+> +                      As to the new clock type "SUBSYS" needs to be
+> +                      enabled before releasing bus protection.
+
+The new clock type won't be new in a couple of month, better reword this. E.g.:
+Some SoCs have to groups of clocks. BASIC clocks need to be enabled before
+enabling the corresponding power domain. SUBSYS clocks need to be enabled before
+releasing the bus protection.
+
+>  	Required clocks for MT2701 or MT7623: "mm", "mfg", "ethif"
+>  	Required clocks for MT2712: "mm", "mfg", "venc", "jpgdec", "audio", "vdec"
+>  	Required clocks for MT6797: "mm", "mfg", "vdec"
+>  	Required clocks for MT7622 or MT7629: "hif_sel"
+>  	Required clocks for MT7623A: "ethif"
+>  	Required clocks for MT8173: "mm", "mfg", "venc", "venc_lt"
+> +	Required clocks for MT8183: BASIC: "audio", "mfg", "mm", "cam", "isp",
+> +					   "vpu", "vpu1", "vpu2", "vpu3"
+> +				    SUBSYS: "mm-0", "mm-1", "mm-2", "mm-3",
+> +					    "mm-4", "mm-5", "mm-6", "mm-7",
+> +					    "mm-8", "mm-9", "isp-0", "isp-1",
+> +					    "cam-0", "cam-1", "cam-2", "cam-3",
+> +					    "cam-4", "cam-5", "cam-6", "vpu-0",
+> +					    "vpu-1", "vpu-2", "vpu-3", "vpu-4",
+> +					    "vpu-5"
+>  
+>  Optional properties:
+>  - vdec-supply: Power supply for the vdec power domain
+> diff --git a/include/dt-bindings/power/mt8183-power.h b/include/dt-bindings/power/mt8183-power.h
+> new file mode 100644
+> index 0000000..5c0c8c7
+> --- /dev/null
+> +++ b/include/dt-bindings/power/mt8183-power.h
+> @@ -0,0 +1,26 @@
+> +/* SPDX-License-Identifier: GPL-2.0
+> + *
+> + * Copyright (c) 2018 MediaTek Inc.
+> + * Author: Weiyi Lu <weiyi.lu@mediatek.com>
+> + */
+> +
+> +#ifndef _DT_BINDINGS_POWER_MT8183_POWER_H
+> +#define _DT_BINDINGS_POWER_MT8183_POWER_H
+> +
+> +#define MT8183_POWER_DOMAIN_AUDIO	0
+> +#define MT8183_POWER_DOMAIN_CONN	1
+> +#define MT8183_POWER_DOMAIN_MFG_ASYNC	2
+> +#define MT8183_POWER_DOMAIN_MFG		3
+> +#define MT8183_POWER_DOMAIN_MFG_CORE0	4
+> +#define MT8183_POWER_DOMAIN_MFG_CORE1	5
+> +#define MT8183_POWER_DOMAIN_MFG_2D	6
+> +#define MT8183_POWER_DOMAIN_DISP	7
+> +#define MT8183_POWER_DOMAIN_CAM		8
+> +#define MT8183_POWER_DOMAIN_ISP		9
+> +#define MT8183_POWER_DOMAIN_VDEC	10
+> +#define MT8183_POWER_DOMAIN_VENC	11
+> +#define MT8183_POWER_DOMAIN_VPU_TOP	12
+> +#define MT8183_POWER_DOMAIN_VPU_CORE0	13
+> +#define MT8183_POWER_DOMAIN_VPU_CORE1	14
+> +
+> +#endif /* _DT_BINDINGS_POWER_MT8183_POWER_H */
 > 
-all these patches are not sent to linux-pm mailing list, thus they
-never got chance to get merged. please resend them to linux-pm.
-
-I don't know what the first part of the patch set do, so I'm wondering
-if there is any dependency?
-
-thanks,
-rui
-
->  drivers/thermal/mtk_thermal.c | 134
-> +++++++++++++++++++++++++++++++++++++++---
->  1 file changed, 125 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/thermal/mtk_thermal.c
-> b/drivers/thermal/mtk_thermal.c
-> index 3d01153..61d4114 100644
-> --- a/drivers/thermal/mtk_thermal.c
-> +++ b/drivers/thermal/mtk_thermal.c
-> @@ -30,6 +30,7 @@
->  #include <linux/thermal.h>
->  #include <linux/reset.h>
->  #include <linux/types.h>
-> +#include <linux/iopoll.h>
->  
->  /* AUXADC Registers */
->  #define AUXADC_CON1_SET_V	0x008
-> @@ -39,6 +40,8 @@
->  
->  #define APMIXED_SYS_TS_CON1	0x604
->  
-> +#define APMIXED_SYS_TS_CON1_BUFFER_OFF	0x30
-> +
->  /* Thermal Controller Registers */
->  #define TEMP_MONCTL0		0x000
->  #define TEMP_MONCTL1		0x004
-> @@ -46,6 +49,7 @@
->  #define TEMP_MONIDET0		0x014
->  #define TEMP_MONIDET1		0x018
->  #define TEMP_MSRCTL0		0x038
-> +#define TEMP_MSRCTL1		0x03c
->  #define TEMP_AHBPOLL		0x040
->  #define TEMP_AHBTO		0x044
->  #define TEMP_ADCPNP0		0x048
-> @@ -95,6 +99,9 @@
->  #define TEMP_ADCVALIDMASK_VALID_HIGH		BIT(5)
->  #define TEMP_ADCVALIDMASK_VALID_POS(bit)	(bit)
->  
-> +#define TEMP_MSRCTL1_BUS_STA	(BIT(0) | BIT(7))
-> +#define TEMP_MSRCTL1_SENSING_POINTS_PAUSE	0x10E
-> +
->  /* MT8173 thermal sensors */
->  #define MT8173_TS1	0
->  #define MT8173_TS2	1
-> @@ -266,6 +273,10 @@ struct mtk_thermal_data {
->  struct mtk_thermal {
->  	struct device *dev;
->  	void __iomem *thermal_base;
-> +	void __iomem *apmixed_base;
-> +	void __iomem *auxadc_base;
-> +	u64 apmixed_phys_base;
-> +	u64 auxadc_phys_base;
->  
->  	struct clk *clk_peri_therm;
->  	struct clk *clk_auxadc;
-> @@ -795,6 +806,42 @@ static void mtk_thermal_init_bank(struct
-> mtk_thermal *mt, int num,
->  	mtk_thermal_put_bank(bank);
->  }
->  
-> +static int mtk_thermal_disable_sensing(struct mtk_thermal *mt, int
-> num)
-> +{
-> +	struct mtk_thermal_bank *bank = &mt->banks[num];
-> +	u32 val;
-> +	unsigned long timeout;
-> +	void __iomem *addr;
-> +	int ret = 0;
-> +
-> +	bank->id = num;
-> +	bank->mt = mt;
-> +
-> +	mtk_thermal_get_bank(bank);
-> +
-> +	val = readl(mt->thermal_base + TEMP_MSRCTL1);
-> +	/* pause periodic temperature measurement for sensing points */
-> +	writel(val | TEMP_MSRCTL1_SENSING_POINTS_PAUSE,
-> +	       mt->thermal_base + TEMP_MSRCTL1);
-> +
-> +	/* wait until temperature measurement bus idle */
-> +	timeout = jiffies + HZ;
-> +	addr = mt->thermal_base + TEMP_MSRCTL1;
-> +
-> +	ret = readl_poll_timeout(addr, val, (val &
-> TEMP_MSRCTL1_BUS_STA) == 0x0,
-> +				 0, timeout);
-> +	if (ret < 0)
-> +		goto out;
-> +
-> +	/* disable periodic temperature meausrement on sensing points
-> */
-> +	writel(0x0, mt->thermal_base + TEMP_MONCTL0);
-> +
-> +out:
-> +	mtk_thermal_put_bank(bank);
-> +
-> +	return ret;
-> +}
-> +
->  static u64 of_get_phys_base(struct device_node *np)
->  {
->  	u64 size64;
-> @@ -917,7 +964,6 @@ static int mtk_thermal_probe(struct
-> platform_device *pdev)
->  	struct device_node *auxadc, *apmixedsys, *np = pdev-
-> >dev.of_node;
->  	struct mtk_thermal *mt;
->  	struct resource *res;
-> -	u64 auxadc_phys_base, apmixed_phys_base;
->  	struct thermal_zone_device *tzdev;
->  	struct mtk_thermal_zone *tz;
->  
-> @@ -954,11 +1000,11 @@ static int mtk_thermal_probe(struct
-> platform_device *pdev)
->  		return -ENODEV;
->  	}
->  
-> -	auxadc_phys_base = of_get_phys_base(auxadc);
-> +	mt->auxadc_phys_base = of_get_phys_base(auxadc);
->  
->  	of_node_put(auxadc);
->  
-> -	if (auxadc_phys_base == OF_BAD_ADDR) {
-> +	if (mt->auxadc_phys_base == OF_BAD_ADDR) {
->  		dev_err(&pdev->dev, "Can't get auxadc phys address\n");
->  		return -EINVAL;
->  	}
-> @@ -969,11 +1015,12 @@ static int mtk_thermal_probe(struct
-> platform_device *pdev)
->  		return -ENODEV;
->  	}
->  
-> -	apmixed_phys_base = of_get_phys_base(apmixedsys);
-> +	mt->apmixed_phys_base = of_get_phys_base(apmixedsys);
-> +	mt->apmixed_base = of_iomap(apmixedsys, 0);
->  
->  	of_node_put(apmixedsys);
->  
-> -	if (apmixed_phys_base == OF_BAD_ADDR) {
-> +	if (mt->apmixed_phys_base == OF_BAD_ADDR) {
->  		dev_err(&pdev->dev, "Can't get auxadc phys address\n");
->  		return -EINVAL;
->  	}
-> @@ -985,19 +1032,19 @@ static int mtk_thermal_probe(struct
-> platform_device *pdev)
->  	ret = clk_prepare_enable(mt->clk_auxadc);
->  	if (ret) {
->  		dev_err(&pdev->dev, "Can't enable auxadc clk: %d\n",
-> ret);
-> -		return ret;
-> +		goto err_disable_clk_auxadc;
->  	}
->  
->  	ret = clk_prepare_enable(mt->clk_peri_therm);
->  	if (ret) {
->  		dev_err(&pdev->dev, "Can't enable peri clk: %d\n",
-> ret);
-> -		goto err_disable_clk_auxadc;
-> +		goto err_disable_clk_peri_therm;
->  	}
->  
->  	for (ctrl_id = 0; ctrl_id < mt->conf->num_controller ;
-> ctrl_id++)
->  		for (i = 0; i < mt->conf->num_banks; i++)
-> -			mtk_thermal_init_bank(mt, i, apmixed_phys_base,
-> -					      auxadc_phys_base,
-> ctrl_id);
-> +			mtk_thermal_init_bank(mt, i, mt-
-> >apmixed_phys_base,
-> +					      mt->auxadc_phys_base,
-> ctrl_id);
->  
->  	platform_set_drvdata(pdev, mt);
->  
-> @@ -1041,11 +1088,80 @@ static int mtk_thermal_remove(struct
-> platform_device *pdev)
->  	return 0;
->  }
->  
-> +static int __maybe_unused mtk_thermal_suspend(struct device *dev)
-> +{
-> +	struct platform_device *pdev = to_platform_device(dev);
-> +	struct mtk_thermal *mt = platform_get_drvdata(pdev);
-> +	int i, ret;
-> +
-> +	for (i = 0; i < mt->conf->num_banks; i++) {
-> +		ret = mtk_thermal_disable_sensing(mt, i);
-> +		if (ret)
-> +			goto out;
-> +	}
-> +
-> +	/* disable buffer */
-> +	writel(readl(mt->apmixed_base + APMIXED_SYS_TS_CON1) |
-> +	       APMIXED_SYS_TS_CON1_BUFFER_OFF,
-> +	       mt->apmixed_base + APMIXED_SYS_TS_CON1);
-> +
-> +	clk_disable_unprepare(mt->clk_peri_therm);
-> +	clk_disable_unprepare(mt->clk_auxadc);
-> +
-> +	return 0;
-> +
-> +out:
-> +	dev_err(&pdev->dev, "Failed to wait until bus idle\n");
-> +
-> +	return ret;
-> +}
-> +
-> +static int __maybe_unused mtk_thermal_resume(struct device *dev)
-> +{
-> +	struct platform_device *pdev = to_platform_device(dev);
-> +	struct mtk_thermal *mt = platform_get_drvdata(pdev);
-> +	int i, ret, ctrl_id;
-> +
-> +	ret = device_reset(&pdev->dev);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = clk_prepare_enable(mt->clk_auxadc);
-> +	if (ret) {
-> +		dev_err(&pdev->dev, "Can't enable auxadc clk: %d\n",
-> ret);
-> +		goto err_disable_clk_auxadc;
-> +	}
-> +
-> +	ret = clk_prepare_enable(mt->clk_peri_therm);
-> +	if (ret) {
-> +		dev_err(&pdev->dev, "Can't enable peri clk: %d\n",
-> ret);
-> +		goto err_disable_clk_peri_therm;
-> +	}
-> +
-> +	for (ctrl_id = 0; ctrl_id < mt->conf->num_controller ;
-> ctrl_id++)
-> +		for (i = 0; i < mt->conf->num_banks; i++)
-> +			mtk_thermal_init_bank(mt, i, mt-
-> >apmixed_phys_base,
-> +					      mt->auxadc_phys_base,
-> ctrl_id);
-> +
-> +	return 0;
-> +
-> +err_disable_clk_peri_therm:
-> +	clk_disable_unprepare(mt->clk_peri_therm);
-> +err_disable_clk_auxadc:
-> +	clk_disable_unprepare(mt->clk_auxadc);
-> +
-> +	return ret;
-> +}
-> +
-> +static SIMPLE_DEV_PM_OPS(mtk_thermal_pm_ops,
-> +			 mtk_thermal_suspend, mtk_thermal_resume);
-> +
->  static struct platform_driver mtk_thermal_driver = {
->  	.probe = mtk_thermal_probe,
->  	.remove = mtk_thermal_remove,
->  	.driver = {
->  		.name = "mtk-thermal",
-> +		.pm = &mtk_thermal_pm_ops,
->  		.of_match_table = mtk_thermal_of_match,
->  	},
->  };
