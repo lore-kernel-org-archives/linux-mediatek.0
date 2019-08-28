@@ -1,53 +1,111 @@
-From: Vic Wu <vic.wu@mediatek.com>
-Subject: [PATCH 3/5] crypto: mediatek: only treat EBUSY as transient if backlog
-Date: Wed, 28 Aug 2019 14:37:14 +0800
-Message-ID: <20190828063716.22689-3-vic.wu@mediatek.com>
-References: <20190828063716.22689-1-vic.wu@mediatek.com>
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+Subject: Re: [PATCH 2/2] clk: mediatek: add pericfg clocks for MT8183
+Date: Wed, 28 Aug 2019 14:55:33 +0800
+Message-ID: <1566975333.24969.2.camel@mtksdaap41>
+References: <1566971755-21217-1-git-send-email-chunfeng.yun@mediatek.com>
+         <1566971755-21217-2-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190828063716.22689-1-vic.wu@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Herbert Xu <herbert@gondor.apana.org.au>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-crypto@vger.kernel.org, Vic Wu <vic.wu@mediatek.com>, "David S . Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1566971755-21217-2-git-send-email-chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Stephen Boyd <sboyd@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Michael Turquette <mturquette@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Erin Lo <erin.lo@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Ryder Lee <ryder.lee@mediatek.com>
+On Wed, 2019-08-28 at 13:55 +0800, Chunfeng Yun wrote:
+> Add pericfg clocks for MT8183, it's used when support USB
+> remote wakeup
+> 
+> Cc: Weiyi Lu <weiyi.lu@mediatek.com>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>  drivers/clk/mediatek/clk-mt8183.c      | 35 ++++++++++++++++++++++++++
+>  include/dt-bindings/clock/mt8183-clk.h |  4 +++
+>  2 files changed, 39 insertions(+)
+> 
+> diff --git a/drivers/clk/mediatek/clk-mt8183.c b/drivers/clk/mediatek/clk-mt8183.c
+> index 1aa5f4059251..b19221bad0c9 100644
+> --- a/drivers/clk/mediatek/clk-mt8183.c
+> +++ b/drivers/clk/mediatek/clk-mt8183.c
+> @@ -999,6 +999,25 @@ static const struct mtk_gate infra_clks[] = {
+>  		"msdc50_0_sel", 24),
+>  };
+>  
+> +static const struct mtk_gate_regs peri_cg_regs = {
+> +	.set_ofs = 0x20c,
+> +	.clr_ofs = 0x20c,
+> +	.sta_ofs = 0x20c,
+> +};
+> +
+> +#define GATE_PERI(_id, _name, _parent, _shift) {	\
+> +	.id = _id,				\
+> +	.name = _name,				\
+> +	.parent_name = _parent,			\
+> +	.regs = &peri_cg_regs,			\
+> +	.shift = _shift,			\
+> +	.ops = &mtk_clk_gate_ops_no_setclr_inv,	\
+> +}
 
-The driver was treating -EBUSY as indication of queueing to backlog
-without checking that backlog is enabled for the request.
+Hi Chunfeng,
 
-Fix it by checking request flags.
+I suggest
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-Signed-off-by: Vic Wu <vic.wu@mediatek.com>
----
- drivers/crypto/mediatek/mtk-sha.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+#define GATE_PERI(_id, _name, _parent, _shift)		\
+	GATE_MTK(_id, _name, _parent, &peri_cg_regs, _shift,	\
+		&mtk_clk_gate_ops_no_setclr_inv)
 
-diff --git a/drivers/crypto/mediatek/mtk-sha.c b/drivers/crypto/mediatek/mtk-sha.c
-index 2226f12d..1ecef3b5 100644
---- a/drivers/crypto/mediatek/mtk-sha.c
-+++ b/drivers/crypto/mediatek/mtk-sha.c
-@@ -781,7 +781,9 @@ static int mtk_sha_finup(struct ahash_request *req)
- 	ctx->flags |= SHA_FLAGS_FINUP;
- 
- 	err1 = mtk_sha_update(req);
--	if (err1 == -EINPROGRESS || err1 == -EBUSY)
-+	if (err1 == -EINPROGRESS ||
-+	    (err1 == -EBUSY && (ahash_request_flags(req) &
-+				CRYPTO_TFM_REQ_MAY_BACKLOG)))
- 		return err1;
- 	/*
- 	 * final() has to be always called to cleanup resources
--- 
-2.17.1
+> +
+> +static const struct mtk_gate peri_clks[] = {
+> +	GATE_PERI(CLK_PERI_AXI, "periaxi", "axi_sel", 31),
+> +};
+> +
+>  static const struct mtk_gate_regs apmixed_cg_regs = {
+>  	.set_ofs = 0x20,
+>  	.clr_ofs = 0x20,
+> @@ -1194,6 +1213,19 @@ static int clk_mt8183_infra_probe(struct platform_device *pdev)
+>  	return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+>  }
+>  
+> +static int clk_mt8183_peri_probe(struct platform_device *pdev)
+> +{
+> +	struct clk_onecell_data *clk_data;
+> +	struct device_node *node = pdev->dev.of_node;
+> +
+> +	clk_data = mtk_alloc_clk_data(CLK_PERI_NR_CLK);
+> +
+> +	mtk_clk_register_gates(node, peri_clks, ARRAY_SIZE(peri_clks),
+> +			       clk_data);
+> +
+> +	return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+> +}
+> +
+>  static int clk_mt8183_mcu_probe(struct platform_device *pdev)
+>  {
+>  	struct clk_onecell_data *clk_data;
+> @@ -1223,6 +1255,9 @@ static const struct of_device_id of_match_clk_mt8183[] = {
+>  	}, {
+>  		.compatible = "mediatek,mt8183-infracfg",
+>  		.data = clk_mt8183_infra_probe,
+> +	}, {
+> +		.compatible = "mediatek,mt8183-pericfg",
+> +		.data = clk_mt8183_peri_probe,
+>  	}, {
+>  		.compatible = "mediatek,mt8183-mcucfg",
+>  		.data = clk_mt8183_mcu_probe,
+> diff --git a/include/dt-bindings/clock/mt8183-clk.h b/include/dt-bindings/clock/mt8183-clk.h
+> index 0046506eb24c..a7b470b0ec8a 100644
+> --- a/include/dt-bindings/clock/mt8183-clk.h
+> +++ b/include/dt-bindings/clock/mt8183-clk.h
+> @@ -284,6 +284,10 @@
+>  #define CLK_INFRA_FBIST2FPC		100
+>  #define CLK_INFRA_NR_CLK		101
+>  
+> +/* PERICFG */
+> +#define CLK_PERI_AXI			0
+> +#define CLK_PERI_NR_CLK			1
+> +
+>  /* MFGCFG */
+>  #define CLK_MFG_BG3D			0
+>  #define CLK_MFG_NR_CLK			1
