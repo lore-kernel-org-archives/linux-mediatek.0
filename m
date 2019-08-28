@@ -1,33 +1,22 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Applied "ASoC: mediatek: mt8183: tdm hw support tdm out and 8ch i2s
- out" to the asoc tree
-Date: Wed, 28 Aug 2019 14:13:07 +0100 (BST)
-Message-ID: <20190828131307.47A592742CA0@ypsilon.sirena.org.uk>
-References: <1566621445-26989-3-git-send-email-jiaxin.yu@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1566621445-26989-3-git-send-email-jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, tzungbi-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eason.yen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "regulator: Add document for MT6358 regulator" to the regulator tree
+Date: Wed, 28 Aug 2019 14:13:12 +0100 (BST)
+Message-ID: <20190828131312.7F3332742B9F@ypsilon.sirena.org.uk>
+References: <1566531931-9772-6-git-send-email-hsin-hsiung.wang@mediatek.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1566531931-9772-6-git-send-email-hsin-hsiung.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+Cc: Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, devicetree@vger.kernel.org, Eddie Huang <eddie.huang@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Kate Stewart <kstewart@linuxfoundation.org>, Lee Jones <lee.jones@linaro.org>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org, Mark Brown <broonie@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Richard Fontana <rfontana@redhat.com>, Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, srv_heupstream@mediatek.com, Thomas Gleixner <tglx@linutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
 The patch
 
-   ASoC: mediatek: mt8183: tdm hw support tdm out and 8ch i2s out
+   regulator: Add document for MT6358 regulator
 
-has been applied to the asoc tree at
+has been applied to the regulator tree at
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-5.4
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-5.4
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
@@ -48,281 +37,385 @@ to this mail.
 Thanks,
 Mark
 
->From 8e58c521bcb823bfd6e81f4a85b76afdce098b1d Mon Sep 17 00:00:00 2001
-From: Jiaxin Yu <jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Date: Sat, 24 Aug 2019 12:37:24 +0800
-Subject: [PATCH] ASoC: mediatek: mt8183: tdm hw support tdm out and 8ch i2s
- out
+>From fa00eb4eb2361ffc594bd9c6d78c585e7112c5dc Mon Sep 17 00:00:00 2001
+From: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+Date: Fri, 23 Aug 2019 11:45:26 +0800
+Subject: [PATCH] regulator: Add document for MT6358 regulator
 
-This patch refined tdm driver code, and allow tdm hw to support two
-configurations in machine driver to output tdm signal or i2s signal.
+add dt-binding document for MediaTek MT6358 PMIC
 
-Signed-off-by: Jiaxin Yu <jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Link: https://lore.kernel.org/r/1566621445-26989-3-git-send-email-jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
-Signed-off-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Reviewed-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+Link: https://lore.kernel.org/r/1566531931-9772-6-git-send-email-hsin-hsiung.wang@mediatek.com
+Signed-off-by: Mark Brown <broonie@kernel.org>
 ---
- sound/soc/mediatek/mt8183/mt8183-dai-tdm.c    | 175 ++++++++++++++----
- .../mt8183/mt8183-mt6358-ts3a227-max98357.c   |   3 +
- 2 files changed, 144 insertions(+), 34 deletions(-)
+ .../bindings/regulator/mt6358-regulator.txt   | 358 ++++++++++++++++++
+ 1 file changed, 358 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/regulator/mt6358-regulator.txt
 
-diff --git a/sound/soc/mediatek/mt8183/mt8183-dai-tdm.c b/sound/soc/mediatek/mt8183/mt8183-dai-tdm.c
-index 8983d54a9b67..d34cabdbf889 100644
---- a/sound/soc/mediatek/mt8183/mt8183-dai-tdm.c
-+++ b/sound/soc/mediatek/mt8183/mt8183-dai-tdm.c
-@@ -15,13 +15,30 @@
- struct mtk_afe_tdm_priv {
- 	int bck_id;
- 	int bck_rate;
--
-+	int tdm_out_mode;
-+	int bck_invert;
-+	int lck_invert;
- 	int mclk_id;
- 	int mclk_multiple; /* according to sample rate */
- 	int mclk_rate;
- 	int mclk_apll;
- };
- 
-+enum {
-+	TDM_OUT_I2S = 0,
-+	TDM_OUT_TDM = 1,
-+};
+diff --git a/Documentation/devicetree/bindings/regulator/mt6358-regulator.txt b/Documentation/devicetree/bindings/regulator/mt6358-regulator.txt
+new file mode 100644
+index 000000000000..9a90a92f2d7e
+--- /dev/null
++++ b/Documentation/devicetree/bindings/regulator/mt6358-regulator.txt
+@@ -0,0 +1,358 @@
++MediaTek MT6358 Regulator
 +
-+enum {
-+	TDM_BCK_NON_INV = 0,
-+	TDM_BCK_INV = 1,
-+};
++All voltage regulators provided by the MT6358 PMIC are described as the
++subnodes of the MT6358 regulators node. Each regulator is named according
++to its regulator type, buck_<name> and ldo_<name>. The definition for each
++of these nodes is defined using the standard binding for regulators at
++Documentation/devicetree/bindings/regulator/regulator.txt.
 +
-+enum {
-+	TDM_LCK_NON_INV = 0,
-+	TDM_LCK_INV = 1,
-+};
++The valid names for regulators are::
++BUCK:
++  buck_vdram1, buck_vcore, buck_vpa, buck_vproc11, buck_vproc12, buck_vgpu,
++  buck_vs2, buck_vmodem, buck_vs1
++LDO:
++  ldo_vdram2, ldo_vsim1, ldo_vibr, ldo_vrf12, ldo_vio18, ldo_vusb, ldo_vcamio,
++  ldo_vcamd, ldo_vcn18, ldo_vfe28, ldo_vsram_proc11, ldo_vcn28, ldo_vsram_others,
++  ldo_vsram_gpu, ldo_vxo22, ldo_vefuse, ldo_vaux18, ldo_vmch, ldo_vbif28,
++  ldo_vsram_proc12, ldo_vcama1, ldo_vemc, ldo_vio28, ldo_va12, ldo_vrf18,
++  ldo_vcn33_bt, ldo_vcn33_wifi, ldo_vcama2, ldo_vmc, ldo_vldo28, ldo_vaud28,
++  ldo_vsim2
 +
- enum {
- 	TDM_WLEN_16_BIT = 1,
- 	TDM_WLEN_32_BIT = 2,
-@@ -93,6 +110,25 @@ static unsigned int get_tdm_ch(unsigned int ch)
- 	}
- }
- 
-+static unsigned int get_tdm_ch_fixup(unsigned int channels)
-+{
-+	if (channels > 4)
-+		return 8;
-+	else if (channels > 2)
-+		return 4;
-+	else
-+		return 2;
-+}
++Example:
 +
-+static unsigned int get_tdm_ch_per_sdata(unsigned int mode,
-+					 unsigned int channels)
-+{
-+	if (mode == TDM_OUT_TDM)
-+		return get_tdm_ch_fixup(channels);
-+	else
-+		return 2;
-+}
++	pmic {
++		compatible = "mediatek,mt6358";
 +
- /* interconnection */
- enum {
- 	HDMI_CONN_CH0 = 0,
-@@ -433,8 +469,11 @@ static int mtk_dai_tdm_hw_params(struct snd_pcm_substream *substream,
- 	struct mt8183_afe_private *afe_priv = afe->platform_priv;
- 	int tdm_id = dai->id;
- 	struct mtk_afe_tdm_priv *tdm_priv = afe_priv->dai_priv[tdm_id];
-+	unsigned int tdm_out_mode = tdm_priv->tdm_out_mode;
- 	unsigned int rate = params_rate(params);
- 	unsigned int channels = params_channels(params);
-+	unsigned int out_channels_per_sdata =
-+		get_tdm_ch_per_sdata(tdm_out_mode, channels);
- 	snd_pcm_format_t format = params_format(params);
- 	unsigned int tdm_con = 0;
- 
-@@ -448,7 +487,7 @@ static int mtk_dai_tdm_hw_params(struct snd_pcm_substream *substream,
- 
- 	/* calculate bck */
- 	tdm_priv->bck_rate = rate *
--			     channels *
-+			     out_channels_per_sdata *
- 			     snd_pcm_format_physical_width(format);
- 
- 	if (tdm_priv->bck_rate > tdm_priv->mclk_rate)
-@@ -461,50 +500,70 @@ static int mtk_dai_tdm_hw_params(struct snd_pcm_substream *substream,
- 		 __func__,
- 		 tdm_id, rate, channels, format,
- 		 tdm_priv->mclk_rate, tdm_priv->bck_rate);
-+	dev_info(afe->dev, "%s(), out_channels_per_sdata = %d\n",
-+		 __func__, out_channels_per_sdata);
- 
- 	/* set tdm */
--	tdm_con = 1 << BCK_INVERSE_SFT;
--	tdm_con |= 1 << LRCK_INVERSE_SFT;
--	tdm_con |= 1 << DELAY_DATA_SFT;
-+	if (tdm_priv->bck_invert)
-+		tdm_con |= 1 << BCK_INVERSE_SFT;
++		mt6358regulator: mt6358regulator {
++			compatible = "mediatek,mt6358-regulator";
 +
-+	if (tdm_priv->lck_invert)
-+		tdm_con |= 1 << LRCK_INVERSE_SFT;
++			mt6358_vdram1_reg: buck_vdram1 {
++				regulator-compatible = "buck_vdram1";
++				regulator-name = "vdram1";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <2087500>;
++				regulator-ramp-delay = <12500>;
++				regulator-enable-ramp-delay = <0>;
++				regulator-always-on;
++			};
 +
-+	if (tdm_priv->tdm_out_mode == TDM_OUT_I2S) {
-+		tdm_con |= 1 << DELAY_DATA_SFT;
-+		tdm_con |= get_tdm_lrck_width(format) << LRCK_TDM_WIDTH_SFT;
-+	} else if (tdm_priv->tdm_out_mode == TDM_OUT_TDM) {
-+		tdm_con |= 0 << DELAY_DATA_SFT;
-+		tdm_con |= 0 << LRCK_TDM_WIDTH_SFT;
-+	}
++			mt6358_vcore_reg: buck_vcore {
++				regulator-name = "vcore";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1293750>;
++				regulator-ramp-delay = <6250>;
++				regulator-enable-ramp-delay = <200>;
++				regulator-always-on;
++			};
 +
- 	tdm_con |= 1 << LEFT_ALIGN_SFT;
- 	tdm_con |= get_tdm_wlen(format) << WLEN_SFT;
--	tdm_con |= get_tdm_ch(channels) << CHANNEL_NUM_SFT;
-+	tdm_con |= get_tdm_ch(out_channels_per_sdata) << CHANNEL_NUM_SFT;
- 	tdm_con |= get_tdm_channel_bck(format) << CHANNEL_BCK_CYCLES_SFT;
--	tdm_con |= get_tdm_lrck_width(format) << LRCK_TDM_WIDTH_SFT;
- 	regmap_write(afe->regmap, AFE_TDM_CON1, tdm_con);
- 
--	switch (channels) {
--	case 1:
--	case 2:
-+	if (out_channels_per_sdata == 2) {
-+		switch (channels) {
-+		case 1:
-+		case 2:
-+			tdm_con = TDM_CH_START_O30_O31 << ST_CH_PAIR_SOUT0_SFT;
-+			tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT1_SFT;
-+			tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT2_SFT;
-+			tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT3_SFT;
-+			break;
-+		case 3:
-+		case 4:
-+			tdm_con = TDM_CH_START_O30_O31 << ST_CH_PAIR_SOUT0_SFT;
-+			tdm_con |= TDM_CH_START_O32_O33 << ST_CH_PAIR_SOUT1_SFT;
-+			tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT2_SFT;
-+			tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT3_SFT;
-+			break;
-+		case 5:
-+		case 6:
-+			tdm_con = TDM_CH_START_O30_O31 << ST_CH_PAIR_SOUT0_SFT;
-+			tdm_con |= TDM_CH_START_O32_O33 << ST_CH_PAIR_SOUT1_SFT;
-+			tdm_con |= TDM_CH_START_O34_O35 << ST_CH_PAIR_SOUT2_SFT;
-+			tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT3_SFT;
-+			break;
-+		case 7:
-+		case 8:
-+			tdm_con = TDM_CH_START_O30_O31 << ST_CH_PAIR_SOUT0_SFT;
-+			tdm_con |= TDM_CH_START_O32_O33 << ST_CH_PAIR_SOUT1_SFT;
-+			tdm_con |= TDM_CH_START_O34_O35 << ST_CH_PAIR_SOUT2_SFT;
-+			tdm_con |= TDM_CH_START_O36_O37 << ST_CH_PAIR_SOUT3_SFT;
-+			break;
-+		default:
-+			tdm_con = 0;
-+		}
-+	} else {
- 		tdm_con = TDM_CH_START_O30_O31 << ST_CH_PAIR_SOUT0_SFT;
- 		tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT1_SFT;
- 		tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT2_SFT;
- 		tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT3_SFT;
--		break;
--	case 3:
--	case 4:
--		tdm_con = TDM_CH_START_O30_O31 << ST_CH_PAIR_SOUT0_SFT;
--		tdm_con |= TDM_CH_START_O32_O33 << ST_CH_PAIR_SOUT1_SFT;
--		tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT2_SFT;
--		tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT3_SFT;
--		break;
--	case 5:
--	case 6:
--		tdm_con = TDM_CH_START_O30_O31 << ST_CH_PAIR_SOUT0_SFT;
--		tdm_con |= TDM_CH_START_O32_O33 << ST_CH_PAIR_SOUT1_SFT;
--		tdm_con |= TDM_CH_START_O34_O35 << ST_CH_PAIR_SOUT2_SFT;
--		tdm_con |= TDM_CH_ZERO << ST_CH_PAIR_SOUT3_SFT;
--		break;
--	case 7:
--	case 8:
--		tdm_con = TDM_CH_START_O30_O31 << ST_CH_PAIR_SOUT0_SFT;
--		tdm_con |= TDM_CH_START_O32_O33 << ST_CH_PAIR_SOUT1_SFT;
--		tdm_con |= TDM_CH_START_O34_O35 << ST_CH_PAIR_SOUT2_SFT;
--		tdm_con |= TDM_CH_START_O36_O37 << ST_CH_PAIR_SOUT3_SFT;
--		break;
--	default:
--		tdm_con = 0;
- 	}
++			mt6358_vpa_reg: buck_vpa {
++				regulator-name = "vpa";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <3650000>;
++				regulator-ramp-delay = <50000>;
++				regulator-enable-ramp-delay = <250>;
++			};
 +
- 	regmap_write(afe->regmap, AFE_TDM_CON2, tdm_con);
- 
- 	regmap_update_bits(afe->regmap, AFE_HDMI_OUT_CON0,
-@@ -573,10 +632,58 @@ static int mtk_dai_tdm_set_sysclk(struct snd_soc_dai *dai,
- 	return mtk_dai_tdm_cal_mclk(afe, tdm_priv, freq);
- }
- 
-+static int mtk_dai_tdm_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
-+{
-+	struct mtk_base_afe *afe = dev_get_drvdata(dai->dev);
-+	struct mt8183_afe_private *afe_priv = afe->platform_priv;
-+	struct mtk_afe_tdm_priv *tdm_priv = afe_priv->dai_priv[dai->id];
++			mt6358_vproc11_reg: buck_vproc11 {
++				regulator-name = "vproc11";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1293750>;
++				regulator-ramp-delay = <6250>;
++				regulator-enable-ramp-delay = <200>;
++				regulator-always-on;
++			};
 +
-+	if (!tdm_priv) {
-+		dev_warn(afe->dev, "%s(), tdm_priv == NULL", __func__);
-+		return -EINVAL;
-+	}
++			mt6358_vproc12_reg: buck_vproc12 {
++				regulator-name = "vproc12";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1293750>;
++				regulator-ramp-delay = <6250>;
++				regulator-enable-ramp-delay = <200>;
++				regulator-always-on;
++			};
 +
-+	/* DAI mode*/
-+	switch (fmt & SND_SOC_DAIFMT_FORMAT_MASK) {
-+	case SND_SOC_DAIFMT_I2S:
-+		tdm_priv->tdm_out_mode = TDM_OUT_I2S;
-+		break;
-+	case SND_SOC_DAIFMT_DSP_A:
-+		tdm_priv->tdm_out_mode = TDM_OUT_TDM;
-+		break;
-+	default:
-+		tdm_priv->tdm_out_mode = TDM_OUT_I2S;
-+	}
++			mt6358_vgpu_reg: buck_vgpu {
++				regulator-name = "vgpu";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1293750>;
++				regulator-ramp-delay = <6250>;
++				regulator-enable-ramp-delay = <200>;
++			};
 +
-+	/* DAI clock inversion*/
-+	switch (fmt & SND_SOC_DAIFMT_INV_MASK) {
-+	case SND_SOC_DAIFMT_NB_NF:
-+		tdm_priv->bck_invert = TDM_BCK_NON_INV;
-+		tdm_priv->lck_invert = TDM_LCK_NON_INV;
-+		break;
-+	case SND_SOC_DAIFMT_NB_IF:
-+		tdm_priv->bck_invert = TDM_BCK_NON_INV;
-+		tdm_priv->lck_invert = TDM_LCK_INV;
-+		break;
-+	case SND_SOC_DAIFMT_IB_NF:
-+		tdm_priv->bck_invert = TDM_BCK_INV;
-+		tdm_priv->lck_invert = TDM_LCK_NON_INV;
-+		break;
-+	case SND_SOC_DAIFMT_IB_IF:
-+	default:
-+		tdm_priv->bck_invert = TDM_BCK_INV;
-+		tdm_priv->lck_invert = TDM_LCK_INV;
-+		break;
-+	}
++			mt6358_vs2_reg: buck_vs2 {
++				regulator-name = "vs2";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <2087500>;
++				regulator-ramp-delay = <12500>;
++				regulator-enable-ramp-delay = <0>;
++				regulator-always-on;
++			};
 +
-+	return 0;
-+}
++			mt6358_vmodem_reg: buck_vmodem {
++				regulator-name = "vmodem";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1293750>;
++				regulator-ramp-delay = <6250>;
++				regulator-enable-ramp-delay = <900>;
++				regulator-always-on;
++			};
 +
- static const struct snd_soc_dai_ops mtk_dai_tdm_ops = {
- 	.hw_params = mtk_dai_tdm_hw_params,
- 	.trigger = mtk_dai_tdm_trigger,
- 	.set_sysclk = mtk_dai_tdm_set_sysclk,
-+	.set_fmt = mtk_dai_tdm_set_fmt,
- };
- 
- /* dai driver */
-diff --git a/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c b/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
-index 951706fa75fc..560fcc5923a4 100644
---- a/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
-+++ b/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
-@@ -380,6 +380,9 @@ mt8183_mt6358_ts3a227_max98357_dai_links[] = {
- 	{
- 		.name = "TDM",
- 		.no_pcm = 1,
-+		.dai_fmt = SND_SOC_DAIFMT_I2S |
-+			   SND_SOC_DAIFMT_IB_IF |
-+			   SND_SOC_DAIFMT_CBM_CFM,
- 		.dpcm_playback = 1,
- 		.ignore_suspend = 1,
- 		.be_hw_params_fixup = mt8183_i2s_hw_params_fixup,
++			mt6358_vs1_reg: buck_vs1 {
++				regulator-name = "vs1";
++				regulator-min-microvolt = <1000000>;
++				regulator-max-microvolt = <2587500>;
++				regulator-ramp-delay = <12500>;
++				regulator-enable-ramp-delay = <0>;
++				regulator-always-on;
++			};
++
++			mt6358_vdram2_reg: ldo_vdram2 {
++				regulator-name = "vdram2";
++				regulator-min-microvolt = <600000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <3300>;
++			};
++
++			mt6358_vsim1_reg: ldo_vsim1 {
++				regulator-name = "vsim1";
++				regulator-min-microvolt = <1700000>;
++				regulator-max-microvolt = <3100000>;
++				regulator-enable-ramp-delay = <540>;
++			};
++
++			mt6358_vibr_reg: ldo_vibr {
++				regulator-name = "vibr";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <60>;
++			};
++
++			mt6358_vrf12_reg: ldo_vrf12 {
++				compatible = "regulator-fixed";
++				regulator-name = "vrf12";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <1200000>;
++				regulator-enable-ramp-delay = <120>;
++			};
++
++			mt6358_vio18_reg: ldo_vio18 {
++				compatible = "regulator-fixed";
++				regulator-name = "vio18";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <2700>;
++				regulator-always-on;
++			};
++
++			mt6358_vusb_reg: ldo_vusb {
++				regulator-name = "vusb";
++				regulator-min-microvolt = <3000000>;
++				regulator-max-microvolt = <3100000>;
++				regulator-enable-ramp-delay = <270>;
++				regulator-always-on;
++			};
++
++			mt6358_vcamio_reg: ldo_vcamio {
++				compatible = "regulator-fixed";
++				regulator-name = "vcamio";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vcamd_reg: ldo_vcamd {
++				regulator-name = "vcamd";
++				regulator-min-microvolt = <900000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vcn18_reg: ldo_vcn18 {
++				compatible = "regulator-fixed";
++				regulator-name = "vcn18";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vfe28_reg: ldo_vfe28 {
++				compatible = "regulator-fixed";
++				regulator-name = "vfe28";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vsram_proc11_reg: ldo_vsram_proc11 {
++				regulator-name = "vsram_proc11";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1293750>;
++				regulator-ramp-delay = <6250>;
++				regulator-enable-ramp-delay = <240>;
++				regulator-always-on;
++			};
++
++			mt6358_vcn28_reg: ldo_vcn28 {
++				compatible = "regulator-fixed";
++				regulator-name = "vcn28";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vsram_others_reg: ldo_vsram_others {
++				regulator-name = "vsram_others";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1293750>;
++				regulator-ramp-delay = <6250>;
++				regulator-enable-ramp-delay = <240>;
++				regulator-always-on;
++			};
++
++			mt6358_vsram_gpu_reg: ldo_vsram_gpu {
++				regulator-name = "vsram_gpu";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1293750>;
++				regulator-ramp-delay = <6250>;
++				regulator-enable-ramp-delay = <240>;
++			};
++
++			mt6358_vxo22_reg: ldo_vxo22 {
++				compatible = "regulator-fixed";
++				regulator-name = "vxo22";
++				regulator-min-microvolt = <2200000>;
++				regulator-max-microvolt = <2200000>;
++				regulator-enable-ramp-delay = <120>;
++				regulator-always-on;
++			};
++
++			mt6358_vefuse_reg: ldo_vefuse {
++				regulator-name = "vefuse";
++				regulator-min-microvolt = <1700000>;
++				regulator-max-microvolt = <1900000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vaux18_reg: ldo_vaux18 {
++				compatible = "regulator-fixed";
++				regulator-name = "vaux18";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vmch_reg: ldo_vmch {
++				regulator-name = "vmch";
++				regulator-min-microvolt = <2900000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <60>;
++			};
++
++			mt6358_vbif28_reg: ldo_vbif28 {
++				compatible = "regulator-fixed";
++				regulator-name = "vbif28";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vsram_proc12_reg: ldo_vsram_proc12 {
++				regulator-name = "vsram_proc12";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1293750>;
++				regulator-ramp-delay = <6250>;
++				regulator-enable-ramp-delay = <240>;
++				regulator-always-on;
++			};
++
++			mt6358_vcama1_reg: ldo_vcama1 {
++				regulator-name = "vcama1";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <3000000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vemc_reg: ldo_vemc {
++				regulator-name = "vemc";
++				regulator-min-microvolt = <2900000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <60>;
++				regulator-always-on;
++			};
++
++			mt6358_vio28_reg: ldo_vio28 {
++				compatible = "regulator-fixed";
++				regulator-name = "vio28";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_va12_reg: ldo_va12 {
++				compatible = "regulator-fixed";
++				regulator-name = "va12";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <1200000>;
++				regulator-enable-ramp-delay = <270>;
++				regulator-always-on;
++			};
++
++			mt6358_vrf18_reg: ldo_vrf18 {
++				compatible = "regulator-fixed";
++				regulator-name = "vrf18";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <120>;
++			};
++
++			mt6358_vcn33_bt_reg: ldo_vcn33_bt {
++				regulator-name = "vcn33_bt";
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3500000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vcn33_wifi_reg: ldo_vcn33_wifi {
++				regulator-name = "vcn33_wifi";
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3500000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vcama2_reg: ldo_vcama2 {
++				regulator-name = "vcama2";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <3000000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vmc_reg: ldo_vmc {
++				regulator-name = "vmc";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <60>;
++			};
++
++			mt6358_vldo28_reg: ldo_vldo28 {
++				regulator-name = "vldo28";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <3000000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vaud28_reg: ldo_vaud28 {
++				compatible = "regulator-fixed";
++				regulator-name = "vaud28";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vsim2_reg: ldo_vsim2 {
++				regulator-name = "vsim2";
++				regulator-min-microvolt = <1700000>;
++				regulator-max-microvolt = <3100000>;
++				regulator-enable-ramp-delay = <540>;
++			};
++		};
++	};
 -- 
 2.20.1
