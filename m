@@ -1,15 +1,14 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v7 03/13] soc: mediatek: Refactor polling timeout and
- documentation
-Date: Wed, 28 Aug 2019 11:43:16 +0200
-Message-ID: <3a61ccce-1c88-5e7f-77ad-afce071a656b@gmail.com>
+Subject: Re: [PATCH v7 04/13] soc: mediatek: Refactor regulator control
+Date: Wed, 28 Aug 2019 11:44:42 +0200
+Message-ID: <1481942b-623f-69dc-6e21-da877968793e@gmail.com>
 References: <1566983506-26598-1-git-send-email-weiyi.lu@mediatek.com>
- <1566983506-26598-4-git-send-email-weiyi.lu@mediatek.com>
+ <1566983506-26598-5-git-send-email-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1566983506-26598-4-git-send-email-weiyi.lu@mediatek.com>
+In-Reply-To: <1566983506-26598-5-git-send-email-weiyi.lu@mediatek.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
 To: Weiyi Lu <weiyi.lu@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh@kernel.org>
@@ -19,47 +18,79 @@ List-Id: linux-mediatek@lists.infradead.org
 
 
 On 28/08/2019 11:11, Weiyi Lu wrote:
-> Use USEC_PER_SEC to indicate the polling timeout directly.
-> And add documentation of scp_domain_data.
+> Put regulator enable and disable control in separate functions.
 > 
 > Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> ---
 
-Queued for v5.4-next/soc
+Applied to v5.4-next/soc
 Thanks!
 
->  drivers/soc/mediatek/mtk-scpsys.c | 13 ++++++++++++-
->  1 file changed, 12 insertions(+), 1 deletion(-)
+> ---
+>  drivers/soc/mediatek/mtk-scpsys.c | 32 +++++++++++++++++++++++---------
+>  1 file changed, 23 insertions(+), 9 deletions(-)
 > 
 > diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-> index 503222d..e97fc0e 100644
+> index e97fc0e..aed540d 100644
 > --- a/drivers/soc/mediatek/mtk-scpsys.c
 > +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> @@ -21,7 +21,7 @@
->  #include <dt-bindings/power/mt8173-power.h>
+> @@ -191,6 +191,22 @@ static int scpsys_domain_is_on(struct scp_domain *scpd)
+>  	return -EINVAL;
+>  }
 >  
->  #define MTK_POLL_DELAY_US   10
-> -#define MTK_POLL_TIMEOUT    (jiffies_to_usecs(HZ))
-> +#define MTK_POLL_TIMEOUT    USEC_PER_SEC
+> +static int scpsys_regulator_enable(struct scp_domain *scpd)
+> +{
+> +	if (!scpd->supply)
+> +		return 0;
+> +
+> +	return regulator_enable(scpd->supply);
+> +}
+> +
+> +static int scpsys_regulator_disable(struct scp_domain *scpd)
+> +{
+> +	if (!scpd->supply)
+> +		return 0;
+> +
+> +	return regulator_disable(scpd->supply);
+> +}
+> +
+>  static int scpsys_power_on(struct generic_pm_domain *genpd)
+>  {
+>  	struct scp_domain *scpd = container_of(genpd, struct scp_domain, genpd);
+> @@ -201,11 +217,9 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+>  	int ret, tmp;
+>  	int i;
 >  
->  #define MTK_SCPD_ACTIVE_WAKEUP		BIT(0)
->  #define MTK_SCPD_FWAIT_SRAM		BIT(1)
-> @@ -108,6 +108,17 @@ enum clk_id {
+> -	if (scpd->supply) {
+> -		ret = regulator_enable(scpd->supply);
+> -		if (ret)
+> -			return ret;
+> -	}
+> +	ret = scpsys_regulator_enable(scpd);
+> +	if (ret < 0)
+> +		return ret;
 >  
->  #define MAX_CLKS	3
+>  	for (i = 0; i < MAX_CLKS && scpd->clk[i]; i++) {
+>  		ret = clk_prepare_enable(scpd->clk[i]);
+> @@ -273,8 +287,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+>  			clk_disable_unprepare(scpd->clk[i]);
+>  	}
+>  err_clk:
+> -	if (scpd->supply)
+> -		regulator_disable(scpd->supply);
+> +	scpsys_regulator_disable(scpd);
 >  
-> +/**
-> + * struct scp_domain_data - scp domain data for power on/off flow
-> + * @name: The domain name.
-> + * @sta_mask: The mask for power on/off status bit.
-> + * @ctl_offs: The offset for main power control register.
-> + * @sram_pdn_bits: The mask for sram power control bits.
-> + * @sram_pdn_ack_bits: The mask for sram power control acked bits.
-> + * @bus_prot_mask: The mask for single step bus protection.
-> + * @clk_id: The basic clocks required by this power domain.
-> + * @caps: The flag for active wake-up action.
-> + */
->  struct scp_domain_data {
->  	const char *name;
->  	u32 sta_mask;
+>  	dev_err(scp->dev, "Failed to power on domain %s\n", genpd->name);
+>  
+> @@ -333,8 +346,9 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+>  	for (i = 0; i < MAX_CLKS && scpd->clk[i]; i++)
+>  		clk_disable_unprepare(scpd->clk[i]);
+>  
+> -	if (scpd->supply)
+> -		regulator_disable(scpd->supply);
+> +	ret = scpsys_regulator_disable(scpd);
+> +	if (ret < 0)
+> +		goto out;
+>  
+>  	return 0;
+>  
 > 
