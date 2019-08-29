@@ -1,58 +1,37 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v2] mmc: mediatek: enable SDIO IRQ low level trigger function
-Date: Thu, 29 Aug 2019 15:36:28 +0200
-Message-ID: <CAPDyKFqgO7fwybn1nYcf14jiHswM+T7fqY1BuSvx5AubYA6F=A@mail.gmail.com>
-References: <1566985524-22749-1-git-send-email-yong.mao@mediatek.com> <1566985524-22749-2-git-send-email-yong.mao@mediatek.com>
+From: <yongqiang.niu@mediatek.com>
+Subject: [PATCH v5, 05/32] dt-bindings: mediatek: add mutex description for mt8183 display
+Date: Thu, 29 Aug 2019 22:50:27 +0800
+Message-ID: <1567090254-15566-6-git-send-email-yongqiang.niu@mediatek.com>
+References: <1567090254-15566-1-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1566985524-22749-2-git-send-email-yong.mao@mediatek.com>
+In-Reply-To: <1567090254-15566-1-git-send-email-yongqiang.niu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Yong Mao <yong.mao@mediatek.com>
-Cc: Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Mark Rutland <mark.rutland@arm.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Yongqiang Niu <yongqiang.niu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 28 Aug 2019 at 11:45, Yong Mao <yong.mao@mediatek.com> wrote:
->
-> From: yong mao <yong.mao@mediatek.com>
->
-> SDIO IRQ is not defaultly triggered by low level,
-> but by falling edge. It needs to set related register
-> to enable SDIO IRQ low level trigger function.
-> Otherwise the SDIO IRQ may be lost in some specail condition.
->
-> Signed-off-by: Yong Mao <yong.mao@mediatek.com>
-> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 
-Applied for next, thanks!
+This patch add mutex description for mt8183 display
 
-Kind regards
-Uffe
+Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+---
+ Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-> ---
->  drivers/mmc/host/mtk-sd.c | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 33f4b63..585f0c7 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -192,6 +192,7 @@
->  #define SDC_STS_CMDBUSY         (0x1 << 1)     /* RW */
->  #define SDC_STS_SWR_COMPL       (0x1 << 31)    /* RW */
->
-> +#define SDC_DAT1_IRQ_TRIGGER   (0x1 << 19)     /* RW */
->  /* SDC_ADV_CFG0 mask */
->  #define SDC_RX_ENHANCE_EN      (0x1 << 20)     /* RW */
->
-> @@ -1568,6 +1569,7 @@ static void msdc_init_hw(struct msdc_host *host)
->
->         /* Config SDIO device detect interrupt function */
->         sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
-> +       sdr_set_bits(host->base + SDC_ADV_CFG0, SDC_DAT1_IRQ_TRIGGER);
->
->         /* Configure to default data timeout */
->         sdr_set_field(host->base + SDC_CFG, SDC_CFG_DTOC, 3);
-> --
-> 1.9.1
->
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+index afd3c90..c7e2eb8 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+@@ -52,6 +52,7 @@ Required properties (all function blocks):
+   For most function blocks this is just a single clock input. Only the DSI and
+   DPI controller nodes have multiple clock inputs. These are documented in
+   mediatek,dsi.txt and mediatek,dpi.txt, respectively.
++  An exception is that the mt8183 mutex is always free running with no clocks property.
+ 
+ Required properties (DMA function blocks):
+ - compatible: Should be one of
+-- 
+1.8.1.1.dirty
