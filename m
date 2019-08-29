@@ -1,68 +1,136 @@
 From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Subject: Re: [PATCH v4, 12/33] drm/mediatek: split DISP_REG_CONFIG_DSI_SEL
- setting into another use case
-Date: Thu, 29 Aug 2019 20:39:27 +0800
-Message-ID: <1567082367.30648.2.camel@mhfsdcap03>
+Subject: Re: [PATCH v4, 23/33] drm/mediatek: add ovl0/ovl_2l0 usecase
+Date: Thu, 29 Aug 2019 21:15:08 +0800
+Message-ID: <1567084508.30648.4.camel@mhfsdcap03>
 References: <1562625253-29254-1-git-send-email-yongqiang.niu@mediatek.com>
-         <1562625253-29254-13-git-send-email-yongqiang.niu@mediatek.com>
-         <1563341736.29169.15.camel@mtksdaap41>
+         <1562625253-29254-24-git-send-email-yongqiang.niu@mediatek.com>
+         <1563346064.29169.24.camel@mtksdaap41>
 Reply-To: <yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1563341736.29169.15.camel@mtksdaap41>
+In-Reply-To: <1563346064.29169.24.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
 To: CK Hu <ck.hu@mediatek.com>
 Cc: Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Mark Rutland <mark.rutland@arm.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2019-07-17 at 13:35 +0800, CK Hu wrote:
+On Wed, 2019-07-17 at 14:47 +0800, CK Hu wrote:
 > Hi, Yongqiang:
 > 
-> On Tue, 2019-07-09 at 06:33 +0800, yongqiang.niu@mediatek.com wrote:
+> On Tue, 2019-07-09 at 06:34 +0800, yongqiang.niu@mediatek.com wrote:
 > > From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 > > 
-> > Here is two modifition in this patch:
-> > 1.bls->dpi0 and rdma1->dsi are differen usecase,
-> > Split DISP_REG_CONFIG_DSI_SEL setting into anther usecase
-> > 2.remove DISP_REG_CONFIG_DPI_SEL setting, DPI_SEL_IN_BLS is 0 and
-> > this is same with hardware defautl setting,
+> > This patch add ovl0/ovl_2l0 usecase
+> > in ovl->ovl_2l0 direct link usecase:
+> > 1. the crtc support layer number will 4+2
+> > 2. ovl_2l0 background color input select ovl0 when crtc init
+> > and disable it when crtc finish
+> > 3. config ovl_2l0 layer, if crtc config layer number is
+> > bigger than ovl0 support layers(max is 4)
 > > 
+> > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 38 +++++++++++++++++++++++++++++++--
+> >  1 file changed, 36 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> > index 5eac376..9ee9ce2 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> > @@ -282,6 +282,15 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
+> >  
+> >  	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
+> >  		struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[i];
+> > +		enum mtk_ddp_comp_id prev;
+> > +
+> > +		if (i > 0)
+> > +			prev = mtk_crtc->ddp_comp[i - 1]->id;
+> > +		else
+> > +			prev = DDP_COMPONENT_ID_MAX;
+> > +
+> > +		if (prev == DDP_COMPONENT_OVL0)
+> > +			mtk_ddp_comp_bgclr_in_on(comp);
 > 
-> You move 2 register setting out of the path from BLS to DPI0, does this
-> path still work? Please make sure that all modification could work on
-> all supported SoC.
+> I does not like to use a specific component id to check, that is not
+> general. For now, you could simply call mtk_ddp_comp_bgclr_in_on(comp);
+> for all component because only ovl_2l has implemented it.
 > 
 > Regards,
 > CK
 > 
 
-DPI_SEL_IN_BLS is 0 and this is same with hardware default setting as
-description in patch.
-the removed sentence is useless.
+both OVL0 and OVL_2L0 has the function mtk_ddp_comp_bgclr_in_on
 
-
-> > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_drm_ddp.c | 3 +--
-> >  1 file changed, 1 insertion(+), 2 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-> > index d015c1a..47b3e35 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-> > @@ -400,10 +400,9 @@ static void mtk_ddp_sout_sel(void __iomem *config_regs,
-> >  	} else if (cur == DDP_COMPONENT_BLS && next == DDP_COMPONENT_DPI0) {
-> >  		writel_relaxed(BLS_TO_DPI_RDMA1_TO_DSI,
-> >  			       config_regs + DISP_REG_CONFIG_OUT_SEL);
-> > +	} else if (cur == DDP_COMPONENT_RDMA1 && next == DDP_COMPONENT_DSI0) {
-> >  		writel_relaxed(DSI_SEL_IN_RDMA,
-> >  			       config_regs + DISP_REG_CONFIG_DSI_SEL);
-> > -		writel_relaxed(DPI_SEL_IN_BLS,
-> > -			       config_regs + DISP_REG_CONFIG_DPI_SEL);
-> >  	}
-> >  }
 > >  
+> >  		mtk_ddp_comp_config(comp, width, height, vrefresh, bpc);
+> >  		mtk_ddp_comp_start(comp);
+> > @@ -291,9 +300,18 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
+> >  	for (i = 0; i < mtk_crtc->layer_nr; i++) {
+> >  		struct drm_plane *plane = &mtk_crtc->planes[i];
+> >  		struct mtk_plane_state *plane_state;
+> > +		struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
+> > +		unsigned int comp_layer_nr = mtk_ddp_comp_layer_nr(comp);
+> > +		unsigned int local_layer;
+> >  
+> >  		plane_state = to_mtk_plane_state(plane->state);
+> > -		mtk_ddp_comp_layer_config(mtk_crtc->ddp_comp[0], i,
+> > +
+> > +		if (i >= comp_layer_nr) {
+> > +			comp = mtk_crtc->ddp_comp[1];
+> > +			local_layer = i - comp_layer_nr;
+> > +		} else
+> > +			local_layer = i;
+> > +		mtk_ddp_comp_layer_config(comp , local_layer,
+> >  					  plane_state);
+> >  	}
+> >  
+> > @@ -319,6 +337,7 @@ static void mtk_crtc_ddp_hw_fini(struct mtk_drm_crtc *mtk_crtc)
+> >  					   mtk_crtc->ddp_comp[i]->id);
+> >  	mtk_disp_mutex_disable(mtk_crtc->mutex);
+> >  	for (i = 0; i < mtk_crtc->ddp_comp_nr - 1; i++) {
+> > +		mtk_ddp_comp_bgclr_in_off(mtk_crtc->ddp_comp[i]);
+> >  		mtk_ddp_remove_comp_from_path(mtk_crtc->config_regs,
+> >  					      mtk_crtc->mmsys_reg_data,
+> >  					      mtk_crtc->ddp_comp[i]->id,
+> > @@ -339,6 +358,8 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
+> >  	struct mtk_crtc_state *state = to_mtk_crtc_state(mtk_crtc->base.state);
+> >  	struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
+> >  	unsigned int i;
+> > +	unsigned int comp_layer_nr = mtk_ddp_comp_layer_nr(comp);
+> > +	unsigned int local_layer;
+> >  
+> >  	/*
+> >  	 * TODO: instead of updating the registers here, we should prepare
+> > @@ -361,7 +382,14 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
+> >  			plane_state = to_mtk_plane_state(plane->state);
+> >  
+> >  			if (plane_state->pending.config) {
+> > -				mtk_ddp_comp_layer_config(comp, i, plane_state);
+> > +				if (i >= comp_layer_nr) {
+> > +					comp = mtk_crtc->ddp_comp[1];
+> > +					local_layer = i - comp_layer_nr;
+> > +				} else
+> > +					local_layer = i;
+> > +
+> > +				mtk_ddp_comp_layer_config(comp, local_layer,
+> > +							  plane_state);
+> >  				plane_state->pending.config = false;
+> >  			}
+> >  		}
+> > @@ -592,6 +620,12 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+> >  	}
+> >  
+> >  	mtk_crtc->layer_nr = mtk_ddp_comp_layer_nr(mtk_crtc->ddp_comp[0]);
+> > +	if (mtk_crtc->ddp_comp_nr > 1) {
+> > +		struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[1];
+> > +
+> > +		if (comp->funcs->bgclr_in_on)
+> > +			mtk_crtc->layer_nr += mtk_ddp_comp_layer_nr(comp);
+> > +	}
+> >  	mtk_crtc->planes = devm_kcalloc(dev, mtk_crtc->layer_nr,
+> >  					sizeof(struct drm_plane),
+> >  					GFP_KERNEL);
 > 
 > 
