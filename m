@@ -1,42 +1,68 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: Wiki to track changes and progress ?
-Date: Thu, 29 Aug 2019 12:41:29 +0200
-Message-ID: <e242d481-6a08-4076-2aaf-44b3c4a6afdb@gmail.com>
-References: <256e20ee-ce22-2ff8-a2c7-cde75fc681e2@gmail.com>
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+Subject: Re: [PATCH v4, 12/33] drm/mediatek: split DISP_REG_CONFIG_DSI_SEL
+ setting into another use case
+Date: Thu, 29 Aug 2019 20:39:27 +0800
+Message-ID: <1567082367.30648.2.camel@mhfsdcap03>
+References: <1562625253-29254-1-git-send-email-yongqiang.niu@mediatek.com>
+         <1562625253-29254-13-git-send-email-yongqiang.niu@mediatek.com>
+         <1563341736.29169.15.camel@mtksdaap41>
+Reply-To: <yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <256e20ee-ce22-2ff8-a2c7-cde75fc681e2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: MOHAMMAD RASIM <mohammad.rasim96-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1563341736.29169.15.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: CK Hu <ck.hu@mediatek.com>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Mark Rutland <mark.rutland@arm.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Mohammad,
-
-On 25/09/2018 21:36, MOHAMMAD RASIM wrote:
-> Hi,
+On Wed, 2019-07-17 at 13:35 +0800, CK Hu wrote:
+> Hi, Yongqiang:
 > 
-> Is there a wiki for linux-mediatek where I can see the progress of mainlining,
-> what works and what doesn't (status matrix) ?
+> On Tue, 2019-07-09 at 06:33 +0800, yongqiang.niu@mediatek.com wrote:
+> > From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> > 
+> > Here is two modifition in this patch:
+> > 1.bls->dpi0 and rdma1->dsi are differen usecase,
+> > Split DISP_REG_CONFIG_DSI_SEL setting into anther usecase
+> > 2.remove DISP_REG_CONFIG_DPI_SEL setting, DPI_SEL_IN_BLS is 0 and
+> > this is same with hardware defautl setting,
+> > 
 > 
-> Something similar to other projects like http://linux-meson.com/doku.php and
-> http://linux-sunxi.org/Linux_mainlining_effort
+> You move 2 register setting out of the path from BLS to DPI0, does this
+> path still work? Please make sure that all modification could work on
+> all supported SoC.
+> 
+> Regards,
+> CK
 > 
 
-I recently updated the table. It is not complete but at least to some extent
-useful. Especially mt8173 and mt8183 need an update.
+DPI_SEL_IN_BLS is 0 and this is same with hardware default setting as
+description in patch.
+the removed sentence is useless.
 
-https://mtk.bcnfs.org/doku.php?id=linux_mainline_effort
 
-Regards,
-Matthias
+> > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_drm_ddp.c | 3 +--
+> >  1 file changed, 1 insertion(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> > index d015c1a..47b3e35 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> > @@ -400,10 +400,9 @@ static void mtk_ddp_sout_sel(void __iomem *config_regs,
+> >  	} else if (cur == DDP_COMPONENT_BLS && next == DDP_COMPONENT_DPI0) {
+> >  		writel_relaxed(BLS_TO_DPI_RDMA1_TO_DSI,
+> >  			       config_regs + DISP_REG_CONFIG_OUT_SEL);
+> > +	} else if (cur == DDP_COMPONENT_RDMA1 && next == DDP_COMPONENT_DSI0) {
+> >  		writel_relaxed(DSI_SEL_IN_RDMA,
+> >  			       config_regs + DISP_REG_CONFIG_DSI_SEL);
+> > -		writel_relaxed(DPI_SEL_IN_BLS,
+> > -			       config_regs + DISP_REG_CONFIG_DPI_SEL);
+> >  	}
+> >  }
+> >  
+> 
+> 
