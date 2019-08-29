@@ -1,51 +1,42 @@
-From: Valentin Schneider <valentin.schneider@arm.com>
-Subject: Re: [PATCH 1/1] sched/rt: avoid contend with CFS task
-Date: Thu, 29 Aug 2019 11:38:26 +0100
-Message-ID: <d5100b2d-46c4-5811-8274-8b06710d2594@arm.com>
-References: <1567048502-6064-1-git-send-email-jing-ting.wu@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: Wiki to track changes and progress ?
+Date: Thu, 29 Aug 2019 12:41:29 +0200
+Message-ID: <e242d481-6a08-4076-2aaf-44b3c4a6afdb@gmail.com>
+References: <256e20ee-ce22-2ff8-a2c7-cde75fc681e2@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1567048502-6064-1-git-send-email-jing-ting.wu@mediatek.com>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <256e20ee-ce22-2ff8-a2c7-cde75fc681e2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jing-Ting Wu <jing-ting.wu@mediatek.com>, Peter Zijlstra <peterz@infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Qais Yousef <qais.yousef@arm.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: MOHAMMAD RASIM <mohammad.rasim96-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 29/08/2019 04:15, Jing-Ting Wu wrote:
-> At original linux design, RT & CFS scheduler are independent.
-> Current RT task placement policy will select the first cpu in
-> lowest_mask, even if the first CPU is running a CFS task.
-> This may put RT task to a running cpu and let CFS task runnable.
+Hi Mohammad,
+
+On 25/09/2018 21:36, MOHAMMAD RASIM wrote:
+> Hi,
 > 
-> So we select idle cpu in lowest_mask first to avoid preempting
-> CFS task.
+> Is there a wiki for linux-mediatek where I can see the progress of mainlining,
+> what works and what doesn't (status matrix) ?
+> 
+> Something similar to other projects like http://linux-meson.com/doku.php and
+> http://linux-sunxi.org/Linux_mainlining_effort
 > 
 
-Regarding the RT & CFS thing, that's working as intended. RT is a whole
-class above CFS, it shouldn't have to worry about CFS.
+I recently updated the table. It is not complete but at least to some extent
+useful. Especially mt8173 and mt8183 need an update.
 
-On the other side of things, CFS does worry about RT. We have the concept
-of RT-pressure in the CFS scheduler, where RT tasks will reduce a CPU's
-capacity (see fair.c::scale_rt_capacity()).
+https://mtk.bcnfs.org/doku.php?id=linux_mainline_effort
 
-CPU capacity is looked at on CFS wakeup (see wake_cap() and
-find_idlest_cpu()), and the periodic load balancer tries to spread load
-over capacity, so it'll tend to put less things on CPUs that are also
-running RT tasks.
-
-If RT were to start avoiding rqs with CFS tasks, we'd end up with a nasty
-situation were both are avoiding each other. It's even more striking when
-you see that RT pressure is done with a rq-wide RT util_avg, which
-*doesn't* get migrated when a RT task migrates. So if you decide to move
-a RT task to an idle CPU "B" because CPU "A" had runnable CFS tasks, the
-CFS scheduler will keep seeing CPU "B" as not significantly RT-pressured
-while that util_avg signal ramps up, whereas it would correctly see CPU
-"A" as RT-pressured if the RT task previously ran there.
-
-So overall I think this is the wrong approach.
-
-> Signed-off-by: Jing-Ting Wu <jing-ting.wu@mediatek.com>
-> ---
+Regards,
+Matthias
