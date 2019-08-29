@@ -1,50 +1,32 @@
-From: Sam Shih <sam.shih@mediatek.com>
-Subject: [PATCH v6 11/11] arm: dts: mediatek: add mt7629 pwm support
-Date: Thu, 29 Aug 2019 13:39:20 +0800
-Message-ID: <1567057160-552-12-git-send-email-sam.shih@mediatek.com>
-References: <1567057160-552-1-git-send-email-sam.shih@mediatek.com>
+From: Hsin-hsiung Wang <hsin-hsiung.wang@mediatek.com>
+Subject: Re: [PATCH v5 07/10] regulator: mt6358: Add support for MT6358
+ regulator
+Date: Thu, 29 Aug 2019 14:09:58 +0800
+Message-ID: <1567058998.31616.2.camel@mtksdaap41>
+References: <1566531931-9772-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+         <1566531931-9772-8-git-send-email-hsin-hsiung.wang@mediatek.com>
+         <20190828104555.GE4298@sirena.co.uk>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1567057160-552-1-git-send-email-sam.shih@mediatek.com>
+In-Reply-To: <20190828104555.GE4298@sirena.co.uk>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <thierry.reding@gmail.com>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, John Crispin <john@phrozen.org>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sam Shih <sam.shih@mediatek.com>
+To: Mark Brown <broonie@kernel.org>
+Cc: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Mark Rutland <mark.rutland@arm.com>, Liam Girdwood <lgirdwood@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, Kate Stewart <kstewart@linuxfoundation.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Thomas Gleixner <tglx@linutronix.de>, Richard Fontana <rfontana@redhat.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rtc@vger.kernel.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-This adds pwm support for MT7629.
+Hi Mark,
 
-Signed-off-by: Sam Shih <sam.shih@mediatek.com>
----
- arch/arm/boot/dts/mt7629.dtsi | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+On Wed, 2019-08-28 at 11:45 +0100, Mark Brown wrote:
+> On Fri, Aug 23, 2019 at 11:45:28AM +0800, Hsin-Hsiung Wang wrote:
+> > The MT6358 is a regulator found on boards based on MediaTek MT8183 and
+> > probably other SoCs. It is a so called pmic and connects as a slave to
+> > SoC using SPI, wrapped inside the pmic-wrapper.
+> 
+> This looks good - since there was only one small issue with the example
+> in the binding document I'll apply both patches, please send a followup
+> fixing the binding document.
 
-diff --git a/arch/arm/boot/dts/mt7629.dtsi b/arch/arm/boot/dts/mt7629.dtsi
-index 9608bc2ccb3f..493be9a9453b 100644
---- a/arch/arm/boot/dts/mt7629.dtsi
-+++ b/arch/arm/boot/dts/mt7629.dtsi
-@@ -241,6 +241,22 @@
- 			status = "disabled";
- 		};
- 
-+		pwm: pwm@11006000 {
-+			compatible = "mediatek,mt7629-pwm",
-+				     "mediatek,mt7622-pwm";
-+			reg = <0 0x11006000 0 0x1000>;
-+			interrupts = <GIC_SPI 77 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&topckgen CLK_TOP_PWM_SEL>,
-+				 <&pericfg CLK_PERI_PWM_PD>,
-+				 <&pericfg CLK_PERI_PWM1_PD>;
-+			clock-names = "top", "main", "pwm1";
-+			assigned-clocks = <&topckgen CLK_TOP_PWM_SEL>;
-+			assigned-clock-parents =
-+					<&topckgen CLK_TOP_UNIVPLL2_D4>;
-+			num-pwms = <1>;
-+			status = "disabled";
-+		};
-+
- 		i2c: i2c@11007000 {
- 			compatible = "mediatek,mt7629-i2c",
- 				     "mediatek,mt2712-i2c";
--- 
-2.17.1
+Thanks for your comment.
+I will update the binding document in the next patch.
