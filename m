@@ -1,26 +1,109 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH net-next v4 3/3] dt-bindings: net: ethernet: Update
- mt7622 docs and dts to reflect the new phylink API
-Date: Wed, 28 Aug 2019 12:56:58 -0700 (PDT)
-Message-ID: <20190828.125658.1743313522645522716.davem@davemloft.net>
-References: <20190825174341.20750-1-opensource@vdorst.com>
-        <20190825174341.20750-4-opensource@vdorst.com>
-        <e45565b1-bb63-66af-16f6-5c7c1094dd67@gmail.com>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: [PATCH v14 00/10] support gce on mt8183 platform
+Date: Thu, 29 Aug 2019 09:48:06 +0800
+Message-ID: <20190829014817.25482-1-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <e45565b1-bb63-66af-16f6-5c7c1094dd67@gmail.com>
-Sender: netdev-owner@vger.kernel.org
-To: matthias.bgg@gmail.com
-Cc: opensource@vdorst.com, john@phrozen.org, sean.wang@mediatek.com, nelson.chang@mediatek.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, linux@armlinux.org.uk, frank-w@public-files.de, sr@denx.de
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, CK HU <ck.hu@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Date: Wed, 28 Aug 2019 11:29:45 +0200
+Changes since v13:
+ - separate poll function as poll w/ & w/o mask function
+ - directly pass inst into append_command function instead
+   of returns a pointer
+ - fixup coding style
+ - rebase onto 5.3-rc1
 
-> Thanks for taking this patch. For the next time, please make sure that dts[i]
-> patches are independent from the binding description, as dts[i] should go
-> through my tree. No problem for this round, just saying for the future.
+Changes since v12:
+ - clear the value of command ptr address
+ - fixup some typo and remove unused define
 
-That's not always possible nor reasonable, to be quite honest.
+Changes since v11:
+ - correct some data type to avoid type conversion
+
+Changes since v10:
+ - remove subsys-cell from gce device node
+ - use of_parse_phandle_with_fixed_args instead of
+   of_parse_phandle_with_args
+
+Changes since v8 and v9:
+ - change the error return code in cmdq_dev_get_client_reg()
+
+Changes since v7:
+ - remove the memory allocation out of cmdq_dev_get_client_reg()
+ - rebase onto 5.2-rc1
+
+Changes since v6:
+ - remove cmdq_dev_get_event function and gce event property
+ - separate some changes to indepentent patch
+ - change the binding document related to gce-client-reg property
+
+Changes since v5:
+ - fix typo
+ - remove gce-event-name form the dt-binding
+ - add reasons in commit message
+
+Changes since v4:
+ - refine the architecture of the packet encoder function
+ - refine the gce enevt property
+ - change the patch's title
+
+Changes since v3:
+ - fix a typo in dt-binding and dtsi
+ - cast the return value to right format
+
+Changes since v2:
+ - according to CK's review comment, change the property name and
+   refine the parameter
+ - change the patch's title
+ - remove unused property from dt-binding and dts
+
+Changes since v1:
+ - add prefix "cmdq" in the commit subject
+ - add dt-binding document for get event and subsys function
+ - add fix up tag in fixup patch
+ - fix up some coding style (alignment)
+
+MTK will support gce function on mt8183 platform.
+  dt-binding: gce: add gce header file for mt8183
+  mailbox: mediatek: cmdq: support mt8183 gce function
+  arm64: dts: add gce node for mt8183
+
+Besides above patches, we refine gce driver on those patches.
+  mailbox: mediatek: cmdq: move the CMDQ_IRQ_MASK into cmdq driver data
+  mailbox: mediatek: cmdq: clear the event in cmdq initial flow
+
+In order to enhance the convenience of gce usage, we add new helper functions and refine the method of instruction combining.
+  dt-binding: gce: remove thread-num property
+  dt-binding: gce: add binding for gce client reg property
+  soc: mediatek: cmdq: define the instruction struct
+  soc: mediatek: cmdq: add polling function
+  soc: mediatek: cmdq: add cmdq_dev_get_client_reg function
+
+Bibby Hsieh (10):
+  dt-binding: gce: remove thread-num property
+  dt-binding: gce: add gce header file for mt8183
+  dt-binding: gce: add binding for gce client reg property
+  mailbox: mediatek: cmdq: move the CMDQ_IRQ_MASK into cmdq driver data
+  mailbox: mediatek: cmdq: support mt8183 gce function
+  mailbox: mediatek: cmdq: clear the event in cmdq initial flow
+  soc: mediatek: cmdq: define the instruction struct
+  soc: mediatek: cmdq: add polling function
+  soc: mediatek: cmdq: add cmdq_dev_get_client_reg function
+  arm64: dts: add gce node for mt8183
+
+ .../devicetree/bindings/mailbox/mtk-gce.txt   |  23 ++-
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi      |  10 +
+ drivers/mailbox/mtk-cmdq-mailbox.c            |  18 +-
+ drivers/soc/mediatek/mtk-cmdq-helper.c        | 136 +++++++++++---
+ include/dt-bindings/gce/mt8183-gce.h          | 175 ++++++++++++++++++
+ include/linux/mailbox/mtk-cmdq-mailbox.h      |  14 ++
+ include/linux/soc/mediatek/mtk-cmdq.h         |  56 +++++-
+ 7 files changed, 390 insertions(+), 42 deletions(-)
+ create mode 100644 include/dt-bindings/gce/mt8183-gce.h
+
+-- 
+2.18.0
