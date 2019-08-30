@@ -1,253 +1,316 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH 1/2] drm/mediatek: Only block updates to CRTCs that have
- a pending update
-Date: Fri, 30 Aug 2019 16:35:50 +0800
-Message-ID: <1567154150.13325.2.camel@mtksdaap41>
-References: <20190830073819.16566-1-bibby.hsieh@mediatek.com>
- <20190830073819.16566-2-bibby.hsieh@mediatek.com>
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [RFC PATCH V2 4/4] platform: mtk-isp: Add Mediatek FD driver
+Date: Fri, 30 Aug 2019 17:33:53 +0900
+Message-ID: <CAAFQd5D-Yg1FjUE_rwmqfS1gvfE0=MZ=r-ziueU_37-uo9QTbw@mail.gmail.com>
+References: <1562661672-22439-1-git-send-email-Jerry-Ch.chen@mediatek.com>
+ <1562661672-22439-5-git-send-email-Jerry-Ch.chen@mediatek.com>
+ <20190802082815.GA203993@chromium.org> <1566724680.20680.8.camel@mtksdccf07>
+ <CAAFQd5Dw+jaT-+LAUEVeB8W1zdnOgPw7u+aCfDWhYW1SfbzO8g@mail.gmail.com>
+ <1566957625.20680.33.camel@mtksdccf07>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190830073819.16566-2-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: drinkcat@chromium.org, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1566957625.20680.33.camel@mtksdccf07>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jerry-ch Chen <Jerry-ch.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, =?UTF-8?B?U2VhbiBDaGVuZyAo6YSt5piH5byYKQ==?= <Sean.Cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org" <laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, =?UTF-8?B?UnlubiBXdSAo5ZCz6IKy5oGpKQ==?= <Rynn.Wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?UG8tWWFuZyBIdWFuZyAo6buD5p+P6Zm9KQ==?= <po-yang.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "suleiman-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <suleiman-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "shik-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <shik-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, =?UTF-8?B?SnVuZ28gTGluICjmnpfmmI7kv4op?= <jungo.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?U2ogSHVhbmcgKOm7g+S/oeeSiyk=?= <sj.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "yuzhao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <yuzhao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "zwisler-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <zwisler-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org" <matthias.bgg>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIEJpYmJ5OgoKT24gRnJpLCAyMDE5LTA4LTMwIGF0IDE1OjM4ICswODAwLCBCaWJieSBIc2ll
-aCB3cm90ZToKPiBDdXJyZW50bHkgd2UgdXNlIGEgc2luZ2xlIG11dGV4IHRvIGFsbG93IG9ubHkg
-YSBzaW5nbGUgYXRvbWljCj4gdXBkYXRlIGF0IGEgdGltZS4gSW4gdHJ1dGgsIHRob3VnaCwgd2Ug
-cmVhbGx5IG9ubHkgd2FudCB0bwo+IGVuc3VyZSB0aGF0IG9ubHkgYSBzaW5nbGUgYXRvbWljIHVw
-ZGF0ZSBpcyBhbGxvd2VkIHBlciBDUlRDLgo+IAo+IEluIG90aGVyIHdvcmRzLCBmb3IgZWFjaCBh
-dG9taWMgdXBkYXRlLCB3ZSBvbmx5IGJsb2NrIGlmIHRoZXJlCj4gaXMgYSBwZW5kaW5nIHVwZGF0
-ZSBmb3IgdGhlIENSVENzIGludm9sdmVkLCBhbmQgZG9uJ3QgYmxvY2sgaWYKPiB0aGVyZSBhcmUg
-b25seSBwZW5kaW5nIHVwZGF0ZXMgZm9yIG90aGVyIENSVENzLgoKSSBkb24ndCBrbm93IHdoeSB0
-aGlzIHBhdGNoIGlzIHNvIGNvbXBsaWNhdGVkLiBUaGUgb3JpZ2luYWwgcHJvYmxlbSBpcwp0aGF0
-IG9uZSBtdXRleCBmb3Igd2hvbGUgZHJtIHdvdWxkIGJsb2NrIGRpZmZlcmVudCBjcnRjLiBTbyBJ
-IHRoaW5rIGVhY2gKY3J0YyBoYXMgaXRzIG93biBtdXRleCB3b3VsZCBzb2x2ZSB0aGlzIHByb2Js
-ZW0gYW5kIHdlIG5lZWQgbm90IHRoZQpldmVudCB3YWl0aW5nLiBEbyBJIG1pc3Mgc29tZXRoaW5n
-PwoKUmVnYXJkcywKQ0sKCj4gCj4gRml4ZXM6IDExOWY1MTczNjI4YSAoImRybS9tZWRpYXRlazog
-QWRkIERSTSBEcml2ZXIgZm9yIE1lZGlhdGVrIFNvQyBNVDgxNzMuIikKPiAKPiBTaWduZWQtb2Zm
-LWJ5OiBEYW5pZWwgS3VydHogPGRqa3VydHpAY2hyb21pdW0ub3JnPgo+IFNpZ25lZC1vZmYtYnk6
-IEJpYmJ5IEhzaWVoIDxiaWJieS5oc2llaEBtZWRpYXRlay5jb20+Cj4gLS0tCj4gIGRyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYyB8ICAxNCArLQo+ICBkcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyAgfCAxODIgKysrKysrKysrKysrKysrKysrKysrLS0t
-Cj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5oICB8ICAxMiArLQo+ICAz
-IGZpbGVzIGNoYW5nZWQsIDE4NCBpbnNlcnRpb25zKCspLCAyNCBkZWxldGlvbnMoLSkKPiAKPiBk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5jIGIvZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5jCj4gaW5kZXggYjU1OTcwYTI4Njlk
-Li43Njk3YjQwYmFhYzAgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19kcm1fY3J0Yy5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0
-Yy5jCj4gQEAgLTUsNiArNSw3IEBACj4gIAo+ICAjaW5jbHVkZSA8YXNtL2JhcnJpZXIuaD4KPiAg
-I2luY2x1ZGUgPGRybS9kcm1QLmg+Cj4gKyNpbmNsdWRlIDxkcm0vZHJtX2F0b21pYy5oPgo+ICAj
-aW5jbHVkZSA8ZHJtL2RybV9hdG9taWNfaGVscGVyLmg+Cj4gICNpbmNsdWRlIDxkcm0vZHJtX3Bs
-YW5lX2hlbHBlci5oPgo+ICAjaW5jbHVkZSA8ZHJtL2RybV9wcm9iZV9oZWxwZXIuaD4KPiBAQCAt
-NDUsNiArNDYsOCBAQCBzdHJ1Y3QgbXRrX2RybV9jcnRjIHsKPiAgCXN0cnVjdCBtdGtfZGlzcF9t
-dXRleAkJKm11dGV4Owo+ICAJdW5zaWduZWQgaW50CQkJZGRwX2NvbXBfbnI7Cj4gIAlzdHJ1Y3Qg
-bXRrX2RkcF9jb21wCQkqKmRkcF9jb21wOwo+ICsKPiArCXN0cnVjdCBkcm1fY3J0Y19zdGF0ZQkJ
-Km9sZF9jcnRjX3N0YXRlOwo+ICB9Owo+ICAKPiAgc3RydWN0IG10a19jcnRjX3N0YXRlIHsKPiBA
-QCAtMzQzLDYgKzM0Niw3IEBAIHN0YXRpYyB2b2lkIG10a19jcnRjX2RkcF9od19maW5pKHN0cnVj
-dCBtdGtfZHJtX2NydGMgKm10a19jcnRjKQo+ICBzdGF0aWMgdm9pZCBtdGtfY3J0Y19kZHBfY29u
-ZmlnKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKPiAgewo+ICAJc3RydWN0IG10a19kcm1fY3J0YyAq
-bXRrX2NydGMgPSB0b19tdGtfY3J0YyhjcnRjKTsKPiArCXN0cnVjdCBkcm1fYXRvbWljX3N0YXRl
-ICphdG9taWNfc3RhdGUgPSBtdGtfY3J0Yy0+b2xkX2NydGNfc3RhdGUtPnN0YXRlOwo+ICAJc3Ry
-dWN0IG10a19jcnRjX3N0YXRlICpzdGF0ZSA9IHRvX210a19jcnRjX3N0YXRlKG10a19jcnRjLT5i
-YXNlLnN0YXRlKTsKPiAgCXN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXAgPSBtdGtfY3J0Yy0+ZGRw
-X2NvbXBbMF07Cj4gIAl1bnNpZ25lZCBpbnQgaTsKPiBAQCAtMzgyLDYgKzM4Niw3IEBAIHN0YXRp
-YyB2b2lkIG10a19jcnRjX2RkcF9jb25maWcoc3RydWN0IGRybV9jcnRjICpjcnRjKQo+ICAJCQl9
-Cj4gIAkJfQo+ICAJCW10a19jcnRjLT5wZW5kaW5nX3BsYW5lcyA9IGZhbHNlOwo+ICsJCW10a19h
-dG9taWNfc3RhdGVfcHV0X3F1ZXVlKGF0b21pY19zdGF0ZSk7Cj4gIAl9Cj4gIH0KPiAgCj4gQEAg
-LTQ1MSw2ICs0NTYsNyBAQCBzdGF0aWMgdm9pZCBtdGtfZHJtX2NydGNfYXRvbWljX2JlZ2luKHN0
-cnVjdCBkcm1fY3J0YyAqY3J0YywKPiAgc3RhdGljIHZvaWQgbXRrX2RybV9jcnRjX2F0b21pY19m
-bHVzaChzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCj4gIAkJCQkgICAgICBzdHJ1Y3QgZHJtX2NydGNf
-c3RhdGUgKm9sZF9jcnRjX3N0YXRlKQo+ICB7Cj4gKwlzdHJ1Y3QgZHJtX2F0b21pY19zdGF0ZSAq
-b2xkX2F0b21pY19zdGF0ZSA9IG9sZF9jcnRjX3N0YXRlLT5zdGF0ZTsKPiAgCXN0cnVjdCBtdGtf
-ZHJtX2NydGMgKm10a19jcnRjID0gdG9fbXRrX2NydGMoY3J0Yyk7Cj4gIAlzdHJ1Y3QgbXRrX2Ry
-bV9wcml2YXRlICpwcml2ID0gY3J0Yy0+ZGV2LT5kZXZfcHJpdmF0ZTsKPiAgCXVuc2lnbmVkIGlu
-dCBwZW5kaW5nX3BsYW5lcyA9IDA7Cj4gQEAgLTQ2OSw4ICs0NzUsMTMgQEAgc3RhdGljIHZvaWQg
-bXRrX2RybV9jcnRjX2F0b21pY19mbHVzaChzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCj4gIAkJCXBl
-bmRpbmdfcGxhbmVzIHw9IEJJVChpKTsKPiAgCQl9Cj4gIAl9Cj4gLQlpZiAocGVuZGluZ19wbGFu
-ZXMpCj4gKwo+ICsJaWYgKHBlbmRpbmdfcGxhbmVzKSB7Cj4gIAkJbXRrX2NydGMtPnBlbmRpbmdf
-cGxhbmVzID0gdHJ1ZTsKPiArCQlkcm1fYXRvbWljX3N0YXRlX2dldChvbGRfYXRvbWljX3N0YXRl
-KTsKPiArCQltdGtfY3J0Yy0+b2xkX2NydGNfc3RhdGUgPSBvbGRfY3J0Y19zdGF0ZTsKPiArCX0K
-PiArCj4gIAlpZiAoY3J0Yy0+c3RhdGUtPmNvbG9yX21nbXRfY2hhbmdlZCkKPiAgCQlmb3IgKGkg
-PSAwOyBpIDwgbXRrX2NydGMtPmRkcF9jb21wX25yOyBpKyspCj4gIAkJCW10a19kZHBfZ2FtbWFf
-c2V0KG10a19jcnRjLT5kZHBfY29tcFtpXSwgY3J0Yy0+c3RhdGUpOwo+IEBAIC01MjYsNiArNTM3
-LDcgQEAgc3RhdGljIGludCBtdGtfZHJtX2NydGNfaW5pdChzdHJ1Y3QgZHJtX2RldmljZSAqZHJt
-LAo+ICAKPiAgdm9pZCBtdGtfY3J0Y19kZHBfaXJxKHN0cnVjdCBkcm1fY3J0YyAqY3J0Yywgc3Ry
-dWN0IG10a19kZHBfY29tcCAqY29tcCkKPiAgewo+ICsKPiAgCXN0cnVjdCBtdGtfZHJtX2NydGMg
-Km10a19jcnRjID0gdG9fbXRrX2NydGMoY3J0Yyk7Cj4gIAlzdHJ1Y3QgbXRrX2RybV9wcml2YXRl
-ICpwcml2ID0gY3J0Yy0+ZGV2LT5kZXZfcHJpdmF0ZTsKPiAgCj4gZGlmZiAtLWdpdCBhL2RyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlh
-dGVrL210a19kcm1fZHJ2LmMKPiBpbmRleCBjMDkyOGI2OWRjNDMuLmIwMzA4YTNhNzQ4MyAxMDA2
-NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+ICsrKyBi
-L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gQEAgLTMxLDExICszMSwx
-MjAgQEAKPiAgI2RlZmluZSBEUklWRVJfTUFKT1IgMQo+ICAjZGVmaW5lIERSSVZFUl9NSU5PUiAw
-Cj4gIAo+IC1zdGF0aWMgdm9pZCBtdGtfYXRvbWljX3NjaGVkdWxlKHN0cnVjdCBtdGtfZHJtX3By
-aXZhdGUgKnByaXZhdGUsCj4gK3N0cnVjdCBtdGtfYXRvbWljX3N0YXRlIHsKPiArCXN0cnVjdCBk
-cm1fYXRvbWljX3N0YXRlIGJhc2U7Cj4gKwlzdHJ1Y3QgbGlzdF9oZWFkIGxpc3Q7Cj4gKwlzdHJ1
-Y3Qgd29ya19zdHJ1Y3Qgd29yazsKPiArfTsKPiArCj4gK3N0YXRpYyBpbmxpbmUgc3RydWN0IG10
-a19hdG9taWNfc3RhdGUgKnRvX210a19zdGF0ZShzdHJ1Y3QgZHJtX2F0b21pY19zdGF0ZSAqcykK
-PiArewo+ICsJcmV0dXJuIGNvbnRhaW5lcl9vZihzLCBzdHJ1Y3QgbXRrX2F0b21pY19zdGF0ZSwg
-YmFzZSk7Cj4gK30KPiArCj4gK3ZvaWQgbXRrX2F0b21pY19zdGF0ZV9wdXRfcXVldWUoc3RydWN0
-IGRybV9hdG9taWNfc3RhdGUgKnN0YXRlKQo+ICt7Cj4gKwlzdHJ1Y3QgZHJtX2RldmljZSAqZHJt
-ID0gc3RhdGUtPmRldjsKPiArCXN0cnVjdCBtdGtfZHJtX3ByaXZhdGUgKm10a19kcm0gPSBkcm0t
-PmRldl9wcml2YXRlOwo+ICsJc3RydWN0IG10a19hdG9taWNfc3RhdGUgKm10a19zdGF0ZSA9IHRv
-X210a19zdGF0ZShzdGF0ZSk7Cj4gKwl1bnNpZ25lZCBsb25nIGZsYWdzOwo+ICsKPiArCXNwaW5f
-bG9ja19pcnFzYXZlKCZtdGtfZHJtLT51bnJlZmVyZW5jZS5sb2NrLCBmbGFncyk7Cj4gKwlsaXN0
-X2FkZF90YWlsKCZtdGtfc3RhdGUtPmxpc3QsICZtdGtfZHJtLT51bnJlZmVyZW5jZS5saXN0KTsK
-PiArCXNwaW5fdW5sb2NrX2lycXJlc3RvcmUoJm10a19kcm0tPnVucmVmZXJlbmNlLmxvY2ssIGZs
-YWdzKTsKPiArCj4gKwlzY2hlZHVsZV93b3JrKCZtdGtfZHJtLT51bnJlZmVyZW5jZS53b3JrKTsK
-PiArfQo+ICsKPiArc3RhdGljIHVpbnQzMl90IG10a19hdG9taWNfY3J0Y19tYXNrKHN0cnVjdCBk
-cm1fZGV2aWNlICpkcm0sCj4gKwkJCQkgICAgIHN0cnVjdCBkcm1fYXRvbWljX3N0YXRlICpzdGF0
-ZSkKPiArewo+ICsJdWludDMyX3QgY3J0Y19tYXNrOwo+ICsJaW50IGk7Cj4gKwo+ICsJZm9yIChp
-ID0gMCwgY3J0Y19tYXNrID0gMDsgaSA8IGRybS0+bW9kZV9jb25maWcubnVtX2NydGM7IGkrKykg
-ewo+ICsJCXN0cnVjdCBkcm1fY3J0YyAqY3J0YyA9IHN0YXRlLT5jcnRjc1tpXS5wdHI7Cj4gKwo+
-ICsJCWlmIChjcnRjKQo+ICsJCQljcnRjX21hc2sgfD0gKDEgPDwgZHJtX2NydGNfaW5kZXgoY3J0
-YykpOwo+ICsJfQo+ICsKPiArCXJldHVybiBjcnRjX21hc2s7Cj4gK30KPiArCj4gKy8qCj4gKyAq
-IEJsb2NrIHVudGlsIHNwZWNpZmllZCBjcnRjcyBhcmUgbm8gbG9uZ2VyIHBlbmRpbmcgdXBkYXRl
-LCBhbmQgYXRvbWljYWxseQo+ICsgKiBtYXJrIHRoZW0gYXMgcGVuZGluZyB1cGRhdGUuCj4gKyAq
-Lwo+ICtzdGF0aWMgaW50IG10a19hdG9taWNfZ2V0X2NydGNzKHN0cnVjdCBkcm1fZGV2aWNlICpk
-cm0sCj4gKwkJCQlzdHJ1Y3QgZHJtX2F0b21pY19zdGF0ZSAqc3RhdGUpCj4gK3sKPiArCXN0cnVj
-dCBtdGtfZHJtX3ByaXZhdGUgKnByaXZhdGUgPSBkcm0tPmRldl9wcml2YXRlOwo+ICsJdWludDMy
-X3QgY3J0Y19tYXNrOwo+ICsJaW50IHJldDsKPiArCj4gKwljcnRjX21hc2sgPSBtdGtfYXRvbWlj
-X2NydGNfbWFzayhkcm0sIHN0YXRlKTsKPiArCj4gKwkvKgo+ICsJICogV2FpdCBmb3IgYWxsIHBl
-bmRpbmcgdXBkYXRlcyB0byBjb21wbGV0ZSBmb3IgdGhlIHNldCBvZiBjcnRjcyBiZWluZwo+ICsJ
-ICogY2hhbmdlZCBpbiB0aGlzIGF0b21pYyBjb21taXQKPiArCSAqLwo+ICsJc3Bpbl9sb2NrKCZw
-cml2YXRlLT5jb21taXQuY3J0Y3NfZXZlbnQubG9jayk7Cj4gKwlyZXQgPSB3YWl0X2V2ZW50X2lu
-dGVycnVwdGlibGVfbG9ja2VkKHByaXZhdGUtPmNvbW1pdC5jcnRjc19ldmVudCwKPiArCQkJIShw
-cml2YXRlLT5jb21taXQuY3J0Y3MgJiBjcnRjX21hc2spKTsKPiArCWlmIChyZXQgPT0gMCkKPiAr
-CQlwcml2YXRlLT5jb21taXQuY3J0Y3MgfD0gY3J0Y19tYXNrOwo+ICsJc3Bpbl91bmxvY2soJnBy
-aXZhdGUtPmNvbW1pdC5jcnRjc19ldmVudC5sb2NrKTsKPiArCj4gKwlyZXR1cm4gcmV0Owo+ICt9
-Cj4gKwo+ICsvKgo+ICsgKiBNYXJrIHNwZWNpZmllZCBjcnRjcyBhcyBubyBsb25nZXIgcGVuZGlu
-ZyB1cGRhdGUuCj4gKyAqLwo+ICtzdGF0aWMgdm9pZCBtdGtfYXRvbWljX3B1dF9jcnRjcyhzdHJ1
-Y3QgZHJtX2RldmljZSAqZHJtLAo+ICsJCQkJIHN0cnVjdCBkcm1fYXRvbWljX3N0YXRlICpzdGF0
-ZSkKPiArewo+ICsJc3RydWN0IG10a19kcm1fcHJpdmF0ZSAqcHJpdmF0ZSA9IGRybS0+ZGV2X3By
-aXZhdGU7Cj4gKwl1aW50MzJfdCBjcnRjX21hc2s7Cj4gKwo+ICsJY3J0Y19tYXNrID0gbXRrX2F0
-b21pY19jcnRjX21hc2soZHJtLCBzdGF0ZSk7Cj4gKwo+ICsJc3Bpbl9sb2NrKCZwcml2YXRlLT5j
-b21taXQuY3J0Y3NfZXZlbnQubG9jayk7Cj4gKwlwcml2YXRlLT5jb21taXQuY3J0Y3MgJj0gfmNy
-dGNfbWFzazsKPiArCXdha2VfdXBfYWxsX2xvY2tlZCgmcHJpdmF0ZS0+Y29tbWl0LmNydGNzX2V2
-ZW50KTsKPiArCXNwaW5fdW5sb2NrKCZwcml2YXRlLT5jb21taXQuY3J0Y3NfZXZlbnQubG9jayk7
-Cj4gK30KPiArCj4gK3N0YXRpYyB2b2lkIG10a191bnJlZmVyZW5jZV93b3JrKHN0cnVjdCB3b3Jr
-X3N0cnVjdCAqd29yaykKPiArewo+ICsJc3RydWN0IG10a19kcm1fcHJpdmF0ZSAqbXRrX2RybSA9
-IGNvbnRhaW5lcl9vZih3b3JrLAo+ICsJCQlzdHJ1Y3QgbXRrX2RybV9wcml2YXRlLCB1bnJlZmVy
-ZW5jZS53b3JrKTsKPiArCXVuc2lnbmVkIGxvbmcgZmxhZ3M7Cj4gKwlzdHJ1Y3QgbXRrX2F0b21p
-Y19zdGF0ZSAqc3RhdGUsICp0bXA7Cj4gKwo+ICsJLyoKPiArCSAqIGZyYW1lYnVmZmVycyBjYW5u
-b3QgYmUgdW5yZWZlcmVuY2VkIGluIGF0b21pYyBjb250ZXh0Lgo+ICsJICogVGhlcmVmb3JlLCBv
-bmx5IGhvbGQgdGhlIHNwaW5sb2NrIHdoZW4gaXRlcmF0aW5nIHVucmVmZXJlbmNlX2xpc3QsCj4g
-KwkgKiBhbmQgZHJvcCBpdCB3aGVuIGRvaW5nIHRoZSB1bnJlZmVyZW5jZS4KPiArCSAqLwo+ICsJ
-c3Bpbl9sb2NrX2lycXNhdmUoJm10a19kcm0tPnVucmVmZXJlbmNlLmxvY2ssIGZsYWdzKTsKPiAr
-CWxpc3RfZm9yX2VhY2hfZW50cnlfc2FmZShzdGF0ZSwgdG1wLCAmbXRrX2RybS0+dW5yZWZlcmVu
-Y2UubGlzdCwgbGlzdCkgewo+ICsJCWxpc3RfZGVsKCZzdGF0ZS0+bGlzdCk7Cj4gKwkJc3Bpbl91
-bmxvY2tfaXJxcmVzdG9yZSgmbXRrX2RybS0+dW5yZWZlcmVuY2UubG9jaywgZmxhZ3MpOwo+ICsJ
-CWRybV9hdG9taWNfc3RhdGVfcHV0KCZzdGF0ZS0+YmFzZSk7Cj4gKwkJc3Bpbl9sb2NrX2lycXNh
-dmUoJm10a19kcm0tPnVucmVmZXJlbmNlLmxvY2ssIGZsYWdzKTsKPiArCX0KPiArCXNwaW5fdW5s
-b2NrX2lycXJlc3RvcmUoJm10a19kcm0tPnVucmVmZXJlbmNlLmxvY2ssIGZsYWdzKTsKPiArfQo+
-ICsKPiArCj4gK3N0YXRpYyB2b2lkIG10a19hdG9taWNfc2NoZWR1bGUoc3RydWN0IGRybV9kZXZp
-Y2UgKmRybSwKPiAgCQkJCXN0cnVjdCBkcm1fYXRvbWljX3N0YXRlICpzdGF0ZSkKPiAgewo+IC0J
-cHJpdmF0ZS0+Y29tbWl0LnN0YXRlID0gc3RhdGU7Cj4gLQlzY2hlZHVsZV93b3JrKCZwcml2YXRl
-LT5jb21taXQud29yayk7Cj4gKwlzdHJ1Y3QgbXRrX2F0b21pY19zdGF0ZSAqbXRrX3N0YXRlID0g
-dG9fbXRrX3N0YXRlKHN0YXRlKTsKPiArCj4gKwlzY2hlZHVsZV93b3JrKCZtdGtfc3RhdGUtPndv
-cmspOwo+ICB9Cj4gIAo+ICBzdGF0aWMgdm9pZCBtdGtfYXRvbWljX3dhaXRfZm9yX2ZlbmNlcyhz
-dHJ1Y3QgZHJtX2F0b21pY19zdGF0ZSAqc3RhdGUpCj4gQEAgLTQ4LDEzICsxNTcsMTAgQEAgc3Rh
-dGljIHZvaWQgbXRrX2F0b21pY193YWl0X2Zvcl9mZW5jZXMoc3RydWN0IGRybV9hdG9taWNfc3Rh
-dGUgKnN0YXRlKQo+ICAJCW10a19mYl93YWl0KG5ld19wbGFuZV9zdGF0ZS0+ZmIpOwo+ICB9Cj4g
-IAo+IC1zdGF0aWMgdm9pZCBtdGtfYXRvbWljX2NvbXBsZXRlKHN0cnVjdCBtdGtfZHJtX3ByaXZh
-dGUgKnByaXZhdGUsCj4gK3N0YXRpYyB2b2lkIG10a19hdG9taWNfY29tcGxldGUoc3RydWN0IGRy
-bV9kZXZpY2UgKmRybSwKPiAgCQkJCXN0cnVjdCBkcm1fYXRvbWljX3N0YXRlICpzdGF0ZSkKPiAg
-ewo+IC0Jc3RydWN0IGRybV9kZXZpY2UgKmRybSA9IHByaXZhdGUtPmRybTsKPiAtCj4gIAltdGtf
-YXRvbWljX3dhaXRfZm9yX2ZlbmNlcyhzdGF0ZSk7Cj4gLQo+ICAJLyoKPiAgCSAqIE1lZGlhdGVr
-IGRybSBzdXBwb3J0cyBydW50aW1lIFBNLCBzbyBwbGFuZSByZWdpc3RlcnMgY2Fubm90IGJlCj4g
-IAkgKiB3cml0dGVuIHdoZW4gdGhlaXIgY3J0YyBpcyBkaXNhYmxlZC4KPiBAQCAtNzcsNTMgKzE4
-Myw4NiBAQCBzdGF0aWMgdm9pZCBtdGtfYXRvbWljX2NvbXBsZXRlKHN0cnVjdCBtdGtfZHJtX3By
-aXZhdGUgKnByaXZhdGUsCj4gIAlkcm1fYXRvbWljX2hlbHBlcl93YWl0X2Zvcl92YmxhbmtzKGRy
-bSwgc3RhdGUpOwo+ICAKPiAgCWRybV9hdG9taWNfaGVscGVyX2NsZWFudXBfcGxhbmVzKGRybSwg
-c3RhdGUpOwo+ICsJbXRrX2F0b21pY19wdXRfY3J0Y3MoZHJtLCBzdGF0ZSk7Cj4gKwo+ICAJZHJt
-X2F0b21pY19zdGF0ZV9wdXQoc3RhdGUpOwo+ICB9Cj4gIAo+ICBzdGF0aWMgdm9pZCBtdGtfYXRv
-bWljX3dvcmsoc3RydWN0IHdvcmtfc3RydWN0ICp3b3JrKQo+ICB7Cj4gLQlzdHJ1Y3QgbXRrX2Ry
-bV9wcml2YXRlICpwcml2YXRlID0gY29udGFpbmVyX29mKHdvcmssCj4gLQkJCXN0cnVjdCBtdGtf
-ZHJtX3ByaXZhdGUsIGNvbW1pdC53b3JrKTsKPiArCXN0cnVjdCBtdGtfYXRvbWljX3N0YXRlICpt
-dGtfc3RhdGUgPSBjb250YWluZXJfb2Yod29yaywKPiArCQkJc3RydWN0IG10a19hdG9taWNfc3Rh
-dGUsIHdvcmspOwo+ICsJc3RydWN0IGRybV9hdG9taWNfc3RhdGUgKnN0YXRlID0gJm10a19zdGF0
-ZS0+YmFzZTsKPiArCXN0cnVjdCBkcm1fZGV2aWNlICpkcm0gPSBzdGF0ZS0+ZGV2Owo+ICAKPiAt
-CW10a19hdG9taWNfY29tcGxldGUocHJpdmF0ZSwgcHJpdmF0ZS0+Y29tbWl0LnN0YXRlKTsKPiAr
-CW10a19hdG9taWNfY29tcGxldGUoZHJtLCBzdGF0ZSk7Cj4gIH0KPiAgCj4gIHN0YXRpYyBpbnQg
-bXRrX2F0b21pY19jb21taXQoc3RydWN0IGRybV9kZXZpY2UgKmRybSwKPiAgCQkJICAgICBzdHJ1
-Y3QgZHJtX2F0b21pY19zdGF0ZSAqc3RhdGUsCj4gIAkJCSAgICAgYm9vbCBhc3luYykKPiAgewo+
-IC0Jc3RydWN0IG10a19kcm1fcHJpdmF0ZSAqcHJpdmF0ZSA9IGRybS0+ZGV2X3ByaXZhdGU7Cj4g
-IAlpbnQgcmV0Owo+ICAKPiAgCXJldCA9IGRybV9hdG9taWNfaGVscGVyX3ByZXBhcmVfcGxhbmVz
-KGRybSwgc3RhdGUpOwo+ICAJaWYgKHJldCkKPiAgCQlyZXR1cm4gcmV0Owo+ICAKPiAtCW11dGV4
-X2xvY2soJnByaXZhdGUtPmNvbW1pdC5sb2NrKTsKPiAtCWZsdXNoX3dvcmsoJnByaXZhdGUtPmNv
-bW1pdC53b3JrKTsKPiArCXJldCA9IG10a19hdG9taWNfZ2V0X2NydGNzKGRybSwgc3RhdGUpOwo+
-ICsJaWYgKHJldCkgewo+ICsJCWRybV9hdG9taWNfaGVscGVyX2NsZWFudXBfcGxhbmVzKGRybSwg
-c3RhdGUpOwo+ICsJCXJldHVybiByZXQ7Cj4gKwl9Cj4gIAo+ICAJcmV0ID0gZHJtX2F0b21pY19o
-ZWxwZXJfc3dhcF9zdGF0ZShzdGF0ZSwgdHJ1ZSk7Cj4gIAlpZiAocmV0KSB7Cj4gLQkJbXV0ZXhf
-dW5sb2NrKCZwcml2YXRlLT5jb21taXQubG9jayk7Cj4gIAkJZHJtX2F0b21pY19oZWxwZXJfY2xl
-YW51cF9wbGFuZXMoZHJtLCBzdGF0ZSk7Cj4gIAkJcmV0dXJuIHJldDsKPiAgCX0KPiAgCj4gIAlk
-cm1fYXRvbWljX3N0YXRlX2dldChzdGF0ZSk7Cj4gIAlpZiAoYXN5bmMpCj4gLQkJbXRrX2F0b21p
-Y19zY2hlZHVsZShwcml2YXRlLCBzdGF0ZSk7Cj4gKwkJbXRrX2F0b21pY19zY2hlZHVsZShkcm0s
-IHN0YXRlKTsKPiAgCWVsc2UKPiAtCQltdGtfYXRvbWljX2NvbXBsZXRlKHByaXZhdGUsIHN0YXRl
-KTsKPiAtCj4gLQltdXRleF91bmxvY2soJnByaXZhdGUtPmNvbW1pdC5sb2NrKTsKPiArCQltdGtf
-YXRvbWljX2NvbXBsZXRlKGRybSwgc3RhdGUpOwo+ICAKPiAgCXJldHVybiAwOwo+ICB9Cj4gIAo+
-ICtzdGF0aWMgc3RydWN0IGRybV9hdG9taWNfc3RhdGUgKm10a19kcm1fYXRvbWljX3N0YXRlX2Fs
-bG9jKAo+ICsJCXN0cnVjdCBkcm1fZGV2aWNlICpkZXYpCj4gK3sKPiArCXN0cnVjdCBtdGtfYXRv
-bWljX3N0YXRlICptdGtfc3RhdGU7Cj4gKwo+ICsJbXRrX3N0YXRlID0ga3phbGxvYyhzaXplb2Yo
-Km10a19zdGF0ZSksIEdGUF9LRVJORUwpOwo+ICsJaWYgKCFtdGtfc3RhdGUpCj4gKwkJcmV0dXJu
-IE5VTEw7Cj4gKwo+ICsJaWYgKGRybV9hdG9taWNfc3RhdGVfaW5pdChkZXYsICZtdGtfc3RhdGUt
-PmJhc2UpIDwgMCkgewo+ICsJCWtmcmVlKG10a19zdGF0ZSk7Cj4gKwkJcmV0dXJuIE5VTEw7Cj4g
-Kwl9Cj4gKwo+ICsJSU5JVF9MSVNUX0hFQUQoJm10a19zdGF0ZS0+bGlzdCk7Cj4gKwlJTklUX1dP
-UksoJm10a19zdGF0ZS0+d29yaywgbXRrX2F0b21pY193b3JrKTsKPiArCj4gKwlyZXR1cm4gJm10
-a19zdGF0ZS0+YmFzZTsKPiArfQo+ICsKPiArc3RhdGljIHZvaWQgbXRrX2RybV9hdG9taWNfc3Rh
-dGVfZnJlZShzdHJ1Y3QgZHJtX2F0b21pY19zdGF0ZSAqc3RhdGUpCj4gK3sKPiArCXN0cnVjdCBt
-dGtfYXRvbWljX3N0YXRlICptdGtfc3RhdGUgPSB0b19tdGtfc3RhdGUoc3RhdGUpOwo+ICsKPiAr
-CWRybV9hdG9taWNfc3RhdGVfZGVmYXVsdF9yZWxlYXNlKHN0YXRlKTsKPiArCWtmcmVlKG10a19z
-dGF0ZSk7Cj4gK30KPiArCj4gIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX21vZGVfY29uZmlnX2Z1
-bmNzIG10a19kcm1fbW9kZV9jb25maWdfZnVuY3MgPSB7Cj4gIAkuZmJfY3JlYXRlID0gbXRrX2Ry
-bV9tb2RlX2ZiX2NyZWF0ZSwKPiAgCS5hdG9taWNfY2hlY2sgPSBkcm1fYXRvbWljX2hlbHBlcl9j
-aGVjaywKPiAgCS5hdG9taWNfY29tbWl0ID0gbXRrX2F0b21pY19jb21taXQsCj4gKwkuYXRvbWlj
-X3N0YXRlX2FsbG9jID0gbXRrX2RybV9hdG9taWNfc3RhdGVfYWxsb2MsCj4gKwkuYXRvbWljX3N0
-YXRlX2ZyZWUgPSBtdGtfZHJtX2F0b21pY19zdGF0ZV9mcmVlCj4gIH07Cj4gIAo+ICBzdGF0aWMg
-Y29uc3QgZW51bSBtdGtfZGRwX2NvbXBfaWQgbXQyNzAxX210a19kZHBfbWFpbltdID0gewo+IEBA
-IC0zMTksNiArNDU4LDExIEBAIHN0YXRpYyBpbnQgbXRrX2RybV9rbXNfaW5pdChzdHJ1Y3QgZHJt
-X2RldmljZSAqZHJtKQo+ICAJZHJtX2ttc19oZWxwZXJfcG9sbF9pbml0KGRybSk7Cj4gIAlkcm1f
-bW9kZV9jb25maWdfcmVzZXQoZHJtKTsKPiAgCj4gKwlJTklUX1dPUksoJnByaXZhdGUtPnVucmVm
-ZXJlbmNlLndvcmssIG10a191bnJlZmVyZW5jZV93b3JrKTsKPiArCUlOSVRfTElTVF9IRUFEKCZw
-cml2YXRlLT51bnJlZmVyZW5jZS5saXN0KTsKPiArCXNwaW5fbG9ja19pbml0KCZwcml2YXRlLT51
-bnJlZmVyZW5jZS5sb2NrKTsKPiArCWluaXRfd2FpdHF1ZXVlX2hlYWQoJnByaXZhdGUtPmNvbW1p
-dC5jcnRjc19ldmVudCk7Cj4gKwo+ICAJcmV0dXJuIDA7Cj4gIAo+ICBlcnJfY29tcG9uZW50X3Vu
-YmluZDoKPiBAQCAtNTA0LDggKzY0OCw2IEBAIHN0YXRpYyBpbnQgbXRrX2RybV9wcm9iZShzdHJ1
-Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ICAJaWYgKCFwcml2YXRlKQo+ICAJCXJldHVybiAt
-RU5PTUVNOwo+ICAKPiAtCW11dGV4X2luaXQoJnByaXZhdGUtPmNvbW1pdC5sb2NrKTsKPiAtCUlO
-SVRfV09SSygmcHJpdmF0ZS0+Y29tbWl0LndvcmssIG10a19hdG9taWNfd29yayk7Cj4gIAlwcml2
-YXRlLT5kYXRhID0gb2ZfZGV2aWNlX2dldF9tYXRjaF9kYXRhKGRldik7Cj4gIAo+ICAJbWVtID0g
-cGxhdGZvcm1fZ2V0X3Jlc291cmNlKHBkZXYsIElPUkVTT1VSQ0VfTUVNLCAwKTsKPiBkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmggYi9kcml2ZXJzL2dw
-dS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuaAo+IGluZGV4IDgyM2JhNDA4MWMxOC4uMDkzNGY4
-M2I4NjBkIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Ry
-di5oCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmgKPiBAQCAt
-NDgsMTIgKzQ4LDE2IEBAIHN0cnVjdCBtdGtfZHJtX3ByaXZhdGUgewo+ICAJY29uc3Qgc3RydWN0
-IG10a19tbXN5c19kcml2ZXJfZGF0YSAqZGF0YTsKPiAgCj4gIAlzdHJ1Y3Qgewo+IC0JCXN0cnVj
-dCBkcm1fYXRvbWljX3N0YXRlICpzdGF0ZTsKPiAtCQlzdHJ1Y3Qgd29ya19zdHJ1Y3Qgd29yazsK
-PiAtCQlzdHJ1Y3QgbXV0ZXggbG9jazsKPiArCQl1aW50MzJfdCBjcnRjczsKPiArCQl3YWl0X3F1
-ZXVlX2hlYWRfdCBjcnRjc19ldmVudDsKPiAgCX0gY29tbWl0Owo+ICAKPiAgCXN0cnVjdCBkcm1f
-YXRvbWljX3N0YXRlICpzdXNwZW5kX3N0YXRlOwo+ICsJc3RydWN0IHsKPiArCQlzdHJ1Y3Qgd29y
-a19zdHJ1Y3QJd29yazsKPiArCQlzdHJ1Y3QgbGlzdF9oZWFkCWxpc3Q7Cj4gKwkJc3BpbmxvY2tf
-dAkJbG9jazsKPiArCX0gdW5yZWZlcmVuY2U7Cj4gIH07Cj4gIAo+ICBleHRlcm4gc3RydWN0IHBs
-YXRmb3JtX2RyaXZlciBtdGtfZGRwX2RyaXZlcjsKPiBAQCAtNjQsNCArNjgsNiBAQCBleHRlcm4g
-c3RydWN0IHBsYXRmb3JtX2RyaXZlciBtdGtfZHBpX2RyaXZlcjsKPiAgZXh0ZXJuIHN0cnVjdCBw
-bGF0Zm9ybV9kcml2ZXIgbXRrX2RzaV9kcml2ZXI7Cj4gIGV4dGVybiBzdHJ1Y3QgcGxhdGZvcm1f
-ZHJpdmVyIG10a19taXBpX3R4X2RyaXZlcjsKPiAgCj4gK3ZvaWQgbXRrX2F0b21pY19zdGF0ZV9w
-dXRfcXVldWUoc3RydWN0IGRybV9hdG9taWNfc3RhdGUgKnN0YXRlKTsKPiArCj4gICNlbmRpZiAv
-KiBNVEtfRFJNX0RSVl9IICovCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
-ZHJpLWRldmVs
+On Wed, Aug 28, 2019 at 11:00 AM Jerry-ch Chen
+<Jerry-ch.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+>
+> Hi Tomasz,
+>
+> On Mon, 2019-08-26 at 14:36 +0800, Tomasz Figa wrote:
+> > Hi Jerry,
+> >
+> > On Sun, Aug 25, 2019 at 6:18 PM Jerry-ch Chen
+> > <Jerry-ch.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> > >
+> > > Hi Tomasz,
+> > >
+> > > On Fri, 2019-08-02 at 16:28 +0800, Tomasz Figa wrote:
+> > > > Hi Jerry,
+> > > >
+> > > > On Tue, Jul 09, 2019 at 04:41:12PM +0800, Jerry-ch Chen wrote:
+> > > > > From: Jerry-ch Chen <jerry-ch.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > > > >
+> > > > > This patch adds the driver of Face Detection (FD) unit in
+> > > > > Mediatek camera system, providing face detection function.
+> > > > >
+> > > > > The mtk-isp directory will contain drivers for multiple IP
+> > > > > blocks found in Mediatek ISP system. It will include ISP Pass 1
+> > > > > driver (CAM), sensor interface driver, DIP driver and face
+> > > > > detection driver.
+> > > > >
+> > > > > Signed-off-by: Jerry-ch Chen <jerry-ch.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > > > > ---
+> > > > >  drivers/media/platform/Makefile               |    2 +
+> > > > >  drivers/media/platform/mtk-isp/fd/Makefile    |    5 +
+> > > > >  drivers/media/platform/mtk-isp/fd/mtk_fd.h    |  157 +++
+> > > > >  drivers/media/platform/mtk-isp/fd/mtk_fd_40.c | 1259 +++++++++++++++++++++++++
+> > > > >  include/uapi/linux/v4l2-controls.h            |    4 +
+> > > > >  5 files changed, 1427 insertions(+)
+> > > > >  create mode 100644 drivers/media/platform/mtk-isp/fd/Makefile
+> > > > >  create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd.h
+> > > > >  create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd_40.c
+> > > > >
+> > > >
+> > > > Thanks for the patch! I finally got a chance to fully review the code. Sorry
+> > > > for the delay. Please check my comments inline.
+> > > >
+> > > I appreciate your comments.
+> > > I've fixed most of the comments and verifying them,
+> > > Sorry for the delay, here is the reply.
+> > >
+> >
+> > Thanks for replying to all the comments, it's very helpful. I'll snip
+> > the parts that I don't have any further comments.
+> >
+> > [snip]
+> >
+> > > > > +   if (usercount == 1) {
+> > > > > +           pm_runtime_get_sync(&fd_dev->pdev->dev);
+> > > > > +           if (mtk_fd_hw_enable(fd_hw)) {
+> > > > > +                   pm_runtime_put_sync(&fd_dev->pdev->dev);
+> > > > > +                   atomic_dec_return(&fd_hw->fd_user_cnt);
+> > > > > +                   mutex_unlock(&fd_hw->fd_hw_lock);
+> > > > > +                   return -EINVAL;
+> > > > > +           }
+> > > > > +   }
+> > > >
+> > > > This is a simple mem-to-mem device, so there is no reason to keep it active
+> > > > all the time it's streaming. Please just get the runtime PM counter when
+> > > > queuing a job to the hardware and release it when the job finishes.
+> > > >
+> > > > I guess we might still want to do the costly operations like rproc_boot()
+> > > > when we start streaming, though.
+> > > >
+> > > Do you mean by moving the pm_runtime_get/put stuff to the job execution
+> > > and job finish place?
+> >
+> > Yes.
+> >
+> > > the rproc_boot() operation will be done here.
+> > >
+> >
+> > How much time does the rproc_boot() operation take?
+> >
+>
+> About 0.7~1.3ms, average 0.8ms (14 measurements)
+>
+
+Okay, I think we may want to call it when we start streaming then.
+
+[snip]
+
+> > > > > +static int mtk_fd_vb2_queue_setup(struct vb2_queue *vq,
+> > > > > +                             unsigned int *num_buffers,
+> > > > > +                             unsigned int *num_planes,
+> > > > > +                             unsigned int sizes[],
+> > > > > +                             struct device *alloc_devs[])
+> > > > > +{
+> > > > > +   struct mtk_fd_ctx *ctx = vb2_get_drv_priv(vq);
+> > > > > +   struct device *dev = ctx->dev;
+> > > > > +   unsigned int size;
+> > > > > +
+> > > > > +   switch (vq->type) {
+> > > > > +   case V4L2_BUF_TYPE_META_CAPTURE:
+> > > > > +           size = ctx->dst_fmt.buffersize;
+> > > > > +           break;
+> > > > > +   case V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE:
+> > > > > +           size = ctx->src_fmt.plane_fmt[0].sizeimage;
+> > > > > +           break;
+> > > > > +   default:
+> > > > > +           dev_err(dev, "invalid queue type: %d\n", vq->type);
+> > > >
+> > > > We should need to handle this.
+> > > >
+> > > Do you mean by giving a size instead of return -EINVAL?
+> > >
+> >
+> > Sorry, typo. I meant we shouldn't need to handle it, because we can't
+> > get any other queue type here.
+> >
+>
+> Ok, I see, I will remove it.
+> also, this function will be updated as following due to the 2 plane
+> case.
+>
+> static int mtk_fd_vb2_queue_setup(struct vb2_queue *vq,
+>                                   unsigned int *num_buffers,
+>                                   unsigned int *num_planes,
+>                                   unsigned int sizes[],
+>                                   struct device *alloc_devs[])
+> {
+>         struct mtk_fd_ctx *ctx = vb2_get_drv_priv(vq);
+>         struct device *dev = ctx->dev;
+>         unsigned int size[2];
+>
+>         switch (vq->type) {
+>         case V4L2_BUF_TYPE_META_CAPTURE:
+>                 size[0] = ctx->dst_fmt.buffersize;
+>                 break;
+>         case V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE:
+>                 size[0] = ctx->src_fmt.plane_fmt[0].sizeimage;
+>                 if (*num_planes == 2)
+>                         size[1] = ctx->src_fmt.plane_fmt[1].sizeimage;
+>                 break;
+>         }
+>
+>         if (*num_planes == 1) {
+>                 if (sizes[0] < size[0])
+>                         return -EINVAL;
+>         } else if (*num_planes == 2) {
+>                 if ((sizes[0] < size[0]) && (sizes[1] < size[1]))
+>                         return -EINVAL;
+
+Can we just use a loop here and combine the 2 cases above?
+
+Also, we need to fail with -EINVAL if *num_planes is > 2.
+
+>         } else {
+>                 *num_planes = 1;
+>                 sizes[0] = size[0];
+
+This should be the case if *num_planes == 0 and the number of planes
+and sizes should match the currently active format.
+
+>         }
+>
+>         return 0;
+> }
+>
+> > [snip]
+> >
+> > > > > +static void mtk_fd_vb2_stop_streaming(struct vb2_queue *vq)
+> > > > > +{
+> > > > > +   struct mtk_fd_ctx *ctx = vb2_get_drv_priv(vq);
+> > > > > +   struct vb2_buffer *vb;
+> > > >
+> > > > How do we guarantee here that the hardware isn't still accessing the buffers
+> > > > removed below?
+> > > >
+> > > Maybe we can check the driver state flag and aborting the unfinished
+> > > jobs?
+> > > (fd_hw->state == FD_ENQ)
+> > >
+> >
+> > Yes, we need to either cancel or wait for the currently processing
+> > job. It depends on hardware capabilities, but cancelling is generally
+> > preferred for the lower latency.
+> >
+> Ok, it the state is ENQ, then we can disable the FD hw by controlling
+> the registers.
+>
+> for example:
+>         writel(0x0, fd->fd_base + FD_HW_ENABLE);
+>         writel(0x0, fd->fd_base + FD_INT_EN);
+>
+
+What's exactly the effect of writing 0 to FD_HW_ENABLE?
+
+[snip]
+
+> > > > > +}
+> > > > > +
+> > > > > +static void mtk_fd_vb2_request_complete(struct vb2_buffer *vb)
+> > > > > +{
+> > > > > +   struct mtk_fd_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
+> > > > > +
+> > > > > +   v4l2_ctrl_request_complete(vb->req_obj.req, &ctx->hdl);
+> > > > > +}
+> > > > > +
+> > > > > +static void mtk_fd_fill_pixfmt_mp(struct v4l2_pix_format_mplane *dfmt,
+> > > > > +                             const struct v4l2_pix_format_mplane *sfmt)
+> > > > > +{
+> > > > > +   dfmt->width = sfmt->width;
+> > > > > +   dfmt->height = sfmt->height;
+> > > > > +   dfmt->pixelformat = sfmt->pixelformat;
+> > > > > +   dfmt->field = sfmt->field;
+> > > > > +   dfmt->colorspace = sfmt->colorspace;
+> > > > > +   dfmt->num_planes = sfmt->num_planes;
+> > > > > +
+> > > > > +   /* Use default */
+> > > > > +   dfmt->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
+> > > > > +   dfmt->quantization = V4L2_QUANTIZATION_DEFAULT;
+> > > > > +   dfmt->xfer_func =
+> > > > > +           V4L2_MAP_XFER_FUNC_DEFAULT(dfmt->colorspace);
+> > > > > +   dfmt->plane_fmt[0].bytesperline = dfmt->width * 2;
+> > > > > +   dfmt->plane_fmt[0].sizeimage =
+> > > > > +           dfmt->height * dfmt->plane_fmt[0].bytesperline;
+> > > > > +   memset(dfmt->reserved, 0, sizeof(dfmt->reserved));
+> > > > > +}
+> > > >
+> > > > Could we unify this function with mtk_fd_m2m_try_fmt_out_mp()? That function
+> > > > should be almost directly reusable for the default format initialization +/-
+> > > > the arguments passed to it.
+> > > >
+> > > Ok, I will try to reuse it as following:
+> > >
+> > > static void mtk_fd_fill_pixfmt_mp(struct v4l2_pix_format_mplane *dfmt,
+> > >   const struct v4l2_pix_format_mplane *sfmt)
+> > > {
+> > > dfmt->field = V4L2_FIELD_NONE;
+> > > dfmt->colorspace = V4L2_COLORSPACE_BT2020;
+> > > dfmt->num_planes = sfmt->num_planes;
+> > > dfmt->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
+> > > dfmt->quantization = V4L2_QUANTIZATION_DEFAULT;
+> > > dfmt->xfer_func =
+> > > V4L2_MAP_XFER_FUNC_DEFAULT(dfmt->colorspace);
+> > >
+> > > /* Keep user setting as possible */
+> > > dfmt->width = clamp(dfmt->width,
+> > >     MTK_FD_OUTPUT_MIN_WIDTH,
+> > >     MTK_FD_OUTPUT_MAX_WIDTH);
+> > > dfmt->height = clamp(dfmt->height,
+> > >      MTK_FD_OUTPUT_MIN_HEIGHT,
+> > >      MTK_FD_OUTPUT_MAX_HEIGHT);
+> > >
+> > > if (sfmt->num_planes == 2) {
+> > > /* NV16M and NV61M has 1 byte per pixel */
+> > > dfmt->plane_fmt[0].bytesperline = dfmt->width;
+> > > dfmt->plane_fmt[1].bytesperline = dfmt->width;
+> > > } else {
+> > > /* 2 bytes per pixel */
+> > > dfmt->plane_fmt[0].bytesperline = dfmt->width * 2;
+> > > }
+> > >
+> > > dfmt->plane_fmt[0].sizeimage =
+> > > dfmt->height * dfmt->plane_fmt[0].bytesperline;
+> > > }
+> >
+> > How would the implementation of TRY_FMT look in this case?
+> >
+>
+> It will be looked like:
+>
+> static int mtk_fd_try_fmt_out_mp(struct file *file,
+>                                      void *fh,
+>                                      struct v4l2_format *f)
+> {
+>         struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
+>         const struct v4l2_pix_format_mplane *fmt;
+>
+>         fmt = mtk_fd_find_fmt(pix_mp->pixelformat);
+>         if (!fmt)
+>                 fmt = &mtk_fd_img_fmts[0];      /* Get default img fmt */
+>
+>         mtk_fd_fill_pixfmt_mp(pix_mp, fmt);
+>         return 0;
+> }
+>
+
+Okay, thanks!
+
+Best regards,
+Tomasz
