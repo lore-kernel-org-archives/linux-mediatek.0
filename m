@@ -1,316 +1,89 @@
-From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [RFC PATCH V2 4/4] platform: mtk-isp: Add Mediatek FD driver
-Date: Fri, 30 Aug 2019 17:33:53 +0900
-Message-ID: <CAAFQd5D-Yg1FjUE_rwmqfS1gvfE0=MZ=r-ziueU_37-uo9QTbw@mail.gmail.com>
-References: <1562661672-22439-1-git-send-email-Jerry-Ch.chen@mediatek.com>
- <1562661672-22439-5-git-send-email-Jerry-Ch.chen@mediatek.com>
- <20190802082815.GA203993@chromium.org> <1566724680.20680.8.camel@mtksdccf07>
- <CAAFQd5Dw+jaT-+LAUEVeB8W1zdnOgPw7u+aCfDWhYW1SfbzO8g@mail.gmail.com>
- <1566957625.20680.33.camel@mtksdccf07>
+From: Wolfram Sang <wsa@the-dreams.de>
+Subject: Re: [PATCH v2] i2c: mediatek: disable zero-length transfers for
+ mt8183
+Date: Fri, 30 Aug 2019 15:08:42 +0200
+Message-ID: <20190830130842.GG2870@ninjato>
+References: <20190822094516.55130-1-hsinyi@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1566957625.20680.33.camel@mtksdccf07>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jerry-ch Chen <Jerry-ch.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, =?UTF-8?B?U2VhbiBDaGVuZyAo6YSt5piH5byYKQ==?= <Sean.Cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org" <laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, =?UTF-8?B?UnlubiBXdSAo5ZCz6IKy5oGpKQ==?= <Rynn.Wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?UG8tWWFuZyBIdWFuZyAo6buD5p+P6Zm9KQ==?= <po-yang.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "suleiman-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <suleiman-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "shik-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <shik-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, =?UTF-8?B?SnVuZ28gTGluICjmnpfmmI7kv4op?= <jungo.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?U2ogSHVhbmcgKOm7g+S/oeeSiyk=?= <sj.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "yuzhao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <yuzhao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "zwisler-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <zwisler-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org" <matthias.bgg>
+Content-Type: multipart/signed; micalg=pgp-sha512;
+        protocol="application/pgp-signature"; boundary="8S1fMsFYqgBC+BN/"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20190822094516.55130-1-hsinyi@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Qii Wang <qii.wang@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Jun Gao <jun.gao@mediatek.com>, Thomas Gleixner <tglx@linutronix.de>, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Alexandru M Stan <amstan@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Aug 28, 2019 at 11:00 AM Jerry-ch Chen
-<Jerry-ch.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
->
-> Hi Tomasz,
->
-> On Mon, 2019-08-26 at 14:36 +0800, Tomasz Figa wrote:
-> > Hi Jerry,
-> >
-> > On Sun, Aug 25, 2019 at 6:18 PM Jerry-ch Chen
-> > <Jerry-ch.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> > >
-> > > Hi Tomasz,
-> > >
-> > > On Fri, 2019-08-02 at 16:28 +0800, Tomasz Figa wrote:
-> > > > Hi Jerry,
-> > > >
-> > > > On Tue, Jul 09, 2019 at 04:41:12PM +0800, Jerry-ch Chen wrote:
-> > > > > From: Jerry-ch Chen <jerry-ch.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > > > >
-> > > > > This patch adds the driver of Face Detection (FD) unit in
-> > > > > Mediatek camera system, providing face detection function.
-> > > > >
-> > > > > The mtk-isp directory will contain drivers for multiple IP
-> > > > > blocks found in Mediatek ISP system. It will include ISP Pass 1
-> > > > > driver (CAM), sensor interface driver, DIP driver and face
-> > > > > detection driver.
-> > > > >
-> > > > > Signed-off-by: Jerry-ch Chen <jerry-ch.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > > > > ---
-> > > > >  drivers/media/platform/Makefile               |    2 +
-> > > > >  drivers/media/platform/mtk-isp/fd/Makefile    |    5 +
-> > > > >  drivers/media/platform/mtk-isp/fd/mtk_fd.h    |  157 +++
-> > > > >  drivers/media/platform/mtk-isp/fd/mtk_fd_40.c | 1259 +++++++++++++++++++++++++
-> > > > >  include/uapi/linux/v4l2-controls.h            |    4 +
-> > > > >  5 files changed, 1427 insertions(+)
-> > > > >  create mode 100644 drivers/media/platform/mtk-isp/fd/Makefile
-> > > > >  create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd.h
-> > > > >  create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd_40.c
-> > > > >
-> > > >
-> > > > Thanks for the patch! I finally got a chance to fully review the code. Sorry
-> > > > for the delay. Please check my comments inline.
-> > > >
-> > > I appreciate your comments.
-> > > I've fixed most of the comments and verifying them,
-> > > Sorry for the delay, here is the reply.
-> > >
-> >
-> > Thanks for replying to all the comments, it's very helpful. I'll snip
-> > the parts that I don't have any further comments.
-> >
-> > [snip]
-> >
-> > > > > +   if (usercount == 1) {
-> > > > > +           pm_runtime_get_sync(&fd_dev->pdev->dev);
-> > > > > +           if (mtk_fd_hw_enable(fd_hw)) {
-> > > > > +                   pm_runtime_put_sync(&fd_dev->pdev->dev);
-> > > > > +                   atomic_dec_return(&fd_hw->fd_user_cnt);
-> > > > > +                   mutex_unlock(&fd_hw->fd_hw_lock);
-> > > > > +                   return -EINVAL;
-> > > > > +           }
-> > > > > +   }
-> > > >
-> > > > This is a simple mem-to-mem device, so there is no reason to keep it active
-> > > > all the time it's streaming. Please just get the runtime PM counter when
-> > > > queuing a job to the hardware and release it when the job finishes.
-> > > >
-> > > > I guess we might still want to do the costly operations like rproc_boot()
-> > > > when we start streaming, though.
-> > > >
-> > > Do you mean by moving the pm_runtime_get/put stuff to the job execution
-> > > and job finish place?
-> >
-> > Yes.
-> >
-> > > the rproc_boot() operation will be done here.
-> > >
-> >
-> > How much time does the rproc_boot() operation take?
-> >
->
-> About 0.7~1.3ms, average 0.8ms (14 measurements)
->
 
-Okay, I think we may want to call it when we start streaming then.
+--8S1fMsFYqgBC+BN/
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-[snip]
+On Thu, Aug 22, 2019 at 05:45:17PM +0800, Hsin-Yi Wang wrote:
+> When doing i2cdetect quick write mode, we would get transfer
+> error ENOMEM, and i2cdetect shows there's no device at the address.
+> Quoting from mt8183 datasheet, the number of transfers to be
+> transferred in one transaction should be set to bigger than 1,
+> so we should forbid zero-length transfer and update functionality.
+>=20
+> Incorrect return:
+> localhost ~ # i2cdetect -q -y 0
+>      0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+> 00:          -- -- -- -- -- -- -- -- -- -- -- -- --
+> 10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+> 20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+> 30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+> 40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+> 50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+> 60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+> 70: -- -- -- -- -- -- -- --
+>=20
+> After this patch:
+> localhost ~ #  i2cdetect -q -y 0
+> Error: Can't use SMBus Quick Write command on this bus
+>=20
+> localhost ~ #  i2cdetect -y 0
+> Warning: Can't use SMBus Quick Write command, will skip some addresses
+>      0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+> 00:
+> 10:
+> 20:
+> 30: -- -- -- -- -- -- -- --
+> 40:
+> 50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+> 60:
+> 70:
 
-> > > > > +static int mtk_fd_vb2_queue_setup(struct vb2_queue *vq,
-> > > > > +                             unsigned int *num_buffers,
-> > > > > +                             unsigned int *num_planes,
-> > > > > +                             unsigned int sizes[],
-> > > > > +                             struct device *alloc_devs[])
-> > > > > +{
-> > > > > +   struct mtk_fd_ctx *ctx = vb2_get_drv_priv(vq);
-> > > > > +   struct device *dev = ctx->dev;
-> > > > > +   unsigned int size;
-> > > > > +
-> > > > > +   switch (vq->type) {
-> > > > > +   case V4L2_BUF_TYPE_META_CAPTURE:
-> > > > > +           size = ctx->dst_fmt.buffersize;
-> > > > > +           break;
-> > > > > +   case V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE:
-> > > > > +           size = ctx->src_fmt.plane_fmt[0].sizeimage;
-> > > > > +           break;
-> > > > > +   default:
-> > > > > +           dev_err(dev, "invalid queue type: %d\n", vq->type);
-> > > >
-> > > > We should need to handle this.
-> > > >
-> > > Do you mean by giving a size instead of return -EINVAL?
-> > >
-> >
-> > Sorry, typo. I meant we shouldn't need to handle it, because we can't
-> > get any other queue type here.
-> >
->
-> Ok, I see, I will remove it.
-> also, this function will be updated as following due to the 2 plane
-> case.
->
-> static int mtk_fd_vb2_queue_setup(struct vb2_queue *vq,
->                                   unsigned int *num_buffers,
->                                   unsigned int *num_planes,
->                                   unsigned int sizes[],
->                                   struct device *alloc_devs[])
-> {
->         struct mtk_fd_ctx *ctx = vb2_get_drv_priv(vq);
->         struct device *dev = ctx->dev;
->         unsigned int size[2];
->
->         switch (vq->type) {
->         case V4L2_BUF_TYPE_META_CAPTURE:
->                 size[0] = ctx->dst_fmt.buffersize;
->                 break;
->         case V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE:
->                 size[0] = ctx->src_fmt.plane_fmt[0].sizeimage;
->                 if (*num_planes == 2)
->                         size[1] = ctx->src_fmt.plane_fmt[1].sizeimage;
->                 break;
->         }
->
->         if (*num_planes == 1) {
->                 if (sizes[0] < size[0])
->                         return -EINVAL;
->         } else if (*num_planes == 2) {
->                 if ((sizes[0] < size[0]) && (sizes[1] < size[1]))
->                         return -EINVAL;
+Thanks for providing these test results. Much appreciated. To shorten
+the commit log a little, I removed them before applying, though.
 
-Can we just use a loop here and combine the 2 cases above?
+>=20
+> Reported-by: Alexandru M Stan <amstan@chromium.org>
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 
-Also, we need to fail with -EINVAL if *num_planes is > 2.
+Applied to for-next, thanks!
 
->         } else {
->                 *num_planes = 1;
->                 sizes[0] = size[0];
 
-This should be the case if *num_planes == 0 and the number of planes
-and sizes should match the currently active format.
+--8S1fMsFYqgBC+BN/
+Content-Type: application/pgp-signature; name="signature.asc"
 
->         }
->
->         return 0;
-> }
->
-> > [snip]
-> >
-> > > > > +static void mtk_fd_vb2_stop_streaming(struct vb2_queue *vq)
-> > > > > +{
-> > > > > +   struct mtk_fd_ctx *ctx = vb2_get_drv_priv(vq);
-> > > > > +   struct vb2_buffer *vb;
-> > > >
-> > > > How do we guarantee here that the hardware isn't still accessing the buffers
-> > > > removed below?
-> > > >
-> > > Maybe we can check the driver state flag and aborting the unfinished
-> > > jobs?
-> > > (fd_hw->state == FD_ENQ)
-> > >
-> >
-> > Yes, we need to either cancel or wait for the currently processing
-> > job. It depends on hardware capabilities, but cancelling is generally
-> > preferred for the lower latency.
-> >
-> Ok, it the state is ENQ, then we can disable the FD hw by controlling
-> the registers.
->
-> for example:
->         writel(0x0, fd->fd_base + FD_HW_ENABLE);
->         writel(0x0, fd->fd_base + FD_INT_EN);
->
+-----BEGIN PGP SIGNATURE-----
 
-What's exactly the effect of writing 0 to FD_HW_ENABLE?
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl1pH9YACgkQFA3kzBSg
+KbbbRhAAlMzupxZHSJTI9Bu7BvMjyJ/TIq0NM6//hPM8wg5Xz3qzcDPVi+MAE5vM
+9f+KrOU3DBE0YwP1q1x1/b+O/iM8nzxNWnkpB1Ipzmy9tc9W1LrFAAE7LLYePmQe
+m0pLyeILNajlw39r+4DVX+5ChWU6gKUyFuDlie8gzwUgC7YoqZDBcsleuHWxPMUc
+TuU+zUCJr9FFMCsHp0IyM3cRmeScXjMSjQ6GswnCeTsYbDZJu7zKKINEBMHh3fGC
+TM8PfFZCz6RdPaSal3gIzc+c6itm6ZucZTGt4IYrIOUMVlPE9d0wS440jKEITRr7
+WkMYJ12oiJEQkIKWMrndFXn7NU2IjhN9WFq/hjgJujxN79MWTwQmSp2+sRwWW1na
+9YcjeiOVKNTdXw/BPAaOv8FyD/6MEbr/UXcHD0ttFd0tlIeXedM/0XnDjYkwFqc7
+fuuOI4W5z0xqp54Y05+legEaio9FhyskgQHyxILwM5penDcF/+7o+qaY5UE3BZ5f
+EFl0wWV+tJHzEzMXkmarFK/QvHuWaY/awbHtVX/YZE+Wzztm4a29b3OX+cjUf8Q1
+eTONETlSj6sZXmiwmgdI3K2qhuYz2pNPp8ZEG7291y0FMi6o4Ejc/IegH5rDN4fb
+eECFCJ1BQyGzvv41KEm4YyZMWE0wTi7BSzAC6QoLc1yzRtZwuCk=
+=prhC
+-----END PGP SIGNATURE-----
 
-[snip]
-
-> > > > > +}
-> > > > > +
-> > > > > +static void mtk_fd_vb2_request_complete(struct vb2_buffer *vb)
-> > > > > +{
-> > > > > +   struct mtk_fd_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
-> > > > > +
-> > > > > +   v4l2_ctrl_request_complete(vb->req_obj.req, &ctx->hdl);
-> > > > > +}
-> > > > > +
-> > > > > +static void mtk_fd_fill_pixfmt_mp(struct v4l2_pix_format_mplane *dfmt,
-> > > > > +                             const struct v4l2_pix_format_mplane *sfmt)
-> > > > > +{
-> > > > > +   dfmt->width = sfmt->width;
-> > > > > +   dfmt->height = sfmt->height;
-> > > > > +   dfmt->pixelformat = sfmt->pixelformat;
-> > > > > +   dfmt->field = sfmt->field;
-> > > > > +   dfmt->colorspace = sfmt->colorspace;
-> > > > > +   dfmt->num_planes = sfmt->num_planes;
-> > > > > +
-> > > > > +   /* Use default */
-> > > > > +   dfmt->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
-> > > > > +   dfmt->quantization = V4L2_QUANTIZATION_DEFAULT;
-> > > > > +   dfmt->xfer_func =
-> > > > > +           V4L2_MAP_XFER_FUNC_DEFAULT(dfmt->colorspace);
-> > > > > +   dfmt->plane_fmt[0].bytesperline = dfmt->width * 2;
-> > > > > +   dfmt->plane_fmt[0].sizeimage =
-> > > > > +           dfmt->height * dfmt->plane_fmt[0].bytesperline;
-> > > > > +   memset(dfmt->reserved, 0, sizeof(dfmt->reserved));
-> > > > > +}
-> > > >
-> > > > Could we unify this function with mtk_fd_m2m_try_fmt_out_mp()? That function
-> > > > should be almost directly reusable for the default format initialization +/-
-> > > > the arguments passed to it.
-> > > >
-> > > Ok, I will try to reuse it as following:
-> > >
-> > > static void mtk_fd_fill_pixfmt_mp(struct v4l2_pix_format_mplane *dfmt,
-> > >   const struct v4l2_pix_format_mplane *sfmt)
-> > > {
-> > > dfmt->field = V4L2_FIELD_NONE;
-> > > dfmt->colorspace = V4L2_COLORSPACE_BT2020;
-> > > dfmt->num_planes = sfmt->num_planes;
-> > > dfmt->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
-> > > dfmt->quantization = V4L2_QUANTIZATION_DEFAULT;
-> > > dfmt->xfer_func =
-> > > V4L2_MAP_XFER_FUNC_DEFAULT(dfmt->colorspace);
-> > >
-> > > /* Keep user setting as possible */
-> > > dfmt->width = clamp(dfmt->width,
-> > >     MTK_FD_OUTPUT_MIN_WIDTH,
-> > >     MTK_FD_OUTPUT_MAX_WIDTH);
-> > > dfmt->height = clamp(dfmt->height,
-> > >      MTK_FD_OUTPUT_MIN_HEIGHT,
-> > >      MTK_FD_OUTPUT_MAX_HEIGHT);
-> > >
-> > > if (sfmt->num_planes == 2) {
-> > > /* NV16M and NV61M has 1 byte per pixel */
-> > > dfmt->plane_fmt[0].bytesperline = dfmt->width;
-> > > dfmt->plane_fmt[1].bytesperline = dfmt->width;
-> > > } else {
-> > > /* 2 bytes per pixel */
-> > > dfmt->plane_fmt[0].bytesperline = dfmt->width * 2;
-> > > }
-> > >
-> > > dfmt->plane_fmt[0].sizeimage =
-> > > dfmt->height * dfmt->plane_fmt[0].bytesperline;
-> > > }
-> >
-> > How would the implementation of TRY_FMT look in this case?
-> >
->
-> It will be looked like:
->
-> static int mtk_fd_try_fmt_out_mp(struct file *file,
->                                      void *fh,
->                                      struct v4l2_format *f)
-> {
->         struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
->         const struct v4l2_pix_format_mplane *fmt;
->
->         fmt = mtk_fd_find_fmt(pix_mp->pixelformat);
->         if (!fmt)
->                 fmt = &mtk_fd_img_fmts[0];      /* Get default img fmt */
->
->         mtk_fd_fill_pixfmt_mp(pix_mp, fmt);
->         return 0;
-> }
->
-
-Okay, thanks!
-
-Best regards,
-Tomasz
+--8S1fMsFYqgBC+BN/--
