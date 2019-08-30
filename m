@@ -1,318 +1,55 @@
-From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH 2/2] drm/mediatek: Bypass atomic helpers for cursor updates
-Date: Fri, 30 Aug 2019 15:38:19 +0800
-Message-ID: <20190830073819.16566-3-bibby.hsieh@mediatek.com>
-References: <20190830073819.16566-1-bibby.hsieh@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH v3 0/7]  add support USB for MT8183
+Date: Fri, 30 Aug 2019 15:40:47 +0800
+Message-ID: <1567150854-30033-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190830073819.16566-1-bibby.hsieh@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, linux-arm-kernel@lists.infradead.org, tfiga@chromium.org, drinkcat@chromium.org, linux-kernel@vger.kernel.org, Bibby Hsieh <bibby.hsieh@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring <robh+dt@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mathias Nyman <mathias.nyman@intel.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Moving the driver to atomic helpers regressed cursor responsiveness,
-because cursor updates need their own atomic commits, which have to be
-serialized with other commits, that might include fence waits. To avoid
-this, in certain conditions, we can bypass the atomic helpers for legacy
-cursor update IOCTLs. Currently the conditions are:
- - no asynchronous mode setting commit pending,
- - no asynchronous commit that updates the cursor plane is pending.
-With the above two conditions met, we know that the manual cursor state
-update will not conflict with any scheduled update.
+This series support USB DRD controller and enable it's remote
+wakeup functoin for MT8183, they depend on the following
+series patches:
 
-Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC MT8173.")
+1. this series add support MT6358 PMIC
+  [v5,01/10] mfd: mt6397: clean up code
+  https://patchwork.kernel.org/patch/11110487/
 
-Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
----
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c  | 41 ++++++++++++-
- drivers/gpu/drm/mediatek/mtk_drm_crtc.h  |  2 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c   | 34 ++++++++++-
- drivers/gpu/drm/mediatek/mtk_drm_drv.h   |  3 +
- drivers/gpu/drm/mediatek/mtk_drm_plane.c | 73 +++++++++++++++++++++++-
- 5 files changed, 148 insertions(+), 5 deletions(-)
+2. this series add support pericfg syscon
+  [v2,1/2] dt-bindings: clock: mediatek: add pericfg for MT8183
+  https://patchwork.kernel.org/patch/11118183/
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index 7697b40baac0..092e502ed27b 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -40,7 +40,7 @@ struct mtk_drm_crtc {
- 	struct drm_plane		*planes;
- 	unsigned int			layer_nr;
- 	bool				pending_planes;
--
-+	bool                            cursor_update;
- 	void __iomem			*config_regs;
- 	const struct mtk_mmsys_reg_data *mmsys_reg_data;
- 	struct mtk_disp_mutex		*mutex;
-@@ -386,8 +386,45 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
- 			}
- 		}
- 		mtk_crtc->pending_planes = false;
--		mtk_atomic_state_put_queue(atomic_state);
-+		if (!mtk_crtc->cursor_update)
-+			mtk_atomic_state_put_queue(atomic_state);
-+		mtk_crtc->cursor_update = false;
-+	}
-+}
-+
-+void mtk_drm_crtc_cursor_update(struct drm_crtc *crtc, struct drm_plane *plane,
-+				struct drm_plane_state *plane_state)
-+{
-+	struct mtk_drm_private *priv = crtc->dev->dev_private;
-+	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
-+	const struct drm_plane_helper_funcs *plane_helper_funcs =
-+			plane->helper_private;
-+	int i;
-+
-+	if (!mtk_crtc->enabled)
-+		return;
-+
-+	mutex_lock(&priv->hw_lock);
-+	plane_helper_funcs->atomic_update(plane, plane_state);
-+	for (i = 0; i < mtk_crtc->layer_nr; i++) {
-+		struct drm_plane *plane = &mtk_crtc->planes[i];
-+		struct mtk_plane_state *plane_state;
-+
-+		plane_state = to_mtk_plane_state(plane->state);
-+		if (plane_state->pending.dirty) {
-+			plane_state->pending.config = true;
-+			plane_state->pending.dirty = false;
-+		}
-+	}
-+	mtk_crtc->pending_planes = true;
-+	mtk_crtc->cursor_update = true;
-+
-+	if (priv->data->shadow_register) {
-+		mtk_disp_mutex_acquire(mtk_crtc->mutex);
-+		mtk_crtc_ddp_config(crtc);
-+		mtk_disp_mutex_release(mtk_crtc->mutex);
- 	}
-+	mutex_unlock(&priv->hw_lock);
- }
- 
- static void mtk_drm_crtc_atomic_enable(struct drm_crtc *crtc,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
-index fcc134eb00c9..46e903be68ec 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
-@@ -19,5 +19,7 @@ void mtk_crtc_ddp_irq(struct drm_crtc *crtc, struct mtk_ddp_comp *comp);
- int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 			const enum mtk_ddp_comp_id *path,
- 			unsigned int path_len);
-+void mtk_drm_crtc_cursor_update(struct drm_crtc *crtc, struct drm_plane *plane,
-+				struct drm_plane_state *plane_state);
- 
- #endif /* MTK_DRM_CRTC_H */
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index b0308a3a7483..ca754b954c7c 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -80,11 +80,36 @@ static int mtk_atomic_get_crtcs(struct drm_device *drm,
- 				struct drm_atomic_state *state)
- {
- 	struct mtk_drm_private *private = drm->dev_private;
--	uint32_t crtc_mask;
-+	uint32_t crtc_mask, needs_modeset, has_cursor_plane;
-+	struct drm_plane *plane;
-+	struct drm_plane_state *plane_state;
-+	struct drm_crtc *crtc;
-+	struct drm_crtc_state *crtc_state;
-+	int i;
- 	int ret;
- 
- 	crtc_mask = mtk_atomic_crtc_mask(drm, state);
- 
-+	/*
-+	 * Allow cursor updates unless there is a pending modeset or cursor
-+	 * plane update.
-+	 */
-+	needs_modeset = 0;
-+	for_each_new_crtc_in_state(state, crtc, crtc_state, i) {
-+		if (crtc && drm_atomic_crtc_needs_modeset(crtc_state)) {
-+			needs_modeset |= (1 << drm_crtc_index(crtc));
-+			break;
-+		}
-+	}
-+
-+	has_cursor_plane = 0;
-+	for_each_new_plane_in_state(state, plane, plane_state, i) {
-+		if (crtc && plane->crtc && plane == plane->crtc->cursor) {
-+			has_cursor_plane |= (1 << drm_crtc_index(crtc));
-+			break;
-+		}
-+	}
-+
- 	/*
- 	 * Wait for all pending updates to complete for the set of crtcs being
- 	 * changed in this atomic commit
-@@ -94,6 +119,8 @@ static int mtk_atomic_get_crtcs(struct drm_device *drm,
- 			!(private->commit.crtcs & crtc_mask));
- 	if (ret == 0)
- 		private->commit.crtcs |= crtc_mask;
-+
-+	private->commit.flush_for_cursor |= needs_modeset | has_cursor_plane;
- 	spin_unlock(&private->commit.crtcs_event.lock);
- 
- 	return ret;
-@@ -112,6 +139,7 @@ static void mtk_atomic_put_crtcs(struct drm_device *drm,
- 
- 	spin_lock(&private->commit.crtcs_event.lock);
- 	private->commit.crtcs &= ~crtc_mask;
-+	private->commit.flush_for_cursor &= ~crtc_mask;
- 	wake_up_all_locked(&private->commit.crtcs_event);
- 	spin_unlock(&private->commit.crtcs_event.lock);
- }
-@@ -160,6 +188,7 @@ static void mtk_atomic_wait_for_fences(struct drm_atomic_state *state)
- static void mtk_atomic_complete(struct drm_device *drm,
- 				struct drm_atomic_state *state)
- {
-+	struct mtk_drm_private *private = drm->dev_private;
- 	mtk_atomic_wait_for_fences(state);
- 	/*
- 	 * Mediatek drm supports runtime PM, so plane registers cannot be
-@@ -175,10 +204,12 @@ static void mtk_atomic_complete(struct drm_device *drm,
- 	 *
- 	 * See the kerneldoc entries for these three functions for more details.
- 	 */
-+	mutex_lock(&private->hw_lock);
- 	drm_atomic_helper_commit_modeset_disables(drm, state);
- 	drm_atomic_helper_commit_modeset_enables(drm, state);
- 	drm_atomic_helper_commit_planes(drm, state,
- 					DRM_PLANE_COMMIT_ACTIVE_ONLY);
-+	mutex_unlock(&private->hw_lock);
- 
- 	drm_atomic_helper_wait_for_vblanks(drm, state);
- 
-@@ -462,6 +493,7 @@ static int mtk_drm_kms_init(struct drm_device *drm)
- 	INIT_LIST_HEAD(&private->unreference.list);
- 	spin_lock_init(&private->unreference.lock);
- 	init_waitqueue_head(&private->commit.crtcs_event);
-+	mutex_init(&private->hw_lock);
- 
- 	return 0;
- 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-index 0934f83b860d..4a4c989803d9 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-@@ -50,6 +50,7 @@ struct mtk_drm_private {
- 	struct {
- 		uint32_t crtcs;
- 		wait_queue_head_t crtcs_event;
-+		uint32_t flush_for_cursor;
- 	} commit;
- 
- 	struct drm_atomic_state *suspend_state;
-@@ -58,6 +59,8 @@ struct mtk_drm_private {
- 		struct list_head	list;
- 		spinlock_t		lock;
- 	} unreference;
-+
-+	struct mutex hw_lock;
- };
- 
- extern struct platform_driver mtk_ddp_driver;
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-index f2ef83aed6f9..59dbdaf07425 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-@@ -7,6 +7,7 @@
- #include <drm/drmP.h>
- #include <drm/drm_atomic.h>
- #include <drm/drm_atomic_helper.h>
-+#include <drm/drm_atomic_uapi.h>
- #include <drm/drm_plane_helper.h>
- 
- #include "mtk_drm_crtc.h"
-@@ -69,8 +70,71 @@ static void mtk_drm_plane_destroy_state(struct drm_plane *plane,
- 	kfree(to_mtk_plane_state(state));
- }
- 
-+static int mtk_plane_cursor_update(struct drm_plane *plane,
-+				   struct drm_crtc *crtc,
-+				   struct drm_framebuffer *fb,
-+				   int crtc_x, int crtc_y,
-+				   unsigned int crtc_w, unsigned int crtc_h,
-+				   uint32_t src_x, uint32_t src_y,
-+				   uint32_t src_w, uint32_t src_h)
-+{
-+	struct drm_plane_state *plane_state;
-+	const struct drm_plane_helper_funcs *plane_helper_funcs =
-+			plane->helper_private;
-+	int ret;
-+
-+	plane_state = plane->funcs->atomic_duplicate_state(plane);
-+
-+	plane_state->crtc_x = crtc_x;
-+	plane_state->crtc_y = crtc_y;
-+	plane_state->crtc_h = crtc_h;
-+	plane_state->crtc_w = crtc_w;
-+	plane_state->src_x = src_x;
-+	plane_state->src_y = src_y;
-+	plane_state->src_h = src_h;
-+	plane_state->src_w = src_w;
-+
-+	drm_atomic_set_fb_for_plane(plane_state, fb);
-+
-+	ret = plane_helper_funcs->atomic_check(plane, plane_state);
-+	if (ret)
-+		goto err_destroy;
-+
-+	swap(plane_state, plane->state);
-+
-+	mtk_drm_crtc_cursor_update(crtc, plane, plane_state);
-+
-+err_destroy:
-+	plane->funcs->atomic_destroy_state(plane, plane_state);
-+	return ret;
-+}
-+
-+static int mtk_plane_update(struct drm_plane *plane,
-+			    struct drm_crtc *crtc,
-+			    struct drm_framebuffer *fb,
-+			    int crtc_x, int crtc_y,
-+			    unsigned int crtc_w, unsigned int crtc_h,
-+			    uint32_t src_x, uint32_t src_y,
-+			    uint32_t src_w, uint32_t src_h,
-+			    struct drm_modeset_acquire_ctx *ctx)
-+{
-+	struct mtk_drm_private *private = plane->dev->dev_private;
-+	uint32_t crtc_mask = (1 << drm_crtc_index(crtc));
-+
-+	if (crtc && plane == crtc->cursor &&
-+	    plane->state->crtc == crtc &&
-+	    !(private->commit.flush_for_cursor & crtc_mask))
-+		return mtk_plane_cursor_update(plane, crtc, fb,
-+				crtc_x, crtc_y, crtc_w, crtc_h,
-+				src_x, src_y, src_w, src_h);
-+
-+	return drm_atomic_helper_update_plane(plane, crtc, fb,
-+					      crtc_x, crtc_y, crtc_w, crtc_h,
-+					      src_x, src_y, src_w, src_h, ctx);
-+}
-+
- static const struct drm_plane_funcs mtk_plane_funcs = {
--	.update_plane = drm_atomic_helper_update_plane,
-+	.update_plane = mtk_plane_update,
- 	.disable_plane = drm_atomic_helper_disable_plane,
- 	.destroy = drm_plane_cleanup,
- 	.reset = mtk_plane_reset,
-@@ -90,7 +154,12 @@ static int mtk_plane_atomic_check(struct drm_plane *plane,
- 	if (!state->crtc)
- 		return 0;
- 
--	crtc_state = drm_atomic_get_crtc_state(state->state, state->crtc);
-+	if (state->state)
-+		crtc_state = drm_atomic_get_existing_crtc_state(state->state,
-+								state->crtc);
-+	else /* Special case for asynchronous cursor updates. */
-+		crtc_state = state->crtc->state;
-+
- 	if (IS_ERR(crtc_state))
- 		return PTR_ERR(crtc_state);
- 
+3. add property mediatek,discth for tphy
+  [06/11] phy: phy-mtk-tphy: add a property for disconnect threshold
+  https://patchwork.kernel.org/patch/11110695/
+
+v3 changes:
+  1. changes micros define
+  2. remove #reset-cell
+  3. update dependent series
+
+v2 changes:
+  add patch [7/7]
+
+Chunfeng Yun (7):
+  dt-bindings: usb: mtu3: support USB wakeup for MT8183
+  dt-bindings: usb: mtk-xhci: support USB wakeup for MT8183
+  usb: mtu3: support ip-sleep wakeup for MT8183
+  usb: mtk-xhci: support ip-sleep wakeup for MT8183
+  arm64: dts: mt8183: add usb and phy nodes
+  arm64: dts: mt8183: enable USB remote wakeup
+  arm64: dts: mt8183: tune disconnect threshold of u2phy
+
+ .../bindings/usb/mediatek,mtk-xhci.txt        |  1 +
+ .../devicetree/bindings/usb/mediatek,mtu3.txt |  1 +
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts   | 23 +++++++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi      | 63 +++++++++++++++++++
+ drivers/usb/host/xhci-mtk.c                   | 14 ++++-
+ drivers/usb/mtu3/mtu3_host.c                  | 14 ++++-
+ 6 files changed, 114 insertions(+), 2 deletions(-)
+
 -- 
-2.18.0
+2.23.0
