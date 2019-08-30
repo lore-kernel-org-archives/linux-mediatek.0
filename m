@@ -1,57 +1,42 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v5, 11/32] drm/mediatek: split DISP_REG_CONFIG_DSI_SEL
- setting into another use case
-Date: Fri, 30 Aug 2019 13:21:04 +0800
-Message-ID: <1567142464.5942.4.camel@mtksdaap41>
-References: <1567090254-15566-1-git-send-email-yongqiang.niu@mediatek.com>
-         <1567090254-15566-12-git-send-email-yongqiang.niu@mediatek.com>
+From: Henry Chen <henryc.chen@mediatek.com>
+Subject: Re: [PATCH V3 01/10] dt-bindings: soc: Add dvfsrc driver bindings
+Date: Fri, 30 Aug 2019 13:26:38 +0800
+Message-ID: <1567142798.5542.5.camel@mtksdaap41>
+References: <1566995328-15158-1-git-send-email-henryc.chen@mediatek.com>
+         <1566995328-15158-2-git-send-email-henryc.chen@mediatek.com>
+         <20190829191631.GA15714@bogus>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1567090254-15566-12-git-send-email-yongqiang.niu@mediatek.com>
+In-Reply-To: <20190829191631.GA15714@bogus>
 Sender: linux-kernel-owner@vger.kernel.org
-To: yongqiang.niu@mediatek.com
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Mark Rutland <mark.rutland@arm.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Rob Herring <robh@kernel.org>
+Cc: Georgi Djakov <georgi.djakov@linaro.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Viresh Kumar <vireshk@kernel.org>, Stephen Boyd <swboyd@chromium.org>, Ryan Case <ryandcase@chromium.org>, Nicolas Boichat <drinkcat@google.com>, Fan Chen <fan.chen@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Yongqiang:
-
-On Thu, 2019-08-29 at 22:50 +0800, yongqiang.niu@mediatek.com wrote:
-> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+On Thu, 2019-08-29 at 14:16 -0500, Rob Herring wrote:
+> On Wed, 28 Aug 2019 20:28:39 +0800, Henry Chen wrote:
+> > Document the binding for enabling dvfsrc on MediaTek SoC.
+> > 
+> > Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+> > ---
+> >  .../devicetree/bindings/soc/mediatek/dvfsrc.txt    | 23 ++++++++++++++++++++++
+> >  include/dt-bindings/soc/mtk,dvfsrc.h               | 14 +++++++++++++
+> >  2 files changed, 37 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt
+> >  create mode 100644 include/dt-bindings/soc/mtk,dvfsrc.h
+> > 
 > 
-> Here is two modifition in this patch:
-> 1.bls->dpi0 and rdma1->dsi are differen usecase,
-> Split DISP_REG_CONFIG_DSI_SEL setting into anther usecase
-> 2.remove DISP_REG_CONFIG_DPI_SEL setting, DPI_SEL_IN_BLS is 0 and
-> this is same with hardware defautl setting,
+> Please add Acked-by/Reviewed-by tags when posting new versions. However,
+> there's no need to repost patches *only* to add the tags. The upstream
+> maintainer will do that for acks received on the version they apply.
 > 
-> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_ddp.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-> index 4866a9b..c93e1b7 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-> @@ -392,10 +392,9 @@ static void mtk_ddp_sout_sel(void __iomem *config_regs,
->  	} else if (cur == DDP_COMPONENT_BLS && next == DDP_COMPONENT_DPI0) {
->  		writel_relaxed(BLS_TO_DPI_RDMA1_TO_DSI,
->  			       config_regs + DISP_REG_CONFIG_OUT_SEL);
-> +	} else if (cur == DDP_COMPONENT_RDMA1 && next == DDP_COMPONENT_DSI0) {
->  		writel_relaxed(DSI_SEL_IN_RDMA,
->  			       config_regs + DISP_REG_CONFIG_DSI_SEL);
-> -		writel_relaxed(DPI_SEL_IN_BLS,
-> -			       config_regs + DISP_REG_CONFIG_DPI_SEL);
+> If a tag was not added on purpose, please state why and what changed.
 
-As internal discussion, please rewrite this to prevent breaking MT2701
-connection. It's better to add comment to address the special usage for
-MT2701.
+Hi Rob,
 
-Regards,
-CK
+I'm sorry for the mistake. I stand corrected, and will add tags on next
+version.
 
->  	}
->  }
->  
+Henry
