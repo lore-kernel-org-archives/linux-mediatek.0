@@ -1,72 +1,248 @@
-From: Qais Yousef <qais.yousef@arm.com>
-Subject: Re: [PATCH 1/1] sched/rt: avoid contend with CFS task
-Date: Fri, 30 Aug 2019 15:55:02 +0100
-Message-ID: <20190830145501.zadfv2ffuu7j46ft@e107158-lin.cambridge.arm.com>
-References: <1567048502-6064-1-git-send-email-jing-ting.wu@mediatek.com>
- <d5100b2d-46c4-5811-8274-8b06710d2594@arm.com>
+From: =?utf-8?b?UmVuw6k=?= van Dorst <opensource@vdorst.com>
+Subject: Re: [PATCH net-next v2 2/3] dt-bindings: net: dsa: mt7530: Add
+ support for port 5
+Date: Fri, 30 Aug 2019 17:16:03 +0000
+Message-ID: <20190830171603.Horde.UeVVg_YU-C4f8bcYmFJ_1Gv@www.vdorst.com>
+References: <20190821144547.15113-1-opensource@vdorst.com>
+ <20190821144547.15113-3-opensource@vdorst.com>
+ <20190827222251.GA30507@bogus>
+ <20190828063520.Horde.4_ak7mcmFhVJlxZWWy2wo3V@www.vdorst.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset=utf-8; format=flowed; DelSp=Yes
+Content-Transfer-Encoding: 8bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20190828063520.Horde.4_ak7mcmFhVJlxZWWy2wo3V@www.vdorst.com>
 Content-Disposition: inline
-In-Reply-To: <d5100b2d-46c4-5811-8274-8b06710d2594@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Valentin Schneider <valentin.schneider@arm.com>
-Cc: Jing-Ting Wu <jing-ting.wu@mediatek.com>, Peter Zijlstra <peterz@infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Sender: netdev-owner@vger.kernel.org
+To: Rob Herring <robh@kernel.org>
+Cc: Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, linux-mips@vger.kernel.org, Frank Wunderlich <frank-w@public-files.de>, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 08/29/19 11:38, Valentin Schneider wrote:
-> On 29/08/2019 04:15, Jing-Ting Wu wrote:
-> > At original linux design, RT & CFS scheduler are independent.
-> > Current RT task placement policy will select the first cpu in
-> > lowest_mask, even if the first CPU is running a CFS task.
-> > This may put RT task to a running cpu and let CFS task runnable.
-> > 
-> > So we select idle cpu in lowest_mask first to avoid preempting
-> > CFS task.
-> > 
-> 
-> Regarding the RT & CFS thing, that's working as intended. RT is a whole
-> class above CFS, it shouldn't have to worry about CFS.
-> 
-> On the other side of things, CFS does worry about RT. We have the concept
-> of RT-pressure in the CFS scheduler, where RT tasks will reduce a CPU's
-> capacity (see fair.c::scale_rt_capacity()).
-> 
-> CPU capacity is looked at on CFS wakeup (see wake_cap() and
-> find_idlest_cpu()), and the periodic load balancer tries to spread load
-> over capacity, so it'll tend to put less things on CPUs that are also
-> running RT tasks.
-> 
-> If RT were to start avoiding rqs with CFS tasks, we'd end up with a nasty
-> situation were both are avoiding each other. It's even more striking when
-> you see that RT pressure is done with a rq-wide RT util_avg, which
-> *doesn't* get migrated when a RT task migrates. So if you decide to move
-> a RT task to an idle CPU "B" because CPU "A" had runnable CFS tasks, the
-> CFS scheduler will keep seeing CPU "B" as not significantly RT-pressured
-> while that util_avg signal ramps up, whereas it would correctly see CPU
-> "A" as RT-pressured if the RT task previously ran there.
-> 
-> So overall I think this is the wrong approach.
+Hi Rob,
 
-I like the idea, but yeah tend to agree the current approach might not be
-enough.
+<snip>
 
-I think the major problem here is that on generic systems where CFS is a first
-class citizen, RT tasks can be hostile to them - not always necessarily for a
-good reason.
+>>> See Documentation/devicetree/bindings/net/dsa/dsa.txt for a list  
+>>> of additional
+>>> required, optional properties and how the integrated switch subnodes must
+>>> be specified.
+>>> @@ -94,3 +130,185 @@ Example:
+>>> 			};
+>>> 		};
+>>> 	};
+>>> +
+>>> +Example 2: MT7621: Port 4 is WAN port: 2nd GMAC -> Port 5 -> PHY port 4.
+>>> +
+>>> +&eth {
+>>> +	status = "okay";
+>>
+>> Don't show status in examples.
+>
+> OK.
+>
+>> This should show the complete node.
+>>
+>
 
-To further complicate the matter, even among CFS tasks we can't tell which are
-more important than the others - though hopefully latency-nice proposal will
-make the situation better.
+I asked this question below in my previous email.
+May be you missed it, I hope that you have time soon to answer this so that I
+can send a new version.
 
-So I agree we have a problem here, but I think this patch is just a temporary
-band aid and we need to do better. Though I have no concrete suggestion yet on
-how to do that.
+> To be clear, I should take ethernet node from the mt7621.dtsi [0] or  
+> mt7623.dtsi [1] and insert the example below?, right?
 
-Another thing I couldn't quantify yet how common and how severe this problem is
-yet. Jing-Ting, if you can share the details of your use case that'd be great.
+Greats,
 
-Cheers
+René
 
---
-Qais Yousef
+>
+> Greats,
+>
+> René
+>
+> [0]:  
+> https://git.kernel.org/pub/scm/linux/kernel/git/davem/net-next.git/tree/drivers/staging/mt7621-dts/mt7621.dtsi#n397
+> [1]:  
+> https://git.kernel.org/pub/scm/linux/kernel/git/davem/net-next.git/tree/arch/arm/boot/dts/mt7623.dtsi#n1023
+>
+>>> +
+>>> +	gmac0: mac@0 {
+>>> +		compatible = "mediatek,eth-mac";
+>>> +		reg = <0>;
+>>> +		phy-mode = "rgmii";
+>>> +
+>>> +		fixed-link {
+>>> +			speed = <1000>;
+>>> +			full-duplex;
+>>> +			pause;
+>>> +		};
+>>> +	};
+>>> +
+>>> +	gmac1: mac@1 {
+>>> +		compatible = "mediatek,eth-mac";
+>>> +		reg = <1>;
+>>> +		phy-mode = "rgmii-txid";
+>>> +		phy-handle = <&phy4>;
+>>> +	};
+>>> +
+>>> +	mdio: mdio-bus {
+>>> +		#address-cells = <1>;
+>>> +		#size-cells = <0>;
+>>> +
+>>> +		/* Internal phy */
+>>> +		phy4: ethernet-phy@4 {
+>>> +			reg = <4>;
+>>> +		};
+>>> +
+>>> +		mt7530: switch@1f {
+>>> +			compatible = "mediatek,mt7621";
+>>> +			#address-cells = <1>;
+>>> +			#size-cells = <0>;
+>>> +			reg = <0x1f>;
+>>> +			pinctrl-names = "default";
+>>> +			mediatek,mcm;
+>>> +
+>>> +			resets = <&rstctrl 2>;
+>>> +			reset-names = "mcm";
+>>> +
+>>> +			ports {
+>>> +				#address-cells = <1>;
+>>> +				#size-cells = <0>;
+>>> +
+>>> +				port@0 {
+>>> +					reg = <0>;
+>>> +					label = "lan0";
+>>> +				};
+>>> +
+>>> +				port@1 {
+>>> +					reg = <1>;
+>>> +					label = "lan1";
+>>> +				};
+>>> +
+>>> +				port@2 {
+>>> +					reg = <2>;
+>>> +					label = "lan2";
+>>> +				};
+>>> +
+>>> +				port@3 {
+>>> +					reg = <3>;
+>>> +					label = "lan3";
+>>> +				};
+>>> +
+>>> +/* Commented out. Port 4 is handled by 2nd GMAC.
+>>> +				port@4 {
+>>> +					reg = <4>;
+>>> +					label = "lan4";
+>>> +				};
+>>> +*/
+>>> +
+>>> +				cpu_port0: port@6 {
+>>> +					reg = <6>;
+>>> +					label = "cpu";
+>>> +					ethernet = <&gmac0>;
+>>> +					phy-mode = "rgmii";
+>>> +
+>>> +					fixed-link {
+>>> +						speed = <1000>;
+>>> +						full-duplex;
+>>> +						pause;
+>>> +					};
+>>> +				};
+>>> +			};
+>>> +		};
+>>> +	};
+>>> +};
+>>> +
+>>> +Example 3: MT7621: Port 5 is connected to external PHY: Port 5 ->  
+>>> external PHY.
+>>> +
+>>> +&eth {
+>>> +	status = "okay";
+>>> +
+>>> +	gmac0: mac@0 {
+>>> +		compatible = "mediatek,eth-mac";
+>>> +		reg = <0>;
+>>> +		phy-mode = "rgmii";
+>>> +
+>>> +		fixed-link {
+>>> +			speed = <1000>;
+>>> +			full-duplex;
+>>> +			pause;
+>>> +		};
+>>> +	};
+>>> +
+>>> +	mdio: mdio-bus {
+>>> +		#address-cells = <1>;
+>>> +		#size-cells = <0>;
+>>> +
+>>> +		/* External phy */
+>>> +		ephy5: ethernet-phy@7 {
+>>> +			reg = <7>;
+>>> +		};
+>>> +
+>>> +		mt7530: switch@1f {
+>>> +			compatible = "mediatek,mt7621";
+>>> +			#address-cells = <1>;
+>>> +			#size-cells = <0>;
+>>> +			reg = <0x1f>;
+>>> +			pinctrl-names = "default";
+>>> +			mediatek,mcm;
+>>> +
+>>> +			resets = <&rstctrl 2>;
+>>> +			reset-names = "mcm";
+>>> +
+>>> +			ports {
+>>> +				#address-cells = <1>;
+>>> +				#size-cells = <0>;
+>>> +
+>>> +				port@0 {
+>>> +					reg = <0>;
+>>> +					label = "lan0";
+>>> +				};
+>>> +
+>>> +				port@1 {
+>>> +					reg = <1>;
+>>> +					label = "lan1";
+>>> +				};
+>>> +
+>>> +				port@2 {
+>>> +					reg = <2>;
+>>> +					label = "lan2";
+>>> +				};
+>>> +
+>>> +				port@3 {
+>>> +					reg = <3>;
+>>> +					label = "lan3";
+>>> +				};
+>>> +
+>>> +				port@4 {
+>>> +					reg = <4>;
+>>> +					label = "lan4";
+>>> +				};
+>>> +
+>>> +				port@5 {
+>>> +					reg = <5>;
+>>> +					label = "lan5";
+>>> +					phy-mode = "rgmii";
+>>> +					phy-handle = <&ephy5>;
+>>> +				};
+>>> +
+>>> +				cpu_port0: port@6 {
+>>> +					reg = <6>;
+>>> +					label = "cpu";
+>>> +					ethernet = <&gmac0>;
+>>> +					phy-mode = "rgmii";
+>>> +
+>>> +					fixed-link {
+>>> +						speed = <1000>;
+>>> +						full-duplex;
+>>> +						pause;
+>>> +					};
+>>> +				};
+>>> +			};
+>>> +		};
+>>> +	};
+>>> +};
+>>> --
+>>> 2.20.1
+>>>
