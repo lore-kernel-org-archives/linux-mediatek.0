@@ -1,87 +1,218 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH 2/2] drm/mediatek: Bypass atomic helpers for cursor updates
-Date: Sat, 31 Aug 2019 08:04:46 +0800
-Message-ID: <1567209886.18937.5.camel@mtksdaap41>
-References: <20190830073819.16566-1-bibby.hsieh@mediatek.com>
- <20190830073819.16566-3-bibby.hsieh@mediatek.com>
+From: Sebastian Reichel <sre@kernel.org>
+Subject: Re: [PATCH v6 11/13] power: reset: add driver for mt6323 poweroff
+Date: Sun, 1 Sep 2019 22:11:55 +0200
+Message-ID: <20190901201155.dyaxncuixq7vvdbh@earth.universe>
+References: <20190818135611.7776-1-frank-w@public-files.de>
+ <20190818135611.7776-12-frank-w@public-files.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190830073819.16566-3-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: drinkcat@chromium.org, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, tfiga@chromium.org, Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/signed; micalg=pgp-sha512;
+        protocol="application/pgp-signature"; boundary="3hahqm2gkodncklw"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20190818135611.7776-12-frank-w@public-files.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, Sean Wang <sean.wang@mediatek.com>, "linux-arm-kernel @ lists . infradead . org Alessandro Zummo" <a.zummo@towertech.it>, linux-pm@vger.kernel.org, Josef Friedl <josef.friedl@speed.at>, linux-kernel@vger.kernel.org, Tianping Fang <tianping.fang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Eddie Huang <eddie.huang@mediatek.com>, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIEJpYmJ5OgoKT24gRnJpLCAyMDE5LTA4LTMwIGF0IDE1OjM4ICswODAwLCBCaWJieSBIc2ll
-aCB3cm90ZToKPiBNb3ZpbmcgdGhlIGRyaXZlciB0byBhdG9taWMgaGVscGVycyByZWdyZXNzZWQg
-Y3Vyc29yIHJlc3BvbnNpdmVuZXNzLAo+IGJlY2F1c2UgY3Vyc29yIHVwZGF0ZXMgbmVlZCB0aGVp
-ciBvd24gYXRvbWljIGNvbW1pdHMsIHdoaWNoIGhhdmUgdG8gYmUKPiBzZXJpYWxpemVkIHdpdGgg
-b3RoZXIgY29tbWl0cywgdGhhdCBtaWdodCBpbmNsdWRlIGZlbmNlIHdhaXRzLiBUbyBhdm9pZAo+
-IHRoaXMsIGluIGNlcnRhaW4gY29uZGl0aW9ucywgd2UgY2FuIGJ5cGFzcyB0aGUgYXRvbWljIGhl
-bHBlcnMgZm9yIGxlZ2FjeQo+IGN1cnNvciB1cGRhdGUgSU9DVExzLiBDdXJyZW50bHkgdGhlIGNv
-bmRpdGlvbnMgYXJlOgo+ICAtIG5vIGFzeW5jaHJvbm91cyBtb2RlIHNldHRpbmcgY29tbWl0IHBl
-bmRpbmcsCj4gIC0gbm8gYXN5bmNocm9ub3VzIGNvbW1pdCB0aGF0IHVwZGF0ZXMgdGhlIGN1cnNv
-ciBwbGFuZSBpcyBwZW5kaW5nLgo+IFdpdGggdGhlIGFib3ZlIHR3byBjb25kaXRpb25zIG1ldCwg
-d2Uga25vdyB0aGF0IHRoZSBtYW51YWwgY3Vyc29yIHN0YXRlCj4gdXBkYXRlIHdpbGwgbm90IGNv
-bmZsaWN0IHdpdGggYW55IHNjaGVkdWxlZCB1cGRhdGUuCj4gCj4gRml4ZXM6IDExOWY1MTczNjI4
-YSAoImRybS9tZWRpYXRlazogQWRkIERSTSBEcml2ZXIgZm9yIE1lZGlhdGVrIFNvQyBNVDgxNzMu
-IikKPiAKPiBTaWduZWQtb2ZmLWJ5OiBCaWJieSBIc2llaCA8YmliYnkuaHNpZWhAbWVkaWF0ZWsu
-Y29tPgo+IFNpZ25lZC1vZmYtYnk6IERhbmllbCBLdXJ0eiA8ZGprdXJ0ekBjaHJvbWl1bS5vcmc+
-Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYyAgfCA0MSAr
-KysrKysrKysrKystCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuaCAg
-fCAgMiArCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jICAgfCAzNCAr
-KysrKysrKysrLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuaCAgIHwg
-IDMgKwo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9wbGFuZS5jIHwgNzMgKysr
-KysrKysrKysrKysrKysrKysrKystCj4gIDUgZmlsZXMgY2hhbmdlZCwgMTQ4IGluc2VydGlvbnMo
-KyksIDUgZGVsZXRpb25zKC0pCj4gCgpbc25pcF0KCj4gKwo+ICtzdGF0aWMgaW50IG10a19wbGFu
-ZV91cGRhdGUoc3RydWN0IGRybV9wbGFuZSAqcGxhbmUsCj4gKwkJCSAgICBzdHJ1Y3QgZHJtX2Ny
-dGMgKmNydGMsCj4gKwkJCSAgICBzdHJ1Y3QgZHJtX2ZyYW1lYnVmZmVyICpmYiwKPiArCQkJICAg
-IGludCBjcnRjX3gsIGludCBjcnRjX3ksCj4gKwkJCSAgICB1bnNpZ25lZCBpbnQgY3J0Y193LCB1
-bnNpZ25lZCBpbnQgY3J0Y19oLAo+ICsJCQkgICAgdWludDMyX3Qgc3JjX3gsIHVpbnQzMl90IHNy
-Y195LAo+ICsJCQkgICAgdWludDMyX3Qgc3JjX3csIHVpbnQzMl90IHNyY19oLAo+ICsJCQkgICAg
-c3RydWN0IGRybV9tb2Rlc2V0X2FjcXVpcmVfY3R4ICpjdHgpCj4gK3sKPiArCXN0cnVjdCBtdGtf
-ZHJtX3ByaXZhdGUgKnByaXZhdGUgPSBwbGFuZS0+ZGV2LT5kZXZfcHJpdmF0ZTsKPiArCXVpbnQz
-Ml90IGNydGNfbWFzayA9ICgxIDw8IGRybV9jcnRjX2luZGV4KGNydGMpKTsKPiArCj4gKwlpZiAo
-Y3J0YyAmJiBwbGFuZSA9PSBjcnRjLT5jdXJzb3IgJiYKPiArCSAgICBwbGFuZS0+c3RhdGUtPmNy
-dGMgPT0gY3J0YyAmJgo+ICsJICAgICEocHJpdmF0ZS0+Y29tbWl0LmZsdXNoX2Zvcl9jdXJzb3Ig
-JiBjcnRjX21hc2spKQo+ICsJCXJldHVybiBtdGtfcGxhbmVfY3Vyc29yX3VwZGF0ZShwbGFuZSwg
-Y3J0YywgZmIsCj4gKwkJCQljcnRjX3gsIGNydGNfeSwgY3J0Y193LCBjcnRjX2gsCj4gKwkJCQlz
-cmNfeCwgc3JjX3ksIHNyY193LCBzcmNfaCk7Cj4gKwo+ICsJcmV0dXJuIGRybV9hdG9taWNfaGVs
-cGVyX3VwZGF0ZV9wbGFuZShwbGFuZSwgY3J0YywgZmIsCj4gKwkJCQkJICAgICAgY3J0Y194LCBj
-cnRjX3ksIGNydGNfdywgY3J0Y19oLAo+ICsJCQkJCSAgICAgIHNyY194LCBzcmNfeSwgc3JjX3cs
-IHNyY19oLCBjdHgpOwo+ICt9Cj4gKwo+ICBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9wbGFuZV9m
-dW5jcyBtdGtfcGxhbmVfZnVuY3MgPSB7Cj4gLQkudXBkYXRlX3BsYW5lID0gZHJtX2F0b21pY19o
-ZWxwZXJfdXBkYXRlX3BsYW5lLAo+ICsJLnVwZGF0ZV9wbGFuZSA9IG10a19wbGFuZV91cGRhdGUs
-CgpJIHRoaW5rIGRybSBjb3JlIGhhcyBhbHJlYWR5IHByb2Nlc3MgY3Vyc29yIGFzeW5jIHByb2Js
-ZW0uIEluIFsxXSwgeW91CmNvdWxkIHNlYXJjaCAnbGVnYWN5X2N1cnNvcl91cGRhdGUnIGFuZCBp
-dCBuZWVkIGRyaXZlciB0byBpbXBsZW1lbnQKYXRvbWljX2FzeW5jX2NoZWNrKCkgYW5kIGF0b21p
-Y19hc3luY191cGRhdGUoKSBjYWxsYmFjayBmdW5jdGlvbi4gWW91CmNvdWxkIHJlZmVyIHRvIFsy
-XSBmb3IgdGhlIGltcGxlbWVudGF0aW9uLiAKCgpbMV0KaHR0cHM6Ly9naXQua2VybmVsLm9yZy9w
-dWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvdG9ydmFsZHMvbGludXguZ2l0L3RyZWUvZHJpdmVycy9n
-cHUvZHJtL2RybV9hdG9taWNfaGVscGVyLmM/aD12NS4zLXJjNgpbMl0KaHR0cHM6Ly9naXQua2Vy
-bmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvdG9ydmFsZHMvbGludXguZ2l0L3RyZWUv
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYz9oPXY1LjMtcmM2I245
-NTUKClJlZ2FyZHMsCkNLCgo+ICAJLmRpc2FibGVfcGxhbmUgPSBkcm1fYXRvbWljX2hlbHBlcl9k
-aXNhYmxlX3BsYW5lLAo+ICAJLmRlc3Ryb3kgPSBkcm1fcGxhbmVfY2xlYW51cCwKPiAgCS5yZXNl
-dCA9IG10a19wbGFuZV9yZXNldCwKPiBAQCAtOTAsNyArMTU0LDEyIEBAIHN0YXRpYyBpbnQgbXRr
-X3BsYW5lX2F0b21pY19jaGVjayhzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwKPiAgCWlmICghc3Rh
-dGUtPmNydGMpCj4gIAkJcmV0dXJuIDA7Cj4gIAo+IC0JY3J0Y19zdGF0ZSA9IGRybV9hdG9taWNf
-Z2V0X2NydGNfc3RhdGUoc3RhdGUtPnN0YXRlLCBzdGF0ZS0+Y3J0Yyk7Cj4gKwlpZiAoc3RhdGUt
-PnN0YXRlKQo+ICsJCWNydGNfc3RhdGUgPSBkcm1fYXRvbWljX2dldF9leGlzdGluZ19jcnRjX3N0
-YXRlKHN0YXRlLT5zdGF0ZSwKPiArCQkJCQkJCQlzdGF0ZS0+Y3J0Yyk7Cj4gKwllbHNlIC8qIFNw
-ZWNpYWwgY2FzZSBmb3IgYXN5bmNocm9ub3VzIGN1cnNvciB1cGRhdGVzLiAqLwo+ICsJCWNydGNf
-c3RhdGUgPSBzdGF0ZS0+Y3J0Yy0+c3RhdGU7Cj4gKwo+ICAJaWYgKElTX0VSUihjcnRjX3N0YXRl
-KSkKPiAgCQlyZXR1cm4gUFRSX0VSUihjcnRjX3N0YXRlKTsKPiAgCgoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
-cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+
+--3hahqm2gkodncklw
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+On Sun, Aug 18, 2019 at 03:56:09PM +0200, Frank Wunderlich wrote:
+> From: Josef Friedl <josef.friedl@speed.at>
+>=20
+> add poweroff driver for mt6323 and make Makefile and Kconfig-Entries
+>=20
+> Suggested-by: Frank Wunderlich <frank-w@public-files.de>
+> Signed-off-by: Josef Friedl <josef.friedl@speed.at>
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+> changes since v5: split out mfd/mt6397/core.h
+> changes since v4: none
+> changes since v3: none
+> changes since v2: none (=3Dv2 part 5)
+> ---
+
+Acked-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+-- Sebastian
+
+>  drivers/power/reset/Kconfig           | 10 +++
+>  drivers/power/reset/Makefile          |  1 +
+>  drivers/power/reset/mt6323-poweroff.c | 97 +++++++++++++++++++++++++++
+>  3 files changed, 108 insertions(+)
+>  create mode 100644 drivers/power/reset/mt6323-poweroff.c
+>=20
+> diff --git a/drivers/power/reset/Kconfig b/drivers/power/reset/Kconfig
+> index a564237278ff..c721939767eb 100644
+> --- a/drivers/power/reset/Kconfig
+> +++ b/drivers/power/reset/Kconfig
+> @@ -140,6 +140,16 @@ config POWER_RESET_LTC2952
+>  	  This driver supports an external powerdown trigger and board power
+>  	  down via the LTC2952. Bindings are made in the device tree.
+> =20
+> +config POWER_RESET_MT6323
+> +       bool "MediaTek MT6323 power-off driver"
+> +       depends on MFD_MT6397
+> +       help
+> +         The power-off driver is responsible for externally shutdown down
+> +         the power of a remote MediaTek SoC MT6323 is connected to throu=
+gh
+> +         controlling a tiny circuit BBPU inside MT6323 RTC.
+> +
+> +         Say Y if you have a board where MT6323 could be found.
+> +
+>  config POWER_RESET_QNAP
+>  	bool "QNAP power-off driver"
+>  	depends on OF_GPIO && PLAT_ORION
+> diff --git a/drivers/power/reset/Makefile b/drivers/power/reset/Makefile
+> index 85da3198e4e0..da37f8b851dc 100644
+> --- a/drivers/power/reset/Makefile
+> +++ b/drivers/power/reset/Makefile
+> @@ -11,6 +11,7 @@ obj-$(CONFIG_POWER_RESET_GPIO) +=3D gpio-poweroff.o
+>  obj-$(CONFIG_POWER_RESET_GPIO_RESTART) +=3D gpio-restart.o
+>  obj-$(CONFIG_POWER_RESET_HISI) +=3D hisi-reboot.o
+>  obj-$(CONFIG_POWER_RESET_MSM) +=3D msm-poweroff.o
+> +obj-$(CONFIG_POWER_RESET_MT6323) +=3D mt6323-poweroff.o
+>  obj-$(CONFIG_POWER_RESET_QCOM_PON) +=3D qcom-pon.o
+>  obj-$(CONFIG_POWER_RESET_OCELOT_RESET) +=3D ocelot-reset.o
+>  obj-$(CONFIG_POWER_RESET_PIIX4_POWEROFF) +=3D piix4-poweroff.o
+> diff --git a/drivers/power/reset/mt6323-poweroff.c b/drivers/power/reset/=
+mt6323-poweroff.c
+> new file mode 100644
+> index 000000000000..1caf43d9e46d
+> --- /dev/null
+> +++ b/drivers/power/reset/mt6323-poweroff.c
+> @@ -0,0 +1,97 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Power off through MediaTek PMIC
+> + *
+> + * Copyright (C) 2018 MediaTek Inc.
+> + *
+> + * Author: Sean Wang <sean.wang@mediatek.com>
+> + *
+> + */
+> +
+> +#include <linux/err.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/mfd/mt6397/core.h>
+> +#include <linux/mfd/mt6397/rtc.h>
+> +
+> +struct mt6323_pwrc {
+> +	struct device *dev;
+> +	struct regmap *regmap;
+> +	u32 base;
+> +};
+> +
+> +static struct mt6323_pwrc *mt_pwrc;
+> +
+> +static void mt6323_do_pwroff(void)
+> +{
+> +	struct mt6323_pwrc *pwrc =3D mt_pwrc;
+> +	unsigned int val;
+> +	int ret;
+> +
+> +	regmap_write(pwrc->regmap, pwrc->base + RTC_BBPU, RTC_BBPU_KEY);
+> +	regmap_write(pwrc->regmap, pwrc->base + RTC_WRTGR, 1);
+> +
+> +	ret =3D regmap_read_poll_timeout(pwrc->regmap,
+> +					pwrc->base + RTC_BBPU, val,
+> +					!(val & RTC_BBPU_CBUSY),
+> +					MTK_RTC_POLL_DELAY_US,
+> +					MTK_RTC_POLL_TIMEOUT);
+> +	if (ret)
+> +		dev_err(pwrc->dev, "failed to write BBPU: %d\n", ret);
+> +
+> +	/* Wait some time until system down, otherwise, notice with a warn */
+> +	mdelay(1000);
+> +
+> +	WARN_ONCE(1, "Unable to power off system\n");
+> +}
+> +
+> +static int mt6323_pwrc_probe(struct platform_device *pdev)
+> +{
+> +	struct mt6397_chip *mt6397_chip =3D dev_get_drvdata(pdev->dev.parent);
+> +	struct mt6323_pwrc *pwrc;
+> +	struct resource *res;
+> +
+> +	pwrc =3D devm_kzalloc(&pdev->dev, sizeof(*pwrc), GFP_KERNEL);
+> +	if (!pwrc)
+> +		return -ENOMEM;
+> +
+> +	res =3D platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> +	pwrc->base =3D res->start;
+> +	pwrc->regmap =3D mt6397_chip->regmap;
+> +	pwrc->dev =3D &pdev->dev;
+> +	mt_pwrc =3D pwrc;
+> +
+> +	pm_power_off =3D &mt6323_do_pwroff;
+> +
+> +	return 0;
+> +}
+> +
+> +static int mt6323_pwrc_remove(struct platform_device *pdev)
+> +{
+> +	if (pm_power_off =3D=3D &mt6323_do_pwroff)
+> +		pm_power_off =3D NULL;
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct of_device_id mt6323_pwrc_dt_match[] =3D {
+> +	{ .compatible =3D "mediatek,mt6323-pwrc" },
+> +	{},
+> +};
+> +MODULE_DEVICE_TABLE(of, mt6323_pwrc_dt_match);
+> +
+> +static struct platform_driver mt6323_pwrc_driver =3D {
+> +	.probe          =3D mt6323_pwrc_probe,
+> +	.remove         =3D mt6323_pwrc_remove,
+> +	.driver         =3D {
+> +		.name   =3D "mt6323-pwrc",
+> +		.of_match_table =3D mt6323_pwrc_dt_match,
+> +	},
+> +};
+> +
+> +module_platform_driver(mt6323_pwrc_driver);
+> +
+> +MODULE_DESCRIPTION("Poweroff driver for MT6323 PMIC");
+> +MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
+> +MODULE_LICENSE("GPL v2");
+> --=20
+> 2.17.1
+>=20
+>=20
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+
+--3hahqm2gkodncklw
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAl1sJgcACgkQ2O7X88g7
++ppiQw/+LtS6wsjmh6ARgHlsOn/nsSf21K7xA0uk3UPYy7muMYmP6wsTQ5cRqjK2
+W1XrHqKmlSknV0QKhOC9CGxqy5y61hiECNUYF6iXKMOIdx4k7u4hlfRQoAAOw5Ya
+97lFTQvD4Obi7Fp8l+zaNmbfYSIEL6Ah2MHH+ol9RBTRxnY1esdIOpcuyuOJfir4
+LIYeJv+/oBF+xqixgomZKOHh8Xw1xq6yJQgxAs6LBoawvE6v2S+er1GgmKR/t6r4
+fEYOTH2dlN51bHqSBs5mhyUik/LCW+RdOnpKA+H7A1vogxWoyLqhU0sFrvbCsTAD
+o7GSFWFwN+26XZ8vwFn0q8D/1YSXebCtLdU73fGik3+jo1bGylR49dzq4bBUZAnT
+jo4AQvYCdhPkysuS0qelA7NeiVbcnAuv8wUA2Pdq7uDbomGNRSMMgKATHGMaPIXN
+MhUsgLiet8tdJ7ywcf/MYB4yp98OeFsvBQmJ+PQqFp0896FAvaJrRVIfja9uKWvc
+dPgJDF1ZZRj6h3R1K+IogGroroj/gexcftWbCS2k8u8Euj7A2yYxqxJ33dlkdmyh
+1NFZXaR5fy4X9VyYMKrEzT+hvr0nbjdSdaHbng0IzV4x6GLWxatC5Q/QknHJGhx5
+deKN8AEX3jCS4JJBxsLILjEpyc+T0CijPJTTveQDzhAN8WMGPBM=
+=gn38
+-----END PGP SIGNATURE-----
+
+--3hahqm2gkodncklw--
