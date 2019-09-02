@@ -1,111 +1,32 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v5, 22/32] drm/mediatek: add ovl0/ovl_2l0 usecase
-Date: Mon, 2 Sep 2019 16:11:32 +0800
-Message-ID: <1567411892.5812.4.camel@mtksdaap41>
-References: <1567090254-15566-1-git-send-email-yongqiang.niu@mediatek.com>
- <1567090254-15566-23-git-send-email-yongqiang.niu@mediatek.com>
- <1567144708.5942.14.camel@mtksdaap41>
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+Subject: [PATCH v1 0/3] Runtime PM support for MT8183 mcucfg clock provider
+Date: Mon, 2 Sep 2019 16:35:07 +0800
+Message-ID: <1567413310-2589-1-git-send-email-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1567144708.5942.14.camel@mtksdaap41>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: yongqiang.niu@mediatek.com
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, CK Hu <ck.hu@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFlvbmdxaWFuZzoKCk9uIEZyaSwgMjAxOS0wOC0zMCBhdCAxMzo1OCArMDgwMCwgQ0sgSHUg
-d3JvdGU6Cj4gSGksIFlvbmdxaWFuZzoKPiAKPiBPbiBUaHUsIDIwMTktMDgtMjkgYXQgMjI6NTAg
-KzA4MDAsIHlvbmdxaWFuZy5uaXVAbWVkaWF0ZWsuY29tIHdyb3RlOgo+ID4gRnJvbTogWW9uZ3Fp
-YW5nIE5pdSA8eW9uZ3FpYW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gPiAKPiA+IFRoaXMgcGF0Y2gg
-YWRkIG92bDAvb3ZsXzJsMCB1c2VjYXNlCj4gPiBpbiBvdmwtPm92bF8ybDAgZGlyZWN0IGxpbmsg
-dXNlY2FzZToKPiA+IDEuIHRoZSBjcnRjIHN1cHBvcnQgbGF5ZXIgbnVtYmVyIHdpbGwgNCsyCj4g
-PiAyLiBvdmxfMmwwIGJhY2tncm91bmQgY29sb3IgaW5wdXQgc2VsZWN0IG92bDAgd2hlbiBjcnRj
-IGluaXQKPiA+IGFuZCBkaXNhYmxlIGl0IHdoZW4gY3J0YyBmaW5pc2gKPiA+IDMuIGNvbmZpZyBv
-dmxfMmwwIGxheWVyLCBpZiBjcnRjIGNvbmZpZyBsYXllciBudW1iZXIgaXMKPiA+IGJpZ2dlciB0
-aGFuIG92bDAgc3VwcG9ydCBsYXllcnMobWF4IGlzIDQpCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6
-IFlvbmdxaWFuZyBOaXUgPHlvbmdxaWFuZy5uaXVAbWVkaWF0ZWsuY29tPgo+ID4gLS0tCj4gPiAg
-ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5jIHwgMzggKysrKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKy0tCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDM2IGluc2VydGlvbnMo
-KyksIDIgZGVsZXRpb25zKC0pCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
-bV9jcnRjLmMKPiA+IGluZGV4IGM2M2ZmMmIuLmI1NTk3MGEgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMKPiA+ICsrKyBiL2RyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYwo+ID4gQEAgLTI3MCw2ICsyNzAsMTUgQEAgc3Rh
-dGljIGludCBtdGtfY3J0Y19kZHBfaHdfaW5pdChzdHJ1Y3QgbXRrX2RybV9jcnRjICptdGtfY3J0
-YykKPiA+ICAKPiA+ICAJZm9yIChpID0gMDsgaSA8IG10a19jcnRjLT5kZHBfY29tcF9ucjsgaSsr
-KSB7Cj4gPiAgCQlzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wID0gbXRrX2NydGMtPmRkcF9jb21w
-W2ldOwo+ID4gKwkJZW51bSBtdGtfZGRwX2NvbXBfaWQgcHJldjsKPiA+ICsKPiA+ICsJCWlmIChp
-ID4gMCkKPiA+ICsJCQlwcmV2ID0gbXRrX2NydGMtPmRkcF9jb21wW2kgLSAxXS0+aWQ7Cj4gPiAr
-CQllbHNlCj4gPiArCQkJcHJldiA9IEREUF9DT01QT05FTlRfSURfTUFYOwo+ID4gKwo+ID4gKwkJ
-aWYgKHByZXYgPT0gRERQX0NPTVBPTkVOVF9PVkwwKQo+ID4gKwkJCW10a19kZHBfY29tcF9iZ2Ns
-cl9pbl9vbihjb21wKTsKPiAKPiBFdmVuIHRob3VnaCBib3RoIE9WTCBhbmQgT1ZMXzJMIGltcGxl
-bWVudCB0aGlzIGZ1bmN0aW9uLCBJIHRoaW5rIHdlCj4gY291bGQgc3RpbGwgY2FsbCB0aGlzIGZ1
-bmN0aW9uIGZvciBPVkwgYW5kIE9WTF8yTCwgYW5kIGluCj4gbXRrX292bF9iZ2Nscl9pbl9vbigp
-LCB0byBqdWRnZSBpdCdzIE9WTCBvciBPVkxfMkwuCgpBcyBpbnRlcm5hbCBkaXNjdXNzaW9uLCB5
-b3UgbWVudGlvbiB0aGF0IE9WTCBhbmQgT1ZMXzJMIGJvdGggaGFzCmJnY2xyX2luIGZ1bmN0aW9u
-LCBzbyBJIHRoaW5rIHdlIHNob3VsZCBrZWVwIGJnY2xyX2luIGZ1bmN0aW9uIGZvciBib3RoCk9W
-TCBhbmQgT1ZMXzJMLiBBbmQgaW4gY3J0YywgYWx3YXlzIGVuYWJsZSBiZ2Nscl9pbiBmb3IgY29t
-cFsxXSwgc28gY29kZQpoZXJlIGNvdWxkIGJlCgppZiAoaSA9PSAxKQoJbXRrX2RkcF9jb21wX2Jn
-Y2xyX2luX29uKGNvbXApOwoKUmVnYXJkcywKQ0sKCj4gCj4gUmVnYXJkcywKPiBDSwo+IAo+ID4g
-IAo+ID4gIAkJbXRrX2RkcF9jb21wX2NvbmZpZyhjb21wLCB3aWR0aCwgaGVpZ2h0LCB2cmVmcmVz
-aCwgYnBjKTsKPiA+ICAJCW10a19kZHBfY29tcF9zdGFydChjb21wKTsKPiA+IEBAIC0yNzksOSAr
-Mjg4LDE4IEBAIHN0YXRpYyBpbnQgbXRrX2NydGNfZGRwX2h3X2luaXQoc3RydWN0IG10a19kcm1f
-Y3J0YyAqbXRrX2NydGMpCj4gPiAgCWZvciAoaSA9IDA7IGkgPCBtdGtfY3J0Yy0+bGF5ZXJfbnI7
-IGkrKykgewo+ID4gIAkJc3RydWN0IGRybV9wbGFuZSAqcGxhbmUgPSAmbXRrX2NydGMtPnBsYW5l
-c1tpXTsKPiA+ICAJCXN0cnVjdCBtdGtfcGxhbmVfc3RhdGUgKnBsYW5lX3N0YXRlOwo+ID4gKwkJ
-c3RydWN0IG10a19kZHBfY29tcCAqY29tcCA9IG10a19jcnRjLT5kZHBfY29tcFswXTsKPiA+ICsJ
-CXVuc2lnbmVkIGludCBjb21wX2xheWVyX25yID0gbXRrX2RkcF9jb21wX2xheWVyX25yKGNvbXAp
-Owo+ID4gKwkJdW5zaWduZWQgaW50IGxvY2FsX2xheWVyOwo+ID4gIAo+ID4gIAkJcGxhbmVfc3Rh
-dGUgPSB0b19tdGtfcGxhbmVfc3RhdGUocGxhbmUtPnN0YXRlKTsKPiA+IC0JCW10a19kZHBfY29t
-cF9sYXllcl9jb25maWcobXRrX2NydGMtPmRkcF9jb21wWzBdLCBpLAo+ID4gKwo+ID4gKwkJaWYg
-KGkgPj0gY29tcF9sYXllcl9ucikgewo+ID4gKwkJCWNvbXAgPSBtdGtfY3J0Yy0+ZGRwX2NvbXBb
-MV07Cj4gPiArCQkJbG9jYWxfbGF5ZXIgPSBpIC0gY29tcF9sYXllcl9ucjsKPiA+ICsJCX0gZWxz
-ZQo+ID4gKwkJCWxvY2FsX2xheWVyID0gaTsKPiA+ICsJCW10a19kZHBfY29tcF9sYXllcl9jb25m
-aWcoY29tcCwgbG9jYWxfbGF5ZXIsCj4gPiAgCQkJCQkgIHBsYW5lX3N0YXRlKTsKPiA+ICAJfQo+
-ID4gIAo+ID4gQEAgLTMwNyw2ICszMjUsNyBAQCBzdGF0aWMgdm9pZCBtdGtfY3J0Y19kZHBfaHdf
-ZmluaShzdHJ1Y3QgbXRrX2RybV9jcnRjICptdGtfY3J0YykKPiA+ICAJCQkJCSAgIG10a19jcnRj
-LT5kZHBfY29tcFtpXS0+aWQpOwo+ID4gIAltdGtfZGlzcF9tdXRleF9kaXNhYmxlKG10a19jcnRj
-LT5tdXRleCk7Cj4gPiAgCWZvciAoaSA9IDA7IGkgPCBtdGtfY3J0Yy0+ZGRwX2NvbXBfbnIgLSAx
-OyBpKyspIHsKPiA+ICsJCW10a19kZHBfY29tcF9iZ2Nscl9pbl9vZmYobXRrX2NydGMtPmRkcF9j
-b21wW2ldKTsKPiA+ICAJCW10a19kZHBfcmVtb3ZlX2NvbXBfZnJvbV9wYXRoKG10a19jcnRjLT5j
-b25maWdfcmVncywKPiA+ICAJCQkJCSAgICAgIG10a19jcnRjLT5tbXN5c19yZWdfZGF0YSwKPiA+
-ICAJCQkJCSAgICAgIG10a19jcnRjLT5kZHBfY29tcFtpXS0+aWQsCj4gPiBAQCAtMzI3LDYgKzM0
-Niw4IEBAIHN0YXRpYyB2b2lkIG10a19jcnRjX2RkcF9jb25maWcoc3RydWN0IGRybV9jcnRjICpj
-cnRjKQo+ID4gIAlzdHJ1Y3QgbXRrX2NydGNfc3RhdGUgKnN0YXRlID0gdG9fbXRrX2NydGNfc3Rh
-dGUobXRrX2NydGMtPmJhc2Uuc3RhdGUpOwo+ID4gIAlzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21w
-ID0gbXRrX2NydGMtPmRkcF9jb21wWzBdOwo+ID4gIAl1bnNpZ25lZCBpbnQgaTsKPiA+ICsJdW5z
-aWduZWQgaW50IGNvbXBfbGF5ZXJfbnIgPSBtdGtfZGRwX2NvbXBfbGF5ZXJfbnIoY29tcCk7Cj4g
-PiArCXVuc2lnbmVkIGludCBsb2NhbF9sYXllcjsKPiA+ICAKPiA+ICAJLyoKPiA+ICAJICogVE9E
-TzogaW5zdGVhZCBvZiB1cGRhdGluZyB0aGUgcmVnaXN0ZXJzIGhlcmUsIHdlIHNob3VsZCBwcmVw
-YXJlCj4gPiBAQCAtMzQ5LDcgKzM3MCwxNCBAQCBzdGF0aWMgdm9pZCBtdGtfY3J0Y19kZHBfY29u
-ZmlnKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKPiA+ICAJCQlwbGFuZV9zdGF0ZSA9IHRvX210a19w
-bGFuZV9zdGF0ZShwbGFuZS0+c3RhdGUpOwo+ID4gIAo+ID4gIAkJCWlmIChwbGFuZV9zdGF0ZS0+
-cGVuZGluZy5jb25maWcpIHsKPiA+IC0JCQkJbXRrX2RkcF9jb21wX2xheWVyX2NvbmZpZyhjb21w
-LCBpLCBwbGFuZV9zdGF0ZSk7Cj4gPiArCQkJCWlmIChpID49IGNvbXBfbGF5ZXJfbnIpIHsKPiA+
-ICsJCQkJCWNvbXAgPSBtdGtfY3J0Yy0+ZGRwX2NvbXBbMV07Cj4gPiArCQkJCQlsb2NhbF9sYXll
-ciA9IGkgLSBjb21wX2xheWVyX25yOwo+ID4gKwkJCQl9IGVsc2UKPiA+ICsJCQkJCWxvY2FsX2xh
-eWVyID0gaTsKPiA+ICsKPiA+ICsJCQkJbXRrX2RkcF9jb21wX2xheWVyX2NvbmZpZyhjb21wLCBs
-b2NhbF9sYXllciwKPiA+ICsJCQkJCQkJICBwbGFuZV9zdGF0ZSk7Cj4gPiAgCQkJCXBsYW5lX3N0
-YXRlLT5wZW5kaW5nLmNvbmZpZyA9IGZhbHNlOwo+ID4gIAkJCX0KPiA+ICAJCX0KPiA+IEBAIC01
-NzIsNiArNjAwLDEyIEBAIGludCBtdGtfZHJtX2NydGNfY3JlYXRlKHN0cnVjdCBkcm1fZGV2aWNl
-ICpkcm1fZGV2LAo+ID4gIAl9Cj4gPiAgCj4gPiAgCW10a19jcnRjLT5sYXllcl9uciA9IG10a19k
-ZHBfY29tcF9sYXllcl9ucihtdGtfY3J0Yy0+ZGRwX2NvbXBbMF0pOwo+ID4gKwlpZiAobXRrX2Ny
-dGMtPmRkcF9jb21wX25yID4gMSkgewo+ID4gKwkJc3RydWN0IG10a19kZHBfY29tcCAqY29tcCA9
-IG10a19jcnRjLT5kZHBfY29tcFsxXTsKPiA+ICsKPiA+ICsJCWlmIChjb21wLT5mdW5jcy0+Ymdj
-bHJfaW5fb24pCj4gPiArCQkJbXRrX2NydGMtPmxheWVyX25yICs9IG10a19kZHBfY29tcF9sYXll
-cl9ucihjb21wKTsKPiA+ICsJfQo+ID4gIAltdGtfY3J0Yy0+cGxhbmVzID0gZGV2bV9rY2FsbG9j
-KGRldiwgbXRrX2NydGMtPmxheWVyX25yLAo+ID4gIAkJCQkJc2l6ZW9mKHN0cnVjdCBkcm1fcGxh
-bmUpLAo+ID4gIAkJCQkJR0ZQX0tFUk5FTCk7Cj4gCgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpLWRldmVs
+This series is based on v5.3-rc1 and Mediatek MT8183 scpsys support v7[1].
+Since Runtime PM is supported in Common Clock Framework which keeps
+clock controller's power domain enabled to ensure clock status accessing correctly.
+
+[1] https://patchwork.kernel.org/cover/11118371/
+
+---
+
+Weiyi Lu (3):
+  clk: mediatek: Register clock gate with device
+  clk: mediatek: Runtime PM support for MT8183 mcucfg clock provider
+  arm64: dts: Add power-domains properity to mfgcfg
+
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi |  1 +
+ drivers/clk/mediatek/clk-gate.c          |  5 +++--
+ drivers/clk/mediatek/clk-gate.h          |  3 ++-
+ drivers/clk/mediatek/clk-mt8183-mfgcfg.c |  7 +++++--
+ drivers/clk/mediatek/clk-mtk.c           | 16 +++++++++++++---
+ drivers/clk/mediatek/clk-mtk.h           |  5 +++++
+ 6 files changed, 29 insertions(+), 8 deletions(-)
