@@ -1,42 +1,61 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH v6 10/13] mfd: mt6323: add mt6323 rtc+pwrc
-Date: Mon, 2 Sep 2019 10:50:01 +0100
-Message-ID: <20190902095001.GV32232@dell>
-References: <20190818135611.7776-1-frank-w@public-files.de>
- <20190818135611.7776-11-frank-w@public-files.de>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: Wiki to track changes and progress ?
+Date: Mon, 2 Sep 2019 13:17:33 +0200
+Message-ID: <de61f89b-ad6d-e8e0-04b2-70ae2ebb29e6@gmail.com>
+References: <256e20ee-ce22-2ff8-a2c7-cde75fc681e2@gmail.com>
+ <e242d481-6a08-4076-2aaf-44b3c4a6afdb@gmail.com>
+ <1567129347.30548.4.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190818135611.7776-11-frank-w@public-files.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, "linux-arm-kernel @ lists . infradead . org Alessandro Zummo" <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Eddie Huang <eddie.huang@mediatek.com>, Josef Friedl <josef.friedl@speed.at>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-rtc@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, Sebastian Reichel <sre@kernel.org>, Tianping Fang <tianping.fang@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1567129347.30548.4.camel@mtksdaap41>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, MOHAMMAD RASIM <mohammad.rasim96-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Fabien Parent <fparent-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, 18 Aug 2019, Frank Wunderlich wrote:
++Fabien
 
-> From: Josef Friedl <josef.friedl@speed.at>
+On 30/08/2019 03:42, CK Hu wrote:
+> Hi, Matthias:
 > 
-> add entry for rtc and power-controller to mt6323
+> On Thu, 2019-08-29 at 12:41 +0200, Matthias Brugger wrote:
+>> Hi Mohammad,
+>>
+>> On 25/09/2018 21:36, MOHAMMAD RASIM wrote:
+>>> Hi,
+>>>
+>>> Is there a wiki for linux-mediatek where I can see the progress of mainlining,
+>>> what works and what doesn't (status matrix) ?
+>>>
+>>> Something similar to other projects like http://linux-meson.com/doku.php and
+>>> http://linux-sunxi.org/Linux_mainlining_effort
+>>>
+>>
+>> I recently updated the table. It is not complete but at least to some extent
+>> useful. Especially mt8173 and mt8183 need an update.
+>>
+>> https://mtk.bcnfs.org/doku.php?id=linux_mainline_effort
+>>
 > 
-> Signed-off-by: Josef Friedl <josef.friedl@speed.at>
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
-> ---
-> changes since v5: none
-> changes since v4: none
-> changes since v3: none
-> changes since v2: only splitting, second part of v2 part 4
-> ---
->  drivers/mfd/mt6397-core.c | 25 +++++++++++++++++++++++++
->  1 file changed, 25 insertions(+)
+> In that table, MT8167 DRM is WIP (work in progress), I've no idea about
+> this, could you provide the information about MT8167 DRM? I'm sure that
+> MT8183 DRM is WIP.
 
-Applied, thanks.
+I tried to find it out by going through the history of the table. But TBH it is
+difficult to read...
 
--- 
-Lee Jones [李琼斯]
-Linaro Services Technical Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
+I think Fabien is working on MT8167, so I suppose he added the WIP.
+
+Regards,
+Matthias
