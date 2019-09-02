@@ -1,451 +1,567 @@
-From: =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>
-Subject: [PATCH net-next v3 1/3] net: dsa: mt7530: Convert to PHYLINK API
-Date: Mon,  2 Sep 2019 15:02:24 +0200
-Message-ID: <20190902130226.26845-2-opensource@vdorst.com>
-References: <20190902130226.26845-1-opensource@vdorst.com>
+From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+Subject: Re: [PATCH 2/2] media: i2c: dw9768: Add DW9768 VCM driver
+Date: Mon, 2 Sep 2019 21:35:31 +0800
+Message-ID: <1567431331.21623.57.camel@mhfsdcap03>
+References: <20190708100641.2702-1-dongchun.zhu@mediatek.com>
+ <20190708100641.2702-3-dongchun.zhu@mediatek.com>
+ <576bb964-c16d-2ca2-e3ec-feff2e155d3c@linux.intel.com>
+ <0255a021cb9b424f85ec53c22f5e8dad@mtkmbs07n1.mediatek.inc>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20190902130226.26845-1-opensource@vdorst.com>
-Sender: netdev-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Russell King <linux@armlinux.org.uk>, John Crispin <john@phrozen.org>, linux-mips@vger.kernel.org, Frank Wunderlich <frank-w@public-files.de>, =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>, Russell King <rmk+kernel@armlinux.org.uk>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <0255a021cb9b424f85ec53c22f5e8dad@mtkmbs07n1.mediatek.inc>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Bingbu Cao <bingbu.cao@linux.intel.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, drinkcat@chromium.org, srv_heupstream@mediatek.com, tfiga@google.com, shengnan.wang@mediatek.com, louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Convert mt7530 to PHYLINK API
+Hi Bingbu,
 
-Signed-off-by: René van Dorst <opensource@vdorst.com>
-Tested-by: Frank Wunderlich <frank-w@public-files.de>
-Acked-by: Russell King <rmk+kernel@armlinux.org.uk>
----
-v2->v3:
-* No change
-* Add tags acked-by and tested-by
-v1->v2:
-* Refactor "unsupported" phy_interface part in
-  mt7530_phylink_mac_validate() suggested by Russell King
-* Report and return when phylink tries to use autoneg_inband in
-  mt7530_phylink_mac_config() suggested by Russell King
-* Refactor port 6 setup in mt7530_phylink_mac_config()
-rfc->v1:
-* Renamed P5_MODE_* to P5_INTF_SEL_*. fits the function more
-* Convert if-statement for speed bits to a switch suggested by
-  Daniel Santos
-* Refactor flow_control pause bits and don't use state->link in
-  mt7530_phylink_mac_config() suggested by Russell King
-* Move MAC tx/rx en/disable to mt7530_phylink_mac_link_up/down()
-  suggested by Russell King
-* Always support PHY_INTERFACE_MODE_NA in mt7530_phylink_validate()
-  suggested by Russell King
-* Added phylink_set_port_modes() in mt7530_phylink_validate() suggested
-  by Russell King
-* Remove dev_err on the end of mt7530_phylink_mac_config() suggested by
-  Russell King
+On Wed, 2019-07-24 at 11:16 +0800, Bingbu Cao wrote:
+> On 7/8/19 6:06 PM, dongchun.zhu@mediatek.com wrote:
+> > From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> >
+> > This patch adds a V4L2 sub-device driver for DW9768 lens voice coil,
+> > and provides control to set the desired focus.
+> >
+> > The DW9807 is a 10 bit DAC from Dongwoon, designed for linear control
+> > of voice coil motor.
+> >
+> > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > ---
+> >  MAINTAINERS                |   1 +
+> >  drivers/media/i2c/Kconfig  |  10 +
+> >  drivers/media/i2c/Makefile |   1 +
+> >  drivers/media/i2c/dw9768.c | 458
+> > +++++++++++++++++++++++++++++++++++++++++++++
+> >  4 files changed, 470 insertions(+)
+> >  create mode 100644 drivers/media/i2c/dw9768.c
+> >
+> > diff --git a/MAINTAINERS b/MAINTAINERS index 8f6ac93..17152d7 100644
+> > --- a/MAINTAINERS
+> > +++ b/MAINTAINERS
+> > @@ -4877,6 +4877,7 @@ M:Dongchun Zhu <dongchun.zhu@mediatek.com>
+> >  L:linux-media@vger.kernel.org
+> >  T:git git://linuxtv.org/media_tree.git
+> >  S:Maintained
+> > +F:drivers/media/i2c/dw9768.c
+> >  F:Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.txt
+> >
+> >  DONGWOON DW9807 LENS VOICE COIL DRIVER diff --git
+> > a/drivers/media/i2c/Kconfig b/drivers/media/i2c/Kconfig index
+> > 7793358..8ff6c95 100644
+> > --- a/drivers/media/i2c/Kconfig
+> > +++ b/drivers/media/i2c/Kconfig
+> > @@ -1014,6 +1014,16 @@ config VIDEO_DW9714
+> >    capability. This is designed for linear control of
+> >    voice coil motors, controlled via I2C serial interface.
+> >
+> > +config VIDEO_DW9768
+> > +tristate "DW9768 lens voice coil support"
+> > +depends on I2C && VIDEO_V4L2 && MEDIA_CONTROLLER
+> > +depends on VIDEO_V4L2_SUBDEV_API
+> > +help
+> > +  This is a driver for the DW9768 camera lens voice coil.
+> > +  DW9768 is a 10 bit DAC with 100mA output current sink
+> > +  capability. This is designed for linear control of
+> > +  voice coil motors, controlled via I2C serial interface.
+> > +
+> >  config VIDEO_DW9807_VCM
+> >  tristate "DW9807 lens voice coil support"
+> >  depends on I2C && VIDEO_V4L2 && MEDIA_CONTROLLER diff --git
+> > a/drivers/media/i2c/Makefile b/drivers/media/i2c/Makefile index
+> > d8ad9da..944fbf6 100644
+> > --- a/drivers/media/i2c/Makefile
+> > +++ b/drivers/media/i2c/Makefile
+> > @@ -24,6 +24,7 @@ obj-$(CONFIG_VIDEO_SAA6752HS) += saa6752hs.o
+> >  obj-$(CONFIG_VIDEO_AD5820)  += ad5820.o
+> >  obj-$(CONFIG_VIDEO_AK7375)  += ak7375.o
+> >  obj-$(CONFIG_VIDEO_DW9714)  += dw9714.o
+> > +obj-$(CONFIG_VIDEO_DW9768)  += dw9768.o
+> >  obj-$(CONFIG_VIDEO_DW9807_VCM)  += dw9807-vcm.o
+> >  obj-$(CONFIG_VIDEO_ADV7170) += adv7170.o
+> >  obj-$(CONFIG_VIDEO_ADV7175) += adv7175.o diff --git
+> > a/drivers/media/i2c/dw9768.c b/drivers/media/i2c/dw9768.c new file
+> > mode 100644 index 0000000..f5b5591
+> > --- /dev/null
+> > +++ b/drivers/media/i2c/dw9768.c
+> > @@ -0,0 +1,458 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +/*
+> > + * Copyright (c) 2018 MediaTek Inc.
+> > + */
+> > +
+> > +#include <linux/delay.h>
+> > +#include <linux/i2c.h>
+> > +#include <linux/module.h>
+> > +#include <linux/regulator/consumer.h> #include <linux/pm_runtime.h>
+> > +#include <media/v4l2-ctrls.h> #include <media/v4l2-device.h> #include
+> > +<media/v4l2-subdev.h>
+> > +
+> > +#define DW9768_VOLTAGE_ANALOG2800000
+> > +#define DW9768_NAME"dw9768"
+> > +#define DW9768_MAX_FOCUS_POS1023
+> > +/*
+> > + * This sets the minimum granularity for the focus positions.
+> > + * A value of 1 gives maximum accuracy for a desired focus position
+> > +*/
+> > +#define DW9768_FOCUS_STEPS1
+> > +
+> > +#define DW9768_CTRL_DELAY_US5000
+> > +
+> > +#define DW9768_REG_DAC_MSB0x03
+> > +#define DW9768_REG_DAC_LSB0x04
+> > +#define DW9768_REG_NULL0xff
+> > +
+> > +#define DW9768_DAC_SHIFT8
+> > +
+> > +#define DW9768_REG_VALUE_16BIT2
+> > +
+> > +/* dw9768 device structure */
+> > +struct dw9768_device {
+> > +struct v4l2_ctrl_handler ctrls;
+> > +struct v4l2_subdev sd;
+> > +struct regulator *analog_regulator;
+> > +/*
+> > + * Serialize control access, get/set format, get selection
+> > + * and start streaming.
+> > + */
+> > +struct mutex power_lock;
+> > +
+> > +int power_count;
+> > +bool standby;
+> > +};
+> > +
+> > +static inline struct dw9768_device *to_dw9768_vcm(struct v4l2_ctrl
+> > +*ctrl) {
+> > +return container_of(ctrl->handler, struct dw9768_device, ctrls); }
+> > +
+> > +static inline struct dw9768_device *sd_to_dw9768_vcm(struct
+> > +v4l2_subdev *subdev) {
+> > +return container_of(subdev, struct dw9768_device, sd); }
+> > +
+> > +static int dw9768_i2c_write(struct dw9768_device *dw9768_dev, u8 *data,
+> > +    int size)
+> > +{
+> > +struct i2c_client *client = v4l2_get_subdevdata(&dw9768_dev->sd);
+> > +struct i2c_msg msg;
+> > +u8 *w_buf = NULL;
+> > +u8 retry_cnt = 3;
+> > +int ret;
+> > +
+> > +if (!client->adapter)
+> > +return -ENODEV;
+> > +
+> > +if (size != 1 && size != 2)
+> > +return -EINVAL;
+> > +
+> > +memset(&msg, 0, sizeof(struct i2c_msg));
+> > +
+> > +w_buf = kzalloc(size, GFP_KERNEL);
+> > +if (!w_buf)
+> > +return -1;
+> return -ENOMEM;
 
- drivers/net/dsa/mt7530.c | 266 +++++++++++++++++++++++++++++----------
- drivers/net/dsa/mt7530.h |  32 +++--
- 2 files changed, 211 insertions(+), 87 deletions(-)
+Fixed in next release.
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index c48e29486b10..ecc13b57e619 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -13,7 +13,7 @@
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
- #include <linux/of_platform.h>
--#include <linux/phy.h>
-+#include <linux/phylink.h>
- #include <linux/regmap.h>
- #include <linux/regulator/consumer.h>
- #include <linux/reset.h>
-@@ -633,63 +633,6 @@ mt7530_get_sset_count(struct dsa_switch *ds, int port, int sset)
- 	return ARRAY_SIZE(mt7530_mib);
- }
- 
--static void mt7530_adjust_link(struct dsa_switch *ds, int port,
--			       struct phy_device *phydev)
--{
--	struct mt7530_priv *priv = ds->priv;
--
--	if (phy_is_pseudo_fixed_link(phydev)) {
--		dev_dbg(priv->dev, "phy-mode for master device = %x\n",
--			phydev->interface);
--
--		/* Setup TX circuit incluing relevant PAD and driving */
--		mt7530_pad_clk_setup(ds, phydev->interface);
--
--		if (priv->id == ID_MT7530) {
--			/* Setup RX circuit, relevant PAD and driving on the
--			 * host which must be placed after the setup on the
--			 * device side is all finished.
--			 */
--			mt7623_pad_clk_setup(ds);
--		}
--	} else {
--		u16 lcl_adv = 0, rmt_adv = 0;
--		u8 flowctrl;
--		u32 mcr = PMCR_USERP_LINK | PMCR_FORCE_MODE;
--
--		switch (phydev->speed) {
--		case SPEED_1000:
--			mcr |= PMCR_FORCE_SPEED_1000;
--			break;
--		case SPEED_100:
--			mcr |= PMCR_FORCE_SPEED_100;
--			break;
--		}
--
--		if (phydev->link)
--			mcr |= PMCR_FORCE_LNK;
--
--		if (phydev->duplex) {
--			mcr |= PMCR_FORCE_FDX;
--
--			if (phydev->pause)
--				rmt_adv = LPA_PAUSE_CAP;
--			if (phydev->asym_pause)
--				rmt_adv |= LPA_PAUSE_ASYM;
--
--			lcl_adv = linkmode_adv_to_lcl_adv_t(
--				phydev->advertising);
--			flowctrl = mii_resolve_flowctrl_fdx(lcl_adv, rmt_adv);
--
--			if (flowctrl & FLOW_CTRL_TX)
--				mcr |= PMCR_TX_FC_EN;
--			if (flowctrl & FLOW_CTRL_RX)
--				mcr |= PMCR_RX_FC_EN;
--		}
--		mt7530_write(priv, MT7530_PMCR_P(port), mcr);
--	}
--}
--
- static int
- mt7530_cpu_port_enable(struct mt7530_priv *priv,
- 		       int port)
-@@ -698,9 +641,6 @@ mt7530_cpu_port_enable(struct mt7530_priv *priv,
- 	mt7530_write(priv, MT7530_PVC_P(port),
- 		     PORT_SPEC_TAG);
- 
--	/* Setup the MAC by default for the cpu port */
--	mt7530_write(priv, MT7530_PMCR_P(port), PMCR_CPUP_LINK);
--
- 	/* Disable auto learning on the cpu port */
- 	mt7530_set(priv, MT7530_PSC_P(port), SA_DIS);
- 
-@@ -731,9 +671,6 @@ mt7530_port_enable(struct dsa_switch *ds, int port,
- 
- 	mutex_lock(&priv->reg_mutex);
- 
--	/* Setup the MAC for the user port */
--	mt7530_write(priv, MT7530_PMCR_P(port), PMCR_USERP_LINK);
--
- 	/* Allow the user port gets connected to the cpu port and also
- 	 * restore the port matrix if the port is the member of a certain
- 	 * bridge.
-@@ -742,7 +679,7 @@ mt7530_port_enable(struct dsa_switch *ds, int port,
- 	priv->ports[port].enable = true;
- 	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
- 		   priv->ports[port].pm);
--	mt7530_port_set_status(priv, port, 1);
-+	mt7530_port_set_status(priv, port, 0);
- 
- 	mutex_unlock(&priv->reg_mutex);
- 
-@@ -1232,10 +1169,10 @@ static int
- mt7530_setup(struct dsa_switch *ds)
- {
- 	struct mt7530_priv *priv = ds->priv;
--	int ret, i;
--	u32 id, val;
--	struct device_node *dn;
- 	struct mt7530_dummy_poll p;
-+	struct device_node *dn;
-+	u32 id, val;
-+	int ret, i;
- 
- 	/* The parent node of master netdev which holds the common system
- 	 * controller also is the container for two GMACs nodes representing
-@@ -1305,6 +1242,8 @@ mt7530_setup(struct dsa_switch *ds)
- 	val |= MHWTRAP_MANUAL;
- 	mt7530_write(priv, MT7530_MHWTRAP, val);
- 
-+	priv->p6_interface = PHY_INTERFACE_MODE_NA;
-+
- 	/* Enable and reset MIB counters */
- 	mt7530_mib_reset(ds);
- 
-@@ -1329,6 +1268,191 @@ mt7530_setup(struct dsa_switch *ds)
- 	return 0;
- }
- 
-+static void mt7530_phylink_mac_config(struct dsa_switch *ds, int port,
-+				      unsigned int mode,
-+				      const struct phylink_link_state *state)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+	u32 mcr_cur, mcr_new;
-+
-+	switch (port) {
-+	case 0: /* Internal phy */
-+	case 1:
-+	case 2:
-+	case 3:
-+	case 4:
-+		if (state->interface != PHY_INTERFACE_MODE_GMII)
-+			return;
-+		break;
-+	/* case 5: Port 5 is not supported! */
-+	case 6: /* 1st cpu port */
-+		if (priv->p6_interface == state->interface)
-+			break;
-+
-+		if (state->interface != PHY_INTERFACE_MODE_RGMII &&
-+		    state->interface != PHY_INTERFACE_MODE_TRGMII)
-+			return;
-+
-+		/* Setup TX circuit incluing relevant PAD and driving */
-+		mt7530_pad_clk_setup(ds, state->interface);
-+
-+		if (priv->id == ID_MT7530) {
-+			/* Setup RX circuit, relevant PAD and driving on the
-+			 * host which must be placed after the setup on the
-+			 * device side is all finished.
-+			 */
-+			mt7623_pad_clk_setup(ds);
-+		}
-+
-+		priv->p6_interface = state->interface;
-+		break;
-+	default:
-+		dev_err(ds->dev, "%s: unsupported port: %i\n", __func__, port);
-+		return;
-+	}
-+
-+	if (phylink_autoneg_inband(mode)) {
-+		dev_err(ds->dev, "%s: in-band negotiation unsupported\n",
-+			__func__);
-+		return;
-+	}
-+
-+	mcr_cur = mt7530_read(priv, MT7530_PMCR_P(port));
-+	mcr_new = mcr_cur;
-+	mcr_new &= ~(PMCR_FORCE_SPEED_1000 | PMCR_FORCE_SPEED_100 |
-+		     PMCR_FORCE_FDX | PMCR_TX_FC_EN | PMCR_RX_FC_EN);
-+	mcr_new |= PMCR_IFG_XMIT(1) | PMCR_MAC_MODE | PMCR_BACKOFF_EN |
-+		   PMCR_BACKPR_EN | PMCR_FORCE_MODE | PMCR_FORCE_LNK;
-+
-+	switch (state->speed) {
-+	case SPEED_1000:
-+		mcr_new |= PMCR_FORCE_SPEED_1000;
-+		break;
-+	case SPEED_100:
-+		mcr_new |= PMCR_FORCE_SPEED_100;
-+		break;
-+	}
-+	if (state->duplex == DUPLEX_FULL) {
-+		mcr_new |= PMCR_FORCE_FDX;
-+		if (state->pause & MLO_PAUSE_TX)
-+			mcr_new |= PMCR_TX_FC_EN;
-+		if (state->pause & MLO_PAUSE_RX)
-+			mcr_new |= PMCR_RX_FC_EN;
-+	}
-+
-+	if (mcr_new != mcr_cur)
-+		mt7530_write(priv, MT7530_PMCR_P(port), mcr_new);
-+}
-+
-+static void mt7530_phylink_mac_link_down(struct dsa_switch *ds, int port,
-+					 unsigned int mode,
-+					 phy_interface_t interface)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+
-+	mt7530_port_set_status(priv, port, 0);
-+}
-+
-+static void mt7530_phylink_mac_link_up(struct dsa_switch *ds, int port,
-+				       unsigned int mode,
-+				       phy_interface_t interface,
-+				       struct phy_device *phydev)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+
-+	mt7530_port_set_status(priv, port, 1);
-+}
-+
-+static void mt7530_phylink_validate(struct dsa_switch *ds, int port,
-+				    unsigned long *supported,
-+				    struct phylink_link_state *state)
-+{
-+	__ETHTOOL_DECLARE_LINK_MODE_MASK(mask) = { 0, };
-+
-+	switch (port) {
-+	case 0: /* Internal phy */
-+	case 1:
-+	case 2:
-+	case 3:
-+	case 4:
-+		if (state->interface != PHY_INTERFACE_MODE_NA &&
-+		    state->interface != PHY_INTERFACE_MODE_GMII)
-+			goto unsupported;
-+		break;
-+	/* case 5: Port 5 not supported! */
-+	case 6: /* 1st cpu port */
-+		if (state->interface != PHY_INTERFACE_MODE_NA &&
-+		    state->interface != PHY_INTERFACE_MODE_RGMII &&
-+		    state->interface != PHY_INTERFACE_MODE_TRGMII)
-+			goto unsupported;
-+		break;
-+	default:
-+		dev_err(ds->dev, "%s: unsupported port: %i\n", __func__, port);
-+unsupported:
-+		linkmode_zero(supported);
-+		return;
-+	}
-+
-+	phylink_set_port_modes(mask);
-+	phylink_set(mask, Autoneg);
-+
-+	if (state->interface != PHY_INTERFACE_MODE_TRGMII) {
-+		phylink_set(mask, 10baseT_Half);
-+		phylink_set(mask, 10baseT_Full);
-+		phylink_set(mask, 100baseT_Half);
-+		phylink_set(mask, 100baseT_Full);
-+		phylink_set(mask, 1000baseT_Half);
-+	}
-+
-+	phylink_set(mask, 1000baseT_Full);
-+
-+	phylink_set(mask, Pause);
-+	phylink_set(mask, Asym_Pause);
-+
-+	linkmode_and(supported, supported, mask);
-+	linkmode_and(state->advertising, state->advertising, mask);
-+}
-+
-+static int
-+mt7530_phylink_mac_link_state(struct dsa_switch *ds, int port,
-+			      struct phylink_link_state *state)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+	u32 pmsr;
-+
-+	if (port < 0 || port >= MT7530_NUM_PORTS)
-+		return -EINVAL;
-+
-+	pmsr = mt7530_read(priv, MT7530_PMSR_P(port));
-+
-+	state->link = (pmsr & PMSR_LINK);
-+	state->an_complete = state->link;
-+	state->duplex = !!(pmsr & PMSR_DPX);
-+
-+	switch (pmsr & PMSR_SPEED_MASK) {
-+	case PMSR_SPEED_10:
-+		state->speed = SPEED_10;
-+		break;
-+	case PMSR_SPEED_100:
-+		state->speed = SPEED_100;
-+		break;
-+	case PMSR_SPEED_1000:
-+		state->speed = SPEED_1000;
-+		break;
-+	default:
-+		state->speed = SPEED_UNKNOWN;
-+		break;
-+	}
-+
-+	state->pause &= ~(MLO_PAUSE_RX | MLO_PAUSE_TX);
-+	if (pmsr & PMSR_RX_FC)
-+		state->pause |= MLO_PAUSE_RX;
-+	if (pmsr & PMSR_TX_FC)
-+		state->pause |= MLO_PAUSE_TX;
-+
-+	return 1;
-+}
-+
- static const struct dsa_switch_ops mt7530_switch_ops = {
- 	.get_tag_protocol	= mtk_get_tag_protocol,
- 	.setup			= mt7530_setup,
-@@ -1337,7 +1461,6 @@ static const struct dsa_switch_ops mt7530_switch_ops = {
- 	.phy_write		= mt7530_phy_write,
- 	.get_ethtool_stats	= mt7530_get_ethtool_stats,
- 	.get_sset_count		= mt7530_get_sset_count,
--	.adjust_link		= mt7530_adjust_link,
- 	.port_enable		= mt7530_port_enable,
- 	.port_disable		= mt7530_port_disable,
- 	.port_stp_state_set	= mt7530_stp_state_set,
-@@ -1350,6 +1473,11 @@ static const struct dsa_switch_ops mt7530_switch_ops = {
- 	.port_vlan_prepare	= mt7530_port_vlan_prepare,
- 	.port_vlan_add		= mt7530_port_vlan_add,
- 	.port_vlan_del		= mt7530_port_vlan_del,
-+	.phylink_validate	= mt7530_phylink_validate,
-+	.phylink_mac_link_state = mt7530_phylink_mac_link_state,
-+	.phylink_mac_config	= mt7530_phylink_mac_config,
-+	.phylink_mac_link_down	= mt7530_phylink_mac_link_down,
-+	.phylink_mac_link_up	= mt7530_phylink_mac_link_up,
- };
- 
- static const struct of_device_id mt7530_of_match[] = {
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index bfac90f48102..107dd04acede 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -198,26 +198,20 @@ enum mt7530_vlan_port_attr {
- #define  PMCR_FORCE_SPEED_100		BIT(2)
- #define  PMCR_FORCE_FDX			BIT(1)
- #define  PMCR_FORCE_LNK			BIT(0)
--#define  PMCR_COMMON_LINK		(PMCR_IFG_XMIT(1) | PMCR_MAC_MODE | \
--					 PMCR_BACKOFF_EN | PMCR_BACKPR_EN | \
--					 PMCR_TX_EN | PMCR_RX_EN | \
--					 PMCR_TX_FC_EN | PMCR_RX_FC_EN)
--#define  PMCR_CPUP_LINK			(PMCR_COMMON_LINK | PMCR_FORCE_MODE | \
--					 PMCR_FORCE_SPEED_1000 | \
--					 PMCR_FORCE_FDX | \
--					 PMCR_FORCE_LNK)
--#define  PMCR_USERP_LINK		PMCR_COMMON_LINK
--#define  PMCR_FIXED_LINK		(PMCR_IFG_XMIT(1) | PMCR_MAC_MODE | \
--					 PMCR_FORCE_MODE | PMCR_TX_EN | \
--					 PMCR_RX_EN | PMCR_BACKPR_EN | \
--					 PMCR_BACKOFF_EN | \
--					 PMCR_FORCE_SPEED_1000 | \
--					 PMCR_FORCE_FDX | \
--					 PMCR_FORCE_LNK)
--#define PMCR_FIXED_LINK_FC		(PMCR_FIXED_LINK | \
--					 PMCR_TX_FC_EN | PMCR_RX_FC_EN)
-+#define  PMCR_SPEED_MASK		(PMCR_FORCE_SPEED_100 | \
-+					 PMCR_FORCE_SPEED_1000)
- 
- #define MT7530_PMSR_P(x)		(0x3008 + (x) * 0x100)
-+#define  PMSR_EEE1G			BIT(7)
-+#define  PMSR_EEE100M			BIT(6)
-+#define  PMSR_RX_FC			BIT(5)
-+#define  PMSR_TX_FC			BIT(4)
-+#define  PMSR_SPEED_1000		BIT(3)
-+#define  PMSR_SPEED_100			BIT(2)
-+#define  PMSR_SPEED_10			0x00
-+#define  PMSR_SPEED_MASK		(PMSR_SPEED_100 | PMSR_SPEED_1000)
-+#define  PMSR_DPX			BIT(1)
-+#define  PMSR_LINK			BIT(0)
- 
- /* Register for MIB */
- #define MT7530_PORT_MIB_COUNTER(x)	(0x4000 + (x) * 0x100)
-@@ -423,6 +417,7 @@ struct mt7530_port {
-  * @ports:		Holding the state among ports
-  * @reg_mutex:		The lock for protecting among process accessing
-  *			registers
-+ * @p6_interface	Holding the current port 6 interface
-  */
- struct mt7530_priv {
- 	struct device		*dev;
-@@ -435,6 +430,7 @@ struct mt7530_priv {
- 	struct gpio_desc	*reset;
- 	unsigned int		id;
- 	bool			mcm;
-+	phy_interface_t		p6_interface;
- 
- 	struct mt7530_port	ports[MT7530_NUM_PORTS];
- 	/* protect among processes for registers access*/
--- 
-2.20.1
+> > +
+> > +memcpy(w_buf, data, size);
+> > +
+> > +msg.addr  = client->addr;
+> > +msg.flags = 0;
+> > +msg.len   = size;
+> > +msg.buf   = w_buf;
+> > +
+> > +do {
+> > +ret = i2c_transfer(client->adapter, &msg, 1);
+> > +if (ret != 1)
+> > +dev_err(&client->dev, "write fail, ret:%d, retry:%d\n",
+> > +ret, retry_cnt);
+> > +else
+> > +break;
+> > +retry_cnt--;
+> > +} while (retry_cnt != 0);
+> > +
+> > +if (retry_cnt == 0){
+> > +dev_err(&client->dev, "i2c write fail(%d)\n", ret);
+> > +return -EIO;
+> > +}
+> > +
+> > +kfree(w_buf);
+> > +
+> > +return 0;
+> > +}
+> > +
+> > +static int dw9768_release(struct dw9768_device *dw9768_dev) {
+> > +unsigned char i;
+> > +int ret;
+> > +
+> > +char puSendCmdArray[4][2] = {
+> > +{0x02, 0x00}, {DW9768_REG_NULL, DW9768_REG_NULL},
+> > +{0x01, 0x00}, {DW9768_REG_NULL, DW9768_REG_NULL},
+> > +};
+> > +
+> > +for (i = 0; i < (sizeof(puSendCmdArray) / sizeof(char)) /
+> > +     (sizeof(puSendCmdArray[0]) / sizeof(char)); i++) {> +if (puSendCmdArray[i][0] != DW9768_REG_NULL) {
+> > +ret = dw9768_i2c_write(dw9768_dev, puSendCmdArray[i],
+> > +       DW9768_REG_VALUE_16BIT);
+> > +if (ret < 0)
+> > +return ret;
+> > +} else {
+> > +usleep_range(DW9768_CTRL_DELAY_US,
+> > +     DW9768_CTRL_DELAY_US + 100);
+> > +}
+> > +}
+> Can we make this block more simple?  I think the loop is not necessary.
+
+Fixed in next release.
+
+> > +
+> > +return 0;
+> > +}
+> > +
+> > +static int dw9768_init(struct dw9768_device *dw9768_dev) {
+> > +unsigned char i;
+> > +int ret;
+> > +
+> > +char puSendCmdArray[5][2] = {
+> > +{0x02, 0x02}, {DW9768_REG_NULL, DW9768_REG_NULL},
+> > +{0x06, 0x41}, {0x07, 0x39}, {DW9768_REG_NULL, DW9768_REG_NULL},
+> > +};
+> > +
+> > +for (i = 0; i < (sizeof(puSendCmdArray) / sizeof(char)) /
+> > +     (sizeof(puSendCmdArray[0]) / sizeof(char)); i++) {
+> > +if (puSendCmdArray[i][0] != DW9768_REG_NULL) {
+> > +ret = dw9768_i2c_write(dw9768_dev, puSendCmdArray[i],
+> > +       DW9768_REG_VALUE_16BIT);
+> > +if (ret < 0)
+> > +return ret;
+> > +} else {
+> > +usleep_range(DW9768_CTRL_DELAY_US,
+> > +     DW9768_CTRL_DELAY_US + 100);
+> > +}
+> > +}
+> Ditto.
+
+Fixed in next release.
+
+> > +
+> > +return 0;
+> > +}
+> > +
+> > +/*
+> > + * Power handling
+> > + */
+> > +static int dw9768_power_off(struct dw9768_device *dw9768_dev, bool
+> > +standby) {
+> > +struct i2c_client *client = v4l2_get_subdevdata(&dw9768_dev->sd);
+> > +int ret;
+> > +
+> > +/*
+> > + * Go to standby first as real power off my be denied by the
+> > +hardware
+> typo? "may be denied"
+
+Sorry for the typo. Fixed in next release.
+
+> > + * (single power line control for both dw9768_dev and sensor).
+> > + */
+> > +if (standby) {
+> > +dw9768_dev->standby = true;
+> > +ret = dw9768_release(dw9768_dev);
+> > +if (ret)
+> > +dev_err(&client->dev, "dw9768_release failed!\n");
+> > +}
+> > +ret = regulator_disable(dw9768_dev->analog_regulator);
+> > +if (ret)
+> > +return ret;
+> > +
+> > +return 0;
+> > +}
+> > +
+> > +static int dw9768_power_on(struct dw9768_device *dw9768_dev, bool
+> > +restore) {
+> > +int ret;
+> > +
+> > +ret = regulator_enable(dw9768_dev->analog_regulator);
+> > +if (ret < 0)
+> > +return ret;
+> > +
+> > +if (restore) {
+> > +/* Restore the hardware settings. */
+> > +dw9768_dev->standby = false;
+> > +ret = dw9768_init(dw9768_dev);
+> > +if (ret < 0)
+> > +goto fail;
+> > +}
+> > +
+> > +return 0;
+> > +
+> > +fail:
+> > +dw9768_dev->standby = true;
+> > +regulator_disable(dw9768_dev->analog_regulator);
+> > +
+> > +return ret;
+> > +}
+> > +
+> > +/*
+> > + * Calculate status word and write it to the device based on current
+> > + * values of V4L2 controls. It is assumed that the stored V4L2
+> > +control
+> > + * values are properly limited and rounded.
+> > + */
+> > +static int dw9768_update_hw(struct dw9768_device *dw9768_dev, u16
+> > +val) {
+> > +unsigned char i;
+> > +int ret;
+> > +
+> > +char puSendCmdArray[2][2] = {
+> > +{DW9768_REG_DAC_MSB, (char)(val >> DW9768_DAC_SHIFT)},
+> > +{DW9768_REG_DAC_LSB, (char)(val & 0xFF)},
+> > +};
+> > +
+> > +for (i = 0; i < (sizeof(puSendCmdArray) / sizeof(char)) /
+> > +     (sizeof(puSendCmdArray[0]) / sizeof(char)); i++) {
+> > +ret = dw9768_i2c_write(dw9768_dev, puSendCmdArray[i],
+> > +       DW9768_REG_VALUE_16BIT);
+> > +if (ret)
+> > +return ret;
+> > +}
+> ditto.
+
+Fixed in next release.
+
+> > +
+> > +return 0;
+> > +}
+> > +
+> > +static int dw9768_set_ctrl(struct v4l2_ctrl *ctrl) {
+> > +struct dw9768_device *dw9768_dev = to_dw9768_vcm(ctrl);
+> > +
+> > +if (ctrl->id == V4L2_CID_FOCUS_ABSOLUTE)
+> > +return dw9768_update_hw(dw9768_dev, ctrl->val);
+> > +
+> > +return 0;
+> > +}
+> > +
+> > +static const struct v4l2_ctrl_ops dw9768_vcm_ctrl_ops = {
+> > +.s_ctrl = dw9768_set_ctrl,
+> > +};
+> > +
+> > +static int
+> > +dw9768_set_power(struct v4l2_subdev *subdev, int on) {
+> > +struct dw9768_device *dw9768_dev = sd_to_dw9768_vcm(subdev);
+> > +int ret = 0;
+> > +
+> > +mutex_lock(&dw9768_dev->power_lock);
+> > +
+> > +/*
+> > + * If the power count is modified from 0 to != 0 or from != 0 to 0,
+> > + * update the power state.
+> > + */
+> > +if (dw9768_dev->power_count == !on) {
+> > +ret = on ? dw9768_power_on(dw9768_dev, true) :
+> > +dw9768_power_off(dw9768_dev, true);
+> > +if (ret < 0)
+> > +goto done;
+> > +}
+> > +
+> > +/* Update the power count. */
+> > +dw9768_dev->power_count += on ? 1 : -1;
+> > +WARN_ON(dw9768_dev->power_count < 0);
+> > +
+> > +done:
+> > +mutex_unlock(&dw9768_dev->power_lock);
+> > +return ret;
+> > +}
+> > +
+> > +static int dw9768_open(struct v4l2_subdev *sd, struct v4l2_subdev_fh
+> > +*fh) {
+> > +return dw9768_set_power(sd, 1);
+> > +}
+> > +
+> > +static int dw9768_close(struct v4l2_subdev *sd, struct v4l2_subdev_fh
+> > +*fh) {
+> > +return dw9768_set_power(sd, 0);
+> > +}
+> I am a little confused about the pm control here.
+> Could we use the pm generic APIs to help do this?
+
+Fixed in next release.
+
+> > +
+> > +static const struct v4l2_subdev_internal_ops dw9768_int_ops = {
+> > +.open = dw9768_open,
+> > +.close = dw9768_close,
+> > +};
+> > +
+> > +static const struct v4l2_subdev_ops dw9768_ops = { };
+> > +
+> > +static void dw9768_subdev_cleanup(struct dw9768_device *dw9768_dev) {
+> > +v4l2_async_unregister_subdev(&dw9768_dev->sd);
+> > +v4l2_ctrl_handler_free(&dw9768_dev->ctrls);
+> > +media_entity_cleanup(&dw9768_dev->sd.entity);
+> > +}
+> > +
+> > +static int dw9768_init_controls(struct dw9768_device *dw9768_dev) {
+> > +struct v4l2_ctrl_handler *hdl = &dw9768_dev->ctrls;
+> > +const struct v4l2_ctrl_ops *ops = &dw9768_vcm_ctrl_ops;
+> > +
+> > +v4l2_ctrl_handler_init(hdl, 1);
+> > +
+> > +v4l2_ctrl_new_std(hdl, ops, V4L2_CID_FOCUS_ABSOLUTE,
+> > +  0, DW9768_MAX_FOCUS_POS, DW9768_FOCUS_STEPS, 0);
+> > +
+> > +if (hdl->error) {
+> > +dev_err(dw9768_dev->sd.dev, "%s fail error: 0x%x\n",
+> > +__func__, hdl->error);
+> > +return hdl->error;
+> > +}
+> > +
+> > +dw9768_dev->sd.ctrl_handler = hdl;
+> > +
+> > +return 0;
+> > +}
+> > +
+> > +static int dw9768_probe(struct i2c_client *client) {
+> > +struct device *dev = &client->dev;
+> > +struct dw9768_device *dw9768_dev;
+> > +int rval;
+> > +
+> > +dw9768_dev = devm_kzalloc(&client->dev, sizeof(*dw9768_dev),
+> > +  GFP_KERNEL);
+> > +if (!dw9768_dev)
+> > +return -ENOMEM;
+> > +
+> > +dw9768_dev->analog_regulator = devm_regulator_get(dev, "afvdd");
+> > +if (IS_ERR(dw9768_dev->analog_regulator)) {
+> > +dev_err(dev, "cannot get analog regulator\n");
+> > +return PTR_ERR(dw9768_dev->analog_regulator);
+> > +}
+> > +
+> > +rval = regulator_set_voltage(dw9768_dev->analog_regulator,
+> > +     DW9768_VOLTAGE_ANALOG,
+> > +     DW9768_VOLTAGE_ANALOG);
+> > +if (rval < 0) {
+> > +dev_err(dev, "cannot set analog voltage\n");
+> > +return rval;
+> > +}
+> > +
+> > +mutex_init(&dw9768_dev->power_lock);
+> > +
+> > +v4l2_i2c_subdev_init(&dw9768_dev->sd, client, &dw9768_ops);
+> > +dw9768_dev->sd.flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
+> > +dw9768_dev->sd.internal_ops = &dw9768_int_ops;
+> > +
+> > +rval = dw9768_init_controls(dw9768_dev);
+> > +if (rval)
+> > +goto err_cleanup;
+> > +
+> > +rval = media_entity_pads_init(&dw9768_dev->sd.entity, 0, NULL);
+> > +if (rval < 0)
+> > +goto err_cleanup;
+> > +
+> > +dw9768_dev->sd.entity.function = MEDIA_ENT_F_LENS;
+> > +
+> > +rval = v4l2_async_register_subdev(&dw9768_dev->sd);
+> > +if (rval < 0)
+> > +goto err_cleanup;
+> > +
+> > +pm_runtime_set_active(dev);
+> > +pm_runtime_enable(dev);
+> > +pm_runtime_idle(dev);
+> > +
+> > +return 0;
+> > +
+> > +err_cleanup:
+> > +mutex_destroy(&dw9768_dev->power_lock);
+> > +dw9768_subdev_cleanup(dw9768_dev);
+> > +dev_err(dev, "Probe failed: %d\n", rval);
+> > +return rval;
+> > +}
+> > +
+> > +static int dw9768_remove(struct i2c_client *client) {
+> > +struct v4l2_subdev *sd = i2c_get_clientdata(client);
+> > +struct dw9768_device *dw9768_dev = sd_to_dw9768_vcm(sd);
+> > +
+> > +pm_runtime_disable(&client->dev);
+> > +dw9768_subdev_cleanup(dw9768_dev);
+> > +
+> > +return 0;
+> > +}
+> > +
+> > +/*
+> > + * This function sets the vcm position, so it consumes least current
+> > + * The lens position is gradually moved in units of
+> > +DW9768_CTRL_STEPS,
+> > + * to make the movements smoothly.
+> > + */
+> > +static int __maybe_unused dw9768_vcm_suspend(struct device *dev) {
+> > +struct i2c_client *client = to_i2c_client(dev);
+> > +struct v4l2_subdev *sd = i2c_get_clientdata(client);
+> > +struct dw9768_device *dw9768_dev = sd_to_dw9768_vcm(sd);
+> > +
+> > +if (!dw9768_dev->power_count)
+> > +return 0;
+> > +
+> > +return dw9768_power_off(dw9768_dev, false); }
+> > +
+> > +/*
+> > + * This function sets the vcm position to the value set by the user
+> > + * through v4l2_ctrl_ops s_ctrl handler
+> > + * The lens position is gradually moved in units of
+> > +DW9768_CTRL_STEPS,
+> > + * to make the movements smoothly.
+> > + */
+> > +static int __maybe_unused dw9768_vcm_resume(struct device *dev) {
+> > +struct i2c_client *client = to_i2c_client(dev);
+> > +struct v4l2_subdev *sd = i2c_get_clientdata(client);
+> > +struct dw9768_device *dw9768_dev = sd_to_dw9768_vcm(sd);
+> > +
+> > +if (!dw9768_dev->power_count)
+> > +return 0;
+> > +
+> > +return dw9768_power_on(dw9768_dev, true); }
+> > +
+> > +static const struct i2c_device_id dw9768_id_table[] = {
+> > +{ DW9768_NAME, 0 },
+> > +{ { 0 } }
+> > +};
+> > +MODULE_DEVICE_TABLE(i2c, dw9768_id_table);
+> > +
+> > +static const struct of_device_id dw9768_of_table[] = {
+> > +{ .compatible = "dongwoon,dw9768" },
+> > +{ { 0 } }
+> > +};
+> > +MODULE_DEVICE_TABLE(of, dw9768_of_table);
+> > +
+> > +static const struct dev_pm_ops dw9768_pm_ops = {
+> > +SET_SYSTEM_SLEEP_PM_OPS(dw9768_vcm_suspend, dw9768_vcm_resume)
+> > +SET_RUNTIME_PM_OPS(dw9768_vcm_suspend, dw9768_vcm_resume, NULL) };
+> > +
+> > +static struct i2c_driver dw9768_i2c_driver = {
+> > +.driver = {
+> > +.name = DW9768_NAME,
+> > +.pm = &dw9768_pm_ops,
+> > +.of_match_table = dw9768_of_table,
+> > +},
+> > +.probe_new  = dw9768_probe,
+> > +.remove = dw9768_remove,
+> > +.id_table = dw9768_id_table,
+> > +};
+> > +
+> > +module_i2c_driver(dw9768_i2c_driver);
+> > +
+> > +MODULE_AUTHOR("Dongchun Zhu <dongchun.zhu@mediatek.com>");
+> > +MODULE_DESCRIPTION("DW9768 VCM driver"); MODULE_LICENSE("GPL v2");
+> >
+> *********************MEDIATEK Confidential/Internal Use*********************
