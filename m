@@ -1,73 +1,54 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v7 1/6] dt-bindings: usb: musb: Add support for MediaTek
- musb controller
-Date: Mon, 02 Sep 2019 14:39:03 +0100
-Message-ID: <5d6d1b78.1c69fb81.11037.fc17@mx.google.com>
-References: <20190830082026.30401-1-min.guo@mediatek.com>
- <20190830082026.30401-2-min.guo@mediatek.com>
+Subject: Re: [PATCH v1 2/2] of: Let of_for_each_phandle fallback to
+ non-negative cell_count
+Date: Mon, 2 Sep 2019 15:26:39 +0100
+Message-ID: <20190902142639.GA13947@bogus>
+References: <20190824132846.8589-1-u.kleine-koenig@pengutronix.de>
+ <20190824132846.8589-2-u.kleine-koenig@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190830082026.30401-2-min.guo@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-Cc: Mark Rutland <mark.rutland@arm.com>, hdegoede@redhat.com, devicetree@vger.kernel.org, tony@atomide.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, chunfeng.yun@mediatek.com, Alan Stern <stern@rowland.harvard.edu>, Min Guo <min.guo@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Bin Liu <b-liu@ti.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20190824132846.8589-2-u.kleine-koenig@pengutronix.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Frank Rowand <frowand.list@gmail.com>, devicetree@vger.kernel.org, iommu@lists.linux-foundation.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de, Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 30 Aug 2019 16:20:21 +0800, <min.guo@mediatek.com> wrote:
-> From: Min Guo <min.guo@mediatek.com>
+On Sat, Aug 24, 2019 at 03:28:46PM +0200, Uwe Kleine-König wrote:
+> Referencing device tree nodes from a property allows to pass arguments.
+> This is for example used for referencing gpios. This looks as follows:
 > 
-> This adds support for MediaTek musb controller in
-> host, peripheral and otg mode.
+> 	gpio_ctrl: gpio-controller {
+> 		#gpio-cells = <2>
+> 		...
+> 	}
 > 
-> Signed-off-by: Min Guo <min.guo@mediatek.com>
+> 	someothernode {
+> 		gpios = <&gpio_ctrl 5 0 &gpio_ctrl 3 0>;
+> 		...
+> 	}
+> 
+> To know the number of arguments this must be either fixed, or the
+> referenced node is checked for a $cells_name (here: "#gpio-cells")
+> property and with this information the start of the second reference can
+> be determined.
+> 
+> Currently regulators are referenced with no additional arguments. To
+> allow some optional arguments without having to change all referenced
+> nodes this change introduces a way to specify a default cell_count. So
+> when a phandle is parsed we check for the $cells_name property and use
+> it as before if present. If it is not present we fall back to
+> cells_count if non-negative and only fail if cells_count is smaller than
+> zero.
+> 
+> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
 > ---
-> changes in v7:
-> 1. Modify compatible as
-> - compatible : should be one of:
->                "mediatek,mt2701-musb"
->                ...
->                followed by "mediatek,mtk-musb"
-> 2. Change usb connector child node compatible as "gpio-usb-b-connector" 
-> 
-> changes in v6:
-> 1. Modify usb connector child node
-> 
-> changes in v5:
-> suggested by Rob:
-> 1. Modify compatible as 
-> - compatible : should be one of:
->                "mediatek,mt-2701"
->                ...
->                followed by "mediatek,mtk-musb"
-> 2. Add usb connector child node
-> 
-> changes in v4:
-> suggested by Sergei:
-> 1. String alignment
-> 
-> changes in v3:
-> 1. no changes
-> 
-> changes in v2:
-> suggested by Bin:
-> 1. Modify DRC to DRD
-> suggested by Rob:
-> 2. Drop the "<soc-model>-musb" in compatible
-> 3. Remove phy-names
-> 4. Add space after comma in clock-names
-> ---
->  .../devicetree/bindings/usb/mediatek,musb.txt      | 55 ++++++++++++++++++++++
->  1 file changed, 55 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/usb/mediatek,musb.txt
-> 
+>  drivers/of/base.c | 25 +++++++++++++++++--------
+>  1 file changed, 17 insertions(+), 8 deletions(-)
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Looks fine to me. I can apply with an ack from the iommu folks on patch 
+1.
+
+Rob
