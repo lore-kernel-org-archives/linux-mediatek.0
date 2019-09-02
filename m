@@ -1,53 +1,77 @@
-From: Thierry Reding <thierry.reding@gmail.com>
-Subject: Re: [PATCH] phy: tegra: xusb: remove unused variable
-Date: Mon, 2 Sep 2019 09:48:08 +0200
-Message-ID: <20190902074808.GC930@ulmo>
-References: <1567394159-22572-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Jungo Lin <jungo.lin@mediatek.com>
+Subject: [RFC,v5, 2/5] dts: arm64: mt8183: Add ISP Pass 1 nodes
+Date: Mon, 2 Sep 2019 15:51:32 +0800
+Message-ID: <20190902075135.1332-3-jungo.lin@mediatek.com>
+References: <Jungo Lin <jungo.lin@mediatek.com>
+ <20190902075135.1332-1-jungo.lin@mediatek.com>
+Reply-To: Jungo Lin <jungo.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="kfjH4zxOES6UT95V"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1567394159-22572-1-git-send-email-chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, JC Kuo <jckuo@nvidia.com>, Jonathan Hunter <jonathanh@nvidia.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190902075135.1332-1-jungo.lin@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: tfiga@chromium.org, hverkuil-cisco@xs4all.nl, laurent.pinchart@ideasonboard.com, matthias.bgg@gmail.com, mchehab@kernel.org
+Cc: shik@chromium.org, devicetree@vger.kernel.org, Sean.Cheng@mediatek.com, suleiman@chromium.org, Rynn.Wu@mediatek.com, srv_heupstream@mediatek.com, robh@kernel.org, ryan.yu@mediatek.com, Jerry-ch.Chen@mediatek.com, frankie.chiu@mediatek.com, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, linux-mediatek@lists.infradead.org, zwisler@chromium.org, ddavenport@chromium.org, frederic.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Add nodes for Pass 1 unit of Mediatek's camera ISP system.
+Pass 1 unit embedded in Mediatek SoCs, works with the
+co-processor to process image signal from the image sensor
+and output RAW image data.
 
---kfjH4zxOES6UT95V
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Jungo Lin <jungo.lin@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 30 ++++++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
 
-On Mon, Sep 02, 2019 at 11:15:59AM +0800, Chunfeng Yun wrote:
-> The local variable @priv is set but not used, can be removed
->=20
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
->  drivers/phy/tegra/xusb-tegra210.c | 3 ---
->  1 file changed, 3 deletions(-)
-
-Acked-by: Thierry Reding <treding@nvidia.com>
-
---kfjH4zxOES6UT95V
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl1syTgACgkQ3SOs138+
-s6Ggyg/+JTfKlub2rlBotR8tVq+WnX4mOXHTpdHY2C6sec6x8dSNg7ASmQ8mPheO
-kvlojh5AYFPZAeunSAE28f6WmKLTL1mOp4QvipmBfuNgzf9o0gDJqlAAXxffiCG3
-1nUDkM6x8/83lYLC5oF0ML4XbDsemDC7rnbBtsu79F7A1ETPX2N6EF8QM9y4FPzz
-VAP7hNjOHI07c9zPuseEz5TrC3Ts/jH22/x9hefRwTmRlt+DmCjujz5zAKd0Nc4S
-5In8xmT9WSDDDPf+ENjwZA1gASFyLEPKFM8qsqp3DpY/qH9ik9qszey+WHdAhNSy
-dGdBiQI3C2MHQG6ZGB/7etLnp2kGN4334KU0Df282/gcW9kQuW4/2niqgH1dgYve
-2cIuN6N0Tn14hUl/VgOcMG/S8C0ykZ6Z/ghuZOrXLtHAIeUWLc2nUkU14/MZ/6Jx
-L63bB5RdVyglvjmsLWnxZ3mVEonTgwA6K86+jUI1ojotyaHMC8GJGxZoS5LUeU6A
-Y2OXgKXYXakxjtrb9QCMeVx1vkBsVuqeU5BQdfgsp3ueZ+5CZE+MiWHQs2uifAz4
-suDUyv4okbf1HRh7/F+I6i7QYk6TRLB7vf18QFVcJxNZfze8sQMe3sN+y6b/wvRp
-NPeDuuljtSyJBdITIAbiMzG38znpSF+k+BEDmogHtRnSNx7w1tE=
-=jMD6
------END PGP SIGNATURE-----
-
---kfjH4zxOES6UT95V--
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 66aaa07f6cec..0d607342d4f1 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -505,5 +505,35 @@
+ 			reg = <0 0x1a000000 0 0x1000>;
+ 			#clock-cells = <1>;
+ 		};
++		camisp: camisp@1a000000 {
++			compatible = "mediatek,mt8183-camisp";
++			reg = <0 0x1a000000 0 0x1000>,
++					<0 0x1a003000 0 0x1000>,
++					<0 0x1a004000 0 0x2000>,
++					<0 0x1a006000 0 0x2000>,
++					<0 0x1a008000 0 0x2000>;
++			reg-names = "cam_sys",
++					"cam_uni",
++					"cam_a",
++					"cam_b",
++					"cam_c";
++			interrupts = <GIC_SPI 253 IRQ_TYPE_LEVEL_LOW>,
++					<GIC_SPI 254 IRQ_TYPE_LEVEL_LOW>,
++					<GIC_SPI 255 IRQ_TYPE_LEVEL_LOW>,
++					<GIC_SPI 256 IRQ_TYPE_LEVEL_LOW>;
++			interrupt-names = "cam_uni",
++					"cam_a",
++					"cam_b",
++					"cam_c";
++			iommus = <&iommu M4U_PORT_CAM_IMGO>;
++			clocks = <&camsys CLK_CAM_CAM>,
++					<&camsys CLK_CAM_CAMTG>;
++			clock-names = "camsys_cam_cgpdn",
++					"camsys_camtg_cgpdn";
++			mediatek,larb = <&larb3>,
++					<&larb6>;
++			power-domains = <&scpsys MT8183_POWER_DOMAIN_CAM>;
++			mediatek,scp = <&scp>;
++		};
+ 	};
+ };
+-- 
+2.18.0
