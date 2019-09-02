@@ -1,14 +1,14 @@
 From: Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: [PATCH v1 1/3] clk: mediatek: Register clock gate with device
-Date: Mon, 2 Sep 2019 16:35:08 +0800
-Message-ID: <1567413310-2589-2-git-send-email-weiyi.lu@mediatek.com>
-References: <1567413310-2589-1-git-send-email-weiyi.lu@mediatek.com>
+Subject: [RESEND PATCH v1 1/3] clk: mediatek: Register clock gate with device
+Date: Mon, 2 Sep 2019 17:00:57 +0800
+Message-ID: <1567414859-3244-2-git-send-email-weiyi.lu@mediatek.com>
+References: <1567414859-3244-1-git-send-email-weiyi.lu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1567413310-2589-1-git-send-email-weiyi.lu@mediatek.com>
+In-Reply-To: <1567414859-3244-1-git-send-email-weiyi.lu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
+To: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>
 Cc: James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, CK Hu <ck.hu@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
