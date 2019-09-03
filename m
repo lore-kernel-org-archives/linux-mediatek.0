@@ -1,87 +1,73 @@
-From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH] arm64: dts: mt8183: Add gce setting in display node
-Date: Tue, 3 Sep 2019 09:39:10 +0800
-Message-ID: <20190903013910.30225-1-bibby.hsieh@mediatek.com>
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+Subject: Re: [RFC v1] clk: core: support clocks that need to be enabled
+ during re-parent
+Date: Tue, 3 Sep 2019 11:08:06 +0800
+Message-ID: <1567480086.22890.21.camel@mtksdaap41>
+References: <1560138293-4163-1-git-send-email-weiyi.lu@mediatek.com>
+         <20190625221415.B0DC22086D@mail.kernel.org>
+         <1561511122.24282.10.camel@mtksdaap41>
+         <20190626035246.4591A20659@mail.kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: drinkcat@chromium.org, Yongqiang Niu <yongqiang.niu@mediatek.com>, linux-kernel@vger.kernel.org, tfiga@chromium.org, Thierry Reding <thierry.reding@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190626035246.4591A20659@mail.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Stephen Boyd <sboyd@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, Biao Huang <biao.huang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SW4gb3JkZXIgdG8gdXNlIEdDRSBmdW5jdGlvbiwgd2UgbmVlZCBhZGQgc29tZSBpbmZvcm1hdGlv
-bnMKaW50byBkaXNwbGF5IG5vZGUgKG1ib3hlcywgbWVkaWF0ZWssZ2NlLWNsaWVudC1yZWcsIG1l
-ZGlhdGVrLGdjZS1ldmVudHMpLgoKU2lnbmVkLW9mZi1ieTogQmliYnkgSHNpZWggPGJpYmJ5Lmhz
-aWVoQG1lZGlhdGVrLmNvbT4KU2lnbmVkLW9mZi1ieTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3FpYW5n
-Lm5pdUBtZWRpYXRlay5jb20+Ci0tLQogYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgx
-ODMuZHRzaSB8IDE1ICsrKysrKysrKysrKysrKwogMSBmaWxlIGNoYW5nZWQsIDE1IGluc2VydGlv
-bnMoKykKCmRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE4My5k
-dHNpIGIvYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxODMuZHRzaQppbmRleCA1NjE2
-ZDE1OGE0ZmEuLmI3ZDI5NGMxYzViNCAxMDA2NDQKLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9t
-ZWRpYXRlay9tdDgxODMuZHRzaQorKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210
-ODE4My5kdHNpCkBAIC00ODUsNiArNDg1LDExIEBACiAJCQljb21wYXRpYmxlID0gIm1lZGlhdGVr
-LG10ODE4My1kaXNwbGF5IjsKIAkJCXJlZyA9IDwwIDB4MTQwMDAwMDAgMCAweDEwMDA+OwogCQkJ
-cG93ZXItZG9tYWlucyA9IDwmc2Nwc3lzIE1UODE4M19QT1dFUl9ET01BSU5fRElTUD47CisJCQlt
-Ym94ZXMgPSA8JmdjZSAwIENNRFFfVEhSX1BSSU9fSElHSEVTVCAxPiwKKwkJCQkgPCZnY2UgMSBD
-TURRX1RIUl9QUklPX0hJR0hFU1QgMT47CisJCQltZWRpYXRlayxnY2UtY2xpZW50LXJlZyA9IDwm
-Z2NlIFNVQlNZU18xNDAwWFhYWCAwIDB4MTAwMD47CisJCQltZWRpYXRlayxnY2UtZXZlbnRzID0g
-PENNRFFfRVZFTlRfTVVURVhfU1RSRUFNX0RPTkUwPiwKKwkJCQkJICAgICAgPENNRFFfRVZFTlRf
-TVVURVhfU1RSRUFNX0RPTkUxPjsKIAkJfTsKIAogCQlvdmwwOiBvdmxAMTQwMDgwMDAgewpAQCAt
-NDk0LDYgKzQ5OSw3IEBACiAJCQlwb3dlci1kb21haW5zID0gPCZzY3BzeXMgTVQ4MTgzX1BPV0VS
-X0RPTUFJTl9ESVNQPjsKIAkJCWNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RJU1BfT1ZMMD47CiAJ
-CQltZWRpYXRlayxsYXJiID0gPCZsYXJiMD47CisJCQltZWRpYXRlayxnY2UtY2xpZW50LXJlZyA9
-IDwmZ2NlIFNVQlNZU18xNDAwWFhYWCAweDgwMDAgMHgxMDAwPjsKIAkJfTsKIAogCQlvdmxfMmww
-OiBvdmxAMTQwMDkwMDAgewpAQCAtNTAzLDYgKzUwOSw3IEBACiAJCQlwb3dlci1kb21haW5zID0g
-PCZzY3BzeXMgTVQ4MTgzX1BPV0VSX0RPTUFJTl9ESVNQPjsKIAkJCWNsb2NrcyA9IDwmbW1zeXMg
-Q0xLX01NX0RJU1BfT1ZMMF8yTD47CiAJCQltZWRpYXRlayxsYXJiID0gPCZsYXJiMD47CisJCQlt
-ZWRpYXRlayxnY2UtY2xpZW50LXJlZyA9IDwmZ2NlIFNVQlNZU18xNDAwWFhYWCAweDkwMDAgMHgx
-MDAwPjsKIAkJfTsKIAogCQlvdmxfMmwxOiBvdmxAMTQwMGEwMDAgewpAQCAtNTEyLDYgKzUxOSw3
-IEBACiAJCQlwb3dlci1kb21haW5zID0gPCZzY3BzeXMgTVQ4MTgzX1BPV0VSX0RPTUFJTl9ESVNQ
-PjsKIAkJCWNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RJU1BfT1ZMMV8yTD47CiAJCQltZWRpYXRl
-ayxsYXJiID0gPCZsYXJiMD47CisJCQltZWRpYXRlayxnY2UtY2xpZW50LXJlZyA9IDwmZ2NlIFNV
-QlNZU18xNDAwWFhYWCAweGEwMDAgMHgxMDAwPjsKIAkJfTsKIAogCQlyZG1hMDogcmRtYUAxNDAw
-YjAwMCB7CkBAIC01MjIsNiArNTMwLDcgQEAKIAkJCWNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RJ
-U1BfUkRNQTA+OwogCQkJbWVkaWF0ZWssbGFyYiA9IDwmbGFyYjA+OwogCQkJbWVkaWF0ZWsscmRt
-YV9maWZvX3NpemUgPSA8NT47CisJCQltZWRpYXRlayxnY2UtY2xpZW50LXJlZyA9IDwmZ2NlIFNV
-QlNZU18xNDAwWFhYWCAweGIwMDAgMHgxMDAwPjsKIAkJfTsKIAogCQlyZG1hMTogcmRtYUAxNDAw
-YzAwMCB7CkBAIC01MzIsNiArNTQxLDcgQEAKIAkJCWNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RJ
-U1BfUkRNQTE+OwogCQkJbWVkaWF0ZWssbGFyYiA9IDwmbGFyYjA+OwogCQkJbWVkaWF0ZWsscmRt
-YV9maWZvX3NpemUgPSA8Mj47CisJCQltZWRpYXRlayxnY2UtY2xpZW50LXJlZyA9IDwmZ2NlIFNV
-QlNZU18xNDAwWFhYWCAweGMwMDAgMHgxMDAwPjsKIAkJfTsKIAogCQljb2xvcjA6IGNvbG9yQDE0
-MDBlMDAwIHsKQEAgLTU0MSw2ICs1NTEsNyBAQAogCQkJaW50ZXJydXB0cyA9IDxHSUNfU1BJIDIz
-MSBJUlFfVFlQRV9MRVZFTF9MT1c+OwogCQkJcG93ZXItZG9tYWlucyA9IDwmc2Nwc3lzIE1UODE4
-M19QT1dFUl9ET01BSU5fRElTUD47CiAJCQljbG9ja3MgPSA8Jm1tc3lzIENMS19NTV9ESVNQX0NP
-TE9SMD47CisJCQltZWRpYXRlayxnY2UtY2xpZW50LXJlZyA9IDwmZ2NlIFNVQlNZU18xNDAwWFhY
-WCAweGUwMDAgMHgxMDAwPjsKIAkJfTsKIAogCQljY29ycjA6IGNjb3JyQDE0MDBmMDAwIHsKQEAg
-LTU0OSw2ICs1NjAsNyBAQAogCQkJaW50ZXJydXB0cyA9IDxHSUNfU1BJIDIzMiBJUlFfVFlQRV9M
-RVZFTF9MT1c+OwogCQkJcG93ZXItZG9tYWlucyA9IDwmc2Nwc3lzIE1UODE4M19QT1dFUl9ET01B
-SU5fRElTUD47CiAJCQljbG9ja3MgPSA8Jm1tc3lzIENMS19NTV9ESVNQX0NDT1JSMD47CisJCQlt
-ZWRpYXRlayxnY2UtY2xpZW50LXJlZyA9IDwmZ2NlIFNVQlNZU18xNDAwWFhYWCAweGYwMDAgMHgx
-MDAwPjsKIAkJfTsKIAogCQlhYWwwOiBhYWxAMTQwMTAwMDAgewpAQCAtNTU4LDYgKzU3MCw3IEBA
-CiAJCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMjMzIElSUV9UWVBFX0xFVkVMX0xPVz47CiAJCQlw
-b3dlci1kb21haW5zID0gPCZzY3BzeXMgTVQ4MTgzX1BPV0VSX0RPTUFJTl9ESVNQPjsKIAkJCWNs
-b2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RJU1BfQUFMMD47CisJCQltZWRpYXRlayxnY2UtY2xpZW50
-LXJlZyA9IDwmZ2NlIFNVQlNZU18xNDAxWFhYWCAwIDB4MTAwMD47CiAJCX07CiAKIAkJZ2FtbWEw
-OiBnYW1tYUAxNDAxMTAwMCB7CkBAIC01NjcsNiArNTgwLDcgQEAKIAkJCWludGVycnVwdHMgPSA8
-R0lDX1NQSSAyMzQgSVJRX1RZUEVfTEVWRUxfTE9XPjsKIAkJCXBvd2VyLWRvbWFpbnMgPSA8JnNj
-cHN5cyBNVDgxODNfUE9XRVJfRE9NQUlOX0RJU1A+OwogCQkJY2xvY2tzID0gPCZtbXN5cyBDTEtf
-TU1fRElTUF9HQU1NQTA+OworCQkJbWVkaWF0ZWssZ2NlLWNsaWVudC1yZWcgPSA8JmdjZSBTVUJT
-WVNfMTQwMVhYWFggMHgxMDAwIDB4MTAwMD47CiAJCX07CiAKIAkJZGl0aGVyMDogZGl0aGVyQDE0
-MDEyMDAwIHsKQEAgLTU3NSw2ICs1ODksNyBAQAogCQkJaW50ZXJydXB0cyA9IDxHSUNfU1BJIDIz
-NSBJUlFfVFlQRV9MRVZFTF9MT1c+OwogCQkJcG93ZXItZG9tYWlucyA9IDwmc2Nwc3lzIE1UODE4
-M19QT1dFUl9ET01BSU5fRElTUD47CiAJCQljbG9ja3MgPSA8Jm1tc3lzIENMS19NTV9ESVNQX0RJ
-VEhFUjA+OworCQkJbWVkaWF0ZWssZ2NlLWNsaWVudC1yZWcgPSA8JmdjZSBTVUJTWVNfMTQwMVhY
-WFggMHgyMDAwIDB4MTAwMD47CiAJCX07CiAKIAkJbXV0ZXg6IG11dGV4QDE0MDE2MDAwIHsKLS0g
-CjIuMTguMAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-ZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0
-dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+On Tue, 2019-06-25 at 20:52 -0700, Stephen Boyd wrote:
+> Quoting Weiyi Lu (2019-06-25 18:05:22)
+> > On Tue, 2019-06-25 at 15:14 -0700, Stephen Boyd wrote:
+> > > Quoting Weiyi Lu (2019-06-09 20:44:53)
+> > > > When using property assigned-clock-parents to assign parent clocks,
+> > > > core clocks might still be disabled during re-parent.
+> > > > Add flag 'CLK_OPS_CORE_ENABLE' for those clocks must be enabled
+> > > > during re-parent.
+> > > > 
+> > > > Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> > > 
+> > > Can you further describe the scenario where this is a problem? Is it
+> > > some sort of clk that is enabled by default out of the bootloader and is
+> > > then configured to have an 'assigned-clock-parents' property to change
+> > > the parent, but that clk needs to be "enabled" so that the framework
+> > > turns on the parents for the parent switch?
+> > 
+> > When driver is built as module(.ko) and install at runtime after the
+> > whole initialization stage. Clk might already be turned off before
+> > configuring by assigned-clock-parents. For such clock design that need
+> > to have clock enabled during re-parent, the configuration of
+> > assigned-clock-parents might be failed. That's the problem we have now.
+> 
+> Great. Please put this sort of information in the commit text.
+> 
+
+OK, I'll do when sending next version.
+
+> > Do you have any suggestion for such usage of clocks? Many thanks.
+> > 
+> 
+> Ok, and in this case somehow CLK_OPS_PARENT_ENABLE flag doesn't work? Is
+> that because the clk itself doesn't do anything unless it's enabled?  I
+> seem to recall that we usually work around this by caching the state of
+> the clk parents or frequencies and then when the clk prepare or enable
+> op is called we actually write the hardware to change the state. There
+> are some qcom clks like this and we basically just use the hardware
+> itself to cache the state of the clk while it hasn't actually changed to
+> be at that rate, because the clk is not enabled yet.
+> 
+
+Hi Stephen,
+
+Will you recommend if we cache the state in the platform driver instead
+of the hardware itself and then change the state when clk enable op is
+called if we don't have such hardware design on MTK clocks?
+
+> The main concern is that we're having to turn on clks to make things
+> work, when it would be best to not turn on clks just so that register
+> writes actually make a difference to what the hardware does.
+> 
+
+In my view, it's a safe operation to enable clock shortly to make things
+work when its child clock is still disabled. What do you think?
