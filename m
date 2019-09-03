@@ -1,92 +1,87 @@
-From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=
-        <u.kleine-koenig@pengutronix.de>
-Subject: Re: [PATCH v5 07/13] dt-bindings: pwm: add a property "num-pwms"
-Date: Mon, 2 Sep 2019 18:04:45 +0200
-Message-ID: <20190902160445.fitoa65t4ndzjq6v@pengutronix.de>
-References: <1566457123-20791-1-git-send-email-sam.shih@mediatek.com>
- <1566457123-20791-8-git-send-email-sam.shih@mediatek.com>
- <20190827183924.GA24178@bogus>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: [PATCH] arm64: dts: mt8183: Add gce setting in display node
+Date: Tue, 3 Sep 2019 09:39:10 +0800
+Message-ID: <20190903013910.30225-1-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190827183924.GA24178@bogus>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: Sam Shih <sam.shih@mediatek.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, John Crispin <john@phrozen.org>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Cc: drinkcat@chromium.org, Yongqiang Niu <yongqiang.niu@mediatek.com>, linux-kernel@vger.kernel.org, tfiga@chromium.org, Thierry Reding <thierry.reding@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Aug 27, 2019 at 01:39:24PM -0500, Rob Herring wrote:
-> On Thu, Aug 22, 2019 at 02:58:37PM +0800, Sam Shih wrote:
-> > From: Ryder Lee <ryder.lee@mediatek.com>
-> 
-> The subject should indicate this is for Mediatek.
-> 
-> > 
-> > This adds a property "num-pwms" in example so that we could
-> > specify the number of PWM channels via device tree.
-> > 
-> > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> > Signed-off-by: Sam Shih <sam.shih@mediatek.com>
-> > Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> > Acked-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
-> > ---
-> > Changes since v5:
-> > - Add an Acked-by tag
-> > - This file is original v4 patch 5/10
-> > (https://patchwork.kernel.org/patch/11102577/)
-> > 
-> > Change-Id: I429048afeffa96f3f14533910efe242f88776043
-> > ---
-> >  Documentation/devicetree/bindings/pwm/pwm-mediatek.txt | 7 ++++---
-> >  1 file changed, 4 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> > index 991728cb46cb..ea95b490a913 100644
-> > --- a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> > +++ b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> > @@ -14,12 +14,12 @@ Required properties:
-> >                  has no clocks
-> >     - "top": the top clock generator
-> >     - "main": clock used by the PWM core
-> > -   - "pwm1-8": the eight per PWM clocks for mt2712
-> > -   - "pwm1-6": the six per PWM clocks for mt7622
-> > -   - "pwm1-5": the five per PWM clocks for mt7623
-> > +   - "pwm1-N": the PWM clocks for each channel
-> > +   where N starting from 1 to the maximum number of PWM channels
-> 
-> Once converted to schema, you are going to be back to listing them out.
-> 
-> >   - pinctrl-names: Must contain a "default" entry.
-> >   - pinctrl-0: One property must exist for each entry in pinctrl-names.
-> >     See pinctrl/pinctrl-bindings.txt for details of the property values.
-> > + - num-pwms: the number of PWM channels.
-> 
-> You can't add new required properties without breaking compatibility. 
-> 
-> You already have to imply the number of channels from the compatible (or 
-> number of clocks) and you have to keep doing so to maintain 
-> compatibility, so why not just keep doing that for new chips?
-
-This was a suggestion by me. The driver still handles compatibility
-(i.e. falls back to the number of PWMs that was implied by the
-compatible before). Given that there are various drivers that all solve
-the same problem (i.e. different variants with different number of PWMs)
-I thought it would be a good idea to introduce a property in the device
-tree that specifies this number.
-
-Only for newly introduced compatibles the num-pwms property is really
-required. Differentiating the ones that need it and the ones that don't
-seems over-engineered to me.
-
-(BTW, using the number of clks doesn't really work because there are
-also some variants without clocks. It is still under discussion if in
-this case dummy-clocks should be provided IIRC.)
-
-Best regards
-Uwe
-
--- 
-Pengutronix e.K.                           | Uwe Kleine-König            |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+SW4gb3JkZXIgdG8gdXNlIEdDRSBmdW5jdGlvbiwgd2UgbmVlZCBhZGQgc29tZSBpbmZvcm1hdGlv
+bnMKaW50byBkaXNwbGF5IG5vZGUgKG1ib3hlcywgbWVkaWF0ZWssZ2NlLWNsaWVudC1yZWcsIG1l
+ZGlhdGVrLGdjZS1ldmVudHMpLgoKU2lnbmVkLW9mZi1ieTogQmliYnkgSHNpZWggPGJpYmJ5Lmhz
+aWVoQG1lZGlhdGVrLmNvbT4KU2lnbmVkLW9mZi1ieTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3FpYW5n
+Lm5pdUBtZWRpYXRlay5jb20+Ci0tLQogYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgx
+ODMuZHRzaSB8IDE1ICsrKysrKysrKysrKysrKwogMSBmaWxlIGNoYW5nZWQsIDE1IGluc2VydGlv
+bnMoKykKCmRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE4My5k
+dHNpIGIvYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxODMuZHRzaQppbmRleCA1NjE2
+ZDE1OGE0ZmEuLmI3ZDI5NGMxYzViNCAxMDA2NDQKLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9t
+ZWRpYXRlay9tdDgxODMuZHRzaQorKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210
+ODE4My5kdHNpCkBAIC00ODUsNiArNDg1LDExIEBACiAJCQljb21wYXRpYmxlID0gIm1lZGlhdGVr
+LG10ODE4My1kaXNwbGF5IjsKIAkJCXJlZyA9IDwwIDB4MTQwMDAwMDAgMCAweDEwMDA+OwogCQkJ
+cG93ZXItZG9tYWlucyA9IDwmc2Nwc3lzIE1UODE4M19QT1dFUl9ET01BSU5fRElTUD47CisJCQlt
+Ym94ZXMgPSA8JmdjZSAwIENNRFFfVEhSX1BSSU9fSElHSEVTVCAxPiwKKwkJCQkgPCZnY2UgMSBD
+TURRX1RIUl9QUklPX0hJR0hFU1QgMT47CisJCQltZWRpYXRlayxnY2UtY2xpZW50LXJlZyA9IDwm
+Z2NlIFNVQlNZU18xNDAwWFhYWCAwIDB4MTAwMD47CisJCQltZWRpYXRlayxnY2UtZXZlbnRzID0g
+PENNRFFfRVZFTlRfTVVURVhfU1RSRUFNX0RPTkUwPiwKKwkJCQkJICAgICAgPENNRFFfRVZFTlRf
+TVVURVhfU1RSRUFNX0RPTkUxPjsKIAkJfTsKIAogCQlvdmwwOiBvdmxAMTQwMDgwMDAgewpAQCAt
+NDk0LDYgKzQ5OSw3IEBACiAJCQlwb3dlci1kb21haW5zID0gPCZzY3BzeXMgTVQ4MTgzX1BPV0VS
+X0RPTUFJTl9ESVNQPjsKIAkJCWNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RJU1BfT1ZMMD47CiAJ
+CQltZWRpYXRlayxsYXJiID0gPCZsYXJiMD47CisJCQltZWRpYXRlayxnY2UtY2xpZW50LXJlZyA9
+IDwmZ2NlIFNVQlNZU18xNDAwWFhYWCAweDgwMDAgMHgxMDAwPjsKIAkJfTsKIAogCQlvdmxfMmww
+OiBvdmxAMTQwMDkwMDAgewpAQCAtNTAzLDYgKzUwOSw3IEBACiAJCQlwb3dlci1kb21haW5zID0g
+PCZzY3BzeXMgTVQ4MTgzX1BPV0VSX0RPTUFJTl9ESVNQPjsKIAkJCWNsb2NrcyA9IDwmbW1zeXMg
+Q0xLX01NX0RJU1BfT1ZMMF8yTD47CiAJCQltZWRpYXRlayxsYXJiID0gPCZsYXJiMD47CisJCQlt
+ZWRpYXRlayxnY2UtY2xpZW50LXJlZyA9IDwmZ2NlIFNVQlNZU18xNDAwWFhYWCAweDkwMDAgMHgx
+MDAwPjsKIAkJfTsKIAogCQlvdmxfMmwxOiBvdmxAMTQwMGEwMDAgewpAQCAtNTEyLDYgKzUxOSw3
+IEBACiAJCQlwb3dlci1kb21haW5zID0gPCZzY3BzeXMgTVQ4MTgzX1BPV0VSX0RPTUFJTl9ESVNQ
+PjsKIAkJCWNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RJU1BfT1ZMMV8yTD47CiAJCQltZWRpYXRl
+ayxsYXJiID0gPCZsYXJiMD47CisJCQltZWRpYXRlayxnY2UtY2xpZW50LXJlZyA9IDwmZ2NlIFNV
+QlNZU18xNDAwWFhYWCAweGEwMDAgMHgxMDAwPjsKIAkJfTsKIAogCQlyZG1hMDogcmRtYUAxNDAw
+YjAwMCB7CkBAIC01MjIsNiArNTMwLDcgQEAKIAkJCWNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RJ
+U1BfUkRNQTA+OwogCQkJbWVkaWF0ZWssbGFyYiA9IDwmbGFyYjA+OwogCQkJbWVkaWF0ZWsscmRt
+YV9maWZvX3NpemUgPSA8NT47CisJCQltZWRpYXRlayxnY2UtY2xpZW50LXJlZyA9IDwmZ2NlIFNV
+QlNZU18xNDAwWFhYWCAweGIwMDAgMHgxMDAwPjsKIAkJfTsKIAogCQlyZG1hMTogcmRtYUAxNDAw
+YzAwMCB7CkBAIC01MzIsNiArNTQxLDcgQEAKIAkJCWNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RJ
+U1BfUkRNQTE+OwogCQkJbWVkaWF0ZWssbGFyYiA9IDwmbGFyYjA+OwogCQkJbWVkaWF0ZWsscmRt
+YV9maWZvX3NpemUgPSA8Mj47CisJCQltZWRpYXRlayxnY2UtY2xpZW50LXJlZyA9IDwmZ2NlIFNV
+QlNZU18xNDAwWFhYWCAweGMwMDAgMHgxMDAwPjsKIAkJfTsKIAogCQljb2xvcjA6IGNvbG9yQDE0
+MDBlMDAwIHsKQEAgLTU0MSw2ICs1NTEsNyBAQAogCQkJaW50ZXJydXB0cyA9IDxHSUNfU1BJIDIz
+MSBJUlFfVFlQRV9MRVZFTF9MT1c+OwogCQkJcG93ZXItZG9tYWlucyA9IDwmc2Nwc3lzIE1UODE4
+M19QT1dFUl9ET01BSU5fRElTUD47CiAJCQljbG9ja3MgPSA8Jm1tc3lzIENMS19NTV9ESVNQX0NP
+TE9SMD47CisJCQltZWRpYXRlayxnY2UtY2xpZW50LXJlZyA9IDwmZ2NlIFNVQlNZU18xNDAwWFhY
+WCAweGUwMDAgMHgxMDAwPjsKIAkJfTsKIAogCQljY29ycjA6IGNjb3JyQDE0MDBmMDAwIHsKQEAg
+LTU0OSw2ICs1NjAsNyBAQAogCQkJaW50ZXJydXB0cyA9IDxHSUNfU1BJIDIzMiBJUlFfVFlQRV9M
+RVZFTF9MT1c+OwogCQkJcG93ZXItZG9tYWlucyA9IDwmc2Nwc3lzIE1UODE4M19QT1dFUl9ET01B
+SU5fRElTUD47CiAJCQljbG9ja3MgPSA8Jm1tc3lzIENMS19NTV9ESVNQX0NDT1JSMD47CisJCQlt
+ZWRpYXRlayxnY2UtY2xpZW50LXJlZyA9IDwmZ2NlIFNVQlNZU18xNDAwWFhYWCAweGYwMDAgMHgx
+MDAwPjsKIAkJfTsKIAogCQlhYWwwOiBhYWxAMTQwMTAwMDAgewpAQCAtNTU4LDYgKzU3MCw3IEBA
+CiAJCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMjMzIElSUV9UWVBFX0xFVkVMX0xPVz47CiAJCQlw
+b3dlci1kb21haW5zID0gPCZzY3BzeXMgTVQ4MTgzX1BPV0VSX0RPTUFJTl9ESVNQPjsKIAkJCWNs
+b2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RJU1BfQUFMMD47CisJCQltZWRpYXRlayxnY2UtY2xpZW50
+LXJlZyA9IDwmZ2NlIFNVQlNZU18xNDAxWFhYWCAwIDB4MTAwMD47CiAJCX07CiAKIAkJZ2FtbWEw
+OiBnYW1tYUAxNDAxMTAwMCB7CkBAIC01NjcsNiArNTgwLDcgQEAKIAkJCWludGVycnVwdHMgPSA8
+R0lDX1NQSSAyMzQgSVJRX1RZUEVfTEVWRUxfTE9XPjsKIAkJCXBvd2VyLWRvbWFpbnMgPSA8JnNj
+cHN5cyBNVDgxODNfUE9XRVJfRE9NQUlOX0RJU1A+OwogCQkJY2xvY2tzID0gPCZtbXN5cyBDTEtf
+TU1fRElTUF9HQU1NQTA+OworCQkJbWVkaWF0ZWssZ2NlLWNsaWVudC1yZWcgPSA8JmdjZSBTVUJT
+WVNfMTQwMVhYWFggMHgxMDAwIDB4MTAwMD47CiAJCX07CiAKIAkJZGl0aGVyMDogZGl0aGVyQDE0
+MDEyMDAwIHsKQEAgLTU3NSw2ICs1ODksNyBAQAogCQkJaW50ZXJydXB0cyA9IDxHSUNfU1BJIDIz
+NSBJUlFfVFlQRV9MRVZFTF9MT1c+OwogCQkJcG93ZXItZG9tYWlucyA9IDwmc2Nwc3lzIE1UODE4
+M19QT1dFUl9ET01BSU5fRElTUD47CiAJCQljbG9ja3MgPSA8Jm1tc3lzIENMS19NTV9ESVNQX0RJ
+VEhFUjA+OworCQkJbWVkaWF0ZWssZ2NlLWNsaWVudC1yZWcgPSA8JmdjZSBTVUJTWVNfMTQwMVhY
+WFggMHgyMDAwIDB4MTAwMD47CiAJCX07CiAKIAkJbXV0ZXg6IG11dGV4QDE0MDE2MDAwIHsKLS0g
+CjIuMTguMAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+ZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0
+dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
