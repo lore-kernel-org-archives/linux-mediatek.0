@@ -1,13 +1,13 @@
 From: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [GIT PULL] arm: mediatek: dts32 updates for v5.4
-Date: Tue, 3 Sep 2019 15:59:14 +0200
-Message-ID: <CAK8P3a3s+SPF4YpfQUKw5wOhF6hQF2e8J8qsLcC1kmhZY+Ff0w@mail.gmail.com>
-References: <e236f659-2851-21b8-1873-314cd72ed6be@gmail.com>
+Subject: Re: [GIT PULL] arm64: mediatek: dts64 updates for v5.4
+Date: Tue, 3 Sep 2019 16:00:43 +0200
+Message-ID: <CAK8P3a2ta+B=5D3suEfF1UccLSFSbcGs7B3AxvqBSzx=nLfE1w@mail.gmail.com>
+References: <def8fb77-fce4-097d-7ae2-8c4670bc09c1@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <e236f659-2851-21b8-1873-314cd72ed6be@gmail.com>
+In-Reply-To: <def8fb77-fce4-097d-7ae2-8c4670bc09c1@gmail.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -18,23 +18,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: SoC Team <soc@kernel.org>, arm-soc <arm@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: SoC Team <soc@kernel.org>, arm-soc <arm@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, Mars Cheng <mars.cheng@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Aug 23, 2019 at 6:40 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
-
->
->   https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
-> tags/v5.3-next-dts32
->
-> for you to fetch changes up to cc212241df0b8975bb0e6d7f9028405a9c664e49:
->
->   arm: dts: mediatek: add basic support for MT7629 SoC (2019-08-22 11:22:17 +0200)
+On Fri, Aug 23, 2019 at 6:42 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
+>   dt-bindings: irq: mtk, sysirq: add support for mt6779 (2019-08-23 17:50:07 +0200)
 >
 > ----------------------------------------------------------------
-> add support for the mt7629 reference board
+> mt8183:
+> - fix pwrap interrupt number
+> - add i2c notes
 >
+> dt-bindings:
+> - add compatible for mt6779
+> - add mt6779 uart and sysirq compatible
 
 Pulled into arm/dt, thanks!
 
-      Arnd
+     Arnd
