@@ -1,34 +1,40 @@
-From: Joerg Roedel <joro@8bytes.org>
-Subject: Re: [PATCH v1 1/2] iommu: pass cell_count = -1 to
- of_for_each_phandle with cells_name
-Date: Tue, 3 Sep 2019 14:52:10 +0200
-Message-ID: <20190903125210.GB11530@8bytes.org>
-References: <20190824132846.8589-1-u.kleine-koenig@pengutronix.de>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [GIT PULL] arm: mediatek: dts32 updates for v5.4
+Date: Tue, 3 Sep 2019 15:59:14 +0200
+Message-ID: <CAK8P3a3s+SPF4YpfQUKw5wOhF6hQF2e8J8qsLcC1kmhZY+Ff0w@mail.gmail.com>
+References: <e236f659-2851-21b8-1873-314cd72ed6be@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190824132846.8589-1-u.kleine-koenig@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>, Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, iommu@lists.linux-foundation.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <e236f659-2851-21b8-1873-314cd72ed6be@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: SoC Team <soc@kernel.org>, arm-soc <arm@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, Aug 24, 2019 at 03:28:45PM +0200, Uwe Kleine-König wrote:
-> Currently of_for_each_phandle ignores the cell_count parameter when a
-> cells_name is given. I intend to change that and let the iterator fall
-> back to a non-negative cell_count if the cells_name property is missing
-> in the referenced node.
-> 
-> To not change how existing of_for_each_phandle's users iterate, fix them
-> to pass cell_count = -1 when also cells_name is given which yields the
-> expected behaviour with and without my change.
-> 
-> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
-> ---
->  drivers/iommu/arm-smmu.c     | 2 +-
->  drivers/iommu/mtk_iommu_v1.c | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
+On Fri, Aug 23, 2019 at 6:40 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
 
-Acked-by: Joerg Roedel <jroedel@suse.de>
+>
+>   https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
+> tags/v5.3-next-dts32
+>
+> for you to fetch changes up to cc212241df0b8975bb0e6d7f9028405a9c664e49:
+>
+>   arm: dts: mediatek: add basic support for MT7629 SoC (2019-08-22 11:22:17 +0200)
+>
+> ----------------------------------------------------------------
+> add support for the mt7629 reference board
+>
+
+Pulled into arm/dt, thanks!
+
+      Arnd
