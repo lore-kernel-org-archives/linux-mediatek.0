@@ -1,7 +1,7 @@
 From: YueHaibing <yuehaibing@huawei.com>
-Subject: [PATCH -next 09/15] thermal: rockchip: use devm_platform_ioremap_resource() to simplify code
-Date: Wed, 4 Sep 2019 20:29:33 +0800
-Message-ID: <20190904122939.23780-10-yuehaibing@huawei.com>
+Subject: [PATCH -next 06/15] thermal: mtk: use devm_platform_ioremap_resource() to simplify code
+Date: Wed, 4 Sep 2019 20:29:30 +0800
+Message-ID: <20190904122939.23780-7-yuehaibing@huawei.com>
 References: <20190904122939.23780-1-yuehaibing@huawei.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -18,30 +18,30 @@ This is detected by coccinelle.
 Reported-by: Hulk Robot <hulkci@huawei.com>
 Signed-off-by: YueHaibing <yuehaibing@huawei.com>
 ---
- drivers/thermal/rockchip_thermal.c | 4 +---
+ drivers/thermal/mtk_thermal.c | 4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index 343c2f5..044e6eb 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -1219,7 +1219,6 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
- 	struct device_node *np = pdev->dev.of_node;
- 	struct rockchip_thermal_data *thermal;
- 	const struct of_device_id *match;
+diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+index acf4854..da36271 100644
+--- a/drivers/thermal/mtk_thermal.c
++++ b/drivers/thermal/mtk_thermal.c
+@@ -867,7 +867,6 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 	int ret, i, ctrl_id;
+ 	struct device_node *auxadc, *apmixedsys, *np = pdev->dev.of_node;
+ 	struct mtk_thermal *mt;
 -	struct resource *res;
- 	int irq;
- 	int i;
- 	int error;
-@@ -1245,8 +1244,7 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
- 	if (!thermal->chip)
- 		return -EINVAL;
+ 	u64 auxadc_phys_base, apmixed_phys_base;
+ 	struct thermal_zone_device *tzdev;
+ 
+@@ -885,8 +884,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 	if (IS_ERR(mt->clk_auxadc))
+ 		return PTR_ERR(mt->clk_auxadc);
  
 -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	thermal->regs = devm_ioremap_resource(&pdev->dev, res);
-+	thermal->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(thermal->regs))
- 		return PTR_ERR(thermal->regs);
+-	mt->thermal_base = devm_ioremap_resource(&pdev->dev, res);
++	mt->thermal_base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(mt->thermal_base))
+ 		return PTR_ERR(mt->thermal_base);
  
 -- 
 2.7.4
