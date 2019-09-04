@@ -1,57 +1,97 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH -next 15/15] thermal: rcar: use
- devm_platform_ioremap_resource() to simplify code
-Date: Wed, 4 Sep 2019 19:25:14 +0200
-Message-ID: <20190904172514.GA2602@kunai>
-References: <20190904122939.23780-1-yuehaibing@huawei.com>
- <20190904122939.23780-16-yuehaibing@huawei.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: next/master boot: 310 boots: 11 failed, 292 passed with 6
+ offline, 1 untried/unknown (next-20190904)
+Date: Wed, 4 Sep 2019 20:27:26 +0100
+Message-ID: <20190904192725.GI4348@sirena.co.uk>
+References: <5d700b15.1c69fb81.2abcd.479b@mx.google.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="AhhlLboLdkugWU4S"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190904122939.23780-16-yuehaibing@huawei.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: YueHaibing <yuehaibing@huawei.com>
-Cc: miquel.raynal@bootlin.com, rui.zhang@intel.com, edubezval@gmail.com, daniel.lezcano@linaro.org, amit.kucheria@verdurent.com, eric@anholt.net, wahrenst@gmx.net, f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, mmayer@broadcom.com, computersforpeace@gmail.com, gregory.0xf0@gmail.com, matthias.bgg@gmail.com, agross@kernel.org, heiko@sntech.de, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, marc.w.gonzalez@free.fr, mans@mansr.com, talel@amazon.com, jun.nie@linaro.org, shawnguo@kernel.org, phil@raspberrypi.org, gregkh@linuxfoundation.org, david.hernandezsanchez@st.com, horms+renesas@verge.net.au, wsa+renesas@sang-engineering.com, bcm-kernel-feedback-list@broadcom.com, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rpi-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============3322658247250989540=="
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <5d700b15.1c69fb81.2abcd.479b@mx.google.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: khilman@baylibre.com, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: kernel-build-reports@lists.linaro.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
---AhhlLboLdkugWU4S
+--===============3322658247250989540==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="9s922KAXlWjPfK/Q"
+Content-Disposition: inline
+
+
+--9s922KAXlWjPfK/Q
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Sep 04, 2019 at 08:29:39PM +0800, YueHaibing wrote:
-> Use devm_platform_ioremap_resource() to simplify the code a bit.
-> This is detected by coccinelle.
+On Wed, Sep 04, 2019 at 12:05:57PM -0700, kernelci.org bot wrote:
+
+Since 30th August -next fails to boot with no kernel output on
+mt7622-rfb1:
+
+> arm64:
+>     defconfig:
+>         gcc-8:
+>             mt7622-rfb1: 1 failed lab
 >=20
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+>     defconfig+CONFIG_RANDOMIZE_BASE=3Dy:
+>         gcc-8:
+>             mt7622-rfb1: 1 failed lab
 
-I think for such straightforward (and manifold) conversions, one patch
-per subsystem is better than one patch per driver. But this is not my
-subsystem, so I'll leave it to the thermal maintainers.
+There's logging from ATF so it looks like we try to boot the kernel:
 
+Starting kernel ...
 
---AhhlLboLdkugWU4S
+[ATF][    36.199793]save kernel info
+[ATF][    36.202824]Kernel_EL2
+[ATF][    36.205580]Kernel is 64Bit
+[ATF][    36.208768]pc=3D0x40080000, r0=3D0x5cf48000, r1=3D0x0
+INFO:    BL3-1: Preparing for EL3 exit to normal world, Kernel
+INFO:    BL3-1: Next image address =3D 0x40080000
+INFO:    BL3-1: Next image spsr =3D 0x3c9
+[ATF][    36.227037]el3_exit
+
+but no output.  More details including full logs at:
+
+	https://kernelci.org/boot/id/5d6fe70059b514164ef1224d/
+	https://kernelci.org/boot/id/5d6fe6e259b514164ef12243/
+
+--9s922KAXlWjPfK/Q
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl1v83EACgkQFA3kzBSg
-KbZOUg/+Jw+mcZ79x8rHt2nPfBEtW1lYrickXXODhze40rPG/rARNtQxdyBIRKOj
-cl3g5q/PL2U0k4nrUuD3osCpUNceFye3A7o5eE81j8hSOBvwADNtAIPaIXenudHD
-P8krbODpUIy3ifIf24cUnCMr6teo0CduolmrCpDlmd1LWJmRpbdY+sejDVi8qAzs
-xJDN67R6O8lEDJSS0o63xXu4+ZSizqcfVQqlWdkTxc3wqHhdUXFLeCWH5Ow1RsbP
-ArXyH7xGG9xQxkiKavZSxYciob3PqcvRdfDv4dNRgNpJFir+mxbJVpQ2IyKr/hyn
-jYzzcz9sd02cXsxAOURY1OS7AhPUiRl5XZIhWR+0VRXwJhBTkpHh/Ro4RRgzMHCC
-UnRZgonQvO50HpmC3IHKPjq2rvKYYAYF2kr+rTjAiXsT2ZgECU5nQRypkMPy3CX2
-YdP9JnaDd7OpDw3+tvPRmbEpAkjcXK5QQp4vHnqaTrnaqyxbMVA6uRt68uSbNHIY
-gkTny6PNBTAr/0scsb7xo481yPA0MOCeShSAj6Dvk0pagXrfE4AgWf1vLPbUieUZ
-PrZ+0B6jIYMKswq8FVvwSvn+Jrk/RFvFOLFpiuCnWZx0kDz8BDVrkQrwz5NsNm7D
-NNOQUh/6TBD6/1TLapgeH4dtXhje3qlv8OzuEYhnkwS4UX3HvAI=
-=XQ0z
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl1wEB0ACgkQJNaLcl1U
+h9A/4Af9GyL4+48PsNu8OiRt5GxGu5j54SLyM+A6ZS8iZg4ZfTl875Dr4lp6qW67
+gieIx4Zkgx8KzsSECl+W5mTUfW3LCOg79/AHTQCtsSs8CaD+fUSFe8DdrpdzyGeg
+hLUsr4T56uaUUYO4KXCFaqzme5tL24bCiVTboGCmlVzLTlMDpBlQkIlDrATOUya2
+liE9XHl2lpE3vCqExcRvTrhkfPRa8Gdhan34Sp/5HkJ0Yu+YyH90ERr+QyaMay2j
+3/Rl+PT77tEzw1QWFY6a/1a4eoJBtVqron40suPFIEJgQBdRasFJHQjPlUyVSlAm
+xIq7HDgZqAWzPgxgTm3nHuAtJluwbg==
+=tqM1
 -----END PGP SIGNATURE-----
 
---AhhlLboLdkugWU4S--
+--9s922KAXlWjPfK/Q--
+
+
+--===============3322658247250989540==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+linux-arm-kernel mailing list
+linux-arm-kernel@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+
+--===============3322658247250989540==--
