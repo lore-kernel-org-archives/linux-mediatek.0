@@ -1,7 +1,7 @@
 From: YueHaibing <yuehaibing@huawei.com>
-Subject: [PATCH -next 12/15] thermal: tango: use devm_platform_ioremap_resource() to simplify code
-Date: Wed, 4 Sep 2019 20:29:36 +0800
-Message-ID: <20190904122939.23780-13-yuehaibing@huawei.com>
+Subject: [PATCH -next 11/15] thermal: stm32: use devm_platform_ioremap_resource() to simplify code
+Date: Wed, 4 Sep 2019 20:29:35 +0800
+Message-ID: <20190904122939.23780-12-yuehaibing@huawei.com>
 References: <20190904122939.23780-1-yuehaibing@huawei.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -18,30 +18,30 @@ This is detected by coccinelle.
 Reported-by: Hulk Robot <hulkci@huawei.com>
 Signed-off-by: YueHaibing <yuehaibing@huawei.com>
 ---
- drivers/thermal/tango_thermal.c | 4 +---
+ drivers/thermal/st/stm_thermal.c | 4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/thermal/tango_thermal.c b/drivers/thermal/tango_thermal.c
-index 304b461..f44441b 100644
---- a/drivers/thermal/tango_thermal.c
-+++ b/drivers/thermal/tango_thermal.c
-@@ -73,7 +73,6 @@ static void tango_thermal_init(struct tango_thermal_priv *priv)
- 
- static int tango_thermal_probe(struct platform_device *pdev)
+diff --git a/drivers/thermal/st/stm_thermal.c b/drivers/thermal/st/stm_thermal.c
+index cf9ddc5..a5d85f5 100644
+--- a/drivers/thermal/st/stm_thermal.c
++++ b/drivers/thermal/st/stm_thermal.c
+@@ -611,7 +611,6 @@ MODULE_DEVICE_TABLE(of, stm_thermal_of_match);
+ static int stm_thermal_probe(struct platform_device *pdev)
  {
+ 	struct stm_thermal_sensor *sensor;
 -	struct resource *res;
- 	struct tango_thermal_priv *priv;
- 	struct thermal_zone_device *tzdev;
+ 	const struct thermal_trip *trip;
+ 	void __iomem *base;
+ 	int ret, i;
+@@ -630,8 +629,7 @@ static int stm_thermal_probe(struct platform_device *pdev)
  
-@@ -81,8 +80,7 @@ static int tango_thermal_probe(struct platform_device *pdev)
- 	if (!priv)
- 		return -ENOMEM;
+ 	sensor->dev = &pdev->dev;
  
 -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	priv->base = devm_ioremap_resource(&pdev->dev, res);
-+	priv->base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(priv->base))
- 		return PTR_ERR(priv->base);
+-	base = devm_ioremap_resource(&pdev->dev, res);
++	base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(base))
+ 		return PTR_ERR(base);
  
 -- 
 2.7.4
