@@ -1,7 +1,7 @@
 From: YueHaibing <yuehaibing@huawei.com>
-Subject: [PATCH -next 14/15] thermal: zx2967: use devm_platform_ioremap_resource() to simplify code
-Date: Wed, 4 Sep 2019 20:29:38 +0800
-Message-ID: <20190904122939.23780-15-yuehaibing@huawei.com>
+Subject: [PATCH -next 08/15] thermal: tsens: use devm_platform_ioremap_resource() to simplify code
+Date: Wed, 4 Sep 2019 20:29:32 +0800
+Message-ID: <20190904122939.23780-9-yuehaibing@huawei.com>
 References: <20190904122939.23780-1-yuehaibing@huawei.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -18,29 +18,40 @@ This is detected by coccinelle.
 Reported-by: Hulk Robot <hulkci@huawei.com>
 Signed-off-by: YueHaibing <yuehaibing@huawei.com>
 ---
- drivers/thermal/zx2967_thermal.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/thermal/qcom/tsens-common.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/thermal/zx2967_thermal.c b/drivers/thermal/zx2967_thermal.c
-index 7c8a82c..b67e776 100644
---- a/drivers/thermal/zx2967_thermal.c
-+++ b/drivers/thermal/zx2967_thermal.c
-@@ -117,15 +117,13 @@ static const struct thermal_zone_of_device_ops zx2967_of_thermal_ops = {
- static int zx2967_thermal_probe(struct platform_device *pdev)
+diff --git a/drivers/thermal/qcom/tsens-common.c b/drivers/thermal/qcom/tsens-common.c
+index 528df88..43ce4fb 100644
+--- a/drivers/thermal/qcom/tsens-common.c
++++ b/drivers/thermal/qcom/tsens-common.c
+@@ -155,7 +155,6 @@ int __init init_common(struct tsens_priv *priv)
  {
- 	struct zx2967_thermal_priv *priv;
+ 	void __iomem *tm_base, *srot_base;
+ 	struct device *dev = priv->dev;
 -	struct resource *res;
- 	int ret;
+ 	u32 enabled;
+ 	int ret, i, j;
+ 	struct platform_device *op = of_find_device_by_node(priv->dev->of_node);
+@@ -166,8 +165,7 @@ int __init init_common(struct tsens_priv *priv)
+ 	if (op->num_resources > 1) {
+ 		/* DT with separate SROT and TM address space */
+ 		priv->tm_offset = 0;
+-		res = platform_get_resource(op, IORESOURCE_MEM, 1);
+-		srot_base = devm_ioremap_resource(&op->dev, res);
++		srot_base = devm_platform_ioremap_resource(op, 1);
+ 		if (IS_ERR(srot_base)) {
+ 			ret = PTR_ERR(srot_base);
+ 			goto err_put_device;
+@@ -184,8 +182,7 @@ int __init init_common(struct tsens_priv *priv)
+ 		priv->tm_offset = 0x1000;
+ 	}
  
- 	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
- 	if (!priv)
- 		return -ENOMEM;
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	priv->regs = devm_ioremap_resource(&pdev->dev, res);
-+	priv->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(priv->regs))
- 		return PTR_ERR(priv->regs);
- 
+-	res = platform_get_resource(op, IORESOURCE_MEM, 0);
+-	tm_base = devm_ioremap_resource(&op->dev, res);
++	tm_base = devm_platform_ioremap_resource(op, 0);
+ 	if (IS_ERR(tm_base)) {
+ 		ret = PTR_ERR(tm_base);
+ 		goto err_put_device;
 -- 
 2.7.4
