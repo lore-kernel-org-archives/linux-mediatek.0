@@ -1,7 +1,7 @@
 From: YueHaibing <yuehaibing@huawei.com>
-Subject: [PATCH -next 01/15] thermal: armada: use devm_platform_ioremap_resource() to simplify code
-Date: Wed, 4 Sep 2019 20:29:25 +0800
-Message-ID: <20190904122939.23780-2-yuehaibing@huawei.com>
+Subject: [PATCH -next 02/15] thermal: bcm2835: use devm_platform_ioremap_resource() to simplify code
+Date: Wed, 4 Sep 2019 20:29:26 +0800
+Message-ID: <20190904122939.23780-3-yuehaibing@huawei.com>
 References: <20190904122939.23780-1-yuehaibing@huawei.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -18,26 +18,30 @@ This is detected by coccinelle.
 Reported-by: Hulk Robot <hulkci@huawei.com>
 Signed-off-by: YueHaibing <yuehaibing@huawei.com>
 ---
- drivers/thermal/armada_thermal.c | 4 +---
+ drivers/thermal/broadcom/bcm2835_thermal.c | 4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/thermal/armada_thermal.c b/drivers/thermal/armada_thermal.c
-index 709a22f..70fe9c6 100644
---- a/drivers/thermal/armada_thermal.c
-+++ b/drivers/thermal/armada_thermal.c
-@@ -708,12 +708,10 @@ static int armada_thermal_probe_legacy(struct platform_device *pdev,
- 				       struct armada_thermal_priv *priv)
- {
- 	struct armada_thermal_data *data = priv->data;
+diff --git a/drivers/thermal/broadcom/bcm2835_thermal.c b/drivers/thermal/broadcom/bcm2835_thermal.c
+index 3199977..01eec8e 100644
+--- a/drivers/thermal/broadcom/bcm2835_thermal.c
++++ b/drivers/thermal/broadcom/bcm2835_thermal.c
+@@ -166,7 +166,6 @@ static int bcm2835_thermal_probe(struct platform_device *pdev)
+ 	const struct of_device_id *match;
+ 	struct thermal_zone_device *tz;
+ 	struct bcm2835_thermal_data *data;
 -	struct resource *res;
- 	void __iomem *base;
+ 	int err = 0;
+ 	u32 val;
+ 	unsigned long rate;
+@@ -180,8 +179,7 @@ static int bcm2835_thermal_probe(struct platform_device *pdev)
+ 	if (!match)
+ 		return -EINVAL;
  
- 	/* First memory region points towards the status register */
 -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	base = devm_ioremap_resource(&pdev->dev, res);
-+	base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(base))
- 		return PTR_ERR(base);
- 
+-	data->regs = devm_ioremap_resource(&pdev->dev, res);
++	data->regs = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(data->regs)) {
+ 		err = PTR_ERR(data->regs);
+ 		dev_err(&pdev->dev, "Could not get registers: %d\n", err);
 -- 
 2.7.4
