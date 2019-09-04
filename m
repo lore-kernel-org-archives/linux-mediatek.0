@@ -1,7 +1,7 @@
 From: YueHaibing <yuehaibing@huawei.com>
-Subject: [PATCH -next 07/15] thermal: kirkwood: use devm_platform_ioremap_resource() to simplify code
-Date: Wed, 4 Sep 2019 20:29:31 +0800
-Message-ID: <20190904122939.23780-8-yuehaibing@huawei.com>
+Subject: [PATCH -next 10/15] thermal: spear: use devm_platform_ioremap_resource() to simplify code
+Date: Wed, 4 Sep 2019 20:29:34 +0800
+Message-ID: <20190904122939.23780-11-yuehaibing@huawei.com>
 References: <20190904122939.23780-1-yuehaibing@huawei.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -18,28 +18,30 @@ This is detected by coccinelle.
 Reported-by: Hulk Robot <hulkci@huawei.com>
 Signed-off-by: YueHaibing <yuehaibing@huawei.com>
 ---
- drivers/thermal/kirkwood_thermal.c | 4 +---
+ drivers/thermal/spear_thermal.c | 4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/thermal/kirkwood_thermal.c b/drivers/thermal/kirkwood_thermal.c
-index 189b675..762ef12 100644
---- a/drivers/thermal/kirkwood_thermal.c
-+++ b/drivers/thermal/kirkwood_thermal.c
-@@ -64,14 +64,12 @@ static int kirkwood_thermal_probe(struct platform_device *pdev)
- {
- 	struct thermal_zone_device *thermal = NULL;
- 	struct kirkwood_thermal_priv *priv;
+diff --git a/drivers/thermal/spear_thermal.c b/drivers/thermal/spear_thermal.c
+index f68f581..19c690f 100644
+--- a/drivers/thermal/spear_thermal.c
++++ b/drivers/thermal/spear_thermal.c
+@@ -91,7 +91,6 @@ static int spear_thermal_probe(struct platform_device *pdev)
+ 	struct thermal_zone_device *spear_thermal = NULL;
+ 	struct spear_thermal_dev *stdev;
+ 	struct device_node *np = pdev->dev.of_node;
 -	struct resource *res;
+ 	int ret = 0, val;
  
- 	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
- 	if (!priv)
+ 	if (!np || !of_property_read_u32(np, "st,thermal-flags", &val)) {
+@@ -104,8 +103,7 @@ static int spear_thermal_probe(struct platform_device *pdev)
  		return -ENOMEM;
  
+ 	/* Enable thermal sensor */
 -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	priv->sensor = devm_ioremap_resource(&pdev->dev, res);
-+	priv->sensor = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(priv->sensor))
- 		return PTR_ERR(priv->sensor);
+-	stdev->thermal_base = devm_ioremap_resource(&pdev->dev, res);
++	stdev->thermal_base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(stdev->thermal_base))
+ 		return PTR_ERR(stdev->thermal_base);
  
 -- 
 2.7.4
