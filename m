@@ -1,7 +1,7 @@
 From: YueHaibing <yuehaibing@huawei.com>
-Subject: [PATCH -next 02/15] thermal: bcm2835: use devm_platform_ioremap_resource() to simplify code
-Date: Wed, 4 Sep 2019 20:29:26 +0800
-Message-ID: <20190904122939.23780-3-yuehaibing@huawei.com>
+Subject: [PATCH -next 04/15] thermal: hisilicon: use devm_platform_ioremap_resource() to simplify code
+Date: Wed, 4 Sep 2019 20:29:28 +0800
+Message-ID: <20190904122939.23780-5-yuehaibing@huawei.com>
 References: <20190904122939.23780-1-yuehaibing@huawei.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -18,30 +18,30 @@ This is detected by coccinelle.
 Reported-by: Hulk Robot <hulkci@huawei.com>
 Signed-off-by: YueHaibing <yuehaibing@huawei.com>
 ---
- drivers/thermal/broadcom/bcm2835_thermal.c | 4 +---
+ drivers/thermal/hisi_thermal.c | 4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/thermal/broadcom/bcm2835_thermal.c b/drivers/thermal/broadcom/bcm2835_thermal.c
-index 3199977..01eec8e 100644
---- a/drivers/thermal/broadcom/bcm2835_thermal.c
-+++ b/drivers/thermal/broadcom/bcm2835_thermal.c
-@@ -166,7 +166,6 @@ static int bcm2835_thermal_probe(struct platform_device *pdev)
- 	const struct of_device_id *match;
- 	struct thermal_zone_device *tz;
- 	struct bcm2835_thermal_data *data;
+diff --git a/drivers/thermal/hisi_thermal.c b/drivers/thermal/hisi_thermal.c
+index 2d26ae8..8c0e002 100644
+--- a/drivers/thermal/hisi_thermal.c
++++ b/drivers/thermal/hisi_thermal.c
+@@ -557,7 +557,6 @@ static int hisi_thermal_probe(struct platform_device *pdev)
+ {
+ 	struct hisi_thermal_data *data;
+ 	struct device *dev = &pdev->dev;
 -	struct resource *res;
- 	int err = 0;
- 	u32 val;
- 	unsigned long rate;
-@@ -180,8 +179,7 @@ static int bcm2835_thermal_probe(struct platform_device *pdev)
- 	if (!match)
- 		return -EINVAL;
+ 	int i, ret;
+ 
+ 	data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
+@@ -568,8 +567,7 @@ static int hisi_thermal_probe(struct platform_device *pdev)
+ 	platform_set_drvdata(pdev, data);
+ 	data->ops = of_device_get_match_data(dev);
  
 -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	data->regs = devm_ioremap_resource(&pdev->dev, res);
+-	data->regs = devm_ioremap_resource(dev, res);
 +	data->regs = devm_platform_ioremap_resource(pdev, 0);
  	if (IS_ERR(data->regs)) {
- 		err = PTR_ERR(data->regs);
- 		dev_err(&pdev->dev, "Could not get registers: %d\n", err);
+ 		dev_err(dev, "failed to get io address\n");
+ 		return PTR_ERR(data->regs);
 -- 
 2.7.4
