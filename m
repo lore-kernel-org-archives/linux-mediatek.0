@@ -1,7 +1,7 @@
 From: YueHaibing <yuehaibing@huawei.com>
-Subject: [PATCH -next 11/15] thermal: stm32: use devm_platform_ioremap_resource() to simplify code
-Date: Wed, 4 Sep 2019 20:29:35 +0800
-Message-ID: <20190904122939.23780-12-yuehaibing@huawei.com>
+Subject: [PATCH -next 13/15] thermal: thermal_mmio: use devm_platform_ioremap_resource() to simplify code
+Date: Wed, 4 Sep 2019 20:29:37 +0800
+Message-ID: <20190904122939.23780-14-yuehaibing@huawei.com>
 References: <20190904122939.23780-1-yuehaibing@huawei.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -18,30 +18,30 @@ This is detected by coccinelle.
 Reported-by: Hulk Robot <hulkci@huawei.com>
 Signed-off-by: YueHaibing <yuehaibing@huawei.com>
 ---
- drivers/thermal/st/stm_thermal.c | 4 +---
+ drivers/thermal/thermal_mmio.c | 4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/thermal/st/stm_thermal.c b/drivers/thermal/st/stm_thermal.c
-index cf9ddc5..a5d85f5 100644
---- a/drivers/thermal/st/stm_thermal.c
-+++ b/drivers/thermal/st/stm_thermal.c
-@@ -611,7 +611,6 @@ MODULE_DEVICE_TABLE(of, stm_thermal_of_match);
- static int stm_thermal_probe(struct platform_device *pdev)
+diff --git a/drivers/thermal/thermal_mmio.c b/drivers/thermal/thermal_mmio.c
+index 40524fa..1663152 100644
+--- a/drivers/thermal/thermal_mmio.c
++++ b/drivers/thermal/thermal_mmio.c
+@@ -40,7 +40,6 @@ static struct thermal_zone_of_device_ops thermal_mmio_ops = {
+ 
+ static int thermal_mmio_probe(struct platform_device *pdev)
  {
- 	struct stm_thermal_sensor *sensor;
--	struct resource *res;
- 	const struct thermal_trip *trip;
- 	void __iomem *base;
- 	int ret, i;
-@@ -630,8 +629,7 @@ static int stm_thermal_probe(struct platform_device *pdev)
+-	struct resource *resource;
+ 	struct thermal_mmio *sensor;
+ 	int (*sensor_init_func)(struct platform_device *pdev,
+ 				struct thermal_mmio *sensor);
+@@ -52,8 +51,7 @@ static int thermal_mmio_probe(struct platform_device *pdev)
+ 	if (!sensor)
+ 		return -ENOMEM;
  
- 	sensor->dev = &pdev->dev;
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	base = devm_ioremap_resource(&pdev->dev, res);
-+	base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(base))
- 		return PTR_ERR(base);
- 
+-	resource = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	sensor->mmio_base = devm_ioremap_resource(&pdev->dev, resource);
++	sensor->mmio_base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(sensor->mmio_base)) {
+ 		dev_err(&pdev->dev, "failed to ioremap memory (%ld)\n",
+ 			PTR_ERR(sensor->mmio_base));
 -- 
 2.7.4
