@@ -1,28 +1,28 @@
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v3 0/7]  add support USB for MT8183
-Date: Wed, 4 Sep 2019 09:06:16 +0200
-Message-ID: <20190904070616.GC18791@kroah.com>
-References: <1567150854-30033-1-git-send-email-chunfeng.yun@mediatek.com>
- <1567562067.7317.52.camel@mhfsdcap03>
+From: Chaotian Jing <chaotian.jing@mediatek.com>
+Subject: fix device in programming state after ioctl()
+Date: Wed, 4 Sep 2019 15:54:42 +0800
+Message-ID: <20190904075444.2163-1-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1567562067.7317.52.camel@mhfsdcap03>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mathias Nyman <mathias.nyman@intel.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Jens Axboe <axboe@kernel.dk>, Hannes Reinecke <hare@suse.de>, Chaotian Jing <chaotian.jing@mediatek.com>, Avri Altman <avri.altman@wdc.com>, YueHaibing <yuehaibing@huawei.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Ming Lei <ming.lei@redhat.com>, Chris Boot <bootc@bootc.net>, Zachary Hays <zhays@lexmark.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Sep 04, 2019 at 09:54:27AM +0800, Chunfeng Yun wrote:
-> Hi Greg,
-> 
-> 
->   Please don't try to pick up this series, the dependent ones are still
-> under public review, I'll fix build warning and send out new version
-> after the dependent ones are applied
->   Sorry for inconvenience
+the user space program may access eMMC by ioctl(), after the ioctl() was
+completed, it should ensure that eMMC is in transfer state, or it will
+cause other thread which access eMMC got timeout error, as it assume that
+card was in transfer state.
 
-No problem, now dropped from my review queue.
+this patch add CMD13 polling for R1B command to avoid this issue.
 
-greg k-h
+Chaotian Jing (2):
+  mmc: block: make the card_busy_detect() more generic
+  mmc: block: add CMD13 polling for ioctl() cmd with R1B response
+
+ drivers/mmc/core/block.c | 111 ++++++++++++++++++++-------------------
+ 1 file changed, 57 insertions(+), 54 deletions(-)
+
+-- 
+2.18.0
