@@ -1,7 +1,7 @@
 From: YueHaibing <yuehaibing@huawei.com>
-Subject: [PATCH -next 04/15] thermal: hisilicon: use devm_platform_ioremap_resource() to simplify code
-Date: Wed, 4 Sep 2019 20:29:28 +0800
-Message-ID: <20190904122939.23780-5-yuehaibing@huawei.com>
+Subject: [PATCH -next 05/15] thermal: dove: use devm_platform_ioremap_resource() to simplify code
+Date: Wed, 4 Sep 2019 20:29:29 +0800
+Message-ID: <20190904122939.23780-6-yuehaibing@huawei.com>
 References: <20190904122939.23780-1-yuehaibing@huawei.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -18,30 +18,35 @@ This is detected by coccinelle.
 Reported-by: Hulk Robot <hulkci@huawei.com>
 Signed-off-by: YueHaibing <yuehaibing@huawei.com>
 ---
- drivers/thermal/hisi_thermal.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/thermal/dove_thermal.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/thermal/hisi_thermal.c b/drivers/thermal/hisi_thermal.c
-index 2d26ae8..8c0e002 100644
---- a/drivers/thermal/hisi_thermal.c
-+++ b/drivers/thermal/hisi_thermal.c
-@@ -557,7 +557,6 @@ static int hisi_thermal_probe(struct platform_device *pdev)
+diff --git a/drivers/thermal/dove_thermal.c b/drivers/thermal/dove_thermal.c
+index 75901ce..e53ac71 100644
+--- a/drivers/thermal/dove_thermal.c
++++ b/drivers/thermal/dove_thermal.c
+@@ -122,20 +122,17 @@ static int dove_thermal_probe(struct platform_device *pdev)
  {
- 	struct hisi_thermal_data *data;
- 	struct device *dev = &pdev->dev;
+ 	struct thermal_zone_device *thermal = NULL;
+ 	struct dove_thermal_priv *priv;
 -	struct resource *res;
- 	int i, ret;
+ 	int ret;
  
- 	data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
-@@ -568,8 +567,7 @@ static int hisi_thermal_probe(struct platform_device *pdev)
- 	platform_set_drvdata(pdev, data);
- 	data->ops = of_device_get_match_data(dev);
+ 	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
+ 	if (!priv)
+ 		return -ENOMEM;
  
 -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	data->regs = devm_ioremap_resource(dev, res);
-+	data->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(data->regs)) {
- 		dev_err(dev, "failed to get io address\n");
- 		return PTR_ERR(data->regs);
+-	priv->sensor = devm_ioremap_resource(&pdev->dev, res);
++	priv->sensor = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(priv->sensor))
+ 		return PTR_ERR(priv->sensor);
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 1);
+-	priv->control = devm_ioremap_resource(&pdev->dev, res);
++	priv->control = devm_platform_ioremap_resource(pdev, 1);
+ 	if (IS_ERR(priv->control))
+ 		return PTR_ERR(priv->control);
+ 
 -- 
 2.7.4
