@@ -1,7 +1,7 @@
 From: YueHaibing <yuehaibing@huawei.com>
-Subject: [PATCH -next 13/15] thermal: thermal_mmio: use devm_platform_ioremap_resource() to simplify code
-Date: Wed, 4 Sep 2019 20:29:37 +0800
-Message-ID: <20190904122939.23780-14-yuehaibing@huawei.com>
+Subject: [PATCH -next 15/15] thermal: rcar: use devm_platform_ioremap_resource() to simplify code
+Date: Wed, 4 Sep 2019 20:29:39 +0800
+Message-ID: <20190904122939.23780-16-yuehaibing@huawei.com>
 References: <20190904122939.23780-1-yuehaibing@huawei.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -18,30 +18,24 @@ This is detected by coccinelle.
 Reported-by: Hulk Robot <hulkci@huawei.com>
 Signed-off-by: YueHaibing <yuehaibing@huawei.com>
 ---
- drivers/thermal/thermal_mmio.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/thermal/rcar_thermal.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/thermal/thermal_mmio.c b/drivers/thermal/thermal_mmio.c
-index 40524fa..1663152 100644
---- a/drivers/thermal/thermal_mmio.c
-+++ b/drivers/thermal/thermal_mmio.c
-@@ -40,7 +40,6 @@ static struct thermal_zone_of_device_ops thermal_mmio_ops = {
+diff --git a/drivers/thermal/rcar_thermal.c b/drivers/thermal/rcar_thermal.c
+index d0873de..d7f6aab 100644
+--- a/drivers/thermal/rcar_thermal.c
++++ b/drivers/thermal/rcar_thermal.c
+@@ -523,9 +523,8 @@ static int rcar_thermal_probe(struct platform_device *pdev)
+ 			 * Then, driver uses common registers
+ 			 * rcar_has_irq_support() will be enabled
+ 			 */
+-			res = platform_get_resource(pdev, IORESOURCE_MEM,
+-						    mres++);
+-			common->base = devm_ioremap_resource(dev, res);
++			common->base = devm_platform_ioremap_resource(pdev,
++								      mres++);
+ 			if (IS_ERR(common->base))
+ 				return PTR_ERR(common->base);
  
- static int thermal_mmio_probe(struct platform_device *pdev)
- {
--	struct resource *resource;
- 	struct thermal_mmio *sensor;
- 	int (*sensor_init_func)(struct platform_device *pdev,
- 				struct thermal_mmio *sensor);
-@@ -52,8 +51,7 @@ static int thermal_mmio_probe(struct platform_device *pdev)
- 	if (!sensor)
- 		return -ENOMEM;
- 
--	resource = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	sensor->mmio_base = devm_ioremap_resource(&pdev->dev, resource);
-+	sensor->mmio_base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(sensor->mmio_base)) {
- 		dev_err(&pdev->dev, "failed to ioremap memory (%ld)\n",
- 			PTR_ERR(sensor->mmio_base));
 -- 
 2.7.4
