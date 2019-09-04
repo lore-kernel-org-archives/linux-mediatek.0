@@ -1,7 +1,7 @@
 From: YueHaibing <yuehaibing@huawei.com>
-Subject: [PATCH -next 15/15] thermal: rcar: use devm_platform_ioremap_resource() to simplify code
-Date: Wed, 4 Sep 2019 20:29:39 +0800
-Message-ID: <20190904122939.23780-16-yuehaibing@huawei.com>
+Subject: [PATCH -next 14/15] thermal: zx2967: use devm_platform_ioremap_resource() to simplify code
+Date: Wed, 4 Sep 2019 20:29:38 +0800
+Message-ID: <20190904122939.23780-15-yuehaibing@huawei.com>
 References: <20190904122939.23780-1-yuehaibing@huawei.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -18,24 +18,29 @@ This is detected by coccinelle.
 Reported-by: Hulk Robot <hulkci@huawei.com>
 Signed-off-by: YueHaibing <yuehaibing@huawei.com>
 ---
- drivers/thermal/rcar_thermal.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ drivers/thermal/zx2967_thermal.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/thermal/rcar_thermal.c b/drivers/thermal/rcar_thermal.c
-index d0873de..d7f6aab 100644
---- a/drivers/thermal/rcar_thermal.c
-+++ b/drivers/thermal/rcar_thermal.c
-@@ -523,9 +523,8 @@ static int rcar_thermal_probe(struct platform_device *pdev)
- 			 * Then, driver uses common registers
- 			 * rcar_has_irq_support() will be enabled
- 			 */
--			res = platform_get_resource(pdev, IORESOURCE_MEM,
--						    mres++);
--			common->base = devm_ioremap_resource(dev, res);
-+			common->base = devm_platform_ioremap_resource(pdev,
-+								      mres++);
- 			if (IS_ERR(common->base))
- 				return PTR_ERR(common->base);
+diff --git a/drivers/thermal/zx2967_thermal.c b/drivers/thermal/zx2967_thermal.c
+index 7c8a82c..b67e776 100644
+--- a/drivers/thermal/zx2967_thermal.c
++++ b/drivers/thermal/zx2967_thermal.c
+@@ -117,15 +117,13 @@ static const struct thermal_zone_of_device_ops zx2967_of_thermal_ops = {
+ static int zx2967_thermal_probe(struct platform_device *pdev)
+ {
+ 	struct zx2967_thermal_priv *priv;
+-	struct resource *res;
+ 	int ret;
+ 
+ 	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
+ 	if (!priv)
+ 		return -ENOMEM;
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	priv->regs = devm_ioremap_resource(&pdev->dev, res);
++	priv->regs = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(priv->regs))
+ 		return PTR_ERR(priv->regs);
  
 -- 
 2.7.4
