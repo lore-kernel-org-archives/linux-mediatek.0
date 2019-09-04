@@ -1,101 +1,58 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH] [MT6660] Mediatek Smart Amplifier Driver
-Date: Wed, 4 Sep 2019 12:56:30 +0100
-Message-ID: <20190904115630.GA4348@sirena.co.uk>
-References: <1567494501-3427-1-git-send-email-richtek.jeff.chang@gmail.com>
- <20190903163829.GB7916@sirena.co.uk>
- <1a776762-ee65-7344-4bca-c82e16badffa@gmail.com>
+From: YueHaibing <yuehaibing@huawei.com>
+Subject: [PATCH -next 00/15] use devm_platform_ioremap_resource() to simplify code
+Date: Wed, 4 Sep 2019 20:29:24 +0800
+Message-ID: <20190904122939.23780-1-yuehaibing@huawei.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="xHFwDpU9dbj6ez1V"
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1a776762-ee65-7344-4bca-c82e16badffa@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Richtek Jeff Chang <richtek.jeff.chang@gmail.com>
-Cc: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, matthias.bgg@gmail.com, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: miquel.raynal@bootlin.com, rui.zhang@intel.com, edubezval@gmail.com, daniel.lezcano@linaro.org, amit.kucheria@verdurent.com, eric@anholt.net, wahrenst@gmx.net, f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, mmayer@broadcom.com, computersforpeace@gmail.com, gregory.0xf0@gmail.com, matthias.bgg@gmail.com, agross@kernel.org, heiko@sntech.de, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, marc.w.gonzalez@free.fr, mans@mansr.com, talel@amazon.com, jun.nie@linaro.org, shawnguo@kernel.org, phil@raspberrypi.org, yuehaibing@huawei.com, gregkh@linuxfoundation.org, david.hernandezsanchez@st.com, horms+renesas@verge.net.au, wsa+renesas@sang-engineering.com
+Cc: bcm-kernel-feedback-list@broadcom.com, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
 List-Id: linux-mediatek@lists.infradead.org
 
+devm_platform_ioremap_resource() internally have platform_get_resource()
+and devm_ioremap_resource() in it. So instead of calling them separately
+use devm_platform_ioremap_resource() directly.
 
---xHFwDpU9dbj6ez1V
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+YueHaibing (15):
+  thermal: armada: use devm_platform_ioremap_resource() to simplify code
+  thermal: bcm2835: use devm_platform_ioremap_resource() to simplify
+    code
+  thermal: brcmstb: use devm_platform_ioremap_resource() to simplify
+    code
+  thermal: hisilicon: use devm_platform_ioremap_resource() to simplify
+    code
+  thermal: dove: use devm_platform_ioremap_resource() to simplify code
+  thermal: mtk: use devm_platform_ioremap_resource() to simplify code
+  thermal: kirkwood: use devm_platform_ioremap_resource() to simplify
+    code
+  thermal: tsens: use devm_platform_ioremap_resource() to simplify code
+  thermal: rockchip: use devm_platform_ioremap_resource() to simplify
+    code
+  thermal: spear: use devm_platform_ioremap_resource() to simplify code
+  thermal: stm32: use devm_platform_ioremap_resource() to simplify code
+  thermal: tango: use devm_platform_ioremap_resource() to simplify code
+  thermal: thermal_mmio: use devm_platform_ioremap_resource() to
+    simplify code
+  thermal: zx2967: use devm_platform_ioremap_resource() to simplify code
+  thermal: rcar: use devm_platform_ioremap_resource() to simplify code
 
-On Wed, Sep 04, 2019 at 03:07:06PM +0800, Richtek Jeff Chang wrote:
+ drivers/thermal/armada_thermal.c           | 4 +---
+ drivers/thermal/broadcom/bcm2835_thermal.c | 4 +---
+ drivers/thermal/broadcom/brcmstb_thermal.c | 4 +---
+ drivers/thermal/dove_thermal.c             | 7 ++-----
+ drivers/thermal/hisi_thermal.c             | 4 +---
+ drivers/thermal/kirkwood_thermal.c         | 4 +---
+ drivers/thermal/mtk_thermal.c              | 4 +---
+ drivers/thermal/qcom/tsens-common.c        | 7 ++-----
+ drivers/thermal/rcar_thermal.c             | 5 ++---
+ drivers/thermal/rockchip_thermal.c         | 4 +---
+ drivers/thermal/spear_thermal.c            | 4 +---
+ drivers/thermal/st/stm_thermal.c           | 4 +---
+ drivers/thermal/tango_thermal.c            | 4 +---
+ drivers/thermal/thermal_mmio.c             | 4 +---
+ drivers/thermal/zx2967_thermal.c           | 4 +---
+ 15 files changed, 18 insertions(+), 49 deletions(-)
 
-> > > +static int32_t mt6660_i2c_update_bits(struct mt6660_chip *chip,
-> > > +	uint32_t addr, uint32_t mask, uint32_t data)
-> > > +{
-
-> > It would be good to implement a regmap rather than open coding
-> > *everything* - it'd give you things like this without needing to open
-> > code them.  Providing you don't use the cache code it should cope fine
-> > with variable register sizes.
-
-> Due to our hardware design, it is hard to implement regmap for MT6660.
-
-You definitely can't use all the functionality due to the variable
-register sizes but using reg_write() and reg_read() should get you most
-of it.
-
-> > > +static int mt6660_i2c_init_setting(struct mt6660_chip *chip)
-> > > +{
-> > > +	int i, len, ret;
-> > > +	const struct codec_reg_val *init_table;
-> > > +
-> > > +	init_table = e4_reg_inits;
-> > > +	len = ARRAY_SIZE(e4_reg_inits);
-> > > +
-> > > +	for (i = 0; i < len; i++) {
-> > > +		ret = mt6660_i2c_update_bits(chip, init_table[i].addr,
-> > > +				init_table[i].mask, init_table[i].data);
-> > > +		if (ret < 0)
-> > > +			return ret;
-
-> > Why are we not using the chip defaults here?
-
-> Because MT6660 needs this initial setting for working well.
-
-What are these settings?  Are you sure they are generic settings and
-not board specific?
-
-> > > +	if (on_off) {
-> > > +		if (chip->pwr_cnt == 0) {
-> > > +			ret = mt6660_i2c_update_bits(chip,
-> > > +				MT6660_REG_SYSTEM_CTRL, 0x01, 0x00);
-> > > +			val = mt6660_i2c_read(chip, MT6660_REG_IRQ_STATUS1);
-> > > +			dev_info(chip->dev,
-> > > +				"%s reg0x05 = 0x%x\n", __func__, val);
-> > > +		}
-> > > +		chip->pwr_cnt++;
-
-> > This looks like you're open coding runtime PM stuff?  AFAICT the issue
-> > is that you need to write to this register to do any I/O.  Just
-> > implement this via the standard runtime PM framework, you'll need to do
-> > something about the register I/O in the controls (ideally in the
-> > framework, it'd be a lot easier if you did have a cache) but you could
-> > cut out this bit.
-
-> In our experience, some Customer platform doesn't support runtime PM.
-
-Tell your customers to turn it on, it's a standard kernel framework and
-there's really no excuse for open coding it.  If there's some reason why
-runtime PM can't work for them then we should get that fixed but it
-really is *very* widely deployed.
-
---xHFwDpU9dbj6ez1V
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl1vpm0ACgkQJNaLcl1U
-h9D/Wgf/fF6J63LckawJfQOykVgSmyHQqs469Lx+ZiWwED24peJ4nfDP41ehqc2N
-jIXIbNv3uhy0SKfDxmczPs6zHyy+XgWw3pHOHVQR7SX2ZBIU/JwBYSYtmJiZW9yo
-GWU/tn7Yql2ApiXs1VRjJfCeiHWCpPg4WTAGOjP2LUeALkQasMQI9nwtqEoJWSyz
-tZ15Q9sb3HyKa1Pl0qmh4IPIIQvCtpvD3DdTyHs8OZGFlWzUg5WC17sjRLpbqgxd
-d75ADeY84KntmV55haCavSYQGD5cjIMD1pWRc5Ln0yOUKO3H3gwUHqgOgafmUbmc
-cTfAzmpdBvy1P5aHKQZ0z6uU7LT39g==
-=jNHe
------END PGP SIGNATURE-----
-
---xHFwDpU9dbj6ez1V--
+-- 
+2.7.4
