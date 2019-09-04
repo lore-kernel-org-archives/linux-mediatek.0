@@ -1,186 +1,118 @@
-From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [RFC PATCH V2 4/4] platform: mtk-isp: Add Mediatek FD driver
-Date: Wed, 4 Sep 2019 22:12:51 +0900
-Message-ID: <CAAFQd5Ckz9qH7AnLNM4HRTM2gJQP1HXRS09+o6Prf++D1PQhng@mail.gmail.com>
-References: <1562661672-22439-1-git-send-email-Jerry-Ch.chen@mediatek.com>
- <1562661672-22439-5-git-send-email-Jerry-Ch.chen@mediatek.com>
- <20190802082815.GA203993@chromium.org> <1566724680.20680.8.camel@mtksdccf07>
- <CAAFQd5Dw+jaT-+LAUEVeB8W1zdnOgPw7u+aCfDWhYW1SfbzO8g@mail.gmail.com>
- <1566957625.20680.33.camel@mtksdccf07>
- <CAAFQd5D-Yg1FjUE_rwmqfS1gvfE0=MZ=r-ziueU_37-uo9QTbw@mail.gmail.com>
- <1567424859.18318.32.camel@mtksdccf07>
- <CAAFQd5AGgeFbto6V1KkL0dp1QPziOKV3pWQDU2OJ+S1QKvnBdg@mail.gmail.com>
- <1567493081.18318.49.camel@mtksdccf07>
- <CAAFQd5DWM=R7sFHYGhhR_rXrzgRnc4xtH_t8Pig-4tcP9KTSYg@mail.gmail.com>
- <1567511169.18318.65.camel@mtksdccf07>
- <CAAFQd5DiPcUxd+R-v_-BdRx+QqZ35Riii_jpgbqr5mc3BnQvDw@mail.gmail.com>
- <1567568281.18318.80.camel@mtksdccf07>
- <CAAFQd5CRC2cyV30B4Qv59HdrJ7Cpe_yK5aY-BecQQ3J3i0PtCQ@mail.gmail.com>
- <1567577389.18318.100.camel@mtksdccf07>
- <CAAFQd5AxTQPD+nP9CJs45QTzGHKssjv3vRtMqHONABfp12afYw@mail.gmail.com>
- <1567584577.22453.11.camel@mtksdccf07>
- <CAAFQd5Dzxy10g-MKHMnNbVO6kp9_L_jm1m+gtN+p=YF2LyBiag@mail.gmail.com>
- <1567587708.22453.15.camel@mtksdccf07>
- <CAAFQd5DWfEEiGthPi=qoxD-mpAWa68GOCi55mqpmagS-tsGYkA@mail.gmail.com>
- <1567589188.22453.24.camel@mtksdccf07>
+From: Andrey Konovalov <andreyknvl@google.com>
+Subject: Re: [PATCH 1/2] mm/kasan: dump alloc/free stack for page allocator
+Date: Wed, 4 Sep 2019 15:44:37 +0200
+Message-ID: <CAAeHK+wyvLF8=DdEczHLzNXuP+oC0CEhoPmp_LHSKVNyAiRGLQ@mail.gmail.com>
+References: <20190904065133.20268-1-walter-zh.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1567589188.22453.24.camel@mtksdccf07>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jerry-ch Chen <Jerry-ch.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, =?UTF-8?B?U2VhbiBDaGVuZyAo6YSt5piH5byYKQ==?= <Sean.Cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org" <laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, =?UTF-8?B?UnlubiBXdSAo5ZCz6IKy5oGpKQ==?= <Rynn.Wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?UG8tWWFuZyBIdWFuZyAo6buD5p+P6Zm9KQ==?= <po-yang.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "suleiman-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <suleiman-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "shik-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <shik-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, =?UTF-8?B?SnVuZ28gTGluICjmnpfmmI7kv4op?= <jungo.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?U2ogSHVhbmcgKOm7g+S/oeeSiyk=?= <sj.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "yuzhao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <yuzhao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "zwisler-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <zwisler-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org" <matthias.bgg>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190904065133.20268-1-walter-zh.wu@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Walter Wu <walter-zh.wu@mediatek.com>
+Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Arnd Bergmann <arnd@arndb.de>, kasan-dev <kasan-dev@googlegroups.com>, Linux Memory Management List <linux-mm@kvack.org>, LKML <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Sep 4, 2019 at 6:26 PM Jerry-ch Chen <Jerry-ch.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+On Wed, Sep 4, 2019 at 8:51 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
 >
-> Hi Tomasz,
+> This patch is KASAN report adds the alloc/free stacks for page allocator
+> in order to help programmer to see memory corruption caused by page.
 >
-> On Wed, 2019-09-04 at 17:03 +0800, Tomasz Figa wrote:
-> > On Wed, Sep 4, 2019 at 6:02 PM Jerry-ch Chen <Jerry-ch.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> > >
-> > > Hi Tomasz,
-> > >
-> > > On Wed, 2019-09-04 at 16:25 +0800, Tomasz Figa wrote:
-> > > > On Wed, Sep 4, 2019 at 5:09 PM Jerry-ch Chen <Jerry-ch.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> > > > >
-> > > > > Hi Tomasz,
-> > > > >
-> > > > > On Wed, 2019-09-04 at 14:34 +0800, Tomasz Figa wrote:
-> > > > > > On Wed, Sep 4, 2019 at 3:09 PM Jerry-ch Chen <Jerry-ch.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> > > > > > >
-> > > > > > > Hi Tomasz,
-> > > > > > >
-> > > > > > > On Wed, 2019-09-04 at 12:15 +0800, Tomasz Figa wrote:
-> > > > > > > > On Wed, Sep 4, 2019 at 12:38 PM Jerry-ch Chen
-> > > > > > > > <Jerry-ch.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> > > > > > > > >
-> > > > > > > > > Hi Tomasz,
-> > > > > > > > >
-> > > > > > > > > On Tue, 2019-09-03 at 20:05 +0800, Tomasz Figa wrote:
-> > > > > > > > > > On Tue, Sep 3, 2019 at 8:46 PM Jerry-ch Chen <Jerry-ch.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> > > > > > > > > > >
-> > > > > > > > > > > Hi Tomasz,
-> > > > > > > > > > >
-> > > > > > > > > > > On Tue, 2019-09-03 at 15:04 +0800, Tomasz Figa wrote:
-> > > > > > > > > > > > On Tue, Sep 3, 2019 at 3:44 PM Jerry-ch Chen <Jerry-ch.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> > > > > > > > > > > > >
-> > > > > > > > > > > > > On Tue, 2019-09-03 at 13:19 +0800, Tomasz Figa wrote:
-> > > > > > > > > > > > > > On Mon, Sep 2, 2019 at 8:47 PM Jerry-ch Chen <Jerry-ch.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> > > > > > > > > > > > > > >
-> > > > > > > > > > > > > > > Hi Tomasz,
-> > > > > > > > > > > > > > >
-> > > > > > > > > > > > > > > On Fri, 2019-08-30 at 16:33 +0800, Tomasz Figa wrote:
-> > > > > > > > > > > > > > > > On Wed, Aug 28, 2019 at 11:00 AM Jerry-ch Chen
-> > > > > > > > > > > > > > > > <Jerry-ch.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> > > > > > > > > > > > > > > > >
-> > > > > > > > > > > > > > > > > Hi Tomasz,
-> > > > > > > > > > > > > > > > >
-> > > > > > > > > > > > > > > > > On Mon, 2019-08-26 at 14:36 +0800, Tomasz Figa wrote:
-> > > > > > > > > > > > > > > > > > Hi Jerry,
-> > > > > > > > > > > > > > > > > >
-> > > > > > > > > > > > > > > > > > On Sun, Aug 25, 2019 at 6:18 PM Jerry-ch Chen
-> > > > > > > > > > > > > > > > > > <Jerry-ch.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> > > > > > > > > > > > > > > > > > >
-> > > > > > > > > > > > > > > > > > > Hi Tomasz,
-> > > > > > > > > > > > > > > > > > >
-> > > > > > > > > > > > > > > > > > > On Fri, 2019-08-02 at 16:28 +0800, Tomasz Figa wrote:
-> > > > > > > > > > > > > > > > > > > > Hi Jerry,
-> > > > > > > > > > > > > > > > > > > >
-> > > > > > > > > > > > > > > > > > > > On Tue, Jul 09, 2019 at 04:41:12PM +0800, Jerry-ch Chen wrote:
-> [snip]
-> > > > > static void mtk_fd_vb2_stop_streaming(struct vb2_queue *vq)
-> > > > > {
-> > > > >         struct mtk_fd_ctx *ctx = vb2_get_drv_priv(vq);
-> > > > >         struct mtk_fd_dev *fd = ctx->fd_dev;
-> > > > >         struct vb2_v4l2_buffer *vb;
-> > > > >         struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
-> > > > >         struct v4l2_m2m_queue_ctx *queue_ctx;
-> > > > >         u32 ret;
-> > > > >
-> > > > >         if (!fd->fd_irq_done.done)
-> > > >
-> > > > We shouldn't access internal fields of completion.
-> > > >
-> > > > >                 ret = wait_for_completion_timeout(&fd->fd_irq_done,
-> > > > >                                                   msecs_to_jiffies(
-> > > > >                                                         MTK_FD_HW_TIMEOUT));
-> > > > >         queue_ctx = V4L2_TYPE_IS_OUTPUT(vq->type) ?
-> > > > >                                         &m2m_ctx->out_q_ctx :
-> > > > >                                         &m2m_ctx->cap_q_ctx;
-> > > > >         while ((vb = v4l2_m2m_buf_remove(queue_ctx)))
-> > > > >                 v4l2_m2m_buf_done(vb, VB2_BUF_STATE_ERROR);
-> > > > >
-> > > > >         if (vq->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
-> > > > >                 mtk_fd_hw_disconnect(fd);
-> > > > > }
-> > > > >
-> > > > > I've also tried to wait completion unconditionally for both queues and
-> > > > > the second time will wait until timeout, as a result, it takes longer to
-> > > > > swap the camera every time and close the camera app.
-> > > >
-> > > > I think it should work better if we call complete_all() instead of complete().
-> > > >
-> > > Thanks,
-> > >
-> > > I use complete_all(), and it works fine now.
-> > >
-> > > static void mtk_fd_vb2_stop_streaming(struct vb2_queue *vq)
-> > > {
-> > >         struct mtk_fd_ctx *ctx = vb2_get_drv_priv(vq);
-> > >         struct mtk_fd_dev *fd = ctx->fd_dev;
-> > >         struct vb2_v4l2_buffer *vb;
-> > >         struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
-> > >         struct v4l2_m2m_queue_ctx *queue_ctx;
-> > >
-> > >         wait_for_completion_timeout(&fd->fd_irq_done,
-> > >                                           msecs_to_jiffies(MTK_FD_HW_TIMEOUT));
-> >
-> > Shouldn't we still send some command to the hardware to stop? Like a
-> > reset. Otherwise we don't know if it isn't still accessing the memory.
-> >
-> I thought no more jobs will be enqueued here when stop_streaming so we
-> don't need it.
+> By default, KASAN doesn't record alloc/free stack for page allocator.
+> It is difficult to fix up page use-after-free issue.
+>
+> This feature depends on page owner to record the last stack of pages.
+> It is very helpful for solving the page use-after-free or out-of-bound.
+>
+> KASAN report will show the last stack of page, it may be:
+> a) If page is in-use state, then it prints alloc stack.
+>    It is useful to fix up page out-of-bound issue.
+>
+> BUG: KASAN: slab-out-of-bounds in kmalloc_pagealloc_oob_right+0x88/0x90
+> Write of size 1 at addr ffffffc0d64ea00a by task cat/115
+> ...
+> Allocation stack of page:
+>  prep_new_page+0x1a0/0x1d8
+>  get_page_from_freelist+0xd78/0x2748
+>  __alloc_pages_nodemask+0x1d4/0x1978
+>  kmalloc_order+0x28/0x58
+>  kmalloc_order_trace+0x28/0xe0
+>  kmalloc_pagealloc_oob_right+0x2c/0x90
+>
+> b) If page is freed state, then it prints free stack.
+>    It is useful to fix up page use-after-free issue.
+>
+> BUG: KASAN: use-after-free in kmalloc_pagealloc_uaf+0x70/0x80
+> Write of size 1 at addr ffffffc0d651c000 by task cat/115
+> ...
+> Free stack of page:
+>  kasan_free_pages+0x68/0x70
+>  __free_pages_ok+0x3c0/0x1328
+>  __free_pages+0x50/0x78
+>  kfree+0x1c4/0x250
+>  kmalloc_pagealloc_uaf+0x38/0x80
+>
+>
+> This has been discussed, please refer below link.
+> https://bugzilla.kernel.org/show_bug.cgi?id=203967
+>
+> Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+> ---
+>  lib/Kconfig.kasan | 9 +++++++++
+>  mm/kasan/common.c | 6 ++++++
+>  2 files changed, 15 insertions(+)
+>
+> diff --git a/lib/Kconfig.kasan b/lib/Kconfig.kasan
+> index 4fafba1a923b..ba17f706b5f8 100644
+> --- a/lib/Kconfig.kasan
+> +++ b/lib/Kconfig.kasan
+> @@ -135,6 +135,15 @@ config KASAN_S390_4_LEVEL_PAGING
+>           to 3TB of RAM with KASan enabled). This options allows to force
+>           4-level paging instead.
+>
+> +config KASAN_DUMP_PAGE
+> +       bool "Dump the page last stack information"
+> +       depends on KASAN && PAGE_OWNER
+> +       help
+> +         By default, KASAN doesn't record alloc/free stack for page allocator.
+> +         It is difficult to fix up page use-after-free issue.
+> +         This feature depends on page owner to record the last stack of page.
+> +         It is very helpful for solving the page use-after-free or out-of-bound.
 
-That's true for the case when the wait completed successfully, but we
-also need to ensure the hardware is stopped even if a timeout happens.
+I'm not sure if we need a separate config for this. Is there any
+reason to not have this enabled by default?
 
-> We still could send an ipi command to reset the HW, and wait for it's
-> callback or we could set the register MTK_FD_REG_OFFSET_HW_ENABLE to
-> zero to disable the HW.
-
-Since it's for handling a timeout, a reset should be more likely to
-bring the hardware back to a reasonable state.
-
+> +
+>  config TEST_KASAN
+>         tristate "Module for testing KASAN for bug detection"
+>         depends on m && KASAN
+> diff --git a/mm/kasan/common.c b/mm/kasan/common.c
+> index 2277b82902d8..2a32474efa74 100644
+> --- a/mm/kasan/common.c
+> +++ b/mm/kasan/common.c
+> @@ -35,6 +35,7 @@
+>  #include <linux/vmalloc.h>
+>  #include <linux/bug.h>
+>  #include <linux/uaccess.h>
+> +#include <linux/page_owner.h>
 >
-> Best regards,
-> Jerry
+>  #include "kasan.h"
+>  #include "../slab.h"
+> @@ -227,6 +228,11 @@ void kasan_alloc_pages(struct page *page, unsigned int order)
 >
-> > >         queue_ctx = V4L2_TYPE_IS_OUTPUT(vq->type) ?
-> > >                                         &m2m_ctx->out_q_ctx :
-> > >                                         &m2m_ctx->cap_q_ctx;
-> > >         while ((vb = v4l2_m2m_buf_remove(queue_ctx)))
-> > >                 v4l2_m2m_buf_done(vb, VB2_BUF_STATE_ERROR);
-> > >
-> > >         if (vq->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
-> > >                 mtk_fd_hw_disconnect(fd);
-> > > }
-> > >
-> > > Best regards,
-> > > Jerry
-> > >
-> > > > Best regards,
-> > > > Tomasz
-> > >
-> > >
+>  void kasan_free_pages(struct page *page, unsigned int order)
+>  {
+> +#ifdef CONFIG_KASAN_DUMP_PAGE
+> +       gfp_t gfp_flags = GFP_KERNEL;
+> +
+> +       set_page_owner(page, order, gfp_flags);
+> +#endif
+>         if (likely(!PageHighMem(page)))
+>                 kasan_poison_shadow(page_address(page),
+>                                 PAGE_SIZE << order,
+> --
+> 2.18.0
 >
->
+> --
+> You received this message because you are subscribed to the Google Groups "kasan-dev" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to kasan-dev+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/kasan-dev/20190904065133.20268-1-walter-zh.wu%40mediatek.com.
