@@ -1,235 +1,97 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [RFC PATCH V2 4/4] platform: mtk-isp: Add Mediatek FD driver
-Date: Thu, 5 Sep 2019 15:35:52 +0300
-Message-ID: <20190905123552.GM5035@pendragon.ideasonboard.com>
-References: <1562661672-22439-1-git-send-email-Jerry-Ch.chen@mediatek.com>
- <1562661672-22439-5-git-send-email-Jerry-Ch.chen@mediatek.com>
- <eb3bb92d-5d44-0d45-2e90-abcdb96f595d@metux.net>
- <1564380061.15267.383.camel@mtksdccf07>
- <CAAFQd5A0Qi==m4O9L2W3Qmdx4g8acs-kjBtHjLBNCBpoGd5ZSw@mail.gmail.com>
- <1564401491.15267.405.camel@mtksdccf07>
- <CAAFQd5BaCicobyRWwMDqL5zVYUG0mieA0QdTckek9L1pjwhJcA@mail.gmail.com>
+From: Jing-Ting Wu <jing-ting.wu@mediatek.com>
+Subject: Re: [PATCH 1/1] sched/rt: avoid contend with CFS task
+Date: Thu, 5 Sep 2019 21:26:39 +0800
+Message-ID: <1567689999.2389.5.camel@mtkswgap22>
+References: <1567048502-6064-1-git-send-email-jing-ting.wu@mediatek.com>
+         <d5100b2d-46c4-5811-8274-8b06710d2594@arm.com>
+         <20190830145501.zadfv2ffuu7j46ft@e107158-lin.cambridge.arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <CAAFQd5BaCicobyRWwMDqL5zVYUG0mieA0QdTckek9L1pjwhJcA@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: "laurent.pinchart+renesas@ideasonboard.com" <laurent.pinchart+renesas@ideasonboard.com>, Rynn Wu =?utf-8?B?KOWQs+iCsuaBqSk=?= <Rynn.Wu@mediatek.com>, Po-Yang Huang =?utf-8?B?KOm7g+afj+mZvSk=?= <po-yang.huang@mediatek.com>, "suleiman@chromium.org" <suleiman@chromium.org>, Jerry-ch Chen <Jerry-ch.Chen@mediatek.com>, Jungo Lin =?utf-8?B?KOael+aYjuS/iik=?= <jungo.lin@mediatek.com>, "hans.verkuil@cisco.com" <hans.verkuil@cisco.com>, Sakari Ailus <sakari.ailus@iki.fi>, Frederic Chen =?utf-8?B?KOmZs+S/iuWFgyk=?= <Frederic.Chen@mediatek.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Sj Huang =?utf-8?B?KOm7g+S/oeeSiyk=?= <sj.huang@mediatek.com>, "yuzhao@chromium.org" <yuzhao@chromium.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "matthias.bgg@gmail.com" <matthias.bg>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190830145501.zadfv2ffuu7j46ft@e107158-lin.cambridge.arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Qais Yousef <qais.yousef@arm.com>
+Cc: Valentin Schneider <valentin.schneider@arm.com>, Peter Zijlstra <peterz@infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello,
-
-On Fri, Aug 09, 2019 at 05:07:21PM +0900, Tomasz Figa wrote:
-> On Mon, Jul 29, 2019 at 8:58 PM Jerry-ch Chen wrote:
-> > On Mon, 2019-07-29 at 17:57 +0800, Tomasz Figa wrote:
-> >> On Mon, Jul 29, 2019 at 3:01 PM Jerry-ch Chen wrote:
-> >>> On Tue, 2019-07-09 at 18:56 +0800, Enrico Weigelt, metux IT consult wrote:
-> >>>> On 09.07.19 10:41, Jerry-ch Chen wrote:
-> >>>>> diff --git a/drivers/media/platform/mtk-isp/fd/mtk_fd.h b/drivers/media/platform/mtk-isp/fd/mtk_fd.h
-> >>>>> new file mode 100644
-> >>>>> index 0000000..289999b
-> >>>>> --- /dev/null
-> >>>>> +++ b/drivers/media/platform/mtk-isp/fd/mtk_fd.h
-> >>>>> @@ -0,0 +1,157 @@
-> >>>>> +/* SPDX-License-Identifier: GPL-2.0 */
-> >>>>> +//
-> >>>>> +// Copyright (c) 2018 MediaTek Inc.
-> >>>>> +
-> >>>>> +#ifndef __MTK_FD_HW_H__
-> >>>>> +#define __MTK_FD_HW_H__
-> >>>>> +
-> >>>>> +#include <linux/io.h>
-> >>>>> +#include <linux/types.h>
-> >>>>> +#include <linux/platform_device.h>
-> >>>>> +#include <media/v4l2-ctrls.h>
-> >>>>> +#include <media/v4l2-device.h>
-> >>>>> +#include <media/videobuf2-v4l2.h>
-> >>>>> +
-> >>>>> +#define MTK_FD_OUTPUT_MIN_WIDTH                    26U
-> >>>>> +#define MTK_FD_OUTPUT_MIN_HEIGHT           26U
-> >>>>> +#define MTK_FD_OUTPUT_MAX_WIDTH                    640U
-> >>>>> +#define MTK_FD_OUTPUT_MAX_HEIGHT           480U
-> >>>>> +
-> >>>>> +/* Control the user defined image widths and heights
-> >>>>> + * to be scaled and performed face detection in FD HW.
-> >>>>> + * MTK FD support up to 14 user defined image sizes to perform face detection.
-> >>>>> + */
-> >>>>> +#define V4L2_CID_MTK_FD_SCALE_IMG_WIDTH            (V4L2_CID_USER_MTK_FD_BASE + 1)
-> >>>>> +#define V4L2_CID_MTK_FD_SCALE_IMG_HEIGHT   (V4L2_CID_USER_MTK_FD_BASE + 2)
-> >>>>
-> >>>> I've got a *really* bad feeling about introducing chip specific
-> >>>> uapi stuff. (by the way: uapi stuff belongs into include/uapi/...)
-> >>>
-> >>> Thanks for your comments,
-> >>>
-> >>> If we remain chip-specific control IDs, I will move the uapi stuff into
-> >>> inlcude/uapi/mtk_fd.h (filename TBD)
-> >>>
-> >>>> Maybe you could tell us what that's *really* about, so we can find some
-> >>>> standard / chip-independent api for these things. That's one of the
-> >>>> major point of the kernel: hardware abstraction.
-> >>>
-> >>> I am not sure if it is possible for us to add some standard
-> >>> v4l2-controls for face detection, a further explanations of controls are
-> >>> listed below.
-> >>>
-> >>> In v4l2-controls, there exists V4L2_CID_DETECT_CLASS, but I haven't
-> >>> found the standards or api that can be used for face detection yet.
-> >>> https://elixir.bootlin.com/linux/latest/source/include/uapi/linux/v4l2-controls.h#L1092
-> >>>
-> >>> For detecting certain face angle and head direction, we would need
-> >>> V4L2_CID_DETECT_ANGLE, V4L2_CID_DETECT_DIRECTION controls for user to
-> >>> specify the angle and direction to be detected.
-> >>> In MTK FD driver, we support the following angles and directions to be
-> >>> selected by user, and they are both multiple selected .
-> >>> FD_angle_table[] = {-90, -45, 0 , 45, 90}
-> >>> FD_direction_table[] = {0, 30, 60, 90, 120, 150, ..., 330}
-> >>>
-> >>> Assuming these v4l2-controls are array of V4L2_CTRL_TYPE_U16 with
-> >>> dimension 5 and 12.
-> >>> User can select the desired angle and directions to be detected into
-> >>> arrays and bring it to driver by these controls, however, the more they
-> >>> select, the longer execution time needed by HW.
-> >>
-> >> Sounds like we need some kind of a menu bitmask control here, but I
-> >> don't see V4L2 having anything like that.
-> >>
-> >> Hans, Sakari, any ideas?
-> >>
-> >>> For detecting different sizes of faces and increase the detection speed,
-> >>> FD driver might need to scales down the input image into different
-> >>> smaller sizes
-> >>
-> >> Do you mean the FD hardware would do the scaling or the driver code
-> >> itself? It would be undesirable to do such scaling in a kernel driver,
-> >> so if that's not something handled by the hardware, the downscaled
-> >> image might need to be provided from the userspace.
-> >
-> > Thanks for your comments.
-> >
-> > Yes, FD hardware will do the scaling itself, so driver could set the
-> > sizes.
-> >
-> >> >, besides driver default values, user or proprietary
-> >>> algorithm library can manually set the desired image sizes, therefore,
-> >>> we would need the following controls:
-> >>> V4L2_CID_DETECT_SCALE_DOWN_IMG_WIDTH and
-> >>> V4L2_CID_DETECT_SCALE_DOWN_IMG_HEIGHT.
-> >>> In MTK FD driver, we implement these controls as array of
-> >>> V4L2_CTRL_TYPE_U16 with the dimension 15.
-> >>
-> >> Why 15?
-> >
-> > It consists of one input image size and 14 down-scaled image sizes,
-> > the amount 15 (or say 14) is defined by the MTK FD algo library,
-> > therefore I remain the number of 15 here for communicate with the
-> > library.
-> > Maybe it should be defined as following?
-> > MTK_FD_MAX_SCALE_SIZE_NUM               14
-> > and
-> > MTK_FD_SCALE_ARR_NUM                    15
-> >
-> >>> For controlling detection speed, we would need the
-> >>> V4L2_CID_DETECT_SPEED, the faster speedup implies the lower accuracy of
-> >>> detection, In MTK FD driver, the max level of speedup is 7, and default
-> >>> value is 0.
-> >>>
-> >>> For MTK FD algorithm user library, they would need select extra
-> >>> detection features(models) used in HW, we need
-> >>> V4L2_CID_MTK_FD_EXTRA_MODEL, this will be set to 1 for using extra
-> >>> model. However, we are considering make this control more
-> >>> chip-independent and can be added into standard.
-> >>> for example, V4L2_CID_DETECTION_FD_MODEL or ...FD_ALGO,
-> >>> drivers can define the detection algorithm or detection model to be used
-> >>> for users to select. How do you think?
-> >>
-> >> Sounds like something that could be a menu control, so it could vary
-> >> between drivers.
-> >
-> > Ok, and maybe it should be created by v4l2_ctrl_new_int_menu(...)?
-> >
-> >>> In short, I summery the control IDs as following:
-> >>> V4L2_CID_DETECT_ANGLE: set the angle of face in degrees. 90 ~ -90
-> >>> degrees.
-> >>> V4L2_CID_DETECT_DIRECTION: set the rotation of the head in degrees.
-> >>> 0~330 degrees.
-> >>> V4L2_CID_DETECT_SCALE_DOWN_IMG_WIDTH: set the image widths for an input
-> >>> image to be scaled down for face detection
-> >>> V4L2_CID_DETECT_SCALE_DOWN_IMG_HEIGHT: set the image heights for an
-> >>> input image to be scaled down for face detection
-> >>> V4L2_CID_DETECT_SPEED: set the detection speed, usually reducing
-> >>> accuracy.
-> >>> V4L2_CID_DETECTION_FD_MODEL: select the detection model or algorithm to
-> >>> be used by face detection driver.
-> >>>
-> >>>>> +#define ENABLE_FD                          0x111
-> >>>>> +#define FD_HW_ENABLE                               0x4
-> >>>>> +#define FD_INT_EN                          0x15c
-> >>>>> +#define FD_INT                                     0x168
-> >>>>> +#define FD_RESULT                          0x178
-> >>>>> +#define FD_IRQ_MASK                                0x001
-> >>>>> +
-> >>>>> +#define RS_MAX_BUF_SIZE                            2288788
-> >>>>> +#define FD_MAX_SPEEDUP                             7
-> >>>>> +#define FD_MAX_POSE_VAL                            0xfffffffffffffff
-> >>>>> +#define FD_DEF_POSE_VAL                            0x3ff
-> >>>>> +#define MAX_FD_SEL_NUM                             1026
-> >>>>
-> >>>> If that file is supposed to be included by anything beyond the driver
-> >>>> itself, we need proper prefixing. (same for anything else in here)
-> >>>
-> >>> I will fix it as following:
-> >>>
-> >>> #define FD_ENABLE    0x111
-> >>>
-> >>> #define FD_REG_OFFSET_HW_ENABLE  0x4
-> >>> #define FD_REG_OFFSET_INT_EN     0x15c
-> >>> #define FD_REG_OFFSET_INT_VAL    0x168
-> >>> #define FD_REG_OFFSET_RESULT     0x178
-> >>>
-> >>> #define FD_IRQ_MASK         1
-> >>> #define FD_MAX_RS_BUF_SIZE  2288788
-> >>> #define FD_MAX_SPEEDUP      7
-> >>> #define FD_MAX_RESULT_NUM   1026
-> >>
-> >> I'd suggest the MTK_FD_ prefix.
-> >
-> > Ok, I will use MTK_FD_ prefix.
-> >
-> >>>>> diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
-> >>>>> index 3dcfc61..eae876e 100644
-> >>>>> --- a/include/uapi/linux/v4l2-controls.h
-> >>>>> +++ b/include/uapi/linux/v4l2-controls.h
-> >>>>> @@ -192,6 +192,10 @@ enum v4l2_colorfx {
-> >>>>>   * We reserve 16 controls for this driver. */
-> >>>>>  #define V4L2_CID_USER_IMX_BASE                     (V4L2_CID_USER_BASE + 0x10b0)
-> >>>>>
-> >>>>> +/* The base for the mediatek FD driver controls */
-> >>>>> +/* We reserve 16 controls for this driver. */
-> >>>>> +#define V4L2_CID_USER_MTK_FD_BASE          (V4L2_CID_USER_BASE + 0x10d0)
-> >>>>
-> >>>> Why only the base, but not the actual IDs in uapi ?
-> >>>>
-> >>> I will put actual IDs in uapi/ for user to reference.
+On Fri, 2019-08-30 at 15:55 +0100, Qais Yousef wrote:
+> On 08/29/19 11:38, Valentin Schneider wrote:
+> > On 29/08/2019 04:15, Jing-Ting Wu wrote:
+> > > At original linux design, RT & CFS scheduler are independent.
+> > > Current RT task placement policy will select the first cpu in
+> > > lowest_mask, even if the first CPU is running a CFS task.
+> > > This may put RT task to a running cpu and let CFS task runnable.
+> > > 
+> > > So we select idle cpu in lowest_mask first to avoid preempting
+> > > CFS task.
+> > > 
+> > 
+> > Regarding the RT & CFS thing, that's working as intended. RT is a whole
+> > class above CFS, it shouldn't have to worry about CFS.
+> > 
+> > On the other side of things, CFS does worry about RT. We have the concept
+> > of RT-pressure in the CFS scheduler, where RT tasks will reduce a CPU's
+> > capacity (see fair.c::scale_rt_capacity()).
+> > 
+> > CPU capacity is looked at on CFS wakeup (see wake_cap() and
+> > find_idlest_cpu()), and the periodic load balancer tries to spread load
+> > over capacity, so it'll tend to put less things on CPUs that are also
+> > running RT tasks.
+> > 
+> > If RT were to start avoiding rqs with CFS tasks, we'd end up with a nasty
+> > situation were both are avoiding each other. It's even more striking when
+> > you see that RT pressure is done with a rq-wide RT util_avg, which
+> > *doesn't* get migrated when a RT task migrates. So if you decide to move
+> > a RT task to an idle CPU "B" because CPU "A" had runnable CFS tasks, the
+> > CFS scheduler will keep seeing CPU "B" as not significantly RT-pressured
+> > while that util_avg signal ramps up, whereas it would correctly see CPU
+> > "A" as RT-pressured if the RT task previously ran there.
+> > 
+> > So overall I think this is the wrong approach.
 > 
-> Enrico, any thoughts on the explanation that Jerry provided and
-> further discussion above?
+> I like the idea, but yeah tend to agree the current approach might not be
+> enough.
+> 
+> I think the major problem here is that on generic systems where CFS is a first
+> class citizen, RT tasks can be hostile to them - not always necessarily for a
+> good reason.
+> 
+> To further complicate the matter, even among CFS tasks we can't tell which are
+> more important than the others - though hopefully latency-nice proposal will
+> make the situation better.
+> 
+> So I agree we have a problem here, but I think this patch is just a temporary
+> band aid and we need to do better. Though I have no concrete suggestion yet on
+> how to do that.
+> 
+> Another thing I couldn't quantify yet how common and how severe this problem is
+> yet. Jing-Ting, if you can share the details of your use case that'd be great.
+> 
+> Cheers
+> 
+> --
+> Qais Yousef
 
-I agree with Enrico that standardising the face detection API is the way
-to go.
 
--- 
-Regards,
+I agree that the nasty situation will happen.The current approach and this patch might not be enough.
+But for requirement of performance, I think it is better to differentiate between idle CPU and CPU has CFS task.
 
-Laurent Pinchart
+For example, we use rt-app to evaluate runnable time on non-patched environment.
+There are (NR_CPUS-1) heavy CFS tasks and 1 RT Task. When a CFS task is running, the RT task wakes up and choose the same CPU.
+The CFS task will be preempted and keep runnable until it is migrated to another cpu by load balance.
+But load balance is not triggered immediately, it will be triggered until timer tick hits with some condition satisfied(ex. rq->next_balance).
+CFS tasks may be runnable for a long time. In this test case, it increase 332.091 ms runnable time for CFS task.
+
+The detailed log is shown as following, CFS task(thread1-6580) is preempted by RT task(thread0-6674) about 332ms:
+thread1-6580  [003] dnh2    94.452898: sched_wakeup: comm=thread0 pid=6674 prio=89 target_cpu=003 
+thread1-6580  [003] d..2    94.452916: sched_switch: prev_comm=thread1 prev_pid=6580 prev_prio=120 prev_state=R ==> next_comm=thread0 next_pid=6674 next_prio=89
+.... 332.091ms
+krtatm-1930  [001] d..2    94.785007: sched_migrate_task: comm=thread1 pid=6580 prio=120 orig_cpu=3 dest_cpu=1
+krtatm-1930  [001] d..2    94.785020: sched_switch: prev_comm=krtatm prev_pid=1930 prev_prio=100 prev_state=S ==> next_comm=thread1 next_pid=6580 next_prio=120
+
+So I think choose idle CPU at RT wake up flow could reduce the CFS runnable time. 
+
+
+Best regards,
+Jing-Ting Wu
