@@ -1,59 +1,67 @@
-From: Kevin Hilman <khilman@baylibre.com>
-Subject: Re: next/master boot: 310 boots: 11 failed, 292 passed with 6 offline,
- 1 untried/unknown (next-20190904)
-Date: Thu, 05 Sep 2019 12:43:04 -0700
-Message-ID: <7h4l1qsf5j.fsf@baylibre.com>
-References: <5d700b15.1c69fb81.2abcd.479b@mx.google.com>
- <20190904192725.GI4348@sirena.co.uk> <7hzhjjsime.fsf@baylibre.com>
- <20190905153938.GB4053@sirena.co.uk>
- <20190905170257.GC31268@arrakis.emea.arm.com>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Subject: Re: [PATCH 1/2] drm/mediatek: Support CMDQ interface in ddp component
+Date: Fri, 6 Sep 2019 06:49:59 +0800
+Message-ID: <CANMq1KDUR2cFrQC0NdfvLD=0QDiYoyOTGMf3RWyg5PPSURhGMQ@mail.gmail.com>
+References: <20190830074103.16671-1-bibby.hsieh@mediatek.com>
+ <20190830074103.16671-2-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190905170257.GC31268@arrakis.emea.arm.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Catalin Marinas <catalin.marinas@arm.com>, Mark Brown <broonie@kernel.org>
-Cc: Steven Liu <steven.liu@mediatek.com>, kernel-build-reports@lists.linaro.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>, Christoph Hellwig <hch@lst.de>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190830074103.16671-2-bibby.hsieh@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: Yongqiang Niu <yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, lkml <linux-kernel@vger.kernel.org>, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Guenter Roeck <groeck@chromium.org>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Catalin Marinas <catalin.marinas@arm.com> writes:
-
-> On Thu, Sep 05, 2019 at 04:39:38PM +0100, Mark Brown wrote:
->> On Wed, Sep 04, 2019 at 05:15:53PM -0700, Kevin Hilman wrote:
->> > [ + Steven Liu who donated this board to my kernelCI lab ]
->> 
->> Also adding Christoph since this was bisected to his commit and Catalin
->> and Will since this was an architecture change.
->
-> Thanks.
->
->> > Bisected down to this commit[1], full bisect log here[2].  It didn't
->> > revert cleanly on top of next-20190904, so I didn't get any further.
->> 
->> > [1]
->> > 419e2f1838819e954071dfa1d1f820ab3386ada1 is the first bad commit
->> > commit 419e2f1838819e954071dfa1d1f820ab3386ada1
->> > Author: Christoph Hellwig <hch@lst.de>
->> > Date:   Mon Aug 26 09:03:44 2019 +0200
->
-> I stared at this commit and the ones around it for a while but couldn't
-> see anything obvious. AFAICT this commit only replaces some macros, no
-> functional change.
-
-This is a an arm64 mediatek SoC (MT7622) so hopefully the folks on
-linux-mediatek can take a closer look and see what's going on here.
-
-If someone can suggest how I can enable an earlcon on this platform, I'd
-be happy to give that a try to see if we can get any kernel output
-before it hangs.
-
-Kevin
+T24gRnJpLCBBdWcgMzAsIDIwMTkgYXQgMzo0MSBQTSBCaWJieSBIc2llaCA8YmliYnkuaHNpZWhA
+bWVkaWF0ZWsuY29tPiB3cm90ZToKPgo+IFRoZSBDTURRIChDb21tYW5kIFF1ZXVlKSBpbiBNVDgx
+ODMgaXMgdXNlZCB0byBoZWxwCj4gdXBkYXRlIGFsbCByZWxldmFudCBkaXNwbGF5IGNvbnRyb2xs
+ZXIgcmVnaXN0ZXJzCj4gd2l0aCBjcml0aWNhbCB0aW1lIGxpbWF0aW9uLgo+IFRoaXMgcGF0Y2gg
+YWRkIGNtZHEgaW50ZXJmYWNlIGluIGRkcF9jb21wIGludGVyZmFjZSwKPiBsZXQgYWxsIGRkcF9j
+b21wIGludGVyZmFjZSBjYW4gc3VwcG9ydCBjcHUvY21kcSBmdW5jdGlvbgo+IGF0IHRoZSBzYW1l
+IHRpbWUuCj4KPiBTaWduZWQtb2ZmLWJ5OiBZVCBTaGVuIDx5dC5zaGVuQG1lZGlhdGVrLmNvbT4K
+PiBTaWduZWQtb2ZmLWJ5OiBDSyBIdSA8Y2suaHVAbWVkaWF0ZWsuY29tPgo+IFNpZ25lZC1vZmYt
+Ynk6IFBoaWxpcHAgWmFiZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+Cj4gU2lnbmVkLW9mZi1i
+eTogQmliYnkgSHNpZWggPGJpYmJ5LmhzaWVoQG1lZGlhdGVrLmNvbT4KPiBTaWduZWQtb2ZmLWJ5
+OiBZb25ncWlhbmcgTml1IDx5b25ncWlhbmcubml1QG1lZGlhdGVrLmNvbT4KPiAtLS0gW3NuaXBd
+Cj4gIHN0YXRpYyB2b2lkIG10a19nYW1tYV9zZXQoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCwK
+PiAtICAgICAgICAgICAgICAgICAgICAgICAgIHN0cnVjdCBkcm1fY3J0Y19zdGF0ZSAqc3RhdGUp
+Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgICBzdHJ1Y3QgZHJtX2NydGNfc3RhdGUgKnN0YXRl
+LAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgc3RydWN0IGNtZHFfcGt0ICpjbWRxX3BrdCkK
+PiAgewo+IC0gICAgICAgdW5zaWduZWQgaW50IGksIHJlZzsKPiArICAgICAgIHVuc2lnbmVkIGlu
+dCBpOwo+ICAgICAgICAgc3RydWN0IGRybV9jb2xvcl9sdXQgKmx1dDsKPiAgICAgICAgIHZvaWQg
+X19pb21lbSAqbHV0X2Jhc2U7Cj4gICAgICAgICB1MzIgd29yZDsKPgo+ICAgICAgICAgaWYgKHN0
+YXRlLT5nYW1tYV9sdXQpIHsKPiAtICAgICAgICAgICAgICAgcmVnID0gcmVhZGwoY29tcC0+cmVn
+cyArIERJU1BfR0FNTUFfQ0ZHKTsKPiAtICAgICAgICAgICAgICAgcmVnID0gcmVnIHwgR0FNTUFf
+TFVUX0VOOwo+IC0gICAgICAgICAgICAgICB3cml0ZWwocmVnLCBjb21wLT5yZWdzICsgRElTUF9H
+QU1NQV9DRkcpOwo+ICsgICAgICAgICAgICAgICBtdGtfZGRwX3dyaXRlX21hc2soY21kcV9wa3Qs
+IEdBTU1BX0xVVF9FTiwgY29tcCwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IERJU1BfR0FNTUFfQ0ZHLCBHQU1NQV9MVVRfRU4pOwo+ICAgICAgICAgICAgICAgICBsdXRfYmFz
+ZSA9IGNvbXAtPnJlZ3MgKyBESVNQX0dBTU1BX0xVVDsKPiAgICAgICAgICAgICAgICAgbHV0ID0g
+KHN0cnVjdCBkcm1fY29sb3JfbHV0ICopc3RhdGUtPmdhbW1hX2x1dC0+ZGF0YTsKPiAgICAgICAg
+ICAgICAgICAgZm9yIChpID0gMDsgaSA8IE1US19MVVRfU0laRTsgaSsrKSB7Cj4gICAgICAgICAg
+ICAgICAgICAgICAgICAgd29yZCA9ICgoKGx1dFtpXS5yZWQgPj4gNikgJiBMVVRfMTBCSVRfTUFT
+SykgPDwgMjApICsKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICgoKGx1dFtpXS5n
+cmVlbiA+PiA2KSAmIExVVF8xMEJJVF9NQVNLKSA8PCAxMCkgKwo+ICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgKChsdXRbaV0uYmx1ZSA+PiA2KSAmIExVVF8xMEJJVF9NQVNLKTsKPiAt
+ICAgICAgICAgICAgICAgICAgICAgICB3cml0ZWwod29yZCwgKGx1dF9iYXNlICsgaSAqIDQpKTsK
+PiArICAgICAgICAgICAgICAgICAgICAgICBtdGtfZGRwX3dyaXRlKGNtZHFfcGt0LCB3b3JkLCBj
+b21wLAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKHVuc2lnbmVkIGlu
+dCkobHV0X2Jhc2UgKyBpICogNCkpOwoKR3VlbnRlciBwb2ludGVkIG91dCB0aGF0IHRoaXMgbG9v
+a3MgcXVpdGUgd3JvbmcuIFdlIHNob3VsZCBoYXZlOgp1bnNpZ25lZCBpbnQgbHV0X2Jhc2U7Cmx1
+dF9iYXNlID0gRElTUF9HQU1NQV9MVVQ7Cm10a19kZHBfd3JpdGUoY21kcV9wa3QsIHdvcmQsIGNv
+bXAsIGx1dF9iYXNlICsgaSAqIDQpOwoKT3IgbW9yZSBzaW1wbHk6Cm10a19kZHBfd3JpdGUoY21k
+cV9wa3QsIHdvcmQsIGNvbXAsIERJU1BfR0FNTUFfTFVUICsgaSAqIDQpOwoKPiAgICAgICAgICAg
+ICAgICAgfQo+ICAgICAgICAgfQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
+a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
+cmktZGV2ZWw=
