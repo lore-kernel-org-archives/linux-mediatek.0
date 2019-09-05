@@ -1,27 +1,43 @@
-From: Sylwester Nawrocki <s.nawrocki@samsung.com>
-Subject: Re: [PATCH -next 25/36] spi: s3c24xx: use
- devm_platform_ioremap_resource() to simplify code
-Date: Thu, 5 Sep 2019 12:08:58 +0200
-Message-ID: <d3803e7b-4d5a-8260-e999-12465744c2a7@samsung.com>
-References: <20190904135918.25352-1-yuehaibing@huawei.com>
-        <20190904135918.25352-26-yuehaibing@huawei.com>
-        <CGME20190905100902eucas1p1ce36a6d769640de92f9ff880728a3d26@eucas1p1.samsung.com>
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Subject: Re: [V2, 1/2] media: i2c: dw9768: Add DT support and MAINTAINERS entry
+Date: Thu, 5 Sep 2019 13:14:06 +0300
+Message-ID: <20190905101406.GA2680@smile.fi.intel.com>
+References: <20190905072142.14606-1-dongchun.zhu@mediatek.com>
+ <20190905072142.14606-2-dongchun.zhu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190904135918.25352-26-yuehaibing@huawei.com>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: YueHaibing <yuehaibing@huawei.com>, broonie@kernel.org, f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, eric@anholt.net, wahrenst@gmx.net, shc_work@mail.ru, agross@kernel.org, khilman@baylibre.com, matthias.bgg@gmail.com, shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com, avifishman70@gmail.com, tmaimon77@gmail.com, tali.perry1@gmail.com, venture@google.com, yuenn@google.com, benjaminfair@google.com, kgene@kernel.org, krzk@kernel.org, andi@etezian.org, palmer@sifive.com, paul.walmsley@sifive.com, baohua@kernel.org, mripard@kernel.org, wens@csie.org, ldewangan@nvidia.com, thierry.reding@gmail.com, jonathanh@nvidia.com, yamada.masahiro@socionext.com, michal.simek@xilinx.com
-Cc: bcm-kernel-feedback-list@broadcom.com, linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org, linux-samsung-soc@vger.kernel.org, linux-riscv@lists.infradead.org, linux-tegra@vger.kernel.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <20190905072142.14606-2-dongchun.zhu@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: dongchun.zhu@mediatek.com
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, drinkcat@chromium.org, srv_heupstream@mediatek.com, sam.hung@mediatek.com, shengnan.wang@mediatek.com, tfiga@chromium.org, sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, sakari.ailus@linux.intel.com, matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 9/4/19 15:59, YueHaibing wrote:
-> Use devm_platform_ioremap_resource() to simplify the code a bit.
-> This is detected by coccinelle.
+On Thu, Sep 05, 2019 at 03:21:41PM +0800, dongchun.zhu@mediatek.com wrote:
+> From: Dongchun Zhu <dongchun.zhu@mediatek.com>
 > 
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+> This patch is to add the Devicetree binding documentation and
+> MAINTAINERS entry for dw9768 actuator.
+> 
+> Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.txt | 9 +++++++++
+>  MAINTAINERS                                                     | 7 +++++++
 
-Reviewed-by: Sylwester Nawrocki <s.nawrocki@samsung.com>
+This should be:
+1) two separate patches
+2) binding in YAML
+
+-- 
+With Best Regards,
+Andy Shevchenko
