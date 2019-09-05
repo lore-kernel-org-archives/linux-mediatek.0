@@ -1,79 +1,50 @@
-From: Chaotian Jing <chaotian.jing@mediatek.com>
-Subject: [PATCH v2 1/2] mmc: block: make the card_busy_detect() more generic
-Date: Thu, 5 Sep 2019 15:53:17 +0800
-Message-ID: <20190905075318.15554-2-chaotian.jing@mediatek.com>
-References: <20190905075318.15554-1-chaotian.jing@mediatek.com>
+From: Vlastimil Babka <vbabka@suse.cz>
+Subject: Re: [PATCH 1/2] mm/kasan: dump alloc/free stack for page allocator
+Date: Thu, 5 Sep 2019 10:03:28 +0200
+Message-ID: <99913463-0e2c-7dab-c1eb-8b9e149b3ee3@suse.cz>
+References: <20190904065133.20268-1-walter-zh.wu@mediatek.com>
+ <401064ae-279d-bef3-a8d5-0fe155d0886d@suse.cz>
+ <1567605965.32522.14.camel@mtksdccf07>
+ <7998e8f1-e5e2-da84-ea1f-33e696015dce@suse.cz>
+ <1567607063.32522.24.camel@mtksdccf07>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190905075318.15554-1-chaotian.jing@mediatek.com>
+In-Reply-To: <1567607063.32522.24.camel@mtksdccf07>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Jens Axboe <axboe@kernel.dk>, Hannes Reinecke <hare@suse.de>, Chaotian Jing <chaotian.jing@mediatek.com>, Avri Altman <avri.altman@wdc.com>, YueHaibing <yuehaibing@huawei.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Ming Lei <ming.lei@redhat.com>, Chris Boot <bootc@bootc.net>, Zachary Hays <zhays@lexmark.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
+To: Walter Wu <walter-zh.wu@mediatek.com>
+Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Arnd Bergmann <arnd@arndb.de>, kasan-dev@googlegroups.com, linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-to use the card_busy_detect() to wait card levae the programming state,
-there may be do not have the "struct request *" argument.
+On 9/4/19 4:24 PM, Walter Wu wrote:
+> On Wed, 2019-09-04 at 16:13 +0200, Vlastimil Babka wrote:
+>> On 9/4/19 4:06 PM, Walter Wu wrote:
+>>
+>> The THP fix is not required for the rest of the series, it was even merged to
+>> mainline separately.
+>>
+>>> And It looks like something is different, because we only need last
+>>> stack of page, so it can decrease memory overhead.
+>>
+>> That would save you depot_stack_handle_t (which is u32) per page. I guess that's
+>> nothing compared to KASAN overhead?
+>>
+> If we can use less memory, we can achieve what we want. Why not?
 
-Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
----
- drivers/mmc/core/block.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+In my experience to solve some UAFs, it's important to know not only the
+freeing stack, but also the allocating stack. Do they make sense together,
+or not? In some cases, even longer history of alloc/free would be nice :)
 
-diff --git a/drivers/mmc/core/block.c b/drivers/mmc/core/block.c
-index 2c71a434c915..aa7c19f7e298 100644
---- a/drivers/mmc/core/block.c
-+++ b/drivers/mmc/core/block.c
-@@ -981,7 +981,7 @@ static inline bool mmc_blk_in_tran_state(u32 status)
- }
- 
- static int card_busy_detect(struct mmc_card *card, unsigned int timeout_ms,
--			    struct request *req, u32 *resp_errs)
-+			    u32 *resp_errs)
- {
- 	unsigned long timeout = jiffies + msecs_to_jiffies(timeout_ms);
- 	int err = 0;
-@@ -992,8 +992,8 @@ static int card_busy_detect(struct mmc_card *card, unsigned int timeout_ms,
- 
- 		err = __mmc_send_status(card, &status, 5);
- 		if (err) {
--			pr_err("%s: error %d requesting status\n",
--			       req->rq_disk->disk_name, err);
-+			dev_err(mmc_dev(card->host),
-+				"error %d requesting status\n", err);
- 			return err;
- 		}
- 
-@@ -1006,9 +1006,9 @@ static int card_busy_detect(struct mmc_card *card, unsigned int timeout_ms,
- 		 * leaves the program state.
- 		 */
- 		if (done) {
--			pr_err("%s: Card stuck in wrong state! %s %s status: %#x\n",
--				mmc_hostname(card->host),
--				req->rq_disk->disk_name, __func__, status);
-+			dev_err(mmc_dev(card->host),
-+				"Card stuck in wrong state! %s status: %#x\n",
-+				 __func__, status);
- 			return -ETIMEDOUT;
- 		}
- 
-@@ -1671,7 +1671,7 @@ static int mmc_blk_fix_state(struct mmc_card *card, struct request *req)
- 
- 	mmc_blk_send_stop(card, timeout);
- 
--	err = card_busy_detect(card, timeout, req, NULL);
-+	err = card_busy_detect(card, timeout, NULL);
- 
- 	mmc_retune_release(card->host);
- 
-@@ -1895,7 +1895,7 @@ static int mmc_blk_card_busy(struct mmc_card *card, struct request *req)
- 	if (mmc_host_is_spi(card->host) || rq_data_dir(req) == READ)
- 		return 0;
- 
--	err = card_busy_detect(card, MMC_BLK_TIMEOUT_MS, req, &status);
-+	err = card_busy_detect(card, MMC_BLK_TIMEOUT_MS, &status);
- 
- 	/*
- 	 * Do not assume data transferred correctly if there are any error bits
--- 
-2.18.0
+Also by simply recording the free stack in the existing depot handle,
+you might confuse existing page_owner file consumers, who won't know
+that this is a freeing stack.
+
+All that just doesn't seem to justify saving an u32 per page.
+
+> Thanks.
+> Walter
+> 
+> 
+> 
