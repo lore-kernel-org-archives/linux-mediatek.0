@@ -1,65 +1,21 @@
-From: Amit Kucheria <amit.kucheria@linaro.org>
-Subject: Re: [PATCH -next 08/15] thermal: tsens: use devm_platform_ioremap_resource()
- to simplify code
-Date: Thu, 5 Sep 2019 11:45:30 +0530
-Message-ID: <CAHLCerOVuNEAkCggBoDU4NgbzhTVxpdJXeTXVrTs5tp7ZVtSMg@mail.gmail.com>
-References: <20190904122939.23780-1-yuehaibing@huawei.com> <20190904122939.23780-9-yuehaibing@huawei.com>
+From: Christoph Hellwig <hch@infradead.org>
+Subject: Re: [PATCH V5 0/5] iommu/amd: Convert the AMD iommu driver to the
+ dma-iommu api
+Date: Wed, 4 Sep 2019 23:18:23 -0700
+Message-ID: <20190905061823.GA813@infradead.org>
+References: <20190815110944.3579-1-murphyt7@tcd.ie>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190904122939.23780-9-yuehaibing@huawei.com>
+Content-Disposition: inline
+In-Reply-To: <20190815110944.3579-1-murphyt7@tcd.ie>
 Sender: linux-kernel-owner@vger.kernel.org
-To: YueHaibing <yuehaibing@huawei.com>
-Cc: miquel.raynal@bootlin.com, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Eric Anholt <eric@anholt.net>, wahrenst@gmx.net, f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, Markus Mayer <mmayer@broadcom.com>, computersforpeace@gmail.com, gregory.0xf0@gmail.com, Matthias Brugger <matthias.bgg@gmail.com>, Andy Gross <agross@kernel.org>, Heiko Stuebner <heiko@sntech.de>, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, Marc Gonzalez <marc.w.gonzalez@free.fr>, mans@mansr.com, talel@amazon.com, Jun Nie <jun.nie@linaro.org>, Shawn Guo <shawnguo@kernel.org>, phil@raspberrypi.org, gregkh@linuxfoundation.org, david.hernandezsanchez@st.com, horms+renesas@verge.net.au, wsa+renesas@sang-engineering.c
+To: Tom Murphy <murphyt7@tcd.ie>
+Cc: iommu@lists.linux-foundation.org, Heiko Stuebner <heiko@sntech.de>, virtualization@lists.linux-foundation.org, linux-tegra@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>, Will Deacon <will@kernel.org>, Jean-Philippe Brucker <jean-philippe@linaro.org>, linux-samsung-soc@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, linux-s390@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, David Woodhouse <dwmw2@infradead.org>, linux-kernel@vger.kernel.org, Kukjin Kim <kgene@kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Sep 4, 2019 at 6:05 PM YueHaibing <yuehaibing@huawei.com> wrote:
->
-> Use devm_platform_ioremap_resource() to simplify the code a bit.
-> This is detected by coccinelle.
->
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+Dave, Joerg, Robin:
 
-Acked-by: Amit Kucheria <amit.kucheria@linaro.org>
-
-> ---
->  drivers/thermal/qcom/tsens-common.c | 7 ++-----
->  1 file changed, 2 insertions(+), 5 deletions(-)
->
-> diff --git a/drivers/thermal/qcom/tsens-common.c b/drivers/thermal/qcom/tsens-common.c
-> index 528df88..43ce4fb 100644
-> --- a/drivers/thermal/qcom/tsens-common.c
-> +++ b/drivers/thermal/qcom/tsens-common.c
-> @@ -155,7 +155,6 @@ int __init init_common(struct tsens_priv *priv)
->  {
->         void __iomem *tm_base, *srot_base;
->         struct device *dev = priv->dev;
-> -       struct resource *res;
->         u32 enabled;
->         int ret, i, j;
->         struct platform_device *op = of_find_device_by_node(priv->dev->of_node);
-> @@ -166,8 +165,7 @@ int __init init_common(struct tsens_priv *priv)
->         if (op->num_resources > 1) {
->                 /* DT with separate SROT and TM address space */
->                 priv->tm_offset = 0;
-> -               res = platform_get_resource(op, IORESOURCE_MEM, 1);
-> -               srot_base = devm_ioremap_resource(&op->dev, res);
-> +               srot_base = devm_platform_ioremap_resource(op, 1);
->                 if (IS_ERR(srot_base)) {
->                         ret = PTR_ERR(srot_base);
->                         goto err_put_device;
-> @@ -184,8 +182,7 @@ int __init init_common(struct tsens_priv *priv)
->                 priv->tm_offset = 0x1000;
->         }
->
-> -       res = platform_get_resource(op, IORESOURCE_MEM, 0);
-> -       tm_base = devm_ioremap_resource(&op->dev, res);
-> +       tm_base = devm_platform_ioremap_resource(op, 0);
->         if (IS_ERR(tm_base)) {
->                 ret = PTR_ERR(tm_base);
->                 goto err_put_device;
-> --
-> 2.7.4
->
->
+is there any chance we could at least pick up patches 2 and 4 ASAP
+as they are clearly fixes for current deficits, even without the
+amd conversion?
