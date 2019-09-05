@@ -1,59 +1,52 @@
-From: =?iso-8859-1?Q?M=E5ns_Rullg=E5rd?= <mans@mansr.com>
-Subject: Re: [PATCH -next 12/15] thermal: tango: use devm_platform_ioremap_resource() to simplify code
-Date: Thu, 05 Sep 2019 12:06:54 +0100
-Message-ID: <yw1xmufj6lyp.fsf@mansr.com>
-References: <20190904122939.23780-1-yuehaibing@huawei.com>
-        <20190904122939.23780-13-yuehaibing@huawei.com>
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Subject: Re: [V2, 1/2] media: i2c: dw9768: Add DT support and MAINTAINERS entry
+Date: Thu, 5 Sep 2019 14:35:09 +0300
+Message-ID: <20190905113509.GD2680@smile.fi.intel.com>
+References: <20190905072142.14606-1-dongchun.zhu@mediatek.com>
+ <20190905072142.14606-2-dongchun.zhu@mediatek.com>
+ <20190905101406.GA2680@smile.fi.intel.com>
+ <20190905104829.GB5475@paasikivi.fi.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190904122939.23780-13-yuehaibing@huawei.com>
-        (yuehaibing@huawei.com's message of "Wed, 4 Sep 2019 20:29:36 +0800")
-Sender: linux-kernel-owner@vger.kernel.org
-To: YueHaibing <yuehaibing@huawei.com>
-Cc: miquel.raynal@bootlin.com, rui.zhang@intel.com, edubezval@gmail.com, daniel.lezcano@linaro.org, amit.kucheria@verdurent.com, eric@anholt.net, wahrenst@gmx.net, f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, mmayer@broadcom.com, computersforpeace@gmail.com, gregory.0xf0@gmail.com, matthias.bgg@gmail.com, agross@kernel.org, heiko@sntech.de, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, marc.w.gonzalez@free.fr, talel@amazon.com, jun.nie@linaro.org, shawnguo@kernel.org, phil@raspberrypi.org, gregkh@linuxfoundation.org, david.hernandezsanchez@st.com, horms+renesas@verge.net.au, wsa+renesas@sang-engineering.com, bcm-kernel-feedback-list@broadcom.com, linux-pm@vger.kernel.org, linux-kernel@vger.kerne
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <20190905104829.GB5475@paasikivi.fi.intel.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, drinkcat@chromium.org, srv_heupstream@mediatek.com, sam.hung@mediatek.com, shengnan.wang@mediatek.com, tfiga@chromium.org, sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, dongchun.zhu@mediatek.com, matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-YueHaibing <yuehaibing@huawei.com> writes:
+On Thu, Sep 05, 2019 at 01:48:30PM +0300, Sakari Ailus wrote:
+> On Thu, Sep 05, 2019 at 01:14:06PM +0300, Andy Shevchenko wrote:
+> > On Thu, Sep 05, 2019 at 03:21:41PM +0800, dongchun.zhu@mediatek.com wrote:
+> > > From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > > 
+> > > This patch is to add the Devicetree binding documentation and
+> > > MAINTAINERS entry for dw9768 actuator.
+> > > 
+> > > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > > ---
+> > >  Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.txt | 9 +++++++++
+> > >  MAINTAINERS                                                     | 7 +++++++
+> > 
+> > This should be:
+> > 1) two separate patches
+> 
+> Why? The MAINTAINERS entry is usually added in the first patch needing it,
+> isn't it?
 
-> Use devm_platform_ioremap_resource() to simplify the code a bit.
-> This is detected by coccinelle.
->
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
-
-Acked-by: Mans Rullgard <mans@mansr.com>
-
-> ---
->  drivers/thermal/tango_thermal.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
->
-> diff --git a/drivers/thermal/tango_thermal.c b/drivers/thermal/tango_thermal.c
-> index 304b461..f44441b 100644
-> --- a/drivers/thermal/tango_thermal.c
-> +++ b/drivers/thermal/tango_thermal.c
-> @@ -73,7 +73,6 @@ static void tango_thermal_init(struct tango_thermal_priv *priv)
->
->  static int tango_thermal_probe(struct platform_device *pdev)
->  {
-> -	struct resource *res;
->  	struct tango_thermal_priv *priv;
->  	struct thermal_zone_device *tzdev;
->
-> @@ -81,8 +80,7 @@ static int tango_thermal_probe(struct platform_device *pdev)
->  	if (!priv)
->  		return -ENOMEM;
->
-> -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -	priv->base = devm_ioremap_resource(&pdev->dev, res);
-> +	priv->base = devm_platform_ioremap_resource(pdev, 0);
->  	if (IS_ERR(priv->base))
->  		return PTR_ERR(priv->base);
->
-> -- 
-> 2.7.4
->
+Bindings are required to be a separate patch.
+Rob, is it still the case or am I mistaken?
 
 -- 
-Måns Rullgård
+With Best Regards,
+Andy Shevchenko
