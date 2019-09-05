@@ -1,303 +1,208 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [RFC PATCH V2 4/4] platform: mtk-isp: Add Mediatek FD driver
-Date: Thu, 5 Sep 2019 17:52:47 +0900
-Message-ID: <CAAFQd5D2ketE19RPr20BVYGhqg2Lh2ZNTtAr5J2GoWU9RiSAsA@mail.gmail.com>
-References: <1562661672-22439-1-git-send-email-Jerry-Ch.chen@mediatek.com>
- <1562661672-22439-5-git-send-email-Jerry-Ch.chen@mediatek.com>
- <20190802082815.GA203993@chromium.org> <1566724680.20680.8.camel@mtksdccf07>
- <CAAFQd5Dw+jaT-+LAUEVeB8W1zdnOgPw7u+aCfDWhYW1SfbzO8g@mail.gmail.com>
- <1566957625.20680.33.camel@mtksdccf07>
- <CAAFQd5D-Yg1FjUE_rwmqfS1gvfE0=MZ=r-ziueU_37-uo9QTbw@mail.gmail.com>
- <1567424859.18318.32.camel@mtksdccf07>
- <CAAFQd5AGgeFbto6V1KkL0dp1QPziOKV3pWQDU2OJ+S1QKvnBdg@mail.gmail.com>
- <1567493081.18318.49.camel@mtksdccf07>
- <CAAFQd5DWM=R7sFHYGhhR_rXrzgRnc4xtH_t8Pig-4tcP9KTSYg@mail.gmail.com>
- <1567511169.18318.65.camel@mtksdccf07>
- <CAAFQd5DiPcUxd+R-v_-BdRx+QqZ35Riii_jpgbqr5mc3BnQvDw@mail.gmail.com>
- <1567568281.18318.80.camel@mtksdccf07>
- <CAAFQd5CRC2cyV30B4Qv59HdrJ7Cpe_yK5aY-BecQQ3J3i0PtCQ@mail.gmail.com>
- <1567577389.18318.100.camel@mtksdccf07>
- <CAAFQd5AxTQPD+nP9CJs45QTzGHKssjv3vRtMqHONABfp12afYw@mail.gmail.com>
- <1567584577.22453.11.camel@mtksdccf07>
- <CAAFQd5Dzxy10g-MKHMnNbVO6kp9_L_jm1m+gtN+p=YF2LyBiag@mail.gmail.com>
- <1567587708.22453.15.camel@mtksdccf07>
- <CAAFQd5DWfEEiGthPi=qoxD-mpAWa68GOCi55mqpmagS-tsGYkA@mail.gmail.com>
- <1567589188.22453.24.camel@mtksdccf07>
- <CAAFQd5Ckz9qH7AnLNM4HRTM2gJQP1HXRS09+o6Prf++D1PQhng@mail.gmail.com>
- <1567603143.22453.27.camel@mtksdccf07> <1567666940.22453.31.camel@mtksdccf07>
- <CAAFQd5A=D33nUWTyYjt3acV43r3fqjSEkLbt3_Sr1YG1PzQgqQ@mail.gmail.com>
- <1567671418.22453.41.camel@mtksdccf07>
+From: Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH] arm64: dts: mt8183: Add node for the Mali GPU
+Date: Thu, 5 Sep 2019 10:09:18 +0100
+Message-ID: <CAL_JsqJCO2G90TTT9Mpy4kjVKQyXWw4aXEEnbRp_SE8X=EGc5g@mail.gmail.com>
+References: <20190905081546.42716-1-drinkcat@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1567671418.22453.41.camel@mtksdccf07>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Jerry-ch Chen <Jerry-ch.Chen@mediatek.com>
-Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, =?UTF-8?B?U2VhbiBDaGVuZyAo6YSt5piH5byYKQ==?= <Sean.Cheng@mediatek.com>, "laurent.pinchart+renesas@ideasonboard.com" <laurent.pinchart+renesas@ideasonboard.com>, =?UTF-8?B?UnlubiBXdSAo5ZCz6IKy5oGpKQ==?= <Rynn.Wu@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>, =?UTF-8?B?UG8tWWFuZyBIdWFuZyAo6buD5p+P6Zm9KQ==?= <po-yang.huang@mediatek.com>, "mchehab@kernel.org" <mchehab@kernel.org>, "suleiman@chromium.org" <suleiman@chromium.org>, "shik@chromium.org" <shik@chromium.org>, =?UTF-8?B?SnVuZ28gTGluICjmnpfmmI7kv4op?= <jungo.lin@mediatek.com>, =?UTF-8?B?U2ogSHVhbmcgKOm7g+S/oeeSiyk=?= <sj.huang@mediatek.com>, "yuzhao@chromium.org" <yuzhao@chromium.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "zwisler@chromium.org" <zwisler@chromium.org>, "matthias.bgg@gmail.com" <matthias.bgg>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190905081546.42716-1-drinkcat@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Nicolas Boichat <drinkcat@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Nick Fan <nick.fan@mediatek.com>, Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>, Boris Brezillon <boris.brezillon@collabora.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Sep 5, 2019 at 5:17 PM Jerry-ch Chen <Jerry-ch.Chen@mediatek.com> wrote:
+On Thu, Sep 5, 2019 at 9:16 AM Nicolas Boichat <drinkcat@chromium.org> wrote:
 >
-> Hi Tomasz,
+> Add a basic GPU node and opp table for mt8183.
 >
-> On Thu, 2019-09-05 at 15:13 +0800, Tomasz Figa wrote:
-> > On Thu, Sep 5, 2019 at 4:02 PM Jerry-ch Chen <Jerry-ch.Chen@mediatek.com> wrote:
-> > >
-> > > Hi Tomasz,
-> > >
-> > > On Wed, 2019-09-04 at 21:19 +0800, Jerry-ch Chen wrote:
-> > > > On Wed, 2019-09-04 at 21:12 +0800, Tomasz Figa wrote:
-> > > > > On Wed, Sep 4, 2019 at 6:26 PM Jerry-ch Chen <Jerry-ch.Chen@mediatek.com> wrote:
-> > > > > >
-> > > > > > Hi Tomasz,
-> > > > > >
-> > > > > > On Wed, 2019-09-04 at 17:03 +0800, Tomasz Figa wrote:
-> > > > > > > On Wed, Sep 4, 2019 at 6:02 PM Jerry-ch Chen <Jerry-ch.Chen@mediatek.com> wrote:
-> > > > > > > >
-> > > > > > > > Hi Tomasz,
-> > > > > > > >
-> > > > > > > > On Wed, 2019-09-04 at 16:25 +0800, Tomasz Figa wrote:
-> > > > > > > > > On Wed, Sep 4, 2019 at 5:09 PM Jerry-ch Chen <Jerry-ch.Chen@mediatek.com> wrote:
-> > > > > > > > > >
-> > > > > > > > > > Hi Tomasz,
-> > > > > > > > > >
-> > > > > > > > > > On Wed, 2019-09-04 at 14:34 +0800, Tomasz Figa wrote:
-> > > > > > > > > > > On Wed, Sep 4, 2019 at 3:09 PM Jerry-ch Chen <Jerry-ch.Chen@mediatek.com> wrote:
-> > > > > > > > > > > >
-> > > > > > > > > > > > Hi Tomasz,
-> > > > > > > > > > > >
-> > > > > > > > > > > > On Wed, 2019-09-04 at 12:15 +0800, Tomasz Figa wrote:
-> > > > > > > > > > > > > On Wed, Sep 4, 2019 at 12:38 PM Jerry-ch Chen
-> > > > > > > > > > > > > <Jerry-ch.Chen@mediatek.com> wrote:
-> > > > > > > > > > > > > >
-> > > > > > > > > > > > > > Hi Tomasz,
-> > > > > > > > > > > > > >
-> > > > > > > > > > > > > > On Tue, 2019-09-03 at 20:05 +0800, Tomasz Figa wrote:
-> > > > > > > > > > > > > > > On Tue, Sep 3, 2019 at 8:46 PM Jerry-ch Chen <Jerry-ch.Chen@mediatek.com> wrote:
-> > > > > > > > > > > > > > > >
-> > > > > > > > > > > > > > > > Hi Tomasz,
-> > > > > > > > > > > > > > > >
-> > > > > > > > > > > > > > > > On Tue, 2019-09-03 at 15:04 +0800, Tomasz Figa wrote:
-> > > > > > > > > > > > > > > > > On Tue, Sep 3, 2019 at 3:44 PM Jerry-ch Chen <Jerry-ch.Chen@mediatek.com> wrote:
-> > > > > > > > > > > > > > > > > >
-> > > > > > > > > > > > > > > > > > On Tue, 2019-09-03 at 13:19 +0800, Tomasz Figa wrote:
-> > > > > > > > > > > > > > > > > > > On Mon, Sep 2, 2019 at 8:47 PM Jerry-ch Chen <Jerry-ch.Chen@mediatek.com> wrote:
-> > > > > > > > > > > > > > > > > > > >
-> > > > > > > > > > > > > > > > > > > > Hi Tomasz,
-> > > > > > > > > > > > > > > > > > > >
-> > > > > > > > > > > > > > > > > > > > On Fri, 2019-08-30 at 16:33 +0800, Tomasz Figa wrote:
-> > > > > > > > > > > > > > > > > > > > > On Wed, Aug 28, 2019 at 11:00 AM Jerry-ch Chen
-> > > > > > > > > > > > > > > > > > > > > <Jerry-ch.Chen@mediatek.com> wrote:
-> > > > > > > > > > > > > > > > > > > > > >
-> > > > > > > > > > > > > > > > > > > > > > Hi Tomasz,
-> > > > > > > > > > > > > > > > > > > > > >
-> > > > > > > > > > > > > > > > > > > > > > On Mon, 2019-08-26 at 14:36 +0800, Tomasz Figa wrote:
-> > > > > > > > > > > > > > > > > > > > > > > Hi Jerry,
-> > > > > > > > > > > > > > > > > > > > > > >
-> > > > > > > > > > > > > > > > > > > > > > > On Sun, Aug 25, 2019 at 6:18 PM Jerry-ch Chen
-> > > > > > > > > > > > > > > > > > > > > > > <Jerry-ch.Chen@mediatek.com> wrote:
-> > > > > > > > > > > > > > > > > > > > > > > >
-> > > > > > > > > > > > > > > > > > > > > > > > Hi Tomasz,
-> > > > > > > > > > > > > > > > > > > > > > > >
-> > > > > > > > > > > > > > > > > > > > > > > > On Fri, 2019-08-02 at 16:28 +0800, Tomasz Figa wrote:
-> > > > > > > > > > > > > > > > > > > > > > > > > Hi Jerry,
-> > > > > > > > > > > > > > > > > > > > > > > > >
-> > > > > > > > > > > > > > > > > > > > > > > > > On Tue, Jul 09, 2019 at 04:41:12PM +0800, Jerry-ch Chen wrote:
-> > > > > > [snip]
-> > > > > > > > > > static void mtk_fd_vb2_stop_streaming(struct vb2_queue *vq)
-> > > > > > > > > > {
-> > > > > > > > > >         struct mtk_fd_ctx *ctx = vb2_get_drv_priv(vq);
-> > > > > > > > > >         struct mtk_fd_dev *fd = ctx->fd_dev;
-> > > > > > > > > >         struct vb2_v4l2_buffer *vb;
-> > > > > > > > > >         struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
-> > > > > > > > > >         struct v4l2_m2m_queue_ctx *queue_ctx;
-> > > > > > > > > >         u32 ret;
-> > > > > > > > > >
-> > > > > > > > > >         if (!fd->fd_irq_done.done)
-> > > > > > > > >
-> > > > > > > > > We shouldn't access internal fields of completion.
-> > > > > > > > >
-> > > > > > > > > >                 ret = wait_for_completion_timeout(&fd->fd_irq_done,
-> > > > > > > > > >                                                   msecs_to_jiffies(
-> > > > > > > > > >                                                         MTK_FD_HW_TIMEOUT));
-> > > > > > > > > >         queue_ctx = V4L2_TYPE_IS_OUTPUT(vq->type) ?
-> > > > > > > > > >                                         &m2m_ctx->out_q_ctx :
-> > > > > > > > > >                                         &m2m_ctx->cap_q_ctx;
-> > > > > > > > > >         while ((vb = v4l2_m2m_buf_remove(queue_ctx)))
-> > > > > > > > > >                 v4l2_m2m_buf_done(vb, VB2_BUF_STATE_ERROR);
-> > > > > > > > > >
-> > > > > > > > > >         if (vq->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
-> > > > > > > > > >                 mtk_fd_hw_disconnect(fd);
-> > > > > > > > > > }
-> > > > > > > > > >
-> > > > > > > > > > I've also tried to wait completion unconditionally for both queues and
-> > > > > > > > > > the second time will wait until timeout, as a result, it takes longer to
-> > > > > > > > > > swap the camera every time and close the camera app.
-> > > > > > > > >
-> > > > > > > > > I think it should work better if we call complete_all() instead of complete().
-> > > > > > > > >
-> > > > > > > > Thanks,
-> > > > > > > >
-> > > > > > > > I use complete_all(), and it works fine now.
-> > > > > > > >
-> > > > > > > > static void mtk_fd_vb2_stop_streaming(struct vb2_queue *vq)
-> > > > > > > > {
-> > > > > > > >         struct mtk_fd_ctx *ctx = vb2_get_drv_priv(vq);
-> > > > > > > >         struct mtk_fd_dev *fd = ctx->fd_dev;
-> > > > > > > >         struct vb2_v4l2_buffer *vb;
-> > > > > > > >         struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
-> > > > > > > >         struct v4l2_m2m_queue_ctx *queue_ctx;
-> > > > > > > >
-> > > > > > > >         wait_for_completion_timeout(&fd->fd_irq_done,
-> > > > > > > >                                           msecs_to_jiffies(MTK_FD_HW_TIMEOUT));
-> > > > > > >
-> > > > > > > Shouldn't we still send some command to the hardware to stop? Like a
-> > > > > > > reset. Otherwise we don't know if it isn't still accessing the memory.
-> > > > > > >
-> > > > > > I thought no more jobs will be enqueued here when stop_streaming so we
-> > > > > > don't need it.
-> > > > >
-> > > > > That's true for the case when the wait completed successfully, but we
-> > > > > also need to ensure the hardware is stopped even if a timeout happens.
-> > > > >
-> > > > > > We still could send an ipi command to reset the HW, and wait for it's
-> > > > > > callback or we could set the register MTK_FD_REG_OFFSET_HW_ENABLE to
-> > > > > > zero to disable the HW.
-> > > > >
-> > > > > Since it's for handling a timeout, a reset should be more likely to
-> > > > > bring the hardware back to a reasonable state.
-> > > > >
-> > > >
-> > > > Ok, I will send the ipi command to reset the HW.
-> > > >
-> > > > Thanks and best regards,
-> > > > Jerry
-> > > I've tested and will refine as following:
-> > >
-> > > static void mtk_fd_vb2_stop_streaming(struct vb2_queue *vq)
-> > > {
-> > >         struct mtk_fd_ctx *ctx = vb2_get_drv_priv(vq);
-> > >         struct mtk_fd_dev *fd = ctx->fd_dev;
-> > >         struct vb2_v4l2_buffer *vb;
-> > >         struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
-> > >         struct v4l2_m2m_queue_ctx *queue_ctx;
-> > >         u32 ret;
-> > >
-> > >         ret = wait_for_completion_timeout(&fd->fd_irq_done,
-> > >                                           msecs_to_jiffies(MTK_FD_HW_TIMEOUT));
-> > >         /* Disable FD HW */
-> > >         if(!ret) {
-> > >                 struct ipi_message fd_ipi_msg;
-> > >
-> > >                 fd_ipi_msg.cmd_id = MTK_FD_IPI_CMD_RESET;
-> > >                 ret = scp_ipi_send(fd->scp_pdev, SCP_IPI_FD_CMD, &fd_ipi_msg,
-> > >                                    sizeof(fd_ipi_msg), MTK_FD_IPI_SEND_TIMEOUT);
-> > >                 if (ret)
-> > >                         dev_err(fd->dev, "FD Reset HW error\n");
-> > >         }
-> >
-> > Would you also put the same code in suspend handler? If so, perhaps
-> > it's better to keep this in a helper function (mtk_fd_job_abort()) as
-> > we had before?
-> >
->
-> Ok, done, It will reset the HW and return ETIMEOUT if the last job is
-> timeout, the return value will be used in suspend for further action.
->
-> static int mtk_fd_job_abort(struct mtk_fd_dev *fd)
-> {
->         u32 ret;
->
->         ret = wait_for_completion_timeout(&fd->fd_irq_done,
->                                           msecs_to_jiffies(MTK_FD_HW_TIMEOUT));
->         /* Reset FD HW */
->         if (!ret) {
->                 struct ipi_message fd_ipi_msg;
->
->                 fd_ipi_msg.cmd_id = MTK_FD_IPI_CMD_RESET;
->                 if (scp_ipi_send(fd->scp_pdev, SCP_IPI_FD_CMD, &fd_ipi_msg,
->                                  sizeof(fd_ipi_msg), MTK_FD_IPI_SEND_TIMEOUT))
->                         dev_err(fd->dev, "FD Reset HW error\n");
->                 return -ETIMEDOUT;
->         }
->         return 0;
-> }
->
-> static void mtk_fd_vb2_stop_streaming(struct vb2_queue *vq)
-> {
->         struct mtk_fd_ctx *ctx = vb2_get_drv_priv(vq);
->         struct mtk_fd_dev *fd = ctx->fd_dev;
->         struct vb2_v4l2_buffer *vb;
->         struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
->         struct v4l2_m2m_queue_ctx *queue_ctx;
->
->         mtk_fd_job_abort(fd);
->         queue_ctx = V4L2_TYPE_IS_OUTPUT(vq->type) ?
->                                         &m2m_ctx->out_q_ctx :
->                                         &m2m_ctx->cap_q_ctx;
->         while ((vb = v4l2_m2m_buf_remove(queue_ctx)))
->                 v4l2_m2m_buf_done(vb, VB2_BUF_STATE_ERROR);
->
->         if (vq->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
->                 mtk_fd_hw_disconnect(fd);
-> }
->
-> static int mtk_fd_suspend(struct device *dev)
-> {
->         struct mtk_fd_dev *fd = dev_get_drvdata(dev);
->
->         if (pm_runtime_suspended(dev))
->                 return 0;
->
->         if (fd->fd_stream_count)
->                 if (mtk_fd_job_abort(fd))
->                         mtk_fd_hw_job_finish(fd, VB2_BUF_STATE_ERROR);
+> The binding we use with out-of-tree Mali drivers includes more
+> clocks, I assume this would be required eventually if we have an
+> in-tree driver:
 
-Wouldn't this cause the next job to be run?
+We have an in-tree driver...
 
+> clocks =
+>         <&topckgen CLK_TOP_MFGPLL_CK>,
+>         <&topckgen CLK_TOP_MUX_MFG>,
+>         <&clk26m>,
+>         <&mfgcfg CLK_MFG_BG3D>;
+> clock-names =
+>         "clk_main_parent",
+>         "clk_mux",
+>         "clk_sub_parent",
+>         "subsys_mfg_cg";
 >
->         /* suspend FD HW */
->         writel(0x0, fd->fd_base + MTK_FD_REG_OFFSET_INT_EN);
->         writel(0x0, fd->fd_base + MTK_FD_REG_OFFSET_HW_ENABLE);
->         clk_disable_unprepare(fd->fd_clk);
->         dev_dbg(dev, "%s:disable clock\n", __func__);
+> Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
 >
->         return 0;
-> }
+> ---
+> Upstreaming what matches existing bindings from our Chromium OS tree:
+> https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.19/arch/arm64/boot/dts/mediatek/mt8183.dtsi#1348
 >
-> > >         queue_ctx = V4L2_TYPE_IS_OUTPUT(vq->type) ?
-> > >                                         &m2m_ctx->out_q_ctx :
-> > >                                         &m2m_ctx->cap_q_ctx;
-> > >         while ((vb = v4l2_m2m_buf_remove(queue_ctx)))
-> > >                 v4l2_m2m_buf_done(vb, VB2_BUF_STATE_ERROR);
-> > >
-> > >         if (vq->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
-> > >                 mtk_fd_hw_disconnect(fd);
-> > > }
-> > >
-> > > If there is no other concern, may I send the RFC v3 patch for review?
-> >
-> > Thanks, technically it looks good now. Just one comment about avoiding
-> > code duplication above.
-> >
+> The evb part of this change depends on this patch to add PMIC dtsi:
+> https://patchwork.kernel.org/patch/10928161/
 >
-> Thanks,
+>  arch/arm64/boot/dts/mediatek/mt8183-evb.dts |   7 ++
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi    | 103 ++++++++++++++++++++
+>  2 files changed, 110 insertions(+)
 >
-> I will send the v3 if the above fix-up is accepted,
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> index 1fb195c683c3d01..200d8e65a6368a1 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> @@ -7,6 +7,7 @@
+>
+>  /dts-v1/;
+>  #include "mt8183.dtsi"
+> +#include "mt6358.dtsi"
+>
+>  / {
+>         model = "MediaTek MT8183 evaluation board";
+> @@ -30,6 +31,12 @@
+>         status = "okay";
+>  };
+>
+> +&gpu {
+> +       supply-names = "mali", "mali_sram";
+> +       mali-supply = <&mt6358_vgpu_reg>;
+> +       mali_sram-supply = <&mt6358_vsram_gpu_reg>;
 
-I think there is a bigger issue here actually, related to how the m2m
-helpers work. Let's just keep the code as you proposed and post v3.
+Not documented. Just 'sram-supply' is enough.
 
-We can continue the discussion there.
+Note that the binding doc queued up for 5.4 has been converted to DT schema.
 
-Best regards,
-Tomasz
+> +};
+> +
+>  &i2c0 {
+>         pinctrl-names = "default";
+>         pinctrl-0 = <&i2c_pins_0>;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index 97f84aa9fc6e1c1..8ea548a762ea252 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -579,6 +579,109 @@
+>                         #clock-cells = <1>;
+>                 };
+>
+> +               gpu: mali@13040000 {
+
+gpu@...
+
+> +                       compatible = "mediatek,mt8183-mali", "arm,mali-bifrost";
+
+You need to add this compatible string too.
+
+> +                       reg = <0 0x13040000 0 0x4000>;
+> +                       interrupts =
+> +                               <GIC_SPI 280 IRQ_TYPE_LEVEL_LOW>,
+> +                               <GIC_SPI 279 IRQ_TYPE_LEVEL_LOW>,
+> +                               <GIC_SPI 278 IRQ_TYPE_LEVEL_LOW>;
+> +                       interrupt-names = "job", "mmu", "gpu";
+> +
+> +                       clocks = <&topckgen CLK_TOP_MFGPLL_CK>;
+> +                       power-domains =
+> +                               <&scpsys MT8183_POWER_DOMAIN_MFG_CORE0>,
+> +                               <&scpsys MT8183_POWER_DOMAIN_MFG_CORE1>,
+> +                               <&scpsys MT8183_POWER_DOMAIN_MFG_2D>;
+
+This needs to be documented too.
+
+> +
+> +                       operating-points-v2 = <&gpu_opp_table>;
+> +               };
+> +
+> +               gpu_opp_table: opp_table0 {
+> +                       compatible = "operating-points-v2";
+> +                       opp-shared;
+> +
+> +                       opp-300000000 {
+> +                               opp-hz = /bits/ 64 <300000000>;
+> +                               opp-microvolt = <625000>, <850000>;
+> +                       };
+> +
+> +                       opp-320000000 {
+> +                               opp-hz = /bits/ 64 <320000000>;
+> +                               opp-microvolt = <631250>, <850000>;
+> +                       };
+> +
+> +                       opp-340000000 {
+> +                               opp-hz = /bits/ 64 <340000000>;
+> +                               opp-microvolt = <637500>, <850000>;
+> +                       };
+> +
+> +                       opp-360000000 {
+> +                               opp-hz = /bits/ 64 <360000000>;
+> +                               opp-microvolt = <643750>, <850000>;
+> +                       };
+> +
+> +                       opp-380000000 {
+> +                               opp-hz = /bits/ 64 <380000000>;
+> +                               opp-microvolt = <650000>, <850000>;
+> +                       };
+> +
+> +                       opp-400000000 {
+> +                               opp-hz = /bits/ 64 <400000000>;
+> +                               opp-microvolt = <656250>, <850000>;
+> +                       };
+> +
+> +                       opp-420000000 {
+> +                               opp-hz = /bits/ 64 <420000000>;
+> +                               opp-microvolt = <662500>, <850000>;
+> +                       };
+> +
+> +                       opp-460000000 {
+> +                               opp-hz = /bits/ 64 <460000000>;
+> +                               opp-microvolt = <675000>, <850000>;
+> +                       };
+> +
+> +                       opp-500000000 {
+> +                               opp-hz = /bits/ 64 <500000000>;
+> +                               opp-microvolt = <687500>, <850000>;
+> +                       };
+> +
+> +                       opp-540000000 {
+> +                               opp-hz = /bits/ 64 <540000000>;
+> +                               opp-microvolt = <700000>, <850000>;
+> +                       };
+> +
+> +                       opp-580000000 {
+> +                               opp-hz = /bits/ 64 <580000000>;
+> +                               opp-microvolt = <712500>, <850000>;
+> +                       };
+> +
+> +                       opp-620000000 {
+> +                               opp-hz = /bits/ 64 <620000000>;
+> +                               opp-microvolt = <725000>, <850000>;
+> +                       };
+> +
+> +                       opp-653000000 {
+> +                               opp-hz = /bits/ 64 <653000000>;
+> +                               opp-microvolt = <743750>, <850000>;
+> +                       };
+> +
+> +                       opp-698000000 {
+> +                               opp-hz = /bits/ 64 <698000000>;
+> +                               opp-microvolt = <768750>, <868750>;
+> +                       };
+> +
+> +                       opp-743000000 {
+> +                               opp-hz = /bits/ 64 <743000000>;
+> +                               opp-microvolt = <793750>, <893750>;
+> +                       };
+> +
+> +                       opp-800000000 {
+> +                               opp-hz = /bits/ 64 <800000000>;
+> +                               opp-microvolt = <825000>, <925000>;
+> +                       };
+
+Okay, but I seriously doubt the OPP selection logic is sophisticated
+enough or will ever be to use all these levels...
+
+> +               };
+> +
+>                 mmsys: syscon@14000000 {
+>                         compatible = "mediatek,mt8183-mmsys", "syscon";
+>                         reg = <0 0x14000000 0 0x1000>;
+> --
+> 2.23.0.187.g17f5b7556c-goog
+>
