@@ -1,157 +1,65 @@
-From: Light Hsieh <light.hsieh@mediatek.com>
-Subject: Re: [PATCH v2 1/5] pinctrl: mediatek: Check gpio pin number and use
- binary  search in mtk_hw_pin_field_lookup()
-Date: Thu, 5 Sep 2019 14:00:10 +0800
-Message-ID: <1567663210.1324.3.camel@mtkswgap22>
-References: <1567662796-25508-1-git-send-email-light.hsieh@mediatek.com>
+From: Amit Kucheria <amit.kucheria@linaro.org>
+Subject: Re: [PATCH -next 08/15] thermal: tsens: use devm_platform_ioremap_resource()
+ to simplify code
+Date: Thu, 5 Sep 2019 11:45:30 +0530
+Message-ID: <CAHLCerOVuNEAkCggBoDU4NgbzhTVxpdJXeTXVrTs5tp7ZVtSMg@mail.gmail.com>
+References: <20190904122939.23780-1-yuehaibing@huawei.com> <20190904122939.23780-9-yuehaibing@huawei.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1567662796-25508-1-git-send-email-light.hsieh@mediatek.com>
+In-Reply-To: <20190904122939.23780-9-yuehaibing@huawei.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linus.walleij@linaro.org
-Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, sean.wang@kernel.org
+To: YueHaibing <yuehaibing@huawei.com>
+Cc: miquel.raynal@bootlin.com, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Eric Anholt <eric@anholt.net>, wahrenst@gmx.net, f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, Markus Mayer <mmayer@broadcom.com>, computersforpeace@gmail.com, gregory.0xf0@gmail.com, Matthias Brugger <matthias.bgg@gmail.com>, Andy Gross <agross@kernel.org>, Heiko Stuebner <heiko@sntech.de>, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, Marc Gonzalez <marc.w.gonzalez@free.fr>, mans@mansr.com, talel@amazon.com, Jun Nie <jun.nie@linaro.org>, Shawn Guo <shawnguo@kernel.org>, phil@raspberrypi.org, gregkh@linuxfoundation.org, david.hernandezsanchez@st.com, horms+renesas@verge.net.au, wsa+renesas@sang-engineering.c
 List-Id: linux-mediatek@lists.infradead.org
 
-Dear reviewers, 
+On Wed, Sep 4, 2019 at 6:05 PM YueHaibing <yuehaibing@huawei.com> wrote:
+>
+> Use devm_platform_ioremap_resource() to simplify the code a bit.
+> This is detected by coccinelle.
+>
+> Reported-by: Hulk Robot <hulkci@huawei.com>
+> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
 
-v2 is the same as v1 except that commit message is corrected according
-to Linus' comment for v1:
+Acked-by: Amit Kucheria <amit.kucheria@linaro.org>
 
-1. remove Change-Id lines
-2. correct sysfs as debugfs
-
-On Thu, 2019-09-05 at 13:53 +0800, Light Hsieh wrote:
-> From: Light Hsieh <light.hsieh@mediatek.com>
-> 
-> 1. Check if gpio pin number is in valid range to prevent from get invalid
->    pointer 'desc' in the following code:
-> 	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
-> 
-> 2. Use binary search in mtk_hw_pin_field_lookup()
->    Modify mtk_hw_pin_field_lookup() to use binary search for accelerating
->    search.
-> 
 > ---
->  drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 24 +++++++++++++++++++-----
->  drivers/pinctrl/mediatek/pinctrl-paris.c         | 19 +++++++++++++++++++
->  2 files changed, 38 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> index 20e1c89..4687f63 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> @@ -68,7 +68,7 @@ static int mtk_hw_pin_field_lookup(struct mtk_pinctrl *hw,
+>  drivers/thermal/qcom/tsens-common.c | 7 ++-----
+>  1 file changed, 2 insertions(+), 5 deletions(-)
+>
+> diff --git a/drivers/thermal/qcom/tsens-common.c b/drivers/thermal/qcom/tsens-common.c
+> index 528df88..43ce4fb 100644
+> --- a/drivers/thermal/qcom/tsens-common.c
+> +++ b/drivers/thermal/qcom/tsens-common.c
+> @@ -155,7 +155,6 @@ int __init init_common(struct tsens_priv *priv)
 >  {
->  	const struct mtk_pin_field_calc *c, *e;
->  	const struct mtk_pin_reg_calc *rc;
-> -	u32 bits;
-> +	u32 bits, start = 0, end, found = 0, check;
->  
->  	if (hw->soc->reg_cal && hw->soc->reg_cal[field].range) {
->  		rc = &hw->soc->reg_cal[field];
-> @@ -79,21 +79,32 @@ static int mtk_hw_pin_field_lookup(struct mtk_pinctrl *hw,
->  		return -ENOTSUPP;
->  	}
->  
-> +	end = rc->nranges - 1;
->  	c = rc->range;
->  	e = c + rc->nranges;
->  
-> -	while (c < e) {
-> -		if (desc->number >= c->s_pin && desc->number <= c->e_pin)
-> +	while (start <= end) {
-> +		check = (start + end) >> 1;
-> +		if (desc->number >= rc->range[check].s_pin
-> +		 && desc->number <= rc->range[check].e_pin) {
-> +			found = 1;
->  			break;
-> -		c++;
-> +		} else if (start == end)
-> +			break;
-> +		else if (desc->number < rc->range[check].s_pin)
-> +			end = check - 1;
-> +		else
-> +			start = check + 1;
->  	}
->  
-> -	if (c >= e) {
-> +	if (!found) {
->  		dev_dbg(hw->dev, "Not support field %d for pin = %d (%s)\n",
->  			field, desc->number, desc->name);
->  		return -ENOTSUPP;
->  	}
->  
-> +	c = rc->range + check;
-> +
->  	if (c->i_base > hw->nbase - 1) {
->  		dev_err(hw->dev,
->  			"Invalid base for field %d for pin = %d (%s)\n",
-> @@ -182,6 +193,9 @@ int mtk_hw_set_value(struct mtk_pinctrl *hw, const struct mtk_pin_desc *desc,
->  	if (err)
->  		return err;
->  
-> +	if (value < 0 || value > pf.mask)
-> +		return -EINVAL;
-> +
->  	if (!pf.next)
->  		mtk_rmw(hw, pf.index, pf.offset, pf.mask << pf.bitpos,
->  			(value & pf.mask) << pf.bitpos);
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
-> index 923264d..28b4951 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
-> @@ -693,6 +693,9 @@ static int mtk_gpio_get_direction(struct gpio_chip *chip, unsigned int gpio)
->  	const struct mtk_pin_desc *desc;
->  	int value, err;
->  
-> +	if (gpio > hw->soc->npins)
-> +		return -EINVAL;
-> +
->  	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
->  
->  	err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DIR, &value);
-> @@ -708,6 +711,9 @@ static int mtk_gpio_get(struct gpio_chip *chip, unsigned int gpio)
->  	const struct mtk_pin_desc *desc;
->  	int value, err;
->  
-> +	if (gpio > hw->soc->npins)
-> +		return -EINVAL;
-> +
->  	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
->  
->  	err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DI, &value);
-> @@ -722,6 +728,9 @@ static void mtk_gpio_set(struct gpio_chip *chip, unsigned int gpio, int value)
->  	struct mtk_pinctrl *hw = gpiochip_get_data(chip);
->  	const struct mtk_pin_desc *desc;
->  
-> +	if (gpio > hw->soc->npins)
-> +		return;
-> +
->  	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
->  
->  	mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_DO, !!value);
-> @@ -729,12 +738,22 @@ static void mtk_gpio_set(struct gpio_chip *chip, unsigned int gpio, int value)
->  
->  static int mtk_gpio_direction_input(struct gpio_chip *chip, unsigned int gpio)
->  {
-> +	struct mtk_pinctrl *hw = gpiochip_get_data(chip);
-> +
-> +	if (gpio > hw->soc->npins)
-> +		return -EINVAL;
-> +
->  	return pinctrl_gpio_direction_input(chip->base + gpio);
->  }
->  
->  static int mtk_gpio_direction_output(struct gpio_chip *chip, unsigned int gpio,
->  				     int value)
->  {
-> +	struct mtk_pinctrl *hw = gpiochip_get_data(chip);
-> +
-> +	if (gpio > hw->soc->npins)
-> +		return -EINVAL;
-> +
->  	mtk_gpio_set(chip, gpio, value);
->  
->  	return pinctrl_gpio_direction_output(chip->base + gpio);
+>         void __iomem *tm_base, *srot_base;
+>         struct device *dev = priv->dev;
+> -       struct resource *res;
+>         u32 enabled;
+>         int ret, i, j;
+>         struct platform_device *op = of_find_device_by_node(priv->dev->of_node);
+> @@ -166,8 +165,7 @@ int __init init_common(struct tsens_priv *priv)
+>         if (op->num_resources > 1) {
+>                 /* DT with separate SROT and TM address space */
+>                 priv->tm_offset = 0;
+> -               res = platform_get_resource(op, IORESOURCE_MEM, 1);
+> -               srot_base = devm_ioremap_resource(&op->dev, res);
+> +               srot_base = devm_platform_ioremap_resource(op, 1);
+>                 if (IS_ERR(srot_base)) {
+>                         ret = PTR_ERR(srot_base);
+>                         goto err_put_device;
+> @@ -184,8 +182,7 @@ int __init init_common(struct tsens_priv *priv)
+>                 priv->tm_offset = 0x1000;
+>         }
+>
+> -       res = platform_get_resource(op, IORESOURCE_MEM, 0);
+> -       tm_base = devm_ioremap_resource(&op->dev, res);
+> +       tm_base = devm_platform_ioremap_resource(op, 0);
+>         if (IS_ERR(tm_base)) {
+>                 ret = PTR_ERR(tm_base);
+>                 goto err_put_device;
+> --
+> 2.7.4
+>
+>
