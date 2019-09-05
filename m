@@ -1,56 +1,146 @@
-From: Michal Simek <michal.simek@xilinx.com>
-Subject: Re: [PATCH -next 34/36] spi: zynqmp: use
- devm_platform_ioremap_resource() to simplify code
-Date: Thu, 5 Sep 2019 07:19:47 +0200
-Message-ID: <f267daf8-3351-a90a-35ea-94e1d8c20583@xilinx.com>
-References: <20190904135918.25352-1-yuehaibing@huawei.com>
- <20190904135918.25352-35-yuehaibing@huawei.com>
+From: Light Hsieh <light.hsieh@mediatek.com>
+Subject: [PATCH v2 1/5] pinctrl: mediatek: Check gpio pin number and use binary  search in mtk_hw_pin_field_lookup()
+Date: Thu, 5 Sep 2019 13:53:12 +0800
+Message-ID: <1567662796-25508-1-git-send-email-light.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190904135918.25352-35-yuehaibing@huawei.com>
-Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: YueHaibing <yuehaibing@huawei.com>, broonie@kernel.org, f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, eric@anholt.net, wahrenst@gmx.net, shc_work@mail.ru, agross@kernel.org, khilman@baylibre.com, matthias.bgg@gmail.com, shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com, avifishman70@gmail.com, tmaimon77@gmail.com, tali.perry1@gmail.com, venture@google.com, yuenn@google.com, benjaminfair@google.com, kgene@kernel.org, krzk@kernel.org, andi@etezian.org, palmer@sifive.com, paul.walmsley@sifive.com, baohua@kernel.org, mripard@kernel.org, wens@csie.org, ldewangan@nvidia.com, thierry.reding@gmail.com, jonathanh@nvidia.com, yamada.masahiro@socionext.com, michal.simek@xilinx.com
-Cc: bcm-kernel-feedback-list@broadcom.com, linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org, linux-samsung-soc@vger.kernel.org, linux-riscv@lists.infradead.org, linux-tegra@vger.kernel.org
+To: linus.walleij@linaro.org
+Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, sean.wang@kernel.org, Light Hsieh <light.hsieh@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 04. 09. 19 15:59, YueHaibing wrote:
-> Use devm_platform_ioremap_resource() to simplify the code a bit.
-> This is detected by coccinelle.
-> 
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
-> ---
->  drivers/spi/spi-zynqmp-gqspi.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
-> 
-> diff --git a/drivers/spi/spi-zynqmp-gqspi.c b/drivers/spi/spi-zynqmp-gqspi.c
-> index 5e9ea8a..60c4de4 100644
-> --- a/drivers/spi/spi-zynqmp-gqspi.c
-> +++ b/drivers/spi/spi-zynqmp-gqspi.c
-> @@ -1016,7 +1016,6 @@ static int zynqmp_qspi_probe(struct platform_device *pdev)
->  	int ret = 0;
->  	struct spi_master *master;
->  	struct zynqmp_qspi *xqspi;
-> -	struct resource *res;
->  	struct device *dev = &pdev->dev;
->  
->  	eemi_ops = zynqmp_pm_get_eemi_ops();
-> @@ -1031,8 +1030,7 @@ static int zynqmp_qspi_probe(struct platform_device *pdev)
->  	master->dev.of_node = pdev->dev.of_node;
->  	platform_set_drvdata(pdev, master);
->  
-> -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -	xqspi->regs = devm_ioremap_resource(&pdev->dev, res);
-> +	xqspi->regs = devm_platform_ioremap_resource(pdev, 0);
->  	if (IS_ERR(xqspi->regs)) {
->  		ret = PTR_ERR(xqspi->regs);
->  		goto remove_master;
-> 
+From: Light Hsieh <light.hsieh@mediatek.com>
 
-Acked-by: Michal Simek <michal.simek@xilinx.com>
+1. Check if gpio pin number is in valid range to prevent from get invalid
+   pointer 'desc' in the following code:
+	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
 
-Thanks,
-Michal
+2. Use binary search in mtk_hw_pin_field_lookup()
+   Modify mtk_hw_pin_field_lookup() to use binary search for accelerating
+   search.
+
+---
+ drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 24 +++++++++++++++++++-----
+ drivers/pinctrl/mediatek/pinctrl-paris.c         | 19 +++++++++++++++++++
+ 2 files changed, 38 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+index 20e1c89..4687f63 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+@@ -68,7 +68,7 @@ static int mtk_hw_pin_field_lookup(struct mtk_pinctrl *hw,
+ {
+ 	const struct mtk_pin_field_calc *c, *e;
+ 	const struct mtk_pin_reg_calc *rc;
+-	u32 bits;
++	u32 bits, start = 0, end, found = 0, check;
+ 
+ 	if (hw->soc->reg_cal && hw->soc->reg_cal[field].range) {
+ 		rc = &hw->soc->reg_cal[field];
+@@ -79,21 +79,32 @@ static int mtk_hw_pin_field_lookup(struct mtk_pinctrl *hw,
+ 		return -ENOTSUPP;
+ 	}
+ 
++	end = rc->nranges - 1;
+ 	c = rc->range;
+ 	e = c + rc->nranges;
+ 
+-	while (c < e) {
+-		if (desc->number >= c->s_pin && desc->number <= c->e_pin)
++	while (start <= end) {
++		check = (start + end) >> 1;
++		if (desc->number >= rc->range[check].s_pin
++		 && desc->number <= rc->range[check].e_pin) {
++			found = 1;
+ 			break;
+-		c++;
++		} else if (start == end)
++			break;
++		else if (desc->number < rc->range[check].s_pin)
++			end = check - 1;
++		else
++			start = check + 1;
+ 	}
+ 
+-	if (c >= e) {
++	if (!found) {
+ 		dev_dbg(hw->dev, "Not support field %d for pin = %d (%s)\n",
+ 			field, desc->number, desc->name);
+ 		return -ENOTSUPP;
+ 	}
+ 
++	c = rc->range + check;
++
+ 	if (c->i_base > hw->nbase - 1) {
+ 		dev_err(hw->dev,
+ 			"Invalid base for field %d for pin = %d (%s)\n",
+@@ -182,6 +193,9 @@ int mtk_hw_set_value(struct mtk_pinctrl *hw, const struct mtk_pin_desc *desc,
+ 	if (err)
+ 		return err;
+ 
++	if (value < 0 || value > pf.mask)
++		return -EINVAL;
++
+ 	if (!pf.next)
+ 		mtk_rmw(hw, pf.index, pf.offset, pf.mask << pf.bitpos,
+ 			(value & pf.mask) << pf.bitpos);
+diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+index 923264d..28b4951 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-paris.c
++++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+@@ -693,6 +693,9 @@ static int mtk_gpio_get_direction(struct gpio_chip *chip, unsigned int gpio)
+ 	const struct mtk_pin_desc *desc;
+ 	int value, err;
+ 
++	if (gpio > hw->soc->npins)
++		return -EINVAL;
++
+ 	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
+ 
+ 	err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DIR, &value);
+@@ -708,6 +711,9 @@ static int mtk_gpio_get(struct gpio_chip *chip, unsigned int gpio)
+ 	const struct mtk_pin_desc *desc;
+ 	int value, err;
+ 
++	if (gpio > hw->soc->npins)
++		return -EINVAL;
++
+ 	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
+ 
+ 	err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DI, &value);
+@@ -722,6 +728,9 @@ static void mtk_gpio_set(struct gpio_chip *chip, unsigned int gpio, int value)
+ 	struct mtk_pinctrl *hw = gpiochip_get_data(chip);
+ 	const struct mtk_pin_desc *desc;
+ 
++	if (gpio > hw->soc->npins)
++		return;
++
+ 	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
+ 
+ 	mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_DO, !!value);
+@@ -729,12 +738,22 @@ static void mtk_gpio_set(struct gpio_chip *chip, unsigned int gpio, int value)
+ 
+ static int mtk_gpio_direction_input(struct gpio_chip *chip, unsigned int gpio)
+ {
++	struct mtk_pinctrl *hw = gpiochip_get_data(chip);
++
++	if (gpio > hw->soc->npins)
++		return -EINVAL;
++
+ 	return pinctrl_gpio_direction_input(chip->base + gpio);
+ }
+ 
+ static int mtk_gpio_direction_output(struct gpio_chip *chip, unsigned int gpio,
+ 				     int value)
+ {
++	struct mtk_pinctrl *hw = gpiochip_get_data(chip);
++
++	if (gpio > hw->soc->npins)
++		return -EINVAL;
++
+ 	mtk_gpio_set(chip, gpio, value);
+ 
+ 	return pinctrl_gpio_direction_output(chip->base + gpio);
+-- 
+1.8.1.1.dirty
