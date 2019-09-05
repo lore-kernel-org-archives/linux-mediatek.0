@@ -1,19 +1,17 @@
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-Subject: Re: [V3, 2/2] media: i2c: Add Omnivision OV02A10 camera sensor driver
-Date: Thu, 5 Sep 2019 19:05:12 +0300
-Message-ID: <20190905160512.GG5475@paasikivi.fi.intel.com>
-References: <20190819034331.13098-1-dongchun.zhu@mediatek.com>
- <20190819034331.13098-3-dongchun.zhu@mediatek.com>
- <20190819083009.GC6133@paasikivi.fi.intel.com>
- <1567676465.21623.100.camel@mhfsdcap03>
- <20190905104546.GA5475@paasikivi.fi.intel.com>
- <CAAFQd5Bh-11D9RR9WVH5A3DbXZoxWhbMhXSNKUV25mempMi+ag@mail.gmail.com>
+From: Catalin Marinas <catalin.marinas@arm.com>
+Subject: Re: next/master boot: 310 boots: 11 failed, 292 passed with 6
+ offline, 1 untried/unknown (next-20190904)
+Date: Thu, 5 Sep 2019 18:02:58 +0100
+Message-ID: <20190905170257.GC31268@arrakis.emea.arm.com>
+References: <5d700b15.1c69fb81.2abcd.479b@mx.google.com>
+ <20190904192725.GI4348@sirena.co.uk> <7hzhjjsime.fsf@baylibre.com>
+ <20190905153938.GB4053@sirena.co.uk>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <CAAFQd5Bh-11D9RR9WVH5A3DbXZoxWhbMhXSNKUV25mempMi+ag@mail.gmail.com>
+In-Reply-To: <20190905153938.GB4053@sirena.co.uk>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -23,43 +21,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream <srv_heupstream@mediatek.com>, shengnan.wang@mediatek.com, Louis Kuo <louis.kuo@mediatek.com>, Sj Huang <sj.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Dongchun Zhu <dongchun.zhu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing Bu <bingbu.cao@intel.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
- Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>, Linux Media Mailing List <linux-media@vger.kernel.org>
+To: Mark Brown <broonie@kernel.org>
+Cc: Steven Liu <steven.liu@mediatek.com>, kernel-build-reports@lists.linaro.org, Kevin Hilman <khilman@baylibre.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>, Christoph Hellwig <hch@lst.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Sep 05, 2019 at 07:53:37PM +0900, Tomasz Figa wrote:
-> On Thu, Sep 5, 2019 at 7:45 PM Sakari Ailus
-> <sakari.ailus@linux.intel.com> wrote:
-> >
-> > Hi Dongchun,
-> >
-> > On Thu, Sep 05, 2019 at 05:41:05PM +0800, Dongchun Zhu wrote:
-> >
-> > ...
-> >
-> > > > > + ret = regulator_bulk_enable(OV02A10_NUM_SUPPLIES, ov02a10->supplies);
-> > > > > + if (ret < 0) {
-> > > > > +         dev_err(dev, "Failed to enable regulators\n");
-> > > > > +         goto disable_clk;
-> > > > > + }
-> > > > > + msleep_range(7);
-> > > >
-> > > > This has some potential of clashing with more generic functions in the
-> > > > future. Please use usleep_range directly, or msleep.
-> > > >
-> > >
-> > > Did you mean using usleep_range(7*1000, 8*1000), as used in patch v1?
-> > > https://patchwork.kernel.org/patch/10957225/
-> >
-> > Yes, please.
+On Thu, Sep 05, 2019 at 04:39:38PM +0100, Mark Brown wrote:
+> On Wed, Sep 04, 2019 at 05:15:53PM -0700, Kevin Hilman wrote:
+> > [ + Steven Liu who donated this board to my kernelCI lab ]
 > 
-> Why not just msleep()?
+> Also adding Christoph since this was bisected to his commit and Catalin
+> and Will since this was an architecture change.
 
-msleep() is usually less accurate. I'm not sure it makes a big different in
-this case. Perhaps, if someone wants that the sensor is powered on and
-streaming as soon as possible.
+Thanks.
+
+> > Bisected down to this commit[1], full bisect log here[2].  It didn't
+> > revert cleanly on top of next-20190904, so I didn't get any further.
+> 
+> > [1]
+> > 419e2f1838819e954071dfa1d1f820ab3386ada1 is the first bad commit
+> > commit 419e2f1838819e954071dfa1d1f820ab3386ada1
+> > Author: Christoph Hellwig <hch@lst.de>
+> > Date:   Mon Aug 26 09:03:44 2019 +0200
+
+I stared at this commit and the ones around it for a while but couldn't
+see anything obvious. AFAICT this commit only replaces some macros, no
+functional change.
 
 -- 
-Sakari Ailus
-sakari.ailus@linux.intel.com
+Catalin
