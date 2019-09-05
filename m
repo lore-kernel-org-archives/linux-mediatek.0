@@ -1,67 +1,73 @@
 From: Nicolas Boichat <drinkcat@chromium.org>
-Subject: Re: [PATCH 1/2] drm/mediatek: Support CMDQ interface in ddp component
-Date: Fri, 6 Sep 2019 06:49:59 +0800
-Message-ID: <CANMq1KDUR2cFrQC0NdfvLD=0QDiYoyOTGMf3RWyg5PPSURhGMQ@mail.gmail.com>
-References: <20190830074103.16671-1-bibby.hsieh@mediatek.com>
- <20190830074103.16671-2-bibby.hsieh@mediatek.com>
+Subject: Re: [V3, 2/2] media: i2c: Add Omnivision OV02A10 camera sensor driver
+Date: Fri, 6 Sep 2019 06:58:05 +0800
+Message-ID: <CANMq1KDVMGkeBvu1nO5WHopWwec9mxHfhmLmX2BzvaYVLzxoXw@mail.gmail.com>
+References: <20190819034331.13098-1-dongchun.zhu@mediatek.com>
+ <20190819034331.13098-3-dongchun.zhu@mediatek.com>
+ <20190819083009.GC6133@paasikivi.fi.intel.com>
+ <1567676465.21623.100.camel@mhfsdcap03>
+ <20190905104546.GA5475@paasikivi.fi.intel.com>
+ <CAAFQd5Bh-11D9RR9WVH5A3DbXZoxWhbMhXSNKUV25mempMi+ag@mail.gmail.com>
+ <20190905160512.GG5475@paasikivi.fi.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190830074103.16671-2-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: Yongqiang Niu <yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, lkml <linux-kernel@vger.kernel.org>, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Guenter Roeck <groeck@chromium.org>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190905160512.GG5475@paasikivi.fi.intel.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, shengnan.wang@mediatek.com, Tomasz Figa <tfiga@chromium.org>, Louis Kuo <louis.kuo@mediatek.com>, Sj Huang <sj.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Dongchun Zhu <dongchun.zhu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing Bu <bingbu.cao@intel.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
+ Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>, Linux Media Mailing List <linux-media@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gRnJpLCBBdWcgMzAsIDIwMTkgYXQgMzo0MSBQTSBCaWJieSBIc2llaCA8YmliYnkuaHNpZWhA
-bWVkaWF0ZWsuY29tPiB3cm90ZToKPgo+IFRoZSBDTURRIChDb21tYW5kIFF1ZXVlKSBpbiBNVDgx
-ODMgaXMgdXNlZCB0byBoZWxwCj4gdXBkYXRlIGFsbCByZWxldmFudCBkaXNwbGF5IGNvbnRyb2xs
-ZXIgcmVnaXN0ZXJzCj4gd2l0aCBjcml0aWNhbCB0aW1lIGxpbWF0aW9uLgo+IFRoaXMgcGF0Y2gg
-YWRkIGNtZHEgaW50ZXJmYWNlIGluIGRkcF9jb21wIGludGVyZmFjZSwKPiBsZXQgYWxsIGRkcF9j
-b21wIGludGVyZmFjZSBjYW4gc3VwcG9ydCBjcHUvY21kcSBmdW5jdGlvbgo+IGF0IHRoZSBzYW1l
-IHRpbWUuCj4KPiBTaWduZWQtb2ZmLWJ5OiBZVCBTaGVuIDx5dC5zaGVuQG1lZGlhdGVrLmNvbT4K
-PiBTaWduZWQtb2ZmLWJ5OiBDSyBIdSA8Y2suaHVAbWVkaWF0ZWsuY29tPgo+IFNpZ25lZC1vZmYt
-Ynk6IFBoaWxpcHAgWmFiZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+Cj4gU2lnbmVkLW9mZi1i
-eTogQmliYnkgSHNpZWggPGJpYmJ5LmhzaWVoQG1lZGlhdGVrLmNvbT4KPiBTaWduZWQtb2ZmLWJ5
-OiBZb25ncWlhbmcgTml1IDx5b25ncWlhbmcubml1QG1lZGlhdGVrLmNvbT4KPiAtLS0gW3NuaXBd
-Cj4gIHN0YXRpYyB2b2lkIG10a19nYW1tYV9zZXQoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCwK
-PiAtICAgICAgICAgICAgICAgICAgICAgICAgIHN0cnVjdCBkcm1fY3J0Y19zdGF0ZSAqc3RhdGUp
-Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgICBzdHJ1Y3QgZHJtX2NydGNfc3RhdGUgKnN0YXRl
-LAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgc3RydWN0IGNtZHFfcGt0ICpjbWRxX3BrdCkK
-PiAgewo+IC0gICAgICAgdW5zaWduZWQgaW50IGksIHJlZzsKPiArICAgICAgIHVuc2lnbmVkIGlu
-dCBpOwo+ICAgICAgICAgc3RydWN0IGRybV9jb2xvcl9sdXQgKmx1dDsKPiAgICAgICAgIHZvaWQg
-X19pb21lbSAqbHV0X2Jhc2U7Cj4gICAgICAgICB1MzIgd29yZDsKPgo+ICAgICAgICAgaWYgKHN0
-YXRlLT5nYW1tYV9sdXQpIHsKPiAtICAgICAgICAgICAgICAgcmVnID0gcmVhZGwoY29tcC0+cmVn
-cyArIERJU1BfR0FNTUFfQ0ZHKTsKPiAtICAgICAgICAgICAgICAgcmVnID0gcmVnIHwgR0FNTUFf
-TFVUX0VOOwo+IC0gICAgICAgICAgICAgICB3cml0ZWwocmVnLCBjb21wLT5yZWdzICsgRElTUF9H
-QU1NQV9DRkcpOwo+ICsgICAgICAgICAgICAgICBtdGtfZGRwX3dyaXRlX21hc2soY21kcV9wa3Qs
-IEdBTU1BX0xVVF9FTiwgY29tcCwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-IERJU1BfR0FNTUFfQ0ZHLCBHQU1NQV9MVVRfRU4pOwo+ICAgICAgICAgICAgICAgICBsdXRfYmFz
-ZSA9IGNvbXAtPnJlZ3MgKyBESVNQX0dBTU1BX0xVVDsKPiAgICAgICAgICAgICAgICAgbHV0ID0g
-KHN0cnVjdCBkcm1fY29sb3JfbHV0ICopc3RhdGUtPmdhbW1hX2x1dC0+ZGF0YTsKPiAgICAgICAg
-ICAgICAgICAgZm9yIChpID0gMDsgaSA8IE1US19MVVRfU0laRTsgaSsrKSB7Cj4gICAgICAgICAg
-ICAgICAgICAgICAgICAgd29yZCA9ICgoKGx1dFtpXS5yZWQgPj4gNikgJiBMVVRfMTBCSVRfTUFT
-SykgPDwgMjApICsKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICgoKGx1dFtpXS5n
-cmVlbiA+PiA2KSAmIExVVF8xMEJJVF9NQVNLKSA8PCAxMCkgKwo+ICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgKChsdXRbaV0uYmx1ZSA+PiA2KSAmIExVVF8xMEJJVF9NQVNLKTsKPiAt
-ICAgICAgICAgICAgICAgICAgICAgICB3cml0ZWwod29yZCwgKGx1dF9iYXNlICsgaSAqIDQpKTsK
-PiArICAgICAgICAgICAgICAgICAgICAgICBtdGtfZGRwX3dyaXRlKGNtZHFfcGt0LCB3b3JkLCBj
-b21wLAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKHVuc2lnbmVkIGlu
-dCkobHV0X2Jhc2UgKyBpICogNCkpOwoKR3VlbnRlciBwb2ludGVkIG91dCB0aGF0IHRoaXMgbG9v
-a3MgcXVpdGUgd3JvbmcuIFdlIHNob3VsZCBoYXZlOgp1bnNpZ25lZCBpbnQgbHV0X2Jhc2U7Cmx1
-dF9iYXNlID0gRElTUF9HQU1NQV9MVVQ7Cm10a19kZHBfd3JpdGUoY21kcV9wa3QsIHdvcmQsIGNv
-bXAsIGx1dF9iYXNlICsgaSAqIDQpOwoKT3IgbW9yZSBzaW1wbHk6Cm10a19kZHBfd3JpdGUoY21k
-cV9wa3QsIHdvcmQsIGNvbXAsIERJU1BfR0FNTUFfTFVUICsgaSAqIDQpOwoKPiAgICAgICAgICAg
-ICAgICAgfQo+ICAgICAgICAgfQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
-a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
-cmktZGV2ZWw=
+On Fri, Sep 6, 2019 at 12:05 AM Sakari Ailus
+<sakari.ailus@linux.intel.com> wrote:
+>
+> On Thu, Sep 05, 2019 at 07:53:37PM +0900, Tomasz Figa wrote:
+> > On Thu, Sep 5, 2019 at 7:45 PM Sakari Ailus
+> > <sakari.ailus@linux.intel.com> wrote:
+> > >
+> > > Hi Dongchun,
+> > >
+> > > On Thu, Sep 05, 2019 at 05:41:05PM +0800, Dongchun Zhu wrote:
+> > >
+> > > ...
+> > >
+> > > > > > + ret = regulator_bulk_enable(OV02A10_NUM_SUPPLIES, ov02a10->supplies);
+> > > > > > + if (ret < 0) {
+> > > > > > +         dev_err(dev, "Failed to enable regulators\n");
+> > > > > > +         goto disable_clk;
+> > > > > > + }
+> > > > > > + msleep_range(7);
+> > > > >
+> > > > > This has some potential of clashing with more generic functions in the
+> > > > > future. Please use usleep_range directly, or msleep.
+> > > > >
+> > > >
+> > > > Did you mean using usleep_range(7*1000, 8*1000), as used in patch v1?
+> > > > https://patchwork.kernel.org/patch/10957225/
+> > >
+> > > Yes, please.
+> >
+> > Why not just msleep()?
+>
+> msleep() is usually less accurate. I'm not sure it makes a big different in
+> this case. Perhaps, if someone wants that the sensor is powered on and
+> streaming as soon as possible.
+
+https://elixir.bootlin.com/linux/latest/source/Documentation/timers/timers-howto.txt#L70
+
+Use usleep_range for delays up to 20ms (at least that's what the
+documentation (still) says?)
+
+> --
+> Sakari Ailus
+> sakari.ailus@linux.intel.com
