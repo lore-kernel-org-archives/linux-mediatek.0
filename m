@@ -1,7 +1,7 @@
 From: Alexandre Courbot <acourbot@chromium.org>
-Subject: [RFC PATCH v2 02/13] media: mtk-vcodec: vdec: set VPI IPI handler in one place
-Date: Fri,  6 Sep 2019 20:55:02 +0900
-Message-ID: <20190906115513.159705-3-acourbot@chromium.org>
+Subject: [RFC PATCH v2 03/13] media: mtk-vcodec: vdec: clean up vidioc_vdec_s_fmt a bit
+Date: Fri,  6 Sep 2019 20:55:03 +0900
+Message-ID: <20190906115513.159705-4-acourbot@chromium.org>
 References: <20190906115513.159705-1-acourbot@chromium.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -12,103 +12,62 @@ To: Yunfei Dong <yunfei.dong@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.co
 Cc: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Each of the supported decoder formats used to set the same RPC
-interrupt handler by themselves, even though this could be done
-by the IF init function itself. Move it to the right place and stop
-making its symbol public.
+Check for a potentially NULL pointer that was overlooked and use shorter
+accessors to the same data. While we are at it, sprinkle a few comments.
 
 Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
 ---
- drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c | 1 -
- drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c  | 1 -
- drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c  | 1 -
- drivers/media/platform/mtk-vcodec/vdec_vpu_if.c       | 9 ++++++++-
- drivers/media/platform/mtk-vcodec/vdec_vpu_if.h       | 9 ---------
- 5 files changed, 8 insertions(+), 13 deletions(-)
+ .../media/platform/mtk-vcodec/mtk_vcodec_dec.c | 18 ++++++++++++++----
+ 1 file changed, 14 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-index 49aa85a9bb5a..50048c170b99 100644
---- a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-+++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-@@ -283,7 +283,6 @@ static int vdec_h264_init(struct mtk_vcodec_ctx *ctx)
- 	inst->vpu.id = IPI_VDEC_H264;
- 	inst->vpu.dev = ctx->dev->vpu_plat_dev;
- 	inst->vpu.ctx = ctx;
--	inst->vpu.handler = vpu_dec_ipi_handler;
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+index 653f111532ab..858727824889 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+@@ -841,12 +841,20 @@ static int vidioc_vdec_s_fmt(struct file *file, void *priv,
+ 		return -EINVAL;
  
- 	err = vpu_dec_init(&inst->vpu);
- 	if (err) {
-diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
-index 63a8708ce682..6011fdd60a22 100644
---- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
-+++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
-@@ -402,7 +402,6 @@ static int vdec_vp8_init(struct mtk_vcodec_ctx *ctx)
- 	inst->vpu.id = IPI_VDEC_VP8;
- 	inst->vpu.dev = ctx->dev->vpu_plat_dev;
- 	inst->vpu.ctx = ctx;
--	inst->vpu.handler = vpu_dec_ipi_handler;
+ 	pix_mp = &f->fmt.pix_mp;
++	/*
++	 * Setting OUTPUT format after OUTPUT buffers are allocated is invalid
++	 * if using the stateful API.
++	 */
+ 	if ((f->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) &&
+ 	    vb2_is_busy(&ctx->m2m_ctx->out_q_ctx.q)) {
+ 		mtk_v4l2_err("out_q_ctx buffers already requested");
+ 		ret = -EBUSY;
+ 	}
  
- 	err = vpu_dec_init(&inst->vpu);
- 	if (err) {
-diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-index 5066c283d86d..24c1f0bf2147 100644
---- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-+++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-@@ -793,7 +793,6 @@ static int vdec_vp9_init(struct mtk_vcodec_ctx *ctx)
- 	inst->vpu.id = IPI_VDEC_VP9;
- 	inst->vpu.dev = ctx->dev->vpu_plat_dev;
- 	inst->vpu.ctx = ctx;
--	inst->vpu.handler = vpu_dec_ipi_handler;
++	/*
++	 * Setting CAPTURE format after CAPTURE buffers are allocated is
++	 * invalid.
++	 */
+ 	if ((f->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE) &&
+ 	    vb2_is_busy(&ctx->m2m_ctx->cap_q_ctx.q)) {
+ 		mtk_v4l2_err("cap_q_ctx buffers already requested");
+@@ -865,6 +873,8 @@ static int vidioc_vdec_s_fmt(struct file *file, void *priv,
+ 			fmt = mtk_vdec_find_format(f);
+ 		}
+ 	}
++	if (fmt == NULL)
++		return -EINVAL;
  
- 	if (vpu_dec_init(&inst->vpu)) {
- 		mtk_vcodec_err(inst, "vp9_dec_vpu_init failed");
-diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-index 3f38cc4509ef..70abfd4cd4b9 100644
---- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-+++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-@@ -25,10 +25,16 @@ static void handle_init_ack_msg(struct vdec_vpu_ipi_init_ack *msg)
- }
+ 	q_data->fmt = fmt;
+ 	vidioc_try_fmt(f, q_data->fmt);
+@@ -873,10 +883,10 @@ static int vidioc_vdec_s_fmt(struct file *file, void *priv,
+ 		q_data->coded_width = pix_mp->width;
+ 		q_data->coded_height = pix_mp->height;
  
- /*
-+ * vpu_dec_ipi_handler - Handler for VPU ipi message.
-+ *
-+ * @data: ipi message
-+ * @len : length of ipi message
-+ * @priv: callback private data which is passed by decoder when register.
-+ *
-  * This function runs in interrupt context and it means there's an IPI MSG
-  * from VPU.
-  */
--void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
-+static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
- {
- 	struct vdec_vpu_ipi_ack *msg = data;
- 	struct vdec_vpu_inst *vpu = (struct vdec_vpu_inst *)
-@@ -102,6 +108,7 @@ int vpu_dec_init(struct vdec_vpu_inst *vpu)
- 	mtk_vcodec_debug_enter(vpu);
+-		ctx->colorspace = f->fmt.pix_mp.colorspace;
+-		ctx->ycbcr_enc = f->fmt.pix_mp.ycbcr_enc;
+-		ctx->quantization = f->fmt.pix_mp.quantization;
+-		ctx->xfer_func = f->fmt.pix_mp.xfer_func;
++		ctx->colorspace = pix_mp->colorspace;
++		ctx->ycbcr_enc = pix_mp->ycbcr_enc;
++		ctx->quantization = pix_mp->quantization;
++		ctx->xfer_func = pix_mp->xfer_func;
  
- 	init_waitqueue_head(&vpu->wq);
-+	vpu->handler = vpu_dec_ipi_handler;
- 
- 	err = vpu_ipi_register(vpu->dev, vpu->id, vpu->handler, "vdec", NULL);
- 	if (err != 0) {
-diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
-index b76f717e4fd7..f779b0676fbd 100644
---- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
-+++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
-@@ -76,13 +76,4 @@ int vpu_dec_deinit(struct vdec_vpu_inst *vpu);
-  */
- int vpu_dec_reset(struct vdec_vpu_inst *vpu);
- 
--/**
-- * vpu_dec_ipi_handler - Handler for VPU ipi message.
-- *
-- * @data: ipi message
-- * @len : length of ipi message
-- * @priv: callback private data which is passed by decoder when register.
-- */
--void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv);
--
- #endif
+ 		if (ctx->state == MTK_STATE_FREE) {
+ 			ret = vdec_if_init(ctx, q_data->fmt->fourcc);
 -- 
 2.23.0.187.g17f5b7556c-goog
