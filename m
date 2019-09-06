@@ -1,47 +1,108 @@
-From: Roger Lu <roger.lu@mediatek.com>
-Subject: Re: [PATCH v5 0/3] PM / AVS: SVS: Introduce SVS engine
-Date: Fri, 6 Sep 2019 18:15:53 +0800
-Message-ID: <1567764953.472.2.camel@mtksdaap41>
-References: <20190906100514.30803-1-roger.lu@mediatek.com>
+From: Alexandre Courbot <acourbot@chromium.org>
+Subject: [RFC PATCH v2 00/12] media: mtk-vcodec: support for MT8183 decoder
+Date: Fri,  6 Sep 2019 20:55:00 +0900
+Message-ID: <20190906115513.159705-1-acourbot@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190906100514.30803-1-roger.lu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Kevin Hilman <khilman@kernel.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@google.com>, Stephen Boyd <sboyd@kernel.org>, Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, yt.lee@mediatek.com, Angus Lin <Angus.Lin@mediatek.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Nishanth Menon <nm@ti.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Excuse me, I forgot to add "changes since" below. Add it back now.
+Another spin [1] of the support for the MT8183 stateless decoder taken from the
+Chrome OS tree. This version is updated to work with the latest revision of
+the stateless API. It requires the SCP support patchset [2] and thus is not yet
+suitable for merging, except maybe the first 3 to 6 patches.
 
-On Fri, 2019-09-06 at 18:05 +0800, Roger Lu wrote:
-> 1. SVS driver use OPP adjust event in [1] to update OPP table voltage part.
-> 2. SVS dts node refers to CPU opp table [2] and GPU opp table [3].
-> 3. SVS dts node refers to thermal efuse [4] and PMIC regulator [5].
-> 
-> [1] https://patchwork.kernel.org/patch/11092245/
-> [2] https://patchwork.kernel.org/patch/10934123/
-> [3] https://patchwork.kernel.org/patch/11132381/
-> [4] https://patchwork.kernel.org/patch/11093655/
-> [5] https://patchwork.kernel.org/patch/11110493/
+Patches 1 to 3 are cleanup/fixes and can be merged as-is.
 
-changes since v4:
-- Add SVS dts node patch in SVS patch series.
+The mtk-vcodec driver already supports the MT8173 chip, which uses the stateful
+codec API. Therefore the first step, since MT8183 uses the stateless codec API,
+is to isolate the stateful ops from the common code and into its own file, which
+is what patch 4 does.
 
-> Roger Lu (3):
->   dt-bindings: soc: add mtk svs dt-bindings
->   arm64: dts: mt8183: add svs device information
->   PM / AVS: SVS: Introduce SVS engine
-> 
->  .../devicetree/bindings/power/mtk-svs.txt     |   88 +
->  arch/arm64/boot/dts/mediatek/mt8183-evb.dts   |   16 +
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi      |   38 +
->  drivers/power/avs/Kconfig                     |   10 +
->  drivers/power/avs/Makefile                    |    1 +
->  drivers/power/avs/mtk_svs.c                   | 2075 +++++++++++++++++
->  include/linux/power/mtk_svs.h                 |   23 +
->  7 files changed, 2251 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/power/mtk-svs.txt
->  create mode 100644 drivers/power/avs/mtk_svs.c
->  create mode 100644 include/linux/power/mtk_svs.h
+Patches 5 and 6 abstract the firmware in the same way, and add a firmware
+version number that will be used by MT8183 firmware.
+
+Patch 7 adds support for communicating with a SCP firmware, and requires the SCP
+support series to compile.
+
+Patches 8 and 9 add the documentation and declarations of the MM21 format, a
+proprietary block format that MT8183 decodes into. The MDP3 m2m block is capable
+of converting this format into something more common.
+
+Patch 10 and 11 add general support for stateless codecs, and support for
+decoding a H.264 stream using a stateless codec.
+
+Patch 12 adds support for the media device required to create requests for
+stateless decoding.
+
+Finally, patch 13 enables MT8183.
+
+Although the code is not mergeable yet, I thought it would be interesting to
+publish it as a RFC that illustrates how another driver implements the stateless
+codec API. Reviews are also of course welcome.
+
+[1] https://patchwork.kernel.org/cover/10963719/
+[2] https://lkml.org/lkml/2019/9/5/63
+
+Alexandre Courbot (5):
+  media: mtk-vcodec: vdec: set VPI IPI handler in one place
+  media: mtk-vcodec: vdec: clean up vidioc_vdec_s_fmt a bit
+  media: mtk-vcodec: vdec: handle firmware version field
+  media: add Mediatek's MM21 format
+  media: doc: Add documentation for MM21 video format
+
+Yunfei Dong (8):
+  media: mtk-vcodec: vdec: fix incorrect pointer dereference
+  media: mtk-vcodec: vdec: move stateful ops into their own file
+  media: mtk-vcodec: abstract firmware interface
+  media: mtk-vcodec: add SCP firmware ops
+  media: mtk-vcodec: vdec: support stateless API
+  media: mtk-vcodec: vdec: support stateless H.264 decoding
+  media: mtk-vcodec: vdec: add media device if using stateless api
+  media: mtk-vcodec: enable MT8183 decoder
+
+ .../media/uapi/v4l/pixfmt-reserved.rst        |  10 +
+ drivers/media/platform/Kconfig                |   1 +
+ drivers/media/platform/mtk-vcodec/Makefile    |   7 +-
+ .../platform/mtk-vcodec/mtk_vcodec_dec.c      | 770 +++---------------
+ .../platform/mtk-vcodec/mtk_vcodec_dec.h      |  30 +-
+ .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 103 ++-
+ .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   |   1 -
+ .../mtk-vcodec/mtk_vcodec_dec_stateful.c      | 631 ++++++++++++++
+ .../mtk-vcodec/mtk_vcodec_dec_stateless.c     | 494 +++++++++++
+ .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  60 +-
+ .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |  49 +-
+ .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   |   2 -
+ .../media/platform/mtk-vcodec/mtk_vcodec_fw.c | 208 +++++
+ .../media/platform/mtk-vcodec/mtk_vcodec_fw.h |  38 +
+ .../platform/mtk-vcodec/mtk_vcodec_util.c     |   1 -
+ .../platform/mtk-vcodec/vdec/vdec_h264_if.c   |   2 -
+ .../mtk-vcodec/vdec/vdec_h264_req_if.c        | 627 ++++++++++++++
+ .../platform/mtk-vcodec/vdec/vdec_vp8_if.c    |   2 -
+ .../platform/mtk-vcodec/vdec/vdec_vp9_if.c    |   2 -
+ .../media/platform/mtk-vcodec/vdec_drv_base.h |   2 -
+ .../media/platform/mtk-vcodec/vdec_drv_if.c   |   4 +-
+ .../media/platform/mtk-vcodec/vdec_drv_if.h   |   1 +
+ .../media/platform/mtk-vcodec/vdec_ipi_msg.h  |   7 +
+ .../media/platform/mtk-vcodec/vdec_vpu_if.c   |  40 +-
+ .../media/platform/mtk-vcodec/vdec_vpu_if.h   |  20 +-
+ .../platform/mtk-vcodec/venc/venc_h264_if.c   |  15 +-
+ .../platform/mtk-vcodec/venc/venc_vp8_if.c    |   8 +-
+ .../media/platform/mtk-vcodec/venc_drv_if.c   |   1 -
+ .../media/platform/mtk-vcodec/venc_ipi_msg.h  |   2 +
+ .../media/platform/mtk-vcodec/venc_vpu_if.c   |  15 +-
+ .../media/platform/mtk-vcodec/venc_vpu_if.h   |   5 +-
+ drivers/media/v4l2-core/v4l2-ioctl.c          |   1 +
+ include/uapi/linux/videodev2.h                |   1 +
+ 33 files changed, 2397 insertions(+), 763 deletions(-)
+ create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c
+ create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
+ create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c
+ create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.h
+ create mode 100644 drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_if.c
+
+--
+2.23.0.187.g17f5b7556c-goog
