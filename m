@@ -1,7 +1,7 @@
 From: Alexandre Courbot <acourbot@chromium.org>
-Subject: [RFC PATCH v2 05/13] media: mtk-vcodec: vdec: handle firmware version field
-Date: Fri,  6 Sep 2019 20:55:05 +0900
-Message-ID: <20190906115513.159705-6-acourbot@chromium.org>
+Subject: [RFC PATCH v2 07/13] media: mtk-vcodec: add SCP firmware ops
+Date: Fri,  6 Sep 2019 20:55:07 +0900
+Message-ID: <20190906115513.159705-8-acourbot@chromium.org>
 References: <20190906115513.159705-1-acourbot@chromium.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -12,135 +12,138 @@ To: Yunfei Dong <yunfei.dong@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.co
 Cc: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Firmwares for decoders newer than MT8173 will include an ABI version
-number in their initialization ack message. Add the capacity to manage
-it and make initialization fail if the firmware ABI is of a version that
-we don't support.
+From: Yunfei Dong <yunfei.dong@mediatek.com>
 
-For MT8173, this ABI version field does not exist ; thus ignore it on
-this chip. There should only be one firmware version available for it
-anyway.
+Add support for communicating with the SCP firmware, which will be used
+by MT8183.
 
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+[acourbot: refactor, cleanup and split]
+Co-developed-by: Alexandre Courbot <acourbot@chromium.org>
 Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
 ---
- .../mtk-vcodec/mtk_vcodec_dec_stateful.c      |  1 +
- .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  8 +++++++
- .../media/platform/mtk-vcodec/vdec_ipi_msg.h  |  5 +++++
- .../media/platform/mtk-vcodec/vdec_vpu_if.c   | 21 +++++++++++++++++--
- 4 files changed, 33 insertions(+), 2 deletions(-)
+ .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  |  3 ++
+ .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |  3 ++
+ .../media/platform/mtk-vcodec/mtk_vcodec_fw.c | 51 +++++++++++++++++++
+ .../media/platform/mtk-vcodec/mtk_vcodec_fw.h |  2 +
+ 4 files changed, 59 insertions(+)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c
-index 2471624ddfe3..73b16c34d3d9 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c
-@@ -616,6 +616,7 @@ static struct vb2_ops mtk_vdec_frame_vb2_ops = {
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+index f6494f584354..53a9e016d989 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+@@ -226,6 +226,9 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 	if (!of_property_read_u32(pdev->dev.of_node, "mediatek,vpu",
+ 				  &rproc_phandle)) {
+ 		fw_type = VPU;
++	} else if (!of_property_read_u32(pdev->dev.of_node, "mediatek,scp",
++					 &rproc_phandle)) {
++		fw_type = SCP;
+ 	} else {
+ 		mtk_v4l2_err("Could not get vdec IPI device");
+ 		return -ENODEV;
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+index 6a2ae909d36b..1f40dd780f30 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+@@ -234,6 +234,9 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 	if (!of_property_read_u32(pdev->dev.of_node, "mediatek,vpu",
+ 				  &rproc_phandle)) {
+ 		fw_type = VPU;
++	} else if (!of_property_read_u32(pdev->dev.of_node, "mediatek,scp",
++					 &rproc_phandle)) {
++		fw_type = SCP;
+ 	} else {
+ 		mtk_v4l2_err("Could not get vdec IPI device");
+ 		return -ENODEV;
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c
+index a4361f57aedc..de22e16ad3a3 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.c
+@@ -63,6 +63,48 @@ static const struct mtk_vcodec_fw_ops mtk_vcodec_vpu_msg = {
+ 	.ipi_send = mtk_vcodec_vpu_ipi_send,
  };
  
- const struct mtk_vcodec_dec_pdata mtk_frame_8173_pdata = {
-+	.chip = MTK_MT8173,
- 	.init_vdec_params = mtk_init_vdec_params,
- 	.ctrls_setup = mtk_vcodec_dec_ctrls_setup,
- 	.vdec_vb2_ops = &mtk_vdec_frame_vb2_ops,
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-index 23d4cc135ee6..fc99f686faa9 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-@@ -300,6 +300,10 @@ struct mtk_vcodec_ctx {
- 
- };
- 
-+enum mtk_chip {
-+	MTK_MT8173,
++static int mtk_vcodec_scp_load_firmware(struct mtk_vcodec_fw *fw)
++{
++	return rproc_boot(fw->rproc);
++}
++
++static unsigned int mtk_vcodec_scp_get_vdec_capa(struct mtk_vcodec_fw *fw)
++{
++	return scp_get_vdec_hw_capa(fw->pdev);
++}
++
++static unsigned int mtk_vcodec_scp_get_venc_capa(struct mtk_vcodec_fw *fw)
++{
++	return scp_get_venc_hw_capa(fw->pdev);
++}
++
++static void *mtk_vcodec_vpu_scp_dm_addr(struct mtk_vcodec_fw *fw,
++					u32 dtcm_dmem_addr)
++{
++	return scp_mapping_dm_addr(fw->pdev, dtcm_dmem_addr);
++}
++
++static int mtk_vcodec_scp_set_ipi_register(struct mtk_vcodec_fw *fw, int id,
++		mtk_vcodec_ipi_handler handler, const char *name, void *priv)
++{
++	return scp_ipi_register(fw->pdev, id, handler, priv);
++}
++
++static int mtk_vcodec_scp_ipi_send(struct mtk_vcodec_fw *fw, int id, void *buf,
++		unsigned int len, unsigned int wait)
++{
++	return scp_ipi_send(fw->pdev, id, buf, len, wait);
++}
++
++static const struct mtk_vcodec_fw_ops mtk_vcodec_rproc_msg = {
++	.load_firmware = mtk_vcodec_scp_load_firmware,
++	.get_vdec_capa = mtk_vcodec_scp_get_vdec_capa,
++	.get_venc_capa = mtk_vcodec_scp_get_venc_capa,
++	.map_dm_addr = mtk_vcodec_vpu_scp_dm_addr,
++	.ipi_register = mtk_vcodec_scp_set_ipi_register,
++	.ipi_send = mtk_vcodec_scp_ipi_send,
 +};
 +
- /**
-  * struct mtk_vcodec_dec_pdata - compatible data for each IC
-  * @init_vdec_params: init vdec params
-@@ -317,6 +321,8 @@ struct mtk_vcodec_ctx {
-  * @vdec_framesizes: supported video decoder frame sizes
-  * @num_framesizes: count of video decoder frame sizes
-  *
-+ * @chip: chip this decoder is compatible with
-+ *
-  * @uses_stateless_api: whether the decoder uses the stateless API with requests
-  */
+ static void mtk_vcodec_reset_handler(void *priv)
+ {
+ 	struct mtk_vcodec_dev *dev = priv;
+@@ -96,6 +138,15 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_select(struct mtk_vcodec_dev *dev,
+ 		vpu_wdt_reg_handler(fw_pdev, mtk_vcodec_reset_handler,
+ 				    dev, rst_id);
+ 		break;
++	case SCP:
++		ops = &mtk_vcodec_rproc_msg;
++		fw_pdev = scp_get_pdev(dev->plat_dev);
++		rproc = rproc_get_by_phandle(rproc_phandle);
++		if (!rproc) {
++			mtk_v4l2_err("could not get vdec rproc handle");
++			return ERR_PTR(-EPROBE_DEFER);
++		}
++		break;
+ 	default:
+ 		mtk_v4l2_err("invalid vcodec fw type");
+ 		return ERR_PTR(-EINVAL);
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.h
+index a6edb3858e6e..c000bda70362 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.h
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw.h
+@@ -4,6 +4,7 @@
+ #define _MTK_VCODEC_FW_H_
  
-@@ -336,6 +342,8 @@ struct mtk_vcodec_dec_pdata {
- 	const struct mtk_codec_framesizes *vdec_framesizes;
- 	const int num_framesizes;
+ #include <linux/remoteproc.h>
++#include <linux/remoteproc/mtk_scp.h>
  
-+	enum mtk_chip chip;
-+
- 	bool uses_stateless_api;
+ #include "../mtk-vpu/mtk_vpu.h"
+ 
+@@ -11,6 +12,7 @@ struct mtk_vcodec_dev;
+ 
+ enum mtk_vcodec_fw_type {
+ 	VPU,
++	SCP,
  };
  
-diff --git a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
-index 47a1c1c0fd04..eb66729fda63 100644
---- a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
-+++ b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
-@@ -83,12 +83,17 @@ struct vdec_ap_ipi_dec_start {
-  * @status	: VPU exeuction result
-  * @ap_inst_addr	: AP vcodec_vpu_inst instance address
-  * @vpu_inst_addr	: VPU decoder instance address
-+ * @vdec_abi_version:	ABI version of the firmware. Kernel can use it to
-+ *			ensure that it is compatible with the firmware.
-+ *			This field is not valid for MT8173 and must not be
-+ *			accessed for this chip.
-  */
- struct vdec_vpu_ipi_init_ack {
- 	uint32_t msg_id;
- 	int32_t status;
- 	uint64_t ap_inst_addr;
- 	uint32_t vpu_inst_addr;
-+	uint32_t vdec_abi_version;
- };
- 
- #endif
-diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-index 70abfd4cd4b9..cc963c813654 100644
---- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-+++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-@@ -22,6 +22,22 @@ static void handle_init_ack_msg(struct vdec_vpu_ipi_init_ack *msg)
- 	vpu->inst_addr = msg->vpu_inst_addr;
- 
- 	mtk_vcodec_debug(vpu, "- vpu_inst_addr = 0x%x", vpu->inst_addr);
-+
-+	/* Firmware version field does not exist on MT8173. */
-+	if (vpu->ctx->dev->vdec_pdata->chip == MTK_MT8173)
-+		return;
-+
-+	/* Check firmware version. */
-+	mtk_vcodec_debug(vpu, "firmware version 0x%x\n", msg->vdec_abi_version);
-+	switch (msg->vdec_abi_version) {
-+	case 1:
-+		break;
-+	default:
-+		mtk_vcodec_err(vpu, "unhandled firmware version 0x%x\n",
-+			       msg->vdec_abi_version);
-+		vpu->failure = 1;
-+		break;
-+	}
- }
- 
- /*
-@@ -42,6 +58,9 @@ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
- 
- 	mtk_vcodec_debug(vpu, "+ id=%X", msg->msg_id);
- 
-+	vpu->failure = msg->status;
-+	vpu->signaled = 1;
-+
- 	if (msg->status == 0) {
- 		switch (msg->msg_id) {
- 		case VPU_IPIMSG_DEC_INIT_ACK:
-@@ -61,8 +80,6 @@ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
- 	}
- 
- 	mtk_vcodec_debug(vpu, "- id=%X", msg->msg_id);
--	vpu->failure = msg->status;
--	vpu->signaled = 1;
- }
- 
- static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int len)
+ struct mtk_vcodec_fw;
 -- 
 2.23.0.187.g17f5b7556c-goog
