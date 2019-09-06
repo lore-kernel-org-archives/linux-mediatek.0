@@ -1,44 +1,48 @@
-From: Alexandre Courbot <acourbot@chromium.org>
-Subject: [RFC PATCH v2 13/13] media: mtk-vcodec: enable MT8183 decoder
-Date: Fri,  6 Sep 2019 20:55:13 +0900
-Message-ID: <20190906115513.159705-14-acourbot@chromium.org>
-References: <20190906115513.159705-1-acourbot@chromium.org>
+From: Colin King <colin.king@canonical.com>
+Subject: [PATCH] mt76: mt76x0e: make array mt76x0_chan_map static const, makes object smaller
+Date: Fri,  6 Sep 2019 13:19:26 +0100
+Message-ID: <20190906121926.24080-1-colin.king@canonical.com>
 Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190906115513.159705-1-acourbot@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@chromium.org>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, Roy Luo <royluo@google.com>, Kalle Valo <kvalo@codeaurora.org>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Yunfei Dong <yunfei.dong@mediatek.com>
+From: Colin Ian King <colin.king@canonical.com>
 
-Now that all the supporting blocks are present, enable decoder for
-MT8183.
+Don't populate the array mt76x0_chan_map on the stack but instead make it
+static const. Makes the object code smaller by 80 bytes.
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-[acourbot: refactor, cleanup and split]
-Co-developed-by: Alexandre Courbot <acourbot@chromium.org>
-Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
+Before:
+   text	   data	    bss	    dec	    hex	filename
+   7685	   1192	      0	   8877	   22ad	mediatek/mt76/mt76x0/eeprom.o
+
+After:
+   text	   data	    bss	    dec	    hex	filename
+   7541	   1256	      0	   8797	   225d	mediatek/mt76/mt76x0/eeprom.o
+
+(gcc version 9.2.1, amd64)
+
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
 ---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-index 7b4afac18297..cade24bfa555 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-@@ -393,6 +393,10 @@ static const struct of_device_id mtk_vcodec_match[] = {
- 		.compatible = "mediatek,mt8173-vcodec-dec",
- 		.data = &mtk_frame_8173_pdata,
- 	},
-+	{
-+		.compatible = "mediatek,mt8183-vcodec-dec",
-+		.data = &mtk_req_8183_pdata,
-+	},
- 	{},
- };
- 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
+index 9d4426f6905f..96368fac4228 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
+@@ -212,7 +212,7 @@ void mt76x0_get_tx_power_per_rate(struct mt76x02_dev *dev,
+ void mt76x0_get_power_info(struct mt76x02_dev *dev,
+ 			   struct ieee80211_channel *chan, s8 *tp)
+ {
+-	struct mt76x0_chan_map {
++	static const struct mt76x0_chan_map {
+ 		u8 chan;
+ 		u8 offset;
+ 	} chan_map[] = {
 -- 
-2.23.0.187.g17f5b7556c-goog
+2.20.1
