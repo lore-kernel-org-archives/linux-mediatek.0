@@ -1,48 +1,31 @@
-From: Colin King <colin.king@canonical.com>
-Subject: [PATCH] mt76: mt76x0e: make array mt76x0_chan_map static const, makes object smaller
-Date: Fri,  6 Sep 2019 13:19:26 +0100
-Message-ID: <20190906121926.24080-1-colin.king@canonical.com>
+From: Frank Wunderlich <frank-w@public-files.de>
+Subject: Re: [PATCH v6 00/13] implement poweroff for mt6323 / bpi-r2
+Date: Fri, 06 Sep 2019 15:06:19 +0200
+Message-ID: <BB9183EF-A385-473B-A7D7-61D96499A291@public-files.de>
+References: <20190818135611.7776-1-frank-w@public-files.de>
+Reply-To: frank-w@public-files.de
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, Roy Luo <royluo@google.com>, Kalle Valo <kvalo@codeaurora.org>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190818135611.7776-1-frank-w@public-files.de>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-mediatek@lists.infradead.org
+Cc: linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, "linux-arm-kernel @ lists . infradead . org Alessandro Zummo" <a.zummo@towertech.it>, linux-pm@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Josef Friedl <josef.friedl@speed.at>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Eddie Huang <eddie.huang@mediatek.com>, Sebastian Reichel <sre@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Tianping Fang <tianping.fang@mediatek.com>, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Colin Ian King <colin.king@canonical.com>
+Hi,
 
-Don't populate the array mt76x0_chan_map on the stack but instead make it
-static const. Makes the object code smaller by 80 bytes.
+Just a friedly reminder.
 
-Before:
-   text	   data	    bss	    dec	    hex	filename
-   7685	   1192	      0	   8877	   22ad	mediatek/mt76/mt76x0/eeprom.o
+MFD-part was applied and visible in linux-next, the other parts acknowledged by maintainers. Is anything additional needed before applying the rtc/power/dts-parts?
 
-After:
-   text	   data	    bss	    dec	    hex	filename
-   7541	   1256	      0	   8797	   225d	mediatek/mt76/mt76x0/eeprom.o
-
-(gcc version 9.2.1, amd64)
-
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
----
- drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
-index 9d4426f6905f..96368fac4228 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/eeprom.c
-@@ -212,7 +212,7 @@ void mt76x0_get_tx_power_per_rate(struct mt76x02_dev *dev,
- void mt76x0_get_power_info(struct mt76x02_dev *dev,
- 			   struct ieee80211_channel *chan, s8 *tp)
- {
--	struct mt76x0_chan_map {
-+	static const struct mt76x0_chan_map {
- 		u8 chan;
- 		u8 offset;
- 	} chan_map[] = {
--- 
-2.20.1
+Regards Frank
