@@ -1,63 +1,63 @@
-From: Walter Wu <walter-zh.wu@mediatek.com>
-Subject: Re: [PATCH 1/2] mm/kasan: dump alloc/free stack for page allocator
-Date: Fri, 6 Sep 2019 11:15:34 +0800
-Message-ID: <1567739734.32522.67.camel@mtksdccf07>
-References: <20190904065133.20268-1-walter-zh.wu@mediatek.com>
-         <401064ae-279d-bef3-a8d5-0fe155d0886d@suse.cz>
-         <1567605965.32522.14.camel@mtksdccf07>
-         <7998e8f1-e5e2-da84-ea1f-33e696015dce@suse.cz>
-         <1567607063.32522.24.camel@mtksdccf07>
-         <99913463-0e2c-7dab-c1eb-8b9e149b3ee3@suse.cz>
+From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Subject: [PATCH] perf/hw_breakpoint: Fix arch_hw_breakpoint
+ use-before-initialization
+Date: Fri, 6 Sep 2019 14:01:16 +0800
+Message-ID: <20190906060115.9460-1-mark-pk.tsai@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <99913463-0e2c-7dab-c1eb-8b9e149b3ee3@suse.cz>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Vlastimil Babka <vbabka@suse.cz>
-Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Arnd Bergmann <arnd@arndb.de>, kasan-dev@googlegroups.com, linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: peterz@infradead.org, mingo@redhat.com, acme@kernel.org, alexander.shishkin@linux.intel.com, jolsa@redhat.com, namhyung@kernel.org, matthias.bgg@gmail.com
+Cc: Alix Wu <alix.wu@mediatek.com>, YJ Chiang <yj.chiang@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Mark-PK Tsai <mark-pk.tsai@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2019-09-05 at 10:03 +0200, Vlastimil Babka wrote:
-> On 9/4/19 4:24 PM, Walter Wu wrote:
-> > On Wed, 2019-09-04 at 16:13 +0200, Vlastimil Babka wrote:
-> >> On 9/4/19 4:06 PM, Walter Wu wrote:
-> >>
-> >> The THP fix is not required for the rest of the series, it was even merged to
-> >> mainline separately.
-> >>
-> >>> And It looks like something is different, because we only need last
-> >>> stack of page, so it can decrease memory overhead.
-> >>
-> >> That would save you depot_stack_handle_t (which is u32) per page. I guess that's
-> >> nothing compared to KASAN overhead?
-> >>
-> > If we can use less memory, we can achieve what we want. Why not?
-> 
-> In my experience to solve some UAFs, it's important to know not only the
-> freeing stack, but also the allocating stack. Do they make sense together,
-> or not? In some cases, even longer history of alloc/free would be nice :)
-> 
-We think it only has free stack to find out the root cause. Maybe we can
-refer to other people's experience and ideas.
+If we disable the compiler's auto-initialization feature
+(-fplugin-arg-structleak_plugin-byref or -ftrivial-auto-var-init=pattern)
+is disabled, arch_hw_breakpoint may be used before initialization after
+the change 9a4903dde2c86.
+(perf/hw_breakpoint: Split attribute parse and commit)
 
+On our arm platform, the struct step_ctrl in arch_hw_breakpoint, which
+used to be zero-initialized by kzalloc, may be used in
+arch_install_hw_breakpoint without initialization.
 
-> Also by simply recording the free stack in the existing depot handle,
-> you might confuse existing page_owner file consumers, who won't know
-> that this is a freeing stack.
-> 
-Don't worry it.
-1. Our feature option has this description about last stack of page.
-when consumer enable our feature, they should know the changing.
-2. We add to print text message for alloc or free stack before dump the
-stack of page. so consumers should know what is it.
+Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Cc: YJ Chiang <yj.chiang@mediatek.com>
+Cc: Alix Wu <alix.wu@mediatek.com>
+---
+ kernel/events/hw_breakpoint.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-> All that just doesn't seem to justify saving an u32 per page.
+diff --git a/kernel/events/hw_breakpoint.c b/kernel/events/hw_breakpoint.c
+index c5cd852fe86b..8fb842394924 100644
+--- a/kernel/events/hw_breakpoint.c
++++ b/kernel/events/hw_breakpoint.c
+@@ -413,7 +413,7 @@ static int hw_breakpoint_parse(struct perf_event *bp,
 
-Actually, We want to slim memory usage instead of increasing the memory
-usage at another mail discussion. Maybe, maintainer or reviewer can
-provide some ideas. That will be great.
+ int register_perf_hw_breakpoint(struct perf_event *bp)
+ {
+-	struct arch_hw_breakpoint hw;
++	struct arch_hw_breakpoint hw = {0};
+ 	int err;
 
-> > 
-> > 
-> 
+ 	err = reserve_bp_slot(bp);
+@@ -461,7 +461,7 @@ int
+ modify_user_hw_breakpoint_check(struct perf_event *bp, struct perf_event_attr *attr,
+ 			        bool check)
+ {
+-	struct arch_hw_breakpoint hw;
++	struct arch_hw_breakpoint hw = {0};
+ 	int err;
+
+ 	err = hw_breakpoint_parse(bp, attr, &hw);
+--
+2.18.0
