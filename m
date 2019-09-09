@@ -1,84 +1,76 @@
-From: Vlastimil Babka <vbabka@suse.cz>
-Subject: Re: [PATCH v2 0/2] mm/kasan: dump alloc/free stack for page allocator
-Date: Mon, 9 Sep 2019 15:07:45 +0200
-Message-ID: <d53d88df-d9a4-c126-32a8-4baeb0645a2c@suse.cz>
-References: <20190909082412.24356-1-walter-zh.wu@mediatek.com>
+From: <frederic.chen@mediatek.com>
+Subject: [RFC PATCH V3 3/5] media: platform: Add Mediatek DIP driver KConfig
+Date: Tue, 10 Sep 2019 03:22:42 +0800
+Message-ID: <20190909192244.9367-4-frederic.chen@mediatek.com>
+References: <20190909192244.9367-1-frederic.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190909082412.24356-1-walter-zh.wu@mediatek.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: walter-zh.wu@mediatek.com, Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Will Deacon <will@kernel.org>, Andrey Konovalov <andreyknvl@google.com>, Arnd Bergmann <arnd@arndb.de>, Thomas Gleixner <tglx@linutronix.de>, Michal Hocko <mhocko@kernel.org>, Qian Cai <cai@lca.pw>
-Cc: linux-kernel@vger.kernel.org, kasan-dev@googlegroups.com, linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190909192244.9367-1-frederic.chen@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: hans.verkuil@cisco.com, laurent.pinchart+renesas@ideasonboard.com, tfiga@chromium.org, matthias.bgg@gmail.com, mchehab@kernel.org
+Cc: shik@chromium.org, devicetree@vger.kernel.org, Sean.Cheng@mediatek.com, Rynn.Wu@mediatek.com, Allan.Yang@mediatek.com, srv_heupstream@mediatek.com, holmes.chiou@mediatek.com, suleiman@chromium.org, Jerry-ch.Chen@mediatek.com, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, linux-mediatek@lists.infradead.org, zwisler@chromium.org, christie.yu@mediatek.com, frederic.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 9/9/19 10:24 AM, walter-zh.wu@mediatek.com wrote:
-> From: Walter Wu <walter-zh.wu@mediatek.com>
-> 
-> This patch is KASAN report adds the alloc/free stacks for page allocator
-> in order to help programmer to see memory corruption caused by page.
-> 
-> By default, KASAN doesn't record alloc and free stack for page allocator.
-> It is difficult to fix up page use-after-free or dobule-free issue.
-> 
-> Our patchsets will record the last stack of pages.
-> It is very helpful for solving the page use-after-free or double-free.
-> 
-> KASAN report will show the last stack of page, it may be:
-> a) If page is in-use state, then it prints alloc stack.
->     It is useful to fix up page out-of-bound issue.
+From: Frederic Chen <frederic.chen@mediatek.com>
 
-I still disagree with duplicating most of page_owner functionality for 
-the sake of using a single stack handle for both alloc and free (while 
-page_owner + debug_pagealloc with patches in mmotm uses two handles). It 
-reduces the amount of potentially important debugging information, and I 
-really doubt the u32-per-page savings are significant, given the rest of 
-KASAN overhead.
+This patch adds KConfig for Mediatek Digital Image Processing
+driver(DIP). DIP is embedded in Mediatek SoCs. It provides
+image format conversion, resizing, and rotation function.
 
-> BUG: KASAN: slab-out-of-bounds in kmalloc_pagealloc_oob_right+0x88/0x90
-> Write of size 1 at addr ffffffc0d64ea00a by task cat/115
-> ...
-> Allocation stack of page:
->   set_page_stack.constprop.1+0x30/0xc8
->   kasan_alloc_pages+0x18/0x38
->   prep_new_page+0x5c/0x150
->   get_page_from_freelist+0xb8c/0x17c8
->   __alloc_pages_nodemask+0x1a0/0x11b0
->   kmalloc_order+0x28/0x58
->   kmalloc_order_trace+0x28/0xe0
->   kmalloc_pagealloc_oob_right+0x2c/0x68
-> 
-> b) If page is freed state, then it prints free stack.
->     It is useful to fix up page use-after-free or double-free issue.
-> 
-> BUG: KASAN: use-after-free in kmalloc_pagealloc_uaf+0x70/0x80
-> Write of size 1 at addr ffffffc0d651c000 by task cat/115
-> ...
-> Free stack of page:
->   kasan_free_pages+0x68/0x70
->   __free_pages_ok+0x3c0/0x1328
->   __free_pages+0x50/0x78
->   kfree+0x1c4/0x250
->   kmalloc_pagealloc_uaf+0x38/0x80
-> 
-> This has been discussed, please refer below link.
-> https://bugzilla.kernel.org/show_bug.cgi?id=203967
+Signed-off-by: Frederic Chen <frederic.chen@mediatek.com>
+---
+ drivers/media/platform/Kconfig         |  2 ++
+ drivers/media/platform/mtk-isp/Kconfig | 19 +++++++++++++++++++
+ 2 files changed, 21 insertions(+)
+ create mode 100644 drivers/media/platform/mtk-isp/Kconfig
 
-That's not a discussion, but a single comment from Dmitry, which btw 
-contains "provide alloc *and* free stacks for it" ("it" refers to page, 
-emphasis mine). It would be nice if he or other KASAN guys could clarify.
-
-> Changes since v1:
-> - slim page_owner and move it into kasan
-> - enable the feature by default
-> 
-> Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-> ---
->   include/linux/kasan.h |  1 +
->   lib/Kconfig.kasan     |  2 ++
->   mm/kasan/common.c     | 32 ++++++++++++++++++++++++++++++++
->   mm/kasan/kasan.h      |  5 +++++
->   mm/kasan/report.c     | 27 +++++++++++++++++++++++++++
->   5 files changed, 67 insertions(+)
+diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
+index 0c725d4dcf80..b8501e1b134f 100644
+--- a/drivers/media/platform/Kconfig
++++ b/drivers/media/platform/Kconfig
+@@ -32,6 +32,8 @@ source "drivers/media/platform/davinci/Kconfig"
+ 
+ source "drivers/media/platform/omap/Kconfig"
+ 
++source "drivers/media/platform/mtk-isp/Kconfig"
++
+ config VIDEO_ASPEED
+ 	tristate "Aspeed AST2400 and AST2500 Video Engine driver"
+ 	depends on VIDEO_V4L2
+diff --git a/drivers/media/platform/mtk-isp/Kconfig b/drivers/media/platform/mtk-isp/Kconfig
+new file mode 100644
+index 000000000000..a4267db70c24
+--- /dev/null
++++ b/drivers/media/platform/mtk-isp/Kconfig
+@@ -0,0 +1,19 @@
++config VIDEO_MEDIATEK_ISP_DIP
++	bool "Mediatek Digital Image Processing function"
++	select VIDEO_V4L2_SUBDEV_API
++	select VIDEOBUF2_DMA_CONTIG
++	select VIDEOBUF2_CORE
++	select VIDEOBUF2_V4L2
++	select VIDEOBUF2_MEMOPS
++	select MEDIA_CONTROLLER
++
++	default n
++	help
++	    Support the basic Digital Image Processing (DIP) driver.
++
++	    DIP driver provides image format conversion, resizing,
++	    and rotation function through the low power hardware.
++	    DIP also supports multiple output feature. It can
++	    generate two or more output image with different effect
++	    based on a single input image at the same time.
++
+-- 
+2.18.0
