@@ -1,52 +1,56 @@
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Subject: Re: [V4, 1/2] media: dt-bindings: media: i2c: Add bindings for OV02A10
-Date: Mon, 9 Sep 2019 13:11:09 +0300
-Message-ID: <20190909101109.GT2680@smile.fi.intel.com>
-References: <20190907092728.23897-1-dongchun.zhu@mediatek.com>
- <20190907092728.23897-2-dongchun.zhu@mediatek.com>
- <20190909094501.GO2680@smile.fi.intel.com>
- <20190909095715.GA5781@paasikivi.fi.intel.com>
+From: David Hildenbrand <david@redhat.com>
+Subject: Re: [PATCH v2 1/2] mm/page_ext: support to record the last stack of
+ page
+Date: Mon, 9 Sep 2019 12:57:03 +0200
+Message-ID: <36b5a8e0-2783-4c0e-4fc7-78ea652ba475@redhat.com>
+References: <20190909085339.25350-1-walter-zh.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <20190909095715.GA5781@paasikivi.fi.intel.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, drinkcat@chromium.org, srv_heupstream@mediatek.com, shengnan.wang@mediatek.com, tfiga@chromium.org, louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, dongchun.zhu@mediatek.com, matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190909085339.25350-1-walter-zh.wu@mediatek.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Walter Wu <walter-zh.wu@mediatek.com>, Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Will Deacon <will@kernel.org>, Andrey Konovalov <andreyknvl@google.com>, Arnd Bergmann <arnd@arndb.de>, Thomas Gleixner <tglx@linutronix.de>, Michal Hocko <mhocko@kernel.org>, Qian Cai <cai@lca.pw>
+Cc: linux-kernel@vger.kernel.org, kasan-dev@googlegroups.com, linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Sep 09, 2019 at 12:57:15PM +0300, Sakari Ailus wrote:
-> Hi Andy,
+On 09.09.19 10:53, Walter Wu wrote:
+> KASAN will record last stack of page in order to help programmer
+> to see memory corruption caused by page.
 > 
-> On Mon, Sep 09, 2019 at 12:45:01PM +0300, Andy Shevchenko wrote:
-> > On Sat, Sep 07, 2019 at 05:27:27PM +0800, dongchun.zhu@mediatek.com wrote:
-> > > From: Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > > 
-> > > This patch adds device tree bindings documentation for OV02A10 camera sensor.
-> > > 
-> > > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > > ---
-> > >  .../devicetree/bindings/media/i2c/ov02a10.txt      | 54 ++++++++++++++++++++++
-> > 
-> > >  MAINTAINERS                                        |  7 +++
-> > 
-> > This doesn't belong to dt-bindings.
+> What is difference between page_owner and our patch?
+> page_owner records alloc stack of page, but our patch is to record
+> last stack(it may be alloc or free stack of page).
 > 
-> The practice has been to add the MAINTAINERS entry along with the DT
-> bindings.
+> Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+> ---
+>  mm/page_ext.c | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
+> diff --git a/mm/page_ext.c b/mm/page_ext.c
+> index 5f5769c7db3b..7ca33dcd9ffa 100644
+> --- a/mm/page_ext.c
+> +++ b/mm/page_ext.c
+> @@ -65,6 +65,9 @@ static struct page_ext_operations *page_ext_ops[] = {
+>  #if defined(CONFIG_IDLE_PAGE_TRACKING) && !defined(CONFIG_64BIT)
+>  	&page_idle_ops,
+>  #endif
+> +#ifdef CONFIG_KASAN
+> +	&page_stack_ops,
+> +#endif
+>  };
+>  
+>  static unsigned long total_usage;
+> 
 
-Ah, okay, good to know!
+Are you sure this patch compiles?
+
+t460s: ~/git/linux virtio-mem $ git grep page_stack_ops
+t460s: ~/git/linux virtio-mem $
 
 -- 
-With Best Regards,
-Andy Shevchenko
+
+Thanks,
+
+David / dhildenb
