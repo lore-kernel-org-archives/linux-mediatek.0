@@ -1,250 +1,157 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [RFC PATCH V2 4/6] platform: mtk-isp: Add Mediatek DIP driver
-Date: Tue, 10 Sep 2019 12:45:18 +0900
-Message-ID: <CAAFQd5BKxg9xhJLfM_xqbo-tGihr==PzrPvVScaj89s8HY=FMQ@mail.gmail.com>
-References: <20190708110500.7242-1-frederic.chen@mediatek.com>
- <20190708110500.7242-5-frederic.chen@mediatek.com>
- <20190731071014.GA43159@chromium.org>
- <1566875772.10064.99.camel@mtksdccf07>
- <CAAFQd5B7WM-uExpo-qpEyDMNXLQkvqO=qBDrkpNvERr+iXVhtw@mail.gmail.com>
- <1567761407.31117.12.camel@mtksdccf07>
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [RFC PATCH V3 4/5] platform: mtk-isp: Add Mediatek DIP driver
+Date: Tue, 10 Sep 2019 13:04:50 +0900
+Message-ID: <CAAFQd5DEn_N26M7B4X7fKHVA=XBtWJN=Y4VF7D9B=TkgXf_i+Q@mail.gmail.com>
+References: <20190909192244.9367-1-frederic.chen@mediatek.com>
+ <20190909192244.9367-5-frederic.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1567761407.31117.12.camel@mtksdccf07>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Frederic Chen <frederic.chen@mediatek.com>
-Cc: "yuzhao@chromium.org" <yuzhao@chromium.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "zwisler@chromium.org" <zwisler@chromium.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "mchehab@kernel.org" <mchehab@kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190909192244.9367-5-frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?B?RnJlZGVyaWMgQ2hlbiAo6Zmz5L+K5YWDKQ==?= <frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Shik Chen <shik-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, =?UTF-8?B?U2VhbiBDaGVuZyAo6YSt5piH5byYKQ==?= <Sean.Cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Laurent Pinchart <laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, =?UTF-8?B?UnlubiBXdSAo5ZCz6IKy5oGpKQ==?= <Rynn.Wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?Q2hyaXN0aWUgWXUgKOa4uOmbheaDoCk=?= <christie.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?QWxsYW4gWWFuZyAo5qWK5pm66YieKQ==?= <Allan.Yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?SG9sbWVzIENoaW91ICjpgrHmjLop?= <holmes.chiou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, suleiman-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Jerry-ch Chen <Jerry-ch.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?SnVuZ28gTGluICjmnpfmmI7kv4op?= <jungo.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sj Huang <sj.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, yuzhao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, zwisler-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWOunwaRDDq4rA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Sep 6, 2019 at 6:17 PM Frederic Chen <frederic.chen@mediatek.com> wrote:
+Hi Frederic,
+
+On Tue, Sep 10, 2019 at 4:23 AM <frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
 >
-> Hi Tomasz,
+> From: Frederic Chen <frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 >
-> Thank you for your comments.
+> This patch adds the driver of Digital Image Processing (DIP)
+> unit in Mediatek ISP system, providing image format
+> conversion, resizing, and rotation features.
 >
+> The mtk-isp directory will contain drivers for multiple IP
+> blocks found in Mediatek ISP system. It will include ISP
+> Pass 1 driver(CAM), sensor interface driver, DIP driver and
+> face detection driver.
 >
-> On Fri, 2019-08-30 at 16:14 +0900, Tomasz Figa wrote:
-> > Hi Frederic,
-> >
-> > On Tue, Aug 27, 2019 at 12:16 PM Frederic Chen
-> > <frederic.chen@mediatek.com> wrote:
-> > >
-> > > Dear Tomasz,
-> > >
-> > > I appreciate your comment. I will collaborate more closely with Jungo
-> > > to solve the common issues in DIP and Pass 1(CAM) drivers.
-> > >
-> >
-> > Thank you!
-> >
-> > Also thanks for replying to all the comments, it's very helpful.
-> > Please check my replies inline. I've snipped out the parts that I
-> > don't have further comments on.
-> >
-> > >
-> > > On Wed, 2019-07-31 at 15:10 +0800, Tomasz Figa wrote:
-> > > > Hi Frederic,
-> > > >
-> > > > On Mon, Jul 08, 2019 at 07:04:58PM +0800, frederic.chen@mediatek.com wrote:
-> >
-> > [snip]
-> >
-> > > >
-> > > > > +                   dev_buf->vbb.vb2_buf.timestamp =
-> > > > > +                           in_buf->vbb.vb2_buf.timestamp;
-> > > > > +
-> > > > > +           vb2_buffer_done(&dev_buf->vbb.vb2_buf, vbf_state);
-> > > > > +
-> > > > > +           node = mtk_dip_vbq_to_node(dev_buf->vbb.vb2_buf.vb2_queue);
-> > > > > +           spin_lock(&node->buf_list_lock);
-> > > > > +           list_del(&dev_buf->list);
-> > > > > +           spin_unlock(&node->buf_list_lock);
-> > > > > +
-> > > > > +           dev_dbg(&pipe->dip_dev->pdev->dev,
-> > > > > +                   "%s:%s: return buf, idx(%d), state(%d)\n",
-> > > > > +                   pipe->desc->name, node->desc->name,
-> > > > > +                   dev_buf->vbb.vb2_buf.index, vbf_state);
-> > > > > +   }
-> > > >
-> > > > This looks almost the same as what's being done inside
-> > > > mtk_dip_hw_streamoff(). Could we just call this function from the loop
-> > > > there?
-> > >
-> > > I would like to call the function from mtk_dip_hw_streamoff(). The only
-> > > difference is mtk_dip_pipe_job_finish() also remove the buffer from the
-> > > node's internal list.
-> > >
-> >
-> > Would anything wrong happen if we also remove the buffer from the
-> > node's internal list in mtk_dip_hw_streamoff()?
-> >
-> > Actually, do we need that internal node list? If we have a list of
-> > requests and each request stores its buffer, wouldn't that be enough?
-> >
->
-> We use the buffer list in the following cases:
-> 1. media_pipeline_start() failed when streaming on video device
-> 2. Video device stream off
->
-> If the some video device is streamed on ,but the entire pipe has not
-> started streaming (for example, MDP 0 is streamed on, but RAW input has
-> not been streamed on), we use the list to return the buffers.
->
-> Should we handle this cases? or we expect that the user will request
-> buffers again to ensure all buffers are removed from the video device in
-> this error case.
+> Signed-off-by: Frederic Chen <frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  drivers/media/platform/mtk-isp/Makefile       |    7 +
+>  .../media/platform/mtk-isp/isp_50/Makefile    |    7 +
+>  .../platform/mtk-isp/isp_50/dip/Makefile      |   18 +
+>  .../platform/mtk-isp/isp_50/dip/mtk_dip-dev.c |  650 +++++
+>  .../platform/mtk-isp/isp_50/dip/mtk_dip-dev.h |  566 +++++
+>  .../platform/mtk-isp/isp_50/dip/mtk_dip-hw.h  |  156 ++
+>  .../platform/mtk-isp/isp_50/dip/mtk_dip-sys.c |  521 ++++
+>  .../mtk-isp/isp_50/dip/mtk_dip-v4l2.c         | 2255 +++++++++++++++++
+>  8 files changed, 4180 insertions(+)
+>  create mode 100644 drivers/media/platform/mtk-isp/Makefile
+>  create mode 100644 drivers/media/platform/mtk-isp/isp_50/Makefile
+>  create mode 100644 drivers/media/platform/mtk-isp/isp_50/dip/Makefile
+>  create mode 100644 drivers/media/platform/mtk-isp/isp_50/dip/mtk_dip-dev.c
+>  create mode 100644 drivers/media/platform/mtk-isp/isp_50/dip/mtk_dip-dev.h
+>  create mode 100644 drivers/media/platform/mtk-isp/isp_50/dip/mtk_dip-hw.h
+>  create mode 100644 drivers/media/platform/mtk-isp/isp_50/dip/mtk_dip-sys.c
+>  create mode 100644 drivers/media/platform/mtk-isp/isp_50/dip/mtk_dip-v4l2.c
 >
 
-However, if we only support the Request API, there wouldn't be any
-buffers outside of any request. For a request that isn't queued, the
-buffers are not passed to the driver, so it doesn't need to do
-anything. The only thing left to handle is when there are some
-requests queued and those requests already include the buffer request
-objects inside, so we can handle them without a separate internal
-buffer list.
+Thanks for sending v3!
 
-> > > > > +/* Plane size that is accepted by MDP HW */
-> > > > > +static u32
-> > > > > +dip_mdp_fmt_get_plane_size(const struct mtk_dip_dev_format *fmt,
-> > > > > +                      u32 stride, u32 height,
-> > > > > +                      unsigned int plane)
-> > > > > +{
-> > > > > +   enum mdp_color c = fmt->mdp_color;
-> > > > > +   u32 bytesperline;
-> > > > > +
-> > > > > +   bytesperline = (stride * fmt->row_depth[0])
-> > > > > +           / MDP_COLOR_BITS_PER_PIXEL(c);
-> > > >
-> > > > Hmm, stride and bytesperline should be exactly the same thing. Could you
-> > > > explain what's happening here?
-> > >
-> > > The stride here is specific for MDP hardware (which uses the same MDP
-> > > stride setting for NV12 and NV12M):
-> > >
-> > >         bytesperline = width * row_depth / 8
-> > >         MDP stride   = width * MDP_COLOR_BITS_PER_PIXEL /8
-> > >
-> > > Therfore,
-> > >
-> > >         bytesperline = MDP stride * row_depth / MDP_COLOR_BITS_PER_PIXEL
-> > >         MDP stride   = bytesperline * MDP_COLOR_BITS_PER_PIXEL/ row_depth
-> > >
-> >
-> > I'm sorry I'm still confused. Is there an intermediate buffer between
-> > DIP and MDP that has stride of |MDP stride| and then MDP writes to the
-> > final buffer that has the stride of |bytesperline|?
-> >
->
-> No, there is no intermediate buffer between DIP and MDP that has stride
-> of |MDP stride|. DIP connects to MDP in hardware level, so MDP writes
-> the buffer with |MDP stride|.
->
-> As I know, V4L2's bytesperline means bytes per line of the first
-> plane(*), but mdp hw needs y, u, v stride (it is different from V4L2).
-> Therefore we calculate the |MDP stride| here.
->
-> *:
-> https://linuxtv.org/downloads/v4l-dvb-apis/uapi/v4l/pixfmt-v4l2.html#c.v4l2_pix_format
-> "When the image format is planar the bytesperline value applies to the
-> first plane and is divided by the same factor as the width field for the
-> other planes."
+I'm going to do a full review a bit later, but please check one
+comment about power handling below.
 
-However, we're using v4l2_pix_fmt_mplane, not v4l2_pix_format. If the
-pixelformat is the M variant (e.g. V4L2_PIX_FMT_NV12M), the
-v4l2_pix_fmt_mplane::planes[] contains bytesperline and sizeimage for
-each plane separately. That's the reason I'm strongly suggesting
-abandoning the non-M formats and supporting only the M ones.
+Other than that one comment, from a quick look, I think we only have a
+number of style issues left. Thanks for the hard work!
 
->
-> > [snip]
-> >
-> > > >
-> > > > > +           u32 sizeimage;
-> > > > > +
-> > > > > +           if (bpl < min_bpl)
-> > > > > +                   bpl = min_bpl;
-> > > > > +
-> > > > > +           sizeimage = (bpl * mfmt_to_fill->height * dev_fmt->depth[i])
-> > > > > +                   / dev_fmt->row_depth[i];
-> > > >
-> > > > Shouldn't this be bpl * fmt->height?
-> > >
-> > > Row_depth is the bits of the pixel.
-> > > Depth means the bytes per pixel of the image format.
-> > >
-> > > For example,
-> > > Image: 640 * 480
-> > > YV12: row_depth = 8, depth = 12
-> >
-> > YV12 has 3 planes of 8 bits per pixel. Not sure where does this 12 come from.
-> >
->
-> Let me elaborate more about the 12 depth.
->
-> depth: pixel bit number
->
-> For 420,
->
-> y = w * h
-> u = (w/2) * (h/2)
-> v = (w/2) * (h/2)
->
-> Therefore,
->
-> y = 8,
-> u = 8/2/2 = 2
-> v = 8/2/2 = 2
->
-> depth (y + u + v) = 8 + 2 + 2 = 12
->
+[snip]
+> +static void dip_runner_func(struct work_struct *work)
+> +{
+> +       struct mtk_dip_request *req = mtk_dip_hw_mdp_work_to_req(work);
+> +       struct mtk_dip_dev *dip_dev = req->dip_pipe->dip_dev;
+> +       struct img_config *config_data =
+> +               (struct img_config *)req->working_buf->config_data.vaddr;
+> +
+> +       /*
+> +        * Call MDP/GCE API to do HW excecution
+> +        * Pass the framejob to MDP driver
+> +        */
+> +       pm_runtime_get_sync(dip_dev->dev);
+> +       mdp_cmdq_sendtask(dip_dev->mdp_pdev, config_data,
+> +                         &req->img_fparam.frameparam, NULL, false,
+> +                         dip_mdp_cb_func, req);
+> +}
+[snip]
+> +static void dip_composer_workfunc(struct work_struct *work)
+> +{
+> +       struct mtk_dip_request *req = mtk_dip_hw_fw_work_to_req(work);
+> +       struct mtk_dip_dev *dip_dev = req->dip_pipe->dip_dev;
+> +       struct img_ipi_param ipi_param;
+> +       struct mtk_dip_hw_subframe *buf;
+> +       int ret;
+> +
+> +       down(&dip_dev->sem);
+> +
+> +       buf = mtk_dip_hw_working_buf_alloc(req->dip_pipe->dip_dev);
+> +       if (!buf) {
+> +               dev_err(req->dip_pipe->dip_dev->dev,
+> +                       "%s:%s:req(%p): no free working buffer available\n",
+> +                       __func__, req->dip_pipe->desc->name, req);
+> +       }
+> +
+> +       req->working_buf = buf;
+> +       mtk_dip_wbuf_to_ipi_img_addr(&req->img_fparam.frameparam.subfrm_data,
+> +                                    &buf->buffer);
+> +       memset(buf->buffer.vaddr, 0, DIP_SUB_FRM_SZ);
+> +       mtk_dip_wbuf_to_ipi_img_sw_addr(&req->img_fparam.frameparam.config_data,
+> +                                       &buf->config_data);
+> +       memset(buf->config_data.vaddr, 0, DIP_COMP_SZ);
+> +
+> +       if (!req->img_fparam.frameparam.tuning_data.present) {
+> +               /*
+> +                * When user enqueued without tuning buffer,
+> +                * it would use driver internal buffer.
+> +                */
+> +               dev_dbg(dip_dev->dev,
+> +                       "%s: frame_no(%d) has no tuning_data\n",
+> +                       __func__, req->img_fparam.frameparam.frame_no);
+> +
+> +               mtk_dip_wbuf_to_ipi_tuning_addr
+> +                               (&req->img_fparam.frameparam.tuning_data,
+> +                                &buf->tuning_buf);
+> +               memset(buf->tuning_buf.vaddr, 0, DIP_TUNING_SZ);
+> +       }
+> +
+> +       mtk_dip_wbuf_to_ipi_img_sw_addr(&req->img_fparam.frameparam.self_data,
+> +                                       &buf->frameparam);
+> +       memcpy(buf->frameparam.vaddr, &req->img_fparam.frameparam,
+> +              sizeof(req->img_fparam.frameparam));
+> +       ipi_param.usage = IMG_IPI_FRAME;
+> +       ipi_param.frm_param.handle = req->id;
+> +       ipi_param.frm_param.scp_addr = (u32)buf->frameparam.scp_daddr;
+> +
+> +       mutex_lock(&dip_dev->hw_op_lock);
+> +       atomic_inc(&dip_dev->num_composing);
+> +       ret = scp_ipi_send(dip_dev->scp_pdev, SCP_IPI_DIP, &ipi_param,
+> +                          sizeof(ipi_param), 0);
 
-Yes, that's what I understood, but it is by no means associated with
-any physical depth. It's more like "total_bits_per_pixel". That's
-however a very error prone way to express pixel formats, as for
-example it can't handle the case when plane strides alignments are not
-proportional.
+We're not holding the pm_runtime enable count here
+(pm_runtime_get_sync() wasn't called), so rproc_shutdown() might have
+been called. Wouldn't that affect the ability for this IPI to run?
 
-Please see the v4l2_format_info struct for the recommended way of
-describing pixel formats. Actually, the struct itself could be reused
-in this driver, even if we don't end up using the helpers for some
-reason.
-
->
-> > > Bytes per line = width * row_depth / 8 = 640 * 8/ 8 = 640
-> > > Image size = Bytes per line * height * (depth/ row_depth)
-> > >            = 640 * 480 * 1.5
-> > >
-> >
-> > I think we might be having some terminology issue here. "row" is
-> > normally the same as "line", which consists of |width| pixels +
-> > padding, which is |bytesperline| bytes in total.
-> >
-> > Perhaps you want to store a bits_per_pixel[] and vertical and
-> > horizontal subsampling arrays for all planes of the formats in the
-> > format descriptor.
-> >
-> > By the way, have you considered using the V4L2 format helpers [1]?
-> >
-> > [1] https://elixir.bootlin.com/linux/v5.3-rc6/source/drivers/media/v4l2-core/v4l2-common.c#L561
->
-> Would it be possible to keep row_depth and depth? It is already used in
-> MDP drivers.
->
-> https://elixir.bootlin.com/linux/v5.3-rc6/source/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
->
-
-I'd suggest cleaning up the MDP driver instead. :)
-(Could be done as a follow up later, of course.)
+We had a related discussion with Jerry on the FD series and I think
+the conclusion is:
+a) if there is any state that needs to be preserved between jobs, that
+would be cleared by rproc_shutdown() then we need to call
+rproc_boot/shutdown() when we start/stop streaming.
+b) it there is no such state, we can keep them inside runtime PM
+callbacks, but we need to call pm_runtime_get_sync() before sending an
+IPI and pm_runtime_mark_last_busy() + pm_runtime_put_autosuspend()
+after the SCP signals completion. In this case the runtime PM
+autosuspend delay should be set to around 2-3 times the delay needed
+for rproc_shutdown() + rproc_boot() to complete.
 
 Best regards,
 Tomasz
