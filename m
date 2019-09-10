@@ -1,182 +1,59 @@
-From: Frank Wunderlich <frank-w@public-files.de>
-Subject: [PATCH v7 5/7] power: reset: add driver for mt6323 poweroff
-Date: Tue, 10 Sep 2019 09:04:44 +0200
-Message-ID: <20190910070446.639-6-frank-w@public-files.de>
-References: <20190910070446.639-1-frank-w@public-files.de>
+From: "Kirill A. Shutemov" <kirill@shutemov.name>
+Subject: Re: [PATCH v2 1/2] mm/page_ext: support to record the last stack of
+ page
+Date: Tue, 10 Sep 2019 12:31:03 +0300
+Message-ID: <20190910093103.4cmqk4semlhgpmle@box.shutemov.name>
+References: <20190909085339.25350-1-walter-zh.wu@mediatek.com>
+ <36b5a8e0-2783-4c0e-4fc7-78ea652ba475@redhat.com>
+ <1568077669.24886.3.camel@mtksdccf07>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190910070446.639-1-frank-w@public-files.de>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-mediatek@lists.infradead.org
-Cc: linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, Sean Wang <sean.wang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, linux-pm@vger.kernel.org, Frank Wunderlich <frank-w@public-files.de>, Josef Friedl <josef.friedl@speed.at>, linux-kernel@vger.kernel.org, Tianping Fang <tianping.fang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Sebastian Reichel <sre@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Eddie Huang <eddie.huang@mediatek.com>, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1568077669.24886.3.camel@mtksdccf07>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Walter Wu <walter-zh.wu@mediatek.com>
+Cc: David Hildenbrand <david@redhat.com>, Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Will Deacon <will@kernel.org>, Andrey Konovalov <andreyknvl@google.com>, Arnd Bergmann <arnd@arndb.de>, Thomas Gleixner <tglx@linutronix.de>, Michal Hocko <mhocko@kernel.org>, Qian Cai <cai@lca.pw>, linux-kernel@vger.kernel.org, kasan-dev@googlegroups.com, linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Josef Friedl <josef.friedl@speed.at>
+On Tue, Sep 10, 2019 at 09:07:49AM +0800, Walter Wu wrote:
+> On Mon, 2019-09-09 at 12:57 +0200, David Hildenbrand wrote:
+> > On 09.09.19 10:53, Walter Wu wrote:
+> > > KASAN will record last stack of page in order to help programmer
+> > > to see memory corruption caused by page.
+> > > 
+> > > What is difference between page_owner and our patch?
+> > > page_owner records alloc stack of page, but our patch is to record
+> > > last stack(it may be alloc or free stack of page).
+> > > 
+> > > Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+> > > ---
+> > >  mm/page_ext.c | 3 +++
+> > >  1 file changed, 3 insertions(+)
+> > > 
+> > > diff --git a/mm/page_ext.c b/mm/page_ext.c
+> > > index 5f5769c7db3b..7ca33dcd9ffa 100644
+> > > --- a/mm/page_ext.c
+> > > +++ b/mm/page_ext.c
+> > > @@ -65,6 +65,9 @@ static struct page_ext_operations *page_ext_ops[] = {
+> > >  #if defined(CONFIG_IDLE_PAGE_TRACKING) && !defined(CONFIG_64BIT)
+> > >  	&page_idle_ops,
+> > >  #endif
+> > > +#ifdef CONFIG_KASAN
+> > > +	&page_stack_ops,
+> > > +#endif
+> > >  };
+> > >  
+> > >  static unsigned long total_usage;
+> > > 
+> > 
+> > Are you sure this patch compiles?
+> > 
+> This is patchsets, it need another patch2.
+> We have verified it by running KASAN UT on Qemu.
 
-add poweroff driver for mt6323 and make Makefile and Kconfig-Entries
+Any patchset must be bisectable: do not break anything in the middle of
+patchset.
 
-Suggested-by: Frank Wunderlich <frank-w@public-files.de>
-Signed-off-by: Josef Friedl <josef.friedl@speed.at>
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-Acked-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
-changes since v6: none
-changes since v5: split out mfd/mt6397/core.h
-changes since v4: none
-changes since v3: none
-changes since v2: none (=v2 part 5)
----
- drivers/power/reset/Kconfig           | 10 +++
- drivers/power/reset/Makefile          |  1 +
- drivers/power/reset/mt6323-poweroff.c | 97 +++++++++++++++++++++++++++
- 3 files changed, 108 insertions(+)
- create mode 100644 drivers/power/reset/mt6323-poweroff.c
-
-diff --git a/drivers/power/reset/Kconfig b/drivers/power/reset/Kconfig
-index a564237278ff..c721939767eb 100644
---- a/drivers/power/reset/Kconfig
-+++ b/drivers/power/reset/Kconfig
-@@ -140,6 +140,16 @@ config POWER_RESET_LTC2952
- 	  This driver supports an external powerdown trigger and board power
- 	  down via the LTC2952. Bindings are made in the device tree.
- 
-+config POWER_RESET_MT6323
-+       bool "MediaTek MT6323 power-off driver"
-+       depends on MFD_MT6397
-+       help
-+         The power-off driver is responsible for externally shutdown down
-+         the power of a remote MediaTek SoC MT6323 is connected to through
-+         controlling a tiny circuit BBPU inside MT6323 RTC.
-+
-+         Say Y if you have a board where MT6323 could be found.
-+
- config POWER_RESET_QNAP
- 	bool "QNAP power-off driver"
- 	depends on OF_GPIO && PLAT_ORION
-diff --git a/drivers/power/reset/Makefile b/drivers/power/reset/Makefile
-index 85da3198e4e0..da37f8b851dc 100644
---- a/drivers/power/reset/Makefile
-+++ b/drivers/power/reset/Makefile
-@@ -11,6 +11,7 @@ obj-$(CONFIG_POWER_RESET_GPIO) += gpio-poweroff.o
- obj-$(CONFIG_POWER_RESET_GPIO_RESTART) += gpio-restart.o
- obj-$(CONFIG_POWER_RESET_HISI) += hisi-reboot.o
- obj-$(CONFIG_POWER_RESET_MSM) += msm-poweroff.o
-+obj-$(CONFIG_POWER_RESET_MT6323) += mt6323-poweroff.o
- obj-$(CONFIG_POWER_RESET_QCOM_PON) += qcom-pon.o
- obj-$(CONFIG_POWER_RESET_OCELOT_RESET) += ocelot-reset.o
- obj-$(CONFIG_POWER_RESET_PIIX4_POWEROFF) += piix4-poweroff.o
-diff --git a/drivers/power/reset/mt6323-poweroff.c b/drivers/power/reset/mt6323-poweroff.c
-new file mode 100644
-index 000000000000..1caf43d9e46d
---- /dev/null
-+++ b/drivers/power/reset/mt6323-poweroff.c
-@@ -0,0 +1,97 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Power off through MediaTek PMIC
-+ *
-+ * Copyright (C) 2018 MediaTek Inc.
-+ *
-+ * Author: Sean Wang <sean.wang@mediatek.com>
-+ *
-+ */
-+
-+#include <linux/err.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
-+#include <linux/mfd/mt6397/core.h>
-+#include <linux/mfd/mt6397/rtc.h>
-+
-+struct mt6323_pwrc {
-+	struct device *dev;
-+	struct regmap *regmap;
-+	u32 base;
-+};
-+
-+static struct mt6323_pwrc *mt_pwrc;
-+
-+static void mt6323_do_pwroff(void)
-+{
-+	struct mt6323_pwrc *pwrc = mt_pwrc;
-+	unsigned int val;
-+	int ret;
-+
-+	regmap_write(pwrc->regmap, pwrc->base + RTC_BBPU, RTC_BBPU_KEY);
-+	regmap_write(pwrc->regmap, pwrc->base + RTC_WRTGR, 1);
-+
-+	ret = regmap_read_poll_timeout(pwrc->regmap,
-+					pwrc->base + RTC_BBPU, val,
-+					!(val & RTC_BBPU_CBUSY),
-+					MTK_RTC_POLL_DELAY_US,
-+					MTK_RTC_POLL_TIMEOUT);
-+	if (ret)
-+		dev_err(pwrc->dev, "failed to write BBPU: %d\n", ret);
-+
-+	/* Wait some time until system down, otherwise, notice with a warn */
-+	mdelay(1000);
-+
-+	WARN_ONCE(1, "Unable to power off system\n");
-+}
-+
-+static int mt6323_pwrc_probe(struct platform_device *pdev)
-+{
-+	struct mt6397_chip *mt6397_chip = dev_get_drvdata(pdev->dev.parent);
-+	struct mt6323_pwrc *pwrc;
-+	struct resource *res;
-+
-+	pwrc = devm_kzalloc(&pdev->dev, sizeof(*pwrc), GFP_KERNEL);
-+	if (!pwrc)
-+		return -ENOMEM;
-+
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	pwrc->base = res->start;
-+	pwrc->regmap = mt6397_chip->regmap;
-+	pwrc->dev = &pdev->dev;
-+	mt_pwrc = pwrc;
-+
-+	pm_power_off = &mt6323_do_pwroff;
-+
-+	return 0;
-+}
-+
-+static int mt6323_pwrc_remove(struct platform_device *pdev)
-+{
-+	if (pm_power_off == &mt6323_do_pwroff)
-+		pm_power_off = NULL;
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id mt6323_pwrc_dt_match[] = {
-+	{ .compatible = "mediatek,mt6323-pwrc" },
-+	{},
-+};
-+MODULE_DEVICE_TABLE(of, mt6323_pwrc_dt_match);
-+
-+static struct platform_driver mt6323_pwrc_driver = {
-+	.probe          = mt6323_pwrc_probe,
-+	.remove         = mt6323_pwrc_remove,
-+	.driver         = {
-+		.name   = "mt6323-pwrc",
-+		.of_match_table = mt6323_pwrc_dt_match,
-+	},
-+};
-+
-+module_platform_driver(mt6323_pwrc_driver);
-+
-+MODULE_DESCRIPTION("Poweroff driver for MT6323 PMIC");
-+MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
-+MODULE_LICENSE("GPL v2");
 -- 
-2.17.1
+ Kirill A. Shutemov
