@@ -1,157 +1,80 @@
-From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [RFC PATCH V3 4/5] platform: mtk-isp: Add Mediatek DIP driver
-Date: Tue, 10 Sep 2019 13:04:50 +0900
-Message-ID: <CAAFQd5DEn_N26M7B4X7fKHVA=XBtWJN=Y4VF7D9B=TkgXf_i+Q@mail.gmail.com>
-References: <20190909192244.9367-1-frederic.chen@mediatek.com>
- <20190909192244.9367-5-frederic.chen@mediatek.com>
+From: Frank Wunderlich <frank-w@public-files.de>
+Subject: [PATCH v7 1/7] dt-bindings: rtc: mediatek: add missing mt6397 rtc
+Date: Tue, 10 Sep 2019 09:04:40 +0200
+Message-ID: <20190910070446.639-2-frank-w@public-files.de>
+References: <20190910070446.639-1-frank-w@public-files.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190909192244.9367-5-frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?B?RnJlZGVyaWMgQ2hlbiAo6Zmz5L+K5YWDKQ==?= <frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Shik Chen <shik-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, =?UTF-8?B?U2VhbiBDaGVuZyAo6YSt5piH5byYKQ==?= <Sean.Cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Laurent Pinchart <laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, =?UTF-8?B?UnlubiBXdSAo5ZCz6IKy5oGpKQ==?= <Rynn.Wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?Q2hyaXN0aWUgWXUgKOa4uOmbheaDoCk=?= <christie.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?QWxsYW4gWWFuZyAo5qWK5pm66YieKQ==?= <Allan.Yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?SG9sbWVzIENoaW91ICjpgrHmjLop?= <holmes.chiou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, suleiman-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Jerry-ch Chen <Jerry-ch.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?SnVuZ28gTGluICjmnpfmmI7kv4op?= <jungo.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sj Huang <sj.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, yuzhao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, zwisler-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWOunwaRDDq4rA@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190910070446.639-1-frank-w@public-files.de>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-mediatek@lists.infradead.org
+Cc: linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, Sean Wang <sean.wang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, linux-pm@vger.kernel.org, Frank Wunderlich <frank-w@public-files.de>, Josef Friedl <josef.friedl@speed.at>, linux-kernel@vger.kernel.org, Tianping Fang <tianping.fang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Sebastian Reichel <sre@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Eddie Huang <eddie.huang@mediatek.com>, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Frederic,
+From: Josef Friedl <josef.friedl@speed.at>
 
-On Tue, Sep 10, 2019 at 4:23 AM <frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
->
-> From: Frederic Chen <frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->
-> This patch adds the driver of Digital Image Processing (DIP)
-> unit in Mediatek ISP system, providing image format
-> conversion, resizing, and rotation features.
->
-> The mtk-isp directory will contain drivers for multiple IP
-> blocks found in Mediatek ISP system. It will include ISP
-> Pass 1 driver(CAM), sensor interface driver, DIP driver and
-> face detection driver.
->
-> Signed-off-by: Frederic Chen <frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  drivers/media/platform/mtk-isp/Makefile       |    7 +
->  .../media/platform/mtk-isp/isp_50/Makefile    |    7 +
->  .../platform/mtk-isp/isp_50/dip/Makefile      |   18 +
->  .../platform/mtk-isp/isp_50/dip/mtk_dip-dev.c |  650 +++++
->  .../platform/mtk-isp/isp_50/dip/mtk_dip-dev.h |  566 +++++
->  .../platform/mtk-isp/isp_50/dip/mtk_dip-hw.h  |  156 ++
->  .../platform/mtk-isp/isp_50/dip/mtk_dip-sys.c |  521 ++++
->  .../mtk-isp/isp_50/dip/mtk_dip-v4l2.c         | 2255 +++++++++++++++++
->  8 files changed, 4180 insertions(+)
->  create mode 100644 drivers/media/platform/mtk-isp/Makefile
->  create mode 100644 drivers/media/platform/mtk-isp/isp_50/Makefile
->  create mode 100644 drivers/media/platform/mtk-isp/isp_50/dip/Makefile
->  create mode 100644 drivers/media/platform/mtk-isp/isp_50/dip/mtk_dip-dev.c
->  create mode 100644 drivers/media/platform/mtk-isp/isp_50/dip/mtk_dip-dev.h
->  create mode 100644 drivers/media/platform/mtk-isp/isp_50/dip/mtk_dip-hw.h
->  create mode 100644 drivers/media/platform/mtk-isp/isp_50/dip/mtk_dip-sys.c
->  create mode 100644 drivers/media/platform/mtk-isp/isp_50/dip/mtk_dip-v4l2.c
->
+add missing devicetree-binding document for mt6397 rtc
+in later patch driver is extended with mt6323 chip
 
-Thanks for sending v3!
+Suggested-By: Alexandre Belloni <alexandre.belloni@bootlin.com>
+Signed-off-by: Josef Friedl <josef.friedl@speed.at>
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Reviewed-by: Rob Herring <robh@kernel.org>
+---
+changes since v6: none
+changes since v5: none
+changes since v4: use relative path
+changes since v3: moved SOB
+changes since v2: splitted rtc-mt6397.txt from first patch
+---
+ .../devicetree/bindings/rtc/rtc-mt6397.txt    | 29 +++++++++++++++++++
+ 1 file changed, 29 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
 
-I'm going to do a full review a bit later, but please check one
-comment about power handling below.
-
-Other than that one comment, from a quick look, I think we only have a
-number of style issues left. Thanks for the hard work!
-
-[snip]
-> +static void dip_runner_func(struct work_struct *work)
-> +{
-> +       struct mtk_dip_request *req = mtk_dip_hw_mdp_work_to_req(work);
-> +       struct mtk_dip_dev *dip_dev = req->dip_pipe->dip_dev;
-> +       struct img_config *config_data =
-> +               (struct img_config *)req->working_buf->config_data.vaddr;
-> +
-> +       /*
-> +        * Call MDP/GCE API to do HW excecution
-> +        * Pass the framejob to MDP driver
-> +        */
-> +       pm_runtime_get_sync(dip_dev->dev);
-> +       mdp_cmdq_sendtask(dip_dev->mdp_pdev, config_data,
-> +                         &req->img_fparam.frameparam, NULL, false,
-> +                         dip_mdp_cb_func, req);
-> +}
-[snip]
-> +static void dip_composer_workfunc(struct work_struct *work)
-> +{
-> +       struct mtk_dip_request *req = mtk_dip_hw_fw_work_to_req(work);
-> +       struct mtk_dip_dev *dip_dev = req->dip_pipe->dip_dev;
-> +       struct img_ipi_param ipi_param;
-> +       struct mtk_dip_hw_subframe *buf;
-> +       int ret;
-> +
-> +       down(&dip_dev->sem);
-> +
-> +       buf = mtk_dip_hw_working_buf_alloc(req->dip_pipe->dip_dev);
-> +       if (!buf) {
-> +               dev_err(req->dip_pipe->dip_dev->dev,
-> +                       "%s:%s:req(%p): no free working buffer available\n",
-> +                       __func__, req->dip_pipe->desc->name, req);
-> +       }
-> +
-> +       req->working_buf = buf;
-> +       mtk_dip_wbuf_to_ipi_img_addr(&req->img_fparam.frameparam.subfrm_data,
-> +                                    &buf->buffer);
-> +       memset(buf->buffer.vaddr, 0, DIP_SUB_FRM_SZ);
-> +       mtk_dip_wbuf_to_ipi_img_sw_addr(&req->img_fparam.frameparam.config_data,
-> +                                       &buf->config_data);
-> +       memset(buf->config_data.vaddr, 0, DIP_COMP_SZ);
-> +
-> +       if (!req->img_fparam.frameparam.tuning_data.present) {
-> +               /*
-> +                * When user enqueued without tuning buffer,
-> +                * it would use driver internal buffer.
-> +                */
-> +               dev_dbg(dip_dev->dev,
-> +                       "%s: frame_no(%d) has no tuning_data\n",
-> +                       __func__, req->img_fparam.frameparam.frame_no);
-> +
-> +               mtk_dip_wbuf_to_ipi_tuning_addr
-> +                               (&req->img_fparam.frameparam.tuning_data,
-> +                                &buf->tuning_buf);
-> +               memset(buf->tuning_buf.vaddr, 0, DIP_TUNING_SZ);
-> +       }
-> +
-> +       mtk_dip_wbuf_to_ipi_img_sw_addr(&req->img_fparam.frameparam.self_data,
-> +                                       &buf->frameparam);
-> +       memcpy(buf->frameparam.vaddr, &req->img_fparam.frameparam,
-> +              sizeof(req->img_fparam.frameparam));
-> +       ipi_param.usage = IMG_IPI_FRAME;
-> +       ipi_param.frm_param.handle = req->id;
-> +       ipi_param.frm_param.scp_addr = (u32)buf->frameparam.scp_daddr;
-> +
-> +       mutex_lock(&dip_dev->hw_op_lock);
-> +       atomic_inc(&dip_dev->num_composing);
-> +       ret = scp_ipi_send(dip_dev->scp_pdev, SCP_IPI_DIP, &ipi_param,
-> +                          sizeof(ipi_param), 0);
-
-We're not holding the pm_runtime enable count here
-(pm_runtime_get_sync() wasn't called), so rproc_shutdown() might have
-been called. Wouldn't that affect the ability for this IPI to run?
-
-We had a related discussion with Jerry on the FD series and I think
-the conclusion is:
-a) if there is any state that needs to be preserved between jobs, that
-would be cleared by rproc_shutdown() then we need to call
-rproc_boot/shutdown() when we start/stop streaming.
-b) it there is no such state, we can keep them inside runtime PM
-callbacks, but we need to call pm_runtime_get_sync() before sending an
-IPI and pm_runtime_mark_last_busy() + pm_runtime_put_autosuspend()
-after the SCP signals completion. In this case the runtime PM
-autosuspend delay should be set to around 2-3 times the delay needed
-for rproc_shutdown() + rproc_boot() to complete.
-
-Best regards,
-Tomasz
+diff --git a/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt b/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
+new file mode 100644
+index 000000000000..55a0c8874c03
+--- /dev/null
++++ b/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
+@@ -0,0 +1,29 @@
++Device-Tree bindings for MediaTek PMIC based RTC
++
++MediaTek PMIC based RTC is an independent function of MediaTek PMIC that works
++as a type of multi-function device (MFD). The RTC can be configured and set up
++with PMIC wrapper bus which is a common resource shared with the other
++functions found on the same PMIC.
++
++For MediaTek PMIC MFD bindings, see:
++../mfd/mt6397.txt
++
++For MediaTek PMIC wrapper bus bindings, see:
++../soc/mediatek/pwrap.txt
++
++Required properties:
++- compatible: Should be one of follows
++       "mediatek,mt6323-rtc": for MT6323 PMIC
++       "mediatek,mt6397-rtc": for MT6397 PMIC
++
++Example:
++
++       pmic {
++               compatible = "mediatek,mt6323";
++
++               ...
++
++               rtc {
++                       compatible = "mediatek,mt6323-rtc";
++               };
++       };
+-- 
+2.17.1
