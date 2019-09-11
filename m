@@ -1,83 +1,182 @@
-From: Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [PATCH v3 3/7] usb: mtu3: support ip-sleep wakeup for MT8183
-Date: Wed, 11 Sep 2019 11:44:53 -0700
-Message-ID: <20190911184453.GA2628@roeck-us.net>
-References: <1567150854-30033-1-git-send-email-chunfeng.yun@mediatek.com>
- <1567150854-30033-4-git-send-email-chunfeng.yun@mediatek.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH v7 5/7] power: reset: add driver for mt6323 poweroff
+Date: Thu, 12 Sep 2019 02:49:27 +0800
+Message-ID: <1568227767.8481.4.camel@mtkswgap22>
+References: <20190910070446.639-1-frank-w@public-files.de>
+         <20190910070446.639-6-frank-w@public-files.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1567150854-30033-4-git-send-email-chunfeng.yun@mediatek.com>
+In-Reply-To: <20190910070446.639-6-frank-w@public-files.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Mathias Nyman <mathias.nyman@intel.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, Alessandro Zummo <a.zummo@towertech.it>, linux-pm@vger.kernel.org, Josef Friedl <josef.friedl@speed.at>, linux-kernel@vger.kernel.org, Tianping Fang <tianping.fang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Sebastian Reichel <sre@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Eddie Huang <eddie.huang@mediatek.com>, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Aug 30, 2019 at 03:40:50PM +0800, Chunfeng Yun wrote:
-> Support USB wakeup by ip-sleep mode for MT8183, it's similar to
-> MT8173
+Hi, Frank
+
+On Tue, 2019-09-10 at 09:04 +0200, Frank Wunderlich wrote:
+> From: Josef Friedl <josef.friedl@speed.at>
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> add poweroff driver for mt6323 and make Makefile and Kconfig-Entries
+> 
+> Suggested-by: Frank Wunderlich <frank-w@public-files.de>
+> Signed-off-by: Josef Friedl <josef.friedl@speed.at>
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> Acked-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+
+Thanks for your help keep the unfinished driver to upstream
+
+Acked-by: Sean Wang <sean.wang@mediatek.com>
+
 > ---
-> v3: changes micros define
-> 
-> v2: no changes
+> changes since v6: none
+> changes since v5: split out mfd/mt6397/core.h
+> changes since v4: none
+> changes since v3: none
+> changes since v2: none (=v2 part 5)
 > ---
->  drivers/usb/mtu3/mtu3_host.c | 14 +++++++++++++-
->  1 file changed, 13 insertions(+), 1 deletion(-)
+>  drivers/power/reset/Kconfig           | 10 +++
+>  drivers/power/reset/Makefile          |  1 +
+>  drivers/power/reset/mt6323-poweroff.c | 97 +++++++++++++++++++++++++++
+>  3 files changed, 108 insertions(+)
+>  create mode 100644 drivers/power/reset/mt6323-poweroff.c
 > 
-> diff --git a/drivers/usb/mtu3/mtu3_host.c b/drivers/usb/mtu3/mtu3_host.c
-> index c871b94f3e6f..4f8208885ebd 100644
-> --- a/drivers/usb/mtu3/mtu3_host.c
-> +++ b/drivers/usb/mtu3/mtu3_host.c
-> @@ -18,6 +18,12 @@
->  #include "mtu3.h"
->  #include "mtu3_dr.h"
+> diff --git a/drivers/power/reset/Kconfig b/drivers/power/reset/Kconfig
+> index a564237278ff..c721939767eb 100644
+> --- a/drivers/power/reset/Kconfig
+> +++ b/drivers/power/reset/Kconfig
+> @@ -140,6 +140,16 @@ config POWER_RESET_LTC2952
+>  	  This driver supports an external powerdown trigger and board power
+>  	  down via the LTC2952. Bindings are made in the device tree.
 >  
-> +/* mt8183 etc */
-> +#define PERI_WK_CTRL0	0x20
-> +#define WC0_IS_C(x)	(((x) & 0xf) << 28)  /* cycle debounce */
-> +#define WC0_IS_P	BIT(12)	/* polarity */
-> +#define WC0_IS_EN	BIT(6)
+> +config POWER_RESET_MT6323
+> +       bool "MediaTek MT6323 power-off driver"
+> +       depends on MFD_MT6397
+> +       help
+> +         The power-off driver is responsible for externally shutdown down
+> +         the power of a remote MediaTek SoC MT6323 is connected to through
+> +         controlling a tiny circuit BBPU inside MT6323 RTC.
 > +
-
-For 64-bit builds, this results in:
-
-drivers/usb/mtu3/mtu3_host.c: In function ‘ssusb_wakeup_ip_sleep_set’:
-./include/linux/bits.h:6:19: warning:
-	conversion from ‘long unsigned int’ to ‘u32’ {aka ‘unsigned int’}
-	changes value from ‘18446744073441120320’ to ‘4026536000’ [-Woverflow]
-
-since WC0_IS_C() is sign extended to 64 bit and then truncated.
-
-Observed with gcc 7.4.0 and 8.3.0.
-
-Guenter
-
->  /* mt8173 etc */
->  #define PERI_WK_CTRL1	0x4
->  #define WC1_IS_C(x)	(((x) & 0xf) << 26)  /* cycle debounce */
-> @@ -30,7 +36,8 @@
->  #define SSC_SPM_INT_EN		BIT(1)
->  
->  enum ssusb_uwk_vers {
-> -	SSUSB_UWK_V1 = 1,
-> +	SSUSB_UWK_V0 = 0,
-> +	SSUSB_UWK_V1,
->  	SSUSB_UWK_V2,
->  };
->  
-> @@ -43,6 +50,11 @@ static void ssusb_wakeup_ip_sleep_set(struct ssusb_mtk *ssusb, bool enable)
->  	u32 reg, msk, val;
->  
->  	switch (ssusb->uwk_vers) {
-> +	case SSUSB_UWK_V0:
-> +		reg = ssusb->uwk_reg_base + PERI_WK_CTRL0;
-> +		msk = WC0_IS_EN | WC0_IS_C(0xf) | WC0_IS_P;
-> +		val = enable ? (WC0_IS_EN | WC0_IS_C(0x8)) : 0;
-> +		break;
->  	case SSUSB_UWK_V1:
->  		reg = ssusb->uwk_reg_base + PERI_WK_CTRL1;
->  		msk = WC1_IS_EN | WC1_IS_C(0xf) | WC1_IS_P;
+> +         Say Y if you have a board where MT6323 could be found.
+> +
+>  config POWER_RESET_QNAP
+>  	bool "QNAP power-off driver"
+>  	depends on OF_GPIO && PLAT_ORION
+> diff --git a/drivers/power/reset/Makefile b/drivers/power/reset/Makefile
+> index 85da3198e4e0..da37f8b851dc 100644
+> --- a/drivers/power/reset/Makefile
+> +++ b/drivers/power/reset/Makefile
+> @@ -11,6 +11,7 @@ obj-$(CONFIG_POWER_RESET_GPIO) += gpio-poweroff.o
+>  obj-$(CONFIG_POWER_RESET_GPIO_RESTART) += gpio-restart.o
+>  obj-$(CONFIG_POWER_RESET_HISI) += hisi-reboot.o
+>  obj-$(CONFIG_POWER_RESET_MSM) += msm-poweroff.o
+> +obj-$(CONFIG_POWER_RESET_MT6323) += mt6323-poweroff.o
+>  obj-$(CONFIG_POWER_RESET_QCOM_PON) += qcom-pon.o
+>  obj-$(CONFIG_POWER_RESET_OCELOT_RESET) += ocelot-reset.o
+>  obj-$(CONFIG_POWER_RESET_PIIX4_POWEROFF) += piix4-poweroff.o
+> diff --git a/drivers/power/reset/mt6323-poweroff.c b/drivers/power/reset/mt6323-poweroff.c
+> new file mode 100644
+> index 000000000000..1caf43d9e46d
+> --- /dev/null
+> +++ b/drivers/power/reset/mt6323-poweroff.c
+> @@ -0,0 +1,97 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Power off through MediaTek PMIC
+> + *
+> + * Copyright (C) 2018 MediaTek Inc.
+> + *
+> + * Author: Sean Wang <sean.wang@mediatek.com>
+> + *
+> + */
+> +
+> +#include <linux/err.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/mfd/mt6397/core.h>
+> +#include <linux/mfd/mt6397/rtc.h>
+> +
+> +struct mt6323_pwrc {
+> +	struct device *dev;
+> +	struct regmap *regmap;
+> +	u32 base;
+> +};
+> +
+> +static struct mt6323_pwrc *mt_pwrc;
+> +
+> +static void mt6323_do_pwroff(void)
+> +{
+> +	struct mt6323_pwrc *pwrc = mt_pwrc;
+> +	unsigned int val;
+> +	int ret;
+> +
+> +	regmap_write(pwrc->regmap, pwrc->base + RTC_BBPU, RTC_BBPU_KEY);
+> +	regmap_write(pwrc->regmap, pwrc->base + RTC_WRTGR, 1);
+> +
+> +	ret = regmap_read_poll_timeout(pwrc->regmap,
+> +					pwrc->base + RTC_BBPU, val,
+> +					!(val & RTC_BBPU_CBUSY),
+> +					MTK_RTC_POLL_DELAY_US,
+> +					MTK_RTC_POLL_TIMEOUT);
+> +	if (ret)
+> +		dev_err(pwrc->dev, "failed to write BBPU: %d\n", ret);
+> +
+> +	/* Wait some time until system down, otherwise, notice with a warn */
+> +	mdelay(1000);
+> +
+> +	WARN_ONCE(1, "Unable to power off system\n");
+> +}
+> +
+> +static int mt6323_pwrc_probe(struct platform_device *pdev)
+> +{
+> +	struct mt6397_chip *mt6397_chip = dev_get_drvdata(pdev->dev.parent);
+> +	struct mt6323_pwrc *pwrc;
+> +	struct resource *res;
+> +
+> +	pwrc = devm_kzalloc(&pdev->dev, sizeof(*pwrc), GFP_KERNEL);
+> +	if (!pwrc)
+> +		return -ENOMEM;
+> +
+> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> +	pwrc->base = res->start;
+> +	pwrc->regmap = mt6397_chip->regmap;
+> +	pwrc->dev = &pdev->dev;
+> +	mt_pwrc = pwrc;
+> +
+> +	pm_power_off = &mt6323_do_pwroff;
+> +
+> +	return 0;
+> +}
+> +
+> +static int mt6323_pwrc_remove(struct platform_device *pdev)
+> +{
+> +	if (pm_power_off == &mt6323_do_pwroff)
+> +		pm_power_off = NULL;
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct of_device_id mt6323_pwrc_dt_match[] = {
+> +	{ .compatible = "mediatek,mt6323-pwrc" },
+> +	{},
+> +};
+> +MODULE_DEVICE_TABLE(of, mt6323_pwrc_dt_match);
+> +
+> +static struct platform_driver mt6323_pwrc_driver = {
+> +	.probe          = mt6323_pwrc_probe,
+> +	.remove         = mt6323_pwrc_remove,
+> +	.driver         = {
+> +		.name   = "mt6323-pwrc",
+> +		.of_match_table = mt6323_pwrc_dt_match,
+> +	},
+> +};
+> +
+> +module_platform_driver(mt6323_pwrc_driver);
+> +
+> +MODULE_DESCRIPTION("Poweroff driver for MT6323 PMIC");
+> +MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
+> +MODULE_LICENSE("GPL v2");
