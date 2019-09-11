@@ -1,14 +1,14 @@
 From: Avri Altman <Avri.Altman@wdc.com>
-Subject: RE: [PATCH v1 2/3] scsi: ufs: override auto suspend tunables for ufs
-Date: Wed, 11 Sep 2019 10:56:47 +0000
-Message-ID: <MN2PR04MB6991D63EEF50367BE2CB062CFCB10@MN2PR04MB6991.namprd04.prod.outlook.com>
+Subject: RE: [PATCH v1 3/3] scsi: ufs-mediatek: enable auto suspend capability
+Date: Wed, 11 Sep 2019 10:58:39 +0000
+Message-ID: <MN2PR04MB6991A6F223D9C711A3D00B21FCB10@MN2PR04MB6991.namprd04.prod.outlook.com>
 References: <1568194890-24439-1-git-send-email-stanley.chu@mediatek.com>
- <1568194890-24439-3-git-send-email-stanley.chu@mediatek.com>
+ <1568194890-24439-4-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1568194890-24439-3-git-send-email-stanley.chu@mediatek.com>
+In-Reply-To: <1568194890-24439-4-git-send-email-stanley.chu@mediatek.com>
 Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
@@ -24,76 +24,40 @@ Cc: "marc.w.gonzalez@free.fr" <marc.w.gonzalez@free.fr>, "andy.teng@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
 > 
-> Rework from previous work by:
-> Sujit Reddy Thumma <sthumma@codeaurora.org>
-> 
-> Override auto suspend tunables for UFS device LUNs during initialization so
-> as to efficiently manage background operations and the power consumption.
+> Enable auto suspend capability in MediaTek UFS driver.
 > 
 > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 Reviewed-by: Avri Altman <avri.altman@wdc.com>
 
 > ---
->  drivers/scsi/ufs/ufshcd.c |  8 ++++++++  drivers/scsi/ufs/ufshcd.h | 10
-> ++++++++++
->  2 files changed, 18 insertions(+)
+>  drivers/scsi/ufs/ufs-mediatek.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
 > 
-> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c index
-> 30b752c61b97..d253a018a73b 100644
-> --- a/drivers/scsi/ufs/ufshcd.c
-> +++ b/drivers/scsi/ufs/ufshcd.c
-> @@ -88,6 +88,9 @@
->  /* Interrupt aggregation default timeout, unit: 40us */
->  #define INT_AGGR_DEF_TO        0x02
-> 
-> +/* default delay of autosuspend: 2000 ms */ #define
-Typo?
-
-> +RPM_AUTOSUSPEND_DELAY_MS 2000
-> +
->  #define ufshcd_toggle_vreg(_dev, _vreg, _on)                           \
->         ({                                                              \
->                 int _ret;                                               \
-> @@ -4612,9 +4615,14 @@ static int ufshcd_change_queue_depth(struct
-> scsi_device *sdev, int depth)
->   */
->  static int ufshcd_slave_configure(struct scsi_device *sdev)  {
-> +       struct ufs_hba *hba = shost_priv(sdev->host);
->         struct request_queue *q = sdev->request_queue;
-> 
->         blk_queue_update_dma_pad(q, PRDT_DATA_BYTE_COUNT_PAD - 1);
-> +
-> +       if (ufshcd_is_rpm_autosuspend_allowed(hba))
-> +               sdev->rpm_autosuspend_delay =
-> RPM_AUTOSUSPEND_DELAY_MS;
-> +
->         return 0;
+> diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
+> index 0f6ff33ce52e..b7b177c6194c 100644
+> --- a/drivers/scsi/ufs/ufs-mediatek.c
+> +++ b/drivers/scsi/ufs/ufs-mediatek.c
+> @@ -117,6 +117,11 @@ static int ufs_mtk_setup_clocks(struct ufs_hba
+> *hba, bool on,
+>         return ret;
 >  }
 > 
-> diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h index
-> a43c7135f33d..99ea416519af 100644
-> --- a/drivers/scsi/ufs/ufshcd.h
-> +++ b/drivers/scsi/ufs/ufshcd.h
-> @@ -714,6 +714,12 @@ struct ufs_hba {
->          * the performance of ongoing read/write operations.
->          */
->  #define UFSHCD_CAP_KEEP_AUTO_BKOPS_ENABLED_EXCEPT_SUSPEND (1
-> << 5)
-> +       /*
-> +        * This capability allows host controller driver to automatically
-> +        * enable runtime power management by itself instead of waiting
-> +        * for userspace to control the power management.
-> +        */
-> +#define UFSHCD_CAP_RPM_AUTOSUSPEND (1 << 6)
+> +static void ufs_mtk_set_caps(struct ufs_hba *hba) {
+> +       hba->caps |= UFSHCD_CAP_RPM_AUTOSUSPEND; }
+Even a one-liner deserve new line for its closing brackets
+
+> +
+>  /**
+>   * ufs_mtk_init - find other essential mmio bases
+>   * @hba: host controller instance
+> @@ -147,6 +152,8 @@ static int ufs_mtk_init(struct ufs_hba *hba)
+>         if (err)
+>                 goto out_variant_clear;
 > 
->         struct devfreq *devfreq;
->         struct ufs_clk_scaling clk_scaling; @@ -747,6 +753,10 @@ static inline
-> bool ufshcd_can_autobkops_during_suspend(struct ufs_hba *hba)  {
->         return hba->caps & UFSHCD_CAP_AUTO_BKOPS_SUSPEND;  }
-> +static inline bool ufshcd_is_rpm_autosuspend_allowed(struct ufs_hba
-> +*hba) {
-> +       return hba->caps & UFSHCD_CAP_RPM_AUTOSUSPEND; }
-> 
->  static inline bool ufshcd_is_intr_aggr_allowed(struct ufs_hba *hba)  {
+> +       ufs_mtk_set_caps(hba);
+> +
+>         /*
+>          * ufshcd_vops_init() is invoked after
+>          * ufshcd_setup_clock(true) in ufshcd_hba_init() thus
 > --
 > 2.18.0
