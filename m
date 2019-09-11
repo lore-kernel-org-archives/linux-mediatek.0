@@ -1,11 +1,13 @@
 From: Stanley Chu <stanley.chu@mediatek.com>
-Subject: [PATCH v1] fixup null q->dev checking in both block and scsi layer
-Date: Wed, 11 Sep 2019 14:32:40 +0800
-Message-ID: <1568183562-18241-1-git-send-email-stanley.chu@mediatek.com>
+Subject: [PATCH v1 2/2] scsi: core: remove dummy q->dev check
+Date: Wed, 11 Sep 2019 14:32:42 +0800
+Message-ID: <1568183562-18241-3-git-send-email-stanley.chu@mediatek.com>
+References: <1568183562-18241-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1568183562-18241-1-git-send-email-stanley.chu@mediatek.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -19,21 +21,27 @@ To: linux-scsi@vger.kernel.org, linux-block@vger.kernel.org, martin.petersen@ora
 Cc: andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, linux-mediatek@lists.infradead.org, peter.wang@mediatek.com, Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Some devices may skip blk_pm_runtime_init() and have null pointer
-in its request_queue->dev. For example, SCSI devices of UFS Well-Known
-LUNs.
+Currently blk_set_runtime_active() is checking if q->dev is null by
+itself, thus remove the same checking in its user: scsi_dev_type_resume().
 
-Currently the null pointer is checked by the user of
-blk_set_runtime_active(), i.e., scsi_dev_type_resume(). It is better to
-check it by blk_set_runtime_active() itself instead of by its users.
-
-Stanley Chu (2):
-  block: bypass blk_set_runtime_active for uninitialized q->dev
-  scsi: core: remove dummy q->dev check
-
- block/blk-pm.c         | 3 +++
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+---
  drivers/scsi/scsi_pm.c | 3 +--
- 2 files changed, 4 insertions(+), 2 deletions(-)
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
+diff --git a/drivers/scsi/scsi_pm.c b/drivers/scsi/scsi_pm.c
+index 74ded5f3c236..3717eea37ecb 100644
+--- a/drivers/scsi/scsi_pm.c
++++ b/drivers/scsi/scsi_pm.c
+@@ -94,8 +94,7 @@ static int scsi_dev_type_resume(struct device *dev,
+ 		if (!err && scsi_is_sdev_device(dev)) {
+ 			struct scsi_device *sdev = to_scsi_device(dev);
+ 
+-			if (sdev->request_queue->dev)
+-				blk_set_runtime_active(sdev->request_queue);
++			blk_set_runtime_active(sdev->request_queue);
+ 		}
+ 	}
+ 
 -- 
 2.18.0
