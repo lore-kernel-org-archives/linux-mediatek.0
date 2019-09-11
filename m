@@ -1,77 +1,27 @@
-From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [RFC, v3, 3/4] media: platform: Add Mediatek MDP3 driver KConfig
-Date: Wed, 11 Sep 2019 17:41:47 +0800
-Message-ID: <20190911094147.5957-1-bibby.hsieh@mediatek.com>
+From: Luhua Xu <luhua.xu@mediatek.com>
+Subject: [PATCH 0/3] MT6765 spi support
+Date: Wed, 11 Sep 2019 05:55:28 -0400
+Message-ID: <1568195731-3239-1-git-send-email-luhua.xu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: hans.verkuil@cisco.com, laurent.pinchart+renesas@ideasonboard.com, tfiga@chromium.org, matthias.bgg@gmail.com, mchehab@kernel.org
-Cc: devicetree@vger.kernel.org, Sean.Cheng@mediatek.com, Rynn.Wu@mediatek.com, srv_heupstream@mediatek.com, daoyuan huang <daoyuan.huang@mediatek.com>, holmes.chiou@mediatek.com, Jerry-ch.Chen@mediatek.com, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, linux-mediatek@lists.infradead.org, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, zwisler@chromium.org, christie.yu@mediatek.com, frederic.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-spi@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: daoyuan huang <daoyuan.huang@mediatek.com>
+These patch series add Mediatek mt6765 spi support, and add spi DMA
+large PA support on some platforms. 
 
-This patch adds Kconfig for Mediatek Media Data Path 3 (MDP3)
-driver. MDP3 is used to do scaling and color format conversion.
 
-Signed-off-by: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-Signed-off-by: daoyuan huang <daoyuan.huang@mediatek.com>
----
- drivers/media/platform/Kconfig  | 19 +++++++++++++++++++
- drivers/media/platform/Makefile |  1 +
- 2 files changed, 20 insertions(+)
+luhua.xu (3):
+  dt-bindings: spi: update bindings for MT6765 SoC
+  spi: mediatek: add spi support for mt6765 IC
+  spi: mediatek: support large PA
 
-diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
-index 8a19654b393a..b38071650768 100644
---- a/drivers/media/platform/Kconfig
-+++ b/drivers/media/platform/Kconfig
-@@ -240,6 +240,25 @@ config VIDEO_MEDIATEK_MDP
- 	    To compile this driver as a module, choose M here: the
- 	    module will be called mtk-mdp.
- 
-+config VIDEO_MEDIATEK_MDP3
-+	tristate "Mediatek MDP v3 driver"
-+	depends on MTK_IOMMU || COMPILE_TEST
-+	depends on VIDEO_DEV && VIDEO_V4L2
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	depends on HAS_DMA
-+	select VIDEOBUF2_DMA_CONTIG
-+	select V4L2_MEM2MEM_DEV
-+	select VIDEO_MEDIATEK_VPU
-+	select MTK_CMDQ
-+	select MTK_SCP
-+	default n
-+	help
-+	    It is a v4l2 driver and present in Mediatek MT8183 SoC.
-+	    The driver supports for scaling and color space conversion.
-+
-+	    To compile this driver as a module, choose M here: the
-+	    module will be called mtk-mdp3.
-+
- config VIDEO_MEDIATEK_VCODEC
- 	tristate "Mediatek Video Codec driver"
- 	depends on MTK_IOMMU || COMPILE_TEST
-diff --git a/drivers/media/platform/Makefile b/drivers/media/platform/Makefile
-index 7cbbd925124c..14c1ecce5378 100644
---- a/drivers/media/platform/Makefile
-+++ b/drivers/media/platform/Makefile
-@@ -89,6 +89,7 @@ obj-$(CONFIG_VIDEO_MEDIATEK_VPU)	+= mtk-vpu/
- obj-$(CONFIG_VIDEO_MEDIATEK_VCODEC)	+= mtk-vcodec/
- 
- obj-$(CONFIG_VIDEO_MEDIATEK_MDP)	+= mtk-mdp/
-+obj-$(CONFIG_VIDEO_MEDIATEK_MDP3)	+= mtk-mdp3/
- 
- obj-$(CONFIG_VIDEO_MEDIATEK_JPEG)	+= mtk-jpeg/
- 
--- 
+ .../devicetree/bindings/spi/spi-mt65xx.txt    |  1 +
+ drivers/spi/spi-mt65xx.c                      | 53 +++++++++++++++++--
+ 2 files changed, 49 insertions(+), 5 deletions(-)
+
+--
 2.18.0
