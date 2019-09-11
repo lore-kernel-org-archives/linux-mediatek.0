@@ -1,174 +1,83 @@
-From: Frederic Chen <frederic.chen@mediatek.com>
-Subject: Re: [RFC PATCH V3 4/5] platform: mtk-isp: Add Mediatek DIP driver
-Date: Thu, 12 Sep 2019 01:41:11 +0800
-Message-ID: <1568223671.19171.12.camel@mtksdccf07>
-References: <20190909192244.9367-1-frederic.chen@mediatek.com>
- <20190909192244.9367-5-frederic.chen@mediatek.com>
- <CAAFQd5DEn_N26M7B4X7fKHVA=XBtWJN=Y4VF7D9B=TkgXf_i+Q@mail.gmail.com>
+From: Guenter Roeck <linux@roeck-us.net>
+Subject: Re: [PATCH v3 3/7] usb: mtu3: support ip-sleep wakeup for MT8183
+Date: Wed, 11 Sep 2019 11:44:53 -0700
+Message-ID: <20190911184453.GA2628@roeck-us.net>
+References: <1567150854-30033-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1567150854-30033-4-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAAFQd5DEn_N26M7B4X7fKHVA=XBtWJN=Y4VF7D9B=TkgXf_i+Q@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: Shik Chen <shik@chromium.org>, devicetree@vger.kernel.org, Sean Cheng =?UTF-8?Q?=28=E9=84=AD=E6=98=87=E5=BC=98=29?= <Sean.Cheng@mediatek.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Rynn Wu =?UTF-8?Q?=28=E5=90=B3=E8=82=B2=E6=81=A9=29?= <Rynn.Wu@mediatek.com>, Christie Yu =?UTF-8?Q?=28=E6=B8=B8=E9=9B=85=E6=83=A0=29?= <christie.yu@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>, Allan Yang =?UTF-8?Q?=28=E6=A5=8A=E6=99=BA=E9=88=9E=29?= <Allan.Yang@mediatek.com>, Holmes Chiou =?UTF-8?Q?=28=E9=82=B1=E6=8C=BA=29?= <holmes.chiou@mediatek.com>, suleiman@chromium.org, Jerry-ch Chen <Jerry-ch.Chen@mediatek.com>, Jungo Lin =?UTF-8?Q?=28=E6=9E=97=E6=98=8E=E4=BF=8A=29?= <jungo.lin@mediatek.com>, Sj Huang <sj.huang@mediatek.com>, yuzhao@chromium.org, Hans Verkuil <hans.verkuil@cisco.com>, zwisler@chromium.org, Matthias Brugger <matthias.bgg@gmail.c>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1567150854-30033-4-git-send-email-chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Mathias Nyman <mathias.nyman@intel.com>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Tomasz,
-
-I appreciate your helpful comments.
-
-
-On Tue, 2019-09-10 at 13:04 +0900, Tomasz Figa wrote:
-> Hi Frederic,
+On Fri, Aug 30, 2019 at 03:40:50PM +0800, Chunfeng Yun wrote:
+> Support USB wakeup by ip-sleep mode for MT8183, it's similar to
+> MT8173
 > 
-> On Tue, Sep 10, 2019 at 4:23 AM <frederic.chen@mediatek.com> wrote:
-> >
-> > From: Frederic Chen <frederic.chen@mediatek.com>
-> >
-> > This patch adds the driver of Digital Image Processing (DIP)
-> > unit in Mediatek ISP system, providing image format
-> > conversion, resizing, and rotation features.
-> >
-> > The mtk-isp directory will contain drivers for multiple IP
-> > blocks found in Mediatek ISP system. It will include ISP
-> > Pass 1 driver(CAM), sensor interface driver, DIP driver and
-> > face detection driver.
-> >
-> > Signed-off-by: Frederic Chen <frederic.chen@mediatek.com>
-> > ---
-> >  drivers/media/platform/mtk-isp/Makefile       |    7 +
-> >  .../media/platform/mtk-isp/isp_50/Makefile    |    7 +
-> >  .../platform/mtk-isp/isp_50/dip/Makefile      |   18 +
-> >  .../platform/mtk-isp/isp_50/dip/mtk_dip-dev.c |  650 +++++
-> >  .../platform/mtk-isp/isp_50/dip/mtk_dip-dev.h |  566 +++++
-> >  .../platform/mtk-isp/isp_50/dip/mtk_dip-hw.h  |  156 ++
-> >  .../platform/mtk-isp/isp_50/dip/mtk_dip-sys.c |  521 ++++
-> >  .../mtk-isp/isp_50/dip/mtk_dip-v4l2.c         | 2255 +++++++++++++++++
-> >  8 files changed, 4180 insertions(+)
-> >  create mode 100644 drivers/media/platform/mtk-isp/Makefile
-> >  create mode 100644 drivers/media/platform/mtk-isp/isp_50/Makefile
-> >  create mode 100644 drivers/media/platform/mtk-isp/isp_50/dip/Makefile
-> >  create mode 100644 drivers/media/platform/mtk-isp/isp_50/dip/mtk_dip-dev.c
-> >  create mode 100644 drivers/media/platform/mtk-isp/isp_50/dip/mtk_dip-dev.h
-> >  create mode 100644 drivers/media/platform/mtk-isp/isp_50/dip/mtk_dip-hw.h
-> >  create mode 100644 drivers/media/platform/mtk-isp/isp_50/dip/mtk_dip-sys.c
-> >  create mode 100644 drivers/media/platform/mtk-isp/isp_50/dip/mtk_dip-v4l2.c
-> >
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+> v3: changes micros define
 > 
-> Thanks for sending v3!
+> v2: no changes
+> ---
+>  drivers/usb/mtu3/mtu3_host.c | 14 +++++++++++++-
+>  1 file changed, 13 insertions(+), 1 deletion(-)
 > 
-> I'm going to do a full review a bit later, but please check one
-> comment about power handling below.
-> 
-> Other than that one comment, from a quick look, I think we only have a
-> number of style issues left. Thanks for the hard work!
-> 
-> [snip]
-> > +static void dip_runner_func(struct work_struct *work)
-> > +{
-> > +       struct mtk_dip_request *req = mtk_dip_hw_mdp_work_to_req(work);
-> > +       struct mtk_dip_dev *dip_dev = req->dip_pipe->dip_dev;
-> > +       struct img_config *config_data =
-> > +               (struct img_config *)req->working_buf->config_data.vaddr;
-> > +
-> > +       /*
-> > +        * Call MDP/GCE API to do HW excecution
-> > +        * Pass the framejob to MDP driver
-> > +        */
-> > +       pm_runtime_get_sync(dip_dev->dev);
-> > +       mdp_cmdq_sendtask(dip_dev->mdp_pdev, config_data,
-> > +                         &req->img_fparam.frameparam, NULL, false,
-> > +                         dip_mdp_cb_func, req);
-> > +}
-> [snip]
-> > +static void dip_composer_workfunc(struct work_struct *work)
-> > +{
-> > +       struct mtk_dip_request *req = mtk_dip_hw_fw_work_to_req(work);
-> > +       struct mtk_dip_dev *dip_dev = req->dip_pipe->dip_dev;
-> > +       struct img_ipi_param ipi_param;
-> > +       struct mtk_dip_hw_subframe *buf;
-> > +       int ret;
-> > +
-> > +       down(&dip_dev->sem);
-> > +
-> > +       buf = mtk_dip_hw_working_buf_alloc(req->dip_pipe->dip_dev);
-> > +       if (!buf) {
-> > +               dev_err(req->dip_pipe->dip_dev->dev,
-> > +                       "%s:%s:req(%p): no free working buffer available\n",
-> > +                       __func__, req->dip_pipe->desc->name, req);
-> > +       }
-> > +
-> > +       req->working_buf = buf;
-> > +       mtk_dip_wbuf_to_ipi_img_addr(&req->img_fparam.frameparam.subfrm_data,
-> > +                                    &buf->buffer);
-> > +       memset(buf->buffer.vaddr, 0, DIP_SUB_FRM_SZ);
-> > +       mtk_dip_wbuf_to_ipi_img_sw_addr(&req->img_fparam.frameparam.config_data,
-> > +                                       &buf->config_data);
-> > +       memset(buf->config_data.vaddr, 0, DIP_COMP_SZ);
-> > +
-> > +       if (!req->img_fparam.frameparam.tuning_data.present) {
-> > +               /*
-> > +                * When user enqueued without tuning buffer,
-> > +                * it would use driver internal buffer.
-> > +                */
-> > +               dev_dbg(dip_dev->dev,
-> > +                       "%s: frame_no(%d) has no tuning_data\n",
-> > +                       __func__, req->img_fparam.frameparam.frame_no);
-> > +
-> > +               mtk_dip_wbuf_to_ipi_tuning_addr
-> > +                               (&req->img_fparam.frameparam.tuning_data,
-> > +                                &buf->tuning_buf);
-> > +               memset(buf->tuning_buf.vaddr, 0, DIP_TUNING_SZ);
-> > +       }
-> > +
-> > +       mtk_dip_wbuf_to_ipi_img_sw_addr(&req->img_fparam.frameparam.self_data,
-> > +                                       &buf->frameparam);
-> > +       memcpy(buf->frameparam.vaddr, &req->img_fparam.frameparam,
-> > +              sizeof(req->img_fparam.frameparam));
-> > +       ipi_param.usage = IMG_IPI_FRAME;
-> > +       ipi_param.frm_param.handle = req->id;
-> > +       ipi_param.frm_param.scp_addr = (u32)buf->frameparam.scp_daddr;
-> > +
-> > +       mutex_lock(&dip_dev->hw_op_lock);
-> > +       atomic_inc(&dip_dev->num_composing);
-> > +       ret = scp_ipi_send(dip_dev->scp_pdev, SCP_IPI_DIP, &ipi_param,
-> > +                          sizeof(ipi_param), 0);
-> 
-> We're not holding the pm_runtime enable count here
-> (pm_runtime_get_sync() wasn't called), so rproc_shutdown() might have
-> been called. Wouldn't that affect the ability for this IPI to run?
-> 
-> We had a related discussion with Jerry on the FD series and I think
-> the conclusion is:
-> a) if there is any state that needs to be preserved between jobs, that
-> would be cleared by rproc_shutdown() then we need to call
-> rproc_boot/shutdown() when we start/stop streaming.
-> b) it there is no such state, we can keep them inside runtime PM
-> callbacks, but we need to call pm_runtime_get_sync() before sending an
-> IPI and pm_runtime_mark_last_busy() + pm_runtime_put_autosuspend()
-> after the SCP signals completion. In this case the runtime PM
-> autosuspend delay should be set to around 2-3 times the delay needed
-> for rproc_shutdown() + rproc_boot() to complete.
+> diff --git a/drivers/usb/mtu3/mtu3_host.c b/drivers/usb/mtu3/mtu3_host.c
+> index c871b94f3e6f..4f8208885ebd 100644
+> --- a/drivers/usb/mtu3/mtu3_host.c
+> +++ b/drivers/usb/mtu3/mtu3_host.c
+> @@ -18,6 +18,12 @@
+>  #include "mtu3.h"
+>  #include "mtu3_dr.h"
+>  
+> +/* mt8183 etc */
+> +#define PERI_WK_CTRL0	0x20
+> +#define WC0_IS_C(x)	(((x) & 0xf) << 28)  /* cycle debounce */
+> +#define WC0_IS_P	BIT(12)	/* polarity */
+> +#define WC0_IS_EN	BIT(6)
+> +
 
-Since each IMG_IPI_FRAME command is stateless, I would like to
-use pm_runtime_get_sync()/ pm_runtime_mark_last_busy()/
-pm_runtime_put_autosuspend() to fix this issue (solution b).
+For 64-bit builds, this results in:
 
-> 
-> Best regards,
-> Tomasz
+drivers/usb/mtu3/mtu3_host.c: In function ‘ssusb_wakeup_ip_sleep_set’:
+./include/linux/bits.h:6:19: warning:
+	conversion from ‘long unsigned int’ to ‘u32’ {aka ‘unsigned int’}
+	changes value from ‘18446744073441120320’ to ‘4026536000’ [-Woverflow]
 
+since WC0_IS_C() is sign extended to 64 bit and then truncated.
 
-Sincerely,
+Observed with gcc 7.4.0 and 8.3.0.
 
-Frederic Chen
+Guenter
+
+>  /* mt8173 etc */
+>  #define PERI_WK_CTRL1	0x4
+>  #define WC1_IS_C(x)	(((x) & 0xf) << 26)  /* cycle debounce */
+> @@ -30,7 +36,8 @@
+>  #define SSC_SPM_INT_EN		BIT(1)
+>  
+>  enum ssusb_uwk_vers {
+> -	SSUSB_UWK_V1 = 1,
+> +	SSUSB_UWK_V0 = 0,
+> +	SSUSB_UWK_V1,
+>  	SSUSB_UWK_V2,
+>  };
+>  
+> @@ -43,6 +50,11 @@ static void ssusb_wakeup_ip_sleep_set(struct ssusb_mtk *ssusb, bool enable)
+>  	u32 reg, msk, val;
+>  
+>  	switch (ssusb->uwk_vers) {
+> +	case SSUSB_UWK_V0:
+> +		reg = ssusb->uwk_reg_base + PERI_WK_CTRL0;
+> +		msk = WC0_IS_EN | WC0_IS_C(0xf) | WC0_IS_P;
+> +		val = enable ? (WC0_IS_EN | WC0_IS_C(0x8)) : 0;
+> +		break;
+>  	case SSUSB_UWK_V1:
+>  		reg = ssusb->uwk_reg_base + PERI_WK_CTRL1;
+>  		msk = WC1_IS_EN | WC1_IS_C(0xf) | WC1_IS_P;
