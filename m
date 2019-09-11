@@ -1,78 +1,53 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH 4/7] dt-bindings: chosen: Add clocksource and clockevent
- selection
-Date: Wed, 11 Sep 2019 01:03:03 +0100
-Message-ID: <CACRpkda4mmpbPWa2nD93CvD6HWzcTUDzyyLdQxC2gNB7XiJF3w@mail.gmail.com>
-References: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
- <1568123236-767-5-git-send-email-claudiu.beznea@microchip.com>
- <20190910143231.GB14966@e107533-lin.cambridge.arm.com>
- <ab43b209-78fa-0cab-b8ea-acd4c550e689@microchip.com>
- <20190910150826.GA18308@e107533-lin.cambridge.arm.com>
- <20190910151055.GX21254@piout.net>
+From: Stanley Chu <stanley.chu@mediatek.com>
+Subject: [PATCH v1 1/2] block: bypass blk_set_runtime_active for uninitialized
+ q->dev
+Date: Wed, 11 Sep 2019 14:32:41 +0800
+Message-ID: <1568183562-18241-2-git-send-email-stanley.chu@mediatek.com>
+References: <1568183562-18241-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-riscv-bounces+glpr-linux-riscv=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190910151055.GX21254@piout.net>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-riscv>,
- <mailto:linux-riscv-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-riscv/>
-List-Post: <mailto:linux-riscv@lists.infradead.org>
-List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
- <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
-Errors-To: linux-riscv-bounces+glpr-linux-riscv=m.gmane.org@lists.infradead.org
-To: Alexandre Belloni <alexandre.belloni@bootlin.com>
-Cc: Tomer Maimon <tmaimon77@gmail.com>, "Nori, Sekhar" <nsekhar@ti.com>, guoren@kernel.org, linux-stm32@st-md-mailman.stormreply.com, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Kevin Hilman <khilman@baylibre.com>, Ludovic Desroches <Ludovic.Desroches@microchip.com>, NXP Linux Team <linux-imx@nxp.com>, =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, "moderated list:H8/300 ARCHITECTURE" <uclinux-h8-devel@lists.sourceforge.jp>, Marc Zyngier <marc.zyngier@arm.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-unisoc@lists.infradead.org, Krzysztof Halasa <khalasa@piap.pl>, Thomas Gleixner <tglx@linutronix.de>, Scott Branden <sbranden@broadcom.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Ralf Baechle <ral>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1568183562-18241-1-git-send-email-stanley.chu@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-scsi@vger.kernel.org, linux-block@vger.kernel.org, martin.petersen@oracle.com, axboe@kernel.dk, jejb@linux.ibm.com, matthias.bgg@gmail.com
+Cc: andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, linux-mediatek@lists.infradead.org, peter.wang@mediatek.com, Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Sep 10, 2019 at 4:11 PM Alexandre Belloni
-<alexandre.belloni@bootlin.com> wrote:
-> On 10/09/2019 16:08:26+0100, Sudeep Holla wrote:
-> > On Tue, Sep 10, 2019 at 02:51:50PM +0000, Claudiu.Beznea@microchip.com wrote:
+Some devices may skip blk_pm_runtime_init() and have null pointer
+in its request_queue->dev. For example, SCSI devices of UFS Well-Known
+LUNs.
 
-> > In that case, why can't we identify capability that with the compatibles
-> > for this timer IP ?
-> >
-> > IOW, I don't like the proposal as it's hardware limitation.
->
-> To be clear, bot timers are exactly the same but can't be clocksource
-> and clockevent at the same time. Why would we have different compatibles
-> for the exact same IP?
+Currently the null pointer is checked by the user of
+blk_set_runtime_active(), i.e., scsi_dev_type_resume(). It is better to
+check it by blk_set_runtime_active() itself instead of by its users.
 
-In that case why not just pick the first one you find as clocksource
-and the second one as clock event? As they all come to the
-same timer of init function two simple local state variables can
-solve that:
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+---
+ block/blk-pm.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-static bool registered_clocksource;
-static bool registered_clockevent;
-
-probe(timer) {
-   if (!registered_clocksource) {
-       register_clocksource(timer);
-       registrered_clocksource = true;
-       return;
-   }
-   if (!registered_clockevent) {
-       register_clockevent(timer);
-       registered_clockevent = true;
-       return;
-   }
-   pr_info("surplus timer %p\n", timer);
-}
-
-Clocksource and clockevent are natural singletons so there is
-no need to handle more than one of each in a driver for identical
-hardware.
-
-With the Integrator AP timer there is a real reason to select one over
-the other but as I replied to that patch it is pretty easy to just identify
-which block has this limitation by simply commenting out the IRQ
-line for it from the device tree.
-
-Maybe there is something about this I don't understand.
-
-Yours,
-Linus Walleij
+diff --git a/block/blk-pm.c b/block/blk-pm.c
+index 0a028c189897..56ed94f7a2a3 100644
+--- a/block/blk-pm.c
++++ b/block/blk-pm.c
+@@ -207,6 +207,9 @@ EXPORT_SYMBOL(blk_post_runtime_resume);
+  */
+ void blk_set_runtime_active(struct request_queue *q)
+ {
++	if (!q->dev)
++		return;
++
+ 	spin_lock_irq(&q->queue_lock);
+ 	q->rpm_status = RPM_ACTIVE;
+ 	pm_runtime_mark_last_busy(q->dev);
+-- 
+2.18.0
