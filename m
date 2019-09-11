@@ -1,182 +1,65 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v7 5/7] power: reset: add driver for mt6323 poweroff
-Date: Thu, 12 Sep 2019 02:49:27 +0800
-Message-ID: <1568227767.8481.4.camel@mtkswgap22>
-References: <20190910070446.639-1-frank-w@public-files.de>
-         <20190910070446.639-6-frank-w@public-files.de>
+From: Jens Axboe <axboe@kernel.dk>
+Subject: Re: [PATCH v1 1/2] block: bypass blk_set_runtime_active for
+ uninitialized q->dev
+Date: Wed, 11 Sep 2019 16:13:16 -0600
+Message-ID: <66fddf12-0dc4-1c73-affd-f8404e87342f@kernel.dk>
+References: <1568183562-18241-1-git-send-email-stanley.chu@mediatek.com>
+ <1568183562-18241-2-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190910070446.639-6-frank-w@public-files.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org, devicetree@vger.kernel.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, Alessandro Zummo <a.zummo@towertech.it>, linux-pm@vger.kernel.org, Josef Friedl <josef.friedl@speed.at>, linux-kernel@vger.kernel.org, Tianping Fang <tianping.fang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Sebastian Reichel <sre@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Eddie Huang <eddie.huang@mediatek.com>, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1568183562-18241-2-git-send-email-stanley.chu@mediatek.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Stanley Chu <stanley.chu@mediatek.com>, linux-scsi@vger.kernel.org, linux-block@vger.kernel.org, martin.petersen@oracle.com, jejb@linux.ibm.com, matthias.bgg@gmail.com
+Cc: andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, linux-mediatek@lists.infradead.org, peter.wang@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Frank
-
-On Tue, 2019-09-10 at 09:04 +0200, Frank Wunderlich wrote:
-> From: Josef Friedl <josef.friedl@speed.at>
+On 9/11/19 12:32 AM, Stanley Chu wrote:
+> Some devices may skip blk_pm_runtime_init() and have null pointer
+> in its request_queue->dev. For example, SCSI devices of UFS Well-Known
+> LUNs.
 > 
-> add poweroff driver for mt6323 and make Makefile and Kconfig-Entries
+> Currently the null pointer is checked by the user of
+> blk_set_runtime_active(), i.e., scsi_dev_type_resume(). It is better to
+> check it by blk_set_runtime_active() itself instead of by its users.
 > 
-> Suggested-by: Frank Wunderlich <frank-w@public-files.de>
-> Signed-off-by: Josef Friedl <josef.friedl@speed.at>
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> Acked-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-
-
-Thanks for your help keep the unfinished driver to upstream
-
-Acked-by: Sean Wang <sean.wang@mediatek.com>
-
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 > ---
-> changes since v6: none
-> changes since v5: split out mfd/mt6397/core.h
-> changes since v4: none
-> changes since v3: none
-> changes since v2: none (=v2 part 5)
-> ---
->  drivers/power/reset/Kconfig           | 10 +++
->  drivers/power/reset/Makefile          |  1 +
->  drivers/power/reset/mt6323-poweroff.c | 97 +++++++++++++++++++++++++++
->  3 files changed, 108 insertions(+)
->  create mode 100644 drivers/power/reset/mt6323-poweroff.c
+>   block/blk-pm.c | 3 +++
+>   1 file changed, 3 insertions(+)
 > 
-> diff --git a/drivers/power/reset/Kconfig b/drivers/power/reset/Kconfig
-> index a564237278ff..c721939767eb 100644
-> --- a/drivers/power/reset/Kconfig
-> +++ b/drivers/power/reset/Kconfig
-> @@ -140,6 +140,16 @@ config POWER_RESET_LTC2952
->  	  This driver supports an external powerdown trigger and board power
->  	  down via the LTC2952. Bindings are made in the device tree.
->  
-> +config POWER_RESET_MT6323
-> +       bool "MediaTek MT6323 power-off driver"
-> +       depends on MFD_MT6397
-> +       help
-> +         The power-off driver is responsible for externally shutdown down
-> +         the power of a remote MediaTek SoC MT6323 is connected to through
-> +         controlling a tiny circuit BBPU inside MT6323 RTC.
+> diff --git a/block/blk-pm.c b/block/blk-pm.c
+> index 0a028c189897..56ed94f7a2a3 100644
+> --- a/block/blk-pm.c
+> +++ b/block/blk-pm.c
+> @@ -207,6 +207,9 @@ EXPORT_SYMBOL(blk_post_runtime_resume);
+>    */
+>   void blk_set_runtime_active(struct request_queue *q)
+>   {
+> +	if (!q->dev)
+> +		return;
 > +
-> +         Say Y if you have a board where MT6323 could be found.
-> +
->  config POWER_RESET_QNAP
->  	bool "QNAP power-off driver"
->  	depends on OF_GPIO && PLAT_ORION
-> diff --git a/drivers/power/reset/Makefile b/drivers/power/reset/Makefile
-> index 85da3198e4e0..da37f8b851dc 100644
-> --- a/drivers/power/reset/Makefile
-> +++ b/drivers/power/reset/Makefile
-> @@ -11,6 +11,7 @@ obj-$(CONFIG_POWER_RESET_GPIO) += gpio-poweroff.o
->  obj-$(CONFIG_POWER_RESET_GPIO_RESTART) += gpio-restart.o
->  obj-$(CONFIG_POWER_RESET_HISI) += hisi-reboot.o
->  obj-$(CONFIG_POWER_RESET_MSM) += msm-poweroff.o
-> +obj-$(CONFIG_POWER_RESET_MT6323) += mt6323-poweroff.o
->  obj-$(CONFIG_POWER_RESET_QCOM_PON) += qcom-pon.o
->  obj-$(CONFIG_POWER_RESET_OCELOT_RESET) += ocelot-reset.o
->  obj-$(CONFIG_POWER_RESET_PIIX4_POWEROFF) += piix4-poweroff.o
-> diff --git a/drivers/power/reset/mt6323-poweroff.c b/drivers/power/reset/mt6323-poweroff.c
-> new file mode 100644
-> index 000000000000..1caf43d9e46d
-> --- /dev/null
-> +++ b/drivers/power/reset/mt6323-poweroff.c
-> @@ -0,0 +1,97 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Power off through MediaTek PMIC
-> + *
-> + * Copyright (C) 2018 MediaTek Inc.
-> + *
-> + * Author: Sean Wang <sean.wang@mediatek.com>
-> + *
-> + */
-> +
-> +#include <linux/err.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/mfd/mt6397/core.h>
-> +#include <linux/mfd/mt6397/rtc.h>
-> +
-> +struct mt6323_pwrc {
-> +	struct device *dev;
-> +	struct regmap *regmap;
-> +	u32 base;
-> +};
-> +
-> +static struct mt6323_pwrc *mt_pwrc;
-> +
-> +static void mt6323_do_pwroff(void)
-> +{
-> +	struct mt6323_pwrc *pwrc = mt_pwrc;
-> +	unsigned int val;
-> +	int ret;
-> +
-> +	regmap_write(pwrc->regmap, pwrc->base + RTC_BBPU, RTC_BBPU_KEY);
-> +	regmap_write(pwrc->regmap, pwrc->base + RTC_WRTGR, 1);
-> +
-> +	ret = regmap_read_poll_timeout(pwrc->regmap,
-> +					pwrc->base + RTC_BBPU, val,
-> +					!(val & RTC_BBPU_CBUSY),
-> +					MTK_RTC_POLL_DELAY_US,
-> +					MTK_RTC_POLL_TIMEOUT);
-> +	if (ret)
-> +		dev_err(pwrc->dev, "failed to write BBPU: %d\n", ret);
-> +
-> +	/* Wait some time until system down, otherwise, notice with a warn */
-> +	mdelay(1000);
-> +
-> +	WARN_ONCE(1, "Unable to power off system\n");
-> +}
-> +
-> +static int mt6323_pwrc_probe(struct platform_device *pdev)
-> +{
-> +	struct mt6397_chip *mt6397_chip = dev_get_drvdata(pdev->dev.parent);
-> +	struct mt6323_pwrc *pwrc;
-> +	struct resource *res;
-> +
-> +	pwrc = devm_kzalloc(&pdev->dev, sizeof(*pwrc), GFP_KERNEL);
-> +	if (!pwrc)
-> +		return -ENOMEM;
-> +
-> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +	pwrc->base = res->start;
-> +	pwrc->regmap = mt6397_chip->regmap;
-> +	pwrc->dev = &pdev->dev;
-> +	mt_pwrc = pwrc;
-> +
-> +	pm_power_off = &mt6323_do_pwroff;
-> +
-> +	return 0;
-> +}
-> +
-> +static int mt6323_pwrc_remove(struct platform_device *pdev)
-> +{
-> +	if (pm_power_off == &mt6323_do_pwroff)
-> +		pm_power_off = NULL;
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct of_device_id mt6323_pwrc_dt_match[] = {
-> +	{ .compatible = "mediatek,mt6323-pwrc" },
-> +	{},
-> +};
-> +MODULE_DEVICE_TABLE(of, mt6323_pwrc_dt_match);
-> +
-> +static struct platform_driver mt6323_pwrc_driver = {
-> +	.probe          = mt6323_pwrc_probe,
-> +	.remove         = mt6323_pwrc_remove,
-> +	.driver         = {
-> +		.name   = "mt6323-pwrc",
-> +		.of_match_table = mt6323_pwrc_dt_match,
-> +	},
-> +};
-> +
-> +module_platform_driver(mt6323_pwrc_driver);
-> +
-> +MODULE_DESCRIPTION("Poweroff driver for MT6323 PMIC");
-> +MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
-> +MODULE_LICENSE("GPL v2");
+>   	spin_lock_irq(&q->queue_lock);
+>   	q->rpm_status = RPM_ACTIVE;
+>   	pm_runtime_mark_last_busy(q->dev);
+
+I'd prefer just doing:
+
+	if (q->dev) {
+		...
+	}
+
+instead. Other than that little complaint, looks good to me.
+
+-- 
+Jens Axboe
