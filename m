@@ -1,14 +1,11 @@
 From: Stanley Chu <stanley.chu@mediatek.com>
-Subject: [PATCH v1 1/2] block: bypass blk_set_runtime_active for uninitialized
- q->dev
-Date: Wed, 11 Sep 2019 14:32:41 +0800
-Message-ID: <1568183562-18241-2-git-send-email-stanley.chu@mediatek.com>
-References: <1568183562-18241-1-git-send-email-stanley.chu@mediatek.com>
+Subject: [PATCH v1] fixup null q->dev checking in both block and scsi layer
+Date: Wed, 11 Sep 2019 14:32:40 +0800
+Message-ID: <1568183562-18241-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1568183562-18241-1-git-send-email-stanley.chu@mediatek.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -30,24 +27,13 @@ Currently the null pointer is checked by the user of
 blk_set_runtime_active(), i.e., scsi_dev_type_resume(). It is better to
 check it by blk_set_runtime_active() itself instead of by its users.
 
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
----
- block/blk-pm.c | 3 +++
- 1 file changed, 3 insertions(+)
+Stanley Chu (2):
+  block: bypass blk_set_runtime_active for uninitialized q->dev
+  scsi: core: remove dummy q->dev check
 
-diff --git a/block/blk-pm.c b/block/blk-pm.c
-index 0a028c189897..56ed94f7a2a3 100644
---- a/block/blk-pm.c
-+++ b/block/blk-pm.c
-@@ -207,6 +207,9 @@ EXPORT_SYMBOL(blk_post_runtime_resume);
-  */
- void blk_set_runtime_active(struct request_queue *q)
- {
-+	if (!q->dev)
-+		return;
-+
- 	spin_lock_irq(&q->queue_lock);
- 	q->rpm_status = RPM_ACTIVE;
- 	pm_runtime_mark_last_busy(q->dev);
+ block/blk-pm.c         | 3 +++
+ drivers/scsi/scsi_pm.c | 3 +--
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
 -- 
 2.18.0
