@@ -1,127 +1,72 @@
-From: Qian Cai <cai@lca.pw>
-Subject: Re: [PATCH v3] mm/kasan: dump alloc and free stack for page allocator
-Date: Wed, 11 Sep 2019 11:19:19 -0400
-Message-ID: <5E358F4B-552C-4542-9655-E01C7B754F14@lca.pw>
-References: <20190911083921.4158-1-walter-zh.wu@mediatek.com>
-Mime-Version: 1.0 (Mac OS X Mail 12.4 \(3445.104.11\))
-Content-Type: text/plain;
-        charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190911083921.4158-1-walter-zh.wu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Walter Wu <walter-zh.wu@mediatek.com>
-Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Andrey Konovalov <andreyknvl@google.com>, Vlastimil Babka <vbabka@suse.cz>, Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org, kasan-dev@googlegroups.com, linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+From: John Stultz <john.stultz@linaro.org>
+Subject: Re: [PATCH 0/7] add support for clocksource/clockevent DT selection
+Date: Wed, 11 Sep 2019 09:06:01 -0700
+Message-ID: <CALAqxLXRVc-K5q=me1=5tA0XYT7ncrArSoD+hq=JOGWVF9-7SQ@mail.gmail.com>
+References: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
+ <CALAqxLWLStTqGx5DAvUKOYupdgK-doOxRF5Z_Us=L5vnFaa=7w@mail.gmail.com>
+ <cb451591-88ad-f1b3-b654-cea86ae11cac@microchip.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org>
+In-Reply-To: <cb451591-88ad-f1b3-b654-cea86ae11cac@microchip.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-snps-arc>,
+ <mailto:linux-snps-arc-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-snps-arc/>
+List-Post: <mailto:linux-snps-arc@lists.infradead.org>
+List-Help: <mailto:linux-snps-arc-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-snps-arc>,
+ <mailto:linux-snps-arc-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-snps-arc" <linux-snps-arc-bounces@lists.infradead.org>
+Errors-To: linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org
+To: Claudiu Beznea <Claudiu.Beznea@microchip.com>
+Cc: tmaimon77@gmail.com, Linus Walleij <linus.walleij@linaro.org>, nsekhar@ti.com, guoren@kernel.org, linux-stm32@st-md-mailman.stormreply.com, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, linux-samsung-soc@vger.kernel.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Kevin Hilman <khilman@baylibre.com>, Ludovic.Desroches@microchip.com, linux-imx@nxp.com, =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, uclinux-h8-devel@lists.sourceforge.jp, Marc Zyngier <marc.zyngier@arm.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-unisoc@lists.infradead.org, =?UTF-8?Q?Krzysztof_Ha=C5=82asa?= <khalasa@piap.pl>, Thomas Gleixner <tglx@linutronix.de>, sbranden@broadcom.com, lkml <linux-kernel@vger.kernel.org>, Ralf Baechle <ralf@linux-mips.org>, Paul Burton <paul.burton@mips.com>, kernel@pengutronix.de, Mark Rutland <mark.rutland@arm.co>
 List-Id: linux-mediatek@lists.infradead.org
 
+On Tue, Sep 10, 2019 at 11:52 PM <Claudiu.Beznea@microchip.com> wrote:
+> On 10.09.2019 19:05, John Stultz wrote:
+> > External E-Mail
+> > On Tue, Sep 10, 2019 at 6:47 AM Claudiu Beznea
+> > <claudiu.beznea@microchip.com> wrote:
+> >>
+> >> This series adds support to permit the selection of clocksource/clockevent
+> >> via DT.
+> >
+> > Sorry about this, but could you try to include more of a rational for
+> > *why* this would be useful in your cover-letter/commit messages?
+> >
+>
+> Sorry for not being to clear in the cover letter.
+>
+> The case I am trying to solve here is as follows:
+> The timer hardware for which I publish a driver at [1] cannot work at the
+> same time as a clocksource and clockevent. On some of our platforms we have
+> more than one such a timer. So we could use one hardware resource as
+> clocksource and one as clockevent but not one for both.
+> Due to this, I proposed in the driver at [1] to have 1st probed hardware to
+> work as clocksource and the 2nd one to work as clockevent.
+[snip]
+> Due to this Daniel proposed to have an unified mechanism for this scenario,
+> see [2], (something like what I proposed in this series), such that to have
+> a determinism b/w the function that the hardware resources would behave
+> (either clocksource or clockevent or both).
 
+Thanks for the additional explanation! I'd suggest adding something
+like it to the commit logs for next time.
 
-> On Sep 11, 2019, at 4:39 AM, Walter Wu <walter-zh.wu@mediatek.com> =
-wrote:
->=20
-> This patch is KASAN's report adds the alloc/free stack for page =
-allocator
-> in order to help programmer to see memory corruption caused by the =
-page.
->=20
-> By default, KASAN doesn't record alloc or free stack for page =
-allocator.
-> It is difficult to fix up the page use-after-free or double-free =
-issue.
->=20
-> We add the following changing:
-> 1) KASAN enable PAGE_OWNER by default to get the alloc stack of the =
-page.
-> 2) Add new feature option to get the free stack of the page.
->=20
-> The new feature KASAN_DUMP_PAGE depends on DEBUG_PAGEALLOC, it will =
-help
-> to record free stack of the page, it is very helpful for solving the =
-page
-> use-after-free or double-free issue.
->=20
-> When KASAN_DUMP_PAGE is enabled then KASAN's report will show the last
-> alloc and free stack of the page, it should be:
->=20
-> BUG: KASAN: use-after-free in kmalloc_pagealloc_uaf+0x70/0x80
-> Write of size 1 at addr ffffffc0d60e4000 by task cat/115
-> ...
-> prep_new_page+0x1c8/0x218
-> get_page_from_freelist+0x1ba0/0x28d0
-> __alloc_pages_nodemask+0x1d4/0x1978
-> kmalloc_order+0x28/0x58
-> kmalloc_order_trace+0x28/0xe0
-> kmalloc_pagealloc_uaf+0x2c/0x80
-> page last free stack trace:
-> __free_pages_ok+0x116c/0x1630
-> __free_pages+0x50/0x78
-> kfree+0x1c4/0x250
-> kmalloc_pagealloc_uaf+0x38/0x80
->=20
-> Changes since v1:
-> - slim page_owner and move it into kasan
-> - enable the feature by default
->=20
-> Changes since v2:
-> - enable PAGE_OWNER by default
-> - use DEBUG_PAGEALLOC to get page information
->=20
-> cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
-> cc: Vlastimil Babka <vbabka@suse.cz>
-> cc: Andrey Konovalov <andreyknvl@google.com>
-> Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-> ---
-> lib/Kconfig.kasan | 15 +++++++++++++++
-> 1 file changed, 15 insertions(+)
->=20
-> diff --git a/lib/Kconfig.kasan b/lib/Kconfig.kasan
-> index 4fafba1a923b..4d59458c0c5a 100644
-> --- a/lib/Kconfig.kasan
-> +++ b/lib/Kconfig.kasan
-> @@ -41,6 +41,7 @@ config KASAN_GENERIC
-> 	select SLUB_DEBUG if SLUB
-> 	select CONSTRUCTORS
-> 	select STACKDEPOT
-> +	select PAGER_OWNER
-> 	help
-> 	  Enables generic KASAN mode.
-> 	  Supported in both GCC and Clang. With GCC it requires version =
-4.9.2
-> @@ -63,6 +64,7 @@ config KASAN_SW_TAGS
-> 	select SLUB_DEBUG if SLUB
-> 	select CONSTRUCTORS
-> 	select STACKDEPOT
-> +	select PAGER_OWNER
-> 	help
-> 	  Enables software tag-based KASAN mode.
-> 	  This mode requires Top Byte Ignore support by the CPU and =
-therefore
-> @@ -135,6 +137,19 @@ config KASAN_S390_4_LEVEL_PAGING
-> 	  to 3TB of RAM with KASan enabled). This options allows to =
-force
-> 	  4-level paging instead.
->=20
-> +config KASAN_DUMP_PAGE
-> +	bool "Dump the last allocation and freeing stack of the page"
-> +	depends on KASAN
-> +	select DEBUG_PAGEALLOC
-> +	help
-> +	  By default, KASAN enable PAGE_OWNER only to record alloc stack
-> +	  for page allocator. It is difficult to fix up page =
-use-after-free
-> +	  or double-free issue.
-> +	  This feature depends on DEBUG_PAGEALLOC, it will extra record
-> +	  free stack of page. It is very helpful for solving the page
-> +	  use-after-free or double-free issue.
-> +	  This option will have a small memory overhead.
-> +
-> config TEST_KASAN
-> 	tristate "Module for testing KASAN for bug detection"
-> 	depends on m && KASAN
-> =E2=80=94=20
+Personally, I tend to think of DT bindings as a big harry ABI, and as
+such avoid it as much as possible. :)
 
-The new config looks redundant and confusing. It looks to me more of a =
-document update
-in Documentation/dev-tools/kasan.txt to educate developers to select =
-PAGE_OWNER and
-DEBUG_PAGEALLOC if needed.
+I'd probably favor driver tweaks to ensure the hardware only gets
+registered once for each, using a minimal DT compatible or flag on the
+hardware to better describe the underlying hardware quirk that keeps
+it from being usable for both clocksource and clockevent usage.
+
+That way the DT sticks to accurately describing hardware, instead of
+system/software-abstraction configuration details that just apply for
+Linux.
+
+But, again, I'm not really a DT person, so I'll defer to Rob and Daniel.
+
+thanks
+-john
