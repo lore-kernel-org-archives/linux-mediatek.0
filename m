@@ -1,82 +1,102 @@
-From: Neil Armstrong <narmstrong@baylibre.com>
-Subject: Re: [PATCH 4/7] dt-bindings: chosen: Add clocksource and clockevent
- selection
-Date: Wed, 11 Sep 2019 09:34:27 +0200
-Message-ID: <81da473f-54d7-2a00-61ec-9351cdfcaaf3@baylibre.com>
-References: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
- <1568123236-767-5-git-send-email-claudiu.beznea@microchip.com>
+From: Walter Wu <walter-zh.wu@mediatek.com>
+Subject: [PATCH v3] mm/kasan: dump alloc and free stack for page allocator
+Date: Wed, 11 Sep 2019 16:39:21 +0800
+Message-ID: <20190911083921.4158-1-walter-zh.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1568123236-767-5-git-send-email-claudiu.beznea@microchip.com>
-Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Claudiu Beznea <claudiu.beznea@microchip.com>, daniel.lezcano@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, nsekhar@ti.com, bgolaszewski@baylibre.com, monstr@monstr.eu, john@phrozen.org, ralf@linux-mips.org, paul.burton@mips.com, jhogan@kernel.org, lftan@altera.com, tglx@linutronix.de, vgupta@synopsys.com, marc.zyngier@arm.com, patrice.chotard@st.com, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, eric@anholt.net, wahrenst@gmx.net, f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, bcm-kernel-feedback-list@broadcom.com, linus.walleij@linaro.org, shc_work@mail.ru, kgene@kernel.org, krzk@kernel.org, ysato@users.sourceforge.jp, liviu.dudau@arm.com, sudeep.holla@arm.com, lorenzo.pieralisi@arm.com, shawnguo@kernel.org, s.hauer@pen
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, nios2-dev@lists.rocketboards.org, linux-snps-arc@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-rpi-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, uclinux-h8-devel@lists.sourceforge.jp, linux-amlogic@lists.infradead.org, openbmc@lists.ozlabs.org, linux-oxnas@groups.io, linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org, linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Andrey Konovalov <andreyknvl@google.com>, Qian Cai <cai@lca.pw>, Vlastimil Babka <vbabka@suse.cz>, Arnd Bergmann <arnd@arndb.de>
+Cc: linux-kernel@vger.kernel.org, kasan-dev@googlegroups.com, linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Walter Wu <walter-zh.wu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+This patch is KASAN's report adds the alloc/free stack for page allocator
+in order to help programmer to see memory corruption caused by the page.
 
-On 10/09/2019 15:47, Claudiu Beznea wrote:
-> From: Alexandre Belloni <alexandre.belloni@bootlin.com>
-> 
-> Some timer drivers may behave either as clocksource or clockevent
-> or both. Until now, in case of platforms with multiple hardware
-> resources of the same type, the drivers were chosing the first
-> registered hardware resource as clocksource/clockevent and the
-> next one as clockevent/clocksource. Other were using different
-> compatibles (one for each functionality, although its about the
-> same hardware). Add DT bindings to be able to choose the
-> functionality of a timer.
-> 
-> Signed-off-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
-> Signed-off-by: Claudiu Beznea <claudiu.beznea@microchip.com>
-> ---
->  Documentation/devicetree/bindings/chosen.txt | 20 ++++++++++++++++++++
->  1 file changed, 20 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/chosen.txt b/Documentation/devicetree/bindings/chosen.txt
-> index 45e79172a646..aad3034cdbdf 100644
-> --- a/Documentation/devicetree/bindings/chosen.txt
-> +++ b/Documentation/devicetree/bindings/chosen.txt
-> @@ -135,3 +135,23 @@ e.g.
->  		linux,initrd-end = <0x82800000>;
->  	};
->  };
-> +
-> +linux,clocksource and linux,clockevent
-> +--------------------------------------
-> +
-> +Those nodes have a timer property. This property is a phandle to the timer to be
-> +chosen as the clocksource or clockevent. This is only useful when the platform
-> +has multiple identical timers and it is not possible to let linux make the
-> +correct choice.
-> +
-> +/ {
-> +	chosen {
-> +		linux,clocksource {
-> +			timer = <&timer0>;
-> +		};
-> +
-> +		linux,clockevent {
-> +			timer = <&timer1>;
-> +		};
-> +	};
-> +};
-> 
+By default, KASAN doesn't record alloc or free stack for page allocator.
+It is difficult to fix up the page use-after-free or double-free issue.
 
-Why not in aliases ?
+We add the following changing:
+1) KASAN enable PAGE_OWNER by default to get the alloc stack of the page.
+2) Add new feature option to get the free stack of the page.
 
-aliases {
-    clocksource0 = &timer0;
-    clockevent0 = &timer1;
-};
+The new feature KASAN_DUMP_PAGE depends on DEBUG_PAGEALLOC, it will help
+to record free stack of the page, it is very helpful for solving the page
+use-after-free or double-free issue.
 
-since we can have multiple of each, we should not limit ourselves to 1 clkevent
-and 1 clksource.
+When KASAN_DUMP_PAGE is enabled then KASAN's report will show the last
+alloc and free stack of the page, it should be:
 
-In the aliases case, each driver would expose both capabilities, and the core would select
-what to enable.
+BUG: KASAN: use-after-free in kmalloc_pagealloc_uaf+0x70/0x80
+Write of size 1 at addr ffffffc0d60e4000 by task cat/115
+...
+ prep_new_page+0x1c8/0x218
+ get_page_from_freelist+0x1ba0/0x28d0
+ __alloc_pages_nodemask+0x1d4/0x1978
+ kmalloc_order+0x28/0x58
+ kmalloc_order_trace+0x28/0xe0
+ kmalloc_pagealloc_uaf+0x2c/0x80
+page last free stack trace:
+ __free_pages_ok+0x116c/0x1630
+ __free_pages+0x50/0x78
+ kfree+0x1c4/0x250
+ kmalloc_pagealloc_uaf+0x38/0x80
 
-Neil
+Changes since v1:
+- slim page_owner and move it into kasan
+- enable the feature by default
+
+Changes since v2:
+- enable PAGE_OWNER by default
+- use DEBUG_PAGEALLOC to get page information
+
+cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
+cc: Vlastimil Babka <vbabka@suse.cz>
+cc: Andrey Konovalov <andreyknvl@google.com>
+Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+---
+ lib/Kconfig.kasan | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/lib/Kconfig.kasan b/lib/Kconfig.kasan
+index 4fafba1a923b..4d59458c0c5a 100644
+--- a/lib/Kconfig.kasan
++++ b/lib/Kconfig.kasan
+@@ -41,6 +41,7 @@ config KASAN_GENERIC
+ 	select SLUB_DEBUG if SLUB
+ 	select CONSTRUCTORS
+ 	select STACKDEPOT
++	select PAGER_OWNER
+ 	help
+ 	  Enables generic KASAN mode.
+ 	  Supported in both GCC and Clang. With GCC it requires version 4.9.2
+@@ -63,6 +64,7 @@ config KASAN_SW_TAGS
+ 	select SLUB_DEBUG if SLUB
+ 	select CONSTRUCTORS
+ 	select STACKDEPOT
++	select PAGER_OWNER
+ 	help
+ 	  Enables software tag-based KASAN mode.
+ 	  This mode requires Top Byte Ignore support by the CPU and therefore
+@@ -135,6 +137,19 @@ config KASAN_S390_4_LEVEL_PAGING
+ 	  to 3TB of RAM with KASan enabled). This options allows to force
+ 	  4-level paging instead.
+ 
++config KASAN_DUMP_PAGE
++	bool "Dump the last allocation and freeing stack of the page"
++	depends on KASAN
++	select DEBUG_PAGEALLOC
++	help
++	  By default, KASAN enable PAGE_OWNER only to record alloc stack
++	  for page allocator. It is difficult to fix up page use-after-free
++	  or double-free issue.
++	  This feature depends on DEBUG_PAGEALLOC, it will extra record
++	  free stack of page. It is very helpful for solving the page
++	  use-after-free or double-free issue.
++	  This option will have a small memory overhead.
++
+ config TEST_KASAN
+ 	tristate "Module for testing KASAN for bug detection"
+ 	depends on m && KASAN
+-- 
+2.18.0
