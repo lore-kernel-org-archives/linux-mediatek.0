@@ -1,15 +1,15 @@
 From: Stanley Chu <stanley.chu@mediatek.com>
-Subject: RE: [PATCH v1 2/3] scsi: ufs: override auto suspend tunables for ufs
-Date: Thu, 12 Sep 2019 13:37:31 +0800
-Message-ID: <1568266651.16730.13.camel@mtkswgap22>
+Subject: RE: [PATCH v1 3/3] scsi: ufs-mediatek: enable auto suspend capability
+Date: Thu, 12 Sep 2019 13:39:26 +0800
+Message-ID: <1568266766.16730.15.camel@mtkswgap22>
 References: <1568194890-24439-1-git-send-email-stanley.chu@mediatek.com>
- <1568194890-24439-3-git-send-email-stanley.chu@mediatek.com>
- <MN2PR04MB6991D63EEF50367BE2CB062CFCB10@MN2PR04MB6991.namprd04.prod.outlook.com>
+ <1568194890-24439-4-git-send-email-stanley.chu@mediatek.com>
+ <MN2PR04MB6991A6F223D9C711A3D00B21FCB10@MN2PR04MB6991.namprd04.prod.outlook.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <MN2PR04MB6991D63EEF50367BE2CB062CFCB10@MN2PR04MB6991.namprd04.prod.outlook.com>
+In-Reply-To: <MN2PR04MB6991A6F223D9C711A3D00B21FCB10@MN2PR04MB6991.namprd04.prod.outlook.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -25,22 +25,37 @@ List-Id: linux-mediatek@lists.infradead.org
 
 Hi Avri,
 
-> > diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c index
-> > 30b752c61b97..d253a018a73b 100644
-> > --- a/drivers/scsi/ufs/ufshcd.c
-> > +++ b/drivers/scsi/ufs/ufshcd.c
-> > @@ -88,6 +88,9 @@
-> >  /* Interrupt aggregation default timeout, unit: 40us */
-> >  #define INT_AGGR_DEF_TO        0x02
+On Wed, 2019-09-11 at 10:58 +0000, Avri Altman wrote:
 > > 
-> > +/* default delay of autosuspend: 2000 ms */ #define
-> Typo?
+> > Enable auto suspend capability in MediaTek UFS driver.
+> > 
+> > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+> Reviewed-by: Avri Altman <avri.altman@wdc.com>
 > 
+> > ---
+> >  drivers/scsi/ufs/ufs-mediatek.c | 7 +++++++
+> >  1 file changed, 7 insertions(+)
+> > 
+> > diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
+> > index 0f6ff33ce52e..b7b177c6194c 100644
+> > --- a/drivers/scsi/ufs/ufs-mediatek.c
+> > +++ b/drivers/scsi/ufs/ufs-mediatek.c
+> > @@ -117,6 +117,11 @@ static int ufs_mtk_setup_clocks(struct ufs_hba
+> > *hba, bool on,
+> >         return ret;
+> >  }
+> > 
+> > +static void ufs_mtk_set_caps(struct ufs_hba *hba) {
+> > +       hba->caps |= UFSHCD_CAP_RPM_AUTOSUSPEND; }
+> Even a one-liner deserve new line for its closing brackets
 
-This is wired because it looks fine in both my local patch and in
-patchwork website: https://patchwork.kernel.org/patch/11140759/
+The wired format is just happening the same as
+[PATCH v1 2/3] scsi: ufs: override auto suspend tunables for ufs
 
-Anyway I will try to fix and check it carefully in v2.
+It looks fine in patchwork website:
+https://patchwork.kernel.org/patch/11140757/
+
+I'll try to fix it in v2.
 
 Thanks,
 Stanley
