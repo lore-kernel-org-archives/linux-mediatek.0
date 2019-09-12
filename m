@@ -1,58 +1,79 @@
-From: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 1/2] ASoC: dt-bingdings: mediatek: mt8183: add a
- property "medaitek, toprgu"
-Date: Fri, 13 Sep 2019 00:52:17 +0800
-Message-ID: <1568307137.22948.5.camel@mtksdaap41>
-References: <1568282096-13821-1-git-send-email-jiaxin.yu@mediatek.com>
- <1568282096-13821-2-git-send-email-jiaxin.yu@mediatek.com>
+From: Andrey Ryabinin <aryabinin@virtuozzo.com>
+Subject: Re: [PATCH v3] mm/kasan: dump alloc and free stack for page allocator
+Date: Thu, 12 Sep 2019 20:05:14 +0300
+Message-ID: <79fede05-735b-8477-c273-f34db93fd72b@virtuozzo.com>
+References: <20190911083921.4158-1-walter-zh.wu@mediatek.com>
+ <5E358F4B-552C-4542-9655-E01C7B754F14@lca.pw>
+ <c4d2518f-4813-c941-6f47-73897f420517@suse.cz>
+ <1568297308.19040.5.camel@mtksdccf07>
+ <613f9f23-c7f0-871f-fe13-930c35ef3105@suse.cz>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1568282096-13821-2-git-send-email-jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jiaxin Yu <jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, tzungbi-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eason.yen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <613f9f23-c7f0-871f-fe13-930c35ef3105@suse.cz>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Vlastimil Babka <vbabka@suse.cz>, Walter Wu <walter-zh.wu@mediatek.com>
+Cc: Qian Cai <cai@lca.pw>, Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Andrey Konovalov <andreyknvl@google.com>, Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org, kasan-dev@googlegroups.com, linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2019-09-12 at 17:54 +0800, Jiaxin Yu wrote:
-> This patch adds a property "mediatek,toprgu" in example so that we could
-> use reset controller(usually we call it toprgu or watchdog) to reset audio
-> domain regs.
-> 
-> Signed-off-by: Jiaxin Yu <jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt b/Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt
-> index 396ba38619f6..45ca182a4ecc 100644
-> --- a/Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt
-> +++ b/Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt
-> @@ -4,6 +4,7 @@ Required properties:
->  - compatible = "mediatek,mt68183-audio";
->  - reg: register location and size
->  - interrupts: should contain AFE interrupt
-> +- mediatek,toprgu: A phandle to the TOPRGU which for reset controller unit
->  - power-domains: should define the power domain
->  - clocks: Must contain an entry for each entry in clock-names
->  - clock-names: should have these clock names:
-> @@ -20,6 +21,7 @@ Example:
->  		compatible = "mediatek,mt8183-audio";
->  		reg = <0 0x11220000 0 0x1000>;
->  		interrupts = <GIC_SPI 161 IRQ_TYPE_LEVEL_LOW>;
-> +		mediatek,toprgu = <&watchdog>;
 
-As mentioned in the other patch, since this is reset controller,
-you should use Documentation/devicetree/bindings/reset/reset.txt
-instead.
 
-Joe.C
+On 9/12/19 5:31 PM, Vlastimil Babka wrote:
+> On 9/12/19 4:08 PM, Walter Wu wrote:
+>>
+>>>   extern void __reset_page_owner(struct page *page, unsigned int order);
+>>> diff --git a/lib/Kconfig.kasan b/lib/Kconfig.kasan
+>>> index 6c9682ce0254..dc560c7562e8 100644
+>>> --- a/lib/Kconfig.kasan
+>>> +++ b/lib/Kconfig.kasan
+>>> @@ -41,6 +41,8 @@ config KASAN_GENERIC
+>>>       select SLUB_DEBUG if SLUB
+>>>       select CONSTRUCTORS
+>>>       select STACKDEPOT
+>>> +    select PAGE_OWNER
+>>> +    select PAGE_OWNER_FREE_STACK
+>>>       help
+>>>         Enables generic KASAN mode.
+>>>         Supported in both GCC and Clang. With GCC it requires version 4.9.2
+>>> @@ -63,6 +65,8 @@ config KASAN_SW_TAGS
+>>>       select SLUB_DEBUG if SLUB
+>>>       select CONSTRUCTORS
+>>>       select STACKDEPOT
+>>> +    select PAGE_OWNER
+>>> +    select PAGE_OWNER_FREE_STACK
+>>>       help
+>>
+>> What is the difference between PAGE_OWNER+PAGE_OWNER_FREE_STACK and
+>> DEBUG_PAGEALLOC?
+> 
+> Same memory usage, but debug_pagealloc means also extra checks and restricting memory access to freed pages to catch UAF.
+> 
+>> If you directly enable PAGE_OWNER+PAGE_OWNER_FREE_STACK
+>> PAGE_OWNER_FREE_STACK,don't you think low-memory device to want to use
+>> KASAN?
+> 
+> OK, so it should be optional? But I think it's enough to distinguish no PAGE_OWNER at all, and PAGE_OWNER+PAGE_OWNER_FREE_STACK together - I don't see much point in PAGE_OWNER only for this kind of debugging.
+> 
+> So how about this? KASAN wouldn't select PAGE_OWNER* but it would be recommended in the help+docs. When PAGE_OWNER and KASAN are selected by user, PAGE_OWNER_FREE_STACK gets also selected, and both will be also runtime enabled without explicit page_owner=on.
+> I mostly want to avoid another boot-time option for enabling PAGE_OWNER_FREE_STACK.
+> Would that be enough flexibility for low-memory devices vs full-fledged debugging?
+
+Originally I thought that with you patch users still can disable page_owner via "page_owner=off" boot param.
+But now I realized that this won't work. I think it should work, we should allow users to disable it.
+
+
+
+Or another alternative option (and actually easier one to implement), leave PAGE_OWNER as is (no "select"s in Kconfigs)
+Make PAGE_OWNER_FREE_STACK like this:
+
++config PAGE_OWNER_FREE_STACK
++	def_bool KASAN || DEBUG_PAGEALLOC
++	depends on PAGE_OWNER
++
+
+So, users that want alloc/free stack will have to enable CONFIG_PAGE_OWNER=y and add page_owner=on to boot cmdline.
+
+
+Basically the difference between these alternative is whether we enable page_owner by default or not. But there is always a possibility to disable it.
