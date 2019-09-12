@@ -1,8 +1,7 @@
 From: Stanley Chu <stanley.chu@mediatek.com>
-Subject: [PATCH v2 1/2] block: bypass blk_set_runtime_active for uninitialized
- q->dev
-Date: Thu, 12 Sep 2019 16:35:27 +0800
-Message-ID: <1568277328-4597-2-git-send-email-stanley.chu@mediatek.com>
+Subject: [PATCH v2 2/2] scsi: core: remove dummy q->dev check
+Date: Thu, 12 Sep 2019 16:35:28 +0800
+Message-ID: <1568277328-4597-3-git-send-email-stanley.chu@mediatek.com>
 References: <1568277328-4597-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,40 +21,27 @@ To: linux-scsi@vger.kernel.org, linux-block@vger.kernel.org, martin.petersen@ora
 Cc: andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, linux-mediatek@lists.infradead.org, peter.wang@mediatek.com, Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Some devices may skip blk_pm_runtime_init() and have null pointer
-in its request_queue->dev. For example, SCSI devices of UFS Well-Known
-LUNs.
-
-Currently the null pointer is checked by the user of
-blk_set_runtime_active(), i.e., scsi_dev_type_resume(). It is better to
-check it by blk_set_runtime_active() itself instead of by its users.
+Currently blk_set_runtime_active() is checking if q->dev is null by
+itself, thus remove the same checking in its user: scsi_dev_type_resume().
 
 Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 ---
- block/blk-pm.c | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
+ drivers/scsi/scsi_pm.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/block/blk-pm.c b/block/blk-pm.c
-index 0a028c189897..1adc1cd748b4 100644
---- a/block/blk-pm.c
-+++ b/block/blk-pm.c
-@@ -207,10 +207,12 @@ EXPORT_SYMBOL(blk_post_runtime_resume);
-  */
- void blk_set_runtime_active(struct request_queue *q)
- {
--	spin_lock_irq(&q->queue_lock);
--	q->rpm_status = RPM_ACTIVE;
--	pm_runtime_mark_last_busy(q->dev);
--	pm_request_autosuspend(q->dev);
--	spin_unlock_irq(&q->queue_lock);
-+	if (q->dev) {
-+		spin_lock_irq(&q->queue_lock);
-+		q->rpm_status = RPM_ACTIVE;
-+		pm_runtime_mark_last_busy(q->dev);
-+		pm_request_autosuspend(q->dev);
-+		spin_unlock_irq(&q->queue_lock);
-+	}
- }
- EXPORT_SYMBOL(blk_set_runtime_active);
+diff --git a/drivers/scsi/scsi_pm.c b/drivers/scsi/scsi_pm.c
+index 74ded5f3c236..3717eea37ecb 100644
+--- a/drivers/scsi/scsi_pm.c
++++ b/drivers/scsi/scsi_pm.c
+@@ -94,8 +94,7 @@ static int scsi_dev_type_resume(struct device *dev,
+ 		if (!err && scsi_is_sdev_device(dev)) {
+ 			struct scsi_device *sdev = to_scsi_device(dev);
+ 
+-			if (sdev->request_queue->dev)
+-				blk_set_runtime_active(sdev->request_queue);
++			blk_set_runtime_active(sdev->request_queue);
+ 		}
+ 	}
+ 
 -- 
 2.18.0
