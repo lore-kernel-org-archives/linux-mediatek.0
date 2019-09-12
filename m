@@ -1,97 +1,79 @@
-From: Sam Shih <sam.shih@mediatek.com>
-Subject: Re: [PATCH v5 07/13] dt-bindings: pwm: add a property "num-pwms"
-Date: Thu, 12 Sep 2019 09:33:33 +0800
-Message-ID: <1568252013.4102.1.camel@mtksdccf07>
-References: <1566457123-20791-1-git-send-email-sam.shih@mediatek.com>
-         <1566457123-20791-8-git-send-email-sam.shih@mediatek.com>
-         <20190827183924.GA24178@bogus>
-         <20190902160445.fitoa65t4ndzjq6v@pengutronix.de>
+From: allen <allen.chen@ite.com.tw>
+Subject: [PATCH v3 1/2] dt-bindings: Add binding for IT6505.
+Date: Thu, 12 Sep 2019 11:32:28 +0800
+Message-ID: <1568259199-5827-2-git-send-email-allen.chen@ite.com.tw>
+References: <1568259199-5827-1-git-send-email-allen.chen@ite.com.tw>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="ISO-8859-15"
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190902160445.fitoa65t4ndzjq6v@pengutronix.de>
+In-Reply-To: <1568259199-5827-1-git-send-email-allen.chen@ite.com.tw>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>, Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, John Crispin <john@phrozen.org>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: Allen Chen <allen.chen@ite.com.tw>, Pi-Hsun Shih <pihsun@chromium.org>, Jau-Chih Tseng <Jau-Chih.Tseng@ite.com.tw>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Maxime Ripard <mripard@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Shawn Guo <shawnguo@kernel.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Icenowy Zheng <icenowy@aosc.io>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, "open list:DRM DRIVERS" <dri-devel@lists.freedesktop.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, moderated list:ARM/Mediatek SoC
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2019-09-02 at 18:04 +0200, Uwe Kleine-König wrote:
-> On Tue, Aug 27, 2019 at 01:39:24PM -0500, Rob Herring wrote:
-> > On Thu, Aug 22, 2019 at 02:58:37PM +0800, Sam Shih wrote:
-> > > From: Ryder Lee <ryder.lee@mediatek.com>
-> > 
-> > The subject should indicate this is for Mediatek.
-> > 
-> > > 
-> > > This adds a property "num-pwms" in example so that we could
-> > > specify the number of PWM channels via device tree.
-> > > 
-> > > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> > > Signed-off-by: Sam Shih <sam.shih@mediatek.com>
-> > > Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> > > Acked-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
-> > > ---
-> > > Changes since v5:
-> > > - Add an Acked-by tag
-> > > - This file is original v4 patch 5/10
-> > > (https://patchwork.kernel.org/patch/11102577/)
-> > > 
-> > > Change-Id: I429048afeffa96f3f14533910efe242f88776043
-> > > ---
-> > >  Documentation/devicetree/bindings/pwm/pwm-mediatek.txt | 7 ++++---
-> > >  1 file changed, 4 insertions(+), 3 deletions(-)
-> > > 
-> > > diff --git a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> > > index 991728cb46cb..ea95b490a913 100644
-> > > --- a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> > > +++ b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> > > @@ -14,12 +14,12 @@ Required properties:
-> > >                  has no clocks
-> > >     - "top": the top clock generator
-> > >     - "main": clock used by the PWM core
-> > > -   - "pwm1-8": the eight per PWM clocks for mt2712
-> > > -   - "pwm1-6": the six per PWM clocks for mt7622
-> > > -   - "pwm1-5": the five per PWM clocks for mt7623
-> > > +   - "pwm1-N": the PWM clocks for each channel
-> > > +   where N starting from 1 to the maximum number of PWM channels
-> > 
-> > Once converted to schema, you are going to be back to listing them out.
-> > 
-> > >   - pinctrl-names: Must contain a "default" entry.
-> > >   - pinctrl-0: One property must exist for each entry in pinctrl-names.
-> > >     See pinctrl/pinctrl-bindings.txt for details of the property values.
-> > > + - num-pwms: the number of PWM channels.
-> > 
-> > You can't add new required properties without breaking compatibility. 
-> > 
-> > You already have to imply the number of channels from the compatible (or 
-> > number of clocks) and you have to keep doing so to maintain 
-> > compatibility, so why not just keep doing that for new chips?
-> 
-> This was a suggestion by me. The driver still handles compatibility
-> (i.e. falls back to the number of PWMs that was implied by the
-> compatible before). Given that there are various drivers that all solve
-> the same problem (i.e. different variants with different number of PWMs)
-> I thought it would be a good idea to introduce a property in the device
-> tree that specifies this number.
-> 
-> Only for newly introduced compatibles the num-pwms property is really
-> required. Differentiating the ones that need it and the ones that don't
-> seems over-engineered to me.
-> 
-> (BTW, using the number of clks doesn't really work because there are
-> also some variants without clocks. It is still under discussion if in
-> this case dummy-clocks should be provided IIRC.)
-> 
-> Best regards
-> Uwe
-> 
+From: Allen Chen <allen.chen@ite.com.tw>
 
+Add a DT binding documentation for IT6505.
 
-Any conclusions ? 
+Signed-off-by: Allen Chen <allen.chen@ite.com.tw>
 
-just a friendly reminder :)
+Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
 
+---
+cros-ec does not have an associated driver that uses the standard Linux USB-C driver class.
+extcon is used to model the Type-C connector.(crbug.com/982932)
+---
+ .../bindings/display/bridge/ite,it6505.txt         | 28 ++++++++++++++++++++++
+ .../devicetree/bindings/vendor-prefixes.yaml       |  2 ++
+ 2 files changed, 30 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/bridge/ite,it6505.txt
 
-regards Sam
+diff --git a/Documentation/devicetree/bindings/display/bridge/ite,it6505.txt b/Documentation/devicetree/bindings/display/bridge/ite,it6505.txt
+new file mode 100644
+index 0000000..72da0c4
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/bridge/ite,it6505.txt
+@@ -0,0 +1,28 @@
++iTE it6505 DP bridge bindings
++
++Required properties:
++        - compatible: "ite,it6505"
++        - reg: i2c address of the bridge
++        - ovdd-supply: I/O voltage
++        - pwr18-supply: Core voltage
++        - interrupts: interrupt specifier of INT pin
++        - reset-gpios: gpio specifier of RESET pin
++	- hpd-gpios:
++		Hotplug detect GPIO.
++		Indicates which GPIO should be used for hotplug detection
++	- port@[x]: SoC specific port nodes with endpoint definitions as defined
++		in Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
++
++Example:
++	dp-bridge@5c {
++                compatible = "ite,it6505";
++                interrupts = <152 IRQ_TYPE_EDGE_RISING 152 0>;
++                reg = <0x5c>;
++                pinctrl-names = "default";
++                pinctrl-0 = <&it6505_pins>;
++                ovdd-supply = <&mt6358_vsim1_reg>;
++                pwr18-supply = <&it6505_pp18_reg>;
++                reset-gpios = <&pio 179 1>;
++                hpd-gpios = <&pio 9 0>;
++                extcon = <&usbc_extcon>;
++        };
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+index 967e78c..fb3b643 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
++++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+@@ -461,6 +461,8 @@ patternProperties:
+     description: Intersil
+   "^issi,.*":
+     description: Integrated Silicon Solutions Inc.
++  "^ite,.*":
++    description: ITE Tech. Inc.
+   "^itead,.*":
+     description: ITEAD Intelligent Systems Co.Ltd
+   "^iwave,.*":
+-- 
+1.9.1
