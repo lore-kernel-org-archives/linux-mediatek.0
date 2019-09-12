@@ -1,220 +1,46 @@
-From: Qian Cai <cai@lca.pw>
-Subject: Re: [PATCH v3] mm/kasan: dump alloc and free stack for page
- allocator
-Date: Thu, 12 Sep 2019 10:10:15 -0400
-Message-ID: <1568297415.5576.143.camel@lca.pw>
-References: <20190911083921.4158-1-walter-zh.wu@mediatek.com>
-         <5E358F4B-552C-4542-9655-E01C7B754F14@lca.pw>
-         <c4d2518f-4813-c941-6f47-73897f420517@suse.cz>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH 4/7] dt-bindings: chosen: Add clocksource and clockevent
+ selection
+Date: Thu, 12 Sep 2019 15:18:49 +0100
+Message-ID: <CACRpkda1T_5D697wphrEGEsbj3zBfTaOOLN0T5zS1xfT949cjA@mail.gmail.com>
+References: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
+ <1568123236-767-5-git-send-email-claudiu.beznea@microchip.com>
+ <20190910143231.GB14966@e107533-lin.cambridge.arm.com>
+ <ab43b209-78fa-0cab-b8ea-acd4c550e689@microchip.com>
+ <20190910150826.GA18308@e107533-lin.cambridge.arm.com>
+ <20190910151055.GX21254@piout.net>
+ <CACRpkda4mmpbPWa2nD93CvD6HWzcTUDzyyLdQxC2gNB7XiJF3w@mail.gmail.com>
+ <a2aca46a-8eb9-d8a8-de42-9850a8a8f44c@microchip.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <c4d2518f-4813-c941-6f47-73897f420517@suse.cz>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Vlastimil Babka <vbabka@suse.cz>, Walter Wu <walter-zh.wu@mediatek.com>
-Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Andrey Konovalov <andreyknvl@google.com>, Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org, kasan-dev@googlegroups.com, linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+Return-path: <linux-riscv-bounces+glpr-linux-riscv=m.gmane.org@lists.infradead.org>
+In-Reply-To: <a2aca46a-8eb9-d8a8-de42-9850a8a8f44c@microchip.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-riscv>,
+ <mailto:linux-riscv-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-riscv/>
+List-Post: <mailto:linux-riscv@lists.infradead.org>
+List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
+ <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
+Errors-To: linux-riscv-bounces+glpr-linux-riscv=m.gmane.org@lists.infradead.org
+To: Claudiu Beznea <Claudiu.Beznea@microchip.com>
+Cc: Tomer Maimon <tmaimon77@gmail.com>, "Nori, Sekhar" <nsekhar@ti.com>, guoren@kernel.org, linux-stm32@st-md-mailman.stormreply.com, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Kevin Hilman <khilman@baylibre.com>, Ludovic Desroches <Ludovic.Desroches@microchip.com>, NXP Linux Team <linux-imx@nxp.com>, =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, "moderated list:H8/300 ARCHITECTURE" <uclinux-h8-devel@lists.sourceforge.jp>, Marc Zyngier <marc.zyngier@arm.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-unisoc@lists.infradead.org, Krzysztof Halasa <khalasa@piap.pl>, Thomas Gleixner <tglx@linutronix.de>, Scott Branden <sbranden@broadcom.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Ralf Baechle <ral>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2019-09-12 at 15:53 +0200, Vlastimil Babka wrote:
-> On 9/11/19 5:19 PM, Qian Cai wrote:
-> > 
-> > The new config looks redundant and confusing. It looks to me more of a document update
-> > in Documentation/dev-tools/kasan.txt to educate developers to select PAGE_OWNER and
-> > DEBUG_PAGEALLOC if needed.
-> 
->  
-> Agreed. But if you want it fully automatic, how about something
-> like this (on top of mmotm/next)? If you agree I'll add changelog
-> and send properly.
-> 
-> ----8<----
-> 
-> From a528d14c71d7fdf5872ca8ab3bd1b5bad26670c9 Mon Sep 17 00:00:00 2001
-> From: Vlastimil Babka <vbabka@suse.cz>
-> Date: Thu, 12 Sep 2019 15:51:23 +0200
-> Subject: [PATCH] make KASAN enable page_owner with free stack capture
-> 
-> ---
->  include/linux/page_owner.h |  1 +
->  lib/Kconfig.kasan          |  4 ++++
->  mm/Kconfig.debug           |  5 +++++
->  mm/page_alloc.c            |  6 +++++-
->  mm/page_owner.c            | 37 ++++++++++++++++++++++++-------------
->  5 files changed, 39 insertions(+), 14 deletions(-)
-> 
-> diff --git a/include/linux/page_owner.h b/include/linux/page_owner.h
-> index 8679ccd722e8..6ffe8b81ba85 100644
-> --- a/include/linux/page_owner.h
-> +++ b/include/linux/page_owner.h
-> @@ -6,6 +6,7 @@
->  
->  #ifdef CONFIG_PAGE_OWNER
->  extern struct static_key_false page_owner_inited;
-> +extern bool page_owner_free_stack_disabled;
->  extern struct page_ext_operations page_owner_ops;
->  
->  extern void __reset_page_owner(struct page *page, unsigned int order);
-> diff --git a/lib/Kconfig.kasan b/lib/Kconfig.kasan
-> index 6c9682ce0254..dc560c7562e8 100644
-> --- a/lib/Kconfig.kasan
-> +++ b/lib/Kconfig.kasan
-> @@ -41,6 +41,8 @@ config KASAN_GENERIC
->  	select SLUB_DEBUG if SLUB
->  	select CONSTRUCTORS
->  	select STACKDEPOT
-> +	select PAGE_OWNER
-> +	select PAGE_OWNER_FREE_STACK
->  	help
->  	  Enables generic KASAN mode.
->  	  Supported in both GCC and Clang. With GCC it requires version 4.9.2
-> @@ -63,6 +65,8 @@ config KASAN_SW_TAGS
->  	select SLUB_DEBUG if SLUB
->  	select CONSTRUCTORS
->  	select STACKDEPOT
-> +	select PAGE_OWNER
-> +	select PAGE_OWNER_FREE_STACK
->  	help
->  	  Enables software tag-based KASAN mode.
->  	  This mode requires Top Byte Ignore support by the CPU and therefore
+On Wed, Sep 11, 2019 at 8:18 AM <Claudiu.Beznea@microchip.com> wrote:
+> [Me]
+> > In that case why not just pick the first one you find as clocksource
+> > and the second one as clock event?
 
-I don't know how KASAN people will feel about this. Especially, KASAN_SW_TAGS
-was designed for people who complain about memory footprint of KASAN_GENERIC is
-too high as far as I can tell.
+> That was also my proposal for the driver I'm sending this series for (see
+> [1]) but it has been proposed to implement a mechanism similar to this one
+> in this series (see [2] and [3]).
 
-I guess it depends on them to test the new memory footprint of KASAN to see if
-they are happy with it.
+OK I am not going to challenge the clock source maintainers on this,
+so if that is what they want then that is what they should get.
+It's fine to convert the Integrator driver too!
 
-> diff --git a/mm/Kconfig.debug b/mm/Kconfig.debug
-> index 327b3ebf23bf..a71d52636687 100644
-> --- a/mm/Kconfig.debug
-> +++ b/mm/Kconfig.debug
-> @@ -13,6 +13,7 @@ config DEBUG_PAGEALLOC
->  	depends on DEBUG_KERNEL
->  	depends on !HIBERNATION || ARCH_SUPPORTS_DEBUG_PAGEALLOC && !PPC && !SPARC
->  	select PAGE_POISONING if !ARCH_SUPPORTS_DEBUG_PAGEALLOC
-> +	select PAGE_OWNER_FREE_STACK if PAGE_OWNER
->  	---help---
->  	  Unmap pages from the kernel linear mapping after free_pages().
->  	  Depending on runtime enablement, this results in a small or large
-> @@ -62,6 +63,10 @@ config PAGE_OWNER
->  
->  	  If unsure, say N.
->  
-> +config PAGE_OWNER_FREE_STACK
-> +	def_bool n
-> +	depends on PAGE_OWNER
-> +
->  config PAGE_POISONING
->  	bool "Poison pages after freeing"
->  	select PAGE_POISONING_NO_SANITY if HIBERNATION
-> diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-> index c5d62f1c2851..d9e44671af3f 100644
-> --- a/mm/page_alloc.c
-> +++ b/mm/page_alloc.c
-> @@ -710,8 +710,12 @@ static int __init early_debug_pagealloc(char *buf)
->  	if (kstrtobool(buf, &enable))
->  		return -EINVAL;
->  
-> -	if (enable)
-> +	if (enable) {
->  		static_branch_enable(&_debug_pagealloc_enabled);
-> +#ifdef CONFIG_PAGE_OWNER
-> +		page_owner_free_stack_disabled = false;
-> +#endif
-> +	}
->  
->  	return 0;
->  }
-> diff --git a/mm/page_owner.c b/mm/page_owner.c
-> index dee931184788..d4551d7012d0 100644
-> --- a/mm/page_owner.c
-> +++ b/mm/page_owner.c
-> @@ -24,13 +24,15 @@ struct page_owner {
->  	short last_migrate_reason;
->  	gfp_t gfp_mask;
->  	depot_stack_handle_t handle;
-> -#ifdef CONFIG_DEBUG_PAGEALLOC
-> +#ifdef CONFIG_PAGE_OWNER_FREE_STACK
->  	depot_stack_handle_t free_handle;
->  #endif
->  };
->  
->  static bool page_owner_disabled = true;
-> +bool page_owner_free_stack_disabled = true;
->  DEFINE_STATIC_KEY_FALSE(page_owner_inited);
-> +static DEFINE_STATIC_KEY_FALSE(page_owner_free_stack);
->  
->  static depot_stack_handle_t dummy_handle;
->  static depot_stack_handle_t failure_handle;
-> @@ -46,6 +48,11 @@ static int __init early_page_owner_param(char *buf)
->  	if (strcmp(buf, "on") == 0)
->  		page_owner_disabled = false;
->  
-> +	if (IS_ENABLED(CONFIG_KASAN)) {
-> +		page_owner_disabled = false;
-> +		page_owner_free_stack_disabled = false;
-> +	}
-> +
->  	return 0;
->  }
->  early_param("page_owner", early_page_owner_param);
-> @@ -91,6 +98,8 @@ static void init_page_owner(void)
->  	register_failure_stack();
->  	register_early_stack();
->  	static_branch_enable(&page_owner_inited);
-> +	if (!page_owner_free_stack_disabled)
-> +		static_branch_enable(&page_owner_free_stack);
->  	init_early_allocated_pages();
->  }
->  
-> @@ -148,11 +157,11 @@ void __reset_page_owner(struct page *page, unsigned int order)
->  {
->  	int i;
->  	struct page_ext *page_ext;
-> -#ifdef CONFIG_DEBUG_PAGEALLOC
-> +#ifdef CONFIG_PAGE_OWNER_FREE_STACK
->  	depot_stack_handle_t handle = 0;
->  	struct page_owner *page_owner;
->  
-> -	if (debug_pagealloc_enabled())
-> +	if (static_branch_unlikely(&page_owner_free_stack))
->  		handle = save_stack(GFP_NOWAIT | __GFP_NOWARN);
->  #endif
->  
-> @@ -161,8 +170,8 @@ void __reset_page_owner(struct page *page, unsigned int order)
->  		if (unlikely(!page_ext))
->  			continue;
->  		__clear_bit(PAGE_EXT_OWNER_ACTIVE, &page_ext->flags);
-> -#ifdef CONFIG_DEBUG_PAGEALLOC
-> -		if (debug_pagealloc_enabled()) {
-> +#ifdef CONFIG_PAGE_OWNER_FREE_STACK
-> +		if (static_branch_unlikely(&page_owner_free_stack)) {
->  			page_owner = get_page_owner(page_ext);
->  			page_owner->free_handle = handle;
->  		}
-> @@ -451,14 +460,16 @@ void __dump_page_owner(struct page *page)
->  		stack_trace_print(entries, nr_entries, 0);
->  	}
->  
-> -#ifdef CONFIG_DEBUG_PAGEALLOC
-> -	handle = READ_ONCE(page_owner->free_handle);
-> -	if (!handle) {
-> -		pr_alert("page_owner free stack trace missing\n");
-> -	} else {
-> -		nr_entries = stack_depot_fetch(handle, &entries);
-> -		pr_alert("page last free stack trace:\n");
-> -		stack_trace_print(entries, nr_entries, 0);
-> +#ifdef CONFIG_PAGE_OWNER_FREE_STACK
-> +	if (static_branch_unlikely(&page_owner_free_stack)) {
-> +		handle = READ_ONCE(page_owner->free_handle);
-> +		if (!handle) {
-> +			pr_alert("page_owner free stack trace missing\n");
-> +		} else {
-> +			nr_entries = stack_depot_fetch(handle, &entries);
-> +			pr_alert("page last free stack trace:\n");
-> +			stack_trace_print(entries, nr_entries, 0);
-> +		}
->  	}
->  #endif
->  
+Yours,
+Linus Walleij
