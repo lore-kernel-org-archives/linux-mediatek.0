@@ -1,58 +1,47 @@
-From: Stanley Chu <stanley.chu@mediatek.com>
-Subject: [PATCH v2 3/3] scsi: ufs-mediatek: enable auto suspend capability
-Date: Thu, 12 Sep 2019 14:35:35 +0800
-Message-ID: <1568270135-32442-4-git-send-email-stanley.chu@mediatek.com>
-References: <1568270135-32442-1-git-send-email-stanley.chu@mediatek.com>
+From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=
+        <u.kleine-koenig@pengutronix.de>
+Subject: Re: [PATCH v1 1/2] iommu: pass cell_count = -1 to
+ of_for_each_phandle with cells_name
+Date: Thu, 12 Sep 2019 09:43:53 +0200
+Message-ID: <20190912074353.wqohpfydjxueqade@pengutronix.de>
+References: <20190824132846.8589-1-u.kleine-koenig@pengutronix.de>
+ <20190903125210.GB11530@8bytes.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1568270135-32442-1-git-send-email-stanley.chu@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com, pedrom.sousa@synopsys.com, sthumma@codeaurora.org, jejb@linux.ibm.com, bvanassche@acm.org
-Cc: marc.w.gonzalez@free.fr, andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, evgreen@chromium.org, subhashj@codeaurora.org, linux-mediatek@lists.infradead.org, peter.wang@mediatek.com, vivek.gautam@codeaurora.org, matthias.bgg@gmail.com, Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20190903125210.GB11530@8bytes.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Joerg Roedel <joro@8bytes.org>
+Cc: devicetree@vger.kernel.org, Frank Rowand <frowand.list@gmail.com>, Robin Murphy <robin.murphy@arm.com>, linux-kernel@vger.kernel.org, iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Enable auto suspend capability in MediaTek UFS driver.
+On Tue, Sep 03, 2019 at 02:52:10PM +0200, Joerg Roedel wrote:
+> On Sat, Aug 24, 2019 at 03:28:45PM +0200, Uwe Kleine-König wrote:
+> > Currently of_for_each_phandle ignores the cell_count parameter when a
+> > cells_name is given. I intend to change that and let the iterator fall
+> > back to a non-negative cell_count if the cells_name property is missing
+> > in the referenced node.
+> > 
+> > To not change how existing of_for_each_phandle's users iterate, fix them
+> > to pass cell_count = -1 when also cells_name is given which yields the
+> > expected behaviour with and without my change.
+> > 
+> > Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+> > ---
+> >  drivers/iommu/arm-smmu.c     | 2 +-
+> >  drivers/iommu/mtk_iommu_v1.c | 2 +-
+> >  2 files changed, 2 insertions(+), 2 deletions(-)
+> 
+> Acked-by: Joerg Roedel <jroedel@suse.de>
 
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-Reviewed-by: Avri Altman <avri.altman@wdc.com>
----
- drivers/scsi/ufs/ufs-mediatek.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+Does this ack mean that Rob is expected to apply this together with
+patch 2?
 
-diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
-index 0f6ff33ce52e..b7b177c6194c 100644
---- a/drivers/scsi/ufs/ufs-mediatek.c
-+++ b/drivers/scsi/ufs/ufs-mediatek.c
-@@ -117,6 +117,11 @@ static int ufs_mtk_setup_clocks(struct ufs_hba *hba, bool on,
- 	return ret;
- }
- 
-+static void ufs_mtk_set_caps(struct ufs_hba *hba)
-+{
-+	hba->caps |= UFSHCD_CAP_RPM_AUTOSUSPEND;
-+}
-+
- /**
-  * ufs_mtk_init - find other essential mmio bases
-  * @hba: host controller instance
-@@ -147,6 +152,8 @@ static int ufs_mtk_init(struct ufs_hba *hba)
- 	if (err)
- 		goto out_variant_clear;
- 
-+	ufs_mtk_set_caps(hba);
-+
- 	/*
- 	 * ufshcd_vops_init() is invoked after
- 	 * ufshcd_setup_clock(true) in ufshcd_hba_init() thus
+Best regards
+Uwe
+
 -- 
-2.18.0
+Pengutronix e.K.                           | Uwe Kleine-König            |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
