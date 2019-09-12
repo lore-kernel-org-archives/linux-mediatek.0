@@ -1,16 +1,11 @@
 From: Stanley Chu <stanley.chu@mediatek.com>
-Subject: Re: [PATCH v1 1/2] block: bypass blk_set_runtime_active for
- uninitialized q->dev
-Date: Thu, 12 Sep 2019 16:33:12 +0800
-Message-ID: <1568277192.16730.16.camel@mtkswgap22>
-References: <1568183562-18241-1-git-send-email-stanley.chu@mediatek.com>
- <1568183562-18241-2-git-send-email-stanley.chu@mediatek.com>
- <66fddf12-0dc4-1c73-affd-f8404e87342f@kernel.dk>
+Subject: [PATCH v2] fixup null q->dev checking in both block and scsi layer
+Date: Thu, 12 Sep 2019 16:35:26 +0800
+Message-ID: <1568277328-4597-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <66fddf12-0dc4-1c73-affd-f8404e87342f@kernel.dk>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -20,31 +15,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Jens Axboe <axboe@kernel.dk>
-Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com" <martin.petersen@oracle.com>, Andy Teng =?UTF-8?Q?=28=E9=84=A7=E5=A6=82=E5=AE=8F=29?= <Andy.Teng@mediatek.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>, Chun-Hung Wu =?UTF-8?Q?=28=E5=B7=AB=E9=A7=BF=E5=AE=8F=29?= <Chun-hung.Wu@mediatek.com>, Kuohong Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=8B=E9=B4=BB=29?= <kuohong.wang@mediatek.com>, "linux-block@vger.kernel.org" <linux-block@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Peter Wang =?UTF-8?Q?=28=E7=8E=8B=E4=BF=A1=E5=8F=8B=29?= <peter.wang@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+To: linux-scsi@vger.kernel.org, linux-block@vger.kernel.org, martin.petersen@oracle.com, axboe@kernel.dk, jejb@linux.ibm.com, matthias.bgg@gmail.com
+Cc: andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, linux-mediatek@lists.infradead.org, peter.wang@mediatek.com, Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Jens,
+Some devices may skip blk_pm_runtime_init() and have null pointer in its request_queue->dev. For example, SCSI devices of UFS Well-Known LUNs.
 
-> >   void blk_set_runtime_active(struct request_queue *q)
-> >   {
-> > +	if (!q->dev)
-> > +		return;
-> > +
-> >   	spin_lock_irq(&q->queue_lock);
-> >   	q->rpm_status = RPM_ACTIVE;
-> >   	pm_runtime_mark_last_busy(q->dev);
-> 
-> I'd prefer just doing:
-> 
-> 	if (q->dev) {
-> 		...
-> 	}
-> 
-> instead. Other than that little complaint, looks good to me.
-> 
+Currently the null pointer is checked by the user of blk_set_runtime_active(), i.e., scsi_dev_type_resume(). It is better to check it by blk_set_runtime_active() itself instead of by its users.
 
-OK! I will change it in v2.
+v1 => v2:
+- Change if style in blk_set_runtime_active() (Jens)
 
-Thanks,
-Stanley
+Stanley Chu (2):
+  block: bypass blk_set_runtime_active for uninitialized q->dev
+  scsi: core: remove dummy q->dev check
+
+ block/blk-pm.c         | 12 +++++++-----
+ drivers/scsi/scsi_pm.c |  3 +--
+ 2 files changed, 8 insertions(+), 7 deletions(-)
+
+-- 
+2.18.0
