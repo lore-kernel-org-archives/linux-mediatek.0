@@ -1,46 +1,65 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH 4/7] dt-bindings: chosen: Add clocksource and clockevent
- selection
-Date: Thu, 12 Sep 2019 15:18:49 +0100
-Message-ID: <CACRpkda1T_5D697wphrEGEsbj3zBfTaOOLN0T5zS1xfT949cjA@mail.gmail.com>
-References: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
- <1568123236-767-5-git-send-email-claudiu.beznea@microchip.com>
- <20190910143231.GB14966@e107533-lin.cambridge.arm.com>
- <ab43b209-78fa-0cab-b8ea-acd4c550e689@microchip.com>
- <20190910150826.GA18308@e107533-lin.cambridge.arm.com>
- <20190910151055.GX21254@piout.net>
- <CACRpkda4mmpbPWa2nD93CvD6HWzcTUDzyyLdQxC2gNB7XiJF3w@mail.gmail.com>
- <a2aca46a-8eb9-d8a8-de42-9850a8a8f44c@microchip.com>
+From: Vlastimil Babka <vbabka@suse.cz>
+Subject: Re: [PATCH v3] mm/kasan: dump alloc and free stack for page allocator
+Date: Thu, 12 Sep 2019 16:31:42 +0200
+Message-ID: <613f9f23-c7f0-871f-fe13-930c35ef3105@suse.cz>
+References: <20190911083921.4158-1-walter-zh.wu@mediatek.com>
+ <5E358F4B-552C-4542-9655-E01C7B754F14@lca.pw>
+ <c4d2518f-4813-c941-6f47-73897f420517@suse.cz>
+ <1568297308.19040.5.camel@mtksdccf07>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-riscv-bounces+glpr-linux-riscv=m.gmane.org@lists.infradead.org>
-In-Reply-To: <a2aca46a-8eb9-d8a8-de42-9850a8a8f44c@microchip.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-riscv>,
- <mailto:linux-riscv-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-riscv/>
-List-Post: <mailto:linux-riscv@lists.infradead.org>
-List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
- <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
-Errors-To: linux-riscv-bounces+glpr-linux-riscv=m.gmane.org@lists.infradead.org
-To: Claudiu Beznea <Claudiu.Beznea@microchip.com>
-Cc: Tomer Maimon <tmaimon77@gmail.com>, "Nori, Sekhar" <nsekhar@ti.com>, guoren@kernel.org, linux-stm32@st-md-mailman.stormreply.com, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Kevin Hilman <khilman@baylibre.com>, Ludovic Desroches <Ludovic.Desroches@microchip.com>, NXP Linux Team <linux-imx@nxp.com>, =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, "moderated list:H8/300 ARCHITECTURE" <uclinux-h8-devel@lists.sourceforge.jp>, Marc Zyngier <marc.zyngier@arm.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-unisoc@lists.infradead.org, Krzysztof Halasa <khalasa@piap.pl>, Thomas Gleixner <tglx@linutronix.de>, Scott Branden <sbranden@broadcom.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Ralf Baechle <ral>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1568297308.19040.5.camel@mtksdccf07>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Walter Wu <walter-zh.wu@mediatek.com>
+Cc: Qian Cai <cai@lca.pw>, Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Andrey Konovalov <andreyknvl@google.com>, Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org, kasan-dev@googlegroups.com, linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Sep 11, 2019 at 8:18 AM <Claudiu.Beznea@microchip.com> wrote:
-> [Me]
-> > In that case why not just pick the first one you find as clocksource
-> > and the second one as clock event?
+On 9/12/19 4:08 PM, Walter Wu wrote:
+> 
+>>   extern void __reset_page_owner(struct page *page, unsigned int order);
+>> diff --git a/lib/Kconfig.kasan b/lib/Kconfig.kasan
+>> index 6c9682ce0254..dc560c7562e8 100644
+>> --- a/lib/Kconfig.kasan
+>> +++ b/lib/Kconfig.kasan
+>> @@ -41,6 +41,8 @@ config KASAN_GENERIC
+>>   	select SLUB_DEBUG if SLUB
+>>   	select CONSTRUCTORS
+>>   	select STACKDEPOT
+>> +	select PAGE_OWNER
+>> +	select PAGE_OWNER_FREE_STACK
+>>   	help
+>>   	  Enables generic KASAN mode.
+>>   	  Supported in both GCC and Clang. With GCC it requires version 4.9.2
+>> @@ -63,6 +65,8 @@ config KASAN_SW_TAGS
+>>   	select SLUB_DEBUG if SLUB
+>>   	select CONSTRUCTORS
+>>   	select STACKDEPOT
+>> +	select PAGE_OWNER
+>> +	select PAGE_OWNER_FREE_STACK
+>>   	help
+> 
+> What is the difference between PAGE_OWNER+PAGE_OWNER_FREE_STACK and
+> DEBUG_PAGEALLOC?
 
-> That was also my proposal for the driver I'm sending this series for (see
-> [1]) but it has been proposed to implement a mechanism similar to this one
-> in this series (see [2] and [3]).
+Same memory usage, but debug_pagealloc means also extra checks and 
+restricting memory access to freed pages to catch UAF.
 
-OK I am not going to challenge the clock source maintainers on this,
-so if that is what they want then that is what they should get.
-It's fine to convert the Integrator driver too!
+> If you directly enable PAGE_OWNER+PAGE_OWNER_FREE_STACK
+> PAGE_OWNER_FREE_STACK,don't you think low-memory device to want to use
+> KASAN?
 
-Yours,
-Linus Walleij
+OK, so it should be optional? But I think it's enough to distinguish no 
+PAGE_OWNER at all, and PAGE_OWNER+PAGE_OWNER_FREE_STACK together - I 
+don't see much point in PAGE_OWNER only for this kind of debugging.
+
+So how about this? KASAN wouldn't select PAGE_OWNER* but it would be 
+recommended in the help+docs. When PAGE_OWNER and KASAN are selected by 
+user, PAGE_OWNER_FREE_STACK gets also selected, and both will be also 
+runtime enabled without explicit page_owner=on.
+I mostly want to avoid another boot-time option for enabling 
+PAGE_OWNER_FREE_STACK.
+Would that be enough flexibility for low-memory devices vs full-fledged 
+debugging?
