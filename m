@@ -1,74 +1,93 @@
-From: Walter Wu <walter-zh.wu@mediatek.com>
-Subject: Re: [PATCH v3] mm/kasan: dump alloc and free stack for page
- allocator
-Date: Thu, 12 Sep 2019 23:13:53 +0800
-Message-ID: <1568301233.19274.17.camel@mtksdccf07>
-References: <20190911083921.4158-1-walter-zh.wu@mediatek.com>
-         <5E358F4B-552C-4542-9655-E01C7B754F14@lca.pw>
-         <c4d2518f-4813-c941-6f47-73897f420517@suse.cz>
-         <1568297308.19040.5.camel@mtksdccf07>
-         <613f9f23-c7f0-871f-fe13-930c35ef3105@suse.cz>
+From: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 2/2] ASoC: mt8183: fix audio playback slowly after
+ playback during bootup
+Date: Fri, 13 Sep 2019 00:50:07 +0800
+Message-ID: <1568307007.22948.3.camel@mtksdaap41>
+References: <1568282096-13821-1-git-send-email-jiaxin.yu@mediatek.com>
+ <1568282096-13821-3-git-send-email-jiaxin.yu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <613f9f23-c7f0-871f-fe13-930c35ef3105@suse.cz>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Vlastimil Babka <vbabka@suse.cz>
-Cc: Qian Cai <cai@lca.pw>, Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Andrey Konovalov <andreyknvl@google.com>, Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org, kasan-dev@googlegroups.com, linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1568282096-13821-3-git-send-email-jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jiaxin Yu <jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, tzungbi-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eason.yen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2019-09-12 at 16:31 +0200, Vlastimil Babka wrote:
-> On 9/12/19 4:08 PM, Walter Wu wrote:
-> > 
-> >>   extern void __reset_page_owner(struct page *page, unsigned int order);
-> >> diff --git a/lib/Kconfig.kasan b/lib/Kconfig.kasan
-> >> index 6c9682ce0254..dc560c7562e8 100644
-> >> --- a/lib/Kconfig.kasan
-> >> +++ b/lib/Kconfig.kasan
-> >> @@ -41,6 +41,8 @@ config KASAN_GENERIC
-> >>   	select SLUB_DEBUG if SLUB
-> >>   	select CONSTRUCTORS
-> >>   	select STACKDEPOT
-> >> +	select PAGE_OWNER
-> >> +	select PAGE_OWNER_FREE_STACK
-> >>   	help
-> >>   	  Enables generic KASAN mode.
-> >>   	  Supported in both GCC and Clang. With GCC it requires version 4.9.2
-> >> @@ -63,6 +65,8 @@ config KASAN_SW_TAGS
-> >>   	select SLUB_DEBUG if SLUB
-> >>   	select CONSTRUCTORS
-> >>   	select STACKDEPOT
-> >> +	select PAGE_OWNER
-> >> +	select PAGE_OWNER_FREE_STACK
-> >>   	help
-> > 
-> > What is the difference between PAGE_OWNER+PAGE_OWNER_FREE_STACK and
-> > DEBUG_PAGEALLOC?
+On Thu, 2019-09-12 at 17:54 +0800, Jiaxin Yu wrote:
+> Before regmap_reinit_cache we must reset audio reg as default value.
+> So we use reset controller unit(toprgu) to reset audio hw.
 > 
-> Same memory usage, but debug_pagealloc means also extra checks and 
-> restricting memory access to freed pages to catch UAF.
+> Signed-off-by: Jiaxin Yu <jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  sound/soc/mediatek/common/mtk-base-afe.h   |  1 +
+>  sound/soc/mediatek/mt8183/mt8183-afe-pcm.c | 21 +++++++++++++++++++++
+>  sound/soc/mediatek/mt8183/mt8183-reg.h     |  6 ++++++
+>  3 files changed, 28 insertions(+)
 > 
-> > If you directly enable PAGE_OWNER+PAGE_OWNER_FREE_STACK
-> > PAGE_OWNER_FREE_STACK,don't you think low-memory device to want to use
-> > KASAN?
-> 
-> OK, so it should be optional? But I think it's enough to distinguish no 
-> PAGE_OWNER at all, and PAGE_OWNER+PAGE_OWNER_FREE_STACK together - I 
-> don't see much point in PAGE_OWNER only for this kind of debugging.
-> 
-If it's possible, it should be optional.
-My experience is that PAGE_OWNER usually debug memory leakage.
+> diff --git a/sound/soc/mediatek/common/mtk-base-afe.h b/sound/soc/mediatek/common/mtk-base-afe.h
+> index 60cb609a9790..bccc079ee660 100644
+> --- a/sound/soc/mediatek/common/mtk-base-afe.h
+> +++ b/sound/soc/mediatek/common/mtk-base-afe.h
+> @@ -60,6 +60,7 @@ struct mtk_base_afe {
+>  	void __iomem *base_addr;
+>  	struct device *dev;
+>  	struct regmap *regmap;
+> +	struct regmap *toprgu_regmap;
+>  	struct mutex irq_alloc_lock; /* dynamic alloc irq lock */
+>  
+>  	unsigned int const *reg_back_up_list;
+> diff --git a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
+> index 4a31106d3471..0e5634b3a8e3 100644
+> --- a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
+> +++ b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
+> @@ -1089,6 +1089,7 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
+>  	struct mtk_base_afe *afe;
+>  	struct mt8183_afe_private *afe_priv;
+>  	struct device *dev;
+> +	unsigned int reg_value;
+>  	int i, irq_id, ret;
+>  
+>  	afe = devm_kzalloc(&pdev->dev, sizeof(*afe), GFP_KERNEL);
+> @@ -1126,6 +1127,26 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
+>  		return ret;
+>  	}
+>  
+> +	/* toprgu_regmap init */
+> +	afe->toprgu_regmap = syscon_regmap_lookup_by_phandle(dev->of_node,
+> +							     "mediatek,toprgu");
+> +	if (IS_ERR(afe->toprgu_regmap)) {
+> +		dev_err(dev, "could not get toprgu_regmap from dev\n");
+> +		return PTR_ERR(afe->toprgu_regmap);
+> +	}
+> +
+> +	/* read TOPRGUWDT_SWSYSRST, the high 8bits must be zero */
+> +	regmap_read(afe->toprgu_regmap, TOPRGUWDT_SWSYSRST, &reg_value);
+> +
+> +	/* write TOPRGUWDT_SWSYSRST, we need set high 8bits as 0x88 first */
+> +	reg_value |= 0x88000000;
+> +
+> +	/* reset audio domain registers */
+> +	reg_value |= 1 << AUDIO_RST_SFT;
+> +	regmap_write(afe->toprgu_regmap, TOPRGUWDT_SWSYSRST, reg_value);
+> +	reg_value &= ~(1 << AUDIO_RST_SFT);
+> +	regmap_write(afe->toprgu_regmap, TOPRGUWDT_SWSYSRST, reg_value);
 
-> So how about this? KASAN wouldn't select PAGE_OWNER* but it would be 
-> recommended in the help+docs. When PAGE_OWNER and KASAN are selected by 
-> user, PAGE_OWNER_FREE_STACK gets also selected, and both will be also 
-> runtime enabled without explicit page_owner=on.
-> I mostly want to avoid another boot-time option for enabling 
-> PAGE_OWNER_FREE_STACK.
-> Would that be enough flexibility for low-memory devices vs full-fledged 
-> debugging?
 
-We usually see feature option to decide whether it meet the platform.
-The boot-time option isn't troubled to us, because enable the feature
-owner should know what he should add to do.
+This register contain reset bits for many components.
+If components access it directly at the same time, we might have race
+condition.
+
+Instead, watchdog driver should export this as reset controller so this
+driver can access it using reset API.
+
+Joe.C
