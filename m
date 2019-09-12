@@ -1,17 +1,14 @@
 From: Gene Chen <gene.chen.richtek@gmail.com>
-Subject: (unknown)
-Date: Thu, 12 Sep 2019 16:09:46 +0800
-Message-ID: <1568275786-3505-1-git-send-email-gene.chen.richtek@gmail.com>
+Subject: [PATCH] mfd: mt6360: add pmic mt6360 driver
+Date: Thu, 12 Sep 2019 16:10:37 +0800
+Message-ID: <1568275837-3560-1-git-send-email-gene.chen.richtek@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: matthias.bgg@gmail.com, gene_chen@richtek.com, Wilma.Wu@mediatek.com
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Gene Chen <gene_chen@mediatek.corp-partner.google.com>
 List-Id: linux-mediatek@lists.infradead.org
 
->From 66208ef7fcdb4176bf63cd130b3e3197086ac4b3 Mon Sep 17 00:00:00 2001
 From: Gene Chen <gene_chen@mediatek.corp-partner.google.com>
-Date: Thu, 22 Aug 2019 14:21:03 +0800
-Subject: [PATCH] mfd: mt6360: add pmic mt6360 driver
 
 ---
  drivers/mfd/Kconfig       |  12 ++
