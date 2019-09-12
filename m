@@ -1,55 +1,76 @@
-From: Jiaxin Yu <jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 1/2] ASoC: dt-bingdings: mediatek: mt8183: add a property
- "medaitek, toprgu"
-Date: Thu, 12 Sep 2019 17:54:55 +0800
-Message-ID: <1568282096-13821-2-git-send-email-jiaxin.yu@mediatek.com>
-References: <1568282096-13821-1-git-send-email-jiaxin.yu@mediatek.com>
+From: Miles Chen <miles.chen@mediatek.com>
+Subject: [PATCH] psi: put NULL char correctly in psi_write()
+Date: Thu, 12 Sep 2019 18:34:52 +0800
+Message-ID: <20190912103452.13281-1-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1568282096-13821-1-git-send-email-jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, tzungbi-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eason.yen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Miles Chen <miles.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds a property "mediatek,toprgu" in example so that we could
-use reset controller(usually we call it toprgu or watchdog) to reset audio
-domain regs.
+When passing a equal or more then 32 bytes long string to psi_write(),
+psi_write() copies 31 bytes to its buf and overwrites buf[30]
+with '\0'. Which makes the input string 1 byte shorter than
+it should be.
 
-Signed-off-by: Jiaxin Yu <jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Fix it by copying sizeof(buf) bytes when nbytes >= sizeof(buf).
+
+This does not cause problems in normal use case like:
+"some 500000 10000000" or "full 500000 10000000" because they
+are less than 32 bytes in length.
+
+	/* assuming nbytes == 35 */
+	char buf[32];
+
+	buf_size = min(nbytes, (sizeof(buf) - 1)); /* buf_size = 31 */
+	if (copy_from_user(buf, user_buf, buf_size))
+		return -EFAULT;
+
+	buf[buf_size - 1] = '\0'; /* buf[30] = '\0' */
+
+Before:
+%cd /proc/pressure/
+%echo "123456789|123456789|123456789|1234" > memory
+[   22.473497] nbytes=35,buf_size=31
+[   22.473775] 123456789|123456789|123456789| (print 30 chars)
+%sh: write error: Invalid argument
+
+%echo "123456789|123456789|123456789|1" > memory
+[   64.916162] nbytes=32,buf_size=31
+[   64.916331] 123456789|123456789|123456789| (print 30 chars)
+%sh: write error: Invalid argument
+
+After:
+%cd /proc/pressure/
+%echo "123456789|123456789|123456789|1234" > memory
+[  254.837863] nbytes=35,buf_size=32
+[  254.838541] 123456789|123456789|123456789|1 (print 31 chars)
+%sh: write error: Invalid argument
+
+%echo "123456789|123456789|123456789|1" > memory
+[ 9965.714935] nbytes=32,buf_size=32
+[ 9965.715096] 123456789|123456789|123456789|1 (print 31 chars)
+%sh: write error: Invalid argument
+
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
 ---
- Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt | 2 ++
- 1 file changed, 2 insertions(+)
+ kernel/sched/psi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt b/Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt
-index 396ba38619f6..45ca182a4ecc 100644
---- a/Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt
-+++ b/Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt
-@@ -4,6 +4,7 @@ Required properties:
- - compatible = "mediatek,mt68183-audio";
- - reg: register location and size
- - interrupts: should contain AFE interrupt
-+- mediatek,toprgu: A phandle to the TOPRGU which for reset controller unit
- - power-domains: should define the power domain
- - clocks: Must contain an entry for each entry in clock-names
- - clock-names: should have these clock names:
-@@ -20,6 +21,7 @@ Example:
- 		compatible = "mediatek,mt8183-audio";
- 		reg = <0 0x11220000 0 0x1000>;
- 		interrupts = <GIC_SPI 161 IRQ_TYPE_LEVEL_LOW>;
-+		mediatek,toprgu = <&watchdog>;
- 		power-domains = <&scpsys MT8183_POWER_DOMAIN_AUDIO>;
- 		clocks = <&infrasys CLK_INFRA_AUDIO>,
- 			 <&infrasys CLK_INFRA_AUDIO_26M_BCLK>,
+diff --git a/kernel/sched/psi.c b/kernel/sched/psi.c
+index 6e52b67b420e..517e3719027e 100644
+--- a/kernel/sched/psi.c
++++ b/kernel/sched/psi.c
+@@ -1198,7 +1198,7 @@ static ssize_t psi_write(struct file *file, const char __user *user_buf,
+ 	if (static_branch_likely(&psi_disabled))
+ 		return -EOPNOTSUPP;
+ 
+-	buf_size = min(nbytes, (sizeof(buf) - 1));
++	buf_size = min(nbytes, sizeof(buf));
+ 	if (copy_from_user(buf, user_buf, buf_size))
+ 		return -EFAULT;
+ 
 -- 
 2.18.0
