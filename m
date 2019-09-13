@@ -1,43 +1,32 @@
-From: Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [PATCH v2 2/2] drm/bridge: add it6505 driver
-Date: Thu, 12 Sep 2019 14:05:27 -0700
-Message-ID: <20190912210526.GA16171@roeck-us.net>
-References: <1567507915-9844-1-git-send-email-allen.chen@ite.com.tw>
- <1567507915-9844-3-git-send-email-allen.chen@ite.com.tw>
+From: Joerg Roedel <joro@8bytes.org>
+Subject: Re: [PATCH v1 1/2] iommu: pass cell_count = -1 to
+ of_for_each_phandle with cells_name
+Date: Fri, 13 Sep 2019 09:37:52 +0200
+Message-ID: <20190913073752.GA4520@8bytes.org>
+References: <20190824132846.8589-1-u.kleine-koenig@pengutronix.de>
+ <20190903125210.GB11530@8bytes.org>
+ <20190912074353.wqohpfydjxueqade@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1567507915-9844-3-git-send-email-allen.chen@ite.com.tw>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: allen <allen.chen@ite.com.tw>
-Cc: Archit Taneja <architt@codeaurora.org>, Jitao Shi <jitao.shi@mediatek.com>, Jau-Chih Tseng <Jau-Chih.Tseng@ite.com.tw>, Yilun Lin <yllin@google.com>, David Airlie <airlied@linux.ie>, open list <linux-kernel@vger.kernel.org>, "open list:DRM DRIVERS" <dri-devel@lists.freedesktop.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Pi-Hsun Shih <pihsun@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>
+In-Reply-To: <20190912074353.wqohpfydjxueqade@pengutronix.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: devicetree@vger.kernel.org, Frank Rowand <frowand.list@gmail.com>, Robin Murphy <robin.murphy@arm.com>, linux-kernel@vger.kernel.org, iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksCgpPbiBUdWUsIFNlcCAwMywgMjAxOSBhdCAwNjo1MTo1NFBNICswODAwLCBhbGxlbiB3cm90
-ZToKPiBGcm9tOiBBbGxlbiBDaGVuIDxhbGxlbi5jaGVuQGl0ZS5jb20udHc+Cj4gCj4gVGhpcyBh
-ZGRzIHN1cHBvcnQgZm9yIHRoZSBpVEUgSVQ2NTA1Lgo+IFRoaXMgZGV2aWNlIGNhbiBjb252ZXJ0
-IERQSSBzaWduYWwgdG8gRFAgb3V0cHV0Lgo+IAo+IFNpZ25lZC1vZmYtYnk6IEppdGFvIFNoaSA8
-aml0YW8uc2hpQG1lZGlhdGVrLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBZaWx1biBMaW4gPHlsbGlu
-QGdvb2dsZS5jb20+Cj4gU2lnbmVkLW9mZi1ieTogQWxsZW4gQ2hlbiA8YWxsZW4uY2hlbkBpdGUu
-Y29tLnR3PgoKSSB0cmllZCB0byBwcm92aWRlIGZlZWRiYWNrIG9uIHRoaXMgcGF0Y2gsIGJ1dCBp
-dCBpcyBmYXIgZnJvbSBjb21waWxpbmcKYWdhaW5zdCB0aGUgdXBzdHJlYW0ga2VybmVsIChvciAt
-bmV4dCksIGFuZCBpdCBoYXMgYSBudW1iZXIgb2Ygb2J2aW91cwpwcm9ibGVtcyBzdWNoIGFzIG1p
-c3NpbmcgaW5jbHVkZSBmaWxlcywgdmFyaWFibGUgdHlwZSBtaXNtYXRjaGVzLCBhbmQKc2V0IGJ1
-dCB1bnVzZWQgdmFyaWFibGVzLiBJdCBkb2VzIGNvbXBpbGUgYWdhaW5zdCB2NC4xOS55LCBidXQg
-ZXZlbiB0aGVyZQppdCBnZW5lcmF0ZXMgYSBudW1iZXIgb2YgYnVpbGQgd2FybmluZ3MuCgpJIHdv
-dWxkIHN1Z2dlc3QgdG8gZml4IHRob3NlIHByb2JsZW1zIGFuZCB0byBtYWtlIHN1cmUgdGhhdCB0
-aGUgZHJpdmVyCmJ1aWxkcyB3aXRob3V0IHdhcm5pbmdzIG9uIHRvcCBvZiB0aGUgbWFpbmxpbmUg
-a2VybmVsIGJlZm9yZSByZXN1Ym1pdHRpbmcuCgpUaGFua3MsCkd1ZW50ZXIKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
-dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+On Thu, Sep 12, 2019 at 09:43:53AM +0200, Uwe Kleine-König wrote:
+> On Tue, Sep 03, 2019 at 02:52:10PM +0200, Joerg Roedel wrote:
+> > Acked-by: Joerg Roedel <jroedel@suse.de>
+> 
+> Does this ack mean that Rob is expected to apply this together with
+> patch 2?
+
+"Expected" is a strong word. I'd more phrase it like I am fine with this
+patch going through his tree.
+
+Regards,
+
+	Joerg
