@@ -1,54 +1,100 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v1 2/2] of: Let of_for_each_phandle fallback to
- non-negative cell_count
-Date: Fri, 13 Sep 2019 16:58:09 -0500
-Message-ID: <20190913215809.GA11833@bogus>
-References: <20190824132846.8589-1-u.kleine-koenig@pengutronix.de>
- <20190824132846.8589-2-u.kleine-koenig@pengutronix.de>
+From: "tip-bot2 for Miles Chen" <tip-bot2@linutronix.de>
+Subject: [tip: sched/core] sched/psi: Correct overly pessimistic size calculation
+Date: Fri, 13 Sep 2019 22:43:25 -0000
+Message-ID: <156841460535.24167.6273030361884540421.tip-bot2@tip-bot2>
+References: <20190912103452.13281-1-miles.chen@mediatek.com>
+Reply-To: linux-kernel@vger.kernel.org
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190824132846.8589-2-u.kleine-koenig@pengutronix.de>
+In-Reply-To: <20190912103452.13281-1-miles.chen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Frank Rowand <frowand.list@gmail.com>, devicetree@vger.kernel.org, iommu@lists.linux-foundation.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de, Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>
+To: linux-tip-commits@vger.kernel.org
+Cc: Miles Chen <miles.chen@mediatek.com>, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Linus Torvalds <torvalds@linux-foundation.org>, Peter Zijlstra <peterz@infradead.org>, Thomas Gleixner <tglx@linutronix.de>, Ingo Molnar <mingo@kernel.org>, Borislav Petkov <bp@alien8.de>, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, 24 Aug 2019 15:28:46 +0200, =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?=          wrote:
-> Referencing device tree nodes from a property allows to pass arguments.
-> This is for example used for referencing gpios. This looks as follows:
-> 
-> 	gpio_ctrl: gpio-controller {
-> 		#gpio-cells = <2>
-> 		...
-> 	}
-> 
-> 	someothernode {
-> 		gpios = <&gpio_ctrl 5 0 &gpio_ctrl 3 0>;
-> 		...
-> 	}
-> 
-> To know the number of arguments this must be either fixed, or the
-> referenced node is checked for a $cells_name (here: "#gpio-cells")
-> property and with this information the start of the second reference can
-> be determined.
-> 
-> Currently regulators are referenced with no additional arguments. To
-> allow some optional arguments without having to change all referenced
-> nodes this change introduces a way to specify a default cell_count. So
-> when a phandle is parsed we check for the $cells_name property and use
-> it as before if present. If it is not present we fall back to
-> cells_count if non-negative and only fail if cells_count is smaller than
-> zero.
-> 
-> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
-> ---
->  drivers/of/base.c | 25 +++++++++++++++++--------
->  1 file changed, 17 insertions(+), 8 deletions(-)
-> 
+The following commit has been merged into the sched/core branch of tip:
 
-Applied both patches, thanks.
+Commit-ID:     4adcdcea717cb2d8436bef00dd689aa5bc76f11b
+Gitweb:        https://git.kernel.org/tip/4adcdcea717cb2d8436bef00dd689aa5bc76f11b
+Author:        Miles Chen <miles.chen@mediatek.com>
+AuthorDate:    Thu, 12 Sep 2019 18:34:52 +08:00
+Committer:     Ingo Molnar <mingo@kernel.org>
+CommitterDate: Fri, 13 Sep 2019 07:49:28 +02:00
 
-Rob
+sched/psi: Correct overly pessimistic size calculation
+
+When passing a equal or more then 32 bytes long string to psi_write(),
+psi_write() copies 31 bytes to its buf and overwrites buf[30]
+with '\0'. Which makes the input string 1 byte shorter than
+it should be.
+
+Fix it by copying sizeof(buf) bytes when nbytes >= sizeof(buf).
+
+This does not cause problems in normal use case like:
+"some 500000 10000000" or "full 500000 10000000" because they
+are less than 32 bytes in length.
+
+	/* assuming nbytes == 35 */
+	char buf[32];
+
+	buf_size = min(nbytes, (sizeof(buf) - 1)); /* buf_size = 31 */
+	if (copy_from_user(buf, user_buf, buf_size))
+		return -EFAULT;
+
+	buf[buf_size - 1] = '\0'; /* buf[30] = '\0' */
+
+Before:
+
+ %cd /proc/pressure/
+ %echo "123456789|123456789|123456789|1234" > memory
+ [   22.473497] nbytes=35,buf_size=31
+ [   22.473775] 123456789|123456789|123456789| (print 30 chars)
+ %sh: write error: Invalid argument
+
+ %echo "123456789|123456789|123456789|1" > memory
+ [   64.916162] nbytes=32,buf_size=31
+ [   64.916331] 123456789|123456789|123456789| (print 30 chars)
+ %sh: write error: Invalid argument
+
+After:
+
+ %cd /proc/pressure/
+ %echo "123456789|123456789|123456789|1234" > memory
+ [  254.837863] nbytes=35,buf_size=32
+ [  254.838541] 123456789|123456789|123456789|1 (print 31 chars)
+ %sh: write error: Invalid argument
+
+ %echo "123456789|123456789|123456789|1" > memory
+ [ 9965.714935] nbytes=32,buf_size=32
+ [ 9965.715096] 123456789|123456789|123456789|1 (print 31 chars)
+ %sh: write error: Invalid argument
+
+Also remove the superfluous parentheses.
+
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+Cc: <linux-mediatek@lists.infradead.org>
+Cc: <wsd_upstream@mediatek.com>
+Cc: Linus Torvalds <torvalds@linux-foundation.org>
+Cc: Peter Zijlstra <peterz@infradead.org>
+Cc: Thomas Gleixner <tglx@linutronix.de>
+Link: https://lkml.kernel.org/r/20190912103452.13281-1-miles.chen@mediatek.com
+Signed-off-by: Ingo Molnar <mingo@kernel.org>
+---
+ kernel/sched/psi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kernel/sched/psi.c b/kernel/sched/psi.c
+index 7acc632..4b14a32 100644
+--- a/kernel/sched/psi.c
++++ b/kernel/sched/psi.c
+@@ -1190,7 +1190,7 @@ static ssize_t psi_write(struct file *file, const char __user *user_buf,
+ 	if (static_branch_likely(&psi_disabled))
+ 		return -EOPNOTSUPP;
+ 
+-	buf_size = min(nbytes, (sizeof(buf) - 1));
++	buf_size = min(nbytes, sizeof(buf));
+ 	if (copy_from_user(buf, user_buf, buf_size))
+ 		return -EFAULT;
+ 
