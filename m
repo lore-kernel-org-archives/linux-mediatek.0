@@ -1,100 +1,63 @@
-From: "tip-bot2 for Miles Chen" <tip-bot2@linutronix.de>
-Subject: [tip: sched/core] sched/psi: Correct overly pessimistic size calculation
-Date: Fri, 13 Sep 2019 22:43:25 -0000
-Message-ID: <156841460535.24167.6273030361884540421.tip-bot2@tip-bot2>
-References: <20190912103452.13281-1-miles.chen@mediatek.com>
-Reply-To: linux-kernel@vger.kernel.org
+From: Louis Kuo <louis.kuo@mediatek.com>
+Subject: [RFC PATCH V4 2/4] media: platform: Add Mediatek sensor interface
+ driver KConfig
+Date: Sun, 15 Sep 2019 14:50:02 +0800
+Message-ID: <20190915065004.20257-3-louis.kuo@mediatek.com>
+References: <20190915065004.20257-1-louis.kuo@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190912103452.13281-1-miles.chen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-tip-commits@vger.kernel.org
-Cc: Miles Chen <miles.chen@mediatek.com>, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Linus Torvalds <torvalds@linux-foundation.org>, Peter Zijlstra <peterz@infradead.org>, Thomas Gleixner <tglx@linutronix.de>, Ingo Molnar <mingo@kernel.org>, Borislav Petkov <bp@alien8.de>, linux-kernel@vger.kernel.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190915065004.20257-1-louis.kuo@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: hans.verkuil@cisco.com, laurent.pinchart+renesas@ideasonboard.com, tfiga@chromium.org, keiichiw@chromium.org, matthias.bgg@gmail.com, mchehab@kernel.org
+Cc: devicetree@vger.kernel.org, Sean.Cheng@mediatek.com, Rynn.Wu@mediatek.com, srv_heupstream@mediatek.com, Jerry-ch.Chen@mediatek.com, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, linux-mediatek@lists.infradead.org, zwisler@chromium.org, louis.kuo@mediatek.com, christie.yu@mediatek.com, frederic.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The following commit has been merged into the sched/core branch of tip:
+This patch adds KConfig for sensor interface driver. Sensor interface
+driver
+is a MIPI-CSI2 host driver, namely, a HW camera interface controller.
+It support a widely adopted, simple, high-speed protocol primarily
+intended
+for point-to-point image and video transmission between cameras and host
+devices.
 
-Commit-ID:     4adcdcea717cb2d8436bef00dd689aa5bc76f11b
-Gitweb:        https://git.kernel.org/tip/4adcdcea717cb2d8436bef00dd689aa5bc76f11b
-Author:        Miles Chen <miles.chen@mediatek.com>
-AuthorDate:    Thu, 12 Sep 2019 18:34:52 +08:00
-Committer:     Ingo Molnar <mingo@kernel.org>
-CommitterDate: Fri, 13 Sep 2019 07:49:28 +02:00
-
-sched/psi: Correct overly pessimistic size calculation
-
-When passing a equal or more then 32 bytes long string to psi_write(),
-psi_write() copies 31 bytes to its buf and overwrites buf[30]
-with '\0'. Which makes the input string 1 byte shorter than
-it should be.
-
-Fix it by copying sizeof(buf) bytes when nbytes >= sizeof(buf).
-
-This does not cause problems in normal use case like:
-"some 500000 10000000" or "full 500000 10000000" because they
-are less than 32 bytes in length.
-
-	/* assuming nbytes == 35 */
-	char buf[32];
-
-	buf_size = min(nbytes, (sizeof(buf) - 1)); /* buf_size = 31 */
-	if (copy_from_user(buf, user_buf, buf_size))
-		return -EFAULT;
-
-	buf[buf_size - 1] = '\0'; /* buf[30] = '\0' */
-
-Before:
-
- %cd /proc/pressure/
- %echo "123456789|123456789|123456789|1234" > memory
- [   22.473497] nbytes=35,buf_size=31
- [   22.473775] 123456789|123456789|123456789| (print 30 chars)
- %sh: write error: Invalid argument
-
- %echo "123456789|123456789|123456789|1" > memory
- [   64.916162] nbytes=32,buf_size=31
- [   64.916331] 123456789|123456789|123456789| (print 30 chars)
- %sh: write error: Invalid argument
-
-After:
-
- %cd /proc/pressure/
- %echo "123456789|123456789|123456789|1234" > memory
- [  254.837863] nbytes=35,buf_size=32
- [  254.838541] 123456789|123456789|123456789|1 (print 31 chars)
- %sh: write error: Invalid argument
-
- %echo "123456789|123456789|123456789|1" > memory
- [ 9965.714935] nbytes=32,buf_size=32
- [ 9965.715096] 123456789|123456789|123456789|1 (print 31 chars)
- %sh: write error: Invalid argument
-
-Also remove the superfluous parentheses.
-
-Signed-off-by: Miles Chen <miles.chen@mediatek.com>
-Cc: <linux-mediatek@lists.infradead.org>
-Cc: <wsd_upstream@mediatek.com>
-Cc: Linus Torvalds <torvalds@linux-foundation.org>
-Cc: Peter Zijlstra <peterz@infradead.org>
-Cc: Thomas Gleixner <tglx@linutronix.de>
-Link: https://lkml.kernel.org/r/20190912103452.13281-1-miles.chen@mediatek.com
-Signed-off-by: Ingo Molnar <mingo@kernel.org>
+Signed-off-by: Louis Kuo <louis.kuo@mediatek.com>
 ---
- kernel/sched/psi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/media/platform/mtk-isp/Kconfig | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+ create mode 100644 drivers/media/platform/mtk-isp/Kconfig
 
-diff --git a/kernel/sched/psi.c b/kernel/sched/psi.c
-index 7acc632..4b14a32 100644
---- a/kernel/sched/psi.c
-+++ b/kernel/sched/psi.c
-@@ -1190,7 +1190,7 @@ static ssize_t psi_write(struct file *file, const char __user *user_buf,
- 	if (static_branch_likely(&psi_disabled))
- 		return -EOPNOTSUPP;
- 
--	buf_size = min(nbytes, (sizeof(buf) - 1));
-+	buf_size = min(nbytes, sizeof(buf));
- 	if (copy_from_user(buf, user_buf, buf_size))
- 		return -EFAULT;
- 
+diff --git a/drivers/media/platform/mtk-isp/Kconfig b/drivers/media/platform/mtk-isp/Kconfig
+new file mode 100644
+index 000000000000..bc7fd01808b3
+--- /dev/null
++++ b/drivers/media/platform/mtk-isp/Kconfig
+@@ -0,0 +1,17 @@
++config MTK_SENINF
++	bool "Mediatek mipi csi2 driver"
++	depends on VIDEO_V4L2 && VIDEO_V4L2_SUBDEV_API
++	depends on MEDIA_CAMERA_SUPPORT
++	select V4L2_FWNODE
++
++	default n
++	help
++	    This driver provides a mipi-csi2 host driver used as a
++	    interface to connect camera with Mediatek's
++	    MT8183 SOCs. It is able to handle multiple cameras
++	    at the same time.
++
++	    Choose y if you want to use Mediatek SoCs to create image
++	    capture application such as video recording and still image
++	    capture.
++
+-- 
+2.18.0
