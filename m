@@ -1,46 +1,30 @@
-From: David Laight <David.Laight@ACULAB.COM>
-Subject: RE: [tip: sched/core] sched/psi: Correct overly pessimistic size
- calculation
-Date: Mon, 16 Sep 2019 11:49:22 +0000
-Message-ID: <ead094dabae64e6c978e94b617c8d08c@AcuMS.aculab.com>
-References: <20190912103452.13281-1-miles.chen@mediatek.com>
- <156841460535.24167.6273030361884540421.tip-bot2@tip-bot2>
+From: "Bean Huo (beanhuo)" <beanhuo@micron.com>
+Subject: RE: [EXT] [PATCH v3 2/3] scsi: ufs: override auto suspend tunables
+ for ufs
+Date: Mon, 16 Sep 2019 12:33:04 +0000
+Message-ID: <BN7PR08MB56847455A8B0C7D89FF8C6A1DB8C0@BN7PR08MB5684.namprd08.prod.outlook.com>
+References: <1568616437-16271-1-git-send-email-stanley.chu@mediatek.com>
+ <1568616437-16271-3-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: base64
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <156841460535.24167.6273030361884540421.tip-bot2@tip-bot2>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1568616437-16271-3-git-send-email-stanley.chu@mediatek.com>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-tip-commits@vger.kernel.org" <linux-tip-commits@vger.kernel.org>
-Cc: Miles Chen <miles.chen@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "wsd_upstream@mediatek.com" <wsd_upstream@mediatek.com>, Linus Torvalds <torvalds@linux-foundation.org>, Peter Zijlstra <peterz@infradead.org>, Thomas Gleixner <tglx@linutronix.de>, Ingo Molnar <mingo@kernel.org>, Borislav Petkov <bp@alien8.de>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com" <martin.petersen@oracle.com>, "avri.altman@wdc.com" <avri.altman@wdc.com>, "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>, "pedrom.sousa@synopsys.com" <pedrom.sousa@synopsys.com>, "sthumma@codeaurora.org" <sthumma@codeaurora.org>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>, "bvanassche@acm.org" <bvanassche@acm.org>
+Cc: "marc.w.gonzalez@free.fr" <marc.w.gonzalez@free.fr>, "andy.teng@mediatek.com" <andy.teng@mediatek.com>, "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>, "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>, "evgreen@chromium.org" <evgreen@chromium.org>, "subhashj@codeaurora.org" <subhashj@codeaurora.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "peter.wang@mediatek.com" <peter.wang@mediatek.com>, "vivek.gautam@codeaurora.org" <vivek.gautam@codeaurora.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "kernel-team@android.com" <kernel-team@android.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-RnJvbTogTWlsZXMgQ2hlbg0KPiBTZW50OiAxMyBTZXB0ZW1iZXIgMjAxOSAyMzo0Mw0KPiBUaGUg
-Zm9sbG93aW5nIGNvbW1pdCBoYXMgYmVlbiBtZXJnZWQgaW50byB0aGUgc2NoZWQvY29yZSBicmFu
-Y2ggb2YgdGlwOg0KPiANCj4gQ29tbWl0LUlEOiAgICAgNGFkY2RjZWE3MTdjYjJkODQzNmJlZjAw
-ZGQ2ODlhYTViYzc2ZjExYg0KPiBHaXR3ZWI6ICAgICAgICBodHRwczovL2dpdC5rZXJuZWwub3Jn
-L3RpcC80YWRjZGNlYTcxN2NiMmQ4NDM2YmVmMDBkZDY4OWFhNWJjNzZmMTFiDQo+IEF1dGhvcjog
-ICAgICAgIE1pbGVzIENoZW4gPG1pbGVzLmNoZW5AbWVkaWF0ZWsuY29tPg0KPiBBdXRob3JEYXRl
-OiAgICBUaHUsIDEyIFNlcCAyMDE5IDE4OjM0OjUyICswODowMA0KPiBDb21taXR0ZXI6ICAgICBJ
-bmdvIE1vbG5hciA8bWluZ29Aa2VybmVsLm9yZz4NCj4gQ29tbWl0dGVyRGF0ZTogRnJpLCAxMyBT
-ZXAgMjAxOSAwNzo0OToyOCArMDI6MDANCj4gDQo+IHNjaGVkL3BzaTogQ29ycmVjdCBvdmVybHkg
-cGVzc2ltaXN0aWMgc2l6ZSBjYWxjdWxhdGlvbg0KPiANCj4gV2hlbiBwYXNzaW5nIGEgZXF1YWwg
-b3IgbW9yZSB0aGVuIDMyIGJ5dGVzIGxvbmcgc3RyaW5nIHRvIHBzaV93cml0ZSgpLA0KPiBwc2lf
-d3JpdGUoKSBjb3BpZXMgMzEgYnl0ZXMgdG8gaXRzIGJ1ZiBhbmQgb3ZlcndyaXRlcyBidWZbMzBd
-DQo+IHdpdGggJ1wwJy4gV2hpY2ggbWFrZXMgdGhlIGlucHV0IHN0cmluZyAxIGJ5dGUgc2hvcnRl
-ciB0aGFuDQo+IGl0IHNob3VsZCBiZS4NCj4gDQo+IEZpeCBpdCBieSBjb3B5aW5nIHNpemVvZihi
-dWYpIGJ5dGVzIHdoZW4gbmJ5dGVzID49IHNpemVvZihidWYpLg0KPiANCj4gVGhpcyBkb2VzIG5v
-dCBjYXVzZSBwcm9ibGVtcyBpbiBub3JtYWwgdXNlIGNhc2UgbGlrZToNCj4gInNvbWUgNTAwMDAw
-IDEwMDAwMDAwIiBvciAiZnVsbCA1MDAwMDAgMTAwMDAwMDAiIGJlY2F1c2UgdGhleQ0KPiBhcmUg
-bGVzcyB0aGFuIDMyIGJ5dGVzIGluIGxlbmd0aC4NCj4gDQo+IAkvKiBhc3N1bWluZyBuYnl0ZXMg
-PT0gMzUgKi8NCj4gCWNoYXIgYnVmWzMyXTsNCj4gDQo+IAlidWZfc2l6ZSA9IG1pbihuYnl0ZXMs
-IChzaXplb2YoYnVmKSAtIDEpKTsgLyogYnVmX3NpemUgPSAzMSAqLw0KPiAJaWYgKGNvcHlfZnJv
-bV91c2VyKGJ1ZiwgdXNlcl9idWYsIGJ1Zl9zaXplKSkNCj4gCQlyZXR1cm4gLUVGQVVMVDsNCj4g
-DQo+IAlidWZbYnVmX3NpemUgLSAxXSA9ICdcMCc7IC8qIGJ1ZlszMF0gPSAnXDAnICovDQoNCldv
-dWxkbid0IGl0IGJlIGJldHRlciB0byBhbHNvIGFsbG93IHRoZSB1c2VyIHRvIHBhc3MNCmFuIHVu
-dGVybWluYXRlZCBzdHJpbmc/DQpTbyBsZWF2ZSB0aGUgJy0xJyBvbiB0aGUgYXNzaWdubWVudCB0
-byBidWZfc2l6ZSwgYnV0IHJlbW92ZQ0KaXQgZnJvbSB0aGUgbGFzdCBsaW5lLg0KDQoJRGF2aWQN
-Cg0KLQ0KUmVnaXN0ZXJlZCBBZGRyZXNzIExha2VzaWRlLCBCcmFtbGV5IFJvYWQsIE1vdW50IEZh
-cm0sIE1pbHRvbiBLZXluZXMsIE1LMSAxUFQsIFVLDQpSZWdpc3RyYXRpb24gTm86IDEzOTczODYg
-KFdhbGVzKQ0K
+>
+>Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+>Reviewed-by: Avri Altman <avri.altman@wdc.com>
+Reviewed-by: Bean Huo <beanhuo@micron.com>
