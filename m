@@ -1,16 +1,12 @@
 From: Stanley Chu <stanley.chu@mediatek.com>
-Subject: Re: [PATCH v3 1/3] scsi: core: allow auto suspend override by
- low-level driver
-Date: Mon, 16 Sep 2019 23:55:36 +0800
-Message-ID: <1568649336.16730.22.camel@mtkswgap22>
-References: <1568616437-16271-1-git-send-email-stanley.chu@mediatek.com>
- <1568616437-16271-2-git-send-email-stanley.chu@mediatek.com>
- <bebea62f-8ab0-528f-5634-9b3c06f47ef7@acm.org>
+Subject: [PATCH v4 0/3] scsi: core: allow auto suspend override by low-level
+ driver
+Date: Mon, 16 Sep 2019 23:56:48 +0800
+Message-ID: <1568649411-5127-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <bebea62f-8ab0-528f-5634-9b3c06f47ef7@acm.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -20,22 +16,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Bart Van Assche <bvanassche@acm.org>
-Cc: "sthumma@codeaurora.org" <sthumma@codeaurora.org>, "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com" <martin.petersen@oracle.com>, "marc.w.gonzalez@free.fr" <marc.w.gonzalez@free.fr>, "vivek.gautam@codeaurora.org" <vivek.gautam@codeaurora.org>, "kernel-team@android.com" <kernel-team@android.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>, Chun-Hung Wu =?UTF-8?Q?=28=E5=B7=AB=E9=A7=BF=E5=AE=8F=29?= <Chun-hung.Wu@mediatek.com>, Kuohong Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=8B=E9=B4=BB=29?= <kuohong.wang@mediatek.com>, "subhashj@codeaurora.org" <subhashj@codeaurora.org>, "evgreen@chromium.org" <evgreen@chromium.org>, "avri.altman@wdc.com" <avri.altman@wdc.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Peter Wang =?UTF-8?Q?=28=E7=8E=8B=E4=BF=A1=E5=8F=8B=29?= <peter.wang@mediatek.com>, alim.akhtar@samsung.
+To: linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com, pedrom.sousa@synopsys.com, sthumma@codeaurora.org, jejb@linux.ibm.com, bvanassche@acm.org
+Cc: marc.w.gonzalez@free.fr, andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, evgreen@chromium.org, subhashj@codeaurora.org, linux-mediatek@lists.infradead.org, peter.wang@mediatek.com, vivek.gautam@codeaurora.org, matthias.bgg@gmail.com, Stanley Chu <stanley.chu@mediatek.com>, kernel-team@android.com, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Bart,
+Until now the scsi mid-layer forbids runtime suspend till userspace enables it. This is mainly to quarantine some disks with broken runtime power management or have high latencies executing suspend resume callbacks. If the userspace doesn't enable the runtime suspend the underlying hardware will be always on even when it is not doing any useful work and thus wasting power.
 
-> > -
-> > +	unsigned rpm_autosuspend_on:1;	/* Runtime autosuspend */
-> >   	atomic_t disk_events_disable_depth; /* disable depth for disk events */
->     The "_on" part in the variable name "rpm_autosuspend_on" is probably 
-> redundant and the comment could have been more elaborate. Anyway:
+Some low-level drivers for the controllers can efficiently use runtime power management to reduce power consumption and improve battery life.
 
-OK! Thanks for suggestions. Will fix both in next version.
+This patchset allows runtime suspend parameters override within the LLD itself instead of waiting for userspace to control the power management, and make UFS as the first user of this capability.
 
-> 
-> Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+v3 => v4:
+- Change scsi_device->rpm_autosuspend_on to scsi_device->rpm_autosuspend (Bart)
+- Make the comment of scsi_device->rpm_autosuspend more elaborate (Bart)
 
-Thanks,
-Stanley
+v2 => v3:
+- Create a member indicating autosuspend delay for the same SCSI host in SCSI host template (Bart)
+- Use separate variables to control different things, (Bart)
+    (a) Whether or not runtime suspend is enabled at device creation time
+    (b) The power management autosuspend delay
+
+v1 => v2:
+- Allow "zero" sdev->rpm_autosuspend_delay (Avri)
+- Fix format of some lines (Avri)
+
+Stanley Chu (3):
+  scsi: core: allow auto suspend override by low-level driver
+  scsi: ufs: override auto suspend tunables for ufs
+  scsi: ufs-mediatek: enable auto suspend capability
+
+ drivers/scsi/scsi_sysfs.c       |  3 ++-
+ drivers/scsi/sd.c               |  4 ++++
+ drivers/scsi/ufs/ufs-mediatek.c |  3 +++
+ drivers/scsi/ufs/ufshcd.c       |  9 +++++++++
+ drivers/scsi/ufs/ufshcd.h       | 10 ++++++++++
+ include/scsi/scsi_device.h      |  3 ++-
+ include/scsi/scsi_host.h        |  3 +++
+ 7 files changed, 33 insertions(+), 2 deletions(-)
+
+-- 
+2.18.0
