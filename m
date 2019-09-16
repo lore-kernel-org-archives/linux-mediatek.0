@@ -1,15 +1,15 @@
 From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Subject: Re: [RFC PATCH V4 1/4] media: platform: mtk-isp: Add Mediatek
- sensor interface driver
-Date: Mon, 16 Sep 2019 09:28:41 +0800
-Message-ID: <1568597321.26177.9.camel@mtksdaap41>
+Subject: Re: [RFC PATCH V4 3/4] dt-bindings: mt8183: Add sensor interface
+ dt-bindings
+Date: Mon, 16 Sep 2019 13:33:22 +0800
+Message-ID: <1568612002.14078.1.camel@mtksdaap41>
 References: <20190915065004.20257-1-louis.kuo@mediatek.com>
- <20190915065004.20257-2-louis.kuo@mediatek.com>
+ <20190915065004.20257-4-louis.kuo@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190915065004.20257-2-louis.kuo@mediatek.com>
+In-Reply-To: <20190915065004.20257-4-louis.kuo@mediatek.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -24,125 +24,43 @@ Cc: devicetree@vger.kernel.org, Sean.Cheng@mediatek.com, laurent.pinchart+renesa
 List-Id: linux-mediatek@lists.infradead.org
 
 On Sun, 2019-09-15 at 14:50 +0800, Louis Kuo wrote:
-> This patch adds Mediat:ek's sensor interface driver. Sensor interface
-> driver
-> is a MIPI-CSI2 host driver, namely, a HW camera interface controller.
-> It support a widely adopted, simple, high-speed protocol primarily
-> intended
-> for point-to-point image and video transmission between cameras and host
-> devices.
-
-Please properly wrap the commit text and fix typo.
-
-
-> 
-> The mtk-isp directory will contain drivers for multiple IP blocks found in
-> Mediatek ISP system. It will include ISP Pass 1 driver, sensor interface
-> driver, DIP driver and face detection driver.
+> This patch adds the DT binding documentation for the sensor interface
+> module in Mediatek SoCs.
 > 
 > Signed-off-by: Louis Kuo <louis.kuo@mediatek.com>
 > ---
->  drivers/media/platform/Makefile               |    2 +
->  drivers/media/platform/mtk-isp/Makefile       |    3 +
->  .../media/platform/mtk-isp/isp_50/Makefile    |    5 +
->  .../platform/mtk-isp/isp_50/seninf/Makefile   |    6 +
->  .../mtk-isp/isp_50/seninf/mtk_seninf.c        | 1011 +++++++++++++++++
->  .../mtk-isp/isp_50/seninf/mtk_seninf_def.h    |   59 +
->  .../mtk-isp/isp_50/seninf/mtk_seninf_reg.h    |  853 ++++++++++++++
->  7 files changed, 1939 insertions(+)
->  create mode 100644 drivers/media/platform/mtk-isp/Makefile
->  create mode 100644 drivers/media/platform/mtk-isp/isp_50/Makefile
->  create mode 100644 drivers/media/platform/mtk-isp/isp_50/seninf/Makefile
->  create mode 100644 drivers/media/platform/mtk-isp/isp_50/seninf/mtk_seninf.c
->  create mode 100644 drivers/media/platform/mtk-isp/isp_50/seninf/mtk_seninf_def.h
->  create mode 100644 drivers/media/platform/mtk-isp/isp_50/seninf/mtk_seninf_reg.h
+>  .../bindings/media/mediatek-seninf.txt        | 30 +++++++++++++++++++
+>  1 file changed, 30 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek-seninf.txt
 > 
-> diff --git a/drivers/media/platform/Makefile b/drivers/media/platform/Makefile
-> index 7cbbd925124c..b0f4543f2f86 100644
-> --- a/drivers/media/platform/Makefile
-> +++ b/drivers/media/platform/Makefile
-> @@ -73,6 +73,8 @@ obj-$(CONFIG_VIDEO_ROCKCHIP_RGA)	+= rockchip/rga/
->  
->  obj-y	+= omap/
->  
-> +obj-y	+= mtk-isp/
-> +
->  obj-$(CONFIG_VIDEO_AM437X_VPFE)		+= am437x/
->  
->  obj-$(CONFIG_VIDEO_XILINX)		+= xilinx/
-> diff --git a/drivers/media/platform/mtk-isp/Makefile b/drivers/media/platform/mtk-isp/Makefile
+> diff --git a/Documentation/devicetree/bindings/media/mediatek-seninf.txt b/Documentation/devicetree/bindings/media/mediatek-seninf.txt
 > new file mode 100644
-> index 000000000000..c17fb3fc3340
+> index 000000000000..bf2eb801cb47
 > --- /dev/null
-> +++ b/drivers/media/platform/mtk-isp/Makefile
-> @@ -0,0 +1,3 @@
-> +# SPDX-License-Identifier: GPL-2.0
+> +++ b/Documentation/devicetree/bindings/media/mediatek-seninf.txt
+> @@ -0,0 +1,30 @@
+> +* Mediatek seninf MIPI-CSI2 host driver
 > +
-> +obj-y += isp_50/
-> diff --git a/drivers/media/platform/mtk-isp/isp_50/Makefile b/drivers/media/platform/mtk-isp/isp_50/Makefile
-> new file mode 100644
-> index 000000000000..8b4a792328e5
-> --- /dev/null
-> +++ b/drivers/media/platform/mtk-isp/isp_50/Makefile
-> @@ -0,0 +1,5 @@
-> +# SPDX-License-Identifier: GPL-2.0
+> +Seninf MIPI-CSI2 host driver is a HW camera interface controller. It support a widely adopted,
+> +simple, high-speed protocol primarily intended for point-to-point image and video
+> +transmission between cameras and host devices.
 > +
-> +ifeq ($(CONFIG_MTK_SENINF),y)
-> +obj-y += seninf/
-> +endif
+> +Required properties:
+> +  - compatible: "mediatek,mt8183-seninf"
+> +  - reg: Must contain an entry for each entry in reg-names.
+> +  - reg-names: Must include the following entries:
+> +    "base_reg": seninf registers base
+> +    "rx_reg": Rx analog registers base
+
+Everyone here is a reg. Adding _reg prefix for everyone looks redundant.
+Same for clock-names.
 
 
-Please use 'obj-$(CONFIG_MTK_SENINF) += seninf/' instead.
-In fact, as Sakari mention in previous review, you should just remove
-the check.
-
-You should address all comments in previous run, otherwise what's the
-point for resend and the review?
-
-
-> diff --git a/drivers/media/platform/mtk-isp/isp_50/seninf/Makefile b/drivers/media/platform/mtk-isp/isp_50/seninf/Makefile
-> new file mode 100644
-> index 000000000000..bf193feb0ce9
-> --- /dev/null
-> +++ b/drivers/media/platform/mtk-isp/isp_50/seninf/Makefile
-> @@ -0,0 +1,6 @@
-> +# SPDX-License-Identifier: GPL-2.0
+> +  - interrupts: interrupt number to the cpu.
+> +  - clocks : clock name from clock manager
+> +  - clock-names: must be CLK_CAM_SENINF and CLK_TOP_MUX_SENINF.
+> +    It is the clocks of seninf
 > +
-> +MODULE		= mtk_seninf
-> +LIB_FILES	= mtk_seninf
-> +
-> +obj-$(CONFIG_MTK_SENINF) += mtk_seninf.o
-> diff --git a/drivers/media/platform/mtk-isp/isp_50/seninf/mtk_seninf.c b/drivers/media/platform/mtk-isp/isp_50/seninf/mtk_seninf.c
-> new file mode 100644
-> index 000000000000..3253510cf7fd
-> --- /dev/null
-> +++ b/drivers/media/platform/mtk-isp/isp_50/seninf/mtk_seninf.c
-> @@ -0,0 +1,1011 @@
-> +// SPDX-License-Identifier: GPL-2.0
 
-
-<...>
-
-> +
-> +static struct platform_driver seninf_pdrv = {
-> +	.driver	= {
-> +		.name	= "seninf",
-> +		.pm  = &runtime_pm_ops,
-> +		.of_match_table = of_match_ptr(mtk_seninf_of_match),
-> +	},
-> +	.probe	= seninf_probe,
-> +	.remove	= seninf_remove,
-> +};
-> +
-> +module_platform_driver(seninf_pdrv);
-> +
-> +MODULE_DESCRIPTION("MTK seninf driver");
-> +MODULE_AUTHOR("Louis Kuo <louis.kuo@mediatek.com>");
-> +MODULE_LICENSE("GPL v2");
-> +MODULE_ALIAS("MTK:mtk_seninf");
-
-You don't need MODULE_* since this can't be built as module now.
-
-However, I think this should be able to build as module.
 
 Joe.C
