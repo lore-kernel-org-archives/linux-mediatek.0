@@ -1,8 +1,7 @@
 From: Stanley Chu <stanley.chu@mediatek.com>
-Subject: [PATCH v4 1/3] scsi: core: allow auto suspend override by low-level
- driver
-Date: Mon, 16 Sep 2019 23:56:49 +0800
-Message-ID: <1568649411-5127-2-git-send-email-stanley.chu@mediatek.com>
+Subject: [PATCH v4 2/3] scsi: ufs: override auto suspend tunables for ufs
+Date: Mon, 16 Sep 2019 23:56:50 +0800
+Message-ID: <1568649411-5127-3-git-send-email-stanley.chu@mediatek.com>
 References: <1568649411-5127-1-git-send-email-stanley.chu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -25,84 +24,82 @@ List-Id: linux-mediatek@lists.infradead.org
 Rework from previous work by:
 Sujit Reddy Thumma <sthumma@codeaurora.org>
 
-Until now the scsi mid-layer forbids runtime suspend till userspace
-enables it. This is mainly to quarantine some disks with broken
-runtime power management or have high latencies executing suspend
-resume callbacks. If the userspace doesn't enable the runtime suspend
-the underlying hardware will be always on even when it is not doing
-any useful work and thus wasting power.
-
-Some low-level drivers for the controllers can efficiently use runtime
-power management to reduce power consumption and improve battery life.
-Allow runtime suspend parameters override within the LLD itself
-instead of waiting for userspace to control the power management.
+Override auto suspend tunables for UFS device LUNs during
+initialization so as to efficiently manage background operations
+and the power consumption.
 
 Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 Reviewed-by: Avri Altman <avri.altman@wdc.com>
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+Reviewed-by: Bean Huo <beanhuo@micron.com>
 ---
- drivers/scsi/scsi_sysfs.c  | 3 ++-
- drivers/scsi/sd.c          | 4 ++++
- include/scsi/scsi_device.h | 3 ++-
- include/scsi/scsi_host.h   | 3 +++
- 4 files changed, 11 insertions(+), 2 deletions(-)
+ drivers/scsi/ufs/ufshcd.c |  9 +++++++++
+ drivers/scsi/ufs/ufshcd.h | 10 ++++++++++
+ 2 files changed, 19 insertions(+)
 
-diff --git a/drivers/scsi/scsi_sysfs.c b/drivers/scsi/scsi_sysfs.c
-index 64c96c7828ee..cebb9336c02b 100644
---- a/drivers/scsi/scsi_sysfs.c
-+++ b/drivers/scsi/scsi_sysfs.c
-@@ -1300,7 +1300,8 @@ int scsi_sysfs_add_sdev(struct scsi_device *sdev)
- 	device_enable_async_suspend(&sdev->sdev_gendev);
- 	scsi_autopm_get_target(starget);
- 	pm_runtime_set_active(&sdev->sdev_gendev);
--	pm_runtime_forbid(&sdev->sdev_gendev);
-+	if (!sdev->rpm_autosuspend)
-+		pm_runtime_forbid(&sdev->sdev_gendev);
- 	pm_runtime_enable(&sdev->sdev_gendev);
- 	scsi_autopm_put_target(starget);
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 30b752c61b97..60a24fe908e7 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -88,6 +88,9 @@
+ /* Interrupt aggregation default timeout, unit: 40us */
+ #define INT_AGGR_DEF_TO	0x02
  
-diff --git a/drivers/scsi/sd.c b/drivers/scsi/sd.c
-index 149d406aacc9..7358d2b0b2d2 100644
---- a/drivers/scsi/sd.c
-+++ b/drivers/scsi/sd.c
-@@ -3371,6 +3371,10 @@ static int sd_probe(struct device *dev)
- 	}
- 
- 	blk_pm_runtime_init(sdp->request_queue, dev);
-+	if (sdp->rpm_autosuspend) {
-+		pm_runtime_set_autosuspend_delay(dev,
-+			sdp->host->hostt->rpm_autosuspend_delay);
-+	}
- 	device_add_disk(dev, gd, NULL);
- 	if (sdkp->capacity)
- 		sd_dif_config_host(sdkp);
-diff --git a/include/scsi/scsi_device.h b/include/scsi/scsi_device.h
-index 202f4d6a4342..039e289f295e 100644
---- a/include/scsi/scsi_device.h
-+++ b/include/scsi/scsi_device.h
-@@ -199,7 +199,8 @@ struct scsi_device {
- 	unsigned broken_fua:1;		/* Don't set FUA bit */
- 	unsigned lun_in_cdb:1;		/* Store LUN bits in CDB[1] */
- 	unsigned unmap_limit_for_ws:1;	/* Use the UNMAP limit for WRITE SAME */
--
-+	unsigned rpm_autosuspend:1;	/* Enable runtime autosuspend at device
-+					 * creation time */
- 	atomic_t disk_events_disable_depth; /* disable depth for disk events */
- 
- 	DECLARE_BITMAP(supported_events, SDEV_EVT_MAXBITS); /* supported events */
-diff --git a/include/scsi/scsi_host.h b/include/scsi/scsi_host.h
-index cc139dbd71e5..3cb64f0a7e3a 100644
---- a/include/scsi/scsi_host.h
-+++ b/include/scsi/scsi_host.h
-@@ -474,6 +474,9 @@ struct scsi_host_template {
- 	 */
- 	unsigned int cmd_size;
- 	struct scsi_host_cmd_pool *cmd_pool;
++/* default delay of autosuspend: 2000 ms */
++#define RPM_AUTOSUSPEND_DELAY_MS 2000
 +
-+	/* Delay for runtime autosuspend */
-+	int rpm_autosuspend_delay;
+ #define ufshcd_toggle_vreg(_dev, _vreg, _on)				\
+ 	({                                                              \
+ 		int _ret;                                               \
+@@ -4612,9 +4615,14 @@ static int ufshcd_change_queue_depth(struct scsi_device *sdev, int depth)
+  */
+ static int ufshcd_slave_configure(struct scsi_device *sdev)
+ {
++	struct ufs_hba *hba = shost_priv(sdev->host);
+ 	struct request_queue *q = sdev->request_queue;
+ 
+ 	blk_queue_update_dma_pad(q, PRDT_DATA_BYTE_COUNT_PAD - 1);
++
++	if (ufshcd_is_rpm_autosuspend_allowed(hba))
++		sdev->rpm_autosuspend = 1;
++
+ 	return 0;
+ }
+ 
+@@ -7041,6 +7049,7 @@ static struct scsi_host_template ufshcd_driver_template = {
+ 	.track_queue_depth	= 1,
+ 	.sdev_groups		= ufshcd_driver_groups,
+ 	.dma_boundary		= PAGE_SIZE - 1,
++	.rpm_autosuspend_delay	= RPM_AUTOSUSPEND_DELAY_MS,
  };
  
- /*
+ static int ufshcd_config_vreg_load(struct device *dev, struct ufs_vreg *vreg,
+diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
+index a43c7135f33d..99ea416519af 100644
+--- a/drivers/scsi/ufs/ufshcd.h
++++ b/drivers/scsi/ufs/ufshcd.h
+@@ -714,6 +714,12 @@ struct ufs_hba {
+ 	 * the performance of ongoing read/write operations.
+ 	 */
+ #define UFSHCD_CAP_KEEP_AUTO_BKOPS_ENABLED_EXCEPT_SUSPEND (1 << 5)
++	/*
++	 * This capability allows host controller driver to automatically
++	 * enable runtime power management by itself instead of waiting
++	 * for userspace to control the power management.
++	 */
++#define UFSHCD_CAP_RPM_AUTOSUSPEND (1 << 6)
+ 
+ 	struct devfreq *devfreq;
+ 	struct ufs_clk_scaling clk_scaling;
+@@ -747,6 +753,10 @@ static inline bool ufshcd_can_autobkops_during_suspend(struct ufs_hba *hba)
+ {
+ 	return hba->caps & UFSHCD_CAP_AUTO_BKOPS_SUSPEND;
+ }
++static inline bool ufshcd_is_rpm_autosuspend_allowed(struct ufs_hba *hba)
++{
++	return hba->caps & UFSHCD_CAP_RPM_AUTOSUSPEND;
++}
+ 
+ static inline bool ufshcd_is_intr_aggr_allowed(struct ufs_hba *hba)
+ {
 -- 
 2.18.0
