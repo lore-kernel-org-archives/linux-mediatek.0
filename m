@@ -1,105 +1,99 @@
-From: Stanley Chu <stanley.chu@mediatek.com>
-Subject: [PATCH v4 2/3] scsi: ufs: override auto suspend tunables for ufs
-Date: Mon, 16 Sep 2019 23:56:50 +0800
-Message-ID: <1568649411-5127-3-git-send-email-stanley.chu@mediatek.com>
-References: <1568649411-5127-1-git-send-email-stanley.chu@mediatek.com>
+From: Andrey Ryabinin <aryabinin@virtuozzo.com>
+Subject: Re: [PATCH v3] mm/kasan: dump alloc and free stack for page allocator
+Date: Mon, 16 Sep 2019 18:57:23 +0300
+Message-ID: <4e76e7ce-1d61-524a-622b-663c01d19707@virtuozzo.com>
+References: <20190911083921.4158-1-walter-zh.wu@mediatek.com>
+ <5E358F4B-552C-4542-9655-E01C7B754F14@lca.pw>
+ <c4d2518f-4813-c941-6f47-73897f420517@suse.cz>
+ <1568297308.19040.5.camel@mtksdccf07>
+ <613f9f23-c7f0-871f-fe13-930c35ef3105@suse.cz>
+ <79fede05-735b-8477-c273-f34db93fd72b@virtuozzo.com>
+ <6d58ce86-b2a4-40af-bf40-c604b457d086@suse.cz>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1568649411-5127-1-git-send-email-stanley.chu@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com, pedrom.sousa@synopsys.com, sthumma@codeaurora.org, jejb@linux.ibm.com, bvanassche@acm.org
-Cc: marc.w.gonzalez@free.fr, andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, evgreen@chromium.org, subhashj@codeaurora.org, linux-mediatek@lists.infradead.org, peter.wang@mediatek.com, vivek.gautam@codeaurora.org, matthias.bgg@gmail.com, Stanley Chu <stanley.chu@mediatek.com>, kernel-team@android.com, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <6d58ce86-b2a4-40af-bf40-c604b457d086@suse.cz>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Vlastimil Babka <vbabka@suse.cz>, Walter Wu <walter-zh.wu@mediatek.com>
+Cc: Qian Cai <cai@lca.pw>, Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Andrey Konovalov <andreyknvl@google.com>, Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org, kasan-dev@googlegroups.com, linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Rework from previous work by:
-Sujit Reddy Thumma <sthumma@codeaurora.org>
+On 9/16/19 12:42 PM, Vlastimil Babka wrote:
+> On 9/12/19 7:05 PM, Andrey Ryabinin wrote:
+>>
+>> Or another alternative option (and actually easier one to implement), leave PAGE_OWNER as is (no "select"s in Kconfigs)
+>> Make PAGE_OWNER_FREE_STACK like this:
+>>
+>> +config PAGE_OWNER_FREE_STACK
+>> +	def_bool KASAN || DEBUG_PAGEALLOC
+>> +	depends on PAGE_OWNER
+>> +
+>>
+>> So, users that want alloc/free stack will have to enable CONFIG_PAGE_OWNER=y and add page_owner=on to boot cmdline.
+>>
+>>
+>> Basically the difference between these alternative is whether we enable page_owner by default or not. But there is always a possibility to disable it.
+> 
+> OK, how about this?
+> 
+ ...
 
-Override auto suspend tunables for UFS device LUNs during
-initialization so as to efficiently manage background operations
-and the power consumption.
+> diff --git a/mm/page_alloc.c b/mm/page_alloc.c
+> index c5d62f1c2851..d9e44671af3f 100644
+> --- a/mm/page_alloc.c
+> +++ b/mm/page_alloc.c
+> @@ -710,8 +710,12 @@ static int __init early_debug_pagealloc(char *buf)
+>  	if (kstrtobool(buf, &enable))
+>  		return -EINVAL;
+>  
+> -	if (enable)
+> +	if (enable) {
+>  		static_branch_enable(&_debug_pagealloc_enabled);
+> +#ifdef CONFIG_PAGE_OWNER
+> +		page_owner_free_stack_disabled = false;
 
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-Reviewed-by: Avri Altman <avri.altman@wdc.com>
-Reviewed-by: Bean Huo <beanhuo@micron.com>
----
- drivers/scsi/ufs/ufshcd.c |  9 +++++++++
- drivers/scsi/ufs/ufshcd.h | 10 ++++++++++
- 2 files changed, 19 insertions(+)
+I think this won't work with CONFIG_DEBUG_PAGEALLOC_ENABLE_DEFAULT=y
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 30b752c61b97..60a24fe908e7 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -88,6 +88,9 @@
- /* Interrupt aggregation default timeout, unit: 40us */
- #define INT_AGGR_DEF_TO	0x02
+> +#endif
+> +	}
+>  
+>  	return 0;
+>  }
+> diff --git a/mm/page_owner.c b/mm/page_owner.c
+> index dee931184788..b589bfbc4795 100644
+> --- a/mm/page_owner.c
+> +++ b/mm/page_owner.c
+> @@ -24,13 +24,15 @@ struct page_owner {
+>  	short last_migrate_reason;
+>  	gfp_t gfp_mask;
+>  	depot_stack_handle_t handle;
+> -#ifdef CONFIG_DEBUG_PAGEALLOC
+> +#ifdef CONFIG_PAGE_OWNER_FREE_STACK
+>  	depot_stack_handle_t free_handle;
+>  #endif
+>  };
+>  
+>  static bool page_owner_disabled = true;
+> +bool page_owner_free_stack_disabled = true;
+>  DEFINE_STATIC_KEY_FALSE(page_owner_inited);
+> +static DEFINE_STATIC_KEY_FALSE(page_owner_free_stack);
+>  
+>  static depot_stack_handle_t dummy_handle;
+>  static depot_stack_handle_t failure_handle;
+> @@ -46,6 +48,9 @@ static int __init early_page_owner_param(char *buf)
+>  	if (strcmp(buf, "on") == 0)
+>  		page_owner_disabled = false;
+>  
+> +	if (!page_owner_disabled && IS_ENABLED(CONFIG_KASAN))
+
+I'd rather keep all logic in one place, i.e. "if (!page_owner_disabled && (IS_ENABLED(CONFIG_KASAN) || debug_pagealloc_enabled())"
+With this no changes in early_debug_pagealloc() required and CONFIG_DEBUG_PAGEALLOC_ENABLE_DEFAULT=y should also work correctly.
+
+> +		page_owner_free_stack_disabled = false;
+> +
+>  	return 0;
+>  }
+>  early_param("page_owner", early_page_owner_param);
  
-+/* default delay of autosuspend: 2000 ms */
-+#define RPM_AUTOSUSPEND_DELAY_MS 2000
-+
- #define ufshcd_toggle_vreg(_dev, _vreg, _on)				\
- 	({                                                              \
- 		int _ret;                                               \
-@@ -4612,9 +4615,14 @@ static int ufshcd_change_queue_depth(struct scsi_device *sdev, int depth)
-  */
- static int ufshcd_slave_configure(struct scsi_device *sdev)
- {
-+	struct ufs_hba *hba = shost_priv(sdev->host);
- 	struct request_queue *q = sdev->request_queue;
- 
- 	blk_queue_update_dma_pad(q, PRDT_DATA_BYTE_COUNT_PAD - 1);
-+
-+	if (ufshcd_is_rpm_autosuspend_allowed(hba))
-+		sdev->rpm_autosuspend = 1;
-+
- 	return 0;
- }
- 
-@@ -7041,6 +7049,7 @@ static struct scsi_host_template ufshcd_driver_template = {
- 	.track_queue_depth	= 1,
- 	.sdev_groups		= ufshcd_driver_groups,
- 	.dma_boundary		= PAGE_SIZE - 1,
-+	.rpm_autosuspend_delay	= RPM_AUTOSUSPEND_DELAY_MS,
- };
- 
- static int ufshcd_config_vreg_load(struct device *dev, struct ufs_vreg *vreg,
-diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-index a43c7135f33d..99ea416519af 100644
---- a/drivers/scsi/ufs/ufshcd.h
-+++ b/drivers/scsi/ufs/ufshcd.h
-@@ -714,6 +714,12 @@ struct ufs_hba {
- 	 * the performance of ongoing read/write operations.
- 	 */
- #define UFSHCD_CAP_KEEP_AUTO_BKOPS_ENABLED_EXCEPT_SUSPEND (1 << 5)
-+	/*
-+	 * This capability allows host controller driver to automatically
-+	 * enable runtime power management by itself instead of waiting
-+	 * for userspace to control the power management.
-+	 */
-+#define UFSHCD_CAP_RPM_AUTOSUSPEND (1 << 6)
- 
- 	struct devfreq *devfreq;
- 	struct ufs_clk_scaling clk_scaling;
-@@ -747,6 +753,10 @@ static inline bool ufshcd_can_autobkops_during_suspend(struct ufs_hba *hba)
- {
- 	return hba->caps & UFSHCD_CAP_AUTO_BKOPS_SUSPEND;
- }
-+static inline bool ufshcd_is_rpm_autosuspend_allowed(struct ufs_hba *hba)
-+{
-+	return hba->caps & UFSHCD_CAP_RPM_AUTOSUSPEND;
-+}
- 
- static inline bool ufshcd_is_intr_aggr_allowed(struct ufs_hba *hba)
- {
--- 
-2.18.0
