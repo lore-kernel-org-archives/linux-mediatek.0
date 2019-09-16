@@ -1,15 +1,15 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH v3 3/7] usb: mtu3: support ip-sleep wakeup for MT8183
-Date: Mon, 16 Sep 2019 13:45:47 +0800
-Message-ID: <1568612747.7317.72.camel@mhfsdcap03>
-References: <1567150854-30033-1-git-send-email-chunfeng.yun@mediatek.com>
- <1567150854-30033-4-git-send-email-chunfeng.yun@mediatek.com>
- <20190911184453.GA2628@roeck-us.net>
+From: Stanley Chu <stanley.chu@mediatek.com>
+Subject: Re: [PATCH v2 3/3] scsi: ufs-mediatek: enable auto suspend capability
+Date: Mon, 16 Sep 2019 14:29:52 +0800
+Message-ID: <1568615392.16730.17.camel@mtkswgap22>
+References: <1568270135-32442-1-git-send-email-stanley.chu@mediatek.com>
+ <1568270135-32442-4-git-send-email-stanley.chu@mediatek.com>
+ <160452c7-c53c-155c-49a9-4365166032a8@acm.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190911184453.GA2628@roeck-us.net>
+In-Reply-To: <160452c7-c53c-155c-49a9-4365166032a8@acm.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -19,49 +19,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Guenter Roeck <linux@roeck-us.net>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+To: Bart Van Assche <bvanassche@acm.org>
+Cc: sthumma@codeaurora.org, linux-scsi@vger.kernel.org, martin.petersen@oracle.com, marc.w.gonzalez@free.fr, vivek.gautam@codeaurora.org, subhashj@codeaurora.org, jejb@linux.ibm.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, evgreen@chromium.org, avri.altman@wdc.com, linux-mediatek@lists.infradead.org, peter.wang@mediatek.com, alim.akhtar@samsung.com, andy.teng@mediatek.com, matthias.bgg@gmail.com, pedrom.sousa@synopsys.com, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gV2VkLCAyMDE5LTA5LTExIGF0IDExOjQ0IC0wNzAwLCBHdWVudGVyIFJvZWNrIHdyb3RlOgo+
-IE9uIEZyaSwgQXVnIDMwLCAyMDE5IGF0IDAzOjQwOjUwUE0gKzA4MDAsIENodW5mZW5nIFl1biB3
-cm90ZToKPiA+IFN1cHBvcnQgVVNCIHdha2V1cCBieSBpcC1zbGVlcCBtb2RlIGZvciBNVDgxODMs
-IGl0J3Mgc2ltaWxhciB0bwo+ID4gTVQ4MTczCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IENodW5m
-ZW5nIFl1biA8Y2h1bmZlbmcueXVuQG1lZGlhdGVrLmNvbT4KPiA+IC0tLQo+ID4gdjM6IGNoYW5n
-ZXMgbWljcm9zIGRlZmluZQo+ID4gCj4gPiB2Mjogbm8gY2hhbmdlcwo+ID4gLS0tCj4gPiAgZHJp
-dmVycy91c2IvbXR1My9tdHUzX2hvc3QuYyB8IDE0ICsrKysrKysrKysrKystCj4gPiAgMSBmaWxl
-IGNoYW5nZWQsIDEzIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPiA+IAo+ID4gZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvdXNiL210dTMvbXR1M19ob3N0LmMgYi9kcml2ZXJzL3VzYi9tdHUzL210
-dTNfaG9zdC5jCj4gPiBpbmRleCBjODcxYjk0ZjNlNmYuLjRmODIwODg4NWViZCAxMDA2NDQKPiA+
-IC0tLSBhL2RyaXZlcnMvdXNiL210dTMvbXR1M19ob3N0LmMKPiA+ICsrKyBiL2RyaXZlcnMvdXNi
-L210dTMvbXR1M19ob3N0LmMKPiA+IEBAIC0xOCw2ICsxOCwxMiBAQAo+ID4gICNpbmNsdWRlICJt
-dHUzLmgiCj4gPiAgI2luY2x1ZGUgIm10dTNfZHIuaCIKPiA+ICAKPiA+ICsvKiBtdDgxODMgZXRj
-ICovCj4gPiArI2RlZmluZSBQRVJJX1dLX0NUUkwwCTB4MjAKPiA+ICsjZGVmaW5lIFdDMF9JU19D
-KHgpCSgoKHgpICYgMHhmKSA8PCAyOCkgIC8qIGN5Y2xlIGRlYm91bmNlICovCj4gPiArI2RlZmlu
-ZSBXQzBfSVNfUAlCSVQoMTIpCS8qIHBvbGFyaXR5ICovCj4gPiArI2RlZmluZSBXQzBfSVNfRU4J
-QklUKDYpCj4gPiArCj4gCj4gRm9yIDY0LWJpdCBidWlsZHMsIHRoaXMgcmVzdWx0cyBpbjoKPiAK
-PiBkcml2ZXJzL3VzYi9tdHUzL210dTNfaG9zdC5jOiBJbiBmdW5jdGlvbiDigJhzc3VzYl93YWtl
-dXBfaXBfc2xlZXBfc2V04oCZOgo+IC4vaW5jbHVkZS9saW51eC9iaXRzLmg6NjoxOTogd2Fybmlu
-ZzoKPiAJY29udmVyc2lvbiBmcm9tIOKAmGxvbmcgdW5zaWduZWQgaW504oCZIHRvIOKAmHUzMuKA
-mSB7YWthIOKAmHVuc2lnbmVkIGludOKAmX0KPiAJY2hhbmdlcyB2YWx1ZSBmcm9tIOKAmDE4NDQ2
-NzQ0MDczNDQxMTIwMzIw4oCZIHRvIOKAmDQwMjY1MzYwMDDigJkgWy1Xb3ZlcmZsb3ddCj4gCj4g
-c2luY2UgV0MwX0lTX0MoKSBpcyBzaWduIGV4dGVuZGVkIHRvIDY0IGJpdCBhbmQgdGhlbiB0cnVu
-Y2F0ZWQuCkdvdCBpdCwgdGhhbmtzIGEgbG90Cgo+IAo+IE9ic2VydmVkIHdpdGggZ2NjIDcuNC4w
-IGFuZCA4LjMuMC4KPiAKPiBHdWVudGVyCj4gCj4gPiAgLyogbXQ4MTczIGV0YyAqLwo+ID4gICNk
-ZWZpbmUgUEVSSV9XS19DVFJMMQkweDQKPiA+ICAjZGVmaW5lIFdDMV9JU19DKHgpCSgoKHgpICYg
-MHhmKSA8PCAyNikgIC8qIGN5Y2xlIGRlYm91bmNlICovCj4gPiBAQCAtMzAsNyArMzYsOCBAQAo+
-ID4gICNkZWZpbmUgU1NDX1NQTV9JTlRfRU4JCUJJVCgxKQo+ID4gIAo+ID4gIGVudW0gc3N1c2Jf
-dXdrX3ZlcnMgewo+ID4gLQlTU1VTQl9VV0tfVjEgPSAxLAo+ID4gKwlTU1VTQl9VV0tfVjAgPSAw
-LAo+ID4gKwlTU1VTQl9VV0tfVjEsCj4gPiAgCVNTVVNCX1VXS19WMiwKPiA+ICB9Owo+ID4gIAo+
-ID4gQEAgLTQzLDYgKzUwLDExIEBAIHN0YXRpYyB2b2lkIHNzdXNiX3dha2V1cF9pcF9zbGVlcF9z
-ZXQoc3RydWN0IHNzdXNiX210ayAqc3N1c2IsIGJvb2wgZW5hYmxlKQo+ID4gIAl1MzIgcmVnLCBt
-c2ssIHZhbDsKPiA+ICAKPiA+ICAJc3dpdGNoIChzc3VzYi0+dXdrX3ZlcnMpIHsKPiA+ICsJY2Fz
-ZSBTU1VTQl9VV0tfVjA6Cj4gPiArCQlyZWcgPSBzc3VzYi0+dXdrX3JlZ19iYXNlICsgUEVSSV9X
-S19DVFJMMDsKPiA+ICsJCW1zayA9IFdDMF9JU19FTiB8IFdDMF9JU19DKDB4ZikgfCBXQzBfSVNf
-UDsKPiA+ICsJCXZhbCA9IGVuYWJsZSA/IChXQzBfSVNfRU4gfCBXQzBfSVNfQygweDgpKSA6IDA7
-Cj4gPiArCQlicmVhazsKPiA+ICAJY2FzZSBTU1VTQl9VV0tfVjE6Cj4gPiAgCQlyZWcgPSBzc3Vz
-Yi0+dXdrX3JlZ19iYXNlICsgUEVSSV9XS19DVFJMMTsKPiA+ICAJCW1zayA9IFdDMV9JU19FTiB8
-IFdDMV9JU19DKDB4ZikgfCBXQzFfSVNfUDsKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgt
-YXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
+Hi Bart,
+
+
+> > @@ -147,6 +152,8 @@ static int ufs_mtk_init(struct ufs_hba *hba)
+> >  	if (err)
+> >  		goto out_variant_clear;
+> >  
+> > +	ufs_mtk_set_caps(hba);
+> > +
+> >  	/*
+> >  	 * ufshcd_vops_init() is invoked after
+> >  	 * ufshcd_setup_clock(true) in ufshcd_hba_init() thus
+> 
+> Please inline the ufs_mtk_set_caps() function. Introducing single line
+> functions like is done in this patch doesn't improve readability.
+> 
+
+OK! Will be fixed in next version.
+
+Thanks,
+Stanley
