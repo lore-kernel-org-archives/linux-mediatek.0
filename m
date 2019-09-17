@@ -1,123 +1,176 @@
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Subject: Re: [PATCH v1 2/2] of: Let of_for_each_phandle fallback to
- non-negative cell_count
-Date: Tue, 17 Sep 2019 14:52:31 +0200
-Message-ID: <CAMuHMdXk5uSk-v4vYVR1YO46gQd0mRYy5eEM6wOHqgkRTfyn-g@mail.gmail.com>
-References: <20190824132846.8589-1-u.kleine-koenig@pengutronix.de>
- <20190824132846.8589-2-u.kleine-koenig@pengutronix.de> <20190913215809.GA11833@bogus>
- <CAMuHMdV+pwoAA0zH_vQf2nKqzrgHP8rcMStyJbnuu2qviFC_qg@mail.gmail.com>
- <20190917101303.t5otztdus7y3ayau@pengutronix.de> <489c90fb-a135-4fd8-ecb9-46404bd3c234@axentia.se>
- <20190917122530.3xy7sut3xdvzlomj@pengutronix.de>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: Mainline kernel for Gemini PDA (MT6797*)
+Date: Tue, 17 Sep 2019 16:08:51 +0200
+Message-ID: <d127a5d6-6525-d638-7090-765bcd4dd592@gmail.com>
+References: <CABvHX8jSL=UrZ8iVXPOmHEMOm7fkNCim3P0hepOcQB=hP2pGyA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190917122530.3xy7sut3xdvzlomj@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Peter Rosin <peda@axentia.se>, Rob Herring <robh@kernel.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Will Deacon <will@kernel.org>, Joerg Roedel <joro@8bytes.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux IOMMU <iommu@lists.linux-foundation.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Frank Rowand <frowand.list@gmail.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Robin Murphy <robin.murphy@arm.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Linux I2C <linux-i2c@vger.kernel.org>, Linux-Renesas <linux-renesas-soc@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CABvHX8jSL=UrZ8iVXPOmHEMOm7fkNCim3P0hepOcQB=hP2pGyA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Adam Boardman <adamboardman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Fran Quinto <fran.quinto-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Uwe,
 
-On Tue, Sep 17, 2019 at 2:25 PM Uwe Kleine-König
-<u.kleine-koenig@pengutronix.de> wrote:
-> On Tue, Sep 17, 2019 at 11:25:46AM +0000, Peter Rosin wrote:
-> > On 2019-09-17 12:13, Uwe Kleine-König wrote:
-> > > On Tue, Sep 17, 2019 at 11:40:25AM +0200, Geert Uytterhoeven wrote:
-> > >> On Fri, Sep 13, 2019 at 11:58 PM Rob Herring <robh@kernel.org> wrote:
-> > >>> On Sat, 24 Aug 2019 15:28:46 +0200, =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?=          wrote:
-> > >>>> Referencing device tree nodes from a property allows to pass arguments.
-> > >>>> This is for example used for referencing gpios. This looks as follows:
-> > >>>>
-> > >>>>       gpio_ctrl: gpio-controller {
-> > >>>>               #gpio-cells = <2>
-> > >>>>               ...
-> > >>>>       }
-> > >>>>
-> > >>>>       someothernode {
-> > >>>>               gpios = <&gpio_ctrl 5 0 &gpio_ctrl 3 0>;
-> > >>>>               ...
-> > >>>>       }
-> > >>>>
-> > >>>> To know the number of arguments this must be either fixed, or the
-> > >>>> referenced node is checked for a $cells_name (here: "#gpio-cells")
-> > >>>> property and with this information the start of the second reference can
-> > >>>> be determined.
-> > >>>>
-> > >>>> Currently regulators are referenced with no additional arguments. To
-> > >>>> allow some optional arguments without having to change all referenced
-> > >>>> nodes this change introduces a way to specify a default cell_count. So
-> > >>>> when a phandle is parsed we check for the $cells_name property and use
-> > >>>> it as before if present. If it is not present we fall back to
-> > >>>> cells_count if non-negative and only fail if cells_count is smaller than
-> > >>>> zero.
-> > >>>>
-> > >>>> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
-> > >>
-> > >> This is now commit e42ee61017f58cd9 ("of: Let of_for_each_phandle fallback
-> > >> to non-negative cell_count") in robh/for-next, which causes a lock-up when
-> > >> booting a shmobile_defconfig kernel on r8a7791/koelsch:
-> > >>
-> > >> rcu: INFO: rcu_sched self-detected stall on CPU
 
-> Oh yeah, you're right. I'm a bit disappointed that I didn't spot this
-> myself :-|
->
-> Untested patch to fix this problem:
->
-> diff --git a/drivers/of/base.c b/drivers/of/base.c
-> index 2f25d2dfecfa..26f7a21d7187 100644
-> --- a/drivers/of/base.c
-> +++ b/drivers/of/base.c
-> @@ -1284,6 +1284,13 @@ int of_phandle_iterator_init(struct of_phandle_iterator *it,
->         const __be32 *list;
->         int size;
->
-> +       /*
-> +        * one of cell_count or cells_name must be provided to determine the
-> +        * argument length.
-> +        */
-> +       if (cell_count < 0 && !cells_name)
-> +               return -EINVAL;
-> +
->         memset(it, 0, sizeof(*it));
->
->         list = of_get_property(np, list_name, &size);
-> @@ -1765,6 +1772,18 @@ int of_count_phandle_with_args(const struct device_node *np, const char *list_na
->         struct of_phandle_iterator it;
->         int rc, cur_index = 0;
->
-> +       /* If cells_name is NULL we assume an cell_count of 0 */
+On 16/09/2019 21:35, Adam Boardman wrote:
+> I'm new to kernel work and I've started working on trying to get a
+> mainline kernel build working for the Gemini PDA (X25/X27 - MT6797*).
+> 
+> I've pulled in a recent mainline[1] and then added Jasper's fixes[2]
+> and Jimmy-Yj's[3], then tried turning on Manivannan's[4] pinctrl
 
-a cell count
+Jaspers clock fixes are upstream, same for the pinctrl. We are missing the
+SCPSYS part. Seems it fall through my cracks. If you want then just rebase and
+resend it with your Signed-off-by and I can review them.
 
-> +       if (cells_name == NULL) {
-> +               const __be32 *list;
-> +               int size;
-> +
-> +               list = of_get_property(np, list_name, &size);
-> +               if (!list)
-> +                       return -ENOENT;
-> +
-> +               return size / sizeof(*list);
-> +       }
-> +
->         rc = of_phandle_iterator_init(&it, np, list_name, cells_name, -1);
->         if (rc)
->                 return rc;
+> driver and adding a couple of simple device drivers (vibrator & led
+> controller). Neither work as not enough other things are ported or
+> things on the mainline have changed in incompatible ways.
+> 
+> The mt6397_probe (for MT6351) fails at the dev_get_regmap stage. Which
+> looks to be related to the mt6797 picking Paris (pinctrl v2) for this
+> device which has none of the regmap code that only features in Moore?
+> 
 
-Thanks, that fixes the boot for me!
+Adding Sean as he is pretty much into the pinctrl implementation of MediaTek.
 
-Tested-by: Geert Uytterhoeven <geert+renesas@glider.be>
+> The current state is that I can boot to a BusyBox shell over a
+> USB-UART cable[5], mount the debugfs etc. Best not to stay there too
 
-Gr{oetje,eeting}s,
+Nice, didn't know the USB-UART cable works.
 
-                        Geert
+> long as the chip soon overheats, 20-30 mins is enough such that after
+> a reboot to a working 3.18 kernel it will only mount the file system
+> read-only due to thermal overload, give it a few mins to cool, another
+> reboot and its all good again.
+> 
+> For the over heating I suspect the fact that Jasper commented out the
+> cpu-idle-states could be related, though there are so many parts to
+> these cpus I wouldn't be certain. Putting the idle states back results
+> in a booting kernel to the point that the initramfs calls 'udevadm
+> settle' and freezes there or in the subsequent call to the busybox
+> shell.
+> 
 
--- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+Did you try the plain upstream versions? Any of the two [1] [2] should bring you
+to pretty much the same point, serial console with a busybox initramfs.
+I personally don't have the Gemini PDA but the 96 board [3], but I didn't
+experienced any over-heating.
 
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+> I might need to investigate extra devices which I see no mention of so
+> far in the gemini pda dts[6]. So any advice on the right order or any
+> examples for other similar devices would be great. Also how to
+> test/verify each one is working correctly? I'm not requesting the full
+> list ordered, just the top 5-10 items that'll get me to a stable state
+> where the device can live without likelihood of damage. I can than
+> pick off the others as I choose, quite a lot are obvious from the
+> names. The power management+thermal side strikes me as a good first
+> focus?
+
+As a good first focus I'd try to get the MMC driver working. I started on this
+some time ago but got side tracked. From what I saw, you need to implement
+pmic_wrapper and pmic as you will need some regulator for the MMC.
+I had a quick look on the pmic/pmic_wrapper in the repo you mentioned. Maybe
+Mars (in CC) can help with his knowledge to understand if we can re-use an
+already implemented pmic/pmic_wrapper or if we have to enhance them/write new
+drivers.
+
+> 
+> Whats the mainline status for battery and charge support, the 3.18 kernel has:
+> MTK_SMART_BATTERY, MTK_HAFG_20 and MTK_PUMP_EXPRESS_PLUS_SUPPORT
+> Anyone working on their equivalent?
+
+Not that I'm aware of.
+
+> 
+> For the i2c busses to have a chance to work I would also need to
+> define: mtk_i2c_compatible mt6797_compat in
+> drivers/i2c/busses/i2c-mt65xx.c but I've no idea how to extract the
+> needed values from the 3.18 source as the code is too different to
+> easily know what to look for. Indications from pinctrl-mt8183.txt
+
+Yes, the downstream mt6797 kernel code is heavily modified and it's difficult to
+understand what's the exact difference.
+
+> suggest that I might also need to add i2c0_pins_a style references to
+> pio: pinctrl but the 8183 device appears to have no i2c just spi, and
+> then pinctrl-mt6797.txt has no mention of i2c, is that the case? again
+> I'll need a pointer in the direction of figuring out the values.
+
+I think the datasheets [4] should tell you which PINs have i2c functionality.
+You could try to use the schematics of the reference board [5] maybe you are
+luky and they haven't swapped the pins.
+
+> 
+> I have only publicly available data sheets so far[7], and the original
+> kernel[8].
+> 
+> I've left in Jaspers cmdline force to limit it to one cpu, I don't
+> know if this is necessary, usually this is overridden by lk to limit
+> it to 5. Also of possible interest I've put in Jaspers mt6797 debugfs
+> and whilst some bits of it now work I've no great notion of how to
+> make use of it.
+
+I don't think this is necessary. AFAIR I can boot without limiting the CPUs.
+
+> 
+> Any help greatly appreciated,
+> 
+
+I'm happy to see you are interested in mt6797 upstreaming.
+Hope my respond helps.
+
+See you,
+Matthias
+
+[1]
+https://elixir.bootlin.com/linux/latest/source/arch/arm64/boot/dts/mediatek/mt6797-evb.dts
+[2]
+https://elixir.bootlin.com/linux/latest/source/arch/arm64/boot/dts/mediatek/mt6797-x20-dev.dts
+[3] https://www.96boards.org/product/mediatek-x20/
+[4] https://www.96boards.org/documentation/consumer/mediatekx20/additional-docs/
+[5] https://www.96boards.org/documentation/consumer/mediatekx20/hardware-docs/
+
+> Adam.
+> 
+> PS: The Cosmo Communicator has the P70 so this will all need doing
+> again for the MT6771, anyone started on that?
+> 
+> --
+> 
+> [1] - https://github.com/gemian/linux (working branch)
+> [2] - https://github.com/Jasu/gemini-pda-buildroot (2/3 patches mainlined)
+> [3] - https://patchwork.kernel.org/patch/9889457/ (and related)
+> [4] - https://patchwork.kernel.org/patch/10672803/ (already in mainline)
+> [5] - https://www.omegamoon.com/blog/index.php?entry=entry180626-210224
+> [6] - Long list of items from 3.18 dts as yet unknown to mainline -
+> power_gs, toprgu, sleep, mcucfg, rt5735, pericfg, dramc, gpio, apxgpt,
+> rsvd, hacc, fhctl, devapc, ddrphy, bat_meter, topmisc, mdcldma,
+> aes_top, mcumixed, mcufhctl, c2kmisc, modem_temp, scpdvfs, emi,
+> sys_cirq, m4u, efusec, gce, cqdma, mipi, gic/gic1, pwm, spi,
+> therm_ctrl, eem_fsm, btif, dvfsp, itrx, audiosys, usb, xhci, mjcsys,
+> mfgsys, mali, dispsys, mdp, disp, smi, dip, dpe, consys, wifi, camsys,
+> vcorefs, pmic_clock_buffer_ctrl, ext_buck, chr, fusb301a, sii9022,
+> sm100, accdet, swtp, battery, gps, gsensor, humidity, gyro, hall,
+> switch, fpc1145, als, gpio_usage_mapping, cap_touch, solomon_touch,
+> aeon_gpio
+> [7] - https://github.com/gemian/gemian/wiki/HardwareHacking
+> [8] - https://github.com/gemian/gemini-linux-kernel-3.18
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> 
