@@ -1,49 +1,88 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [V2, 1/2] media: dt-bindings: media: i2c: Add bindings for ov8856
-Date: Tue, 17 Sep 2019 09:44:12 -0500
-Message-ID: <20190917144412.GA23952@bogus>
-References: <20190910130446.26413-1-dongchun.zhu@mediatek.com>
- <20190910130446.26413-2-dongchun.zhu@mediatek.com>
- <20190910173743.GI2680@smile.fi.intel.com>
- <20190917120205.GO5781@paasikivi.fi.intel.com>
+From: <Tudor.Ambarus@microchip.com>
+Subject: [PATCH 00/23] mtd: spi-nor: Quad Enable and (un)lock methods
+Date: Tue, 17 Sep 2019 15:54:40 +0000
+Message-ID: <20190917155426.7432-1-tudor.ambarus@microchip.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20190917120205.GO5781-z7MJbOB4PBP+e+fPlCVrcFDQ4js95KgL@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sakari Ailus <sakari.ailus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, shengnan.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Andy Shevchenko <andriy.shevchenko-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, louis.kuo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, sj.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dongchun.zhu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, bingbu.cao-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: vigneshr@ti.com, boris.brezillon@collabora.com, marek.vasut@gmail.com, miquel.raynal@bootlin.com, richard@nod.at, linux-mtd@lists.infradead.org
+Cc: dwmw2@infradead.org, computersforpeace@gmail.com, joel@jms.id.au, andrew@aj.id.au, matthias.bgg@gmail.com, vz@mleia.com, linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Tudor.Ambarus@microchip.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Sep 17, 2019 at 03:02:06PM +0300, Sakari Ailus wrote:
-> On Tue, Sep 10, 2019 at 08:37:43PM +0300, Andy Shevchenko wrote:
-> > On Tue, Sep 10, 2019 at 09:04:45PM +0800, dongchun.zhu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> > > From: Dongchun Zhu <dongchun.zhu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > > 
-> > > This patch adds device tree bindings documentation for the ov8856 CMOS
-> > > image sensor.
-> > 
-> > New bindings in YAML, please.
-> 
-> My understanding is text documents are still fine.
+From: Tudor Ambarus <tudor.ambarus@microchip.com>
 
-Schema are preferred, but still up to the subsystem for now.
- 
-> We don't have things like graph.txt or video-interfaces.txt in YAML yet
-> either.
+Patches 1 - 14 are just clean up patches for the Flash Register
+Operations.
 
-That doesn't really matter too much. You can assume common properties 
-will have a common schema and just define what's device specific. The 
-device specific bindings have to define 'port' or 'port@N' nodes.
+Patches 15 - 21 deal with the Quad Enable and the (un)lock methods.
+Fixed the clearing of QE bit on (un)lock() operations. Reworked the
+Quad Enable methods and the disabling of the block write protection
+at power-up.
 
-Rob
+Patch 22 adds Global Block Unlock support as an optimization for
+unlocking the entire memory array. Patch 23 uses it in sst26vf064b.
+
+This is just compile tested, I don't have a relevant spansion-like
+flash memory to test the (un)lock() methods.
+
+The patch set can be tested using mtd-utils:
+1/ do a read-erase-write-read-back test immediately after boot, to check
+the spi_nor_unlock_all() method
+	mtd_debug read /dev/mtd-yours offset size read-file
+	hexdump read-file
+	mtd_debug erase /dev/mtd-yours offset size
+	dd if=3D/dev/urandom of=3Dwrite-file bs=3Dplease-choose count=3Dplease-cho=
+ose
+	mtd_debug write /dev/mtd-yours offset write-file-size write-file
+	mtd_debug read /dev/mtd-yours offset write-file-size read-file
+	sha1sum read-file write-file
+2/ lock flash then try to erase/write it, to see if the lock works
+	flash_lock /dev/mtd-yours offset block-count
+	read-erase/write-read-back test
+3/ unlock flash and do a read-erase-write-read-back to check if the QE
+bit was not cleared.
+
+Thanks,
+ta
+
+Tudor Ambarus (23):
+  mtd: spi-nor: hisi-sfc: Drop nor->erase NULL assignment
+  mtd: spi-nor: Introduce 'struct spi_nor_controller_ops'
+  mtd: spi-nor: cadence-quadspi: Fix cqspi_command_read() definition
+  mtd: spi-nor: Rename nor->params to nor->flash
+  mtd: spi-nor: Rework read_sr()
+  mtd: spi-nor: Rework read_fsr()
+  mtd: spi-nor: Rework read_cr()
+  mtd: spi-nor: Rework write_enable/disable()
+  mtd: spi-nor: Fix retlen handling in sst_write()
+  mtd: spi-nor: Rework write_sr()
+  mtd: spi-nor: Rework spi_nor_read/write_sr2()
+  mtd: spi-nor: Report error in spi_nor_xread_sr()
+  mtd: spi-nor: Void return type for spi_nor_clear_sr/fsr()
+  mtd: spi-nor: Drop duplicated new line
+  mtd: spi-nor: Drop spansion_quad_enable()
+  mtd: spi-nor: Fix errno on quad_enable methods
+  mtd: spi-nor: Fix clearing of QE bit on lock()/unlock()
+  mtd: spi-nor: Rework macronix_quad_enable()
+  mtd: spi-nor: Rework spansion(_no)_read_cr_quad_enable()
+  mtd: spi-nor: Update sr2_bit7_quad_enable()
+  mtd: spi-nor: Rework the disabling of block write protection
+  mtd: spi-nor: Add Global Block Unlock support
+  mtd: spi-nor: Unlock global block protection on sst26vf064b
+
+ drivers/mtd/spi-nor/aspeed-smc.c      |   23 +-
+ drivers/mtd/spi-nor/cadence-quadspi.c |   54 +-
+ drivers/mtd/spi-nor/hisi-sfc.c        |   23 +-
+ drivers/mtd/spi-nor/intel-spi.c       |   24 +-
+ drivers/mtd/spi-nor/mtk-quadspi.c     |   25 +-
+ drivers/mtd/spi-nor/nxp-spifi.c       |   23 +-
+ drivers/mtd/spi-nor/spi-nor.c         | 1697 ++++++++++++++++++-----------=
+----
+ include/linux/mtd/spi-nor.h           |   75 +-
+ 8 files changed, 1050 insertions(+), 894 deletions(-)
+
+--=20
+2.9.5
