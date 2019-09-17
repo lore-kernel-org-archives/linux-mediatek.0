@@ -1,87 +1,144 @@
-From: Vlastimil Babka <vbabka@suse.cz>
-Subject: Re: [PATCH v3] mm/kasan: dump alloc and free stack for page allocator
-Date: Tue, 17 Sep 2019 10:19:15 +0200
-Message-ID: <a5103bf0-245e-5894-0486-3e92fa830e41@suse.cz>
-References: <20190911083921.4158-1-walter-zh.wu@mediatek.com>
- <5E358F4B-552C-4542-9655-E01C7B754F14@lca.pw>
- <c4d2518f-4813-c941-6f47-73897f420517@suse.cz>
- <1568297308.19040.5.camel@mtksdccf07>
- <613f9f23-c7f0-871f-fe13-930c35ef3105@suse.cz>
- <79fede05-735b-8477-c273-f34db93fd72b@virtuozzo.com>
- <6d58ce86-b2a4-40af-bf40-c604b457d086@suse.cz>
- <4e76e7ce-1d61-524a-622b-663c01d19707@virtuozzo.com>
+From: Light Hsieh <light.hsieh@mediatek.com>
+Subject: [PATCH v3 1/5] pinctrl: mediatek: Check gpio pin number and use binary  search in mtk_hw_pin_field_lookup()
+Date: Tue, 17 Sep 2019 16:26:07 +0800
+Message-ID: <1568708771-12409-1-git-send-email-light.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <4e76e7ce-1d61-524a-622b-663c01d19707@virtuozzo.com>
-Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Andrey Ryabinin <aryabinin@virtuozzo.com>, Walter Wu <walter-zh.wu@mediatek.com>
-Cc: Qian Cai <cai@lca.pw>, Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Andrey Konovalov <andreyknvl@google.com>, Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org, kasan-dev@googlegroups.com, linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+To: linus.walleij@linaro.org
+Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, sean.wang@kernel.org, Light Hsieh <light.hsieh@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 9/16/19 5:57 PM, Andrey Ryabinin wrote:
->> --- a/mm/page_alloc.c
->> +++ b/mm/page_alloc.c
->> @@ -710,8 +710,12 @@ static int __init early_debug_pagealloc(char *buf)
->>  	if (kstrtobool(buf, &enable))
->>  		return -EINVAL;
->>  
->> -	if (enable)
->> +	if (enable) {
->>  		static_branch_enable(&_debug_pagealloc_enabled);
->> +#ifdef CONFIG_PAGE_OWNER
->> +		page_owner_free_stack_disabled = false;
-> 
-> I think this won't work with CONFIG_DEBUG_PAGEALLOC_ENABLE_DEFAULT=y
+1. Check if gpio pin number is in valid range to prevent from get invalid
+   pointer 'desc' in the following code:
+	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
 
-Good point, thanks.
+2. Use binary search in mtk_hw_pin_field_lookup()
+   Modify mtk_hw_pin_field_lookup() to use binary search for accelerating
+   search.
 
->> +#endif
->> +	}
->>  
->>  	return 0;
->>  }
->> diff --git a/mm/page_owner.c b/mm/page_owner.c
->> index dee931184788..b589bfbc4795 100644
->> --- a/mm/page_owner.c
->> +++ b/mm/page_owner.c
->> @@ -24,13 +24,15 @@ struct page_owner {
->>  	short last_migrate_reason;
->>  	gfp_t gfp_mask;
->>  	depot_stack_handle_t handle;
->> -#ifdef CONFIG_DEBUG_PAGEALLOC
->> +#ifdef CONFIG_PAGE_OWNER_FREE_STACK
->>  	depot_stack_handle_t free_handle;
->>  #endif
->>  };
->>  
->>  static bool page_owner_disabled = true;
->> +bool page_owner_free_stack_disabled = true;
->>  DEFINE_STATIC_KEY_FALSE(page_owner_inited);
->> +static DEFINE_STATIC_KEY_FALSE(page_owner_free_stack);
->>  
->>  static depot_stack_handle_t dummy_handle;
->>  static depot_stack_handle_t failure_handle;
->> @@ -46,6 +48,9 @@ static int __init early_page_owner_param(char *buf)
->>  	if (strcmp(buf, "on") == 0)
->>  		page_owner_disabled = false;
->>  
->> +	if (!page_owner_disabled && IS_ENABLED(CONFIG_KASAN))
-> 
-> I'd rather keep all logic in one place, i.e. "if (!page_owner_disabled && (IS_ENABLED(CONFIG_KASAN) || debug_pagealloc_enabled())"
-> With this no changes in early_debug_pagealloc() required and CONFIG_DEBUG_PAGEALLOC_ENABLE_DEFAULT=y should also work correctly.
+---
+ drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 24 +++++++++++++++++++-----
+ drivers/pinctrl/mediatek/pinctrl-paris.c         | 19 +++++++++++++++++++
+ 2 files changed, 38 insertions(+), 5 deletions(-)
 
-In this function it would not work if the debug_pagealloc param gets
-processed later than page_owner, but should be doable in
-init_page_owner(), I'll try, thanks.
-
-> 
->> +		page_owner_free_stack_disabled = false;
->> +
->>  	return 0;
->>  }
->>  early_param("page_owner", early_page_owner_param);
->  
-> 
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+index 20e1c89..4687f63 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+@@ -68,7 +68,7 @@ static int mtk_hw_pin_field_lookup(struct mtk_pinctrl *hw,
+ {
+ 	const struct mtk_pin_field_calc *c, *e;
+ 	const struct mtk_pin_reg_calc *rc;
+-	u32 bits;
++	u32 bits, start = 0, end, found = 0, check;
+ 
+ 	if (hw->soc->reg_cal && hw->soc->reg_cal[field].range) {
+ 		rc = &hw->soc->reg_cal[field];
+@@ -79,21 +79,32 @@ static int mtk_hw_pin_field_lookup(struct mtk_pinctrl *hw,
+ 		return -ENOTSUPP;
+ 	}
+ 
++	end = rc->nranges - 1;
+ 	c = rc->range;
+ 	e = c + rc->nranges;
+ 
+-	while (c < e) {
+-		if (desc->number >= c->s_pin && desc->number <= c->e_pin)
++	while (start <= end) {
++		check = (start + end) >> 1;
++		if (desc->number >= rc->range[check].s_pin
++		 && desc->number <= rc->range[check].e_pin) {
++			found = 1;
+ 			break;
+-		c++;
++		} else if (start == end)
++			break;
++		else if (desc->number < rc->range[check].s_pin)
++			end = check - 1;
++		else
++			start = check + 1;
+ 	}
+ 
+-	if (c >= e) {
++	if (!found) {
+ 		dev_dbg(hw->dev, "Not support field %d for pin = %d (%s)\n",
+ 			field, desc->number, desc->name);
+ 		return -ENOTSUPP;
+ 	}
+ 
++	c = rc->range + check;
++
+ 	if (c->i_base > hw->nbase - 1) {
+ 		dev_err(hw->dev,
+ 			"Invalid base for field %d for pin = %d (%s)\n",
+@@ -182,6 +193,9 @@ int mtk_hw_set_value(struct mtk_pinctrl *hw, const struct mtk_pin_desc *desc,
+ 	if (err)
+ 		return err;
+ 
++	if (value < 0 || value > pf.mask)
++		return -EINVAL;
++
+ 	if (!pf.next)
+ 		mtk_rmw(hw, pf.index, pf.offset, pf.mask << pf.bitpos,
+ 			(value & pf.mask) << pf.bitpos);
+diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+index 923264d..28b4951 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-paris.c
++++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+@@ -693,6 +693,9 @@ static int mtk_gpio_get_direction(struct gpio_chip *chip, unsigned int gpio)
+ 	const struct mtk_pin_desc *desc;
+ 	int value, err;
+ 
++	if (gpio > hw->soc->npins)
++		return -EINVAL;
++
+ 	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
+ 
+ 	err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DIR, &value);
+@@ -708,6 +711,9 @@ static int mtk_gpio_get(struct gpio_chip *chip, unsigned int gpio)
+ 	const struct mtk_pin_desc *desc;
+ 	int value, err;
+ 
++	if (gpio > hw->soc->npins)
++		return -EINVAL;
++
+ 	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
+ 
+ 	err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DI, &value);
+@@ -722,6 +728,9 @@ static void mtk_gpio_set(struct gpio_chip *chip, unsigned int gpio, int value)
+ 	struct mtk_pinctrl *hw = gpiochip_get_data(chip);
+ 	const struct mtk_pin_desc *desc;
+ 
++	if (gpio > hw->soc->npins)
++		return;
++
+ 	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
+ 
+ 	mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_DO, !!value);
+@@ -729,12 +738,22 @@ static void mtk_gpio_set(struct gpio_chip *chip, unsigned int gpio, int value)
+ 
+ static int mtk_gpio_direction_input(struct gpio_chip *chip, unsigned int gpio)
+ {
++	struct mtk_pinctrl *hw = gpiochip_get_data(chip);
++
++	if (gpio > hw->soc->npins)
++		return -EINVAL;
++
+ 	return pinctrl_gpio_direction_input(chip->base + gpio);
+ }
+ 
+ static int mtk_gpio_direction_output(struct gpio_chip *chip, unsigned int gpio,
+ 				     int value)
+ {
++	struct mtk_pinctrl *hw = gpiochip_get_data(chip);
++
++	if (gpio > hw->soc->npins)
++		return -EINVAL;
++
+ 	mtk_gpio_set(chip, gpio, value);
+ 
+ 	return pinctrl_gpio_direction_output(chip->base + gpio);
+-- 
+1.8.1.1.dirty
