@@ -1,8 +1,7 @@
 From: <Tudor.Ambarus@microchip.com>
-Subject: [PATCH 03/23] mtd: spi-nor: cadence-quadspi: Fix cqspi_command_read()
- definition
-Date: Tue, 17 Sep 2019 15:54:50 +0000
-Message-ID: <20190917155426.7432-4-tudor.ambarus@microchip.com>
+Subject: [PATCH 05/23] mtd: spi-nor: Rework read_sr()
+Date: Tue, 17 Sep 2019 15:54:56 +0000
+Message-ID: <20190917155426.7432-6-tudor.ambarus@microchip.com>
 References: <20190917155426.7432-1-tudor.ambarus@microchip.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="iso-8859-1"
@@ -17,82 +16,302 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Tudor Ambarus <tudor.ambarus@microchip.com>
 
-n_tx was never used, drop it. Replace 'const u8 *txbuf' with 'u8 opcode',
-to comply with the SPI NOR int (*read_reg)() method. The 'const'
-qualifier has no meaning for parameters passed by value, drop it.
-Going furher, the opcode was passed to cqspi_calc_rdreg() and never used,
-drop it.
+static int read_sr(struct spi_nor *nor)
+becomes
+static int spi_nor_read_sr(struct spi_nor *nor, u8 *sr)
+
+The new function returns 0 on success and -errno otherwise.
+We let the callers pass the pointer to the buffer where the
+value of the Status Register will be written. This way we avoid
+the casts between int and u8, which can be confusing.
+
+Prepend spi_nor_ to the function name, all functions should begin
+with that.
+
+S/pr_err/dev_err and drop duplicated dev_err in callers, in case the
+function returns error.
 
 Signed-off-by: Tudor Ambarus <tudor.ambarus@microchip.com>
 ---
- drivers/mtd/spi-nor/cadence-quadspi.c | 15 +++++++--------
- 1 file changed, 7 insertions(+), 8 deletions(-)
+ drivers/mtd/spi-nor/spi-nor.c | 131 +++++++++++++++++++++-----------------=
+----
+ 1 file changed, 65 insertions(+), 66 deletions(-)
 
-diff --git a/drivers/mtd/spi-nor/cadence-quadspi.c b/drivers/mtd/spi-nor/ca=
-dence-quadspi.c
-index ebda612641a4..22008fecd326 100644
---- a/drivers/mtd/spi-nor/cadence-quadspi.c
-+++ b/drivers/mtd/spi-nor/cadence-quadspi.c
-@@ -285,7 +285,7 @@ static irqreturn_t cqspi_irq_handler(int this_irq, void=
- *dev)
- 	return IRQ_HANDLED;
+diff --git a/drivers/mtd/spi-nor/spi-nor.c b/drivers/mtd/spi-nor/spi-nor.c
+index 7d0c1b598250..a23783641146 100644
+--- a/drivers/mtd/spi-nor/spi-nor.c
++++ b/drivers/mtd/spi-nor/spi-nor.c
+@@ -388,12 +388,14 @@ static ssize_t spi_nor_write_data(struct spi_nor *nor=
+, loff_t to, size_t len,
+ 	return nor->controller_ops->write(nor, to, len, buf);
  }
 =20
--static unsigned int cqspi_calc_rdreg(struct spi_nor *nor, const u8 opcode)
-+static unsigned int cqspi_calc_rdreg(struct spi_nor *nor)
+-/*
+- * Read the status register, returning its value in the location
+- * Return the status register value.
+- * Returns negative if error occurred.
++/**
++ * spi_nor_read_sr() - Read the Status Register.
++ * @nor:        pointer to 'struct spi_nor'
++ * @sr:		buffer where the value of the Status Register will be written.
++ *
++ * Return: 0 on success, -errno otherwise.
+  */
+-static int read_sr(struct spi_nor *nor)
++static int spi_nor_read_sr(struct spi_nor *nor, u8 *sr)
  {
- 	struct cqspi_flash_pdata *f_pdata =3D nor->priv;
- 	u32 rdreg =3D 0;
-@@ -354,8 +354,7 @@ static int cqspi_exec_flash_cmd(struct cqspi_st *cqspi,=
- unsigned int reg)
- 	return cqspi_wait_idle(cqspi);
- }
+ 	int ret;
 =20
--static int cqspi_command_read(struct spi_nor *nor,
--			      const u8 *txbuf, const unsigned n_tx,
-+static int cqspi_command_read(struct spi_nor *nor, u8 opcode,
- 			      u8 *rxbuf, size_t n_rx)
- {
- 	struct cqspi_flash_pdata *f_pdata =3D nor->priv;
-@@ -373,9 +372,9 @@ static int cqspi_command_read(struct spi_nor *nor,
- 		return -EINVAL;
+@@ -402,20 +404,17 @@ static int read_sr(struct spi_nor *nor)
+ 			SPI_MEM_OP(SPI_MEM_OP_CMD(SPINOR_OP_RDSR, 1),
+ 				   SPI_MEM_OP_NO_ADDR,
+ 				   SPI_MEM_OP_NO_DUMMY,
+-				   SPI_MEM_OP_DATA_IN(1, nor->bouncebuf, 1));
++				   SPI_MEM_OP_DATA_IN(1, sr, 1));
+=20
+ 		ret =3D spi_mem_exec_op(nor->spimem, &op);
+ 	} else {
+-		ret =3D nor->controller_ops->read_reg(nor, SPINOR_OP_RDSR,
+-						    nor->bouncebuf, 1);
++		ret =3D nor->controller_ops->read_reg(nor, SPINOR_OP_RDSR, sr, 1);
  	}
 =20
--	reg =3D txbuf[0] << CQSPI_REG_CMDCTRL_OPCODE_LSB;
-+	reg =3D opcode << CQSPI_REG_CMDCTRL_OPCODE_LSB;
+-	if (ret < 0) {
+-		pr_err("error %d reading SR\n", (int) ret);
+-		return ret;
+-	}
++	if (ret)
++		dev_err(nor->dev, "error %d reading SR\n", ret);
 =20
--	rdreg =3D cqspi_calc_rdreg(nor, txbuf[0]);
-+	rdreg =3D cqspi_calc_rdreg(nor);
- 	writel(rdreg, reg_base + CQSPI_REG_RD_INSTR);
-=20
- 	reg |=3D (0x1 << CQSPI_REG_CMDCTRL_RD_EN_LSB);
-@@ -471,7 +470,7 @@ static int cqspi_read_setup(struct spi_nor *nor)
- 	unsigned int reg;
-=20
- 	reg =3D nor->read_opcode << CQSPI_REG_RD_INSTR_OPCODE_LSB;
--	reg |=3D cqspi_calc_rdreg(nor, nor->read_opcode);
-+	reg |=3D cqspi_calc_rdreg(nor);
-=20
- 	/* Setup dummy clock cycles */
- 	dummy_clk =3D nor->read_dummy;
-@@ -604,7 +603,7 @@ static int cqspi_write_setup(struct spi_nor *nor)
- 	/* Set opcode. */
- 	reg =3D nor->program_opcode << CQSPI_REG_WR_INSTR_OPCODE_LSB;
- 	writel(reg, reg_base + CQSPI_REG_WR_INSTR);
--	reg =3D cqspi_calc_rdreg(nor, nor->program_opcode);
-+	reg =3D cqspi_calc_rdreg(nor);
- 	writel(reg, reg_base + CQSPI_REG_RD_INSTR);
-=20
- 	reg =3D readl(reg_base + CQSPI_REG_SIZE);
-@@ -1087,7 +1086,7 @@ static int cqspi_read_reg(struct spi_nor *nor, u8 opc=
-ode, u8 *buf, size_t len)
-=20
- 	ret =3D cqspi_set_protocol(nor, 0);
- 	if (!ret)
--		ret =3D cqspi_command_read(nor, &opcode, 1, buf, len);
-+		ret =3D cqspi_command_read(nor, opcode, buf, len);
-=20
- 	return ret;
+-	return nor->bouncebuf[0];
++	return ret;
  }
+=20
+ /*
+@@ -752,12 +751,14 @@ static int spi_nor_clear_sr(struct spi_nor *nor)
+=20
+ static int spi_nor_sr_ready(struct spi_nor *nor)
+ {
+-	int sr =3D read_sr(nor);
+-	if (sr < 0)
+-		return sr;
++	int ret =3D spi_nor_read_sr(nor, &nor->bouncebuf[0]);
++
++	if (ret)
++		return ret;
+=20
+-	if (nor->flags & SNOR_F_USE_CLSR && sr & (SR_E_ERR | SR_P_ERR)) {
+-		if (sr & SR_E_ERR)
++	if (nor->flags & SNOR_F_USE_CLSR &&
++	    nor->bouncebuf[0] & (SR_E_ERR | SR_P_ERR)) {
++		if (nor->bouncebuf[0] & SR_E_ERR)
+ 			dev_err(nor->dev, "Erase Error occurred\n");
+ 		else
+ 			dev_err(nor->dev, "Programming Error occurred\n");
+@@ -766,7 +767,7 @@ static int spi_nor_sr_ready(struct spi_nor *nor)
+ 		return -EIO;
+ 	}
+=20
+-	return !(sr & SR_WIP);
++	return !(nor->bouncebuf[0] & SR_WIP);
+ }
+=20
+ static int spi_nor_clear_fsr(struct spi_nor *nor)
+@@ -1341,11 +1342,11 @@ static int write_sr_and_check(struct spi_nor *nor, =
+u8 status_new, u8 mask)
+ 	if (ret)
+ 		return ret;
+=20
+-	ret =3D read_sr(nor);
+-	if (ret < 0)
++	ret =3D spi_nor_read_sr(nor, &nor->bouncebuf[0]);
++	if (ret)
+ 		return ret;
+=20
+-	return ((ret & mask) !=3D (status_new & mask)) ? -EIO : 0;
++	return ((nor->bouncebuf[0] & mask) !=3D (status_new & mask)) ? -EIO : 0;
+ }
+=20
+ static void stm_get_locked_range(struct spi_nor *nor, u8 sr, loff_t *ofs,
+@@ -1440,16 +1441,18 @@ static int stm_is_unlocked_sr(struct spi_nor *nor, =
+loff_t ofs, uint64_t len,
+ static int stm_lock(struct spi_nor *nor, loff_t ofs, uint64_t len)
+ {
+ 	struct mtd_info *mtd =3D &nor->mtd;
+-	int status_old, status_new;
++	int ret, status_old, status_new;
+ 	u8 mask =3D SR_BP2 | SR_BP1 | SR_BP0;
+ 	u8 shift =3D ffs(mask) - 1, pow, val;
+ 	loff_t lock_len;
+ 	bool can_be_top =3D true, can_be_bottom =3D nor->flags & SNOR_F_HAS_SR_TB=
+;
+ 	bool use_top;
+=20
+-	status_old =3D read_sr(nor);
+-	if (status_old < 0)
+-		return status_old;
++	ret =3D spi_nor_read_sr(nor, &nor->bouncebuf[0]);
++	if (ret)
++		return ret;
++
++	status_old =3D nor->bouncebuf[0];
+=20
+ 	/* If nothing in our range is unlocked, we don't need to do anything */
+ 	if (stm_is_locked_sr(nor, ofs, len, status_old))
+@@ -1520,16 +1523,18 @@ static int stm_lock(struct spi_nor *nor, loff_t ofs=
+, uint64_t len)
+ static int stm_unlock(struct spi_nor *nor, loff_t ofs, uint64_t len)
+ {
+ 	struct mtd_info *mtd =3D &nor->mtd;
+-	int status_old, status_new;
++	int ret, status_old, status_new;
+ 	u8 mask =3D SR_BP2 | SR_BP1 | SR_BP0;
+ 	u8 shift =3D ffs(mask) - 1, pow, val;
+ 	loff_t lock_len;
+ 	bool can_be_top =3D true, can_be_bottom =3D nor->flags & SNOR_F_HAS_SR_TB=
+;
+ 	bool use_top;
+=20
+-	status_old =3D read_sr(nor);
+-	if (status_old < 0)
+-		return status_old;
++	ret =3D spi_nor_read_sr(nor, &nor->bouncebuf[0]);
++	if (ret)
++		return ret;
++
++	status_old =3D nor->bouncebuf[0];
+=20
+ 	/* If nothing in our range is locked, we don't need to do anything */
+ 	if (stm_is_unlocked_sr(nor, ofs, len, status_old))
+@@ -1604,13 +1609,12 @@ static int stm_unlock(struct spi_nor *nor, loff_t o=
+fs, uint64_t len)
+  */
+ static int stm_is_locked(struct spi_nor *nor, loff_t ofs, uint64_t len)
+ {
+-	int status;
++	int ret =3D spi_nor_read_sr(nor, &nor->bouncebuf[0]);
+=20
+-	status =3D read_sr(nor);
+-	if (status < 0)
+-		return status;
++	if (ret)
++		return ret;
+=20
+-	return stm_is_locked_sr(nor, ofs, len, status);
++	return stm_is_locked_sr(nor, ofs, len, nor->bouncebuf[0]);
+ }
+=20
+ static const struct spi_nor_locking_ops stm_locking_ops =3D {
+@@ -1717,24 +1721,28 @@ static int write_sr_cr(struct spi_nor *nor, u8 *sr_=
+cr)
+  */
+ static int macronix_quad_enable(struct spi_nor *nor)
+ {
+-	int ret, val;
++	int ret;
+=20
+-	val =3D read_sr(nor);
+-	if (val < 0)
+-		return val;
+-	if (val & SR_QUAD_EN_MX)
++	ret =3D spi_nor_read_sr(nor, &nor->bouncebuf[0]);
++	if (ret)
++		return ret;
++
++	if (nor->bouncebuf[0] & SR_QUAD_EN_MX)
+ 		return 0;
+=20
+ 	write_enable(nor);
+=20
+-	write_sr(nor, val | SR_QUAD_EN_MX);
++	write_sr(nor, nor->bouncebuf[0] | SR_QUAD_EN_MX);
+=20
+ 	ret =3D spi_nor_wait_till_ready(nor);
+ 	if (ret)
+ 		return ret;
+=20
+-	ret =3D read_sr(nor);
+-	if (!(ret > 0 && (ret & SR_QUAD_EN_MX))) {
++	ret =3D spi_nor_read_sr(nor, &nor->bouncebuf[0]);
++	if (ret)
++		return ret;
++
++	if (!(nor->bouncebuf[0] & SR_QUAD_EN_MX)) {
+ 		dev_err(nor->dev, "Macronix Quad bit not set\n");
+ 		return -EINVAL;
+ 	}
+@@ -1805,12 +1813,10 @@ static int spansion_no_read_cr_quad_enable(struct s=
+pi_nor *nor)
+ 	int ret;
+=20
+ 	/* Keep the current value of the Status Register. */
+-	ret =3D read_sr(nor);
+-	if (ret < 0) {
+-		dev_err(nor->dev, "error while reading status register\n");
+-		return -EINVAL;
+-	}
+-	sr_cr[0] =3D ret;
++	ret =3D spi_nor_read_sr(nor, &sr_cr[0]);
++	if (ret)
++		return ret;
++
+ 	sr_cr[1] =3D CR_QUAD_EN_SPAN;
+=20
+ 	return write_sr_cr(nor, sr_cr);
+@@ -1848,12 +1854,9 @@ static int spansion_read_cr_quad_enable(struct spi_n=
+or *nor)
+ 	sr_cr[1] =3D ret | CR_QUAD_EN_SPAN;
+=20
+ 	/* Keep the current value of the Status Register. */
+-	ret =3D read_sr(nor);
+-	if (ret < 0) {
+-		dev_err(dev, "error while reading status register\n");
+-		return -EINVAL;
+-	}
+-	sr_cr[0] =3D ret;
++	ret =3D spi_nor_read_sr(nor, &sr_cr[0]);
++	if (ret)
++		return ret;
+=20
+ 	ret =3D write_sr_cr(nor, sr_cr);
+ 	if (ret)
+@@ -1964,15 +1967,13 @@ static int spi_nor_clear_sr_bp(struct spi_nor *nor)
+ 	int ret;
+ 	u8 mask =3D SR_BP2 | SR_BP1 | SR_BP0;
+=20
+-	ret =3D read_sr(nor);
+-	if (ret < 0) {
+-		dev_err(nor->dev, "error while reading status register\n");
++	ret =3D spi_nor_read_sr(nor, &nor->bouncebuf[0]);
++	if (ret)
+ 		return ret;
+-	}
+=20
+ 	write_enable(nor);
+=20
+-	ret =3D write_sr(nor, ret & ~mask);
++	ret =3D write_sr(nor, nor->bouncebuf[0] & ~mask);
+ 	if (ret) {
+ 		dev_err(nor->dev, "write to status register failed\n");
+ 		return ret;
+@@ -2018,13 +2019,11 @@ static int spi_nor_spansion_clear_sr_bp(struct spi_=
+nor *nor)
+ 	if (ret & CR_QUAD_EN_SPAN) {
+ 		sr_cr[1] =3D ret;
+=20
+-		ret =3D read_sr(nor);
+-		if (ret < 0) {
+-			dev_err(nor->dev,
+-				"error while reading status register\n");
++		ret =3D spi_nor_read_sr(nor, &sr_cr[0]);
++		if (ret)
+ 			return ret;
+-		}
+-		sr_cr[0] =3D ret & ~mask;
++
++		sr_cr[0] &=3D ~mask;
+=20
+ 		ret =3D write_sr_cr(nor, sr_cr);
+ 		if (ret)
 --=20
 2.9.5
