@@ -1,267 +1,80 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [RFC, v3, 1/4] dt-binding: mt8183: Add Mediatek MDP3 dt-bindings
-Date: Tue, 17 Sep 2019 14:14:02 -0500
-Message-ID: <20190917191402.GA15587@bogus>
-References: <20190911093406.5688-1-bibby.hsieh@mediatek.com>
- <20190911093406.5688-2-bibby.hsieh@mediatek.com>
+Subject: Re: [PATCH v3 1/2] dt-bindings: Add binding for IT6505.
+Date: Tue, 17 Sep 2019 14:54:58 -0500
+Message-ID: <20190917195458.GA7386@bogus>
+References: <1568259199-5827-1-git-send-email-allen.chen@ite.com.tw>
+ <1568259199-5827-2-git-send-email-allen.chen@ite.com.tw>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-In-Reply-To: <20190911093406.5688-2-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: laurent.pinchart+renesas@ideasonboard.com, Rynn.Wu@mediatek.com, Jerry-ch.Chen@mediatek.com, jungo.lin@mediatek.com, hans.verkuil@cisco.com, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, frederic.chen@mediatek.com, linux-media@vger.kernel.org, devicetree@vger.kernel.org, Daoyuan.Huang@mediatek.com, holmes.chiou@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, Sean.Cheng@mediatek.com, srv_heupstream@mediatek.com, tfiga@chromium.org, christie.yu@mediatek.com, zwisler@chromium.org
+In-Reply-To: <1568259199-5827-2-git-send-email-allen.chen@ite.com.tw>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: allen <allen.chen@ite.com.tw>
+Cc: Mark Rutland <mark.rutland@arm.com>, Pi-Hsun Shih <pihsun@chromium.org>, Jau-Chih Tseng <Jau-Chih.Tseng@ite.com.tw>, David Airlie <airlied@linux.ie>, "open list:DRM DRIVERS" <dri-devel@lists.freedesktop.org>, open list <linux-kernel@vger.kernel.org>, Maxime Ripard <mripard@kernel.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Matthias Brugger <matthias.bgg@gmail.com>, Icenowy Zheng <icenowy@aosc.io>, Shawn Guo <shawnguo@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Sep 11, 2019 at 05:34:03PM +0800, Bibby Hsieh wrote:
-> From: daoyuan huang <daoyuan.huang@mediatek.com>
-> 
-> This patch adds DT binding document for Media Data Path 3 (MDP3)
-> a unit in multimedia system used for scaling and color format convert.
-> 
-> Signed-off-by: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-> Signed-off-by: daoyuan huang <daoyuan.huang@mediatek.com>
-> ---
->  .../bindings/media/mediatek,mt8183-mdp3.txt   | 201 ++++++++++++++++++
->  1 file changed, 201 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8183-mdp3.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8183-mdp3.txt b/Documentation/devicetree/bindings/media/mediatek,mt8183-mdp3.txt
-> new file mode 100644
-> index 000000000000..0d15326d12c1
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/mediatek,mt8183-mdp3.txt
-> @@ -0,0 +1,201 @@
-> +* Mediatek Media Data Path 3
-> +
-> +Media Data Path 3 (MDP3) is used for scaling and color space conversion.
-> +
-> +Required properties (controller node):
-> +- compatible: "mediatek,mt8183-mdp"
-> +- mediatek,scp: the node of system control processor (SCP), using the
-> +  remoteproc & rpmsg framework, see
-> +  Documentation/devicetree/bindings/remoteproc/mtk,scp.txt for details.
-> +- mediatek,mmsys: the node of mux(multiplexer) controller for HW connections.
-> +- mediatek,mm-mutex: the node of sof(start of frame) signal controller.
-> +- mediatek,mailbox-gce: the node of global command engine (GCE), used to
-> +  read/write registers with critical time limitation, see
-> +  Documentation/devicetree/bindings/mailbox/mtk-gce.txt for details.
-> +- mboxes: mailbox number used to communicate with GCE.
-> +- gce-subsys: sub-system id corresponding to the register address.
-> +- gce-event-names: in use event name list, used to correspond to event IDs.
-> +- gce-events: in use event IDs list, all IDs are defined in
-> +  'dt-bindings/gce/mt8183-gce.h'.
-> +
-> +Required properties (all function blocks, child node):
-> +- compatible: Should be one of
-> +        "mediatek,mt8183-mdp-rdma"  - read DMA
-> +        "mediatek,mt8183-mdp-rsz"   - resizer
-> +        "mediatek,mt8183-mdp-wdma"  - write DMA
-> +        "mediatek,mt8183-mdp-wrot"  - write DMA with rotation
-> +        "mediatek,mt8183-mdp-ccorr" - color correction with 3X3 matrix
-> +- reg: Physical base address and length of the function block register space
-> +- clocks: device clocks, see
-> +  Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
-> +- power-domains: a phandle to the power domain, see
-> +  Documentation/devicetree/bindings/power/power_domain.txt for details.
-> +- mediatek,mdp-id: HW index to distinguish same functionality modules.
-> +
-> +Required properties (DMA function blocks, child node):
-> +- compatible: Should be one of
-> +        "mediatek,mt8183-mdp-rdma"
-> +        "mediatek,mt8183-mdp-wdma"
-> +        "mediatek,mt8183-mdp-wrot"
-> +- iommus: should point to the respective IOMMU block with master port as
-> +  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
-> +  for details.
-> +- mediatek,larb: must contain the local arbiters in the current Socs, see
-> +  Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
-> +  for details.
-> +
-> +Required properties (input path selection node):
-> +- compatible:
-> +        "mediatek,mt8183-mdp-dl"    - MDP direct link input source selection
-> +- reg: Physical base address and length of the function block register space
-> +- clocks: device clocks, see
-> +  Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
-> +- mediatek,mdp-id: HW index to distinguish same functionality modules.
-> +
-> +Required properties (ISP PASS2 (DIP) module path selection node):
-> +- compatible:
-> +        "mediatek,mt8183-mdp-imgi"  - input DMA of ISP PASS2 (DIP) module for raw image input
-> +- reg: Physical base address and length of the function block register space
-> +- mediatek,mdp-id: HW index to distinguish same functionality modules.
-> +
-> +Required properties (SW node):
-> +- compatible: Should be one of
-> +        "mediatek,mt8183-mdp-exto"  - output DMA of ISP PASS2 (DIP) module for yuv image output
-> +        "mediatek,mt8183-mdp-path"  - MDP output path selection
-> +- mediatek,mdp-id: HW index to distinguish same functionality modules.
-
-These probably need to be split up to separate files in preparation to 
-convert to schema (not required, feel free to convert to schema now).
-
-> +
-> +Example:
-> +		mdp_camin@14000000 {
-
-Don't use '_' in node or property names.
-
-> +			compatible = "mediatek,mt8183-mdp-dl";
-> +			mediatek,mdp-id = <0>;
-> +			reg = <0 0x14000000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
-> +			clocks = <&mmsys CLK_MM_MDP_DL_TXCK>,
-> +				<&mmsys CLK_MM_MDP_DL_RX>;
-> +		};
-> +
-> +		mdp_camin2@14000000 {
-> +			compatible = "mediatek,mt8183-mdp-dl";
-> +			mediatek,mdp-id = <1>;
-> +			reg = <0 0x14000000 0 0x1000>;
-
-Overlapping addresses for these 2 nodes. Don't do that.
-
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
-> +			clocks = <&mmsys CLK_MM_IPU_DL_TXCK>,
-> +				<&mmsys CLK_MM_IPU_DL_RX>;
-> +		};
-> +
-> +		mdp_rdma0: mdp_rdma0@14001000 {
-> +			compatible = "mediatek,mt8183-mdp-rdma",
-> +				     "mediatek,mt8183-mdp3";
-> +			mediatek,scp = <&scp>;
-> +			mediatek,mdp-id = <0>;
-> +			reg = <0 0x14001000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x1000 0x1000>;
-> +			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
-> +			clocks = <&mmsys CLK_MM_MDP_RDMA0>,
-> +				<&mmsys CLK_MM_MDP_RSZ1>;
-> +			iommus = <&iommu M4U_PORT_MDP_RDMA0>;
-> +			mediatek,larb = <&larb0>;
-> +			mediatek,mmsys = <&mmsys>;
-> +			mediatek,mm-mutex = <&mutex>;
-> +			mediatek,mailbox-gce = <&gce>;
-> +			mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST 0>,
-> +				<&gce 21 CMDQ_THR_PRIO_LOWEST 0>,
-> +				<&gce 22 CMDQ_THR_PRIO_LOWEST 0>,
-> +				<&gce 23 CMDQ_THR_PRIO_LOWEST 0>;
-> +			gce-subsys = <&gce 0x14000000 SUBSYS_1400XXXX>,
-> +				<&gce 0x14010000 SUBSYS_1401XXXX>,
-> +				<&gce 0x14020000 SUBSYS_1402XXXX>,
-> +				<&gce 0x15020000 SUBSYS_1502XXXX>;
-> +			mediatek,gce-events = <CMDQ_EVENT_MDP_RDMA0_SOF>,
-> +				<CMDQ_EVENT_MDP_RDMA0_EOF>,
-> +				<CMDQ_EVENT_MDP_RSZ0_SOF>,
-> +				<CMDQ_EVENT_MDP_RSZ1_SOF>,
-> +				<CMDQ_EVENT_MDP_TDSHP_SOF>,
-> +				<CMDQ_EVENT_MDP_WROT0_SOF>,
-> +				<CMDQ_EVENT_MDP_WROT0_EOF>,
-> +				<CMDQ_EVENT_MDP_WDMA0_SOF>,
-> +				<CMDQ_EVENT_MDP_WDMA0_EOF>,
-> +				<CMDQ_EVENT_ISP_FRAME_DONE_P2_0>,
-> +				<CMDQ_EVENT_ISP_FRAME_DONE_P2_1>,
-> +				<CMDQ_EVENT_ISP_FRAME_DONE_P2_2>,
-> +				<CMDQ_EVENT_ISP_FRAME_DONE_P2_3>,
-> +				<CMDQ_EVENT_ISP_FRAME_DONE_P2_4>,
-> +				<CMDQ_EVENT_ISP_FRAME_DONE_P2_5>,
-> +				<CMDQ_EVENT_ISP_FRAME_DONE_P2_6>,
-> +				<CMDQ_EVENT_ISP_FRAME_DONE_P2_7>,
-> +				<CMDQ_EVENT_ISP_FRAME_DONE_P2_8>,
-> +				<CMDQ_EVENT_ISP_FRAME_DONE_P2_9>,
-> +				<CMDQ_EVENT_ISP_FRAME_DONE_P2_10>,
-> +				<CMDQ_EVENT_ISP_FRAME_DONE_P2_11>,
-> +				<CMDQ_EVENT_ISP_FRAME_DONE_P2_12>,
-> +				<CMDQ_EVENT_ISP_FRAME_DONE_P2_13>,
-> +				<CMDQ_EVENT_ISP_FRAME_DONE_P2_14>,
-> +				<CMDQ_EVENT_WPE_A_DONE>,
-> +				<CMDQ_EVENT_SPE_B_DONE>;
-> +		};
-> +
-> +		mdp_imgi@15020000 {
-> +			compatible = "mediatek,mt8183-mdp-imgi";
-> +			mediatek,mdp-id = <0>;
-> +			reg = <0 0x15020000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1502XXXX 0 0x1000>;
-> +		};
-> +
-> +		mdp_img2o@15020000 {
-
-You need a reg property if you have a unit-address.
-
-> +			compatible = "mediatek,mt8183-mdp-exto";
-> +			mediatek,mdp-id = <1>;
-> +		};
-> +
-> +		mdp_rsz0: mdp_rsz0@14003000 {
-> +			compatible = "mediatek,mt8183-mdp-rsz";
-> +			mediatek,mdp-id = <0>;
-> +			reg = <0 0x14003000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000 0x1000>;
-> +			clocks = <&mmsys CLK_MM_MDP_RSZ0>;
-> +		};
-> +
-> +		mdp_rsz1: mdp_rsz1@14004000 {
-> +			compatible = "mediatek,mt8183-mdp-rsz";
-> +			mediatek,mdp-id = <1>;
-> +			reg = <0 0x14004000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x4000 0x1000>;
-> +			clocks = <&mmsys CLK_MM_MDP_RSZ1>;
-> +		};
-> +
-> +		mdp_wrot0: mdp_wrot0@14005000 {
-> +			compatible = "mediatek,mt8183-mdp-wrot";
-> +			mediatek,mdp-id = <0>;
-> +			reg = <0 0x14005000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x5000 0x1000>;
-> +			clocks = <&mmsys CLK_MM_MDP_WROT0>;
-> +			iommus = <&iommu M4U_PORT_MDP_WROT0>;
-> +			mediatek,larb = <&larb0>;
-> +		};
-> +
-> +		mdp_path0_sout@14005000 {
-> +			compatible = "mediatek,mt8183-mdp-path";
-> +			mediatek,mdp-id = <0>;
-
-reg?
-
-> +		};
-> +
-> +		mdp_wdma: mdp_wdma@14006000 {
-> +			compatible = "mediatek,mt8183-mdp-wdma";
-> +			mediatek,mdp-id = <0>;
-> +			reg = <0 0x14006000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x6000 0x1000>;
-> +			clocks = <&mmsys CLK_MM_MDP_WDMA0>;
-> +			iommus = <&iommu M4U_PORT_MDP_WDMA0>;
-> +			mediatek,larb = <&larb0>;
-> +		};
-> +
-> +		mdp_path1_sout@14006000 {
-> +			compatible = "mediatek,mt8183-mdp-path";
-> +			mediatek,mdp-id = <1>;
-
-reg?
-
-> +		};
-> +
-> +		mdp_ccorr: mdp_ccorr@1401c000 {
-> +			compatible = "mediatek,mt8183-mdp-ccorr";
-> +			mediatek,mdp-id = <0>;
-> +			reg = <0 0x1401c000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0xc000 0x1000>;
-> +			clocks = <&mmsys CLK_MM_MDP_CCORR>;
-> +		};
-> -- 
-> 2.18.0
-> 
+T24gVGh1LCBTZXAgMTIsIDIwMTkgYXQgMTE6MzI6MjhBTSArMDgwMCwgYWxsZW4gd3JvdGU6Cj4g
+RnJvbTogQWxsZW4gQ2hlbiA8YWxsZW4uY2hlbkBpdGUuY29tLnR3Pgo+IAo+IEFkZCBhIERUIGJp
+bmRpbmcgZG9jdW1lbnRhdGlvbiBmb3IgSVQ2NTA1Lgo+IAo+IFNpZ25lZC1vZmYtYnk6IEFsbGVu
+IENoZW4gPGFsbGVuLmNoZW5AaXRlLmNvbS50dz4KPiAKCkRyb3AgdGhlIGJsYW5rIGxpbmUuCgo+
+IFNpZ25lZC1vZmYtYnk6IFBpLUhzdW4gU2hpaCA8cGloc3VuQGNocm9taXVtLm9yZz4KPiAKPiAt
+LS0KPiBjcm9zLWVjIGRvZXMgbm90IGhhdmUgYW4gYXNzb2NpYXRlZCBkcml2ZXIgdGhhdCB1c2Vz
+IHRoZSBzdGFuZGFyZCBMaW51eCBVU0ItQyBkcml2ZXIgY2xhc3MuCj4gZXh0Y29uIGlzIHVzZWQg
+dG8gbW9kZWwgdGhlIFR5cGUtQyBjb25uZWN0b3IuKGNyYnVnLmNvbS85ODI5MzIpCj4gLS0tCj4g
+IC4uLi9iaW5kaW5ncy9kaXNwbGF5L2JyaWRnZS9pdGUsaXQ2NTA1LnR4dCAgICAgICAgIHwgMjgg
+KysrKysrKysrKysrKysrKysrKysrKwo+ICAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy92ZW5kb3It
+cHJlZml4ZXMueWFtbCAgICAgICB8ICAyICsrCj4gIDIgZmlsZXMgY2hhbmdlZCwgMzAgaW5zZXJ0
+aW9ucygrKQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
+bmRpbmdzL2Rpc3BsYXkvYnJpZGdlL2l0ZSxpdDY1MDUudHh0Cj4gCj4gZGlmZiAtLWdpdCBhL0Rv
+Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L2JyaWRnZS9pdGUsaXQ2NTA1
+LnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L2JyaWRnZS9p
+dGUsaXQ2NTA1LnR4dAo+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4gaW5kZXggMDAwMDAwMC4uNzJk
+YTBjNAo+IC0tLSAvZGV2L251bGwKPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
+ZGluZ3MvZGlzcGxheS9icmlkZ2UvaXRlLGl0NjUwNS50eHQKPiBAQCAtMCwwICsxLDI4IEBACj4g
+K2lURSBpdDY1MDUgRFAgYnJpZGdlIGJpbmRpbmdzCj4gKwo+ICtSZXF1aXJlZCBwcm9wZXJ0aWVz
+Ogo+ICsgICAgICAgIC0gY29tcGF0aWJsZTogIml0ZSxpdDY1MDUiCj4gKyAgICAgICAgLSByZWc6
+IGkyYyBhZGRyZXNzIG9mIHRoZSBicmlkZ2UKPiArICAgICAgICAtIG92ZGQtc3VwcGx5OiBJL08g
+dm9sdGFnZQo+ICsgICAgICAgIC0gcHdyMTgtc3VwcGx5OiBDb3JlIHZvbHRhZ2UKPiArICAgICAg
+ICAtIGludGVycnVwdHM6IGludGVycnVwdCBzcGVjaWZpZXIgb2YgSU5UIHBpbgo+ICsgICAgICAg
+IC0gcmVzZXQtZ3Bpb3M6IGdwaW8gc3BlY2lmaWVyIG9mIFJFU0VUIHBpbgo+ICsJLSBocGQtZ3Bp
+b3M6Cj4gKwkJSG90cGx1ZyBkZXRlY3QgR1BJTy4KPiArCQlJbmRpY2F0ZXMgd2hpY2ggR1BJTyBz
+aG91bGQgYmUgdXNlZCBmb3IgaG90cGx1ZyBkZXRlY3Rpb24KClRoaXMgYmVsb25ncyBpbiBhIGRw
+LWNvbm5lY3RvciBub2RlLgoKPiArCS0gcG9ydEBbeF06IFNvQyBzcGVjaWZpYyBwb3J0IG5vZGVz
+IHdpdGggZW5kcG9pbnQgZGVmaW5pdGlvbnMgYXMgZGVmaW5lZAo+ICsJCWluIERvY3VtZW50YXRp
+b24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRwaS50eHQK
+CkkgYXNzdW1lIHRoaXMgYnJpZGdlIHdvcmtzIHdpdGggbW9yZSB0aGFuIGp1c3QgTWVkaWF0ZWs/
+IFRoZSBwb3J0IApkZWZpbml0aW9ucyBuZWVkIHRvIGJlIGluIHRlcm1zIG9mIHdoYXQncyB0aGUg
+ZGF0YSBvbiBlYWNoIHBvcnQuIAoKPiArCj4gK0V4YW1wbGU6Cj4gKwlkcC1icmlkZ2VANWMgewo+
+ICsgICAgICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJpdGUsaXQ2NTA1IjsKPiArICAgICAgICAg
+ICAgICAgIGludGVycnVwdHMgPSA8MTUyIElSUV9UWVBFX0VER0VfUklTSU5HIDE1MiAwPjsKPiAr
+ICAgICAgICAgICAgICAgIHJlZyA9IDwweDVjPjsKPiArICAgICAgICAgICAgICAgIHBpbmN0cmwt
+bmFtZXMgPSAiZGVmYXVsdCI7Cj4gKyAgICAgICAgICAgICAgICBwaW5jdHJsLTAgPSA8Jml0NjUw
+NV9waW5zPjsKPiArICAgICAgICAgICAgICAgIG92ZGQtc3VwcGx5ID0gPCZtdDYzNThfdnNpbTFf
+cmVnPjsKPiArICAgICAgICAgICAgICAgIHB3cjE4LXN1cHBseSA9IDwmaXQ2NTA1X3BwMThfcmVn
+PjsKPiArICAgICAgICAgICAgICAgIHJlc2V0LWdwaW9zID0gPCZwaW8gMTc5IDE+Owo+ICsgICAg
+ICAgICAgICAgICAgaHBkLWdwaW9zID0gPCZwaW8gOSAwPjsKPiArICAgICAgICAgICAgICAgIGV4
+dGNvbiA9IDwmdXNiY19leHRjb24+OwoKTm90IGRvY3VtZW50ZWQgYW5kIGRlcHJlY2F0ZWQgYW55
+d2F5cy4gVXNlIHRoZSBjb25uZWN0b3IgYmluZGluZ3MuCgo+ICsgICAgICAgIH07Cj4gZGlmZiAt
+LWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy92ZW5kb3ItcHJlZml4ZXMu
+eWFtbCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy92ZW5kb3ItcHJlZml4ZXMu
+eWFtbAo+IGluZGV4IDk2N2U3OGMuLmZiM2I2NDMgMTAwNjQ0Cj4gLS0tIGEvRG9jdW1lbnRhdGlv
+bi9kZXZpY2V0cmVlL2JpbmRpbmdzL3ZlbmRvci1wcmVmaXhlcy55YW1sCj4gKysrIGIvRG9jdW1l
+bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3ZlbmRvci1wcmVmaXhlcy55YW1sCj4gQEAgLTQ2
+MSw2ICs0NjEsOCBAQCBwYXR0ZXJuUHJvcGVydGllczoKPiAgICAgIGRlc2NyaXB0aW9uOiBJbnRl
+cnNpbAo+ICAgICJeaXNzaSwuKiI6Cj4gICAgICBkZXNjcmlwdGlvbjogSW50ZWdyYXRlZCBTaWxp
+Y29uIFNvbHV0aW9ucyBJbmMuCj4gKyAgIl5pdGUsLioiOgo+ICsgICAgZGVzY3JpcHRpb246IElU
+RSBUZWNoLiBJbmMuCj4gICAgIl5pdGVhZCwuKiI6Cj4gICAgICBkZXNjcmlwdGlvbjogSVRFQUQg
+SW50ZWxsaWdlbnQgU3lzdGVtcyBDby5MdGQKPiAgICAiXml3YXZlLC4qIjoKPiAtLSAKPiAxLjku
+MQo+IApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
+ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
+Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
