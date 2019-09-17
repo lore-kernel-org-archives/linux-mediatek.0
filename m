@@ -1,7 +1,7 @@
 From: <Tudor.Ambarus@microchip.com>
-Subject: [PATCH 22/23] mtd: spi-nor: Add Global Block Unlock support
-Date: Tue, 17 Sep 2019 15:55:51 +0000
-Message-ID: <20190917155426.7432-23-tudor.ambarus@microchip.com>
+Subject: [PATCH 18/23] mtd: spi-nor: Rework macronix_quad_enable()
+Date: Tue, 17 Sep 2019 15:55:38 +0000
+Message-ID: <20190917155426.7432-19-tudor.ambarus@microchip.com>
 References: <20190917155426.7432-1-tudor.ambarus@microchip.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="iso-8859-1"
@@ -16,130 +16,116 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Tudor Ambarus <tudor.ambarus@microchip.com>
 
-Add Global Block Unlock support as an optimization for unlocking the
-entire memory array. A Global Block-Protection Unlock command offers
-a single command cycle that unlocks the entire memory array.
+Rename method to a generic name: spi_nor_sr1_bit6_quad_enable().
 
-Status Register Block Protection support does not imply the support for
-the Global Block Unlock Command. Microchip's SST26VF064B does support
-the 98h command, but use dedicated registers for the individual block
-protection, and not the Status Register, as in the stm_lock/unlock case.
-Call spi_nor_unlock_global_block_protection() in spi_nor_unlock() as an
-optimization for unlocking the entire memory array.
-
-Note that the Global Block Unlock command has different names depending
-on the manufacturer, but always the same command value: 98h. Macronix's
-MX25U12835F names it Gang Block Unlock, Winbound's W25Q128FV names it
-Global Block Unlock and Microchip's SST26VF064B names it Global Block
-Protection Unlock.
-
-We can't determine this support purely by manufacturer type and it's
-not autodetectable by anything like SFDP, so make a new flag for it:
-UNLOCK_GLOBAL_BLOCK. This flag can be set just at per-chip level, we
-don't need a SNOR_F_ correspondent.
+Use spi_nor_write_sr1_and_check(). Now we check the validity of all
+the eight bits of the Status Register, not just of the SR1_QUAD_EN_BIT6.
 
 Signed-off-by: Tudor Ambarus <tudor.ambarus@microchip.com>
 ---
- drivers/mtd/spi-nor/spi-nor.c | 47 +++++++++++++++++++++++++++++++++++++++=
-++--
- include/linux/mtd/spi-nor.h   |  1 +
- 2 files changed, 46 insertions(+), 2 deletions(-)
+ drivers/mtd/spi-nor/spi-nor.c | 34 ++++++++++------------------------
+ include/linux/mtd/spi-nor.h   |  2 +-
+ 2 files changed, 11 insertions(+), 25 deletions(-)
 
 diff --git a/drivers/mtd/spi-nor/spi-nor.c b/drivers/mtd/spi-nor/spi-nor.c
-index 700b1700a7a1..19556a9dd3fa 100644
+index 4a513ed13807..2f79923e7db5 100644
 --- a/drivers/mtd/spi-nor/spi-nor.c
 +++ b/drivers/mtd/spi-nor/spi-nor.c
-@@ -196,7 +196,7 @@ struct flash_info {
- 	u16		page_size;
- 	u16		addr_width;
-=20
--	u16		flags;
-+	u32		flags;
- #define SECT_4K			BIT(0)	/* SPINOR_OP_BE_4K works uniformly */
- #define SPI_NOR_NO_ERASE	BIT(1)	/* No erase command needed */
- #define SST_WRITE		BIT(2)	/* use SST byte programming */
-@@ -233,6 +233,7 @@ struct flash_info {
- #define SPI_NOR_SKIP_SFDP	BIT(13)	/* Skip parsing of SFDP tables */
- #define USE_CLSR		BIT(14)	/* use CLSR command */
- #define SPI_NOR_OCTAL_READ	BIT(15)	/* Flash supports Octal Read */
-+#define UNLOCK_GLOBAL_BLOCK	BIT(16)	/* Unlock global block protection */
-=20
- 	/* Part specific fixup hooks. */
- 	const struct spi_nor_fixups *fixups;
-@@ -837,6 +838,44 @@ static int spi_nor_read_sr2(struct spi_nor *nor, u8 *s=
-r2)
+@@ -1938,16 +1938,15 @@ static int spi_nor_is_locked(struct mtd_info *mtd, =
+loff_t ofs, uint64_t len)
  }
 =20
  /**
-+ * spi_nor_unlock_global_block_protection() - Unlock the Global Block Prot=
-ection
-+ * @nor:        pointer to a 'struct spi_nor'
-+ *
-+ * The Global Block-Protection Unlock command offers a single command cycl=
-e
-+ * that unlocks the entire memory array.
-+ *
-+ * Return: 0 on success, -errno otherwise.
-+ */
-+static int spi_nor_unlock_global_block_protection(struct spi_nor *nor)
-+{
-+	int ret;
-+
-+	ret =3D spi_nor_write_enable(nor);
-+	if (ret)
-+		return ret;
-+
-+	if (nor->spimem) {
-+		struct spi_mem_op op =3D
-+			SPI_MEM_OP(SPI_MEM_OP_CMD(SPINOR_OP_ULBPR, 1),
-+				   SPI_MEM_OP_NO_ADDR,
-+				   SPI_MEM_OP_NO_DUMMY,
-+				   SPI_MEM_OP_NO_DATA);
-+
-+		ret =3D spi_mem_exec_op(nor->spimem, &op);
-+	} else {
-+		ret =3D nor->controller_ops->write_reg(nor, SPINOR_OP_ULBPR,
-+						     NULL, 0);
-+	}
-+
-+	if (ret < 0) {
-+		dev_err(nor->dev, "error %d on ULBPR\n", ret);
-+		return ret;
-+	}
-+
-+	return spi_nor_wait_till_ready(nor);
-+}
-+
-+/**
-  * spi_nor_write_sr1_and_check() - Write one byte to the Status Register a=
-nd
-  * ensure the bits in the mask match the written value.
-  * @nor:	pointer to a 'struct spi_nor'.
-@@ -1916,7 +1955,11 @@ static int spi_nor_unlock(struct mtd_info *mtd, loff=
-_t ofs, uint64_t len)
+- * macronix_quad_enable() - set QE bit in Status Register.
++ * spi_nor_sr1_bit6_quad_enable() - Set the Quad Enable BIT(6) in the Stat=
+us
++ * Register 1.
+  * @nor:	pointer to a 'struct spi_nor'
+  *
+- * Set the Quad Enable (QE) bit in the Status Register.
+- *
+- * bit 6 of the Status Register is the QE bit for Macronix like QSPI memor=
+ies.
++ * Bit 6 of the Status Register 1 is the QE bit for Macronix like QSPI mem=
+ories.
+  *
+  * Return: 0 on success, -errno otherwise.
+  */
+-static int macronix_quad_enable(struct spi_nor *nor)
++static int spi_nor_sr1_bit6_quad_enable(struct spi_nor *nor)
+ {
+ 	int ret;
+=20
+@@ -1955,25 +1954,12 @@ static int macronix_quad_enable(struct spi_nor *nor=
+)
  	if (ret)
  		return ret;
 =20
--	ret =3D nor->flash.locking_ops->unlock(nor, ofs, len);
-+	if (nor->info->flags & UNLOCK_GLOBAL_BLOCK &&
-+	    !ofs && len =3D=3D nor->flash.size)
-+		ret =3D spi_nor_unlock_global_block_protection(nor);
-+	else
-+		ret =3D nor->flash.locking_ops->unlock(nor, ofs, len);
+-	if (nor->bouncebuf[0] & SR_QUAD_EN_MX)
++	if (nor->bouncebuf[0] & SR1_QUAD_EN_BIT6)
+ 		return 0;
 =20
- 	spi_nor_unlock_and_unprep(nor, SPI_NOR_OPS_LOCK);
- 	return ret;
+-	nor->bouncebuf[0] |=3D SR_QUAD_EN_MX;
++	nor->bouncebuf[0] |=3D SR1_QUAD_EN_BIT6;
+=20
+-	ret =3D spi_nor_write_sr(nor, &nor->bouncebuf[0], 1);
+-	if (ret)
+-		return ret;
+-
+-	ret =3D spi_nor_read_sr(nor, &nor->bouncebuf[0]);
+-	if (ret)
+-		return ret;
+-
+-	if (!(nor->bouncebuf[0] & SR_QUAD_EN_MX)) {
+-		dev_err(nor->dev, "Macronix Quad bit not set\n");
+-		return -EIO;
+-	}
+-
+-	return 0;
++	return spi_nor_write_sr1_and_check(nor, nor->bouncebuf[0], 0xFF);
+ }
+=20
+ /**
+@@ -2277,7 +2263,7 @@ static void gd25q256_default_init(struct spi_nor *nor=
+)
+ 	 * indicate the quad_enable method for this case, we need
+ 	 * to set it in the default_init fixup hook.
+ 	 */
+-	nor->flash.quad_enable =3D macronix_quad_enable;
++	nor->flash.quad_enable =3D spi_nor_sr1_bit6_quad_enable;
+ }
+=20
+ static struct spi_nor_fixups gd25q256_fixups =3D {
+@@ -3661,7 +3647,7 @@ static int spi_nor_parse_bfpt(struct spi_nor *nor,
+=20
+ 	case BFPT_DWORD15_QER_SR1_BIT6:
+ 		nor->flags &=3D ~SNOR_F_HAS_16BIT_SR;
+-		flash->quad_enable =3D macronix_quad_enable;
++		flash->quad_enable =3D spi_nor_sr1_bit6_quad_enable;
+ 		break;
+=20
+ 	case BFPT_DWORD15_QER_SR2_BIT7:
+@@ -4558,7 +4544,7 @@ static int spi_nor_setup(struct spi_nor *nor,
+=20
+ static void macronix_set_default_init(struct spi_nor *nor)
+ {
+-	nor->flash.quad_enable =3D macronix_quad_enable;
++	nor->flash.quad_enable =3D spi_nor_sr1_bit6_quad_enable;
+ 	nor->flash.set_4byte =3D macronix_set_4byte;
+ }
+=20
 diff --git a/include/linux/mtd/spi-nor.h b/include/linux/mtd/spi-nor.h
-index ca650f895903..6812416ab013 100644
+index fc3a8f5209f0..3a835de90b6a 100644
 --- a/include/linux/mtd/spi-nor.h
 +++ b/include/linux/mtd/spi-nor.h
-@@ -66,6 +66,7 @@
- #define SPINOR_OP_CLFSR		0x50	/* Clear flag status register */
- #define SPINOR_OP_RDEAR		0xc8	/* Read Extended Address Register */
- #define SPINOR_OP_WREAR		0xc5	/* Write Extended Address Register */
-+#define SPINOR_OP_ULBPR		0x98	/* Global Block Unlock Protection */
+@@ -133,7 +133,7 @@
+ #define SR_E_ERR		BIT(5)
+ #define SR_P_ERR		BIT(6)
 =20
- /* 4-byte address opcodes - used on Spansion and some Macronix flashes. */
- #define SPINOR_OP_READ_4B	0x13	/* Read data bytes (low frequency) */
+-#define SR_QUAD_EN_MX		BIT(6)	/* Macronix Quad I/O */
++#define SR1_QUAD_EN_BIT6	BIT(6)
+=20
+ /* Enhanced Volatile Configuration Register bits */
+ #define EVCR_QUAD_EN_MICRON	BIT(7)	/* Micron Quad I/O */
 --=20
 2.9.5
