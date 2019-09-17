@@ -1,11 +1,13 @@
 From: <Tudor.Ambarus@microchip.com>
-Subject: [PATCH 00/23] mtd: spi-nor: Quad Enable and (un)lock methods
-Date: Tue, 17 Sep 2019 15:54:40 +0000
-Message-ID: <20190917155426.7432-1-tudor.ambarus@microchip.com>
+Subject: [PATCH 01/23] mtd: spi-nor: hisi-sfc: Drop nor->erase NULL assignment
+Date: Tue, 17 Sep 2019 15:54:43 +0000
+Message-ID: <20190917155426.7432-2-tudor.ambarus@microchip.com>
+References: <20190917155426.7432-1-tudor.ambarus@microchip.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190917155426.7432-1-tudor.ambarus@microchip.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
 To: vigneshr@ti.com, boris.brezillon@collabora.com, marek.vasut@gmail.com, miquel.raynal@bootlin.com, richard@nod.at, linux-mtd@lists.infradead.org
@@ -14,75 +16,26 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Tudor Ambarus <tudor.ambarus@microchip.com>
 
-Patches 1 - 14 are just clean up patches for the Flash Register
-Operations.
+The pointer to 'struct spi_nor' is kzalloc'ed above in the code.
 
-Patches 15 - 21 deal with the Quad Enable and the (un)lock methods.
-Fixed the clearing of QE bit on (un)lock() operations. Reworked the
-Quad Enable methods and the disabling of the block write protection
-at power-up.
+Signed-off-by: Tudor Ambarus <tudor.ambarus@microchip.com>
+---
+ drivers/mtd/spi-nor/hisi-sfc.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-Patch 22 adds Global Block Unlock support as an optimization for
-unlocking the entire memory array. Patch 23 uses it in sst26vf064b.
-
-This is just compile tested, I don't have a relevant spansion-like
-flash memory to test the (un)lock() methods.
-
-The patch set can be tested using mtd-utils:
-1/ do a read-erase-write-read-back test immediately after boot, to check
-the spi_nor_unlock_all() method
-	mtd_debug read /dev/mtd-yours offset size read-file
-	hexdump read-file
-	mtd_debug erase /dev/mtd-yours offset size
-	dd if=3D/dev/urandom of=3Dwrite-file bs=3Dplease-choose count=3Dplease-cho=
-ose
-	mtd_debug write /dev/mtd-yours offset write-file-size write-file
-	mtd_debug read /dev/mtd-yours offset write-file-size read-file
-	sha1sum read-file write-file
-2/ lock flash then try to erase/write it, to see if the lock works
-	flash_lock /dev/mtd-yours offset block-count
-	read-erase/write-read-back test
-3/ unlock flash and do a read-erase-write-read-back to check if the QE
-bit was not cleared.
-
-Thanks,
-ta
-
-Tudor Ambarus (23):
-  mtd: spi-nor: hisi-sfc: Drop nor->erase NULL assignment
-  mtd: spi-nor: Introduce 'struct spi_nor_controller_ops'
-  mtd: spi-nor: cadence-quadspi: Fix cqspi_command_read() definition
-  mtd: spi-nor: Rename nor->params to nor->flash
-  mtd: spi-nor: Rework read_sr()
-  mtd: spi-nor: Rework read_fsr()
-  mtd: spi-nor: Rework read_cr()
-  mtd: spi-nor: Rework write_enable/disable()
-  mtd: spi-nor: Fix retlen handling in sst_write()
-  mtd: spi-nor: Rework write_sr()
-  mtd: spi-nor: Rework spi_nor_read/write_sr2()
-  mtd: spi-nor: Report error in spi_nor_xread_sr()
-  mtd: spi-nor: Void return type for spi_nor_clear_sr/fsr()
-  mtd: spi-nor: Drop duplicated new line
-  mtd: spi-nor: Drop spansion_quad_enable()
-  mtd: spi-nor: Fix errno on quad_enable methods
-  mtd: spi-nor: Fix clearing of QE bit on lock()/unlock()
-  mtd: spi-nor: Rework macronix_quad_enable()
-  mtd: spi-nor: Rework spansion(_no)_read_cr_quad_enable()
-  mtd: spi-nor: Update sr2_bit7_quad_enable()
-  mtd: spi-nor: Rework the disabling of block write protection
-  mtd: spi-nor: Add Global Block Unlock support
-  mtd: spi-nor: Unlock global block protection on sst26vf064b
-
- drivers/mtd/spi-nor/aspeed-smc.c      |   23 +-
- drivers/mtd/spi-nor/cadence-quadspi.c |   54 +-
- drivers/mtd/spi-nor/hisi-sfc.c        |   23 +-
- drivers/mtd/spi-nor/intel-spi.c       |   24 +-
- drivers/mtd/spi-nor/mtk-quadspi.c     |   25 +-
- drivers/mtd/spi-nor/nxp-spifi.c       |   23 +-
- drivers/mtd/spi-nor/spi-nor.c         | 1697 ++++++++++++++++++-----------=
-----
- include/linux/mtd/spi-nor.h           |   75 +-
- 8 files changed, 1050 insertions(+), 894 deletions(-)
-
+diff --git a/drivers/mtd/spi-nor/hisi-sfc.c b/drivers/mtd/spi-nor/hisi-sfc.=
+c
+index 6dac9dd8bf42..c99ed9cdbf9c 100644
+--- a/drivers/mtd/spi-nor/hisi-sfc.c
++++ b/drivers/mtd/spi-nor/hisi-sfc.c
+@@ -364,7 +364,6 @@ static int hisi_spi_nor_register(struct device_node *np=
+,
+ 	nor->write_reg =3D hisi_spi_nor_write_reg;
+ 	nor->read =3D hisi_spi_nor_read;
+ 	nor->write =3D hisi_spi_nor_write;
+-	nor->erase =3D NULL;
+ 	ret =3D spi_nor_scan(nor, NULL, &hwcaps);
+ 	if (ret)
+ 		return ret;
 --=20
 2.9.5
