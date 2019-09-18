@@ -1,88 +1,171 @@
-From: Sakari Ailus <sakari.ailus@iki.fi>
-Subject: Re: [RFC PATCH V4 3/4] dt-bindings: mt8183: Add sensor interface
- dt-bindings
-Date: Wed, 18 Sep 2019 11:29:24 +0300
-Message-ID: <20190918082924.GE5525@valkosipuli.retiisi.org.uk>
-References: <20190915065004.20257-1-louis.kuo@mediatek.com>
- <20190915065004.20257-4-louis.kuo@mediatek.com>
+From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=
+        <u.kleine-koenig@pengutronix.de>
+Subject: [PATCH v2] of: restore old handling of cells_name=NULL in
+ of_*_phandle_with_args()
+Date: Wed, 18 Sep 2019 10:47:48 +0200
+Message-ID: <20190918084748.hnjkiq7wc5b35wjh@pengutronix.de>
+References: <20190918063837.8196-1-u.kleine-koenig@pengutronix.de>
+ <b00ca30f-2c06-7722-96b2-123d15751cb6@axentia.se>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20190915065004.20257-4-louis.kuo@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Louis Kuo <louis.kuo@mediatek.com>
-Cc: devicetree@vger.kernel.org, Sean.Cheng@mediatek.com, laurent.pinchart+renesas@ideasonboard.com, Rynn.Wu@mediatek.com, christie.yu@mediatek.com, srv_heupstream@mediatek.com, Jerry-ch.Chen@mediatek.com, tfiga@chromium.org, keiichiw@chromium.org, jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, hans.verkuil@cisco.com, zwisler@chromium.org, frederic.chen@mediatek.com, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+In-Reply-To: <b00ca30f-2c06-7722-96b2-123d15751cb6@axentia.se>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Peter Rosin <peda@axentia.se>, Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>
+Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "kernel@pengutronix.de" <kernel@pengutronix.de>, Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Geert Uytterhoeven <geert+renesas@glider.be>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Louis,
+Before commit e42ee61017f5 ("of: Let of_for_each_phandle fallback to
+non-negative cell_count") the iterator functions calling
+of_for_each_phandle assumed a cell count of 0 if cells_name was NULL.
+This corner case was missed when implementing the fallback logic in
+e42ee61017f5 and resulted in an endless loop.
 
-On Sun, Sep 15, 2019 at 02:50:03PM +0800, Louis Kuo wrote:
-> This patch adds the DT binding documentation for the sensor interface
-> module in Mediatek SoCs.
+Restore the old behaviour of of_count_phandle_with_args() and
+of_parse_phandle_with_args() and add a check to
+of_phandle_iterator_init() to prevent a similar failure as a safety
+precaution. of_parse_phandle_with_args_map() doesn't need a similar fix
+as cells_name isn't NULL there.
+
+Affected drivers are:
+ - drivers/base/power/domain.c
+ - drivers/base/power/domain.c
+ - drivers/clk/ti/clk-dra7-atl.c
+ - drivers/hwmon/ibmpowernv.c
+ - drivers/i2c/muxes/i2c-demux-pinctrl.c
+ - drivers/iommu/mtk_iommu.c
+ - drivers/net/ethernet/freescale/fman/mac.c
+ - drivers/opp/of.c
+ - drivers/perf/arm_dsu_pmu.c
+ - drivers/regulator/of_regulator.c
+ - drivers/remoteproc/imx_rproc.c
+ - drivers/soc/rockchip/pm_domains.c
+ - sound/soc/fsl/imx-audmix.c
+ - sound/soc/fsl/imx-audmix.c
+ - sound/soc/meson/axg-card.c
+ - sound/soc/samsung/tm2_wm5110.c
+ - sound/soc/samsung/tm2_wm5110.c
+
+Thanks to Geert Uytterhoeven for reporting the issue, Peter Rosin for
+helping pinpoint the actual problem and the testers for confirming this
+fix.
+
+Fixes: e42ee61017f5 ("of: Let of_for_each_phandle fallback to non-negative cell_count")
+Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
+Tested-by: Geert Uytterhoeven <geert+renesas@glider.be>
+Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+---
+
+On Wed, Sep 18, 2019 at 08:01:05AM +0000, Peter Rosin wrote:
+> On 2019-09-18 08:38, Uwe Kleine-König wrote:
+> >  EXPORT_SYMBOL(of_parse_phandle_with_args);
+> >  
+> > @@ -1765,6 +1779,18 @@ int of_count_phandle_with_args(const struct device_node *np, const char *list_na
+> >  	struct of_phandle_iterator it;
+> >  	int rc, cur_index = 0;
+> >  
+> > +	/* If cells_name is NULL we assume a cell count of 0 */
+> > +	if (cells_name == NULL) {
 > 
-> Signed-off-by: Louis Kuo <louis.kuo@mediatek.com>
-> ---
->  .../bindings/media/mediatek-seninf.txt        | 30 +++++++++++++++++++
->  1 file changed, 30 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek-seninf.txt
+> A couple of nits.
 > 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek-seninf.txt b/Documentation/devicetree/bindings/media/mediatek-seninf.txt
-> new file mode 100644
-> index 000000000000..bf2eb801cb47
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/mediatek-seninf.txt
-> @@ -0,0 +1,30 @@
-> +* Mediatek seninf MIPI-CSI2 host driver
-> +
-> +Seninf MIPI-CSI2 host driver is a HW camera interface controller. It support a widely adopted,
-> +simple, high-speed protocol primarily intended for point-to-point image and video
-> +transmission between cameras and host devices.
+> I don't know if there are other considerations, but in the previous two
+> hunks you use !cells_name instead of comparing explicitly with NULL.
+> Personally, I find the shorter form more readable, and in the name of
+> consistency bla bla...
 
-Please wrap so it fits to 80 chars per line.
+Ack, changed to !cells_name here, too.
 
-You'll also need to document the graph nodes needed. Which ports correspond
-to which interfaces on the device, for instance?
+> 
+> Also, the comment explaining this NULL-check didn't really make sense
+> to me until I realized that knowing the cell count to be zero makes
+> counting trivial. Something along those lines should perhaps be in the
+> comment?
 
-Please document which endpoint properties are required and whether there
-are any optional ones.
+You're right, I extended the comment a bit.
+ 
+> But as I said, these are nits. Feel free to ignore.
 
-> +
-> +Required properties:
-> +  - compatible: "mediatek,mt8183-seninf"
-> +  - reg: Must contain an entry for each entry in reg-names.
-> +  - reg-names: Must include the following entries:
-> +    "base_reg": seninf registers base
-> +    "rx_reg": Rx analog registers base
-> +  - interrupts: interrupt number to the cpu.
-> +  - clocks : clock name from clock manager
-> +  - clock-names: must be CLK_CAM_SENINF and CLK_TOP_MUX_SENINF.
-> +    It is the clocks of seninf
-> +
-> +Example:
-> +	seninf: seninf@1a040000 {
-> +		compatible = "mediatek,mt8183-seninf";
-> +		reg = <0 0x1a040000 0 0x8000>,
-> +		      <0 0x11C80000 0 0x6000>;
-> +		reg-names = "base_reg", "rx_reg";
-> +		interrupts = <GIC_SPI 251 IRQ_TYPE_LEVEL_LOW>;
-> +		power-domains = <&scpsys MT8183_POWER_DOMAIN_CAM>;
-> +		clocks = <&camsys CLK_CAM_SENINF>,
-> +			 <&topckgen CLK_TOP_MUX_SENINF>;
-> +		clock-names = "CLK_CAM_SENINF", "CLK_TOP_MUX_SENINF";
-> +	}
-> +
+I considered resending already anyhow as I fatfingerd my email address.
+this is fixed now, too. Additionally I fixed a typo in one of the
+comments.
+
+Thanks for your feedback.
+
+Best regards
+Uwe
+
+ drivers/of/base.c | 35 +++++++++++++++++++++++++++++++++--
+ 1 file changed, 33 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/of/base.c b/drivers/of/base.c
+index 2f25d2dfecfa..1d667eb730e1 100644
+--- a/drivers/of/base.c
++++ b/drivers/of/base.c
+@@ -1286,6 +1286,13 @@ int of_phandle_iterator_init(struct of_phandle_iterator *it,
+ 
+ 	memset(it, 0, sizeof(*it));
+ 
++	/*
++	 * one of cell_count or cells_name must be provided to determine the
++	 * argument length.
++	 */
++	if (cell_count < 0 && !cells_name)
++		return -EINVAL;
++
+ 	list = of_get_property(np, list_name, &size);
+ 	if (!list)
+ 		return -ENOENT;
+@@ -1512,10 +1519,17 @@ int of_parse_phandle_with_args(const struct device_node *np, const char *list_na
+ 				const char *cells_name, int index,
+ 				struct of_phandle_args *out_args)
+ {
++	int cell_count = -1;
++
+ 	if (index < 0)
+ 		return -EINVAL;
+-	return __of_parse_phandle_with_args(np, list_name, cells_name, -1,
+-					    index, out_args);
++
++	/* If cells_name is NULL we assume a cell count of 0 */
++	if (!cells_name)
++		cell_count = 0;
++
++	return __of_parse_phandle_with_args(np, list_name, cells_name,
++					    cell_count, index, out_args);
+ }
+ EXPORT_SYMBOL(of_parse_phandle_with_args);
+ 
+@@ -1765,6 +1779,23 @@ int of_count_phandle_with_args(const struct device_node *np, const char *list_na
+ 	struct of_phandle_iterator it;
+ 	int rc, cur_index = 0;
+ 
++	/*
++	 * If cells_name is NULL we assume a cell count of 0. This makes
++	 * counting the phandles trivial as each 32bit word in the list is a
++	 * phandle and no arguments are to consider. So we don't iterate through
++	 * the list but just use the length to determine the phandle count.
++	 */
++	if (!cells_name) {
++		const __be32 *list;
++		int size;
++
++		list = of_get_property(np, list_name, &size);
++		if (!list)
++			return -ENOENT;
++
++		return size / sizeof(*list);
++	}
++
+ 	rc = of_phandle_iterator_init(&it, np, list_name, cells_name, -1);
+ 	if (rc)
+ 		return rc;
+-- 
+2.23.0
+
 
 -- 
-Regards,
-
-Sakari Ailus
+Pengutronix e.K.                           | Uwe Kleine-König            |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
