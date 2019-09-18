@@ -1,47 +1,82 @@
-From: Sam Shih <sam.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v8 08/11] arm64: dts: mt7622: add a property "num-pwms" for PWM
-Date: Wed, 18 Sep 2019 17:28:56 +0800
-Message-ID: <1568798939-16038-9-git-send-email-sam.shih@mediatek.com>
-References: <1568798939-16038-1-git-send-email-sam.shih@mediatek.com>
+From: Markus Elfring <Markus.Elfring@web.de>
+Subject: [PATCH] media: platform: Use devm_platform_ioremap_resource() in two
+ functions
+Date: Wed, 18 Sep 2019 11:30:30 +0200
+Message-ID: <d80a685a-c3de-b9c9-ad32-e1da9308c393@web.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1568798939-16038-1-git-send-email-sam.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sam Shih <sam.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, =?UTF-8?Q?Niklas_S=c3=b6derlund?= <niklas.soderlund@ragnatech.se>, Tiffany Lin <tiffany.lin@mediatek.com>
+Cc: Bartosz Golaszewski <bgolaszewski@baylibre.com>, kernel-janitors@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, Himanshu Jha <himanshujha199640@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+From: Markus Elfring <elfring@users.sourceforge.net>
+Date: Wed, 18 Sep 2019 11:20:48 +0200
 
-This adds a property "num-pwms" for PWM controller.
+Simplify these function implementations by using a known wrapper function.
 
-Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Sam Shih <sam.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+This issue was detected by using the Coccinelle software.
+
+Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
 ---
- arch/arm64/boot/dts/mediatek/mt7622.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c | 8 +-------
+ drivers/media/platform/rcar-vin/rcar-core.c            | 7 +------
+ 2 files changed, 2 insertions(+), 13 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-index d1e13d340e26..9a043938881f 100644
---- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-@@ -439,6 +439,7 @@
- 			 <&pericfg CLK_PERI_PWM6_PD>;
- 		clock-names = "top", "main", "pwm1", "pwm2", "pwm3", "pwm4",
- 			      "pwm5", "pwm6";
-+		num-pwms = <6>;
- 		status = "disabled";
- 	};
- 
--- 
-2.17.1
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+index 00d090df11bb..944771ee5f5c 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+@@ -253,13 +253,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 	}
+
+ 	for (i = 0; i < NUM_MAX_VDEC_REG_BASE; i++) {
+-		res = platform_get_resource(pdev, IORESOURCE_MEM, i);
+-		if (res == NULL) {
+-			dev_err(&pdev->dev, "get memory resource failed.");
+-			ret = -ENXIO;
+-			goto err_res;
+-		}
+-		dev->reg_base[i] = devm_ioremap_resource(&pdev->dev, res);
++		dev->reg_base[i] = devm_platform_ioremap_resource(pdev, i);
+ 		if (IS_ERR((__force void *)dev->reg_base[i])) {
+ 			ret = PTR_ERR((__force void *)dev->reg_base[i]);
+ 			goto err_res;
+diff --git a/drivers/media/platform/rcar-vin/rcar-core.c b/drivers/media/platform/rcar-vin/rcar-core.c
+index 6993484ff0f3..334c62805959 100644
+--- a/drivers/media/platform/rcar-vin/rcar-core.c
++++ b/drivers/media/platform/rcar-vin/rcar-core.c
+@@ -1282,7 +1282,6 @@ static int rcar_vin_probe(struct platform_device *pdev)
+ {
+ 	const struct soc_device_attribute *attr;
+ 	struct rvin_dev *vin;
+-	struct resource *mem;
+ 	int irq, ret;
+
+ 	vin = devm_kzalloc(&pdev->dev, sizeof(*vin), GFP_KERNEL);
+@@ -1301,11 +1300,7 @@ static int rcar_vin_probe(struct platform_device *pdev)
+ 	if (attr)
+ 		vin->info = attr->data;
+
+-	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	if (mem == NULL)
+-		return -EINVAL;
+-
+-	vin->base = devm_ioremap_resource(vin->dev, mem);
++	vin->base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(vin->base))
+ 		return PTR_ERR(vin->base);
+
+--
+2.23.0
