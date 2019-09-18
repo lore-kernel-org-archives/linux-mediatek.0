@@ -1,100 +1,67 @@
 From: Jitao Shi <jitao.shi@mediatek.com>
-Subject: [PATCH v6 3/8] dt-bindings: display: panel: add auo kd101n80-45na panel bindings
-Date: Wed, 18 Sep 2019 20:24:17 +0800
-Message-ID: <20190918122422.17339-4-jitao.shi@mediatek.com>
+Subject: [PATCH v6 5/8] dt-bindings: display: panel: add boe tv101wum-n53
+ panel documentation
+Date: Wed, 18 Sep 2019 20:24:19 +0800
+Message-ID: <20190918122422.17339-6-jitao.shi@mediatek.com>
 References: <20190918122422.17339-1-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <20190918122422.17339-1-jitao.shi@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Sam Ravnborg <sam@ravnborg.org>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
-Cc: srv_heupstream@mediatek.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, cawa.cheng@mediatek.com, bibby.hsieh@mediatek.com, linux-mediatek@lists.infradead.org, ck.hu@mediatek.com, stonea168@163.com, Jitao Shi <jitao.shi@mediatek.com>
+Cc: Jitao Shi <jitao.shi@mediatek.com>, srv_heupstream@mediatek.com, stonea168@163.com, cawa.cheng@mediatek.com, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Add documentation for auo kd101n80-45na panel.
-
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-Reviewed-by: Sam Ravnborg <sam@ravnborg.org>
----
- .../display/panel/auo,kd101n80-45na.yaml      | 67 +++++++++++++++++++
- 1 file changed, 67 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/panel/auo,kd101n80-45na.yaml
-
-diff --git a/Documentation/devicetree/bindings/display/panel/auo,kd101n80-45na.yaml b/Documentation/devicetree/bindings/display/panel/auo,kd101n80-45na.yaml
-new file mode 100644
-index 000000000000..caf82765fa0e
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/panel/auo,kd101n80-45na.yaml
-@@ -0,0 +1,67 @@
-+# SPDX-License-Identifier: GPL-2.0
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/display/panel/auo,kd101n80-45na.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: AUO KD101N80-45NA DSI Display Panel
-+
-+maintainers:
-+  - Thierry Reding <thierry.reding@gmail.com>
-+  - Sam Ravnborg <sam@ravnborg.org>
-+  - Rob Herring <robh+dt@kernel.org>
-+ 
-+properties:
-+  compatible:
-+        const: auo,kd101n80-45na
-+
-+  reg:
-+    description: the virtual channel number of a DSI peripheral
-+
-+  enable-gpios:
-+    description: a GPIO spec for the enable pin
-+
-+  pp1800-supply:
-+    description: core voltage supply
-+
-+  avdd-supply:
-+    description: phandle of the regulator that provides positive voltage
-+
-+  avee-supply:
-+    description: phandle of the regulator that provides negative voltage
-+
-+  backlight:
-+    description: phandle of the backlight device attached to the panel
-+
-+required:
-+ - compatible
-+ - reg
-+ - enable-gpios
-+ - pp1800-supply
-+ - avdd-supply
-+ - avee-supply
-+ - backlight
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    &dsi {
-+        panel@0 {
-+            compatible = "auo,kd101n80-45na";
-+            reg = <0>;
-+            enable-gpios = <&pio 45 0>;
-+            avdd-supply = <&ppvarn_lcd>;
-+            avee-supply = <&ppvarp_lcd>;
-+            pp1800-supply = <&pp1800_lcd>;
-+            backlight = <&backlight_lcd0>;
-+            status = "okay";
-+            port {
-+                panel_in: endpoint {
-+                    remote-endpoint = <&dsi_out>;
-+                };
-+            };
-+        };
-+    };
-+
-+...
-\ No newline at end of file
--- 
-2.21.0
+QWRkIGRjdW1lbnRhdGlvbiBmb3IgYm9lLHR2MTAxd3VtLW41Mywgd2hpY2ggaXMgbWlwaSBkc2kg
+dmlkZW8gcGFuZWwKYW5kIHJlc29sdXRpb24gaXMgMTIwMHgxOTIwLgoKU2lnbmVkLW9mZi1ieTog
+Sml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPgotLS0KIC4uLi9kaXNwbGF5L3BhbmVs
+L2JvZSx0djEwMXd1bS1uNTMueWFtbCAgICAgICB8IDY3ICsrKysrKysrKysrKysrKysrKysKIDEg
+ZmlsZSBjaGFuZ2VkLCA2NyBpbnNlcnRpb25zKCspCiBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1l
+bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcGFuZWwvYm9lLHR2MTAxd3VtLW41
+My55YW1sCgpkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rp
+c3BsYXkvcGFuZWwvYm9lLHR2MTAxd3VtLW41My55YW1sIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0
+cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcGFuZWwvYm9lLHR2MTAxd3VtLW41My55YW1sCm5ldyBmaWxl
+IG1vZGUgMTAwNjQ0CmluZGV4IDAwMDAwMDAwMDAwMC4uZjU0MTQ0NmZjNzBjCi0tLSAvZGV2L251
+bGwKKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcGFuZWwv
+Ym9lLHR2MTAxd3VtLW41My55YW1sCkBAIC0wLDAgKzEsNjcgQEAKKyMgU1BEWC1MaWNlbnNlLUlk
+ZW50aWZpZXI6IEdQTC0yLjAKKyVZQU1MIDEuMgorLS0tCiskaWQ6IGh0dHA6Ly9kZXZpY2V0cmVl
+Lm9yZy9zY2hlbWFzL2Rpc3BsYXkvcGFuZWwvYm9lLHR2MTAxd3VtLW41My55YW1sIworJHNjaGVt
+YTogaHR0cDovL2RldmljZXRyZWUub3JnL21ldGEtc2NoZW1hcy9jb3JlLnlhbWwjCisKK3RpdGxl
+OiBCT0UgVFYxMDFXVU0tTjUzIERTSSBEaXNwbGF5IFBhbmVsCisKK21haW50YWluZXJzOgorICAt
+IFRoaWVycnkgUmVkaW5nIDx0aGllcnJ5LnJlZGluZ0BnbWFpbC5jb20+CisgIC0gU2FtIFJhdm5i
+b3JnIDxzYW1AcmF2bmJvcmcub3JnPgorICAtIFJvYiBIZXJyaW5nIDxyb2JoK2R0QGtlcm5lbC5v
+cmc+CisgCitwcm9wZXJ0aWVzOgorICBjb21wYXRpYmxlOgorICAgICAgICBjb25zdDogYm9lLHR2
+MTAxd3VtLW41MworCisgIHJlZzoKKyAgICBkZXNjcmlwdGlvbjogdGhlIHZpcnR1YWwgY2hhbm5l
+bCBudW1iZXIgb2YgYSBEU0kgcGVyaXBoZXJhbAorCisgIGVuYWJsZS1ncGlvczoKKyAgICBkZXNj
+cmlwdGlvbjogYSBHUElPIHNwZWMgZm9yIHRoZSBlbmFibGUgcGluCisKKyAgcHAxODAwLXN1cHBs
+eToKKyAgICBkZXNjcmlwdGlvbjogY29yZSB2b2x0YWdlIHN1cHBseQorCisgIGF2ZGQtc3VwcGx5
+OgorICAgIGRlc2NyaXB0aW9uOiBwaGFuZGxlIG9mIHRoZSByZWd1bGF0b3IgdGhhdCBwcm92aWRl
+cyBwb3NpdGl2ZSB2b2x0YWdlCisKKyAgYXZlZS1zdXBwbHk6CisgICAgZGVzY3JpcHRpb246IHBo
+YW5kbGUgb2YgdGhlIHJlZ3VsYXRvciB0aGF0IHByb3ZpZGVzIG5lZ2F0aXZlIHZvbHRhZ2UKKwor
+ICBiYWNrbGlnaHQ6CisgICAgZGVzY3JpcHRpb246IHBoYW5kbGUgb2YgdGhlIGJhY2tsaWdodCBk
+ZXZpY2UgYXR0YWNoZWQgdG8gdGhlIHBhbmVsCisKK3JlcXVpcmVkOgorIC0gY29tcGF0aWJsZQor
+IC0gcmVnCisgLSBlbmFibGUtZ3Bpb3MKKyAtIHBwMTgwMC1zdXBwbHkKKyAtIGF2ZGQtc3VwcGx5
+CisgLSBhdmVlLXN1cHBseQorIC0gYmFja2xpZ2h0CisKK2FkZGl0aW9uYWxQcm9wZXJ0aWVzOiBm
+YWxzZQorCitleGFtcGxlczoKKyAgLSB8CisgICAgJmRzaSB7CisgICAgICAgIHBhbmVsQDAgewor
+ICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJib2UsdHYxMDF3dW0tbjUzIjsKKyAgICAgICAgICAg
+IHJlZyA9IDwwPjsKKyAgICAgICAgICAgIGVuYWJsZS1ncGlvcyA9IDwmcGlvIDQ1IDA+OworICAg
+ICAgICAgICAgYXZkZC1zdXBwbHkgPSA8JnBwdmFybl9sY2Q+OworICAgICAgICAgICAgYXZlZS1z
+dXBwbHkgPSA8JnBwdmFycF9sY2Q+OworICAgICAgICAgICAgcHAxODAwLXN1cHBseSA9IDwmcHAx
+ODAwX2xjZD47CisgICAgICAgICAgICBiYWNrbGlnaHQgPSA8JmJhY2tsaWdodF9sY2QwPjsKKyAg
+ICAgICAgICAgIHN0YXR1cyA9ICJva2F5IjsKKyAgICAgICAgICAgIHBvcnQgeworICAgICAgICAg
+ICAgICAgIHBhbmVsX2luOiBlbmRwb2ludCB7CisgICAgICAgICAgICAgICAgICAgIHJlbW90ZS1l
+bmRwb2ludCA9IDwmZHNpX291dD47CisgICAgICAgICAgICAgICAgfTsKKyAgICAgICAgICAgIH07
+CisgICAgICAgIH07CisgICAgfTsKKworLi4uClwgTm8gbmV3bGluZSBhdCBlbmQgb2YgZmlsZQot
+LSAKMi4yMS4wCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
+aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
