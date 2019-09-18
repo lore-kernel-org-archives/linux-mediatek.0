@@ -1,60 +1,130 @@
 From: Jitao Shi <jitao.shi@mediatek.com>
-Subject: [PATCH v6 6/8] drm/panel: support for boe,
- tv101wum-n53 wuxga dsi video mode panel
-Date: Wed, 18 Sep 2019 20:24:20 +0800
-Message-ID: <20190918122422.17339-7-jitao.shi@mediatek.com>
+Subject: [PATCH v6 8/8] drm/panel: support for auo,b101uan08.3 wuxga dsi video mode panel
+Date: Wed, 18 Sep 2019 20:24:22 +0800
+Message-ID: <20190918122422.17339-9-jitao.shi@mediatek.com>
 References: <20190918122422.17339-1-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20190918122422.17339-1-jitao.shi@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Sam Ravnborg <sam@ravnborg.org>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
-Cc: Jitao Shi <jitao.shi@mediatek.com>, srv_heupstream@mediatek.com, stonea168@163.com, cawa.cheng@mediatek.com, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com
+Cc: srv_heupstream@mediatek.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, cawa.cheng@mediatek.com, bibby.hsieh@mediatek.com, linux-mediatek@lists.infradead.org, ck.hu@mediatek.com, stonea168@163.com, Jitao Shi <jitao.shi@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Qm9lLHR2MTAxd3VtLW41MydzIGNvbm5lY3RvciBpcyBzYW1lIGFzIGJvZSx0djEwMXd1bS1ubDYu
-ClRoZSBtb3N0IGNvZGVzIGNhbiBiZSByZXVzZS4KU28gYm9lLHR2MTAxd3VtLW41MyBhbmQgYm9l
-LHR2MTAxd3VtLW5sNiB1c2Ugb25lIGRyaXZlciBmaWxlLgpBZGQgdGhlIGRpZmZlcmVudCBwYXJ0
-cyBpbiBkcml2ZXIgZGF0YS4KClNpZ25lZC1vZmYtYnk6IEppdGFvIFNoaSA8aml0YW8uc2hpQG1l
-ZGlhdGVrLmNvbT4KLS0tCiAuLi4vZ3B1L2RybS9wYW5lbC9wYW5lbC1ib2UtdHYxMDF3dW0tbmw2
-LmMgICAgfCAzMSArKysrKysrKysrKysrKysrKysrCiAxIGZpbGUgY2hhbmdlZCwgMzEgaW5zZXJ0
-aW9ucygrKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1ib2UtdHYx
-MDF3dW0tbmw2LmMgYi9kcml2ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwtYm9lLXR2MTAxd3VtLW5s
-Ni5jCmluZGV4IGY4MDk3NDc3ODM2MC4uYzc1NzAzNWFjMDljIDEwMDY0NAotLS0gYS9kcml2ZXJz
-L2dwdS9kcm0vcGFuZWwvcGFuZWwtYm9lLXR2MTAxd3VtLW5sNi5jCisrKyBiL2RyaXZlcnMvZ3B1
-L2RybS9wYW5lbC9wYW5lbC1ib2UtdHYxMDF3dW0tbmw2LmMKQEAgLTYyMSw2ICs2MjEsMzQgQEAg
-c3RhdGljIGNvbnN0IHN0cnVjdCBwYW5lbF9kZXNjIGF1b19rZDEwMW44MF80NW5hX2Rlc2MgPSB7
-CiAJLmRpc2NoYXJnZV9vbl9kaXNhYmxlID0gdHJ1ZSwKIH07CiAKK3N0YXRpYyBjb25zdCBzdHJ1
-Y3QgZHJtX2Rpc3BsYXlfbW9kZSBib2VfdHYxMDF3dW1fbjUzX2RlZmF1bHRfbW9kZSA9IHsKKwku
-Y2xvY2sgPSAxNTk4MzMsCisJLmhkaXNwbGF5ID0gMTIwMCwKKwkuaHN5bmNfc3RhcnQgPSAxMjAw
-ICsgMTE0LAorCS5oc3luY19lbmQgPSAxMjAwICsgMTE0ICsgMTAsCisJLmh0b3RhbCA9IDEyMDAg
-KyAxMTQgKyAxMCArIDQwLAorCS52ZGlzcGxheSA9IDE5MjAsCisJLnZzeW5jX3N0YXJ0ID0gMTky
-MCArIDE5LAorCS52c3luY19lbmQgPSAxOTIwICsgMTkgKyA0LAorCS52dG90YWwgPSAxOTIwICsg
-MTkgKyA0ICsgMTAsCisJLnZyZWZyZXNoID0gNjAsCisJLnR5cGUgPSBEUk1fTU9ERV9UWVBFX0RS
-SVZFUiB8IERSTV9NT0RFX1RZUEVfUFJFRkVSUkVELAorfTsKKworc3RhdGljIGNvbnN0IHN0cnVj
-dCBwYW5lbF9kZXNjIGJvZV90djEwMXd1bV9uNTNfZGVzYyA9IHsKKwkubW9kZXMgPSAmYm9lX3R2
-MTAxd3VtX241M19kZWZhdWx0X21vZGUsCisJLmJwYyA9IDgsCisJLnNpemUgPSB7CisJCS53aWR0
-aF9tbSA9IDEzNSwKKwkJLmhlaWdodF9tbSA9IDIxNiwKKwl9LAorCS5sYW5lcyA9IDQsCisJLmZv
-cm1hdCA9IE1JUElfRFNJX0ZNVF9SR0I4ODgsCisJLm1vZGVfZmxhZ3MgPSBNSVBJX0RTSV9NT0RF
-X1ZJREVPIHwgTUlQSV9EU0lfTU9ERV9WSURFT19TWU5DX1BVTFNFIHwKKwkJICAgICAgTUlQSV9E
-U0lfTU9ERV9MUE0sCisJLmluaXRfY21kcyA9IGJvZV9pbml0X2NtZCwKK307CisKIHN0YXRpYyBp
-bnQgYm9lX3BhbmVsX2dldF9tb2RlcyhzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbCkKIHsKIAlzdHJ1
-Y3QgYm9lX3BhbmVsICpib2UgPSB0b19ib2VfcGFuZWwocGFuZWwpOwpAQCAtNzQ3LDYgKzc3NSw5
-IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIGJvZV9vZl9tYXRjaFtdID0gewog
-CXsgLmNvbXBhdGlibGUgPSAiYXVvLGtkMTAxbjgwLTQ1bmEiLAogCSAgLmRhdGEgPSAmYXVvX2tk
-MTAxbjgwXzQ1bmFfZGVzYwogCX0sCisJeyAuY29tcGF0aWJsZSA9ICJib2UsdHYxMDF3dW0tbjUz
-IiwKKwkgIC5kYXRhID0gJmJvZV90djEwMXd1bV9uNTNfZGVzYworCX0sCiAJeyAvKiBzZW50aW5l
-bCAqLyB9CiB9OwogTU9EVUxFX0RFVklDRV9UQUJMRShvZiwgYm9lX29mX21hdGNoKTsKLS0gCjIu
-MjEuMAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
-LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
-Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+Auo,auo,b101uan08.3's connector is same as boe,tv101wum-nl6.
+The most codes can be reuse.
+So auo,b101uan08.3 and boe,tv101wum-nl6 use one driver file.
+Add the different parts in driver data.
+
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+---
+ .../gpu/drm/panel/panel-boe-tv101wum-nl6.c    | 78 +++++++++++++++++++
+ 1 file changed, 78 insertions(+)
+
+diff --git a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
+index c757035ac09c..40dcb61ef423 100644
+--- a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
++++ b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
+@@ -382,6 +382,53 @@ static const struct panel_init_cmd auo_kd101n80_45na_init_cmd[] = {
+ 	{},
+ };
+ 
++static const struct panel_init_cmd auo_b101uan08_3_init_cmd[] = {
++	_INIT_DELAY_CMD(24),
++	_INIT_DCS_CMD(0xB0, 0x01),
++	_INIT_DCS_CMD(0xC0, 0x48),
++	_INIT_DCS_CMD(0xC1, 0x48),
++	_INIT_DCS_CMD(0xC2, 0x47),
++	_INIT_DCS_CMD(0xC3, 0x47),
++	_INIT_DCS_CMD(0xC4, 0x46),
++	_INIT_DCS_CMD(0xC5, 0x46),
++	_INIT_DCS_CMD(0xC6, 0x45),
++	_INIT_DCS_CMD(0xC7, 0x45),
++	_INIT_DCS_CMD(0xC8, 0x64),
++	_INIT_DCS_CMD(0xC9, 0x64),
++	_INIT_DCS_CMD(0xCA, 0x4F),
++	_INIT_DCS_CMD(0xCB, 0x4F),
++	_INIT_DCS_CMD(0xCC, 0x40),
++	_INIT_DCS_CMD(0xCD, 0x40),
++	_INIT_DCS_CMD(0xCE, 0x66),
++	_INIT_DCS_CMD(0xCF, 0x66),
++	_INIT_DCS_CMD(0xD0, 0x4F),
++	_INIT_DCS_CMD(0xD1, 0x4F),
++	_INIT_DCS_CMD(0xD2, 0x41),
++	_INIT_DCS_CMD(0xD3, 0x41),
++	_INIT_DCS_CMD(0xD4, 0x48),
++	_INIT_DCS_CMD(0xD5, 0x48),
++	_INIT_DCS_CMD(0xD6, 0x47),
++	_INIT_DCS_CMD(0xD7, 0x47),
++	_INIT_DCS_CMD(0xD8, 0x46),
++	_INIT_DCS_CMD(0xD9, 0x46),
++	_INIT_DCS_CMD(0xDA, 0x45),
++	_INIT_DCS_CMD(0xDB, 0x45),
++	_INIT_DCS_CMD(0xDC, 0x64),
++	_INIT_DCS_CMD(0xDD, 0x64),
++	_INIT_DCS_CMD(0xDE, 0x4F),
++	_INIT_DCS_CMD(0xDF, 0x4F),
++	_INIT_DCS_CMD(0xE0, 0x40),
++	_INIT_DCS_CMD(0xE1, 0x40),
++	_INIT_DCS_CMD(0xE2, 0x66),
++	_INIT_DCS_CMD(0xE3, 0x66),
++	_INIT_DCS_CMD(0xE4, 0x4F),
++	_INIT_DCS_CMD(0xE5, 0x4F),
++	_INIT_DCS_CMD(0xE6, 0x41),
++	_INIT_DCS_CMD(0xE7, 0x41),
++	_INIT_DELAY_CMD(150),
++	{},
++};
++
+ static inline struct boe_panel *to_boe_panel(struct drm_panel *panel)
+ {
+ 	return container_of(panel, struct boe_panel, base);
+@@ -649,6 +696,34 @@ static const struct panel_desc boe_tv101wum_n53_desc = {
+ 	.init_cmds = boe_init_cmd,
+ };
+ 
++static const struct drm_display_mode auo_b101uan08_3_default_mode = {
++	.clock = 159667,
++	.hdisplay = 1200,
++	.hsync_start = 1200 + 60,
++	.hsync_end = 1200 + 60 + 4,
++	.htotal = 1200 + 60 + 4 + 80,
++	.vdisplay = 1920,
++	.vsync_start = 1920 + 34,
++	.vsync_end = 1920 + 34 + 2,
++	.vtotal = 1920 + 34 + 2 + 24,
++	.vrefresh = 60,
++	.type = DRM_MODE_TYPE_DRIVER | DRM_MODE_TYPE_PREFERRED,
++};
++
++static const struct panel_desc auo_b101uan08_3_desc = {
++	.modes = &auo_b101uan08_3_default_mode,
++	.bpc = 8,
++	.size = {
++		.width_mm = 135,
++		.height_mm = 216,
++	},
++	.lanes = 4,
++	.format = MIPI_DSI_FMT_RGB888,
++	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_SYNC_PULSE |
++		      MIPI_DSI_MODE_LPM,
++	.init_cmds = auo_b101uan08_3_init_cmd,
++};
++
+ static int boe_panel_get_modes(struct drm_panel *panel)
+ {
+ 	struct boe_panel *boe = to_boe_panel(panel);
+@@ -778,6 +853,9 @@ static const struct of_device_id boe_of_match[] = {
+ 	{ .compatible = "boe,tv101wum-n53",
+ 	  .data = &boe_tv101wum_n53_desc
+ 	},
++	{ .compatible = "auo,b101uan08.3",
++	  .data = &auo_b101uan08_3_desc
++	},
+ 	{ /* sentinel */ }
+ };
+ MODULE_DEVICE_TABLE(of, boe_of_match);
+-- 
+2.21.0
