@@ -1,7 +1,7 @@
 From: Jitao Shi <jitao.shi@mediatek.com>
-Subject: [PATCH v6 1/8] dt-bindings: display: panel: Add BOE tv101wum-n16 panel bindings
-Date: Wed, 18 Sep 2019 20:24:15 +0800
-Message-ID: <20190918122422.17339-2-jitao.shi@mediatek.com>
+Subject: [PATCH v6 3/8] dt-bindings: display: panel: add auo kd101n80-45na panel bindings
+Date: Wed, 18 Sep 2019 20:24:17 +0800
+Message-ID: <20190918122422.17339-4-jitao.shi@mediatek.com>
 References: <20190918122422.17339-1-jitao.shi@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
@@ -13,28 +13,28 @@ To: Sam Ravnborg <sam@ravnborg.org>, David Airlie <airlied@linux.ie>, Daniel Vet
 Cc: srv_heupstream@mediatek.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, cawa.cheng@mediatek.com, bibby.hsieh@mediatek.com, linux-mediatek@lists.infradead.org, ck.hu@mediatek.com, stonea168@163.com, Jitao Shi <jitao.shi@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add documentation for boe tv101wum-n16 panel.
+Add documentation for auo kd101n80-45na panel.
 
 Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 Reviewed-by: Sam Ravnborg <sam@ravnborg.org>
 ---
- .../display/panel/boe,tv101wum-nl6.yaml       | 67 +++++++++++++++++++
+ .../display/panel/auo,kd101n80-45na.yaml      | 67 +++++++++++++++++++
  1 file changed, 67 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/panel/boe,tv101wum-nl6.yaml
+ create mode 100644 Documentation/devicetree/bindings/display/panel/auo,kd101n80-45na.yaml
 
-diff --git a/Documentation/devicetree/bindings/display/panel/boe,tv101wum-nl6.yaml b/Documentation/devicetree/bindings/display/panel/boe,tv101wum-nl6.yaml
+diff --git a/Documentation/devicetree/bindings/display/panel/auo,kd101n80-45na.yaml b/Documentation/devicetree/bindings/display/panel/auo,kd101n80-45na.yaml
 new file mode 100644
-index 000000000000..31d394054181
+index 000000000000..caf82765fa0e
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/display/panel/boe,tv101wum-nl6.yaml
++++ b/Documentation/devicetree/bindings/display/panel/auo,kd101n80-45na.yaml
 @@ -0,0 +1,67 @@
 +# SPDX-License-Identifier: GPL-2.0
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/display/panel/boe,tv101wum-nl6.yaml#
++$id: http://devicetree.org/schemas/display/panel/auo,kd101n80-45na.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: BOE TV101WUM-Nl6 DSI Display Panel
++title: AUO KD101N80-45NA DSI Display Panel
 +
 +maintainers:
 +  - Thierry Reding <thierry.reding@gmail.com>
@@ -43,7 +43,7 @@ index 000000000000..31d394054181
 + 
 +properties:
 +  compatible:
-+        const: boe,tv101wum-nl6
++        const: auo,kd101n80-45na
 +
 +  reg:
 +    description: the virtual channel number of a DSI peripheral
@@ -78,7 +78,7 @@ index 000000000000..31d394054181
 +  - |
 +    &dsi {
 +        panel@0 {
-+            compatible = "boe,tv101wum-nl6";
++            compatible = "auo,kd101n80-45na";
 +            reg = <0>;
 +            enable-gpios = <&pio 45 0>;
 +            avdd-supply = <&ppvarn_lcd>;
