@@ -1,45 +1,63 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH] mfd: mt6360: add pmic mt6360 driver
-Date: Wed, 18 Sep 2019 11:51:21 +0100
-Message-ID: <20190918105121.GB5016@dell>
-References: <1568801744-21380-1-git-send-email-gene.chen.richtek@gmail.com>
+From: Jitao Shi <jitao.shi@mediatek.com>
+Subject: [PATCH v6 0/8] add driver for "boe, tv101wum-nl6", "boe, tv101wum-n53",
+ "auo, kd101n80-45na" and "auo, b101uan08.3" panels
+Date: Wed, 18 Sep 2019 20:24:14 +0800
+Message-ID: <20190918122422.17339-1-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1568801744-21380-1-git-send-email-gene.chen.richtek@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Gene Chen <gene.chen.richtek@gmail.com>
-Cc: matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, gene_chen@richtek.com, Wilma.Wu@mediatek.com, shufan_lee@richtek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sam Ravnborg <sam@ravnborg.org>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Cc: Jitao Shi <jitao.shi@mediatek.com>, srv_heupstream@mediatek.com, stonea168@163.com, cawa.cheng@mediatek.com, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 18 Sep 2019, Gene Chen wrote:
-
-> From: Gene Chen <gene_chen@richtek.com>
-> 
-> Add mfd driver for mt6360 pmic chip include
-> Battery Charger/USB_PD/Flash LED/RGB LED/LDO/Buck
-> 
-> Signed-off-by: Gene Chen <gene_chen@richtek.com
-> ---
-
-This looks different from the one you sent before, but I don't see a
-version bump or any changelog in this space.  Please re-submit with
-the differences noted.
-
->  drivers/mfd/Kconfig                |  12 +
->  drivers/mfd/Makefile               |   1 +
->  drivers/mfd/mt6360-core.c          | 463 +++++++++++++++++++++++++++++++++++++
->  include/linux/mfd/mt6360-private.h | 279 ++++++++++++++++++++++
->  include/linux/mfd/mt6360.h         |  33 +++
->  5 files changed, 788 insertions(+)
->  create mode 100644 drivers/mfd/mt6360-core.c
->  create mode 100644 include/linux/mfd/mt6360-private.h
->  create mode 100644 include/linux/mfd/mt6360.h
-
--- 
-Lee Jones [李琼斯]
-Linaro Services Technical Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
+Q2hhbmdlcyBzaW5jZSB2NToKIC0gY292ZXJ0IHRoZSBkb2N1bWVudHMgdG8geWFtbAogLSBmaW5l
+IHR1bmUgYm9lLCB0djEwMXd1bS1uNTMgcGFuZWwgdmlkZW8gdGltaW5lCgpDaGFuZ2VzIHNpbmNl
+IHY0OgogLSBhZGQgYXVvLGIxMDF1YW4wOC4zIHBhbmVsIGZvciB0aGlzIGRyaXZlci4KIC0gYWRk
+IGJvZSx0djEwMXd1bS1uNTMgcGFuZWwgZm9yIHRoaXMgZHJpdmVyLgoKQ2hhbmdlcyBzaW5jZSB2
+MzoKIC0gcmVtb3ZlIGNoZWNrIGVuYWJsZV9ncGlvLgogLSBmaW5lIHR1bmUgdGhlIGF1byxrZDEw
+MW44MC00NW5hIHBhbmVsJ3MgcG93ZXIgb24gdGltaW5nLgoKQ2hhbmdlcyBzaW5jZSB2MjoKIC0g
+Y29ycmVjdCB0aGUgcGFuZWwgc2l6ZQogLSByZW1vdmUgYmxhbmsgbGluZSBpbiBLY29uZmlnCiAt
+IG1vdmUgYXVvLGtkMTAxbjgwLTQ1bmEgcGFuZWwgZHJpdmVyIGluIHRoaXMgc2VyaWVzLgoKQ2hh
+bmdlcyBzaW5jZSB2MToKCiAtIHVwZGF0ZSB0eXBvIG5sNiAtPiBuMTYuCiAtIHVwZGF0ZSBuZXcg
+cGFuZWwgY29uZmlnIGFuZCBtYWtlZmlsZSBhcmUgYWRkZWQgaW4gYWxwaGFiZXRpY2FsbHkgb3Jk
+ZXIuCiAtIGFkZCB0aGUgcGFuZWwgbW9kZSBhbmQgcGFuZWwgaW5mbyBpbiBkcml2ZXIgZGF0YS4K
+IC0gbWVyZ2UgYXVvLGtkMTAxbjgwLTQ1YSBhbmQgYm9lLHR2MTAxd3VtLW5sNiBpbiBvbmUgZHJp
+dmVyCgpKaXRhbyBTaGkgKDgpOgogIGR0LWJpbmRpbmdzOiBkaXNwbGF5OiBwYW5lbDogQWRkIEJP
+RSB0djEwMXd1bS1uMTYgcGFuZWwgYmluZGluZ3MKICBkcm0vcGFuZWw6IHN1cHBvcnQgZm9yIEJP
+RSB0djEwMXd1bS1ubDYgd3V4Z2EgZHNpIHZpZGVvIG1vZGUgcGFuZWwKICBkdC1iaW5kaW5nczog
+ZGlzcGxheTogcGFuZWw6IGFkZCBhdW8ga2QxMDFuODAtNDVuYSBwYW5lbCBiaW5kaW5ncwogIGRy
+bS9wYW5lbDogc3VwcG9ydCBmb3IgYXVvLGtkMTAxbjgwLTQ1bmEgd3V4Z2EgZHNpIHZpZGVvIG1v
+ZGUgcGFuZWwKICBkdC1iaW5kaW5nczogZGlzcGxheTogcGFuZWw6IGFkZCBib2UgdHYxMDF3dW0t
+bjUzIHBhbmVsIGRvY3VtZW50YXRpb24KICBkcm0vcGFuZWw6IHN1cHBvcnQgZm9yIGJvZSx0djEw
+MXd1bS1uNTMgd3V4Z2EgZHNpIHZpZGVvIG1vZGUgcGFuZWwKICBkdC1iaW5kaW5nczogZGlzcGxh
+eTogcGFuZWw6IGFkZCBBVU8gYXVvLGIxMDF1YW4wOC4zIHBhbmVsCiAgICBkb2N1bWVudGF0aW9u
+CiAgZHJtL3BhbmVsOiBzdXBwb3J0IGZvciBhdW8sYjEwMXVhbjA4LjMgd3V4Z2EgZHNpIHZpZGVv
+IG1vZGUgcGFuZWwKCiAuLi4vZGlzcGxheS9wYW5lbC9hdW8sYjEwMXVhbjA4LjMueWFtbCAgICAg
+ICAgfCAgNjcgKysKIC4uLi9kaXNwbGF5L3BhbmVsL2F1byxrZDEwMW44MC00NW5hLnlhbWwgICAg
+ICB8ICA2NyArKwogLi4uL2Rpc3BsYXkvcGFuZWwvYm9lLHR2MTAxd3VtLW41My55YW1sICAgICAg
+IHwgIDY3ICsrCiAuLi4vZGlzcGxheS9wYW5lbC9ib2UsdHYxMDF3dW0tbmw2LnlhbWwgICAgICAg
+fCAgNjcgKysKIGRyaXZlcnMvZ3B1L2RybS9wYW5lbC9LY29uZmlnICAgICAgICAgICAgICAgICB8
+ICAgOSArCiBkcml2ZXJzL2dwdS9kcm0vcGFuZWwvTWFrZWZpbGUgICAgICAgICAgICAgICAgfCAg
+IDEgKwogLi4uL2dwdS9kcm0vcGFuZWwvcGFuZWwtYm9lLXR2MTAxd3VtLW5sNi5jICAgIHwgODc2
+ICsrKysrKysrKysrKysrKysrKwogNyBmaWxlcyBjaGFuZ2VkLCAxMTU0IGluc2VydGlvbnMoKykK
+IGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlz
+cGxheS9wYW5lbC9hdW8sYjEwMXVhbjA4LjMueWFtbAogY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3Vt
+ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3BhbmVsL2F1byxrZDEwMW44MC00
+NW5hLnlhbWwKIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
+ZGluZ3MvZGlzcGxheS9wYW5lbC9ib2UsdHYxMDF3dW0tbjUzLnlhbWwKIGNyZWF0ZSBtb2RlIDEw
+MDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9wYW5lbC9ib2Us
+dHYxMDF3dW0tbmw2LnlhbWwKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vcGFu
+ZWwvcGFuZWwtYm9lLXR2MTAxd3VtLW5sNi5jCgotLSAKMi4yMS4wCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
+aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
