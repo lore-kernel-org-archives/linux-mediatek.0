@@ -1,53 +1,83 @@
-From: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v1] scsi: ufs: skip shutdown if hba is not powered
-Date: Wed, 18 Sep 2019 12:20:38 +0800
-Message-ID: <1568780438-28753-1-git-send-email-stanley.chu@mediatek.com>
+From: Sam Shih <sam.shih@mediatek.com>
+Subject: [RESEND, PATCH v7 0/11] Add mt7629 and fix mt7628 pwm
+Date: Wed, 18 Sep 2019 13:50:00 +0800
+Message-ID: <1568785811-9577-1-git-send-email-sam.shih@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org, avri.altman-Sjgp3cTcYWE@public.gmane.org, alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, jejb-tEXmvtCZX7AybS5Ee8rs3A@public.gmane.org
-Cc: andy.teng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, beanhuo-AL4WhLSQfzjQT0dZR+AlfA@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <thierry.reding@gmail.com>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, John Crispin <john@phrozen.org>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sam Shih <sam.shih@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-In some cases, hba may go through shutdown flow without successful
-initialization and then make system hang.
+A gentle ping on this whole patch series
 
-For example, if ufshcd_change_power_mode() gets error and
-leads to ufshcd_hba_exit() to release resources of the host,
-future shutdown flow may hang the system since the host register
-will be accessed in unpowered state.
+Changes since v7:
+  1. PATCH v7 10/11: Add a missed Reviewed-by tag
 
-To solve this issue, simply add checking to skip shutdown for above
-kind of situation.
+Changes since v6:
+  1. Due to we can use fixed-clock in DT
+     We removed has_clks and fixed-clock properties 
 
-Signed-off-by: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/scsi/ufs/ufshcd.c | 3 +++
- 1 file changed, 3 insertions(+)
+Changes since v5:
+- Follow reviewer's comments:
+  1. the license stuff is a separate change
+  2. split fix mt7628 pwm into a single patch
+  3. to ensure to not use mtk_pwm_clk_name[10] 
+     (After dynamic allocate clock array patch, 
+      this is no need to check)
+  4. Use clock-frequency property to replace 
+     the use of has_clks
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 60a24fe908e7..a601ce0f6195 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -8121,6 +8121,9 @@ int ufshcd_shutdown(struct ufs_hba *hba)
- {
- 	int ret = 0;
- 
-+	if (!hba->is_powered)
-+		goto out;
-+
- 	if (ufshcd_is_ufs_dev_poweroff(hba) && ufshcd_is_link_off(hba))
- 		goto out;
- 
+Changes since v4:
+- Follow reviewer's comments (v3: pwm: mediatek: add a property "num-pwms")
+  Move the changes of droping the check for of_device_get_match_data
+  returning non-NULL to next patch
+- Follow reviewers's comments 
+  (v3: pwm: mediatek: allocate the clks array dynamically)
+  1. use pc->soc->has_clks to check clocks exist or not.
+  2. Add error message when probe() unable to get clks
+- Fixes bug when SoC is old mips which has no complex clock tree.
+if clocks not exist, use the new property from DT to apply period 
+calculation; otherwise, use clk_get_rate to get clock frequency and 
+apply period calculation.
+
+Changes since v3:
+- add a new property "clock-frequency" and fix mt7628 pwm
+- add mt7629 pwm support
+
+Changes since v2:
+- use num-pwms instead of mediatek,num-pwms.
+- rename the member from num_pwms to fallback_num_pwms to make it 
+  more obvious that it doesn't represent the actually used value.
+- add a dev_warn and a expressive comment to help other developers 
+  to not start adding num_pwms in the compatible_data.
+
+Changes since v1:
+- add some checks for backwards compatibility.
+
+
+Ryder Lee (5):
+  pwm: mediatek: add a property "num-pwms"
+  dt-bindings: pwm: add a property "num-pwms"
+  arm64: dts: mt7622: add a property "num-pwms" for PWM
+  arm: dts: mt7623: add a property "num-pwms" for PWM
+  dt-bindings: pwm: update bindings for MT7629 SoC
+
+Sam Shih (6):
+  pwm: mediatek: droping the check for of_device_get_match_data
+  pwm: mediatek: remove a property "has-clks"
+  pwm: mediatek: allocate the clks array dynamically
+  pwm: mediatek: use pwm_mediatek as common prefix
+  pwm: mediatek: update license and switch to SPDX tag
+  arm: dts: mediatek: add mt7629 pwm support
+
+ .../devicetree/bindings/pwm/pwm-mediatek.txt  |   8 +-
+ arch/arm/boot/dts/mt7623.dtsi                 |   1 +
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi      |   1 +
+ drivers/pwm/pwm-mediatek.c                    | 245 +++++++++---------
+ arch/arm/boot/dts/mt7629.dtsi                 | 16 ++++++++++++++++
+ 5 files changed, 149 insertions(+), 122 deletions(-)
+
 -- 
-2.18.0
+2.17.1
