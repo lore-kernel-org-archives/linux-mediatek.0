@@ -1,192 +1,60 @@
 From: Jitao Shi <jitao.shi@mediatek.com>
-Subject: [PATCH v6 4/8] drm/panel: support for auo,kd101n80-45na wuxga dsi video mode panel
-Date: Wed, 18 Sep 2019 20:24:18 +0800
-Message-ID: <20190918122422.17339-5-jitao.shi@mediatek.com>
+Subject: [PATCH v6 6/8] drm/panel: support for boe,
+ tv101wum-n53 wuxga dsi video mode panel
+Date: Wed, 18 Sep 2019 20:24:20 +0800
+Message-ID: <20190918122422.17339-7-jitao.shi@mediatek.com>
 References: <20190918122422.17339-1-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <20190918122422.17339-1-jitao.shi@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Sam Ravnborg <sam@ravnborg.org>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
-Cc: srv_heupstream@mediatek.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, cawa.cheng@mediatek.com, bibby.hsieh@mediatek.com, linux-mediatek@lists.infradead.org, ck.hu@mediatek.com, stonea168@163.com, Jitao Shi <jitao.shi@mediatek.com>
+Cc: Jitao Shi <jitao.shi@mediatek.com>, srv_heupstream@mediatek.com, stonea168@163.com, cawa.cheng@mediatek.com, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Auo,kd101n80-45na's connector is same as boe,tv101wum-nl6.
-The most codes can be reuse.
-So auo,kd101n80-45na and boe,tv101wum-nl6 use one driver file.
-Add the different parts in driver data.
-
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
----
- drivers/gpu/drm/panel/Kconfig                 |  6 +-
- .../gpu/drm/panel/panel-boe-tv101wum-nl6.c    | 86 ++++++++++++++++---
- 2 files changed, 75 insertions(+), 17 deletions(-)
-
-diff --git a/drivers/gpu/drm/panel/Kconfig b/drivers/gpu/drm/panel/Kconfig
-index afcadb3585fb..0e887c978796 100644
---- a/drivers/gpu/drm/panel/Kconfig
-+++ b/drivers/gpu/drm/panel/Kconfig
-@@ -19,13 +19,13 @@ config DRM_PANEL_ARM_VERSATILE
- 	  in the Versatile family syscon registers.
- 
- config DRM_PANEL_BOE_TV101WUM_NL6
--	tristate "BOE TV101WUM 1200x1920 panel"
-+	tristate "BOE TV101WUM and AUO KD101N80 45NA 1200x1920 panel"
- 	depends on OF
- 	depends on DRM_MIPI_DSI
- 	depends on BACKLIGHT_CLASS_DEVICE
- 	help
--	  Say Y here if you want to support for BOE TV101WUM WUXGA PANEL
--	  DSI Video Mode panel
-+	  Say Y here if you want to support for BOE TV101WUM and AUO KD101N80
-+	  45NA WUXGA PANEL DSI Video Mode panel
- 
- config DRM_PANEL_LVDS
- 	tristate "Generic LVDS panel driver"
-diff --git a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
-index e27529b80d78..f80974778360 100644
---- a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
-+++ b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
-@@ -35,6 +35,7 @@ struct panel_desc {
- 	enum mipi_dsi_pixel_format format;
- 	const struct panel_init_cmd *init_cmds;
- 	unsigned int lanes;
-+	bool discharge_on_disable;
- };
- 
- struct boe_panel {
-@@ -372,6 +373,15 @@ static const struct panel_init_cmd boe_init_cmd[] = {
- 	{},
- };
- 
-+static const struct panel_init_cmd auo_kd101n80_45na_init_cmd[] = {
-+	_INIT_DELAY_CMD(24),
-+	_INIT_DCS_CMD(0x11),
-+	_INIT_DELAY_CMD(120),
-+	_INIT_DCS_CMD(0x29),
-+	_INIT_DELAY_CMD(120),
-+	{},
-+};
-+
- static inline struct boe_panel *to_boe_panel(struct drm_panel *panel)
- {
- 	return container_of(panel, struct boe_panel, base);
-@@ -449,20 +459,30 @@ static int boe_panel_unprepare(struct drm_panel *panel)
- 	if (!boe->prepared)
- 		return 0;
- 
--	ret = boe_panel_off(boe);
--	if (ret < 0) {
--		dev_err(panel->dev, "failed to set panel off: %d\n", ret);
--		return ret;
-+	if (boe->desc->discharge_on_disable) {
-+		msleep(150);
-+		regulator_disable(boe->avee);
-+		regulator_disable(boe->avdd);
-+		usleep_range(5000, 7000);
-+		gpiod_set_value(boe->enable_gpio, 0);
-+		usleep_range(5000, 7000);
-+		regulator_disable(boe->pp1800);
-+	} else {
-+		ret = boe_panel_off(boe);
-+		if (ret < 0) {
-+			dev_err(panel->dev, "failed to set panel off: %d\n",
-+				ret);
-+			return ret;
-+		}
-+		msleep(150);
-+		gpiod_set_value(boe->enable_gpio, 0);
-+		usleep_range(500, 1000);
-+		regulator_disable(boe->avee);
-+		regulator_disable(boe->avdd);
-+		usleep_range(5000, 7000);
-+		regulator_disable(boe->pp1800);
- 	}
- 
--	msleep(150);
--	gpiod_set_value(boe->enable_gpio, 0);
--	usleep_range(500, 1000);
--	regulator_disable(boe->avee);
--	regulator_disable(boe->avdd);
--	usleep_range(5000, 7000);
--	regulator_disable(boe->pp1800);
--
- 	boe->prepared = false;
- 
- 	return 0;
-@@ -492,10 +512,14 @@ static int boe_panel_prepare(struct drm_panel *panel)
- 	if (ret < 0)
- 		goto poweroffavdd;
- 
--	msleep(100);
-+	usleep_range(5000, 10000);
- 
- 	gpiod_set_value(boe->enable_gpio, 1);
--	usleep_range(10000, 12000);
-+	usleep_range(1000, 2000);
-+	gpiod_set_value(boe->enable_gpio, 0);
-+	usleep_range(1000, 2000);
-+	gpiod_set_value(boe->enable_gpio, 1);
-+	usleep_range(6000, 10000);
- 
- 	ret = boe_panel_init(boe);
- 	if (ret < 0) {
-@@ -527,6 +551,8 @@ static int boe_panel_enable(struct drm_panel *panel)
- 	if (boe->enabled)
- 		return 0;
- 
-+	msleep(70);
-+
- 	ret = backlight_enable(boe->backlight);
- 	if (ret) {
- 		dev_err(panel->dev, "Failed to enable backlight %d\n",
-@@ -564,6 +590,35 @@ static const struct panel_desc boe_tv101wum_nl6_desc = {
- 	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_SYNC_PULSE |
- 		      MIPI_DSI_MODE_LPM,
- 	.init_cmds = boe_init_cmd,
-+	.discharge_on_disable = false,
-+};
-+
-+static const struct drm_display_mode auo_kd101n80_45na_default_mode = {
-+	.clock = 157000,
-+	.hdisplay = 1200,
-+	.hsync_start = 1200 + 80,
-+	.hsync_end = 1200 + 80 + 24,
-+	.htotal = 1200 + 80 + 24 + 36,
-+	.vdisplay = 1920,
-+	.vsync_start = 1920 + 16,
-+	.vsync_end = 1920 + 16 + 4,
-+	.vtotal = 1920 + 16 + 4 + 16,
-+	.vrefresh = 60,
-+};
-+
-+static const struct panel_desc auo_kd101n80_45na_desc = {
-+	.modes = &auo_kd101n80_45na_default_mode,
-+	.bpc = 8,
-+	.size = {
-+		.width_mm = 135,
-+		.height_mm = 216,
-+	},
-+	.lanes = 4,
-+	.format = MIPI_DSI_FMT_RGB888,
-+	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_SYNC_PULSE |
-+		      MIPI_DSI_MODE_LPM,
-+	.init_cmds = auo_kd101n80_45na_init_cmd,
-+	.discharge_on_disable = true,
- };
- 
- static int boe_panel_get_modes(struct drm_panel *panel)
-@@ -689,6 +744,9 @@ static const struct of_device_id boe_of_match[] = {
- 	{ .compatible = "boe,tv101wum-nl6",
- 	  .data = &boe_tv101wum_nl6_desc
- 	},
-+	{ .compatible = "auo,kd101n80-45na",
-+	  .data = &auo_kd101n80_45na_desc
-+	},
- 	{ /* sentinel */ }
- };
- MODULE_DEVICE_TABLE(of, boe_of_match);
--- 
-2.21.0
+Qm9lLHR2MTAxd3VtLW41MydzIGNvbm5lY3RvciBpcyBzYW1lIGFzIGJvZSx0djEwMXd1bS1ubDYu
+ClRoZSBtb3N0IGNvZGVzIGNhbiBiZSByZXVzZS4KU28gYm9lLHR2MTAxd3VtLW41MyBhbmQgYm9l
+LHR2MTAxd3VtLW5sNiB1c2Ugb25lIGRyaXZlciBmaWxlLgpBZGQgdGhlIGRpZmZlcmVudCBwYXJ0
+cyBpbiBkcml2ZXIgZGF0YS4KClNpZ25lZC1vZmYtYnk6IEppdGFvIFNoaSA8aml0YW8uc2hpQG1l
+ZGlhdGVrLmNvbT4KLS0tCiAuLi4vZ3B1L2RybS9wYW5lbC9wYW5lbC1ib2UtdHYxMDF3dW0tbmw2
+LmMgICAgfCAzMSArKysrKysrKysrKysrKysrKysrCiAxIGZpbGUgY2hhbmdlZCwgMzEgaW5zZXJ0
+aW9ucygrKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1ib2UtdHYx
+MDF3dW0tbmw2LmMgYi9kcml2ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwtYm9lLXR2MTAxd3VtLW5s
+Ni5jCmluZGV4IGY4MDk3NDc3ODM2MC4uYzc1NzAzNWFjMDljIDEwMDY0NAotLS0gYS9kcml2ZXJz
+L2dwdS9kcm0vcGFuZWwvcGFuZWwtYm9lLXR2MTAxd3VtLW5sNi5jCisrKyBiL2RyaXZlcnMvZ3B1
+L2RybS9wYW5lbC9wYW5lbC1ib2UtdHYxMDF3dW0tbmw2LmMKQEAgLTYyMSw2ICs2MjEsMzQgQEAg
+c3RhdGljIGNvbnN0IHN0cnVjdCBwYW5lbF9kZXNjIGF1b19rZDEwMW44MF80NW5hX2Rlc2MgPSB7
+CiAJLmRpc2NoYXJnZV9vbl9kaXNhYmxlID0gdHJ1ZSwKIH07CiAKK3N0YXRpYyBjb25zdCBzdHJ1
+Y3QgZHJtX2Rpc3BsYXlfbW9kZSBib2VfdHYxMDF3dW1fbjUzX2RlZmF1bHRfbW9kZSA9IHsKKwku
+Y2xvY2sgPSAxNTk4MzMsCisJLmhkaXNwbGF5ID0gMTIwMCwKKwkuaHN5bmNfc3RhcnQgPSAxMjAw
+ICsgMTE0LAorCS5oc3luY19lbmQgPSAxMjAwICsgMTE0ICsgMTAsCisJLmh0b3RhbCA9IDEyMDAg
+KyAxMTQgKyAxMCArIDQwLAorCS52ZGlzcGxheSA9IDE5MjAsCisJLnZzeW5jX3N0YXJ0ID0gMTky
+MCArIDE5LAorCS52c3luY19lbmQgPSAxOTIwICsgMTkgKyA0LAorCS52dG90YWwgPSAxOTIwICsg
+MTkgKyA0ICsgMTAsCisJLnZyZWZyZXNoID0gNjAsCisJLnR5cGUgPSBEUk1fTU9ERV9UWVBFX0RS
+SVZFUiB8IERSTV9NT0RFX1RZUEVfUFJFRkVSUkVELAorfTsKKworc3RhdGljIGNvbnN0IHN0cnVj
+dCBwYW5lbF9kZXNjIGJvZV90djEwMXd1bV9uNTNfZGVzYyA9IHsKKwkubW9kZXMgPSAmYm9lX3R2
+MTAxd3VtX241M19kZWZhdWx0X21vZGUsCisJLmJwYyA9IDgsCisJLnNpemUgPSB7CisJCS53aWR0
+aF9tbSA9IDEzNSwKKwkJLmhlaWdodF9tbSA9IDIxNiwKKwl9LAorCS5sYW5lcyA9IDQsCisJLmZv
+cm1hdCA9IE1JUElfRFNJX0ZNVF9SR0I4ODgsCisJLm1vZGVfZmxhZ3MgPSBNSVBJX0RTSV9NT0RF
+X1ZJREVPIHwgTUlQSV9EU0lfTU9ERV9WSURFT19TWU5DX1BVTFNFIHwKKwkJICAgICAgTUlQSV9E
+U0lfTU9ERV9MUE0sCisJLmluaXRfY21kcyA9IGJvZV9pbml0X2NtZCwKK307CisKIHN0YXRpYyBp
+bnQgYm9lX3BhbmVsX2dldF9tb2RlcyhzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbCkKIHsKIAlzdHJ1
+Y3QgYm9lX3BhbmVsICpib2UgPSB0b19ib2VfcGFuZWwocGFuZWwpOwpAQCAtNzQ3LDYgKzc3NSw5
+IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIGJvZV9vZl9tYXRjaFtdID0gewog
+CXsgLmNvbXBhdGlibGUgPSAiYXVvLGtkMTAxbjgwLTQ1bmEiLAogCSAgLmRhdGEgPSAmYXVvX2tk
+MTAxbjgwXzQ1bmFfZGVzYwogCX0sCisJeyAuY29tcGF0aWJsZSA9ICJib2UsdHYxMDF3dW0tbjUz
+IiwKKwkgIC5kYXRhID0gJmJvZV90djEwMXd1bV9uNTNfZGVzYworCX0sCiAJeyAvKiBzZW50aW5l
+bCAqLyB9CiB9OwogTU9EVUxFX0RFVklDRV9UQUJMRShvZiwgYm9lX29mX21hdGNoKTsKLS0gCjIu
+MjEuMAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
+LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
