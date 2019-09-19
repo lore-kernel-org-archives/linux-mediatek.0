@@ -1,82 +1,141 @@
-From: <Tudor.Ambarus@microchip.com>
-Subject: Re: [PATCH 00/23] mtd: spi-nor: Quad Enable and (un)lock methods
-Date: Thu, 19 Sep 2019 16:07:15 +0000
-Message-ID: <041440d2-1f10-4ab3-ec36-53bd23aed739@microchip.com>
-References: <20190917155426.7432-1-tudor.ambarus@microchip.com>
- <920a9946-af0d-1190-d59c-0b4acee71931@ti.com>
+From: Oleksandr Natalenko <oleksandr@natalenko.name>
+Subject: mt76x2e hardware restart
+Date: Thu, 19 Sep 2019 18:24:04 +0200
+Message-ID: <deaafa7a3e9ea2111ebb5106430849c6@natalenko.name>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset=UTF-8;
+ format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <920a9946-af0d-1190-d59c-0b4acee71931@ti.com>
-Content-Language: en-US
-Content-ID: <50F76EBD626F514E9CCA7D8FE5358417@namprd11.prod.outlook.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: vigneshr@ti.com, boris.brezillon@collabora.com, marek.vasut@gmail.com, miquel.raynal@bootlin.com, richard@nod.at, linux-mtd@lists.infradead.org
-Cc: linux-aspeed@lists.ozlabs.org, andrew@aj.id.au, linux-kernel@vger.kernel.org, vz@mleia.com, linux-mediatek@lists.infradead.org, joel@jms.id.au, matthias.bgg@gmail.com, computersforpeace@gmail.com, dwmw2@infradead.org, linux-arm-kernel@lists.infradead.org
+To: linux-mediatek@lists.infradead.org
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Stanislaw Gruszka <sgruszka@redhat.com>, Ryder Lee <ryder.lee@mediatek.com>, Roy Luo <royluo@google.com>, Kalle Valo <kvalo@codeaurora.org>, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-DQoNCk9uIDA5LzE5LzIwMTkgMDU6MzcgUE0sIFZpZ25lc2ggUmFnaGF2ZW5kcmEgd3JvdGU6DQo+
-IEV4dGVybmFsIEUtTWFpbA0KPiANCj4gDQo+IEhpLA0KDQpIaSwgdGhhbmtzIGZvciByZXZpZXdp
-bmchDQoNCj4gDQo+IE9uIDE3LVNlcC0xOSA5OjI0IFBNLCBUdWRvci5BbWJhcnVzQG1pY3JvY2hp
-cC5jb20gd3JvdGU6DQo+PiBGcm9tOiBUdWRvciBBbWJhcnVzIDx0dWRvci5hbWJhcnVzQG1pY3Jv
-Y2hpcC5jb20+DQo+Pg0KPiBbLi4uXQ0KPj4gVHVkb3IgQW1iYXJ1cyAoMjMpOg0KPj4gICBtdGQ6
-IHNwaS1ub3I6IGhpc2ktc2ZjOiBEcm9wIG5vci0+ZXJhc2UgTlVMTCBhc3NpZ25tZW50DQo+PiAg
-IG10ZDogc3BpLW5vcjogSW50cm9kdWNlICdzdHJ1Y3Qgc3BpX25vcl9jb250cm9sbGVyX29wcycN
-Cj4+ICAgbXRkOiBzcGktbm9yOiBjYWRlbmNlLXF1YWRzcGk6IEZpeCBjcXNwaV9jb21tYW5kX3Jl
-YWQoKSBkZWZpbml0aW9uDQo+PiAgIG10ZDogc3BpLW5vcjogUmVuYW1lIG5vci0+cGFyYW1zIHRv
-IG5vci0+Zmxhc2gNCj4+ICAgbXRkOiBzcGktbm9yOiBSZXdvcmsgcmVhZF9zcigpDQo+PiAgIG10
-ZDogc3BpLW5vcjogUmV3b3JrIHJlYWRfZnNyKCkNCj4+ICAgbXRkOiBzcGktbm9yOiBSZXdvcmsg
-cmVhZF9jcigpDQo+PiAgIG10ZDogc3BpLW5vcjogUmV3b3JrIHdyaXRlX2VuYWJsZS9kaXNhYmxl
-KCkNCj4+ICAgbXRkOiBzcGktbm9yOiBGaXggcmV0bGVuIGhhbmRsaW5nIGluIHNzdF93cml0ZSgp
-DQo+PiAgIG10ZDogc3BpLW5vcjogUmV3b3JrIHdyaXRlX3NyKCkNCj4+ICAgbXRkOiBzcGktbm9y
-OiBSZXdvcmsgc3BpX25vcl9yZWFkL3dyaXRlX3NyMigpDQo+PiAgIG10ZDogc3BpLW5vcjogUmVw
-b3J0IGVycm9yIGluIHNwaV9ub3JfeHJlYWRfc3IoKQ0KPj4gICBtdGQ6IHNwaS1ub3I6IFZvaWQg
-cmV0dXJuIHR5cGUgZm9yIHNwaV9ub3JfY2xlYXJfc3IvZnNyKCkNCj4+ICAgbXRkOiBzcGktbm9y
-OiBEcm9wIGR1cGxpY2F0ZWQgbmV3IGxpbmUNCj4+ICAgbXRkOiBzcGktbm9yOiBEcm9wIHNwYW5z
-aW9uX3F1YWRfZW5hYmxlKCkNCj4+ICAgbXRkOiBzcGktbm9yOiBGaXggZXJybm8gb24gcXVhZF9l
-bmFibGUgbWV0aG9kcw0KPj4gICBtdGQ6IHNwaS1ub3I6IEZpeCBjbGVhcmluZyBvZiBRRSBiaXQg
-b24gbG9jaygpL3VubG9jaygpDQo+PiAgIG10ZDogc3BpLW5vcjogUmV3b3JrIG1hY3Jvbml4X3F1
-YWRfZW5hYmxlKCkNCj4+ICAgbXRkOiBzcGktbm9yOiBSZXdvcmsgc3BhbnNpb24oX25vKV9yZWFk
-X2NyX3F1YWRfZW5hYmxlKCkNCj4+ICAgbXRkOiBzcGktbm9yOiBVcGRhdGUgc3IyX2JpdDdfcXVh
-ZF9lbmFibGUoKQ0KPj4gICBtdGQ6IHNwaS1ub3I6IFJld29yayB0aGUgZGlzYWJsaW5nIG9mIGJs
-b2NrIHdyaXRlIHByb3RlY3Rpb24NCj4+ICAgbXRkOiBzcGktbm9yOiBBZGQgR2xvYmFsIEJsb2Nr
-IFVubG9jayBzdXBwb3J0DQo+PiAgIG10ZDogc3BpLW5vcjogVW5sb2NrIGdsb2JhbCBibG9jayBw
-cm90ZWN0aW9uIG9uIHNzdDI2dmYwNjRiDQo+IA0KPiBXaXRoIHdob2xlIHNlcmllcyBhcHBsaWVk
-LCBJIHNlZToNCj4gDQo+IGRyaXZlcnMvbXRkL3NwaS1ub3Ivc3BpLW5vci5jOjUyMDogd2Fybmlu
-ZzogRnVuY3Rpb24gcGFyYW1ldGVyIG9yIG1lbWJlciAnY3InIG5vdCBkZXNjcmliZWQgaW4gJ3Nw
-aV9ub3JfcmVhZF9jcicNCj4gZHJpdmVycy9tdGQvc3BpLW5vci9zcGktbm9yLmM6NTIwOiB3YXJu
-aW5nOiBFeGNlc3MgZnVuY3Rpb24gcGFyYW1ldGVyICdmc3InIGRlc2NyaXB0aW9uIGluICdzcGlf
-bm9yX3JlYWRfY3InDQo+IGRyaXZlcnMvbXRkL3NwaS1ub3Ivc3BpLW5vci5jOjc0Mjogd2Fybmlu
-ZzogRnVuY3Rpb24gcGFyYW1ldGVyIG9yIG1lbWJlciAnbGVuJyBub3QgZGVzY3JpYmVkIGluICdz
-cGlfbm9yX3dyaXRlX3NyJw0KPiBkcml2ZXJzL210ZC9zcGktbm9yL3NwaS1ub3IuYzo4ODk6IHdh
-cm5pbmc6IEZ1bmN0aW9uIHBhcmFtZXRlciBvciBtZW1iZXIgJ3N0YXR1c19uZXcnIG5vdCBkZXNj
-cmliZWQgaW4gJ3NwaV9ub3Jfd3JpdGVfc3IxX2FuZF9jaGVjaycNCj4gZHJpdmVycy9tdGQvc3Bp
-LW5vci9zcGktbm9yLmM6ODg5OiB3YXJuaW5nOiBGdW5jdGlvbiBwYXJhbWV0ZXIgb3IgbWVtYmVy
-ICdtYXNrJyBub3QgZGVzY3JpYmVkIGluICdzcGlfbm9yX3dyaXRlX3NyMV9hbmRfY2hlY2snDQo+
-IGRyaXZlcnMvbXRkL3NwaS1ub3Ivc3BpLW5vci5jOjkyMzogd2FybmluZzogRnVuY3Rpb24gcGFy
-YW1ldGVyIG9yIG1lbWJlciAnc3RhdHVzX25ldycgbm90IGRlc2NyaWJlZCBpbiAnc3BpX25vcl93
-cml0ZV8xNmJpdF9zcl9hbmRfY2hlY2snDQo+IGRyaXZlcnMvbXRkL3NwaS1ub3Ivc3BpLW5vci5j
-OjkyMzogd2FybmluZzogRnVuY3Rpb24gcGFyYW1ldGVyIG9yIG1lbWJlciAnbWFzaycgbm90IGRl
-c2NyaWJlZCBpbiAnc3BpX25vcl93cml0ZV8xNmJpdF9zcl9hbmRfY2hlY2snDQo+IGRyaXZlcnMv
-bXRkL3NwaS1ub3Ivc3BpLW5vci5jOjk5Nzogd2FybmluZzogRnVuY3Rpb24gcGFyYW1ldGVyIG9y
-IG1lbWJlciAnc3RhdHVzX25ldycgbm90IGRlc2NyaWJlZCBpbiAnc3BpX25vcl93cml0ZV9zcl9h
-bmRfY2hlY2snDQo+IGRyaXZlcnMvbXRkL3NwaS1ub3Ivc3BpLW5vci5jOjk5Nzogd2FybmluZzog
-RnVuY3Rpb24gcGFyYW1ldGVyIG9yIG1lbWJlciAnbWFzaycgbm90IGRlc2NyaWJlZCBpbiAnc3Bp
-X25vcl93cml0ZV9zcl9hbmRfY2hlY2snDQo+IA0KPiBDb3VsZCB5b3UgcGxlYXNlIGZpeCB1cCBk
-b2NzIG5leHQgdGltZSBhcm91bmQ/DQoNCkknbGwgZml4IHRoZXNlLCB0aGFua3MhDQoNCkkndmUg
-anVzdCBjb21waWxlZCB0aGUgY29kZSBhbmQgSSBjYW4ndCBzZWUgdGhlIHdhcm5pbmdzLiBXaGF0
-IHNob3VsZCBJIGRvIHRvDQpnZXQgdGhlc2Ugd2FybmluZ3M/DQoNClRoYW5rcywNCnRhDQoNCj4g
-DQo+IFJlZ2FyZHMNCj4gVmlnbmVzaA0KPj4NCj4+ICBkcml2ZXJzL210ZC9zcGktbm9yL2FzcGVl
-ZC1zbWMuYyAgICAgIHwgICAyMyArLQ0KPj4gIGRyaXZlcnMvbXRkL3NwaS1ub3IvY2FkZW5jZS1x
-dWFkc3BpLmMgfCAgIDU0ICstDQo+PiAgZHJpdmVycy9tdGQvc3BpLW5vci9oaXNpLXNmYy5jICAg
-ICAgICB8ICAgMjMgKy0NCj4+ICBkcml2ZXJzL210ZC9zcGktbm9yL2ludGVsLXNwaS5jICAgICAg
-IHwgICAyNCArLQ0KPj4gIGRyaXZlcnMvbXRkL3NwaS1ub3IvbXRrLXF1YWRzcGkuYyAgICAgfCAg
-IDI1ICstDQo+PiAgZHJpdmVycy9tdGQvc3BpLW5vci9ueHAtc3BpZmkuYyAgICAgICB8ICAgMjMg
-Ky0NCj4+ICBkcml2ZXJzL210ZC9zcGktbm9yL3NwaS1ub3IuYyAgICAgICAgIHwgMTY5NyArKysr
-KysrKysrKysrKysrKystLS0tLS0tLS0tLS0tLS0NCj4+ICBpbmNsdWRlL2xpbnV4L210ZC9zcGkt
-bm9yLmggICAgICAgICAgIHwgICA3NSArLQ0KPj4gIDggZmlsZXMgY2hhbmdlZCwgMTA1MCBpbnNl
-cnRpb25zKCspLCA4OTQgZGVsZXRpb25zKC0pDQo+Pg0KPiANCj4gX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQo+IExpbnV4IE1URCBkaXNjdXNz
-aW9uIG1haWxpbmcgbGlzdA0KPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LW10ZC8NCj4gDQo+IA0K
+Hi.
+
+Recently, I've got the following card:
+
+01:00.0 Network controller: MEDIATEK Corp. Device 7612
+         Subsystem: MEDIATEK Corp. Device 7612
+         Flags: bus master, fast devsel, latency 0, IRQ 16
+         Memory at 81200000 (64-bit, non-prefetchable) [size=1M]
+         Expansion ROM at 81300000 [disabled] [size=64K]
+         Capabilities: [40] Power Management version 3
+         Capabilities: [50] MSI: Enable- Count=1/1 Maskable- 64bit+
+         Capabilities: [70] Express Endpoint, MSI 00
+         Capabilities: [100] Advanced Error Reporting
+         Capabilities: [148] Device Serial Number 00-00-00-00-00-00-00-00
+         Capabilities: [158] Latency Tolerance Reporting
+         Capabilities: [160] L1 PM Substates
+         Kernel driver in use: mt76x2e
+         Kernel modules: mt76x2e
+
+I try to use it as an access point with the following configuration:
+
+interface=wlp1s0
+driver=nl80211
+ssid=someap
+channel=36
+noscan=1
+hw_mode=a
+ieee80211n=1
+require_ht=1
+ieee80211ac=1
+require_vht=1
+vht_oper_chwidth=1
+vht_capab=[SHORT-GI-80][RX-STBC-1][RX-ANTENNA-PATTERN][TX-ANTENNA-PATTERN]
+vht_oper_centr_freq_seg0_idx=42
+auth_algs=1
+wpa=2
+wpa_passphrase=somepswd
+wpa_key_mgmt=WPA-PSK
+rsn_pairwise=CCMP
+macaddr_acl=1
+accept_mac_file=/etc/hostapd/hostapd.allow
+ctrl_interface=/run/hostapd
+ctrl_interface_group=0
+country_code=CZ
+ieee80211d=1
+ieee80211h=1
+wmm_enabled=1
+ht_capab=[GF][HT40+][SHORT-GI-20][SHORT-GI-40][RX-STBC1][DSSS_CCK-40]
+
+The hostapd daemon starts, and the AP broadcasts the beacons:
+
+zář 19 17:50:04 srv hostapd[13251]: Configuration file: 
+/etc/hostapd/ap_5ghz.conf
+zář 19 17:50:05 srv hostapd[13251]: wlp1s0: interface state 
+UNINITIALIZED->COUNTRY_UPDATE
+zář 19 17:50:05 srv hostapd[13251]: Using interface wlp1s0 with hwaddr 
+xx:xx:xx:xx:xx:xx and ssid "someap"
+zář 19 17:50:05 srv hostapd[13251]: wlp1s0: interface state 
+COUNTRY_UPDATE->ENABLED
+zář 19 17:50:05 srv hostapd[13251]: wlp1s0: AP-ENABLED
+zář 19 17:50:17 srv hostapd[13251]: wlp1s0: STA xx:xx:xx:xx:xx:xx IEEE 
+802.11: authenticated
+zář 19 17:50:17 srv hostapd[13251]: wlp1s0: STA xx:xx:xx:xx:xx:xx IEEE 
+802.11: authenticated
+zář 19 17:50:17 srv hostapd[13251]: wlp1s0: STA xx:xx:xx:xx:xx:xx IEEE 
+802.11: associated (aid 1)
+zář 19 17:50:17 srv hostapd[13251]: wlp1s0: STA xx:xx:xx:xx:xx:xx IEEE 
+802.11: associated (aid 1)
+zář 19 17:50:17 srv hostapd[13251]: wlp1s0: AP-STA-CONNECTED 
+xx:xx:xx:xx:xx:xx
+zář 19 17:50:17 srv hostapd[13251]: wlp1s0: STA xx:xx:xx:xx:xx:xx 
+RADIUS: starting accounting session 07E311195378B570
+zář 19 17:50:17 srv hostapd[13251]: wlp1s0: STA xx:xx:xx:xx:xx:xx WPA: 
+pairwise key handshake completed (RSN)
+zář 19 17:50:17 srv hostapd[13251]: wlp1s0: STA xx:xx:xx:xx:xx:xx 
+RADIUS: starting accounting session 07E311195378B570
+zář 19 17:50:17 srv hostapd[13251]: wlp1s0: STA xx:xx:xx:xx:xx:xx WPA: 
+pairwise key handshake completed (RSN)
+
+The client is able to see it and connect to it, but after a couple of 
+seconds the following happens on the AP:
+
+[  +9,979664] mt76x2e 0000:01:00.0: Firmware Version: 0.0.00
+[  +0,000014] mt76x2e 0000:01:00.0: Build: 1
+[  +0,000010] mt76x2e 0000:01:00.0: Build Time: 201507311614____
+[  +0,018017] mt76x2e 0000:01:00.0: Firmware running!
+[  +0,001101] ieee80211 phy4: Hardware restart was requested
+
+and the AP dies. The client cannot reconnect to it, although hostapd 
+logs show that it tries:
+
+zář 19 17:51:15 srv hostapd[13504]: wlp1s0: STA xx:xx:xx:xx:xx:xx IEEE 
+802.11: authenticated
+zář 19 17:51:15 srv hostapd[13504]: wlp1s0: STA xx:xx:xx:xx:xx:xx IEEE 
+802.11: authenticated
+zář 19 17:51:19 srv hostapd[13504]: wlp1s0: STA xx:xx:xx:xx:xx:xx IEEE 
+802.11: authenticated
+zář 19 17:51:19 srv hostapd[13504]: wlp1s0: STA xx:xx:xx:xx:xx:xx IEEE 
+802.11: authenticated
+zář 19 17:52:54 srv hostapd[13504]: wlp1s0: STA xx:xx:xx:xx:xx:xx IEEE 
+802.11: authenticated
+zář 19 17:52:54 srv hostapd[13504]: wlp1s0: STA xx:xx:xx:xx:xx:xx IEEE 
+802.11: authenticated
+zář 19 17:52:59 srv hostapd[13504]: wlp1s0: STA xx:xx:xx:xx:xx:xx IEEE 
+802.11: authenticated
+zář 19 17:52:59 srv hostapd[13504]: wlp1s0: STA xx:xx:xx:xx:xx:xx IEEE 
+802.11: authenticated
+zář 19 17:56:14 srv hostapd[13504]: wlp1s0: STA xx:xx:xx:xx:xx:xx IEEE 
+802.11: deauthenticated due to inactivity (timer DEAUTH/REMOVE)
+
+AP stays completely unusable until I remove and modprobe mt76x2e module 
+again. And then everything begins from scratch, and the AP dies within 
+seconds.
+
+I observe this on a fresh v5.3 kernel. I haven't tried anything older.
+
+The only somewhat relevant thread I was able to found is [1], but it's 
+not clear what's the resolution if any.
+
+Could you please suggest how to deal with this issue?
+
+Thanks.
+
+[1] https://forum.openwrt.org/t/wifi-issues-with-18-06-4-on-mt76/40537
+
+-- 
+   Oleksandr Natalenko (post-factum)
