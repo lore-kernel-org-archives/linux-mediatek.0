@@ -1,107 +1,69 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2] of: restore old handling of cells_name=NULL in
-  of_*_phandle_with_args()
-Date: Thu, 19 Sep 2019 08:32:42 -0500
-Message-ID: <20190919133242.GA27990@bogus>
-References: <20190918063837.8196-1-u.kleine-koenig@pengutronix.de>
- <b00ca30f-2c06-7722-96b2-123d15751cb6@axentia.se>
- <20190918084748.hnjkiq7wc5b35wjh@pengutronix.de>
+From: Qais Yousef <qais.yousef@arm.com>
+Subject: Re: [PATCH 1/1] sched/rt: avoid contend with CFS task
+Date: Thu, 19 Sep 2019 15:23:16 +0100
+Message-ID: <20190919142315.vmrrpvljpspqpurp@e107158-lin.cambridge.arm.com>
+References: <1567048502-6064-1-git-send-email-jing-ting.wu@mediatek.com>
+ <d5100b2d-46c4-5811-8274-8b06710d2594@arm.com>
+ <20190830145501.zadfv2ffuu7j46ft@e107158-lin.cambridge.arm.com>
+ <1567689999.2389.5.camel@mtkswgap22>
+ <CAKfTPtC3txstND=6YkWBJ16i06cQ7xueUpD5j-j-UfuSf0-z-g@mail.gmail.com>
+ <1568892135.4892.10.camel@mtkswgap22>
+ <CAKfTPtCuWrpW_o6r5cmGhLf_84PFHJhBk0pJ3fcbU_YgcBnTkQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <20190918084748.hnjkiq7wc5b35wjh@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Peter Rosin <peda@axentia.se>, Frank Rowand <frowand.list@gmail.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "kernel@pengutronix.de" <kernel@pengutronix.de>, Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Geert Uytterhoeven <geert+renesas@glider.be>
+In-Reply-To: <CAKfTPtCuWrpW_o6r5cmGhLf_84PFHJhBk0pJ3fcbU_YgcBnTkQ@mail.gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Vincent Guittot <vincent.guittot@linaro.org>
+Cc: wsd_upstream@mediatek.com, Peter Zijlstra <peterz@infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>, Jing-Ting Wu <jing-ting.wu@mediatek.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Valentin Schneider <valentin.schneider@arm.com>, LAK <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 18 Sep 2019 10:47:48 +0200, Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=          wrote:
-> Before commit e42ee61017f5 ("of: Let of_for_each_phandle fallback to
-> non-negative cell_count") the iterator functions calling
-> of_for_each_phandle assumed a cell count of 0 if cells_name was NULL.
-> This corner case was missed when implementing the fallback logic in
-> e42ee61017f5 and resulted in an endless loop.
+On 09/19/19 14:27, Vincent Guittot wrote:
+> > > > But for requirement of performance, I think it is better to differentiate between idle CPU and CPU has CFS task.
+> > > >
+> > > > For example, we use rt-app to evaluate runnable time on non-patched environment.
+> > > > There are (NR_CPUS-1) heavy CFS tasks and 1 RT Task. When a CFS task is running, the RT task wakes up and choose the same CPU.
+> > > > The CFS task will be preempted and keep runnable until it is migrated to another cpu by load balance.
+> > > > But load balance is not triggered immediately, it will be triggered until timer tick hits with some condition satisfied(ex. rq->next_balance).
+> > >
+> > > Yes you will have to wait for the next tick that will trigger an idle
+> > > load balance because you have an idle cpu and 2 runnable tack (1 RT +
+> > > 1CFS) on the same CPU. But you should not wait for more than  1 tick
+> > >
+> > > The current load_balance doesn't handle correctly the situation of 1
+> > > CFS and 1 RT task on same CPU while 1 CPU is idle. There is a rework
+> > > of the load_balance that is under review on the mailing list that
+> > > fixes this problem and your CFS task should migrate to the idle CPU
+> > > faster than now
+> > >
+> >
+> > Period load balance should be triggered when current jiffies is behind
+> > rq->next_balance, but rq->next_balance is not often exactly the same
+> > with next tick.
+> > If cpu_busy, interval = sd->balance_interval * sd->busy_factor, and
 > 
-> Restore the old behaviour of of_count_phandle_with_args() and
-> of_parse_phandle_with_args() and add a check to
-> of_phandle_iterator_init() to prevent a similar failure as a safety
-> precaution. of_parse_phandle_with_args_map() doesn't need a similar fix
-> as cells_name isn't NULL there.
-> 
-> Affected drivers are:
->  - drivers/base/power/domain.c
->  - drivers/base/power/domain.c
->  - drivers/clk/ti/clk-dra7-atl.c
->  - drivers/hwmon/ibmpowernv.c
->  - drivers/i2c/muxes/i2c-demux-pinctrl.c
->  - drivers/iommu/mtk_iommu.c
->  - drivers/net/ethernet/freescale/fman/mac.c
->  - drivers/opp/of.c
->  - drivers/perf/arm_dsu_pmu.c
->  - drivers/regulator/of_regulator.c
->  - drivers/remoteproc/imx_rproc.c
->  - drivers/soc/rockchip/pm_domains.c
->  - sound/soc/fsl/imx-audmix.c
->  - sound/soc/fsl/imx-audmix.c
->  - sound/soc/meson/axg-card.c
->  - sound/soc/samsung/tm2_wm5110.c
->  - sound/soc/samsung/tm2_wm5110.c
-> 
-> Thanks to Geert Uytterhoeven for reporting the issue, Peter Rosin for
-> helping pinpoint the actual problem and the testers for confirming this
-> fix.
-> 
-> Fixes: e42ee61017f5 ("of: Let of_for_each_phandle fallback to non-negative cell_count")
-> Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
-> Tested-by: Geert Uytterhoeven <geert+renesas@glider.be>
-> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
-> ---
-> 
-> On Wed, Sep 18, 2019 at 08:01:05AM +0000, Peter Rosin wrote:
-> > On 2019-09-18 08:38, Uwe Kleine-König wrote:
-> > >  EXPORT_SYMBOL(of_parse_phandle_with_args);
-> > >  
-> > > @@ -1765,6 +1779,18 @@ int of_count_phandle_with_args(const struct device_node *np, const char *list_na
-> > >  	struct of_phandle_iterator it;
-> > >  	int rc, cur_index = 0;
-> > >  
-> > > +	/* If cells_name is NULL we assume a cell count of 0 */
-> > > +	if (cells_name == NULL) {
-> > 
-> > A couple of nits.
-> > 
-> > I don't know if there are other considerations, but in the previous two
-> > hunks you use !cells_name instead of comparing explicitly with NULL.
-> > Personally, I find the shorter form more readable, and in the name of
-> > consistency bla bla...
-> 
-> Ack, changed to !cells_name here, too.
-> 
-> > 
-> > Also, the comment explaining this NULL-check didn't really make sense
-> > to me until I realized that knowing the cell count to be zero makes
-> > counting trivial. Something along those lines should perhaps be in the
-> > comment?
-> 
-> You're right, I extended the comment a bit.
->  
-> > But as I said, these are nits. Feel free to ignore.
-> 
-> I considered resending already anyhow as I fatfingerd my email address.
-> this is fixed now, too. Additionally I fixed a typo in one of the
-> comments.
-> 
-> Thanks for your feedback.
-> 
-> Best regards
-> Uwe
-> 
->  drivers/of/base.c | 35 +++++++++++++++++++++++++++++++++--
->  1 file changed, 33 insertions(+), 2 deletions(-)
-> 
+> But if there is an idle CPU on the system, the next idle load balance
+> should apply shortly because the busy_factor is not used for this CPU
+> which is  not busy.
+> In this case, the next_balance interval is sd_weight which is probably
+> 4ms at cluster level and 8ms at system level in your case. This means
+> between 1 and 2 ticks
 
-Applied, thanks.
+But if the CFS task we're preempting was latency sensitive - this 1 or 2 tick
+is too late of a recovery.
 
-Rob
+So while it's good we recover, but a preventative approach would be useful too.
+Just saying :-) I'm still not sure if this is the best longer term approach.
+
+--
+Qais Yousef
