@@ -1,55 +1,75 @@
-From: Gene Chen <gene.chen.richtek@gmail.com>
-Subject: Re: [PATCH] mfd: mt6360: add pmic mt6360 driver
-Date: Thu, 19 Sep 2019 10:20:53 +0800
-Message-ID: <CAE+NS37XG+kfbj6yJrL5A-d2O_aiRU90yV5TUk3Kfa0Rv7dWmw@mail.gmail.com>
-References: <1568801744-21380-1-git-send-email-gene.chen.richtek@gmail.com> <20190918105121.GB5016@dell>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Subject: Re: [PATCH] staging: mt7621-pci-phy: Use
+ devm_platform_ioremap_resource() in mt7621_pci_phy_probe()
+Date: Thu, 19 Sep 2019 06:20:39 +0200
+Message-ID: <CAMhs-H9q16kGOse9pMbj3O9hoOO5de_wa9VRi_HcPo0_GbTw1g@mail.gmail.com>
+References: <1c16a43c-3a01-8a86-02b0-1941ab7321dd@web.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190918105121.GB5016@dell>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Lee Jones <lee.jones@linaro.org>
-Cc: matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, gene_chen@richtek.com, Wilma.Wu@mediatek.com, shufan_lee@richtek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
+In-Reply-To: <1c16a43c-3a01-8a86-02b0-1941ab7321dd@web.de>
+List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
+List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
+List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
+List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
+List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Errors-To: driverdev-devel-bounces@linuxdriverproject.org
+Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
+To: Markus Elfring <Markus.Elfring@web.de>
+Cc: devel@driverdev.osuosl.org, Bartosz Golaszewski <bgolaszewski@baylibre.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, kernel-janitors@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, Neil Brown <neil@brown.name>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Himanshu Jha <himanshujha199640@gmail.com>, Emanuel Bennici <benniciemanuel78@gmail.com>, =?UTF-8?Q?Antti_Ker=C3=A4nen?= <detegr@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Lee Jones <lee.jones@linaro.org> =E6=96=BC 2019=E5=B9=B49=E6=9C=8818=E6=97=
-=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=886:51=E5=AF=AB=E9=81=93=EF=BC=9A
->
-> On Wed, 18 Sep 2019, Gene Chen wrote:
->
-> > From: Gene Chen <gene_chen@richtek.com>
-> >
-> > Add mfd driver for mt6360 pmic chip include
-> > Battery Charger/USB_PD/Flash LED/RGB LED/LDO/Buck
-> >
-> > Signed-off-by: Gene Chen <gene_chen@richtek.com
-> > ---
->
-> This looks different from the one you sent before, but I don't see a
-> version bump or any changelog in this space.  Please re-submit with
-> the differences noted.
->
+Hi Markus,
 
-the change is
-1. add missing include file
-2. modify commit message
+Thanks for the patch. It looks good to me.
 
-this patch is regarded as version 1
-
-> >  drivers/mfd/Kconfig                |  12 +
-> >  drivers/mfd/Makefile               |   1 +
-> >  drivers/mfd/mt6360-core.c          | 463 +++++++++++++++++++++++++++++=
-++++++++
-> >  include/linux/mfd/mt6360-private.h | 279 ++++++++++++++++++++++
-> >  include/linux/mfd/mt6360.h         |  33 +++
-> >  5 files changed, 788 insertions(+)
-> >  create mode 100644 drivers/mfd/mt6360-core.c
-> >  create mode 100644 include/linux/mfd/mt6360-private.h
-> >  create mode 100644 include/linux/mfd/mt6360.h
+On Wed, Sep 18, 2019 at 9:12 PM Markus Elfring <Markus.Elfring@web.de> wrote:
 >
+> From: Markus Elfring <elfring@users.sourceforge.net>
+> Date: Wed, 18 Sep 2019 21:01:32 +0200
+>
+> Simplify this function implementation by using a known wrapper function.
+>
+> This issue was detected by using the Coccinelle software.
+>
+> Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
+> ---
+>  drivers/staging/mt7621-pci-phy/pci-mt7621-phy.c | 10 +---------
+>  1 file changed, 1 insertion(+), 9 deletions(-)
+>
+> diff --git a/drivers/staging/mt7621-pci-phy/pci-mt7621-phy.c b/drivers/staging/mt7621-pci-phy/pci-mt7621-phy.c
+> index d2a07f145143..6ca4a33d13c3 100644
+> --- a/drivers/staging/mt7621-pci-phy/pci-mt7621-phy.c
+> +++ b/drivers/staging/mt7621-pci-phy/pci-mt7621-phy.c
+> @@ -324,7 +324,6 @@ static int mt7621_pci_phy_probe(struct platform_device *pdev)
+>         const struct soc_device_attribute *attr;
+>         struct phy_provider *provider;
+>         struct mt7621_pci_phy *phy;
+> -       struct resource *res;
+>         int port;
+>         void __iomem *port_base;
+>
+> @@ -344,14 +343,7 @@ static int mt7621_pci_phy_probe(struct platform_device *pdev)
+>
+>         phy->dev = dev;
+>         platform_set_drvdata(pdev, phy);
+> -
+> -       res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> -       if (!res) {
+> -               dev_err(dev, "failed to get address resource\n");
+> -               return -ENXIO;
+> -       }
+> -
+> -       port_base = devm_ioremap_resource(dev, res);
+> +       port_base = devm_platform_ioremap_resource(pdev, 0);
+>         if (IS_ERR(port_base)) {
+>                 dev_err(dev, "failed to remap phy regs\n");
+>                 return PTR_ERR(port_base);
 > --
-> Lee Jones [=E6=9D=8E=E7=90=BC=E6=96=AF]
-> Linaro Services Technical Lead
-> Linaro.org =E2=94=82 Open source software for ARM SoCs
-> Follow Linaro: Facebook | Twitter | Blog
+> 2.23.0
+>
+
+Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
