@@ -1,31 +1,137 @@
-From: Frank Wunderlich <frank-w@public-files.de>
-Subject: Re: Aw: Re: [BUG] [PATCH v5 02/10] mfd: mt6397: extract irq related code from core driver
-Date: Thu, 19 Sep 2019 20:59:35 +0200
-Message-ID: <904EC97A-486D-4C22-9D36-838D25EB7A6F@public-files.de>
-References: <1566531931-9772-1-git-send-email-hsin-hsiung.wang@mediatek.com> <1566531931-9772-3-git-send-email-hsin-hsiung.wang@mediatek.com> <trinity-1f82bff1-535e-47cd-9a2f-8faccb56e356-1566562433314@3c-app-gmx-bs11> <e8a918ab-3e7a-b487-db77-df28d56518ce@gmail.com> <0A87F427-2D81-412A-9549-09A51A021799@public-files.de> <b5a21908-faee-17d1-ce26-99b941c0fa70@gmail.com> <trinity-a57f08bb-e30e-4e74-911c-c40e335d00da-1566580580817@3c-app-gmx-bs75> <1567059876.15320.3.camel@mtksdaap41>
-Reply-To: frank-w@public-files.de
+From: Fabien Parent <fparent@baylibre.com>
+Subject: [PATCH] clocksource: mediatek: fix error handling
+Date: Thu, 19 Sep 2019 21:13:15 +0200
+Message-ID: <20190919191315.25190-1-fparent@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1567059876.15320.3.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-mediatek@lists.infradead.org, Hsin-hsiung Wang <hsin-hsiung.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Brown <broonie@kernel.org>, Sean Wang <sean.wang@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, Richard Fontana <rfontana@redhat.com>, Rob Herring <robh+dt@kernel.org>, Kate Stewart <kstewart@linuxfoundation.org>, =?ISO-8859-1?Q?=22Ren=E9_van_Dorst=22?= <opensource@vdorst.com>, Thomas Gleixner <tglx@linutronix.de>, Eddie Huang <eddie.huang@mediatek.com>, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-rtc@vger.kernel.org
+To: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: daniel.lezcano@linaro.org, tglx@linutronix.de, matthias.bgg@gmail.com, Fabien Parent <fparent@baylibre.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi
+When timer_of_init fails, it cleans up after itself by undoing
+everything it did during the initialization function.
 
-When is new version ready? First 2 patches are still in next for 5=2E4 and=
- i see no fix so i guess it is still broken=2E
+mtk_syst_init and mtk_gpt_init both call timer_of_cleanup if
+timer_of_init fails. timer_of_cleanup try to release the resource taken.
+Since these resources have already been cleaned up by timer_of_init,
+we end up getting a few warnings printed:
 
-Regards Frank
+[    0.001935] WARNING: CPU: 0 PID: 0 at __clk_put+0xe8/0x128
+[    0.002650] Modules linked in:
+[    0.003058] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 4.19.67+ #1
+[    0.003852] Hardware name: MediaTek MT8183 (DT)
+[    0.004446] pstate: 20400085 (nzCv daIf +PAN -UAO)
+[    0.005073] pc : __clk_put+0xe8/0x128
+[    0.005555] lr : clk_put+0xc/0x14
+[    0.005988] sp : ffffff80090b3ea0
+[    0.006422] x29: ffffff80090b3ea0 x28: 0000000040e20018
+[    0.007121] x27: ffffffc07bfff780 x26: 0000000000000001
+[    0.007819] x25: ffffff80090bda80 x24: ffffff8008ec5828
+[    0.008517] x23: ffffff80090bd000 x22: ffffff8008d8b2e8
+[    0.009216] x21: 0000000000000001 x20: fffffffffffffdfb
+[    0.009914] x19: ffffff8009166180 x18: 00000000002bffa8
+[    0.010612] x17: ffffffc012996980 x16: 0000000000000000
+[    0.011311] x15: ffffffbf004a6800 x14: 3536343038393334
+[    0.012009] x13: 2079726576652073 x12: 7eb9c62c5c38f100
+[    0.012707] x11: ffffff80090b3ba0 x10: ffffff80090b3ba0
+[    0.013405] x9 : 0000000000000004 x8 : 0000000000000040
+[    0.014103] x7 : ffffffc079400270 x6 : 0000000000000000
+[    0.014801] x5 : ffffffc079400248 x4 : 0000000000000000
+[    0.015499] x3 : 0000000000000000 x2 : 0000000000000000
+[    0.016197] x1 : ffffff80091661c0 x0 : fffffffffffffdfb
+[    0.016896] Call trace:
+[    0.017218]  __clk_put+0xe8/0x128
+[    0.017654]  clk_put+0xc/0x14
+[    0.018048]  timer_of_cleanup+0x60/0x7c
+[    0.018551]  mtk_syst_init+0x8c/0x9c
+[    0.019020]  timer_probe+0x6c/0xe0
+[    0.019469]  time_init+0x14/0x44
+[    0.019893]  start_kernel+0x2d0/0x46c
+[    0.020378] ---[ end trace 8c1efabea1267649 ]---
+[    0.020982] ------------[ cut here ]------------
+[    0.021586] Trying to vfree() nonexistent vm area ((____ptrval____))
+[    0.022427] WARNING: CPU: 0 PID: 0 at __vunmap+0xd0/0xd8
+[    0.023119] Modules linked in:
+[    0.023524] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W         4.19.67+ #1
+[    0.024498] Hardware name: MediaTek MT8183 (DT)
+[    0.025091] pstate: 60400085 (nZCv daIf +PAN -UAO)
+[    0.025718] pc : __vunmap+0xd0/0xd8
+[    0.026176] lr : __vunmap+0xd0/0xd8
+[    0.026632] sp : ffffff80090b3e90
+[    0.027066] x29: ffffff80090b3e90 x28: 0000000040e20018
+[    0.027764] x27: ffffffc07bfff780 x26: 0000000000000001
+[    0.028462] x25: ffffff80090bda80 x24: ffffff8008ec5828
+[    0.029160] x23: ffffff80090bd000 x22: ffffff8008d8b2e8
+[    0.029858] x21: 0000000000000000 x20: 0000000000000000
+[    0.030556] x19: ffffff800800d000 x18: 00000000002bffa8
+[    0.031254] x17: 0000000000000000 x16: 0000000000000000
+[    0.031952] x15: ffffffbf004a6800 x14: 3536343038393334
+[    0.032651] x13: 2079726576652073 x12: 7eb9c62c5c38f100
+[    0.033349] x11: ffffff80090b3b40 x10: ffffff80090b3b40
+[    0.034047] x9 : 0000000000000005 x8 : 5f5f6c6176727470
+[    0.034745] x7 : 5f5f5f5f28282061 x6 : ffffff80091c86ef
+[    0.035443] x5 : ffffff800852b690 x4 : 0000000000000000
+[    0.036141] x3 : 0000000000000002 x2 : 0000000000000002
+[    0.036839] x1 : 7eb9c62c5c38f100 x0 : 7eb9c62c5c38f100
+[    0.037536] Call trace:
+[    0.037859]  __vunmap+0xd0/0xd8
+[    0.038271]  vunmap+0x24/0x30
+[    0.038664]  __iounmap+0x2c/0x34
+[    0.039088]  timer_of_cleanup+0x70/0x7c
+[    0.039591]  mtk_syst_init+0x8c/0x9c
+[    0.040060]  timer_probe+0x6c/0xe0
+[    0.040507]  time_init+0x14/0x44
+[    0.040932]  start_kernel+0x2d0/0x46c
 
-Am 29=2E August 2019 08:24:36 MESZ schrieb Hsin-hsiung Wang <hsin-hsiung=
-=2Ewang@mediatek=2Ecom>:
->Hi Frank/Matthias,
->
->Thanks for your comments=2E
->The root cause seems I didn't split the code well=2E
->I will fix it in the next version=2E
+This commit remove the calls to timer_of_cleanup when timer_of_init
+fails since it is unnecessary and actually cause warnings to be printed.
+
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+---
+ drivers/clocksource/timer-mediatek.c | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
+index a562f491b0f8..9318edcd8963 100644
+--- a/drivers/clocksource/timer-mediatek.c
++++ b/drivers/clocksource/timer-mediatek.c
+@@ -268,15 +268,12 @@ static int __init mtk_syst_init(struct device_node *node)
+ 
+ 	ret = timer_of_init(node, &to);
+ 	if (ret)
+-		goto err;
++		return ret;
+ 
+ 	clockevents_config_and_register(&to.clkevt, timer_of_rate(&to),
+ 					TIMER_SYNC_TICKS, 0xffffffff);
+ 
+ 	return 0;
+-err:
+-	timer_of_cleanup(&to);
+-	return ret;
+ }
+ 
+ static int __init mtk_gpt_init(struct device_node *node)
+@@ -293,7 +290,7 @@ static int __init mtk_gpt_init(struct device_node *node)
+ 
+ 	ret = timer_of_init(node, &to);
+ 	if (ret)
+-		goto err;
++		return ret;
+ 
+ 	/* Configure clock source */
+ 	mtk_gpt_setup(&to, TIMER_CLK_SRC, GPT_CTRL_OP_FREERUN);
+@@ -311,9 +308,6 @@ static int __init mtk_gpt_init(struct device_node *node)
+ 	mtk_gpt_enable_irq(&to, TIMER_CLK_EVT);
+ 
+ 	return 0;
+-err:
+-	timer_of_cleanup(&to);
+-	return ret;
+ }
+ TIMER_OF_DECLARE(mtk_mt6577, "mediatek,mt6577-timer", mtk_gpt_init);
+ TIMER_OF_DECLARE(mtk_mt6765, "mediatek,mt6765-timer", mtk_syst_init);
+-- 
+2.23.0
