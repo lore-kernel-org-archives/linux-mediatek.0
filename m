@@ -1,35 +1,204 @@
-From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=
-        <u.kleine-koenig@pengutronix.de>
-Subject: Re: [PATCH v8 03/11] pwm: mediatek: remove a property "has-clks"
-Date: Thu, 19 Sep 2019 11:52:47 +0200
-Message-ID: <20190919095247.6buliwxgrrrjjvdm@pengutronix.de>
-References: <1568798939-16038-1-git-send-email-sam.shih@mediatek.com>
- <1568798939-16038-4-git-send-email-sam.shih@mediatek.com>
+From: Jing-Ting Wu <jing-ting.wu@mediatek.com>
+Subject: Re: [PATCH 1/1] sched/rt: avoid contend with CFS task
+Date: Thu, 19 Sep 2019 19:22:15 +0800
+Message-ID: <1568892135.4892.10.camel@mtkswgap22>
+References: <1567048502-6064-1-git-send-email-jing-ting.wu@mediatek.com>
+         <d5100b2d-46c4-5811-8274-8b06710d2594@arm.com>
+         <20190830145501.zadfv2ffuu7j46ft@e107158-lin.cambridge.arm.com>
+         <1567689999.2389.5.camel@mtkswgap22>
+         <CAKfTPtC3txstND=6YkWBJ16i06cQ7xueUpD5j-j-UfuSf0-z-g@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1568798939-16038-4-git-send-email-sam.shih@mediatek.com>
+In-Reply-To: <CAKfTPtC3txstND=6YkWBJ16i06cQ7xueUpD5j-j-UfuSf0-z-g@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sam Shih <sam.shih@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, John Crispin <john@phrozen.org>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: Vincent Guittot <vincent.guittot@linaro.org>
+Cc: Qais Yousef <qais.yousef@arm.com>, Valentin Schneider <valentin.schneider@arm.com>, Peter Zijlstra <peterz@infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, wsd_upstream@mediatek.com, linux-kernel <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Sep 18, 2019 at 05:28:51PM +0800, Sam Shih wrote:
-> We can use fixed-clock to repair mt7628 pwm during configure from
-> userspace. The SoC is legacy MIPS and has no complex clock tree.
-> Due to we can get clock frequency for period calculation from DT
-> fixed-clock, so we can remove has-clock property, and directly
-> use devm_clk_get and clk_get_rate.
+On Thu, 2019-09-05 at 16:01 +0200, Vincent Guittot wrote:
+> Hi Jing-Ting,
 > 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
-Acked-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+> On Thu, 5 Sep 2019 at 15:26, Jing-Ting Wu <jing-ting.wu@mediatek.com> wrote:
+> >
+> > On Fri, 2019-08-30 at 15:55 +0100, Qais Yousef wrote:
+> > > On 08/29/19 11:38, Valentin Schneider wrote:
+> > > > On 29/08/2019 04:15, Jing-Ting Wu wrote:
+> > > > > At original linux design, RT & CFS scheduler are independent.
+> > > > > Current RT task placement policy will select the first cpu in
+> > > > > lowest_mask, even if the first CPU is running a CFS task.
+> > > > > This may put RT task to a running cpu and let CFS task runnable.
+> > > > >
+> > > > > So we select idle cpu in lowest_mask first to avoid preempting
+> > > > > CFS task.
+> > > > >
+> > > >
+> > > > Regarding the RT & CFS thing, that's working as intended. RT is a whole
+> > > > class above CFS, it shouldn't have to worry about CFS.
+> > > >
+> > > > On the other side of things, CFS does worry about RT. We have the concept
+> > > > of RT-pressure in the CFS scheduler, where RT tasks will reduce a CPU's
+> > > > capacity (see fair.c::scale_rt_capacity()).
+> > > >
+> > > > CPU capacity is looked at on CFS wakeup (see wake_cap() and
+> > > > find_idlest_cpu()), and the periodic load balancer tries to spread load
+> > > > over capacity, so it'll tend to put less things on CPUs that are also
+> > > > running RT tasks.
+> > > >
+> > > > If RT were to start avoiding rqs with CFS tasks, we'd end up with a nasty
+> > > > situation were both are avoiding each other. It's even more striking when
+> > > > you see that RT pressure is done with a rq-wide RT util_avg, which
+> > > > *doesn't* get migrated when a RT task migrates. So if you decide to move
+> > > > a RT task to an idle CPU "B" because CPU "A" had runnable CFS tasks, the
+> > > > CFS scheduler will keep seeing CPU "B" as not significantly RT-pressured
+> > > > while that util_avg signal ramps up, whereas it would correctly see CPU
+> > > > "A" as RT-pressured if the RT task previously ran there.
+> > > >
+> > > > So overall I think this is the wrong approach.
+> > >
+> > > I like the idea, but yeah tend to agree the current approach might not be
+> > > enough.
+> > >
+> > > I think the major problem here is that on generic systems where CFS is a first
+> > > class citizen, RT tasks can be hostile to them - not always necessarily for a
+> > > good reason.
+> > >
+> > > To further complicate the matter, even among CFS tasks we can't tell which are
+> > > more important than the others - though hopefully latency-nice proposal will
+> > > make the situation better.
+> > >
+> > > So I agree we have a problem here, but I think this patch is just a temporary
+> > > band aid and we need to do better. Though I have no concrete suggestion yet on
+> > > how to do that.
+> > >
+> > > Another thing I couldn't quantify yet how common and how severe this problem is
+> > > yet. Jing-Ting, if you can share the details of your use case that'd be great.
+> > >
+> > > Cheers
+> > >
+> > > --
+> > > Qais Yousef
+> >
+> >
+> > I agree that the nasty situation will happen.The current approach and this patch might not be enough.
+> 
+> RT task should not harm its cache hotness and responsiveness for the
+> benefit of a CFS task
+> 
 
-Thanks
-Uwe
+Yes, itâ€™s a good point to both consider cache hotness. We have revised
+the implementation to select a better idle CPU in the same sched_domain
+of prev_cpu (with the same cache hotness) when the RT task wakeup.
 
--- 
-Pengutronix e.K.                           | Uwe Kleine-König            |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+I modify the code of find_lowest_rq as following:
+@@ -1648,6 +1629,9 @@ static int find_lowest_rq(struct task_struct
+*task)
+        struct cpumask *lowest_mask =
+this_cpu_cpumask_var_ptr(local_cpu_mask);
+        int this_cpu = smp_processor_id();
+        int cpu      = task_cpu(task);
++       int i;
++       struct rq *prev_rq = cpu_rq(cpu);
++       struct sched_domain *prev_sd;
+
+        /* Make sure the mask is initialized first */
+        if (unlikely(!lowest_mask))
+@@ -1659,6 +1643,24 @@ static int find_lowest_rq(struct task_struct
+*task)
+        if (!cpupri_find(&task_rq(task)->rd->cpupri, task, lowest_mask))
+                return -1; /* No targets found */
+
++       /* Choose previous cpu if it is idle and it fits lowest_mask */
++       if (cpumask_test_cpu(cpu, lowest_mask) && idle_cpu(cpu))
++               return cpu;
++
++       rcu_read_lock();
++       prev_sd = rcu_dereference(prev_rq->sd);
++
++       if (prev_sd) {
++               /* Choose idle_cpu among lowest_mask and it is closest
+to our hot cache data */
++               for_each_cpu(i, lowest_mask) {
++                       if (idle_cpu(i) && cpumask_test_cpu(i,
+sched_domain_span(prev_sd))) {
++                               rcu_read_unlock();
++                               return i;
++                       }
++               }
++       }
++       rcu_read_unlock();
++
+        /*
+         * At this point we have built a mask of CPUs representing the
+         * lowest priority tasks in the system.  Now we want to elect
+
+
+
+> > But for requirement of performance, I think it is better to differentiate between idle CPU and CPU has CFS task.
+> >
+> > For example, we use rt-app to evaluate runnable time on non-patched environment.
+> > There are (NR_CPUS-1) heavy CFS tasks and 1 RT Task. When a CFS task is running, the RT task wakes up and choose the same CPU.
+> > The CFS task will be preempted and keep runnable until it is migrated to another cpu by load balance.
+> > But load balance is not triggered immediately, it will be triggered until timer tick hits with some condition satisfied(ex. rq->next_balance).
+> 
+> Yes you will have to wait for the next tick that will trigger an idle
+> load balance because you have an idle cpu and 2 runnable tack (1 RT +
+> 1CFS) on the same CPU. But you should not wait for more than  1 tick
+> 
+> The current load_balance doesn't handle correctly the situation of 1
+> CFS and 1 RT task on same CPU while 1 CPU is idle. There is a rework
+> of the load_balance that is under review on the mailing list that
+> fixes this problem and your CFS task should migrate to the idle CPU
+> faster than now
+> 
+
+Period load balance should be triggered when current jiffies is behind
+rq->next_balance, but rq->next_balance is not often exactly the same
+with next tick. 
+If cpu_busy, interval = sd->balance_interval * sd->busy_factor, and
+interval is clamped by 1 to max_load_balance_interval.
+By experiment, in a system with HZ=250, available_cpus = 8, the
+max_load_balance_interval = HZ * available_cpus / 10 = 250 * 8 / 10 =
+200 jiffies,
+It would let rq->next_balance = sd->last_balance + interval, the maximum
+interval = 200 jiffies, result in more than 1 sched-tick to migrate a
+CFS task.
+
+
+
+> > CFS tasks may be runnable for a long time. In this test case, it increase 332.091 ms runnable time for CFS task.
+> >
+> > The detailed log is shown as following, CFS task(thread1-6580) is preempted by RT task(thread0-6674) about 332ms:
+> 
+> 332ms is quite long and is probably not an idle load blanace but a
+> busy load balance
+> 
+> > thread1-6580  [003] dnh2    94.452898: sched_wakeup: comm=thread0 pid=6674 prio=89 target_cpu=003
+> > thread1-6580  [003] d..2    94.452916: sched_switch: prev_comm=thread1 prev_pid=6580 prev_prio=120 prev_state=R ==> next_comm=thread0 next_pid=6674 next_prio=89
+> > .... 332.091ms
+> > krtatm-1930  [001] d..2    94.785007: sched_migrate_task: comm=thread1 pid=6580 prio=120 orig_cpu=3 dest_cpu=1
+> > krtatm-1930  [001] d..2    94.785020: sched_switch: prev_comm=krtatm prev_pid=1930 prev_prio=100 prev_state=S ==> next_comm=thread1 next_pid=6580 next_prio=120
+> 
+> your CFS task has not moved on the idle CPU but has replaced another task
+> 
+
+I think it is minor and reasonable, because CPU1 has triggered idle
+balance (when krtatm task is the last task leaving CPU1) to pull the
+thread1-6580.
+
+
+
+Best regards,
+Jing-Ting Wu
+
+> Regards,
+> Vincent
+> >
+> > So I think choose idle CPU at RT wake up flow could reduce the CFS runnable time.
+> >
+> >
+> > Best regards,
+> > Jing-Ting Wu
+> >
+> >
