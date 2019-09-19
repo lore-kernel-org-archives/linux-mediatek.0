@@ -1,59 +1,55 @@
-From: Nicolas Boichat <drinkcat@chromium.org>
-Subject: Re: [PATCH] arm64: dts: mt8183: Add node for the Mali GPU
-Date: Thu, 19 Sep 2019 06:16:48 +0800
-Message-ID: <CANMq1KD++==d0Mb6T2gKU1T7c_MaedswOYdxqEqEKKUL1bxgiw@mail.gmail.com>
-References: <20190905081546.42716-1-drinkcat@chromium.org> <CAL_JsqJCO2G90TTT9Mpy4kjVKQyXWw4aXEEnbRp_SE8X=EGc5g@mail.gmail.com>
- <CANMq1KCTPdFhJG1SLf-i+-557Yx-1WLzWCHu3tT_5Q2BF+JgdQ@mail.gmail.com> <20190913181729.GB3115@kevin>
+From: Gene Chen <gene.chen.richtek@gmail.com>
+Subject: Re: [PATCH] mfd: mt6360: add pmic mt6360 driver
+Date: Thu, 19 Sep 2019 10:20:53 +0800
+Message-ID: <CAE+NS37XG+kfbj6yJrL5A-d2O_aiRU90yV5TUk3Kfa0Rv7dWmw@mail.gmail.com>
+References: <1568801744-21380-1-git-send-email-gene.chen.richtek@gmail.com> <20190918105121.GB5016@dell>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190913181729.GB3115@kevin>
+In-Reply-To: <20190918105121.GB5016@dell>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Nick Fan <nick.fan@mediatek.com>, Boris Brezillon <boris.brezillon@collabora.com>, Douglas Anderson <dianders@chromium.org>, Dominik Behr <dbehr@chromium.org>
+To: Lee Jones <lee.jones@linaro.org>
+Cc: matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, gene_chen@richtek.com, Wilma.Wu@mediatek.com, shufan_lee@richtek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Thanks Rob and Alyssa.
-
-+Douglas Anderson +Dominik Behr who may be interested (if not already aware)
-
-On Sat, Sep 14, 2019 at 2:17 AM Alyssa Rosenzweig
-<alyssa.rosenzweig@collabora.com> wrote:
+Lee Jones <lee.jones@linaro.org> =E6=96=BC 2019=E5=B9=B49=E6=9C=8818=E6=97=
+=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=886:51=E5=AF=AB=E9=81=93=EF=BC=9A
 >
-> > > > The binding we use with out-of-tree Mali drivers includes more
-> > > > clocks, I assume this would be required eventually if we have an
-> > > > in-tree driver:
-> > >
-> > > We have an in-tree driver...
+> On Wed, 18 Sep 2019, Gene Chen wrote:
+>
+> > From: Gene Chen <gene_chen@richtek.com>
 > >
-> > Right but AFAICT it does not support Bifrost GPU (yet?).
+> > Add mfd driver for mt6360 pmic chip include
+> > Battery Charger/USB_PD/Flash LED/RGB LED/LDO/Buck
+> >
+> > Signed-off-by: Gene Chen <gene_chen@richtek.com
+> > ---
 >
-> By the time MT8183 shows up in more concrete devices, it will, certainly
-> in kernel-space and likely in userspace as well. At present, the DDK can
-> be modified to run on top of the in-tree Mali drivers, i.e. "Bifrost on
-> mainline linux-next (+ page table/compatible patches), with blob
-> userspace".
+> This looks different from the one you sent before, but I don't see a
+> version bump or any changelog in this space.  Please re-submit with
+> the differences noted.
 >
-> While the open userspace isn't ready here quite yet, I would definitely
-> encourage upstream kernel for ChromeOS, since then there's no need to
-> maintain the out-of-tree GPU driver.
 
-That's an interesting idea, I had no idea, thanks for the info!
+the change is
+1. add missing include file
+2. modify commit message
 
-Would that work with midgard as well? We have released hardware with
-RK3288/3399, so it might be nice to experiment with these first.
+this patch is regarded as version 1
 
+> >  drivers/mfd/Kconfig                |  12 +
+> >  drivers/mfd/Makefile               |   1 +
+> >  drivers/mfd/mt6360-core.c          | 463 +++++++++++++++++++++++++++++=
+++++++++
+> >  include/linux/mfd/mt6360-private.h | 279 ++++++++++++++++++++++
+> >  include/linux/mfd/mt6360.h         |  33 +++
+> >  5 files changed, 788 insertions(+)
+> >  create mode 100644 drivers/mfd/mt6360-core.c
+> >  create mode 100644 include/linux/mfd/mt6360-private.h
+> >  create mode 100644 include/linux/mfd/mt6360.h
 >
-> ---
->
-> More immediately, per Rob's review, it's important that the bindings
-> accepted upstream work with the in-tree Bifrost driver. Conceptually,
-> once Mesa supports Bifrost, if I install Debian on a MT8183 board,
-> everything should just work. I shouldn't need MT-specific changes / need
-> to change names for the DT. Regardless of which kernel driver you end up
-> using, minimally sharing the DT is good for everyone :-)
-
-Yes. I'll try to dig further with MTK, but this may take some time.
-
->
-> -Alyssa
+> --
+> Lee Jones [=E6=9D=8E=E7=90=BC=E6=96=AF]
+> Linaro Services Technical Lead
+> Linaro.org =E2=94=82 Open source software for ARM SoCs
+> Follow Linaro: Facebook | Twitter | Blog
