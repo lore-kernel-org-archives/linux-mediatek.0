@@ -1,268 +1,76 @@
-From: Vincent Guittot <vincent.guittot@linaro.org>
-Subject: Re: [PATCH 1/1] sched/rt: avoid contend with CFS task
-Date: Thu, 19 Sep 2019 14:27:13 +0200
-Message-ID: <CAKfTPtCuWrpW_o6r5cmGhLf_84PFHJhBk0pJ3fcbU_YgcBnTkQ@mail.gmail.com>
-References: <1567048502-6064-1-git-send-email-jing-ting.wu@mediatek.com>
- <d5100b2d-46c4-5811-8274-8b06710d2594@arm.com> <20190830145501.zadfv2ffuu7j46ft@e107158-lin.cambridge.arm.com>
- <1567689999.2389.5.camel@mtkswgap22> <CAKfTPtC3txstND=6YkWBJ16i06cQ7xueUpD5j-j-UfuSf0-z-g@mail.gmail.com>
- <1568892135.4892.10.camel@mtkswgap22>
+From: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
+Subject: Re: [PATCH] arm64: dts: mt8183: Add node for the Mali GPU
+Date: Thu, 19 Sep 2019 08:32:43 -0400
+Message-ID: <20190919123243.GA3457@kevin>
+References: <20190905081546.42716-1-drinkcat@chromium.org>
+ <CAL_JsqJCO2G90TTT9Mpy4kjVKQyXWw4aXEEnbRp_SE8X=EGc5g@mail.gmail.com>
+ <CANMq1KCTPdFhJG1SLf-i+-557Yx-1WLzWCHu3tT_5Q2BF+JgdQ@mail.gmail.com>
+ <20190913181729.GB3115@kevin>
+ <CANMq1KD++==d0Mb6T2gKU1T7c_MaedswOYdxqEqEKKUL1bxgiw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha512;
+        protocol="application/pgp-signature"; boundary="sm4nu43k4a2Rpi4c"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1568892135.4892.10.camel@mtkswgap22>
+Content-Disposition: inline
+In-Reply-To: <CANMq1KD++==d0Mb6T2gKU1T7c_MaedswOYdxqEqEKKUL1bxgiw@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jing-Ting Wu <jing-ting.wu@mediatek.com>
-Cc: Qais Yousef <qais.yousef@arm.com>, Valentin Schneider <valentin.schneider@arm.com>, Peter Zijlstra <peterz@infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, wsd_upstream@mediatek.com, linux-kernel <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org
+To: Nicolas Boichat <drinkcat@chromium.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Nick Fan <nick.fan@mediatek.com>, Boris Brezillon <boris.brezillon@collabora.com>, Douglas Anderson <dianders@chromium.org>, Dominik Behr <dbehr@chromium.org>, Steven Price <steven.price@arm.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 19 Sep 2019 at 13:22, Jing-Ting Wu <jing-ting.wu@mediatek.com> wrot=
-e:
->
-> On Thu, 2019-09-05 at 16:01 +0200, Vincent Guittot wrote:
-> > Hi Jing-Ting,
-> >
-> > On Thu, 5 Sep 2019 at 15:26, Jing-Ting Wu <jing-ting.wu@mediatek.com> w=
-rote:
-> > >
-> > > On Fri, 2019-08-30 at 15:55 +0100, Qais Yousef wrote:
-> > > > On 08/29/19 11:38, Valentin Schneider wrote:
-> > > > > On 29/08/2019 04:15, Jing-Ting Wu wrote:
-> > > > > > At original linux design, RT & CFS scheduler are independent.
-> > > > > > Current RT task placement policy will select the first cpu in
-> > > > > > lowest_mask, even if the first CPU is running a CFS task.
-> > > > > > This may put RT task to a running cpu and let CFS task runnable=
-.
-> > > > > >
-> > > > > > So we select idle cpu in lowest_mask first to avoid preempting
-> > > > > > CFS task.
-> > > > > >
-> > > > >
-> > > > > Regarding the RT & CFS thing, that's working as intended. RT is a=
- whole
-> > > > > class above CFS, it shouldn't have to worry about CFS.
-> > > > >
-> > > > > On the other side of things, CFS does worry about RT. We have the=
- concept
-> > > > > of RT-pressure in the CFS scheduler, where RT tasks will reduce a=
- CPU's
-> > > > > capacity (see fair.c::scale_rt_capacity()).
-> > > > >
-> > > > > CPU capacity is looked at on CFS wakeup (see wake_cap() and
-> > > > > find_idlest_cpu()), and the periodic load balancer tries to sprea=
-d load
-> > > > > over capacity, so it'll tend to put less things on CPUs that are =
-also
-> > > > > running RT tasks.
-> > > > >
-> > > > > If RT were to start avoiding rqs with CFS tasks, we'd end up with=
- a nasty
-> > > > > situation were both are avoiding each other. It's even more strik=
-ing when
-> > > > > you see that RT pressure is done with a rq-wide RT util_avg, whic=
-h
-> > > > > *doesn't* get migrated when a RT task migrates. So if you decide =
-to move
-> > > > > a RT task to an idle CPU "B" because CPU "A" had runnable CFS tas=
-ks, the
-> > > > > CFS scheduler will keep seeing CPU "B" as not significantly RT-pr=
-essured
-> > > > > while that util_avg signal ramps up, whereas it would correctly s=
-ee CPU
-> > > > > "A" as RT-pressured if the RT task previously ran there.
-> > > > >
-> > > > > So overall I think this is the wrong approach.
-> > > >
-> > > > I like the idea, but yeah tend to agree the current approach might =
-not be
-> > > > enough.
-> > > >
-> > > > I think the major problem here is that on generic systems where CFS=
- is a first
-> > > > class citizen, RT tasks can be hostile to them - not always necessa=
-rily for a
-> > > > good reason.
-> > > >
-> > > > To further complicate the matter, even among CFS tasks we can't tel=
-l which are
-> > > > more important than the others - though hopefully latency-nice prop=
-osal will
-> > > > make the situation better.
-> > > >
-> > > > So I agree we have a problem here, but I think this patch is just a=
- temporary
-> > > > band aid and we need to do better. Though I have no concrete sugges=
-tion yet on
-> > > > how to do that.
-> > > >
-> > > > Another thing I couldn't quantify yet how common and how severe thi=
-s problem is
-> > > > yet. Jing-Ting, if you can share the details of your use case that'=
-d be great.
-> > > >
-> > > > Cheers
-> > > >
-> > > > --
-> > > > Qais Yousef
-> > >
-> > >
-> > > I agree that the nasty situation will happen.The current approach and=
- this patch might not be enough.
-> >
-> > RT task should not harm its cache hotness and responsiveness for the
-> > benefit of a CFS task
-> >
->
-> Yes, it=E2=80=99s a good point to both consider cache hotness. We have re=
-vised
-> the implementation to select a better idle CPU in the same sched_domain
-> of prev_cpu (with the same cache hotness) when the RT task wakeup.
->
-> I modify the code of find_lowest_rq as following:
-> @@ -1648,6 +1629,9 @@ static int find_lowest_rq(struct task_struct
-> *task)
->         struct cpumask *lowest_mask =3D
-> this_cpu_cpumask_var_ptr(local_cpu_mask);
->         int this_cpu =3D smp_processor_id();
->         int cpu      =3D task_cpu(task);
-> +       int i;
-> +       struct rq *prev_rq =3D cpu_rq(cpu);
-> +       struct sched_domain *prev_sd;
->
->         /* Make sure the mask is initialized first */
->         if (unlikely(!lowest_mask))
-> @@ -1659,6 +1643,24 @@ static int find_lowest_rq(struct task_struct
-> *task)
->         if (!cpupri_find(&task_rq(task)->rd->cpupri, task, lowest_mask))
->                 return -1; /* No targets found */
->
-> +       /* Choose previous cpu if it is idle and it fits lowest_mask */
-> +       if (cpumask_test_cpu(cpu, lowest_mask) && idle_cpu(cpu))
-> +               return cpu;
-> +
-> +       rcu_read_lock();
-> +       prev_sd =3D rcu_dereference(prev_rq->sd);
-> +
-> +       if (prev_sd) {
-> +               /* Choose idle_cpu among lowest_mask and it is closest
-> to our hot cache data */
-> +               for_each_cpu(i, lowest_mask) {
-> +                       if (idle_cpu(i) && cpumask_test_cpu(i,
-> sched_domain_span(prev_sd))) {
-> +                               rcu_read_unlock();
-> +                               return i;
-> +                       }
-> +               }
-> +       }
-> +       rcu_read_unlock();
-> +
->         /*
->          * At this point we have built a mask of CPUs representing the
->          * lowest priority tasks in the system.  Now we want to elect
->
->
->
-> > > But for requirement of performance, I think it is better to different=
-iate between idle CPU and CPU has CFS task.
-> > >
-> > > For example, we use rt-app to evaluate runnable time on non-patched e=
-nvironment.
-> > > There are (NR_CPUS-1) heavy CFS tasks and 1 RT Task. When a CFS task =
-is running, the RT task wakes up and choose the same CPU.
-> > > The CFS task will be preempted and keep runnable until it is migrated=
- to another cpu by load balance.
-> > > But load balance is not triggered immediately, it will be triggered u=
-ntil timer tick hits with some condition satisfied(ex. rq->next_balance).
-> >
-> > Yes you will have to wait for the next tick that will trigger an idle
-> > load balance because you have an idle cpu and 2 runnable tack (1 RT +
-> > 1CFS) on the same CPU. But you should not wait for more than  1 tick
-> >
-> > The current load_balance doesn't handle correctly the situation of 1
-> > CFS and 1 RT task on same CPU while 1 CPU is idle. There is a rework
-> > of the load_balance that is under review on the mailing list that
-> > fixes this problem and your CFS task should migrate to the idle CPU
-> > faster than now
-> >
->
-> Period load balance should be triggered when current jiffies is behind
-> rq->next_balance, but rq->next_balance is not often exactly the same
-> with next tick.
-> If cpu_busy, interval =3D sd->balance_interval * sd->busy_factor, and
 
-But if there is an idle CPU on the system, the next idle load balance
-should apply shortly because the busy_factor is not used for this CPU
-which is  not busy.
-In this case, the next_balance interval is sd_weight which is probably
-4ms at cluster level and 8ms at system level in your case. This means
-between 1 and 2 ticks
+--sm4nu43k4a2Rpi4c
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-longer interval means that :
--all cpu are busy,
--the cpu has trigger an all_pinned case
--the idle load balance fails to migrate the task. And this is probably
-the your case. https://lore.kernel.org/patchwork/patch/1129117/ should
-reduce time before migrating the CFS task to 1-2 ticks
+> > By the time MT8183 shows up in more concrete devices, it will, certainly
+> > in kernel-space and likely in userspace as well. At present, the DDK can
+> > be modified to run on top of the in-tree Mali drivers, i.e. "Bifrost on
+> > mainline linux-next (+ page table/compatible patches), with blob
+> > userspace".
+> >
+> > While the open userspace isn't ready here quite yet, I would definitely
+> > encourage upstream kernel for ChromeOS, since then there's no need to
+> > maintain the out-of-tree GPU driver.
+>=20
+> That's an interesting idea, I had no idea, thanks for the info!
+>=20
+> Would that work with midgard as well? We have released hardware with
+> RK3288/3399, so it might be nice to experiment with these first.
 
-> interval is clamped by 1 to max_load_balance_interval.
-> By experiment, in a system with HZ=3D250, available_cpus =3D 8, the
-> max_load_balance_interval =3D HZ * available_cpus / 10 =3D 250 * 8 / 10 =
-=3D
-> 200 jiffies,
-> It would let rq->next_balance =3D sd->last_balance + interval, the maximu=
-m
-> interval =3D 200 jiffies, result in more than 1 sched-tick to migrate a
-> CFS task.
->
->
->
-> > > CFS tasks may be runnable for a long time. In this test case, it incr=
-ease 332.091 ms runnable time for CFS task.
-> > >
-> > > The detailed log is shown as following, CFS task(thread1-6580) is pre=
-empted by RT task(thread0-6674) about 332ms:
-> >
-> > 332ms is quite long and is probably not an idle load blanace but a
-> > busy load balance
-> >
-> > > thread1-6580  [003] dnh2    94.452898: sched_wakeup: comm=3Dthread0 p=
-id=3D6674 prio=3D89 target_cpu=3D003
-> > > thread1-6580  [003] d..2    94.452916: sched_switch: prev_comm=3Dthre=
-ad1 prev_pid=3D6580 prev_prio=3D120 prev_state=3DR =3D=3D> next_comm=3Dthre=
-ad0 next_pid=3D6674 next_prio=3D89
-> > > .... 332.091ms
-> > > krtatm-1930  [001] d..2    94.785007: sched_migrate_task: comm=3Dthre=
-ad1 pid=3D6580 prio=3D120 orig_cpu=3D3 dest_cpu=3D1
-> > > krtatm-1930  [001] d..2    94.785020: sched_switch: prev_comm=3Dkrtat=
-m prev_pid=3D1930 prev_prio=3D100 prev_state=3DS =3D=3D> next_comm=3Dthread=
-1 next_pid=3D6580 next_prio=3D120
-> >
-> > your CFS task has not moved on the idle CPU but has replaced another ta=
-sk
-> >
->
-> I think it is minor and reasonable, because CPU1 has triggered idle
-> balance (when krtatm task is the last task leaving CPU1) to pull the
-> thread1-6580.
+Yes, the above would work with Midgard as well with no changes needed.
+Ping Steven about thtat (CC'd).
 
-so it was a newly-idle load_balance not an idle load balance
+> > More immediately, per Rob's review, it's important that the bindings
+> > accepted upstream work with the in-tree Bifrost driver. Conceptually,
+> > once Mesa supports Bifrost, if I install Debian on a MT8183 board,
+> > everything should just work. I shouldn't need MT-specific changes / need
+> > to change names for the DT. Regardless of which kernel driver you end up
+> > using, minimally sharing the DT is good for everyone :-)
+>=20
+> Yes. I'll try to dig further with MTK, but this may take some time.
 
->
->
->
-> Best regards,
-> Jing-Ting Wu
->
-> > Regards,
-> > Vincent
-> > >
-> > > So I think choose idle CPU at RT wake up flow could reduce the CFS ru=
-nnable time.
-> > >
-> > >
-> > > Best regards,
-> > > Jing-Ting Wu
-> > >
-> > >
->
->
+Thank you!
+
+--sm4nu43k4a2Rpi4c
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEQ17gm7CvANAdqvY4/v5QWgr1WA0FAl2DdWcACgkQ/v5QWgr1
+WA1hxw//TRYFfG359ycsk4qVwveSnK9GFoKgfPx0UD6KVttjcVebh10JgmvhdS6P
+MIUe3X2Z55xOliZtP/J8aRTI+GcqodYOm+2NXit9Qrs9ME3wH1PribyPOanVdDeY
+LyVOiz2hKFiXgIQ+Tc3IwbKF8fG/9J1SCuBCPF7WhxWPPCq/M8l9nfis2BptnMri
+e/qXnFjFULKgZqr2PT/iAE4FwqqRwazg3zZrknP+pVyluXKYm2yjVN9wpjG9PD+/
+rxjgLJF8q+YmhTnVsN17bs5/lM0I1DPAMPaQqcDgYXt2BDpqqX1iImmxvLhWo2Gd
+cJ9uLExJvgwlpwGAv/q5S6UDJb6Svm2Hj9vqhE4gc0nRldJ+z61CnoSZZxohSOLP
+c37VB3DCoy2Nq3AYL2RWWESL1e7fmrFvhfXAn+vUguvufzv6khm/ymkV/Fv3sCIf
+pScO4+/WtjsjPVCUJhqE/sJmQAZSGJl3JntNPjW/Wcx/RytrfduL7/xDm36jtC5u
+zMTPdW9gZlS6ljNBVpErL1sq40MLM3aH8uUaeiOZmq+/P8zDYYBPgxAPPQ+oa0Ai
+y3uXXGb80thBw3uCZQlYmfeo5pfGb8opGmvEGejJWy05CC/jZIdDvq7vm0Cw9r0Y
+FniCzNzidydYsTv2Hg6rPNSGHAfh2ZzJq9nSRKhUa4HpZEOK0SY=
+=V95/
+-----END PGP SIGNATURE-----
+
+--sm4nu43k4a2Rpi4c--
