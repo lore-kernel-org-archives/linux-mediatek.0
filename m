@@ -1,29 +1,54 @@
-From: "Bean Huo (beanhuo)" <beanhuo-AL4WhLSQfzjQT0dZR+AlfA@public.gmane.org>
-Subject: RE: [EXT] [PATCH v1] scsi: ufs: skip shutdown if hba is not powered
-Date: Thu, 19 Sep 2019 15:49:06 +0000
-Message-ID: <BN7PR08MB5684156E52798096FBC61BDEDB890@BN7PR08MB5684.namprd08.prod.outlook.com>
-References: <1568780438-28753-1-git-send-email-stanley.chu@mediatek.com>
+From: <Tudor.Ambarus@microchip.com>
+Subject: Re: [PATCH 17/23] mtd: spi-nor: Fix clearing of QE bit on
+ lock()/unlock()
+Date: Thu, 19 Sep 2019 15:54:52 +0000
+Message-ID: <b44e398a-037a-8f32-58dd-15b7f714a8a3@microchip.com>
+References: <20190917155426.7432-1-tudor.ambarus@microchip.com>
+ <20190917155426.7432-18-tudor.ambarus@microchip.com>
+ <dceca616-2b98-9bc8-73e4-32fb06fc753d@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1568780438-28753-1-git-send-email-stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <dceca616-2b98-9bc8-73e4-32fb06fc753d@ti.com>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-scsi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org" <martin.petersen-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, "avri.altman-Sjgp3cTcYWE@public.gmane.org" <avri.altman-Sjgp3cTcYWE@public.gmane.org>, "alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org" <alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org" <pedrom.sousa-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "jejb-tEXmvtCZX7AybS5Ee8rs3A@public.gmane.org" <jejb-tEXmvtCZX7AybS5Ee8rs3A@public.gmane.org>
-Cc: "andy.teng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <andy.teng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <chun-hung.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <peter.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org" <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-ID: <D3CB4932602AE44EB0B07313F1DB679F@namprd11.prod.outlook.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: vigneshr@ti.com, boris.brezillon@collabora.com, marek.vasut@gmail.com, miquel.raynal@bootlin.com, richard@nod.at, linux-mtd@lists.infradead.org
+Cc: dwmw2@infradead.org, computersforpeace@gmail.com, joel@jms.id.au, andrew@aj.id.au, matthias.bgg@gmail.com, vz@mleia.com, linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
->To solve this issue, simply add checking to skip shutdown for above kind of
->situation.
->
->Signed-off-by: Stanley Chu <stanley.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Acked-by: Bean Huo <beanhuo-AL4WhLSQfzjQT0dZR+AlfA@public.gmane.org>
+DQoNCk9uIDA5LzE5LzIwMTkgMDU6MzMgUE0sIFZpZ25lc2ggUmFnaGF2ZW5kcmEgd3JvdGU6DQo+
+IEhpIFR1ZG9yDQo+IA0KDQpIaSwgVmlnbmVzaCwNCg0KPiBbLi4uXQ0KPiANCj4gT24gMTctU2Vw
+LTE5IDk6MjUgUE0sIFR1ZG9yLkFtYmFydXNAbWljcm9jaGlwLmNvbSB3cm90ZToNCj4+ICtzdGF0
+aWMgaW50IHNwaV9ub3Jfd3JpdGVfMTZiaXRfc3JfYW5kX2NoZWNrKHN0cnVjdCBzcGlfbm9yICpu
+b3IsIHU4IHN0YXR1c19uZXcsDQo+PiArCQkJCQkgICAgdTggbWFzaykNCj4+ICt7DQo+PiArCWlu
+dCByZXQ7DQo+PiArCXU4ICpzcl9jciA9IG5vci0+Ym91bmNlYnVmOw0KPj4gKwl1OCBjcl93cml0
+dGVuOw0KPj4gKw0KPj4gKwkvKiBNYWtlIHN1cmUgd2UgZG9uJ3Qgb3ZlcndyaXRlIHRoZSBjb250
+ZW50cyBvZiBTdGF0dXMgUmVnaXN0ZXIgMi4gKi8NCj4+ICsJaWYgKCEobm9yLT5mbGFncyAmIFNO
+T1JfRl9OT19SRUFEX0NSKSkgew0KPiBBc3N1bWluZyBTTk9SX0ZfTk9fUkVBRF9DUiBpcyBub3Qg
+c2V0Li4uDQo+IA0Kd2hlbiBTTk9SX0ZfTk9fUkVBRF9DUiBpcyBub3Qgc2V0LCBJIHJlYWQgdGhl
+IFN0YXR1cyBSZWdpc3RlciAyIG9uIHRoZSBuZXh0IGxpbmU6DQoNCj4+ICsJCXJldCA9IHNwaV9u
+b3JfcmVhZF9jcihub3IsICZzcl9jclsxXSk7DQo+PiArCQlpZiAocmV0KQ0KPj4gKwkJCXJldHVy
+biByZXQ7DQo+PiArCX0gZWxzZSBpZiAobm9yLT5mbGFzaC5xdWFkX2VuYWJsZSkgew0KPj4gKwkJ
+LyoNCj4+ICsJCSAqIElmIHRoZSBTdGF0dXMgUmVnaXN0ZXIgMiBSZWFkIGNvbW1hbmQgKDM1aCkg
+aXMgbm90DQo+PiArCQkgKiBzdXBwb3J0ZWQsIHdlIHNob3VsZCBhdCBsZWFzdCBiZSBzdXJlIHdl
+IGRvbid0DQo+PiArCQkgKiBjaGFuZ2UgdGhlIHZhbHVlIG9mIHRoZSBTUjIgUXVhZCBFbmFibGUg
+Yml0Lg0KPj4gKwkJICoNCj4+ICsJCSAqIFdlIGNhbiBzYWZlbHkgYXNzdW1lIHRoYXQgd2hlbiB0
+aGUgUXVhZCBFbmFibGUgbWV0aG9kIGlzDQo+PiArCQkgKiBzZXQsIHRoZSB2YWx1ZSBvZiB0aGUg
+UUUgYml0IGlzIG9uZSwgYXMgYSBjb25zZXF1ZW5jZSBvZiB0aGUNCj4+ICsJCSAqIG5vci0+Zmxh
+c2gucXVhZF9lbmFibGUoKSBjYWxsLg0KPj4gKwkJICoNCj4+ICsJCSAqIFdlIGNhbiBzYWZlbHkg
+YXNzdW1lIHRoYXQgdGhlIFF1YWQgRW5hYmxlIGJpdCBpcyBwcmVzZW50IGluDQo+PiArCQkgKiB0
+aGUgU3RhdHVzIFJlZ2lzdGVyIDIgYXQgQklUKDEpLiBBY2NvcmRpbmcgdG8gdGhlIEpFU0QyMTYN
+Cj4+ICsJCSAqIHJldkIgc3RhbmRhcmQsIEJGUFQgRFdPUkRTWzE1XSwgYml0cyAyMjoyMCwgdGhl
+IDE2LWJpdA0KPj4gKwkJICogV3JpdGUgU3RhdHVzICgwMWgpIGNvbW1hbmQgaXMgYXZhaWxhYmxl
+IGp1c3QgZm9yIHRoZSBjYXNlcw0KPj4gKwkJICogaW4gd2hpY2ggdGhlIFFFIGJpdCBpcyBkZXNj
+cmliZWQgaW4gU1IyIGF0IEJJVCgxKS4NCj4+ICsJCSAqLw0KDQp3aGVuIFNOT1JfRl9OT19SRUFE
+X0NSIGlzIHNldCBhbmQgbm9yLT5mbGFzaC5xdWFkX2VuYWJsZSAhPSBOVUxMLCBTdGF0dXMNClJl
+Z2lzdGVyIDIgKENSKSBpcyBlcXVhbCB0byBDUl9RVUFEX0VOX1NQQU4uDQoNCj4+ICsJCXNyX2Ny
+WzFdID0gQ1JfUVVBRF9FTl9TUEFOOw0KPj4gKwl9IGVsc2Ugew0KDQppZiBTTk9SX0ZfTk9fUkVB
+RF9DUiBpcyBzZXQgYW5kIG5vci0+Zmxhc2gucXVhZF9lbmFibGUgPT0gTlVMTCB3ZSBkb24ndCBu
+ZWVkIHRvDQplbmFibGUgUXVhZCBNb2RlLCBzbyBTdGF0dXMgUmVnaXN0ZXIgMiBpcyAwLg0KDQo+
+PiArCQlzcl9jclsxXSA9IDA7DQo+PiArCX0NCj4+ICsNCj4gQ1JfUVVBRF9FTl9TUEFOIHdpbGwg
+bm90IGJlIGluIHNyX2NyWzFdIHdoZW4gd2UgcmVhY2ggaGVyZS4gU28gY29kZQ0KPiB3b24ndCBl
+bmFibGUgcXVhZCBtb2RlLg0KPiANCj4gDQo=
