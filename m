@@ -1,76 +1,107 @@
-From: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
-Subject: Re: [PATCH] arm64: dts: mt8183: Add node for the Mali GPU
-Date: Thu, 19 Sep 2019 08:32:43 -0400
-Message-ID: <20190919123243.GA3457@kevin>
-References: <20190905081546.42716-1-drinkcat@chromium.org>
- <CAL_JsqJCO2G90TTT9Mpy4kjVKQyXWw4aXEEnbRp_SE8X=EGc5g@mail.gmail.com>
- <CANMq1KCTPdFhJG1SLf-i+-557Yx-1WLzWCHu3tT_5Q2BF+JgdQ@mail.gmail.com>
- <20190913181729.GB3115@kevin>
- <CANMq1KD++==d0Mb6T2gKU1T7c_MaedswOYdxqEqEKKUL1bxgiw@mail.gmail.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2] of: restore old handling of cells_name=NULL in
+  of_*_phandle_with_args()
+Date: Thu, 19 Sep 2019 08:32:42 -0500
+Message-ID: <20190919133242.GA27990@bogus>
+References: <20190918063837.8196-1-u.kleine-koenig@pengutronix.de>
+ <b00ca30f-2c06-7722-96b2-123d15751cb6@axentia.se>
+ <20190918084748.hnjkiq7wc5b35wjh@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="sm4nu43k4a2Rpi4c"
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <CANMq1KD++==d0Mb6T2gKU1T7c_MaedswOYdxqEqEKKUL1bxgiw@mail.gmail.com>
+In-Reply-To: <20190918084748.hnjkiq7wc5b35wjh@pengutronix.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Nicolas Boichat <drinkcat@chromium.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Nick Fan <nick.fan@mediatek.com>, Boris Brezillon <boris.brezillon@collabora.com>, Douglas Anderson <dianders@chromium.org>, Dominik Behr <dbehr@chromium.org>, Steven Price <steven.price@arm.com>
+To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Peter Rosin <peda@axentia.se>, Frank Rowand <frowand.list@gmail.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "kernel@pengutronix.de" <kernel@pengutronix.de>, Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Geert Uytterhoeven <geert+renesas@glider.be>
 List-Id: linux-mediatek@lists.infradead.org
 
+On Wed, 18 Sep 2019 10:47:48 +0200, Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=          wrote:
+> Before commit e42ee61017f5 ("of: Let of_for_each_phandle fallback to
+> non-negative cell_count") the iterator functions calling
+> of_for_each_phandle assumed a cell count of 0 if cells_name was NULL.
+> This corner case was missed when implementing the fallback logic in
+> e42ee61017f5 and resulted in an endless loop.
+> 
+> Restore the old behaviour of of_count_phandle_with_args() and
+> of_parse_phandle_with_args() and add a check to
+> of_phandle_iterator_init() to prevent a similar failure as a safety
+> precaution. of_parse_phandle_with_args_map() doesn't need a similar fix
+> as cells_name isn't NULL there.
+> 
+> Affected drivers are:
+>  - drivers/base/power/domain.c
+>  - drivers/base/power/domain.c
+>  - drivers/clk/ti/clk-dra7-atl.c
+>  - drivers/hwmon/ibmpowernv.c
+>  - drivers/i2c/muxes/i2c-demux-pinctrl.c
+>  - drivers/iommu/mtk_iommu.c
+>  - drivers/net/ethernet/freescale/fman/mac.c
+>  - drivers/opp/of.c
+>  - drivers/perf/arm_dsu_pmu.c
+>  - drivers/regulator/of_regulator.c
+>  - drivers/remoteproc/imx_rproc.c
+>  - drivers/soc/rockchip/pm_domains.c
+>  - sound/soc/fsl/imx-audmix.c
+>  - sound/soc/fsl/imx-audmix.c
+>  - sound/soc/meson/axg-card.c
+>  - sound/soc/samsung/tm2_wm5110.c
+>  - sound/soc/samsung/tm2_wm5110.c
+> 
+> Thanks to Geert Uytterhoeven for reporting the issue, Peter Rosin for
+> helping pinpoint the actual problem and the testers for confirming this
+> fix.
+> 
+> Fixes: e42ee61017f5 ("of: Let of_for_each_phandle fallback to non-negative cell_count")
+> Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
+> Tested-by: Geert Uytterhoeven <geert+renesas@glider.be>
+> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+> ---
+> 
+> On Wed, Sep 18, 2019 at 08:01:05AM +0000, Peter Rosin wrote:
+> > On 2019-09-18 08:38, Uwe Kleine-König wrote:
+> > >  EXPORT_SYMBOL(of_parse_phandle_with_args);
+> > >  
+> > > @@ -1765,6 +1779,18 @@ int of_count_phandle_with_args(const struct device_node *np, const char *list_na
+> > >  	struct of_phandle_iterator it;
+> > >  	int rc, cur_index = 0;
+> > >  
+> > > +	/* If cells_name is NULL we assume a cell count of 0 */
+> > > +	if (cells_name == NULL) {
+> > 
+> > A couple of nits.
+> > 
+> > I don't know if there are other considerations, but in the previous two
+> > hunks you use !cells_name instead of comparing explicitly with NULL.
+> > Personally, I find the shorter form more readable, and in the name of
+> > consistency bla bla...
+> 
+> Ack, changed to !cells_name here, too.
+> 
+> > 
+> > Also, the comment explaining this NULL-check didn't really make sense
+> > to me until I realized that knowing the cell count to be zero makes
+> > counting trivial. Something along those lines should perhaps be in the
+> > comment?
+> 
+> You're right, I extended the comment a bit.
+>  
+> > But as I said, these are nits. Feel free to ignore.
+> 
+> I considered resending already anyhow as I fatfingerd my email address.
+> this is fixed now, too. Additionally I fixed a typo in one of the
+> comments.
+> 
+> Thanks for your feedback.
+> 
+> Best regards
+> Uwe
+> 
+>  drivers/of/base.c | 35 +++++++++++++++++++++++++++++++++--
+>  1 file changed, 33 insertions(+), 2 deletions(-)
+> 
 
---sm4nu43k4a2Rpi4c
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Applied, thanks.
 
-> > By the time MT8183 shows up in more concrete devices, it will, certainly
-> > in kernel-space and likely in userspace as well. At present, the DDK can
-> > be modified to run on top of the in-tree Mali drivers, i.e. "Bifrost on
-> > mainline linux-next (+ page table/compatible patches), with blob
-> > userspace".
-> >
-> > While the open userspace isn't ready here quite yet, I would definitely
-> > encourage upstream kernel for ChromeOS, since then there's no need to
-> > maintain the out-of-tree GPU driver.
->=20
-> That's an interesting idea, I had no idea, thanks for the info!
->=20
-> Would that work with midgard as well? We have released hardware with
-> RK3288/3399, so it might be nice to experiment with these first.
-
-Yes, the above would work with Midgard as well with no changes needed.
-Ping Steven about thtat (CC'd).
-
-> > More immediately, per Rob's review, it's important that the bindings
-> > accepted upstream work with the in-tree Bifrost driver. Conceptually,
-> > once Mesa supports Bifrost, if I install Debian on a MT8183 board,
-> > everything should just work. I shouldn't need MT-specific changes / need
-> > to change names for the DT. Regardless of which kernel driver you end up
-> > using, minimally sharing the DT is good for everyone :-)
->=20
-> Yes. I'll try to dig further with MTK, but this may take some time.
-
-Thank you!
-
---sm4nu43k4a2Rpi4c
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEQ17gm7CvANAdqvY4/v5QWgr1WA0FAl2DdWcACgkQ/v5QWgr1
-WA1hxw//TRYFfG359ycsk4qVwveSnK9GFoKgfPx0UD6KVttjcVebh10JgmvhdS6P
-MIUe3X2Z55xOliZtP/J8aRTI+GcqodYOm+2NXit9Qrs9ME3wH1PribyPOanVdDeY
-LyVOiz2hKFiXgIQ+Tc3IwbKF8fG/9J1SCuBCPF7WhxWPPCq/M8l9nfis2BptnMri
-e/qXnFjFULKgZqr2PT/iAE4FwqqRwazg3zZrknP+pVyluXKYm2yjVN9wpjG9PD+/
-rxjgLJF8q+YmhTnVsN17bs5/lM0I1DPAMPaQqcDgYXt2BDpqqX1iImmxvLhWo2Gd
-cJ9uLExJvgwlpwGAv/q5S6UDJb6Svm2Hj9vqhE4gc0nRldJ+z61CnoSZZxohSOLP
-c37VB3DCoy2Nq3AYL2RWWESL1e7fmrFvhfXAn+vUguvufzv6khm/ymkV/Fv3sCIf
-pScO4+/WtjsjPVCUJhqE/sJmQAZSGJl3JntNPjW/Wcx/RytrfduL7/xDm36jtC5u
-zMTPdW9gZlS6ljNBVpErL1sq40MLM3aH8uUaeiOZmq+/P8zDYYBPgxAPPQ+oa0Ai
-y3uXXGb80thBw3uCZQlYmfeo5pfGb8opGmvEGejJWy05CC/jZIdDvq7vm0Cw9r0Y
-FniCzNzidydYsTv2Hg6rPNSGHAfh2ZzJq9nSRKhUa4HpZEOK0SY=
-=V95/
------END PGP SIGNATURE-----
-
---sm4nu43k4a2Rpi4c--
+Rob
