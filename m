@@ -1,137 +1,159 @@
-From: Fabien Parent <fparent@baylibre.com>
-Subject: [PATCH] clocksource: mediatek: fix error handling
-Date: Thu, 19 Sep 2019 21:13:15 +0200
-Message-ID: <20190919191315.25190-1-fparent@baylibre.com>
+From: Oleksandr Natalenko <oleksandr@natalenko.name>
+Subject: Re: mt76x2e hardware restart
+Date: Thu, 19 Sep 2019 23:22:03 +0200
+Message-ID: <c6d621759c190f7810d898765115f3b4@natalenko.name>
+References: <deaafa7a3e9ea2111ebb5106430849c6@natalenko.name>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: daniel.lezcano@linaro.org, tglx@linutronix.de, matthias.bgg@gmail.com, Fabien Parent <fparent@baylibre.com>
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <deaafa7a3e9ea2111ebb5106430849c6@natalenko.name>
+Sender: netdev-owner@vger.kernel.org
+To: linux-mediatek@lists.infradead.org
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Stanislaw Gruszka <sgruszka@redhat.com>, Ryder Lee <ryder.lee@mediatek.com>, Roy Luo <royluo@google.com>, Kalle Valo <kvalo@codeaurora.org>, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-When timer_of_init fails, it cleans up after itself by undoing
-everything it did during the initialization function.
+On 19.09.2019 18:24, Oleksandr Natalenko wrote:
+> [  +9,979664] mt76x2e 0000:01:00.0: Firmware Version: 0.0.00
+> [  +0,000014] mt76x2e 0000:01:00.0: Build: 1
+> [  +0,000010] mt76x2e 0000:01:00.0: Build Time: 201507311614____
+> [  +0,018017] mt76x2e 0000:01:00.0: Firmware running!
+> [  +0,001101] ieee80211 phy4: Hardware restart was requested
 
-mtk_syst_init and mtk_gpt_init both call timer_of_cleanup if
-timer_of_init fails. timer_of_cleanup try to release the resource taken.
-Since these resources have already been cleaned up by timer_of_init,
-we end up getting a few warnings printed:
+IIUC, this happens due to watchdog. I think the following applies.
 
-[    0.001935] WARNING: CPU: 0 PID: 0 at __clk_put+0xe8/0x128
-[    0.002650] Modules linked in:
-[    0.003058] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 4.19.67+ #1
-[    0.003852] Hardware name: MediaTek MT8183 (DT)
-[    0.004446] pstate: 20400085 (nzCv daIf +PAN -UAO)
-[    0.005073] pc : __clk_put+0xe8/0x128
-[    0.005555] lr : clk_put+0xc/0x14
-[    0.005988] sp : ffffff80090b3ea0
-[    0.006422] x29: ffffff80090b3ea0 x28: 0000000040e20018
-[    0.007121] x27: ffffffc07bfff780 x26: 0000000000000001
-[    0.007819] x25: ffffff80090bda80 x24: ffffff8008ec5828
-[    0.008517] x23: ffffff80090bd000 x22: ffffff8008d8b2e8
-[    0.009216] x21: 0000000000000001 x20: fffffffffffffdfb
-[    0.009914] x19: ffffff8009166180 x18: 00000000002bffa8
-[    0.010612] x17: ffffffc012996980 x16: 0000000000000000
-[    0.011311] x15: ffffffbf004a6800 x14: 3536343038393334
-[    0.012009] x13: 2079726576652073 x12: 7eb9c62c5c38f100
-[    0.012707] x11: ffffff80090b3ba0 x10: ffffff80090b3ba0
-[    0.013405] x9 : 0000000000000004 x8 : 0000000000000040
-[    0.014103] x7 : ffffffc079400270 x6 : 0000000000000000
-[    0.014801] x5 : ffffffc079400248 x4 : 0000000000000000
-[    0.015499] x3 : 0000000000000000 x2 : 0000000000000000
-[    0.016197] x1 : ffffff80091661c0 x0 : fffffffffffffdfb
-[    0.016896] Call trace:
-[    0.017218]  __clk_put+0xe8/0x128
-[    0.017654]  clk_put+0xc/0x14
-[    0.018048]  timer_of_cleanup+0x60/0x7c
-[    0.018551]  mtk_syst_init+0x8c/0x9c
-[    0.019020]  timer_probe+0x6c/0xe0
-[    0.019469]  time_init+0x14/0x44
-[    0.019893]  start_kernel+0x2d0/0x46c
-[    0.020378] ---[ end trace 8c1efabea1267649 ]---
-[    0.020982] ------------[ cut here ]------------
-[    0.021586] Trying to vfree() nonexistent vm area ((____ptrval____))
-[    0.022427] WARNING: CPU: 0 PID: 0 at __vunmap+0xd0/0xd8
-[    0.023119] Modules linked in:
-[    0.023524] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W         4.19.67+ #1
-[    0.024498] Hardware name: MediaTek MT8183 (DT)
-[    0.025091] pstate: 60400085 (nZCv daIf +PAN -UAO)
-[    0.025718] pc : __vunmap+0xd0/0xd8
-[    0.026176] lr : __vunmap+0xd0/0xd8
-[    0.026632] sp : ffffff80090b3e90
-[    0.027066] x29: ffffff80090b3e90 x28: 0000000040e20018
-[    0.027764] x27: ffffffc07bfff780 x26: 0000000000000001
-[    0.028462] x25: ffffff80090bda80 x24: ffffff8008ec5828
-[    0.029160] x23: ffffff80090bd000 x22: ffffff8008d8b2e8
-[    0.029858] x21: 0000000000000000 x20: 0000000000000000
-[    0.030556] x19: ffffff800800d000 x18: 00000000002bffa8
-[    0.031254] x17: 0000000000000000 x16: 0000000000000000
-[    0.031952] x15: ffffffbf004a6800 x14: 3536343038393334
-[    0.032651] x13: 2079726576652073 x12: 7eb9c62c5c38f100
-[    0.033349] x11: ffffff80090b3b40 x10: ffffff80090b3b40
-[    0.034047] x9 : 0000000000000005 x8 : 5f5f6c6176727470
-[    0.034745] x7 : 5f5f5f5f28282061 x6 : ffffff80091c86ef
-[    0.035443] x5 : ffffff800852b690 x4 : 0000000000000000
-[    0.036141] x3 : 0000000000000002 x2 : 0000000000000002
-[    0.036839] x1 : 7eb9c62c5c38f100 x0 : 7eb9c62c5c38f100
-[    0.037536] Call trace:
-[    0.037859]  __vunmap+0xd0/0xd8
-[    0.038271]  vunmap+0x24/0x30
-[    0.038664]  __iounmap+0x2c/0x34
-[    0.039088]  timer_of_cleanup+0x70/0x7c
-[    0.039591]  mtk_syst_init+0x8c/0x9c
-[    0.040060]  timer_probe+0x6c/0xe0
-[    0.040507]  time_init+0x14/0x44
-[    0.040932]  start_kernel+0x2d0/0x46c
+Watchdog is started here:
 
-This commit remove the calls to timer_of_cleanup when timer_of_init
-fails since it is unnecessary and actually cause warnings to be printed.
+=== mt76x02_util.c
+130 void mt76x02_init_device(struct mt76x02_dev *dev)
+131 {
+...
+155         INIT_DELAYED_WORK(&dev->wdt_work, mt76x02_wdt_work);
+===
 
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
----
- drivers/clocksource/timer-mediatek.c | 10 ++--------
- 1 file changed, 2 insertions(+), 8 deletions(-)
+It checks for TX hang here:
 
-diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
-index a562f491b0f8..9318edcd8963 100644
---- a/drivers/clocksource/timer-mediatek.c
-+++ b/drivers/clocksource/timer-mediatek.c
-@@ -268,15 +268,12 @@ static int __init mtk_syst_init(struct device_node *node)
- 
- 	ret = timer_of_init(node, &to);
- 	if (ret)
--		goto err;
-+		return ret;
- 
- 	clockevents_config_and_register(&to.clkevt, timer_of_rate(&to),
- 					TIMER_SYNC_TICKS, 0xffffffff);
- 
- 	return 0;
--err:
--	timer_of_cleanup(&to);
--	return ret;
- }
- 
- static int __init mtk_gpt_init(struct device_node *node)
-@@ -293,7 +290,7 @@ static int __init mtk_gpt_init(struct device_node *node)
- 
- 	ret = timer_of_init(node, &to);
- 	if (ret)
--		goto err;
-+		return ret;
- 
- 	/* Configure clock source */
- 	mtk_gpt_setup(&to, TIMER_CLK_SRC, GPT_CTRL_OP_FREERUN);
-@@ -311,9 +308,6 @@ static int __init mtk_gpt_init(struct device_node *node)
- 	mtk_gpt_enable_irq(&to, TIMER_CLK_EVT);
- 
- 	return 0;
--err:
--	timer_of_cleanup(&to);
--	return ret;
- }
- TIMER_OF_DECLARE(mtk_mt6577, "mediatek,mt6577-timer", mtk_gpt_init);
- TIMER_OF_DECLARE(mtk_mt6765, "mediatek,mt6765-timer", mtk_syst_init);
+=== mt76x02_mmio.c
+557 void mt76x02_wdt_work(struct work_struct *work)
+558 {
+...
+562     mt76x02_check_tx_hang(dev);
+===
+
+Conditions:
+
+=== mt76x02_mmio.c
+530 static void mt76x02_check_tx_hang(struct mt76x02_dev *dev)
+531 {
+532     if (mt76x02_tx_hang(dev)) {
+533         if (++dev->tx_hang_check >= MT_TX_HANG_TH)
+534             goto restart;
+535     } else {
+536         dev->tx_hang_check = 0;
+537     }
+538
+539     if (dev->mcu_timeout)
+540         goto restart;
+541
+542     return;
+543
+544 restart:
+545     mt76x02_watchdog_reset(dev);
+===
+
+Actual check:
+
+=== mt76x02_mmio.c
+367 static bool mt76x02_tx_hang(struct mt76x02_dev *dev)
+368 {
+369     u32 dma_idx, prev_dma_idx;
+370     struct mt76_queue *q;
+371     int i;
+372
+373     for (i = 0; i < 4; i++) {
+374         q = dev->mt76.q_tx[i].q;
+375
+376         if (!q->queued)
+377             continue;
+378
+379         prev_dma_idx = dev->mt76.tx_dma_idx[i];
+380         dma_idx = readl(&q->regs->dma_idx);
+381         dev->mt76.tx_dma_idx[i] = dma_idx;
+382
+383         if (prev_dma_idx == dma_idx)
+384             break;
+385     }
+386
+387     return i < 4;
+388 }
+===
+
+(I don't quite understand what it does here; why 4? does each device 
+have 4 queues? maybe, my does not? I guess this is where watchdog is 
+triggered, though, because otherwise I'd see mcu_timeout message like 
+"MCU message %d (seq %d) timed out\n")
+
+Once it detects TX hang, the reset is triggered:
+
+=== mt76x02_mmio.c
+446 static void mt76x02_watchdog_reset(struct mt76x02_dev *dev)
+447 {
+...
+485     if (restart)
+486         mt76_mcu_restart(dev);
+===
+
+mt76_mcu_restart() is just a define for this series here:
+
+=== mt76.h
+555 #define mt76_mcu_restart(dev, ...)  
+(dev)->mt76.mcu_ops->mcu_restart(&((dev)->mt76))
+===
+
+Actual OP:
+
+=== mt76x2/pci_mcu.c
+188 int mt76x2_mcu_init(struct mt76x02_dev *dev)
+189 {
+190     static const struct mt76_mcu_ops mt76x2_mcu_ops = {
+191         .mcu_restart = mt76pci_mcu_restart,
+192         .mcu_send_msg = mt76x02_mcu_msg_send,
+193     };
+===
+
+This triggers loading the firmware:
+
+=== mt76x2/pci_mcu.c
+168 static int
+169 mt76pci_mcu_restart(struct mt76_dev *mdev)
+170 {
+...
+179     ret = mt76pci_load_firmware(dev);
+===
+
+which does the printout I observe:
+
+=== mt76x2/pci_mcu.c
+  91 static int
+  92 mt76pci_load_firmware(struct mt76x02_dev *dev)
+  93 {
+...
+156     dev_info(dev->mt76.dev, "Firmware running!\n");
+===
+
+Too bad it doesn't show the actual watchdog message, IOW, why the reset 
+happens. I guess I will have to insert some pr_infos here and there.
+
+Does it make sense? Any ideas why this can happen?
+
+More info on the device during boot:
+
+===
+[  +0,333233] mt76x2e 0000:01:00.0: enabling device (0000 -> 0002)
+[  +0,000571] mt76x2e 0000:01:00.0: ASIC revision: 76120044
+[  +0,017806] mt76x2e 0000:01:00.0: ROM patch build: 20141115060606a
+===
+
 -- 
-2.23.0
+   Oleksandr Natalenko (post-factum)
