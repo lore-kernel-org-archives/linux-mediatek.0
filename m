@@ -1,70 +1,86 @@
-From: Vincent Guittot <vincent.guittot@linaro.org>
-Subject: Re: [PATCH 1/1] sched/rt: avoid contend with CFS task
-Date: Thu, 19 Sep 2019 16:37:10 +0200
-Message-ID: <CAKfTPtAy1JSh725GAVXmg_x3fby1UfYn504tq4n2rQs1-JMy6Q@mail.gmail.com>
-References: <1567048502-6064-1-git-send-email-jing-ting.wu@mediatek.com>
- <d5100b2d-46c4-5811-8274-8b06710d2594@arm.com> <20190830145501.zadfv2ffuu7j46ft@e107158-lin.cambridge.arm.com>
- <1567689999.2389.5.camel@mtkswgap22> <CAKfTPtC3txstND=6YkWBJ16i06cQ7xueUpD5j-j-UfuSf0-z-g@mail.gmail.com>
- <1568892135.4892.10.camel@mtkswgap22> <CAKfTPtCuWrpW_o6r5cmGhLf_84PFHJhBk0pJ3fcbU_YgcBnTkQ@mail.gmail.com>
- <20190919142315.vmrrpvljpspqpurp@e107158-lin.cambridge.arm.com> <CAKfTPtA9-JLxs+DdLYjBQ6VfVGNxm++QYYi1wy-xS6o==EAPNw@mail.gmail.com>
+From: Vignesh Raghavendra <vigneshr@ti.com>
+Subject: Re: [PATCH 00/23] mtd: spi-nor: Quad Enable and (un)lock methods
+Date: Thu, 19 Sep 2019 20:07:34 +0530
+Message-ID: <920a9946-af0d-1190-d59c-0b4acee71931@ti.com>
+References: <20190917155426.7432-1-tudor.ambarus@microchip.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAKfTPtA9-JLxs+DdLYjBQ6VfVGNxm++QYYi1wy-xS6o==EAPNw@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Qais Yousef <qais.yousef@arm.com>
-Cc: Jing-Ting Wu <jing-ting.wu@mediatek.com>, Valentin Schneider <valentin.schneider@arm.com>, Peter Zijlstra <peterz@infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, wsd_upstream@mediatek.com, linux-kernel <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
+In-Reply-To: <20190917155426.7432-1-tudor.ambarus@microchip.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
+List-Post: <mailto:linux-mtd@lists.infradead.org>
+List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
+Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
+To: Tudor.Ambarus@microchip.com, boris.brezillon@collabora.com, marek.vasut@gmail.com, miquel.raynal@bootlin.com, richard@nod.at, linux-mtd@lists.infradead.org
+Cc: linux-aspeed@lists.ozlabs.org, andrew@aj.id.au, linux-kernel@vger.kernel.org, vz@mleia.com, linux-mediatek@lists.infradead.org, joel@jms.id.au, matthias.bgg@gmail.com, computersforpeace@gmail.com, dwmw2@infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 19 Sep 2019 at 16:32, Vincent Guittot
-<vincent.guittot@linaro.org> wrote:
->
-> On Thu, 19 Sep 2019 at 16:23, Qais Yousef <qais.yousef@arm.com> wrote:
-> >
-> > On 09/19/19 14:27, Vincent Guittot wrote:
-> > > > > > But for requirement of performance, I think it is better to differentiate between idle CPU and CPU has CFS task.
-> > > > > >
-> > > > > > For example, we use rt-app to evaluate runnable time on non-patched environment.
-> > > > > > There are (NR_CPUS-1) heavy CFS tasks and 1 RT Task. When a CFS task is running, the RT task wakes up and choose the same CPU.
-> > > > > > The CFS task will be preempted and keep runnable until it is migrated to another cpu by load balance.
-> > > > > > But load balance is not triggered immediately, it will be triggered until timer tick hits with some condition satisfied(ex. rq->next_balance).
-> > > > >
-> > > > > Yes you will have to wait for the next tick that will trigger an idle
-> > > > > load balance because you have an idle cpu and 2 runnable tack (1 RT +
-> > > > > 1CFS) on the same CPU. But you should not wait for more than  1 tick
-> > > > >
-> > > > > The current load_balance doesn't handle correctly the situation of 1
-> > > > > CFS and 1 RT task on same CPU while 1 CPU is idle. There is a rework
-> > > > > of the load_balance that is under review on the mailing list that
-> > > > > fixes this problem and your CFS task should migrate to the idle CPU
-> > > > > faster than now
-> > > > >
-> > > >
-> > > > Period load balance should be triggered when current jiffies is behind
-> > > > rq->next_balance, but rq->next_balance is not often exactly the same
-> > > > with next tick.
-> > > > If cpu_busy, interval = sd->balance_interval * sd->busy_factor, and
-> > >
-> > > But if there is an idle CPU on the system, the next idle load balance
-> > > should apply shortly because the busy_factor is not used for this CPU
-> > > which is  not busy.
-> > > In this case, the next_balance interval is sd_weight which is probably
-> > > 4ms at cluster level and 8ms at system level in your case. This means
-> > > between 1 and 2 ticks
-> >
-> > But if the CFS task we're preempting was latency sensitive - this 1 or 2 tick
-> > is too late of a recovery.
-> >
-> > So while it's good we recover, but a preventative approach would be useful too.
-> > Just saying :-) I'm still not sure if this is the best longer term approach.
->
-> like using a rt task ?
+Hi,
 
-I mean, RT task should select a sub optimal CPU because of CFS
-If you want to favor CFS compared to RT it's probably because your
-task should be RT too
+On 17-Sep-19 9:24 PM, Tudor.Ambarus@microchip.com wrote:
+> From: Tudor Ambarus <tudor.ambarus@microchip.com>
+> 
+[...]
+> Tudor Ambarus (23):
+>   mtd: spi-nor: hisi-sfc: Drop nor->erase NULL assignment
+>   mtd: spi-nor: Introduce 'struct spi_nor_controller_ops'
+>   mtd: spi-nor: cadence-quadspi: Fix cqspi_command_read() definition
+>   mtd: spi-nor: Rename nor->params to nor->flash
+>   mtd: spi-nor: Rework read_sr()
+>   mtd: spi-nor: Rework read_fsr()
+>   mtd: spi-nor: Rework read_cr()
+>   mtd: spi-nor: Rework write_enable/disable()
+>   mtd: spi-nor: Fix retlen handling in sst_write()
+>   mtd: spi-nor: Rework write_sr()
+>   mtd: spi-nor: Rework spi_nor_read/write_sr2()
+>   mtd: spi-nor: Report error in spi_nor_xread_sr()
+>   mtd: spi-nor: Void return type for spi_nor_clear_sr/fsr()
+>   mtd: spi-nor: Drop duplicated new line
+>   mtd: spi-nor: Drop spansion_quad_enable()
+>   mtd: spi-nor: Fix errno on quad_enable methods
+>   mtd: spi-nor: Fix clearing of QE bit on lock()/unlock()
+>   mtd: spi-nor: Rework macronix_quad_enable()
+>   mtd: spi-nor: Rework spansion(_no)_read_cr_quad_enable()
+>   mtd: spi-nor: Update sr2_bit7_quad_enable()
+>   mtd: spi-nor: Rework the disabling of block write protection
+>   mtd: spi-nor: Add Global Block Unlock support
+>   mtd: spi-nor: Unlock global block protection on sst26vf064b
 
->
-> >
-> > --
-> > Qais Yousef
+With whole series applied, I see:
+
+drivers/mtd/spi-nor/spi-nor.c:520: warning: Function parameter or member 'cr' not described in 'spi_nor_read_cr'
+drivers/mtd/spi-nor/spi-nor.c:520: warning: Excess function parameter 'fsr' description in 'spi_nor_read_cr'
+drivers/mtd/spi-nor/spi-nor.c:742: warning: Function parameter or member 'len' not described in 'spi_nor_write_sr'
+drivers/mtd/spi-nor/spi-nor.c:889: warning: Function parameter or member 'status_new' not described in 'spi_nor_write_sr1_and_check'
+drivers/mtd/spi-nor/spi-nor.c:889: warning: Function parameter or member 'mask' not described in 'spi_nor_write_sr1_and_check'
+drivers/mtd/spi-nor/spi-nor.c:923: warning: Function parameter or member 'status_new' not described in 'spi_nor_write_16bit_sr_and_check'
+drivers/mtd/spi-nor/spi-nor.c:923: warning: Function parameter or member 'mask' not described in 'spi_nor_write_16bit_sr_and_check'
+drivers/mtd/spi-nor/spi-nor.c:997: warning: Function parameter or member 'status_new' not described in 'spi_nor_write_sr_and_check'
+drivers/mtd/spi-nor/spi-nor.c:997: warning: Function parameter or member 'mask' not described in 'spi_nor_write_sr_and_check'
+
+Could you please fix up docs next time around?
+
+Regards
+Vignesh
+> 
+>  drivers/mtd/spi-nor/aspeed-smc.c      |   23 +-
+>  drivers/mtd/spi-nor/cadence-quadspi.c |   54 +-
+>  drivers/mtd/spi-nor/hisi-sfc.c        |   23 +-
+>  drivers/mtd/spi-nor/intel-spi.c       |   24 +-
+>  drivers/mtd/spi-nor/mtk-quadspi.c     |   25 +-
+>  drivers/mtd/spi-nor/nxp-spifi.c       |   23 +-
+>  drivers/mtd/spi-nor/spi-nor.c         | 1697 ++++++++++++++++++---------------
+>  include/linux/mtd/spi-nor.h           |   75 +-
+>  8 files changed, 1050 insertions(+), 894 deletions(-)
+> 
+
+______________________________________________________
+Linux MTD discussion mailing list
+http://lists.infradead.org/mailman/listinfo/linux-mtd/
