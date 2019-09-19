@@ -1,185 +1,61 @@
-From: Quentin Perret <qperret@qperret.net>
-Subject: Re: [PATCH 1/1] sched/eas: introduce system-wide overutil indicator
-Date: Thu, 19 Sep 2019 10:10:53 +0200
-Message-ID: <20190919081053.GA10561@qperret.net>
-References: <1568877622-28073-1-git-send-email-yt.chang@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH v3 02/11] dt-bindings: phy-mtk-tphy: make the ref clock optional
+Date: Thu, 19 Sep 2019 17:10:33 +0800
+Message-ID: <1568884242-22775-2-git-send-email-chunfeng.yun@mediatek.com>
+References: <1568884242-22775-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <1568877622-28073-1-git-send-email-yt.chang@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: YT Chang <yt.chang@mediatek.com>
-Cc: wsd_upstream@mediatek.com, Peter Zijlstra <peterz@infradead.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1568884242-22775-1-git-send-email-chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+Make the ref clock optional, then we no need refer to a fixed-clock
+in DTS anymore when the clock of USB3 PHY comes from oscillator
+directly
 
-Could you please CC me on later versions of this ? I'm interested.
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
+---
+v3: add acked-by Rob
 
-On Thursday 19 Sep 2019 at 15:20:22 (+0800), YT Chang wrote:
-> When the system is overutilization, the load-balance crossing
-> clusters will be triggered and scheduler will not use energy
-> aware scheduling to choose CPUs.
-> 
-> The overutilization means the loading of  ANY CPUs
-> exceeds threshold (80%).
-> 
-> However, only 1 heavy task or while-1 program will run on highest
-> capacity CPUs and it still result to trigger overutilization. So
-> the system will not use Energy Aware scheduling.
-> 
-> To avoid it, a system-wide over-utilization indicator to trigger
-> load-balance cross clusters.
-> 
-> The policy is:
-> 	The loading of "ALL CPUs in the highest capacity"
-> 						exceeds threshold(80%) or
-> 	The loading of "Any CPUs not in the highest capacity"
-> 						exceed threshold(80%)
-> 
-> Signed-off-by: YT Chang <yt.chang@mediatek.com>
+v2: no changes
+---
+ .../devicetree/bindings/phy/phy-mtk-tphy.txt        | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
-Right, so we originally went for the simpler implementation because in
-general when you have the biggest CPUs of the system running flat out at
-max freq, the micro-optimizations for energy on littles don't matter all
-that much. Is there a use-case where you see a big difference ?
-
-A second thing is RT pressure. If a big CPU is used at 50% by a CFS task
-and 50% by RT, we should mark it overutilized. Otherwise EAS will think
-the CFS task is 50% and try to down-migrate it. But the truth is, we
-dont know the size of the task ... So, I believe your patch breaks that
-ATM.
-
-And there is a similar problem with misfit. That is, a task running flat
-out on a big CPU will be flagged as misfit, even if there is nothing we
-can do about (we can't up-migrate it for obvious reasons). So perhaps we
-should look at a common solution for both issues, if deemed useful.
-
-> ---
->  kernel/sched/fair.c | 76 +++++++++++++++++++++++++++++++++++++++++++++--------
->  1 file changed, 65 insertions(+), 11 deletions(-)
-> 
-> diff --git a/kernel/sched/fair.c b/kernel/sched/fair.c
-> index 036be95..f4c3d70 100644
-> --- a/kernel/sched/fair.c
-> +++ b/kernel/sched/fair.c
-> @@ -5182,10 +5182,71 @@ static inline bool cpu_overutilized(int cpu)
->  static inline void update_overutilized_status(struct rq *rq)
->  {
->  	if (!READ_ONCE(rq->rd->overutilized) && cpu_overutilized(rq->cpu)) {
-> -		WRITE_ONCE(rq->rd->overutilized, SG_OVERUTILIZED);
-> -		trace_sched_overutilized_tp(rq->rd, SG_OVERUTILIZED);
-> +		if (capacity_orig_of(cpu_of(rq)) < rq->rd->max_cpu_capacity) {
-> +			WRITE_ONCE(rq->rd->overutilized, SG_OVERUTILIZED);
-> +			trace_sched_overutilized_tp(rq->rd, SG_OVERUTILIZED);
-> +		}
->  	}
->  }
-> +
-> +static
-> +void update_system_overutilized(struct sched_domain *sd, struct cpumask *cpus)
-> +{
-> +	unsigned long group_util;
-> +	bool intra_overutil = false;
-> +	unsigned long max_capacity;
-> +	struct sched_group *group = sd->groups;
-> +	struct root_domain *rd;
-> +	int this_cpu;
-> +	bool overutilized;
-> +	int i;
-> +
-> +	this_cpu = smp_processor_id();
-> +	rd = cpu_rq(this_cpu)->rd;
-> +	overutilized = READ_ONCE(rd->overutilized);
-> +	max_capacity = rd->max_cpu_capacity;
-> +
-> +	do {
-> +		group_util = 0;
-> +		for_each_cpu_and(i, sched_group_span(group), cpus) {
-> +			group_util += cpu_util(i);
-> +			if (cpu_overutilized(i)) {
-> +				if (capacity_orig_of(i) < max_capacity) {
-
-This is what breaks things with RT pressure I think.
-
-> +					intra_overutil = true;
-> +					break;
-> +				}
-> +			}
-> +		}
-> +
-> +		/*
-> +		 * A capacity base hint for over-utilization.
-> +		 * Not to trigger system overutiled if heavy tasks
-> +		 * in Big.cluster, so
-> +		 * add the free room(20%) of Big.cluster is impacted which means
-> +		 * system-wide over-utilization,
-> +		 * that considers whole cluster not single cpu
-> +		 */
-> +		if (group->group_weight > 1 && (group->sgc->capacity * 1024 <
-> +						group_util * capacity_margin)) {
-> +			intra_overutil = true;
-> +			break;
-> +		}
-
-What if we have only one big MC domain with both big and little CPUs and
-no DIE ? Say you have 4 big tasks, 4 big CPUs, 4 little CPUs (idle).
-You'll fail to mark the system overutilized no ?
-
-> +
-> +		group = group->next;
-> +
-> +	} while (group != sd->groups && !intra_overutil);
-> +
-> +	if (overutilized != intra_overutil) {
-> +		if (intra_overutil == true) {
-> +			WRITE_ONCE(rd->overutilized, SG_OVERUTILIZED);
-> +			trace_sched_overutilized_tp(rd, SG_OVERUTILIZED);
-> +		} else {
-> +			WRITE_ONCE(rd->overutilized, 0);
-> +			trace_sched_overutilized_tp(rd, 0);
-> +		}
-> +	}
-> +}
-> +
->  #else
->  static inline void update_overutilized_status(struct rq *rq) { }
->  #endif
-> @@ -8242,15 +8303,6 @@ static inline void update_sd_lb_stats(struct lb_env *env, struct sd_lb_stats *sd
->  
->  		/* update overload indicator if we are at root domain */
->  		WRITE_ONCE(rd->overload, sg_status & SG_OVERLOAD);
-> -
-> -		/* Update over-utilization (tipping point, U >= 0) indicator */
-> -		WRITE_ONCE(rd->overutilized, sg_status & SG_OVERUTILIZED);
-> -		trace_sched_overutilized_tp(rd, sg_status & SG_OVERUTILIZED);
-> -	} else if (sg_status & SG_OVERUTILIZED) {
-> -		struct root_domain *rd = env->dst_rq->rd;
-> -
-> -		WRITE_ONCE(rd->overutilized, SG_OVERUTILIZED);
-> -		trace_sched_overutilized_tp(rd, SG_OVERUTILIZED);
->  	}
->  }
->  
-> @@ -8476,6 +8528,8 @@ static struct sched_group *find_busiest_group(struct lb_env *env)
->  	 */
->  	update_sd_lb_stats(env, &sds);
->  
-> +	update_system_overutilized(env->sd, env->cpus);
-> +
->  	if (sched_energy_enabled()) {
->  		struct root_domain *rd = env->dst_rq->rd;
->  
-> -- 
-> 1.9.1
-> 
+diff --git a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+index ce6abfbdfbe1..1f4a36dd80e0 100644
+--- a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
++++ b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+@@ -34,12 +34,6 @@ Optional properties (controller (parent) node):
+ 
+ Required properties (port (child) node):
+ - reg		: address and length of the register set for the port.
+-- clocks	: a list of phandle + clock-specifier pairs, one for each
+-		  entry in clock-names
+-- clock-names	: must contain
+-		  "ref": 48M reference clock for HighSpeed analog phy; and 26M
+-			reference clock for SuperSpeed analog phy, sometimes is
+-			24M, 25M or 27M, depended on platform.
+ - #phy-cells	: should be 1 (See second example)
+ 		  cell after port phandle is phy type from:
+ 			- PHY_TYPE_USB2
+@@ -48,6 +42,13 @@ Required properties (port (child) node):
+ 			- PHY_TYPE_SATA
+ 
+ Optional properties (PHY_TYPE_USB2 port (child) node):
++- clocks	: a list of phandle + clock-specifier pairs, one for each
++		  entry in clock-names
++- clock-names	: may contain
++		  "ref": 48M reference clock for HighSpeed anolog phy; and 26M
++			reference clock for SuperSpeed anolog phy, sometimes is
++			24M, 25M or 27M, depended on platform.
++
+ - mediatek,eye-src	: u32, the value of slew rate calibrate
+ - mediatek,eye-vrt	: u32, the selection of VRT reference voltage
+ - mediatek,eye-term	: u32, the selection of HS_TX TERM reference voltage
+-- 
+2.23.0
