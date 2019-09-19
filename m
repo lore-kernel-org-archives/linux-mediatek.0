@@ -1,41 +1,54 @@
-From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=
-        <u.kleine-koenig@pengutronix.de>
-Subject: Re: [PATCH v2] of: restore old handling of cells_name=NULL in
- of_*_phandle_with_args()
-Date: Thu, 19 Sep 2019 08:19:44 +0200
-Message-ID: <20190919061943.ga7jwdn4ednulvgs@pengutronix.de>
-References: <20190918063837.8196-1-u.kleine-koenig@pengutronix.de>
- <b00ca30f-2c06-7722-96b2-123d15751cb6@axentia.se>
- <20190918084748.hnjkiq7wc5b35wjh@pengutronix.de>
- <CAL_JsqJuJrOj+D4xkGACC1=zaB5OUkt=SNzCOiOiTVtM9E9z+A@mail.gmail.com>
- <20190918201954.2phyqxqhoj5jwklt@pengutronix.de>
+From: Jitao Shi <jitao.shi@mediatek.com>
+Subject: [PATCH v7 0/9] Support dsi for mt8183
+Date: Thu, 19 Sep 2019 14:57:57 +0800
+Message-ID: <20190919065806.111016-1-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190918201954.2phyqxqhoj5jwklt@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>
-Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Geert Uytterhoeven <geert+renesas@glider.be>, Frank Rowand <frowand.list@gmail.com>, Joerg Roedel <joro@8bytes.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "kernel@pengutronix.de" <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Robin Murphy <robin.murphy@arm.com>, Will Deacon <will@kernel.org>, Peter Rosin <peda@axentia.se>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Marek Szyprowski <m.szyprowski@samsung.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: CK Hu <ck.hu@mediatek.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org
+Cc: Jitao Shi <jitao.shi@mediatek.com>, srv_heupstream@mediatek.com, stonea168@163.com, cawa.cheng@mediatek.com, sj.huang@mediatek.com, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Sep 18, 2019 at 10:19:54PM +0200, Uwe Kleine-König wrote:
-> On Wed, Sep 18, 2019 at 03:09:06PM -0500, Rob Herring wrote:
-> > Can I get a proper patch please.
-> 
-> I don't understand what is wrong with my patch. Can you please expand
-> what you are missing? I just tried to git-am it and the result looks
-> fine.
-
-I see that the commit this patch is fixing isn't in Linus' tree yet. Do
-you want instead of this commit fixing the previous one a single good
-patch that replaces e42ee61017f5 ("of: Let of_for_each_phandle fallback
-to non-negative cell_count")?
-
-Best regards
-Uwe
-
--- 
-Pengutronix e.K.                           | Uwe Kleine-König            |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Q2hhbmdlcyBzaW5jZSB2NjoKIC0gYWRkIGRwaHkgcmVzZXQgdG8gYXZvaWQgZHBoeSBmaWZvIGVy
+cm9yIGFmdGVyIGxpbmVzIG51bWJlciBzZXR0aW5nCiAtIHNlcGFyYXRlIGRzaSBjbWQgcmVnIHNl
+dHRpbmcgZnJvbSAiZml4ZXMgQ01EUSByZWcgYWRkcmVzcyBvZiBtdDgxNzMKICAgaXMgZGlmZmVy
+ZW50IHdpdGggbXQyNzAxIgoKQ2hhbmdlcyBzaW5jZSB2NToKIC0gZmluZSB0dW5lIGRwaHkgdGlt
+aW5nLgoKQ2hhbmdlcyBzaW5jZSB2NDoKIC0gbW92ZSBtaXBpX2RzaV9ob3N0X3VucmVnaXRlcigp
+IHRvIC5yZW1vdmUoKQogLSBmaW5lIHR1bmUgYWRkIGZyYW1lIHNpemUgY29udHJvbCBjb2Rpbmcg
+c3R5bGUKIC0gY2hhbmdlIHRoZSBkYXRhIHR5cGUgb2YgZGF0YV9yYXRlIGFzIHUzMiwgYW5kIGFk
+ZCBESVZfUk9VTkRfVVBfVUxMCiAtIHVzZSBkaXZfdTY0IHdoZW4gODAwMDAwMDAwMFVMTCAvIGRz
+aS0+ZGF0YV9yYXRlLgoKQ2hhbmdlcyBzaW5jZSB2MwogLSBhZGQgb25lIG1vcmUgJ3RhYicgZm9y
+IGJpdHdpc2UgZGVmaW5lLgogLSBhZGQgVGVzdGVkLWJ5OiBSeWFuIENhc2UgPHJ5YW5kY2FzZUBj
+aHJvbWl1bS5vcmc+CglhbmQgUmV2aWV3ZWQtYnk6IENLIEh1IDxjay5odUBtZWRpYXRlay5jb20+
+LgogLSByZW1vdmUgY29tcGFyZSBkYV9oc196ZXJvIHRvIGRhX2hzX3ByZXBhcmUuCgpDaGFuZ2Vz
+IHNpbmNlIHYyOgogLSBjaGFuZ2UgdGhlIHZpZGVvIHRpbWluZyBjYWxjIG1ldGhvZAogLSBmaW5l
+IHRoZSBkc2kgYW5kIG1pcGl0eCBpbml0IHNlcXVlbmNlCiAtIGZpbmUgdHVuZSBjb21taXQgbXNn
+CgpDaGFuZ2VzIHNpbmNlIHYxOgogLSBzZXBhcmF0ZSBmcmFtZSBzaXplIGFuZCByZWcgY29tbWl0
+IGNvbnRyb2wgaW5kZXBlbmRlbnQgcGF0Y2hlcy4KIC0gZml4IHNvbWUgcmV0dXJuIHZhbHVlcyBp
+biBwcm9iZQogLSByZW1vdmUgRFNJX0NNRFcwIGluICJDTURRIHJlZyBhZGRyZXNzIG9mIG10ODE3
+MyBpcyBkaWZmZXJlbnQgd2l0aCBtdDI3MDEiIAoKSml0YW8gU2hpICg5KToKICBkcm0vbWVkaWF0
+ZWs6IG1vdmUgbWlwaV9kc2lfaG9zdF9yZWdpc3RlciB0byBwcm9iZQogIGRybS9tZWRpYXRlazog
+Zml4ZXMgQ01EUSByZWcgYWRkcmVzcyBvZiBtdDgxNzMgaXMgZGlmZmVyZW50IHdpdGgKICAgIG10
+MjcwMQogIGRybS9tZWRpYXRlazogcmVwbGFjZSB3cml0ZWIoKSB3aXRoIG10a19kc2lfbWFzaygp
+CiAgZHJtL21lZGlhdGVrOiBhZGQgZHNpIHJlZyBjb21taXQgZGlzYWJsZSBjb250cm9sCiAgZHJt
+L21lZGlhdGVrOiBhZGQgZnJhbWUgc2l6ZSBjb250cm9sCiAgZHJtL21lZGlhdGVrOiBhZGQgbXQ4
+MTgzIGRzaSBkcml2ZXIgc3VwcG9ydAogIGRybS9tZWRpYXRlazogY2hhbmdlIHRoZSBkc2kgcGh5
+dGltaW5nIGNhbGN1bGF0ZSBtZXRob2QKICBkcm06IG1lZGlhdGVrOiBhZGp1c3QgZHNpIGFuZCBt
+aXBpX3R4IHByb2JlIHNlcXVlbmNlCiAgZHJtL21lZGlhdGVrOiBhZGQgZHBoeSByZXNldCBhZnRl
+ciBzZXR0aW5nIGxhbmVzIG51bWJlcgoKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJt
+X2Rydi5jIHwgICAyICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jICAgICB8
+IDIzMyArKysrKysrKysrKysrKysrKystLS0tLS0tCiAyIGZpbGVzIGNoYW5nZWQsIDE3MCBpbnNl
+cnRpb25zKCspLCA2NSBkZWxldGlvbnMoLSkKCi0tIAoyLjIxLjAKCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJp
+LWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
