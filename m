@@ -1,86 +1,65 @@
-From: Jitao Shi <jitao.shi@mediatek.com>
-Subject: [PATCH v7 5/5] drm/mediatek: config mipitx impedance with calibration
- data
-Date: Fri, 20 Sep 2019 17:04:32 +0800
-Message-ID: <20190920090432.3308-6-jitao.shi@mediatek.com>
-References: <20190920090432.3308-1-jitao.shi@mediatek.com>
+From: Miles Chen <miles.chen@mediatek.com>
+Subject: [PATCH] mm: slub: print_hex_dump() with DUMP_PREFIX_OFFSET
+Date: Fri, 20 Sep 2019 18:48:49 +0800
+Message-ID: <20190920104849.32504-1-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190920090432.3308-1-jitao.shi@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: CK Hu <ck.hu@mediatek.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org
-Cc: Jitao Shi <jitao.shi@mediatek.com>, srv_heupstream@mediatek.com, stonea168@163.com, cawa.cheng@mediatek.com, sj.huang@mediatek.com, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Andrew Morton <akpm@linux-foundation.org>
+Cc: linux-kernel@vger.kernel.org, linux-mm@kvack.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Miles Chen <miles.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Q29uZmlnIG1pcGl0eCBpbXBlZGFuY2Ugd2l0aCBjYWxpYnJhdGlvbiBkYXRhIHRvIG1ha2Ugc3Vy
-ZSB0aGVpciBpbXBlZGFuY2UKYXJlIDEwMG9obS4KClNpZ25lZC1vZmYtYnk6IEppdGFvIFNoaSA8
-aml0YW8uc2hpQG1lZGlhdGVrLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X21pcGlfdHguaCAgICAgICAgfCAgMSArCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210
-ODE4M19taXBpX3R4LmMgfCA2MyArKysrKysrKysrKysrKysrKysrCiAyIGZpbGVzIGNoYW5nZWQs
-IDY0IGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX21pcGlfdHguaCBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbWlwaV90eC5oCmlu
-ZGV4IGVlYTQ0MzI3ZmU5Zi4uYTFiNjI5MjE0NWRlIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX21pcGlfdHguaAorKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX21pcGlfdHguaApAQCAtMjgsNiArMjgsNyBAQCBzdHJ1Y3QgbXRrX21pcGlfdHggewogCXZv
-aWQgX19pb21lbSAqcmVnczsKIAl1MzIgZGF0YV9yYXRlOwogCXUzMiBtaXBpdHhfZHJpdmU7CisJ
-dTMyIHJ0X2NvZGVbNV07CiAJY29uc3Qgc3RydWN0IG10a19taXBpdHhfZGF0YSAqZHJpdmVyX2Rh
-dGE7CiAJc3RydWN0IGNsa19odyBwbGxfaHc7CiAJc3RydWN0IGNsayAqcGxsOwpkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxODNfbWlwaV90eC5jIGIvZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxODNfbWlwaV90eC5jCmluZGV4IDViZGE4MzU1MTQ1
-Zi4uOWNhOTBkZWUwOTVhIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X210ODE4M19taXBpX3R4LmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgx
-ODNfbWlwaV90eC5jCkBAIC01LDYgKzUsOCBAQAogICovCiAKICNpbmNsdWRlICJtdGtfbWlwaV90
-eC5oIgorI2luY2x1ZGUgPGxpbnV4L252bWVtLWNvbnN1bWVyLmg+CisjaW5jbHVkZSA8bGludXgv
-c2xhYi5oPgogCiAjZGVmaW5lIE1JUElUWF9MQU5FX0NPTgkJMHgwMDBjCiAjZGVmaW5lIFJHX0RT
-SV9DUEhZX1QxRFJWX0VOCQlCSVQoMCkKQEAgLTI4LDYgKzMwLDcgQEAKICNkZWZpbmUgTUlQSVRY
-X1BMTF9DT040CTB4MDAzYwogI2RlZmluZSBSR19EU0lfUExMX0lCSUFTCQkoMyA8PCAxMCkKIAor
-I2RlZmluZSBNSVBJVFhfRDJQX1JUQ09ERQkweDAxMDAKICNkZWZpbmUgTUlQSVRYX0QyX1NXX0NU
-TF9FTgkweDAxNDQKICNkZWZpbmUgTUlQSVRYX0QwX1NXX0NUTF9FTgkweDAyNDQKICNkZWZpbmUg
-TUlQSVRYX0NLX0NLTU9ERV9FTgkweDAzMjgKQEAgLTEwOCw2ICsxMTEsNjQgQEAgc3RhdGljIGNv
-bnN0IHN0cnVjdCBjbGtfb3BzIG10a19taXBpX3R4X3BsbF9vcHMgPSB7CiAJLnJlY2FsY19yYXRl
-ID0gbXRrX21pcGlfdHhfcGxsX3JlY2FsY19yYXRlLAogfTsKIAorc3RhdGljIGludCBtdGtfbWlw
-aV90eF9jb25maWdfY2FsaWJyYXRpb25fZGF0YShzdHJ1Y3QgbXRrX21pcGlfdHggKm1pcGlfdHgp
-Cit7CisJdTMyICpidWYgPSBOVUxMOworCWludCBpLCBqOworCXN0cnVjdCBudm1lbV9jZWxsICpj
-ZWxsOworCXN0cnVjdCBkZXZpY2UgKmRldiA9IG1pcGlfdHgtPmRldjsKKwlzaXplX3QgbGVuOwor
-CisJY2VsbCA9IG52bWVtX2NlbGxfZ2V0KGRldiwgImNhbGlicmF0aW9uLWRhdGEiKTsKKwlpZiAo
-SVNfRVJSKGNlbGwpKSB7CisJCWRldl93YXJuKGRldiwgIm52bWVtX2NlbGxfZ2V0IGZhaWxcbiIp
-OworCQlyZXR1cm4gLUVJTlZBTDsKKwl9CisKKwlidWYgPSAodTMyICopbnZtZW1fY2VsbF9yZWFk
-KGNlbGwsICZsZW4pOworCisJbnZtZW1fY2VsbF9wdXQoY2VsbCk7CisKKwlpZiAoSVNfRVJSKGJ1
-ZikpIHsKKwkJZGV2X3dhcm4oZGV2LCAiY2FuJ3QgZ2V0IGRhdGFcbiIpOworCQlyZXR1cm4gLUVJ
-TlZBTDsKKwl9CisKKwlpZiAobGVuIDwgMyAqIHNpemVvZih1MzIpKSB7CisJCWRldl93YXJuKGRl
-diwgImludmFsaWQgY2FsaWJyYXRpb24gZGF0YVxuIik7CisJCWtmcmVlKGJ1Zik7CisJCXJldHVy
-biAtRUlOVkFMOworCX0KKworCW1pcGlfdHgtPnJ0X2NvZGVbMF0gPSAoKGJ1ZlswXSA+PiA2ICYg
-MHgxRikgPDwgNSkgfAorCQkJICAgICAgKGJ1ZlswXSA+PiAxMSAmIDB4MUYpOworCW1pcGlfdHgt
-PnJ0X2NvZGVbMV0gPSAoKGJ1ZlsxXSA+PiAyNyAmIDB4MUYpIDw8IDUpIHwKKwkJCSAgICAgIChi
-dWZbMF0gPj4gMSAmIDB4MUYpOworCW1pcGlfdHgtPnJ0X2NvZGVbMl0gPSAoKGJ1ZlsxXSA+PiAx
-NyAmIDB4MUYpIDw8IDUpIHwKKwkJCSAgICAgIChidWZbMV0gPj4gMjIgJiAweDFGKTsKKwltaXBp
-X3R4LT5ydF9jb2RlWzNdID0gKChidWZbMV0gPj4gNyAmIDB4MUYpIDw8IDUpIHwKKwkJCSAgICAg
-IChidWZbMV0gPj4gMTIgJiAweDFGKTsKKwltaXBpX3R4LT5ydF9jb2RlWzRdID0gKChidWZbMl0g
-Pj4gMjcgJiAweDFGKSA8PCA1KSB8CisJCQkgICAgICAoYnVmWzFdID4+IDIgJiAweDFGKTsKKwor
-CWZvciAoaSA9IDA7IGkgPCA1OyBpKyspIHsKKwkJaWYgKChtaXBpX3R4LT5ydF9jb2RlW2ldICYg
-MHgxRikgPT0gMCkKKwkJCW1pcGlfdHgtPnJ0X2NvZGVbaV0gfD0gMHgxMDsKKworCQlpZiAoKG1p
-cGlfdHgtPnJ0X2NvZGVbaV0gPj4gNSAmIDB4MUYpID09IDApCisJCQltaXBpX3R4LT5ydF9jb2Rl
-W2ldIHw9IDB4MTAgPDwgNTsKKworCQlmb3IgKGogPSAwOyBqIDwgMTA7IGorKykgeworCQkJbXRr
-X21pcGlfdHhfdXBkYXRlX2JpdHMobWlwaV90eCwKKwkJCQlNSVBJVFhfRDJQX1JUQ09ERSAqIChp
-ICsgMSkgKyBqICogNCwKKwkJCQkxLCBtaXBpX3R4LT5ydF9jb2RlW2ldID4+IGogJiAxKTsKKwkJ
-fQorCX0KKworCWtmcmVlKGJ1Zik7CisJcmV0dXJuIDA7Cit9CisKIHN0YXRpYyB2b2lkIG10a19t
-aXBpX3R4X3Bvd2VyX29uX3NpZ25hbChzdHJ1Y3QgcGh5ICpwaHkpCiB7CiAJc3RydWN0IG10a19t
-aXBpX3R4ICptaXBpX3R4ID0gcGh5X2dldF9kcnZkYXRhKHBoeSk7CkBAIC0xMzAsNiArMTkxLDgg
-QEAgc3RhdGljIHZvaWQgbXRrX21pcGlfdHhfcG93ZXJfb25fc2lnbmFsKHN0cnVjdCBwaHkgKnBo
-eSkKIAkJCQlSR19EU0lfSFNUWF9MRE9fUkVGX1NFTCwKIAkJCQltaXBpX3R4LT5taXBpdHhfZHJp
-dmUgPDwgNik7CiAKKwltdGtfbWlwaV90eF9jb25maWdfY2FsaWJyYXRpb25fZGF0YShtaXBpX3R4
-KTsKKwogCW10a19taXBpX3R4X3NldF9iaXRzKG1pcGlfdHgsIE1JUElUWF9DS19DS01PREVfRU4s
-IERTSV9DS19DS01PREVfRU4pOwogfQogCi0tIAoyLjIxLjAKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+Since commit ad67b74d2469d9b8 ("printk: hash addresses printed with %p"),
+The use DUMP_PREFIX_OFFSET instead of DUMP_PREFIX_ADDRESS with
+print_hex_dump() can generate more useful messages.
+
+In the following example, it's easier get the offset of incorrect poison
+value with DUMP_PREFIX_OFFSET.
+
+Before:
+Object 00000000e817b73b: 00 00 00 00 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+Object 00000000816f4601: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+Object 00000000169d2bb8: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+Object 00000000f4c38716: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+Object 00000000917e3491: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+Object 00000000c0e33738: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+Object 000000001755ddd1: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+
+After:
+Object 00000000: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+Object 00000010: 63 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+Object 00000020: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+Object 00000030: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b a5
+
+I think it might be worth to convert all DUMP_PREFIX_ADDRESS to
+DUMP_PREFIX_OFFSET for the whole Linux kernel.
+
+$ git grep 'DUMP_PREFIX_ADDRESS' | cut -f1 -d"/" | sort | uniq -c
+3 arch
+140 drivers
+12 fs
+1 include
+5 lib
+2 mm
+
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+---
+ mm/slub.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mm/slub.c b/mm/slub.c
+index 8834563cdb4b..89d91c1eb33d 100644
+--- a/mm/slub.c
++++ b/mm/slub.c
+@@ -528,7 +528,7 @@ static void print_section(char *level, char *text, u8 *addr,
+ 			  unsigned int length)
+ {
+ 	metadata_access_enable();
+-	print_hex_dump(level, text, DUMP_PREFIX_ADDRESS, 16, 1, addr,
++	print_hex_dump(level, text, DUMP_PREFIX_OFFSET, 16, 1, addr,
+ 			length, 1);
+ 	metadata_access_disable();
+ }
+-- 
+2.18.0
