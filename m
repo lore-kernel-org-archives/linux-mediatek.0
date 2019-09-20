@@ -1,50 +1,37 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH] mt7601u: phy: simplify zero check on val
-Date: Fri, 20 Sep 2019 14:25:21 +0100
-Message-ID: <2f9ab78a-ea76-0b60-375a-9a22cd2ff0f5@arm.com>
-References: <20190920125414.15507-1-colin.king@canonical.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Subject: Re: [PATCH] media: platform: Use devm_platform_ioremap_resource() in
+ two functions
+Date: Fri, 20 Sep 2019 15:38:22 +0200
+Message-ID: <CAMuHMdVD4ktoacaqWSRxGehmO3ULrcFXCSTQ=JaxrUWhCTw-Lg@mail.gmail.com>
+References: <d80a685a-c3de-b9c9-ad32-e1da9308c393@web.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20190920125414.15507-1-colin.king@canonical.com>
-Content-Language: en-GB
-Sender: netdev-owner@vger.kernel.org
-To: Colin King <colin.king@canonical.com>, Jakub Kicinski <kubakici@wp.pl>, Kalle Valo <kvalo@codeaurora.org>, "David S . Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <d80a685a-c3de-b9c9-ad32-e1da9308c393@web.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Markus Elfring <Markus.Elfring@web.de>
+Cc: Linux Media Mailing List <linux-media@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, Linux-Renesas <linux-renesas-soc@vger.kernel.org>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, Tiffany Lin <tiffany.lin@mediatek.com>, Bartosz Golaszewski <bgolaszewski@baylibre.com>, kernel-janitors@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, Himanshu Jha <himanshujha199640@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 20/09/2019 13:54, Colin King wrote:
-> From: Colin Ian King <colin.king@canonical.com>
-> 
-> Currently the zero check on val to break out of a loop
-> is a little obscure.  Replace the val is zero and break check
-> with a loop while value is non-zero.
-> 
-> Signed-off-by: Colin Ian King <colin.king@canonical.com>
-> ---
->   drivers/net/wireless/mediatek/mt7601u/phy.c | 4 +---
->   1 file changed, 1 insertion(+), 3 deletions(-)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt7601u/phy.c b/drivers/net/wireless/mediatek/mt7601u/phy.c
-> index 06f5702ab4bd..4e0e473caae1 100644
-> --- a/drivers/net/wireless/mediatek/mt7601u/phy.c
-> +++ b/drivers/net/wireless/mediatek/mt7601u/phy.c
-> @@ -213,9 +213,7 @@ int mt7601u_wait_bbp_ready(struct mt7601u_dev *dev)
->   
->   	do {
->   		val = mt7601u_bbp_rr(dev, MT_BBP_REG_VERSION);
-> -		if (val && ~val)
-> -			break;
+On Wed, Sep 18, 2019 at 11:30 AM Markus Elfring <Markus.Elfring@web.de> wrote:
+> From: Markus Elfring <elfring@users.sourceforge.net>
+> Date: Wed, 18 Sep 2019 11:20:48 +0200
+>
+> Simplify these function implementations by using a known wrapper function.
+>
+> This issue was detected by using the Coccinelle software.
+>
+> Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
 
-AFAICS, this effectively implements "while (val == 0 || val == 0xff)", 
-which is not at all equivalent to "while(val)"... :/
+Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
 
-Robin.
+Gr{oetje,eeting}s,
 
-> -	} while (--i);
-> +	} while (val && --i);
->   
->   	if (!i) {
->   		dev_err(dev->dev, "Error: BBP is not ready\n");
-> 
+                        Geert
+
+-- 
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
