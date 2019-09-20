@@ -1,36 +1,54 @@
-From: Oleksandr Natalenko <oleksandr@natalenko.name>
-Subject: Re: mt76x2e hardware restart
-Date: Fri, 20 Sep 2019 08:07:36 +0200
-Message-ID: <9d581001e2e6cece418329842b2b0959@natalenko.name>
-References: <deaafa7a3e9ea2111ebb5106430849c6@natalenko.name>
- <c6d621759c190f7810d898765115f3b4@natalenko.name>
+From: Jitao Shi <jitao.shi@mediatek.com>
+Subject: [PATCH v7 0/5] Support mipitx for mt8183
+Date: Fri, 20 Sep 2019 17:04:27 +0800
+Message-ID: <20190920090432.3308-1-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <c6d621759c190f7810d898765115f3b4@natalenko.name>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-mediatek@lists.infradead.org
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Stanislaw Gruszka <sgruszka@redhat.com>, Ryder Lee <ryder.lee@mediatek.com>, Roy Luo <royluo@google.com>, Kalle Valo <kvalo@codeaurora.org>, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: CK Hu <ck.hu@mediatek.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org
+Cc: Jitao Shi <jitao.shi@mediatek.com>, srv_heupstream@mediatek.com, stonea168@163.com, cawa.cheng@mediatek.com, sj.huang@mediatek.com, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On 19.09.2019 23:22, Oleksandr Natalenko wrote:
-> It checks for TX hang here:
-> 
-> === mt76x02_mmio.c
-> 557 void mt76x02_wdt_work(struct work_struct *work)
-> 558 {
-> ...
-> 562     mt76x02_check_tx_hang(dev);
-> ===
-
-I've commented out the watchdog here ^^, and the card is not resetted 
-any more, but similarly it stops working shortly after the first client 
-connects. So, indeed, it must be some hang in the HW, and wdt seems to 
-do a correct job.
-
-Is it even debuggable/fixable from the driver?
-
--- 
-   Oleksandr Natalenko (post-factum)
+Q2hhbmdlcyBzaW5jZSB2NjoKIC0gYWRkIHRoZSBtaXBpdHggZHJpdmluZyBjb250cm9sIGluIGRl
+dmljZSB0cmVlLgogLSBjb25maWcgbWlwaXR4IGltcGVkYW5jZSB3aXRoIGNhbGlicmF0aW9uIGRh
+dGEuCgpDaGFuZ2VzIHNpbmNlIHY1OgogLSByZW1vdmUgbWlwaV90eC0+cmVmX2NsawogLSByZW1v
+dmUgbXQ4MTgzIHBsbCBwcmVwYXJlIHVucHJlcGFyZQoKQ2hhbmdlcyBzaW5jZSB2NDoKIC0gZmlu
+ZSB0dW5lIHRoZSBtaXBpX3R4LT5yZWZfY2xrIGFuZCBtaXBpX3R4LT5wbGwgc2VxdWVuY2UKICAg
+MS4gUHJlcGFyZSBtaXBpX3R4LT5yZWZfY2xrCiAgIDIuIFByZXBhcmUgbWlwaV90eC0+cGxsCiAg
+IDMuIEVuYWJsZSBtaXBpX3R4LT5yZWZfY2xrCiAgIDQuIEVuYWJsZSBtaXBpX3R4LT5wbGwKCkNo
+YW5nZXMgc2luY2UgdjM6CiAtIHR1cm4gb2ZmIFBMTCBiZWZvcmUgc2V0dGluZyBQTEwgcGFyYW1l
+dGVycy4KCkNoYW5nZXMgc2luY2UgdjI6CiAtIHVwZGF0ZSBBY2tlZC1ieTogUm9iIEhlcnJpbmcg
+PHJvYmhAa2VybmVsLm9yZz4KIC0gdXBkYXRlIG10ODE4MyBtYXggYml0IHJhdGUgc3VwcG9ydAoK
+Q2hhbmdlcyBzaW5jZSB2MToKIC0gdXBkYXRlIGR0LWJpbmRpbmdzIGRvY3VtZW50IGZvciBtdDgx
+ODMgbWlwaXR4LgogLSByZW1vdmUgbXRrX21pcGl0eF9jbGtfZ2V0X29wcyBhbmQgYXNzaWduIGNs
+a19vcHMgaW4gcHJvYmUuCiAtIGZpeCB0aGUgbGluY2VuY2UKIC0gcmVtb3ZlIHR4ZGl2MSBmcm9t
+IG10a19taXBpX3R4X3BsbF9wcmVwYXJlCgpKaXRhbyBTaGkgKDUpOgogIGR0LWJpbmRpbmdzOiBk
+aXNwbGF5OiBtZWRpYXRlazogdXBkYXRlIGRzaSBzdXBwb3J0ZWQgY2hpcHMKICBkcm0vbWVkaWF0
+ZWs6IHNlcGFyYXRlIG1pcGlfdHggdG8gZGlmZmVyZW50IGZpbGUKICBkcm0vbWVkaWF0ZWs6IGFk
+ZCBtaXBpX3R4IGRyaXZlciBmb3IgbXQ4MTgzCiAgZHJtL21lZGlhdGVrOiBhZGQgdGhlIG1pcGl0
+eCBkcml2aW5nIGNvbnRyb2wgaW4gZGV2aWNlIHRyZWUKICBkcm0vbWVkaWF0ZWs6IGNvbmZpZyBt
+aXBpdHggaW1wZWRhbmNlIHdpdGggY2FsaWJyYXRpb24gZGF0YQoKIC4uLi9kaXNwbGF5L21lZGlh
+dGVrL21lZGlhdGVrLGRzaS50eHQgICAgICAgICB8ICAxNSArLQogZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL01ha2VmaWxlICAgICAgICAgICAgIHwgICAyICsKIGRyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfbWlwaV90eC5jICAgICAgICB8IDM0NCArKy0tLS0tLS0tLS0tLS0tLS0KIGRyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbWlwaV90eC5oICAgICAgICB8ICA1MSArKysKIGRyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX21pcGlfdHguYyB8IDI4OSArKysrKysrKysr
+KysrKysKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTgzX21pcGlfdHguYyB8IDIy
+MCArKysrKysrKysrKwogNiBmaWxlcyBjaGFuZ2VkLCA2MDMgaW5zZXJ0aW9ucygrKSwgMzE4IGRl
+bGV0aW9ucygtKQogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
+dGtfbWlwaV90eC5oCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19tdDgxNzNfbWlwaV90eC5jCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19tdDgxODNfbWlwaV90eC5jCgotLSAKMi4yMS4wCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
+CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
+cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
