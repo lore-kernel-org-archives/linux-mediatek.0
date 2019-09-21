@@ -1,76 +1,56 @@
-From: Thierry Reding <thierry.reding@gmail.com>
-Subject: Re: [PATCH v9 07/11] dt-bindings: pwm: pwm-mediatek: add a property
- "num-pwms"
-Date: Sat, 21 Sep 2019 02:21:49 +0200
-Message-ID: <20190921002149.GB86019@mithrandir>
-References: <1568933351-8584-1-git-send-email-sam.shih@mediatek.com>
- <1568933351-8584-8-git-send-email-sam.shih@mediatek.com>
+From: David Rientjes <rientjes-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH] mm: slub: print_hex_dump() with DUMP_PREFIX_OFFSET
+Date: Sat, 21 Sep 2019 02:08:59 -0700 (PDT)
+Message-ID: <alpine.DEB.2.21.1909210207240.259613@chino.kir.corp.google.com>
+References: <20190920104849.32504-1-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="xgyAXRrhYN0wYx8y"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1568933351-8584-8-git-send-email-sam.shih@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sam Shih <sam.shih@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, John Crispin <john@phrozen.org>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190920104849.32504-1-miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Andrew Morton <akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org>, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pekka Enberg <penberg-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mm-Bw31MaZKKs3YtjvyW6yDsg@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Christoph Lameter <cl-vYTEC60ixJUAvxtiuMwx3w@public.gmane.org>, Joonsoo Kim <iamjoonsoo.kim-Hm3cg6mZ9cc@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+On Fri, 20 Sep 2019, Miles Chen wrote:
 
---xgyAXRrhYN0wYx8y
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> Since commit ad67b74d2469d9b8 ("printk: hash addresses printed with %p"),
+> The use DUMP_PREFIX_OFFSET instead of DUMP_PREFIX_ADDRESS with
+> print_hex_dump() can generate more useful messages.
+> 
+> In the following example, it's easier get the offset of incorrect poison
+> value with DUMP_PREFIX_OFFSET.
+> 
+> Before:
+> Object 00000000e817b73b: 00 00 00 00 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+> Object 00000000816f4601: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+> Object 00000000169d2bb8: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+> Object 00000000f4c38716: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+> Object 00000000917e3491: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+> Object 00000000c0e33738: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+> Object 000000001755ddd1: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+> 
+> After:
+> Object 00000000: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+> Object 00000010: 63 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+> Object 00000020: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+> Object 00000030: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b a5
+> 
+> I think it might be worth to convert all DUMP_PREFIX_ADDRESS to
+> DUMP_PREFIX_OFFSET for the whole Linux kernel.
+> 
 
-On Fri, Sep 20, 2019 at 06:49:07AM +0800, Sam Shih wrote:
-> From: Ryder Lee <ryder.lee@mediatek.com>
->=20
-> This adds a property "num-pwms" in example so that we could
-> specify the number of PWM channels via device tree.
->=20
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> Acked-by: Uwe Kleine-K=C3=B6nig <u.kleine-koenig@pengutronix.de>
-> ---
-> Changes since v6:
-> Follow reviewers's comments:
-> - The subject should indicate this is for Mediatek
->=20
-> Changes since v5:
-> - Add an Acked-by tag
-> - This file is original v4 patch 5/10
-> (https://patchwork.kernel.org/patch/11102577/)
->=20
-> ---
->  Documentation/devicetree/bindings/pwm/pwm-mediatek.txt | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
-
-You failed to address Rob's questions repeatedly and I agree with him
-that you can just as easily derive the number of PWMs from the specific
-compatible string. I won't be applying this and none of the patches that
-depend on it.
-
-Thierry
-
---xgyAXRrhYN0wYx8y
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl2FbRoACgkQ3SOs138+
-s6Gohw/+NufS4BYOFKibVi7zlUVi/rDMwlkt6F4pkhnyohrqgpTCBy9F9h2ogtxO
-QywrdiuhNuV49zxKHNgpXVQFmYpaUVuCsNaGHGZegyF182jcYtTraRfGm50PJf/F
-x/ppM52eCnkM8gMIq+/ZQ3WYmpjhoFw5746ToZyy4m8mhXmQZqAwVFBOfce70jI6
-Q8g6TNP93ayNLFVf4Hd2UNTN6d17l7sa8LKwWJqRulbH/PwnD/8seCkdBmEwcbdy
-0qPYAkxAkGLfdN9mn+vf3sk+1N+qaLS0ich28ev/y/Ece8ey+RIHy894iZUko0is
-j68nY8DRsf9S5YeZ6RfMQQbAiEaA+LWOLckX44XgQTQRrgAGBOsmfLgZVGQVrKCq
-oQVl9Fg7FX30ZsIkNTAkpEX8bERLjj7XkpUvJLo+SYKA0xzrA34RM+RGTXGxA82O
-7mb8nuqyPXdiVtWkcrne+IiggZoix3DBBsv9ujKNo2rYsSP3yEJiZpki/4GNsdhR
-kKv17KdvVoP51ls+wUvxzI6Kr/DZeYIkrcWWNjNdig/XTzlyUeXdUsq9jYWz4UA3
-MS9/0ZQSYdkuhIpcQPDduLx562SN6sykZi9cgcclULK7RqUv+rtlAg2zZty2WXtZ
-TpxE5tnTnXlMHiaC7YnKbleL6K4l9qmoALx/oUvq9CZTJxEEHJY=
-=P6kM
------END PGP SIGNATURE-----
-
---xgyAXRrhYN0wYx8y--
+I agree it looks nicer for poisoning, I'm not sure that every caller of 
+print_section() is the same, however.  For example trace() seems better 
+off as DUMP_PREFIX_ADDRESS since it already specifies the address of the 
+object being allocated or freed and offset here wouldn't really be useful, 
+no?
