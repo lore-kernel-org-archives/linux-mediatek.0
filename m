@@ -1,92 +1,53 @@
-From: Satendra Singh Thakur <sst2005@gmail.com>
-Subject: Re: Re: [PATCH 0/9] added helper macros to remove duplicate code from probe functions of the platform drivers
-Date: Sat, 21 Sep 2019 20:27:26 +0530
-Message-ID: <2356e29bca5bdfa901534bb32a2782185eb0415f.1568909689.git.sst2005@gmail.com>
-References: <20190918102715.GO4392@vkoul-mobl>
+From: Matthew Wilcox <willy@infradead.org>
+Subject: Re: [PATCH] mm: slub: print_hex_dump() with DUMP_PREFIX_OFFSET
+Date: Sat, 21 Sep 2019 09:00:18 -0700
+Message-ID: <20190921160018.GF15392@bombadil.infradead.org>
+References: <20190920104849.32504-1-miles.chen@mediatek.com>
+ <alpine.DEB.2.21.1909210207240.259613@chino.kir.corp.google.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190918102715.GO4392@vkoul-mobl>
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.21.1909210207240.259613@chino.kir.corp.google.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: dan.j.williams@intel.com, vkoul@kernel.org, jun.nie@linaro.org, shawnguo@kernel.org, agross@kernel.org, sean.wang@mediatek.com, matthias.bgg@gmail.com, maxime.ripard@bootlin.com, wens@csie.org, lars@metafoo.de, afaerber@suse.de, manivannan.sadhasivam@linaro.org
-Cc: dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, satendrasingh.thakur@hcl.com, Satendra Singh Thakur <sst2005@gmail.com>
+To: David Rientjes <rientjes@google.com>
+Cc: Miles Chen <miles.chen@mediatek.com>, Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Andrew Morton <akpm@linux-foundation.org>, linux-kernel@vger.kernel.org, linux-mm@kvack.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Sep 18, 2019 at 3:57 PM, Vinod Koul wrote:
-> On 15-09-19, 12:30, Satendra Singh Thakur wrote:
-> > 1. For most of the platform drivers's probe include following steps
+On Sat, Sep 21, 2019 at 02:08:59AM -0700, David Rientjes wrote:
+> On Fri, 20 Sep 2019, Miles Chen wrote:
+> 
+> > Since commit ad67b74d2469d9b8 ("printk: hash addresses printed with %p"),
+> > The use DUMP_PREFIX_OFFSET instead of DUMP_PREFIX_ADDRESS with
+> > print_hex_dump() can generate more useful messages.
 > > 
-> > -memory allocation for driver's private structure
-> > -getting io resources
-> > -io remapping resources
-> > -getting irq number
-> > -registering irq
-> > -setting driver's private data
-> > -getting clock
-> > -preparing and enabling clock
->
-> And we have perfect set of APIs for these tasks!
-Hi Vinod,
-Thanks for the comments.
-You are right, we already have set of APIs for these tasks.
-The proposed macros combine the very same APIs to remove 
-duplicate/redundant code.
-A new driver author can use these macros to easily write probe 
-function without having to worry about signatures of internal APIs.
-In the past, people have combined some of them e.g.
-a) clk_prepare_enable combines clk_prepare and clk_enable
-b) devm_platform_ioremap_resource combines
-platform_get_resource (for type IORESOURCE_MEM)
-and devm_ioremap_resource
-c) module_platform_driver macro encompasses module_init/exit 
-and driver_register/unregister functions.
-The basic idea is to simplyfy coding.
-> > 2. We have defined a set of macros to combine some or all of
-> > the above mentioned steps. This will remove redundant/duplicate
-> > code in drivers' probe functions of platform drivers.
-> 
-> Why, how does it help and you do realize it also introduces bugs
-This will make probe function shorter by removing repeated code.
-This will also reduce bugs caused due to improper handling
-of failure cases because of these reasons:
-a) If the developer calls each API individualy one might miss
-proper handling of the failure for some API; Whereas the macro
-properly handles failure of each API.
-b) Macros are devres compatible which leaves less room for
-memory leaks.
-
-Yes, the macros which enable clock and request irqs
-might cause bugs if they are not used carefully.
-For instance, enabling the clock or requesting the irq
-earlier than actually required. So, the macros with _clk
-and _irq, _all suffix should be used carefully.
-
-Please let me know if I miss any specific type of bug
-here.
-> 
-> > devm_platform_probe_helper(pdev, priv, clk_name);
-> > devm_platform_probe_helper_clk(pdev, priv, clk_name);
-> > devm_platform_probe_helper_irq(pdev, priv, clk_name,
-> > irq_hndlr, irq_flags, irq_name, irq_devid);
-> > devm_platform_probe_helper_all(pdev, priv, clk_name,
-> > irq_hndlr, irq_flags, irq_name, irq_devid);
-> > devm_platform_probe_helper_all_data(pdev, priv, clk_name,
-> > irq_hndlr, irq_flags, irq_name, irq_devid);
+> > In the following example, it's easier get the offset of incorrect poison
+> > value with DUMP_PREFIX_OFFSET.
 > > 
-> > 3. Code is made devres compatible (wherever required)
-> > The functions: clk_get, request_irq, kzalloc, platform_get_resource
-> > are replaced with their devm_* counterparts.
-> 
-> We already have devres APIs for people to use!
-Yes, we have devres APIs and many drivers do use them.
-But still there are many which don't use them.
-The proposed macros provides just another way to use devres APIs.
+> > Before:
+> > Object 00000000e817b73b: 00 00 00 00 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+> > Object 00000000816f4601: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+> > Object 00000000169d2bb8: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+> > Object 00000000f4c38716: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+> > Object 00000000917e3491: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+> > Object 00000000c0e33738: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+> > Object 000000001755ddd1: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
 > > 
-> > 4. Few bugs are also fixed.
+> > After:
+> > Object 00000000: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+> > Object 00000010: 63 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+> > Object 00000020: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
+> > Object 00000030: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b a5
 > 
-> Which ones..?
-The bug is that the failure of request_irq 
-is not handled properly in mtk-hsdma.c. This is fixed in patch [5/9].
-https://lkml.org/lkml/2019/9/15/35
+> I agree it looks nicer for poisoning, I'm not sure that every caller of 
+> print_section() is the same, however.  For example trace() seems better 
+> off as DUMP_PREFIX_ADDRESS since it already specifies the address of the 
+> object being allocated or freed and offset here wouldn't really be useful, 
+> no?
 
-Please let me know if I am missing something here.
-Thanks
--Satendra 
+While it looks nicer, it might be less useful for debugging.  The point of
+obfuscated %p is that you can compare two "pointer" values for equality.
+So if you know that you freed object 00000000e817b73b from an earlier
+printk, then you can match it up to this dump.  It's obviously not
+perfect since we're only getting the pointers at addresses that are
+multiples of 16, but it's a help.
