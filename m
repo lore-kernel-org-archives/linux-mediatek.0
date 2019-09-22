@@ -1,25 +1,59 @@
-From: cl@linux.com
-Subject: Re: [PATCH] mm: slub: print_hex_dump() with DUMP_PREFIX_OFFSET
-Date: Sat, 21 Sep 2019 17:00:51 +0000 (UTC)
-Message-ID: <alpine.DEB.2.21.1909211659470.27404@ip-172-31-20-140.us-east-2.compute.internal>
-References: <20190920104849.32504-1-miles.chen@mediatek.com> <alpine.DEB.2.21.1909210207240.259613@chino.kir.corp.google.com>
+From: Markus Elfring <Markus.Elfring@web.de>
+Subject: [PATCH] dmaengine: mediatek: Use devm_platform_ioremap_resource() in
+ mtk_cqdma_probe()
+Date: Sun, 22 Sep 2019 13:00:09 +0200
+Message-ID: <c7e3bbae-44fa-9019-18ee-c6cdfd7c2a14@web.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <alpine.DEB.2.21.1909210207240.259613@chino.kir.corp.google.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: David Rientjes <rientjes@google.com>
-Cc: Miles Chen <miles.chen@mediatek.com>, Pekka Enberg <penberg@kernel.org>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Andrew Morton <akpm@linux-foundation.org>, linux-kernel@vger.kernel.org, linux-mm@kvack.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: dmaengine@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Dan Williams <dan.j.williams@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Shun-Chih Yu <shun-chih.yu@mediatek.com>, Vinod Koul <vkoul@kernel.org>
+Cc: kernel-janitors@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, 21 Sep 2019, David Rientjes wrote:
+From: Markus Elfring <elfring@users.sourceforge.net>
+Date: Sun, 22 Sep 2019 12:52:25 +0200
 
-> I agree it looks nicer for poisoning, I'm not sure that every caller of
-> print_section() is the same, however.  For example trace() seems better
-> off as DUMP_PREFIX_ADDRESS since it already specifies the address of the
-> object being allocated or freed and offset here wouldn't really be useful,
-> no?
+Simplify this function implementation a bit by using
+a known wrapper function.
 
-The address is printed earlier before the object dump. Maybe that is
-sufficient and we could even reduce the number of digits further to have
-the display more compact? In this case two hex digits would do the trick.
+This issue was detected by using the Coccinelle software.
+
+Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
+---
+ drivers/dma/mediatek/mtk-cqdma.c | 10 +---------
+ 1 file changed, 1 insertion(+), 9 deletions(-)
+
+diff --git a/drivers/dma/mediatek/mtk-cqdma.c b/drivers/dma/mediatek/mtk-cqdma.c
+index 723b11c190b3..6bf838e63be1 100644
+--- a/drivers/dma/mediatek/mtk-cqdma.c
++++ b/drivers/dma/mediatek/mtk-cqdma.c
+@@ -819,15 +819,7 @@ static int mtk_cqdma_probe(struct platform_device *pdev)
+ 		INIT_LIST_HEAD(&cqdma->pc[i]->queue);
+ 		spin_lock_init(&cqdma->pc[i]->lock);
+ 		refcount_set(&cqdma->pc[i]->refcnt, 0);
+-
+-		res = platform_get_resource(pdev, IORESOURCE_MEM, i);
+-		if (!res) {
+-			dev_err(&pdev->dev, "No mem resource for %s\n",
+-				dev_name(&pdev->dev));
+-			return -EINVAL;
+-		}
+-
+-		cqdma->pc[i]->base = devm_ioremap_resource(&pdev->dev, res);
++		cqdma->pc[i]->base = devm_platform_ioremap_resource(pdev, i);
+ 		if (IS_ERR(cqdma->pc[i]->base))
+ 			return PTR_ERR(cqdma->pc[i]->base);
+
+--
+2.23.0
