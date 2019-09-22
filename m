@@ -1,14 +1,14 @@
 From: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: [PATCH AUTOSEL 5.3 182/203] sched/psi: Correct overly pessimistic
+Subject: [PATCH AUTOSEL 5.2 164/185] sched/psi: Correct overly pessimistic
  size calculation
-Date: Sun, 22 Sep 2019 14:43:28 -0400
-Message-ID: <20190922184350.30563-182-sashal@kernel.org>
-References: <20190922184350.30563-1-sashal@kernel.org>
+Date: Sun, 22 Sep 2019 14:49:02 -0400
+Message-ID: <20190922184924.32534-164-sashal@kernel.org>
+References: <20190922184924.32534-1-sashal@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190922184350.30563-1-sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+In-Reply-To: <20190922184924.32534-1-sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
