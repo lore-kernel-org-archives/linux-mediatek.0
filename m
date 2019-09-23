@@ -1,104 +1,229 @@
-From: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: [PATCH AUTOSEL 5.2 164/185] sched/psi: Correct overly pessimistic
- size calculation
-Date: Sun, 22 Sep 2019 14:49:02 -0400
-Message-ID: <20190922184924.32534-164-sashal@kernel.org>
-References: <20190922184924.32534-1-sashal@kernel.org>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [RFC, v3, 4/4] media: platform: mtk-mdp3: Add Mediatek MDP3 driver
+Date: Mon, 23 Sep 2019 09:58:40 +0800
+Message-ID: <1569203920.25491.9.camel@mtksdaap41>
+References: <20190911094013.5892-1-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190922184924.32534-1-sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Peter Zijlstra <peterz-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Linus Torvalds <torvalds-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org>, Ingo Molnar <mingo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190911094013.5892-1-bibby.hsieh@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: laurent.pinchart+renesas@ideasonboard.com, Rynn.Wu@mediatek.com, Jerry-ch.Chen@mediatek.com, jungo.lin@mediatek.com, hans.verkuil@cisco.com, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, frederic.chen@mediatek.com, linux-media@vger.kernel.org, devicetree@vger.kernel.org, daoyuan huang <daoyuan.huang@mediatek.com>, holmes.chiou@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, Sean.Cheng@mediatek.com, srv_heupstream@mediatek.com, tfiga@chromium.org, christie.yu@mediatek.com, zwisler@chromium.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Hi, Bibby:
 
-[ Upstream commit 4adcdcea717cb2d8436bef00dd689aa5bc76f11b ]
+On Wed, 2019-09-11 at 17:40 +0800, Bibby Hsieh wrote:
+> From: daoyuan huang <daoyuan.huang@mediatek.com>
+> 
+> This patch adds driver for Media Data Path 3 (MDP3).
+> Each modules' related operation control is sited in mtk-mdp3-comp.c
+> Each modules' register table is defined in file with "mdp_reg_"
+> and "mmsys_" prefix
+> GCE related API, operation control  sited in mtk-mdp3-cmdq.c
+> V4L2 m2m device functions are implemented in mtk-mdp3-m2m.c
+> Probe, power, suspend/resume, system level functions are defined in
+> mtk-mdp3-core.c
+> 
+> Signed-off-by: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
+> Signed-off-by: daoyuan huang <daoyuan.huang@mediatek.com>
+> ---
 
-When passing a equal or more then 32 bytes long string to psi_write(),
-psi_write() copies 31 bytes to its buf and overwrites buf[30]
-with '\0'. Which makes the input string 1 byte shorter than
-it should be.
+[snip]
 
-Fix it by copying sizeof(buf) bytes when nbytes >= sizeof(buf).
+> +
+> diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
+> new file mode 100644
+> index 000000000000..bd8f274fcaa9
+> --- /dev/null
+> +++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
+> @@ -0,0 +1,504 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2018 MediaTek Inc.
+> + * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
+> + */
+> +
+> +#include <linux/platform_device.h>
+> +#include "mtk-mdp3-cmdq.h"
+> +#include "mtk-mdp3-comp.h"
+> +#include "mtk-mdp3-core.h"
+> +#include "mtk-mdp3-m2m.h"
+> +
+> +#include "mdp-platform.h"
+> +#include "mmsys_mutex.h"
+> +
+> +#define DISP_MUTEX_MDP_FIRST	(5)
+> +#define DISP_MUTEX_MDP_COUNT	(5)
+> +
+> +#define MDP_PATH_MAX_COMPS	IMG_MAX_COMPONENTS
+> +
+> +struct mdp_path {
+> +	struct mdp_dev		*mdp_dev;
+> +	struct mdp_comp_ctx	comps[MDP_PATH_MAX_COMPS];
+> +	u32			num_comps;
+> +	const struct img_config	*config;
+> +	const struct img_ipi_frameparam *param;
+> +	const struct v4l2_rect	*composes[IMG_MAX_HW_OUTPUTS];
+> +	struct v4l2_rect	bounds[IMG_MAX_HW_OUTPUTS];
+> +};
+> +
+> +#define has_op(ctx, op) \
+> +	(ctx->comp->ops && ctx->comp->ops->op)
+> +#define call_op(ctx, op, ...) \
+> +	(has_op(ctx, op) ? ctx->comp->ops->op(ctx, ##__VA_ARGS__) : 0)
+> +
+> +struct mdp_path_subfrm {
+> +	s32	mutex_id;
+> +	u32	mutex_mod;
+> +	s32	sofs[MDP_PATH_MAX_COMPS];
+> +	u32	num_sofs;
+> +};
+> +
+> +static bool is_output_disable(const struct img_compparam *param, u32 count)
+> +{
+> +	return (count < param->num_subfrms) ?
+> +		(param->frame.output_disable ||
+> +		param->subfrms[count].tile_disable) :
+> +		true;
+> +}
+> +
+> +static int mdp_path_subfrm_require(struct mdp_path_subfrm *subfrm,
+> +				   const struct mdp_path *path,
+> +				   struct mdp_cmd *cmd, u32 count)
+> +{
+> +	const struct img_config *config = path->config;
+> +	const struct mdp_comp_ctx *ctx;
+> +	phys_addr_t mm_mutex = path->mdp_dev->mm_mutex.reg_base;
+> +	s32 mutex_id = -1;
+> +	u32 mutex_sof = 0;
+> +	int mdp_color = 0;
+> +	int index;
+> +	u8 subsys_id = path->mdp_dev->mm_mutex.subsys_id;
+> +
+> +	/* Default value */
+> +	memset(subfrm, 0, sizeof(*subfrm));
+> +
+> +	for (index = 0; index < config->num_components; index++) {
+> +		ctx = &path->comps[index];
+> +		if (is_output_disable(ctx->param, count))
+> +			continue;
+> +		switch (ctx->comp->id) {
+> +		/**********************************************
+> +		 * Name            MSB LSB
+> +		 * DISP_MUTEX_MOD   23   0
+> +		 *
+> +		 * Specifies which modules are in this mutex.
+> +		 * Every bit denotes a module. Bit definition:
+> +		 *  2 mdp_rdma0
+> +		 *  4 mdp_rsz0
+> +		 *  5 mdp_rsz1
+> +		 *  6 mdp_tdshp
+> +		 *  7 mdp_wrot0
+> +		 *  8 mdp_wdma
+> +		 *  13 mdp_color
+> +		 *  23 mdp_aal
+> +		 *  24 mdp_ccorr
+> +		 **********************************************/
+> +		case MDP_AAL0:
+> +			subfrm->mutex_mod |= 1 << 23;
+> +			break;
+> +		case MDP_CCORR0:
+> +			subfrm->mutex_mod |= 1 << 24;
+> +			break;
+> +		case MDP_COLOR0:
+> +			if (mdp_color)
+> +				subfrm->mutex_mod |= 1 << 13;
+> +			break;
+> +		case MDP_WDMA:
+> +			subfrm->mutex_mod |= 1 << 8;
+> +			subfrm->sofs[subfrm->num_sofs++] = MDP_WDMA;
+> +			break;
+> +		case MDP_WROT0:
+> +			subfrm->mutex_mod |= 1 << 7;
+> +			subfrm->sofs[subfrm->num_sofs++] = MDP_WROT0;
+> +			break;
+> +		case MDP_TDSHP0:
+> +			subfrm->mutex_mod |= 1 << 6;
+> +			subfrm->sofs[subfrm->num_sofs++] = MDP_TDSHP0;
+> +			break;
+> +		case MDP_SCL1:
+> +			subfrm->mutex_mod |= 1 << 5;
+> +			subfrm->sofs[subfrm->num_sofs++] = MDP_SCL1;
+> +			break;
+> +		case MDP_SCL0:
+> +			subfrm->mutex_mod |= 1 << 4;
+> +			subfrm->sofs[subfrm->num_sofs++] = MDP_SCL0;
+> +			break;
+> +		case MDP_RDMA0:
+> +			mutex_id = DISP_MUTEX_MDP_FIRST + 1;
+> +			subfrm->mutex_mod |= 1 << 2;
+> +			subfrm->sofs[subfrm->num_sofs++] = MDP_RDMA0;
+> +			break;
+> +		case MDP_IMGI:
+> +			mutex_id = DISP_MUTEX_MDP_FIRST;
+> +			break;
+> +		case MDP_WPEI:
+> +			mutex_id = DISP_MUTEX_MDP_FIRST + 3;
+> +			break;
+> +		case MDP_WPEI2:
+> +			mutex_id = DISP_MUTEX_MDP_FIRST + 4;
+> +			break;
+> +		default:
+> +			break;
+> +		}
+> +	}
+> +
+> +	subfrm->mutex_id = mutex_id;
+> +	if (-1 == mutex_id) {
+> +		mdp_err("No mutex assigned");
+> +		return -EINVAL;
+> +	}
+> +
+> +	if (subfrm->mutex_mod) {
+> +		/* Set mutex modules */
+> +		MM_REG_WRITE(cmd, subsys_id, mm_mutex, MM_MUTEX_MOD,
+> +			     subfrm->mutex_mod, 0x07FFFFFF);
+> +		MM_REG_WRITE(cmd, subsys_id, mm_mutex, MM_MUTEX_SOF,
+> +			     mutex_sof, 0x00000007);
+> +	}
 
-This does not cause problems in normal use case like:
-"some 500000 10000000" or "full 500000 10000000" because they
-are less than 32 bytes in length.
+In [1], mdp3 device has a pointer to mutex device, and you directly
+write mutex register in mdp3 driver.
 
-	/* assuming nbytes == 35 */
-	char buf[32];
+		mdp_rdma0: mdp_rdma0@14001000 {
+			compatible = "mediatek,mt8183-mdp-rdma",
+				     "mediatek,mt8183-mdp3";
 
-	buf_size = min(nbytes, (sizeof(buf) - 1)); /* buf_size = 31 */
-	if (copy_from_user(buf, user_buf, buf_size))
-		return -EFAULT;
+			mediatek,mm-mutex = <&mutex>;
+		};
 
-	buf[buf_size - 1] = '\0'; /* buf[30] = '\0' */
 
-Before:
+ 		mutex: mutex@14016000 {
+ 			compatible = "mediatek,mt8183-disp-mutex";
+ 			reg = <0 0x14016000 0 0x1000>;
+ 		};
 
- %cd /proc/pressure/
- %echo "123456789|123456789|123456789|1234" > memory
- [   22.473497] nbytes=35,buf_size=31
- [   22.473775] 123456789|123456789|123456789| (print 30 chars)
- %sh: write error: Invalid argument
+But mutex already has its own driver in mediatek drm driver [2]. This is
+not a good design. I would like all mutex device register is controlled
+in single driver. 
 
- %echo "123456789|123456789|123456789|1" > memory
- [   64.916162] nbytes=32,buf_size=31
- [   64.916331] 123456789|123456789|123456789| (print 30 chars)
- %sh: write error: Invalid argument
+[1] https://patchwork.kernel.org/patch/11140747/
+[2]
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/gpu/drm/mediatek/mtk_drm_ddp.c?h=v5.3#n429
 
-After:
+Regards,
+CK
 
- %cd /proc/pressure/
- %echo "123456789|123456789|123456789|1234" > memory
- [  254.837863] nbytes=35,buf_size=32
- [  254.838541] 123456789|123456789|123456789|1 (print 31 chars)
- %sh: write error: Invalid argument
-
- %echo "123456789|123456789|123456789|1" > memory
- [ 9965.714935] nbytes=32,buf_size=32
- [ 9965.715096] 123456789|123456789|123456789|1 (print 31 chars)
- %sh: write error: Invalid argument
-
-Also remove the superfluous parentheses.
-
-Signed-off-by: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Cc: <wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Linus Torvalds <torvalds-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org>
-Cc: Peter Zijlstra <peterz-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
-Cc: Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>
-Link: https://lkml.kernel.org/r/20190912103452.13281-1-miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
-Signed-off-by: Ingo Molnar <mingo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Signed-off-by: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
----
- kernel/sched/psi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/kernel/sched/psi.c b/kernel/sched/psi.c
-index 6e52b67b420e7..517e3719027e6 100644
---- a/kernel/sched/psi.c
-+++ b/kernel/sched/psi.c
-@@ -1198,7 +1198,7 @@ static ssize_t psi_write(struct file *file, const char __user *user_buf,
- 	if (static_branch_likely(&psi_disabled))
- 		return -EOPNOTSUPP;
- 
--	buf_size = min(nbytes, (sizeof(buf) - 1));
-+	buf_size = min(nbytes, sizeof(buf));
- 	if (copy_from_user(buf, user_buf, buf_size))
- 		return -EFAULT;
- 
--- 
-2.20.1
+> +	return 0;
+> +}
