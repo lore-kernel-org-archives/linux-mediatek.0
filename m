@@ -1,156 +1,85 @@
-From: Thierry Reding <thierry.reding@gmail.com>
-Subject: Re: [PATCH v9 07/11] dt-bindings: pwm: pwm-mediatek: add a property
- "num-pwms"
-Date: Mon, 23 Sep 2019 15:36:26 +0200
-Message-ID: <20190923133626.GA4671@ulmo>
-References: <1568933351-8584-1-git-send-email-sam.shih@mediatek.com>
- <1568933351-8584-8-git-send-email-sam.shih@mediatek.com>
- <20190921002149.GB86019@mithrandir>
- <1569208857.4102.9.camel@mtksdccf07>
+From: Steven Price <steven.price@arm.com>
+Subject: Re: [PATCH] arm64: dts: mt8183: Add node for the Mali GPU
+Date: Mon, 23 Sep 2019 15:33:25 +0100
+Message-ID: <3dfa9e3c-9a78-90d1-68c9-7b64a3d734e4@arm.com>
+References: <20190905081546.42716-1-drinkcat@chromium.org>
+ <CAL_JsqJCO2G90TTT9Mpy4kjVKQyXWw4aXEEnbRp_SE8X=EGc5g@mail.gmail.com>
+ <CANMq1KCTPdFhJG1SLf-i+-557Yx-1WLzWCHu3tT_5Q2BF+JgdQ@mail.gmail.com>
+ <20190913181729.GB3115@kevin>
+ <CANMq1KD++==d0Mb6T2gKU1T7c_MaedswOYdxqEqEKKUL1bxgiw@mail.gmail.com>
+ <20190919123243.GA3457@kevin>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="YZ5djTAD1cGYuMQK"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1569208857.4102.9.camel@mtksdccf07>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sam Shih <sam.shih@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-pwm@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190919123243.GA3457@kevin>
+Content-Language: en-GB
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>, Nicolas Boichat <drinkcat@chromium.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Dominik Behr <dbehr@chromium.org>, Douglas Anderson <dianders@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Boris Brezillon <boris.brezillon@collabora.com>, Matthias Brugger <matthias.bgg@gmail.com>, Nick Fan <nick.fan@mediatek.com>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+On 19/09/2019 13:32, Alyssa Rosenzweig wrote:
+>>> By the time MT8183 shows up in more concrete devices, it will, certainly
+>>> in kernel-space and likely in userspace as well. At present, the DDK can
+>>> be modified to run on top of the in-tree Mali drivers, i.e. "Bifrost on
+>>> mainline linux-next (+ page table/compatible patches), with blob
+>>> userspace".
 
---YZ5djTAD1cGYuMQK
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Actually most(?) Bifrost GPUs support the "legacy" 'LPAE-ish' page table
+format. So the only kernel change *required* is adding the compatible
+string (and any SoC-specific quirks).
 
-On Mon, Sep 23, 2019 at 11:20:57AM +0800, Sam Shih wrote:
-> On Sat, 2019-09-21 at 02:21 +0200, Thierry Reding wrote:
-> > On Fri, Sep 20, 2019 at 06:49:07AM +0800, Sam Shih wrote:
-> > > From: Ryder Lee <ryder.lee@mediatek.com>
-> > >=20
-> > > This adds a property "num-pwms" in example so that we could
-> > > specify the number of PWM channels via device tree.
-> > >=20
-> > > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> > > Signed-off-by: Sam Shih <sam.shih@mediatek.com>
-> > > Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> > > Acked-by: Uwe Kleine-K=C3=B6nig <u.kleine-koenig@pengutronix.de>
-> > > ---
-> > > Changes since v6:
-> > > Follow reviewers's comments:
-> > > - The subject should indicate this is for Mediatek
-> > >=20
-> > > Changes since v5:
-> > > - Add an Acked-by tag
-> > > - This file is original v4 patch 5/10
-> > > (https://patchwork.kernel.org/patch/11102577/)
-> > >=20
-> > > ---
-> > >  Documentation/devicetree/bindings/pwm/pwm-mediatek.txt | 7 ++++---
-> > >  1 file changed, 4 insertions(+), 3 deletions(-)
-> >=20
-> > You failed to address Rob's questions repeatedly and I agree with him
-> > that you can just as easily derive the number of PWMs from the specific
-> > compatible string. I won't be applying this and none of the patches that
-> > depend on it.
-> >=20
->=20
-> Hi,=20
->=20
-> Thanks for getting back to me.
->=20
-> New pwm driver (patch 04/11 : "pwm: mediatek: allocate the clks array
-> dynamically") can support different variants with different number of
-> PWMs by the new property <num-pwms>
->=20
-> For example:
-> 1. Use "num-pwms" =3D <2> and assign clocks pwm1, pwm2 for mt7622
-> 2. Use "num-pwms" =3D <6> and assign clocks pwm1, pwm2, pwm3, pwm4, pwm5,
-> pwm6 for mt7622.
->=20
-> If we just as easily derive the number of PWMs from the specific
-> compatible string in this document:
->=20
->    - "pwm1-6": the six per PWM clocks for mt7622
->   =20
-> This looks like all "pwm1", "pwm2", "pwm3", "pwm4", "pwm5", "pwm6" is
-> required property in DT, It doesn't make sense.
+The support for "blob-on-Panfrost" is currently an experimental internal
+investigation. So I can't make any promises about it ever being released
+publicly.
 
-I don't understand. Why doesn't that make sense? If your hardware block
-has 6 PWMs and each can be driven by its own clock, then you need to
-provide references for each of those clocks, otherwise you won't be able
-to use them.
+>>> While the open userspace isn't ready here quite yet, I would definitely
+>>> encourage upstream kernel for ChromeOS, since then there's no need to
+>>> maintain the out-of-tree GPU driver.
+>>
+>> That's an interesting idea, I had no idea, thanks for the info!
+>>
+>> Would that work with midgard as well? We have released hardware with
+>> RK3288/3399, so it might be nice to experiment with these first.
+> 
+> Yes, the above would work with Midgard as well with no changes needed.
+> Ping Steven about thtat (CC'd).
 
->   =20
-> So we removed those descriptions and added =20
->=20
->    - "pwm1-N": the PWM clocks for each channel=20
->   =20
->   =20
-> But the max number of clocks from the compatible string are still
-> important information that should be provide in this document.
->=20
->=20
-> What do you think of this?
->=20
->    - "pwm1-N": per PWM clocks for mt2712, the max number of PWM channels
-> is 8
->=20
->    - "pwm1-N": per PWM clocks for mt7622, the max number of PWM channels
-> is 6
->=20
->    - "pwm1-N": per PWM clocks for mt7623, the max number of PWM channels
-> is 5
+Indeed since it's the same kernel driver the same compatibility layer
+can be used to run Midgard DDK blob on Panfrost. Although given the
+progress that has already occurred with the Mesa Panfrost user space you
+might be able to simply switch to a completely open stack (available now).
 
-That's what's in the bindings already, isn't it?
+Again I'm afraid I'm not in a position to give any guarantees that my
+prototype blob-on-Panfrost work will actually be released or timescales
+of when. However since the current focus internally is on newer GPUs I'm
+less confident that there will be interest for Midgard DDK on Panfrost.
 
-	 - clocks: phandle and clock specifier of the PWM reference clock.
-	 - clock-names: must contain the following, except for MT7628 which
-			has no clocks
-	   - "top": the top clock generator
-	   - "main": clock used by the PWM core
-	   - "pwm1-8": the eight per PWM clocks for mt2712
-	   - "pwm1-6": the six per PWM clocks for mt7622
-	   - "pwm1-5": the five per PWM clocks for mt7623
+Steve
 
-Note that the description of the "clocks" property isn't quite accurate.
-It should be something like:
-
-	- clocks: One phandle and clock specifier for each entry in the
-	          "clock-names" property.
-
-In the above you clearly describe which PWMs you have to specify for
-each generation of the hardware block.
-
->=20
->    where N starting from 1 to the maximum number of PWM channels
->    - num-pwms: the number of PWM channels.
-
-That's redundant information. The specific number of PWMs in already
-implied by the compatible string, so you don't need to duplicate that
-information here.
-
-Thierry
-
---YZ5djTAD1cGYuMQK
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl2IylEACgkQ3SOs138+
-s6EpJg//QC3ldqkwsoa+KY+dhrpZlAxv2zdjRAxF8rCag6XtDLtIlvV66zVQeowZ
-5+NMRQqJHAdqFzNPZO8wxH7Dkiexw50Wpa64Xb1JEyVAmotqvfiyJr59MG9CGZ+T
-EW7o+U8WHGdVT6xtkUZ17QQHK6OqvitX8GmXU746FXuza5zYkp3quVFtjQ1V2GNR
-N2s3dvvfhIcqjm0GhN310Pp2vHCyczDmpCbppC+QNfkArUCW25oDFck69ceBdXXG
-1UjtIasUcEoTC8qrK31Yk2GctIxkF0KiPKX24Kuk3oDTqCb3Acp/eNQmE3j0zs+1
-+3a2Xgs5jADOprnJLpszBvlO+PKCybVAAhW65QgcH67spbgNVxuhXCjmSpplelfI
-F7FJEbz+nI2Az36ogFtewhvVPFa5SqPKUEygCjE5eRd62HooiUiEK/zXbBfE5eNm
-72viYDW0wwkmqjLIuahyji2HMlu3ImG3moqiQH1OaZkaivONUzWqn2fsEVdQaI4I
-o41UMHnZNWs7znhcs2SeGZNrLSvC4mdetpXDOuVr9WWqunzIckHDabA/hm5yMvFD
-l/Oiyyv9AcIICgAFBXq1+4bfbztgS7wAek6JDYRUHBj4jBI+3J0zEvK7ah246wlg
-pp+mPQhPxMx+VbEpB5BVx0/KB1eQ6+8E9+zyB227JdD4oLR3G9Y=
-=Za9m
------END PGP SIGNATURE-----
-
---YZ5djTAD1cGYuMQK--
+>>> More immediately, per Rob's review, it's important that the bindings
+>>> accepted upstream work with the in-tree Bifrost driver. Conceptually,
+>>> once Mesa supports Bifrost, if I install Debian on a MT8183 board,
+>>> everything should just work. I shouldn't need MT-specific changes / need
+>>> to change names for the DT. Regardless of which kernel driver you end up
+>>> using, minimally sharing the DT is good for everyone :-)
+>>
+>> Yes. I'll try to dig further with MTK, but this may take some time.
+> 
+> Thank you!
+> 
+> 
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+> 
