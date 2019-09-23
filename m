@@ -1,92 +1,40 @@
-From: Niklas =?iso-8859-1?Q?S=F6derlund?=
-        <niklas.soderlund@ragnatech.se>
-Subject: Re: [PATCH] media: platform: Use devm_platform_ioremap_resource() in
- two functions
-Date: Mon, 23 Sep 2019 13:34:03 +0200
-Message-ID: <20190923113403.GA14837@bigcity.dyn.berto.se>
-References: <d80a685a-c3de-b9c9-ad32-e1da9308c393@web.de>
+From: Sakari Ailus <sakari.ailus@iki.fi>
+Subject: Re: [RFC PATCH V3 0/5] media: platform: Add support for Digital
+ Image Processing (DIP) on mt8183 SoC
+Date: Mon, 23 Sep 2019 15:11:40 +0300
+Message-ID: <20190923121140.GN5525@valkosipuli.retiisi.org.uk>
+References: <20190909192244.9367-1-frederic.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <d80a685a-c3de-b9c9-ad32-e1da9308c393@web.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Markus Elfring <Markus.Elfring@web.de>
-Cc: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Tiffany Lin <tiffany.lin@mediatek.com>, LKML <linux-kernel@vger.kernel.org>, kernel-janitors@vger.kernel.org, Bartosz Golaszewski <bgolaszewski@baylibre.com>, Himanshu Jha <himanshujha199640@gmail.com>
+In-Reply-To: <20190909192244.9367-1-frederic.chen@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: frederic.chen@mediatek.com
+Cc: laurent.pinchart+renesas@ideasonboard.com, Rynn.Wu@mediatek.com, Allan.Yang@mediatek.com, suleiman@chromium.org, Jerry-ch.Chen@mediatek.com, jungo.lin@mediatek.com, hans.verkuil@cisco.com, linux-media@vger.kernel.org, devicetree@vger.kernel.org, holmes.chiou@mediatek.com, shik@chromium.org, yuzhao@chromium.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, Sean.Cheng@mediatek.com, srv_heupstream@mediatek.com, sj.huang@mediatek.com, tfiga@chromium.org, christie.yu@mediatek.com, zwisler@chromium.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Markus,
+Hi Frederic,
 
-Thanks for your patch.
+On Tue, Sep 10, 2019 at 03:22:39AM +0800, frederic.chen@mediatek.com wrote:
+> Hello,
+> 
+> This RFC patch series added Digital Image Processing (DIP) driver on Mediatek
+> mt8183 SoC. It belongs to the Mediatek's ISP driver series based on V4L2 and
+> media controller framework. I posted the main part of the DIP driver as RFC to
+> discuss first and would like some review comments.
 
-On 2019-09-18 11:30:30 +0200, Markus Elfring wrote:
-> From: Markus Elfring <elfring@users.sourceforge.net>
-> Date: Wed, 18 Sep 2019 11:20:48 +0200
-> 
-> Simplify these function implementations by using a known wrapper function.
-> 
-> This issue was detected by using the Coccinelle software.
-> 
-> Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
-> ---
->  drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c | 8 +-------
->  drivers/media/platform/rcar-vin/rcar-core.c            | 7 +------
-
-For rcar-vin:
-
-Tested-by: Niklas Söderlund <niklas.soderlund@ragnatech.se>
-
->  2 files changed, 2 insertions(+), 13 deletions(-)
-> 
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> index 00d090df11bb..944771ee5f5c 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> @@ -253,13 +253,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
->  	}
-> 
->  	for (i = 0; i < NUM_MAX_VDEC_REG_BASE; i++) {
-> -		res = platform_get_resource(pdev, IORESOURCE_MEM, i);
-> -		if (res == NULL) {
-> -			dev_err(&pdev->dev, "get memory resource failed.");
-> -			ret = -ENXIO;
-> -			goto err_res;
-> -		}
-> -		dev->reg_base[i] = devm_ioremap_resource(&pdev->dev, res);
-> +		dev->reg_base[i] = devm_platform_ioremap_resource(pdev, i);
->  		if (IS_ERR((__force void *)dev->reg_base[i])) {
->  			ret = PTR_ERR((__force void *)dev->reg_base[i]);
->  			goto err_res;
-> diff --git a/drivers/media/platform/rcar-vin/rcar-core.c b/drivers/media/platform/rcar-vin/rcar-core.c
-> index 6993484ff0f3..334c62805959 100644
-> --- a/drivers/media/platform/rcar-vin/rcar-core.c
-> +++ b/drivers/media/platform/rcar-vin/rcar-core.c
-> @@ -1282,7 +1282,6 @@ static int rcar_vin_probe(struct platform_device *pdev)
->  {
->  	const struct soc_device_attribute *attr;
->  	struct rvin_dev *vin;
-> -	struct resource *mem;
->  	int irq, ret;
-> 
->  	vin = devm_kzalloc(&pdev->dev, sizeof(*vin), GFP_KERNEL);
-> @@ -1301,11 +1300,7 @@ static int rcar_vin_probe(struct platform_device *pdev)
->  	if (attr)
->  		vin->info = attr->data;
-> 
-> -	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -	if (mem == NULL)
-> -		return -EINVAL;
-> -
-> -	vin->base = devm_ioremap_resource(vin->dev, mem);
-> +	vin->base = devm_platform_ioremap_resource(pdev, 0);
->  	if (IS_ERR(vin->base))
->  		return PTR_ERR(vin->base);
-> 
-> --
-> 2.23.0
-> 
+Could you post media-ctl -p and media-ctl --print-dot outputs for this
+driver, please?
 
 -- 
-Regards,
-Niklas Söderlund
+Sakari Ailus
