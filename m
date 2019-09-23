@@ -1,97 +1,72 @@
-From: Sam Shih <sam.shih@mediatek.com>
-Subject: Re: [PATCH v9 07/11] dt-bindings: pwm: pwm-mediatek: add a property
- "num-pwms"
-Date: Mon, 23 Sep 2019 11:20:57 +0800
-Message-ID: <1569208857.4102.9.camel@mtksdccf07>
-References: <1568933351-8584-1-git-send-email-sam.shih@mediatek.com>
-         <1568933351-8584-8-git-send-email-sam.shih@mediatek.com>
-         <20190921002149.GB86019@mithrandir>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v7 1/5] dt-bindings: display: mediatek: update dsi
+ supported chips
+Date: Mon, 23 Sep 2019 13:36:21 +0800
+Message-ID: <1569216981.20872.3.camel@mtksdaap41>
+References: <20190920090432.3308-1-jitao.shi@mediatek.com>
+ <20190920090432.3308-2-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="ISO-8859-15"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190921002149.GB86019@mithrandir>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, linux-pwm@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190920090432.3308-2-jitao.shi@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Jitao Shi <jitao.shi@mediatek.com>
+Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, stonea168@163.com, cawa.cheng@mediatek.com, dri-devel@lists.freedesktop.org, sj.huang@mediatek.com, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, 2019-09-21 at 02:21 +0200, Thierry Reding wrote:
-> On Fri, Sep 20, 2019 at 06:49:07AM +0800, Sam Shih wrote:
-> > From: Ryder Lee <ryder.lee@mediatek.com>
-> > 
-> > This adds a property "num-pwms" in example so that we could
-> > specify the number of PWM channels via device tree.
-> > 
-> > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> > Signed-off-by: Sam Shih <sam.shih@mediatek.com>
-> > Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> > Acked-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
-> > ---
-> > Changes since v6:
-> > Follow reviewers's comments:
-> > - The subject should indicate this is for Mediatek
-> > 
-> > Changes since v5:
-> > - Add an Acked-by tag
-> > - This file is original v4 patch 5/10
-> > (https://patchwork.kernel.org/patch/11102577/)
-> > 
-> > ---
-> >  Documentation/devicetree/bindings/pwm/pwm-mediatek.txt | 7 ++++---
-> >  1 file changed, 4 insertions(+), 3 deletions(-)
-> 
-> You failed to address Rob's questions repeatedly and I agree with him
-> that you can just as easily derive the number of PWMs from the specific
-> compatible string. I won't be applying this and none of the patches that
-> depend on it.
-> 
-
-Hi, 
-
-Thanks for getting back to me.
-
-New pwm driver (patch 04/11 : "pwm: mediatek: allocate the clks array
-dynamically") can support different variants with different number of
-PWMs by the new property <num-pwms>
-
-For example:
-1. Use "num-pwms" = <2> and assign clocks pwm1, pwm2 for mt7622
-2. Use "num-pwms" = <6> and assign clocks pwm1, pwm2, pwm3, pwm4, pwm5,
-pwm6 for mt7622.
-
-If we just as easily derive the number of PWMs from the specific
-compatible string in this document:
-
-   - "pwm1-6": the six per PWM clocks for mt7622
-   
-This looks like all "pwm1", "pwm2", "pwm3", "pwm4", "pwm5", "pwm6" is
-required property in DT, It doesn't make sense.
-   
-So we removed those descriptions and added  
-
-   - "pwm1-N": the PWM clocks for each channel 
-   
-   
-But the max number of clocks from the compatible string are still
-important information that should be provide in this document.
-
-
-What do you think of this?
-
-   - "pwm1-N": per PWM clocks for mt2712, the max number of PWM channels
-is 8
-
-   - "pwm1-N": per PWM clocks for mt7622, the max number of PWM channels
-is 6
-
-   - "pwm1-N": per PWM clocks for mt7623, the max number of PWM channels
-is 5
-
-   where N starting from 1 to the maximum number of PWM channels
-   - num-pwms: the number of PWM channels.
-
-   
-Thanks
-Best Regards
-Sam 
+SGksIEppdGFvOgoKT24gRnJpLCAyMDE5LTA5LTIwIGF0IDE3OjA0ICswODAwLCBKaXRhbyBTaGkg
+d3JvdGU6Cj4gVXBkYXRlIGRldmljZSB0cmVlIGJpbmRpbmcgZG9jdW1lbnRhdGlvbiBmb3IgdGhl
+IGRzaSBmb3IKPiBNZWRpYXRlayBNVDgxODMgU29Dcy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBKaXRh
+byBTaGkgPGppdGFvLnNoaUBtZWRpYXRlay5jb20+Cj4gQWNrZWQtYnk6IFJvYiBIZXJyaW5nIDxy
+b2JoQGtlcm5lbC5vcmc+CgpUaGlzIHZlcnNpb24gaXMgZGlmZmVyZW50IHdpdGggcHJldmlvdXMg
+dmVyc2lvbiBbMV0sIHNvIEkgdGhpbmsgeW91CnNob3VsZCBkcm9wIHRoZSAnQWNrZWQtYnknIHRh
+Zy4KClsxXSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzExMDgxNzAxLwoKUmVn
+YXJkcywKQ0sKCj4gLS0tCj4gIC4uLi9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVr
+LGRzaS50eHQgICAgfCAxNSArKysrKysrKysrKystLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDEyIGlu
+c2VydGlvbnMoKyksIDMgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRp
+b24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRzaS50eHQg
+Yi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRp
+YXRlayxkc2kudHh0Cj4gaW5kZXggZmFkZjMyN2M3Y2RmLi45OTNmZjA3OWFjMDkgMTAwNjQ0Cj4g
+LS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsv
+bWVkaWF0ZWssZHNpLnR4dAo+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
+cy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRzaS50eHQKPiBAQCAtNyw3ICs3LDcgQEAgY2hh
+bm5lbCBvdXRwdXQuCj4gIAo+ICBSZXF1aXJlZCBwcm9wZXJ0aWVzOgo+ICAtIGNvbXBhdGlibGU6
+ICJtZWRpYXRlayw8Y2hpcD4tZHNpIgo+IC0gIHRoZSBzdXBwb3J0ZWQgY2hpcHMgYXJlIG10Mjcw
+MSBhbmQgbXQ4MTczLgo+ICsgIHRoZSBzdXBwb3J0ZWQgY2hpcHMgYXJlIG10MjcwMSwgbXQ4MTcz
+IGFuZCBtdDgxODMuCj4gIC0gcmVnOiBQaHlzaWNhbCBiYXNlIGFkZHJlc3MgYW5kIGxlbmd0aCBv
+ZiB0aGUgY29udHJvbGxlcidzIHJlZ2lzdGVycwo+ICAtIGludGVycnVwdHM6IFRoZSBpbnRlcnJ1
+cHQgc2lnbmFsIGZyb20gdGhlIGZ1bmN0aW9uIGJsb2NrLgo+ICAtIGNsb2NrczogZGV2aWNlIGNs
+b2Nrcwo+IEBAIC0yNiwyMiArMjYsMzEgQEAgVGhlIE1JUEkgVFggY29uZmlndXJhdGlvbiBtb2R1
+bGUgY29udHJvbHMgdGhlIE1JUEkgRC1QSFkuCj4gIAo+ICBSZXF1aXJlZCBwcm9wZXJ0aWVzOgo+
+ICAtIGNvbXBhdGlibGU6ICJtZWRpYXRlayw8Y2hpcD4tbWlwaS10eCIKPiAtICB0aGUgc3VwcG9y
+dGVkIGNoaXBzIGFyZSBtdDI3MDEgYW5kIG10ODE3My4KPiArICB0aGUgc3VwcG9ydGVkIGNoaXBz
+IGFyZSBtdDI3MDEsIG10ODE3MyBhbmQgbXQ4MTgzLgo+ICAtIHJlZzogUGh5c2ljYWwgYmFzZSBh
+ZGRyZXNzIGFuZCBsZW5ndGggb2YgdGhlIGNvbnRyb2xsZXIncyByZWdpc3RlcnMKPiAgLSBjbG9j
+a3M6IFBMTCByZWZlcmVuY2UgY2xvY2sKPiAgLSBjbG9jay1vdXRwdXQtbmFtZXM6IG5hbWUgb2Yg
+dGhlIG91dHB1dCBjbG9jayBsaW5lIHRvIHRoZSBEU0kgZW5jb2Rlcgo+ICAtICNjbG9jay1jZWxs
+czogbXVzdCBiZSA8MD47Cj4gIC0gI3BoeS1jZWxsczogbXVzdCBiZSA8MD4uCj4gIAo+ICtPcHRp
+b25hbCBwcm9wZXJ0aWVzOgo+ICstIG52bWVtLWNlbGxzOiBBIHBoYW5kbGUgdG8gdGhlIGNhbGli
+cmF0aW9uIGRhdGEgcHJvdmlkZWQgYnkgYSBudm1lbSBkZXZpY2UuIElmCj4gKyAgICAgICAgICAg
+ICAgIHVuc3BlY2lmaWVkIGRlZmF1bHQgdmFsdWVzIHNoYWxsIGJlIHVzZWQuCj4gKy0gbnZtZW0t
+Y2VsbC1uYW1lczogU2hvdWxkIGJlICJjYWxpYnJhdGlvbi1kYXRhIgo+ICstIG1pcGl0eC1jdXJy
+ZW50LWRyaXZlOiBhZGp1c3QgZHJpdmluZyBjdXJyZW50LCBzaG91bGQgYmUgMSB+IDB4Rgo+ICsK
+PiAgRXhhbXBsZToKPiAgCj4gIG1pcGlfdHgwOiBtaXBpLWRwaHlAMTAyMTUwMDAgewo+ICAJY29t
+cGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMtbWlwaS10eCI7Cj4gIAlyZWcgPSA8MCAweDEwMjE1
+MDAwIDAgMHgxMDAwPjsKPiAgCWNsb2NrcyA9IDwmY2xrMjZtPjsKPiAtCWNsb2NrLW91dHB1dC1u
+YW1lcyA9ICJtaXBpX3R4MF9wbGwiOwo+ICAJI2Nsb2NrLWNlbGxzID0gPDA+Owo+ICAJI3BoeS1j
+ZWxscyA9IDwwPjsKPiArCWNsb2NrLW91dHB1dC1uYW1lcyA9ICJtaXBpX3R4MF9wbGwiOwo+ICsJ
+bnZtZW0tY2VsbHM9IDwmbWlwaV90eF9jYWxpYnJhdGlvbj47Cj4gKwludm1lbS1jZWxsLW5hbWVz
+ID0gImNhbGlicmF0aW9uLWRhdGEiOwo+ICsJbWlwaXR4LWN1cnJlbnQtZHJpdmUgPSA8MHg4PjsK
+PiAgfTsKPiAgCj4gIGRzaTA6IGRzaUAxNDAxYjAwMCB7CgoKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2
+ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
+aWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
