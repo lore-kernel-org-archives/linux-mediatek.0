@@ -1,72 +1,135 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v7 1/5] dt-bindings: display: mediatek: update dsi
- supported chips
-Date: Mon, 23 Sep 2019 13:36:21 +0800
-Message-ID: <1569216981.20872.3.camel@mtksdaap41>
-References: <20190920090432.3308-1-jitao.shi@mediatek.com>
- <20190920090432.3308-2-jitao.shi@mediatek.com>
+From: Dietmar Eggemann <dietmar.eggemann@arm.com>
+Subject: Re: [PATCH 1/1] sched/eas: introduce system-wide overutil indicator
+Date: Mon, 23 Sep 2019 10:05:25 +0200
+Message-ID: <17c5f3bf-b739-b041-c71a-3d568be6f46d@arm.com>
+References: <1568877622-28073-1-git-send-email-yt.chang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190920090432.3308-2-jitao.shi@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jitao Shi <jitao.shi@mediatek.com>
-Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, stonea168@163.com, cawa.cheng@mediatek.com, dri-devel@lists.freedesktop.org, sj.huang@mediatek.com, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1568877622-28073-1-git-send-email-yt.chang@mediatek.com>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: YT Chang <yt.chang@mediatek.com>, Peter Zijlstra <peterz@infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIEppdGFvOgoKT24gRnJpLCAyMDE5LTA5LTIwIGF0IDE3OjA0ICswODAwLCBKaXRhbyBTaGkg
-d3JvdGU6Cj4gVXBkYXRlIGRldmljZSB0cmVlIGJpbmRpbmcgZG9jdW1lbnRhdGlvbiBmb3IgdGhl
-IGRzaSBmb3IKPiBNZWRpYXRlayBNVDgxODMgU29Dcy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBKaXRh
-byBTaGkgPGppdGFvLnNoaUBtZWRpYXRlay5jb20+Cj4gQWNrZWQtYnk6IFJvYiBIZXJyaW5nIDxy
-b2JoQGtlcm5lbC5vcmc+CgpUaGlzIHZlcnNpb24gaXMgZGlmZmVyZW50IHdpdGggcHJldmlvdXMg
-dmVyc2lvbiBbMV0sIHNvIEkgdGhpbmsgeW91CnNob3VsZCBkcm9wIHRoZSAnQWNrZWQtYnknIHRh
-Zy4KClsxXSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzExMDgxNzAxLwoKUmVn
-YXJkcywKQ0sKCj4gLS0tCj4gIC4uLi9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVr
-LGRzaS50eHQgICAgfCAxNSArKysrKysrKysrKystLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDEyIGlu
-c2VydGlvbnMoKyksIDMgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRp
-b24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRzaS50eHQg
-Yi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRp
-YXRlayxkc2kudHh0Cj4gaW5kZXggZmFkZjMyN2M3Y2RmLi45OTNmZjA3OWFjMDkgMTAwNjQ0Cj4g
-LS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsv
-bWVkaWF0ZWssZHNpLnR4dAo+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
-cy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRzaS50eHQKPiBAQCAtNyw3ICs3LDcgQEAgY2hh
-bm5lbCBvdXRwdXQuCj4gIAo+ICBSZXF1aXJlZCBwcm9wZXJ0aWVzOgo+ICAtIGNvbXBhdGlibGU6
-ICJtZWRpYXRlayw8Y2hpcD4tZHNpIgo+IC0gIHRoZSBzdXBwb3J0ZWQgY2hpcHMgYXJlIG10Mjcw
-MSBhbmQgbXQ4MTczLgo+ICsgIHRoZSBzdXBwb3J0ZWQgY2hpcHMgYXJlIG10MjcwMSwgbXQ4MTcz
-IGFuZCBtdDgxODMuCj4gIC0gcmVnOiBQaHlzaWNhbCBiYXNlIGFkZHJlc3MgYW5kIGxlbmd0aCBv
-ZiB0aGUgY29udHJvbGxlcidzIHJlZ2lzdGVycwo+ICAtIGludGVycnVwdHM6IFRoZSBpbnRlcnJ1
-cHQgc2lnbmFsIGZyb20gdGhlIGZ1bmN0aW9uIGJsb2NrLgo+ICAtIGNsb2NrczogZGV2aWNlIGNs
-b2Nrcwo+IEBAIC0yNiwyMiArMjYsMzEgQEAgVGhlIE1JUEkgVFggY29uZmlndXJhdGlvbiBtb2R1
-bGUgY29udHJvbHMgdGhlIE1JUEkgRC1QSFkuCj4gIAo+ICBSZXF1aXJlZCBwcm9wZXJ0aWVzOgo+
-ICAtIGNvbXBhdGlibGU6ICJtZWRpYXRlayw8Y2hpcD4tbWlwaS10eCIKPiAtICB0aGUgc3VwcG9y
-dGVkIGNoaXBzIGFyZSBtdDI3MDEgYW5kIG10ODE3My4KPiArICB0aGUgc3VwcG9ydGVkIGNoaXBz
-IGFyZSBtdDI3MDEsIG10ODE3MyBhbmQgbXQ4MTgzLgo+ICAtIHJlZzogUGh5c2ljYWwgYmFzZSBh
-ZGRyZXNzIGFuZCBsZW5ndGggb2YgdGhlIGNvbnRyb2xsZXIncyByZWdpc3RlcnMKPiAgLSBjbG9j
-a3M6IFBMTCByZWZlcmVuY2UgY2xvY2sKPiAgLSBjbG9jay1vdXRwdXQtbmFtZXM6IG5hbWUgb2Yg
-dGhlIG91dHB1dCBjbG9jayBsaW5lIHRvIHRoZSBEU0kgZW5jb2Rlcgo+ICAtICNjbG9jay1jZWxs
-czogbXVzdCBiZSA8MD47Cj4gIC0gI3BoeS1jZWxsczogbXVzdCBiZSA8MD4uCj4gIAo+ICtPcHRp
-b25hbCBwcm9wZXJ0aWVzOgo+ICstIG52bWVtLWNlbGxzOiBBIHBoYW5kbGUgdG8gdGhlIGNhbGli
-cmF0aW9uIGRhdGEgcHJvdmlkZWQgYnkgYSBudm1lbSBkZXZpY2UuIElmCj4gKyAgICAgICAgICAg
-ICAgIHVuc3BlY2lmaWVkIGRlZmF1bHQgdmFsdWVzIHNoYWxsIGJlIHVzZWQuCj4gKy0gbnZtZW0t
-Y2VsbC1uYW1lczogU2hvdWxkIGJlICJjYWxpYnJhdGlvbi1kYXRhIgo+ICstIG1pcGl0eC1jdXJy
-ZW50LWRyaXZlOiBhZGp1c3QgZHJpdmluZyBjdXJyZW50LCBzaG91bGQgYmUgMSB+IDB4Rgo+ICsK
-PiAgRXhhbXBsZToKPiAgCj4gIG1pcGlfdHgwOiBtaXBpLWRwaHlAMTAyMTUwMDAgewo+ICAJY29t
-cGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMtbWlwaS10eCI7Cj4gIAlyZWcgPSA8MCAweDEwMjE1
-MDAwIDAgMHgxMDAwPjsKPiAgCWNsb2NrcyA9IDwmY2xrMjZtPjsKPiAtCWNsb2NrLW91dHB1dC1u
-YW1lcyA9ICJtaXBpX3R4MF9wbGwiOwo+ICAJI2Nsb2NrLWNlbGxzID0gPDA+Owo+ICAJI3BoeS1j
-ZWxscyA9IDwwPjsKPiArCWNsb2NrLW91dHB1dC1uYW1lcyA9ICJtaXBpX3R4MF9wbGwiOwo+ICsJ
-bnZtZW0tY2VsbHM9IDwmbWlwaV90eF9jYWxpYnJhdGlvbj47Cj4gKwludm1lbS1jZWxsLW5hbWVz
-ID0gImNhbGlicmF0aW9uLWRhdGEiOwo+ICsJbWlwaXR4LWN1cnJlbnQtZHJpdmUgPSA8MHg4PjsK
-PiAgfTsKPiAgCj4gIGRzaTA6IGRzaUAxNDAxYjAwMCB7CgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2
-ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
-aWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+On 9/19/19 9:20 AM, YT Chang wrote:
+> When the system is overutilization, the load-balance crossing
+> clusters will be triggered and scheduler will not use energy
+> aware scheduling to choose CPUs.
+
+We're currently transitioning from traditional big.LITTLE (the CPUs of 1
+cluster (all having the same CPU (original) capacity) represent a DIE
+Sched Domain (SD) level Sched Group (SG)) to DynamIQ systems. Later can
+share CPUs with different CPU (original) capacity in one cluster.
+In Linux mainline with today's DynamIQ systems (1 cluster) you will
+only have 1 cluster, i.e. 1 MC SD level SG.
+
+For those systems the current approach is much more applicable.
+
+Or do you apply the out-of-tree Phantom Domain concept, which creates n
+(n=2 or 3 ((huge,) big, little)) DIE SGs on your 1 cluster DynamIQ system?
+
+> The overutilization means the loading of  ANY CPUs
+> exceeds threshold (80%).
+> 
+> However, only 1 heavy task or while-1 program will run on highest
+> capacity CPUs and it still result to trigger overutilization. So
+> the system will not use Energy Aware scheduling.
+
+The patch-header of commit 2802bf3cd936 ("sched/fair: Add
+over-utilization/tipping point indicator") mentioned why the current
+approach is so conservatively defined.
+
+> To avoid it, a system-wide over-utilization indicator to trigger
+> load-balance cross clusters.
+> 
+> The policy is:
+> 	The loading of "ALL CPUs in the highest capacity"
+> 						exceeds threshold(80%) or
+> 	The loading of "Any CPUs not in the highest capacity"
+> 						exceed threshold(80%)
+
+We experimented with an overutilized (tipping point) indicator per SD
+from Thara Gopinath (Linaro), mentioned by Vincent already, till v2 of
+the Energy Aware Scheduling patch-set in 2018 but we couldn't find any
+advantage using it over the one you now find in mainline.
+
+https://lore.kernel.org/r/20180406153607.17815-4-dietmar.eggemann@arm.com
+
+Maybe you can have a look at this patch and see if it gives you an
+advantage with your use cases and system topology layout?
+
+The 'system-wide' in the name of the patch is misleading. The current
+approach is also system-wide, we have the overutilized information on
+the root domain (system here stands for root domain). You change the
+detection mechanism from per-CPU to a mixed-mode detection (per-CPU and
+per-SG).
+
+> Signed-off-by: YT Chang <yt.chang@mediatek.com>
+> ---
+>  kernel/sched/fair.c | 76 +++++++++++++++++++++++++++++++++++++++++++++--------
+>  1 file changed, 65 insertions(+), 11 deletions(-)
+> 
+> diff --git a/kernel/sched/fair.c b/kernel/sched/fair.c
+> index 036be95..f4c3d70 100644
+> --- a/kernel/sched/fair.c
+> +++ b/kernel/sched/fair.c
+> @@ -5182,10 +5182,71 @@ static inline bool cpu_overutilized(int cpu)
+>  static inline void update_overutilized_status(struct rq *rq)
+>  {
+>  	if (!READ_ONCE(rq->rd->overutilized) && cpu_overutilized(rq->cpu)) {
+> -		WRITE_ONCE(rq->rd->overutilized, SG_OVERUTILIZED);
+> -		trace_sched_overutilized_tp(rq->rd, SG_OVERUTILIZED);
+> +		if (capacity_orig_of(cpu_of(rq)) < rq->rd->max_cpu_capacity) {
+> +			WRITE_ONCE(rq->rd->overutilized, SG_OVERUTILIZED);
+> +			trace_sched_overutilized_tp(rq->rd, SG_OVERUTILIZED);
+> +		}
+>  	}
+>  }
+> +
+> +static
+> +void update_system_overutilized(struct sched_domain *sd, struct cpumask *cpus)
+> +{
+> +	unsigned long group_util;
+> +	bool intra_overutil = false;
+> +	unsigned long max_capacity;
+> +	struct sched_group *group = sd->groups;
+> +	struct root_domain *rd;
+> +	int this_cpu;
+> +	bool overutilized;
+> +	int i;
+> +
+> +	this_cpu = smp_processor_id();
+> +	rd = cpu_rq(this_cpu)->rd;
+> +	overutilized = READ_ONCE(rd->overutilized);
+> +	max_capacity = rd->max_cpu_capacity;
+> +
+> +	do {
+> +		group_util = 0;
+> +		for_each_cpu_and(i, sched_group_span(group), cpus) {
+> +			group_util += cpu_util(i);
+> +			if (cpu_overutilized(i)) {
+> +				if (capacity_orig_of(i) < max_capacity) {
+> +					intra_overutil = true;
+> +					break;
+> +				}
+> +			}
+> +		}
+> +
+> +		/*
+> +		 * A capacity base hint for over-utilization.
+> +		 * Not to trigger system overutiled if heavy tasks
+> +		 * in Big.cluster, so
+> +		 * add the free room(20%) of Big.cluster is impacted which means
+> +		 * system-wide over-utilization,
+> +		 * that considers whole cluster not single cpu
+> +		 */
+> +		if (group->group_weight > 1 && (group->sgc->capacity * 1024 <
+> +						group_util * capacity_margin)) {
+
+Why 'group->group_weight > 1' ? Do you have some out-of-tree code which
+lets SGs with 1 CPU survive?
+
+[...]
