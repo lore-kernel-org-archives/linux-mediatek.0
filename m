@@ -1,176 +1,156 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH 00/36] Add support 10bit yuv format
-Date: Mon, 23 Sep 2019 15:03:56 +0200
-Message-ID: <CAKMK7uFYmqEK5CGxiJhgPpYwt3StLDP0YgE5oVY2FiHEmbWQpA@mail.gmail.com>
-References: <1569242365-182133-1-git-send-email-hjc@rock-chips.com>
+From: Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [PATCH v9 07/11] dt-bindings: pwm: pwm-mediatek: add a property
+ "num-pwms"
+Date: Mon, 23 Sep 2019 15:36:26 +0200
+Message-ID: <20190923133626.GA4671@ulmo>
+References: <1568933351-8584-1-git-send-email-sam.shih@mediatek.com>
+ <1568933351-8584-8-git-send-email-sam.shih@mediatek.com>
+ <20190921002149.GB86019@mithrandir>
+ <1569208857.4102.9.camel@mtksdccf07>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1569242365-182133-1-git-send-email-hjc@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sandy Huang <hjc@rock-chips.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="YZ5djTAD1cGYuMQK"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1569208857.4102.9.camel@mtksdccf07>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sam Shih <sam.shih@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-pwm@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gTW9uLCBTZXAgMjMsIDIwMTkgYXQgMjo1MSBQTSBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hp
-cHMuY29tPiB3cm90ZToKPgo+IFRoaXMgc2VyaWVzIG9mIHBhdGNoZXMgaXMgdG8gYWRkIDIgcGxh
-bmUgWUNiQ3IgMTBiaXQgZm9ybWF0Cj4gc3VwcG9ydCwgYnV0IG5vdyB0aGUgZHJtX2Zvcm1hdF9p
-bmZvLmNwcFszXSB1bml0IGlzIEJ5dGVQZXJQbGFuZSwKPiB3aGVuIHdlIGFkZCBkZWZpbmUgMTBi
-aXQgWVVWIGZvcm1hdCwgaGVyZSBoYXZlIHNvbWUgcHJvYmxlbXMuCj4gU28gd2UgY2hhbmdlIGNw
-cCB0byBicHAsIHVzZSB1bml0IEJpdFBlclBsYW5lIHRvIGRlc2NyaWJlIHRoZSBkYXRhCj4gZm9y
-bWF0LgoKV3JvbmcgZGlyZWN0aW9uLCB3ZSBkb24ndCB3YW50IG1vcmUgdXNlcnMgb2YgdGhlIG9s
-ZCBsZWdhY3kgY3BwIHZhbHVlcwppbiB0aGUgZm9ybWF0IHN0cnVjdHVyZS4gSW5zdGVhZCBpZiB3
-ZSB3YW50IG5ldyBzdHVmZiwgYWRkL2V4dGVuZApmdW5jdGlvbnMgd2hpY2ggY2FuIGV4dHJhY3Qg
-YWxsIGtpbmRzIG9mIGludGVyZXN0aW5nIGNvbXB1dGVkIHZhbHVlCmZyb20gdGhlIGRybV9mb3Jt
-YXRfaW5mbyBzdHJ1Y3R1cmUuIFNlZSBhbGwgdGhlIGZ1bmN0aW9ucyBpbgpkcm1fZm91cmNjLmgu
-Ci1EYW5pZWwKCj4KPiBTYW5keSBIdWFuZyAoMzYpOgo+ICAgZHJtL2ZvdXJjYzogQWRkIDIgcGxh
-bmUgWUNiQ3IgMTBiaXQgZm9ybWF0IHN1cHBvcnQKPiAgIGRybS9yb2NrY2hpcDogdXNlIGJwcCBp
-bnN0ZWFkIG9mIGNwcCBmb3IgZHJtX2Zvcm1hdF9pbmZvCj4gICBkcm0vaTkxNTogdXNlIGJwcCBp
-bnN0ZWFkIG9mIGNwcCBmb3IgZHJtX2Zvcm1hdF9pbmZvCj4gICBkcm06IGV4eW5vczogdXNlIGJw
-cCBpbnN0ZWFkIG9mIGNwcCBmb3IgZHJtX2Zvcm1hdF9pbmZvCj4gICBkcm0vc3VuNGk6IHVzZSBi
-cHAgaW5zdGVhZCBvZiBjcHAgZm9yIGRybV9mb3JtYXRfaW5mbwo+ICAgZHJtL2FtZDogdXNlIGJw
-cCBpbnN0ZWFkIG9mIGNwcCBmb3IgZHJtX2Zvcm1hdF9pbmZvCj4gICBkcm0vZ21hNTAwOiB1c2Ug
-YnBwIGluc3RlYWQgb2YgY3BwIGZvciBkcm1fZm9ybWF0X2luZm8KPiAgIGRybS9tc206IHVzZSBi
-cHAgaW5zdGVhZCBvZiBjcHAgZm9yIGRybV9mb3JtYXRfaW5mbwo+ICAgZG0vdm13Z2Z4OiB1c2Ug
-YnBwIGluc3RlYWQgb2YgY3BwIGZvciBkcm1fZm9ybWF0X2luZm8KPiAgIGRybS9hcm06IHVzZSBi
-cHAgaW5zdGVhZCBvZiBjcHAgZm9yIGRybV9mb3JtYXRfaW5mbwo+ICAgZHJtL2FybWFkYTogdXNl
-IGJwcCBpbnN0ZWFkIG9mIGNwcCBmb3IgZHJtX2Zvcm1hdF9pbmZvCj4gICBkcm0vcmFkZW9uOiB1
-c2UgYnBwIGluc3RlYWQgb2YgY3BwIGZvciBkcm1fZm9ybWF0X2luZm8KPiAgIGRybS9ub3V2ZWF1
-OiB1c2UgYnBwIGluc3RlYWQgb2YgY3BwIGZvciBkcm1fZm9ybWF0X2luZm8KPiAgIGRybS90ZWdy
-YTogdXNlIGJwcCBpbnN0ZWFkIG9mIGNwcCBmb3IgZHJtX2Zvcm1hdF9pbmZvCj4gICBkcm0vbWVk
-aWF0ZWs6IHVzZSBicHAgaW5zdGVhZCBvZiBjcHAgZm9yIGRybV9mb3JtYXRfaW5mbwo+ICAgZHJt
-L3RpbGNkYzogdXNlIGJwcCBpbnN0ZWFkIG9mIGNwcCBmb3IgZHJtX2Zvcm1hdF9pbmZvCj4gICBk
-cm0venRlOiB1c2UgYnBwIGluc3RlYWQgb2YgY3BwIGZvciBkcm1fZm9ybWF0X2luZm8KPiAgIGRy
-bS94ZW46IHVzZSBicHAgaW5zdGVhZCBvZiBjcHAgZm9yIGRybV9mb3JtYXRfaW5mbwo+ICAgZHJt
-L3ZrbXM6IHVzZSBicHAgaW5zdGVhZCBvZiBjcHAgZm9yIGRybV9mb3JtYXRfaW5mbwo+ICAgZHJt
-L2FzdDogdXNlIGJwcCBpbnN0ZWFkIG9mIGNwcCBmb3IgZHJtX2Zvcm1hdF9pbmZvCj4gICBkcm0v
-dmM0OiB1c2UgYnBwIGluc3RlYWQgb2YgY3BwIGZvciBkcm1fZm9ybWF0X2luZm8KPiAgIGRybS9h
-dG1lbC1obGNkYzogdXNlIGJwcCBpbnN0ZWFkIG9mIGNwcCBmb3IgZHJtX2Zvcm1hdF9pbmZvCj4g
-ICBkcm0vY2lycnVzOiB1c2UgYnBwIGluc3RlYWQgb2YgY3BwIGZvciBkcm1fZm9ybWF0X2luZm8K
-PiAgIGRybS9oaXNpbGljb246IHVzZSBicHAgaW5zdGVhZCBvZiBjcHAgZm9yIGRybV9mb3JtYXRf
-aW5mbwo+ICAgZHJtL2lteDogdXNlIGJwcCBpbnN0ZWFkIG9mIGNwcCBmb3IgZHJtX2Zvcm1hdF9p
-bmZvCj4gICBkcm0vdmJveHZpZGVvOiB1c2UgYnBwIGluc3RlYWQgb2YgY3BwIGZvciBkcm1fZm9y
-bWF0X2luZm8KPiAgIGRybS9wbDExMTogdXNlIGJwcCBpbnN0ZWFkIG9mIGNwcCBmb3IgZHJtX2Zv
-cm1hdF9pbmZvCj4gICBkcm0vcXhsOiB1c2UgYnBwIGluc3RlYWQgb2YgY3BwIGZvciBkcm1fZm9y
-bWF0X2luZm8KPiAgIGRybS9pbmdlbmljOiB1c2UgYnBwIGluc3RlYWQgb2YgY3BwIGZvciBkcm1f
-Zm9ybWF0X2luZm8KPiAgIGRybS9zdGk6IHVzZSBicHAgaW5zdGVhZCBvZiBjcHAgZm9yIGRybV9m
-b3JtYXRfaW5mbwo+ICAgZHJtL3N0bTogdXNlIGJwcCBpbnN0ZWFkIG9mIGNwcCBmb3IgZHJtX2Zv
-cm1hdF9pbmZvCj4gICBkcm0vbWNkZTogdXNlIGJwcCBpbnN0ZWFkIG9mIGNwcCBmb3IgZHJtX2Zv
-cm1hdF9pbmZvCj4gICBkcm0vbWdhZzIwMDogdXNlIGJwcCBpbnN0ZWFkIG9mIGNwcCBmb3IgZHJt
-X2Zvcm1hdF9pbmZvCj4gICBkcm0vdHZlMjAwOiB1c2UgYnBwIGluc3RlYWQgb2YgY3BwIGZvciBk
-cm1fZm9ybWF0X2luZm8KPiAgIGRybS91ZGw6IHVzZSBicHAgaW5zdGVhZCBvZiBjcHAgZm9yIGRy
-bV9mb3JtYXRfaW5mbwo+ICAgZHJtL29tYXBkcm06IHVzZSBicHAgaW5zdGVhZCBvZiBjcHAgZm9y
-IGRybV9mb3JtYXRfaW5mbwo+Cj4gIGRyaXZlcnMvZ3B1L2RybS9hbWQvYW1kZ3B1L2FtZGdwdV9m
-Yi5jICAgICAgICAgICAgIHwgICAyICstCj4gIGRyaXZlcnMvZ3B1L2RybS9hbWQvYW1kZ3B1L2Rj
-ZV92MTBfMC5jICAgICAgICAgICAgIHwgICAyICstCj4gIGRyaXZlcnMvZ3B1L2RybS9hbWQvYW1k
-Z3B1L2RjZV92MTFfMC5jICAgICAgICAgICAgIHwgICAyICstCj4gIGRyaXZlcnMvZ3B1L2RybS9h
-bWQvYW1kZ3B1L2RjZV92Nl8wLmMgICAgICAgICAgICAgIHwgICAyICstCj4gIGRyaXZlcnMvZ3B1
-L2RybS9hbWQvYW1kZ3B1L2RjZV92OF8wLmMgICAgICAgICAgICAgIHwgICAyICstCj4gIGRyaXZl
-cnMvZ3B1L2RybS9hbWQvZGlzcGxheS9hbWRncHVfZG0vYW1kZ3B1X2RtLmMgIHwgICA2ICstCj4g
-IC4uLi9kcm0vYXJtL2Rpc3BsYXkva29tZWRhL2tvbWVkYV9mcmFtZWJ1ZmZlci5jICAgIHwgICAy
-ICstCj4gIGRyaXZlcnMvZ3B1L2RybS9hcm0vbWFsaWRwX2h3LmMgICAgICAgICAgICAgICAgICAg
-IHwgICAyICstCj4gIGRyaXZlcnMvZ3B1L2RybS9hcm0vbWFsaWRwX3BsYW5lcy5jICAgICAgICAg
-ICAgICAgIHwgICAyICstCj4gIGRyaXZlcnMvZ3B1L2RybS9hcm1hZGEvYXJtYWRhX2ZiZGV2LmMg
-ICAgICAgICAgICAgIHwgICAyICstCj4gIGRyaXZlcnMvZ3B1L2RybS9hcm1hZGEvYXJtYWRhX3Bs
-YW5lLmMgICAgICAgICAgICAgIHwgICA2ICstCj4gIGRyaXZlcnMvZ3B1L2RybS9hc3QvYXN0X21v
-ZGUuYyAgICAgICAgICAgICAgICAgICAgIHwgICA4ICstCj4gIGRyaXZlcnMvZ3B1L2RybS9hdG1l
-bC1obGNkYy9hdG1lbF9obGNkY19wbGFuZS5jICAgIHwgICAyICstCj4gIGRyaXZlcnMvZ3B1L2Ry
-bS9jaXJydXMvY2lycnVzLmMgICAgICAgICAgICAgICAgICAgIHwgIDEwICstCj4gIGRyaXZlcnMv
-Z3B1L2RybS9kcm1fY2xpZW50LmMgICAgICAgICAgICAgICAgICAgICAgIHwgICA0ICstCj4gIGRy
-aXZlcnMvZ3B1L2RybS9kcm1fZmJfaGVscGVyLmMgICAgICAgICAgICAgICAgICAgIHwgICA4ICst
-Cj4gIGRyaXZlcnMvZ3B1L2RybS9kcm1fZm9ybWF0X2hlbHBlci5jICAgICAgICAgICAgICAgIHwg
-ICA0ICstCj4gIGRyaXZlcnMvZ3B1L2RybS9kcm1fZm91cmNjLmMgICAgICAgICAgICAgICAgICAg
-ICAgIHwgMTcyICsrKysrKysrKysrLS0tLS0tLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vZHJtX2Zy
-YW1lYnVmZmVyLmMgICAgICAgICAgICAgICAgICB8ICAgMiArLQo+ICBkcml2ZXJzL2dwdS9kcm0v
-ZXh5bm9zL2V4eW5vczU0MzNfZHJtX2RlY29uLmMgICAgICB8ICAgNCArLQo+ICBkcml2ZXJzL2dw
-dS9kcm0vZXh5bm9zL2V4eW5vczdfZHJtX2RlY29uLmMgICAgICAgICB8ICAgNiArLQo+ICBkcml2
-ZXJzL2dwdS9kcm0vZXh5bm9zL2V4eW5vc19kcm1fZmJkZXYuYyAgICAgICAgICB8ICAgNCArLQo+
-ICBkcml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4eW5vc19kcm1fZmltYy5jICAgICAgICAgICB8ICAg
-NiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4eW5vc19kcm1fZmltZC5jICAgICAgICAg
-ICB8ICAgMiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4eW5vc19kcm1fZ3NjLmMgICAg
-ICAgICAgICB8ICAgNCArLQo+ICBkcml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4eW5vc19kcm1faXBw
-LmMgICAgICAgICAgICB8ICAgNiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4eW5vc19k
-cm1fcm90YXRvci5jICAgICAgICB8ICAgNCArLQo+ICBkcml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4
-eW5vc19kcm1fc2NhbGVyLmMgICAgICAgICB8ICAgNCArLQo+ICBkcml2ZXJzL2dwdS9kcm0vZXh5
-bm9zL2V4eW5vc19taXhlci5jICAgICAgICAgICAgICB8ICAgNCArLQo+ICBkcml2ZXJzL2dwdS9k
-cm0vZ21hNTAwL2ZyYW1lYnVmZmVyLmMgICAgICAgICAgICAgICB8ICAgNCArLQo+ICBkcml2ZXJz
-L2dwdS9kcm0vZ21hNTAwL2dtYV9kaXNwbGF5LmMgICAgICAgICAgICAgICB8ICAgNCArLQo+ICBk
-cml2ZXJzL2dwdS9kcm0vZ21hNTAwL21kZmxkX2ludGVsX2Rpc3BsYXkuYyAgICAgICB8ICAgNiAr
-LQo+ICBkcml2ZXJzL2dwdS9kcm0vZ21hNTAwL29ha3RyYWlsX2NydGMuYyAgICAgICAgICAgICB8
-ICAgNCArLQo+ICBkcml2ZXJzL2dwdS9kcm0vaGlzaWxpY29uL2hpYm1jL2hpYm1jX2RybV9kZS5j
-ICAgICB8ICAgNiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vaTkxNS9kaXNwbGF5L2ludGVsX2F0b21p
-Y19wbGFuZS5jICB8ICAgMiArLQo+ICBkcml2ZXJzL2dwdS9kcm0vaTkxNS9kaXNwbGF5L2ludGVs
-X2Rpc3BsYXkuYyAgICAgICB8ICAyOCArKy0tCj4gIGRyaXZlcnMvZ3B1L2RybS9pOTE1L2Rpc3Bs
-YXkvaW50ZWxfZmJjLmMgICAgICAgICAgIHwgICA4ICstCj4gIGRyaXZlcnMvZ3B1L2RybS9pOTE1
-L2Rpc3BsYXkvaW50ZWxfZmJkZXYuYyAgICAgICAgIHwgICA2ICstCj4gIGRyaXZlcnMvZ3B1L2Ry
-bS9pOTE1L2Rpc3BsYXkvaW50ZWxfc3ByaXRlLmMgICAgICAgIHwgICA0ICstCj4gIGRyaXZlcnMv
-Z3B1L2RybS9pOTE1L2k5MTVfZGVidWdmcy5jICAgICAgICAgICAgICAgIHwgICA0ICstCj4gIGRy
-aXZlcnMvZ3B1L2RybS9pOTE1L2ludGVsX3BtLmMgICAgICAgICAgICAgICAgICAgIHwgIDI4ICsr
-LS0KPiAgZHJpdmVycy9ncHUvZHJtL2lteC9pcHV2My1wbGFuZS5jICAgICAgICAgICAgICAgICAg
-fCAgIDggKy0KPiAgZHJpdmVycy9ncHUvZHJtL2luZ2VuaWMvaW5nZW5pYy1kcm0uYyAgICAgICAg
-ICAgICAgfCAgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL21jZGUvbWNkZV9kaXNwbGF5LmMgICAg
-ICAgICAgICAgICAgfCAgIDQgKy0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1f
-ZmIuYyAgICAgICAgICAgICAgfCAgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19kcm1fcGxhbmUuYyAgICAgICAgICAgfCAgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL21nYWcy
-MDAvbWdhZzIwMF9tb2RlLmMgICAgICAgICAgICAgfCAgMTYgKy0KPiAgZHJpdmVycy9ncHUvZHJt
-L21zbS9kaXNwL2RwdTEvZHB1X2NydGMuYyAgICAgICAgICAgfCAgIDQgKy0KPiAgZHJpdmVycy9n
-cHUvZHJtL21zbS9kaXNwL21kcDUvbWRwNV9jcnRjLmMgICAgICAgICAgfCAgIDIgKy0KPiAgZHJp
-dmVycy9ncHUvZHJtL21zbS9kaXNwL21kcDUvbWRwNV9zbXAuYyAgICAgICAgICAgfCAgIDIgKy0K
-PiAgZHJpdmVycy9ncHUvZHJtL21zbS9tc21fZmIuYyAgICAgICAgICAgICAgICAgICAgICAgfCAg
-IDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL25vdXZlYXUvZGlzcG52MDQvY3J0Yy5jICAgICAgICAg
-ICAgfCAgIDcgKy0KPiAgZHJpdmVycy9ncHUvZHJtL25vdXZlYXUvZGlzcG52NTAvYmFzZTUwN2Mu
-YyAgICAgICAgfCAgIDQgKy0KPiAgZHJpdmVycy9ncHUvZHJtL25vdXZlYXUvZGlzcG52NTAvb3Zs
-eTUwN2UuYyAgICAgICAgfCAgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL29tYXBkcm0vb21hcF9m
-Yi5jICAgICAgICAgICAgICAgICAgfCAgIDggKy0KPiAgZHJpdmVycy9ncHUvZHJtL3BsMTExL3Bs
-MTExX2Rpc3BsYXkuYyAgICAgICAgICAgICAgfCAgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3F4
-bC9xeGxfZHJhdy5jICAgICAgICAgICAgICAgICAgICAgfCAgIDIgKy0KPiAgZHJpdmVycy9ncHUv
-ZHJtL3JhZGVvbi9hdG9tYmlvc19jcnRjLmMgICAgICAgICAgICAgfCAgMTAgKy0KPiAgZHJpdmVy
-cy9ncHUvZHJtL3JhZGVvbi9yMTAwLmMgICAgICAgICAgICAgICAgICAgICAgfCAgIDQgKy0KPiAg
-ZHJpdmVycy9ncHUvZHJtL3JhZGVvbi9yYWRlb25fZGlzcGxheS5jICAgICAgICAgICAgfCAgIDYg
-Ky0KPiAgZHJpdmVycy9ncHUvZHJtL3JhZGVvbi9yYWRlb25fZmIuYyAgICAgICAgICAgICAgICAg
-fCAgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3JhZGVvbi9yYWRlb25fbGVnYWN5X2NydGMuYyAg
-ICAgICAgfCAgMTQgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9m
-Yi5jICAgICAgICAgfCAgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV92b3AuYyAgICAgICAgfCAgIDQgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3N0aS9zdGlfZ2Rw
-LmMgICAgICAgICAgICAgICAgICAgICAgfCAgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3N0bS9s
-dGRjLmMgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJt
-L3N1bjRpL3N1bjhpX3VpX2xheWVyLmMgICAgICAgICAgICAgfCAgIDIgKy0KPiAgZHJpdmVycy9n
-cHUvZHJtL3N1bjRpL3N1bjhpX3ZpX2xheWVyLmMgICAgICAgICAgICAgfCAgIDIgKy0KPiAgZHJp
-dmVycy9ncHUvZHJtL3RlZ3JhL2RjLmMgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDIgKy0K
-PiAgZHJpdmVycy9ncHUvZHJtL3RlZ3JhL2RybS5jICAgICAgICAgICAgICAgICAgICAgICAgfCAg
-IDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3RlZ3JhL2ZiLmMgICAgICAgICAgICAgICAgICAgICAg
-ICAgfCAgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3RpbGNkYy90aWxjZGNfY3J0Yy5jICAgICAg
-ICAgICAgICAgfCAgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3RpbGNkYy90aWxjZGNfcGxhbmUu
-YyAgICAgICAgICAgICAgfCAgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3R2ZTIwMC90dmUyMDBf
-ZGlzcGxheS5jICAgICAgICAgICAgfCAgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3VkbC91ZGxf
-ZmIuYyAgICAgICAgICAgICAgICAgICAgICAgfCAgIDQgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3Zi
-b3h2aWRlby92Ym94X21vZGUuYyAgICAgICAgICAgICAgfCAgIDIgKy0KPiAgZHJpdmVycy9ncHUv
-ZHJtL3ZjNC92YzRfcGxhbmUuYyAgICAgICAgICAgICAgICAgICAgfCAgMTAgKy0KPiAgZHJpdmVy
-cy9ncHUvZHJtL3ZrbXMvdmttc19wbGFuZS5jICAgICAgICAgICAgICAgICAgfCAgIDIgKy0KPiAg
-ZHJpdmVycy9ncHUvZHJtL3Ztd2dmeC92bXdnZnhfZmIuYyAgICAgICAgICAgICAgICAgfCAgIDQg
-Ky0KPiAgZHJpdmVycy9ncHUvZHJtL3Ztd2dmeC92bXdnZnhfbGR1LmMgICAgICAgICAgICAgICAg
-fCAgIDQgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3Ztd2dmeC92bXdnZnhfc2Nybi5jICAgICAgICAg
-ICAgICAgfCAgIDQgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3Ztd2dmeC92bXdnZnhfc3RkdS5jICAg
-ICAgICAgICAgICAgfCAgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3hlbi94ZW5fZHJtX2Zyb250
-X2ttcy5jICAgICAgICAgICAgfCAgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJtL3p0ZS96eF9wbGFu
-ZS5jICAgICAgICAgICAgICAgICAgICAgfCAgIDQgKy0KPiAgaW5jbHVkZS9kcm0vZHJtX2ZvdXJj
-Yy5oICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDQgKy0KPiAgaW5jbHVkZS91YXBpL2Ry
-bS9kcm1fZm91cmNjLmggICAgICAgICAgICAgICAgICAgICAgfCAgMTUgKysKPiAgODYgZmlsZXMg
-Y2hhbmdlZCwgMjk5IGluc2VydGlvbnMoKyksIDI3NyBkZWxldGlvbnMoLSkKPgo+IC0tCj4gMi43
-LjQKPgo+Cj4KPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-Xwo+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnCj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
-ZGV2ZWwKCgoKLS0gCkRhbmllbCBWZXR0ZXIKU29mdHdhcmUgRW5naW5lZXIsIEludGVsIENvcnBv
-cmF0aW9uCis0MSAoMCkgNzkgMzY1IDU3IDQ4IC0gaHR0cDovL2Jsb2cuZmZ3bGwuY2gKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxp
-bmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+
+--YZ5djTAD1cGYuMQK
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Sep 23, 2019 at 11:20:57AM +0800, Sam Shih wrote:
+> On Sat, 2019-09-21 at 02:21 +0200, Thierry Reding wrote:
+> > On Fri, Sep 20, 2019 at 06:49:07AM +0800, Sam Shih wrote:
+> > > From: Ryder Lee <ryder.lee@mediatek.com>
+> > >=20
+> > > This adds a property "num-pwms" in example so that we could
+> > > specify the number of PWM channels via device tree.
+> > >=20
+> > > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> > > Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+> > > Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> > > Acked-by: Uwe Kleine-K=C3=B6nig <u.kleine-koenig@pengutronix.de>
+> > > ---
+> > > Changes since v6:
+> > > Follow reviewers's comments:
+> > > - The subject should indicate this is for Mediatek
+> > >=20
+> > > Changes since v5:
+> > > - Add an Acked-by tag
+> > > - This file is original v4 patch 5/10
+> > > (https://patchwork.kernel.org/patch/11102577/)
+> > >=20
+> > > ---
+> > >  Documentation/devicetree/bindings/pwm/pwm-mediatek.txt | 7 ++++---
+> > >  1 file changed, 4 insertions(+), 3 deletions(-)
+> >=20
+> > You failed to address Rob's questions repeatedly and I agree with him
+> > that you can just as easily derive the number of PWMs from the specific
+> > compatible string. I won't be applying this and none of the patches that
+> > depend on it.
+> >=20
+>=20
+> Hi,=20
+>=20
+> Thanks for getting back to me.
+>=20
+> New pwm driver (patch 04/11 : "pwm: mediatek: allocate the clks array
+> dynamically") can support different variants with different number of
+> PWMs by the new property <num-pwms>
+>=20
+> For example:
+> 1. Use "num-pwms" =3D <2> and assign clocks pwm1, pwm2 for mt7622
+> 2. Use "num-pwms" =3D <6> and assign clocks pwm1, pwm2, pwm3, pwm4, pwm5,
+> pwm6 for mt7622.
+>=20
+> If we just as easily derive the number of PWMs from the specific
+> compatible string in this document:
+>=20
+>    - "pwm1-6": the six per PWM clocks for mt7622
+>   =20
+> This looks like all "pwm1", "pwm2", "pwm3", "pwm4", "pwm5", "pwm6" is
+> required property in DT, It doesn't make sense.
+
+I don't understand. Why doesn't that make sense? If your hardware block
+has 6 PWMs and each can be driven by its own clock, then you need to
+provide references for each of those clocks, otherwise you won't be able
+to use them.
+
+>   =20
+> So we removed those descriptions and added =20
+>=20
+>    - "pwm1-N": the PWM clocks for each channel=20
+>   =20
+>   =20
+> But the max number of clocks from the compatible string are still
+> important information that should be provide in this document.
+>=20
+>=20
+> What do you think of this?
+>=20
+>    - "pwm1-N": per PWM clocks for mt2712, the max number of PWM channels
+> is 8
+>=20
+>    - "pwm1-N": per PWM clocks for mt7622, the max number of PWM channels
+> is 6
+>=20
+>    - "pwm1-N": per PWM clocks for mt7623, the max number of PWM channels
+> is 5
+
+That's what's in the bindings already, isn't it?
+
+	 - clocks: phandle and clock specifier of the PWM reference clock.
+	 - clock-names: must contain the following, except for MT7628 which
+			has no clocks
+	   - "top": the top clock generator
+	   - "main": clock used by the PWM core
+	   - "pwm1-8": the eight per PWM clocks for mt2712
+	   - "pwm1-6": the six per PWM clocks for mt7622
+	   - "pwm1-5": the five per PWM clocks for mt7623
+
+Note that the description of the "clocks" property isn't quite accurate.
+It should be something like:
+
+	- clocks: One phandle and clock specifier for each entry in the
+	          "clock-names" property.
+
+In the above you clearly describe which PWMs you have to specify for
+each generation of the hardware block.
+
+>=20
+>    where N starting from 1 to the maximum number of PWM channels
+>    - num-pwms: the number of PWM channels.
+
+That's redundant information. The specific number of PWMs in already
+implied by the compatible string, so you don't need to duplicate that
+information here.
+
+Thierry
+
+--YZ5djTAD1cGYuMQK
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl2IylEACgkQ3SOs138+
+s6EpJg//QC3ldqkwsoa+KY+dhrpZlAxv2zdjRAxF8rCag6XtDLtIlvV66zVQeowZ
+5+NMRQqJHAdqFzNPZO8wxH7Dkiexw50Wpa64Xb1JEyVAmotqvfiyJr59MG9CGZ+T
+EW7o+U8WHGdVT6xtkUZ17QQHK6OqvitX8GmXU746FXuza5zYkp3quVFtjQ1V2GNR
+N2s3dvvfhIcqjm0GhN310Pp2vHCyczDmpCbppC+QNfkArUCW25oDFck69ceBdXXG
+1UjtIasUcEoTC8qrK31Yk2GctIxkF0KiPKX24Kuk3oDTqCb3Acp/eNQmE3j0zs+1
++3a2Xgs5jADOprnJLpszBvlO+PKCybVAAhW65QgcH67spbgNVxuhXCjmSpplelfI
+F7FJEbz+nI2Az36ogFtewhvVPFa5SqPKUEygCjE5eRd62HooiUiEK/zXbBfE5eNm
+72viYDW0wwkmqjLIuahyji2HMlu3ImG3moqiQH1OaZkaivONUzWqn2fsEVdQaI4I
+o41UMHnZNWs7znhcs2SeGZNrLSvC4mdetpXDOuVr9WWqunzIckHDabA/hm5yMvFD
+l/Oiyyv9AcIICgAFBXq1+4bfbztgS7wAek6JDYRUHBj4jBI+3J0zEvK7ah246wlg
+pp+mPQhPxMx+VbEpB5BVx0/KB1eQ6+8E9+zyB227JdD4oLR3G9Y=
+=Za9m
+-----END PGP SIGNATURE-----
+
+--YZ5djTAD1cGYuMQK--
