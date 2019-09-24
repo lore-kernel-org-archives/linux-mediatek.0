@@ -1,7 +1,8 @@
 From: <Tudor.Ambarus@microchip.com>
-Subject: [PATCH v2 16/22] mtd: spi-nor: Fix errno on quad_enable methods
-Date: Tue, 24 Sep 2019 07:46:44 +0000
-Message-ID: <20190924074533.6618-17-tudor.ambarus@microchip.com>
+Subject: [PATCH v2 17/22] mtd: spi-nor: Check all the bits written, not just
+ the BP ones
+Date: Tue, 24 Sep 2019 07:46:47 +0000
+Message-ID: <20190924074533.6618-18-tudor.ambarus@microchip.com>
 References: <20190924074533.6618-1-tudor.ambarus@microchip.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="iso-8859-1"
@@ -16,46 +17,58 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Tudor Ambarus <tudor.ambarus@microchip.com>
 
-When the Read-Modify-Write-Read-Back Quad Enable methods failed on
-the Read-Back, they returned -EINVAL. Since this is an I/O error,
-return -EIO.
+Check that all the bits written in the write_sr_and_check() method
+match the status_new received value. Failing to write the other bits
+is dangerous too, extend the check.
 
 Signed-off-by: Tudor Ambarus <tudor.ambarus@microchip.com>
 ---
- drivers/mtd/spi-nor/spi-nor.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/mtd/spi-nor/spi-nor.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/mtd/spi-nor/spi-nor.c b/drivers/mtd/spi-nor/spi-nor.c
-index 668afa9a8c87..6429c855547e 100644
+index 6429c855547e..48bcb2ee1be5 100644
 --- a/drivers/mtd/spi-nor/spi-nor.c
 +++ b/drivers/mtd/spi-nor/spi-nor.c
-@@ -1862,7 +1862,7 @@ static int macronix_quad_enable(struct spi_nor *nor)
+@@ -1493,7 +1493,7 @@ static int spi_nor_erase(struct mtd_info *mtd, struct=
+ erase_info *instr)
+ }
 =20
- 	if (!(nor->bouncebuf[0] & SR_QUAD_EN_MX)) {
- 		dev_err(nor->dev, "Macronix Quad bit not set\n");
--		return -EINVAL;
-+		return -EIO;
- 	}
+ /* Write status register and ensure bits in mask match written values */
+-static int write_sr_and_check(struct spi_nor *nor, u8 status_new, u8 mask)
++static int write_sr_and_check(struct spi_nor *nor, u8 status_new)
+ {
+ 	int ret;
 =20
- 	return 0;
-@@ -1940,7 +1940,7 @@ static int spansion_read_cr_quad_enable(struct spi_no=
-r *nor)
+@@ -1507,7 +1507,7 @@ static int write_sr_and_check(struct spi_nor *nor, u8=
+ status_new, u8 mask)
+ 	if (ret)
+ 		return ret;
 =20
- 	if (!(sr_cr[1] & CR_QUAD_EN_SPAN)) {
- 		dev_err(nor->dev, "Spansion Quad bit not set\n");
--		return -EINVAL;
-+		return -EIO;
- 	}
+-	return ((nor->bouncebuf[0] & mask) !=3D (status_new & mask)) ? -EIO : 0;
++	return (nor->bouncebuf[0] !=3D status_new) ? -EIO : 0;
+ }
 =20
- 	return 0;
-@@ -1985,7 +1985,7 @@ static int sr2_bit7_quad_enable(struct spi_nor *nor)
+ static void stm_get_locked_range(struct spi_nor *nor, u8 sr, loff_t *ofs,
+@@ -1673,7 +1673,7 @@ static int stm_lock(struct spi_nor *nor, loff_t ofs, =
+uint64_t len)
+ 	if ((status_new & mask) < (status_old & mask))
+ 		return -EINVAL;
 =20
- 	if (!(*sr2 & SR2_QUAD_EN_BIT7)) {
- 		dev_err(nor->dev, "SR2 Quad bit not set\n");
--		return -EINVAL;
-+		return -EIO;
- 	}
+-	return write_sr_and_check(nor, status_new, mask);
++	return write_sr_and_check(nor, status_new);
+ }
 =20
- 	return 0;
+ /*
+@@ -1758,7 +1758,7 @@ static int stm_unlock(struct spi_nor *nor, loff_t ofs=
+, uint64_t len)
+ 	if ((status_new & mask) > (status_old & mask))
+ 		return -EINVAL;
+=20
+-	return write_sr_and_check(nor, status_new, mask);
++	return write_sr_and_check(nor, status_new);
+ }
+=20
+ /*
 --=20
 2.9.5
