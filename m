@@ -1,7 +1,7 @@
 From: <Tudor.Ambarus@microchip.com>
-Subject: [PATCH v2 06/22] mtd: spi-nor: Rework read_fsr()
-Date: Tue, 24 Sep 2019 07:46:12 +0000
-Message-ID: <20190924074533.6618-7-tudor.ambarus@microchip.com>
+Subject: [PATCH v2 07/22] mtd: spi-nor: Rework read_cr()
+Date: Tue, 24 Sep 2019 07:46:15 +0000
+Message-ID: <20190924074533.6618-8-tudor.ambarus@microchip.com>
 References: <20190924074533.6618-1-tudor.ambarus@microchip.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="iso-8859-1"
@@ -16,113 +16,178 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Tudor Ambarus <tudor.ambarus@microchip.com>
 
-static int read_fsr(struct spi_nor *nor)
+static int read_cr(struct spi_nor *nor)
 becomes
-static int spi_nor_read_fsr(struct spi_nor *nor, u8 *fsr)
+static int spi_nor_read_cr(struct spi_nor *nor, u8 *cr)
 
 The new function returns 0 on success and -errno otherwise.
 We let the callers pass the pointer to the buffer where the
-value of the Flag Status Register will be written. This way
+value of the Configuration Register will be written. This way
 we avoid the casts between int and u8, which can be confusing.
 
 Prepend spi_nor_ to the function name, all functions should begin
 with that.
 
-S/pr_err/dev_err and drop duplicated dev_err in callers, in case the
-function returns error.
+Vendors are using both the "Configuration Register" and the
+"Status Register 2" terminology when referring to the second byte
+of the Status Register. Indicate in the description of the function
+that we use the SPINOR_OP_RDCR (35h) command to interrogate the
+Configuration Register.
 
 Signed-off-by: Tudor Ambarus <tudor.ambarus@microchip.com>
 ---
- drivers/mtd/spi-nor/spi-nor.c | 42 ++++++++++++++++++++++-----------------=
----
- 1 file changed, 22 insertions(+), 20 deletions(-)
+ drivers/mtd/spi-nor/spi-nor.c | 66 +++++++++++++++++++++------------------=
+----
+ 1 file changed, 33 insertions(+), 33 deletions(-)
 
 diff --git a/drivers/mtd/spi-nor/spi-nor.c b/drivers/mtd/spi-nor/spi-nor.c
-index a23783641146..8cd1cadcb8b1 100644
+index 8cd1cadcb8b1..0fb124bd2e77 100644
 --- a/drivers/mtd/spi-nor/spi-nor.c
 +++ b/drivers/mtd/spi-nor/spi-nor.c
-@@ -417,12 +417,15 @@ static int spi_nor_read_sr(struct spi_nor *nor, u8 *s=
-r)
+@@ -448,12 +448,16 @@ static int spi_nor_read_fsr(struct spi_nor *nor, u8 *=
+fsr)
  	return ret;
  }
 =20
 -/*
-- * Read the flag status register, returning its value in the location
-- * Return the status register value.
+- * Read configuration register, returning its value in the
+- * location. Return the configuration register value.
 - * Returns negative if error occurred.
 +/**
-+ * spi_nor_read_fsr() - Read the Flag Status Register.
++ * spi_nor_read_cr() - Read the Configuration Register using the
++ * SPINOR_OP_RDCR (35h) command.
 + * @nor:	pointer to 'struct spi_nor'
-+ * @fsr:	buffer where the value of the Flag Status Register will be
-+ *		written.
++ * @cr:		buffer where the value of the Configuration Register
++ *		will be written.
 + *
 + * Return: 0 on success, -errno otherwise.
   */
--static int read_fsr(struct spi_nor *nor)
-+static int spi_nor_read_fsr(struct spi_nor *nor, u8 *fsr)
+-static int read_cr(struct spi_nor *nor)
++static int spi_nor_read_cr(struct spi_nor *nor, u8 *cr)
  {
  	int ret;
 =20
-@@ -431,20 +434,18 @@ static int read_fsr(struct spi_nor *nor)
- 			SPI_MEM_OP(SPI_MEM_OP_CMD(SPINOR_OP_RDFSR, 1),
+@@ -462,20 +466,17 @@ static int read_cr(struct spi_nor *nor)
+ 			SPI_MEM_OP(SPI_MEM_OP_CMD(SPINOR_OP_RDCR, 1),
  				   SPI_MEM_OP_NO_ADDR,
  				   SPI_MEM_OP_NO_DUMMY,
 -				   SPI_MEM_OP_DATA_IN(1, nor->bouncebuf, 1));
-+				   SPI_MEM_OP_DATA_IN(1, fsr, 1));
++				   SPI_MEM_OP_DATA_IN(1, cr, 1));
 =20
  		ret =3D spi_mem_exec_op(nor->spimem, &op);
  	} else {
- 		ret =3D nor->controller_ops->read_reg(nor, SPINOR_OP_RDFSR,
+-		ret =3D nor->controller_ops->read_reg(nor, SPINOR_OP_RDCR,
 -						    nor->bouncebuf, 1);
-+						    fsr, 1);
++		ret =3D nor->controller_ops->read_reg(nor, SPINOR_OP_RDCR, cr, 1);
  	}
 =20
 -	if (ret < 0) {
--		pr_err("error %d reading FSR\n", ret);
++	if (ret)
+ 		dev_err(nor->dev, "error %d reading CR\n", ret);
 -		return ret;
 -	}
-+	if (ret)
-+		dev_err(nor->dev, "error %d reading FSR\n", ret);
 =20
 -	return nor->bouncebuf[0];
 +	return ret;
  }
 =20
  /*
-@@ -787,25 +788,26 @@ static int spi_nor_clear_fsr(struct spi_nor *nor)
+@@ -1768,7 +1769,8 @@ static int macronix_quad_enable(struct spi_nor *nor)
+  * some very old and few memories don't support this instruction. If a pul=
+l-up
+  * resistor is present on the MISO/IO1 line, we might still be able to pas=
+s the
+  * "read back" test because the QSPI memory doesn't recognize the command,
+- * so leaves the MISO/IO1 line state unchanged, hence read_cr() returns 0x=
+FF.
++ * so leaves the MISO/IO1 line state unchanged, hence spi_nor_read_cr(nor,=
+ cr)
++ * gets the 0xFF value.
+  *
+  * bit 1 of the Configuration Register is the QE bit for Spansion like QSP=
+I
+  * memories.
+@@ -1787,8 +1789,11 @@ static int spansion_quad_enable(struct spi_nor *nor)
+ 		return ret;
 =20
- static int spi_nor_fsr_ready(struct spi_nor *nor)
- {
--	int fsr =3D read_fsr(nor);
--	if (fsr < 0)
--		return fsr;
-+	int ret =3D spi_nor_read_fsr(nor, &nor->bouncebuf[0]);
+ 	/* read back and check it */
+-	ret =3D read_cr(nor);
+-	if (!(ret > 0 && (ret & CR_QUAD_EN_SPAN))) {
++	ret =3D spi_nor_read_cr(nor, &nor->bouncebuf[0]);
++	if (ret)
++		return ret;
 +
++	if (!(nor->bouncebuf[0] & CR_QUAD_EN_SPAN)) {
+ 		dev_err(nor->dev, "Spansion Quad bit not set\n");
+ 		return -EINVAL;
+ 	}
+@@ -1839,21 +1844,18 @@ static int spansion_no_read_cr_quad_enable(struct s=
+pi_nor *nor)
+  */
+ static int spansion_read_cr_quad_enable(struct spi_nor *nor)
+ {
+-	struct device *dev =3D nor->dev;
+ 	u8 *sr_cr =3D nor->bouncebuf;
+ 	int ret;
+=20
+ 	/* Check current Quad Enable bit value. */
+-	ret =3D read_cr(nor);
+-	if (ret < 0) {
+-		dev_err(dev, "error while reading configuration register\n");
+-		return -EINVAL;
+-	}
++	ret =3D spi_nor_read_cr(nor, &sr_cr[1]);
 +	if (ret)
 +		return ret;
 =20
--	if (fsr & (FSR_E_ERR | FSR_P_ERR)) {
--		if (fsr & FSR_E_ERR)
-+	if (nor->bouncebuf[0] & (FSR_E_ERR | FSR_P_ERR)) {
-+		if (nor->bouncebuf[0] & FSR_E_ERR)
- 			dev_err(nor->dev, "Erase operation failed.\n");
- 		else
- 			dev_err(nor->dev, "Program operation failed.\n");
+-	if (ret & CR_QUAD_EN_SPAN)
++	if (sr_cr[1] & CR_QUAD_EN_SPAN)
+ 		return 0;
 =20
--		if (fsr & FSR_PT_ERR)
-+		if (nor->bouncebuf[0] & FSR_PT_ERR)
- 			dev_err(nor->dev,
--			"Attempted to modify a protected sector.\n");
-+				"Attempted to modify a protected sector.\n");
+-	sr_cr[1] =3D ret | CR_QUAD_EN_SPAN;
++	sr_cr[1] |=3D CR_QUAD_EN_SPAN;
 =20
- 		spi_nor_clear_fsr(nor);
- 		return -EIO;
+ 	/* Keep the current value of the Status Register. */
+ 	ret =3D spi_nor_read_sr(nor, &sr_cr[0]);
+@@ -1865,8 +1867,11 @@ static int spansion_read_cr_quad_enable(struct spi_n=
+or *nor)
+ 		return ret;
+=20
+ 	/* Read back and check it. */
+-	ret =3D read_cr(nor);
+-	if (!(ret > 0 && (ret & CR_QUAD_EN_SPAN))) {
++	ret =3D spi_nor_read_cr(nor, &sr_cr[1]);
++	if (ret)
++		return ret;
++
++	if (!(sr_cr[1] & CR_QUAD_EN_SPAN)) {
+ 		dev_err(nor->dev, "Spansion Quad bit not set\n");
+ 		return -EINVAL;
  	}
+@@ -2007,20 +2012,15 @@ static int spi_nor_spansion_clear_sr_bp(struct spi_=
+nor *nor)
+ 	u8 *sr_cr =3D  nor->bouncebuf;
 =20
--	return fsr & FSR_READY;
-+	return nor->bouncebuf[0] & FSR_READY;
- }
+ 	/* Check current Quad Enable bit value. */
+-	ret =3D read_cr(nor);
+-	if (ret < 0) {
+-		dev_err(nor->dev,
+-			"error while reading configuration register\n");
++	ret =3D spi_nor_read_cr(nor, &sr_cr[1]);
++	if (ret)
+ 		return ret;
+-	}
 =20
- static int spi_nor_ready(struct spi_nor *nor)
+ 	/*
+ 	 * When the configuration register Quad Enable bit is one, only the
+ 	 * Write Status (01h) command with two data bytes may be used.
+ 	 */
+-	if (ret & CR_QUAD_EN_SPAN) {
+-		sr_cr[1] =3D ret;
+-
++	if (sr_cr[1] & CR_QUAD_EN_SPAN) {
+ 		ret =3D spi_nor_read_sr(nor, &sr_cr[0]);
+ 		if (ret)
+ 			return ret;
 --=20
 2.9.5
