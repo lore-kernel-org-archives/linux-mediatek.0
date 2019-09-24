@@ -1,11 +1,13 @@
 From: Rob Herring <robh@kernel.org>
-Subject: [PATCH 00/11] PCI dma-ranges parsing consolidation
-Date: Tue, 24 Sep 2019 16:46:19 -0500
-Message-ID: <20190924214630.12817-1-robh@kernel.org>
+Subject: [PATCH 03/11] PCI: mediatek: Use pci_parse_request_of_pci_ranges()
+Date: Tue, 24 Sep 2019 16:46:22 -0500
+Message-ID: <20190924214630.12817-4-robh@kernel.org>
+References: <20190924214630.12817-1-robh@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190924214630.12817-1-robh@kernel.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -16,61 +18,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: linux-pci@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, Shawn Lin <shawn.lin@rock-chips.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Michal Simek <michal.simek@xilinx.com>, linux-rockchip@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, Linus Walleij <linus.walleij@linaro.org>, Ray Jui <rjui@broadcom.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Simon Horman <horms@verge.net.au>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Scott Branden <sbranden@broadcom.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, rfi@lists.rocketboards.org, linux-renesas-soc@vger.kernel.org, Tom Joseph <tjoseph@cadence.com>, Jingoo Han <jingoohan1@gmail.com>, Ley
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This series moves the DT 'dma-ranges' parsing into common helpers
-utilizing a resource list. In the process of doing this, I noticed
-several cases where pci_parse_request_of_pci_ranges() could be used so
-I converted those drivers first. The last 5 patches make the actual
-change to use the common 'dma_ranges' resource list. There's no
-(intended) functional change in this series though I'm also working on
-a separate series to improve the handling of 'dma-ranges' and dma
-masks.
+Convert Mediatek host bridge to use the common
+pci_parse_request_of_pci_ranges().
 
-pci-rcar-gen2 is the only remaining driver doing its own dma-ranges
-handling as it is still using the old ARM PCI functions. Looks like it
-is the last one (in drivers/pci/).
+Cc: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-mediatek@lists.infradead.org
+Signed-off-by: Rob Herring <robh@kernel.org>
+---
+ drivers/pci/controller/pcie-mediatek.c | 47 ++++++++++----------------
+ 1 file changed, 17 insertions(+), 30 deletions(-)
 
-Compile tested only.
-
-Rob
-
-Rob Herring (11):
-  PCI: aardvark: Use pci_parse_request_of_pci_ranges()
-  PCI: altera: Use pci_parse_request_of_pci_ranges()
-  PCI: mediatek: Use pci_parse_request_of_pci_ranges()
-  PCI: versatile: Enable COMPILE_TEST
-  PCI: versatile: Use pci_parse_request_of_pci_ranges()
-  PCI: of: Add inbound resource parsing to helpers
-  PCI: ftpci100: Use inbound resources for setup
-  PCI: v3-semi: Use inbound resources for setup
-  PCI: xgene: Use inbound resources for setup
-  PCI: iproc: Use inbound resources for setup
-  PCI: rcar: Use inbound resources for setup
-
- drivers/pci/controller/Kconfig                |  2 +-
- .../pci/controller/dwc/pcie-designware-host.c |  3 +-
- drivers/pci/controller/pci-aardvark.c         | 58 ++---------------
- drivers/pci/controller/pci-ftpci100.c         | 29 ++++-----
- drivers/pci/controller/pci-host-common.c      |  2 +-
- drivers/pci/controller/pci-v3-semi.c          | 40 +++++-------
- drivers/pci/controller/pci-versatile.c        | 62 ++++--------------
- drivers/pci/controller/pci-xgene.c            | 33 ++++------
- drivers/pci/controller/pcie-altera.c          | 38 +----------
- drivers/pci/controller/pcie-cadence-host.c    |  2 +-
- drivers/pci/controller/pcie-iproc-platform.c  |  1 +
- drivers/pci/controller/pcie-iproc.c           | 63 +++----------------
- drivers/pci/controller/pcie-mediatek.c        | 47 +++++---------
- drivers/pci/controller/pcie-mobiveil.c        |  4 +-
- drivers/pci/controller/pcie-rcar.c            | 48 ++++++--------
- drivers/pci/controller/pcie-rockchip-host.c   |  3 +-
- drivers/pci/controller/pcie-xilinx-nwl.c      |  2 +-
- drivers/pci/controller/pcie-xilinx.c          |  2 +-
- drivers/pci/of.c                              | 44 ++++++++++++-
- drivers/pci/pci.h                             |  8 ++-
- include/linux/pci.h                           |  2 +
- 21 files changed, 162 insertions(+), 331 deletions(-)
-
---
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index 80601e1b939e..cea4112b5309 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -211,7 +211,6 @@ struct mtk_pcie {
+ 	void __iomem *base;
+ 	struct clk *free_ck;
+ 
+-	struct resource mem;
+ 	struct list_head ports;
+ 	const struct mtk_pcie_soc *soc;
+ 	unsigned int busnr;
+@@ -658,11 +657,23 @@ static int mtk_pcie_setup_irq(struct mtk_pcie_port *port,
+ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+ {
+ 	struct mtk_pcie *pcie = port->pcie;
+-	struct resource *mem = &pcie->mem;
++	struct pci_host_bridge *host = pci_host_bridge_from_priv(pcie);
++	struct resource *mem = NULL;
++	struct resource_entry *entry;
+ 	const struct mtk_pcie_soc *soc = port->pcie->soc;
+ 	u32 val;
+ 	int err;
+ 
++	resource_list_for_each_entry(entry, &host->windows) {
++		if (resource_type(entry->res) != IORESOURCE_MEM)
++			continue;
++
++		mem = entry->res;
++		break;
++	}
++	if (!mem)
++		return -EINVAL;
++
+ 	/* MT7622 platforms need to enable LTSSM and ASPM from PCIe subsys */
+ 	if (pcie->base) {
+ 		val = readl(pcie->base + PCIE_SYS_CFG_V2);
+@@ -1017,39 +1028,15 @@ static int mtk_pcie_setup(struct mtk_pcie *pcie)
+ 	struct mtk_pcie_port *port, *tmp;
+ 	struct pci_host_bridge *host = pci_host_bridge_from_priv(pcie);
+ 	struct list_head *windows = &host->windows;
+-	struct resource_entry *win, *tmp_win;
+-	resource_size_t io_base;
++	struct resource *bus;
+ 	int err;
+ 
+-	err = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff,
+-						    windows, &io_base);
++	err = pci_parse_request_of_pci_ranges(dev, windows,
++					      &bus);
+ 	if (err)
+ 		return err;
+ 
+-	err = devm_request_pci_bus_resources(dev, windows);
+-	if (err < 0)
+-		return err;
+-
+-	/* Get the I/O and memory ranges from DT */
+-	resource_list_for_each_entry_safe(win, tmp_win, windows) {
+-		switch (resource_type(win->res)) {
+-		case IORESOURCE_IO:
+-			err = devm_pci_remap_iospace(dev, win->res, io_base);
+-			if (err) {
+-				dev_warn(dev, "error %d: failed to map resource %pR\n",
+-					 err, win->res);
+-				resource_list_destroy_entry(win);
+-			}
+-			break;
+-		case IORESOURCE_MEM:
+-			memcpy(&pcie->mem, win->res, sizeof(*win->res));
+-			pcie->mem.name = "non-prefetchable";
+-			break;
+-		case IORESOURCE_BUS:
+-			pcie->busnr = win->res->start;
+-			break;
+-		}
+-	}
++	pcie->busnr = bus->start;
+ 
+ 	for_each_available_child_of_node(node, child) {
+ 		int slot;
+-- 
 2.20.1
