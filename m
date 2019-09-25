@@ -1,82 +1,142 @@
 From: Derek Basehore <dbasehore@chromium.org>
-Subject: [PATCH v8 1/4] drm/panel: Add helper for reading DT
- rotation
-Date: Wed, 25 Sep 2019 15:58:30 -0700
-Message-ID: <20190925225833.7310-2-dbasehore@chromium.org>
+Subject: [PATCH v8 2/4] drm/panel: set display info in panel attach
+Date: Wed, 25 Sep 2019 15:58:31 -0700
+Message-ID: <20190925225833.7310-3-dbasehore@chromium.org>
 References: <20190925225833.7310-1-dbasehore@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <intel-gfx-bounces@lists.freedesktop.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20190925225833.7310-1-dbasehore@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
-List-Post: <mailto:intel-gfx@lists.freedesktop.org>
-List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: intel-gfx-bounces@lists.freedesktop.org
-Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: linux-kernel@vger.kernel.org
-Cc: Derek Basehore <dbasehore@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, Maxime Ripard <maxime.ripard@bootlin.com>, Sam Ravnborg <sam@ravnborg.org>, intel-gfx@lists.freedesktop.org, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, CK Hu <ck.hu@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Thierry Reding <thierry.reding@gmail.com>, Sam Ravnborg <sam@ravnborg.org>, Jani Nikula <jani.nikula@linux.intel.com>, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Derek Basehore <dbasehore@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-VGhpcyBhZGRzIGEgaGVscGVyIGZ1bmN0aW9uIGZvciByZWFkaW5nIHRoZSByb3RhdGlvbiAocGFu
-ZWwKb3JpZW50YXRpb24pIGZyb20gdGhlIGRldmljZSB0cmVlLgoKU2lnbmVkLW9mZi1ieTogRGVy
-ZWsgQmFzZWhvcmUgPGRiYXNlaG9yZUBjaHJvbWl1bS5vcmc+ClJldmlld2VkLWJ5OiBTYW0gUmF2
-bmJvcmcgPHNhbUByYXZuYm9yZy5vcmc+Ci0tLQogZHJpdmVycy9ncHUvZHJtL2RybV9wYW5lbC5j
-IHwgNDMgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKwogaW5jbHVkZS9kcm0v
-ZHJtX3BhbmVsLmggICAgIHwgIDkgKysrKysrKysKIDIgZmlsZXMgY2hhbmdlZCwgNTIgaW5zZXJ0
-aW9ucygrKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fcGFuZWwuYyBiL2RyaXZl
-cnMvZ3B1L2RybS9kcm1fcGFuZWwuYwppbmRleCA2YjBiZjQyMDM5Y2YuLjA5MDliNTNiNzRlNiAx
-MDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2RybV9wYW5lbC5jCisrKyBiL2RyaXZlcnMvZ3B1
-L2RybS9kcm1fcGFuZWwuYwpAQCAtMjY0LDYgKzI2NCw0OSBAQCBzdHJ1Y3QgZHJtX3BhbmVsICpv
-Zl9kcm1fZmluZF9wYW5lbChjb25zdCBzdHJ1Y3QgZGV2aWNlX25vZGUgKm5wKQogCXJldHVybiBF
-UlJfUFRSKC1FUFJPQkVfREVGRVIpOwogfQogRVhQT1JUX1NZTUJPTChvZl9kcm1fZmluZF9wYW5l
-bCk7CisKKy8qKgorICogb2ZfZHJtX2dldF9wYW5lbF9vcmllbnRhdGlvbiAtIGxvb2sgdXAgdGhl
-IG9yaWVudGF0aW9uIG9mIHRoZSBwYW5lbCB0aHJvdWdoCisgKiB0aGUgInJvdGF0aW9uIiBiaW5k
-aW5nIGZyb20gYSBkZXZpY2UgdHJlZSBub2RlCisgKiBAbnA6IGRldmljZSB0cmVlIG5vZGUgb2Yg
-dGhlIHBhbmVsCisgKiBAb3JpZW50YXRpb246IG9yaWVudGF0aW9uIGVudW0gdG8gYmUgZmlsbGVk
-IGluCisgKgorICogTG9va3MgdXAgdGhlIHJvdGF0aW9uIG9mIGEgcGFuZWwgaW4gdGhlIGRldmlj
-ZSB0cmVlLiBUaGUgb3JpZW50YXRpb24gb2YgdGhlCisgKiBwYW5lbCBpcyBleHByZXNzZWQgYXMg
-YSBwcm9wZXJ0eSBuYW1lICJyb3RhdGlvbiIgaW4gdGhlIGRldmljZSB0cmVlLiBUaGUKKyAqIHJv
-dGF0aW9uIGluIHRoZSBkZXZpY2UgdHJlZSBpcyBjb3VudGVyIGNsb2Nrd2lzZS4KKyAqCisgKiBS
-ZXR1cm46IDAgd2hlbiBhIHZhbGlkIHJvdGF0aW9uIHZhbHVlICgwLCA5MCwgMTgwLCBvciAyNzAp
-IGlzIHJlYWQgb3IgdGhlCisgKiByb3RhdGlvbiBwcm9wZXJ0eSBkb2Vzbid0IGV4aXN0LiAtRUVS
-Uk9SIG90aGVyd2lzZS4KKyAqLworaW50IG9mX2RybV9nZXRfcGFuZWxfb3JpZW50YXRpb24oY29u
-c3Qgc3RydWN0IGRldmljZV9ub2RlICpucCwKKwkJCQkgZW51bSBkcm1fcGFuZWxfb3JpZW50YXRp
-b24gKm9yaWVudGF0aW9uKQoreworCWludCByb3RhdGlvbiwgcmV0OworCisJcmV0ID0gb2ZfcHJv
-cGVydHlfcmVhZF91MzIobnAsICJyb3RhdGlvbiIsICZyb3RhdGlvbik7CisJaWYgKHJldCA9PSAt
-RUlOVkFMKSB7CisJCS8qIERvbid0IHJldHVybiBhbiBlcnJvciBpZiB0aGVyZSdzIG5vIHJvdGF0
-aW9uIHByb3BlcnR5LiAqLworCQkqb3JpZW50YXRpb24gPSBEUk1fTU9ERV9QQU5FTF9PUklFTlRB
-VElPTl9VTktOT1dOOworCQlyZXR1cm4gMDsKKwl9CisKKwlpZiAocmV0IDwgMCkKKwkJcmV0dXJu
-IHJldDsKKworCWlmIChyb3RhdGlvbiA9PSAwKQorCQkqb3JpZW50YXRpb24gPSBEUk1fTU9ERV9Q
-QU5FTF9PUklFTlRBVElPTl9OT1JNQUw7CisJZWxzZSBpZiAocm90YXRpb24gPT0gOTApCisJCSpv
-cmllbnRhdGlvbiA9IERSTV9NT0RFX1BBTkVMX09SSUVOVEFUSU9OX1JJR0hUX1VQOworCWVsc2Ug
-aWYgKHJvdGF0aW9uID09IDE4MCkKKwkJKm9yaWVudGF0aW9uID0gRFJNX01PREVfUEFORUxfT1JJ
-RU5UQVRJT05fQk9UVE9NX1VQOworCWVsc2UgaWYgKHJvdGF0aW9uID09IDI3MCkKKwkJKm9yaWVu
-dGF0aW9uID0gRFJNX01PREVfUEFORUxfT1JJRU5UQVRJT05fTEVGVF9VUDsKKwllbHNlCisJCXJl
-dHVybiAtRUlOVkFMOworCisJcmV0dXJuIDA7Cit9CitFWFBPUlRfU1lNQk9MKG9mX2RybV9nZXRf
-cGFuZWxfb3JpZW50YXRpb24pOwogI2VuZGlmCiAKIE1PRFVMRV9BVVRIT1IoIlRoaWVycnkgUmVk
-aW5nIDx0cmVkaW5nQG52aWRpYS5jb20+Iik7CmRpZmYgLS1naXQgYS9pbmNsdWRlL2RybS9kcm1f
-cGFuZWwuaCBiL2luY2x1ZGUvZHJtL2RybV9wYW5lbC5oCmluZGV4IDYyNGJkMTVlY2ZhYi4uZDE2
-MTU4ZGVhY2RjIDEwMDY0NAotLS0gYS9pbmNsdWRlL2RybS9kcm1fcGFuZWwuaAorKysgYi9pbmNs
-dWRlL2RybS9kcm1fcGFuZWwuaApAQCAtMzQsNiArMzQsOCBAQCBzdHJ1Y3QgZHJtX2RldmljZTsK
-IHN0cnVjdCBkcm1fcGFuZWw7CiBzdHJ1Y3QgZGlzcGxheV90aW1pbmc7CiAKK2VudW0gZHJtX3Bh
-bmVsX29yaWVudGF0aW9uOworCiAvKioKICAqIHN0cnVjdCBkcm1fcGFuZWxfZnVuY3MgLSBwZXJm
-b3JtIG9wZXJhdGlvbnMgb24gYSBnaXZlbiBwYW5lbAogICoKQEAgLTE2NSwxMSArMTY3LDE4IEBA
-IGludCBkcm1fcGFuZWxfZ2V0X21vZGVzKHN0cnVjdCBkcm1fcGFuZWwgKnBhbmVsKTsKIAogI2lm
-IGRlZmluZWQoQ09ORklHX09GKSAmJiBkZWZpbmVkKENPTkZJR19EUk1fUEFORUwpCiBzdHJ1Y3Qg
-ZHJtX3BhbmVsICpvZl9kcm1fZmluZF9wYW5lbChjb25zdCBzdHJ1Y3QgZGV2aWNlX25vZGUgKm5w
-KTsKK2ludCBvZl9kcm1fZ2V0X3BhbmVsX29yaWVudGF0aW9uKGNvbnN0IHN0cnVjdCBkZXZpY2Vf
-bm9kZSAqbnAsCisJCQkJIGVudW0gZHJtX3BhbmVsX29yaWVudGF0aW9uICpvcmllbnRhdGlvbik7
-CiAjZWxzZQogc3RhdGljIGlubGluZSBzdHJ1Y3QgZHJtX3BhbmVsICpvZl9kcm1fZmluZF9wYW5l
-bChjb25zdCBzdHJ1Y3QgZGV2aWNlX25vZGUgKm5wKQogewogCXJldHVybiBFUlJfUFRSKC1FTk9E
-RVYpOwogfQorc3RhdGljIGlubGluZSBpbnQgb2ZfZHJtX2dldF9wYW5lbF9vcmllbnRhdGlvbihj
-b25zdCBzdHJ1Y3QgZGV2aWNlX25vZGUgKm5wLAorCQllbnVtIGRybV9wYW5lbF9vcmllbnRhdGlv
-biAqb3JpZW50YXRpb24pCit7CisJcmV0dXJuIC1FTk9ERVY7Cit9CiAjZW5kaWYKIAogI2VuZGlm
-Ci0tIAoyLjIzLjAuMzUxLmdjNDMxNzAzMmU2LWdvb2cKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLWdmeCBtYWlsaW5nIGxpc3QKSW50ZWwtZ2Z4
-QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2ludGVsLWdmeA==
+Devicetree systems can set panel orientation via a panel binding, but
+there's no way, as is, to propagate this setting to the connector,
+where the property need to be added.
+To address this, this patch sets orientation, as well as other fixed
+values for the panel, in the drm_panel_attach function. These values
+are stored from probe in the drm_panel struct.
+
+Signed-off-by: Derek Basehore <dbasehore@chromium.org>
+Reviewed-by: Sam Ravnborg <sam@ravnborg.org>
+---
+ drivers/gpu/drm/drm_panel.c | 28 +++++++++++++++++++++
+ include/drm/drm_panel.h     | 50 +++++++++++++++++++++++++++++++++++++
+ 2 files changed, 78 insertions(+)
+
+diff --git a/drivers/gpu/drm/drm_panel.c b/drivers/gpu/drm/drm_panel.c
+index 0909b53b74e6..1cd2b56c9fe6 100644
+--- a/drivers/gpu/drm/drm_panel.c
++++ b/drivers/gpu/drm/drm_panel.c
+@@ -104,11 +104,23 @@ EXPORT_SYMBOL(drm_panel_remove);
+  */
+ int drm_panel_attach(struct drm_panel *panel, struct drm_connector *connector)
+ {
++	struct drm_display_info *info;
++
+ 	if (panel->connector)
+ 		return -EBUSY;
+ 
+ 	panel->connector = connector;
+ 	panel->drm = connector->dev;
++	info = &connector->display_info;
++	info->width_mm = panel->width_mm;
++	info->height_mm = panel->height_mm;
++	info->bpc = panel->bpc;
++	info->panel_orientation = panel->orientation;
++	info->bus_flags = panel->bus_flags;
++	if (panel->bus_formats)
++		drm_display_info_set_bus_formats(&connector->display_info,
++						 panel->bus_formats,
++						 panel->num_bus_formats);
+ 
+ 	return 0;
+ }
+@@ -126,6 +138,22 @@ EXPORT_SYMBOL(drm_panel_attach);
+  */
+ void drm_panel_detach(struct drm_panel *panel)
+ {
++	struct drm_display_info *info;
++
++	if (!panel->connector)
++		goto out;
++
++	info = &panel->connector->display_info;
++	info->width_mm = 0;
++	info->height_mm = 0;
++	info->bpc = 0;
++	info->panel_orientation = DRM_MODE_PANEL_ORIENTATION_UNKNOWN;
++	info->bus_flags = 0;
++	kfree(info->bus_formats);
++	info->bus_formats = NULL;
++	info->num_bus_formats = 0;
++
++out:
+ 	panel->connector = NULL;
+ 	panel->drm = NULL;
+ }
+diff --git a/include/drm/drm_panel.h b/include/drm/drm_panel.h
+index d16158deacdc..f3587a54b8ac 100644
+--- a/include/drm/drm_panel.h
++++ b/include/drm/drm_panel.h
+@@ -141,6 +141,56 @@ struct drm_panel {
+ 	 */
+ 	const struct drm_panel_funcs *funcs;
+ 
++	/**
++	 * @width_mm:
++	 *
++	 * Physical width in mm.
++	 */
++	unsigned int width_mm;
++
++	/**
++	 * @height_mm:
++	 *
++	 * Physical height in mm.
++	 */
++	unsigned int height_mm;
++
++	/**
++	 * @bpc:
++	 *
++	 * Maximum bits per color channel. Used by HDMI and DP outputs.
++	 */
++	unsigned int bpc;
++
++	/**
++	 * @orientation
++	 *
++	 * Installation orientation of the panel with respect to the chassis.
++	 */
++	int orientation;
++
++	/**
++	 * @bus_formats
++	 *
++	 * Pixel data format on the wire.
++	 */
++	const u32 *bus_formats;
++
++	/**
++	 * @num_bus_formats:
++	 *
++	 * Number of elements pointed to by @bus_formats
++	 */
++	unsigned int num_bus_formats;
++
++	/**
++	 * @bus_flags:
++	 *
++	 * Additional information (like pixel signal polarity) for the pixel
++	 * data on the bus.
++	 */
++	u32 bus_flags;
++
+ 	/**
+ 	 * @list:
+ 	 *
+-- 
+2.23.0.351.gc4317032e6-goog
