@@ -1,130 +1,95 @@
-From: Miles Chen <miles.chen@mediatek.com>
-Subject: [PATCH v2] mm: slub: print the offset of fault addresses
-Date: Wed, 25 Sep 2019 22:08:07 +0800
-Message-ID: <20190925140807.20490-1-miles.chen@mediatek.com>
+From: Sam Shih <sam.shih@mediatek.com>
+Subject: [PATCH v10 0/12] Add mt7629 and fix mt7628 pwm
+Date: Wed, 25 Sep 2019 22:32:25 +0800
+Message-ID: <1569421957-20765-1-git-send-email-sam.shih@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Andrew Morton <akpm@linux-foundation.org>
-Cc: linux-kernel@vger.kernel.org, linux-mm@kvack.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Miles Chen <miles.chen@mediatek.com>, Matthew Wilcox <willy@infradead.org>
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <thierry.reding@gmail.com>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, John Crispin <john@phrozen.org>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sam Shih <sam.shih@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-With the commit ad67b74d2469d9b8 ("printk: hash addresses printed with
-%p"), it is a little bit harder to match the fault addresses printed by
-check_bytes_and_report() or slab_pad_check() in the dump because the
-fault addresses may not show up in the dump.
+Changes since v10
+  1. Follow reviewers's comments:
+  - derive the number of PWMs from the specific compatible string
+  2. Add mt7629 pwm description
+  3. Add mt7628 fixed-clock description
 
-Print the offset of the fault addresses to make it easier to match the
-incorrect poison or padding values in the dump.
+Changes since v9:
+  1. PATCH 03/11: Add an Acked-by tag
 
-Before:
-We have to search the "63" in the dump. If we want to get the offset of
-63, we have to count it from the start of Object dump.
+Changes since v8:
+  1. Fix warning and build-error for patch 04/11
 
-=============================================================
-BUG kmalloc-128 (Not tainted): Poison overwritten
--------------------------------------------------------------
+Changes since v7:
+  1. PATCH v7 10/11: Add a missed Reviewed-by tag
 
-Disabling lock debugging due to kernel taint
-INFO: 0x00000000570da294-0x00000000570da294.
-First byte 0x63 instead of 0x6b
-...
-INFO: Object 0x000000006ebb3b9e @offset=14208 fp=0x0000000065862488
-Redzone 00000000a6abccff: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone 00000000741c16f0: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone 0000000061ad278f: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone 000000000467c1bd: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone 000000008812766b: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone 000000003d9b8f25: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone 0000000000d80c33: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone 00000000867b0d90: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Object 000000006ebb3b9e: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object 000000005ea59a9f: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object 000000003ef8bddc: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object 000000008190375d: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object 000000006df7fb32: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object 0000000069474eae: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object 0000000008073b7d: 6b 6b 6b 6b 63 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object 00000000b45ae74d: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b a5
+Changes since v6:
+  1. Due to we can use fixed-clock in DT
+     We removed has_clks and fixed-clock properties 
 
-After:
-We know the fault address is at @offset=1508, and the Object is at
-@offset=1408, so we know the fault address is at offset=100 within the
-object.
+Changes since v5:
+- Follow reviewer's comments:
+  1. the license stuff is a separate change
+  2. split fix mt7628 pwm into a single patch
+  3. to ensure to not use mtk_pwm_clk_name[10] 
+     (After dynamic allocate clock array patch, 
+      this is no need to check)
+  4. Use clock-frequency property to replace 
+     the use of has_clks
 
-=========================================================
-BUG kmalloc-128 (Not tainted): Poison overwritten
----------------------------------------------------------
+Changes since v4:
+- Follow reviewer's comments (v3: pwm: mediatek: add a property "num-pwms")
+  Move the changes of droping the check for of_device_get_match_data
+  returning non-NULL to next patch
+- Follow reviewers's comments 
+  (v3: pwm: mediatek: allocate the clks array dynamically)
+  1. use pc->soc->has_clks to check clocks exist or not.
+  2. Add error message when probe() unable to get clks
+- Fixes bug when SoC is old mips which has no complex clock tree.
+if clocks not exist, use the new property from DT to apply period 
+calculation; otherwise, use clk_get_rate to get clock frequency and 
+apply period calculation.
 
-Disabling lock debugging due to kernel taint
-INFO: 0x00000000638ec1d1-0x00000000638ec1d1 @offset=1508.
-First byte 0x63 instead of 0x6b
-...
-INFO: Object 0x000000008171818d @offset=1408 fp=0x0000000066dae230
-Redzone 00000000e2697ab6: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone 0000000064b6a381: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone 00000000e413a234: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone 0000000004c1dfeb: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone 000000009ad24d42: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone 000000002a196a23: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone 00000000a7b8468a: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Redzone 0000000088db6da3: bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb bb
-Object 000000008171818d: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object 000000007c4035d4: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object 000000004dd281a4: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object 0000000079121dff: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object 00000000756682a9: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object 0000000053b7e541: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object 0000000091f8d530: 6b 6b 6b 6b 63 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b
-Object 000000009c76035c: 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b 6b a5
+Changes since v3:
+- add a new property "clock-frequency" and fix mt7628 pwm
+- add mt7629 pwm support
 
-Change since v1:
-1. do not replace DUMP_PREFIX_ADDRESS with DUMP_PREFIX_OFFSET because
-the hash addresses are useful
-2. print the offset of the fault address
+Changes since v2:
+- use num-pwms instead of mediatek,num-pwms.
+- rename the member from num_pwms to fallback_num_pwms to make it 
+  more obvious that it doesn't represent the actually used value.
+- add a dev_warn and a expressive comment to help other developers 
+  to not start adding num_pwms in the compatible_data.
 
-Cc: Christoph Lameter <cl@linux.com>
-Cc: Matthew Wilcox <willy@infradead.org>
-Cc: David Rientjes <rientjes@google.com>
-Signed-off-by: Miles Chen <miles.chen@mediatek.com>
----
- mm/slub.c | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+Changes since v1:
+- add some checks for backwards compatibility.
 
-diff --git a/mm/slub.c b/mm/slub.c
-index 42c1b3af3c98..21d26cd3e3bc 100644
---- a/mm/slub.c
-+++ b/mm/slub.c
-@@ -736,6 +736,7 @@ static int check_bytes_and_report(struct kmem_cache *s, struct page *page,
- {
- 	u8 *fault;
- 	u8 *end;
-+	u8 *addr = page_address(page);
- 
- 	metadata_access_enable();
- 	fault = memchr_inv(start, value, bytes);
-@@ -748,8 +749,9 @@ static int check_bytes_and_report(struct kmem_cache *s, struct page *page,
- 		end--;
- 
- 	slab_bug(s, "%s overwritten", what);
--	pr_err("INFO: 0x%p-0x%p. First byte 0x%x instead of 0x%x\n",
--					fault, end - 1, fault[0], value);
-+	pr_err("INFO: 0x%p-0x%p @offset=%tu. First byte 0x%x instead of 0x%x\n",
-+					fault, end - 1, fault - addr,
-+					fault[0], value);
- 	print_trailer(s, page, object);
- 
- 	restore_bytes(s, what, value, fault, end);
-@@ -844,7 +846,8 @@ static int slab_pad_check(struct kmem_cache *s, struct page *page)
- 	while (end > fault && end[-1] == POISON_INUSE)
- 		end--;
- 
--	slab_err(s, page, "Padding overwritten. 0x%p-0x%p", fault, end - 1);
-+	slab_err(s, page, "Padding overwritten. 0x%p-0x%p @offset=%tu",
-+			fault, end - 1, fault - start);
- 	print_section(KERN_ERR, "Padding ", pad, remainder);
- 
- 	restore_bytes(s, "slab padding", POISON_INUSE, fault, end);
+
+
+Ryder Lee (5):
+  pwm: mediatek: add a property "num-pwms"
+  dt-bindings: pwm: pwm-mediatek: add a property "num-pwms"
+  arm64: dts: mt7622: add a property "num-pwms" for PWM
+  arm: dts: mt7623: add a property "num-pwms" for PWM
+  dt-bindings: pwm: update bindings for MT7629 SoC
+
+Sam Shih (7):
+  pwm: mediatek: droping the check for of_device_get_match_data
+  pwm: mediatek: remove a property "has-clks"
+  pwm: mediatek: allocate the clks array dynamically
+  pwm: mediatek: use pwm_mediatek as common prefix
+  pwm: mediatek: update license and switch to SPDX tag
+  pwm: mediatek: Add MT7629 compatible string
+  arm: dts: mediatek: add mt7629 pwm support
+
+ .../devicetree/bindings/pwm/pwm-mediatek.txt  |  11 +-
+ arch/arm/boot/dts/mt7623.dtsi                 |   1 +
+ arch/arm/boot/dts/mt7629.dtsi                 |  15 ++
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi      |   1 +
+ drivers/pwm/pwm-mediatek.c                    | 249 +++++++++---------
+ 5 files changed, 155 insertions(+), 122 deletions(-)
+
 -- 
-2.18.0
+2.17.1
