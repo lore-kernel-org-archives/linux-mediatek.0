@@ -1,122 +1,39 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH] [MT6660] Mediatek Smart Amplifier Driver
-Date: Wed, 25 Sep 2019 09:50:23 -0700
-Message-ID: <20190925165023.GJ2036@sirena.org.uk>
-References: <1567494501-3427-1-git-send-email-richtek.jeff.chang@gmail.com>
- <20190903163829.GB7916@sirena.co.uk>
- <1a776762-ee65-7344-4bca-c82e16badffa@gmail.com>
- <20190904115630.GA4348@sirena.co.uk>
- <3a9f66b3-bdb7-9bec-a9c4-ac58d3efa543@gmail.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH 0/7] add support for clocksource/clockevent DT selection
+Date: Wed, 25 Sep 2019 19:19:16 +0200
+Message-ID: <c3a68a08-d134-cd28-c8af-f757628e07f1@linaro.org>
+References: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============1286266860759516056=="
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <3a9f66b3-bdb7-9bec-a9c4-ac58d3efa543@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Richtek Jeff Chang <richtek.jeff.chang@gmail.com>
-Cc: alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, tiwai@suse.com, lgirdwood@gmail.com, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, perex@perex.cz, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Claudiu Beznea <claudiu.beznea@microchip.com>, robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, nsekhar@ti.com, bgolaszewski@baylibre.com, monstr@monstr.eu, john@phrozen.org, ralf@linux-mips.org, paul.burton@mips.com, jhogan@kernel.org, lftan@altera.com, tglx@linutronix.de, vgupta@synopsys.com, marc.zyngier@arm.com, patrice.chotard@st.com, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, eric@anholt.net, wahrenst@gmx.net, f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, bcm-kernel-feedback-list@broadcom.com, linus.walleij@linaro.org, shc_work@mail.ru, kgene@kernel.org, krzk@kernel.org, ysato@users.sourceforge.jp, liviu.dudau@arm.com, sudeep.holla@arm.com, lorenzo.pieralisi@arm.com, shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, nios2-dev@lists.rocketboards.org, linux-snps-arc@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-rpi-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, uclinux-h8-devel@lists.sourceforge.jp, linux-amlogic@lists.infradead.org, openbmc@lists.ozlabs.org, linux-oxnas@groups.io, linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org, linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
---===============1286266860759516056==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="FO0yZLwVDWUwTKck"
-Content-Disposition: inline
+Hi Claudiu,
+
+On 10/09/2019 15:47, Claudiu Beznea wrote:
+> Hi,
+> 
+> This series adds support to permit the selection of clocksource/clockevent
+> via DT.
+
+Thanks for the proposal and taking care of making some progress on this.
+
+I just wanted to let you know I've been traveling but the series is in
+my pipe and I did not forget it. I'll comment it next week.
+
+ -- Daniel
 
 
---FO0yZLwVDWUwTKck
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+-- 
+ <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
 
-On Wed, Sep 25, 2019 at 06:04:23PM +0800, Richtek Jeff Chang wrote:
-> Mark Brown =E6=96=BC 2019/9/4 =E4=B8=8B=E5=8D=887:56 =E5=AF=AB=E9=81=93:
-> > On Wed, Sep 04, 2019 at 03:07:06PM +0800, Richtek Jeff Chang wrote:
-
-> > > > It would be good to implement a regmap rather than open coding
-> > > > *everything* - it'd give you things like this without needing to op=
-en
-> > > > code them.  Providing you don't use the cache code it should cope f=
-ine
-> > > > with variable register sizes.
-
-> > > Due to our hardware design, it is hard to implement regmap for MT6660.
-> > You definitely can't use all the functionality due to the variable
-> > register sizes but using reg_write() and reg_read() should get you most
-> > of it.
-
-> =C2=A0=C2=A0=C2=A0 How can I fill the val_bits for variable register size?
-
-> =C2=A0=C2=A0=C2=A0 I try to use all 32 bits val_bits, but our chip some r=
-egisters are
-> overlap...
-
-> =C2=A0=C2=A0=C2=A0 Do you have any suggestion for this issue?=C2=A0 Thank=
- you very much!
-
-If you use reg_read() and reg_write() operations you can hide the
-register size within them - the rest of the code thinks the
-registers are all the 32 bits but when doing I/O it can use the
-appropriate size for a given register.
-
-> > > > > +	for (i =3D 0; i < len; i++) {
-> > > > > +		ret =3D mt6660_i2c_update_bits(chip, init_table[i].addr,
-> > > > > +				init_table[i].mask, init_table[i].data);
-> > > > > +		if (ret < 0)
-> > > > > +			return ret;
-
-> > > > Why are we not using the chip defaults here?
-
-> > > Because MT6660 needs this initial setting for working well.
-> > What are these settings?  Are you sure they are generic settings and
-> > not board specific?
-
-> Yes, they are generic setting. It comes from our hardware designers.
-
-You should probably be using the regmap register patch feature,
-it's for things like this where the chip should always be used
-with a different set of defaults to the silicon.
-
-> Should I send new patch file to you in this mail loop, or I should send n=
-ew
-> patch via new Email Loop?
-
-A new one please.
-
---FO0yZLwVDWUwTKck
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl2Lms8ACgkQJNaLcl1U
-h9DWyAf9GJg6rx9ZA0HyG5Q6KMBXqXHcD5FiF/ew+TDWG91wurQF0lIa3JOuBM6P
-5MIzrRqWv0j0DFyUD+E0TLtruxSh5zWNV8De2kE84wswFX1f6QA7FYOKqs9iTQ/I
-RdCU8CfdrVviYD7cphFaaaF2Aq/dlSGA/kRINOiWswGyYaHLB78Z/TYLD9L5tPTk
-yo5ju5eLjrAL4PPOso49/VhONhU6BOcIjmOBiix3NkL45BzNS1gPVGsggRcFC3Rc
-aaBv1Fd3lPfExjOG9p5H6PGzGLjtPh5DwK7AuXs0RaW8cUWdrIsvRARD6R6+OTCr
-5g84bg+BvEfqAeb1XolhPuf7EpZ/Ow==
-=C2/G
------END PGP SIGNATURE-----
-
---FO0yZLwVDWUwTKck--
-
-
---===============1286266860759516056==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-linux-arm-kernel mailing list
-linux-arm-kernel@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-
---===============1286266860759516056==--
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
