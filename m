@@ -1,47 +1,44 @@
-From: Sam Shih <sam.shih@mediatek.com>
-Subject: [PATCH v10 11/12] dt-bindings: pwm: update bindings for MT7629 SoC
-Date: Wed, 25 Sep 2019 22:32:36 +0800
-Message-ID: <1569421957-20765-12-git-send-email-sam.shih@mediatek.com>
-References: <1569421957-20765-1-git-send-email-sam.shih@mediatek.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH] clocksource: mediatek: fix error handling
+Date: Wed, 25 Sep 2019 18:42:36 +0200
+Message-ID: <e52093c9-a519-62e5-1c1e-acd626a92798@linaro.org>
+References: <20190919191315.25190-1-fparent@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1569421957-20765-1-git-send-email-sam.shih@mediatek.com>
+In-Reply-To: <20190919191315.25190-1-fparent@baylibre.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <thierry.reding@gmail.com>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, John Crispin <john@phrozen.org>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sam Shih <sam.shih@mediatek.com>
+To: Fabien Parent <fparent@baylibre.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: tglx@linutronix.de, matthias.bgg@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Ryder Lee <ryder.lee@mediatek.com>
+On 19/09/2019 21:13, Fabien Parent wrote:
+> When timer_of_init fails, it cleans up after itself by undoing
+> everything it did during the initialization function.
+> 
+> mtk_syst_init and mtk_gpt_init both call timer_of_cleanup if
+> timer_of_init fails. timer_of_cleanup try to release the resource taken.
+> Since these resources have already been cleaned up by timer_of_init,
+> we end up getting a few warnings printed:
 
-This updates bindings for MT7629 pwm controller.
+[ ... ]
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-Signed-off-by: Sam Shih <sam.shih@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
----
-Changes since v7:
-- add a missed Reviewed-by tag back from v1:
-https://patchwork.kernel.org/patch/10769381/
-Changes since v1:
-- add a Reviewed-by tag
+> This commit remove the calls to timer_of_cleanup when timer_of_init
+> fails since it is unnecessary and actually cause warnings to be printed.
+> 
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
 
----
- Documentation/devicetree/bindings/pwm/pwm-mediatek.txt | 1 +
- 1 file changed, 1 insertion(+)
+Applied, thanks for the fix!
 
-diff --git a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-index 975d7871830d..744deea8a256 100644
---- a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-+++ b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-@@ -6,6 +6,7 @@ Required properties:
-    - "mediatek,mt7622-pwm": found on mt7622 SoC.
-    - "mediatek,mt7623-pwm": found on mt7623 SoC.
-    - "mediatek,mt7628-pwm": found on mt7628 SoC.
-+   - "mediatek,mt7629-pwm": found on mt7629 SoC.
-  - reg: physical base address and length of the controller's registers.
-  - #pwm-cells: must be 2. See pwm.txt in this directory for a description of
-    the cell format.
+In the future add the 'Fixes' tag please.
+
+  -- Daniel
+
 -- 
-2.17.1
+ <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
