@@ -1,59 +1,86 @@
-From: Andrey Ryabinin <aryabinin@virtuozzo.com>
-Subject: Re: [PATCH] mm, debug, kasan: save and dump freeing stack trace for
- kasan
-Date: Wed, 25 Sep 2019 12:41:18 +0300
-Message-ID: <28e076ed-d4c2-c29d-f0cb-b976e8c0725a@virtuozzo.com>
-References: <20190911083921.4158-1-walter-zh.wu@mediatek.com>
- <5E358F4B-552C-4542-9655-E01C7B754F14@lca.pw>
- <c4d2518f-4813-c941-6f47-73897f420517@suse.cz>
- <1568297308.19040.5.camel@mtksdccf07>
- <613f9f23-c7f0-871f-fe13-930c35ef3105@suse.cz>
- <79fede05-735b-8477-c273-f34db93fd72b@virtuozzo.com>
- <6d58ce86-b2a4-40af-bf40-c604b457d086@suse.cz>
- <4e76e7ce-1d61-524a-622b-663c01d19707@virtuozzo.com>
- <d98bf550-367d-0744-025a-52307248ec82@suse.cz>
+From: Richtek Jeff Chang <richtek.jeff.chang@gmail.com>
+Subject: Re: [PATCH] [MT6660] Mediatek Smart Amplifier Driver
+Date: Wed, 25 Sep 2019 18:04:23 +0800
+Message-ID: <3a9f66b3-bdb7-9bec-a9c4-ac58d3efa543@gmail.com>
+References: <1567494501-3427-1-git-send-email-richtek.jeff.chang@gmail.com>
+ <20190903163829.GB7916@sirena.co.uk>
+ <1a776762-ee65-7344-4bca-c82e16badffa@gmail.com>
+ <20190904115630.GA4348@sirena.co.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <d98bf550-367d-0744-025a-52307248ec82@suse.cz>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20190904115630.GA4348@sirena.co.uk>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Vlastimil Babka <vbabka@suse.cz>, Walter Wu <walter-zh.wu@mediatek.com>
-Cc: Qian Cai <cai@lca.pw>, Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Martin Schwidefsky <schwidefsky@de.ibm.com>, Andrey Konovalov <andreyknvl@google.com>, Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org, kasan-dev@googlegroups.com, linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+List-Unsubscribe: <https://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <https://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: "Alsa-devel" <alsa-devel-bounces@alsa-project.org>
+To: Mark Brown <broonie@kernel.org>
+Cc: alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, tiwai@suse.com, lgirdwood@gmail.com, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 9/23/19 11:20 AM, Vlastimil Babka wrote:
-> On 9/16/19 5:57 PM, Andrey Ryabinin wrote:
->> I'd rather keep all logic in one place, i.e. "if (!page_owner_disabled && (IS_ENABLED(CONFIG_KASAN) || debug_pagealloc_enabled())"
->> With this no changes in early_debug_pagealloc() required and CONFIG_DEBUG_PAGEALLOC_ENABLE_DEFAULT=y should also work correctly.
-> 
-> OK.
-> 
-> ----8<----
-> 
-> From 7437c43f02682fdde5680fa83e87029f7529e222 Mon Sep 17 00:00:00 2001
-> From: Vlastimil Babka <vbabka@suse.cz>
-> Date: Mon, 16 Sep 2019 11:28:19 +0200
-> Subject: [PATCH] mm, debug, kasan: save and dump freeing stack trace for kasan
-> 
-> The commit "mm, page_owner, debug_pagealloc: save and dump freeing stack trace"
-> enhanced page_owner to also store freeing stack trace, when debug_pagealloc is
-> also enabled. KASAN would also like to do this [1] to improve error reports to
-> debug e.g. UAF issues. This patch therefore introduces a helper config option
-> PAGE_OWNER_FREE_STACK, which is enabled when PAGE_OWNER and either of
-> DEBUG_PAGEALLOC or KASAN is enabled. Boot-time, the free stack saving is
-> enabled when booting a KASAN kernel with page_owner=on, or non-KASAN kernel
-> with debug_pagealloc=on and page_owner=on.
-> 
-> [1] https://bugzilla.kernel.org/show_bug.cgi?id=203967
-> 
-> Suggested-by: Dmitry Vyukov <dvyukov@google.com>
-> Suggested-by: Walter Wu <walter-zh.wu@mediatek.com>
-> Suggested-by: Andrey Ryabinin <aryabinin@virtuozzo.com>
-> Signed-off-by: Vlastimil Babka <vbabka@suse.cz>
-> ---
-
-Reviewed-by: Andrey Ryabinin <aryabinin@virtuozzo.com>
+RGVhciBNYXJrOgoKIMKgwqDCoCBUaGFua3MgZm9yIHlvdXIgcmVwbHkuCgogwqDCoMKgIEJ1dCBJ
+IHN0aWxsIGhhdmUgc29tZSBxdWVzdGlvbnMuIHBsZWFzZSBjaGVjayB0aGUgcmVkIGNvbW1lbnQu
+CgpNYXJrIEJyb3duIOaWvCAyMDE5LzkvNCDkuIvljYg3OjU2IOWvq+mBkzoKPiBPbiBXZWQsIFNl
+cCAwNCwgMjAxOSBhdCAwMzowNzowNlBNICswODAwLCBSaWNodGVrIEplZmYgQ2hhbmcgd3JvdGU6
+Cj4KPj4+PiArc3RhdGljIGludDMyX3QgbXQ2NjYwX2kyY191cGRhdGVfYml0cyhzdHJ1Y3QgbXQ2
+NjYwX2NoaXAgKmNoaXAsCj4+Pj4gKwl1aW50MzJfdCBhZGRyLCB1aW50MzJfdCBtYXNrLCB1aW50
+MzJfdCBkYXRhKQo+Pj4+ICt7Cj4+PiBJdCB3b3VsZCBiZSBnb29kIHRvIGltcGxlbWVudCBhIHJl
+Z21hcCByYXRoZXIgdGhhbiBvcGVuIGNvZGluZwo+Pj4gKmV2ZXJ5dGhpbmcqIC0gaXQnZCBnaXZl
+IHlvdSB0aGluZ3MgbGlrZSB0aGlzIHdpdGhvdXQgbmVlZGluZyB0byBvcGVuCj4+PiBjb2RlIHRo
+ZW0uICBQcm92aWRpbmcgeW91IGRvbid0IHVzZSB0aGUgY2FjaGUgY29kZSBpdCBzaG91bGQgY29w
+ZSBmaW5lCj4+PiB3aXRoIHZhcmlhYmxlIHJlZ2lzdGVyIHNpemVzLgo+PiBEdWUgdG8gb3VyIGhh
+cmR3YXJlIGRlc2lnbiwgaXQgaXMgaGFyZCB0byBpbXBsZW1lbnQgcmVnbWFwIGZvciBNVDY2NjAu
+Cj4gWW91IGRlZmluaXRlbHkgY2FuJ3QgdXNlIGFsbCB0aGUgZnVuY3Rpb25hbGl0eSBkdWUgdG8g
+dGhlIHZhcmlhYmxlCj4gcmVnaXN0ZXIgc2l6ZXMgYnV0IHVzaW5nIHJlZ193cml0ZSgpIGFuZCBy
+ZWdfcmVhZCgpIHNob3VsZCBnZXQgeW91IG1vc3QKPiBvZiBpdC4KCgogwqDCoMKgIEhvdyBjYW4g
+SSBmaWxsIHRoZSB2YWxfYml0cyBmb3IgdmFyaWFibGUgcmVnaXN0ZXIgc2l6ZT8KCiDCoMKgwqAg
+SSB0cnkgdG8gdXNlIGFsbCAzMiBiaXRzIHZhbF9iaXRzLCBidXQgb3VyIGNoaXAgc29tZSByZWdp
+c3RlcnMgYXJlIApvdmVybGFwLi4uCgogwqDCoMKgIERvIHlvdSBoYXZlIGFueSBzdWdnZXN0aW9u
+IGZvciB0aGlzIGlzc3VlP8KgIFRoYW5rIHlvdSB2ZXJ5IG11Y2ghCgo+Cj4+Pj4gK3N0YXRpYyBp
+bnQgbXQ2NjYwX2kyY19pbml0X3NldHRpbmcoc3RydWN0IG10NjY2MF9jaGlwICpjaGlwKQo+Pj4+
+ICt7Cj4+Pj4gKwlpbnQgaSwgbGVuLCByZXQ7Cj4+Pj4gKwljb25zdCBzdHJ1Y3QgY29kZWNfcmVn
+X3ZhbCAqaW5pdF90YWJsZTsKPj4+PiArCj4+Pj4gKwlpbml0X3RhYmxlID0gZTRfcmVnX2luaXRz
+Owo+Pj4+ICsJbGVuID0gQVJSQVlfU0laRShlNF9yZWdfaW5pdHMpOwo+Pj4+ICsKPj4+PiArCWZv
+ciAoaSA9IDA7IGkgPCBsZW47IGkrKykgewo+Pj4+ICsJCXJldCA9IG10NjY2MF9pMmNfdXBkYXRl
+X2JpdHMoY2hpcCwgaW5pdF90YWJsZVtpXS5hZGRyLAo+Pj4+ICsJCQkJaW5pdF90YWJsZVtpXS5t
+YXNrLCBpbml0X3RhYmxlW2ldLmRhdGEpOwo+Pj4+ICsJCWlmIChyZXQgPCAwKQo+Pj4+ICsJCQly
+ZXR1cm4gcmV0Owo+Pj4gV2h5IGFyZSB3ZSBub3QgdXNpbmcgdGhlIGNoaXAgZGVmYXVsdHMgaGVy
+ZT8KPj4gQmVjYXVzZSBNVDY2NjAgbmVlZHMgdGhpcyBpbml0aWFsIHNldHRpbmcgZm9yIHdvcmtp
+bmcgd2VsbC4KPiBXaGF0IGFyZSB0aGVzZSBzZXR0aW5ncz8gIEFyZSB5b3Ugc3VyZSB0aGV5IGFy
+ZSBnZW5lcmljIHNldHRpbmdzIGFuZAo+IG5vdCBib2FyZCBzcGVjaWZpYz8KClllcywgdGhleSBh
+cmUgZ2VuZXJpYyBzZXR0aW5nLiBJdCBjb21lcyBmcm9tIG91ciBoYXJkd2FyZSBkZXNpZ25lcnMu
+CgoKPj4+PiArCWlmIChvbl9vZmYpIHsKPj4+PiArCQlpZiAoY2hpcC0+cHdyX2NudCA9PSAwKSB7
+Cj4+Pj4gKwkJCXJldCA9IG10NjY2MF9pMmNfdXBkYXRlX2JpdHMoY2hpcCwKPj4+PiArCQkJCU1U
+NjY2MF9SRUdfU1lTVEVNX0NUUkwsIDB4MDEsIDB4MDApOwo+Pj4+ICsJCQl2YWwgPSBtdDY2NjBf
+aTJjX3JlYWQoY2hpcCwgTVQ2NjYwX1JFR19JUlFfU1RBVFVTMSk7Cj4+Pj4gKwkJCWRldl9pbmZv
+KGNoaXAtPmRldiwKPj4+PiArCQkJCSIlcyByZWcweDA1ID0gMHgleFxuIiwgX19mdW5jX18sIHZh
+bCk7Cj4+Pj4gKwkJfQo+Pj4+ICsJCWNoaXAtPnB3cl9jbnQrKzsKPj4+IFRoaXMgbG9va3MgbGlr
+ZSB5b3UncmUgb3BlbiBjb2RpbmcgcnVudGltZSBQTSBzdHVmZj8gIEFGQUlDVCB0aGUgaXNzdWUK
+Pj4+IGlzIHRoYXQgeW91IG5lZWQgdG8gd3JpdGUgdG8gdGhpcyByZWdpc3RlciB0byBkbyBhbnkg
+SS9PLiAgSnVzdAo+Pj4gaW1wbGVtZW50IHRoaXMgdmlhIHRoZSBzdGFuZGFyZCBydW50aW1lIFBN
+IGZyYW1ld29yaywgeW91J2xsIG5lZWQgdG8gZG8KPj4+IHNvbWV0aGluZyBhYm91dCB0aGUgcmVn
+aXN0ZXIgSS9PIGluIHRoZSBjb250cm9scyAoaWRlYWxseSBpbiB0aGUKPj4+IGZyYW1ld29yaywg
+aXQnZCBiZSBhIGxvdCBlYXNpZXIgaWYgeW91IGRpZCBoYXZlIGEgY2FjaGUpIGJ1dCB5b3UgY291
+bGQKPj4+IGN1dCBvdXQgdGhpcyBiaXQuCj4+IEluIG91ciBleHBlcmllbmNlLCBzb21lIEN1c3Rv
+bWVyIHBsYXRmb3JtIGRvZXNuJ3Qgc3VwcG9ydCBydW50aW1lIFBNLgo+IFRlbGwgeW91ciBjdXN0
+b21lcnMgdG8gdHVybiBpdCBvbiwgaXQncyBhIHN0YW5kYXJkIGtlcm5lbCBmcmFtZXdvcmsgYW5k
+Cj4gdGhlcmUncyByZWFsbHkgbm8gZXhjdXNlIGZvciBvcGVuIGNvZGluZyBpdC4gIElmIHRoZXJl
+J3Mgc29tZSByZWFzb24gd2h5Cj4gcnVudGltZSBQTSBjYW4ndCB3b3JrIGZvciB0aGVtIHRoZW4g
+d2Ugc2hvdWxkIGdldCB0aGF0IGZpeGVkIGJ1dCBpdAo+IHJlYWxseSBpcyAqdmVyeSogd2lkZWx5
+IGRlcGxveWVkLgoKCldlIGFscmVhZHkgaW1wbGVtZW50IGl0IGluIHJ1bnRpbWUgUE0uCgpGb3Ig
+YWxsIHlvdXIgY29tbWVudCwgcmVnbWFwIGlzIGEgaGFyZCB0aGluZyB0byBtb2RpZnkuIEkgYWxz
+byBzdXJ2ZXkgCm90aGVycyBkcml2ZXIgYWJvdXQgdmFyaWFibGUgcmVnaXN0ZXIgc2l6ZS4gQnV0
+IGl0IHNlZW1zIG5vIG9uZSBsaWtlIG91ciAKTVQ2NjYwIGNoaXAuLi4KClNob3VsZCBJIHNlbmQg
+bmV3IHBhdGNoIGZpbGUgdG8geW91IGluIHRoaXMgbWFpbCBsb29wLCBvciBJIHNob3VsZCBzZW5k
+IApuZXcgcGF0Y2ggdmlhIG5ldyBFbWFpbCBMb29wPwoKVGhhbmtzIGEgbG90LgoKUmljaHRlayBK
+ZWZmIENoYW5nCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KQWxzYS1kZXZlbCBtYWlsaW5nIGxpc3QKQWxzYS1kZXZlbEBhbHNhLXByb2plY3Qub3JnCmh0
+dHBzOi8vbWFpbG1hbi5hbHNhLXByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vYWxzYS1kZXZl
+bAo=
