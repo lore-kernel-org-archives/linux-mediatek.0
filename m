@@ -1,105 +1,136 @@
-From: <Tudor.Ambarus@microchip.com>
-Subject: Re: [PATCH v2 00/22] mtd: spi-nor: Quad Enable and (un)lock methods
-Date: Wed, 25 Sep 2019 10:11:57 +0000
-Message-ID: <f5d876a7-4610-2729-8f4a-0c122946d436@microchip.com>
-References: <20190924074533.6618-1-tudor.ambarus@microchip.com>
+From: Andrew Murray <andrew.murray@arm.com>
+Subject: Re: [PATCH 03/11] PCI: mediatek: Use pci_parse_request_of_pci_ranges()
+Date: Wed, 25 Sep 2019 12:34:27 +0100
+Message-ID: <20190925113427.GT9720@e119886-lin.cambridge.arm.com>
+References: <20190924214630.12817-1-robh@kernel.org>
+ <20190924214630.12817-4-robh@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190924074533.6618-1-tudor.ambarus@microchip.com>
-Content-Language: en-US
-Content-ID: <ED60A6E11FA76044AF3DE5FE82590E5E@namprd11.prod.outlook.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-mtd@lists.infradead.org, jonas@norrbonn.se
-Cc: vigneshr@ti.com, boris.brezillon@collabora.com, marek.vasut@gmail.com, geert+renesas@glider.be, dwmw2@infradead.org, computersforpeace@gmail.com, miquel.raynal@bootlin.com, richard@nod.at, joel@jms.id.au, andrew@aj.id.au, matthias.bgg@gmail.com, vz@mleia.com, linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <20190924214630.12817-4-robh@kernel.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Rob Herring <robh@kernel.org>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, linux-pci@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org, Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIEpvbmFzLA0KDQpzMjVmbDUxMnMgaXMgaW1wYWN0ZWQgYnkgdGhpcyBwYXRjaCBzZXQuIFdv
-dWxkIHlvdSBwbGVhc2UgZG8gYSBsaXR0bGUgdGVzdCB0bw0Kc2VlIGlmIGV2ZXJ5dGhpbmcgaXMg
-b2sgZm9yIHlvdXIgZmxhc2ggd2l0aCB0aGVzZSBwYXRjaGVzIGFwcGxpZWQ/IEkgZG9uJ3QgaGF2
-ZQ0KdGhlIGZsYXNoLCBzbyBJIGNhbid0IGRvIHRoZSB0ZXN0cyBieSBteXNlbGYuIFRoZXJlIGlz
-IGEgcG9zc2libGUgdGVzdCBtZXRob2QNCmRlc2NyaWJlZCBiZWxvdyBpbiB0aGUgY292ZXIgbGV0
-dGVyLg0KDQpZb3UgY2FuIGZpbmQgdGhlIHBhdGNoZXMgYXQNCmh0dHBzOi8vcGF0Y2h3b3JrLm96
-bGFicy5vcmcvcHJvamVjdC9saW51eC1tdGQvbGlzdC8/c2VyaWVzPTEzMjI3MCBvciBhdA0KaHR0
-cHM6Ly9naXRodWIuY29tL2FtYmFydXMvbGludXgtMGRheSwgYnJhbmNoIHNwaS1ub3IvcXVhZC1l
-bmFibGUtcmV3b3JrLXYyLg0KDQpUaGFuayB5b3UsDQp0YQ0KDQpPbiAwOS8yNC8yMDE5IDEwOjQ1
-IEFNLCBUdWRvciBBbWJhcnVzIC0gTTE4MDY0IHdyb3RlOg0KPiBGcm9tOiBUdWRvciBBbWJhcnVz
-IDx0dWRvci5hbWJhcnVzQG1pY3JvY2hpcC5jb20+DQo+IA0KPiBQYXRjaGVzIDEgLSAxNCBhcmUg
-anVzdCBjbGVhbiB1cCBwYXRjaGVzIGZvciB0aGUgRmxhc2ggUmVnaXN0ZXINCj4gT3BlcmF0aW9u
-cy4NCj4gDQo+IFBhdGNoZXMgMTUgLSAyMiBkZWFsIHdpdGggdGhlIFF1YWQgRW5hYmxlIGFuZCB0
-aGUgKHVuKWxvY2sgbWV0aG9kcy4NCj4gRml4ZWQgdGhlIGNsZWFyaW5nIG9mIFFFIGJpdCBvbiAo
-dW4pbG9jaygpIG9wZXJhdGlvbnMuIFJld29ya2VkIHRoZQ0KPiBRdWFkIEVuYWJsZSBtZXRob2Rz
-IGFuZCB0aGUgZGlzYWJsaW5nIG9mIHRoZSBibG9jayB3cml0ZSBwcm90ZWN0aW9uDQo+IGF0IHBv
-d2VyLXVwLg0KPiANCj4gQWdhaW4sIHRoaXMgaXMganVzdCBjb21waWxlIHRlc3RlZCwgSSBkb24n
-dCBoYXZlICh5ZXQpIGEgcmVsZXZhbnQNCj4gc3BhbnNpb24tbGlrZSBmbGFzaCBtZW1vcnkgdG8g
-dGVzdCB0aGUgKHVuKWxvY2soKSBtZXRob2RzLCBzbyBJJ2xsIG5lZWQNCj4geW91ciBoZWxwIGZv
-ciB0ZXN0aW5nIHRoaXMgcGF0Y2ggc2V0Lg0KPiANCj4gVGhlIHBhdGNoIHNldCBjYW4gYmUgdGVz
-dGVkIHVzaW5nIG10ZC11dGlsczoNCj4gMS8gZG8gYSByZWFkLWVyYXNlLXdyaXRlLXJlYWQtYmFj
-ayB0ZXN0IGltbWVkaWF0ZWx5IGFmdGVyIGJvb3QsIHRvIGNoZWNrDQo+IHRoZSBzcGlfbm9yX3Vu
-bG9ja19hbGwoKSBtZXRob2QuIFRoZSBmb2N1cyBpcyBvbiB0aGUgZXJhc2Uvd3JpdGUNCj4gbWV0
-aG9kcywgd2Ugd2FudCB0byBzZWUgaWYgdGhlIGZsYXNoIGlzIHVubG9ja2VkIGF0IHBvd2VyLXVw
-Lg0KPiAgICAgICAgIG10ZF9kZWJ1ZyByZWFkIC9kZXYvbXRkLXlvdXJzIG9mZnNldCBzaXplIHJl
-YWQtZmlsZQ0KPiAgICAgICAgIGhleGR1bXAgcmVhZC1maWxlDQo+ICAgICAgICAgbXRkX2RlYnVn
-IGVyYXNlIC9kZXYvbXRkLXlvdXJzIG9mZnNldCBzaXplDQo+ICAgICAgICAgZGQgaWY9L2Rldi91
-cmFuZG9tIG9mPXdyaXRlLWZpbGUgYnM9cGxlYXNlLWNob29zZSBjb3VudD1wbGVhc2UtY2hvb3Nl
-DQo+ICAgICAgICAgbXRkX2RlYnVnIHdyaXRlIC9kZXYvbXRkLXlvdXJzIG9mZnNldCB3cml0ZS1m
-aWxlLXNpemUgd3JpdGUtZmlsZQ0KPiAgICAgICAgIG10ZF9kZWJ1ZyByZWFkIC9kZXYvbXRkLXlv
-dXJzIG9mZnNldCB3cml0ZS1maWxlLXNpemUgcmVhZC1maWxlDQo+ICAgICAgICAgc2hhMXN1bSBy
-ZWFkLWZpbGUgd3JpdGUtZmlsZQ0KPiAyLyBsb2NrIGZsYXNoIHRoZW4gdHJ5IHRvIGVyYXNlL3dy
-aXRlIGl0LCB0byBzZWUgaWYgdGhlIGxvY2sgd29ya3MNCj4gICAgICAgICBmbGFzaF9sb2NrIC9k
-ZXYvbXRkLXlvdXJzIG9mZnNldCBibG9jay1jb3VudA0KPiAgICAgICAgIERvIHRoZSByZWFkLWVy
-YXNlLXdyaXRlLXJlYWQtYmFjayB0ZXN0IGZyb20gMS8uIFRoZSBjb250ZW50cyBvZg0KPiAgICAg
-ICAgIGZsYXNoIHNob3VsZCBub3QgY2hhbmdlIGluIHRoZSBlcmFzZSBhbmQgd3JpdGUgc3RlcHMu
-DQo+IDMvIHVubG9jayBmbGFzaCBhbmQgZG8gdGhlIHJlYWQtZXJhc2Utd3JpdGUtcmVhZC1iYWNr
-IGZyb20gMS8uIFRoZSB2YWx1ZSBvZiB0aGUNCj4gICAgUUVFIHNob3VsZCBub3QgY2hhbmdlIGFu
-ZCB5b3Ugc2hvdWxkIGJlIGFibGUgdG8gZXJhc2UgYW5kIHdyaXRlIHRoZSBmbGFzaC4NCj4gICAg
-VGVzdCAxLyBzaG91bGQgYmUgc3VjY2Vzc2Z1bC4NCj4gDQo+IHYyOg0KPiAtIEludHJvZHVjZSBz
-cGlfbm9yX3dyaXRlXzE2Yml0X2NyX2FuZF9jaGVjaygpIGFzIHBlciBWaWduZXNoJ3Mgc3VnZ2Vz
-dGlvbi4gVGhlDQo+ICAgQ29uZmlndXJhdGlvbiBSZWdpc3RlciBjb250YWlucyBiaXRzIHRoYXQg
-Y2FuIGJlIHVwZGF0ZWQgaW4gZnV0dXJlOiBGUkVFWkUsDQo+ICAgQ01QLiBQcm92aWRlIGEgZ2Vu
-ZXJpYyBtZXRob2QgdGhhdCBhbGxvd3MgdXBkYXRpbmcgYWxsIGJpdHMgb2YgdGhlDQo+ICAgQ29u
-ZmlndXJhdGlvbiBSZWdpc3Rlci4NCj4gLSBGaXggU05PUl9GX05PX1JFQURfQ1IgY2FzZSBpbg0K
-PiAgICJtdGQ6IHNwaS1ub3I6IFJld29yayB0aGUgZGlzYWJsaW5nIG9mIGJsb2NrIHdyaXRlIHBy
-b3RlY3Rpb24iLiBXaGVuIHRoZSBmbGFzaA0KPiAgIGRvZXNuJ3Qgc3VwcG9ydCB0aGUgQ1IgUmVh
-ZCBjb21tYW5kLCB3ZSBtYWtlIGFuIGFzc3VtcHRpb24gYWJvdXQgdGhlIHZhbHVlIG9mDQo+ICAg
-dGhlIFFFIGJpdC4gSW4gc3BpX25vcl9pbml0KCksIGNhbGwgc3BpX25vcl9xdWFkX2VuYWJsZSgp
-IGZpcnN0LCB0aGVuDQo+ICAgc3BpX25vcl91bmxvY2tfYWxsKCksIHNvIHRoYXQgYXQgdGhlIHNw
-aV9ub3JfdW5sb2NrX2FsbCgpIHRpbWUgd2UgY2FuIGJlIHN1cmUNCj4gICB0aGUgUUUgYml0IGhh
-cyB2YWx1ZSBvbmUsIGJlY2F1c2Ugb2YgdGhlIHByZXZpb3VzIGNhbGwgdG8gc3BpX25vcl9xdWFk
-X2VuYWJsZSgpLg0KPiAtIEZpeCBpZiBzdGF0ZW1lbnQgaW4gc3BpX25vcl93cml0ZV9zcl9hbmRf
-Y2hlY2soKToNCj4gICBpZiAobm9yLT5mbGFncyAmIFNOT1JfRl9IQVNfMTZCSVRfU1IpDQo+IC0g
-Rml4IGRvY3VtZW50YXRpb24gd2FybmluZ3MuDQo+IC0gTmV3IHBhdGNoOiAibXRkOiBzcGktbm9y
-OiBDaGVjayBhbGwgdGhlIGJpdHMgd3JpdHRlbiwgbm90IGp1c3QgdGhlIEJQIG9uZXMiLg0KPiAt
-IERyb3AgR2xvYmFsIFVubG9jayBwYXRjaGVzLCB3aWxsIHNlbmQgdGhlbSBpbiBhIGRpZmZlcmVu
-dCBwYXRjaCBzZXQuDQo+IA0KPiBUdWRvciBBbWJhcnVzICgyMik6DQo+ICAgbXRkOiBzcGktbm9y
-OiBoaXNpLXNmYzogRHJvcCBub3ItPmVyYXNlIE5VTEwgYXNzaWdubWVudA0KPiAgIG10ZDogc3Bp
-LW5vcjogSW50cm9kdWNlICdzdHJ1Y3Qgc3BpX25vcl9jb250cm9sbGVyX29wcycNCj4gICBtdGQ6
-IHNwaS1ub3I6IGNhZGVuY2UtcXVhZHNwaTogRml4IGNxc3BpX2NvbW1hbmRfcmVhZCgpIGRlZmlu
-aXRpb24NCj4gICBtdGQ6IHNwaS1ub3I6IFJlbmFtZSBub3ItPnBhcmFtcyB0byBub3ItPmZsYXNo
-DQo+ICAgbXRkOiBzcGktbm9yOiBSZXdvcmsgcmVhZF9zcigpDQo+ICAgbXRkOiBzcGktbm9yOiBS
-ZXdvcmsgcmVhZF9mc3IoKQ0KPiAgIG10ZDogc3BpLW5vcjogUmV3b3JrIHJlYWRfY3IoKQ0KPiAg
-IG10ZDogc3BpLW5vcjogUmV3b3JrIHdyaXRlX2VuYWJsZS9kaXNhYmxlKCkNCj4gICBtdGQ6IHNw
-aS1ub3I6IEZpeCByZXRsZW4gaGFuZGxpbmcgaW4gc3N0X3dyaXRlKCkNCj4gICBtdGQ6IHNwaS1u
-b3I6IFJld29yayB3cml0ZV9zcigpDQo+ICAgbXRkOiBzcGktbm9yOiBSZXdvcmsgc3BpX25vcl9y
-ZWFkL3dyaXRlX3NyMigpDQo+ICAgbXRkOiBzcGktbm9yOiBSZXBvcnQgZXJyb3IgaW4gc3BpX25v
-cl94cmVhZF9zcigpDQo+ICAgbXRkOiBzcGktbm9yOiBWb2lkIHJldHVybiB0eXBlIGZvciBzcGlf
-bm9yX2NsZWFyX3NyL2ZzcigpDQo+ICAgbXRkOiBzcGktbm9yOiBEcm9wIGR1cGxpY2F0ZWQgbmV3
-IGxpbmUNCj4gICBtdGQ6IHNwaS1ub3I6IERyb3Agc3BhbnNpb25fcXVhZF9lbmFibGUoKQ0KPiAg
-IG10ZDogc3BpLW5vcjogRml4IGVycm5vIG9uIHF1YWRfZW5hYmxlIG1ldGhvZHMNCj4gICBtdGQ6
-IHNwaS1ub3I6IENoZWNrIGFsbCB0aGUgYml0cyB3cml0dGVuLCBub3QganVzdCB0aGUgQlAgb25l
-cw0KPiAgIG10ZDogc3BpLW5vcjogRml4IGNsZWFyaW5nIG9mIFFFIGJpdCBvbiBsb2NrKCkvdW5s
-b2NrKCkNCj4gICBtdGQ6IHNwaS1ub3I6IFJld29yayBtYWNyb25peF9xdWFkX2VuYWJsZSgpDQo+
-ICAgbXRkOiBzcGktbm9yOiBSZXdvcmsgc3BhbnNpb24oX25vKV9yZWFkX2NyX3F1YWRfZW5hYmxl
-KCkNCj4gICBtdGQ6IHNwaS1ub3I6IFVwZGF0ZSBzcjJfYml0N19xdWFkX2VuYWJsZSgpDQo+ICAg
-bXRkOiBzcGktbm9yOiBSZXdvcmsgdGhlIGRpc2FibGluZyBvZiBibG9jayB3cml0ZSBwcm90ZWN0
-aW9uDQo+IA0KPiAgZHJpdmVycy9tdGQvc3BpLW5vci9hc3BlZWQtc21jLmMgICAgICB8ICAgMjMg
-Ky0NCj4gIGRyaXZlcnMvbXRkL3NwaS1ub3IvY2FkZW5jZS1xdWFkc3BpLmMgfCAgIDU0ICstDQo+
-ICBkcml2ZXJzL210ZC9zcGktbm9yL2hpc2ktc2ZjLmMgICAgICAgIHwgICAyMyArLQ0KPiAgZHJp
-dmVycy9tdGQvc3BpLW5vci9pbnRlbC1zcGkuYyAgICAgICB8ICAgMjQgKy0NCj4gIGRyaXZlcnMv
-bXRkL3NwaS1ub3IvbXRrLXF1YWRzcGkuYyAgICAgfCAgIDI1ICstDQo+ICBkcml2ZXJzL210ZC9z
-cGktbm9yL254cC1zcGlmaS5jICAgICAgIHwgICAyMyArLQ0KPiAgZHJpdmVycy9tdGQvc3BpLW5v
-ci9zcGktbm9yLmMgICAgICAgICB8IDE3MTYgKysrKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0t
-LS0tDQo+ICBpbmNsdWRlL2xpbnV4L210ZC9zcGktbm9yLmggICAgICAgICAgIHwgICA3NCArLQ0K
-PiAgOCBmaWxlcyBjaGFuZ2VkLCAxMDU4IGluc2VydGlvbnMoKyksIDkwNCBkZWxldGlvbnMoLSkN
-Cj4gDQo=
+On Tue, Sep 24, 2019 at 04:46:22PM -0500, Rob Herring wrote:
+> Convert Mediatek host bridge to use the common
+> pci_parse_request_of_pci_ranges().
+> 
+> Cc: Ryder Lee <ryder.lee@mediatek.com>
+> Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+> Cc: Bjorn Helgaas <bhelgaas@google.com>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: linux-mediatek@lists.infradead.org
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>  drivers/pci/controller/pcie-mediatek.c | 47 ++++++++++----------------
+>  1 file changed, 17 insertions(+), 30 deletions(-)
+> 
+> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> index 80601e1b939e..cea4112b5309 100644
+> --- a/drivers/pci/controller/pcie-mediatek.c
+> +++ b/drivers/pci/controller/pcie-mediatek.c
+> @@ -211,7 +211,6 @@ struct mtk_pcie {
+>  	void __iomem *base;
+>  	struct clk *free_ck;
+>  
+> -	struct resource mem;
+>  	struct list_head ports;
+>  	const struct mtk_pcie_soc *soc;
+>  	unsigned int busnr;
+> @@ -658,11 +657,23 @@ static int mtk_pcie_setup_irq(struct mtk_pcie_port *port,
+>  static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+>  {
+>  	struct mtk_pcie *pcie = port->pcie;
+> -	struct resource *mem = &pcie->mem;
+> +	struct pci_host_bridge *host = pci_host_bridge_from_priv(pcie);
+> +	struct resource *mem = NULL;
+> +	struct resource_entry *entry;
+>  	const struct mtk_pcie_soc *soc = port->pcie->soc;
+>  	u32 val;
+>  	int err;
+>  
+> +	resource_list_for_each_entry(entry, &host->windows) {
+> +		if (resource_type(entry->res) != IORESOURCE_MEM)
+> +			continue;
+> +
+> +		mem = entry->res;
+> +		break;
+> +	}
+> +	if (!mem)
+> +		return -EINVAL;
+> +
+>  	/* MT7622 platforms need to enable LTSSM and ASPM from PCIe subsys */
+>  	if (pcie->base) {
+>  		val = readl(pcie->base + PCIE_SYS_CFG_V2);
+> @@ -1017,39 +1028,15 @@ static int mtk_pcie_setup(struct mtk_pcie *pcie)
+>  	struct mtk_pcie_port *port, *tmp;
+>  	struct pci_host_bridge *host = pci_host_bridge_from_priv(pcie);
+>  	struct list_head *windows = &host->windows;
+> -	struct resource_entry *win, *tmp_win;
+> -	resource_size_t io_base;
+> +	struct resource *bus;
+>  	int err;
+>  
+> -	err = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff,
+> -						    windows, &io_base);
+> +	err = pci_parse_request_of_pci_ranges(dev, windows,
+> +					      &bus);
+>  	if (err)
+>  		return err;
+>  
+> -	err = devm_request_pci_bus_resources(dev, windows);
+> -	if (err < 0)
+> -		return err;
+> -
+> -	/* Get the I/O and memory ranges from DT */
+> -	resource_list_for_each_entry_safe(win, tmp_win, windows) {
+> -		switch (resource_type(win->res)) {
+> -		case IORESOURCE_IO:
+> -			err = devm_pci_remap_iospace(dev, win->res, io_base);
+> -			if (err) {
+> -				dev_warn(dev, "error %d: failed to map resource %pR\n",
+> -					 err, win->res);
+> -				resource_list_destroy_entry(win);
+> -			}
+> -			break;
+> -		case IORESOURCE_MEM:
+> -			memcpy(&pcie->mem, win->res, sizeof(*win->res));
+> -			pcie->mem.name = "non-prefetchable";
+
+Using pci_parse_request_of_pci_ranges will now guard against using only
+prefetchable memory ranges, whereas the existing code didn't do that. Given
+that the current DT users all provide a non-prefetchable range I think this is
+OK.
+
+Reviewed-by: Andrew murray <andrew.murray@arm.com>
+
+> -			break;
+> -		case IORESOURCE_BUS:
+> -			pcie->busnr = win->res->start;
+> -			break;
+> -		}
+> -	}
+> +	pcie->busnr = bus->start;
+>  
+>  	for_each_available_child_of_node(node, child) {
+>  		int slot;
+> -- 
+> 2.20.1
+> 
+> 
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
