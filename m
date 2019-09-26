@@ -1,160 +1,87 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v7 3/5] drm/mediatek: add mipi_tx driver for mt8183
-Date: Thu, 26 Sep 2019 17:06:11 +0800
-Message-ID: <1569488771.9612.4.camel@mtksdaap41>
-References: <20190920090432.3308-1-jitao.shi@mediatek.com>
- <20190920090432.3308-4-jitao.shi@mediatek.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Subject: Re: [PATCH v3 4/5] media: v4l2-ctrl: Add jpeg enc exif mode control
+Date: Thu, 26 Sep 2019 11:27:49 +0200
+Message-ID: <fe60c5f8-f7d8-38c0-795a-c0337c13bbd5@xs4all.nl>
+References: <20190924074303.22713-1-xia.jiang@mediatek.com>
+ <20190924074303.22713-5-xia.jiang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190920090432.3308-4-jitao.shi@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jitao Shi <jitao.shi@mediatek.com>
-Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>, stonea168@163.com, cawa.cheng@mediatek.com, dri-devel@lists.freedesktop.org, sj.huang@mediatek.com, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190924074303.22713-5-xia.jiang@mediatek.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Xia Jiang <xia.jiang@mediatek.com>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rick Chang <rick.chang@mediatek.com>
+Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Marek Szyprowski <m.szyprowski@samsung.com>, Tomasz Figa <tfiga@chromium.org>, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIEppdGFvOgoKT24gRnJpLCAyMDE5LTA5LTIwIGF0IDE3OjA0ICswODAwLCBKaXRhbyBTaGkg
-d3JvdGU6Cj4gVGhpcyBwYXRjaCBhZGQgbXQ4MTgzIG1pcGlfdHggZHJpdmVyLgo+IEFuZCBhbHNv
-IHN1cHBvcnQgb3RoZXIgY2hpcHMgdGhhdCB1c2UgdGhlIHNhbWUgYmluZGluZyBhbmQgZHJpdmVy
-LgoKUmV2aWV3ZWQtYnk6IENLIEh1IDxjay5odUBtZWRpYXRlay5jb20+Cgo+IAo+IFNpZ25lZC1v
-ZmYtYnk6IEppdGFvIFNoaSA8aml0YW8uc2hpQG1lZGlhdGVrLmNvbT4KPiAtLS0KPiAgZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL01ha2VmaWxlICAgICAgICAgICAgIHwgICAxICsKPiAgZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19taXBpX3R4LmMgICAgICAgIHwgICAyICsKPiAgZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19taXBpX3R4LmggICAgICAgIHwgICAxICsKPiAgZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxODNfbWlwaV90eC5jIHwgMTUwICsrKysrKysrKysr
-KysrKysrKwo+ICA0IGZpbGVzIGNoYW5nZWQsIDE1NCBpbnNlcnRpb25zKCspCj4gIGNyZWF0ZSBt
-b2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210ODE4M19taXBpX3R4LmMK
-PiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL01ha2VmaWxlIGIvZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL01ha2VmaWxlCj4gaW5kZXggMmM4ZGUxZjVhNWVlLi44MDY3
-YTRiZTgzMTEgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL01ha2VmaWxl
-Cj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL01ha2VmaWxlCj4gQEAgLTEzLDYgKzEz
-LDcgQEAgbWVkaWF0ZWstZHJtLXkgOj0gbXRrX2Rpc3BfY29sb3IubyBcCj4gIAkJICBtdGtfZHNp
-Lm8gXAo+ICAJCSAgbXRrX21pcGlfdHgubyBcCj4gIAkJICBtdGtfbXQ4MTczX21pcGlfdHgubyBc
-Cj4gKwkJICBtdGtfbXQ4MTgzX21pcGlfdHgubyBcCj4gIAkJICBtdGtfZHBpLm8KPiAgCj4gIG9i
-ai0kKENPTkZJR19EUk1fTUVESUFURUspICs9IG1lZGlhdGVrLWRybS5vCj4gZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbWlwaV90eC5jIGIvZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19taXBpX3R4LmMKPiBpbmRleCA3N2I5YTE4NWU5NzAuLmU0ZDM0NDg0ZWNj
-OCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX21pcGlfdHguYwo+
-ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbWlwaV90eC5jCj4gQEAgLTE3NSw2
-ICsxNzUsOCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBtdGtfbWlwaV90eF9t
-YXRjaFtdID0gewo+ICAJICAuZGF0YSA9ICZtdDI3MDFfbWlwaXR4X2RhdGEgfSwKPiAgCXsgLmNv
-bXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLW1pcGktdHgiLAo+ICAJICAuZGF0YSA9ICZtdDgx
-NzNfbWlwaXR4X2RhdGEgfSwKPiArCXsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTgzLW1p
-cGktdHgiLAo+ICsJICAuZGF0YSA9ICZtdDgxODNfbWlwaXR4X2RhdGEgfSwKPiAgCXsgfSwKPiAg
-fTsKPiAgCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbWlwaV90
-eC5oIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19taXBpX3R4LmgKPiBpbmRleCA0Zjkw
-NTMxMzU2NGYuLjQxM2YzNWQ4NjIxOSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX21pcGlfdHguaAo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
-bWlwaV90eC5oCj4gQEAgLTQ0LDUgKzQ0LDYgQEAgdW5zaWduZWQgbG9uZyBtdGtfbWlwaV90eF9w
-bGxfcmVjYWxjX3JhdGUoc3RydWN0IGNsa19odyAqaHcsCj4gIAo+ICBleHRlcm4gY29uc3Qgc3Ry
-dWN0IG10a19taXBpdHhfZGF0YSBtdDI3MDFfbWlwaXR4X2RhdGE7Cj4gIGV4dGVybiBjb25zdCBz
-dHJ1Y3QgbXRrX21pcGl0eF9kYXRhIG10ODE3M19taXBpdHhfZGF0YTsKPiArZXh0ZXJuIGNvbnN0
-IHN0cnVjdCBtdGtfbWlwaXR4X2RhdGEgbXQ4MTgzX21pcGl0eF9kYXRhOwo+ICAKPiAgI2VuZGlm
-Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTgzX21pcGlf
-dHguYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTgzX21pcGlfdHguYwo+IG5l
-dyBmaWxlIG1vZGUgMTAwNjQ0Cj4gaW5kZXggMDAwMDAwMDAwMDAwLi5kYjEzZWJkYmUyNjIKPiAt
-LS0gL2Rldi9udWxsCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxODNf
-bWlwaV90eC5jCj4gQEAgLTAsMCArMSwxNTAgQEAKPiArLy8gU1BEWC1MaWNlbnNlLUlkZW50aWZp
-ZXI6IEdQTC0yLjAKPiArLyoKPiArICogQ29weXJpZ2h0IChjKSAyMDE5IE1lZGlhVGVrIEluYy4K
-PiArICogQXV0aG9yOiBqaXRhby5zaGkgPGppdGFvLnNoaUBtZWRpYXRlay5jb20+Cj4gKyAqLwo+
-ICsKPiArI2luY2x1ZGUgIm10a19taXBpX3R4LmgiCj4gKwo+ICsjZGVmaW5lIE1JUElUWF9MQU5F
-X0NPTgkJMHgwMDBjCj4gKyNkZWZpbmUgUkdfRFNJX0NQSFlfVDFEUlZfRU4JCUJJVCgwKQo+ICsj
-ZGVmaW5lIFJHX0RTSV9BTkFfQ0tfU0VMCQlCSVQoMSkKPiArI2RlZmluZSBSR19EU0lfUEhZX0NL
-X1NFTAkJQklUKDIpCj4gKyNkZWZpbmUgUkdfRFNJX0NQSFlfRU4JCQlCSVQoMykKPiArI2RlZmlu
-ZSBSR19EU0lfUEhZQ0tfSU5WX0VOCQlCSVQoNCkKPiArI2RlZmluZSBSR19EU0lfUFdSMDRfRU4J
-CQlCSVQoNSkKPiArI2RlZmluZSBSR19EU0lfQkdfTFBGX0VOCQlCSVQoNikKPiArI2RlZmluZSBS
-R19EU0lfQkdfQ09SRV9FTgkJQklUKDcpCj4gKyNkZWZpbmUgUkdfRFNJX1BBRF9USUVMX1NFTAkJ
-QklUKDgpCj4gKwo+ICsjZGVmaW5lIE1JUElUWF9QTExfUFdSCTB4MDAyOAo+ICsjZGVmaW5lIE1J
-UElUWF9QTExfQ09OMAkweDAwMmMKPiArI2RlZmluZSBNSVBJVFhfUExMX0NPTjEJMHgwMDMwCj4g
-KyNkZWZpbmUgTUlQSVRYX1BMTF9DT04yCTB4MDAzNAo+ICsjZGVmaW5lIE1JUElUWF9QTExfQ09O
-MwkweDAwMzgKPiArI2RlZmluZSBNSVBJVFhfUExMX0NPTjQJMHgwMDNjCj4gKyNkZWZpbmUgUkdf
-RFNJX1BMTF9JQklBUwkJKDMgPDwgMTApCj4gKwo+ICsjZGVmaW5lIE1JUElUWF9EMl9TV19DVExf
-RU4JMHgwMTQ0Cj4gKyNkZWZpbmUgTUlQSVRYX0QwX1NXX0NUTF9FTgkweDAyNDQKPiArI2RlZmlu
-ZSBNSVBJVFhfQ0tfQ0tNT0RFX0VOCTB4MDMyOAo+ICsjZGVmaW5lIERTSV9DS19DS01PREVfRU4J
-CUJJVCgwKQo+ICsjZGVmaW5lIE1JUElUWF9DS19TV19DVExfRU4JMHgwMzQ0Cj4gKyNkZWZpbmUg
-TUlQSVRYX0QxX1NXX0NUTF9FTgkweDA0NDQKPiArI2RlZmluZSBNSVBJVFhfRDNfU1dfQ1RMX0VO
-CTB4MDU0NAo+ICsjZGVmaW5lIERTSV9TV19DVExfRU4JCQlCSVQoMCkKPiArI2RlZmluZSBBRF9E
-U0lfUExMX1NETV9QV1JfT04JCUJJVCgwKQo+ICsjZGVmaW5lIEFEX0RTSV9QTExfU0RNX0lTT19F
-TgkJQklUKDEpCj4gKwo+ICsjZGVmaW5lIFJHX0RTSV9QTExfRU4JCQlCSVQoNCkKPiArI2RlZmlu
-ZSBSR19EU0lfUExMX1BPU0RJVgkJKDB4NyA8PCA4KQo+ICsKPiArc3RhdGljIGludCBtdGtfbWlw
-aV90eF9wbGxfZW5hYmxlKHN0cnVjdCBjbGtfaHcgKmh3KQo+ICt7Cj4gKwlzdHJ1Y3QgbXRrX21p
-cGlfdHggKm1pcGlfdHggPSBtdGtfbWlwaV90eF9mcm9tX2Nsa19odyhodyk7Cj4gKwl1bnNpZ25l
-ZCBpbnQgdHhkaXYsIHR4ZGl2MDsKPiArCXU2NCBwY3c7Cj4gKwo+ICsJZGV2X2RiZyhtaXBpX3R4
-LT5kZXYsICJlbmFibGU6ICV1IGJwc1xuIiwgbWlwaV90eC0+ZGF0YV9yYXRlKTsKPiArCj4gKwlp
-ZiAobWlwaV90eC0+ZGF0YV9yYXRlID49IDIwMDAwMDAwMDApIHsKPiArCQl0eGRpdiA9IDE7Cj4g
-KwkJdHhkaXYwID0gMDsKPiArCX0gZWxzZSBpZiAobWlwaV90eC0+ZGF0YV9yYXRlID49IDEwMDAw
-MDAwMDApIHsKPiArCQl0eGRpdiA9IDI7Cj4gKwkJdHhkaXYwID0gMTsKPiArCX0gZWxzZSBpZiAo
-bWlwaV90eC0+ZGF0YV9yYXRlID49IDUwMDAwMDAwMCkgewo+ICsJCXR4ZGl2ID0gNDsKPiArCQl0
-eGRpdjAgPSAyOwo+ICsJfSBlbHNlIGlmIChtaXBpX3R4LT5kYXRhX3JhdGUgPiAyNTAwMDAwMDAp
-IHsKPiArCQl0eGRpdiA9IDg7Cj4gKwkJdHhkaXYwID0gMzsKPiArCX0gZWxzZSBpZiAobWlwaV90
-eC0+ZGF0YV9yYXRlID49IDEyNTAwMDAwMCkgewo+ICsJCXR4ZGl2ID0gMTY7Cj4gKwkJdHhkaXYw
-ID0gNDsKPiArCX0gZWxzZSB7Cj4gKwkJcmV0dXJuIC1FSU5WQUw7Cj4gKwl9Cj4gKwo+ICsJbXRr
-X21pcGlfdHhfY2xlYXJfYml0cyhtaXBpX3R4LCBNSVBJVFhfUExMX0NPTjQsIFJHX0RTSV9QTExf
-SUJJQVMpOwo+ICsKPiArCW10a19taXBpX3R4X3NldF9iaXRzKG1pcGlfdHgsIE1JUElUWF9QTExf
-UFdSLCBBRF9EU0lfUExMX1NETV9QV1JfT04pOwo+ICsJbXRrX21pcGlfdHhfY2xlYXJfYml0cyht
-aXBpX3R4LCBNSVBJVFhfUExMX0NPTjEsIFJHX0RTSV9QTExfRU4pOwo+ICsJdWRlbGF5KDEpOwo+
-ICsJbXRrX21pcGlfdHhfY2xlYXJfYml0cyhtaXBpX3R4LCBNSVBJVFhfUExMX1BXUiwgQURfRFNJ
-X1BMTF9TRE1fSVNPX0VOKTsKPiArCXBjdyA9IGRpdl91NjQoKCh1NjQpbWlwaV90eC0+ZGF0YV9y
-YXRlICogdHhkaXYpIDw8IDI0LCAyNjAwMDAwMCk7Cj4gKwl3cml0ZWwocGN3LCBtaXBpX3R4LT5y
-ZWdzICsgTUlQSVRYX1BMTF9DT04wKTsKPiArCW10a19taXBpX3R4X3VwZGF0ZV9iaXRzKG1pcGlf
-dHgsIE1JUElUWF9QTExfQ09OMSwgUkdfRFNJX1BMTF9QT1NESVYsCj4gKwkJCQl0eGRpdjAgPDwg
-OCk7Cj4gKwltdGtfbWlwaV90eF9zZXRfYml0cyhtaXBpX3R4LCBNSVBJVFhfUExMX0NPTjEsIFJH
-X0RTSV9QTExfRU4pOwo+ICsKPiArCXJldHVybiAwOwo+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCBt
-dGtfbWlwaV90eF9wbGxfZGlzYWJsZShzdHJ1Y3QgY2xrX2h3ICpodykKPiArewo+ICsJc3RydWN0
-IG10a19taXBpX3R4ICptaXBpX3R4ID0gbXRrX21pcGlfdHhfZnJvbV9jbGtfaHcoaHcpOwo+ICsK
-PiArCW10a19taXBpX3R4X2NsZWFyX2JpdHMobWlwaV90eCwgTUlQSVRYX1BMTF9DT04xLCBSR19E
-U0lfUExMX0VOKTsKPiArCj4gKwltdGtfbWlwaV90eF9zZXRfYml0cyhtaXBpX3R4LCBNSVBJVFhf
-UExMX1BXUiwgQURfRFNJX1BMTF9TRE1fSVNPX0VOKTsKPiArCW10a19taXBpX3R4X2NsZWFyX2Jp
-dHMobWlwaV90eCwgTUlQSVRYX1BMTF9QV1IsIEFEX0RTSV9QTExfU0RNX1BXUl9PTik7Cj4gK30K
-PiArCj4gK3N0YXRpYyBsb25nIG10a19taXBpX3R4X3BsbF9yb3VuZF9yYXRlKHN0cnVjdCBjbGtf
-aHcgKmh3LCB1bnNpZ25lZCBsb25nIHJhdGUsCj4gKwkJCQkgICAgICAgdW5zaWduZWQgbG9uZyAq
-cHJhdGUpCj4gK3sKPiArCXJldHVybiBjbGFtcF92YWwocmF0ZSwgNTAwMDAwMDAsIDE2MDAwMDAw
-MDApOwo+ICt9Cj4gKwo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IGNsa19vcHMgbXRrX21pcGlfdHhf
-cGxsX29wcyA9IHsKPiArCS5lbmFibGUgPSBtdGtfbWlwaV90eF9wbGxfZW5hYmxlLAo+ICsJLmRp
-c2FibGUgPSBtdGtfbWlwaV90eF9wbGxfZGlzYWJsZSwKPiArCS5yb3VuZF9yYXRlID0gbXRrX21p
-cGlfdHhfcGxsX3JvdW5kX3JhdGUsCj4gKwkuc2V0X3JhdGUgPSBtdGtfbWlwaV90eF9wbGxfc2V0
-X3JhdGUsCj4gKwkucmVjYWxjX3JhdGUgPSBtdGtfbWlwaV90eF9wbGxfcmVjYWxjX3JhdGUsCj4g
-K307Cj4gKwo+ICtzdGF0aWMgdm9pZCBtdGtfbWlwaV90eF9wb3dlcl9vbl9zaWduYWwoc3RydWN0
-IHBoeSAqcGh5KQo+ICt7Cj4gKwlzdHJ1Y3QgbXRrX21pcGlfdHggKm1pcGlfdHggPSBwaHlfZ2V0
-X2RydmRhdGEocGh5KTsKPiArCj4gKwkvKiBCR19MUEZfRU4gLyBCR19DT1JFX0VOICovCj4gKwl3
-cml0ZWwoUkdfRFNJX1BBRF9USUVMX1NFTCB8IFJHX0RTSV9CR19DT1JFX0VOLAo+ICsJICAgICAg
-IG1pcGlfdHgtPnJlZ3MgKyBNSVBJVFhfTEFORV9DT04pOwo+ICsJdXNsZWVwX3JhbmdlKDMwLCAx
-MDApOwo+ICsJd3JpdGVsKFJHX0RTSV9CR19DT1JFX0VOIHwgUkdfRFNJX0JHX0xQRl9FTiwKPiAr
-CSAgICAgICBtaXBpX3R4LT5yZWdzICsgTUlQSVRYX0xBTkVfQ09OKTsKPiArCj4gKwkvKiBTd2l0
-Y2ggT0ZGIGVhY2ggTGFuZSAqLwo+ICsJbXRrX21pcGlfdHhfY2xlYXJfYml0cyhtaXBpX3R4LCBN
-SVBJVFhfRDBfU1dfQ1RMX0VOLCBEU0lfU1dfQ1RMX0VOKTsKPiArCW10a19taXBpX3R4X2NsZWFy
-X2JpdHMobWlwaV90eCwgTUlQSVRYX0QxX1NXX0NUTF9FTiwgRFNJX1NXX0NUTF9FTik7Cj4gKwlt
-dGtfbWlwaV90eF9jbGVhcl9iaXRzKG1pcGlfdHgsIE1JUElUWF9EMl9TV19DVExfRU4sIERTSV9T
-V19DVExfRU4pOwo+ICsJbXRrX21pcGlfdHhfY2xlYXJfYml0cyhtaXBpX3R4LCBNSVBJVFhfRDNf
-U1dfQ1RMX0VOLCBEU0lfU1dfQ1RMX0VOKTsKPiArCW10a19taXBpX3R4X2NsZWFyX2JpdHMobWlw
-aV90eCwgTUlQSVRYX0NLX1NXX0NUTF9FTiwgRFNJX1NXX0NUTF9FTik7Cj4gKwo+ICsJbXRrX21p
-cGlfdHhfc2V0X2JpdHMobWlwaV90eCwgTUlQSVRYX0NLX0NLTU9ERV9FTiwgRFNJX0NLX0NLTU9E
-RV9FTik7Cj4gK30KPiArCj4gK3N0YXRpYyB2b2lkIG10a19taXBpX3R4X3Bvd2VyX29mZl9zaWdu
-YWwoc3RydWN0IHBoeSAqcGh5KQo+ICt7Cj4gKwlzdHJ1Y3QgbXRrX21pcGlfdHggKm1pcGlfdHgg
-PSBwaHlfZ2V0X2RydmRhdGEocGh5KTsKPiArCj4gKwkvKiBTd2l0Y2ggT04gZWFjaCBMYW5lICov
-Cj4gKwltdGtfbWlwaV90eF9zZXRfYml0cyhtaXBpX3R4LCBNSVBJVFhfRDBfU1dfQ1RMX0VOLCBE
-U0lfU1dfQ1RMX0VOKTsKPiArCW10a19taXBpX3R4X3NldF9iaXRzKG1pcGlfdHgsIE1JUElUWF9E
-MV9TV19DVExfRU4sIERTSV9TV19DVExfRU4pOwo+ICsJbXRrX21pcGlfdHhfc2V0X2JpdHMobWlw
-aV90eCwgTUlQSVRYX0QyX1NXX0NUTF9FTiwgRFNJX1NXX0NUTF9FTik7Cj4gKwltdGtfbWlwaV90
-eF9zZXRfYml0cyhtaXBpX3R4LCBNSVBJVFhfRDNfU1dfQ1RMX0VOLCBEU0lfU1dfQ1RMX0VOKTsK
-PiArCW10a19taXBpX3R4X3NldF9iaXRzKG1pcGlfdHgsIE1JUElUWF9DS19TV19DVExfRU4sIERT
-SV9TV19DVExfRU4pOwo+ICsKPiArCXdyaXRlbChSR19EU0lfUEFEX1RJRUxfU0VMIHwgUkdfRFNJ
-X0JHX0NPUkVfRU4sCj4gKwkgICAgICAgbWlwaV90eC0+cmVncyArIE1JUElUWF9MQU5FX0NPTik7
-Cj4gKwl3cml0ZWwoUkdfRFNJX1BBRF9USUVMX1NFTCwgbWlwaV90eC0+cmVncyArIE1JUElUWF9M
-QU5FX0NPTik7Cj4gK30KPiArCj4gK2NvbnN0IHN0cnVjdCBtdGtfbWlwaXR4X2RhdGEgbXQ4MTgz
-X21pcGl0eF9kYXRhID0gewo+ICsJLm1pcGlfdHhfY2xrX29wcyA9ICZtdGtfbWlwaV90eF9wbGxf
-b3BzLAo+ICsJLm1pcGlfdHhfZW5hYmxlX3NpZ25hbCA9IG10a19taXBpX3R4X3Bvd2VyX29uX3Np
-Z25hbCwKPiArCS5taXBpX3R4X2Rpc2FibGVfc2lnbmFsID0gbXRrX21pcGlfdHhfcG93ZXJfb2Zm
-X3NpZ25hbCwKPiArfTsKPiArCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
-ZHJpLWRldmVs
+On 9/24/19 9:43 AM, Xia Jiang wrote:
+> Add jpeg enc CID definition for exif mode control.
+> 
+> Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
+> ---
+> v3: new add patch for V4L2_CID_JPEG_ENABLE_EXIF
+> ---
+>  Documentation/media/uapi/v4l/ext-ctrls-jpeg.rst | 10 ++++++++++
+>  drivers/media/v4l2-core/v4l2-ctrls.c            |  1 +
+>  include/uapi/linux/v4l2-controls.h              |  2 ++
+>  3 files changed, 13 insertions(+)
+> 
+> diff --git a/Documentation/media/uapi/v4l/ext-ctrls-jpeg.rst b/Documentation/media/uapi/v4l/ext-ctrls-jpeg.rst
+> index 60ce3f949319..d44a539e2eb4 100644
+> --- a/Documentation/media/uapi/v4l/ext-ctrls-jpeg.rst
+> +++ b/Documentation/media/uapi/v4l/ext-ctrls-jpeg.rst
+> @@ -109,5 +109,15 @@ JPEG Control IDs
+>  
+>  
+>  
+> +``V4L2_CID_JPEG_ENABLE_EXIF (integer)``
+> +    ``V4L2_CID_JPEG_ENABLE_EXIF (integer)`` control determines JPEG
+> +    encoder mode. Its value of 0 means JPEG mode, 1 means EXIF mode. If
+> +    EXIF mode is enabled, the JPEG encoder will not write out SOI marker
+> +    (start from 0xffd8) but write out from DQT marker(start from
+> +    0xffdb). Software program can fill the EXIF content above the DQT
+> +    marker to finish one EXIF JPEG.
+
+I'm trying to understand what happens if this is set to 1. It looks like
+the only difference is that the SOI marker (first two bytes) is not present,
+but the compressed image starts directly with the DQT marker, right?
+
+If that's the case, then I think it would make a lot more sense to support
+the V4L2_CID_JPEG_ACTIVE_MARKER control and add the SOI to the active markers.
+
+Regards,
+
+	Hans
+
+> +
+> +
+> +
+>  For more details about JPEG specification, refer to :ref:`itu-t81`,
+>  :ref:`jfif`, :ref:`w3c-jpeg-jfif`.
+> diff --git a/drivers/media/v4l2-core/v4l2-ctrls.c b/drivers/media/v4l2-core/v4l2-ctrls.c
+> index 371537dd8cd3..c96c10480ebd 100644
+> --- a/drivers/media/v4l2-core/v4l2-ctrls.c
+> +++ b/drivers/media/v4l2-core/v4l2-ctrls.c
+> @@ -1025,6 +1025,7 @@ const char *v4l2_ctrl_get_name(u32 id)
+>  	case V4L2_CID_JPEG_RESTART_INTERVAL:	return "Restart Interval";
+>  	case V4L2_CID_JPEG_COMPRESSION_QUALITY:	return "Compression Quality";
+>  	case V4L2_CID_JPEG_ACTIVE_MARKER:	return "Active Markers";
+> +	case V4L2_CID_JPEG_ENABLE_EXIF:		return "Enable Exif";
+>  
+>  	/* Image source controls */
+>  	/* Keep the order of the 'case's the same as in v4l2-controls.h! */
+> diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
+> index a2669b79b294..da619f43de65 100644
+> --- a/include/uapi/linux/v4l2-controls.h
+> +++ b/include/uapi/linux/v4l2-controls.h
+> @@ -1022,6 +1022,8 @@ enum v4l2_jpeg_chroma_subsampling {
+>  #define	V4L2_JPEG_ACTIVE_MARKER_DQT		(1 << 17)
+>  #define	V4L2_JPEG_ACTIVE_MARKER_DHT		(1 << 18)
+>  
+> +#define	V4L2_CID_JPEG_ENABLE_EXIF		(V4L2_CID_JPEG_CLASS_BASE + 5)
+> +
+>  
+>  /* Image source controls */
+>  #define V4L2_CID_IMAGE_SOURCE_CLASS_BASE	(V4L2_CTRL_CLASS_IMAGE_SOURCE | 0x900)
+> 
