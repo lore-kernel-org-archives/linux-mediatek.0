@@ -1,28 +1,94 @@
-From: <Claudiu.Beznea@microchip.com>
-Subject: Re: [PATCH 0/7] add support for clocksource/clockevent DT selection
-Date: Thu, 26 Sep 2019 08:42:57 +0000
-Message-ID: <72edc5fd-df05-cba5-5aa7-39da1709415b@microchip.com>
-References: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
- <c3a68a08-d134-cd28-c8af-f757628e07f1@linaro.org>
+From: Andrew Murray <andrew.murray@arm.com>
+Subject: Re: [PATCH 00/11] PCI dma-ranges parsing consolidation
+Date: Thu, 26 Sep 2019 09:49:00 +0100
+Message-ID: <20190926084859.GB9720@e119886-lin.cambridge.arm.com>
+References: <20190924214630.12817-1-robh@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <c3a68a08-d134-cd28-c8af-f757628e07f1@linaro.org>
-Content-Language: en-US
-Content-ID: <BCA8ECD1111F6948AB05E557D0B1C52E@namprd11.prod.outlook.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: daniel.lezcano@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, nsekhar@ti.com, bgolaszewski@baylibre.com, monstr@monstr.eu, john@phrozen.org, ralf@linux-mips.org, paul.burton@mips.com, jhogan@kernel.org, lftan@altera.com, tglx@linutronix.de, vgupta@synopsys.com, marc.zyngier@arm.com, patrice.chotard@st.com, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, eric@anholt.net, wahrenst@gmx.net, f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, bcm-kernel-feedback-list@broadcom.com, linus.walleij@linaro.org, shc_work@mail.ru, kgene@kernel.org, krzk@kernel.org, ysato@users.sourceforge.jp, liviu.dudau@arm.com, sudeep.holla@arm.com, lorenzo.pieralisi@arm.com, shawnguo@kernel.org
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, nios2-dev@lists.rocketboards.org, linux-snps-arc@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-rpi-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, uclinux-h8-devel@lists.sourceforge.jp, linux-amlogic@lists.infradead.org, openbmc@lists.ozlabs.org, linux-oxnas@groups.io, linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org, linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <20190924214630.12817-1-robh@kernel.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Rob Herring <robh@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Ryder Lee <ryder.lee@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Michal Simek <michal.simek@xilinx.com>, linux-rockchip@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, Linus Walleij <linus.walleij@linaro.org>, Ray Jui <rjui@broadcom.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Simon Horman <horms@verge.net.au>, linux-mediatek@lists.infradead.org, Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org, Scott Branden <sbranden@broadcom.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, rfi@lists.rocketboards.orgl
 List-Id: linux-mediatek@lists.infradead.org
 
-DQoNCk9uIDI1LjA5LjIwMTkgMjA6MTksIERhbmllbCBMZXpjYW5vIHdyb3RlOg0KPiBFeHRlcm5h
-bCBFLU1haWwNCj4gDQo+IA0KPiBIaSBDbGF1ZGl1LA0KPiANCj4gT24gMTAvMDkvMjAxOSAxNTo0
-NywgQ2xhdWRpdSBCZXpuZWEgd3JvdGU6DQo+PiBIaSwNCj4+DQo+PiBUaGlzIHNlcmllcyBhZGRz
-IHN1cHBvcnQgdG8gcGVybWl0IHRoZSBzZWxlY3Rpb24gb2YgY2xvY2tzb3VyY2UvY2xvY2tldmVu
-dA0KPj4gdmlhIERULg0KPiANCj4gVGhhbmtzIGZvciB0aGUgcHJvcG9zYWwgYW5kIHRha2luZyBj
-YXJlIG9mIG1ha2luZyBzb21lIHByb2dyZXNzIG9uIHRoaXMuDQo+IA0KPiBJIGp1c3Qgd2FudGVk
-IHRvIGxldCB5b3Uga25vdyBJJ3ZlIGJlZW4gdHJhdmVsaW5nIGJ1dCB0aGUgc2VyaWVzIGlzIGlu
-DQo+IG15IHBpcGUgYW5kIEkgZGlkIG5vdCBmb3JnZXQgaXQuIEknbGwgY29tbWVudCBpdCBuZXh0
-IHdlZWsuDQoNCkhpIERhbmllbCwNCg0KTm8gcHJvYmxlbS4gVGhhbmsgeW91IGZvciBsZXR0aW5n
-IG1lIGtub3cuDQoNCkNsYXVkaXUNCg0KPiANCj4gIC0tIERhbmllbA0KPiANCj4gDQo=
+On Tue, Sep 24, 2019 at 04:46:19PM -0500, Rob Herring wrote:
+> This series moves the DT 'dma-ranges' parsing into common helpers
+> utilizing a resource list. In the process of doing this, I noticed
+> several cases where pci_parse_request_of_pci_ranges() could be used so
+> I converted those drivers first. The last 5 patches make the actual
+> change to use the common 'dma_ranges' resource list. There's no
+> (intended) functional change in this series though I'm also working on
+> a separate series to improve the handling of 'dma-ranges' and dma
+> masks.
+> 
+> pci-rcar-gen2 is the only remaining driver doing its own dma-ranges
+> handling as it is still using the old ARM PCI functions. Looks like it
+> is the last one (in drivers/pci/).
+
+It also seems that pcie-tango is using of_pci_dma_range_parser_init
+and so parsing dma-ranges. Though it's using the dma_ranges for a
+slightly different purpose.
+
+Thanks,
+
+Andrew Murray
+
+> 
+> Compile tested only.
+> 
+> Rob
+> 
+> Rob Herring (11):
+>   PCI: aardvark: Use pci_parse_request_of_pci_ranges()
+>   PCI: altera: Use pci_parse_request_of_pci_ranges()
+>   PCI: mediatek: Use pci_parse_request_of_pci_ranges()
+>   PCI: versatile: Enable COMPILE_TEST
+>   PCI: versatile: Use pci_parse_request_of_pci_ranges()
+>   PCI: of: Add inbound resource parsing to helpers
+>   PCI: ftpci100: Use inbound resources for setup
+>   PCI: v3-semi: Use inbound resources for setup
+>   PCI: xgene: Use inbound resources for setup
+>   PCI: iproc: Use inbound resources for setup
+>   PCI: rcar: Use inbound resources for setup
+> 
+>  drivers/pci/controller/Kconfig                |  2 +-
+>  .../pci/controller/dwc/pcie-designware-host.c |  3 +-
+>  drivers/pci/controller/pci-aardvark.c         | 58 ++---------------
+>  drivers/pci/controller/pci-ftpci100.c         | 29 ++++-----
+>  drivers/pci/controller/pci-host-common.c      |  2 +-
+>  drivers/pci/controller/pci-v3-semi.c          | 40 +++++-------
+>  drivers/pci/controller/pci-versatile.c        | 62 ++++--------------
+>  drivers/pci/controller/pci-xgene.c            | 33 ++++------
+>  drivers/pci/controller/pcie-altera.c          | 38 +----------
+>  drivers/pci/controller/pcie-cadence-host.c    |  2 +-
+>  drivers/pci/controller/pcie-iproc-platform.c  |  1 +
+>  drivers/pci/controller/pcie-iproc.c           | 63 +++----------------
+>  drivers/pci/controller/pcie-mediatek.c        | 47 +++++---------
+>  drivers/pci/controller/pcie-mobiveil.c        |  4 +-
+>  drivers/pci/controller/pcie-rcar.c            | 48 ++++++--------
+>  drivers/pci/controller/pcie-rockchip-host.c   |  3 +-
+>  drivers/pci/controller/pcie-xilinx-nwl.c      |  2 +-
+>  drivers/pci/controller/pcie-xilinx.c          |  2 +-
+>  drivers/pci/of.c                              | 44 ++++++++++++-
+>  drivers/pci/pci.h                             |  8 ++-
+>  include/linux/pci.h                           |  2 +
+>  21 files changed, 162 insertions(+), 331 deletions(-)
+> 
+> --
+> 2.20.1
+> 
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
