@@ -1,7 +1,8 @@
 From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Subject: [PATCH v2 2/4] watchdog: mtk_wdt: mt8183: Add reset controller
-Date: Fri, 27 Sep 2019 18:31:55 +0800
-Message-ID: <1569580317-21181-3-git-send-email-jiaxin.yu@mediatek.com>
+Subject: [PATCH v2 4/4] ASoC: mt8183: fix audio playback slowly after playback
+ during bootup
+Date: Fri, 27 Sep 2019 18:31:57 +0800
+Message-ID: <1569580317-21181-5-git-send-email-jiaxin.yu@mediatek.com>
 References: <1569580317-21181-1-git-send-email-jiaxin.yu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,184 +22,53 @@ To: broonie@kernel.org, mark.rutland@arm.com, robh+dt@kernel.org, linux@roeck-us
 Cc: alsa-devel@alsa-project.org, yong.liang@mediatek.com, lgirdwood@gmail.com, jiaxin.yu@mediatek.com, perex@perex.cz, tzungbi@google.com, linux-mediatek@lists.infradead.org, eason.yen@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: "yong.liang" <yong.liang@mediatek.com>
+Before regmap_reinit_cache we must reset audio regs as default values.
+So we use reset controller unit(toprgu) to reset audio hw.
 
-Provide assert/deassert/reset API in watchdog driver.
-Register reset controller for toprgu device in watchdog probe.
-
-Signed-off-by: yong.liang <yong.liang@mediatek.com>
+Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
 ---
- drivers/watchdog/Kconfig   |   1 +
- drivers/watchdog/mtk_wdt.c | 110 ++++++++++++++++++++++++++++++++++++-
- 2 files changed, 110 insertions(+), 1 deletion(-)
+ sound/soc/mediatek/mt8183/mt8183-afe-pcm.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-diff --git a/drivers/watchdog/Kconfig b/drivers/watchdog/Kconfig
-index 2e07caab9db2..629249fe5305 100644
---- a/drivers/watchdog/Kconfig
-+++ b/drivers/watchdog/Kconfig
-@@ -717,6 +717,7 @@ config MEDIATEK_WATCHDOG
- 	tristate "Mediatek SoCs watchdog support"
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
- 	select WATCHDOG_CORE
-+	select RESET_CONTROLLER
- 	help
- 	  Say Y here to include support for the watchdog timer
- 	  in Mediatek SoCs.
-diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-index 9c3d0033260d..660fb0e48d8e 100644
---- a/drivers/watchdog/mtk_wdt.c
-+++ b/drivers/watchdog/mtk_wdt.c
-@@ -20,6 +20,10 @@
- #include <linux/types.h>
- #include <linux/watchdog.h>
- #include <linux/delay.h>
-+#include <linux/reset-controller.h>
-+#include <linux/slab.h>
+diff --git a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
+index 4a31106d3471..721632386a50 100644
+--- a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
++++ b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
+@@ -11,6 +11,7 @@
+ #include <linux/of.h>
+ #include <linux/of_address.h>
+ #include <linux/pm_runtime.h>
 +#include <linux/reset.h>
-+#include <linux/of_device.h>
  
- #define WDT_MAX_TIMEOUT		31
- #define WDT_MIN_TIMEOUT		1
-@@ -44,17 +48,113 @@
- #define WDT_SWRST		0x14
- #define WDT_SWRST_KEY		0x1209
+ #include "mt8183-afe-common.h"
+ #include "mt8183-afe-clk.h"
+@@ -1089,6 +1090,7 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	struct mtk_base_afe *afe;
+ 	struct mt8183_afe_private *afe_priv;
+ 	struct device *dev;
++	struct reset_control *rstc;
+ 	int i, irq_id, ret;
  
-+#define WDT_SWSYSRST		0x18U
-+#define WDT_SWSYS_RST_KEY	0x88000000
-+
- #define DRV_NAME		"mtk-wdt"
- #define DRV_VERSION		"1.0"
+ 	afe = devm_kzalloc(&pdev->dev, sizeof(*afe), GFP_KERNEL);
+@@ -1126,6 +1128,19 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
  
- static bool nowayout = WATCHDOG_NOWAYOUT;
- static unsigned int timeout;
- 
-+struct toprgu_reset {
-+	spinlock_t lock; /* Protects reset_controller access */
-+	void __iomem *toprgu_swrst_base;
-+	int regofs;
-+	struct reset_controller_dev rcdev;
-+};
-+
- struct mtk_wdt_dev {
- 	struct watchdog_device wdt_dev;
- 	void __iomem *wdt_base;
-+	struct toprgu_reset reset_controller;
-+	const struct mtk_wdt_compatible *dev_comp;
-+};
-+
-+struct mtk_wdt_compatible {
-+	int sw_rst_num;
-+};
-+
-+static int toprgu_reset_assert(struct reset_controller_dev *rcdev,
-+			       unsigned long id)
-+{
-+	unsigned int tmp;
-+	unsigned long flags;
-+	struct toprgu_reset *data = container_of(rcdev,
-+				struct toprgu_reset, rcdev);
-+
-+	spin_lock_irqsave(&data->lock, flags);
-+
-+	tmp = __raw_readl(data->toprgu_swrst_base + data->regofs);
-+	tmp |= BIT(id);
-+	tmp |= WDT_SWSYS_RST_KEY;
-+	writel(tmp, data->toprgu_swrst_base + data->regofs);
-+
-+	spin_unlock_irqrestore(&data->lock, flags);
-+
-+	return 0;
-+}
-+
-+static int toprgu_reset_deassert(struct reset_controller_dev *rcdev,
-+				 unsigned long id)
-+{
-+	unsigned int tmp;
-+	unsigned long flags;
-+	struct toprgu_reset *data = container_of(rcdev,
-+					struct toprgu_reset, rcdev);
-+
-+	spin_lock_irqsave(&data->lock, flags);
-+
-+	tmp = __raw_readl(data->toprgu_swrst_base + data->regofs);
-+	tmp &= ~BIT(id);
-+	tmp |= WDT_SWSYS_RST_KEY;
-+	writel(tmp, data->toprgu_swrst_base + data->regofs);
-+
-+	spin_unlock_irqrestore(&data->lock, flags);
-+
-+	return 0;
-+}
-+
-+static int toprgu_reset(struct reset_controller_dev *rcdev,
-+			unsigned long id)
-+{
-+	int ret;
-+
-+	ret = toprgu_reset_assert(rcdev, id);
-+	if (ret)
++	rstc = devm_reset_control_get(dev, "audiosys");
++	if (IS_ERR(rstc)) {
++		ret = PTR_ERR(rstc);
++		dev_err(dev, "could not get audiosys reset:%d\n", ret);
 +		return ret;
++	}
 +
-+	return toprgu_reset_deassert(rcdev, id);
-+}
++	ret = reset_control_reset(rstc);
++	if (ret) {
++		dev_err(dev, "failed to trigger audio reset:%d\n", ret);
++		return ret;
++	}
 +
-+static struct reset_control_ops toprgu_reset_ops = {
-+	.assert = toprgu_reset_assert,
-+	.deassert = toprgu_reset_deassert,
-+	.reset = toprgu_reset,
- };
- 
-+static void toprgu_register_reset_controller(struct platform_device *pdev,
-+					     int regofs)
-+{
-+	int ret;
-+	struct mtk_wdt_dev *mtk_wdt = platform_get_drvdata(pdev);
-+
-+	spin_lock_init(&mtk_wdt->reset_controller.lock);
-+
-+	mtk_wdt->dev_comp = of_device_get_match_data(&pdev->dev);
-+	mtk_wdt->reset_controller.toprgu_swrst_base = mtk_wdt->wdt_base;
-+	mtk_wdt->reset_controller.regofs = regofs;
-+	mtk_wdt->reset_controller.rcdev.owner = THIS_MODULE;
-+	mtk_wdt->reset_controller.rcdev.nr_resets =
-+				mtk_wdt->dev_comp->sw_rst_num;
-+	mtk_wdt->reset_controller.rcdev.ops = &toprgu_reset_ops;
-+	mtk_wdt->reset_controller.rcdev.of_node = pdev->dev.of_node;
-+	ret = reset_controller_register(&mtk_wdt->reset_controller.rcdev);
-+	if (ret != 0)
-+		dev_err(&pdev->dev,
-+			"couldn't register wdt reset controller: %d\n", ret);
-+}
-+
- static int mtk_wdt_restart(struct watchdog_device *wdt_dev,
- 			   unsigned long action, void *data)
- {
-@@ -187,9 +287,12 @@ static int mtk_wdt_probe(struct platform_device *pdev)
- 	if (unlikely(err))
- 		return err;
- 
--	dev_info(dev, "Watchdog enabled (timeout=%d sec, nowayout=%d)\n",
-+	dev_info(&pdev->dev, "Watchdog enabled (timeout=%d sec, nowayout=%d)\n",
- 		 mtk_wdt->wdt_dev.timeout, nowayout);
- 
-+	mtk_wdt->dev_comp = of_device_get_match_data(&pdev->dev);
-+	if (mtk_wdt->dev_comp)
-+		toprgu_register_reset_controller(pdev, WDT_SWSYSRST);
- 	return 0;
- }
- 
-@@ -217,7 +320,12 @@ static int mtk_wdt_resume(struct device *dev)
- }
- #endif
- 
-+static const struct mtk_wdt_compatible mt8183_compat = {
-+	.sw_rst_num = 18,
-+};
-+
- static const struct of_device_id mtk_wdt_dt_ids[] = {
-+	{ .compatible = "mediatek,mt8183-wdt", .data = &mt8183_compat },
- 	{ .compatible = "mediatek,mt6589-wdt" },
- 	{ /* sentinel */ }
- };
+ 	/* enable clock for regcache get default value from hw */
+ 	afe_priv->pm_runtime_bypass_reg_ctl = true;
+ 	pm_runtime_get_sync(&pdev->dev);
 -- 
 2.18.0
