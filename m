@@ -1,14 +1,14 @@
-From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Subject: [PATCH 3/4] WIP: dt-bindings: medaitek: mt8183: add property "resets"
- && "reset-names"
-Date: Fri, 27 Sep 2019 17:26:56 +0800
-Message-ID: <1569576417-20663-4-git-send-email-jiaxin.yu@mediatek.com>
-References: <1569576417-20663-1-git-send-email-jiaxin.yu@mediatek.com>
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Subject: Re: [PATCH] media: ov5695: Add suport for registering sensor-related
+Date: Fri, 27 Sep 2019 12:45:25 +0300
+Message-ID: <20190927094525.GP32742@smile.fi.intel.com>
+References: <20190927071824.18675-1-dongchun.zhu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1569576417-20663-1-git-send-email-jiaxin.yu@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <20190927071824.18675-1-dongchun.zhu@mediatek.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -18,41 +18,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: broonie@kernel.org, mark.rutland@arm.com, robh+dt@kernel.org, linux@roeck-us.net, wim@linux-watchdog.org
-Cc: alsa-devel@alsa-project.org, yong.liang@mediatek.com, lgirdwood@gmail.com, jiaxin.yu@mediatek.com, perex@perex.cz, tzungbi@google.com, linux-mediatek@lists.infradead.org, eason.yen@mediatek.com, linux-arm-kernel@lists.infradead.org
+To: Dongchun Zhu <dongchun.zhu@mediatek.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, drinkcat@chromium.org, srv_heupstream@mediatek.com, shengnan.wang@mediatek.com, tfiga@chromium.org, louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, sakari.ailus@linux.intel.com, matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch add property "resets" && "reset-names" in examples so that we can
-use reset controller to reset audio domain regs.
+On Fri, Sep 27, 2019 at 03:18:23PM +0800, Dongchun Zhu wrote:
+> Hello,
+> =
 
-Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
----
- Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt | 6 ++++++
- 1 file changed, 6 insertions(+)
+> This series modifies the interface of async register V4L2 sub-device invo=
+ked in probe function for OV5695 CMOS sensor.
+> The Omnivision OV5695 image sensor would be used in camera features on Cr=
+OS application.
+> 5.0 Mega Pixel MIPI Camera Mdoule also supports auto-focus control (AFC) =
+with embedded AF VCM Driver.
+> =
 
-diff --git a/Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt b/Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt
-index 396ba38619f6..1f1cba4152ce 100644
---- a/Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt
-+++ b/Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt
-@@ -4,6 +4,10 @@ Required properties:
- - compatible = "mediatek,mt68183-audio";
- - reg: register location and size
- - interrupts: should contain AFE interrupt
-+- resets: Must contain an entry for each entry in reset-names
-+  See ../reset/reset.txt for details.
-+- reset-names: should have these reset names:
-+		"audiosys";
- - power-domains: should define the power domain
- - clocks: Must contain an entry for each entry in clock-names
- - clock-names: should have these clock names:
-@@ -20,6 +24,8 @@ Example:
- 		compatible = "mediatek,mt8183-audio";
- 		reg = <0 0x11220000 0 0x1000>;
- 		interrupts = <GIC_SPI 161 IRQ_TYPE_LEVEL_LOW>;
-+		resets = <&watchdog MT8183_TOPRGU_AUDIO_SW_RST>;
-+		reset-names = "audiosys";
- 		power-domains = <&scpsys MT8183_POWER_DOMAIN_AUDIO>;
- 		clocks = <&infrasys CLK_INFRA_AUDIO>,
- 			 <&infrasys CLK_INFRA_AUDIO_26M_BCLK>,
--- 
-2.18.0
+> Here we use v4l2_async_register_subdev_sensor_common() instead of v4l2_as=
+ync_register_subdev()
+> to register a sensor sub-device to the asynchronous sub-device framework =
+and parse set up
+> common sensor-related devices, such as actuator.
+> =
+
+> This function is just like=A0v4l2_async_register_subdev()=A0with the exce=
+ption that calling it will also parse
+> firmware interfaces for remote references using=A0v4l2_async_notifier_par=
+se_fwnode_sensor_common()
+> and registers the async sub-devices.
+> =
+
+> After applying this change, we can see the VCM move when changing the sce=
+ne.
+
+When you derive Cc list, set some threshold to the get_maintainer.pl, like
+
+	scripts/get_maintainer.pl --git --git-min-percent=3D67
+
+-- =
+
+With Best Regards,
+Andy Shevchenko
