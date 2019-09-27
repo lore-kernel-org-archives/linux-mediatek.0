@@ -1,14 +1,11 @@
 From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Subject: [PATCH v2 3/4] dt-bindings: medaitek: mt8183: add property "resets"
- && "reset-names"
-Date: Fri, 27 Sep 2019 18:31:56 +0800
-Message-ID: <1569580317-21181-4-git-send-email-jiaxin.yu@mediatek.com>
-References: <1569580317-21181-1-git-send-email-jiaxin.yu@mediatek.com>
+Subject: [PATCH v2 0/4] ASoC: mt8183: fix audio playback slowly after playback
+Date: Fri, 27 Sep 2019 18:31:53 +0800
+Message-ID: <1569580317-21181-1-git-send-email-jiaxin.yu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1569580317-21181-1-git-send-email-jiaxin.yu@mediatek.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -22,37 +19,32 @@ To: broonie@kernel.org, mark.rutland@arm.com, robh+dt@kernel.org, linux@roeck-us
 Cc: alsa-devel@alsa-project.org, yong.liang@mediatek.com, lgirdwood@gmail.com, jiaxin.yu@mediatek.com, perex@perex.cz, tzungbi@google.com, linux-mediatek@lists.infradead.org, eason.yen@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch add property "resets" && "reset-names" in examples so that we can
-use reset controller to reset audio domain regs.
+This series patches add reset controller for MT8183, and audio will use it in 
+machine driver during bootup, they depend on the following patch:
 
-Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
----
- Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt | 6 ++++++
- 1 file changed, 6 insertions(+)
+1. this series add support reset-controller in infra
+	[v5,2/2] clk: reset: Modify reset-controller driver
+	https://patchwork.kernel.org/patch/11060419/
 
-diff --git a/Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt b/Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt
-index 396ba38619f6..1f1cba4152ce 100644
---- a/Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt
-+++ b/Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt
-@@ -4,6 +4,10 @@ Required properties:
- - compatible = "mediatek,mt68183-audio";
- - reg: register location and size
- - interrupts: should contain AFE interrupt
-+- resets: Must contain an entry for each entry in reset-names
-+  See ../reset/reset.txt for details.
-+- reset-names: should have these reset names:
-+		"audiosys";
- - power-domains: should define the power domain
- - clocks: Must contain an entry for each entry in clock-names
- - clock-names: should have these clock names:
-@@ -20,6 +24,8 @@ Example:
- 		compatible = "mediatek,mt8183-audio";
- 		reg = <0 0x11220000 0 0x1000>;
- 		interrupts = <GIC_SPI 161 IRQ_TYPE_LEVEL_LOW>;
-+		resets = <&watchdog MT8183_TOPRGU_AUDIO_SW_RST>;
-+		reset-names = "audiosys";
- 		power-domains = <&scpsys MT8183_POWER_DOMAIN_AUDIO>;
- 		clocks = <&infrasys CLK_INFRA_AUDIO>,
- 			 <&infrasys CLK_INFRA_AUDIO_26M_BCLK>,
+v2 changes:
+	1. remove "WIP" that in the title of patches
+	2. add hyper link for the patch that depends on
+
+Jiaxin Yu (2):
+  dt-bindings: medaitek: mt8183: add property "resets" && "reset-names"
+  ASoC: mt8183: fix audio playback slowly after playback during bootup
+
+yong.liang (2):
+  dt-bindings: mediatek: mt8183: Add #reset-cells
+  watchdog: mtk_wdt: mt8183: Add reset controller
+
+ .../bindings/sound/mt8183-afe-pcm.txt         |   6 +
+ .../devicetree/bindings/watchdog/mtk-wdt.txt  |   9 +-
+ drivers/watchdog/Kconfig                      |   1 +
+ drivers/watchdog/mtk_wdt.c                    | 110 +++++++++++++++++-
+ .../reset-controller/mt8183-resets.h          |  13 +++
+ sound/soc/mediatek/mt8183/mt8183-afe-pcm.c    |  15 +++
+ 6 files changed, 150 insertions(+), 4 deletions(-)
+
 -- 
 2.18.0
