@@ -1,31 +1,180 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v3 1/5] media: dt-bindings: Add jpeg enc device tree node
- document
-Date: Fri, 27 Sep 2019 13:31:07 -0500
-Message-ID: <20190927183107.GA16235@bogus>
-References: <20190924074303.22713-1-xia.jiang@mediatek.com>
- <20190924074303.22713-2-xia.jiang@mediatek.com>
+From: Dmitry Vyukov <dvyukov@google.com>
+Subject: Re: [PATCH] kasan: fix the missing underflow in memmove and memcpy
+ with CONFIG_KASAN_GENERIC=y
+Date: Fri, 27 Sep 2019 21:41:51 +0200
+Message-ID: <CACT4Y+YuAxhKtL7ho7jpVAPkjG-JcGyczMXmw8qae2iaZjTh_w@mail.gmail.com>
+References: <20190927034338.15813-1-walter-zh.wu@mediatek.com>
+ <CACT4Y+Zxz+R=qQxSMoipXoLjRqyApD3O0eYpK0nyrfGHE4NNPw@mail.gmail.com> <1569594142.9045.24.camel@mtksdccf07>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190924074303.22713-2-xia.jiang@mediatek.com>
+In-Reply-To: <1569594142.9045.24.camel@mtksdccf07>
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rick Chang <rick.chang@mediatek.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Marek Szyprowski <m.szyprowski@samsung.com>, Tomasz Figa <tfiga@chromium.org>, srv_heupstream@mediatek.com, Xia Jiang <xia.jiang@mediatek.com>
+To: Walter Wu <walter-zh.wu@mediatek.com>
+Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>, Linux-MM <linux-mm@kvack.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream <wsd_upstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 24 Sep 2019 15:43:00 +0800, Xia Jiang wrote:
-> Add jpeg enc device tree node document.
-> 
-> Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
-> ---
-> v3: change compatible to SoC specific compatible
-> 
-> v2: no changes
-> ---
->  .../bindings/media/mediatek-jpeg-encoder.txt  | 37 +++++++++++++++++++
->  1 file changed, 37 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.txt
-> 
+On Fri, Sep 27, 2019 at 4:22 PM Walter Wu <walter-zh.wu@mediatek.com> wrote=
+:
+>
+> On Fri, 2019-09-27 at 15:07 +0200, Dmitry Vyukov wrote:
+> > On Fri, Sep 27, 2019 at 5:43 AM Walter Wu <walter-zh.wu@mediatek.com> w=
+rote:
+> > >
+> > > memmove() and memcpy() have missing underflow issues.
+> > > When -7 <=3D size < 0, then KASAN will miss to catch the underflow is=
+sue.
+> > > It looks like shadow start address and shadow end address is the same=
+,
+> > > so it does not actually check anything.
+> > >
+> > > The following test is indeed not caught by KASAN:
+> > >
+> > >         char *p =3D kmalloc(64, GFP_KERNEL);
+> > >         memset((char *)p, 0, 64);
+> > >         memmove((char *)p, (char *)p + 4, -2);
+> > >         kfree((char*)p);
+> > >
+> > > It should be checked here:
+> > >
+> > > void *memmove(void *dest, const void *src, size_t len)
+> > > {
+> > >         check_memory_region((unsigned long)src, len, false, _RET_IP_)=
+;
+> > >         check_memory_region((unsigned long)dest, len, true, _RET_IP_)=
+;
+> > >
+> > >         return __memmove(dest, src, len);
+> > > }
+> > >
+> > > We fix the shadow end address which is calculated, then generic KASAN
+> > > get the right shadow end address and detect this underflow issue.
+> > >
+> > > [1] https://bugzilla.kernel.org/show_bug.cgi?id=3D199341
+> > >
+> > > Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+> > > Reported-by: Dmitry Vyukov <dvyukov@google.com>
+> > > ---
+> > >  lib/test_kasan.c   | 36 ++++++++++++++++++++++++++++++++++++
+> > >  mm/kasan/generic.c |  8 ++++++--
+> > >  2 files changed, 42 insertions(+), 2 deletions(-)
+> > >
+> > > diff --git a/lib/test_kasan.c b/lib/test_kasan.c
+> > > index b63b367a94e8..8bd014852556 100644
+> > > --- a/lib/test_kasan.c
+> > > +++ b/lib/test_kasan.c
+> > > @@ -280,6 +280,40 @@ static noinline void __init kmalloc_oob_in_memse=
+t(void)
+> > >         kfree(ptr);
+> > >  }
+> > >
+> > > +static noinline void __init kmalloc_oob_in_memmove_underflow(void)
+> > > +{
+> > > +       char *ptr;
+> > > +       size_t size =3D 64;
+> > > +
+> > > +       pr_info("underflow out-of-bounds in memmove\n");
+> > > +       ptr =3D kmalloc(size, GFP_KERNEL);
+> > > +       if (!ptr) {
+> > > +               pr_err("Allocation failed\n");
+> > > +               return;
+> > > +       }
+> > > +
+> > > +       memset((char *)ptr, 0, 64);
+> > > +       memmove((char *)ptr, (char *)ptr + 4, -2);
+> > > +       kfree(ptr);
+> > > +}
+> > > +
+> > > +static noinline void __init kmalloc_oob_in_memmove_overflow(void)
+> > > +{
+> > > +       char *ptr;
+> > > +       size_t size =3D 64;
+> > > +
+> > > +       pr_info("overflow out-of-bounds in memmove\n");
+> > > +       ptr =3D kmalloc(size, GFP_KERNEL);
+> > > +       if (!ptr) {
+> > > +               pr_err("Allocation failed\n");
+> > > +               return;
+> > > +       }
+> > > +
+> > > +       memset((char *)ptr, 0, 64);
+> > > +       memmove((char *)ptr + size, (char *)ptr, 2);
+> > > +       kfree(ptr);
+> > > +}
+> > > +
+> > >  static noinline void __init kmalloc_uaf(void)
+> > >  {
+> > >         char *ptr;
+> > > @@ -734,6 +768,8 @@ static int __init kmalloc_tests_init(void)
+> > >         kmalloc_oob_memset_4();
+> > >         kmalloc_oob_memset_8();
+> > >         kmalloc_oob_memset_16();
+> > > +       kmalloc_oob_in_memmove_underflow();
+> > > +       kmalloc_oob_in_memmove_overflow();
+> > >         kmalloc_uaf();
+> > >         kmalloc_uaf_memset();
+> > >         kmalloc_uaf2();
+> > > diff --git a/mm/kasan/generic.c b/mm/kasan/generic.c
+> > > index 616f9dd82d12..34ca23d59e67 100644
+> > > --- a/mm/kasan/generic.c
+> > > +++ b/mm/kasan/generic.c
+> > > @@ -131,9 +131,13 @@ static __always_inline bool memory_is_poisoned_n=
+(unsigned long addr,
+> > >                                                 size_t size)
+> > >  {
+> > >         unsigned long ret;
+> > > +       void *shadow_start =3D kasan_mem_to_shadow((void *)addr);
+> > > +       void *shadow_end =3D kasan_mem_to_shadow((void *)addr + size =
+- 1) + 1;
+> > >
+> > > -       ret =3D memory_is_nonzero(kasan_mem_to_shadow((void *)addr),
+> > > -                       kasan_mem_to_shadow((void *)addr + size - 1) =
++ 1);
+> > > +       if ((long)size < 0)
+> > > +               shadow_end =3D kasan_mem_to_shadow((void *)addr + siz=
+e);
+> >
+> > Hi Walter,
+> >
+> > Thanks for working on this.
+> >
+> > If size<0, does it make sense to continue at all? We will still check
+> > 1PB of shadow memory? What happens when we pass such huge range to
+> > memory_is_nonzero?
+> > Perhaps it's better to produce an error and bail out immediately if siz=
+e<0?
+>
+> I agree with what you said. when size<0, it is indeed an unreasonable
+> behavior, it should be blocked from continuing to do.
+>
+>
+> > Also, what's the failure mode of the tests? Didn't they badly corrupt
+> > memory? We tried to keep tests such that they produce the KASAN
+> > reports, but don't badly corrupt memory b/c/ we need to run all of
+> > them.
+>
+> Maybe we should first produce KASAN reports and then go to execute
+> memmove() or do nothing? It looks like it=E2=80=99s doing the following.o=
+r?
+>
+> void *memmove(void *dest, const void *src, size_t len)
+>  {
+> +       if (long(len) <=3D 0)
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+/\/\/\/\/\/\
+
+This check needs to be inside of check_memory_region, otherwise we
+will have similar problems in all other places that use
+check_memory_region.
+But check_memory_region already returns a bool, so we could check that
+bool and return early.
+
+
+> +               kasan_report_invalid_size(src, dest, len, _RET_IP_);
+> +
+>         check_memory_region((unsigned long)src, len, false, _RET_IP_);
+>         check_memory_region((unsigned long)dest, len, true, _RET_IP_);
+>
+>
+>
