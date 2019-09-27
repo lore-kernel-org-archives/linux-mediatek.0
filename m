@@ -1,7 +1,7 @@
 From: Jingoo Han <jingoohan1@gmail.com>
 Subject: Re: [PATCH 06/11] PCI: of: Add inbound resource parsing to helpers
-Date: Fri, 27 Sep 2019 16:12:20 +0000
-Message-ID: <SL2P216MB0105248CAB7433BEB727E94CAA810@SL2P216MB0105.KORP216.PROD.OUTLOOK.COM>
+Date: Fri, 27 Sep 2019 16:12:27 +0000
+Message-ID: <SL2P216MB0105EF7D414AE054835D25C9AA810@SL2P216MB0105.KORP216.PROD.OUTLOOK.COM>
 References: <20190924214630.12817-1-robh@kernel.org>
  <20190924214630.12817-7-robh@kernel.org>
 Mime-Version: 1.0
