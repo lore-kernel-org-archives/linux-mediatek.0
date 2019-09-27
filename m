@@ -1,8 +1,7 @@
 From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Subject: [PATCH 4/4] WIP: ASoC: mt8183: fix audio playback slowly after
- playback during bootup
-Date: Fri, 27 Sep 2019 17:26:57 +0800
-Message-ID: <1569576417-20663-5-git-send-email-jiaxin.yu@mediatek.com>
+Subject: [PATCH 1/4] WIP: dt-bindings: mediatek: mt8183: Add #reset-cells
+Date: Fri, 27 Sep 2019 17:26:54 +0800
+Message-ID: <1569576417-20663-2-git-send-email-jiaxin.yu@mediatek.com>
 References: <1569576417-20663-1-git-send-email-jiaxin.yu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -19,56 +18,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: broonie@kernel.org, mark.rutland@arm.com, robh+dt@kernel.org, linux@roeck-us.net, wim@linux-watchdog.org
-Cc: alsa-devel@alsa-project.org, yong.liang@mediatek.com, lgirdwood@gmail.com, jiaxin.yu@mediatek.com, perex@perex.cz, tzungbi@google.com, linux-mediatek@lists.infradead.org, eason.yen@mediatek.com, linux-arm-kernel@lists.infradead.org
+Cc: alsa-devel@alsa-project.org, yong.liang@mediatek.com, "yong.liang" <yong.liang@mediatek.corp-partner.google.com>, lgirdwood@gmail.com, jiaxin.yu@mediatek.com, perex@perex.cz, tzungbi@google.com, linux-mediatek@lists.infradead.org, eason.yen@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Before regmap_reinit_cache we must reset audio regs as default values.
-So we use reset controller unit(toprgu) to reset audio hw.
+From: "yong.liang" <yong.liang@mediatek.corp-partner.google.com>
 
-Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+Add #reset-cells property and update example.
+
+Signed-off-by: yong.liang <yong.liang@mediatek.com>
 ---
- sound/soc/mediatek/mt8183/mt8183-afe-pcm.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ .../devicetree/bindings/watchdog/mtk-wdt.txt        |  9 ++++++---
+ .../dt-bindings/reset-controller/mt8183-resets.h    | 13 +++++++++++++
+ 2 files changed, 19 insertions(+), 3 deletions(-)
 
-diff --git a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-index 4a31106d3471..721632386a50 100644
---- a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-@@ -11,6 +11,7 @@
- #include <linux/of.h>
- #include <linux/of_address.h>
- #include <linux/pm_runtime.h>
-+#include <linux/reset.h>
+diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+index 3ee625d0812f..ecb9ff784832 100644
+--- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
++++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+@@ -16,11 +16,14 @@ Required properties:
  
- #include "mt8183-afe-common.h"
- #include "mt8183-afe-clk.h"
-@@ -1089,6 +1090,7 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
- 	struct mtk_base_afe *afe;
- 	struct mt8183_afe_private *afe_priv;
- 	struct device *dev;
-+	struct reset_control *rstc;
- 	int i, irq_id, ret;
+ Optional properties:
+ - timeout-sec: contains the watchdog timeout in seconds.
++- #reset-cells: Should be 1.
  
- 	afe = devm_kzalloc(&pdev->dev, sizeof(*afe), GFP_KERNEL);
-@@ -1126,6 +1128,19 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
- 		return ret;
- 	}
+ Example:
  
-+	rstc = devm_reset_control_get(dev, "audiosys");
-+	if (IS_ERR(rstc)) {
-+		ret = PTR_ERR(rstc);
-+		dev_err(dev, "could not get audiosys reset:%d\n", ret);
-+		return ret;
-+	}
+-wdt: watchdog@10000000 {
+-	compatible = "mediatek,mt6589-wdt";
+-	reg = <0x10000000 0x18>;
++watchdog: watchdog@10007000 {
++	compatible = "mediatek,mt8183-wdt",
++		     "mediatek,mt6589-wdt";
++	reg = <0 0x10007000 0 0x100>;
+ 	timeout-sec = <10>;
++	#reset-cells = <1>;
+ };
+diff --git a/include/dt-bindings/reset-controller/mt8183-resets.h b/include/dt-bindings/reset-controller/mt8183-resets.h
+index 8804e34ebdd4..47dadcf3fd24 100644
+--- a/include/dt-bindings/reset-controller/mt8183-resets.h
++++ b/include/dt-bindings/reset-controller/mt8183-resets.h
+@@ -78,4 +78,17 @@
+ #define MT8183_INFRACFG_AO_I2C7_SW_RST				126
+ #define MT8183_INFRACFG_AO_I2C8_SW_RST				127
+ 
++#define MT8183_TOPRGU_MM_SW_RST                                 1
++#define MT8183_TOPRGU_MFG_SW_RST                                2
++#define MT8183_TOPRGU_VENC_SW_RST                               3
++#define MT8183_TOPRGU_VDEC_SW_RST                               4
++#define MT8183_TOPRGU_IMG_SW_RST                                5
++#define MT8183_TOPRGU_MD_SW_RST                                 7
++#define MT8183_TOPRGU_CONN_SW_RST                               9
++#define MT8183_TOPRGU_CONN_MCU_SW_RST                           12
++#define MT8183_TOPRGU_IPU0_SW_RST                               14
++#define MT8183_TOPRGU_IPU1_SW_RST                               15
++#define MT8183_TOPRGU_AUDIO_SW_RST                              17
++#define MT8183_TOPRGU_CAMSYS_SW_RST                             18
 +
-+	ret = reset_control_reset(rstc);
-+	if (ret) {
-+		dev_err(dev, "failed to trigger audio reset:%d\n", ret);
-+		return ret;
-+	}
-+
- 	/* enable clock for regcache get default value from hw */
- 	afe_priv->pm_runtime_bypass_reg_ctl = true;
- 	pm_runtime_get_sync(&pdev->dev);
+ #endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8183 */
 -- 
 2.18.0
