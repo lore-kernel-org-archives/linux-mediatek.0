@@ -1,206 +1,148 @@
-From: Sean Wang <sean.wang-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v6 1/5] pinctrl: mediatek: Check gpio pin number and use
- binary search in mtk_hw_pin_field_lookup()
-Date: Fri, 27 Sep 2019 10:23:48 -0700
-Message-ID: <CAGp9LzpnUK-wq_fStsYnYaqZn8mKMJ+9zJmURpWwEDQHA--EFg@mail.gmail.com>
-References: <1569560532-1886-1-git-send-email-light.hsieh@mediatek.com>
- <1569561287.2428.6.camel@mtkswgap22>
+From: Sean Wang <sean.wang@kernel.org>
+Subject: Re: [PATCH v6 2/5] pinctrl: mediatek: Supporting driving setting
+ without mapping current to register value
+Date: Fri, 27 Sep 2019 10:34:34 -0700
+Message-ID: <CAGp9LzoMcqD4bo9Brg9=DTeSNP0dJfDtRGadGWGxsX-vHSezQw@mail.gmail.com>
+References: <1569560532-1886-1-git-send-email-light.hsieh@mediatek.com> <1569560532-1886-2-git-send-email-light.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1569561287.2428.6.camel@mtkswgap22>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Light Hsieh <light.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: "open list:GPIO SUBSYSTEM" <linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, lkml <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1569560532-1886-2-git-send-email-light.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Light Hsieh <light.hsieh@mediatek.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, lkml <linux-kernel@vger.kernel.org>, kuohong.wang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Sep 26, 2019 at 10:14 PM Light Hsieh <light.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+Hi,
+
+On Thu, Sep 26, 2019 at 10:02 PM Light Hsieh <light.hsieh@mediatek.com> wrote:
 >
-> Dear reviewers:
+> Mediatek's smarphone project actual usage does need to know current value
+
+MediaTek
+
+> (in mA) in procedure of finding the best driving setting.
+> The steps in the procedure is like as follow:
 >
-> Patch v6 improves v5 by:
+> 1. set driving setting field in setting register as 0, measure waveform,
+>    perform test, and etc.
+> 2. set driving setting field in setting register as 1, measure waveform,
+>    perform test, and etc.
+> ...
+> n. set driving setting field in setting register as n-1, measure
+>    waveform, perform test, and etc.
+> Check the results of steps 1~n and adopt the setting that get best result.
 >
-> 1.in mtk_pinconf_get() and mtk_pinconf_set() @pinctrl-paris.c:
->   * check if pin is in range before using pin as array index of
->      hw->soc->pins[]
-> 2.in mtk_pin_field_lookup() @pinctrl-mtk-common-v2.c:
->   * declear start, end, check as signed integer instead of unsigned
->     integer. Otherwise, kernel fault will occur when s_pin field of
->     first entry of a mtk_pin_field_calc[] array is not 0.
+> This procedure does need to know the mapping between current to register
+> value.
+
+you seem to use a hardware raw value instead of a human-readable value
+to adjust driving current, right?
+
+> Therefore, setting driving without mapping current is more pratical for
+
+s/pratical/practical/
+
+> Mediatek's smartphone usage.
 >
 
-And for review these patches easily, you should put the changes
-history to the cover letter.
+MediaTek
 
-> On Fri, 2019-09-27 at 13:02 +0800, Light Hsieh wrote:
-> > 1. Check if gpio pin number is in valid range to prevent from get invalid
-> >    pointer 'desc' in the following code:
-> >       desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
-> >
-> > 2. Use binary search in mtk_hw_pin_field_lookup()
-> >    Modify mtk_hw_pin_field_lookup() to use binary search for accelerating
-> >    search.
-> >
-
-You almost forgot to add the tags from you and the reviewers' feedback.
-
-> > ---
-> >  drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 25 +++++++++++++++++++-----
-> >  drivers/pinctrl/mediatek/pinctrl-paris.c         | 25 ++++++++++++++++++++++++
-> >  2 files changed, 45 insertions(+), 5 deletions(-)
-> >
-> > diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> > index 20e1c89..8077855 100644
-> > --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> > +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> > @@ -68,7 +68,8 @@ static int mtk_hw_pin_field_lookup(struct mtk_pinctrl *hw,
-> >  {
-> >       const struct mtk_pin_field_calc *c, *e;
-> >       const struct mtk_pin_reg_calc *rc;
-> > -     u32 bits;
-> > +     u32 bits, found = 0;
-
-the type of found seems to be a bool
-
-> > +     int start = 0, end, check;
-> >
-> >       if (hw->soc->reg_cal && hw->soc->reg_cal[field].range) {
-> >               rc = &hw->soc->reg_cal[field];
-> > @@ -79,21 +80,32 @@ static int mtk_hw_pin_field_lookup(struct mtk_pinctrl *hw,
-> >               return -ENOTSUPP;
-> >       }
-> >
-> > +     end = rc->nranges - 1;
-> >       c = rc->range;
-> >       e = c + rc->nranges;
-> >
-> > -     while (c < e) {
-> > -             if (desc->number >= c->s_pin && desc->number <= c->e_pin)
-> > +     while (start <= end) {
-> > +             check = (start + end) >> 1;
-> > +             if (desc->number >= rc->range[check].s_pin
-> > +              && desc->number <= rc->range[check].e_pin) {
-> > +                     found = 1;
-> >                       break;
-> > -             c++;
-> > +             } else if (start == end)
-> > +                     break;
-> > +             else if (desc->number < rc->range[check].s_pin)
-> > +                     end = check - 1;
-> > +             else
-> > +                     start = check + 1;
-> >       }
-> >
-
-yuh, it is good to do do a binary search here
-
-> > -     if (c >= e) {
-> > +     if (!found) {
-> >               dev_dbg(hw->dev, "Not support field %d for pin = %d (%s)\n",
-> >                       field, desc->number, desc->name);
-> >               return -ENOTSUPP;
-> >       }
-> >
-> > +     c = rc->range + check;
-> > +
-> >       if (c->i_base > hw->nbase - 1) {
-> >               dev_err(hw->dev,
-> >                       "Invalid base for field %d for pin = %d (%s)\n",
-> > @@ -182,6 +194,9 @@ int mtk_hw_set_value(struct mtk_pinctrl *hw, const struct mtk_pin_desc *desc,
-> >       if (err)
-> >               return err;
-> >
-> > +     if (value < 0 || value > pf.mask)
-> > +             return -EINVAL;
-> > +
-> >       if (!pf.next)
-> >               mtk_rmw(hw, pf.index, pf.offset, pf.mask << pf.bitpos,
-> >                       (value & pf.mask) << pf.bitpos);
-> > diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
-> > index 923264d..3e13ae7 100644
-> > --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
-> > +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
-> > @@ -81,6 +81,8 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
-> >       int val, val2, err, reg, ret = 1;
-> >       const struct mtk_pin_desc *desc;
-> >
-> > +     if (pin >= hw->soc->npins)
-> > +             return -EINVAL;
-> >       desc = (const struct mtk_pin_desc *)&hw->soc->pins[pin];
-> >
-> >       switch (param) {
-> > @@ -206,6 +208,10 @@ static int mtk_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
-> >       int err = 0;
-> >       u32 reg;
-> >
-> > +     if (pin >= hw->soc->npins) {
-> > +             err = -EINVAL;
-> > +             goto err;
-> > +     }
-> >       desc = (const struct mtk_pin_desc *)&hw->soc->pins[pin];
-> >
-> >       switch ((u32)param) {
-> > @@ -693,6 +699,9 @@ static int mtk_gpio_get_direction(struct gpio_chip *chip, unsigned int gpio)
-> >       const struct mtk_pin_desc *desc;
-> >       int value, err;
-> >
-> > +     if (gpio > hw->soc->npins)
-> > +             return -EINVAL;
-> > +
-> >       desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
-> >
-> >       err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DIR, &value);
-> > @@ -708,6 +717,9 @@ static int mtk_gpio_get(struct gpio_chip *chip, unsigned int gpio)
-> >       const struct mtk_pin_desc *desc;
-> >       int value, err;
-> >
-> > +     if (gpio > hw->soc->npins)
-> > +             return -EINVAL;
-> > +
-> >       desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
-> >
-> >       err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DI, &value);
-> > @@ -722,6 +734,9 @@ static void mtk_gpio_set(struct gpio_chip *chip, unsigned int gpio, int value)
-> >       struct mtk_pinctrl *hw = gpiochip_get_data(chip);
-> >       const struct mtk_pin_desc *desc;
-> >
-> > +     if (gpio > hw->soc->npins)
-> > +             return;
-> > +
-> >       desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
-> >
-> >       mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_DO, !!value);
-> > @@ -729,12 +744,22 @@ static void mtk_gpio_set(struct gpio_chip *chip, unsigned int gpio, int value)
-> >
-> >  static int mtk_gpio_direction_input(struct gpio_chip *chip, unsigned int gpio)
-> >  {
-> > +     struct mtk_pinctrl *hw = gpiochip_get_data(chip);
-> > +
-> > +     if (gpio > hw->soc->npins)
-> > +             return -EINVAL;
-> > +
-> >       return pinctrl_gpio_direction_input(chip->base + gpio);
-> >  }
-> >
-> >  static int mtk_gpio_direction_output(struct gpio_chip *chip, unsigned int gpio,
-> >                                    int value)
-> >  {
-> > +     struct mtk_pinctrl *hw = gpiochip_get_data(chip);
-> > +
-> > +     if (gpio > hw->soc->npins)
-> > +             return -EINVAL;
-> > +
-> >       mtk_gpio_set(chip, gpio, value);
-> >
-> >       return pinctrl_gpio_direction_output(chip->base + gpio);
+> ---
+>  drivers/pinctrl/mediatek/pinctrl-mt6765.c        |  4 ++--
+>  drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 21 +++++++++++++++++++++
+>  drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h |  5 +++++
+>  drivers/pinctrl/mediatek/pinctrl-paris.c         |  1 +
+>  4 files changed, 29 insertions(+), 2 deletions(-)
 >
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6765.c b/drivers/pinctrl/mediatek/pinctrl-mt6765.c
+> index 32451e8..e024ebc 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mt6765.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mt6765.c
+> @@ -1077,8 +1077,8 @@
+>         .bias_disable_get = mtk_pinconf_bias_disable_get,
+>         .bias_set = mtk_pinconf_bias_set,
+>         .bias_get = mtk_pinconf_bias_get,
+> -       .drive_set = mtk_pinconf_drive_set_rev1,
+> -       .drive_get = mtk_pinconf_drive_get_rev1,
+> +       .drive_set = mtk_pinconf_drive_set_direct_val,
+> +       .drive_get = mtk_pinconf_drive_get_direct_val,
+
+I'm preferred to name it to mtk_pinconf_drive_[get,set]_raw.
+
+>         .adv_pull_get = mtk_pinconf_adv_pull_get,
+>         .adv_pull_set = mtk_pinconf_adv_pull_set,
+>  };
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> index 8077855..acfddf9 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> @@ -608,6 +608,27 @@ int mtk_pinconf_drive_get_rev1(struct mtk_pinctrl *hw,
+>         return 0;
+>  }
+>
+> +/* Revision direct value */
+
+Remove the comment since that is straightforward.
+
+> +int mtk_pinconf_drive_set_direct_val(struct mtk_pinctrl *hw,
+> +                              const struct mtk_pin_desc *desc, u32 arg)
+> +{
+> +       int err;
+> +
+> +       err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_DRV, arg);
+
+We can dot it simply by "return mtk_hw_set_value(hw, desc,
+PINCTRL_PIN_REG_DRV, arg);".
+
+> +
+> +       return err;
+> +}
+> +
+> +int mtk_pinconf_drive_get_direct_val(struct mtk_pinctrl *hw,
+> +                              const struct mtk_pin_desc *desc, int *val)
+> +{
+> +       int err;
+> +
+> +       err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DRV, val);
+> +
+
+Ditto as the above.
+
+> +       return err;
+> +}
+> +
+>  int mtk_pinconf_adv_pull_set(struct mtk_pinctrl *hw,
+>                              const struct mtk_pin_desc *desc, bool pullup,
+>                              u32 arg)
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+> index 1b7da42..b3bada0 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+> @@ -288,6 +288,11 @@ int mtk_pinconf_drive_set_rev1(struct mtk_pinctrl *hw,
+>  int mtk_pinconf_drive_get_rev1(struct mtk_pinctrl *hw,
+>                                const struct mtk_pin_desc *desc, int *val);
+>
+> +int mtk_pinconf_drive_set_direct_val(struct mtk_pinctrl *hw,
+> +                              const struct mtk_pin_desc *desc, u32 arg);
+> +int mtk_pinconf_drive_get_direct_val(struct mtk_pinctrl *hw,
+> +                              const struct mtk_pin_desc *desc, int *val);
+> +
+>  int mtk_pinconf_adv_pull_set(struct mtk_pinctrl *hw,
+>                              const struct mtk_pin_desc *desc, bool pullup,
+>                              u32 arg);
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> index 3e13ae7..5217f76 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> @@ -970,3 +970,4 @@ static int mtk_paris_pinctrl_resume(struct device *device)
+>         .suspend_noirq = mtk_paris_pinctrl_suspend,
+>         .resume_noirq = mtk_paris_pinctrl_resume,
+>  };
+> +
+
+Remove the unnecessary the change
+
+> --
+> 1.8.1.1.dirty
 >
