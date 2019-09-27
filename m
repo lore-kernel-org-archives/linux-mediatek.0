@@ -1,68 +1,206 @@
-From: Jingoo Han <jingoohan1@gmail.com>
-Subject: Re: [PATCH 06/11] PCI: of: Add inbound resource parsing to helpers
-Date: Fri, 27 Sep 2019 16:12:27 +0000
-Message-ID: <SL2P216MB0105EF7D414AE054835D25C9AA810@SL2P216MB0105.KORP216.PROD.OUTLOOK.COM>
-References: <20190924214630.12817-1-robh@kernel.org>
- <20190924214630.12817-7-robh@kernel.org>
+From: Sean Wang <sean.wang-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v6 1/5] pinctrl: mediatek: Check gpio pin number and use
+ binary search in mtk_hw_pin_field_lookup()
+Date: Fri, 27 Sep 2019 10:23:48 -0700
+Message-ID: <CAGp9LzpnUK-wq_fStsYnYaqZn8mKMJ+9zJmURpWwEDQHA--EFg@mail.gmail.com>
+References: <1569560532-1886-1-git-send-email-light.hsieh@mediatek.com>
+ <1569561287.2428.6.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190924214630.12817-7-robh@kernel.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh@kernel.org>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, Linus Walleij <linus.walleij@linaro.org>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Michal Simek <michal.simek@xilinx.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "bcm-kernel-feedback-list@broadcom.com" <bcm-kernel-feedback-list@broadcom.com>, Shawn Lin <shawn.lin@rock-chips.com>, Ray Jui <rjui@broadcom.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Simon Horman <horms@verge.net.au>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Scott Branden <sbranden@broadcom.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, rfi@lists.rocketboar
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1569561287.2428.6.camel@mtkswgap22>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Light Hsieh <light.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: "open list:GPIO SUBSYSTEM" <linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, lkml <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, kuohong.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-DQoNCu+7vz4gT24gOS8yNC8xOSwgNTo0NiBQTSwgUm9iIEhlcnJpbmcgd3JvdGU6DQo+DQo+IEV4
-dGVuZCBkZXZtX29mX3BjaV9nZXRfaG9zdF9icmlkZ2VfcmVzb3VyY2VzKCkgYW5kDQo+IHBjaV9w
-YXJzZV9yZXF1ZXN0X29mX3BjaV9yYW5nZXMoKSBoZWxwZXJzIHRvIGFsc28gcGFyc2UgdGhlIGlu
-Ym91bmQNCj4gYWRkcmVzc2VzIGZyb20gRFQgJ2RtYS1yYW5nZXMnIGFuZCBwb3B1bGF0ZSBhIHJl
-c291cmNlIGxpc3Qgd2l0aCB0aGUNCj4gdHJhbnNsYXRlZCBhZGRyZXNzZXMuIFRoaXMgd2lsbCBo
-ZWxwIGVuc3VyZSAnZG1hLXJhbmdlcycgaXMgYWx3YXlzDQo+IHBhcnNlZCBpbiBhIGNvbnNpc3Rl
-bnQgd2F5Lg0KPg0KPiBDYzogSmluZ29vIEhhbiA8amluZ29vaGFuMUBnbWFpbC5jb20+DQoNCkZv
-ciAvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kZXNpZ253YXJlLWhvc3QuYywNCg0K
-QWNrZWQtYnk6IEppbmdvbyBIYW4gPGppbmdvb2hhbjFAZ21haWwuY29tPg0KDQpCZXN0IHJlZ2Fy
-ZHMsDQpKaW5nb28gSGFuDQoNCj4gQ2M6IEd1c3Rhdm8gUGltZW50ZWwgPGd1c3Rhdm8ucGltZW50
-ZWxAc3lub3BzeXMuY29tPg0KPiBDYzogTG9yZW56byBQaWVyYWxpc2kgPGxvcmVuem8ucGllcmFs
-aXNpQGFybS5jb20+DQo+IENjOiBCam9ybiBIZWxnYWFzIDxiaGVsZ2Fhc0Bnb29nbGUuY29tPg0K
-PiBDYzogVGhvbWFzIFBldGF6em9uaSA8dGhvbWFzLnBldGF6em9uaUBib290bGluLmNvbT4NCj4g
-Q2M6IFdpbGwgRGVhY29uIDx3aWxsQGtlcm5lbC5vcmc+DQo+IENjOiBMaW51cyBXYWxsZWlqIDxs
-aW51cy53YWxsZWlqQGxpbmFyby5vcmc+DQo+IENjOiBUb2FuIExlIDx0b2FuQG9zLmFtcGVyZWNv
-bXB1dGluZy5jb20+DQo+IENjOiBMZXkgRm9vbiBUYW4gPGxmdGFuQGFsdGVyYS5jb20+DQo+IENj
-OiBUb20gSm9zZXBoIDx0am9zZXBoQGNhZGVuY2UuY29tPg0KPiBDYzogUmF5IEp1aSA8cmp1aUBi
-cm9hZGNvbS5jb20+DQo+IENjOiBTY290dCBCcmFuZGVuIDxzYnJhbmRlbkBicm9hZGNvbS5jb20+
-DQo+IENjOiBiY20ta2VybmVsLWZlZWRiYWNrLWxpc3RAYnJvYWRjb20uY29tDQo+IENjOiBSeWRl
-ciBMZWUgPHJ5ZGVyLmxlZUBtZWRpYXRlay5jb20+DQo+IENjOiBLYXJ0aGlrZXlhbiBNaXRyYW4g
-PG0ua2FydGhpa2V5YW5AbW9iaXZlaWwuY28uaW4+DQo+IENjOiBIb3UgWmhpcWlhbmcgPFpoaXFp
-YW5nLkhvdUBueHAuY29tPg0KPiBDYzogU2ltb24gSG9ybWFuIDxob3Jtc0B2ZXJnZS5uZXQuYXU+
-DQo+IENjOiBTaGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4NCj4gQ2M6IEhlaWtv
-IFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+DQo+IENjOiBNaWNoYWwgU2ltZWsgPG1pY2hhbC5z
-aW1la0B4aWxpbnguY29tPg0KPiBDYzogcmZpQGxpc3RzLnJvY2tldGJvYXJkcy5vcmcNCj4gQ2M6
-IGxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcNCj4gQ2M6IGxpbnV4LXJlbmVzYXMt
-c29jQHZnZXIua2VybmVsLm9yZw0KPiBDYzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZw0KPiBTaWduZWQtb2ZmLWJ5OiBSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwub3JnPg0KPiAt
-LS0NCj4gIC4uLi9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kZXNpZ253YXJlLWhvc3QuYyB8ICAz
-ICstDQoNCi4uLi4NCg0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2Mv
-cGNpZS1kZXNpZ253YXJlLWhvc3QuYyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUt
-ZGVzaWdud2FyZS1ob3N0LmMNCj4gaW5kZXggZjkzMjUyZDBkYTViLi4wNzQzYWU2NGJiMGYgMTAw
-NjQ0DQo+IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZGVzaWdud2FyZS1o
-b3N0LmMNCj4gKysrIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kZXNpZ253YXJl
-LWhvc3QuYw0KPiBAQCAtMzQyLDcgKzM0Miw4IEBAIGludCBkd19wY2llX2hvc3RfaW5pdChzdHJ1
-Y3QgcGNpZV9wb3J0ICpwcCkNCj4gIAkJcmV0dXJuIC1FTk9NRU07DQo+ICANCj4gIAlyZXQgPSBk
-ZXZtX29mX3BjaV9nZXRfaG9zdF9icmlkZ2VfcmVzb3VyY2VzKGRldiwgMCwgMHhmZiwNCj4gLQkJ
-CQkJJmJyaWRnZS0+d2luZG93cywgJnBwLT5pb19iYXNlKTsNCj4gKwkJCQkJJmJyaWRnZS0+d2lu
-ZG93cywgJmJyaWRnZS0+ZG1hX3JhbmdlcywNCj4gKwkJCQkJJnBwLT5pb19iYXNlKTsNCj4gIAlp
-ZiAocmV0KQ0KPiAgCQlyZXR1cm4gcmV0Ow0KIA0KLi4uLg0KX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QK
-bGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
+On Thu, Sep 26, 2019 at 10:14 PM Light Hsieh <light.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+>
+> Dear reviewers:
+>
+> Patch v6 improves v5 by:
+>
+> 1.in mtk_pinconf_get() and mtk_pinconf_set() @pinctrl-paris.c:
+>   * check if pin is in range before using pin as array index of
+>      hw->soc->pins[]
+> 2.in mtk_pin_field_lookup() @pinctrl-mtk-common-v2.c:
+>   * declear start, end, check as signed integer instead of unsigned
+>     integer. Otherwise, kernel fault will occur when s_pin field of
+>     first entry of a mtk_pin_field_calc[] array is not 0.
+>
+
+And for review these patches easily, you should put the changes
+history to the cover letter.
+
+> On Fri, 2019-09-27 at 13:02 +0800, Light Hsieh wrote:
+> > 1. Check if gpio pin number is in valid range to prevent from get invalid
+> >    pointer 'desc' in the following code:
+> >       desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
+> >
+> > 2. Use binary search in mtk_hw_pin_field_lookup()
+> >    Modify mtk_hw_pin_field_lookup() to use binary search for accelerating
+> >    search.
+> >
+
+You almost forgot to add the tags from you and the reviewers' feedback.
+
+> > ---
+> >  drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 25 +++++++++++++++++++-----
+> >  drivers/pinctrl/mediatek/pinctrl-paris.c         | 25 ++++++++++++++++++++++++
+> >  2 files changed, 45 insertions(+), 5 deletions(-)
+> >
+> > diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> > index 20e1c89..8077855 100644
+> > --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> > +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> > @@ -68,7 +68,8 @@ static int mtk_hw_pin_field_lookup(struct mtk_pinctrl *hw,
+> >  {
+> >       const struct mtk_pin_field_calc *c, *e;
+> >       const struct mtk_pin_reg_calc *rc;
+> > -     u32 bits;
+> > +     u32 bits, found = 0;
+
+the type of found seems to be a bool
+
+> > +     int start = 0, end, check;
+> >
+> >       if (hw->soc->reg_cal && hw->soc->reg_cal[field].range) {
+> >               rc = &hw->soc->reg_cal[field];
+> > @@ -79,21 +80,32 @@ static int mtk_hw_pin_field_lookup(struct mtk_pinctrl *hw,
+> >               return -ENOTSUPP;
+> >       }
+> >
+> > +     end = rc->nranges - 1;
+> >       c = rc->range;
+> >       e = c + rc->nranges;
+> >
+> > -     while (c < e) {
+> > -             if (desc->number >= c->s_pin && desc->number <= c->e_pin)
+> > +     while (start <= end) {
+> > +             check = (start + end) >> 1;
+> > +             if (desc->number >= rc->range[check].s_pin
+> > +              && desc->number <= rc->range[check].e_pin) {
+> > +                     found = 1;
+> >                       break;
+> > -             c++;
+> > +             } else if (start == end)
+> > +                     break;
+> > +             else if (desc->number < rc->range[check].s_pin)
+> > +                     end = check - 1;
+> > +             else
+> > +                     start = check + 1;
+> >       }
+> >
+
+yuh, it is good to do do a binary search here
+
+> > -     if (c >= e) {
+> > +     if (!found) {
+> >               dev_dbg(hw->dev, "Not support field %d for pin = %d (%s)\n",
+> >                       field, desc->number, desc->name);
+> >               return -ENOTSUPP;
+> >       }
+> >
+> > +     c = rc->range + check;
+> > +
+> >       if (c->i_base > hw->nbase - 1) {
+> >               dev_err(hw->dev,
+> >                       "Invalid base for field %d for pin = %d (%s)\n",
+> > @@ -182,6 +194,9 @@ int mtk_hw_set_value(struct mtk_pinctrl *hw, const struct mtk_pin_desc *desc,
+> >       if (err)
+> >               return err;
+> >
+> > +     if (value < 0 || value > pf.mask)
+> > +             return -EINVAL;
+> > +
+> >       if (!pf.next)
+> >               mtk_rmw(hw, pf.index, pf.offset, pf.mask << pf.bitpos,
+> >                       (value & pf.mask) << pf.bitpos);
+> > diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> > index 923264d..3e13ae7 100644
+> > --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
+> > +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> > @@ -81,6 +81,8 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
+> >       int val, val2, err, reg, ret = 1;
+> >       const struct mtk_pin_desc *desc;
+> >
+> > +     if (pin >= hw->soc->npins)
+> > +             return -EINVAL;
+> >       desc = (const struct mtk_pin_desc *)&hw->soc->pins[pin];
+> >
+> >       switch (param) {
+> > @@ -206,6 +208,10 @@ static int mtk_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
+> >       int err = 0;
+> >       u32 reg;
+> >
+> > +     if (pin >= hw->soc->npins) {
+> > +             err = -EINVAL;
+> > +             goto err;
+> > +     }
+> >       desc = (const struct mtk_pin_desc *)&hw->soc->pins[pin];
+> >
+> >       switch ((u32)param) {
+> > @@ -693,6 +699,9 @@ static int mtk_gpio_get_direction(struct gpio_chip *chip, unsigned int gpio)
+> >       const struct mtk_pin_desc *desc;
+> >       int value, err;
+> >
+> > +     if (gpio > hw->soc->npins)
+> > +             return -EINVAL;
+> > +
+> >       desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
+> >
+> >       err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DIR, &value);
+> > @@ -708,6 +717,9 @@ static int mtk_gpio_get(struct gpio_chip *chip, unsigned int gpio)
+> >       const struct mtk_pin_desc *desc;
+> >       int value, err;
+> >
+> > +     if (gpio > hw->soc->npins)
+> > +             return -EINVAL;
+> > +
+> >       desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
+> >
+> >       err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DI, &value);
+> > @@ -722,6 +734,9 @@ static void mtk_gpio_set(struct gpio_chip *chip, unsigned int gpio, int value)
+> >       struct mtk_pinctrl *hw = gpiochip_get_data(chip);
+> >       const struct mtk_pin_desc *desc;
+> >
+> > +     if (gpio > hw->soc->npins)
+> > +             return;
+> > +
+> >       desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
+> >
+> >       mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_DO, !!value);
+> > @@ -729,12 +744,22 @@ static void mtk_gpio_set(struct gpio_chip *chip, unsigned int gpio, int value)
+> >
+> >  static int mtk_gpio_direction_input(struct gpio_chip *chip, unsigned int gpio)
+> >  {
+> > +     struct mtk_pinctrl *hw = gpiochip_get_data(chip);
+> > +
+> > +     if (gpio > hw->soc->npins)
+> > +             return -EINVAL;
+> > +
+> >       return pinctrl_gpio_direction_input(chip->base + gpio);
+> >  }
+> >
+> >  static int mtk_gpio_direction_output(struct gpio_chip *chip, unsigned int gpio,
+> >                                    int value)
+> >  {
+> > +     struct mtk_pinctrl *hw = gpiochip_get_data(chip);
+> > +
+> > +     if (gpio > hw->soc->npins)
+> > +             return -EINVAL;
+> > +
+> >       mtk_gpio_set(chip, gpio, value);
+> >
+> >       return pinctrl_gpio_direction_output(chip->base + gpio);
+>
+>
