@@ -1,152 +1,68 @@
-From: Walter Wu <walter-zh.wu@mediatek.com>
-Subject: Re: [PATCH] kasan: fix the missing underflow in memmove and memcpy
- with CONFIG_KASAN_GENERIC=y
-Date: Fri, 27 Sep 2019 22:22:22 +0800
-Message-ID: <1569594142.9045.24.camel@mtksdccf07>
-References: <20190927034338.15813-1-walter-zh.wu@mediatek.com>
-         <CACT4Y+Zxz+R=qQxSMoipXoLjRqyApD3O0eYpK0nyrfGHE4NNPw@mail.gmail.com>
+From: Jingoo Han <jingoohan1@gmail.com>
+Subject: Re: [PATCH 06/11] PCI: of: Add inbound resource parsing to helpers
+Date: Fri, 27 Sep 2019 16:12:20 +0000
+Message-ID: <SL2P216MB0105248CAB7433BEB727E94CAA810@SL2P216MB0105.KORP216.PROD.OUTLOOK.COM>
+References: <20190924214630.12817-1-robh@kernel.org>
+ <20190924214630.12817-7-robh@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CACT4Y+Zxz+R=qQxSMoipXoLjRqyApD3O0eYpK0nyrfGHE4NNPw@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Dmitry Vyukov <dvyukov@google.com>
-Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>, Linux-MM <linux-mm@kvack.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream <wsd_upstream@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190924214630.12817-7-robh@kernel.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Rob Herring <robh@kernel.org>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, Linus Walleij <linus.walleij@linaro.org>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Michal Simek <michal.simek@xilinx.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "bcm-kernel-feedback-list@broadcom.com" <bcm-kernel-feedback-list@broadcom.com>, Shawn Lin <shawn.lin@rock-chips.com>, Ray Jui <rjui@broadcom.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Simon Horman <horms@verge.net.au>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Scott Branden <sbranden@broadcom.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, rfi@lists.rocketboar
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2019-09-27 at 15:07 +0200, Dmitry Vyukov wrote:
-> On Fri, Sep 27, 2019 at 5:43 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
-> >
-> > memmove() and memcpy() have missing underflow issues.
-> > When -7 <= size < 0, then KASAN will miss to catch the underflow issue.
-> > It looks like shadow start address and shadow end address is the same,
-> > so it does not actually check anything.
-> >
-> > The following test is indeed not caught by KASAN:
-> >
-> >         char *p = kmalloc(64, GFP_KERNEL);
-> >         memset((char *)p, 0, 64);
-> >         memmove((char *)p, (char *)p + 4, -2);
-> >         kfree((char*)p);
-> >
-> > It should be checked here:
-> >
-> > void *memmove(void *dest, const void *src, size_t len)
-> > {
-> >         check_memory_region((unsigned long)src, len, false, _RET_IP_);
-> >         check_memory_region((unsigned long)dest, len, true, _RET_IP_);
-> >
-> >         return __memmove(dest, src, len);
-> > }
-> >
-> > We fix the shadow end address which is calculated, then generic KASAN
-> > get the right shadow end address and detect this underflow issue.
-> >
-> > [1] https://bugzilla.kernel.org/show_bug.cgi?id=199341
-> >
-> > Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-> > Reported-by: Dmitry Vyukov <dvyukov@google.com>
-> > ---
-> >  lib/test_kasan.c   | 36 ++++++++++++++++++++++++++++++++++++
-> >  mm/kasan/generic.c |  8 ++++++--
-> >  2 files changed, 42 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/lib/test_kasan.c b/lib/test_kasan.c
-> > index b63b367a94e8..8bd014852556 100644
-> > --- a/lib/test_kasan.c
-> > +++ b/lib/test_kasan.c
-> > @@ -280,6 +280,40 @@ static noinline void __init kmalloc_oob_in_memset(void)
-> >         kfree(ptr);
-> >  }
-> >
-> > +static noinline void __init kmalloc_oob_in_memmove_underflow(void)
-> > +{
-> > +       char *ptr;
-> > +       size_t size = 64;
-> > +
-> > +       pr_info("underflow out-of-bounds in memmove\n");
-> > +       ptr = kmalloc(size, GFP_KERNEL);
-> > +       if (!ptr) {
-> > +               pr_err("Allocation failed\n");
-> > +               return;
-> > +       }
-> > +
-> > +       memset((char *)ptr, 0, 64);
-> > +       memmove((char *)ptr, (char *)ptr + 4, -2);
-> > +       kfree(ptr);
-> > +}
-> > +
-> > +static noinline void __init kmalloc_oob_in_memmove_overflow(void)
-> > +{
-> > +       char *ptr;
-> > +       size_t size = 64;
-> > +
-> > +       pr_info("overflow out-of-bounds in memmove\n");
-> > +       ptr = kmalloc(size, GFP_KERNEL);
-> > +       if (!ptr) {
-> > +               pr_err("Allocation failed\n");
-> > +               return;
-> > +       }
-> > +
-> > +       memset((char *)ptr, 0, 64);
-> > +       memmove((char *)ptr + size, (char *)ptr, 2);
-> > +       kfree(ptr);
-> > +}
-> > +
-> >  static noinline void __init kmalloc_uaf(void)
-> >  {
-> >         char *ptr;
-> > @@ -734,6 +768,8 @@ static int __init kmalloc_tests_init(void)
-> >         kmalloc_oob_memset_4();
-> >         kmalloc_oob_memset_8();
-> >         kmalloc_oob_memset_16();
-> > +       kmalloc_oob_in_memmove_underflow();
-> > +       kmalloc_oob_in_memmove_overflow();
-> >         kmalloc_uaf();
-> >         kmalloc_uaf_memset();
-> >         kmalloc_uaf2();
-> > diff --git a/mm/kasan/generic.c b/mm/kasan/generic.c
-> > index 616f9dd82d12..34ca23d59e67 100644
-> > --- a/mm/kasan/generic.c
-> > +++ b/mm/kasan/generic.c
-> > @@ -131,9 +131,13 @@ static __always_inline bool memory_is_poisoned_n(unsigned long addr,
-> >                                                 size_t size)
-> >  {
-> >         unsigned long ret;
-> > +       void *shadow_start = kasan_mem_to_shadow((void *)addr);
-> > +       void *shadow_end = kasan_mem_to_shadow((void *)addr + size - 1) + 1;
-> >
-> > -       ret = memory_is_nonzero(kasan_mem_to_shadow((void *)addr),
-> > -                       kasan_mem_to_shadow((void *)addr + size - 1) + 1);
-> > +       if ((long)size < 0)
-> > +               shadow_end = kasan_mem_to_shadow((void *)addr + size);
-> 
-> Hi Walter,
-> 
-> Thanks for working on this.
-> 
-> If size<0, does it make sense to continue at all? We will still check
-> 1PB of shadow memory? What happens when we pass such huge range to
-> memory_is_nonzero?
-> Perhaps it's better to produce an error and bail out immediately if size<0?
-
-I agree with what you said. when size<0, it is indeed an unreasonable
-behavior, it should be blocked from continuing to do.
-
-
-> Also, what's the failure mode of the tests? Didn't they badly corrupt
-> memory? We tried to keep tests such that they produce the KASAN
-> reports, but don't badly corrupt memory b/c/ we need to run all of
-> them.
-
-Maybe we should first produce KASAN reports and then go to execute
-memmove() or do nothing? It looks like it’s doing the following.or?
-
-void *memmove(void *dest, const void *src, size_t len)
- {
-+       if (long(len) <= 0)
-+               kasan_report_invalid_size(src, dest, len, _RET_IP_);
-+
-        check_memory_region((unsigned long)src, len, false, _RET_IP_);
-        check_memory_region((unsigned long)dest, len, true, _RET_IP_);
+DQoNCu+7vz4gT24gOS8yNC8xOSwgNTo0NiBQTSwgUm9iIEhlcnJpbmcgd3JvdGU6DQo+DQo+IEV4
+dGVuZCBkZXZtX29mX3BjaV9nZXRfaG9zdF9icmlkZ2VfcmVzb3VyY2VzKCkgYW5kDQo+IHBjaV9w
+YXJzZV9yZXF1ZXN0X29mX3BjaV9yYW5nZXMoKSBoZWxwZXJzIHRvIGFsc28gcGFyc2UgdGhlIGlu
+Ym91bmQNCj4gYWRkcmVzc2VzIGZyb20gRFQgJ2RtYS1yYW5nZXMnIGFuZCBwb3B1bGF0ZSBhIHJl
+c291cmNlIGxpc3Qgd2l0aCB0aGUNCj4gdHJhbnNsYXRlZCBhZGRyZXNzZXMuIFRoaXMgd2lsbCBo
+ZWxwIGVuc3VyZSAnZG1hLXJhbmdlcycgaXMgYWx3YXlzDQo+IHBhcnNlZCBpbiBhIGNvbnNpc3Rl
+bnQgd2F5Lg0KPg0KPiBDYzogSmluZ29vIEhhbiA8amluZ29vaGFuMUBnbWFpbC5jb20+DQoNCkZv
+ciAvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kZXNpZ253YXJlLWhvc3QuYywNCg0K
+QWNrZWQtYnk6IEppbmdvbyBIYW4gPGppbmdvb2hhbjFAZ21haWwuY29tPg0KDQpCZXN0IHJlZ2Fy
+ZHMsDQpKaW5nb28gSGFuDQoNCj4gQ2M6IEd1c3Rhdm8gUGltZW50ZWwgPGd1c3Rhdm8ucGltZW50
+ZWxAc3lub3BzeXMuY29tPg0KPiBDYzogTG9yZW56byBQaWVyYWxpc2kgPGxvcmVuem8ucGllcmFs
+aXNpQGFybS5jb20+DQo+IENjOiBCam9ybiBIZWxnYWFzIDxiaGVsZ2Fhc0Bnb29nbGUuY29tPg0K
+PiBDYzogVGhvbWFzIFBldGF6em9uaSA8dGhvbWFzLnBldGF6em9uaUBib290bGluLmNvbT4NCj4g
+Q2M6IFdpbGwgRGVhY29uIDx3aWxsQGtlcm5lbC5vcmc+DQo+IENjOiBMaW51cyBXYWxsZWlqIDxs
+aW51cy53YWxsZWlqQGxpbmFyby5vcmc+DQo+IENjOiBUb2FuIExlIDx0b2FuQG9zLmFtcGVyZWNv
+bXB1dGluZy5jb20+DQo+IENjOiBMZXkgRm9vbiBUYW4gPGxmdGFuQGFsdGVyYS5jb20+DQo+IENj
+OiBUb20gSm9zZXBoIDx0am9zZXBoQGNhZGVuY2UuY29tPg0KPiBDYzogUmF5IEp1aSA8cmp1aUBi
+cm9hZGNvbS5jb20+DQo+IENjOiBTY290dCBCcmFuZGVuIDxzYnJhbmRlbkBicm9hZGNvbS5jb20+
+DQo+IENjOiBiY20ta2VybmVsLWZlZWRiYWNrLWxpc3RAYnJvYWRjb20uY29tDQo+IENjOiBSeWRl
+ciBMZWUgPHJ5ZGVyLmxlZUBtZWRpYXRlay5jb20+DQo+IENjOiBLYXJ0aGlrZXlhbiBNaXRyYW4g
+PG0ua2FydGhpa2V5YW5AbW9iaXZlaWwuY28uaW4+DQo+IENjOiBIb3UgWmhpcWlhbmcgPFpoaXFp
+YW5nLkhvdUBueHAuY29tPg0KPiBDYzogU2ltb24gSG9ybWFuIDxob3Jtc0B2ZXJnZS5uZXQuYXU+
+DQo+IENjOiBTaGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4NCj4gQ2M6IEhlaWtv
+IFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+DQo+IENjOiBNaWNoYWwgU2ltZWsgPG1pY2hhbC5z
+aW1la0B4aWxpbnguY29tPg0KPiBDYzogcmZpQGxpc3RzLnJvY2tldGJvYXJkcy5vcmcNCj4gQ2M6
+IGxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcNCj4gQ2M6IGxpbnV4LXJlbmVzYXMt
+c29jQHZnZXIua2VybmVsLm9yZw0KPiBDYzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
+Lm9yZw0KPiBTaWduZWQtb2ZmLWJ5OiBSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwub3JnPg0KPiAt
+LS0NCj4gIC4uLi9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kZXNpZ253YXJlLWhvc3QuYyB8ICAz
+ICstDQoNCi4uLi4NCg0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2Mv
+cGNpZS1kZXNpZ253YXJlLWhvc3QuYyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUt
+ZGVzaWdud2FyZS1ob3N0LmMNCj4gaW5kZXggZjkzMjUyZDBkYTViLi4wNzQzYWU2NGJiMGYgMTAw
+NjQ0DQo+IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZGVzaWdud2FyZS1o
+b3N0LmMNCj4gKysrIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kZXNpZ253YXJl
+LWhvc3QuYw0KPiBAQCAtMzQyLDcgKzM0Miw4IEBAIGludCBkd19wY2llX2hvc3RfaW5pdChzdHJ1
+Y3QgcGNpZV9wb3J0ICpwcCkNCj4gIAkJcmV0dXJuIC1FTk9NRU07DQo+ICANCj4gIAlyZXQgPSBk
+ZXZtX29mX3BjaV9nZXRfaG9zdF9icmlkZ2VfcmVzb3VyY2VzKGRldiwgMCwgMHhmZiwNCj4gLQkJ
+CQkJJmJyaWRnZS0+d2luZG93cywgJnBwLT5pb19iYXNlKTsNCj4gKwkJCQkJJmJyaWRnZS0+d2lu
+ZG93cywgJmJyaWRnZS0+ZG1hX3JhbmdlcywNCj4gKwkJCQkJJnBwLT5pb19iYXNlKTsNCj4gIAlp
+ZiAocmV0KQ0KPiAgCQlyZXR1cm4gcmV0Ow0KIA0KLi4uLg0KX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QK
+bGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
+YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
