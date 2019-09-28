@@ -1,199 +1,64 @@
-From: Sean Wang <sean.wang@kernel.org>
-Subject: Re: [PATCH v6 5/5] pinctrl: mediatek: Add support for pin
- configuration dump via debugfs.
-Date: Fri, 27 Sep 2019 15:11:00 -0700
-Message-ID: <CAGp9LzpdVJ1=hSGiUxi9i+FSDtB9g2Qk22NmMoe660a8hCvU-Q@mail.gmail.com>
-References: <1569560532-1886-1-git-send-email-light.hsieh@mediatek.com> <1569560532-1886-5-git-send-email-light.hsieh@mediatek.com>
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH] media: i2c: ov5695: Modify the function of async register
+ subdev related devices
+Date: Sat, 28 Sep 2019 21:17:11 +0900
+Message-ID: <CAAFQd5B1htFA1R92iQQ93dMQujkSWNqHkx94GG+bdUscRA4gDQ@mail.gmail.com>
+References: <20190927071824.18675-1-dongchun.zhu@mediatek.com>
+ <20190927071824.18675-2-dongchun.zhu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1569560532-1886-5-git-send-email-light.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Light Hsieh <light.hsieh@mediatek.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, lkml <linux-kernel@vger.kernel.org>, kuohong.wang@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190927071824.18675-2-dongchun.zhu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Dongchun Zhu <dongchun.zhu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, andriy.shevchenko-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shengnan.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Louis Kuo <louis.kuo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sj Huang <sj.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Sakari Ailus <sakari.ailus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Cao Bing Bu <bingbu.cao-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>,
+ Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, " <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
-
-On Thu, Sep 26, 2019 at 10:02 PM Light Hsieh <light.hsieh@mediatek.com> wrote:
+On Fri, Sep 27, 2019 at 4:18 PM Dongchun Zhu <dongchun.zhu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
 >
-> Add support for pin configuration dump via catting
-> /sys/kernel/debug/pinctrl/$platform_dependent_path/pinconf-pins.
-> pinctrl framework had already support such dump. This patch implement the
-> operation function pointer to fullfill this dump.
+> This patch adds support for registering a sensor sub-device to the async sub-device framework and parse set up common
+> sensor related devices such as actuator/VCM.
+
+nit: The description should be wrapped around the 80th column.
+
+Sakari, do we need to resent or you could just rewrap when applying?
+
 >
-
-Here are missing tags too.
-
+> Signed-off-by: Dongchun Zhu <dongchun.zhu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > ---
->  drivers/pinctrl/mediatek/pinctrl-paris.c | 88 ++++++++++++++++++++++++++++++++
->  drivers/pinctrl/mediatek/pinctrl-paris.h | 30 +++++++++++
->  2 files changed, 118 insertions(+)
+>  drivers/media/i2c/ov5695.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
-> index 2a47c45..f531908 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
-> @@ -538,12 +538,99 @@ static int mtk_pctrl_get_group_pins(struct pinctrl_dev *pctldev,
->         return 0;
->  }
+> diff --git a/drivers/media/i2c/ov5695.c b/drivers/media/i2c/ov5695.c
+> index e65a943..b6ee62c 100644
+> --- a/drivers/media/i2c/ov5695.c
+> +++ b/drivers/media/i2c/ov5695.c
+> @@ -1328,7 +1328,7 @@ static int ov5695_probe(struct i2c_client *client,
+>                 goto err_power_off;
+>  #endif
 >
-> +int mtk_hw_get_value_wrap(struct mtk_pinctrl *hw, unsigned int gpio, int field)
-> +{
-> +       const struct mtk_pin_desc *desc;
-> +       int value, err;
-> +
-> +       if (gpio > hw->soc->npins)
-> +               return -EINVAL;
-> +
-> +       desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
-> +
-> +       err = mtk_hw_get_value(hw, desc, field, &value);
-> +       if (err)
-> +               return err;
-> +
-> +       return value;
-> +}
-> +
-> +ssize_t mtk_pctrl_show_one_pin(struct mtk_pinctrl *hw,
-> +       unsigned int gpio, char *buf, unsigned int bufLen)
-> +{
-> +       const struct mtk_pin_desc *desc;
-> +       int pinmux, pullup, pullen, r1 = -1, r0 = -1, len = 0;
-
-Sort the variable declarations in reverse xmas tree order.
-
-> +
-> +       if (gpio > hw->soc->npins)
-> +               return -EINVAL;
-> +
-> +       desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
-> +       pinmux = mtk_pctrl_get_pinmux(hw, gpio);
-> +       if (pinmux >= hw->soc->nfuncs)
-> +               pinmux -= hw->soc->nfuncs;
-> +
-> +       mtk_pinconf_bias_get_combo(hw, desc, &pullup, &pullen);
-> +       if (pullen == MTK_PUPD_SET_R1R0_00) {
-> +               pullen = 0;
-> +               r1 = 0;
-> +               r0 = 0;
-> +       } else if (pullen == MTK_PUPD_SET_R1R0_01) {
-> +               pullen = 1;
-> +               r1 = 0;
-> +               r0 = 1;
-> +       } else if (pullen == MTK_PUPD_SET_R1R0_10) {
-> +               pullen = 1;
-> +               r1 = 1;
-> +               r0 = 0;
-> +       } else if (pullen == MTK_PUPD_SET_R1R0_11) {
-> +               pullen = 1;
-> +               r1 = 1;
-> +               r0 = 1;
-> +       } else if (pullen != MTK_DISABLE && pullen != MTK_ENABLE) {
-> +               pullen = 0;
-> +       }
-> +       len += snprintf(buf + len, bufLen - len,
-> +                       "%03d: %1d%1d%1d%1d%02d%1d%1d%1d%1d",
-> +                       gpio,
-> +                       pinmux,
-> +                       mtk_pctrl_get_direction(hw, gpio),
-> +                       mtk_pctrl_get_out(hw, gpio),
-> +                       mtk_pctrl_get_in(hw, gpio),
-> +                       mtk_pctrl_get_driving(hw, gpio),
-> +                       mtk_pctrl_get_smt(hw, gpio),
-> +                       mtk_pctrl_get_ies(hw, gpio),
-> +                       pullen,
-> +                       pullup);
-> +
-> +       if (r1 != -1) {
-> +               len += snprintf(buf + len, bufLen - len, " (%1d %1d)\n",
-> +                       r1, r0);
-> +       } else {
-> +               len += snprintf(buf + len, bufLen - len, "\n");
-> +       }
-> +
-> +       return len;
-> +}
-> +
-> +#define PIN_DBG_BUF_SZ 96
-> +static void mtk_pctrl_dbg_show(struct pinctrl_dev *pctldev, struct seq_file *s,
-> +                         unsigned int gpio)
-> +{
-> +       struct mtk_pinctrl *hw = pinctrl_dev_get_drvdata(pctldev);
-> +       char buf[PIN_DBG_BUF_SZ];
-> +
-> +       (void)mtk_pctrl_show_one_pin(hw, gpio, buf, PIN_DBG_BUF_SZ);
-> +
-> +       seq_printf(s, "%s", buf);
-> +}
-> +
->  static const struct pinctrl_ops mtk_pctlops = {
->         .dt_node_to_map         = mtk_pctrl_dt_node_to_map,
->         .dt_free_map            = pinctrl_utils_free_map,
->         .get_groups_count       = mtk_pctrl_get_groups_count,
->         .get_group_name         = mtk_pctrl_get_group_name,
->         .get_group_pins         = mtk_pctrl_get_group_pins,
-> +       .pin_dbg_show           = mtk_pctrl_dbg_show,
->  };
->
->  static int mtk_pmx_get_funcs_cnt(struct pinctrl_dev *pctldev)
-> @@ -640,6 +727,7 @@ static int mtk_pconf_group_set(struct pinctrl_dev *pctldev, unsigned group,
->         .pin_config_get = mtk_pinconf_get,
->         .pin_config_group_get   = mtk_pconf_group_get,
->         .pin_config_group_set   = mtk_pconf_group_set,
-> +       .is_generic = true,
->  };
->
->  static struct pinctrl_desc mtk_desc = {
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.h b/drivers/pinctrl/mediatek/pinctrl-paris.h
-> index 3d43771..d73f4b6 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-paris.h
-> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.h
-> @@ -60,6 +60,36 @@
->  int mtk_paris_pinctrl_probe(struct platform_device *pdev,
->                             const struct mtk_pin_soc *soc);
->
-> +int mtk_hw_get_value_wrap(struct mtk_pinctrl *hw, unsigned int gpio, int field);
-> +
-> +#define mtk_pctrl_get_pinmux(hw, gpio)                 \
-> +       mtk_hw_get_value_wrap(hw, gpio, PINCTRL_PIN_REG_MODE)
-> +
-> +/* MTK HW use 0 as input, 1 for output
-> + * This interface is for get direct register value,
-> + * so don't reverse
-> + */
-
-The comment should be removed since that is not really matched with the context.
-
-> +#define mtk_pctrl_get_direction(hw, gpio)              \
-> +       mtk_hw_get_value_wrap(hw, gpio, PINCTRL_PIN_REG_DIR)
-> +
-> +#define mtk_pctrl_get_out(hw, gpio)                    \
-> +       mtk_hw_get_value_wrap(hw, gpio, PINCTRL_PIN_REG_DO)
-> +
-> +#define mtk_pctrl_get_in(hw, gpio)                     \
-> +       mtk_hw_get_value_wrap(hw, gpio, PINCTRL_PIN_REG_DI)
-> +
-> +#define mtk_pctrl_get_smt(hw, gpio)                    \
-> +       mtk_hw_get_value_wrap(hw, gpio, PINCTRL_PIN_REG_SMT)
-> +
-> +#define mtk_pctrl_get_ies(hw, gpio)                    \
-> +       mtk_hw_get_value_wrap(hw, gpio, PINCTRL_PIN_REG_IES)
-> +
-> +#define mtk_pctrl_get_driving(hw, gpio)                        \
-> +       mtk_hw_get_value_wrap(hw, gpio, PINCTRL_PIN_REG_DRV)
-> +
-> +ssize_t mtk_pctrl_show_one_pin(struct mtk_pinctrl *hw,
-> +       unsigned int gpio, char *buf, unsigned int bufLen);
-> +
-
-Currently, these above functions are not being referred by other users
-outside the file so stay them visible inside the file until there are
-explicit users present.
-
->  extern const struct dev_pm_ops mtk_paris_pinctrl_pm_ops;
->
->  #endif /* __PINCTRL_PARIS_H */
+> -       ret = v4l2_async_register_subdev(sd);
+> +       ret = v4l2_async_register_subdev_sensor_common(sd);
+>         if (ret) {
+>                 dev_err(dev, "v4l2 async register subdev failed\n");
+>                 goto err_clean_entity;
 > --
-> 1.8.1.1.dirty
+> 2.9.2
 >
+
+Otherwise:
+
+Reviewed-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+
+Best regards,
+Tomasz
