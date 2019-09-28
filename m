@@ -1,214 +1,52 @@
-From: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
-Subject: Re: [PATCH v2 2/4] watchdog: mtk_wdt: mt8183: Add reset controller
-Date: Sat, 28 Sep 2019 10:49:23 -0700
-Message-ID: <20190928174923.GA25512@roeck-us.net>
-References: <1569580317-21181-1-git-send-email-jiaxin.yu@mediatek.com>
- <1569580317-21181-3-git-send-email-jiaxin.yu@mediatek.com>
+From: Wolfram Sang <wsa@the-dreams.de>
+Subject: Re: [PATCH] i2c: i2c-mt65xx: fix NULL ptr dereference
+Date: Sat, 28 Sep 2019 20:33:11 +0200
+Message-ID: <20190928183305.GD12219@kunai>
+References: <20190925203113.6972-1-fparent@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: multipart/signed; micalg=pgp-sha512;
+        protocol="application/pgp-signature"; boundary="BZaMRJmqxGScZ8Mx"
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1569580317-21181-3-git-send-email-jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jiaxin Yu <jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, yong.liang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, tzungbi-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eason.yen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, wim-Q8PRGTgFL9WUCWQAtAn6Ix2eb7JE58TQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+In-Reply-To: <20190925203113.6972-1-fparent@baylibre.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Fabien Parent <fparent@baylibre.com>
+Cc: linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, matthias.bgg@gmail.com, qii.wang@mediatek.com, drinkcat@chromium.org, hsinyi@chromium.org, tglx@linutronix.de
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Sep 27, 2019 at 06:31:55PM +0800, Jiaxin Yu wrote:
-> From: "yong.liang" <yong.liang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> Provide assert/deassert/reset API in watchdog driver.
-> Register reset controller for toprgu device in watchdog probe.
-> 
-> Signed-off-by: yong.liang <yong.liang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  drivers/watchdog/Kconfig   |   1 +
->  drivers/watchdog/mtk_wdt.c | 110 ++++++++++++++++++++++++++++++++++++-
->  2 files changed, 110 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/watchdog/Kconfig b/drivers/watchdog/Kconfig
-> index 2e07caab9db2..629249fe5305 100644
-> --- a/drivers/watchdog/Kconfig
-> +++ b/drivers/watchdog/Kconfig
-> @@ -717,6 +717,7 @@ config MEDIATEK_WATCHDOG
->  	tristate "Mediatek SoCs watchdog support"
->  	depends on ARCH_MEDIATEK || COMPILE_TEST
->  	select WATCHDOG_CORE
-> +	select RESET_CONTROLLER
->  	help
->  	  Say Y here to include support for the watchdog timer
->  	  in Mediatek SoCs.
-> diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-> index 9c3d0033260d..660fb0e48d8e 100644
-> --- a/drivers/watchdog/mtk_wdt.c
-> +++ b/drivers/watchdog/mtk_wdt.c
-> @@ -20,6 +20,10 @@
->  #include <linux/types.h>
->  #include <linux/watchdog.h>
->  #include <linux/delay.h>
-> +#include <linux/reset-controller.h>
-> +#include <linux/slab.h>
-> +#include <linux/reset.h>
-> +#include <linux/of_device.h>
->  
->  #define WDT_MAX_TIMEOUT		31
->  #define WDT_MIN_TIMEOUT		1
-> @@ -44,17 +48,113 @@
->  #define WDT_SWRST		0x14
->  #define WDT_SWRST_KEY		0x1209
->  
-> +#define WDT_SWSYSRST		0x18U
-> +#define WDT_SWSYS_RST_KEY	0x88000000
-> +
->  #define DRV_NAME		"mtk-wdt"
->  #define DRV_VERSION		"1.0"
->  
->  static bool nowayout = WATCHDOG_NOWAYOUT;
->  static unsigned int timeout;
->  
-> +struct toprgu_reset {
-> +	spinlock_t lock; /* Protects reset_controller access */
-> +	void __iomem *toprgu_swrst_base;
-> +	int regofs;
-> +	struct reset_controller_dev rcdev;
-> +};
-> +
->  struct mtk_wdt_dev {
->  	struct watchdog_device wdt_dev;
->  	void __iomem *wdt_base;
-> +	struct toprgu_reset reset_controller;
-> +	const struct mtk_wdt_compatible *dev_comp;
-> +};
-> +
-> +struct mtk_wdt_compatible {
-> +	int sw_rst_num;
-> +};
-> +
-> +static int toprgu_reset_assert(struct reset_controller_dev *rcdev,
-> +			       unsigned long id)
-> +{
-> +	unsigned int tmp;
-> +	unsigned long flags;
-> +	struct toprgu_reset *data = container_of(rcdev,
-> +				struct toprgu_reset, rcdev);
-> +
-> +	spin_lock_irqsave(&data->lock, flags);
-> +
-> +	tmp = __raw_readl(data->toprgu_swrst_base + data->regofs);
-> +	tmp |= BIT(id);
-> +	tmp |= WDT_SWSYS_RST_KEY;
-> +	writel(tmp, data->toprgu_swrst_base + data->regofs);
-> +
-> +	spin_unlock_irqrestore(&data->lock, flags);
-> +
-> +	return 0;
-> +}
-> +
-> +static int toprgu_reset_deassert(struct reset_controller_dev *rcdev,
-> +				 unsigned long id)
-> +{
-> +	unsigned int tmp;
-> +	unsigned long flags;
-> +	struct toprgu_reset *data = container_of(rcdev,
-> +					struct toprgu_reset, rcdev);
-> +
-> +	spin_lock_irqsave(&data->lock, flags);
-> +
-> +	tmp = __raw_readl(data->toprgu_swrst_base + data->regofs);
-> +	tmp &= ~BIT(id);
-> +	tmp |= WDT_SWSYS_RST_KEY;
-> +	writel(tmp, data->toprgu_swrst_base + data->regofs);
-> +
-> +	spin_unlock_irqrestore(&data->lock, flags);
-> +
-> +	return 0;
-> +}
-> +
-> +static int toprgu_reset(struct reset_controller_dev *rcdev,
-> +			unsigned long id)
-> +{
-> +	int ret;
-> +
-> +	ret = toprgu_reset_assert(rcdev, id);
-> +	if (ret)
-> +		return ret;
-> +
-> +	return toprgu_reset_deassert(rcdev, id);
-> +}
-> +
-> +static struct reset_control_ops toprgu_reset_ops = {
-> +	.assert = toprgu_reset_assert,
-> +	.deassert = toprgu_reset_deassert,
-> +	.reset = toprgu_reset,
->  };
->  
-> +static void toprgu_register_reset_controller(struct platform_device *pdev,
-> +					     int regofs)
-> +{
-> +	int ret;
-> +	struct mtk_wdt_dev *mtk_wdt = platform_get_drvdata(pdev);
-> +
-> +	spin_lock_init(&mtk_wdt->reset_controller.lock);
-> +
-> +	mtk_wdt->dev_comp = of_device_get_match_data(&pdev->dev);
-> +	mtk_wdt->reset_controller.toprgu_swrst_base = mtk_wdt->wdt_base;
-> +	mtk_wdt->reset_controller.regofs = regofs;
-> +	mtk_wdt->reset_controller.rcdev.owner = THIS_MODULE;
-> +	mtk_wdt->reset_controller.rcdev.nr_resets =
-> +				mtk_wdt->dev_comp->sw_rst_num;
-> +	mtk_wdt->reset_controller.rcdev.ops = &toprgu_reset_ops;
-> +	mtk_wdt->reset_controller.rcdev.of_node = pdev->dev.of_node;
-> +	ret = reset_controller_register(&mtk_wdt->reset_controller.rcdev);
-> +	if (ret != 0)
-> +		dev_err(&pdev->dev,
-> +			"couldn't register wdt reset controller: %d\n", ret);
-> +}
-> +
->  static int mtk_wdt_restart(struct watchdog_device *wdt_dev,
->  			   unsigned long action, void *data)
->  {
-> @@ -187,9 +287,12 @@ static int mtk_wdt_probe(struct platform_device *pdev)
->  	if (unlikely(err))
->  		return err;
->  
-> -	dev_info(dev, "Watchdog enabled (timeout=%d sec, nowayout=%d)\n",
-> +	dev_info(&pdev->dev, "Watchdog enabled (timeout=%d sec, nowayout=%d)\n",
->  		 mtk_wdt->wdt_dev.timeout, nowayout);
->  
-> +	mtk_wdt->dev_comp = of_device_get_match_data(&pdev->dev);
-> +	if (mtk_wdt->dev_comp)
-> +		toprgu_register_reset_controller(pdev, WDT_SWSYSRST);
 
-Please explain why you can not use the watchdog device built-in support
-for handling system resets.
+--BZaMRJmqxGScZ8Mx
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Guenter
 
->  	return 0;
->  }
->  
-> @@ -217,7 +320,12 @@ static int mtk_wdt_resume(struct device *dev)
->  }
->  #endif
->  
-> +static const struct mtk_wdt_compatible mt8183_compat = {
-> +	.sw_rst_num = 18,
-> +};
-> +
->  static const struct of_device_id mtk_wdt_dt_ids[] = {
-> +	{ .compatible = "mediatek,mt8183-wdt", .data = &mt8183_compat },
->  	{ .compatible = "mediatek,mt6589-wdt" },
->  	{ /* sentinel */ }
->  };
-> -- 
-> 2.18.0
-> 
+> -	if (adap->quirks->flags & I2C_AQ_NO_ZERO_LEN)
+> +	if (adap->quirks && adap->quirks->flags & I2C_AQ_NO_ZERO_LEN)
+
+Right. Please use i2c_check_quirks(). Otherwise thanks for the catch!
+
+@Mediatek-people: can we have a dedicated maintainer for this driver to
+better prevent stuff like this from happening again?
+
+
+--BZaMRJmqxGScZ8Mx
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl2Pp2EACgkQFA3kzBSg
+KbatPxAAr+Gltm2HCrzvvM07L4jnevtGwg05fL/W3Z71RjOwB1XMOX67NwKJn+gC
+3JMaLtB/9VNojTumuxkfnHrtlCc3zQgBNDC/Wf/tQQVgssuAz3TIY40PaxyF3+dP
+AWoh3UW9eM3p16wsqm6kH5SJCaZM3f8wuLYY2CtGOUIpzuTGar/X7DV34s+0BH/G
+eFxrLdwlGeq31UYZlPI6LnfGqa+K9zH+hTlSGe6zHt0QCH0/i1qXkTMJa2MafBgv
+Dl8VXDhBn6tN50JhfXgFbDYXKXV3FWoo8qGI5R4GHyeKOnGI3yszzx9AJq9zWiML
+RVQ8uHFULHbt5IXldaE5VKPlAOBRnKNAjjWB16u3HgmKESieU4XNxAt2ByDX38bO
+ZFVIbkuBzCIhdZxkipVlqYlF5fBLj4+fnqffCGYUYBUfMrSYLrd4FMhuVXaHABQy
+PRyBu+QT6F2dhdW0wGEZE7EBV+XEkOJNzv0b5QQtfLBUYjDED0DEU5XQWaWfR3xm
+KqcVj5XJoWNOpS+T5en8hUYIJNP43INdCoxG/M7oQgvYH28dIPlkIt9/iOo9EBzO
+z9DiI5J+tE1faM6R2cMol4CEmlX49emrGfnuGwxbQi1gMv/YjfFlb5VcYjPF/5Jx
+TTqCBC9wh8ruoyfuOPYnfQmLccm9IR4gnHjvPk0Zwncao5QRdc4=
+=/LoV
+-----END PGP SIGNATURE-----
+
+--BZaMRJmqxGScZ8Mx--
