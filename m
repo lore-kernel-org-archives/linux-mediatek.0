@@ -1,52 +1,96 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH] i2c: i2c-mt65xx: fix NULL ptr dereference
-Date: Sat, 28 Sep 2019 20:33:11 +0200
-Message-ID: <20190928183305.GD12219@kunai>
-References: <20190925203113.6972-1-fparent@baylibre.com>
+From: "james qian wang (Arm Technology China)" <james.qian.wang@arm.com>
+Subject: Re: [v8,2/4] drm/panel: set display info in panel attach
+Date: Sun, 29 Sep 2019 05:23:14 +0000
+Message-ID: <20190929052307.GA28304@jamwan02-TSP300>
+References: <20190925225833.7310-3-dbasehore@chromium.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="BZaMRJmqxGScZ8Mx"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190925203113.6972-1-fparent@baylibre.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Fabien Parent <fparent@baylibre.com>
-Cc: linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, matthias.bgg@gmail.com, qii.wang@mediatek.com, drinkcat@chromium.org, hsinyi@chromium.org, tglx@linutronix.de
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190925225833.7310-3-dbasehore@chromium.org>
+Content-Language: en-US
+Content-ID: <672C734F3D2D1142A821032C5E0FBE8C@eurprd08.prod.outlook.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Derek Basehore <dbasehore@chromium.org>
+Cc: Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>, "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, Thierry Reding <thierry.reding@gmail.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Rodrigo Vivi <rodrigo.vivi@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, nd <nd@arm.com>, Sam Ravnborg <sam@ravnborg.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-
---BZaMRJmqxGScZ8Mx
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-
-> -	if (adap->quirks->flags & I2C_AQ_NO_ZERO_LEN)
-> +	if (adap->quirks && adap->quirks->flags & I2C_AQ_NO_ZERO_LEN)
-
-Right. Please use i2c_check_quirks(). Otherwise thanks for the catch!
-
-@Mediatek-people: can we have a dedicated maintainer for this driver to
-better prevent stuff like this from happening again?
-
-
---BZaMRJmqxGScZ8Mx
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl2Pp2EACgkQFA3kzBSg
-KbatPxAAr+Gltm2HCrzvvM07L4jnevtGwg05fL/W3Z71RjOwB1XMOX67NwKJn+gC
-3JMaLtB/9VNojTumuxkfnHrtlCc3zQgBNDC/Wf/tQQVgssuAz3TIY40PaxyF3+dP
-AWoh3UW9eM3p16wsqm6kH5SJCaZM3f8wuLYY2CtGOUIpzuTGar/X7DV34s+0BH/G
-eFxrLdwlGeq31UYZlPI6LnfGqa+K9zH+hTlSGe6zHt0QCH0/i1qXkTMJa2MafBgv
-Dl8VXDhBn6tN50JhfXgFbDYXKXV3FWoo8qGI5R4GHyeKOnGI3yszzx9AJq9zWiML
-RVQ8uHFULHbt5IXldaE5VKPlAOBRnKNAjjWB16u3HgmKESieU4XNxAt2ByDX38bO
-ZFVIbkuBzCIhdZxkipVlqYlF5fBLj4+fnqffCGYUYBUfMrSYLrd4FMhuVXaHABQy
-PRyBu+QT6F2dhdW0wGEZE7EBV+XEkOJNzv0b5QQtfLBUYjDED0DEU5XQWaWfR3xm
-KqcVj5XJoWNOpS+T5en8hUYIJNP43INdCoxG/M7oQgvYH28dIPlkIt9/iOo9EBzO
-z9DiI5J+tE1faM6R2cMol4CEmlX49emrGfnuGwxbQi1gMv/YjfFlb5VcYjPF/5Jx
-TTqCBC9wh8ruoyfuOPYnfQmLccm9IR4gnHjvPk0Zwncao5QRdc4=
-=/LoV
------END PGP SIGNATURE-----
-
---BZaMRJmqxGScZ8Mx--
+T24gV2VkLCBTZXAgMjUsIDIwMTkgYXQgMDM6NTg6MzFQTSAtMDcwMCwgRGVyZWsgQmFzZWhvcmUg
+d3JvdGU6Cj4gRGV2aWNldHJlZSBzeXN0ZW1zIGNhbiBzZXQgcGFuZWwgb3JpZW50YXRpb24gdmlh
+IGEgcGFuZWwgYmluZGluZywgYnV0Cj4gdGhlcmUncyBubyB3YXksIGFzIGlzLCB0byBwcm9wYWdh
+dGUgdGhpcyBzZXR0aW5nIHRvIHRoZSBjb25uZWN0b3IsCj4gd2hlcmUgdGhlIHByb3BlcnR5IG5l
+ZWQgdG8gYmUgYWRkZWQuCj4gVG8gYWRkcmVzcyB0aGlzLCB0aGlzIHBhdGNoIHNldHMgb3JpZW50
+YXRpb24sIGFzIHdlbGwgYXMgb3RoZXIgZml4ZWQKPiB2YWx1ZXMgZm9yIHRoZSBwYW5lbCwgaW4g
+dGhlIGRybV9wYW5lbF9hdHRhY2ggZnVuY3Rpb24uIFRoZXNlIHZhbHVlcwo+IGFyZSBzdG9yZWQg
+ZnJvbSBwcm9iZSBpbiB0aGUgZHJtX3BhbmVsIHN0cnVjdC4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBE
+ZXJlayBCYXNlaG9yZSA8ZGJhc2Vob3JlQGNocm9taXVtLm9yZz4KPiBSZXZpZXdlZC1ieTogU2Ft
+IFJhdm5ib3JnIDxzYW1AcmF2bmJvcmcub3JnPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vZHJt
+X3BhbmVsLmMgfCAyOCArKysrKysrKysrKysrKysrKysrKysKPiAgaW5jbHVkZS9kcm0vZHJtX3Bh
+bmVsLmggICAgIHwgNTAgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+ICAy
+IGZpbGVzIGNoYW5nZWQsIDc4IGluc2VydGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9ncHUvZHJtL2RybV9wYW5lbC5jIGIvZHJpdmVycy9ncHUvZHJtL2RybV9wYW5lbC5jCj4gaW5k
+ZXggMDkwOWI1M2I3NGU2Li4xY2QyYjU2YzlmZTYgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUv
+ZHJtL2RybV9wYW5lbC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2RybV9wYW5lbC5jCj4gQEAg
+LTEwNCwxMSArMTA0LDIzIEBAIEVYUE9SVF9TWU1CT0woZHJtX3BhbmVsX3JlbW92ZSk7Cj4gICAq
+Lwo+ICBpbnQgZHJtX3BhbmVsX2F0dGFjaChzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbCwgc3RydWN0
+IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvcikKPiAgewo+ICsJc3RydWN0IGRybV9kaXNwbGF5X2lu
+Zm8gKmluZm87Cj4gKwo+ICAJaWYgKHBhbmVsLT5jb25uZWN0b3IpCj4gIAkJcmV0dXJuIC1FQlVT
+WTsKPiAgCj4gIAlwYW5lbC0+Y29ubmVjdG9yID0gY29ubmVjdG9yOwo+ICAJcGFuZWwtPmRybSA9
+IGNvbm5lY3Rvci0+ZGV2Owo+ICsJaW5mbyA9ICZjb25uZWN0b3ItPmRpc3BsYXlfaW5mbzsKPiAr
+CWluZm8tPndpZHRoX21tID0gcGFuZWwtPndpZHRoX21tOwo+ICsJaW5mby0+aGVpZ2h0X21tID0g
+cGFuZWwtPmhlaWdodF9tbTsKPiArCWluZm8tPmJwYyA9IHBhbmVsLT5icGM7Cj4gKwlpbmZvLT5w
+YW5lbF9vcmllbnRhdGlvbiA9IHBhbmVsLT5vcmllbnRhdGlvbjsKPiArCWluZm8tPmJ1c19mbGFn
+cyA9IHBhbmVsLT5idXNfZmxhZ3M7Cj4gKwlpZiAocGFuZWwtPmJ1c19mb3JtYXRzKQo+ICsJCWRy
+bV9kaXNwbGF5X2luZm9fc2V0X2J1c19mb3JtYXRzKCZjb25uZWN0b3ItPmRpc3BsYXlfaW5mbywK
+PiArCQkJCQkJIHBhbmVsLT5idXNfZm9ybWF0cywKPiArCQkJCQkJIHBhbmVsLT5udW1fYnVzX2Zv
+cm1hdHMpOwo+ICAKPiAgCXJldHVybiAwOwo+ICB9Cj4gQEAgLTEyNiw2ICsxMzgsMjIgQEAgRVhQ
+T1JUX1NZTUJPTChkcm1fcGFuZWxfYXR0YWNoKTsKPiAgICovCj4gIHZvaWQgZHJtX3BhbmVsX2Rl
+dGFjaChzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbCkKPiAgewo+ICsJc3RydWN0IGRybV9kaXNwbGF5
+X2luZm8gKmluZm87Cj4gKwo+ICsJaWYgKCFwYW5lbC0+Y29ubmVjdG9yKQo+ICsJCWdvdG8gb3V0
+Owo+ICsKPiArCWluZm8gPSAmcGFuZWwtPmNvbm5lY3Rvci0+ZGlzcGxheV9pbmZvOwo+ICsJaW5m
+by0+d2lkdGhfbW0gPSAwOwo+ICsJaW5mby0+aGVpZ2h0X21tID0gMDsKPiArCWluZm8tPmJwYyA9
+IDA7Cj4gKwlpbmZvLT5wYW5lbF9vcmllbnRhdGlvbiA9IERSTV9NT0RFX1BBTkVMX09SSUVOVEFU
+SU9OX1VOS05PV047Cj4gKwlpbmZvLT5idXNfZmxhZ3MgPSAwOwo+ICsJa2ZyZWUoaW5mby0+YnVz
+X2Zvcm1hdHMpOwo+ICsJaW5mby0+YnVzX2Zvcm1hdHMgPSBOVUxMOwo+ICsJaW5mby0+bnVtX2J1
+c19mb3JtYXRzID0gMDsKPiArCj4gK291dDoKPiAgCXBhbmVsLT5jb25uZWN0b3IgPSBOVUxMOwo+
+ICAJcGFuZWwtPmRybSA9IE5VTEw7Cj4gIH0KPiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS9kcm0vZHJt
+X3BhbmVsLmggYi9pbmNsdWRlL2RybS9kcm1fcGFuZWwuaAo+IGluZGV4IGQxNjE1OGRlYWNkYy4u
+ZjM1ODdhNTRiOGFjIDEwMDY0NAo+IC0tLSBhL2luY2x1ZGUvZHJtL2RybV9wYW5lbC5oCj4gKysr
+IGIvaW5jbHVkZS9kcm0vZHJtX3BhbmVsLmgKPiBAQCAtMTQxLDYgKzE0MSw1NiBAQCBzdHJ1Y3Qg
+ZHJtX3BhbmVsIHsKPiAgCSAqLwo+ICAJY29uc3Qgc3RydWN0IGRybV9wYW5lbF9mdW5jcyAqZnVu
+Y3M7Cj4KCkFsbCB0aGVzZSBuZXcgYWRkZWQgbWVtYmVycyBzZWVtcyBkdXBsaWF0ZWQgd2l0aCBk
+cm1fZGlzcGxheV9pbmZvLApTbyBJIHRoaW5rLCBjYW4gd2UgYWRkIGEgbmV3IGRybV9wbGFuZV9m
+dW5jcyBmdW5jOgoKaW50ICgqc2V0X2Rpc3BsYXlfaW5mbykoc3RydWN0IGRybV9wYW5lbCAqcGFu
+ZWwsCiAgICAgICAgICAgICAgICAgICAgICAgIHN0cnVjdCBkcm1fZGlzcGxheV9pbmZvICppbmZv
+KTsKClRoZW4gaW4gZHJtX3BhbmVsX2F0dGFjaCgpLCB2aWEgdGhpcyBpbnRlcmZhY2UgdGhlIHNw
+ZWNpZmljIHBhbmVsCmRyaXZlciBjYW4gZGlyZWN0bHkgc2V0IGNvbm5lY3Rvci0+ZGlzcGxheV9p
+bmZvLiBsaWtlCgogICAuLi4KICAgaWYgKHBhbmVsLT5mdW5jcyAmJiBwYW5lbC0+ZnVuY3MtPnNl
+dF9kaXNwbGF5X2luZm8pCgkJcGFuZWwtPmZ1bmNzLT51bnByZXBhcmUocGFuZWwsIGNvbm5lY3Rv
+ci0+ZGlzcGxheV9pbmZvKTsKICAgLi4uCgpUaGFua3MKSmFtZXMKCj4gKwkvKioKPiArCSAqIEB3
+aWR0aF9tbToKPiArCSAqCj4gKwkgKiBQaHlzaWNhbCB3aWR0aCBpbiBtbS4KPiArCSAqLwo+ICsJ
+dW5zaWduZWQgaW50IHdpZHRoX21tOwo+ICsKPiArCS8qKgo+ICsJICogQGhlaWdodF9tbToKPiAr
+CSAqCj4gKwkgKiBQaHlzaWNhbCBoZWlnaHQgaW4gbW0uCj4gKwkgKi8KPiArCXVuc2lnbmVkIGlu
+dCBoZWlnaHRfbW07Cj4gKwo+ICsJLyoqCj4gKwkgKiBAYnBjOgo+ICsJICoKPiArCSAqIE1heGlt
+dW0gYml0cyBwZXIgY29sb3IgY2hhbm5lbC4gVXNlZCBieSBIRE1JIGFuZCBEUCBvdXRwdXRzLgo+
+ICsJICovCj4gKwl1bnNpZ25lZCBpbnQgYnBjOwo+ICsKPiArCS8qKgo+ICsJICogQG9yaWVudGF0
+aW9uCj4gKwkgKgo+ICsJICogSW5zdGFsbGF0aW9uIG9yaWVudGF0aW9uIG9mIHRoZSBwYW5lbCB3
+aXRoIHJlc3BlY3QgdG8gdGhlIGNoYXNzaXMuCj4gKwkgKi8KPiArCWludCBvcmllbnRhdGlvbjsK
+PiArCj4gKwkvKioKPiArCSAqIEBidXNfZm9ybWF0cwo+ICsJICoKPiArCSAqIFBpeGVsIGRhdGEg
+Zm9ybWF0IG9uIHRoZSB3aXJlLgo+ICsJICovCj4gKwljb25zdCB1MzIgKmJ1c19mb3JtYXRzOwo+
+ICsKPiArCS8qKgo+ICsJICogQG51bV9idXNfZm9ybWF0czoKPiArCSAqCj4gKwkgKiBOdW1iZXIg
+b2YgZWxlbWVudHMgcG9pbnRlZCB0byBieSBAYnVzX2Zvcm1hdHMKPiArCSAqLwo+ICsJdW5zaWdu
+ZWQgaW50IG51bV9idXNfZm9ybWF0czsKPiArCj4gKwkvKioKPiArCSAqIEBidXNfZmxhZ3M6Cj4g
+KwkgKgo+ICsJICogQWRkaXRpb25hbCBpbmZvcm1hdGlvbiAobGlrZSBwaXhlbCBzaWduYWwgcG9s
+YXJpdHkpIGZvciB0aGUgcGl4ZWwKPiArCSAqIGRhdGEgb24gdGhlIGJ1cy4KPiArCSAqLwo+ICsJ
+dTMyIGJ1c19mbGFnczsKPiArCj4gIAkvKioKPiAgCSAqIEBsaXN0Ogo+ICAJICoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
+bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
