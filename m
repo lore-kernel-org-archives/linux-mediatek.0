@@ -1,114 +1,25 @@
-From: "dbasehore ." <dbasehore@chromium.org>
-Subject: Re: [v8,
- 2/4] drm/panel: set display info in panel attach
-Date: Mon, 30 Sep 2019 16:14:54 -0700
-Message-ID: <CAGAzgspEA0mcEHwgxyWWh3Gn-iC+a21g5GUrhsRJrTHQ_OAYqQ@mail.gmail.com>
-References: <20190925225833.7310-3-dbasehore@chromium.org>
- <20190929052307.GA28304@jamwan02-TSP300>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Subject: Re: [PATCH v2] i2c: i2c-mt65xx: fix NULL ptr dereference
+Date: Mon, 30 Sep 2019 16:26:46 -0700
+Message-ID: <CAJMQK-g_PaNsfvX-H4_BA86aUOdyqpDt9oK86O7_mRWTjWSjHQ@mail.gmail.com>
+References: <20190930152846.5062-1-fparent@baylibre.com> <aa0487c21e1f9f04402f209358b18c75@kernel.wtf>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <intel-gfx-bounces@lists.freedesktop.org>
-In-Reply-To: <20190929052307.GA28304@jamwan02-TSP300>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
-List-Post: <mailto:intel-gfx@lists.freedesktop.org>
-List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: intel-gfx-bounces@lists.freedesktop.org
-Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
-To: "james qian wang (Arm Technology China)" <james.qian.wang@arm.com>
-Cc: Maxime Ripard <maxime.ripard@bootlin.com>, "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, nd <nd@arm.com>, Sam Ravnborg <sam@ravnborg.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <aa0487c21e1f9f04402f209358b18c75@kernel.wtf>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Cengiz Can <cengiz@kernel.wtf>
+Cc: Fabien Parent <fparent@baylibre.com>, linux-i2c@vger.kernel.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, lkml <linux-kernel@vger.kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Wolfram Sang <wsa@the-dreams.de>, Qii Wang <qii.wang@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Thomas Gleixner <tglx@linutronix.de>, linux-i2c-owner@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gU2F0LCBTZXAgMjgsIDIwMTkgYXQgMTA6MjMgUE0gamFtZXMgcWlhbiB3YW5nIChBcm0gVGVj
-aG5vbG9neQpDaGluYSkgPGphbWVzLnFpYW4ud2FuZ0Bhcm0uY29tPiB3cm90ZToKPgo+IE9uIFdl
-ZCwgU2VwIDI1LCAyMDE5IGF0IDAzOjU4OjMxUE0gLTA3MDAsIERlcmVrIEJhc2Vob3JlIHdyb3Rl
-Ogo+ID4gRGV2aWNldHJlZSBzeXN0ZW1zIGNhbiBzZXQgcGFuZWwgb3JpZW50YXRpb24gdmlhIGEg
-cGFuZWwgYmluZGluZywgYnV0Cj4gPiB0aGVyZSdzIG5vIHdheSwgYXMgaXMsIHRvIHByb3BhZ2F0
-ZSB0aGlzIHNldHRpbmcgdG8gdGhlIGNvbm5lY3RvciwKPiA+IHdoZXJlIHRoZSBwcm9wZXJ0eSBu
-ZWVkIHRvIGJlIGFkZGVkLgo+ID4gVG8gYWRkcmVzcyB0aGlzLCB0aGlzIHBhdGNoIHNldHMgb3Jp
-ZW50YXRpb24sIGFzIHdlbGwgYXMgb3RoZXIgZml4ZWQKPiA+IHZhbHVlcyBmb3IgdGhlIHBhbmVs
-LCBpbiB0aGUgZHJtX3BhbmVsX2F0dGFjaCBmdW5jdGlvbi4gVGhlc2UgdmFsdWVzCj4gPiBhcmUg
-c3RvcmVkIGZyb20gcHJvYmUgaW4gdGhlIGRybV9wYW5lbCBzdHJ1Y3QuCj4gPgo+ID4gU2lnbmVk
-LW9mZi1ieTogRGVyZWsgQmFzZWhvcmUgPGRiYXNlaG9yZUBjaHJvbWl1bS5vcmc+Cj4gPiBSZXZp
-ZXdlZC1ieTogU2FtIFJhdm5ib3JnIDxzYW1AcmF2bmJvcmcub3JnPgo+ID4gLS0tCj4gPiAgZHJp
-dmVycy9ncHUvZHJtL2RybV9wYW5lbC5jIHwgMjggKysrKysrKysrKysrKysrKysrKysrCj4gPiAg
-aW5jbHVkZS9kcm0vZHJtX3BhbmVsLmggICAgIHwgNTAgKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKysrKysrKysrKwo+ID4gIDIgZmlsZXMgY2hhbmdlZCwgNzggaW5zZXJ0aW9ucygrKQo+ID4K
-PiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vZHJtX3BhbmVsLmMgYi9kcml2ZXJzL2dw
-dS9kcm0vZHJtX3BhbmVsLmMKPiA+IGluZGV4IDA5MDliNTNiNzRlNi4uMWNkMmI1NmM5ZmU2IDEw
-MDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2RybV9wYW5lbC5jCj4gPiArKysgYi9kcml2
-ZXJzL2dwdS9kcm0vZHJtX3BhbmVsLmMKPiA+IEBAIC0xMDQsMTEgKzEwNCwyMyBAQCBFWFBPUlRf
-U1lNQk9MKGRybV9wYW5lbF9yZW1vdmUpOwo+ID4gICAqLwo+ID4gIGludCBkcm1fcGFuZWxfYXR0
-YWNoKHN0cnVjdCBkcm1fcGFuZWwgKnBhbmVsLCBzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVj
-dG9yKQo+ID4gIHsKPiA+ICsgICAgIHN0cnVjdCBkcm1fZGlzcGxheV9pbmZvICppbmZvOwo+ID4g
-Kwo+ID4gICAgICAgaWYgKHBhbmVsLT5jb25uZWN0b3IpCj4gPiAgICAgICAgICAgICAgIHJldHVy
-biAtRUJVU1k7Cj4gPgo+ID4gICAgICAgcGFuZWwtPmNvbm5lY3RvciA9IGNvbm5lY3RvcjsKPiA+
-ICAgICAgIHBhbmVsLT5kcm0gPSBjb25uZWN0b3ItPmRldjsKPiA+ICsgICAgIGluZm8gPSAmY29u
-bmVjdG9yLT5kaXNwbGF5X2luZm87Cj4gPiArICAgICBpbmZvLT53aWR0aF9tbSA9IHBhbmVsLT53
-aWR0aF9tbTsKPiA+ICsgICAgIGluZm8tPmhlaWdodF9tbSA9IHBhbmVsLT5oZWlnaHRfbW07Cj4g
-PiArICAgICBpbmZvLT5icGMgPSBwYW5lbC0+YnBjOwo+ID4gKyAgICAgaW5mby0+cGFuZWxfb3Jp
-ZW50YXRpb24gPSBwYW5lbC0+b3JpZW50YXRpb247Cj4gPiArICAgICBpbmZvLT5idXNfZmxhZ3Mg
-PSBwYW5lbC0+YnVzX2ZsYWdzOwo+ID4gKyAgICAgaWYgKHBhbmVsLT5idXNfZm9ybWF0cykKPiA+
-ICsgICAgICAgICAgICAgZHJtX2Rpc3BsYXlfaW5mb19zZXRfYnVzX2Zvcm1hdHMoJmNvbm5lY3Rv
-ci0+ZGlzcGxheV9pbmZvLAo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICBwYW5lbC0+YnVzX2Zvcm1hdHMsCj4gPiArICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIHBhbmVsLT5udW1fYnVzX2Zvcm1hdHMpOwo+ID4KPiA+
-ICAgICAgIHJldHVybiAwOwo+ID4gIH0KPiA+IEBAIC0xMjYsNiArMTM4LDIyIEBAIEVYUE9SVF9T
-WU1CT0woZHJtX3BhbmVsX2F0dGFjaCk7Cj4gPiAgICovCj4gPiAgdm9pZCBkcm1fcGFuZWxfZGV0
-YWNoKHN0cnVjdCBkcm1fcGFuZWwgKnBhbmVsKQo+ID4gIHsKPiA+ICsgICAgIHN0cnVjdCBkcm1f
-ZGlzcGxheV9pbmZvICppbmZvOwo+ID4gKwo+ID4gKyAgICAgaWYgKCFwYW5lbC0+Y29ubmVjdG9y
-KQo+ID4gKyAgICAgICAgICAgICBnb3RvIG91dDsKPiA+ICsKPiA+ICsgICAgIGluZm8gPSAmcGFu
-ZWwtPmNvbm5lY3Rvci0+ZGlzcGxheV9pbmZvOwo+ID4gKyAgICAgaW5mby0+d2lkdGhfbW0gPSAw
-Owo+ID4gKyAgICAgaW5mby0+aGVpZ2h0X21tID0gMDsKPiA+ICsgICAgIGluZm8tPmJwYyA9IDA7
-Cj4gPiArICAgICBpbmZvLT5wYW5lbF9vcmllbnRhdGlvbiA9IERSTV9NT0RFX1BBTkVMX09SSUVO
-VEFUSU9OX1VOS05PV047Cj4gPiArICAgICBpbmZvLT5idXNfZmxhZ3MgPSAwOwo+ID4gKyAgICAg
-a2ZyZWUoaW5mby0+YnVzX2Zvcm1hdHMpOwo+ID4gKyAgICAgaW5mby0+YnVzX2Zvcm1hdHMgPSBO
-VUxMOwo+ID4gKyAgICAgaW5mby0+bnVtX2J1c19mb3JtYXRzID0gMDsKPiA+ICsKPiA+ICtvdXQ6
-Cj4gPiAgICAgICBwYW5lbC0+Y29ubmVjdG9yID0gTlVMTDsKPiA+ICAgICAgIHBhbmVsLT5kcm0g
-PSBOVUxMOwo+ID4gIH0KPiA+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2RybS9kcm1fcGFuZWwuaCBi
-L2luY2x1ZGUvZHJtL2RybV9wYW5lbC5oCj4gPiBpbmRleCBkMTYxNThkZWFjZGMuLmYzNTg3YTU0
-YjhhYyAxMDA2NDQKPiA+IC0tLSBhL2luY2x1ZGUvZHJtL2RybV9wYW5lbC5oCj4gPiArKysgYi9p
-bmNsdWRlL2RybS9kcm1fcGFuZWwuaAo+ID4gQEAgLTE0MSw2ICsxNDEsNTYgQEAgc3RydWN0IGRy
-bV9wYW5lbCB7Cj4gPiAgICAgICAgKi8KPiA+ICAgICAgIGNvbnN0IHN0cnVjdCBkcm1fcGFuZWxf
-ZnVuY3MgKmZ1bmNzOwo+ID4KPgo+IEFsbCB0aGVzZSBuZXcgYWRkZWQgbWVtYmVycyBzZWVtcyBk
-dXBsaWF0ZWQgd2l0aCBkcm1fZGlzcGxheV9pbmZvLAo+IFNvIEkgdGhpbmssIGNhbiB3ZSBhZGQg
-YSBuZXcgZHJtX3BsYW5lX2Z1bmNzIGZ1bmM6Cj4KPiBpbnQgKCpzZXRfZGlzcGxheV9pbmZvKShz
-dHJ1Y3QgZHJtX3BhbmVsICpwYW5lbCwKPiAgICAgICAgICAgICAgICAgICAgICAgICBzdHJ1Y3Qg
-ZHJtX2Rpc3BsYXlfaW5mbyAqaW5mbyk7CgpJIGRvbid0IGRpc2FncmVlIHBlcnNvbmFsbHksIHNp
-bmNlIEkgb3JpZ2luYWxseSB3cm90ZSBpdCB0aGlzIHdheSwgYnV0CjIgbWFpbnRhaW5lcnMsIERh
-bmllbCBWZXR0ZXIgYW5kIFRoaWVycnkgUmVkaW5nLCByZXF1ZXN0ZWQgdGhhdCBpdCBiZQpjaGFu
-Z2VkLiBVbmxlc3MgdGhhdCBkZWNpc2lvbiBpcyByZXZlcnNlZCwgSSB3b24ndCBiZSBjaGFuZ2lu
-ZyB0aGlzLgoKPgo+IFRoZW4gaW4gZHJtX3BhbmVsX2F0dGFjaCgpLCB2aWEgdGhpcyBpbnRlcmZh
-Y2UgdGhlIHNwZWNpZmljIHBhbmVsCj4gZHJpdmVyIGNhbiBkaXJlY3RseSBzZXQgY29ubmVjdG9y
-LT5kaXNwbGF5X2luZm8uIGxpa2UKPgo+ICAgIC4uLgo+ICAgIGlmIChwYW5lbC0+ZnVuY3MgJiYg
-cGFuZWwtPmZ1bmNzLT5zZXRfZGlzcGxheV9pbmZvKQo+ICAgICAgICAgICAgICAgICBwYW5lbC0+
-ZnVuY3MtPnVucHJlcGFyZShwYW5lbCwgY29ubmVjdG9yLT5kaXNwbGF5X2luZm8pOwo+ICAgIC4u
-Lgo+Cj4gVGhhbmtzCj4gSmFtZXMKPgo+ID4gKyAgICAgLyoqCj4gPiArICAgICAgKiBAd2lkdGhf
-bW06Cj4gPiArICAgICAgKgo+ID4gKyAgICAgICogUGh5c2ljYWwgd2lkdGggaW4gbW0uCj4gPiAr
-ICAgICAgKi8KPiA+ICsgICAgIHVuc2lnbmVkIGludCB3aWR0aF9tbTsKPiA+ICsKPiA+ICsgICAg
-IC8qKgo+ID4gKyAgICAgICogQGhlaWdodF9tbToKPiA+ICsgICAgICAqCj4gPiArICAgICAgKiBQ
-aHlzaWNhbCBoZWlnaHQgaW4gbW0uCj4gPiArICAgICAgKi8KPiA+ICsgICAgIHVuc2lnbmVkIGlu
-dCBoZWlnaHRfbW07Cj4gPiArCj4gPiArICAgICAvKioKPiA+ICsgICAgICAqIEBicGM6Cj4gPiAr
-ICAgICAgKgo+ID4gKyAgICAgICogTWF4aW11bSBiaXRzIHBlciBjb2xvciBjaGFubmVsLiBVc2Vk
-IGJ5IEhETUkgYW5kIERQIG91dHB1dHMuCj4gPiArICAgICAgKi8KPiA+ICsgICAgIHVuc2lnbmVk
-IGludCBicGM7Cj4gPiArCj4gPiArICAgICAvKioKPiA+ICsgICAgICAqIEBvcmllbnRhdGlvbgo+
-ID4gKyAgICAgICoKPiA+ICsgICAgICAqIEluc3RhbGxhdGlvbiBvcmllbnRhdGlvbiBvZiB0aGUg
-cGFuZWwgd2l0aCByZXNwZWN0IHRvIHRoZSBjaGFzc2lzLgo+ID4gKyAgICAgICovCj4gPiArICAg
-ICBpbnQgb3JpZW50YXRpb247Cj4gPiArCj4gPiArICAgICAvKioKPiA+ICsgICAgICAqIEBidXNf
-Zm9ybWF0cwo+ID4gKyAgICAgICoKPiA+ICsgICAgICAqIFBpeGVsIGRhdGEgZm9ybWF0IG9uIHRo
-ZSB3aXJlLgo+ID4gKyAgICAgICovCj4gPiArICAgICBjb25zdCB1MzIgKmJ1c19mb3JtYXRzOwo+
-ID4gKwo+ID4gKyAgICAgLyoqCj4gPiArICAgICAgKiBAbnVtX2J1c19mb3JtYXRzOgo+ID4gKyAg
-ICAgICoKPiA+ICsgICAgICAqIE51bWJlciBvZiBlbGVtZW50cyBwb2ludGVkIHRvIGJ5IEBidXNf
-Zm9ybWF0cwo+ID4gKyAgICAgICovCj4gPiArICAgICB1bnNpZ25lZCBpbnQgbnVtX2J1c19mb3Jt
-YXRzOwo+ID4gKwo+ID4gKyAgICAgLyoqCj4gPiArICAgICAgKiBAYnVzX2ZsYWdzOgo+ID4gKyAg
-ICAgICoKPiA+ICsgICAgICAqIEFkZGl0aW9uYWwgaW5mb3JtYXRpb24gKGxpa2UgcGl4ZWwgc2ln
-bmFsIHBvbGFyaXR5KSBmb3IgdGhlIHBpeGVsCj4gPiArICAgICAgKiBkYXRhIG9uIHRoZSBidXMu
-Cj4gPiArICAgICAgKi8KPiA+ICsgICAgIHUzMiBidXNfZmxhZ3M7Cj4gPiArCj4gPiAgICAgICAv
-KioKPiA+ICAgICAgICAqIEBsaXN0Ogo+ID4gICAgICAgICoKClRoYW5rcyBmb3IgdGhlIHJldmll
-dwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC1n
-ZnggbWFpbGluZyBsaXN0CkludGVsLWdmeEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
-aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1nZng=
+On Mon, Sep 30, 2019 at 2:20 PM Cengiz Can <cengiz@kernel.wtf> wrote:
+>
+> On 2019-09-30 18:28, Fabien Parent wrote:
+> > Fixes: abf4923e97c3 ("i2c: mediatek: disable zero-length transfers for
+> > mt8183")
+> > Signed-off-by: Fabien Parent <fparent@baylibre.com>
+>
+> Reviewed-by: Cengiz Can <cengiz@kernel.wtf>
+Reviewed-by: Hsin-Yi Wang <hsinyi@chromium.org>
+
+Thanks!
