@@ -1,89 +1,47 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 4/7] dt-bindings: chosen: Add clocksource and clockevent
- selection
-Date: Mon, 30 Sep 2019 09:32:46 -0500
-Message-ID: <20190930143246.GA19967@bogus>
-References: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
- <1568123236-767-5-git-send-email-claudiu.beznea@microchip.com>
- <20190910143231.GB14966@e107533-lin.cambridge.arm.com>
- <ab43b209-78fa-0cab-b8ea-acd4c550e689@microchip.com>
- <20190910150826.GA18308@e107533-lin.cambridge.arm.com>
- <20190910151055.GX21254@piout.net>
- <CACRpkda4mmpbPWa2nD93CvD6HWzcTUDzyyLdQxC2gNB7XiJF3w@mail.gmail.com>
- <a2aca46a-8eb9-d8a8-de42-9850a8a8f44c@microchip.com>
+From: Fabien Parent <fparent@baylibre.com>
+Subject: [PATCH v2] i2c: i2c-mt65xx: fix NULL ptr dereference
+Date: Mon, 30 Sep 2019 17:28:46 +0200
+Message-ID: <20190930152846.5062-1-fparent@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <a2aca46a-8eb9-d8a8-de42-9850a8a8f44c@microchip.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-snps-arc>,
- <mailto:linux-snps-arc-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-snps-arc/>
-List-Post: <mailto:linux-snps-arc@lists.infradead.org>
-List-Help: <mailto:linux-snps-arc-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-snps-arc>,
- <mailto:linux-snps-arc-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-snps-arc" <linux-snps-arc-bounces@lists.infradead.org>
-Errors-To: linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org
-To: Claudiu.Beznea@microchip.com
-Cc: tmaimon77@gmail.com, linus.walleij@linaro.org, nsekhar@ti.com, guoren@kernel.org, linux-stm32@st-md-mailman.stormreply.com, heiko@sntech.de, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, khilman@baylibre.com, Ludovic.Desroches@microchip.com, linux-imx@nxp.com, u.kleine-koenig@pengutronix.de, uclinux-h8-devel@lists.sourceforge.jp, marc.zyngier@arm.com, s.hauer@pengutronix.de, linux-unisoc@lists.infradead.org, khalasa@piap.pl, tglx@linutronix.de, sbranden@broadcom.com, linux-kernel@vger.kernel.org, ralf@linux-mips.org, paul.burton@mips.com, kernel@pengutronix.de, mark.rutland@arm.com, alexandre.belloni@bootlin.com, jhogan@kernel.org, palmer@sifive.com, eric@anholt.net, thierry.reding@gmail.com, manivannan.sadhasivam@linaro.org, ysato@users.sourceforge.jp, zhang.lyra@gmail.com, daniel.lezcano@linaro.org, jonathanh@nvidia.com, bgolaszewski@baylibre.co
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: matthias.bgg@gmail.com, wsa@the-dreams.de, qii.wang@mediatek.com, drinkcat@chromium.org, hsinyi@chromium.org, tglx@linutronix.de, Fabien Parent <fparent@baylibre.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Sep 11, 2019 at 07:18:07AM +0000, Claudiu.Beznea@microchip.com wrote:
-> 
-> 
-> On 11.09.2019 03:03, Linus Walleij wrote:
-> > External E-Mail
-> > 
-> > 
-> > On Tue, Sep 10, 2019 at 4:11 PM Alexandre Belloni
-> > <alexandre.belloni@bootlin.com> wrote:
-> >> On 10/09/2019 16:08:26+0100, Sudeep Holla wrote:
-> >>> On Tue, Sep 10, 2019 at 02:51:50PM +0000, Claudiu.Beznea@microchip.com wrote:
-> > 
-> >>> In that case, why can't we identify capability that with the compatibles
-> >>> for this timer IP ?
-> >>>
-> >>> IOW, I don't like the proposal as it's hardware limitation.
-> >>
-> >> To be clear, bot timers are exactly the same but can't be clocksource
-> >> and clockevent at the same time. Why would we have different compatibles
-> >> for the exact same IP?
-> > 
-> > In that case why not just pick the first one you find as clocksource
-> > and the second one as clock event? As they all come to the
-> > same timer of init function two simple local state variables can
-> > solve that:
-> > 
-> > static bool registered_clocksource;
-> > static bool registered_clockevent;
-> > 
-> > probe(timer) {
-> >    if (!registered_clocksource) {
-> >        register_clocksource(timer);
-> >        registrered_clocksource = true;
-> >        return;
-> >    }
-> >    if (!registered_clockevent) {
-> >        register_clockevent(timer);
-> >        registered_clockevent = true;
-> >        return;
-> >    }
-> >    pr_info("surplus timer %p\n", timer);
-> > }
-> > 
-> 
-> That was also my proposal for the driver I'm sending this series for (see
-> [1]) but it has been proposed to implement a mechanism similar to this one
-> in this series (see [2] and [3]).
+Since commit abf4923e97c3 ("i2c: mediatek: disable zero-length transfers
+for mt8183"), there is a NULL pointer dereference for all the SoCs
+that don't have any quirk. mtk_i2c_functionality is not checking that
+the quirks pointer is not NULL before starting to use it.
 
-This comes up over and over, and the answer is still no. Either each 
-block is identical and doesn't matter which one is used for what or 
-there is some h/w difference that you should describe. 
+This commit add a call to i2c_check_quirks which will check whether
+the quirks pointer is set, and if so will check if the IP has the
+NO_ZERO_LEN quirk.
 
-If you want something that would even be considered to put into DT, 
-then define something BSD or other OS's could use too. (That's not a 
-suggestion to respin this with generalized names.)
+Fixes: abf4923e97c3 ("i2c: mediatek: disable zero-length transfers for mt8183")
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+---
 
-Rob
+v2:
+	* use i2c_check_quirks to check the quirks
+
+---
+ drivers/i2c/busses/i2c-mt65xx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index 29eae1bf4f86..2152ec5f535c 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -875,7 +875,7 @@ static irqreturn_t mtk_i2c_irq(int irqno, void *dev_id)
+ 
+ static u32 mtk_i2c_functionality(struct i2c_adapter *adap)
+ {
+-	if (adap->quirks->flags & I2C_AQ_NO_ZERO_LEN)
++	if (i2c_check_quirks(adap, I2C_AQ_NO_ZERO_LEN))
+ 		return I2C_FUNC_I2C |
+ 			(I2C_FUNC_SMBUS_EMUL & ~I2C_FUNC_SMBUS_QUICK);
+ 	else
+-- 
+2.23.0
