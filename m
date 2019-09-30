@@ -1,60 +1,122 @@
-From: Will Deacon <will@kernel.org>
-Subject: Re: [PATCH] iommu/mediatek: Move the tlb_sync into tlb_flush
-Date: Mon, 30 Sep 2019 13:09:27 +0100
-Message-ID: <20190930120926.t26ydhgggi2scg3e@willie-the-truck>
-References: <1569822142-14303-1-git-send-email-yong.wu@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v5 1/3] dt-bindings: soc: add mtk svs dt-bindings
+Date: Mon, 30 Sep 2019 08:35:48 -0500
+Message-ID: <20190930133548.GA24574@bogus>
+References: <20190906100514.30803-1-roger.lu@mediatek.com>
+ <20190906100514.30803-2-roger.lu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1569822142-14303-1-git-send-email-yong.wu@mediatek.com>
+In-Reply-To: <20190906100514.30803-2-roger.lu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, youlin.pei@mediatek.com, anan.sun@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, cui.zhang@mediatek.com, srv_heupstream@mediatek.com, chao.hao@mediatek.com, linux-kernel@vger.kernel.org, Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
+To: Roger Lu <roger.lu@mediatek.com>
+Cc: Kevin Hilman <khilman@kernel.org>, Nicolas Boichat <drinkcat@google.com>, Stephen Boyd <sboyd@kernel.org>, Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, yt.lee@mediatek.com, Angus Lin <Angus.Lin@mediatek.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Nishanth Menon <nm@ti.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Sep 30, 2019 at 01:42:22PM +0800, Yong Wu wrote:
-> The commit 4d689b619445 ("iommu/io-pgtable-arm-v7s: Convert to IOMMU API
-> TLB sync") help move the tlb_sync of unmap from v7s into the iommu
-> framework. It helps add a new function "mtk_iommu_iotlb_sync", But it
-> lacked the dom->pgtlock, then it will cause the variable
-> "tlb_flush_active" may be changed unexpectedly, we could see this warning
-> log randomly:
+On Fri, Sep 06, 2019 at 06:05:13PM +0800, Roger Lu wrote:
+> Document the binding for enabling mtk svs on MediaTek SoC.
 > 
-> mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to
-> full flush
-> 
-> To fix this issue, we can add dom->pgtlock in the "mtk_iommu_iotlb_sync".
-> And when checking this issue, we find that __arm_v7s_unmap call
-> io_pgtable_tlb_add_flush consecutively when it is supersection/largepage,
-> this also is potential unsafe for us. There is no tlb flush queue in the
-> MediaTek M4U HW. The HW always expect the tlb_flush/tlb_sync one by one.
-> If v7s don't always gurarantee the sequence, Thus, In this patch I move
-> the tlb_sync into tlb_flush(also rename the function deleting "_nosync").
-> and we don't care if it is leaf, rearrange the callback functions. Also,
-> the tlb flush/sync was already finished in v7s, then iotlb_sync and
-> iotlb_sync_all is unnecessary.
-> 
-> Besides, there are two minor changes:
-> a) Use writel for the register F_MMU_INV_RANGE which is for triggering the
-> HW work. We expect all the setting(iova_start/iova_end...) have already
-> been finished before F_MMU_INV_RANGE.
-> b) Reduce the tlb timeout value from 100000us to 1000us. the original value
-> is so long that affect the multimedia performance.
-> 
-> Fixes: 4d689b619445 ("iommu/io-pgtable-arm-v7s: Convert to IOMMU API TLB sync")
-> Signed-off-by: Chao Hao <chao.hao@mediatek.com>
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
 > ---
-> This patch looks break the logic for tlb_flush and tlb_sync. I'm not
-> sure if it
-> is reasonable. If someone has concern, I could change:
-> a) Add dom->pgtlock in the mtk_iommu_iotlb_sync
-> b) Add a io_pgtable_tlb_sync in [1].
+>  .../devicetree/bindings/power/mtk-svs.txt     | 88 +++++++++++++++++++
+>  1 file changed, 88 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/power/mtk-svs.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/power/mtk-svs.txt b/Documentation/devicetree/bindings/power/mtk-svs.txt
+> new file mode 100644
+> index 000000000000..6a71992ef162
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/power/mtk-svs.txt
+> @@ -0,0 +1,88 @@
+> +* Mediatek Smart Voltage Scaling (MTK SVS)
+> +
+> +This describes the device tree binding for the MTK SVS controller (bank)
+> +which helps provide the optimized CPU/GPU/CCI voltages. This device also
+> +needs thermal data to calculate thermal slope for accurately compensate
+> +the voltages when temperature change.
+> +
+> +Required properties:
+> +- compatible:
+> +  - "mediatek,mt8183-svs" : For MT8183 family of SoCs
+> +- reg: Address range of the MTK SVS controller.
+> +- interrupts: IRQ for the MTK SVS controller.
+> +- clocks, clock-names: Clocks needed for the svs controller. required
+> +                       clocks are:
+> +		       "main_clk": Main clock needed for register access
 
-The patch looks ok to me, but please could you split it up so that the
-timeout and writel are done separately?
+'_clk' is redundant.
 
-Thanks,
+> +- nvmem-cells: Phandle to the calibration data provided by a nvmem device.
+> +- nvmem-cell-names: Should be "svs-calibration-data" and "calibration-data"
+> +
+> +Subnodes:
+> +- svs_cpu_little: SVS bank device node of little CPU
+> +  compatible: "mediatek,mt8183-svs-cpu-little"
+> +  operating-points-v2: OPP table hooked by SVS little CPU bank.
+> +		       SVS will optimze this OPP table voltage part.
+> +  vcpu-little-supply: PMIC buck of little CPU
+> +- svs_cpu_big: SVS bank device node of big CPU
+> +  compatible: "mediatek,mt8183-svs-cpu-big"
+> +  operating-points-v2: OPP table hooked by SVS big CPU bank.
+> +		       SVS will optimze this OPP table voltage part.
+> +  vcpu-big-supply: PMIC buck of big CPU
+> +- svs_cci: SVS bank device node of CCI
+> +  compatible: "mediatek,mt8183-svs-cci"
+> +  operating-points-v2: OPP table hooked by SVS CCI bank.
+> +		       SVS will optimze this OPP table voltage part.
+> +  vcci-supply: PMIC buck of CCI
+> +- svs_gpu: SVS bank device node of GPU
+> +  compatible: "mediatek,mt8183-svs-gpu"
+> +  operating-points-v2: OPP table hooked by SVS GPU bank.
+> +		       SVS will optimze this OPP table voltage part.
+> +  vgpu-spply: PMIC buck of GPU
+> +
+> +Example:
+> +
+> +	svs: svs@1100b000 {
+> +		compatible = "mediatek,mt8183-svs";
+> +		reg = <0 0x1100b000 0 0x1000>;
+> +		interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW 0>;
 
-Will
+GIC interrupts are 3 cells, you have 4.
+
+> +		clocks = <&infracfg CLK_INFRA_THERM>;
+> +		clock-names = "main_clk";
+> +		nvmem-cells = <&svs_calibration>, <&thermal_calibration>;
+> +		nvmem-cell-names = "svs-calibration-data", "calibration-data";
+> +
+> +		svs_cpu_little: svs_cpu_little {
+
+Don't use '_' in node names.
+
+> +			compatible = "mediatek,mt8183-svs-cpu-little";
+> +			operating-points-v2 = <&cluster0_opp>;
+> +		};
+> +
+> +		svs_cpu_big: svs_cpu_big {
+> +			compatible = "mediatek,mt8183-svs-cpu-big";
+> +			operating-points-v2 = <&cluster1_opp>;
+> +		};
+> +
+> +		svs_cci: svs_cci {
+> +			compatible = "mediatek,mt8183-svs-cci";
+> +			operating-points-v2 = <&cci_opp>;
+> +		};
+> +
+> +		svs_gpu: svs_gpu {
+> +			compatible = "mediatek,mt8183-svs-gpu";
+> +			power-domains = <&scpsys MT8183_POWER_DOMAIN_MFG_2D>;
+> +			operating-points-v2 = <&gpu_opp_table>;
+> +		};
+> +	};
+> +
+> +	&svs_cpu_little {
+> +		vcpu-little-supply = <&mt6358_vproc12_reg>;
+
+It's already defined to have OPP and supply in the cpu nodes. Parse them
+to get this information rather than duplicating it here.
+
+The same should apply to the CCI and GPU.
+
+Rob
