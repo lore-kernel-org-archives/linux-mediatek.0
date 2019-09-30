@@ -1,51 +1,60 @@
-From: Sam Shih <sam.shih@mediatek.com>
-Subject: [PATCH 1/1] arm: dts: mediatek: add mt7629 pwm support
-Date: Mon, 30 Sep 2019 17:59:45 +0800
-Message-ID: <1569837585-13247-2-git-send-email-sam.shih@mediatek.com>
-References: <1569837585-13247-1-git-send-email-sam.shih@mediatek.com>
+From: Will Deacon <will@kernel.org>
+Subject: Re: [PATCH] iommu/mediatek: Move the tlb_sync into tlb_flush
+Date: Mon, 30 Sep 2019 13:09:27 +0100
+Message-ID: <20190930120926.t26ydhgggi2scg3e@willie-the-truck>
+References: <1569822142-14303-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1569837585-13247-1-git-send-email-sam.shih@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1569822142-14303-1-git-send-email-yong.wu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Sam Shih <sam.shih@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, youlin.pei@mediatek.com, anan.sun@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, cui.zhang@mediatek.com, srv_heupstream@mediatek.com, chao.hao@mediatek.com, linux-kernel@vger.kernel.org, Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This adds pwm support for MT7629.
-Used:
-https://patchwork.kernel.org/patch/11160851/
+On Mon, Sep 30, 2019 at 01:42:22PM +0800, Yong Wu wrote:
+> The commit 4d689b619445 ("iommu/io-pgtable-arm-v7s: Convert to IOMMU API
+> TLB sync") help move the tlb_sync of unmap from v7s into the iommu
+> framework. It helps add a new function "mtk_iommu_iotlb_sync", But it
+> lacked the dom->pgtlock, then it will cause the variable
+> "tlb_flush_active" may be changed unexpectedly, we could see this warning
+> log randomly:
+> 
+> mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to
+> full flush
+> 
+> To fix this issue, we can add dom->pgtlock in the "mtk_iommu_iotlb_sync".
+> And when checking this issue, we find that __arm_v7s_unmap call
+> io_pgtable_tlb_add_flush consecutively when it is supersection/largepage,
+> this also is potential unsafe for us. There is no tlb flush queue in the
+> MediaTek M4U HW. The HW always expect the tlb_flush/tlb_sync one by one.
+> If v7s don't always gurarantee the sequence, Thus, In this patch I move
+> the tlb_sync into tlb_flush(also rename the function deleting "_nosync").
+> and we don't care if it is leaf, rearrange the callback functions. Also,
+> the tlb flush/sync was already finished in v7s, then iotlb_sync and
+> iotlb_sync_all is unnecessary.
+> 
+> Besides, there are two minor changes:
+> a) Use writel for the register F_MMU_INV_RANGE which is for triggering the
+> HW work. We expect all the setting(iova_start/iova_end...) have already
+> been finished before F_MMU_INV_RANGE.
+> b) Reduce the tlb timeout value from 100000us to 1000us. the original value
+> is so long that affect the multimedia performance.
+> 
+> Fixes: 4d689b619445 ("iommu/io-pgtable-arm-v7s: Convert to IOMMU API TLB sync")
+> Signed-off-by: Chao Hao <chao.hao@mediatek.com>
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+> This patch looks break the logic for tlb_flush and tlb_sync. I'm not
+> sure if it
+> is reasonable. If someone has concern, I could change:
+> a) Add dom->pgtlock in the mtk_iommu_iotlb_sync
+> b) Add a io_pgtable_tlb_sync in [1].
 
-Signed-off-by: Sam Shih <sam.shih@mediatek.com>
----
- arch/arm/boot/dts/mt7629.dtsi | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+The patch looks ok to me, but please could you split it up so that the
+timeout and writel are done separately?
 
-diff --git a/arch/arm/boot/dts/mt7629.dtsi b/arch/arm/boot/dts/mt7629.dtsi
-index 9608bc2ccb3f..24375fc5f936 100644
---- a/arch/arm/boot/dts/mt7629.dtsi
-+++ b/arch/arm/boot/dts/mt7629.dtsi
-@@ -241,6 +241,21 @@
- 			status = "disabled";
- 		};
- 
-+		pwm: pwm@11006000 {
-+			compatible = "mediatek,mt7629-pwm";
-+			reg = <0x11006000 0x1000>;
-+			interrupts = <GIC_SPI 77 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&topckgen CLK_TOP_PWM_SEL>,
-+				 <&pericfg CLK_PERI_PWM_PD>,
-+				 <&pericfg CLK_PERI_PWM1_PD>;
-+			clock-names = "top", "main", "pwm1";
-+			assigned-clocks = <&topckgen CLK_TOP_PWM_SEL>;
-+			assigned-clock-parents =
-+					<&topckgen CLK_TOP_UNIVPLL2_D4>;
-+			num-pwms = <1>;
-+			status = "disabled";
-+		};
-+
- 		i2c: i2c@11007000 {
- 			compatible = "mediatek,mt7629-i2c",
- 				     "mediatek,mt2712-i2c";
--- 
-2.17.1
+Thanks,
+
+Will
