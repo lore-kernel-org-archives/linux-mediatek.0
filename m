@@ -1,150 +1,208 @@
-From: Walter Wu <walter-zh.wu@mediatek.com>
-Subject: Re: [PATCH] kasan: fix the missing underflow in memmove and memcpy
- with CONFIG_KASAN_GENERIC=y
-Date: Mon, 30 Sep 2019 12:36:13 +0800
-Message-ID: <1569818173.17361.19.camel@mtksdccf07>
-References: <20190927034338.15813-1-walter-zh.wu@mediatek.com>
- <CACT4Y+Zxz+R=qQxSMoipXoLjRqyApD3O0eYpK0nyrfGHE4NNPw@mail.gmail.com>
- <1569594142.9045.24.camel@mtksdccf07>
- <CACT4Y+YuAxhKtL7ho7jpVAPkjG-JcGyczMXmw8qae2iaZjTh_w@mail.gmail.com>
+From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] iommu/mediatek: Move the tlb_sync into tlb_flush
+Date: Mon, 30 Sep 2019 13:42:22 +0800
+Message-ID: <1569822142-14303-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CACT4Y+YuAxhKtL7ho7jpVAPkjG-JcGyczMXmw8qae2iaZjTh_w@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Dmitry Vyukov <dvyukov@google.com>
-Cc: wsd_upstream <wsd_upstream@mediatek.com>, linux-mediatek@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>, Linux-MM <linux-mm@kvack.org>, Alexander Potapenko <glider@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrey Ryabinin <aryabinin@virtuozzo.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
+Cc: youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, anan.sun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, cui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, chao.hao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Evan Green <evgreen-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gRnJpLCAyMDE5LTA5LTI3IGF0IDIxOjQxICswMjAwLCBEbWl0cnkgVnl1a292IHdyb3RlOgo+
-IE9uIEZyaSwgU2VwIDI3LCAyMDE5IGF0IDQ6MjIgUE0gV2FsdGVyIFd1IDx3YWx0ZXItemgud3VA
-bWVkaWF0ZWsuY29tPiB3cm90ZToKPiA+Cj4gPiBPbiBGcmksIDIwMTktMDktMjcgYXQgMTU6MDcg
-KzAyMDAsIERtaXRyeSBWeXVrb3Ygd3JvdGU6Cj4gPiA+IE9uIEZyaSwgU2VwIDI3LCAyMDE5IGF0
-IDU6NDMgQU0gV2FsdGVyIFd1IDx3YWx0ZXItemgud3VAbWVkaWF0ZWsuY29tPiB3cm90ZToKPiA+
-ID4gPgo+ID4gPiA+IG1lbW1vdmUoKSBhbmQgbWVtY3B5KCkgaGF2ZSBtaXNzaW5nIHVuZGVyZmxv
-dyBpc3N1ZXMuCj4gPiA+ID4gV2hlbiAtNyA8PSBzaXplIDwgMCwgdGhlbiBLQVNBTiB3aWxsIG1p
-c3MgdG8gY2F0Y2ggdGhlIHVuZGVyZmxvdyBpc3N1ZS4KPiA+ID4gPiBJdCBsb29rcyBsaWtlIHNo
-YWRvdyBzdGFydCBhZGRyZXNzIGFuZCBzaGFkb3cgZW5kIGFkZHJlc3MgaXMgdGhlIHNhbWUsCj4g
-PiA+ID4gc28gaXQgZG9lcyBub3QgYWN0dWFsbHkgY2hlY2sgYW55dGhpbmcuCj4gPiA+ID4KPiA+
-ID4gPiBUaGUgZm9sbG93aW5nIHRlc3QgaXMgaW5kZWVkIG5vdCBjYXVnaHQgYnkgS0FTQU46Cj4g
-PiA+ID4KPiA+ID4gPiAgICAgICAgIGNoYXIgKnAgPSBrbWFsbG9jKDY0LCBHRlBfS0VSTkVMKTsK
-PiA+ID4gPiAgICAgICAgIG1lbXNldCgoY2hhciAqKXAsIDAsIDY0KTsKPiA+ID4gPiAgICAgICAg
-IG1lbW1vdmUoKGNoYXIgKilwLCAoY2hhciAqKXAgKyA0LCAtMik7Cj4gPiA+ID4gICAgICAgICBr
-ZnJlZSgoY2hhciopcCk7Cj4gPiA+ID4KPiA+ID4gPiBJdCBzaG91bGQgYmUgY2hlY2tlZCBoZXJl
-Ogo+ID4gPiA+Cj4gPiA+ID4gdm9pZCAqbWVtbW92ZSh2b2lkICpkZXN0LCBjb25zdCB2b2lkICpz
-cmMsIHNpemVfdCBsZW4pCj4gPiA+ID4gewo+ID4gPiA+ICAgICAgICAgY2hlY2tfbWVtb3J5X3Jl
-Z2lvbigodW5zaWduZWQgbG9uZylzcmMsIGxlbiwgZmFsc2UsIF9SRVRfSVBfKTsKPiA+ID4gPiAg
-ICAgICAgIGNoZWNrX21lbW9yeV9yZWdpb24oKHVuc2lnbmVkIGxvbmcpZGVzdCwgbGVuLCB0cnVl
-LCBfUkVUX0lQXyk7Cj4gPiA+ID4KPiA+ID4gPiAgICAgICAgIHJldHVybiBfX21lbW1vdmUoZGVz
-dCwgc3JjLCBsZW4pOwo+ID4gPiA+IH0KPiA+ID4gPgo+ID4gPiA+IFdlIGZpeCB0aGUgc2hhZG93
-IGVuZCBhZGRyZXNzIHdoaWNoIGlzIGNhbGN1bGF0ZWQsIHRoZW4gZ2VuZXJpYyBLQVNBTgo+ID4g
-PiA+IGdldCB0aGUgcmlnaHQgc2hhZG93IGVuZCBhZGRyZXNzIGFuZCBkZXRlY3QgdGhpcyB1bmRl
-cmZsb3cgaXNzdWUuCj4gPiA+ID4KPiA+ID4gPiBbMV0gaHR0cHM6Ly9idWd6aWxsYS5rZXJuZWwu
-b3JnL3Nob3dfYnVnLmNnaT9pZD0xOTkzNDEKPiA+ID4gPgo+ID4gPiA+IFNpZ25lZC1vZmYtYnk6
-IFdhbHRlciBXdSA8d2FsdGVyLXpoLnd1QG1lZGlhdGVrLmNvbT4KPiA+ID4gPiBSZXBvcnRlZC1i
-eTogRG1pdHJ5IFZ5dWtvdiA8ZHZ5dWtvdkBnb29nbGUuY29tPgo+ID4gPiA+IC0tLQo+ID4gPiA+
-ICBsaWIvdGVzdF9rYXNhbi5jICAgfCAzNiArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKysKPiA+ID4gPiAgbW0va2FzYW4vZ2VuZXJpYy5jIHwgIDggKysrKysrLS0KPiA+ID4gPiAg
-MiBmaWxlcyBjaGFuZ2VkLCA0MiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+ID4gPiA+
-Cj4gPiA+ID4gZGlmZiAtLWdpdCBhL2xpYi90ZXN0X2thc2FuLmMgYi9saWIvdGVzdF9rYXNhbi5j
-Cj4gPiA+ID4gaW5kZXggYjYzYjM2N2E5NGU4Li44YmQwMTQ4NTI1NTYgMTAwNjQ0Cj4gPiA+ID4g
-LS0tIGEvbGliL3Rlc3Rfa2FzYW4uYwo+ID4gPiA+ICsrKyBiL2xpYi90ZXN0X2thc2FuLmMKPiA+
-ID4gPiBAQCAtMjgwLDYgKzI4MCw0MCBAQCBzdGF0aWMgbm9pbmxpbmUgdm9pZCBfX2luaXQga21h
-bGxvY19vb2JfaW5fbWVtc2V0KHZvaWQpCj4gPiA+ID4gICAgICAgICBrZnJlZShwdHIpOwo+ID4g
-PiA+ICB9Cj4gPiA+ID4KPiA+ID4gPiArc3RhdGljIG5vaW5saW5lIHZvaWQgX19pbml0IGttYWxs
-b2Nfb29iX2luX21lbW1vdmVfdW5kZXJmbG93KHZvaWQpCj4gPiA+ID4gK3sKPiA+ID4gPiArICAg
-ICAgIGNoYXIgKnB0cjsKPiA+ID4gPiArICAgICAgIHNpemVfdCBzaXplID0gNjQ7Cj4gPiA+ID4g
-Kwo+ID4gPiA+ICsgICAgICAgcHJfaW5mbygidW5kZXJmbG93IG91dC1vZi1ib3VuZHMgaW4gbWVt
-bW92ZVxuIik7Cj4gPiA+ID4gKyAgICAgICBwdHIgPSBrbWFsbG9jKHNpemUsIEdGUF9LRVJORUwp
-Owo+ID4gPiA+ICsgICAgICAgaWYgKCFwdHIpIHsKPiA+ID4gPiArICAgICAgICAgICAgICAgcHJf
-ZXJyKCJBbGxvY2F0aW9uIGZhaWxlZFxuIik7Cj4gPiA+ID4gKyAgICAgICAgICAgICAgIHJldHVy
-bjsKPiA+ID4gPiArICAgICAgIH0KPiA+ID4gPiArCj4gPiA+ID4gKyAgICAgICBtZW1zZXQoKGNo
-YXIgKilwdHIsIDAsIDY0KTsKPiA+ID4gPiArICAgICAgIG1lbW1vdmUoKGNoYXIgKilwdHIsIChj
-aGFyICopcHRyICsgNCwgLTIpOwo+ID4gPiA+ICsgICAgICAga2ZyZWUocHRyKTsKPiA+ID4gPiAr
-fQo+ID4gPiA+ICsKPiA+ID4gPiArc3RhdGljIG5vaW5saW5lIHZvaWQgX19pbml0IGttYWxsb2Nf
-b29iX2luX21lbW1vdmVfb3ZlcmZsb3codm9pZCkKPiA+ID4gPiArewo+ID4gPiA+ICsgICAgICAg
-Y2hhciAqcHRyOwo+ID4gPiA+ICsgICAgICAgc2l6ZV90IHNpemUgPSA2NDsKPiA+ID4gPiArCj4g
-PiA+ID4gKyAgICAgICBwcl9pbmZvKCJvdmVyZmxvdyBvdXQtb2YtYm91bmRzIGluIG1lbW1vdmVc
-biIpOwo+ID4gPiA+ICsgICAgICAgcHRyID0ga21hbGxvYyhzaXplLCBHRlBfS0VSTkVMKTsKPiA+
-ID4gPiArICAgICAgIGlmICghcHRyKSB7Cj4gPiA+ID4gKyAgICAgICAgICAgICAgIHByX2Vycigi
-QWxsb2NhdGlvbiBmYWlsZWRcbiIpOwo+ID4gPiA+ICsgICAgICAgICAgICAgICByZXR1cm47Cj4g
-PiA+ID4gKyAgICAgICB9Cj4gPiA+ID4gKwo+ID4gPiA+ICsgICAgICAgbWVtc2V0KChjaGFyICop
-cHRyLCAwLCA2NCk7Cj4gPiA+ID4gKyAgICAgICBtZW1tb3ZlKChjaGFyICopcHRyICsgc2l6ZSwg
-KGNoYXIgKilwdHIsIDIpOwo+ID4gPiA+ICsgICAgICAga2ZyZWUocHRyKTsKPiA+ID4gPiArfQo+
-ID4gPiA+ICsKPiA+ID4gPiAgc3RhdGljIG5vaW5saW5lIHZvaWQgX19pbml0IGttYWxsb2NfdWFm
-KHZvaWQpCj4gPiA+ID4gIHsKPiA+ID4gPiAgICAgICAgIGNoYXIgKnB0cjsKPiA+ID4gPiBAQCAt
-NzM0LDYgKzc2OCw4IEBAIHN0YXRpYyBpbnQgX19pbml0IGttYWxsb2NfdGVzdHNfaW5pdCh2b2lk
-KQo+ID4gPiA+ICAgICAgICAga21hbGxvY19vb2JfbWVtc2V0XzQoKTsKPiA+ID4gPiAgICAgICAg
-IGttYWxsb2Nfb29iX21lbXNldF84KCk7Cj4gPiA+ID4gICAgICAgICBrbWFsbG9jX29vYl9tZW1z
-ZXRfMTYoKTsKPiA+ID4gPiArICAgICAgIGttYWxsb2Nfb29iX2luX21lbW1vdmVfdW5kZXJmbG93
-KCk7Cj4gPiA+ID4gKyAgICAgICBrbWFsbG9jX29vYl9pbl9tZW1tb3ZlX292ZXJmbG93KCk7Cj4g
-PiA+ID4gICAgICAgICBrbWFsbG9jX3VhZigpOwo+ID4gPiA+ICAgICAgICAga21hbGxvY191YWZf
-bWVtc2V0KCk7Cj4gPiA+ID4gICAgICAgICBrbWFsbG9jX3VhZjIoKTsKPiA+ID4gPiBkaWZmIC0t
-Z2l0IGEvbW0va2FzYW4vZ2VuZXJpYy5jIGIvbW0va2FzYW4vZ2VuZXJpYy5jCj4gPiA+ID4gaW5k
-ZXggNjE2ZjlkZDgyZDEyLi4zNGNhMjNkNTllNjcgMTAwNjQ0Cj4gPiA+ID4gLS0tIGEvbW0va2Fz
-YW4vZ2VuZXJpYy5jCj4gPiA+ID4gKysrIGIvbW0va2FzYW4vZ2VuZXJpYy5jCj4gPiA+ID4gQEAg
-LTEzMSw5ICsxMzEsMTMgQEAgc3RhdGljIF9fYWx3YXlzX2lubGluZSBib29sIG1lbW9yeV9pc19w
-b2lzb25lZF9uKHVuc2lnbmVkIGxvbmcgYWRkciwKPiA+ID4gPiAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzaXplX3Qgc2l6ZSkKPiA+ID4gPiAgewo+ID4g
-PiA+ICAgICAgICAgdW5zaWduZWQgbG9uZyByZXQ7Cj4gPiA+ID4gKyAgICAgICB2b2lkICpzaGFk
-b3dfc3RhcnQgPSBrYXNhbl9tZW1fdG9fc2hhZG93KCh2b2lkICopYWRkcik7Cj4gPiA+ID4gKyAg
-ICAgICB2b2lkICpzaGFkb3dfZW5kID0ga2FzYW5fbWVtX3RvX3NoYWRvdygodm9pZCAqKWFkZHIg
-KyBzaXplIC0gMSkgKyAxOwo+ID4gPiA+Cj4gPiA+ID4gLSAgICAgICByZXQgPSBtZW1vcnlfaXNf
-bm9uemVybyhrYXNhbl9tZW1fdG9fc2hhZG93KCh2b2lkICopYWRkciksCj4gPiA+ID4gLSAgICAg
-ICAgICAgICAgICAgICAgICAga2FzYW5fbWVtX3RvX3NoYWRvdygodm9pZCAqKWFkZHIgKyBzaXpl
-IC0gMSkgKyAxKTsKPiA+ID4gPiArICAgICAgIGlmICgobG9uZylzaXplIDwgMCkKPiA+ID4gPiAr
-ICAgICAgICAgICAgICAgc2hhZG93X2VuZCA9IGthc2FuX21lbV90b19zaGFkb3coKHZvaWQgKilh
-ZGRyICsgc2l6ZSk7Cj4gPiA+Cj4gPiA+IEhpIFdhbHRlciwKPiA+ID4KPiA+ID4gVGhhbmtzIGZv
-ciB3b3JraW5nIG9uIHRoaXMuCj4gPiA+Cj4gPiA+IElmIHNpemU8MCwgZG9lcyBpdCBtYWtlIHNl
-bnNlIHRvIGNvbnRpbnVlIGF0IGFsbD8gV2Ugd2lsbCBzdGlsbCBjaGVjawo+ID4gPiAxUEIgb2Yg
-c2hhZG93IG1lbW9yeT8gV2hhdCBoYXBwZW5zIHdoZW4gd2UgcGFzcyBzdWNoIGh1Z2UgcmFuZ2Ug
-dG8KPiA+ID4gbWVtb3J5X2lzX25vbnplcm8/Cj4gPiA+IFBlcmhhcHMgaXQncyBiZXR0ZXIgdG8g
-cHJvZHVjZSBhbiBlcnJvciBhbmQgYmFpbCBvdXQgaW1tZWRpYXRlbHkgaWYgc2l6ZTwwPwo+ID4K
-PiA+IEkgYWdyZWUgd2l0aCB3aGF0IHlvdSBzYWlkLiB3aGVuIHNpemU8MCwgaXQgaXMgaW5kZWVk
-IGFuIHVucmVhc29uYWJsZQo+ID4gYmVoYXZpb3IsIGl0IHNob3VsZCBiZSBibG9ja2VkIGZyb20g
-Y29udGludWluZyB0byBkby4KPiA+Cj4gPgo+ID4gPiBBbHNvLCB3aGF0J3MgdGhlIGZhaWx1cmUg
-bW9kZSBvZiB0aGUgdGVzdHM/IERpZG4ndCB0aGV5IGJhZGx5IGNvcnJ1cHQKPiA+ID4gbWVtb3J5
-PyBXZSB0cmllZCB0byBrZWVwIHRlc3RzIHN1Y2ggdGhhdCB0aGV5IHByb2R1Y2UgdGhlIEtBU0FO
-Cj4gPiA+IHJlcG9ydHMsIGJ1dCBkb24ndCBiYWRseSBjb3JydXB0IG1lbW9yeSBiL2MvIHdlIG5l
-ZWQgdG8gcnVuIGFsbCBvZgo+ID4gPiB0aGVtLgo+ID4KPiA+IE1heWJlIHdlIHNob3VsZCBmaXJz
-dCBwcm9kdWNlIEtBU0FOIHJlcG9ydHMgYW5kIHRoZW4gZ28gdG8gZXhlY3V0ZQo+ID4gbWVtbW92
-ZSgpIG9yIGRvIG5vdGhpbmc/IEl0IGxvb2tzIGxpa2UgaXTigJlzIGRvaW5nIHRoZSBmb2xsb3dp
-bmcub3I/Cj4gPgo+ID4gdm9pZCAqbWVtbW92ZSh2b2lkICpkZXN0LCBjb25zdCB2b2lkICpzcmMs
-IHNpemVfdCBsZW4pCj4gPiAgewo+ID4gKyAgICAgICBpZiAobG9uZyhsZW4pIDw9IDApCj4gCj4g
-L1wvXC9cL1wvXC9cCj4gCj4gVGhpcyBjaGVjayBuZWVkcyB0byBiZSBpbnNpZGUgb2YgY2hlY2tf
-bWVtb3J5X3JlZ2lvbiwgb3RoZXJ3aXNlIHdlCj4gd2lsbCBoYXZlIHNpbWlsYXIgcHJvYmxlbXMg
-aW4gYWxsIG90aGVyIHBsYWNlcyB0aGF0IHVzZQo+IGNoZWNrX21lbW9yeV9yZWdpb24uClRoYW5r
-cyBmb3IgeW91ciByZW1pbmRlci4KCiBib29sIGNoZWNrX21lbW9yeV9yZWdpb24odW5zaWduZWQg
-bG9uZyBhZGRyLCBzaXplX3Qgc2l6ZSwgYm9vbCB3cml0ZSwKICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICB1bnNpZ25lZCBsb25nIHJldF9pcCkKIHsKKyAgICAgICBpZiAobG9uZyhzaXpl
-KSA8IDApIHsKKyAgICAgICAgICAgICAgIGthc2FuX3JlcG9ydF9pbnZhbGlkX3NpemUoc3JjLCBk
-ZXN0LCBsZW4sIF9SRVRfSVBfKTsKKyAgICAgICAgICAgICAgIHJldHVybiBmYWxzZTsKKyAgICAg
-ICB9CisKICAgICAgICByZXR1cm4gY2hlY2tfbWVtb3J5X3JlZ2lvbl9pbmxpbmUoYWRkciwgc2l6
-ZSwgd3JpdGUsIHJldF9pcCk7CiB9Cgo+IEJ1dCBjaGVja19tZW1vcnlfcmVnaW9uIGFscmVhZHkg
-cmV0dXJucyBhIGJvb2wsIHNvIHdlIGNvdWxkIGNoZWNrIHRoYXQKPiBib29sIGFuZCByZXR1cm4g
-ZWFybHkuCgpXaGVuIHNpemU8MCwgd2Ugc2hvdWxkIG9ubHkgc2hvdyBvbmUgS0FTQU4gcmVwb3J0
-LCBhbmQgc2hvdWxkIHdlIG9ubHkKbGltaXQgdG8gcmV0dXJuIHdoZW4gc2l6ZTwwIGlzIHRydWU/
-IElmIHlzZSwgdGhlbiBfX21lbW1vdmUoKSB3aWxsIGRvCm5vdGhpbmcuCgoKIHZvaWQgKm1lbW1v
-dmUodm9pZCAqZGVzdCwgY29uc3Qgdm9pZCAqc3JjLCBzaXplX3QgbGVuKQogewotICAgICAgIGNo
-ZWNrX21lbW9yeV9yZWdpb24oKHVuc2lnbmVkIGxvbmcpc3JjLCBsZW4sIGZhbHNlLCBfUkVUX0lQ
-Xyk7CisgICAgICAgaWYoIWNoZWNrX21lbW9yeV9yZWdpb24oKHVuc2lnbmVkIGxvbmcpc3JjLCBs
-ZW4sIGZhbHNlLApfUkVUX0lQXykKKyAgICAgICAgICAgICAgICYmIGxvbmcoc2l6ZSkgPCAwKQor
-ICAgICAgICAgICAgICAgcmV0dXJuOworCiAgICAgICAgY2hlY2tfbWVtb3J5X3JlZ2lvbigodW5z
-aWduZWQgbG9uZylkZXN0LCBsZW4sIHRydWUsIF9SRVRfSVBfKTsKCiAgICAgICAgcmV0dXJuIF9f
-bWVtbW92ZShkZXN0LCBzcmMsIGxlbik7Cgo+IAo+IAo+ID4gKyAgICAgICAgICAgICAgIGthc2Fu
-X3JlcG9ydF9pbnZhbGlkX3NpemUoc3JjLCBkZXN0LCBsZW4sIF9SRVRfSVBfKTsKPiA+ICsKPiA+
-ICAgICAgICAgY2hlY2tfbWVtb3J5X3JlZ2lvbigodW5zaWduZWQgbG9uZylzcmMsIGxlbiwgZmFs
-c2UsIF9SRVRfSVBfKTsKPiA+ICAgICAgICAgY2hlY2tfbWVtb3J5X3JlZ2lvbigodW5zaWduZWQg
-bG9uZylkZXN0LCBsZW4sIHRydWUsIF9SRVRfSVBfKTsKPiA+Cj4gPgo+ID4KCgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBt
-YWlsaW5nIGxpc3QKbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
-aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
+The commit 4d689b619445 ("iommu/io-pgtable-arm-v7s: Convert to IOMMU API
+TLB sync") help move the tlb_sync of unmap from v7s into the iommu
+framework. It helps add a new function "mtk_iommu_iotlb_sync", But it
+lacked the dom->pgtlock, then it will cause the variable
+"tlb_flush_active" may be changed unexpectedly, we could see this warning
+log randomly:
+
+mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to
+full flush
+
+To fix this issue, we can add dom->pgtlock in the "mtk_iommu_iotlb_sync".
+And when checking this issue, we find that __arm_v7s_unmap call
+io_pgtable_tlb_add_flush consecutively when it is supersection/largepage,
+this also is potential unsafe for us. There is no tlb flush queue in the
+MediaTek M4U HW. The HW always expect the tlb_flush/tlb_sync one by one.
+If v7s don't always gurarantee the sequence, Thus, In this patch I move
+the tlb_sync into tlb_flush(also rename the function deleting "_nosync").
+and we don't care if it is leaf, rearrange the callback functions. Also,
+the tlb flush/sync was already finished in v7s, then iotlb_sync and
+iotlb_sync_all is unnecessary.
+
+Besides, there are two minor changes:
+a) Use writel for the register F_MMU_INV_RANGE which is for triggering the
+HW work. We expect all the setting(iova_start/iova_end...) have already
+been finished before F_MMU_INV_RANGE.
+b) Reduce the tlb timeout value from 100000us to 1000us. the original value
+is so long that affect the multimedia performance.
+
+Fixes: 4d689b619445 ("iommu/io-pgtable-arm-v7s: Convert to IOMMU API TLB sync")
+Signed-off-by: Chao Hao <chao.hao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+This patch looks break the logic for tlb_flush and tlb_sync. I'm not
+sure if it
+is reasonable. If someone has concern, I could change:
+a) Add dom->pgtlock in the mtk_iommu_iotlb_sync
+b) Add a io_pgtable_tlb_sync in [1].
+
+[1]
+https://elixir.bootlin.com/linux/v5.3-rc1/source/drivers/iommu/io-pgtable-arm-v7s.c#L655
+
+This patch rebase on Joerg's mediatek-smmu-merge branch which has mt8183
+and Will's "Rework IOMMU API to allow for batching of invalidation".
+---
+ drivers/iommu/mtk_iommu.c | 74 ++++++++++++-----------------------------------
+ drivers/iommu/mtk_iommu.h |  1 -
+ 2 files changed, 19 insertions(+), 56 deletions(-)
+
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index 6066272..e13cc56 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -173,11 +173,12 @@ static void mtk_iommu_tlb_flush_all(void *cookie)
+ 	}
+ }
+ 
+-static void mtk_iommu_tlb_add_flush_nosync(unsigned long iova, size_t size,
+-					   size_t granule, bool leaf,
+-					   void *cookie)
++static void mtk_iommu_tlb_add_flush(unsigned long iova, size_t size,
++				    size_t granule, void *cookie)
+ {
+ 	struct mtk_iommu_data *data = cookie;
++	int ret;
++	u32 tmp;
+ 
+ 	for_each_m4u(data) {
+ 		writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
+@@ -186,25 +187,15 @@ static void mtk_iommu_tlb_add_flush_nosync(unsigned long iova, size_t size,
+ 		writel_relaxed(iova, data->base + REG_MMU_INVLD_START_A);
+ 		writel_relaxed(iova + size - 1,
+ 			       data->base + REG_MMU_INVLD_END_A);
+-		writel_relaxed(F_MMU_INV_RANGE,
+-			       data->base + REG_MMU_INVALIDATE);
+-		data->tlb_flush_active = true;
+-	}
+-}
+-
+-static void mtk_iommu_tlb_sync(void *cookie)
+-{
+-	struct mtk_iommu_data *data = cookie;
+-	int ret;
+-	u32 tmp;
+-
+-	for_each_m4u(data) {
+-		/* Avoid timing out if there's nothing to wait for */
+-		if (!data->tlb_flush_active)
+-			return;
++		writel(F_MMU_INV_RANGE, data->base + REG_MMU_INVALIDATE);
+ 
++		/*
++		 * There is no tlb flush queue in the HW, the HW always expect
++		 * tlb_flush and tlb_sync one by one. Here tlb_sync always
++		 * follows tlb_flush to avoid break the sequence.
++		 */
+ 		ret = readl_poll_timeout_atomic(data->base + REG_MMU_CPE_DONE,
+-						tmp, tmp != 0, 10, 100000);
++						tmp, tmp != 0, 10, 1000);
+ 		if (ret) {
+ 			dev_warn(data->dev,
+ 				 "Partial TLB flush timed out, falling back to full flush\n");
+@@ -212,36 +203,21 @@ static void mtk_iommu_tlb_sync(void *cookie)
+ 		}
+ 		/* Clear the CPE status */
+ 		writel_relaxed(0, data->base + REG_MMU_CPE_DONE);
+-		data->tlb_flush_active = false;
+ 	}
+ }
+ 
+-static void mtk_iommu_tlb_flush_walk(unsigned long iova, size_t size,
+-				     size_t granule, void *cookie)
++static void mtk_iommu_tlb_flush_page(struct iommu_iotlb_gather *gather,
++				     unsigned long iova, size_t granule,
++				     void *cookie)
+ {
+-	mtk_iommu_tlb_add_flush_nosync(iova, size, granule, false, cookie);
+-	mtk_iommu_tlb_sync(cookie);
+-}
+-
+-static void mtk_iommu_tlb_flush_leaf(unsigned long iova, size_t size,
+-				     size_t granule, void *cookie)
+-{
+-	mtk_iommu_tlb_add_flush_nosync(iova, size, granule, true, cookie);
+-	mtk_iommu_tlb_sync(cookie);
+-}
+-
+-static void mtk_iommu_tlb_flush_page_nosync(struct iommu_iotlb_gather *gather,
+-					    unsigned long iova, size_t granule,
+-					    void *cookie)
+-{
+-	mtk_iommu_tlb_add_flush_nosync(iova, granule, granule, true, cookie);
++	mtk_iommu_tlb_add_flush(iova, granule, granule, cookie);
+ }
+ 
+ static const struct iommu_flush_ops mtk_iommu_flush_ops = {
+ 	.tlb_flush_all = mtk_iommu_tlb_flush_all,
+-	.tlb_flush_walk = mtk_iommu_tlb_flush_walk,
+-	.tlb_flush_leaf = mtk_iommu_tlb_flush_leaf,
+-	.tlb_add_page = mtk_iommu_tlb_flush_page_nosync,
++	.tlb_flush_walk = mtk_iommu_tlb_add_flush,
++	.tlb_flush_leaf = mtk_iommu_tlb_add_flush,
++	.tlb_add_page = mtk_iommu_tlb_flush_page,
+ };
+ 
+ static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
+@@ -445,17 +421,6 @@ static size_t mtk_iommu_unmap(struct iommu_domain *domain,
+ 	return unmapsz;
+ }
+ 
+-static void mtk_iommu_flush_iotlb_all(struct iommu_domain *domain)
+-{
+-	mtk_iommu_tlb_sync(mtk_iommu_get_m4u_data());
+-}
+-
+-static void mtk_iommu_iotlb_sync(struct iommu_domain *domain,
+-				 struct iommu_iotlb_gather *gather)
+-{
+-	mtk_iommu_tlb_sync(mtk_iommu_get_m4u_data());
+-}
+-
+ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
+ 					  dma_addr_t iova)
+ {
+@@ -574,8 +539,7 @@ static int mtk_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
+ 	.detach_dev	= mtk_iommu_detach_device,
+ 	.map		= mtk_iommu_map,
+ 	.unmap		= mtk_iommu_unmap,
+-	.flush_iotlb_all = mtk_iommu_flush_iotlb_all,
+-	.iotlb_sync	= mtk_iommu_iotlb_sync,
++	/* No iotlb_sync here since the tlb_sync always follows the tlb_flush */
+ 	.iova_to_phys	= mtk_iommu_iova_to_phys,
+ 	.add_device	= mtk_iommu_add_device,
+ 	.remove_device	= mtk_iommu_remove_device,
+diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+index fc0f16e..24712f5 100644
+--- a/drivers/iommu/mtk_iommu.h
++++ b/drivers/iommu/mtk_iommu.h
+@@ -57,7 +57,6 @@ struct mtk_iommu_data {
+ 	struct mtk_iommu_domain		*m4u_dom;
+ 	struct iommu_group		*m4u_group;
+ 	bool                            enable_4GB;
+-	bool				tlb_flush_active;
+ 
+ 	struct iommu_device		iommu;
+ 	const struct mtk_iommu_plat_data *plat_data;
+-- 
+1.9.1
