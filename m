@@ -1,39 +1,47 @@
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-Subject: Re: [PATCH v4 0/3] scsi: core: allow auto suspend override by
- low-level driver
-Date: Mon, 30 Sep 2019 23:01:45 -0400
-Message-ID: <yq1o8z1xj6u.fsf@oracle.com>
-References: <1568649411-5127-1-git-send-email-stanley.chu@mediatek.com>
+From: Miles Chen <miles.chen@mediatek.com>
+Subject: [PATCH] docs: printk-formats: add ptrdiff_t type to printk-formats
+Date: Tue, 1 Oct 2019 18:04:49 +0800
+Message-ID: <20191001100449.19481-1-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1568649411-5127-1-git-send-email-stanley.chu@mediatek.com>
- (Stanley Chu's message of "Mon, 16 Sep 2019 23:56:48 +0800")
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Stanley Chu <stanley.chu@mediatek.com>
-Cc: sthumma@codeaurora.org, linux-scsi@vger.kernel.org, martin.petersen@oracle.com, marc.w.gonzalez@free.fr, vivek.gautam@codeaurora.org, kernel-team@android.com, jejb@linux.ibm.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com, subhashj@codeaurora.org, evgreen@chromium.org, avri.altman@wdc.com, linux-mediatek@lists.infradead.org, peter.wang@mediatek.com, alim.akhtar@samsung.com, andy.teng@mediatek.com, matthias.bgg@gmail.com, beanhuo@micron.com, pedrom.sousa@synopsys.com, linux-arm-kernel@lists.infradead.org, bvanassche@acm.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jonathan Corbet <corbet@lwn.net>
+Cc: linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Miles Chen <miles.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+When print the difference between two pointers, we should use
+the ptrdiff_t modifier %t.
 
-Stanley,
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+---
+ Documentation/core-api/printk-formats.rst | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-> Until now the scsi mid-layer forbids runtime suspend till userspace
-> enables it. This is mainly to quarantine some disks with broken
-> runtime power management or have high latencies executing suspend
-> resume callbacks. If the userspace doesn't enable the runtime suspend
-> the underlying hardware will be always on even when it is not doing
-> any useful work and thus wasting power.
-
-Applied to 5.5/scsi-queue, thank you!
-
+diff --git a/Documentation/core-api/printk-formats.rst b/Documentation/core-api/printk-formats.rst
+index ecbebf4ca8e7..8a0f49cd158b 100644
+--- a/Documentation/core-api/printk-formats.rst
++++ b/Documentation/core-api/printk-formats.rst
+@@ -135,6 +135,20 @@ equivalent to %lx (or %lu). %px is preferred because it is more uniquely
+ grep'able. If in the future we need to modify the way the kernel handles
+ printing pointers we will be better equipped to find the call sites.
+ 
++Pointer Differences
++-------------------
++
++::
++
++	%td	2560
++	%tx	a00
++
++For printing the pointer differences, use the %t modifier for ptrdiff_t.
++
++Example::
++
++	printk("test: difference between pointers: %td\n", ptr2 - ptr1);
++
+ Struct Resources
+ ----------------
+ 
 -- 
-Martin K. Petersen	Oracle Linux Engineering
+2.18.0
