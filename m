@@ -1,67 +1,119 @@
-From: <Claudiu.Beznea@microchip.com>
-Subject: Re: [PATCH 0/7] add support for clocksource/clockevent DT selection
-Date: Wed, 2 Oct 2019 13:35:47 +0000
-Message-ID: <620a19d5-73b8-709d-9eec-49274ac23e51@microchip.com>
-References: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
- <c3a68a08-d134-cd28-c8af-f757628e07f1@linaro.org>
- <72edc5fd-df05-cba5-5aa7-39da1709415b@microchip.com>
+From: Neal Liu <neal.liu@mediatek.com>
+Subject: Re: [PATCH v4 2/3] dt-bindings: rng: add bindings for MediaTek
+ ARMv8 SoCs
+Date: Wed, 2 Oct 2019 21:47:50 +0800
+Message-ID: <1570024070.4002.1.camel@mtkswgap22>
+References: <1561361052-13072-1-git-send-email-neal.liu@mediatek.com>
+         <1561361052-13072-3-git-send-email-neal.liu@mediatek.com>
+         <20190722171320.GA9806@bogus> <1563848465.31451.4.camel@mtkswgap22>
+         <CAL_Jsq+SRhd=-5O2G_CMfJX9Z188kvA05MQOXaU1J8iExwUixQ@mail.gmail.com>
+         <1568771054.21700.7.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org>
-In-Reply-To: <72edc5fd-df05-cba5-5aa7-39da1709415b@microchip.com>
-Content-Language: en-US
-Content-ID: <DE320C98F40CBC4891F6ABBA6ED802E1@namprd11.prod.outlook.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-snps-arc>,
- <mailto:linux-snps-arc-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-snps-arc/>
-List-Post: <mailto:linux-snps-arc@lists.infradead.org>
-List-Help: <mailto:linux-snps-arc-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-snps-arc>,
- <mailto:linux-snps-arc-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-snps-arc" <linux-snps-arc-bounces@lists.infradead.org>
-Errors-To: linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org
-To: daniel.lezcano@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, nsekhar@ti.com, bgolaszewski@baylibre.com, monstr@monstr.eu, john@phrozen.org, ralf@linux-mips.org, paul.burton@mips.com, jhogan@kernel.org, lftan@altera.com, tglx@linutronix.de, vgupta@synopsys.com, marc.zyngier@arm.com, patrice.chotard@st.com, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, eric@anholt.net, wahrenst@gmx.net, f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, bcm-kernel-feedback-list@broadcom.com, linus.walleij@linaro.org, shc_work@mail.ru, kgene@kernel.org, krzk@kernel.org, ysato@users.sourceforge.jp, liviu.dudau@arm.com, sudeep.holla@arm.com, lorenzo.pieralisi@arm.com, shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.co
-Cc: uclinux-h8-devel@lists.sourceforge.jp, devicetree@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org, openbmc@lists.ozlabs.org, linux-oxnas@groups.io, linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org, linux-unisoc@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-tegra@vger.kernel.org, nios2-dev@lists.rocketboards.org, linux-riscv@lists.infradead.org, linux-snps-arc@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1568771054.21700.7.camel@mtkswgap22>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Herbert Xu <herbert@gondor.apana.org.au>, wsd_upstream <wsd_upstream@mediatek.com>, Sean Wang <sean.wang@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Crystal Guo =?UTF-8?Q?=28=E9=83=AD=E6=99=B6=29?= <Crystal.Guo@mediatek.com>, "linux-crypto@vger.kernel.org" <linux-crypto@vger.kernel.org>, Matt Mackall <mpm@selenic.com>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Neal Liu <neal.liu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Daniel,
+Dear Rob,
 
-Taking into account that Rob doesn't agree with the solution proposed in
-this series do you think there is a chance to merge this driver as is?
+Just a gentle ping.
 
-If you have other suggestion I am open to try it.
+Neal
 
-Thank you,
-Claudiu Beznea
-
-On 26.09.2019 11:42, Claudiu Beznea wrote:
+On Wed, 2019-09-18 at 09:44 +0800, Neal Liu wrote:
+> On Tue, 2019-07-23 at 22:35 +0800, Rob Herring wrote:
+> > On Mon, Jul 22, 2019 at 8:21 PM Neal Liu <neal.liu@mediatek.com> wrote:
+> > >
+> > 
+> > Please don't top post to lists.
+> > 
+> > > Dear Rob,
+> > >         You can check my driver for detail:
+> > >         http://patchwork.kernel.org/patch/11012475/ or patchset 3/3
+> > 
+> > I could, or you could just answer my question.
+> > 
+> > >
+> > >         This driver is registered as hardware random number generator, and
+> > > combines with rng-core.
+> > >         We want to add one rng hw based on the dts. Is this proper or do you
+> > > have other suggestion to meet this requirement?
+> > 
+> > It depends. There doesn't appear to be any resource configuration, so
+> > why does it need to be in DT. DT is not the only way instantiate
+> > drivers.
+> > 
+> > Rob
+> > 
 > 
+> We would like to consult more about this patch.
+> We cannot figure out what method should be used instead of DT.
+> The interface to access firmware is "smc" and firmware function only
+> exists on certain platforms.
+> Some DT has similar way, like:
+> http://github.com/torvalds/linux/blob/master/arch/arm64/boot/dts/hisilicon/hi6220-hikey.dts#L470
 > 
-> On 25.09.2019 20:19, Daniel Lezcano wrote:
->> External E-Mail
->>
->>
->> Hi Claudiu,
->>
->> On 10/09/2019 15:47, Claudiu Beznea wrote:
->>> Hi,
->>>
->>> This series adds support to permit the selection of clocksource/clockevent
->>> via DT.
->>
->> Thanks for the proposal and taking care of making some progress on this.
->>
->> I just wanted to let you know I've been traveling but the series is in
->> my pipe and I did not forget it. I'll comment it next week.
+> 	firmware {
+> 		optee {
+> 			compatible = "linaro,optee-tz";
+> 			method = "smc";
+> 		};
+> 	};
 > 
-> Hi Daniel,
+> Is there any way to instantiate driver on certain platforms without DT?
+> Could you give us some examples?
+> Thanks
 > 
-> No problem. Thank you for letting me know.
+> > >
+> > >         Thanks
+> > >
+> > >
+> > > On Tue, 2019-07-23 at 01:13 +0800, Rob Herring wrote:
+> > > > On Mon, Jun 24, 2019 at 03:24:11PM +0800, Neal Liu wrote:
+> > > > > Document the binding used by the MediaTek ARMv8 SoCs random
+> > > > > number generator with TrustZone enabled.
+> > > > >
+> > > > > Signed-off-by: Neal Liu <neal.liu@mediatek.com>
+> > > > > ---
+> > > > >  .../devicetree/bindings/rng/mtk-sec-rng.txt        |   10 ++++++++++
+> > > > >  1 file changed, 10 insertions(+)
+> > > > >  create mode 100644 Documentation/devicetree/bindings/rng/mtk-sec-rng.txt
+> > > > >
+> > > > > diff --git a/Documentation/devicetree/bindings/rng/mtk-sec-rng.txt b/Documentation/devicetree/bindings/rng/mtk-sec-rng.txt
+> > > > > new file mode 100644
+> > > > > index 0000000..c04ce15
+> > > > > --- /dev/null
+> > > > > +++ b/Documentation/devicetree/bindings/rng/mtk-sec-rng.txt
+> > > > > @@ -0,0 +1,10 @@
+> > > > > +MediaTek random number generator with TrustZone enabled
+> > > > > +
+> > > > > +Required properties:
+> > > > > +- compatible : Should be "mediatek,mtk-sec-rng"
+> > > >
+> > > > What's the interface to access this?
+> > > >
+> > > > A node with a 'compatible' and nothing else is a sign of something that
+> > > > a parent device should instantiate and doesn't need to be in DT. IOW,
+> > > > what do complete bindings for firmware functions look like?
+> > > >
+> > > > > +
+> > > > > +Example:
+> > > > > +
+> > > > > +hwrng: hwrng {
+> > > > > +   compatible = "mediatek,mtk-sec-rng";
+> > > > > +}
+> > > > > --
+> > > > > 1.7.9.5
+> > > > >
+> > > >
+> > > > _______________________________________________
+> > > > Linux-mediatek mailing list
+> > > > Linux-mediatek@lists.infradead.org
+> > > > http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> > >
+> > >
 > 
-> Claudiu
-> 
->>
->>  -- Daniel
->>
->>
