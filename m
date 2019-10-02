@@ -1,119 +1,256 @@
-From: Neal Liu <neal.liu@mediatek.com>
-Subject: Re: [PATCH v4 2/3] dt-bindings: rng: add bindings for MediaTek
- ARMv8 SoCs
-Date: Wed, 2 Oct 2019 21:47:50 +0800
-Message-ID: <1570024070.4002.1.camel@mtkswgap22>
-References: <1561361052-13072-1-git-send-email-neal.liu@mediatek.com>
-         <1561361052-13072-3-git-send-email-neal.liu@mediatek.com>
-         <20190722171320.GA9806@bogus> <1563848465.31451.4.camel@mtkswgap22>
-         <CAL_Jsq+SRhd=-5O2G_CMfJX9Z188kvA05MQOXaU1J8iExwUixQ@mail.gmail.com>
-         <1568771054.21700.7.camel@mtkswgap22>
+From: Dmitry Vyukov <dvyukov@google.com>
+Subject: Re: [PATCH] kasan: fix the missing underflow in memmove and memcpy
+ with CONFIG_KASAN_GENERIC=y
+Date: Wed, 2 Oct 2019 15:57:16 +0200
+Message-ID: <CACT4Y+bbZhvz9ZpHtgL8rCCsV=ybU5jA6zFnJBL7gY2cNXDLyQ@mail.gmail.com>
+References: <20190927034338.15813-1-walter-zh.wu@mediatek.com>
+ <CACT4Y+Zxz+R=qQxSMoipXoLjRqyApD3O0eYpK0nyrfGHE4NNPw@mail.gmail.com>
+ <1569594142.9045.24.camel@mtksdccf07> <CACT4Y+YuAxhKtL7ho7jpVAPkjG-JcGyczMXmw8qae2iaZjTh_w@mail.gmail.com>
+ <1569818173.17361.19.camel@mtksdccf07> <1570018513.19702.36.camel@mtksdccf07>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1568771054.21700.7.camel@mtkswgap22>
+In-Reply-To: <1570018513.19702.36.camel@mtksdccf07>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Herbert Xu <herbert@gondor.apana.org.au>, wsd_upstream <wsd_upstream@mediatek.com>, Sean Wang <sean.wang@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Crystal Guo =?UTF-8?Q?=28=E9=83=AD=E6=99=B6=29?= <Crystal.Guo@mediatek.com>, "linux-crypto@vger.kernel.org" <linux-crypto@vger.kernel.org>, Matt Mackall <mpm@selenic.com>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Neal Liu <neal.liu@mediatek.com>
+To: Walter Wu <walter-zh.wu@mediatek.com>
+Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>, Linux-MM <linux-mm@kvack.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream <wsd_upstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Dear Rob,
-
-Just a gentle ping.
-
-Neal
-
-On Wed, 2019-09-18 at 09:44 +0800, Neal Liu wrote:
-> On Tue, 2019-07-23 at 22:35 +0800, Rob Herring wrote:
-> > On Mon, Jul 22, 2019 at 8:21 PM Neal Liu <neal.liu@mediatek.com> wrote:
-> > >
-> > 
-> > Please don't top post to lists.
-> > 
-> > > Dear Rob,
-> > >         You can check my driver for detail:
-> > >         http://patchwork.kernel.org/patch/11012475/ or patchset 3/3
-> > 
-> > I could, or you could just answer my question.
-> > 
-> > >
-> > >         This driver is registered as hardware random number generator, and
-> > > combines with rng-core.
-> > >         We want to add one rng hw based on the dts. Is this proper or do you
-> > > have other suggestion to meet this requirement?
-> > 
-> > It depends. There doesn't appear to be any resource configuration, so
-> > why does it need to be in DT. DT is not the only way instantiate
-> > drivers.
-> > 
-> > Rob
-> > 
-> 
-> We would like to consult more about this patch.
-> We cannot figure out what method should be used instead of DT.
-> The interface to access firmware is "smc" and firmware function only
-> exists on certain platforms.
-> Some DT has similar way, like:
-> http://github.com/torvalds/linux/blob/master/arch/arm64/boot/dts/hisilicon/hi6220-hikey.dts#L470
-> 
-> 	firmware {
-> 		optee {
-> 			compatible = "linaro,optee-tz";
-> 			method = "smc";
-> 		};
-> 	};
-> 
-> Is there any way to instantiate driver on certain platforms without DT?
-> Could you give us some examples?
-> Thanks
-> 
-> > >
-> > >         Thanks
-> > >
-> > >
-> > > On Tue, 2019-07-23 at 01:13 +0800, Rob Herring wrote:
-> > > > On Mon, Jun 24, 2019 at 03:24:11PM +0800, Neal Liu wrote:
-> > > > > Document the binding used by the MediaTek ARMv8 SoCs random
-> > > > > number generator with TrustZone enabled.
+On Wed, Oct 2, 2019 at 2:15 PM Walter Wu <walter-zh.wu@mediatek.com> wrote:
+>
+> On Mon, 2019-09-30 at 12:36 +0800, Walter Wu wrote:
+> > On Fri, 2019-09-27 at 21:41 +0200, Dmitry Vyukov wrote:
+> > > On Fri, Sep 27, 2019 at 4:22 PM Walter Wu <walter-zh.wu@mediatek.com>=
+ wrote:
+> > > >
+> > > > On Fri, 2019-09-27 at 15:07 +0200, Dmitry Vyukov wrote:
+> > > > > On Fri, Sep 27, 2019 at 5:43 AM Walter Wu <walter-zh.wu@mediatek.=
+com> wrote:
+> > > > > >
+> > > > > > memmove() and memcpy() have missing underflow issues.
+> > > > > > When -7 <=3D size < 0, then KASAN will miss to catch the underf=
+low issue.
+> > > > > > It looks like shadow start address and shadow end address is th=
+e same,
+> > > > > > so it does not actually check anything.
+> > > > > >
+> > > > > > The following test is indeed not caught by KASAN:
+> > > > > >
+> > > > > >         char *p =3D kmalloc(64, GFP_KERNEL);
+> > > > > >         memset((char *)p, 0, 64);
+> > > > > >         memmove((char *)p, (char *)p + 4, -2);
+> > > > > >         kfree((char*)p);
+> > > > > >
+> > > > > > It should be checked here:
+> > > > > >
+> > > > > > void *memmove(void *dest, const void *src, size_t len)
+> > > > > > {
+> > > > > >         check_memory_region((unsigned long)src, len, false, _RE=
+T_IP_);
+> > > > > >         check_memory_region((unsigned long)dest, len, true, _RE=
+T_IP_);
+> > > > > >
+> > > > > >         return __memmove(dest, src, len);
+> > > > > > }
+> > > > > >
+> > > > > > We fix the shadow end address which is calculated, then generic=
+ KASAN
+> > > > > > get the right shadow end address and detect this underflow issu=
+e.
+> > > > > >
+> > > > > > [1] https://bugzilla.kernel.org/show_bug.cgi?id=3D199341
+> > > > > >
+> > > > > > Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+> > > > > > Reported-by: Dmitry Vyukov <dvyukov@google.com>
+> > > > > > ---
+> > > > > >  lib/test_kasan.c   | 36 ++++++++++++++++++++++++++++++++++++
+> > > > > >  mm/kasan/generic.c |  8 ++++++--
+> > > > > >  2 files changed, 42 insertions(+), 2 deletions(-)
+> > > > > >
+> > > > > > diff --git a/lib/test_kasan.c b/lib/test_kasan.c
+> > > > > > index b63b367a94e8..8bd014852556 100644
+> > > > > > --- a/lib/test_kasan.c
+> > > > > > +++ b/lib/test_kasan.c
+> > > > > > @@ -280,6 +280,40 @@ static noinline void __init kmalloc_oob_in=
+_memset(void)
+> > > > > >         kfree(ptr);
+> > > > > >  }
+> > > > > >
+> > > > > > +static noinline void __init kmalloc_oob_in_memmove_underflow(v=
+oid)
+> > > > > > +{
+> > > > > > +       char *ptr;
+> > > > > > +       size_t size =3D 64;
+> > > > > > +
+> > > > > > +       pr_info("underflow out-of-bounds in memmove\n");
+> > > > > > +       ptr =3D kmalloc(size, GFP_KERNEL);
+> > > > > > +       if (!ptr) {
+> > > > > > +               pr_err("Allocation failed\n");
+> > > > > > +               return;
+> > > > > > +       }
+> > > > > > +
+> > > > > > +       memset((char *)ptr, 0, 64);
+> > > > > > +       memmove((char *)ptr, (char *)ptr + 4, -2);
+> > > > > > +       kfree(ptr);
+> > > > > > +}
+> > > > > > +
+> > > > > > +static noinline void __init kmalloc_oob_in_memmove_overflow(vo=
+id)
+> > > > > > +{
+> > > > > > +       char *ptr;
+> > > > > > +       size_t size =3D 64;
+> > > > > > +
+> > > > > > +       pr_info("overflow out-of-bounds in memmove\n");
+> > > > > > +       ptr =3D kmalloc(size, GFP_KERNEL);
+> > > > > > +       if (!ptr) {
+> > > > > > +               pr_err("Allocation failed\n");
+> > > > > > +               return;
+> > > > > > +       }
+> > > > > > +
+> > > > > > +       memset((char *)ptr, 0, 64);
+> > > > > > +       memmove((char *)ptr + size, (char *)ptr, 2);
+> > > > > > +       kfree(ptr);
+> > > > > > +}
+> > > > > > +
+> > > > > >  static noinline void __init kmalloc_uaf(void)
+> > > > > >  {
+> > > > > >         char *ptr;
+> > > > > > @@ -734,6 +768,8 @@ static int __init kmalloc_tests_init(void)
+> > > > > >         kmalloc_oob_memset_4();
+> > > > > >         kmalloc_oob_memset_8();
+> > > > > >         kmalloc_oob_memset_16();
+> > > > > > +       kmalloc_oob_in_memmove_underflow();
+> > > > > > +       kmalloc_oob_in_memmove_overflow();
+> > > > > >         kmalloc_uaf();
+> > > > > >         kmalloc_uaf_memset();
+> > > > > >         kmalloc_uaf2();
+> > > > > > diff --git a/mm/kasan/generic.c b/mm/kasan/generic.c
+> > > > > > index 616f9dd82d12..34ca23d59e67 100644
+> > > > > > --- a/mm/kasan/generic.c
+> > > > > > +++ b/mm/kasan/generic.c
+> > > > > > @@ -131,9 +131,13 @@ static __always_inline bool memory_is_pois=
+oned_n(unsigned long addr,
+> > > > > >                                                 size_t size)
+> > > > > >  {
+> > > > > >         unsigned long ret;
+> > > > > > +       void *shadow_start =3D kasan_mem_to_shadow((void *)addr=
+);
+> > > > > > +       void *shadow_end =3D kasan_mem_to_shadow((void *)addr +=
+ size - 1) + 1;
+> > > > > >
+> > > > > > -       ret =3D memory_is_nonzero(kasan_mem_to_shadow((void *)a=
+ddr),
+> > > > > > -                       kasan_mem_to_shadow((void *)addr + size=
+ - 1) + 1);
+> > > > > > +       if ((long)size < 0)
+> > > > > > +               shadow_end =3D kasan_mem_to_shadow((void *)addr=
+ + size);
 > > > > >
-> > > > > Signed-off-by: Neal Liu <neal.liu@mediatek.com>
-> > > > > ---
-> > > > >  .../devicetree/bindings/rng/mtk-sec-rng.txt        |   10 ++++++++++
-> > > > >  1 file changed, 10 insertions(+)
-> > > > >  create mode 100644 Documentation/devicetree/bindings/rng/mtk-sec-rng.txt
+> > > > > Hi Walter,
 > > > > >
-> > > > > diff --git a/Documentation/devicetree/bindings/rng/mtk-sec-rng.txt b/Documentation/devicetree/bindings/rng/mtk-sec-rng.txt
-> > > > > new file mode 100644
-> > > > > index 0000000..c04ce15
-> > > > > --- /dev/null
-> > > > > +++ b/Documentation/devicetree/bindings/rng/mtk-sec-rng.txt
-> > > > > @@ -0,0 +1,10 @@
-> > > > > +MediaTek random number generator with TrustZone enabled
-> > > > > +
-> > > > > +Required properties:
-> > > > > +- compatible : Should be "mediatek,mtk-sec-rng"
-> > > >
-> > > > What's the interface to access this?
-> > > >
-> > > > A node with a 'compatible' and nothing else is a sign of something that
-> > > > a parent device should instantiate and doesn't need to be in DT. IOW,
-> > > > what do complete bindings for firmware functions look like?
-> > > >
-> > > > > +
-> > > > > +Example:
-> > > > > +
-> > > > > +hwrng: hwrng {
-> > > > > +   compatible = "mediatek,mtk-sec-rng";
-> > > > > +}
-> > > > > --
-> > > > > 1.7.9.5
+> > > > > Thanks for working on this.
 > > > > >
+> > > > > If size<0, does it make sense to continue at all? We will still c=
+heck
+> > > > > 1PB of shadow memory? What happens when we pass such huge range t=
+o
+> > > > > memory_is_nonzero?
+> > > > > Perhaps it's better to produce an error and bail out immediately =
+if size<0?
 > > > >
-> > > > _______________________________________________
-> > > > Linux-mediatek mailing list
-> > > > Linux-mediatek@lists.infradead.org
-> > > > http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> > > > I agree with what you said. when size<0, it is indeed an unreasonab=
+le
+> > > > behavior, it should be blocked from continuing to do.
+> > > >
+> > > >
+> > > > > Also, what's the failure mode of the tests? Didn't they badly cor=
+rupt
+> > > > > memory? We tried to keep tests such that they produce the KASAN
+> > > > > reports, but don't badly corrupt memory b/c/ we need to run all o=
+f
+> > > > > them.
+> > > >
+> > > > Maybe we should first produce KASAN reports and then go to execute
+> > > > memmove() or do nothing? It looks like it=E2=80=99s doing the follo=
+wing.or?
+> > > >
+> > > > void *memmove(void *dest, const void *src, size_t len)
+> > > >  {
+> > > > +       if (long(len) <=3D 0)
 > > >
+> > > /\/\/\/\/\/\
 > > >
-> 
+> > > This check needs to be inside of check_memory_region, otherwise we
+> > > will have similar problems in all other places that use
+> > > check_memory_region.
+> > Thanks for your reminder.
+> >
+> >  bool check_memory_region(unsigned long addr, size_t size, bool write,
+> >                                 unsigned long ret_ip)
+> >  {
+> > +       if (long(size) < 0) {
+> > +               kasan_report_invalid_size(src, dest, len, _RET_IP_);
+> > +               return false;
+> > +       }
+> > +
+> >         return check_memory_region_inline(addr, size, write, ret_ip);
+> >  }
+> >
+> > > But check_memory_region already returns a bool, so we could check tha=
+t
+> > > bool and return early.
+> >
+> > When size<0, we should only show one KASAN report, and should we only
+> > limit to return when size<0 is true? If yse, then __memmove() will do
+> > nothing.
+> >
+> >
+> >  void *memmove(void *dest, const void *src, size_t len)
+> >  {
+> > -       check_memory_region((unsigned long)src, len, false, _RET_IP_);
+> > +       if(!check_memory_region((unsigned long)src, len, false,
+> > _RET_IP_)
+> > +               && long(size) < 0)
+> > +               return;
+> > +
+> >         check_memory_region((unsigned long)dest, len, true, _RET_IP_);
+> >
+> >         return __memmove(dest, src, len);
+> >
+> > >
+> Hi Dmitry,
+>
+> What do you think the following code is better than the above one.
+> In memmmove/memset/memcpy, they need to determine whether size < 0 is
+> true. we directly determine whether size is negative in memmove and
+> return early. it avoid to generate repeated KASAN report. Is it better?
+>
+> void *memmove(void *dest, const void *src, size_t len)
+> {
+> +       if (long(size) < 0) {
+> +               kasan_report_invalid_size(src, dest, len, _RET_IP_);
+> +               return;
+> +       }
+> +
+>         check_memory_region((unsigned long)src, len, false, _RET_IP_);
+>         check_memory_region((unsigned long)dest, len, true, _RET_IP_);
+>
+>
+> check_memory_region() still has to check whether the size is negative.
+> but memmove/memset/memcpy generate invalid size KASAN report will not be
+> there.
+
+
+If check_memory_region() will do the check, why do we need to
+duplicate it inside of memmove and all other range functions?
+
+I would do:
+
+void *memmove(void *dest, const void *src, size_t len)
+{
+        if (check_memory_region((unsigned long)src, len, false, _RET_IP_))
+                return;
+
+This avoids duplicating the check, adds minimal amount of code to
+range functions and avoids adding kasan_report_invalid_size.
