@@ -1,120 +1,231 @@
-From: Jing-Ting Wu <jing-ting.wu@mediatek.com>
-Subject: Re: [PATCH 1/1] sched/rt: avoid contend with CFS task
-Date: Wed, 2 Oct 2019 09:20:06 +0800
-Message-ID: <1569979206.4892.23.camel@mtkswgap22>
-References: <1567048502-6064-1-git-send-email-jing-ting.wu@mediatek.com>
-         <d5100b2d-46c4-5811-8274-8b06710d2594@arm.com>
-         <20190830145501.zadfv2ffuu7j46ft@e107158-lin.cambridge.arm.com>
-         <1567689999.2389.5.camel@mtkswgap22>
-         <CAKfTPtC3txstND=6YkWBJ16i06cQ7xueUpD5j-j-UfuSf0-z-g@mail.gmail.com>
-         <1568892135.4892.10.camel@mtkswgap22>
-         <CAKfTPtCuWrpW_o6r5cmGhLf_84PFHJhBk0pJ3fcbU_YgcBnTkQ@mail.gmail.com>
-         <20190919142315.vmrrpvljpspqpurp@e107158-lin.cambridge.arm.com>
-         <CAKfTPtA9-JLxs+DdLYjBQ6VfVGNxm++QYYi1wy-xS6o==EAPNw@mail.gmail.com>
-         <CAKfTPtAy1JSh725GAVXmg_x3fby1UfYn504tq4n2rQs1-JMy6Q@mail.gmail.com>
-         <20190919151152.m2zmiaspr6s5mcfh@e107158-lin.cambridge.arm.com>
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH] iommu/mediatek: Move the tlb_sync into tlb_flush
+Date: Wed, 2 Oct 2019 14:18:46 +0900
+Message-ID: <CAAFQd5C+FM3n-Ww4C+qDD1QZOGZrqEYw4EvYECfadGcDH0fmew@mail.gmail.com>
+References: <1569822142-14303-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190919151152.m2zmiaspr6s5mcfh@e107158-lin.cambridge.arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Qais Yousef <qais.yousef@arm.com>
-Cc: Vincent Guittot <vincent.guittot@linaro.org>, Valentin Schneider <valentin.schneider@arm.com>, Peter Zijlstra <peterz@infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, wsd_upstream@mediatek.com, linux-kernel <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <1569822142-14303-1-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, anan.sun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, cui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Evan Green <evgreen-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, chao.hao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>,
+	Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, " <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>,
+	Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, " <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2019-09-19 at 16:11 +0100, Qais Yousef wrote:
-> On 09/19/19 16:37, Vincent Guittot wrote:
-> > On Thu, 19 Sep 2019 at 16:32, Vincent Guittot
-> > <vincent.guittot@linaro.org> wrote:
-> > >
-> > > On Thu, 19 Sep 2019 at 16:23, Qais Yousef <qais.yousef@arm.com> wrote:
-> > > >
-> > > > On 09/19/19 14:27, Vincent Guittot wrote:
-> > > > > > > > But for requirement of performance, I think it is better to differentiate between idle CPU and CPU has CFS task.
-> > > > > > > >
-> > > > > > > > For example, we use rt-app to evaluate runnable time on non-patched environment.
-> > > > > > > > There are (NR_CPUS-1) heavy CFS tasks and 1 RT Task. When a CFS task is running, the RT task wakes up and choose the same CPU.
-> > > > > > > > The CFS task will be preempted and keep runnable until it is migrated to another cpu by load balance.
-> > > > > > > > But load balance is not triggered immediately, it will be triggered until timer tick hits with some condition satisfied(ex. rq->next_balance).
-> > > > > > >
-> > > > > > > Yes you will have to wait for the next tick that will trigger an idle
-> > > > > > > load balance because you have an idle cpu and 2 runnable tack (1 RT +
-> > > > > > > 1CFS) on the same CPU. But you should not wait for more than  1 tick
-> > > > > > >
-> > > > > > > The current load_balance doesn't handle correctly the situation of 1
-> > > > > > > CFS and 1 RT task on same CPU while 1 CPU is idle. There is a rework
-> > > > > > > of the load_balance that is under review on the mailing list that
-> > > > > > > fixes this problem and your CFS task should migrate to the idle CPU
-> > > > > > > faster than now
-> > > > > > >
-> > > > > >
-> > > > > > Period load balance should be triggered when current jiffies is behind
-> > > > > > rq->next_balance, but rq->next_balance is not often exactly the same
-> > > > > > with next tick.
-> > > > > > If cpu_busy, interval = sd->balance_interval * sd->busy_factor, and
-> > > > >
-> > > > > But if there is an idle CPU on the system, the next idle load balance
-> > > > > should apply shortly because the busy_factor is not used for this CPU
-> > > > > which is  not busy.
-> > > > > In this case, the next_balance interval is sd_weight which is probably
-> > > > > 4ms at cluster level and 8ms at system level in your case. This means
-> > > > > between 1 and 2 ticks
-> > > >
-> > > > But if the CFS task we're preempting was latency sensitive - this 1 or 2 tick
-> > > > is too late of a recovery.
-> > > >
-> > > > So while it's good we recover, but a preventative approach would be useful too.
-> > > > Just saying :-) I'm still not sure if this is the best longer term approach.
-> > >
-> > > like using a rt task ?
-> > 
-> > I mean, RT task should select a sub optimal CPU because of CFS
-> > If you want to favor CFS compared to RT it's probably because your
-> > task should be RT too
-> 
-> Yes possibly. But I don't think this is always doable. Especially when you're
-> running on generic system not a special purposed one.
-> 
-> And we don't need to favor CFS over RT. But I think they can play nicely
-> together.
-> 
-> For example on Android there are few RT tasks and rarely more than 1 runnable
-> RT task at a time. But if it happened to wakeup on the same CPU that is
-> running the UI thread you could lose a frame. And from what I've seen as well
-> we have 1-3 CFS tasks runnable, weighted more towards 1 task. So we do have
-> plenty of idle CPUs on average.
-> 
-> But as I mentioned earlier I couldn't prove yet this being a serious problem.
-> I was hoping the use case presented here is based on a real workload, but it's
-> synthetic. So I agree we need stronger reasons, but I think conceptually we do
-> have a conflict of interest where RT task could unnecessarily hurt the
-> performance of CFS task.
-> 
-> Another way to look at the problem is that the system is not partitioned
-> correctly and the admin could do a better job to prevent this.
-> 
-> --
-> Qais Yousef
+Hi Yong,
 
+On Mon, Sep 30, 2019 at 2:42 PM Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+>
+> The commit 4d689b619445 ("iommu/io-pgtable-arm-v7s: Convert to IOMMU API
+> TLB sync") help move the tlb_sync of unmap from v7s into the iommu
+> framework. It helps add a new function "mtk_iommu_iotlb_sync", But it
+> lacked the dom->pgtlock, then it will cause the variable
+> "tlb_flush_active" may be changed unexpectedly, we could see this warning
+> log randomly:
+>
 
-I use some third-party application, such as weibo and others, to test
-the application launch time. I apply this RT patch, and compare it with
-original design. Both RT patch test case and original design test case
-are already apply the
-patch:https://lore.kernel.org/patchwork/patch/1129117/
+Thanks for the patch! Please see my comments inline.
 
-After apply the RT patch, launch time of weibo from 1325.72ms to 1214.88
-ms, its launch time decreases 110.84ms(about 8.36%). Other applications
-also decrease 7~13%.
+> mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to
+> full flush
+>
+> To fix this issue, we can add dom->pgtlock in the "mtk_iommu_iotlb_sync".
+> And when checking this issue, we find that __arm_v7s_unmap call
+> io_pgtable_tlb_add_flush consecutively when it is supersection/largepage,
+> this also is potential unsafe for us. There is no tlb flush queue in the
+> MediaTek M4U HW. The HW always expect the tlb_flush/tlb_sync one by one.
+> If v7s don't always gurarantee the sequence, Thus, In this patch I move
+> the tlb_sync into tlb_flush(also rename the function deleting "_nosync").
+> and we don't care if it is leaf, rearrange the callback functions. Also,
+> the tlb flush/sync was already finished in v7s, then iotlb_sync and
+> iotlb_sync_all is unnecessary.
 
-At original design test case, RT tasks(surfaceflinger) could preempt
-some CFS tasks, if we add all these CFS tasks runnable time, it may have
-some impact on app launch time. So even if we already use the load
-balance patch and reduce a lot of CFS runnable time, I think choose idle
-CPU at RT scheduler could also reduce the some CFS runnable time.
+Performance-wise, we could do much better. Instead of synchronously
+syncing at the end of mtk_iommu_tlb_add_flush(), we could sync at the
+beginning, if there was any previous flush still pending. We would
+also have to keep the .iotlb_sync() callback, to take care of waiting
+for the last flush. That would allow better pipelining with CPU in
+cases like this:
 
+for (all pages in range) {
+   change page table();
+   flush();
+}
 
+"change page table()" could execute while the IOMMU is flushing the
+previous change.
+
+>
+> Besides, there are two minor changes:
+> a) Use writel for the register F_MMU_INV_RANGE which is for triggering the
+> HW work. We expect all the setting(iova_start/iova_end...) have already
+> been finished before F_MMU_INV_RANGE.
+> b) Reduce the tlb timeout value from 100000us to 1000us. the original value
+> is so long that affect the multimedia performance.
+
+By definition, timeout is something that should not normally happen.
+Too long timeout affecting multimedia performance would suggest that
+the timeout was actually happening, which is the core problem, not the
+length of the timeout. Could you provide more details on this?
+
+>
+> Fixes: 4d689b619445 ("iommu/io-pgtable-arm-v7s: Convert to IOMMU API TLB sync")
+> Signed-off-by: Chao Hao <chao.hao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+> This patch looks break the logic for tlb_flush and tlb_sync. I'm not
+> sure if it
+> is reasonable. If someone has concern, I could change:
+> a) Add dom->pgtlock in the mtk_iommu_iotlb_sync
+> b) Add a io_pgtable_tlb_sync in [1].
+>
+> [1]
+> https://elixir.bootlin.com/linux/v5.3-rc1/source/drivers/iommu/io-pgtable-arm-v7s.c#L655
+>
+> This patch rebase on Joerg's mediatek-smmu-merge branch which has mt8183
+> and Will's "Rework IOMMU API to allow for batching of invalidation".
+> ---
+>  drivers/iommu/mtk_iommu.c | 74 ++++++++++++-----------------------------------
+>  drivers/iommu/mtk_iommu.h |  1 -
+>  2 files changed, 19 insertions(+), 56 deletions(-)
+>
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index 6066272..e13cc56 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -173,11 +173,12 @@ static void mtk_iommu_tlb_flush_all(void *cookie)
+>         }
+>  }
+>
+> -static void mtk_iommu_tlb_add_flush_nosync(unsigned long iova, size_t size,
+> -                                          size_t granule, bool leaf,
+> -                                          void *cookie)
+> +static void mtk_iommu_tlb_add_flush(unsigned long iova, size_t size,
+> +                                   size_t granule, void *cookie)
+>  {
+>         struct mtk_iommu_data *data = cookie;
+> +       int ret;
+> +       u32 tmp;
+>
+>         for_each_m4u(data) {
+>                 writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
+> @@ -186,25 +187,15 @@ static void mtk_iommu_tlb_add_flush_nosync(unsigned long iova, size_t size,
+>                 writel_relaxed(iova, data->base + REG_MMU_INVLD_START_A);
+>                 writel_relaxed(iova + size - 1,
+>                                data->base + REG_MMU_INVLD_END_A);
+> -               writel_relaxed(F_MMU_INV_RANGE,
+> -                              data->base + REG_MMU_INVALIDATE);
+> -               data->tlb_flush_active = true;
+> -       }
+> -}
+> -
+> -static void mtk_iommu_tlb_sync(void *cookie)
+> -{
+> -       struct mtk_iommu_data *data = cookie;
+> -       int ret;
+> -       u32 tmp;
+> -
+> -       for_each_m4u(data) {
+> -               /* Avoid timing out if there's nothing to wait for */
+> -               if (!data->tlb_flush_active)
+> -                       return;
+> +               writel(F_MMU_INV_RANGE, data->base + REG_MMU_INVALIDATE);
+>
+> +               /*
+> +                * There is no tlb flush queue in the HW, the HW always expect
+> +                * tlb_flush and tlb_sync one by one. Here tlb_sync always
+> +                * follows tlb_flush to avoid break the sequence.
+> +                */
+>                 ret = readl_poll_timeout_atomic(data->base + REG_MMU_CPE_DONE,
+> -                                               tmp, tmp != 0, 10, 100000);
+> +                                               tmp, tmp != 0, 10, 1000);
+>                 if (ret) {
+>                         dev_warn(data->dev,
+>                                  "Partial TLB flush timed out, falling back to full flush\n");
+> @@ -212,36 +203,21 @@ static void mtk_iommu_tlb_sync(void *cookie)
+>                 }
+>                 /* Clear the CPE status */
+>                 writel_relaxed(0, data->base + REG_MMU_CPE_DONE);
+> -               data->tlb_flush_active = false;
+>         }
+>  }
+>
+> -static void mtk_iommu_tlb_flush_walk(unsigned long iova, size_t size,
+> -                                    size_t granule, void *cookie)
+> +static void mtk_iommu_tlb_flush_page(struct iommu_iotlb_gather *gather,
+> +                                    unsigned long iova, size_t granule,
+> +                                    void *cookie)
+>  {
+> -       mtk_iommu_tlb_add_flush_nosync(iova, size, granule, false, cookie);
+> -       mtk_iommu_tlb_sync(cookie);
+> -}
+> -
+> -static void mtk_iommu_tlb_flush_leaf(unsigned long iova, size_t size,
+> -                                    size_t granule, void *cookie)
+> -{
+> -       mtk_iommu_tlb_add_flush_nosync(iova, size, granule, true, cookie);
+> -       mtk_iommu_tlb_sync(cookie);
+> -}
+> -
+> -static void mtk_iommu_tlb_flush_page_nosync(struct iommu_iotlb_gather *gather,
+> -                                           unsigned long iova, size_t granule,
+> -                                           void *cookie)
+> -{
+> -       mtk_iommu_tlb_add_flush_nosync(iova, granule, granule, true, cookie);
+> +       mtk_iommu_tlb_add_flush(iova, granule, granule, cookie);
+>  }
+>
+>  static const struct iommu_flush_ops mtk_iommu_flush_ops = {
+>         .tlb_flush_all = mtk_iommu_tlb_flush_all,
+> -       .tlb_flush_walk = mtk_iommu_tlb_flush_walk,
+> -       .tlb_flush_leaf = mtk_iommu_tlb_flush_leaf,
+> -       .tlb_add_page = mtk_iommu_tlb_flush_page_nosync,
+> +       .tlb_flush_walk = mtk_iommu_tlb_add_flush,
+> +       .tlb_flush_leaf = mtk_iommu_tlb_add_flush,
+> +       .tlb_add_page = mtk_iommu_tlb_flush_page,
+>  };
+>
+>  static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
+> @@ -445,17 +421,6 @@ static size_t mtk_iommu_unmap(struct iommu_domain *domain,
+>         return unmapsz;
+>  }
+>
+> -static void mtk_iommu_flush_iotlb_all(struct iommu_domain *domain)
+> -{
+> -       mtk_iommu_tlb_sync(mtk_iommu_get_m4u_data());
+> -}
+> -
+> -static void mtk_iommu_iotlb_sync(struct iommu_domain *domain,
+> -                                struct iommu_iotlb_gather *gather)
+> -{
+> -       mtk_iommu_tlb_sync(mtk_iommu_get_m4u_data());
+> -}
+> -
+>  static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
+>                                           dma_addr_t iova)
+>  {
+> @@ -574,8 +539,7 @@ static int mtk_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
+>         .detach_dev     = mtk_iommu_detach_device,
+>         .map            = mtk_iommu_map,
+>         .unmap          = mtk_iommu_unmap,
+> -       .flush_iotlb_all = mtk_iommu_flush_iotlb_all,
+
+Don't we still want .flush_iotlb_all()? I think it should be more
+efficient in some cases than doing a big number of single flushes.
+(That said, the previous implementation didn't do any flush at all. It
+just waited for previously queued flushes to happen. Was that
+expected?)
 
 Best regards,
-Jing-Ting Wu
+Tomasz
