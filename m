@@ -1,176 +1,120 @@
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: Re: [PATCH v2 2/8] dt-bindings: sram: Convert SRAM bindings to
- json-schema
-Date: Tue, 1 Oct 2019 17:24:22 +0200
-Message-ID: <20191001152422.GA31358@pi3>
-References: <20190918173141.4314-1-krzk@kernel.org>
- <20190918173141.4314-2-krzk@kernel.org>
- <20191001140003.GA31344@bogus>
+From: Jing-Ting Wu <jing-ting.wu@mediatek.com>
+Subject: Re: [PATCH 1/1] sched/rt: avoid contend with CFS task
+Date: Wed, 2 Oct 2019 09:20:06 +0800
+Message-ID: <1569979206.4892.23.camel@mtkswgap22>
+References: <1567048502-6064-1-git-send-email-jing-ting.wu@mediatek.com>
+         <d5100b2d-46c4-5811-8274-8b06710d2594@arm.com>
+         <20190830145501.zadfv2ffuu7j46ft@e107158-lin.cambridge.arm.com>
+         <1567689999.2389.5.camel@mtkswgap22>
+         <CAKfTPtC3txstND=6YkWBJ16i06cQ7xueUpD5j-j-UfuSf0-z-g@mail.gmail.com>
+         <1568892135.4892.10.camel@mtkswgap22>
+         <CAKfTPtCuWrpW_o6r5cmGhLf_84PFHJhBk0pJ3fcbU_YgcBnTkQ@mail.gmail.com>
+         <20190919142315.vmrrpvljpspqpurp@e107158-lin.cambridge.arm.com>
+         <CAKfTPtA9-JLxs+DdLYjBQ6VfVGNxm++QYYi1wy-xS6o==EAPNw@mail.gmail.com>
+         <CAKfTPtAy1JSh725GAVXmg_x3fby1UfYn504tq4n2rQs1-JMy6Q@mail.gmail.com>
+         <20190919151152.m2zmiaspr6s5mcfh@e107158-lin.cambridge.arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20191001140003.GA31344@bogus>
+In-Reply-To: <20190919151152.m2zmiaspr6s5mcfh@e107158-lin.cambridge.arm.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Thierry Reding <thierry.reding@gmail.com>, Matt Mackall <mpm@selenic.com>, Herbert Xu <herbert@gondor.apana.org.au>, Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-pwm@vger.kernel.org, linux-tegra@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
+To: Qais Yousef <qais.yousef@arm.com>
+Cc: Vincent Guittot <vincent.guittot@linaro.org>, Valentin Schneider <valentin.schneider@arm.com>, Peter Zijlstra <peterz@infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, wsd_upstream@mediatek.com, linux-kernel <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Oct 01, 2019 at 09:00:03AM -0500, Rob Herring wrote:
-> On Wed, Sep 18, 2019 at 07:31:35PM +0200, Krzysztof Kozlowski wrote:
-> > Convert generic mmio-sram bindings to DT schema format using
-> > json-schema.
-> 
-> I've been slow getting to this because I started on the same thing...
-> 
+On Thu, 2019-09-19 at 16:11 +0100, Qais Yousef wrote:
+> On 09/19/19 16:37, Vincent Guittot wrote:
+> > On Thu, 19 Sep 2019 at 16:32, Vincent Guittot
+> > <vincent.guittot@linaro.org> wrote:
+> > >
+> > > On Thu, 19 Sep 2019 at 16:23, Qais Yousef <qais.yousef@arm.com> wrote:
+> > > >
+> > > > On 09/19/19 14:27, Vincent Guittot wrote:
+> > > > > > > > But for requirement of performance, I think it is better to differentiate between idle CPU and CPU has CFS task.
+> > > > > > > >
+> > > > > > > > For example, we use rt-app to evaluate runnable time on non-patched environment.
+> > > > > > > > There are (NR_CPUS-1) heavy CFS tasks and 1 RT Task. When a CFS task is running, the RT task wakes up and choose the same CPU.
+> > > > > > > > The CFS task will be preempted and keep runnable until it is migrated to another cpu by load balance.
+> > > > > > > > But load balance is not triggered immediately, it will be triggered until timer tick hits with some condition satisfied(ex. rq->next_balance).
+> > > > > > >
+> > > > > > > Yes you will have to wait for the next tick that will trigger an idle
+> > > > > > > load balance because you have an idle cpu and 2 runnable tack (1 RT +
+> > > > > > > 1CFS) on the same CPU. But you should not wait for more than  1 tick
+> > > > > > >
+> > > > > > > The current load_balance doesn't handle correctly the situation of 1
+> > > > > > > CFS and 1 RT task on same CPU while 1 CPU is idle. There is a rework
+> > > > > > > of the load_balance that is under review on the mailing list that
+> > > > > > > fixes this problem and your CFS task should migrate to the idle CPU
+> > > > > > > faster than now
+> > > > > > >
+> > > > > >
+> > > > > > Period load balance should be triggered when current jiffies is behind
+> > > > > > rq->next_balance, but rq->next_balance is not often exactly the same
+> > > > > > with next tick.
+> > > > > > If cpu_busy, interval = sd->balance_interval * sd->busy_factor, and
+> > > > >
+> > > > > But if there is an idle CPU on the system, the next idle load balance
+> > > > > should apply shortly because the busy_factor is not used for this CPU
+> > > > > which is  not busy.
+> > > > > In this case, the next_balance interval is sd_weight which is probably
+> > > > > 4ms at cluster level and 8ms at system level in your case. This means
+> > > > > between 1 and 2 ticks
+> > > >
+> > > > But if the CFS task we're preempting was latency sensitive - this 1 or 2 tick
+> > > > is too late of a recovery.
+> > > >
+> > > > So while it's good we recover, but a preventative approach would be useful too.
+> > > > Just saying :-) I'm still not sure if this is the best longer term approach.
+> > >
+> > > like using a rt task ?
 > > 
-> > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-> > 
-> > ---
-> > 
-> > Changes since v1:
-> > 1. Indent example with four spaces (more readable).
-> > ---
-> >  .../devicetree/bindings/sram/sram.txt         |  80 ----------
-> >  .../devicetree/bindings/sram/sram.yaml        | 138 ++++++++++++++++++
-> >  2 files changed, 138 insertions(+), 80 deletions(-)
-> >  delete mode 100644 Documentation/devicetree/bindings/sram/sram.txt
-> >  create mode 100644 Documentation/devicetree/bindings/sram/sram.yaml
+> > I mean, RT task should select a sub optimal CPU because of CFS
+> > If you want to favor CFS compared to RT it's probably because your
+> > task should be RT too
 > 
-> > diff --git a/Documentation/devicetree/bindings/sram/sram.yaml b/Documentation/devicetree/bindings/sram/sram.yaml
-> > new file mode 100644
-> > index 000000000000..8d9d6ce494b2
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/sram/sram.yaml
-> > @@ -0,0 +1,138 @@
-> > +# SPDX-License-Identifier: GPL-2.0
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/sram/sram.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: Generic on-chip SRAM
-> > +
-> > +maintainers:
-> > +  - FIXME <who@should.it.be>
+> Yes possibly. But I don't think this is always doable. Especially when you're
+> running on generic system not a special purposed one.
 > 
-> You can put me.
+> And we don't need to favor CFS over RT. But I think they can play nicely
+> together.
+> 
+> For example on Android there are few RT tasks and rarely more than 1 runnable
+> RT task at a time. But if it happened to wakeup on the same CPU that is
+> running the UI thread you could lose a frame. And from what I've seen as well
+> we have 1-3 CFS tasks runnable, weighted more towards 1 task. So we do have
+> plenty of idle CPUs on average.
+> 
+> But as I mentioned earlier I couldn't prove yet this being a serious problem.
+> I was hoping the use case presented here is based on a real workload, but it's
+> synthetic. So I agree we need stronger reasons, but I think conceptually we do
+> have a conflict of interest where RT task could unnecessarily hurt the
+> performance of CFS task.
+> 
+> Another way to look at the problem is that the system is not partitioned
+> correctly and the admin could do a better job to prevent this.
+> 
+> --
+> Qais Yousef
 
-Sure.
 
-> 
-> > +
-> > +description: |+
-> > +  Simple IO memory regions to be managed by the genalloc API.
-> > +
-> > +  Each child of the sram node specifies a region of reserved memory. Each
-> > +  child node should use a 'reg' property to specify a specific range of
-> > +  reserved memory.
-> > +
-> > +  Following the generic-names recommended practice, node names should
-> > +  reflect the purpose of the node. Unit address (@<address>) should be
-> > +  appended to the name.
-> > +
-> > +properties:
-> > +  $nodename:
-> > +    pattern: "^sram(@.*)?"
-> > +
-> > +  compatible:
-> > +    items:
-> > +      - enum:
-> > +          - mmio-sram
-> > +          - atmel,sama5d2-securam
-> 
-> I was trying to go down the path of putting all the compatibles for 
-> various SRAM bindings here, but I ran into some issues. I need to 
-> revisit as I've forgotten the exact issue.
-> 
-> This would need to be a 'contains' if this is going to work for others.
+I use some third-party application, such as weibo and others, to test
+the application launch time. I apply this RT patch, and compare it with
+original design. Both RT patch test case and original design test case
+are already apply the
+patch:https://lore.kernel.org/patchwork/patch/1129117/
 
-OK.
+After apply the RT patch, launch time of weibo from 1325.72ms to 1214.88
+ms, its launch time decreases 110.84ms(about 8.36%). Other applications
+also decrease 7~13%.
 
-> 
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  "#address-cells":
-> > +    description: Should use the same values as the root node.
-> > +
-> > +  "#size-cells":
-> > +    description: Should use the same values as the root node.
-> 
-> I defined both of these to be 1 as 4GB of SRAM should be enough for a 
-> while. We can debate 1 or 2 cells vs. 1, but there's no reason it has to 
-> be the same as the root (unless we're failing to do address 
-> translation).
+At original design test case, RT tasks(surfaceflinger) could preempt
+some CFS tasks, if we add all these CFS tasks runnable time, it may have
+some impact on app launch time. So even if we already use the load
+balance patch and reduce a lot of CFS runnable time, I think choose idle
+CPU at RT scheduler could also reduce the some CFS runnable time.
 
-That was copied from txt version. I can adjust them to 1 although this
-is will more than simple conversion.
 
-> 
-> > +
-> > +  ranges:
-> > +    description:
-> > +      Should translate from local addresses within the sram to bus addresses.
-> > +
-> > +  no-memory-wc:
-> > +    description:
-> > +      The flag indicating, that SRAM memory region has not to be remapped
-> > +      as write combining. WC is used by default.
-> > +    type: boolean
-> > +
-> > +  # TODO: additionalProperties: false
-> > +
-> > +patternProperties:
-> > +  "^([a-z]*-)?sram@[a-f0-9]$":
-> > +    type: object
-> > +    description:
-> > +      Each child of the sram node specifies a region of reserved memory.
-> > +    properties:
-> > +      reg:
-> > +        description:
-> > +          IO mem address range, relative to the SRAM range.
-> 
-> maxItems: 1
-
-OK
-
-> 
-> > +
-> > +      compatible:
-> > +        $ref: /schemas/types.yaml#/definitions/string
-> > +        description:
-> > +          Should contain a vendor specific string in the form
-> > +          <vendor>,[<device>-]<usage>
-> > +
-> > +      pool:
-> > +        description:
-> > +          Indicates that the particular reserved SRAM area is addressable
-> > +          and in use by another device or devices.
-> > +        type: boolean
-> > +
-> > +      export:
-> > +        description:
-> > +          Indicates that the reserved SRAM area may be accessed outside
-> > +          of the kernel, e.g. by bootloader or userspace.
-> > +        type: boolean
-> > +
-> > +      protect-exec:
-> > +        description: |
-> > +          Same as 'pool' above but with the additional constraint that code
-> > +          will be run from the region and that the memory is maintained as
-> > +          read-only, executable during code execution. NOTE: This region must
-> > +          be page aligned on start and end in order to properly allow
-> > +          manipulation of the page attributes.
-> > +        type: boolean
-> > +
-> > +      label:
-> > +        $ref: /schemas/types.yaml#/definitions/string
-> 
-> Already has a type definition.
-
-OK
 
 Best regards,
-Krzysztof
+Jing-Ting Wu
