@@ -1,216 +1,101 @@
-From: Walter Wu <walter-zh.wu@mediatek.com>
-Subject: Re: [PATCH] kasan: fix the missing underflow in memmove and memcpy
- with CONFIG_KASAN_GENERIC=y
-Date: Wed, 2 Oct 2019 20:15:13 +0800
-Message-ID: <1570018513.19702.36.camel@mtksdccf07>
-References: <20190927034338.15813-1-walter-zh.wu@mediatek.com>
-         <CACT4Y+Zxz+R=qQxSMoipXoLjRqyApD3O0eYpK0nyrfGHE4NNPw@mail.gmail.com>
-         <1569594142.9045.24.camel@mtksdccf07>
-         <CACT4Y+YuAxhKtL7ho7jpVAPkjG-JcGyczMXmw8qae2iaZjTh_w@mail.gmail.com>
-         <1569818173.17361.19.camel@mtksdccf07>
+From: <Claudiu.Beznea@microchip.com>
+Subject: Re: [PATCH 4/7] dt-bindings: chosen: Add clocksource and clockevent
+ selection
+Date: Wed, 2 Oct 2019 13:32:44 +0000
+Message-ID: <e78e7520-213c-8075-d71e-b8db2ebdceb7@microchip.com>
+References: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
+ <1568123236-767-5-git-send-email-claudiu.beznea@microchip.com>
+ <20190910143231.GB14966@e107533-lin.cambridge.arm.com>
+ <ab43b209-78fa-0cab-b8ea-acd4c550e689@microchip.com>
+ <20190910150826.GA18308@e107533-lin.cambridge.arm.com>
+ <20190910151055.GX21254@piout.net>
+ <CACRpkda4mmpbPWa2nD93CvD6HWzcTUDzyyLdQxC2gNB7XiJF3w@mail.gmail.com>
+ <a2aca46a-8eb9-d8a8-de42-9850a8a8f44c@microchip.com>
+ <20190930143246.GA19967@bogus>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1569818173.17361.19.camel@mtksdccf07>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Dmitry Vyukov <dvyukov@google.com>
-Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>, Linux-MM <linux-mm@kvack.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream <wsd_upstream@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190930143246.GA19967@bogus>
+Content-Language: en-US
+Content-ID: <2405F53375D403478DD0705798481038@namprd11.prod.outlook.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-snps-arc>,
+ <mailto:linux-snps-arc-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-snps-arc/>
+List-Post: <mailto:linux-snps-arc@lists.infradead.org>
+List-Help: <mailto:linux-snps-arc-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-snps-arc>,
+ <mailto:linux-snps-arc-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-snps-arc" <linux-snps-arc-bounces@lists.infradead.org>
+Errors-To: linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org
+To: robh@kernel.org
+Cc: tmaimon77@gmail.com, linus.walleij@linaro.org, nsekhar@ti.com, guoren@kernel.org, linux-stm32@st-md-mailman.stormreply.com, heiko@sntech.de, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, khilman@baylibre.com, Ludovic.Desroches@microchip.com, linux-imx@nxp.com, u.kleine-koenig@pengutronix.de, uclinux-h8-devel@lists.sourceforge.jp, marc.zyngier@arm.com, s.hauer@pengutronix.de, linux-unisoc@lists.infradead.org, khalasa@piap.pl, tglx@linutronix.de, sbranden@broadcom.com, linux-kernel@vger.kernel.org, ralf@linux-mips.org, paul.burton@mips.com, kernel@pengutronix.de, mark.rutland@arm.com, alexandre.belloni@bootlin.com, jhogan@kernel.org, palmer@sifive.com, eric@anholt.net, thierry.reding@gmail.com, manivannan.sadhasivam@linaro.org, ysato@users.sourceforge.jp, zhang.lyra@gmail.com, daniel.lezcano@linaro.org, jonathanh@nvidia.com, bgolaszewski@baylibre.co
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2019-09-30 at 12:36 +0800, Walter Wu wrote:
-> On Fri, 2019-09-27 at 21:41 +0200, Dmitry Vyukov wrote:
-> > On Fri, Sep 27, 2019 at 4:22 PM Walter Wu <walter-zh.wu@mediatek.com> wrote:
-> > >
-> > > On Fri, 2019-09-27 at 15:07 +0200, Dmitry Vyukov wrote:
-> > > > On Fri, Sep 27, 2019 at 5:43 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
-> > > > >
-> > > > > memmove() and memcpy() have missing underflow issues.
-> > > > > When -7 <= size < 0, then KASAN will miss to catch the underflow issue.
-> > > > > It looks like shadow start address and shadow end address is the same,
-> > > > > so it does not actually check anything.
-> > > > >
-> > > > > The following test is indeed not caught by KASAN:
-> > > > >
-> > > > >         char *p = kmalloc(64, GFP_KERNEL);
-> > > > >         memset((char *)p, 0, 64);
-> > > > >         memmove((char *)p, (char *)p + 4, -2);
-> > > > >         kfree((char*)p);
-> > > > >
-> > > > > It should be checked here:
-> > > > >
-> > > > > void *memmove(void *dest, const void *src, size_t len)
-> > > > > {
-> > > > >         check_memory_region((unsigned long)src, len, false, _RET_IP_);
-> > > > >         check_memory_region((unsigned long)dest, len, true, _RET_IP_);
-> > > > >
-> > > > >         return __memmove(dest, src, len);
-> > > > > }
-> > > > >
-> > > > > We fix the shadow end address which is calculated, then generic KASAN
-> > > > > get the right shadow end address and detect this underflow issue.
-> > > > >
-> > > > > [1] https://bugzilla.kernel.org/show_bug.cgi?id=199341
-> > > > >
-> > > > > Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-> > > > > Reported-by: Dmitry Vyukov <dvyukov@google.com>
-> > > > > ---
-> > > > >  lib/test_kasan.c   | 36 ++++++++++++++++++++++++++++++++++++
-> > > > >  mm/kasan/generic.c |  8 ++++++--
-> > > > >  2 files changed, 42 insertions(+), 2 deletions(-)
-> > > > >
-> > > > > diff --git a/lib/test_kasan.c b/lib/test_kasan.c
-> > > > > index b63b367a94e8..8bd014852556 100644
-> > > > > --- a/lib/test_kasan.c
-> > > > > +++ b/lib/test_kasan.c
-> > > > > @@ -280,6 +280,40 @@ static noinline void __init kmalloc_oob_in_memset(void)
-> > > > >         kfree(ptr);
-> > > > >  }
-> > > > >
-> > > > > +static noinline void __init kmalloc_oob_in_memmove_underflow(void)
-> > > > > +{
-> > > > > +       char *ptr;
-> > > > > +       size_t size = 64;
-> > > > > +
-> > > > > +       pr_info("underflow out-of-bounds in memmove\n");
-> > > > > +       ptr = kmalloc(size, GFP_KERNEL);
-> > > > > +       if (!ptr) {
-> > > > > +               pr_err("Allocation failed\n");
-> > > > > +               return;
-> > > > > +       }
-> > > > > +
-> > > > > +       memset((char *)ptr, 0, 64);
-> > > > > +       memmove((char *)ptr, (char *)ptr + 4, -2);
-> > > > > +       kfree(ptr);
-> > > > > +}
-> > > > > +
-> > > > > +static noinline void __init kmalloc_oob_in_memmove_overflow(void)
-> > > > > +{
-> > > > > +       char *ptr;
-> > > > > +       size_t size = 64;
-> > > > > +
-> > > > > +       pr_info("overflow out-of-bounds in memmove\n");
-> > > > > +       ptr = kmalloc(size, GFP_KERNEL);
-> > > > > +       if (!ptr) {
-> > > > > +               pr_err("Allocation failed\n");
-> > > > > +               return;
-> > > > > +       }
-> > > > > +
-> > > > > +       memset((char *)ptr, 0, 64);
-> > > > > +       memmove((char *)ptr + size, (char *)ptr, 2);
-> > > > > +       kfree(ptr);
-> > > > > +}
-> > > > > +
-> > > > >  static noinline void __init kmalloc_uaf(void)
-> > > > >  {
-> > > > >         char *ptr;
-> > > > > @@ -734,6 +768,8 @@ static int __init kmalloc_tests_init(void)
-> > > > >         kmalloc_oob_memset_4();
-> > > > >         kmalloc_oob_memset_8();
-> > > > >         kmalloc_oob_memset_16();
-> > > > > +       kmalloc_oob_in_memmove_underflow();
-> > > > > +       kmalloc_oob_in_memmove_overflow();
-> > > > >         kmalloc_uaf();
-> > > > >         kmalloc_uaf_memset();
-> > > > >         kmalloc_uaf2();
-> > > > > diff --git a/mm/kasan/generic.c b/mm/kasan/generic.c
-> > > > > index 616f9dd82d12..34ca23d59e67 100644
-> > > > > --- a/mm/kasan/generic.c
-> > > > > +++ b/mm/kasan/generic.c
-> > > > > @@ -131,9 +131,13 @@ static __always_inline bool memory_is_poisoned_n(unsigned long addr,
-> > > > >                                                 size_t size)
-> > > > >  {
-> > > > >         unsigned long ret;
-> > > > > +       void *shadow_start = kasan_mem_to_shadow((void *)addr);
-> > > > > +       void *shadow_end = kasan_mem_to_shadow((void *)addr + size - 1) + 1;
-> > > > >
-> > > > > -       ret = memory_is_nonzero(kasan_mem_to_shadow((void *)addr),
-> > > > > -                       kasan_mem_to_shadow((void *)addr + size - 1) + 1);
-> > > > > +       if ((long)size < 0)
-> > > > > +               shadow_end = kasan_mem_to_shadow((void *)addr + size);
-> > > >
-> > > > Hi Walter,
-> > > >
-> > > > Thanks for working on this.
-> > > >
-> > > > If size<0, does it make sense to continue at all? We will still check
-> > > > 1PB of shadow memory? What happens when we pass such huge range to
-> > > > memory_is_nonzero?
-> > > > Perhaps it's better to produce an error and bail out immediately if size<0?
-> > >
-> > > I agree with what you said. when size<0, it is indeed an unreasonable
-> > > behavior, it should be blocked from continuing to do.
-> > >
-> > >
-> > > > Also, what's the failure mode of the tests? Didn't they badly corrupt
-> > > > memory? We tried to keep tests such that they produce the KASAN
-> > > > reports, but don't badly corrupt memory b/c/ we need to run all of
-> > > > them.
-> > >
-> > > Maybe we should first produce KASAN reports and then go to execute
-> > > memmove() or do nothing? It looks like it’s doing the following.or?
-> > >
-> > > void *memmove(void *dest, const void *src, size_t len)
-> > >  {
-> > > +       if (long(len) <= 0)
-> > 
-> > /\/\/\/\/\/\
-> > 
-> > This check needs to be inside of check_memory_region, otherwise we
-> > will have similar problems in all other places that use
-> > check_memory_region.
-> Thanks for your reminder.
-> 
->  bool check_memory_region(unsigned long addr, size_t size, bool write,
->                                 unsigned long ret_ip)
->  {
-> +       if (long(size) < 0) {
-> +               kasan_report_invalid_size(src, dest, len, _RET_IP_);
-> +               return false;
-> +       }
-> +
->         return check_memory_region_inline(addr, size, write, ret_ip);
->  }
-> 
-> > But check_memory_region already returns a bool, so we could check that
-> > bool and return early.
-> 
-> When size<0, we should only show one KASAN report, and should we only
-> limit to return when size<0 is true? If yse, then __memmove() will do
-> nothing.
-> 
-> 
->  void *memmove(void *dest, const void *src, size_t len)
->  {
-> -       check_memory_region((unsigned long)src, len, false, _RET_IP_);
-> +       if(!check_memory_region((unsigned long)src, len, false,
-> _RET_IP_)
-> +               && long(size) < 0)
-> +               return;
-> +
->         check_memory_region((unsigned long)dest, len, true, _RET_IP_);
-> 
->         return __memmove(dest, src, len);
-> 
-> > 
-Hi Dmitry,
-
-What do you think the following code is better than the above one.
-In memmmove/memset/memcpy, they need to determine whether size < 0 is
-true. we directly determine whether size is negative in memmove and
-return early. it avoid to generate repeated KASAN report. Is it better?
-
-void *memmove(void *dest, const void *src, size_t len)
-{
-+       if (long(size) < 0) {
-+               kasan_report_invalid_size(src, dest, len, _RET_IP_);
-+               return;
-+       }
-+
-        check_memory_region((unsigned long)src, len, false, _RET_IP_);
-        check_memory_region((unsigned long)dest, len, true, _RET_IP_);
 
 
-check_memory_region() still has to check whether the size is negative.
-but memmove/memset/memcpy generate invalid size KASAN report will not be
-there.
+On 30.09.2019 17:32, Rob Herring wrote:
+> On Wed, Sep 11, 2019 at 07:18:07AM +0000, Claudiu.Beznea@microchip.com wrote:
+>>
+>>
+>> On 11.09.2019 03:03, Linus Walleij wrote:
+>>> External E-Mail
+>>>
+>>>
+>>> On Tue, Sep 10, 2019 at 4:11 PM Alexandre Belloni
+>>> <alexandre.belloni@bootlin.com> wrote:
+>>>> On 10/09/2019 16:08:26+0100, Sudeep Holla wrote:
+>>>>> On Tue, Sep 10, 2019 at 02:51:50PM +0000, Claudiu.Beznea@microchip.com wrote:
+>>>
+>>>>> In that case, why can't we identify capability that with the compatibles
+>>>>> for this timer IP ?
+>>>>>
+>>>>> IOW, I don't like the proposal as it's hardware limitation.
+>>>>
+>>>> To be clear, bot timers are exactly the same but can't be clocksource
+>>>> and clockevent at the same time. Why would we have different compatibles
+>>>> for the exact same IP?
+>>>
+>>> In that case why not just pick the first one you find as clocksource
+>>> and the second one as clock event? As they all come to the
+>>> same timer of init function two simple local state variables can
+>>> solve that:
+>>>
+>>> static bool registered_clocksource;
+>>> static bool registered_clockevent;
+>>>
+>>> probe(timer) {
+>>>    if (!registered_clocksource) {
+>>>        register_clocksource(timer);
+>>>        registrered_clocksource = true;
+>>>        return;
+>>>    }
+>>>    if (!registered_clockevent) {
+>>>        register_clockevent(timer);
+>>>        registered_clockevent = true;
+>>>        return;
+>>>    }
+>>>    pr_info("surplus timer %p\n", timer);
+>>> }
+>>>
+>>
+>> That was also my proposal for the driver I'm sending this series for (see
+>> [1]) but it has been proposed to implement a mechanism similar to this one
+>> in this series (see [2] and [3]).
+> 
+> This comes up over and over, and the answer is still no. Either each 
+> block is identical and doesn't matter which one is used for what or 
+> there is some h/w difference that you should describe. 
+
+There are no hardware differences in my case. The block just cannot work at
+the same time  as clocksource and clockevent. And on SAM9X60's we want to
+use it as clockevent for high resolution timers support.
+
+> 
+> If you want something that would even be considered to put into DT, 
+> then define something BSD or other OS's could use too. (That's not a 
+> suggestion to respin this with generalized names.)
+> 
+> Rob
+> 
+> 
