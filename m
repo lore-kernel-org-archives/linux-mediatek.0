@@ -1,45 +1,34 @@
-From: Ulrich Hecht <uli@fpond.eu>
-Subject: Re: [PATCH v2] i2c: i2c-mt65xx: fix NULL ptr dereference
-Date: Wed, 2 Oct 2019 10:43:55 +0200 (CEST)
-Message-ID: <1733244772.936156.1570005835848@webmail.strato.com>
-References: <20190930152846.5062-1-fparent@baylibre.com>
+From: mtk15127 <Mark-MC.Lee@mediatek.com>
+Subject: Re: [PATCH net 1/2] net: ethernet: mediatek: Fix MT7629 missing
+ GMII mode support
+Date: Wed, 2 Oct 2019 17:21:00 +0800
+Message-ID: <1570008060.13954.12.camel@mtksdccf07>
+References: <20191001123150.23135-1-Mark-MC.Lee@mediatek.com>
+         <20191001123150.23135-2-Mark-MC.Lee@mediatek.com>
+         <20191001124206.GC869@lunn.ch>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190930152846.5062-1-fparent@baylibre.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Fabien Parent <fparent@baylibre.com>, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: drinkcat@chromium.org, wsa@the-dreams.de, hsinyi@chromium.org, matthias.bgg@gmail.com, tglx@linutronix.de, qii.wang@mediatek.com
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191001124206.GC869@lunn.ch>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: "David S. Miller" <davem@davemloft.net>, Sean Wang <sean.wang@mediatek.com>, John Crispin <john@phrozen.org>, Felix Fietkau <nbd@openwrt.org>, Nelson Chang <nelson.chang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Rene van Dorst <opensource@vdorst.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, MarkLee <Mark-MC.Lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-
-> On September 30, 2019 at 5:28 PM Fabien Parent <fparent@baylibre.com> wrote:
+On Tue, 2019-10-01 at 14:42 +0200, Andrew Lunn wrote:
+> On Tue, Oct 01, 2019 at 08:31:49PM +0800, MarkLee wrote:
+> > Add missing configuration for mt7629 gmii mode support
+> > 
+> > Signed-off-by: MarkLee <Mark-MC.Lee@mediatek.com>
 > 
+> Hi Mark
 > 
-> Since commit abf4923e97c3 ("i2c: mediatek: disable zero-length transfers
-> for mt8183"), there is a NULL pointer dereference for all the SoCs
-> that don't have any quirk. mtk_i2c_functionality is not checking that
-> the quirks pointer is not NULL before starting to use it.
+> Since this is for net, it should have a Fixes: tag.
 > 
-> This commit add a call to i2c_check_quirks which will check whether
-> the quirks pointer is set, and if so will check if the IP has the
-> NO_ZERO_LEN quirk.
-> 
-> Fixes: abf4923e97c3 ("i2c: mediatek: disable zero-length transfers for mt8183")
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Thanks
+> 	Andrew
+Hi Andrew,
+  Thanks for your reminder,will add a Fixes tag in the next patch.
 
-Thank you! Tested successfully on Acer R13 Chromebook (mt8173).
-
-Tested-by: Ulrich Hecht <uli@fpond.eu>
-
-CU
-Uli
+Mark
