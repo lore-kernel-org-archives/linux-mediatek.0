@@ -1,234 +1,430 @@
-From: Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [PATCH v2 2/4] watchdog: mtk_wdt: mt8183: Add reset controller
-Date: Thu, 3 Oct 2019 06:49:05 -0700
-Message-ID: <a0b2e9a3-ca77-814f-b7bd-edc69f00fce2@roeck-us.net>
-References: <1569580317-21181-1-git-send-email-jiaxin.yu@mediatek.com>
- <1569580317-21181-3-git-send-email-jiaxin.yu@mediatek.com>
+From: Walter Wu <walter-zh.wu@mediatek.com>
+Subject: Re: [PATCH] kasan: fix the missing underflow in memmove and memcpy
+ with CONFIG_KASAN_GENERIC=y
+Date: Thu, 3 Oct 2019 21:51:21 +0800
+Message-ID: <1570110681.19702.64.camel@mtksdccf07>
+References: <20190927034338.15813-1-walter-zh.wu@mediatek.com>
+         <CACT4Y+Zxz+R=qQxSMoipXoLjRqyApD3O0eYpK0nyrfGHE4NNPw@mail.gmail.com>
+         <1569594142.9045.24.camel@mtksdccf07>
+         <CACT4Y+YuAxhKtL7ho7jpVAPkjG-JcGyczMXmw8qae2iaZjTh_w@mail.gmail.com>
+         <1569818173.17361.19.camel@mtksdccf07>
+         <1570018513.19702.36.camel@mtksdccf07>
+         <CACT4Y+bbZhvz9ZpHtgL8rCCsV=ybU5jA6zFnJBL7gY2cNXDLyQ@mail.gmail.com>
+         <1570069078.19702.57.camel@mtksdccf07>
+         <CACT4Y+ZwNv2-QBrvuR2JvemovmKPQ9Ggrr=ZkdTg6xy_Ki6UAg@mail.gmail.com>
+         <1570095525.19702.59.camel@mtksdccf07>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1569580317-21181-3-git-send-email-jiaxin.yu@mediatek.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>, broonie@kernel.org, mark.rutland@arm.com, robh+dt@kernel.org, wim@linux-watchdog.org
-Cc: alsa-devel@alsa-project.org, yong.liang@mediatek.com, lgirdwood@gmail.com, perex@perex.cz, tzungbi@google.com, linux-mediatek@lists.infradead.org, eason.yen@mediatek.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1570095525.19702.59.camel@mtksdccf07>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Dmitry Vyukov <dvyukov@google.com>
+Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>, Linux-MM <linux-mm@kvack.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream <wsd_upstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 9/27/19 3:31 AM, Jiaxin Yu wrote:
-> From: "yong.liang" <yong.liang@mediatek.com>
+On Thu, 2019-10-03 at 17:38 +0800, Walter Wu wrote:
+> On Thu, 2019-10-03 at 08:26 +0200, Dmitry Vyukov wrote:
+> > On Thu, Oct 3, 2019 at 4:18 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
+> > >
+> > > On Wed, 2019-10-02 at 15:57 +0200, Dmitry Vyukov wrote:
+> > > > On Wed, Oct 2, 2019 at 2:15 PM Walter Wu <walter-zh.wu@mediatek.com> wrote:
+> > > > >
+> > > > > On Mon, 2019-09-30 at 12:36 +0800, Walter Wu wrote:
+> > > > > > On Fri, 2019-09-27 at 21:41 +0200, Dmitry Vyukov wrote:
+> > > > > > > On Fri, Sep 27, 2019 at 4:22 PM Walter Wu <walter-zh.wu@mediatek.com> wrote:
+> > > > > > > >
+> > > > > > > > On Fri, 2019-09-27 at 15:07 +0200, Dmitry Vyukov wrote:
+> > > > > > > > > On Fri, Sep 27, 2019 at 5:43 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
+> > > > > > > > > >
+> > > > > > > > > > memmove() and memcpy() have missing underflow issues.
+> > > > > > > > > > When -7 <= size < 0, then KASAN will miss to catch the underflow issue.
+> > > > > > > > > > It looks like shadow start address and shadow end address is the same,
+> > > > > > > > > > so it does not actually check anything.
+> > > > > > > > > >
+> > > > > > > > > > The following test is indeed not caught by KASAN:
+> > > > > > > > > >
+> > > > > > > > > >         char *p = kmalloc(64, GFP_KERNEL);
+> > > > > > > > > >         memset((char *)p, 0, 64);
+> > > > > > > > > >         memmove((char *)p, (char *)p + 4, -2);
+> > > > > > > > > >         kfree((char*)p);
+> > > > > > > > > >
+> > > > > > > > > > It should be checked here:
+> > > > > > > > > >
+> > > > > > > > > > void *memmove(void *dest, const void *src, size_t len)
+> > > > > > > > > > {
+> > > > > > > > > >         check_memory_region((unsigned long)src, len, false, _RET_IP_);
+> > > > > > > > > >         check_memory_region((unsigned long)dest, len, true, _RET_IP_);
+> > > > > > > > > >
+> > > > > > > > > >         return __memmove(dest, src, len);
+> > > > > > > > > > }
+> > > > > > > > > >
+> > > > > > > > > > We fix the shadow end address which is calculated, then generic KASAN
+> > > > > > > > > > get the right shadow end address and detect this underflow issue.
+> > > > > > > > > >
+> > > > > > > > > > [1] https://bugzilla.kernel.org/show_bug.cgi?id=199341
+> > > > > > > > > >
+> > > > > > > > > > Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+> > > > > > > > > > Reported-by: Dmitry Vyukov <dvyukov@google.com>
+> > > > > > > > > > ---
+> > > > > > > > > >  lib/test_kasan.c   | 36 ++++++++++++++++++++++++++++++++++++
+> > > > > > > > > >  mm/kasan/generic.c |  8 ++++++--
+> > > > > > > > > >  2 files changed, 42 insertions(+), 2 deletions(-)
+> > > > > > > > > >
+> > > > > > > > > > diff --git a/lib/test_kasan.c b/lib/test_kasan.c
+> > > > > > > > > > index b63b367a94e8..8bd014852556 100644
+> > > > > > > > > > --- a/lib/test_kasan.c
+> > > > > > > > > > +++ b/lib/test_kasan.c
+> > > > > > > > > > @@ -280,6 +280,40 @@ static noinline void __init kmalloc_oob_in_memset(void)
+> > > > > > > > > >         kfree(ptr);
+> > > > > > > > > >  }
+> > > > > > > > > >
+> > > > > > > > > > +static noinline void __init kmalloc_oob_in_memmove_underflow(void)
+> > > > > > > > > > +{
+> > > > > > > > > > +       char *ptr;
+> > > > > > > > > > +       size_t size = 64;
+> > > > > > > > > > +
+> > > > > > > > > > +       pr_info("underflow out-of-bounds in memmove\n");
+> > > > > > > > > > +       ptr = kmalloc(size, GFP_KERNEL);
+> > > > > > > > > > +       if (!ptr) {
+> > > > > > > > > > +               pr_err("Allocation failed\n");
+> > > > > > > > > > +               return;
+> > > > > > > > > > +       }
+> > > > > > > > > > +
+> > > > > > > > > > +       memset((char *)ptr, 0, 64);
+> > > > > > > > > > +       memmove((char *)ptr, (char *)ptr + 4, -2);
+> > > > > > > > > > +       kfree(ptr);
+> > > > > > > > > > +}
+> > > > > > > > > > +
+> > > > > > > > > > +static noinline void __init kmalloc_oob_in_memmove_overflow(void)
+> > > > > > > > > > +{
+> > > > > > > > > > +       char *ptr;
+> > > > > > > > > > +       size_t size = 64;
+> > > > > > > > > > +
+> > > > > > > > > > +       pr_info("overflow out-of-bounds in memmove\n");
+> > > > > > > > > > +       ptr = kmalloc(size, GFP_KERNEL);
+> > > > > > > > > > +       if (!ptr) {
+> > > > > > > > > > +               pr_err("Allocation failed\n");
+> > > > > > > > > > +               return;
+> > > > > > > > > > +       }
+> > > > > > > > > > +
+> > > > > > > > > > +       memset((char *)ptr, 0, 64);
+> > > > > > > > > > +       memmove((char *)ptr + size, (char *)ptr, 2);
+> > > > > > > > > > +       kfree(ptr);
+> > > > > > > > > > +}
+> > > > > > > > > > +
+> > > > > > > > > >  static noinline void __init kmalloc_uaf(void)
+> > > > > > > > > >  {
+> > > > > > > > > >         char *ptr;
+> > > > > > > > > > @@ -734,6 +768,8 @@ static int __init kmalloc_tests_init(void)
+> > > > > > > > > >         kmalloc_oob_memset_4();
+> > > > > > > > > >         kmalloc_oob_memset_8();
+> > > > > > > > > >         kmalloc_oob_memset_16();
+> > > > > > > > > > +       kmalloc_oob_in_memmove_underflow();
+> > > > > > > > > > +       kmalloc_oob_in_memmove_overflow();
+> > > > > > > > > >         kmalloc_uaf();
+> > > > > > > > > >         kmalloc_uaf_memset();
+> > > > > > > > > >         kmalloc_uaf2();
+> > > > > > > > > > diff --git a/mm/kasan/generic.c b/mm/kasan/generic.c
+> > > > > > > > > > index 616f9dd82d12..34ca23d59e67 100644
+> > > > > > > > > > --- a/mm/kasan/generic.c
+> > > > > > > > > > +++ b/mm/kasan/generic.c
+> > > > > > > > > > @@ -131,9 +131,13 @@ static __always_inline bool memory_is_poisoned_n(unsigned long addr,
+> > > > > > > > > >                                                 size_t size)
+> > > > > > > > > >  {
+> > > > > > > > > >         unsigned long ret;
+> > > > > > > > > > +       void *shadow_start = kasan_mem_to_shadow((void *)addr);
+> > > > > > > > > > +       void *shadow_end = kasan_mem_to_shadow((void *)addr + size - 1) + 1;
+> > > > > > > > > >
+> > > > > > > > > > -       ret = memory_is_nonzero(kasan_mem_to_shadow((void *)addr),
+> > > > > > > > > > -                       kasan_mem_to_shadow((void *)addr + size - 1) + 1);
+> > > > > > > > > > +       if ((long)size < 0)
+> > > > > > > > > > +               shadow_end = kasan_mem_to_shadow((void *)addr + size);
+> > > > > > > > >
+> > > > > > > > > Hi Walter,
+> > > > > > > > >
+> > > > > > > > > Thanks for working on this.
+> > > > > > > > >
+> > > > > > > > > If size<0, does it make sense to continue at all? We will still check
+> > > > > > > > > 1PB of shadow memory? What happens when we pass such huge range to
+> > > > > > > > > memory_is_nonzero?
+> > > > > > > > > Perhaps it's better to produce an error and bail out immediately if size<0?
+> > > > > > > >
+> > > > > > > > I agree with what you said. when size<0, it is indeed an unreasonable
+> > > > > > > > behavior, it should be blocked from continuing to do.
+> > > > > > > >
+> > > > > > > >
+> > > > > > > > > Also, what's the failure mode of the tests? Didn't they badly corrupt
+> > > > > > > > > memory? We tried to keep tests such that they produce the KASAN
+> > > > > > > > > reports, but don't badly corrupt memory b/c/ we need to run all of
+> > > > > > > > > them.
+> > > > > > > >
+> > > > > > > > Maybe we should first produce KASAN reports and then go to execute
+> > > > > > > > memmove() or do nothing? It looks like it’s doing the following.or?
+> > > > > > > >
+> > > > > > > > void *memmove(void *dest, const void *src, size_t len)
+> > > > > > > >  {
+> > > > > > > > +       if (long(len) <= 0)
+> > > > > > >
+> > > > > > > /\/\/\/\/\/\
+> > > > > > >
+> > > > > > > This check needs to be inside of check_memory_region, otherwise we
+> > > > > > > will have similar problems in all other places that use
+> > > > > > > check_memory_region.
+> > > > > > Thanks for your reminder.
+> > > > > >
+> > > > > >  bool check_memory_region(unsigned long addr, size_t size, bool write,
+> > > > > >                                 unsigned long ret_ip)
+> > > > > >  {
+> > > > > > +       if (long(size) < 0) {
+> > > > > > +               kasan_report_invalid_size(src, dest, len, _RET_IP_);
+> > > > > > +               return false;
+> > > > > > +       }
+> > > > > > +
+> > > > > >         return check_memory_region_inline(addr, size, write, ret_ip);
+> > > > > >  }
+> > > > > >
+> > > > > > > But check_memory_region already returns a bool, so we could check that
+> > > > > > > bool and return early.
+> > > > > >
+> > > > > > When size<0, we should only show one KASAN report, and should we only
+> > > > > > limit to return when size<0 is true? If yse, then __memmove() will do
+> > > > > > nothing.
+> > > > > >
+> > > > > >
+> > > > > >  void *memmove(void *dest, const void *src, size_t len)
+> > > > > >  {
+> > > > > > -       check_memory_region((unsigned long)src, len, false, _RET_IP_);
+> > > > > > +       if(!check_memory_region((unsigned long)src, len, false,
+> > > > > > _RET_IP_)
+> > > > > > +               && long(size) < 0)
+> > > > > > +               return;
+> > > > > > +
+> > > > > >         check_memory_region((unsigned long)dest, len, true, _RET_IP_);
+> > > > > >
+> > > > > >         return __memmove(dest, src, len);
+> > > > > >
+> > > > > > >
+> > > > > Hi Dmitry,
+> > > > >
+> > > > > What do you think the following code is better than the above one.
+> > > > > In memmmove/memset/memcpy, they need to determine whether size < 0 is
+> > > > > true. we directly determine whether size is negative in memmove and
+> > > > > return early. it avoid to generate repeated KASAN report. Is it better?
+> > > > >
+> > > > > void *memmove(void *dest, const void *src, size_t len)
+> > > > > {
+> > > > > +       if (long(size) < 0) {
+> > > > > +               kasan_report_invalid_size(src, dest, len, _RET_IP_);
+> > > > > +               return;
+> > > > > +       }
+> > > > > +
+> > > > >         check_memory_region((unsigned long)src, len, false, _RET_IP_);
+> > > > >         check_memory_region((unsigned long)dest, len, true, _RET_IP_);
+> > > > >
+> > > > >
+> > > > > check_memory_region() still has to check whether the size is negative.
+> > > > > but memmove/memset/memcpy generate invalid size KASAN report will not be
+> > > > > there.
+> > > >
+> > > >
+> > > > If check_memory_region() will do the check, why do we need to
+> > > > duplicate it inside of memmove and all other range functions?
+> > > >
+> > > Yes, I know it has duplication, but if we don't have to determine size<0
+> > > in memmove, then all check_memory_region return false will do nothing,
+> > 
+> > But they will produce a KASAN report, right? They are asked to check
+> > if 18446744073709551614 bytes are good. 18446744073709551614 bytes
+> > can't be good.
+> > 
+> > 
+> > > it includes other memory corruption behaviors, this is my original
+> > > concern.
+> > >
+> > > > I would do:
+> > > >
+> > > > void *memmove(void *dest, const void *src, size_t len)
+> > > > {
+> > > >         if (check_memory_region((unsigned long)src, len, false, _RET_IP_))
+> > > >                 return;
+> > > if check_memory_region return TRUE is to do nothing, but it is no memory
+> > > corruption? Should it return early when check_memory_region return a
+> > > FALSE?
+> > 
+> > Maybe. I just meant the overall idea: check_memory_region should
+> > detect that 18446744073709551614 bytes are bad, print an error, return
+> > an indication that bytes were bad, memmove should return early if the
+> > range is bad.
+> > 
+> ok, i will send new patch.
+> Thanks for your review.
 > 
-> Provide assert/deassert/reset API in watchdog driver.
-> Register reset controller for toprgu device in watchdog probe.
-> 
-> Signed-off-by: yong.liang <yong.liang@mediatek.com>
-> ---
->   drivers/watchdog/Kconfig   |   1 +
->   drivers/watchdog/mtk_wdt.c | 110 ++++++++++++++++++++++++++++++++++++-
->   2 files changed, 110 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/watchdog/Kconfig b/drivers/watchdog/Kconfig
-> index 2e07caab9db2..629249fe5305 100644
-> --- a/drivers/watchdog/Kconfig
-> +++ b/drivers/watchdog/Kconfig
-> @@ -717,6 +717,7 @@ config MEDIATEK_WATCHDOG
->   	tristate "Mediatek SoCs watchdog support"
->   	depends on ARCH_MEDIATEK || COMPILE_TEST
->   	select WATCHDOG_CORE
-> +	select RESET_CONTROLLER
->   	help
->   	  Say Y here to include support for the watchdog timer
->   	  in Mediatek SoCs.
-> diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-> index 9c3d0033260d..660fb0e48d8e 100644
-> --- a/drivers/watchdog/mtk_wdt.c
-> +++ b/drivers/watchdog/mtk_wdt.c
-> @@ -20,6 +20,10 @@
->   #include <linux/types.h>
->   #include <linux/watchdog.h>
->   #include <linux/delay.h>
-> +#include <linux/reset-controller.h>
-> +#include <linux/slab.h>
-> +#include <linux/reset.h>
-> +#include <linux/of_device.h>
->   
->   #define WDT_MAX_TIMEOUT		31
->   #define WDT_MIN_TIMEOUT		1
-> @@ -44,17 +48,113 @@
->   #define WDT_SWRST		0x14
->   #define WDT_SWRST_KEY		0x1209
->   
-> +#define WDT_SWSYSRST		0x18U
-> +#define WDT_SWSYS_RST_KEY	0x88000000
-> +
->   #define DRV_NAME		"mtk-wdt"
->   #define DRV_VERSION		"1.0"
->   
->   static bool nowayout = WATCHDOG_NOWAYOUT;
->   static unsigned int timeout;
->   
-> +struct toprgu_reset {
-> +	spinlock_t lock; /* Protects reset_controller access */
-> +	void __iomem *toprgu_swrst_base;
-> +	int regofs;
-> +	struct reset_controller_dev rcdev;
-> +};
-> +
->   struct mtk_wdt_dev {
->   	struct watchdog_device wdt_dev;
->   	void __iomem *wdt_base;
-> +	struct toprgu_reset reset_controller;
-> +	const struct mtk_wdt_compatible *dev_comp;
+how about this?
 
-"dev_comp" suggests that this would be a device name. In practice,
-the only value there is sw_rst_num, and the value is only
-used in toprgu_register_reset_controller(). Might as well pass
-it as argument and drop this pointer.
+commit fd64691026e7ccb8d2946d0804b0621ac177df38
+Author: Walter Wu <walter-zh.wu@mediatek.com>
+Date:   Fri Sep 27 09:54:18 2019 +0800
 
-> +};
-> +
-> +struct mtk_wdt_compatible {
-> +	int sw_rst_num;
-> +};
-> +
-"compatible" is an odd name for this structure. I would suggest
-to select a more common name such as "mtk_wdt_data".
+    kasan: detect invalid size in memory operation function
+    
+    It is an undefined behavior to pass a negative value to
+memset()/memcpy()/memmove()
+    , so need to be detected by KASAN.
+    
+    KASAN report:
+    
+     BUG: KASAN: invalid size 18446744073709551614 in
+kmalloc_memmove_invalid_size+0x70/0xa0
+    
+     CPU: 1 PID: 91 Comm: cat Not tainted
+5.3.0-rc1ajb-00001-g31943bbc21ce-dirty #7
+     Hardware name: linux,dummy-virt (DT)
+     Call trace:
+      dump_backtrace+0x0/0x278
+      show_stack+0x14/0x20
+      dump_stack+0x108/0x15c
+      print_address_description+0x64/0x368
+      __kasan_report+0x108/0x1a4
+      kasan_report+0xc/0x18
+      check_memory_region+0x15c/0x1b8
+      memmove+0x34/0x88
+      kmalloc_memmove_invalid_size+0x70/0xa0
+    
+    [1] https://bugzilla.kernel.org/show_bug.cgi?id=199341
+    
+    Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+    Reported-by: Dmitry Vyukov <dvyukov@google.com>
 
-> +static int toprgu_reset_assert(struct reset_controller_dev *rcdev,
-> +			       unsigned long id)
-> +{
-> +	unsigned int tmp;
-> +	unsigned long flags;
-> +	struct toprgu_reset *data = container_of(rcdev,
-> +				struct toprgu_reset, rcdev);
-> +
-> +	spin_lock_irqsave(&data->lock, flags);
-> +
-> +	tmp = __raw_readl(data->toprgu_swrst_base + data->regofs);
-> +	tmp |= BIT(id);
-> +	tmp |= WDT_SWSYS_RST_KEY;
-> +	writel(tmp, data->toprgu_swrst_base + data->regofs);
-> +
-> +	spin_unlock_irqrestore(&data->lock, flags);
-> +
-> +	return 0;
-> +}
-> +
-> +static int toprgu_reset_deassert(struct reset_controller_dev *rcdev,
-> +				 unsigned long id)
-> +{
-> +	unsigned int tmp;
-> +	unsigned long flags;
-> +	struct toprgu_reset *data = container_of(rcdev,
-> +					struct toprgu_reset, rcdev);
-> +
-> +	spin_lock_irqsave(&data->lock, flags);
-> +
-> +	tmp = __raw_readl(data->toprgu_swrst_base + data->regofs);
-> +	tmp &= ~BIT(id);
-> +	tmp |= WDT_SWSYS_RST_KEY;
-> +	writel(tmp, data->toprgu_swrst_base + data->regofs);
-> +
-> +	spin_unlock_irqrestore(&data->lock, flags);
-> +
-> +	return 0;
-> +}
-> +
-> +static int toprgu_reset(struct reset_controller_dev *rcdev,
-> +			unsigned long id)
-> +{
-> +	int ret;
-> +
-> +	ret = toprgu_reset_assert(rcdev, id);
-> +	if (ret)
-> +		return ret;
-> +
-> +	return toprgu_reset_deassert(rcdev, id);
-
-Unless there is additional synchronization elsewhere, parallel calls
-to the -> assert, and ->reset callbacks may result in the reset being
-deasserted while at least one caller (the one who called the ->assert
-function) believes that it is still asserted.
-
-[ ... and if there _is_ additional synchronization elsewhere, the
-   local spinlock would be unnecessary ]
-
-> +}
-> +
-> +static struct reset_control_ops toprgu_reset_ops = {
-> +	.assert = toprgu_reset_assert,
-> +	.deassert = toprgu_reset_deassert,
-> +	.reset = toprgu_reset,
->   };
->   
-> +static void toprgu_register_reset_controller(struct platform_device *pdev,
-> +					     int regofs)
-
-Since there is only one well defined offset, it seems unnecessary to pass
-regofs as parameter.
-
-> +{
-> +	int ret;
-> +	struct mtk_wdt_dev *mtk_wdt = platform_get_drvdata(pdev);
-> +
-> +	spin_lock_init(&mtk_wdt->reset_controller.lock);
-> +
-> +	mtk_wdt->dev_comp = of_device_get_match_data(&pdev->dev);
-
-Duplicate, and not really needed. Just pass sw_rst_num as argument.
-
-> +	mtk_wdt->reset_controller.toprgu_swrst_base = mtk_wdt->wdt_base;
-> +	mtk_wdt->reset_controller.regofs = regofs;
-> +	mtk_wdt->reset_controller.rcdev.owner = THIS_MODULE;
-> +	mtk_wdt->reset_controller.rcdev.nr_resets =
-> +				mtk_wdt->dev_comp->sw_rst_num;
-> +	mtk_wdt->reset_controller.rcdev.ops = &toprgu_reset_ops;
-> +	mtk_wdt->reset_controller.rcdev.of_node = pdev->dev.of_node;
-> +	ret = reset_controller_register(&mtk_wdt->reset_controller.rcdev);
-> +	if (ret != 0)
-> +		dev_err(&pdev->dev,
-> +			"couldn't register wdt reset controller: %d\n", ret);
-> +}
-> +
->   static int mtk_wdt_restart(struct watchdog_device *wdt_dev,
->   			   unsigned long action, void *data)
->   {
-> @@ -187,9 +287,12 @@ static int mtk_wdt_probe(struct platform_device *pdev)
->   	if (unlikely(err))
->   		return err;
->   
-> -	dev_info(dev, "Watchdog enabled (timeout=%d sec, nowayout=%d)\n",
-> +	dev_info(&pdev->dev, "Watchdog enabled (timeout=%d sec, nowayout=%d)\n",
->   		 mtk_wdt->wdt_dev.timeout, nowayout);
->   
-> +	mtk_wdt->dev_comp = of_device_get_match_data(&pdev->dev);
-> +	if (mtk_wdt->dev_comp)
-> +		toprgu_register_reset_controller(pdev, WDT_SWSYSRST);
->   	return 0;
->   }
->   
-> @@ -217,7 +320,12 @@ static int mtk_wdt_resume(struct device *dev)
->   }
->   #endif
->   
-> +static const struct mtk_wdt_compatible mt8183_compat = {
-> +	.sw_rst_num = 18,
-
-Please no such magic numbers. This should be a define in an include file.
-
-> +};
-> +
->   static const struct of_device_id mtk_wdt_dt_ids[] = {
-> +	{ .compatible = "mediatek,mt8183-wdt", .data = &mt8183_compat },
->   	{ .compatible = "mediatek,mt6589-wdt" },
->   	{ /* sentinel */ }
->   };
-> 
+diff --git a/lib/test_kasan.c b/lib/test_kasan.c
+index b63b367a94e8..e4e517a51860 100644
+--- a/lib/test_kasan.c
++++ b/lib/test_kasan.c
+@@ -280,6 +280,23 @@ static noinline void __init
+kmalloc_oob_in_memset(void)
+ 	kfree(ptr);
+ }
+ 
++static noinline void __init kmalloc_memmove_invalid_size(void)
++{
++	char *ptr;
++	size_t size = 64;
++
++	pr_info("invalid size in memmove\n");
++	ptr = kmalloc(size, GFP_KERNEL);
++	if (!ptr) {
++		pr_err("Allocation failed\n");
++		return;
++	}
++
++	memset((char *)ptr, 0, 64);
++	memmove((char *)ptr, (char *)ptr + 4, -2);
++	kfree(ptr);
++}
++
+ static noinline void __init kmalloc_uaf(void)
+ {
+ 	char *ptr;
+@@ -734,6 +751,7 @@ static int __init kmalloc_tests_init(void)
+ 	kmalloc_oob_memset_4();
+ 	kmalloc_oob_memset_8();
+ 	kmalloc_oob_memset_16();
++	kmalloc_memmove_invalid_size;
+ 	kmalloc_uaf();
+ 	kmalloc_uaf_memset();
+ 	kmalloc_uaf2();
+diff --git a/mm/kasan/common.c b/mm/kasan/common.c
+index 2277b82902d8..5fd377af7457 100644
+--- a/mm/kasan/common.c
++++ b/mm/kasan/common.c
+@@ -102,7 +102,8 @@ EXPORT_SYMBOL(__kasan_check_write);
+ #undef memset
+ void *memset(void *addr, int c, size_t len)
+ {
+-	check_memory_region((unsigned long)addr, len, true, _RET_IP_);
++	if(!check_memory_region((unsigned long)addr, len, true, _RET_IP_))
++		return NULL;
+ 
+ 	return __memset(addr, c, len);
+ }
+@@ -110,7 +111,8 @@ void *memset(void *addr, int c, size_t len)
+ #undef memmove
+ void *memmove(void *dest, const void *src, size_t len)
+ {
+-	check_memory_region((unsigned long)src, len, false, _RET_IP_);
++	if(!check_memory_region((unsigned long)src, len, false, _RET_IP_))
++		return NULL;
+ 	check_memory_region((unsigned long)dest, len, true, _RET_IP_);
+ 
+ 	return __memmove(dest, src, len);
+@@ -119,7 +121,8 @@ void *memmove(void *dest, const void *src, size_t
+len)
+ #undef memcpy
+ void *memcpy(void *dest, const void *src, size_t len)
+ {
+-	check_memory_region((unsigned long)src, len, false, _RET_IP_);
++	if(!check_memory_region((unsigned long)src, len, false, _RET_IP_))
++		return NULL;
+ 	check_memory_region((unsigned long)dest, len, true, _RET_IP_);
+ 
+ 	return __memcpy(dest, src, len);
+diff --git a/mm/kasan/generic.c b/mm/kasan/generic.c
+index 616f9dd82d12..02148a317d27 100644
+--- a/mm/kasan/generic.c
++++ b/mm/kasan/generic.c
+@@ -173,6 +173,11 @@ static __always_inline bool
+check_memory_region_inline(unsigned long addr,
+ 	if (unlikely(size == 0))
+ 		return true;
+ 
++	if (unlikely((long)size < 0)) {
++		kasan_report(addr, size, write, ret_ip);
++		return false;
++	}
++
+ 	if (unlikely((void *)addr <
+ 		kasan_shadow_to_mem((void *)KASAN_SHADOW_START))) {
+ 		kasan_report(addr, size, write, ret_ip);
+diff --git a/mm/kasan/report.c b/mm/kasan/report.c
+index 0e5f965f1882..0cd317ef30f5 100644
+--- a/mm/kasan/report.c
++++ b/mm/kasan/report.c
+@@ -68,11 +68,16 @@ __setup("kasan_multi_shot", kasan_set_multi_shot);
+ 
+ static void print_error_description(struct kasan_access_info *info)
+ {
+-	pr_err("BUG: KASAN: %s in %pS\n",
+-		get_bug_type(info), (void *)info->ip);
+-	pr_err("%s of size %zu at addr %px by task %s/%d\n",
+-		info->is_write ? "Write" : "Read", info->access_size,
+-		info->access_addr, current->comm, task_pid_nr(current));
++	if ((long)info->access_size < 0) {
++		pr_err("BUG: KASAN: invalid size %zu in %pS\n",
++			info->access_size, (void *)info->ip);
++	} else {
++		pr_err("BUG: KASAN: %s in %pS\n",
++			get_bug_type(info), (void *)info->ip);
++		pr_err("%s of size %zu at addr %px by task %s/%d\n",
++			info->is_write ? "Write" : "Read", info->access_size,
++			info->access_addr, current->comm, task_pid_nr(current));
++	}
+ }
+ 
+ static DEFINE_SPINLOCK(report_lock);
+diff --git a/mm/kasan/tags.c b/mm/kasan/tags.c
+index 0e987c9ca052..b829535a3ad7 100644
+--- a/mm/kasan/tags.c
++++ b/mm/kasan/tags.c
+@@ -86,6 +86,11 @@ bool check_memory_region(unsigned long addr, size_t
+size, bool write,
+ 	if (unlikely(size == 0))
+ 		return true;
+ 
++	if (unlikely((long)size < 0)) {
++		kasan_report(addr, size, write, ret_ip);
++		return false;
++	}
++
+ 	tag = get_tag((const void *)addr);
+ 
+ 	/*
