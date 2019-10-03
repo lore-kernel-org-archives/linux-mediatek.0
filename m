@@ -1,43 +1,148 @@
-From: Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v3 1/2] dt-bindings: pwm: Convert PWM bindings to
- json-schema
-Date: Thu, 03 Oct 2019 11:15:59 -0700
-Message-ID: <20191003181600.7D6F22070B__30096.9784542517$1570126585$gmane$org@mail.kernel.org>
-References: <20191002164047.14499-1-krzk@kernel.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191002164047.14499-1-krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Uwe=20Kleine=2DK=C3=83=C2=B6nig=20=3Cu=2E?=
-Cc: Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+From: Frank Wunderlich <frank-w@public-files.de>
+Subject: [PATCH] mfd: mt6397: fix probe after changing mt6397-core
+Date: Thu,  3 Oct 2019 20:53:23 +0200
+Message-ID: <20191003185323.24646-1-frank-w@public-files.de>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Lee Jones <lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+Cc: Frank Wunderlich <frank-w@public-files.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting Krzysztof Kozlowski (2019-10-02 09:40:46)
-> Convert generic PWM bindings to DT schema format using json-schema.  The
-> consumer bindings are split to separate file.
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> 
-> ---
-> 
-> Changes since v2:
-> 1. Change also pwm-sprd.txt
-> 
-> Changes since v1:
-> 1. Indent example with four spaces (more readable),
-> 2. Change pattern for pwm nodes,
-> 3. Remove $ref from #cells.
-> ---
->  .../devicetree/bindings/clock/pwm-clock.txt   |  2 +-
+Part 3 from this series [1] was not merged due to wrong splitting
+and breaks mt6323 pmic on bananapi-r2
 
-Acked-by: Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+dmesg prints this line and at least switch is not initialized on bananapi-r2
+
+mt6397 1000d000.pwrap:mt6323: unsupported chip: 0x0
+
+this patch contains only the probe-changes and chip_data structs
+from original part 3 by Hsin-Hsiung Wang
+
+Fixes: a4872e80ce7d2a1844328176dbf279d0a2b89bdb mfd: mt6397: Extract IRQ related code from core driver
+
+[1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=164155
+
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+ drivers/mfd/mt6397-core.c | 64 ++++++++++++++++++++++++---------------
+ 1 file changed, 40 insertions(+), 24 deletions(-)
+
+diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+index 310dae26ddff..b2c325ead1c8 100644
+--- a/drivers/mfd/mt6397-core.c
++++ b/drivers/mfd/mt6397-core.c
+@@ -129,11 +129,27 @@ static int mt6397_irq_resume(struct device *dev)
+ static SIMPLE_DEV_PM_OPS(mt6397_pm_ops, mt6397_irq_suspend,
+ 			mt6397_irq_resume);
+ 
++struct chip_data {
++	u32 cid_addr;
++	u32 cid_shift;
++};
++
++static const struct chip_data mt6323_core = {
++	.cid_addr = MT6323_CID,
++	.cid_shift = 0,
++};
++
++static const struct chip_data mt6397_core = {
++	.cid_addr = MT6397_CID,
++	.cid_shift = 0,
++};
++
+ static int mt6397_probe(struct platform_device *pdev)
+ {
+ 	int ret;
+ 	unsigned int id;
+ 	struct mt6397_chip *pmic;
++	const struct chip_data *pmic_core;
+ 
+ 	pmic = devm_kzalloc(&pdev->dev, sizeof(*pmic), GFP_KERNEL);
+ 	if (!pmic)
+@@ -149,28 +165,30 @@ static int mt6397_probe(struct platform_device *pdev)
+ 	if (!pmic->regmap)
+ 		return -ENODEV;
+ 
+-	platform_set_drvdata(pdev, pmic);
++	pmic_core = of_device_get_match_data(&pdev->dev);
++	if (!pmic_core)
++		return -ENODEV;
+ 
+-	ret = regmap_read(pmic->regmap, MT6397_CID, &id);
++	ret = regmap_read(pmic->regmap, pmic_core->cid_addr, &id);
+ 	if (ret) {
+-		dev_err(pmic->dev, "Failed to read chip id: %d\n", ret);
++		dev_err(&pdev->dev, "Failed to read chip id: %d\n", ret);
+ 		return ret;
+ 	}
+ 
++	pmic->chip_id = (id >> pmic_core->cid_shift) & 0xff;
++
++	platform_set_drvdata(pdev, pmic);
++
+ 	pmic->irq = platform_get_irq(pdev, 0);
+ 	if (pmic->irq <= 0)
+ 		return pmic->irq;
+ 
+-	switch (id & 0xff) {
+-	case MT6323_CHIP_ID:
+-		pmic->int_con[0] = MT6323_INT_CON0;
+-		pmic->int_con[1] = MT6323_INT_CON1;
+-		pmic->int_status[0] = MT6323_INT_STATUS0;
+-		pmic->int_status[1] = MT6323_INT_STATUS1;
+-		ret = mt6397_irq_init(pmic);
+-		if (ret)
+-			return ret;
++	ret = mt6397_irq_init(pmic);
++	if (ret)
++		return ret;
+ 
++	switch (pmic->chip_id) {
++	case MT6323_CHIP_ID:
+ 		ret = devm_mfd_add_devices(&pdev->dev, -1, mt6323_devs,
+ 					   ARRAY_SIZE(mt6323_devs), NULL,
+ 					   0, pmic->irq_domain);
+@@ -178,21 +196,13 @@ static int mt6397_probe(struct platform_device *pdev)
+ 
+ 	case MT6391_CHIP_ID:
+ 	case MT6397_CHIP_ID:
+-		pmic->int_con[0] = MT6397_INT_CON0;
+-		pmic->int_con[1] = MT6397_INT_CON1;
+-		pmic->int_status[0] = MT6397_INT_STATUS0;
+-		pmic->int_status[1] = MT6397_INT_STATUS1;
+-		ret = mt6397_irq_init(pmic);
+-		if (ret)
+-			return ret;
+-
+ 		ret = devm_mfd_add_devices(&pdev->dev, -1, mt6397_devs,
+ 					   ARRAY_SIZE(mt6397_devs), NULL,
+ 					   0, pmic->irq_domain);
+ 		break;
+ 
+ 	default:
+-		dev_err(&pdev->dev, "unsupported chip: %d\n", id);
++		dev_err(&pdev->dev, "unsupported chip: %d\n", pmic->chip_id);
+ 		return -ENODEV;
+ 	}
+ 
+@@ -205,9 +215,15 @@ static int mt6397_probe(struct platform_device *pdev)
+ }
+ 
+ static const struct of_device_id mt6397_of_match[] = {
+-	{ .compatible = "mediatek,mt6397" },
+-	{ .compatible = "mediatek,mt6323" },
+-	{ }
++	{
++		.compatible = "mediatek,mt6323",
++		.data = &mt6323_core,
++	}, {
++		.compatible = "mediatek,mt6397",
++		.data = &mt6397_core,
++	}, {
++		/* sentinel */
++	}
+ };
+ MODULE_DEVICE_TABLE(of, mt6397_of_match);
+ 
+-- 
+2.17.1
