@@ -1,93 +1,228 @@
-From: =?UTF-8?q?Jonathan=20Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>
-Subject: [PATCH] dt-bindings: usb: Fix references to usb-hcd.yaml
-Date: Thu,  3 Oct 2019 21:31:32 +0200
-Message-ID: <20191003193132.17758-1-j.neuschaefer@gmx.net>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 2/3] soc: mediatek: pwrap: add pwrap driver for MT6779
+ SoCs
+Date: Fri, 4 Oct 2019 01:26:48 +0200
+Message-ID: <b2f881e2-959e-eccf-e62e-54c510608aaa@gmail.com>
+References: <1570088901-23211-1-git-send-email-argus.lin@mediatek.com>
+ <1570088901-23211-3-git-send-email-argus.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: devicetree@vger.kernel.org
-Cc: Mark Rutland <mark.rutland@arm.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, =?UTF-8?q?Jonathan=20Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1570088901-23211-3-git-send-email-argus.lin@mediatek.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Argus Lin <argus.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
+Cc: Chenglin Xu <chenglin.xu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, wsd_upstream@mediatek.com, henryc.chen@mediatek.com, flora.fu@mediatek.com, Chen Zhong <chen.zhong@mediatek.com>, Christophe Jaillet <christophe.jaillet@wanadoo.fr>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-dXNiLWhjZC50eHQgaGFzIGJlZW4gY29udmVydGVkIHRvIFlBTUwuIFVwZGF0ZSByZWZlcmVuY2Vz
-IGFjY29yZGluZ2x5LgoKRml4ZXM6IDE0ZWMwNzJhMTlhZCAoImR0LWJpbmRpbmdzOiB1c2I6IENv
-bnZlcnQgVVNCIEhDRCBnZW5lcmljIGJpbmRpbmcgdG8gWUFNTCIpClNpZ25lZC1vZmYtYnk6IEpv
-bmF0aGFuIE5ldXNjaMOkZmVyIDxqLm5ldXNjaGFlZmVyQGdteC5uZXQ+Ci0tLQogRG9jdW1lbnRh
-dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3VzYi9tZWRpYXRlayxtdGsteGhjaS50eHQgfCA0ICsr
-LS0KIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy91c2IvbWVkaWF0ZWssbXR1My50
-eHQgICAgIHwgNCArKy0tCiBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdXNiL3Vz
-Yi11aGNpLnR4dCAgICAgICAgICB8IDIgKy0KIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
-aW5ncy91c2IvdXNiLXhoY2kudHh0ICAgICAgICAgIHwgNCArKy0tCiA0IGZpbGVzIGNoYW5nZWQs
-IDcgaW5zZXJ0aW9ucygrKSwgNyBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9Eb2N1bWVudGF0
-aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdXNiL21lZGlhdGVrLG10ay14aGNpLnR4dCBiL0RvY3Vt
-ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy91c2IvbWVkaWF0ZWssbXRrLXhoY2kudHh0Cmlu
-ZGV4IGYzZTRhY2VjYWJlOC4uNDJkODgxNGY5MDNhIDEwMDY0NAotLS0gYS9Eb2N1bWVudGF0aW9u
-L2RldmljZXRyZWUvYmluZGluZ3MvdXNiL21lZGlhdGVrLG10ay14aGNpLnR4dAorKysgYi9Eb2N1
-bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdXNiL21lZGlhdGVrLG10ay14aGNpLnR4dApA
-QCAtMzMsNyArMzMsNyBAQCBSZXF1aXJlZCBwcm9wZXJ0aWVzOgogCSJkbWFfY2siOiBkbWFfYnVz
-IGNsb2NrIGZvciBkYXRhIHRyYW5zZmVyIGJ5IERNQSwKIAkieGhjaV9jayI6IGNvbnRyb2xsZXIg
-Y2xvY2sKCi0gLSBwaHlzIDogc2VlIHVzYi1oY2QudHh0IGluIHRoZSBjdXJyZW50IGRpcmVjdG9y
-eQorIC0gcGh5cyA6IHNlZSB1c2ItaGNkLnlhbWwgaW4gdGhlIGN1cnJlbnQgZGlyZWN0b3J5Cgog
-T3B0aW9uYWwgcHJvcGVydGllczoKICAtIHdha2V1cC1zb3VyY2UgOiBlbmFibGUgVVNCIHJlbW90
-ZSB3YWtldXA7CkBAIC01Myw3ICs1Myw3IEBAIE9wdGlvbmFsIHByb3BlcnRpZXM6CiAJU2VlOiBE
-b2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcGluY3RybC9waW5jdHJsLWJpbmRpbmdz
-LnR4dAogIC0gaW1vZC1pbnRlcnZhbC1uczogZGVmYXVsdCBpbnRlcnJ1cHQgbW9kZXJhdGlvbiBp
-bnRlcnZhbCBpcyA1MDAwbnMKCi1hZGRpdGlvbmFsbHkgdGhlIHByb3BlcnRpZXMgZnJvbSB1c2It
-aGNkLnR4dCAoaW4gdGhlIGN1cnJlbnQgZGlyZWN0b3J5KSBhcmUKK2FkZGl0aW9uYWxseSB0aGUg
-cHJvcGVydGllcyBmcm9tIHVzYi1oY2QueWFtbCAoaW4gdGhlIGN1cnJlbnQgZGlyZWN0b3J5KSBh
-cmUKIHN1cHBvcnRlZC4KCiBFeGFtcGxlOgpkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZp
-Y2V0cmVlL2JpbmRpbmdzL3VzYi9tZWRpYXRlayxtdHUzLnR4dCBiL0RvY3VtZW50YXRpb24vZGV2
-aWNldHJlZS9iaW5kaW5ncy91c2IvbWVkaWF0ZWssbXR1My50eHQKaW5kZXggYjlhZjdmNWVlOTFk
-Li5lMGFlNjA5NmY3YWMgMTAwNjQ0Ci0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
-aW5ncy91c2IvbWVkaWF0ZWssbXR1My50eHQKKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
-L2JpbmRpbmdzL3VzYi9tZWRpYXRlayxtdHUzLnR4dApAQCAtMTcsNyArMTcsNyBAQCBSZXF1aXJl
-ZCBwcm9wZXJ0aWVzOgogIC0gY2xvY2stbmFtZXMgOiBtdXN0IGNvbnRhaW4gInN5c19jayIgZm9y
-IGNsb2NrIG9mIGNvbnRyb2xsZXIsCiAJdGhlIGZvbGxvd2luZyBjbG9ja3MgYXJlIG9wdGlvbmFs
-OgogCSJyZWZfY2siLCAibWN1X2NrIiBhbmQgImRtYV9jayI7Ci0gLSBwaHlzIDogc2VlIHVzYi1o
-Y2QudHh0IGluIHRoZSBjdXJyZW50IGRpcmVjdG9yeQorIC0gcGh5cyA6IHNlZSB1c2ItaGNkLnlh
-bWwgaW4gdGhlIGN1cnJlbnQgZGlyZWN0b3J5CiAgLSBkcl9tb2RlIDogc2hvdWxkIGJlIG9uZSBv
-ZiAiaG9zdCIsICJwZXJpcGhlcmFsIiBvciAib3RnIiwKIAlyZWZlciB0byB1c2IvZ2VuZXJpYy50
-eHQKCkBAIC02MCw3ICs2MCw3IEBAIE9wdGlvbmFsIHByb3BlcnRpZXM6CiAgLSBtZWRpYXRlayx1
-M3AtZGlzLW1zayA6IG1hc2sgdG8gZGlzYWJsZSB1M3BvcnRzLCBiaXQwIGZvciB1M3BvcnQwLAog
-CWJpdDEgZm9yIHUzcG9ydDEsIC4uLiBldGM7CgotYWRkaXRpb25hbGx5IHRoZSBwcm9wZXJ0aWVz
-IGZyb20gdXNiLWhjZC50eHQgKGluIHRoZSBjdXJyZW50IGRpcmVjdG9yeSkgYXJlCithZGRpdGlv
-bmFsbHkgdGhlIHByb3BlcnRpZXMgZnJvbSB1c2ItaGNkLnlhbWwgKGluIHRoZSBjdXJyZW50IGRp
-cmVjdG9yeSkgYXJlCiBzdXBwb3J0ZWQuCgogU3ViLW5vZGVzOgpkaWZmIC0tZ2l0IGEvRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3VzYi91c2ItdWhjaS50eHQgYi9Eb2N1bWVudGF0
-aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdXNiL3VzYi11aGNpLnR4dAppbmRleCBjYzJlNmY3ZDYw
-MmUuLmQxNzAyZWIyYzhiZCAxMDA2NDQKLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
-bmRpbmdzL3VzYi91c2ItdWhjaS50eHQKKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
-bmRpbmdzL3VzYi91c2ItdWhjaS50eHQKQEAgLTYsNyArNiw3IEBAIFJlcXVpcmVkIHByb3BlcnRp
-ZXM6CiAtIHJlZyA6IFNob3VsZCBjb250YWluIDEgcmVnaXN0ZXIgcmFuZ2VzKGFkZHJlc3MgYW5k
-IGxlbmd0aCkKIC0gaW50ZXJydXB0cyA6IFVIQ0kgY29udHJvbGxlciBpbnRlcnJ1cHQKCi1hZGRp
-dGlvbmFsbHkgdGhlIHByb3BlcnRpZXMgZnJvbSB1c2ItaGNkLnR4dCAoaW4gdGhlIGN1cnJlbnQg
-ZGlyZWN0b3J5KSBhcmUKK2FkZGl0aW9uYWxseSB0aGUgcHJvcGVydGllcyBmcm9tIHVzYi1oY2Qu
-eWFtbCAoaW4gdGhlIGN1cnJlbnQgZGlyZWN0b3J5KSBhcmUKIHN1cHBvcnRlZC4KCiBFeGFtcGxl
-OgpkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3VzYi91c2It
-eGhjaS50eHQgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdXNiL3VzYi14aGNp
-LnR4dAppbmRleCA5NzQwMGU4Zjg2MDUuLmI0OWI4MTk1NzFmOSAxMDA2NDQKLS0tIGEvRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3VzYi91c2IteGhjaS50eHQKKysrIGIvRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3VzYi91c2IteGhjaS50eHQKQEAgLTQxLDkgKzQx
-LDkgQEAgT3B0aW9uYWwgcHJvcGVydGllczoKICAgLSB1c2IzLWxwbS1jYXBhYmxlOiBkZXRlcm1p
-bmVzIGlmIHBsYXRmb3JtIGlzIFVTQjMgTFBNIGNhcGFibGUKICAgLSBxdWlyay1icm9rZW4tcG9y
-dC1wZWQ6IHNldCBpZiB0aGUgY29udHJvbGxlciBoYXMgYnJva2VuIHBvcnQgZGlzYWJsZSBtZWNo
-YW5pc20KICAgLSBpbW9kLWludGVydmFsLW5zOiBkZWZhdWx0IGludGVycnVwdCBtb2RlcmF0aW9u
-IGludGVydmFsIGlzIDUwMDBucwotICAtIHBoeXMgOiBzZWUgdXNiLWhjZC50eHQgaW4gdGhlIGN1
-cnJlbnQgZGlyZWN0b3J5CisgIC0gcGh5cyA6IHNlZSB1c2ItaGNkLnlhbWwgaW4gdGhlIGN1cnJl
-bnQgZGlyZWN0b3J5CgotYWRkaXRpb25hbGx5IHRoZSBwcm9wZXJ0aWVzIGZyb20gdXNiLWhjZC50
-eHQgKGluIHRoZSBjdXJyZW50IGRpcmVjdG9yeSkgYXJlCithZGRpdGlvbmFsbHkgdGhlIHByb3Bl
-cnRpZXMgZnJvbSB1c2ItaGNkLnlhbWwgKGluIHRoZSBjdXJyZW50IGRpcmVjdG9yeSkgYXJlCiBz
-dXBwb3J0ZWQuCgoKLS0KMi4yMC4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJtLWtl
-cm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
+
+
+On 03/10/2019 09:48, Argus Lin wrote:
+> MT6779 is a highly integrated SoCs, it uses MT6359 for power
+> management. This patch adds pwrap driver to access MT6359.
+> Pwrap of MT6779 support dynamic priority meichanism, sequence
+
+mechanism
+
+> monitor and starvation mechanism to make transaction more
+> reliable. WDT setting only need to init when it is zero,
+> otherwise keep current value. When setting interrupt enable
+
+that's mt6779 specific?
+
+> flag at pwrap_probe, read current setting then do logical OR
+> operation with wrp->master->int_en_all.
+
+same here, only specific to mt6779?
+
+> 
+> Signed-off-by: Argus Lin <argus.lin@mediatek.com>
+> ---
+>  drivers/soc/mediatek/mtk-pmic-wrap.c | 85 ++++++++++++++++++++++++++++++++----
+>  1 file changed, 77 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> index c725315..fa8daf2 100644
+> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> @@ -497,6 +497,45 @@ enum pwrap_regs {
+>  	[PWRAP_DCM_DBC_PRD] =		0x1E0,
+>  };
+> 
+> +static int mt6779_regs[] = {
+> +	[PWRAP_MUX_SEL] =		0x0,
+> +	[PWRAP_WRAP_EN] =		0x4,
+> +	[PWRAP_DIO_EN] =		0x8,
+> +	[PWRAP_RDDMY] =			0x20,
+> +	[PWRAP_CSHEXT_WRITE] =		0x24,
+> +	[PWRAP_CSHEXT_READ] =		0x28,
+> +	[PWRAP_CSLEXT_WRITE] =		0x2C,
+> +	[PWRAP_CSLEXT_READ] =		0x30,
+> +	[PWRAP_EXT_CK_WRITE] =		0x34,
+> +	[PWRAP_STAUPD_CTRL] =		0x3C,
+> +	[PWRAP_STAUPD_GRPEN] =		0x40,
+> +	[PWRAP_EINT_STA0_ADR] =		0x44,
+> +	[PWRAP_HARB_HPRIO] =		0x68,
+> +	[PWRAP_HIPRIO_ARB_EN] =		0x6C,
+> +	[PWRAP_MAN_EN] =		0x7C,
+> +	[PWRAP_MAN_CMD] =		0x80,
+> +	[PWRAP_WACS0_EN] =		0x8C,
+> +	[PWRAP_WACS1_EN] =		0x94,
+> +	[PWRAP_WACS2_EN] =		0x9C,
+> +	[PWRAP_INIT_DONE0] =		0x90,
+> +	[PWRAP_INIT_DONE1] =		0x98,
+> +	[PWRAP_INIT_DONE2] =		0xA0,
+> +	[PWRAP_INT_EN] =		0xBC,
+> +	[PWRAP_INT_FLG_RAW] =		0xC0,
+> +	[PWRAP_INT_FLG] =		0xC4,
+> +	[PWRAP_INT_CLR] =		0xC8,
+> +	[PWRAP_INT1_EN] =		0xCC,
+> +	[PWRAP_INT1_FLG] =		0xD4,
+> +	[PWRAP_INT1_CLR] =		0xD8,
+> +	[PWRAP_TIMER_EN] =		0xF0,
+> +	[PWRAP_WDT_UNIT] =		0xF8,
+> +	[PWRAP_WDT_SRC_EN] =		0xFC,
+> +	[PWRAP_WDT_SRC_EN_1] =		0x100,
+> +	[PWRAP_WACS2_CMD] =		0xC20,
+> +	[PWRAP_WACS2_RDATA] =		0xC24,
+> +	[PWRAP_WACS2_VLDCLR] =		0xC28,
+> +};
+> +
+>  static int mt6797_regs[] = {
+>  	[PWRAP_MUX_SEL] =		0x0,
+>  	[PWRAP_WRAP_EN] =		0x4,
+> @@ -945,6 +984,7 @@ enum pmic_type {
+>  enum pwrap_type {
+>  	PWRAP_MT2701,
+>  	PWRAP_MT6765,
+> +	PWRAP_MT6779,
+>  	PWRAP_MT6797,
+>  	PWRAP_MT7622,
+>  	PWRAP_MT8135,
+> @@ -1377,6 +1417,7 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
+>  		break;
+>  	case PWRAP_MT2701:
+>  	case PWRAP_MT6765:
+> +	case PWRAP_MT6779:
+>  	case PWRAP_MT6797:
+>  	case PWRAP_MT8173:
+>  	case PWRAP_MT8516:
+> @@ -1468,8 +1509,10 @@ static int pwrap_init_security(struct pmic_wrapper *wrp)
+>  	pwrap_writel(wrp, 0x0, PWRAP_SIG_MODE);
+>  	pwrap_writel(wrp, wrp->slave->dew_regs[PWRAP_DEW_CRC_VAL],
+>  		     PWRAP_SIG_ADR);
+> -	pwrap_writel(wrp,
+> -		     wrp->master->arb_en_all, PWRAP_HIPRIO_ARB_EN);
+> +	if (pwrap_readl(wrp, PWRAP_HIPRIO_ARB_EN) == 0) {
+
+Did you make sure that this holds for all SoCs that are supported by the driver?
+If so, why do we need this in mt6779 and didn't need that in the others?
+Even more, mt6779 does not have the security capbaility, so why do you change
+this code?
+
+> +		pwrap_writel(wrp,
+> +			     wrp->master->arb_en_all, PWRAP_HIPRIO_ARB_EN);
+> +	}
+
+I just realize that we write PWRAP_HIPRIO_ARB_EN twice if the slave supports
+security. Do we really need that?
+
+> 
+>  	return 0;
+>  }
+> @@ -1581,7 +1624,10 @@ static int pwrap_init(struct pmic_wrapper *wrp)
+> 
+>  	pwrap_writel(wrp, 1, PWRAP_WRAP_EN);
+> 
+> -	pwrap_writel(wrp, wrp->master->arb_en_all, PWRAP_HIPRIO_ARB_EN);
+> +	if (pwrap_readl(wrp, PWRAP_HIPRIO_ARB_EN) == 0) {
+> +		pwrap_writel(wrp,
+> +			     wrp->master->arb_en_all, PWRAP_HIPRIO_ARB_EN);
+> +	}
+> 
+>  	pwrap_writel(wrp, 1, PWRAP_WACS2_EN);
+> 
+> @@ -1783,6 +1829,19 @@ static irqreturn_t pwrap_interrupt(int irqno, void *dev_id)
+>  	.init_soc_specific = NULL,
+>  };
+> 
+> +static const struct pmic_wrapper_type pwrap_mt6779 = {
+> +	.regs = mt6779_regs,
+> +	.type = PWRAP_MT6779,
+> +	.arb_en_all = 0,
+> +	.int_en_all = 0,
+> +	.int1_en_all = 0,
+> +	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
+> +	.wdt_src = 0,
+> +	.caps = 0,
+> +	.init_reg_clock = pwrap_common_init_reg_clock,
+> +	.init_soc_specific = NULL,
+> +};
+> +
+>  static const struct pmic_wrapper_type pwrap_mt6797 = {
+>  	.regs = mt6797_regs,
+>  	.type = PWRAP_MT6797,
+> @@ -1868,6 +1927,9 @@ static irqreturn_t pwrap_interrupt(int irqno, void *dev_id)
+>  		.compatible = "mediatek,mt6765-pwrap",
+>  		.data = &pwrap_mt6765,
+>  	}, {
+> +		.compatible = "mediatek,mt6779-pwrap",
+> +		.data = &pwrap_mt6779,
+> +	}, {
+>  		.compatible = "mediatek,mt6797-pwrap",
+>  		.data = &pwrap_mt6797,
+>  	}, {
+> @@ -1898,6 +1960,7 @@ static int pwrap_probe(struct platform_device *pdev)
+>  	struct device_node *np = pdev->dev.of_node;
+>  	const struct of_device_id *of_slave_id = NULL;
+>  	struct resource *res;
+> +	u32 int_en;
+> 
+>  	if (np->child)
+>  		of_slave_id = of_match_node(of_slave_match_tbl, np->child);
+> @@ -1995,23 +2058,29 @@ static int pwrap_probe(struct platform_device *pdev)
+>  	}
+> 
+>  	/* Initialize watchdog, may not be done by the bootloader */
+> -	pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
+> +	if (pwrap_readl(wrp, PWRAP_WDT_UNIT) == 0)
+
+Same here, why do we need it in mt6779 and did you test if it does not break any
+older SoC?
+
+> +		pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
+>  	/*
+>  	 * Since STAUPD was not used on mt8173 platform,
+>  	 * so STAUPD of WDT_SRC which should be turned off
+>  	 */
+> -	pwrap_writel(wrp, wrp->master->wdt_src, PWRAP_WDT_SRC_EN);
+> +	if (pwrap_readl(wrp, PWRAP_WDT_SRC_EN) == 0)
+> +		pwrap_writel(wrp, wrp->master->wdt_src, PWRAP_WDT_SRC_EN);
+>  	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_WDT_SRC1))
+>  		pwrap_writel(wrp, wrp->master->wdt_src, PWRAP_WDT_SRC_EN_1);
+> 
+>  	pwrap_writel(wrp, 0x1, PWRAP_TIMER_EN);
+> -	pwrap_writel(wrp, wrp->master->int_en_all, PWRAP_INT_EN);
+> +	int_en = pwrap_readl(wrp, PWRAP_INT_EN);
+> +	pwrap_writel(wrp, (int_en) | (wrp->master->int_en_all), PWRAP_INT_EN);
+
+Looks ok to me, is it a bug fix, or only needed for mt6779?
+
+>  	/*
+>  	 * We add INT1 interrupt to handle starvation and request exception
+>  	 * If we support it, we should enable it here.
+>  	 */
+> -	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_INT1_EN))
+> -		pwrap_writel(wrp, wrp->master->int1_en_all, PWRAP_INT1_EN);
+> +	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_INT1_EN)) {
+> +		int_en = pwrap_readl(wrp, PWRAP_INT1_EN);
+> +		pwrap_writel(wrp, (int_en) | wrp->master->int1_en_all,
+> +			     PWRAP_INT1_EN);
+> +	}
+> 
+>  	irq = platform_get_irq(pdev, 0);
+>  	ret = devm_request_irq(wrp->dev, irq, pwrap_interrupt,
+> --
+> 1.8.1.1.dirty
+> 
