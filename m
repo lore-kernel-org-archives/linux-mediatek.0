@@ -1,216 +1,103 @@
-From: Dmitry Vyukov <dvyukov@google.com>
-Subject: Re: [PATCH] kasan: fix the missing underflow in memmove and memcpy
- with CONFIG_KASAN_GENERIC=y
-Date: Thu, 3 Oct 2019 16:53:59 +0200
-Message-ID: <CACT4Y+aKrC8mtcDTVhM-So-TTLjOyFCD7r6jryWFH6i2he1WJA@mail.gmail.com>
-References: <20190927034338.15813-1-walter-zh.wu@mediatek.com>
- <CACT4Y+Zxz+R=qQxSMoipXoLjRqyApD3O0eYpK0nyrfGHE4NNPw@mail.gmail.com>
- <1569594142.9045.24.camel@mtksdccf07> <CACT4Y+YuAxhKtL7ho7jpVAPkjG-JcGyczMXmw8qae2iaZjTh_w@mail.gmail.com>
- <1569818173.17361.19.camel@mtksdccf07> <1570018513.19702.36.camel@mtksdccf07>
- <CACT4Y+bbZhvz9ZpHtgL8rCCsV=ybU5jA6zFnJBL7gY2cNXDLyQ@mail.gmail.com>
- <1570069078.19702.57.camel@mtksdccf07> <CACT4Y+ZwNv2-QBrvuR2JvemovmKPQ9Ggrr=ZkdTg6xy_Ki6UAg@mail.gmail.com>
- <1570095525.19702.59.camel@mtksdccf07> <1570110681.19702.64.camel@mtksdccf07>
+From: Dietmar Eggemann <dietmar.eggemann@arm.com>
+Subject: Re: [PATCH 1/1] sched/rt: avoid contend with CFS task
+Date: Thu, 3 Oct 2019 18:25:30 +0200
+Message-ID: <7bd9506b-9930-0bf8-a024-8c7d7d8bf86e@arm.com>
+References: <1567048502-6064-1-git-send-email-jing-ting.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1570110681.19702.64.camel@mtksdccf07>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Walter Wu <walter-zh.wu@mediatek.com>
-Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>, Linux-MM <linux-mm@kvack.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream <wsd_upstream@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1567048502-6064-1-git-send-email-jing-ting.wu@mediatek.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Jing-Ting Wu <jing-ting.wu@mediatek.com>, Peter Zijlstra <peterz@infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, Steven Rostedt <rostedt@goodmis.org>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Oct 3, 2019 at 3:51 PM Walter Wu <walter-zh.wu@mediatek.com> wrote:>
-> how about this?
->
-> commit fd64691026e7ccb8d2946d0804b0621ac177df38
-> Author: Walter Wu <walter-zh.wu@mediatek.com>
-> Date:   Fri Sep 27 09:54:18 2019 +0800
->
->     kasan: detect invalid size in memory operation function
->
->     It is an undefined behavior to pass a negative value to
-> memset()/memcpy()/memmove()
->     , so need to be detected by KASAN.
->
->     KASAN report:
->
->      BUG: KASAN: invalid size 18446744073709551614 in
-> kmalloc_memmove_invalid_size+0x70/0xa0
->
->      CPU: 1 PID: 91 Comm: cat Not tainted
-> 5.3.0-rc1ajb-00001-g31943bbc21ce-dirty #7
->      Hardware name: linux,dummy-virt (DT)
->      Call trace:
->       dump_backtrace+0x0/0x278
->       show_stack+0x14/0x20
->       dump_stack+0x108/0x15c
->       print_address_description+0x64/0x368
->       __kasan_report+0x108/0x1a4
->       kasan_report+0xc/0x18
->       check_memory_region+0x15c/0x1b8
->       memmove+0x34/0x88
->       kmalloc_memmove_invalid_size+0x70/0xa0
->
->     [1] https://bugzilla.kernel.org/show_bug.cgi?id=199341
->
->     Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
->     Reported-by: Dmitry Vyukov <dvyukov@google.com>
->
-> diff --git a/lib/test_kasan.c b/lib/test_kasan.c
-> index b63b367a94e8..e4e517a51860 100644
-> --- a/lib/test_kasan.c
-> +++ b/lib/test_kasan.c
-> @@ -280,6 +280,23 @@ static noinline void __init
-> kmalloc_oob_in_memset(void)
->         kfree(ptr);
->  }
->
-> +static noinline void __init kmalloc_memmove_invalid_size(void)
-> +{
-> +       char *ptr;
-> +       size_t size = 64;
-> +
-> +       pr_info("invalid size in memmove\n");
-> +       ptr = kmalloc(size, GFP_KERNEL);
-> +       if (!ptr) {
-> +               pr_err("Allocation failed\n");
-> +               return;
-> +       }
-> +
-> +       memset((char *)ptr, 0, 64);
-> +       memmove((char *)ptr, (char *)ptr + 4, -2);
-> +       kfree(ptr);
-> +}
-> +
->  static noinline void __init kmalloc_uaf(void)
+[+ Steven Rostedt <rostedt@goodmis.org>]
+
+On 29/08/2019 05:15, Jing-Ting Wu wrote:
+> At original linux design, RT & CFS scheduler are independent.
+> Current RT task placement policy will select the first cpu in
+> lowest_mask, even if the first CPU is running a CFS task.
+> This may put RT task to a running cpu and let CFS task runnable.
+> 
+> So we select idle cpu in lowest_mask first to avoid preempting
+> CFS task.
+> 
+> Signed-off-by: Jing-Ting Wu <jing-ting.wu@mediatek.com>
+> ---
+>  kernel/sched/rt.c |   42 +++++++++++++++++-------------------------
+>  1 file changed, 17 insertions(+), 25 deletions(-)
+> 
+> diff --git a/kernel/sched/rt.c b/kernel/sched/rt.c
+> index a532558..626ca27 100644
+> --- a/kernel/sched/rt.c
+> +++ b/kernel/sched/rt.c
+> @@ -1388,7 +1388,6 @@ static void yield_task_rt(struct rq *rq)
+>  static int
+>  select_task_rq_rt(struct task_struct *p, int cpu, int sd_flag, int flags)
 >  {
->         char *ptr;
-> @@ -734,6 +751,7 @@ static int __init kmalloc_tests_init(void)
->         kmalloc_oob_memset_4();
->         kmalloc_oob_memset_8();
->         kmalloc_oob_memset_16();
-> +       kmalloc_memmove_invalid_size;
->         kmalloc_uaf();
->         kmalloc_uaf_memset();
->         kmalloc_uaf2();
-> diff --git a/mm/kasan/common.c b/mm/kasan/common.c
-> index 2277b82902d8..5fd377af7457 100644
-> --- a/mm/kasan/common.c
-> +++ b/mm/kasan/common.c
-> @@ -102,7 +102,8 @@ EXPORT_SYMBOL(__kasan_check_write);
->  #undef memset
->  void *memset(void *addr, int c, size_t len)
->  {
-> -       check_memory_region((unsigned long)addr, len, true, _RET_IP_);
-> +       if(!check_memory_region((unsigned long)addr, len, true, _RET_IP_))
-> +               return NULL;
+> -	struct task_struct *curr;
+>  	struct rq *rq;
+>  
+>  	/* For anything but wake ups, just return the task_cpu */
+> @@ -1398,33 +1397,15 @@ static void yield_task_rt(struct rq *rq)
+>  	rq = cpu_rq(cpu);
+>  
+>  	rcu_read_lock();
+> -	curr = READ_ONCE(rq->curr); /* unlocked access */
+>  
+>  	/*
+> -	 * If the current task on @p's runqueue is an RT task, then
+> -	 * try to see if we can wake this RT task up on another
+> -	 * runqueue. Otherwise simply start this RT task
+> -	 * on its current runqueue.
+> -	 *
+> -	 * We want to avoid overloading runqueues. If the woken
+> -	 * task is a higher priority, then it will stay on this CPU
+> -	 * and the lower prio task should be moved to another CPU.
+> -	 * Even though this will probably make the lower prio task
+> -	 * lose its cache, we do not want to bounce a higher task
+> -	 * around just because it gave up its CPU, perhaps for a
+> -	 * lock?
+> -	 *
+> -	 * For equal prio tasks, we just let the scheduler sort it out.
+> -	 *
+> -	 * Otherwise, just let it ride on the affined RQ and the
+> -	 * post-schedule router will push the preempted task away
+> -	 *
+> -	 * This test is optimistic, if we get it wrong the load-balancer
+> -	 * will have to sort it out.
+> +	 * If the task p is allowed to put more than one CPU or
+> +	 * it is not allowed to put on this CPU.
+> +	 * Let p use find_lowest_rq to choose other idle CPU first,
+> +	 * instead of choose this cpu and preempt curr cfs task.
+>  	 */
+> -	if (curr && unlikely(rt_task(curr)) &&
+> -	    (curr->nr_cpus_allowed < 2 ||
+> -	     curr->prio <= p->prio)) {
+> +	if ((p->nr_cpus_allowed > 1) ||
+> +	    (!cpumask_test_cpu(cpu, p->cpus_ptr))) {
+>  		int target = find_lowest_rq(p);
 
-Overall approach looks good to me.
-A good question is what we should return here. All bets are off after
-a report, but we still try to "minimize damage". One may argue for
-returning addr here and in other functions. But the more I think about
-this, the more I think it does not matter.
+I'm sure RT folks don't like the idea to change this condition.
 
+I remember a similar approach and Steven Rostedt NAKed the idea back:
 
->         return __memset(addr, c, len);
->  }
-> @@ -110,7 +111,8 @@ void *memset(void *addr, int c, size_t len)
->  #undef memmove
->  void *memmove(void *dest, const void *src, size_t len)
->  {
-> -       check_memory_region((unsigned long)src, len, false, _RET_IP_);
-> +       if(!check_memory_region((unsigned long)src, len, false, _RET_IP_))
-> +               return NULL;
->         check_memory_region((unsigned long)dest, len, true, _RET_IP_);
->
->         return __memmove(dest, src, len);
-> @@ -119,7 +121,8 @@ void *memmove(void *dest, const void *src, size_t
-> len)
->  #undef memcpy
->  void *memcpy(void *dest, const void *src, size_t len)
->  {
-> -       check_memory_region((unsigned long)src, len, false, _RET_IP_);
-> +       if(!check_memory_region((unsigned long)src, len, false, _RET_IP_))
-> +               return NULL;
->         check_memory_region((unsigned long)dest, len, true, _RET_IP_);
->
->         return __memcpy(dest, src, len);
-> diff --git a/mm/kasan/generic.c b/mm/kasan/generic.c
-> index 616f9dd82d12..02148a317d27 100644
-> --- a/mm/kasan/generic.c
-> +++ b/mm/kasan/generic.c
-> @@ -173,6 +173,11 @@ static __always_inline bool
-> check_memory_region_inline(unsigned long addr,
->         if (unlikely(size == 0))
->                 return true;
->
-> +       if (unlikely((long)size < 0)) {
-> +               kasan_report(addr, size, write, ret_ip);
-> +               return false;
-> +       }
-> +
->         if (unlikely((void *)addr <
->                 kasan_shadow_to_mem((void *)KASAN_SHADOW_START))) {
->                 kasan_report(addr, size, write, ret_ip);
-> diff --git a/mm/kasan/report.c b/mm/kasan/report.c
-> index 0e5f965f1882..0cd317ef30f5 100644
-> --- a/mm/kasan/report.c
-> +++ b/mm/kasan/report.c
-> @@ -68,11 +68,16 @@ __setup("kasan_multi_shot", kasan_set_multi_shot);
->
->  static void print_error_description(struct kasan_access_info *info)
->  {
-> -       pr_err("BUG: KASAN: %s in %pS\n",
-> -               get_bug_type(info), (void *)info->ip);
-> -       pr_err("%s of size %zu at addr %px by task %s/%d\n",
-> -               info->is_write ? "Write" : "Read", info->access_size,
-> -               info->access_addr, current->comm, task_pid_nr(current));
-> +       if ((long)info->access_size < 0) {
-> +               pr_err("BUG: KASAN: invalid size %zu in %pS\n",
-> +                       info->access_size, (void *)info->ip);
+https://lore.kernel.org/r/1415099585-31174-2-git-send-email-pang.xunlei@linaro.org
 
-I would not introduce a new bug type.
-These are parsed and used by some systems, e.g. syzbot. If size is
-user-controllable, then a new bug type for this will mean 2 bug
-reports.
-It also won't harm to print Read/Write, definitely the address, so no
-reason to special case this out of a dozen of report formats.
-This can qualify as out-of-bounds (definitely will cross some
-bounds!), so I would change get_bug_type() to return
-"slab-out-of-bounds" (as the most common OOB) in such case (with a
-comment).
+Back then, Xunlei Pang even tried to create a lower mask of idle CPUs,
+for find_lower_mask() to return:
 
+https://lore.kernel.org/r/1415099585-31174-1-git-send-email-pang.xunlei@linaro.org
 
-> +       } else {
-> +               pr_err("BUG: KASAN: %s in %pS\n",
-> +                       get_bug_type(info), (void *)info->ip);
-> +               pr_err("%s of size %zu at addr %px by task %s/%d\n",
-> +                       info->is_write ? "Write" : "Read", info->access_size,
-> +                       info->access_addr, current->comm, task_pid_nr(current));
-> +       }
->  }
->
->  static DEFINE_SPINLOCK(report_lock);
-> diff --git a/mm/kasan/tags.c b/mm/kasan/tags.c
-> index 0e987c9ca052..b829535a3ad7 100644
-> --- a/mm/kasan/tags.c
-> +++ b/mm/kasan/tags.c
-> @@ -86,6 +86,11 @@ bool check_memory_region(unsigned long addr, size_t
-> size, bool write,
->         if (unlikely(size == 0))
->                 return true;
->
-> +       if (unlikely((long)size < 0)) {
-> +               kasan_report(addr, size, write, ret_ip);
-> +               return false;
-> +       }
-> +
->         tag = get_tag((const void *)addr);
->
->         /*
->
->
-> --
-> You received this message because you are subscribed to the Google Groups "kasan-dev" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to kasan-dev+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/kasan-dev/1570110681.19702.64.camel%40mtksdccf07.
+[...]
