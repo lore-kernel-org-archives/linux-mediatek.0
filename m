@@ -1,26 +1,106 @@
-From: "Frank Wunderlich" <frank-w@public-files.de>
-Subject: Aw: Re: [PATCH] mfd: mt6397: fix probe after changing mt6397-core
-Date: Fri, 4 Oct 2019 17:51:59 +0200
-Message-ID: <trinity-c33ab112-57a5-47d6-80e5-13c96442e302-1570204319219@3c-app-gmx-bap10>
-References: <20191003185323.24646-1-frank-w@public-files.de>
- <20191004152001.GS18429@dell>
+From: Ulrich Hecht <uli-qwV78thtvt0@public.gmane.org>
+Subject: [PATCH v19 1/2] Documentation: bridge: Add documentation for ps8640
+ DT properties
+Date: Fri,  4 Oct 2019 21:09:07 +0200
+Message-ID: <1570216148-22802-2-git-send-email-uli@fpond.eu>
+References: <1570216148-22802-1-git-send-email-uli@fpond.eu>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191004152001.GS18429@dell>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Lee Jones <lee.jones@linaro.org>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1570216148-22802-1-git-send-email-uli-qwV78thtvt0@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, Ulrich Hecht <uli-qwV78thtvt0@public.gmane.org>, stonea168-9Onoh4P/yGk@public.gmane.org, ajaykumar.rs-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, vpalatin-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, rahul.sharma-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This Question goes to Hsin-Hsiung Wang ;)
+From: Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-i only took his code (and splitted the 3rd part) to get mt6323 working again without reverting the other 2 Patches
+Add documentation for DT properties supported by
+ps8640 DSI-eDP converter.
 
-regards Frank
+Signed-off-by: Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Reviewed-by: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Signed-off-by: Ulrich Hecht <uli-qwV78thtvt0@public.gmane.org>
+---
 
+Changes since v18:
+ - No change.
 
-> Gesendet: Freitag, 04. Oktober 2019 um 17:20 Uhr
-> Von: "Lee Jones" <lee.jones@linaro.org>
+Changes since v17:
+ - No change.
 
-> Will there be other devices which have a !0 CID shift?
+Changes since v16:
+ - No change.
+
+Changes since v15:
+ - No change.
+
+Changes since v14:
+ - change mode-sel-gpios as optional.
+
+ .../devicetree/bindings/display/bridge/ps8640.txt  | 44 ++++++++++++++++++++++
+ 1 file changed, 44 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/bridge/ps8640.txt
+
+diff --git a/Documentation/devicetree/bindings/display/bridge/ps8640.txt b/Documentation/devicetree/bindings/display/bridge/ps8640.txt
+new file mode 100644
+index 0000000..7b13f92
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/bridge/ps8640.txt
+@@ -0,0 +1,44 @@
++ps8640-bridge bindings
++
++Required properties:
++	- compatible: "parade,ps8640"
++	- reg: first page address of the bridge.
++	- sleep-gpios: OF device-tree gpio specification for PD pin.
++	- reset-gpios: OF device-tree gpio specification for reset pin.
++	- vdd12-supply: OF device-tree regulator specification for 1.2V power.
++	- vdd33-supply: OF device-tree regulator specification for 3.3V power.
++	- ports: The device node can contain video interface port nodes per
++		 the video-interfaces bind[1]. For port@0,set the reg = <0> as
++		 ps8640 dsi in and port@1,set the reg = <1> as ps8640 eDP out.
++
++Optional properties:
++	- mode-sel-gpios: OF device-tree gpio specification for mode-sel pin.
++[1]: Documentation/devicetree/bindings/media/video-interfaces.txt
++
++Example:
++	edp-bridge@18 {
++		compatible = "parade,ps8640";
++		reg = <0x18>;
++		sleep-gpios = <&pio 116 GPIO_ACTIVE_LOW>;
++		reset-gpios = <&pio 115 GPIO_ACTIVE_LOW>;
++		mode-sel-gpios = <&pio 92 GPIO_ACTIVE_HIGH>;
++		vdd12-supply = <&ps8640_fixed_1v2>;
++		vdd33-supply = <&mt6397_vgp2_reg>;
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++			port@0 {
++				reg = <0>;
++				ps8640_in: endpoint {
++					remote-endpoint = <&dsi0_out>;
++				};
++			};
++			port@1 {
++				reg = <1>;
++				ps8640_out: endpoint {
++					remote-endpoint = <&panel_in>;
++				};
++			};
++		};
++	};
+-- 
+2.7.4
