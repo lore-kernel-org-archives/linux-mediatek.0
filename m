@@ -1,211 +1,60 @@
-From: Walter Wu <walter-zh.wu@mediatek.com>
-Subject: Re: [PATCH] kasan: fix the missing underflow in memmove and memcpy
- with CONFIG_KASAN_GENERIC=y
-Date: Fri, 4 Oct 2019 12:42:20 +0800
-Message-ID: <1570164140.19702.97.camel@mtksdccf07>
-References: <20190927034338.15813-1-walter-zh.wu@mediatek.com>
- <CACT4Y+Zxz+R=qQxSMoipXoLjRqyApD3O0eYpK0nyrfGHE4NNPw@mail.gmail.com>
- <1569594142.9045.24.camel@mtksdccf07>
- <CACT4Y+YuAxhKtL7ho7jpVAPkjG-JcGyczMXmw8qae2iaZjTh_w@mail.gmail.com>
- <1569818173.17361.19.camel@mtksdccf07>
- <1570018513.19702.36.camel@mtksdccf07>
- <CACT4Y+bbZhvz9ZpHtgL8rCCsV=ybU5jA6zFnJBL7gY2cNXDLyQ@mail.gmail.com>
- <1570069078.19702.57.camel@mtksdccf07>
- <CACT4Y+ZwNv2-QBrvuR2JvemovmKPQ9Ggrr=ZkdTg6xy_Ki6UAg@mail.gmail.com>
- <1570095525.19702.59.camel@mtksdccf07>
- <1570110681.19702.64.camel@mtksdccf07>
- <CACT4Y+aKrC8mtcDTVhM-So-TTLjOyFCD7r6jryWFH6i2he1WJA@mail.gmail.com>
+From: Miles Chen <miles.chen@mediatek.com>
+Subject: [PATCH] mm/page_owner: fix incorrect looping in __set_page_owner_handle()
+Date: Fri, 4 Oct 2019 15:37:55 +0800
+Message-ID: <20191004073755.3228-1-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CACT4Y+aKrC8mtcDTVhM-So-TTLjOyFCD7r6jryWFH6i2he1WJA@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Dmitry Vyukov <dvyukov@google.com>
-Cc: wsd_upstream <wsd_upstream@mediatek.com>, linux-mediatek@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>, Linux-MM <linux-mm@kvack.org>, Alexander Potapenko <glider@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrey Ryabinin <aryabinin@virtuozzo.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Andrew Morton <akpm@linux-foundation.org>
+Cc: linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Miles Chen <miles.chen@mediatek.com>, Vlastimil Babka <vbabka@suse.cz>, Michal Hocko <mhocko@suse.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2019-10-03 at 16:53 +0200, Dmitry Vyukov wrote:
-> On Thu, Oct 3, 2019 at 3:51 PM Walter Wu <walter-zh.wu@mediatek.com> wrote:>
-> > how about this?
-> >
-> > commit fd64691026e7ccb8d2946d0804b0621ac177df38
-> > Author: Walter Wu <walter-zh.wu@mediatek.com>
-> > Date:   Fri Sep 27 09:54:18 2019 +0800
-> >
-> >     kasan: detect invalid size in memory operation function
-> >
-> >     It is an undefined behavior to pass a negative value to
-> > memset()/memcpy()/memmove()
-> >     , so need to be detected by KASAN.
-> >
-> >     KASAN report:
-> >
-> >      BUG: KASAN: invalid size 18446744073709551614 in
-> > kmalloc_memmove_invalid_size+0x70/0xa0
-> >
-> >      CPU: 1 PID: 91 Comm: cat Not tainted
-> > 5.3.0-rc1ajb-00001-g31943bbc21ce-dirty #7
-> >      Hardware name: linux,dummy-virt (DT)
-> >      Call trace:
-> >       dump_backtrace+0x0/0x278
-> >       show_stack+0x14/0x20
-> >       dump_stack+0x108/0x15c
-> >       print_address_description+0x64/0x368
-> >       __kasan_report+0x108/0x1a4
-> >       kasan_report+0xc/0x18
-> >       check_memory_region+0x15c/0x1b8
-> >       memmove+0x34/0x88
-> >       kmalloc_memmove_invalid_size+0x70/0xa0
-> >
-> >     [1] https://bugzilla.kernel.org/show_bug.cgi?id=199341
-> >
-> >     Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-> >     Reported-by: Dmitry Vyukov <dvyukov@google.com>
-> >
-> > diff --git a/lib/test_kasan.c b/lib/test_kasan.c
-> > index b63b367a94e8..e4e517a51860 100644
-> > --- a/lib/test_kasan.c
-> > +++ b/lib/test_kasan.c
-> > @@ -280,6 +280,23 @@ static noinline void __init
-> > kmalloc_oob_in_memset(void)
-> >         kfree(ptr);
-> >  }
-> >
-> > +static noinline void __init kmalloc_memmove_invalid_size(void)
-> > +{
-> > +       char *ptr;
-> > +       size_t size = 64;
-> > +
-> > +       pr_info("invalid size in memmove\n");
-> > +       ptr = kmalloc(size, GFP_KERNEL);
-> > +       if (!ptr) {
-> > +               pr_err("Allocation failed\n");
-> > +               return;
-> > +       }
-> > +
-> > +       memset((char *)ptr, 0, 64);
-> > +       memmove((char *)ptr, (char *)ptr + 4, -2);
-> > +       kfree(ptr);
-> > +}
-> > +
-> >  static noinline void __init kmalloc_uaf(void)
-> >  {
-> >         char *ptr;
-> > @@ -734,6 +751,7 @@ static int __init kmalloc_tests_init(void)
-> >         kmalloc_oob_memset_4();
-> >         kmalloc_oob_memset_8();
-> >         kmalloc_oob_memset_16();
-> > +       kmalloc_memmove_invalid_size;
-> >         kmalloc_uaf();
-> >         kmalloc_uaf_memset();
-> >         kmalloc_uaf2();
-> > diff --git a/mm/kasan/common.c b/mm/kasan/common.c
-> > index 2277b82902d8..5fd377af7457 100644
-> > --- a/mm/kasan/common.c
-> > +++ b/mm/kasan/common.c
-> > @@ -102,7 +102,8 @@ EXPORT_SYMBOL(__kasan_check_write);
-> >  #undef memset
-> >  void *memset(void *addr, int c, size_t len)
-> >  {
-> > -       check_memory_region((unsigned long)addr, len, true, _RET_IP_);
-> > +       if(!check_memory_region((unsigned long)addr, len, true, _RET_IP_))
-> > +               return NULL;
-> 
-> Overall approach looks good to me.
-> A good question is what we should return here. All bets are off after
-> a report, but we still try to "minimize damage". One may argue for
-> returning addr here and in other functions. But the more I think about
-> this, the more I think it does not matter.
-> 
-agreed
+In __set_page_owner_handle(), we should loop over page
+[0...(1 << order) - 1] and setup their page_owner structures.
 
-> 
-> >         return __memset(addr, c, len);
-> >  }
-> > @@ -110,7 +111,8 @@ void *memset(void *addr, int c, size_t len)
-> >  #undef memmove
-> >  void *memmove(void *dest, const void *src, size_t len)
-> >  {
-> > -       check_memory_region((unsigned long)src, len, false, _RET_IP_);
-> > +       if(!check_memory_region((unsigned long)src, len, false, _RET_IP_))
-> > +               return NULL;
-> >         check_memory_region((unsigned long)dest, len, true, _RET_IP_);
-> >
-> >         return __memmove(dest, src, len);
-> > @@ -119,7 +121,8 @@ void *memmove(void *dest, const void *src, size_t
-> > len)
-> >  #undef memcpy
-> >  void *memcpy(void *dest, const void *src, size_t len)
-> >  {
-> > -       check_memory_region((unsigned long)src, len, false, _RET_IP_);
-> > +       if(!check_memory_region((unsigned long)src, len, false, _RET_IP_))
-> > +               return NULL;
-> >         check_memory_region((unsigned long)dest, len, true, _RET_IP_);
-> >
-> >         return __memcpy(dest, src, len);
-> > diff --git a/mm/kasan/generic.c b/mm/kasan/generic.c
-> > index 616f9dd82d12..02148a317d27 100644
-> > --- a/mm/kasan/generic.c
-> > +++ b/mm/kasan/generic.c
-> > @@ -173,6 +173,11 @@ static __always_inline bool
-> > check_memory_region_inline(unsigned long addr,
-> >         if (unlikely(size == 0))
-> >                 return true;
-> >
-> > +       if (unlikely((long)size < 0)) {
-> > +               kasan_report(addr, size, write, ret_ip);
-> > +               return false;
-> > +       }
-> > +
-> >         if (unlikely((void *)addr <
-> >                 kasan_shadow_to_mem((void *)KASAN_SHADOW_START))) {
-> >                 kasan_report(addr, size, write, ret_ip);
-> > diff --git a/mm/kasan/report.c b/mm/kasan/report.c
-> > index 0e5f965f1882..0cd317ef30f5 100644
-> > --- a/mm/kasan/report.c
-> > +++ b/mm/kasan/report.c
-> > @@ -68,11 +68,16 @@ __setup("kasan_multi_shot", kasan_set_multi_shot);
-> >
-> >  static void print_error_description(struct kasan_access_info *info)
-> >  {
-> > -       pr_err("BUG: KASAN: %s in %pS\n",
-> > -               get_bug_type(info), (void *)info->ip);
-> > -       pr_err("%s of size %zu at addr %px by task %s/%d\n",
-> > -               info->is_write ? "Write" : "Read", info->access_size,
-> > -               info->access_addr, current->comm, task_pid_nr(current));
-> > +       if ((long)info->access_size < 0) {
-> > +               pr_err("BUG: KASAN: invalid size %zu in %pS\n",
-> > +                       info->access_size, (void *)info->ip);
-> 
-> I would not introduce a new bug type.
-> These are parsed and used by some systems, e.g. syzbot. If size is
-> user-controllable, then a new bug type for this will mean 2 bug
-> reports.
-> It also won't harm to print Read/Write, definitely the address, so no
-> reason to special case this out of a dozen of report formats.
-> This can qualify as out-of-bounds (definitely will cross some
-> bounds!), so I would change get_bug_type() to return
-> "slab-out-of-bounds" (as the most common OOB) in such case (with a
-> comment).
-> 
-Print Read/Write and address information, it is ok.
-But if we can directly point to the root cause of this problem, why we
-not do it?  see 1) and 2) to get a point, if we print OOB, then user
-needs one minute to think what is root case of this problem, but if we
-print invalid size, then user can directly get root case. this is my
-original thinking.
-1)Invalid size is true then OOB is true.
-2)OOB is true then invalid size may be true or false.
+Currently, __set_page_owner_handle() update page_ext at the end of
+the loop, sets the page_owner of (page + 0) twice and
+misses the page_owner of (page + (1 << order) - 1).
 
-But I see you say some systems have used bug report so that avoid this
-trouble, i will print the wrong type is "out-of-bound" in a unified way
-when size<0.
+Fix it by updating the page_ext at the start of the loop.
+
+In i == 0 case:
+for (i = 0; i < (1 << order); i++) {
+	page_owner = get_page_owner(page_ext); <- page_ext belongs to page + 0
+	...
+	page_ext = lookup_page_ext(page + i); <- lookup_page_ext(page + 0)
+}
+
+Cc: Andrew Morton <akpm@linux-foundation.org>
+Cc: Vlastimil Babka <vbabka@suse.cz>
+Cc: Michal Hocko <mhocko@suse.com>
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+Fixes: 7e2f2a0cd17c ("mm, page_owner: record page owner for each subpage")
+---
+ mm/page_owner.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/mm/page_owner.c b/mm/page_owner.c
+index dee931184788..110c3e1987f2 100644
+--- a/mm/page_owner.c
++++ b/mm/page_owner.c
+@@ -178,6 +178,7 @@ static inline void __set_page_owner_handle(struct page *page,
+ 	int i;
+ 
+ 	for (i = 0; i < (1 << order); i++) {
++		page_ext = lookup_page_ext(page + i);
+ 		page_owner = get_page_owner(page_ext);
+ 		page_owner->handle = handle;
+ 		page_owner->order = order;
+@@ -185,8 +186,6 @@ static inline void __set_page_owner_handle(struct page *page,
+ 		page_owner->last_migrate_reason = -1;
+ 		__set_bit(PAGE_EXT_OWNER, &page_ext->flags);
+ 		__set_bit(PAGE_EXT_OWNER_ACTIVE, &page_ext->flags);
+-
+-		page_ext = lookup_page_ext(page + i);
+ 	}
+ }
+ 
+-- 
+2.18.0
