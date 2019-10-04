@@ -1,149 +1,211 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 3/3] soc: mediatek: pwrap: add support for MT6359 PMIC
-Date: Fri, 4 Oct 2019 01:27:35 +0200
-Message-ID: <5ec86287-2a90-ca07-c9a6-262420a68fd3@gmail.com>
-References: <1570088901-23211-1-git-send-email-argus.lin@mediatek.com>
- <1570088901-23211-4-git-send-email-argus.lin@mediatek.com>
+From: Walter Wu <walter-zh.wu@mediatek.com>
+Subject: Re: [PATCH] kasan: fix the missing underflow in memmove and memcpy
+ with CONFIG_KASAN_GENERIC=y
+Date: Fri, 4 Oct 2019 12:42:20 +0800
+Message-ID: <1570164140.19702.97.camel@mtksdccf07>
+References: <20190927034338.15813-1-walter-zh.wu@mediatek.com>
+ <CACT4Y+Zxz+R=qQxSMoipXoLjRqyApD3O0eYpK0nyrfGHE4NNPw@mail.gmail.com>
+ <1569594142.9045.24.camel@mtksdccf07>
+ <CACT4Y+YuAxhKtL7ho7jpVAPkjG-JcGyczMXmw8qae2iaZjTh_w@mail.gmail.com>
+ <1569818173.17361.19.camel@mtksdccf07>
+ <1570018513.19702.36.camel@mtksdccf07>
+ <CACT4Y+bbZhvz9ZpHtgL8rCCsV=ybU5jA6zFnJBL7gY2cNXDLyQ@mail.gmail.com>
+ <1570069078.19702.57.camel@mtksdccf07>
+ <CACT4Y+ZwNv2-QBrvuR2JvemovmKPQ9Ggrr=ZkdTg6xy_Ki6UAg@mail.gmail.com>
+ <1570095525.19702.59.camel@mtksdccf07>
+ <1570110681.19702.64.camel@mtksdccf07>
+ <CACT4Y+aKrC8mtcDTVhM-So-TTLjOyFCD7r6jryWFH6i2he1WJA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1570088901-23211-4-git-send-email-argus.lin@mediatek.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Argus Lin <argus.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
-Cc: Chenglin Xu <chenglin.xu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, wsd_upstream@mediatek.com, henryc.chen@mediatek.com, flora.fu@mediatek.com, Chen Zhong <chen.zhong@mediatek.com>, Christophe Jaillet <christophe.jaillet@wanadoo.fr>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <CACT4Y+aKrC8mtcDTVhM-So-TTLjOyFCD7r6jryWFH6i2he1WJA@mail.gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Dmitry Vyukov <dvyukov@google.com>
+Cc: wsd_upstream <wsd_upstream@mediatek.com>, linux-mediatek@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>, Linux-MM <linux-mm@kvack.org>, Alexander Potapenko <glider@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrey Ryabinin <aryabinin@virtuozzo.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+On Thu, 2019-10-03 at 16:53 +0200, Dmitry Vyukov wrote:
+> On Thu, Oct 3, 2019 at 3:51 PM Walter Wu <walter-zh.wu@mediatek.com> wrote:>
+> > how about this?
+> >
+> > commit fd64691026e7ccb8d2946d0804b0621ac177df38
+> > Author: Walter Wu <walter-zh.wu@mediatek.com>
+> > Date:   Fri Sep 27 09:54:18 2019 +0800
+> >
+> >     kasan: detect invalid size in memory operation function
+> >
+> >     It is an undefined behavior to pass a negative value to
+> > memset()/memcpy()/memmove()
+> >     , so need to be detected by KASAN.
+> >
+> >     KASAN report:
+> >
+> >      BUG: KASAN: invalid size 18446744073709551614 in
+> > kmalloc_memmove_invalid_size+0x70/0xa0
+> >
+> >      CPU: 1 PID: 91 Comm: cat Not tainted
+> > 5.3.0-rc1ajb-00001-g31943bbc21ce-dirty #7
+> >      Hardware name: linux,dummy-virt (DT)
+> >      Call trace:
+> >       dump_backtrace+0x0/0x278
+> >       show_stack+0x14/0x20
+> >       dump_stack+0x108/0x15c
+> >       print_address_description+0x64/0x368
+> >       __kasan_report+0x108/0x1a4
+> >       kasan_report+0xc/0x18
+> >       check_memory_region+0x15c/0x1b8
+> >       memmove+0x34/0x88
+> >       kmalloc_memmove_invalid_size+0x70/0xa0
+> >
+> >     [1] https://bugzilla.kernel.org/show_bug.cgi?id=199341
+> >
+> >     Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+> >     Reported-by: Dmitry Vyukov <dvyukov@google.com>
+> >
+> > diff --git a/lib/test_kasan.c b/lib/test_kasan.c
+> > index b63b367a94e8..e4e517a51860 100644
+> > --- a/lib/test_kasan.c
+> > +++ b/lib/test_kasan.c
+> > @@ -280,6 +280,23 @@ static noinline void __init
+> > kmalloc_oob_in_memset(void)
+> >         kfree(ptr);
+> >  }
+> >
+> > +static noinline void __init kmalloc_memmove_invalid_size(void)
+> > +{
+> > +       char *ptr;
+> > +       size_t size = 64;
+> > +
+> > +       pr_info("invalid size in memmove\n");
+> > +       ptr = kmalloc(size, GFP_KERNEL);
+> > +       if (!ptr) {
+> > +               pr_err("Allocation failed\n");
+> > +               return;
+> > +       }
+> > +
+> > +       memset((char *)ptr, 0, 64);
+> > +       memmove((char *)ptr, (char *)ptr + 4, -2);
+> > +       kfree(ptr);
+> > +}
+> > +
+> >  static noinline void __init kmalloc_uaf(void)
+> >  {
+> >         char *ptr;
+> > @@ -734,6 +751,7 @@ static int __init kmalloc_tests_init(void)
+> >         kmalloc_oob_memset_4();
+> >         kmalloc_oob_memset_8();
+> >         kmalloc_oob_memset_16();
+> > +       kmalloc_memmove_invalid_size;
+> >         kmalloc_uaf();
+> >         kmalloc_uaf_memset();
+> >         kmalloc_uaf2();
+> > diff --git a/mm/kasan/common.c b/mm/kasan/common.c
+> > index 2277b82902d8..5fd377af7457 100644
+> > --- a/mm/kasan/common.c
+> > +++ b/mm/kasan/common.c
+> > @@ -102,7 +102,8 @@ EXPORT_SYMBOL(__kasan_check_write);
+> >  #undef memset
+> >  void *memset(void *addr, int c, size_t len)
+> >  {
+> > -       check_memory_region((unsigned long)addr, len, true, _RET_IP_);
+> > +       if(!check_memory_region((unsigned long)addr, len, true, _RET_IP_))
+> > +               return NULL;
+> 
+> Overall approach looks good to me.
+> A good question is what we should return here. All bets are off after
+> a report, but we still try to "minimize damage". One may argue for
+> returning addr here and in other functions. But the more I think about
+> this, the more I think it does not matter.
+> 
+agreed
 
+> 
+> >         return __memset(addr, c, len);
+> >  }
+> > @@ -110,7 +111,8 @@ void *memset(void *addr, int c, size_t len)
+> >  #undef memmove
+> >  void *memmove(void *dest, const void *src, size_t len)
+> >  {
+> > -       check_memory_region((unsigned long)src, len, false, _RET_IP_);
+> > +       if(!check_memory_region((unsigned long)src, len, false, _RET_IP_))
+> > +               return NULL;
+> >         check_memory_region((unsigned long)dest, len, true, _RET_IP_);
+> >
+> >         return __memmove(dest, src, len);
+> > @@ -119,7 +121,8 @@ void *memmove(void *dest, const void *src, size_t
+> > len)
+> >  #undef memcpy
+> >  void *memcpy(void *dest, const void *src, size_t len)
+> >  {
+> > -       check_memory_region((unsigned long)src, len, false, _RET_IP_);
+> > +       if(!check_memory_region((unsigned long)src, len, false, _RET_IP_))
+> > +               return NULL;
+> >         check_memory_region((unsigned long)dest, len, true, _RET_IP_);
+> >
+> >         return __memcpy(dest, src, len);
+> > diff --git a/mm/kasan/generic.c b/mm/kasan/generic.c
+> > index 616f9dd82d12..02148a317d27 100644
+> > --- a/mm/kasan/generic.c
+> > +++ b/mm/kasan/generic.c
+> > @@ -173,6 +173,11 @@ static __always_inline bool
+> > check_memory_region_inline(unsigned long addr,
+> >         if (unlikely(size == 0))
+> >                 return true;
+> >
+> > +       if (unlikely((long)size < 0)) {
+> > +               kasan_report(addr, size, write, ret_ip);
+> > +               return false;
+> > +       }
+> > +
+> >         if (unlikely((void *)addr <
+> >                 kasan_shadow_to_mem((void *)KASAN_SHADOW_START))) {
+> >                 kasan_report(addr, size, write, ret_ip);
+> > diff --git a/mm/kasan/report.c b/mm/kasan/report.c
+> > index 0e5f965f1882..0cd317ef30f5 100644
+> > --- a/mm/kasan/report.c
+> > +++ b/mm/kasan/report.c
+> > @@ -68,11 +68,16 @@ __setup("kasan_multi_shot", kasan_set_multi_shot);
+> >
+> >  static void print_error_description(struct kasan_access_info *info)
+> >  {
+> > -       pr_err("BUG: KASAN: %s in %pS\n",
+> > -               get_bug_type(info), (void *)info->ip);
+> > -       pr_err("%s of size %zu at addr %px by task %s/%d\n",
+> > -               info->is_write ? "Write" : "Read", info->access_size,
+> > -               info->access_addr, current->comm, task_pid_nr(current));
+> > +       if ((long)info->access_size < 0) {
+> > +               pr_err("BUG: KASAN: invalid size %zu in %pS\n",
+> > +                       info->access_size, (void *)info->ip);
+> 
+> I would not introduce a new bug type.
+> These are parsed and used by some systems, e.g. syzbot. If size is
+> user-controllable, then a new bug type for this will mean 2 bug
+> reports.
+> It also won't harm to print Read/Write, definitely the address, so no
+> reason to special case this out of a dozen of report formats.
+> This can qualify as out-of-bounds (definitely will cross some
+> bounds!), so I would change get_bug_type() to return
+> "slab-out-of-bounds" (as the most common OOB) in such case (with a
+> comment).
+> 
+Print Read/Write and address information, it is ok.
+But if we can directly point to the root cause of this problem, why we
+not do it?  see 1) and 2) to get a point, if we print OOB, then user
+needs one minute to think what is root case of this problem, but if we
+print invalid size, then user can directly get root case. this is my
+original thinking.
+1)Invalid size is true then OOB is true.
+2)OOB is true then invalid size may be true or false.
 
-On 03/10/2019 09:48, Argus Lin wrote:
-> MT6359 is a new power management IC and it is used for
-> MT6779 SoCs. To define mt6359_regs for pmic register mapping
-> and pmic_mt6359 for accessing register.
-> 
-> Signed-off-by: Argus Lin <argus.lin@mediatek.com>
-> ---
->  drivers/soc/mediatek/mtk-pmic-wrap.c | 72 ++++++++++++++++++++++++++++++++++++
->  1 file changed, 72 insertions(+)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> index fa8daf2..dd04318 100644
-> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> @@ -111,6 +111,29 @@ enum dew_regs {
->  	PWRAP_RG_SPI_CON13,
->  	PWRAP_SPISLV_KEY,
-> 
-> +	/* MT6359 only regs */
-> +	PWRAP_DEW_CRC_SWRST,
-> +	PWRAP_DEW_RG_EN_RECORD,
-> +	PWRAP_DEW_RECORD_CMD0,
-> +	PWRAP_DEW_RECORD_CMD1,
-> +	PWRAP_DEW_RECORD_CMD2,
-> +	PWRAP_DEW_RECORD_CMD3,
-> +	PWRAP_DEW_RECORD_CMD4,
-> +	PWRAP_DEW_RECORD_CMD5,
-> +	PWRAP_DEW_RECORD_WDATA0,
-> +	PWRAP_DEW_RECORD_WDATA1,
-> +	PWRAP_DEW_RECORD_WDATA2,
-> +	PWRAP_DEW_RECORD_WDATA3,
-> +	PWRAP_DEW_RECORD_WDATA4,
-> +	PWRAP_DEW_RECORD_WDATA5,
-> +	PWRAP_DEW_RG_ADDR_TARGET,
-> +	PWRAP_DEW_RG_ADDR_MASK,
-> +	PWRAP_DEW_RG_WDATA_TARGET,
-> +	PWRAP_DEW_RG_WDATA_MASK,
-> +	PWRAP_DEW_RG_SPI_RECORD_CLR,
-> +	PWRAP_DEW_RG_CMD_ALERT_CLR,
-> +	PWRAP_DEW_SPISLV_KEY,
-
-That looks like PWRAP_SPISLV_KEY from MT6358.
-
-Regards,
-Matthias
-
-> +
->  	/* MT6397 only regs */
->  	PWRAP_DEW_EVENT_OUT_EN,
->  	PWRAP_DEW_EVENT_SRC_EN,
-> @@ -197,6 +220,42 @@ enum dew_regs {
->  	[PWRAP_SPISLV_KEY] =		0x044a,
->  };
-> 
-> +static const u32 mt6359_regs[] = {
-> +	[PWRAP_DEW_RG_EN_RECORD] =	0x040a,
-> +	[PWRAP_DEW_DIO_EN] =		0x040c,
-> +	[PWRAP_DEW_READ_TEST] =		0x040e,
-> +	[PWRAP_DEW_WRITE_TEST] =	0x0410,
-> +	[PWRAP_DEW_CRC_SWRST] =		0x0412,
-> +	[PWRAP_DEW_CRC_EN] =		0x0414,
-> +	[PWRAP_DEW_CRC_VAL] =		0x0416,
-> +	[PWRAP_DEW_CIPHER_KEY_SEL] =	0x0418,
-> +	[PWRAP_DEW_CIPHER_IV_SEL] =	0x041a,
-> +	[PWRAP_DEW_CIPHER_EN] =		0x041c,
-> +	[PWRAP_DEW_CIPHER_RDY] =	0x041e,
-> +	[PWRAP_DEW_CIPHER_MODE] =	0x0420,
-> +	[PWRAP_DEW_CIPHER_SWRST] =	0x0422,
-> +	[PWRAP_DEW_RDDMY_NO] =		0x0424,
-> +	[PWRAP_DEW_RECORD_CMD0] =	0x0428,
-> +	[PWRAP_DEW_RECORD_CMD1] =	0x042a,
-> +	[PWRAP_DEW_RECORD_CMD2] =	0x042c,
-> +	[PWRAP_DEW_RECORD_CMD3] =	0x042e,
-> +	[PWRAP_DEW_RECORD_CMD4] =	0x0430,
-> +	[PWRAP_DEW_RECORD_CMD5] =	0x0432,
-> +	[PWRAP_DEW_RECORD_WDATA0] =	0x0434,
-> +	[PWRAP_DEW_RECORD_WDATA1] =	0x0436,
-> +	[PWRAP_DEW_RECORD_WDATA2] =	0x0438,
-> +	[PWRAP_DEW_RECORD_WDATA3] =	0x043a,
-> +	[PWRAP_DEW_RECORD_WDATA4] =	0x043c,
-> +	[PWRAP_DEW_RECORD_WDATA5] =	0x043e,
-> +	[PWRAP_DEW_RG_ADDR_TARGET] =	0x0440,
-> +	[PWRAP_DEW_RG_ADDR_MASK] =	0x0442,
-> +	[PWRAP_DEW_RG_WDATA_TARGET] =	0x0444,
-> +	[PWRAP_DEW_RG_WDATA_MASK] =	0x0446,
-> +	[PWRAP_DEW_RG_SPI_RECORD_CLR] =	0x0448,
-> +	[PWRAP_DEW_RG_CMD_ALERT_CLR] =	0x0448,
-> +	[PWRAP_DEW_SPISLV_KEY] =	0x044a,
-> +};
-> +
->  static const u32 mt6397_regs[] = {
->  	[PWRAP_DEW_BASE] =		0xbc00,
->  	[PWRAP_DEW_EVENT_OUT_EN] =	0xbc00,
-> @@ -977,6 +1036,7 @@ enum pmic_type {
->  	PMIC_MT6351,
->  	PMIC_MT6357,
->  	PMIC_MT6358,
-> +	PMIC_MT6359,
->  	PMIC_MT6380,
->  	PMIC_MT6397,
->  };
-> @@ -1757,6 +1817,15 @@ static irqreturn_t pwrap_interrupt(int irqno, void *dev_id)
->  	.pwrap_write = pwrap_write16,
->  };
-> 
-> +static const struct pwrap_slv_type pmic_mt6359 = {
-> +	.dew_regs = mt6359_regs,
-> +	.type = PMIC_MT6359,
-> +	.regmap = &pwrap_regmap_config16,
-> +	.caps = PWRAP_SLV_CAP_DUALIO,
-> +	.pwrap_read = pwrap_read16,
-> +	.pwrap_write = pwrap_write16,
-> +};
-> +
->  static const struct pwrap_slv_type pmic_mt6380 = {
->  	.dew_regs = NULL,
->  	.type = PMIC_MT6380,
-> @@ -1790,6 +1859,9 @@ static irqreturn_t pwrap_interrupt(int irqno, void *dev_id)
->  		.compatible = "mediatek,mt6358",
->  		.data = &pmic_mt6358,
->  	}, {
-> +		.compatible = "mediatek,mt6359",
-> +		.data = &pmic_mt6359,
-> +	}, {
->  		/* The MT6380 PMIC only implements a regulator, so we bind it
->  		 * directly instead of using a MFD.
->  		 */
-> --
-> 1.8.1.1.dirty
-> 
+But I see you say some systems have used bug report so that avoid this
+trouble, i will print the wrong type is "out-of-bound" in a unified way
+when size<0.
