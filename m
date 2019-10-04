@@ -1,305 +1,51 @@
-From: Dmitry Vyukov <dvyukov@google.com>
-Subject: Re: [PATCH] kasan: fix the missing underflow in memmove and memcpy
- with CONFIG_KASAN_GENERIC=y
-Date: Fri, 4 Oct 2019 11:54:04 +0200
-Message-ID: <CACT4Y+ZnWPEO-9DkE6C3MX-Wo+8pdS6Gr6-2a8LzqBS=2fe84w@mail.gmail.com>
-References: <20190927034338.15813-1-walter-zh.wu@mediatek.com>
- <CACT4Y+Zxz+R=qQxSMoipXoLjRqyApD3O0eYpK0nyrfGHE4NNPw@mail.gmail.com>
- <1569594142.9045.24.camel@mtksdccf07>
- <CACT4Y+YuAxhKtL7ho7jpVAPkjG-JcGyczMXmw8qae2iaZjTh_w@mail.gmail.com>
- <1569818173.17361.19.camel@mtksdccf07> <1570018513.19702.36.camel@mtksdccf07>
- <CACT4Y+bbZhvz9ZpHtgL8rCCsV=ybU5jA6zFnJBL7gY2cNXDLyQ@mail.gmail.com>
- <1570069078.19702.57.camel@mtksdccf07>
- <CACT4Y+ZwNv2-QBrvuR2JvemovmKPQ9Ggrr=ZkdTg6xy_Ki6UAg@mail.gmail.com>
- <1570095525.19702.59.camel@mtksdccf07> <1570110681.19702.64.camel@mtksdccf07>
- <CACT4Y+aKrC8mtcDTVhM-So-TTLjOyFCD7r6jryWFH6i2he1WJA@mail.gmail.com>
- <1570164140.19702.97.camel@mtksdccf07> <1570176131.19702.105.camel@mtksdccf07>
- <CACT4Y+ZvhomaeXFKr4za6MJi=fW2SpPaCFP=fk06CMRhNcmFvQ@mail.gmail.com>
- <1570182257.19702.109.camel@mtksdccf07>
+From: <Tudor.Ambarus@microchip.com>
+Subject: Re: [PATCH v2 10/22] mtd: spi-nor: Rework write_sr()
+Date: Fri, 4 Oct 2019 10:03:40 +0000
+Message-ID: <e5d9b91f-cb86-0b82-5631-af0868ba4796@microchip.com>
+References: <20190924074533.6618-1-tudor.ambarus@microchip.com>
+ <20190924074533.6618-11-tudor.ambarus@microchip.com>
+ <83d62334-bd1c-20b7-3c58-225392c819f8@huawei.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1570182257.19702.109.camel@mtksdccf07>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Walter Wu <walter-zh.wu@mediatek.com>
-Cc: wsd_upstream <wsd_upstream@mediatek.com>, linux-mediatek@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>, Linux-MM <linux-mm@kvack.org>, Alexander Potapenko <glider@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrey Ryabinin <aryabinin@virtuozzo.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <83d62334-bd1c-20b7-3c58-225392c819f8@huawei.com>
+Content-Language: en-US
+Content-ID: <05DA6A7F3CDA484CB53787B24189CD8A@namprd11.prod.outlook.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: john.garry@huawei.com, vigneshr@ti.com, boris.brezillon@collabora.com, marek.vasut@gmail.com, linux-mtd@lists.infradead.org, geert+renesas@glider.be, jonas@norrbonn.se
+Cc: linux-aspeed@lists.ozlabs.org, andrew@aj.id.au, richard@nod.at, linux-kernel@vger.kernel.org, vz@mleia.com, linux-mediatek@lists.infradead.org, joel@jms.id.au, miquel.raynal@bootlin.com, matthias.bgg@gmail.com, computersforpeace@gmail.com, dwmw2@infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Oct 4, 2019 at 11:44 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
->
-> On Fri, 2019-10-04 at 11:18 +0200, Dmitry Vyukov wrote:
-> > On Fri, Oct 4, 2019 at 10:02 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
-> > >
-> > > On Fri, 2019-10-04 at 12:42 +0800, Walter Wu wrote:
-> > > > On Thu, 2019-10-03 at 16:53 +0200, Dmitry Vyukov wrote:
-> > > > > On Thu, Oct 3, 2019 at 3:51 PM Walter Wu <walter-zh.wu@mediatek.com> wrote:>
-> > > > > >
-> > > > > >  static void print_error_description(struct kasan_access_info *info)
-> > > > > >  {
-> > > > > > -       pr_err("BUG: KASAN: %s in %pS\n",
-> > > > > > -               get_bug_type(info), (void *)info->ip);
-> > > > > > -       pr_err("%s of size %zu at addr %px by task %s/%d\n",
-> > > > > > -               info->is_write ? "Write" : "Read", info->access_size,
-> > > > > > -               info->access_addr, current->comm, task_pid_nr(current));
-> > > > > > +       if ((long)info->access_size < 0) {
-> > > > > > +               pr_err("BUG: KASAN: invalid size %zu in %pS\n",
-> > > > > > +                       info->access_size, (void *)info->ip);
-> > > > >
-> > > > > I would not introduce a new bug type.
-> > > > > These are parsed and used by some systems, e.g. syzbot. If size is
-> > > > > user-controllable, then a new bug type for this will mean 2 bug
-> > > > > reports.
-> > > > > It also won't harm to print Read/Write, definitely the address, so no
-> > > > > reason to special case this out of a dozen of report formats.
-> > > > > This can qualify as out-of-bounds (definitely will cross some
-> > > > > bounds!), so I would change get_bug_type() to return
-> > > > > "slab-out-of-bounds" (as the most common OOB) in such case (with a
-> > > > > comment).
-> > > > >
-> > > > Print Read/Write and address information, it is ok.
-> > > > But if we can directly point to the root cause of this problem, why we
-> > > > not do it?  see 1) and 2) to get a point, if we print OOB, then user
-> > > > needs one minute to think what is root case of this problem, but if we
-> > > > print invalid size, then user can directly get root case. this is my
-> > > > original thinking.
-> > > > 1)Invalid size is true then OOB is true.
-> > > > 2)OOB is true then invalid size may be true or false.
-> > > >
-> > > > But I see you say some systems have used bug report so that avoid this
-> > > > trouble, i will print the wrong type is "out-of-bound" in a unified way
-> > > > when size<0.
-> > > >
-> > >
-> > > Updated my patch, please help to review it.
-> > > thanks.
-> > >
-> > > commit 13e10a7e4264eb25c5a14193068027afc9c261f6
-> > > Author: Walter-zh Wu <walter-zh.wu@mediatek.com>
-> > > Date:   Fri Oct 4 15:27:17 2019 +0800
-> > >
-> > >     kasan: detect negative size in memory operation function
-> > >
-> > >     It is an undefined behavior to pass a negative value to
-> > > memset()/memcpy()/memmove()
-> > >     , so need to be detected by KASAN.
-> > >
-> > >     If size is negative value, then it will be larger than ULONG_MAX/2,
-> > >     so that we will qualify as out-of-bounds issue.
-> > >
-> > >     KASAN report:
-> > >
-> > >      BUG: KASAN: out-of-bounds in kmalloc_memmove_invalid_size+0x70/0xa0
-> > >      Read of size 18446744073709551608 at addr ffffff8069660904 by task
-> > > cat/72
-> > >
-> > >      CPU: 2 PID: 72 Comm: cat Not tainted
-> > > 5.4.0-rc1-next-20191004ajb-00001-gdb8af2f372b2-dirty #1
-> > >      Hardware name: linux,dummy-virt (DT)
-> > >      Call trace:
-> > >       dump_backtrace+0x0/0x288
-> > >       show_stack+0x14/0x20
-> > >       dump_stack+0x10c/0x164
-> > >       print_address_description.isra.9+0x68/0x378
-> > >       __kasan_report+0x164/0x1a0
-> > >       kasan_report+0xc/0x18
-> > >       check_memory_region+0x174/0x1d0
-> > >       memmove+0x34/0x88
-> > >       kmalloc_memmove_invalid_size+0x70/0xa0
-> > >
-> > >     [1] https://bugzilla.kernel.org/show_bug.cgi?id=199341
-> > >
-> > >     Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-> > >     Reported -by: Dmitry Vyukov <dvyukov@google.com>
-> > >     Suggested-by: Dmitry Vyukov <dvyukov@google.com>
-> > >
-> > > diff --git a/lib/test_kasan.c b/lib/test_kasan.c
-> > > index 49cc4d570a40..06942cf585cc 100644
-> > > --- a/lib/test_kasan.c
-> > > +++ b/lib/test_kasan.c
-> > > @@ -283,6 +283,23 @@ static noinline void __init
-> > > kmalloc_oob_in_memset(void)
-> > >         kfree(ptr);
-> > >  }
-> > >
-> > > +static noinline void __init kmalloc_memmove_invalid_size(void)
-> > > +{
-> > > +       char *ptr;
-> > > +       size_t size = 64;
-> > > +
-> > > +       pr_info("invalid size in memmove\n");
-> > > +       ptr = kmalloc(size, GFP_KERNEL);
-> > > +       if (!ptr) {
-> > > +               pr_err("Allocation failed\n");
-> > > +               return;
-> > > +       }
-> > > +
-> > > +       memset((char *)ptr, 0, 64);
-> > > +       memmove((char *)ptr, (char *)ptr + 4, -2);
-> > > +       kfree(ptr);
-> > > +}
-> > > +
-> > >  static noinline void __init kmalloc_uaf(void)
-> > >  {
-> > >         char *ptr;
-> > > @@ -773,6 +790,7 @@ static int __init kmalloc_tests_init(void)
-> > >         kmalloc_oob_memset_4();
-> > >         kmalloc_oob_memset_8();
-> > >         kmalloc_oob_memset_16();
-> > > +       kmalloc_memmove_invalid_size();
-> > >         kmalloc_uaf();
-> > >         kmalloc_uaf_memset();
-> > >         kmalloc_uaf2();
-> > > diff --git a/mm/kasan/common.c b/mm/kasan/common.c
-> > > index 6814d6d6a023..97dd6eecc3e7 100644
-> > > --- a/mm/kasan/common.c
-> > > +++ b/mm/kasan/common.c
-> > > @@ -102,7 +102,8 @@ EXPORT_SYMBOL(__kasan_check_write);
-> > >  #undef memset
-> > >  void *memset(void *addr, int c, size_t len)
-> > >  {
-> > > -       check_memory_region((unsigned long)addr, len, true, _RET_IP_);
-> > > +       if (!check_memory_region((unsigned long)addr, len, true, _RET_IP_))
-> > > +               return NULL;
-> > >
-> > >         return __memset(addr, c, len);
-> > >  }
-> > > @@ -110,7 +111,8 @@ void *memset(void *addr, int c, size_t len)
-> > >  #undef memmove
-> > >  void *memmove(void *dest, const void *src, size_t len)
-> > >  {
-> > > -       check_memory_region((unsigned long)src, len, false, _RET_IP_);
-> > > +       if (!check_memory_region((unsigned long)src, len, false, _RET_IP_))
-> > > +               return NULL;
-> > >         check_memory_region((unsigned long)dest, len, true, _RET_IP_);
-> >
-> > I would check both calls.
-> > The current code seems to be over-specialized for handling of invalid
-> > size (you assume that if it's invalid size, then the first
-> > check_memory_region will detect it and checking the second one is
-> > pointless, right?).
-> > But check_memory_region can return false in other cases too.
-> > Also seeing first call checked, but the second not checked just hurts
-> > my eyes when reading code (whenever I will read such code my first
-> > reaction will be "why?").
-> >
-> I can't agree with you any more about second point.
->
-> #undef memmove
-> void *memmove(void *dest, const void *src, size_t len)
-> {
->     if (!check_memory_region((unsigned long)src, len, false, _RET_IP_)
-> ||)
->         !check_memory_region((unsigned long)dest, len, true, _RET_IP_);
->         return NULL;
->
->     return __memmove(dest, src, len);
-> }
->
-> >
-> > >
-> > >         return __memmove(dest, src, len);
-> > > @@ -119,7 +121,8 @@ void *memmove(void *dest, const void *src, size_t
-> > > len)
-> > >  #undef memcpy
-> > >  void *memcpy(void *dest, const void *src, size_t len)
-> > >  {
-> > > -       check_memory_region((unsigned long)src, len, false, _RET_IP_);
-> > > +       if (!check_memory_region((unsigned long)src, len, false, _RET_IP_))
-> > > +               return NULL;
-> > >         check_memory_region((unsigned long)dest, len, true, _RET_IP_);
-> > >
-> > >         return __memcpy(dest, src, len);
-> > > diff --git a/mm/kasan/generic.c b/mm/kasan/generic.c
-> > > index 616f9dd82d12..02148a317d27 100644
-> > > --- a/mm/kasan/generic.c
-> > > +++ b/mm/kasan/generic.c
-> > > @@ -173,6 +173,11 @@ static __always_inline bool
-> > > check_memory_region_inline(unsigned long addr,
-> > >         if (unlikely(size == 0))
-> > >                 return true;
-> > >
-> > > +       if (unlikely((long)size < 0)) {
-> > > +               kasan_report(addr, size, write, ret_ip);
-> > > +               return false;
-> > > +       }
-> > > +
-> > >         if (unlikely((void *)addr <
-> > >                 kasan_shadow_to_mem((void *)KASAN_SHADOW_START))) {
-> > >                 kasan_report(addr, size, write, ret_ip);
-> > > diff --git a/mm/kasan/generic_report.c b/mm/kasan/generic_report.c
-> > > index 36c645939bc9..ae9596210394 100644
-> > > --- a/mm/kasan/generic_report.c
-> > > +++ b/mm/kasan/generic_report.c
-> > > @@ -107,6 +107,13 @@ static const char *get_wild_bug_type(struct
-> > > kasan_access_info *info)
-> > >
-> > >  const char *get_bug_type(struct kasan_access_info *info)
-> > >  {
-> > > +       /*
-> > > +        * if access_size < 0, then it will be larger than ULONG_MAX/2,
-> > > +        * so that this can qualify as out-of-bounds.
-> > > +        */
-> > > +       if ((long)info->access_size < 0)
-> > > +               return "out-of-bounds";
-> >
-> > "out-of-bounds" is the _least_ frequent KASAN bug type. So saying
-> > "out-of-bounds" has downsides of both approaches and won't prevent
-> > duplicate reports by syzbot...
-> >
-> maybe i should add your comment into the comment in get_bug_type?
-
-Yes, that's exactly what I meant above:
-
-"I would change get_bug_type() to return "slab-out-of-bounds" (as the
-most common OOB) in such case (with a comment)."
-
- ;)
-
-> > > +
-> > >         if (addr_has_shadow(info->access_addr))
-> > >                 return get_shadow_bug_type(info);
-> > >         return get_wild_bug_type(info);
-> > > diff --git a/mm/kasan/tags.c b/mm/kasan/tags.c
-> > > index 0e987c9ca052..b829535a3ad7 100644
-> > > --- a/mm/kasan/tags.c
-> > > +++ b/mm/kasan/tags.c
-> > > @@ -86,6 +86,11 @@ bool check_memory_region(unsigned long addr, size_t
-> > > size, bool write,
-> > >         if (unlikely(size == 0))
-> > >                 return true;
-> > >
-> > > +       if (unlikely((long)size < 0)) {
-> > > +               kasan_report(addr, size, write, ret_ip);
-> > > +               return false;
-> > > +       }
-> > > +
-> > >         tag = get_tag((const void *)addr);
-> > >
-> > >         /*
-> > > diff --git a/mm/kasan/tags_report.c b/mm/kasan/tags_report.c
-> > > index 969ae08f59d7..1e1ca81214b5 100644
-> > > --- a/mm/kasan/tags_report.c
-> > > +++ b/mm/kasan/tags_report.c
-> > > @@ -36,6 +36,13 @@
-> > >
-> > >  const char *get_bug_type(struct kasan_access_info *info)
-> > >  {
-> > > +       /*
-> > > +        * if access_size < 0, then it will be larger than ULONG_MAX/2,
-> > > +        * so that this can qualify as out-of-bounds.
-> > > +        */
-> > > +       if ((long)info->access_size < 0)
-> > > +               return "out-of-bounds";
-> > > +
-> > >  #ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
-> > >         struct kasan_alloc_meta *alloc_meta;
-> > >         struct kmem_cache *cache;
+SGksIEpvaG4sDQoNCk9uIDEwLzA0LzIwMTkgMTI6MzkgUE0sIEpvaG4gR2Fycnkgd3JvdGU6DQo+
+IEV4dGVybmFsIEUtTWFpbA0KPiANCj4gDQo+IE9uIDI0LzA5LzIwMTkgMDg6NDYsIFR1ZG9yLkFt
+YmFydXNAbWljcm9jaGlwLmNvbSB3cm90ZToNCj4+ICt9DQo+PiArDQo+PiArLyoqDQo+PiArICog
+c3BpX25vcl93cml0ZV9zcigpIC0gV3JpdGUgdGhlIFN0YXR1cyBSZWdpc3Rlci4NCj4+ICsgKiBA
+bm9yOsKgwqDCoCBwb2ludGVyIHRvICdzdHJ1Y3Qgc3BpX25vcicuDQo+PiArICogQHNyOsKgwqDC
+oMKgwqDCoMKgIGJ1ZmZlciB0byB3cml0ZSB0byB0aGUgU3RhdHVzIFJlZ2lzdGVyLg0KPj4gKyAq
+IEBsZW46wqDCoMKgIG51bWJlciBvZiBieXRlcyB0byB3cml0ZSB0byB0aGUgU3RhdHVzIFJlZ2lz
+dGVyLg0KPj4gKyAqDQo+PiArICogUmV0dXJuOiAwIG9uIHN1Y2Nlc3MsIC1lcnJubyBvdGhlcndp
+c2UuDQo+PiDCoCAqLw0KPj4gLXN0YXRpYyBpbnQgd3JpdGVfc3Ioc3RydWN0IHNwaV9ub3IgKm5v
+ciwgdTggdmFsKQ0KPj4gK3N0YXRpYyBpbnQgc3BpX25vcl93cml0ZV9zcihzdHJ1Y3Qgc3BpX25v
+ciAqbm9yLCBjb25zdCB1OCAqc3IsIHNpemVfdCBsZW4pDQo+PiDCoHsNCj4+IC3CoMKgwqAgbm9y
+LT5ib3VuY2VidWZbMF0gPSB2YWw7DQo+PiArwqDCoMKgIGludCByZXQ7DQo+PiArDQo+PiArwqDC
+oMKgIHJldCA9IHNwaV9ub3Jfd3JpdGVfZW5hYmxlKG5vcik7DQo+PiArwqDCoMKgIGlmIChyZXQp
+DQo+PiArwqDCoMKgwqDCoMKgwqAgcmV0dXJuIHJldDsNCj4+ICsNCj4gDQo+IEhpIFR1ZG9yLA0K
+PiANCj4+IMKgwqDCoMKgIGlmIChub3ItPnNwaW1lbSkgew0KPj4gwqDCoMKgwqDCoMKgwqDCoCBz
+dHJ1Y3Qgc3BpX21lbV9vcCBvcCA9DQo+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgU1BJX01F
+TV9PUChTUElfTUVNX09QX0NNRChTUElOT1JfT1BfV1JTUiwgMSksDQo+PiDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBTUElfTUVNX09QX05PX0FERFIsDQo+PiDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBTUElfTUVNX09QX05PX0RVTU1ZLA0KPj4g
+LcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBTUElfTUVNX09QX0RBVEFfSU4o
+MSwgbm9yLT5ib3VuY2VidWYsIDEpKTsNCj4gDQo+IFRoaXMgYmUgU1BJX01FTV9PUF9EQVRBX09V
+VCgpIGluIHRoZSBjdXJyZW50IG1haW5saW5lIGNvZGUgYWxzbywgcmlnaHQ/DQoNCkluIHY1LjQt
+cmMxIHRoaXMgaXMgZGVmaW5lZCBhcyBTUElfTUVNX09QX0RBVEFfSU4sIHNvIHRoZSBNYWlubGlu
+ZSBjb2RlIHNob3VsZA0KZmFpbC4gVGhpcyBsb29rcyBsaWtlIGEgYnVnLiBJIGRpZG4ndCBub3Rp
+Y2VkIGl0IHdoZW4gZG9pbmcgdGhlIHBhdGNoLg0KDQo+IA0KPiBJJ20gdGVzdGluZyBteSB1bmRl
+ciBkZXZlbG9wbWVudCBkcml2ZXIgb24gdG9wIG9mIHY1LjQtcmMxLCBhbmQgZmxhc2hfbG9jayAt
+dSBpcyBicm9rZW4uDQoNCkl0J3Mgbm90IGNsZWFyIHRvIG1lLCBkb2VzIGZsYXNoX2xvY2sgZmFp
+bCB3aXRoIG15IHBhdGNoZXMgb24gdG9wIG9mIHY1LjQtcmMxPw0KT3IgaXQgZmFpbHMgd2hlbiB0
+ZXN0aW5nIHY1LjQtcmMxPw0KDQpDYW4geW91IHRlc3QgdjUuNC1yYzEgYW5kIHNlZSBpZiBmbGFz
+aF9sb2NrIHdvcmtzIG9uIHlvdSBmbGFzaCBvciBub3Q/DQoNClBsZWFzZSBzcGVjaWZ5IHdoaWNo
+IGZsYXNoIGRvIHlvdSB1c2UsIGFuZCB3aGljaCBjb250cm9sbGVyLg0KDQpUaGFua3MgZm9yIHRl
+c3RpbmcgdGhpcyENCnRhDQo=
