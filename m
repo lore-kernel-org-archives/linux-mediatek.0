@@ -1,67 +1,43 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH] mfd: mt6397: fix probe after changing mt6397-core
-Date: Fri, 4 Oct 2019 16:20:01 +0100
-Message-ID: <20191004152001.GS18429@dell>
-References: <20191003185323.24646-1-frank-w@public-files.de>
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Subject: Re: [PATCH] hwrng: mediatek: Use devm_platform_ioremap_resource() in
+ mtk_rng_probe()
+Date: Sat, 5 Oct 2019 01:42:49 +1000
+Message-ID: <20191004154249.GS5148@gondor.apana.org.au>
+References: <e6e03822-c68f-55ea-3a65-ee2a44f50e8c@web.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <20191003185323.24646-1-frank-w@public-files.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+In-Reply-To: <e6e03822-c68f-55ea-3a65-ee2a44f50e8c@web.de>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Markus Elfring <Markus.Elfring@web.de>
+Cc: Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Sean Wang <sean.wang@mediatek.com>, kernel-janitors@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, Bartosz Golaszewski <bgolaszewski@baylibre.com>, linux-mediatek@lists.infradead.org, linux-crypto@vger.kernel.org, Matt Mackall <mpm@selenic.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Himanshu Jha <himanshujha199640@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 03 Oct 2019, Frank Wunderlich wrote:
-
-> Part 3 from this series [1] was not merged due to wrong splitting
-> and breaks mt6323 pmic on bananapi-r2
+On Wed, Sep 18, 2019 at 09:44:06AM +0200, Markus Elfring wrote:
+> From: Markus Elfring <elfring@users.sourceforge.net>
+> Date: Wed, 18 Sep 2019 09:34:11 +0200
 > 
-> dmesg prints this line and at least switch is not initialized on bananapi-r2
+> Simplify this function implementation by using a known wrapper function.
 > 
-> mt6397 1000d000.pwrap:mt6323: unsupported chip: 0x0
+> This issue was detected by using the Coccinelle software.
 > 
-> this patch contains only the probe-changes and chip_data structs
-> from original part 3 by Hsin-Hsiung Wang
-> 
-> Fixes: a4872e80ce7d2a1844328176dbf279d0a2b89bdb mfd: mt6397: Extract IRQ related code from core driver
-> 
-> [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=164155
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
 > ---
->  drivers/mfd/mt6397-core.c | 64 ++++++++++++++++++++++++---------------
->  1 file changed, 40 insertions(+), 24 deletions(-)
-> 
-> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-> index 310dae26ddff..b2c325ead1c8 100644
-> --- a/drivers/mfd/mt6397-core.c
-> +++ b/drivers/mfd/mt6397-core.c
-> @@ -129,11 +129,27 @@ static int mt6397_irq_resume(struct device *dev)
->  static SIMPLE_DEV_PM_OPS(mt6397_pm_ops, mt6397_irq_suspend,
->  			mt6397_irq_resume);
->  
-> +struct chip_data {
-> +	u32 cid_addr;
-> +	u32 cid_shift;
-> +};
-> +
-> +static const struct chip_data mt6323_core = {
-> +	.cid_addr = MT6323_CID,
-> +	.cid_shift = 0,
-> +};
-> +
-> +static const struct chip_data mt6397_core = {
-> +	.cid_addr = MT6397_CID,
-> +	.cid_shift = 0,
-> +};
+>  drivers/char/hw_random/mtk-rng.c | 9 +--------
+>  1 file changed, 1 insertion(+), 8 deletions(-)
 
-Will there be other devices which have a !0 CID shift?
-
+Patch applied.  Thanks.
 -- 
-Lee Jones [李琼斯]
-Linaro Services Technical Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
+Email: Herbert Xu <herbert@gondor.apana.org.au>
+Home Page: http://gondor.apana.org.au/~herbert/
+PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
