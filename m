@@ -1,47 +1,60 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: Aw: Re: [PATCH] mfd: mt6397: fix probe after changing mt6397-core
-Date: Sat, 5 Oct 2019 10:16:08 +0200
-Message-ID: <3dcb030d-006e-7518-2679-48726d0c4e0e@gmail.com>
-References: <20191003185323.24646-1-frank-w@public-files.de>
- <20191004152001.GS18429@dell>
- <trinity-c33ab112-57a5-47d6-80e5-13c96442e302-1570204319219@3c-app-gmx-bap10>
+Subject: Re: [PATCH v19 0/2] PS8640 MIPI-to-eDP bridge
+Date: Sat, 5 Oct 2019 13:16:56 +0200
+Message-ID: <4df984a5-a917-753e-5870-7453f3d5438e@gmail.com>
+References: <1570216148-22802-1-git-send-email-uli@fpond.eu>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <trinity-c33ab112-57a5-47d6-80e5-13c96442e302-1570204319219@3c-app-gmx-bap10>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1570216148-22802-1-git-send-email-uli@fpond.eu>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Frank Wunderlich <frank-w@public-files.de>, Lee Jones <lee.jones@linaro.org>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Ulrich Hecht <uli@fpond.eu>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, jitao.shi@mediatek.com
+Cc: mark.rutland@arm.com, stonea168@163.com, ajaykumar.rs@samsung.com, architt@codeaurora.org, vpalatin@chromium.org, cawa.cheng@mediatek.com, yingjoe.chen@mediatek.com, devicetree@vger.kernel.org, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, robh+dt@kernel.org, seanpaul@chromium.org, eddie.huang@mediatek.com, rahul.sharma@samsung.com, kernel@pengutronix.de, galak@codeaurora.org, enric.balletbo@collabora.com, andy.yan@rock-chips.com
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 04/10/2019 17:51, Frank Wunderlich wrote:
-> This Question goes to Hsin-Hsiung Wang ;)
-> 
-> i only took his code (and splitted the 3rd part) to get mt6323 working again without reverting the other 2 Patches
->> regards Frank
-> 
-> 
->> Gesendet: Freitag, 04. Oktober 2019 um 17:20 Uhr
->> Von: "Lee Jones" <lee.jones@linaro.org>
-> 
->> Will there be other devices which have a !0 CID shift?
-> 
-
-Frank, a quick look at the series would have given you the answer.
-@Lee: yes, this change is the preparation to support MT6358:
-https://patchwork.kernel.org/patch/11110515/
-
-Regards,
-Matthias
+SGkgVWxpLAoKT24gMDQvMTAvMjAxOSAyMTowOSwgVWxyaWNoIEhlY2h0IHdyb3RlOgo+IEhpIQo+
+IAo+IFRoaXMgZHJpdmVyIHNlZW1zIHRvIGhhdmUgZmFsbGVuIGJ5IHRoZSB3YXlzaWRlIGJlY2F1
+c2UsIHdoaWxlIG90aGVyd2lzZQo+IGZpbmUsIGl0IGhhcyBhIGZpcm13YXJlIHVwZGF0ZSBmZWF0
+dXJlIHRoYXQgcmVxdWlyZXMgYSBibG9iIHRoYXQgaXMgbm90IGluCj4gdGhlIGxpbnV4LWZpcm13
+YXJlIHJlcG8uWzFdCj4gCj4gV2hhdGV2ZXIgdGhlIGNhdXNlIGZvciB0aGF0IG1heSBiZSwgdGhl
+IHVwZGF0ZSBjb2RlIGlzIGVudGlyZWx5IG9wdGlvbmFsCj4gKG15IGNoaXAgd29ya3MgZmluZSB3
+aXRoIHdoYXRldmVyIGZpcm13YXJlIGlzIGN1cnJlbnRseSBpbnN0YWxsZWQpLCBzbyBJCj4gaGF2
+ZSByZW1vdmVkIGl0IGluIG9yZGVyIHRvIGdldCB0aGlzIG1lcmdlZCBhZnRlciBhbGwuIEkgaGF2
+ZSBhbHNvCj4gZm9sbG93ZWQgdmFyaW91cyB0cml2aWFsIEFQSSBjaGFuZ2VzIHRoYXQgaGF2ZSBw
+aWxlZCB1cCBzaW5jZSAyMDE2OyBzZWUKPiB0aGUgaW5kaXZpZHVhbCBwYXRjaGVzIGZvciBkZXRh
+aWxzLgo+IAo+IEknbSB1c2luZyB0aGlzIGRyaXZlciBvbiBhbiBBY2VyIENocm9tZWJvb2sgUjEz
+ICgiRWxtIik7IHNlZQo+IGh0dHBzOi8vZ2l0aHViLmNvbS91bGkva2VybmVsL3RyZWUvZWxtLXdv
+cmtpbmctNS40Lgo+IAoKVGhhbmtzIGZvciB5b3VyIGVmZm9ydCB0byBnZXQgdGhpbmdzIHVwc3Ry
+ZWFtLgpJIGp1c3QgdHJpZWQgeW91ciBicmFuY2ggb24gbXkgUjEzLiBJIGhhZCB0byBkbyBhIHRy
+aXZpYWwgY29uZmlnIGNoYW5nZSBJIGhhZCB0bwpkbywgYXMgSSBkb24ndCBoYXZlIGFuZCBjYXJl
+IGFib3V0IHRoZSBibHVldG9vdGggRlcgcmlnaHQgbm93LgpCdXQgYWZ0ZXIgdGhhdCBteSBzY3Jl
+ZW4ga2VlcHMgYmxhY2suIEkgd2FzIGFibGUgdG8gYnVpbGQgYW5kIGJvb3QKZWxtLXdvcmtpbmct
+NS4zIGFuZCBlbG0td29ya2luZy01LjIuCgpVbmZvcnR1bmF0bGV5IEkgZG9uJ3QgaGF2ZSBhIHNl
+cmlhbCBjb25zb2xlIG9uIHRoZSBDaHJvbWVib29rLCBzbyBpdCdzIGRpZmZpY3VsdAp0byBmaW5k
+IG91dCB3aGVyZSBpdCBoYW5ncy4gQ2FuIHlvdSBwbGVhc2UgZG91YmxlIGNoZWNrIGlmIHlvdXIg
+bmV3CmVsbS13b3JraW5nLTUuNCBhY3R1YWxseSByZWFsbHkgd29ya3M/CgpUaGFua3MsCk1hdHRo
+aWFzCgo+IENVCj4gVWxpCj4gCj4gWzFdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0
+Y2gvOTQyNzU0My8KPiAKPiBKaXRhbyBTaGkgKDIpOgo+ICAgRG9jdW1lbnRhdGlvbjogYnJpZGdl
+OiBBZGQgZG9jdW1lbnRhdGlvbiBmb3IgcHM4NjQwIERUIHByb3BlcnRpZXMKPiAgIGRybS9icmlk
+Z2U6IEFkZCBJMkMgYmFzZWQgZHJpdmVyIGZvciBwczg2NDAgYnJpZGdlCj4gCj4gIC4uLi9kZXZp
+Y2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvYnJpZGdlL3BzODY0MC50eHQgIHwgIDQ0ICsrCj4gIGRy
+aXZlcnMvZ3B1L2RybS9icmlkZ2UvS2NvbmZpZyAgICAgICAgICAgICAgICAgICAgIHwgIDEyICsK
+PiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9NYWtlZmlsZSAgICAgICAgICAgICAgICAgICAgfCAg
+IDEgKwo+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3BhcmFkZS1wczg2NDAuYyAgICAgICAgICAg
+ICB8IDY3MiArKysrKysrKysrKysrKysrKysrKysKPiAgNCBmaWxlcyBjaGFuZ2VkLCA3MjkgaW5z
+ZXJ0aW9ucygrKQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
+L2JpbmRpbmdzL2Rpc3BsYXkvYnJpZGdlL3BzODY0MC50eHQKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0
+IGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvcGFyYWRlLXBzODY0MC5jCj4gCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QK
+ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
