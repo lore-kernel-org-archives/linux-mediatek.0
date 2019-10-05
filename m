@@ -1,100 +1,84 @@
 From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Subject: Re: [PATCH v2 2/4] watchdog: mtk_wdt: mt8183: Add reset controller
-Date: Sat, 5 Oct 2019 13:59:39 +0800
-Message-ID: <1570255179.29077.24.camel@mtksdaap41>
+Subject: Re: [PATCH v2 4/4] ASoC: mt8183: fix audio playback
+ slowly after playback during bootup
+Date: Sat, 5 Oct 2019 14:07:31 +0800
+Message-ID: <1570255651.29077.26.camel@mtksdaap41>
 References: <1569580317-21181-1-git-send-email-jiaxin.yu@mediatek.com>
- <1569580317-21181-3-git-send-email-jiaxin.yu@mediatek.com>
- <a0b2e9a3-ca77-814f-b7bd-edc69f00fce2@roeck-us.net>
+ <1569580317-21181-5-git-send-email-jiaxin.yu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <a0b2e9a3-ca77-814f-b7bd-edc69f00fce2@roeck-us.net>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Guenter Roeck <linux@roeck-us.net>
-Cc: mark.rutland@arm.com, alsa-devel@alsa-project.org, broonie@kernel.org, yong.liang@mediatek.com, Jiaxin Yu <jiaxin.yu@mediatek.com>, lgirdwood@gmail.com, tzungbi@google.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, eason.yen@mediatek.com, perex@perex.cz, wim@linux-watchdog.org, linux-arm-kernel@lists.infradead.org
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <1569580317-21181-5-git-send-email-jiaxin.yu@mediatek.com>
+List-Unsubscribe: <https://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <https://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: "Alsa-devel" <alsa-devel-bounces@alsa-project.org>
+To: Jiaxin Yu <jiaxin.yu@mediatek.com>
+Cc: mark.rutland@arm.com, alsa-devel@alsa-project.org, yong.liang@mediatek.com, robh+dt@kernel.org, lgirdwood@gmail.com, tzungbi@google.com, broonie@kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, eason.yen@mediatek.com, wim@linux-watchdog.org, linux@roeck-us.net
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2019-10-03 at 06:49 -0700, Guenter Roeck wrote:
-> On 9/27/19 3:31 AM, Jiaxin Yu wrote:
-
-<snip..>
-
-
-> > +static int toprgu_reset_assert(struct reset_controller_dev *rcdev,
-> > +			       unsigned long id)
-> > +{
-> > +	unsigned int tmp;
-> > +	unsigned long flags;
-> > +	struct toprgu_reset *data = container_of(rcdev,
-> > +				struct toprgu_reset, rcdev);
-> > +
-> > +	spin_lock_irqsave(&data->lock, flags);
-> > +
-> > +	tmp = __raw_readl(data->toprgu_swrst_base + data->regofs);
-> > +	tmp |= BIT(id);
-> > +	tmp |= WDT_SWSYS_RST_KEY;
-> > +	writel(tmp, data->toprgu_swrst_base + data->regofs);
-> > +
-> > +	spin_unlock_irqrestore(&data->lock, flags);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int toprgu_reset_deassert(struct reset_controller_dev *rcdev,
-> > +				 unsigned long id)
-> > +{
-> > +	unsigned int tmp;
-> > +	unsigned long flags;
-> > +	struct toprgu_reset *data = container_of(rcdev,
-> > +					struct toprgu_reset, rcdev);
-> > +
-> > +	spin_lock_irqsave(&data->lock, flags);
-> > +
-> > +	tmp = __raw_readl(data->toprgu_swrst_base + data->regofs);
-> > +	tmp &= ~BIT(id);
-> > +	tmp |= WDT_SWSYS_RST_KEY;
-> > +	writel(tmp, data->toprgu_swrst_base + data->regofs);
-> > +
-> > +	spin_unlock_irqrestore(&data->lock, flags);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int toprgu_reset(struct reset_controller_dev *rcdev,
-> > +			unsigned long id)
-> > +{
-> > +	int ret;
-> > +
-> > +	ret = toprgu_reset_assert(rcdev, id);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	return toprgu_reset_deassert(rcdev, id);
+On Fri, 2019-09-27 at 18:31 +0800, Jiaxin Yu wrote:
+> Before regmap_reinit_cache we must reset audio regs as default values.
+> So we use reset controller unit(toprgu) to reset audio hw.
 > 
-> Unless there is additional synchronization elsewhere, parallel calls
-> to the -> assert, and ->reset callbacks may result in the reset being
-> deasserted while at least one caller (the one who called the ->assert
-> function) believes that it is still asserted.
-> 
-> [ ... and if there _is_ additional synchronization elsewhere, the
->    local spinlock would be unnecessary ]
-> 
+> Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
 
-I'm not sure if this count as additional synchronization, but you could
-get exclusive control to the reset by calling
-reset_control_get_exclusive so others won't try to reset the component
-while you are using it.
 
-In this case, you still need spinlock because other drivers might trying
-to reset their components and they share same register.
+This one looks good to me. You could add this if you want
+
+
+Reviewed-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+
 
 Joe.C
+
+> ---
+>  sound/soc/mediatek/mt8183/mt8183-afe-pcm.c | 15 +++++++++++++++
+>  1 file changed, 15 insertions(+)
+> 
+> diff --git a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
+> index 4a31106d3471..721632386a50 100644
+> --- a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
+> +++ b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
+> @@ -11,6 +11,7 @@
+>  #include <linux/of.h>
+>  #include <linux/of_address.h>
+>  #include <linux/pm_runtime.h>
+> +#include <linux/reset.h>
+>  
+>  #include "mt8183-afe-common.h"
+>  #include "mt8183-afe-clk.h"
+> @@ -1089,6 +1090,7 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
+>  	struct mtk_base_afe *afe;
+>  	struct mt8183_afe_private *afe_priv;
+>  	struct device *dev;
+> +	struct reset_control *rstc;
+>  	int i, irq_id, ret;
+>  
+>  	afe = devm_kzalloc(&pdev->dev, sizeof(*afe), GFP_KERNEL);
+> @@ -1126,6 +1128,19 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
+>  		return ret;
+>  	}
+>  
+> +	rstc = devm_reset_control_get(dev, "audiosys");
+> +	if (IS_ERR(rstc)) {
+> +		ret = PTR_ERR(rstc);
+> +		dev_err(dev, "could not get audiosys reset:%d\n", ret);
+> +		return ret;
+> +	}
+> +
+> +	ret = reset_control_reset(rstc);
+> +	if (ret) {
+> +		dev_err(dev, "failed to trigger audio reset:%d\n", ret);
+> +		return ret;
+> +	}
+> +
+>  	/* enable clock for regcache get default value from hw */
+>  	afe_priv->pm_runtime_bypass_reg_ctl = true;
+>  	pm_runtime_get_sync(&pdev->dev);
