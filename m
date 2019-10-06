@@ -1,111 +1,91 @@
-From: Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [PATCH v2 2/4] watchdog: mtk_wdt: mt8183: Add reset controller
-Date: Sat, 5 Oct 2019 07:46:30 -0700
-Message-ID: <70b77fb3-7186-734d-3415-64acb30bab8f@roeck-us.net>
-References: <1569580317-21181-1-git-send-email-jiaxin.yu@mediatek.com>
- <1569580317-21181-3-git-send-email-jiaxin.yu@mediatek.com>
- <a0b2e9a3-ca77-814f-b7bd-edc69f00fce2@roeck-us.net>
- <1570255179.29077.24.camel@mtksdaap41>
+From: YueHaibing <yuehaibing@huawei.com>
+Subject: [PATCH -next 00/34] rtc: use devm_platform_ioremap_resource() to simplify code
+Date: Sun, 6 Oct 2019 18:29:19 +0800
+Message-ID: <20191006102953.57536-1-yuehaibing@huawei.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1570255179.29077.24.camel@mtksdaap41>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Cc: mark.rutland@arm.com, alsa-devel@alsa-project.org, broonie@kernel.org, yong.liang@mediatek.com, Jiaxin Yu <jiaxin.yu@mediatek.com>, lgirdwood@gmail.com, tzungbi@google.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, eason.yen@mediatek.com, perex@perex.cz, wim@linux-watchdog.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: a.zummo@towertech.it, alexandre.belloni@bootlin.com, joel@jms.id.au, andrew@aj.id.au, nicolas.ferre@microchip.com, ludovic.desroches@microchip.com, computersforpeace@gmail.com, gregory.0xf0@gmail.com, f.fainelli@gmail.com, bcm-kernel-feedback-list@broadcom.com, linus.walleij@linaro.org, baruch@tkos.co.il, paul@crapouillou.net, vz@mleia.com, slemieux.tyco@gmail.com, khilman@baylibre.com, eddie.huang@mediatek.com, sean.wang@mediatek.com, matthias.bgg@gmail.com, patrice.chotard@st.com, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, mripard@kernel.org, wens@csie.org, thierry.reding@gmail.com, jonathanh@nvidia.com, linux@prisktech.co.nz, michal.simek@xilinx.com
+Cc: linux-rtc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, YueHaibing <yuehaibing@huawei.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 10/4/19 10:59 PM, Yingjoe Chen wrote:
-> On Thu, 2019-10-03 at 06:49 -0700, Guenter Roeck wrote:
->> On 9/27/19 3:31 AM, Jiaxin Yu wrote:
-> 
-> <snip..>
-> 
-> 
->>> +static int toprgu_reset_assert(struct reset_controller_dev *rcdev,
->>> +			       unsigned long id)
->>> +{
->>> +	unsigned int tmp;
->>> +	unsigned long flags;
->>> +	struct toprgu_reset *data = container_of(rcdev,
->>> +				struct toprgu_reset, rcdev);
->>> +
->>> +	spin_lock_irqsave(&data->lock, flags);
->>> +
->>> +	tmp = __raw_readl(data->toprgu_swrst_base + data->regofs);
->>> +	tmp |= BIT(id);
->>> +	tmp |= WDT_SWSYS_RST_KEY;
->>> +	writel(tmp, data->toprgu_swrst_base + data->regofs);
->>> +
->>> +	spin_unlock_irqrestore(&data->lock, flags);
->>> +
->>> +	return 0;
->>> +}
->>> +
->>> +static int toprgu_reset_deassert(struct reset_controller_dev *rcdev,
->>> +				 unsigned long id)
->>> +{
->>> +	unsigned int tmp;
->>> +	unsigned long flags;
->>> +	struct toprgu_reset *data = container_of(rcdev,
->>> +					struct toprgu_reset, rcdev);
->>> +
->>> +	spin_lock_irqsave(&data->lock, flags);
->>> +
->>> +	tmp = __raw_readl(data->toprgu_swrst_base + data->regofs);
->>> +	tmp &= ~BIT(id);
->>> +	tmp |= WDT_SWSYS_RST_KEY;
->>> +	writel(tmp, data->toprgu_swrst_base + data->regofs);
->>> +
->>> +	spin_unlock_irqrestore(&data->lock, flags);
->>> +
->>> +	return 0;
->>> +}
->>> +
->>> +static int toprgu_reset(struct reset_controller_dev *rcdev,
->>> +			unsigned long id)
->>> +{
->>> +	int ret;
->>> +
->>> +	ret = toprgu_reset_assert(rcdev, id);
->>> +	if (ret)
->>> +		return ret;
->>> +
->>> +	return toprgu_reset_deassert(rcdev, id);
->>
->> Unless there is additional synchronization elsewhere, parallel calls
->> to the -> assert, and ->reset callbacks may result in the reset being
->> deasserted while at least one caller (the one who called the ->assert
->> function) believes that it is still asserted.
->>
->> [ ... and if there _is_ additional synchronization elsewhere, the
->>     local spinlock would be unnecessary ]
->>
-> 
-> I'm not sure if this count as additional synchronization, but you could
-> get exclusive control to the reset by calling
-> reset_control_get_exclusive so others won't try to reset the component
-> while you are using it.
-> 
-> In this case, you still need spinlock because other drivers might trying
-> to reset their components and they share same register.
-> 
-That isn't what I meant. I referred to synchronization in the reset
-controller core. AFAICS the reset controller core prevents parallel
-calls into the same reset controller driver using atomics. Unfortunately,
-it is not well defined if additional synchronization on driver level
-is needed - some drivers implement it, some drivers don't, and I don't
-find a documentation. Maybe Philip can provide guidance.
+devm_platform_ioremap_resource() internally have platform_get_resource()
+and devm_ioremap_resource() in it. So instead of calling them separately
+use devm_platform_ioremap_resource() directly.
 
-Thanks,
-Guenter
+YueHaibing (34):
+  rtc: asm9260: use devm_platform_ioremap_resource() to simplify code
+  rtc: rtc-aspeed: use devm_platform_ioremap_resource() to simplify code
+  rtc: brcmstb-waketimer: use devm_platform_ioremap_resource() to
+    simplify code
+  rtc: at91sam9: use devm_platform_ioremap_resource() to simplify code
+  rtc: cadence: use devm_platform_ioremap_resource() to simplify code
+  rtc: coh901331: use devm_platform_ioremap_resource() to simplify code
+  rtc: davinci: use devm_platform_ioremap_resource() to simplify code
+  rtc: digicolor: use devm_platform_ioremap_resource() to simplify code
+  rtc: ds1216: use devm_platform_ioremap_resource() to simplify code
+  rtc: ds1511: use devm_platform_ioremap_resource() to simplify code
+  rtc: ds1553: use devm_platform_ioremap_resource() to simplify code
+  rtc: ep93xx: use devm_platform_ioremap_resource() to simplify code
+  rtc: jz4740: use devm_platform_ioremap_resource() to simplify code
+  rtc: lpc24xx: use devm_platform_ioremap_resource() to simplify code
+  rtc: lpc32xx: use devm_platform_ioremap_resource() to simplify code
+  rtc: meson: use devm_platform_ioremap_resource() to simplify code
+  rtc: mt7622: use devm_platform_ioremap_resource() to simplify code
+  rtc: mv: use devm_platform_ioremap_resource() to simplify code
+  rtc: omap: use devm_platform_ioremap_resource() to simplify code
+  rtc: pic32: use devm_platform_ioremap_resource() to simplify code
+  rtc: rtd119x: use devm_platform_ioremap_resource() to simplify code
+  rtc: s3c: use devm_platform_ioremap_resource() to simplify code
+  rtc: sa1100: use devm_platform_ioremap_resource() to simplify code
+  rtc: spear: use devm_platform_ioremap_resource() to simplify code
+  rtc: stk17ta8: use devm_platform_ioremap_resource() to simplify code
+  rtc: ds1286: use devm_platform_ioremap_resource() to simplify code
+  rtc: st-lpc: use devm_platform_ioremap_resource() to simplify code
+  rtc: stm32: use devm_platform_ioremap_resource() to simplify code
+  rtc: sunxi: use devm_platform_ioremap_resource() to simplify code
+  rtc: tegra: use devm_platform_ioremap_resource() to simplify code
+  rtc: tx4939: use devm_platform_ioremap_resource() to simplify code
+  rtc: vt8500: use devm_platform_ioremap_resource() to simplify code
+  rtc: xgene: use devm_platform_ioremap_resource() to simplify code
+  rtc: zynqmp: use devm_platform_ioremap_resource() to simplify code
+
+ drivers/rtc/rtc-asm9260.c           | 4 +---
+ drivers/rtc/rtc-aspeed.c            | 4 +---
+ drivers/rtc/rtc-at91sam9.c          | 4 +---
+ drivers/rtc/rtc-brcmstb-waketimer.c | 4 +---
+ drivers/rtc/rtc-cadence.c           | 4 +---
+ drivers/rtc/rtc-coh901331.c         | 4 +---
+ drivers/rtc/rtc-davinci.c           | 4 +---
+ drivers/rtc/rtc-digicolor.c         | 4 +---
+ drivers/rtc/rtc-ds1216.c            | 4 +---
+ drivers/rtc/rtc-ds1286.c            | 4 +---
+ drivers/rtc/rtc-ds1511.c            | 4 +---
+ drivers/rtc/rtc-ds1553.c            | 4 +---
+ drivers/rtc/rtc-ep93xx.c            | 4 +---
+ drivers/rtc/rtc-jz4740.c            | 4 +---
+ drivers/rtc/rtc-lpc24xx.c           | 4 +---
+ drivers/rtc/rtc-lpc32xx.c           | 4 +---
+ drivers/rtc/rtc-meson.c             | 4 +---
+ drivers/rtc/rtc-mt7622.c            | 4 +---
+ drivers/rtc/rtc-mv.c                | 4 +---
+ drivers/rtc/rtc-omap.c              | 4 +---
+ drivers/rtc/rtc-pic32.c             | 4 +---
+ drivers/rtc/rtc-rtd119x.c           | 4 +---
+ drivers/rtc/rtc-s3c.c               | 4 +---
+ drivers/rtc/rtc-sa1100.c            | 4 +---
+ drivers/rtc/rtc-spear.c             | 4 +---
+ drivers/rtc/rtc-st-lpc.c            | 4 +---
+ drivers/rtc/rtc-stk17ta8.c          | 4 +---
+ drivers/rtc/rtc-stm32.c             | 4 +---
+ drivers/rtc/rtc-sunxi.c             | 4 +---
+ drivers/rtc/rtc-tegra.c             | 4 +---
+ drivers/rtc/rtc-tx4939.c            | 4 +---
+ drivers/rtc/rtc-vt8500.c            | 4 +---
+ drivers/rtc/rtc-xgene.c             | 4 +---
+ drivers/rtc/rtc-zynqmp.c            | 5 +----
+ 34 files changed, 34 insertions(+), 103 deletions(-)
+
+-- 
+2.7.4
