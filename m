@@ -1,60 +1,51 @@
-From: Sean Paul <sean@poorly.run>
-Subject: Re: [PATCH v8 4/4] drm/mtk: add panel orientation property
-Date: Mon, 7 Oct 2019 12:48:02 -0400
-Message-ID: <20191007164802.GD126146@art_vandelay>
-References: <20190925225833.7310-1-dbasehore@chromium.org>
- <20190925225833.7310-5-dbasehore@chromium.org>
+From: Kevin Hilman <khilman@baylibre.com>
+Subject: Re: [PATCH -next 16/34] rtc: meson: use devm_platform_ioremap_resource() to simplify code
+Date: Mon, 07 Oct 2019 11:09:15 -0700
+Message-ID: <7hk19gfmwk.fsf@baylibre.com>
+References: <20191006102953.57536-1-yuehaibing@huawei.com> <20191006102953.57536-17-yuehaibing@huawei.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190925225833.7310-5-dbasehore@chromium.org>
+In-Reply-To: <20191006102953.57536-17-yuehaibing@huawei.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Derek Basehore <dbasehore@chromium.org>
-Cc: linux-kernel@vger.kernel.org, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Thierry Reding <thierry.reding@gmail.com>, Sam Ravnborg <sam@ravnborg.org>, Jani Nikula <jani.nikula@linux.intel.com>, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: a.zummo@towertech.it, alexandre.belloni@bootlin.com, joel@jms.id.au, andrew@aj.id.au, nicolas.ferre@microchip.com, ludovic.desroches@microchip.com, computersforpeace@gmail.com, gregory.0xf0@gmail.com, f.fainelli@gmail.com, bcm-kernel-feedback-list@broadcom.com, linus.walleij@linaro.org, baruch@tkos.co.il, paul@crapouillou.net, vz@mleia.com, slemieux.tyco@gmail.com, eddie.huang@mediatek.com, sean.wang@mediatek.com, matthias.bgg@gmail.com, patrice.chotard@st.com, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, mripard@kernel.org, wens@csie.org, thierry.reding@gmail.com, jonathanh@nvidia.com, linux@prisktech.co.nz, michal.simek@xilinx.com
+Cc: linux-rtc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, YueHaibing <yuehaibing@huawei.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Sep 25, 2019 at 03:58:33PM -0700, Derek Basehore wrote:
-> This inits the panel orientation property for the mediatek dsi driver
-> if the panel orientation (connector.display_info.panel_orientation) is
-> not DRM_MODE_PANEL_ORIENTATION_UNKNOWN.
-> 
-> Signed-off-by: Derek Basehore <dbasehore@chromium.org>
-> Acked-by: Sam Ravnborg <sam@ravnborg.org>
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+YueHaibing <yuehaibing@huawei.com> writes:
 
-Reviewed-by: Sean Paul <seanpaul@chromium.org>
+> Use devm_platform_ioremap_resource() to simplify the code a bit.
+> This is detected by coccinelle.
+>
+> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+
+Reviewed-by: Kevin Hilman <khilman@baylibre.com>
 
 > ---
->  drivers/gpu/drm/mediatek/mtk_dsi.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> index 224afb666881..2936932344eb 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -792,10 +792,18 @@ static int mtk_dsi_create_connector(struct drm_device *drm, struct mtk_dsi *dsi)
->  			DRM_ERROR("Failed to attach panel to drm\n");
->  			goto err_connector_cleanup;
->  		}
-> +
-> +		ret = drm_connector_init_panel_orientation_property(&dsi->conn);
-> +		if (ret) {
-> +			DRM_ERROR("Failed to init panel orientation\n");
-> +			goto err_panel_detach;
-> +		}
->  	}
+>  drivers/rtc/rtc-meson.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+>
+> diff --git a/drivers/rtc/rtc-meson.c b/drivers/rtc/rtc-meson.c
+> index e08b981..9bd8478 100644
+> --- a/drivers/rtc/rtc-meson.c
+> +++ b/drivers/rtc/rtc-meson.c
+> @@ -292,7 +292,6 @@ static int meson_rtc_probe(struct platform_device *pdev)
+>  	};
+>  	struct device *dev = &pdev->dev;
+>  	struct meson_rtc *rtc;
+> -	struct resource *res;
+>  	void __iomem *base;
+>  	int ret;
+>  	u32 tm;
+> @@ -312,8 +311,7 @@ static int meson_rtc_probe(struct platform_device *pdev)
+>  	rtc->rtc->ops = &meson_rtc_ops;
+>  	rtc->rtc->range_max = U32_MAX;
 >  
->  	return 0;
+> -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> -	base = devm_ioremap_resource(dev, res);
+> +	base = devm_platform_ioremap_resource(pdev, 0);
+>  	if (IS_ERR(base))
+>  		return PTR_ERR(base);
 >  
-> +err_panel_detach:
-> +	drm_panel_detach(dsi->panel);
->  err_connector_cleanup:
->  	drm_connector_cleanup(&dsi->conn);
->  	return ret;
 > -- 
-> 2.23.0.351.gc4317032e6-goog
-> 
-
--- 
-Sean Paul, Software Engineer, Google / Chromium OS
+> 2.7.4
