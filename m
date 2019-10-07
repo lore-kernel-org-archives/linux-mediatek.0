@@ -1,90 +1,197 @@
 From: Sean Paul <sean@poorly.run>
-Subject: Re: [PATCH v8 1/4] drm/panel: Add helper for reading DT rotation
-Date: Mon, 7 Oct 2019 12:38:22 -0400
-Message-ID: <20191007163822.GA126146@art_vandelay>
-References: <20190925225833.7310-1-dbasehore@chromium.org>
- <20190925225833.7310-2-dbasehore@chromium.org>
+Subject: Re: [v8,2/4] drm/panel: set display info in panel attach
+Date: Mon, 7 Oct 2019 12:44:41 -0400
+Message-ID: <20191007164441.GB126146@art_vandelay>
+References: <20190925225833.7310-3-dbasehore@chromium.org>
+ <20190929052307.GA28304@jamwan02-TSP300>
+ <CAGAzgspEA0mcEHwgxyWWh3Gn-iC+a21g5GUrhsRJrTHQ_OAYqQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <20190925225833.7310-2-dbasehore@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Derek Basehore <dbasehore@chromium.org>
-Cc: Maxime Ripard <maxime.ripard@bootlin.com>, Sam Ravnborg <sam@ravnborg.org>, intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org, David Airlie <airlied@linux.ie>, Thierry Reding <thierry.reding@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, Rodrigo Vivi <rodrigo.vivi@intel.com>, linux-mediatek@lists.infradead.org, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <CAGAzgspEA0mcEHwgxyWWh3Gn-iC+a21g5GUrhsRJrTHQ_OAYqQ@mail.gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: "dbasehore ." <dbasehore@chromium.org>
+Cc: Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>, "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, Thierry Reding <thierry.reding@gmail.com>, "james qian wang (Arm Technology China)" <james.qian.wang@arm.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, nd <nd@arm.com>, Sam Ravnborg <sam@ravnborg.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gV2VkLCBTZXAgMjUsIDIwMTkgYXQgMDM6NTg6MzBQTSAtMDcwMCwgRGVyZWsgQmFzZWhvcmUg
-d3JvdGU6Cj4gVGhpcyBhZGRzIGEgaGVscGVyIGZ1bmN0aW9uIGZvciByZWFkaW5nIHRoZSByb3Rh
-dGlvbiAocGFuZWwKPiBvcmllbnRhdGlvbikgZnJvbSB0aGUgZGV2aWNlIHRyZWUuCj4gCj4gU2ln
-bmVkLW9mZi1ieTogRGVyZWsgQmFzZWhvcmUgPGRiYXNlaG9yZUBjaHJvbWl1bS5vcmc+Cj4gUmV2
-aWV3ZWQtYnk6IFNhbSBSYXZuYm9yZyA8c2FtQHJhdm5ib3JnLm9yZz4KClRoZSBwYXRjaCBMR1RN
-LCBidXQgSSBkb24ndCBzZWUgaXQgdXNlZCBhbnl3aGVyZSBsYXRlciBpbiB0aGUgcGF0Y2g/IElz
-IHRoZXJlIGEKcGFuZWwgZHJpdmVyIGluY29taW5nPwoKU2VhbgoKPiAtLS0KPiAgZHJpdmVycy9n
-cHUvZHJtL2RybV9wYW5lbC5jIHwgNDMgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKwo+ICBpbmNsdWRlL2RybS9kcm1fcGFuZWwuaCAgICAgfCAgOSArKysrKysrKwo+ICAyIGZp
-bGVzIGNoYW5nZWQsIDUyIGluc2VydGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
-cHUvZHJtL2RybV9wYW5lbC5jIGIvZHJpdmVycy9ncHUvZHJtL2RybV9wYW5lbC5jCj4gaW5kZXgg
-NmIwYmY0MjAzOWNmLi4wOTA5YjUzYjc0ZTYgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJt
-L2RybV9wYW5lbC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2RybV9wYW5lbC5jCj4gQEAgLTI2
-NCw2ICsyNjQsNDkgQEAgc3RydWN0IGRybV9wYW5lbCAqb2ZfZHJtX2ZpbmRfcGFuZWwoY29uc3Qg
-c3RydWN0IGRldmljZV9ub2RlICpucCkKPiAgCXJldHVybiBFUlJfUFRSKC1FUFJPQkVfREVGRVIp
-Owo+ICB9Cj4gIEVYUE9SVF9TWU1CT0wob2ZfZHJtX2ZpbmRfcGFuZWwpOwo+ICsKPiArLyoqCj4g
-KyAqIG9mX2RybV9nZXRfcGFuZWxfb3JpZW50YXRpb24gLSBsb29rIHVwIHRoZSBvcmllbnRhdGlv
-biBvZiB0aGUgcGFuZWwgdGhyb3VnaAo+ICsgKiB0aGUgInJvdGF0aW9uIiBiaW5kaW5nIGZyb20g
-YSBkZXZpY2UgdHJlZSBub2RlCj4gKyAqIEBucDogZGV2aWNlIHRyZWUgbm9kZSBvZiB0aGUgcGFu
-ZWwKPiArICogQG9yaWVudGF0aW9uOiBvcmllbnRhdGlvbiBlbnVtIHRvIGJlIGZpbGxlZCBpbgo+
-ICsgKgo+ICsgKiBMb29rcyB1cCB0aGUgcm90YXRpb24gb2YgYSBwYW5lbCBpbiB0aGUgZGV2aWNl
-IHRyZWUuIFRoZSBvcmllbnRhdGlvbiBvZiB0aGUKPiArICogcGFuZWwgaXMgZXhwcmVzc2VkIGFz
-IGEgcHJvcGVydHkgbmFtZSAicm90YXRpb24iIGluIHRoZSBkZXZpY2UgdHJlZS4gVGhlCj4gKyAq
-IHJvdGF0aW9uIGluIHRoZSBkZXZpY2UgdHJlZSBpcyBjb3VudGVyIGNsb2Nrd2lzZS4KPiArICoK
-PiArICogUmV0dXJuOiAwIHdoZW4gYSB2YWxpZCByb3RhdGlvbiB2YWx1ZSAoMCwgOTAsIDE4MCwg
-b3IgMjcwKSBpcyByZWFkIG9yIHRoZQo+ICsgKiByb3RhdGlvbiBwcm9wZXJ0eSBkb2Vzbid0IGV4
-aXN0LiAtRUVSUk9SIG90aGVyd2lzZS4KPiArICovCj4gK2ludCBvZl9kcm1fZ2V0X3BhbmVsX29y
-aWVudGF0aW9uKGNvbnN0IHN0cnVjdCBkZXZpY2Vfbm9kZSAqbnAsCj4gKwkJCQkgZW51bSBkcm1f
-cGFuZWxfb3JpZW50YXRpb24gKm9yaWVudGF0aW9uKQo+ICt7Cj4gKwlpbnQgcm90YXRpb24sIHJl
-dDsKPiArCj4gKwlyZXQgPSBvZl9wcm9wZXJ0eV9yZWFkX3UzMihucCwgInJvdGF0aW9uIiwgJnJv
-dGF0aW9uKTsKPiArCWlmIChyZXQgPT0gLUVJTlZBTCkgewo+ICsJCS8qIERvbid0IHJldHVybiBh
-biBlcnJvciBpZiB0aGVyZSdzIG5vIHJvdGF0aW9uIHByb3BlcnR5LiAqLwo+ICsJCSpvcmllbnRh
-dGlvbiA9IERSTV9NT0RFX1BBTkVMX09SSUVOVEFUSU9OX1VOS05PV047Cj4gKwkJcmV0dXJuIDA7
-Cj4gKwl9Cj4gKwo+ICsJaWYgKHJldCA8IDApCj4gKwkJcmV0dXJuIHJldDsKPiArCj4gKwlpZiAo
-cm90YXRpb24gPT0gMCkKPiArCQkqb3JpZW50YXRpb24gPSBEUk1fTU9ERV9QQU5FTF9PUklFTlRB
-VElPTl9OT1JNQUw7Cj4gKwllbHNlIGlmIChyb3RhdGlvbiA9PSA5MCkKPiArCQkqb3JpZW50YXRp
-b24gPSBEUk1fTU9ERV9QQU5FTF9PUklFTlRBVElPTl9SSUdIVF9VUDsKPiArCWVsc2UgaWYgKHJv
-dGF0aW9uID09IDE4MCkKPiArCQkqb3JpZW50YXRpb24gPSBEUk1fTU9ERV9QQU5FTF9PUklFTlRB
-VElPTl9CT1RUT01fVVA7Cj4gKwllbHNlIGlmIChyb3RhdGlvbiA9PSAyNzApCj4gKwkJKm9yaWVu
-dGF0aW9uID0gRFJNX01PREVfUEFORUxfT1JJRU5UQVRJT05fTEVGVF9VUDsKPiArCWVsc2UKPiAr
-CQlyZXR1cm4gLUVJTlZBTDsKPiArCj4gKwlyZXR1cm4gMDsKPiArfQo+ICtFWFBPUlRfU1lNQk9M
-KG9mX2RybV9nZXRfcGFuZWxfb3JpZW50YXRpb24pOwo+ICAjZW5kaWYKPiAgCj4gIE1PRFVMRV9B
-VVRIT1IoIlRoaWVycnkgUmVkaW5nIDx0cmVkaW5nQG52aWRpYS5jb20+Iik7Cj4gZGlmZiAtLWdp
-dCBhL2luY2x1ZGUvZHJtL2RybV9wYW5lbC5oIGIvaW5jbHVkZS9kcm0vZHJtX3BhbmVsLmgKPiBp
-bmRleCA2MjRiZDE1ZWNmYWIuLmQxNjE1OGRlYWNkYyAxMDA2NDQKPiAtLS0gYS9pbmNsdWRlL2Ry
-bS9kcm1fcGFuZWwuaAo+ICsrKyBiL2luY2x1ZGUvZHJtL2RybV9wYW5lbC5oCj4gQEAgLTM0LDYg
-KzM0LDggQEAgc3RydWN0IGRybV9kZXZpY2U7Cj4gIHN0cnVjdCBkcm1fcGFuZWw7Cj4gIHN0cnVj
-dCBkaXNwbGF5X3RpbWluZzsKPiAgCj4gK2VudW0gZHJtX3BhbmVsX29yaWVudGF0aW9uOwo+ICsK
-PiAgLyoqCj4gICAqIHN0cnVjdCBkcm1fcGFuZWxfZnVuY3MgLSBwZXJmb3JtIG9wZXJhdGlvbnMg
-b24gYSBnaXZlbiBwYW5lbAo+ICAgKgo+IEBAIC0xNjUsMTEgKzE2NywxOCBAQCBpbnQgZHJtX3Bh
-bmVsX2dldF9tb2RlcyhzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbCk7Cj4gIAo+ICAjaWYgZGVmaW5l
-ZChDT05GSUdfT0YpICYmIGRlZmluZWQoQ09ORklHX0RSTV9QQU5FTCkKPiAgc3RydWN0IGRybV9w
-YW5lbCAqb2ZfZHJtX2ZpbmRfcGFuZWwoY29uc3Qgc3RydWN0IGRldmljZV9ub2RlICpucCk7Cj4g
-K2ludCBvZl9kcm1fZ2V0X3BhbmVsX29yaWVudGF0aW9uKGNvbnN0IHN0cnVjdCBkZXZpY2Vfbm9k
-ZSAqbnAsCj4gKwkJCQkgZW51bSBkcm1fcGFuZWxfb3JpZW50YXRpb24gKm9yaWVudGF0aW9uKTsK
-PiAgI2Vsc2UKPiAgc3RhdGljIGlubGluZSBzdHJ1Y3QgZHJtX3BhbmVsICpvZl9kcm1fZmluZF9w
-YW5lbChjb25zdCBzdHJ1Y3QgZGV2aWNlX25vZGUgKm5wKQo+ICB7Cj4gIAlyZXR1cm4gRVJSX1BU
-UigtRU5PREVWKTsKPiAgfQo+ICtzdGF0aWMgaW5saW5lIGludCBvZl9kcm1fZ2V0X3BhbmVsX29y
-aWVudGF0aW9uKGNvbnN0IHN0cnVjdCBkZXZpY2Vfbm9kZSAqbnAsCj4gKwkJZW51bSBkcm1fcGFu
-ZWxfb3JpZW50YXRpb24gKm9yaWVudGF0aW9uKQo+ICt7Cj4gKwlyZXR1cm4gLUVOT0RFVjsKPiAr
-fQo+ICAjZW5kaWYKPiAgCj4gICNlbmRpZgo+IC0tIAo+IDIuMjMuMC4zNTEuZ2M0MzE3MDMyZTYt
-Z29vZwo+IAoKLS0gClNlYW4gUGF1bCwgU29mdHdhcmUgRW5naW5lZXIsIEdvb2dsZSAvIENocm9t
-aXVtIE9TCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
-aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
-czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+On Mon, Sep 30, 2019 at 04:14:54PM -0700, dbasehore . wrote:
+> On Sat, Sep 28, 2019 at 10:23 PM james qian wang (Arm Technology
+> China) <james.qian.wang@arm.com> wrote:
+> >
+> > On Wed, Sep 25, 2019 at 03:58:31PM -0700, Derek Basehore wrote:
+> > > Devicetree systems can set panel orientation via a panel binding, but
+> > > there's no way, as is, to propagate this setting to the connector,
+> > > where the property need to be added.
+> > > To address this, this patch sets orientation, as well as other fixed
+> > > values for the panel, in the drm_panel_attach function. These values
+> > > are stored from probe in the drm_panel struct.
+> > >
+> > > Signed-off-by: Derek Basehore <dbasehore@chromium.org>
+> > > Reviewed-by: Sam Ravnborg <sam@ravnborg.org>
+> > > ---
+> > >  drivers/gpu/drm/drm_panel.c | 28 +++++++++++++++++++++
+> > >  include/drm/drm_panel.h     | 50 +++++++++++++++++++++++++++++++++++++
+> > >  2 files changed, 78 insertions(+)
+> > >
+> > > diff --git a/drivers/gpu/drm/drm_panel.c b/drivers/gpu/drm/drm_panel.c
+> > > index 0909b53b74e6..1cd2b56c9fe6 100644
+> > > --- a/drivers/gpu/drm/drm_panel.c
+> > > +++ b/drivers/gpu/drm/drm_panel.c
+> > > @@ -104,11 +104,23 @@ EXPORT_SYMBOL(drm_panel_remove);
+> > >   */
+> > >  int drm_panel_attach(struct drm_panel *panel, struct drm_connector *connector)
+> > >  {
+> > > +     struct drm_display_info *info;
+> > > +
+> > >       if (panel->connector)
+> > >               return -EBUSY;
+> > >
+> > >       panel->connector = connector;
+> > >       panel->drm = connector->dev;
+> > > +     info = &connector->display_info;
+> > > +     info->width_mm = panel->width_mm;
+> > > +     info->height_mm = panel->height_mm;
+> > > +     info->bpc = panel->bpc;
+> > > +     info->panel_orientation = panel->orientation;
+> > > +     info->bus_flags = panel->bus_flags;
+> > > +     if (panel->bus_formats)
+> > > +             drm_display_info_set_bus_formats(&connector->display_info,
+> > > +                                              panel->bus_formats,
+> > > +                                              panel->num_bus_formats);
+> > >
+> > >       return 0;
+> > >  }
+> > > @@ -126,6 +138,22 @@ EXPORT_SYMBOL(drm_panel_attach);
+> > >   */
+> > >  void drm_panel_detach(struct drm_panel *panel)
+> > >  {
+> > > +     struct drm_display_info *info;
+> > > +
+> > > +     if (!panel->connector)
+> > > +             goto out;
+> > > +
+> > > +     info = &panel->connector->display_info;
+> > > +     info->width_mm = 0;
+> > > +     info->height_mm = 0;
+> > > +     info->bpc = 0;
+> > > +     info->panel_orientation = DRM_MODE_PANEL_ORIENTATION_UNKNOWN;
+> > > +     info->bus_flags = 0;
+> > > +     kfree(info->bus_formats);
+> > > +     info->bus_formats = NULL;
+> > > +     info->num_bus_formats = 0;
+> > > +
+> > > +out:
+> > >       panel->connector = NULL;
+> > >       panel->drm = NULL;
+> > >  }
+> > > diff --git a/include/drm/drm_panel.h b/include/drm/drm_panel.h
+> > > index d16158deacdc..f3587a54b8ac 100644
+> > > --- a/include/drm/drm_panel.h
+> > > +++ b/include/drm/drm_panel.h
+> > > @@ -141,6 +141,56 @@ struct drm_panel {
+> > >        */
+> > >       const struct drm_panel_funcs *funcs;
+> > >
+> >
+> > All these new added members seems dupliated with drm_display_info,
+> > So I think, can we add a new drm_plane_funcs func:
+> >
+> > int (*set_display_info)(struct drm_panel *panel,
+> >                         struct drm_display_info *info);
+> 
+> I don't disagree personally, since I originally wrote it this way, but
+> 2 maintainers, Daniel Vetter and Thierry Reding, requested that it be
+> changed. Unless that decision is reversed, I won't be changing this.
+> 
+
+Reading back the feedback on v1, I don't think anyone said they were against
+storing a drm_display_info struct in drm_panel (no one really weighed in on
+it one way or another). IMO duplicating a bunch of fields feels pretty icky.
+
+I think most fields in drm_display_info have pretty reasonable defaults, so I'd
+recommend just storing a copy in drm_panel. As Thierry suggests, we can
+populate the dt parts in probe (orientation) and then copy over all or a subset
+of the struct to connector on attach.
+
+Sean
+
+> >
+> > Then in drm_panel_attach(), via this interface the specific panel
+> > driver can directly set connector->display_info. like
+> >
+> >    ...
+> >    if (panel->funcs && panel->funcs->set_display_info)
+> >                 panel->funcs->unprepare(panel, connector->display_info);
+> >    ...
+> >
+> > Thanks
+> > James
+> >
+> > > +     /**
+> > > +      * @width_mm:
+> > > +      *
+> > > +      * Physical width in mm.
+> > > +      */
+> > > +     unsigned int width_mm;
+> > > +
+> > > +     /**
+> > > +      * @height_mm:
+> > > +      *
+> > > +      * Physical height in mm.
+> > > +      */
+> > > +     unsigned int height_mm;
+> > > +
+> > > +     /**
+> > > +      * @bpc:
+> > > +      *
+> > > +      * Maximum bits per color channel. Used by HDMI and DP outputs.
+> > > +      */
+> > > +     unsigned int bpc;
+> > > +
+> > > +     /**
+> > > +      * @orientation
+> > > +      *
+> > > +      * Installation orientation of the panel with respect to the chassis.
+> > > +      */
+> > > +     int orientation;
+> > > +
+> > > +     /**
+> > > +      * @bus_formats
+> > > +      *
+> > > +      * Pixel data format on the wire.
+> > > +      */
+> > > +     const u32 *bus_formats;
+> > > +
+> > > +     /**
+> > > +      * @num_bus_formats:
+> > > +      *
+> > > +      * Number of elements pointed to by @bus_formats
+> > > +      */
+> > > +     unsigned int num_bus_formats;
+> > > +
+> > > +     /**
+> > > +      * @bus_flags:
+> > > +      *
+> > > +      * Additional information (like pixel signal polarity) for the pixel
+> > > +      * data on the bus.
+> > > +      */
+> > > +     u32 bus_flags;
+> > > +
+> > >       /**
+> > >        * @list:
+> > >        *
+> 
+> Thanks for the review
+
+-- 
+Sean Paul, Software Engineer, Google / Chromium OS
