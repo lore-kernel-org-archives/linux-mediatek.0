@@ -1,8 +1,8 @@
 From: Hsin-hsiung Wang <hsin-hsiung.wang@mediatek.com>
 Subject: Re: Aw: Re: [PATCH] mfd: mt6397: fix probe after changing
  mt6397-core
-Date: Mon, 7 Oct 2019 11:24:13 +0800
-Message-ID: <1570418653.8779.8.camel@mtksdaap41>
+Date: Mon, 7 Oct 2019 11:32:27 +0800
+Message-ID: <1570419147.28952.1.camel@mtksdaap41>
 References: <20191003185323.24646-1-frank-w@public-files.de>
          <20191004152001.GS18429@dell>
          <trinity-c33ab112-57a5-47d6-80e5-13c96442e302-1570204319219@3c-app-gmx-bap10>
@@ -24,13 +24,14 @@ On Sat, 2019-10-05 at 10:16 +0200, Matthias Brugger wrote:
 > > 
 > > i only took his code (and splitted the 3rd part) to get mt6323 working again without reverting the other 2 Patches
 > >> regards Frank
-> > 
-Hi Frank,
+
+Hi, Frank
 Sorry for the late reply.
 I appreciate your help very much for splitting the code to fix the
 issue.
 This patch is ok for me.
 
+> > 
 > > 
 > >> Gesendet: Freitag, 04. Oktober 2019 um 17:20 Uhr
 > >> Von: "Lee Jones" <lee.jones@linaro.org>
@@ -42,7 +43,6 @@ This patch is ok for me.
 > @Lee: yes, this change is the preparation to support MT6358:
 > https://patchwork.kernel.org/patch/11110515/
 > 
-
 Hi, Lee
 MT6358 uses 8 for the cid shift and I will submit next version patch of
 mt6358 which is based on Frank's patch.
