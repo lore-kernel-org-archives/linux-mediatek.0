@@ -1,193 +1,136 @@
 From: "dbasehore ." <dbasehore@chromium.org>
-Subject: Re: [v8,2/4] drm/panel: set display info in panel attach
-Date: Mon, 7 Oct 2019 15:01:25 -0700
-Message-ID: <CAGAzgsoGNNTeYTmRyC5YNGDHL+SBB2oCFaHFubYa=dnPst=f8Q@mail.gmail.com>
-References: <20190925225833.7310-3-dbasehore@chromium.org> <20190929052307.GA28304@jamwan02-TSP300>
- <CAGAzgspEA0mcEHwgxyWWh3Gn-iC+a21g5GUrhsRJrTHQ_OAYqQ@mail.gmail.com> <20191007164441.GB126146@art_vandelay>
+Subject: Re: [PATCH v8 1/4] drm/panel: Add helper for reading DT rotation
+Date: Mon, 7 Oct 2019 15:12:00 -0700
+Message-ID: <CAGAzgspJa1b1V06s3Om+OAbPLqWsWSptbVtQApEPAXDA7W-VSQ@mail.gmail.com>
+References: <20190925225833.7310-1-dbasehore@chromium.org> <20190925225833.7310-2-dbasehore@chromium.org>
+ <20191007163822.GA126146@art_vandelay>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191007164441.GB126146@art_vandelay>
+In-Reply-To: <20191007163822.GA126146@art_vandelay>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Sean Paul <sean@poorly.run>
-Cc: "james qian wang (Arm Technology China)" <james.qian.wang@arm.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Maxime Ripard <maxime.ripard@bootlin.com>, Sam Ravnborg <sam@ravnborg.org>, "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, Thierry Reding <thierry.reding@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Rodrigo Vivi <rodrigo.vivi@intel.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, nd <nd@arm.com>
+Cc: linux-kernel <linux-kernel@vger.kernel.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <maxime.ripard@bootlin.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Thierry Reding <thierry.reding@gmail.com>, Sam Ravnborg <sam@ravnborg.org>, Jani Nikula <jani.nikula@linux.intel.com>, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel <dri-devel@lists.freedesktop.org>, Intel Graphics <intel-gfx@lists.freedesktop.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, moderated list:ARM/Mediatek SoC supp
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Oct 7, 2019 at 9:44 AM Sean Paul <sean@poorly.run> wrote:
+On Mon, Oct 7, 2019 at 9:38 AM Sean Paul <sean@poorly.run> wrote:
 >
-> On Mon, Sep 30, 2019 at 04:14:54PM -0700, dbasehore . wrote:
-> > On Sat, Sep 28, 2019 at 10:23 PM james qian wang (Arm Technology
-> > China) <james.qian.wang@arm.com> wrote:
-> > >
-> > > On Wed, Sep 25, 2019 at 03:58:31PM -0700, Derek Basehore wrote:
-> > > > Devicetree systems can set panel orientation via a panel binding, but
-> > > > there's no way, as is, to propagate this setting to the connector,
-> > > > where the property need to be added.
-> > > > To address this, this patch sets orientation, as well as other fixed
-> > > > values for the panel, in the drm_panel_attach function. These values
-> > > > are stored from probe in the drm_panel struct.
-> > > >
-> > > > Signed-off-by: Derek Basehore <dbasehore@chromium.org>
-> > > > Reviewed-by: Sam Ravnborg <sam@ravnborg.org>
-> > > > ---
-> > > >  drivers/gpu/drm/drm_panel.c | 28 +++++++++++++++++++++
-> > > >  include/drm/drm_panel.h     | 50 +++++++++++++++++++++++++++++++++++++
-> > > >  2 files changed, 78 insertions(+)
-> > > >
-> > > > diff --git a/drivers/gpu/drm/drm_panel.c b/drivers/gpu/drm/drm_panel.c
-> > > > index 0909b53b74e6..1cd2b56c9fe6 100644
-> > > > --- a/drivers/gpu/drm/drm_panel.c
-> > > > +++ b/drivers/gpu/drm/drm_panel.c
-> > > > @@ -104,11 +104,23 @@ EXPORT_SYMBOL(drm_panel_remove);
-> > > >   */
-> > > >  int drm_panel_attach(struct drm_panel *panel, struct drm_connector *connector)
-> > > >  {
-> > > > +     struct drm_display_info *info;
-> > > > +
-> > > >       if (panel->connector)
-> > > >               return -EBUSY;
-> > > >
-> > > >       panel->connector = connector;
-> > > >       panel->drm = connector->dev;
-> > > > +     info = &connector->display_info;
-> > > > +     info->width_mm = panel->width_mm;
-> > > > +     info->height_mm = panel->height_mm;
-> > > > +     info->bpc = panel->bpc;
-> > > > +     info->panel_orientation = panel->orientation;
-> > > > +     info->bus_flags = panel->bus_flags;
-> > > > +     if (panel->bus_formats)
-> > > > +             drm_display_info_set_bus_formats(&connector->display_info,
-> > > > +                                              panel->bus_formats,
-> > > > +                                              panel->num_bus_formats);
-> > > >
-> > > >       return 0;
-> > > >  }
-> > > > @@ -126,6 +138,22 @@ EXPORT_SYMBOL(drm_panel_attach);
-> > > >   */
-> > > >  void drm_panel_detach(struct drm_panel *panel)
-> > > >  {
-> > > > +     struct drm_display_info *info;
-> > > > +
-> > > > +     if (!panel->connector)
-> > > > +             goto out;
-> > > > +
-> > > > +     info = &panel->connector->display_info;
-> > > > +     info->width_mm = 0;
-> > > > +     info->height_mm = 0;
-> > > > +     info->bpc = 0;
-> > > > +     info->panel_orientation = DRM_MODE_PANEL_ORIENTATION_UNKNOWN;
-> > > > +     info->bus_flags = 0;
-> > > > +     kfree(info->bus_formats);
-> > > > +     info->bus_formats = NULL;
-> > > > +     info->num_bus_formats = 0;
-> > > > +
-> > > > +out:
-> > > >       panel->connector = NULL;
-> > > >       panel->drm = NULL;
-> > > >  }
-> > > > diff --git a/include/drm/drm_panel.h b/include/drm/drm_panel.h
-> > > > index d16158deacdc..f3587a54b8ac 100644
-> > > > --- a/include/drm/drm_panel.h
-> > > > +++ b/include/drm/drm_panel.h
-> > > > @@ -141,6 +141,56 @@ struct drm_panel {
-> > > >        */
-> > > >       const struct drm_panel_funcs *funcs;
-> > > >
-> > >
-> > > All these new added members seems dupliated with drm_display_info,
-> > > So I think, can we add a new drm_plane_funcs func:
-> > >
-> > > int (*set_display_info)(struct drm_panel *panel,
-> > >                         struct drm_display_info *info);
+> On Wed, Sep 25, 2019 at 03:58:30PM -0700, Derek Basehore wrote:
+> > This adds a helper function for reading the rotation (panel
+> > orientation) from the device tree.
 > >
-> > I don't disagree personally, since I originally wrote it this way, but
-> > 2 maintainers, Daniel Vetter and Thierry Reding, requested that it be
-> > changed. Unless that decision is reversed, I won't be changing this.
-> >
+> > Signed-off-by: Derek Basehore <dbasehore@chromium.org>
+> > Reviewed-by: Sam Ravnborg <sam@ravnborg.org>
 >
-> Reading back the feedback on v1, I don't think anyone said they were against
-> storing a drm_display_info struct in drm_panel (no one really weighed in on
-> it one way or another). IMO duplicating a bunch of fields feels pretty icky.
+> The patch LGTM, but I don't see it used anywhere later in the patch? Is there a
+> panel driver incoming?
 
-Thanks for the review. Should we duplicate the entire struct, or just
-create a sub-struct, say, physical_properties that will be part of
-drm_display_info and drm_panel?
+Yeah, the boe-tv101wum-nl6 panel will use it. It's not in the patch
+currently sent upstream since I don't want to step on their toes, but
+I plan on sending a patch to add it as soon as that is merged.
 
->
-> I think most fields in drm_display_info have pretty reasonable defaults, so I'd
-> recommend just storing a copy in drm_panel. As Thierry suggests, we can
-> populate the dt parts in probe (orientation) and then copy over all or a subset
-> of the struct to connector on attach.
+I could hold back on this patch until that panel driver is merged too.
+Another alternative is to throw this into the generic drm_panel code,
+but there's no obvious place to put it since DRM seems to leave
+reading the DTS up to the panel drivers themselves.
+
 >
 > Sean
 >
-> > >
-> > > Then in drm_panel_attach(), via this interface the specific panel
-> > > driver can directly set connector->display_info. like
-> > >
-> > >    ...
-> > >    if (panel->funcs && panel->funcs->set_display_info)
-> > >                 panel->funcs->unprepare(panel, connector->display_info);
-> > >    ...
-> > >
-> > > Thanks
-> > > James
-> > >
-> > > > +     /**
-> > > > +      * @width_mm:
-> > > > +      *
-> > > > +      * Physical width in mm.
-> > > > +      */
-> > > > +     unsigned int width_mm;
-> > > > +
-> > > > +     /**
-> > > > +      * @height_mm:
-> > > > +      *
-> > > > +      * Physical height in mm.
-> > > > +      */
-> > > > +     unsigned int height_mm;
-> > > > +
-> > > > +     /**
-> > > > +      * @bpc:
-> > > > +      *
-> > > > +      * Maximum bits per color channel. Used by HDMI and DP outputs.
-> > > > +      */
-> > > > +     unsigned int bpc;
-> > > > +
-> > > > +     /**
-> > > > +      * @orientation
-> > > > +      *
-> > > > +      * Installation orientation of the panel with respect to the chassis.
-> > > > +      */
-> > > > +     int orientation;
-> > > > +
-> > > > +     /**
-> > > > +      * @bus_formats
-> > > > +      *
-> > > > +      * Pixel data format on the wire.
-> > > > +      */
-> > > > +     const u32 *bus_formats;
-> > > > +
-> > > > +     /**
-> > > > +      * @num_bus_formats:
-> > > > +      *
-> > > > +      * Number of elements pointed to by @bus_formats
-> > > > +      */
-> > > > +     unsigned int num_bus_formats;
-> > > > +
-> > > > +     /**
-> > > > +      * @bus_flags:
-> > > > +      *
-> > > > +      * Additional information (like pixel signal polarity) for the pixel
-> > > > +      * data on the bus.
-> > > > +      */
-> > > > +     u32 bus_flags;
-> > > > +
-> > > >       /**
-> > > >        * @list:
-> > > >        *
+> > ---
+> >  drivers/gpu/drm/drm_panel.c | 43 +++++++++++++++++++++++++++++++++++++
+> >  include/drm/drm_panel.h     |  9 ++++++++
+> >  2 files changed, 52 insertions(+)
 > >
-> > Thanks for the review
+> > diff --git a/drivers/gpu/drm/drm_panel.c b/drivers/gpu/drm/drm_panel.c
+> > index 6b0bf42039cf..0909b53b74e6 100644
+> > --- a/drivers/gpu/drm/drm_panel.c
+> > +++ b/drivers/gpu/drm/drm_panel.c
+> > @@ -264,6 +264,49 @@ struct drm_panel *of_drm_find_panel(const struct device_node *np)
+> >       return ERR_PTR(-EPROBE_DEFER);
+> >  }
+> >  EXPORT_SYMBOL(of_drm_find_panel);
+> > +
+> > +/**
+> > + * of_drm_get_panel_orientation - look up the orientation of the panel through
+> > + * the "rotation" binding from a device tree node
+> > + * @np: device tree node of the panel
+> > + * @orientation: orientation enum to be filled in
+> > + *
+> > + * Looks up the rotation of a panel in the device tree. The orientation of the
+> > + * panel is expressed as a property name "rotation" in the device tree. The
+> > + * rotation in the device tree is counter clockwise.
+> > + *
+> > + * Return: 0 when a valid rotation value (0, 90, 180, or 270) is read or the
+> > + * rotation property doesn't exist. -EERROR otherwise.
+> > + */
+> > +int of_drm_get_panel_orientation(const struct device_node *np,
+> > +                              enum drm_panel_orientation *orientation)
+> > +{
+> > +     int rotation, ret;
+> > +
+> > +     ret = of_property_read_u32(np, "rotation", &rotation);
+> > +     if (ret == -EINVAL) {
+> > +             /* Don't return an error if there's no rotation property. */
+> > +             *orientation = DRM_MODE_PANEL_ORIENTATION_UNKNOWN;
+> > +             return 0;
+> > +     }
+> > +
+> > +     if (ret < 0)
+> > +             return ret;
+> > +
+> > +     if (rotation == 0)
+> > +             *orientation = DRM_MODE_PANEL_ORIENTATION_NORMAL;
+> > +     else if (rotation == 90)
+> > +             *orientation = DRM_MODE_PANEL_ORIENTATION_RIGHT_UP;
+> > +     else if (rotation == 180)
+> > +             *orientation = DRM_MODE_PANEL_ORIENTATION_BOTTOM_UP;
+> > +     else if (rotation == 270)
+> > +             *orientation = DRM_MODE_PANEL_ORIENTATION_LEFT_UP;
+> > +     else
+> > +             return -EINVAL;
+> > +
+> > +     return 0;
+> > +}
+> > +EXPORT_SYMBOL(of_drm_get_panel_orientation);
+> >  #endif
+> >
+> >  MODULE_AUTHOR("Thierry Reding <treding@nvidia.com>");
+> > diff --git a/include/drm/drm_panel.h b/include/drm/drm_panel.h
+> > index 624bd15ecfab..d16158deacdc 100644
+> > --- a/include/drm/drm_panel.h
+> > +++ b/include/drm/drm_panel.h
+> > @@ -34,6 +34,8 @@ struct drm_device;
+> >  struct drm_panel;
+> >  struct display_timing;
+> >
+> > +enum drm_panel_orientation;
+> > +
+> >  /**
+> >   * struct drm_panel_funcs - perform operations on a given panel
+> >   *
+> > @@ -165,11 +167,18 @@ int drm_panel_get_modes(struct drm_panel *panel);
+> >
+> >  #if defined(CONFIG_OF) && defined(CONFIG_DRM_PANEL)
+> >  struct drm_panel *of_drm_find_panel(const struct device_node *np);
+> > +int of_drm_get_panel_orientation(const struct device_node *np,
+> > +                              enum drm_panel_orientation *orientation);
+> >  #else
+> >  static inline struct drm_panel *of_drm_find_panel(const struct device_node *np)
+> >  {
+> >       return ERR_PTR(-ENODEV);
+> >  }
+> > +static inline int of_drm_get_panel_orientation(const struct device_node *np,
+> > +             enum drm_panel_orientation *orientation)
+> > +{
+> > +     return -ENODEV;
+> > +}
+> >  #endif
+> >
+> >  #endif
+> > --
+> > 2.23.0.351.gc4317032e6-goog
+> >
 >
 > --
 > Sean Paul, Software Engineer, Google / Chromium OS
