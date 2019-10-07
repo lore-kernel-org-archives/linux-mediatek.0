@@ -1,46 +1,90 @@
-From: Dmitry Vyukov <dvyukov@google.com>
-Subject: Re: [PATCH] kasan: fix the missing underflow in memmove and memcpy
- with CONFIG_KASAN_GENERIC=y
-Date: Mon, 7 Oct 2019 15:33:51 +0200
-Message-ID: <CACT4Y+bJFoQPJ4QbGNjAuqiZx-FFsuLansxkhX3kwLOc19NvcA@mail.gmail.com>
-References: <20190927034338.15813-1-walter-zh.wu@mediatek.com>
- <CACT4Y+Zxz+R=qQxSMoipXoLjRqyApD3O0eYpK0nyrfGHE4NNPw@mail.gmail.com>
- <1569594142.9045.24.camel@mtksdccf07> <CACT4Y+YuAxhKtL7ho7jpVAPkjG-JcGyczMXmw8qae2iaZjTh_w@mail.gmail.com>
- <1569818173.17361.19.camel@mtksdccf07> <1570018513.19702.36.camel@mtksdccf07>
- <CACT4Y+bbZhvz9ZpHtgL8rCCsV=ybU5jA6zFnJBL7gY2cNXDLyQ@mail.gmail.com>
- <1570069078.19702.57.camel@mtksdccf07> <CACT4Y+ZwNv2-QBrvuR2JvemovmKPQ9Ggrr=ZkdTg6xy_Ki6UAg@mail.gmail.com>
- <1570095525.19702.59.camel@mtksdccf07> <1570110681.19702.64.camel@mtksdccf07>
- <CACT4Y+aKrC8mtcDTVhM-So-TTLjOyFCD7r6jryWFH6i2he1WJA@mail.gmail.com>
- <1570164140.19702.97.camel@mtksdccf07> <1570176131.19702.105.camel@mtksdccf07>
- <CACT4Y+ZvhomaeXFKr4za6MJi=fW2SpPaCFP=fk06CMRhNcmFvQ@mail.gmail.com>
- <1570182257.19702.109.camel@mtksdccf07> <CACT4Y+ZnWPEO-9DkE6C3MX-Wo+8pdS6Gr6-2a8LzqBS=2fe84w@mail.gmail.com>
- <1570190718.19702.125.camel@mtksdccf07> <CACT4Y+YbkjuW3_WQJ4BB8YHWvxgHJyZYxFbDJpnPzfTMxYs60g@mail.gmail.com>
- <1570418576.4686.30.camel@mtksdccf07> <CACT4Y+aho7BEvQstd2+a2be-jJ0dEsjGebH7bcUFhYp-PoRDxQ@mail.gmail.com>
- <1570436289.4686.40.camel@mtksdccf07> <CACT4Y+Z6QObZ2fvVxSmvv16YQAu4GswOqfOVQK_1_Ncz0eir_g@mail.gmail.com>
- <1570438317.4686.44.camel@mtksdccf07> <CACT4Y+Yc86bKxDp4ST8+49rzLOWkTXLkjs0eyFtohCi_uSjmLQ@mail.gmail.com>
- <1570439032.4686.50.camel@mtksdccf07> <CACT4Y+YL=8jFXrj2LOuQV7ZyDe-am4W8y1WHEDJJ0-mVNJ3_Cw@mail.gmail.com>
- <1570440492.4686.59.camel@mtksdccf07> <1570441833.4686.66.camel@mtksdccf07>
- <CACT4Y+Z0A=Zi4AxEjn4jpHk0xG9+Nh2Q-OYEnOmooW0wN-_vfQ@mail.gmail.com>
- <1570449804.4686.79.camel@mtksdccf07> <CACT4Y+b4VX5cW3WhP6o3zyKxHjNZRo1Lokxr0+MwDcB5hV5K+A@mail.gmail.com>
- <1570451575.4686.83.camel@mtksdccf07>
+From: Sean Paul <sean@poorly.run>
+Subject: Re: [PATCH v8 1/4] drm/panel: Add helper for reading DT rotation
+Date: Mon, 7 Oct 2019 12:38:22 -0400
+Message-ID: <20191007163822.GA126146@art_vandelay>
+References: <20190925225833.7310-1-dbasehore@chromium.org>
+ <20190925225833.7310-2-dbasehore@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1570451575.4686.83.camel@mtksdccf07>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Walter Wu <walter-zh.wu@mediatek.com>
-Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>, Linux-MM <linux-mm@kvack.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream <wsd_upstream@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <20190925225833.7310-2-dbasehore@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Derek Basehore <dbasehore@chromium.org>
+Cc: Maxime Ripard <maxime.ripard@bootlin.com>, Sam Ravnborg <sam@ravnborg.org>, intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org, David Airlie <airlied@linux.ie>, Thierry Reding <thierry.reding@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, Rodrigo Vivi <rodrigo.vivi@intel.com>, linux-mediatek@lists.infradead.org, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Oct 7, 2019 at 2:33 PM Walter Wu <walter-zh.wu@mediatek.com> wrote:
-> On Mon, 2019-10-07 at 14:19 +0200, Dmitry Vyukov wrote:
-> > On Mon, Oct 7, 2019 at 2:03 PM Walter Wu <walter-zh.wu@mediatek.com> wrote:
-> > My idea was just to always print "heap-out-of-bounds" and don't
-> > differentiate if the size come from userspace or not.
->
-> Got it.
-> Would you have any other concern about this patch?
-
-
-Last versions of the patch looked good to me except for the bug title.
-The comment may also need some updating if you change the title.
+T24gV2VkLCBTZXAgMjUsIDIwMTkgYXQgMDM6NTg6MzBQTSAtMDcwMCwgRGVyZWsgQmFzZWhvcmUg
+d3JvdGU6Cj4gVGhpcyBhZGRzIGEgaGVscGVyIGZ1bmN0aW9uIGZvciByZWFkaW5nIHRoZSByb3Rh
+dGlvbiAocGFuZWwKPiBvcmllbnRhdGlvbikgZnJvbSB0aGUgZGV2aWNlIHRyZWUuCj4gCj4gU2ln
+bmVkLW9mZi1ieTogRGVyZWsgQmFzZWhvcmUgPGRiYXNlaG9yZUBjaHJvbWl1bS5vcmc+Cj4gUmV2
+aWV3ZWQtYnk6IFNhbSBSYXZuYm9yZyA8c2FtQHJhdm5ib3JnLm9yZz4KClRoZSBwYXRjaCBMR1RN
+LCBidXQgSSBkb24ndCBzZWUgaXQgdXNlZCBhbnl3aGVyZSBsYXRlciBpbiB0aGUgcGF0Y2g/IElz
+IHRoZXJlIGEKcGFuZWwgZHJpdmVyIGluY29taW5nPwoKU2VhbgoKPiAtLS0KPiAgZHJpdmVycy9n
+cHUvZHJtL2RybV9wYW5lbC5jIHwgNDMgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKwo+ICBpbmNsdWRlL2RybS9kcm1fcGFuZWwuaCAgICAgfCAgOSArKysrKysrKwo+ICAyIGZp
+bGVzIGNoYW5nZWQsIDUyIGluc2VydGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
+cHUvZHJtL2RybV9wYW5lbC5jIGIvZHJpdmVycy9ncHUvZHJtL2RybV9wYW5lbC5jCj4gaW5kZXgg
+NmIwYmY0MjAzOWNmLi4wOTA5YjUzYjc0ZTYgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJt
+L2RybV9wYW5lbC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2RybV9wYW5lbC5jCj4gQEAgLTI2
+NCw2ICsyNjQsNDkgQEAgc3RydWN0IGRybV9wYW5lbCAqb2ZfZHJtX2ZpbmRfcGFuZWwoY29uc3Qg
+c3RydWN0IGRldmljZV9ub2RlICpucCkKPiAgCXJldHVybiBFUlJfUFRSKC1FUFJPQkVfREVGRVIp
+Owo+ICB9Cj4gIEVYUE9SVF9TWU1CT0wob2ZfZHJtX2ZpbmRfcGFuZWwpOwo+ICsKPiArLyoqCj4g
+KyAqIG9mX2RybV9nZXRfcGFuZWxfb3JpZW50YXRpb24gLSBsb29rIHVwIHRoZSBvcmllbnRhdGlv
+biBvZiB0aGUgcGFuZWwgdGhyb3VnaAo+ICsgKiB0aGUgInJvdGF0aW9uIiBiaW5kaW5nIGZyb20g
+YSBkZXZpY2UgdHJlZSBub2RlCj4gKyAqIEBucDogZGV2aWNlIHRyZWUgbm9kZSBvZiB0aGUgcGFu
+ZWwKPiArICogQG9yaWVudGF0aW9uOiBvcmllbnRhdGlvbiBlbnVtIHRvIGJlIGZpbGxlZCBpbgo+
+ICsgKgo+ICsgKiBMb29rcyB1cCB0aGUgcm90YXRpb24gb2YgYSBwYW5lbCBpbiB0aGUgZGV2aWNl
+IHRyZWUuIFRoZSBvcmllbnRhdGlvbiBvZiB0aGUKPiArICogcGFuZWwgaXMgZXhwcmVzc2VkIGFz
+IGEgcHJvcGVydHkgbmFtZSAicm90YXRpb24iIGluIHRoZSBkZXZpY2UgdHJlZS4gVGhlCj4gKyAq
+IHJvdGF0aW9uIGluIHRoZSBkZXZpY2UgdHJlZSBpcyBjb3VudGVyIGNsb2Nrd2lzZS4KPiArICoK
+PiArICogUmV0dXJuOiAwIHdoZW4gYSB2YWxpZCByb3RhdGlvbiB2YWx1ZSAoMCwgOTAsIDE4MCwg
+b3IgMjcwKSBpcyByZWFkIG9yIHRoZQo+ICsgKiByb3RhdGlvbiBwcm9wZXJ0eSBkb2Vzbid0IGV4
+aXN0LiAtRUVSUk9SIG90aGVyd2lzZS4KPiArICovCj4gK2ludCBvZl9kcm1fZ2V0X3BhbmVsX29y
+aWVudGF0aW9uKGNvbnN0IHN0cnVjdCBkZXZpY2Vfbm9kZSAqbnAsCj4gKwkJCQkgZW51bSBkcm1f
+cGFuZWxfb3JpZW50YXRpb24gKm9yaWVudGF0aW9uKQo+ICt7Cj4gKwlpbnQgcm90YXRpb24sIHJl
+dDsKPiArCj4gKwlyZXQgPSBvZl9wcm9wZXJ0eV9yZWFkX3UzMihucCwgInJvdGF0aW9uIiwgJnJv
+dGF0aW9uKTsKPiArCWlmIChyZXQgPT0gLUVJTlZBTCkgewo+ICsJCS8qIERvbid0IHJldHVybiBh
+biBlcnJvciBpZiB0aGVyZSdzIG5vIHJvdGF0aW9uIHByb3BlcnR5LiAqLwo+ICsJCSpvcmllbnRh
+dGlvbiA9IERSTV9NT0RFX1BBTkVMX09SSUVOVEFUSU9OX1VOS05PV047Cj4gKwkJcmV0dXJuIDA7
+Cj4gKwl9Cj4gKwo+ICsJaWYgKHJldCA8IDApCj4gKwkJcmV0dXJuIHJldDsKPiArCj4gKwlpZiAo
+cm90YXRpb24gPT0gMCkKPiArCQkqb3JpZW50YXRpb24gPSBEUk1fTU9ERV9QQU5FTF9PUklFTlRB
+VElPTl9OT1JNQUw7Cj4gKwllbHNlIGlmIChyb3RhdGlvbiA9PSA5MCkKPiArCQkqb3JpZW50YXRp
+b24gPSBEUk1fTU9ERV9QQU5FTF9PUklFTlRBVElPTl9SSUdIVF9VUDsKPiArCWVsc2UgaWYgKHJv
+dGF0aW9uID09IDE4MCkKPiArCQkqb3JpZW50YXRpb24gPSBEUk1fTU9ERV9QQU5FTF9PUklFTlRB
+VElPTl9CT1RUT01fVVA7Cj4gKwllbHNlIGlmIChyb3RhdGlvbiA9PSAyNzApCj4gKwkJKm9yaWVu
+dGF0aW9uID0gRFJNX01PREVfUEFORUxfT1JJRU5UQVRJT05fTEVGVF9VUDsKPiArCWVsc2UKPiAr
+CQlyZXR1cm4gLUVJTlZBTDsKPiArCj4gKwlyZXR1cm4gMDsKPiArfQo+ICtFWFBPUlRfU1lNQk9M
+KG9mX2RybV9nZXRfcGFuZWxfb3JpZW50YXRpb24pOwo+ICAjZW5kaWYKPiAgCj4gIE1PRFVMRV9B
+VVRIT1IoIlRoaWVycnkgUmVkaW5nIDx0cmVkaW5nQG52aWRpYS5jb20+Iik7Cj4gZGlmZiAtLWdp
+dCBhL2luY2x1ZGUvZHJtL2RybV9wYW5lbC5oIGIvaW5jbHVkZS9kcm0vZHJtX3BhbmVsLmgKPiBp
+bmRleCA2MjRiZDE1ZWNmYWIuLmQxNjE1OGRlYWNkYyAxMDA2NDQKPiAtLS0gYS9pbmNsdWRlL2Ry
+bS9kcm1fcGFuZWwuaAo+ICsrKyBiL2luY2x1ZGUvZHJtL2RybV9wYW5lbC5oCj4gQEAgLTM0LDYg
+KzM0LDggQEAgc3RydWN0IGRybV9kZXZpY2U7Cj4gIHN0cnVjdCBkcm1fcGFuZWw7Cj4gIHN0cnVj
+dCBkaXNwbGF5X3RpbWluZzsKPiAgCj4gK2VudW0gZHJtX3BhbmVsX29yaWVudGF0aW9uOwo+ICsK
+PiAgLyoqCj4gICAqIHN0cnVjdCBkcm1fcGFuZWxfZnVuY3MgLSBwZXJmb3JtIG9wZXJhdGlvbnMg
+b24gYSBnaXZlbiBwYW5lbAo+ICAgKgo+IEBAIC0xNjUsMTEgKzE2NywxOCBAQCBpbnQgZHJtX3Bh
+bmVsX2dldF9tb2RlcyhzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbCk7Cj4gIAo+ICAjaWYgZGVmaW5l
+ZChDT05GSUdfT0YpICYmIGRlZmluZWQoQ09ORklHX0RSTV9QQU5FTCkKPiAgc3RydWN0IGRybV9w
+YW5lbCAqb2ZfZHJtX2ZpbmRfcGFuZWwoY29uc3Qgc3RydWN0IGRldmljZV9ub2RlICpucCk7Cj4g
+K2ludCBvZl9kcm1fZ2V0X3BhbmVsX29yaWVudGF0aW9uKGNvbnN0IHN0cnVjdCBkZXZpY2Vfbm9k
+ZSAqbnAsCj4gKwkJCQkgZW51bSBkcm1fcGFuZWxfb3JpZW50YXRpb24gKm9yaWVudGF0aW9uKTsK
+PiAgI2Vsc2UKPiAgc3RhdGljIGlubGluZSBzdHJ1Y3QgZHJtX3BhbmVsICpvZl9kcm1fZmluZF9w
+YW5lbChjb25zdCBzdHJ1Y3QgZGV2aWNlX25vZGUgKm5wKQo+ICB7Cj4gIAlyZXR1cm4gRVJSX1BU
+UigtRU5PREVWKTsKPiAgfQo+ICtzdGF0aWMgaW5saW5lIGludCBvZl9kcm1fZ2V0X3BhbmVsX29y
+aWVudGF0aW9uKGNvbnN0IHN0cnVjdCBkZXZpY2Vfbm9kZSAqbnAsCj4gKwkJZW51bSBkcm1fcGFu
+ZWxfb3JpZW50YXRpb24gKm9yaWVudGF0aW9uKQo+ICt7Cj4gKwlyZXR1cm4gLUVOT0RFVjsKPiAr
+fQo+ICAjZW5kaWYKPiAgCj4gICNlbmRpZgo+IC0tIAo+IDIuMjMuMC4zNTEuZ2M0MzE3MDMyZTYt
+Z29vZwo+IAoKLS0gClNlYW4gUGF1bCwgU29mdHdhcmUgRW5naW5lZXIsIEdvb2dsZSAvIENocm9t
+aXVtIE9TCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
+aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
+czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
