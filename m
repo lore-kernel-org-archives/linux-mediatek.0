@@ -1,57 +1,107 @@
-From: hariprasad@osuosl.org, Kelam@osuosl.org,
-	hariprasad.kelam@gmail.com
-Subject: [PATCH] staging: mt7621-dma: make use of
- devm_platform_ioremap_resource
-Date: Tue,  8 Oct 2019 11:55:51 +0530
-Message-ID: <1570515959-26572-1-git-send-email-hariprasad.kelam@gmail.com>
+From: Yong Wu <yong.wu@mediatek.com>
+Subject: Re: [PATCH] iommu/mediatek: Move the tlb_sync into tlb_flush
+Date: Tue, 8 Oct 2019 16:09:28 +0800
+Message-ID: <1570522168.19130.39.camel@mhfsdcap03>
+References: <1569822142-14303-1-git-send-email-yong.wu@mediatek.com>
+         <CAAFQd5C+FM3n-Ww4C+qDD1QZOGZrqEYw4EvYECfadGcDH0fmew@mail.gmail.com>
+         <366b0bda-d874-9109-5c83-ff27301f3486@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
-List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
-List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
-List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
-List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
-List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Errors-To: driverdev-devel-bounces@linuxdriverproject.org
-Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
-Cc: devel@driverdev.osuosl.org, Hariprasad Kelam <hariprasad.kelam@gmail.com>, Benjamin Sherman <benjamin@bensherman.io>, linux-kernel@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jules Irenge <jbi.octave@gmail.com>, Stephen Boyd <swboyd@chromium.org>, Armando Miraglia <arma2ff0@gmail.com>, linux-mediatek@lists.infradead.org, Bhanusree Pola <bhanusreemahesh@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <366b0bda-d874-9109-5c83-ff27301f3486@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Tomasz Figa <tfiga@chromium.org>, youlin.pei@mediatek.com, anan.sun@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, cui.zhang@mediatek.com, srv_heupstream <srv_heupstream@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Evan Green <evgreen@chromium.org>, chao.hao@mediatek.com, "list@263.net:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Hariprasad Kelam <hariprasad.kelam@gmail.com>
+On Wed, 2019-10-02 at 11:35 +0100, Robin Murphy wrote:
+> On 02/10/2019 06:18, Tomasz Figa wrote:
+> > Hi Yong,
+> > 
+> > On Mon, Sep 30, 2019 at 2:42 PM Yong Wu <yong.wu@mediatek.com> wrote:
+> >>
+> >> The commit 4d689b619445 ("iommu/io-pgtable-arm-v7s: Convert to IOMMU API
+> >> TLB sync") help move the tlb_sync of unmap from v7s into the iommu
+> >> framework. It helps add a new function "mtk_iommu_iotlb_sync", But it
+> >> lacked the dom->pgtlock, then it will cause the variable
+> >> "tlb_flush_active" may be changed unexpectedly, we could see this warning
+> >> log randomly:
+> >>
+> > 
+> > Thanks for the patch! Please see my comments inline.
+> > 
+> >> mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to
+> >> full flush
+> >>
+> >> To fix this issue, we can add dom->pgtlock in the "mtk_iommu_iotlb_sync".
+> >> And when checking this issue, we find that __arm_v7s_unmap call
+> >> io_pgtable_tlb_add_flush consecutively when it is supersection/largepage,
+> >> this also is potential unsafe for us. There is no tlb flush queue in the
+> >> MediaTek M4U HW. The HW always expect the tlb_flush/tlb_sync one by one.
+> >> If v7s don't always gurarantee the sequence, Thus, In this patch I move
+> >> the tlb_sync into tlb_flush(also rename the function deleting "_nosync").
+> >> and we don't care if it is leaf, rearrange the callback functions. Also,
+> >> the tlb flush/sync was already finished in v7s, then iotlb_sync and
+> >> iotlb_sync_all is unnecessary.
+> > 
+> > Performance-wise, we could do much better. Instead of synchronously
+> > syncing at the end of mtk_iommu_tlb_add_flush(), we could sync at the
+> > beginning, if there was any previous flush still pending. We would
+> > also have to keep the .iotlb_sync() callback, to take care of waiting
+> > for the last flush. That would allow better pipelining with CPU in
+> > cases like this:
+> > 
+> > for (all pages in range) {
+> >     change page table();
+> >     flush();
+> > }
+> > 
+> > "change page table()" could execute while the IOMMU is flushing the
+> > previous change.
+> 
+> FWIW, given that the underlying invalidation mechanism is range-based, 
+> this driver would be an ideal candidate for making use of the new 
+> iommu_gather mechanism. As a fix for stable, though, simply ensuring 
+> that add_flush syncs any pending invalidation before issuing a new one 
+> sounds like a good idea (and probably a simpler patch too).
 
-fix below issue reported by coccicheck
-rivers/staging//mt7621-dma/mtk-hsdma.c:671:1-5: WARNING: Use
-devm_platform_ioremap_resource for base
+Thanks very much for the confirmation.
 
-Signed-off-by: Hariprasad Kelam <hariprasad.kelam@gmail.com>
----
- drivers/staging/mt7621-dma/mtk-hsdma.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> [...]
+> >> @@ -574,8 +539,7 @@ static int mtk_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
+> >>          .detach_dev     = mtk_iommu_detach_device,
+> >>          .map            = mtk_iommu_map,
+> >>          .unmap          = mtk_iommu_unmap,
+> >> -       .flush_iotlb_all = mtk_iommu_flush_iotlb_all,
+> > 
+> > Don't we still want .flush_iotlb_all()? I think it should be more
+> > efficient in some cases than doing a big number of single flushes.
+> > (That said, the previous implementation didn't do any flush at all. It
+> > just waited for previously queued flushes to happen. Was that
+> > expected?)
+> 
+> Commit 07fdef34d2be ("iommu/arm-smmu-v3: Implement flush_iotlb_all 
+> hook") has an explanation of what the deal was there - similarly, it's 
+> probably worth this driver implementing it properly as well now (but 
+> that's really a separate patch).
 
-diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
-index d964642..03c8937 100644
---- a/drivers/staging/mt7621-dma/mtk-hsdma.c
-+++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
-@@ -650,7 +650,6 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
- 	struct mtk_hsdma_chan *chan;
- 	struct mtk_hsdam_engine *hsdma;
- 	struct dma_device *dd;
--	struct resource *res;
- 	int ret;
- 	int irq;
- 	void __iomem *base;
-@@ -667,8 +666,7 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
- 	if (!hsdma)
- 		return -EINVAL;
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	base = devm_ioremap_resource(&pdev->dev, res);
-+	base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(base))
- 		return PTR_ERR(base);
- 	hsdma->base = base + HSDMA_BASE_OFFSET;
--- 
-2.7.4
+Thanks the hint, At the beginning, I noticed that we don't have
+DOMAIN_ATTR_DMA_USE_FLUSH_QUEUE, thus I thought flush_iotlb_all is
+unnecessary.
+
+After grep, iommu_flush_tlb_all also is called in the x_direct_mapping,
+then we still need this.
+
+If putting it in a new patch(switch flush_iotlb_all to
+mtk_iommu_tlb_flush_all), then the Fixes tag(commit id: 4d689b619445) is
+needed?
+
+> 
+> Robin.
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
