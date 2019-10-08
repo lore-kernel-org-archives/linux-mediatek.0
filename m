@@ -1,101 +1,95 @@
-From: Sean Paul <sean@poorly.run>
-Subject: Re: [v8,2/4] drm/panel: set display info in panel attach
-Date: Tue, 8 Oct 2019 11:02:57 -0400
-Message-ID: <20191008150257.GB85762@art_vandelay>
-References: <20190925225833.7310-3-dbasehore@chromium.org>
- <20190929052307.GA28304@jamwan02-TSP300>
- <CAGAzgspEA0mcEHwgxyWWh3Gn-iC+a21g5GUrhsRJrTHQ_OAYqQ@mail.gmail.com>
- <20191007164441.GB126146@art_vandelay>
- <CAGAzgsoGNNTeYTmRyC5YNGDHL+SBB2oCFaHFubYa=dnPst=f8Q@mail.gmail.com>
+From: Adam Boardman <adamboardman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: CPU Thermal sensor - including Kunit tests - for Gemini PDA (MT6797*)
+Date: Tue, 8 Oct 2019 21:43:58 +0100
+Message-ID: <CABvHX8jUNG7S-u69LR5ciPqRCsrC3TTMvWVeOYmEhLVfc5QxFw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <CAGAzgsoGNNTeYTmRyC5YNGDHL+SBB2oCFaHFubYa=dnPst=f8Q@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: "dbasehore ." <dbasehore@chromium.org>
-Cc: Maxime Ripard <maxime.ripard@bootlin.com>, Sam Ravnborg <sam@ravnborg.org>, "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, Thierry Reding <thierry.reding@gmail.com>, "james qian wang (Arm Technology China)" <james.qian.wang@arm.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, nd <nd@arm.com>, Sean Paul <sean@poorly.run>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Brendan Higgins <brendanhiggins-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-L3NuaXAKCj4gPiA+ID4gPiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS9kcm0vZHJtX3BhbmVsLmggYi9p
-bmNsdWRlL2RybS9kcm1fcGFuZWwuaAo+ID4gPiA+ID4gaW5kZXggZDE2MTU4ZGVhY2RjLi5mMzU4
-N2E1NGI4YWMgMTAwNjQ0Cj4gPiA+ID4gPiAtLS0gYS9pbmNsdWRlL2RybS9kcm1fcGFuZWwuaAo+
-ID4gPiA+ID4gKysrIGIvaW5jbHVkZS9kcm0vZHJtX3BhbmVsLmgKPiA+ID4gPiA+IEBAIC0xNDEs
-NiArMTQxLDU2IEBAIHN0cnVjdCBkcm1fcGFuZWwgewo+ID4gPiA+ID4gICAgICAgICovCj4gPiA+
-ID4gPiAgICAgICBjb25zdCBzdHJ1Y3QgZHJtX3BhbmVsX2Z1bmNzICpmdW5jczsKPiA+ID4gPiA+
-Cj4gPiA+ID4KPiA+ID4gPiBBbGwgdGhlc2UgbmV3IGFkZGVkIG1lbWJlcnMgc2VlbXMgZHVwbGlh
-dGVkIHdpdGggZHJtX2Rpc3BsYXlfaW5mbywKPiA+ID4gPiBTbyBJIHRoaW5rLCBjYW4gd2UgYWRk
-IGEgbmV3IGRybV9wbGFuZV9mdW5jcyBmdW5jOgo+ID4gPiA+Cj4gPiA+ID4gaW50ICgqc2V0X2Rp
-c3BsYXlfaW5mbykoc3RydWN0IGRybV9wYW5lbCAqcGFuZWwsCj4gPiA+ID4gICAgICAgICAgICAg
-ICAgICAgICAgICAgc3RydWN0IGRybV9kaXNwbGF5X2luZm8gKmluZm8pOwo+ID4gPgo+ID4gPiBJ
-IGRvbid0IGRpc2FncmVlIHBlcnNvbmFsbHksIHNpbmNlIEkgb3JpZ2luYWxseSB3cm90ZSBpdCB0
-aGlzIHdheSwgYnV0Cj4gPiA+IDIgbWFpbnRhaW5lcnMsIERhbmllbCBWZXR0ZXIgYW5kIFRoaWVy
-cnkgUmVkaW5nLCByZXF1ZXN0ZWQgdGhhdCBpdCBiZQo+ID4gPiBjaGFuZ2VkLiBVbmxlc3MgdGhh
-dCBkZWNpc2lvbiBpcyByZXZlcnNlZCwgSSB3b24ndCBiZSBjaGFuZ2luZyB0aGlzLgo+ID4gPgo+
-ID4KPiA+IFJlYWRpbmcgYmFjayB0aGUgZmVlZGJhY2sgb24gdjEsIEkgZG9uJ3QgdGhpbmsgYW55
-b25lIHNhaWQgdGhleSB3ZXJlIGFnYWluc3QKPiA+IHN0b3JpbmcgYSBkcm1fZGlzcGxheV9pbmZv
-IHN0cnVjdCBpbiBkcm1fcGFuZWwgKG5vIG9uZSByZWFsbHkgd2VpZ2hlZCBpbiBvbgo+ID4gaXQg
-b25lIHdheSBvciBhbm90aGVyKS4gSU1PIGR1cGxpY2F0aW5nIGEgYnVuY2ggb2YgZmllbGRzIGZl
-ZWxzIHByZXR0eSBpY2t5Lgo+IAo+IFRoYW5rcyBmb3IgdGhlIHJldmlldy4gU2hvdWxkIHdlIGR1
-cGxpY2F0ZSB0aGUgZW50aXJlIHN0cnVjdCwgb3IganVzdAo+IGNyZWF0ZSBhIHN1Yi1zdHJ1Y3Qs
-IHNheSwgcGh5c2ljYWxfcHJvcGVydGllcyB0aGF0IHdpbGwgYmUgcGFydCBvZgo+IGRybV9kaXNw
-bGF5X2luZm8gYW5kIGRybV9wYW5lbD8KClRoYXQncyBhIGdvb2QgaWRlYSwgYnV0IEkgdGhpbmsg
-eW91IGNhbiB1c2UgdGhlIGVudGlyZSBzdHJ1Y3QuIEV2ZXJ5dGhpbmcgaGFzCnJlYXNvbmFibGUg
-ZGVmYXVsdCB2YWx1ZXMgYW5kIEkgdGhpbmsgaXQgbWlnaHQgYmUgZGlmZmljdWx0IHRvIGRyYXcg
-YSBsaW5lIGluCnRoZSBzYW5kIGFzIHRvIHdoaWNoIGZpZWxkcyB3aWxsIG9yIHdvbid0IGJlIHVz
-ZWZ1bCBmb3IgcGFuZWxzIGdvaW5nIGZvcndhcmQuCkJlc3QgZm9yIGRyaXZlcnMgdG8ganVzdCB0
-cmVhdCB0aGUgaW5mbyBpbiBkcm1fZGlzcGxheV9pbmZvIGFzIGJlc3QgZWZmb3J0IGFuZApoYXZl
-IGdvb2QgZGVmYXVsdHMgSU1PLgoKU2VhbgoKPiAKPiA+Cj4gPiBJIHRoaW5rIG1vc3QgZmllbGRz
-IGluIGRybV9kaXNwbGF5X2luZm8gaGF2ZSBwcmV0dHkgcmVhc29uYWJsZSBkZWZhdWx0cywgc28g
-SSdkCj4gPiByZWNvbW1lbmQganVzdCBzdG9yaW5nIGEgY29weSBpbiBkcm1fcGFuZWwuIEFzIFRo
-aWVycnkgc3VnZ2VzdHMsIHdlIGNhbgo+ID4gcG9wdWxhdGUgdGhlIGR0IHBhcnRzIGluIHByb2Jl
-IChvcmllbnRhdGlvbikgYW5kIHRoZW4gY29weSBvdmVyIGFsbCBvciBhIHN1YnNldAo+ID4gb2Yg
-dGhlIHN0cnVjdCB0byBjb25uZWN0b3Igb24gYXR0YWNoLgo+ID4KPiA+IFNlYW4KPiA+Cj4gPiA+
-ID4KPiA+ID4gPiBUaGVuIGluIGRybV9wYW5lbF9hdHRhY2goKSwgdmlhIHRoaXMgaW50ZXJmYWNl
-IHRoZSBzcGVjaWZpYyBwYW5lbAo+ID4gPiA+IGRyaXZlciBjYW4gZGlyZWN0bHkgc2V0IGNvbm5l
-Y3Rvci0+ZGlzcGxheV9pbmZvLiBsaWtlCj4gPiA+ID4KPiA+ID4gPiAgICAuLi4KPiA+ID4gPiAg
-ICBpZiAocGFuZWwtPmZ1bmNzICYmIHBhbmVsLT5mdW5jcy0+c2V0X2Rpc3BsYXlfaW5mbykKPiA+
-ID4gPiAgICAgICAgICAgICAgICAgcGFuZWwtPmZ1bmNzLT51bnByZXBhcmUocGFuZWwsIGNvbm5l
-Y3Rvci0+ZGlzcGxheV9pbmZvKTsKPiA+ID4gPiAgICAuLi4KPiA+ID4gPgo+ID4gPiA+IFRoYW5r
-cwo+ID4gPiA+IEphbWVzCj4gPiA+ID4KPiA+ID4gPiA+ICsgICAgIC8qKgo+ID4gPiA+ID4gKyAg
-ICAgICogQHdpZHRoX21tOgo+ID4gPiA+ID4gKyAgICAgICoKPiA+ID4gPiA+ICsgICAgICAqIFBo
-eXNpY2FsIHdpZHRoIGluIG1tLgo+ID4gPiA+ID4gKyAgICAgICovCj4gPiA+ID4gPiArICAgICB1
-bnNpZ25lZCBpbnQgd2lkdGhfbW07Cj4gPiA+ID4gPiArCj4gPiA+ID4gPiArICAgICAvKioKPiA+
-ID4gPiA+ICsgICAgICAqIEBoZWlnaHRfbW06Cj4gPiA+ID4gPiArICAgICAgKgo+ID4gPiA+ID4g
-KyAgICAgICogUGh5c2ljYWwgaGVpZ2h0IGluIG1tLgo+ID4gPiA+ID4gKyAgICAgICovCj4gPiA+
-ID4gPiArICAgICB1bnNpZ25lZCBpbnQgaGVpZ2h0X21tOwo+ID4gPiA+ID4gKwo+ID4gPiA+ID4g
-KyAgICAgLyoqCj4gPiA+ID4gPiArICAgICAgKiBAYnBjOgo+ID4gPiA+ID4gKyAgICAgICoKPiA+
-ID4gPiA+ICsgICAgICAqIE1heGltdW0gYml0cyBwZXIgY29sb3IgY2hhbm5lbC4gVXNlZCBieSBI
-RE1JIGFuZCBEUCBvdXRwdXRzLgo+ID4gPiA+ID4gKyAgICAgICovCj4gPiA+ID4gPiArICAgICB1
-bnNpZ25lZCBpbnQgYnBjOwo+ID4gPiA+ID4gKwo+ID4gPiA+ID4gKyAgICAgLyoqCj4gPiA+ID4g
-PiArICAgICAgKiBAb3JpZW50YXRpb24KPiA+ID4gPiA+ICsgICAgICAqCj4gPiA+ID4gPiArICAg
-ICAgKiBJbnN0YWxsYXRpb24gb3JpZW50YXRpb24gb2YgdGhlIHBhbmVsIHdpdGggcmVzcGVjdCB0
-byB0aGUgY2hhc3Npcy4KPiA+ID4gPiA+ICsgICAgICAqLwo+ID4gPiA+ID4gKyAgICAgaW50IG9y
-aWVudGF0aW9uOwo+ID4gPiA+ID4gKwo+ID4gPiA+ID4gKyAgICAgLyoqCj4gPiA+ID4gPiArICAg
-ICAgKiBAYnVzX2Zvcm1hdHMKPiA+ID4gPiA+ICsgICAgICAqCj4gPiA+ID4gPiArICAgICAgKiBQ
-aXhlbCBkYXRhIGZvcm1hdCBvbiB0aGUgd2lyZS4KPiA+ID4gPiA+ICsgICAgICAqLwo+ID4gPiA+
-ID4gKyAgICAgY29uc3QgdTMyICpidXNfZm9ybWF0czsKPiA+ID4gPiA+ICsKPiA+ID4gPiA+ICsg
-ICAgIC8qKgo+ID4gPiA+ID4gKyAgICAgICogQG51bV9idXNfZm9ybWF0czoKPiA+ID4gPiA+ICsg
-ICAgICAqCj4gPiA+ID4gPiArICAgICAgKiBOdW1iZXIgb2YgZWxlbWVudHMgcG9pbnRlZCB0byBi
-eSBAYnVzX2Zvcm1hdHMKPiA+ID4gPiA+ICsgICAgICAqLwo+ID4gPiA+ID4gKyAgICAgdW5zaWdu
-ZWQgaW50IG51bV9idXNfZm9ybWF0czsKPiA+ID4gPiA+ICsKPiA+ID4gPiA+ICsgICAgIC8qKgo+
-ID4gPiA+ID4gKyAgICAgICogQGJ1c19mbGFnczoKPiA+ID4gPiA+ICsgICAgICAqCj4gPiA+ID4g
-PiArICAgICAgKiBBZGRpdGlvbmFsIGluZm9ybWF0aW9uIChsaWtlIHBpeGVsIHNpZ25hbCBwb2xh
-cml0eSkgZm9yIHRoZSBwaXhlbAo+ID4gPiA+ID4gKyAgICAgICogZGF0YSBvbiB0aGUgYnVzLgo+
-ID4gPiA+ID4gKyAgICAgICovCj4gPiA+ID4gPiArICAgICB1MzIgYnVzX2ZsYWdzOwo+ID4gPiA+
-ID4gKwo+ID4gPiA+ID4gICAgICAgLyoqCj4gPiA+ID4gPiAgICAgICAgKiBAbGlzdDoKPiA+ID4g
-PiA+ICAgICAgICAqCj4gPiA+Cj4gPiA+IFRoYW5rcyBmb3IgdGhlIHJldmlldwo+ID4KPiA+IC0t
-Cj4gPiBTZWFuIFBhdWwsIFNvZnR3YXJlIEVuZ2luZWVyLCBHb29nbGUgLyBDaHJvbWl1bSBPUwoK
-LS0gClNlYW4gUGF1bCwgU29mdHdhcmUgRW5naW5lZXIsIEdvb2dsZSAvIENocm9taXVtIE9TCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBt
-YWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3Rz
-LmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+I've finally got something working, I've added MT6797 definitions to
+the thermal driver[A1], it took a few goes to figure out how to
+configure the different driver format, including a fix to the existing
+code to actually make use of the vts_index, all current mainlined CPU
+Thermals appear to have a 1-1 mapping so they probably wouldn't notice
+this problem. I also had to comment out the reset[A6] as that failed.
+
+I've also added some test code making use of Kunit[A2] that is
+particularly useful to help figure things out. Being able to step
+through code with a UML kernel in CLion with mocked devicetree, efuse
+and readl is very useful, though it took a fair bit of effort to work
+out how to programmatically create them. For CLion integration I
+needed to break out the build part separately[A3], so the debugger can
+attach to the linux executable after doing the build.
+
+Some of my test code matches exactly the values from the 3.18 kernel
+with its different maths[A7], others are at least within 0.1 degree C
+of the expected value so I'm happy that I've got the correct settings
+and calibration values.
+
+We'll need to wait for Kunit to get mainlined (cc Brendan) so this is
+just an invitation to review and for others with other devices to add
+tests for different CPU's thermal sensors[A8] to verify my assumptions
+about the 1-1 mapping. Any thoughts on how the other thermal sensors
+mtkts [battery, pmic, wmt, dram, igmsensor, etc...] that appear to
+perform reboots on critical temperatures should be mainlined?
+
+Is it a first device put in a sanitised version of whatever is
+available then second device makes it multi device, or do you have to
+start with at least two devices to extract the commonality first time
+around? My second device will be the Cosmo Communicator (MT6771) but
+we have zero mainline code for that as yet.
+
+I've done what I can with the help from Matthias & Manivannan, so
+thanks for the responses. I'm now stuck - it would be really handy to
+get the i2c and pmic/wrap working. The change from regmap to pinctrl
+seems very confusing to me, for example the pin ball map has only one
+pin for SDA0 [A4], yet the pinfunc[A5] has multiple IO's set to SDA0,
+eg MT6797_GPIO60__FUNC_SDA0_2 (in total 5 different GPIO's appear to
+be able to be SDA0, with different numbers for the other SDAn's etc).
+Initially I thought that the idea was that different devices could
+have the GPIO60 doing different things depending on how the PCB tracks
+are set out, though I'm not convinced that this is the case as there
+is only one SDA0 and the old kernel was able to work by the magic of
+just the base address 0x11007000 [A4 - 5.9.4 Register Definition]?
+
+Matthias you can of course update the wiki page with WIP for the few
+items I'm currently working on (CPU-Thermal, I2C, PMIC-Vibrator,
+LED-AW9120). I'd rather get these simplest of devices working first to
+prove I/O functions before the much more useful eMMC.
+
+Many thanks for any help,
+
+Adam.
+
+--
+
+[A1] https://github.com/gemian/linux/blob/master/drivers/thermal/mtk_thermal.c
+[A2] https://github.com/gemian/linux/blob/master/drivers/thermal/mtk_thermal_test.c
+(Thermal test code)
+[A3] https://github.com/gemian/linux/blob/master/tools/testing/kunit/kunit.py#L150
+(kunit test code pulled from branch - kunit/initial/v5.3/v18)
+[A4] https://www.96boards.org/documentation/consumer/mediatekx20/additional-docs/docs/MT6797_Functional_Specification_V1_0.pdf
+(2.2.1 Ball Map View)
+[A5] https://github.com/gemian/linux/blob/master/include/dt-bindings/pinctrl/mt6797-pinfunc.h
+(confusing headers)
+[A6] https://github.com/gemian/linux/blob/master/drivers/thermal/mtk_thermal.c#L1028
+(reset removed)
+[A7] https://github.com/gemian/linux/blob/master/drivers/thermal/mtk_thermal.c#L613
+vs https://github.com/gemian/gemini-linux-kernel-3.18/blob/native/drivers/misc/mediatek/thermal/mt6797/src/mtk_tc.c#L553
+(raw->temp)
+[A8] You'd need to give me some logging after enabling
+/proc/driver/thermal/tzcpu_log and the calibration block that gets
+dumped at early boot
