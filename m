@@ -1,14 +1,14 @@
 From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: mt8183: fix audio playback slowly after playback
- during bootup" to the asoc tree
-Date: Tue,  8 Oct 2019 13:53:34 +0100 (BST)
-Message-ID: <20191008125335.00B9F2740D4A@ypsilon.sirena.org.uk>
-References: <1569580317-21181-5-git-send-email-jiaxin.yu@mediatek.com>
+Subject: Applied "dt-bindings: medaitek: mt8183: add property "resets" &&
+ "reset-names"" to the asoc tree
+Date: Tue,  8 Oct 2019 13:53:35 +0100 (BST)
+Message-ID: <20191008125335.35CED2740D4B@ypsilon.sirena.org.uk>
+References: <1569580317-21181-4-git-send-email-jiaxin.yu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1569580317-21181-5-git-send-email-jiaxin.yu@mediatek.com>
+In-Reply-To: <1569580317-21181-4-git-send-email-jiaxin.yu@mediatek.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -23,7 +23,7 @@ List-Id: linux-mediatek@lists.infradead.org
 
 The patch
 
-   ASoC: mt8183: fix audio playback slowly after playback during bootup
+   dt-bindings: medaitek: mt8183: add property "resets" && "reset-names"
 
 has been applied to the asoc tree at
 
@@ -48,62 +48,45 @@ to this mail.
 Thanks,
 Mark
 
->From 9e985503ee4b23d576c303a17dfe52cfc8f32727 Mon Sep 17 00:00:00 2001
+>From 8d6aa1367a7df44bb5939c4bb2727b8d8f7d01b3 Mon Sep 17 00:00:00 2001
 From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Date: Fri, 27 Sep 2019 18:31:57 +0800
-Subject: [PATCH] ASoC: mt8183: fix audio playback slowly after playback during
- bootup
+Date: Fri, 27 Sep 2019 18:31:56 +0800
+Subject: [PATCH] dt-bindings: medaitek: mt8183: add property "resets" &&
+ "reset-names"
 
-Before regmap_reinit_cache we must reset audio regs as default values.
-So we use reset controller unit(toprgu) to reset audio hw.
+This patch add property "resets" && "reset-names" in examples so that we can
+use reset controller to reset audio domain regs.
 
 Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Reviewed-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Link: https://lore.kernel.org/r/1569580317-21181-5-git-send-email-jiaxin.yu@mediatek.com
+Link: https://lore.kernel.org/r/1569580317-21181-4-git-send-email-jiaxin.yu@mediatek.com
 Signed-off-by: Mark Brown <broonie@kernel.org>
 ---
- sound/soc/mediatek/mt8183/mt8183-afe-pcm.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-index 4a31106d3471..721632386a50 100644
---- a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-@@ -11,6 +11,7 @@
- #include <linux/of.h>
- #include <linux/of_address.h>
- #include <linux/pm_runtime.h>
-+#include <linux/reset.h>
- 
- #include "mt8183-afe-common.h"
- #include "mt8183-afe-clk.h"
-@@ -1089,6 +1090,7 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
- 	struct mtk_base_afe *afe;
- 	struct mt8183_afe_private *afe_priv;
- 	struct device *dev;
-+	struct reset_control *rstc;
- 	int i, irq_id, ret;
- 
- 	afe = devm_kzalloc(&pdev->dev, sizeof(*afe), GFP_KERNEL);
-@@ -1126,6 +1128,19 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
- 		return ret;
- 	}
- 
-+	rstc = devm_reset_control_get(dev, "audiosys");
-+	if (IS_ERR(rstc)) {
-+		ret = PTR_ERR(rstc);
-+		dev_err(dev, "could not get audiosys reset:%d\n", ret);
-+		return ret;
-+	}
-+
-+	ret = reset_control_reset(rstc);
-+	if (ret) {
-+		dev_err(dev, "failed to trigger audio reset:%d\n", ret);
-+		return ret;
-+	}
-+
- 	/* enable clock for regcache get default value from hw */
- 	afe_priv->pm_runtime_bypass_reg_ctl = true;
- 	pm_runtime_get_sync(&pdev->dev);
+diff --git a/Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt b/Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt
+index 396ba38619f6..1f1cba4152ce 100644
+--- a/Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt
++++ b/Documentation/devicetree/bindings/sound/mt8183-afe-pcm.txt
+@@ -4,6 +4,10 @@ Required properties:
+ - compatible = "mediatek,mt68183-audio";
+ - reg: register location and size
+ - interrupts: should contain AFE interrupt
++- resets: Must contain an entry for each entry in reset-names
++  See ../reset/reset.txt for details.
++- reset-names: should have these reset names:
++		"audiosys";
+ - power-domains: should define the power domain
+ - clocks: Must contain an entry for each entry in clock-names
+ - clock-names: should have these clock names:
+@@ -20,6 +24,8 @@ Example:
+ 		compatible = "mediatek,mt8183-audio";
+ 		reg = <0 0x11220000 0 0x1000>;
+ 		interrupts = <GIC_SPI 161 IRQ_TYPE_LEVEL_LOW>;
++		resets = <&watchdog MT8183_TOPRGU_AUDIO_SW_RST>;
++		reset-names = "audiosys";
+ 		power-domains = <&scpsys MT8183_POWER_DOMAIN_AUDIO>;
+ 		clocks = <&infrasys CLK_INFRA_AUDIO>,
+ 			 <&infrasys CLK_INFRA_AUDIO_26M_BCLK>,
 -- 
 2.20.1
