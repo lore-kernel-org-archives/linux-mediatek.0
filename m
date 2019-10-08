@@ -1,136 +1,120 @@
-From: "dbasehore ." <dbasehore@chromium.org>
-Subject: Re: [PATCH v8 1/4] drm/panel: Add helper for reading DT rotation
-Date: Mon, 7 Oct 2019 15:12:00 -0700
-Message-ID: <CAGAzgspJa1b1V06s3Om+OAbPLqWsWSptbVtQApEPAXDA7W-VSQ@mail.gmail.com>
-References: <20190925225833.7310-1-dbasehore@chromium.org> <20190925225833.7310-2-dbasehore@chromium.org>
- <20191007163822.GA126146@art_vandelay>
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+Subject: Re: [PATCH v7 02/13] dt-bindings: soc: Add MT8183 power dt-bindings
+Date: Tue, 8 Oct 2019 09:25:30 +0800
+Message-ID: <1570497930.1483.0.camel@mtksdaap41>
+References: <1566983506-26598-1-git-send-email-weiyi.lu@mediatek.com>
+         <1566983506-26598-3-git-send-email-weiyi.lu@mediatek.com>
+         <48655b84-fd20-f417-529c-b81a7d64d63d@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191007163822.GA126146@art_vandelay>
+In-Reply-To: <48655b84-fd20-f417-529c-b81a7d64d63d@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Paul <sean@poorly.run>
-Cc: linux-kernel <linux-kernel@vger.kernel.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <maxime.ripard@bootlin.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Thierry Reding <thierry.reding@gmail.com>, Sam Ravnborg <sam@ravnborg.org>, Jani Nikula <jani.nikula@linux.intel.com>, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel <dri-devel@lists.freedesktop.org>, Intel Graphics <intel-gfx@lists.freedesktop.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, moderated list:ARM/Mediatek SoC supp
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh@kernel.org>, James Liao <jamesjj.liao@mediatek.com>, Fan Chen <fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Yong Wu <yong.wu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Oct 7, 2019 at 9:38 AM Sean Paul <sean@poorly.run> wrote:
->
-> On Wed, Sep 25, 2019 at 03:58:30PM -0700, Derek Basehore wrote:
-> > This adds a helper function for reading the rotation (panel
-> > orientation) from the device tree.
-> >
-> > Signed-off-by: Derek Basehore <dbasehore@chromium.org>
-> > Reviewed-by: Sam Ravnborg <sam@ravnborg.org>
->
-> The patch LGTM, but I don't see it used anywhere later in the patch? Is there a
-> panel driver incoming?
-
-Yeah, the boe-tv101wum-nl6 panel will use it. It's not in the patch
-currently sent upstream since I don't want to step on their toes, but
-I plan on sending a patch to add it as soon as that is merged.
-
-I could hold back on this patch until that panel driver is merged too.
-Another alternative is to throw this into the generic drm_panel code,
-but there's no obvious place to put it since DRM seems to leave
-reading the DTS up to the panel drivers themselves.
-
->
-> Sean
->
+On Wed, 2019-08-28 at 11:39 +0200, Matthias Brugger wrote:
+> 
+> On 28/08/2019 11:11, Weiyi Lu wrote:
+> > Add power dt-bindings of MT8183 and introduces "BASIC" and
+> > "SUBSYS" clock types in binding document.
+> > The "BASIC" type is compatible to the original power control with
+> > clock name [a-z]+[0-9]*, e.g. mm, vpu1.
+> > The "SUBSYS" type is used for bus protection control with clock
+> > name [a-z]+-[0-9]+, e.g. isp-0, cam-1.
+> > 
+> > Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 > > ---
-> >  drivers/gpu/drm/drm_panel.c | 43 +++++++++++++++++++++++++++++++++++++
-> >  include/drm/drm_panel.h     |  9 ++++++++
-> >  2 files changed, 52 insertions(+)
-> >
-> > diff --git a/drivers/gpu/drm/drm_panel.c b/drivers/gpu/drm/drm_panel.c
-> > index 6b0bf42039cf..0909b53b74e6 100644
-> > --- a/drivers/gpu/drm/drm_panel.c
-> > +++ b/drivers/gpu/drm/drm_panel.c
-> > @@ -264,6 +264,49 @@ struct drm_panel *of_drm_find_panel(const struct device_node *np)
-> >       return ERR_PTR(-EPROBE_DEFER);
-> >  }
-> >  EXPORT_SYMBOL(of_drm_find_panel);
-> > +
-> > +/**
-> > + * of_drm_get_panel_orientation - look up the orientation of the panel through
-> > + * the "rotation" binding from a device tree node
-> > + * @np: device tree node of the panel
-> > + * @orientation: orientation enum to be filled in
+> >  .../devicetree/bindings/soc/mediatek/scpsys.txt    | 14 ++++++++++++
+> >  include/dt-bindings/power/mt8183-power.h           | 26 ++++++++++++++++++++++
+> >  2 files changed, 40 insertions(+)
+> >  create mode 100644 include/dt-bindings/power/mt8183-power.h
+> > 
+> > diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+> > index 876693a..00eab7e 100644
+> > --- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+> > +++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+> > @@ -14,6 +14,7 @@ power/power_domain.txt. It provides the power domains defined in
+> >  - include/dt-bindings/power/mt2701-power.h
+> >  - include/dt-bindings/power/mt2712-power.h
+> >  - include/dt-bindings/power/mt7622-power.h
+> > +- include/dt-bindings/power/mt8183-power.h
+> >  
+> >  Required properties:
+> >  - compatible: Should be one of:
+> > @@ -25,18 +26,31 @@ Required properties:
+> >  	- "mediatek,mt7623a-scpsys": For MT7623A SoC
+> >  	- "mediatek,mt7629-scpsys", "mediatek,mt7622-scpsys": For MT7629 SoC
+> >  	- "mediatek,mt8173-scpsys"
+> > +	- "mediatek,mt8183-scpsys"
+> >  - #power-domain-cells: Must be 1
+> >  - reg: Address range of the SCPSYS unit
+> >  - infracfg: must contain a phandle to the infracfg controller
+> >  - clock, clock-names: clocks according to the common clock binding.
+> >                        These are clocks which hardware needs to be
+> >                        enabled before enabling certain power domains.
+> > +                      The new clock type "BASIC" belongs to the type above.
+> > +                      As to the new clock type "SUBSYS" needs to be
+> > +                      enabled before releasing bus protection.
+> 
+> The new clock type won't be new in a couple of month, better reword this. E.g.:
+> Some SoCs have to groups of clocks. BASIC clocks need to be enabled before
+> enabling the corresponding power domain. SUBSYS clocks need to be enabled before
+> releasing the bus protection.
+> 
+
+Got it, I'll reword in next version. Many thanks.
+
+> >  	Required clocks for MT2701 or MT7623: "mm", "mfg", "ethif"
+> >  	Required clocks for MT2712: "mm", "mfg", "venc", "jpgdec", "audio", "vdec"
+> >  	Required clocks for MT6797: "mm", "mfg", "vdec"
+> >  	Required clocks for MT7622 or MT7629: "hif_sel"
+> >  	Required clocks for MT7623A: "ethif"
+> >  	Required clocks for MT8173: "mm", "mfg", "venc", "venc_lt"
+> > +	Required clocks for MT8183: BASIC: "audio", "mfg", "mm", "cam", "isp",
+> > +					   "vpu", "vpu1", "vpu2", "vpu3"
+> > +				    SUBSYS: "mm-0", "mm-1", "mm-2", "mm-3",
+> > +					    "mm-4", "mm-5", "mm-6", "mm-7",
+> > +					    "mm-8", "mm-9", "isp-0", "isp-1",
+> > +					    "cam-0", "cam-1", "cam-2", "cam-3",
+> > +					    "cam-4", "cam-5", "cam-6", "vpu-0",
+> > +					    "vpu-1", "vpu-2", "vpu-3", "vpu-4",
+> > +					    "vpu-5"
+> >  
+> >  Optional properties:
+> >  - vdec-supply: Power supply for the vdec power domain
+> > diff --git a/include/dt-bindings/power/mt8183-power.h b/include/dt-bindings/power/mt8183-power.h
+> > new file mode 100644
+> > index 0000000..5c0c8c7
+> > --- /dev/null
+> > +++ b/include/dt-bindings/power/mt8183-power.h
+> > @@ -0,0 +1,26 @@
+> > +/* SPDX-License-Identifier: GPL-2.0
 > > + *
-> > + * Looks up the rotation of a panel in the device tree. The orientation of the
-> > + * panel is expressed as a property name "rotation" in the device tree. The
-> > + * rotation in the device tree is counter clockwise.
-> > + *
-> > + * Return: 0 when a valid rotation value (0, 90, 180, or 270) is read or the
-> > + * rotation property doesn't exist. -EERROR otherwise.
+> > + * Copyright (c) 2018 MediaTek Inc.
+> > + * Author: Weiyi Lu <weiyi.lu@mediatek.com>
 > > + */
-> > +int of_drm_get_panel_orientation(const struct device_node *np,
-> > +                              enum drm_panel_orientation *orientation)
-> > +{
-> > +     int rotation, ret;
 > > +
-> > +     ret = of_property_read_u32(np, "rotation", &rotation);
-> > +     if (ret == -EINVAL) {
-> > +             /* Don't return an error if there's no rotation property. */
-> > +             *orientation = DRM_MODE_PANEL_ORIENTATION_UNKNOWN;
-> > +             return 0;
-> > +     }
+> > +#ifndef _DT_BINDINGS_POWER_MT8183_POWER_H
+> > +#define _DT_BINDINGS_POWER_MT8183_POWER_H
 > > +
-> > +     if (ret < 0)
-> > +             return ret;
+> > +#define MT8183_POWER_DOMAIN_AUDIO	0
+> > +#define MT8183_POWER_DOMAIN_CONN	1
+> > +#define MT8183_POWER_DOMAIN_MFG_ASYNC	2
+> > +#define MT8183_POWER_DOMAIN_MFG		3
+> > +#define MT8183_POWER_DOMAIN_MFG_CORE0	4
+> > +#define MT8183_POWER_DOMAIN_MFG_CORE1	5
+> > +#define MT8183_POWER_DOMAIN_MFG_2D	6
+> > +#define MT8183_POWER_DOMAIN_DISP	7
+> > +#define MT8183_POWER_DOMAIN_CAM		8
+> > +#define MT8183_POWER_DOMAIN_ISP		9
+> > +#define MT8183_POWER_DOMAIN_VDEC	10
+> > +#define MT8183_POWER_DOMAIN_VENC	11
+> > +#define MT8183_POWER_DOMAIN_VPU_TOP	12
+> > +#define MT8183_POWER_DOMAIN_VPU_CORE0	13
+> > +#define MT8183_POWER_DOMAIN_VPU_CORE1	14
 > > +
-> > +     if (rotation == 0)
-> > +             *orientation = DRM_MODE_PANEL_ORIENTATION_NORMAL;
-> > +     else if (rotation == 90)
-> > +             *orientation = DRM_MODE_PANEL_ORIENTATION_RIGHT_UP;
-> > +     else if (rotation == 180)
-> > +             *orientation = DRM_MODE_PANEL_ORIENTATION_BOTTOM_UP;
-> > +     else if (rotation == 270)
-> > +             *orientation = DRM_MODE_PANEL_ORIENTATION_LEFT_UP;
-> > +     else
-> > +             return -EINVAL;
-> > +
-> > +     return 0;
-> > +}
-> > +EXPORT_SYMBOL(of_drm_get_panel_orientation);
-> >  #endif
-> >
-> >  MODULE_AUTHOR("Thierry Reding <treding@nvidia.com>");
-> > diff --git a/include/drm/drm_panel.h b/include/drm/drm_panel.h
-> > index 624bd15ecfab..d16158deacdc 100644
-> > --- a/include/drm/drm_panel.h
-> > +++ b/include/drm/drm_panel.h
-> > @@ -34,6 +34,8 @@ struct drm_device;
-> >  struct drm_panel;
-> >  struct display_timing;
-> >
-> > +enum drm_panel_orientation;
-> > +
-> >  /**
-> >   * struct drm_panel_funcs - perform operations on a given panel
-> >   *
-> > @@ -165,11 +167,18 @@ int drm_panel_get_modes(struct drm_panel *panel);
-> >
-> >  #if defined(CONFIG_OF) && defined(CONFIG_DRM_PANEL)
-> >  struct drm_panel *of_drm_find_panel(const struct device_node *np);
-> > +int of_drm_get_panel_orientation(const struct device_node *np,
-> > +                              enum drm_panel_orientation *orientation);
-> >  #else
-> >  static inline struct drm_panel *of_drm_find_panel(const struct device_node *np)
-> >  {
-> >       return ERR_PTR(-ENODEV);
-> >  }
-> > +static inline int of_drm_get_panel_orientation(const struct device_node *np,
-> > +             enum drm_panel_orientation *orientation)
-> > +{
-> > +     return -ENODEV;
-> > +}
-> >  #endif
-> >
-> >  #endif
-> > --
-> > 2.23.0.351.gc4317032e6-goog
-> >
->
-> --
-> Sean Paul, Software Engineer, Google / Chromium OS
+> > +#endif /* _DT_BINDINGS_POWER_MT8183_POWER_H */
+> > 
