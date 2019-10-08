@@ -1,128 +1,123 @@
-From: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH v2 2/4] watchdog: mtk_wdt: mt8183: Add reset controller
-Date: Tue, 08 Oct 2019 16:08:39 +0200
-Message-ID: <1570543719.18914.7.camel@pengutronix.de>
-References: <1569580317-21181-1-git-send-email-jiaxin.yu@mediatek.com>
- <1569580317-21181-3-git-send-email-jiaxin.yu@mediatek.com>
- <a0b2e9a3-ca77-814f-b7bd-edc69f00fce2@roeck-us.net>
- <1570255179.29077.24.camel@mtksdaap41>
- <70b77fb3-7186-734d-3415-64acb30bab8f@roeck-us.net>
+From: Sean Paul <sean@poorly.run>
+Subject: Re: [PATCH v8 1/4] drm/panel: Add helper for reading DT rotation
+Date: Tue, 8 Oct 2019 10:56:23 -0400
+Message-ID: <20191008145623.GA85762@art_vandelay>
+References: <20190925225833.7310-1-dbasehore@chromium.org>
+ <20190925225833.7310-2-dbasehore@chromium.org>
+ <20191007163822.GA126146@art_vandelay>
+ <CAGAzgspJa1b1V06s3Om+OAbPLqWsWSptbVtQApEPAXDA7W-VSQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <70b77fb3-7186-734d-3415-64acb30bab8f-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, yong.liang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Jiaxin Yu <jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, tzungbi-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eason.yen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, wim-Q8PRGTgFL9WUCWQAtAn6Ix2eb7JE58TQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <CAGAzgspJa1b1V06s3Om+OAbPLqWsWSptbVtQApEPAXDA7W-VSQ@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: "dbasehore ." <dbasehore@chromium.org>
+Cc: Maxime Ripard <maxime.ripard@bootlin.com>, Sam Ravnborg <sam@ravnborg.org>, Intel Graphics <intel-gfx@lists.freedesktop.org>, linux-kernel <linux-kernel@vger.kernel.org>, David Airlie <airlied@linux.ie>, Thierry Reding <thierry.reding@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel <dri-devel@lists.freedesktop.org>, Rodrigo Vivi <rodrigo.vivi@intel.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Sean Paul <sean@poorly.run>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Guenter, Yingjoe,
-
-On Sat, 2019-10-05 at 07:46 -0700, Guenter Roeck wrote:
-> On 10/4/19 10:59 PM, Yingjoe Chen wrote:
-> > On Thu, 2019-10-03 at 06:49 -0700, Guenter Roeck wrote:
-> > > On 9/27/19 3:31 AM, Jiaxin Yu wrote:
-> > 
-> > <snip..>
-> > 
-> > 
-> > > > +static int toprgu_reset_assert(struct reset_controller_dev *rcdev,
-> > > > +			       unsigned long id)
-> > > > +{
-> > > > +	unsigned int tmp;
-> > > > +	unsigned long flags;
-> > > > +	struct toprgu_reset *data = container_of(rcdev,
-> > > > +				struct toprgu_reset, rcdev);
-> > > > +
-> > > > +	spin_lock_irqsave(&data->lock, flags);
-> > > > +
-> > > > +	tmp = __raw_readl(data->toprgu_swrst_base + data->regofs);
-> > > > +	tmp |= BIT(id);
-> > > > +	tmp |= WDT_SWSYS_RST_KEY;
-> > > > +	writel(tmp, data->toprgu_swrst_base + data->regofs);
-> > > > +
-> > > > +	spin_unlock_irqrestore(&data->lock, flags);
-> > > > +
-> > > > +	return 0;
-> > > > +}
-> > > > +
-> > > > +static int toprgu_reset_deassert(struct reset_controller_dev *rcdev,
-> > > > +				 unsigned long id)
-> > > > +{
-> > > > +	unsigned int tmp;
-> > > > +	unsigned long flags;
-> > > > +	struct toprgu_reset *data = container_of(rcdev,
-> > > > +					struct toprgu_reset, rcdev);
-> > > > +
-> > > > +	spin_lock_irqsave(&data->lock, flags);
-> > > > +
-> > > > +	tmp = __raw_readl(data->toprgu_swrst_base + data->regofs);
-> > > > +	tmp &= ~BIT(id);
-> > > > +	tmp |= WDT_SWSYS_RST_KEY;
-> > > > +	writel(tmp, data->toprgu_swrst_base + data->regofs);
-> > > > +
-> > > > +	spin_unlock_irqrestore(&data->lock, flags);
-> > > > +
-> > > > +	return 0;
-> > > > +}
-> > > > +
-> > > > +static int toprgu_reset(struct reset_controller_dev *rcdev,
-> > > > +			unsigned long id)
-> > > > +{
-> > > > +	int ret;
-> > > > +
-> > > > +	ret = toprgu_reset_assert(rcdev, id);
-> > > > +	if (ret)
-> > > > +		return ret;
-> > > > +
-> > > > +	return toprgu_reset_deassert(rcdev, id);
-> > > 
-> > > Unless there is additional synchronization elsewhere, parallel calls
-> > > to the -> assert, and ->reset callbacks may result in the reset being
-> > > deasserted while at least one caller (the one who called the ->assert
-> > > function) believes that it is still asserted.
-> > > 
-> > > [ ... and if there _is_ additional synchronization elsewhere, the
-> > >     local spinlock would be unnecessary ]
-> > > 
-> > 
-> > I'm not sure if this count as additional synchronization, but you could
-> > get exclusive control to the reset by calling
-> > reset_control_get_exclusive so others won't try to reset the component
-> > while you are using it.
-> > 
-> > In this case, you still need spinlock because other drivers might trying
-> > to reset their components and they share same register.
-> 
-> That isn't what I meant. I referred to synchronization in the reset
-> controller core. AFAICS the reset controller core prevents parallel
-> calls into the same reset controller driver using atomics.
-
-No, it doesn't. The atomics in struct reset_control prevent parallel
-calls on the same, reset control only, for shared reset controls.
-Two calls on different reset controls can still run simultaneously on
-the same rcdev.
-
-> Unfortunately, it is not well defined if additional synchronization on
-> driver level is needed - some drivers implement it, some drivers
-> don't,
-
-I think all drivers protect read/modify/write cycles to shared registers
-with a spinlock. Those that don't either have separate set/clear
-registers or use regmap, otherwise it might be a bug.
-
-> and I don't find a documentation.
-
-I am aware this is a problem.
-
-regards
-Philipp
+T24gTW9uLCBPY3QgMDcsIDIwMTkgYXQgMDM6MTI6MDBQTSAtMDcwMCwgZGJhc2Vob3JlIC4gd3Jv
+dGU6Cj4gT24gTW9uLCBPY3QgNywgMjAxOSBhdCA5OjM4IEFNIFNlYW4gUGF1bCA8c2VhbkBwb29y
+bHkucnVuPiB3cm90ZToKPiA+Cj4gPiBPbiBXZWQsIFNlcCAyNSwgMjAxOSBhdCAwMzo1ODozMFBN
+IC0wNzAwLCBEZXJlayBCYXNlaG9yZSB3cm90ZToKPiA+ID4gVGhpcyBhZGRzIGEgaGVscGVyIGZ1
+bmN0aW9uIGZvciByZWFkaW5nIHRoZSByb3RhdGlvbiAocGFuZWwKPiA+ID4gb3JpZW50YXRpb24p
+IGZyb20gdGhlIGRldmljZSB0cmVlLgo+ID4gPgo+ID4gPiBTaWduZWQtb2ZmLWJ5OiBEZXJlayBC
+YXNlaG9yZSA8ZGJhc2Vob3JlQGNocm9taXVtLm9yZz4KPiA+ID4gUmV2aWV3ZWQtYnk6IFNhbSBS
+YXZuYm9yZyA8c2FtQHJhdm5ib3JnLm9yZz4KPiA+Cj4gPiBUaGUgcGF0Y2ggTEdUTSwgYnV0IEkg
+ZG9uJ3Qgc2VlIGl0IHVzZWQgYW55d2hlcmUgbGF0ZXIgaW4gdGhlIHBhdGNoPyBJcyB0aGVyZSBh
+Cj4gPiBwYW5lbCBkcml2ZXIgaW5jb21pbmc/Cj4gCj4gWWVhaCwgdGhlIGJvZS10djEwMXd1bS1u
+bDYgcGFuZWwgd2lsbCB1c2UgaXQuIEl0J3Mgbm90IGluIHRoZSBwYXRjaAo+IGN1cnJlbnRseSBz
+ZW50IHVwc3RyZWFtIHNpbmNlIEkgZG9uJ3Qgd2FudCB0byBzdGVwIG9uIHRoZWlyIHRvZXMsIGJ1
+dAo+IEkgcGxhbiBvbiBzZW5kaW5nIGEgcGF0Y2ggdG8gYWRkIGl0IGFzIHNvb24gYXMgdGhhdCBp
+cyBtZXJnZWQuCj4gCj4gSSBjb3VsZCBob2xkIGJhY2sgb24gdGhpcyBwYXRjaCB1bnRpbCB0aGF0
+IHBhbmVsIGRyaXZlciBpcyBtZXJnZWQgdG9vLgoKWWVhaCwgSSB0aGluayBpdCdzIHByb2JhYmx5
+IGJlc3QuIEkgZG9uJ3QgYW50aWNpcGF0ZSBhbnkgY2hhbmdlcyB3aWxsIGJlCnJlcXVpcmVkLCBi
+dXQgaXQncyBhbHdheXMgYmVzdCB0byByZXZpZXcgdGhlIGNvZGUgZW5kLXRvLWVuZC4KCkkgaGF2
+ZW4ndCBjaGVja2VkIGluIG9uIHRoYXQgcmV2aWV3LCBidXQgaWYgaXQncyBjbG9zZSB0byBsYW5k
+aW5nLCB5b3UgY2FuIGFsc28KYWRkIGEgcGF0Y2ggdG8gdGhpcyBzdGFjayB0aGF0IGlzIGJhc2Vk
+IG9uIHRoZSBpbi1mbGlnaHQgcGF0Y2hlcy4gVGhhdCB3YXkgd2UgY2FuCmdldCBhbGwgdGhlIHJl
+dmlldyBvdXQgb2YgdGhlIHdheSBhbmQgdGhlbiB3aGVuIHRoZSBwYW5lbCBsYW5kcywgd2UgY2Fu
+IGFwcGx5CnlvdXIgYWRkLW9uIHdpdGggdGhlIHJlc3Qgb2YgdGhlIHNlcmllcy4KClNlYW4KCj4g
+QW5vdGhlciBhbHRlcm5hdGl2ZSBpcyB0byB0aHJvdyB0aGlzIGludG8gdGhlIGdlbmVyaWMgZHJt
+X3BhbmVsIGNvZGUsCj4gYnV0IHRoZXJlJ3Mgbm8gb2J2aW91cyBwbGFjZSB0byBwdXQgaXQgc2lu
+Y2UgRFJNIHNlZW1zIHRvIGxlYXZlCj4gcmVhZGluZyB0aGUgRFRTIHVwIHRvIHRoZSBwYW5lbCBk
+cml2ZXJzIHRoZW1zZWx2ZXMuCj4gCj4gPgo+ID4gU2Vhbgo+ID4KPiA+ID4gLS0tCj4gPiA+ICBk
+cml2ZXJzL2dwdS9kcm0vZHJtX3BhbmVsLmMgfCA0MyArKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKysrCj4gPiA+ICBpbmNsdWRlL2RybS9kcm1fcGFuZWwuaCAgICAgfCAgOSArKysr
+KysrKwo+ID4gPiAgMiBmaWxlcyBjaGFuZ2VkLCA1MiBpbnNlcnRpb25zKCspCj4gPiA+Cj4gPiA+
+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vZHJtX3BhbmVsLmMgYi9kcml2ZXJzL2dwdS9k
+cm0vZHJtX3BhbmVsLmMKPiA+ID4gaW5kZXggNmIwYmY0MjAzOWNmLi4wOTA5YjUzYjc0ZTYgMTAw
+NjQ0Cj4gPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fcGFuZWwuYwo+ID4gPiArKysgYi9k
+cml2ZXJzL2dwdS9kcm0vZHJtX3BhbmVsLmMKPiA+ID4gQEAgLTI2NCw2ICsyNjQsNDkgQEAgc3Ry
+dWN0IGRybV9wYW5lbCAqb2ZfZHJtX2ZpbmRfcGFuZWwoY29uc3Qgc3RydWN0IGRldmljZV9ub2Rl
+ICpucCkKPiA+ID4gICAgICAgcmV0dXJuIEVSUl9QVFIoLUVQUk9CRV9ERUZFUik7Cj4gPiA+ICB9
+Cj4gPiA+ICBFWFBPUlRfU1lNQk9MKG9mX2RybV9maW5kX3BhbmVsKTsKPiA+ID4gKwo+ID4gPiAr
+LyoqCj4gPiA+ICsgKiBvZl9kcm1fZ2V0X3BhbmVsX29yaWVudGF0aW9uIC0gbG9vayB1cCB0aGUg
+b3JpZW50YXRpb24gb2YgdGhlIHBhbmVsIHRocm91Z2gKPiA+ID4gKyAqIHRoZSAicm90YXRpb24i
+IGJpbmRpbmcgZnJvbSBhIGRldmljZSB0cmVlIG5vZGUKPiA+ID4gKyAqIEBucDogZGV2aWNlIHRy
+ZWUgbm9kZSBvZiB0aGUgcGFuZWwKPiA+ID4gKyAqIEBvcmllbnRhdGlvbjogb3JpZW50YXRpb24g
+ZW51bSB0byBiZSBmaWxsZWQgaW4KPiA+ID4gKyAqCj4gPiA+ICsgKiBMb29rcyB1cCB0aGUgcm90
+YXRpb24gb2YgYSBwYW5lbCBpbiB0aGUgZGV2aWNlIHRyZWUuIFRoZSBvcmllbnRhdGlvbiBvZiB0
+aGUKPiA+ID4gKyAqIHBhbmVsIGlzIGV4cHJlc3NlZCBhcyBhIHByb3BlcnR5IG5hbWUgInJvdGF0
+aW9uIiBpbiB0aGUgZGV2aWNlIHRyZWUuIFRoZQo+ID4gPiArICogcm90YXRpb24gaW4gdGhlIGRl
+dmljZSB0cmVlIGlzIGNvdW50ZXIgY2xvY2t3aXNlLgo+ID4gPiArICoKPiA+ID4gKyAqIFJldHVy
+bjogMCB3aGVuIGEgdmFsaWQgcm90YXRpb24gdmFsdWUgKDAsIDkwLCAxODAsIG9yIDI3MCkgaXMg
+cmVhZCBvciB0aGUKPiA+ID4gKyAqIHJvdGF0aW9uIHByb3BlcnR5IGRvZXNuJ3QgZXhpc3QuIC1F
+RVJST1Igb3RoZXJ3aXNlLgo+ID4gPiArICovCj4gPiA+ICtpbnQgb2ZfZHJtX2dldF9wYW5lbF9v
+cmllbnRhdGlvbihjb25zdCBzdHJ1Y3QgZGV2aWNlX25vZGUgKm5wLAo+ID4gPiArICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgZW51bSBkcm1fcGFuZWxfb3JpZW50YXRpb24gKm9yaWVudGF0
+aW9uKQo+ID4gPiArewo+ID4gPiArICAgICBpbnQgcm90YXRpb24sIHJldDsKPiA+ID4gKwo+ID4g
+PiArICAgICByZXQgPSBvZl9wcm9wZXJ0eV9yZWFkX3UzMihucCwgInJvdGF0aW9uIiwgJnJvdGF0
+aW9uKTsKPiA+ID4gKyAgICAgaWYgKHJldCA9PSAtRUlOVkFMKSB7Cj4gPiA+ICsgICAgICAgICAg
+ICAgLyogRG9uJ3QgcmV0dXJuIGFuIGVycm9yIGlmIHRoZXJlJ3Mgbm8gcm90YXRpb24gcHJvcGVy
+dHkuICovCj4gPiA+ICsgICAgICAgICAgICAgKm9yaWVudGF0aW9uID0gRFJNX01PREVfUEFORUxf
+T1JJRU5UQVRJT05fVU5LTk9XTjsKPiA+ID4gKyAgICAgICAgICAgICByZXR1cm4gMDsKPiA+ID4g
+KyAgICAgfQo+ID4gPiArCj4gPiA+ICsgICAgIGlmIChyZXQgPCAwKQo+ID4gPiArICAgICAgICAg
+ICAgIHJldHVybiByZXQ7Cj4gPiA+ICsKPiA+ID4gKyAgICAgaWYgKHJvdGF0aW9uID09IDApCj4g
+PiA+ICsgICAgICAgICAgICAgKm9yaWVudGF0aW9uID0gRFJNX01PREVfUEFORUxfT1JJRU5UQVRJ
+T05fTk9STUFMOwo+ID4gPiArICAgICBlbHNlIGlmIChyb3RhdGlvbiA9PSA5MCkKPiA+ID4gKyAg
+ICAgICAgICAgICAqb3JpZW50YXRpb24gPSBEUk1fTU9ERV9QQU5FTF9PUklFTlRBVElPTl9SSUdI
+VF9VUDsKPiA+ID4gKyAgICAgZWxzZSBpZiAocm90YXRpb24gPT0gMTgwKQo+ID4gPiArICAgICAg
+ICAgICAgICpvcmllbnRhdGlvbiA9IERSTV9NT0RFX1BBTkVMX09SSUVOVEFUSU9OX0JPVFRPTV9V
+UDsKPiA+ID4gKyAgICAgZWxzZSBpZiAocm90YXRpb24gPT0gMjcwKQo+ID4gPiArICAgICAgICAg
+ICAgICpvcmllbnRhdGlvbiA9IERSTV9NT0RFX1BBTkVMX09SSUVOVEFUSU9OX0xFRlRfVVA7Cj4g
+PiA+ICsgICAgIGVsc2UKPiA+ID4gKyAgICAgICAgICAgICByZXR1cm4gLUVJTlZBTDsKPiA+ID4g
+Kwo+ID4gPiArICAgICByZXR1cm4gMDsKPiA+ID4gK30KPiA+ID4gK0VYUE9SVF9TWU1CT0wob2Zf
+ZHJtX2dldF9wYW5lbF9vcmllbnRhdGlvbik7Cj4gPiA+ICAjZW5kaWYKPiA+ID4KPiA+ID4gIE1P
+RFVMRV9BVVRIT1IoIlRoaWVycnkgUmVkaW5nIDx0cmVkaW5nQG52aWRpYS5jb20+Iik7Cj4gPiA+
+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2RybS9kcm1fcGFuZWwuaCBiL2luY2x1ZGUvZHJtL2RybV9w
+YW5lbC5oCj4gPiA+IGluZGV4IDYyNGJkMTVlY2ZhYi4uZDE2MTU4ZGVhY2RjIDEwMDY0NAo+ID4g
+PiAtLS0gYS9pbmNsdWRlL2RybS9kcm1fcGFuZWwuaAo+ID4gPiArKysgYi9pbmNsdWRlL2RybS9k
+cm1fcGFuZWwuaAo+ID4gPiBAQCAtMzQsNiArMzQsOCBAQCBzdHJ1Y3QgZHJtX2RldmljZTsKPiA+
+ID4gIHN0cnVjdCBkcm1fcGFuZWw7Cj4gPiA+ICBzdHJ1Y3QgZGlzcGxheV90aW1pbmc7Cj4gPiA+
+Cj4gPiA+ICtlbnVtIGRybV9wYW5lbF9vcmllbnRhdGlvbjsKPiA+ID4gKwo+ID4gPiAgLyoqCj4g
+PiA+ICAgKiBzdHJ1Y3QgZHJtX3BhbmVsX2Z1bmNzIC0gcGVyZm9ybSBvcGVyYXRpb25zIG9uIGEg
+Z2l2ZW4gcGFuZWwKPiA+ID4gICAqCj4gPiA+IEBAIC0xNjUsMTEgKzE2NywxOCBAQCBpbnQgZHJt
+X3BhbmVsX2dldF9tb2RlcyhzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbCk7Cj4gPiA+Cj4gPiA+ICAj
+aWYgZGVmaW5lZChDT05GSUdfT0YpICYmIGRlZmluZWQoQ09ORklHX0RSTV9QQU5FTCkKPiA+ID4g
+IHN0cnVjdCBkcm1fcGFuZWwgKm9mX2RybV9maW5kX3BhbmVsKGNvbnN0IHN0cnVjdCBkZXZpY2Vf
+bm9kZSAqbnApOwo+ID4gPiAraW50IG9mX2RybV9nZXRfcGFuZWxfb3JpZW50YXRpb24oY29uc3Qg
+c3RydWN0IGRldmljZV9ub2RlICpucCwKPiA+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgIGVudW0gZHJtX3BhbmVsX29yaWVudGF0aW9uICpvcmllbnRhdGlvbik7Cj4gPiA+ICAjZWxz
+ZQo+ID4gPiAgc3RhdGljIGlubGluZSBzdHJ1Y3QgZHJtX3BhbmVsICpvZl9kcm1fZmluZF9wYW5l
+bChjb25zdCBzdHJ1Y3QgZGV2aWNlX25vZGUgKm5wKQo+ID4gPiAgewo+ID4gPiAgICAgICByZXR1
+cm4gRVJSX1BUUigtRU5PREVWKTsKPiA+ID4gIH0KPiA+ID4gK3N0YXRpYyBpbmxpbmUgaW50IG9m
+X2RybV9nZXRfcGFuZWxfb3JpZW50YXRpb24oY29uc3Qgc3RydWN0IGRldmljZV9ub2RlICpucCwK
+PiA+ID4gKyAgICAgICAgICAgICBlbnVtIGRybV9wYW5lbF9vcmllbnRhdGlvbiAqb3JpZW50YXRp
+b24pCj4gPiA+ICt7Cj4gPiA+ICsgICAgIHJldHVybiAtRU5PREVWOwo+ID4gPiArfQo+ID4gPiAg
+I2VuZGlmCj4gPiA+Cj4gPiA+ICAjZW5kaWYKPiA+ID4gLS0KPiA+ID4gMi4yMy4wLjM1MS5nYzQz
+MTcwMzJlNi1nb29nCj4gPiA+Cj4gPgo+ID4gLS0KPiA+IFNlYW4gUGF1bCwgU29mdHdhcmUgRW5n
+aW5lZXIsIEdvb2dsZSAvIENocm9taXVtIE9TCgotLSAKU2VhbiBQYXVsLCBTb2Z0d2FyZSBFbmdp
+bmVlciwgR29vZ2xlIC8gQ2hyb21pdW0gT1MKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
+dGluZm8vZHJpLWRldmVs
