@@ -1,31 +1,46 @@
-From: Jakub Kicinski <jakub.kicinski@netronome.com>
-Subject: Re: [PATCH net,v2 1/2] net: ethernet: mediatek: Fix MT7629 missing
- GMII mode support
-Date: Tue, 8 Oct 2019 16:06:43 -0700
-Message-ID: <20191008160643.1c1d31ff@cakuba.netronome.com>
-References: <20191007070844.14212-1-Mark-MC.Lee@mediatek.com>
-        <20191007070844.14212-2-Mark-MC.Lee@mediatek.com>
+From: Paul Walmsley <paul.walmsley@sifive.com>
+Subject: Re: [PATCH v3 1/2] dt-bindings: pwm: Convert PWM bindings to
+ json-schema
+Date: Tue, 8 Oct 2019 16:46:06 -0700 (PDT)
+Message-ID: <alpine.DEB.2.21.9999.1910081643220.11044@viisi.sifive.com>
+References: <20191002164047.14499-1-krzk@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191007070844.14212-2-Mark-MC.Lee@mediatek.com>
+In-Reply-To: <20191002164047.14499-1-krzk@kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: MarkLee <Mark-MC.Lee@mediatek.com>
-Cc: "David S. Miller" <davem@davemloft.net>, Sean Wang <sean.wang@mediatek.com>, John Crispin <john@phrozen.org>, Nelson Chang <nelson.chang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Rene van Dorst <opensource@vdorst.com>, devicetree@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Thierry Reding <thierry.reding@gmail.com>, =?ISO-8859-15?Q?Uwe_Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org, linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-tegra@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 7 Oct 2019 15:08:43 +0800, MarkLee wrote:
-> Add missing configuration for mt7629 gmii mode support
+On Wed, 2 Oct 2019, Krzysztof Kozlowski wrote:
+
+> Convert generic PWM bindings to DT schema format using json-schema.  The
+> consumer bindings are split to separate file.
 > 
-> Fixes: 7e538372694b ("net: ethernet: mediatek: Re-add support SGMII")
+> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+> 
+> ---
+> 
 
-Thank you for adding the Fixes tag. It seem, however, that the patch in
-question did not change the ge_mode setting. Is it because GMII now
-makes a call to mtk_gmac_gephy_path_setup() that the different setting
-is required? The Fixes tag should point to the commit which introduced
-the wrong behaviour, it may be the initial commit of the driver if the
-behaviour was always there.
+[ ... ]
 
-Could you add more information to the patch description and perhaps
-update Fixes tag if 7e538372694b didn't introduce the problem?
+> diff --git a/Documentation/devicetree/bindings/pwm/pwm-sifive.txt b/Documentation/devicetree/bindings/pwm/pwm-sifive.txt
+> index 36447e3c9378..3d1dd7b06efc 100644
+> --- a/Documentation/devicetree/bindings/pwm/pwm-sifive.txt
+> +++ b/Documentation/devicetree/bindings/pwm/pwm-sifive.txt
+> @@ -17,7 +17,7 @@ Required properties:
+>    Please refer to sifive-blocks-ip-versioning.txt for details.
+>  - reg: physical base address and length of the controller's registers
+>  - clocks: Should contain a clock identifier for the PWM's parent clock.
+> -- #pwm-cells: Should be 3. See pwm.txt in this directory
+> +- #pwm-cells: Should be 3. See pwm.yaml in this directory
+>    for a description of the cell format.
+>  - interrupts: one interrupt per PWM channel
+
+For the SiFive PWM driver documentation:
+
+Acked-by: Paul Walmsley <paul.walmsley@sifive.com>
+
+
+- Paul
