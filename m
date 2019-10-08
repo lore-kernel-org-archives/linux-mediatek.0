@@ -1,86 +1,53 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v2 4/4] ASoC: mt8183: fix audio playback slowly after
- playback during bootup
-Date: Tue, 8 Oct 2019 13:11:35 +0100
-Message-ID: <20191008121135.GH4382@sirena.co.uk>
-References: <1569580317-21181-1-git-send-email-jiaxin.yu@mediatek.com>
- <1569580317-21181-5-git-send-email-jiaxin.yu@mediatek.com>
+From: Ben Dooks <ben.dooks-4yDnlxn2s6sWdaTGBSpHTA@public.gmane.org>
+Subject: [PATCH 05/11] arm: mediatek: force type of mtk_smp_base
+Date: Tue,  8 Oct 2019 13:33:35 +0100
+Message-ID: <20191008123341.1551-5-ben.dooks@codethink.co.uk>
+References: <20191008123341.1551-1-ben.dooks@codethink.co.uk>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0454874288407044750=="
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1569580317-21181-5-git-send-email-jiaxin.yu@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Cc: mark.rutland@arm.com, alsa-devel@alsa-project.org, yong.liang@mediatek.com, lgirdwood@gmail.com, perex@perex.cz, tzungbi@google.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, eason.yen@mediatek.com, wim@linux-watchdog.org, linux@roeck-us.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20191008123341.1551-1-ben.dooks-4yDnlxn2s6sWdaTGBSpHTA@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-arm-kernel-IAPFreCvJWPyRWFTsxrvREB+6BGkLq7r@public.gmane.org
+Cc: linux-kernel-81qHHgoATdFT9dQujB1mzip2UmYkHbXO@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Ben Dooks <ben.dooks-4yDnlxn2s6sWdaTGBSpHTA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+In __mtk_smp_prepare_cpus force the return of phys_to_virt()
+to have __iomem on it to avoid the following sparse warning:
 
---===============0454874288407044750==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="gTtJ75FAzB1T2CN6"
-Content-Disposition: inline
+arch/arm/mach-mediatek/platsmp.c:105:30: warning: incorrect type in assignment (different address spaces)
+arch/arm/mach-mediatek/platsmp.c:105:30:    expected void [noderef] <asn:2> *static [toplevel] mtk_smp_base
+arch/arm/mach-mediatek/platsmp.c:105:30:    got void *
 
+Signed-off-by: Ben Dooks <ben.dooks-4yDnlxn2s6sWdaTGBSpHTA@public.gmane.org>
+---
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+---
+ arch/arm/mach-mediatek/platsmp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
---gTtJ75FAzB1T2CN6
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Fri, Sep 27, 2019 at 06:31:57PM +0800, Jiaxin Yu wrote:
-
-> +	rstc = devm_reset_control_get(dev, "audiosys");
-> +	if (IS_ERR(rstc)) {
-> +		ret = PTR_ERR(rstc);
-> +		dev_err(dev, "could not get audiosys reset:%d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	ret = reset_control_reset(rstc);
-> +	if (ret) {
-> +		dev_err(dev, "failed to trigger audio reset:%d\n", ret);
-> +		return ret;
-> +	}
-
-This means that we're going to be incompatible with old DT bindings that
-don't specify a reset controller.  I don't know how widely used these
-bindings are so we may be able to get away with this and I'll apply but
-we shouldn't be doing it, the code might need to be fixed to make this
-optional if people complain.
-
---gTtJ75FAzB1T2CN6
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl2cfPYACgkQJNaLcl1U
-h9C3vQgAgs/NciVNbX5yhkOJpscZQdjIcphQ+vTFVbzD6Lve7ubMPRDHKDTnJis5
-SBzLgKfpjz+jOKtQaLf43hbnbt3ysqb6OtPbksAhTWkP6Ba8haD/hl8rgpdgQmqr
-g+O2wiaiqRa2TsSL7A325WO+UBSPfbMabkWPF0MAtZWXclvUY8PSt8TixhP7DRIX
-ryvcXlv51QVrRxIyNG/oSSKw6+wqNco5t894qo6Ca6I277zpR5f9gtEt19sqiqW9
-pKGSu3ma/B9i7uEmrpytoBfPGdl+65X1DQq1DRb1A7D5phUuSKeFwQidnptm2Phr
-0C6SxsX4Y3qTydnI7JMV241vAHiuGQ==
-=JJJV
------END PGP SIGNATURE-----
-
---gTtJ75FAzB1T2CN6--
-
-
---===============0454874288407044750==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-linux-arm-kernel mailing list
-linux-arm-kernel@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-
---===============0454874288407044750==--
+diff --git a/arch/arm/mach-mediatek/platsmp.c b/arch/arm/mach-mediatek/platsmp.c
+index 16a4ee6c9590..3717b960618d 100644
+--- a/arch/arm/mach-mediatek/platsmp.c
++++ b/arch/arm/mach-mediatek/platsmp.c
+@@ -102,7 +102,7 @@ static void __init __mtk_smp_prepare_cpus(unsigned int max_cpus, int trustzone)
+ 
+ 	if (trustzone) {
+ 		/* smp_base(trustzone-bootinfo) is reserved by device tree */
+-		mtk_smp_base = phys_to_virt(mtk_smp_info->smp_base);
++		mtk_smp_base = (void __force __iomem *)phys_to_virt(mtk_smp_info->smp_base);
+ 	} else {
+ 		mtk_smp_base = ioremap(mtk_smp_info->smp_base, MTK_SMP_REG_SIZE);
+ 		if (!mtk_smp_base) {
+-- 
+2.23.0
