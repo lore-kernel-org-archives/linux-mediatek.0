@@ -1,21 +1,32 @@
 From: Biao Huang <biao.huang@mediatek.com>
-Subject: [PATCH] net: stmmac: dwmac-mediatek: fix wrong delay value issue when resume back
-Date: Wed, 9 Oct 2019 15:31:29 +0800
-Message-ID: <20191009073129.5439-1-biao.huang@mediatek.com>
+Subject: [RESEND,
+ PATCH] net: stmmac: dwmac-mediatek: fix wrong delay value issue when
+ resume back
+Date: Wed, 9 Oct 2019 15:33:48 +0800
+Message-ID: <20191009073348.5503-1-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: davem@davemloft.net, Jose Abreu <joabreu@synopsys.com>, andrew@lunn.ch
-Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, biao.huang@mediatek.com, jianguo.zhang@mediatek.com, boon.leong.ong@intel.com
+Cc: jianguo.zhang@mediatek.com, Alexandre Torgue <alexandre.torgue@st.com>, boon.leong.ong@intel.com, biao.huang@mediatek.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, yt.shen@mediatek.com, linux-mediatek@lists.infradead.org, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-mac_delay value will be divided by 550/170 in mt2712_delay_stage2ps(),
+mac_delay value will be divided by 550/170 in mt2712_delay_ps2stage(),
 which is invoked at the beginning of mt2712_set_delay(), and the value
 should be restored at the end of mt2712_set_delay().
 Or, mac_delay will be divided again when invoking mt2712_set_delay()
 when resume back.
-So, add mt2712_delay_ps2stage() to mt2712_set_delay() to recovery the
+So, add mt2712_delay_stage2ps() to mt2712_set_delay() to recovery the
 original mac_delay value.
 
 Signed-off-by: Biao Huang <biao.huang@mediatek.com>
