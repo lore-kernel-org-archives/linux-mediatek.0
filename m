@@ -1,85 +1,82 @@
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH 1/2] usb: mtu3: add a new function to do status stage
-Date: Wed, 9 Oct 2019 17:04:59 +0800
-Message-ID: <1570611900-7112-1-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH 2/2] usb: mtu3: fix race condition about delayed_status
+Date: Wed, 9 Oct 2019 17:05:00 +0800
+Message-ID: <1570611900-7112-2-git-send-email-chunfeng.yun@mediatek.com>
+References: <1570611900-7112-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1570611900-7112-1-git-send-email-chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: Felipe Balbi <felipe.balbi@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Chunfeng Yun <chunfeng.yun@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Exact a new static function to do status stage
+usb_composite_setup_continue() may be called before composite_setup()
+return USB_GADGET_DELAYED_STATUS, then the controller driver will
+delay status stage after composite_setup() finish, but the class driver
+don't ask the controller to continue delayed status anymore, this will
+cause control transfer timeout.
+
+happens when use mass storage (also enabled other class driver):
+
+cpu1:                               cpu2
+handle_setup(SET_CONFIG) //gadget driver
+  unlock (g->lock)
+  gadget_driver->setup()
+    composite_setup()
+      lock(cdev->lock)
+        set_config()
+          fsg_set_alt() // maybe some times due to many class are enabled
+            raise FSG_STATE_CONFIG_CHANGE
+            return USB_GADGET_DELAYED_STATUS
+                                    handle_exception()
+                                    usb_composite_setup_continue()
+      unlock(cdev->lock)
+                                      lock(cdev->lock)
+                                        ep0_queue()
+                                          lock (g->lock)
+                                          //no delayed status, nothing todo
+                                          unlock (g->lock)
+                                      unlock(cdev->lock)
+    return USB_GADGET_DELAYED_STATUS // composite_setup
+  lock (g->lock)
+get USB_GADGET_DELAYED_STATUS //handle_setup [1]
+
+Try to fix the race condition as following:
+After the driver gets USB_GADGET_DELAYED_STATUS at [1], if we find
+there is a usb_request in ep0 request list, it means composite already
+asked us to continue delayed status by usb_composite_setup_continue(),
+so we skip request about delayed_status by composite_setup() and still
+do status stage.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/usb/mtu3/mtu3_gadget_ep0.c | 23 ++++++++++++-----------
- 1 file changed, 12 insertions(+), 11 deletions(-)
+ drivers/usb/mtu3/mtu3_gadget_ep0.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/usb/mtu3/mtu3_gadget_ep0.c b/drivers/usb/mtu3/mtu3_gadget_ep0.c
-index 4da216c99726..df3fd055792f 100644
+index df3fd055792f..2be182bd793a 100644
 --- a/drivers/usb/mtu3/mtu3_gadget_ep0.c
 +++ b/drivers/usb/mtu3/mtu3_gadget_ep0.c
-@@ -153,6 +153,15 @@ static void ep0_stall_set(struct mtu3_ep *mep0, bool set, u32 pktrdy)
- 		set ? "SEND" : "CLEAR", decode_ep0_state(mtu));
- }
- 
-+static void ep0_do_status_stage(struct mtu3 *mtu)
-+{
-+	void __iomem *mbase = mtu->mac_base;
-+	u32 value;
+@@ -671,8 +671,16 @@ __acquires(mtu->lock)
+ 	if (mtu->test_mode) {
+ 		;	/* nothing to do */
+ 	} else if (handled == USB_GADGET_DELAYED_STATUS) {
+-		/* handle the delay STATUS phase till receive ep_queue on ep0 */
+-		mtu->delayed_status = true;
 +
-+	value = mtu3_readl(mbase, U3D_EP0CSR) & EP0_W1C_BITS;
-+	mtu3_writel(mbase, U3D_EP0CSR, value | EP0_SETUPPKTRDY | EP0_DATAEND);
-+}
-+
- static int ep0_queue(struct mtu3_ep *mep0, struct mtu3_request *mreq);
- 
- static void ep0_dummy_complete(struct usb_ep *ep, struct usb_request *req)
-@@ -297,8 +306,7 @@ static int handle_test_mode(struct mtu3 *mtu, struct usb_ctrlrequest *setup)
- 		ep0_load_test_packet(mtu);
- 
- 	/* send status before entering test mode. */
--	value = mtu3_readl(mbase, U3D_EP0CSR) & EP0_W1C_BITS;
--	mtu3_writel(mbase, U3D_EP0CSR, value | EP0_SETUPPKTRDY | EP0_DATAEND);
-+	ep0_do_status_stage(mtu);
- 
- 	/* wait for ACK status sent by host */
- 	readl_poll_timeout_atomic(mbase + U3D_EP0CSR, value,
-@@ -632,7 +640,6 @@ __acquires(mtu->lock)
- {
- 	struct usb_ctrlrequest setup;
- 	struct mtu3_request *mreq;
--	void __iomem *mbase = mtu->mac_base;
- 	int handled = 0;
- 
- 	ep0_read_setup(mtu, &setup);
-@@ -668,10 +675,7 @@ __acquires(mtu->lock)
- 		mtu->delayed_status = true;
++		mreq = next_ep0_request(mtu);
++		if (mreq) {
++			/* already asked us to continue delayed status */
++			ep0_do_status_stage(mtu);
++			ep0_req_giveback(mtu, &mreq->request);
++		} else {
++			/* do delayed STATUS stage till receive ep0_queue */
++			mtu->delayed_status = true;
++		}
  	} else if (le16_to_cpu(setup.wLength) == 0) { /* no data stage */
  
--		mtu3_writel(mbase, U3D_EP0CSR,
--			(mtu3_readl(mbase, U3D_EP0CSR) & EP0_W1C_BITS)
--			| EP0_SETUPPKTRDY | EP0_DATAEND);
--
-+		ep0_do_status_stage(mtu);
- 		/* complete zlp request directly */
- 		mreq = next_ep0_request(mtu);
- 		if (mreq && !mreq->request.length)
-@@ -802,12 +806,9 @@ static int ep0_queue(struct mtu3_ep *mep, struct mtu3_request *mreq)
- 	}
- 
- 	if (mtu->delayed_status) {
--		u32 csr;
- 
- 		mtu->delayed_status = false;
--		csr = mtu3_readl(mtu->mac_base, U3D_EP0CSR) & EP0_W1C_BITS;
--		csr |= EP0_SETUPPKTRDY | EP0_DATAEND;
--		mtu3_writel(mtu->mac_base, U3D_EP0CSR, csr);
-+		ep0_do_status_stage(mtu);
- 		/* needn't giveback the request for handling delay STATUS */
- 		return 0;
- 	}
+ 		ep0_do_status_stage(mtu);
 -- 
 2.23.0
