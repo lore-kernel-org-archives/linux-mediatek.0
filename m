@@ -1,40 +1,26 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [RESEND PATCH v3 08/11] phy: phy-mtk-tphy: make the ref clock optional
-Date: Wed, 9 Oct 2019 15:40:31 +0800
-Message-ID: <1570606834-5644-8-git-send-email-chunfeng.yun@mediatek.com>
-References: <1570606834-5644-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH -next 06/34] rtc: coh901331: use devm_platform_ioremap_resource()
+ to simplify code
+Date: Wed, 9 Oct 2019 09:46:27 +0200
+Message-ID: <CACRpkdY5x3wG4h6Wm_L5OXWXB7SPqHimUFOQa2jOeqDETWciYg@mail.gmail.com>
+References: <20191006102953.57536-1-yuehaibing@huawei.com> <20191006102953.57536-7-yuehaibing@huawei.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1570606834-5644-1-git-send-email-chunfeng.yun@mediatek.com>
+In-Reply-To: <20191006102953.57536-7-yuehaibing@huawei.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>, Rob Herring <robh+dt@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+To: YueHaibing <yuehaibing@huawei.com>
+Cc: Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>, Nicolas Ferre <nicolas.ferre@microchip.com>, Ludovic Desroches <ludovic.desroches@microchip.com>, Brian Norris <computersforpeace@gmail.com>, Gregory Fong <gregory.0xf0@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, Baruch Siach <baruch@tkos.co.il>, Paul Cercueil <paul@crapouillou.net>, Vladimir Zapolskiy <vz@mleia.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Kevin Hilman <khilman@baylibre.com>, huang eddie <eddie.huang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>P
 List-Id: linux-mediatek@lists.infradead.org
 
-Sometimes the reference clock of USB3 PHY comes from oscillator
-directly, and no need refer to a fixed-clock in DTS anymore
-if make it optional.
+On Sun, Oct 6, 2019 at 12:32 PM YueHaibing <yuehaibing@huawei.com> wrote:
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-v2~3: no changes
----
- drivers/phy/mediatek/phy-mtk-tphy.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> Use devm_platform_ioremap_resource() to simplify the code a bit.
+> This is detected by coccinelle.
+>
+> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
 
-diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
-index 4a2dc92f10f5..96c62e3a3300 100644
---- a/drivers/phy/mediatek/phy-mtk-tphy.c
-+++ b/drivers/phy/mediatek/phy-mtk-tphy.c
-@@ -1182,7 +1182,7 @@ static int mtk_tphy_probe(struct platform_device *pdev)
- 		if (tphy->u3phya_ref)
- 			continue;
- 
--		instance->ref_clk = devm_clk_get(&phy->dev, "ref");
-+		instance->ref_clk = devm_clk_get_optional(&phy->dev, "ref");
- 		if (IS_ERR(instance->ref_clk)) {
- 			dev_err(dev, "failed to get ref_clk(id-%d)\n", port);
- 			retval = PTR_ERR(instance->ref_clk);
--- 
-2.23.0
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+
+Yours,
+Linus Walleij
