@@ -1,130 +1,65 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v5, 17/32] drm/mediatek: add component DITHER
-Date: Wed, 9 Oct 2019 17:11:30 +0800
-Message-ID: <1570612290.3420.2.camel@mtksdaap41>
+Subject: Re: [PATCH v5, 15/32] drm/mediatek: add commponent OVL_2L0
+Date: Wed, 9 Oct 2019 17:17:51 +0800
+Message-ID: <1570612671.7713.1.camel@mtksdaap41>
 References: <1567090254-15566-1-git-send-email-yongqiang.niu@mediatek.com>
-         <1567090254-15566-18-git-send-email-yongqiang.niu@mediatek.com>
+ <1567090254-15566-16-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1567090254-15566-18-git-send-email-yongqiang.niu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1567090254-15566-16-git-send-email-yongqiang.niu@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: yongqiang.niu@mediatek.com
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Mark Rutland <mark.rutland@arm.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Yongqiang:
-
-On Thu, 2019-08-29 at 22:50 +0800, yongqiang.niu@mediatek.com wrote:
-> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> 
-> This patch add component DITHER
-> 
-
-Applied to mediatek-drm-next-5.5 [1], thanks.
-
-[1]
-https://github.com/ckhu-mediatek/linux.git-tags/commits/mediatek-drm-next-5.5
-
-Regards,
-CK
-
-> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 32 +++++++++++++++++++++++++++++
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  2 ++
->  2 files changed, 34 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> index af8e872..8fea985 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> @@ -39,6 +39,12 @@
->  #define CCORR_RELAY_MODE			BIT(0)
->  #define DISP_CCORR_SIZE				0x0030
->  
-> +#define DISP_DITHER_EN				0x0000
-> +#define DITHER_EN				BIT(0)
-> +#define DISP_DITHER_CFG				0x0020
-> +#define DITHER_RELAY_MODE			BIT(0)
-> +#define DISP_DITHER_SIZE			0x0030
-> +
->  #define DISP_GAMMA_EN				0x0000
->  #define DISP_GAMMA_CFG				0x0020
->  #define DISP_GAMMA_SIZE				0x0030
-> @@ -147,6 +153,24 @@ static void mtk_ccorr_stop(struct mtk_ddp_comp *comp)
->  	writel_relaxed(0x0, comp->regs + DISP_CCORR_EN);
->  }
->  
-> +static void mtk_dither_config(struct mtk_ddp_comp *comp, unsigned int w,
-> +			      unsigned int h, unsigned int vrefresh,
-> +			      unsigned int bpc)
-> +{
-> +	writel(h << 16 | w, comp->regs + DISP_DITHER_SIZE);
-> +	writel(DITHER_RELAY_MODE, comp->regs + DISP_DITHER_CFG);
-> +}
-> +
-> +static void mtk_dither_start(struct mtk_ddp_comp *comp)
-> +{
-> +	writel(DITHER_EN, comp->regs + DISP_DITHER_EN);
-> +}
-> +
-> +static void mtk_dither_stop(struct mtk_ddp_comp *comp)
-> +{
-> +	writel_relaxed(0x0, comp->regs + DISP_DITHER_EN);
-> +}
-> +
->  static void mtk_gamma_config(struct mtk_ddp_comp *comp, unsigned int w,
->  			     unsigned int h, unsigned int vrefresh,
->  			     unsigned int bpc)
-> @@ -201,6 +225,12 @@ static void mtk_gamma_set(struct mtk_ddp_comp *comp,
->  	.stop = mtk_ccorr_stop,
->  };
->  
-> +static const struct mtk_ddp_comp_funcs ddp_dither = {
-> +	.config = mtk_dither_config,
-> +	.start = mtk_dither_start,
-> +	.stop = mtk_dither_stop,
-> +};
-> +
->  static const struct mtk_ddp_comp_funcs ddp_gamma = {
->  	.gamma_set = mtk_gamma_set,
->  	.config = mtk_gamma_config,
-> @@ -226,6 +256,7 @@ static void mtk_gamma_set(struct mtk_ddp_comp *comp,
->  	[MTK_DISP_CCORR] = "ccorr",
->  	[MTK_DISP_AAL] = "aal",
->  	[MTK_DISP_GAMMA] = "gamma",
-> +	[MTK_DISP_DITHER] = "dither",
->  	[MTK_DISP_UFOE] = "ufoe",
->  	[MTK_DSI] = "dsi",
->  	[MTK_DPI] = "dpi",
-> @@ -248,6 +279,7 @@ struct mtk_ddp_comp_match {
->  	[DDP_COMPONENT_CCORR]	= { MTK_DISP_CCORR,	0, &ddp_ccorr },
->  	[DDP_COMPONENT_COLOR0]	= { MTK_DISP_COLOR,	0, NULL },
->  	[DDP_COMPONENT_COLOR1]	= { MTK_DISP_COLOR,	1, NULL },
-> +	[DDP_COMPONENT_DITHER]	= { MTK_DISP_DITHER,	0, &ddp_dither },
->  	[DDP_COMPONENT_DPI0]	= { MTK_DPI,		0, NULL },
->  	[DDP_COMPONENT_DPI1]	= { MTK_DPI,		1, NULL },
->  	[DDP_COMPONENT_DSI0]	= { MTK_DSI,		0, NULL },
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> index 962d14a..85e096a 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> @@ -22,6 +22,7 @@ enum mtk_ddp_comp_type {
->  	MTK_DISP_WDMA,
->  	MTK_DISP_COLOR,
->  	MTK_DISP_CCORR,
-> +	MTK_DISP_DITHER,
->  	MTK_DISP_AAL,
->  	MTK_DISP_GAMMA,
->  	MTK_DISP_UFOE,
-> @@ -41,6 +42,7 @@ enum mtk_ddp_comp_id {
->  	DDP_COMPONENT_CCORR,
->  	DDP_COMPONENT_COLOR0,
->  	DDP_COMPONENT_COLOR1,
-> +	DDP_COMPONENT_DITHER,
->  	DDP_COMPONENT_DPI0,
->  	DDP_COMPONENT_DPI1,
->  	DDP_COMPONENT_DSI0,
+SGksIFlvbmdxaWFuZzoKCk9uIFRodSwgMjAxOS0wOC0yOSBhdCAyMjo1MCArMDgwMCwgeW9uZ3Fp
+YW5nLm5pdUBtZWRpYXRlay5jb20gd3JvdGU6Cj4gRnJvbTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3Fp
+YW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gCj4gVGhpcyBwYXRjaCBhZGQgY29tbXBvbmVudCBPVkxf
+MkwwCj4gCgpBcHBsaWVkIHRvIG1lZGlhdGVrLWRybS1uZXh0LTUuNSBbMV0sIHRoYW5rcy4KClsx
+XQpodHRwczovL2dpdGh1Yi5jb20vY2todS1tZWRpYXRlay9saW51eC5naXQtdGFncy9jb21taXRz
+L21lZGlhdGVrLWRybS1uZXh0LTUuNQoKUmVnYXJkcywKQ0sKCj4gU2lnbmVkLW9mZi1ieTogWW9u
+Z3FpYW5nIE5pdSA8eW9uZ3FpYW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gUmV2aWV3ZWQtYnk6IENL
+IEh1IDxjay5odUBtZWRpYXRlay5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
+ay9tdGtfZHJtX2RkcF9jb21wLmMgfCAyICsrCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
+dGtfZHJtX2RkcF9jb21wLmggfCAyICsrCj4gIDIgZmlsZXMgY2hhbmdlZCwgNCBpbnNlcnRpb25z
+KCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rk
+cF9jb21wLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jCj4g
+aW5kZXggYjE4YmQ2Ni4uNDIwMGY4OSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19kcm1fZGRwX2NvbXAuYwo+IEBAIC0yMTksNiArMjE5LDcgQEAgc3RhdGljIHZvaWQgbXRr
+X2dhbW1hX3NldChzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wLAo+ICAKPiAgc3RhdGljIGNvbnN0
+IGNoYXIgKiBjb25zdCBtdGtfZGRwX2NvbXBfc3RlbVtNVEtfRERQX0NPTVBfVFlQRV9NQVhdID0g
+ewo+ICAJW01US19ESVNQX09WTF0gPSAib3ZsIiwKPiArCVtNVEtfRElTUF9PVkxfMkxdID0gIm92
+bF8ybCIsCj4gIAlbTVRLX0RJU1BfUkRNQV0gPSAicmRtYSIsCj4gIAlbTVRLX0RJU1BfV0RNQV0g
+PSAid2RtYSIsCj4gIAlbTVRLX0RJU1BfQ09MT1JdID0gImNvbG9yIiwKPiBAQCAtMjU4LDYgKzI1
+OSw3IEBAIHN0cnVjdCBtdGtfZGRwX2NvbXBfbWF0Y2ggewo+ICAJW0REUF9DT01QT05FTlRfT0Qx
+XQk9IHsgTVRLX0RJU1BfT0QsCTEsICZkZHBfb2QgfSwKPiAgCVtERFBfQ09NUE9ORU5UX09WTDBd
+CT0geyBNVEtfRElTUF9PVkwsCTAsIE5VTEwgfSwKPiAgCVtERFBfQ09NUE9ORU5UX09WTDFdCT0g
+eyBNVEtfRElTUF9PVkwsCTEsIE5VTEwgfSwKPiArCVtERFBfQ09NUE9ORU5UX09WTF8yTDBdCT0g
+eyBNVEtfRElTUF9PVkxfMkwsCTAsIE5VTEwgfSwKPiAgCVtERFBfQ09NUE9ORU5UX1BXTTBdCT0g
+eyBNVEtfRElTUF9QV00sCTAsIE5VTEwgfSwKPiAgCVtERFBfQ09NUE9ORU5UX1BXTTFdCT0geyBN
+VEtfRElTUF9QV00sCTEsIE5VTEwgfSwKPiAgCVtERFBfQ09NUE9ORU5UX1BXTTJdCT0geyBNVEtf
+RElTUF9QV00sCTIsIE5VTEwgfSwKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlh
+dGVrL210a19kcm1fZGRwX2NvbXAuaCBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJt
+X2RkcF9jb21wLmgKPiBpbmRleCA4ZDIyMDIyNC4uOWNhZWMyZCAxMDA2NDQKPiAtLS0gYS9kcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5oCj4gKysrIGIvZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaAo+IEBAIC0xNyw2ICsxNyw3IEBACj4g
+IAo+ICBlbnVtIG10a19kZHBfY29tcF90eXBlIHsKPiAgCU1US19ESVNQX09WTCwKPiArCU1US19E
+SVNQX09WTF8yTCwKPiAgCU1US19ESVNQX1JETUEsCj4gIAlNVEtfRElTUF9XRE1BLAo+ICAJTVRL
+X0RJU1BfQ09MT1IsCj4gQEAgLTUwLDYgKzUxLDcgQEAgZW51bSBtdGtfZGRwX2NvbXBfaWQgewo+
+ICAJRERQX0NPTVBPTkVOVF9PRDAsCj4gIAlERFBfQ09NUE9ORU5UX09EMSwKPiAgCUREUF9DT01Q
+T05FTlRfT1ZMMCwKPiArCUREUF9DT01QT05FTlRfT1ZMXzJMMCwKPiAgCUREUF9DT01QT05FTlRf
+T1ZMMSwKPiAgCUREUF9DT01QT05FTlRfUFdNMCwKPiAgCUREUF9DT01QT05FTlRfUFdNMSwKCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
+bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
