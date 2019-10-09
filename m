@@ -1,64 +1,186 @@
-From: Frank Wunderlich <frank-w@public-files.de>
-Subject: Re: [PATCH] mfd: mt6397: fix probe after changing mt6397-core
-Date: Wed, 09 Oct 2019 07:19:49 +0200
-Message-ID: <8AE93E81-9836-4509-A850-468547569AA4@public-files.de>
-References: <20191003185323.24646-1-frank-w@public-files.de>
- <20191004152001.GS18429@dell>
-Reply-To: frank-w@public-files.de
+From: Biao Huang <biao.huang@mediatek.com>
+Subject: [v2,PATCH] arm64: dts: mt2712: add ethernet device node
+Date: Wed, 9 Oct 2019 15:10:22 +0800
+Message-ID: <20191009071022.4972-2-biao.huang@mediatek.com>
+References: <20191009071022.4972-1-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20191004152001.GS18429@dell>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-mediatek@lists.infradead.org, Lee Jones <lee.jones@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191009071022.4972-1-biao.huang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, biao.huang@mediatek.com, jianguo.zhang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-U2hvdWxkIGkgc2VuZCBwYXRjaCB3aXRob3V0IHRoZSBzaGlmdCAoYmVjYXVzZSByZXN0IG9mIHNl
-cmllcyBnZXRzIG5vdCBtZXJnZWQgaW4gNS40KT8KCkFtIDQuIE9rdG9iZXIgMjAxOSAxNzoyMDow
-MSBNRVNaIHNjaHJpZWIgTGVlIEpvbmVzIDxsZWUuam9uZXNAbGluYXJvLm9yZz46Cj5PbiBUaHUs
-IDAzIE9jdCAyMDE5LCBGcmFuayBXdW5kZXJsaWNoIHdyb3RlOgo+Cj4+IFBhcnQgMyBmcm9tIHRo
-aXMgc2VyaWVzIFsxXSB3YXMgbm90IG1lcmdlZCBkdWUgdG8gd3Jvbmcgc3BsaXR0aW5nCj4+IGFu
-ZCBicmVha3MgbXQ2MzIzIHBtaWMgb24gYmFuYW5hcGktcjIKPj4gCj4+IGRtZXNnIHByaW50cyB0
-aGlzIGxpbmUgYW5kIGF0IGxlYXN0IHN3aXRjaCBpcyBub3QgaW5pdGlhbGl6ZWQgb24KPmJhbmFu
-YXBpLXIyCj4+IAo+PiBtdDYzOTcgMTAwMGQwMDAucHdyYXA6bXQ2MzIzOiB1bnN1cHBvcnRlZCBj
-aGlwOiAweDAKPj4gCj4+IHRoaXMgcGF0Y2ggY29udGFpbnMgb25seSB0aGUgcHJvYmUtY2hhbmdl
-cyBhbmQgY2hpcF9kYXRhIHN0cnVjdHMKPj4gZnJvbSBvcmlnaW5hbCBwYXJ0IDMgYnkgSHNpbi1I
-c2l1bmcgV2FuZwo+PiAKPj4gRml4ZXM6IGE0ODcyZTgwY2U3ZDJhMTg0NDMyODE3NmRiZjI3OWQw
-YTJiODliZGIgbWZkOiBtdDYzOTc6IEV4dHJhY3QKPklSUSByZWxhdGVkIGNvZGUgZnJvbSBjb3Jl
-IGRyaXZlcgo+PiAKPj4gWzFdCj5odHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3Byb2plY3Qv
-bGludXgtbWVkaWF0ZWsvbGlzdC8/c2VyaWVzPTE2NDE1NQo+PiAKPj4gU2lnbmVkLW9mZi1ieTog
-RnJhbmsgV3VuZGVybGljaCA8ZnJhbmstd0BwdWJsaWMtZmlsZXMuZGU+Cj4+IC0tLQo+PiAgZHJp
-dmVycy9tZmQvbXQ2Mzk3LWNvcmUuYyB8IDY0Cj4rKysrKysrKysrKysrKysrKysrKysrKystLS0t
-LS0tLS0tLS0tLS0KPj4gIDEgZmlsZSBjaGFuZ2VkLCA0MCBpbnNlcnRpb25zKCspLCAyNCBkZWxl
-dGlvbnMoLSkKPj4gCj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21mZC9tdDYzOTctY29yZS5jIGIv
-ZHJpdmVycy9tZmQvbXQ2Mzk3LWNvcmUuYwo+PiBpbmRleCAzMTBkYWUyNmRkZmYuLmIyYzMyNWVh
-ZDFjOCAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9tZmQvbXQ2Mzk3LWNvcmUuYwo+PiArKysgYi9k
-cml2ZXJzL21mZC9tdDYzOTctY29yZS5jCj4+IEBAIC0xMjksMTEgKzEyOSwyNyBAQCBzdGF0aWMg
-aW50IG10NjM5N19pcnFfcmVzdW1lKHN0cnVjdCBkZXZpY2UKPipkZXYpCj4+ICBzdGF0aWMgU0lN
-UExFX0RFVl9QTV9PUFMobXQ2Mzk3X3BtX29wcywgbXQ2Mzk3X2lycV9zdXNwZW5kLAo+PiAgCQkJ
-bXQ2Mzk3X2lycV9yZXN1bWUpOwo+PiAgCj4+ICtzdHJ1Y3QgY2hpcF9kYXRhIHsKPj4gKwl1MzIg
-Y2lkX2FkZHI7Cj4+ICsJdTMyIGNpZF9zaGlmdDsKPj4gK307Cj4+ICsKPj4gK3N0YXRpYyBjb25z
-dCBzdHJ1Y3QgY2hpcF9kYXRhIG10NjMyM19jb3JlID0gewo+PiArCS5jaWRfYWRkciA9IE1UNjMy
-M19DSUQsCj4+ICsJLmNpZF9zaGlmdCA9IDAsCj4+ICt9Owo+PiArCj4+ICtzdGF0aWMgY29uc3Qg
-c3RydWN0IGNoaXBfZGF0YSBtdDYzOTdfY29yZSA9IHsKPj4gKwkuY2lkX2FkZHIgPSBNVDYzOTdf
-Q0lELAo+PiArCS5jaWRfc2hpZnQgPSAwLAo+PiArfTsKPgo+V2lsbCB0aGVyZSBiZSBvdGhlciBk
-ZXZpY2VzIHdoaWNoIGhhdmUgYSAhMCBDSUQgc2hpZnQ/Cj4KPi0tIAo+TGVlIEpvbmVzIFvmnY7n
-kLzmlq9dCj5MaW5hcm8gU2VydmljZXMgVGVjaG5pY2FsIExlYWQKPkxpbmFyby5vcmcg4pSCIE9w
-ZW4gc291cmNlIHNvZnR3YXJlIGZvciBBUk0gU29Dcwo+Rm9sbG93IExpbmFybzogRmFjZWJvb2sg
-fCBUd2l0dGVyIHwgQmxvZwo+Cj5fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwo+TGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0Cj5MaW51eC1tZWRpYXRla0Bs
-aXN0cy5pbmZyYWRlYWQub3JnCj5odHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LW1lZGlhdGVrCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2Vy
-bmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
+This patch add device node for mt2712 ethernet.
+
+Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt2712-evb.dts | 74 +++++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi   | 65 ++++++++++++++++++
+ 2 files changed, 139 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+index 1353dad2f53c..fd6ab6cc5fe7 100644
+--- a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+@@ -107,7 +107,81 @@
+ 	proc-supply = <&cpus_fixed_vproc1>;
+ };
+ 
++&eth {
++	phy-mode ="rgmii-rxid";
++	phy-handle = <&ethernet_phy0>;
++	mediatek,tx-delay-ps = <1530>;
++	snps,reset-gpio = <&pio 87 GPIO_ACTIVE_LOW>;
++	pinctrl-names = "default", "sleep";
++	pinctrl-0 = <&eth_default>;
++	pinctrl-1 = <&eth_sleep>;
++	status = "okay";
++
++	mdio {
++		compatible = "snps,dwmac-mdio";
++		#address-cells = <1>;
++		#size-cells = <0>;
++		ethernet_phy0: ethernet-phy@5 {
++			compatible = "ethernet-phy-id0243.0d90";
++			reg = <0x5>;
++		};
++	};
++};
++
+ &pio {
++	eth_default: eth_default {
++		tx_pins {
++			pinmux = <MT2712_PIN_71_GBE_TXD3__FUNC_GBE_TXD3>,
++				 <MT2712_PIN_72_GBE_TXD2__FUNC_GBE_TXD2>,
++				 <MT2712_PIN_73_GBE_TXD1__FUNC_GBE_TXD1>,
++				 <MT2712_PIN_74_GBE_TXD0__FUNC_GBE_TXD0>,
++				 <MT2712_PIN_75_GBE_TXC__FUNC_GBE_TXC>,
++				 <MT2712_PIN_76_GBE_TXEN__FUNC_GBE_TXEN>;
++			drive-strength = <MTK_DRIVE_8mA>;
++		};
++		rx_pins {
++			pinmux = <MT2712_PIN_78_GBE_RXD3__FUNC_GBE_RXD3>,
++				 <MT2712_PIN_79_GBE_RXD2__FUNC_GBE_RXD2>,
++				 <MT2712_PIN_80_GBE_RXD1__FUNC_GBE_RXD1>,
++				 <MT2712_PIN_81_GBE_RXD0__FUNC_GBE_RXD0>,
++				 <MT2712_PIN_82_GBE_RXDV__FUNC_GBE_RXDV>,
++				 <MT2712_PIN_84_GBE_RXC__FUNC_GBE_RXC>;
++			input-enable;
++		};
++		mdio_pins {
++			pinmux = <MT2712_PIN_85_GBE_MDC__FUNC_GBE_MDC>,
++				 <MT2712_PIN_86_GBE_MDIO__FUNC_GBE_MDIO>;
++			drive-strength = <MTK_DRIVE_8mA>;
++			input-enable;
++		};
++	};
++
++	eth_sleep: eth_sleep {
++		tx_pins {
++			pinmux = <MT2712_PIN_71_GBE_TXD3__FUNC_GPIO71>,
++				 <MT2712_PIN_72_GBE_TXD2__FUNC_GPIO72>,
++				 <MT2712_PIN_73_GBE_TXD1__FUNC_GPIO73>,
++				 <MT2712_PIN_74_GBE_TXD0__FUNC_GPIO74>,
++				 <MT2712_PIN_75_GBE_TXC__FUNC_GPIO75>,
++				 <MT2712_PIN_76_GBE_TXEN__FUNC_GPIO76>;
++		};
++		rx_pins {
++			pinmux = <MT2712_PIN_78_GBE_RXD3__FUNC_GPIO78>,
++				 <MT2712_PIN_79_GBE_RXD2__FUNC_GPIO79>,
++				 <MT2712_PIN_80_GBE_RXD1__FUNC_GPIO80>,
++				 <MT2712_PIN_81_GBE_RXD0__FUNC_GPIO81>,
++				 <MT2712_PIN_82_GBE_RXDV__FUNC_GPIO82>,
++				 <MT2712_PIN_84_GBE_RXC__FUNC_GPIO84>;
++			input-disable;
++		};
++		mdio_pins {
++			pinmux = <MT2712_PIN_85_GBE_MDC__FUNC_GPIO85>,
++				 <MT2712_PIN_86_GBE_MDIO__FUNC_GPIO86>;
++			input-disable;
++			bias-disable;
++		};
++	};
++
+ 	usb0_id_pins_float: usb0_iddig {
+ 		pins_iddig {
+ 			pinmux = <MT2712_PIN_12_IDDIG_P0__FUNC_IDDIG_A>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+index 43307bad3f0d..b2edec20c8da 100644
+--- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+@@ -632,6 +632,71 @@
+ 		status = "disabled";
+ 	};
+ 
++	stmmac_axi_setup: stmmac-axi-config {
++		snps,wr_osr_lmt = <0x7>;
++		snps,rd_osr_lmt = <0x7>;
++		snps,blen = <0 0 0 0 16 8 4>;
++	};
++
++	mtl_rx_setup: rx-queues-config {
++		snps,rx-queues-to-use = <1>;
++		snps,rx-sched-sp;
++		queue0 {
++			snps,dcb-algorithm;
++			snps,map-to-dma-channel = <0x0>;
++			snps,priority = <0x0>;
++		};
++	};
++
++	mtl_tx_setup: tx-queues-config {
++		snps,tx-queues-to-use = <3>;
++		snps,tx-sched-wrr;
++		queue0 {
++			snps,weight = <0x10>;
++			snps,dcb-algorithm;
++			snps,priority = <0x0>;
++		};
++		queue1 {
++			snps,weight = <0x11>;
++			snps,dcb-algorithm;
++			snps,priority = <0x1>;
++		};
++		queue2 {
++			snps,weight = <0x12>;
++			snps,dcb-algorithm;
++			snps,priority = <0x2>;
++		};
++	};
++
++	eth: ethernet@1101c000 {
++		compatible = "mediatek,mt2712-gmac";
++		reg = <0 0x1101c000 0 0x1300>;
++		interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
++		interrupt-names = "macirq";
++		mac-address = [00 55 7b b5 7d f7];
++		clock-names = "axi",
++			      "apb",
++			      "mac_main",
++			      "ptp_ref";
++		clocks = <&pericfg CLK_PERI_GMAC>,
++			 <&pericfg CLK_PERI_GMAC_PCLK>,
++			 <&topckgen CLK_TOP_ETHER_125M_SEL>,
++			 <&topckgen CLK_TOP_ETHER_50M_SEL>;
++		assigned-clocks = <&topckgen CLK_TOP_ETHER_125M_SEL>,
++				  <&topckgen CLK_TOP_ETHER_50M_SEL>;
++		assigned-clock-parents = <&topckgen CLK_TOP_ETHERPLL_125M>,
++					 <&topckgen CLK_TOP_APLL1_D3>;
++		power-domains = <&scpsys MT2712_POWER_DOMAIN_AUDIO>;
++		mediatek,pericfg = <&pericfg>;
++		snps,axi-config = <&stmmac_axi_setup>;
++		snps,mtl-rx-config = <&mtl_rx_setup>;
++		snps,mtl-tx-config = <&mtl_tx_setup>;
++		snps,txpbl = <1>;
++		snps,rxpbl = <1>;
++		clk_csr = <0>;
++		status = "disabled";
++	};
++
+ 	mmc0: mmc@11230000 {
+ 		compatible = "mediatek,mt2712-mmc";
+ 		reg = <0 0x11230000 0 0x1000>;
+-- 
+2.18.0
