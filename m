@@ -1,108 +1,126 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v5, 00/32] add drm support for MT8183
-Date: Wed, 9 Oct 2019 17:47:25 +0800
-Message-ID: <1570614445.12886.4.camel@mtksdaap41>
-References: <1567090254-15566-1-git-send-email-yongqiang.niu@mediatek.com>
+From: Qais Yousef <qais.yousef@arm.com>
+Subject: Re: [PATCH 1/1] sched/rt: avoid contend with CFS task
+Date: Wed, 9 Oct 2019 11:56:17 +0100
+Message-ID: <20191009105616.dzhtowlrnqnyqgv4@e107158-lin.cambridge.arm.com>
+References: <20190830145501.zadfv2ffuu7j46ft@e107158-lin.cambridge.arm.com>
+ <1567689999.2389.5.camel@mtkswgap22>
+ <CAKfTPtC3txstND=6YkWBJ16i06cQ7xueUpD5j-j-UfuSf0-z-g@mail.gmail.com>
+ <1568892135.4892.10.camel@mtkswgap22>
+ <CAKfTPtCuWrpW_o6r5cmGhLf_84PFHJhBk0pJ3fcbU_YgcBnTkQ@mail.gmail.com>
+ <20190919142315.vmrrpvljpspqpurp@e107158-lin.cambridge.arm.com>
+ <CAKfTPtA9-JLxs+DdLYjBQ6VfVGNxm++QYYi1wy-xS6o==EAPNw@mail.gmail.com>
+ <CAKfTPtAy1JSh725GAVXmg_x3fby1UfYn504tq4n2rQs1-JMy6Q@mail.gmail.com>
+ <20190919151152.m2zmiaspr6s5mcfh@e107158-lin.cambridge.arm.com>
+ <1569979206.4892.23.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1567090254-15566-1-git-send-email-yongqiang.niu@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1569979206.4892.23.camel@mtkswgap22>
 Sender: linux-kernel-owner@vger.kernel.org
-To: yongqiang.niu@mediatek.com
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Mark Rutland <mark.rutland@arm.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Jing-Ting Wu <jing-ting.wu@mediatek.com>
+Cc: Vincent Guittot <vincent.guittot@linaro.org>, Valentin Schneider <valentin.schneider@arm.com>, Peter Zijlstra <peterz@infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, wsd_upstream@mediatek.com, linux-kernel <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Yongqiang:
+On 10/02/19 09:20, Jing-Ting Wu wrote:
+> On Thu, 2019-09-19 at 16:11 +0100, Qais Yousef wrote:
+> > On 09/19/19 16:37, Vincent Guittot wrote:
+> > > On Thu, 19 Sep 2019 at 16:32, Vincent Guittot
+> > > <vincent.guittot@linaro.org> wrote:
+> > > >
+> > > > On Thu, 19 Sep 2019 at 16:23, Qais Yousef <qais.yousef@arm.com> wrote:
+> > > > >
+> > > > > On 09/19/19 14:27, Vincent Guittot wrote:
+> > > > > > > > > But for requirement of performance, I think it is better to differentiate between idle CPU and CPU has CFS task.
+> > > > > > > > >
+> > > > > > > > > For example, we use rt-app to evaluate runnable time on non-patched environment.
+> > > > > > > > > There are (NR_CPUS-1) heavy CFS tasks and 1 RT Task. When a CFS task is running, the RT task wakes up and choose the same CPU.
+> > > > > > > > > The CFS task will be preempted and keep runnable until it is migrated to another cpu by load balance.
+> > > > > > > > > But load balance is not triggered immediately, it will be triggered until timer tick hits with some condition satisfied(ex. rq->next_balance).
+> > > > > > > >
+> > > > > > > > Yes you will have to wait for the next tick that will trigger an idle
+> > > > > > > > load balance because you have an idle cpu and 2 runnable tack (1 RT +
+> > > > > > > > 1CFS) on the same CPU. But you should not wait for more than  1 tick
+> > > > > > > >
+> > > > > > > > The current load_balance doesn't handle correctly the situation of 1
+> > > > > > > > CFS and 1 RT task on same CPU while 1 CPU is idle. There is a rework
+> > > > > > > > of the load_balance that is under review on the mailing list that
+> > > > > > > > fixes this problem and your CFS task should migrate to the idle CPU
+> > > > > > > > faster than now
+> > > > > > > >
+> > > > > > >
+> > > > > > > Period load balance should be triggered when current jiffies is behind
+> > > > > > > rq->next_balance, but rq->next_balance is not often exactly the same
+> > > > > > > with next tick.
+> > > > > > > If cpu_busy, interval = sd->balance_interval * sd->busy_factor, and
+> > > > > >
+> > > > > > But if there is an idle CPU on the system, the next idle load balance
+> > > > > > should apply shortly because the busy_factor is not used for this CPU
+> > > > > > which is  not busy.
+> > > > > > In this case, the next_balance interval is sd_weight which is probably
+> > > > > > 4ms at cluster level and 8ms at system level in your case. This means
+> > > > > > between 1 and 2 ticks
+> > > > >
+> > > > > But if the CFS task we're preempting was latency sensitive - this 1 or 2 tick
+> > > > > is too late of a recovery.
+> > > > >
+> > > > > So while it's good we recover, but a preventative approach would be useful too.
+> > > > > Just saying :-) I'm still not sure if this is the best longer term approach.
+> > > >
+> > > > like using a rt task ?
+> > > 
+> > > I mean, RT task should select a sub optimal CPU because of CFS
+> > > If you want to favor CFS compared to RT it's probably because your
+> > > task should be RT too
+> > 
+> > Yes possibly. But I don't think this is always doable. Especially when you're
+> > running on generic system not a special purposed one.
+> > 
+> > And we don't need to favor CFS over RT. But I think they can play nicely
+> > together.
+> > 
+> > For example on Android there are few RT tasks and rarely more than 1 runnable
+> > RT task at a time. But if it happened to wakeup on the same CPU that is
+> > running the UI thread you could lose a frame. And from what I've seen as well
+> > we have 1-3 CFS tasks runnable, weighted more towards 1 task. So we do have
+> > plenty of idle CPUs on average.
+> > 
+> > But as I mentioned earlier I couldn't prove yet this being a serious problem.
+> > I was hoping the use case presented here is based on a real workload, but it's
+> > synthetic. So I agree we need stronger reasons, but I think conceptually we do
+> > have a conflict of interest where RT task could unnecessarily hurt the
+> > performance of CFS task.
+> > 
+> > Another way to look at the problem is that the system is not partitioned
+> > correctly and the admin could do a better job to prevent this.
+> > 
+> > --
+> > Qais Yousef
+> 
+> 
+> I use some third-party application, such as weibo and others, to test
+> the application launch time. I apply this RT patch, and compare it with
+> original design. Both RT patch test case and original design test case
+> are already apply the
+> patch:https://lore.kernel.org/patchwork/patch/1129117/
+> 
+> After apply the RT patch, launch time of weibo from 1325.72ms to 1214.88
+> ms, its launch time decreases 110.84ms(about 8.36%). Other applications
+> also decrease 7~13%.
+> 
+> At original design test case, RT tasks(surfaceflinger) could preempt
+> some CFS tasks, if we add all these CFS tasks runnable time, it may have
+> some impact on app launch time. So even if we already use the load
+> balance patch and reduce a lot of CFS runnable time, I think choose idle
+> CPU at RT scheduler could also reduce the some CFS runnable time.
 
-To make process more smoothly, I've applied some stable patches of this
-series in mediatek-drm-next-5.5 [1]. The applied patches include
-dt-bindings, CCORR, DITHER, OVL, Mutex related patches. The non-applied
-patches include mmsys related patches. Please based on the applied
-patches to send new version.
+It'd be good if you spin v2 of your patch with these values added to the commit
+message. If you include numbers for 2 or 3 apps that'd be even better.
 
-[1]
-https://github.com/ckhu-mediatek/linux.git-tags/commits/mediatek-drm-next-5.5
+Make sure to add Steven Rostedt on CC and other maintainers/reviewers in
+get_maintainer.pl
 
-Regards,
-CK
+Cheers
 
-On Thu, 2019-08-29 at 22:50 +0800, yongqiang.niu@mediatek.com wrote:
-> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> 
-> This series are based on 5.3-rc1 and provid 32 patch
-> to support mediatek SOC MT8183
-> 
-> Change since v4
-> - fix reviewed issue in v4
-> 
-> Change since v3
-> - fix reviewed issue in v3
-> - fix type error in v3
-> - fix conflict with iommu patch
-> 
-> Change since v2
-> - fix reviewed issue in v2
-> - add mutex node into dts file
-> 
-> Changes since v1:
-> - fix reviewed issue in v1
-> - add dts for mt8183 display nodes
-> - adjust display clock control flow in patch 22
-> - add vmap support for mediatek drm in patch 23
-> - fix page offset issue for mmap function in patch 24
-> - enable allow_fb_modifiers for mediatek drm in patch 25
-> 
-> Yongqiang Niu (32):
->   dt-bindings: mediatek: add binding for mt8183 display
->   dt-bindings: mediatek: add ovl_2l description for mt8183 display
->   dt-bindings: mediatek: add ccorr description for mt8183 display
->   dt-bindings: mediatek: add dither description for mt8183 display
->   dt-bindings: mediatek: add mutex description for mt8183 display
->   arm64: dts: add display nodes for mt8183
->   drm/mediatek: add mutex mod into ddp private data
->   drm/mediatek: add mutex mod register offset into ddp private data
->   drm/mediatek: add mutex sof into ddp private data
->   drm/mediatek: add mutex sof register offset into ddp private data
->   drm/mediatek: split DISP_REG_CONFIG_DSI_SEL setting into another use
->     case
->   drm/mediatek: add mmsys private data for ddp path config
->   drm/mediatek: move rdma sout from mtk_ddp_mout_en into
->     mtk_ddp_sout_sel
->   drm/mediatek: add ddp component CCORR
->   drm/mediatek: add commponent OVL_2L0
->   drm/mediatek: add component OVL_2L1
->   drm/mediatek: add component DITHER
->   drm/mediatek: add gmc_bits for ovl private data
->   drm/medaitek: add layer_nr for ovl private data
->   drm/mediatek: add function to background color input select for
->     ovl/ovl_2l direct link
->   drm/mediatek: add background color input select function for
->     ovl/ovl_2l
->   drm/mediatek: add ovl0/ovl_2l0 usecase
->   drm/mediatek: distinguish ovl and ovl_2l by layer_nr
->   drm/mediatek: add clock property check before get it
->   drm/mediatek: add connection from OVL0 to OVL_2L0
->   drm/mediatek: add connection from RDMA0 to COLOR0
->   drm/mediatek: add connection from RDMA1 to DSI0
->   drm/mediatek: add connection from OVL_2L0 to RDMA0
->   drm/mediatek: add connection from OVL_2L1 to RDMA1
->   drm/mediatek: add connection from DITHER0 to DSI0
->   drm/mediatek: add connection from RDMA0 to DSI0
->   drm/mediatek: add support for mediatek SOC MT8183
-> 
->  .../bindings/display/mediatek/mediatek,disp.txt    |  30 +-
->  .../bindings/display/mediatek/mediatek,display.txt |  21 ++
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi           | 111 ++++++
->  drivers/gpu/drm/mediatek/mtk_disp_ovl.c            |  79 +++-
->  drivers/gpu/drm/mediatek/mtk_disp_rdma.c           |  27 +-
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c            |  42 ++-
->  drivers/gpu/drm/mediatek/mtk_drm_ddp.c             | 410 ++++++++++++++++-----
->  drivers/gpu/drm/mediatek/mtk_drm_ddp.h             |   6 +
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c        |  67 ++++
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h        |  21 ++
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c             |  50 +++
->  drivers/gpu/drm/mediatek/mtk_drm_drv.h             |   3 +
->  12 files changed, 745 insertions(+), 122 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,display.txt
-> 
+--
+Qais Yousef
