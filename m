@@ -1,14 +1,15 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v5, 16/32] drm/mediatek: add component OVL_2L1
-Date: Wed, 9 Oct 2019 17:18:26 +0800
-Message-ID: <1570612706.7713.2.camel@mtksdaap41>
+Subject: Re: [PATCH v5, 18/32] drm/mediatek: add gmc_bits for ovl private
+ data
+Date: Wed, 9 Oct 2019 17:19:43 +0800
+Message-ID: <1570612783.7713.3.camel@mtksdaap41>
 References: <1567090254-15566-1-git-send-email-yongqiang.niu@mediatek.com>
-         <1567090254-15566-17-git-send-email-yongqiang.niu@mediatek.com>
+         <1567090254-15566-19-git-send-email-yongqiang.niu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1567090254-15566-17-git-send-email-yongqiang.niu@mediatek.com>
+In-Reply-To: <1567090254-15566-19-git-send-email-yongqiang.niu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: yongqiang.niu@mediatek.com
 Cc: Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Mark Rutland <mark.rutland@arm.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
@@ -19,7 +20,10 @@ Hi, Yongqiang:
 On Thu, 2019-08-29 at 22:50 +0800, yongqiang.niu@mediatek.com wrote:
 > From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 > 
-> This patch add component OVL_2L1
+> This patch add gmc_bits for ovl private data
+> GMC register was set RDMA ultra and pre-ultra threshold.
+> 10bit GMC register define is different with other SOC, gmc_thrshd_l not
+> used.
 > 
 
 Applied to mediatek-drm-next-5.5 [1], thanks.
@@ -33,31 +37,68 @@ CK
 > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
 > Reviewed-by: CK Hu <ck.hu@mediatek.com>
 > ---
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 1 +
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h | 1 +
->  2 files changed, 2 insertions(+)
+>  drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 23 +++++++++++++++++++++--
+>  1 file changed, 21 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> index 4200f89..af8e872 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> @@ -260,6 +260,7 @@ struct mtk_ddp_comp_match {
->  	[DDP_COMPONENT_OVL0]	= { MTK_DISP_OVL,	0, NULL },
->  	[DDP_COMPONENT_OVL1]	= { MTK_DISP_OVL,	1, NULL },
->  	[DDP_COMPONENT_OVL_2L0]	= { MTK_DISP_OVL_2L,	0, NULL },
-> +	[DDP_COMPONENT_OVL_2L1]	= { MTK_DISP_OVL_2L,	1, NULL },
->  	[DDP_COMPONENT_PWM0]	= { MTK_DISP_PWM,	0, NULL },
->  	[DDP_COMPONENT_PWM1]	= { MTK_DISP_PWM,	1, NULL },
->  	[DDP_COMPONENT_PWM2]	= { MTK_DISP_PWM,	2, NULL },
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> index 9caec2d..962d14a 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> @@ -52,6 +52,7 @@ enum mtk_ddp_comp_id {
->  	DDP_COMPONENT_OD1,
->  	DDP_COMPONENT_OVL0,
->  	DDP_COMPONENT_OVL_2L0,
-> +	DDP_COMPONENT_OVL_2L1,
->  	DDP_COMPONENT_OVL1,
->  	DDP_COMPONENT_PWM0,
->  	DDP_COMPONENT_PWM1,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> index c4f07c2..82eaefd 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> @@ -31,7 +31,9 @@
+>  #define DISP_REG_OVL_ADDR_MT8173		0x0f40
+>  #define DISP_REG_OVL_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n))
+>  
+> -#define	OVL_RDMA_MEM_GMC	0x40402020
+> +#define GMC_THRESHOLD_BITS	16
+> +#define GMC_THRESHOLD_HIGH	((1 << GMC_THRESHOLD_BITS) / 4)
+> +#define GMC_THRESHOLD_LOW	((1 << GMC_THRESHOLD_BITS) / 8)
+>  
+>  #define OVL_CON_BYTE_SWAP	BIT(24)
+>  #define OVL_CON_MTX_YUV_TO_RGB	(6 << 16)
+> @@ -49,6 +51,7 @@
+>  
+>  struct mtk_disp_ovl_data {
+>  	unsigned int addr;
+> +	unsigned int gmc_bits;
+>  	bool fmt_rgb565_is_0;
+>  };
+>  
+> @@ -132,9 +135,23 @@ static unsigned int mtk_ovl_layer_nr(struct mtk_ddp_comp *comp)
+>  static void mtk_ovl_layer_on(struct mtk_ddp_comp *comp, unsigned int idx)
+>  {
+>  	unsigned int reg;
+> +	unsigned int gmc_thrshd_l;
+> +	unsigned int gmc_thrshd_h;
+> +	unsigned int gmc_value;
+> +	struct mtk_disp_ovl *ovl = comp_to_ovl(comp);
+>  
+>  	writel(0x1, comp->regs + DISP_REG_OVL_RDMA_CTRL(idx));
+> -	writel(OVL_RDMA_MEM_GMC, comp->regs + DISP_REG_OVL_RDMA_GMC(idx));
+> +
+> +	gmc_thrshd_l = GMC_THRESHOLD_LOW >>
+> +		      (GMC_THRESHOLD_BITS - ovl->data->gmc_bits);
+> +	gmc_thrshd_h = GMC_THRESHOLD_HIGH >>
+> +		      (GMC_THRESHOLD_BITS - ovl->data->gmc_bits);
+> +	if (ovl->data->gmc_bits == 10)
+> +		gmc_value = gmc_thrshd_h | gmc_thrshd_h << 16;
+> +	else
+> +		gmc_value = gmc_thrshd_l | gmc_thrshd_l << 8 |
+> +			    gmc_thrshd_h << 16 | gmc_thrshd_h << 24;
+> +	writel(gmc_value, comp->regs + DISP_REG_OVL_RDMA_GMC(idx));
+>  
+>  	reg = readl(comp->regs + DISP_REG_OVL_SRC_CON);
+>  	reg = reg | BIT(idx);
+> @@ -316,11 +333,13 @@ static int mtk_disp_ovl_remove(struct platform_device *pdev)
+>  
+>  static const struct mtk_disp_ovl_data mt2701_ovl_driver_data = {
+>  	.addr = DISP_REG_OVL_ADDR_MT2701,
+> +	.gmc_bits = 8,
+>  	.fmt_rgb565_is_0 = false,
+>  };
+>  
+>  static const struct mtk_disp_ovl_data mt8173_ovl_driver_data = {
+>  	.addr = DISP_REG_OVL_ADDR_MT8173,
+> +	.gmc_bits = 8,
+>  	.fmt_rgb565_is_0 = true,
+>  };
+>  
