@@ -1,38 +1,43 @@
-From: Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH v3 2/2] dt-bindings: pwm: Convert Samsung PWM bindings to json-schema
-Date: Thu, 10 Oct 2019 13:58:30 -0500
-Message-ID: <CAL_Jsq+Fa1+epSvDpSx4NdzOUohoJR+qR3-xyMTTw4LaOK7AbQ@mail.gmail.com>
-References: <20191002164047.14499-1-krzk@kernel.org> <20191002164047.14499-2-krzk@kernel.org>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 4/8] dt-bindings: memory-controllers: Convert Samsung
+ Exynos SROM bindings to json-schema
+Date: Thu, 10 Oct 2019 16:23:46 -0500
+Message-ID: <20191010212346.GA7896@bogus>
+References: <20190918173141.4314-1-krzk@kernel.org>
+ <20190918173141.4314-4-krzk@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191002164047.14499-2-krzk@kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20190918173141.4314-4-krzk@kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Thierry Reding <thierry.reding@gmail.com>, =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, linux-clk <linux-clk@vger.kernel.org>, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Linux LED Subsystem <linux-leds@vger.kernel.org>, Linux PWM List <linux-pwm@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linux-tegra@vger.kernel.org, "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE" <bcm-kernel-feedback-list@broadcom.com>, "moderated list:BROADCOM BCM2835 ARM ARCHITECTURE" <linux-rpi-kernel@lists.infradead.org>, linux-amlogic@lists.infradead.o
+Cc: Mark Rutland <mark.rutland@arm.com>, Thierry Reding <thierry.reding@gmail.com>, Matt Mackall <mpm@selenic.com>, Herbert Xu <herbert@gondor.apana.org.au>, Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-pwm@vger.kernel.org, linux-tegra@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Oct 2, 2019 at 11:41 AM Krzysztof Kozlowski <krzk@kernel.org> wrote:
->
-> Convert Samsung PWM (S3C, S5P and Exynos SoCs) bindings to DT schema
-> format using json-schema.
->
+On Wed, 18 Sep 2019 19:31:37 +0200, Krzysztof Kozlowski wrote:
+> Convert Samsung Exynos SROM controller bindings to DT schema format
+> using json-schema.
+> 
 > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
->
+> 
 > ---
->
-> Changes since v2:
-> 1. Add additionalProperties: false.
->
+> 
 > Changes since v1:
 > 1. Indent example with four spaces (more readable),
-> 2. Fix samsung,pwm-outputs after review,
-> 3. Remove double-quotes from clock names.
+> 2. Split examples into two,
+> 3. Fix pattern for subnode name,
+> 4. Remove checks for #address-cells-ranges-#size-cells,
+> 5. Add "additionalProperties" so the wrongly named subnodes would be
+>    matched.
 > ---
->  .../devicetree/bindings/pwm/pwm-samsung.txt   |  51 --------
->  .../devicetree/bindings/pwm/pwm-samsung.yaml  | 109 ++++++++++++++++++
->  2 files changed, 109 insertions(+), 51 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/pwm/pwm-samsung.txt
->  create mode 100644 Documentation/devicetree/bindings/pwm/pwm-samsung.yaml
+>  .../memory-controllers/exynos-srom.txt        |  79 -----------
+>  .../memory-controllers/exynos-srom.yaml       | 128 ++++++++++++++++++
+>  2 files changed, 128 insertions(+), 79 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/memory-controllers/exynos-srom.txt
+>  create mode 100644 Documentation/devicetree/bindings/memory-controllers/exynos-srom.yaml
+> 
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Applied, thanks.
+
+Rob
