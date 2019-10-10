@@ -1,168 +1,28 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH] iommu/mediatek: Move the tlb_sync into tlb_flush
-Date: Thu, 10 Oct 2019 00:08:37 +0900
-Message-ID: <CAAFQd5Aj-DDofzQ1vyKT9OcXpf-Udfx4zeWtVGcQf7S-o+mStQ@mail.gmail.com>
-References: <1569822142-14303-1-git-send-email-yong.wu@mediatek.com>
- <CAAFQd5C+FM3n-Ww4C+qDD1QZOGZrqEYw4EvYECfadGcDH0fmew@mail.gmail.com>
- <1570522162.19130.38.camel@mhfsdcap03> <CAAFQd5C3U7pZo4SSUJ52Q7E+0FaUoORQFbQC5RhCHBhi=NFYTw@mail.gmail.com>
- <1570628307.19130.53.camel@mhfsdcap03>
+From: Jakub Kicinski <jakub.kicinski@netronome.com>
+Subject: Re: [RESEND,PATCH] net: stmmac: dwmac-mediatek: fix wrong delay
+ value issue when resume back
+Date: Wed, 9 Oct 2019 19:43:11 -0700
+Message-ID: <20191009194311.55c8cf6e@cakuba.netronome.com>
+References: <20191009073348.5503-1-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1570628307.19130.53.camel@mhfsdcap03>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Evan Green <evgreen@chromium.org>, Robin Murphy <robin.murphy@arm.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>, Joerg
-        Roedel <joro@8bytes.org>," <linux-arm-kernel@lists.infradead.org>"list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>, Joerg
-        Roedel <joro@8bytes.org>," <iommu@lists.linux-foundation.org>, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, cui.zhang@mediatek.com, chao.hao@mediatek.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20191009073348.5503-1-biao.huang@mediatek.com>
+Sender: netdev-owner@vger.kernel.org
+To: Biao Huang <biao.huang@mediatek.com>
+Cc: davem@davemloft.net, Jose Abreu <joabreu@synopsys.com>, andrew@lunn.ch, Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, jianguo.zhang@mediatek.com, boon.leong.ong@intel.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Oct 9, 2019 at 10:38 PM Yong Wu <yong.wu@mediatek.com> wrote:
->
-> On Wed, 2019-10-09 at 16:56 +0900, Tomasz Figa wrote:
-> > On Tue, Oct 8, 2019 at 5:09 PM Yong Wu <yong.wu@mediatek.com> wrote:
-> > >
-> > > Hi Tomasz,
-> > >
-> > > Sorry for reply late.
-> > >
-> > > On Wed, 2019-10-02 at 14:18 +0900, Tomasz Figa wrote:
-> > > > Hi Yong,
-> > > >
-> > > > On Mon, Sep 30, 2019 at 2:42 PM Yong Wu <yong.wu@mediatek.com> wrote:
-> > > > >
-> > > > > The commit 4d689b619445 ("iommu/io-pgtable-arm-v7s: Convert to IOMMU API
-> > > > > TLB sync") help move the tlb_sync of unmap from v7s into the iommu
-> > > > > framework. It helps add a new function "mtk_iommu_iotlb_sync", But it
-> > > > > lacked the dom->pgtlock, then it will cause the variable
-> > > > > "tlb_flush_active" may be changed unexpectedly, we could see this warning
-> > > > > log randomly:
-> > > > >
-> > > >
-> > > > Thanks for the patch! Please see my comments inline.
-> > > >
-> > > > > mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to
-> > > > > full flush
-> > > > >
-> > > > > To fix this issue, we can add dom->pgtlock in the "mtk_iommu_iotlb_sync".
-> > > > > And when checking this issue, we find that __arm_v7s_unmap call
-> > > > > io_pgtable_tlb_add_flush consecutively when it is supersection/largepage,
-> > > > > this also is potential unsafe for us. There is no tlb flush queue in the
-> > > > > MediaTek M4U HW. The HW always expect the tlb_flush/tlb_sync one by one.
-> > > > > If v7s don't always gurarantee the sequence, Thus, In this patch I move
-> > > > > the tlb_sync into tlb_flush(also rename the function deleting "_nosync").
-> > > > > and we don't care if it is leaf, rearrange the callback functions. Also,
-> > > > > the tlb flush/sync was already finished in v7s, then iotlb_sync and
-> > > > > iotlb_sync_all is unnecessary.
-> > > >
-> > > > Performance-wise, we could do much better. Instead of synchronously
-> > > > syncing at the end of mtk_iommu_tlb_add_flush(), we could sync at the
-> > > > beginning, if there was any previous flush still pending. We would
-> > > > also have to keep the .iotlb_sync() callback, to take care of waiting
-> > > > for the last flush. That would allow better pipelining with CPU in
-> > > > cases like this:
-> > > >
-> > > > for (all pages in range) {
-> > > >    change page table();
-> > > >    flush();
-> > > > }
-> > > >
-> > > > "change page table()" could execute while the IOMMU is flushing the
-> > > > previous change.
-> > >
-> > > Do you mean adding a new tlb_sync before tlb_flush_no_sync, like below:
-> > >
-> > > mtk_iommu_tlb_add_flush_nosync {
-> > >    + mtk_iommu_tlb_sync();
-> > >    tlb_flush_no_sync();
-> > >    data->tlb_flush_active = true;
-> > > }
-> > >
-> > > mtk_iommu_tlb_sync {
-> > >         if (!data->tlb_flush_active)
-> > >                 return;
-> > >         tlb_sync();
-> > >         data->tlb_flush_active = false;
-> > > }
-> > >
-> > > This way look improve the flow, But adjusting the flow is not the root
-> > > cause of this issue. the problem is "data->tlb_flush_active" may be
-> > > changed from mtk_iommu_iotlb_sync which don't have a dom->pglock.
-> >
-> > That was not the only problem with existing code. Existing code also
-> > assumed that add_flush and sync always go in pairs, but that's not
-> > true.
->
-> Yes. Thus I put the tlb_flush always followed by tlb_sync to make sure
-> they always go in pairs.
->
-> >
-> > My suggestion is to fix the locking in the driver and keep the sync
-> > deferred as much as possible, so that performance is not degraded. I
->
-> I really didn't get this timeout warning log in previous kernel(Many
-> tlb_flush followed by one tlb_sync),
+On Wed, 9 Oct 2019 15:33:48 +0800, Biao Huang wrote:
+> mac_delay value will be divided by 550/170 in mt2712_delay_ps2stage(),
+> which is invoked at the beginning of mt2712_set_delay(), and the value
+> should be restored at the end of mt2712_set_delay().
+> Or, mac_delay will be divided again when invoking mt2712_set_delay()
+> when resume back.
+> So, add mt2712_delay_stage2ps() to mt2712_set_delay() to recovery the
+> original mac_delay value.
+> 
+> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
 
-Locking issues typically lead to timing problems (race conditions), so
-it might just be that the sequence or timing of calls changed between
-kernel versions, enough to trigger the issue.
-
-> But deferring the sync is not
-> suggested by our DE, thus I still would like to fix the sequence in this
-> patch with putting them together.
->
-
-What's the reason it's not suggested? From my understanding, there
-shouldn't be any dependency on hardware design here, it's just a
-simple software optimization - we can pipeline other CPU operations
-while the IOMMU is flushing the TLB.
-
-Basically, right now:
-
-CPU writes page tables 1
-IOMMU flushes 1 | CPU busy waits
-CPU writes page tables 2
-IOMMU flushes 2 | CPU busy waits
-CPU writes page tables 3
-IOMMU flushes 3 | CPU busy waits
-...
-
-With my suggestion that could be:
-
-CPU writes page tables 1 I
-IOMMU flushes 1 | CPU writes page tables 2
-IOMMU flushes 1 | CPU busy waits less time
-IOMMU flushes 2 | CPU writes page tables 3
-IOMMU flushes 2 | CPU busy waits less time
-IOMMU flushes 3 | CPU busy waits
-
-It reduces the time the CPU spends on busy waiting rather than doing
-something useful. It also reduces the total time of maps and unmaps.
-
-Actually, we can optimize even more. Please consider the case below.
-
-CPU writes PTE for IOVA 0x1000.
-IOMMU flushes 0x1000 | CPU busy waits
-CPU writes PTE for IOVA 0x2000.
-IOMMU flushes 0x2000 | CPU busy waits
-CPU writes PTE for IOVA 0x3000.
-IOMMU flushes 0x3000 | CPU busy waits
-CPU writes PTE for IOVA 0x8000.
-IOMMU flushes 0x8000 | CPU busy waits
-
-However, depending on the way the hardware implements TLB flush, the
-optimal sequence of operations could be:
-
-CPU writes PTE for IOVA 0x1000.
-CPU writes PTE for IOVA 0x2000.
-CPU writes PTE for IOVA 0x3000.
-IOMMU flushes 0x1000-0x3000 | CPU writes PTE for IOVA 0x8000.
-IOMMU flushes 0x1000-0x3000 | CPU busy waits remaining flush time.
-IOMMU flushes 0x8000 | CPU busy waits.
-
-What's the algorithmic complexity of the TLB flush operation on
-MediaTek IOMMU? If N is the number of pages to flush, is it O(N), O(1)
-or something else?
-
-Best regards,
-Tomasz
+Applied, thanks.
