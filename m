@@ -1,145 +1,58 @@
-From: Boris Brezillon <boris.brezillon@collabora.com>
-Subject: Re: [PATCH v2 09/22] mtd: spi-nor: Fix retlen handling in sst_write()
-Date: Thu, 10 Oct 2019 09:33:08 +0200
-Message-ID: <20191010093308.2fe94974@dhcp-172-31-174-146.wireless.concordia.ca>
-References: <20190924074533.6618-1-tudor.ambarus@microchip.com>
- <20190924074533.6618-10-tudor.ambarus@microchip.com>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: [PATCH] usb: mtk-xhci: Set the XHCI_NO_64BIT_SUPPORT quirk
+Date: Thu, 10 Oct 2019 16:50:04 +0900
+Message-ID: <20191010075004.192818-1-tfiga@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190924074533.6618-10-tudor.ambarus@microchip.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Tudor.Ambarus@microchip.com
-Cc: linux-arm-kernel@lists.infradead.org, vigneshr@ti.com, geert+renesas@glider.be, andrew@aj.id.au, richard@nod.at, linux-kernel@vger.kernel.org, vz@mleia.com, marek.vasut@gmail.com, jonas@norrbonn.se, linux-mtd@lists.infradead.org, joel@jms.id.au, miquel.raynal@bootlin.com, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, computersforpeace@gmail.com, dwmw2@infradead.org, linux-aspeed@lists.ozlabs.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-usb@vger.kernel.org
+Cc: Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC
+        support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+        support" <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Changqi Hu <Changqi.Hu@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Shik Chen <shik@chromium.org>, Tomasz Figa <tfiga@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 24 Sep 2019 07:46:21 +0000
-<Tudor.Ambarus@microchip.com> wrote:
+MediaTek XHCI host controller does not support 64-bit addressing despite
+the AC64 bit of HCCPARAMS1 register being set. The platform-specific
+glue sets the DMA mask to 32 bits on its own, but it has no effect,
+because xhci_gen_setup() overrides it according to hardware
+capabilities.
 
-> From: Tudor Ambarus <tudor.ambarus@microchip.com>
-> 
-> In case the write of the first byte failed, retlen was incorrectly
-> incremented to *retlen += actual; on the exit path. retlen should be
-> incremented when actual data was written to the flash.
-> 
-> Rename 'sst_write_err' label to 'out' as it is no longer generic for
-> all the write errors in the sst_write() method, and may introduce
-> confusion.
+Use the XHCI_NO_64BIT_SUPPORT quirk to tell the XHCI core to force
+32-bit DMA mask instead.
 
-Renaming the label is indeed a good thing, but should be done in a
-separate patch.
+Signed-off-by: Tomasz Figa <tfiga@chromium.org>
+---
+ drivers/usb/host/xhci-mtk.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-> 
-> Signed-off-by: Tudor Ambarus <tudor.ambarus@microchip.com>
-> ---
->  drivers/mtd/spi-nor/spi-nor.c | 22 +++++++++++-----------
->  1 file changed, 11 insertions(+), 11 deletions(-)
-> 
-> diff --git a/drivers/mtd/spi-nor/spi-nor.c b/drivers/mtd/spi-nor/spi-nor.c
-> index 0aee068a5835..be5dee622d51 100644
-> --- a/drivers/mtd/spi-nor/spi-nor.c
-> +++ b/drivers/mtd/spi-nor/spi-nor.c
-> @@ -2665,12 +2665,12 @@ static int sst_write(struct mtd_info *mtd, loff_t to, size_t len,
->  		/* write one byte. */
->  		ret = spi_nor_write_data(nor, to, 1, buf);
->  		if (ret < 0)
-> -			goto sst_write_err;
-> +			goto unlock_and_unprep;
->  		WARN(ret != 1, "While writing 1 byte written %i bytes\n",
->  		     (int)ret);
->  		ret = spi_nor_wait_till_ready(nor);
->  		if (ret)
-> -			goto sst_write_err;
-> +			goto unlock_and_unprep;
->  	}
->  	to += actual;
-
-Not sure we need this new label, we can just have:
-
-	actual = 0;
-	/* Start write from odd address. */
-	if (to % 2) {
-		nor->program_opcode = SPINOR_OP_BP;
-
-		/* write one byte. */
-		ret = spi_nor_write_data(nor, to, 1, buf);
-		if (ret < 0)
-			goto out;
-		WARN(ret != 1, "While writing 1 byte written %i
-		bytes\n", (int)ret);
-		ret = spi_nor_wait_till_ready(nor);
-		if (ret)
-			goto out;
-
-		to++;
-		actual++;
-	}
-
->  
-> @@ -2681,12 +2681,12 @@ static int sst_write(struct mtd_info *mtd, loff_t to, size_t len,
->  		/* write two bytes. */
->  		ret = spi_nor_write_data(nor, to, 2, buf + actual);
->  		if (ret < 0)
-> -			goto sst_write_err;
-> +			goto out;
->  		WARN(ret != 2, "While writing 2 bytes written %i bytes\n",
->  		     (int)ret);
->  		ret = spi_nor_wait_till_ready(nor);
->  		if (ret)
-> -			goto sst_write_err;
-> +			goto out;
->  		to += 2;
->  		nor->sst_write_second = true;
->  	}
-> @@ -2694,35 +2694,35 @@ static int sst_write(struct mtd_info *mtd, loff_t to, size_t len,
->  
->  	ret = spi_nor_write_disable(nor);
->  	if (ret)
-> -		goto sst_write_err;
-> +		goto out;
->  
->  	ret = spi_nor_wait_till_ready(nor);
->  	if (ret)
-> -		goto sst_write_err;
-> +		goto out;
->  
->  	/* Write out trailing byte if it exists. */
->  	if (actual != len) {
->  		ret = spi_nor_write_enable(nor);
->  		if (ret)
-> -			goto sst_write_err;
-> +			goto out;
->  
->  		nor->program_opcode = SPINOR_OP_BP;
->  		ret = spi_nor_write_data(nor, to, 1, buf + actual);
->  		if (ret < 0)
-> -			goto sst_write_err;
-> +			goto out;
->  		WARN(ret != 1, "While writing 1 byte written %i bytes\n",
->  		     (int)ret);
->  		ret = spi_nor_wait_till_ready(nor);
->  		if (ret)
-> -			goto sst_write_err;
-> +			goto out;
->  
->  		ret = spi_nor_write_disable(nor);
->  		if (ret)
-> -			goto sst_write_err;
-> +			goto out;
->  
->  		actual += 1;
->  	}
-> -sst_write_err:
-> +out:
->  	*retlen += actual;
->  unlock_and_unprep:
->  	spi_nor_unlock_and_unprep(nor, SPI_NOR_OPS_WRITE);
+diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+index b18a6baef204a..4d101d52cc11b 100644
+--- a/drivers/usb/host/xhci-mtk.c
++++ b/drivers/usb/host/xhci-mtk.c
+@@ -395,6 +395,11 @@ static void xhci_mtk_quirks(struct device *dev, struct xhci_hcd *xhci)
+ 	xhci->quirks |= XHCI_SPURIOUS_SUCCESS;
+ 	if (mtk->lpm_support)
+ 		xhci->quirks |= XHCI_LPM_SUPPORT;
++	/*
++	 * MTK host controller does not support 64-bit addressing, despite
++	 * having the AC64 bit of the HCCPARAMS1 register set.
++	 */
++	xhci->quirks |= XHCI_NO_64BIT_SUPPORT;
+ }
+ 
+ /* called during probe() after chip reset completes */
+@@ -488,11 +493,6 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+ 		goto disable_clk;
+ 	}
+ 
+-	/* Initialize dma_mask and coherent_dma_mask to 32-bits */
+-	ret = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(32));
+-	if (ret)
+-		goto disable_clk;
+-
+ 	hcd = usb_create_hcd(driver, dev, dev_name(dev));
+ 	if (!hcd) {
+ 		ret = -ENOMEM;
+-- 
+2.23.0.581.g78d2f28ef7-goog
