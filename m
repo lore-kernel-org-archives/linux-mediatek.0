@@ -1,112 +1,74 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH] usb: mtk-xhci: Set the XHCI_NO_64BIT_SUPPORT quirk
-Date: Fri, 11 Oct 2019 14:53:36 +0800
-Message-ID: <1570776816.31576.5.camel@mhfsdcap03>
-References: <20191010075004.192818-1-tfiga@chromium.org>
-         <1570697118.32135.20.camel@mhfsdcap03>
-         <CAAFQd5AU53=BRUrK_i-0dRYueVoSd3Bg3AtvZUMHgFv3hLuNug@mail.gmail.com>
-         <1570705147.22261.13.camel@mhfsdcap03>
-         <CAAFQd5AszvSow2vgRq+CbtBzdNO7ysymXp=xerR6dtmi8OxMZw@mail.gmail.com>
+From: biao huang <biao.huang@mediatek.com>
+Subject: Re: [PATCH] net: stmmac: disable/enable ptp_ref_clk in
+ suspend/resume flow
+Date: Fri, 11 Oct 2019 16:21:09 +0800
+Message-ID: <1570782069.5044.12.camel@mhfsdcap03>
+References: <20191009085649.6736-1-biao.huang@mediatek.com>
+         <20191010160103.63c3c0ed@cakuba.netronome.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAAFQd5AszvSow2vgRq+CbtBzdNO7ysymXp=xerR6dtmi8OxMZw@mail.gmail.com>
+In-Reply-To: <20191010160103.63c3c0ed@cakuba.netronome.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>, Changqi Hu <Changqi.Hu@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Shik Chen <shik@chromium.org>
+To: Jakub Kicinski <jakub.kicinski@netronome.com>
+Cc: davem@davemloft.net, Jose Abreu <joabreu@synopsys.com>, andrew@lunn.ch, Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, jianguo.zhang@mediatek.com, boon.leong.ong@intel.com, yong.wu@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2019-10-11 at 13:35 +0900, Tomasz Figa wrote:
-> On Thu, Oct 10, 2019 at 7:59 PM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
-> >
-> > On Thu, 2019-10-10 at 18:00 +0900, Tomasz Figa wrote:
-> > > Hi Chunfeng,
-> > >
-> > > On Thu, Oct 10, 2019 at 5:45 PM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
-> > > >
-> > > > Hi, Tomasz,
-> > > >
-> > > > On Thu, 2019-10-10 at 16:50 +0900, Tomasz Figa wrote:
-> > > > > MediaTek XHCI host controller does not support 64-bit addressing despite
-> > > > > the AC64 bit of HCCPARAMS1 register being set. The platform-specific
-> > > > > glue sets the DMA mask to 32 bits on its own, but it has no effect,
-> > > > > because xhci_gen_setup() overrides it according to hardware
-> > > > > capabilities.
-> > Yes, this is what I want to do, maybe need remove DMA mask setting in
-> > platform-specific.
-> >
-> > > > >
-> > > > > Use the XHCI_NO_64BIT_SUPPORT quirk to tell the XHCI core to force
-> > > > > 32-bit DMA mask instead.
-> > > > >
-> > > > > Signed-off-by: Tomasz Figa <tfiga@chromium.org>
-> > > > > ---
-> > > > >  drivers/usb/host/xhci-mtk.c | 10 +++++-----
-> > > > >  1 file changed, 5 insertions(+), 5 deletions(-)
-> > > > >
-> > > > > diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-> > > > > index b18a6baef204a..4d101d52cc11b 100644
-> > > > > --- a/drivers/usb/host/xhci-mtk.c
-> > > > > +++ b/drivers/usb/host/xhci-mtk.c
-> > > > > @@ -395,6 +395,11 @@ static void xhci_mtk_quirks(struct device *dev, struct xhci_hcd *xhci)
-> > > > >       xhci->quirks |= XHCI_SPURIOUS_SUCCESS;
-> > > > >       if (mtk->lpm_support)
-> > > > >               xhci->quirks |= XHCI_LPM_SUPPORT;
-> > > > > +     /*
-> > > > > +      * MTK host controller does not support 64-bit addressing, despite
-> > > > > +      * having the AC64 bit of the HCCPARAMS1 register set.
-> > > > > +      */
-> > > > > +     xhci->quirks |= XHCI_NO_64BIT_SUPPORT;
-> > > > Somes SoCs support 64bits in fact, so can't support this quirk, do you
-> > > > encounter any issues without this quirk?
-> > > >
-> > >
-> > > Thanks for taking a look at this patch.
-> > >
-> > > Yes, on MT8183 the DMA mask ended up being set to 64 bits, but
-> > > according to the information I received from MediaTek, the controller
-> > > on that SoC only supports 32 bits.
-> > As I know, mt8183 doesn't support memory greater than 4G mode.
-> >
-> 
-> We have 4GB of DRAM at 0x40000000-0x140000000 on our board with
-> MT8183. What happens if you attempt to use the memory from
-> 0x100000000-0x140000000 with the XHCI controller on this SoC?
-Ok, I'll contact USB SA of MT8183, and discuss this problem.
-I guess MT8183 don't plan to support 4G mode when kick off.
+Appreciate your comments!
 
+On Thu, 2019-10-10 at 16:01 -0700, Jakub Kicinski wrote:
+> On Wed, 9 Oct 2019 16:56:49 +0800, Biao Huang wrote:
+> > disable ptp_ref_clk in suspend flow, and enable it in resume flow.
+> > 
+> > Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> > ---
+> >  drivers/net/ethernet/stmicro/stmmac/stmmac_main.c | 4 ++++
+> >  1 file changed, 4 insertions(+)
+> > 
+> > diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+> > index c7c9e5f162e6..b592aeecc3dd 100644
+> > --- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+> > +++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+> > @@ -4469,6 +4469,8 @@ int stmmac_suspend(struct device *dev)
+> >  		stmmac_mac_set(priv, priv->ioaddr, false);
+> >  		pinctrl_pm_select_sleep_state(priv->device);
+> >  		/* Disable clock in case of PWM is off */
+> > +		if (priv->plat->clk_ptp_ref)
+> > +			clk_disable_unprepare(priv->plat->clk_ptp_ref);
 > 
-> > >
-> > > If some SoCs support only 32 bits and some support 64 bits, we may
-> > > either need to use different DT compatible string for them or add a DT
-> > > property and set the quirk based on that. Right now in upstream we
-> > > have:
-> > >
-> > > 1) "mediatek,mt8173-xhci", used by:
-> > > MT8173
-> > >
-> > > 2)"mediatek,mtk-xhci", used by:
-> > > MT2712
-> > > MT7622
-> > > MT8183 (not yet upstream, but I suppose it's on the mailing lists)
-> > >
-> > > Would you be able to check which of the SoCs above report 64 bits but
-> > > support only 32? (and so would need this quirk)
-> > I'm afraid I can't, almost all MTK SoCs supporting xHCI are using this
-> > driver, AC64 should be set rightly according to addressing capability.
-> >
+> I don't know much embedded, but it seems like this should perhaps just
+> be clk_disable() without the unprepare? stmmac_hw_teardown() is called
+> when driver is removed so it needs to unprepare as well.
 > 
-> Does it mean that only MT8183 may be the only SoC with a problem with
-> this capability bit?
-Maybe, I'll check it with USB DE.
+> Please feel free to explain to me why this needs to be
+> clk_disable_unprepare(), as I said - not an expert.
+> 
+As our clock owner's advice, there are prepare/unprepare clk_ops for
+pll, but no enable/disable clk_ops for it, and pll will be off only when
+the prepare reference count decrease to 0.
 
-Thanks
+so for the sake of power saving, we'd better call clk_disable_unprepare
+to turn the parent pll off.
 
+> Also - if this is a bug fix and you'd like to have it backported to
+> older releases you need to add a Fixes tag.
 > 
-> Matthias, do you have access to MT2712 and MT7622 devices? I have
-> MT8173 and MT8183, so I can check them, but would be good to check
-> this on the other ones too.
+Thanks for the reminder, I'll add the fixes tag in the next version.
+> Thanks!
 > 
-> Best regards,
-> Tomasz
+> >  		clk_disable(priv->plat->pclk);
+> >  		clk_disable(priv->plat->stmmac_clk);
+maybe it should be clk_disable_unprepare(priv->plat->pclk);
+		   clk_disable_unprepare(priv->plat->stmmac_clk);
+> >  	}
+> > @@ -4535,6 +4537,8 @@ int stmmac_resume(struct device *dev)
+> >  		/* enable the clk previously disabled */
+> >  		clk_enable(priv->plat->stmmac_clk);
+> >  		clk_enable(priv->plat->pclk);
+> > +		if (priv->plat->clk_ptp_ref)
+> > +			clk_prepare_enable(priv->plat->clk_ptp_ref);
+> >  		/* reset the phy so that it's ready */
+> >  		if (priv->mii)
+> >  			stmmac_mdio_reset(priv->mii);
+> 
