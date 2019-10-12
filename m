@@ -1,48 +1,65 @@
-From: Will Deacon <will@kernel.org>
-Subject: Re: [PATCH v2 3/4] iommu/mediatek: Use writel for TLB range
- invalidation
-Date: Fri, 11 Oct 2019 17:29:51 +0100
-Message-ID: <20191011162950.yg4o77mlaicacne5@willie-the-truck>
-References: <1570627143-29441-1-git-send-email-yong.wu@mediatek.com>
- <1570627143-29441-3-git-send-email-yong.wu@mediatek.com>
+From: Jitao Shi <jitao.shi@mediatek.com>
+Subject: [PATCH v7 0/8] add driver for "boe, tv101wum-nl6", "boe, tv101wum-n53",
+ "auo, kd101n80-45na" and "auo, b101uan08.3" panels
+Date: Sat, 12 Oct 2019 11:07:12 +0800
+Message-ID: <20191012030720.27127-1-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1570627143-29441-3-git-send-email-yong.wu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Evan Green <evgreen@chromium.org>, Robin Murphy <robin.murphy@arm.com>, Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, cui.zhang@mediatek.com, chao.hao@mediatek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sam Ravnborg <sam@ravnborg.org>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Cc: Jitao Shi <jitao.shi@mediatek.com>, srv_heupstream@mediatek.com, stonea168@163.com, cawa.cheng@mediatek.com, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Oct 09, 2019 at 09:19:02PM +0800, Yong Wu wrote:
-> Use writel for the register F_MMU_INV_RANGE which is for triggering the
-> HW work. We expect all the setting(iova_start/iova_end...) have already
-> been finished before F_MMU_INV_RANGE.
-> 
-> Signed-off-by: Anan.Sun <anan.sun@mediatek.com>
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> ---
-> This is a improvement rather than fixing a issue.
-> ---
->  drivers/iommu/mtk_iommu.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 24a13a6..607f92c 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -187,8 +187,7 @@ static void mtk_iommu_tlb_add_flush(unsigned long iova, size_t size,
->  		writel_relaxed(iova, data->base + REG_MMU_INVLD_START_A);
->  		writel_relaxed(iova + size - 1,
->  			       data->base + REG_MMU_INVLD_END_A);
-> -		writel_relaxed(F_MMU_INV_RANGE,
-> -			       data->base + REG_MMU_INVALIDATE);
-> +		writel(F_MMU_INV_RANGE, data->base + REG_MMU_INVALIDATE);
-
-I don't understand this change.
-
-Why is it an "improvement" and which accesses are you ordering with the
-writel?
-
-Will
+Q2hhbmdlcyBzaW5jZSB2NjoKIC0gZml4IGJvZV9wYW5lbF9pbml0IGVyciB1bmluaXQuCiAtIGFk
+anVzdCB0aGUgZGVsYXkgb2YgYmFja2xpZ2h0IG9uLgoKQ2hhbmdlcyBzaW5jZSB2NToKIC0gY292
+ZXJ0IHRoZSBkb2N1bWVudHMgdG8geWFtbAogLSBmaW5lIHR1bmUgYm9lLCB0djEwMXd1bS1uNTMg
+cGFuZWwgdmlkZW8gdGltaW5lCgpDaGFuZ2VzIHNpbmNlIHY0OgogLSBhZGQgYXVvLGIxMDF1YW4w
+OC4zIHBhbmVsIGZvciB0aGlzIGRyaXZlci4KIC0gYWRkIGJvZSx0djEwMXd1bS1uNTMgcGFuZWwg
+Zm9yIHRoaXMgZHJpdmVyLgoKQ2hhbmdlcyBzaW5jZSB2MzoKIC0gcmVtb3ZlIGNoZWNrIGVuYWJs
+ZV9ncGlvLgogLSBmaW5lIHR1bmUgdGhlIGF1byxrZDEwMW44MC00NW5hIHBhbmVsJ3MgcG93ZXIg
+b24gdGltaW5nLgoKQ2hhbmdlcyBzaW5jZSB2MjoKIC0gY29ycmVjdCB0aGUgcGFuZWwgc2l6ZQog
+LSByZW1vdmUgYmxhbmsgbGluZSBpbiBLY29uZmlnCiAtIG1vdmUgYXVvLGtkMTAxbjgwLTQ1bmEg
+cGFuZWwgZHJpdmVyIGluIHRoaXMgc2VyaWVzLgoKQ2hhbmdlcyBzaW5jZSB2MToKCiAtIHVwZGF0
+ZSB0eXBvIG5sNiAtPiBuMTYuCiAtIHVwZGF0ZSBuZXcgcGFuZWwgY29uZmlnIGFuZCBtYWtlZmls
+ZSBhcmUgYWRkZWQgaW4gYWxwaGFiZXRpY2FsbHkgb3JkZXIuCiAtIGFkZCB0aGUgcGFuZWwgbW9k
+ZSBhbmQgcGFuZWwgaW5mbyBpbiBkcml2ZXIgZGF0YS4KIC0gbWVyZ2UgYXVvLGtkMTAxbjgwLTQ1
+YSBhbmQgYm9lLHR2MTAxd3VtLW5sNiBpbiBvbmUgZHJpdmVyCgpKaXRhbyBTaGkgKDgpOgogIGR0
+LWJpbmRpbmdzOiBkaXNwbGF5OiBwYW5lbDogQWRkIEJPRSB0djEwMXd1bS1uMTYgcGFuZWwgYmlu
+ZGluZ3MKICBkcm0vcGFuZWw6IHN1cHBvcnQgZm9yIEJPRSB0djEwMXd1bS1ubDYgd3V4Z2EgZHNp
+IHZpZGVvIG1vZGUgcGFuZWwKICBkdC1iaW5kaW5nczogZGlzcGxheTogcGFuZWw6IGFkZCBhdW8g
+a2QxMDFuODAtNDVuYSBwYW5lbCBiaW5kaW5ncwogIGRybS9wYW5lbDogc3VwcG9ydCBmb3IgYXVv
+LGtkMTAxbjgwLTQ1bmEgd3V4Z2EgZHNpIHZpZGVvIG1vZGUgcGFuZWwKICBkdC1iaW5kaW5nczog
+ZGlzcGxheTogcGFuZWw6IGFkZCBib2UgdHYxMDF3dW0tbjUzIHBhbmVsIGRvY3VtZW50YXRpb24K
+ICBkcm0vcGFuZWw6IHN1cHBvcnQgZm9yIGJvZSx0djEwMXd1bS1uNTMgd3V4Z2EgZHNpIHZpZGVv
+IG1vZGUgcGFuZWwKICBkdC1iaW5kaW5nczogZGlzcGxheTogcGFuZWw6IGFkZCBBVU8gYXVvLGIx
+MDF1YW4wOC4zIHBhbmVsCiAgICBkb2N1bWVudGF0aW9uCiAgZHJtL3BhbmVsOiBzdXBwb3J0IGZv
+ciBhdW8sYjEwMXVhbjA4LjMgd3V4Z2EgZHNpIHZpZGVvIG1vZGUgcGFuZWwKCiAuLi4vZGlzcGxh
+eS9wYW5lbC9hdW8sYjEwMXVhbjA4LjMueWFtbCAgICAgICAgfCAgNjcgKysKIC4uLi9kaXNwbGF5
+L3BhbmVsL2F1byxrZDEwMW44MC00NW5hLnlhbWwgICAgICB8ICA2NyArKwogLi4uL2Rpc3BsYXkv
+cGFuZWwvYm9lLHR2MTAxd3VtLW41My55YW1sICAgICAgIHwgIDY3ICsrCiAuLi4vZGlzcGxheS9w
+YW5lbC9ib2UsdHYxMDF3dW0tbmw2LnlhbWwgICAgICAgfCAgNjcgKysKIGRyaXZlcnMvZ3B1L2Ry
+bS9wYW5lbC9LY29uZmlnICAgICAgICAgICAgICAgICB8ICAgOSArCiBkcml2ZXJzL2dwdS9kcm0v
+cGFuZWwvTWFrZWZpbGUgICAgICAgICAgICAgICAgfCAgIDEgKwogLi4uL2dwdS9kcm0vcGFuZWwv
+cGFuZWwtYm9lLXR2MTAxd3VtLW5sNi5jICAgIHwgODgwICsrKysrKysrKysrKysrKysrKwogNyBm
+aWxlcyBjaGFuZ2VkLCAxMTU4IGluc2VydGlvbnMoKykKIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1
+bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9wYW5lbC9hdW8sYjEwMXVhbjA4
+LjMueWFtbAogY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
+aW5ncy9kaXNwbGF5L3BhbmVsL2F1byxrZDEwMW44MC00NW5hLnlhbWwKIGNyZWF0ZSBtb2RlIDEw
+MDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9wYW5lbC9ib2Us
+dHYxMDF3dW0tbjUzLnlhbWwKIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2Rldmlj
+ZXRyZWUvYmluZGluZ3MvZGlzcGxheS9wYW5lbC9ib2UsdHYxMDF3dW0tbmw2LnlhbWwKIGNyZWF0
+ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwtYm9lLXR2MTAxd3VtLW5s
+Ni5jCgotLSAKMi4yMS4wCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
+cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
+ZGV2ZWw=
