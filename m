@@ -1,15 +1,15 @@
 From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH v3 1/7] iommu/mediatek: Correct the flush_iotlb_all
- callback
-Date: Mon, 14 Oct 2019 15:06:49 +0100
-Message-ID: <9aa2e356-d234-df21-7203-ce569c232e02@arm.com>
+Subject: Re: [PATCH v3 3/7] iommu/mediatek: Use gather to achieve the tlb
+ range flush
+Date: Mon, 14 Oct 2019 15:21:13 +0100
+Message-ID: <f35c8a3a-0693-facf-2050-65d3f7628929@arm.com>
 References: <1571035101-4213-1-git-send-email-yong.wu@mediatek.com>
- <1571035101-4213-2-git-send-email-yong.wu@mediatek.com>
+ <1571035101-4213-4-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1571035101-4213-2-git-send-email-yong.wu@mediatek.com>
+In-Reply-To: <1571035101-4213-4-git-send-email-yong.wu@mediatek.com>
 Content-Language: en-GB
 Sender: linux-kernel-owner@vger.kernel.org
 To: Yong Wu <yong.wu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>
@@ -17,26 +17,101 @@ Cc: Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, linux-med
 List-Id: linux-mediatek@lists.infradead.org
 
 On 14/10/2019 07:38, Yong Wu wrote:
-> Use the correct tlb_flush_all instead of the original one.
+> Use the iommu_gather mechanism to achieve the tlb range flush.
+> Gather the iova range in the "tlb_add_page", then flush the merged iova
+> range in iotlb_sync.
+> 
+> Note: If iotlb_sync comes from iommu_iotlb_gather_add_page, we have to
+> avoid retry the lock since the spinlock have already been acquired.
 
-Reviewed-by: Robin Murphy <robin.murphy@arm.com>
-> Fixes: 4d689b619445 ("iommu/io-pgtable-arm-v7s: Convert to IOMMU API TLB sync")
+I think this could probably be even simpler - once the actual 
+register-poking is all confined to mtk_iommu_tlb_sync(), you should be 
+able get rid of the per-domain locking in map/unmap and just have a 
+single per-IOMMU lock to serialise syncs. The io-pgtable code itself 
+hasn't needed external locking for a while now.
+
+Robin.
+
+> Suggested-by: Tomasz Figa <tfiga@chromium.org>
 > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 > ---
->   drivers/iommu/mtk_iommu.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+> 1) This is the special case backtrace:
+> 
+>   mtk_iommu_iotlb_sync+0x50/0xa0
+>   mtk_iommu_tlb_flush_page_nosync+0x5c/0xd0
+>   __arm_v7s_unmap+0x174/0x598
+>   arm_v7s_unmap+0x30/0x48
+>   mtk_iommu_unmap+0x50/0x78
+>   __iommu_unmap+0xa4/0xf8
+> 
+> 2) The checking "if (gather->start == ULONG_MAX) return;" also is
+> necessary. It will happened when unmap only go to _flush_walk, then
+> enter this tlb_sync.
+> ---
+>   drivers/iommu/mtk_iommu.c | 29 +++++++++++++++++++++++++----
+>   drivers/iommu/mtk_iommu.h |  1 +
+>   2 files changed, 26 insertions(+), 4 deletions(-)
 > 
 > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 67a483c..76b9388 100644
+> index 5f594d6..8712afc 100644
 > --- a/drivers/iommu/mtk_iommu.c
 > +++ b/drivers/iommu/mtk_iommu.c
-> @@ -447,7 +447,7 @@ static size_t mtk_iommu_unmap(struct iommu_domain *domain,
->   
->   static void mtk_iommu_flush_iotlb_all(struct iommu_domain *domain)
+> @@ -234,7 +234,12 @@ static void mtk_iommu_tlb_flush_page_nosync(struct iommu_iotlb_gather *gather,
+>   					    unsigned long iova, size_t granule,
+>   					    void *cookie)
 >   {
-> -	mtk_iommu_tlb_sync(mtk_iommu_get_m4u_data());
-> +	mtk_iommu_tlb_flush_all(mtk_iommu_get_m4u_data());
+> -	mtk_iommu_tlb_add_flush_nosync(iova, granule, granule, true, cookie);
+> +	struct mtk_iommu_data *data = cookie;
+> +	struct iommu_domain *domain = &data->m4u_dom->domain;
+> +
+> +	data->is_in_tlb_gather_add_page = true;
+> +	iommu_iotlb_gather_add_page(domain, gather, iova, granule);
+> +	data->is_in_tlb_gather_add_page = false;
 >   }
 >   
+>   static const struct iommu_flush_ops mtk_iommu_flush_ops = {
+> @@ -453,12 +458,28 @@ static void mtk_iommu_flush_iotlb_all(struct iommu_domain *domain)
 >   static void mtk_iommu_iotlb_sync(struct iommu_domain *domain,
+>   				 struct iommu_iotlb_gather *gather)
+>   {
+> +	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
+>   	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+> +	bool is_in_gather = data->is_in_tlb_gather_add_page;
+> +	size_t length = gather->end - gather->start;
+>   	unsigned long flags;
+>   
+> -	spin_lock_irqsave(&dom->pgtlock, flags);
+> -	mtk_iommu_tlb_sync(mtk_iommu_get_m4u_data());
+> -	spin_unlock_irqrestore(&dom->pgtlock, flags);
+> +	if (gather->start == ULONG_MAX)
+> +		return;
+> +
+> +	/*
+> +	 * Avoid acquire the lock when it's in gather_add_page since the lock
+> +	 * has already been held.
+> +	 */
+> +	if (!is_in_gather)
+> +		spin_lock_irqsave(&dom->pgtlock, flags);
+> +
+> +	mtk_iommu_tlb_add_flush_nosync(gather->start, length, gather->pgsize,
+> +				       false, data);
+> +	mtk_iommu_tlb_sync(data);
+> +
+> +	if (!is_in_gather)
+> +		spin_unlock_irqrestore(&dom->pgtlock, flags);
+>   }
+>   
+>   static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
+> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+> index fc0f16e..d29af1d 100644
+> --- a/drivers/iommu/mtk_iommu.h
+> +++ b/drivers/iommu/mtk_iommu.h
+> @@ -58,6 +58,7 @@ struct mtk_iommu_data {
+>   	struct iommu_group		*m4u_group;
+>   	bool                            enable_4GB;
+>   	bool				tlb_flush_active;
+> +	bool				is_in_tlb_gather_add_page;
+>   
+>   	struct iommu_device		iommu;
+>   	const struct mtk_iommu_plat_data *plat_data;
 > 
