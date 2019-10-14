@@ -1,7 +1,7 @@
 From: Walter Wu <walter-zh.wu@mediatek.com>
 Subject: [PATCH v2 1/2] kasan: detect negative size in memory operation function
-Date: Mon, 14 Oct 2019 23:58:45 +0800
-Message-ID: <20191014155845.26783-1-walter-zh.wu@mediatek.com>
+Date: Tue, 15 Oct 2019 00:23:16 +0800
+Message-ID: <20191014162316.28314-1-walter-zh.wu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
@@ -11,7 +11,7 @@ Cc: kasan-dev@googlegroups.com, linux-mm@kvack.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
 KASAN missed detecting size is negative numbers in memset(), memcpy(),
-and memmove(), it will cause underflow bug, so needs to be detected
+and memmove(), it will cause out-of-bounds bug, so needs to be detected
 by KASAN.
 
 If size is negative numbers, then it has three reasons to be
@@ -49,7 +49,7 @@ KASAN report:
 [1] https://bugzilla.kernel.org/show_bug.cgi?id=199341
 
 Changes in v2:
-fix the indentation, thanks for the reminder Matthew.
+Fix the indentation bug, thanks for the reminder Matthew.
 
 Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
 Reported -by: Dmitry Vyukov <dvyukov@google.com>
