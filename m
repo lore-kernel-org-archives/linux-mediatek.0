@@ -1,50 +1,38 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH 0/7] add support for clocksource/clockevent DT selection
-Date: Sun, 13 Oct 2019 20:16:10 +0200
-Message-ID: <14df6e5d-19ef-4ebc-fd11-9953bc3fc44e@linaro.org>
-References: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
- <c3a68a08-d134-cd28-c8af-f757628e07f1@linaro.org>
- <72edc5fd-df05-cba5-5aa7-39da1709415b@microchip.com>
- <620a19d5-73b8-709d-9eec-49274ac23e51@microchip.com>
- <187d7020-fbe9-7984-2358-8a70faef019f@microchip.com>
+From: Walter Wu <walter-zh.wu@mediatek.com>
+Subject: Re: [PATCH] kasan: fix the missing underflow in memmove and memcpy
+ with CONFIG_KASAN_GENERIC=y
+Date: Mon, 14 Oct 2019 10:19:42 +0800
+Message-ID: <1571019582.26230.8.camel@mtksdccf07>
+References: <1570532528.4686.102.camel@mtksdccf07>
+         <D2B6D82F-AE5F-4A45-AC0C-BE5DA601FDC3@lca.pw>
+         <CACT4Y+Zbx-2yR-mN5GioaKUgGH1TpTE2D-OgLbR2Dy09ezyGGQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org>
-In-Reply-To: <187d7020-fbe9-7984-2358-8a70faef019f@microchip.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-snps-arc>,
- <mailto:linux-snps-arc-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-snps-arc/>
-List-Post: <mailto:linux-snps-arc@lists.infradead.org>
-List-Help: <mailto:linux-snps-arc-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-snps-arc>,
- <mailto:linux-snps-arc-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-snps-arc" <linux-snps-arc-bounces@lists.infradead.org>
-Errors-To: linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org
-To: Claudiu.Beznea@microchip.com, robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, nsekhar@ti.com, bgolaszewski@baylibre.com, monstr@monstr.eu, john@phrozen.org, ralf@linux-mips.org, paul.burton@mips.com, jhogan@kernel.org, lftan@altera.com, tglx@linutronix.de, vgupta@synopsys.com, marc.zyngier@arm.com, patrice.chotard@st.com, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, eric@anholt.net, wahrenst@gmx.net, f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, bcm-kernel-feedback-list@broadcom.com, linus.walleij@linaro.org, shc_work@mail.ru, kgene@kernel.org, krzk@kernel.org, ysato@users.sourceforge.jp, liviu.dudau@arm.com, sudeep.holla@arm.com, lorenzo.pieralisi@arm.com, shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com, baohua@kernel.org, Nicolas.Ferre@microchip.com, alexandre.belloni@bo
-Cc: uclinux-h8-devel@lists.sourceforge.jp, devicetree@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org, openbmc@lists.ozlabs.org, linux-oxnas@groups.io, linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org, linux-unisoc@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-tegra@vger.kernel.org, nios2-dev@lists.rocketboards.org, linux-riscv@lists.infradead.org, linux-snps-arc@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CACT4Y+Zbx-2yR-mN5GioaKUgGH1TpTE2D-OgLbR2Dy09ezyGGQ@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Dmitry Vyukov <dvyukov@google.com>
+Cc: Qian Cai <cai@lca.pw>, Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>, Linux-MM <linux-mm@kvack.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, wsd_upstream <wsd_upstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-CkhpIENsYXVkaXUsCgpzb3JyeSBmb3IgdGhlIGRlbGF5LCBJIHdhcyBPb08gYWdhaW4uCgpPbiAw
-My8xMC8yMDE5IDEyOjQzLCBDbGF1ZGl1LkJlem5lYUBtaWNyb2NoaXAuY29tIHdyb3RlOgo+IAo+
-IAo+IE9uIDAyLjEwLjIwMTkgMTY6MzUsIENsYXVkaXUgQmV6bmVhIHdyb3RlOgo+PiBIaSBEYW5p
-ZWwsCj4+Cj4+IFRha2luZyBpbnRvIGFjY291bnQgdGhhdCBSb2IgZG9lc24ndCBhZ3JlZSB3aXRo
-IHRoZSBzb2x1dGlvbiBwcm9wb3NlZCBpbgo+PiB0aGlzIHNlcmllcyBkbyB5b3UgdGhpbmsgdGhl
-cmUgaXMgYSBjaGFuY2UgdG8gbWVyZ2UgdGhpcyBkcml2ZXIgYXMgaXM/Cj4gCj4gU29ycnksIEkg
-d2FzIHRhbGtpbmcgaGVyZSBhYm91dCB0aGUgZHJpdmVyIGF0IFsxXS4KPiAKPiBbMV0gaHR0cHM6
-Ly9sb3JlLmtlcm5lbC5vcmcvbGttbC8xNTUyNTgwNzcyLTg0OTktMS1naXQtc2VuZC1lbWFpbC1j
-bGF1ZGl1LmJlem5lYUBtaWNyb2NoaXAuY29tLwoKRGFtbiEgNyBtb250aHMgb2xkLiBJJ20gdHJ1
-bHkgc29ycnkgd2UgZG8gbm90IGhhdmUgcHJvZ3Jlc3Mgb24gdGhpcy4gTGV0CmZpeCB0aGlzIG9u
-Y2UgYW5kIGZvciBhbGwuCgpJbiB0aGUgZHJpdmVyOgoKcmV0ID0gb2ZfcHJvcGVydHlfcmVhZF91
-MzIobm9kZSwgImNsb2NrLWZyZXF1ZW5jeSIsICZmcmVxKTsKCkl0IGlzIHVuY2xlYXIgaG93IGlz
-IHVzZWQgdGhpcyBwcm9wZXJ0eS4gSXQgc2hvdWxkIGJlIHRoZSBmcmVxdWVuY3kKZHJpdmluZyB0
-aGUgdGltZXIsIGJ1dCBjYW4gd2UgZ2V0IGZyb20gYSBjbGtfZ2V0X3JhdGUoKSBhbmQgYSBmaXhl
-ZCBkaXZpZGVyPwoKCi0tIAogPGh0dHA6Ly93d3cubGluYXJvLm9yZy8+IExpbmFyby5vcmcg4pSC
-IE9wZW4gc291cmNlIHNvZnR3YXJlIGZvciBBUk0gU29DcwoKRm9sbG93IExpbmFybzogIDxodHRw
-Oi8vd3d3LmZhY2Vib29rLmNvbS9wYWdlcy9MaW5hcm8+IEZhY2Vib29rIHwKPGh0dHA6Ly90d2l0
-dGVyLmNvbS8jIS9saW5hcm9vcmc+IFR3aXR0ZXIgfAo8aHR0cDovL3d3dy5saW5hcm8ub3JnL2xp
-bmFyby1ibG9nLz4gQmxvZwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCmxpbnV4LXNucHMtYXJjIG1haWxpbmcgbGlzdApsaW51eC1zbnBzLWFyY0BsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtc25wcy1hcmMK
+On Tue, 2019-10-08 at 14:11 +0200, Dmitry Vyukov wrote:
+> On Tue, Oct 8, 2019 at 1:42 PM Qian Cai <cai@lca.pw> wrote:
+> > > On Oct 8, 2019, at 7:02 AM, Walter Wu <walter-zh.wu@mediatek.com> wrote:
+> > > I don't know very well in UBSAN, but I try to build ubsan kernel and
+> > > test a negative number in memset and kmalloc_memmove_invalid_size(), it
+> > > look like no check.
+> >
+> > It sounds like more important to figure out why the UBSAN is not working in this case rather than duplicating functionality elsewhere.
+> 
+> Detecting out-of-bounds accesses is the direct KASAN responsibility.
+> Even more direct than for KUBSAN. We are not even adding
+> functionality, it's just a plain bug in KASAN code, it tricks itself
+> into thinking that access size is 0.
+> Maybe it's already detected by KUBSAN too?
+
+Thanks for your response.
+I survey the KUBSAN, it don't check size is negative in
+memset/memcpy/memmove, we try to verify our uni testing too, it don't
+report the bug in KUBSAN, so it needs to report this bug by KASAN. The
+reason is like what you said. so we still send the patch.
