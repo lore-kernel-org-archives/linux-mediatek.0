@@ -1,79 +1,40 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH v3 4/7] iommu/mediatek: Delete the leaf in the tlb flush
-Date: Mon, 14 Oct 2019 15:22:48 +0100
-Message-ID: <20c74c20-864e-88af-3c58-ad3bb7600bcc@arm.com>
-References: <1571035101-4213-1-git-send-email-yong.wu@mediatek.com>
- <1571035101-4213-5-git-send-email-yong.wu@mediatek.com>
+From: Matthew Wilcox <willy@infradead.org>
+Subject: Re: [PATCH 1/2] kasan: detect negative size in memory operation
+ function
+Date: Mon, 14 Oct 2019 08:05:06 -0700
+Message-ID: <20191014150506.GX32665@bombadil.infradead.org>
+References: <20191014103632.17930-1-walter-zh.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1571035101-4213-5-git-send-email-yong.wu@mediatek.com>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yong Wu <yong.wu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>
-Cc: Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, cui.zhang@mediatek.com, chao.hao@mediatek.com, edison.hsieh@mediatek.com
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <20191014103632.17930-1-walter-zh.wu@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Walter Wu <walter-zh.wu@mediatek.com>
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, kasan-dev@googlegroups.com, linux-mm@kvack.org, Alexander Potapenko <glider@google.com>, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Andrey Ryabinin <aryabinin@virtuozzo.com>, Dmitry Vyukov <dvyukov@google.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 14/10/2019 07:38, Yong Wu wrote:
-> In our tlb range flush, we don't care the "leaf". Remove it to simplify
-> the code. no functional change.
+On Mon, Oct 14, 2019 at 06:36:32PM +0800, Walter Wu wrote:
+> @@ -110,8 +111,9 @@ void *memset(void *addr, int c, size_t len)
+>  #undef memmove
+>  void *memmove(void *dest, const void *src, size_t len)
+>  {
+> -	check_memory_region((unsigned long)src, len, false, _RET_IP_);
+> -	check_memory_region((unsigned long)dest, len, true, _RET_IP_);
+> +	if (!check_memory_region((unsigned long)src, len, false, _RET_IP_) ||
+> +	!check_memory_region((unsigned long)dest, len, true, _RET_IP_))
 
-Presumably you don't care about the granule either?
+This indentation is wrong.  Should be:
++	if (!check_memory_region((unsigned long)src, len, false, _RET_IP_) ||
++	    !check_memory_region((unsigned long)dest, len, true, _RET_IP_))
 
-Robin.
-
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> ---
->   drivers/iommu/mtk_iommu.c | 16 ++++------------
->   1 file changed, 4 insertions(+), 12 deletions(-)
-> 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 8712afc..19f936c 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -174,8 +174,7 @@ static void mtk_iommu_tlb_flush_all(void *cookie)
->   }
->   
->   static void mtk_iommu_tlb_add_flush_nosync(unsigned long iova, size_t size,
-> -					   size_t granule, bool leaf,
-> -					   void *cookie)
-> +					   size_t granule, void *cookie)
->   {
->   	struct mtk_iommu_data *data = cookie;
->   
-> @@ -219,14 +218,7 @@ static void mtk_iommu_tlb_sync(void *cookie)
->   static void mtk_iommu_tlb_flush_walk(unsigned long iova, size_t size,
->   				     size_t granule, void *cookie)
->   {
-> -	mtk_iommu_tlb_add_flush_nosync(iova, size, granule, false, cookie);
-> -	mtk_iommu_tlb_sync(cookie);
-> -}
-> -
-> -static void mtk_iommu_tlb_flush_leaf(unsigned long iova, size_t size,
-> -				     size_t granule, void *cookie)
-> -{
-> -	mtk_iommu_tlb_add_flush_nosync(iova, size, granule, true, cookie);
-> +	mtk_iommu_tlb_add_flush_nosync(iova, size, granule, cookie);
->   	mtk_iommu_tlb_sync(cookie);
->   }
->   
-> @@ -245,7 +237,7 @@ static void mtk_iommu_tlb_flush_page_nosync(struct iommu_iotlb_gather *gather,
->   static const struct iommu_flush_ops mtk_iommu_flush_ops = {
->   	.tlb_flush_all = mtk_iommu_tlb_flush_all,
->   	.tlb_flush_walk = mtk_iommu_tlb_flush_walk,
-> -	.tlb_flush_leaf = mtk_iommu_tlb_flush_leaf,
-> +	.tlb_flush_leaf = mtk_iommu_tlb_flush_walk,
->   	.tlb_add_page = mtk_iommu_tlb_flush_page_nosync,
->   };
->   
-> @@ -475,7 +467,7 @@ static void mtk_iommu_iotlb_sync(struct iommu_domain *domain,
->   		spin_lock_irqsave(&dom->pgtlock, flags);
->   
->   	mtk_iommu_tlb_add_flush_nosync(gather->start, length, gather->pgsize,
-> -				       false, data);
-> +				       data);
->   	mtk_iommu_tlb_sync(data);
->   
->   	if (!is_in_gather)
-> 
+(also in one subsequent function)
