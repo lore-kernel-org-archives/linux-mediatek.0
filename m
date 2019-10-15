@@ -1,35 +1,39 @@
 From: Kalle Valo <kvalo@codeaurora.org>
 Subject: Re: =?utf-8?q?=5BPATCH=5D_net/wireless=3A_Delete_unnecessary_checks_bef?==?utf-8?q?ore_the_macro_call_=E2=80=9Cdev=5Fkfree=5Fskb=E2=80=9D?=
 Date: Tue, 15 Oct 2019 05:28:04 +0000 (UTC)
-Message-ID: <20191015052805.0C01F60BDD@smtp.codeaurora.org>
+Message-ID: <20191015052804.B44C960610@smtp.codeaurora.org>
 References: <ea6c6fef-9868-196b-d914-23faf12d7f5c@web.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 In-Reply-To: <ea6c6fef-9868-196b-d914-23faf12d7f5c@web.de>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: Markus Elfring <Markus.Elfring@web.de>
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, ath10k@lists.infradead.org, "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Roy Luo <royluo@google.com>, Ryder Lee <ryder.lee@mediatek.com>, Solomon Peachy <pizza@shaftnet.org>, Stanislaw Gruszka <sgruszka@redhat.com>, LKML <linux-kernel@vger.kernel.org>, kernel-janitors@vger.kernel.org
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Stanislaw Gruszka <sgruszka@redhat.com>, kernel-janitors@vger.kernel.org, linux-wireless@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, ath10k@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Solomon Peachy <pizza@shaftnet.org>, Roy Luo <royluo@google.com>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 List-Id: linux-mediatek@lists.infradead.org
 
-Markus Elfring <Markus.Elfring@web.de> wrote:
-
-> From: Markus Elfring <elfring@users.sourceforge.net>
-> Date: Thu, 22 Aug 2019 10:20:10 +0200
-> 
-> The dev_kfree_skb() function performs also input parameter validation.
-> Thus the test around the shown calls is not needed.
-> 
-> This issue was detected by using the Coccinelle software.
-> 
-> Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
-
-Patch applied to wireless-drivers-next.git, thanks.
-
-868ad2149602 net/wireless: Delete unnecessary checks before the macro call “dev_kfree_skb”
-
--- 
-https://patchwork.kernel.org/patch/11108741/
-
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+TWFya3VzIEVsZnJpbmcgPE1hcmt1cy5FbGZyaW5nQHdlYi5kZT4gd3JvdGU6Cgo+IEZyb206IE1h
+cmt1cyBFbGZyaW5nIDxlbGZyaW5nQHVzZXJzLnNvdXJjZWZvcmdlLm5ldD4KPiBEYXRlOiBUaHUs
+IDIyIEF1ZyAyMDE5IDEwOjIwOjEwICswMjAwCj4gCj4gVGhlIGRldl9rZnJlZV9za2IoKSBmdW5j
+dGlvbiBwZXJmb3JtcyBhbHNvIGlucHV0IHBhcmFtZXRlciB2YWxpZGF0aW9uLgo+IFRodXMgdGhl
+IHRlc3QgYXJvdW5kIHRoZSBzaG93biBjYWxscyBpcyBub3QgbmVlZGVkLgo+IAo+IFRoaXMgaXNz
+dWUgd2FzIGRldGVjdGVkIGJ5IHVzaW5nIHRoZSBDb2NjaW5lbGxlIHNvZnR3YXJlLgo+IAo+IFNp
+Z25lZC1vZmYtYnk6IE1hcmt1cyBFbGZyaW5nIDxlbGZyaW5nQHVzZXJzLnNvdXJjZWZvcmdlLm5l
+dD4KClBhdGNoIGFwcGxpZWQgdG8gd2lyZWxlc3MtZHJpdmVycy1uZXh0LmdpdCwgdGhhbmtzLgoK
+ODY4YWQyMTQ5NjAyIG5ldC93aXJlbGVzczogRGVsZXRlIHVubmVjZXNzYXJ5IGNoZWNrcyBiZWZv
+cmUgdGhlIG1hY3JvIGNhbGwg4oCcZGV2X2tmcmVlX3NrYuKAnQoKLS0gCmh0dHBzOi8vcGF0Y2h3
+b3JrLmtlcm5lbC5vcmcvcGF0Y2gvMTExMDg3NDEvCgpodHRwczovL3dpcmVsZXNzLndpa2kua2Vy
+bmVsLm9yZy9lbi9kZXZlbG9wZXJzL2RvY3VtZW50YXRpb24vc3VibWl0dGluZ3BhdGNoZXMKCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0t
+a2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2Vy
+bmVsCg==
