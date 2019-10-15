@@ -1,54 +1,65 @@
-From: Biao Huang <biao.huang@mediatek.com>
-Subject: [v2, PATCH] net: stmmac: disable/enable ptp_ref_clk in suspend/resume flow
-Date: Tue, 15 Oct 2019 11:24:44 +0800
-Message-ID: <20191015032444.15145-2-biao.huang@mediatek.com>
-References: <20191015032444.15145-1-biao.huang@mediatek.com>
+From: Walter Wu <walter-zh.wu@mediatek.com>
+Subject: [PATCH v2 2/2] kasan: add test for invalid size in memmove
+Date: Tue, 15 Oct 2019 13:02:30 +0800
+Message-ID: <20191015050230.20521-1-walter-zh.wu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20191015032444.15145-1-biao.huang@mediatek.com>
-Sender: netdev-owner@vger.kernel.org
-To: davem@davemloft.net, Jose Abreu <joabreu@synopsys.com>, andrew@lunn.ch
-Cc: jakub.kicinski@netronome.com, Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yt.shen@mediatek.com, biao.huang@mediatek.com, jianguo.zhang@mediatek.com, boon.leong.ong@intel.com
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Andrey Ryabinin <aryabinin@virtuozzo.com>, Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: kasan-dev@googlegroups.com, linux-mm@kvack.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, Walter Wu <walter-zh.wu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-disable ptp_ref_clk in suspend flow, and enable it in resume flow.
+Test negative size in memmove in order to verify whether it correctly
+get KASAN report.
 
-Fixes: f573c0b9c4e0 ("stmmac: move stmmac_clk, pclk, clk_ptp_ref and stmmac_rst to platform structure")
-Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+Casting negative numbers to size_t would indeed turn up as a 'large'
+size_t, so it will have out-of-bounds bug and detected by KASAN.
+
+Changes in v2:
+Add some descriptions for clarity the testcase.
+
+Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+Reviewed-by: Dmitry Vyukov <dvyukov@google.com>
 ---
- drivers/net/ethernet/stmicro/stmmac/stmmac_main.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+ lib/test_kasan.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-index d3232738fb25..d7c12b86b94f 100644
---- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-@@ -4737,8 +4737,10 @@ int stmmac_suspend(struct device *dev)
- 		stmmac_mac_set(priv, priv->ioaddr, false);
- 		pinctrl_pm_select_sleep_state(priv->device);
- 		/* Disable clock in case of PWM is off */
--		clk_disable(priv->plat->pclk);
--		clk_disable(priv->plat->stmmac_clk);
-+		if (priv->plat->clk_ptp_ref)
-+			clk_disable_unprepare(priv->plat->clk_ptp_ref);
-+		clk_disable_unprepare(priv->plat->pclk);
-+		clk_disable_unprepare(priv->plat->stmmac_clk);
- 	}
- 	mutex_unlock(&priv->lock);
+diff --git a/lib/test_kasan.c b/lib/test_kasan.c
+index 49cc4d570a40..06942cf585cc 100644
+--- a/lib/test_kasan.c
++++ b/lib/test_kasan.c
+@@ -283,6 +283,23 @@ static noinline void __init kmalloc_oob_in_memset(void)
+ 	kfree(ptr);
+ }
  
-@@ -4801,8 +4803,10 @@ int stmmac_resume(struct device *dev)
- 	} else {
- 		pinctrl_pm_select_default_state(priv->device);
- 		/* enable the clk previously disabled */
--		clk_enable(priv->plat->stmmac_clk);
--		clk_enable(priv->plat->pclk);
-+		clk_prepare_enable(priv->plat->stmmac_clk);
-+		clk_prepare_enable(priv->plat->pclk);
-+		if (priv->plat->clk_ptp_ref)
-+			clk_prepare_enable(priv->plat->clk_ptp_ref);
- 		/* reset the phy so that it's ready */
- 		if (priv->mii)
- 			stmmac_mdio_reset(priv->mii);
++static noinline void __init kmalloc_memmove_invalid_size(void)
++{
++	char *ptr;
++	size_t size = 64;
++
++	pr_info("invalid size in memmove\n");
++	ptr = kmalloc(size, GFP_KERNEL);
++	if (!ptr) {
++		pr_err("Allocation failed\n");
++		return;
++	}
++
++	memset((char *)ptr, 0, 64);
++	memmove((char *)ptr, (char *)ptr + 4, -2);
++	kfree(ptr);
++}
++
+ static noinline void __init kmalloc_uaf(void)
+ {
+ 	char *ptr;
+@@ -773,6 +790,7 @@ static int __init kmalloc_tests_init(void)
+ 	kmalloc_oob_memset_4();
+ 	kmalloc_oob_memset_8();
+ 	kmalloc_oob_memset_16();
++	kmalloc_memmove_invalid_size();
+ 	kmalloc_uaf();
+ 	kmalloc_uaf_memset();
+ 	kmalloc_uaf2();
 -- 
 2.18.0
