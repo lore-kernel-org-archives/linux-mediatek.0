@@ -1,16 +1,16 @@
-From: Oleksandr Natalenko <oleksandr@natalenko.name>
-Subject: Re: mt76x2e hardware restart
-Date: Tue, 15 Oct 2019 18:52:12 +0200
-Message-ID: <f7695bc79d40bbc96744a639b1243027@natalenko.name>
-References: <deaafa7a3e9ea2111ebb5106430849c6@natalenko.name>
- <c6d621759c190f7810d898765115f3b4@natalenko.name>
- <9d581001e2e6cece418329842b2b0959@natalenko.name>
- <20191012165028.GA8739@lore-desk-wlan.lan>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 1/3] dt-bindings: pwrap: mediatek: add pwrap support for
+ MT6779
+Date: Tue, 15 Oct 2019 14:20:36 -0500
+Message-ID: <20191015192036.GA26160@bogus>
+References: <1570088901-23211-1-git-send-email-argus.lin@mediatek.com>
+ <1570088901-23211-2-git-send-email-argus.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20191012165028.GA8739@lore-desk-wlan.lan>
+Content-Disposition: inline
+In-Reply-To: <1570088901-23211-2-git-send-email-argus.lin@mediatek.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -20,31 +20,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, Stanislaw Gruszka <sgruszka@redhat.com>, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Roy Luo <royluo@google.com>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, "David S. Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>, Felix Fietkau <nbd@nbd.name>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, argus.lin@mediatek.com, Chenglin Xu <chenglin.xu@mediatek.com>, Catalin Marinas <catalin.marinas@arm.com>, Sean Wang <sean.wang@mediatek.com>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, henryc.chen@mediatek.com, flora.fu@mediatek.com, Christophe Jaillet <christophe.jaillet@wanadoo.fr>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Chen Zhong <chen.zhong@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hey.
+On Thu, 3 Oct 2019 15:48:19 +0800, Argus Lin wrote:
+> Add binding document of pwrap for MT6779 SoCs.
+> 
+> Signed-off-by: Argus Lin <argus.lin@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/soc/mediatek/pwrap.txt | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
-On 12.10.2019 18:50, Lorenzo Bianconi wrote:
-> sorry for the delay. Felix and me worked on this issue today. Could you 
-> please
-> try if the following patch fixes your issue?
-
-Thanks for the answer and the IRC discussion. As agreed I've applied [1] 
-and [2], and have just swapped the card to try it again. So far, it 
-works fine in 5 GHz band in 802.11ac mode as an AP.
-
-I'll give it more load with my phone over evening, and we can discuss 
-what to do next (if needed) tomorrow again. Or feel free to drop me an 
-email today.
-
-Thanks for your efforts.
-
-[1] 
-https://github.com/LorenzoBianconi/wireless-drivers-next/commit/cf3436c42a297967235a9c9778620c585100529e.patch
-[2] 
-https://github.com/LorenzoBianconi/wireless-drivers-next/commit/aad256eb62620f9646d39c1aa69234f50c89eed8.patch
-
--- 
-   Oleksandr Natalenko (post-factum)
+Acked-by: Rob Herring <robh@kernel.org>
