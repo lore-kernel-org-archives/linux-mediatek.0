@@ -1,89 +1,77 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: [GIT PULL] mediatek drm next for 5.5
-Date: Tue, 15 Oct 2019 09:39:08 +0800
-Message-ID: <1571103548.4416.6.camel@mtksdaap41>
+From: Yong Wu <yong.wu@mediatek.com>
+Subject: Re: [PATCH v2 3/4] iommu/mediatek: Use writel for TLB range
+ invalidation
+Date: Tue, 15 Oct 2019 09:51:36 +0800
+Message-ID: <1571104296.19130.67.camel@mhfsdcap03>
+References: <1570627143-29441-1-git-send-email-yong.wu@mediatek.com>
+         <1570627143-29441-3-git-send-email-yong.wu@mediatek.com>
+         <20191011162950.yg4o77mlaicacne5@willie-the-truck>
+         <1570861427.19130.65.camel@mhfsdcap03>
+         <20191014211113.jq5qwe5pfonyocr3@willie-the-truck>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Dave Airlie <airlied@gmail.com>, Daniel Vetter <daniel.vetter@intel.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: Jitao Shi <jitao.shi@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191014211113.jq5qwe5pfonyocr3@willie-the-truck>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Will Deacon <will@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Evan Green <evgreen@chromium.org>, Robin Murphy <robin.murphy@arm.com>, Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, cui.zhang@mediatek.com, chao.hao@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgRGF2ZSwgRGFuaWVsOgoKVGhpcyBpbmNsdWRlIG1pcGlfdHgsIGRzaSwgYW5kIHBhcnRpYWwg
-Y3J0YyBmb3IgTVQ4MTgzIFNvQy4KClJlZ2FyZHMsCkNLCgpUaGUgZm9sbG93aW5nIGNoYW5nZXMg
-c2luY2UgY29tbWl0CjU0ZWNiOGY3MDI4YzVlYjNkNzQwYmI4MmIwZjFkOTBmMmRmNjNjNWM6Cgog
-IExpbnV4IDUuNC1yYzEgKDIwMTktMDktMzAgMTA6MzU6NDAgLTA3MDApCgphcmUgYXZhaWxhYmxl
-IGluIHRoZSBHaXQgcmVwb3NpdG9yeSBhdDoKCiAgaHR0cHM6Ly9naXRodWIuY29tL2NraHUtbWVk
-aWF0ZWsvbGludXguZ2l0LXRhZ3MuZ2l0CnRhZ3MvbWVkaWF0ZWstZHJtLW5leHQtNS41Cgpmb3Ig
-eW91IHRvIGZldGNoIGNoYW5nZXMgdXAgdG8gNjMxMDA1YjI1NWFhYjVmODQ2ZjdjYTAzNjA2NjEz
-Zjg5OGQ3MDIwNzoKCiAgZHJtL21lZGlhdGVrOiBhZGQgbm9fY2xrIGludG8gZGRwIHByaXZhdGUg
-ZGF0YSAoMjAxOS0xMC0wOSAxNjo1ODoxMworMDgwMCkKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KTWVkaWF0ZWsgRFJNIG5l
-eHQgZm9yIExpbnV4IDUuNQoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpDSyBIdSAoMSk6CiAgICAgIGRybS9tZWRpYXRlazog
-YWRkIG5vX2NsayBpbnRvIGRkcCBwcml2YXRlIGRhdGEKCkppdGFvIFNoaSAoMTIpOgogICAgICBk
-dC1iaW5kaW5nczogZGlzcGxheTogbWVkaWF0ZWs6IHVwZGF0ZSBkc2kgc3VwcG9ydGVkIGNoaXBz
-CiAgICAgIGRybS9tZWRpYXRlazogc2VwYXJhdGUgbWlwaV90eCB0byBkaWZmZXJlbnQgZmlsZQog
-ICAgICBkcm0vbWVkaWF0ZWs6IGFkZCBtaXBpX3R4IGRyaXZlciBmb3IgbXQ4MTgzCiAgICAgIGRy
-bS9tZWRpYXRlazogbW92ZSBtaXBpX2RzaV9ob3N0X3JlZ2lzdGVyIHRvIHByb2JlCiAgICAgIGRy
-bS9tZWRpYXRlazogZml4ZXMgQ01EUSByZWcgYWRkcmVzcyBvZiBtdDgxNzMgaXMgZGlmZmVyZW50
-IHdpdGgKbXQyNzAxCiAgICAgIGRybS9tZWRpYXRlazogcmVwbGFjZSB3cml0ZWIoKSB3aXRoIG10
-a19kc2lfbWFzaygpCiAgICAgIGRybS9tZWRpYXRlazogYWRkIGRzaSByZWcgY29tbWl0IGRpc2Fi
-bGUgY29udHJvbAogICAgICBkcm0vbWVkaWF0ZWs6IGFkZCBmcmFtZSBzaXplIGNvbnRyb2wKICAg
-ICAgZHJtL21lZGlhdGVrOiBhZGQgbXQ4MTgzIGRzaSBkcml2ZXIgc3VwcG9ydAogICAgICBkcm0v
-bWVkaWF0ZWs6IGNoYW5nZSB0aGUgZHNpIHBoeXRpbWluZyBjYWxjdWxhdGUgbWV0aG9kCiAgICAg
-IGRybS9tZWRpYXRlazogYWRqdXN0IGRzaSBhbmQgbWlwaV90eCBwcm9iZSBzZXF1ZW5jZQogICAg
-ICBkcm0vbWVkaWF0ZWs6IGFkZCBkcGh5IHJlc2V0IGFmdGVyIHNldHRpbmcgbGFuZXMgbnVtYmVy
-CgpZb25ncWlhbmcgTml1ICgxOCk6CiAgICAgIGR0LWJpbmRpbmdzOiBtZWRpYXRlazogYWRkIG92
-bF8ybCBkZXNjcmlwdGlvbiBmb3IgbXQ4MTgzIGRpc3BsYXkKICAgICAgZHQtYmluZGluZ3M6IG1l
-ZGlhdGVrOiBhZGQgY2NvcnIgZGVzY3JpcHRpb24gZm9yIG10ODE4MyBkaXNwbGF5CiAgICAgIGR0
-LWJpbmRpbmdzOiBtZWRpYXRlazogYWRkIGRpdGhlciBkZXNjcmlwdGlvbiBmb3IgbXQ4MTgzIGRp
-c3BsYXkKICAgICAgZHQtYmluZGluZ3M6IG1lZGlhdGVrOiBhZGQgbXV0ZXggZGVzY3JpcHRpb24g
-Zm9yIG10ODE4MyBkaXNwbGF5CiAgICAgIGRybS9tZWRpYXRlazogYWRkIGRkcCBjb21wb25lbnQg
-Q0NPUlIKICAgICAgZHJtL21lZGlhdGVrOiBhZGQgY29tcG9uZW50IERJVEhFUgogICAgICBkcm0v
-bWVkaWF0ZWs6IGFkZCBjb21wb25lbnQgT1ZMXzJMMAogICAgICBkcm0vbWVkaWF0ZWs6IGFkZCBj
-b21wb25lbnQgT1ZMXzJMMQogICAgICBkcm0vbWVkaWF0ZWs6IGFkZCBnbWNfYml0cyBmb3Igb3Zs
-IHByaXZhdGUgZGF0YQogICAgICBkcm0vbWVkYWl0ZWs6IGFkZCBsYXllcl9uciBmb3Igb3ZsIHBy
-aXZhdGUgZGF0YQogICAgICBkcm0vbWVkaWF0ZWs6IGFkZCBmdW5jdGlvbiB0byBiYWNrZ3JvdW5k
-IGNvbG9yIGlucHV0IHNlbGVjdCBmb3IKb3ZsL292bF8ybCBkaXJlY3QgbGluawogICAgICBkcm0v
-bWVkaWF0ZWs6IGFkZCBiYWNrZ3JvdW5kIGNvbG9yIGlucHV0IHNlbGVjdCBmdW5jdGlvbiBmb3IK
-b3ZsL292bF8ybAogICAgICBkcm0vbWVkaWF0ZWs6IGRpc3Rpbmd1aXNoIG92bCBhbmQgb3ZsXzJs
-IGJ5IGxheWVyX25yCiAgICAgIGRybS9tZWRpYXRlazogYWRkIG92bDAvb3ZsXzJsMCB1c2VjYXNl
-CiAgICAgIGRybS9tZWRpYXRlazogYWRkIG11dGV4IG1vZCBpbnRvIGRkcCBwcml2YXRlIGRhdGEK
-ICAgICAgZHJtL21lZGlhdGVrOiBhZGQgbXV0ZXggbW9kIHJlZ2lzdGVyIG9mZnNldCBpbnRvIGRk
-cCBwcml2YXRlIGRhdGEKICAgICAgZHJtL21lZGlhdGVrOiBhZGQgbXV0ZXggc29mIGludG8gZGRw
-IHByaXZhdGUgZGF0YQogICAgICBkcm0vbWVkaWF0ZWs6IGFkZCBtdXRleCBzb2YgcmVnaXN0ZXIg
-b2Zmc2V0IGludG8gZGRwIHByaXZhdGUgZGF0YQoKIC4uLi9iaW5kaW5ncy9kaXNwbGF5L21lZGlh
-dGVrL21lZGlhdGVrLGRpc3AudHh0ICAgIHwgIDMwICstCiAuLi4vYmluZGluZ3MvZGlzcGxheS9t
-ZWRpYXRlay9tZWRpYXRlayxkc2kudHh0ICAgICB8ICAgNCArLQogZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL01ha2VmaWxlICAgICAgICAgICAgICAgICAgfCAgIDIgKwogZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19kaXNwX292bC5jICAgICAgICAgICAgfCAgNjEgKysrLQogZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5jICAgICAgICAgICAgfCAgMzcgKystCiBkcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYyAgICAgICAgICAgICB8IDEyOCArKysr
-KystLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYyAgICAgICAg
-fCAgNjcgKysrKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaCAg
-ICAgICAgfCAgMjEgKysKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jICAg
-ICAgICAgICAgIHwgICAzICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jICAg
-ICAgICAgICAgICAgICB8IDIzMyArKysrKysrKysrLS0tLQogZHJpdmVycy9ncHUvZHJtL21lZGlh
-dGVrL210a19taXBpX3R4LmMgICAgICAgICAgICAgfCAzMzgKKystLS0tLS0tLS0tLS0tLS0tLS0t
-CiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX21pcGlfdHguaCAgICAgICAgICAgICB8ICA0
-OSArKysKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX21pcGlfdHguYyAgICAg
-IHwgMjg4CisrKysrKysrKysrKysrKysrKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19t
-dDgxODNfbWlwaV90eC5jICAgICAgfCAxNDkgKysrKysrKysrCiAxNCBmaWxlcyBjaGFuZ2VkLCA5
-NzQgaW5zZXJ0aW9ucygrKSwgNDM2IGRlbGV0aW9ucygtKQogY3JlYXRlIG1vZGUgMTAwNjQ0IGRy
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbWlwaV90eC5oCiBjcmVhdGUgbW9kZSAxMDA2NDQg
-ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxNzNfbWlwaV90eC5jCiBjcmVhdGUgbW9k
-ZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxODNfbWlwaV90eC5jCgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+On Mon, 2019-10-14 at 22:11 +0100, Will Deacon wrote:
+> On Sat, Oct 12, 2019 at 02:23:47PM +0800, Yong Wu wrote:
+> > On Fri, 2019-10-11 at 17:29 +0100, Will Deacon wrote:
+> > > On Wed, Oct 09, 2019 at 09:19:02PM +0800, Yong Wu wrote:
+> > > > Use writel for the register F_MMU_INV_RANGE which is for triggering the
+> > > > HW work. We expect all the setting(iova_start/iova_end...) have already
+> > > > been finished before F_MMU_INV_RANGE.
+> > > > 
+> > > > Signed-off-by: Anan.Sun <anan.sun@mediatek.com>
+> > > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > > > ---
+> > > > This is a improvement rather than fixing a issue.
+> > > > ---
+> > > >  drivers/iommu/mtk_iommu.c | 3 +--
+> > > >  1 file changed, 1 insertion(+), 2 deletions(-)
+> > > > 
+> > > > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> > > > index 24a13a6..607f92c 100644
+> > > > --- a/drivers/iommu/mtk_iommu.c
+> > > > +++ b/drivers/iommu/mtk_iommu.c
+> > > > @@ -187,8 +187,7 @@ static void mtk_iommu_tlb_add_flush(unsigned long iova, size_t size,
+> > > >  		writel_relaxed(iova, data->base + REG_MMU_INVLD_START_A);
+> > > >  		writel_relaxed(iova + size - 1,
+> > > >  			       data->base + REG_MMU_INVLD_END_A);
+> > > > -		writel_relaxed(F_MMU_INV_RANGE,
+> > > > -			       data->base + REG_MMU_INVALIDATE);
+> > > > +		writel(F_MMU_INV_RANGE, data->base + REG_MMU_INVALIDATE);
+> > > 
+> > > I don't understand this change.
+> > > 
+> > > Why is it an "improvement" and which accesses are you ordering with the
+> > > writel?
+> > 
+> > The register(F_MMU_INV_RANGE) will trigger HW to begin flush range. HW
+> > expect the other register iova_start/end/flush_type always is ready
+> > before trigger. thus I'd like use writel to guarantee the previous
+> > register has been finished.
+> 
+> Given that these are all MMIO writes to the same device, then
+> writel_relaxed() should give you the ordering you need. If you look at
+> memory_barriers.txt, it says:
+> 
+>   | they [readX_relaxed() and writeX_relaxed()] are still guaranteed to
+>   | be ordered with respect to other accesses from the same CPU thread
+>   | to the same peripheral when operating on __iomem pointers mapped
+>   | with the default I/O attributes.
+
+Thanks for this info. See it now. then I will delete this patch in next
+version.
+
+> 
+> > I didn't see the writel_relaxed cause some error in practice, we only
+> > think writel is necessary here in theory. so call it "improvement".
+> 
+> Ok, but I don't think it's needed in this case.
+> 
+> Will
