@@ -1,124 +1,35 @@
-From: Yong Wu <yong.wu@mediatek.com>
-Subject: Re: [PATCH v3 3/7] iommu/mediatek: Use gather to achieve the tlb
- range flush
-Date: Tue, 15 Oct 2019 13:26:06 +0800
-Message-ID: <1571117166.19130.83.camel@mhfsdcap03>
-References: <1571035101-4213-1-git-send-email-yong.wu@mediatek.com>
-         <1571035101-4213-4-git-send-email-yong.wu@mediatek.com>
-         <f35c8a3a-0693-facf-2050-65d3f7628929@arm.com>
+From: Kalle Valo <kvalo@codeaurora.org>
+Subject: Re: =?utf-8?q?=5BPATCH=5D_net/wireless=3A_Delete_unnecessary_checks_bef?==?utf-8?q?ore_the_macro_call_=E2=80=9Cdev=5Fkfree=5Fskb=E2=80=9D?=
+Date: Tue, 15 Oct 2019 05:28:04 +0000 (UTC)
+Message-ID: <20191015052805.0C01F60BDD@smtp.codeaurora.org>
+References: <ea6c6fef-9868-196b-d914-23faf12d7f5c@web.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <f35c8a3a-0693-facf-2050-65d3f7628929@arm.com>
+In-Reply-To: <ea6c6fef-9868-196b-d914-23faf12d7f5c@web.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, cui.zhang@mediatek.com, chao.hao@mediatek.com, edison.hsieh@mediatek.com
+To: Markus Elfring <Markus.Elfring@web.de>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, ath10k@lists.infradead.org, "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Roy Luo <royluo@google.com>, Ryder Lee <ryder.lee@mediatek.com>, Solomon Peachy <pizza@shaftnet.org>, Stanislaw Gruszka <sgruszka@redhat.com>, LKML <linux-kernel@vger.kernel.org>, kernel-janitors@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2019-10-14 at 15:21 +0100, Robin Murphy wrote:
-> On 14/10/2019 07:38, Yong Wu wrote:
-> > Use the iommu_gather mechanism to achieve the tlb range flush.
-> > Gather the iova range in the "tlb_add_page", then flush the merged iova
-> > range in iotlb_sync.
-> > 
-> > Note: If iotlb_sync comes from iommu_iotlb_gather_add_page, we have to
-> > avoid retry the lock since the spinlock have already been acquired.
-> 
-> I think this could probably be even simpler - once the actual 
-> register-poking is all confined to mtk_iommu_tlb_sync(), you should be 
-> able get rid of the per-domain locking in map/unmap and just have a 
-> single per-IOMMU lock to serialise syncs. The io-pgtable code itself 
-> hasn't needed external locking for a while now.
+Markus Elfring <Markus.Elfring@web.de> wrote:
 
-This is more simpler! Thanks very much. I will try this.
-
-The only concern is there is no lock in the iova_to_phys then, maybe use
-the new lock instead.
-
+> From: Markus Elfring <elfring@users.sourceforge.net>
+> Date: Thu, 22 Aug 2019 10:20:10 +0200
 > 
-> Robin.
+> The dev_kfree_skb() function performs also input parameter validation.
+> Thus the test around the shown calls is not needed.
 > 
-> > Suggested-by: Tomasz Figa <tfiga@chromium.org>
-> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > ---
-> > 1) This is the special case backtrace:
-> > 
-> >   mtk_iommu_iotlb_sync+0x50/0xa0
-> >   mtk_iommu_tlb_flush_page_nosync+0x5c/0xd0
-> >   __arm_v7s_unmap+0x174/0x598
-> >   arm_v7s_unmap+0x30/0x48
-> >   mtk_iommu_unmap+0x50/0x78
-> >   __iommu_unmap+0xa4/0xf8
-> > 
-> > 2) The checking "if (gather->start == ULONG_MAX) return;" also is
-> > necessary. It will happened when unmap only go to _flush_walk, then
-> > enter this tlb_sync.
-> > ---
-> >   drivers/iommu/mtk_iommu.c | 29 +++++++++++++++++++++++++----
-> >   drivers/iommu/mtk_iommu.h |  1 +
-> >   2 files changed, 26 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> > index 5f594d6..8712afc 100644
-> > --- a/drivers/iommu/mtk_iommu.c
-> > +++ b/drivers/iommu/mtk_iommu.c
-> > @@ -234,7 +234,12 @@ static void mtk_iommu_tlb_flush_page_nosync(struct iommu_iotlb_gather *gather,
-> >   					    unsigned long iova, size_t granule,
-> >   					    void *cookie)
-> >   {
-> > -	mtk_iommu_tlb_add_flush_nosync(iova, granule, granule, true, cookie);
-> > +	struct mtk_iommu_data *data = cookie;
-> > +	struct iommu_domain *domain = &data->m4u_dom->domain;
-> > +
-> > +	data->is_in_tlb_gather_add_page = true;
-> > +	iommu_iotlb_gather_add_page(domain, gather, iova, granule);
-> > +	data->is_in_tlb_gather_add_page = false;
-> >   }
-> >   
-> >   static const struct iommu_flush_ops mtk_iommu_flush_ops = {
-> > @@ -453,12 +458,28 @@ static void mtk_iommu_flush_iotlb_all(struct iommu_domain *domain)
-> >   static void mtk_iommu_iotlb_sync(struct iommu_domain *domain,
-> >   				 struct iommu_iotlb_gather *gather)
-> >   {
-> > +	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
-> >   	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
-> > +	bool is_in_gather = data->is_in_tlb_gather_add_page;
-> > +	size_t length = gather->end - gather->start;
-> >   	unsigned long flags;
-> >   
-> > -	spin_lock_irqsave(&dom->pgtlock, flags);
-> > -	mtk_iommu_tlb_sync(mtk_iommu_get_m4u_data());
-> > -	spin_unlock_irqrestore(&dom->pgtlock, flags);
-> > +	if (gather->start == ULONG_MAX)
-> > +		return;
-> > +
-> > +	/*
-> > +	 * Avoid acquire the lock when it's in gather_add_page since the lock
-> > +	 * has already been held.
-> > +	 */
-> > +	if (!is_in_gather)
-> > +		spin_lock_irqsave(&dom->pgtlock, flags);
-> > +
-> > +	mtk_iommu_tlb_add_flush_nosync(gather->start, length, gather->pgsize,
-> > +				       false, data);
-> > +	mtk_iommu_tlb_sync(data);
-> > +
-> > +	if (!is_in_gather)
-> > +		spin_unlock_irqrestore(&dom->pgtlock, flags);
-> >   }
-> >   
-> >   static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
-> > diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-> > index fc0f16e..d29af1d 100644
-> > --- a/drivers/iommu/mtk_iommu.h
-> > +++ b/drivers/iommu/mtk_iommu.h
-> > @@ -58,6 +58,7 @@ struct mtk_iommu_data {
-> >   	struct iommu_group		*m4u_group;
-> >   	bool                            enable_4GB;
-> >   	bool				tlb_flush_active;
-> > +	bool				is_in_tlb_gather_add_page;
-> >   
-> >   	struct iommu_device		iommu;
-> >   	const struct mtk_iommu_plat_data *plat_data;
-> > 
+> This issue was detected by using the Coccinelle software.
+> 
+> Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
+
+Patch applied to wireless-drivers-next.git, thanks.
+
+868ad2149602 net/wireless: Delete unnecessary checks before the macro call “dev_kfree_skb”
+
+-- 
+https://patchwork.kernel.org/patch/11108741/
+
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
