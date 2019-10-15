@@ -1,39 +1,50 @@
-From: Kalle Valo <kvalo@codeaurora.org>
-Subject: Re: =?utf-8?q?=5BPATCH=5D_net/wireless=3A_Delete_unnecessary_checks_bef?==?utf-8?q?ore_the_macro_call_=E2=80=9Cdev=5Fkfree=5Fskb=E2=80=9D?=
-Date: Tue, 15 Oct 2019 05:28:04 +0000 (UTC)
-Message-ID: <20191015052804.B44C960610@smtp.codeaurora.org>
-References: <ea6c6fef-9868-196b-d914-23faf12d7f5c@web.de>
+From: Pi-Hsun Shih <pihsun@chromium.org>
+Subject: [PATCH] arm64: dts: mt8183: add dpi node to mt8183
+Date: Tue, 15 Oct 2019 17:12:29 +0800
+Message-ID: <20191015091229.91814-1-pihsun@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <ea6c6fef-9868-196b-d914-23faf12d7f5c@web.de>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Markus Elfring <Markus.Elfring@web.de>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, Stanislaw Gruszka <sgruszka@redhat.com>, kernel-janitors@vger.kernel.org, linux-wireless@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, ath10k@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Solomon Peachy <pizza@shaftnet.org>, Roy Luo <royluo@google.com>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: Pi-Hsun Shih <pihsun@chromium.org>, Jitao Shi <jitao.shi@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:OPEN FIRMWARE AND FLATTENED
+        DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC
+        support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+        support" <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-TWFya3VzIEVsZnJpbmcgPE1hcmt1cy5FbGZyaW5nQHdlYi5kZT4gd3JvdGU6Cgo+IEZyb206IE1h
-cmt1cyBFbGZyaW5nIDxlbGZyaW5nQHVzZXJzLnNvdXJjZWZvcmdlLm5ldD4KPiBEYXRlOiBUaHUs
-IDIyIEF1ZyAyMDE5IDEwOjIwOjEwICswMjAwCj4gCj4gVGhlIGRldl9rZnJlZV9za2IoKSBmdW5j
-dGlvbiBwZXJmb3JtcyBhbHNvIGlucHV0IHBhcmFtZXRlciB2YWxpZGF0aW9uLgo+IFRodXMgdGhl
-IHRlc3QgYXJvdW5kIHRoZSBzaG93biBjYWxscyBpcyBub3QgbmVlZGVkLgo+IAo+IFRoaXMgaXNz
-dWUgd2FzIGRldGVjdGVkIGJ5IHVzaW5nIHRoZSBDb2NjaW5lbGxlIHNvZnR3YXJlLgo+IAo+IFNp
-Z25lZC1vZmYtYnk6IE1hcmt1cyBFbGZyaW5nIDxlbGZyaW5nQHVzZXJzLnNvdXJjZWZvcmdlLm5l
-dD4KClBhdGNoIGFwcGxpZWQgdG8gd2lyZWxlc3MtZHJpdmVycy1uZXh0LmdpdCwgdGhhbmtzLgoK
-ODY4YWQyMTQ5NjAyIG5ldC93aXJlbGVzczogRGVsZXRlIHVubmVjZXNzYXJ5IGNoZWNrcyBiZWZv
-cmUgdGhlIG1hY3JvIGNhbGwg4oCcZGV2X2tmcmVlX3NrYuKAnQoKLS0gCmh0dHBzOi8vcGF0Y2h3
-b3JrLmtlcm5lbC5vcmcvcGF0Y2gvMTExMDg3NDEvCgpodHRwczovL3dpcmVsZXNzLndpa2kua2Vy
-bmVsLm9yZy9lbi9kZXZlbG9wZXJzL2RvY3VtZW50YXRpb24vc3VibWl0dGluZ3BhdGNoZXMKCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0t
-a2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2Vy
-bmVsCg==
+Add dpi node to mt8183.
+
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
+---
+This depends on https://patchwork.kernel.org/cover/11081047/ (for the
+dpi driver on mt8183) and https://patchwork.kernel.org/cover/11118371/
+(for the scpsys node).
+---
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 6cbbd7726d36..42c3a6b3cfc7 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -642,6 +642,17 @@ mmsys: syscon@14000000 {
+ 			#clock-cells = <1>;
+ 		};
+ 
++		dpi0: dpi@14015000 {
++			compatible = "mediatek,mt8183-dpi";
++			reg = <0 0x14015000 0 0x1000>;
++			interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
++			clocks = <&mmsys CLK_MM_DPI_IF>,
++				 <&mmsys CLK_MM_DPI_MM>,
++				 <&apmixedsys CLK_APMIXED_TVDPLL>;
++			clock-names = "pixel", "engine", "pll";
++		};
++
+ 		smi_common: smi@14019000 {
+ 			compatible = "mediatek,mt8183-smi-common", "syscon";
+ 			reg = <0 0x14019000 0 0x1000>;
+-- 
+2.23.0.700.g56cf767bdb-goog
