@@ -1,35 +1,30 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/3] dt-bindings: pwrap: mediatek: add pwrap support for
- MT6779
-Date: Tue, 15 Oct 2019 14:20:36 -0500
-Message-ID: <20191015192036.GA26160@bogus>
-References: <1570088901-23211-1-git-send-email-argus.lin@mediatek.com>
- <1570088901-23211-2-git-send-email-argus.lin@mediatek.com>
+From: Jakub Kicinski <jakub.kicinski@netronome.com>
+Subject: Re: [PATCH net,v3 1/2] net: ethernet: mediatek: Fix MT7629 missing
+ GMII mode support
+Date: Tue, 15 Oct 2019 12:28:36 -0700
+Message-ID: <20191015122836.78bff48f@cakuba.netronome.com>
+References: <20191014071518.11923-1-Mark-MC.Lee@mediatek.com>
+        <20191014071518.11923-2-Mark-MC.Lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <1570088901-23211-2-git-send-email-argus.lin@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, argus.lin@mediatek.com, Chenglin Xu <chenglin.xu@mediatek.com>, Catalin Marinas <catalin.marinas@arm.com>, Sean Wang <sean.wang@mediatek.com>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, henryc.chen@mediatek.com, flora.fu@mediatek.com, Christophe Jaillet <christophe.jaillet@wanadoo.fr>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Chen Zhong <chen.zhong@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20191014071518.11923-2-Mark-MC.Lee@mediatek.com>
+Sender: netdev-owner@vger.kernel.org
+To: MarkLee <Mark-MC.Lee@mediatek.com>
+Cc: "David S. Miller" <davem@davemloft.net>, Sean Wang <sean.wang@mediatek.com>, John Crispin <john@phrozen.org>, Nelson Chang <nelson.chang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Rene van Dorst <opensource@vdorst.com>, devicetree@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 3 Oct 2019 15:48:19 +0800, Argus Lin wrote:
-> Add binding document of pwrap for MT6779 SoCs.
-> 
-> Signed-off-by: Argus Lin <argus.lin@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/soc/mediatek/pwrap.txt | 1 +
->  1 file changed, 1 insertion(+)
-> 
+On Mon, 14 Oct 2019 15:15:17 +0800, MarkLee wrote:
+> In the original design, mtk_phy_connect function will set ge_mode=1
+> if phy-mode is GMII(PHY_INTERFACE_MODE_GMII) and then set the correct
+> ge_mode to ETHSYS_SYSCFG0 register. This logic was broken after apply  
+> mediatek PHYLINK patch(Fixes tag), the new mtk_mac_config function will
+> not set ge_mode=1 for GMII mode hence the final ETHSYS_SYSCFG0 setting 
+> will be incorrect for mt7629 GMII mode. This patch add the missing logic
+> back to fix it.
+> 			 
+> Fixes: b8fc9f30821e ("net: ethernet: mediatek: Add basic PHYLINK support")
+> Signed-off-by: MarkLee <Mark-MC.Lee@mediatek.com>
 
-Acked-by: Rob Herring <robh@kernel.org>
+LGTM, thanks
