@@ -1,30 +1,25 @@
-From: Jakub Kicinski <jakub.kicinski@netronome.com>
-Subject: Re: [PATCH net,v3 1/2] net: ethernet: mediatek: Fix MT7629 missing
- GMII mode support
-Date: Tue, 15 Oct 2019 12:28:36 -0700
-Message-ID: <20191015122836.78bff48f@cakuba.netronome.com>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH net,v3 0/2] Update MT7629 to support PHYLINK API
+Date: Tue, 15 Oct 2019 18:03:56 -0700 (PDT)
+Message-ID: <20191015.180356.268577945716013325.davem@davemloft.net>
 References: <20191014071518.11923-1-Mark-MC.Lee@mediatek.com>
-        <20191014071518.11923-2-Mark-MC.Lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: Text/Plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20191014071518.11923-2-Mark-MC.Lee@mediatek.com>
-Sender: netdev-owner@vger.kernel.org
-To: MarkLee <Mark-MC.Lee@mediatek.com>
-Cc: "David S. Miller" <davem@davemloft.net>, Sean Wang <sean.wang@mediatek.com>, John Crispin <john@phrozen.org>, Nelson Chang <nelson.chang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Rene van Dorst <opensource@vdorst.com>, devicetree@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191014071518.11923-1-Mark-MC.Lee@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark-MC.Lee@mediatek.com
+Cc: sean.wang@mediatek.com, john@phrozen.org, nelson.chang@mediatek.com, matthias.bgg@gmail.com, andrew@lunn.ch, robh+dt@kernel.org, mark.rutland@arm.com, opensource@vdorst.com, devicetree@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, jakub.kicinski@netronome.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 14 Oct 2019 15:15:17 +0800, MarkLee wrote:
-> In the original design, mtk_phy_connect function will set ge_mode=1
-> if phy-mode is GMII(PHY_INTERFACE_MODE_GMII) and then set the correct
-> ge_mode to ETHSYS_SYSCFG0 register. This logic was broken after apply  
-> mediatek PHYLINK patch(Fixes tag), the new mtk_mac_config function will
-> not set ge_mode=1 for GMII mode hence the final ETHSYS_SYSCFG0 setting 
-> will be incorrect for mt7629 GMII mode. This patch add the missing logic
-> back to fix it.
-> 			 
-> Fixes: b8fc9f30821e ("net: ethernet: mediatek: Add basic PHYLINK support")
-> Signed-off-by: MarkLee <Mark-MC.Lee@mediatek.com>
+From: MarkLee <Mark-MC.Lee@mediatek.com>
+Date: Mon, 14 Oct 2019 15:15:16 +0800
 
-LGTM, thanks
+> This patch set has two goals :
+> 	1. Fix mt7629 GMII mode issue after apply mediatek
+> 	   PHYLINK support patch.
+> 	2. Update mt7629 dts to reflect the latest dt-binding
+> 	   with PHYLINK support.
+
+Series applied, thank you.
