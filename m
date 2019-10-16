@@ -1,40 +1,33 @@
-From: yuehaibing@huawei.com (YueHaibing)
-Date: Wed, 16 Oct 2019 16:58:33 +0800
-Subject: [PATCH -next] staging: mt7621-dma: use
- devm_platform_ioremap_resource() to simplify code
+From: Wen.Su@mediatek.com (Wen Su)
+Date: Wed, 16 Oct 2019 17:39:42 +0800
+Subject: [PATCH 0/4] Add Support for MediaTek PMIC MT6359 Regulator
 List-Id: linux-mediatek@lists.infradead.org
-Message-ID: <20191016085833.26376-1-yuehaibing@huawei.com>
+Message-ID: <1571218786-15073-1-git-send-email-Wen.Su@mediatek.com>
 To: linux-mediatek@lists.infradead.org
 
-Use devm_platform_ioremap_resource() to simplify the code a bit.
-This is detected by coccinelle.
+This patchset add support to MT6359 PMIC regulator. MT6359 is primary
+PMIC for MT6779 platform.
 
-Signed-off-by: YueHaibing <yuehaibing at huawei.com>
----
- drivers/staging/mt7621-dma/mtk-hsdma.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
-index d964642..4d541c4 100644
---- a/drivers/staging/mt7621-dma/mtk-hsdma.c
-+++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
-@@ -650,7 +650,6 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
- 	struct mtk_hsdma_chan *chan;
- 	struct mtk_hsdam_engine *hsdma;
- 	struct dma_device *dd;
--	struct resource *res;
- 	int ret;
- 	int irq;
- 	void __iomem *base;
-@@ -667,8 +666,7 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
- 	if (!hsdma)
- 		return -EINVAL;
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	base = devm_ioremap_resource(&pdev->dev, res);
-+	base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(base))
- 		return PTR_ERR(base);
- 	hsdma->base = base + HSDMA_BASE_OFFSET;
+wen.su (4):
+  dt-bindings: regulator: Add document for MT6359 regulator
+  mfd: Add for PMIC MT6359 registers definition
+  regulator: mt6359: Add support for MT6359 regulator
+  arm64: dts: mt6359: add PMIC MT6359 related nodes
+
+ .../bindings/regulator/mt6359-regulator.txt        |  59 ++
+ arch/arm64/boot/dts/mediatek/mt6359.dtsi           | 312 ++++++++
+ drivers/regulator/Kconfig                          |   9 +
+ drivers/regulator/Makefile                         |   1 +
+ drivers/regulator/mt6359-regulator.c               | 859 +++++++++++++++++++++
+ include/linux/mfd/mt6359/registers.h               | 531 +++++++++++++
+ include/linux/regulator/mt6359-regulator.h         |  58 ++
+ 7 files changed, 1829 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/regulator/mt6359-regulator.txt
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6359.dtsi
+ create mode 100644 drivers/regulator/mt6359-regulator.c
+ create mode 100644 include/linux/mfd/mt6359/registers.h
+ create mode 100644 include/linux/regulator/mt6359-regulator.h
+
 -- 
-2.7.4
+1.9.1
