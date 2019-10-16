@@ -1,58 +1,38 @@
-From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v4 0/7] Improve tlb range flush
-Date: Wed, 16 Oct 2019 11:33:05 +0800
-Message-ID: <1571196792-12382-1-git-send-email-yong.wu@mediatek.com>
+From: Yong Wu <yong.wu@mediatek.com>
+Subject: [PATCH v4 1/7] iommu/mediatek: Correct the flush_iotlb_all callback
+Date: Wed, 16 Oct 2019 11:33:06 +0800
+Message-ID: <1571196792-12382-2-git-send-email-yong.wu@mediatek.com>
+References: <1571196792-12382-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
-Cc: youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, anan.sun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, cui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, chao.hao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, edison.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Evan Green <evgreen-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1571196792-12382-1-git-send-email-yong.wu@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>
+Cc: Evan Green <evgreen@chromium.org>, Robin Murphy <robin.murphy@arm.com>, Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, yong.wu@mediatek.com, youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com, cui.zhang@mediatek.com, chao.hao@mediatek.com, edison.hsieh@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-This patchset mainly fixes a tlb flush timeout issue and use the new
-iommu_gather to re-implement the tlb flush flow. and several clean up
-patches about the tlb_flush.
+Use the correct tlb_flush_all instead of the original one.
 
-change note:
+Fixes: 4d689b619445 ("iommu/io-pgtable-arm-v7s: Convert to IOMMU API TLB sync")
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+Reviewed-by: Robin Murphy <robin.murphy@arm.com>
+---
+ drivers/iommu/mtk_iommu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-v4: 1. Add a new tlb_lock for tlb operations.
-    2. Delete the pgtlock.
-    3. Remove the "writel" patch.
-
-v3: https://lore.kernel.org/linux-iommu/1571035101-4213-1-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org/T/#t
-   1. Use the gather to implement the tlb_flush suggested from Tomasz.
-   2. add some clean up patches.
-
-v2:
-https://lore.kernel.org/linux-iommu/1570627143-29441-1-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org/T/#t
-   1. rebase on v5.4-rc1
-   2. only split to several patches.
-
-v1:
-https://lore.kernel.org/linux-iommu/CAAFQd5C3U7pZo4SSUJ52Q7E+0FaUoORQFbQC5RhCHBhi=NFYTw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org/T/#t
-
-Yong Wu (7):
-  iommu/mediatek: Correct the flush_iotlb_all callback
-  iommu/mediatek: Add a new tlb_lock for tlb_flush
-  iommu/mediatek: Use gather to achieve the tlb range flush
-  iommu/mediatek: Delete the leaf in the tlb_flush
-  iommu/mediatek: Move the tlb_sync into tlb_flush
-  iommu/mediatek: Get rid of the pgtlock
-  iommu/mediatek: Reduce the tlb flush timeout value
-
- drivers/iommu/mtk_iommu.c | 88 +++++++++++++++--------------------------------
- drivers/iommu/mtk_iommu.h |  2 +-
- 2 files changed, 29 insertions(+), 61 deletions(-)
-
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index 67a483c..76b9388 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -447,7 +447,7 @@ static size_t mtk_iommu_unmap(struct iommu_domain *domain,
+ 
+ static void mtk_iommu_flush_iotlb_all(struct iommu_domain *domain)
+ {
+-	mtk_iommu_tlb_sync(mtk_iommu_get_m4u_data());
++	mtk_iommu_tlb_flush_all(mtk_iommu_get_m4u_data());
+ }
+ 
+ static void mtk_iommu_iotlb_sync(struct iommu_domain *domain,
 -- 
 1.9.1
