@@ -1,47 +1,120 @@
-From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v4 7/7] iommu/mediatek: Reduce the tlb flush timeout value
-Date: Wed, 16 Oct 2019 11:33:12 +0800
-Message-ID: <1571196792-12382-8-git-send-email-yong.wu@mediatek.com>
-References: <1571196792-12382-1-git-send-email-yong.wu@mediatek.com>
+From: Jiaxin Yu <jiaxin.yu@mediatek.com>
+Subject: [PATCH v4 1/2] dt-bindings: mediatek: mt8183: Add
+	#reset-cells
+Date: Wed, 16 Oct 2019 13:59:07 +0800
+Message-ID: <1571205548-13704-2-git-send-email-jiaxin.yu@mediatek.com>
+References: <1571205548-13704-1-git-send-email-jiaxin.yu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <1571196792-12382-1-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
-Cc: youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, anan.sun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, cui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, chao.hao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, edison.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Evan Green <evgreen-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <1571205548-13704-1-git-send-email-jiaxin.yu@mediatek.com>
+List-Unsubscribe: <https://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <https://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: "Alsa-devel" <alsa-devel-bounces@alsa-project.org>
+To: broonie@kernel.org, mark.rutland@arm.com, robh+dt@kernel.org, linux@roeck-us.net, wim@linux-watchdog.org
+Cc: alsa-devel@alsa-project.org, yong.liang@mediatek.com, lgirdwood@gmail.com, jiaxin.yu@mediatek.com, tzungbi@google.com, linux-mediatek@lists.infradead.org, eason.yen@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Reduce the tlb timeout value from 100000us to 1000us. the original value
-is so long that affect the multimedia performance. This is only a minor
-improvement rather than fixing a issue.
+From: "yong.liang" <yong.liang@mediatek.com>
 
-Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Add #reset-cells property and update example
+
+Signed-off-by: yong.liang <yong.liang@mediatek.com>
 ---
- drivers/iommu/mtk_iommu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../devicetree/bindings/watchdog/mtk-wdt.txt  | 10 ++++++---
+ .../reset-controller/mt2712-resets.h          | 22 +++++++++++++++++++
+ .../reset-controller/mt8183-resets.h          | 15 +++++++++++++
+ 3 files changed, 44 insertions(+), 3 deletions(-)
+ create mode 100644 include/dt-bindings/reset-controller/mt2712-resets.h
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index c2b7ed5..8ca2e99 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -192,7 +192,7 @@ static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
+diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+index 3ee625d0812f..4dd36bd3f1ad 100644
+--- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
++++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+@@ -4,6 +4,7 @@ Required properties:
  
- 		/* tlb sync */
- 		ret = readl_poll_timeout_atomic(data->base + REG_MMU_CPE_DONE,
--						tmp, tmp != 0, 10, 100000);
-+						tmp, tmp != 0, 10, 1000);
- 		if (ret) {
- 			dev_warn(data->dev,
- 				 "Partial TLB flush timed out, falling back to full flush\n");
+ - compatible should contain:
+ 	"mediatek,mt2701-wdt", "mediatek,mt6589-wdt": for MT2701
++	"mediatek,mt2712-wdt", "mediatek,mt6589-wdt": for MT2712
+ 	"mediatek,mt6589-wdt": for MT6589
+ 	"mediatek,mt6797-wdt", "mediatek,mt6589-wdt": for MT6797
+ 	"mediatek,mt7622-wdt", "mediatek,mt6589-wdt": for MT7622
+@@ -16,11 +17,14 @@ Required properties:
+ 
+ Optional properties:
+ - timeout-sec: contains the watchdog timeout in seconds.
++- #reset-cells: Should be 1.
+ 
+ Example:
+ 
+-wdt: watchdog@10000000 {
+-	compatible = "mediatek,mt6589-wdt";
+-	reg = <0x10000000 0x18>;
++watchdog: watchdog@10007000 {
++	compatible = "mediatek,mt8183-wdt",
++		     "mediatek,mt6589-wdt";
++	reg = <0 0x10007000 0 0x100>;
+ 	timeout-sec = <10>;
++	#reset-cells = <1>;
+ };
+diff --git a/include/dt-bindings/reset-controller/mt2712-resets.h b/include/dt-bindings/reset-controller/mt2712-resets.h
+new file mode 100644
+index 000000000000..e81c8bb311b7
+--- /dev/null
++++ b/include/dt-bindings/reset-controller/mt2712-resets.h
+@@ -0,0 +1,22 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (c) 2019 MediaTek Inc.
++ * Author: Yong Liang <yong.liang@mediatek.com>
++ */
++
++#ifndef _DT_BINDINGS_RESET_CONTROLLER_MT2712
++#define _DT_BINDINGS_RESET_CONTROLLER_MT2712
++
++#define MT2712_TOPRGU_INFRA_SW_RST				0
++#define MT2712_TOPRGU_MM_SW_RST					1
++#define MT2712_TOPRGU_MFG_SW_RST				2
++#define MT2712_TOPRGU_VENC_SW_RST				3
++#define MT2712_TOPRGU_VDEC_SW_RST				4
++#define MT2712_TOPRGU_IMG_SW_RST				5
++#define MT2712_TOPRGU_INFRA_AO_SW_RST				8
++#define MT2712_TOPRGU_USB_SW_RST				9
++#define MT2712_TOPRGU_APMIXED_SW_RST				10
++
++#define MT2712_TOPRGU_SW_RST_NUM				10
++
++#endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT2712 */
+diff --git a/include/dt-bindings/reset-controller/mt8183-resets.h b/include/dt-bindings/reset-controller/mt8183-resets.h
+index 8804e34ebdd4..d582da6bedae 100644
+--- a/include/dt-bindings/reset-controller/mt8183-resets.h
++++ b/include/dt-bindings/reset-controller/mt8183-resets.h
+@@ -78,4 +78,19 @@
+ #define MT8183_INFRACFG_AO_I2C7_SW_RST				126
+ #define MT8183_INFRACFG_AO_I2C8_SW_RST				127
+ 
++#define MT8183_TOPRGU_MM_SW_RST					1
++#define MT8183_TOPRGU_MFG_SW_RST				2
++#define MT8183_TOPRGU_VENC_SW_RST				3
++#define MT8183_TOPRGU_VDEC_SW_RST				4
++#define MT8183_TOPRGU_IMG_SW_RST				5
++#define MT8183_TOPRGU_MD_SW_RST					7
++#define MT8183_TOPRGU_CONN_SW_RST				9
++#define MT8183_TOPRGU_CONN_MCU_SW_RST				12
++#define MT8183_TOPRGU_IPU0_SW_RST				14
++#define MT8183_TOPRGU_IPU1_SW_RST				15
++#define MT8183_TOPRGU_AUDIO_SW_RST				17
++#define MT8183_TOPRGU_CAMSYS_SW_RST				18
++
++#define MT8183_TOPRGU_SW_RST_NUM				18
++
+ #endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8183 */
 -- 
-1.9.1
+2.18.0
