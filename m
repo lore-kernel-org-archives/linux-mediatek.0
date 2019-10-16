@@ -1,34 +1,40 @@
-From: geert@linux-m68k.org (Geert Uytterhoeven)
-Date: Mon, 7 Oct 2019 10:26:49 +0200
-Subject: [RESEND TRIVIAL 3/3] treewide: arch: Fix Kconfig indentation
-In-Reply-To: <20191004145544.5066-3-krzk@kernel.org>
-References: <20191004145544.5066-1-krzk@kernel.org>
- <20191004145544.5066-3-krzk@kernel.org>
+From: yuehaibing@huawei.com (YueHaibing)
+Date: Wed, 16 Oct 2019 16:58:33 +0800
+Subject: [PATCH -next] staging: mt7621-dma: use
+ devm_platform_ioremap_resource() to simplify code
 List-Id: linux-mediatek@lists.infradead.org
-Message-ID: <CAMuHMdW0DSujexoGq4CJAYP40DvMcigk08aEnyQ72haY6jds5Q@mail.gmail.com>
+Message-ID: <20191016085833.26376-1-yuehaibing@huawei.com>
 To: linux-mediatek@lists.infradead.org
 
-On Fri, Oct 4, 2019@4:57 PM Krzysztof Kozlowski <krzk@kernel.org> wrote:
-> Adjust indentation from spaces to tab (+optional two spaces) as in
-> coding style with command like:
->     $ sed -e 's/^        /\t/' -i */Kconfig
->
-> Signed-off-by: Krzysztof Kozlowski <krzk at kernel.org>
+Use devm_platform_ioremap_resource() to simplify the code a bit.
+This is detected by coccinelle.
 
->  arch/m68k/Kconfig.bus                  |  2 +-
->  arch/m68k/Kconfig.debug                | 16 ++++++++--------
->  arch/m68k/Kconfig.machine              |  8 ++++----
+Signed-off-by: YueHaibing <yuehaibing at huawei.com>
+---
+ drivers/staging/mt7621-dma/mtk-hsdma.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-For m68k:
-Acked-by: Geert Uytterhoeven <geert at linux-m68k.org>
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
+diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
+index d964642..4d541c4 100644
+--- a/drivers/staging/mt7621-dma/mtk-hsdma.c
++++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
+@@ -650,7 +650,6 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
+ 	struct mtk_hsdma_chan *chan;
+ 	struct mtk_hsdam_engine *hsdma;
+ 	struct dma_device *dd;
+-	struct resource *res;
+ 	int ret;
+ 	int irq;
+ 	void __iomem *base;
+@@ -667,8 +666,7 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
+ 	if (!hsdma)
+ 		return -EINVAL;
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	base = devm_ioremap_resource(&pdev->dev, res);
++	base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(base))
+ 		return PTR_ERR(base);
+ 	hsdma->base = base + HSDMA_BASE_OFFSET;
 -- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert at linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+2.7.4
