@@ -1,207 +1,58 @@
-From: andrew-sh.cheng <andrew-sh.cheng@mediatek.com>
-Subject: Re: [v4, 7/8] cpufreq: mediatek: add opp notification for SVS support
-Date: Wed, 16 Oct 2019 10:43:48 +0800
-Message-ID: <1571193828.22071.5.camel@mtksdaap41>
-References: <1565703113-31479-1-git-send-email-andrew-sh.cheng@mediatek.com>
- <1565703113-31479-8-git-send-email-andrew-sh.cheng@mediatek.com>
- <20190820033927.72muldasu4xd6wb7@vireshk-i7>
+From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v4 0/7] Improve tlb range flush
+Date: Wed, 16 Oct 2019 11:33:05 +0800
+Message-ID: <1571196792-12382-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190820033927.72muldasu4xd6wb7@vireshk-i7>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Viresh Kumar <viresh.kumar@linaro.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>, srv_heupstream <srv_heupstream@mediatek.com>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Stephen Boyd <sboyd@kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, Chanwoo Choi <cw00.choi@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Fan Chen =?UTF-8?Q?=28=E9=99=B3=E5=87=A1=29?= <fan.chen@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
+Cc: youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, anan.sun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, cui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, chao.hao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, edison.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Evan Green <evgreen-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2019-08-20 at 11:39 +0800, Viresh Kumar wrote:
-> On 13-08-19, 21:31, Andrew-sh.Cheng wrote:
-> > From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
-> > 
-> > cpufreq should listen opp notification and do proper actions
-> > when receiving disable and voltage adjustment events,
-> > which are triggered when SVS is enabled.
-> > 
-> > Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
-> > ---
-> >  drivers/cpufreq/mediatek-cpufreq.c | 78 ++++++++++++++++++++++++++++++++++++++
-> >  1 file changed, 78 insertions(+)
-> > 
-> > diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-> > index 4dce41b18369..9820c8003507 100644
-> > --- a/drivers/cpufreq/mediatek-cpufreq.c
-> > +++ b/drivers/cpufreq/mediatek-cpufreq.c
-> > @@ -42,6 +42,10 @@ struct mtk_cpu_dvfs_info {
-> >  	struct list_head list_head;
-> >  	int intermediate_voltage;
-> >  	bool need_voltage_tracking;
-> > +	struct mutex lock; /* avoid notify and policy race condition */
-> > +	struct notifier_block opp_nb;
-> > +	int opp_cpu;
-> > +	unsigned long opp_freq;
-> >  };
-> >  
-> >  static LIST_HEAD(dvfs_info_list);
-> > @@ -231,6 +235,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
-> >  	vproc = dev_pm_opp_get_voltage(opp);
-> >  	dev_pm_opp_put(opp);
-> >  
-> > +	mutex_lock(&info->lock);
-> >  	/*
-> >  	 * If the new voltage or the intermediate voltage is higher than the
-> >  	 * current voltage, scale up voltage first.
-> > @@ -242,6 +247,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
-> >  			pr_err("cpu%d: failed to scale up voltage!\n",
-> >  			       policy->cpu);
-> >  			mtk_cpufreq_set_voltage(info, old_vproc);
-> > +			mutex_unlock(&info->lock);
-> >  			return ret;
-> >  		}
-> >  	}
-> > @@ -253,6 +259,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
-> >  		       policy->cpu);
-> >  		mtk_cpufreq_set_voltage(info, old_vproc);
-> >  		WARN_ON(1);
-> > +		mutex_unlock(&info->lock);
-> >  		return ret;
-> >  	}
-> >  
-> > @@ -263,6 +270,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
-> >  		       policy->cpu);
-> >  		clk_set_parent(cpu_clk, armpll);
-> >  		mtk_cpufreq_set_voltage(info, old_vproc);
-> > +		mutex_unlock(&info->lock);
-> >  		return ret;
-> >  	}
-> >  
-> > @@ -273,6 +281,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
-> >  		       policy->cpu);
-> >  		mtk_cpufreq_set_voltage(info, inter_vproc);
-> >  		WARN_ON(1);
-> > +		mutex_unlock(&info->lock);
-> >  		return ret;
-> >  	}
-> >  
-> > @@ -288,15 +297,74 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
-> >  			clk_set_parent(cpu_clk, info->inter_clk);
-> >  			clk_set_rate(armpll, old_freq_hz);
-> >  			clk_set_parent(cpu_clk, armpll);
-> > +			mutex_unlock(&info->lock);
-> >  			return ret;
-> >  		}
-> >  	}
-> >  
-> > +	info->opp_freq = freq_hz;
-> > +	mutex_unlock(&info->lock);
-> > +
-> >  	return 0;
-> >  }
-> >  
-> >  #define DYNAMIC_POWER "dynamic-power-coefficient"
-> >  
-> > +static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
-> > +				    unsigned long event, void *data)
-> > +{
-> > +	struct dev_pm_opp *opp = data;
-> > +	struct dev_pm_opp *opp_item;
-> > +	struct mtk_cpu_dvfs_info *info =
-> > +		container_of(nb, struct mtk_cpu_dvfs_info, opp_nb);
-> > +	unsigned long freq, volt;
-> > +	struct cpufreq_policy *policy;
-> > +	int ret = 0;
-> > +
-> > +	if (event == OPP_EVENT_ADJUST_VOLTAGE) {
-> > +		freq = dev_pm_opp_get_freq(opp);
-> > +
-> > +		mutex_lock(&info->lock);
-> > +		if (info->opp_freq == freq) {
-> > +			volt = dev_pm_opp_get_voltage(opp);
-> > +			ret = mtk_cpufreq_set_voltage(info, volt);
-> > +			if (ret)
-> > +				dev_err(info->cpu_dev, "failed to scale voltage: %d\n",
-> > +					ret);
-> > +		}
-> > +		mutex_unlock(&info->lock);
-> > +	} else if (event == OPP_EVENT_DISABLE) {
-> 
-> Does this ever get called for your platform ? Why are you using opp disable ?
-> Maybe we can avoid it completely.
-Hi Viresh~
-This is due to SVS feature need to fix Vproc for calibration.
-When SVS calibration, it want to disable all opp items, except one with
-voltae 1.0V. (SVS will change the voltage field of that opp item, if the
-corresponding voltage is not 1.0V)
-In this way, SVS can make sure there is no other module, include
-thermal, will change Vproc by DVFS driver.
-After SVS calibration done, SVS will enable those disabled opp items
-back.
+This patchset mainly fixes a tlb flush timeout issue and use the new
+iommu_gather to re-implement the tlb flush flow. and several clean up
+patches about the tlb_flush.
 
-> 
-> > +		freq = info->opp_freq;
-> > +		opp_item = dev_pm_opp_find_freq_ceil(info->cpu_dev, &freq);
-> > +		if (!IS_ERR(opp_item))
-> > +			dev_pm_opp_put(opp_item);
-> > +		else
-> > +			freq = 0;
-> > +
-> > +		/* case of current opp is disabled */
-> > +		if (freq == 0 || freq != info->opp_freq) {
-> > +			// find an enable opp item
-> > +			freq = 1;
-> > +			opp_item = dev_pm_opp_find_freq_ceil(info->cpu_dev,
-> > +							     &freq);
-> > +			if (!IS_ERR(opp_item)) {
-> > +				dev_pm_opp_put(opp_item);
-> > +				policy = cpufreq_cpu_get(info->opp_cpu);
-> > +				if (policy) {
-> > +					cpufreq_driver_target(policy,
-> > +						freq / 1000,
-> > +						CPUFREQ_RELATION_L);
-> > +					cpufreq_cpu_put(policy);
-> > +				}
-> > +			} else
-> > +				pr_err("%s: all opp items are disabled\n",
-> > +				       __func__);
-> > +		}
-> > +	}
-> > +
-> > +	return notifier_from_errno(ret);
-> > +}
-> > +
-> >  static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
-> >  {
-> >  	struct device *cpu_dev;
-> > @@ -383,11 +451,21 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
-> >  	info->intermediate_voltage = dev_pm_opp_get_voltage(opp);
-> >  	dev_pm_opp_put(opp);
-> >  
-> > +	info->opp_cpu = cpu;
-> > +	info->opp_nb.notifier_call = mtk_cpufreq_opp_notifier;
-> > +	ret = dev_pm_opp_register_notifier(cpu_dev, &info->opp_nb);
-> > +	if (ret) {
-> > +		pr_warn("cannot register opp notification\n");
-> > +		goto out_free_opp_table;
-> > +	}
-> > +
-> > +	mutex_init(&info->lock);
-> >  	info->cpu_dev = cpu_dev;
-> >  	info->proc_reg = proc_reg;
-> >  	info->sram_reg = IS_ERR(sram_reg) ? NULL : sram_reg;
-> >  	info->cpu_clk = cpu_clk;
-> >  	info->inter_clk = inter_clk;
-> > +	info->opp_freq = clk_get_rate(cpu_clk);
-> >  
-> >  	/*
-> >  	 * If SRAM regulator is present, software "voltage tracking" is needed
-> > -- 
-> > 2.12.5
-> 
+change note:
+
+v4: 1. Add a new tlb_lock for tlb operations.
+    2. Delete the pgtlock.
+    3. Remove the "writel" patch.
+
+v3: https://lore.kernel.org/linux-iommu/1571035101-4213-1-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org/T/#t
+   1. Use the gather to implement the tlb_flush suggested from Tomasz.
+   2. add some clean up patches.
+
+v2:
+https://lore.kernel.org/linux-iommu/1570627143-29441-1-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org/T/#t
+   1. rebase on v5.4-rc1
+   2. only split to several patches.
+
+v1:
+https://lore.kernel.org/linux-iommu/CAAFQd5C3U7pZo4SSUJ52Q7E+0FaUoORQFbQC5RhCHBhi=NFYTw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org/T/#t
+
+Yong Wu (7):
+  iommu/mediatek: Correct the flush_iotlb_all callback
+  iommu/mediatek: Add a new tlb_lock for tlb_flush
+  iommu/mediatek: Use gather to achieve the tlb range flush
+  iommu/mediatek: Delete the leaf in the tlb_flush
+  iommu/mediatek: Move the tlb_sync into tlb_flush
+  iommu/mediatek: Get rid of the pgtlock
+  iommu/mediatek: Reduce the tlb flush timeout value
+
+ drivers/iommu/mtk_iommu.c | 88 +++++++++++++++--------------------------------
+ drivers/iommu/mtk_iommu.h |  2 +-
+ 2 files changed, 29 insertions(+), 61 deletions(-)
+
+-- 
+1.9.1
