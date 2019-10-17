@@ -2,58 +2,58 @@ Return-Path: <SRS0=0H6n=YK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 20D61ECE58E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2019 16:34:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F9D8ECE58D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2019 17:27:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E9A0821835
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2019 16:34:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DF97920872
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2019 17:27:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TD9Wgvrs"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E9A0821835
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=atomide.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jEpali8l"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DF97920872
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=codethink.co.uk
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GIScA41N00UDoopgrZ2Vs8hoYWzRgfzZMbMEnkHHdiI=; b=TD9WgvrsDn4VRt
-	pxdM0MSpJSEh92P8/RIz32tbxGuAF29b1x3lq22BRxL1e7M3aVnL2fIvHwC3NYg1f7ddFlbU3NoXN
-	Q9rwWs+uZmfc67UWSE45VuswsKkov4BLF68CV1nuF8Bdc39ifVmY7N94G3oE0QlJmM59tRuFAxE/V
-	fSnpgFrkaPK+tojkBjmsI1gSKr/qCSrRUsg7CsU0y7RndAh40t+zLm2QrHDbbbkh1KJnQwTfCaKNk
-	QzD011w+Sn+PWVssiw3SpDscj3yh35lRIG/OVo/et1uXD3PQR3dphlyCnW08PA5HxlDaD1N9gt9sv
-	gVz4k47NsyjC8aZbUzaA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=4xUZeHKqIYgjZJj4Ki4SsrLaRz8Y2EvW4dFxPt2hv04=; b=jEpali8lwOFlWn
+	3Iebg4H0MbXKQ0RzGK/EpM676UQ4jTW7/RN9wgizBpqyDhIBKi7bUD7RnJzqh5jRTKGeoBmYoibkX
+	aYdr4BxtR5SP6c1fqRQgzpw0EKqqVssfvx0vXlVw0stWSVxQ7YWG2J+VsTNVDGtxjG7ZNKcRaRYoD
+	xeRWBEuLPkWlUsh3Lezwi/asnZQOJhtAOqJV18/OOvRCbi6Kuc4HsoGjWjcCyun5Wc7QsJQdhf7Gm
+	NRkNzZjz3v1zLkba987pt06W9qkrzHLiPsvMDlWxLsIMcjx0QIae+bsdav4hS8dP7iimWaWUSVRn+
+	OnhFoYehg5N8R9DEzv6g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iL8jq-0000uA-5O; Thu, 17 Oct 2019 16:34:58 +0000
-Received: from muru.com ([72.249.23.125])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iL8jZ-0000XB-RK; Thu, 17 Oct 2019 16:34:44 +0000
-Received: from atomide.com (localhost [127.0.0.1])
- by muru.com (Postfix) with ESMTPS id C458C804F;
- Thu, 17 Oct 2019 16:35:10 +0000 (UTC)
-Date: Thu, 17 Oct 2019 09:34:33 -0700
-From: Tony Lindgren <tony@atomide.com>
-To: min.guo@mediatek.com
-Subject: Re: [PATCH v8 6/6] usb: musb: Add support for MediaTek musb controller
-Message-ID: <20191017163433.GN5610@atomide.com>
-References: <20191017094126.29045-1-min.guo@mediatek.com>
- <20191017094126.29045-7-min.guo@mediatek.com>
+	id 1iL9Yl-0003xb-Uw; Thu, 17 Oct 2019 17:27:35 +0000
+Received: from imap1.codethink.co.uk ([176.9.8.82])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1iL9Yc-0003qV-Pn; Thu, 17 Oct 2019 17:27:29 +0000
+Received: from [167.98.27.226] (helo=rainbowdash.codethink.co.uk)
+ by imap1.codethink.co.uk with esmtpsa (Exim 4.84_2 #1 (Debian))
+ id 1iL9YU-0005iY-Ei; Thu, 17 Oct 2019 18:27:18 +0100
+Received: from ben by rainbowdash.codethink.co.uk with local (Exim 4.92.2)
+ (envelope-from <ben@rainbowdash.codethink.co.uk>)
+ id 1iL9YU-0008BR-0s; Thu, 17 Oct 2019 18:27:18 +0100
+From: "Ben Dooks (Codethink)" <ben.dooks@codethink.co.uk>
+To: linux-kernel@lists.codethink.co.uk
+Subject: [PATCH] usb: mtu3: fix missing include of mtu3_dr.h
+Date: Thu, 17 Oct 2019 18:27:17 +0100
+Message-Id: <20191017172717.31409-1-ben.dooks@codethink.co.uk>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191017094126.29045-7-min.guo@mediatek.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191017_093441_976095_846456D3 
-X-CRM114-Status: GOOD (  12.30  )
+X-CRM114-CacheID: sfid-20191017_102726_985247_2AF0F68C 
+X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,116 +65,49 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Yonglong Wu <yonglong.wu@mediatek.com>, hdegoede@redhat.com,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, chunfeng.yun@mediatek.com,
- Rob Herring <robh+dt@kernel.org>, Alan Stern <stern@rowland.harvard.edu>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- Bin Liu <b-liu@ti.com>, linux-arm-kernel@lists.infradead.org
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ "Ben Dooks \(Codethink\)" <ben.dooks@codethink.co.uk>,
+ linux-mediatek@lists.infradead.org, Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+The declarations of ssusb_gadget_{init,exit} are
+in the mtu3_dr.h file but the code does that implements
+them does not include this. Add the include to fix the
+following sparse warnigns:
 
-Just few comments for future changes that might help below.
+drivers/usb/mtu3/mtu3_core.c:825:5: warning: symbol 'ssusb_gadget_init' was not declared. Should it be static?
+drivers/usb/mtu3/mtu3_core.c:925:6: warning: symbol 'ssusb_gadget_exit' was not declared. Should it be static?
 
-* min.guo@mediatek.com <min.guo@mediatek.com> [191017 09:42]:
-> --- /dev/null
-> +++ b/drivers/usb/musb/mediatek.c
-> +static int musb_usb_role_sx_set(struct device *dev, enum usb_role role)
-> +{
-> +	struct mtk_glue *glue = dev_get_drvdata(dev);
-> +	struct musb *musb = glue->musb;
-> +	u8 devctl = readb(musb->mregs + MUSB_DEVCTL);
-> +	enum usb_role new_role;
-> +
-> +	if (role == glue->role)
-> +		return 0;
-> +
-> +	switch (role) {
-> +	case USB_ROLE_HOST:
-> +		musb->xceiv->otg->state = OTG_STATE_A_WAIT_VRISE;
-> +		glue->phy_mode = PHY_MODE_USB_HOST;
-> +		new_role = USB_ROLE_HOST;
-> +		if (glue->role == USB_ROLE_NONE)
-> +			phy_power_on(glue->phy);
-> +
-> +		devctl |= MUSB_DEVCTL_SESSION;
-> +		musb_writeb(musb->mregs, MUSB_DEVCTL, devctl);
-> +		MUSB_HST_MODE(musb);
-> +		break;
-> +	case USB_ROLE_DEVICE:
-> +		musb->xceiv->otg->state = OTG_STATE_B_IDLE;
-> +		glue->phy_mode = PHY_MODE_USB_DEVICE;
-> +		new_role = USB_ROLE_DEVICE;
-> +		devctl &= ~MUSB_DEVCTL_SESSION;
-> +		musb_writeb(musb->mregs, MUSB_DEVCTL, devctl);
-> +		if (glue->role == USB_ROLE_NONE)
-> +			phy_power_on(glue->phy);
-> +
-> +		MUSB_DEV_MODE(musb);
-> +		break;
-> +	case USB_ROLE_NONE:
-> +		glue->phy_mode = PHY_MODE_USB_OTG;
-> +		new_role = USB_ROLE_NONE;
-> +		devctl &= ~MUSB_DEVCTL_SESSION;
-> +		musb_writeb(musb->mregs, MUSB_DEVCTL, devctl);
-> +		if (glue->role != USB_ROLE_NONE)
-> +			phy_power_off(glue->phy);
-> +
-> +		break;
-> +	default:
-> +		dev_err(glue->dev, "Invalid State\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	glue->role = new_role;
-> +	phy_set_mode(glue->phy, glue->phy_mode);
-> +
-> +	return 0;
-> +}
+Signed-off-by: Ben Dooks <ben.dooks@codethink.co.uk>
+---
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: linux-usb@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+---
+ drivers/usb/mtu3/mtu3_core.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-For the role change, I recently posted a patch "[PATCH 4/7] usb: musb:
-Add musb_set_host and peripheral and use them for omap2430". That
-should work for you looking at the code above, so later on you might
-want to change to use that. Probably best done as a follow-up patch
-to avoid adding extra dependencies to your series.
+diff --git a/drivers/usb/mtu3/mtu3_core.c b/drivers/usb/mtu3/mtu3_core.c
+index c3d5c1206eec..9dd02160cca9 100644
+--- a/drivers/usb/mtu3/mtu3_core.c
++++ b/drivers/usb/mtu3/mtu3_core.c
+@@ -16,6 +16,7 @@
+ #include <linux/platform_device.h>
+ 
+ #include "mtu3.h"
++#include "mtu3_dr.h"
+ #include "mtu3_debug.h"
+ #include "mtu3_trace.h"
+ 
+-- 
+2.23.0
 
-Please also note that musb core attempts to do things automagically
-on it's own. So trying to force mode in general does not work reliably.
-This is because VBUS may not yet have risen for example.
-
-The role change is best done based on the USB PHY as then usually
-musb has already switched to the right mode automatically :)
-
-> +static const struct musb_platform_ops mtk_musb_ops = {
-> +	.quirks = MUSB_DMA_INVENTRA,
-> +	.init = mtk_musb_init,
-> +	.get_toggle = mtk_musb_get_toggle,
-> +	.set_toggle = mtk_musb_set_toggle,
-> +	.exit = mtk_musb_exit,
-> +#ifdef CONFIG_USB_INVENTRA_DMA
-> +	.dma_init = musbhs_dma_controller_create_noirq,
-> +	.dma_exit = musbhs_dma_controller_destroy,
-> +#endif
-> +	.clearb = mtk_musb_clearb,
-> +	.clearw = mtk_musb_clearw,
-> +	.busctl_offset = mtk_musb_busctl_offset,
-> +	.set_mode = mtk_musb_set_mode,
-> +};
-
-So you may want to consider getting rid of .set_mode completely
-and rely on USB PHY calls instead.
-
-In some cases you need to use struct phy_companion for set_vbus
-depending how things are wired.
-
-Regards,
-
-Tony
 
 _______________________________________________
 Linux-mediatek mailing list
