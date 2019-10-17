@@ -5,66 +5,67 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D9EBBECE58E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2019 09:36:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7F615FA3732
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2019 09:42:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id ADB4C20663
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2019 09:36:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 18F55214E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2019 09:42:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NVV5e4oB"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ADB4C20663
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JpPl5bra"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 18F55214E0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ECACCLJvepF1UdHowSx2POHhnZ7T6fUljnW+gyvajEQ=; b=NVV5e4oBQHQmuO
-	IcgTnFJMHo8+zU9lupe2Ubaf5SqRdPv7O9yzq8TQDUWcqblb6J6PBpWt/Jc8kYnW6/+NrQKoPJhYv
-	clAG5oYmUDMbdqYHnS0kRRKabq3UUbuK/RvH4nAptjUNAJffk+cVtdAh60ENyALoltUiMylgdzeyI
-	rTdZWDqsy3BBvEadEy8+ejsGbm0i4nVj8AhoJ9HFwT31nkzCqC+SEsiTudPjEB0DaYIqqQv0EcC4N
-	SoC9g9C+25qyQecP35mWp4pjwkU3cZoA8FsSpWIyYmdVJ9SPiSMMzeCCZztm1dcm/ZpCsZNGduh1l
-	S0amyN5lx+eYWArPkkzw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=rnIDoOk2hYhQ3Oq2vq0OYOeZuI5r9m+SsXYU33GcSjk=; b=JpPl5braBMLefz
+	UZbRHjePvvkrRLeA9TqpBLl+gyCJBD6fdsJXuTy1zh3KosiYCaYDGOISt+0Ufjq6cLSlrqHLMgw69
+	38V2qY7ad0+OsLGiv8fNs23tAyoGuYw0PSo9F3AcRtTKZBBNPSPJfD0xUNML3V3xayhICe7ChHj2n
+	s6oHEW8pgJrlK7XpDSYHtxqhju8JtShVw9dbm7TI9ZJIzEonPDjdxU5yXpe0t6SbsyNPXdQcgUwmQ
+	TGOYMLU4zvuDsiZIYYgOuaM1OsSeg8uZv9oiV9kYZ8eFEF+urDmYx7tJqP3UOnDFBIXrha9IYjli9
+	6iv+vR2k9Mq1MHycHgbA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iL2CT-0006Zy-BM; Thu, 17 Oct 2019 09:36:05 +0000
+	id 1iL2I7-0000tG-Sk; Thu, 17 Oct 2019 09:41:55 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iL2CR-0006Yx-3y
- for linux-mediatek@lists.infradead.org; Thu, 17 Oct 2019 09:36:04 +0000
-X-UUID: 5ebc90d7ab484c668f529caae7d3c278-20191017
-X-UUID: 5ebc90d7ab484c668f529caae7d3c278-20191017
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
+ id 1iL2Hr-0000en-Rp; Thu, 17 Oct 2019 09:41:41 +0000
+X-UUID: 5b752c497efe4531a19ad1d2a695b948-20191017
+X-UUID: 5b752c497efe4531a19ad1d2a695b948-20191017
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <min.guo@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1497443385; Thu, 17 Oct 2019 01:35:47 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 17 Oct 2019 02:35:53 -0700
+ with ESMTP id 2034730448; Thu, 17 Oct 2019 01:41:28 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Thu, 17 Oct 2019 02:41:35 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 17 Oct 2019 17:35:55 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Thu, 17 Oct 2019 17:35:53 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: Andrew Morton <akpm@linux-foundation.org>
-Subject: [PATCH] mm: fix outdated comment in page_get_anon_vma()
-Date: Thu, 17 Oct 2019 17:35:54 +0800
-Message-ID: <20191017093554.22562-1-miles.chen@mediatek.com>
+ MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Thu, 17 Oct 2019 17:41:31 +0800
+Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Thu, 17 Oct 2019 17:41:31 +0800
+From: <min.guo@mediatek.com>
+To: Bin Liu <b-liu@ti.com>, Rob Herring <robh+dt@kernel.org>
+Subject: [PATCH v8 3/6] usb: musb: Add get/set toggle hooks
+Date: Thu, 17 Oct 2019 17:41:23 +0800
+Message-ID: <20191017094126.29045-4-min.guo@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20191017094126.29045-1-min.guo@mediatek.com>
+References: <20191017094126.29045-1-min.guo@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: CC73E4CBA91BB4962C9F220C472737D4449DE185FF13F1BE3A9B5C80953B5ACB2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191017_023603_167155_FBD34F78 
-X-CRM114-Status: UNSURE (   8.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191017_024139_908421_48FD4335 
+X-CRM114-Status: GOOD (  14.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,44 +77,263 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mm@kvack.org, Miles Chen <miles.chen@mediatek.com>,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- wsd_upstream@mediatek.com
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ hdegoede@redhat.com, tony@atomide.com,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Alan Stern <stern@rowland.harvard.edu>, Min Guo <min.guo@mediatek.com>,
+ chunfeng.yun@mediatek.com, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Replace DESTROY_BY_RCU with SLAB_TYPESAFE_BY_RCU because
-SLAB_DESTROY_BY_RCU has been renamed to SLAB_TYPESAFE_BY_RCU by
-commit 5f0d5a3ae7cf ("mm: Rename SLAB_DESTROY_BY_RCU to
-SLAB_TYPESAFE_BY_RCU")
+From: Min Guo <min.guo@mediatek.com>
 
-Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+Add get/set toggle hooks in struct musb_io and struct musb_platform_ops
+for special platform; remove function musb_save_toggle, use the set/get
+callback to handle toggle.
+
+Signed-off-by: Min Guo <min.guo@mediatek.com>
 ---
- mm/rmap.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+changes in v8:
+1. no changes
 
-diff --git a/mm/rmap.c b/mm/rmap.c
-index d9a23bb773bf..bdb20f2bbe9f 100644
---- a/mm/rmap.c
-+++ b/mm/rmap.c
-@@ -457,9 +457,10 @@ void __init anon_vma_init(void)
-  * chain and verify that the page in question is indeed mapped in it
-  * [ something equivalent to page_mapped_in_vma() ].
-  *
-- * Since anon_vma's slab is DESTROY_BY_RCU and we know from page_remove_rmap()
-- * that the anon_vma pointer from page->mapping is valid if there is a
-- * mapcount, we can dereference the anon_vma after observing those.
-+ * Since anon_vma's slab is SLAB_TYPESAFE_BY_RCU and we know from
-+ * page_remove_rmap() that the anon_vma pointer from page->mapping is valid
-+ * if there is a mapcount, we can dereference the anon_vma after observing
-+ * those.
+changes in v7:
+1. no changes
+
+changes in v6:
+1. no changes
+
+changes in v5:
+1. no changes
+
+new patch based on v4:
+---
+ drivers/usb/musb/musb_core.c | 42 ++++++++++++++++++++++++++++++++++++++++
+ drivers/usb/musb/musb_core.h |  5 +++++
+ drivers/usb/musb/musb_host.c | 46 ++++++++++----------------------------------
+ drivers/usb/musb/musb_io.h   |  4 ++++
+ 4 files changed, 61 insertions(+), 36 deletions(-)
+
+diff --git a/drivers/usb/musb/musb_core.c b/drivers/usb/musb/musb_core.c
+index bd63450af..690b8da 100644
+--- a/drivers/usb/musb/musb_core.c
++++ b/drivers/usb/musb/musb_core.c
+@@ -274,6 +274,38 @@ static void musb_default_writew(void __iomem *addr, unsigned offset, u16 data)
+ 	__raw_writew(data, addr + offset);
+ }
+ 
++static u16 musb_default_get_toggle(struct musb_qh *qh, int is_out)
++{
++	void __iomem *epio = qh->hw_ep->regs;
++	u16 csr;
++
++	if (is_out)
++		csr = musb_readw(epio, MUSB_TXCSR) & MUSB_TXCSR_H_DATATOGGLE;
++	else
++		csr = musb_readw(epio, MUSB_RXCSR) & MUSB_RXCSR_H_DATATOGGLE;
++
++	return csr;
++}
++
++static u16 musb_default_set_toggle(struct musb_qh *qh, int is_out,
++				   struct urb *urb)
++{
++	u16 csr;
++	u16 toggle;
++
++	toggle = usb_gettoggle(urb->dev, qh->epnum, is_out);
++
++	if (is_out)
++		csr = toggle ? (MUSB_TXCSR_H_WR_DATATOGGLE
++				| MUSB_TXCSR_H_DATATOGGLE)
++				: MUSB_TXCSR_CLRDATATOG;
++	else
++		csr = toggle ? (MUSB_RXCSR_H_WR_DATATOGGLE
++				| MUSB_RXCSR_H_DATATOGGLE) : 0;
++
++	return csr;
++}
++
+ /*
+  * Load an endpoint's FIFO
   */
- struct anon_vma *page_get_anon_vma(struct page *page)
- {
+@@ -2271,6 +2303,16 @@ static void musb_deassert_reset(struct work_struct *work)
+ 	else
+ 		musb->io.write_fifo = musb_default_write_fifo;
+ 
++	if (musb->ops->get_toggle)
++		musb->io.get_toggle = musb->ops->get_toggle;
++	else
++		musb->io.get_toggle = musb_default_get_toggle;
++
++	if (musb->ops->set_toggle)
++		musb->io.set_toggle = musb->ops->set_toggle;
++	else
++		musb->io.set_toggle = musb_default_set_toggle;
++
+ 	if (!musb->xceiv->io_ops) {
+ 		musb->xceiv->io_dev = musb->controller;
+ 		musb->xceiv->io_priv = musb->mregs;
+diff --git a/drivers/usb/musb/musb_core.h b/drivers/usb/musb/musb_core.h
+index 04203b7..9f5a69c 100644
+--- a/drivers/usb/musb/musb_core.h
++++ b/drivers/usb/musb/musb_core.h
+@@ -27,6 +27,7 @@
+ struct musb;
+ struct musb_hw_ep;
+ struct musb_ep;
++struct musb_qh;
+ 
+ /* Helper defines for struct musb->hwvers */
+ #define MUSB_HWVERS_MAJOR(x)	((x >> 10) & 0x1f)
+@@ -123,6 +124,8 @@ enum musb_g_ep0_state {
+  * @writew:	write 16 bits
+  * @read_fifo:	reads the fifo
+  * @write_fifo:	writes to fifo
++ * @get_toggle:	platform specific get toggle function
++ * @set_toggle:	platform specific set toggle function
+  * @dma_init:	platform specific dma init function
+  * @dma_exit:	platform specific dma exit function
+  * @init:	turns on clocks, sets up platform-specific registers, etc
+@@ -167,6 +170,8 @@ struct musb_platform_ops {
+ 	void	(*writew)(void __iomem *addr, unsigned offset, u16 data);
+ 	void	(*read_fifo)(struct musb_hw_ep *hw_ep, u16 len, u8 *buf);
+ 	void	(*write_fifo)(struct musb_hw_ep *hw_ep, u16 len, const u8 *buf);
++	u16	(*get_toggle)(struct musb_qh *qh, int is_out);
++	u16	(*set_toggle)(struct musb_qh *qh, int is_out, struct urb *urb);
+ 	struct dma_controller *
+ 		(*dma_init) (struct musb *musb, void __iomem *base);
+ 	void	(*dma_exit)(struct dma_controller *c);
+diff --git a/drivers/usb/musb/musb_host.c b/drivers/usb/musb/musb_host.c
+index 5a44b70..886c9b6 100644
+--- a/drivers/usb/musb/musb_host.c
++++ b/drivers/usb/musb/musb_host.c
+@@ -286,26 +286,6 @@ static void musb_giveback(struct musb *musb, struct urb *urb, int status)
+ 	spin_lock(&musb->lock);
+ }
+ 
+-/* For bulk/interrupt endpoints only */
+-static inline void musb_save_toggle(struct musb_qh *qh, int is_in,
+-				    struct urb *urb)
+-{
+-	void __iomem		*epio = qh->hw_ep->regs;
+-	u16			csr;
+-
+-	/*
+-	 * FIXME: the current Mentor DMA code seems to have
+-	 * problems getting toggle correct.
+-	 */
+-
+-	if (is_in)
+-		csr = musb_readw(epio, MUSB_RXCSR) & MUSB_RXCSR_H_DATATOGGLE;
+-	else
+-		csr = musb_readw(epio, MUSB_TXCSR) & MUSB_TXCSR_H_DATATOGGLE;
+-
+-	usb_settoggle(urb->dev, qh->epnum, !is_in, csr ? 1 : 0);
+-}
+-
+ /*
+  * Advance this hardware endpoint's queue, completing the specified URB and
+  * advancing to either the next URB queued to that qh, or else invalidating
+@@ -320,6 +300,7 @@ static void musb_advance_schedule(struct musb *musb, struct urb *urb,
+ 	struct musb_hw_ep	*ep = qh->hw_ep;
+ 	int			ready = qh->is_ready;
+ 	int			status;
++	u16			toggle;
+ 
+ 	status = (urb->status == -EINPROGRESS) ? 0 : urb->status;
+ 
+@@ -327,7 +308,8 @@ static void musb_advance_schedule(struct musb *musb, struct urb *urb,
+ 	switch (qh->type) {
+ 	case USB_ENDPOINT_XFER_BULK:
+ 	case USB_ENDPOINT_XFER_INT:
+-		musb_save_toggle(qh, is_in, urb);
++		toggle = musb->io.get_toggle(qh, !is_in);
++		usb_settoggle(urb->dev, qh->epnum, !is_in, toggle ? 1 : 0);
+ 		break;
+ 	case USB_ENDPOINT_XFER_ISOC:
+ 		if (status == 0 && urb->error_count)
+@@ -772,13 +754,8 @@ static void musb_ep_program(struct musb *musb, u8 epnum,
+ 					);
+ 			csr |= MUSB_TXCSR_MODE;
+ 
+-			if (!hw_ep->tx_double_buffered) {
+-				if (usb_gettoggle(urb->dev, qh->epnum, 1))
+-					csr |= MUSB_TXCSR_H_WR_DATATOGGLE
+-						| MUSB_TXCSR_H_DATATOGGLE;
+-				else
+-					csr |= MUSB_TXCSR_CLRDATATOG;
+-			}
++			if (!hw_ep->tx_double_buffered)
++				csr |= musb->io.set_toggle(qh, is_out, urb);
+ 
+ 			musb_writew(epio, MUSB_TXCSR, csr);
+ 			/* REVISIT may need to clear FLUSHFIFO ... */
+@@ -860,17 +837,12 @@ static void musb_ep_program(struct musb *musb, u8 epnum,
+ 
+ 	/* IN/receive */
+ 	} else {
+-		u16	csr;
++		u16 csr = 0;
+ 
+ 		if (hw_ep->rx_reinit) {
+ 			musb_rx_reinit(musb, qh, epnum);
++			csr |= musb->io.set_toggle(qh, is_out, urb);
+ 
+-			/* init new state: toggle and NYET, maybe DMA later */
+-			if (usb_gettoggle(urb->dev, qh->epnum, 0))
+-				csr = MUSB_RXCSR_H_WR_DATATOGGLE
+-					| MUSB_RXCSR_H_DATATOGGLE;
+-			else
+-				csr = 0;
+ 			if (qh->type == USB_ENDPOINT_XFER_INT)
+ 				csr |= MUSB_RXCSR_DISNYET;
+ 
+@@ -933,6 +905,7 @@ static void musb_bulk_nak_timeout(struct musb *musb, struct musb_hw_ep *ep,
+ 	void __iomem		*epio = ep->regs;
+ 	struct musb_qh		*cur_qh, *next_qh;
+ 	u16			rx_csr, tx_csr;
++	u16			toggle;
+ 
+ 	musb_ep_select(mbase, ep->epnum);
+ 	if (is_in) {
+@@ -970,7 +943,8 @@ static void musb_bulk_nak_timeout(struct musb *musb, struct musb_hw_ep *ep,
+ 			urb->actual_length += dma->actual_len;
+ 			dma->actual_len = 0L;
+ 		}
+-		musb_save_toggle(cur_qh, is_in, urb);
++		toggle = musb->io.get_toggle(cur_qh, !is_in);
++		usb_settoggle(urb->dev, cur_qh->epnum, !is_in, toggle ? 1 : 0);
+ 
+ 		if (is_in) {
+ 			/* move cur_qh to end of queue */
+diff --git a/drivers/usb/musb/musb_io.h b/drivers/usb/musb/musb_io.h
+index 8058a58..8179334 100644
+--- a/drivers/usb/musb/musb_io.h
++++ b/drivers/usb/musb/musb_io.h
+@@ -22,6 +22,8 @@
+  * @read_fifo:	platform specific function to read fifo
+  * @write_fifo:	platform specific function to write fifo
+  * @busctl_offset: platform specific function to get busctl offset
++ * @get_toggle: platform specific function to get toggle
++ * @set_toggle: platform specific function to set toggle
+  */
+ struct musb_io {
+ 	u32	(*ep_offset)(u8 epnum, u16 offset);
+@@ -30,6 +32,8 @@ struct musb_io {
+ 	void	(*read_fifo)(struct musb_hw_ep *hw_ep, u16 len, u8 *buf);
+ 	void	(*write_fifo)(struct musb_hw_ep *hw_ep, u16 len, const u8 *buf);
+ 	u32	(*busctl_offset)(u8 epnum, u16 offset);
++	u16	(*get_toggle)(struct musb_qh *qh, int is_out);
++	u16	(*set_toggle)(struct musb_qh *qh, int is_out, struct urb *urb);
+ };
+ 
+ /* Do not add new entries here, add them the struct musb_io instead */
 -- 
-2.18.0
+1.9.1
 
 
 _______________________________________________
